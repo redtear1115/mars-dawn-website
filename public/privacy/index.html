@@ -52,6 +52,7 @@
   <li><strong>Markdown documents.</strong> Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings. Nothing else a Markdown document refers to is loaded from the web.</li>
   <li><strong>HTML pages.</strong> MarsDawn shows HTML files read-only. Web content a page refers to (images, stylesheets, fonts, audio/video) loads only when you choose, and this has its own setting, which is off by default. Page scripts never run.</li>
 </ul>
+<p>MarsDawn loads web content over https only. A document that refers to a plain http address is never loaded, in any setting, and MarsDawn does not rewrite it to https. The preview shows a placeholder in its place.</p>
 <p>When web content loads, your Mac requests it directly from the servers that host it. Like any web request, this lets those servers see your IP address and what was requested. MarsDawn's developer receives none of this information.</p>
 <p>If you allow web content for an HTML page, that page's layout could let those servers learn whether files the page itself refers to exist in the folder you gave MarsDawn access to, and roughly how large they are. The page can't read your files or send their contents, and this can't happen while web content is blocked.</p>
 <p>Links you click in the preview open in your default web browser, under that browser's own privacy practices. Audio and video never play by themselves.</p>

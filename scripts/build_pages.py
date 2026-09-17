@@ -95,6 +95,7 @@ PAGES = {
   <li><strong>Markdown documents.</strong> Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings. Nothing else a Markdown document refers to is loaded from the web.</li>
   <li><strong>HTML pages.</strong> MarsDawn shows HTML files read-only. Web content a page refers to (images, stylesheets, fonts, audio/video) loads only when you choose, and this has its own setting, which is off by default. Page scripts never run.</li>
 </ul>
+<p>MarsDawn loads web content over https only. A document that refers to a plain http address is never loaded, in any setting, and MarsDawn does not rewrite it to https. The preview shows a placeholder in its place.</p>
 <p>When web content loads, your Mac requests it directly from the servers that host it. Like any web request, this lets those servers see your IP address and what was requested. MarsDawn's developer receives none of this information.</p>
 <p>If you allow web content for an HTML page, that page's layout could let those servers learn whether files the page itself refers to exist in the folder you gave MarsDawn access to, and roughly how large they are. The page can't read your files or send their contents, and this can't happen while web content is blocked.</p>
 <p>Links you click in the preview open in your default web browser, under that browser's own privacy practices. Audio and video never play by themselves.</p>
@@ -146,6 +147,7 @@ PAGES = {
   <li><strong>Markdown 文件。</strong>網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。</li>
   <li><strong>HTML 網頁。</strong>MarsDawn 以唯讀方式顯示 HTML 檔。網頁引用的網路內容（圖片、樣式表、字型、音訊與影片）只有在你選擇時才會載入，這項設定獨立於圖片設定，預設為關閉。網頁中的程式碼一律不會執行。</li>
 </ul>
+<p>MarsDawn 只透過 https 載入網路內容。文件若引用 http 位址，一律不會載入，任何設定都無法開啟，MarsDawn 也不會自動改寫成 https，預覽中會以佔位圖示代替。</p>
 <p>載入網路內容時，你的 Mac 會直接向存放內容的伺服器發出請求。和所有網路請求一樣，這些伺服器會看到你的 IP 位址與請求的內容。MarsDawn 的開發者不會收到任何這類資訊。</p>
 <p>如果你允許某個 HTML 網頁載入網路內容，該網頁的版面配置可能讓那些伺服器得知：網頁本身引用的檔案是否存在於你授權給 MarsDawn 的資料夾中，以及大約的檔案大小。網頁無法讀取你的檔案，也無法傳出檔案內容；網路內容保持封鎖時，這種情況不會發生。</p>
 <p>在預覽中點選的連結會用你的預設瀏覽器打開，適用該瀏覽器的隱私做法。音訊與影片不會自動播放。</p>
