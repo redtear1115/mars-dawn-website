@@ -171,7 +171,7 @@ PAGES = {
   <h2>Common questions</h2>
 
   <h3>What do I need to run MarsDawn?</h3>
-  <p>A Mac with macOS 14 Sonoma or later, on Apple silicon or Intel.</p>
+  <p>A Mac with macOS 26 Tahoe or later, on Apple silicon or Intel.</p>
 
   <h3>How do I switch between the editor and the preview?</h3>
   <p>Press <kbd>⌘1</kbd> for the source only, <kbd>⌘2</kbd> for side by side, and <kbd>⌘3</kbd> for the preview only. The same choices are in the View menu and the toolbar.</p>
@@ -221,7 +221,7 @@ PAGES = {
   <h2>常見問題</h2>
 
   <h3>MarsDawn 需要什麼環境？</h3>
-  <p>macOS 14 Sonoma 或更新版本的 Mac，Apple 晶片或 Intel 皆可。</p>
+  <p>macOS 26 Tahoe 或更新版本的 Mac，Apple 晶片或 Intel 皆可。</p>
 
   <h3>怎麼切換編輯器與預覽？</h3>
   <p>按 <kbd>⌘1</kbd> 只看原始碼、<kbd>⌘2</kbd> 左右並排、<kbd>⌘3</kbd> 只看預覽。「顯示方式」選單和工具列也有相同選項。</p>
