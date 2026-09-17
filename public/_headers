@@ -16,3 +16,48 @@
 # Cloudflare allows one splat per rule, so the id and version are named placeholders.
 /themes/v1/:id/:version/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Agent/LLM discovery: llms.txt, its full-content twin and our own robots.txt.
+# Content type isn't inferred for these extensions, so it's set explicitly.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=300
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=300
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=300
+
+# Sitemap.
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=300
+
+# Markdown twins of every page. Cloudflare's _headers allows only one splat
+# per rule, so a suffix pattern like /*.md is not a reliable way to match
+# nested paths; these eight paths are listed explicitly instead.
+/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/support/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/privacy/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/cli/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/support/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/privacy/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/cli/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
