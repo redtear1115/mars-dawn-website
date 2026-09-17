@@ -1,0 +1,7 @@
+# Theme index: short cache so delisted or revoked themes disappear quickly.
+/themes/v1/index.json
+  Cache-Control: public, max-age=300
+
+# Theme files are versioned and never change once published.
+/themes/v1/*/*/*
+  Cache-Control: public, max-age=31536000, immutable

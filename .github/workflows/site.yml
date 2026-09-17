@@ -1,0 +1,65 @@
+name: Site
+
+# Pull requests (forks included) only run the check: no secrets, read-only token.
+# Never switch to pull_request_target, and never put PR titles, branch names or
+# commit messages straight into `run:`; pass them through `env:` if ever needed.
+on:
+  pull_request:
+    branches: [main, release]
+  push:
+    branches: [main, release]
+
+permissions: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Regenerated pages match the commit
+        run: |
+          python3 scripts/build_pages.py >/dev/null
+          if [ -n "$(git status --porcelain)" ]; then
+            git status --porcelain
+            echo "::error::Run python3 scripts/build_pages.py and commit the result."
+            exit 1
+          fi
+      # TODO: make this mandatory once the gallery ships; /themes/v1/index.json must never disappear.
+      - name: Theme index is valid JSON
+        run: |
+          if [ -f public/themes/v1/index.json ]; then
+            python3 -m json.tool public/themes/v1/index.json >/dev/null
+          fi
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/release'
+    needs: check
+    runs-on: ubuntu-24.04
+    environment: production
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Require the account ID
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Set the CLOUDFLARE_ACCOUNT_ID variable on the production environment."
+            exit 1
+          fi
+      - uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4.0.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.133.0"
+          command: deploy
