@@ -7,7 +7,7 @@ The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown edito
 | Path | What it is |
 |---|---|
 | `public/` | The site root, served as static files |
-| `public/_headers` | Cache rules (theme index short, versioned theme files long) |
+| `public/_headers` | Security headers for every page (strict CSP with no scripts, nosniff, no referrer) and cache rules (theme index short, versioned theme files long). Anything that adds a script, inline style, web font or third-party resource must update the CSP |
 | `scripts/build_pages.py` | Generates the privacy and support pages into `public/` |
 | `scripts/deploy.sh` | Manual deploy, for emergencies |
 | `wrangler.jsonc` | Cloudflare Workers static-assets config |

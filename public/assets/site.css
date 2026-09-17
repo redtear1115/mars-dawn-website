@@ -82,7 +82,8 @@ a:focus-visible {
   font-size: 0.9rem;
   color: var(--dust);
 }
-.lang a { color: var(--dust); }
+/* inline-block so the whole line height (at least 24px) is the tap target. */
+.lang a { color: var(--dust); display: inline-block; min-height: 24px; padding: 2px 0; }
 .lang [aria-current="true"] { color: var(--ink); font-weight: 600; }
 
 .intro { padding: 56px 0 8px; }
@@ -137,6 +138,15 @@ code {
   padding: 0.12em 0.36em;
   border-radius: 4px;
 }
+/* Keep short tokens (flags, addresses) whole: the box moves to the next line
+   as a unit and only wraps inside when it is wider than the line. */
+code,
+a[href^="mailto:"] {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+code { line-height: 1.45; }
 kbd {
   font: 0.85em var(--font);
   padding: 0.05em 0.4em;
@@ -157,7 +167,8 @@ kbd {
 .contact .email {
   display: inline-block;
   margin: 4px 0 10px;
-  font-size: 1.25rem;
+  /* Slightly smaller on the narrowest phones so the address fits on one line. */
+  font-size: clamp(1.05rem, 5.5vw, 1.25rem);
   font-weight: 600;
 }
 
@@ -171,11 +182,15 @@ kbd {
   font-size: 0.9rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 20px;
+  gap: 8px 16px;
 }
-.footer a { color: var(--dust); }
+.footer a { color: var(--dust); white-space: nowrap; }
+
+/* Cloudflare can inject a hidden trap link at the top of <body>, hidden with an
+   inline style that the CSP blocks. Hide it here so it is not a keyboard stop. */
+body > a[aria-hidden="true"][href*="/cdn-cgi/"] { display: none !important; }
 
 /* Home page links */
 .links { list-style: none; padding: 0; margin: 32px 0 0; }
 .links li + li { margin-top: 10px; }
-.links a { font-size: 1.1rem; font-weight: 600; }
+.links a { font-size: 1.1rem; font-weight: 600; display: inline-block; min-height: 24px; padding: 2px 0; }
