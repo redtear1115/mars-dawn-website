@@ -24,18 +24,20 @@ LOCALES = {
 }
 
 # OG locale tokens (underscore-separated, per the Open Graph protocol).
-OG_LOCALE = {"en": "en_US", "zh-hant": "zh_Hant_TW"}
+OG_LOCALE = {"en": "en_US", "zh-hant": "zh_TW"}
 
 UI = {
     "en": {
         "home": "MarsDawn", "privacy": "Privacy Policy", "support": "Support", "cli": "Command Line",
         "updated": f"Last updated {UPDATED}", "tagline": "A new dawn for Markdown.",
         "footer_store": "MarsDawn is available on the Mac App Store.",
+        "more": "More",
     },
     "zh-hant": {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
         "updated": f"最後更新：{UPDATED}", "tagline": "Markdown 的新黎明。",
         "footer_store": "MarsDawn 於 Mac App Store 販售。",
+        "more": "其他頁面",
     },
 }
 
@@ -662,6 +664,24 @@ def build_sitemap(pages: dict) -> str:
     )
 
 
+def build_twin(pages: dict, locale: str, slug: str) -> str:
+    """The page body as Markdown, plus links to the site's other pages.
+
+    The body alone would leave an agent on a twin with no way to the rest of the
+    site, because the HTML header and footer links aren't part of it.
+    """
+    body = html_to_markdown(pages[(locale, slug)]["body"])
+    others = [other for other in PAGE_ORDER if other != slug]
+    lines = [body.rstrip(), "", f"## {UI[locale]['more']}", ""]
+    for other in others:
+        page = pages[(locale, other)]
+        lines.append(f"- [{UI[locale][SLUG_TO_UI_KEY[other]]}]({abs_url(md_path(locale, other))}): {page['description']}")
+    other_locale = "zh-hant" if locale == "en" else "en"
+    lines.append(f"- [{LOCALES[other_locale]['label']}]({abs_url(md_path(other_locale, slug))}): "
+                 f"{pages[(other_locale, slug)]['description']}")
+    return "\n".join(lines).rstrip() + "\n"
+
+
 def build_llms_txt(pages: dict) -> str:
     home_en = pages[("en", "index")]
     lines = ["# MarsDawn", "", f"> {home_en['description']}", ""]
@@ -695,7 +715,7 @@ def main() -> None:
         folder.mkdir(parents=True, exist_ok=True)
         (folder / "index.html").write_text(render(locale, slug, page), encoding="utf-8")
         print(folder / "index.html")
-        (folder / "index.md").write_text(html_to_markdown(page["body"]), encoding="utf-8")
+        (folder / "index.md").write_text(build_twin(pages, locale, slug), encoding="utf-8")
         print(folder / "index.md")
 
     (SITE / "llms.txt").write_text(build_llms_txt(pages), encoding="utf-8")
