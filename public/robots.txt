@@ -1,0 +1,5 @@
+# robots.txt for marsdawn.southern-light.dev
+User-agent: *
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Sitemap: https://marsdawn.southern-light.dev/sitemap.xml

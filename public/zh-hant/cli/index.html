@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>命令列工具 · MarsDawn</title>
+<meta name="description" content="免費的 marsdawn 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/cli/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/cli/index.md">
+<meta property="og:title" content="命令列工具 · MarsDawn">
+<meta property="og:description" content="免費的 marsdawn 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/cli/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="zh_Hant_TW">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/cli/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>命令列工具</h1>
+  <p>免費的 <code>marsdawn</code> 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。</p>
+</section>
+
+<div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>目前尚未發佈到 Homebrew，需要用 Swift Package Manager 自行建置。兩個指令都需要先安裝 MarsDawn。</p></div>
+
+<h2>安裝</h2>
+<p>下載<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>，並用 Swift Package Manager 執行：</p>
+<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift run marsdawn open notes.md</code></pre>
+
+<h2>指令</h2>
+
+<h3>marsdawn open</h3>
+<p>在 MarsDawn 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝 MarsDawn。</p>
+<pre><code>marsdawn open notes.md</code></pre>
+<ul>
+  <li><code>--json</code>：印出 JSON 結果，而不是文字。</li>
+</ul>
+
+<h3>marsdawn export</h3>
+<p>把 Markdown 檔案輸出成分頁的 PDF，使用和 MarsDawn 輸出 PDF 相同的元件。同樣需要先安裝 MarsDawn。相對路徑的圖片，會以輸入檔案所在的資料夾為準。</p>
+<pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
+<ul>
+  <li><code>-o, --output &lt;path&gt;</code>：PDF 的輸出位置，預設是把輸入檔的副檔名換成 <code>.pdf</code>。</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：預覽主題的淺色版本，預設讀取 <code>$MARSDAWN_THEME</code>，否則用 <code>dawn</code>。</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>：紙張大小，預設 <code>a4</code>。</li>
+  <li><code>--allow-remote-images</code>：輸出時載入網路圖片，預設關閉。</li>
+  <li><code>--force</code>：如果輸出檔已存在就直接覆蓋。</li>
+  <li><code>--json</code>：印出 JSON 結果，而不是文字。</li>
+</ul>
+
+<h2>$MARSDAWN_THEME 環境變數</h2>
+<p>沒有傳入 <code>--theme</code> 時，<code>export</code> 會讀取 <code>$MARSDAWN_THEME</code> 環境變數，值必須是 <code>dawn</code>、<code>classic</code>、<code>modern</code> 或 <code>vivid</code> 其中之一，其他值都會改用 <code>dawn</code>。這個工具不會讀取 App 本身的主題設定，因為讀取其他 App 的容器可能觸發 macOS 隱私權提示。</p>
+
+<h2>覆蓋檔案的規則</h2>
+<p><code>export</code> 預設不會覆蓋已存在的輸出檔，除非加上 <code>--force</code>。</p>
+
+<h2>結束代碼</h2>
+<ul>
+  <li><code>0</code>：成功。</li>
+  <li><code>2</code>：找不到輸入檔。</li>
+  <li><code>3</code>：尚未安裝 MarsDawn。</li>
+  <li><code>4</code>：輸出檔已存在（可加上 <code>--force</code>）。</li>
+  <li><code>5</code>：輸出失敗。</li>
+  <li><code>64</code>：使用方式錯誤。</li>
+</ul>
+
+<h2>--json 輸出</h2>
+<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（檔案路徑）與 <code>app</code>（App 路徑）；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
+
+<h2>需要先安裝 MarsDawn</h2>
+<p><code>open</code> 和 <code>export</code> 都需要先從 Mac App Store 安裝 MarsDawn；<code>export</code> 雖然使用和 App 相同的元件，仍會先檢查 App 是否已安裝。</p>
+</main>
+<footer class="footer">
+  <span>Markdown 的新黎明。</span>
+  <a href="/zh-hant/support/">支援</a>
+  <a href="/zh-hant/privacy/">隱私權政策</a>
+  <a href="/zh-hant/cli/">命令列工具</a>
+  <span>MarsDawn 於 Mac App Store 販售。</span>
+</footer>
+</div>
+</body>
+</html>
