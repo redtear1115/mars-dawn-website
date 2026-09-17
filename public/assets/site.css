@@ -147,6 +147,22 @@ a[href^="mailto:"] {
   overflow-wrap: anywhere;
 }
 code { line-height: 1.45; }
+/* Multi-line command examples on the CLI page. */
+pre {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  background: var(--sand);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+pre code {
+  display: block;
+  max-width: none;
+  padding: 0;
+  background: none;
+  overflow-wrap: normal;
+  white-space: pre;
+}
 kbd {
   font: 0.85em var(--font);
   padding: 0.05em 0.4em;

@@ -7,25 +7,33 @@ The app lives in another repository, so check them by hand when either side chan
 Static output, no build step at deploy time. Edit the copy here and rerun:
     python3 scripts/build_pages.py
 """
+import json
+import re
+from html.parser import HTMLParser
 from pathlib import Path
+from xml.sax.saxutils import escape as xml_escape
 
 SITE = Path(__file__).resolve().parent.parent / "public"
 UPDATED = "2026-09-17"
 EMAIL = "support@southern-light.dev"
+BASE_URL = "https://marsdawn.southern-light.dev"
 
 LOCALES = {
     "en": {"prefix": "", "html_lang": "en", "label": "English", "root": "/"},
     "zh-hant": {"prefix": "zh-hant/", "html_lang": "zh-Hant", "label": "繁體中文", "root": "/zh-hant/"},
 }
 
+# OG locale tokens (underscore-separated, per the Open Graph protocol).
+OG_LOCALE = {"en": "en_US", "zh-hant": "zh_Hant_TW"}
+
 UI = {
     "en": {
-        "home": "MarsDawn", "privacy": "Privacy Policy", "support": "Support",
+        "home": "MarsDawn", "privacy": "Privacy Policy", "support": "Support", "cli": "Command Line",
         "updated": f"Last updated {UPDATED}", "tagline": "A new dawn for Markdown.",
         "footer_store": "MarsDawn is available on the Mac App Store.",
     },
     "zh-hant": {
-        "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援",
+        "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
         "updated": f"最後更新：{UPDATED}", "tagline": "Markdown 的新黎明。",
         "footer_store": "MarsDawn 於 Mac App Store 販售。",
     },
@@ -255,9 +263,293 @@ PAGES = {
 }
 
 
+# The CLI page, kept separate from PAGES per the edit boundary for this slice.
+# Facts are taken from redtear1115/mars-dawn-kit @ origin/main
+# (Sources/marsdawn/Commands.swift, Sources/marsdawn/main.swift, README.md).
+CLI_PAGES = {
+    ("en", "cli"): {
+        "title": "Command Line · MarsDawn",
+        "description": "The free marsdawn command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.",
+        "body": f"""
+<section class="intro">
+  <h1>Command Line</h1>
+  <p>The free <code>marsdawn</code> command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.</p>
+</section>
+
+<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Homebrew isn't published yet, so build it from source with Swift Package Manager. Both commands need the MarsDawn app installed.</p></div>
+
+<h2>Install</h2>
+<p>Clone <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> and run it with Swift Package Manager:</p>
+<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift run marsdawn open notes.md</code></pre>
+
+<h2>Commands</h2>
+
+<h3>marsdawn open</h3>
+<p>Opens one or more Markdown files in MarsDawn for review. Needs MarsDawn installed.</p>
+<pre><code>marsdawn open notes.md</code></pre>
+<ul>
+  <li><code>--json</code>: print a JSON result instead of text.</li>
+</ul>
+
+<h3>marsdawn export</h3>
+<p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. Also needs MarsDawn installed. Relative images resolve against the input file's folder.</p>
+<pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
+<ul>
+  <li><code>-o, --output &lt;path&gt;</code>: where to write the PDF. Defaults to the input path with a <code>.pdf</code> extension.</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: the preview theme's light palette. Defaults to <code>$MARSDAWN_THEME</code>, then <code>dawn</code>.</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>: paper size. Defaults to <code>a4</code>.</li>
+  <li><code>--allow-remote-images</code>: load images from the web while rendering. Off by default.</li>
+  <li><code>--force</code>: replace the output file if it already exists.</li>
+  <li><code>--json</code>: print a JSON result instead of text.</li>
+</ul>
+
+<h2>The $MARSDAWN_THEME variable</h2>
+<p>When <code>--theme</code> isn't passed, <code>export</code> reads the <code>$MARSDAWN_THEME</code> environment variable. Its value must be one of <code>dawn</code>, <code>classic</code>, <code>modern</code> or <code>vivid</code>; anything else falls back to <code>dawn</code>. The CLI doesn't read the app's own theme setting, because reading another app's container can trigger a macOS privacy prompt.</p>
+
+<h2>Overwriting files</h2>
+<p><code>export</code> refuses to replace an existing output file unless you pass <code>--force</code>.</p>
+
+<h2>Exit codes</h2>
+<ul>
+  <li><code>0</code>: success.</li>
+  <li><code>2</code>: input not found.</li>
+  <li><code>3</code>: MarsDawn is not installed.</li>
+  <li><code>4</code>: output exists (pass <code>--force</code>).</li>
+  <li><code>5</code>: export failed.</li>
+  <li><code>64</code>: usage error.</li>
+</ul>
+
+<h2>--json output</h2>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (the file paths) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
+
+<h2>MarsDawn must be installed</h2>
+<p>Both <code>open</code> and <code>export</code> need the MarsDawn app installed from the Mac App Store; <code>export</code> renders through the same code the app uses, but still checks that the app is present first.</p>
+""",
+    },
+    ("zh-hant", "cli"): {
+        "title": "命令列工具 · MarsDawn",
+        "description": "免費的 marsdawn 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。",
+        "body": f"""
+<section class="intro">
+  <h1>命令列工具</h1>
+  <p>免費的 <code>marsdawn</code> 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。</p>
+</section>
+
+<div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>目前尚未發佈到 Homebrew，需要用 Swift Package Manager 自行建置。兩個指令都需要先安裝 MarsDawn。</p></div>
+
+<h2>安裝</h2>
+<p>下載<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>，並用 Swift Package Manager 執行：</p>
+<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift run marsdawn open notes.md</code></pre>
+
+<h2>指令</h2>
+
+<h3>marsdawn open</h3>
+<p>在 MarsDawn 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝 MarsDawn。</p>
+<pre><code>marsdawn open notes.md</code></pre>
+<ul>
+  <li><code>--json</code>：印出 JSON 結果，而不是文字。</li>
+</ul>
+
+<h3>marsdawn export</h3>
+<p>把 Markdown 檔案輸出成分頁的 PDF，使用和 MarsDawn 輸出 PDF 相同的元件。同樣需要先安裝 MarsDawn。相對路徑的圖片，會以輸入檔案所在的資料夾為準。</p>
+<pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
+<ul>
+  <li><code>-o, --output &lt;path&gt;</code>：PDF 的輸出位置，預設是把輸入檔的副檔名換成 <code>.pdf</code>。</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：預覽主題的淺色版本，預設讀取 <code>$MARSDAWN_THEME</code>，否則用 <code>dawn</code>。</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>：紙張大小，預設 <code>a4</code>。</li>
+  <li><code>--allow-remote-images</code>：輸出時載入網路圖片，預設關閉。</li>
+  <li><code>--force</code>：如果輸出檔已存在就直接覆蓋。</li>
+  <li><code>--json</code>：印出 JSON 結果，而不是文字。</li>
+</ul>
+
+<h2>$MARSDAWN_THEME 環境變數</h2>
+<p>沒有傳入 <code>--theme</code> 時，<code>export</code> 會讀取 <code>$MARSDAWN_THEME</code> 環境變數，值必須是 <code>dawn</code>、<code>classic</code>、<code>modern</code> 或 <code>vivid</code> 其中之一，其他值都會改用 <code>dawn</code>。這個工具不會讀取 App 本身的主題設定，因為讀取其他 App 的容器可能觸發 macOS 隱私權提示。</p>
+
+<h2>覆蓋檔案的規則</h2>
+<p><code>export</code> 預設不會覆蓋已存在的輸出檔，除非加上 <code>--force</code>。</p>
+
+<h2>結束代碼</h2>
+<ul>
+  <li><code>0</code>：成功。</li>
+  <li><code>2</code>：找不到輸入檔。</li>
+  <li><code>3</code>：尚未安裝 MarsDawn。</li>
+  <li><code>4</code>：輸出檔已存在（可加上 <code>--force</code>）。</li>
+  <li><code>5</code>：輸出失敗。</li>
+  <li><code>64</code>：使用方式錯誤。</li>
+</ul>
+
+<h2>--json 輸出</h2>
+<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（檔案路徑）與 <code>app</code>（App 路徑）；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
+
+<h2>需要先安裝 MarsDawn</h2>
+<p><code>open</code> 和 <code>export</code> 都需要先從 Mac App Store 安裝 MarsDawn；<code>export</code> 雖然使用和 App 相同的元件，仍會先檢查 App 是否已安裝。</p>
+""",
+    },
+}
+
+PAGE_ORDER = ["index", "support", "privacy", "cli"]
+SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli"}
+
+
+def all_pages() -> dict:
+    merged = dict(PAGES)
+    merged.update(CLI_PAGES)
+    return merged
+
+
 def page_path(locale: str, slug: str) -> str:
     base = LOCALES[locale]["root"]
     return base if slug == "index" else f"{base}{slug}/"
+
+
+def md_path(locale: str, slug: str) -> str:
+    return page_path(locale, slug) + "index.md"
+
+
+def abs_url(path: str) -> str:
+    return BASE_URL + path
+
+
+# --- A small, strict HTML-to-Markdown converter -----------------------------
+# Handles exactly the tags used in page bodies (PAGES and CLI_PAGES) and
+# raises MarkdownConversionError on anything else, rather than dropping it.
+
+class MarkdownConversionError(Exception):
+    """Raised when the converter meets an HTML tag it doesn't know how to render."""
+
+
+_TRANSPARENT_TAGS = {"section", "div"}
+
+
+class _Node:
+    __slots__ = ("tag", "attrs", "children")
+
+    def __init__(self, tag: str, attrs=None):
+        self.tag = tag
+        self.attrs = dict(attrs or [])
+        self.children = []  # list[_Node | str]
+
+
+class _TreeBuilder(HTMLParser):
+    """Builds a tiny tree so tags nest correctly, tolerant of the whitespace
+    formatting used in the page body literals."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.root = _Node("#root")
+        self.stack = [self.root]
+
+    def handle_starttag(self, tag, attrs):
+        node = _Node(tag, attrs)
+        self.stack[-1].children.append(node)
+        self.stack.append(node)
+
+    def handle_startendtag(self, tag, attrs):
+        self.stack[-1].children.append(_Node(tag, attrs))
+
+    def handle_endtag(self, tag):
+        for i in range(len(self.stack) - 1, 0, -1):
+            if self.stack[i].tag == tag:
+                del self.stack[i:]
+                return
+        raise MarkdownConversionError(f"unmatched closing tag </{tag}>")
+
+    def handle_data(self, data):
+        self.stack[-1].children.append(data)
+
+
+def _collapse(text: str) -> str:
+    return re.sub(r"\s+", " ", text)
+
+
+def _render_inline(children) -> str:
+    parts = []
+    for child in children:
+        if isinstance(child, str):
+            parts.append(_collapse(child))
+            continue
+        tag = child.tag
+        if tag == "strong":
+            parts.append("**" + _render_inline(child.children).strip() + "**")
+        elif tag == "em":
+            parts.append("*" + _render_inline(child.children).strip() + "*")
+        elif tag in ("code", "kbd"):
+            parts.append("`" + _render_inline(child.children).strip() + "`")
+        elif tag == "a":
+            href = child.attrs.get("href", "")
+            label = _render_inline(child.children).strip()
+            parts.append(f"[{label}]({href})")
+        else:
+            raise MarkdownConversionError(f"unsupported inline tag <{tag}>")
+    return "".join(parts)
+
+
+def _pre_text(node: _Node) -> str:
+    parts = []
+
+    def walk(n: _Node):
+        for child in n.children:
+            if isinstance(child, str):
+                parts.append(child)
+            elif child.tag == "code":
+                walk(child)
+            else:
+                raise MarkdownConversionError(f"unsupported tag <{child.tag}> inside <pre>")
+
+    walk(node)
+    return "".join(parts).strip("\n")
+
+
+def _render_block(node: _Node) -> str:
+    tag = node.tag
+    if tag in _TRANSPARENT_TAGS:
+        return _render_children(node.children)
+    if tag in ("h1", "h2", "h3"):
+        return "#" * int(tag[1]) + " " + _render_inline(node.children).strip() + "\n\n"
+    if tag == "p":
+        text = _render_inline(node.children).strip()
+        return (text + "\n\n") if text else ""
+    if tag == "ul":
+        items = []
+        for child in node.children:
+            if isinstance(child, str):
+                if child.strip():
+                    raise MarkdownConversionError("unexpected text directly inside <ul>")
+                continue
+            if child.tag != "li":
+                raise MarkdownConversionError(f"unsupported child <{child.tag}> of <ul>")
+            items.append("- " + _render_inline(child.children).strip())
+        return "\n".join(items) + "\n\n"
+    if tag == "pre":
+        return "```\n" + _pre_text(node) + "\n```\n\n"
+    if tag in ("strong", "em", "code", "kbd", "a"):
+        # An inline element used directly as a block child (e.g. the support
+        # page's standalone <a class="email">). Render it as its own paragraph.
+        text = _render_inline([node]).strip()
+        return (text + "\n\n") if text else ""
+    raise MarkdownConversionError(f"unsupported tag <{tag}>")
+
+
+def _render_children(children) -> str:
+    out = []
+    for child in children:
+        if isinstance(child, str):
+            if child.strip():
+                raise MarkdownConversionError("unexpected text outside a block element")
+            continue
+        out.append(_render_block(child))
+    return "".join(out)
+
+
+def html_to_markdown(fragment: str) -> str:
+    builder = _TreeBuilder()
+    builder.feed(fragment)
+    builder.close()
+    return _render_children(builder.root.children).strip() + "\n"
 
 
 def render(locale: str, slug: str, page: dict) -> str:
@@ -270,9 +562,33 @@ def render(locale: str, slug: str, page: dict) -> str:
         for other in LOCALES
     )
     alternates = "\n".join(
-        f'<link rel="alternate" hreflang="{LOCALES[other]["html_lang"]}" href="{page_path(other, slug)}">'
+        f'<link rel="alternate" hreflang="{LOCALES[other]["html_lang"]}" href="{abs_url(page_path(other, slug))}">'
         for other in LOCALES
     )
+    alternates += f'\n<link rel="alternate" hreflang="x-default" href="{abs_url(page_path("en", slug))}">'
+    canonical_url = abs_url(page_path(locale, slug))
+    seo = f"""<link rel="canonical" href="{canonical_url}">
+<link rel="alternate" type="text/markdown" href="{md_path(locale, slug)}">
+<meta property="og:title" content="{page["title"]}">
+<meta property="og:description" content="{page["description"]}">
+<meta property="og:url" content="{canonical_url}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{abs_url("/assets/icon-192.png")}">
+<meta property="og:locale" content="{OG_LOCALE[locale]}">
+<meta name="twitter:card" content="summary">"""
+    jsonld = ""
+    if slug == "index":
+        data = {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "MarsDawn",
+            "description": page["description"],
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "macOS 26 or later",
+            "offers": {"@type": "Offer", "price": "4.99", "priceCurrency": "USD"},
+            "url": canonical_url,
+        }
+        jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -284,7 +600,8 @@ def render(locale: str, slug: str, page: dict) -> str:
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
 {alternates}
-</head>
+{seo}
+{jsonld}</head>
 <body>
 <div class="page">
 <header class="masthead">
@@ -301,6 +618,7 @@ def render(locale: str, slug: str, page: dict) -> str:
   <span>{ui["tagline"]}</span>
   <a href="{page_path(locale, "support")}">{ui["support"]}</a>
   <a href="{page_path(locale, "privacy")}">{ui["privacy"]}</a>
+  <a href="{page_path(locale, "cli")}">{ui["cli"]}</a>
   <span>{ui["footer_store"]}</span>
 </footer>
 </div>
@@ -309,12 +627,85 @@ def render(locale: str, slug: str, page: dict) -> str:
 """
 
 
+# robots.txt: exactly these directives (Cloudflare prepends its own managed block).
+ROBOTS_TXT = f"""# robots.txt for marsdawn.southern-light.dev
+User-agent: *
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Sitemap: {BASE_URL}/sitemap.xml
+"""
+
+
+def build_sitemap(pages: dict) -> str:
+    entries = []
+    for slug in PAGE_ORDER:
+        for locale in LOCALES:
+            if (locale, slug) not in pages:
+                continue
+            loc = xml_escape(abs_url(page_path(locale, slug)))
+            alt_links = "\n".join(
+                f'    <xhtml:link rel="alternate" hreflang="{LOCALES[other]["html_lang"]}" href="{xml_escape(abs_url(page_path(other, slug)))}"/>'
+                for other in LOCALES
+            )
+            alt_links += (
+                f'\n    <xhtml:link rel="alternate" hreflang="x-default"'
+                f' href="{xml_escape(abs_url(page_path("en", slug)))}"/>'
+            )
+            entries.append(f"  <url>\n    <loc>{loc}</loc>\n{alt_links}\n  </url>")
+    body = "\n".join(entries)
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+        'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+        f"{body}\n"
+        "</urlset>\n"
+    )
+
+
+def build_llms_txt(pages: dict) -> str:
+    home_en = pages[("en", "index")]
+    lines = ["# MarsDawn", "", f"> {home_en['description']}", ""]
+    for locale, heading in (("en", "Docs"), ("zh-hant", "繁體中文")):
+        lines.append(f"## {heading}")
+        for slug in PAGE_ORDER:
+            page = pages[(locale, slug)]
+            label = UI[locale][SLUG_TO_UI_KEY[slug]]
+            url = abs_url(md_path(locale, slug))
+            lines.append(f"- [{label}]({url}): {page['description']}")
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def build_llms_full(pages: dict) -> str:
+    sections = []
+    for locale, heading in (("en", "English"), ("zh-hant", "繁體中文")):
+        for slug in PAGE_ORDER:
+            page = pages[(locale, slug)]
+            label = UI[locale][SLUG_TO_UI_KEY[slug]]
+            url = abs_url(page_path(locale, slug))
+            body_md = html_to_markdown(page["body"])
+            sections.append(f"## {label}\n\nSource: {url}\n\n{body_md}")
+    return "# MarsDawn — full content\n\n" + "\n---\n\n".join(sections)
+
+
 def main() -> None:
-    for (locale, slug), page in PAGES.items():
+    pages = all_pages()
+    for (locale, slug), page in pages.items():
         folder = SITE / LOCALES[locale]["prefix"] / ("" if slug == "index" else slug)
         folder.mkdir(parents=True, exist_ok=True)
         (folder / "index.html").write_text(render(locale, slug, page), encoding="utf-8")
         print(folder / "index.html")
+        (folder / "index.md").write_text(html_to_markdown(page["body"]), encoding="utf-8")
+        print(folder / "index.md")
+
+    (SITE / "llms.txt").write_text(build_llms_txt(pages), encoding="utf-8")
+    print(SITE / "llms.txt")
+    (SITE / "llms-full.txt").write_text(build_llms_full(pages), encoding="utf-8")
+    print(SITE / "llms-full.txt")
+    (SITE / "robots.txt").write_text(ROBOTS_TXT, encoding="utf-8")
+    print(SITE / "robots.txt")
+    (SITE / "sitemap.xml").write_text(build_sitemap(pages), encoding="utf-8")
+    print(SITE / "sitemap.xml")
 
 
 if __name__ == "__main__":
