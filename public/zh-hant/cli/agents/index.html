@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>給 AI agent 的 marsdawn 參考 · MarsDawn</title>
+<meta name="description" content="給呼叫 marsdawn 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/cli/agents/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/cli/agents/index.md">
+<meta property="og:title" content="給 AI agent 的 marsdawn 參考 · MarsDawn">
+<meta property="og:description" content="給呼叫 marsdawn 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/cli/agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/cli/agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/agents/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>給 AI agent 的 marsdawn 參考</h1>
+  <p>給呼叫 <code>marsdawn</code> 命令列工具的 AI agent 與腳本參考。本頁每個範例都用目前原始碼建置的工具實際執行過。</p>
+</section>
+
+<div class="summary"><p><strong>要把 Markdown 檔轉成 PDF，執行 <code>marsdawn export notes.md --json</code>，再從 stdout 讀取一個 JSON 物件。</strong>Mermaid 圖表與程式碼上色的呈現方式和 MarsDawn app 相同。需要先安裝 MarsDawn。</p></div>
+
+<h2>能做什麼</h2>
+<ul>
+  <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
+  <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱。</li>
+</ul>
+
+<h2>不做什麼</h2>
+<ul>
+  <li>不從 stdin 讀取 Markdown，請傳入檔案路徑。</li>
+  <li>不把 PDF 寫到 stdout。PDF 一律寫成檔案，stdout 只輸出結果。</li>
+  <li>檔案已存在時不會覆寫，除非加上 <code>--force</code>。</li>
+  <li>不載入網路圖片，除非加上 <code>--allow-remote-images</code>，而且只走 https。</li>
+  <li>沒有安裝 MarsDawn 就無法使用，兩個指令都會以代碼 3 結束。</li>
+  <li>沒有 <code>--version</code> 選項，傳入會被視為用法錯誤。</li>
+  <li>只能在 macOS 上執行。</li>
+</ul>
+
+<h2>export</h2>
+<pre><code>marsdawn export notes.md --json</code></pre>
+<p>在 <code>notes.md</code> 旁寫出 <code>notes.pdf</code>。選項：</p>
+<ul>
+  <li><code>-o, --output &lt;path&gt;</code>：PDF 的寫入位置。預設為輸入檔路徑，副檔名換成 <code>.pdf</code>。</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：使用主題的淺色色盤。預設為 <code>$MARSDAWN_THEME</code>，其次是 <code>dawn</code>。</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>：紙張大小。預設為 <code>a4</code>。</li>
+  <li><code>--allow-remote-images</code>：算繪時載入網路上的 https 圖片。</li>
+  <li><code>--force</code>：輸出檔已存在時覆寫。</li>
+  <li><code>--json</code>：在 stdout 輸出一個 JSON 物件，而不是文字。</li>
+</ul>
+<pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
+<p>成功，離開代碼 0：</p>
+<pre><code>{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}</code></pre>
+<ul>
+  <li><code>output</code>：寫出的 PDF 的絕對路徑。</li>
+  <li><code>pages</code>：頁數。</li>
+  <li><code>theme</code> 與 <code>paper</code>：實際使用的值。</li>
+  <li><code>diagramErrors</code>：每個算繪失敗的 Mermaid 圖表各一則訊息。PDF 仍會寫出。</li>
+</ul>
+
+<h2>open</h2>
+<pre><code>marsdawn open notes.md --json</code></pre>
+<p>成功，離開代碼 0：</p>
+<pre><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":["/path/to/notes.md"]}</code></pre>
+<ul>
+  <li><code>opened</code>：已開啟檔案的絕對路徑。</li>
+  <li><code>app</code>：開啟它們的 MarsDawn app 路徑。</li>
+</ul>
+
+<h2>失敗</h2>
+<p>加上 <code>--json</code> 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：</p>
+<pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
+<ul>
+  <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字。</li>
+  <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。</li>
+  <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
+  <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
+  <li><code>64</code>：用法錯誤，例如未知的選項或無效的值。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
+</ul>
+
+<h2>JSON Schema</h2>
+<p>每種 <code>--json</code> 結果的 JSON Schema（draft 2020-12）：</p>
+<ul>
+  <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功</li>
+  <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open 成功</li>
+  <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: 兩個指令的失敗結果</li>
+</ul>
+
+<h2>環境變數</h2>
+<ul>
+  <li><code>MARSDAWN_THEME</code>：沒有傳入 <code>--theme</code> 時，<code>export</code> 使用的主題。未知的值會直接改用 <code>dawn</code>，不會報錯。</li>
+</ul>
+
+<h2>系統需求</h2>
+<ul>
+  <li>這個工具需要 macOS 15 以上。建置需要 Swift 6.2 以上，也就是 Xcode 26 以上。</li>
+  <li>MarsDawn app 需要 macOS 26 以上。</li>
+</ul>
+
+<h2>安裝</h2>
+<p>從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>建置。第一次建置會下載相依套件並編譯，需要幾分鐘。</p>
+<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift build -c release --product marsdawn
+.build/release/marsdawn export notes.md --json</code></pre>
+</main>
+<footer class="footer">
+  <span>Markdown 的新黎明。</span>
+  <a href="/zh-hant/support/">支援</a>
+  <a href="/zh-hant/privacy/">隱私權政策</a>
+  <a href="/zh-hant/cli/">命令列工具</a>
+  <span>MarsDawn 於 Mac App Store 販售。</span>
+</footer>
+</div>
+</body>
+</html>

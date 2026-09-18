@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>marsdawn for agents · MarsDawn</title>
+<meta name="description" content="A reference for AI agents and scripts that call marsdawn: commands, JSON output, schemas, exit codes and requirements.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/cli/agents/">
+<link rel="alternate" type="text/markdown" href="/cli/agents/index.md">
+<meta property="og:title" content="marsdawn for agents · MarsDawn">
+<meta property="og:description" content="A reference for AI agents and scripts that call marsdawn: commands, JSON output, schemas, exit codes and requirements.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/cli/agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/cli/agents/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/cli/agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>marsdawn for agents</h1>
+  <p>A reference for AI agents and scripts that call the <code>marsdawn</code> command-line tool. Every example on this page was run against the tool built from the current source.</p>
+</section>
+
+<div class="summary"><p><strong>To turn a Markdown file into a PDF, run <code>marsdawn export notes.md --json</code> and read one JSON object from stdout.</strong> Mermaid diagrams and highlighted code are rendered the same way as in the MarsDawn app. The MarsDawn app must be installed.</p></div>
+
+<h2>What it does</h2>
+<ul>
+  <li><code>export</code> renders one Markdown file to a paginated PDF with the same exporter as the MarsDawn app. No window opens.</li>
+  <li><code>open</code> opens one or more Markdown files in the MarsDawn app, so a person can review them.</li>
+</ul>
+
+<h2>What it does not do</h2>
+<ul>
+  <li>It doesn't read Markdown from stdin. Pass a file path.</li>
+  <li>It doesn't write the PDF to stdout. The PDF always goes to a file; stdout carries only the result.</li>
+  <li>It doesn't replace an existing file unless you pass <code>--force</code>.</li>
+  <li>It doesn't load images from the web unless you pass <code>--allow-remote-images</code>, and then only over https.</li>
+  <li>It doesn't work without the MarsDawn app installed. Both commands exit with code 3.</li>
+  <li>It has no <code>--version</code> option; passing one is a usage error.</li>
+  <li>It runs on macOS only.</li>
+</ul>
+
+<h2>export</h2>
+<pre><code>marsdawn export notes.md --json</code></pre>
+<p>Writes <code>notes.pdf</code> next to <code>notes.md</code>. Options:</p>
+<ul>
+  <li><code>-o, --output &lt;path&gt;</code>: where to write the PDF. Defaults to the input path with a <code>.pdf</code> extension.</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: the theme's light palette. Defaults to <code>$MARSDAWN_THEME</code>, then <code>dawn</code>.</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>: paper size. Defaults to <code>a4</code>.</li>
+  <li><code>--allow-remote-images</code>: load https images from the web while rendering.</li>
+  <li><code>--force</code>: replace the output file if it exists.</li>
+  <li><code>--json</code>: print one JSON object on stdout instead of text.</li>
+</ul>
+<pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
+<p>Success, exit code 0:</p>
+<pre><code>{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}</code></pre>
+<ul>
+  <li><code>output</code>: absolute path of the PDF that was written.</li>
+  <li><code>pages</code>: number of pages.</li>
+  <li><code>theme</code> and <code>paper</code>: the values used.</li>
+  <li><code>diagramErrors</code>: one message per Mermaid diagram that failed to render. The PDF is still written.</li>
+</ul>
+
+<h2>open</h2>
+<pre><code>marsdawn open notes.md --json</code></pre>
+<p>Success, exit code 0:</p>
+<pre><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":["/path/to/notes.md"]}</code></pre>
+<ul>
+  <li><code>opened</code>: absolute paths of the files that were opened.</li>
+  <li><code>app</code>: path of the MarsDawn app that opened them.</li>
+</ul>
+
+<h2>Failures</h2>
+<p>With <code>--json</code>, a failure prints one JSON object on stdout and exits with its code:</p>
+<pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
+<ul>
+  <li><code>2</code>, <code>input_not_found</code>: the input doesn't exist, is a folder, or isn't UTF-8 text.</li>
+  <li><code>3</code>, <code>app_not_installed</code>: MarsDawn isn't installed.</li>
+  <li><code>4</code>, <code>output_exists</code>: the output file exists. Pass <code>--force</code>.</li>
+  <li><code>5</code>, <code>export_failed</code>: the export itself failed.</li>
+  <li><code>64</code>: usage error, such as an unknown option or an invalid value. This one is printed as text on stderr, even with <code>--json</code>.</li>
+</ul>
+
+<h2>JSON Schemas</h2>
+<p>JSON Schema (draft 2020-12) for every <code>--json</code> result:</p>
+<ul>
+  <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export success</li>
+  <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open success</li>
+  <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: failure, both commands</li>
+</ul>
+
+<h2>Environment variables</h2>
+<ul>
+  <li><code>MARSDAWN_THEME</code>: the theme <code>export</code> uses when <code>--theme</code> isn't passed. An unknown value falls back to <code>dawn</code> without an error.</li>
+</ul>
+
+<h2>Requirements</h2>
+<ul>
+  <li>The tool runs on macOS 15 or later. Building it needs Swift 6.2 or later, which comes with Xcode 26 or later.</li>
+  <li>The MarsDawn app needs macOS 26 or later.</li>
+</ul>
+
+<h2>Install</h2>
+<p>Build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a>. The first build fetches dependencies and compiles, which takes a few minutes.</p>
+<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift build -c release --product marsdawn
+.build/release/marsdawn export notes.md --json</code></pre>
+</main>
+<footer class="footer">
+  <span>A new dawn for Markdown.</span>
+  <a href="/support/">Support</a>
+  <a href="/privacy/">Privacy Policy</a>
+  <a href="/cli/">Command Line</a>
+  <span>MarsDawn is available on the Mac App Store.</span>
+</footer>
+</div>
+</body>
+</html>
