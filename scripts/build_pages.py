@@ -280,27 +280,38 @@ CLI_PAGES = {
   <p>The free <code>marsdawn</code> command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Homebrew isn't published yet, so build it from source with Swift Package Manager. Both commands need the MarsDawn app installed.</p></div>
+<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew, which builds it from source on your Mac. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
 
 <p>Calling marsdawn from an AI agent or a script? See <a href="/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code.</p>
 
 <h2>Install</h2>
-<p>Clone <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> and run it with Swift Package Manager:</p>
+<p>With <a href="https://brew.sh">Homebrew</a>:</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
+<p>Homebrew compiles marsdawn from source, which takes a few minutes. The tool runs on macOS 15 or later, and building it needs Xcode 26 or later (Swift 6.2).</p>
+<p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> with Swift Package Manager:</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
-swift run marsdawn open notes.md</code></pre>
+swift build -c release --product marsdawn</code></pre>
+<p>Check which version you have with <code>marsdawn --version</code>.</p>
 
 <h2>Commands</h2>
 
 <h3>marsdawn open</h3>
 <p>Opens one or more Markdown files in MarsDawn for review. Needs MarsDawn installed.</p>
-<pre><code>marsdawn open notes.md</code></pre>
+<pre><code>marsdawn open notes.md
+marsdawn open notes.md:120
+marsdawn open notes.md --line 120</code></pre>
 <ul>
+  <li><code>path:line</code>: asks MarsDawn to land on that line. A column after it, as in <code>notes.md:120:8</code>, is ignored. If a file with the whole name exists, the argument is that file.</li>
+  <li><code>--line &lt;n&gt;</code>: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.</li>
+  <li>Lines run from 1 to 999999999.</li>
+  <li>MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
 </ul>
+<p>Lines were added in marsdawn 0.3.0.</p>
 
 <h3>marsdawn export</h3>
-<p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. Also needs MarsDawn installed. Relative images resolve against the input file's folder.</p>
+<p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.</p>
 <pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
 <ul>
   <li><code>-o, --output &lt;path&gt;</code>: where to write the PDF. Defaults to the input path with a <code>.pdf</code> extension.</li>
@@ -321,17 +332,14 @@ swift run marsdawn open notes.md</code></pre>
 <ul>
   <li><code>0</code>: success.</li>
   <li><code>2</code>: input not found.</li>
-  <li><code>3</code>: MarsDawn is not installed.</li>
+  <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
   <li><code>4</code>: output exists (pass <code>--force</code>).</li>
   <li><code>5</code>: export failed.</li>
-  <li><code>64</code>: usage error.</li>
+  <li><code>64</code>: usage error, including a line out of range or <code>--line</code> with more than one file.</li>
 </ul>
 
 <h2>--json output</h2>
-<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (the file paths) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
-
-<h2>MarsDawn must be installed</h2>
-<p>Both <code>open</code> and <code>export</code> need the MarsDawn app installed from the Mac App Store; <code>export</code> renders through the same code the app uses, but still checks that the app is present first.</p>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 """,
     },
     ("zh-hant", "cli"): {
@@ -343,27 +351,38 @@ swift run marsdawn open notes.md</code></pre>
   <p>免費的 <code>marsdawn</code> 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>目前尚未發佈到 Homebrew，需要用 Swift Package Manager 自行建置。兩個指令都需要先安裝 MarsDawn。</p></div>
+<div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，它會在你的 Mac 上從原始碼建置。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。</p></div>
 
 <p>要從 AI agent 或腳本呼叫 marsdawn？請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>，裡面有 JSON 輸出、Schema 和所有離開代碼。</p>
 
 <h2>安裝</h2>
-<p>下載<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>，並用 Swift Package Manager 執行：</p>
+<p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
+<p>Homebrew 會從原始碼編譯 marsdawn，需要幾分鐘。這個工具需要 macOS 15 以上，建置需要 Xcode 26 以上（Swift 6.2）。</p>
+<p>也可以從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>用 Swift Package Manager 建置：</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
-swift run marsdawn open notes.md</code></pre>
+swift build -c release --product marsdawn</code></pre>
+<p>用 <code>marsdawn --version</code> 查看安裝的版本。</p>
 
 <h2>指令</h2>
 
 <h3>marsdawn open</h3>
 <p>在 MarsDawn 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝 MarsDawn。</p>
-<pre><code>marsdawn open notes.md</code></pre>
+<pre><code>marsdawn open notes.md
+marsdawn open notes.md:120
+marsdawn open notes.md --line 120</code></pre>
 <ul>
+  <li><code>path:line</code>：請 MarsDawn 定位到那一行。後面再接欄位，例如 <code>notes.md:120:8</code>，會被忽略。如果有檔案的完整名稱就是這個參數，則視為那個檔案。</li>
+  <li><code>--line &lt;n&gt;</code>：同樣的功能，只用於單一檔案，也可以用在檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。</li>
+  <li>行號範圍是 1 到 999999999。</li>
+  <li>MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。</li>
   <li><code>--json</code>：印出 JSON 結果，而不是文字。</li>
 </ul>
+<p>行號功能從 marsdawn 0.3.0 開始提供。</p>
 
 <h3>marsdawn export</h3>
-<p>把 Markdown 檔案輸出成分頁的 PDF，使用和 MarsDawn 輸出 PDF 相同的元件。同樣需要先安裝 MarsDawn。相對路徑的圖片，會以輸入檔案所在的資料夾為準。</p>
+<p>把 Markdown 檔案輸出成分頁的 PDF，使用和 MarsDawn 輸出 PDF 相同的元件。不需要安裝 MarsDawn app。相對路徑的圖片，會以輸入檔案所在的資料夾為準。</p>
 <pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
 <ul>
   <li><code>-o, --output &lt;path&gt;</code>：PDF 的輸出位置，預設是把輸入檔的副檔名換成 <code>.pdf</code>。</li>
@@ -384,34 +403,33 @@ swift run marsdawn open notes.md</code></pre>
 <ul>
   <li><code>0</code>：成功。</li>
   <li><code>2</code>：找不到輸入檔。</li>
-  <li><code>3</code>：尚未安裝 MarsDawn。</li>
+  <li><code>3</code>：尚未安裝 MarsDawn（只有 <code>open</code> 會用到）。</li>
   <li><code>4</code>：輸出檔已存在（可加上 <code>--force</code>）。</li>
   <li><code>5</code>：輸出失敗。</li>
-  <li><code>64</code>：使用方式錯誤。</li>
+  <li><code>64</code>：使用方式錯誤，包括行號超出範圍，或 <code>--line</code> 搭配了多個檔案。</li>
 </ul>
 
 <h2>--json 輸出</h2>
-<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（檔案路徑）與 <code>app</code>（App 路徑）；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
-
-<h2>需要先安裝 MarsDawn</h2>
-<p><code>open</code> 和 <code>export</code> 都需要先從 Mac App Store 安裝 MarsDawn；<code>export</code> 雖然使用和 App 相同的元件，仍會先檢查 App 是否已安裝。</p>
+<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）與 <code>app</code>（App 路徑）；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
 """,
     },
 }
 
 
-# The agent reference, W2. Every fact and every example is taken from
-# redtear1115/mars-dawn-kit @ origin/main cb5150c (Sources/marsdawn/Commands.swift,
-# Sources/marsdawn/main.swift, Package.swift), and every example was run against a
-# release build of that commit before publishing.
-# TODO(kit PR #12, s7-cli-reveal): when it merges and 0.3.0 is tagged, `open --json`
-# reports `opened` as {path, line} objects and `open` gains a line argument. Update
-# this page, OPEN_SCHEMA (as open.v2.json, keeping v1) and llms.txt then, not before.
-# TODO(Homebrew tap): once the tap PR merges, the install section becomes
-#   brew tap redtear1115/tap && brew install marsdawn
-# still stating that it compiles from source and takes a few minutes.
+# The agent reference. Every fact and every example is taken from
+# redtear1115/mars-dawn-kit @ tag 0.3.0 (Sources/marsdawn/Commands.swift,
+# Sources/marsdawn/main.swift, Sources/MarsDawnKit/RevealRequest.swift, Package.swift),
+# and every example was run against a release build of that tag before publishing.
+# The install command is the redtear1115/homebrew-tap formula, which builds from source.
+# Published schemas are never removed or edited: open.v1.json stays, byte for byte, for marsdawn 0.2.x, whose
+# `opened` was a list of paths; 0.3.0 reports {path, line} objects (open.v2.json).
 SCHEMA_BASE = "/schemas/cli/"
-SCHEMA_FILES = {"export": "export.v1.json", "open": "open.v1.json", "error": "error.v1.json"}
+SCHEMA_FILES = {
+    "export": "export.v1.json",
+    "open": "open.v2.json",
+    "error": "error.v1.json",
+    "open_v1": "open.v1.json",
+}
 
 THEME_IDS = ["dawn", "classic", "modern", "vivid"]
 PAPER_SIZES = ["a4", "letter"]
@@ -448,6 +466,38 @@ SCHEMAS = {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": schema_url("open"),
         "title": "marsdawn open --json: success",
+        "description": "Printed on stdout as one line when `marsdawn open --json` succeeds (exit code 0). marsdawn 0.3.0 and later.",
+        "type": "object",
+        "required": ["ok", "opened", "app"],
+        "additionalProperties": False,
+        "properties": {
+            "ok": {"const": True},
+            "opened": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                    "type": "object",
+                    "required": ["path"],
+                    "additionalProperties": False,
+                    "properties": {
+                        "path": {"type": "string", "description": "Absolute path of the file that was opened."},
+                        "line": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 999999999,
+                            "description": "The line MarsDawn was asked to land on. Present only when one was asked for.",
+                        },
+                    },
+                },
+                "description": "The files that were opened, in the order given.",
+            },
+            "app": {"type": "string", "description": "Path of the MarsDawn app that opened them."},
+        },
+    },
+    "open_v1": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": schema_url("open_v1"),
+        "title": "marsdawn open --json: success",
         "description": "Printed on stdout as one line when `marsdawn open --json` succeeds (exit code 0).",
         "type": "object",
         "required": ["ok", "opened", "app"],
@@ -480,14 +530,26 @@ SCHEMAS = {
 }
 
 
+SCHEMA_NOTES = {
+    "en": {
+        "export": "export success",
+        "open": "open success, marsdawn 0.3.0 and later",
+        "error": "failure, both commands",
+        "open_v1": "open success, marsdawn 0.2.x, where <code>opened</code> was a list of paths",
+    },
+    "zh-hant": {
+        "export": "export 成功",
+        "open": "open 成功，marsdawn 0.3.0 以後",
+        "error": "兩個指令的失敗結果",
+        "open_v1": "open 成功，marsdawn 0.2.x，當時 <code>opened</code> 是路徑清單",
+    },
+}
+
+
 def schema_links(locale: str) -> str:
-    notes = {
-        "en": {"export": "export success", "open": "open success", "error": "failure, both commands"},
-        "zh-hant": {"export": "export 成功", "open": "open 成功", "error": "兩個指令的失敗結果"},
-    }[locale]
     return "\n".join(
-        f'  <li><a href="{SCHEMA_BASE}{SCHEMA_FILES[kind]}">{SCHEMA_FILES[kind]}</a>: {notes[kind]}</li>'
-        for kind in ("export", "open", "error")
+        f'  <li><a href="{SCHEMA_BASE}{SCHEMA_FILES[kind]}">{SCHEMA_FILES[kind]}</a>: {SCHEMA_NOTES[locale][kind]}</li>'
+        for kind in ("export", "open", "error", "open_v1")
     )
 
 
@@ -501,12 +563,12 @@ AGENT_PAGES = {
   <p>A reference for AI agents and scripts that call the <code>marsdawn</code> command-line tool. Every example on this page was run against the tool built from the current source.</p>
 </section>
 
-<div class="summary"><p><strong>To turn a Markdown file into a PDF, run <code>marsdawn export notes.md --json</code> and read one JSON object from stdout.</strong> Mermaid diagrams and highlighted code are rendered the same way as in the MarsDawn app. The MarsDawn app must be installed.</p></div>
+<div class="summary"><p><strong>To turn a Markdown file into a PDF, run <code>marsdawn export notes.md --json</code> and read one JSON object from stdout.</strong> Mermaid diagrams and highlighted code are rendered the same way as in the MarsDawn app. <code>export</code> doesn't need the app; <code>open</code> does.</p></div>
 
 <h2>What it does</h2>
 <ul>
   <li><code>export</code> renders one Markdown file to a paginated PDF with the same exporter as the MarsDawn app. No window opens.</li>
-  <li><code>open</code> opens one or more Markdown files in the MarsDawn app, so a person can review them.</li>
+  <li><code>open</code> opens one or more Markdown files in the MarsDawn app, so a person can review them, and can name the line each file should land on.</li>
 </ul>
 
 <h2>What it does not do</h2>
@@ -515,8 +577,8 @@ AGENT_PAGES = {
   <li>It doesn't write the PDF to stdout. The PDF always goes to a file; stdout carries only the result.</li>
   <li>It doesn't replace an existing file unless you pass <code>--force</code>.</li>
   <li>It doesn't load images from the web unless you pass <code>--allow-remote-images</code>, and then only over https.</li>
-  <li>It doesn't work without the MarsDawn app installed. Both commands exit with code 3.</li>
-  <li>It has no <code>--version</code> option; passing one is a usage error.</li>
+  <li><code>open</code> doesn't work without the MarsDawn app installed; it exits with code 3. <code>export</code> doesn't need the app.</li>
+  <li>MarsDawn 1.0 doesn't jump to the line <code>open</code> names yet. It opens the file at the top.</li>
   <li>It runs on macOS only.</li>
 </ul>
 
@@ -542,23 +604,32 @@ AGENT_PAGES = {
 </ul>
 
 <h2>open</h2>
-<pre><code>marsdawn open notes.md --json</code></pre>
-<p>Success, exit code 0:</p>
-<pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":["/path/to/notes.md"]}}</code></pre>
+<pre><code>marsdawn open notes.md --json
+marsdawn open notes.md:120 --json
+marsdawn open notes.md --line 120 --json</code></pre>
 <ul>
-  <li><code>opened</code>: absolute paths of the files that were opened.</li>
+  <li><code>path:line</code> names the line to land on. A column after it, as in <code>notes.md:120:8</code>, is ignored. An argument that names a file which exists is always that whole filename, so a file called <code>weird:12</code> opens as itself.</li>
+  <li><code>--line &lt;n&gt;</code> names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.</li>
+  <li>Lines run from 1 to 999999999. Anything else is a usage error.</li>
+  <li>Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
+</ul>
+<p>Success, exit code 0:</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{{"line":120,"path":"/path/to/notes.md"}}]}}</code></pre>
+<ul>
+  <li><code>opened</code>: one object per file, in the order given. <code>path</code> is the file's absolute path; <code>line</code> appears only when a line was asked for.</li>
   <li><code>app</code>: path of the MarsDawn app that opened them.</li>
 </ul>
+<p>marsdawn 0.2.x printed <code>opened</code> as a list of path strings. Check <code>marsdawn --version</code> if you need to handle both.</p>
 
 <h2>Failures</h2>
 <p>With <code>--json</code>, a failure prints one JSON object on stdout and exits with its code:</p>
 <pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
 <ul>
   <li><code>2</code>, <code>input_not_found</code>: the input doesn't exist, is a folder, or isn't UTF-8 text.</li>
-  <li><code>3</code>, <code>app_not_installed</code>: MarsDawn isn't installed.</li>
+  <li><code>3</code>, <code>app_not_installed</code>: MarsDawn isn't installed. Only <code>open</code> returns this.</li>
   <li><code>4</code>, <code>output_exists</code>: the output file exists. Pass <code>--force</code>.</li>
   <li><code>5</code>, <code>export_failed</code>: the export itself failed.</li>
-  <li><code>64</code>: usage error, such as an unknown option or an invalid value. This one is printed as text on stderr, even with <code>--json</code>.</li>
+  <li><code>64</code>: usage error, such as an unknown option, an invalid value, a line out of range or <code>--line</code> with more than one file. This one is printed as text on stderr, even with <code>--json</code>.</li>
 </ul>
 
 <h2>JSON Schemas</h2>
@@ -579,11 +650,15 @@ AGENT_PAGES = {
 </ul>
 
 <h2>Install</h2>
-<p>Build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a>. The first build fetches dependencies and compiles, which takes a few minutes.</p>
+<p>With Homebrew. The formula compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn
+marsdawn --version</code></pre>
+<p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a>. The first build fetches dependencies and compiles, which also takes a few minutes.</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
+<p><code>marsdawn --version</code> prints the version number, such as <code>0.3.0</code>, and exits with code 0.</p>
 """,
     },
     ("zh-hant", "cli/agents"): {
@@ -595,12 +670,12 @@ swift build -c release --product marsdawn
   <p>給呼叫 <code>marsdawn</code> 命令列工具的 AI agent 與腳本參考。本頁每個範例都用目前原始碼建置的工具實際執行過。</p>
 </section>
 
-<div class="summary"><p><strong>要把 Markdown 檔轉成 PDF，執行 <code>marsdawn export notes.md --json</code>，再從 stdout 讀取一個 JSON 物件。</strong>Mermaid 圖表與程式碼上色的呈現方式和 MarsDawn app 相同。需要先安裝 MarsDawn。</p></div>
+<div class="summary"><p><strong>要把 Markdown 檔轉成 PDF，執行 <code>marsdawn export notes.md --json</code>，再從 stdout 讀取一個 JSON 物件。</strong>Mermaid 圖表與程式碼上色的呈現方式和 MarsDawn app 相同。<code>export</code> 不需要 app，<code>open</code> 需要。</p></div>
 
 <h2>能做什麼</h2>
 <ul>
   <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
-  <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱。</li>
+  <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱，也可以指定每個檔案要定位的行。</li>
 </ul>
 
 <h2>不做什麼</h2>
@@ -609,8 +684,8 @@ swift build -c release --product marsdawn
   <li>不把 PDF 寫到 stdout。PDF 一律寫成檔案，stdout 只輸出結果。</li>
   <li>檔案已存在時不會覆寫，除非加上 <code>--force</code>。</li>
   <li>不載入網路圖片，除非加上 <code>--allow-remote-images</code>，而且只走 https。</li>
-  <li>沒有安裝 MarsDawn 就無法使用，兩個指令都會以代碼 3 結束。</li>
-  <li>沒有 <code>--version</code> 選項，傳入會被視為用法錯誤。</li>
+  <li>沒有安裝 MarsDawn 時，<code>open</code> 無法使用，會以代碼 3 結束。<code>export</code> 不需要 app。</li>
+  <li>MarsDawn 1.0 還不會跳到 <code>open</code> 指定的行，會從檔案開頭顯示。</li>
   <li>只能在 macOS 上執行。</li>
 </ul>
 
@@ -636,23 +711,32 @@ swift build -c release --product marsdawn
 </ul>
 
 <h2>open</h2>
-<pre><code>marsdawn open notes.md --json</code></pre>
-<p>成功，離開代碼 0：</p>
-<pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":["/path/to/notes.md"]}}</code></pre>
+<pre><code>marsdawn open notes.md --json
+marsdawn open notes.md:120 --json
+marsdawn open notes.md --line 120 --json</code></pre>
 <ul>
-  <li><code>opened</code>：已開啟檔案的絕對路徑。</li>
+  <li><code>path:line</code> 指定要定位的行。後面再接欄位，例如 <code>notes.md:120:8</code>，會被忽略。如果參數本身就是一個存在的檔名，就一律當成那個檔案，所以名為 <code>weird:12</code> 的檔案會照原名開啟。</li>
+  <li><code>--line &lt;n&gt;</code> 為單一檔案指定行號，包括檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。</li>
+  <li>行號範圍是 1 到 999999999，超出範圍是用法錯誤。</li>
+  <li>行號從 marsdawn 0.3.0 開始提供。MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。</li>
+</ul>
+<p>成功，離開代碼 0：</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{{"line":120,"path":"/path/to/notes.md"}}]}}</code></pre>
+<ul>
+  <li><code>opened</code>：每個檔案一個物件，順序與傳入時相同。<code>path</code> 是檔案的絕對路徑；只有指定了行號時才有 <code>line</code>。</li>
   <li><code>app</code>：開啟它們的 MarsDawn app 路徑。</li>
 </ul>
+<p>marsdawn 0.2.x 的 <code>opened</code> 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 <code>marsdawn --version</code>。</p>
 
 <h2>失敗</h2>
 <p>加上 <code>--json</code> 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：</p>
 <pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
 <ul>
   <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字。</li>
-  <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。</li>
+  <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
   <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
-  <li><code>64</code>：用法錯誤，例如未知的選項或無效的值。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
+  <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍，或 <code>--line</code> 搭配了多個檔案。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
 </ul>
 
 <h2>JSON Schema</h2>
@@ -673,11 +757,15 @@ swift build -c release --product marsdawn
 </ul>
 
 <h2>安裝</h2>
-<p>從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>建置。第一次建置會下載相依套件並編譯，需要幾分鐘。</p>
+<p>使用 Homebrew。這個 formula 會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn
+marsdawn --version</code></pre>
+<p>也可以從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>建置。第一次建置會下載相依套件並編譯，同樣需要幾分鐘。</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
+<p><code>marsdawn --version</code> 會印出版本號，例如 <code>0.3.0</code>，並以代碼 0 結束。</p>
 """,
     },
 }
@@ -988,8 +1076,12 @@ def build_llms_txt(pages: dict) -> str:
         f"- [{UI['en']['agents']}]({abs_url(md_path('en', 'cli/agents'))}): commands, JSON output, "
         "exit codes and requirements, with examples that were run before publishing"
     )
-    for kind, note in (("export", "export success"), ("open", "open success"), ("error", "failure, both commands")):
+    for kind in ("export", "open", "error", "open_v1"):
+        note = SCHEMA_NOTES["en"][kind].replace("<code>", "`").replace("</code>", "`")
         lines.append(f"- [{SCHEMA_FILES[kind]}]({schema_url(kind)}): JSON Schema for the --json result, {note}")
+    lines.append("")
+    lines.append("Install: `brew tap redtear1115/tap && brew install marsdawn` (compiles from source, a few minutes; "
+                 "macOS 15 and Xcode 26 to build). `export` works without the MarsDawn app; `open` needs it.")
     lines.append("")
     return "\n".join(lines).rstrip() + "\n"
 
