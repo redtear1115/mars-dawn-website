@@ -397,49 +397,73 @@ html { scrollbar-color: var(--hairline) var(--paper); }
 }
 
 /* ---- Homepage: cinematic dawn hero, AI-workflow loop ----------------------
-   The dawn is drawn with an inline <svg> (a sky gradient, a horizon glow and
-   a curved planetary limb with a bright rim of first light) plus a CSS glow.
-   Colors are tokens so light and dark mode are each designed, not inverted. */
+   The dawn is one full-bleed scene, not a banner: an inline <svg> (a graded
+   night-to-dawn sky, a wide horizon glow and a planet's mass with a bright
+   rim of first light) fills the hero edge to edge, and the kicker, headline,
+   sub and the app screenshot sit on it. Colors are tokens so light and dark
+   mode are each designed, not inverted. The sky's own tones stay dark at the
+   top in both modes — the scene is always night breaking to dawn — so hero
+   text uses its own fixed, light palette rather than the page's ink tokens. */
 
 :root {
-  --dawn-sky-top: #372f45;
-  --dawn-sky-mid: #7c5a4e;
-  --dawn-horizon: #f2a874;
-  --dawn-glow: #ffdcae;
+  --dawn-sky-1: #171022;
+  --dawn-sky-2: #372a3c;
+  --dawn-sky-3: #86544c;
+  --dawn-sky-4: #dc9a66;
+  --dawn-glow: #ffe1ab;
+  --dawn-glow-mid: #f2925a;
   --dawn-limb: #fff4e0;
-  --dawn-planet: #241f2c;
+  --dawn-planet-rim: #6b3a2e;
+  --dawn-planet: #0e0a13;
+  --hero-kicker: #ffd9a3;
+  --hero-ink: #fff8ee;
+  --hero-sub: #e9dccc;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --dawn-sky-top: #0a0912;
-    --dawn-sky-mid: #251a2b;
-    --dawn-horizon: #c8471b;
+    --dawn-sky-1: #050308;
+    --dawn-sky-2: #170f1c;
+    --dawn-sky-3: #4a1f1e;
+    --dawn-sky-4: #b4491c;
     --dawn-glow: #ff9d5c;
+    --dawn-glow-mid: #c8471b;
     --dawn-limb: #ffe3b0;
-    --dawn-planet: #060509;
+    --dawn-planet-rim: #401c10;
+    --dawn-planet: #030203;
   }
 }
 
-.dawn-wrap {
-  --bleed-width: max(100%, min(60rem, 100vw - 32px));
-  width: var(--bleed-width);
-  margin: 4px calc((100% - var(--bleed-width)) / 2) 0;
-  height: clamp(160px, 34vw, 320px);
-  border-radius: 20px;
-  overflow: hidden;
+/* The hero breaks out to the viewport edges; overflow-x guards the 100vw
+   width against the classic-scrollbar rounding that would otherwise add a
+   sliver of horizontal scroll. */
+html { overflow-x: hidden; }
+
+.hero-scene {
   position: relative;
-  box-shadow: 0 1px 2px color-mix(in srgb, #000 12%, transparent),
-              0 20px 44px -20px color-mix(in srgb, #000 45%, transparent);
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  overflow: hidden;
+  padding: clamp(40px, 9vw, 88px) 0 clamp(30px, 6vw, 60px);
+}
+.dawn-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 .dawn-art { display: block; width: 100%; height: 100%; }
-.stop-sky-top { stop-color: var(--dawn-sky-top); }
-.stop-sky-mid { stop-color: var(--dawn-sky-mid); }
-.stop-glow { stop-color: var(--dawn-glow); stop-opacity: 0.85; }
-.stop-glow-fade { stop-color: var(--dawn-glow); stop-opacity: 0; }
+.stop-sky-1 { stop-color: var(--dawn-sky-1); }
+.stop-sky-2 { stop-color: var(--dawn-sky-2); }
+.stop-sky-3 { stop-color: var(--dawn-sky-3); }
+.stop-sky-4 { stop-color: var(--dawn-sky-4); }
+.stop-glow { stop-color: var(--dawn-glow); stop-opacity: 0.95; }
+.stop-glow-mid { stop-color: var(--dawn-glow-mid); stop-opacity: 0.5; }
+.stop-glow-fade { stop-color: var(--dawn-glow-mid); stop-opacity: 0; }
+.stop-planet-rim { stop-color: var(--dawn-planet-rim); }
+.stop-planet-deep { stop-color: var(--dawn-planet); }
 .stop-limb { stop-color: var(--dawn-limb); }
 .stop-limb-fade { stop-color: var(--dawn-limb); stop-opacity: 0; }
-.fill-planet { fill: var(--dawn-planet); }
-.limb-line { filter: drop-shadow(0 0 3px color-mix(in srgb, var(--dawn-limb) 70%, transparent)); }
+.limb-line { filter: drop-shadow(0 0 4px color-mix(in srgb, var(--dawn-limb) 75%, transparent)); }
 
 @media (prefers-reduced-motion: no-preference) {
   .limb-line { animation: dawn-breathe 9s ease-in-out infinite; }
@@ -449,16 +473,63 @@ html { scrollbar-color: var(--hairline) var(--paper); }
   }
 }
 
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.hero-copy { position: relative; }
+/* A soft, irregular scrim in the scene's own planet-dark, feathered well past
+   the text's edges so it reads as vignette, not as a pasted card. */
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  inset: -120px -170px -230px -170px;
+  background: radial-gradient(52% 80% at 30% 24%,
+      color-mix(in srgb, var(--dawn-planet) 78%, transparent) 0%,
+      color-mix(in srgb, var(--dawn-planet) 46%, transparent) 48%,
+      transparent 88%);
+  z-index: -1;
+  pointer-events: none;
+}
+.hero-copy .intro { padding: 0; }
 .hero .kicker {
   margin: 0 0 10px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--ember);
+  color: var(--hero-kicker);
+  text-shadow: 0 1px 10px color-mix(in srgb, #000 60%, transparent);
 }
-.hero h1 { font-size: clamp(2.25rem, 6.4vw, 3.5rem); }
-.hero p { color: var(--ink); }
+.hero h1 {
+  color: var(--hero-ink);
+  font-size: clamp(2.25rem, 6.4vw, 3.5rem);
+  text-shadow: 0 2px 20px color-mix(in srgb, #000 45%, transparent);
+}
+.hero p {
+  color: var(--hero-sub);
+  text-shadow: 0 1px 14px color-mix(in srgb, #000 55%, transparent);
+}
+
+.hero-shot { margin-top: clamp(28px, 6vw, 48px); }
+.hero-shot .shot { --gutter: 0px; margin: 0 calc((100% - var(--shot-width)) / 2); }
+.hero-shot .shot-frame {
+  padding: 0;
+  background: transparent;
+  border-radius: 16px;
+}
+.hero-shot .shot img {
+  border-radius: 16px;
+  box-shadow: 0 1px 0 color-mix(in srgb, #fff 12%, transparent) inset,
+              0 40px 64px -28px color-mix(in srgb, #000 70%, transparent),
+              0 14px 28px -14px color-mix(in srgb, #000 55%, transparent);
+}
+@media (min-width: 1100px) {
+  .hero-shot .shot { margin-top: 0; }
+}
 
 .loop-steps {
   list-style: none;

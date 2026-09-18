@@ -2,7 +2,7 @@ Built for the AI workflow
 
 # Where an agent's Markdown gets a careful read.
 
-An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side. The agent revises, and the open document updates as the file changes on disk.
+An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.
 
 ![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
 
@@ -10,7 +10,7 @@ An AI agent writes the Markdown. You review it in MarsDawn, source and rendered 
 
 - **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
 - **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
-- **The agent revises.** Ask for changes. When the agent saves the file again, the document updates to match.
+- **The agent revises.** Ask for changes. Open the revised file and read it the same way.
 
 Agents can drive MarsDawn directly: the free [marsdawn](/cli/) command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See [marsdawn for agents](/cli/agents/) for the details.
 

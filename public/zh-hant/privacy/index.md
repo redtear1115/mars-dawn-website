@@ -22,7 +22,7 @@ MarsDawn 可以完全離線使用，只有一種情況會連網：**你選擇載
 
 ## Siri、捷徑和 Spotlight
 
-MarsDawn 提供 Siri、捷徑 App 和 Spotlight 可用的動作，例如新增文件或加入筆記。使用時，你提供的文字會交給你 Mac 上的 MarsDawn，並只存到動作指定的位置（新文件，或你所選筆記資料夾中的 `Inbox.md`）。對 Siri 說的話由 Apple 依[Apple 隱私權政策](https://www.apple.com/legal/privacy/)處理。
+MarsDawn 提供 Siri、捷徑 App 和 Spotlight 可用的動作，例如新增文件或加入筆記。使用時，你提供的文字會交給你 Mac 上的 MarsDawn，並只存到動作指定的位置（新文件，或你所選筆記資料夾中的 `Inbox.md`）。對 Siri 說的話由 Apple 依 [Apple 隱私權政策](https://www.apple.com/legal/privacy/) 處理。
 
 ## 輸出 PDF 和列印
 

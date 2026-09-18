@@ -32,34 +32,46 @@
   <nav class="lang" aria-label="Language"><a href="/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></nav>
 </header>
 <main>
+<section class="hero-scene">
 <div class="dawn-wrap" aria-hidden="true">
-  <svg class="dawn-art" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMax slice" focusable="false">
+  <svg class="dawn-art" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
     <defs>
       <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop class="stop-sky-top" offset="0%"></stop>
-        <stop class="stop-sky-mid" offset="100%"></stop>
+        <stop class="stop-sky-1" offset="0%"></stop>
+        <stop class="stop-sky-2" offset="42%"></stop>
+        <stop class="stop-sky-3" offset="76%"></stop>
+        <stop class="stop-sky-4" offset="100%"></stop>
       </linearGradient>
-      <radialGradient id="glowGrad" cx="50%" cy="100%" r="65%">
+      <radialGradient id="glowGrad" cx="50%" cy="63%" r="75%">
         <stop class="stop-glow" offset="0%"></stop>
+        <stop class="stop-glow-mid" offset="42%"></stop>
         <stop class="stop-glow-fade" offset="100%"></stop>
       </radialGradient>
+      <linearGradient id="planetGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-planet-rim" offset="0%"></stop>
+        <stop class="stop-planet-deep" offset="26%"></stop>
+      </linearGradient>
       <linearGradient id="limbGrad" x1="0" y1="0" x2="1" y2="0">
         <stop class="stop-limb-fade" offset="0%"></stop>
         <stop class="stop-limb" offset="50%"></stop>
         <stop class="stop-limb-fade" offset="100%"></stop>
       </linearGradient>
     </defs>
-    <rect width="1200" height="480" fill="url(#skyGrad)"></rect>
-    <ellipse cx="600" cy="480" rx="900" ry="260" fill="url(#glowGrad)"></ellipse>
-    <path class="fill-planet" d="M -20 300 Q 600 178 1220 300 L 1220 500 L -20 500 Z"></path>
-    <path class="limb-line" d="M -20 300 Q 600 178 1220 300" fill="none" stroke="url(#limbGrad)" stroke-width="4"></path>
+    <rect width="1200" height="900" fill="url(#skyGrad)"></rect>
+    <ellipse cx="600" cy="560" rx="1000" ry="430" fill="url(#glowGrad)"></ellipse>
+    <path d="M -40 560 Q 600 428 1240 560 L 1240 920 L -40 920 Z" fill="url(#planetGrad)"></path>
+    <path class="limb-line" d="M -40 560 Q 600 428 1240 560" fill="none" stroke="url(#limbGrad)" stroke-width="5"></path>
   </svg>
 </div>
+<div class="hero-inner">
+<div class="hero-copy">
 <section class="intro hero">
   <p class="kicker">為 AI 工作流程而生</p>
   <h1>讓 agent 寫的 Markdown，被好好讀過一遍。</h1>
-  <p>AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面並排顯示。改好之後，agent 重新存檔，視窗裡的文件也會跟著更新。</p>
+  <p>AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面並排顯示，再把修改意見交回去。</p>
 </section>
+</div>
+<div class="hero-shot">
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
     <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。">
@@ -67,13 +79,16 @@
     
   </div></div>
 </figure>
+</div>
+</div>
+</section>
 <h2>整個循環</h2>
 <ul class="loop-steps">
   <li><strong>Agent 動筆。</strong>你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。</li>
   <li><strong>你在 MarsDawn 裡讀。</strong>打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。</li>
-  <li><strong>Agent 修改。</strong>提出修改意見，agent 存檔後，文件會跟著更新。</li>
+  <li><strong>Agent 修改。</strong>提出修改意見，agent 改好之後，再打開來讀一次。</li>
 </ul>
-<p>Agent 也能直接操作 MarsDawn：免費的<a href="/zh-hant/cli/">marsdawn</a>命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
+<p>Agent 也能直接操作 MarsDawn：免費的 <a href="/zh-hant/cli/">marsdawn</a> 命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
 <ul class="links">
   <li><a href="/zh-hant/support/">支援與常見問題</a></li>
   <li><a href="/zh-hant/privacy/">隱私權政策</a></li>
