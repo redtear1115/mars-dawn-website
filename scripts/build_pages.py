@@ -86,7 +86,7 @@ PAGES = {
 <ul>
   <li><strong>Your documents.</strong> MarsDawn reads and writes only the files and folders you open, save or choose. They are never uploaded anywhere by the app.</li>
   <li><strong>Your settings.</strong> Appearance, preview theme, window layout, and your choices about web images and web content are stored in the app's own preferences on your Mac.</li>
-  <li><strong>Folder access you grant.</strong> When you let MarsDawn show images or page files from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. You can remove folders at any time in MarsDawn › Settings.</li>
+  <li><strong>Folder access you grant.</strong> When you let MarsDawn show images or page files from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. A folder you open in the sidebar stays readable and writable by MarsDawn until you remove it in Settings, not just while its window is open. You can remove folders at any time in MarsDawn › Settings.</li>
 </ul>
 
 <h2>When MarsDawn uses the internet</h2>
@@ -138,7 +138,7 @@ PAGES = {
 <ul>
   <li><strong>你的文件。</strong>MarsDawn 只讀寫你打開、儲存或選擇的檔案與資料夾，App 不會把它們上傳到任何地方。</li>
   <li><strong>你的設定。</strong>外觀、預覽主題、視窗版面，以及你對網路圖片與網路內容的選擇，都存在 App 自己的偏好設定裡。</li>
-  <li><strong>你授權的資料夾。</strong>當你讓 MarsDawn 顯示某個資料夾裡的圖片或網頁檔案，或選擇筆記資料夾時，App 會保存 macOS 書籤，以便之後再次開啟。你隨時可以到 MarsDawn › 設定⋯ 移除。</li>
+  <li><strong>你授權的資料夾。</strong>當你讓 MarsDawn 顯示某個資料夾裡的圖片或網頁檔案，或選擇筆記資料夾時，App 會保存 macOS 書籤，以便之後再次開啟。你在側邊欄開啟的資料夾，MarsDawn 會保持可讀寫，直到你在設定中移除為止，而不只是在那個視窗開著的時候。你隨時可以到 MarsDawn › 設定⋯ 移除。</li>
 </ul>
 
 <h2>MarsDawn 什麼時候會連上網路</h2>
