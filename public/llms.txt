@@ -19,5 +19,8 @@
 ## Using the CLI
 - [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): commands, JSON output, exit codes and requirements, with examples that were run before publishing
 - [export.v1.json](https://marsdawn.southern-light.dev/schemas/cli/export.v1.json): JSON Schema for the --json result, export success
-- [open.v1.json](https://marsdawn.southern-light.dev/schemas/cli/open.v1.json): JSON Schema for the --json result, open success
+- [open.v2.json](https://marsdawn.southern-light.dev/schemas/cli/open.v2.json): JSON Schema for the --json result, open success, marsdawn 0.3.0 and later
 - [error.v1.json](https://marsdawn.southern-light.dev/schemas/cli/error.v1.json): JSON Schema for the --json result, failure, both commands
+- [open.v1.json](https://marsdawn.southern-light.dev/schemas/cli/open.v1.json): JSON Schema for the --json result, open success, marsdawn 0.2.x, where `opened` was a list of paths
+
+Install: `brew tap redtear1115/tap && brew install marsdawn` (compiles from source, a few minutes; macOS 15 and Xcode 26 to build). `export` works without the MarsDawn app; `open` needs it.

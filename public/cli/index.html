@@ -36,27 +36,38 @@
   <p>The free <code>marsdawn</code> command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Homebrew isn't published yet, so build it from source with Swift Package Manager. Both commands need the MarsDawn app installed.</p></div>
+<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew, which builds it from source on your Mac. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
 
 <p>Calling marsdawn from an AI agent or a script? See <a href="/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code.</p>
 
 <h2>Install</h2>
-<p>Clone <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> and run it with Swift Package Manager:</p>
+<p>With <a href="https://brew.sh">Homebrew</a>:</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
+<p>Homebrew compiles marsdawn from source, which takes a few minutes. The tool runs on macOS 15 or later, and building it needs Xcode 26 or later (Swift 6.2).</p>
+<p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> with Swift Package Manager:</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
-swift run marsdawn open notes.md</code></pre>
+swift build -c release --product marsdawn</code></pre>
+<p>Check which version you have with <code>marsdawn --version</code>.</p>
 
 <h2>Commands</h2>
 
 <h3>marsdawn open</h3>
 <p>Opens one or more Markdown files in MarsDawn for review. Needs MarsDawn installed.</p>
-<pre><code>marsdawn open notes.md</code></pre>
+<pre><code>marsdawn open notes.md
+marsdawn open notes.md:120
+marsdawn open notes.md --line 120</code></pre>
 <ul>
+  <li><code>path:line</code>: asks MarsDawn to land on that line. A column after it, as in <code>notes.md:120:8</code>, is ignored. If a file with the whole name exists, the argument is that file.</li>
+  <li><code>--line &lt;n&gt;</code>: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.</li>
+  <li>Lines run from 1 to 999999999.</li>
+  <li>MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
 </ul>
+<p>Lines were added in marsdawn 0.3.0.</p>
 
 <h3>marsdawn export</h3>
-<p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. Also needs MarsDawn installed. Relative images resolve against the input file's folder.</p>
+<p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.</p>
 <pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
 <ul>
   <li><code>-o, --output &lt;path&gt;</code>: where to write the PDF. Defaults to the input path with a <code>.pdf</code> extension.</li>
@@ -77,17 +88,14 @@ swift run marsdawn open notes.md</code></pre>
 <ul>
   <li><code>0</code>: success.</li>
   <li><code>2</code>: input not found.</li>
-  <li><code>3</code>: MarsDawn is not installed.</li>
+  <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
   <li><code>4</code>: output exists (pass <code>--force</code>).</li>
   <li><code>5</code>: export failed.</li>
-  <li><code>64</code>: usage error.</li>
+  <li><code>64</code>: usage error, including a line out of range or <code>--line</code> with more than one file.</li>
 </ul>
 
 <h2>--json output</h2>
-<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (the file paths) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
-
-<h2>MarsDawn must be installed</h2>
-<p>Both <code>open</code> and <code>export</code> need the MarsDawn app installed from the Mac App Store; <code>export</code> renders through the same code the app uses, but still checks that the app is present first.</p>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 </main>
 <footer class="footer">
   <span>A new dawn for Markdown.</span>

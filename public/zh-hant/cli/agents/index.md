@@ -2,12 +2,12 @@
 
 給呼叫 `marsdawn` 命令列工具的 AI agent 與腳本參考。本頁每個範例都用目前原始碼建置的工具實際執行過。
 
-**要把 Markdown 檔轉成 PDF，執行 `marsdawn export notes.md --json`，再從 stdout 讀取一個 JSON 物件。**Mermaid 圖表與程式碼上色的呈現方式和 MarsDawn app 相同。需要先安裝 MarsDawn。
+**要把 Markdown 檔轉成 PDF，執行 `marsdawn export notes.md --json`，再從 stdout 讀取一個 JSON 物件。**Mermaid 圖表與程式碼上色的呈現方式和 MarsDawn app 相同。`export` 不需要 app，`open` 需要。
 
 ## 能做什麼
 
 - `export`：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。
-- `open`：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱。
+- `open`：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱，也可以指定每個檔案要定位的行。
 
 ## 不做什麼
 
@@ -15,8 +15,8 @@
 - 不把 PDF 寫到 stdout。PDF 一律寫成檔案，stdout 只輸出結果。
 - 檔案已存在時不會覆寫，除非加上 `--force`。
 - 不載入網路圖片，除非加上 `--allow-remote-images`，而且只走 https。
-- 沒有安裝 MarsDawn 就無法使用，兩個指令都會以代碼 3 結束。
-- 沒有 `--version` 選項，傳入會被視為用法錯誤。
+- 沒有安裝 MarsDawn 時，`open` 無法使用，會以代碼 3 結束。`export` 不需要 app。
+- MarsDawn 1.0 還不會跳到 `open` 指定的行，會從檔案開頭顯示。
 - 只能在 macOS 上執行。
 
 ## export
@@ -53,16 +53,25 @@ marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --jso
 
 ```
 marsdawn open notes.md --json
+marsdawn open notes.md:120 --json
+marsdawn open notes.md --line 120 --json
 ```
+
+- `path:line` 指定要定位的行。後面再接欄位，例如 `notes.md:120:8`，會被忽略。如果參數本身就是一個存在的檔名，就一律當成那個檔案，所以名為 `weird:12` 的檔案會照原名開啟。
+- `--line <n>` 為單一檔案指定行號，包括檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。
+- 行號範圍是 1 到 999999999，超出範圍是用法錯誤。
+- 行號從 marsdawn 0.3.0 開始提供。MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。
 
 成功，離開代碼 0：
 
 ```
-{"app":"/Applications/MarsDawn.app","ok":true,"opened":["/path/to/notes.md"]}
+{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}
 ```
 
-- `opened`：已開啟檔案的絕對路徑。
+- `opened`：每個檔案一個物件，順序與傳入時相同。`path` 是檔案的絕對路徑；只有指定了行號時才有 `line`。
 - `app`：開啟它們的 MarsDawn app 路徑。
+
+marsdawn 0.2.x 的 `opened` 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 `marsdawn --version`。
 
 ## 失敗
 
@@ -73,18 +82,19 @@ marsdawn open notes.md --json
 ```
 
 - `2`，`input_not_found`：輸入檔不存在、是資料夾，或不是 UTF-8 文字。
-- `3`，`app_not_installed`：沒有安裝 MarsDawn。
+- `3`，`app_not_installed`：沒有安裝 MarsDawn。只有 `open` 會回傳這個代碼。
 - `4`，`output_exists`：輸出檔已存在，請加上 `--force`。
 - `5`，`export_failed`：匯出本身失敗。
-- `64`：用法錯誤，例如未知的選項或無效的值。這種錯誤一律以文字輸出到 stderr，即使加了 `--json` 也一樣。
+- `64`：用法錯誤，例如未知的選項、無效的值、行號超出範圍，或 `--line` 搭配了多個檔案。這種錯誤一律以文字輸出到 stderr，即使加了 `--json` 也一樣。
 
 ## JSON Schema
 
 每種 `--json` 結果的 JSON Schema（draft 2020-12）：
 
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功
-- [open.v1.json](/schemas/cli/open.v1.json): open 成功
+- [open.v2.json](/schemas/cli/open.v2.json): open 成功，marsdawn 0.3.0 以後
 - [error.v1.json](/schemas/cli/error.v1.json): 兩個指令的失敗結果
+- [open.v1.json](/schemas/cli/open.v1.json): open 成功，marsdawn 0.2.x，當時 `opened` 是路徑清單
 
 ## 環境變數
 
@@ -97,7 +107,14 @@ marsdawn open notes.md --json
 
 ## 安裝
 
-從[原始碼](https://github.com/redtear1115/mars-dawn-kit)建置。第一次建置會下載相依套件並編譯，需要幾分鐘。
+使用 Homebrew。這個 formula 會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。
+
+```
+brew tap redtear1115/tap && brew install marsdawn
+marsdawn --version
+```
+
+也可以從[原始碼](https://github.com/redtear1115/mars-dawn-kit)建置。第一次建置會下載相依套件並編譯，同樣需要幾分鐘。
 
 ```
 git clone https://github.com/redtear1115/mars-dawn-kit.git
@@ -105,6 +122,8 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json
 ```
+
+`marsdawn --version` 會印出版本號，例如 `0.3.0`，並以代碼 0 結束。
 
 ## 其他頁面
 
