@@ -4,7 +4,7 @@
 
 ![MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
 
-這張截圖裡:
+這張截圖裡：
 
 1. 原生的 Mac 視窗。
 2. Mac 原生的文字編輯器，附 Markdown 語法上色。

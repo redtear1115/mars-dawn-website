@@ -240,7 +240,9 @@ html { scrollbar-color: var(--hairline) var(--paper); }
 
 .shot {
   --gutter: 0px;
-  --shot-width: min(76rem, 100vw - 32px);
+  /* 100vw counts a classic (non-overlay) scrollbar, so leave room for one and
+     never go narrower than the text column itself. */
+  --shot-width: max(100%, min(76rem, 100vw - 48px));
   width: var(--shot-width);
   margin: 36px calc((100% - var(--shot-width)) / 2) 8px;
 }
@@ -377,13 +379,22 @@ html { scrollbar-color: var(--hairline) var(--paper); }
   }
 }
 
-/* The one authored moment: the leader lines draw out from the app once. */
-@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
-  .leader { animation: leader-draw 700ms cubic-bezier(0.16, 1, 0.3, 1) 250ms both; }
-  .leader > span { animation: leader-label 500ms ease-out 650ms both; }
+/* The one authored moment: each marker sends out a single ring as the page
+   settles. Markers, lines and labels are visible whether or not it runs. */
+@media (prefers-reduced-motion: no-preference) {
+  .marker::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--ember) 55%, transparent);
+    animation: marker-ring 1100ms cubic-bezier(0.16, 1, 0.3, 1) 300ms 1 forwards;
+    pointer-events: none;
+  }
 }
-@keyframes leader-draw { from { scale: 0 1; } }
-@keyframes leader-label { from { opacity: 0; } }
+@keyframes marker-ring {
+  to { box-shadow: 0 0 0 14px color-mix(in srgb, var(--ember) 0%, transparent); }
+}
 
 /* Sister pages, as a ruled list rather than cards. */
 .traits { margin-top: 64px; }

@@ -471,7 +471,7 @@ MarsDawn 不需要帳號，沒有同步，也沒有雲端。它打開檔案、�
 
 ![MarsDawn 以 Classic 主題顯示文件，預覽佔滿整個視窗。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
 
-這張截圖裡:
+這張截圖裡：
 
 1. 你 Mac 上的一個檔案，存在你選的地方。
 2. 整條工具列只有主題和版面，沒有任何需要登入的地方。
@@ -497,7 +497,7 @@ MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱，也沒有付費進�
 
 ![MarsDawn 使用 Vivid 主題，左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
-這張截圖裡:
+這張截圖裡：
 
 1. 編輯器的 Markdown 語法上色，包含在內。
 2. 所有主題和版面都包含在內。
@@ -522,7 +522,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/pdf/
 
 ![用 MarsDawn 輸出的 PDF，在內建的 PDF 檢視器中開啟，旁邊有頁面縮圖。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
-這張截圖裡:
+這張截圖裡：
 
 1. Mermaid 圖表直接畫進 PDF。
 2. 程式碼保留語法上色。
@@ -547,7 +547,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/native/
 
 ![MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
 
-這張截圖裡:
+這張截圖裡：
 
 1. 原生的 Mac 視窗。
 2. Mac 原生的文字編輯器，附 Markdown 語法上色。
@@ -575,7 +575,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 
 ![MarsDawn 的深色模式，左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/03-dark-1180.png)
 
-這張截圖裡:
+這張截圖裡：
 
 1. 一個視窗一份文件，就在這台 Mac 上。
 2. 你在這裡寫 Markdown。

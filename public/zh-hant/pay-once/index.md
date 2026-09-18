@@ -4,7 +4,7 @@ MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱，也沒有付費進�
 
 ![MarsDawn 使用 Vivid 主題，左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
-這張截圖裡:
+這張截圖裡：
 
 1. 編輯器的 Markdown 語法上色，包含在內。
 2. 所有主題和版面都包含在內。

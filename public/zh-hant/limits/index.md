@@ -4,7 +4,7 @@
 
 ![MarsDawn 的深色模式，左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/03-dark-1180.png)
 
-這張截圖裡:
+這張截圖裡：
 
 1. 一個視窗一份文件，就在這台 Mac 上。
 2. 你在這裡寫 Markdown。

@@ -4,7 +4,7 @@ MarsDawn 不需要帳號，沒有同步，也沒有雲端。它打開檔案、�
 
 ![MarsDawn 以 Classic 主題顯示文件，預覽佔滿整個視窗。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
 
-這張截圖裡:
+這張截圖裡：
 
 1. 你 Mac 上的一個檔案，存在你選的地方。
 2. 整條工具列只有主題和版面，沒有任何需要登入的地方。

@@ -4,7 +4,7 @@
 
 ![用 MarsDawn 輸出的 PDF，在內建的 PDF 檢視器中開啟，旁邊有頁面縮圖。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
-這張截圖裡:
+這張截圖裡：
 
 1. Mermaid 圖表直接畫進 PDF。
 2. 程式碼保留語法上色。

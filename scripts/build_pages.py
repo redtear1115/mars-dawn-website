@@ -1062,7 +1062,8 @@ def figure_markdown(locale: str, slug: str) -> str:
     image = fig["image"]
     width = CROPS[image][2]
     src = abs_url(f"/assets/screens/{image}-{width}.png")
-    lines = [f"![{fig['alt'][locale]}]({src})", "", f"{FIGURE_LIST_LABEL[locale]}:", ""]
+    colon = "：" if locale == "zh-hant" else ":"
+    lines = [f"![{fig['alt'][locale]}]({src})", "", f"{FIGURE_LIST_LABEL[locale]}{colon}", ""]
     lines += [f"{i}. {label[locale]}" for i, (_, _, _, label) in enumerate(fig["callouts"], start=1)]
     return "\n".join(lines)
 
