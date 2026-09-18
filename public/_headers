@@ -61,3 +61,15 @@
 /zh-hant/cli/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
+/cli/agents/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/cli/agents/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+
+# JSON Schemas for the CLI's --json output. Versioned file names, so a changed
+# shape gets a new file and the old one stays valid for existing callers.
+/schemas/cli/*
+  Content-Type: application/schema+json; charset=utf-8
+  Cache-Control: public, max-age=300
