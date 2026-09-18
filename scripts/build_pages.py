@@ -31,15 +31,19 @@ UI = {
         "home": "MarsDawn", "privacy": "Privacy Policy", "support": "Support", "cli": "Command Line",
         "agents": "marsdawn for agents", "using_cli": "Using the CLI",
         "updated": f"Last updated {UPDATED}", "tagline": "A new dawn for Markdown.",
-        "footer_store": "MarsDawn is available on the Mac App Store.",
+        "footer_store": "MarsDawn is coming soon to the Mac App Store.",
         "more": "More",
+        "yours": "Your writing stays on your Mac", "pay-once": "Pay once", "pdf": "PDF export",
+        "native": "A Mac app", "limits": "What MarsDawn doesn't do",
     },
     "zh-hant": {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
         "agents": "給 AI agent 的 marsdawn 參考", "using_cli": "使用 CLI",
         "updated": f"最後更新：{UPDATED}", "tagline": "Markdown 的新黎明。",
-        "footer_store": "MarsDawn 於 Mac App Store 販售。",
+        "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
         "more": "其他頁面",
+        "yours": "你寫的內容留在你的 Mac 上", "pay-once": "買一次就好", "pdf": "輸出 PDF",
+        "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
     },
 }
 
@@ -770,14 +774,421 @@ swift build -c release --product marsdawn
     },
 }
 
-PAGE_ORDER = ["index", "support", "privacy", "cli", "cli/agents"]
-SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents"}
+
+# --- Trait pages (M1) ---------------------------------------------------------
+# Five pages, one trait each, each proven by pointing at the real 1.0 app.
+# Every claim matches the App Store listing (app repo docs/app-store-listing.md)
+# or the privacy page. No competitor is named and no review is quoted.
+# Screenshots are the app's own store screenshots (app repo
+# docs/store-assets/screenshots), unmodified apart from resizing.
+TRAIT_ORDER = ["yours", "pay-once", "pdf", "native", "limits"]
+
+STORE_CHIP = {
+    "en": "Coming soon to the Mac App Store",
+    "zh-hant": "即將在 Mac App Store 上架",
+}
+
+# Callouts: (x %, y %) of the marker on the original 1440x900 store screenshot,
+# which side's gutter the label sits in, and the label in each language. The
+# published image is cropped to the app window (CROPS), and the positions are
+# converted to the cropped frame when annotations.css is written.
+CROPS = {
+    "01-split": (130, 24, 1180, 844),
+    "02-classic": (130, 24, 1180, 844),
+    "03-dark": (130, 24, 1180, 844),
+    "04-vivid": (130, 24, 1180, 844),
+    "05-pdf": (230, 66, 980, 760),
+}
+SMALL_WIDTH = 800
+
+
+def cropped_position(image: str, x: float, y: float) -> tuple:
+    ox, oy, w, h = CROPS[image]
+    return round((x * 14.4 - ox) / w * 100, 2), round((y * 9.0 - oy) / h * 100, 2)
+FIGURES = {
+    "yours": {
+        "image": "02-classic",
+        "alt": {
+            "en": "MarsDawn showing a document in the Classic theme, with the preview filling the window.",
+            "zh-hant": "MarsDawn 以 Classic 主題顯示文件，預覽佔滿整個視窗。",
+        },
+        "callouts": [
+            (16.53, 7.0, "l", {"en": "A file on your Mac, saved where you choose.", "zh-hant": "你 Mac 上的一個檔案，存在你選的地方。"}),
+            (88.89, 5.56, "r", {"en": "The whole toolbar is themes and layouts; there is nothing to sign in to.", "zh-hant": "整條工具列只有主題和版面，沒有任何需要登入的地方。"}),
+        ],
+    },
+    "pay-once": {
+        "image": "04-vivid",
+        "alt": {
+            "en": "MarsDawn in the Vivid theme, with Markdown source on the left and the rendered page on the right.",
+            "zh-hant": "MarsDawn 使用 Vivid 主題，左邊是 Markdown 原始碼，右邊是排版後的頁面。",
+        },
+        "callouts": [
+            (10.07, 26.22, "l", {"en": "Markdown highlighting in the editor, included.", "zh-hant": "編輯器的 Markdown 語法上色，包含在內。"}),
+            (88.89, 5.56, "r", {"en": "Every theme and every layout is included.", "zh-hant": "所有主題和版面都包含在內。"}),
+            (88.54, 38.89, "r", {"en": "Mermaid diagrams, included.", "zh-hant": "Mermaid 圖表，包含在內。"}),
+            (87.5, 66.67, "r", {"en": "Code highlighting, included.", "zh-hant": "程式碼上色，包含在內。"}),
+        ],
+    },
+    "pdf": {
+        "image": "05-pdf",
+        "alt": {
+            "en": "A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.",
+            "zh-hant": "用 MarsDawn 輸出的 PDF，在內建的 PDF 檢視器中開啟，旁邊有頁面縮圖。",
+        },
+        "callouts": [
+            (80.56, 57.89, "r", {"en": "Mermaid diagrams, drawn into the PDF.", "zh-hant": "Mermaid 圖表直接畫進 PDF。"}),
+            (78.47, 84.44, "r", {"en": "Code keeps its highlighting.", "zh-hant": "程式碼保留語法上色。"}),
+        ],
+    },
+    "native": {
+        "image": "01-split",
+        "alt": {
+            "en": "MarsDawn in split view: the Markdown source on the left, the rendered page on the right.",
+            "zh-hant": "MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。",
+        },
+        "callouts": [
+            (16.53, 7.33, "l", {"en": "A native Mac window.", "zh-hant": "原生的 Mac 視窗。"}),
+            (10.07, 24.22, "l", {"en": "The Mac's text editor, with Markdown highlighting.", "zh-hant": "Mac 原生的文字編輯器，附 Markdown 語法上色。"}),
+            (88.89, 5.56, "r", {"en": "⌘1 source, ⌘2 split, ⌘3 preview.", "zh-hant": "⌘1 原始碼、⌘2 並排、⌘3 預覽。"}),
+            (69.44, 13.78, "r", {"en": "The page updates as you type.", "zh-hant": "頁面會隨著打字更新。"}),
+        ],
+    },
+    "limits": {
+        "image": "03-dark",
+        "alt": {
+            "en": "MarsDawn in dark mode, with Markdown source on the left and the rendered page on the right.",
+            "zh-hant": "MarsDawn 的深色模式，左邊是 Markdown 原始碼，右邊是排版後的頁面。",
+        },
+        "callouts": [
+            (16.53, 7.0, "l", {"en": "One document per window, on this Mac.", "zh-hant": "一個視窗一份文件，就在這台 Mac 上。"}),
+            (10.07, 14.0, "l", {"en": "You write Markdown here.", "zh-hant": "你在這裡寫 Markdown。"}),
+            (88.89, 5.56, "r", {"en": "The toolbar holds themes and layouts, and there is no plugins menu.", "zh-hant": "工具列只有主題和版面，沒有外掛選單。"}),
+            (70.14, 13.78, "r", {"en": "The page is for reading, not editing.", "zh-hant": "這一側用來閱讀，不能直接編輯。"}),
+        ],
+    },
+}
+
+
+def _trait_page(title, description, intro, body):
+    return {"title": title, "description": description, "intro": intro, "body": body}
+
+
+TRAIT_PAGES = {
+    ("en", "yours"): _trait_page(
+        "Your writing stays on your Mac · MarsDawn",
+        "MarsDawn has no account, no sync and no cloud. Your documents stay on your Mac.",
+        """
+<section class="intro">
+  <h1>Your writing stays on your Mac.</h1>
+  <p>MarsDawn has no account, no sync and no cloud. It opens a file, you write, and it saves the file where you chose.</p>
+</section>
+""",
+        """
+<h2>What that means</h2>
+<ul>
+  <li><strong>There is no account</strong> to sign up for or sign in to.</li>
+  <li><strong>Nothing syncs to a cloud.</strong> Your documents stay where you save them.</li>
+  <li><strong>Nothing is tracked.</strong> MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".</li>
+  <li><strong>Web images stay blocked until you choose to load them,</strong> so opening a document never tells a server you read it. When you do load them, they load over https only.</li>
+  <li><strong>Local images</strong> show in the preview once you grant access to their folder.</li>
+</ul>
+<p>The details are in the <a href="/privacy/">privacy policy</a>.</p>
+""",
+    ),
+    ("zh-hant", "yours"): _trait_page(
+        "你寫的內容留在你的 Mac 上 · MarsDawn",
+        "MarsDawn 不需要帳號，沒有同步，也沒有雲端，你的文件留在你的 Mac 上。",
+        """
+<section class="intro">
+  <h1>你寫的內容，留在你的 Mac 上。</h1>
+  <p>MarsDawn 不需要帳號，沒有同步，也沒有雲端。它打開檔案、讓你寫，再存回你選的位置。</p>
+</section>
+""",
+        """
+<h2>這代表什麼</h2>
+<ul>
+  <li><strong>不需要帳號，</strong>不用註冊，也不用登入。</li>
+  <li><strong>不會同步到雲端，</strong>文件存在哪裡就留在哪裡。</li>
+  <li><strong>不追蹤任何行為。</strong>MarsDawn 不收集任何關於你的資料，App Store 隱私權標示為「未收集資料」。</li>
+  <li><strong>網路圖片在你選擇載入之前一律不載入，</strong>打開文件不會讓任何伺服器知道你讀了它。選擇載入時，也只走 https。</li>
+  <li><strong>本機圖片</strong>在你授權資料夾存取後，就會顯示在預覽中。</li>
+</ul>
+<p>完整說明請看<a href="/zh-hant/privacy/">隱私權政策</a>。</p>
+""",
+    ),
+    ("en", "pay-once"): _trait_page(
+        "Pay once · MarsDawn",
+        "MarsDawn costs USD 4.99, once. No subscription, no account, no paid tier.",
+        """
+<section class="intro">
+  <h1>Pay once. Keep all of it.</h1>
+  <p>MarsDawn costs USD 4.99, one time. There is no subscription and no paid tier: every feature is in the one purchase.</p>
+</section>
+""",
+        """
+<h2>What that means</h2>
+<ul>
+  <li><strong>One purchase</strong> on the Mac App Store, USD 4.99.</li>
+  <li><strong>There is no subscription,</strong> so nothing renews.</li>
+  <li><strong>There is no account:</strong> MarsDawn never asks you to create one.</li>
+  <li><strong>Nothing held back.</strong> Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.</li>
+</ul>
+""",
+    ),
+    ("zh-hant", "pay-once"): _trait_page(
+        "買一次就好 · MarsDawn",
+        "MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱、不需要帳號，也沒有付費進階版。",
+        """
+<section class="intro">
+  <h1>買一次，全部都是你的。</h1>
+  <p>MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱，也沒有付費進階版，所有功能都在這一次購買裡。</p>
+</section>
+""",
+        """
+<h2>這代表什麼</h2>
+<ul>
+  <li><strong>一次購買，</strong>在 Mac App Store，USD 4.99。</li>
+  <li><strong>沒有訂閱，</strong>不會自動續費。</li>
+  <li><strong>不需要帳號，</strong>MarsDawn 從不要求你建立帳號。</li>
+  <li><strong>沒有保留任何功能。</strong>所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都在你買的這個 app 裡。</li>
+</ul>
+""",
+    ),
+    ("en", "pdf"): _trait_page(
+        "PDF export · MarsDawn",
+        "Export as PDF or print, with Mermaid diagrams, highlighted code and careful page breaks.",
+        """
+<section class="intro">
+  <h1>The PDF looks like the page you wrote.</h1>
+  <p>Export as PDF or print, in your theme's light colors. Diagrams and highlighted code come through, and page breaks avoid splitting what belongs together.</p>
+</section>
+""",
+        """
+<h2>What that means</h2>
+<ul>
+  <li><strong>Mermaid diagrams</strong> are drawn into the PDF.</li>
+  <li><strong>Code blocks</strong> keep their syntax highlighting.</li>
+  <li><strong>Page breaks</strong> avoid leaving a heading at the bottom of a page or splitting code, tables and diagrams.</li>
+  <li><strong>Any layout.</strong> Export works even while only the source is showing.</li>
+</ul>
+<p>The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so a script or an AI agent gets the same PDF.</p>
+""",
+    ),
+    ("zh-hant", "pdf"): _trait_page(
+        "輸出 PDF · MarsDawn",
+        "輸出成 PDF 或列印，Mermaid 圖表、程式碼上色都會保留，分頁也經過安排。",
+        """
+<section class="intro">
+  <h1>PDF 看起來就是你寫的那一頁。</h1>
+  <p>輸出成 PDF 或列印，使用主題的淺色配色。圖表和程式碼上色都會保留，分頁位置也經過安排。</p>
+</section>
+""",
+        """
+<h2>這代表什麼</h2>
+<ul>
+  <li><strong>Mermaid 圖表</strong>直接畫進 PDF。</li>
+  <li><strong>程式碼區塊</strong>保留語法上色。</li>
+  <li><strong>分頁時</strong>會盡量不讓標題落在頁尾，也不切開程式碼、表格和圖表。</li>
+  <li><strong>任何版面都能輸出，</strong>只顯示原始碼時也可以。</li>
+</ul>
+<p>免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>使用同一套輸出程式，所以腳本或 AI agent 也能得到一樣的 PDF。</p>
+""",
+    ),
+    ("en", "native"): _trait_page(
+        "A Mac app · MarsDawn",
+        "Native windows and tabs, autosave, version history, Quick Look, and a text editor that behaves like the rest of your Mac.",
+        """
+<section class="intro">
+  <h1>A Mac app, made for the Mac.</h1>
+  <p>The windows, tabs, menus and text editor are the Mac's own. The rendered page is drawn by WebKit, the engine behind Safari.</p>
+</section>
+""",
+        """
+<h2>What that means</h2>
+<ul>
+  <li><strong>Source, split and preview layouts,</strong> one keystroke apart (<kbd>⌘1</kbd>, <kbd>⌘2</kbd>, <kbd>⌘3</kbd>).</li>
+  <li><strong>The two panes scroll together,</strong> so the paragraph you are editing stays in view.</li>
+  <li><strong>Markdown syntax highlighting</strong> in the editor, matched to your preview theme.</li>
+  <li><strong>Native windows, tabs, autosave and version history.</strong></li>
+  <li><strong>Quick Look:</strong> press Space on a Markdown file in Finder for a preview, diagrams included.</li>
+  <li><strong>Siri and Shortcuts:</strong> start a new document from a template, add a line to your notes inbox, or reopen a recent document.</li>
+  <li><strong>English and Traditional Chinese.</strong></li>
+</ul>
+""",
+    ),
+    ("zh-hant", "native"): _trait_page(
+        "為 Mac 而做 · MarsDawn",
+        "原生視窗與分頁、自動儲存、版本記錄、快速查看，文字編輯器的操作和 Mac 上其他 app 一致。",
+        """
+<section class="intro">
+  <h1>為 Mac 而做的 Mac app。</h1>
+  <p>視窗、分頁、選單和文字編輯器都是 Mac 原生的。排版後的頁面由 Safari 使用的 WebKit 引擎繪製。</p>
+</section>
+""",
+        """
+<h2>這代表什麼</h2>
+<ul>
+  <li><strong>原始碼、並排、預覽三種版面，</strong>一個快捷鍵切換（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
+  <li><strong>兩側同步捲動，</strong>正在編輯的段落一直在眼前。</li>
+  <li><strong>編輯器內建 Markdown 語法上色，</strong>顏色與預覽主題一致。</li>
+  <li><strong>原生視窗、分頁、自動儲存和版本記錄。</strong></li>
+  <li><strong>快速查看：</strong>在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。</li>
+  <li><strong>Siri 和捷徑：</strong>用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。</li>
+  <li><strong>支援英文和繁體中文。</strong></li>
+</ul>
+""",
+    ),
+    ("en", "limits"): _trait_page(
+        "What MarsDawn doesn't do · MarsDawn",
+        "No sync, no iPhone or iPad app, no plugins, no accounts. Four built-in themes. Know before you buy.",
+        """
+<section class="intro">
+  <h1>What MarsDawn doesn't do.</h1>
+  <p>Some things are left out on purpose. If you need one of them, it's better to know now than after you buy.</p>
+</section>
+""",
+        """
+<h2>Left out</h2>
+<ul>
+  <li><strong>Sync:</strong> MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.</li>
+  <li><strong>iPhone and iPad:</strong> there is no app for them; MarsDawn is for the Mac.</li>
+  <li><strong>Plugins:</strong> MarsDawn has no plugins or extensions.</li>
+  <li><strong>Sharing:</strong> there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.</li>
+  <li><strong>Editing:</strong> you write Markdown on the left and read the page on the right; the page itself can't be edited.</li>
+  <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
+  <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others.</li>
+  <li><strong>Other files:</strong> plain text files and PDFs open read-only.</li>
+  <li><strong>System:</strong> MarsDawn needs macOS 26 or later.</li>
+</ul>
+""",
+    ),
+    ("zh-hant", "limits"): _trait_page(
+        "MarsDawn 做不到的事 · MarsDawn",
+        "沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號，內建四種主題。購買前先知道。",
+        """
+<section class="intro">
+  <h1>MarsDawn 做不到的事。</h1>
+  <p>有些功能是刻意不做的。如果你需要其中一項，現在知道總比買了之後才發現好。</p>
+</section>
+""",
+        """
+<h2>刻意不做的</h2>
+<ul>
+  <li><strong>同步：</strong>MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。</li>
+  <li><strong>iPhone 和 iPad：</strong>沒有這兩個平台的版本，MarsDawn 只給 Mac。</li>
+  <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
+  <li><strong>分享：</strong>沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。</li>
+  <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
+  <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
+  <li><strong>主題：</strong>內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，無法安裝其他主題。</li>
+  <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
+  <li><strong>系統：</strong>MarsDawn 需要 macOS 26 以上。</li>
+</ul>
+""",
+    ),
+}
+
+TRAIT_LINK = {
+    "en": {
+        "yours": ("Your writing stays on your Mac", "No account, no sync, no cloud."),
+        "pay-once": ("Pay once", "USD 4.99, one time. No subscription."),
+        "pdf": ("PDF export", "Diagrams, highlighted code, careful page breaks."),
+        "native": ("A Mac app", "Native windows, tabs, autosave, Quick Look."),
+        "limits": ("What MarsDawn doesn't do", "Know before you buy."),
+    },
+    "zh-hant": {
+        "yours": ("你寫的內容留在你的 Mac 上", "不需要帳號，沒有同步，也沒有雲端。"),
+        "pay-once": ("買一次就好", "USD 4.99，買一次就好，沒有訂閱。"),
+        "pdf": ("輸出 PDF", "圖表、程式碼上色、經過安排的分頁。"),
+        "native": ("為 Mac 而做", "原生視窗、分頁、自動儲存、快速查看。"),
+        "limits": ("MarsDawn 做不到的事", "購買前先知道。"),
+    },
+}
+TRAIT_NAV_HEADING = {"en": "What to expect from MarsDawn", "zh-hant": "MarsDawn 是什麼樣的 app"}
+FIGURE_LIST_LABEL = {"en": "In this screenshot", "zh-hant": "這張截圖裡"}
+
+
+def trait_nav_html(locale: str, current: str) -> str:
+    items = "\n".join(
+        f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a>'
+        f'<span>{TRAIT_LINK[locale][slug][1]}</span></li>'
+        for slug in TRAIT_ORDER
+        if slug != current
+    )
+    return f'<nav class="traits" aria-label="{TRAIT_NAV_HEADING[locale]}">\n<h2>{TRAIT_NAV_HEADING[locale]}</h2>\n<ul>\n{items}\n</ul>\n</nav>'
+
+
+def figure_html(locale: str, slug: str) -> str:
+    fig = FIGURES[slug]
+    img = fig["image"]
+    _, _, width, height = CROPS[img]
+    markers = []
+    lines = []
+    legend = []
+    for index, (_, y, side, label) in enumerate(fig["callouts"], start=1):
+        cls = f"co-{slug}-{index}"
+        edge = " tb" if y < 9 else ""
+        markers.append(f'<span class="marker {side}{edge} {cls}" aria-hidden="true">{index}</span>')
+        lines.append(f'<span class="leader {side} {cls}" aria-hidden="true"><span>{label[locale]}</span></span>')
+        legend.append(f"<li>{label[locale]}</li>")
+    return f"""<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/{img}-{width}.png" srcset="/assets/screens/{img}-{SMALL_WIDTH}.png {SMALL_WIDTH}w, /assets/screens/{img}-{width}.png {width}w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="{width}" height="{height}" alt="{fig['alt'][locale]}">
+    {''.join(markers)}
+    {''.join(lines)}
+  </div></div>
+  <figcaption>
+    <span class="figure-label">{FIGURE_LIST_LABEL[locale]}</span>
+    <ol>{''.join(legend)}</ol>
+  </figcaption>
+</figure>"""
+
+
+def figure_markdown(locale: str, slug: str) -> str:
+    fig = FIGURES[slug]
+    image = fig["image"]
+    width = CROPS[image][2]
+    src = abs_url(f"/assets/screens/{image}-{width}.png")
+    colon = "：" if locale == "zh-hant" else ":"
+    lines = [f"![{fig['alt'][locale]}]({src})", "", f"{FIGURE_LIST_LABEL[locale]}{colon}", ""]
+    lines += [f"{i}. {label[locale]}" for i, (_, _, _, label) in enumerate(fig["callouts"], start=1)]
+    return "\n".join(lines)
+
+
+def annotations_css() -> str:
+    rules = [
+        "/* Generated by scripts/build_pages.py: callout positions for the annotated",
+        "   screenshots, kept out of inline styles so the CSP stays strict. */",
+    ]
+    for slug in TRAIT_ORDER:
+        image = FIGURES[slug]["image"]
+        for index, (x, y, _, _) in enumerate(FIGURES[slug]["callouts"], start=1):
+            cx, cy = cropped_position(image, x, y)
+            rules.append(f".co-{slug}-{index} {{ --x: {cx}%; --y: {cy}%; }}")
+    return "\n".join(rules) + "\n"
+
+
+def page_markdown(pages: dict, locale: str, slug: str) -> str:
+    page = pages[(locale, slug)]
+    if "intro" not in page:
+        return html_to_markdown(page["body"])
+    return "\n\n".join([
+        html_to_markdown(page["intro"]).rstrip(),
+        figure_markdown(locale, slug),
+        html_to_markdown(page["body"]).rstrip(),
+    ])
+
+PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "cli", "cli/agents"]
+SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
+                  "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits"}
 
 
 def all_pages() -> dict:
     merged = dict(PAGES)
     merged.update(CLI_PAGES)
     merged.update(AGENT_PAGES)
+    merged.update(TRAIT_PAGES)
     return merged
 
 
@@ -969,6 +1380,15 @@ def render(locale: str, slug: str, page: dict) -> str:
             "url": canonical_url,
         }
         jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
+    is_trait = "intro" in page
+    extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait else ""
+    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait else ""
+    if is_trait:
+        main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
+    elif slug == "index":
+        main_html = page["body"].strip() + "\n" + trait_nav_html(locale, "")
+    else:
+        main_html = page["body"].strip()
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -979,7 +1399,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
-{alternates}
+{extra_css}{alternates}
 {seo}
 {jsonld}</head>
 <body>
@@ -989,10 +1409,10 @@ def render(locale: str, slug: str, page: dict) -> str:
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <nav class="lang" aria-label="Language">{switch}</nav>
+  {chip}<nav class="lang" aria-label="Language">{switch}</nav>
 </header>
 <main>
-{page["body"].strip()}
+{main_html}
 </main>
 <footer class="footer">
   <span>{ui["tagline"]}</span>
@@ -1048,7 +1468,7 @@ def build_twin(pages: dict, locale: str, slug: str) -> str:
     The body alone would leave an agent on a twin with no way to the rest of the
     site, because the HTML header and footer links aren't part of it.
     """
-    body = html_to_markdown(pages[(locale, slug)]["body"])
+    body = page_markdown(pages, locale, slug)
     others = [other for other in PAGE_ORDER if other != slug]
     lines = [body.rstrip(), "", f"## {UI[locale]['more']}", ""]
     for other in others:
@@ -1093,7 +1513,7 @@ def build_llms_full(pages: dict) -> str:
             page = pages[(locale, slug)]
             label = UI[locale][SLUG_TO_UI_KEY[slug]]
             url = abs_url(page_path(locale, slug))
-            body_md = html_to_markdown(page["body"])
+            body_md = page_markdown(pages, locale, slug)
             sections.append(f"## {label}\n\nSource: {url}\n\n{body_md}")
     return "# MarsDawn — full content\n\n" + "\n---\n\n".join(sections)
 
@@ -1112,6 +1532,8 @@ def main() -> None:
     print(SITE / "llms.txt")
     (SITE / "llms-full.txt").write_text(build_llms_full(pages), encoding="utf-8")
     print(SITE / "llms-full.txt")
+    (SITE / "assets" / "annotations.css").write_text(annotations_css(), encoding="utf-8")
+    print(SITE / "assets" / "annotations.css")
     (SITE / "robots.txt").write_text(ROBOTS_TXT, encoding="utf-8")
     print(SITE / "robots.txt")
     (SITE / "sitemap.xml").write_text(build_sitemap(pages), encoding="utf-8")

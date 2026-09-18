@@ -13,6 +13,66 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/"/>
   </url>
   <url>
+    <loc>https://marsdawn.southern-light.dev/yours/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/yours/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/yours/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/yours/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/yours/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/yours/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/yours/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/yours/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/pay-once/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/pay-once/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/pay-once/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/pay-once/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/pay-once/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/pay-once/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/pay-once/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/pay-once/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/pdf/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/pdf/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/pdf/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/pdf/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/pdf/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/pdf/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/pdf/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/pdf/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/native/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/native/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/native/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/native/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/native/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/native/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/native/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/native/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/limits/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/limits/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/limits/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/limits/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/limits/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/limits/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/limits/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/limits/"/>
+  </url>
+  <url>
     <loc>https://marsdawn.southern-light.dev/support/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/support/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/support/"/>

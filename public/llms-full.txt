@@ -13,6 +13,140 @@ A native Markdown editor for the Mac. Write on the left, read on the right, with
 
 ---
 
+## Your writing stays on your Mac
+
+Source: https://marsdawn.southern-light.dev/yours/
+
+# Your writing stays on your Mac.
+
+MarsDawn has no account, no sync and no cloud. It opens a file, you write, and it saves the file where you chose.
+
+![MarsDawn showing a document in the Classic theme, with the preview filling the window.](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
+
+In this screenshot:
+
+1. A file on your Mac, saved where you choose.
+2. The whole toolbar is themes and layouts; there is nothing to sign in to.
+
+## What that means
+
+- **There is no account** to sign up for or sign in to.
+- **Nothing syncs to a cloud.** Your documents stay where you save them.
+- **Nothing is tracked.** MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".
+- **Web images stay blocked until you choose to load them,** so opening a document never tells a server you read it. When you do load them, they load over https only.
+- **Local images** show in the preview once you grant access to their folder.
+
+The details are in the [privacy policy](/privacy/).
+---
+
+## Pay once
+
+Source: https://marsdawn.southern-light.dev/pay-once/
+
+# Pay once. Keep all of it.
+
+MarsDawn costs USD 4.99, one time. There is no subscription and no paid tier: every feature is in the one purchase.
+
+![MarsDawn in the Vivid theme, with Markdown source on the left and the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
+
+In this screenshot:
+
+1. Markdown highlighting in the editor, included.
+2. Every theme and every layout is included.
+3. Mermaid diagrams, included.
+4. Code highlighting, included.
+
+## What that means
+
+- **One purchase** on the Mac App Store, USD 4.99.
+- **There is no subscription,** so nothing renews.
+- **There is no account:** MarsDawn never asks you to create one.
+- **Nothing held back.** Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.
+---
+
+## PDF export
+
+Source: https://marsdawn.southern-light.dev/pdf/
+
+# The PDF looks like the page you wrote.
+
+Export as PDF or print, in your theme's light colors. Diagrams and highlighted code come through, and page breaks avoid splitting what belongs together.
+
+![A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+
+In this screenshot:
+
+1. Mermaid diagrams, drawn into the PDF.
+2. Code keeps its highlighting.
+
+## What that means
+
+- **Mermaid diagrams** are drawn into the PDF.
+- **Code blocks** keep their syntax highlighting.
+- **Page breaks** avoid leaving a heading at the bottom of a page or splitting code, tables and diagrams.
+- **Any layout.** Export works even while only the source is showing.
+
+The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script or an AI agent gets the same PDF.
+---
+
+## A Mac app
+
+Source: https://marsdawn.southern-light.dev/native/
+
+# A Mac app, made for the Mac.
+
+The windows, tabs, menus and text editor are the Mac's own. The rendered page is drawn by WebKit, the engine behind Safari.
+
+![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+
+In this screenshot:
+
+1. A native Mac window.
+2. The Mac's text editor, with Markdown highlighting.
+3. ⌘1 source, ⌘2 split, ⌘3 preview.
+4. The page updates as you type.
+
+## What that means
+
+- **Source, split and preview layouts,** one keystroke apart (`⌘1`, `⌘2`, `⌘3`).
+- **The two panes scroll together,** so the paragraph you are editing stays in view.
+- **Markdown syntax highlighting** in the editor, matched to your preview theme.
+- **Native windows, tabs, autosave and version history.**
+- **Quick Look:** press Space on a Markdown file in Finder for a preview, diagrams included.
+- **Siri and Shortcuts:** start a new document from a template, add a line to your notes inbox, or reopen a recent document.
+- **English and Traditional Chinese.**
+---
+
+## What MarsDawn doesn't do
+
+Source: https://marsdawn.southern-light.dev/limits/
+
+# What MarsDawn doesn't do.
+
+Some things are left out on purpose. If you need one of them, it's better to know now than after you buy.
+
+![MarsDawn in dark mode, with Markdown source on the left and the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/03-dark-1180.png)
+
+In this screenshot:
+
+1. One document per window, on this Mac.
+2. You write Markdown here.
+3. The toolbar holds themes and layouts, and there is no plugins menu.
+4. The page is for reading, not editing.
+
+## Left out
+
+- **Sync:** MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.
+- **iPhone and iPad:** there is no app for them; MarsDawn is for the Mac.
+- **Plugins:** MarsDawn has no plugins or extensions.
+- **Sharing:** there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.
+- **Editing:** you write Markdown on the left and read the page on the right; the page itself can't be edited.
+- **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
+- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others.
+- **Other files:** plain text files and PDFs open read-only.
+- **System:** MarsDawn needs macOS 26 or later.
+---
+
 ## Support
 
 Source: https://marsdawn.southern-light.dev/support/
@@ -358,6 +492,140 @@ Source: https://marsdawn.southern-light.dev/zh-hant/
 - [支援與常見問題](/zh-hant/support/)
 - [隱私權政策](/zh-hant/privacy/)
 
+---
+
+## 你寫的內容留在你的 Mac 上
+
+Source: https://marsdawn.southern-light.dev/zh-hant/yours/
+
+# 你寫的內容，留在你的 Mac 上。
+
+MarsDawn 不需要帳號，沒有同步，也沒有雲端。它打開檔案、讓你寫，再存回你選的位置。
+
+![MarsDawn 以 Classic 主題顯示文件，預覽佔滿整個視窗。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
+
+這張截圖裡：
+
+1. 你 Mac 上的一個檔案，存在你選的地方。
+2. 整條工具列只有主題和版面，沒有任何需要登入的地方。
+
+## 這代表什麼
+
+- **不需要帳號，**不用註冊，也不用登入。
+- **不會同步到雲端，**文件存在哪裡就留在哪裡。
+- **不追蹤任何行為。**MarsDawn 不收集任何關於你的資料，App Store 隱私權標示為「未收集資料」。
+- **網路圖片在你選擇載入之前一律不載入，**打開文件不會讓任何伺服器知道你讀了它。選擇載入時，也只走 https。
+- **本機圖片**在你授權資料夾存取後，就會顯示在預覽中。
+
+完整說明請看[隱私權政策](/zh-hant/privacy/)。
+---
+
+## 買一次就好
+
+Source: https://marsdawn.southern-light.dev/zh-hant/pay-once/
+
+# 買一次，全部都是你的。
+
+MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱，也沒有付費進階版，所有功能都在這一次購買裡。
+
+![MarsDawn 使用 Vivid 主題，左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
+
+這張截圖裡：
+
+1. 編輯器的 Markdown 語法上色，包含在內。
+2. 所有主題和版面都包含在內。
+3. Mermaid 圖表，包含在內。
+4. 程式碼上色，包含在內。
+
+## 這代表什麼
+
+- **一次購買，**在 Mac App Store，USD 4.99。
+- **沒有訂閱，**不會自動續費。
+- **不需要帳號，**MarsDawn 從不要求你建立帳號。
+- **沒有保留任何功能。**所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都在你買的這個 app 裡。
+---
+
+## 輸出 PDF
+
+Source: https://marsdawn.southern-light.dev/zh-hant/pdf/
+
+# PDF 看起來就是你寫的那一頁。
+
+輸出成 PDF 或列印，使用主題的淺色配色。圖表和程式碼上色都會保留，分頁位置也經過安排。
+
+![用 MarsDawn 輸出的 PDF，在內建的 PDF 檢視器中開啟，旁邊有頁面縮圖。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+
+這張截圖裡：
+
+1. Mermaid 圖表直接畫進 PDF。
+2. 程式碼保留語法上色。
+
+## 這代表什麼
+
+- **Mermaid 圖表**直接畫進 PDF。
+- **程式碼區塊**保留語法上色。
+- **分頁時**會盡量不讓標題落在頁尾，也不切開程式碼、表格和圖表。
+- **任何版面都能輸出，**只顯示原始碼時也可以。
+
+免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，所以腳本或 AI agent 也能得到一樣的 PDF。
+---
+
+## 為 Mac 而做
+
+Source: https://marsdawn.southern-light.dev/zh-hant/native/
+
+# 為 Mac 而做的 Mac app。
+
+視窗、分頁、選單和文字編輯器都是 Mac 原生的。排版後的頁面由 Safari 使用的 WebKit 引擎繪製。
+
+![MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+
+這張截圖裡：
+
+1. 原生的 Mac 視窗。
+2. Mac 原生的文字編輯器，附 Markdown 語法上色。
+3. ⌘1 原始碼、⌘2 並排、⌘3 預覽。
+4. 頁面會隨著打字更新。
+
+## 這代表什麼
+
+- **原始碼、並排、預覽三種版面，**一個快捷鍵切換（`⌘1`、`⌘2`、`⌘3`）。
+- **兩側同步捲動，**正在編輯的段落一直在眼前。
+- **編輯器內建 Markdown 語法上色，**顏色與預覽主題一致。
+- **原生視窗、分頁、自動儲存和版本記錄。**
+- **快速查看：**在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。
+- **Siri 和捷徑：**用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。
+- **支援英文和繁體中文。**
+---
+
+## MarsDawn 做不到的事
+
+Source: https://marsdawn.southern-light.dev/zh-hant/limits/
+
+# MarsDawn 做不到的事。
+
+有些功能是刻意不做的。如果你需要其中一項，現在知道總比買了之後才發現好。
+
+![MarsDawn 的深色模式，左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/03-dark-1180.png)
+
+這張截圖裡：
+
+1. 一個視窗一份文件，就在這台 Mac 上。
+2. 你在這裡寫 Markdown。
+3. 工具列只有主題和版面，沒有外掛選單。
+4. 這一側用來閱讀，不能直接編輯。
+
+## 刻意不做的
+
+- **同步：**MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。
+- **iPhone 和 iPad：**沒有這兩個平台的版本，MarsDawn 只給 Mac。
+- **外掛：**MarsDawn 沒有外掛或擴充功能。
+- **分享：**沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。
+- **編輯：**你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。
+- **格式：**MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。
+- **主題：**內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，無法安裝其他主題。
+- **其他檔案：**純文字檔和 PDF 以唯讀方式開啟。
+- **系統：**MarsDawn 需要 macOS 26 以上。
 ---
 
 ## 支援
