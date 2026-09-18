@@ -47,15 +47,63 @@ UI = {
     },
 }
 
+# The homepage hero: one dawn scene, not a banner. Inline SVG (same-origin, no
+# script), colored entirely through CSS custom properties (site.css) so light
+# and dark mode are each designed. A four-stop sky carries real tonal steps
+# from deep night down to the warm limb; a wide radial glow sits at the
+# horizon; the planet's mass has its own rim-to-deep gradient so it reads as
+# a body, not a flat line. preserveAspectRatio keeps the horizon anchored to
+# the bottom of the scene (xMidYMax slice) across every hero height.
+DAWN_HERO_SVG = """<div class="dawn-wrap" aria-hidden="true">
+  <svg class="dawn-art" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-sky-1" offset="0%"></stop>
+        <stop class="stop-sky-2" offset="42%"></stop>
+        <stop class="stop-sky-3" offset="76%"></stop>
+        <stop class="stop-sky-4" offset="100%"></stop>
+      </linearGradient>
+      <radialGradient id="glowGrad" cx="50%" cy="63%" r="75%">
+        <stop class="stop-glow" offset="0%"></stop>
+        <stop class="stop-glow-mid" offset="42%"></stop>
+        <stop class="stop-glow-fade" offset="100%"></stop>
+      </radialGradient>
+      <linearGradient id="planetGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-planet-rim" offset="0%"></stop>
+        <stop class="stop-planet-deep" offset="26%"></stop>
+      </linearGradient>
+      <linearGradient id="limbGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop class="stop-limb-fade" offset="0%"></stop>
+        <stop class="stop-limb" offset="50%"></stop>
+        <stop class="stop-limb-fade" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="900" fill="url(#skyGrad)"></rect>
+    <ellipse cx="600" cy="560" rx="1000" ry="430" fill="url(#glowGrad)"></ellipse>
+    <path d="M -40 560 Q 600 428 1240 560 L 1240 920 L -40 920 Z" fill="url(#planetGrad)"></path>
+    <path class="limb-line" d="M -40 560 Q 600 428 1240 560" fill="none" stroke="url(#limbGrad)" stroke-width="5"></path>
+  </svg>
+</div>"""
+
 PAGES = {
     ("en", "index"): {
         "title": "MarsDawn",
-        "description": "MarsDawn is a native Markdown editor for the Mac with live preview, Mermaid diagrams and PDF export.",
-        "body": f"""
-<section class="intro">
-  <h1>MarsDawn</h1>
-  <p>A native Markdown editor for the Mac. Write on the left, read on the right, with Mermaid diagrams, four preview themes and PDF export.</p>
+        "description": "MarsDawn: a native Mac Markdown editor built for the AI workflow. An agent writes the Markdown, you review it with live preview, and it revises.",
+        "intro": """
+<section class="intro hero">
+  <p class="kicker">Built for the AI workflow</p>
+  <h1>Where an agent's Markdown gets a careful read.</h1>
+  <p>An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.</p>
 </section>
+""",
+        "body": """
+<h2>The loop</h2>
+<ul class="loop-steps">
+  <li><strong>The agent writes.</strong> Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.</li>
+  <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
+  <li><strong>The agent revises.</strong> Ask for changes. Open the revised file and read it the same way.</li>
+</ul>
+<p>Agents can drive MarsDawn directly: the free <a href="/cli/">marsdawn</a> command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See <a href="/cli/agents/">marsdawn for agents</a> for the details.</p>
 <ul class="links">
   <li><a href="/support/">Support and questions</a></li>
   <li><a href="/privacy/">Privacy Policy</a></li>
@@ -64,12 +112,22 @@ PAGES = {
     },
     ("zh-hant", "index"): {
         "title": "MarsDawn",
-        "description": "MarsDawn 是原生的 Mac Markdown 編輯器，支援即時預覽和 Mermaid 圖表，也能輸出 PDF。",
-        "body": f"""
-<section class="intro">
-  <h1>MarsDawn</h1>
-  <p>原生的 Mac Markdown 編輯器。左邊寫，右邊看排版後的頁面，支援 Mermaid 圖表和四種預覽主題，也能輸出 PDF。</p>
+        "description": "MarsDawn 是原生的 Mac Markdown 編輯器，為 AI 工作流程而生：agent 寫 Markdown，你用即時預覽檢閱，agent 再修改。",
+        "intro": """
+<section class="intro hero">
+  <p class="kicker">為 AI 工作流程而生</p>
+  <h1>讓 agent 寫的 Markdown，被好好讀過一遍。</h1>
+  <p>AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面並排顯示，再把修改意見交回去。</p>
 </section>
+""",
+        "body": """
+<h2>整個循環</h2>
+<ul class="loop-steps">
+  <li><strong>Agent 動筆。</strong>你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。</li>
+  <li><strong>你在 MarsDawn 裡讀。</strong>打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。</li>
+  <li><strong>Agent 修改。</strong>提出修改意見，agent 改好之後，再打開來讀一次。</li>
+</ul>
+<p>Agent 也能直接操作 MarsDawn：免費的 <a href="/zh-hant/cli/">marsdawn</a> 命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
 <ul class="links">
   <li><a href="/zh-hant/support/">支援與常見問題</a></li>
   <li><a href="/zh-hant/privacy/">隱私權政策</a></li>
@@ -147,7 +205,7 @@ PAGES = {
 <p>在預覽中點選的連結會用你的預設瀏覽器打開，適用該瀏覽器的隱私做法。</p>
 
 <h2>Siri、捷徑和 Spotlight</h2>
-<p>MarsDawn 提供 Siri、捷徑 App 和 Spotlight 可用的動作，例如新增文件或加入筆記。使用時，你提供的文字會交給你 Mac 上的 MarsDawn，並只存到動作指定的位置（新文件，或你所選筆記資料夾中的 <code>Inbox.md</code>）。對 Siri 說的話由 Apple 依<a href="https://www.apple.com/legal/privacy/">Apple 隱私權政策</a>處理。</p>
+<p>MarsDawn 提供 Siri、捷徑 App 和 Spotlight 可用的動作，例如新增文件或加入筆記。使用時，你提供的文字會交給你 Mac 上的 MarsDawn，並只存到動作指定的位置（新文件，或你所選筆記資料夾中的 <code>Inbox.md</code>）。對 Siri 說的話由 Apple 依 <a href="https://www.apple.com/legal/privacy/">Apple 隱私權政策</a> 處理。</p>
 
 <h2>輸出 PDF 和列印</h2>
 <p>輸出 PDF 和列印都在你的 Mac 上完成。PDF 存在你選擇的位置，列印則透過 macOS 送到你選的印表機。</p>
@@ -806,6 +864,14 @@ def cropped_position(image: str, x: float, y: float) -> tuple:
     ox, oy, w, h = CROPS[image]
     return round((x * 14.4 - ox) / w * 100, 2), round((y * 9.0 - oy) / h * 100, 2)
 FIGURES = {
+    "index": {
+        "image": "01-split",
+        "alt": {
+            "en": "MarsDawn in split view: the Markdown source on the left, the rendered page on the right.",
+            "zh-hant": "MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。",
+        },
+        "callouts": [],
+    },
     "yours": {
         "image": "02-classic",
         "alt": {
@@ -1132,16 +1198,19 @@ def figure_html(locale: str, slug: str) -> str:
         markers.append(f'<span class="marker {side}{edge} {cls}" aria-hidden="true">{index}</span>')
         lines.append(f'<span class="leader {side} {cls}" aria-hidden="true"><span>{label[locale]}</span></span>')
         legend.append(f"<li>{label[locale]}</li>")
+    figcaption = ""
+    if legend:
+        figcaption = f"""
+  <figcaption>
+    <span class="figure-label">{FIGURE_LIST_LABEL[locale]}</span>
+    <ol>{''.join(legend)}</ol>
+  </figcaption>"""
     return f"""<figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
     <img src="/assets/screens/{img}-{width}.png" srcset="/assets/screens/{img}-{SMALL_WIDTH}.png {SMALL_WIDTH}w, /assets/screens/{img}-{width}.png {width}w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="{width}" height="{height}" alt="{fig['alt'][locale]}">
     {''.join(markers)}
     {''.join(lines)}
-  </div></div>
-  <figcaption>
-    <span class="figure-label">{FIGURE_LIST_LABEL[locale]}</span>
-    <ol>{''.join(legend)}</ol>
-  </figcaption>
+  </div></div>{figcaption}
 </figure>"""
 
 
@@ -1150,9 +1219,11 @@ def figure_markdown(locale: str, slug: str) -> str:
     image = fig["image"]
     width = CROPS[image][2]
     src = abs_url(f"/assets/screens/{image}-{width}.png")
-    colon = "：" if locale == "zh-hant" else ":"
-    lines = [f"![{fig['alt'][locale]}]({src})", "", f"{FIGURE_LIST_LABEL[locale]}{colon}", ""]
-    lines += [f"{i}. {label[locale]}" for i, (_, _, _, label) in enumerate(fig["callouts"], start=1)]
+    lines = [f"![{fig['alt'][locale]}]({src})"]
+    if fig["callouts"]:
+        colon = "：" if locale == "zh-hant" else ":"
+        lines += ["", f"{FIGURE_LIST_LABEL[locale]}{colon}", ""]
+        lines += [f"{i}. {label[locale]}" for i, (_, _, _, label) in enumerate(fig["callouts"], start=1)]
     return "\n".join(lines)
 
 
@@ -1380,13 +1451,23 @@ def render(locale: str, slug: str, page: dict) -> str:
             "url": canonical_url,
         }
         jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
-    is_trait = "intro" in page
-    extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait else ""
-    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait else ""
-    if is_trait:
+    has_intro = "intro" in page
+    is_trait_page = slug in TRAIT_ORDER
+    extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
+    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
+    if slug == "index":
+        hero_html = (
+            '<section class="hero-scene">\n'
+            f"{DAWN_HERO_SVG}\n"
+            '<div class="hero-inner">\n'
+            f'<div class="hero-copy">\n{page["intro"].strip()}\n</div>\n'
+            f'<div class="hero-shot">\n{figure_html(locale, slug)}\n</div>\n'
+            "</div>\n"
+            "</section>"
+        )
+        main_html = "\n".join([hero_html, page["body"].strip(), trait_nav_html(locale, "")])
+    elif has_intro:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
-    elif slug == "index":
-        main_html = page["body"].strip() + "\n" + trait_nav_html(locale, "")
     else:
         main_html = page["body"].strip()
     return f"""<!doctype html>
