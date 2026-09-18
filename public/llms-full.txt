@@ -134,6 +134,8 @@ The free `marsdawn` command-line tool: open Markdown files in MarsDawn, or expor
 
 **marsdawn is free and distributed separately from the Mac App Store.** Homebrew isn't published yet, so build it from source with Swift Package Manager. Both commands need the MarsDawn app installed.
 
+Calling marsdawn from an AI agent or a script? See [marsdawn for agents](/cli/agents/) for the JSON output, its schemas and every exit code.
+
 ## Install
 
 Clone [the source](https://github.com/redtear1115/mars-dawn-kit) and run it with Swift Package Manager:
@@ -195,6 +197,120 @@ On success, `marsdawn open --json` prints `ok`, `opened` (the file paths) and `a
 ## MarsDawn must be installed
 
 Both `open` and `export` need the MarsDawn app installed from the Mac App Store; `export` renders through the same code the app uses, but still checks that the app is present first.
+
+---
+
+## marsdawn for agents
+
+Source: https://marsdawn.southern-light.dev/cli/agents/
+
+# marsdawn for agents
+
+A reference for AI agents and scripts that call the `marsdawn` command-line tool. Every example on this page was run against the tool built from the current source.
+
+**To turn a Markdown file into a PDF, run `marsdawn export notes.md --json` and read one JSON object from stdout.** Mermaid diagrams and highlighted code are rendered the same way as in the MarsDawn app. The MarsDawn app must be installed.
+
+## What it does
+
+- `export` renders one Markdown file to a paginated PDF with the same exporter as the MarsDawn app. No window opens.
+- `open` opens one or more Markdown files in the MarsDawn app, so a person can review them.
+
+## What it does not do
+
+- It doesn't read Markdown from stdin. Pass a file path.
+- It doesn't write the PDF to stdout. The PDF always goes to a file; stdout carries only the result.
+- It doesn't replace an existing file unless you pass `--force`.
+- It doesn't load images from the web unless you pass `--allow-remote-images`, and then only over https.
+- It doesn't work without the MarsDawn app installed. Both commands exit with code 3.
+- It has no `--version` option; passing one is a usage error.
+- It runs on macOS only.
+
+## export
+
+```
+marsdawn export notes.md --json
+```
+
+Writes `notes.pdf` next to `notes.md`. Options:
+
+- `-o, --output <path>`: where to write the PDF. Defaults to the input path with a `.pdf` extension.
+- `--theme <dawn|classic|modern|vivid>`: the theme's light palette. Defaults to `$MARSDAWN_THEME`, then `dawn`.
+- `--paper <a4|letter>`: paper size. Defaults to `a4`.
+- `--allow-remote-images`: load https images from the web while rendering.
+- `--force`: replace the output file if it exists.
+- `--json`: print one JSON object on stdout instead of text.
+
+```
+marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json
+```
+
+Success, exit code 0:
+
+```
+{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}
+```
+
+- `output`: absolute path of the PDF that was written.
+- `pages`: number of pages.
+- `theme` and `paper`: the values used.
+- `diagramErrors`: one message per Mermaid diagram that failed to render. The PDF is still written.
+
+## open
+
+```
+marsdawn open notes.md --json
+```
+
+Success, exit code 0:
+
+```
+{"app":"/Applications/MarsDawn.app","ok":true,"opened":["/path/to/notes.md"]}
+```
+
+- `opened`: absolute paths of the files that were opened.
+- `app`: path of the MarsDawn app that opened them.
+
+## Failures
+
+With `--json`, a failure prints one JSON object on stdout and exits with its code:
+
+```
+{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}
+```
+
+- `2`, `input_not_found`: the input doesn't exist, is a folder, or isn't UTF-8 text.
+- `3`, `app_not_installed`: MarsDawn isn't installed.
+- `4`, `output_exists`: the output file exists. Pass `--force`.
+- `5`, `export_failed`: the export itself failed.
+- `64`: usage error, such as an unknown option or an invalid value. This one is printed as text on stderr, even with `--json`.
+
+## JSON Schemas
+
+JSON Schema (draft 2020-12) for every `--json` result:
+
+- [export.v1.json](/schemas/cli/export.v1.json): export success
+- [open.v1.json](/schemas/cli/open.v1.json): open success
+- [error.v1.json](/schemas/cli/error.v1.json): failure, both commands
+
+## Environment variables
+
+- `MARSDAWN_THEME`: the theme `export` uses when `--theme` isn't passed. An unknown value falls back to `dawn` without an error.
+
+## Requirements
+
+- The tool runs on macOS 15 or later. Building it needs Swift 6.2 or later, which comes with Xcode 26 or later.
+- The MarsDawn app needs macOS 26 or later.
+
+## Install
+
+Build it from [the source](https://github.com/redtear1115/mars-dawn-kit). The first build fetches dependencies and compiles, which takes a few minutes.
+
+```
+git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift build -c release --product marsdawn
+.build/release/marsdawn export notes.md --json
+```
 
 ---
 
@@ -332,6 +448,8 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/
 
 **marsdawn 免費、另外發佈，不透過 Mac App Store。**目前尚未發佈到 Homebrew，需要用 Swift Package Manager 自行建置。兩個指令都需要先安裝 MarsDawn。
 
+要從 AI agent 或腳本呼叫 marsdawn？請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)，裡面有 JSON 輸出、Schema 和所有離開代碼。
+
 ## 安裝
 
 下載[原始碼](https://github.com/redtear1115/mars-dawn-kit)，並用 Swift Package Manager 執行：
@@ -393,3 +511,117 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 ## 需要先安裝 MarsDawn
 
 `open` 和 `export` 都需要先從 Mac App Store 安裝 MarsDawn；`export` 雖然使用和 App 相同的元件，仍會先檢查 App 是否已安裝。
+
+---
+
+## 給 AI agent 的 marsdawn 參考
+
+Source: https://marsdawn.southern-light.dev/zh-hant/cli/agents/
+
+# 給 AI agent 的 marsdawn 參考
+
+給呼叫 `marsdawn` 命令列工具的 AI agent 與腳本參考。本頁每個範例都用目前原始碼建置的工具實際執行過。
+
+**要把 Markdown 檔轉成 PDF，執行 `marsdawn export notes.md --json`，再從 stdout 讀取一個 JSON 物件。**Mermaid 圖表與程式碼上色的呈現方式和 MarsDawn app 相同。需要先安裝 MarsDawn。
+
+## 能做什麼
+
+- `export`：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。
+- `open`：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱。
+
+## 不做什麼
+
+- 不從 stdin 讀取 Markdown，請傳入檔案路徑。
+- 不把 PDF 寫到 stdout。PDF 一律寫成檔案，stdout 只輸出結果。
+- 檔案已存在時不會覆寫，除非加上 `--force`。
+- 不載入網路圖片，除非加上 `--allow-remote-images`，而且只走 https。
+- 沒有安裝 MarsDawn 就無法使用，兩個指令都會以代碼 3 結束。
+- 沒有 `--version` 選項，傳入會被視為用法錯誤。
+- 只能在 macOS 上執行。
+
+## export
+
+```
+marsdawn export notes.md --json
+```
+
+在 `notes.md` 旁寫出 `notes.pdf`。選項：
+
+- `-o, --output <path>`：PDF 的寫入位置。預設為輸入檔路徑，副檔名換成 `.pdf`。
+- `--theme <dawn|classic|modern|vivid>`：使用主題的淺色色盤。預設為 `$MARSDAWN_THEME`，其次是 `dawn`。
+- `--paper <a4|letter>`：紙張大小。預設為 `a4`。
+- `--allow-remote-images`：算繪時載入網路上的 https 圖片。
+- `--force`：輸出檔已存在時覆寫。
+- `--json`：在 stdout 輸出一個 JSON 物件，而不是文字。
+
+```
+marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json
+```
+
+成功，離開代碼 0：
+
+```
+{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}
+```
+
+- `output`：寫出的 PDF 的絕對路徑。
+- `pages`：頁數。
+- `theme` 與 `paper`：實際使用的值。
+- `diagramErrors`：每個算繪失敗的 Mermaid 圖表各一則訊息。PDF 仍會寫出。
+
+## open
+
+```
+marsdawn open notes.md --json
+```
+
+成功，離開代碼 0：
+
+```
+{"app":"/Applications/MarsDawn.app","ok":true,"opened":["/path/to/notes.md"]}
+```
+
+- `opened`：已開啟檔案的絕對路徑。
+- `app`：開啟它們的 MarsDawn app 路徑。
+
+## 失敗
+
+加上 `--json` 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：
+
+```
+{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}
+```
+
+- `2`，`input_not_found`：輸入檔不存在、是資料夾，或不是 UTF-8 文字。
+- `3`，`app_not_installed`：沒有安裝 MarsDawn。
+- `4`，`output_exists`：輸出檔已存在，請加上 `--force`。
+- `5`，`export_failed`：匯出本身失敗。
+- `64`：用法錯誤，例如未知的選項或無效的值。這種錯誤一律以文字輸出到 stderr，即使加了 `--json` 也一樣。
+
+## JSON Schema
+
+每種 `--json` 結果的 JSON Schema（draft 2020-12）：
+
+- [export.v1.json](/schemas/cli/export.v1.json): export 成功
+- [open.v1.json](/schemas/cli/open.v1.json): open 成功
+- [error.v1.json](/schemas/cli/error.v1.json): 兩個指令的失敗結果
+
+## 環境變數
+
+- `MARSDAWN_THEME`：沒有傳入 `--theme` 時，`export` 使用的主題。未知的值會直接改用 `dawn`，不會報錯。
+
+## 系統需求
+
+- 這個工具需要 macOS 15 以上。建置需要 Swift 6.2 以上，也就是 Xcode 26 以上。
+- MarsDawn app 需要 macOS 26 以上。
+
+## 安裝
+
+從[原始碼](https://github.com/redtear1115/mars-dawn-kit)建置。第一次建置會下載相依套件並編譯，需要幾分鐘。
+
+```
+git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift build -c release --product marsdawn
+.build/release/marsdawn export notes.md --json
+```

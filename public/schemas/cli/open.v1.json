@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marsdawn.southern-light.dev/schemas/cli/open.v1.json",
+  "title": "marsdawn open --json: success",
+  "description": "Printed on stdout as one line when `marsdawn open --json` succeeds (exit code 0).",
+  "type": "object",
+  "required": [
+    "ok",
+    "opened",
+    "app"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "ok": {
+      "const": true
+    },
+    "opened": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Absolute paths of the files that were opened."
+    },
+    "app": {
+      "type": "string",
+      "description": "Path of the MarsDawn app that opened them."
+    }
+  }
+}

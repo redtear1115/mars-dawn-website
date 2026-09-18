@@ -4,6 +4,8 @@ The free `marsdawn` command-line tool: open Markdown files in MarsDawn, or expor
 
 **marsdawn is free and distributed separately from the Mac App Store.** Homebrew isn't published yet, so build it from source with Swift Package Manager. Both commands need the MarsDawn app installed.
 
+Calling marsdawn from an AI agent or a script? See [marsdawn for agents](/cli/agents/) for the JSON output, its schemas and every exit code.
+
 ## Install
 
 Clone [the source](https://github.com/redtear1115/mars-dawn-kit) and run it with Swift Package Manager:
@@ -71,4 +73,5 @@ Both `open` and `export` need the MarsDawn app installed from the Mac App Store;
 - [MarsDawn](https://marsdawn.southern-light.dev/index.md): MarsDawn is a native Markdown editor for the Mac with live preview, Mermaid diagrams and PDF export.
 - [Support](https://marsdawn.southern-light.dev/support/index.md): Get help with MarsDawn, the Markdown editor for macOS.
 - [Privacy Policy](https://marsdawn.southern-light.dev/privacy/index.md): MarsDawn does not collect personal data. Your documents and settings stay on your Mac.
+- [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): A reference for AI agents and scripts that call marsdawn: commands, JSON output, schemas, exit codes and requirements.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。

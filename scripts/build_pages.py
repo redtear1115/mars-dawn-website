@@ -29,12 +29,14 @@ OG_LOCALE = {"en": "en_US", "zh-hant": "zh_TW"}
 UI = {
     "en": {
         "home": "MarsDawn", "privacy": "Privacy Policy", "support": "Support", "cli": "Command Line",
+        "agents": "marsdawn for agents", "using_cli": "Using the CLI",
         "updated": f"Last updated {UPDATED}", "tagline": "A new dawn for Markdown.",
         "footer_store": "MarsDawn is available on the Mac App Store.",
         "more": "More",
     },
     "zh-hant": {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
+        "agents": "給 AI agent 的 marsdawn 參考", "using_cli": "使用 CLI",
         "updated": f"最後更新：{UPDATED}", "tagline": "Markdown 的新黎明。",
         "footer_store": "MarsDawn 於 Mac App Store 販售。",
         "more": "其他頁面",
@@ -280,6 +282,8 @@ CLI_PAGES = {
 
 <div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Homebrew isn't published yet, so build it from source with Swift Package Manager. Both commands need the MarsDawn app installed.</p></div>
 
+<p>Calling marsdawn from an AI agent or a script? See <a href="/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code.</p>
+
 <h2>Install</h2>
 <p>Clone <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> and run it with Swift Package Manager:</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
@@ -341,6 +345,8 @@ swift run marsdawn open notes.md</code></pre>
 
 <div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>目前尚未發佈到 Homebrew，需要用 Swift Package Manager 自行建置。兩個指令都需要先安裝 MarsDawn。</p></div>
 
+<p>要從 AI agent 或腳本呼叫 marsdawn？請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>，裡面有 JSON 輸出、Schema 和所有離開代碼。</p>
+
 <h2>安裝</h2>
 <p>下載<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>，並用 Swift Package Manager 執行：</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
@@ -393,13 +399,297 @@ swift run marsdawn open notes.md</code></pre>
     },
 }
 
-PAGE_ORDER = ["index", "support", "privacy", "cli"]
-SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli"}
+
+# The agent reference, W2. Every fact and every example is taken from
+# redtear1115/mars-dawn-kit @ origin/main cb5150c (Sources/marsdawn/Commands.swift,
+# Sources/marsdawn/main.swift, Package.swift), and every example was run against a
+# release build of that commit before publishing.
+# TODO(kit PR #12, s7-cli-reveal): when it merges and 0.3.0 is tagged, `open --json`
+# reports `opened` as {path, line} objects and `open` gains a line argument. Update
+# this page, OPEN_SCHEMA (as open.v2.json, keeping v1) and llms.txt then, not before.
+# TODO(Homebrew tap): once the tap PR merges, the install section becomes
+#   brew tap redtear1115/tap && brew install marsdawn
+# still stating that it compiles from source and takes a few minutes.
+SCHEMA_BASE = "/schemas/cli/"
+SCHEMA_FILES = {"export": "export.v1.json", "open": "open.v1.json", "error": "error.v1.json"}
+
+THEME_IDS = ["dawn", "classic", "modern", "vivid"]
+PAPER_SIZES = ["a4", "letter"]
+ERROR_KINDS = ["input_not_found", "app_not_installed", "output_exists", "export_failed"]
+
+
+def schema_url(kind: str) -> str:
+    return BASE_URL + SCHEMA_BASE + SCHEMA_FILES[kind]
+
+
+SCHEMAS = {
+    "export": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": schema_url("export"),
+        "title": "marsdawn export --json: success",
+        "description": "Printed on stdout as one line when `marsdawn export --json` succeeds (exit code 0).",
+        "type": "object",
+        "required": ["ok", "output", "pages", "theme", "paper", "diagramErrors"],
+        "additionalProperties": False,
+        "properties": {
+            "ok": {"const": True},
+            "output": {"type": "string", "description": "Absolute path of the PDF that was written."},
+            "pages": {"type": "integer", "minimum": 0, "description": "Number of pages in the PDF."},
+            "theme": {"enum": THEME_IDS, "description": "Theme used for the export."},
+            "paper": {"enum": PAPER_SIZES, "description": "Paper size used for the export."},
+            "diagramErrors": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "One message per Mermaid diagram that failed to render. The PDF is still written.",
+            },
+        },
+    },
+    "open": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": schema_url("open"),
+        "title": "marsdawn open --json: success",
+        "description": "Printed on stdout as one line when `marsdawn open --json` succeeds (exit code 0).",
+        "type": "object",
+        "required": ["ok", "opened", "app"],
+        "additionalProperties": False,
+        "properties": {
+            "ok": {"const": True},
+            "opened": {
+                "type": "array",
+                "items": {"type": "string"},
+                "minItems": 1,
+                "description": "Absolute paths of the files that were opened.",
+            },
+            "app": {"type": "string", "description": "Path of the MarsDawn app that opened them."},
+        },
+    },
+    "error": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": schema_url("error"),
+        "title": "marsdawn --json: failure",
+        "description": "Printed on stdout as one line when a command run with --json fails with exit code 2, 3, 4 or 5. Usage errors (exit code 64) are printed as text on stderr instead.",
+        "type": "object",
+        "required": ["ok", "error", "message"],
+        "additionalProperties": False,
+        "properties": {
+            "ok": {"const": False},
+            "error": {"enum": ERROR_KINDS, "description": "Machine-readable failure kind."},
+            "message": {"type": "string", "description": "Human-readable explanation."},
+        },
+    },
+}
+
+
+def schema_links(locale: str) -> str:
+    notes = {
+        "en": {"export": "export success", "open": "open success", "error": "failure, both commands"},
+        "zh-hant": {"export": "export 成功", "open": "open 成功", "error": "兩個指令的失敗結果"},
+    }[locale]
+    return "\n".join(
+        f'  <li><a href="{SCHEMA_BASE}{SCHEMA_FILES[kind]}">{SCHEMA_FILES[kind]}</a>: {notes[kind]}</li>'
+        for kind in ("export", "open", "error")
+    )
+
+
+AGENT_PAGES = {
+    ("en", "cli/agents"): {
+        "title": "marsdawn for agents · MarsDawn",
+        "description": "A reference for AI agents and scripts that call marsdawn: commands, JSON output, schemas, exit codes and requirements.",
+        "body": f"""
+<section class="intro">
+  <h1>marsdawn for agents</h1>
+  <p>A reference for AI agents and scripts that call the <code>marsdawn</code> command-line tool. Every example on this page was run against the tool built from the current source.</p>
+</section>
+
+<div class="summary"><p><strong>To turn a Markdown file into a PDF, run <code>marsdawn export notes.md --json</code> and read one JSON object from stdout.</strong> Mermaid diagrams and highlighted code are rendered the same way as in the MarsDawn app. The MarsDawn app must be installed.</p></div>
+
+<h2>What it does</h2>
+<ul>
+  <li><code>export</code> renders one Markdown file to a paginated PDF with the same exporter as the MarsDawn app. No window opens.</li>
+  <li><code>open</code> opens one or more Markdown files in the MarsDawn app, so a person can review them.</li>
+</ul>
+
+<h2>What it does not do</h2>
+<ul>
+  <li>It doesn't read Markdown from stdin. Pass a file path.</li>
+  <li>It doesn't write the PDF to stdout. The PDF always goes to a file; stdout carries only the result.</li>
+  <li>It doesn't replace an existing file unless you pass <code>--force</code>.</li>
+  <li>It doesn't load images from the web unless you pass <code>--allow-remote-images</code>, and then only over https.</li>
+  <li>It doesn't work without the MarsDawn app installed. Both commands exit with code 3.</li>
+  <li>It has no <code>--version</code> option; passing one is a usage error.</li>
+  <li>It runs on macOS only.</li>
+</ul>
+
+<h2>export</h2>
+<pre><code>marsdawn export notes.md --json</code></pre>
+<p>Writes <code>notes.pdf</code> next to <code>notes.md</code>. Options:</p>
+<ul>
+  <li><code>-o, --output &lt;path&gt;</code>: where to write the PDF. Defaults to the input path with a <code>.pdf</code> extension.</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: the theme's light palette. Defaults to <code>$MARSDAWN_THEME</code>, then <code>dawn</code>.</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>: paper size. Defaults to <code>a4</code>.</li>
+  <li><code>--allow-remote-images</code>: load https images from the web while rendering.</li>
+  <li><code>--force</code>: replace the output file if it exists.</li>
+  <li><code>--json</code>: print one JSON object on stdout instead of text.</li>
+</ul>
+<pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
+<p>Success, exit code 0:</p>
+<pre><code>{{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}}</code></pre>
+<ul>
+  <li><code>output</code>: absolute path of the PDF that was written.</li>
+  <li><code>pages</code>: number of pages.</li>
+  <li><code>theme</code> and <code>paper</code>: the values used.</li>
+  <li><code>diagramErrors</code>: one message per Mermaid diagram that failed to render. The PDF is still written.</li>
+</ul>
+
+<h2>open</h2>
+<pre><code>marsdawn open notes.md --json</code></pre>
+<p>Success, exit code 0:</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":["/path/to/notes.md"]}}</code></pre>
+<ul>
+  <li><code>opened</code>: absolute paths of the files that were opened.</li>
+  <li><code>app</code>: path of the MarsDawn app that opened them.</li>
+</ul>
+
+<h2>Failures</h2>
+<p>With <code>--json</code>, a failure prints one JSON object on stdout and exits with its code:</p>
+<pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
+<ul>
+  <li><code>2</code>, <code>input_not_found</code>: the input doesn't exist, is a folder, or isn't UTF-8 text.</li>
+  <li><code>3</code>, <code>app_not_installed</code>: MarsDawn isn't installed.</li>
+  <li><code>4</code>, <code>output_exists</code>: the output file exists. Pass <code>--force</code>.</li>
+  <li><code>5</code>, <code>export_failed</code>: the export itself failed.</li>
+  <li><code>64</code>: usage error, such as an unknown option or an invalid value. This one is printed as text on stderr, even with <code>--json</code>.</li>
+</ul>
+
+<h2>JSON Schemas</h2>
+<p>JSON Schema (draft 2020-12) for every <code>--json</code> result:</p>
+<ul>
+{schema_links("en")}
+</ul>
+
+<h2>Environment variables</h2>
+<ul>
+  <li><code>MARSDAWN_THEME</code>: the theme <code>export</code> uses when <code>--theme</code> isn't passed. An unknown value falls back to <code>dawn</code> without an error.</li>
+</ul>
+
+<h2>Requirements</h2>
+<ul>
+  <li>The tool runs on macOS 15 or later. Building it needs Swift 6.2 or later, which comes with Xcode 26 or later.</li>
+  <li>The MarsDawn app needs macOS 26 or later.</li>
+</ul>
+
+<h2>Install</h2>
+<p>Build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a>. The first build fetches dependencies and compiles, which takes a few minutes.</p>
+<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift build -c release --product marsdawn
+.build/release/marsdawn export notes.md --json</code></pre>
+""",
+    },
+    ("zh-hant", "cli/agents"): {
+        "title": "給 AI agent 的 marsdawn 參考 · MarsDawn",
+        "description": "給呼叫 marsdawn 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。",
+        "body": f"""
+<section class="intro">
+  <h1>給 AI agent 的 marsdawn 參考</h1>
+  <p>給呼叫 <code>marsdawn</code> 命令列工具的 AI agent 與腳本參考。本頁每個範例都用目前原始碼建置的工具實際執行過。</p>
+</section>
+
+<div class="summary"><p><strong>要把 Markdown 檔轉成 PDF，執行 <code>marsdawn export notes.md --json</code>，再從 stdout 讀取一個 JSON 物件。</strong>Mermaid 圖表與程式碼上色的呈現方式和 MarsDawn app 相同。需要先安裝 MarsDawn。</p></div>
+
+<h2>能做什麼</h2>
+<ul>
+  <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
+  <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱。</li>
+</ul>
+
+<h2>不做什麼</h2>
+<ul>
+  <li>不從 stdin 讀取 Markdown，請傳入檔案路徑。</li>
+  <li>不把 PDF 寫到 stdout。PDF 一律寫成檔案，stdout 只輸出結果。</li>
+  <li>檔案已存在時不會覆寫，除非加上 <code>--force</code>。</li>
+  <li>不載入網路圖片，除非加上 <code>--allow-remote-images</code>，而且只走 https。</li>
+  <li>沒有安裝 MarsDawn 就無法使用，兩個指令都會以代碼 3 結束。</li>
+  <li>沒有 <code>--version</code> 選項，傳入會被視為用法錯誤。</li>
+  <li>只能在 macOS 上執行。</li>
+</ul>
+
+<h2>export</h2>
+<pre><code>marsdawn export notes.md --json</code></pre>
+<p>在 <code>notes.md</code> 旁寫出 <code>notes.pdf</code>。選項：</p>
+<ul>
+  <li><code>-o, --output &lt;path&gt;</code>：PDF 的寫入位置。預設為輸入檔路徑，副檔名換成 <code>.pdf</code>。</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：使用主題的淺色色盤。預設為 <code>$MARSDAWN_THEME</code>，其次是 <code>dawn</code>。</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>：紙張大小。預設為 <code>a4</code>。</li>
+  <li><code>--allow-remote-images</code>：算繪時載入網路上的 https 圖片。</li>
+  <li><code>--force</code>：輸出檔已存在時覆寫。</li>
+  <li><code>--json</code>：在 stdout 輸出一個 JSON 物件，而不是文字。</li>
+</ul>
+<pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
+<p>成功，離開代碼 0：</p>
+<pre><code>{{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}}</code></pre>
+<ul>
+  <li><code>output</code>：寫出的 PDF 的絕對路徑。</li>
+  <li><code>pages</code>：頁數。</li>
+  <li><code>theme</code> 與 <code>paper</code>：實際使用的值。</li>
+  <li><code>diagramErrors</code>：每個算繪失敗的 Mermaid 圖表各一則訊息。PDF 仍會寫出。</li>
+</ul>
+
+<h2>open</h2>
+<pre><code>marsdawn open notes.md --json</code></pre>
+<p>成功，離開代碼 0：</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":["/path/to/notes.md"]}}</code></pre>
+<ul>
+  <li><code>opened</code>：已開啟檔案的絕對路徑。</li>
+  <li><code>app</code>：開啟它們的 MarsDawn app 路徑。</li>
+</ul>
+
+<h2>失敗</h2>
+<p>加上 <code>--json</code> 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：</p>
+<pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
+<ul>
+  <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字。</li>
+  <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。</li>
+  <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
+  <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
+  <li><code>64</code>：用法錯誤，例如未知的選項或無效的值。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
+</ul>
+
+<h2>JSON Schema</h2>
+<p>每種 <code>--json</code> 結果的 JSON Schema（draft 2020-12）：</p>
+<ul>
+{schema_links("zh-hant")}
+</ul>
+
+<h2>環境變數</h2>
+<ul>
+  <li><code>MARSDAWN_THEME</code>：沒有傳入 <code>--theme</code> 時，<code>export</code> 使用的主題。未知的值會直接改用 <code>dawn</code>，不會報錯。</li>
+</ul>
+
+<h2>系統需求</h2>
+<ul>
+  <li>這個工具需要 macOS 15 以上。建置需要 Swift 6.2 以上，也就是 Xcode 26 以上。</li>
+  <li>MarsDawn app 需要 macOS 26 以上。</li>
+</ul>
+
+<h2>安裝</h2>
+<p>從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>建置。第一次建置會下載相依套件並編譯，需要幾分鐘。</p>
+<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift build -c release --product marsdawn
+.build/release/marsdawn export notes.md --json</code></pre>
+""",
+    },
+}
+
+PAGE_ORDER = ["index", "support", "privacy", "cli", "cli/agents"]
+SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents"}
 
 
 def all_pages() -> dict:
     merged = dict(PAGES)
     merged.update(CLI_PAGES)
+    merged.update(AGENT_PAGES)
     return merged
 
 
@@ -693,6 +983,14 @@ def build_llms_txt(pages: dict) -> str:
             url = abs_url(md_path(locale, slug))
             lines.append(f"- [{label}]({url}): {page['description']}")
         lines.append("")
+    lines.append(f"## {UI['en']['using_cli']}")
+    lines.append(
+        f"- [{UI['en']['agents']}]({abs_url(md_path('en', 'cli/agents'))}): commands, JSON output, "
+        "exit codes and requirements, with examples that were run before publishing"
+    )
+    for kind, note in (("export", "export success"), ("open", "open success"), ("error", "failure, both commands")):
+        lines.append(f"- [{SCHEMA_FILES[kind]}]({schema_url(kind)}): JSON Schema for the --json result, {note}")
+    lines.append("")
     return "\n".join(lines).rstrip() + "\n"
 
 
@@ -726,6 +1024,12 @@ def main() -> None:
     print(SITE / "robots.txt")
     (SITE / "sitemap.xml").write_text(build_sitemap(pages), encoding="utf-8")
     print(SITE / "sitemap.xml")
+    schema_dir = SITE / SCHEMA_BASE.strip("/")
+    schema_dir.mkdir(parents=True, exist_ok=True)
+    for kind, schema in SCHEMAS.items():
+        target = schema_dir / SCHEMA_FILES[kind]
+        target.write_text(json.dumps(schema, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(target)
 
 
 if __name__ == "__main__":
