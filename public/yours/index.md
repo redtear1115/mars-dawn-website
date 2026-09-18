@@ -21,7 +21,7 @@ The details are in the [privacy policy](/privacy/).
 
 ## More
 
-- [MarsDawn](https://marsdawn.southern-light.dev/index.md): MarsDawn is a native Markdown editor for the Mac with live preview, Mermaid diagrams and PDF export.
+- [MarsDawn](https://marsdawn.southern-light.dev/index.md): MarsDawn: a native Mac Markdown editor built for the AI workflow. An agent writes the Markdown, you review it with live preview, and it revises.
 - [Pay once](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn costs USD 4.99, once. No subscription, no account, no paid tier.
 - [PDF export](https://marsdawn.southern-light.dev/pdf/index.md): Export as PDF or print, with Mermaid diagrams, highlighted code and careful page breaks.
 - [A Mac app](https://marsdawn.southern-light.dev/native/index.md): Native windows and tabs, autosave, version history, Quick Look, and a text editor that behaves like the rest of your Mac.

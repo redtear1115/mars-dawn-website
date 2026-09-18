@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MarsDawn</title>
-<meta name="description" content="MarsDawn is a native Markdown editor for the Mac with live preview, Mermaid diagrams and PDF export.">
+<meta name="description" content="MarsDawn: a native Mac Markdown editor built for the AI workflow. An agent writes the Markdown, you review it with live preview, and it revises.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -14,13 +14,13 @@
 <link rel="canonical" href="https://marsdawn.southern-light.dev/">
 <link rel="alternate" type="text/markdown" href="/index.md">
 <meta property="og:title" content="MarsDawn">
-<meta property="og:description" content="MarsDawn is a native Markdown editor for the Mac with live preview, Mermaid diagrams and PDF export.">
+<meta property="og:description" content="MarsDawn: a native Mac Markdown editor built for the AI workflow. An agent writes the Markdown, you review it with live preview, and it revises.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "MarsDawn is a native Markdown editor for the Mac with live preview, Mermaid diagrams and PDF export.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "4.99", "priceCurrency": "USD"}, "url": "https://marsdawn.southern-light.dev/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "MarsDawn: a native Mac Markdown editor built for the AI workflow. An agent writes the Markdown, you review it with live preview, and it revises.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "4.99", "priceCurrency": "USD"}, "url": "https://marsdawn.southern-light.dev/"}</script>
 </head>
 <body>
 <div class="page">
@@ -32,10 +32,48 @@
   <nav class="lang" aria-label="Language"><a href="/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
 </header>
 <main>
-<section class="intro">
-  <h1>MarsDawn</h1>
-  <p>A native Markdown editor for the Mac. Write on the left, read on the right, with Mermaid diagrams, four preview themes and PDF export.</p>
+<div class="dawn-wrap" aria-hidden="true">
+  <svg class="dawn-art" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-sky-top" offset="0%"></stop>
+        <stop class="stop-sky-mid" offset="100%"></stop>
+      </linearGradient>
+      <radialGradient id="glowGrad" cx="50%" cy="100%" r="65%">
+        <stop class="stop-glow" offset="0%"></stop>
+        <stop class="stop-glow-fade" offset="100%"></stop>
+      </radialGradient>
+      <linearGradient id="limbGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop class="stop-limb-fade" offset="0%"></stop>
+        <stop class="stop-limb" offset="50%"></stop>
+        <stop class="stop-limb-fade" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="480" fill="url(#skyGrad)"></rect>
+    <ellipse cx="600" cy="480" rx="900" ry="260" fill="url(#glowGrad)"></ellipse>
+    <path class="fill-planet" d="M -20 300 Q 600 178 1220 300 L 1220 500 L -20 500 Z"></path>
+    <path class="limb-line" d="M -20 300 Q 600 178 1220 300" fill="none" stroke="url(#limbGrad)" stroke-width="4"></path>
+  </svg>
+</div>
+<section class="intro hero">
+  <p class="kicker">Built for the AI workflow</p>
+  <h1>Where an agent's Markdown gets a careful read.</h1>
+  <p>An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side. The agent revises, and the open document updates as the file changes on disk.</p>
 </section>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn in split view: the Markdown source on the left, the rendered page on the right.">
+    
+    
+  </div></div>
+</figure>
+<h2>The loop</h2>
+<ul class="loop-steps">
+  <li><strong>The agent writes.</strong> Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.</li>
+  <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
+  <li><strong>The agent revises.</strong> Ask for changes. When the agent saves the file again, the document updates to match.</li>
+</ul>
+<p>Agents can drive MarsDawn directly: the free <a href="/cli/">marsdawn</a> command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See <a href="/cli/agents/">marsdawn for agents</a> for the details.</p>
 <ul class="links">
   <li><a href="/support/">Support and questions</a></li>
   <li><a href="/privacy/">Privacy Policy</a></li>

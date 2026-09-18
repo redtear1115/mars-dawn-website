@@ -1,6 +1,18 @@
-# MarsDawn
+Built for the AI workflow
 
-A native Markdown editor for the Mac. Write on the left, read on the right, with Mermaid diagrams, four preview themes and PDF export.
+# Where an agent's Markdown gets a careful read.
+
+An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side. The agent revises, and the open document updates as the file changes on disk.
+
+![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+
+## The loop
+
+- **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
+- **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
+- **The agent revises.** Ask for changes. When the agent saves the file again, the document updates to match.
+
+Agents can drive MarsDawn directly: the free [marsdawn](/cli/) command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See [marsdawn for agents](/cli/agents/) for the details.
 
 - [Support and questions](/support/)
 - [Privacy Policy](/privacy/)
@@ -16,4 +28,4 @@ A native Markdown editor for the Mac. Write on the left, read on the right, with
 - [Privacy Policy](https://marsdawn.southern-light.dev/privacy/index.md): MarsDawn does not collect personal data. Your documents and settings stay on your Mac.
 - [Command Line](https://marsdawn.southern-light.dev/cli/index.md): The free marsdawn command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.
 - [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): A reference for AI agents and scripts that call marsdawn: commands, JSON output, schemas, exit codes and requirements.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/index.md): MarsDawn 是原生的 Mac Markdown 編輯器，支援即時預覽和 Mermaid 圖表，也能輸出 PDF。
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/index.md): MarsDawn 是原生的 Mac Markdown 編輯器，為 AI 工作流程而生：agent 寫 Markdown，你用即時預覽檢閱，agent 再修改。

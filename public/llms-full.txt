@@ -4,13 +4,24 @@
 
 Source: https://marsdawn.southern-light.dev/
 
-# MarsDawn
+Built for the AI workflow
 
-A native Markdown editor for the Mac. Write on the left, read on the right, with Mermaid diagrams, four preview themes and PDF export.
+# Where an agent's Markdown gets a careful read.
+
+An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side. The agent revises, and the open document updates as the file changes on disk.
+
+![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+
+## The loop
+
+- **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
+- **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
+- **The agent revises.** Ask for changes. When the agent saves the file again, the document updates to match.
+
+Agents can drive MarsDawn directly: the free [marsdawn](/cli/) command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See [marsdawn for agents](/cli/agents/) for the details.
 
 - [Support and questions](/support/)
 - [Privacy Policy](/privacy/)
-
 ---
 
 ## Your writing stays on your Mac
@@ -485,13 +496,24 @@ swift build -c release --product marsdawn
 
 Source: https://marsdawn.southern-light.dev/zh-hant/
 
-# MarsDawn
+為 AI 工作流程而生
 
-原生的 Mac Markdown 編輯器。左邊寫，右邊看排版後的頁面，支援 Mermaid 圖表和四種預覽主題，也能輸出 PDF。
+# 讓 agent 寫的 Markdown，被好好讀過一遍。
+
+AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面並排顯示。改好之後，agent 重新存檔，視窗裡的文件也會跟著更新。
+
+![MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+
+## 整個循環
+
+- **Agent 動筆。**你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。
+- **你在 MarsDawn 裡讀。**打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。
+- **Agent 修改。**提出修改意見，agent 存檔後，文件會跟著更新。
+
+Agent 也能直接操作 MarsDawn：免費的[marsdawn](/zh-hant/cli/)命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
 
 - [支援與常見問題](/zh-hant/support/)
 - [隱私權政策](/zh-hant/privacy/)
-
 ---
 
 ## 你寫的內容留在你的 Mac 上
