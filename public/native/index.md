@@ -1,4 +1,4 @@
-# A Mac app, made for the Mac.
+# Built out of the Mac's own parts.
 
 The windows, tabs, menus and text editor are the Mac's own. The rendered page is drawn by WebKit, the engine behind Safari.
 
@@ -13,13 +13,13 @@ In this screenshot:
 
 ## What that means
 
-- **Source, split and preview layouts,** one keystroke apart (`⌘1`, `⌘2`, `⌘3`).
-- **The two panes scroll together,** so the paragraph you are editing stays in view.
-- **Markdown syntax highlighting** in the editor, matched to your preview theme.
-- **Native windows, tabs, autosave and version history.**
-- **Quick Look:** press Space on a Markdown file in Finder for a preview, diagrams included.
-- **Siri and Shortcuts:** start a new document from a template, add a line to your notes inbox, or reopen a recent document.
-- **English and Traditional Chinese.**
+- Source, split and preview layouts, one keystroke apart (`⌘1`, `⌘2`, `⌘3`).
+- The two panes scroll together, so the paragraph you are editing stays in view.
+- Markdown syntax highlighting in the editor, matched to your preview theme.
+- Native windows, tabs, autosave and version history.
+- Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.
+- Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.
+- English and Traditional Chinese.
 
 ## More
 

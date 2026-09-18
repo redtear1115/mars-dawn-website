@@ -30,7 +30,7 @@ UI = {
     "en": {
         "home": "MarsDawn", "privacy": "Privacy Policy", "support": "Support", "cli": "Command Line",
         "agents": "marsdawn for agents", "using_cli": "Using the CLI",
-        "updated": f"Last updated {UPDATED}", "tagline": "A new dawn for Markdown.",
+        "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.",
         "footer_store": "MarsDawn is coming soon to the Mac App Store.",
         "more": "More",
         "yours": "Your writing stays on your Mac", "pay-once": "Pay once", "pdf": "PDF export",
@@ -39,7 +39,7 @@ UI = {
     "zh-hant": {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
         "agents": "給 AI agent 的 marsdawn 參考", "using_cli": "使用 CLI",
-        "updated": f"最後更新：{UPDATED}", "tagline": "Markdown 的新黎明。",
+        "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。",
         "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
         "more": "其他頁面",
         "yours": "你寫的內容留在你的 Mac 上", "pay-once": "買一次就好", "pdf": "輸出 PDF",
@@ -953,11 +953,11 @@ TRAIT_PAGES = {
         """
 <h2>What that means</h2>
 <ul>
-  <li><strong>There is no account</strong> to sign up for or sign in to.</li>
-  <li><strong>Nothing syncs to a cloud.</strong> Your documents stay where you save them.</li>
-  <li><strong>Nothing is tracked.</strong> MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".</li>
-  <li><strong>Web images stay blocked until you choose to load them,</strong> so opening a document never tells a server you read it. When you do load them, they load over https only.</li>
-  <li><strong>Local images</strong> show in the preview once you grant access to their folder.</li>
+  <li>There is no account to sign up for or sign in to.</li>
+  <li>Nothing syncs to a cloud. Your documents stay where you save them.</li>
+  <li>Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".</li>
+  <li>Web images stay blocked until you choose to load them, so opening a document never tells a server you read it. When you do load them, they load over https only.</li>
+  <li>Local images show in the preview once you grant access to their folder.</li>
 </ul>
 <p>The details are in the <a href="/privacy/">privacy policy</a>.</p>
 """,
@@ -974,11 +974,11 @@ TRAIT_PAGES = {
         """
 <h2>這代表什麼</h2>
 <ul>
-  <li><strong>不需要帳號，</strong>不用註冊，也不用登入。</li>
-  <li><strong>不會同步到雲端，</strong>文件存在哪裡就留在哪裡。</li>
-  <li><strong>不追蹤任何行為。</strong>MarsDawn 不收集任何關於你的資料，App Store 隱私權標示為「未收集資料」。</li>
-  <li><strong>網路圖片在你選擇載入之前一律不載入，</strong>打開文件不會讓任何伺服器知道你讀了它。選擇載入時，也只走 https。</li>
-  <li><strong>本機圖片</strong>在你授權資料夾存取後，就會顯示在預覽中。</li>
+  <li>不需要帳號，不用註冊，也不用登入。</li>
+  <li>不會同步到雲端，文件存在哪裡就留在哪裡。</li>
+  <li>不追蹤任何行為。MarsDawn 不收集任何關於你的資料，App Store 隱私權標示為「未收集資料」。</li>
+  <li>網路圖片在你選擇載入之前一律不載入，打開文件不會讓任何伺服器知道你讀了它。選擇載入時，也只走 https。</li>
+  <li>本機圖片在你授權資料夾存取後，就會顯示在預覽中。</li>
 </ul>
 <p>完整說明請看<a href="/zh-hant/privacy/">隱私權政策</a>。</p>
 """,
@@ -995,10 +995,10 @@ TRAIT_PAGES = {
         """
 <h2>What that means</h2>
 <ul>
-  <li><strong>One purchase</strong> on the Mac App Store, USD 4.99.</li>
-  <li><strong>There is no subscription,</strong> so nothing renews.</li>
-  <li><strong>There is no account:</strong> MarsDawn never asks you to create one.</li>
-  <li><strong>Nothing held back.</strong> Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.</li>
+  <li>One purchase on the Mac App Store, USD 4.99.</li>
+  <li>There is no subscription, so nothing renews.</li>
+  <li>There is no account: MarsDawn never asks you to create one.</li>
+  <li>Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.</li>
 </ul>
 """,
     ),
@@ -1014,10 +1014,10 @@ TRAIT_PAGES = {
         """
 <h2>這代表什麼</h2>
 <ul>
-  <li><strong>一次購買，</strong>在 Mac App Store，USD 4.99。</li>
-  <li><strong>沒有訂閱，</strong>不會自動續費。</li>
-  <li><strong>不需要帳號，</strong>MarsDawn 從不要求你建立帳號。</li>
-  <li><strong>沒有保留任何功能。</strong>所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都在你買的這個 app 裡。</li>
+  <li>一次購買，在 Mac App Store，USD 4.99。</li>
+  <li>沒有訂閱，不會自動續費。</li>
+  <li>不需要帳號，MarsDawn 從不要求你建立帳號。</li>
+  <li>沒有保留任何功能。所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都在你買的這個 app 裡。</li>
 </ul>
 """,
     ),
@@ -1033,10 +1033,10 @@ TRAIT_PAGES = {
         """
 <h2>What that means</h2>
 <ul>
-  <li><strong>Mermaid diagrams</strong> are drawn into the PDF.</li>
-  <li><strong>Code blocks</strong> keep their syntax highlighting.</li>
-  <li><strong>Page breaks</strong> avoid leaving a heading at the bottom of a page or splitting code, tables and diagrams.</li>
-  <li><strong>Any layout.</strong> Export works even while only the source is showing.</li>
+  <li>Mermaid diagrams are drawn into the PDF.</li>
+  <li>Code blocks keep their syntax highlighting.</li>
+  <li>Page breaks avoid leaving a heading at the bottom of a page or splitting code, tables and diagrams.</li>
+  <li>Any layout. Export works even while only the source is showing.</li>
 </ul>
 <p>The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so a script or an AI agent gets the same PDF.</p>
 """,
@@ -1053,10 +1053,10 @@ TRAIT_PAGES = {
         """
 <h2>這代表什麼</h2>
 <ul>
-  <li><strong>Mermaid 圖表</strong>直接畫進 PDF。</li>
-  <li><strong>程式碼區塊</strong>保留語法上色。</li>
-  <li><strong>分頁時</strong>會盡量不讓標題落在頁尾，也不切開程式碼、表格和圖表。</li>
-  <li><strong>任何版面都能輸出，</strong>只顯示原始碼時也可以。</li>
+  <li>Mermaid 圖表直接畫進 PDF。</li>
+  <li>程式碼區塊保留語法上色。</li>
+  <li>分頁時會盡量不讓標題落在頁尾，也不切開程式碼、表格和圖表。</li>
+  <li>任何版面都能輸出，只顯示原始碼時也可以。</li>
 </ul>
 <p>免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>使用同一套輸出程式，所以腳本或 AI agent 也能得到一樣的 PDF。</p>
 """,
@@ -1066,20 +1066,20 @@ TRAIT_PAGES = {
         "Native windows and tabs, autosave, version history, Quick Look, and a text editor that behaves like the rest of your Mac.",
         """
 <section class="intro">
-  <h1>A Mac app, made for the Mac.</h1>
+  <h1>Built out of the Mac's own parts.</h1>
   <p>The windows, tabs, menus and text editor are the Mac's own. The rendered page is drawn by WebKit, the engine behind Safari.</p>
 </section>
 """,
         """
 <h2>What that means</h2>
 <ul>
-  <li><strong>Source, split and preview layouts,</strong> one keystroke apart (<kbd>⌘1</kbd>, <kbd>⌘2</kbd>, <kbd>⌘3</kbd>).</li>
-  <li><strong>The two panes scroll together,</strong> so the paragraph you are editing stays in view.</li>
-  <li><strong>Markdown syntax highlighting</strong> in the editor, matched to your preview theme.</li>
-  <li><strong>Native windows, tabs, autosave and version history.</strong></li>
-  <li><strong>Quick Look:</strong> press Space on a Markdown file in Finder for a preview, diagrams included.</li>
-  <li><strong>Siri and Shortcuts:</strong> start a new document from a template, add a line to your notes inbox, or reopen a recent document.</li>
-  <li><strong>English and Traditional Chinese.</strong></li>
+  <li>Source, split and preview layouts, one keystroke apart (<kbd>⌘1</kbd>, <kbd>⌘2</kbd>, <kbd>⌘3</kbd>).</li>
+  <li>The two panes scroll together, so the paragraph you are editing stays in view.</li>
+  <li>Markdown syntax highlighting in the editor, matched to your preview theme.</li>
+  <li>Native windows, tabs, autosave and version history.</li>
+  <li>Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.</li>
+  <li>Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.</li>
+  <li>English and Traditional Chinese.</li>
 </ul>
 """,
     ),
@@ -1088,20 +1088,20 @@ TRAIT_PAGES = {
         "原生視窗與分頁、自動儲存、版本記錄、快速查看，文字編輯器的操作和 Mac 上其他 app 一致。",
         """
 <section class="intro">
-  <h1>為 Mac 而做的 Mac app。</h1>
+  <h1>用 Mac 原生的元件做的。</h1>
   <p>視窗、分頁、選單和文字編輯器都是 Mac 原生的。排版後的頁面由 Safari 使用的 WebKit 引擎繪製。</p>
 </section>
 """,
         """
 <h2>這代表什麼</h2>
 <ul>
-  <li><strong>原始碼、並排、預覽三種版面，</strong>一個快捷鍵切換（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
-  <li><strong>兩側同步捲動，</strong>正在編輯的段落一直在眼前。</li>
-  <li><strong>編輯器內建 Markdown 語法上色，</strong>顏色與預覽主題一致。</li>
-  <li><strong>原生視窗、分頁、自動儲存和版本記錄。</strong></li>
-  <li><strong>快速查看：</strong>在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。</li>
-  <li><strong>Siri 和捷徑：</strong>用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。</li>
-  <li><strong>支援英文和繁體中文。</strong></li>
+  <li>原始碼、並排、預覽三種版面，一個快捷鍵切換（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
+  <li>兩側同步捲動，正在編輯的段落一直在眼前。</li>
+  <li>編輯器內建 Markdown 語法上色，顏色與預覽主題一致。</li>
+  <li>原生視窗、分頁、自動儲存和版本記錄。</li>
+  <li>快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。</li>
+  <li>Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。</li>
+  <li>支援英文和繁體中文。</li>
 </ul>
 """,
     ),
