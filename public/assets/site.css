@@ -685,6 +685,9 @@ html { overflow-x: hidden; }
   color: var(--hero-sub);
   font-size: 1.05rem;
 }
+/* The Fixed Sky Rule: a link on the band (the listing, from launch) uses the hero ink in both
+   schemes. Rust Ink is for page paper and is unreadable on the night sky. */
+.dawn-close a { color: var(--hero-ink); }
 .dawn-close strong {
   display: block;
   margin-bottom: 8px;
