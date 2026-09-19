@@ -1674,6 +1674,7 @@ FIGURE_LIST_LABEL = {"en": "In this screenshot", "zh-hant": "這張截圖裡"}
 # en and zh-hant copy. k carries the shared constants, so a URL, address or command is written once.
 # UI labels quoted in them follow the app's own zh-Hans and ja strings.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untracked file after a build
 import copy_ja  # noqa: E402
 import copy_zh_hans  # noqa: E402
 
