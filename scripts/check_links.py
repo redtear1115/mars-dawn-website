@@ -10,6 +10,9 @@ alternate hrefs in the sitemap; url() in CSS. Relative paths ("/x/"), and absolu
 marsdawn.southern-light.dev, both count. A path ending in "/" needs its index.html. Query strings
 and fragments are ignored. mailto:, other hosts and data: URLs are not checked.
 
+It also fails on any placeholder left in a URL ("PLACEHOLDER", as in the Mac App Store listing
+URL before its Apple ID is set), so a held go-live change can't deploy with a dead store link.
+
 Exits 1 and lists every broken link. To see it catch one, check a copy of public/ with a link
 pointed at a page that doesn't exist:
 
@@ -54,11 +57,13 @@ def site_path(link: str):
 
 def main(argv) -> int:
     root = Path(argv[argv.index("--root") + 1]) if "--root" in argv else Path(__file__).resolve().parent.parent / "public"
-    broken, checked = [], 0
+    broken, checked, placeholders = [], 0, []
     for path in sorted(root.rglob("*")):
         if path.suffix not in {".html", ".md", ".txt", ".xml", ".css"} or not path.is_file():
             continue
         text = path.read_text(encoding="utf-8", errors="replace")
+        for match in re.finditer(r"https?://[^\s\"'<>)]*PLACEHOLDER[^\s\"'<>)]*", text):
+            placeholders.append(f"{path.relative_to(root)}: {match.group(0)}")
         for link in targets(text):
             target = site_path(link)
             if target is None:
@@ -72,7 +77,10 @@ def main(argv) -> int:
     print(f"{checked} same-site links checked: {len(broken)} broken")
     for line in broken:
         print(" -", line)
-    return 1 if broken else 0
+    if placeholders:
+        files = len({p.split(": ", 1)[0] for p in placeholders})
+        print(f"{len(placeholders)} placeholder URLs in {files} files, e.g. {placeholders[0]}")
+    return 1 if broken or placeholders else 0
 
 
 if __name__ == "__main__":
