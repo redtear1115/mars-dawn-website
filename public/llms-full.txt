@@ -373,9 +373,9 @@ open notes.pdf
 
 `export` writes `notes.pdf` next to the Markdown file, and `open` shows it in your PDF viewer. It needs macOS 15 or later. The walk-through, with a real exported page, is on [Markdown to PDF](/markdown-to-pdf/).
 
-## Coming soon: read it in MarsDawn
+## Read it in MarsDawn
 
-MarsDawn is a Markdown editor for the Mac, coming soon to the Mac App Store. Open a `.md` file and read the rendered page next to the source:
+MarsDawn is a Markdown editor for the Mac, on the Mac App Store. Open a `.md` file and read the rendered page next to the source:
 
 - The preview updates as you type, and the two panes scroll together.
 - Mermaid flowcharts and sequence diagrams are drawn in the preview, and code blocks are highlighted.
@@ -520,7 +520,7 @@ If your job is strictly reading Markdown someone else wrote, and you never need 
 
 ## Try it today, free
 
-MarsDawn is coming soon to the Mac App Store, not on sale yet. Until then, the free `marsdawn` command-line tool renders any Markdown file to a PDF today, with Mermaid diagrams and highlighted code, and needs nothing else installed:
+MarsDawn is on the Mac App Store. The free `marsdawn` command-line tool also renders any Markdown file to a PDF, with Mermaid diagrams and highlighted code, and needs nothing else installed:
 
 ```
 brew tap redtear1115/tap && brew install marsdawn
@@ -575,7 +575,7 @@ Check which version you have with `marsdawn --version`.
 
 ### marsdawn open
 
-Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, `marsdawn open` exits with code 3 and says MarsDawn isn't installed. `export` doesn't need the app.
+Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, `marsdawn open` exits with code 3 and says MarsDawn isn't installed. `export` doesn't need the app. The app is on the [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER).
 
 ```
 marsdawn open notes.md
@@ -656,7 +656,7 @@ A reference for AI agents and scripts that call the `marsdawn` command-line tool
 - It doesn't write the PDF to stdout. The PDF always goes to a file; stdout carries only the result.
 - It doesn't replace an existing file unless you pass `--force`.
 - It doesn't load images from the web unless you pass `--allow-remote-images`, and then only over https.
-- `open` doesn't work without the MarsDawn app installed; it exits with code 3. `export` doesn't need the app.
+- `open` doesn't work without the MarsDawn app installed; it exits with code 3. `export` doesn't need the app. The app is on the [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER).
 - MarsDawn 1.0 doesn't jump to the line `open` names yet. It opens the file at the top.
 - It runs on macOS only.
 
@@ -1453,9 +1453,9 @@ open notes.pdf
 
 `export` 會在 Markdown 檔案旁邊寫出 `notes.pdf`，`open` 會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
 
-## 即將推出：在 MarsDawn 裡讀
+## 在 MarsDawn 裡讀
 
-MarsDawn 是為 Mac 做的 Markdown 編輯器，即將在 Mac App Store 上架。打開 `.md` 檔案，排好的頁面就在原始碼旁邊：
+MarsDawn 是為 Mac 做的 Markdown 編輯器，已在 Mac App Store 上架。打開 `.md` 檔案，排好的頁面就在原始碼旁邊：
 
 - 預覽會隨著你打字即時更新，兩邊的窗格一起捲動。
 - Mermaid 流程圖和循序圖直接畫在預覽裡，程式碼區塊也會上色。
@@ -1600,7 +1600,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/
 
 ## 現在就能免費試試看
 
-MarsDawn 即將在 Mac App Store 上架，現在還沒開賣。在那之前，免費的 `marsdawn` 命令列工具今天就能把任何 Markdown 檔案轉成 PDF，Mermaid 圖表和程式碼上色都在，而且不需要安裝其他東西：
+MarsDawn 已在 Mac App Store 上架。免費的 `marsdawn` 命令列工具也能把任何 Markdown 檔案轉成 PDF，Mermaid 圖表和程式碼上色都在，而且不需要安裝其他東西：
 
 ```
 brew tap redtear1115/tap && brew install marsdawn
@@ -1655,7 +1655,7 @@ swift build -c release --product marsdawn
 
 ### marsdawn open
 
-在 MarsDawn app 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝這個 app：沒有安裝時，`marsdawn open` 會以代碼 3 結束，並說明沒有安裝 MarsDawn。`export` 不需要這個 app。
+在 MarsDawn app 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝這個 app：沒有安裝時，`marsdawn open` 會以代碼 3 結束，並說明沒有安裝 MarsDawn。`export` 不需要這個 app。App 已在 [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER) 上架。
 
 ```
 marsdawn open notes.md
@@ -1736,7 +1736,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/agents/
 - 不把 PDF 寫到 stdout。PDF 一律寫成檔案，stdout 只輸出結果。
 - 檔案已存在時不會覆寫，除非加上 `--force`。
 - 不載入網路圖片，除非加上 `--allow-remote-images`，而且只走 https。
-- 沒有安裝 MarsDawn 時，`open` 無法使用，會以代碼 3 結束。`export` 不需要 app。
+- 沒有安裝 MarsDawn 時，`open` 無法使用，會以代碼 3 結束。`export` 不需要 app。App 已在 [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER) 上架。
 - MarsDawn 1.0 還不會跳到 `open` 指定的行，會從檔案開頭顯示。
 - 只能在 macOS 上執行。
 
@@ -2533,9 +2533,9 @@ open notes.pdf
 
 `export` 会在 Markdown 文件旁边写出 `notes.pdf`，`open` 会用你的 PDF 查看器打开它。这个工具需要 macOS 15 以上。完整步骤和一页实际导出的结果，请看[Markdown 转 PDF](/zh-hans/markdown-to-pdf/)。
 
-## 即将推出：在 MarsDawn 里读
+## 在 MarsDawn 里读
 
-MarsDawn 是为 Mac 做的 Markdown 编辑器，即将在 Mac App Store 上架。打开 `.md` 文件，排好的页面就在源代码旁边：
+MarsDawn 是为 Mac 做的 Markdown 编辑器，已在 Mac App Store 上架。打开 `.md` 文件，排好的页面就在源代码旁边：
 
 - 预览会随着你打字实时更新，两边的窗格一起滚动。
 - Mermaid 流程图和时序图直接画在预览里，代码块也会高亮。
@@ -2677,7 +2677,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 
 ## 现在就能免费试试看
 
-MarsDawn 即将在 Mac App Store 上架，现在还没开卖。在那之前，免费的 `marsdawn` 命令行工具今天就能把任何 Markdown 文件转成 PDF，Mermaid 图表和代码高亮都在，而且不需要安装其他东西：
+MarsDawn 已在 Mac App Store 上架。免费的 `marsdawn` 命令行工具也能把任何 Markdown 文件转成 PDF，Mermaid 图表和代码高亮都在，而且不需要安装其他东西：
 
 ```
 brew tap redtear1115/tap && brew install marsdawn
@@ -2731,7 +2731,7 @@ swift build -c release --product marsdawn
 
 ### marsdawn open
 
-在 MarsDawn app 中打开一个或多个 Markdown 文件，方便审阅。需要先安装这个 app：没有安装时，`marsdawn open` 会以代码 3 结束，并说明没有安装 MarsDawn。`export` 不需要这个 app。
+在 MarsDawn app 中打开一个或多个 Markdown 文件，方便审阅。需要先安装这个 app：没有安装时，`marsdawn open` 会以代码 3 结束，并说明没有安装 MarsDawn。`export` 不需要这个 app。App 已在 [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER) 上架。
 
 ```
 marsdawn open notes.md
@@ -2812,7 +2812,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/agents/
 - 不把 PDF 写到 stdout。PDF 一律写成文件，stdout 只输出结果。
 - 文件已存在时不会覆盖，除非加上 `--force`。
 - 不加载网络图片，除非加上 `--allow-remote-images`，而且只走 https。
-- 没有安装 MarsDawn 时，`open` 无法使用，会以代码 3 结束。`export` 不需要 app。
+- 没有安装 MarsDawn 时，`open` 无法使用，会以代码 3 结束。`export` 不需要 app。App 已在 [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER) 上架。
 - MarsDawn 1.0 还不会跳到 `open` 指定的行，会从文件开头显示。
 - 只能在 macOS 上运行。
 
@@ -3603,9 +3603,9 @@ open notes.pdf
 
 `export` は Markdown ファイルの隣に `notes.pdf` を書き出し、`open` はそれをあなたの PDF ビューアで表示します。macOS 15 以降が必要です。実際に書き出したページを使った解説は、[Markdown から PDF へ](/ja/markdown-to-pdf/)にあります。
 
-## 近日公開：MarsDawn で読む
+## MarsDawn で読む
 
-MarsDawn は Mac 向けの Markdown エディタで、Mac App Store で近日公開予定です。`.md` ファイルを開くと、ソースの隣でレンダリングされたページを読めます。
+MarsDawn は Mac 向けの Markdown エディタで、Mac App Store で配信中です。`.md` ファイルを開くと、ソースの隣でレンダリングされたページを読めます。
 
 - 入力すると同時にプレビューが更新され、2つのペインは一緒にスクロールします。
 - Mermaid のフローチャートとシーケンス図がプレビューに描画され、コードブロックはハイライトされます。
@@ -3747,7 +3747,7 @@ Source: https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/
 
 ## 今すぐ無料で試す
 
-MarsDawn は Mac App Store で近日公開予定で、まだ販売されていません。それまでは、無料の `marsdawn` コマンドラインツールが、今すぐどんな Markdown ファイルも Mermaid 図とハイライトされたコード付きの PDF にレンダリングでき、他に何もインストールする必要はありません。
+MarsDawn は Mac App Store で配信中です。無料の `marsdawn` コマンドラインツールも、どんな Markdown ファイルも Mermaid 図とハイライトされたコード付きの PDF にレンダリングでき、他に何もインストールする必要はありません。
 
 ```
 brew tap redtear1115/tap && brew install marsdawn
@@ -3801,7 +3801,7 @@ swift build -c release --product marsdawn
 
 ### marsdawn open
 
-1つ以上の Markdown ファイルを MarsDawn アプリで開いて確認できます。アプリのインストールが必要です。インストールされていない場合、`marsdawn open` はコード 3 で終了し、MarsDawn がインストールされていないことを知らせます。`export` にはアプリは不要です。
+1つ以上の Markdown ファイルを MarsDawn アプリで開いて確認できます。アプリのインストールが必要です。インストールされていない場合、`marsdawn open` はコード 3 で終了し、MarsDawn がインストールされていないことを知らせます。`export` にはアプリは不要です。アプリは [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER) で配信中です。
 
 ```
 marsdawn open notes.md
@@ -3882,7 +3882,7 @@ Source: https://marsdawn.southern-light.dev/ja/cli/agents/
 - PDF を stdout に書き出しません。PDF は常にファイルとして書き出され、stdout には結果だけが出力されます。
 - `--force` を指定しない限り、既存のファイルを置き換えません。
 - `--allow-remote-images` を指定しない限りウェブから画像を読み込まず、指定した場合も https のみです。
-- `open` は MarsDawn アプリがインストールされていないと動作せず、コード 3 で終了します。`export` にアプリは不要です。
+- `open` は MarsDawn アプリがインストールされていないと動作せず、コード 3 で終了します。`export` にアプリは不要です。アプリは [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER) で配信中です。
 - MarsDawn 1.0 はまだ `open` が指定した行にジャンプしません。ファイルは先頭から開きます。
 - macOS でのみ動作します。
 
