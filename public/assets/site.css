@@ -206,11 +206,6 @@ kbd {
    inline style that the CSP blocks. Hide it here so it is not a keyboard stop. */
 body > a[aria-hidden="true"][href*="/cdn-cgi/"] { display: none !important; }
 
-/* Home page links */
-.links { list-style: none; padding: 0; margin: 32px 0 0; }
-.links li + li { margin-top: 10px; }
-.links a { font-size: 1.1rem; font-weight: 600; display: inline-block; min-height: 24px; padding: 2px 0; }
-
 /* ---- Trait pages: annotated screenshots ------------------------------------
    One real screenshot per page, wider than the text column. On wide screens
    thin rust leader lines run from a marker on the app out to a label in the
@@ -415,6 +410,7 @@ html { scrollbar-color: var(--hairline) var(--paper); }
   --dawn-limb: #fff4e0;
   --dawn-planet-rim: #6b3a2e;
   --dawn-planet: #0e0a13;
+  --dawn-star: #fff6e6;
   --hero-kicker: #ffd9a3;
   --hero-ink: #fff8ee;
   --hero-sub: #e9dccc;
@@ -451,7 +447,13 @@ html { overflow-x: hidden; }
   inset: 0;
   z-index: 0;
 }
-.dawn-art { display: block; width: 100%; height: 100%; }
+.dawn-layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 .stop-sky-1 { stop-color: var(--dawn-sky-1); }
 .stop-sky-2 { stop-color: var(--dawn-sky-2); }
 .stop-sky-3 { stop-color: var(--dawn-sky-3); }
@@ -464,13 +466,42 @@ html { overflow-x: hidden; }
 .stop-limb { stop-color: var(--dawn-limb); }
 .stop-limb-fade { stop-color: var(--dawn-limb); stop-opacity: 0; }
 .limb-line { filter: drop-shadow(0 0 4px color-mix(in srgb, var(--dawn-limb) 75%, transparent)); }
+.dawn-stars { fill: var(--dawn-star); }
 
+/* Resting state = the last frame of the sunrise: no veil, no stars. Anyone
+   who doesn't get the animation (reduced motion, no CSS animation) sees the
+   finished dawn and nothing ever moves. */
+.night-veil { background: var(--dawn-sky-1); opacity: 0; }
+.dawn-stars { opacity: 0; }
+
+/* The one authored moment: dawn arrives once, as the page opens, and then the
+   scene holds still for reading. Night lifts, the glow climbs and warms, the
+   stars go out faintest first, and the limb catches light from the centre
+   outward. Only opacity, transform and clip-path on whole layers, so the sky
+   is never repainted. Under 4.5 s, never repeated. */
 @media (prefers-reduced-motion: no-preference) {
-  .limb-line { animation: dawn-breathe 9s ease-in-out infinite; }
-  @keyframes dawn-breathe {
-    0%, 100% { opacity: 0.88; }
-    50% { opacity: 1; }
-  }
+  .night-veil { animation: dawn-veil 3.8s cubic-bezier(0.35, 0, 0.2, 1) both; }
+  .dawn-glow { animation: dawn-rise 4.2s cubic-bezier(0.3, 0, 0.15, 1) both; }
+  .dawn-limb { animation: dawn-limb 2.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both; }
+  .stars-a { --star-from: 0.45; animation: dawn-stars-out 1.5s ease-in 0.3s both; }
+  .stars-b { --star-from: 0.7; animation: dawn-stars-out 1.7s ease-in 0.9s both; }
+  .stars-c { --star-from: 0.95; animation: dawn-stars-out 1.9s ease-in 1.6s both; }
+}
+@keyframes dawn-veil {
+  from { opacity: 0.62; }
+  to { opacity: 0; }
+}
+@keyframes dawn-rise {
+  from { opacity: 0.5; transform: translateY(5%); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes dawn-limb {
+  from { opacity: 0.35; clip-path: inset(0 50% 0 50%); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+@keyframes dawn-stars-out {
+  from { opacity: var(--star-from); }
+  to { opacity: 0; }
 }
 
 .hero-inner {
@@ -491,6 +522,12 @@ html { overflow-x: hidden; }
       color-mix(in srgb, var(--dawn-planet) 78%, transparent) 0%,
       color-mix(in srgb, var(--dawn-planet) 46%, transparent) 48%,
       transparent 88%);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 16%, #000 84%, transparent),
+                      linear-gradient(to bottom, transparent, #000 14%, #000 82%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 16%, #000 84%, transparent),
+              linear-gradient(to bottom, transparent, #000 14%, #000 82%, transparent);
+  mask-composite: intersect;
   z-index: -1;
   pointer-events: none;
 }
@@ -531,28 +568,53 @@ html { overflow-x: hidden; }
   .hero-shot .shot { margin-top: 0; }
 }
 
+/* The second act: the loop, as three stops along one horizon line rather
+   than three cards. The middle stop, where the person reads, carries the
+   dawn's light. */
+.loop-title {
+  margin: clamp(56px, 9vw, 88px) 0 0;
+  font-size: clamp(1.6rem, 3.6vw, 2.15rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
 .loop-steps {
   list-style: none;
   padding: 0;
-  margin: 18px 0 0;
+  margin: 28px 0 32px;
   display: grid;
-  gap: 14px;
+  gap: 26px;
 }
 @media (min-width: 720px) {
-  .loop-steps { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .loop-steps { grid-template-columns: repeat(3, 1fr); gap: 28px; }
 }
 .loop-steps li {
-  padding: 16px 18px;
-  border: 1px solid var(--hairline);
-  border-radius: 12px;
-  background: var(--sand);
+  position: relative;
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline);
+  color: var(--dust);
   font-size: 0.98rem;
+}
+.loop-steps li::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dust);
+}
+.loop-steps li:nth-child(2) { border-top-color: color-mix(in srgb, var(--ember) 55%, var(--hairline)); }
+.loop-steps li:nth-child(2)::before {
+  background: var(--ember);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ember) 18%, transparent);
 }
 .loop-steps li strong {
   display: block;
   margin-bottom: 6px;
-  color: var(--ember);
-  font-size: 0.95rem;
+  color: var(--ink);
+  font-size: 1.05rem;
 }
 
 /* Sister pages, as a ruled list rather than cards. */
@@ -569,3 +631,47 @@ html { overflow-x: hidden; }
 .traits li + li { margin-top: 0; }
 .traits a { font-weight: 600; }
 .traits span { color: var(--dust); font-size: 0.95rem; }
+
+/* The page ends where it began: a band of dawn light, full bleed, carrying
+   the tagline and the one fact a visitor leaves with. Its tones are the
+   hero's, fixed dark in both modes, so the text keeps the hero's palette. */
+.dawn-close {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  margin-top: clamp(64px, 10vw, 104px);
+  padding: clamp(44px, 7vw, 72px) 16px clamp(88px, 13vw, 132px);
+  text-align: center;
+  isolation: isolate;
+  background: var(--dawn-sky-1) linear-gradient(to bottom, var(--dawn-sky-1), var(--dawn-sky-2) 62%, var(--dawn-sky-3));
+}
+/* The sunrise sits low in the band, below the words, on its own layer. */
+.dawn-close::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(64% 86% at 50% 122%,
+    var(--dawn-glow) 0%,
+    color-mix(in srgb, var(--dawn-glow-mid) 60%, transparent) 30%,
+    transparent 64%);
+  pointer-events: none;
+}
+.dawn-close p {
+  margin: 0 auto;
+  max-width: 34rem;
+  color: var(--hero-sub);
+  font-size: 1.05rem;
+}
+.dawn-close strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--hero-ink);
+  font-size: clamp(1.5rem, 3.4vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.footer-home { margin-top: 20px; border-top: 0; }

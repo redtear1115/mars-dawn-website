@@ -8,14 +8,11 @@ An AI agent writes the Markdown. You review it in MarsDawn, source and rendered 
 
 ## The loop
 
-- **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
-- **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
-- **The agent revises.** Ask for changes. Open the revised file and read it the same way.
+1. **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
+2. **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
+3. **The agent revises.** Ask for changes. Open the revised file and read it the same way.
 
 Agents can drive MarsDawn directly: the free [marsdawn](/cli/) command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See [marsdawn for agents](/cli/agents/) for the details.
-
-- [Support and questions](/support/)
-- [Privacy Policy](/privacy/)
 
 ## More
 
