@@ -557,6 +557,8 @@ With [Homebrew](https://brew.sh):
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
+Using a coding agent? [Add the marsdawn skill](/cli/skill/): one file that teaches it to open what it wrote in MarsDawn for your review, and to export PDFs.
+
 On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.
 
 Or build it from [the source](https://github.com/redtear1115/mars-dawn-kit) with Swift Package Manager:
@@ -772,9 +774,9 @@ swift build -c release --product marsdawn
 
 Source: https://marsdawn.southern-light.dev/cli/skill/
 
-# Let your agent make the PDF.
+# Let your agent show you what it wrote, and make the PDF.
 
-This skill is one Markdown file. It teaches a coding agent to install `marsdawn`, check that it works, export a document to PDF and read the result, so the agent that wrote the Markdown can hand you the PDF as well.
+This skill is one Markdown file. It teaches a coding agent to open a document it wrote in MarsDawn for you to review, and to install `marsdawn`, check that it works, export a document to PDF and read the result.
 
 **One Markdown file, at `~/.claude/skills/marsdawn/SKILL.md`.** With it your agent installs `marsdawn`, exports to PDF and reads the JSON result, and it still asks before it runs anything.
 
@@ -785,7 +787,7 @@ mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code loads it when a task calls for a PDF, and you can run it yourself as `/marsdawn`. It's [one short file](/cli/skill/SKILL.md), so read it before you install it.
+Claude Code loads it when a task calls for a PDF, or when it has written or revised a Markdown document for you to read, and you can run it yourself as `/marsdawn`. It's [one short file](/cli/skill/SKILL.md), so read it before you install it.
 
 Other agents can use the same file. It's plain Markdown, instructions and commands, so point yours at the URL or paste it in.
 
@@ -794,7 +796,9 @@ Other agents can use the same file. It's plain Markdown, instructions and comman
 - Install `marsdawn` with Homebrew if it's missing, then check it with `marsdawn --version` instead of assuming a version.
 - Export with `marsdawn export … --json`, and read the result: where the PDF went, how many pages it has, and any Mermaid diagram that didn't render.
 - Tell the failures apart by exit code: no such file, a PDF already there, a failed export, a bad option.
-- Use `open` only when the MarsDawn app is installed, and never to make a PDF.
+- Open a document it wrote with `marsdawn open file.md:line`, landing on its first change, and only once: later edits show up in the open window by themselves.
+- If the MarsDawn app isn't installed, say so once and carry on, without retrying. Never use `open` to make a PDF.
+- With `--folder` (marsdawn 0.5.1 and later), report the folder as asked for, not as shown: the app decides, and nothing reports back.
 
 ## What it doesn't do
 
@@ -1614,6 +1618,8 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
+在用寫程式的 agent 嗎？[加上 marsdawn skill](/zh-hant/cli/skill/)：一個檔案，教它把自己寫的文件在 MarsDawn 裡打開給你檢閱，也能匯出 PDF。
+
 在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成，不需要另外安裝任何東西。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上（Swift 6.2）。這個工具需要 macOS 15 以上。
 
 也可以從[原始碼](https://github.com/redtear1115/mars-dawn-kit)用 Swift Package Manager 建置：
@@ -1829,9 +1835,9 @@ swift build -c release --product marsdawn
 
 Source: https://marsdawn.southern-light.dev/zh-hant/cli/skill/
 
-# 讓 agent 幫你做出 PDF。
+# 讓 agent 把寫好的文件拿給你看，也幫你做出 PDF。
 
-這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 安裝 `marsdawn`、確認它能用、把文件匯出成 PDF 並讀懂結果，這樣寫出 Markdown 的 agent，也能把 PDF 交給你。
+這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 把自己寫的文件在 MarsDawn 裡打開給你檢閱，也教它安裝 `marsdawn`、確認它能用、把文件匯出成 PDF 並讀懂結果。
 
 **一個 Markdown 檔案，放在 `~/.claude/skills/marsdawn/SKILL.md`。**有了它，你的 agent 會安裝 `marsdawn`、輸出 PDF 並讀懂 JSON 結果；執行任何指令之前，它還是會先問你。
 
@@ -1842,7 +1848,7 @@ mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-需要做出 PDF 時，Claude Code 會自動載入它，你也可以用 `/marsdawn` 自己執行。它只是[一個簡短的檔案](/cli/skill/SKILL.md)，安裝前先讀一遍。
+需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 `/marsdawn` 自己執行。它只是[一個簡短的檔案](/cli/skill/SKILL.md)，安裝前先讀一遍。
 
 其他 agent 也能用同一個檔案。它是純 Markdown，只有說明和指令，讓你的 agent 讀這個網址，或直接貼給它就好。這個檔案是英文的。
 
@@ -1851,7 +1857,9 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 - 如果沒有 `marsdawn`，就用 Homebrew 安裝，再用 `marsdawn --version` 確認版本，而不是假設某個版本。
 - 用 `marsdawn export … --json` 匯出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。
 - 依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。
-- 只有裝了 MarsDawn app 才用 `open`，而且絕不用它來做 PDF。
+- 用 `marsdawn open file.md:行號` 打開自己寫的文件，停在第一處修改，而且只開一次：之後的修改會自己出現在已開啟的視窗裡。
+- 如果沒有安裝 MarsDawn app，就告訴你一次然後繼續，不會一直重試。絕不用 `open` 來做 PDF。
+- 使用 `--folder`（marsdawn 0.5.1 以上）時，把資料夾回報為「已要求顯示」，而不是「已顯示」：由 app 決定，也不會有結果回報。
 
 ## 它不會做的事
 

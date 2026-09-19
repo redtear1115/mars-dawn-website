@@ -581,6 +581,7 @@ CLI_PAGES = {
 <h2>Install</h2>
 <p>With <a href="https://brew.sh">Homebrew</a>:</p>
 <pre><code>{BREW_TAP_INSTALL}</code></pre>
+<p>Using a coding agent? <a href="/cli/skill/">Add the marsdawn skill</a>: one file that teaches it to open what it wrote in MarsDawn for your review, and to export PDFs.</p>
 <p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.</p>
 <p>Or build it from <a href="{KIT_URL}">the source</a> with Swift Package Manager:</p>
 <pre><code>git clone {KIT_URL}.git
@@ -653,6 +654,7 @@ marsdawn open notes.md --line 120</code></pre>
 <h2>安裝</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
 <pre><code>{BREW_TAP_INSTALL}</code></pre>
+<p>在用寫程式的 agent 嗎？<a href="/zh-hant/cli/skill/">加上 marsdawn skill</a>：一個檔案，教它把自己寫的文件在 MarsDawn 裡打開給你檢閱，也能匯出 PDF。</p>
 <p>在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成，不需要另外安裝任何東西。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上（Swift 6.2）。這個工具需要 macOS 15 以上。</p>
 <p>也可以從<a href="{KIT_URL}">原始碼</a>用 Swift Package Manager 建置：</p>
 <pre><code>git clone {KIT_URL}.git
@@ -1332,24 +1334,26 @@ open notes.pdf</code></pre>
 SKILL_PAGES = {
     ("en", "cli/skill"): {
         "title": "A coding-agent skill for Markdown to PDF · MarsDawn",
-        "description": "One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.",
+        "description": "One file your coding agent loads to open Markdown it wrote in MarsDawn for your review, and to install marsdawn, export Markdown to PDF and read the JSON result.",
         "body": f"""
 <section class="intro">
-  <h1>Let your agent make the PDF.</h1>
-  <p>This skill is one Markdown file. It teaches a coding agent to install <code>marsdawn</code>, check that it works, export a document to PDF and read the result, so the agent that wrote the Markdown can hand you the PDF as well.</p>
+  <h1>Let your agent show you what it wrote, and make the PDF.</h1>
+  <p>This skill is one Markdown file. It teaches a coding agent to open a document it wrote in MarsDawn for you to review, and to install <code>marsdawn</code>, check that it works, export a document to PDF and read the result.</p>
 </section>
 <div class="summary"><p><strong>One Markdown file, at <code>~/.claude/skills/marsdawn/SKILL.md</code>.</strong> With it your agent installs <code>marsdawn</code>, exports to PDF and reads the JSON result, and it still asks before it runs anything.</p></div>
 <h2>Install it in Claude Code</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
-<p>Claude Code loads it when a task calls for a PDF, and you can run it yourself as <code>/marsdawn</code>. It's <a href="/cli/skill/SKILL.md">one short file</a>, so read it before you install it.</p>
+<p>Claude Code loads it when a task calls for a PDF, or when it has written or revised a Markdown document for you to read, and you can run it yourself as <code>/marsdawn</code>. It's <a href="/cli/skill/SKILL.md">one short file</a>, so read it before you install it.</p>
 <p>Other agents can use the same file. It's plain Markdown, instructions and commands, so point yours at the URL or paste it in.</p>
 <h2>What it teaches</h2>
 <ul>
   <li>Install <code>marsdawn</code> with Homebrew if it's missing, then check it with <code>marsdawn --version</code> instead of assuming a version.</li>
   <li>Export with <code>marsdawn export … --json</code>, and read the result: where the PDF went, how many pages it has, and any Mermaid diagram that didn't render.</li>
   <li>Tell the failures apart by exit code: no such file, a PDF already there, a failed export, a bad option.</li>
-  <li>Use <code>open</code> only when the MarsDawn app is installed, and never to make a PDF.</li>
+  <li>Open a document it wrote with <code>marsdawn open file.md:line</code>, landing on its first change, and only once: later edits show up in the open window by themselves.</li>
+  <li>If the MarsDawn app isn't installed, say so once and carry on, without retrying. Never use <code>open</code> to make a PDF.</li>
+  <li>With <code>--folder</code> (marsdawn 0.5.1 and later), report the folder as asked for, not as shown: the app decides, and nothing reports back.</li>
 </ul>
 <h2>What it doesn't do</h2>
 <ul>
@@ -1361,24 +1365,26 @@ curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
     },
     ("zh-hant", "cli/skill"): {
         "title": "讓寫程式的 agent 把 Markdown 轉 PDF 的 skill · MarsDawn",
-        "description": "一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。",
+        "description": "一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你檢閱，也學會安裝 marsdawn、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。",
         "body": f"""
 <section class="intro">
-  <h1>讓 agent 幫你做出 PDF。</h1>
-  <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果，這樣寫出 Markdown 的 agent，也能把 PDF 交給你。</p>
+  <h1>讓 agent 把寫好的文件拿給你看，也幫你做出 PDF。</h1>
+  <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 把自己寫的文件在 MarsDawn 裡打開給你檢閱，也教它安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果。</p>
 </section>
 <div class="summary"><p><strong>一個 Markdown 檔案，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 會安裝 <code>marsdawn</code>、輸出 PDF 並讀懂 JSON 結果；執行任何指令之前，它還是會先問你。</p></div>
 <h2>在 Claude Code 中安裝</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
-<p>需要做出 PDF 時，Claude Code 會自動載入它，你也可以用 <code>/marsdawn</code> 自己執行。它只是<a href="/cli/skill/SKILL.md">一個簡短的檔案</a>，安裝前先讀一遍。</p>
+<p>需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 <code>/marsdawn</code> 自己執行。它只是<a href="/cli/skill/SKILL.md">一個簡短的檔案</a>，安裝前先讀一遍。</p>
 <p>其他 agent 也能用同一個檔案。它是純 Markdown，只有說明和指令，讓你的 agent 讀這個網址，或直接貼給它就好。這個檔案是英文的。</p>
 <h2>它教什麼</h2>
 <ul>
   <li>如果沒有 <code>marsdawn</code>，就用 Homebrew 安裝，再用 <code>marsdawn --version</code> 確認版本，而不是假設某個版本。</li>
   <li>用 <code>marsdawn export … --json</code> 匯出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。</li>
   <li>依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。</li>
-  <li>只有裝了 MarsDawn app 才用 <code>open</code>，而且絕不用它來做 PDF。</li>
+  <li>用 <code>marsdawn open file.md:行號</code> 打開自己寫的文件，停在第一處修改，而且只開一次：之後的修改會自己出現在已開啟的視窗裡。</li>
+  <li>如果沒有安裝 MarsDawn app，就告訴你一次然後繼續，不會一直重試。絕不用 <code>open</code> 來做 PDF。</li>
+  <li>使用 <code>--folder</code>（marsdawn 0.5.1 以上）時，把資料夾回報為「已要求顯示」，而不是「已顯示」：由 app 決定，也不會有結果回報。</li>
 </ul>
 <h2>它不會做的事</h2>
 <ul>
@@ -1864,7 +1870,7 @@ def build_skill_md() -> str:
                       for code, kind, meaning in EXIT_CODES)
     return f"""---
 name: marsdawn
-description: Export Markdown to PDF with the marsdawn command-line tool on macOS, and read its JSON result. Use when asked to turn a Markdown file into a PDF, or to render Markdown with tables, math, Mermaid diagrams or highlighted code into a PDF.
+description: Export Markdown to PDF with the marsdawn command-line tool on macOS and read its JSON result, and open Markdown you wrote in MarsDawn for the user to review. Use when asked to turn a Markdown file into a PDF, or to render Markdown with tables, math, Mermaid diagrams or highlighted code into a PDF. Also use after writing or revising a Markdown document the user will read, to open it in MarsDawn for review.
 ---
 
 # marsdawn
@@ -1907,10 +1913,26 @@ On failure with `--json` it prints `{{"ok": false, "error": <kind>, "message": .
 |---|---|---|
 {codes}
 
-## open
+## Review: open what you wrote
 
-`marsdawn open file.md` opens a file in the MarsDawn app for review. It needs the app; without
-it, it exits 3. Never use it to make a PDF: that's `export`.
+After writing or revising a Markdown document the user will read, open it in the MarsDawn app,
+where they read it rendered next to the source:
+
+```sh
+marsdawn open plan.md:42 --json
+```
+
+- `:42` is the line of your first change, counted from 1, so the user lands on it. Leave it off
+  when the whole document is new.
+- Open it **once**. When you edit the file again, the open window picks up the change by itself
+  and tells the user, with Undo. Don't run `open` again after every edit.
+- It needs the MarsDawn app. Without it, `open` exits 3 (`app_not_installed`): tell the user once
+  and carry on. Don't retry, and don't try to install the app.
+- To show the project in the window's sidebar as well, add `--folder <path>` (marsdawn 0.5.1 and
+  later; one folder). The JSON then includes `"folder": {{"path": ..., "requested": true}}`.
+  `requested` means marsdawn asked the app. It can't tell whether the sidebar shows the folder
+  (the app may first ask the user for access), so report it as asked, not as done.
+- Never use `open` to make a PDF: that's `export`.
 
 ## Full contract
 

@@ -1,6 +1,6 @@
-# Let your agent make the PDF.
+# Let your agent show you what it wrote, and make the PDF.
 
-This skill is one Markdown file. It teaches a coding agent to install `marsdawn`, check that it works, export a document to PDF and read the result, so the agent that wrote the Markdown can hand you the PDF as well.
+This skill is one Markdown file. It teaches a coding agent to open a document it wrote in MarsDawn for you to review, and to install `marsdawn`, check that it works, export a document to PDF and read the result.
 
 **One Markdown file, at `~/.claude/skills/marsdawn/SKILL.md`.** With it your agent installs `marsdawn`, exports to PDF and reads the JSON result, and it still asks before it runs anything.
 
@@ -11,7 +11,7 @@ mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code loads it when a task calls for a PDF, and you can run it yourself as `/marsdawn`. It's [one short file](/cli/skill/SKILL.md), so read it before you install it.
+Claude Code loads it when a task calls for a PDF, or when it has written or revised a Markdown document for you to read, and you can run it yourself as `/marsdawn`. It's [one short file](/cli/skill/SKILL.md), so read it before you install it.
 
 Other agents can use the same file. It's plain Markdown, instructions and commands, so point yours at the URL or paste it in.
 
@@ -20,7 +20,9 @@ Other agents can use the same file. It's plain Markdown, instructions and comman
 - Install `marsdawn` with Homebrew if it's missing, then check it with `marsdawn --version` instead of assuming a version.
 - Export with `marsdawn export … --json`, and read the result: where the PDF went, how many pages it has, and any Mermaid diagram that didn't render.
 - Tell the failures apart by exit code: no such file, a PDF already there, a failed export, a bad option.
-- Use `open` only when the MarsDawn app is installed, and never to make a PDF.
+- Open a document it wrote with `marsdawn open file.md:line`, landing on its first change, and only once: later edits show up in the open window by themselves.
+- If the MarsDawn app isn't installed, say so once and carry on, without retrying. Never use `open` to make a PDF.
+- With `--folder` (marsdawn 0.5.1 and later), report the folder as asked for, not as shown: the app decides, and nothing reports back.
 
 ## What it doesn't do
 
@@ -51,6 +53,6 @@ The whole contract, every field and every code, is in [marsdawn for agents](/cli
 - [Sharing exported PDFs](https://marsdawn.southern-light.dev/sharing-exported-pdfs/index.md): Export an agent's Markdown to PDF and hand it to a colleague who doesn't read Markdown and won't install anything. No syntax, no app and no account needed to open it.
 - [Why AI output still needs a human reader](https://marsdawn.southern-light.dev/reviewing-ai-output/index.md): AI-written Markdown still has to be understood by a person, not trusted on sight. MarsDawn pairs the rendered page with the source, and draws Mermaid diagrams and KaTeX math, so structure is legible at a glance.
 - [Changelog](https://marsdawn.southern-light.dev/changelog/index.md): What changed in the free marsdawn command-line tool.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/cli/skill/index.md): 一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/cli/skill/index.md): 一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你檢閱，也學會安裝 marsdawn、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/cli/skill/index.md): 一个文件，让写程序的 agent 学会安装 marsdawn、确认它能用、把 Markdown 导出成 PDF，并读懂 JSON 结果。
 - [日本語](https://marsdawn.southern-light.dev/ja/cli/skill/index.md): コーディングエージェントが読み込んで marsdawn をインストールし、動作確認をし、Markdown を PDF に書き出し、JSON の結果を読み取るための1つのファイルです。
