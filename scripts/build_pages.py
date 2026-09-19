@@ -42,7 +42,7 @@ UI = {
         "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.",
         "footer_store": "MarsDawn is coming soon to the Mac App Store.",
         "more": "More",
-        "yours": "Your writing stays on your Mac", "pay-once": "Pay once", "pdf": "PDF export",
+        "yours": "Your writing stays on your Mac", "pay-once": "Try free, pay once", "pdf": "PDF export",
         "native": "A Mac app", "limits": "What MarsDawn doesn't do",
     },
     "zh-hant": {
@@ -53,7 +53,7 @@ UI = {
         "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。",
         "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
         "more": "其他頁面",
-        "yours": "你寫的內容留在你的 Mac 上", "pay-once": "買一次就好", "pdf": "輸出 PDF",
+        "yours": "你寫的內容留在你的 Mac 上", "pay-once": "免費試用，買一次就好", "pdf": "輸出 PDF",
         "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
     },
 }
@@ -1338,40 +1338,52 @@ TRAIT_PAGES = {
 """,
     ),
     ("en", "pay-once"): _trait_page(
-        "Pay once · MarsDawn",
-        "MarsDawn costs USD 4.99, once. No subscription, no account, no paid tier.",
+        "Try free, pay once · MarsDawn",
+        "MarsDawn is a free download with a 14-day trial, then a USD 4.99 one-time unlock. No subscription, no account, no paid tier.",
         """
 <section class="intro">
-  <h1>Pay once. Keep all of it.</h1>
-  <p>MarsDawn costs USD 4.99, one time. There is no subscription and no paid tier: every feature is in the one purchase.</p>
+  <h1>Try it free. Pay once to keep it.</h1>
+  <p>MarsDawn is a free download from the Mac App Store with a 14-day trial. After that, one USD 4.99 purchase unlocks it for good. There is no subscription and no paid tier.</p>
 </section>
 """,
         """
 <h2>What that means</h2>
 <ul>
-  <li>One purchase on the Mac App Store, USD 4.99.</li>
+  <li>Download MarsDawn free and use it for 14 days.</li>
+  <li>To keep using it, unlock it with one in-app purchase of USD 4.99.</li>
   <li>There is no subscription, so nothing renews.</li>
   <li>There is no account: MarsDawn never asks you to create one.</li>
-  <li>Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.</li>
+  <li>Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the unlock.</li>
+</ul>
+<h2>If the trial ends before you unlock</h2>
+<ul>
+  <li>Your documents still open, but MarsDawn covers their content until you unlock it. You can't read, edit, export or print them in the app.</li>
+  <li>Your files are never changed. They stay on your Mac as plain Markdown, Quick Look in Finder keeps showing them, and the free <a href="/cli/">marsdawn</a> command-line tool keeps exporting them to PDF.</li>
 </ul>
 """,
     ),
     ("zh-hant", "pay-once"): _trait_page(
-        "買一次就好 · MarsDawn",
-        "MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱、不需要帳號，也沒有付費進階版。",
+        "免費試用，買一次就好 · MarsDawn",
+        "MarsDawn 免費下載，可試用 14 天，之後以 USD 4.99 一次解鎖。沒有訂閱、不需要帳號，也沒有付費進階版。",
         """
 <section class="intro">
-  <h1>買一次，全部都是你的。</h1>
-  <p>MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱，也沒有付費進階版，所有功能都在這一次購買裡。</p>
+  <h1>先免費試用，買一次就能一直用。</h1>
+  <p>MarsDawn 在 Mac App Store 免費下載，可以試用 14 天。之後只要一次 USD 4.99 的購買，就永久解鎖。沒有訂閱，也沒有付費進階版。</p>
 </section>
 """,
         """
 <h2>這代表什麼</h2>
 <ul>
-  <li>一次購買，在 Mac App Store，USD 4.99。</li>
+  <li>免費下載 MarsDawn，可以使用 14 天。</li>
+  <li>想繼續使用，就用一次 USD 4.99 的 App 內購買解鎖。</li>
   <li>沒有訂閱，不會自動續費。</li>
   <li>不需要帳號，MarsDawn 從不要求你建立帳號。</li>
-  <li>沒有保留任何功能。所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都在你買的這個 app 裡。</li>
+  <li>沒有保留任何功能。所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都包含在這次解鎖裡。</li>
+</ul>
+<h2>試用結束但還沒解鎖時</h2>
+<ul>
+  <li>文件還是打得開，但在解鎖之前，MarsDawn 會蓋住內容。你沒辦法在 app 裡閱讀、編輯、輸出或列印。</li>
+  <li>你的檔案不會被改動。它們仍是你 Mac 上的純 Markdown 檔，Finder 的快速查看照樣能看，免費的 <a href="/zh-hant/cli/">marsdawn</a> 命令列工具也照樣能輸出 PDF。</li>
 </ul>
 """,
     ),
@@ -1512,14 +1524,14 @@ TRAIT_PAGES = {
 TRAIT_LINK = {
     "en": {
         "yours": ("Your writing stays on your Mac", "No account, no sync, no cloud."),
-        "pay-once": ("Pay once", "USD 4.99, one time. No subscription."),
+        "pay-once": ("Try free, pay once", "14-day free trial, then USD 4.99 once. No subscription."),
         "pdf": ("PDF export", "Diagrams, highlighted code, careful page breaks."),
         "native": ("A Mac app", "Native windows, tabs, autosave, Quick Look."),
         "limits": ("What MarsDawn doesn't do", "Know before you buy."),
     },
     "zh-hant": {
         "yours": ("你寫的內容留在你的 Mac 上", "不需要帳號，沒有同步，也沒有雲端。"),
-        "pay-once": ("買一次就好", "USD 4.99，買一次就好，沒有訂閱。"),
+        "pay-once": ("免費試用，買一次就好", "免費試用 14 天，之後 USD 4.99 一次解鎖，沒有訂閱。"),
         "pdf": ("輸出 PDF", "圖表、程式碼上色、經過安排的分頁。"),
         "native": ("為 Mac 而做", "原生視窗、分頁、自動儲存、快速查看。"),
         "limits": ("MarsDawn 做不到的事", "購買前先知道。"),
@@ -1820,7 +1832,7 @@ def render(locale: str, slug: str, page: dict) -> str:
             "description": page["description"],
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "macOS 26 or later",
-            "offers": {"@type": "Offer", "price": "4.99", "priceCurrency": "USD"},
+            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
             "url": canonical_url,
         }
         jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
@@ -1973,7 +1985,7 @@ MarsDawn is **not**:
 - **not Electron.** It is a native AppKit application, not a web page in a bundled browser.
 - **not a web app.** It runs locally as a macOS app; there is no server and no browser tab.
 - **not read-only.** It is a full Markdown editor: you write and edit the source, not just view rendered output.
-- **not a subscription.** Its pricing model is not subscription-based.
+- **not a subscription.** It is a free download with a 14-day trial, then a USD 4.99 one-time in-app purchase to unlock it.
 - **not cross-platform.** It is macOS only; there is no Windows, Linux, iOS or Android build.
 - **not an AI product.** The app itself contains no AI. It is built for reviewing Markdown that an AI agent writes, and does not include an AI model of its own.
 

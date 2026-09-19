@@ -47,13 +47,13 @@ In this screenshot:
 The details are in the [privacy policy](/privacy/).
 ---
 
-## Pay once
+## Try free, pay once
 
 Source: https://marsdawn.southern-light.dev/pay-once/
 
-# Pay once. Keep all of it.
+# Try it free. Pay once to keep it.
 
-MarsDawn costs USD 4.99, one time. There is no subscription and no paid tier: every feature is in the one purchase.
+MarsDawn is a free download from the Mac App Store with a 14-day trial. After that, one USD 4.99 purchase unlocks it for good. There is no subscription and no paid tier.
 
 ![MarsDawn in the Vivid theme, with Markdown source on the left and the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
@@ -66,10 +66,16 @@ In this screenshot:
 
 ## What that means
 
-- One purchase on the Mac App Store, USD 4.99.
+- Download MarsDawn free and use it for 14 days.
+- To keep using it, unlock it with one in-app purchase of USD 4.99.
 - There is no subscription, so nothing renews.
 - There is no account: MarsDawn never asks you to create one.
-- Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.
+- Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the unlock.
+
+## If the trial ends before you unlock
+
+- Your documents still open, but MarsDawn covers their content until you unlock it. You can't read, edit, export or print them in the app.
+- Your files are never changed. They stay on your Mac as plain Markdown, Quick Look in Finder keeps showing them, and the free [marsdawn](/cli/) command-line tool keeps exporting them to PDF.
 ---
 
 ## PDF export
@@ -699,13 +705,13 @@ MarsDawn 不需要帳號，沒有同步，也沒有雲端。它打開檔案、�
 完整說明請看[隱私權政策](/zh-hant/privacy/)。
 ---
 
-## 買一次就好
+## 免費試用，買一次就好
 
 Source: https://marsdawn.southern-light.dev/zh-hant/pay-once/
 
-# 買一次，全部都是你的。
+# 先免費試用，買一次就能一直用。
 
-MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱，也沒有付費進階版，所有功能都在這一次購買裡。
+MarsDawn 在 Mac App Store 免費下載，可以試用 14 天。之後只要一次 USD 4.99 的購買，就永久解鎖。沒有訂閱，也沒有付費進階版。
 
 ![MarsDawn 使用 Vivid 主題，左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
@@ -718,10 +724,16 @@ MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱，也沒有付費進�
 
 ## 這代表什麼
 
-- 一次購買，在 Mac App Store，USD 4.99。
+- 免費下載 MarsDawn，可以使用 14 天。
+- 想繼續使用，就用一次 USD 4.99 的 App 內購買解鎖。
 - 沒有訂閱，不會自動續費。
 - 不需要帳號，MarsDawn 從不要求你建立帳號。
-- 沒有保留任何功能。所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都在你買的這個 app 裡。
+- 沒有保留任何功能。所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都包含在這次解鎖裡。
+
+## 試用結束但還沒解鎖時
+
+- 文件還是打得開，但在解鎖之前，MarsDawn 會蓋住內容。你沒辦法在 app 裡閱讀、編輯、輸出或列印。
+- 你的檔案不會被改動。它們仍是你 Mac 上的純 Markdown 檔，Finder 的快速查看照樣能看，免費的 [marsdawn](/zh-hant/cli/) 命令列工具也照樣能輸出 PDF。
 ---
 
 ## 輸出 PDF
