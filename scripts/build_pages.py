@@ -200,20 +200,14 @@ PAGES = {
 <h2>What stays on your Mac</h2>
 <ul>
   <li><strong>Your documents.</strong> MarsDawn reads and writes only the files and folders you open, save or choose. They are never uploaded anywhere by the app.</li>
-  <li><strong>Your settings.</strong> Appearance, preview theme, window layout, and your choices about web images and web content are stored in the app's own preferences on your Mac.</li>
-  <li><strong>Folder access you grant.</strong> When you let MarsDawn show images or page files from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. A folder you open in the sidebar stays readable and writable by MarsDawn until you remove it in Settings, not just while its window is open. You can remove folders at any time in MarsDawn › Settings.</li>
+  <li><strong>Your settings.</strong> Appearance, preview theme, window layout and the image preference are stored in the app's own preferences on your Mac.</li>
+  <li><strong>Folder access you grant.</strong> When you let MarsDawn show images from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. You can remove folders at any time in MarsDawn › Settings.</li>
 </ul>
 
 <h2>When MarsDawn uses the internet</h2>
-<p>MarsDawn works fully offline. It connects to the internet only <strong>when you choose to load web content</strong> that a document refers to:</p>
-<ul>
-  <li><strong>Markdown documents.</strong> Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings. Nothing else a Markdown document refers to is loaded from the web.</li>
-  <li><strong>HTML pages.</strong> MarsDawn shows HTML files read-only. Web content a page refers to (images, stylesheets, fonts, audio/video) loads only when you choose, and this has its own setting, which is off by default. Page scripts never run.</li>
-</ul>
-<p>MarsDawn loads web content over https only. A document that refers to a plain http address is never loaded, in any setting, and MarsDawn does not rewrite it to https. The preview shows a placeholder in its place.</p>
-<p>When web content loads, your Mac requests it directly from the servers that host it. Like any web request, this lets those servers see your IP address and what was requested. MarsDawn's developer receives none of this information.</p>
-<p>If you allow web content for an HTML page, that page's layout could let those servers learn whether files the page itself refers to exist in the folder you gave MarsDawn access to, and roughly how large they are. The page can't read your files or send their contents, and this can't happen while web content is blocked.</p>
-<p>Links you click in the preview open in your default web browser, under that browser's own privacy practices. Audio and video never play by themselves.</p>
+<p>MarsDawn works fully offline. It connects to the internet in one situation only: <strong>when you choose to load images from the web</strong> that a document refers to. Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings.</p>
+<p>When web images load, your Mac requests them directly from the servers that host them. Like any web request, this lets those servers see your IP address and that the image was requested. MarsDawn's developer receives none of this information.</p>
+<p>Links you click in the preview open in your default web browser, under that browser's own privacy practices.</p>
 
 <h2>Siri, Shortcuts and Spotlight</h2>
 <p>MarsDawn offers actions for Siri, the Shortcuts app and Spotlight, such as creating a document or adding a note. When you use them, the text you provide is passed to MarsDawn on your Mac and saved only where the action says (a new document, or the <code>Inbox.md</code> file in the notes folder you chose). Speech you dictate to Siri is handled by Apple under <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
@@ -252,20 +246,14 @@ PAGES = {
 <h2>留在你 Mac 上的東西</h2>
 <ul>
   <li><strong>你的文件。</strong>MarsDawn 只讀寫你打開、儲存或選擇的檔案與資料夾，App 不會把它們上傳到任何地方。</li>
-  <li><strong>你的設定。</strong>外觀、預覽主題、視窗版面，以及你對網路圖片與網路內容的選擇，都存在 App 自己的偏好設定裡。</li>
-  <li><strong>你授權的資料夾。</strong>當你讓 MarsDawn 顯示某個資料夾裡的圖片或網頁檔案，或選擇筆記資料夾時，App 會保存 macOS 書籤，以便之後再次開啟。你在側邊欄開啟的資料夾，MarsDawn 會保持可讀寫，直到你在設定中移除為止，而不只是在那個視窗開著的時候。你隨時可以到 MarsDawn › 設定⋯ 移除。</li>
+  <li><strong>你的設定。</strong>外觀、預覽主題、視窗版面和圖片偏好，都存在 App 自己的偏好設定裡。</li>
+  <li><strong>你授權的資料夾。</strong>當你讓 MarsDawn 顯示某個資料夾裡的圖片，或選擇筆記資料夾時，App 會保存 macOS 書籤，以便之後再次開啟。你隨時可以到 MarsDawn › 設定⋯ 移除。</li>
 </ul>
 
 <h2>MarsDawn 什麼時候會連上網路</h2>
-<p>MarsDawn 可以完全離線使用，只有在<strong>你選擇載入文件引用的網路內容</strong>時才會連網：</p>
-<ul>
-  <li><strong>Markdown 文件。</strong>網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。</li>
-  <li><strong>HTML 網頁。</strong>MarsDawn 以唯讀方式顯示 HTML 檔。網頁引用的網路內容（圖片、樣式表、字型、音訊與影片）只有在你選擇時才會載入，這項設定獨立於圖片設定，預設為關閉。網頁中的程式碼一律不會執行。</li>
-</ul>
-<p>MarsDawn 只透過 https 載入網路內容。文件若引用 http 位址，一律不會載入，任何設定都無法開啟，MarsDawn 也不會自動改寫成 https，預覽中會以佔位圖示代替。</p>
-<p>載入網路內容時，你的 Mac 會直接向存放內容的伺服器發出請求。和所有網路請求一樣，這些伺服器會看到你的 IP 位址與請求的內容。MarsDawn 的開發者不會收到任何這類資訊。</p>
-<p>如果你允許某個 HTML 網頁載入網路內容，該網頁的版面配置可能讓那些伺服器得知：網頁本身引用的檔案是否存在於你授權給 MarsDawn 的資料夾中，以及大約的檔案大小。網頁無法讀取你的檔案，也無法傳出檔案內容；網路內容保持封鎖時，這種情況不會發生。</p>
-<p>在預覽中點選的連結會用你的預設瀏覽器打開，適用該瀏覽器的隱私做法。音訊與影片不會自動播放。</p>
+<p>MarsDawn 可以完全離線使用，只有一種情況會連網：<strong>你選擇載入文件裡引用的網路圖片</strong>。網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。</p>
+<p>載入網路圖片時，你的 Mac 會直接向存放圖片的伺服器發出請求。和所有網路請求一樣，這些伺服器會看到你的 IP 位址與這次請求。MarsDawn 的開發者不會收到任何這類資訊。</p>
+<p>在預覽中點選的連結會用你的預設瀏覽器打開，適用該瀏覽器的隱私做法。</p>
 
 <h2>Siri、捷徑和 Spotlight</h2>
 <p>MarsDawn 提供 Siri、捷徑 App 和 Spotlight 可用的動作，例如新增文件或加入筆記。使用時，你提供的文字會交給你 Mac 上的 MarsDawn，並只存到動作指定的位置（新文件，或你所選筆記資料夾中的 <code>Inbox.md</code>）。對 Siri 說的話由 Apple 依 <a href="https://www.apple.com/legal/privacy/">Apple 隱私權政策</a> 處理。</p>
