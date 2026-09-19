@@ -1,6 +1,6 @@
 # MacMD Viewer 對比 MarsDawn。
 
-兩者都是給 Mac 用的原生 app，都能把 Markdown 排版出來讀。MacMD Viewer 打開 `.md` 檔案，顯示排好版的頁面，但不能編輯它。MarsDawn 則是在同樣的預覽旁邊放了編輯器，讓你在同一個視窗裡寫和讀。以下逐項比較兩者的差異。
+兩者都是給 Mac 用的 app，都能把 Markdown 排版出來讀。MacMD Viewer 打開 `.md` 檔案，顯示排好版的頁面，但不能編輯它。MarsDawn 則是在同樣的預覽旁邊放了編輯器，讓你在同一個視窗裡寫和讀。以下逐項比較兩者的差異。
 
 ## 如果你只需要讀，不需要編輯
 
