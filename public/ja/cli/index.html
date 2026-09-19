@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>marsdawn: a free Markdown to PDF command-line tool · MarsDawn</title>
+<meta name="description" content="The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/cli/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/cli/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/cli/">
+<link rel="alternate" type="text/markdown" href="/ja/cli/index.md">
+<meta property="og:title" content="marsdawn: a free Markdown to PDF command-line tool · MarsDawn">
+<meta property="og:description" content="The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/cli/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/cli/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>Command Line</h1>
+  <p>The free <code>marsdawn</code> command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.</p>
+</section>
+
+<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
+
+<p>Calling marsdawn from an AI agent or a script? See <a href="/ja/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code.</p>
+
+<h2>Install</h2>
+<p>With <a href="https://brew.sh">Homebrew</a>:</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
+<p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.</p>
+<p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> with Swift Package Manager:</p>
+<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift build -c release --product marsdawn</code></pre>
+<p>Check which version you have with <code>marsdawn --version</code>.</p>
+
+<h2>Commands</h2>
+
+<h3>marsdawn open</h3>
+<p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app.</p>
+<pre><code>marsdawn open notes.md
+marsdawn open notes.md:120
+marsdawn open notes.md --line 120</code></pre>
+<ul>
+  <li><code>path:line</code>: asks MarsDawn to land on that line. A column after it, as in <code>notes.md:120:8</code>, is ignored. If a file with the whole name exists, the argument is that file.</li>
+  <li><code>--line &lt;n&gt;</code>: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.</li>
+  <li>Lines run from 1 to 999999999.</li>
+  <li>MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
+  <li><code>--json</code>: print a JSON result instead of text.</li>
+</ul>
+<p>Lines were added in marsdawn 0.3.0.</p>
+
+<h3>marsdawn export</h3>
+<p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.</p>
+<pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
+<ul>
+  <li><code>-o, --output &lt;path&gt;</code>: where to write the PDF. Defaults to the input path with a <code>.pdf</code> extension.</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: the preview theme's light palette. Defaults to <code>$MARSDAWN_THEME</code>, then <code>dawn</code>.</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>: paper size. Defaults to <code>a4</code>.</li>
+  <li><code>--allow-remote-images</code>: load images from the web while rendering. Off by default.</li>
+  <li><code>--force</code>: replace the output file if it already exists.</li>
+  <li><code>--json</code>: print a JSON result instead of text.</li>
+</ul>
+
+<h2>The $MARSDAWN_THEME variable</h2>
+<p>When <code>--theme</code> isn't passed, <code>export</code> reads the <code>$MARSDAWN_THEME</code> environment variable. Its value must be one of <code>dawn</code>, <code>classic</code>, <code>modern</code> or <code>vivid</code>; anything else falls back to <code>dawn</code>. The CLI doesn't read the app's own theme setting, because reading another app's container can trigger a macOS privacy prompt.</p>
+
+<h2>Overwriting files</h2>
+<p><code>export</code> refuses to replace an existing output file unless you pass <code>--force</code>.</p>
+
+<h2>Exit codes</h2>
+<ul>
+  <li><code>0</code>: success.</li>
+  <li><code>2</code>: input not found.</li>
+  <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
+  <li><code>4</code>: output exists (pass <code>--force</code>).</li>
+  <li><code>5</code>: export failed.</li>
+  <li><code>64</code>: usage error, including a line out of range or <code>--line</code> with more than one file.</li>
+</ul>
+
+<h2>--json output</h2>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
+</main>
+<footer class="footer">
+  <span>Read what your agent wrote.</span>
+  <a href="/ja/support/">Support</a>
+  <a href="/ja/privacy/">Privacy Policy</a>
+  <a href="/ja/cli/">Command Line</a>
+  <span>MarsDawn is coming soon to the Mac App Store.</span>
+</footer>
+</div>
+</body>
+</html>

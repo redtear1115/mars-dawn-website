@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markdown 轉 PDF 工具：在 Mac 用命令列轉檔 · MarsDawn</title>
+<meta name="description" content="免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/markdown-to-pdf/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/markdown-to-pdf/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/markdown-to-pdf/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/">
+<link rel="alternate" type="text/markdown" href="/zh-hans/markdown-to-pdf/index.md">
+<meta property="og:title" content="Markdown 轉 PDF 工具：在 Mac 用命令列轉檔 · MarsDawn">
+<meta property="og:description" content="免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hans/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/markdown-to-pdf/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/markdown-to-pdf/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/markdown-to-pdf/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/markdown-to-pdf/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>Markdown 轉 PDF 工具：在 Mac 上用命令列轉檔。</h1>
+  <p>免費的 <code>marsdawn</code> 工具只要一個指令，就能把 Markdown 檔案轉成 PDF。表格、數學式、Mermaid 圖表和程式碼上色，都會照原始檔的樣子呈現，而且不需要安裝其他東西，連 MarsDawn app 都不用。</p>
+</section>
+<h2>安裝</h2>
+<pre><code>brew install redtear1115/tap/marsdawn
+marsdawn --version</code></pre>
+<p>在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上。這個工具需要 macOS 15 以上，<code>marsdawn --version</code> 會印出你裝到的版本。</p>
+<h2>存一份文件</h2>
+<p>把下面的內容貼進一個叫 <code>plan.md</code> 的檔案：</p>
+<pre><code># 計畫：讓輸出更快
+
+這份計畫由 agent 撰寫，你審閱後再把它轉成 PDF。
+
+## 步驟
+
+| 步驟 | 負責 | 狀態 |
+|------|------|------|
+| 找出慢的頁面 | Agent | 完成 |
+| 快取算好的圖表 | Agent | 審閱中 |
+
+目標是 50 頁的文件在 $t &lt; 2\,\text{s}$ 內完成：
+
+$$
+t_{\text{total}} = \sum_{i=1}^{n} t_i
+$$
+
+```mermaid
+graph LR
+  草稿 --&gt; 審閱 --&gt; 發佈
+```
+
+```swift
+let pdf = try export("plan.md")
+```
+</code></pre>
+<h2>匯出</h2>
+<pre><code>marsdawn export plan.md</code></pre>
+<p>它會在原始檔旁邊寫出 <code>plan.pdf</code>，並印出存放的位置：</p>
+<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<p>這是那一頁，擷取自 <code>marsdawn</code> 0.5.0 的實際執行結果：</p>
+<p><img class="pdf-page" src="/assets/cli/plan-zh-hans.png" alt="匯出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。" width="989" height="930"></p>
+<h2>選主題、紙張大小和檔名</h2>
+<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<ul>
+  <li><code>--theme</code>：dawn、classic、modern 或 vivid，使用主題的淺色配色。沒有指定時，<code>export</code> 會用 <code>$MARSDAWN_THEME</code>，再來才是 dawn。</li>
+  <li><code>--paper</code>：a4 或 letter，預設是 a4。</li>
+  <li><code>-o</code>：PDF 要寫到哪裡，而不是寫在原始檔旁邊。</li>
+  <li><code>--allow-remote-images</code>：轉檔時載入網路上的圖片。沒加這個選項就不會載入。</li>
+</ul>
+<h2>如果沒有成功</h2>
+<ul>
+  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> 代表 Homebrew 正在從原始碼建置 <code>marsdawn</code>，這在 Intel Mac 上會發生。從 App Store 安裝 Xcode 26 以上，再重新安裝一次。</li>
+  <li><code>marsdawn: No such file: …</code> 路徑沒有指到檔案。確認檔名，或在檔案所在的資料夾裡執行指令。</li>
+  <li><code>… already exists. Pass --force to replace it.</code> 同名的 PDF 已經存在。加上 <code>--force</code> 覆蓋它，或用 <code>-o</code> 寫到別的地方。</li>
+  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> 主題或紙張大小不是它認得的。主題有 dawn、classic、modern 和 vivid，紙張是 a4 或 letter。</li>
+</ul>
+<h2>接下來</h2>
+<ul>
+  <li>所有選項和它印出的 JSON：<a href="/zh-hans/cli/">命令列工具</a>。</li>
+  <li>讓寫程式的 agent 幫你做這件事：<a href="/zh-hans/cli/skill/">marsdawn 的 agent skill</a>。</li>
+</ul>
+</main>
+<footer class="footer">
+  <span>讀 agent 寫的 Markdown。</span>
+  <a href="/zh-hans/support/">支援</a>
+  <a href="/zh-hans/privacy/">隱私權政策</a>
+  <a href="/zh-hans/cli/">命令列工具</a>
+  <span>MarsDawn 即將在 Mac App Store 上架。</span>
+</footer>
+</div>
+</body>
+</html>

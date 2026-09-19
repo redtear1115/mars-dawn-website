@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MacMD Viewer vs. MarsDawn: a viewer or an editor · MarsDawn</title>
+<meta name="description" content="MacMD Viewer renders Markdown read-only for USD 19.99. MarsDawn edits and previews side by side, free to try then USD 4.99 once on the Mac App Store.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/vs/macmd-viewer/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/vs/macmd-viewer/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/">
+<link rel="alternate" type="text/markdown" href="/ja/vs/macmd-viewer/index.md">
+<meta property="og:title" content="MacMD Viewer vs. MarsDawn: a viewer or an editor · MarsDawn">
+<meta property="og:description" content="MacMD Viewer renders Markdown read-only for USD 19.99. MarsDawn edits and previews side by side, free to try then USD 4.99 once on the Mac App Store.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/vs/macmd-viewer/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/macmd-viewer/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/macmd-viewer/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/macmd-viewer/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>MacMD Viewer vs. MarsDawn.</h1>
+  <p>Both are Mac apps for reading Markdown rendered. MacMD Viewer opens a <code>.md</code> file and shows the finished page; it doesn't edit it. MarsDawn puts an editor next to the same kind of rendered preview, so you write and review in one window. Here's how they differ, feature by feature.</p>
+</section>
+<h2>If you only need to read, not edit</h2>
+<p>If your job is strictly reading Markdown someone else wrote, and you never need to touch the source, MacMD Viewer is a reasonable fit: it's built for exactly that, is available now and works down to an older macOS. MarsDawn is worth it once reading isn't the whole job, because an agent's Markdown usually comes back for another pass.</p>
+<h2>What each app does</h2>
+<ul>
+  <li><strong>Editing:</strong> MacMD Viewer is read-only by design. MarsDawn edits the source and renders it side by side, so a change shows up as you type.</li>
+  <li><strong>Preview themes:</strong> MacMD Viewer ships 12 document themes. MarsDawn ships four, Dawn, Classic, Modern and Vivid, each with a light and a dark palette.</li>
+  <li><strong>Diagrams and math:</strong> both render Mermaid diagrams and highlight code. MarsDawn also renders KaTeX math; MacMD Viewer's own listing doesn't mention math rendering.</li>
+  <li><strong>Finder integration:</strong> both add a Quick Look extension, so pressing Space on a <code>.md</code> file in Finder shows the rendered page.</li>
+  <li><strong>PDF and print:</strong> both export or print a PDF of the rendered page.</li>
+  <li><strong>System requirements:</strong> MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.</li>
+  <li><strong>Languages:</strong> MarsDawn's interface ships in 英語と繁体字中国語. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.</li>
+</ul>
+<h2>Pricing and how you buy it</h2>
+<ul>
+  <li><strong>Where you buy it:</strong> MacMD Viewer is a direct download from its own site, also on Homebrew and Setapp; it isn't on the Mac App Store. MarsDawn is Mac App Store only.</li>
+  <li><strong>Price:</strong> MacMD Viewer is USD 19.99 once for one Mac (a 3-Mac pack and volume packs cost more). MarsDawn is a free download, then a USD 4.99 one-time unlock.</li>
+  <li><strong>Trying it first:</strong> MacMD Viewer has no free trial; direct purchases carry a 14-day money-back guarantee instead. MarsDawn gives you a 14-day trial before you pay anything.</li>
+  <li><strong>Refunds and updates:</strong> MacMD Viewer's refunds and updates run through its own site. MarsDawn's purchase goes through Apple, so refunds and updates use Apple's standard process.</li>
+  <li><strong>Accounts:</strong> neither app needs an account to use.</li>
+</ul>
+<h2>Try it today, free</h2>
+<p>MarsDawn is coming soon to the Mac App Store, not on sale yet. Until then, the free <code>marsdawn</code> command-line tool renders any Markdown file to a PDF today, with Mermaid diagrams and highlighted code, and needs nothing else installed:</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<h2>Next</h2>
+<ul>
+  <li>The full walk-through: <a href="/ja/markdown-to-pdf/">Markdown to PDF</a>.</li>
+  <li>What MarsDawn doesn't do: <a href="/ja/limits/">the list</a>.</li>
+  <li>Every option of the command-line tool: <a href="/ja/cli/">Command Line</a>.</li>
+</ul>
+</main>
+<footer class="footer">
+  <span>Read what your agent wrote.</span>
+  <a href="/ja/support/">Support</a>
+  <a href="/ja/privacy/">Privacy Policy</a>
+  <a href="/ja/cli/">Command Line</a>
+  <span>MarsDawn is coming soon to the Mac App Store.</span>
+</footer>
+</div>
+</body>
+</html>
