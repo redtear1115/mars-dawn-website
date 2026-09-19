@@ -1815,25 +1815,33 @@ def render(locale: str, slug: str, page: dict) -> str:
 
 
 # robots.txt: exactly these directives (Cloudflare prepends its own managed block).
-# AI crawlers allowed by name, each in its own group. robots.txt semantics: a
-# named group replaces `*` for that bot, so `User-agent: *` alone would NOT
-# cover these — each one needs its own `Allow: /` line.
+# AI crawlers allowed by name. robots.txt semantics (RFC 9309): a named group
+# replaces `*` for that bot entirely, so `User-agent: *` alone would not cover
+# these, and its `Content-Signal` line would not apply to them either. All 7
+# go in ONE group (repeated User-agent lines sharing the rules that follow),
+# so that group's `Allow: /` and `Content-Signal` both apply to every one of
+# them, matching what the `*` group gives everyone else — one place to edit,
+# rather than repeating Content-Signal per bot.
 AI_CRAWLERS = [
     "GPTBot", "ChatGPT-User", "OAI-SearchBot",
     "ClaudeBot", "Claude-User", "Claude-SearchBot",
     "PerplexityBot",
 ]
 
-_AI_CRAWLER_GROUPS = "\n".join(f"User-agent: {bot}\nAllow: /\n" for bot in AI_CRAWLERS)
+_AI_CRAWLER_USER_AGENTS = "\n".join(f"User-agent: {bot}" for bot in AI_CRAWLERS)
 
 ROBOTS_TXT = f"""# robots.txt for marsdawn.southern-light.dev
 User-agent: *
 Allow: /
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
-# Named groups replace `*` for that bot, so the AI crawlers below each get
-# their own explicit allow rather than relying on the default group above.
-{_AI_CRAWLER_GROUPS}
+# One group, seven user agents: a named group replaces `*` for that bot, so
+# each of these needs its own explicit Allow and Content-Signal rather than
+# relying on the default group above.
+{_AI_CRAWLER_USER_AGENTS}
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
 Sitemap: {BASE_URL}/sitemap.xml
 """
 

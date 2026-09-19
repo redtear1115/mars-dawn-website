@@ -3,27 +3,17 @@ User-agent: *
 Allow: /
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
-# Named groups replace `*` for that bot, so the AI crawlers below each get
-# their own explicit allow rather than relying on the default group above.
+# One group, seven user agents: a named group replaces `*` for that bot, so
+# each of these needs its own explicit Allow and Content-Signal rather than
+# relying on the default group above.
 User-agent: GPTBot
-Allow: /
-
 User-agent: ChatGPT-User
-Allow: /
-
 User-agent: OAI-SearchBot
-Allow: /
-
 User-agent: ClaudeBot
-Allow: /
-
 User-agent: Claude-User
-Allow: /
-
 User-agent: Claude-SearchBot
-Allow: /
-
 User-agent: PerplexityBot
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 Sitemap: https://marsdawn.southern-light.dev/sitemap.xml
