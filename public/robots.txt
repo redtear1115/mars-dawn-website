@@ -2,4 +2,18 @@
 User-agent: *
 Allow: /
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+# One group, seven user agents: a named group replaces `*` for that bot, so
+# each of these needs its own explicit Allow and Content-Signal rather than
+# relying on the default group above.
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
 Sitemap: https://marsdawn.southern-light.dev/sitemap.xml
