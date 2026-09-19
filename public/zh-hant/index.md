@@ -8,14 +8,11 @@ AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面�
 
 ## 整個循環
 
-- **Agent 動筆。**你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。
-- **你在 MarsDawn 裡讀。**打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。
-- **Agent 修改。**提出修改意見，agent 改好之後，再打開來讀一次。
+1. **Agent 動筆。**你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。
+2. **你在 MarsDawn 裡讀。**打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。
+3. **Agent 修改。**提出修改意見，agent 改好之後，再打開來讀一次。
 
 Agent 也能直接操作 MarsDawn：免費的 [marsdawn](/zh-hant/cli/) 命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
-
-- [支援與常見問題](/zh-hant/support/)
-- [隱私權政策](/zh-hant/privacy/)
 
 ## 其他頁面
 

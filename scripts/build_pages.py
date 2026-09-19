@@ -54,8 +54,42 @@ UI = {
 # horizon; the planet's mass has its own rim-to-deep gradient so it reads as
 # a body, not a flat line. preserveAspectRatio keeps the horizon anchored to
 # the bottom of the scene (xMidYMax slice) across every hero height.
-DAWN_HERO_SVG = """<div class="dawn-wrap" aria-hidden="true">
-  <svg class="dawn-art" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+#
+# The scene is split into stacked layers, each its own <svg> with the same
+# viewBox, so the one-time sunrise in site.css (the glow rising, a night veil
+# lifting, the stars going out, the limb catching light from the centre) only
+# moves whole layers with opacity, transform and clip-path, and never repaints
+# the sky. With no animation, or reduced motion, every layer rests on the
+# final frame: veil and stars at zero, glow and limb in place.
+DAWN_VIEWBOX = 'viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"'
+
+
+def _dawn_stars() -> str:
+    """Three tiers of faint stars in the upper sky, from a fixed seed so the page
+    regenerates byte for byte. They keep clear of the headline's column."""
+    seed = 20260919
+    tiers = {"a": [], "b": [], "c": []}
+    placed = 0
+    while placed < 36:
+        seed = (seed * 1103515245 + 12345) % 2**31
+        x = seed % 1200
+        seed = (seed * 1103515245 + 12345) % 2**31
+        y = 14 + seed % 330
+        if 300 < x < 900 and y > 70:
+            continue
+        seed = (seed * 1103515245 + 12345) % 2**31
+        tier = "aaaaabbbcc"[seed % 10]
+        r = {"a": 1.1, "b": 1.4, "c": 1.8}[tier]
+        tiers[tier].append(f'<circle cx="{x}" cy="{y}" r="{r}"></circle>')
+        placed += 1
+    return "\n".join(
+        f'  <svg class="dawn-layer dawn-stars stars-{tier}" {DAWN_VIEWBOX}>{"".join(dots)}</svg>'
+        for tier, dots in tiers.items()
+    )
+
+
+DAWN_HERO_SVG = f"""<div class="dawn-wrap" aria-hidden="true">
+  <svg class="dawn-layer" {DAWN_VIEWBOX}>
     <defs>
       <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
         <stop class="stop-sky-1" offset="0%"></stop>
@@ -63,24 +97,38 @@ DAWN_HERO_SVG = """<div class="dawn-wrap" aria-hidden="true">
         <stop class="stop-sky-3" offset="76%"></stop>
         <stop class="stop-sky-4" offset="100%"></stop>
       </linearGradient>
+    </defs>
+    <rect width="1200" height="900" fill="url(#skyGrad)"></rect>
+  </svg>
+  <svg class="dawn-layer dawn-glow" {DAWN_VIEWBOX}>
+    <defs>
       <radialGradient id="glowGrad" cx="50%" cy="63%" r="75%">
         <stop class="stop-glow" offset="0%"></stop>
         <stop class="stop-glow-mid" offset="42%"></stop>
         <stop class="stop-glow-fade" offset="100%"></stop>
       </radialGradient>
+    </defs>
+    <ellipse cx="600" cy="560" rx="1000" ry="430" fill="url(#glowGrad)"></ellipse>
+  </svg>
+  <svg class="dawn-layer" {DAWN_VIEWBOX}>
+    <defs>
       <linearGradient id="planetGrad" x1="0" y1="0" x2="0" y2="1">
         <stop class="stop-planet-rim" offset="0%"></stop>
         <stop class="stop-planet-deep" offset="26%"></stop>
       </linearGradient>
+    </defs>
+    <path d="M -40 560 Q 600 428 1240 560 L 1240 920 L -40 920 Z" fill="url(#planetGrad)"></path>
+  </svg>
+  <div class="dawn-layer night-veil"></div>
+{_dawn_stars()}
+  <svg class="dawn-layer dawn-limb" {DAWN_VIEWBOX}>
+    <defs>
       <linearGradient id="limbGrad" x1="0" y1="0" x2="1" y2="0">
         <stop class="stop-limb-fade" offset="0%"></stop>
         <stop class="stop-limb" offset="50%"></stop>
         <stop class="stop-limb-fade" offset="100%"></stop>
       </linearGradient>
     </defs>
-    <rect width="1200" height="900" fill="url(#skyGrad)"></rect>
-    <ellipse cx="600" cy="560" rx="1000" ry="430" fill="url(#glowGrad)"></ellipse>
-    <path d="M -40 560 Q 600 428 1240 560 L 1240 920 L -40 920 Z" fill="url(#planetGrad)"></path>
     <path class="limb-line" d="M -40 560 Q 600 428 1240 560" fill="none" stroke="url(#limbGrad)" stroke-width="5"></path>
   </svg>
 </div>"""
@@ -97,17 +145,13 @@ PAGES = {
 </section>
 """,
         "body": """
-<h2>The loop</h2>
-<ul class="loop-steps">
+<h2 class="loop-title">The loop</h2>
+<ol class="loop-steps">
   <li><strong>The agent writes.</strong> Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.</li>
   <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
   <li><strong>The agent revises.</strong> Ask for changes. Open the revised file and read it the same way.</li>
-</ul>
+</ol>
 <p>Agents can drive MarsDawn directly: the free <a href="/cli/">marsdawn</a> command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See <a href="/cli/agents/">marsdawn for agents</a> for the details.</p>
-<ul class="links">
-  <li><a href="/support/">Support and questions</a></li>
-  <li><a href="/privacy/">Privacy Policy</a></li>
-</ul>
 """,
     },
     ("zh-hant", "index"): {
@@ -121,17 +165,13 @@ PAGES = {
 </section>
 """,
         "body": """
-<h2>整個循環</h2>
-<ul class="loop-steps">
+<h2 class="loop-title">整個循環</h2>
+<ol class="loop-steps">
   <li><strong>Agent 動筆。</strong>你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。</li>
   <li><strong>你在 MarsDawn 裡讀。</strong>打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。</li>
   <li><strong>Agent 修改。</strong>提出修改意見，agent 改好之後，再打開來讀一次。</li>
-</ul>
+</ol>
 <p>Agent 也能直接操作 MarsDawn：免費的 <a href="/zh-hant/cli/">marsdawn</a> 命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
-<ul class="links">
-  <li><a href="/zh-hant/support/">支援與常見問題</a></li>
-  <li><a href="/zh-hant/privacy/">隱私權政策</a></li>
-</ul>
 """,
     },
     ("en", "privacy"): {
@@ -1186,6 +1226,10 @@ def trait_nav_html(locale: str, current: str) -> str:
 
 
 def figure_html(locale: str, slug: str) -> str:
+    # The homepage hero shot spans min(76rem, 100vw - 48px); trait shots sit
+    # inside 12rem gutters, so about 50rem.
+    sizes = ("(min-width: 1264px) 76rem, (min-width: 736px) calc(100vw - 48px), calc(100vw - 32px)"
+             if slug == "index" else "(min-width: 1100px) 50rem, calc(100vw - 32px)")
     fig = FIGURES[slug]
     img = fig["image"]
     _, _, width, height = CROPS[img]
@@ -1207,7 +1251,7 @@ def figure_html(locale: str, slug: str) -> str:
   </figcaption>"""
     return f"""<figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/{img}-{width}.png" srcset="/assets/screens/{img}-{SMALL_WIDTH}.png {SMALL_WIDTH}w, /assets/screens/{img}-{width}.png {width}w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="{width}" height="{height}" alt="{fig['alt'][locale]}">
+    <img src="/assets/screens/{img}-{width}.png" srcset="/assets/screens/{img}-{SMALL_WIDTH}.png {SMALL_WIDTH}w, /assets/screens/{img}-{width}.png {width}w" sizes="{sizes}" width="{width}" height="{height}" alt="{fig['alt'][locale]}">
     {''.join(markers)}
     {''.join(lines)}
   </div></div>{figcaption}
@@ -1375,16 +1419,17 @@ def _render_block(node: _Node) -> str:
     if tag == "p":
         text = _render_inline(node.children).strip()
         return (text + "\n\n") if text else ""
-    if tag == "ul":
+    if tag in ("ul", "ol"):
         items = []
         for child in node.children:
             if isinstance(child, str):
                 if child.strip():
-                    raise MarkdownConversionError("unexpected text directly inside <ul>")
+                    raise MarkdownConversionError(f"unexpected text directly inside <{tag}>")
                 continue
             if child.tag != "li":
-                raise MarkdownConversionError(f"unsupported child <{child.tag}> of <ul>")
-            items.append("- " + _render_inline(child.children).strip())
+                raise MarkdownConversionError(f"unsupported child <{child.tag}> of <{tag}>")
+            bullet = f"{len(items) + 1}." if tag == "ol" else "-"
+            items.append(f"{bullet} " + _render_inline(child.children).strip())
         return "\n".join(items) + "\n\n"
     if tag == "pre":
         return "```\n" + _pre_text(node) + "\n```\n\n"
@@ -1465,11 +1510,28 @@ def render(locale: str, slug: str, page: dict) -> str:
             "</div>\n"
             "</section>"
         )
-        main_html = "\n".join([hero_html, page["body"].strip(), trait_nav_html(locale, "")])
+        closing_html = (
+            '<section class="dawn-close">\n'
+            f'<p><strong>{ui["tagline"]}</strong> {ui["footer_store"]}</p>\n'
+            "</section>"
+        )
+        main_html = "\n".join([hero_html, page["body"].strip(), trait_nav_html(locale, ""), closing_html])
     elif has_intro:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
         main_html = page["body"].strip()
+    footer_links = (
+        f'  <a href="{page_path(locale, "support")}">{ui["support"]}</a>\n'
+        f'  <a href="{page_path(locale, "privacy")}">{ui["privacy"]}</a>\n'
+        f'  <a href="{page_path(locale, "cli")}">{ui["cli"]}</a>\n'
+    )
+    if slug == "index":
+        footer_html = f'<footer class="footer footer-home">\n{footer_links}</footer>'
+    else:
+        footer_html = (
+            f'<footer class="footer">\n  <span>{ui["tagline"]}</span>\n{footer_links}'
+            f'  <span>{ui["footer_store"]}</span>\n</footer>'
+        )
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -1495,13 +1557,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 <main>
 {main_html}
 </main>
-<footer class="footer">
-  <span>{ui["tagline"]}</span>
-  <a href="{page_path(locale, "support")}">{ui["support"]}</a>
-  <a href="{page_path(locale, "privacy")}">{ui["privacy"]}</a>
-  <a href="{page_path(locale, "cli")}">{ui["cli"]}</a>
-  <span>{ui["footer_store"]}</span>
-</footer>
+{footer_html}
 </div>
 </body>
 </html>
