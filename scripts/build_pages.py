@@ -38,9 +38,9 @@ BREW_TAP_INSTALL = "brew tap redtear1115/tap && brew install marsdawn"
 # (website #44, and docs/go-live-checklist.md in the app repo, beside the deploy).
 AVAILABILITY = "https://schema.org/PreOrder"
 
-# The app's Mac App Store listing. None until launch: before it, nothing may link to the
-# listing (check_invariants.py). Launch day sets it with AVAILABILITY (website #47).
-LISTING_URL = None
+# The app's Mac App Store listing. PLACEHOLDER until the owner reads the Apple ID in App Store Connect
+# (App Information); this goes live on launch day only (docs/go-live-checklist.md in the app repo, B5).
+LISTING_URL = "https://apps.apple.com/app/idPLACEHOLDER"
 
 # The site's same-site redirects, written to public/_redirects. Cloudflare Workers static assets
 # read that file (source, destination, status) and never serve it. Every destination is fixed here:
@@ -166,7 +166,7 @@ UI = {
         "view-markdown-on-mac": "View Markdown on a Mac",
         "vs-macmd-viewer": "MacMD Viewer vs. MarsDawn",
         "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.", "slogan": "A new dawn for Markdown.",
-        "footer_store": "MarsDawn is coming soon to the Mac App Store.",
+        "footer_store": f'MarsDawn is on the <a href="{LISTING_URL}">Mac App Store</a>.',
         "footer_nav": "Site",
         "more": "More",
         "yours": "Your writing stays on your Mac", "pay-once": "Try free, pay once", "pdf": "PDF export",
@@ -186,7 +186,7 @@ UI = {
         "view-markdown-on-mac": "在 Mac 上看 Markdown",
         "vs-macmd-viewer": "MacMD Viewer 對比 MarsDawn",
         "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。", "slogan": "Markdown 的新黎明。",
-        "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
+        "footer_store": f'MarsDawn 已在 <a href="{LISTING_URL}">Mac App Store</a> 上架。',
         "footer_nav": "網站",
         "more": "其他頁面",
         "yours": "你寫的內容留在你的 Mac 上", "pay-once": "免費試用，買一次就好", "pdf": "輸出 PDF",
@@ -290,7 +290,7 @@ DAWN_HERO_SVG = f"""<div class="dawn-wrap" aria-hidden="true">
 PAGES = {
     ("en", "index"): {
         "title": "MarsDawn: a Markdown editor for Mac, with live preview",
-        "description": "Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. Coming soon to the Mac App Store.",
+        "description": "Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. On the Mac App Store.",
         "intro": """
 <section class="intro hero">
   <p class="kicker">Frontier tools for builders</p>
@@ -309,7 +309,7 @@ PAGES = {
     },
     ("zh-hant", "index"): {
         "title": "MarsDawn：Mac 上的 Markdown 編輯器，即時預覽",
-        "description": "給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。即將在 Mac App Store 上架。",
+        "description": "給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。已在 Mac App Store 上架。",
         "intro": """
 <section class="intro hero">
   <p class="kicker">給建造者的前線工具</p>
@@ -592,7 +592,7 @@ swift build -c release --product marsdawn</code></pre>
 <h2>Commands</h2>
 
 <h3>marsdawn open</h3>
-<p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app.</p>
+<p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app. The app is on the <a href="{LISTING_URL}">Mac App Store</a>.</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
@@ -669,7 +669,7 @@ swift build -c release --product marsdawn</code></pre>
 <h2>指令</h2>
 
 <h3>marsdawn open</h3>
-<p>在 MarsDawn app 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝這個 app：沒有安裝時，<code>marsdawn open</code> 會以代碼 3 結束，並說明沒有安裝 MarsDawn。<code>export</code> 不需要這個 app。</p>
+<p>在 MarsDawn app 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝這個 app：沒有安裝時，<code>marsdawn open</code> 會以代碼 3 結束，並說明沒有安裝 MarsDawn。<code>export</code> 不需要這個 app。App 已在 <a href="{LISTING_URL}">Mac App Store</a> 上架。</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
@@ -941,7 +941,7 @@ AGENT_PAGES = {
   <li>It doesn't write the PDF to stdout. The PDF always goes to a file; stdout carries only the result.</li>
   <li>It doesn't replace an existing file unless you pass <code>--force</code>.</li>
   <li>It doesn't load images from the web unless you pass <code>--allow-remote-images</code>, and then only over https.</li>
-  <li><code>open</code> doesn't work without the MarsDawn app installed; it exits with code 3. <code>export</code> doesn't need the app.</li>
+  <li><code>open</code> doesn't work without the MarsDawn app installed; it exits with code 3. <code>export</code> doesn't need the app. The app is on the <a href="{LISTING_URL}">Mac App Store</a>.</li>
   <li>MarsDawn 1.0 doesn't jump to the line <code>open</code> names yet. It opens the file at the top.</li>
   <li>It runs on macOS only.</li>
 </ul>
@@ -1066,7 +1066,7 @@ swift build -c release --product marsdawn
   <li>不把 PDF 寫到 stdout。PDF 一律寫成檔案，stdout 只輸出結果。</li>
   <li>檔案已存在時不會覆寫，除非加上 <code>--force</code>。</li>
   <li>不載入網路圖片，除非加上 <code>--allow-remote-images</code>，而且只走 https。</li>
-  <li>沒有安裝 MarsDawn 時，<code>open</code> 無法使用，會以代碼 3 結束。<code>export</code> 不需要 app。</li>
+  <li>沒有安裝 MarsDawn 時，<code>open</code> 無法使用，會以代碼 3 結束。<code>export</code> 不需要 app。App 已在 <a href="{LISTING_URL}">Mac App Store</a> 上架。</li>
   <li>MarsDawn 1.0 還不會跳到 <code>open</code> 指定的行，會從檔案開頭顯示。</li>
   <li>只能在 macOS 上執行。</li>
 </ul>
@@ -1251,7 +1251,7 @@ marsdawn --version</code></pre>
     },
     ("en", "view-markdown-on-mac"): {
         "title": "How to view a Markdown file on a Mac · MarsDawn",
-        "description": "A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: as a PDF with the free marsdawn command-line tool today, and in the MarsDawn app, coming soon to the Mac App Store.",
+        "description": "A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: as a PDF with the free marsdawn command-line tool today, and in the MarsDawn app, on the Mac App Store.",
         "body": f"""
 <section class="intro">
   <h1>How to view a Markdown file on a Mac.</h1>
@@ -1263,8 +1263,8 @@ marsdawn --version</code></pre>
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <p><code>export</code> writes <code>notes.pdf</code> next to the Markdown file, and <code>open</code> shows it in your PDF viewer. It needs macOS 15 or later. The walk-through, with a real exported page, is on <a href="/markdown-to-pdf/">Markdown to PDF</a>.</p>
-<h2>Coming soon: read it in MarsDawn</h2>
-<p>MarsDawn is a Markdown editor for the Mac, coming soon to the Mac App Store. Open a <code>.md</code> file and read the rendered page next to the source:</p>
+<h2>Read it in MarsDawn</h2>
+<p>MarsDawn is a Markdown editor for the Mac, on the Mac App Store. Open a <code>.md</code> file and read the rendered page next to the source:</p>
 <ul>
   <li>The preview updates as you type, and the two panes scroll together.</li>
   <li>Mermaid flowcharts and sequence diagrams are drawn in the preview, and code blocks are highlighted.</li>
@@ -1282,7 +1282,7 @@ open notes.pdf</code></pre>
     },
     ("zh-hant", "view-markdown-on-mac"): {
         "title": "在 Mac 上怎麼看 Markdown 檔案 · MarsDawn",
-        "description": "md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：現在可以用免費的 marsdawn 命令列工具轉成 PDF，之後可以用即將在 Mac App Store 上架的 MarsDawn app。",
+        "description": "md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：現在可以用免費的 marsdawn 命令列工具轉成 PDF，也可以用 Mac App Store 上的 MarsDawn app。",
         "body": f"""
 <section class="intro">
   <h1>在 Mac 上，怎麼看 Markdown 檔案。</h1>
@@ -1294,8 +1294,8 @@ open notes.pdf</code></pre>
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <p><code>export</code> 會在 Markdown 檔案旁邊寫出 <code>notes.pdf</code>，<code>open</code> 會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</p>
-<h2>即將推出：在 MarsDawn 裡讀</h2>
-<p>MarsDawn 是為 Mac 做的 Markdown 編輯器，即將在 Mac App Store 上架。打開 <code>.md</code> 檔案，排好的頁面就在原始碼旁邊：</p>
+<h2>在 MarsDawn 裡讀</h2>
+<p>MarsDawn 是為 Mac 做的 Markdown 編輯器，已在 Mac App Store 上架。打開 <code>.md</code> 檔案，排好的頁面就在原始碼旁邊：</p>
 <ul>
   <li>預覽會隨著你打字即時更新，兩邊的窗格一起捲動。</li>
   <li>Mermaid 流程圖和循序圖直接畫在預覽裡，程式碼區塊也會上色。</li>
@@ -1371,7 +1371,7 @@ marsdawn --version</code></pre>
 <h2>Pricing and how you buy it</h2>
 <!--compare:macmd-buying-->
 <h2>Try it today, free</h2>
-<p>MarsDawn is coming soon to the Mac App Store, not on sale yet. Until then, the free <code>marsdawn</code> command-line tool renders any Markdown file to a PDF today, with Mermaid diagrams and highlighted code, and needs nothing else installed:</p>
+<p>MarsDawn is on the Mac App Store. The free <code>marsdawn</code> command-line tool also renders any Markdown file to a PDF, with Mermaid diagrams and highlighted code, and needs nothing else installed:</p>
 <pre><code>{brew}
 marsdawn export notes.md
 open notes.pdf</code></pre>
@@ -1399,7 +1399,7 @@ open notes.pdf</code></pre>
 <h2>價格與購買方式</h2>
 <!--compare:macmd-buying-->
 <h2>現在就能免費試試看</h2>
-<p>MarsDawn 即將在 Mac App Store 上架，現在還沒開賣。在那之前，免費的 <code>marsdawn</code> 命令列工具今天就能把任何 Markdown 檔案轉成 PDF，Mermaid 圖表和程式碼上色都在，而且不需要安裝其他東西：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具也能把任何 Markdown 檔案轉成 PDF，Mermaid 圖表和程式碼上色都在，而且不需要安裝其他東西：</p>
 <pre><code>{brew}
 marsdawn export notes.md
 open notes.pdf</code></pre>
@@ -2026,8 +2026,8 @@ Every field, schema and code: {BASE_URL}/cli/agents/
 TRAIT_ORDER = ["yours", "pay-once", "pdf", "native", "limits"]
 
 STORE_CHIP = {
-    "en": "Coming soon to the Mac App Store",
-    "zh-hant": "即將在 Mac App Store 上架",
+    "en": "On the Mac App Store",
+    "zh-hant": "已在 Mac App Store 上架",
 }
 
 # Callouts: (x %, y %) of the marker on the original 1440x900 store screenshot,
@@ -2415,7 +2415,7 @@ EXTRA_PAGES = {}
 def _merge_locale(locale: str, module) -> None:
     k = SimpleNamespace(
         EMAIL=EMAIL, UPDATED=UPDATED, PRIVACY_UPDATED=PRIVACY_UPDATED, BASE_URL=BASE_URL,
-        KIT_URL=KIT_URL, BREW_TAP_INSTALL=BREW_TAP_INSTALL, INSTALL=_INSTALL, SKILL_URL=_SKILL_URL,
+        KIT_URL=KIT_URL, BREW_TAP_INSTALL=BREW_TAP_INSTALL, LISTING_URL=LISTING_URL, INSTALL=_INSTALL, SKILL_URL=_SKILL_URL,
         APP_UI_LANGUAGES=APP_UI_LANGUAGES[locale], schema_links_from=schema_links_from, xml_escape=xml_escape,
     )
     t = module.build(k)
@@ -3273,6 +3273,7 @@ def render(locale: str, slug: str, page: dict) -> str:
                 "priceCurrency": "USD",
                 "availability": AVAILABILITY,
             },
+            "downloadUrl": LISTING_URL,
             "url": canonical_url,
         }
         jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
