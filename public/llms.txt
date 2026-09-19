@@ -37,4 +37,8 @@
 - [error.v1.json](https://marsdawn.southern-light.dev/schemas/cli/error.v1.json): JSON Schema for the --json result, failure, both commands
 - [open.v1.json](https://marsdawn.southern-light.dev/schemas/cli/open.v1.json): JSON Schema for the --json result, open success, marsdawn 0.2.x, where `opened` was a list of paths
 
+## Product facts
+- [product-facts.md](https://marsdawn.southern-light.dev/product-facts.md): what MarsDawn is, requirements, and entity disambiguation (not Electron, not a web app, not read-only, not a subscription, not cross-platform, not an AI product)
+
+Open source: [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit) is free and Apache-2.0, and the free `marsdawn` command-line tool is built from it.
 Install: `brew tap redtear1115/tap && brew install marsdawn` (a prebuilt bottle on Apple silicon, no Xcode needed; on Intel it builds from source with Xcode 26; macOS 15 or later). `export` works without the MarsDawn app; `open` needs it.

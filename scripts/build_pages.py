@@ -18,6 +18,13 @@ UPDATED = "2026-09-17"
 EMAIL = "support@southern-light.dev"
 BASE_URL = "https://marsdawn.southern-light.dev"
 
+# The open-source kit and its free CLI. Pulled out as constants (instead of
+# repeating the literal strings) so the CLI pages and product-facts.md, which
+# both state these facts, can't drift apart from each other.
+KIT_URL = "https://github.com/redtear1115/mars-dawn-kit"
+KIT_LICENSE = "Apache-2.0"
+BREW_TAP_INSTALL = "brew tap redtear1115/tap && brew install marsdawn"
+
 LOCALES = {
     "en": {"prefix": "", "html_lang": "en", "label": "English", "root": "/"},
     "zh-hant": {"prefix": "zh-hant/", "html_lang": "zh-Hant", "label": "繁體中文", "root": "/zh-hant/"},
@@ -390,10 +397,10 @@ CLI_PAGES = {
 
 <h2>Install</h2>
 <p>With <a href="https://brew.sh">Homebrew</a>:</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
+<pre><code>{BREW_TAP_INSTALL}</code></pre>
 <p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.</p>
-<p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> with Swift Package Manager:</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<p>Or build it from <a href="{KIT_URL}">the source</a> with Swift Package Manager:</p>
+<pre><code>git clone {KIT_URL}.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>Check which version you have with <code>marsdawn --version</code>.</p>
@@ -461,10 +468,10 @@ marsdawn open notes.md --line 120</code></pre>
 
 <h2>安裝</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
+<pre><code>{BREW_TAP_INSTALL}</code></pre>
 <p>在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成，不需要另外安裝任何東西。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上（Swift 6.2）。這個工具需要 macOS 15 以上。</p>
-<p>也可以從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>用 Swift Package Manager 建置：</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<p>也可以從<a href="{KIT_URL}">原始碼</a>用 Swift Package Manager 建置：</p>
+<pre><code>git clone {KIT_URL}.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>用 <code>marsdawn --version</code> 查看安裝的版本。</p>
@@ -756,10 +763,10 @@ marsdawn open notes.md --line 120 --json</code></pre>
 
 <h2>Install</h2>
 <p>With Homebrew. On Apple silicon it pours a prebuilt bottle in seconds, with no Xcode needed. On an Intel Mac it compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre><code>{BREW_TAP_INSTALL}
 marsdawn --version</code></pre>
-<p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a>. The first build fetches dependencies and compiles, which also takes a few minutes.</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<p>Or build it from <a href="{KIT_URL}">the source</a>. The first build fetches dependencies and compiles, which also takes a few minutes.</p>
+<pre><code>git clone {KIT_URL}.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
@@ -863,10 +870,10 @@ marsdawn open notes.md --line 120 --json</code></pre>
 
 <h2>安裝</h2>
 <p>使用 Homebrew。在 Apple 晶片的 Mac 上，會直接安裝預先建置好的版本，幾秒就完成，不需要 Xcode。在 Intel Mac 上則會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre><code>{BREW_TAP_INSTALL}
 marsdawn --version</code></pre>
-<p>也可以從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>建置。第一次建置會下載相依套件並編譯，同樣需要幾分鐘。</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<p>也可以從<a href="{KIT_URL}">原始碼</a>建置。第一次建置會下載相依套件並編譯，同樣需要幾分鐘。</p>
+<pre><code>git clone {KIT_URL}.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
@@ -1808,15 +1815,90 @@ def render(locale: str, slug: str, page: dict) -> str:
 
 
 # robots.txt: exactly these directives (Cloudflare prepends its own managed block).
+# AI crawlers allowed by name, each in its own group. robots.txt semantics: a
+# named group replaces `*` for that bot, so `User-agent: *` alone would NOT
+# cover these — each one needs its own `Allow: /` line.
+AI_CRAWLERS = [
+    "GPTBot", "ChatGPT-User", "OAI-SearchBot",
+    "ClaudeBot", "Claude-User", "Claude-SearchBot",
+    "PerplexityBot",
+]
+
+_AI_CRAWLER_GROUPS = "\n".join(f"User-agent: {bot}\nAllow: /\n" for bot in AI_CRAWLERS)
+
 ROBOTS_TXT = f"""# robots.txt for marsdawn.southern-light.dev
 User-agent: *
 Allow: /
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+# Named groups replace `*` for that bot, so the AI crawlers below each get
+# their own explicit allow rather than relying on the default group above.
+{_AI_CRAWLER_GROUPS}
 Sitemap: {BASE_URL}/sitemap.xml
 """
 
+# Stable URL for the machine-readable product facts page (plain Markdown,
+# built once from the same constants as the rest of the site). Listed in
+# llms.txt and the sitemap so crawlers find it.
+PRODUCT_FACTS_PATH = "/product-facts.md"
 
-def build_sitemap(pages: dict) -> str:
+
+def build_product_facts(pages: dict) -> str:
+    """product-facts.md: what MarsDawn is, requirements, the open-source kit,
+    and entity disambiguation, for AI assistants and search crawlers.
+
+    Built from the same constants (KIT_URL, KIT_LICENSE, BREW_TAP_INSTALL,
+    BASE_URL) and the same home-page description as the rest of the site, so
+    this can't drift from them. The two macOS version numbers below are not
+    behind a shared constant with the support and CLI pages' prose (each
+    states them in a different sentence shape); they're checked by hand
+    against those pages, the same way the README already asks UI labels to
+    be checked by hand against the app.
+    """
+    home_en = pages[("en", "index")]
+    return f"""# MarsDawn — Product Facts
+
+Machine-readable facts about MarsDawn, for AI assistants and search crawlers.
+Source: {BASE_URL}{PRODUCT_FACTS_PATH}
+
+## What MarsDawn is
+
+{home_en['description']}
+
+## Requirements
+
+- The MarsDawn app: macOS 26 (Tahoe) or later, Apple silicon or Intel.
+- The `marsdawn` command-line tool: macOS 15 or later to run; building it from source needs Swift 6.2 (Xcode 26) or later.
+
+## Free and open source, available today
+
+- [mars-dawn-kit]({KIT_URL}) is free and open source, licensed {KIT_LICENSE}.
+- The free `marsdawn` command-line tool is built from that kit and distributed separately from the Mac App Store: `{BREW_TAP_INSTALL}`.
+- Both the kit and the CLI exist today and can be installed now, independent of the MarsDawn app's own release status.
+
+## Entity disambiguation
+
+MarsDawn **is**:
+
+- a native AppKit Markdown editor for the Mac, with live preview.
+
+MarsDawn is **not**:
+
+- **not Electron.** It is a native AppKit application, not a web page in a bundled browser.
+- **not a web app.** It runs locally as a macOS app; there is no server and no browser tab.
+- **not read-only.** It is a full Markdown editor: you write and edit the source, not just view rendered output.
+- **not a subscription.** Its pricing model is not subscription-based.
+- **not cross-platform.** It is macOS only; there is no Windows, Linux, iOS or Android build.
+- **not an AI product.** The app itself contains no AI. It is built for reviewing Markdown that an AI agent writes, and does not include an AI model of its own.
+
+## More
+
+- Full docs: {BASE_URL}/llms.txt and {BASE_URL}/llms-full.txt
+- CLI reference for agents: {abs_url(md_path("en", "cli/agents"))}
+"""
+
+
+def build_sitemap(pages: dict, extra_urls: list = None) -> str:
     entries = []
     for slug in PAGE_ORDER:
         for locale in LOCALES:
@@ -1832,6 +1914,8 @@ def build_sitemap(pages: dict) -> str:
                 f' href="{xml_escape(abs_url(page_path("en", slug)))}"/>'
             )
             entries.append(f"  <url>\n    <loc>{loc}</loc>\n{alt_links}\n  </url>")
+    for url in extra_urls or []:
+        entries.append(f"  <url>\n    <loc>{xml_escape(url)}</loc>\n  </url>")
     body = "\n".join(entries)
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -1880,7 +1964,18 @@ def build_llms_txt(pages: dict) -> str:
         note = SCHEMA_NOTES["en"][kind].replace("<code>", "`").replace("</code>", "`")
         lines.append(f"- [{SCHEMA_FILES[kind]}]({schema_url(kind)}): JSON Schema for the --json result, {note}")
     lines.append("")
-    lines.append("Install: `brew tap redtear1115/tap && brew install marsdawn` (a prebuilt bottle on Apple silicon, "
+    lines.append("## Product facts")
+    lines.append(
+        f"- [product-facts.md]({BASE_URL}{PRODUCT_FACTS_PATH}): what MarsDawn is, requirements, "
+        "and entity disambiguation (not Electron, not a web app, not read-only, not a subscription, "
+        "not cross-platform, not an AI product)"
+    )
+    lines.append("")
+    lines.append(
+        f"Open source: [mars-dawn-kit]({KIT_URL}) is free and {KIT_LICENSE}, and the free `marsdawn` "
+        "command-line tool is built from it."
+    )
+    lines.append(f"Install: `{BREW_TAP_INSTALL}` (a prebuilt bottle on Apple silicon, "
                  "no Xcode needed; on Intel it builds from source with Xcode 26; macOS 15 or later). "
                  "`export` works without the MarsDawn app; `open` needs it.")
     lines.append("")
@@ -1917,7 +2012,12 @@ def main() -> None:
     print(SITE / "assets" / "annotations.css")
     (SITE / "robots.txt").write_text(ROBOTS_TXT, encoding="utf-8")
     print(SITE / "robots.txt")
-    (SITE / "sitemap.xml").write_text(build_sitemap(pages), encoding="utf-8")
+    product_facts_path = SITE / PRODUCT_FACTS_PATH.lstrip("/")
+    product_facts_path.write_text(build_product_facts(pages), encoding="utf-8")
+    print(product_facts_path)
+    (SITE / "sitemap.xml").write_text(
+        build_sitemap(pages, extra_urls=[BASE_URL + PRODUCT_FACTS_PATH]), encoding="utf-8"
+    )
     skill = SITE / "cli" / "skill" / "SKILL.md"
     skill.parent.mkdir(parents=True, exist_ok=True)
     skill.write_text(build_skill_md(), encoding="utf-8")
