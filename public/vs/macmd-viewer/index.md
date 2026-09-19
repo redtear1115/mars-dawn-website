@@ -14,7 +14,7 @@ If your job is strictly reading Markdown someone else wrote, and you never need 
 - **Finder integration:** both add a Quick Look extension, so pressing Space on a `.md` file in Finder shows the rendered page.
 - **PDF and print:** both export or print a PDF of the rendered page.
 - **System requirements:** MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.
-- **Languages:** MarsDawn's interface ships in English and Traditional Chinese. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.
+- **Languages:** MarsDawn's interface ships in English, Traditional Chinese, Simplified Chinese and Japanese. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.
 
 ## Pricing and how you buy it
 

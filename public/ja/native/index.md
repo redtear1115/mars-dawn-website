@@ -19,7 +19,7 @@ In this screenshot：
 - Native windows, tabs, autosave and version history.
 - Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.
 - Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.
-- 英語と繁体字中国語.
+- 英語、繁体字中国語、簡体字中国語、日本語.
 
 ## More
 

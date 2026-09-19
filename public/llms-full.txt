@@ -130,7 +130,7 @@ In this screenshot:
 - Native windows, tabs, autosave and version history.
 - Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.
 - Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.
-- English and Traditional Chinese.
+- English, Traditional Chinese, Simplified Chinese and Japanese.
 ---
 
 ## What MarsDawn doesn't do
@@ -428,7 +428,7 @@ If your job is strictly reading Markdown someone else wrote, and you never need 
 - **Finder integration:** both add a Quick Look extension, so pressing Space on a `.md` file in Finder shows the rendered page.
 - **PDF and print:** both export or print a PDF of the rendered page.
 - **System requirements:** MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.
-- **Languages:** MarsDawn's interface ships in English and Traditional Chinese. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.
+- **Languages:** MarsDawn's interface ships in English, Traditional Chinese, Simplified Chinese and Japanese. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.
 
 ## Pricing and how you buy it
 
@@ -844,7 +844,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/native/
 - 原生視窗、分頁、自動儲存和版本記錄。
 - 快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。
 - Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。
-- 支援英文和繁體中文。
+- 支援英文、繁體中文、簡體中文和日文。
 ---
 
 ## MarsDawn 做不到的事
@@ -1142,7 +1142,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/
 - **Finder 整合：**兩者都有 Finder 的快速查看擴充功能，對 `.md` 檔案按空白鍵就能看到排好版的頁面。
 - **PDF 與列印：**兩者都能把排好版的頁面輸出或列印成 PDF。
 - **系統需求：**MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。
-- **語言：**MarsDawn 的介面有英文和繁體中文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。
+- **語言：**MarsDawn 的介面有英文、繁體中文、簡體中文和日文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。
 
 ## 價格與購買方式
 
@@ -1558,7 +1558,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/native/
 - 原生視窗、分頁、自動儲存和版本記錄。
 - 快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。
 - Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。
-- 支援英文和繁体中文。
+- 支援英文、繁体中文、简体中文和日文。
 ---
 
 ## MarsDawn 做不到的事
@@ -1856,7 +1856,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 - **Finder 整合：**兩者都有 Finder 的快速查看擴充功能，對 `.md` 檔案按空白鍵就能看到排好版的頁面。
 - **PDF 與列印：**兩者都能把排好版的頁面輸出或列印成 PDF。
 - **系統需求：**MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。
-- **語言：**MarsDawn 的介面有英文和繁体中文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。
+- **語言：**MarsDawn 的介面有英文、繁体中文、简体中文和日文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。
 
 ## 價格與購買方式
 
@@ -2272,7 +2272,7 @@ In this screenshot：
 - Native windows, tabs, autosave and version history.
 - Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.
 - Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.
-- 英語と繁体字中国語.
+- 英語、繁体字中国語、簡体字中国語、日本語.
 ---
 
 ## What MarsDawn doesn't do
@@ -2570,7 +2570,7 @@ If your job is strictly reading Markdown someone else wrote, and you never need 
 - **Finder integration:** both add a Quick Look extension, so pressing Space on a `.md` file in Finder shows the rendered page.
 - **PDF and print:** both export or print a PDF of the rendered page.
 - **System requirements:** MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.
-- **Languages:** MarsDawn's interface ships in 英語と繁体字中国語. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.
+- **Languages:** MarsDawn's interface ships in 英語、繁体字中国語、簡体字中国語、日本語. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.
 
 ## Pricing and how you buy it
 
