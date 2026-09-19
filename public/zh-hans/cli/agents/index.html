@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>給 AI agent 的 marsdawn 參考：用腳本轉 PDF · MarsDawn</title>
-<meta name="description" content="給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。">
+<title>给 AI agent 的 marsdawn 参考：用脚本转 PDF · MarsDawn</title>
+<meta name="description" content="给调用 marsdawn 把 Markdown 转成 PDF 的 AI agent 与脚本的参考：命令、JSON 输出、Schema、退出代码与系统需求。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -15,8 +15,8 @@
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/agents/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/cli/agents/">
 <link rel="alternate" type="text/markdown" href="/zh-hans/cli/agents/index.md">
-<meta property="og:title" content="給 AI agent 的 marsdawn 參考：用腳本轉 PDF · MarsDawn">
-<meta property="og:description" content="給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。">
+<meta property="og:title" content="给 AI agent 的 marsdawn 参考：用脚本转 PDF · MarsDawn">
+<meta property="og:description" content="给调用 marsdawn 把 Markdown 转成 PDF 的 AI agent 与脚本的参考：命令、JSON 输出、Schema、退出代码与系统需求。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/cli/agents/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
@@ -34,48 +34,48 @@
 </header>
 <main>
 <section class="intro">
-  <h1>給 AI agent 的 marsdawn 參考</h1>
-  <p>給呼叫 <code>marsdawn</code> 命令列工具的 AI agent 與腳本參考。本頁每個範例都用目前原始碼建置的工具實際執行過。</p>
+  <h1>给 AI agent 的 marsdawn 参考</h1>
+  <p>给调用 <code>marsdawn</code> 命令行工具的 AI agent 与脚本参考。本页每个范例都用目前源代码构建的工具实际运行过。</p>
 </section>
 
-<div class="summary"><p><strong>要把 Markdown 檔轉成 PDF，執行 <code>marsdawn export notes.md --json</code>，再從 stdout 讀取一個 JSON 物件。</strong>Mermaid 圖表與程式碼上色的呈現方式和 MarsDawn app 相同。<code>export</code> 不需要 app，<code>open</code> 需要。</p></div>
+<div class="summary"><p><strong>要把 Markdown 文件转成 PDF，运行 <code>marsdawn export notes.md --json</code>，再从 stdout 读取一个 JSON 对象。</strong>Mermaid 图表与代码高亮的呈现方式和 MarsDawn app 相同。<code>export</code> 不需要 app，<code>open</code> 需要。</p></div>
 
-<h2>能做什麼</h2>
+<h2>能做什么</h2>
 <ul>
-  <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
-  <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱，也可以指定每個檔案要定位的行。</li>
+  <li><code>export</code>：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件输出成分页的 PDF，不会打开任何窗口。</li>
+  <li><code>open</code>：在 MarsDawn app 中打开一或多个 Markdown 文件，让人检阅，也可以指定每个文件要定位的行。</li>
 </ul>
 
-<h2>不做什麼</h2>
+<h2>不做什么</h2>
 <ul>
-  <li>不從 stdin 讀取 Markdown，請傳入檔案路徑。</li>
-  <li>不把 PDF 寫到 stdout。PDF 一律寫成檔案，stdout 只輸出結果。</li>
-  <li>檔案已存在時不會覆寫，除非加上 <code>--force</code>。</li>
-  <li>不載入網路圖片，除非加上 <code>--allow-remote-images</code>，而且只走 https。</li>
-  <li>沒有安裝 MarsDawn 時，<code>open</code> 無法使用，會以代碼 3 結束。<code>export</code> 不需要 app。</li>
-  <li>MarsDawn 1.0 還不會跳到 <code>open</code> 指定的行，會從檔案開頭顯示。</li>
-  <li>只能在 macOS 上執行。</li>
+  <li>不从 stdin 读取 Markdown，请传入文件路径。</li>
+  <li>不把 PDF 写到 stdout。PDF 一律写成文件，stdout 只输出结果。</li>
+  <li>文件已存在时不会覆盖，除非加上 <code>--force</code>。</li>
+  <li>不加载网络图片，除非加上 <code>--allow-remote-images</code>，而且只走 https。</li>
+  <li>没有安装 MarsDawn 时，<code>open</code> 无法使用，会以代码 3 结束。<code>export</code> 不需要 app。</li>
+  <li>MarsDawn 1.0 还不会跳到 <code>open</code> 指定的行，会从文件开头显示。</li>
+  <li>只能在 macOS 上运行。</li>
 </ul>
 
 <h2>export</h2>
 <pre><code>marsdawn export notes.md --json</code></pre>
-<p>在 <code>notes.md</code> 旁寫出 <code>notes.pdf</code>。選項：</p>
+<p>在 <code>notes.md</code> 旁写出 <code>notes.pdf</code>。选项：</p>
 <ul>
-  <li><code>-o, --output &lt;path&gt;</code>：PDF 的寫入位置。預設為輸入檔路徑，副檔名換成 <code>.pdf</code>。</li>
-  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：使用主題的淺色色盤。預設為 <code>$MARSDAWN_THEME</code>，其次是 <code>dawn</code>。</li>
-  <li><code>--paper &lt;a4|letter&gt;</code>：紙張大小。預設為 <code>a4</code>。</li>
-  <li><code>--allow-remote-images</code>：算繪時載入網路上的 https 圖片。</li>
-  <li><code>--force</code>：輸出檔已存在時覆寫。</li>
-  <li><code>--json</code>：在 stdout 輸出一個 JSON 物件，而不是文字。</li>
+  <li><code>-o, --output &lt;path&gt;</code>：PDF 的写入位置。默认为输入文件路径，扩展名换成 <code>.pdf</code>。</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：使用主题的浅色调色板。默认为 <code>$MARSDAWN_THEME</code>，其次是 <code>dawn</code>。</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>：纸张大小。默认为 <code>a4</code>。</li>
+  <li><code>--allow-remote-images</code>：渲染时加载网络上的 https 图片。</li>
+  <li><code>--force</code>：输出文件已存在时覆盖。</li>
+  <li><code>--json</code>：在 stdout 输出一个 JSON 对象，而不是文本。</li>
 </ul>
 <pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
-<p>成功，離開代碼 0：</p>
+<p>成功，退出代码 0：</p>
 <pre><code>{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}</code></pre>
 <ul>
-  <li><code>output</code>：寫出的 PDF 的絕對路徑。</li>
-  <li><code>pages</code>：頁數。</li>
-  <li><code>theme</code> 與 <code>paper</code>：實際使用的值。</li>
-  <li><code>diagramErrors</code>：每個算繪失敗的 Mermaid 圖表各一則訊息。PDF 仍會寫出。</li>
+  <li><code>output</code>：写出的 PDF 的绝对路径。</li>
+  <li><code>pages</code>：页数。</li>
+  <li><code>theme</code> 与 <code>paper</code>：实际使用的值。</li>
+  <li><code>diagramErrors</code>：每个渲染失败的 Mermaid 图表各一则消息。PDF 仍会写出。</li>
 </ul>
 
 <h2>open</h2>
@@ -83,67 +83,67 @@
 marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json</code></pre>
 <ul>
-  <li><code>path:line</code> 指定要定位的行。後面再接欄位，例如 <code>notes.md:120:8</code>，會被忽略。如果參數本身就是一個存在的檔名，就一律當成那個檔案，所以名為 <code>weird:12</code> 的檔案會照原名開啟。</li>
-  <li><code>--line &lt;n&gt;</code> 為單一檔案指定行號，包括檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。</li>
-  <li>行號範圍是 1 到 999999999，超出範圍是用法錯誤。</li>
-  <li>行號從 marsdawn 0.3.0 開始提供。MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。</li>
+  <li><code>path:line</code> 指定要定位的行。后面再接列号，例如 <code>notes.md:120:8</code>，会被忽略。如果参数本身就是一个存在的文件名，就一律当成那个文件，所以名为 <code>weird:12</code> 的文件会照原名打开。</li>
+  <li><code>--line &lt;n&gt;</code> 为单一文件指定行号，包括文件名本身以冒号加数字结尾的情况。只能搭配一个文件。</li>
+  <li>行号范围是 1 到 999999999，超出范围是用法错误。</li>
+  <li>行号从 marsdawn 0.3.0 开始提供。MarsDawn 1.0 会打开文件，但还不会跳到指定的行。</li>
 </ul>
-<p>成功，離開代碼 0：</p>
+<p>成功，退出代码 0：</p>
 <pre><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
 <ul>
-  <li><code>opened</code>：每個檔案一個物件，順序與傳入時相同。<code>path</code> 是檔案的絕對路徑；只有指定了行號時才有 <code>line</code>。</li>
-  <li><code>app</code>：開啟它們的 MarsDawn app 路徑。</li>
+  <li><code>opened</code>：每个文件一个对象，顺序与传入时相同。<code>path</code> 是文件的绝对路径；只有指定了行号时才有 <code>line</code>。</li>
+  <li><code>app</code>：打开它们的 MarsDawn app 路径。</li>
 </ul>
-<p>marsdawn 0.2.x 的 <code>opened</code> 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 <code>marsdawn --version</code>。</p>
+<p>marsdawn 0.2.x 的 <code>opened</code> 是路径字符串的清单。如果需要同时处理两种格式，请先查看 <code>marsdawn --version</code>。</p>
 
-<h2>失敗</h2>
-<p>加上 <code>--json</code> 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：</p>
+<h2>失败</h2>
+<p>加上 <code>--json</code> 时，失败会在 stdout 输出一个 JSON 对象，并以对应的代码结束：</p>
 <pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
 <ul>
-  <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字。</li>
-  <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
-  <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
-  <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
-  <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍，或 <code>--line</code> 搭配了多個檔案。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
+  <li><code>2</code>，<code>input_not_found</code>：输入文件不存在、是文件夹，或不是 UTF-8 文本。</li>
+  <li><code>3</code>，<code>app_not_installed</code>：没有安装 MarsDawn。只有 <code>open</code> 会返回这个代码。</li>
+  <li><code>4</code>，<code>output_exists</code>：输出文件已存在，请加上 <code>--force</code>。</li>
+  <li><code>5</code>，<code>export_failed</code>：导出本身失败。</li>
+  <li><code>64</code>：用法错误，例如未知的选项、无效的值、行号超出范围，或 <code>--line</code> 搭配了多个文件。这种错误一律以文本输出到 stderr，即使加了 <code>--json</code> 也一样。</li>
 </ul>
 
 <h2>JSON Schema</h2>
-<p>每種 <code>--json</code> 結果的 JSON Schema（draft 2020-12）：</p>
+<p>每种 <code>--json</code> 结果的 JSON Schema（draft 2020-12）：</p>
 <ul>
   <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功</li>
-  <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功，marsdawn 0.3.0 以後</li>
-  <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: 兩個指令的失敗結果</li>
-  <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open 成功，marsdawn 0.2.x，當時 <code>opened</code> 是路徑清單</li>
+  <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功，marsdawn 0.3.0 以后</li>
+  <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: 两个命令的失败结果</li>
+  <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单</li>
 </ul>
 
-<h2>環境變數</h2>
+<h2>环境变量</h2>
 <ul>
-  <li><code>MARSDAWN_THEME</code>：沒有傳入 <code>--theme</code> 時，<code>export</code> 使用的主題。未知的值會直接改用 <code>dawn</code>，不會報錯。</li>
+  <li><code>MARSDAWN_THEME</code>：没有传入 <code>--theme</code> 时，<code>export</code> 使用的主题。未知的值会直接改用 <code>dawn</code>，不会报错。</li>
 </ul>
 
-<h2>系統需求</h2>
+<h2>系统需求</h2>
 <ul>
-  <li>這個工具需要 macOS 15 以上。在 Apple 晶片的 Mac 上，Homebrew 會安裝預先建置好的版本，不需要其他東西。自己建置時（在 Intel Mac 上，或從原始碼建置），需要 Swift 6.2 以上，也就是 Xcode 26 以上。</li>
+  <li>这个工具需要 macOS 15 以上。在 Apple 芯片的 Mac 上，Homebrew 会安装预先构建好的版本，不需要其他东西。自己构建时（在 Intel Mac 上，或从源代码构建），需要 Swift 6.2 以上，也就是 Xcode 26 以上。</li>
   <li>MarsDawn app 需要 macOS 26 以上。</li>
 </ul>
 
-<h2>安裝</h2>
-<p>使用 Homebrew。在 Apple 晶片的 Mac 上，會直接安裝預先建置好的版本，幾秒就完成，不需要 Xcode。在 Intel Mac 上則會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。</p>
+<h2>安装</h2>
+<p>使用 Homebrew。在 Apple 芯片的 Mac 上，会直接安装预先构建好的版本，几秒就完成，不需要 Xcode。在 Intel Mac 上则会从源代码编译 marsdawn，需要几分钟，也需要 Xcode 26 以上。</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn --version</code></pre>
-<p>也可以從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>建置。第一次建置會下載相依套件並編譯，同樣需要幾分鐘。</p>
+<p>也可以从<a href="https://github.com/redtear1115/mars-dawn-kit">源代码</a>构建。第一次构建会下载依赖项并编译，同样需要几分钟。</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
-<p><code>marsdawn --version</code> 會印出版本號，例如 <code>0.3.0</code>，並以代碼 0 結束。</p>
+<p><code>marsdawn --version</code> 会输出版本号，例如 <code>0.3.0</code>，并以代码 0 结束。</p>
 </main>
 <footer class="footer">
-  <span>讀 agent 寫的 Markdown。</span>
-  <a href="/zh-hans/support/">支援</a>
-  <a href="/zh-hans/privacy/">隱私權政策</a>
-  <a href="/zh-hans/cli/">命令列工具</a>
-  <span>MarsDawn 即將在 Mac App Store 上架。</span>
+  <span>读 agent 写的 Markdown。</span>
+  <a href="/zh-hans/support/">支持</a>
+  <a href="/zh-hans/privacy/">隐私政策</a>
+  <a href="/zh-hans/cli/">命令行工具</a>
+  <span>MarsDawn 即将在 Mac App Store 上架。</span>
 </footer>
 </div>
 </body>

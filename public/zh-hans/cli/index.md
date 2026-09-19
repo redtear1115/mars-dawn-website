@@ -1,12 +1,12 @@
-# 命令列工具
+# 命令行工具
 
-免費的 `marsdawn` 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。
+免费的 `marsdawn` 命令行工具：从终端或 LLM agent 把 Markdown 导出成 PDF；装了 MarsDawn app 的话，也能用它打开文件。
 
-**marsdawn 免費、另外發佈，不透過 Mac App Store。**用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。`export` 可以單獨使用；`open` 需要 MarsDawn app。
+**marsdawn 免费、另外发布，不通过 Mac App Store。**用 Homebrew 安装，在 Apple 芯片的 Mac 上装好就能直接使用。`export` 可以单独使用；`open` 需要 MarsDawn app。
 
-要從 AI agent 或腳本呼叫 marsdawn？請看[給 AI agent 的 marsdawn 參考](/zh-hans/cli/agents/)，裡面有 JSON 輸出、Schema 和所有離開代碼。
+要从 AI agent 或脚本调用 marsdawn？请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)，里面有 JSON 输出、Schema 和所有退出代码。
 
-## 安裝
+## 安装
 
 使用 [Homebrew](https://brew.sh)：
 
@@ -14,9 +14,9 @@
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成，不需要另外安裝任何東西。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上（Swift 6.2）。這個工具需要 macOS 15 以上。
+在 Apple 芯片的 Mac 上，Homebrew 会直接安装预先构建好的版本，几秒就完成，不需要另外安装任何东西。在 Intel Mac 上则会从源代码构建，需要几分钟，也需要 Xcode 26 以上（Swift 6.2）。这个工具需要 macOS 15 以上。
 
-也可以從[原始碼](https://github.com/redtear1115/mars-dawn-kit)用 Swift Package Manager 建置：
+也可以从[源代码](https://github.com/redtear1115/mars-dawn-kit)用 Swift Package Manager 构建：
 
 ```
 git clone https://github.com/redtear1115/mars-dawn-kit.git
@@ -24,13 +24,13 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn
 ```
 
-用 `marsdawn --version` 查看安裝的版本。
+用 `marsdawn --version` 查看安装的版本。
 
-## 指令
+## 命令
 
 ### marsdawn open
 
-在 MarsDawn app 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝這個 app：沒有安裝時，`marsdawn open` 會以代碼 3 結束，並說明沒有安裝 MarsDawn。`export` 不需要這個 app。
+在 MarsDawn app 中打开一个或多个 Markdown 文件，方便审阅。需要先安装这个 app：没有安装时，`marsdawn open` 会以代码 3 结束，并说明没有安装 MarsDawn。`export` 不需要这个 app。
 
 ```
 marsdawn open notes.md
@@ -38,65 +38,65 @@ marsdawn open notes.md:120
 marsdawn open notes.md --line 120
 ```
 
-- `path:line`：請 MarsDawn 定位到那一行。後面再接欄位，例如 `notes.md:120:8`，會被忽略。如果有檔案的完整名稱就是這個參數，則視為那個檔案。
-- `--line <n>`：同樣的功能，只用於單一檔案，也可以用在檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。
-- 行號範圍是 1 到 999999999。
-- MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。
-- `--json`：印出 JSON 結果，而不是文字。
+- `path:line`：请 MarsDawn 定位到那一行。后面再接列号，例如 `notes.md:120:8`，会被忽略。如果有文件的完整名称就是这个参数，则视为那个文件。
+- `--line <n>`：同样的功能，只用于单一文件，也可以用在文件名本身以冒号加数字结尾的情况。只能搭配一个文件。
+- 行号范围是 1 到 999999999。
+- MarsDawn 1.0 会打开文件，但还不会跳到指定的行。
+- `--json`：输出 JSON 结果，而不是文本。
 
-行號功能從 marsdawn 0.3.0 開始提供。
+行号功能从 marsdawn 0.3.0 开始提供。
 
 ### marsdawn export
 
-把 Markdown 檔案輸出成分頁的 PDF，使用和 MarsDawn 輸出 PDF 相同的元件。不需要安裝 MarsDawn app。相對路徑的圖片，會以輸入檔案所在的資料夾為準。
+把 Markdown 文件输出成分页的 PDF，使用和 MarsDawn 输出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。
 
 ```
 marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 ```
 
-- `-o, --output <path>`：PDF 的輸出位置，預設是把輸入檔的副檔名換成 `.pdf`。
-- `--theme <dawn|classic|modern|vivid>`：預覽主題的淺色版本，預設讀取 `$MARSDAWN_THEME`，否則用 `dawn`。
-- `--paper <a4|letter>`：紙張大小，預設 `a4`。
-- `--allow-remote-images`：輸出時載入網路圖片，預設關閉。
-- `--force`：如果輸出檔已存在就直接覆蓋。
-- `--json`：印出 JSON 結果，而不是文字。
+- `-o, --output <path>`：PDF 的输出位置，默认是把输入文件的扩展名换成 `.pdf`。
+- `--theme <dawn|classic|modern|vivid>`：预览主题的浅色版本，默认读取 `$MARSDAWN_THEME`，否则用 `dawn`。
+- `--paper <a4|letter>`：纸张大小，默认 `a4`。
+- `--allow-remote-images`：输出时加载网络图片，默认关闭。
+- `--force`：如果输出文件已存在就直接覆盖。
+- `--json`：输出 JSON 结果，而不是文本。
 
-## $MARSDAWN_THEME 環境變數
+## $MARSDAWN_THEME 环境变量
 
-沒有傳入 `--theme` 時，`export` 會讀取 `$MARSDAWN_THEME` 環境變數，值必須是 `dawn`、`classic`、`modern` 或 `vivid` 其中之一，其他值都會改用 `dawn`。這個工具不會讀取 App 本身的主題設定，因為讀取其他 App 的容器可能觸發 macOS 隱私權提示。
+没有传入 `--theme` 时，`export` 会读取 `$MARSDAWN_THEME` 环境变量，值必须是 `dawn`、`classic`、`modern` 或 `vivid` 其中之一，其他值都会改用 `dawn`。这个工具不会读取 App 本身的主题设置，因为读取其他 App 的容器可能触发 macOS 隐私提示。
 
-## 覆蓋檔案的規則
+## 覆盖文件的规则
 
-`export` 預設不會覆蓋已存在的輸出檔，除非加上 `--force`。
+`export` 默认不会覆盖已存在的输出文件，除非加上 `--force`。
 
-## 結束代碼
+## 退出代码
 
 - `0`：成功。
-- `2`：找不到輸入檔。
-- `3`：尚未安裝 MarsDawn（只有 `open` 會用到）。
-- `4`：輸出檔已存在（可加上 `--force`）。
-- `5`：輸出失敗。
-- `64`：使用方式錯誤，包括行號超出範圍，或 `--line` 搭配了多個檔案。
+- `2`：找不到输入文件。
+- `3`：尚未安装 MarsDawn（只有 `open` 会用到）。
+- `4`：输出文件已存在（可加上 `--force`）。
+- `5`：输出失败。
+- `64`：使用方式错误，包括行号超出范围，或 `--line` 搭配了多个文件。
 
-## --json 輸出
+## --json 输出
 
-成功時，`marsdawn open --json` 會印出 `ok`、`opened`（每個檔案的 `path`，有指定行號時另含 `line`）與 `app`（App 路徑）；`marsdawn export --json` 會印出 `ok`、`output`、`pages`、`theme`、`paper` 與 `diagramErrors`。失敗時兩者都會印出 `ok`、`error` 與 `message`。
+成功时，`marsdawn open --json` 会输出 `ok`、`opened`（每个文件的 `path`，有指定行号时另含 `line`）与 `app`（App 路径）；`marsdawn export --json` 会输出 `ok`、`output`、`pages`、`theme`、`paper` 与 `diagramErrors`。失败时两者都会输出 `ok`、`error` 与 `message`。
 
-## 其他頁面
+## 其他页面
 
-- [MarsDawn](https://marsdawn.southern-light.dev/zh-hans/index.md): 原生的 Mac Markdown 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出，為讀 AI agent 寫的 Markdown 而做。即將在 Mac App Store 上架。
-- [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hans/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
-- [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
-- [輸出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。
-- [為 Mac 而做](https://marsdawn.southern-light.dev/zh-hans/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
-- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號，內建四種主題。購買前先知道。
-- [支援](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。
-- [隱私權政策](https://marsdawn.southern-light.dev/zh-hans/privacy/index.md): MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。
-- [在 Mac 上看 Markdown](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：現在可以用免費的 marsdawn 命令列工具轉成 PDF，之後可以用即將在 Mac App Store 上架的 MarsDawn app。
-- [Markdown 轉 PDF](https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/index.md): 免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。
-- [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀檢視器，直接購買 USD 19.99。MarsDawn 邊編輯邊預覽，免費試用後在 Mac App Store 一次解鎖 USD 4.99。逐項比較功能、價格和購買方式。
-- [給 AI agent 的 marsdawn 參考](https://marsdawn.southern-light.dev/zh-hans/cli/agents/index.md): 給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。
-- [給 agent 的 skill](https://marsdawn.southern-light.dev/zh-hans/cli/skill/index.md): 一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。
+- [MarsDawn](https://marsdawn.southern-light.dev/zh-hans/index.md): 原生的 Mac Markdown 编辑器，有实时预览、Mermaid 图表和 PDF 输出，为读 AI agent 写的 Markdown 而做。即将在 Mac App Store 上架。
+- [你写的内容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hans/yours/index.md): MarsDawn 不需要账户，没有同步，也没有云端。你的 Markdown 文稿留在你的 Mac 上，就在你选的文件和文件夹里。
+- [免费试用，买一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
+- [输出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 输出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码和表格，超过一页的会接到下一页。
+- [为 Mac 而做](https://marsdawn.southern-light.dev/zh-hans/native/index.md): 真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在 Finder 用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。
+- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户，内置四种主题。购买前先知道。
+- [支持](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 编辑器）的使用说明与联系方式。
+- [隐私政策](https://marsdawn.southern-light.dev/zh-hans/privacy/index.md): MarsDawn 不收集任何个人数据，你的文稿与设置都留在你的 Mac 上。
+- [在 Mac 上看 Markdown](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): md 文件是加上格式记号的纯文本。这页说明怎么在 Mac 上看到排版后的样子：现在可以用免费的 marsdawn 命令行工具转成 PDF，之后可以用即将在 Mac App Store 上架的 MarsDawn app。
+- [Markdown 转 PDF](https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/index.md): 免费的 Markdown 转 PDF 工具：在 Mac 上用 marsdawn 命令行，一个命令就把 Markdown 转成 PDF，表格、数学公式、Mermaid 图表和代码高亮都在。
+- [MacMD Viewer 对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读查看器，直接购买 USD 19.99。MarsDawn 边编辑边预览，免费试用后在 Mac App Store 一次解锁 USD 4.99。逐项比较功能、价格和购买方式。
+- [给 AI agent 的 marsdawn 参考](https://marsdawn.southern-light.dev/zh-hans/cli/agents/index.md): 给调用 marsdawn 把 Markdown 转成 PDF 的 AI agent 与脚本的参考：命令、JSON 输出、Schema、退出代码与系统需求。
+- [给 agent 的 skill](https://marsdawn.southern-light.dev/zh-hans/cli/skill/index.md): 一个文件，让写程序的 agent 学会安装 marsdawn、确认它能用、把 Markdown 导出成 PDF，并读懂 JSON 结果。
 - [English](https://marsdawn.southern-light.dev/cli/index.md): The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。
 - [日本語](https://marsdawn.southern-light.dev/ja/cli/index.md): 無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。
