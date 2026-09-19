@@ -20,18 +20,20 @@
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "url": "https://marsdawn.southern-light.dev/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "url": "https://marsdawn.southern-light.dev/"}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <nav class="lang" aria-label="Language"><a href="/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/" hreflang="en" aria-current="page" lang="en">English</a> · <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="hero-scene">
 <div class="dawn-wrap" aria-hidden="true">
   <svg class="dawn-layer" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
@@ -85,6 +87,7 @@
   <p class="kicker">Built for the AI workflow</p>
   <h1>Where an agent's Markdown gets a careful read.</h1>
   <p>An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.</p>
+  <p class="hero-facts"><span>Coming soon to the Mac App Store</span> · <span>Free 14-day trial, then USD 4.99 once</span> · <span>macOS 26 or later</span> · <span><a href="/cli/">The free marsdawn CLI works today</a></span></p>
 </section>
 </div>
 <div class="hero-shot">
@@ -99,15 +102,22 @@
 </div>
 </section>
 <h2 class="loop-title">The loop</h2>
-<ol class="loop-steps">
-  <li><strong>The agent writes.</strong> Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.</li>
-  <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
-  <li><strong>The agent revises.</strong> Ask for changes. Open the revised file and read it the same way.</li>
+<ol class="loop-steps" role="list">
+  <li><strong>The agent writes.</strong> Claude Code, Cursor or your writing assistant drafts the Markdown: a README, a spec, a design note.</li>
+  <li><strong>You review in MarsDawn.</strong> The agent runs <code>marsdawn open SPEC.md</code>, or you open the file yourself. Diagrams, math and code render next to the source.</li>
+  <li><strong>The agent revises.</strong> Tell it what to change, then read the new version the same way.</li>
 </ol>
-<p>Agents can drive MarsDawn directly: the free <a href="/cli/">marsdawn</a> command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See <a href="/cli/agents/">marsdawn for agents</a> for the details.</p>
+<h2>Try the agent side today</h2>
+<p>The <a href="/cli/">marsdawn CLI</a> is free, and exporting needs no app. Install it, and your agent can turn its Markdown into a PDF and learn, from one line of JSON, whether every Mermaid diagram rendered.</p>
+<pre><code>brew tap redtear1115/tap
+brew install marsdawn
+marsdawn export SPEC.md --json</code></pre>
+<p class="reply-label">It answers with one line:</p>
+<pre class="reply"><code>{"diagramErrors":[],"ok":true,"output":"/path/to/SPEC.pdf","pages":3,"paper":"a4","theme":"dawn"}</code></pre>
+<p>Every flag, exit code and JSON schema is in <a href="/cli/agents/">marsdawn for agents</a>.</p>
 <nav class="traits" aria-label="What to expect from MarsDawn">
 <h2>What to expect from MarsDawn</h2>
-<ul>
+<ul role="list">
   <li><a href="/yours/">Your writing stays on your Mac</a><span>No account, no sync, no cloud.</span></li>
   <li><a href="/pay-once/">Try free, pay once</a><span>Free for 14 days, then USD 4.99 once. No subscription.</span></li>
   <li><a href="/pdf/">PDF export</a><span>Diagrams, highlighted code, careful page breaks.</span></li>
@@ -117,12 +127,14 @@
 </nav>
 <section class="dawn-close">
 <p><strong>Read what your agent wrote.</strong> MarsDawn is coming soon to the Mac App Store.</p>
+<p class="close-cli">Until then, the free <a href="/cli/">marsdawn CLI</a> works today.</p>
 </section>
 </main>
 <footer class="footer footer-home">
   <a href="/support/">Support</a>
   <a href="/privacy/">Privacy Policy</a>
   <a href="/cli/">Command Line</a>
+  <a href="/index.md" type="text/markdown">This page in Markdown</a>
 </footer>
 </div>
 </body>

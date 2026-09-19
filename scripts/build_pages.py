@@ -44,6 +44,8 @@ UI = {
         "vs-macmd-viewer": "MacMD Viewer vs. MarsDawn",
         "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.",
         "footer_store": "MarsDawn is coming soon to the Mac App Store.",
+        "close_cli": 'Until then, the free <a href="/cli/">marsdawn CLI</a> works today.',
+        "skip": "Skip to content", "markdown": "This page in Markdown",
         "more": "More",
         "yours": "Your writing stays on your Mac", "pay-once": "Try free, pay once", "pdf": "PDF export",
         "native": "A Mac app", "limits": "What MarsDawn doesn't do",
@@ -56,6 +58,8 @@ UI = {
         "vs-macmd-viewer": "MacMD Viewer 對比 MarsDawn",
         "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。",
         "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
+        "close_cli": '在那之前，免費的 <a href="/zh-hant/cli/">marsdawn CLI</a> 現在就能用。',
+        "skip": "跳到主要內容", "markdown": "本頁的 Markdown 版本",
         "more": "其他頁面",
         "yours": "你寫的內容留在你的 Mac 上", "pay-once": "免費試用，買一次就好", "pdf": "輸出 PDF",
         "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
@@ -157,16 +161,24 @@ PAGES = {
   <p class="kicker">Built for the AI workflow</p>
   <h1>Where an agent's Markdown gets a careful read.</h1>
   <p>An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.</p>
+  <p class="hero-facts"><span>Coming soon to the Mac App Store</span> · <span>Free 14-day trial, then USD 4.99 once</span> · <span>macOS 26 or later</span> · <span><a href="/cli/">The free marsdawn CLI works today</a></span></p>
 </section>
 """,
         "body": """
 <h2 class="loop-title">The loop</h2>
-<ol class="loop-steps">
-  <li><strong>The agent writes.</strong> Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.</li>
-  <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
-  <li><strong>The agent revises.</strong> Ask for changes. Open the revised file and read it the same way.</li>
+<ol class="loop-steps" role="list">
+  <li><strong>The agent writes.</strong> Claude Code, Cursor or your writing assistant drafts the Markdown: a README, a spec, a design note.</li>
+  <li><strong>You review in MarsDawn.</strong> The agent runs <code>marsdawn open SPEC.md</code>, or you open the file yourself. Diagrams, math and code render next to the source.</li>
+  <li><strong>The agent revises.</strong> Tell it what to change, then read the new version the same way.</li>
 </ol>
-<p>Agents can drive MarsDawn directly: the free <a href="/cli/">marsdawn</a> command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See <a href="/cli/agents/">marsdawn for agents</a> for the details.</p>
+<h2>Try the agent side today</h2>
+<p>The <a href="/cli/">marsdawn CLI</a> is free, and exporting needs no app. Install it, and your agent can turn its Markdown into a PDF and learn, from one line of JSON, whether every Mermaid diagram rendered.</p>
+<pre><code>brew tap redtear1115/tap
+brew install marsdawn
+marsdawn export SPEC.md --json</code></pre>
+<p class="reply-label">It answers with one line:</p>
+<pre class="reply"><code>{"diagramErrors":[],"ok":true,"output":"/path/to/SPEC.pdf","pages":3,"paper":"a4","theme":"dawn"}</code></pre>
+<p>Every flag, exit code and JSON schema is in <a href="/cli/agents/">marsdawn for agents</a>.</p>
 """,
     },
     ("zh-hant", "index"): {
@@ -177,16 +189,24 @@ PAGES = {
   <p class="kicker">為 AI 工作流程而生</p>
   <h1>讓 agent 寫的 Markdown，被好好讀過一遍。</h1>
   <p>AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面並排顯示，再把修改意見交回去。</p>
+  <p class="hero-facts"><span>即將在 Mac App Store 上架</span> · <span>免費試用 14 天，之後 USD 4.99 買一次</span> · <span>需要 macOS 26 以上</span> · <span><a href="/zh-hant/cli/">免費的 marsdawn CLI 現在就能用</a></span></p>
 </section>
 """,
         "body": """
 <h2 class="loop-title">整個循環</h2>
-<ol class="loop-steps">
-  <li><strong>Agent 動筆。</strong>你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。</li>
-  <li><strong>你在 MarsDawn 裡讀。</strong>打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。</li>
-  <li><strong>Agent 修改。</strong>提出修改意見，agent 改好之後，再打開來讀一次。</li>
+<ol class="loop-steps" role="list">
+  <li><strong>Agent 動筆。</strong>Claude Code、Cursor 或你的寫作助手先寫出 Markdown：README、規格文件，或一份設計筆記。</li>
+  <li><strong>你在 MarsDawn 裡讀。</strong>Agent 執行 <code>marsdawn open SPEC.md</code>，或你自己打開檔案。圖表、數學式和程式碼都排好，旁邊就是原始碼。</li>
+  <li><strong>Agent 修改。</strong>告訴它要改哪裡，改好之後，用同樣的方式再讀一次。</li>
 </ol>
-<p>Agent 也能直接操作 MarsDawn：免費的 <a href="/zh-hant/cli/">marsdawn</a> 命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
+<h2>先試 agent 這一端</h2>
+<p><a href="/zh-hant/cli/">marsdawn CLI</a> 免費，輸出 PDF 不需要 app。裝好之後，你的 agent 就能把它寫的 Markdown 轉成 PDF，並從一行 JSON 得知每張 Mermaid 圖表是否都畫出來了。</p>
+<pre><code>brew tap redtear1115/tap
+brew install marsdawn
+marsdawn export SPEC.md --json</code></pre>
+<p class="reply-label">它只回一行：</p>
+<pre class="reply"><code>{"diagramErrors":[],"ok":true,"output":"/path/to/SPEC.pdf","pages":3,"paper":"a4","theme":"dawn"}</code></pre>
+<p>所有選項、結束代碼和 JSON schema，都在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
 """,
     },
     ("en", "privacy"): {
@@ -1650,7 +1670,7 @@ def trait_nav_html(locale: str, current: str) -> str:
         for slug in TRAIT_ORDER
         if slug != current
     )
-    return f'<nav class="traits" aria-label="{TRAIT_NAV_HEADING[locale]}">\n<h2>{TRAIT_NAV_HEADING[locale]}</h2>\n<ul>\n{items}\n</ul>\n</nav>'
+    return f'<nav class="traits" aria-label="{TRAIT_NAV_HEADING[locale]}">\n<h2>{TRAIT_NAV_HEADING[locale]}</h2>\n<ul role="list">\n{items}\n</ul>\n</nav>'
 
 
 def figure_html(locale: str, slug: str) -> str:
@@ -1716,11 +1736,19 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
     page = pages[(locale, slug)]
     if "intro" not in page:
         return html_to_markdown(page["body"])
+    intro = page["intro"]
+    closing = []
+    if slug == "index":
+        # The kicker is a visual label for the scene; alone above the H1 in
+        # Markdown it reads as a stray line. The closing band carries the
+        # availability line, so the twin keeps it.
+        intro = re.sub(r'\s*<p class="kicker">.*?</p>', "", intro)
+        closing = [f'**{UI[locale]["tagline"]}** {UI[locale]["footer_store"]}']
     return "\n\n".join([
-        html_to_markdown(page["intro"]).rstrip(),
+        html_to_markdown(intro).rstrip(),
         figure_markdown(locale, slug),
         html_to_markdown(page["body"]).rstrip(),
-    ])
+    ] + closing)
 
 PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill"]
 SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
@@ -1824,6 +1852,8 @@ def _render_inline(children) -> str:
             href = child.attrs.get("href", "")
             label = _render_inline(child.children).strip()
             parts.append(f"[{label}]({href})")
+        elif tag == "span":
+            parts.append(_render_inline(child.children))
         elif tag == "img":
             parts.append(f"![{child.attrs.get('alt', '')}]({child.attrs.get('src', '')})")
         else:
@@ -1907,7 +1937,7 @@ def render(locale: str, slug: str, page: dict) -> str:
     lang = LOCALES[locale]["html_lang"]
     switch = " · ".join(
         f'<a href="{page_path(other, slug)}" hreflang="{LOCALES[other]["html_lang"]}"'
-        + (' aria-current="true"' if other == locale else "")
+        + (' aria-current="page"' if other == locale else "")
         + f' lang="{LOCALES[other]["html_lang"]}">{LOCALES[other]["label"]}</a>'
         for other in LOCALES
     )
@@ -1935,14 +1965,13 @@ def render(locale: str, slug: str, page: dict) -> str:
             "description": page["description"],
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "macOS 26 or later",
-            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
             "url": canonical_url,
         }
         jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
     has_intro = "intro" in page
     is_trait_page = slug in TRAIT_ORDER
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
-    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
+    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page or slug == "index" else ""
     if slug == "index":
         hero_html = (
             '<section class="hero-scene">\n'
@@ -1956,6 +1985,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         closing_html = (
             '<section class="dawn-close">\n'
             f'<p><strong>{ui["tagline"]}</strong> {ui["footer_store"]}</p>\n'
+            f'<p class="close-cli">{ui["close_cli"]}</p>\n'
             "</section>"
         )
         main_html = "\n".join([hero_html, page["body"].strip(), trait_nav_html(locale, ""), closing_html])
@@ -1967,6 +1997,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         f'  <a href="{page_path(locale, "support")}">{ui["support"]}</a>\n'
         f'  <a href="{page_path(locale, "privacy")}">{ui["privacy"]}</a>\n'
         f'  <a href="{page_path(locale, "cli")}">{ui["cli"]}</a>\n'
+        f'  <a href="{md_path(locale, slug)}" type="text/markdown">{ui["markdown"]}</a>\n'
     )
     if slug == "index":
         footer_html = f'<footer class="footer footer-home">\n{footer_links}</footer>'
@@ -1989,6 +2020,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 {seo}
 {jsonld}</head>
 <body>
+<a class="skip" href="#main">{ui["skip"]}</a>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="{LOCALES[locale]["root"]}">
@@ -1997,7 +2029,7 @@ def render(locale: str, slug: str, page: dict) -> str:
   </a>
   {chip}<nav class="lang" aria-label="Language">{switch}</nav>
 </header>
-<main>
+<main id="main">
 {main_html}
 </main>
 {footer_html}
@@ -2195,6 +2227,64 @@ def build_llms_full(pages: dict) -> str:
     return "# MarsDawn — full content\n\n" + "\n---\n\n".join(sections)
 
 
+# The page Cloudflare serves for any unknown path (wrangler.jsonc:
+# not_found_handling). One page for both languages, since the path that
+# missed says nothing reliable about the reader's language.
+def build_404() -> str:
+    en, zh = UI["en"], UI["zh-hant"]
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found · MarsDawn</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">{en["skip"]}</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>This page isn't here.</h1>
+  <p>The link may be old, or the address mistyped. Try one of these:</p>
+</section>
+<ul class="lost">
+  <li><a href="/">MarsDawn home</a></li>
+  <li><a href="/cli/">{en["cli"]}</a></li>
+  <li><a href="/support/">{en["support"]}</a></li>
+</ul>
+<section class="intro" lang="zh-Hant">
+  <h2>找不到這個頁面。</h2>
+  <p>連結可能已經過期，或網址打錯了。可以從這裡繼續：</p>
+</section>
+<ul class="lost" lang="zh-Hant">
+  <li><a href="/zh-hant/">MarsDawn 首頁</a></li>
+  <li><a href="/zh-hant/cli/">{zh["cli"]}</a></li>
+  <li><a href="/zh-hant/support/">{zh["support"]}</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <span>{en["tagline"]}</span>
+  <a href="/support/">{en["support"]}</a>
+  <a href="/privacy/">{en["privacy"]}</a>
+  <a href="/cli/">{en["cli"]}</a>
+  <span>{en["footer_store"]}</span>
+</footer>
+</div>
+</body>
+</html>
+"""
+
+
 def main() -> None:
     pages = all_pages()
     for (locale, slug), page in pages.items():
@@ -2205,6 +2295,8 @@ def main() -> None:
         (folder / "index.md").write_text(build_twin(pages, locale, slug), encoding="utf-8")
         print(folder / "index.md")
 
+    (SITE / "404.html").write_text(build_404(), encoding="utf-8")
+    print(SITE / "404.html")
     (SITE / "llms.txt").write_text(build_llms_txt(pages), encoding="utf-8")
     print(SITE / "llms.txt")
     (SITE / "llms-full.txt").write_text(build_llms_full(pages), encoding="utf-8")

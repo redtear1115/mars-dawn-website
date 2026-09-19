@@ -1,18 +1,36 @@
-Built for the AI workflow
-
 # Where an agent's Markdown gets a careful read.
 
 An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.
+
+Coming soon to the Mac App Store · Free 14-day trial, then USD 4.99 once · macOS 26 or later · [The free marsdawn CLI works today](/cli/)
 
 ![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
 
 ## The loop
 
-1. **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
-2. **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
-3. **The agent revises.** Ask for changes. Open the revised file and read it the same way.
+1. **The agent writes.** Claude Code, Cursor or your writing assistant drafts the Markdown: a README, a spec, a design note.
+2. **You review in MarsDawn.** The agent runs `marsdawn open SPEC.md`, or you open the file yourself. Diagrams, math and code render next to the source.
+3. **The agent revises.** Tell it what to change, then read the new version the same way.
 
-Agents can drive MarsDawn directly: the free [marsdawn](/cli/) command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See [marsdawn for agents](/cli/agents/) for the details.
+## Try the agent side today
+
+The [marsdawn CLI](/cli/) is free, and exporting needs no app. Install it, and your agent can turn its Markdown into a PDF and learn, from one line of JSON, whether every Mermaid diagram rendered.
+
+```
+brew tap redtear1115/tap
+brew install marsdawn
+marsdawn export SPEC.md --json
+```
+
+It answers with one line:
+
+```
+{"diagramErrors":[],"ok":true,"output":"/path/to/SPEC.pdf","pages":3,"paper":"a4","theme":"dawn"}
+```
+
+Every flag, exit code and JSON schema is in [marsdawn for agents](/cli/agents/).
+
+**Read what your agent wrote.** MarsDawn is coming soon to the Mac App Store.
 
 ## More
 

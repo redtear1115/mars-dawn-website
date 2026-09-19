@@ -1,18 +1,36 @@
-為 AI 工作流程而生
-
 # 讓 agent 寫的 Markdown，被好好讀過一遍。
 
 AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面並排顯示，再把修改意見交回去。
+
+即將在 Mac App Store 上架 · 免費試用 14 天，之後 USD 4.99 買一次 · 需要 macOS 26 以上 · [免費的 marsdawn CLI 現在就能用](/zh-hant/cli/)
 
 ![MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
 
 ## 整個循環
 
-1. **Agent 動筆。**你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。
-2. **你在 MarsDawn 裡讀。**打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。
-3. **Agent 修改。**提出修改意見，agent 改好之後，再打開來讀一次。
+1. **Agent 動筆。**Claude Code、Cursor 或你的寫作助手先寫出 Markdown：README、規格文件，或一份設計筆記。
+2. **你在 MarsDawn 裡讀。**Agent 執行 `marsdawn open SPEC.md`，或你自己打開檔案。圖表、數學式和程式碼都排好，旁邊就是原始碼。
+3. **Agent 修改。**告訴它要改哪裡，改好之後，用同樣的方式再讀一次。
 
-Agent 也能直接操作 MarsDawn：免費的 [marsdawn](/zh-hant/cli/) 命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+## 先試 agent 這一端
+
+[marsdawn CLI](/zh-hant/cli/) 免費，輸出 PDF 不需要 app。裝好之後，你的 agent 就能把它寫的 Markdown 轉成 PDF，並從一行 JSON 得知每張 Mermaid 圖表是否都畫出來了。
+
+```
+brew tap redtear1115/tap
+brew install marsdawn
+marsdawn export SPEC.md --json
+```
+
+它只回一行：
+
+```
+{"diagramErrors":[],"ok":true,"output":"/path/to/SPEC.pdf","pages":3,"paper":"a4","theme":"dawn"}
+```
+
+所有選項、結束代碼和 JSON schema，都在[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+
+**讀 agent 寫的 Markdown。** MarsDawn 即將在 Mac App Store 上架。
 
 ## 其他頁面
 
