@@ -38,15 +38,19 @@ Opens one or more Markdown files in the MarsDawn app for review. It needs the ap
 marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
+marsdawn open .
+marsdawn open notes.md --folder .
 ```
 
 - `path:line`: asks MarsDawn to land on that line. A column after it, as in `notes.md:120:8`, is ignored. If a file with the whole name exists, the argument is that file.
 - `--line <n>`: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.
 - Lines run from 1 to 999999999.
+- A folder argument opens in the window's sidebar instead of as a document: `marsdawn open .` shows the current folder. `--folder <path>` does the same alongside files. A window's sidebar shows one folder, so naming two is a usage error.
+- `--background`: open without bringing MarsDawn to the front.
 - MarsDawn 1.0 opens the file but doesn't jump to the line yet.
 - `--json`: print a JSON result instead of text.
 
-Lines were added in marsdawn 0.3.0.
+Lines were added in marsdawn 0.3.0, and folders and `--background` in 0.5.1.
 
 ### marsdawn export
 
@@ -80,11 +84,11 @@ When `--theme` isn't passed, `export` reads the `$MARSDAWN_THEME` environment va
 | `3` | MarsDawn is not installed (`open` only). | Install the app, or use `export`, which doesn't need it |
 | `4` | output exists (pass `--force`). | Pass `--force` to replace it, or `-o` to write elsewhere |
 | `5` | export failed. | Read `message` in the JSON result |
-| `64` | usage error, including a line out of range or `--line` with more than one file. | Fix the option or value; this error is text on stderr, even with `--json` |
+| `64` | usage error, including a line out of range, `--line` with more than one file or with a folder, or more than one folder. | Fix the option or value; this error is text on stderr, even with `--json` |
 
 ## --json output
 
-On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file's `path`, plus `line` when one was asked for) and `app` (the app path). `marsdawn export --json` prints `ok`, `output`, `pages`, `theme`, `paper` and `diagramErrors`. On failure, both print `ok`, `error` and `message`.
+On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file's `path`, plus `line` when one was asked for), `app` (the app path) and, when a folder was given, `folder`. `marsdawn export --json` prints `ok`, `output`, `pages`, `theme`, `paper` and `diagramErrors`. On failure, both print `ok`, `error` and `message`.
 
 ## More
 

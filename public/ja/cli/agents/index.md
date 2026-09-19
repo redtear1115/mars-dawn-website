@@ -7,7 +7,7 @@
 ## できること
 
 - `export`：MarsDawn アプリと同じ書き出しエンジンで、1つの Markdown ファイルをページ分割された PDF にレンダリングします。ウインドウは開きません。
-- `open`：1つ以上の Markdown ファイルを MarsDawn アプリで開き、人が確認できるようにします。各ファイルが移動すべき行を指定することもできます。
+- `open`：1つ以上の Markdown ファイルを MarsDawn アプリで開き、人が確認できるようにします。各ファイルが移動すべき行を指定したり、ウインドウのサイドバーにフォルダを表示したりすることもできます。
 
 ## できないこと
 
@@ -55,12 +55,17 @@ marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --jso
 marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json
+marsdawn open . --json
+marsdawn open notes.md --folder . --background --json
 ```
 
 - `path:line` は移動先の行を指定します。その後にコロンが続く場合、たとえば `notes.md:120:8` の列部分は無視されます。存在するファイル名を丸ごと表す引数は常にそのファイル名として扱われるため、`weird:12` という名前のファイルはそのまま開きます。
 - `--line <n>` は単一ファイルの行を指定します。それ自体がコロンと数字で終わるパスも含みます。ファイルは1つだけ指定できます。
 - 行番号は 1 から 999999999 までで、それ以外は使用方法のエラーになります。
 - 行の指定は marsdawn 0.3.0 で追加されました。MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。
+- フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます。`marsdawn open .` で現在のフォルダを表示し、`--folder <path>` はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つです：2つ指定すると使用方法のエラーになり、同じフォルダを2回指定した場合は1つとして扱います。フォルダには行がないため、フォルダに `--line` を指定すると使用方法のエラーです。`-a` はありません：指定すると使用方法のエラーになり、`--folder` を案内します。
+- `--background` は MarsDawn を前面に出さずに開きます。人が別の作業をしている間にファイルを開くエージェント向けです。JSON はどちらでも同じです。
+- フォルダと `--background` は marsdawn 0.5.1 で追加されました。
 
 成功、終了コード 0：
 
@@ -70,6 +75,15 @@ marsdawn open notes.md --line 120 --json
 
 - `opened`：渡された順に、ファイルごとの1つのオブジェクト。`path` はファイルの絶対パス、`line` は行が指定されたときだけ現れます。
 - `app`：それらを開いた MarsDawn アプリのパス。
+
+フォルダを指定した場合（marsdawn 0.5.1 以降）、終了コード 0：
+
+```
+{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}
+```
+
+- `folder`：フォルダを指定したときだけ現れます。`path` はその絶対パスです。`requested` は常に `true` です：marsdawn は MarsDawn にフォルダの表示を依頼しましたが、サイドバーに実際に表示されたかどうかは分かりません。アプリが先に人にアクセスの許可を求めることがあるためです。「完了した」ではなく「依頼した」と報告してください。
+- フォルダだけを指定したとき、`opened` は空です。
 
 marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方を扱う必要がある場合は `marsdawn --version` を確認してください。
 
@@ -81,19 +95,20 @@ marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方�
 {"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}
 ```
 
-- `2`、`input_not_found`：入力が存在しない、フォルダである、または UTF-8 テキストでない。
+- `2`、`input_not_found`：入力が存在しない、フォルダである、または UTF-8 テキストでない。または `--folder` のパスが存在しないか、フォルダでない。
 - `3`、`app_not_installed`：MarsDawn がインストールされていない。`open` のみがこれを返します。
 - `4`、`output_exists`：出力ファイルが存在する。`--force` を指定してください。
 - `5`、`export_failed`：書き出し自体が失敗した。
-- `64`：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルに対する `--line` の指定など。この場合は、`--json` を指定していても stderr にテキストとして出力されます。
+- `64`：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルやフォルダに対する `--line` の指定、複数のフォルダの指定、`-a` の指定など。この場合は、`--json` を指定していても stderr にテキストとして出力されます。
 
 ## JSON Schema
 
 各 `--json` 結果に対応する JSON Schema（draft 2020-12）：
 
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功時
-- [open.v2.json](/schemas/cli/open.v2.json): open 成功時、marsdawn 0.3.0 以降
+- [open.v3.json](/schemas/cli/open.v3.json): open 成功時、marsdawn 0.5.1 以降、サイドバーに表示するフォルダを含む
 - [error.v1.json](/schemas/cli/error.v1.json): 失敗時、両方のコマンド共通
+- [open.v2.json](/schemas/cli/open.v2.json): open 成功時、marsdawn 0.3.0〜0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功時、marsdawn 0.2.x（`opened` がパスのリストだった頃）
 
 ## 環境変数

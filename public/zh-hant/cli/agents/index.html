@@ -78,7 +78,7 @@ try {
 <h2 id="what-it-does">能做什麼</h2>
 <ul>
   <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
-  <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人審閱，也可以指定每個檔案要定位的行。</li>
+  <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人審閱，也可以指定每個檔案要定位的行，或在視窗的側邊欄顯示一個資料夾。</li>
 </ul>
 
 <h2 id="what-it-does-not-do">不做什麼</h2>
@@ -116,12 +116,17 @@ try {
 <h2 id="open">open</h2>
 <pre><code>marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
-marsdawn open notes.md --line 120 --json</code></pre>
+marsdawn open notes.md --line 120 --json
+marsdawn open . --json
+marsdawn open notes.md --folder . --background --json</code></pre>
 <ul>
   <li><code>path:line</code> 指定要定位的行。後面再接欄位，例如 <code>notes.md:120:8</code>，會被忽略。如果參數本身就是一個存在的檔名，就一律當成那個檔案，所以名為 <code>weird:12</code> 的檔案會照原名開啟。</li>
   <li><code>--line &lt;n&gt;</code> 為單一檔案指定行號，包括檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。</li>
   <li>行號範圍是 1 到 999999999，超出範圍是用法錯誤。</li>
   <li>行號從 marsdawn 0.3.0 開始提供。MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。</li>
+  <li>資料夾參數會在視窗的側邊欄開啟，而不是當成文件，所以 <code>marsdawn open .</code> 會顯示目前的資料夾；<code>--folder &lt;path&gt;</code> 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾：指定兩個是用法錯誤，同一個資料夾指定兩次則算一個。資料夾沒有行號，所以 <code>--line</code> 搭配資料夾是用法錯誤。沒有 <code>-a</code>：傳入它是用法錯誤，錯誤訊息會指向 <code>--folder</code>。</li>
+  <li><code>--background</code> 開啟時不把 MarsDawn 帶到最前面，適合在使用者做別的事時開檔的 agent。兩種情況的 JSON 都一樣。</li>
+  <li>資料夾與 <code>--background</code> 從 marsdawn 0.5.1 開始提供。</li>
 </ul>
 <p>成功，離開代碼 0：</p>
 <pre><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
@@ -129,25 +134,32 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>opened</code>：每個檔案一個物件，順序與傳入時相同。<code>path</code> 是檔案的絕對路徑；只有指定了行號時才有 <code>line</code>。</li>
   <li><code>app</code>：開啟它們的 MarsDawn app 路徑。</li>
 </ul>
+<p>有資料夾時（marsdawn 0.5.1 以後），離開代碼 0：</p>
+<pre><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
+<ul>
+  <li><code>folder</code>：只有指定了資料夾時才有。<code>path</code> 是它的絕對路徑。<code>requested</code> 一律是 <code>true</code>：marsdawn 已請 MarsDawn 顯示這個資料夾，但無法得知側邊欄是否真的顯示了，因為 app 可能會先向使用者要求存取權限。請回報為「已要求」，而不是「已完成」。</li>
+  <li>只指定資料夾時，<code>opened</code> 是空的。</li>
+</ul>
 <p>marsdawn 0.2.x 的 <code>opened</code> 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 <code>marsdawn --version</code>。</p>
 
 <h2 id="failures">失敗</h2>
 <p>加上 <code>--json</code> 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：</p>
 <pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
 <ul>
-  <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字。</li>
+  <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字；或 <code>--folder</code> 的路徑不存在、不是資料夾。</li>
   <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
   <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
-  <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍，或 <code>--line</code> 搭配了多個檔案。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
+  <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 <code>-a</code>。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
 </ul>
 
 <h2 id="json-schemas">JSON Schema</h2>
 <p>每種 <code>--json</code> 結果的 JSON Schema（draft 2020-12）：</p>
 <ul>
   <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功</li>
-  <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功，marsdawn 0.3.0 以後</li>
+  <li><a href="/schemas/cli/open.v3.json">open.v3.json</a>: open 成功，marsdawn 0.5.1 以後，包括在側邊欄顯示的資料夾</li>
   <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: 兩個指令的失敗結果</li>
+  <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功，marsdawn 0.3.0 到 0.5.0</li>
   <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open 成功，marsdawn 0.2.x，當時 <code>opened</code> 是路徑清單</li>
 </ul>
 

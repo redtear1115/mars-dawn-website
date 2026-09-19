@@ -80,7 +80,7 @@ try {
 <h2 id="install">安装</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
-<p>在用写程序的 agent 吗？<a href="/zh-hans/cli/skill/">加上 marsdawn skill</a>：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你检阅，也能导出 PDF。</p>
+<p>在用写程序的 agent 吗？<a href="/zh-hans/cli/skill/">加上 marsdawn skill</a>：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。</p>
 <p>在 Apple 芯片的 Mac 上，Homebrew 会直接安装预先构建好的版本，几秒就完成，不需要另外安装任何东西。在 Intel Mac 上则会从源代码构建，需要几分钟，也需要 Xcode 26 以上（Swift 6.2）。这个工具需要 macOS 15 以上。</p>
 <p>也可以从<a href="https://github.com/redtear1115/mars-dawn-kit">源代码</a>用 Swift Package Manager 构建：</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
@@ -94,15 +94,19 @@ swift build -c release --product marsdawn</code></pre>
 <p>在 MarsDawn app 中打开一个或多个 Markdown 文件，方便审阅。需要先安装这个 app：没有安装时，<code>marsdawn open</code> 会以代码 3 结束，并说明没有安装 MarsDawn。<code>export</code> 不需要这个 app。</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
-marsdawn open notes.md --line 120</code></pre>
+marsdawn open notes.md --line 120
+marsdawn open .
+marsdawn open notes.md --folder .</code></pre>
 <ul>
   <li><code>path:line</code>：请 MarsDawn 定位到那一行。后面再接列号，例如 <code>notes.md:120:8</code>，会被忽略。如果有文件的完整名称就是这个参数，则视为那个文件。</li>
   <li><code>--line &lt;n&gt;</code>：同样的功能，只用于单一文件，也可以用在文件名本身以冒号加数字结尾的情况。只能搭配一个文件。</li>
   <li>行号范围是 1 到 999999999。</li>
+  <li>文件夹参数会在窗口的侧边栏打开，而不是当成文稿：<code>marsdawn open .</code> 会显示当前的文件夹。<code>--folder &lt;path&gt;</code> 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹，所以指定两个是使用方式错误。</li>
+  <li><code>--background</code>：打开时不把 MarsDawn 带到最前面。</li>
   <li>MarsDawn 1.0 会打开文件，但还不会跳到指定的行。</li>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
 </ul>
-<p>行号功能从 marsdawn 0.3.0 开始提供。</p>
+<p>行号功能从 marsdawn 0.3.0 开始提供，文件夹与 <code>--background</code> 从 0.5.1 开始。</p>
 
 <h3>marsdawn export</h3>
 <p>把 Markdown 文件输出成分页的 PDF，使用和 MarsDawn 输出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。</p>
@@ -131,12 +135,12 @@ marsdawn open notes.md --line 120</code></pre>
   <tr><th scope="row"><code>3</code></th><td data-label="意思">尚未安装 MarsDawn（只有 <code>open</code> 会用到）。</td><td data-label="怎么处理">安装 app，或改用不需要 app 的 <code>export</code></td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="意思">输出文件已存在（可加上 <code>--force</code>）。</td><td data-label="怎么处理">加上 <code>--force</code> 覆盖，或用 <code>-o</code> 写到别处</td></tr>
   <tr><th scope="row"><code>5</code></th><td data-label="意思">输出失败。</td><td data-label="怎么处理">读 JSON 结果里的 <code>message</code></td></tr>
-  <tr><th scope="row"><code>64</code></th><td data-label="意思">使用方式错误，包括行号超出范围，或 <code>--line</code> 搭配了多个文件。</td><td data-label="怎么处理">修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样</td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="意思">使用方式错误，包括行号超出范围、<code>--line</code> 搭配了多个文件或文件夹，或指定了多个文件夹。</td><td data-label="怎么处理">修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样</td></tr>
 </tbody>
 </table></div>
 
 <h2 id="json-output">--json 输出</h2>
-<p>成功时，<code>marsdawn open --json</code> 会输出 <code>ok</code>、<code>opened</code>（每个文件的 <code>path</code>，有指定行号时另含 <code>line</code>）与 <code>app</code>（App 路径）；<code>marsdawn export --json</code> 会输出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 与 <code>diagramErrors</code>。失败时两者都会输出 <code>ok</code>、<code>error</code> 与 <code>message</code>。</p>
+<p>成功时，<code>marsdawn open --json</code> 会输出 <code>ok</code>、<code>opened</code>（每个文件的 <code>path</code>，有指定行号时另含 <code>line</code>）、<code>app</code>（App 路径），有文件夹时另含 <code>folder</code>；<code>marsdawn export --json</code> 会输出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 与 <code>diagramErrors</code>。失败时两者都会输出 <code>ok</code>、<code>error</code> 与 <code>message</code>。</p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="网站">
