@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>用命令列把 Markdown 轉成 PDF · MarsDawn</title>
-<meta name="description" content="用免費的 marsdawn 命令列工具，把 Markdown 檔案轉成 PDF。用 Homebrew 安裝，執行一個指令，表格、數學式、Mermaid 圖表和程式碼上色都會出現在頁面上。">
+<title>Markdown 轉 PDF 工具：在 Mac 用命令列轉檔 · MarsDawn</title>
+<meta name="description" content="免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -13,8 +13,8 @@
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/markdown-to-pdf/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/">
 <link rel="alternate" type="text/markdown" href="/zh-hant/markdown-to-pdf/index.md">
-<meta property="og:title" content="用命令列把 Markdown 轉成 PDF · MarsDawn">
-<meta property="og:description" content="用免費的 marsdawn 命令列工具，把 Markdown 檔案轉成 PDF。用 Homebrew 安裝，執行一個指令，表格、數學式、Mermaid 圖表和程式碼上色都會出現在頁面上。">
+<meta property="og:title" content="Markdown 轉 PDF 工具：在 Mac 用命令列轉檔 · MarsDawn">
+<meta property="og:description" content="免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
@@ -32,7 +32,7 @@
 </header>
 <main>
 <section class="intro">
-  <h1>用命令列，把 Markdown 轉成 PDF。</h1>
+  <h1>Markdown 轉 PDF 工具：在 Mac 上用命令列轉檔。</h1>
   <p>免費的 <code>marsdawn</code> 工具只要一個指令，就能把 Markdown 檔案轉成 PDF。表格、數學式、Mermaid 圖表和程式碼上色，都會照原始檔的樣子呈現，而且不需要安裝其他東西，連 MarsDawn app 都不用。</p>
 </section>
 <h2>安裝</h2>
@@ -73,6 +73,14 @@ let pdf = try export("plan.md")
 <pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>這是那一頁，擷取自 <code>marsdawn</code> 0.5.0 的實際執行結果：</p>
 <p><img class="pdf-page" src="/assets/cli/plan-zh.png" alt="匯出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。" width="989" height="930"></p>
+<h2>選主題、紙張大小和檔名</h2>
+<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<ul>
+  <li><code>--theme</code>：dawn、classic、modern 或 vivid，使用主題的淺色配色。沒有指定時，<code>export</code> 會用 <code>$MARSDAWN_THEME</code>，再來才是 dawn。</li>
+  <li><code>--paper</code>：a4 或 letter，預設是 a4。</li>
+  <li><code>-o</code>：PDF 要寫到哪裡，而不是寫在原始檔旁邊。</li>
+  <li><code>--allow-remote-images</code>：轉檔時載入網路上的圖片。沒加這個選項就不會載入。</li>
+</ul>
 <h2>如果沒有成功</h2>
 <ul>
   <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> 代表 Homebrew 正在從原始碼建置 <code>marsdawn</code>，這在 Intel Mac 上會發生。從 App Store 安裝 Xcode 26 以上，再重新安裝一次。</li>

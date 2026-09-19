@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Markdown to PDF from the command line · MarsDawn</title>
-<meta name="description" content="Turn a Markdown file into a PDF with the free marsdawn command-line tool. Install it with Homebrew, run one command, and get tables, math, Mermaid diagrams and highlighted code on the page.">
+<title>Markdown to PDF on a Mac, from the command line · MarsDawn</title>
+<meta name="description" content="Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -13,8 +13,8 @@
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/markdown-to-pdf/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/markdown-to-pdf/">
 <link rel="alternate" type="text/markdown" href="/markdown-to-pdf/index.md">
-<meta property="og:title" content="Markdown to PDF from the command line · MarsDawn">
-<meta property="og:description" content="Turn a Markdown file into a PDF with the free marsdawn command-line tool. Install it with Homebrew, run one command, and get tables, math, Mermaid diagrams and highlighted code on the page.">
+<meta property="og:title" content="Markdown to PDF on a Mac, from the command line · MarsDawn">
+<meta property="og:description" content="Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/markdown-to-pdf/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
@@ -32,7 +32,7 @@
 </header>
 <main>
 <section class="intro">
-  <h1>Markdown to PDF, from the command line.</h1>
+  <h1>Markdown to PDF on a Mac, from the command line.</h1>
   <p>The free <code>marsdawn</code> tool turns a Markdown file into a PDF with one command. Tables, math, Mermaid diagrams and highlighted code come out the way they read in the source, and it needs nothing else installed, not even the MarsDawn app.</p>
 </section>
 <h2>Install it</h2>
@@ -73,6 +73,14 @@ let pdf = try export("plan.md")
 <pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>This is that page, captured from a real run of <code>marsdawn</code> 0.5.0:</p>
 <p><img class="pdf-page" src="/assets/cli/plan-en.png" alt="The exported PDF: the heading, a table of steps, an inline and a displayed formula, a Draft, Review, Ship diagram, and a highlighted line of Swift." width="989" height="930"></p>
+<h2>Choose a theme, paper size and file name</h2>
+<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<ul>
+  <li><code>--theme</code>: dawn, classic, modern or vivid, in the theme's light colors. Without it, <code>export</code> uses <code>$MARSDAWN_THEME</code>, then dawn.</li>
+  <li><code>--paper</code>: a4 or letter. The default is a4.</li>
+  <li><code>-o</code>: where to write the PDF, instead of next to the source.</li>
+  <li><code>--allow-remote-images</code>: load images from the web while rendering. They stay off unless you pass it.</li>
+</ul>
 <h2>If it doesn't work</h2>
 <ul>
   <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew is building <code>marsdawn</code> from source, as it does on an Intel Mac. Install Xcode 26 or later from the App Store, then run the install again.</li>
