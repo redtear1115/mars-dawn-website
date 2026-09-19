@@ -1,33 +1,33 @@
-# Markdown to PDF on a Mac, from the command line.
+# Mac のコマンドラインで、Markdown を PDF に。
 
-The free `marsdawn` tool turns a Markdown file into a PDF with one command. Tables, math, Mermaid diagrams and highlighted code come out the way they read in the source, and it needs nothing else installed, not even the MarsDawn app.
+無料の `marsdawn` ツールは、コマンド1つで Markdown ファイルを PDF に変換します。表、数式、Mermaid 図、ハイライトされたコードはソースの見た目そのままに仕上がり、MarsDawn アプリすら含め、他に何もインストールする必要はありません。
 
-## Install it
+## インストール
 
 ```
 brew install redtear1115/tap/marsdawn
 marsdawn --version
 ```
 
-On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds. On an Intel Mac it builds from source instead, which takes a few minutes and needs Xcode 26 or later. It runs on macOS 15 or later, and `marsdawn --version` prints the version you got.
+Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールします。Intel Mac ではソースからビルドするため数分かかり、Xcode 26 以降が必要です。macOS 15 以降で動作し、`marsdawn --version` がインストールされたバージョンを表示します。
 
-## Save a document
+## 文書を保存する
 
-Paste this into a file named `plan.md`:
+`plan.md` という名前のファイルに、次の内容を貼り付けてください。
 
 ````
-# Plan: faster exports
+# 計画：エクスポートを高速化
 
-An agent wrote this plan. You review it, then turn it into a PDF.
+この計画はエージェントが書きました。内容を確認してから、PDF にします。
 
-## Steps
+## ステップ
 
-| Step | Owner | Status |
+| ステップ | 担当 | 状況 |
 |------|-------|--------|
-| Measure the slow pages | Agent | Done |
-| Cache rendered diagrams | Agent | In review |
+| 遅いページを計測する | エージェント | 完了 |
+| レンダリング済み図をキャッシュする | エージェント | レビュー中 |
 
-The target is $t < 2\,\text{s}$ for a 50-page document:
+50 ページの文書で目標とするのは $t < 2\,\text{s}$：
 
 $$
 t_{\text{total}} = \sum_{i=1}^{n} t_i
@@ -35,7 +35,7 @@ $$
 
 ```mermaid
 graph LR
-  Draft --> Review --> Ship
+  ドラフト --> レビュー --> 公開
 ```
 
 ```swift
@@ -43,60 +43,60 @@ let pdf = try export("plan.md")
 ```
 ````
 
-## Export it
+## 書き出す
 
 ```
 marsdawn export plan.md
 ```
 
-It writes `plan.pdf` next to the source and prints where it went:
+ソースの隣に `plan.pdf` を書き出し、保存先を表示します。
 
 ```
 Exported /Users/you/plan.pdf (1 page)
 ```
 
-This is that page, captured from a real run of `marsdawn` 0.5.0:
+これはそのページを、`marsdawn` 0.5.0 の実行結果から実際にキャプチャしたものです。
 
-![The exported PDF: the heading, a table of steps, an inline and a displayed formula, a Draft, Review, Ship diagram, and a highlighted line of Swift.](/assets/cli/plan-ja.png)
+![書き出された PDF：見出し、ステップの表、インラインと独立した数式、ドラフト・レビュー・公開の図、ハイライトされた Swift のコード1行。](/assets/cli/plan-ja.png)
 
-## Choose a theme, paper size and file name
+## テーマ、用紙サイズ、ファイル名を選ぶ
 
 ```
 marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ```
 
-- `--theme`: dawn, classic, modern or vivid, in the theme's light colors. Without it, `export` uses `$MARSDAWN_THEME`, then dawn.
-- `--paper`: a4 or letter. The default is a4.
-- `-o`: where to write the PDF, instead of next to the source.
-- `--allow-remote-images`: load images from the web while rendering. They stay off unless you pass it.
+- `--theme`：dawn、classic、modern、vivid のいずれかで、テーマのライトカラーを使います。指定しない場合、`export` は `$MARSDAWN_THEME`、それもなければ dawn を使います。
+- `--paper`：a4 または letter。デフォルトは a4 です。
+- `-o`：PDF をソースの隣ではなく、どこに書き出すか。
+- `--allow-remote-images`：レンダリング時にウェブから画像を読み込みます。指定しない限りオフのままです。
 
-## If it doesn't work
+## うまくいかない場合
 
-- `A full installation of Xcode.app 26.0 is required to compile this software.` Homebrew is building `marsdawn` from source, as it does on an Intel Mac. Install Xcode 26 or later from the App Store, then run the install again.
-- `marsdawn: No such file: …` The path doesn't point at a file. Check the name, or run the command from the folder the file is in.
-- `… already exists. Pass --force to replace it.` A PDF with that name is already there. Add `--force` to replace it, or `-o` to write it somewhere else.
-- `Error: The value '…' is invalid for '--theme <theme>'.` The theme or paper size isn't one it knows. The themes are dawn, classic, modern and vivid; the paper is a4 or letter.
+- `A full installation of Xcode.app 26.0 is required to compile this software.` Homebrew が `marsdawn` をソースからビルドしています。Intel Mac ではこのようになります。App Store から Xcode 26 以降をインストールしてから、もう一度インストールしてください。
+- `marsdawn: No such file: …` パスがファイルを指していません。ファイル名を確認するか、そのファイルがあるフォルダでコマンドを実行してください。
+- `… already exists. Pass --force to replace it.` 同じ名前の PDF がすでに存在します。`--force` を付けて置き換えるか、`-o` で別の場所に書き出してください。
+- `Error: The value '…' is invalid for '--theme <theme>'.` テーマまたは用紙サイズが認識されていません。テーマは dawn、classic、modern、vivid、用紙は a4 または letter です。
 
-## Next
+## 次に
 
-- Every option and the JSON it prints: [Command Line](/ja/cli/).
-- To have a coding agent do this for you: [the marsdawn agent skill](/ja/cli/skill/).
+- すべてのオプションと出力される JSON：[コマンドライン](/ja/cli/)。
+- コーディングエージェントにこれをやらせるには：[marsdawn のエージェントスキル](/ja/cli/skill/)。
 
-## More
+## その他
 
-- [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.
-- [Your writing stays on your Mac](https://marsdawn.southern-light.dev/ja/yours/index.md): MarsDawn has no account, no sync and no cloud. Your Markdown documents stay on your Mac, in the files and folders you choose.
-- [Try free, pay once](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.
-- [PDF export](https://marsdawn.southern-light.dev/ja/pdf/index.md): Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks and tables.
-- [A Mac app](https://marsdawn.southern-light.dev/ja/native/index.md): A Markdown editor that is a real Mac app: native windows and tabs, autosave, version history, Quick Look in Finder and a text editor that behaves like a Mac.
-- [What MarsDawn doesn't do](https://marsdawn.southern-light.dev/ja/limits/index.md): No sync, no iPhone or iPad app, no plugins, no accounts. Four built-in themes. Know before you buy.
-- [Support](https://marsdawn.southern-light.dev/ja/support/index.md): Get help with MarsDawn, the Markdown editor for macOS.
-- [Privacy Policy](https://marsdawn.southern-light.dev/ja/privacy/index.md): MarsDawn does not collect personal data. Your documents and settings stay on your Mac.
-- [View Markdown on a Mac](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: as a PDF with the free marsdawn command-line tool today, and in the MarsDawn app, coming soon to the Mac App Store.
-- [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer renders Markdown read-only for USD 19.99. MarsDawn edits and previews side by side, free to try then USD 4.99 once on the Mac App Store.
-- [Command Line](https://marsdawn.southern-light.dev/ja/cli/index.md): The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.
-- [marsdawn for agents](https://marsdawn.southern-light.dev/ja/cli/agents/index.md): A reference for AI agents and scripts that call marsdawn to turn Markdown into PDF: commands, JSON output, schemas, exit codes and requirements.
-- [Agent skill](https://marsdawn.southern-light.dev/ja/cli/skill/index.md): One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.
+- [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向け Markdown エディタ。AI エージェントが書いた文章を読むために作られました。Mac App Store で近日公開予定です。
+- [あなたの文章は Mac に残ります](https://marsdawn.southern-light.dev/ja/yours/index.md): MarsDawn にはアカウントも同期もクラウドもありません。Markdown 文書はあなたの Mac 上に、選んだファイルとフォルダの中に残ります。
+- [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
+- [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したり印刷したりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックや表を分断しないよう配慮されます。
+- [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウィンドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
+- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類。購入前に知っておいてください。
+- [サポート](https://marsdawn.southern-light.dev/ja/support/index.md): macOS 向け Markdown エディタ MarsDawn のヘルプ。
+- [プライバシーポリシー](https://marsdawn.southern-light.dev/ja/privacy/index.md): MarsDawn は個人データを収集しません。文書と設定はあなたの Mac 上に残ります。
+- [Mac で Markdown を見る](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): .md ファイルは書式記号が入ったプレーンテキストです。Mac でレンダリングして読む方法を紹介します。今すぐ使える無料の marsdawn コマンドラインツールで PDF にする方法と、Mac App Store で近日公開予定の MarsDawn アプリで読む方法です。
+- [MacMD Viewer と MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用で Markdown をレンダリングし、USD 19.99。MarsDawn は編集とプレビューを並べて表示し、無料で試したあと Mac App Store で USD 4.99 の一度きりの購入です。
+- [コマンドライン](https://marsdawn.southern-light.dev/ja/cli/index.md): 無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。
+- [AI エージェント向け marsdawn](https://marsdawn.southern-light.dev/ja/cli/agents/index.md): marsdawn を呼び出して Markdown を PDF に変換する AI エージェントとスクリプトのためのリファレンス：コマンド、JSON 出力、スキーマ、終了コード、必要環境。
+- [エージェント用スキル](https://marsdawn.southern-light.dev/ja/cli/skill/index.md): コーディングエージェントが読み込んで marsdawn をインストールし、動作確認をし、Markdown を PDF に書き出し、JSON の結果を読み取るための1つのファイルです。
 - [English](https://marsdawn.southern-light.dev/markdown-to-pdf/index.md): Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/index.md): 免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/index.md): 免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。

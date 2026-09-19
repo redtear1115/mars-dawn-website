@@ -1,67 +1,67 @@
-# Support
+# サポート
 
-Help with MarsDawn, the Markdown editor for macOS.
+macOS 向け Markdown エディタ、MarsDawn のヘルプです。
 
-## Write to us
+## お問い合わせ
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
 
-Please include your macOS version and your MarsDawn version (MarsDawn › About MarsDawn). If something looks wrong, a screenshot or a small sample document helps a lot.
+macOS のバージョンと MarsDawn のバージョン（MarsDawn › MarsDawnについて）を書き添えてください。何かおかしく見える場合は、スクリーンショットや小さなサンプル文書がとても役立ちます。
 
-## Common questions
+## よくある質問
 
-### What do I need to run MarsDawn?
+### MarsDawn を動かすには何が必要ですか？
 
-A Mac with macOS 26 Tahoe or later, on Apple silicon or Intel.
+macOS 26 Tahoe 以降を搭載した Mac。Apple シリコンでも Intel でも動作します。
 
-### How do I switch between the editor and the preview?
+### エディタとプレビューはどう切り替えますか？
 
-Press `⌘1` for the source only, `⌘2` for side by side, and `⌘3` for the preview only. The same choices are in the View menu and the toolbar.
+`⌘1` でソースのみ、`⌘2` で左右分割、`⌘3` でプレビューのみになります。同じ選択肢は「表示」メニューとツールバーにもあります。
 
-### An image in my document doesn't show.
+### 文書内の画像が表示されません。
 
-- **Image on your Mac:** save the document first, then click *Grant Folder Access…* in the preview and choose the folder that holds the image. MarsDawn remembers the folder. You can review granted folders in MarsDawn › Settings › Folder Access.
-- **Image from the web:** web images are blocked until you click *Load Images* at the top of the preview. To always load them, turn on *Load remote images automatically* in Settings.
+- **Mac 上の画像：**まず文書を保存し、プレビューの*フォルダへのアクセスを許可…*をクリックして、画像があるフォルダを選んでください。MarsDawn はそのフォルダを記憶します。許可したフォルダは MarsDawn › 設定 › フォルダへのアクセスで確認できます。
+- **ウェブ上の画像：**ウェブ画像は、プレビュー上部の*イメージを読み込む*をクリックするまでブロックされます。常に読み込みたい場合は、設定で*リモートイメージを自動的に読み込む*をオンにしてください。
 
-### How do I add an image?
+### 画像を追加するには？
 
-Drag it into the editor, or paste it. The document must be saved first: MarsDawn copies the image into an `assets` folder next to the document and writes the Markdown link for you.
+エディタにドラッグするか、貼り付けてください。文書は先に保存しておく必要があります。MarsDawn が画像を文書の隣にある `assets` フォルダにコピーし、Markdown のリンクを書き込みます。
 
-### A Mermaid diagram shows an error.
+### Mermaid 図にエラーが表示されます。
 
-MarsDawn shows the diagram's source with the first line of Mermaid's error message underneath. Check the line it names, for example for an arrow with nothing after it or a bracket that isn't closed.
+MarsDawn は図のソースと、その下に Mermaid のエラーメッセージの最初の行を表示します。示された行を確認してください。たとえば矢印の先に何もない、または括弧が閉じられていない、といった箇所です。
 
-### How do I make a PDF?
+### PDF を作るには？
 
-Choose File › Export as PDF… (`⌥⌘E`). The PDF uses the light version of your preview theme and is split into pages, whichever layout you are in. File › Print… prints the same pages.
+ファイル › PDF として書き出す…（`⌥⌘E`）を選んでください。PDF はどのレイアウトであっても、プレビューテーマのライト版を使い、ページごとに分割されます。ファイル › プリント…でも同じページが印刷されます。
 
-### How do I use MarsDawn with Siri or Shortcuts?
+### Siri やショートカットで MarsDawn を使うには？
 
-Open the Shortcuts app and search for MarsDawn to find *New Markdown Document*, *Add Note to Inbox* and *Open Recent Document*. Before adding notes, choose a notes folder in MarsDawn › Settings › Notes Folder. Notes are added to `Inbox.md` in that folder.
+ショートカット App を開いて MarsDawn を検索すると、*新規 Markdown 書類*、*受信トレイにメモを追加*、*最近使った書類を開く*が見つかります。メモを追加する前に、MarsDawn › 設定 › メモフォルダでメモフォルダを選んでください。メモはそのフォルダの `Inbox.md` に追加されます。
 
-### Where are my settings?
+### 設定はどこにありますか？
 
-MarsDawn › Settings (`⌘,`) has appearance, images, the notes folder, folder access and the preview theme.
+MarsDawn › 設定（`⌘,`）に、外観モード、イメージ、メモフォルダ、フォルダへのアクセス、プレビューのテーマがあります。
 
-### How do I get a refund?
+### 返金してもらうには？
 
-Purchases are handled by Apple. Request a refund at [reportaproblem.apple.com](https://reportaproblem.apple.com).
+購入は Apple が処理します。[reportaproblem.apple.com](https://reportaproblem.apple.com) で返金を申請してください。
 
-## More
+## その他
 
-- [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.
-- [Your writing stays on your Mac](https://marsdawn.southern-light.dev/ja/yours/index.md): MarsDawn has no account, no sync and no cloud. Your Markdown documents stay on your Mac, in the files and folders you choose.
-- [Try free, pay once](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.
-- [PDF export](https://marsdawn.southern-light.dev/ja/pdf/index.md): Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks and tables.
-- [A Mac app](https://marsdawn.southern-light.dev/ja/native/index.md): A Markdown editor that is a real Mac app: native windows and tabs, autosave, version history, Quick Look in Finder and a text editor that behaves like a Mac.
-- [What MarsDawn doesn't do](https://marsdawn.southern-light.dev/ja/limits/index.md): No sync, no iPhone or iPad app, no plugins, no accounts. Four built-in themes. Know before you buy.
-- [Privacy Policy](https://marsdawn.southern-light.dev/ja/privacy/index.md): MarsDawn does not collect personal data. Your documents and settings stay on your Mac.
-- [View Markdown on a Mac](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: as a PDF with the free marsdawn command-line tool today, and in the MarsDawn app, coming soon to the Mac App Store.
-- [Markdown to PDF](https://marsdawn.southern-light.dev/ja/markdown-to-pdf/index.md): Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.
-- [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer renders Markdown read-only for USD 19.99. MarsDawn edits and previews side by side, free to try then USD 4.99 once on the Mac App Store.
-- [Command Line](https://marsdawn.southern-light.dev/ja/cli/index.md): The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.
-- [marsdawn for agents](https://marsdawn.southern-light.dev/ja/cli/agents/index.md): A reference for AI agents and scripts that call marsdawn to turn Markdown into PDF: commands, JSON output, schemas, exit codes and requirements.
-- [Agent skill](https://marsdawn.southern-light.dev/ja/cli/skill/index.md): One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.
+- [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向け Markdown エディタ。AI エージェントが書いた文章を読むために作られました。Mac App Store で近日公開予定です。
+- [あなたの文章は Mac に残ります](https://marsdawn.southern-light.dev/ja/yours/index.md): MarsDawn にはアカウントも同期もクラウドもありません。Markdown 文書はあなたの Mac 上に、選んだファイルとフォルダの中に残ります。
+- [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
+- [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したり印刷したりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックや表を分断しないよう配慮されます。
+- [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウィンドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
+- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類。購入前に知っておいてください。
+- [プライバシーポリシー](https://marsdawn.southern-light.dev/ja/privacy/index.md): MarsDawn は個人データを収集しません。文書と設定はあなたの Mac 上に残ります。
+- [Mac で Markdown を見る](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): .md ファイルは書式記号が入ったプレーンテキストです。Mac でレンダリングして読む方法を紹介します。今すぐ使える無料の marsdawn コマンドラインツールで PDF にする方法と、Mac App Store で近日公開予定の MarsDawn アプリで読む方法です。
+- [Markdown から PDF へ](https://marsdawn.southern-light.dev/ja/markdown-to-pdf/index.md): 無料の marsdawn コマンドラインツールで、Mac 上の Markdown を PDF に変換します。Homebrew でインストールしてコマンド1つで実行：表、数式、Mermaid、コードに対応。
+- [MacMD Viewer と MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用で Markdown をレンダリングし、USD 19.99。MarsDawn は編集とプレビューを並べて表示し、無料で試したあと Mac App Store で USD 4.99 の一度きりの購入です。
+- [コマンドライン](https://marsdawn.southern-light.dev/ja/cli/index.md): 無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。
+- [AI エージェント向け marsdawn](https://marsdawn.southern-light.dev/ja/cli/agents/index.md): marsdawn を呼び出して Markdown を PDF に変換する AI エージェントとスクリプトのためのリファレンス：コマンド、JSON 出力、スキーマ、終了コード、必要環境。
+- [エージェント用スキル](https://marsdawn.southern-light.dev/ja/cli/skill/index.md): コーディングエージェントが読み込んで marsdawn をインストールし、動作確認をし、Markdown を PDF に書き出し、JSON の結果を読み取るための1つのファイルです。
 - [English](https://marsdawn.southern-light.dev/support/index.md): Get help with MarsDawn, the Markdown editor for macOS.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。

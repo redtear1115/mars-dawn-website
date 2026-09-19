@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>marsdawn for agents: Markdown to PDF from scripts · MarsDawn</title>
-<meta name="description" content="A reference for AI agents and scripts that call marsdawn to turn Markdown into PDF: commands, JSON output, schemas, exit codes and requirements.">
+<title>AI エージェント向け marsdawn：スクリプトから Markdown を PDF に · MarsDawn</title>
+<meta name="description" content="marsdawn を呼び出して Markdown を PDF に変換する AI エージェントとスクリプトのためのリファレンス：コマンド、JSON 出力、スキーマ、終了コード、必要環境。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -15,8 +15,8 @@
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/agents/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ja/cli/agents/">
 <link rel="alternate" type="text/markdown" href="/ja/cli/agents/index.md">
-<meta property="og:title" content="marsdawn for agents: Markdown to PDF from scripts · MarsDawn">
-<meta property="og:description" content="A reference for AI agents and scripts that call marsdawn to turn Markdown into PDF: commands, JSON output, schemas, exit codes and requirements.">
+<meta property="og:title" content="AI エージェント向け marsdawn：スクリプトから Markdown を PDF に · MarsDawn">
+<meta property="og:description" content="marsdawn を呼び出して Markdown を PDF に変換する AI エージェントとスクリプトのためのリファレンス：コマンド、JSON 出力、スキーマ、終了コード、必要環境。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/cli/agents/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
@@ -34,48 +34,48 @@
 </header>
 <main>
 <section class="intro">
-  <h1>marsdawn for agents</h1>
-  <p>A reference for AI agents and scripts that call the <code>marsdawn</code> command-line tool. Every example on this page was run against the tool built from the current source.</p>
+  <h1>AI エージェント向け marsdawn</h1>
+  <p><code>marsdawn</code> コマンドラインツールを呼び出す AI エージェントとスクリプトのためのリファレンスです。このページのすべての例は、現在のソースからビルドしたツールに対して実際に実行したものです。</p>
 </section>
 
-<div class="summary"><p><strong>To turn a Markdown file into a PDF, run <code>marsdawn export notes.md --json</code> and read one JSON object from stdout.</strong> Mermaid diagrams and highlighted code are rendered the same way as in the MarsDawn app. <code>export</code> doesn't need the app; <code>open</code> does.</p></div>
+<div class="summary"><p><strong>Markdown ファイルを PDF に変換するには、<code>marsdawn export notes.md --json</code> を実行し、stdout から1つの JSON オブジェクトを読み取ってください。</strong>Mermaid 図とハイライトされたコードは、MarsDawn アプリと同じ方法でレンダリングされます。<code>export</code> にアプリは不要ですが、<code>open</code> には必要です。</p></div>
 
-<h2>What it does</h2>
+<h2>できること</h2>
 <ul>
-  <li><code>export</code> renders one Markdown file to a paginated PDF with the same exporter as the MarsDawn app. No window opens.</li>
-  <li><code>open</code> opens one or more Markdown files in the MarsDawn app, so a person can review them, and can name the line each file should land on.</li>
+  <li><code>export</code>：MarsDawn アプリと同じ書き出しエンジンで、1つの Markdown ファイルをページ分割された PDF にレンダリングします。ウィンドウは開きません。</li>
+  <li><code>open</code>：1つ以上の Markdown ファイルを MarsDawn アプリで開き、人が確認できるようにします。各ファイルが移動すべき行を指定することもできます。</li>
 </ul>
 
-<h2>What it does not do</h2>
+<h2>できないこと</h2>
 <ul>
-  <li>It doesn't read Markdown from stdin. Pass a file path.</li>
-  <li>It doesn't write the PDF to stdout. The PDF always goes to a file; stdout carries only the result.</li>
-  <li>It doesn't replace an existing file unless you pass <code>--force</code>.</li>
-  <li>It doesn't load images from the web unless you pass <code>--allow-remote-images</code>, and then only over https.</li>
-  <li><code>open</code> doesn't work without the MarsDawn app installed; it exits with code 3. <code>export</code> doesn't need the app.</li>
-  <li>MarsDawn 1.0 doesn't jump to the line <code>open</code> names yet. It opens the file at the top.</li>
-  <li>It runs on macOS only.</li>
+  <li>stdin から Markdown を読み込みません。ファイルパスを渡してください。</li>
+  <li>PDF を stdout に書き出しません。PDF は常にファイルとして書き出され、stdout には結果だけが出力されます。</li>
+  <li><code>--force</code> を指定しない限り、既存のファイルを置き換えません。</li>
+  <li><code>--allow-remote-images</code> を指定しない限りウェブから画像を読み込まず、指定した場合も https のみです。</li>
+  <li><code>open</code> は MarsDawn アプリがインストールされていないと動作せず、コード 3 で終了します。<code>export</code> にアプリは不要です。</li>
+  <li>MarsDawn 1.0 はまだ <code>open</code> が指定した行にジャンプしません。ファイルは先頭から開きます。</li>
+  <li>macOS でのみ動作します。</li>
 </ul>
 
 <h2>export</h2>
 <pre><code>marsdawn export notes.md --json</code></pre>
-<p>Writes <code>notes.pdf</code> next to <code>notes.md</code>. Options:</p>
+<p><code>notes.pdf</code> を <code>notes.md</code> の隣に書き出します。オプション：</p>
 <ul>
-  <li><code>-o, --output &lt;path&gt;</code>: where to write the PDF. Defaults to the input path with a <code>.pdf</code> extension.</li>
-  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: the theme's light palette. Defaults to <code>$MARSDAWN_THEME</code>, then <code>dawn</code>.</li>
-  <li><code>--paper &lt;a4|letter&gt;</code>: paper size. Defaults to <code>a4</code>.</li>
-  <li><code>--allow-remote-images</code>: load https images from the web while rendering.</li>
-  <li><code>--force</code>: replace the output file if it exists.</li>
-  <li><code>--json</code>: print one JSON object on stdout instead of text.</li>
+  <li><code>-o, --output &lt;path&gt;</code>：PDF の書き出し先。デフォルトは入力パスの拡張子を <code>.pdf</code> にしたものです。</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：テーマのライトパレット。デフォルトは <code>$MARSDAWN_THEME</code>、それもなければ <code>dawn</code> です。</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>：用紙サイズ。デフォルトは <code>a4</code> です。</li>
+  <li><code>--allow-remote-images</code>：レンダリング時にウェブから https の画像を読み込みます。</li>
+  <li><code>--force</code>：出力ファイルが存在する場合に置き換えます。</li>
+  <li><code>--json</code>：stdout にテキストではなく1つの JSON オブジェクトを出力します。</li>
 </ul>
 <pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
-<p>Success, exit code 0:</p>
+<p>成功、終了コード 0：</p>
 <pre><code>{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}</code></pre>
 <ul>
-  <li><code>output</code>: absolute path of the PDF that was written.</li>
-  <li><code>pages</code>: number of pages.</li>
-  <li><code>theme</code> and <code>paper</code>: the values used.</li>
-  <li><code>diagramErrors</code>: one message per Mermaid diagram that failed to render. The PDF is still written.</li>
+  <li><code>output</code>：書き出された PDF の絶対パス。</li>
+  <li><code>pages</code>：ページ数。</li>
+  <li><code>theme</code> と <code>paper</code>：実際に使われた値。</li>
+  <li><code>diagramErrors</code>：レンダリングに失敗した Mermaid 図につき1件のメッセージ。PDF はそれでも書き出されます。</li>
 </ul>
 
 <h2>open</h2>
@@ -83,67 +83,67 @@
 marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json</code></pre>
 <ul>
-  <li><code>path:line</code> names the line to land on. A column after it, as in <code>notes.md:120:8</code>, is ignored. An argument that names a file which exists is always that whole filename, so a file called <code>weird:12</code> opens as itself.</li>
-  <li><code>--line &lt;n&gt;</code> names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.</li>
-  <li>Lines run from 1 to 999999999. Anything else is a usage error.</li>
-  <li>Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
+  <li><code>path:line</code> は移動先の行を指定します。その後にコロンが続く場合、たとえば <code>notes.md:120:8</code> の列部分は無視されます。存在するファイル名を丸ごと表す引数は常にそのファイル名として扱われるため、<code>weird:12</code> という名前のファイルはそのまま開きます。</li>
+  <li><code>--line &lt;n&gt;</code> は単一ファイルの行を指定します。それ自体がコロンと数字で終わるパスも含みます。ファイルは1つだけ指定できます。</li>
+  <li>行番号は 1 から 999999999 までで、それ以外は使用方法のエラーになります。</li>
+  <li>行の指定は marsdawn 0.3.0 で追加されました。MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。</li>
 </ul>
-<p>Success, exit code 0:</p>
+<p>成功、終了コード 0：</p>
 <pre><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
 <ul>
-  <li><code>opened</code>: one object per file, in the order given. <code>path</code> is the file's absolute path; <code>line</code> appears only when a line was asked for.</li>
-  <li><code>app</code>: path of the MarsDawn app that opened them.</li>
+  <li><code>opened</code>：渡された順に、ファイルごとの1つのオブジェクト。<code>path</code> はファイルの絶対パス、<code>line</code> は行が指定されたときだけ現れます。</li>
+  <li><code>app</code>：それらを開いた MarsDawn アプリのパス。</li>
 </ul>
-<p>marsdawn 0.2.x printed <code>opened</code> as a list of path strings. Check <code>marsdawn --version</code> if you need to handle both.</p>
+<p>marsdawn 0.2.x では <code>opened</code> はパス文字列のリストでした。両方を扱う必要がある場合は <code>marsdawn --version</code> を確認してください。</p>
 
-<h2>Failures</h2>
-<p>With <code>--json</code>, a failure prints one JSON object on stdout and exits with its code:</p>
+<h2>失敗時</h2>
+<p><code>--json</code> を指定すると、失敗時は stdout に1つの JSON オブジェクトを出力し、対応するコードで終了します。</p>
 <pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
 <ul>
-  <li><code>2</code>, <code>input_not_found</code>: the input doesn't exist, is a folder, or isn't UTF-8 text.</li>
-  <li><code>3</code>, <code>app_not_installed</code>: MarsDawn isn't installed. Only <code>open</code> returns this.</li>
-  <li><code>4</code>, <code>output_exists</code>: the output file exists. Pass <code>--force</code>.</li>
-  <li><code>5</code>, <code>export_failed</code>: the export itself failed.</li>
-  <li><code>64</code>: usage error, such as an unknown option, an invalid value, a line out of range or <code>--line</code> with more than one file. This one is printed as text on stderr, even with <code>--json</code>.</li>
+  <li><code>2</code>、<code>input_not_found</code>：入力が存在しない、フォルダである、または UTF-8 テキストでない。</li>
+  <li><code>3</code>、<code>app_not_installed</code>：MarsDawn がインストールされていない。<code>open</code> のみがこれを返します。</li>
+  <li><code>4</code>、<code>output_exists</code>：出力ファイルが存在する。<code>--force</code> を指定してください。</li>
+  <li><code>5</code>、<code>export_failed</code>：書き出し自体が失敗した。</li>
+  <li><code>64</code>：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルに対する <code>--line</code> の指定など。この場合は、<code>--json</code> を指定していても stderr にテキストとして出力されます。</li>
 </ul>
 
-<h2>JSON Schemas</h2>
-<p>JSON Schema (draft 2020-12) for every <code>--json</code> result:</p>
+<h2>JSON Schema</h2>
+<p>各 <code>--json</code> 結果に対応する JSON Schema（draft 2020-12）：</p>
 <ul>
-  <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export success</li>
-  <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open success, marsdawn 0.3.0 and later</li>
-  <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: failure, both commands</li>
-  <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open success, marsdawn 0.2.x, where <code>opened</code> was a list of paths</li>
+  <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功時</li>
+  <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功時、marsdawn 0.3.0 以降</li>
+  <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: 失敗時、両方のコマンド共通</li>
+  <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）</li>
 </ul>
 
-<h2>Environment variables</h2>
+<h2>環境変数</h2>
 <ul>
-  <li><code>MARSDAWN_THEME</code>: the theme <code>export</code> uses when <code>--theme</code> isn't passed. An unknown value falls back to <code>dawn</code> without an error.</li>
+  <li><code>MARSDAWN_THEME</code>：<code>export</code> が、<code>--theme</code> が指定されないときに使うテーマ。未知の値はエラーにならず <code>dawn</code> にフォールバックします。</li>
 </ul>
 
-<h2>Requirements</h2>
+<h2>必要環境</h2>
 <ul>
-  <li>The tool runs on macOS 15 or later. On Apple silicon, Homebrew installs a prebuilt bottle and nothing else is needed. Building it yourself, on an Intel Mac or from the source, needs Swift 6.2 or later, which comes with Xcode 26 or later.</li>
-  <li>The MarsDawn app needs macOS 26 or later.</li>
+  <li>このツールは macOS 15 以降で動作します。Apple シリコンでは、Homebrew がビルド済みのボトルをインストールし、他に何も必要ありません。Intel Mac やソースから自分でビルドする場合は、Swift 6.2 以降が必要で、これは Xcode 26 以降に付属しています。</li>
+  <li>MarsDawn アプリには macOS 26 以降が必要です。</li>
 </ul>
 
-<h2>Install</h2>
-<p>With Homebrew. On Apple silicon it pours a prebuilt bottle in seconds, with no Xcode needed. On an Intel Mac it compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.</p>
+<h2>インストール</h2>
+<p>Homebrew を使う場合。Apple シリコンでは、Xcode 不要でビルド済みのボトルを数秒でインストールします。Intel Mac では marsdawn をソースからコンパイルするため数分かかり、Xcode 26 以降が必要です。</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn --version</code></pre>
-<p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a>. The first build fetches dependencies and compiles, which also takes a few minutes.</p>
+<p>または、<a href="https://github.com/redtear1115/mars-dawn-kit">ソース</a>からビルドします。最初のビルドでは依存関係の取得とコンパイルが行われ、これも数分かかります。</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
-<p><code>marsdawn --version</code> prints the version number, such as <code>0.3.0</code>, and exits with code 0.</p>
+<p><code>marsdawn --version</code> は <code>0.3.0</code> のようなバージョン番号を表示し、コード 0 で終了します。</p>
 </main>
 <footer class="footer">
-  <span>Read what your agent wrote.</span>
-  <a href="/ja/support/">Support</a>
-  <a href="/ja/privacy/">Privacy Policy</a>
-  <a href="/ja/cli/">Command Line</a>
-  <span>MarsDawn is coming soon to the Mac App Store.</span>
+  <span>エージェントが書いた Markdown を読む。</span>
+  <a href="/ja/support/">サポート</a>
+  <a href="/ja/privacy/">プライバシーポリシー</a>
+  <a href="/ja/cli/">コマンドライン</a>
+  <span>MarsDawn は Mac App Store で近日公開予定です。</span>
 </footer>
 </div>
 </body>

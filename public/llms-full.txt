@@ -2146,293 +2146,293 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 
 Source: https://marsdawn.southern-light.dev/ja/
 
-Built for the AI workflow
+AI ワークフローのために作られました
 
-# Where an agent's Markdown gets a careful read.
+# エージェントが書いた Markdown を、じっくり読む場所。
 
-An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.
+AI エージェントが Markdown を書きます。あなたは MarsDawn でそれを確認します。ソースとレンダリングされたページを並べて見て、修正を伝えます。
 
-![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+![MarsDawn の分割ビュー：左が Markdown のソース、右がレンダリングされたページ。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
 
-## The loop
+## このループ
 
-1. **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
-2. **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
-3. **The agent revises.** Ask for changes. Open the revised file and read it the same way.
+1. **エージェントが書く。**あなたのコーディングエージェントやライティングアシスタントが Markdown の下書きを作ります。README、仕様書、メモなど。
+2. **MarsDawn で確認する。**ファイルを開き、Mermaid 図やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。
+3. **エージェントが修正する。**変更を依頼します。修正されたファイルを開き、同じように読みます。
 
-Agents can drive MarsDawn directly: the free [marsdawn](/ja/cli/) command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See [marsdawn for agents](/ja/cli/agents/) for the details.
+エージェントは MarsDawn を直接操作することもできます。無料の [marsdawn](/ja/cli/) コマンドラインツールは、確認用にファイルを開いたり PDF を書き出したりでき、スクリプト向けの JSON 出力にも対応しています。詳細は[AI エージェント向け marsdawn](/ja/cli/agents/)をご覧ください。
 ---
 
-## Your writing stays on your Mac
+## あなたの文章は Mac に残ります
 
 Source: https://marsdawn.southern-light.dev/ja/yours/
 
-# Your writing stays on your Mac.
+# あなたの文章は、あなたの Mac に残ります。
 
-MarsDawn has no account, no sync and no cloud. It opens a file, you write, and it saves the file where you chose.
+MarsDawn にはアカウントも同期もクラウドもありません。ファイルを開いて、あなたが書き、選んだ場所に保存します。
 
-![MarsDawn showing a document in the Classic theme, with the preview filling the window.](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
+![MarsDawn が Classic テーマで文書を表示し、プレビューがウィンドウいっぱいに広がっている。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
 
-In this screenshot：
+このスクリーンショットの内容：
 
-1. A file on your Mac, saved where you choose.
-2. The whole toolbar is themes and layouts; there is nothing to sign in to.
+1. あなたの Mac 上のファイルで、選んだ場所に保存されます。
+2. ツールバーにあるのはテーマとレイアウトだけで、サインインするものは何もありません。
 
-## What that means
+## それが意味すること
 
-- There is no account to sign up for or sign in to.
-- Nothing syncs to a cloud. Your documents stay where you save them.
-- Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".
-- Web images stay blocked until you choose to load them, so opening a document never tells a server you read it. When you do load them, they load over https only.
-- Local images show in the preview once you grant access to their folder.
+- 登録もサインインも必要なアカウントはありません。
+- 何もクラウドに同期されません。文書は保存した場所にそのまま残ります。
+- 何も追跡されません。MarsDawn はあなたに関するデータを一切収集せず、App Store のプライバシーラベルは「データの収集なし」です。
+- ウェブ画像は読み込むまでブロックされたままなので、文書を開いただけでサーバーに読んだことが伝わることはありません。読み込む場合も https でのみ読み込まれます。
+- ローカル画像は、フォルダへのアクセスを許可するとプレビューに表示されます。
 
-The details are in the [privacy policy](/ja/privacy/).
+詳細は[プライバシーポリシー](/ja/privacy/)をご覧ください。
 ---
 
-## Try free, pay once
+## 無料で試して、一度だけ購入
 
 Source: https://marsdawn.southern-light.dev/ja/pay-once/
 
-# Try all of it. Then pay once.
+# すべて試してから、一度だけ支払う。
 
-MarsDawn is a free download. Start the 14-day trial and every feature works; to keep using it after that, one purchase of USD 4.99 unlocks it. There is no subscription and no account.
+MarsDawn は無料でダウンロードできます。14日間のトライアルを始めればすべての機能が使えます。その後も使い続けるには、USD 4.99 の一度きりの購入でロックが解除されます。サブスクリプションもアカウントもありません。
 
-![MarsDawn in the Vivid theme, with Markdown source on the left and the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
+![MarsDawn が Vivid テーマで、左に Markdown のソース、右にレンダリングされたページを表示している。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
-In this screenshot：
+このスクリーンショットの内容：
 
-1. Markdown highlighting in the editor, included.
-2. Every theme and every layout is included.
-3. Mermaid diagrams, included.
-4. Code highlighting, included.
+1. エディタの Markdown ハイライトも含まれます。
+2. すべてのテーマとレイアウトが含まれます。
+3. Mermaid 図も含まれます。
+4. コードのハイライトも含まれます。
 
-## How it works
+## 仕組み
 
-- MarsDawn is free to download from the Mac App Store.
-- Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.
-- To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.
-- The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.
-- There is no account. MarsDawn never asks you to create one.
+- MarsDawn は Mac App Store から無料でダウンロードできます。
+- トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。
+- その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。
+- トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。
+- アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。
 
-## If you don't unlock
+## ロックを解除しない場合
 
-- After 14 days, until you unlock it, you can't read, edit, export or print documents in MarsDawn. A document still opens, but its content is covered.
-- Your files don't change. They're ordinary files on your Mac, and Quick Look in Finder keeps showing them.
-- The free [`marsdawn` command-line tool](/ja/cli/) keeps exporting them to PDF, trial or not.
-- If a document is open in MarsDawn when the trial ends, the text you typed isn't lost: use File ▸ Save As… to keep it.
+- 14日後、ロックを解除するまでは、MarsDawn で文書を読んだり編集したり書き出したり印刷したりできません。文書自体は開きますが、内容は覆われます。
+- あなたのファイルは変わりません。Mac 上の普通のファイルのままで、Finder のクイックルックでも引き続き表示されます。
+- 無料の[`marsdawn` コマンドラインツール](/ja/cli/)は、トライアルの有無にかかわらず、引き続き PDF に書き出せます。
+- トライアル終了時に MarsDawn で文書が開いていた場合、入力した文字が失われることはありません。「ファイル」▸「別名で保存…」で保存してください。
 ---
 
-## PDF export
+## PDF 書き出し
 
 Source: https://marsdawn.southern-light.dev/ja/pdf/
 
-# The PDF looks like the page you wrote.
+# PDF は、あなたが書いたページそのままに見えます。
 
-Export as PDF or print, in your theme's light colors. Diagrams and highlighted code come through, and page breaks avoid splitting what belongs together.
+テーマのライトカラーで PDF に書き出す、または印刷できます。図やハイライトされたコードもそのまま反映され、改ページはひとまとまりの内容を分断しないよう配慮されます。
 
-![A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
-In this screenshot：
+このスクリーンショットの内容：
 
-1. Mermaid diagrams, drawn into the PDF.
-2. Code keeps its highlighting.
+1. Mermaid 図は PDF に描き込まれます。
+2. コードはハイライトを保ちます。
 
-## What that means
+## それが意味すること
 
-- Mermaid diagrams are drawn into the PDF.
-- Code blocks keep their syntax highlighting.
-- Page breaks avoid leaving a heading at the bottom of a page or splitting code, tables and diagrams.
-- Any layout. Export works even while only the source is showing.
+- Mermaid 図は PDF に描き込まれます。
+- コードブロックはシンタックスハイライトを保ちます。
+- 改ページは、見出しがページの下端に残ったり、コード・表・図が分断されたりしないよう配慮されます。
+- どのレイアウトでも書き出せます。ソースだけを表示していても書き出しは機能します。
 
-The free [marsdawn command-line tool](/ja/cli/) uses the same exporter, so a script or an AI agent gets the same PDF.
+無料の[marsdawn コマンドラインツール](/ja/cli/)は同じ書き出しエンジンを使っているので、スクリプトや AI エージェントも同じ PDF を得られます。
 ---
 
-## A Mac app
+## Mac アプリ
 
 Source: https://marsdawn.southern-light.dev/ja/native/
 
-# Built out of the Mac's own parts.
+# Mac 自身のパーツで作られています。
 
-The windows, tabs, menus and text editor are the Mac's own. The rendered page is drawn by WebKit, the engine behind Safari.
+ウィンドウ、タブ、メニュー、テキストエディタはすべて Mac 自身のものです。レンダリングされたページは、Safari を動かしているエンジンである WebKit が描画します。
 
-![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+![MarsDawn の分割ビュー：左が Markdown のソース、右がレンダリングされたページ。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
 
-In this screenshot：
+このスクリーンショットの内容：
 
-1. A native Mac window.
-2. The Mac's text editor, with Markdown highlighting.
-3. ⌘1 source, ⌘2 split, ⌘3 preview.
-4. The page updates as you type.
+1. ネイティブの Mac ウィンドウ。
+2. Mac のテキストエディタに、Markdown ハイライトを追加したもの。
+3. ⌘1 でソース、⌘2 で分割、⌘3 でプレビュー。
+4. 入力するとページが更新されます。
 
-## What that means
+## それが意味すること
 
-- Source, split and preview layouts, one keystroke apart (`⌘1`, `⌘2`, `⌘3`).
-- The two panes scroll together, so the paragraph you are editing stays in view.
-- Markdown syntax highlighting in the editor, matched to your preview theme.
-- Native windows, tabs, autosave and version history.
-- Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.
-- Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.
-- 英語、繁体字中国語、簡体字中国語、日本語.
+- ソース、分割、プレビューの3つのレイアウトを、キー1つで切り替え（`⌘1`、`⌘2`、`⌘3`）。
+- 2つのペインは一緒にスクロールするので、編集中の段落が常に見えています。
+- エディタの Markdown シンタックスハイライトは、プレビューのテーマに合わせられます。
+- ネイティブなウィンドウ、タブ、自動保存、バージョン履歴。
+- クイックルック：Finder で Markdown ファイルを選んでスペースキーを押すとプレビューでき、図も表示されます。
+- Siri とショートカット：テンプレートから新しい文書を作成する、メモの受信トレイに1行追加する、最近使った文書を再度開く、といった操作ができます。
+- 英語、繁体字中国語、簡体字中国語、日本語に対応。
 ---
 
-## What MarsDawn doesn't do
+## MarsDawn ができないこと
 
 Source: https://marsdawn.southern-light.dev/ja/limits/
 
-# What MarsDawn doesn't do.
+# MarsDawn ができないこと。
 
-Some things are left out on purpose. If you need one of them, it's better to know now than after you buy.
+いくつかの機能は意図的に省かれています。必要な機能があれば、購入したあとより今知っておくほうがいいはずです。
 
-![MarsDawn in dark mode, with Markdown source on the left and the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/03-dark-1180.png)
+![MarsDawn のダークモード、左が Markdown のソース、右がレンダリングされたページ。](https://marsdawn.southern-light.dev/assets/screens/03-dark-1180.png)
 
-In this screenshot：
+このスクリーンショットの内容：
 
-1. One document per window, on this Mac.
-2. You write Markdown here.
-3. The toolbar holds themes and layouts, and there is no plugins menu.
-4. The page is for reading, not editing.
+1. この Mac で、ウィンドウひとつにつき文書ひとつ。
+2. ここで Markdown を書きます。
+3. ツールバーにあるのはテーマとレイアウトだけで、プラグインメニューはありません。
+4. このページは読むためのもので、編集はできません。
 
-## Left out
+## 省かれているもの
 
-- **Sync:** MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.
-- **iPhone and iPad:** there is no app for them; MarsDawn is for the Mac.
-- **Plugins:** MarsDawn has no plugins or extensions.
-- **Sharing:** there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.
-- **Editing:** you write Markdown on the left and read the page on the right; the page itself can't be edited.
-- **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
-- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others.
-- **Other files:** plain text files and PDFs open read-only.
-- **After the trial:** if you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
-- **System:** MarsDawn needs macOS 26 or later.
+- **同期：**MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。
+- **iPhone と iPad：**これらの端末向けアプリはありません。MarsDawn は Mac 専用です。
+- **プラグイン：**MarsDawn にプラグインや拡張機能はありません。
+- **共有：**アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。
+- **編集：**左に Markdown を書き、右でページを読みます。ページ自体は編集できません。
+- **形式：**MarsDawn は PDF の書き出しと印刷に対応していますが、Word ファイルへの書き出しはできません。
+- **テーマ：**Dawn、Classic、Modern、Vivid の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。
+- **その他のファイル：**プレーンテキストファイルと PDF は読み取り専用で開きます。
+- **トライアル終了後：**14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。
+- **システム：**MarsDawn には macOS 26 以降が必要です。
 ---
 
-## Support
+## サポート
 
 Source: https://marsdawn.southern-light.dev/ja/support/
 
-# Support
+# サポート
 
-Help with MarsDawn, the Markdown editor for macOS.
+macOS 向け Markdown エディタ、MarsDawn のヘルプです。
 
-## Write to us
+## お問い合わせ
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
 
-Please include your macOS version and your MarsDawn version (MarsDawn › About MarsDawn). If something looks wrong, a screenshot or a small sample document helps a lot.
+macOS のバージョンと MarsDawn のバージョン（MarsDawn › MarsDawnについて）を書き添えてください。何かおかしく見える場合は、スクリーンショットや小さなサンプル文書がとても役立ちます。
 
-## Common questions
+## よくある質問
 
-### What do I need to run MarsDawn?
+### MarsDawn を動かすには何が必要ですか？
 
-A Mac with macOS 26 Tahoe or later, on Apple silicon or Intel.
+macOS 26 Tahoe 以降を搭載した Mac。Apple シリコンでも Intel でも動作します。
 
-### How do I switch between the editor and the preview?
+### エディタとプレビューはどう切り替えますか？
 
-Press `⌘1` for the source only, `⌘2` for side by side, and `⌘3` for the preview only. The same choices are in the View menu and the toolbar.
+`⌘1` でソースのみ、`⌘2` で左右分割、`⌘3` でプレビューのみになります。同じ選択肢は「表示」メニューとツールバーにもあります。
 
-### An image in my document doesn't show.
+### 文書内の画像が表示されません。
 
-- **Image on your Mac:** save the document first, then click *Grant Folder Access…* in the preview and choose the folder that holds the image. MarsDawn remembers the folder. You can review granted folders in MarsDawn › Settings › Folder Access.
-- **Image from the web:** web images are blocked until you click *Load Images* at the top of the preview. To always load them, turn on *Load remote images automatically* in Settings.
+- **Mac 上の画像：**まず文書を保存し、プレビューの*フォルダへのアクセスを許可…*をクリックして、画像があるフォルダを選んでください。MarsDawn はそのフォルダを記憶します。許可したフォルダは MarsDawn › 設定 › フォルダへのアクセスで確認できます。
+- **ウェブ上の画像：**ウェブ画像は、プレビュー上部の*イメージを読み込む*をクリックするまでブロックされます。常に読み込みたい場合は、設定で*リモートイメージを自動的に読み込む*をオンにしてください。
 
-### How do I add an image?
+### 画像を追加するには？
 
-Drag it into the editor, or paste it. The document must be saved first: MarsDawn copies the image into an `assets` folder next to the document and writes the Markdown link for you.
+エディタにドラッグするか、貼り付けてください。文書は先に保存しておく必要があります。MarsDawn が画像を文書の隣にある `assets` フォルダにコピーし、Markdown のリンクを書き込みます。
 
-### A Mermaid diagram shows an error.
+### Mermaid 図にエラーが表示されます。
 
-MarsDawn shows the diagram's source with the first line of Mermaid's error message underneath. Check the line it names, for example for an arrow with nothing after it or a bracket that isn't closed.
+MarsDawn は図のソースと、その下に Mermaid のエラーメッセージの最初の行を表示します。示された行を確認してください。たとえば矢印の先に何もない、または括弧が閉じられていない、といった箇所です。
 
-### How do I make a PDF?
+### PDF を作るには？
 
-Choose File › Export as PDF… (`⌥⌘E`). The PDF uses the light version of your preview theme and is split into pages, whichever layout you are in. File › Print… prints the same pages.
+ファイル › PDF として書き出す…（`⌥⌘E`）を選んでください。PDF はどのレイアウトであっても、プレビューテーマのライト版を使い、ページごとに分割されます。ファイル › プリント…でも同じページが印刷されます。
 
-### How do I use MarsDawn with Siri or Shortcuts?
+### Siri やショートカットで MarsDawn を使うには？
 
-Open the Shortcuts app and search for MarsDawn to find *New Markdown Document*, *Add Note to Inbox* and *Open Recent Document*. Before adding notes, choose a notes folder in MarsDawn › Settings › Notes Folder. Notes are added to `Inbox.md` in that folder.
+ショートカット App を開いて MarsDawn を検索すると、*新規 Markdown 書類*、*受信トレイにメモを追加*、*最近使った書類を開く*が見つかります。メモを追加する前に、MarsDawn › 設定 › メモフォルダでメモフォルダを選んでください。メモはそのフォルダの `Inbox.md` に追加されます。
 
-### Where are my settings?
+### 設定はどこにありますか？
 
-MarsDawn › Settings (`⌘,`) has appearance, images, the notes folder, folder access and the preview theme.
+MarsDawn › 設定（`⌘,`）に、外観モード、イメージ、メモフォルダ、フォルダへのアクセス、プレビューのテーマがあります。
 
-### How do I get a refund?
+### 返金してもらうには？
 
-Purchases are handled by Apple. Request a refund at [reportaproblem.apple.com](https://reportaproblem.apple.com).
+購入は Apple が処理します。[reportaproblem.apple.com](https://reportaproblem.apple.com) で返金を申請してください。
 
 ---
 
-## Privacy Policy
+## プライバシーポリシー
 
 Source: https://marsdawn.southern-light.dev/ja/privacy/
 
-# Privacy Policy
+# プライバシーポリシー
 
-How MarsDawn, the Markdown editor for macOS, handles your information.
+macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情報を扱うか。
 
-Last updated 2026-09-19
+最終更新日：2026-09-19
 
-**MarsDawn does not collect any data about you.** There is no account, no analytics, no advertising and no tracking. Your documents and settings stay on your Mac.
+**MarsDawn はあなたに関するデータを一切収集しません。**アカウントも、アナリティクスも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。
 
-## What stays on your Mac
+## あなたの Mac に残るもの
 
-- **Your documents.** MarsDawn reads and writes only the files and folders you open, save or choose. They are never uploaded anywhere by the app.
-- **Your settings.** Appearance, preview theme, window layout and the image preference are stored in the app's own preferences on your Mac.
-- **Folder access you grant.** When you let MarsDawn show images or page files from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. A folder you open in the sidebar stays readable and writable by MarsDawn until you remove it in Settings, not just while its window is open. You can remove folders at any time in MarsDawn › Settings.
+- **あなたの文書。**MarsDawn は、あなたが開いた、保存した、または選んだファイルとフォルダだけを読み書きします。App がそれらをどこかにアップロードすることはありません。
+- **あなたの設定。**外観、プレビューのテーマ、ウィンドウのレイアウト、画像の設定は、あなたの Mac 上にある App 自身の環境設定に保存されます。
+- **許可したフォルダへのアクセス。**フォルダ内の画像やページファイルを MarsDawn に表示させたり、メモフォルダを選んだりすると、App はそのフォルダを再び開けるように macOS のブックマークを保持します。サイドバーで開いたフォルダは、ウィンドウが開いている間だけでなく、設定で削除するまで MarsDawn から読み書き可能な状態が続きます。フォルダはいつでも MarsDawn › 設定で削除できます。
 
-## When MarsDawn uses the internet
+## MarsDawn がインターネットを使うとき
 
-MarsDawn works fully offline. It connects to the internet only **when you choose to**, for a document that refers to the web:
+MarsDawn は完全にオフラインで動作します。インターネットに接続するのは**あなたが選んだときだけ**、ウェブを参照する文書に対してです。
 
-- **Markdown documents.** Web images are blocked by default. They load only after you click *Load Images* in the preview, or if you turn on *Load remote images automatically* in Settings. Nothing else a Markdown document refers to is loaded from the web.
-- **HTML documents.** An HTML document opens static: its code doesn't run and nothing is loaded from the web. If a document contains code that could run, you can choose *View › Run This Document* for that document. Its own code then runs until you stop it, the document reloads or you close the window. That choice is never remembered, and it isn't a setting. While it runs, the document can send data over the network, and read images, style sheets, fonts and media in its folder and the folders inside it. Code downloaded from the web never runs.
+- **Markdown 文書。**ウェブ画像はデフォルトでブロックされています。プレビューで*イメージを読み込む*をクリックするか、設定で*リモートイメージを自動的に読み込む*をオンにしたときだけ読み込まれます。Markdown 文書が参照するそれ以外のものは、ウェブから読み込まれません。
+- **HTML 文書。**HTML 文書は静的な状態で開きます。コードは実行されず、ウェブから何も読み込まれません。文書に実行され得るコードが含まれる場合、その文書について*表示 › この書類を実行*を選ぶことができます。すると、その文書自身のコードは、あなたが停止するか、文書が再読み込みされるか、ウィンドウを閉じるまで実行され続けます。この選択が記憶されることはなく、設定項目でもありません。実行中、文書はネットワーク経由でデータを送信でき、自身のフォルダとその中のフォルダにある画像、スタイルシート、フォント、メディアを読み取れます。ウェブからダウンロードされたコードが実行されることはありません。
 
-MarsDawn loads web content over https only. A plain http address is never loaded, in any setting, and MarsDawn does not rewrite it to https. In a Markdown document, the preview shows a placeholder in its place.
+MarsDawn は https 経由でのみウェブコンテンツを読み込みます。http のみのアドレスは、どの設定でも読み込まれることはなく、MarsDawn がそれを https に書き換えることもありません。Markdown 文書では、プレビューにその代わりのプレースホルダーが表示されます。
 
-When web content loads, your Mac requests it directly from the servers that host it. Like any web request, this lets those servers see your IP address and what was requested. MarsDawn's developer receives none of this information.
+ウェブコンテンツを読み込むとき、あなたの Mac はそれを配信するサーバーへ直接リクエストを送ります。他のウェブリクエストと同様に、これによってそれらのサーバーはあなたの IP アドレスとリクエストされた内容を知ることができます。MarsDawn の開発者はこれらの情報を一切受け取りません。
 
-Links you click in the preview open in your default web browser, under that browser's own privacy practices. Audio and video never play by themselves.
+プレビュー内でクリックしたリンクは、デフォルトのウェブブラウザで、そのブラウザ自体のプライバシー方針に従って開きます。音声と動画が自動的に再生されることはありません。
 
-## Siri, Shortcuts and Spotlight
+## Siri、ショートカット、Spotlight
 
-MarsDawn offers actions for Siri, the Shortcuts app and Spotlight, such as creating a document or adding a note. When you use them, the text you provide is passed to MarsDawn on your Mac and saved only where the action says (a new document, or the `Inbox.md` file in the notes folder you chose). Speech you dictate to Siri is handled by Apple under [Apple's Privacy Policy](https://www.apple.com/legal/privacy/).
+MarsDawn は Siri、ショートカット App、Spotlight 向けに、文書の作成やメモの追加などのアクションを提供します。これらを使用すると、入力したテキストはあなたの Mac 上の MarsDawn に渡され、そのアクションが指定する場所（新規文書、または選んだメモフォルダ内の `Inbox.md`）にのみ保存されます。Siri に話した音声は、[Apple のプライバシーポリシー](https://www.apple.com/legal/privacy/)のもとで Apple が処理します。
 
-## Exporting and printing
+## 書き出しと印刷
 
-PDF export and printing happen on your Mac. The PDF is saved where you choose. Printing goes through macOS to the printer you pick.
+PDF の書き出しと印刷は、あなたの Mac 上で行われます。PDF は選んだ場所に保存されます。印刷は macOS を通じて選んだプリンタに送られます。
 
-## The marsdawn command-line tool
+## marsdawn コマンドラインツール
 
-The optional `marsdawn` command-line tool, distributed separately, also runs entirely on your Mac. It reads the Markdown file you name and writes the PDF you ask for. It loads web images only when you pass `--allow-remote-images`.
+別途配布される、使うかどうかを選べる `marsdawn` コマンドラインツールも、完全にあなたの Mac 上で動作します。指定した Markdown ファイルを読み込み、要求された PDF を書き出します。`--allow-remote-images` を指定したときだけウェブ画像を読み込みます。
 
-## Children
+## 子ども
 
-MarsDawn does not collect data from anyone, including children.
+MarsDawn は、子どもを含め、誰からもデータを収集しません。
 
-## Purchases
+## 購入
 
-MarsDawn will be sold through the Mac App Store. Apple will process the purchase under its own terms, and the developer never receives your payment details.
+MarsDawn は Mac App Store を通じて販売されます。購入は Apple 自身の規約のもとで処理され、開発者があなたの支払い情報を受け取ることはありません。
 
-## Changes to this policy
+## このポリシーの変更
 
-If MarsDawn ever starts handling data differently, this page will be updated before that version is released, and the date at the top will change.
+MarsDawn がデータの扱い方を変える場合、そのバージョンがリリースされる前にこのページが更新され、冒頭の日付も変わります。
 
-## Contact
+## お問い合わせ
 
-Questions about privacy: [support@southern-light.dev](mailto:support@southern-light.dev)
+プライバシーに関するご質問：[support@southern-light.dev](mailto:support@southern-light.dev)
 
 ---
 
-## View Markdown on a Mac
+## Mac で Markdown を見る
 
 Source: https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/
 
-# How to view a Markdown file on a Mac.
+# Mac で Markdown ファイルを見る方法。
 
-A `.md` file is plain text. The headings, bold words, tables and diagrams are written as marks: `#` for a heading, `**` around bold, pipes for a table, a `mermaid` code block for a diagram. Open it in a plain text editor and you read the marks. To read the page the way its author meant, something has to render it.
+`.md` ファイルはプレーンテキストです。見出し、太字、表、図は記号で書かれています。見出しには `#`、太字は `**` で囲む、表はパイプで区切る、図は `mermaid` コードブロックといった具合です。プレーンテキストエディタで開くと、これらの記号がそのまま見えます。作者の意図どおりにページを読むには、何かがそれをレンダリングする必要があります。
 
-## Today, for free: turn it into a PDF
+## 今すぐ無料で：PDF に変換する
 
-The free `marsdawn` command-line tool renders a Markdown file to a PDF, which any Mac can open. Tables, math, Mermaid diagrams and highlighted code come out rendered, and it needs nothing else installed, not even the MarsDawn app.
+無料の `marsdawn` コマンドラインツールは、Markdown ファイルをどの Mac でも開ける PDF にレンダリングします。表、数式、Mermaid 図、ハイライトされたコードはすべてレンダリングされ、MarsDawn アプリすら含め、他に何もインストールする必要はありません。
 
 ```
 brew tap redtear1115/tap && brew install marsdawn
@@ -2440,60 +2440,60 @@ marsdawn export notes.md
 open notes.pdf
 ```
 
-`export` writes `notes.pdf` next to the Markdown file, and `open` shows it in your PDF viewer. It needs macOS 15 or later. The walk-through, with a real exported page, is on [Markdown to PDF](/ja/markdown-to-pdf/).
+`export` は Markdown ファイルの隣に `notes.pdf` を書き出し、`open` はそれをあなたの PDF ビューアで表示します。macOS 15 以降が必要です。実際に書き出したページを使った解説は、[Markdown から PDF へ](/ja/markdown-to-pdf/)にあります。
 
-## Coming soon: read it in MarsDawn
+## 近日公開：MarsDawn で読む
 
-MarsDawn is a Markdown editor for the Mac, coming soon to the Mac App Store. Open a `.md` file and read the rendered page next to the source:
+MarsDawn は Mac 向けの Markdown エディタで、Mac App Store で近日公開予定です。`.md` ファイルを開くと、ソースの隣でレンダリングされたページを読めます。
 
-- The preview updates as you type, and the two panes scroll together.
-- Mermaid flowcharts and sequence diagrams are drawn in the preview, and code blocks are highlighted.
-- In Finder, press Space on a Markdown file for a Quick Look preview, diagrams included.
-- When you want to change something, the source is right there. MarsDawn is an editor, not only a viewer.
+- 入力すると同時にプレビューが更新され、2つのペインは一緒にスクロールします。
+- Mermaid のフローチャートとシーケンス図がプレビューに描画され、コードブロックはハイライトされます。
+- Finder で Markdown ファイルを選んでスペースキーを押せば、図も含めてクイックルックでプレビューできます。
+- 何かを変更したいときは、ソースがすぐそこにあります。MarsDawn はビューアだけでなくエディタでもあります。
 
-If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent writes, you read it rendered, and it revises. See [the home page](/ja/), and [marsdawn for agents](/ja/cli/agents/) for letting an agent open files for you.
+もしそのファイルを AI エージェントが書いたなら、これはまさに MarsDawn が想定しているループです。エージェントが書き、あなたがレンダリングされたページを読み、エージェントが修正します。[ホームページ](/ja/)と、エージェントにファイルを開かせる方法については[AI エージェント向け marsdawn](/ja/cli/agents/)をご覧ください。
 
-## Next
+## 次に
 
-- Every option of the command-line tool: [Command Line](/ja/cli/).
-- What MarsDawn doesn't do: [the list](/ja/limits/).
+- コマンドラインツールのすべてのオプション：[コマンドライン](/ja/cli/)。
+- MarsDawn ができないこと：[一覧はこちら](/ja/limits/)。
 
 ---
 
-## Markdown to PDF
+## Markdown から PDF へ
 
 Source: https://marsdawn.southern-light.dev/ja/markdown-to-pdf/
 
-# Markdown to PDF on a Mac, from the command line.
+# Mac のコマンドラインで、Markdown を PDF に。
 
-The free `marsdawn` tool turns a Markdown file into a PDF with one command. Tables, math, Mermaid diagrams and highlighted code come out the way they read in the source, and it needs nothing else installed, not even the MarsDawn app.
+無料の `marsdawn` ツールは、コマンド1つで Markdown ファイルを PDF に変換します。表、数式、Mermaid 図、ハイライトされたコードはソースの見た目そのままに仕上がり、MarsDawn アプリすら含め、他に何もインストールする必要はありません。
 
-## Install it
+## インストール
 
 ```
 brew install redtear1115/tap/marsdawn
 marsdawn --version
 ```
 
-On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds. On an Intel Mac it builds from source instead, which takes a few minutes and needs Xcode 26 or later. It runs on macOS 15 or later, and `marsdawn --version` prints the version you got.
+Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールします。Intel Mac ではソースからビルドするため数分かかり、Xcode 26 以降が必要です。macOS 15 以降で動作し、`marsdawn --version` がインストールされたバージョンを表示します。
 
-## Save a document
+## 文書を保存する
 
-Paste this into a file named `plan.md`:
+`plan.md` という名前のファイルに、次の内容を貼り付けてください。
 
 ````
-# Plan: faster exports
+# 計画：エクスポートを高速化
 
-An agent wrote this plan. You review it, then turn it into a PDF.
+この計画はエージェントが書きました。内容を確認してから、PDF にします。
 
-## Steps
+## ステップ
 
-| Step | Owner | Status |
+| ステップ | 担当 | 状況 |
 |------|-------|--------|
-| Measure the slow pages | Agent | Done |
-| Cache rendered diagrams | Agent | In review |
+| 遅いページを計測する | エージェント | 完了 |
+| レンダリング済み図をキャッシュする | エージェント | レビュー中 |
 
-The target is $t < 2\,\text{s}$ for a 50-page document:
+50 ページの文書で目標とするのは $t < 2\,\text{s}$：
 
 $$
 t_{\text{total}} = \sum_{i=1}^{n} t_i
@@ -2501,7 +2501,7 @@ $$
 
 ```mermaid
 graph LR
-  Draft --> Review --> Ship
+  ドラフト --> レビュー --> 公開
 ```
 
 ```swift
@@ -2509,80 +2509,80 @@ let pdf = try export("plan.md")
 ```
 ````
 
-## Export it
+## 書き出す
 
 ```
 marsdawn export plan.md
 ```
 
-It writes `plan.pdf` next to the source and prints where it went:
+ソースの隣に `plan.pdf` を書き出し、保存先を表示します。
 
 ```
 Exported /Users/you/plan.pdf (1 page)
 ```
 
-This is that page, captured from a real run of `marsdawn` 0.5.0:
+これはそのページを、`marsdawn` 0.5.0 の実行結果から実際にキャプチャしたものです。
 
-![The exported PDF: the heading, a table of steps, an inline and a displayed formula, a Draft, Review, Ship diagram, and a highlighted line of Swift.](/assets/cli/plan-ja.png)
+![書き出された PDF：見出し、ステップの表、インラインと独立した数式、ドラフト・レビュー・公開の図、ハイライトされた Swift のコード1行。](/assets/cli/plan-ja.png)
 
-## Choose a theme, paper size and file name
+## テーマ、用紙サイズ、ファイル名を選ぶ
 
 ```
 marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ```
 
-- `--theme`: dawn, classic, modern or vivid, in the theme's light colors. Without it, `export` uses `$MARSDAWN_THEME`, then dawn.
-- `--paper`: a4 or letter. The default is a4.
-- `-o`: where to write the PDF, instead of next to the source.
-- `--allow-remote-images`: load images from the web while rendering. They stay off unless you pass it.
+- `--theme`：dawn、classic、modern、vivid のいずれかで、テーマのライトカラーを使います。指定しない場合、`export` は `$MARSDAWN_THEME`、それもなければ dawn を使います。
+- `--paper`：a4 または letter。デフォルトは a4 です。
+- `-o`：PDF をソースの隣ではなく、どこに書き出すか。
+- `--allow-remote-images`：レンダリング時にウェブから画像を読み込みます。指定しない限りオフのままです。
 
-## If it doesn't work
+## うまくいかない場合
 
-- `A full installation of Xcode.app 26.0 is required to compile this software.` Homebrew is building `marsdawn` from source, as it does on an Intel Mac. Install Xcode 26 or later from the App Store, then run the install again.
-- `marsdawn: No such file: …` The path doesn't point at a file. Check the name, or run the command from the folder the file is in.
-- `… already exists. Pass --force to replace it.` A PDF with that name is already there. Add `--force` to replace it, or `-o` to write it somewhere else.
-- `Error: The value '…' is invalid for '--theme <theme>'.` The theme or paper size isn't one it knows. The themes are dawn, classic, modern and vivid; the paper is a4 or letter.
+- `A full installation of Xcode.app 26.0 is required to compile this software.` Homebrew が `marsdawn` をソースからビルドしています。Intel Mac ではこのようになります。App Store から Xcode 26 以降をインストールしてから、もう一度インストールしてください。
+- `marsdawn: No such file: …` パスがファイルを指していません。ファイル名を確認するか、そのファイルがあるフォルダでコマンドを実行してください。
+- `… already exists. Pass --force to replace it.` 同じ名前の PDF がすでに存在します。`--force` を付けて置き換えるか、`-o` で別の場所に書き出してください。
+- `Error: The value '…' is invalid for '--theme <theme>'.` テーマまたは用紙サイズが認識されていません。テーマは dawn、classic、modern、vivid、用紙は a4 または letter です。
 
-## Next
+## 次に
 
-- Every option and the JSON it prints: [Command Line](/ja/cli/).
-- To have a coding agent do this for you: [the marsdawn agent skill](/ja/cli/skill/).
+- すべてのオプションと出力される JSON：[コマンドライン](/ja/cli/)。
+- コーディングエージェントにこれをやらせるには：[marsdawn のエージェントスキル](/ja/cli/skill/)。
 
 ---
 
-## MacMD Viewer vs. MarsDawn
+## MacMD Viewer と MarsDawn
 
 Source: https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/
 
-# MacMD Viewer vs. MarsDawn.
+# MacMD Viewer 対 MarsDawn。
 
-Both are Mac apps for reading Markdown rendered. MacMD Viewer opens a `.md` file and shows the finished page; it doesn't edit it. MarsDawn puts an editor next to the same kind of rendered preview, so you write and review in one window. Here's how they differ, feature by feature.
+どちらも Markdown をレンダリングして読むための Mac アプリです。MacMD Viewer は `.md` ファイルを開いて完成したページを表示しますが、編集はできません。MarsDawn は同じようにレンダリングされたプレビューの隣にエディタを置き、1つのウィンドウで書きながら確認できます。ここでは機能ごとに両者の違いを見ていきます。
 
-## If you only need to read, not edit
+## 読むだけでよく、編集の必要がない場合
 
-If your job is strictly reading Markdown someone else wrote, and you never need to touch the source, MacMD Viewer is a reasonable fit: it's built for exactly that, is available now and works down to an older macOS. MarsDawn is worth it once reading isn't the whole job, because an agent's Markdown usually comes back for another pass.
+他の人が書いた Markdown を読むことだけが仕事で、ソースに触れる必要が一切ないなら、MacMD Viewer は妥当な選択です。まさにそのために作られており、今すぐ入手でき、より古い macOS でも動作します。読むことだけが仕事ではなくなったときに MarsDawn が価値を持ちます。エージェントの Markdown はたいてい、もう一度手直しが入るからです。
 
-## What each app does
+## それぞれのアプリでできること
 
-- **Editing:** MacMD Viewer is read-only by design. MarsDawn edits the source and renders it side by side, so a change shows up as you type.
-- **Preview themes:** MacMD Viewer ships 12 document themes. MarsDawn ships four, Dawn, Classic, Modern and Vivid, each with a light and a dark palette.
-- **Diagrams and math:** both render Mermaid diagrams and highlight code. MarsDawn also renders KaTeX math; MacMD Viewer's own listing doesn't mention math rendering.
-- **Finder integration:** both add a Quick Look extension, so pressing Space on a `.md` file in Finder shows the rendered page.
-- **PDF and print:** both export or print a PDF of the rendered page.
-- **System requirements:** MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.
-- **Languages:** MarsDawn's interface ships in 英語、繁体字中国語、簡体字中国語、日本語. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.
+- **編集：**MacMD Viewer は設計上、読み取り専用です。MarsDawn はソースを編集しながらその場でレンダリングするので、入力すると変更が表示されます。
+- **プレビューのテーマ：**MacMD Viewer には12種類の文書テーマがあります。MarsDawn は Dawn、Classic、Modern、Vivid の4種類で、それぞれライトとダークのパレットがあります。
+- **図と数式：**どちらも Mermaid 図をレンダリングし、コードをハイライトします。MarsDawn は KaTeX の数式もレンダリングしますが、MacMD Viewer 自身の紹介には数式のレンダリングについて記載がありません。
+- **Finder 連携：**どちらもクイックルック拡張機能を追加しており、Finder で `.md` ファイルを選んでスペースキーを押すとレンダリングされたページが表示されます。
+- **PDF と印刷：**どちらもレンダリングされたページを PDF として書き出したり印刷したりできます。
+- **システム要件：**MacMD Viewer は macOS 14（Sonoma）以降が必要です。MarsDawn は macOS 26（Tahoe）以降が必要です。
+- **言語：**MarsDawn のインターフェースは英語、繁体字中国語、簡体字中国語、日本語に対応しています。MacMD Viewer 自身の資料は UI の言語を明記していないため、このページではその点を比較していません。
 
-## Pricing and how you buy it
+## 価格と購入方法
 
-- **Where you buy it:** MacMD Viewer is a direct download from its own site, also on Homebrew and Setapp; it isn't on the Mac App Store. MarsDawn is Mac App Store only.
-- **Price:** MacMD Viewer is USD 19.99 once for one Mac (a 3-Mac pack and volume packs cost more). MarsDawn is a free download, then a USD 4.99 one-time unlock.
-- **Trying it first:** MacMD Viewer has no free trial; direct purchases carry a 14-day money-back guarantee instead. MarsDawn gives you a 14-day trial before you pay anything.
-- **Refunds and updates:** MacMD Viewer's refunds and updates run through its own site. MarsDawn's purchase goes through Apple, so refunds and updates use Apple's standard process.
-- **Accounts:** neither app needs an account to use.
+- **購入場所：**MacMD Viewer は自社サイトから直接ダウンロードでき、Homebrew と Setapp にもありますが、Mac App Store にはありません。MarsDawn は Mac App Store のみです。
+- **価格：**MacMD Viewer は1台の Mac につき一度きり USD 19.99（3台パックやボリュームパックはより高額）。MarsDawn は無料でダウンロードでき、その後 USD 4.99 の一度きりのロック解除です。
+- **先に試す：**MacMD Viewer には無料トライアルはなく、直接購入には代わりに14日間の返金保証が付いています。MarsDawn は支払う前に14日間のトライアルを提供します。
+- **返金と更新：**MacMD Viewer の返金と更新は自社サイトで処理されます。MarsDawn の購入は Apple を通じて行われるため、返金と更新は Apple の標準プロセスを使います。
+- **アカウント：**どちらのアプリも利用にアカウントは不要です。
 
-## Try it today, free
+## 今すぐ無料で試す
 
-MarsDawn is coming soon to the Mac App Store, not on sale yet. Until then, the free `marsdawn` command-line tool renders any Markdown file to a PDF today, with Mermaid diagrams and highlighted code, and needs nothing else installed:
+MarsDawn は Mac App Store で近日公開予定で、まだ販売されていません。それまでは、無料の `marsdawn` コマンドラインツールが、今すぐどんな Markdown ファイルも Mermaid 図とハイライトされたコード付きの PDF にレンダリングでき、他に何もインストールする必要はありません。
 
 ```
 brew tap redtear1115/tap && brew install marsdawn
@@ -2590,37 +2590,37 @@ marsdawn export notes.md
 open notes.pdf
 ```
 
-## Next
+## 次に
 
-- The full walk-through: [Markdown to PDF](/ja/markdown-to-pdf/).
-- What MarsDawn doesn't do: [the list](/ja/limits/).
-- Every option of the command-line tool: [Command Line](/ja/cli/).
+- 完全な解説：[Markdown から PDF へ](/ja/markdown-to-pdf/)。
+- MarsDawn ができないこと：[一覧はこちら](/ja/limits/)。
+- コマンドラインツールのすべてのオプション：[コマンドライン](/ja/cli/)。
 
 ---
 
-## Command Line
+## コマンドライン
 
 Source: https://marsdawn.southern-light.dev/ja/cli/
 
-# Command Line
+# コマンドライン
 
-The free `marsdawn` command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.
+無料の `marsdawn` コマンドラインツール：シェルや LLM エージェントから Markdown を PDF に書き出せます。MarsDawn アプリがインストールされていれば、そのアプリでファイルを開くこともできます。
 
-**marsdawn is free and distributed separately from the Mac App Store.** Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. `export` works on its own; `open` needs the MarsDawn app.
+**marsdawn は無料で、Mac App Store とは別に配布されています。**Homebrew でインストールすると、Apple シリコンの Mac では、すぐに実行できる状態でインストールされます。`export` は単独で動作し、`open` には MarsDawn アプリが必要です。
 
-Calling marsdawn from an AI agent or a script? See [marsdawn for agents](/ja/cli/agents/) for the JSON output, its schemas and every exit code.
+AI エージェントやスクリプトから marsdawn を呼び出しますか？JSON 出力とそのスキーマ、すべての終了コードについては[AI エージェント向け marsdawn](/ja/cli/agents/)をご覧ください。
 
-## Install
+## インストール
 
-With [Homebrew](https://brew.sh):
+[Homebrew](https://brew.sh) を使う場合：
 
 ```
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.
+Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールし、他に何もインストールする必要はありません。Intel Mac では代わりにソースから marsdawn をビルドするため数分かかり、Xcode 26 以降（Swift 6.2）が必要です。このツールは macOS 15 以降で動作します。
 
-Or build it from [the source](https://github.com/redtear1115/mars-dawn-kit) with Swift Package Manager:
+または、Swift Package Manager で[ソース](https://github.com/redtear1115/mars-dawn-kit)からビルドします。
 
 ```
 git clone https://github.com/redtear1115/mars-dawn-kit.git
@@ -2628,13 +2628,13 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn
 ```
 
-Check which version you have with `marsdawn --version`.
+インストールされているバージョンは `marsdawn --version` で確認できます。
 
-## Commands
+## コマンド
 
 ### marsdawn open
 
-Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, `marsdawn open` exits with code 3 and says MarsDawn isn't installed. `export` doesn't need the app.
+1つ以上の Markdown ファイルを MarsDawn アプリで開いて確認できます。アプリのインストールが必要です。インストールされていない場合、`marsdawn open` はコード 3 で終了し、MarsDawn がインストールされていないことを知らせます。`export` にはアプリは不要です。
 
 ```
 marsdawn open notes.md
@@ -2642,76 +2642,76 @@ marsdawn open notes.md:120
 marsdawn open notes.md --line 120
 ```
 
-- `path:line`: asks MarsDawn to land on that line. A column after it, as in `notes.md:120:8`, is ignored. If a file with the whole name exists, the argument is that file.
-- `--line <n>`: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.
-- Lines run from 1 to 999999999.
-- MarsDawn 1.0 opens the file but doesn't jump to the line yet.
-- `--json`: print a JSON result instead of text.
+- `path:line`：MarsDawn にその行に移動するよう指定します。その後にコロンが続く場合、たとえば `notes.md:120:8` の列部分は無視されます。引数全体と一致するファイル名が存在する場合、その引数はそのファイルとして扱われます。
+- `--line <n>`：単一ファイルに対して同じ指定ができ、それ自体がコロンと数字で終わるパスに対して行を指定する方法でもあります。ファイルは1つだけ指定できます。
+- 行番号は 1 から 999999999 までです。
+- MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。
+- `--json`：テキストではなく JSON の結果を出力します。
 
-Lines were added in marsdawn 0.3.0.
+行の指定は marsdawn 0.3.0 で追加されました。
 
 ### marsdawn export
 
-Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.
+Markdown ファイルを、MarsDawn 自身の PDF 書き出しと同じ書き出しエンジンで、ページ分割された PDF にレンダリングします。MarsDawn アプリは不要です。相対パスの画像は、入力ファイルのあるフォルダを基準に解決されます。
 
 ```
 marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 ```
 
-- `-o, --output <path>`: where to write the PDF. Defaults to the input path with a `.pdf` extension.
-- `--theme <dawn|classic|modern|vivid>`: the preview theme's light palette. Defaults to `$MARSDAWN_THEME`, then `dawn`.
-- `--paper <a4|letter>`: paper size. Defaults to `a4`.
-- `--allow-remote-images`: load images from the web while rendering. Off by default.
-- `--force`: replace the output file if it already exists.
-- `--json`: print a JSON result instead of text.
+- `-o, --output <path>`：PDF の書き出し先。デフォルトは入力パスの拡張子を `.pdf` にしたものです。
+- `--theme <dawn|classic|modern|vivid>`：プレビューテーマのライトパレット。デフォルトは `$MARSDAWN_THEME`、それもなければ `dawn` です。
+- `--paper <a4|letter>`：用紙サイズ。デフォルトは `a4` です。
+- `--allow-remote-images`：レンダリング時にウェブから画像を読み込みます。デフォルトはオフです。
+- `--force`：出力ファイルがすでに存在する場合に置き換えます。
+- `--json`：テキストではなく JSON の結果を出力します。
 
-## The $MARSDAWN_THEME variable
+## $MARSDAWN_THEME 環境変数
 
-When `--theme` isn't passed, `export` reads the `$MARSDAWN_THEME` environment variable. Its value must be one of `dawn`, `classic`, `modern` or `vivid`; anything else falls back to `dawn`. The CLI doesn't read the app's own theme setting, because reading another app's container can trigger a macOS privacy prompt.
+`--theme` が指定されない場合、`export` は `$MARSDAWN_THEME` 環境変数を読み取ります。値は `dawn`、`classic`、`modern`、`vivid` のいずれかである必要があり、それ以外は `dawn` にフォールバックします。CLI はアプリ自身のテーマ設定を読み取りません。他のアプリのコンテナを読み取ると、macOS のプライバシープロンプトが表示されることがあるためです。
 
-## Overwriting files
+## ファイルの上書き
 
-`export` refuses to replace an existing output file unless you pass `--force`.
+`export` は、`--force` を指定しない限り、既存の出力ファイルを置き換えません。
 
-## Exit codes
+## 終了コード
 
-- `0`: success.
-- `2`: input not found.
-- `3`: MarsDawn is not installed (`open` only).
-- `4`: output exists (pass `--force`).
-- `5`: export failed.
-- `64`: usage error, including a line out of range or `--line` with more than one file.
+- `0`：成功。
+- `2`：入力が見つからない。
+- `3`：MarsDawn がインストールされていない（`open` のみ）。
+- `4`：出力先がすでに存在する（`--force` を指定してください）。
+- `5`：書き出しに失敗。
+- `64`：使用方法のエラー。範囲外の行や、複数ファイルに対する `--line` の指定などを含みます。
 
-## --json output
+## --json 出力
 
-On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file's `path`, plus `line` when one was asked for) and `app` (the app path). `marsdawn export --json` prints `ok`, `output`, `pages`, `theme`, `paper` and `diagramErrors`. On failure, both print `ok`, `error` and `message`.
+成功時、`marsdawn open --json` は `ok`、`opened`（各ファイルの `path`、行が指定されていれば `line` も含む）、`app`（アプリのパス）を出力します。`marsdawn export --json` は `ok`、`output`、`pages`、`theme`、`paper`、`diagramErrors` を出力します。失敗時はどちらも `ok`、`error`、`message` を出力します。
 
 ---
 
-## marsdawn for agents
+## AI エージェント向け marsdawn
 
 Source: https://marsdawn.southern-light.dev/ja/cli/agents/
 
-# marsdawn for agents
+# AI エージェント向け marsdawn
 
-A reference for AI agents and scripts that call the `marsdawn` command-line tool. Every example on this page was run against the tool built from the current source.
+`marsdawn` コマンドラインツールを呼び出す AI エージェントとスクリプトのためのリファレンスです。このページのすべての例は、現在のソースからビルドしたツールに対して実際に実行したものです。
 
-**To turn a Markdown file into a PDF, run `marsdawn export notes.md --json` and read one JSON object from stdout.** Mermaid diagrams and highlighted code are rendered the same way as in the MarsDawn app. `export` doesn't need the app; `open` does.
+**Markdown ファイルを PDF に変換するには、`marsdawn export notes.md --json` を実行し、stdout から1つの JSON オブジェクトを読み取ってください。**Mermaid 図とハイライトされたコードは、MarsDawn アプリと同じ方法でレンダリングされます。`export` にアプリは不要ですが、`open` には必要です。
 
-## What it does
+## できること
 
-- `export` renders one Markdown file to a paginated PDF with the same exporter as the MarsDawn app. No window opens.
-- `open` opens one or more Markdown files in the MarsDawn app, so a person can review them, and can name the line each file should land on.
+- `export`：MarsDawn アプリと同じ書き出しエンジンで、1つの Markdown ファイルをページ分割された PDF にレンダリングします。ウィンドウは開きません。
+- `open`：1つ以上の Markdown ファイルを MarsDawn アプリで開き、人が確認できるようにします。各ファイルが移動すべき行を指定することもできます。
 
-## What it does not do
+## できないこと
 
-- It doesn't read Markdown from stdin. Pass a file path.
-- It doesn't write the PDF to stdout. The PDF always goes to a file; stdout carries only the result.
-- It doesn't replace an existing file unless you pass `--force`.
-- It doesn't load images from the web unless you pass `--allow-remote-images`, and then only over https.
-- `open` doesn't work without the MarsDawn app installed; it exits with code 3. `export` doesn't need the app.
-- MarsDawn 1.0 doesn't jump to the line `open` names yet. It opens the file at the top.
-- It runs on macOS only.
+- stdin から Markdown を読み込みません。ファイルパスを渡してください。
+- PDF を stdout に書き出しません。PDF は常にファイルとして書き出され、stdout には結果だけが出力されます。
+- `--force` を指定しない限り、既存のファイルを置き換えません。
+- `--allow-remote-images` を指定しない限りウェブから画像を読み込まず、指定した場合も https のみです。
+- `open` は MarsDawn アプリがインストールされていないと動作せず、コード 3 で終了します。`export` にアプリは不要です。
+- MarsDawn 1.0 はまだ `open` が指定した行にジャンプしません。ファイルは先頭から開きます。
+- macOS でのみ動作します。
 
 ## export
 
@@ -2719,29 +2719,29 @@ A reference for AI agents and scripts that call the `marsdawn` command-line tool
 marsdawn export notes.md --json
 ```
 
-Writes `notes.pdf` next to `notes.md`. Options:
+`notes.pdf` を `notes.md` の隣に書き出します。オプション：
 
-- `-o, --output <path>`: where to write the PDF. Defaults to the input path with a `.pdf` extension.
-- `--theme <dawn|classic|modern|vivid>`: the theme's light palette. Defaults to `$MARSDAWN_THEME`, then `dawn`.
-- `--paper <a4|letter>`: paper size. Defaults to `a4`.
-- `--allow-remote-images`: load https images from the web while rendering.
-- `--force`: replace the output file if it exists.
-- `--json`: print one JSON object on stdout instead of text.
+- `-o, --output <path>`：PDF の書き出し先。デフォルトは入力パスの拡張子を `.pdf` にしたものです。
+- `--theme <dawn|classic|modern|vivid>`：テーマのライトパレット。デフォルトは `$MARSDAWN_THEME`、それもなければ `dawn` です。
+- `--paper <a4|letter>`：用紙サイズ。デフォルトは `a4` です。
+- `--allow-remote-images`：レンダリング時にウェブから https の画像を読み込みます。
+- `--force`：出力ファイルが存在する場合に置き換えます。
+- `--json`：stdout にテキストではなく1つの JSON オブジェクトを出力します。
 
 ```
 marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json
 ```
 
-Success, exit code 0:
+成功、終了コード 0：
 
 ```
 {"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}
 ```
 
-- `output`: absolute path of the PDF that was written.
-- `pages`: number of pages.
-- `theme` and `paper`: the values used.
-- `diagramErrors`: one message per Mermaid diagram that failed to render. The PDF is still written.
+- `output`：書き出された PDF の絶対パス。
+- `pages`：ページ数。
+- `theme` と `paper`：実際に使われた値。
+- `diagramErrors`：レンダリングに失敗した Mermaid 図につき1件のメッセージ。PDF はそれでも書き出されます。
 
 ## open
 
@@ -2751,64 +2751,64 @@ marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json
 ```
 
-- `path:line` names the line to land on. A column after it, as in `notes.md:120:8`, is ignored. An argument that names a file which exists is always that whole filename, so a file called `weird:12` opens as itself.
-- `--line <n>` names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.
-- Lines run from 1 to 999999999. Anything else is a usage error.
-- Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file but doesn't jump to the line yet.
+- `path:line` は移動先の行を指定します。その後にコロンが続く場合、たとえば `notes.md:120:8` の列部分は無視されます。存在するファイル名を丸ごと表す引数は常にそのファイル名として扱われるため、`weird:12` という名前のファイルはそのまま開きます。
+- `--line <n>` は単一ファイルの行を指定します。それ自体がコロンと数字で終わるパスも含みます。ファイルは1つだけ指定できます。
+- 行番号は 1 から 999999999 までで、それ以外は使用方法のエラーになります。
+- 行の指定は marsdawn 0.3.0 で追加されました。MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。
 
-Success, exit code 0:
+成功、終了コード 0：
 
 ```
 {"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}
 ```
 
-- `opened`: one object per file, in the order given. `path` is the file's absolute path; `line` appears only when a line was asked for.
-- `app`: path of the MarsDawn app that opened them.
+- `opened`：渡された順に、ファイルごとの1つのオブジェクト。`path` はファイルの絶対パス、`line` は行が指定されたときだけ現れます。
+- `app`：それらを開いた MarsDawn アプリのパス。
 
-marsdawn 0.2.x printed `opened` as a list of path strings. Check `marsdawn --version` if you need to handle both.
+marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方を扱う必要がある場合は `marsdawn --version` を確認してください。
 
-## Failures
+## 失敗時
 
-With `--json`, a failure prints one JSON object on stdout and exits with its code:
+`--json` を指定すると、失敗時は stdout に1つの JSON オブジェクトを出力し、対応するコードで終了します。
 
 ```
 {"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}
 ```
 
-- `2`, `input_not_found`: the input doesn't exist, is a folder, or isn't UTF-8 text.
-- `3`, `app_not_installed`: MarsDawn isn't installed. Only `open` returns this.
-- `4`, `output_exists`: the output file exists. Pass `--force`.
-- `5`, `export_failed`: the export itself failed.
-- `64`: usage error, such as an unknown option, an invalid value, a line out of range or `--line` with more than one file. This one is printed as text on stderr, even with `--json`.
+- `2`、`input_not_found`：入力が存在しない、フォルダである、または UTF-8 テキストでない。
+- `3`、`app_not_installed`：MarsDawn がインストールされていない。`open` のみがこれを返します。
+- `4`、`output_exists`：出力ファイルが存在する。`--force` を指定してください。
+- `5`、`export_failed`：書き出し自体が失敗した。
+- `64`：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルに対する `--line` の指定など。この場合は、`--json` を指定していても stderr にテキストとして出力されます。
 
-## JSON Schemas
+## JSON Schema
 
-JSON Schema (draft 2020-12) for every `--json` result:
+各 `--json` 結果に対応する JSON Schema（draft 2020-12）：
 
-- [export.v1.json](/schemas/cli/export.v1.json): export success
-- [open.v2.json](/schemas/cli/open.v2.json): open success, marsdawn 0.3.0 and later
-- [error.v1.json](/schemas/cli/error.v1.json): failure, both commands
-- [open.v1.json](/schemas/cli/open.v1.json): open success, marsdawn 0.2.x, where `opened` was a list of paths
+- [export.v1.json](/schemas/cli/export.v1.json): export 成功時
+- [open.v2.json](/schemas/cli/open.v2.json): open 成功時、marsdawn 0.3.0 以降
+- [error.v1.json](/schemas/cli/error.v1.json): 失敗時、両方のコマンド共通
+- [open.v1.json](/schemas/cli/open.v1.json): open 成功時、marsdawn 0.2.x（`opened` がパスのリストだった頃）
 
-## Environment variables
+## 環境変数
 
-- `MARSDAWN_THEME`: the theme `export` uses when `--theme` isn't passed. An unknown value falls back to `dawn` without an error.
+- `MARSDAWN_THEME`：`export` が、`--theme` が指定されないときに使うテーマ。未知の値はエラーにならず `dawn` にフォールバックします。
 
-## Requirements
+## 必要環境
 
-- The tool runs on macOS 15 or later. On Apple silicon, Homebrew installs a prebuilt bottle and nothing else is needed. Building it yourself, on an Intel Mac or from the source, needs Swift 6.2 or later, which comes with Xcode 26 or later.
-- The MarsDawn app needs macOS 26 or later.
+- このツールは macOS 15 以降で動作します。Apple シリコンでは、Homebrew がビルド済みのボトルをインストールし、他に何も必要ありません。Intel Mac やソースから自分でビルドする場合は、Swift 6.2 以降が必要で、これは Xcode 26 以降に付属しています。
+- MarsDawn アプリには macOS 26 以降が必要です。
 
-## Install
+## インストール
 
-With Homebrew. On Apple silicon it pours a prebuilt bottle in seconds, with no Xcode needed. On an Intel Mac it compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.
+Homebrew を使う場合。Apple シリコンでは、Xcode 不要でビルド済みのボトルを数秒でインストールします。Intel Mac では marsdawn をソースからコンパイルするため数分かかり、Xcode 26 以降が必要です。
 
 ```
 brew tap redtear1115/tap && brew install marsdawn
 marsdawn --version
 ```
 
-Or build it from [the source](https://github.com/redtear1115/mars-dawn-kit). The first build fetches dependencies and compiles, which also takes a few minutes.
+または、[ソース](https://github.com/redtear1115/mars-dawn-kit)からビルドします。最初のビルドでは依存関係の取得とコンパイルが行われ、これも数分かかります。
 
 ```
 git clone https://github.com/redtear1115/mars-dawn-kit.git
@@ -2817,39 +2817,39 @@ swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json
 ```
 
-`marsdawn --version` prints the version number, such as `0.3.0`, and exits with code 0.
+`marsdawn --version` は `0.3.0` のようなバージョン番号を表示し、コード 0 で終了します。
 
 ---
 
-## Agent skill
+## エージェント用スキル
 
 Source: https://marsdawn.southern-light.dev/ja/cli/skill/
 
-# Let your agent make the PDF.
+# PDF 作成をエージェントに任せる。
 
-This skill is one Markdown file. It teaches a coding agent to install `marsdawn`, check that it works, export a document to PDF and read the result, so the agent that wrote the Markdown can hand you the PDF as well.
+このスキルは1つの Markdown ファイルです。コーディングエージェントに `marsdawn` のインストール方法、動作確認の方法、文書を PDF に書き出す方法、結果の読み方を教えます。これにより、Markdown を書いたエージェントが PDF もあなたに渡せるようになります。
 
-## Install it in Claude Code
+## Claude Code にインストールする
 
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code loads it when a task calls for a PDF, and you can run it yourself as `/marsdawn`. It's [one short file](/cli/skill/SKILL.md), so read it before you install it.
+Claude Code は PDF が必要なタスクのときにこれを自動的に読み込み、`/marsdawn` として自分で実行することもできます。[短いファイル1つ](/cli/skill/SKILL.md)なので、インストールする前に読んでみてください。
 
-Other agents can use the same file. It's plain Markdown, instructions and commands, so point yours at the URL or paste it in.
+他のエージェントでも同じファイルを使えます。ただの Markdown で、説明とコマンドが書いてあるだけなので、あなたのエージェントにこの URL を指定するか、そのまま貼り付けてください。このファイルは英語です。
 
-## What it teaches
+## 教えること
 
-- Install `marsdawn` with Homebrew if it's missing, then check it with `marsdawn --version` instead of assuming a version.
-- Export with `marsdawn export … --json`, and read the result: where the PDF went, how many pages it has, and any Mermaid diagram that didn't render.
-- Tell the failures apart by exit code: no such file, a PDF already there, a failed export, a bad option.
-- Use `open` only when the MarsDawn app is installed, and never to make a PDF.
+- `marsdawn` がなければ Homebrew でインストールし、バージョンを決め打ちせず `marsdawn --version` で確認する。
+- `marsdawn export … --json` で書き出し、結果を読み取る：PDF の書き出し先、ページ数、レンダリングされなかった Mermaid 図の有無。
+- 終了コードで失敗の種類を見分ける：ファイルが見つからない、PDF がすでにある、書き出しに失敗した、オプションが不正、など。
+- MarsDawn アプリがインストールされているときだけ `open` を使い、PDF を作るためには絶対に使わない。
 
-## What it doesn't do
+## しないこと
 
-- It doesn't give itself permission to run anything. Your agent still asks before it installs `marsdawn` or runs it, as it would for any other command.
-- It doesn't send your documents anywhere. `marsdawn` renders on your Mac, and it leaves out images from the web unless you pass `--allow-remote-images`.
+- 何かを実行する権限を自分自身に与えることはありません。あなたのエージェントは、他のコマンドと同じように、`marsdawn` をインストールしたり実行したりする前に、あなたに確認します。
+- あなたの文書をどこかに送信することはありません。`marsdawn` はあなたの Mac 上でレンダリングし、`--allow-remote-images` を指定しない限りウェブからの画像を除外します。
 
-The whole contract, every field and every code, is in [marsdawn for agents](/ja/cli/agents/).
+すべての仕様、すべてのフィールドとコードは[AI エージェント向け marsdawn](/ja/cli/agents/)にあります。
