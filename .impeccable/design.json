@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-19T14:21:49.755512+00:00",
+  "title": "Design System: MarsDawn Website",
+  "extensions": {
+    "colorMeta": {
+      "mars-rust": {
+        "role": "primary",
+        "displayName": "Mars Rust",
+        "canonical": "oklch(57.1% 0.173 37.6)",
+        "tonalRamp": [
+          "#360000",
+          "#5A0000",
+          "#7F0000",
+          "#A42F00",
+          "#C9532D",
+          "#F07550",
+          "#FF9C76",
+          "#FFC69F"
+        ]
+      },
+      "rust-ink": {
+        "role": "primary",
+        "displayName": "Rust Ink",
+        "canonical": "oklch(51.7% 0.160 38.8)",
+        "tonalRamp": [
+          "#360000",
+          "#5A0000",
+          "#7E0000",
+          "#A33000",
+          "#C9532A",
+          "#EF764E",
+          "#FF9C73",
+          "#FFC79C"
+        ]
+      },
+      "dawn-paper": {
+        "role": "neutral",
+        "displayName": "Dawn Paper",
+        "canonical": "oklch(99.5% 0.003 67.8)",
+        "tonalRamp": [
+          "#0C0B0A",
+          "#252422",
+          "#413F3E",
+          "#5F5D5C",
+          "#7F7D7B",
+          "#A09E9C",
+          "#C5C4C2",
+          "#F0EEEC"
+        ]
+      },
+      "dawn-sand": {
+        "role": "neutral",
+        "displayName": "Dawn Sand",
+        "canonical": "oklch(95.9% 0.008 56.3)",
+        "tonalRamp": [
+          "#0E0A08",
+          "#272320",
+          "#433F3B",
+          "#615C59",
+          "#817C78",
+          "#A39D99",
+          "#C9C3BF",
+          "#F3EDE9"
+        ]
+      },
+      "dawn-ink": {
+        "role": "neutral",
+        "displayName": "Dawn Ink",
+        "canonical": "oklch(25.3% 0.009 43.1)",
+        "tonalRamp": [
+          "#0E0A08",
+          "#282321",
+          "#443E3C",
+          "#625C5A",
+          "#827C79",
+          "#A39D9A",
+          "#C9C2C0",
+          "#F4EDEA"
+        ]
+      },
+      "dawn-dust": {
+        "role": "neutral",
+        "displayName": "Dawn Dust",
+        "canonical": "oklch(51.7% 0.015 56.0)",
+        "tonalRamp": [
+          "#100A06",
+          "#2A221D",
+          "#463E38",
+          "#645C56",
+          "#847B75",
+          "#A69C96",
+          "#CCC2BB",
+          "#F7ECE5"
+        ]
+      },
+      "dawn-hairline": {
+        "role": "neutral",
+        "displayName": "Dawn Hairline",
+        "canonical": "oklch(91.0% 0.015 54.9)",
+        "tonalRamp": [
+          "#100906",
+          "#2A221D",
+          "#463E38",
+          "#655C56",
+          "#857B75",
+          "#A69C96",
+          "#CCC2BB",
+          "#F7ECE5"
+        ]
+      },
+      "mars-rust-lit": {
+        "role": "primary",
+        "displayName": "Mars Rust, lit"
+      },
+      "ember-ink-lit": {
+        "role": "primary",
+        "displayName": "Ember Ink, lit"
+      },
+      "night-paper": {
+        "role": "neutral",
+        "displayName": "Night Paper"
+      },
+      "night-sand": {
+        "role": "neutral",
+        "displayName": "Night Sand"
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink"
+      },
+      "night-dust": {
+        "role": "neutral",
+        "displayName": "Night Dust"
+      },
+      "night-hairline": {
+        "role": "neutral",
+        "displayName": "Night Hairline"
+      },
+      "scene-sky-1": {
+        "role": "tertiary",
+        "displayName": "Night Sky"
+      },
+      "scene-sky-2": {
+        "role": "tertiary",
+        "displayName": "Upper Sky"
+      },
+      "scene-sky-3": {
+        "role": "tertiary",
+        "displayName": "Mauve Sky"
+      },
+      "scene-sky-4": {
+        "role": "tertiary",
+        "displayName": "Apricot Horizon"
+      },
+      "scene-glow": {
+        "role": "tertiary",
+        "displayName": "Horizon Glow"
+      },
+      "scene-glow-mid": {
+        "role": "tertiary",
+        "displayName": "Glow Falloff"
+      },
+      "scene-limb": {
+        "role": "tertiary",
+        "displayName": "Planet Limb"
+      },
+      "scene-planet": {
+        "role": "tertiary",
+        "displayName": "Planet Mass"
+      },
+      "hero-kicker": {
+        "role": "tertiary",
+        "displayName": "Hero Kicker"
+      },
+      "hero-ink": {
+        "role": "tertiary",
+        "displayName": "Hero Ink"
+      },
+      "hero-sub": {
+        "role": "tertiary",
+        "displayName": "Hero Sub"
+      },
+      "print-paper": {
+        "role": "neutral",
+        "displayName": "Print Paper"
+      },
+      "sunrise-rule": {
+        "role": "primary",
+        "displayName": "Sunrise Rule",
+        "canonical": "oklch(67.5% 0.134 46.3)",
+        "tonalRamp": [
+          "#2F0000",
+          "#510000",
+          "#741D00",
+          "#983F00",
+          "#BC602F",
+          "#E18252",
+          "#FFA777",
+          "#FFD2A0"
+        ]
+      },
+      "sunrise-rule-lit": {
+        "role": "primary",
+        "displayName": "Sunrise Rule, lit"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home hero headline only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "h1 on every other page."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section headings (h2)."
+      },
+      "subtitle": {
+        "displayName": "Subtitle",
+        "purpose": "h3 and loop step names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text in the 44rem column."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Intro paragraph under h1, in Dust."
+      },
+      "label": {
+        "displayName": "Kicker",
+        "purpose": "Uppercase kicker above the hero headline; the only uppercase."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Dates, figure labels, footer, language switch."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Inline code, pre."
+      }
+    },
+    "shadows": [
+      {
+        "name": "screenshot-rest",
+        "value": "0 1px 2px color-mix(in srgb, #000 12%, transparent), 0 14px 34px -14px color-mix(in srgb, #000 35%, transparent)",
+        "purpose": "App window resting on its Sand plate."
+      },
+      {
+        "name": "hero-screenshot",
+        "value": "0 1px 0 color-mix(in srgb, #fff 12%, transparent) inset, 0 40px 64px -28px color-mix(in srgb, #000 70%, transparent), 0 14px 28px -14px color-mix(in srgb, #000 55%, transparent)",
+        "purpose": "App window resting in the dawn scene."
+      },
+      {
+        "name": "printed-page",
+        "value": "0 1px 2px color-mix(in srgb, #000 10%, transparent), 0 12px 28px -14px color-mix(in srgb, #000 30%, transparent)",
+        "purpose": "Exported PDF page."
+      },
+      {
+        "name": "marker-halo",
+        "value": "0 0 0 3px color-mix(in srgb, var(--paper) 85%, transparent), 0 1px 3px color-mix(in srgb, var(--ink) 30%, transparent)",
+        "purpose": "Separates a callout dot from the screenshot."
+      }
+    ],
+    "motion": [
+      {
+        "name": "dawn-veil",
+        "value": "3.8s cubic-bezier(0.35, 0, 0.2, 1)",
+        "purpose": "Night lifts off the hero, once."
+      },
+      {
+        "name": "dawn-rise",
+        "value": "4.2s cubic-bezier(0.3, 0, 0.15, 1)",
+        "purpose": "Horizon glow climbs and warms."
+      },
+      {
+        "name": "dawn-limb",
+        "value": "2.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s",
+        "purpose": "Planet limb lights from the centre outward."
+      },
+      {
+        "name": "marker-ring",
+        "value": "1100ms cubic-bezier(0.16, 1, 0.3, 1) 300ms",
+        "purpose": "Each callout marker sends one ring as the page settles."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "480px"
+      },
+      {
+        "name": "loop-columns",
+        "value": "720px"
+      },
+      {
+        "name": "gutter-callouts",
+        "value": "1100px"
+      }
+    ],
+    "inheritance": {
+      "parent": "redtear1115/mars-dawn DESIGN.md (private)",
+      "paletteSource": "mars-dawn-kit Sources/MarsDawnKit/PreviewTheme.swift (Dawn theme)",
+      "parentNorthStar": "The Quiet Sunrise",
+      "lastSynced": "2026-09-19",
+      "cssVarMap": {
+        "--ember": "mars-rust / mars-rust-lit",
+        "--link": "rust-ink / ember-ink-lit",
+        "--rule": "sunrise-rule / sunrise-rule-lit (unused)",
+        "--paper": "dawn-paper / night-paper",
+        "--sand": "dawn-sand / night-sand",
+        "--ink": "dawn-ink / night-ink",
+        "--dust": "dawn-dust / night-dust",
+        "--hairline": "dawn-hairline / night-hairline"
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Inline Link",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Every inline link: Mars Rust Link, 1px underline that thickens on hover, Mars Rust focus ring.",
+      "html": "<p class=\"ds-p\">Read the <a class=\"ds-link\" href=\"#\">privacy policy</a> before you buy.</p>",
+      "css": ":host{--paper:#FFFDFB;--sand:#F6F0EC;--ink:#26211F;--dust:#6F6660;--hairline:#EADFD8;--ember:#C8471B;--link:#B03C0C;font:16px/1.7 -apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang TC',sans-serif;color:var(--ink)} .ds-p{margin:0;color:var(--ink)} .ds-link{color:var(--link);text-decoration-thickness:1px;text-underline-offset:0.18em} .ds-link:hover{text-decoration-thickness:2px} .ds-link:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:3px}"
+    },
+    {
+      "name": "Store Chip",
+      "kind": "chip",
+      "refersTo": "store-chip",
+      "description": "Quiet status pill in the masthead; a statement, not a button.",
+      "html": "<span class=\"ds-chip\">Coming soon to the Mac App Store</span>",
+      "css": ":host{--paper:#FFFDFB;--sand:#F6F0EC;--ink:#26211F;--dust:#6F6660;--hairline:#EADFD8;--ember:#C8471B;--link:#B03C0C;font:16px/1.7 -apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang TC',sans-serif;color:var(--ink)} .ds-chip{display:inline-block;padding:3px 10px;border:1px solid var(--hairline);border-radius:999px;color:var(--dust);font-size:0.82rem;line-height:1.4;white-space:nowrap}"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "refersTo": "masthead",
+      "description": "Icon and name left, store chip and language switch right, over a hairline.",
+      "html": "<header class=\"ds-mast\"><a class=\"ds-brand\" href=\"#\"><span class=\"ds-icon\" aria-hidden=\"true\"></span><strong>MarsDawn</strong></a><span class=\"ds-chip\">Coming soon to the Mac App Store</span><nav class=\"ds-lang\"><a href=\"#\" aria-current=\"true\">English</a> · <a href=\"#\">繁體中文</a></nav></header>",
+      "css": ":host{--paper:#FFFDFB;--sand:#F6F0EC;--ink:#26211F;--dust:#6F6660;--hairline:#EADFD8;--ember:#C8471B;--link:#B03C0C;font:16px/1.7 -apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang TC',sans-serif;color:var(--ink)} .ds-mast{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:28px 0 20px;border-bottom:1px solid var(--hairline)} .ds-brand{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none} .ds-brand strong{font-size:1.1rem;font-weight:650;letter-spacing:-0.01em} .ds-icon{width:40px;height:40px;border-radius:9px;background:radial-gradient(80% 60% at 50% 110%,#ffe1ab,#dc9a66 40%,#372a3c 75%,#171022)} .ds-chip{margin-left:auto;padding:3px 10px;border:1px solid var(--hairline);border-radius:999px;color:var(--dust);font-size:0.82rem;line-height:1.4} .ds-lang{font-size:0.9rem;color:var(--dust)} .ds-lang a{color:var(--dust);display:inline-block;min-height:24px;padding:2px 0} .ds-lang a:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:3px} .ds-lang [aria-current=true]{color:var(--ink);font-weight:600}"
+    },
+    {
+      "name": "Summary Block",
+      "kind": "card",
+      "refersTo": "summary-block",
+      "description": "The one-line answer people came for, on a Sand plate.",
+      "html": "<div class=\"ds-summary\"><p>MarsDawn does not collect personal data. Your documents and settings stay on your Mac.</p></div>",
+      "css": ":host{--paper:#FFFDFB;--sand:#F6F0EC;--ink:#26211F;--dust:#6F6660;--hairline:#EADFD8;--ember:#C8471B;--link:#B03C0C;font:16px/1.7 -apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang TC',sans-serif;color:var(--ink)} .ds-summary{padding:20px 22px;background:var(--sand);border-radius:8px;font-size:1.05rem} .ds-summary p{margin:0}"
+    },
+    {
+      "name": "Code and Kbd",
+      "kind": "custom",
+      "refersTo": "inline-code",
+      "description": "Sand-plated SF Mono for code; kbd as a small keycap.",
+      "html": "<p class=\"ds-p\">Run <code class=\"ds-code\">brew install marsdawn</code>, then press <kbd class=\"ds-kbd\">⌘</kbd> <kbd class=\"ds-kbd\">P</kbd>.</p><pre class=\"ds-pre\"><code>marsdawn pdf README.md --json</code></pre>",
+      "css": ":host{--paper:#FFFDFB;--sand:#F6F0EC;--ink:#26211F;--dust:#6F6660;--hairline:#EADFD8;--ember:#C8471B;--link:#B03C0C;font:16px/1.7 -apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang TC',sans-serif;color:var(--ink)} .ds-p{margin:0 0 14px} .ds-code{font:0.9em ui-monospace,'SF Mono',Menlo,monospace;background:var(--sand);padding:0.12em 0.36em;border-radius:4px} .ds-kbd{font:0.85em -apple-system,sans-serif;padding:0.05em 0.4em;border:1px solid var(--hairline);border-bottom-width:2px;border-radius:4px;background:var(--paper)} .ds-pre{margin:0;padding:14px 16px;background:var(--sand);border-radius:8px;overflow-x:auto;font:0.9em/1.45 ui-monospace,'SF Mono',Menlo,monospace}"
+    },
+    {
+      "name": "The Loop",
+      "kind": "custom",
+      "refersTo": "loop-steps",
+      "description": "Three stops along one horizon line; the middle (reading) step is lit.",
+      "html": "<ol class=\"ds-loop\"><li><strong>The agent writes.</strong>Your coding agent drafts the Markdown.</li><li><strong>You review in MarsDawn.</strong>Read it rendered, next to the source.</li><li><strong>The agent revises.</strong>Ask for changes and read again.</li></ol>",
+      "css": ":host{--paper:#FFFDFB;--sand:#F6F0EC;--ink:#26211F;--dust:#6F6660;--hairline:#EADFD8;--ember:#C8471B;--link:#B03C0C;font:16px/1.7 -apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang TC',sans-serif;color:var(--ink)} .ds-loop{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px} .ds-loop li{position:relative;padding-top:20px;border-top:1px solid var(--hairline);color:var(--dust);font-size:0.98rem} .ds-loop li::before{content:'';position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:var(--dust)} .ds-loop li:nth-child(2){border-top-color:color-mix(in srgb,var(--ember) 55%,var(--hairline))} .ds-loop li:nth-child(2)::before{background:var(--ember);box-shadow:0 0 0 4px color-mix(in srgb,var(--ember) 18%,transparent)} .ds-loop strong{display:block;margin-bottom:6px;color:var(--ink);font-size:1.05rem;font-weight:650}"
+    },
+    {
+      "name": "Trait List",
+      "kind": "custom",
+      "refersTo": "traits",
+      "description": "Sister pages as a ruled list, not cards.",
+      "html": "<ul class=\"ds-traits\"><li><a href=\"#\">Pay once</a><span>USD 4.99, once. No subscription.</span></li><li><a href=\"#\">What MarsDawn doesn't do</a><span>Know before you buy.</span></li></ul>",
+      "css": ":host{--paper:#FFFDFB;--sand:#F6F0EC;--ink:#26211F;--dust:#6F6660;--hairline:#EADFD8;--ember:#C8471B;--link:#B03C0C;font:16px/1.7 -apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang TC',sans-serif;color:var(--ink)} .ds-traits{list-style:none;padding:0;margin:0} .ds-traits li{display:flex;flex-wrap:wrap;gap:2px 14px;align-items:baseline;padding:12px 0;border-top:1px solid var(--hairline)} .ds-traits a{color:var(--link);font-weight:600;text-underline-offset:0.18em} .ds-traits a:hover{text-decoration-thickness:2px} .ds-traits a:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:3px} .ds-traits span{color:var(--dust);font-size:0.95rem}"
+    },
+    {
+      "name": "Callout Marker",
+      "kind": "custom",
+      "refersTo": "callout-marker",
+      "description": "Mars Rust dot pinned to a screenshot, haloed in paper; sends one ring on load.",
+      "html": "<div class=\"ds-plate\"><div class=\"ds-canvas\"><span class=\"ds-marker\">1</span></div></div>",
+      "css": ":host{--paper:#FFFDFB;--sand:#F6F0EC;--ink:#26211F;--dust:#6F6660;--hairline:#EADFD8;--ember:#C8471B;--link:#B03C0C;font:16px/1.7 -apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang TC',sans-serif;color:var(--ink)} .ds-plate{padding:16px;background:var(--sand);border-radius:16px} .ds-canvas{position:relative;height:120px;border-radius:10px;background:var(--paper);box-shadow:0 1px 2px color-mix(in srgb,#000 12%,transparent),0 14px 34px -14px color-mix(in srgb,#000 35%,transparent)} .ds-marker{position:absolute;left:30%;top:40%;display:grid;place-items:center;width:22px;height:22px;translate:-50% -50%;border-radius:50%;background:var(--ember);color:var(--paper);font-size:0.75rem;font-weight:700;box-shadow:0 0 0 3px color-mix(in srgb,var(--paper) 85%,transparent),0 1px 3px color-mix(in srgb,var(--ink) 30%,transparent)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Sunrise (site expression: Mars at Sunrise)",
+    "overview": "**Creative North Star: \"The Quiet Sunrise\"** (inherited). The site expresses it as **Mars at Sunrise**.\n\nThe parent describes a native Mac window with the first light of a Martian morning inside the document: stock chrome, all the warmth in the content. The website takes the same idea one step further out. The page is the document: warm Dawn paper, brown-black ink and a single ember of Mars Rust. The sunrise, which the app only hints at in its icon, is shown at full scale exactly twice: as the full-bleed scene that opens the home page and as the band of light that closes it. Everything between them reads like a Dawn-themed Markdown page.\n\nThe mood is cinematic, restrained and honest. The hero is staged like a film's opening shot: a graded sky, a planet's dark mass, a limb of light. It plays once and then holds still. The rest of the site is quiet. It has one text column, hairline rules instead of cards, real app screenshots instead of illustrations, and system fonts, so the site feels like the app and not a web template. Because the site says what the app doesn't do, it also hides nothing about itself: no scripts, no tracking, and nothing that pretends to be interactive when it isn't.\n\nLight and dark mode are designed as two separate palettes, as in the parent. The page tokens swap. The dawn scene stays dark at the top in both modes, because the scene is always night turning into dawn.",
+    "keyCharacteristics": [
+      "The Dawn theme, extended into a website: the same paper, ink, sand, hairline and Mars Rust as the app's default preview.",
+      "One authored motion moment per surface. It runs once, never loops and is optional.",
+      "Full-bleed dawn at the opening and close of the home page. Dawn-paper reading everywhere else.",
+      "Hairline rules and sand plates carry the structure. There are no cards and no shadows on interface elements.",
+      "System fonts only, and a strict CSP: no web fonts, scripts or inline styles."
+    ],
+    "rules": [
+      {
+        "name": "The Ember Rule",
+        "body": "Mars Rust appears only where attention belongs: markers, bullets, focus, selection and the lit loop step. It never fills a background.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warm Neutral Rule",
+        "body": "Neutrals lean toward rust in light mode and violet in dark mode. There is no pure white or black, except Print Paper, which depicts a printed sheet.",
+        "section": "colors"
+      },
+      {
+        "name": "The Fixed Sky Rule",
+        "body": "Anything set on the scene uses the hero text palette in both color schemes. Page tokens are never used on the sky.",
+        "section": "colors"
+      },
+      {
+        "name": "The System Face Rule",
+        "body": "No bundled or web fonts. The site's CSP enforces this too.",
+        "section": "typography"
+      },
+      {
+        "name": "The Weight-Not-Size Rule",
+        "body": "Subheadings step up in weight (650) before they step up in size. The type scale stays compact under the headline.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Page Rule",
+        "body": "Interface elements never get shadows, blur or glass. Use the sand tone or a hairline instead.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Real Objects Rule",
+        "body": "Only depicted objects cast shadows: screenshots, printed pages and markers pinned to them. Blocks, chips, links and lists never do, and hover never adds one.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do take brand colors from the parent's Dawn palette and keep `site.css` in sync with `PreviewTheme.swift`. Every new token needs a light and a dark value.",
+      "Do keep Mars Rust (`#C8471B` / `#FF8A50`) as the only accent. It marks, points and focuses.",
+      "Do keep every page to one 44rem reading column, and break out of it only for the dawn scene, the closing band and screenshots.",
+      "Do keep text on the scene in the fixed hero palette in both color schemes.",
+      "Do show the real app. Use actual screenshots annotated with markers and leader lines, not illustrations or mockups.",
+      "Do make any motion a single authored moment that plays once, animates only compositor-friendly properties and has a finished resting state under `prefers-reduced-motion`.",
+      "Do keep text contrast at WCAG AA or better in both schemes, and keep tap targets at least 24px tall."
+    ],
+    "donts": [
+      "Don't use cards, drop shadows or hover lifts on interface elements. Structure comes from hairlines and sand plates.",
+      "Don't add web fonts, scripts, inline styles or third-party resources. The CSP in `public/_headers` forbids them.",
+      "Don't add a second accent hue, or use Mars Rust as a large fill.",
+      "Don't use pure white or black outside Print Paper, or cool greys anywhere.",
+      "Don't loop, repeat or scroll-trigger animation. The dawn happens once.",
+      "Don't invert the dawn scene for dark mode. The sky is always night breaking to dawn.",
+      "Don't introduce a site-specific token for a color the parent already defines."
+    ]
+  }
+}
