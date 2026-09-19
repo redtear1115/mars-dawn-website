@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Generates the MarsDawn privacy and support pages in public/ (en and zh-Hant).
+"""Generates the MarsDawn site in public/, in four languages: en, zh-Hant, zh-Hans and ja.
+
+The en and zh-Hant copy is in this file. The zh-Hans and ja copy, translated from it, is in
+copy_zh_hans.py and copy_ja.py, one module per language, merged in below.
 
 UI labels quoted on each page must match the app's own strings in that language.
 The app lives in another repository, so check them by hand when either side changes.
@@ -9,6 +12,8 @@ Static output, no build step at deploy time. Edit the copy here and rerun:
 """
 import json
 import re
+import sys
+from types import SimpleNamespace
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
@@ -30,10 +35,25 @@ BREW_TAP_INSTALL = "brew tap redtear1115/tap && brew install marsdawn"
 LOCALES = {
     "en": {"prefix": "", "html_lang": "en", "label": "English", "root": "/"},
     "zh-hant": {"prefix": "zh-hant/", "html_lang": "zh-Hant", "label": "繁體中文", "root": "/zh-hant/"},
+    "zh-hans": {"prefix": "zh-hans/", "html_lang": "zh-Hans", "label": "简体中文", "root": "/zh-hans/"},
+    "ja": {"prefix": "ja/", "html_lang": "ja", "label": "日本語", "root": "/ja/"},
 }
 
 # OG locale tokens (underscore-separated, per the Open Graph protocol).
-OG_LOCALE = {"en": "en_US", "zh-hant": "zh_TW"}
+# zh_CN is the standard token for Simplified Chinese; it names a language, not a storefront.
+OG_LOCALE = {"en": "en_US", "zh-hant": "zh_TW", "zh-hans": "zh_CN", "ja": "ja_JP"}
+
+# Languages that use full-width punctuation in generated text (e.g. a list label's colon).
+FULL_WIDTH = {"zh-hant", "zh-hans", "ja"}
+
+# The app's interface languages, as /native/ and /vs/macmd-viewer/ state them. One place so the
+# sentence changes in every language at once.
+APP_UI_LANGUAGES = {
+    "en": "English and Traditional Chinese",
+    "zh-hant": "英文和繁體中文",
+    "zh-hans": "英文和繁体中文",
+    "ja": "英語と繁体字中国語",
+}
 
 UI = {
     "en": {
@@ -675,8 +695,12 @@ SCHEMA_NOTES = {
 
 
 def schema_links(locale: str) -> str:
+    return schema_links_from(SCHEMA_NOTES[locale])
+
+
+def schema_links_from(notes: dict) -> str:
     return "\n".join(
-        f'  <li><a href="{SCHEMA_BASE}{SCHEMA_FILES[kind]}">{SCHEMA_FILES[kind]}</a>: {SCHEMA_NOTES[locale][kind]}</li>'
+        f'  <li><a href="{SCHEMA_BASE}{SCHEMA_FILES[kind]}">{SCHEMA_FILES[kind]}</a>: {notes[kind]}</li>'
         for kind in ("export", "open", "error", "open_v1")
     )
 
@@ -1096,7 +1120,7 @@ marsdawn --version</code></pre>
   <li><strong>Finder integration:</strong> both add a Quick Look extension, so pressing Space on a <code>.md</code> file in Finder shows the rendered page.</li>
   <li><strong>PDF and print:</strong> both export or print a PDF of the rendered page.</li>
   <li><strong>System requirements:</strong> MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.</li>
-  <li><strong>Languages:</strong> MarsDawn's interface ships in English and Traditional Chinese. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.</li>
+  <li><strong>Languages:</strong> MarsDawn's interface ships in {langs}. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.</li>
 </ul>
 <h2>Pricing and how you buy it</h2>
 <ul>
@@ -1117,7 +1141,7 @@ open notes.pdf</code></pre>
   <li>What MarsDawn doesn't do: <a href="/limits/">the list</a>.</li>
   <li>Every option of the command-line tool: <a href="/cli/">Command Line</a>.</li>
 </ul>
-""".format(brew=BREW_TAP_INSTALL),
+""".format(brew=BREW_TAP_INSTALL, langs=APP_UI_LANGUAGES["en"]),
     },
     ("zh-hant", "vs/macmd-viewer"): {
         "title": "MacMD Viewer 對比 MarsDawn：檢視器與編輯器 · MarsDawn",
@@ -1137,7 +1161,7 @@ open notes.pdf</code></pre>
   <li><strong>Finder 整合：</strong>兩者都有 Finder 的快速查看擴充功能，對 <code>.md</code> 檔案按空白鍵就能看到排好版的頁面。</li>
   <li><strong>PDF 與列印：</strong>兩者都能把排好版的頁面輸出或列印成 PDF。</li>
   <li><strong>系統需求：</strong>MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。</li>
-  <li><strong>語言：</strong>MarsDawn 的介面有英文和繁體中文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。</li>
+  <li><strong>語言：</strong>MarsDawn 的介面有{langs}。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。</li>
 </ul>
 <h2>價格與購買方式</h2>
 <ul>
@@ -1158,7 +1182,7 @@ open notes.pdf</code></pre>
   <li>MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
   <li>命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。</li>
 </ul>
-""".format(brew=BREW_TAP_INSTALL),
+""".format(brew=BREW_TAP_INSTALL, langs=APP_UI_LANGUAGES["zh-hant"]),
     },
 }
 
@@ -1536,7 +1560,7 @@ TRAIT_PAGES = {
   <p>The windows, tabs, menus and text editor are the Mac's own. The rendered page is drawn by WebKit, the engine behind Safari.</p>
 </section>
 """,
-        """
+        f"""
 <h2>What that means</h2>
 <ul>
   <li>Source, split and preview layouts, one keystroke apart (<kbd>⌘1</kbd>, <kbd>⌘2</kbd>, <kbd>⌘3</kbd>).</li>
@@ -1545,7 +1569,7 @@ TRAIT_PAGES = {
   <li>Native windows, tabs, autosave and version history.</li>
   <li>Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.</li>
   <li>Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.</li>
-  <li>English and Traditional Chinese.</li>
+  <li>{APP_UI_LANGUAGES["en"]}.</li>
 </ul>
 """,
     ),
@@ -1558,7 +1582,7 @@ TRAIT_PAGES = {
   <p>視窗、分頁、選單和文字編輯器都是 Mac 原生的。排版後的頁面由 Safari 使用的 WebKit 引擎繪製。</p>
 </section>
 """,
-        """
+        f"""
 <h2>這代表什麼</h2>
 <ul>
   <li>原始碼、並排、預覽三種版面，一個快捷鍵切換（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
@@ -1567,7 +1591,7 @@ TRAIT_PAGES = {
   <li>原生視窗、分頁、自動儲存和版本記錄。</li>
   <li>快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。</li>
   <li>Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。</li>
-  <li>支援英文和繁體中文。</li>
+  <li>支援{APP_UI_LANGUAGES["zh-hant"]}。</li>
 </ul>
 """,
     ),
@@ -1643,6 +1667,53 @@ TRAIT_NAV_HEADING = {"en": "What to expect from MarsDawn", "zh-hant": "MarsDawn 
 FIGURE_LIST_LABEL = {"en": "In this screenshot", "zh-hant": "這張截圖裡"}
 
 
+# --- Simplified Chinese and Japanese -------------------------------------------
+# Each module's build(k) returns the same tables as above, for its one locale, translated from the
+# en and zh-hant copy. k carries the shared constants, so a URL, address or command is written once.
+# UI labels quoted in them follow the app's own zh-Hans and ja strings.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untracked file after a build
+import copy_ja  # noqa: E402
+import copy_zh_hans  # noqa: E402
+
+EXTRA_PAGES = {}
+
+
+def _merge_locale(locale: str, module) -> None:
+    k = SimpleNamespace(
+        EMAIL=EMAIL, UPDATED=UPDATED, PRIVACY_UPDATED=PRIVACY_UPDATED, BASE_URL=BASE_URL,
+        KIT_URL=KIT_URL, BREW_TAP_INSTALL=BREW_TAP_INSTALL, INSTALL=_INSTALL, SKILL_URL=_SKILL_URL,
+        APP_UI_LANGUAGES=APP_UI_LANGUAGES[locale], schema_links_from=schema_links_from, xml_escape=xml_escape,
+    )
+    t = module.build(k)
+    assert set(t["ui"]) == set(UI["en"]), f"{locale}: UI keys differ from en"
+    UI[locale] = t["ui"]
+    STORE_CHIP[locale] = t["store_chip"]
+    assert set(t["schema_notes"]) == set(SCHEMA_NOTES["en"]), f"{locale}: schema notes differ from en"
+    SCHEMA_NOTES[locale] = t["schema_notes"]
+    EXAMPLE_PLAN[locale] = t["example_plan"]
+    _PLAN_HTML[locale] = xml_escape(t["example_plan"])
+    assert set(t["trait_link"]) == set(TRAIT_ORDER), f"{locale}: trait links differ from TRAIT_ORDER"
+    TRAIT_LINK[locale] = t["trait_link"]
+    TRAIT_NAV_HEADING[locale] = t["trait_nav_heading"]
+    FIGURE_LIST_LABEL[locale] = t["figure_list_label"]
+    assert set(t["figures"]) == set(FIGURES), f"{locale}: figures differ"
+    for slug, fig in FIGURES.items():
+        text = t["figures"][slug]
+        fig["alt"][locale] = text["alt"]
+        assert len(text["callouts"]) == len(fig["callouts"]), f"{locale}/{slug}: callout count differs"
+        for (_, _, _, label), translated in zip(fig["callouts"], text["callouts"]):
+            label[locale] = translated
+    assert t["pages"] and set(t["pages"]) <= set(PAGE_ORDER), f"{locale}: unknown pages"
+    for slug, page in t["pages"].items():
+        assert ("intro" in page) == ("intro" in all_pages_en()[slug]), f"{locale}/{slug}: intro shape differs"
+        EXTRA_PAGES[(locale, slug)] = page
+
+
+def all_pages_en() -> dict:
+    return {slug: page for (locale, slug), page in _base_pages().items() if locale == "en"}
+
+
 def trait_nav_html(locale: str, current: str) -> str:
     items = "\n".join(
         f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a>'
@@ -1693,7 +1764,7 @@ def figure_markdown(locale: str, slug: str) -> str:
     src = abs_url(f"/assets/screens/{image}-{width}.png")
     lines = [f"![{fig['alt'][locale]}]({src})"]
     if fig["callouts"]:
-        colon = "：" if locale == "zh-hant" else ":"
+        colon = "：" if locale in FULL_WIDTH else ":"
         lines += ["", f"{FIGURE_LIST_LABEL[locale]}{colon}", ""]
         lines += [f"{i}. {label[locale]}" for i, (_, _, _, label) in enumerate(fig["callouts"], start=1)]
     return "\n".join(lines)
@@ -1729,7 +1800,7 @@ SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "
                   "vs/macmd-viewer": "vs-macmd-viewer"}
 
 
-def all_pages() -> dict:
+def _base_pages() -> dict:
     merged = dict(PAGES)
     merged.update(CLI_PAGES)
     merged.update(AGENT_PAGES)
@@ -1737,6 +1808,31 @@ def all_pages() -> dict:
     merged.update(SKILL_PAGES)
     merged.update(TRAIT_PAGES)
     return merged
+
+
+def all_pages() -> dict:
+    merged = _base_pages()
+    merged.update(EXTRA_PAGES)
+    return merged
+
+
+# A locale can have only some of the pages (zh-Hans and ja start with the privacy policy and support,
+# which the App Store listings link to). Nothing may link to a page that doesn't exist: the language
+# switch and hreflang list only the locales that have the page, the footer only the locale's own pages,
+# and a locale without a home page takes its brand link from HOME_FALLBACK.
+HOME_FALLBACK = {"zh-hans": "zh-hant", "ja": "en"}
+
+
+def has_page(locale: str, slug: str) -> bool:
+    return (locale, slug) in all_pages()
+
+
+def locales_with(slug: str) -> list:
+    return [locale for locale in LOCALES if has_page(locale, slug)]
+
+
+def home_path(locale: str) -> str:
+    return LOCALES[locale if has_page(locale, "index") else HOME_FALLBACK[locale]]["root"]
 
 
 def page_path(locale: str, slug: str) -> str:
@@ -1909,11 +2005,11 @@ def render(locale: str, slug: str, page: dict) -> str:
         f'<a href="{page_path(other, slug)}" hreflang="{LOCALES[other]["html_lang"]}"'
         + (' aria-current="true"' if other == locale else "")
         + f' lang="{LOCALES[other]["html_lang"]}">{LOCALES[other]["label"]}</a>'
-        for other in LOCALES
+        for other in locales_with(slug)
     )
     alternates = "\n".join(
         f'<link rel="alternate" hreflang="{LOCALES[other]["html_lang"]}" href="{abs_url(page_path(other, slug))}">'
-        for other in LOCALES
+        for other in locales_with(slug)
     )
     alternates += f'\n<link rel="alternate" hreflang="x-default" href="{abs_url(page_path("en", slug))}">'
     canonical_url = abs_url(page_path(locale, slug))
@@ -1963,10 +2059,10 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
         main_html = page["body"].strip()
-    footer_links = (
-        f'  <a href="{page_path(locale, "support")}">{ui["support"]}</a>\n'
-        f'  <a href="{page_path(locale, "privacy")}">{ui["privacy"]}</a>\n'
-        f'  <a href="{page_path(locale, "cli")}">{ui["cli"]}</a>\n'
+    footer_links = "".join(
+        f'  <a href="{page_path(locale, target)}">{ui[target]}</a>\n'
+        for target in ("support", "privacy", "cli")
+        if has_page(locale, target)
     )
     if slug == "index":
         footer_html = f'<footer class="footer footer-home">\n{footer_links}</footer>'
@@ -1991,7 +2087,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 <body>
 <div class="page">
 <header class="masthead">
-  <a class="brand" href="{LOCALES[locale]["root"]}">
+  <a class="brand" href="{home_path(locale)}">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
@@ -2108,7 +2204,7 @@ def build_sitemap(pages: dict, extra_urls: list = None) -> str:
             loc = xml_escape(abs_url(page_path(locale, slug)))
             alt_links = "\n".join(
                 f'    <xhtml:link rel="alternate" hreflang="{LOCALES[other]["html_lang"]}" href="{xml_escape(abs_url(page_path(other, slug)))}"/>'
-                for other in LOCALES
+                for other in locales_with(slug)
             )
             alt_links += (
                 f'\n    <xhtml:link rel="alternate" hreflang="x-default"'
@@ -2134,23 +2230,28 @@ def build_twin(pages: dict, locale: str, slug: str) -> str:
     site, because the HTML header and footer links aren't part of it.
     """
     body = page_markdown(pages, locale, slug)
-    others = [other for other in PAGE_ORDER if other != slug]
+    others = [other for other in PAGE_ORDER if other != slug and (locale, other) in pages]
     lines = [body.rstrip(), "", f"## {UI[locale]['more']}", ""]
     for other in others:
         page = pages[(locale, other)]
         lines.append(f"- [{UI[locale][SLUG_TO_UI_KEY[other]]}]({abs_url(md_path(locale, other))}): {page['description']}")
-    other_locale = "zh-hant" if locale == "en" else "en"
-    lines.append(f"- [{LOCALES[other_locale]['label']}]({abs_url(md_path(other_locale, slug))}): "
-                 f"{pages[(other_locale, slug)]['description']}")
+    for other_locale in locales_with(slug):
+        if other_locale == locale:
+            continue
+        lines.append(f"- [{LOCALES[other_locale]['label']}]({abs_url(md_path(other_locale, slug))}): "
+                     f"{pages[(other_locale, slug)]['description']}")
     return "\n".join(lines).rstrip() + "\n"
 
 
 def build_llms_txt(pages: dict) -> str:
     home_en = pages[("en", "index")]
     lines = ["# MarsDawn", "", f"> {home_en['description']}", ""]
-    for locale, heading in (("en", "Docs"), ("zh-hant", "繁體中文")):
+    for locale in LOCALES:
+        heading = "Docs" if locale == "en" else LOCALES[locale]["label"]
         lines.append(f"## {heading}")
         for slug in PAGE_ORDER:
+            if (locale, slug) not in pages:
+                continue
             page = pages[(locale, slug)]
             label = UI[locale][SLUG_TO_UI_KEY[slug]]
             url = abs_url(md_path(locale, slug))
@@ -2185,14 +2286,20 @@ def build_llms_txt(pages: dict) -> str:
 
 def build_llms_full(pages: dict) -> str:
     sections = []
-    for locale, heading in (("en", "English"), ("zh-hant", "繁體中文")):
+    for locale in LOCALES:
         for slug in PAGE_ORDER:
+            if (locale, slug) not in pages:
+                continue
             page = pages[(locale, slug)]
             label = UI[locale][SLUG_TO_UI_KEY[slug]]
             url = abs_url(page_path(locale, slug))
             body_md = page_markdown(pages, locale, slug)
             sections.append(f"## {label}\n\nSource: {url}\n\n{body_md}")
     return "# MarsDawn — full content\n\n" + "\n---\n\n".join(sections)
+
+
+for _locale, _module in (("zh-hans", copy_zh_hans), ("ja", copy_ja)):
+    _merge_locale(_locale, _module)
 
 
 def main() -> None:

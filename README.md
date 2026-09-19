@@ -1,6 +1,6 @@
 # marsdawn.southern-light.dev
 
-The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown editor for the Mac: home page, privacy policy and support pages, in English and Traditional Chinese.
+The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown editor for the Mac: home page, privacy policy and support pages, in English and Traditional Chinese, with the privacy policy and support pages also in Simplified Chinese and Japanese.
 
 ## Layout
 
@@ -8,12 +8,15 @@ The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown edito
 |---|---|
 | `public/` | The site root, served as static files |
 | `public/_headers` | Security headers for every page (strict CSP with no scripts, nosniff, no referrer) and cache rules (theme index short, versioned theme files long). Anything that adds a script, inline style, web font or third-party resource must update the CSP |
-| `scripts/build_pages.py` | Generates the privacy and support pages into `public/` |
+| `scripts/build_pages.py` | Generates every page into `public/`, with the en and zh-Hant copy |
+| `scripts/copy_zh_hans.py`, `scripts/copy_ja.py` | The zh-Hans and ja copy, merged in by `build_pages.py`. For now they have the privacy policy and support pages only; a locale may have only some pages, and nothing links to one it doesn't have |
+| `scripts/check_hreflang.py` | Checks that every page's hreflang set is complete (every locale that has the page) and reciprocal, in the HTML and the sitemap (runs in CI) |
+| `scripts/check_links.py` | Checks that every same-site link in the built site points at a file that exists (runs in CI) |
 | `scripts/deploy.sh` | Manual deploy, for emergencies |
 | `wrangler.jsonc` | Cloudflare Workers static-assets config |
 
 These URLs are public contracts and must keep working at the same paths:
-`/privacy/`, `/support/`, `/zh-hant/privacy/`, `/zh-hant/support/` (linked from the App Store).
+`/privacy/`, `/support/`, `/zh-hant/privacy/`, `/zh-hant/support/`, `/zh-hans/privacy/`, `/zh-hans/support/`, `/ja/privacy/`, `/ja/support/` (linked from the App Store).
 
 `/themes/v1/` is **reserved** for the theme gallery, whose design is `docs/theme-ecosystem-design.md` in the app repository. Nothing is served there yet, and neither the app nor the `marsdawn` CLI reads it. Once the gallery ships and the app reads it, it becomes a contract too. Until then, the cache rules in `public/_headers` and the CI check below, which runs only when the index exists, are preparation.
 

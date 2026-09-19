@@ -210,7 +210,7 @@ The Dawn palette, inherited whole, plus a scene palette that exists only on the 
 
 ## Typography
 
-**Font:** Dawn's system stack (SF Pro through `-apple-system`), with PingFang TC/SC fallbacks, for every text role. Mono is SF Mono (`ui-monospace`), falling back to Menlo.
+**Font:** Dawn's system stack (SF Pro through `-apple-system`), with PingFang TC/SC fallbacks, for every text role. Mono is SF Mono (`ui-monospace`), falling back to Menlo. Han characters differ by language, so `site.css` swaps the CJK font by `lang`: PingFang TC for zh-Hant, PingFang SC for zh-Hans, Hiragino Sans for ja. The language-switch links carry their own `lang` and follow the same rule.
 
 **Character:** one native family doing all the work, as in the app's Dawn theme. Hierarchy comes from weight (400, 650, 700), size and slightly tightened tracking on large sizes.
 

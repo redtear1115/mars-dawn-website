@@ -28,6 +28,10 @@ jobs:
             echo "::error::Run python3 scripts/build_pages.py and commit the result."
             exit 1
           fi
+      - name: Every page's hreflang set is complete and reciprocal
+        run: python3 scripts/check_hreflang.py
+      - name: Every same-site link points at a file that exists
+        run: python3 scripts/check_links.py
       # The theme gallery isn't served yet and nothing reads /themes/v1/ (see README). Once it ships,
       # make this check mandatory: from then on /themes/v1/index.json must never disappear.
       - name: Theme index is valid JSON
