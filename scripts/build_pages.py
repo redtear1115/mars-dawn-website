@@ -463,7 +463,6 @@ marsdawn open notes.md --folder .</code></pre>
   <li>Lines run from 1 to 999999999.</li>
   <li>A folder argument opens in the window's sidebar instead of as a document: <code>marsdawn open .</code> shows the current folder. <code>--folder &lt;path&gt;</code> does the same alongside files. A window's sidebar shows one folder, so naming two is a usage error.</li>
   <li><code>--background</code>: open without bringing MarsDawn to the front.</li>
-  <li>MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
 </ul>
 <p>Lines were added in marsdawn 0.3.0, and folders and <code>--background</code> in 0.5.1.</p>
@@ -539,7 +538,6 @@ marsdawn open notes.md --folder .</code></pre>
   <li>行號範圍是 1 到 999999999。</li>
   <li>資料夾參數會在視窗的側邊欄開啟，而不是當成文件：<code>marsdawn open .</code> 會顯示目前的資料夾。<code>--folder &lt;path&gt;</code> 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾，所以指定兩個是使用方式錯誤。</li>
   <li><code>--background</code>：開啟時不把 MarsDawn 帶到最前面。</li>
-  <li>MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。</li>
   <li><code>--json</code>：印出 JSON 結果，而不是文字。</li>
 </ul>
 <p>行號功能從 marsdawn 0.3.0 開始提供，資料夾與 <code>--background</code> 從 0.5.1 開始。</p>
@@ -799,7 +797,6 @@ AGENT_PAGES = {
   <li>It doesn't replace an existing file unless you pass <code>--force</code>.</li>
   <li>It doesn't load images from the web unless you pass <code>--allow-remote-images</code>, and then only over https.</li>
   <li><code>open</code> doesn't work without the MarsDawn app installed; it exits with code 3. <code>export</code> doesn't need the app. The app is on the <a href="{LISTING_URL}">Mac App Store</a>.</li>
-  <li>MarsDawn 1.0 doesn't jump to the line <code>open</code> names yet. It opens the file at the top.</li>
   <li>It runs on macOS only.</li>
 </ul>
 
@@ -834,7 +831,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li><code>path:line</code> names the line to land on. A column after it, as in <code>notes.md:120:8</code>, is ignored. An argument that names a file which exists is always that whole filename, so a file called <code>weird:12</code> opens as itself.</li>
   <li><code>--line &lt;n&gt;</code> names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.</li>
   <li>Lines run from 1 to 999999999. Anything else is a usage error.</li>
-  <li>Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
+  <li>Lines were added in marsdawn 0.3.0.</li>
   <li>A folder argument opens in the window's sidebar instead of as a document, so <code>marsdawn open .</code> shows the current folder; <code>--folder &lt;path&gt;</code> does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and naming the same folder twice is one folder. <code>--line</code> with a folder is a usage error, since a folder has no line. There is no <code>-a</code>: passing it is a usage error that points at <code>--folder</code>.</li>
   <li><code>--background</code> opens without bringing MarsDawn to the front, for an agent that opens files while the person works elsewhere. The JSON is the same either way.</li>
   <li>Folders and <code>--background</code> were added in marsdawn 0.5.1.</li>
@@ -917,7 +914,6 @@ swift build -c release --product marsdawn
   <li>檔案已存在時不會覆寫，除非加上 <code>--force</code>。</li>
   <li>不載入網路圖片，除非加上 <code>--allow-remote-images</code>，而且只走 https。</li>
   <li>沒有安裝 MarsDawn 時，<code>open</code> 無法使用，會以代碼 3 結束。<code>export</code> 不需要 app。App 已在 <a href="{LISTING_URL}">Mac App Store</a> 上架。</li>
-  <li>MarsDawn 1.0 還不會跳到 <code>open</code> 指定的行，會從檔案開頭顯示。</li>
   <li>只能在 macOS 上執行。</li>
 </ul>
 
@@ -952,7 +948,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li><code>path:line</code> 指定要定位的行。後面再接欄位，例如 <code>notes.md:120:8</code>，會被忽略。如果參數本身就是一個存在的檔名，就一律當成那個檔案，所以名為 <code>weird:12</code> 的檔案會照原名開啟。</li>
   <li><code>--line &lt;n&gt;</code> 為單一檔案指定行號，包括檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。</li>
   <li>行號範圍是 1 到 999999999，超出範圍是用法錯誤。</li>
-  <li>行號從 marsdawn 0.3.0 開始提供。MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。</li>
+  <li>行號從 marsdawn 0.3.0 開始提供。</li>
   <li>資料夾參數會在視窗的側邊欄開啟，而不是當成文件，所以 <code>marsdawn open .</code> 會顯示目前的資料夾；<code>--folder &lt;path&gt;</code> 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾：指定兩個是用法錯誤，同一個資料夾指定兩次則算一個。資料夾沒有行號，所以 <code>--line</code> 搭配資料夾是用法錯誤。沒有 <code>-a</code>：傳入它是用法錯誤，錯誤訊息會指向 <code>--folder</code>。</li>
   <li><code>--background</code> 開啟時不把 MarsDawn 帶到最前面，適合在使用者做別的事時開檔的 agent。兩種情況的 JSON 都一樣。</li>
   <li>資料夾與 <code>--background</code> 從 marsdawn 0.5.1 開始提供。</li>

@@ -47,7 +47,6 @@ marsdawn open notes.md --folder .
 - Lines run from 1 to 999999999.
 - A folder argument opens in the window's sidebar instead of as a document: `marsdawn open .` shows the current folder. `--folder <path>` does the same alongside files. A window's sidebar shows one folder, so naming two is a usage error.
 - `--background`: open without bringing MarsDawn to the front.
-- MarsDawn 1.0 opens the file but doesn't jump to the line yet.
 - `--json`: print a JSON result instead of text.
 
 Lines were added in marsdawn 0.3.0, and folders and `--background` in 0.5.1.

@@ -16,7 +16,6 @@
 - 文件已存在时不会覆盖，除非加上 `--force`。
 - 不加载网络图片，除非加上 `--allow-remote-images`，而且只走 https。
 - 没有安装 MarsDawn 时，`open` 无法使用，会以代码 3 结束。`export` 不需要 app。App 已在 [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER) 上架。
-- MarsDawn 1.0 还不会跳到 `open` 指定的行，会从文件开头显示。
 - 只能在 macOS 上运行。
 
 ## export
@@ -62,7 +61,7 @@ marsdawn open notes.md --folder . --background --json
 - `path:line` 指定要定位的行。后面再接列号，例如 `notes.md:120:8`，会被忽略。如果参数本身就是一个存在的文件名，就一律当成那个文件，所以名为 `weird:12` 的文件会照原名打开。
 - `--line <n>` 为单一文件指定行号，包括文件名本身以冒号加数字结尾的情况。只能搭配一个文件。
 - 行号范围是 1 到 999999999，超出范围是用法错误。
-- 行号从 marsdawn 0.3.0 开始提供。MarsDawn 1.0 会打开文件，但还不会跳到指定的行。
+- 行号从 marsdawn 0.3.0 开始提供。
 - 文件夹参数会在窗口的侧边栏打开，而不是当成文稿，所以 `marsdawn open .` 会显示当前的文件夹；`--folder <path>` 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹：指定两个是用法错误，同一个文件夹指定两次则算一个。文件夹没有行号，所以 `--line` 搭配文件夹是用法错误。没有 `-a`：传入它是用法错误，错误消息会指向 `--folder`。
 - `--background` 打开时不把 MarsDawn 带到最前面，适合在用户做别的事时打开文件的 agent。两种情况的 JSON 都一样。
 - 文件夹与 `--background` 从 marsdawn 0.5.1 开始提供。

@@ -429,7 +429,6 @@ marsdawn open notes.md --folder .</code></pre>
   <li>行号范围是 1 到 999999999。</li>
   <li>文件夹参数会在窗口的侧边栏打开，而不是当成文稿：<code>marsdawn open .</code> 会显示当前的文件夹。<code>--folder &lt;path&gt;</code> 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹，所以指定两个是使用方式错误。</li>
   <li><code>--background</code>：打开时不把 MarsDawn 带到最前面。</li>
-  <li>MarsDawn 1.0 会打开文件，但还不会跳到指定的行。</li>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
 </ul>
 <p>行号功能从 marsdawn 0.3.0 开始提供，文件夹与 <code>--background</code> 从 0.5.1 开始。</p>
@@ -490,7 +489,6 @@ marsdawn open notes.md --folder .</code></pre>
   <li>文件已存在时不会覆盖，除非加上 <code>--force</code>。</li>
   <li>不加载网络图片，除非加上 <code>--allow-remote-images</code>，而且只走 https。</li>
   <li>没有安装 MarsDawn 时，<code>open</code> 无法使用，会以代码 3 结束。<code>export</code> 不需要 app。App 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。</li>
-  <li>MarsDawn 1.0 还不会跳到 <code>open</code> 指定的行，会从文件开头显示。</li>
   <li>只能在 macOS 上运行。</li>
 </ul>
 
@@ -525,7 +523,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li><code>path:line</code> 指定要定位的行。后面再接列号，例如 <code>notes.md:120:8</code>，会被忽略。如果参数本身就是一个存在的文件名，就一律当成那个文件，所以名为 <code>weird:12</code> 的文件会照原名打开。</li>
   <li><code>--line &lt;n&gt;</code> 为单一文件指定行号，包括文件名本身以冒号加数字结尾的情况。只能搭配一个文件。</li>
   <li>行号范围是 1 到 999999999，超出范围是用法错误。</li>
-  <li>行号从 marsdawn 0.3.0 开始提供。MarsDawn 1.0 会打开文件，但还不会跳到指定的行。</li>
+  <li>行号从 marsdawn 0.3.0 开始提供。</li>
   <li>文件夹参数会在窗口的侧边栏打开，而不是当成文稿，所以 <code>marsdawn open .</code> 会显示当前的文件夹；<code>--folder &lt;path&gt;</code> 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹：指定两个是用法错误，同一个文件夹指定两次则算一个。文件夹没有行号，所以 <code>--line</code> 搭配文件夹是用法错误。没有 <code>-a</code>：传入它是用法错误，错误消息会指向 <code>--folder</code>。</li>
   <li><code>--background</code> 打开时不把 MarsDawn 带到最前面，适合在用户做别的事时打开文件的 agent。两种情况的 JSON 都一样。</li>
   <li>文件夹与 <code>--background</code> 从 marsdawn 0.5.1 开始提供。</li>
