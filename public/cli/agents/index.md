@@ -16,7 +16,6 @@ A reference for AI agents and scripts that call the `marsdawn` command-line tool
 - It doesn't replace an existing file unless you pass `--force`.
 - It doesn't load images from the web unless you pass `--allow-remote-images`, and then only over https.
 - `open` doesn't work without the MarsDawn app installed; it exits with code 3. `export` doesn't need the app. The app is on the [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER).
-- MarsDawn 1.0 doesn't jump to the line `open` names yet. It opens the file at the top.
 - It runs on macOS only.
 
 ## export
@@ -62,7 +61,7 @@ marsdawn open notes.md --folder . --background --json
 - `path:line` names the line to land on. A column after it, as in `notes.md:120:8`, is ignored. An argument that names a file which exists is always that whole filename, so a file called `weird:12` opens as itself.
 - `--line <n>` names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.
 - Lines run from 1 to 999999999. Anything else is a usage error.
-- Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file but doesn't jump to the line yet.
+- Lines were added in marsdawn 0.3.0.
 - A folder argument opens in the window's sidebar instead of as a document, so `marsdawn open .` shows the current folder; `--folder <path>` does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and naming the same folder twice is one folder. `--line` with a folder is a usage error, since a folder has no line. There is no `-a`: passing it is a usage error that points at `--folder`.
 - `--background` opens without bringing MarsDawn to the front, for an agent that opens files while the person works elsewhere. The JSON is the same either way.
 - Folders and `--background` were added in marsdawn 0.5.1.
