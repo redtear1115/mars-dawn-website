@@ -30,6 +30,7 @@ UI = {
     "en": {
         "home": "MarsDawn", "privacy": "Privacy Policy", "support": "Support", "cli": "Command Line",
         "agents": "marsdawn for agents", "using_cli": "Using the CLI",
+        "markdown-to-pdf": "Markdown to PDF", "skill": "Agent skill",
         "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.",
         "footer_store": "MarsDawn is coming soon to the Mac App Store.",
         "more": "More",
@@ -39,6 +40,7 @@ UI = {
     "zh-hant": {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
         "agents": "給 AI agent 的 marsdawn 參考", "using_cli": "使用 CLI",
+        "markdown-to-pdf": "Markdown 轉 PDF", "skill": "給 agent 的 skill",
         "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。",
         "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
         "more": "其他頁面",
@@ -880,6 +882,232 @@ swift build -c release --product marsdawn
 # or the privacy page. No competitor is named and no review is quoted.
 # Screenshots are the app's own store screenshots (app repo
 # docs/store-assets/screenshots), unmodified apart from resizing.
+# The example on /markdown-to-pdf/, exactly as it was exported to make the page's images
+# (/assets/cli/plan-en.png, plan-zh.png): `marsdawn export` 0.5.0, page 1 rendered with sips and
+# cropped from the top to 930px. Change a document here and those images are out of date.
+EXAMPLE_PLAN = {
+    "en": '# Plan: faster exports\n\nAn agent wrote this plan. You review it, then turn it into a PDF.\n\n## Steps\n\n| Step | Owner | Status |\n|------|-------|--------|\n| Measure the slow pages | Agent | Done |\n| Cache rendered diagrams | Agent | In review |\n\nThe target is $t < 2\\,\\text{s}$ for a 50-page document:\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  Draft --> Review --> Ship\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n',
+    "zh-hant": '# 計畫：讓輸出更快\n\n這份計畫由 agent 撰寫，你審閱後再把它轉成 PDF。\n\n## 步驟\n\n| 步驟 | 負責 | 狀態 |\n|------|------|------|\n| 找出慢的頁面 | Agent | 完成 |\n| 快取算好的圖表 | Agent | 審閱中 |\n\n目標是 50 頁的文件在 $t < 2\\,\\text{s}$ 內完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 審閱 --> 發佈\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n',
+}
+
+# Exit codes, one source for the skill (and anything else that lists them). The kinds must be
+# ERROR_KINDS, in the same order, or the build stops.
+EXIT_CODES = [
+    (0, None, "Success. With --json, stdout is one JSON line."),
+    (2, "input_not_found", "The input file isn't there."),
+    (3, "app_not_installed", "MarsDawn isn't installed. Only `open` returns this."),
+    (4, "output_exists", "The PDF already exists. Pass --force to replace it, or -o to write elsewhere."),
+    (5, "export_failed", "Rendering failed."),
+    (64, None, "Usage error: a bad option or value. Printed as text on stderr, never as JSON."),
+]
+assert [kind for _, kind, _ in EXIT_CODES if kind] == ERROR_KINDS, "EXIT_CODES and ERROR_KINDS disagree"
+
+
+_PLAN_HTML = {locale: xml_escape(text) for locale, text in EXAMPLE_PLAN.items()}
+_INSTALL = "brew install redtear1115/tap/marsdawn"
+_SKILL_URL = f"{BASE_URL}/cli/skill/SKILL.md"
+
+# DRAFT COPY for the owner: the two kit landing pages (see the app repo's docs/plan-kit-reach.md).
+START_PAGES = {
+    ("en", "markdown-to-pdf"): {
+        "title": "Markdown to PDF from the command line · MarsDawn",
+        "description": "Turn a Markdown file into a PDF with the free marsdawn command-line tool. Install it with Homebrew, run one command, and get tables, math, Mermaid diagrams and highlighted code on the page.",
+        "body": f"""
+<section class="intro">
+  <h1>Markdown to PDF, from the command line.</h1>
+  <p>The free <code>marsdawn</code> tool turns a Markdown file into a PDF with one command. Tables, math, Mermaid diagrams and highlighted code come out the way they read in the source, and it needs nothing else installed, not even the MarsDawn app.</p>
+</section>
+<h2>Install it</h2>
+<pre><code>{_INSTALL}
+marsdawn --version</code></pre>
+<p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds. On an Intel Mac it builds from source instead, which takes a few minutes and needs Xcode 26 or later. It runs on macOS 15 or later, and <code>marsdawn --version</code> prints the version you got.</p>
+<h2>Save a document</h2>
+<p>Paste this into a file named <code>plan.md</code>:</p>
+<pre><code>{_PLAN_HTML["en"]}</code></pre>
+<h2>Export it</h2>
+<pre><code>marsdawn export plan.md</code></pre>
+<p>It writes <code>plan.pdf</code> next to the source and prints where it went:</p>
+<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<p>This is that page, captured from a real run of <code>marsdawn</code> 0.5.0:</p>
+<p><img class="pdf-page" src="/assets/cli/plan-en.png" alt="The exported PDF: the heading, a table of steps, an inline and a displayed formula, a Draft, Review, Ship diagram, and a highlighted line of Swift." width="989" height="930"></p>
+<h2>If it doesn't work</h2>
+<ul>
+  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew is building <code>marsdawn</code> from source, as it does on an Intel Mac. Install Xcode 26 or later from the App Store, then run the install again.</li>
+  <li><code>marsdawn: No such file: …</code> The path doesn't point at a file. Check the name, or run the command from the folder the file is in.</li>
+  <li><code>… already exists. Pass --force to replace it.</code> A PDF with that name is already there. Add <code>--force</code> to replace it, or <code>-o</code> to write it somewhere else.</li>
+  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> The theme or paper size isn't one it knows. The themes are dawn, classic, modern and vivid; the paper is a4 or letter.</li>
+</ul>
+<h2>Next</h2>
+<ul>
+  <li>Every option and the JSON it prints: <a href="/cli/">Command Line</a>.</li>
+  <li>To have a coding agent do this for you: <a href="/cli/skill/">the marsdawn agent skill</a>.</li>
+</ul>
+""",
+    },
+    ("zh-hant", "markdown-to-pdf"): {
+        "title": "用命令列把 Markdown 轉成 PDF · MarsDawn",
+        "description": "用免費的 marsdawn 命令列工具，把 Markdown 檔案轉成 PDF。用 Homebrew 安裝，執行一個指令，表格、數學式、Mermaid 圖表和程式碼上色都會出現在頁面上。",
+        "body": f"""
+<section class="intro">
+  <h1>用命令列，把 Markdown 轉成 PDF。</h1>
+  <p>免費的 <code>marsdawn</code> 工具只要一個指令，就能把 Markdown 檔案轉成 PDF。表格、數學式、Mermaid 圖表和程式碼上色，都會照原始檔的樣子呈現，而且不需要安裝其他東西，連 MarsDawn app 都不用。</p>
+</section>
+<h2>安裝</h2>
+<pre><code>{_INSTALL}
+marsdawn --version</code></pre>
+<p>在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上。這個工具需要 macOS 15 以上，<code>marsdawn --version</code> 會印出你裝到的版本。</p>
+<h2>存一份文件</h2>
+<p>把下面的內容貼進一個叫 <code>plan.md</code> 的檔案：</p>
+<pre><code>{_PLAN_HTML["zh-hant"]}</code></pre>
+<h2>匯出</h2>
+<pre><code>marsdawn export plan.md</code></pre>
+<p>它會在原始檔旁邊寫出 <code>plan.pdf</code>，並印出存放的位置：</p>
+<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<p>這是那一頁，擷取自 <code>marsdawn</code> 0.5.0 的實際執行結果：</p>
+<p><img class="pdf-page" src="/assets/cli/plan-zh.png" alt="匯出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。" width="989" height="930"></p>
+<h2>如果沒有成功</h2>
+<ul>
+  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> 代表 Homebrew 正在從原始碼建置 <code>marsdawn</code>，這在 Intel Mac 上會發生。從 App Store 安裝 Xcode 26 以上，再重新安裝一次。</li>
+  <li><code>marsdawn: No such file: …</code> 路徑沒有指到檔案。確認檔名，或在檔案所在的資料夾裡執行指令。</li>
+  <li><code>… already exists. Pass --force to replace it.</code> 同名的 PDF 已經存在。加上 <code>--force</code> 覆蓋它，或用 <code>-o</code> 寫到別的地方。</li>
+  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> 主題或紙張大小不是它認得的。主題有 dawn、classic、modern 和 vivid，紙張是 a4 或 letter。</li>
+</ul>
+<h2>接下來</h2>
+<ul>
+  <li>所有選項和它印出的 JSON：<a href="/zh-hant/cli/">命令列工具</a>。</li>
+  <li>讓寫程式的 agent 幫你做這件事：<a href="/zh-hant/cli/skill/">marsdawn 的 agent skill</a>。</li>
+</ul>
+""",
+    },
+}
+
+SKILL_PAGES = {
+    ("en", "cli/skill"): {
+        "title": "An agent skill for marsdawn · MarsDawn",
+        "description": "One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.",
+        "body": f"""
+<section class="intro">
+  <h1>Let your agent make the PDF.</h1>
+  <p>This skill is one Markdown file. It teaches a coding agent to install <code>marsdawn</code>, check that it works, export a document to PDF and read the result, so the agent that wrote the Markdown can hand you the PDF as well.</p>
+</section>
+<h2>Install it in Claude Code</h2>
+<pre><code>mkdir -p ~/.claude/skills/marsdawn
+curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
+<p>Claude Code loads it when a task calls for a PDF, and you can run it yourself as <code>/marsdawn</code>. It's <a href="/cli/skill/SKILL.md">one short file</a>, so read it before you install it.</p>
+<p>Other agents can use the same file. It's plain Markdown, instructions and commands, so point yours at the URL or paste it in.</p>
+<h2>What it teaches</h2>
+<ul>
+  <li>Install <code>marsdawn</code> with Homebrew if it's missing, then check it with <code>marsdawn --version</code> instead of assuming a version.</li>
+  <li>Export with <code>marsdawn export … --json</code>, and read the result: where the PDF went, how many pages it has, and any Mermaid diagram that didn't render.</li>
+  <li>Tell the failures apart by exit code: no such file, a PDF already there, a failed export, a bad option.</li>
+  <li>Use <code>open</code> only when the MarsDawn app is installed, and never to make a PDF.</li>
+</ul>
+<h2>What it doesn't do</h2>
+<ul>
+  <li>It doesn't give itself permission to run anything. Your agent still asks before it installs <code>marsdawn</code> or runs it, as it would for any other command.</li>
+  <li>It doesn't send your documents anywhere. <code>marsdawn</code> renders on your Mac, and it leaves out images from the web unless you pass <code>--allow-remote-images</code>.</li>
+</ul>
+<p>The whole contract, every field and every code, is in <a href="/cli/agents/">marsdawn for agents</a>.</p>
+""",
+    },
+    ("zh-hant", "cli/skill"): {
+        "title": "給 agent 的 marsdawn skill · MarsDawn",
+        "description": "一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。",
+        "body": f"""
+<section class="intro">
+  <h1>讓 agent 幫你做出 PDF。</h1>
+  <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果，這樣寫出 Markdown 的 agent，也能把 PDF 交給你。</p>
+</section>
+<h2>在 Claude Code 中安裝</h2>
+<pre><code>mkdir -p ~/.claude/skills/marsdawn
+curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
+<p>需要做出 PDF 時，Claude Code 會自動載入它，你也可以用 <code>/marsdawn</code> 自己執行。它只是<a href="/cli/skill/SKILL.md">一個簡短的檔案</a>，安裝前先讀一遍。</p>
+<p>其他 agent 也能用同一個檔案。它是純 Markdown，只有說明和指令，讓你的 agent 讀這個網址，或直接貼給它就好。這個檔案是英文的。</p>
+<h2>它教什麼</h2>
+<ul>
+  <li>如果沒有 <code>marsdawn</code>，就用 Homebrew 安裝，再用 <code>marsdawn --version</code> 確認版本，而不是假設某個版本。</li>
+  <li>用 <code>marsdawn export … --json</code> 匯出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。</li>
+  <li>依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。</li>
+  <li>只有裝了 MarsDawn app 才用 <code>open</code>，而且絕不用它來做 PDF。</li>
+</ul>
+<h2>它不會做的事</h2>
+<ul>
+  <li>它不會自己取得執行任何東西的權限。你的 agent 在安裝或執行 <code>marsdawn</code> 之前，仍然會先問你，就像執行其他指令一樣。</li>
+  <li>它不會把你的文件傳到任何地方。<code>marsdawn</code> 在你的 Mac 上產生 PDF，除非你加上 <code>--allow-remote-images</code>，否則不會載入網路上的圖片。</li>
+</ul>
+<p>完整的規格，每個欄位和每個代碼，都在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡。</p>
+""",
+    },
+}
+
+
+def build_skill_md() -> str:
+    """The agent skill, built from the same constants as /cli/agents/ so the two can't drift.
+
+    No `allowed-tools`: a skill someone downloads shouldn't pre-approve shell commands for itself.
+    No version number: the agent checks `marsdawn --version` against what it installed instead.
+    """
+    success = SCHEMAS["export"]["properties"]
+    fields = "\n".join(f"- `{name}`: {spec['description'] if 'description' in spec else 'always true'}"
+                       for name, spec in success.items())
+    codes = "\n".join(f"| {code} | {f'`{kind}`' if kind else '—'} | {meaning} |"
+                      for code, kind, meaning in EXIT_CODES)
+    return f"""---
+name: marsdawn
+description: Export Markdown to PDF with the marsdawn command-line tool on macOS, and read its JSON result. Use when asked to turn a Markdown file into a PDF, or to render Markdown with tables, math, Mermaid diagrams or highlighted code into a PDF.
+---
+
+# marsdawn
+
+`marsdawn export` renders a Markdown file to PDF on macOS 15 or later. It needs nothing else
+installed, not even the MarsDawn app.
+
+## Install and check
+
+```sh
+command -v marsdawn || {_INSTALL}
+marsdawn --version
+```
+
+Use the version it prints. Don't assume one. On Apple silicon Homebrew pours a prebuilt bottle;
+on an Intel Mac it builds from source and needs Xcode 26 or later. If the install stops with
+"A full installation of Xcode.app 26.0 is required", say so rather than retrying.
+
+## Export
+
+```sh
+marsdawn export input.md --json
+```
+
+Options: `-o out.pdf` (default: beside the input), `--theme {"|".join(THEME_IDS)}`,
+`--paper {"|".join(PAPER_SIZES)}`, `--force` to replace an existing PDF, and
+`--allow-remote-images` to load web images, which are left out by default.
+
+On success it exits 0 and prints one JSON line:
+
+{fields}
+
+If `diagramErrors` isn't empty, the PDF was still written: tell the user which diagrams failed.
+
+## Exit codes
+
+On failure with `--json` it prints `{{"ok": false, "error": <kind>, "message": ...}}`.
+
+| Code | `error` | Meaning |
+|---|---|---|
+{codes}
+
+## open
+
+`marsdawn open file.md` opens a file in the MarsDawn app for review. It needs the app; without
+it, it exits 3. Never use it to make a PDF: that's `export`.
+
+## Full contract
+
+Every field, schema and code: {BASE_URL}/cli/agents/
+"""
+
+
 TRAIT_ORDER = ["yours", "pay-once", "pdf", "native", "limits"]
 
 STORE_CHIP = {
@@ -1295,8 +1523,9 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "cli", "cli/agents"]
+PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "markdown-to-pdf", "cli", "cli/agents", "cli/skill"]
 SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
+                  "markdown-to-pdf": "markdown-to-pdf", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits"}
 
 
@@ -1304,6 +1533,8 @@ def all_pages() -> dict:
     merged = dict(PAGES)
     merged.update(CLI_PAGES)
     merged.update(AGENT_PAGES)
+    merged.update(START_PAGES)
+    merged.update(SKILL_PAGES)
     merged.update(TRAIT_PAGES)
     return merged
 
@@ -1330,6 +1561,8 @@ class MarkdownConversionError(Exception):
 
 
 _TRANSPARENT_TAGS = {"section", "div"}
+# Elements with no closing tag. Pushing one onto the stack would nest the rest of the page inside it.
+_VOID_TAGS = {"img", "br"}
 
 
 class _Node:
@@ -1353,7 +1586,8 @@ class _TreeBuilder(HTMLParser):
     def handle_starttag(self, tag, attrs):
         node = _Node(tag, attrs)
         self.stack[-1].children.append(node)
-        self.stack.append(node)
+        if tag not in _VOID_TAGS:
+            self.stack.append(node)
 
     def handle_startendtag(self, tag, attrs):
         self.stack[-1].children.append(_Node(tag, attrs))
@@ -1390,9 +1624,15 @@ def _render_inline(children) -> str:
             href = child.attrs.get("href", "")
             label = _render_inline(child.children).strip()
             parts.append(f"[{label}]({href})")
+        elif tag == "img":
+            parts.append(f"![{child.attrs.get('alt', '')}]({child.attrs.get('src', '')})")
         else:
             raise MarkdownConversionError(f"unsupported inline tag <{tag}>")
     return "".join(parts)
+
+
+def _longest_backtick_run(text: str) -> int:
+    return max((len(run) for run in re.findall(r"`+", text)), default=0)
 
 
 def _pre_text(node: _Node) -> str:
@@ -1433,7 +1673,9 @@ def _render_block(node: _Node) -> str:
             items.append(f"{bullet} " + _render_inline(child.children).strip())
         return "\n".join(items) + "\n\n"
     if tag == "pre":
-        return "```\n" + _pre_text(node) + "\n```\n\n"
+        text = _pre_text(node)
+        fence = "`" * max(3, _longest_backtick_run(text) + 1)
+        return f"{fence}\n{text}\n{fence}\n\n"
     if tag in ("strong", "em", "code", "kbd", "a"):
         # An inline element used directly as a block child (e.g. the support
         # page's standalone <a class="email">). Render it as its own paragraph.
@@ -1676,6 +1918,10 @@ def main() -> None:
     (SITE / "robots.txt").write_text(ROBOTS_TXT, encoding="utf-8")
     print(SITE / "robots.txt")
     (SITE / "sitemap.xml").write_text(build_sitemap(pages), encoding="utf-8")
+    skill = SITE / "cli" / "skill" / "SKILL.md"
+    skill.parent.mkdir(parents=True, exist_ok=True)
+    skill.write_text(build_skill_md(), encoding="utf-8")
+    print(skill)
     print(SITE / "sitemap.xml")
     schema_dir = SITE / SCHEMA_BASE.strip("/")
     schema_dir.mkdir(parents=True, exist_ok=True)

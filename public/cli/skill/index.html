@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An agent skill for marsdawn · MarsDawn</title>
+<meta name="description" content="One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/skill/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/skill/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/skill/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/cli/skill/">
+<link rel="alternate" type="text/markdown" href="/cli/skill/index.md">
+<meta property="og:title" content="An agent skill for marsdawn · MarsDawn">
+<meta property="og:description" content="One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/cli/skill/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/cli/skill/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/cli/skill/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>Let your agent make the PDF.</h1>
+  <p>This skill is one Markdown file. It teaches a coding agent to install <code>marsdawn</code>, check that it works, export a document to PDF and read the result, so the agent that wrote the Markdown can hand you the PDF as well.</p>
+</section>
+<h2>Install it in Claude Code</h2>
+<pre><code>mkdir -p ~/.claude/skills/marsdawn
+curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
+<p>Claude Code loads it when a task calls for a PDF, and you can run it yourself as <code>/marsdawn</code>. It's <a href="/cli/skill/SKILL.md">one short file</a>, so read it before you install it.</p>
+<p>Other agents can use the same file. It's plain Markdown, instructions and commands, so point yours at the URL or paste it in.</p>
+<h2>What it teaches</h2>
+<ul>
+  <li>Install <code>marsdawn</code> with Homebrew if it's missing, then check it with <code>marsdawn --version</code> instead of assuming a version.</li>
+  <li>Export with <code>marsdawn export … --json</code>, and read the result: where the PDF went, how many pages it has, and any Mermaid diagram that didn't render.</li>
+  <li>Tell the failures apart by exit code: no such file, a PDF already there, a failed export, a bad option.</li>
+  <li>Use <code>open</code> only when the MarsDawn app is installed, and never to make a PDF.</li>
+</ul>
+<h2>What it doesn't do</h2>
+<ul>
+  <li>It doesn't give itself permission to run anything. Your agent still asks before it installs <code>marsdawn</code> or runs it, as it would for any other command.</li>
+  <li>It doesn't send your documents anywhere. <code>marsdawn</code> renders on your Mac, and it leaves out images from the web unless you pass <code>--allow-remote-images</code>.</li>
+</ul>
+<p>The whole contract, every field and every code, is in <a href="/cli/agents/">marsdawn for agents</a>.</p>
+</main>
+<footer class="footer">
+  <span>Read what your agent wrote.</span>
+  <a href="/support/">Support</a>
+  <a href="/privacy/">Privacy Policy</a>
+  <a href="/cli/">Command Line</a>
+  <span>MarsDawn is coming soon to the Mac App Store.</span>
+</footer>
+</div>
+</body>
+</html>

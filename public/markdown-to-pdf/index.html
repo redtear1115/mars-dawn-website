@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markdown to PDF from the command line · MarsDawn</title>
+<meta name="description" content="Turn a Markdown file into a PDF with the free marsdawn command-line tool. Install it with Homebrew, run one command, and get tables, math, Mermaid diagrams and highlighted code on the page.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/markdown-to-pdf/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/markdown-to-pdf/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/markdown-to-pdf/">
+<link rel="alternate" type="text/markdown" href="/markdown-to-pdf/index.md">
+<meta property="og:title" content="Markdown to PDF from the command line · MarsDawn">
+<meta property="og:description" content="Turn a Markdown file into a PDF with the free marsdawn command-line tool. Install it with Homebrew, run one command, and get tables, math, Mermaid diagrams and highlighted code on the page.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/markdown-to-pdf/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/markdown-to-pdf/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/markdown-to-pdf/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>Markdown to PDF, from the command line.</h1>
+  <p>The free <code>marsdawn</code> tool turns a Markdown file into a PDF with one command. Tables, math, Mermaid diagrams and highlighted code come out the way they read in the source, and it needs nothing else installed, not even the MarsDawn app.</p>
+</section>
+<h2>Install it</h2>
+<pre><code>brew install redtear1115/tap/marsdawn
+marsdawn --version</code></pre>
+<p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds. On an Intel Mac it builds from source instead, which takes a few minutes and needs Xcode 26 or later. It runs on macOS 15 or later, and <code>marsdawn --version</code> prints the version you got.</p>
+<h2>Save a document</h2>
+<p>Paste this into a file named <code>plan.md</code>:</p>
+<pre><code># Plan: faster exports
+
+An agent wrote this plan. You review it, then turn it into a PDF.
+
+## Steps
+
+| Step | Owner | Status |
+|------|-------|--------|
+| Measure the slow pages | Agent | Done |
+| Cache rendered diagrams | Agent | In review |
+
+The target is $t &lt; 2\,\text{s}$ for a 50-page document:
+
+$$
+t_{\text{total}} = \sum_{i=1}^{n} t_i
+$$
+
+```mermaid
+graph LR
+  Draft --&gt; Review --&gt; Ship
+```
+
+```swift
+let pdf = try export("plan.md")
+```
+</code></pre>
+<h2>Export it</h2>
+<pre><code>marsdawn export plan.md</code></pre>
+<p>It writes <code>plan.pdf</code> next to the source and prints where it went:</p>
+<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<p>This is that page, captured from a real run of <code>marsdawn</code> 0.5.0:</p>
+<p><img class="pdf-page" src="/assets/cli/plan-en.png" alt="The exported PDF: the heading, a table of steps, an inline and a displayed formula, a Draft, Review, Ship diagram, and a highlighted line of Swift." width="989" height="930"></p>
+<h2>If it doesn't work</h2>
+<ul>
+  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew is building <code>marsdawn</code> from source, as it does on an Intel Mac. Install Xcode 26 or later from the App Store, then run the install again.</li>
+  <li><code>marsdawn: No such file: …</code> The path doesn't point at a file. Check the name, or run the command from the folder the file is in.</li>
+  <li><code>… already exists. Pass --force to replace it.</code> A PDF with that name is already there. Add <code>--force</code> to replace it, or <code>-o</code> to write it somewhere else.</li>
+  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> The theme or paper size isn't one it knows. The themes are dawn, classic, modern and vivid; the paper is a4 or letter.</li>
+</ul>
+<h2>Next</h2>
+<ul>
+  <li>Every option and the JSON it prints: <a href="/cli/">Command Line</a>.</li>
+  <li>To have a coding agent do this for you: <a href="/cli/skill/">the marsdawn agent skill</a>.</li>
+</ul>
+</main>
+<footer class="footer">
+  <span>Read what your agent wrote.</span>
+  <a href="/support/">Support</a>
+  <a href="/privacy/">Privacy Policy</a>
+  <a href="/cli/">Command Line</a>
+  <span>MarsDawn is coming soon to the Mac App Store.</span>
+</footer>
+</div>
+</body>
+</html>
