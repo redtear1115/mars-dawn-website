@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>命令列工具 · MarsDawn</title>
-<meta name="description" content="免費的 marsdawn 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。">
+<meta name="description" content="免費的 marsdawn 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -14,7 +14,7 @@
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/cli/">
 <link rel="alternate" type="text/markdown" href="/zh-hant/cli/index.md">
 <meta property="og:title" content="命令列工具 · MarsDawn">
-<meta property="og:description" content="免費的 marsdawn 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。">
+<meta property="og:description" content="免費的 marsdawn 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/cli/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
@@ -33,7 +33,7 @@
 <main>
 <section class="intro">
   <h1>命令列工具</h1>
-  <p>免費的 <code>marsdawn</code> 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。</p>
+  <p>免費的 <code>marsdawn</code> 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。</p>
 </section>
 
 <div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。</p></div>
@@ -53,7 +53,7 @@ swift build -c release --product marsdawn</code></pre>
 <h2>指令</h2>
 
 <h3>marsdawn open</h3>
-<p>在 MarsDawn 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝 MarsDawn。</p>
+<p>在 MarsDawn app 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝這個 app：沒有安裝時，<code>marsdawn open</code> 會以代碼 3 結束，並說明沒有安裝 MarsDawn。<code>export</code> 不需要這個 app。</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120</code></pre>

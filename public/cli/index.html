@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Command Line · MarsDawn</title>
-<meta name="description" content="The free marsdawn command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.">
+<meta name="description" content="The free marsdawn command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -14,7 +14,7 @@
 <link rel="canonical" href="https://marsdawn.southern-light.dev/cli/">
 <link rel="alternate" type="text/markdown" href="/cli/index.md">
 <meta property="og:title" content="Command Line · MarsDawn">
-<meta property="og:description" content="The free marsdawn command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.">
+<meta property="og:description" content="The free marsdawn command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/cli/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
@@ -33,7 +33,7 @@
 <main>
 <section class="intro">
   <h1>Command Line</h1>
-  <p>The free <code>marsdawn</code> command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.</p>
+  <p>The free <code>marsdawn</code> command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.</p>
 </section>
 
 <div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
@@ -53,7 +53,7 @@ swift build -c release --product marsdawn</code></pre>
 <h2>Commands</h2>
 
 <h3>marsdawn open</h3>
-<p>Opens one or more Markdown files in MarsDawn for review. Needs MarsDawn installed.</p>
+<p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app.</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120</code></pre>
