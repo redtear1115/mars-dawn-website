@@ -21,7 +21,7 @@ In this screenshot:
 - **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
 - **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others.
 - **Other files:** plain text files and PDFs open read-only.
-- **After the trial:** if you don't unlock MarsDawn once the 14-day trial ends, it stops opening documents for reading and editing. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
+- **After the trial:** if you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
 - **System:** MarsDawn needs macOS 26 or later.
 
 ## More

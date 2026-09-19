@@ -1043,7 +1043,7 @@ TRAIT_PAGES = {
 </ul>
 <h2>If you don't unlock</h2>
 <ul>
-  <li>After 14 days, MarsDawn stops opening documents for reading or editing until you unlock it.</li>
+  <li>After 14 days, until you unlock it, you can't read, edit, export or print documents in MarsDawn. A document still opens, but its content is covered.</li>
   <li>Your files don't change. They're ordinary files on your Mac, and Quick Look in Finder keeps showing them.</li>
   <li>The free <a href="/cli/"><code>marsdawn</code> command-line tool</a> keeps exporting them to PDF, trial or not.</li>
   <li>If a document is open in MarsDawn when the trial ends, the text you typed isn't lost: use File ▸ Save As… to keep it.</li>
@@ -1070,7 +1070,7 @@ TRAIT_PAGES = {
 </ul>
 <h2>如果沒有解鎖</h2>
 <ul>
-  <li>14 天後，在你解鎖之前，MarsDawn 不會再開啟文件供你閱讀或編輯。</li>
+  <li>14 天後，在你解鎖之前，無法在 MarsDawn 中閱讀、編輯、輸出或列印文件。文件仍會開啟，但內容會被遮住。</li>
   <li>你的檔案不會有任何改變。它們就是你 Mac 上的一般檔案，在 Finder 中用「快速查看」依然看得到。</li>
   <li>免費的 <a href="/zh-hant/cli/"><code>marsdawn</code> 命令列工具</a>不受試用影響，依然能把它們匯出成 PDF。</li>
   <li>如果試用結束時有文件正開在 MarsDawn 裡，你輸入的文字不會遺失，可以用「檔案」▸「另存新檔⋯」保存。</li>
@@ -1181,7 +1181,7 @@ TRAIT_PAGES = {
   <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
   <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others.</li>
   <li><strong>Other files:</strong> plain text files and PDFs open read-only.</li>
-  <li><strong>After the trial:</strong> if you don't unlock MarsDawn once the 14-day trial ends, it stops opening documents for reading and editing. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.</li>
+  <li><strong>After the trial:</strong> if you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.</li>
   <li><strong>System:</strong> MarsDawn needs macOS 26 or later.</li>
 </ul>
 """,
@@ -1206,7 +1206,7 @@ TRAIT_PAGES = {
   <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
   <li><strong>主題：</strong>內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，無法安裝其他主題。</li>
   <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
-  <li><strong>試用結束後：</strong>如果 14 天試用結束後沒有解鎖，MarsDawn 就不會再開啟文件供你閱讀和編輯。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</li>
+  <li><strong>試用結束後：</strong>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</li>
   <li><strong>系統：</strong>MarsDawn 需要 macOS 26 以上。</li>
 </ul>
 """,

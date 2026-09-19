@@ -21,7 +21,7 @@ In this screenshot:
 
 ## If you don't unlock
 
-- After 14 days, MarsDawn stops opening documents for reading or editing until you unlock it.
+- After 14 days, until you unlock it, you can't read, edit, export or print documents in MarsDawn. A document still opens, but its content is covered.
 - Your files don't change. They're ordinary files on your Mac, and Quick Look in Finder keeps showing them.
 - The free [`marsdawn` command-line tool](/cli/) keeps exporting them to PDF, trial or not.
 - If a document is open in MarsDawn when the trial ends, the text you typed isn't lost: use File ▸ Save As… to keep it.
