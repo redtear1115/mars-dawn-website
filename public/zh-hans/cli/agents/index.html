@@ -78,7 +78,7 @@ try {
 <h2>能做什么</h2>
 <ul>
   <li><code>export</code>：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件输出成分页的 PDF，不会打开任何窗口。</li>
-  <li><code>open</code>：在 MarsDawn app 中打开一或多个 Markdown 文件，让人审阅，也可以指定每个文件要定位的行。</li>
+  <li><code>open</code>：在 MarsDawn app 中打开一或多个 Markdown 文件，让人审阅，也可以指定每个文件要定位的行，或在窗口的侧边栏显示一个文件夹。</li>
 </ul>
 
 <h2>不做什么</h2>
@@ -116,12 +116,17 @@ try {
 <h2>open</h2>
 <pre><code>marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
-marsdawn open notes.md --line 120 --json</code></pre>
+marsdawn open notes.md --line 120 --json
+marsdawn open . --json
+marsdawn open notes.md --folder . --background --json</code></pre>
 <ul>
   <li><code>path:line</code> 指定要定位的行。后面再接列号，例如 <code>notes.md:120:8</code>，会被忽略。如果参数本身就是一个存在的文件名，就一律当成那个文件，所以名为 <code>weird:12</code> 的文件会照原名打开。</li>
   <li><code>--line &lt;n&gt;</code> 为单一文件指定行号，包括文件名本身以冒号加数字结尾的情况。只能搭配一个文件。</li>
   <li>行号范围是 1 到 999999999，超出范围是用法错误。</li>
   <li>行号从 marsdawn 0.3.0 开始提供。MarsDawn 1.0 会打开文件，但还不会跳到指定的行。</li>
+  <li>文件夹参数会在窗口的侧边栏打开，而不是当成文稿，所以 <code>marsdawn open .</code> 会显示当前的文件夹；<code>--folder &lt;path&gt;</code> 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹：指定两个是用法错误，同一个文件夹指定两次则算一个。文件夹没有行号，所以 <code>--line</code> 搭配文件夹是用法错误。没有 <code>-a</code>：传入它是用法错误，错误消息会指向 <code>--folder</code>。</li>
+  <li><code>--background</code> 打开时不把 MarsDawn 带到最前面，适合在用户做别的事时打开文件的 agent。两种情况的 JSON 都一样。</li>
+  <li>文件夹与 <code>--background</code> 从 marsdawn 0.5.1 开始提供。</li>
 </ul>
 <p>成功，退出代码 0：</p>
 <pre><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
@@ -129,25 +134,32 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>opened</code>：每个文件一个对象，顺序与传入时相同。<code>path</code> 是文件的绝对路径；只有指定了行号时才有 <code>line</code>。</li>
   <li><code>app</code>：打开它们的 MarsDawn app 路径。</li>
 </ul>
+<p>有文件夹时（marsdawn 0.5.1 以后），退出代码 0：</p>
+<pre><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
+<ul>
+  <li><code>folder</code>：只有指定了文件夹时才有。<code>path</code> 是它的绝对路径。<code>requested</code> 一律是 <code>true</code>：marsdawn 已请 MarsDawn 显示这个文件夹，但无法得知侧边栏是否真的显示了，因为 app 可能会先向用户请求访问权限。请报告为“已请求”，而不是“已完成”。</li>
+  <li>只指定文件夹时，<code>opened</code> 是空的。</li>
+</ul>
 <p>marsdawn 0.2.x 的 <code>opened</code> 是路径字符串的清单。如果需要同时处理两种格式，请先查看 <code>marsdawn --version</code>。</p>
 
 <h2>失败</h2>
 <p>加上 <code>--json</code> 时，失败会在 stdout 输出一个 JSON 对象，并以对应的代码结束：</p>
 <pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
 <ul>
-  <li><code>2</code>，<code>input_not_found</code>：输入文件不存在、是文件夹，或不是 UTF-8 文本。</li>
+  <li><code>2</code>，<code>input_not_found</code>：输入文件不存在、是文件夹，或不是 UTF-8 文本；或 <code>--folder</code> 的路径不存在、不是文件夹。</li>
   <li><code>3</code>，<code>app_not_installed</code>：没有安装 MarsDawn。只有 <code>open</code> 会返回这个代码。</li>
   <li><code>4</code>，<code>output_exists</code>：输出文件已存在，请加上 <code>--force</code>。</li>
   <li><code>5</code>，<code>export_failed</code>：导出本身失败。</li>
-  <li><code>64</code>：用法错误，例如未知的选项、无效的值、行号超出范围，或 <code>--line</code> 搭配了多个文件。这种错误一律以文本输出到 stderr，即使加了 <code>--json</code> 也一样。</li>
+  <li><code>64</code>：用法错误，例如未知的选项、无效的值、行号超出范围、<code>--line</code> 搭配了多个文件或文件夹、指定了多个文件夹，或使用了 <code>-a</code>。这种错误一律以文本输出到 stderr，即使加了 <code>--json</code> 也一样。</li>
 </ul>
 
 <h2>JSON Schema</h2>
 <p>每种 <code>--json</code> 结果的 JSON Schema（draft 2020-12）：</p>
 <ul>
   <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功</li>
-  <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功，marsdawn 0.3.0 以后</li>
+  <li><a href="/schemas/cli/open.v3.json">open.v3.json</a>: open 成功，marsdawn 0.5.1 以后，包括在侧边栏显示的文件夹</li>
   <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: 两个命令的失败结果</li>
+  <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功，marsdawn 0.3.0 到 0.5.0</li>
   <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单</li>
 </ul>
 

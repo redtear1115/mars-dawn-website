@@ -1,6 +1,6 @@
 # 让 agent 把写好的文稿拿给你看，也帮你做出 PDF。
 
-这个 skill 是一个 Markdown 文件。它教写程序的 agent 把自己写的文稿在 MarsDawn 里打开给你检阅，也教它安装 `marsdawn`、确认它能用、把文稿导出成 PDF 并读懂结果。
+这个 skill 是一个 Markdown 文件。它教写程序的 agent 把自己写的文稿在 MarsDawn 里打开给你审阅，也教它安装 `marsdawn`、确认它能用、把文稿导出成 PDF 并读懂结果。
 
 **一个 Markdown 文件，放在 `~/.claude/skills/marsdawn/SKILL.md`。**有了它，你的 agent 会安装 `marsdawn`、导出 PDF 并读懂 JSON 结果；运行任何命令之前，它还是会先问你。
 
@@ -54,5 +54,5 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 - [为什么 AI 写的东西还是需要人读过](https://marsdawn.southern-light.dev/zh-hans/reviewing-ai-output/index.md): AI 写的 Markdown 还是得由人来理解，不能因为读起来通顺就直接相信。MarsDawn 把排版后的页面和源代码并排，也把 Mermaid 图表与 KaTeX 数学式画出来，让结构一眼就看得懂。
 - [更新记录](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): 免费的 marsdawn 命令行工具改了什么。
 - [English](https://marsdawn.southern-light.dev/cli/skill/index.md): One file your coding agent loads to open Markdown it wrote in MarsDawn for your review, and to install marsdawn, export Markdown to PDF and read the JSON result.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/cli/skill/index.md): 一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你檢閱，也學會安裝 marsdawn、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/cli/skill/index.md): 一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你審閱，也學會安裝 marsdawn、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。
 - [日本語](https://marsdawn.southern-light.dev/ja/cli/skill/index.md): コーディングエージェントが読み込む1つのファイルです。自分が書いた Markdown を MarsDawn で開いてあなたに確認してもらう方法と、marsdawn のインストール、Markdown の PDF への書き出し、JSON の結果の読み取りを教えます。

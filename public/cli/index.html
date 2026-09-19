@@ -94,15 +94,19 @@ swift build -c release --product marsdawn</code></pre>
 <p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app.</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
-marsdawn open notes.md --line 120</code></pre>
+marsdawn open notes.md --line 120
+marsdawn open .
+marsdawn open notes.md --folder .</code></pre>
 <ul>
   <li><code>path:line</code>: asks MarsDawn to land on that line. A column after it, as in <code>notes.md:120:8</code>, is ignored. If a file with the whole name exists, the argument is that file.</li>
   <li><code>--line &lt;n&gt;</code>: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.</li>
   <li>Lines run from 1 to 999999999.</li>
+  <li>A folder argument opens in the window's sidebar instead of as a document: <code>marsdawn open .</code> shows the current folder. <code>--folder &lt;path&gt;</code> does the same alongside files. A window's sidebar shows one folder, so naming two is a usage error.</li>
+  <li><code>--background</code>: open without bringing MarsDawn to the front.</li>
   <li>MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
 </ul>
-<p>Lines were added in marsdawn 0.3.0.</p>
+<p>Lines were added in marsdawn 0.3.0, and folders and <code>--background</code> in 0.5.1.</p>
 
 <h3>marsdawn export</h3>
 <p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.</p>
@@ -131,12 +135,12 @@ marsdawn open notes.md --line 120</code></pre>
   <tr><th scope="row"><code>3</code></th><td data-label="Means">MarsDawn is not installed (<code>open</code> only).</td><td data-label="What to do">Install the app, or use <code>export</code>, which doesn't need it</td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="Means">output exists (pass <code>--force</code>).</td><td data-label="What to do">Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere</td></tr>
   <tr><th scope="row"><code>5</code></th><td data-label="Means">export failed.</td><td data-label="What to do">Read <code>message</code> in the JSON result</td></tr>
-  <tr><th scope="row"><code>64</code></th><td data-label="Means">usage error, including a line out of range or <code>--line</code> with more than one file.</td><td data-label="What to do">Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="Means">usage error, including a line out of range, <code>--line</code> with more than one file or with a folder, or more than one folder.</td><td data-label="What to do">Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
 </tbody>
 </table></div>
 
 <h2 id="json-output">--json output</h2>
-<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when a folder was given, <code>folder</code>. <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="Site">

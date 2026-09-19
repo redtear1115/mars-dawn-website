@@ -94,15 +94,19 @@ swift build -c release --product marsdawn</code></pre>
 <p>1つ以上の Markdown ファイルを MarsDawn アプリで開いて確認できます。アプリのインストールが必要です。インストールされていない場合、<code>marsdawn open</code> はコード 3 で終了し、MarsDawn がインストールされていないことを知らせます。<code>export</code> にはアプリは不要です。</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
-marsdawn open notes.md --line 120</code></pre>
+marsdawn open notes.md --line 120
+marsdawn open .
+marsdawn open notes.md --folder .</code></pre>
 <ul>
   <li><code>path:line</code>：MarsDawn にその行に移動するよう指定します。その後にコロンが続く場合、たとえば <code>notes.md:120:8</code> の列部分は無視されます。引数全体と一致するファイル名が存在する場合、その引数はそのファイルとして扱われます。</li>
   <li><code>--line &lt;n&gt;</code>：単一ファイルに対して同じ指定ができ、それ自体がコロンと数字で終わるパスに対して行を指定する方法でもあります。ファイルは1つだけ指定できます。</li>
   <li>行番号は 1 から 999999999 までです。</li>
+  <li>フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます：<code>marsdawn open .</code> で現在のフォルダを表示します。<code>--folder &lt;path&gt;</code> はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つなので、2つ指定すると使用方法のエラーになります。</li>
+  <li><code>--background</code>：MarsDawn を前面に出さずに開きます。</li>
   <li>MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。</li>
   <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
 </ul>
-<p>行の指定は marsdawn 0.3.0 で追加されました。</p>
+<p>行の指定は marsdawn 0.3.0 で、フォルダと <code>--background</code> は 0.5.1 で追加されました。</p>
 
 <h3>marsdawn export</h3>
 <p>Markdown ファイルを、MarsDawn 自身の PDF 書き出しと同じ書き出しエンジンで、ページ分割された PDF にレンダリングします。MarsDawn アプリは不要です。相対パスの画像は、入力ファイルのあるフォルダを基準に解決されます。</p>
@@ -131,12 +135,12 @@ marsdawn open notes.md --line 120</code></pre>
   <tr><th scope="row"><code>3</code></th><td data-label="意味">MarsDawn がインストールされていない（<code>open</code> のみ）。</td><td data-label="対処">アプリをインストールするか、アプリが不要な <code>export</code> を使う</td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="意味">出力先がすでに存在する（<code>--force</code> を指定してください）。</td><td data-label="対処"><code>--force</code> で上書きするか、<code>-o</code> で別の場所に書き出す</td></tr>
   <tr><th scope="row"><code>5</code></th><td data-label="意味">書き出しに失敗。</td><td data-label="対処">JSON の結果の <code>message</code> を読む</td></tr>
-  <tr><th scope="row"><code>64</code></th><td data-label="意味">使用方法のエラー。範囲外の行や、複数ファイルに対する <code>--line</code> の指定などを含みます。</td><td data-label="対処">オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される</td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="意味">使用方法のエラー。範囲外の行、複数ファイルやフォルダに対する <code>--line</code> の指定、複数のフォルダの指定などを含みます。</td><td data-label="対処">オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される</td></tr>
 </tbody>
 </table></div>
 
 <h2 id="json-output">--json 出力</h2>
-<p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含む）、<code>app</code>（アプリのパス）を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時はどちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>
+<p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含む）、<code>app</code>（アプリのパス）、フォルダが指定されていれば <code>folder</code> を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時はどちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="サイト">
