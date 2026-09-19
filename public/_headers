@@ -45,7 +45,7 @@
 
 # Markdown twins of every page. Cloudflare's _headers allows only one splat
 # per rule, so a suffix pattern like /*.md is not a reliable way to match
-# nested paths; these eight paths are listed explicitly instead.
+# nested paths; these paths are listed explicitly instead.
 /index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
@@ -64,7 +64,19 @@
 /zh-hant/support/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
+/zh-hans/support/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/support/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
 /zh-hant/privacy/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/privacy/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/privacy/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
 /zh-hant/cli/index.md
