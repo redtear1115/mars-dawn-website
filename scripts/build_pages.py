@@ -38,6 +38,7 @@ UI = {
         "home": "MarsDawn", "privacy": "Privacy Policy", "support": "Support", "cli": "Command Line",
         "agents": "marsdawn for agents", "using_cli": "Using the CLI",
         "markdown-to-pdf": "Markdown to PDF", "skill": "Agent skill",
+        "view-markdown-on-mac": "View Markdown on a Mac",
         "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.",
         "footer_store": "MarsDawn is coming soon to the Mac App Store.",
         "more": "More",
@@ -48,6 +49,7 @@ UI = {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
         "agents": "給 AI agent 的 marsdawn 參考", "using_cli": "使用 CLI",
         "markdown-to-pdf": "Markdown 轉 PDF", "skill": "給 agent 的 skill",
+        "view-markdown-on-mac": "在 Mac 上看 Markdown",
         "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。",
         "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
         "more": "其他頁面",
@@ -963,6 +965,66 @@ marsdawn --version</code></pre>
 </ul>
 """,
     },
+    ("en", "view-markdown-on-mac"): {
+        "title": "How to view a Markdown file on a Mac · MarsDawn",
+        "description": "A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: as a PDF with the free marsdawn command-line tool today, and in the MarsDawn app, coming soon to the Mac App Store.",
+        "body": f"""
+<section class="intro">
+  <h1>How to view a Markdown file on a Mac.</h1>
+  <p>A <code>.md</code> file is plain text. The headings, bold words, tables and diagrams are written as marks: <code>#</code> for a heading, <code>**</code> around bold, pipes for a table, a <code>mermaid</code> code block for a diagram. Open it in a plain text editor and you read the marks. To read the page the way its author meant, something has to render it.</p>
+</section>
+<h2>Today, for free: turn it into a PDF</h2>
+<p>The free <code>marsdawn</code> command-line tool renders a Markdown file to a PDF, which any Mac can open. Tables, math, Mermaid diagrams and highlighted code come out rendered, and it needs nothing else installed, not even the MarsDawn app.</p>
+<pre><code>{BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<p><code>export</code> writes <code>notes.pdf</code> next to the Markdown file, and <code>open</code> shows it in your PDF viewer. It needs macOS 15 or later. The walk-through, with a real exported page, is on <a href="/markdown-to-pdf/">Markdown to PDF</a>.</p>
+<h2>Coming soon: read it in MarsDawn</h2>
+<p>MarsDawn is a Markdown editor for the Mac, coming soon to the Mac App Store. Open a <code>.md</code> file and read the rendered page next to the source:</p>
+<ul>
+  <li>The preview updates as you type, and the two panes scroll together.</li>
+  <li>Mermaid flowcharts and sequence diagrams are drawn in the preview, and code blocks are highlighted.</li>
+  <li>In Finder, press Space on a Markdown file for a Quick Look preview, diagrams included.</li>
+  <li>When you want to change something, the source is right there. MarsDawn is an editor, not only a viewer.</li>
+</ul>
+<p>If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent writes, you read it rendered, and it revises. See <a href="/">the home page</a>, and <a href="/cli/agents/">marsdawn for agents</a> for letting an agent open files for you.</p>
+<h2>Next</h2>
+<ul>
+  <li>Every option of the command-line tool: <a href="/cli/">Command Line</a>.</li>
+  <li>What MarsDawn doesn't do: <a href="/limits/">the list</a>.</li>
+</ul>
+""",
+    },
+    ("zh-hant", "view-markdown-on-mac"): {
+        "title": "在 Mac 上怎麼看 Markdown 檔案 · MarsDawn",
+        "description": "md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：現在可以用免費的 marsdawn 命令列工具轉成 PDF，之後可以用即將在 Mac App Store 上架的 MarsDawn app。",
+        "body": f"""
+<section class="intro">
+  <h1>在 Mac 上，怎麼看 Markdown 檔案。</h1>
+  <p><code>.md</code> 檔案是純文字。標題、粗體、表格和圖表，都是用記號寫成的：<code>#</code> 代表標題，<code>**</code> 包住粗體，直線符號畫出表格，<code>mermaid</code> 程式碼區塊則是一張圖。用純文字編輯器打開，看到的就是這些記號。想照作者的意思讀到排好的頁面，就需要有東西把它排版出來。</p>
+</section>
+<h2>現在就能用，而且免費：轉成 PDF</h2>
+<p>免費的 <code>marsdawn</code> 命令列工具，能把 Markdown 檔案排版成 PDF，任何一台 Mac 都打得開。表格、數學式、Mermaid 圖表和程式碼上色都會排好，而且不需要安裝其他東西，連 MarsDawn app 都不用。</p>
+<pre><code>{BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<p><code>export</code> 會在 Markdown 檔案旁邊寫出 <code>notes.pdf</code>，<code>open</code> 會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</p>
+<h2>即將推出：在 MarsDawn 裡讀</h2>
+<p>MarsDawn 是為 Mac 做的 Markdown 編輯器，即將在 Mac App Store 上架。打開 <code>.md</code> 檔案，排好的頁面就在原始碼旁邊：</p>
+<ul>
+  <li>預覽會隨著你打字即時更新，兩邊的窗格一起捲動。</li>
+  <li>Mermaid 流程圖和循序圖直接畫在預覽裡，程式碼區塊也會上色。</li>
+  <li>在 Finder 裡對 Markdown 檔案按空白鍵，就有「快速查看」預覽，圖表也在。</li>
+  <li>想改的時候，原始碼就在旁邊。MarsDawn 是編輯器，不只是檢視器。</li>
+</ul>
+<p>如果這份檔案是 AI agent 寫的，這正是 MarsDawn 要支援的循環：agent 寫，你讀排好的頁面，agent 再修改。請看<a href="/zh-hant/">首頁</a>，想讓 agent 幫你開檔案，請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
+<h2>接下來</h2>
+<ul>
+  <li>命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。</li>
+  <li>MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
+</ul>
+""",
+    },
     ("zh-hant", "markdown-to-pdf"): {
         "title": "用命令列把 Markdown 轉成 PDF · MarsDawn",
         "description": "用免費的 marsdawn 命令列工具，把 Markdown 檔案轉成 PDF。用 Homebrew 安裝，執行一個指令，表格、數學式、Mermaid 圖表和程式碼上色都會出現在頁面上。",
@@ -1542,9 +1604,9 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "markdown-to-pdf", "cli", "cli/agents", "cli/skill"]
+PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "cli", "cli/agents", "cli/skill"]
 SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
-                  "markdown-to-pdf": "markdown-to-pdf", "cli/skill": "skill",
+                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits"}
 
 
