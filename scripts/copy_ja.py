@@ -442,7 +442,6 @@ marsdawn open notes.md --folder .</code></pre>
   <li>行番号は 1 から 999999999 までです。</li>
   <li>フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます：<code>marsdawn open .</code> で現在のフォルダを表示します。<code>--folder &lt;path&gt;</code> はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つなので、2つ指定すると使用方法のエラーになります。</li>
   <li><code>--background</code>：MarsDawn を前面に出さずに開きます。</li>
-  <li>MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。</li>
   <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
 </ul>
 <p>行の指定は marsdawn 0.3.0 で、フォルダと <code>--background</code> は 0.5.1 で追加されました。</p>
@@ -504,7 +503,6 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>--force</code> を指定しない限り、既存のファイルを置き換えません。</li>
   <li><code>--allow-remote-images</code> を指定しない限りウェブから画像を読み込まず、指定した場合も https のみです。</li>
   <li><code>open</code> は MarsDawn アプリがインストールされていないと動作せず、コード 3 で終了します。<code>export</code> にアプリは不要です。アプリは <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。</li>
-  <li>MarsDawn 1.0 はまだ <code>open</code> が指定した行にジャンプしません。ファイルは先頭から開きます。</li>
   <li>macOS でのみ動作します。</li>
 </ul>
 
@@ -539,7 +537,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li><code>path:line</code> は移動先の行を指定します。その後にコロンが続く場合、たとえば <code>notes.md:120:8</code> の列部分は無視されます。存在するファイル名を丸ごと表す引数は常にそのファイル名として扱われるため、<code>weird:12</code> という名前のファイルはそのまま開きます。</li>
   <li><code>--line &lt;n&gt;</code> は単一ファイルの行を指定します。それ自体がコロンと数字で終わるパスも含みます。ファイルは1つだけ指定できます。</li>
   <li>行番号は 1 から 999999999 までで、それ以外は使用方法のエラーになります。</li>
-  <li>行の指定は marsdawn 0.3.0 で追加されました。MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。</li>
+  <li>行の指定は marsdawn 0.3.0 で追加されました。</li>
   <li>フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます。<code>marsdawn open .</code> で現在のフォルダを表示し、<code>--folder &lt;path&gt;</code> はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つです：2つ指定すると使用方法のエラーになり、同じフォルダを2回指定した場合は1つとして扱います。フォルダには行がないため、フォルダに <code>--line</code> を指定すると使用方法のエラーです。<code>-a</code> はありません：指定すると使用方法のエラーになり、<code>--folder</code> を案内します。</li>
   <li><code>--background</code> は MarsDawn を前面に出さずに開きます。人が別の作業をしている間にファイルを開くエージェント向けです。JSON はどちらでも同じです。</li>
   <li>フォルダと <code>--background</code> は marsdawn 0.5.1 で追加されました。</li>

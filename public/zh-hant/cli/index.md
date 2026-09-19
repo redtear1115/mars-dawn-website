@@ -47,7 +47,6 @@ marsdawn open notes.md --folder .
 - 行號範圍是 1 到 999999999。
 - 資料夾參數會在視窗的側邊欄開啟，而不是當成文件：`marsdawn open .` 會顯示目前的資料夾。`--folder <path>` 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾，所以指定兩個是使用方式錯誤。
 - `--background`：開啟時不把 MarsDawn 帶到最前面。
-- MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。
 - `--json`：印出 JSON 結果，而不是文字。
 
 行號功能從 marsdawn 0.3.0 開始提供，資料夾與 `--background` 從 0.5.1 開始。

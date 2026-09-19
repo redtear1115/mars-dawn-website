@@ -88,7 +88,6 @@ try {
   <li>It doesn't replace an existing file unless you pass <code>--force</code>.</li>
   <li>It doesn't load images from the web unless you pass <code>--allow-remote-images</code>, and then only over https.</li>
   <li><code>open</code> doesn't work without the MarsDawn app installed; it exits with code 3. <code>export</code> doesn't need the app. The app is on the <a href="https://apps.apple.com/app/idPLACEHOLDER">Mac App Store</a>.</li>
-  <li>MarsDawn 1.0 doesn't jump to the line <code>open</code> names yet. It opens the file at the top.</li>
   <li>It runs on macOS only.</li>
 </ul>
 
@@ -123,7 +122,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li><code>path:line</code> names the line to land on. A column after it, as in <code>notes.md:120:8</code>, is ignored. An argument that names a file which exists is always that whole filename, so a file called <code>weird:12</code> opens as itself.</li>
   <li><code>--line &lt;n&gt;</code> names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.</li>
   <li>Lines run from 1 to 999999999. Anything else is a usage error.</li>
-  <li>Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
+  <li>Lines were added in marsdawn 0.3.0.</li>
   <li>A folder argument opens in the window's sidebar instead of as a document, so <code>marsdawn open .</code> shows the current folder; <code>--folder &lt;path&gt;</code> does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and naming the same folder twice is one folder. <code>--line</code> with a folder is a usage error, since a folder has no line. There is no <code>-a</code>: passing it is a usage error that points at <code>--folder</code>.</li>
   <li><code>--background</code> opens without bringing MarsDawn to the front, for an agent that opens files while the person works elsewhere. The JSON is the same either way.</li>
   <li>Folders and <code>--background</code> were added in marsdawn 0.5.1.</li>
