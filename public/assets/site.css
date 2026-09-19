@@ -13,6 +13,12 @@
   --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang TC", "PingFang SC", sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, monospace;
 }
+/* Han characters are drawn differently in each language, and the first CJK font in --font wins.
+   Give Simplified Chinese and Japanese their own system fonts, including the language-switch
+   links, which carry their own lang and would otherwise inherit the page's font. */
+:lang(zh-Hans) { --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", sans-serif; }
+:lang(ja) { --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif; }
+body [lang] { font-family: var(--font); }
 
 @media (prefers-color-scheme: dark) {
   :root {

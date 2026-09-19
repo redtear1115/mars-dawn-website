@@ -1,7 +1,8 @@
 # Contributing
 
 This repo is the site at marsdawn.southern-light.dev: home page, privacy policy and support pages,
-in English and Traditional Chinese. It's the right place for copy changes, page structure, the
+in English and Traditional Chinese, with the privacy policy and support pages also in Simplified
+Chinese and Japanese. It's the right place for copy changes, page structure, the
 build script and deploy workflow.
 
 This project follows the [Code of Conduct](CODE_OF_CONDUCT.md).
@@ -35,7 +36,7 @@ If `public/themes/v1/index.json` exists, CI also checks it's valid JSON.
 UI labels quoted on the pages must match the app's strings in each language — check them by hand
 when either side changes; nothing automated catches a mismatch there.
 
-The URLs `/privacy/`, `/support/`, `/zh-hant/privacy/` and `/zh-hant/support/` are public contracts
+The URLs `/privacy/`, `/support/` and their `/zh-hant/`, `/zh-hans/` and `/ja/` versions are public contracts
 that must keep working at the same paths. Don't move or remove them without a redirect plan.
 
 ## Issues and pull requests
