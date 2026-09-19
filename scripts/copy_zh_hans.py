@@ -406,6 +406,7 @@ open notes.pdf</code></pre>
 <h2>安装</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
 <pre><code>{k.BREW_TAP_INSTALL}</code></pre>
+<p>在用写程序的 agent 吗？<a href="/zh-hans/cli/skill/">加上 marsdawn skill</a>：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你检阅，也能导出 PDF。</p>
 <p>在 Apple 芯片的 Mac 上，Homebrew 会直接安装预先构建好的版本，几秒就完成，不需要另外安装任何东西。在 Intel Mac 上则会从源代码构建，需要几分钟，也需要 Xcode 26 以上（Swift 6.2）。这个工具需要 macOS 15 以上。</p>
 <p>也可以从<a href="{k.KIT_URL}">源代码</a>用 Swift Package Manager 构建：</p>
 <pre><code>git clone {k.KIT_URL}.git
@@ -570,23 +571,25 @@ swift build -c release --product marsdawn
     }
     pages['cli/skill'] = {
         "title": '让写程序的 agent 把 Markdown 转 PDF 的 skill · MarsDawn',
-        "description": '一个文件，让写程序的 agent 学会安装 marsdawn、确认它能用、把 Markdown 导出成 PDF，并读懂 JSON 结果。',
+        "description": '一个文件，让写程序的 agent 把自己写的 Markdown 在 MarsDawn 里打开给你检阅，也学会安装 marsdawn、把 Markdown 导出成 PDF，并读懂 JSON 结果。',
         "body": f"""
 <section class="intro">
-  <h1>让 agent 帮你做出 PDF。</h1>
-  <p>这个 skill 是一个 Markdown 文件。它教写程序的 agent 安装 <code>marsdawn</code>、确认它能用、把文稿导出成 PDF 并读懂结果，这样写出 Markdown 的 agent，也能把 PDF 交给你。</p>
+  <h1>让 agent 把写好的文稿拿给你看，也帮你做出 PDF。</h1>
+  <p>这个 skill 是一个 Markdown 文件。它教写程序的 agent 把自己写的文稿在 MarsDawn 里打开给你检阅，也教它安装 <code>marsdawn</code>、确认它能用、把文稿导出成 PDF 并读懂结果。</p>
 </section>
 <h2>在 Claude Code 中安装</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
-<p>需要做出 PDF 时，Claude Code 会自动加载它，你也可以用 <code>/marsdawn</code> 自己运行。它只是<a href="/cli/skill/SKILL.md">一个简短的文件</a>，安装前先读一遍。</p>
+<p>需要做出 PDF，或写好、改好一份要给你读的 Markdown 文稿时，Claude Code 会自动加载它，你也可以用 <code>/marsdawn</code> 自己运行。它只是<a href="/cli/skill/SKILL.md">一个简短的文件</a>，安装前先读一遍。</p>
 <p>其他 agent 也能用同一个文件。它是纯 Markdown，只有说明和命令，让你的 agent 读这个网址，或直接贴给它就好。这个文件是英文的。</p>
 <h2>它教什么</h2>
 <ul>
   <li>如果没有 <code>marsdawn</code>，就用 Homebrew 安装，再用 <code>marsdawn --version</code> 确认版本，而不是假设某个版本。</li>
   <li>用 <code>marsdawn export … --json</code> 导出，并读懂结果：PDF 存到哪里、有几页，以及有没有 Mermaid 图表没画出来。</li>
   <li>依退出代码分辨失败的原因：找不到文件、PDF 已经存在、导出失败、选项错误。</li>
-  <li>只有装了 MarsDawn app 才用 <code>open</code>，而且绝不用它来做 PDF。</li>
+  <li>用 <code>marsdawn open file.md:行号</code> 打开自己写的文稿，停在第一处修改，而且只打开一次：之后的修改会自己出现在已打开的窗口里。</li>
+  <li>如果没有安装 MarsDawn app，就告诉你一次然后继续，不会一直重试。绝不用 <code>open</code> 来做 PDF。</li>
+  <li>使用 <code>--folder</code>（marsdawn 0.5.1 以上）时，把文件夹报告为“已请求显示”，而不是“已显示”：由 app 决定，也不会有结果返回。</li>
 </ul>
 <h2>它不会做的事</h2>
 <ul>

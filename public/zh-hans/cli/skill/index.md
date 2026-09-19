@@ -1,6 +1,6 @@
-# 让 agent 帮你做出 PDF。
+# 让 agent 把写好的文稿拿给你看，也帮你做出 PDF。
 
-这个 skill 是一个 Markdown 文件。它教写程序的 agent 安装 `marsdawn`、确认它能用、把文稿导出成 PDF 并读懂结果，这样写出 Markdown 的 agent，也能把 PDF 交给你。
+这个 skill 是一个 Markdown 文件。它教写程序的 agent 把自己写的文稿在 MarsDawn 里打开给你检阅，也教它安装 `marsdawn`、确认它能用、把文稿导出成 PDF 并读懂结果。
 
 ## 在 Claude Code 中安装
 
@@ -9,7 +9,7 @@ mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-需要做出 PDF 时，Claude Code 会自动加载它，你也可以用 `/marsdawn` 自己运行。它只是[一个简短的文件](/cli/skill/SKILL.md)，安装前先读一遍。
+需要做出 PDF，或写好、改好一份要给你读的 Markdown 文稿时，Claude Code 会自动加载它，你也可以用 `/marsdawn` 自己运行。它只是[一个简短的文件](/cli/skill/SKILL.md)，安装前先读一遍。
 
 其他 agent 也能用同一个文件。它是纯 Markdown，只有说明和命令，让你的 agent 读这个网址，或直接贴给它就好。这个文件是英文的。
 
@@ -18,7 +18,9 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 - 如果没有 `marsdawn`，就用 Homebrew 安装，再用 `marsdawn --version` 确认版本，而不是假设某个版本。
 - 用 `marsdawn export … --json` 导出，并读懂结果：PDF 存到哪里、有几页，以及有没有 Mermaid 图表没画出来。
 - 依退出代码分辨失败的原因：找不到文件、PDF 已经存在、导出失败、选项错误。
-- 只有装了 MarsDawn app 才用 `open`，而且绝不用它来做 PDF。
+- 用 `marsdawn open file.md:行号` 打开自己写的文稿，停在第一处修改，而且只打开一次：之后的修改会自己出现在已打开的窗口里。
+- 如果没有安装 MarsDawn app，就告诉你一次然后继续，不会一直重试。绝不用 `open` 来做 PDF。
+- 使用 `--folder`（marsdawn 0.5.1 以上）时，把文件夹报告为“已请求显示”，而不是“已显示”：由 app 决定，也不会有结果返回。
 
 ## 它不会做的事
 
@@ -44,4 +46,4 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 - [给 AI agent 的 marsdawn 参考](https://marsdawn.southern-light.dev/zh-hans/cli/agents/index.md): 给调用 marsdawn 把 Markdown 转成 PDF 的 AI agent 与脚本的参考：命令、JSON 输出、Schema、退出代码与系统需求。
 - [English](https://marsdawn.southern-light.dev/cli/skill/index.md): One file your coding agent loads to open Markdown it wrote in MarsDawn for your review, and to install marsdawn, export Markdown to PDF and read the JSON result.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/cli/skill/index.md): 一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你檢閱，也學會安裝 marsdawn、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。
-- [日本語](https://marsdawn.southern-light.dev/ja/cli/skill/index.md): コーディングエージェントが読み込んで marsdawn をインストールし、動作確認をし、Markdown を PDF に書き出し、JSON の結果を読み取るための1つのファイルです。
+- [日本語](https://marsdawn.southern-light.dev/ja/cli/skill/index.md): コーディングエージェントが読み込む1つのファイルです。自分が書いた Markdown を MarsDawn で開いてあなたに確認してもらう方法と、marsdawn のインストール、Markdown の PDF への書き出し、JSON の結果の読み取りを教えます。
