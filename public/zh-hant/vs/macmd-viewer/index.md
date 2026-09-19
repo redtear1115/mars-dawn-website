@@ -14,7 +14,7 @@
 - **Finder 整合：**兩者都有 Finder 的快速查看擴充功能，對 `.md` 檔案按空白鍵就能看到排好版的頁面。
 - **PDF 與列印：**兩者都能把排好版的頁面輸出或列印成 PDF。
 - **系統需求：**MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。
-- **語言：**MarsDawn 的介面有英文和繁體中文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。
+- **語言：**MarsDawn 的介面有英文、繁體中文、簡體中文和日文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。
 
 ## 價格與購買方式
 

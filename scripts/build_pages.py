@@ -47,12 +47,14 @@ OG_LOCALE = {"en": "en_US", "zh-hant": "zh_TW", "zh-hans": "zh_CN", "ja": "ja_JP
 FULL_WIDTH = {"zh-hant", "zh-hans", "ja"}
 
 # The app's interface languages, as /native/ and /vs/macmd-viewer/ state them. One place so the
-# sentence changes in every language at once.
+# sentence changes in every language at once. Four languages from the 1.0 launch (app #104), approved
+# for the site by the owner on 2026-09-20 (website #41). It's true only once that build ships, which
+# is why this goes live with the launch deploy.
 APP_UI_LANGUAGES = {
-    "en": "English and Traditional Chinese",
-    "zh-hant": "英文和繁體中文",
-    "zh-hans": "英文和繁体中文",
-    "ja": "英語と繁体字中国語",
+    "en": "English, Traditional Chinese, Simplified Chinese and Japanese",
+    "zh-hant": "英文、繁體中文、簡體中文和日文",
+    "zh-hans": "英文、繁体中文、简体中文和日文",
+    "ja": "英語、繁体字中国語、簡体字中国語、日本語",
 }
 
 UI = {
