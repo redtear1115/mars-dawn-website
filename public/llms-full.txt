@@ -266,6 +266,44 @@ Questions about privacy: [support@southern-light.dev](mailto:support@southern-li
 
 ---
 
+## View Markdown on a Mac
+
+Source: https://marsdawn.southern-light.dev/view-markdown-on-mac/
+
+# How to view a Markdown file on a Mac.
+
+A `.md` file is plain text. The headings, bold words, tables and diagrams are written as marks: `#` for a heading, `**` around bold, pipes for a table, a `mermaid` code block for a diagram. Open it in a plain text editor and you read the marks. To read the page the way its author meant, something has to render it.
+
+## Today, for free: turn it into a PDF
+
+The free `marsdawn` command-line tool renders a Markdown file to a PDF, which any Mac can open. Tables, math, Mermaid diagrams and highlighted code come out rendered, and it needs nothing else installed, not even the MarsDawn app.
+
+```
+brew tap redtear1115/tap && brew install marsdawn
+marsdawn export notes.md
+open notes.pdf
+```
+
+`export` writes `notes.pdf` next to the Markdown file, and `open` shows it in your PDF viewer. It needs macOS 15 or later. The walk-through, with a real exported page, is on [Markdown to PDF](/markdown-to-pdf/).
+
+## Coming soon: read it in MarsDawn
+
+MarsDawn is a Markdown editor for the Mac, coming soon to the Mac App Store. Open a `.md` file and read the rendered page next to the source:
+
+- The preview updates as you type, and the two panes scroll together.
+- Mermaid flowcharts and sequence diagrams are drawn in the preview, and code blocks are highlighted.
+- In Finder, press Space on a Markdown file for a Quick Look preview, diagrams included.
+- When you want to change something, the source is right there. MarsDawn is an editor, not only a viewer.
+
+If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent writes, you read it rendered, and it revises. See [the home page](/), and [marsdawn for agents](/cli/agents/) for letting an agent open files for you.
+
+## Next
+
+- Every option of the command-line tool: [Command Line](/cli/).
+- What MarsDawn doesn't do: [the list](/limits/).
+
+---
+
 ## Markdown to PDF
 
 Source: https://marsdawn.southern-light.dev/markdown-to-pdf/
@@ -866,6 +904,44 @@ MarsDawn 透過 Mac App Store 販售，付款由 Apple 依其條款處理，開�
 ## 聯絡我們
 
 隱私相關問題：[support@southern-light.dev](mailto:support@southern-light.dev)
+
+---
+
+## 在 Mac 上看 Markdown
+
+Source: https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/
+
+# 在 Mac 上，怎麼看 Markdown 檔案。
+
+`.md` 檔案是純文字。標題、粗體、表格和圖表，都是用記號寫成的：`#` 代表標題，`**` 包住粗體，直線符號畫出表格，`mermaid` 程式碼區塊則是一張圖。用純文字編輯器打開，看到的就是這些記號。想照作者的意思讀到排好的頁面，就需要有東西把它排版出來。
+
+## 現在就能用，而且免費：轉成 PDF
+
+免費的 `marsdawn` 命令列工具，能把 Markdown 檔案排版成 PDF，任何一台 Mac 都打得開。表格、數學式、Mermaid 圖表和程式碼上色都會排好，而且不需要安裝其他東西，連 MarsDawn app 都不用。
+
+```
+brew tap redtear1115/tap && brew install marsdawn
+marsdawn export notes.md
+open notes.pdf
+```
+
+`export` 會在 Markdown 檔案旁邊寫出 `notes.pdf`，`open` 會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
+
+## 即將推出：在 MarsDawn 裡讀
+
+MarsDawn 是為 Mac 做的 Markdown 編輯器，即將在 Mac App Store 上架。打開 `.md` 檔案，排好的頁面就在原始碼旁邊：
+
+- 預覽會隨著你打字即時更新，兩邊的窗格一起捲動。
+- Mermaid 流程圖和循序圖直接畫在預覽裡，程式碼區塊也會上色。
+- 在 Finder 裡對 Markdown 檔案按空白鍵，就有「快速查看」預覽，圖表也在。
+- 想改的時候，原始碼就在旁邊。MarsDawn 是編輯器，不只是檢視器。
+
+如果這份檔案是 AI agent 寫的，這正是 MarsDawn 要支援的循環：agent 寫，你讀排好的頁面，agent 再修改。請看[首頁](/zh-hant/)，想讓 agent 幫你開檔案，請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+
+## 接下來
+
+- 命令列工具的所有選項：[命令列工具](/zh-hant/cli/)。
+- MarsDawn 做不到的事：[這份清單](/zh-hant/limits/)。
 
 ---
 
