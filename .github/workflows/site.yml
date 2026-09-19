@@ -32,6 +32,8 @@ jobs:
         run: python3 scripts/check_hreflang.py
       - name: Every same-site link points at a file that exists
         run: python3 scripts/check_links.py
+      - name: The agent skill is the one the documented marsdawn release prints
+        run: python3 scripts/check_skill.py
       # The theme gallery isn't served yet and nothing reads /themes/v1/ (see README). Once it ships,
       # make this check mandatory: from then on /themes/v1/index.json must never disappear.
       - name: Theme index is valid JSON
