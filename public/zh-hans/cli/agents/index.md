@@ -7,7 +7,7 @@
 ## 能做什么
 
 - `export`：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件输出成分页的 PDF，不会打开任何窗口。
-- `open`：在 MarsDawn app 中打开一或多个 Markdown 文件，让人检阅，也可以指定每个文件要定位的行。
+- `open`：在 MarsDawn app 中打开一或多个 Markdown 文件，让人检阅，也可以指定每个文件要定位的行，或在窗口的侧边栏显示一个文件夹。
 
 ## 不做什么
 
@@ -55,12 +55,17 @@ marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --jso
 marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json
+marsdawn open . --json
+marsdawn open notes.md --folder . --background --json
 ```
 
 - `path:line` 指定要定位的行。后面再接列号，例如 `notes.md:120:8`，会被忽略。如果参数本身就是一个存在的文件名，就一律当成那个文件，所以名为 `weird:12` 的文件会照原名打开。
 - `--line <n>` 为单一文件指定行号，包括文件名本身以冒号加数字结尾的情况。只能搭配一个文件。
 - 行号范围是 1 到 999999999，超出范围是用法错误。
 - 行号从 marsdawn 0.3.0 开始提供。MarsDawn 1.0 会打开文件，但还不会跳到指定的行。
+- 文件夹参数会在窗口的侧边栏打开，而不是当成文稿，所以 `marsdawn open .` 会显示当前的文件夹；`--folder <path>` 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹：指定两个是用法错误，同一个文件夹指定两次则算一个。文件夹没有行号，所以 `--line` 搭配文件夹是用法错误。没有 `-a`：传入它是用法错误，错误消息会指向 `--folder`。
+- `--background` 打开时不把 MarsDawn 带到最前面，适合在用户做别的事时打开文件的 agent。两种情况的 JSON 都一样。
+- 文件夹与 `--background` 从 marsdawn 0.5.1 开始提供。
 
 成功，退出代码 0：
 
@@ -70,6 +75,15 @@ marsdawn open notes.md --line 120 --json
 
 - `opened`：每个文件一个对象，顺序与传入时相同。`path` 是文件的绝对路径；只有指定了行号时才有 `line`。
 - `app`：打开它们的 MarsDawn app 路径。
+
+有文件夹时（marsdawn 0.5.1 以后），退出代码 0：
+
+```
+{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}
+```
+
+- `folder`：只有指定了文件夹时才有。`path` 是它的绝对路径。`requested` 一律是 `true`：marsdawn 已请 MarsDawn 显示这个文件夹，但无法得知侧边栏是否真的显示了，因为 app 可能会先向用户请求访问权限。请报告为“已请求”，而不是“已完成”。
+- 只指定文件夹时，`opened` 是空的。
 
 marsdawn 0.2.x 的 `opened` 是路径字符串的清单。如果需要同时处理两种格式，请先查看 `marsdawn --version`。
 
@@ -81,19 +95,20 @@ marsdawn 0.2.x 的 `opened` 是路径字符串的清单。如果需要同时处�
 {"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}
 ```
 
-- `2`，`input_not_found`：输入文件不存在、是文件夹，或不是 UTF-8 文本。
+- `2`，`input_not_found`：输入文件不存在、是文件夹，或不是 UTF-8 文本；或 `--folder` 的路径不存在、不是文件夹。
 - `3`，`app_not_installed`：没有安装 MarsDawn。只有 `open` 会返回这个代码。
 - `4`，`output_exists`：输出文件已存在，请加上 `--force`。
 - `5`，`export_failed`：导出本身失败。
-- `64`：用法错误，例如未知的选项、无效的值、行号超出范围，或 `--line` 搭配了多个文件。这种错误一律以文本输出到 stderr，即使加了 `--json` 也一样。
+- `64`：用法错误，例如未知的选项、无效的值、行号超出范围、`--line` 搭配了多个文件或文件夹、指定了多个文件夹，或使用了 `-a`。这种错误一律以文本输出到 stderr，即使加了 `--json` 也一样。
 
 ## JSON Schema
 
 每种 `--json` 结果的 JSON Schema（draft 2020-12）：
 
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功
-- [open.v2.json](/schemas/cli/open.v2.json): open 成功，marsdawn 0.3.0 以后
+- [open.v3.json](/schemas/cli/open.v3.json): open 成功，marsdawn 0.5.1 以后，包括在侧边栏显示的文件夹
 - [error.v1.json](/schemas/cli/error.v1.json): 两个命令的失败结果
+- [open.v2.json](/schemas/cli/open.v2.json): open 成功，marsdawn 0.3.0 到 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功，marsdawn 0.2.x，当时 `opened` 是路径清单
 
 ## 环境变量

@@ -38,15 +38,19 @@ swift build -c release --product marsdawn
 marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
+marsdawn open .
+marsdawn open notes.md --folder .
 ```
 
 - `path:line`：请 MarsDawn 定位到那一行。后面再接列号，例如 `notes.md:120:8`，会被忽略。如果有文件的完整名称就是这个参数，则视为那个文件。
 - `--line <n>`：同样的功能，只用于单一文件，也可以用在文件名本身以冒号加数字结尾的情况。只能搭配一个文件。
 - 行号范围是 1 到 999999999。
+- 文件夹参数会在窗口的侧边栏打开，而不是当成文稿：`marsdawn open .` 会显示当前的文件夹。`--folder <path>` 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹，所以指定两个是使用方式错误。
+- `--background`：打开时不把 MarsDawn 带到最前面。
 - MarsDawn 1.0 会打开文件，但还不会跳到指定的行。
 - `--json`：输出 JSON 结果，而不是文本。
 
-行号功能从 marsdawn 0.3.0 开始提供。
+行号功能从 marsdawn 0.3.0 开始提供，文件夹与 `--background` 从 0.5.1 开始。
 
 ### marsdawn export
 
@@ -78,11 +82,11 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `3`：尚未安装 MarsDawn（只有 `open` 会用到）。
 - `4`：输出文件已存在（可加上 `--force`）。
 - `5`：输出失败。
-- `64`：使用方式错误，包括行号超出范围，或 `--line` 搭配了多个文件。
+- `64`：使用方式错误，包括行号超出范围、`--line` 搭配了多个文件或文件夹，或指定了多个文件夹。
 
 ## --json 输出
 
-成功时，`marsdawn open --json` 会输出 `ok`、`opened`（每个文件的 `path`，有指定行号时另含 `line`）与 `app`（App 路径）；`marsdawn export --json` 会输出 `ok`、`output`、`pages`、`theme`、`paper` 与 `diagramErrors`。失败时两者都会输出 `ok`、`error` 与 `message`。
+成功时，`marsdawn open --json` 会输出 `ok`、`opened`（每个文件的 `path`，有指定行号时另含 `line`）、`app`（App 路径），有文件夹时另含 `folder`；`marsdawn export --json` 会输出 `ok`、`output`、`pages`、`theme`、`paper` 与 `diagramErrors`。失败时两者都会输出 `ok`、`error` 与 `message`。
 
 ## 其他页面
 

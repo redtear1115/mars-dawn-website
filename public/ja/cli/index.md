@@ -38,15 +38,19 @@ swift build -c release --product marsdawn
 marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
+marsdawn open .
+marsdawn open notes.md --folder .
 ```
 
 - `path:line`：MarsDawn にその行に移動するよう指定します。その後にコロンが続く場合、たとえば `notes.md:120:8` の列部分は無視されます。引数全体と一致するファイル名が存在する場合、その引数はそのファイルとして扱われます。
 - `--line <n>`：単一ファイルに対して同じ指定ができ、それ自体がコロンと数字で終わるパスに対して行を指定する方法でもあります。ファイルは1つだけ指定できます。
 - 行番号は 1 から 999999999 までです。
+- フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます：`marsdawn open .` で現在のフォルダを表示します。`--folder <path>` はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つなので、2つ指定すると使用方法のエラーになります。
+- `--background`：MarsDawn を前面に出さずに開きます。
 - MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。
 - `--json`：テキストではなく JSON の結果を出力します。
 
-行の指定は marsdawn 0.3.0 で追加されました。
+行の指定は marsdawn 0.3.0 で、フォルダと `--background` は 0.5.1 で追加されました。
 
 ### marsdawn export
 
@@ -78,11 +82,11 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `3`：MarsDawn がインストールされていない（`open` のみ）。
 - `4`：出力先がすでに存在する（`--force` を指定してください）。
 - `5`：書き出しに失敗。
-- `64`：使用方法のエラー。範囲外の行や、複数ファイルに対する `--line` の指定などを含みます。
+- `64`：使用方法のエラー。範囲外の行、複数ファイルやフォルダに対する `--line` の指定、複数のフォルダの指定などを含みます。
 
 ## --json 出力
 
-成功時、`marsdawn open --json` は `ok`、`opened`（各ファイルの `path`、行が指定されていれば `line` も含む）、`app`（アプリのパス）を出力します。`marsdawn export --json` は `ok`、`output`、`pages`、`theme`、`paper`、`diagramErrors` を出力します。失敗時はどちらも `ok`、`error`、`message` を出力します。
+成功時、`marsdawn open --json` は `ok`、`opened`（各ファイルの `path`、行が指定されていれば `line` も含む）、`app`（アプリのパス）、フォルダが指定されていれば `folder` を出力します。`marsdawn export --json` は `ok`、`output`、`pages`、`theme`、`paper`、`diagramErrors` を出力します。失敗時はどちらも `ok`、`error`、`message` を出力します。
 
 ## その他
 

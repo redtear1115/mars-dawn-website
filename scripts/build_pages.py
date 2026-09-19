@@ -450,15 +450,19 @@ swift build -c release --product marsdawn</code></pre>
 <p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app.</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
-marsdawn open notes.md --line 120</code></pre>
+marsdawn open notes.md --line 120
+marsdawn open .
+marsdawn open notes.md --folder .</code></pre>
 <ul>
   <li><code>path:line</code>: asks MarsDawn to land on that line. A column after it, as in <code>notes.md:120:8</code>, is ignored. If a file with the whole name exists, the argument is that file.</li>
   <li><code>--line &lt;n&gt;</code>: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.</li>
   <li>Lines run from 1 to 999999999.</li>
+  <li>A folder argument opens in the window's sidebar instead of as a document: <code>marsdawn open .</code> shows the current folder. <code>--folder &lt;path&gt;</code> does the same alongside files. A window's sidebar shows one folder, so naming two is a usage error.</li>
+  <li><code>--background</code>: open without bringing MarsDawn to the front.</li>
   <li>MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
 </ul>
-<p>Lines were added in marsdawn 0.3.0.</p>
+<p>Lines were added in marsdawn 0.3.0, and folders and <code>--background</code> in 0.5.1.</p>
 
 <h3>marsdawn export</h3>
 <p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.</p>
@@ -485,11 +489,11 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
   <li><code>4</code>: output exists (pass <code>--force</code>).</li>
   <li><code>5</code>: export failed.</li>
-  <li><code>64</code>: usage error, including a line out of range or <code>--line</code> with more than one file.</li>
+  <li><code>64</code>: usage error, including a line out of range, <code>--line</code> with more than one file or with a folder, or more than one folder.</li>
 </ul>
 
 <h2>--json output</h2>
-<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when a folder was given, <code>folder</code>. <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 """,
     },
     ("zh-hant", "cli"): {
@@ -522,15 +526,19 @@ swift build -c release --product marsdawn</code></pre>
 <p>在 MarsDawn app 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝這個 app：沒有安裝時，<code>marsdawn open</code> 會以代碼 3 結束，並說明沒有安裝 MarsDawn。<code>export</code> 不需要這個 app。</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
-marsdawn open notes.md --line 120</code></pre>
+marsdawn open notes.md --line 120
+marsdawn open .
+marsdawn open notes.md --folder .</code></pre>
 <ul>
   <li><code>path:line</code>：請 MarsDawn 定位到那一行。後面再接欄位，例如 <code>notes.md:120:8</code>，會被忽略。如果有檔案的完整名稱就是這個參數，則視為那個檔案。</li>
   <li><code>--line &lt;n&gt;</code>：同樣的功能，只用於單一檔案，也可以用在檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。</li>
   <li>行號範圍是 1 到 999999999。</li>
+  <li>資料夾參數會在視窗的側邊欄開啟，而不是當成文件：<code>marsdawn open .</code> 會顯示目前的資料夾。<code>--folder &lt;path&gt;</code> 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾，所以指定兩個是使用方式錯誤。</li>
+  <li><code>--background</code>：開啟時不把 MarsDawn 帶到最前面。</li>
   <li>MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。</li>
   <li><code>--json</code>：印出 JSON 結果，而不是文字。</li>
 </ul>
-<p>行號功能從 marsdawn 0.3.0 開始提供。</p>
+<p>行號功能從 marsdawn 0.3.0 開始提供，資料夾與 <code>--background</code> 從 0.5.1 開始。</p>
 
 <h3>marsdawn export</h3>
 <p>把 Markdown 檔案輸出成分頁的 PDF，使用和 MarsDawn 輸出 PDF 相同的元件。不需要安裝 MarsDawn app。相對路徑的圖片，會以輸入檔案所在的資料夾為準。</p>
@@ -557,11 +565,11 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>3</code>：尚未安裝 MarsDawn（只有 <code>open</code> 會用到）。</li>
   <li><code>4</code>：輸出檔已存在（可加上 <code>--force</code>）。</li>
   <li><code>5</code>：輸出失敗。</li>
-  <li><code>64</code>：使用方式錯誤，包括行號超出範圍，或 <code>--line</code> 搭配了多個檔案。</li>
+  <li><code>64</code>：使用方式錯誤，包括行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾，或指定了多個資料夾。</li>
 </ul>
 
 <h2>--json 輸出</h2>
-<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）與 <code>app</code>（App 路徑）；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
+<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）、<code>app</code>（App 路徑），有資料夾時另含 <code>folder</code>；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
 """,
     },
 }
@@ -570,18 +578,23 @@ marsdawn open notes.md --line 120</code></pre>
 # The agent reference. Every fact and every example is taken from
 # redtear1115/mars-dawn-kit @ tag 0.3.0 (Sources/marsdawn/Commands.swift,
 # Sources/marsdawn/main.swift, Sources/MarsDawnKit/RevealRequest.swift, Package.swift),
-# and every example was run against a release build of that tag before publishing.
+# and every example was run against a release build of that tag before publishing. Folders and
+# --background (open, 0.5.1) are from kit b56fdd9, the 0.5.1 commit: Commands.swift and README.md.
 # The install command is the redtear1115/homebrew-tap formula: a prebuilt bottle on Apple silicon,
 # a source build (Xcode 26) on Intel.
 # Published schemas are never removed or edited: open.v1.json stays, byte for byte, for marsdawn 0.2.x, whose
-# `opened` was a list of paths; 0.3.0 reports {path, line} objects (open.v2.json).
+# `opened` was a list of paths; 0.3.0 reports {path, line} objects (open.v2.json). 0.5.1 can open a folder in
+# the sidebar, which adds a `folder` object and lets `opened` be empty; v2 forbids both, so that's open.v3.json,
+# taken from redtear1115/mars-dawn-kit @ b56fdd9 (0.5.1), Sources/marsdawn/Commands.swift, Open.run().
 SCHEMA_BASE = "/schemas/cli/"
 SCHEMA_FILES = {
     "export": "export.v1.json",
-    "open": "open.v2.json",
+    "open": "open.v3.json",
     "error": "error.v1.json",
+    "open_v2": "open.v2.json",
     "open_v1": "open.v1.json",
 }
+SCHEMA_ORDER = ("export", "open", "error", "open_v2", "open_v1")
 
 THEME_IDS = ["dawn", "classic", "modern", "vivid"]
 PAPER_SIZES = ["a4", "letter"]
@@ -617,6 +630,52 @@ SCHEMAS = {
     "open": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": schema_url("open"),
+        "title": "marsdawn open --json: success",
+        "description": "Printed on stdout as one line when `marsdawn open --json` succeeds (exit code 0). marsdawn 0.5.1 and later.",
+        "type": "object",
+        "required": ["ok", "opened", "app"],
+        "additionalProperties": False,
+        "properties": {
+            "ok": {"const": True},
+            "opened": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": ["path"],
+                    "additionalProperties": False,
+                    "properties": {
+                        "path": {"type": "string", "description": "Absolute path of the file that was opened."},
+                        "line": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 999999999,
+                            "description": "The line MarsDawn was asked to land on. Present only when one was asked for.",
+                        },
+                    },
+                },
+                "description": "The files that were opened, in the order given. Empty when only a folder was given.",
+            },
+            "app": {"type": "string", "description": "Path of the MarsDawn app that opened them."},
+            "folder": {
+                "type": "object",
+                "required": ["path", "requested"],
+                "additionalProperties": False,
+                "properties": {
+                    "path": {"type": "string", "description": "Absolute path of the folder MarsDawn was asked to show in the window's sidebar."},
+                    "requested": {
+                        "const": True,
+                        "description": "Always true: marsdawn asked the app to show the folder. It can't tell whether the sidebar shows it, since the app may first ask the user for access. Report it as asked, not as done.",
+                    },
+                },
+                "description": "Present only when a folder was given, as an argument (marsdawn open .) or with --folder.",
+            },
+        },
+        "if": {"properties": {"opened": {"maxItems": 0}}},
+        "then": {"required": ["folder"]},
+    },
+    "open_v2": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": schema_url("open_v2"),
         "title": "marsdawn open --json: success",
         "description": "Printed on stdout as one line when `marsdawn open --json` succeeds (exit code 0). marsdawn 0.3.0 and later.",
         "type": "object",
@@ -685,13 +744,15 @@ SCHEMAS = {
 SCHEMA_NOTES = {
     "en": {
         "export": "export success",
-        "open": "open success, marsdawn 0.3.0 and later",
+        "open": "open success, marsdawn 0.5.1 and later, including a folder shown in the sidebar",
+        "open_v2": "open success, marsdawn 0.3.0 to 0.5.0",
         "error": "failure, both commands",
         "open_v1": "open success, marsdawn 0.2.x, where <code>opened</code> was a list of paths",
     },
     "zh-hant": {
         "export": "export 成功",
-        "open": "open 成功，marsdawn 0.3.0 以後",
+        "open": "open 成功，marsdawn 0.5.1 以後，包括在側邊欄顯示的資料夾",
+        "open_v2": "open 成功，marsdawn 0.3.0 到 0.5.0",
         "error": "兩個指令的失敗結果",
         "open_v1": "open 成功，marsdawn 0.2.x，當時 <code>opened</code> 是路徑清單",
     },
@@ -705,7 +766,7 @@ def schema_links(locale: str) -> str:
 def schema_links_from(notes: dict) -> str:
     return "\n".join(
         f'  <li><a href="{SCHEMA_BASE}{SCHEMA_FILES[kind]}">{SCHEMA_FILES[kind]}</a>: {notes[kind]}</li>'
-        for kind in ("export", "open", "error", "open_v1")
+        for kind in SCHEMA_ORDER
     )
 
 
@@ -724,7 +785,7 @@ AGENT_PAGES = {
 <h2>What it does</h2>
 <ul>
   <li><code>export</code> renders one Markdown file to a paginated PDF with the same exporter as the MarsDawn app. No window opens.</li>
-  <li><code>open</code> opens one or more Markdown files in the MarsDawn app, so a person can review them, and can name the line each file should land on.</li>
+  <li><code>open</code> opens one or more Markdown files in the MarsDawn app, so a person can review them, can name the line each file should land on, and can show a folder in the window's sidebar.</li>
 </ul>
 
 <h2>What it does not do</h2>
@@ -762,12 +823,17 @@ AGENT_PAGES = {
 <h2>open</h2>
 <pre><code>marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
-marsdawn open notes.md --line 120 --json</code></pre>
+marsdawn open notes.md --line 120 --json
+marsdawn open . --json
+marsdawn open notes.md --folder . --background --json</code></pre>
 <ul>
   <li><code>path:line</code> names the line to land on. A column after it, as in <code>notes.md:120:8</code>, is ignored. An argument that names a file which exists is always that whole filename, so a file called <code>weird:12</code> opens as itself.</li>
   <li><code>--line &lt;n&gt;</code> names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.</li>
   <li>Lines run from 1 to 999999999. Anything else is a usage error.</li>
   <li>Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
+  <li>A folder argument opens in the window's sidebar instead of as a document, so <code>marsdawn open .</code> shows the current folder; <code>--folder &lt;path&gt;</code> does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and naming the same folder twice is one folder. <code>--line</code> with a folder is a usage error, since a folder has no line. There is no <code>-a</code>: passing it is a usage error that points at <code>--folder</code>.</li>
+  <li><code>--background</code> opens without bringing MarsDawn to the front, for an agent that opens files while the person works elsewhere. The JSON is the same either way.</li>
+  <li>Folders and <code>--background</code> were added in marsdawn 0.5.1.</li>
 </ul>
 <p>Success, exit code 0:</p>
 <pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{{"line":120,"path":"/path/to/notes.md"}}]}}</code></pre>
@@ -775,17 +841,23 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>opened</code>: one object per file, in the order given. <code>path</code> is the file's absolute path; <code>line</code> appears only when a line was asked for.</li>
   <li><code>app</code>: path of the MarsDawn app that opened them.</li>
 </ul>
+<p>With a folder (marsdawn 0.5.1 and later), exit code 0:</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","folder":{{"path":"/path/to/project","requested":true}},"ok":true,"opened":[{{"path":"/path/to/project/notes.md"}}]}}</code></pre>
+<ul>
+  <li><code>folder</code>: present only when a folder was given. <code>path</code> is its absolute path. <code>requested</code> is always <code>true</code>: marsdawn asked MarsDawn to show the folder, and can't tell whether the sidebar shows it, because the app may first ask the person for access. Report it as asked, not as done.</li>
+  <li><code>opened</code> is empty when only a folder was given.</li>
+</ul>
 <p>marsdawn 0.2.x printed <code>opened</code> as a list of path strings. Check <code>marsdawn --version</code> if you need to handle both.</p>
 
 <h2>Failures</h2>
 <p>With <code>--json</code>, a failure prints one JSON object on stdout and exits with its code:</p>
 <pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
 <ul>
-  <li><code>2</code>, <code>input_not_found</code>: the input doesn't exist, is a folder, or isn't UTF-8 text.</li>
+  <li><code>2</code>, <code>input_not_found</code>: the input doesn't exist, is a folder, or isn't UTF-8 text; or a <code>--folder</code> path doesn't exist or isn't a folder.</li>
   <li><code>3</code>, <code>app_not_installed</code>: MarsDawn isn't installed. Only <code>open</code> returns this.</li>
   <li><code>4</code>, <code>output_exists</code>: the output file exists. Pass <code>--force</code>.</li>
   <li><code>5</code>, <code>export_failed</code>: the export itself failed.</li>
-  <li><code>64</code>: usage error, such as an unknown option, an invalid value, a line out of range or <code>--line</code> with more than one file. This one is printed as text on stderr, even with <code>--json</code>.</li>
+  <li><code>64</code>: usage error, such as an unknown option, an invalid value, a line out of range, <code>--line</code> with more than one file or with a folder, more than one folder, or <code>-a</code>. This one is printed as text on stderr, even with <code>--json</code>.</li>
 </ul>
 
 <h2>JSON Schemas</h2>
@@ -831,7 +903,7 @@ swift build -c release --product marsdawn
 <h2>能做什麼</h2>
 <ul>
   <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
-  <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱，也可以指定每個檔案要定位的行。</li>
+  <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱，也可以指定每個檔案要定位的行，或在視窗的側邊欄顯示一個資料夾。</li>
 </ul>
 
 <h2>不做什麼</h2>
@@ -869,12 +941,17 @@ swift build -c release --product marsdawn
 <h2>open</h2>
 <pre><code>marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
-marsdawn open notes.md --line 120 --json</code></pre>
+marsdawn open notes.md --line 120 --json
+marsdawn open . --json
+marsdawn open notes.md --folder . --background --json</code></pre>
 <ul>
   <li><code>path:line</code> 指定要定位的行。後面再接欄位，例如 <code>notes.md:120:8</code>，會被忽略。如果參數本身就是一個存在的檔名，就一律當成那個檔案，所以名為 <code>weird:12</code> 的檔案會照原名開啟。</li>
   <li><code>--line &lt;n&gt;</code> 為單一檔案指定行號，包括檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。</li>
   <li>行號範圍是 1 到 999999999，超出範圍是用法錯誤。</li>
   <li>行號從 marsdawn 0.3.0 開始提供。MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。</li>
+  <li>資料夾參數會在視窗的側邊欄開啟，而不是當成文件，所以 <code>marsdawn open .</code> 會顯示目前的資料夾；<code>--folder &lt;path&gt;</code> 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾：指定兩個是用法錯誤，同一個資料夾指定兩次則算一個。資料夾沒有行號，所以 <code>--line</code> 搭配資料夾是用法錯誤。沒有 <code>-a</code>：傳入它是用法錯誤，錯誤訊息會指向 <code>--folder</code>。</li>
+  <li><code>--background</code> 開啟時不把 MarsDawn 帶到最前面，適合在使用者做別的事時開檔的 agent。兩種情況的 JSON 都一樣。</li>
+  <li>資料夾與 <code>--background</code> 從 marsdawn 0.5.1 開始提供。</li>
 </ul>
 <p>成功，離開代碼 0：</p>
 <pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{{"line":120,"path":"/path/to/notes.md"}}]}}</code></pre>
@@ -882,17 +959,23 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>opened</code>：每個檔案一個物件，順序與傳入時相同。<code>path</code> 是檔案的絕對路徑；只有指定了行號時才有 <code>line</code>。</li>
   <li><code>app</code>：開啟它們的 MarsDawn app 路徑。</li>
 </ul>
+<p>有資料夾時（marsdawn 0.5.1 以後），離開代碼 0：</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","folder":{{"path":"/path/to/project","requested":true}},"ok":true,"opened":[{{"path":"/path/to/project/notes.md"}}]}}</code></pre>
+<ul>
+  <li><code>folder</code>：只有指定了資料夾時才有。<code>path</code> 是它的絕對路徑。<code>requested</code> 一律是 <code>true</code>：marsdawn 已請 MarsDawn 顯示這個資料夾，但無法得知側邊欄是否真的顯示了，因為 app 可能會先向使用者要求存取權限。請回報為「已要求」，而不是「已完成」。</li>
+  <li>只指定資料夾時，<code>opened</code> 是空的。</li>
+</ul>
 <p>marsdawn 0.2.x 的 <code>opened</code> 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 <code>marsdawn --version</code>。</p>
 
 <h2>失敗</h2>
 <p>加上 <code>--json</code> 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：</p>
 <pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
 <ul>
-  <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字。</li>
+  <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字；或 <code>--folder</code> 的路徑不存在、不是資料夾。</li>
   <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
   <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
-  <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍，或 <code>--line</code> 搭配了多個檔案。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
+  <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 <code>-a</code>。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
 </ul>
 
 <h2>JSON Schema</h2>
@@ -2286,7 +2369,7 @@ def build_llms_txt(pages: dict) -> str:
         f"- [{UI['en']['agents']}]({abs_url(md_path('en', 'cli/agents'))}): commands, JSON output, "
         "exit codes and requirements, with examples that were run before publishing"
     )
-    for kind in ("export", "open", "error", "open_v1"):
+    for kind in SCHEMA_ORDER:
         note = SCHEMA_NOTES["en"][kind].replace("<code>", "`").replace("</code>", "`")
         lines.append(f"- [{SCHEMA_FILES[kind]}]({schema_url(kind)}): JSON Schema for the --json result, {note}")
     lines.append("")

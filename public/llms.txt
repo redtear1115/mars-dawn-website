@@ -69,8 +69,9 @@
 ## Using the CLI
 - [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): commands, JSON output, exit codes and requirements, with examples that were run before publishing
 - [export.v1.json](https://marsdawn.southern-light.dev/schemas/cli/export.v1.json): JSON Schema for the --json result, export success
-- [open.v2.json](https://marsdawn.southern-light.dev/schemas/cli/open.v2.json): JSON Schema for the --json result, open success, marsdawn 0.3.0 and later
+- [open.v3.json](https://marsdawn.southern-light.dev/schemas/cli/open.v3.json): JSON Schema for the --json result, open success, marsdawn 0.5.1 and later, including a folder shown in the sidebar
 - [error.v1.json](https://marsdawn.southern-light.dev/schemas/cli/error.v1.json): JSON Schema for the --json result, failure, both commands
+- [open.v2.json](https://marsdawn.southern-light.dev/schemas/cli/open.v2.json): JSON Schema for the --json result, open success, marsdawn 0.3.0 to 0.5.0
 - [open.v1.json](https://marsdawn.southern-light.dev/schemas/cli/open.v1.json): JSON Schema for the --json result, open success, marsdawn 0.2.x, where `opened` was a list of paths
 
 ## Product facts
