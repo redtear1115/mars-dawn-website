@@ -121,6 +121,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/markdown-to-pdf/"/>
   </url>
   <url>
+    <loc>https://marsdawn.southern-light.dev/vs/macmd-viewer/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/vs/macmd-viewer/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/vs/macmd-viewer/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/vs/macmd-viewer/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/vs/macmd-viewer/"/>
+  </url>
+  <url>
     <loc>https://marsdawn.southern-light.dev/cli/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/"/>

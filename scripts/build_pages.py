@@ -41,6 +41,7 @@ UI = {
         "agents": "marsdawn for agents", "using_cli": "Using the CLI",
         "markdown-to-pdf": "Markdown to PDF", "skill": "Agent skill",
         "view-markdown-on-mac": "View Markdown on a Mac",
+        "vs-macmd-viewer": "MacMD Viewer vs. MarsDawn",
         "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.",
         "footer_store": "MarsDawn is coming soon to the Mac App Store.",
         "more": "More",
@@ -52,6 +53,7 @@ UI = {
         "agents": "給 AI agent 的 marsdawn 參考", "using_cli": "使用 CLI",
         "markdown-to-pdf": "Markdown 轉 PDF", "skill": "給 agent 的 skill",
         "view-markdown-on-mac": "在 Mac 上看 Markdown",
+        "vs-macmd-viewer": "MacMD Viewer 對比 MarsDawn",
         "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。",
         "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
         "more": "其他頁面",
@@ -1076,6 +1078,88 @@ marsdawn --version</code></pre>
 </ul>
 """,
     },
+    ("en", "vs/macmd-viewer"): {
+        "title": "MacMD Viewer vs. MarsDawn: a viewer or an editor · MarsDawn",
+        "description": "MacMD Viewer renders Markdown read-only for USD 19.99. MarsDawn edits and previews side by side, free to try then USD 4.99 once on the Mac App Store.",
+        "body": """
+<section class="intro">
+  <h1>MacMD Viewer vs. MarsDawn.</h1>
+  <p>Both are Mac apps for reading Markdown rendered. MacMD Viewer opens a <code>.md</code> file and shows the finished page; it doesn't edit it. MarsDawn puts an editor next to the same kind of rendered preview, so you write and review in one window. Here's how they differ, feature by feature.</p>
+</section>
+<h2>If you only need to read, not edit</h2>
+<p>If your job is strictly reading Markdown someone else wrote, and you never need to touch the source, MacMD Viewer is a reasonable fit: it's built for exactly that, is available now and works down to an older macOS. MarsDawn is worth it once reading isn't the whole job, because an agent's Markdown usually comes back for another pass.</p>
+<h2>What each app does</h2>
+<ul>
+  <li><strong>Editing:</strong> MacMD Viewer is read-only by design. MarsDawn edits the source and renders it side by side, so a change shows up as you type.</li>
+  <li><strong>Preview themes:</strong> MacMD Viewer ships 12 document themes. MarsDawn ships four, Dawn, Classic, Modern and Vivid, each with a light and a dark palette.</li>
+  <li><strong>Diagrams and math:</strong> both render Mermaid diagrams and highlight code. MarsDawn also renders KaTeX math; MacMD Viewer's own listing doesn't mention math rendering.</li>
+  <li><strong>Finder integration:</strong> both add a Quick Look extension, so pressing Space on a <code>.md</code> file in Finder shows the rendered page.</li>
+  <li><strong>PDF and print:</strong> both export or print a PDF of the rendered page.</li>
+  <li><strong>System requirements:</strong> MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.</li>
+  <li><strong>Languages:</strong> MarsDawn's interface ships in English and Traditional Chinese. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.</li>
+</ul>
+<h2>Pricing and how you buy it</h2>
+<ul>
+  <li><strong>Where you buy it:</strong> MacMD Viewer is a direct download from its own site, also on Homebrew and Setapp; it isn't on the Mac App Store. MarsDawn is Mac App Store only.</li>
+  <li><strong>Price:</strong> MacMD Viewer is USD 19.99 once for one Mac (a 3-Mac pack and volume packs cost more). MarsDawn is a free download, then a USD 4.99 one-time unlock.</li>
+  <li><strong>Trying it first:</strong> MacMD Viewer has no free trial; direct purchases carry a 14-day money-back guarantee instead. MarsDawn gives you a 14-day trial before you pay anything.</li>
+  <li><strong>Refunds and updates:</strong> MacMD Viewer's refunds and updates run through its own site. MarsDawn's purchase goes through Apple, so refunds and updates use Apple's standard process.</li>
+  <li><strong>Accounts:</strong> neither app needs an account to use.</li>
+</ul>
+<h2>Try it today, free</h2>
+<p>MarsDawn is coming soon to the Mac App Store, not on sale yet. Until then, the free <code>marsdawn</code> command-line tool renders any Markdown file to a PDF today, with Mermaid diagrams and highlighted code, and needs nothing else installed:</p>
+<pre><code>{brew}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<h2>Next</h2>
+<ul>
+  <li>The full walk-through: <a href="/markdown-to-pdf/">Markdown to PDF</a>.</li>
+  <li>What MarsDawn doesn't do: <a href="/limits/">the list</a>.</li>
+  <li>Every option of the command-line tool: <a href="/cli/">Command Line</a>.</li>
+</ul>
+""".format(brew=BREW_TAP_INSTALL),
+    },
+    ("zh-hant", "vs/macmd-viewer"): {
+        "title": "MacMD Viewer 對比 MarsDawn：檢視器與編輯器 · MarsDawn",
+        "description": "MacMD Viewer 是唯讀檢視器，直接購買 USD 19.99。MarsDawn 邊編輯邊預覽，免費試用後在 Mac App Store 一次解鎖 USD 4.99。逐項比較功能、價格和購買方式。",
+        "body": """
+<section class="intro">
+  <h1>MacMD Viewer 對比 MarsDawn。</h1>
+  <p>兩者都是給 Mac 用的 app，都能把 Markdown 排版出來讀。MacMD Viewer 打開 <code>.md</code> 檔案，顯示排好版的頁面，但不能編輯它。MarsDawn 則是在同樣的預覽旁邊放了編輯器，讓你在同一個視窗裡寫和讀。以下逐項比較兩者的差異。</p>
+</section>
+<h2>如果你只需要讀，不需要編輯</h2>
+<p>如果你的工作就是讀別人寫好的 Markdown，完全不用碰原始碼，MacMD Viewer 是合理的選擇：它就是為這件事做的，現在就能買，也能在比較舊的 macOS 上跑。當閱讀不是全部的工作時，MarsDawn 才值得，因為 agent 寫的 Markdown 通常還要再改一輪。</p>
+<h2>各自能做什麼</h2>
+<ul>
+  <li><strong>編輯：</strong>MacMD Viewer 設計上就是唯讀。MarsDawn 邊編輯原始碼邊在旁邊排版，打字的同時就看得到改動。</li>
+  <li><strong>預覽主題：</strong>MacMD Viewer 內建 12 種文件主題。MarsDawn 有四種：Dawn、Classic、Modern 和 Vivid，各有淺色與深色。</li>
+  <li><strong>圖表與數學式：</strong>兩者都能畫出 Mermaid 圖表、也都有程式碼上色。MarsDawn 還能排版 KaTeX 數學式；MacMD Viewer 自己的介紹頁沒有提到數學式排版。</li>
+  <li><strong>Finder 整合：</strong>兩者都有 Finder 的快速查看擴充功能，對 <code>.md</code> 檔案按空白鍵就能看到排好版的頁面。</li>
+  <li><strong>PDF 與列印：</strong>兩者都能把排好版的頁面輸出或列印成 PDF。</li>
+  <li><strong>系統需求：</strong>MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。</li>
+  <li><strong>語言：</strong>MarsDawn 的介面有英文和繁體中文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。</li>
+</ul>
+<h2>價格與購買方式</h2>
+<ul>
+  <li><strong>從哪裡買：</strong>MacMD Viewer 從自己的網站直接下載，也上架 Homebrew 和 Setapp，但不在 Mac App Store 上；MarsDawn 只在 Mac App Store 上架。</li>
+  <li><strong>價格：</strong>MacMD Viewer 一台 Mac 一次 USD 19.99（三台的組合包和大量授權更貴）。MarsDawn 免費下載，之後以 USD 4.99 一次解鎖。</li>
+  <li><strong>先試用：</strong>MacMD Viewer 沒有免費試用，直接購買改用 14 天內可退款的保證。MarsDawn 在你付費之前，先給你 14 天的試用。</li>
+  <li><strong>退款與更新：</strong>MacMD Viewer 的退款和更新都在它自己的網站上處理。MarsDawn 透過 Apple 購買，退款和更新都走 Apple 的標準流程。</li>
+  <li><strong>帳號：</strong>兩者都不需要帳號就能使用。</li>
+</ul>
+<h2>現在就能免費試試看</h2>
+<p>MarsDawn 即將在 Mac App Store 上架，現在還沒開賣。在那之前，免費的 <code>marsdawn</code> 命令列工具今天就能把任何 Markdown 檔案轉成 PDF，Mermaid 圖表和程式碼上色都在，而且不需要安裝其他東西：</p>
+<pre><code>{brew}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<h2>接下來</h2>
+<ul>
+  <li>完整步驟：<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</li>
+  <li>MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
+  <li>命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。</li>
+</ul>
+""".format(brew=BREW_TAP_INSTALL),
+    },
 }
 
 SKILL_PAGES = {
@@ -1638,10 +1722,11 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "cli", "cli/agents", "cli/skill"]
+PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill"]
 SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
                   "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "cli/skill": "skill",
-                  "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits"}
+                  "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
+                  "vs/macmd-viewer": "vs-macmd-viewer"}
 
 
 def all_pages() -> dict:
