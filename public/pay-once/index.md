@@ -1,6 +1,6 @@
-# Pay once. Keep all of it.
+# Try it free. Pay once to keep it.
 
-MarsDawn costs USD 4.99, one time. There is no subscription and no paid tier: every feature is in the one purchase.
+MarsDawn is a free download from the Mac App Store with a 14-day trial. After that, one USD 4.99 purchase unlocks it for good. There is no subscription and no paid tier.
 
 ![MarsDawn in the Vivid theme, with Markdown source on the left and the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
@@ -13,10 +13,16 @@ In this screenshot:
 
 ## What that means
 
-- One purchase on the Mac App Store, USD 4.99.
+- Download MarsDawn free and use it for 14 days.
+- To keep using it, unlock it with one in-app purchase of USD 4.99.
 - There is no subscription, so nothing renews.
 - There is no account: MarsDawn never asks you to create one.
-- Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.
+- Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the unlock.
+
+## If the trial ends before you unlock
+
+- Your documents still open, but MarsDawn covers their content until you unlock it. You can't read, edit, export or print them in the app.
+- Your files are never changed. They stay on your Mac as plain Markdown, Quick Look in Finder keeps showing them, and the free [marsdawn](/cli/) command-line tool keeps exporting them to PDF.
 
 ## More
 
@@ -32,4 +38,4 @@ In this screenshot:
 - [Command Line](https://marsdawn.southern-light.dev/cli/index.md): The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.
 - [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): A reference for AI agents and scripts that call marsdawn to turn Markdown into PDF: commands, JSON output, schemas, exit codes and requirements.
 - [Agent skill](https://marsdawn.southern-light.dev/cli/skill/index.md): One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱、不需要帳號，也沒有付費進階版。
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載，可試用 14 天，之後以 USD 4.99 一次解鎖。沒有訂閱、不需要帳號，也沒有付費進階版。
