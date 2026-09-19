@@ -41,11 +41,11 @@ In this screenshot:
 
 ## What that means
 
-- **There is no account** to sign up for or sign in to.
-- **Nothing syncs to a cloud.** Your documents stay where you save them.
-- **Nothing is tracked.** MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".
-- **Web images stay blocked until you choose to load them,** so opening a document never tells a server you read it. When you do load them, they load over https only.
-- **Local images** show in the preview once you grant access to their folder.
+- There is no account to sign up for or sign in to.
+- Nothing syncs to a cloud. Your documents stay where you save them.
+- Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".
+- Web images stay blocked until you choose to load them, so opening a document never tells a server you read it. When you do load them, they load over https only.
+- Local images show in the preview once you grant access to their folder.
 
 The details are in the [privacy policy](/privacy/).
 ---
@@ -69,10 +69,10 @@ In this screenshot:
 
 ## What that means
 
-- **One purchase** on the Mac App Store, USD 4.99.
-- **There is no subscription,** so nothing renews.
-- **There is no account:** MarsDawn never asks you to create one.
-- **Nothing held back.** Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.
+- One purchase on the Mac App Store, USD 4.99.
+- There is no subscription, so nothing renews.
+- There is no account: MarsDawn never asks you to create one.
+- Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.
 ---
 
 ## PDF export
@@ -92,10 +92,10 @@ In this screenshot:
 
 ## What that means
 
-- **Mermaid diagrams** are drawn into the PDF.
-- **Code blocks** keep their syntax highlighting.
-- **Page breaks** avoid leaving a heading at the bottom of a page or splitting code, tables and diagrams.
-- **Any layout.** Export works even while only the source is showing.
+- Mermaid diagrams are drawn into the PDF.
+- Code blocks keep their syntax highlighting.
+- Page breaks avoid leaving a heading at the bottom of a page or splitting code, tables and diagrams.
+- Any layout. Export works even while only the source is showing.
 
 The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script or an AI agent gets the same PDF.
 ---
@@ -104,7 +104,7 @@ The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script
 
 Source: https://marsdawn.southern-light.dev/native/
 
-# A Mac app, made for the Mac.
+# Built out of the Mac's own parts.
 
 The windows, tabs, menus and text editor are the Mac's own. The rendered page is drawn by WebKit, the engine behind Safari.
 
@@ -119,13 +119,13 @@ In this screenshot:
 
 ## What that means
 
-- **Source, split and preview layouts,** one keystroke apart (`⌘1`, `⌘2`, `⌘3`).
-- **The two panes scroll together,** so the paragraph you are editing stays in view.
-- **Markdown syntax highlighting** in the editor, matched to your preview theme.
-- **Native windows, tabs, autosave and version history.**
-- **Quick Look:** press Space on a Markdown file in Finder for a preview, diagrams included.
-- **Siri and Shortcuts:** start a new document from a template, add a line to your notes inbox, or reopen a recent document.
-- **English and Traditional Chinese.**
+- Source, split and preview layouts, one keystroke apart (`⌘1`, `⌘2`, `⌘3`).
+- The two panes scroll together, so the paragraph you are editing stays in view.
+- Markdown syntax highlighting in the editor, matched to your preview theme.
+- Native windows, tabs, autosave and version history.
+- Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.
+- Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.
+- English and Traditional Chinese.
 ---
 
 ## What MarsDawn doesn't do
@@ -533,11 +533,11 @@ MarsDawn 不需要帳號，沒有同步，也沒有雲端。它打開檔案、�
 
 ## 這代表什麼
 
-- **不需要帳號，**不用註冊，也不用登入。
-- **不會同步到雲端，**文件存在哪裡就留在哪裡。
-- **不追蹤任何行為。**MarsDawn 不收集任何關於你的資料，App Store 隱私權標示為「未收集資料」。
-- **網路圖片在你選擇載入之前一律不載入，**打開文件不會讓任何伺服器知道你讀了它。選擇載入時，也只走 https。
-- **本機圖片**在你授權資料夾存取後，就會顯示在預覽中。
+- 不需要帳號，不用註冊，也不用登入。
+- 不會同步到雲端，文件存在哪裡就留在哪裡。
+- 不追蹤任何行為。MarsDawn 不收集任何關於你的資料，App Store 隱私權標示為「未收集資料」。
+- 網路圖片在你選擇載入之前一律不載入，打開文件不會讓任何伺服器知道你讀了它。選擇載入時，也只走 https。
+- 本機圖片在你授權資料夾存取後，就會顯示在預覽中。
 
 完整說明請看[隱私權政策](/zh-hant/privacy/)。
 ---
@@ -561,10 +561,10 @@ MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱，也沒有付費進�
 
 ## 這代表什麼
 
-- **一次購買，**在 Mac App Store，USD 4.99。
-- **沒有訂閱，**不會自動續費。
-- **不需要帳號，**MarsDawn 從不要求你建立帳號。
-- **沒有保留任何功能。**所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都在你買的這個 app 裡。
+- 一次購買，在 Mac App Store，USD 4.99。
+- 沒有訂閱，不會自動續費。
+- 不需要帳號，MarsDawn 從不要求你建立帳號。
+- 沒有保留任何功能。所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都在你買的這個 app 裡。
 ---
 
 ## 輸出 PDF
@@ -584,10 +584,10 @@ Source: https://marsdawn.southern-light.dev/zh-hant/pdf/
 
 ## 這代表什麼
 
-- **Mermaid 圖表**直接畫進 PDF。
-- **程式碼區塊**保留語法上色。
-- **分頁時**會盡量不讓標題落在頁尾，也不切開程式碼、表格和圖表。
-- **任何版面都能輸出，**只顯示原始碼時也可以。
+- Mermaid 圖表直接畫進 PDF。
+- 程式碼區塊保留語法上色。
+- 分頁時會盡量不讓標題落在頁尾，也不切開程式碼、表格和圖表。
+- 任何版面都能輸出，只顯示原始碼時也可以。
 
 免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，所以腳本或 AI agent 也能得到一樣的 PDF。
 ---
@@ -596,7 +596,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/pdf/
 
 Source: https://marsdawn.southern-light.dev/zh-hant/native/
 
-# 為 Mac 而做的 Mac app。
+# 用 Mac 原生的元件做的。
 
 視窗、分頁、選單和文字編輯器都是 Mac 原生的。排版後的頁面由 Safari 使用的 WebKit 引擎繪製。
 
@@ -611,13 +611,13 @@ Source: https://marsdawn.southern-light.dev/zh-hant/native/
 
 ## 這代表什麼
 
-- **原始碼、並排、預覽三種版面，**一個快捷鍵切換（`⌘1`、`⌘2`、`⌘3`）。
-- **兩側同步捲動，**正在編輯的段落一直在眼前。
-- **編輯器內建 Markdown 語法上色，**顏色與預覽主題一致。
-- **原生視窗、分頁、自動儲存和版本記錄。**
-- **快速查看：**在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。
-- **Siri 和捷徑：**用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。
-- **支援英文和繁體中文。**
+- 原始碼、並排、預覽三種版面，一個快捷鍵切換（`⌘1`、`⌘2`、`⌘3`）。
+- 兩側同步捲動，正在編輯的段落一直在眼前。
+- 編輯器內建 Markdown 語法上色，顏色與預覽主題一致。
+- 原生視窗、分頁、自動儲存和版本記錄。
+- 快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。
+- Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。
+- 支援英文和繁體中文。
 ---
 
 ## MarsDawn 做不到的事

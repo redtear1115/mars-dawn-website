@@ -11,10 +11,10 @@ In this screenshot:
 
 ## What that means
 
-- **Mermaid diagrams** are drawn into the PDF.
-- **Code blocks** keep their syntax highlighting.
-- **Page breaks** avoid leaving a heading at the bottom of a page or splitting code, tables and diagrams.
-- **Any layout.** Export works even while only the source is showing.
+- Mermaid diagrams are drawn into the PDF.
+- Code blocks keep their syntax highlighting.
+- Page breaks avoid leaving a heading at the bottom of a page or splitting code, tables and diagrams.
+- Any layout. Export works even while only the source is showing.
 
 The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script or an AI agent gets the same PDF.
 

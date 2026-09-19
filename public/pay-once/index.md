@@ -13,10 +13,10 @@ In this screenshot:
 
 ## What that means
 
-- **One purchase** on the Mac App Store, USD 4.99.
-- **There is no subscription,** so nothing renews.
-- **There is no account:** MarsDawn never asks you to create one.
-- **Nothing held back.** Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.
+- One purchase on the Mac App Store, USD 4.99.
+- There is no subscription, so nothing renews.
+- There is no account: MarsDawn never asks you to create one.
+- Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.
 
 ## More
 
