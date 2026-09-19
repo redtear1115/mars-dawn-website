@@ -1,8 +1,7 @@
 # Contributing
 
 This repo is the site at marsdawn.southern-light.dev: home page, privacy policy and support pages,
-in English and Traditional Chinese, with the privacy policy and support pages also in Simplified
-Chinese and Japanese. It's the right place for copy changes, page structure, the
+in English, Traditional Chinese, Simplified Chinese and Japanese. It's the right place for copy changes, page structure, the
 build script and deploy workflow.
 
 This project follows the [Code of Conduct](CODE_OF_CONDUCT.md).

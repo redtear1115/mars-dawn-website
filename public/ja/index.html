@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarsDawn：ライブプレビュー搭載、Mac 向け Markdown エディタ</title>
+<meta name="description" content="ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向け Markdown エディタ。AI エージェントが書いた文章を読むために作られました。Mac App Store で近日公開予定です。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/">
+<link rel="alternate" type="text/markdown" href="/ja/index.md">
+<meta property="og:title" content="MarsDawn：ライブプレビュー搭載、Mac 向け Markdown エディタ">
+<meta property="og:description" content="ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向け Markdown エディタ。AI エージェントが書いた文章を読むために作られました。Mac App Store で近日公開予定です。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向け Markdown エディタ。AI エージェントが書いた文章を読むために作られました。Mac App Store で近日公開予定です。", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "url": "https://marsdawn.southern-light.dev/ja/"}</script>
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main>
+<section class="hero-scene">
+<div class="dawn-wrap" aria-hidden="true">
+  <svg class="dawn-layer" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-sky-1" offset="0%"></stop>
+        <stop class="stop-sky-2" offset="42%"></stop>
+        <stop class="stop-sky-3" offset="76%"></stop>
+        <stop class="stop-sky-4" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="900" fill="url(#skyGrad)"></rect>
+  </svg>
+  <svg class="dawn-layer dawn-glow" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <radialGradient id="glowGrad" cx="50%" cy="63%" r="75%">
+        <stop class="stop-glow" offset="0%"></stop>
+        <stop class="stop-glow-mid" offset="42%"></stop>
+        <stop class="stop-glow-fade" offset="100%"></stop>
+      </radialGradient>
+    </defs>
+    <ellipse cx="600" cy="560" rx="1000" ry="430" fill="url(#glowGrad)"></ellipse>
+  </svg>
+  <svg class="dawn-layer" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="planetGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-planet-rim" offset="0%"></stop>
+        <stop class="stop-planet-deep" offset="26%"></stop>
+      </linearGradient>
+    </defs>
+    <path d="M -40 560 Q 600 428 1240 560 L 1240 920 L -40 920 Z" fill="url(#planetGrad)"></path>
+  </svg>
+  <div class="dawn-layer night-veil"></div>
+  <svg class="dawn-layer dawn-stars stars-a" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="955" cy="42" r="1.1"></circle><circle cx="982" cy="181" r="1.1"></circle><circle cx="979" cy="34" r="1.1"></circle><circle cx="720" cy="63" r="1.1"></circle><circle cx="122" cy="125" r="1.1"></circle><circle cx="956" cy="127" r="1.1"></circle><circle cx="1110" cy="43" r="1.1"></circle><circle cx="242" cy="237" r="1.1"></circle><circle cx="972" cy="257" r="1.1"></circle><circle cx="1150" cy="291" r="1.1"></circle><circle cx="4" cy="15" r="1.1"></circle><circle cx="286" cy="275" r="1.1"></circle><circle cx="1032" cy="163" r="1.1"></circle><circle cx="1095" cy="158" r="1.1"></circle><circle cx="198" cy="287" r="1.1"></circle></svg>
+  <svg class="dawn-layer dawn-stars stars-b" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="1151" cy="256" r="1.4"></circle><circle cx="1019" cy="144" r="1.4"></circle><circle cx="269" cy="166" r="1.4"></circle><circle cx="222" cy="197" r="1.4"></circle><circle cx="1131" cy="300" r="1.4"></circle><circle cx="1049" cy="26" r="1.4"></circle><circle cx="955" cy="332" r="1.4"></circle><circle cx="134" cy="293" r="1.4"></circle><circle cx="193" cy="84" r="1.4"></circle><circle cx="949" cy="252" r="1.4"></circle><circle cx="187" cy="334" r="1.4"></circle><circle cx="1187" cy="238" r="1.4"></circle></svg>
+  <svg class="dawn-layer dawn-stars stars-c" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="92" cy="93" r="1.8"></circle><circle cx="10" cy="149" r="1.8"></circle><circle cx="961" cy="188" r="1.8"></circle><circle cx="81" cy="16" r="1.8"></circle><circle cx="1028" cy="231" r="1.8"></circle><circle cx="1075" cy="52" r="1.8"></circle><circle cx="35" cy="264" r="1.8"></circle><circle cx="979" cy="96" r="1.8"></circle><circle cx="194" cy="295" r="1.8"></circle></svg>
+  <svg class="dawn-layer dawn-limb" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="limbGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop class="stop-limb-fade" offset="0%"></stop>
+        <stop class="stop-limb" offset="50%"></stop>
+        <stop class="stop-limb-fade" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <path class="limb-line" d="M -40 560 Q 600 428 1240 560" fill="none" stroke="url(#limbGrad)" stroke-width="5"></path>
+  </svg>
+</div>
+<div class="hero-inner">
+<div class="hero-copy">
+<section class="intro hero">
+  <p class="kicker">AI ワークフローのために作られました</p>
+  <h1>エージェントが書いた Markdown を、じっくり読む場所。</h1>
+  <p>AI エージェントが Markdown を書きます。あなたは MarsDawn でそれを確認します。ソースとレンダリングされたページを並べて見て、修正を伝えます。</p>
+</section>
+</div>
+<div class="hero-shot">
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 1264px) 76rem, (min-width: 736px) calc(100vw - 48px), calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn の分割ビュー：左が Markdown のソース、右がレンダリングされたページ。">
+    
+    
+  </div></div>
+</figure>
+</div>
+</div>
+</section>
+<h2 class="loop-title">このループ</h2>
+<ol class="loop-steps">
+  <li><strong>エージェントが書く。</strong>あなたのコーディングエージェントやライティングアシスタントが Markdown の下書きを作ります。README、仕様書、メモなど。</li>
+  <li><strong>MarsDawn で確認する。</strong>ファイルを開き、Mermaid 図やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。</li>
+  <li><strong>エージェントが修正する。</strong>変更を依頼します。修正されたファイルを開き、同じように読みます。</li>
+</ol>
+<p>エージェントは MarsDawn を直接操作することもできます。無料の <a href="/ja/cli/">marsdawn</a> コマンドラインツールは、確認用にファイルを開いたり PDF を書き出したりでき、スクリプト向けの JSON 出力にも対応しています。詳細は<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>をご覧ください。</p>
+<nav class="traits" aria-label="MarsDawn に期待できること">
+<h2>MarsDawn に期待できること</h2>
+<ul>
+  <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a><span>アカウント不要、同期なし、クラウドなし。</span></li>
+  <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a><span>14日間無料、その後は一度だけ USD 4.99。サブスクリプションはありません。</span></li>
+  <li><a href="/ja/pdf/">PDF 書き出し</a><span>図表、コードのハイライト、配慮された改ページ。</span></li>
+  <li><a href="/ja/native/">Mac アプリ</a><span>ネイティブのウインドウとタブ、自動保存、クイックルック。</span></li>
+  <li><a href="/ja/limits/">MarsDawn ができないこと</a><span>購入前に知っておくこと。</span></li>
+</ul>
+</nav>
+<section class="dawn-close">
+<p><strong>エージェントが書いた Markdown を読む。</strong> MarsDawn は Mac App Store で近日公開予定です。</p>
+</section>
+</main>
+<footer class="footer footer-home">
+  <a href="/ja/support/">サポート</a>
+  <a href="/ja/privacy/">プライバシーポリシー</a>
+  <a href="/ja/cli/">コマンドライン</a>
+</footer>
+</div>
+</body>
+</html>
