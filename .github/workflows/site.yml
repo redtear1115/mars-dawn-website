@@ -28,7 +28,8 @@ jobs:
             echo "::error::Run python3 scripts/build_pages.py and commit the result."
             exit 1
           fi
-      # TODO: make this mandatory once the gallery ships; /themes/v1/index.json must never disappear.
+      # The theme gallery isn't served yet and nothing reads /themes/v1/ (see README). Once it ships,
+      # make this check mandatory: from then on /themes/v1/index.json must never disappear.
       - name: Theme index is valid JSON
         run: |
           if [ -f public/themes/v1/index.json ]; then

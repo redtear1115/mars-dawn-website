@@ -13,7 +13,9 @@ The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown edito
 | `wrangler.jsonc` | Cloudflare Workers static-assets config |
 
 These URLs are public contracts and must keep working at the same paths:
-`/privacy/`, `/support/`, `/zh-hant/privacy/`, `/zh-hant/support/` (linked from the App Store) and everything under `/themes/v1/` (read by the app).
+`/privacy/`, `/support/`, `/zh-hant/privacy/`, `/zh-hant/support/` (linked from the App Store).
+
+`/themes/v1/` is **reserved** for the theme gallery, whose design is `docs/theme-ecosystem-design.md` in the app repository. Nothing is served there yet, and neither the app nor the `marsdawn` CLI reads it. Once the gallery ships and the app reads it, it becomes a contract too. Until then, the cache rules in `public/_headers` and the CI check below, which runs only when the index exists, are preparation.
 
 ## Editing
 
