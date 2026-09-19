@@ -146,8 +146,8 @@ DAWN_HERO_SVG = f"""<div class="dawn-wrap" aria-hidden="true">
 
 PAGES = {
     ("en", "index"): {
-        "title": "MarsDawn",
-        "description": "MarsDawn: a native Mac Markdown editor built for the AI workflow. An agent writes the Markdown, you review it with live preview, and it revises.",
+        "title": "MarsDawn: a Markdown editor for Mac, with live preview",
+        "description": "A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.",
         "intro": """
 <section class="intro hero">
   <p class="kicker">Built for the AI workflow</p>
@@ -166,8 +166,8 @@ PAGES = {
 """,
     },
     ("zh-hant", "index"): {
-        "title": "MarsDawn",
-        "description": "MarsDawn 是原生的 Mac Markdown 編輯器，為 AI 工作流程而生：agent 寫 Markdown，你用即時預覽檢閱，agent 再修改。",
+        "title": "MarsDawn：Mac 上的 Markdown 編輯器，即時預覽",
+        "description": "原生的 Mac Markdown 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出，為讀 AI agent 寫的 Markdown 而做。即將在 Mac App Store 上架。",
         "intro": """
 <section class="intro hero">
   <p class="kicker">為 AI 工作流程而生</p>
@@ -385,8 +385,8 @@ PAGES = {
 # (Sources/marsdawn/Commands.swift, Sources/marsdawn/main.swift, README.md).
 CLI_PAGES = {
     ("en", "cli"): {
-        "title": "Command Line · MarsDawn",
-        "description": "The free marsdawn command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.",
+        "title": "marsdawn: a free Markdown to PDF command-line tool · MarsDawn",
+        "description": "The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.",
         "body": f"""
 <section class="intro">
   <h1>Command Line</h1>
@@ -456,8 +456,8 @@ marsdawn open notes.md --line 120</code></pre>
 """,
     },
     ("zh-hant", "cli"): {
-        "title": "命令列工具 · MarsDawn",
-        "description": "免費的 marsdawn 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。",
+        "title": "marsdawn：免費的 Markdown 轉 PDF 命令列工具 · MarsDawn",
+        "description": "免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。",
         "body": f"""
 <section class="intro">
   <h1>命令列工具</h1>
@@ -669,8 +669,8 @@ def schema_links(locale: str) -> str:
 
 AGENT_PAGES = {
     ("en", "cli/agents"): {
-        "title": "marsdawn for agents · MarsDawn",
-        "description": "A reference for AI agents and scripts that call marsdawn: commands, JSON output, schemas, exit codes and requirements.",
+        "title": "marsdawn for agents: Markdown to PDF from scripts · MarsDawn",
+        "description": "A reference for AI agents and scripts that call marsdawn to turn Markdown into PDF: commands, JSON output, schemas, exit codes and requirements.",
         "body": f"""
 <section class="intro">
   <h1>marsdawn for agents</h1>
@@ -776,8 +776,8 @@ swift build -c release --product marsdawn
 """,
     },
     ("zh-hant", "cli/agents"): {
-        "title": "給 AI agent 的 marsdawn 參考 · MarsDawn",
-        "description": "給呼叫 marsdawn 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。",
+        "title": "給 AI agent 的 marsdawn 參考：用腳本轉 PDF · MarsDawn",
+        "description": "給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。",
         "body": f"""
 <section class="intro">
   <h1>給 AI agent 的 marsdawn 參考</h1>
@@ -919,11 +919,11 @@ _SKILL_URL = f"{BASE_URL}/cli/skill/SKILL.md"
 # DRAFT COPY for the owner: the two kit landing pages (see the app repo's docs/plan-kit-reach.md).
 START_PAGES = {
     ("en", "markdown-to-pdf"): {
-        "title": "Markdown to PDF from the command line · MarsDawn",
-        "description": "Turn a Markdown file into a PDF with the free marsdawn command-line tool. Install it with Homebrew, run one command, and get tables, math, Mermaid diagrams and highlighted code on the page.",
+        "title": "Markdown to PDF on a Mac, from the command line · MarsDawn",
+        "description": "Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.",
         "body": f"""
 <section class="intro">
-  <h1>Markdown to PDF, from the command line.</h1>
+  <h1>Markdown to PDF on a Mac, from the command line.</h1>
   <p>The free <code>marsdawn</code> tool turns a Markdown file into a PDF with one command. Tables, math, Mermaid diagrams and highlighted code come out the way they read in the source, and it needs nothing else installed, not even the MarsDawn app.</p>
 </section>
 <h2>Install it</h2>
@@ -939,6 +939,14 @@ marsdawn --version</code></pre>
 <pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>This is that page, captured from a real run of <code>marsdawn</code> 0.5.0:</p>
 <p><img class="pdf-page" src="/assets/cli/plan-en.png" alt="The exported PDF: the heading, a table of steps, an inline and a displayed formula, a Draft, Review, Ship diagram, and a highlighted line of Swift." width="989" height="930"></p>
+<h2>Choose a theme, paper size and file name</h2>
+<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<ul>
+  <li><code>--theme</code>: dawn, classic, modern or vivid, in the theme's light colors. Without it, <code>export</code> uses <code>$MARSDAWN_THEME</code>, then dawn.</li>
+  <li><code>--paper</code>: a4 or letter. The default is a4.</li>
+  <li><code>-o</code>: where to write the PDF, instead of next to the source.</li>
+  <li><code>--allow-remote-images</code>: load images from the web while rendering. They stay off unless you pass it.</li>
+</ul>
 <h2>If it doesn't work</h2>
 <ul>
   <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew is building <code>marsdawn</code> from source, as it does on an Intel Mac. Install Xcode 26 or later from the App Store, then run the install again.</li>
@@ -1014,11 +1022,11 @@ open notes.pdf</code></pre>
 """,
     },
     ("zh-hant", "markdown-to-pdf"): {
-        "title": "用命令列把 Markdown 轉成 PDF · MarsDawn",
-        "description": "用免費的 marsdawn 命令列工具，把 Markdown 檔案轉成 PDF。用 Homebrew 安裝，執行一個指令，表格、數學式、Mermaid 圖表和程式碼上色都會出現在頁面上。",
+        "title": "Markdown 轉 PDF 工具：在 Mac 用命令列轉檔 · MarsDawn",
+        "description": "免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。",
         "body": f"""
 <section class="intro">
-  <h1>用命令列，把 Markdown 轉成 PDF。</h1>
+  <h1>Markdown 轉 PDF 工具：在 Mac 上用命令列轉檔。</h1>
   <p>免費的 <code>marsdawn</code> 工具只要一個指令，就能把 Markdown 檔案轉成 PDF。表格、數學式、Mermaid 圖表和程式碼上色，都會照原始檔的樣子呈現，而且不需要安裝其他東西，連 MarsDawn app 都不用。</p>
 </section>
 <h2>安裝</h2>
@@ -1034,6 +1042,14 @@ marsdawn --version</code></pre>
 <pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>這是那一頁，擷取自 <code>marsdawn</code> 0.5.0 的實際執行結果：</p>
 <p><img class="pdf-page" src="/assets/cli/plan-zh.png" alt="匯出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。" width="989" height="930"></p>
+<h2>選主題、紙張大小和檔名</h2>
+<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<ul>
+  <li><code>--theme</code>：dawn、classic、modern 或 vivid，使用主題的淺色配色。沒有指定時，<code>export</code> 會用 <code>$MARSDAWN_THEME</code>，再來才是 dawn。</li>
+  <li><code>--paper</code>：a4 或 letter，預設是 a4。</li>
+  <li><code>-o</code>：PDF 要寫到哪裡，而不是寫在原始檔旁邊。</li>
+  <li><code>--allow-remote-images</code>：轉檔時載入網路上的圖片。沒加這個選項就不會載入。</li>
+</ul>
 <h2>如果沒有成功</h2>
 <ul>
   <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> 代表 Homebrew 正在從原始碼建置 <code>marsdawn</code>，這在 Intel Mac 上會發生。從 App Store 安裝 Xcode 26 以上，再重新安裝一次。</li>
@@ -1052,7 +1068,7 @@ marsdawn --version</code></pre>
 
 SKILL_PAGES = {
     ("en", "cli/skill"): {
-        "title": "An agent skill for marsdawn · MarsDawn",
+        "title": "A coding-agent skill for Markdown to PDF · MarsDawn",
         "description": "One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.",
         "body": f"""
 <section class="intro">
@@ -1080,7 +1096,7 @@ curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 """,
     },
     ("zh-hant", "cli/skill"): {
-        "title": "給 agent 的 marsdawn skill · MarsDawn",
+        "title": "讓寫程式的 agent 把 Markdown 轉 PDF 的 skill · MarsDawn",
         "description": "一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。",
         "body": f"""
 <section class="intro">
@@ -1280,8 +1296,8 @@ def _trait_page(title, description, intro, body):
 
 TRAIT_PAGES = {
     ("en", "yours"): _trait_page(
-        "Your writing stays on your Mac · MarsDawn",
-        "MarsDawn has no account, no sync and no cloud. Your documents stay on your Mac.",
+        "A Mac Markdown editor with no account and no cloud · MarsDawn",
+        "MarsDawn has no account, no sync and no cloud. Your Markdown documents stay on your Mac, in the files and folders you choose.",
         """
 <section class="intro">
   <h1>Your writing stays on your Mac.</h1>
@@ -1301,8 +1317,8 @@ TRAIT_PAGES = {
 """,
     ),
     ("zh-hant", "yours"): _trait_page(
-        "你寫的內容留在你的 Mac 上 · MarsDawn",
-        "MarsDawn 不需要帳號，沒有同步，也沒有雲端，你的文件留在你的 Mac 上。",
+        "不用帳號、不上雲端的 Mac Markdown 編輯器 · MarsDawn",
+        "MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。",
         """
 <section class="intro">
   <h1>你寫的內容，留在你的 Mac 上。</h1>
@@ -1360,8 +1376,8 @@ TRAIT_PAGES = {
 """,
     ),
     ("en", "pdf"): _trait_page(
-        "PDF export · MarsDawn",
-        "Export as PDF or print, with Mermaid diagrams, highlighted code and careful page breaks.",
+        "Export Markdown to PDF on a Mac, diagrams included · MarsDawn",
+        "Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks never strand a heading or split code or tables.",
         """
 <section class="intro">
   <h1>The PDF looks like the page you wrote.</h1>
@@ -1380,8 +1396,8 @@ TRAIT_PAGES = {
 """,
     ),
     ("zh-hant", "pdf"): _trait_page(
-        "輸出 PDF · MarsDawn",
-        "輸出成 PDF 或列印，Mermaid 圖表、程式碼上色都會保留，分頁也經過安排。",
+        "在 Mac 把 Markdown 輸出成 PDF，圖表也在 · MarsDawn",
+        "在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁不會把標題留在頁底，也不會切開程式碼、表格和圖表。",
         """
 <section class="intro">
   <h1>PDF 看起來就是你寫的那一頁。</h1>
@@ -1400,8 +1416,8 @@ TRAIT_PAGES = {
 """,
     ),
     ("en", "native"): _trait_page(
-        "A Mac app · MarsDawn",
-        "Native windows and tabs, autosave, version history, Quick Look, and a text editor that behaves like the rest of your Mac.",
+        "A native Markdown app for Mac: tabs, Quick Look · MarsDawn",
+        "A Markdown editor that is a real Mac app: native windows and tabs, autosave, version history, Quick Look in Finder and a text editor that behaves like a Mac.",
         """
 <section class="intro">
   <h1>Built out of the Mac's own parts.</h1>
@@ -1422,8 +1438,8 @@ TRAIT_PAGES = {
 """,
     ),
     ("zh-hant", "native"): _trait_page(
-        "為 Mac 而做 · MarsDawn",
-        "原生視窗與分頁、自動儲存、版本記錄、快速查看，文字編輯器的操作和 Mac 上其他 app 一致。",
+        "原生的 Mac Markdown app：分頁、快速查看 · MarsDawn",
+        "真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。",
         """
 <section class="intro">
   <h1>用 Mac 原生的元件做的。</h1>
