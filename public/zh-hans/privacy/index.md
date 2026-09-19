@@ -60,7 +60,7 @@ MarsDawn app 不向任何人收集数据，包括儿童。网站上记下的访�
 
 ## 购买
 
-MarsDawn 将通过 Mac App Store 销售，付款会由 Apple 依其条款处理，开发者不会取得你的付款信息。
+MarsDawn 通过 Mac App Store 销售，付款由 Apple 依其条款处理，开发者不会取得你的付款信息。
 
 ## 政策变更
 
