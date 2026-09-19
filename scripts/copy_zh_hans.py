@@ -148,7 +148,7 @@ def build(k) -> dict:
 <p>MarsDawn app 不向任何人收集数据，包括儿童。网站上记下的访问不是账户，也不用来辨认任何人。</p>
 
 <h2>购买</h2>
-<p>MarsDawn 将通过 Mac App Store 销售，付款会由 Apple 依其条款处理，开发者不会取得你的付款信息。</p>
+<p>MarsDawn 通过 Mac App Store 销售，付款由 Apple 依其条款处理，开发者不会取得你的付款信息。</p>
 
 <h2>政策变更</h2>
 <p>如果 MarsDawn 未来处理数据的方式有所改变，本页会在该版本推出前更新，页面顶部的日期也会一并更改。</p>
