@@ -419,6 +419,7 @@ open notes.pdf</code></pre>
 <h2>インストール</h2>
 <p><a href="https://brew.sh">Homebrew</a> を使う場合：</p>
 <pre><code>{k.BREW_TAP_INSTALL}</code></pre>
+<p>コーディングエージェントを使っていますか？<a href="/ja/cli/skill/">marsdawn スキルを追加</a>してください。自分が書いたものを MarsDawn で開いてあなたに確認してもらう方法と、PDF の書き出しを教える、1つのファイルです。</p>
 <p>Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールし、他に何もインストールする必要はありません。Intel Mac では代わりにソースから marsdawn をビルドするため数分かかり、Xcode 26 以降（Swift 6.2）が必要です。このツールは macOS 15 以降で動作します。</p>
 <p>または、Swift Package Manager で<a href="{k.KIT_URL}">ソース</a>からビルドします。</p>
 <pre><code>git clone {k.KIT_URL}.git
@@ -584,24 +585,26 @@ swift build -c release --product marsdawn
     }
     pages['cli/skill'] = {
         "title": 'Markdown から PDF へのコーディングエージェント用スキル · MarsDawn',
-        "description": 'コーディングエージェントが読み込んで marsdawn をインストールし、動作確認をし、Markdown を PDF に書き出し、JSON の結果を読み取るための1つのファイルです。',
+        "description": 'コーディングエージェントが読み込む1つのファイルです。自分が書いた Markdown を MarsDawn で開いてあなたに確認してもらう方法と、marsdawn のインストール、Markdown の PDF への書き出し、JSON の結果の読み取りを教えます。',
         "body": f"""
 <section class="intro">
-  <h1>PDF 作成をエージェントに任せる。</h1>
-  <p>このスキルは1つの Markdown ファイルです。コーディングエージェントに <code>marsdawn</code> のインストール方法、動作確認の方法、文書を PDF に書き出す方法、結果の読み方を教えます。これにより、Markdown を書いたエージェントが PDF もあなたに渡せるようになります。</p>
+  <h1>書いたものをエージェントに見せてもらい、PDF も作ってもらう。</h1>
+  <p>このスキルは1つの Markdown ファイルです。コーディングエージェントに、自分が書いた文書を MarsDawn で開いてあなたに確認してもらう方法と、<code>marsdawn</code> のインストール方法、動作確認の方法、文書を PDF に書き出す方法、結果の読み方を教えます。</p>
 </section>
 <div class="summary"><p><strong>1つの Markdown ファイルを <code>~/.claude/skills/marsdawn/SKILL.md</code> に置くだけ。</strong>これでエージェントが <code>marsdawn</code> をインストールし、PDF に書き出し、JSON の結果を読みます。何かを実行する前には、これまでどおり確認を求めます。</p></div>
 <h2>Claude Code にインストールする</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
-<p>Claude Code は PDF が必要なタスクのときにこれを自動的に読み込み、<code>/marsdawn</code> として自分で実行することもできます。<a href="/cli/skill/SKILL.md">短いファイル1つ</a>なので、インストールする前に読んでみてください。</p>
+<p>Claude Code は、PDF が必要なタスクのとき、またはあなたが読む Markdown 文書を書いたり修正したりしたときに、これを自動的に読み込みます。<code>/marsdawn</code> として自分で実行することもできます。<a href="/cli/skill/SKILL.md">短いファイル1つ</a>なので、インストールする前に読んでみてください。</p>
 <p>他のエージェントでも同じファイルを使えます。ただの Markdown で、説明とコマンドが書いてあるだけなので、あなたのエージェントにこの URL を指定するか、そのまま貼り付けてください。このファイルは英語です。</p>
 <h2>教えること</h2>
 <ul>
   <li><code>marsdawn</code> がなければ Homebrew でインストールし、バージョンを決め打ちせず <code>marsdawn --version</code> で確認する。</li>
   <li><code>marsdawn export … --json</code> で書き出し、結果を読み取る：PDF の書き出し先、ページ数、レンダリングされなかった Mermaid 図の有無。</li>
   <li>終了コードで失敗の種類を見分ける：ファイルが見つからない、PDF がすでにある、書き出しに失敗した、オプションが不正、など。</li>
-  <li>MarsDawn アプリがインストールされているときだけ <code>open</code> を使い、PDF を作るためには絶対に使わない。</li>
+  <li><code>marsdawn open file.md:line</code> で自分が書いた文書を開き、最初の変更箇所に移動する。開くのは1回だけ：その後の編集は、開いているウインドウに自動的に反映される。</li>
+  <li>MarsDawn アプリがインストールされていなければ、一度だけそう伝えて作業を続け、再試行はしない。PDF を作るために <code>open</code> を使うことは絶対にない。</li>
+  <li><code>--folder</code>（marsdawn 0.5.1 以降）を使ったときは、フォルダを「表示された」ではなく「表示を依頼した」と報告する：判断するのはアプリで、結果は返ってこない。</li>
 </ul>
 <h2>しないこと</h2>
 <ul>
