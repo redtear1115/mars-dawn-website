@@ -45,7 +45,7 @@
 
 # Markdown twins of every page. Cloudflare's _headers allows only one splat
 # per rule, so a suffix pattern like /*.md is not a reliable way to match
-# nested paths; these eight paths are listed explicitly instead.
+# nested paths; these paths are listed explicitly instead.
 /index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
@@ -61,19 +61,49 @@
 /zh-hant/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
+/zh-hans/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
 /zh-hant/support/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/support/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/support/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
 /zh-hant/privacy/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
+/zh-hans/privacy/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/privacy/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
 /zh-hant/cli/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/cli/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/cli/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
 /cli/agents/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
 /zh-hant/cli/agents/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/cli/agents/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/cli/agents/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
 
@@ -99,15 +129,45 @@
 /zh-hant/yours/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
+/zh-hans/yours/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/yours/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
 /zh-hant/pay-once/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/pay-once/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/pay-once/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
 /zh-hant/pdf/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
+/zh-hans/pdf/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/pdf/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
 /zh-hant/native/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
+/zh-hans/native/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/native/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
 /zh-hant/limits/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/limits/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/limits/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300

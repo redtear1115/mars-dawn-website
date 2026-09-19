@@ -1,6 +1,6 @@
 # marsdawn.southern-light.dev
 
-The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown editor for the Mac: home page, privacy policy and support pages, in English and Traditional Chinese.
+The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown editor for the Mac: home page, privacy policy and support pages, in English, Traditional Chinese, Simplified Chinese and Japanese.
 
 ## Layout
 
@@ -8,7 +8,9 @@ The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown edito
 |---|---|
 | `public/` | The site root, served as static files |
 | `public/_headers` | Security headers for every page (strict CSP with no scripts, nosniff, no referrer) and cache rules (theme index short, versioned theme files long). Anything that adds a script, inline style, web font or third-party resource must update the CSP |
-| `scripts/build_pages.py` | Generates the privacy and support pages into `public/` |
+| `scripts/build_pages.py` | Generates every page into `public/`, with the en and zh-Hant copy |
+| `scripts/copy_zh_hans.py`, `scripts/copy_ja.py` | The zh-Hans and ja copy, translated from the en and zh-Hant copy, merged in by `build_pages.py` |
+| `scripts/check_hreflang.py` | Checks that every page's hreflang set is complete and reciprocal across the four locales, in the HTML and the sitemap (runs in CI) |
 | `scripts/deploy.sh` | Manual deploy, for emergencies |
 | `wrangler.jsonc` | Cloudflare Workers static-assets config |
 
@@ -19,7 +21,7 @@ These URLs are public contracts and must keep working at the same paths:
 
 ## Editing
 
-Edit the copy in `scripts/build_pages.py`, then regenerate and commit the output:
+Edit the copy in `scripts/build_pages.py` (en and zh-Hant) or `scripts/copy_zh_hans.py` and `scripts/copy_ja.py`, then regenerate and commit the output. A change to the meaning of a page belongs in all four languages:
 
 ```sh
 python3 scripts/build_pages.py

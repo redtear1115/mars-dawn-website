@@ -1,7 +1,7 @@
 # Contributing
 
 This repo is the site at marsdawn.southern-light.dev: home page, privacy policy and support pages,
-in English and Traditional Chinese. It's the right place for copy changes, page structure, the
+in English, Traditional Chinese, Simplified Chinese and Japanese. It's the right place for copy changes, page structure, the
 build script and deploy workflow.
 
 This project follows the [Code of Conduct](CODE_OF_CONDUCT.md).
@@ -15,7 +15,8 @@ This project follows the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Build and test locally
 
-Edit the copy in `scripts/build_pages.py`, then regenerate and commit the output:
+Edit the copy in `scripts/build_pages.py` (en and zh-Hant) or `scripts/copy_zh_hans.py` and
+`scripts/copy_ja.py`, then regenerate and commit the output:
 
 ```sh
 python3 scripts/build_pages.py
