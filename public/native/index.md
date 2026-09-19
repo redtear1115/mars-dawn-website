@@ -19,7 +19,7 @@ In this screenshot:
 - Native windows, tabs, autosave and version history.
 - Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.
 - Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.
-- English and Traditional Chinese.
+- English, Traditional Chinese, Simplified Chinese and Japanese.
 
 ## More
 
@@ -37,3 +37,5 @@ In this screenshot:
 - [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): A reference for AI agents and scripts that call marsdawn to turn Markdown into PDF: commands, JSON output, schemas, exit codes and requirements.
 - [Agent skill](https://marsdawn.southern-light.dev/cli/skill/index.md): One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/native/index.md): 真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在访达用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。
+- [日本語](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。

@@ -14,7 +14,7 @@
 - **Finder 整合：**兩者都有 Finder 的快速查看擴充功能，對 `.md` 檔案按空白鍵就能看到排好版的頁面。
 - **PDF 與列印：**兩者都能把排好版的頁面輸出或列印成 PDF。
 - **系統需求：**MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。
-- **語言：**MarsDawn 的介面有英文和繁體中文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。
+- **語言：**MarsDawn 的介面有英文、繁體中文、簡體中文和日文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。
 
 ## 價格與購買方式
 
@@ -56,3 +56,5 @@ open notes.pdf
 - [給 AI agent 的 marsdawn 參考](https://marsdawn.southern-light.dev/zh-hant/cli/agents/index.md): 給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。
 - [給 agent 的 skill](https://marsdawn.southern-light.dev/zh-hant/cli/skill/index.md): 一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。
 - [English](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer renders Markdown read-only for USD 19.99. MarsDawn edits and previews side by side, free to try then USD 4.99 once on the Mac App Store.
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读查看器，直接购买 USD 19.99。MarsDawn 边编辑边预览，免费试用后在 Mac App Store 一次解锁 USD 4.99。逐项比较功能、价格和购买方式。
+- [日本語](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用で Markdown をレンダリングし、USD 19.99。MarsDawn は編集とプレビューを並べて表示し、無料で試したあと Mac App Store で USD 4.99 の一度きりの購入です。
