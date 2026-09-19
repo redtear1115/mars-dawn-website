@@ -121,12 +121,12 @@ marsdawn open notes.md --line 120 --json</code></pre>
 
 <h2>Requirements</h2>
 <ul>
-  <li>The tool runs on macOS 15 or later. Building it needs Swift 6.2 or later, which comes with Xcode 26 or later.</li>
+  <li>The tool runs on macOS 15 or later. On Apple silicon, Homebrew installs a prebuilt bottle and nothing else is needed. Building it yourself, on an Intel Mac or from the source, needs Swift 6.2 or later, which comes with Xcode 26 or later.</li>
   <li>The MarsDawn app needs macOS 26 or later.</li>
 </ul>
 
 <h2>Install</h2>
-<p>With Homebrew. The formula compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.</p>
+<p>With Homebrew. On Apple silicon it pours a prebuilt bottle in seconds, with no Xcode needed. On an Intel Mac it compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn --version</code></pre>
 <p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a>. The first build fetches dependencies and compiles, which also takes a few minutes.</p>

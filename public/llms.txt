@@ -33,4 +33,4 @@
 - [error.v1.json](https://marsdawn.southern-light.dev/schemas/cli/error.v1.json): JSON Schema for the --json result, failure, both commands
 - [open.v1.json](https://marsdawn.southern-light.dev/schemas/cli/open.v1.json): JSON Schema for the --json result, open success, marsdawn 0.2.x, where `opened` was a list of paths
 
-Install: `brew tap redtear1115/tap && brew install marsdawn` (compiles from source, a few minutes; macOS 15 and Xcode 26 to build). `export` works without the MarsDawn app; `open` needs it.
+Install: `brew tap redtear1115/tap && brew install marsdawn` (a prebuilt bottle on Apple silicon, no Xcode needed; on Intel it builds from source with Xcode 26; macOS 15 or later). `export` works without the MarsDawn app; `open` needs it.

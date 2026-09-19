@@ -382,14 +382,14 @@ CLI_PAGES = {
   <p>The free <code>marsdawn</code> command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew, which builds it from source on your Mac. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
+<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
 
 <p>Calling marsdawn from an AI agent or a script? See <a href="/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code.</p>
 
 <h2>Install</h2>
 <p>With <a href="https://brew.sh">Homebrew</a>:</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
-<p>Homebrew compiles marsdawn from source, which takes a few minutes. The tool runs on macOS 15 or later, and building it needs Xcode 26 or later (Swift 6.2).</p>
+<p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.</p>
 <p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> with Swift Package Manager:</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
@@ -453,14 +453,14 @@ marsdawn open notes.md --line 120</code></pre>
   <p>免費的 <code>marsdawn</code> 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，它會在你的 Mac 上從原始碼建置。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。</p></div>
+<div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。</p></div>
 
 <p>要從 AI agent 或腳本呼叫 marsdawn？請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>，裡面有 JSON 輸出、Schema 和所有離開代碼。</p>
 
 <h2>安裝</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
-<p>Homebrew 會從原始碼編譯 marsdawn，需要幾分鐘。這個工具需要 macOS 15 以上，建置需要 Xcode 26 以上（Swift 6.2）。</p>
+<p>在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成，不需要另外安裝任何東西。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上（Swift 6.2）。這個工具需要 macOS 15 以上。</p>
 <p>也可以從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>用 Swift Package Manager 建置：</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
@@ -522,7 +522,8 @@ marsdawn open notes.md --line 120</code></pre>
 # redtear1115/mars-dawn-kit @ tag 0.3.0 (Sources/marsdawn/Commands.swift,
 # Sources/marsdawn/main.swift, Sources/MarsDawnKit/RevealRequest.swift, Package.swift),
 # and every example was run against a release build of that tag before publishing.
-# The install command is the redtear1115/homebrew-tap formula, which builds from source.
+# The install command is the redtear1115/homebrew-tap formula: a prebuilt bottle on Apple silicon,
+# a source build (Xcode 26) on Intel.
 # Published schemas are never removed or edited: open.v1.json stays, byte for byte, for marsdawn 0.2.x, whose
 # `opened` was a list of paths; 0.3.0 reports {path, line} objects (open.v2.json).
 SCHEMA_BASE = "/schemas/cli/"
@@ -747,12 +748,12 @@ marsdawn open notes.md --line 120 --json</code></pre>
 
 <h2>Requirements</h2>
 <ul>
-  <li>The tool runs on macOS 15 or later. Building it needs Swift 6.2 or later, which comes with Xcode 26 or later.</li>
+  <li>The tool runs on macOS 15 or later. On Apple silicon, Homebrew installs a prebuilt bottle and nothing else is needed. Building it yourself, on an Intel Mac or from the source, needs Swift 6.2 or later, which comes with Xcode 26 or later.</li>
   <li>The MarsDawn app needs macOS 26 or later.</li>
 </ul>
 
 <h2>Install</h2>
-<p>With Homebrew. The formula compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.</p>
+<p>With Homebrew. On Apple silicon it pours a prebuilt bottle in seconds, with no Xcode needed. On an Intel Mac it compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn --version</code></pre>
 <p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a>. The first build fetches dependencies and compiles, which also takes a few minutes.</p>
@@ -854,12 +855,12 @@ marsdawn open notes.md --line 120 --json</code></pre>
 
 <h2>系統需求</h2>
 <ul>
-  <li>這個工具需要 macOS 15 以上。建置需要 Swift 6.2 以上，也就是 Xcode 26 以上。</li>
+  <li>這個工具需要 macOS 15 以上。在 Apple 晶片的 Mac 上，Homebrew 會安裝預先建置好的版本，不需要其他東西。自己建置時（在 Intel Mac 上，或從原始碼建置），需要 Swift 6.2 以上，也就是 Xcode 26 以上。</li>
   <li>MarsDawn app 需要 macOS 26 以上。</li>
 </ul>
 
 <h2>安裝</h2>
-<p>使用 Homebrew。這個 formula 會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。</p>
+<p>使用 Homebrew。在 Apple 晶片的 Mac 上，會直接安裝預先建置好的版本，幾秒就完成，不需要 Xcode。在 Intel Mac 上則會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn --version</code></pre>
 <p>也可以從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>建置。第一次建置會下載相依套件並編譯，同樣需要幾分鐘。</p>
@@ -1637,8 +1638,9 @@ def build_llms_txt(pages: dict) -> str:
         note = SCHEMA_NOTES["en"][kind].replace("<code>", "`").replace("</code>", "`")
         lines.append(f"- [{SCHEMA_FILES[kind]}]({schema_url(kind)}): JSON Schema for the --json result, {note}")
     lines.append("")
-    lines.append("Install: `brew tap redtear1115/tap && brew install marsdawn` (compiles from source, a few minutes; "
-                 "macOS 15 and Xcode 26 to build). `export` works without the MarsDawn app; `open` needs it.")
+    lines.append("Install: `brew tap redtear1115/tap && brew install marsdawn` (a prebuilt bottle on Apple silicon, "
+                 "no Xcode needed; on Intel it builds from source with Xcode 26; macOS 15 or later). "
+                 "`export` works without the MarsDawn app; `open` needs it.")
     lines.append("")
     return "\n".join(lines).rstrip() + "\n"
 

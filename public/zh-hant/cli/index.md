@@ -2,7 +2,7 @@
 
 免費的 `marsdawn` 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。
 
-**marsdawn 免費、另外發佈，不透過 Mac App Store。**用 Homebrew 安裝，它會在你的 Mac 上從原始碼建置。`export` 可以單獨使用；`open` 需要 MarsDawn app。
+**marsdawn 免費、另外發佈，不透過 Mac App Store。**用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。`export` 可以單獨使用；`open` 需要 MarsDawn app。
 
 要從 AI agent 或腳本呼叫 marsdawn？請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)，裡面有 JSON 輸出、Schema 和所有離開代碼。
 
@@ -14,7 +14,7 @@
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-Homebrew 會從原始碼編譯 marsdawn，需要幾分鐘。這個工具需要 macOS 15 以上，建置需要 Xcode 26 以上（Swift 6.2）。
+在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成，不需要另外安裝任何東西。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上（Swift 6.2）。這個工具需要 macOS 15 以上。
 
 也可以從[原始碼](https://github.com/redtear1115/mars-dawn-kit)用 Swift Package Manager 建置：
 
