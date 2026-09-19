@@ -6,8 +6,8 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 
 
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'footer_store': 'MarsDawn 即将在 Mac App Store 上架。', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '输出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事'}
-    store_chip = '即将在 Mac App Store 上架'
+    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '输出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事'}
+    store_chip = '已在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.5.1 以后，包括在侧边栏显示的文件夹', 'open_v2': 'open 成功，marsdawn 0.3.0 到 0.5.0', 'error': '两个命令的失败结果', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单'}
     example_plan = '# 计划：让输出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
     trait_link = {'yours': ('你写的内容留在你的 Mac 上', '不需要账户，没有同步，也没有云端。'), 'pay-once': ('免费试用，买一次就好', '免费试用 14 天，之后 USD 4.99 买一次，没有订阅。'), 'pdf': ('输出 PDF', '图表、代码高亮、经过安排的分页。'), 'native': ('为 Mac 而做', '原生窗口、标签页、自动保存、快速查看。'), 'limits': ('MarsDawn 做不到的事', '购买前先知道。')}
@@ -42,7 +42,7 @@ def build(k) -> dict:
     pages = {}
     pages['index'] = {
         "title": 'MarsDawn：Mac 上的 Markdown 编辑器，实时预览',
-        "description": '原生的 Mac Markdown 编辑器，有实时预览、Mermaid 图表和 PDF 输出，为读 AI agent 写的 Markdown 而做。即将在 Mac App Store 上架。',
+        "description": '原生的 Mac Markdown 编辑器，有实时预览、Mermaid 图表和 PDF 输出，为读 AI agent 写的 Markdown 而做。已在 Mac App Store 上架。',
         "intro": f"""
 <section class="intro hero">
   <p class="kicker">为 AI 工作流程而生</p>
@@ -278,7 +278,7 @@ def build(k) -> dict:
     }
     pages['view-markdown-on-mac'] = {
         "title": '在 Mac 上怎么看 Markdown 文件 · MarsDawn',
-        "description": 'md 文件是加上格式记号的纯文本。这页说明怎么在 Mac 上看到排版后的样子：现在可以用免费的 marsdawn 命令行工具转成 PDF，之后可以用即将在 Mac App Store 上架的 MarsDawn app。',
+        "description": 'md 文件是加上格式记号的纯文本。这页说明怎么在 Mac 上看到排版后的样子：现在可以用免费的 marsdawn 命令行工具转成 PDF，也可以用 Mac App Store 上的 MarsDawn app。',
         "body": f"""
 <section class="intro">
   <h1>在 Mac 上，怎么看 Markdown 文件。</h1>
@@ -290,8 +290,8 @@ def build(k) -> dict:
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <p><code>export</code> 会在 Markdown 文件旁边写出 <code>notes.pdf</code>，<code>open</code> 会用你的 PDF 查看器打开它。这个工具需要 macOS 15 以上。完整步骤和一页实际导出的结果，请看<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。</p>
-<h2>即将推出：在 MarsDawn 里读</h2>
-<p>MarsDawn 是为 Mac 做的 Markdown 编辑器，即将在 Mac App Store 上架。打开 <code>.md</code> 文件，排好的页面就在源代码旁边：</p>
+<h2>在 MarsDawn 里读</h2>
+<p>MarsDawn 是为 Mac 做的 Markdown 编辑器，已在 Mac App Store 上架。打开 <code>.md</code> 文件，排好的页面就在源代码旁边：</p>
 <ul>
   <li>预览会随着你打字实时更新，两边的窗格一起滚动。</li>
   <li>Mermaid 流程图和时序图直接画在预览里，代码块也会高亮。</li>
@@ -378,7 +378,7 @@ marsdawn --version</code></pre>
   <li><strong>账户：</strong>两者都不需要账户就能使用。</li>
 </ul>
 <h2>现在就能免费试试看</h2>
-<p>MarsDawn 即将在 Mac App Store 上架，现在还没开卖。在那之前，免费的 <code>marsdawn</code> 命令行工具今天就能把任何 Markdown 文件转成 PDF，Mermaid 图表和代码高亮都在，而且不需要安装其他东西：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具也能把任何 Markdown 文件转成 PDF，Mermaid 图表和代码高亮都在，而且不需要安装其他东西：</p>
 <pre><code>{k.BREW_TAP_INSTALL}
 marsdawn export notes.md
 open notes.pdf</code></pre>
@@ -417,7 +417,7 @@ swift build -c release --product marsdawn</code></pre>
 <h2>命令</h2>
 
 <h3>marsdawn open</h3>
-<p>在 MarsDawn app 中打开一个或多个 Markdown 文件，方便审阅。需要先安装这个 app：没有安装时，<code>marsdawn open</code> 会以代码 3 结束，并说明没有安装 MarsDawn。<code>export</code> 不需要这个 app。</p>
+<p>在 MarsDawn app 中打开一个或多个 Markdown 文件，方便审阅。需要先安装这个 app：没有安装时，<code>marsdawn open</code> 会以代码 3 结束，并说明没有安装 MarsDawn。<code>export</code> 不需要这个 app。App 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
@@ -489,7 +489,7 @@ marsdawn open notes.md --folder .</code></pre>
   <li>不把 PDF 写到 stdout。PDF 一律写成文件，stdout 只输出结果。</li>
   <li>文件已存在时不会覆盖，除非加上 <code>--force</code>。</li>
   <li>不加载网络图片，除非加上 <code>--allow-remote-images</code>，而且只走 https。</li>
-  <li>没有安装 MarsDawn 时，<code>open</code> 无法使用，会以代码 3 结束。<code>export</code> 不需要 app。</li>
+  <li>没有安装 MarsDawn 时，<code>open</code> 无法使用，会以代码 3 结束。<code>export</code> 不需要 app。App 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。</li>
   <li>MarsDawn 1.0 还不会跳到 <code>open</code> 指定的行，会从文件开头显示。</li>
   <li>只能在 macOS 上运行。</li>
 </ul>

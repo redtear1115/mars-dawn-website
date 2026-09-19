@@ -5,7 +5,7 @@ Source: https://marsdawn.southern-light.dev/product-facts.md
 
 ## What MarsDawn is
 
-A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.
+A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. On the Mac App Store.
 
 ## Requirements
 
