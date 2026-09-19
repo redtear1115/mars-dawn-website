@@ -1,6 +1,6 @@
 # Command Line
 
-The free `marsdawn` command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.
+The free `marsdawn` command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.
 
 **marsdawn is free and distributed separately from the Mac App Store.** Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. `export` works on its own; `open` needs the MarsDawn app.
 
@@ -30,7 +30,7 @@ Check which version you have with `marsdawn --version`.
 
 ### marsdawn open
 
-Opens one or more Markdown files in MarsDawn for review. Needs MarsDawn installed.
+Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, `marsdawn open` exits with code 3 and says MarsDawn isn't installed. `export` doesn't need the app.
 
 ```
 marsdawn open notes.md
@@ -93,4 +93,4 @@ On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file'
 - [Support](https://marsdawn.southern-light.dev/support/index.md): Get help with MarsDawn, the Markdown editor for macOS.
 - [Privacy Policy](https://marsdawn.southern-light.dev/privacy/index.md): MarsDawn does not collect personal data. Your documents and settings stay on your Mac.
 - [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): A reference for AI agents and scripts that call marsdawn: commands, JSON output, schemas, exit codes and requirements.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。
