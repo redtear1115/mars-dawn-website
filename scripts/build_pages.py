@@ -18,6 +18,13 @@ UPDATED = "2026-09-17"
 EMAIL = "support@southern-light.dev"
 BASE_URL = "https://marsdawn.southern-light.dev"
 
+# The open-source kit and its free CLI. Pulled out as constants (instead of
+# repeating the literal strings) so the CLI pages and product-facts.md, which
+# both state these facts, can't drift apart from each other.
+KIT_URL = "https://github.com/redtear1115/mars-dawn-kit"
+KIT_LICENSE = "Apache-2.0"
+BREW_TAP_INSTALL = "brew tap redtear1115/tap && brew install marsdawn"
+
 LOCALES = {
     "en": {"prefix": "", "html_lang": "en", "label": "English", "root": "/"},
     "zh-hant": {"prefix": "zh-hant/", "html_lang": "zh-Hant", "label": "繁體中文", "root": "/zh-hant/"},
@@ -30,6 +37,8 @@ UI = {
     "en": {
         "home": "MarsDawn", "privacy": "Privacy Policy", "support": "Support", "cli": "Command Line",
         "agents": "marsdawn for agents", "using_cli": "Using the CLI",
+        "markdown-to-pdf": "Markdown to PDF", "skill": "Agent skill",
+        "view-markdown-on-mac": "View Markdown on a Mac",
         "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.",
         "footer_store": "MarsDawn is coming soon to the Mac App Store.",
         "more": "More",
@@ -39,6 +48,8 @@ UI = {
     "zh-hant": {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
         "agents": "給 AI agent 的 marsdawn 參考", "using_cli": "使用 CLI",
+        "markdown-to-pdf": "Markdown 轉 PDF", "skill": "給 agent 的 skill",
+        "view-markdown-on-mac": "在 Mac 上看 Markdown",
         "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。",
         "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
         "more": "其他頁面",
@@ -135,8 +146,8 @@ DAWN_HERO_SVG = f"""<div class="dawn-wrap" aria-hidden="true">
 
 PAGES = {
     ("en", "index"): {
-        "title": "MarsDawn",
-        "description": "MarsDawn: a native Mac Markdown editor built for the AI workflow. An agent writes the Markdown, you review it with live preview, and it revises.",
+        "title": "MarsDawn: a Markdown editor for Mac, with live preview",
+        "description": "A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.",
         "intro": """
 <section class="intro hero">
   <p class="kicker">Built for the AI workflow</p>
@@ -155,8 +166,8 @@ PAGES = {
 """,
     },
     ("zh-hant", "index"): {
-        "title": "MarsDawn",
-        "description": "MarsDawn 是原生的 Mac Markdown 編輯器，為 AI 工作流程而生：agent 寫 Markdown，你用即時預覽檢閱，agent 再修改。",
+        "title": "MarsDawn：Mac 上的 Markdown 編輯器，即時預覽",
+        "description": "原生的 Mac Markdown 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出，為讀 AI agent 寫的 Markdown 而做。即將在 Mac App Store 上架。",
         "intro": """
 <section class="intro hero">
   <p class="kicker">為 AI 工作流程而生</p>
@@ -211,7 +222,7 @@ PAGES = {
 <p>MarsDawn does not collect data from anyone, including children.</p>
 
 <h2>Purchases</h2>
-<p>MarsDawn is sold through the Mac App Store. Apple processes the purchase under its own terms, and the developer does not receive your payment details.</p>
+<p>MarsDawn will be sold through the Mac App Store. Apple will process the purchase under its own terms, and the developer never receives your payment details.</p>
 
 <h2>Changes to this policy</h2>
 <p>If MarsDawn ever starts handling data differently, this page will be updated before that version is released, and the date at the top will change.</p>
@@ -257,7 +268,7 @@ PAGES = {
 <p>MarsDawn 不向任何人收集資料，包括兒童。</p>
 
 <h2>購買</h2>
-<p>MarsDawn 透過 Mac App Store 販售，付款由 Apple 依其條款處理，開發者不會取得你的付款資訊。</p>
+<p>MarsDawn 將透過 Mac App Store 販售，付款會由 Apple 依其條款處理，開發者不會取得你的付款資訊。</p>
 
 <h2>政策變更</h2>
 <p>如果 MarsDawn 未來處理資料的方式有所改變，本頁會在該版本推出前更新，頁首的日期也會一併更改。</p>
@@ -374,24 +385,24 @@ PAGES = {
 # (Sources/marsdawn/Commands.swift, Sources/marsdawn/main.swift, README.md).
 CLI_PAGES = {
     ("en", "cli"): {
-        "title": "Command Line · MarsDawn",
-        "description": "The free marsdawn command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.",
+        "title": "marsdawn: a free Markdown to PDF command-line tool · MarsDawn",
+        "description": "The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.",
         "body": f"""
 <section class="intro">
   <h1>Command Line</h1>
-  <p>The free <code>marsdawn</code> command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.</p>
+  <p>The free <code>marsdawn</code> command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew, which builds it from source on your Mac. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
+<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
 
 <p>Calling marsdawn from an AI agent or a script? See <a href="/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code.</p>
 
 <h2>Install</h2>
 <p>With <a href="https://brew.sh">Homebrew</a>:</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
-<p>Homebrew compiles marsdawn from source, which takes a few minutes. The tool runs on macOS 15 or later, and building it needs Xcode 26 or later (Swift 6.2).</p>
-<p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> with Swift Package Manager:</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<pre><code>{BREW_TAP_INSTALL}</code></pre>
+<p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.</p>
+<p>Or build it from <a href="{KIT_URL}">the source</a> with Swift Package Manager:</p>
+<pre><code>git clone {KIT_URL}.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>Check which version you have with <code>marsdawn --version</code>.</p>
@@ -399,7 +410,7 @@ swift build -c release --product marsdawn</code></pre>
 <h2>Commands</h2>
 
 <h3>marsdawn open</h3>
-<p>Opens one or more Markdown files in MarsDawn for review. Needs MarsDawn installed.</p>
+<p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app.</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120</code></pre>
@@ -445,24 +456,24 @@ marsdawn open notes.md --line 120</code></pre>
 """,
     },
     ("zh-hant", "cli"): {
-        "title": "命令列工具 · MarsDawn",
-        "description": "免費的 marsdawn 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。",
+        "title": "marsdawn：免費的 Markdown 轉 PDF 命令列工具 · MarsDawn",
+        "description": "免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。",
         "body": f"""
 <section class="intro">
   <h1>命令列工具</h1>
-  <p>免費的 <code>marsdawn</code> 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。</p>
+  <p>免費的 <code>marsdawn</code> 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，它會在你的 Mac 上從原始碼建置。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。</p></div>
+<div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。</p></div>
 
 <p>要從 AI agent 或腳本呼叫 marsdawn？請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>，裡面有 JSON 輸出、Schema 和所有離開代碼。</p>
 
 <h2>安裝</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
-<p>Homebrew 會從原始碼編譯 marsdawn，需要幾分鐘。這個工具需要 macOS 15 以上，建置需要 Xcode 26 以上（Swift 6.2）。</p>
-<p>也可以從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>用 Swift Package Manager 建置：</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<pre><code>{BREW_TAP_INSTALL}</code></pre>
+<p>在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成，不需要另外安裝任何東西。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上（Swift 6.2）。這個工具需要 macOS 15 以上。</p>
+<p>也可以從<a href="{KIT_URL}">原始碼</a>用 Swift Package Manager 建置：</p>
+<pre><code>git clone {KIT_URL}.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>用 <code>marsdawn --version</code> 查看安裝的版本。</p>
@@ -470,7 +481,7 @@ swift build -c release --product marsdawn</code></pre>
 <h2>指令</h2>
 
 <h3>marsdawn open</h3>
-<p>在 MarsDawn 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝 MarsDawn。</p>
+<p>在 MarsDawn app 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝這個 app：沒有安裝時，<code>marsdawn open</code> 會以代碼 3 結束，並說明沒有安裝 MarsDawn。<code>export</code> 不需要這個 app。</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120</code></pre>
@@ -522,7 +533,8 @@ marsdawn open notes.md --line 120</code></pre>
 # redtear1115/mars-dawn-kit @ tag 0.3.0 (Sources/marsdawn/Commands.swift,
 # Sources/marsdawn/main.swift, Sources/MarsDawnKit/RevealRequest.swift, Package.swift),
 # and every example was run against a release build of that tag before publishing.
-# The install command is the redtear1115/homebrew-tap formula, which builds from source.
+# The install command is the redtear1115/homebrew-tap formula: a prebuilt bottle on Apple silicon,
+# a source build (Xcode 26) on Intel.
 # Published schemas are never removed or edited: open.v1.json stays, byte for byte, for marsdawn 0.2.x, whose
 # `opened` was a list of paths; 0.3.0 reports {path, line} objects (open.v2.json).
 SCHEMA_BASE = "/schemas/cli/"
@@ -657,8 +669,8 @@ def schema_links(locale: str) -> str:
 
 AGENT_PAGES = {
     ("en", "cli/agents"): {
-        "title": "marsdawn for agents · MarsDawn",
-        "description": "A reference for AI agents and scripts that call marsdawn: commands, JSON output, schemas, exit codes and requirements.",
+        "title": "marsdawn for agents: Markdown to PDF from scripts · MarsDawn",
+        "description": "A reference for AI agents and scripts that call marsdawn to turn Markdown into PDF: commands, JSON output, schemas, exit codes and requirements.",
         "body": f"""
 <section class="intro">
   <h1>marsdawn for agents</h1>
@@ -747,16 +759,16 @@ marsdawn open notes.md --line 120 --json</code></pre>
 
 <h2>Requirements</h2>
 <ul>
-  <li>The tool runs on macOS 15 or later. Building it needs Swift 6.2 or later, which comes with Xcode 26 or later.</li>
+  <li>The tool runs on macOS 15 or later. On Apple silicon, Homebrew installs a prebuilt bottle and nothing else is needed. Building it yourself, on an Intel Mac or from the source, needs Swift 6.2 or later, which comes with Xcode 26 or later.</li>
   <li>The MarsDawn app needs macOS 26 or later.</li>
 </ul>
 
 <h2>Install</h2>
-<p>With Homebrew. The formula compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<p>With Homebrew. On Apple silicon it pours a prebuilt bottle in seconds, with no Xcode needed. On an Intel Mac it compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.</p>
+<pre><code>{BREW_TAP_INSTALL}
 marsdawn --version</code></pre>
-<p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a>. The first build fetches dependencies and compiles, which also takes a few minutes.</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<p>Or build it from <a href="{KIT_URL}">the source</a>. The first build fetches dependencies and compiles, which also takes a few minutes.</p>
+<pre><code>git clone {KIT_URL}.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
@@ -764,8 +776,8 @@ swift build -c release --product marsdawn
 """,
     },
     ("zh-hant", "cli/agents"): {
-        "title": "給 AI agent 的 marsdawn 參考 · MarsDawn",
-        "description": "給呼叫 marsdawn 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。",
+        "title": "給 AI agent 的 marsdawn 參考：用腳本轉 PDF · MarsDawn",
+        "description": "給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。",
         "body": f"""
 <section class="intro">
   <h1>給 AI agent 的 marsdawn 參考</h1>
@@ -854,16 +866,16 @@ marsdawn open notes.md --line 120 --json</code></pre>
 
 <h2>系統需求</h2>
 <ul>
-  <li>這個工具需要 macOS 15 以上。建置需要 Swift 6.2 以上，也就是 Xcode 26 以上。</li>
+  <li>這個工具需要 macOS 15 以上。在 Apple 晶片的 Mac 上，Homebrew 會安裝預先建置好的版本，不需要其他東西。自己建置時（在 Intel Mac 上，或從原始碼建置），需要 Swift 6.2 以上，也就是 Xcode 26 以上。</li>
   <li>MarsDawn app 需要 macOS 26 以上。</li>
 </ul>
 
 <h2>安裝</h2>
-<p>使用 Homebrew。這個 formula 會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<p>使用 Homebrew。在 Apple 晶片的 Mac 上，會直接安裝預先建置好的版本，幾秒就完成，不需要 Xcode。在 Intel Mac 上則會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。</p>
+<pre><code>{BREW_TAP_INSTALL}
 marsdawn --version</code></pre>
-<p>也可以從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>建置。第一次建置會下載相依套件並編譯，同樣需要幾分鐘。</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<p>也可以從<a href="{KIT_URL}">原始碼</a>建置。第一次建置會下載相依套件並編譯，同樣需要幾分鐘。</p>
+<pre><code>git clone {KIT_URL}.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
@@ -879,6 +891,308 @@ swift build -c release --product marsdawn
 # or the privacy page. No competitor is named and no review is quoted.
 # Screenshots are the app's own store screenshots (app repo
 # docs/store-assets/screenshots), unmodified apart from resizing.
+# The example on /markdown-to-pdf/, exactly as it was exported to make the page's images
+# (/assets/cli/plan-en.png, plan-zh.png): `marsdawn export` 0.5.0, page 1 rendered with sips and
+# cropped from the top to 930px. Change a document here and those images are out of date.
+EXAMPLE_PLAN = {
+    "en": '# Plan: faster exports\n\nAn agent wrote this plan. You review it, then turn it into a PDF.\n\n## Steps\n\n| Step | Owner | Status |\n|------|-------|--------|\n| Measure the slow pages | Agent | Done |\n| Cache rendered diagrams | Agent | In review |\n\nThe target is $t < 2\\,\\text{s}$ for a 50-page document:\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  Draft --> Review --> Ship\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n',
+    "zh-hant": '# 計畫：讓輸出更快\n\n這份計畫由 agent 撰寫，你審閱後再把它轉成 PDF。\n\n## 步驟\n\n| 步驟 | 負責 | 狀態 |\n|------|------|------|\n| 找出慢的頁面 | Agent | 完成 |\n| 快取算好的圖表 | Agent | 審閱中 |\n\n目標是 50 頁的文件在 $t < 2\\,\\text{s}$ 內完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 審閱 --> 發佈\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n',
+}
+
+# Exit codes, one source for the skill (and anything else that lists them). The kinds must be
+# ERROR_KINDS, in the same order, or the build stops.
+EXIT_CODES = [
+    (0, None, "Success. With --json, stdout is one JSON line."),
+    (2, "input_not_found", "The input file isn't there."),
+    (3, "app_not_installed", "MarsDawn isn't installed. Only `open` returns this."),
+    (4, "output_exists", "The PDF already exists. Pass --force to replace it, or -o to write elsewhere."),
+    (5, "export_failed", "Rendering failed."),
+    (64, None, "Usage error: a bad option or value. Printed as text on stderr, never as JSON."),
+]
+assert [kind for _, kind, _ in EXIT_CODES if kind] == ERROR_KINDS, "EXIT_CODES and ERROR_KINDS disagree"
+
+
+_PLAN_HTML = {locale: xml_escape(text) for locale, text in EXAMPLE_PLAN.items()}
+_INSTALL = "brew install redtear1115/tap/marsdawn"
+_SKILL_URL = f"{BASE_URL}/cli/skill/SKILL.md"
+
+# DRAFT COPY for the owner: the two kit landing pages (see the app repo's docs/plan-kit-reach.md).
+START_PAGES = {
+    ("en", "markdown-to-pdf"): {
+        "title": "Markdown to PDF on a Mac, from the command line · MarsDawn",
+        "description": "Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.",
+        "body": f"""
+<section class="intro">
+  <h1>Markdown to PDF on a Mac, from the command line.</h1>
+  <p>The free <code>marsdawn</code> tool turns a Markdown file into a PDF with one command. Tables, math, Mermaid diagrams and highlighted code come out the way they read in the source, and it needs nothing else installed, not even the MarsDawn app.</p>
+</section>
+<h2>Install it</h2>
+<pre><code>{_INSTALL}
+marsdawn --version</code></pre>
+<p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds. On an Intel Mac it builds from source instead, which takes a few minutes and needs Xcode 26 or later. It runs on macOS 15 or later, and <code>marsdawn --version</code> prints the version you got.</p>
+<h2>Save a document</h2>
+<p>Paste this into a file named <code>plan.md</code>:</p>
+<pre><code>{_PLAN_HTML["en"]}</code></pre>
+<h2>Export it</h2>
+<pre><code>marsdawn export plan.md</code></pre>
+<p>It writes <code>plan.pdf</code> next to the source and prints where it went:</p>
+<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<p>This is that page, captured from a real run of <code>marsdawn</code> 0.5.0:</p>
+<p><img class="pdf-page" src="/assets/cli/plan-en.png" alt="The exported PDF: the heading, a table of steps, an inline and a displayed formula, a Draft, Review, Ship diagram, and a highlighted line of Swift." width="989" height="930"></p>
+<h2>Choose a theme, paper size and file name</h2>
+<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<ul>
+  <li><code>--theme</code>: dawn, classic, modern or vivid, in the theme's light colors. Without it, <code>export</code> uses <code>$MARSDAWN_THEME</code>, then dawn.</li>
+  <li><code>--paper</code>: a4 or letter. The default is a4.</li>
+  <li><code>-o</code>: where to write the PDF, instead of next to the source.</li>
+  <li><code>--allow-remote-images</code>: load images from the web while rendering. They stay off unless you pass it.</li>
+</ul>
+<h2>If it doesn't work</h2>
+<ul>
+  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew is building <code>marsdawn</code> from source, as it does on an Intel Mac. Install Xcode 26 or later from the App Store, then run the install again.</li>
+  <li><code>marsdawn: No such file: …</code> The path doesn't point at a file. Check the name, or run the command from the folder the file is in.</li>
+  <li><code>… already exists. Pass --force to replace it.</code> A PDF with that name is already there. Add <code>--force</code> to replace it, or <code>-o</code> to write it somewhere else.</li>
+  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> The theme or paper size isn't one it knows. The themes are dawn, classic, modern and vivid; the paper is a4 or letter.</li>
+</ul>
+<h2>Next</h2>
+<ul>
+  <li>Every option and the JSON it prints: <a href="/cli/">Command Line</a>.</li>
+  <li>To have a coding agent do this for you: <a href="/cli/skill/">the marsdawn agent skill</a>.</li>
+</ul>
+""",
+    },
+    ("en", "view-markdown-on-mac"): {
+        "title": "How to view a Markdown file on a Mac · MarsDawn",
+        "description": "A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: as a PDF with the free marsdawn command-line tool today, and in the MarsDawn app, coming soon to the Mac App Store.",
+        "body": f"""
+<section class="intro">
+  <h1>How to view a Markdown file on a Mac.</h1>
+  <p>A <code>.md</code> file is plain text. The headings, bold words, tables and diagrams are written as marks: <code>#</code> for a heading, <code>**</code> around bold, pipes for a table, a <code>mermaid</code> code block for a diagram. Open it in a plain text editor and you read the marks. To read the page the way its author meant, something has to render it.</p>
+</section>
+<h2>Today, for free: turn it into a PDF</h2>
+<p>The free <code>marsdawn</code> command-line tool renders a Markdown file to a PDF, which any Mac can open. Tables, math, Mermaid diagrams and highlighted code come out rendered, and it needs nothing else installed, not even the MarsDawn app.</p>
+<pre><code>{BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<p><code>export</code> writes <code>notes.pdf</code> next to the Markdown file, and <code>open</code> shows it in your PDF viewer. It needs macOS 15 or later. The walk-through, with a real exported page, is on <a href="/markdown-to-pdf/">Markdown to PDF</a>.</p>
+<h2>Coming soon: read it in MarsDawn</h2>
+<p>MarsDawn is a Markdown editor for the Mac, coming soon to the Mac App Store. Open a <code>.md</code> file and read the rendered page next to the source:</p>
+<ul>
+  <li>The preview updates as you type, and the two panes scroll together.</li>
+  <li>Mermaid flowcharts and sequence diagrams are drawn in the preview, and code blocks are highlighted.</li>
+  <li>In Finder, press Space on a Markdown file for a Quick Look preview, diagrams included.</li>
+  <li>When you want to change something, the source is right there. MarsDawn is an editor, not only a viewer.</li>
+</ul>
+<p>If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent writes, you read it rendered, and it revises. See <a href="/">the home page</a>, and <a href="/cli/agents/">marsdawn for agents</a> for letting an agent open files for you.</p>
+<h2>Next</h2>
+<ul>
+  <li>Every option of the command-line tool: <a href="/cli/">Command Line</a>.</li>
+  <li>What MarsDawn doesn't do: <a href="/limits/">the list</a>.</li>
+</ul>
+""",
+    },
+    ("zh-hant", "view-markdown-on-mac"): {
+        "title": "在 Mac 上怎麼看 Markdown 檔案 · MarsDawn",
+        "description": "md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：現在可以用免費的 marsdawn 命令列工具轉成 PDF，之後可以用即將在 Mac App Store 上架的 MarsDawn app。",
+        "body": f"""
+<section class="intro">
+  <h1>在 Mac 上，怎麼看 Markdown 檔案。</h1>
+  <p><code>.md</code> 檔案是純文字。標題、粗體、表格和圖表，都是用記號寫成的：<code>#</code> 代表標題，<code>**</code> 包住粗體，直線符號畫出表格，<code>mermaid</code> 程式碼區塊則是一張圖。用純文字編輯器打開，看到的就是這些記號。想照作者的意思讀到排好的頁面，就需要有東西把它排版出來。</p>
+</section>
+<h2>現在就能用，而且免費：轉成 PDF</h2>
+<p>免費的 <code>marsdawn</code> 命令列工具，能把 Markdown 檔案排版成 PDF，任何一台 Mac 都打得開。表格、數學式、Mermaid 圖表和程式碼上色都會排好，而且不需要安裝其他東西，連 MarsDawn app 都不用。</p>
+<pre><code>{BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<p><code>export</code> 會在 Markdown 檔案旁邊寫出 <code>notes.pdf</code>，<code>open</code> 會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</p>
+<h2>即將推出：在 MarsDawn 裡讀</h2>
+<p>MarsDawn 是為 Mac 做的 Markdown 編輯器，即將在 Mac App Store 上架。打開 <code>.md</code> 檔案，排好的頁面就在原始碼旁邊：</p>
+<ul>
+  <li>預覽會隨著你打字即時更新，兩邊的窗格一起捲動。</li>
+  <li>Mermaid 流程圖和循序圖直接畫在預覽裡，程式碼區塊也會上色。</li>
+  <li>在 Finder 裡對 Markdown 檔案按空白鍵，就有「快速查看」預覽，圖表也在。</li>
+  <li>想改的時候，原始碼就在旁邊。MarsDawn 是編輯器，不只是檢視器。</li>
+</ul>
+<p>如果這份檔案是 AI agent 寫的，這正是 MarsDawn 要支援的循環：agent 寫，你讀排好的頁面，agent 再修改。請看<a href="/zh-hant/">首頁</a>，想讓 agent 幫你開檔案，請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
+<h2>接下來</h2>
+<ul>
+  <li>命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。</li>
+  <li>MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
+</ul>
+""",
+    },
+    ("zh-hant", "markdown-to-pdf"): {
+        "title": "Markdown 轉 PDF 工具：在 Mac 用命令列轉檔 · MarsDawn",
+        "description": "免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。",
+        "body": f"""
+<section class="intro">
+  <h1>Markdown 轉 PDF 工具：在 Mac 上用命令列轉檔。</h1>
+  <p>免費的 <code>marsdawn</code> 工具只要一個指令，就能把 Markdown 檔案轉成 PDF。表格、數學式、Mermaid 圖表和程式碼上色，都會照原始檔的樣子呈現，而且不需要安裝其他東西，連 MarsDawn app 都不用。</p>
+</section>
+<h2>安裝</h2>
+<pre><code>{_INSTALL}
+marsdawn --version</code></pre>
+<p>在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上。這個工具需要 macOS 15 以上，<code>marsdawn --version</code> 會印出你裝到的版本。</p>
+<h2>存一份文件</h2>
+<p>把下面的內容貼進一個叫 <code>plan.md</code> 的檔案：</p>
+<pre><code>{_PLAN_HTML["zh-hant"]}</code></pre>
+<h2>匯出</h2>
+<pre><code>marsdawn export plan.md</code></pre>
+<p>它會在原始檔旁邊寫出 <code>plan.pdf</code>，並印出存放的位置：</p>
+<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<p>這是那一頁，擷取自 <code>marsdawn</code> 0.5.0 的實際執行結果：</p>
+<p><img class="pdf-page" src="/assets/cli/plan-zh.png" alt="匯出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。" width="989" height="930"></p>
+<h2>選主題、紙張大小和檔名</h2>
+<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<ul>
+  <li><code>--theme</code>：dawn、classic、modern 或 vivid，使用主題的淺色配色。沒有指定時，<code>export</code> 會用 <code>$MARSDAWN_THEME</code>，再來才是 dawn。</li>
+  <li><code>--paper</code>：a4 或 letter，預設是 a4。</li>
+  <li><code>-o</code>：PDF 要寫到哪裡，而不是寫在原始檔旁邊。</li>
+  <li><code>--allow-remote-images</code>：轉檔時載入網路上的圖片。沒加這個選項就不會載入。</li>
+</ul>
+<h2>如果沒有成功</h2>
+<ul>
+  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> 代表 Homebrew 正在從原始碼建置 <code>marsdawn</code>，這在 Intel Mac 上會發生。從 App Store 安裝 Xcode 26 以上，再重新安裝一次。</li>
+  <li><code>marsdawn: No such file: …</code> 路徑沒有指到檔案。確認檔名，或在檔案所在的資料夾裡執行指令。</li>
+  <li><code>… already exists. Pass --force to replace it.</code> 同名的 PDF 已經存在。加上 <code>--force</code> 覆蓋它，或用 <code>-o</code> 寫到別的地方。</li>
+  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> 主題或紙張大小不是它認得的。主題有 dawn、classic、modern 和 vivid，紙張是 a4 或 letter。</li>
+</ul>
+<h2>接下來</h2>
+<ul>
+  <li>所有選項和它印出的 JSON：<a href="/zh-hant/cli/">命令列工具</a>。</li>
+  <li>讓寫程式的 agent 幫你做這件事：<a href="/zh-hant/cli/skill/">marsdawn 的 agent skill</a>。</li>
+</ul>
+""",
+    },
+}
+
+SKILL_PAGES = {
+    ("en", "cli/skill"): {
+        "title": "A coding-agent skill for Markdown to PDF · MarsDawn",
+        "description": "One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.",
+        "body": f"""
+<section class="intro">
+  <h1>Let your agent make the PDF.</h1>
+  <p>This skill is one Markdown file. It teaches a coding agent to install <code>marsdawn</code>, check that it works, export a document to PDF and read the result, so the agent that wrote the Markdown can hand you the PDF as well.</p>
+</section>
+<h2>Install it in Claude Code</h2>
+<pre><code>mkdir -p ~/.claude/skills/marsdawn
+curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
+<p>Claude Code loads it when a task calls for a PDF, and you can run it yourself as <code>/marsdawn</code>. It's <a href="/cli/skill/SKILL.md">one short file</a>, so read it before you install it.</p>
+<p>Other agents can use the same file. It's plain Markdown, instructions and commands, so point yours at the URL or paste it in.</p>
+<h2>What it teaches</h2>
+<ul>
+  <li>Install <code>marsdawn</code> with Homebrew if it's missing, then check it with <code>marsdawn --version</code> instead of assuming a version.</li>
+  <li>Export with <code>marsdawn export … --json</code>, and read the result: where the PDF went, how many pages it has, and any Mermaid diagram that didn't render.</li>
+  <li>Tell the failures apart by exit code: no such file, a PDF already there, a failed export, a bad option.</li>
+  <li>Use <code>open</code> only when the MarsDawn app is installed, and never to make a PDF.</li>
+</ul>
+<h2>What it doesn't do</h2>
+<ul>
+  <li>It doesn't give itself permission to run anything. Your agent still asks before it installs <code>marsdawn</code> or runs it, as it would for any other command.</li>
+  <li>It doesn't send your documents anywhere. <code>marsdawn</code> renders on your Mac, and it leaves out images from the web unless you pass <code>--allow-remote-images</code>.</li>
+</ul>
+<p>The whole contract, every field and every code, is in <a href="/cli/agents/">marsdawn for agents</a>.</p>
+""",
+    },
+    ("zh-hant", "cli/skill"): {
+        "title": "讓寫程式的 agent 把 Markdown 轉 PDF 的 skill · MarsDawn",
+        "description": "一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。",
+        "body": f"""
+<section class="intro">
+  <h1>讓 agent 幫你做出 PDF。</h1>
+  <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果，這樣寫出 Markdown 的 agent，也能把 PDF 交給你。</p>
+</section>
+<h2>在 Claude Code 中安裝</h2>
+<pre><code>mkdir -p ~/.claude/skills/marsdawn
+curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
+<p>需要做出 PDF 時，Claude Code 會自動載入它，你也可以用 <code>/marsdawn</code> 自己執行。它只是<a href="/cli/skill/SKILL.md">一個簡短的檔案</a>，安裝前先讀一遍。</p>
+<p>其他 agent 也能用同一個檔案。它是純 Markdown，只有說明和指令，讓你的 agent 讀這個網址，或直接貼給它就好。這個檔案是英文的。</p>
+<h2>它教什麼</h2>
+<ul>
+  <li>如果沒有 <code>marsdawn</code>，就用 Homebrew 安裝，再用 <code>marsdawn --version</code> 確認版本，而不是假設某個版本。</li>
+  <li>用 <code>marsdawn export … --json</code> 匯出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。</li>
+  <li>依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。</li>
+  <li>只有裝了 MarsDawn app 才用 <code>open</code>，而且絕不用它來做 PDF。</li>
+</ul>
+<h2>它不會做的事</h2>
+<ul>
+  <li>它不會自己取得執行任何東西的權限。你的 agent 在安裝或執行 <code>marsdawn</code> 之前，仍然會先問你，就像執行其他指令一樣。</li>
+  <li>它不會把你的文件傳到任何地方。<code>marsdawn</code> 在你的 Mac 上產生 PDF，除非你加上 <code>--allow-remote-images</code>，否則不會載入網路上的圖片。</li>
+</ul>
+<p>完整的規格，每個欄位和每個代碼，都在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡。</p>
+""",
+    },
+}
+
+
+def build_skill_md() -> str:
+    """The agent skill, built from the same constants as /cli/agents/ so the two can't drift.
+
+    No `allowed-tools`: a skill someone downloads shouldn't pre-approve shell commands for itself.
+    No version number: the agent checks `marsdawn --version` against what it installed instead.
+    """
+    success = SCHEMAS["export"]["properties"]
+    fields = "\n".join(f"- `{name}`: {spec['description'] if 'description' in spec else 'always true'}"
+                       for name, spec in success.items())
+    codes = "\n".join(f"| {code} | {f'`{kind}`' if kind else '—'} | {meaning} |"
+                      for code, kind, meaning in EXIT_CODES)
+    return f"""---
+name: marsdawn
+description: Export Markdown to PDF with the marsdawn command-line tool on macOS, and read its JSON result. Use when asked to turn a Markdown file into a PDF, or to render Markdown with tables, math, Mermaid diagrams or highlighted code into a PDF.
+---
+
+# marsdawn
+
+`marsdawn export` renders a Markdown file to PDF on macOS 15 or later. It needs nothing else
+installed, not even the MarsDawn app.
+
+## Install and check
+
+```sh
+command -v marsdawn || {_INSTALL}
+marsdawn --version
+```
+
+Use the version it prints. Don't assume one. On Apple silicon Homebrew pours a prebuilt bottle;
+on an Intel Mac it builds from source and needs Xcode 26 or later. If the install stops with
+"A full installation of Xcode.app 26.0 is required", say so rather than retrying.
+
+## Export
+
+```sh
+marsdawn export input.md --json
+```
+
+Options: `-o out.pdf` (default: beside the input), `--theme {"|".join(THEME_IDS)}`,
+`--paper {"|".join(PAPER_SIZES)}`, `--force` to replace an existing PDF, and
+`--allow-remote-images` to load web images, which are left out by default.
+
+On success it exits 0 and prints one JSON line:
+
+{fields}
+
+If `diagramErrors` isn't empty, the PDF was still written: tell the user which diagrams failed.
+
+## Exit codes
+
+On failure with `--json` it prints `{{"ok": false, "error": <kind>, "message": ...}}`.
+
+| Code | `error` | Meaning |
+|---|---|---|
+{codes}
+
+## open
+
+`marsdawn open file.md` opens a file in the MarsDawn app for review. It needs the app; without
+it, it exits 3. Never use it to make a PDF: that's `export`.
+
+## Full contract
+
+Every field, schema and code: {BASE_URL}/cli/agents/
+"""
+
+
 TRAIT_ORDER = ["yours", "pay-once", "pdf", "native", "limits"]
 
 STORE_CHIP = {
@@ -982,8 +1296,8 @@ def _trait_page(title, description, intro, body):
 
 TRAIT_PAGES = {
     ("en", "yours"): _trait_page(
-        "Your writing stays on your Mac · MarsDawn",
-        "MarsDawn has no account, no sync and no cloud. Your documents stay on your Mac.",
+        "A Mac Markdown editor with no account and no cloud · MarsDawn",
+        "MarsDawn has no account, no sync and no cloud. Your Markdown documents stay on your Mac, in the files and folders you choose.",
         """
 <section class="intro">
   <h1>Your writing stays on your Mac.</h1>
@@ -1003,8 +1317,8 @@ TRAIT_PAGES = {
 """,
     ),
     ("zh-hant", "yours"): _trait_page(
-        "你寫的內容留在你的 Mac 上 · MarsDawn",
-        "MarsDawn 不需要帳號，沒有同步，也沒有雲端，你的文件留在你的 Mac 上。",
+        "不用帳號、不上雲端的 Mac Markdown 編輯器 · MarsDawn",
+        "MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。",
         """
 <section class="intro">
   <h1>你寫的內容，留在你的 Mac 上。</h1>
@@ -1078,8 +1392,8 @@ TRAIT_PAGES = {
 """,
     ),
     ("en", "pdf"): _trait_page(
-        "PDF export · MarsDawn",
-        "Export as PDF or print, with Mermaid diagrams, highlighted code and careful page breaks.",
+        "Export Markdown to PDF on a Mac, diagrams included · MarsDawn",
+        "Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks and tables.",
         """
 <section class="intro">
   <h1>The PDF looks like the page you wrote.</h1>
@@ -1098,8 +1412,8 @@ TRAIT_PAGES = {
 """,
     ),
     ("zh-hant", "pdf"): _trait_page(
-        "輸出 PDF · MarsDawn",
-        "輸出成 PDF 或列印，Mermaid 圖表、程式碼上色都會保留，分頁也經過安排。",
+        "在 Mac 把 Markdown 輸出成 PDF，圖表也在 · MarsDawn",
+        "在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。",
         """
 <section class="intro">
   <h1>PDF 看起來就是你寫的那一頁。</h1>
@@ -1118,8 +1432,8 @@ TRAIT_PAGES = {
 """,
     ),
     ("en", "native"): _trait_page(
-        "A Mac app · MarsDawn",
-        "Native windows and tabs, autosave, version history, Quick Look, and a text editor that behaves like the rest of your Mac.",
+        "A native Markdown app for Mac: tabs, Quick Look · MarsDawn",
+        "A Markdown editor that is a real Mac app: native windows and tabs, autosave, version history, Quick Look in Finder and a text editor that behaves like a Mac.",
         """
 <section class="intro">
   <h1>Built out of the Mac's own parts.</h1>
@@ -1140,8 +1454,8 @@ TRAIT_PAGES = {
 """,
     ),
     ("zh-hant", "native"): _trait_page(
-        "為 Mac 而做 · MarsDawn",
-        "原生視窗與分頁、自動儲存、版本記錄、快速查看，文字編輯器的操作和 Mac 上其他 app 一致。",
+        "原生的 Mac Markdown app：分頁、快速查看 · MarsDawn",
+        "真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。",
         """
 <section class="intro">
   <h1>用 Mac 原生的元件做的。</h1>
@@ -1312,8 +1626,9 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "cli", "cli/agents"]
+PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "cli", "cli/agents", "cli/skill"]
 SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
+                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits"}
 
 
@@ -1321,6 +1636,8 @@ def all_pages() -> dict:
     merged = dict(PAGES)
     merged.update(CLI_PAGES)
     merged.update(AGENT_PAGES)
+    merged.update(START_PAGES)
+    merged.update(SKILL_PAGES)
     merged.update(TRAIT_PAGES)
     return merged
 
@@ -1347,6 +1664,8 @@ class MarkdownConversionError(Exception):
 
 
 _TRANSPARENT_TAGS = {"section", "div"}
+# Elements with no closing tag. Pushing one onto the stack would nest the rest of the page inside it.
+_VOID_TAGS = {"img", "br"}
 
 
 class _Node:
@@ -1370,7 +1689,8 @@ class _TreeBuilder(HTMLParser):
     def handle_starttag(self, tag, attrs):
         node = _Node(tag, attrs)
         self.stack[-1].children.append(node)
-        self.stack.append(node)
+        if tag not in _VOID_TAGS:
+            self.stack.append(node)
 
     def handle_startendtag(self, tag, attrs):
         self.stack[-1].children.append(_Node(tag, attrs))
@@ -1407,9 +1727,15 @@ def _render_inline(children) -> str:
             href = child.attrs.get("href", "")
             label = _render_inline(child.children).strip()
             parts.append(f"[{label}]({href})")
+        elif tag == "img":
+            parts.append(f"![{child.attrs.get('alt', '')}]({child.attrs.get('src', '')})")
         else:
             raise MarkdownConversionError(f"unsupported inline tag <{tag}>")
     return "".join(parts)
+
+
+def _longest_backtick_run(text: str) -> int:
+    return max((len(run) for run in re.findall(r"`+", text)), default=0)
 
 
 def _pre_text(node: _Node) -> str:
@@ -1450,7 +1776,9 @@ def _render_block(node: _Node) -> str:
             items.append(f"{bullet} " + _render_inline(child.children).strip())
         return "\n".join(items) + "\n\n"
     if tag == "pre":
-        return "```\n" + _pre_text(node) + "\n```\n\n"
+        text = _pre_text(node)
+        fence = "`" * max(3, _longest_backtick_run(text) + 1)
+        return f"{fence}\n{text}\n{fence}\n\n"
     if tag in ("strong", "em", "code", "kbd", "a"):
         # An inline element used directly as a block child (e.g. the support
         # page's standalone <a class="email">). Render it as its own paragraph.
@@ -1583,15 +1911,98 @@ def render(locale: str, slug: str, page: dict) -> str:
 
 
 # robots.txt: exactly these directives (Cloudflare prepends its own managed block).
+# AI crawlers allowed by name. robots.txt semantics (RFC 9309): a named group
+# replaces `*` for that bot entirely, so `User-agent: *` alone would not cover
+# these, and its `Content-Signal` line would not apply to them either. All 7
+# go in ONE group (repeated User-agent lines sharing the rules that follow),
+# so that group's `Allow: /` and `Content-Signal` both apply to every one of
+# them, matching what the `*` group gives everyone else — one place to edit,
+# rather than repeating Content-Signal per bot.
+AI_CRAWLERS = [
+    "GPTBot", "ChatGPT-User", "OAI-SearchBot",
+    "ClaudeBot", "Claude-User", "Claude-SearchBot",
+    "PerplexityBot",
+]
+
+_AI_CRAWLER_USER_AGENTS = "\n".join(f"User-agent: {bot}" for bot in AI_CRAWLERS)
+
 ROBOTS_TXT = f"""# robots.txt for marsdawn.southern-light.dev
 User-agent: *
 Allow: /
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+# One group, seven user agents: a named group replaces `*` for that bot, so
+# each of these needs its own explicit Allow and Content-Signal rather than
+# relying on the default group above.
+{_AI_CRAWLER_USER_AGENTS}
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
 Sitemap: {BASE_URL}/sitemap.xml
 """
 
+# Stable URL for the machine-readable product facts page (plain Markdown,
+# built once from the same constants as the rest of the site). Listed in
+# llms.txt and the sitemap so crawlers find it.
+PRODUCT_FACTS_PATH = "/product-facts.md"
 
-def build_sitemap(pages: dict) -> str:
+
+def build_product_facts(pages: dict) -> str:
+    """product-facts.md: what MarsDawn is, requirements, the open-source kit,
+    and entity disambiguation, for AI assistants and search crawlers.
+
+    Built from the same constants (KIT_URL, KIT_LICENSE, BREW_TAP_INSTALL,
+    BASE_URL) and the same home-page description as the rest of the site, so
+    this can't drift from them. The two macOS version numbers below are not
+    behind a shared constant with the support and CLI pages' prose (each
+    states them in a different sentence shape); they're checked by hand
+    against those pages, the same way the README already asks UI labels to
+    be checked by hand against the app.
+    """
+    home_en = pages[("en", "index")]
+    return f"""# MarsDawn — Product Facts
+
+Machine-readable facts about MarsDawn, for AI assistants and search crawlers.
+Source: {BASE_URL}{PRODUCT_FACTS_PATH}
+
+## What MarsDawn is
+
+{home_en['description']}
+
+## Requirements
+
+- The MarsDawn app: macOS 26 (Tahoe) or later, Apple silicon or Intel.
+- The `marsdawn` command-line tool: macOS 15 or later to run; building it from source needs Swift 6.2 (Xcode 26) or later.
+
+## Free and open source, available today
+
+- [mars-dawn-kit]({KIT_URL}) is free and open source, licensed {KIT_LICENSE}.
+- The free `marsdawn` command-line tool is built from that kit and distributed separately from the Mac App Store: `{BREW_TAP_INSTALL}`.
+- Both the kit and the CLI exist today and can be installed now, independent of the MarsDawn app's own release status.
+
+## Entity disambiguation
+
+MarsDawn **is**:
+
+- a native AppKit Markdown editor for the Mac, with live preview.
+
+MarsDawn is **not**:
+
+- **not Electron.** It is a native AppKit application, not a web page in a bundled browser.
+- **not a web app.** It runs locally as a macOS app; there is no server and no browser tab.
+- **not read-only.** It is a full Markdown editor: you write and edit the source, not just view rendered output.
+- **not a subscription.** It is a free download with a 14-day trial, then a USD 4.99 one-time in-app purchase to unlock it.
+- **not cross-platform.** It is macOS only; there is no Windows, Linux, iOS or Android build.
+- **not an AI product.** The app itself contains no AI. It is built for reviewing Markdown that an AI agent writes, and does not include an AI model of its own.
+
+## More
+
+- Full docs: {BASE_URL}/llms.txt and {BASE_URL}/llms-full.txt
+- CLI reference for agents: {abs_url(md_path("en", "cli/agents"))}
+"""
+
+
+def build_sitemap(pages: dict, extra_urls: list = None) -> str:
     entries = []
     for slug in PAGE_ORDER:
         for locale in LOCALES:
@@ -1607,6 +2018,8 @@ def build_sitemap(pages: dict) -> str:
                 f' href="{xml_escape(abs_url(page_path("en", slug)))}"/>'
             )
             entries.append(f"  <url>\n    <loc>{loc}</loc>\n{alt_links}\n  </url>")
+    for url in extra_urls or []:
+        entries.append(f"  <url>\n    <loc>{xml_escape(url)}</loc>\n  </url>")
     body = "\n".join(entries)
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -1655,8 +2068,20 @@ def build_llms_txt(pages: dict) -> str:
         note = SCHEMA_NOTES["en"][kind].replace("<code>", "`").replace("</code>", "`")
         lines.append(f"- [{SCHEMA_FILES[kind]}]({schema_url(kind)}): JSON Schema for the --json result, {note}")
     lines.append("")
-    lines.append("Install: `brew tap redtear1115/tap && brew install marsdawn` (compiles from source, a few minutes; "
-                 "macOS 15 and Xcode 26 to build). `export` works without the MarsDawn app; `open` needs it.")
+    lines.append("## Product facts")
+    lines.append(
+        f"- [product-facts.md]({BASE_URL}{PRODUCT_FACTS_PATH}): what MarsDawn is, requirements, "
+        "and entity disambiguation (not Electron, not a web app, not read-only, not a subscription, "
+        "not cross-platform, not an AI product)"
+    )
+    lines.append("")
+    lines.append(
+        f"Open source: [mars-dawn-kit]({KIT_URL}) is free and {KIT_LICENSE}, and the free `marsdawn` "
+        "command-line tool is built from it."
+    )
+    lines.append(f"Install: `{BREW_TAP_INSTALL}` (a prebuilt bottle on Apple silicon, "
+                 "no Xcode needed; on Intel it builds from source with Xcode 26; macOS 15 or later). "
+                 "`export` works without the MarsDawn app; `open` needs it.")
     lines.append("")
     return "\n".join(lines).rstrip() + "\n"
 
@@ -1691,7 +2116,16 @@ def main() -> None:
     print(SITE / "assets" / "annotations.css")
     (SITE / "robots.txt").write_text(ROBOTS_TXT, encoding="utf-8")
     print(SITE / "robots.txt")
-    (SITE / "sitemap.xml").write_text(build_sitemap(pages), encoding="utf-8")
+    product_facts_path = SITE / PRODUCT_FACTS_PATH.lstrip("/")
+    product_facts_path.write_text(build_product_facts(pages), encoding="utf-8")
+    print(product_facts_path)
+    (SITE / "sitemap.xml").write_text(
+        build_sitemap(pages, extra_urls=[BASE_URL + PRODUCT_FACTS_PATH]), encoding="utf-8"
+    )
+    skill = SITE / "cli" / "skill" / "SKILL.md"
+    skill.parent.mkdir(parents=True, exist_ok=True)
+    skill.write_text(build_skill_md(), encoding="utf-8")
+    print(skill)
     print(SITE / "sitemap.xml")
     schema_dir = SITE / SCHEMA_BASE.strip("/")
     schema_dir.mkdir(parents=True, exist_ok=True)

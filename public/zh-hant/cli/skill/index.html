@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>讓寫程式的 agent 把 Markdown 轉 PDF 的 skill · MarsDawn</title>
+<meta name="description" content="一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/skill/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/skill/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/skill/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/cli/skill/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/cli/skill/index.md">
+<meta property="og:title" content="讓寫程式的 agent 把 Markdown 轉 PDF 的 skill · MarsDawn">
+<meta property="og:description" content="一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/cli/skill/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/cli/skill/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/skill/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>讓 agent 幫你做出 PDF。</h1>
+  <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果，這樣寫出 Markdown 的 agent，也能把 PDF 交給你。</p>
+</section>
+<h2>在 Claude Code 中安裝</h2>
+<pre><code>mkdir -p ~/.claude/skills/marsdawn
+curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
+<p>需要做出 PDF 時，Claude Code 會自動載入它，你也可以用 <code>/marsdawn</code> 自己執行。它只是<a href="/cli/skill/SKILL.md">一個簡短的檔案</a>，安裝前先讀一遍。</p>
+<p>其他 agent 也能用同一個檔案。它是純 Markdown，只有說明和指令，讓你的 agent 讀這個網址，或直接貼給它就好。這個檔案是英文的。</p>
+<h2>它教什麼</h2>
+<ul>
+  <li>如果沒有 <code>marsdawn</code>，就用 Homebrew 安裝，再用 <code>marsdawn --version</code> 確認版本，而不是假設某個版本。</li>
+  <li>用 <code>marsdawn export … --json</code> 匯出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。</li>
+  <li>依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。</li>
+  <li>只有裝了 MarsDawn app 才用 <code>open</code>，而且絕不用它來做 PDF。</li>
+</ul>
+<h2>它不會做的事</h2>
+<ul>
+  <li>它不會自己取得執行任何東西的權限。你的 agent 在安裝或執行 <code>marsdawn</code> 之前，仍然會先問你，就像執行其他指令一樣。</li>
+  <li>它不會把你的文件傳到任何地方。<code>marsdawn</code> 在你的 Mac 上產生 PDF，除非你加上 <code>--allow-remote-images</code>，否則不會載入網路上的圖片。</li>
+</ul>
+<p>完整的規格，每個欄位和每個代碼，都在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡。</p>
+</main>
+<footer class="footer">
+  <span>讀 agent 寫的 Markdown。</span>
+  <a href="/zh-hant/support/">支援</a>
+  <a href="/zh-hant/privacy/">隱私權政策</a>
+  <a href="/zh-hant/cli/">命令列工具</a>
+  <span>MarsDawn 即將在 Mac App Store 上架。</span>
+</footer>
+</div>
+</body>
+</html>
