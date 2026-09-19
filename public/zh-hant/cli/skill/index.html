@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>給 agent 的 marsdawn skill · MarsDawn</title>
-<meta name="description" content="一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。">
+<meta name="description" content="一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你檢閱，也學會安裝 marsdawn、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -14,7 +14,7 @@
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/cli/skill/">
 <link rel="alternate" type="text/markdown" href="/zh-hant/cli/skill/index.md">
 <meta property="og:title" content="給 agent 的 marsdawn skill · MarsDawn">
-<meta property="og:description" content="一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。">
+<meta property="og:description" content="一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你檢閱，也學會安裝 marsdawn、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/cli/skill/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
@@ -32,20 +32,22 @@
 </header>
 <main>
 <section class="intro">
-  <h1>讓 agent 幫你做出 PDF。</h1>
-  <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果，這樣寫出 Markdown 的 agent，也能把 PDF 交給你。</p>
+  <h1>讓 agent 把寫好的文件拿給你看，也幫你做出 PDF。</h1>
+  <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 把自己寫的文件在 MarsDawn 裡打開給你檢閱，也教它安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果。</p>
 </section>
 <h2>在 Claude Code 中安裝</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
-<p>需要做出 PDF 時，Claude Code 會自動載入它，你也可以用 <code>/marsdawn</code> 自己執行。它只是<a href="/cli/skill/SKILL.md">一個簡短的檔案</a>，安裝前先讀一遍。</p>
+<p>需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 <code>/marsdawn</code> 自己執行。它只是<a href="/cli/skill/SKILL.md">一個簡短的檔案</a>，安裝前先讀一遍。</p>
 <p>其他 agent 也能用同一個檔案。它是純 Markdown，只有說明和指令，讓你的 agent 讀這個網址，或直接貼給它就好。這個檔案是英文的。</p>
 <h2>它教什麼</h2>
 <ul>
   <li>如果沒有 <code>marsdawn</code>，就用 Homebrew 安裝，再用 <code>marsdawn --version</code> 確認版本，而不是假設某個版本。</li>
   <li>用 <code>marsdawn export … --json</code> 匯出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。</li>
   <li>依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。</li>
-  <li>只有裝了 MarsDawn app 才用 <code>open</code>，而且絕不用它來做 PDF。</li>
+  <li>用 <code>marsdawn open file.md:行號</code> 打開自己寫的文件，停在第一處修改，而且只開一次：之後的修改會自己出現在已開啟的視窗裡。</li>
+  <li>如果沒有安裝 MarsDawn app，就告訴你一次然後繼續，不會一直重試。絕不用 <code>open</code> 來做 PDF。</li>
+  <li>使用 <code>--folder</code>（marsdawn 0.5.1 以上）時，把資料夾回報為「已要求顯示」，而不是「已顯示」：由 app 決定，也不會有結果回報。</li>
 </ul>
 <h2>它不會做的事</h2>
 <ul>
