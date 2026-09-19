@@ -32,6 +32,12 @@
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
 
+# IndexNow key file, served as plain text so the key is readable as-is.
+# The name is the key itself; update this path if the key is ever rotated.
+/a8baaddacb3bb4f6f55127acac71760d.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=300
+
 # Sitemap.
 /sitemap.xml
   Content-Type: application/xml; charset=utf-8

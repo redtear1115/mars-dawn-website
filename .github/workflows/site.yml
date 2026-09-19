@@ -49,6 +49,9 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          # Full history: the IndexNow step below diffs against the commit
+          # this push replaced, which a shallow clone might not have.
+          fetch-depth: 0
       - name: Require the account ID
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
@@ -63,3 +66,17 @@ jobs:
           accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: "4.133.0"
           command: deploy
+      # Pings IndexNow (Bing, Yandex, Seznam) with the URLs this deploy
+      # changed, so they're crawled in hours instead of weeks. No secret or
+      # token: the key is a public file already committed to public/. The
+      # event's `before` SHA is event data, so it's passed through `env:`
+      # rather than interpolated into the script line below, per this
+      # workflow's own rule against splicing event text into `run:`. A
+      # failed or skipped ping must never fail the deploy, so this step
+      # can't fail: scripts/indexnow_notify.py catches its own errors and
+      # prints a `::warning::` instead.
+      - name: Notify IndexNow of changed URLs
+        env:
+          INDEXNOW_BEFORE_SHA: ${{ github.event.before }}
+          INDEXNOW_AFTER_SHA: ${{ github.sha }}
+        run: python3 scripts/indexnow_notify.py
