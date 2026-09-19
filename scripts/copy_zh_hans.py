@@ -102,7 +102,7 @@ def build(k) -> dict:
 <h2>如果没有解锁</h2>
 <ul>
   <li>14 天后，在你解锁之前，无法在 MarsDawn 中阅读、编辑、输出或打印文稿。文稿仍会打开，但内容会被遮住。</li>
-  <li>你的文件不会有任何改变。它们就是你 Mac 上的一般文件，在 Finder 中用“快速查看”依然看得到。</li>
+  <li>你的文件不会有任何改变。它们就是你 Mac 上的一般文件，在访达中用“快速查看”依然看得到。</li>
   <li>免费的 <a href="/zh-hans/cli/"><code>marsdawn</code> 命令行工具</a>不受试用影响，依然能把它们导出成 PDF。</li>
   <li>如果试用结束时有文稿正开在 MarsDawn 里，你输入的文本不会遗失，可以用“文件”▸“存储为…”保存。</li>
 </ul>
@@ -130,7 +130,7 @@ def build(k) -> dict:
     }
     pages['native'] = {
         "title": '原生的 Mac Markdown app：标签页、快速查看 · MarsDawn',
-        "description": '真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在 Finder 用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。',
+        "description": '真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在访达用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。',
         "intro": f"""
 <section class="intro">
   <h1>用 Mac 原生的组件做的。</h1>
@@ -144,7 +144,7 @@ def build(k) -> dict:
   <li>两侧同步滚动，正在编辑的段落一直在眼前。</li>
   <li>编辑器内置 Markdown 语法高亮，颜色与预览主题一致。</li>
   <li>原生窗口、标签页、自动保存和版本记录。</li>
-  <li>快速查看：在 Finder 选取 Markdown 文件按空格键就能预览，图表也会显示。</li>
+  <li>快速查看：在访达选取 Markdown 文件按空格键就能预览，图表也会显示。</li>
   <li>Siri 和快捷指令：用模板添加文稿、在笔记收件箱加上一行，或重新打开最近的文稿。</li>
   <li>支持{k.APP_UI_LANGUAGES}。</li>
 </ul>
@@ -295,7 +295,7 @@ open notes.pdf</code></pre>
 <ul>
   <li>预览会随着你打字实时更新，两边的窗格一起滚动。</li>
   <li>Mermaid 流程图和时序图直接画在预览里，代码块也会高亮。</li>
-  <li>在 Finder 里对 Markdown 文件按空格键，就有“快速查看”预览，图表也在。</li>
+  <li>在访达里对 Markdown 文件按空格键，就有“快速查看”预览，图表也在。</li>
   <li>想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。</li>
 </ul>
 <p>如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看<a href="/zh-hans/">首页</a>，想让 agent 帮你开文件，请看<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</p>
@@ -364,7 +364,7 @@ marsdawn --version</code></pre>
   <li><strong>编辑：</strong>MacMD Viewer 设计上就是只读。MarsDawn 边编辑源代码边在旁边排版，打字的同时就看得到改动。</li>
   <li><strong>预览主题：</strong>MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：Dawn、Classic、Modern 和 Vivid，各有浅色与深色。</li>
   <li><strong>图表与数学公式：</strong>两者都能画出 Mermaid 图表、也都有代码高亮。MarsDawn 还能排版 KaTeX 数学公式；MacMD Viewer 自己的介绍页没有提到数学公式排版。</li>
-  <li><strong>Finder 集成：</strong>两者都有 Finder 的快速查看扩展功能，对 <code>.md</code> 文件按空格键就能看到排好版的页面。</li>
+  <li><strong>访达集成：</strong>两者都有访达的快速查看扩展功能，对 <code>.md</code> 文件按空格键就能看到排好版的页面。</li>
   <li><strong>PDF 与打印：</strong>两者都能把排好版的页面输出或打印成 PDF。</li>
   <li><strong>系统需求：</strong>MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。</li>
   <li><strong>语言：</strong>MarsDawn 的界面有{k.APP_UI_LANGUAGES}。MacMD Viewer 自己的资料没有写出界面语言，这页就不比较这一项。</li>
