@@ -10,7 +10,7 @@ For every public/**/index.html page it checks that:
   disk, since a locale may have only some pages) plus x-default, and x-default is the en page;
 - the alternate for its own language is its canonical URL;
 - every alternate is a page that exists, and that page lists the same set back (reciprocity);
-- the language switch links to the same four pages.
+- the language switch links to the same pages as the alternates.
 And for sitemap.xml, that every page is listed once with the same set of alternates as its HTML.
 
 Exits 1 and lists every problem if anything is off. To see it catch one, check a copy of public/
