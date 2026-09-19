@@ -9,23 +9,16 @@ Last updated 2026-09-17
 ## What stays on your Mac
 
 - **Your documents.** MarsDawn reads and writes only the files and folders you open, save or choose. They are never uploaded anywhere by the app.
-- **Your settings.** Appearance, preview theme, window layout, and your choices about web images and web content are stored in the app's own preferences on your Mac.
-- **Folder access you grant.** When you let MarsDawn show images or page files from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. A folder you open in the sidebar stays readable and writable by MarsDawn until you remove it in Settings, not just while its window is open. You can remove folders at any time in MarsDawn › Settings.
+- **Your settings.** Appearance, preview theme, window layout and the image preference are stored in the app's own preferences on your Mac.
+- **Folder access you grant.** When you let MarsDawn show images from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. You can remove folders at any time in MarsDawn › Settings.
 
 ## When MarsDawn uses the internet
 
-MarsDawn works fully offline. It connects to the internet only **when you choose to load web content** that a document refers to:
+MarsDawn works fully offline. It connects to the internet in one situation only: **when you choose to load images from the web** that a document refers to. Web images are blocked by default. They load only after you click *Load Images* in the preview, or if you turn on *Load remote images automatically* in Settings.
 
-- **Markdown documents.** Web images are blocked by default. They load only after you click *Load Images* in the preview, or if you turn on *Load remote images automatically* in Settings. Nothing else a Markdown document refers to is loaded from the web.
-- **HTML pages.** MarsDawn shows HTML files read-only. Web content a page refers to (images, stylesheets, fonts, audio/video) loads only when you choose, and this has its own setting, which is off by default. Page scripts never run.
+When web images load, your Mac requests them directly from the servers that host them. Like any web request, this lets those servers see your IP address and that the image was requested. MarsDawn's developer receives none of this information.
 
-MarsDawn loads web content over https only. A document that refers to a plain http address is never loaded, in any setting, and MarsDawn does not rewrite it to https. The preview shows a placeholder in its place.
-
-When web content loads, your Mac requests it directly from the servers that host it. Like any web request, this lets those servers see your IP address and what was requested. MarsDawn's developer receives none of this information.
-
-If you allow web content for an HTML page, that page's layout could let those servers learn whether files the page itself refers to exist in the folder you gave MarsDawn access to, and roughly how large they are. The page can't read your files or send their contents, and this can't happen while web content is blocked.
-
-Links you click in the preview open in your default web browser, under that browser's own privacy practices. Audio and video never play by themselves.
+Links you click in the preview open in your default web browser, under that browser's own privacy practices.
 
 ## Siri, Shortcuts and Spotlight
 
