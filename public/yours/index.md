@@ -9,15 +9,21 @@ In this screenshot:
 1. A file on your Mac, saved where you choose.
 2. The whole toolbar is themes and layouts; there is nothing to sign in to.
 
-## What that means
+## No account, no cloud, no tracking
 
 - There is no account to sign up for or sign in to.
-- Nothing syncs to a cloud. Your documents stay where you save them.
-- Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".
-- Web images stay blocked until you choose to load them, so opening a document never tells a server you read it. When you do load them, they load over https only.
-- Local images show in the preview once you grant access to their folder.
+- MarsDawn doesn't sync. Your documents stay where you save them, so to use one on another Mac, keep it in a folder you already sync. More in [what MarsDawn doesn't do](/limits/).
+- Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label will say "Data Not Collected".
+- MarsDawn reads only the files and folders you open or choose. Local images show in the preview once you grant access to their folder.
 
-The details are in the [privacy policy](/privacy/).
+## The only times it goes online
+
+- **Web images in Markdown** load when you click *Load Images*, or always if you turn on *Load remote images automatically* in Settings. Until then, opening a document tells no server you read it.
+- **HTML documents** open static: nothing loads and their code doesn't run unless you choose *View › Run This Document* for that one document.
+- **Links** you click open in your default browser. Web content loads over https only, never plain http.
+- **The free [marsdawn CLI](/cli/)** runs entirely on your Mac and loads web images only when you pass `--allow-remote-images`.
+
+Every detail is in the privacy policy, under [when MarsDawn uses the internet](/privacy/#internet).
 
 ## More
 

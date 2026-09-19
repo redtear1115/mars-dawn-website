@@ -685,6 +685,18 @@ html { overflow-x: hidden; }
 }
 .traits li + li { margin-top: 0; }
 .traits a { font-weight: 600; }
+/* The page you're on: named in Ink, with the ember dot the loop uses. */
+.traits [aria-current="page"] strong { font-weight: 600; color: var(--ink); }
+.traits [aria-current="page"] strong::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--ember);
+  vertical-align: 0.12em;
+}
 .traits span { color: var(--dust); font-size: 0.95rem; }
 
 /* The page ends where it began: a band of dawn light, full bleed, carrying

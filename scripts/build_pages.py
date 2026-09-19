@@ -228,7 +228,7 @@ marsdawn export SPEC.md --json</code></pre>
   <li><strong>Folder access you grant.</strong> When you let MarsDawn show images or page files from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. A folder you open in the sidebar stays readable and writable by MarsDawn until you remove it in Settings, not just while its window is open. You can remove folders at any time in MarsDawn › Settings.</li>
 </ul>
 
-<h2>When MarsDawn uses the internet</h2>
+<h2 id="internet">When MarsDawn uses the internet</h2>
 <p>MarsDawn works fully offline. It connects to the internet only <strong>when you choose to</strong>, for a document that refers to the web:</p>
 <ul>
   <li><strong>Markdown documents.</strong> Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings. Nothing else a Markdown document refers to is loaded from the web.</li>
@@ -279,7 +279,7 @@ marsdawn export SPEC.md --json</code></pre>
   <li><strong>你授權的資料夾。</strong>當你讓 MarsDawn 顯示某個資料夾裡的圖片或網頁檔案，或選擇筆記資料夾時，App 會保存 macOS 書籤，以便之後再次開啟。你在側邊欄開啟的資料夾，MarsDawn 會保持可讀寫，直到你在設定中移除為止，而不只是在那個視窗開著的時候。你隨時可以到 MarsDawn › 設定⋯ 移除。</li>
 </ul>
 
-<h2>MarsDawn 什麼時候會連上網路</h2>
+<h2 id="internet">MarsDawn 什麼時候會連上網路</h2>
 <p>MarsDawn 可以完全離線使用，只有在<strong>你自己選擇時</strong>，才會為引用網路內容的文件連網：</p>
 <ul>
   <li><strong>Markdown 文件。</strong>網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。</li>
@@ -1349,8 +1349,8 @@ FIGURES = {
             "zh-hant": "MarsDawn 以 Classic 主題顯示文件，預覽佔滿整個視窗。",
         },
         "callouts": [
-            (16.53, 7.0, "l", {"en": "A file on your Mac, saved where you choose.", "zh-hant": "你 Mac 上的一個檔案，存在你選的地方。"}),
-            (88.89, 5.56, "r", {"en": "The whole toolbar is themes and layouts; there is nothing to sign in to.", "zh-hant": "整條工具列只有主題和版面，沒有任何需要登入的地方。"}),
+            (20.14, 9.56, "l", {"en": "A file on your Mac, saved where you choose.", "zh-hant": "你 Mac 上的一個檔案，存在你選的地方。"}),
+            (85.97, 9.56, "r", {"en": "The whole toolbar is themes and layouts; there is nothing to sign in to.", "zh-hant": "整條工具列只有主題和版面，沒有任何需要登入的地方。"}),
         ],
     },
     "pay-once": {
@@ -1421,15 +1421,21 @@ TRAIT_PAGES = {
 </section>
 """,
         """
-<h2>What that means</h2>
+<h2>No account, no cloud, no tracking</h2>
 <ul>
   <li>There is no account to sign up for or sign in to.</li>
-  <li>Nothing syncs to a cloud. Your documents stay where you save them.</li>
-  <li>Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".</li>
-  <li>Web images stay blocked until you choose to load them, so opening a document never tells a server you read it. When you do load them, they load over https only.</li>
-  <li>Local images show in the preview once you grant access to their folder.</li>
+  <li>MarsDawn doesn't sync. Your documents stay where you save them, so to use one on another Mac, keep it in a folder you already sync. More in <a href="/limits/">what MarsDawn doesn't do</a>.</li>
+  <li>Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label will say "Data Not Collected".</li>
+  <li>MarsDawn reads only the files and folders you open or choose. Local images show in the preview once you grant access to their folder.</li>
 </ul>
-<p>The details are in the <a href="/privacy/">privacy policy</a>.</p>
+<h2>The only times it goes online</h2>
+<ul>
+  <li><strong>Web images in Markdown</strong> load when you click <em>Load Images</em>, or always if you turn on <em>Load remote images automatically</em> in Settings. Until then, opening a document tells no server you read it.</li>
+  <li><strong>HTML documents</strong> open static: nothing loads and their code doesn't run unless you choose <em>View › Run This Document</em> for that one document.</li>
+  <li><strong>Links</strong> you click open in your default browser. Web content loads over https only, never plain http.</li>
+  <li><strong>The free <a href="/cli/">marsdawn CLI</a></strong> runs entirely on your Mac and loads web images only when you pass <code>--allow-remote-images</code>.</li>
+</ul>
+<p>Every detail is in the privacy policy, under <a href="/privacy/#internet">when MarsDawn uses the internet</a>.</p>
 """,
     ),
     ("zh-hant", "yours"): _trait_page(
@@ -1442,15 +1448,21 @@ TRAIT_PAGES = {
 </section>
 """,
         """
-<h2>這代表什麼</h2>
+<h2>沒有帳號、沒有雲端、不追蹤</h2>
 <ul>
   <li>不需要帳號，不用註冊，也不用登入。</li>
-  <li>不會同步到雲端，文件存在哪裡就留在哪裡。</li>
-  <li>不追蹤任何行為。MarsDawn 不收集任何關於你的資料，App Store 隱私權標示為「未收集資料」。</li>
-  <li>網路圖片在你選擇載入之前一律不載入，打開文件不會讓任何伺服器知道你讀了它。選擇載入時，也只走 https。</li>
-  <li>本機圖片在你授權資料夾存取後，就會顯示在預覽中。</li>
+  <li>MarsDawn 不同步。文件存在哪裡就留在哪裡；想在另一台 Mac 上用，就放在你本來就會同步的資料夾。詳見 <a href="/zh-hant/limits/">MarsDawn 做不到的事</a>。</li>
+  <li>不追蹤任何行為。MarsDawn 不收集任何關於你的資料，App Store 隱私權標示將會是「未收集資料」。</li>
+  <li>MarsDawn 只讀取你打開或選擇的檔案與資料夾。本機圖片在你授權資料夾存取後，就會顯示在預覽中。</li>
 </ul>
-<p>完整說明請看<a href="/zh-hant/privacy/">隱私權政策</a>。</p>
+<h2>它只在這些時候連網</h2>
+<ul>
+  <li><strong>Markdown 裡的網路圖片</strong>：按下「載入圖片」時才載入；在設定中開啟「自動載入網路圖片」則一律載入。在那之前，打開文件不會讓任何伺服器知道你讀了它。</li>
+  <li><strong>HTML 文件</strong>開啟時是靜態的：不載入任何東西，程式碼也不執行，除非你針對這份文件選擇「顯示方式 › 執行這份文件」。</li>
+  <li><strong>連結</strong>會用你的預設瀏覽器打開。網路內容只走 https，一律不載入 http。</li>
+  <li><strong>免費的 <a href="/zh-hant/cli/">marsdawn CLI</a></strong> 完全在你的 Mac 上執行，只有加上 <code>--allow-remote-images</code> 時才會載入網路圖片。</li>
+</ul>
+<p>完整說明在隱私權政策的<a href="/zh-hant/privacy/#internet">「MarsDawn 什麼時候會連上網路」</a>。</p>
 """,
     ),
     ("en", "pay-once"): _trait_page(
@@ -1664,13 +1676,15 @@ FIGURE_LIST_LABEL = {"en": "In this screenshot", "zh-hant": "這張截圖裡"}
 
 
 def trait_nav_html(locale: str, current: str) -> str:
-    items = "\n".join(
-        f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a>'
-        f'<span>{TRAIT_LINK[locale][slug][1]}</span></li>'
-        for slug in TRAIT_ORDER
-        if slug != current
-    )
-    return f'<nav class="traits" aria-label="{TRAIT_NAV_HEADING[locale]}">\n<h2>{TRAIT_NAV_HEADING[locale]}</h2>\n<ul role="list">\n{items}\n</ul>\n</nav>'
+    # The whole set on every page, with the current one marked rather than
+    # dropped, so a reader can see where they are among the five.
+    def item(slug: str) -> str:
+        name, blurb = TRAIT_LINK[locale][slug]
+        if slug == current:
+            return f'  <li aria-current="page"><strong>{name}</strong><span>{blurb}</span></li>'
+        return f'  <li><a href="{page_path(locale, slug)}">{name}</a><span>{blurb}</span></li>'
+    items = "\n".join(item(slug) for slug in TRAIT_ORDER)
+    return f'<nav class="traits" aria-labelledby="traits-heading">\n<h2 id="traits-heading">{TRAIT_NAV_HEADING[locale]}</h2>\n<ul role="list">\n{items}\n</ul>\n</nav>'
 
 
 def figure_html(locale: str, slug: str) -> str:
@@ -1686,7 +1700,7 @@ def figure_html(locale: str, slug: str) -> str:
     legend = []
     for index, (_, y, side, label) in enumerate(fig["callouts"], start=1):
         cls = f"co-{slug}-{index}"
-        edge = " tb" if y < 9 else ""
+        edge = " tb" if y < 10 else ""
         markers.append(f'<span class="marker {side}{edge} {cls}" aria-hidden="true">{index}</span>')
         lines.append(f'<span class="leader {side} {cls}" aria-hidden="true"><span>{label[locale]}</span></span>')
         legend.append(f"<li>{label[locale]}</li>")

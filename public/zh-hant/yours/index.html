@@ -49,18 +49,25 @@
     <ol><li>你 Mac 上的一個檔案，存在你選的地方。</li><li>整條工具列只有主題和版面，沒有任何需要登入的地方。</li></ol>
   </figcaption>
 </figure>
-<h2>這代表什麼</h2>
+<h2>沒有帳號、沒有雲端、不追蹤</h2>
 <ul>
   <li>不需要帳號，不用註冊，也不用登入。</li>
-  <li>不會同步到雲端，文件存在哪裡就留在哪裡。</li>
-  <li>不追蹤任何行為。MarsDawn 不收集任何關於你的資料，App Store 隱私權標示為「未收集資料」。</li>
-  <li>網路圖片在你選擇載入之前一律不載入，打開文件不會讓任何伺服器知道你讀了它。選擇載入時，也只走 https。</li>
-  <li>本機圖片在你授權資料夾存取後，就會顯示在預覽中。</li>
+  <li>MarsDawn 不同步。文件存在哪裡就留在哪裡；想在另一台 Mac 上用，就放在你本來就會同步的資料夾。詳見 <a href="/zh-hant/limits/">MarsDawn 做不到的事</a>。</li>
+  <li>不追蹤任何行為。MarsDawn 不收集任何關於你的資料，App Store 隱私權標示將會是「未收集資料」。</li>
+  <li>MarsDawn 只讀取你打開或選擇的檔案與資料夾。本機圖片在你授權資料夾存取後，就會顯示在預覽中。</li>
 </ul>
-<p>完整說明請看<a href="/zh-hant/privacy/">隱私權政策</a>。</p>
-<nav class="traits" aria-label="MarsDawn 是什麼樣的 app">
-<h2>MarsDawn 是什麼樣的 app</h2>
+<h2>它只在這些時候連網</h2>
+<ul>
+  <li><strong>Markdown 裡的網路圖片</strong>：按下「載入圖片」時才載入；在設定中開啟「自動載入網路圖片」則一律載入。在那之前，打開文件不會讓任何伺服器知道你讀了它。</li>
+  <li><strong>HTML 文件</strong>開啟時是靜態的：不載入任何東西，程式碼也不執行，除非你針對這份文件選擇「顯示方式 › 執行這份文件」。</li>
+  <li><strong>連結</strong>會用你的預設瀏覽器打開。網路內容只走 https，一律不載入 http。</li>
+  <li><strong>免費的 <a href="/zh-hant/cli/">marsdawn CLI</a></strong> 完全在你的 Mac 上執行，只有加上 <code>--allow-remote-images</code> 時才會載入網路圖片。</li>
+</ul>
+<p>完整說明在隱私權政策的<a href="/zh-hant/privacy/#internet">「MarsDawn 什麼時候會連上網路」</a>。</p>
+<nav class="traits" aria-labelledby="traits-heading">
+<h2 id="traits-heading">MarsDawn 是什麼樣的 app</h2>
 <ul role="list">
+  <li aria-current="page"><strong>你寫的內容留在你的 Mac 上</strong><span>不需要帳號，沒有同步，也沒有雲端。</span></li>
   <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a><span>免費試用 14 天，之後 USD 4.99 買一次，沒有訂閱。</span></li>
   <li><a href="/zh-hant/pdf/">輸出 PDF</a><span>圖表、程式碼上色、經過安排的分頁。</span></li>
   <li><a href="/zh-hant/native/">為 Mac 而做</a><span>原生視窗、分頁、自動儲存、快速查看。</span></li>
