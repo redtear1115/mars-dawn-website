@@ -102,12 +102,12 @@ JSON Schema (draft 2020-12) for every `--json` result:
 
 ## Requirements
 
-- The tool runs on macOS 15 or later. Building it needs Swift 6.2 or later, which comes with Xcode 26 or later.
+- The tool runs on macOS 15 or later. On Apple silicon, Homebrew installs a prebuilt bottle and nothing else is needed. Building it yourself, on an Intel Mac or from the source, needs Swift 6.2 or later, which comes with Xcode 26 or later.
 - The MarsDawn app needs macOS 26 or later.
 
 ## Install
 
-With Homebrew. The formula compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.
+With Homebrew. On Apple silicon it pours a prebuilt bottle in seconds, with no Xcode needed. On an Intel Mac it compiles marsdawn from source, which takes a few minutes and needs Xcode 26 or later.
 
 ```
 brew tap redtear1115/tap && brew install marsdawn

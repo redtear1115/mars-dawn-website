@@ -102,12 +102,12 @@ marsdawn 0.2.x 的 `opened` 是路徑字串的清單。如果需要同時處理�
 
 ## 系統需求
 
-- 這個工具需要 macOS 15 以上。建置需要 Swift 6.2 以上，也就是 Xcode 26 以上。
+- 這個工具需要 macOS 15 以上。在 Apple 晶片的 Mac 上，Homebrew 會安裝預先建置好的版本，不需要其他東西。自己建置時（在 Intel Mac 上，或從原始碼建置），需要 Swift 6.2 以上，也就是 Xcode 26 以上。
 - MarsDawn app 需要 macOS 26 以上。
 
 ## 安裝
 
-使用 Homebrew。這個 formula 會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。
+使用 Homebrew。在 Apple 晶片的 Mac 上，會直接安裝預先建置好的版本，幾秒就完成，不需要 Xcode。在 Intel Mac 上則會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。
 
 ```
 brew tap redtear1115/tap && brew install marsdawn
