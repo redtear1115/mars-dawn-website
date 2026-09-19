@@ -1377,7 +1377,7 @@ TRAIT_PAGES = {
     ),
     ("en", "pdf"): _trait_page(
         "Export Markdown to PDF on a Mac, diagrams included · MarsDawn",
-        "Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks never strand a heading or split code or tables.",
+        "Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks and tables.",
         """
 <section class="intro">
   <h1>The PDF looks like the page you wrote.</h1>
@@ -1397,7 +1397,7 @@ TRAIT_PAGES = {
     ),
     ("zh-hant", "pdf"): _trait_page(
         "在 Mac 把 Markdown 輸出成 PDF，圖表也在 · MarsDawn",
-        "在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁不會把標題留在頁底，也不會切開程式碼、表格和圖表。",
+        "在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。",
         """
 <section class="intro">
   <h1>PDF 看起來就是你寫的那一頁。</h1>
