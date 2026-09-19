@@ -220,7 +220,7 @@ PAGES = {
 <p>MarsDawn does not collect data from anyone, including children.</p>
 
 <h2>Purchases</h2>
-<p>MarsDawn is sold through the Mac App Store. Apple processes the purchase under its own terms, and the developer does not receive your payment details.</p>
+<p>MarsDawn will be sold through the Mac App Store. Apple will process the purchase under its own terms, and the developer never receives your payment details.</p>
 
 <h2>Changes to this policy</h2>
 <p>If MarsDawn ever starts handling data differently, this page will be updated before that version is released, and the date at the top will change.</p>
@@ -266,7 +266,7 @@ PAGES = {
 <p>MarsDawn 不向任何人收集資料，包括兒童。</p>
 
 <h2>購買</h2>
-<p>MarsDawn 透過 Mac App Store 販售，付款由 Apple 依其條款處理，開發者不會取得你的付款資訊。</p>
+<p>MarsDawn 將透過 Mac App Store 販售，付款會由 Apple 依其條款處理，開發者不會取得你的付款資訊。</p>
 
 <h2>政策變更</h2>
 <p>如果 MarsDawn 未來處理資料的方式有所改變，本頁會在該版本推出前更新，頁首的日期也會一併更改。</p>
