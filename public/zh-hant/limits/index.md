@@ -21,13 +21,14 @@
 - **格式：**MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。
 - **主題：**內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，無法安裝其他主題。
 - **其他檔案：**純文字檔和 PDF 以唯讀方式開啟。
+- **試用結束後：**如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。
 - **系統：**MarsDawn 需要 macOS 26 以上。
 
 ## 其他頁面
 
 - [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 原生的 Mac Markdown 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出，為讀 AI agent 寫的 Markdown 而做。即將在 Mac App Store 上架。
 - [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hant/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
-- [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載，可試用 14 天，之後以 USD 4.99 一次解鎖。沒有訂閱、不需要帳號，也沒有付費進階版。
+- [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。
 - [為 Mac 而做](https://marsdawn.southern-light.dev/zh-hant/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
 - [支援](https://marsdawn.southern-light.dev/zh-hant/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。

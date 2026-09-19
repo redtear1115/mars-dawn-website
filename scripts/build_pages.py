@@ -1350,52 +1350,56 @@ TRAIT_PAGES = {
 """,
     ),
     ("en", "pay-once"): _trait_page(
-        "Try free, pay once · MarsDawn",
-        "MarsDawn is a free download with a 14-day trial, then a USD 4.99 one-time unlock. No subscription, no account, no paid tier.",
+        "Try it free, then pay once · MarsDawn",
+        "MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.",
         """
 <section class="intro">
-  <h1>Try it free. Pay once to keep it.</h1>
-  <p>MarsDawn is a free download from the Mac App Store with a 14-day trial. After that, one USD 4.99 purchase unlocks it for good. There is no subscription and no paid tier.</p>
+  <h1>Try all of it. Then pay once.</h1>
+  <p>MarsDawn is a free download. Start the 14-day trial and every feature works; to keep using it after that, one purchase of USD 4.99 unlocks it. There is no subscription and no account.</p>
 </section>
 """,
         """
-<h2>What that means</h2>
+<h2>How it works</h2>
 <ul>
-  <li>Download MarsDawn free and use it for 14 days.</li>
-  <li>To keep using it, unlock it with one in-app purchase of USD 4.99.</li>
-  <li>There is no subscription, so nothing renews.</li>
-  <li>There is no account: MarsDawn never asks you to create one.</li>
-  <li>Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the unlock.</li>
+  <li>MarsDawn is free to download from the Mac App Store.</li>
+  <li>Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.</li>
+  <li>To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.</li>
+  <li>The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.</li>
+  <li>There is no account. MarsDawn never asks you to create one.</li>
 </ul>
-<h2>If the trial ends before you unlock</h2>
+<h2>If you don't unlock</h2>
 <ul>
-  <li>Your documents still open, but MarsDawn covers their content until you unlock it. You can't read, edit, export or print them in the app.</li>
-  <li>Your files are never changed. They stay on your Mac as plain Markdown, Quick Look in Finder keeps showing them, and the free <a href="/cli/">marsdawn</a> command-line tool keeps exporting them to PDF.</li>
+  <li>After 14 days, until you unlock it, you can't read, edit, export or print documents in MarsDawn. A document still opens, but its content is covered.</li>
+  <li>Your files don't change. They're ordinary files on your Mac, and Quick Look in Finder keeps showing them.</li>
+  <li>The free <a href="/cli/"><code>marsdawn</code> command-line tool</a> keeps exporting them to PDF, trial or not.</li>
+  <li>If a document is open in MarsDawn when the trial ends, the text you typed isn't lost: use File ▸ Save As… to keep it.</li>
 </ul>
 """,
     ),
     ("zh-hant", "pay-once"): _trait_page(
         "免費試用，買一次就好 · MarsDawn",
-        "MarsDawn 免費下載，可試用 14 天，之後以 USD 4.99 一次解鎖。沒有訂閱、不需要帳號，也沒有付費進階版。",
+        "MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。",
         """
 <section class="intro">
-  <h1>先免費試用，買一次就能一直用。</h1>
-  <p>MarsDawn 在 Mac App Store 免費下載，可以試用 14 天。之後只要一次 USD 4.99 的購買，就永久解鎖。沒有訂閱，也沒有付費進階版。</p>
+  <h1>先全部試用，再買一次。</h1>
+  <p>MarsDawn 可以免費下載。開始 14 天試用後，所有功能都能使用；試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。</p>
 </section>
 """,
         """
-<h2>這代表什麼</h2>
+<h2>怎麼運作</h2>
 <ul>
-  <li>免費下載 MarsDawn，可以使用 14 天。</li>
-  <li>想繼續使用，就用一次 USD 4.99 的 App 內購買解鎖。</li>
-  <li>沒有訂閱，不會自動續費。</li>
+  <li>在 Mac App Store 免費下載 MarsDawn。</li>
+  <li>開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。</li>
+  <li>試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。</li>
+  <li>試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。</li>
   <li>不需要帳號，MarsDawn 從不要求你建立帳號。</li>
-  <li>沒有保留任何功能。所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都包含在這次解鎖裡。</li>
 </ul>
-<h2>試用結束但還沒解鎖時</h2>
+<h2>如果沒有解鎖</h2>
 <ul>
-  <li>文件還是打得開，但在解鎖之前，MarsDawn 會蓋住內容。你沒辦法在 app 裡閱讀、編輯、輸出或列印。</li>
-  <li>你的檔案不會被改動。它們仍是你 Mac 上的純 Markdown 檔，Finder 的快速查看照樣能看，免費的 <a href="/zh-hant/cli/">marsdawn</a> 命令列工具也照樣能輸出 PDF。</li>
+  <li>14 天後，在你解鎖之前，無法在 MarsDawn 中閱讀、編輯、輸出或列印文件。文件仍會開啟，但內容會被遮住。</li>
+  <li>你的檔案不會有任何改變。它們就是你 Mac 上的一般檔案，在 Finder 中用「快速查看」依然看得到。</li>
+  <li>免費的 <a href="/zh-hant/cli/"><code>marsdawn</code> 命令列工具</a>不受試用影響，依然能把它們匯出成 PDF。</li>
+  <li>如果試用結束時有文件正開在 MarsDawn 裡，你輸入的文字不會遺失，可以用「檔案」▸「另存新檔⋯」保存。</li>
 </ul>
 """,
     ),
@@ -1503,6 +1507,7 @@ TRAIT_PAGES = {
   <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
   <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others.</li>
   <li><strong>Other files:</strong> plain text files and PDFs open read-only.</li>
+  <li><strong>After the trial:</strong> if you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.</li>
   <li><strong>System:</strong> MarsDawn needs macOS 26 or later.</li>
 </ul>
 """,
@@ -1527,6 +1532,7 @@ TRAIT_PAGES = {
   <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
   <li><strong>主題：</strong>內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，無法安裝其他主題。</li>
   <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
+  <li><strong>試用結束後：</strong>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</li>
   <li><strong>系統：</strong>MarsDawn 需要 macOS 26 以上。</li>
 </ul>
 """,
@@ -1536,14 +1542,14 @@ TRAIT_PAGES = {
 TRAIT_LINK = {
     "en": {
         "yours": ("Your writing stays on your Mac", "No account, no sync, no cloud."),
-        "pay-once": ("Try free, pay once", "14-day free trial, then USD 4.99 once. No subscription."),
+        "pay-once": ("Try free, pay once", "Free for 14 days, then USD 4.99 once. No subscription."),
         "pdf": ("PDF export", "Diagrams, highlighted code, careful page breaks."),
         "native": ("A Mac app", "Native windows, tabs, autosave, Quick Look."),
         "limits": ("What MarsDawn doesn't do", "Know before you buy."),
     },
     "zh-hant": {
         "yours": ("你寫的內容留在你的 Mac 上", "不需要帳號，沒有同步，也沒有雲端。"),
-        "pay-once": ("免費試用，買一次就好", "免費試用 14 天，之後 USD 4.99 一次解鎖，沒有訂閱。"),
+        "pay-once": ("免費試用，買一次就好", "免費試用 14 天，之後 USD 4.99 買一次，沒有訂閱。"),
         "pdf": ("輸出 PDF", "圖表、程式碼上色、經過安排的分頁。"),
         "native": ("為 Mac 而做", "原生視窗、分頁、自動儲存、快速查看。"),
         "limits": ("MarsDawn 做不到的事", "購買前先知道。"),

@@ -1,6 +1,6 @@
-# 先免費試用，買一次就能一直用。
+# 先全部試用，再買一次。
 
-MarsDawn 在 Mac App Store 免費下載，可以試用 14 天。之後只要一次 USD 4.99 的購買，就永久解鎖。沒有訂閱，也沒有付費進階版。
+MarsDawn 可以免費下載。開始 14 天試用後，所有功能都能使用；試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 
 ![MarsDawn 使用 Vivid 主題，左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
@@ -11,18 +11,20 @@ MarsDawn 在 Mac App Store 免費下載，可以試用 14 天。之後只要一�
 3. Mermaid 圖表，包含在內。
 4. 程式碼上色，包含在內。
 
-## 這代表什麼
+## 怎麼運作
 
-- 免費下載 MarsDawn，可以使用 14 天。
-- 想繼續使用，就用一次 USD 4.99 的 App 內購買解鎖。
-- 沒有訂閱，不會自動續費。
+- 在 Mac App Store 免費下載 MarsDawn。
+- 開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。
+- 試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。
+- 試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。
 - 不需要帳號，MarsDawn 從不要求你建立帳號。
-- 沒有保留任何功能。所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都包含在這次解鎖裡。
 
-## 試用結束但還沒解鎖時
+## 如果沒有解鎖
 
-- 文件還是打得開，但在解鎖之前，MarsDawn 會蓋住內容。你沒辦法在 app 裡閱讀、編輯、輸出或列印。
-- 你的檔案不會被改動。它們仍是你 Mac 上的純 Markdown 檔，Finder 的快速查看照樣能看，免費的 [marsdawn](/zh-hant/cli/) 命令列工具也照樣能輸出 PDF。
+- 14 天後，在你解鎖之前，無法在 MarsDawn 中閱讀、編輯、輸出或列印文件。文件仍會開啟，但內容會被遮住。
+- 你的檔案不會有任何改變。它們就是你 Mac 上的一般檔案，在 Finder 中用「快速查看」依然看得到。
+- 免費的 [`marsdawn` 命令列工具](/zh-hant/cli/)不受試用影響，依然能把它們匯出成 PDF。
+- 如果試用結束時有文件正開在 MarsDawn 裡，你輸入的文字不會遺失，可以用「檔案」▸「另存新檔⋯」保存。
 
 ## 其他頁面
 
@@ -38,4 +40,4 @@ MarsDawn 在 Mac App Store 免費下載，可以試用 14 天。之後只要一�
 - [命令列工具](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。
 - [給 AI agent 的 marsdawn 參考](https://marsdawn.southern-light.dev/zh-hant/cli/agents/index.md): 給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。
 - [給 agent 的 skill](https://marsdawn.southern-light.dev/zh-hant/cli/skill/index.md): 一個檔案，讓寫程式的 agent 學會安裝 marsdawn、確認它能用、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。
-- [English](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn is a free download with a 14-day trial, then a USD 4.99 one-time unlock. No subscription, no account, no paid tier.
+- [English](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.

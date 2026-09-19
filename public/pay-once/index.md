@@ -1,6 +1,6 @@
-# Try it free. Pay once to keep it.
+# Try all of it. Then pay once.
 
-MarsDawn is a free download from the Mac App Store with a 14-day trial. After that, one USD 4.99 purchase unlocks it for good. There is no subscription and no paid tier.
+MarsDawn is a free download. Start the 14-day trial and every feature works; to keep using it after that, one purchase of USD 4.99 unlocks it. There is no subscription and no account.
 
 ![MarsDawn in the Vivid theme, with Markdown source on the left and the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
@@ -11,18 +11,20 @@ In this screenshot:
 3. Mermaid diagrams, included.
 4. Code highlighting, included.
 
-## What that means
+## How it works
 
-- Download MarsDawn free and use it for 14 days.
-- To keep using it, unlock it with one in-app purchase of USD 4.99.
-- There is no subscription, so nothing renews.
-- There is no account: MarsDawn never asks you to create one.
-- Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the unlock.
+- MarsDawn is free to download from the Mac App Store.
+- Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.
+- To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.
+- The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.
+- There is no account. MarsDawn never asks you to create one.
 
-## If the trial ends before you unlock
+## If you don't unlock
 
-- Your documents still open, but MarsDawn covers their content until you unlock it. You can't read, edit, export or print them in the app.
-- Your files are never changed. They stay on your Mac as plain Markdown, Quick Look in Finder keeps showing them, and the free [marsdawn](/cli/) command-line tool keeps exporting them to PDF.
+- After 14 days, until you unlock it, you can't read, edit, export or print documents in MarsDawn. A document still opens, but its content is covered.
+- Your files don't change. They're ordinary files on your Mac, and Quick Look in Finder keeps showing them.
+- The free [`marsdawn` command-line tool](/cli/) keeps exporting them to PDF, trial or not.
+- If a document is open in MarsDawn when the trial ends, the text you typed isn't lost: use File ▸ Save As… to keep it.
 
 ## More
 
@@ -38,4 +40,4 @@ In this screenshot:
 - [Command Line](https://marsdawn.southern-light.dev/cli/index.md): The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.
 - [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): A reference for AI agents and scripts that call marsdawn to turn Markdown into PDF: commands, JSON output, schemas, exit codes and requirements.
 - [Agent skill](https://marsdawn.southern-light.dev/cli/skill/index.md): One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載，可試用 14 天，之後以 USD 4.99 一次解鎖。沒有訂閱、不需要帳號，也沒有付費進階版。
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
