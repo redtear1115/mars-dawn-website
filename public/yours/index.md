@@ -1,29 +1,35 @@
 # Your writing stays on your Mac.
 
-MarsDawn has no account, no sync and no cloud. It opens a file, you write, and it saves the file where you chose.
+MarsDawn has no account, no sync and no cloud. It opens a file, you write, and it saves the file where you choose.
 
 ![MarsDawn showing a document in the Classic theme, with the preview filling the window.](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
 
 In this screenshot:
 
-1. A file on your Mac, saved where you choose.
-2. The whole toolbar is themes and layouts; there is nothing to sign in to.
+1. The window title is the file's name: a plain .md file on your Mac.
+2. The toolbar holds themes and layouts. There's no account button and no sign-in.
+
+**MarsDawn does not collect any data about you.** The app never uploads your documents, and its developer receives nothing when your Mac loads something from the web.
 
 ## No account, no cloud, no tracking
 
-- There is no account to sign up for or sign in to.
-- MarsDawn doesn't sync. Your documents stay where you save them, so to use one on another Mac, keep it in a folder you already sync. More in [what MarsDawn doesn't do](/limits/).
-- Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label will say "Data Not Collected".
-- MarsDawn reads only the files and folders you open or choose. Local images show in the preview once you grant access to their folder.
+- **No account.** There is nothing to sign up for or sign in to.
+- **No sync.** Your documents stay where you save them, so to use one on another Mac, keep it in a folder you already sync. More in [what MarsDawn doesn't do](/limits/).
+- **No analytics, advertising or tracking.** Its App Store privacy label will say "Data Not Collected".
+- **Only what you open.** MarsDawn reads the files and folders you open or choose. A folder you open in the sidebar stays readable and writable until you remove it in MarsDawn › Settings. See [what stays on your Mac](/privacy/#on-your-mac).
 
 ## The only times it goes online
 
-- **Web images in Markdown** load when you click *Load Images*, or always if you turn on *Load remote images automatically* in Settings. Until then, opening a document tells no server you read it.
-- **HTML documents** open static: nothing loads and their code doesn't run unless you choose *View › Run This Document* for that one document.
-- **Links** you click open in your default browser. Web content loads over https only, never plain http.
+MarsDawn works fully offline. It connects only when you choose to:
+
+- **Web images in Markdown** load when you click *Load Images*, or always if you turn on *Load remote images automatically* in Settings. Until then, opening a document tells no server you read it. When they load, your Mac asks the hosting server directly, so that server sees your IP address; MarsDawn's developer receives none of it.
+- **HTML documents** open static: nothing loads and their code doesn't run unless you choose *View › Run This Document* for that one document. While it runs, that document can send data over the network. The choice is never remembered.
+- **Links** you click open in your default browser, under its own privacy practices.
 - **The free [marsdawn CLI](/cli/)** runs entirely on your Mac and loads web images only when you pass `--allow-remote-images`.
 
-Every detail is in the privacy policy, under [when MarsDawn uses the internet](/privacy/#internet).
+Web content loads over https only: a plain http address is never loaded, in any setting. Siri dictation and App Store purchases are handled by Apple, under Apple's terms.
+
+Every detail is in the [privacy policy](/privacy/#internet). Questions about privacy: [support@southern-light.dev](mailto:support@southern-light.dev)
 
 ## More
 
