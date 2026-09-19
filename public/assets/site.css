@@ -259,6 +259,21 @@ html { scrollbar-color: var(--hairline) var(--paper); }
               0 14px 34px -14px color-mix(in srgb, #000 35%, transparent);
 }
 
+/* A page of an exported PDF. The PNG is transparent, so the paper is drawn
+   here: white in both schemes, because it is a printed page, with a margin
+   so the text doesn't touch its edge. Sized to the column, never wider. */
+img.pdf-page {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  padding: clamp(12px, 3vw, 32px);
+  background: #FFFFFF;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px color-mix(in srgb, #000 10%, transparent),
+              0 12px 28px -14px color-mix(in srgb, #000 30%, transparent);
+}
+
 .marker {
   position: absolute;
   left: var(--x);
