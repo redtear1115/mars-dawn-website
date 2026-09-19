@@ -44,6 +44,8 @@ UI = {
         "vs-macmd-viewer": "MacMD Viewer vs. MarsDawn",
         "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.",
         "footer_store": "MarsDawn is coming soon to the Mac App Store.",
+        "close_cli": 'Until then, the free <a href="/cli/">marsdawn CLI</a> works today.',
+        "skip": "Skip to content", "markdown": "This page in Markdown",
         "more": "More",
         "yours": "Your writing stays on your Mac", "pay-once": "Try free, pay once", "pdf": "PDF export",
         "native": "A Mac app", "limits": "What MarsDawn doesn't do",
@@ -56,6 +58,8 @@ UI = {
         "vs-macmd-viewer": "MacMD Viewer 對比 MarsDawn",
         "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。",
         "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
+        "close_cli": '在那之前，免費的 <a href="/zh-hant/cli/">marsdawn CLI</a> 現在就能用。',
+        "skip": "跳到主要內容", "markdown": "本頁的 Markdown 版本",
         "more": "其他頁面",
         "yours": "你寫的內容留在你的 Mac 上", "pay-once": "免費試用，買一次就好", "pdf": "輸出 PDF",
         "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
@@ -157,16 +161,24 @@ PAGES = {
   <p class="kicker">Built for the AI workflow</p>
   <h1>Where an agent's Markdown gets a careful read.</h1>
   <p>An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.</p>
+  <p class="hero-facts"><span>Coming soon to the Mac App Store</span> · <span>Free 14-day trial, then USD 4.99 once</span> · <span>macOS 26 or later</span> · <span><a href="/cli/">The free marsdawn CLI works today</a></span></p>
 </section>
 """,
         "body": """
 <h2 class="loop-title">The loop</h2>
-<ol class="loop-steps">
-  <li><strong>The agent writes.</strong> Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.</li>
-  <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
-  <li><strong>The agent revises.</strong> Ask for changes. Open the revised file and read it the same way.</li>
+<ol class="loop-steps" role="list">
+  <li><strong>The agent writes.</strong> Claude Code, Cursor or your writing assistant drafts the Markdown: a README, a spec, a design note.</li>
+  <li><strong>You review in MarsDawn.</strong> The agent runs <code>marsdawn open SPEC.md</code>, or you open the file yourself. Diagrams, math and code render next to the source.</li>
+  <li><strong>The agent revises.</strong> Tell it what to change, then read the new version the same way.</li>
 </ol>
-<p>Agents can drive MarsDawn directly: the free <a href="/cli/">marsdawn</a> command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See <a href="/cli/agents/">marsdawn for agents</a> for the details.</p>
+<h2>Try the agent side today</h2>
+<p>The <a href="/cli/">marsdawn CLI</a> is free, and exporting needs no app. Install it, and your agent can turn its Markdown into a PDF and learn, from one line of JSON, whether every Mermaid diagram rendered.</p>
+<pre><code>brew tap redtear1115/tap
+brew install marsdawn
+marsdawn export SPEC.md --json</code></pre>
+<p class="reply-label">It answers with one line:</p>
+<pre class="reply"><code>{"diagramErrors":[],"ok":true,"output":"/path/to/SPEC.pdf","pages":3,"paper":"a4","theme":"dawn"}</code></pre>
+<p>Every flag, exit code and JSON schema is in <a href="/cli/agents/">marsdawn for agents</a>.</p>
 """,
     },
     ("zh-hant", "index"): {
@@ -177,16 +189,24 @@ PAGES = {
   <p class="kicker">為 AI 工作流程而生</p>
   <h1>讓 agent 寫的 Markdown，被好好讀過一遍。</h1>
   <p>AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面並排顯示，再把修改意見交回去。</p>
+  <p class="hero-facts"><span>即將在 Mac App Store 上架</span> · <span>免費試用 14 天，之後 USD 4.99 買一次</span> · <span>需要 macOS 26 以上</span> · <span><a href="/zh-hant/cli/">免費的 marsdawn CLI 現在就能用</a></span></p>
 </section>
 """,
         "body": """
 <h2 class="loop-title">整個循環</h2>
-<ol class="loop-steps">
-  <li><strong>Agent 動筆。</strong>你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。</li>
-  <li><strong>你在 MarsDawn 裡讀。</strong>打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。</li>
-  <li><strong>Agent 修改。</strong>提出修改意見，agent 改好之後，再打開來讀一次。</li>
+<ol class="loop-steps" role="list">
+  <li><strong>Agent 動筆。</strong>Claude Code、Cursor 或你的寫作助手先寫出 Markdown：README、規格文件，或一份設計筆記。</li>
+  <li><strong>你在 MarsDawn 裡讀。</strong>Agent 執行 <code>marsdawn open SPEC.md</code>，或你自己打開檔案。圖表、數學式和程式碼都排好，旁邊就是原始碼。</li>
+  <li><strong>Agent 修改。</strong>告訴它要改哪裡，改好之後，用同樣的方式再讀一次。</li>
 </ol>
-<p>Agent 也能直接操作 MarsDawn：免費的 <a href="/zh-hant/cli/">marsdawn</a> 命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
+<h2>先試 agent 這一端</h2>
+<p><a href="/zh-hant/cli/">marsdawn CLI</a> 免費，輸出 PDF 不需要 app。裝好之後，你的 agent 就能把它寫的 Markdown 轉成 PDF，並從一行 JSON 得知每張 Mermaid 圖表是否都畫出來了。</p>
+<pre><code>brew tap redtear1115/tap
+brew install marsdawn
+marsdawn export SPEC.md --json</code></pre>
+<p class="reply-label">它只回一行：</p>
+<pre class="reply"><code>{"diagramErrors":[],"ok":true,"output":"/path/to/SPEC.pdf","pages":3,"paper":"a4","theme":"dawn"}</code></pre>
+<p>所有選項、結束代碼和 JSON schema，都在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
 """,
     },
     ("en", "privacy"): {
@@ -201,14 +221,14 @@ PAGES = {
 
 <div class="summary"><p><strong>MarsDawn does not collect any data about you.</strong> There is no account, no analytics, no advertising and no tracking. Your documents and settings stay on your Mac.</p></div>
 
-<h2>What stays on your Mac</h2>
+<h2 id="on-your-mac">What stays on your Mac</h2>
 <ul>
   <li><strong>Your documents.</strong> MarsDawn reads and writes only the files and folders you open, save or choose. They are never uploaded anywhere by the app.</li>
   <li><strong>Your settings.</strong> Appearance, preview theme, window layout and the image preference are stored in the app's own preferences on your Mac.</li>
   <li><strong>Folder access you grant.</strong> When you let MarsDawn show images or page files from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. A folder you open in the sidebar stays readable and writable by MarsDawn until you remove it in Settings, not just while its window is open. You can remove folders at any time in MarsDawn › Settings.</li>
 </ul>
 
-<h2>When MarsDawn uses the internet</h2>
+<h2 id="internet">When MarsDawn uses the internet</h2>
 <p>MarsDawn works fully offline. It connects to the internet only <strong>when you choose to</strong>, for a document that refers to the web:</p>
 <ul>
   <li><strong>Markdown documents.</strong> Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings. Nothing else a Markdown document refers to is loaded from the web.</li>
@@ -224,7 +244,7 @@ PAGES = {
 <h2>Exporting and printing</h2>
 <p>PDF export and printing happen on your Mac. The PDF is saved where you choose. Printing goes through macOS to the printer you pick.</p>
 
-<h2>The marsdawn command-line tool</h2>
+<h2 id="cli">The marsdawn command-line tool</h2>
 <p>The optional <code>marsdawn</code> command-line tool, distributed separately, also runs entirely on your Mac. It reads the Markdown file you name and writes the PDF you ask for. It loads web images only when you pass <code>--allow-remote-images</code>.</p>
 
 <h2>Children</h2>
@@ -252,14 +272,14 @@ PAGES = {
 
 <div class="summary"><p><strong>MarsDawn 不收集任何關於你的資料。</strong>沒有帳號、沒有分析、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。</p></div>
 
-<h2>留在你 Mac 上的東西</h2>
+<h2 id="on-your-mac">留在你 Mac 上的東西</h2>
 <ul>
   <li><strong>你的文件。</strong>MarsDawn 只讀寫你打開、儲存或選擇的檔案與資料夾，App 不會把它們上傳到任何地方。</li>
   <li><strong>你的設定。</strong>外觀、預覽主題、視窗版面和圖片偏好，都存在 App 自己的偏好設定裡。</li>
   <li><strong>你授權的資料夾。</strong>當你讓 MarsDawn 顯示某個資料夾裡的圖片或網頁檔案，或選擇筆記資料夾時，App 會保存 macOS 書籤，以便之後再次開啟。你在側邊欄開啟的資料夾，MarsDawn 會保持可讀寫，直到你在設定中移除為止，而不只是在那個視窗開著的時候。你隨時可以到 MarsDawn › 設定⋯ 移除。</li>
 </ul>
 
-<h2>MarsDawn 什麼時候會連上網路</h2>
+<h2 id="internet">MarsDawn 什麼時候會連上網路</h2>
 <p>MarsDawn 可以完全離線使用，只有在<strong>你自己選擇時</strong>，才會為引用網路內容的文件連網：</p>
 <ul>
   <li><strong>Markdown 文件。</strong>網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。</li>
@@ -275,7 +295,7 @@ PAGES = {
 <h2>輸出 PDF 和列印</h2>
 <p>輸出 PDF 和列印都在你的 Mac 上完成。PDF 存在你選擇的位置，列印則透過 macOS 送到你選的印表機。</p>
 
-<h2>marsdawn 命令列工具</h2>
+<h2 id="cli">marsdawn 命令列工具</h2>
 <p>另外發佈、可自由選用的 <code>marsdawn</code> 命令列工具，同樣完全在你的 Mac 上執行：只讀取你指定的 Markdown 檔，並寫出你要求的 PDF。只有在加上 <code>--allow-remote-images</code> 時才會載入網路圖片。</p>
 
 <h2>兒童</h2>
@@ -1329,8 +1349,8 @@ FIGURES = {
             "zh-hant": "MarsDawn 以 Classic 主題顯示文件，預覽佔滿整個視窗。",
         },
         "callouts": [
-            (16.53, 7.0, "l", {"en": "A file on your Mac, saved where you choose.", "zh-hant": "你 Mac 上的一個檔案，存在你選的地方。"}),
-            (88.89, 5.56, "r", {"en": "The whole toolbar is themes and layouts; there is nothing to sign in to.", "zh-hant": "整條工具列只有主題和版面，沒有任何需要登入的地方。"}),
+            (20.14, 9.56, "l", {"en": "The window title is the file's name: a plain .md file on your Mac.", "zh-hant": "視窗標題就是檔名：你 Mac 上一個普通的 .md 檔。"}),
+            (85.97, 9.56, "r", {"en": "The toolbar holds themes and layouts. There's no account button and no sign-in.", "zh-hant": "工具列只有主題和版面，沒有帳號按鈕，也不用登入。"}),
         ],
     },
     "pay-once": {
@@ -1397,19 +1417,28 @@ TRAIT_PAGES = {
         """
 <section class="intro">
   <h1>Your writing stays on your Mac.</h1>
-  <p>MarsDawn has no account, no sync and no cloud. It opens a file, you write, and it saves the file where you chose.</p>
+  <p>MarsDawn has no account, no sync and no cloud. It opens a file, you write, and it saves the file where you choose.</p>
 </section>
 """,
-        """
-<h2>What that means</h2>
+        f"""
+<div class="summary"><p><strong>MarsDawn does not collect any data about you.</strong> The app never uploads your documents, and its developer receives nothing when your Mac loads something from the web.</p></div>
+<h2>No account, no cloud, no tracking</h2>
 <ul>
-  <li>There is no account to sign up for or sign in to.</li>
-  <li>Nothing syncs to a cloud. Your documents stay where you save them.</li>
-  <li>Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".</li>
-  <li>Web images stay blocked until you choose to load them, so opening a document never tells a server you read it. When you do load them, they load over https only.</li>
-  <li>Local images show in the preview once you grant access to their folder.</li>
+  <li><strong>No account.</strong> There is nothing to sign up for or sign in to.</li>
+  <li><strong>No sync.</strong> Your documents stay where you save them, so to use one on another Mac, keep it in a folder you already sync. More in <a href="/limits/">what MarsDawn doesn't do</a>.</li>
+  <li><strong>No analytics, advertising or tracking.</strong> Its App Store privacy label will say "Data Not Collected".</li>
+  <li><strong>Only what you open.</strong> MarsDawn reads the files and folders you open or choose. A folder you open in the sidebar stays readable and writable until you remove it in MarsDawn › Settings. See <a href="/privacy/#on-your-mac">what stays on your Mac</a>.</li>
 </ul>
-<p>The details are in the <a href="/privacy/">privacy policy</a>.</p>
+<h2>The only times it goes online</h2>
+<p>MarsDawn works fully offline. It connects only when you choose to:</p>
+<ul>
+  <li><strong>Web images in Markdown</strong> load when you click <em>Load Images</em>, or always if you turn on <em>Load remote images automatically</em> in Settings. Until then, opening a document tells no server you read it. When they load, your Mac asks the hosting server directly, so that server sees your IP address; MarsDawn's developer receives none of it.</li>
+  <li><strong>HTML documents</strong> open static: nothing loads and their code doesn't run unless you choose <em>View › Run This Document</em> for that one document. While it runs, that document can send data over the network. The choice is never remembered.</li>
+  <li><strong>Links</strong> you click open in your default browser, under its own privacy practices.</li>
+  <li><strong>The free <a href="/cli/">marsdawn CLI</a></strong> runs entirely on your Mac and loads web images only when you pass <code>--allow-remote-images</code>.</li>
+</ul>
+<p>Web content loads over https only: a plain http address is never loaded, in any setting. Siri dictation and App Store purchases are handled by Apple, under Apple's terms.</p>
+<p>Every detail is in the <a href="/privacy/#internet">privacy policy</a>. Questions about privacy: <a href="mailto:{EMAIL}">{EMAIL}</a></p>
 """,
     ),
     ("zh-hant", "yours"): _trait_page(
@@ -1421,16 +1450,25 @@ TRAIT_PAGES = {
   <p>MarsDawn 不需要帳號，沒有同步，也沒有雲端。它打開檔案、讓你寫，再存回你選的位置。</p>
 </section>
 """,
-        """
-<h2>這代表什麼</h2>
+        f"""
+<div class="summary"><p><strong>MarsDawn 不收集任何關於你的資料。</strong>App 從不上傳你的文件；你的 Mac 從網路載入內容時，開發者也收不到任何資訊。</p></div>
+<h2>沒有帳號、沒有雲端、不追蹤</h2>
 <ul>
-  <li>不需要帳號，不用註冊，也不用登入。</li>
-  <li>不會同步到雲端，文件存在哪裡就留在哪裡。</li>
-  <li>不追蹤任何行為。MarsDawn 不收集任何關於你的資料，App Store 隱私權標示為「未收集資料」。</li>
-  <li>網路圖片在你選擇載入之前一律不載入，打開文件不會讓任何伺服器知道你讀了它。選擇載入時，也只走 https。</li>
-  <li>本機圖片在你授權資料夾存取後，就會顯示在預覽中。</li>
+  <li><strong>沒有帳號。</strong>不用註冊，也不用登入。</li>
+  <li><strong>沒有同步。</strong>文件存在哪裡就留在哪裡；想在另一台 Mac 上用，就放在你本來就會同步的資料夾。詳見 <a href="/zh-hant/limits/">MarsDawn 做不到的事</a>。</li>
+  <li><strong>沒有分析、廣告或追蹤。</strong>App Store 隱私權標示將會是「未收集資料」。</li>
+  <li><strong>只讀你打開的東西。</strong>MarsDawn 只讀取你打開或選擇的檔案與資料夾。在側邊欄打開的資料夾，會一直可以讀寫，直到你到 MarsDawn › 設定⋯ 移除。詳見<a href="/zh-hant/privacy/#on-your-mac">留在你 Mac 上的東西</a>。</li>
 </ul>
-<p>完整說明請看<a href="/zh-hant/privacy/">隱私權政策</a>。</p>
+<h2>它只在這些時候連網</h2>
+<p>MarsDawn 可以完全離線使用，只有在你自己選擇時才會連網：</p>
+<ul>
+  <li><strong>Markdown 裡的網路圖片</strong>：按下「載入圖片」時才載入；在設定中開啟「自動載入網路圖片」則一律載入。在那之前，打開文件不會讓任何伺服器知道你讀了它。載入時，你的 Mac 直接向存放圖片的伺服器發出請求，那台伺服器會看到你的 IP 位址；MarsDawn 的開發者收不到任何這類資訊。</li>
+  <li><strong>HTML 文件</strong>開啟時是靜態的：不載入任何東西，程式碼也不執行，除非你針對這份文件選擇「顯示方式 › 執行這份文件」。執行期間，這份文件可以透過網路傳送資料。這個選擇不會被記住。</li>
+  <li><strong>連結</strong>會用你的預設瀏覽器打開，適用該瀏覽器的隱私做法。</li>
+  <li><strong>免費的 <a href="/zh-hant/cli/">marsdawn CLI</a></strong> 完全在你的 Mac 上執行，只有加上 <code>--allow-remote-images</code> 時才會載入網路圖片。</li>
+</ul>
+<p>網路內容只走 https：http 位址一律不會載入，任何設定都無法開啟。對 Siri 說的話與 App Store 購買，由 Apple 依其條款處理。</p>
+<p>完整說明請看<a href="/zh-hant/privacy/#internet">隱私權政策</a>。隱私相關問題：<a href="mailto:{EMAIL}">{EMAIL}</a></p>
 """,
     ),
     ("en", "pay-once"): _trait_page(
@@ -1644,13 +1682,15 @@ FIGURE_LIST_LABEL = {"en": "In this screenshot", "zh-hant": "這張截圖裡"}
 
 
 def trait_nav_html(locale: str, current: str) -> str:
-    items = "\n".join(
-        f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a>'
-        f'<span>{TRAIT_LINK[locale][slug][1]}</span></li>'
-        for slug in TRAIT_ORDER
-        if slug != current
-    )
-    return f'<nav class="traits" aria-label="{TRAIT_NAV_HEADING[locale]}">\n<h2>{TRAIT_NAV_HEADING[locale]}</h2>\n<ul>\n{items}\n</ul>\n</nav>'
+    # The whole set on every page, with the current one marked rather than
+    # dropped, so a reader can see where they are among the five.
+    def item(slug: str) -> str:
+        name, blurb = TRAIT_LINK[locale][slug]
+        if slug == current:
+            return f'  <li aria-current="page"><strong>{name}</strong><span>{blurb}</span></li>'
+        return f'  <li><a href="{page_path(locale, slug)}">{name}</a><span>{blurb}</span></li>'
+    items = "\n".join(item(slug) for slug in TRAIT_ORDER)
+    return f'<nav class="traits" aria-labelledby="traits-heading">\n<h2 id="traits-heading">{TRAIT_NAV_HEADING[locale]}</h2>\n<ul role="list">\n{items}\n</ul>\n</nav>'
 
 
 def figure_html(locale: str, slug: str) -> str:
@@ -1666,7 +1706,7 @@ def figure_html(locale: str, slug: str) -> str:
     legend = []
     for index, (_, y, side, label) in enumerate(fig["callouts"], start=1):
         cls = f"co-{slug}-{index}"
-        edge = " tb" if y < 9 else ""
+        edge = " tb" if y < 10 else ""
         markers.append(f'<span class="marker {side}{edge} {cls}" aria-hidden="true">{index}</span>')
         lines.append(f'<span class="leader {side} {cls}" aria-hidden="true"><span>{label[locale]}</span></span>')
         legend.append(f"<li>{label[locale]}</li>")
@@ -1716,11 +1756,19 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
     page = pages[(locale, slug)]
     if "intro" not in page:
         return html_to_markdown(page["body"])
+    intro = page["intro"]
+    closing = []
+    if slug == "index":
+        # The kicker is a visual label for the scene; alone above the H1 in
+        # Markdown it reads as a stray line. The closing band carries the
+        # availability line, so the twin keeps it.
+        intro = re.sub(r'\s*<p class="kicker">.*?</p>', "", intro)
+        closing = [f'**{UI[locale]["tagline"]}** {UI[locale]["footer_store"]}']
     return "\n\n".join([
-        html_to_markdown(page["intro"]).rstrip(),
+        html_to_markdown(intro).rstrip(),
         figure_markdown(locale, slug),
         html_to_markdown(page["body"]).rstrip(),
-    ])
+    ] + closing)
 
 PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill"]
 SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
@@ -1824,6 +1872,8 @@ def _render_inline(children) -> str:
             href = child.attrs.get("href", "")
             label = _render_inline(child.children).strip()
             parts.append(f"[{label}]({href})")
+        elif tag == "span":
+            parts.append(_render_inline(child.children))
         elif tag == "img":
             parts.append(f"![{child.attrs.get('alt', '')}]({child.attrs.get('src', '')})")
         else:
@@ -1907,7 +1957,7 @@ def render(locale: str, slug: str, page: dict) -> str:
     lang = LOCALES[locale]["html_lang"]
     switch = " · ".join(
         f'<a href="{page_path(other, slug)}" hreflang="{LOCALES[other]["html_lang"]}"'
-        + (' aria-current="true"' if other == locale else "")
+        + (' aria-current="page"' if other == locale else "")
         + f' lang="{LOCALES[other]["html_lang"]}">{LOCALES[other]["label"]}</a>'
         for other in LOCALES
     )
@@ -1935,14 +1985,13 @@ def render(locale: str, slug: str, page: dict) -> str:
             "description": page["description"],
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "macOS 26 or later",
-            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
             "url": canonical_url,
         }
         jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
     has_intro = "intro" in page
     is_trait_page = slug in TRAIT_ORDER
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
-    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
+    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page or slug == "index" else ""
     if slug == "index":
         hero_html = (
             '<section class="hero-scene">\n'
@@ -1956,6 +2005,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         closing_html = (
             '<section class="dawn-close">\n'
             f'<p><strong>{ui["tagline"]}</strong> {ui["footer_store"]}</p>\n'
+            f'<p class="close-cli">{ui["close_cli"]}</p>\n'
             "</section>"
         )
         main_html = "\n".join([hero_html, page["body"].strip(), trait_nav_html(locale, ""), closing_html])
@@ -1967,6 +2017,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         f'  <a href="{page_path(locale, "support")}">{ui["support"]}</a>\n'
         f'  <a href="{page_path(locale, "privacy")}">{ui["privacy"]}</a>\n'
         f'  <a href="{page_path(locale, "cli")}">{ui["cli"]}</a>\n'
+        f'  <a href="{md_path(locale, slug)}" type="text/markdown">{ui["markdown"]}</a>\n'
     )
     if slug == "index":
         footer_html = f'<footer class="footer footer-home">\n{footer_links}</footer>'
@@ -1989,6 +2040,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 {seo}
 {jsonld}</head>
 <body>
+<a class="skip" href="#main">{ui["skip"]}</a>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="{LOCALES[locale]["root"]}">
@@ -1997,7 +2049,7 @@ def render(locale: str, slug: str, page: dict) -> str:
   </a>
   {chip}<nav class="lang" aria-label="Language">{switch}</nav>
 </header>
-<main>
+<main id="main">
 {main_html}
 </main>
 {footer_html}
@@ -2195,6 +2247,64 @@ def build_llms_full(pages: dict) -> str:
     return "# MarsDawn — full content\n\n" + "\n---\n\n".join(sections)
 
 
+# The page Cloudflare serves for any unknown path (wrangler.jsonc:
+# not_found_handling). One page for both languages, since the path that
+# missed says nothing reliable about the reader's language.
+def build_404() -> str:
+    en, zh = UI["en"], UI["zh-hant"]
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found · MarsDawn</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">{en["skip"]}</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>This page isn't here.</h1>
+  <p>The link may be old, or the address mistyped. Try one of these:</p>
+</section>
+<ul class="lost">
+  <li><a href="/">MarsDawn home</a></li>
+  <li><a href="/cli/">{en["cli"]}</a></li>
+  <li><a href="/support/">{en["support"]}</a></li>
+</ul>
+<section class="intro" lang="zh-Hant">
+  <h2>找不到這個頁面。</h2>
+  <p>連結可能已經過期，或網址打錯了。可以從這裡繼續：</p>
+</section>
+<ul class="lost" lang="zh-Hant">
+  <li><a href="/zh-hant/">MarsDawn 首頁</a></li>
+  <li><a href="/zh-hant/cli/">{zh["cli"]}</a></li>
+  <li><a href="/zh-hant/support/">{zh["support"]}</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <span>{en["tagline"]}</span>
+  <a href="/support/">{en["support"]}</a>
+  <a href="/privacy/">{en["privacy"]}</a>
+  <a href="/cli/">{en["cli"]}</a>
+  <span>{en["footer_store"]}</span>
+</footer>
+</div>
+</body>
+</html>
+"""
+
+
 def main() -> None:
     pages = all_pages()
     for (locale, slug), page in pages.items():
@@ -2205,6 +2315,8 @@ def main() -> None:
         (folder / "index.md").write_text(build_twin(pages, locale, slug), encoding="utf-8")
         print(folder / "index.md")
 
+    (SITE / "404.html").write_text(build_404(), encoding="utf-8")
+    print(SITE / "404.html")
     (SITE / "llms.txt").write_text(build_llms_txt(pages), encoding="utf-8")
     print(SITE / "llms.txt")
     (SITE / "llms-full.txt").write_text(build_llms_full(pages), encoding="utf-8")

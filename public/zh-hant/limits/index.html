@@ -23,6 +23,7 @@
 <meta name="twitter:card" content="summary">
 </head>
 <body>
+<a class="skip" href="#main">跳到主要內容</a>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/zh-hant/">
@@ -30,9 +31,9 @@
     <strong>MarsDawn</strong>
   </a>
   <span class="store-chip">即將在 Mac App Store 上架</span>
-  <nav class="lang" aria-label="Language"><a href="/limits/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/limits/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></nav>
+  <nav class="lang" aria-label="Language"><a href="/limits/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/limits/" hreflang="zh-Hant" aria-current="page" lang="zh-Hant">繁體中文</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>MarsDawn 做不到的事。</h1>
   <p>有些功能是刻意不做的。如果你需要其中一項，現在知道總比買了之後才發現好。</p>
@@ -61,13 +62,14 @@
   <li><strong>試用結束後：</strong>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</li>
   <li><strong>系統：</strong>MarsDawn 需要 macOS 26 以上。</li>
 </ul>
-<nav class="traits" aria-label="MarsDawn 是什麼樣的 app">
-<h2>MarsDawn 是什麼樣的 app</h2>
-<ul>
+<nav class="traits" aria-labelledby="traits-heading">
+<h2 id="traits-heading">MarsDawn 是什麼樣的 app</h2>
+<ul role="list">
   <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a><span>不需要帳號，沒有同步，也沒有雲端。</span></li>
   <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a><span>免費試用 14 天，之後 USD 4.99 買一次，沒有訂閱。</span></li>
   <li><a href="/zh-hant/pdf/">輸出 PDF</a><span>圖表、程式碼上色、經過安排的分頁。</span></li>
   <li><a href="/zh-hant/native/">為 Mac 而做</a><span>原生視窗、分頁、自動儲存、快速查看。</span></li>
+  <li aria-current="page"><strong>MarsDawn 做不到的事</strong><span>購買前先知道。</span></li>
 </ul>
 </nav>
 </main>
@@ -76,6 +78,7 @@
   <a href="/zh-hant/support/">支援</a>
   <a href="/zh-hant/privacy/">隱私權政策</a>
   <a href="/zh-hant/cli/">命令列工具</a>
+  <a href="/zh-hant/limits/index.md" type="text/markdown">本頁的 Markdown 版本</a>
   <span>MarsDawn 即將在 Mac App Store 上架。</span>
 </footer>
 </div>

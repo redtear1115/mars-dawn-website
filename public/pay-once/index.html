@@ -23,6 +23,7 @@
 <meta name="twitter:card" content="summary">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/">
@@ -30,9 +31,9 @@
     <strong>MarsDawn</strong>
   </a>
   <span class="store-chip">Coming soon to the Mac App Store</span>
-  <nav class="lang" aria-label="Language"><a href="/pay-once/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/pay-once/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
+  <nav class="lang" aria-label="Language"><a href="/pay-once/" hreflang="en" aria-current="page" lang="en">English</a> · <a href="/zh-hant/pay-once/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Try all of it. Then pay once.</h1>
   <p>MarsDawn is a free download. Start the 14-day trial and every feature works; to keep using it after that, one purchase of USD 4.99 unlocks it. There is no subscription and no account.</p>
@@ -63,10 +64,11 @@
   <li>The free <a href="/cli/"><code>marsdawn</code> command-line tool</a> keeps exporting them to PDF, trial or not.</li>
   <li>If a document is open in MarsDawn when the trial ends, the text you typed isn't lost: use File ▸ Save As… to keep it.</li>
 </ul>
-<nav class="traits" aria-label="What to expect from MarsDawn">
-<h2>What to expect from MarsDawn</h2>
-<ul>
+<nav class="traits" aria-labelledby="traits-heading">
+<h2 id="traits-heading">What to expect from MarsDawn</h2>
+<ul role="list">
   <li><a href="/yours/">Your writing stays on your Mac</a><span>No account, no sync, no cloud.</span></li>
+  <li aria-current="page"><strong>Try free, pay once</strong><span>Free for 14 days, then USD 4.99 once. No subscription.</span></li>
   <li><a href="/pdf/">PDF export</a><span>Diagrams, highlighted code, careful page breaks.</span></li>
   <li><a href="/native/">A Mac app</a><span>Native windows, tabs, autosave, Quick Look.</span></li>
   <li><a href="/limits/">What MarsDawn doesn't do</a><span>Know before you buy.</span></li>
@@ -78,6 +80,7 @@
   <a href="/support/">Support</a>
   <a href="/privacy/">Privacy Policy</a>
   <a href="/cli/">Command Line</a>
+  <a href="/pay-once/index.md" type="text/markdown">This page in Markdown</a>
   <span>MarsDawn is coming soon to the Mac App Store.</span>
 </footer>
 </div>

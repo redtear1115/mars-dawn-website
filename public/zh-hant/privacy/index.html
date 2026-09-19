@@ -22,15 +22,16 @@
 <meta name="twitter:card" content="summary">
 </head>
 <body>
+<a class="skip" href="#main">跳到主要內容</a>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/zh-hant/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <nav class="lang" aria-label="Language"><a href="/privacy/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/privacy/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></nav>
+  <nav class="lang" aria-label="Language"><a href="/privacy/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/privacy/" hreflang="zh-Hant" aria-current="page" lang="zh-Hant">繁體中文</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>隱私權政策</h1>
   <p>macOS 的 Markdown 編輯器 MarsDawn 如何處理你的資訊。</p>
@@ -39,14 +40,14 @@
 
 <div class="summary"><p><strong>MarsDawn 不收集任何關於你的資料。</strong>沒有帳號、沒有分析、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。</p></div>
 
-<h2>留在你 Mac 上的東西</h2>
+<h2 id="on-your-mac">留在你 Mac 上的東西</h2>
 <ul>
   <li><strong>你的文件。</strong>MarsDawn 只讀寫你打開、儲存或選擇的檔案與資料夾，App 不會把它們上傳到任何地方。</li>
   <li><strong>你的設定。</strong>外觀、預覽主題、視窗版面和圖片偏好，都存在 App 自己的偏好設定裡。</li>
   <li><strong>你授權的資料夾。</strong>當你讓 MarsDawn 顯示某個資料夾裡的圖片或網頁檔案，或選擇筆記資料夾時，App 會保存 macOS 書籤，以便之後再次開啟。你在側邊欄開啟的資料夾，MarsDawn 會保持可讀寫，直到你在設定中移除為止，而不只是在那個視窗開著的時候。你隨時可以到 MarsDawn › 設定⋯ 移除。</li>
 </ul>
 
-<h2>MarsDawn 什麼時候會連上網路</h2>
+<h2 id="internet">MarsDawn 什麼時候會連上網路</h2>
 <p>MarsDawn 可以完全離線使用，只有在<strong>你自己選擇時</strong>，才會為引用網路內容的文件連網：</p>
 <ul>
   <li><strong>Markdown 文件。</strong>網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。</li>
@@ -62,7 +63,7 @@
 <h2>輸出 PDF 和列印</h2>
 <p>輸出 PDF 和列印都在你的 Mac 上完成。PDF 存在你選擇的位置，列印則透過 macOS 送到你選的印表機。</p>
 
-<h2>marsdawn 命令列工具</h2>
+<h2 id="cli">marsdawn 命令列工具</h2>
 <p>另外發佈、可自由選用的 <code>marsdawn</code> 命令列工具，同樣完全在你的 Mac 上執行：只讀取你指定的 Markdown 檔，並寫出你要求的 PDF。只有在加上 <code>--allow-remote-images</code> 時才會載入網路圖片。</p>
 
 <h2>兒童</h2>
@@ -82,6 +83,7 @@
   <a href="/zh-hant/support/">支援</a>
   <a href="/zh-hant/privacy/">隱私權政策</a>
   <a href="/zh-hant/cli/">命令列工具</a>
+  <a href="/zh-hant/privacy/index.md" type="text/markdown">本頁的 Markdown 版本</a>
   <span>MarsDawn 即將在 Mac App Store 上架。</span>
 </footer>
 </div>

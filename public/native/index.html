@@ -23,6 +23,7 @@
 <meta name="twitter:card" content="summary">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/">
@@ -30,9 +31,9 @@
     <strong>MarsDawn</strong>
   </a>
   <span class="store-chip">Coming soon to the Mac App Store</span>
-  <nav class="lang" aria-label="Language"><a href="/native/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/native/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
+  <nav class="lang" aria-label="Language"><a href="/native/" hreflang="en" aria-current="page" lang="en">English</a> · <a href="/zh-hant/native/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Built out of the Mac's own parts.</h1>
   <p>The windows, tabs, menus and text editor are the Mac's own. The rendered page is drawn by WebKit, the engine behind Safari.</p>
@@ -58,12 +59,13 @@
   <li>Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.</li>
   <li>English and Traditional Chinese.</li>
 </ul>
-<nav class="traits" aria-label="What to expect from MarsDawn">
-<h2>What to expect from MarsDawn</h2>
-<ul>
+<nav class="traits" aria-labelledby="traits-heading">
+<h2 id="traits-heading">What to expect from MarsDawn</h2>
+<ul role="list">
   <li><a href="/yours/">Your writing stays on your Mac</a><span>No account, no sync, no cloud.</span></li>
   <li><a href="/pay-once/">Try free, pay once</a><span>Free for 14 days, then USD 4.99 once. No subscription.</span></li>
   <li><a href="/pdf/">PDF export</a><span>Diagrams, highlighted code, careful page breaks.</span></li>
+  <li aria-current="page"><strong>A Mac app</strong><span>Native windows, tabs, autosave, Quick Look.</span></li>
   <li><a href="/limits/">What MarsDawn doesn't do</a><span>Know before you buy.</span></li>
 </ul>
 </nav>
@@ -73,6 +75,7 @@
   <a href="/support/">Support</a>
   <a href="/privacy/">Privacy Policy</a>
   <a href="/cli/">Command Line</a>
+  <a href="/native/index.md" type="text/markdown">This page in Markdown</a>
   <span>MarsDawn is coming soon to the Mac App Store.</span>
 </footer>
 </div>

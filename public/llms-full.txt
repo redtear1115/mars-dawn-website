@@ -4,21 +4,39 @@
 
 Source: https://marsdawn.southern-light.dev/
 
-Built for the AI workflow
-
 # Where an agent's Markdown gets a careful read.
 
 An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.
+
+Coming soon to the Mac App Store · Free 14-day trial, then USD 4.99 once · macOS 26 or later · [The free marsdawn CLI works today](/cli/)
 
 ![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
 
 ## The loop
 
-1. **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
-2. **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
-3. **The agent revises.** Ask for changes. Open the revised file and read it the same way.
+1. **The agent writes.** Claude Code, Cursor or your writing assistant drafts the Markdown: a README, a spec, a design note.
+2. **You review in MarsDawn.** The agent runs `marsdawn open SPEC.md`, or you open the file yourself. Diagrams, math and code render next to the source.
+3. **The agent revises.** Tell it what to change, then read the new version the same way.
 
-Agents can drive MarsDawn directly: the free [marsdawn](/cli/) command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See [marsdawn for agents](/cli/agents/) for the details.
+## Try the agent side today
+
+The [marsdawn CLI](/cli/) is free, and exporting needs no app. Install it, and your agent can turn its Markdown into a PDF and learn, from one line of JSON, whether every Mermaid diagram rendered.
+
+```
+brew tap redtear1115/tap
+brew install marsdawn
+marsdawn export SPEC.md --json
+```
+
+It answers with one line:
+
+```
+{"diagramErrors":[],"ok":true,"output":"/path/to/SPEC.pdf","pages":3,"paper":"a4","theme":"dawn"}
+```
+
+Every flag, exit code and JSON schema is in [marsdawn for agents](/cli/agents/).
+
+**Read what your agent wrote.** MarsDawn is coming soon to the Mac App Store.
 ---
 
 ## Your writing stays on your Mac
@@ -27,24 +45,36 @@ Source: https://marsdawn.southern-light.dev/yours/
 
 # Your writing stays on your Mac.
 
-MarsDawn has no account, no sync and no cloud. It opens a file, you write, and it saves the file where you chose.
+MarsDawn has no account, no sync and no cloud. It opens a file, you write, and it saves the file where you choose.
 
 ![MarsDawn showing a document in the Classic theme, with the preview filling the window.](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
 
 In this screenshot:
 
-1. A file on your Mac, saved where you choose.
-2. The whole toolbar is themes and layouts; there is nothing to sign in to.
+1. The window title is the file's name: a plain .md file on your Mac.
+2. The toolbar holds themes and layouts. There's no account button and no sign-in.
 
-## What that means
+**MarsDawn does not collect any data about you.** The app never uploads your documents, and its developer receives nothing when your Mac loads something from the web.
 
-- There is no account to sign up for or sign in to.
-- Nothing syncs to a cloud. Your documents stay where you save them.
-- Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".
-- Web images stay blocked until you choose to load them, so opening a document never tells a server you read it. When you do load them, they load over https only.
-- Local images show in the preview once you grant access to their folder.
+## No account, no cloud, no tracking
 
-The details are in the [privacy policy](/privacy/).
+- **No account.** There is nothing to sign up for or sign in to.
+- **No sync.** Your documents stay where you save them, so to use one on another Mac, keep it in a folder you already sync. More in [what MarsDawn doesn't do](/limits/).
+- **No analytics, advertising or tracking.** Its App Store privacy label will say "Data Not Collected".
+- **Only what you open.** MarsDawn reads the files and folders you open or choose. A folder you open in the sidebar stays readable and writable until you remove it in MarsDawn › Settings. See [what stays on your Mac](/privacy/#on-your-mac).
+
+## The only times it goes online
+
+MarsDawn works fully offline. It connects only when you choose to:
+
+- **Web images in Markdown** load when you click *Load Images*, or always if you turn on *Load remote images automatically* in Settings. Until then, opening a document tells no server you read it. When they load, your Mac asks the hosting server directly, so that server sees your IP address; MarsDawn's developer receives none of it.
+- **HTML documents** open static: nothing loads and their code doesn't run unless you choose *View › Run This Document* for that one document. While it runs, that document can send data over the network. The choice is never remembered.
+- **Links** you click open in your default browser, under its own privacy practices.
+- **The free [marsdawn CLI](/cli/)** runs entirely on your Mac and loads web images only when you pass `--allow-remote-images`.
+
+Web content loads over https only: a plain http address is never loaded, in any setting. Siri dictation and App Store purchases are handled by Apple, under Apple's terms.
+
+Every detail is in the [privacy policy](/privacy/#internet). Questions about privacy: [support@southern-light.dev](mailto:support@southern-light.dev)
 ---
 
 ## Try free, pay once
@@ -718,21 +748,39 @@ The whole contract, every field and every code, is in [marsdawn for agents](/cli
 
 Source: https://marsdawn.southern-light.dev/zh-hant/
 
-為 AI 工作流程而生
-
 # 讓 agent 寫的 Markdown，被好好讀過一遍。
 
 AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面並排顯示，再把修改意見交回去。
+
+即將在 Mac App Store 上架 · 免費試用 14 天，之後 USD 4.99 買一次 · 需要 macOS 26 以上 · [免費的 marsdawn CLI 現在就能用](/zh-hant/cli/)
 
 ![MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
 
 ## 整個循環
 
-1. **Agent 動筆。**你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。
-2. **你在 MarsDawn 裡讀。**打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。
-3. **Agent 修改。**提出修改意見，agent 改好之後，再打開來讀一次。
+1. **Agent 動筆。**Claude Code、Cursor 或你的寫作助手先寫出 Markdown：README、規格文件，或一份設計筆記。
+2. **你在 MarsDawn 裡讀。**Agent 執行 `marsdawn open SPEC.md`，或你自己打開檔案。圖表、數學式和程式碼都排好，旁邊就是原始碼。
+3. **Agent 修改。**告訴它要改哪裡，改好之後，用同樣的方式再讀一次。
 
-Agent 也能直接操作 MarsDawn：免費的 [marsdawn](/zh-hant/cli/) 命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+## 先試 agent 這一端
+
+[marsdawn CLI](/zh-hant/cli/) 免費，輸出 PDF 不需要 app。裝好之後，你的 agent 就能把它寫的 Markdown 轉成 PDF，並從一行 JSON 得知每張 Mermaid 圖表是否都畫出來了。
+
+```
+brew tap redtear1115/tap
+brew install marsdawn
+marsdawn export SPEC.md --json
+```
+
+它只回一行：
+
+```
+{"diagramErrors":[],"ok":true,"output":"/path/to/SPEC.pdf","pages":3,"paper":"a4","theme":"dawn"}
+```
+
+所有選項、結束代碼和 JSON schema，都在[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+
+**讀 agent 寫的 Markdown。** MarsDawn 即將在 Mac App Store 上架。
 ---
 
 ## 你寫的內容留在你的 Mac 上
@@ -747,18 +795,30 @@ MarsDawn 不需要帳號，沒有同步，也沒有雲端。它打開檔案、�
 
 這張截圖裡：
 
-1. 你 Mac 上的一個檔案，存在你選的地方。
-2. 整條工具列只有主題和版面，沒有任何需要登入的地方。
+1. 視窗標題就是檔名：你 Mac 上一個普通的 .md 檔。
+2. 工具列只有主題和版面，沒有帳號按鈕，也不用登入。
 
-## 這代表什麼
+**MarsDawn 不收集任何關於你的資料。**App 從不上傳你的文件；你的 Mac 從網路載入內容時，開發者也收不到任何資訊。
 
-- 不需要帳號，不用註冊，也不用登入。
-- 不會同步到雲端，文件存在哪裡就留在哪裡。
-- 不追蹤任何行為。MarsDawn 不收集任何關於你的資料，App Store 隱私權標示為「未收集資料」。
-- 網路圖片在你選擇載入之前一律不載入，打開文件不會讓任何伺服器知道你讀了它。選擇載入時，也只走 https。
-- 本機圖片在你授權資料夾存取後，就會顯示在預覽中。
+## 沒有帳號、沒有雲端、不追蹤
 
-完整說明請看[隱私權政策](/zh-hant/privacy/)。
+- **沒有帳號。**不用註冊，也不用登入。
+- **沒有同步。**文件存在哪裡就留在哪裡；想在另一台 Mac 上用，就放在你本來就會同步的資料夾。詳見 [MarsDawn 做不到的事](/zh-hant/limits/)。
+- **沒有分析、廣告或追蹤。**App Store 隱私權標示將會是「未收集資料」。
+- **只讀你打開的東西。**MarsDawn 只讀取你打開或選擇的檔案與資料夾。在側邊欄打開的資料夾，會一直可以讀寫，直到你到 MarsDawn › 設定⋯ 移除。詳見[留在你 Mac 上的東西](/zh-hant/privacy/#on-your-mac)。
+
+## 它只在這些時候連網
+
+MarsDawn 可以完全離線使用，只有在你自己選擇時才會連網：
+
+- **Markdown 裡的網路圖片**：按下「載入圖片」時才載入；在設定中開啟「自動載入網路圖片」則一律載入。在那之前，打開文件不會讓任何伺服器知道你讀了它。載入時，你的 Mac 直接向存放圖片的伺服器發出請求，那台伺服器會看到你的 IP 位址；MarsDawn 的開發者收不到任何這類資訊。
+- **HTML 文件**開啟時是靜態的：不載入任何東西，程式碼也不執行，除非你針對這份文件選擇「顯示方式 › 執行這份文件」。執行期間，這份文件可以透過網路傳送資料。這個選擇不會被記住。
+- **連結**會用你的預設瀏覽器打開，適用該瀏覽器的隱私做法。
+- **免費的 [marsdawn CLI](/zh-hant/cli/)** 完全在你的 Mac 上執行，只有加上 `--allow-remote-images` 時才會載入網路圖片。
+
+網路內容只走 https：http 位址一律不會載入，任何設定都無法開啟。對 Siri 說的話與 App Store 購買，由 Apple 依其條款處理。
+
+完整說明請看[隱私權政策](/zh-hant/privacy/#internet)。隱私相關問題：[support@southern-light.dev](mailto:support@southern-light.dev)
 ---
 
 ## 免費試用，買一次就好

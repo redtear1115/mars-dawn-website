@@ -54,6 +54,19 @@ a:focus-visible {
   border-radius: 3px;
 }
 
+/* Off screen until a keyboard reaches it; then it sits over the masthead. */
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -200px;
+  z-index: 10;
+  padding: 6px 12px;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+}
+.skip:focus { top: 12px; }
+
 .page {
   max-width: 44rem;
   margin: 0 auto;
@@ -84,7 +97,7 @@ a:focus-visible {
 }
 /* inline-block so the whole line height (at least 24px) is the tap target. */
 .lang a { color: var(--dust); display: inline-block; min-height: 24px; padding: 2px 0; }
-.lang [aria-current="true"] { color: var(--ink); font-weight: 600; }
+.lang [aria-current="page"] { color: var(--ink); font-weight: 600; }
 
 .intro { padding: 56px 0 8px; }
 .intro h1 {
@@ -163,6 +176,10 @@ pre code {
   overflow-wrap: normal;
   white-space: pre;
 }
+/* A one-line JSON reply: wrap it rather than hide most of it off to the side. */
+.reply-label { margin-bottom: 6px; color: var(--dust); font-size: 0.9rem; }
+pre.reply { background: none; border: 1px solid var(--hairline); color: var(--dust); }
+pre.reply code { white-space: pre-wrap; overflow-wrap: break-word; }
 kbd {
   font: 0.85em var(--font);
   padding: 0.05em 0.4em;
@@ -200,7 +217,11 @@ kbd {
   flex-wrap: wrap;
   gap: 8px 16px;
 }
-.footer a { color: var(--dust); white-space: nowrap; }
+.footer a { color: var(--dust); white-space: nowrap; display: inline-block; min-height: 24px; }
+
+/* The 404 page: two short lists of ways back, one per language. */
+.lost { margin-top: 20px; }
+.lost + .intro { padding-top: 40px; }
 
 /* Cloudflare can inject a hidden trap link at the top of <body>, hidden with an
    inline style that the CSP blocks. Hide it here so it is not a keyboard stop. */
@@ -229,7 +250,7 @@ html { scrollbar-color: var(--hairline) var(--paper); }
 @media (max-width: 480px) {
   .masthead { gap: 12px 10px; }
   .brand { flex-basis: 100%; }
-  .store-chip { margin-left: 0; padding: 2px 8px; font-size: 0.74rem; }
+  .store-chip { margin-left: 0; padding: 2px 8px; font-size: 0.8rem; }
   .lang { margin-left: auto; font-size: 0.84rem; }
 }
 
@@ -565,6 +586,15 @@ html { overflow-x: hidden; }
   color: var(--hero-sub);
   text-shadow: 0 1px 14px color-mix(in srgb, #000 55%, transparent);
 }
+/* The three facts a visitor needs before they care: price, requirement,
+   and the one thing they can use today. */
+.hero .hero-facts {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  max-width: 30rem;
+}
+.hero .hero-facts span { white-space: nowrap; }
+.hero a, .dawn-close a { color: var(--hero-kicker); }
 
 .hero-shot { margin-top: clamp(28px, 6vw, 48px); }
 .hero-shot .shot { --gutter: 0px; margin: 0 calc((100% - var(--shot-width)) / 2); }
@@ -581,6 +611,16 @@ html { overflow-x: hidden; }
 }
 @media (min-width: 1100px) {
   .hero-shot .shot { margin-top: 0; }
+}
+/* A phone shrinks the whole window to texture. Show the rendered page at a
+   readable size instead, with the edge of the source still beside it. */
+@media (max-width: 719px) {
+  .hero-shot .shot img {
+    aspect-ratio: 3 / 4;
+    height: auto;
+    object-fit: cover;
+    object-position: 100% 0;
+  }
 }
 
 /* The second act: the loop, as three stops along one horizon line rather
@@ -645,6 +685,18 @@ html { overflow-x: hidden; }
 }
 .traits li + li { margin-top: 0; }
 .traits a { font-weight: 600; }
+/* The page you're on: named in Ink, with the ember dot the loop uses. */
+.traits [aria-current="page"] strong { font-weight: 600; color: var(--ink); }
+.traits [aria-current="page"] strong::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--ember);
+  vertical-align: 0.12em;
+}
 .traits span { color: var(--dust); font-size: 0.95rem; }
 
 /* The page ends where it began: a band of dawn light, full bleed, carrying
@@ -689,4 +741,5 @@ html { overflow-x: hidden; }
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
+.dawn-close .close-cli { margin-top: 14px; font-size: 0.95rem; }
 .footer-home { margin-top: 20px; border-top: 0; }
