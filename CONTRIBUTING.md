@@ -4,6 +4,8 @@ This repo is the site at marsdawn.southern-light.dev: home page, privacy policy 
 in English and Traditional Chinese. It's the right place for copy changes, page structure, the
 build script and deploy workflow.
 
+This project follows the [Code of Conduct](CODE_OF_CONDUCT.md).
+
 ## What goes elsewhere
 
 - Bugs in the `marsdawn` CLI, the Markdown renderer or PDF export —
