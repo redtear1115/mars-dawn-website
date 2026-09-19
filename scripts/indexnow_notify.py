@@ -45,15 +45,27 @@ def find_key_file() -> Optional[Path]:
     return candidates[0] if candidates else None
 
 
+def safe_sitemap_urls() -> list:
+    """sitemap_urls(), but a missing or malformed sitemap.xml is a warning,
+    not an unhandled exception. Both fallback paths in resolve_urls() reach
+    this, and a crash here — after wrangler has already deployed — must
+    turn into ::warning:: + exit 0 like every other failure in this script."""
+    try:
+        return sitemap_urls()
+    except Exception as exc:  # FileNotFoundError, xml.etree.ElementTree.ParseError, ...
+        warn(f"Could not read public/sitemap.xml: {exc}. Nothing to ping.")
+        return []
+
+
 def resolve_urls(before: str, after: str) -> list:
     if not before or before == ALL_ZEROS:
         warn("No previous commit for this push (first push or force-push); pinging the whole sitemap.")
-        return sitemap_urls()
+        return safe_sitemap_urls()
     try:
         files = changed_files(before, after)
     except Exception as exc:  # e.g. `before` isn't reachable in this checkout
         warn(f"Could not diff against {before}: {exc}. Pinging the whole sitemap instead.")
-        return sitemap_urls()
+        return safe_sitemap_urls()
     return sorted({u for f in files if (u := file_to_url(f))})
 
 
