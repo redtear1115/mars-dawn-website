@@ -1,6 +1,6 @@
-# Pay once. Keep all of it.
+# Try all of it. Then pay once.
 
-MarsDawn costs USD 4.99, one time. There is no subscription and no paid tier: every feature is in the one purchase.
+MarsDawn is a free download. Start the 14-day trial and every feature works; to keep using it after that, one purchase of USD 4.99 unlocks it. There is no subscription and no account.
 
 ![MarsDawn in the Vivid theme, with Markdown source on the left and the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
@@ -11,12 +11,20 @@ In this screenshot:
 3. Mermaid diagrams, included.
 4. Code highlighting, included.
 
-## What that means
+## How it works
 
-- One purchase on the Mac App Store, USD 4.99.
-- There is no subscription, so nothing renews.
-- There is no account: MarsDawn never asks you to create one.
-- Nothing held back. Every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions are part of the app you buy.
+- MarsDawn is free to download from the Mac App Store.
+- Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.
+- To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.
+- The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.
+- There is no account. MarsDawn never asks you to create one.
+
+## If you don't unlock
+
+- After 14 days, MarsDawn stops opening documents for reading or editing until you unlock it.
+- Your files don't change. They're ordinary files on your Mac, and Quick Look in Finder keeps showing them.
+- The free [`marsdawn` command-line tool](/cli/) keeps exporting them to PDF, trial or not.
+- If a document is open in MarsDawn when the trial ends, the text you typed isn't lost: use File ▸ Save As… to keep it.
 
 ## More
 
@@ -29,4 +37,4 @@ In this screenshot:
 - [Privacy Policy](https://marsdawn.southern-light.dev/privacy/index.md): MarsDawn does not collect personal data. Your documents and settings stay on your Mac.
 - [Command Line](https://marsdawn.southern-light.dev/cli/index.md): The free marsdawn command-line tool: open Markdown files in MarsDawn, or export them to PDF from a shell or an LLM agent.
 - [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): A reference for AI agents and scripts that call marsdawn: commands, JSON output, schemas, exit codes and requirements.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱、不需要帳號，也沒有付費進階版。
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。

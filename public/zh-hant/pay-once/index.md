@@ -1,6 +1,6 @@
-# 買一次，全部都是你的。
+# 先全部試用，再買一次。
 
-MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱，也沒有付費進階版，所有功能都在這一次購買裡。
+MarsDawn 可以免費下載。開始 14 天試用後，所有功能都能使用；試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 
 ![MarsDawn 使用 Vivid 主題，左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
@@ -11,12 +11,20 @@ MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱，也沒有付費進�
 3. Mermaid 圖表，包含在內。
 4. 程式碼上色，包含在內。
 
-## 這代表什麼
+## 怎麼運作
 
-- 一次購買，在 Mac App Store，USD 4.99。
-- 沒有訂閱，不會自動續費。
+- 在 Mac App Store 免費下載 MarsDawn。
+- 開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。
+- 試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。
+- 試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。
 - 不需要帳號，MarsDawn 從不要求你建立帳號。
-- 沒有保留任何功能。所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作，都在你買的這個 app 裡。
+
+## 如果沒有解鎖
+
+- 14 天後，在你解鎖之前，MarsDawn 不會再開啟文件供你閱讀或編輯。
+- 你的檔案不會有任何改變。它們就是你 Mac 上的一般檔案，在 Finder 中用「快速查看」依然看得到。
+- 免費的 [`marsdawn` 命令列工具](/zh-hant/cli/)不受試用影響，依然能把它們匯出成 PDF。
+- 如果試用結束時有文件正開在 MarsDawn 裡，你輸入的文字不會遺失，可以用「檔案」▸「另存新檔⋯」保存。
 
 ## 其他頁面
 
@@ -29,4 +37,4 @@ MarsDawn 售價 USD 4.99，買一次就好。沒有訂閱，也沒有付費進�
 - [隱私權政策](https://marsdawn.southern-light.dev/zh-hant/privacy/index.md): MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。
 - [命令列工具](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 MarsDawn 中開啟 Markdown 檔案，或從終端機、LLM agent 匯出成 PDF。
 - [給 AI agent 的 marsdawn 參考](https://marsdawn.southern-light.dev/zh-hant/cli/agents/index.md): 給呼叫 marsdawn 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。
-- [English](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn costs USD 4.99, once. No subscription, no account, no paid tier.
+- [English](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.

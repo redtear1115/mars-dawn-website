@@ -21,13 +21,14 @@ In this screenshot:
 - **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
 - **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others.
 - **Other files:** plain text files and PDFs open read-only.
+- **After the trial:** if you don't unlock MarsDawn once the 14-day trial ends, it stops opening documents for reading and editing. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
 - **System:** MarsDawn needs macOS 26 or later.
 
 ## More
 
 - [MarsDawn](https://marsdawn.southern-light.dev/index.md): MarsDawn: a native Mac Markdown editor built for the AI workflow. An agent writes the Markdown, you review it with live preview, and it revises.
 - [Your writing stays on your Mac](https://marsdawn.southern-light.dev/yours/index.md): MarsDawn has no account, no sync and no cloud. Your documents stay on your Mac.
-- [Pay once](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn costs USD 4.99, once. No subscription, no account, no paid tier.
+- [Try free, pay once](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.
 - [PDF export](https://marsdawn.southern-light.dev/pdf/index.md): Export as PDF or print, with Mermaid diagrams, highlighted code and careful page breaks.
 - [A Mac app](https://marsdawn.southern-light.dev/native/index.md): Native windows and tabs, autosave, version history, Quick Look, and a text editor that behaves like the rest of your Mac.
 - [Support](https://marsdawn.southern-light.dev/support/index.md): Get help with MarsDawn, the Markdown editor for macOS.
