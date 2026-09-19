@@ -62,7 +62,7 @@ The site leads with one angle on top of them. MarsDawn is the careful-read step 
 - **Themes**: four preview themes, Dawn (the default), Classic (典雅), Modern (流行) and Vivid (活潑).
 - **Limits**: no sync, no iPhone or iPad app (a read-only iPhone viewer is a future plan), no plugins and no accounts.
 
-**Open site gap:** the site's pricing copy still says the app costs USD 4.99 up front, once, with no paid tier. The `/pay-once/` page, `llms*.txt`, `product-facts.md` and the home page's "More" list all describe it that way. Before launch, that copy must be rewritten to describe a free download, a 14-day trial and a USD 4.99 one-time unlock. It must never promise anything the trial model contradicts.
+**Pricing copy ahead of launch:** the site describes the decided model (free download, 14-day trial, USD 4.99 one-time unlock) before the app or its purchase ships. That is intentional: every page says the app is coming soon, so this copy previews the model rather than claiming it is live. Keep it in step with the parent if the model changes again.
 
 **Site constraints**
 - The site is bilingual: English, and Traditional Chinese under `/zh-hant/`. Both languages ship together.
