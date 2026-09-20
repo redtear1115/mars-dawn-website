@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mac で Markdown ファイルを見る方法 · MarsDawn</title>
-<meta name="description" content=".md ファイルは、整形用の記号が入ったプレーンテキストです。Mac 上でレンダリングされた見た目を読む方法：今すぐ使える無料の marsdawn コマンドラインツールで PDF にする方法と、Mac App Store に近日公開予定の MarsDawn アプリで読む方法。">
+<meta name="description" content=".md ファイルは書式記号が入ったプレーンテキストです。Mac でレンダリングして読む方法を紹介します。今すぐ使える無料の marsdawn コマンドラインツールで PDF にする方法と、Mac App Store で近日公開予定の MarsDawn アプリで読む方法です。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -16,7 +16,7 @@
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/">
 <link rel="alternate" type="text/markdown" href="/ja/view-markdown-on-mac/index.md">
 <meta property="og:title" content="Mac で Markdown ファイルを見る方法 · MarsDawn">
-<meta property="og:description" content=".md ファイルは、整形用の記号が入ったプレーンテキストです。Mac 上でレンダリングされた見た目を読む方法：今すぐ使える無料の marsdawn コマンドラインツールで PDF にする方法と、Mac App Store に近日公開予定の MarsDawn アプリで読む方法。">
+<meta property="og:description" content=".md ファイルは書式記号が入ったプレーンテキストです。Mac でレンダリングして読む方法を紹介します。今すぐ使える無料の marsdawn コマンドラインツールで PDF にする方法と、Mac App Store で近日公開予定の MarsDawn アプリで読む方法です。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
@@ -34,29 +34,28 @@
 </header>
 <main>
 <section class="intro">
-  <h1>Mac で、Markdown ファイルを見る方法。</h1>
-  <p><code>.md</code> ファイルはプレーンテキストです。見出しや太字、表、図は記号として書かれています。見出しは <code>#</code>、太字は前後を <code>**</code> で囲み、表は縦棒の記号、図は <code>mermaid</code> のコードブロックです。プレーンテキストエディタで開くと、これらの記号がそのまま見えます。著者が意図した通りのページとして読むには、何かがそれをレンダリングする必要があります。</p>
+  <h1>Mac で Markdown ファイルを見る方法。</h1>
+  <p><code>.md</code> ファイルはプレーンテキストです。見出し、太字、表、図は記号で書かれています。見出しには <code>#</code>、太字は <code>**</code> で囲む、表はパイプで区切る、図は <code>mermaid</code> コードブロックといった具合です。プレーンテキストエディタで開くと、これらの記号がそのまま見えます。作者の意図どおりにページを読むには、何かがそれをレンダリングする必要があります。</p>
 </section>
-<h2>今すぐ、無料で：PDF にする</h2>
-<p>無料の <code>marsdawn</code> コマンドラインツールが、Markdown ファイルを PDF にレンダリングします。どんな Mac でも開けます。表、数式、Mermaid 図、ハイライトされたコードもレンダリングされ、他に何もインストールする必要はありません。MarsDawn アプリすら不要です。</p>
+<h2>今すぐ無料で：PDF に変換する</h2>
+<p>無料の <code>marsdawn</code> コマンドラインツールは、Markdown ファイルをどの Mac でも開ける PDF にレンダリングします。表、数式、Mermaid 図、ハイライトされたコードはすべてレンダリングされ、MarsDawn アプリすら含め、他に何もインストールする必要はありません。</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
-<p><code>export</code> は Markdown ファイルの隣に <code>notes.pdf</code> を書き出し、<code>open</code> は PDF ビューアでそれを表示します。macOS 15 以降が必要です。実際に書き出したページを使った完全な手順は<a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a>にあります。</p>
+<p><code>export</code> は Markdown ファイルの隣に <code>notes.pdf</code> を書き出し、<code>open</code> はそれをあなたの PDF ビューアで表示します。macOS 15 以降が必要です。実際に書き出したページを使った解説は、<a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a>にあります。</p>
 <h2>近日公開：MarsDawn で読む</h2>
-<p>MarsDawn は Mac 向けの Markdown エディタで、Mac App Store に近日公開予定です。<code>.md</code> ファイルを開くと、レンダリングされたページがソースの隣に表示されます。</p>
+<p>MarsDawn は Mac 向けの Markdown エディタで、Mac App Store で近日公開予定です。<code>.md</code> ファイルを開くと、ソースの隣でレンダリングされたページを読めます。</p>
 <ul>
-  <li>入力するとプレビューが更新され、2つのペインは一緒にスクロールします。</li>
-  <li>Mermaid のフローチャートやシーケンス図はプレビュー内に描画され、コードブロックもハイライトされます。</li>
-  <li>Finder で Markdown ファイルを選んで空白キーを押せば、図も含めてクイックルックでプレビューできます。</li>
-  <li>何かを直したくなったら、ソースはすぐそこにあります。MarsDawn はビューアだけでなく、エディタでもあります。</li>
+  <li>入力すると同時にプレビューが更新され、2つのペインは一緒にスクロールします。</li>
+  <li>Mermaid のフローチャートとシーケンス図がプレビューに描画され、コードブロックはハイライトされます。</li>
+  <li>Finder で Markdown ファイルを選んでスペースキーを押せば、図も含めてクイックルックでプレビューできます。</li>
+  <li>何かを変更したいときは、ソースがすぐそこにあります。MarsDawn はビューアだけでなくエディタでもあります。</li>
 </ul>
-<p>AI エージェントがそのファイルを書いたなら、これはまさに MarsDawn が想定しているループです。エージェントが書き、あなたがレンダリングされたページを読み、エージェントが直します。<a href="/ja/">ホームページ</a>をご覧ください。エージェントに代わりにファイルを開かせたい場合は<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>もどうぞ。</p>
+<p>もしそのファイルを AI エージェントが書いたなら、これはまさに MarsDawn が想定しているループです。エージェントが書き、あなたがレンダリングされたページを読み、エージェントが修正します。<a href="/ja/">ホームページ</a>と、エージェントにファイルを開かせる方法については<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>をご覧ください。</p>
 <h2>次に</h2>
 <ul>
   <li>コマンドラインツールのすべてのオプション：<a href="/ja/cli/">コマンドライン</a>。</li>
-  <li>MarsDawn ができないこと：<a href="/ja/limits/">その一覧</a>。</li>
-  <li>VS Code やブラウザ、Claude Desktop で Markdown を読む場合との比較：<a href="/ja/vs/markdown-preview-tools/">比較はこちら</a>。</li>
+  <li>MarsDawn ができないこと：<a href="/ja/limits/">一覧はこちら</a>。</li>
 </ul>
 </main>
 <footer class="footer">

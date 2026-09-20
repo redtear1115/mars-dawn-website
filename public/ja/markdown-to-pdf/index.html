@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>コマンドラインで Markdown を PDF に変換する（Mac）· MarsDawn</title>
-<meta name="description" content="無料の marsdawn コマンドラインツールで、Mac 上の Markdown を PDF に変換します。Homebrew でインストールし、コマンドを一つ実行するだけ：表、数式、Mermaid、コードに対応。">
+<title>Mac のコマンドラインで Markdown を PDF に · MarsDawn</title>
+<meta name="description" content="無料の marsdawn コマンドラインツールで、Mac 上の Markdown を PDF に変換します。Homebrew でインストールしてコマンド1つで実行：表、数式、Mermaid、コードに対応。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -15,8 +15,8 @@
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/markdown-to-pdf/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ja/markdown-to-pdf/">
 <link rel="alternate" type="text/markdown" href="/ja/markdown-to-pdf/index.md">
-<meta property="og:title" content="コマンドラインで Markdown を PDF に変換する（Mac）· MarsDawn">
-<meta property="og:description" content="無料の marsdawn コマンドラインツールで、Mac 上の Markdown を PDF に変換します。Homebrew でインストールし、コマンドを一つ実行するだけ：表、数式、Mermaid、コードに対応。">
+<meta property="og:title" content="Mac のコマンドラインで Markdown を PDF に · MarsDawn">
+<meta property="og:description" content="無料の marsdawn コマンドラインツールで、Mac 上の Markdown を PDF に変換します。Homebrew でインストールしてコマンド1つで実行：表、数式、Mermaid、コードに対応。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/markdown-to-pdf/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
@@ -34,27 +34,27 @@
 </header>
 <main>
 <section class="intro">
-  <h1>コマンドラインで、Mac 上の Markdown を PDF に変換する。</h1>
-  <p>無料の <code>marsdawn</code> ツールは、コマンド一つで Markdown ファイルを PDF に変換します。表、数式、Mermaid 図、ハイライトされたコードも、ソースで読めるとおりに出力され、MarsDawn アプリを含め、他に何もインストールする必要はありません。</p>
+  <h1>Mac のコマンドラインで、Markdown を PDF に。</h1>
+  <p>無料の <code>marsdawn</code> ツールは、コマンド1つで Markdown ファイルを PDF に変換します。表、数式、Mermaid 図、ハイライトされたコードはソースの見た目そのままに仕上がり、MarsDawn アプリすら含め、他に何もインストールする必要はありません。</p>
 </section>
-<h2>インストールする</h2>
+<h2>インストール</h2>
 <pre><code>brew install redtear1115/tap/marsdawn
 marsdawn --version</code></pre>
-<p>Apple シリコンの Mac では、Homebrew が数秒でビルド済みのコピーをインストールします。Intel Mac では代わりにソースからビルドするため数分かかり、Xcode 26 以降が必要です。macOS 15 以降で動作し、<code>marsdawn --version</code> でインストールされたバージョンが表示されます。</p>
+<p>Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールします。Intel Mac ではソースからビルドするため数分かかり、Xcode 26 以降が必要です。macOS 15 以降で動作し、<code>marsdawn --version</code> がインストールされたバージョンを表示します。</p>
 <h2>文書を保存する</h2>
-<p><code>plan.md</code> という名前のファイルに、次の内容を貼り付けてください：</p>
-<pre><code># Plan: faster exports
+<p><code>plan.md</code> という名前のファイルに、次の内容を貼り付けてください。</p>
+<pre><code># 計画：エクスポートを高速化
 
-An agent wrote this plan. You review it, then turn it into a PDF.
+この計画はエージェントが書きました。内容を確認してから、PDF にします。
 
-## Steps
+## ステップ
 
-| Step | Owner | Status |
+| ステップ | 担当 | 状況 |
 |------|-------|--------|
-| Measure the slow pages | Agent | Done |
-| Cache rendered diagrams | Agent | In review |
+| 遅いページを計測する | エージェント | 完了 |
+| レンダリング済み図をキャッシュする | エージェント | レビュー中 |
 
-The target is $t &lt; 2\,\text{s}$ for a 50-page document:
+50 ページの文書で目標とするのは $t &lt; 2\,\text{s}$：
 
 $$
 t_{\text{total}} = \sum_{i=1}^{n} t_i
@@ -62,7 +62,7 @@ $$
 
 ```mermaid
 graph LR
-  Draft --&gt; Review --&gt; Ship
+  ドラフト --&gt; レビュー --&gt; 公開
 ```
 
 ```swift
@@ -71,31 +71,29 @@ let pdf = try export("plan.md")
 </code></pre>
 <h2>書き出す</h2>
 <pre><code>marsdawn export plan.md</code></pre>
-<p>ソースの隣に <code>plan.pdf</code> を書き出し、保存先を表示します：</p>
+<p>ソースの隣に <code>plan.pdf</code> を書き出し、保存先を表示します。</p>
 <pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
-<p>これは実際に <code>marsdawn</code> 0.5.0 を実行して得られたそのページです：</p>
-<p><img class="pdf-page" src="/assets/cli/plan-en.png" alt="書き出された PDF：見出し、ステップの表、インラインとディスプレイ数式、Draft・Review・Ship の図、そしてハイライトされた Swift の一行。" width="989" height="930"></p>
-<h2>テーマ、紙のサイズ、ファイル名を選ぶ</h2>
+<p>これはそのページを、<code>marsdawn</code> 0.5.0 の実行結果から実際にキャプチャしたものです。</p>
+<p><img class="pdf-page" src="/assets/cli/plan-ja.png" alt="書き出された PDF：見出し、ステップの表、インラインと独立した数式、ドラフト・レビュー・公開の図、ハイライトされた Swift のコード1行。" width="989" height="930"></p>
+<h2>テーマ、用紙サイズ、ファイル名を選ぶ</h2>
 <pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
 <ul>
-  <li><code>--theme</code>：dawn、classic、modern、vivid のいずれか、テーマのライトカラーを使います。指定しない場合、<code>export</code> はまず <code>$MARSDAWN_THEME</code> を、それもなければ dawn を使います。</li>
+  <li><code>--theme</code>：dawn、classic、modern、vivid のいずれかで、テーマのライトカラーを使います。指定しない場合、<code>export</code> は <code>$MARSDAWN_THEME</code>、それもなければ dawn を使います。</li>
   <li><code>--paper</code>：a4 または letter。デフォルトは a4 です。</li>
-  <li><code>-o</code>：PDF の書き出し先。指定しなければソースの隣に書き出されます。</li>
-  <li><code>--allow-remote-images</code>：書き出し中にウェブから画像を読み込みます。指定しない限りオフのままです。</li>
+  <li><code>-o</code>：PDF をソースの隣ではなく、どこに書き出すか。</li>
+  <li><code>--allow-remote-images</code>：レンダリング時にウェブから画像を読み込みます。指定しない限りオフのままです。</li>
 </ul>
-<h2>うまくいかないとき</h2>
+<h2>うまくいかない場合</h2>
 <ul>
-  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew が <code>marsdawn</code> をソースからビルドしています。Intel Mac ではこうなります。App Store から Xcode 26 以降をインストールし、もう一度インストールし直してください。</li>
-  <li><code>marsdawn: No such file: …</code> パスがファイルを指していません。名前を確認するか、ファイルがあるフォルダでコマンドを実行してください。</li>
-  <li><code>… already exists. Pass --force to replace it.</code> 同じ名前の PDF がすでにあります。<code>--force</code> を付けて上書きするか、<code>-o</code> で別の場所に書き出してください。</li>
-  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> テーマまたは紙のサイズが認識されていません。テーマは dawn、classic、modern、vivid、紙は a4 または letter です。</li>
+  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew が <code>marsdawn</code> をソースからビルドしています。Intel Mac ではこのようになります。App Store から Xcode 26 以降をインストールしてから、もう一度インストールしてください。</li>
+  <li><code>marsdawn: No such file: …</code> パスがファイルを指していません。ファイル名を確認するか、そのファイルがあるフォルダでコマンドを実行してください。</li>
+  <li><code>… already exists. Pass --force to replace it.</code> 同じ名前の PDF がすでに存在します。<code>--force</code> を付けて置き換えるか、<code>-o</code> で別の場所に書き出してください。</li>
+  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> テーマまたは用紙サイズが認識されていません。テーマは dawn、classic、modern、vivid、用紙は a4 または letter です。</li>
 </ul>
 <h2>次に</h2>
 <ul>
   <li>すべてのオプションと出力される JSON：<a href="/ja/cli/">コマンドライン</a>。</li>
-  <li>コーディングエージェントにこれをやらせるには：<a href="/ja/cli/skill/">marsdawn の agent skill</a>。</li>
-  <li>4つのプレビューテーマすべてと、PDF 書き出しの今後：<a href="/ja/themes/">プレビューテーマと PDF 書き出し</a>。</li>
-  <li>Markdown を使わない人に PDF を渡す：<a href="/ja/sharing-exported-pdfs/">PDF を共有する</a>。</li>
+  <li>コーディングエージェントにこれをやらせるには：<a href="/ja/cli/skill/">marsdawn のエージェントスキル</a>。</li>
 </ul>
 </main>
 <footer class="footer">

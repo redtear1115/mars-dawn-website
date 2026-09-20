@@ -41,7 +41,7 @@
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <p>需要做出 PDF 时，Claude Code 会自动加载它，你也可以用 <code>/marsdawn</code> 自己运行。它只是<a href="/cli/skill/SKILL.md">一个简短的文件</a>，安装前先读一遍。</p>
-<p>其他 agent 也能用同一个文件。它是纯 Markdown，只有说明和命令，让你的 agent 读这个网址，或直接粘贴给它就好。这个文件是英文的。</p>
+<p>其他 agent 也能用同一个文件。它是纯 Markdown，只有说明和命令，让你的 agent 读这个网址，或直接贴给它就好。这个文件是英文的。</p>
 <h2>它教什么</h2>
 <ul>
   <li>如果没有 <code>marsdawn</code>，就用 Homebrew 安装，再用 <code>marsdawn --version</code> 确认版本，而不是假设某个版本。</li>
@@ -52,9 +52,9 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 <h2>它不会做的事</h2>
 <ul>
   <li>它不会自己取得运行任何东西的权限。你的 agent 在安装或运行 <code>marsdawn</code> 之前，仍然会先问你，就像运行其他命令一样。</li>
-  <li>它不会把你的文稿传到任何地方。<code>marsdawn</code> 在你的 Mac 上生成 PDF，除非你加上 <code>--allow-remote-images</code>，否则不会加载网络上的图片。</li>
+  <li>它不会把你的文稿传到任何地方。<code>marsdawn</code> 在你的 Mac 上产生 PDF，除非你加上 <code>--allow-remote-images</code>，否则不会加载网络上的图片。</li>
 </ul>
-<p>完整的规格，每个字段和每个代码，都在<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>里。如果你的 agent 是通过 MCP 调用工具，而不是读 skill 文件，也可以用<a href="/zh-hans/cli/mcp/">MCP 服务器</a>。</p>
+<p>完整的规格，每个字段和每个代码，都在<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>里。</p>
 </main>
 <footer class="footer">
   <span>读 agent 写的 Markdown。</span>

@@ -35,10 +35,10 @@
 <main>
 <section class="intro">
   <h1>在 Mac 上，怎么看 Markdown 文件。</h1>
-  <p><code>.md</code> 文件是纯文本。标题、粗体、表格和图表，都是用记号写成的：<code>#</code> 代表标题，<code>**</code> 包住粗体，竖线符号画出表格，<code>mermaid</code> 代码块则是一张图。用纯文本编辑器打开，看到的就是这些记号。想照作者的意思读到排好的页面，就需要有东西把它排版出来。</p>
+  <p><code>.md</code> 文件是纯文本。标题、粗体、表格和图表，都是用记号写成的：<code>#</code> 代表标题，<code>**</code> 包住粗体，直线符号画出表格，<code>mermaid</code> 代码块则是一张图。用纯文本编辑器打开，看到的就是这些记号。想照作者的意思读到排好的页面，就需要有东西把它排版出来。</p>
 </section>
 <h2>现在就能用，而且免费：转成 PDF</h2>
-<p>免费的 <code>marsdawn</code> 命令行工具，能把 Markdown 文件排版成 PDF，任何一台 Mac 都打得开。表格、数学式、Mermaid 图表和代码上色都会排好，而且不需要安装其他东西，连 MarsDawn app 都不用。</p>
+<p>免费的 <code>marsdawn</code> 命令行工具，能把 Markdown 文件排版成 PDF，任何一台 Mac 都打得开。表格、数学公式、Mermaid 图表和代码高亮都会排好，而且不需要安装其他东西，连 MarsDawn app 都不用。</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
@@ -46,9 +46,9 @@ open notes.pdf</code></pre>
 <h2>即将推出：在 MarsDawn 里读</h2>
 <p>MarsDawn 是为 Mac 做的 Markdown 编辑器，即将在 Mac App Store 上架。打开 <code>.md</code> 文件，排好的页面就在源代码旁边：</p>
 <ul>
-  <li>预览会随着你打字即时更新，两边的窗格一起滚动。</li>
-  <li>Mermaid 流程图和时序图直接画在预览里，代码块也会上色。</li>
-  <li>在 Finder 里对 Markdown 文件按空格键，就有“快速查看”预览，图表也在。</li>
+  <li>预览会随着你打字实时更新，两边的窗格一起滚动。</li>
+  <li>Mermaid 流程图和时序图直接画在预览里，代码块也会高亮。</li>
+  <li>在访达里对 Markdown 文件按空格键，就有“快速查看”预览，图表也在。</li>
   <li>想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。</li>
 </ul>
 <p>如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看<a href="/zh-hans/">首页</a>，想让 agent 帮你开文件，请看<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</p>
@@ -56,7 +56,6 @@ open notes.pdf</code></pre>
 <ul>
   <li>命令行工具的所有选项：<a href="/zh-hans/cli/">命令行工具</a>。</li>
   <li>MarsDawn 做不到的事：<a href="/zh-hans/limits/">这份清单</a>。</li>
-  <li>改用 VS Code、浏览器或 Claude Desktop 看 Markdown：<a href="/zh-hans/vs/markdown-preview-tools/">比较一下</a>。</li>
 </ul>
 </main>
 <footer class="footer">

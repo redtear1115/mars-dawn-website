@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>marsdawn：無料の Markdown to PDF コマンドラインツール · MarsDawn</title>
-<meta name="description" content="Mac 向けの無料コマンドラインツール marsdawn：シェルやスクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストールできます。">
+<title>marsdawn：無料の Markdown から PDF へのコマンドラインツール · MarsDawn</title>
+<meta name="description" content="無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -15,8 +15,8 @@
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ja/cli/">
 <link rel="alternate" type="text/markdown" href="/ja/cli/index.md">
-<meta property="og:title" content="marsdawn：無料の Markdown to PDF コマンドラインツール · MarsDawn">
-<meta property="og:description" content="Mac 向けの無料コマンドラインツール marsdawn：シェルやスクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストールできます。">
+<meta property="og:title" content="marsdawn：無料の Markdown から PDF へのコマンドラインツール · MarsDawn">
+<meta property="og:description" content="無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/cli/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
@@ -35,69 +35,69 @@
 <main>
 <section class="intro">
   <h1>コマンドライン</h1>
-  <p>無料の <code>marsdawn</code> コマンドラインツール：シェルや LLM エージェントから Markdown を PDF に書き出し、MarsDawn アプリがインストールされていればファイルをそこで開くこともできます。</p>
+  <p>無料の <code>marsdawn</code> コマンドラインツール：シェルや LLM エージェントから Markdown を PDF に書き出せます。MarsDawn アプリがインストールされていれば、そのアプリでファイルを開くこともできます。</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn は無料で、Mac App Store とは別に配布されています。</strong>Homebrew でインストールしてください。Apple シリコンの Mac ではすぐに使える状態で届きます。<code>export</code> は単独で動作し、<code>open</code> には MarsDawn アプリが必要です。</p></div>
+<div class="summary"><p><strong>marsdawn は無料で、Mac App Store とは別に配布されています。</strong>Homebrew でインストールすると、Apple シリコンの Mac では、すぐに実行できる状態でインストールされます。<code>export</code> は単独で動作し、<code>open</code> には MarsDawn アプリが必要です。</p></div>
 
-<p>AI エージェントやスクリプトから marsdawn を呼び出しますか？JSON 出力、スキーマ、すべての終了コードは<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>を、エージェントが代わりに MCP でツールを呼び出す場合は<a href="/ja/cli/mcp/">MCP サーバー</a>をご覧ください。</p>
+<p>AI エージェントやスクリプトから marsdawn を呼び出しますか？JSON 出力とそのスキーマ、すべての終了コードについては<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>をご覧ください。</p>
 
 <h2>インストール</h2>
 <p><a href="https://brew.sh">Homebrew</a> を使う場合：</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
-<p>Apple シリコンの Mac では、Homebrew が数秒でビルド済みのコピーをインストールし、他に何もインストールする必要はありません。Intel Mac では代わりにソースからビルドするため数分かかり、Xcode 26 以降（Swift 6.2）が必要です。このツールは macOS 15 以降で動作します。</p>
-<p>または、<a href="https://github.com/redtear1115/mars-dawn-kit">ソース</a>から Swift Package Manager でビルドすることもできます：</p>
+<p>Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールし、他に何もインストールする必要はありません。Intel Mac では代わりにソースから marsdawn をビルドするため数分かかり、Xcode 26 以降（Swift 6.2）が必要です。このツールは macOS 15 以降で動作します。</p>
+<p>または、Swift Package Manager で<a href="https://github.com/redtear1115/mars-dawn-kit">ソース</a>からビルドします。</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
-<p>インストールされたバージョンは <code>marsdawn --version</code> で確認できます。</p>
+<p>インストールされているバージョンは <code>marsdawn --version</code> で確認できます。</p>
 
 <h2>コマンド</h2>
 
 <h3>marsdawn open</h3>
-<p>1つ以上の Markdown ファイルを MarsDawn アプリで開き、レビューできるようにします。アプリのインストールが必要です。インストールされていない場合、<code>marsdawn open</code> は代コード 3 で終了し、MarsDawn がインストールされていないと表示します。<code>export</code> にはアプリは不要です。</p>
+<p>1つ以上の Markdown ファイルを MarsDawn アプリで開いて確認できます。アプリのインストールが必要です。インストールされていない場合、<code>marsdawn open</code> はコード 3 で終了し、MarsDawn がインストールされていないことを知らせます。<code>export</code> にはアプリは不要です。</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120</code></pre>
 <ul>
-  <li><code>path:line</code>：MarsDawn にその行へ移動するよう伝えます。後ろにさらに列番号が続く場合（<code>notes.md:120:8</code> など）は無視されます。その名前そのままのファイルが存在する場合は、その引数はそのファイルとして扱われます。</li>
-  <li><code>--line &lt;n&gt;</code>：単一ファイルに対して同じことをします。ファイル名自体がコロンと数字で終わる場合の行指定にも使えます。ファイルは1つだけ指定できます。</li>
-  <li>行番号の範囲は 1 から 999999999 です。</li>
-  <li>MarsDawn 1.0 はファイルを開きますが、まだその行へジャンプはしません。</li>
-  <li><code>--json</code>：テキストの代わりに JSON 結果を出力します。</li>
+  <li><code>path:line</code>：MarsDawn にその行に移動するよう指定します。その後にコロンが続く場合、たとえば <code>notes.md:120:8</code> の列部分は無視されます。引数全体と一致するファイル名が存在する場合、その引数はそのファイルとして扱われます。</li>
+  <li><code>--line &lt;n&gt;</code>：単一ファイルに対して同じ指定ができ、それ自体がコロンと数字で終わるパスに対して行を指定する方法でもあります。ファイルは1つだけ指定できます。</li>
+  <li>行番号は 1 から 999999999 までです。</li>
+  <li>MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。</li>
+  <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
 </ul>
-<p>行番号は marsdawn 0.3.0 で追加されました。</p>
+<p>行の指定は marsdawn 0.3.0 で追加されました。</p>
 
 <h3>marsdawn export</h3>
-<p>Markdown ファイルを、MarsDawn 自身の PDF 書き出しと同じエンジンでページ分割された PDF に変換します。MarsDawn アプリは不要です。相対パスの画像は、入力ファイルのフォルダを基準に解決されます。</p>
+<p>Markdown ファイルを、MarsDawn 自身の PDF 書き出しと同じ書き出しエンジンで、ページ分割された PDF にレンダリングします。MarsDawn アプリは不要です。相対パスの画像は、入力ファイルのあるフォルダを基準に解決されます。</p>
 <pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
 <ul>
-  <li><code>-o, --output &lt;path&gt;</code>：PDF の書き出し先。デフォルトは入力パスの拡張子を <code>.pdf</code> に変えたものです。</li>
-  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：プレビューテーマのライトカラー。デフォルトは <code>$MARSDAWN_THEME</code>、それもなければ <code>dawn</code> です。</li>
-  <li><code>--paper &lt;a4|letter&gt;</code>：紙のサイズ。デフォルトは <code>a4</code> です。</li>
-  <li><code>--allow-remote-images</code>：書き出し中にウェブから画像を読み込みます。デフォルトはオフです。</li>
-  <li><code>--force</code>：出力先ファイルがすでに存在する場合に置き換えます。</li>
-  <li><code>--json</code>：テキストの代わりに JSON 結果を出力します。</li>
+  <li><code>-o, --output &lt;path&gt;</code>：PDF の書き出し先。デフォルトは入力パスの拡張子を <code>.pdf</code> にしたものです。</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：プレビューテーマのライトパレット。デフォルトは <code>$MARSDAWN_THEME</code>、それもなければ <code>dawn</code> です。</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>：用紙サイズ。デフォルトは <code>a4</code> です。</li>
+  <li><code>--allow-remote-images</code>：レンダリング時にウェブから画像を読み込みます。デフォルトはオフです。</li>
+  <li><code>--force</code>：出力ファイルがすでに存在する場合に置き換えます。</li>
+  <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
 </ul>
 
 <h2>$MARSDAWN_THEME 環境変数</h2>
-<p><code>--theme</code> が指定されない場合、<code>export</code> は <code>$MARSDAWN_THEME</code> 環境変数を読みます。値は <code>dawn</code>、<code>classic</code>、<code>modern</code>、<code>vivid</code> のいずれかである必要があり、それ以外は <code>dawn</code> にフォールバックします。この CLI はアプリ自身のテーマ設定を読みません。他のアプリのコンテナを読むと、macOS のプライバシープロンプトが表示されることがあるためです。</p>
+<p><code>--theme</code> が指定されない場合、<code>export</code> は <code>$MARSDAWN_THEME</code> 環境変数を読み取ります。値は <code>dawn</code>、<code>classic</code>、<code>modern</code>、<code>vivid</code> のいずれかである必要があり、それ以外は <code>dawn</code> にフォールバックします。CLI はアプリ自身のテーマ設定を読み取りません。他のアプリのコンテナを読み取ると、macOS のプライバシープロンプトが表示されることがあるためです。</p>
 
 <h2>ファイルの上書き</h2>
-<p><code>export</code> は、<code>--force</code> を指定しない限り既存の出力ファイルを置き換えません。</p>
+<p><code>export</code> は、<code>--force</code> を指定しない限り、既存の出力ファイルを置き換えません。</p>
 
 <h2>終了コード</h2>
 <ul>
   <li><code>0</code>：成功。</li>
-  <li><code>2</code>：入力が見つかりません。</li>
-  <li><code>3</code>：MarsDawn がインストールされていません（<code>open</code> のみ）。</li>
-  <li><code>4</code>：出力先がすでに存在します（<code>--force</code> を指定してください）。</li>
-  <li><code>5</code>：書き出しに失敗しました。</li>
-  <li><code>64</code>：使い方の誤り。行番号が範囲外だったり、<code>--line</code> に複数ファイルを指定した場合などです。</li>
+  <li><code>2</code>：入力が見つからない。</li>
+  <li><code>3</code>：MarsDawn がインストールされていない（<code>open</code> のみ）。</li>
+  <li><code>4</code>：出力先がすでに存在する（<code>--force</code> を指定してください）。</li>
+  <li><code>5</code>：書き出しに失敗。</li>
+  <li><code>64</code>：使用方法のエラー。範囲外の行や、複数ファイルに対する <code>--line</code> の指定などを含みます。</li>
 </ul>
 
 <h2>--json 出力</h2>
-<p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含むリスト）、<code>app</code>（アプリのパス）を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時は、どちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>
+<p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含む）、<code>app</code>（アプリのパス）を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時はどちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>
 </main>
 <footer class="footer">
   <span>エージェントが書いた Markdown を読む。</span>
