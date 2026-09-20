@@ -22,6 +22,15 @@ guards against is flipping some of them: a site that says it's on the Mac App St
 structured data still says pre-order, or one locale left saying "coming soon" after the others
 moved on. Either half-flip fails here.
 
+Two things this deliberately does not catch, so nobody reads a green run as more than it is:
+
+- **A placeholder listing URL passes.** `https://apps.apple.com/app/idPLACEHOLDER` is a link to
+  apps.apple.com as far as this check is concerned. `check_links.py` is what fails on a placeholder,
+  so it has to stay wired into CI beside this one.
+- **"Coming soon on every page" is really "the footer's coming-soon line".** A page whose *body*
+  was flipped to launch wording early, without linking to the listing, still has its footer and so
+  still passes. The link check above catches the common case, since launch copy normally links.
+
 To see it catch one:
 
     cp -R public /tmp/site
@@ -68,6 +77,14 @@ PRE_LAUNCH_WORDING = {
 }
 
 LISTING_HOST = "apps.apple.com"
+
+# What the offer's availability has to say in each phase.
+AVAILABILITY_FOR = {
+    "pre-launch": "https://schema.org/PreOrder",
+    "launched": "https://schema.org/InStock",
+}
+OFFER = re.compile(r'"@type":\s*"Offer"')
+AVAILABILITY_IN_PAGE = re.compile(r'"availability":\s*"([^"]*)"')
 
 
 def phase():
@@ -133,6 +150,16 @@ def main():
             for wording in PRE_LAUNCH_WORDING[locale]:
                 if wording in text:
                     problems.append(f"{relative}: still says {wording!r} after launch")
+        offers = len(OFFER.findall(text))
+        stated = AVAILABILITY_IN_PAGE.findall(text)
+        if offers and len(stated) < offers:
+            problems.append(f"{relative}: {offers - len(stated)} of {offers} offers state no availability")
+        for value in stated:
+            if value != AVAILABILITY_FOR[where]:
+                problems.append(
+                    f"{relative}: offer availability is {value!r}, but the copy is {where} "
+                    f"({AVAILABILITY_FOR[where]})"
+                )
         links_out = LISTING_HOST in text
         if where == "pre-launch" and links_out:
             problems.append(f"{relative}: links to {LISTING_HOST} before launch")
