@@ -135,6 +135,13 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
 <p><code>marsdawn --version</code> 會印出版本號，例如 <code>0.3.0</code>，並以代碼 0 結束。</p>
+
+<h2>接下來</h2>
+<ul>
+  <li>給讀指令檔而不是執行 shell 的 agent 用的一個檔案：<a href="/zh-hant/cli/skill/">marsdawn skill</a>。</li>
+  <li>包住同一個 <code>export</code> 的 MCP 伺服器：<a href="/zh-hant/cli/mcp/">marsdawn-mcp</a>。</li>
+  <li>這份 JSON 結果為什麼不花 agent 自己的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
+</ul>
 </main>
 <footer class="footer">
   <span>讀 agent 寫的 Markdown。</span>

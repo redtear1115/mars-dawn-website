@@ -32,6 +32,11 @@ KIT_URL = "https://github.com/redtear1115/mars-dawn-kit"
 KIT_LICENSE = "Apache-2.0"
 BREW_TAP_INSTALL = "brew tap redtear1115/tap && brew install marsdawn"
 
+# The MCP server, a separate public repo. Re-verified 2026-09-20 against
+# github.com/redtear1115/marsdawn-mcp: still 0.1.0, still not in the MCP Registry.
+MCP_URL = "https://github.com/redtear1115/marsdawn-mcp"
+MCP_LICENSE = "Apache-2.0"
+
 LOCALES = {
     "en": {"prefix": "", "html_lang": "en", "label": "English", "root": "/"},
     "zh-hant": {"prefix": "zh-hant/", "html_lang": "zh-Hant", "label": "繁體中文", "root": "/zh-hant/"},
@@ -67,6 +72,9 @@ UI = {
         "more": "More",
         "yours": "Your writing stays on your Mac", "pay-once": "Try free, pay once", "pdf": "PDF export",
         "native": "A Mac app", "limits": "What MarsDawn doesn't do",
+        "mcp": "MCP server", "token-efficient-review": "Token-efficient review",
+        "vs-markdown-preview-tools": "Viewing Markdown elsewhere vs. MarsDawn", "themes": "Preview themes and PDF export",
+        "sharing-exported-pdfs": "Sharing exported PDFs", "reviewing-ai-output": "Why AI output still needs a human reader",
     },
     "zh-hant": {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
@@ -79,6 +87,9 @@ UI = {
         "more": "其他頁面",
         "yours": "你寫的內容留在你的 Mac 上", "pay-once": "免費試用，買一次就好", "pdf": "輸出 PDF",
         "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
+        "mcp": "MCP 伺服器", "token-efficient-review": "節省 token 的審閱方式",
+        "vs-markdown-preview-tools": "在別處看 Markdown，對比 MarsDawn", "themes": "預覽主題與 PDF 輸出",
+        "sharing-exported-pdfs": "分享輸出的 PDF", "reviewing-ai-output": "為什麼 AI 寫的東西還是需要人讀過",
     },
 }
 
@@ -429,7 +440,7 @@ CLI_PAGES = {
 
 <div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
 
-<p>Calling marsdawn from an AI agent or a script? See <a href="/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code.</p>
+<p>Calling marsdawn from an AI agent or a script? See <a href="/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code, or <a href="/cli/mcp/">the MCP server</a> if your agent calls tools over MCP instead.</p>
 
 <h2>Install</h2>
 <p>With <a href="https://brew.sh">Homebrew</a>:</p>
@@ -500,7 +511,7 @@ marsdawn open notes.md --line 120</code></pre>
 
 <div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。</p></div>
 
-<p>要從 AI agent 或腳本呼叫 marsdawn？請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>，裡面有 JSON 輸出、Schema 和所有離開代碼。</p>
+<p>要從 AI agent 或腳本呼叫 marsdawn？請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>，裡面有 JSON 輸出、Schema 和所有離開代碼；如果你的 agent 是透過 MCP 呼叫工具，也可以看<a href="/zh-hant/cli/mcp/">MCP 伺服器</a>。</p>
 
 <h2>安裝</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
@@ -811,6 +822,13 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
 <p><code>marsdawn --version</code> prints the version number, such as <code>0.3.0</code>, and exits with code 0.</p>
+
+<h2>Next</h2>
+<ul>
+  <li>A one-file skill for agents that read instructions instead of a shell: <a href="/cli/skill/">the marsdawn skill</a>.</li>
+  <li>An MCP server that wraps this same <code>export</code>: <a href="/cli/mcp/">marsdawn-mcp</a>.</li>
+  <li>Why this JSON result stays cheap for an agent's own context: <a href="/token-efficient-review/">token-efficient review</a>.</li>
+</ul>
 """,
     },
     ("zh-hant", "cli/agents"): {
@@ -918,6 +936,13 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
 <p><code>marsdawn --version</code> 會印出版本號，例如 <code>0.3.0</code>，並以代碼 0 結束。</p>
+
+<h2>接下來</h2>
+<ul>
+  <li>給讀指令檔而不是執行 shell 的 agent 用的一個檔案：<a href="/zh-hant/cli/skill/">marsdawn skill</a>。</li>
+  <li>包住同一個 <code>export</code> 的 MCP 伺服器：<a href="/zh-hant/cli/mcp/">marsdawn-mcp</a>。</li>
+  <li>這份 JSON 結果為什麼不花 agent 自己的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
+</ul>
 """,
     },
 }
@@ -996,6 +1021,8 @@ marsdawn --version</code></pre>
 <ul>
   <li>Every option and the JSON it prints: <a href="/cli/">Command Line</a>.</li>
   <li>To have a coding agent do this for you: <a href="/cli/skill/">the marsdawn agent skill</a>.</li>
+  <li>All four preview themes, and where PDF export is headed: <a href="/themes/">preview themes and PDF export</a>.</li>
+  <li>Handing the PDF to someone who doesn't use Markdown: <a href="/sharing-exported-pdfs/">sharing a PDF</a>.</li>
 </ul>
 """,
     },
@@ -1026,6 +1053,7 @@ open notes.pdf</code></pre>
 <ul>
   <li>Every option of the command-line tool: <a href="/cli/">Command Line</a>.</li>
   <li>What MarsDawn doesn't do: <a href="/limits/">the list</a>.</li>
+  <li>Reading Markdown in VS Code, a browser or Claude Desktop instead: <a href="/vs/markdown-preview-tools/">how they compare</a>.</li>
 </ul>
 """,
     },
@@ -1056,6 +1084,7 @@ open notes.pdf</code></pre>
 <ul>
   <li>命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。</li>
   <li>MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
+  <li>改用 VS Code、瀏覽器或 Claude Desktop 看 Markdown：<a href="/zh-hant/vs/markdown-preview-tools/">比較一下</a>。</li>
 </ul>
 """,
     },
@@ -1099,6 +1128,8 @@ marsdawn --version</code></pre>
 <ul>
   <li>所有選項和它印出的 JSON：<a href="/zh-hant/cli/">命令列工具</a>。</li>
   <li>讓寫程式的 agent 幫你做這件事：<a href="/zh-hant/cli/skill/">marsdawn 的 agent skill</a>。</li>
+  <li>四種預覽主題，以及 PDF 輸出接下來的規劃：<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
+  <li>把 PDF 交給不寫 Markdown 的人：<a href="/zh-hant/sharing-exported-pdfs/">分享 PDF</a>。</li>
 </ul>
 """,
     },
@@ -1140,6 +1171,7 @@ open notes.pdf</code></pre>
   <li>The full walk-through: <a href="/markdown-to-pdf/">Markdown to PDF</a>.</li>
   <li>What MarsDawn doesn't do: <a href="/limits/">the list</a>.</li>
   <li>Every option of the command-line tool: <a href="/cli/">Command Line</a>.</li>
+  <li>Compared with reading Markdown in VS Code, a browser or Claude Desktop instead: <a href="/vs/markdown-preview-tools/">how they compare</a>.</li>
 </ul>
 """.format(brew=BREW_TAP_INSTALL, langs=APP_UI_LANGUAGES["en"]),
     },
@@ -1181,6 +1213,7 @@ open notes.pdf</code></pre>
   <li>完整步驟：<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</li>
   <li>MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
   <li>命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。</li>
+  <li>和在 VS Code、瀏覽器或 Claude Desktop 看 Markdown 比較：<a href="/zh-hant/vs/markdown-preview-tools/">比較一下</a>。</li>
 </ul>
 """.format(brew=BREW_TAP_INSTALL, langs=APP_UI_LANGUAGES["zh-hant"]),
     },
@@ -1212,7 +1245,7 @@ curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li>It doesn't give itself permission to run anything. Your agent still asks before it installs <code>marsdawn</code> or runs it, as it would for any other command.</li>
   <li>It doesn't send your documents anywhere. <code>marsdawn</code> renders on your Mac, and it leaves out images from the web unless you pass <code>--allow-remote-images</code>.</li>
 </ul>
-<p>The whole contract, every field and every code, is in <a href="/cli/agents/">marsdawn for agents</a>.</p>
+<p>The whole contract, every field and every code, is in <a href="/cli/agents/">marsdawn for agents</a>. For an agent that calls tools over MCP instead of reading a skill file, there's also <a href="/cli/mcp/">an MCP server</a>.</p>
 """,
     },
     ("zh-hant", "cli/skill"): {
@@ -1240,7 +1273,409 @@ curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li>它不會自己取得執行任何東西的權限。你的 agent 在安裝或執行 <code>marsdawn</code> 之前，仍然會先問你，就像執行其他指令一樣。</li>
   <li>它不會把你的文件傳到任何地方。<code>marsdawn</code> 在你的 Mac 上產生 PDF，除非你加上 <code>--allow-remote-images</code>，否則不會載入網路上的圖片。</li>
 </ul>
-<p>完整的規格，每個欄位和每個代碼，都在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡。</p>
+<p>完整的規格，每個欄位和每個代碼，都在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡。如果你的 agent 是透過 MCP 呼叫工具，而不是讀 skill 檔案，也可以用<a href="/zh-hant/cli/mcp/">MCP 伺服器</a>。</p>
+""",
+    },
+}
+
+
+# --- Six pages from the 2026-09-20 product-features brainstorm (issues #48-#53) ----------------
+# Each pair is en + zh-hant, matching the format of AGENT_PAGES / START_PAGES / SKILL_PAGES.
+BRAINSTORM_PAGES = {
+    ("en", "cli/mcp"): {
+        "title": "Three ways to call marsdawn: CLI, skill file, MCP server · MarsDawn",
+        "description": "marsdawn has no AI model of its own, so it doesn't matter which agent wrote the Markdown. Call it from the CLI, a skill file, or the marsdawn-mcp MCP server: all three run the same export.",
+        "body": f"""
+<section class="intro">
+  <h1>Three ways to call marsdawn.</h1>
+  <p>MarsDawn has no AI model of its own: it's built to review Markdown, not write it, so it doesn't matter which agent or model produced the file. There are three ways for an agent or a script to call <code>marsdawn</code>, and all three end up running the same <code>export</code>.</p>
+</section>
+
+<div class="summary"><p><strong>Pick whichever your tooling supports: the free <code>marsdawn</code> CLI, a plain-Markdown skill file, or the <a href="{MCP_URL}">marsdawn-mcp</a> MCP server.</strong> All three call the same <code>marsdawn export</code> and return the same JSON result.</p></div>
+
+<h2>The CLI</h2>
+<p><code>marsdawn export notes.md --json</code> is callable by any agent or script that can run a shell command, model-agnostic by construction. Every field it returns is documented at <a href="/cli/agents/">marsdawn for agents</a>, which is the source of truth for the JSON schema the other two surfaces below point back to.</p>
+
+<h2>The skill file</h2>
+<p>For an agent that reads plain-Markdown instructions instead of calling a shell directly &#8212; Claude Code today &#8212; <a href="/cli/skill/">the marsdawn skill</a> is one file that teaches it to install marsdawn, run <code>export</code> and read the result. It's plain Markdown, so other agents that load instruction files can use the same one.</p>
+
+<h2>The MCP server</h2>
+<p><a href="{MCP_URL}">marsdawn-mcp</a> is a separate, public, {MCP_LICENSE} repository. It's an MCP server with one tool, <code>export_markdown_to_pdf</code>, that wraps <code>marsdawn export --json</code>: point an MCP client at it and the tool call returns the same JSON as the CLI.</p>
+<ul>
+  <li><strong>Get it:</strong> as an MCP Bundle, <code>marsdawn.mcpb</code>, attached to <a href="{MCP_URL}/releases">its GitHub release</a>, or by running the server from source over stdio.</li>
+  <li><strong>Registry:</strong> not yet listed in the MCP Registry (current release: 0.1.0). Check the repository for the current status before relying on registry discovery.</li>
+  <li><strong>Hosting:</strong> self-hosted only. There is no hosted marsdawn-mcp service; the server runs on your own machine, next to marsdawn itself.</li>
+  <li><strong>Requirements:</strong> macOS, marsdawn 0.5.0 or later, and Node.js 20 or later to run the server.</li>
+</ul>
+
+<h2>Same export, three doors</h2>
+<p>Whichever surface calls it, the underlying behavior doesn't change: the same exporter, the same themes and paper sizes, the same <code>diagramErrors</code> when a Mermaid diagram fails to render. This page doesn't repeat that contract &#8212; <a href="/cli/agents/">marsdawn for agents</a> does, in full.</p>
+
+<h2>Next</h2>
+<ul>
+  <li>The full JSON schema and every exit code: <a href="/cli/agents/">marsdawn for agents</a>.</li>
+  <li>The one-file skill for Claude Code and similar agents: <a href="/cli/skill/">the marsdawn skill</a>.</li>
+  <li>Why a compact JSON result matters to your agent's own context: <a href="/token-efficient-review/">token-efficient review</a>.</li>
+</ul>
+""",
+    },
+    ("zh-hant", "cli/mcp"): {
+        "title": "呼叫 marsdawn 的三種方式：CLI、skill 檔案、MCP 伺服器 · MarsDawn",
+        "description": "marsdawn 沒有自己的 AI 模型，是哪個 agent 寫出 Markdown 都無所謂。可以從 CLI、skill 檔案，或 marsdawn-mcp 這個 MCP 伺服器呼叫，三者最後都執行同一個 export。",
+        "body": f"""
+<section class="intro">
+  <h1>呼叫 marsdawn 的三種方式。</h1>
+  <p>MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不是用來寫的，所以是哪個 agent 或模型寫出這份 Markdown 並不重要。agent 或腳本呼叫 <code>marsdawn</code> 有三種方式，最後都會執行同一個 <code>export</code>。</p>
+</section>
+
+<div class="summary"><p><strong>挑你的工具支援的那一種：免費的 <code>marsdawn</code> CLI、純 Markdown 的 skill 檔案，或是 <a href="{MCP_URL}">marsdawn-mcp</a> 這個 MCP 伺服器。</strong>三者都呼叫同一個 <code>marsdawn export</code>，回傳一樣的 JSON 結果。</p></div>
+
+<h2>CLI</h2>
+<p><code>marsdawn export notes.md --json</code> 可以被任何能執行 shell 指令的 agent 或腳本呼叫，因為是命令列工具，天生就跟模型無關。它回傳的每個欄位都寫在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡，那一頁是 JSON schema 的權威來源，底下另外兩種方式都會連回去。</p>
+
+<h2>Skill 檔案</h2>
+<p>如果你的 agent 讀的是純 Markdown 指令，而不是直接執行 shell&#8212;&#8212;目前是 Claude Code&#8212;&#8212;<a href="/zh-hant/cli/skill/">marsdawn skill</a> 就是一個檔案，教它安裝 marsdawn、執行 <code>export</code>、讀懂結果。因為它就是純 Markdown，其他會讀指令檔的 agent 也能用同一個檔案。</p>
+
+<h2>MCP 伺服器</h2>
+<p><a href="{MCP_URL}">marsdawn-mcp</a> 是另一個獨立、公開、{MCP_LICENSE} 授權的 repository。它是一個只有一個工具的 MCP 伺服器，<code>export_markdown_to_pdf</code>，包住 <code>marsdawn export --json</code>：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。</p>
+<ul>
+  <li><strong>取得方式：</strong>以 MCP Bundle（<code>marsdawn.mcpb</code>）的形式附在<a href="{MCP_URL}/releases">GitHub release</a> 上，或從原始碼以 stdio 執行伺服器。</li>
+  <li><strong>Registry：</strong>還沒上架 MCP Registry（目前版本：0.1.0）。要靠 registry 搜尋找到它之前，請先到 repository 確認目前狀態。</li>
+  <li><strong>託管：</strong>只能自架，沒有代管服務。伺服器跑在你自己的機器上，就在 marsdawn 旁邊。</li>
+  <li><strong>系統需求：</strong>macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。</li>
+</ul>
+
+<h2>同一個 export，三扇門</h2>
+<p>不管從哪個介面呼叫，底層行為都一樣：同一套輸出程式、同樣的主題和紙張大小，Mermaid 圖表畫不出來時也是同樣的 <code>diagramErrors</code>。這頁不重複那份規格&#8212;&#8212;<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡有完整內容。</p>
+
+<h2>接下來</h2>
+<ul>
+  <li>完整 JSON schema 和所有離開代碼：<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</li>
+  <li>給 Claude Code 等 agent 用的一個檔案：<a href="/zh-hant/cli/skill/">marsdawn skill</a>。</li>
+  <li>精簡的 JSON 結果為什麼對 agent 自己的 context 很重要：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
+</ul>
+""",
+    },
+    ("en", "token-efficient-review"): {
+        "title": "Reviewing MarsDawn's output without spending your agent's tokens · MarsDawn",
+        "description": "A person reviews the rendered page in MarsDawn, never read back into the agent's context. The tool call itself returns a compact JSON result, not the rendered content, so calling it is cheap too.",
+        "body": """
+<section class="intro">
+  <h1>Review without spending your agent's tokens.</h1>
+  <p>Two separate things stay cheap in this loop: what the agent gets back from calling the tool, and what it takes to confirm the result looks right.</p>
+</section>
+
+<div class="summary"><p><strong>The tool call returns a small JSON object, not the rendered page, and the rendered page itself is reviewed by a person in MarsDawn &#8212; never read back into the agent's context.</strong></p></div>
+
+<h2>The tool call itself is cheap</h2>
+<p>Call <code>marsdawn export</code> &#8212; from the CLI, the skill, or <a href="/cli/mcp/">the MCP server</a> &#8212; and what comes back is <a href="/cli/agents/">a compact JSON object</a>: <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. The full schema is <a href="/schemas/cli/export.v1.json">export.v1.json</a>. None of that is the rendered document. A 50-page PDF with a dozen Mermaid diagrams returns the same handful of fields as a one-page note.</p>
+
+<h2>Review happens off to the side</h2>
+<p>Once the PDF exists, a person opens it &#8212; in MarsDawn, or any PDF viewer &#8212; and reads the diagrams, the math and the layout rendered. The agent never needs that rendered output read back into its own context window to confirm it looks right: the review happens in a separate window, on a separate screen, not as another round-trip of tokens spent describing what a diagram looks like.</p>
+
+<h2>What this avoids</h2>
+<ul>
+  <li>Pasting rendered Markdown, a screenshot, or a description of one back into the conversation just so the agent can confirm the export worked.</li>
+  <li>An agent that has to reconstruct what a Mermaid diagram or a KaTeX formula renders as, rather than a person just looking at it.</li>
+  <li>A second tool call to fetch the PDF's contents after the first one already reported success.</li>
+</ul>
+
+<h2>Next</h2>
+<ul>
+  <li>The three ways to call marsdawn &#8212; CLI, skill file, MCP server: <a href="/cli/mcp/">three ways in</a>.</li>
+  <li>Every field in the JSON result: <a href="/cli/agents/">marsdawn for agents</a>.</li>
+  <li>Why a person still needs to read what an agent wrote: <a href="/reviewing-ai-output/">the case for review</a>.</li>
+</ul>
+""",
+    },
+    ("zh-hant", "token-efficient-review"): {
+        "title": "不花 agent token 的審閱方式 · MarsDawn",
+        "description": "人在 MarsDawn 裡讀排版後的頁面，不會被讀回 agent 的 context。工具呼叫本身回傳的也只是精簡的 JSON，不是排版內容，呼叫本身就很便宜。",
+        "body": """
+<section class="intro">
+  <h1>審閱不花 agent 的 token。</h1>
+  <p>這個循環裡有兩件事分開來看，都很省：agent 呼叫工具拿回什麼，以及確認結果排版正確要花多少力氣。</p>
+</section>
+
+<div class="summary"><p><strong>工具呼叫回傳的是一個小小的 JSON 物件，不是排版後的頁面；排版後的頁面由人在 MarsDawn 裡閱讀&#8212;&#8212;不會被讀回 agent 的 context。</strong></p></div>
+
+<h2>工具呼叫本身很便宜</h2>
+<p>不管是從 CLI、skill，還是<a href="/zh-hant/cli/mcp/">MCP 伺服器</a>呼叫 <code>marsdawn export</code>，回傳的都是<a href="/zh-hant/cli/agents/">精簡的 JSON 物件</a>：<code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 和 <code>diagramErrors</code>。完整 schema 在 <a href="/schemas/cli/export.v1.json">export.v1.json</a>。裡面沒有排版後的文件內容。一份 50 頁、有十幾張 Mermaid 圖表的 PDF，回傳的欄位和一則一頁的筆記一樣多。</p>
+
+<h2>審閱在另一邊進行</h2>
+<p>PDF 產生之後，人會打開它&#8212;&#8212;在 MarsDawn 裡，或任何 PDF 檢視器&#8212;&#8212;閱讀排版好的圖表、數學式和版面。agent 不需要把排版結果讀回自己的 context 才能確認它看起來對：審閱在另一個視窗、另一個畫面上進行，不會變成又一輪花 token 描述一張圖表長什麼樣子。</p>
+
+<h2>這樣省下什麼</h2>
+<ul>
+  <li>不用把排版後的 Markdown、一張截圖，或對截圖的描述貼回對話裡，只為了讓 agent 確認匯出成功。</li>
+  <li>agent 不需要重建 Mermaid 圖表或 KaTeX 公式排版後的樣子，直接讓人去看就好。</li>
+  <li>不需要在第一次呼叫已經回報成功之後，再多一次呼叫去讀取 PDF 的內容。</li>
+</ul>
+
+<h2>接下來</h2>
+<ul>
+  <li>呼叫 marsdawn 的三種方式&#8212;&#8212;CLI、skill 檔案、MCP 伺服器：<a href="/zh-hant/cli/mcp/">三種入口</a>。</li>
+  <li>JSON 結果的每個欄位：<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</li>
+  <li>為什麼還是需要有人讀 agent 寫的東西：<a href="/zh-hant/reviewing-ai-output/">審閱的理由</a>。</li>
+</ul>
+""",
+    },
+    ("en", "vs/markdown-preview-tools"): {
+        "title": "Viewing Markdown elsewhere vs. MarsDawn · MarsDawn",
+        "description": "How MarsDawn compares to reading Markdown in VS Code's built-in preview, a browser extension, or Claude Desktop's file preview: what each renders, and what it takes to open one file.",
+        "body": """
+<section class="intro">
+  <h1>Viewing Markdown elsewhere, vs. MarsDawn.</h1>
+  <p>If you already have VS Code, a browser or Claude Desktop open, reaching for one of them to glance at a Markdown file is reasonable. Here's what each one actually renders, and what it costs to get there, compared with opening the same file in MarsDawn.</p>
+</section>
+
+<h2>VS Code's built-in preview</h2>
+<p>Press <kbd>&#8984;&#8679;V</kbd> in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively &#8212; Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading &#8212; the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app, a roughly 150&#8211;250MB download on a Mac.</p>
+
+<h2>A browser extension for local files</h2>
+<p>No single browser extension dominates for reading a local <code>.md</code> file: Local Markdown Viewer, Markdown Viewer, MarkView and others all do roughly the same thing, and none is a default. Every one of them needs the same extra step before it can open anything: turning on "Allow access to file URLs" for that extension, because browsers block extensions from reading <code>file://</code> pages by default. That's a permission you grant once per extension, and it's easy to forget you did it, or why. Once it's on, the file renders in a browser tab, which means running a full browser to look at one file.</p>
+
+<h2>Claude Desktop's file preview</h2>
+<p>Claude Desktop renders Markdown properly for files already inside a Project or a conversation: frontmatter as a table, headings, bold text and inline code all styled, not raw source. What it isn't built for is browsing arbitrary files on disk &#8212; it previews what's already in the conversation, not a folder of notes. The action on that pane is Download, to get the <code>.md</code> file back, not export to PDF, and there's no offline or local editing: the preview is part of the conversation, not a document you keep open and revise.</p>
+
+<h2>All three live inside a browser engine</h2>
+<p>VS Code and Claude Desktop are both Electron apps: a bundled Chromium and Node.js runtime, not a native Mac app. The browser-extension route runs inside an actual browser. Either way, viewing one Markdown file means a full browser engine is running to show it. MarsDawn is a native AppKit app: a lighter download, opens any local file directly, with no extension to install or permission flag to remember.</p>
+
+<h2>Next</h2>
+<ul>
+  <li>What MarsDawn doesn't do either: <a href="/limits/">the list</a>.</li>
+  <li>Turn any Markdown file into a PDF today, free: <a href="/markdown-to-pdf/">Markdown to PDF</a>.</li>
+  <li>Compared with a Mac-native viewer instead: <a href="/vs/macmd-viewer/">MacMD Viewer vs. MarsDawn</a>.</li>
+</ul>
+""",
+    },
+    ("zh-hant", "vs/markdown-preview-tools"): {
+        "title": "在別處看 Markdown，對比 MarsDawn · MarsDawn",
+        "description": "MarsDawn 對比在 VS Code 內建預覽、瀏覽器擴充功能，或 Claude Desktop 檔案預覽裡看 Markdown：各自能排版出什麼，打開一個檔案要花多少功夫。",
+        "body": """
+<section class="intro">
+  <h1>在別處看 Markdown，對比 MarsDawn。</h1>
+  <p>如果你手邊剛好開著 VS Code、瀏覽器或 Claude Desktop，用它們順手看一眼 Markdown 檔案也合理。以下是它們各自實際排版出什麼、要花多少功夫才能看到，和在 MarsDawn 裡打開同一份檔案的比較。</p>
+</section>
+
+<h2>VS Code 內建的預覽</h2>
+<p>在 VS Code 按 <kbd>&#8984;&#8679;V</kbd>，就會用內建的預覽窗格排版出 Markdown 檔案，免費，不用另外安裝。從 VS Code 1.121（2026 年 5 月）開始，這個預覽也能原生畫出 Mermaid 圖表&#8212;&#8212;微軟把一個 Mermaid 擴充功能併進了 VS Code 本體，以前需要另外裝擴充功能，現在不用了。它做不到的：這是編輯器裡的一個預覽窗格，不是為了閱讀而做的編輯器&#8212;&#8212;窗格旁邊還有檔案樹、終端機和 VS Code 能顯示的其他所有面板，而 VS Code 本身是 Electron app，在 Mac 上下載大約 150 到 250MB。</p>
+
+<h2>看本機檔案的瀏覽器擴充功能</h2>
+<p>看本機 <code>.md</code> 檔案，沒有哪一個瀏覽器擴充功能是主流：Local Markdown Viewer、Markdown Viewer、MarkView 等等做的事都差不多，沒有哪一個是預設會裝的。每一個都要先做同一件事才能打開任何檔案：把該擴充功能的「允許存取檔案網址」打開，因為瀏覽器預設不讓擴充功能讀取 <code>file://</code> 開頭的頁面。這個權限每個擴充功能只要開一次，但也很容易忘記自己開過，或忘記為什麼要開。開了之後，檔案會顯示在瀏覽器分頁裡&#8212;&#8212;也就是說，看一個檔案要開一整個瀏覽器。</p>
+
+<h2>Claude Desktop 的檔案預覽</h2>
+<p>對已經在 Project 或對話裡的檔案，Claude Desktop 能把 Markdown 正確排版出來：frontmatter 顯示成表格，標題、粗體、行內程式碼都有樣式，不是原始碼。它不是為了瀏覽磁碟上任意檔案而做的&#8212;&#8212;它預覽的是已經在對話裡的東西，不是一個資料夾裡的筆記。那個窗格上看得到的動作是「下載」，把 <code>.md</code> 檔案拿回來，不是輸出 PDF，也沒有離線或本機編輯：預覽是對話的一部分，不是一份你可以開著繼續改的文件。</p>
+
+<h2>三者都跑在瀏覽器引擎裡</h2>
+<p>VS Code 和 Claude Desktop 都是 Electron app：內建一套 Chromium 和 Node.js 執行環境，不是原生的 Mac app。走瀏覽器擴充功能這條路，則是真的在瀏覽器裡執行。不管哪一種，看一份 Markdown 檔案都要有一整套瀏覽器引擎在背後跑。MarsDawn 是原生的 AppKit app：下載更輕、直接打開任何本機檔案，不用裝擴充功能，也不用記得開過哪個權限。</p>
+
+<h2>接下來</h2>
+<ul>
+  <li>MarsDawn 也做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
+  <li>今天就能免費把任何 Markdown 檔案轉成 PDF：<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</li>
+  <li>和一個 Mac 原生的檢視器比較：<a href="/zh-hant/vs/macmd-viewer/">MacMD Viewer 對比 MarsDawn</a>。</li>
+</ul>
+""",
+    },
+    ("en", "themes"): {
+        "title": "Preview themes and PDF export in MarsDawn · MarsDawn",
+        "description": "Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. More importable themes, and a gallery to share your own, are planned.",
+        "body": """
+<section class="intro">
+  <h1>Eight looks, one export.</h1>
+  <p>MarsDawn ships four preview themes, Dawn, Classic, Modern and Vivid, each with a light and a dark palette &#8212; eight combinations to read a document in. Export to PDF or print, and the page comes out in whichever one you were reading.</p>
+</section>
+
+<div class="summary"><p><strong>Four themes &#215; light and dark = eight ways to read a document, and one export path that matches whichever you chose.</strong> More importable themes, and a gallery to share your own, are planned &#8212; not built yet.</p></div>
+
+<h2>The four themes</h2>
+<ul>
+  <li><strong>Dawn</strong>, the default: the same warm paper and Mars Rust accent this site is built from.</li>
+  <li><strong>Classic</strong> (典雅): a plainer, document-like palette.</li>
+  <li><strong>Modern</strong> (流行): a cooler, more contemporary palette.</li>
+  <li><strong>Vivid</strong> (活潑): a brighter, higher-contrast palette.</li>
+</ul>
+<p>Each one has its own light and dark variant, so switching your Mac's appearance switches the theme's palette with it, not just the interface chrome.</p>
+
+<h2>PDF export and print use the same theme</h2>
+<p>Export to PDF or print, and the page uses your theme's light palette: Mermaid diagrams are drawn into it, code blocks keep their syntax highlighting, and page breaks avoid splitting a heading from its section or cutting a table or diagram in half. The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so a script or an agent produces the identical PDF, in any of the four themes, with <code>--theme</code>.</p>
+
+<h2>Planned: more themes, and a gallery</h2>
+<p>Coming later, not shipped yet: more importable preview themes, and a gallery on this site where people can submit their own. <code>/themes/v1/</code> is already reserved for it. Until that ships, the four built-in themes are what MarsDawn has, and you can't install others.</p>
+
+<h2>Next</h2>
+<ul>
+  <li>The full PDF export walk-through, from the command line: <a href="/markdown-to-pdf/">Markdown to PDF</a>.</li>
+  <li>What MarsDawn doesn't do yet: <a href="/limits/">the list</a>.</li>
+  <li>Handing an exported PDF to someone who doesn't use Markdown: <a href="/sharing-exported-pdfs/">sharing a PDF</a>.</li>
+</ul>
+""",
+    },
+    ("zh-hant", "themes"): {
+        "title": "MarsDawn 的預覽主題與 PDF 輸出 · MarsDawn",
+        "description": "四種主題，各有淺色與深色，一套輸出對應你正在看的主題。更多可匯入的主題，和讓大家投稿主題的主題庫，都在規劃中。",
+        "body": """
+<section class="intro">
+  <h1>八種樣子，一套輸出。</h1>
+  <p>MarsDawn 內建四種預覽主題：Dawn、Classic、Modern 和 Vivid，各有淺色與深色&#8212;&#8212;八種讀文件的樣子。輸出成 PDF 或列印，出來的就是你正在讀的那個樣子。</p>
+</section>
+
+<div class="summary"><p><strong>四種主題 &#215; 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。</strong>更多可匯入的主題，還有讓大家投稿主題的主題庫，都還在規劃中，尚未推出。</p></div>
+
+<h2>四種主題</h2>
+<ul>
+  <li><strong>Dawn</strong>，預設主題：和這個網站一樣的暖色紙感與 Mars Rust 強調色。</li>
+  <li><strong>Classic（典雅）：</strong>比較樸素、像紙本文件的配色。</li>
+  <li><strong>Modern（流行）：</strong>比較冷調、當代感的配色。</li>
+  <li><strong>Vivid（活潑）：</strong>比較明亮、對比較高的配色。</li>
+</ul>
+<p>每種主題都有各自的淺色和深色版本，所以切換 Mac 的外觀，連帶切換的是主題本身的配色，不只是介面的顏色。</p>
+
+<h2>PDF 輸出和列印用同一個主題</h2>
+<p>輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開表格與圖表。免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>使用同一套輸出程式，所以腳本或 agent 也能用 <code>--theme</code> 產生一模一樣的 PDF，四種主題都可以。</p>
+
+<h2>規劃中：更多主題，還有主題庫</h2>
+<p>之後會推出、但現在還沒做的：更多可匯入的預覽主題，以及一個讓大家投稿自己主題的網站主題庫。<code>/themes/v1/</code> 這個路徑已經為它保留。在那之前，MarsDawn 有的就是這四種內建主題，無法安裝其他的。</p>
+
+<h2>接下來</h2>
+<ul>
+  <li>完整的 PDF 輸出步驟，從命令列開始：<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</li>
+  <li>MarsDawn 現在還做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
+  <li>把輸出的 PDF 交給不寫 Markdown 的人：<a href="/zh-hant/sharing-exported-pdfs/">分享 PDF</a>。</li>
+</ul>
+""",
+    },
+    ("en", "sharing-exported-pdfs"): {
+        "title": "Share what an agent wrote, without teaching Markdown · MarsDawn",
+        "description": "Export an agent's Markdown to PDF and hand it to a colleague who doesn't read Markdown and won't install anything. No syntax, no app and no account needed to open it.",
+        "body": """
+<section class="intro">
+  <h1>Hand them the PDF, not the Markdown.</h1>
+  <p>An agent finishes a document, you review and revise it, and then someone outside engineering needs to read it too &#8212; a manager, a client, someone on another team. They don't need to know what <code>##</code> or a pipe table means. Export to PDF and hand them that instead.</p>
+</section>
+
+<div class="summary"><p><strong>Export the reviewed document to PDF and send that file.</strong> It opens in anything, needs no Markdown knowledge and no install, and looks the way you saw it in the preview &#8212; diagrams, tables and formatting included.</p></div>
+
+<h2>Why not just send the .md file</h2>
+<p>A raw <code>.md</code> file opened in a plain text editor shows the marks, not the page: <code>#</code> for a heading, <code>**</code> around bold text, a fenced block for a Mermaid diagram that isn't drawn. Someone who doesn't write Markdown doesn't read any of that as intended, and asking them to install a viewer first is asking a lot for one document.</p>
+
+<h2>Why not a screenshot</h2>
+<p>A screenshot freezes one screen's worth of a document that may run to several pages, can't be searched or selected, and reads worse once it's compressed and forwarded a few times. A PDF keeps the text, the diagrams and the page breaks intact, at any length.</p>
+
+<h2>What a PDF gets you</h2>
+<ul>
+  <li>Opens in whatever the recipient already has &#8212; Preview, a browser, Acrobat, their phone &#8212; no Markdown tool required.</li>
+  <li>Mermaid diagrams are drawn in, not left as code; code blocks keep their highlighting.</li>
+  <li>Page breaks are chosen so a heading doesn't land alone at the bottom of a page, and a table or diagram isn't split across two.</li>
+  <li>The same file whether it came from the MarsDawn app or the free command line &#8212; see <a href="/markdown-to-pdf/">Markdown to PDF</a> for that walk-through.</li>
+</ul>
+
+<h2>Next</h2>
+<ul>
+  <li>The themes and layouts the export can come from: <a href="/themes/">preview themes and PDF export</a>.</li>
+  <li>Export from a script or an agent instead of the app: <a href="/cli/agents/">marsdawn for agents</a>.</li>
+  <li>Why a person still needs to read the document first: <a href="/reviewing-ai-output/">the case for review</a>.</li>
+</ul>
+""",
+    },
+    ("zh-hant", "sharing-exported-pdfs"): {
+        "title": "把 agent 寫的東西交出去，不用教對方 Markdown · MarsDawn",
+        "description": "把 agent 寫的 Markdown 輸出成 PDF，交給不寫 Markdown、也不會安裝任何東西的同事。不用懂語法，不用裝 app，也不需要帳號就能打開。",
+        "body": """
+<section class="intro">
+  <h1>把 PDF 交出去，不是把 Markdown 交出去。</h1>
+  <p>agent 寫完一份文件，你審閱、修改過後，公司裡不寫程式的人也要看&#8212;&#8212;主管、客戶，或另一個團隊的人。他們不需要知道 <code>##</code> 或表格的直線符號是什麼意思。輸出成 PDF，交給他們那份就好。</p>
+</section>
+
+<div class="summary"><p><strong>把審閱過的文件輸出成 PDF，傳那個檔案就好。</strong>它在任何地方都打得開，不需要懂 Markdown，也不用安裝任何東西，看起來就跟你在預覽裡看到的一樣&#8212;&#8212;圖表、表格、格式都在。</p></div>
+
+<h2>為什麼不直接傳 .md 檔案</h2>
+<p>用純文字編輯器打開 <code>.md</code> 檔案，看到的是記號，不是排好版的頁面：<code>#</code> 是標題，<code>**</code> 包住粗體文字，圍住 Mermaid 圖表的程式碼區塊沒有畫出圖。不寫 Markdown 的人看不出這些記號原本要呈現什麼，而為了一份文件就要對方先裝一個檢視器，也要求太多。</p>
+
+<h2>為什麼不直接傳截圖</h2>
+<p>截圖只能定格文件的其中一畫面，文件可能有好幾頁，內容不能搜尋也不能選取，轉傳個幾次、被壓縮後也會更難讀。PDF 不管文件多長，都能保留文字、圖表和分頁。</p>
+
+<h2>PDF 能給你什麼</h2>
+<ul>
+  <li>對方已經有的東西就能打開&#8212;&#8212;Preview、瀏覽器、Acrobat、手機都行，不需要任何 Markdown 工具。</li>
+  <li>Mermaid 圖表會畫出來，不會留著程式碼原樣；程式碼區塊保留語法上色。</li>
+  <li>分頁位置經過安排，標題不會孤零零留在頁尾，表格或圖表也不會被切成兩半。</li>
+  <li>不管是從 MarsDawn app 還是免費的命令列輸出，得到的都是同一份檔案&#8212;&#8212;完整步驟請看<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</li>
+</ul>
+
+<h2>接下來</h2>
+<ul>
+  <li>可以用哪些主題和版面輸出：<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
+  <li>從腳本或 agent 輸出，而不是從 app：<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</li>
+  <li>為什麼還是要先有人讀過這份文件：<a href="/zh-hant/reviewing-ai-output/">審閱的理由</a>。</li>
+</ul>
+""",
+    },
+    ("en", "reviewing-ai-output"): {
+        "title": "Why AI output still needs a human reader · MarsDawn",
+        "description": "AI-written Markdown still has to be understood by a person, not trusted on sight. MarsDawn pairs the rendered page with the source, and draws Mermaid diagrams and KaTeX math, so structure is legible at a glance.",
+        "body": """
+<section class="intro">
+  <h1>An agent writes it. You still have to understand it.</h1>
+  <p>An AI agent can draft a plan, a spec or a set of notes quickly. What it produces still has to be understood by the person who acts on it &#8212; not trusted because it reads fluently.</p>
+</section>
+
+<div class="summary"><p><strong>MarsDawn is built for that read: the rendered page next to the source, with Mermaid diagrams and KaTeX math drawn out instead of left as marks, so a document's structure is legible at a glance.</strong></p></div>
+
+<h2>Fluent isn't the same as correct</h2>
+<p>Writing about AI-assisted coding, Simon Willison put it this way about code that will be worked on again, not thrown away: &#8220;the quality and understandability of the underlying code is crucial&#8221; (<a href="https://simonwillison.net/2025/Mar/6/vibe-coding/">Vibe coding</a>, 2025). The same holds for a document: an agent's draft that reads smoothly can still get the structure, the numbers or the logic wrong, and fluent prose doesn't announce which parts to check.</p>
+
+<h2>Inference, not compilation</h2>
+<p>Birgitta B&#246;ckeler, writing for Thoughtworks, draws the distinction plainly: &#8220;LLMs are NOT compilers, interpreters, transpilers or assemblers of natural language, they are inferrers&#8221; (<a href="https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html">I still care about the code</a>). A compiler either accepts your input or reports an error; an agent can hand back something that runs, or reads, without being right. Somebody still has to check it.</p>
+
+<h2>What MarsDawn gives that reader</h2>
+<ul>
+  <li>The rendered page next to the source, updating as either side changes, so a claim in the text and the way it's structured are both in view at once.</li>
+  <li>Mermaid diagrams drawn out: a flowchart an agent described in text becomes a shape you can actually follow.</li>
+  <li>KaTeX math rendered, not left as a string of backslashes: a formula reads as a formula.</li>
+  <li>Nothing runs on its own. MarsDawn doesn't grade, summarize or flag the document for you &#8212; it puts the structure in front of you so you can.</li>
+</ul>
+
+<h2>Next</h2>
+<ul>
+  <li>How that review stays cheap for the agent's own context: <a href="/token-efficient-review/">token-efficient review</a>.</li>
+  <li>Handing the reviewed document to someone else: <a href="/sharing-exported-pdfs/">sharing a PDF</a>.</li>
+  <li>What MarsDawn is, in one page: <a href="/">the home page</a>.</li>
+</ul>
+""",
+    },
+    ("zh-hant", "reviewing-ai-output"): {
+        "title": "為什麼 AI 寫的東西還是需要人讀過 · MarsDawn",
+        "description": "AI 寫的 Markdown 還是得由人來理解，不能因為讀起來通順就直接相信。MarsDawn 把排版後的頁面和原始碼並排，也把 Mermaid 圖表與 KaTeX 數學式畫出來，讓結構一眼就看得懂。",
+        "body": """
+<section class="intro">
+  <h1>agent 寫出來，還是得由你理解。</h1>
+  <p>AI agent 可以很快寫出一份計畫、一份規格或一堆筆記。它寫出來的東西，還是得由要照著做的人去理解&#8212;&#8212;不能因為讀起來通順，就直接相信。</p>
+</section>
+
+<div class="summary"><p><strong>MarsDawn 就是為了這種閱讀而做的：排版後的頁面和原始碼並排，Mermaid 圖表和 KaTeX 數學式直接畫出來，而不是留著記號，讓文件的結構一眼就看得懂。</strong></p></div>
+
+<h2>讀起來通順，不代表是對的</h2>
+<p>Simon Willison 在談 AI 輔助寫程式時，對那些還會被繼續維護、不是寫完就丟的程式碼這麼說：「the quality and understandability of the underlying code is crucial」（底層程式碼的品質和是否容易理解，至關重要，<a href="https://simonwillison.net/2025/Mar/6/vibe-coding/">Vibe coding</a>，2025）。文件也一樣：agent 寫出來讀起來很順的草稿，結構、數字或邏輯還是可能是錯的，而通順的文字並不會告訴你哪裡該多留意。</p>
+
+<h2>是推論，不是編譯</h2>
+<p>Thoughtworks 的 Birgitta B&#246;ckeler 講得很直接：「LLMs are NOT compilers, interpreters, transpilers or assemblers of natural language, they are inferrers」（LLM 不是自然語言的編譯器、直譯器、轉譯器或組譯器，它們是推論器，<a href="https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html">I still care about the code</a>）。編譯器要嘛接受你的輸入，要嘛回報錯誤；agent 給你的東西即使能跑、讀起來也通順，也不保證是對的。還是得有人檢查。</p>
+
+<h2>MarsDawn 給讀的人什麼</h2>
+<ul>
+  <li>排版後的頁面和原始碼並排，兩邊一改就同步更新，讓文字裡的說法和它的結構同時在你眼前。</li>
+  <li>Mermaid 圖表畫出來：agent 用文字描述的流程圖，變成一個你真的能看懂的形狀。</li>
+  <li>KaTeX 數學式排版出來，不是留著一串反斜線：公式看起來就是公式。</li>
+  <li>它本身不會自動做任何事。MarsDawn 不會幫你評分、摘要或標記這份文件&#8212;&#8212;它只是把結構攤在你面前，讓你自己判斷。</li>
+</ul>
+
+<h2>接下來</h2>
+<ul>
+  <li>這樣的審閱怎麼不花 agent 自己的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
+  <li>把審閱過的文件交給別人：<a href="/zh-hant/sharing-exported-pdfs/">分享 PDF</a>。</li>
+  <li>MarsDawn 是什麼，一頁講完：<a href="/zh-hant/">首頁</a>。</li>
+</ul>
 """,
     },
 }
@@ -1613,7 +2048,7 @@ TRAIT_PAGES = {
   <li><strong>Sharing:</strong> there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.</li>
   <li><strong>Editing:</strong> you write Markdown on the left and read the page on the right; the page itself can't be edited.</li>
   <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
-  <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others.</li>
+  <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet — see <a href="/themes/">preview themes and PDF export</a> for what's planned.</li>
   <li><strong>Other files:</strong> plain text files and PDFs open read-only.</li>
   <li><strong>After the trial:</strong> if you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.</li>
   <li><strong>System:</strong> MarsDawn needs macOS 26 or later.</li>
@@ -1638,7 +2073,7 @@ TRAIT_PAGES = {
   <li><strong>分享：</strong>沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。</li>
   <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
   <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
-  <li><strong>主題：</strong>內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，無法安裝其他主題。</li>
+  <li><strong>主題：</strong>內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
   <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
   <li><strong>試用結束後：</strong>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</li>
   <li><strong>系統：</strong>MarsDawn 需要 macOS 26 以上。</li>
@@ -1793,11 +2228,15 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill"]
+PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
+              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "sharing-exported-pdfs", "reviewing-ai-output"]
 SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
                   "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
-                  "vs/macmd-viewer": "vs-macmd-viewer"}
+                  "vs/macmd-viewer": "vs-macmd-viewer",
+                  "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
+                  "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes",
+                  "sharing-exported-pdfs": "sharing-exported-pdfs", "reviewing-ai-output": "reviewing-ai-output"}
 
 
 def _base_pages() -> dict:
@@ -1807,6 +2246,7 @@ def _base_pages() -> dict:
     merged.update(START_PAGES)
     merged.update(SKILL_PAGES)
     merged.update(TRAIT_PAGES)
+    merged.update(BRAINSTORM_PAGES)
     return merged
 
 

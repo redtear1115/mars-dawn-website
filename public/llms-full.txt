@@ -158,7 +158,7 @@ In this screenshot:
 - **Sharing:** there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.
 - **Editing:** you write Markdown on the left and read the page on the right; the page itself can't be edited.
 - **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
-- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others.
+- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet — see [preview themes and PDF export](/themes/) for what's planned.
 - **Other files:** plain text files and PDFs open read-only.
 - **After the trial:** if you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
 - **System:** MarsDawn needs macOS 26 or later.
@@ -315,6 +315,7 @@ If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent
 
 - Every option of the command-line tool: [Command Line](/cli/).
 - What MarsDawn doesn't do: [the list](/limits/).
+- Reading Markdown in VS Code, a browser or Claude Desktop instead: [how they compare](/vs/markdown-preview-tools/).
 
 ---
 
@@ -405,6 +406,8 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 - Every option and the JSON it prints: [Command Line](/cli/).
 - To have a coding agent do this for you: [the marsdawn agent skill](/cli/skill/).
+- All four preview themes, and where PDF export is headed: [preview themes and PDF export](/themes/).
+- Handing the PDF to someone who doesn't use Markdown: [sharing a PDF](/sharing-exported-pdfs/).
 
 ---
 
@@ -453,6 +456,7 @@ open notes.pdf
 - The full walk-through: [Markdown to PDF](/markdown-to-pdf/).
 - What MarsDawn doesn't do: [the list](/limits/).
 - Every option of the command-line tool: [Command Line](/cli/).
+- Compared with reading Markdown in VS Code, a browser or Claude Desktop instead: [how they compare](/vs/markdown-preview-tools/).
 
 ---
 
@@ -466,7 +470,7 @@ The free `marsdawn` command-line tool: export Markdown to PDF from a shell or an
 
 **marsdawn is free and distributed separately from the Mac App Store.** Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. `export` works on its own; `open` needs the MarsDawn app.
 
-Calling marsdawn from an AI agent or a script? See [marsdawn for agents](/cli/agents/) for the JSON output, its schemas and every exit code.
+Calling marsdawn from an AI agent or a script? See [marsdawn for agents](/cli/agents/) for the JSON output, its schemas and every exit code, or [the MCP server](/cli/mcp/) if your agent calls tools over MCP instead.
 
 ## Install
 
@@ -677,6 +681,12 @@ swift build -c release --product marsdawn
 
 `marsdawn --version` prints the version number, such as `0.3.0`, and exits with code 0.
 
+## Next
+
+- A one-file skill for agents that read instructions instead of a shell: [the marsdawn skill](/cli/skill/).
+- An MCP server that wraps this same `export`: [marsdawn-mcp](/cli/mcp/).
+- Why this JSON result stays cheap for an agent's own context: [token-efficient review](/token-efficient-review/).
+
 ---
 
 ## Agent skill
@@ -710,7 +720,211 @@ Other agents can use the same file. It's plain Markdown, instructions and comman
 - It doesn't give itself permission to run anything. Your agent still asks before it installs `marsdawn` or runs it, as it would for any other command.
 - It doesn't send your documents anywhere. `marsdawn` renders on your Mac, and it leaves out images from the web unless you pass `--allow-remote-images`.
 
-The whole contract, every field and every code, is in [marsdawn for agents](/cli/agents/).
+The whole contract, every field and every code, is in [marsdawn for agents](/cli/agents/). For an agent that calls tools over MCP instead of reading a skill file, there's also [an MCP server](/cli/mcp/).
+
+---
+
+## MCP server
+
+Source: https://marsdawn.southern-light.dev/cli/mcp/
+
+# Three ways to call marsdawn.
+
+MarsDawn has no AI model of its own: it's built to review Markdown, not write it, so it doesn't matter which agent or model produced the file. There are three ways for an agent or a script to call `marsdawn`, and all three end up running the same `export`.
+
+**Pick whichever your tooling supports: the free `marsdawn` CLI, a plain-Markdown skill file, or the [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) MCP server.** All three call the same `marsdawn export` and return the same JSON result.
+
+## The CLI
+
+`marsdawn export notes.md --json` is callable by any agent or script that can run a shell command, model-agnostic by construction. Every field it returns is documented at [marsdawn for agents](/cli/agents/), which is the source of truth for the JSON schema the other two surfaces below point back to.
+
+## The skill file
+
+For an agent that reads plain-Markdown instructions instead of calling a shell directly — Claude Code today — [the marsdawn skill](/cli/skill/) is one file that teaches it to install marsdawn, run `export` and read the result. It's plain Markdown, so other agents that load instruction files can use the same one.
+
+## The MCP server
+
+[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) is a separate, public, Apache-2.0 repository. It's an MCP server with one tool, `export_markdown_to_pdf`, that wraps `marsdawn export --json`: point an MCP client at it and the tool call returns the same JSON as the CLI.
+
+- **Get it:** as an MCP Bundle, `marsdawn.mcpb`, attached to [its GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases), or by running the server from source over stdio.
+- **Registry:** not yet listed in the MCP Registry (current release: 0.1.0). Check the repository for the current status before relying on registry discovery.
+- **Hosting:** self-hosted only. There is no hosted marsdawn-mcp service; the server runs on your own machine, next to marsdawn itself.
+- **Requirements:** macOS, marsdawn 0.5.0 or later, and Node.js 20 or later to run the server.
+
+## Same export, three doors
+
+Whichever surface calls it, the underlying behavior doesn't change: the same exporter, the same themes and paper sizes, the same `diagramErrors` when a Mermaid diagram fails to render. This page doesn't repeat that contract — [marsdawn for agents](/cli/agents/) does, in full.
+
+## Next
+
+- The full JSON schema and every exit code: [marsdawn for agents](/cli/agents/).
+- The one-file skill for Claude Code and similar agents: [the marsdawn skill](/cli/skill/).
+- Why a compact JSON result matters to your agent's own context: [token-efficient review](/token-efficient-review/).
+
+---
+
+## Token-efficient review
+
+Source: https://marsdawn.southern-light.dev/token-efficient-review/
+
+# Review without spending your agent's tokens.
+
+Two separate things stay cheap in this loop: what the agent gets back from calling the tool, and what it takes to confirm the result looks right.
+
+**The tool call returns a small JSON object, not the rendered page, and the rendered page itself is reviewed by a person in MarsDawn — never read back into the agent's context.**
+
+## The tool call itself is cheap
+
+Call `marsdawn export` — from the CLI, the skill, or [the MCP server](/cli/mcp/) — and what comes back is [a compact JSON object](/cli/agents/): `ok`, `output`, `pages`, `theme`, `paper` and `diagramErrors`. The full schema is [export.v1.json](/schemas/cli/export.v1.json). None of that is the rendered document. A 50-page PDF with a dozen Mermaid diagrams returns the same handful of fields as a one-page note.
+
+## Review happens off to the side
+
+Once the PDF exists, a person opens it — in MarsDawn, or any PDF viewer — and reads the diagrams, the math and the layout rendered. The agent never needs that rendered output read back into its own context window to confirm it looks right: the review happens in a separate window, on a separate screen, not as another round-trip of tokens spent describing what a diagram looks like.
+
+## What this avoids
+
+- Pasting rendered Markdown, a screenshot, or a description of one back into the conversation just so the agent can confirm the export worked.
+- An agent that has to reconstruct what a Mermaid diagram or a KaTeX formula renders as, rather than a person just looking at it.
+- A second tool call to fetch the PDF's contents after the first one already reported success.
+
+## Next
+
+- The three ways to call marsdawn — CLI, skill file, MCP server: [three ways in](/cli/mcp/).
+- Every field in the JSON result: [marsdawn for agents](/cli/agents/).
+- Why a person still needs to read what an agent wrote: [the case for review](/reviewing-ai-output/).
+
+---
+
+## Viewing Markdown elsewhere vs. MarsDawn
+
+Source: https://marsdawn.southern-light.dev/vs/markdown-preview-tools/
+
+# Viewing Markdown elsewhere, vs. MarsDawn.
+
+If you already have VS Code, a browser or Claude Desktop open, reaching for one of them to glance at a Markdown file is reasonable. Here's what each one actually renders, and what it costs to get there, compared with opening the same file in MarsDawn.
+
+## VS Code's built-in preview
+
+Press `⌘⇧V` in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively — Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading — the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app, a roughly 150–250MB download on a Mac.
+
+## A browser extension for local files
+
+No single browser extension dominates for reading a local `.md` file: Local Markdown Viewer, Markdown Viewer, MarkView and others all do roughly the same thing, and none is a default. Every one of them needs the same extra step before it can open anything: turning on "Allow access to file URLs" for that extension, because browsers block extensions from reading `file://` pages by default. That's a permission you grant once per extension, and it's easy to forget you did it, or why. Once it's on, the file renders in a browser tab, which means running a full browser to look at one file.
+
+## Claude Desktop's file preview
+
+Claude Desktop renders Markdown properly for files already inside a Project or a conversation: frontmatter as a table, headings, bold text and inline code all styled, not raw source. What it isn't built for is browsing arbitrary files on disk — it previews what's already in the conversation, not a folder of notes. The action on that pane is Download, to get the `.md` file back, not export to PDF, and there's no offline or local editing: the preview is part of the conversation, not a document you keep open and revise.
+
+## All three live inside a browser engine
+
+VS Code and Claude Desktop are both Electron apps: a bundled Chromium and Node.js runtime, not a native Mac app. The browser-extension route runs inside an actual browser. Either way, viewing one Markdown file means a full browser engine is running to show it. MarsDawn is a native AppKit app: a lighter download, opens any local file directly, with no extension to install or permission flag to remember.
+
+## Next
+
+- What MarsDawn doesn't do either: [the list](/limits/).
+- Turn any Markdown file into a PDF today, free: [Markdown to PDF](/markdown-to-pdf/).
+- Compared with a Mac-native viewer instead: [MacMD Viewer vs. MarsDawn](/vs/macmd-viewer/).
+
+---
+
+## Preview themes and PDF export
+
+Source: https://marsdawn.southern-light.dev/themes/
+
+# Eight looks, one export.
+
+MarsDawn ships four preview themes, Dawn, Classic, Modern and Vivid, each with a light and a dark palette — eight combinations to read a document in. Export to PDF or print, and the page comes out in whichever one you were reading.
+
+**Four themes × light and dark = eight ways to read a document, and one export path that matches whichever you chose.** More importable themes, and a gallery to share your own, are planned — not built yet.
+
+## The four themes
+
+- **Dawn**, the default: the same warm paper and Mars Rust accent this site is built from.
+- **Classic** (典雅): a plainer, document-like palette.
+- **Modern** (流行): a cooler, more contemporary palette.
+- **Vivid** (活潑): a brighter, higher-contrast palette.
+
+Each one has its own light and dark variant, so switching your Mac's appearance switches the theme's palette with it, not just the interface chrome.
+
+## PDF export and print use the same theme
+
+Export to PDF or print, and the page uses your theme's light palette: Mermaid diagrams are drawn into it, code blocks keep their syntax highlighting, and page breaks avoid splitting a heading from its section or cutting a table or diagram in half. The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script or an agent produces the identical PDF, in any of the four themes, with `--theme`.
+
+## Planned: more themes, and a gallery
+
+Coming later, not shipped yet: more importable preview themes, and a gallery on this site where people can submit their own. `/themes/v1/` is already reserved for it. Until that ships, the four built-in themes are what MarsDawn has, and you can't install others.
+
+## Next
+
+- The full PDF export walk-through, from the command line: [Markdown to PDF](/markdown-to-pdf/).
+- What MarsDawn doesn't do yet: [the list](/limits/).
+- Handing an exported PDF to someone who doesn't use Markdown: [sharing a PDF](/sharing-exported-pdfs/).
+
+---
+
+## Sharing exported PDFs
+
+Source: https://marsdawn.southern-light.dev/sharing-exported-pdfs/
+
+# Hand them the PDF, not the Markdown.
+
+An agent finishes a document, you review and revise it, and then someone outside engineering needs to read it too — a manager, a client, someone on another team. They don't need to know what `##` or a pipe table means. Export to PDF and hand them that instead.
+
+**Export the reviewed document to PDF and send that file.** It opens in anything, needs no Markdown knowledge and no install, and looks the way you saw it in the preview — diagrams, tables and formatting included.
+
+## Why not just send the .md file
+
+A raw `.md` file opened in a plain text editor shows the marks, not the page: `#` for a heading, `**` around bold text, a fenced block for a Mermaid diagram that isn't drawn. Someone who doesn't write Markdown doesn't read any of that as intended, and asking them to install a viewer first is asking a lot for one document.
+
+## Why not a screenshot
+
+A screenshot freezes one screen's worth of a document that may run to several pages, can't be searched or selected, and reads worse once it's compressed and forwarded a few times. A PDF keeps the text, the diagrams and the page breaks intact, at any length.
+
+## What a PDF gets you
+
+- Opens in whatever the recipient already has — Preview, a browser, Acrobat, their phone — no Markdown tool required.
+- Mermaid diagrams are drawn in, not left as code; code blocks keep their highlighting.
+- Page breaks are chosen so a heading doesn't land alone at the bottom of a page, and a table or diagram isn't split across two.
+- The same file whether it came from the MarsDawn app or the free command line — see [Markdown to PDF](/markdown-to-pdf/) for that walk-through.
+
+## Next
+
+- The themes and layouts the export can come from: [preview themes and PDF export](/themes/).
+- Export from a script or an agent instead of the app: [marsdawn for agents](/cli/agents/).
+- Why a person still needs to read the document first: [the case for review](/reviewing-ai-output/).
+
+---
+
+## Why AI output still needs a human reader
+
+Source: https://marsdawn.southern-light.dev/reviewing-ai-output/
+
+# An agent writes it. You still have to understand it.
+
+An AI agent can draft a plan, a spec or a set of notes quickly. What it produces still has to be understood by the person who acts on it — not trusted because it reads fluently.
+
+**MarsDawn is built for that read: the rendered page next to the source, with Mermaid diagrams and KaTeX math drawn out instead of left as marks, so a document's structure is legible at a glance.**
+
+## Fluent isn't the same as correct
+
+Writing about AI-assisted coding, Simon Willison put it this way about code that will be worked on again, not thrown away: “the quality and understandability of the underlying code is crucial” ([Vibe coding](https://simonwillison.net/2025/Mar/6/vibe-coding/), 2025). The same holds for a document: an agent's draft that reads smoothly can still get the structure, the numbers or the logic wrong, and fluent prose doesn't announce which parts to check.
+
+## Inference, not compilation
+
+Birgitta Böckeler, writing for Thoughtworks, draws the distinction plainly: “LLMs are NOT compilers, interpreters, transpilers or assemblers of natural language, they are inferrers” ([I still care about the code](https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html)). A compiler either accepts your input or reports an error; an agent can hand back something that runs, or reads, without being right. Somebody still has to check it.
+
+## What MarsDawn gives that reader
+
+- The rendered page next to the source, updating as either side changes, so a claim in the text and the way it's structured are both in view at once.
+- Mermaid diagrams drawn out: a flowchart an agent described in text becomes a shape you can actually follow.
+- KaTeX math rendered, not left as a string of backslashes: a formula reads as a formula.
+- Nothing runs on its own. MarsDawn doesn't grade, summarize or flag the document for you — it puts the structure in front of you so you can.
+
+## Next
+
+- How that review stays cheap for the agent's own context: [token-efficient review](/token-efficient-review/).
+- Handing the reviewed document to someone else: [sharing a PDF](/sharing-exported-pdfs/).
+- What MarsDawn is, in one page: [the home page](/).
 
 ---
 
@@ -872,7 +1086,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 - **分享：**沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。
 - **編輯：**你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。
 - **格式：**MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。
-- **主題：**內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，無法安裝其他主題。
+- **主題：**內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看[預覽主題與 PDF 輸出](/zh-hant/themes/)。
 - **其他檔案：**純文字檔和 PDF 以唯讀方式開啟。
 - **試用結束後：**如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。
 - **系統：**MarsDawn 需要 macOS 26 以上。
@@ -1029,6 +1243,7 @@ MarsDawn 是為 Mac 做的 Markdown 編輯器，即將在 Mac App Store 上架�
 
 - 命令列工具的所有選項：[命令列工具](/zh-hant/cli/)。
 - MarsDawn 做不到的事：[這份清單](/zh-hant/limits/)。
+- 改用 VS Code、瀏覽器或 Claude Desktop 看 Markdown：[比較一下](/zh-hant/vs/markdown-preview-tools/)。
 
 ---
 
@@ -1119,6 +1334,8 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 - 所有選項和它印出的 JSON：[命令列工具](/zh-hant/cli/)。
 - 讓寫程式的 agent 幫你做這件事：[marsdawn 的 agent skill](/zh-hant/cli/skill/)。
+- 四種預覽主題，以及 PDF 輸出接下來的規劃：[預覽主題與 PDF 輸出](/zh-hant/themes/)。
+- 把 PDF 交給不寫 Markdown 的人：[分享 PDF](/zh-hant/sharing-exported-pdfs/)。
 
 ---
 
@@ -1167,6 +1384,7 @@ open notes.pdf
 - 完整步驟：[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
 - MarsDawn 做不到的事：[這份清單](/zh-hant/limits/)。
 - 命令列工具的所有選項：[命令列工具](/zh-hant/cli/)。
+- 和在 VS Code、瀏覽器或 Claude Desktop 看 Markdown 比較：[比較一下](/zh-hant/vs/markdown-preview-tools/)。
 
 ---
 
@@ -1180,7 +1398,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/
 
 **marsdawn 免費、另外發佈，不透過 Mac App Store。**用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。`export` 可以單獨使用；`open` 需要 MarsDawn app。
 
-要從 AI agent 或腳本呼叫 marsdawn？請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)，裡面有 JSON 輸出、Schema 和所有離開代碼。
+要從 AI agent 或腳本呼叫 marsdawn？請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)，裡面有 JSON 輸出、Schema 和所有離開代碼；如果你的 agent 是透過 MCP 呼叫工具，也可以看[MCP 伺服器](/zh-hant/cli/mcp/)。
 
 ## 安裝
 
@@ -1391,6 +1609,12 @@ swift build -c release --product marsdawn
 
 `marsdawn --version` 會印出版本號，例如 `0.3.0`，並以代碼 0 結束。
 
+## 接下來
+
+- 給讀指令檔而不是執行 shell 的 agent 用的一個檔案：[marsdawn skill](/zh-hant/cli/skill/)。
+- 包住同一個 `export` 的 MCP 伺服器：[marsdawn-mcp](/zh-hant/cli/mcp/)。
+- 這份 JSON 結果為什麼不花 agent 自己的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
+
 ---
 
 ## 給 agent 的 skill
@@ -1424,7 +1648,211 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 - 它不會自己取得執行任何東西的權限。你的 agent 在安裝或執行 `marsdawn` 之前，仍然會先問你，就像執行其他指令一樣。
 - 它不會把你的文件傳到任何地方。`marsdawn` 在你的 Mac 上產生 PDF，除非你加上 `--allow-remote-images`，否則不會載入網路上的圖片。
 
-完整的規格，每個欄位和每個代碼，都在[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)裡。
+完整的規格，每個欄位和每個代碼，都在[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)裡。如果你的 agent 是透過 MCP 呼叫工具，而不是讀 skill 檔案，也可以用[MCP 伺服器](/zh-hant/cli/mcp/)。
+
+---
+
+## MCP 伺服器
+
+Source: https://marsdawn.southern-light.dev/zh-hant/cli/mcp/
+
+# 呼叫 marsdawn 的三種方式。
+
+MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不是用來寫的，所以是哪個 agent 或模型寫出這份 Markdown 並不重要。agent 或腳本呼叫 `marsdawn` 有三種方式，最後都會執行同一個 `export`。
+
+**挑你的工具支援的那一種：免費的 `marsdawn` CLI、純 Markdown 的 skill 檔案，或是 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 這個 MCP 伺服器。**三者都呼叫同一個 `marsdawn export`，回傳一樣的 JSON 結果。
+
+## CLI
+
+`marsdawn export notes.md --json` 可以被任何能執行 shell 指令的 agent 或腳本呼叫，因為是命令列工具，天生就跟模型無關。它回傳的每個欄位都寫在[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)裡，那一頁是 JSON schema 的權威來源，底下另外兩種方式都會連回去。
+
+## Skill 檔案
+
+如果你的 agent 讀的是純 Markdown 指令，而不是直接執行 shell——目前是 Claude Code——[marsdawn skill](/zh-hant/cli/skill/) 就是一個檔案，教它安裝 marsdawn、執行 `export`、讀懂結果。因為它就是純 Markdown，其他會讀指令檔的 agent 也能用同一個檔案。
+
+## MCP 伺服器
+
+[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一個獨立、公開、Apache-2.0 授權的 repository。它是一個只有一個工具的 MCP 伺服器，`export_markdown_to_pdf`，包住 `marsdawn export --json`：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。
+
+- **取得方式：**以 MCP Bundle（`marsdawn.mcpb`）的形式附在[GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases) 上，或從原始碼以 stdio 執行伺服器。
+- **Registry：**還沒上架 MCP Registry（目前版本：0.1.0）。要靠 registry 搜尋找到它之前，請先到 repository 確認目前狀態。
+- **託管：**只能自架，沒有代管服務。伺服器跑在你自己的機器上，就在 marsdawn 旁邊。
+- **系統需求：**macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。
+
+## 同一個 export，三扇門
+
+不管從哪個介面呼叫，底層行為都一樣：同一套輸出程式、同樣的主題和紙張大小，Mermaid 圖表畫不出來時也是同樣的 `diagramErrors`。這頁不重複那份規格——[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)裡有完整內容。
+
+## 接下來
+
+- 完整 JSON schema 和所有離開代碼：[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+- 給 Claude Code 等 agent 用的一個檔案：[marsdawn skill](/zh-hant/cli/skill/)。
+- 精簡的 JSON 結果為什麼對 agent 自己的 context 很重要：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
+
+---
+
+## 節省 token 的審閱方式
+
+Source: https://marsdawn.southern-light.dev/zh-hant/token-efficient-review/
+
+# 審閱不花 agent 的 token。
+
+這個循環裡有兩件事分開來看，都很省：agent 呼叫工具拿回什麼，以及確認結果排版正確要花多少力氣。
+
+**工具呼叫回傳的是一個小小的 JSON 物件，不是排版後的頁面；排版後的頁面由人在 MarsDawn 裡閱讀——不會被讀回 agent 的 context。**
+
+## 工具呼叫本身很便宜
+
+不管是從 CLI、skill，還是[MCP 伺服器](/zh-hant/cli/mcp/)呼叫 `marsdawn export`，回傳的都是[精簡的 JSON 物件](/zh-hant/cli/agents/)：`ok`、`output`、`pages`、`theme`、`paper` 和 `diagramErrors`。完整 schema 在 [export.v1.json](/schemas/cli/export.v1.json)。裡面沒有排版後的文件內容。一份 50 頁、有十幾張 Mermaid 圖表的 PDF，回傳的欄位和一則一頁的筆記一樣多。
+
+## 審閱在另一邊進行
+
+PDF 產生之後，人會打開它——在 MarsDawn 裡，或任何 PDF 檢視器——閱讀排版好的圖表、數學式和版面。agent 不需要把排版結果讀回自己的 context 才能確認它看起來對：審閱在另一個視窗、另一個畫面上進行，不會變成又一輪花 token 描述一張圖表長什麼樣子。
+
+## 這樣省下什麼
+
+- 不用把排版後的 Markdown、一張截圖，或對截圖的描述貼回對話裡，只為了讓 agent 確認匯出成功。
+- agent 不需要重建 Mermaid 圖表或 KaTeX 公式排版後的樣子，直接讓人去看就好。
+- 不需要在第一次呼叫已經回報成功之後，再多一次呼叫去讀取 PDF 的內容。
+
+## 接下來
+
+- 呼叫 marsdawn 的三種方式——CLI、skill 檔案、MCP 伺服器：[三種入口](/zh-hant/cli/mcp/)。
+- JSON 結果的每個欄位：[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+- 為什麼還是需要有人讀 agent 寫的東西：[審閱的理由](/zh-hant/reviewing-ai-output/)。
+
+---
+
+## 在別處看 Markdown，對比 MarsDawn
+
+Source: https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/
+
+# 在別處看 Markdown，對比 MarsDawn。
+
+如果你手邊剛好開著 VS Code、瀏覽器或 Claude Desktop，用它們順手看一眼 Markdown 檔案也合理。以下是它們各自實際排版出什麼、要花多少功夫才能看到，和在 MarsDawn 裡打開同一份檔案的比較。
+
+## VS Code 內建的預覽
+
+在 VS Code 按 `⌘⇧V`，就會用內建的預覽窗格排版出 Markdown 檔案，免費，不用另外安裝。從 VS Code 1.121（2026 年 5 月）開始，這個預覽也能原生畫出 Mermaid 圖表——微軟把一個 Mermaid 擴充功能併進了 VS Code 本體，以前需要另外裝擴充功能，現在不用了。它做不到的：這是編輯器裡的一個預覽窗格，不是為了閱讀而做的編輯器——窗格旁邊還有檔案樹、終端機和 VS Code 能顯示的其他所有面板，而 VS Code 本身是 Electron app，在 Mac 上下載大約 150 到 250MB。
+
+## 看本機檔案的瀏覽器擴充功能
+
+看本機 `.md` 檔案，沒有哪一個瀏覽器擴充功能是主流：Local Markdown Viewer、Markdown Viewer、MarkView 等等做的事都差不多，沒有哪一個是預設會裝的。每一個都要先做同一件事才能打開任何檔案：把該擴充功能的「允許存取檔案網址」打開，因為瀏覽器預設不讓擴充功能讀取 `file://` 開頭的頁面。這個權限每個擴充功能只要開一次，但也很容易忘記自己開過，或忘記為什麼要開。開了之後，檔案會顯示在瀏覽器分頁裡——也就是說，看一個檔案要開一整個瀏覽器。
+
+## Claude Desktop 的檔案預覽
+
+對已經在 Project 或對話裡的檔案，Claude Desktop 能把 Markdown 正確排版出來：frontmatter 顯示成表格，標題、粗體、行內程式碼都有樣式，不是原始碼。它不是為了瀏覽磁碟上任意檔案而做的——它預覽的是已經在對話裡的東西，不是一個資料夾裡的筆記。那個窗格上看得到的動作是「下載」，把 `.md` 檔案拿回來，不是輸出 PDF，也沒有離線或本機編輯：預覽是對話的一部分，不是一份你可以開著繼續改的文件。
+
+## 三者都跑在瀏覽器引擎裡
+
+VS Code 和 Claude Desktop 都是 Electron app：內建一套 Chromium 和 Node.js 執行環境，不是原生的 Mac app。走瀏覽器擴充功能這條路，則是真的在瀏覽器裡執行。不管哪一種，看一份 Markdown 檔案都要有一整套瀏覽器引擎在背後跑。MarsDawn 是原生的 AppKit app：下載更輕、直接打開任何本機檔案，不用裝擴充功能，也不用記得開過哪個權限。
+
+## 接下來
+
+- MarsDawn 也做不到的事：[這份清單](/zh-hant/limits/)。
+- 今天就能免費把任何 Markdown 檔案轉成 PDF：[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
+- 和一個 Mac 原生的檢視器比較：[MacMD Viewer 對比 MarsDawn](/zh-hant/vs/macmd-viewer/)。
+
+---
+
+## 預覽主題與 PDF 輸出
+
+Source: https://marsdawn.southern-light.dev/zh-hant/themes/
+
+# 八種樣子，一套輸出。
+
+MarsDawn 內建四種預覽主題：Dawn、Classic、Modern 和 Vivid，各有淺色與深色——八種讀文件的樣子。輸出成 PDF 或列印，出來的就是你正在讀的那個樣子。
+
+**四種主題 × 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。**更多可匯入的主題，還有讓大家投稿主題的主題庫，都還在規劃中，尚未推出。
+
+## 四種主題
+
+- **Dawn**，預設主題：和這個網站一樣的暖色紙感與 Mars Rust 強調色。
+- **Classic（典雅）：**比較樸素、像紙本文件的配色。
+- **Modern（流行）：**比較冷調、當代感的配色。
+- **Vivid（活潑）：**比較明亮、對比較高的配色。
+
+每種主題都有各自的淺色和深色版本，所以切換 Mac 的外觀，連帶切換的是主題本身的配色，不只是介面的顏色。
+
+## PDF 輸出和列印用同一個主題
+
+輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開表格與圖表。免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，所以腳本或 agent 也能用 `--theme` 產生一模一樣的 PDF，四種主題都可以。
+
+## 規劃中：更多主題，還有主題庫
+
+之後會推出、但現在還沒做的：更多可匯入的預覽主題，以及一個讓大家投稿自己主題的網站主題庫。`/themes/v1/` 這個路徑已經為它保留。在那之前，MarsDawn 有的就是這四種內建主題，無法安裝其他的。
+
+## 接下來
+
+- 完整的 PDF 輸出步驟，從命令列開始：[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
+- MarsDawn 現在還做不到的事：[這份清單](/zh-hant/limits/)。
+- 把輸出的 PDF 交給不寫 Markdown 的人：[分享 PDF](/zh-hant/sharing-exported-pdfs/)。
+
+---
+
+## 分享輸出的 PDF
+
+Source: https://marsdawn.southern-light.dev/zh-hant/sharing-exported-pdfs/
+
+# 把 PDF 交出去，不是把 Markdown 交出去。
+
+agent 寫完一份文件，你審閱、修改過後，公司裡不寫程式的人也要看——主管、客戶，或另一個團隊的人。他們不需要知道 `##` 或表格的直線符號是什麼意思。輸出成 PDF，交給他們那份就好。
+
+**把審閱過的文件輸出成 PDF，傳那個檔案就好。**它在任何地方都打得開，不需要懂 Markdown，也不用安裝任何東西，看起來就跟你在預覽裡看到的一樣——圖表、表格、格式都在。
+
+## 為什麼不直接傳 .md 檔案
+
+用純文字編輯器打開 `.md` 檔案，看到的是記號，不是排好版的頁面：`#` 是標題，`**` 包住粗體文字，圍住 Mermaid 圖表的程式碼區塊沒有畫出圖。不寫 Markdown 的人看不出這些記號原本要呈現什麼，而為了一份文件就要對方先裝一個檢視器，也要求太多。
+
+## 為什麼不直接傳截圖
+
+截圖只能定格文件的其中一畫面，文件可能有好幾頁，內容不能搜尋也不能選取，轉傳個幾次、被壓縮後也會更難讀。PDF 不管文件多長，都能保留文字、圖表和分頁。
+
+## PDF 能給你什麼
+
+- 對方已經有的東西就能打開——Preview、瀏覽器、Acrobat、手機都行，不需要任何 Markdown 工具。
+- Mermaid 圖表會畫出來，不會留著程式碼原樣；程式碼區塊保留語法上色。
+- 分頁位置經過安排，標題不會孤零零留在頁尾，表格或圖表也不會被切成兩半。
+- 不管是從 MarsDawn app 還是免費的命令列輸出，得到的都是同一份檔案——完整步驟請看[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
+
+## 接下來
+
+- 可以用哪些主題和版面輸出：[預覽主題與 PDF 輸出](/zh-hant/themes/)。
+- 從腳本或 agent 輸出，而不是從 app：[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+- 為什麼還是要先有人讀過這份文件：[審閱的理由](/zh-hant/reviewing-ai-output/)。
+
+---
+
+## 為什麼 AI 寫的東西還是需要人讀過
+
+Source: https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/
+
+# agent 寫出來，還是得由你理解。
+
+AI agent 可以很快寫出一份計畫、一份規格或一堆筆記。它寫出來的東西，還是得由要照著做的人去理解——不能因為讀起來通順，就直接相信。
+
+**MarsDawn 就是為了這種閱讀而做的：排版後的頁面和原始碼並排，Mermaid 圖表和 KaTeX 數學式直接畫出來，而不是留著記號，讓文件的結構一眼就看得懂。**
+
+## 讀起來通順，不代表是對的
+
+Simon Willison 在談 AI 輔助寫程式時，對那些還會被繼續維護、不是寫完就丟的程式碼這麼說：「the quality and understandability of the underlying code is crucial」（底層程式碼的品質和是否容易理解，至關重要，[Vibe coding](https://simonwillison.net/2025/Mar/6/vibe-coding/)，2025）。文件也一樣：agent 寫出來讀起來很順的草稿，結構、數字或邏輯還是可能是錯的，而通順的文字並不會告訴你哪裡該多留意。
+
+## 是推論，不是編譯
+
+Thoughtworks 的 Birgitta Böckeler 講得很直接：「LLMs are NOT compilers, interpreters, transpilers or assemblers of natural language, they are inferrers」（LLM 不是自然語言的編譯器、直譯器、轉譯器或組譯器，它們是推論器，[I still care about the code](https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html)）。編譯器要嘛接受你的輸入，要嘛回報錯誤；agent 給你的東西即使能跑、讀起來也通順，也不保證是對的。還是得有人檢查。
+
+## MarsDawn 給讀的人什麼
+
+- 排版後的頁面和原始碼並排，兩邊一改就同步更新，讓文字裡的說法和它的結構同時在你眼前。
+- Mermaid 圖表畫出來：agent 用文字描述的流程圖，變成一個你真的能看懂的形狀。
+- KaTeX 數學式排版出來，不是留著一串反斜線：公式看起來就是公式。
+- 它本身不會自動做任何事。MarsDawn 不會幫你評分、摘要或標記這份文件——它只是把結構攤在你面前，讓你自己判斷。
+
+## 接下來
+
+- 這樣的審閱怎麼不花 agent 自己的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
+- 把審閱過的文件交給別人：[分享 PDF](/zh-hant/sharing-exported-pdfs/)。
+- MarsDawn 是什麼，一頁講完：[首頁](/zh-hant/)。
 
 ---
 

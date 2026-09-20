@@ -209,6 +209,78 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/skill/"/>
   </url>
   <url>
+    <loc>https://marsdawn.southern-light.dev/cli/mcp/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/mcp/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/mcp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/mcp/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/cli/mcp/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/mcp/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/mcp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/mcp/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/token-efficient-review/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/token-efficient-review/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/token-efficient-review/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/token-efficient-review/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/token-efficient-review/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/token-efficient-review/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/token-efficient-review/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/token-efficient-review/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/vs/markdown-preview-tools/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/vs/markdown-preview-tools/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/vs/markdown-preview-tools/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/vs/markdown-preview-tools/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/vs/markdown-preview-tools/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/themes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/themes/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/themes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/themes/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/themes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/themes/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/themes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/themes/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/sharing-exported-pdfs/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/sharing-exported-pdfs/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/sharing-exported-pdfs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/sharing-exported-pdfs/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/sharing-exported-pdfs/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/sharing-exported-pdfs/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/sharing-exported-pdfs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/sharing-exported-pdfs/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/reviewing-ai-output/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-ai-output/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-ai-output/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-ai-output/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-ai-output/"/>
+  </url>
+  <url>
     <loc>https://marsdawn.southern-light.dev/product-facts.md</loc>
   </url>
 </urlset>

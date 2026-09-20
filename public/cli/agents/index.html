@@ -135,6 +135,13 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
 <p><code>marsdawn --version</code> prints the version number, such as <code>0.3.0</code>, and exits with code 0.</p>
+
+<h2>Next</h2>
+<ul>
+  <li>A one-file skill for agents that read instructions instead of a shell: <a href="/cli/skill/">the marsdawn skill</a>.</li>
+  <li>An MCP server that wraps this same <code>export</code>: <a href="/cli/mcp/">marsdawn-mcp</a>.</li>
+  <li>Why this JSON result stays cheap for an agent's own context: <a href="/token-efficient-review/">token-efficient review</a>.</li>
+</ul>
 </main>
 <footer class="footer">
   <span>Read what your agent wrote.</span>
