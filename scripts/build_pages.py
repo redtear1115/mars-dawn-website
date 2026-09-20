@@ -2146,7 +2146,9 @@ def render(locale: str, slug: str, page: dict) -> str:
     has_intro = "intro" in page
     is_trait_page = slug in TRAIT_ORDER
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
-    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
+    # The chip links to the listing from launch: the owner decided that on 2026-09-20, over
+    # DESIGN.md's "a statement, not a button". See the Store Chip rule there.
+    chip = f'<a class="store-chip" href="{LISTING_URL}">{STORE_CHIP[locale]}</a>\n  ' if is_trait_page else ""
     if slug == "index":
         hero_html = (
             '<section class="hero-scene">\n'

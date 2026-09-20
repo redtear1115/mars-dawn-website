@@ -221,7 +221,12 @@ body > a[aria-hidden="true"][href*="/cdn-cgi/"] { display: none !important; }
 html { scrollbar-color: var(--hairline) var(--paper); }
 
 .masthead { flex-wrap: wrap; }
+/* A link to the listing since launch (owner, 2026-09-20), so it needs a tap target and states,
+   but it keeps the quiet pill look: Dust text, hairline border, no fill and no underline. */
 .store-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   margin-left: auto;
   padding: 3px 10px;
   border: 1px solid var(--hairline);
@@ -230,6 +235,16 @@ html { scrollbar-color: var(--hairline) var(--paper); }
   font-size: 0.82rem;
   line-height: 1.4;
   white-space: nowrap;
+  text-decoration: none;
+}
+.store-chip:hover {
+  border-color: var(--dust);
+  color: var(--ink);
+}
+.store-chip:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+  border-radius: 999px;
 }
 /* After the base rules above, so these win at the same specificity. */
 @media (max-width: 480px) {
