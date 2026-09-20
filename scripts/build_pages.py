@@ -326,6 +326,12 @@ PAGES = {
 </ol>
 """,
     },
+    # The Purchases paragraph is in the present tense ("MarsDawn is sold through the Mac App
+    # Store"), approved by the owner on 2026-09-20 (website #44) after reading how comparable apps
+    # write theirs: MacMD Viewer, Ulysses, NotePlan, MWeb and iA Writer all describe the product in
+    # the present tense, and none hedges on whether it is currently for sale. It is accurate from
+    # launch, because this change deploys with the launch. PRIVACY_UPDATED doesn't move: what the
+    # policy says about data is unchanged.
     ("en", "privacy"): {
         "title": "Privacy Policy · MarsDawn",
         "description": "MarsDawn does not collect personal data. Your documents and settings stay on your Mac.",
