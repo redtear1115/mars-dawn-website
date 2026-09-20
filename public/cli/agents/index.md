@@ -15,7 +15,7 @@ A reference for AI agents and scripts that call the `marsdawn` command-line tool
 - It doesn't write the PDF to stdout. The PDF always goes to a file; stdout carries only the result.
 - It doesn't replace an existing file unless you pass `--force`.
 - It doesn't load images from the web unless you pass `--allow-remote-images`, and then only over https.
-- `open` doesn't work without the MarsDawn app installed; it exits with code 3. `export` doesn't need the app. The app is on the [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER).
+- `open` doesn't work without the MarsDawn app installed; it exits with code 3. `export` doesn't need the app. The app is on the [Mac App Store](https://apps.apple.com/app/id6812925073).
 - It runs on macOS only.
 
 ## export

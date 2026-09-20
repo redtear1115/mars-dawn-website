@@ -32,7 +32,7 @@ Check which version you have with `marsdawn --version`.
 
 ### marsdawn open
 
-Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, `marsdawn open` exits with code 3 and says MarsDawn isn't installed. `export` doesn't need the app. The app is on the [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER).
+Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, `marsdawn open` exits with code 3 and says MarsDawn isn't installed. `export` doesn't need the app. The app is on the [Mac App Store](https://apps.apple.com/app/id6812925073).
 
 ```
 marsdawn open notes.md

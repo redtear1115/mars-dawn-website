@@ -38,9 +38,11 @@ BREW_TAP_INSTALL = "brew tap redtear1115/tap && brew install marsdawn"
 # PreOrder until this merges (docs/go-live-checklist.md in the app repo, B4/B5).
 AVAILABILITY = "https://schema.org/InStock"
 
-# The app's Mac App Store listing. PLACEHOLDER until the owner reads the Apple ID in App Store Connect
-# (App Information); this goes live on launch day only (docs/go-live-checklist.md in the app repo, B5).
-LISTING_URL = "https://apps.apple.com/app/idPLACEHOLDER"
+# The app's Mac App Store listing. The owner read the Apple ID in App Store Connect on 2026-09-21.
+# Country-less on purpose: Apple sends each visitor to their own storefront, and check_links.py
+# fails on any other form. This branch still goes live on launch day only (docs/go-live-checklist.md
+# in the app repo, B4/B5) — knowing the ID doesn't mean the app is on sale.
+LISTING_URL = "https://apps.apple.com/app/id6812925073"
 
 # The site's same-site redirects, written to public/_redirects. Cloudflare Workers static assets
 # read that file (source, destination, status) and never serve it. Every destination is fixed here:
