@@ -4,7 +4,7 @@ If you already have VS Code, a browser or Claude Desktop open, reaching for one 
 
 ## VS Code's built-in preview
 
-Press `⌘⇧V` in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively — Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading — the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app, a roughly 150–250MB download on a Mac.
+Press `⌘⇧V` in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively — Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading — the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app you install as a whole development environment, not something you open to read one file.
 
 ## A browser extension for local files
 
@@ -12,11 +12,11 @@ No single browser extension dominates for reading a local `.md` file: Local Mark
 
 ## Claude Desktop's file preview
 
-Claude Desktop renders Markdown properly for files already inside a Project or a conversation: frontmatter as a table, headings, bold text and inline code all styled, not raw source. What it isn't built for is browsing arbitrary files on disk — it previews what's already in the conversation, not a folder of notes. The action on that pane is Download, to get the `.md` file back, not export to PDF, and there's no offline or local editing: the preview is part of the conversation, not a document you keep open and revise.
+Claude Desktop shows a file that's already in a Project or a conversation. What it isn't built for is browsing arbitrary files on disk — what you can look at is what the conversation already holds, not a folder of notes you keep open beside your work. Anthropic's own list of [the document types you can upload](https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai) is PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON and XLSX: Markdown isn't on it.
 
-## All three live inside a browser engine
+## A browser engine to read one file
 
-VS Code and Claude Desktop are both Electron apps: a bundled Chromium and Node.js runtime, not a native Mac app. The browser-extension route runs inside an actual browser. Either way, viewing one Markdown file means a full browser engine is running to show it. MarsDawn is a native AppKit app: a lighter download, opens any local file directly, with no extension to install or permission flag to remember.
+VS Code is an Electron app: a bundled Chromium and Node.js runtime, not a native Mac app. The browser-extension route runs inside an actual browser. Either way, viewing one Markdown file means a full browser engine is running to show it. MarsDawn is a native AppKit app: no bundled browser runtime, it opens any local file directly, with no extension to install or permission flag to remember.
 
 ## Next
 

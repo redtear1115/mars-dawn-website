@@ -1430,16 +1430,16 @@ BRAINSTORM_PAGES = {
 </section>
 
 <h2>VS Code's built-in preview</h2>
-<p>Press <kbd>&#8984;&#8679;V</kbd> in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively &#8212; Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading &#8212; the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app, a roughly 150&#8211;250MB download on a Mac.</p>
+<p>Press <kbd>&#8984;&#8679;V</kbd> in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively &#8212; Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading &#8212; the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app you install as a whole development environment, not something you open to read one file.</p>
 
 <h2>A browser extension for local files</h2>
 <p>No single browser extension dominates for reading a local <code>.md</code> file: Local Markdown Viewer, Markdown Viewer, MarkView and others all do roughly the same thing, and none is a default. Every one of them needs the same extra step before it can open anything: turning on "Allow access to file URLs" for that extension, because browsers block extensions from reading <code>file://</code> pages by default. That's a permission you grant once per extension, and it's easy to forget you did it, or why. Once it's on, the file renders in a browser tab, which means running a full browser to look at one file.</p>
 
 <h2>Claude Desktop's file preview</h2>
-<p>Claude Desktop renders Markdown properly for files already inside a Project or a conversation: frontmatter as a table, headings, bold text and inline code all styled, not raw source. What it isn't built for is browsing arbitrary files on disk &#8212; it previews what's already in the conversation, not a folder of notes. The action on that pane is Download, to get the <code>.md</code> file back, not export to PDF, and there's no offline or local editing: the preview is part of the conversation, not a document you keep open and revise.</p>
+<p>Claude Desktop shows a file that's already in a Project or a conversation. What it isn't built for is browsing arbitrary files on disk &#8212; what you can look at is what the conversation already holds, not a folder of notes you keep open beside your work. Anthropic's own list of <a href="https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai">the document types you can upload</a> is PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON and XLSX: Markdown isn't on it.</p>
 
-<h2>All three live inside a browser engine</h2>
-<p>VS Code and Claude Desktop are both Electron apps: a bundled Chromium and Node.js runtime, not a native Mac app. The browser-extension route runs inside an actual browser. Either way, viewing one Markdown file means a full browser engine is running to show it. MarsDawn is a native AppKit app: a lighter download, opens any local file directly, with no extension to install or permission flag to remember.</p>
+<h2>A browser engine to read one file</h2>
+<p>VS Code is an Electron app: a bundled Chromium and Node.js runtime, not a native Mac app. The browser-extension route runs inside an actual browser. Either way, viewing one Markdown file means a full browser engine is running to show it. MarsDawn is a native AppKit app: no bundled browser runtime, it opens any local file directly, with no extension to install or permission flag to remember.</p>
 
 <h2>Next</h2>
 <ul>
@@ -1459,16 +1459,16 @@ BRAINSTORM_PAGES = {
 </section>
 
 <h2>VS Code 內建的預覽</h2>
-<p>在 VS Code 按 <kbd>&#8984;&#8679;V</kbd>，就會用內建的預覽窗格排版出 Markdown 檔案，免費，不用另外安裝。從 VS Code 1.121（2026 年 5 月）開始，這個預覽也能原生畫出 Mermaid 圖表&#8212;&#8212;微軟把一個 Mermaid 擴充功能併進了 VS Code 本體，以前需要另外裝擴充功能，現在不用了。它做不到的：這是編輯器裡的一個預覽窗格，不是為了閱讀而做的編輯器&#8212;&#8212;窗格旁邊還有檔案樹、終端機和 VS Code 能顯示的其他所有面板，而 VS Code 本身是 Electron app，在 Mac 上下載大約 150 到 250MB。</p>
+<p>在 VS Code 按 <kbd>&#8984;&#8679;V</kbd>，就會用內建的預覽窗格排版出 Markdown 檔案，免費，不用另外安裝。從 VS Code 1.121（2026 年 5 月）開始，這個預覽也能原生畫出 Mermaid 圖表&#8212;&#8212;微軟把一個 Mermaid 擴充功能併進了 VS Code 本體，以前需要另外裝擴充功能，現在不用了。它做不到的：這是編輯器裡的一個預覽窗格，不是為了閱讀而做的編輯器&#8212;&#8212;窗格旁邊還有檔案樹、終端機和 VS Code 能顯示的其他所有面板，而 VS Code 本身是 Electron app，你裝的是一整套開發環境，不是一個用來讀檔案的工具。</p>
 
 <h2>看本機檔案的瀏覽器擴充功能</h2>
 <p>看本機 <code>.md</code> 檔案，沒有哪一個瀏覽器擴充功能是主流：Local Markdown Viewer、Markdown Viewer、MarkView 等等做的事都差不多，沒有哪一個是預設會裝的。每一個都要先做同一件事才能打開任何檔案：把該擴充功能的「允許存取檔案網址」打開，因為瀏覽器預設不讓擴充功能讀取 <code>file://</code> 開頭的頁面。這個權限每個擴充功能只要開一次，但也很容易忘記自己開過，或忘記為什麼要開。開了之後，檔案會顯示在瀏覽器分頁裡&#8212;&#8212;也就是說，看一個檔案要開一整個瀏覽器。</p>
 
 <h2>Claude Desktop 的檔案預覽</h2>
-<p>對已經在 Project 或對話裡的檔案，Claude Desktop 能把 Markdown 正確排版出來：frontmatter 顯示成表格，標題、粗體、行內程式碼都有樣式，不是原始碼。它不是為了瀏覽磁碟上任意檔案而做的&#8212;&#8212;它預覽的是已經在對話裡的東西，不是一個資料夾裡的筆記。那個窗格上看得到的動作是「下載」，把 <code>.md</code> 檔案拿回來，不是輸出 PDF，也沒有離線或本機編輯：預覽是對話的一部分，不是一份你可以開著繼續改的文件。</p>
+<p>Claude Desktop 顯示的是已經在 Project 或對話裡的檔案。它不是為了瀏覽磁碟上任意檔案而做的&#8212;&#8212;你能看的是對話裡已經有的東西，不是一個可以一直開在旁邊的筆記資料夾。Anthropic 自己列出<a href="https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai">可以上傳的檔案類型</a>是 PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON 和 XLSX，裡面沒有 Markdown。</p>
 
-<h2>三者都跑在瀏覽器引擎裡</h2>
-<p>VS Code 和 Claude Desktop 都是 Electron app：內建一套 Chromium 和 Node.js 執行環境，不是原生的 Mac app。走瀏覽器擴充功能這條路，則是真的在瀏覽器裡執行。不管哪一種，看一份 Markdown 檔案都要有一整套瀏覽器引擎在背後跑。MarsDawn 是原生的 AppKit app：下載更輕、直接打開任何本機檔案，不用裝擴充功能，也不用記得開過哪個權限。</p>
+<h2>為了讀一份檔案，背後跑著一整套瀏覽器引擎</h2>
+<p>VS Code 是 Electron app：內建一套 Chromium 和 Node.js 執行環境，不是原生的 Mac app。走瀏覽器擴充功能這條路，則是真的在瀏覽器裡執行。不管哪一種，看一份 Markdown 檔案都要有一整套瀏覽器引擎在背後跑。MarsDawn 是原生的 AppKit app：沒有內建的瀏覽器執行環境、直接打開任何本機檔案，不用裝擴充功能，也不用記得開過哪個權限。</p>
 
 <h2>接下來</h2>
 <ul>

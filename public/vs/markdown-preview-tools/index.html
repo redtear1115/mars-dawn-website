@@ -39,16 +39,16 @@
 </section>
 
 <h2>VS Code's built-in preview</h2>
-<p>Press <kbd>&#8984;&#8679;V</kbd> in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively &#8212; Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading &#8212; the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app, a roughly 150&#8211;250MB download on a Mac.</p>
+<p>Press <kbd>&#8984;&#8679;V</kbd> in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively &#8212; Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading &#8212; the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app you install as a whole development environment, not something you open to read one file.</p>
 
 <h2>A browser extension for local files</h2>
 <p>No single browser extension dominates for reading a local <code>.md</code> file: Local Markdown Viewer, Markdown Viewer, MarkView and others all do roughly the same thing, and none is a default. Every one of them needs the same extra step before it can open anything: turning on "Allow access to file URLs" for that extension, because browsers block extensions from reading <code>file://</code> pages by default. That's a permission you grant once per extension, and it's easy to forget you did it, or why. Once it's on, the file renders in a browser tab, which means running a full browser to look at one file.</p>
 
 <h2>Claude Desktop's file preview</h2>
-<p>Claude Desktop renders Markdown properly for files already inside a Project or a conversation: frontmatter as a table, headings, bold text and inline code all styled, not raw source. What it isn't built for is browsing arbitrary files on disk &#8212; it previews what's already in the conversation, not a folder of notes. The action on that pane is Download, to get the <code>.md</code> file back, not export to PDF, and there's no offline or local editing: the preview is part of the conversation, not a document you keep open and revise.</p>
+<p>Claude Desktop shows a file that's already in a Project or a conversation. What it isn't built for is browsing arbitrary files on disk &#8212; what you can look at is what the conversation already holds, not a folder of notes you keep open beside your work. Anthropic's own list of <a href="https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai">the document types you can upload</a> is PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON and XLSX: Markdown isn't on it.</p>
 
-<h2>All three live inside a browser engine</h2>
-<p>VS Code and Claude Desktop are both Electron apps: a bundled Chromium and Node.js runtime, not a native Mac app. The browser-extension route runs inside an actual browser. Either way, viewing one Markdown file means a full browser engine is running to show it. MarsDawn is a native AppKit app: a lighter download, opens any local file directly, with no extension to install or permission flag to remember.</p>
+<h2>A browser engine to read one file</h2>
+<p>VS Code is an Electron app: a bundled Chromium and Node.js runtime, not a native Mac app. The browser-extension route runs inside an actual browser. Either way, viewing one Markdown file means a full browser engine is running to show it. MarsDawn is a native AppKit app: no bundled browser runtime, it opens any local file directly, with no extension to install or permission flag to remember.</p>
 
 <h2>Next</h2>
 <ul>

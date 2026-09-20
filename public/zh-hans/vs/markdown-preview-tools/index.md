@@ -4,7 +4,7 @@
 
 ## VS Code 内置的预览
 
-在 VS Code 按 `⌘⇧V`，就会用内置的预览窗格排版出 Markdown 文件，免费，不用另外安装。从 VS Code 1.121（2026 年 5 月）开始，这个预览也能原生画出 Mermaid 图表——微软把一个 Mermaid 扩展并进了 VS Code 本体，以前需要另外装扩展，现在不用了。它做不到的：这是编辑器里的一个预览窗格，不是为了阅读而做的编辑器——窗格旁边还有文件树、终端和 VS Code 能显示的其他所有面板，而 VS Code 本身是 Electron app，在 Mac 上下载大约 150 到 250MB。
+在 VS Code 按 `⌘⇧V`，就会用内置的预览窗格排版出 Markdown 文件，免费，不用另外安装。从 VS Code 1.121（2026 年 5 月）开始，这个预览也能原生画出 Mermaid 图表——微软把一个 Mermaid 扩展并进了 VS Code 本体，以前需要另外装扩展，现在不用了。它做不到的：这是编辑器里的一个预览窗格，不是为了阅读而做的编辑器——窗格旁边还有文件树、终端和 VS Code 能显示的其他所有面板，而 VS Code 本身是 Electron app，你装的是一整套开发环境，不是一个用来读文件的工具。
 
 ## 看本机文件的浏览器扩展
 
@@ -12,11 +12,11 @@
 
 ## Claude Desktop 的文件预览
 
-对已经在 Project 或对话里的文件，Claude Desktop 能把 Markdown 正确排版出来：frontmatter 显示成表格，标题、粗体、行内代码都有样式，不是源代码。它不是为了浏览磁盘上任意文件而做的——它预览的是已经在对话里的东西，不是一个文件夹里的笔记。那个窗格上看得到的操作是“下载”，把 `.md` 文件拿回来，不是导出 PDF，也没有离线或本机编辑：预览是对话的一部分，不是一份你可以开着继续改的文稿。
+Claude Desktop 显示的是已经在 Project 或对话里的文件。它不是为了浏览磁盘上任意文件而做的——你能看的是对话里已经有的东西，不是一个可以一直开在旁边的笔记文件夹。Anthropic 自己列出[可以上传的文件类型](https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai)是 PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON 和 XLSX，里面没有 Markdown。
 
-## 三者都跑在浏览器引擎里
+## 为了读一份文件，背后跑着一整套浏览器引擎
 
-VS Code 和 Claude Desktop 都是 Electron app：内置一套 Chromium 和 Node.js 运行环境，不是原生的 Mac app。走浏览器扩展这条路，则是真的在浏览器里运行。不管哪一种，看一份 Markdown 文件都要有一整套浏览器引擎在背后跑。MarsDawn 是原生的 AppKit app：下载更轻、直接打开任何本机文件，不用装扩展，也不用记得开过哪个权限。
+VS Code 是 Electron app：内置一套 Chromium 和 Node.js 运行环境，不是原生的 Mac app。走浏览器扩展这条路，则是真的在浏览器里运行。不管哪一种，看一份 Markdown 文件都要有一整套浏览器引擎在背后跑。MarsDawn 是原生的 AppKit app：没有内置的浏览器运行环境、直接打开任何本地文件，不用装扩展，也不用记得开过哪个权限。
 
 ## 接下来
 
