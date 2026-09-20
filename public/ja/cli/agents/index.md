@@ -15,7 +15,7 @@
 - PDF を stdout に書き出しません。PDF は常にファイルとして書き出され、stdout には結果だけが出力されます。
 - `--force` を指定しない限り、既存のファイルを置き換えません。
 - `--allow-remote-images` を指定しない限りウェブから画像を読み込まず、指定した場合も https のみです。
-- `open` は MarsDawn アプリがインストールされていないと動作せず、コード 3 で終了します。`export` にアプリは不要です。アプリは [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER) で配信中です。
+- `open` は MarsDawn アプリがインストールされていないと動作せず、コード 3 で終了します。`export` にアプリは不要です。アプリは [Mac App Store](https://apps.apple.com/app/id6812925073) で配信中です。
 - macOS でのみ動作します。
 
 ## export

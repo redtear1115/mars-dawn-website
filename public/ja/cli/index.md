@@ -32,7 +32,7 @@ swift build -c release --product marsdawn
 
 ### marsdawn open
 
-1つ以上の Markdown ファイルを MarsDawn アプリで開いて確認できます。アプリのインストールが必要です。インストールされていない場合、`marsdawn open` はコード 3 で終了し、MarsDawn がインストールされていないことを知らせます。`export` にはアプリは不要です。アプリは [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER) で配信中です。
+1つ以上の Markdown ファイルを MarsDawn アプリで開いて確認できます。アプリのインストールが必要です。インストールされていない場合、`marsdawn open` はコード 3 で終了し、MarsDawn がインストールされていないことを知らせます。`export` にはアプリは不要です。アプリは [Mac App Store](https://apps.apple.com/app/id6812925073) で配信中です。
 
 ```
 marsdawn open notes.md

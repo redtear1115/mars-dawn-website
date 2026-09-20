@@ -15,7 +15,7 @@
 - 不把 PDF 写到 stdout。PDF 一律写成文件，stdout 只输出结果。
 - 文件已存在时不会覆盖，除非加上 `--force`。
 - 不加载网络图片，除非加上 `--allow-remote-images`，而且只走 https。
-- 没有安装 MarsDawn 时，`open` 无法使用，会以代码 3 结束。`export` 不需要 app。App 已在 [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER) 上架。
+- 没有安装 MarsDawn 时，`open` 无法使用，会以代码 3 结束。`export` 不需要 app。App 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。
 - 只能在 macOS 上运行。
 
 ## export

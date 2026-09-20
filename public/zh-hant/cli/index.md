@@ -32,7 +32,7 @@ swift build -c release --product marsdawn
 
 ### marsdawn open
 
-在 MarsDawn app 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝這個 app：沒有安裝時，`marsdawn open` 會以代碼 3 結束，並說明沒有安裝 MarsDawn。`export` 不需要這個 app。App 已在 [Mac App Store](https://apps.apple.com/app/idPLACEHOLDER) 上架。
+在 MarsDawn app 中開啟一個或多個 Markdown 檔案，方便審閱。需要先安裝這個 app：沒有安裝時，`marsdawn open` 會以代碼 3 結束，並說明沒有安裝 MarsDawn。`export` 不需要這個 app。App 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。
 
 ```
 marsdawn open notes.md
