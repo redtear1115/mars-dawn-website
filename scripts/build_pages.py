@@ -32,6 +32,12 @@ KIT_URL = "https://github.com/redtear1115/mars-dawn-kit"
 KIT_LICENSE = "Apache-2.0"
 BREW_TAP_INSTALL = "brew tap redtear1115/tap && brew install marsdawn"
 
+# The schema.org availability of the Mac App Store offer. PreOrder until the app is actually
+# downloadable: a priced offer with no availability reads to a crawler as obtainable today.
+# Launch day flips this to "https://schema.org/InStock" with the rest of the go-live copy
+# (website #44, and docs/go-live-checklist.md in the app repo, beside the deploy).
+AVAILABILITY = "https://schema.org/PreOrder"
+
 # The MCP server, a separate public repo. Re-verified 2026-09-20 against
 # github.com/redtear1115/marsdawn-mcp: still 0.1.0, still not in the MCP Registry.
 MCP_URL = "https://github.com/redtear1115/marsdawn-mcp"
@@ -2471,7 +2477,12 @@ def render(locale: str, slug: str, page: dict) -> str:
             "description": page["description"],
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "macOS 26 or later",
-            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "availability": AVAILABILITY,
+            },
             "url": canonical_url,
         }
         jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
