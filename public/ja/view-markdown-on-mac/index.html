@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac で Markdown ファイルを見る方法 · MarsDawn</title>
+<meta name="description" content=".md ファイルは、整形用の記号が入ったプレーンテキストです。Mac 上でレンダリングされた見た目を読む方法：今すぐ使える無料の marsdawn コマンドラインツールで PDF にする方法と、Mac App Store に近日公開予定の MarsDawn アプリで読む方法。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/view-markdown-on-mac/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/view-markdown-on-mac/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/">
+<link rel="alternate" type="text/markdown" href="/ja/view-markdown-on-mac/index.md">
+<meta property="og:title" content="Mac で Markdown ファイルを見る方法 · MarsDawn">
+<meta property="og:description" content=".md ファイルは、整形用の記号が入ったプレーンテキストです。Mac 上でレンダリングされた見た目を読む方法：今すぐ使える無料の marsdawn コマンドラインツールで PDF にする方法と、Mac App Store に近日公開予定の MarsDawn アプリで読む方法。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/view-markdown-on-mac/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/view-markdown-on-mac/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/view-markdown-on-mac/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/view-markdown-on-mac/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>Mac で、Markdown ファイルを見る方法。</h1>
+  <p><code>.md</code> ファイルはプレーンテキストです。見出しや太字、表、図は記号として書かれています。見出しは <code>#</code>、太字は前後を <code>**</code> で囲み、表は縦棒の記号、図は <code>mermaid</code> のコードブロックです。プレーンテキストエディタで開くと、これらの記号がそのまま見えます。著者が意図した通りのページとして読むには、何かがそれをレンダリングする必要があります。</p>
+</section>
+<h2>今すぐ、無料で：PDF にする</h2>
+<p>無料の <code>marsdawn</code> コマンドラインツールが、Markdown ファイルを PDF にレンダリングします。どんな Mac でも開けます。表、数式、Mermaid 図、ハイライトされたコードもレンダリングされ、他に何もインストールする必要はありません。MarsDawn アプリすら不要です。</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<p><code>export</code> は Markdown ファイルの隣に <code>notes.pdf</code> を書き出し、<code>open</code> は PDF ビューアでそれを表示します。macOS 15 以降が必要です。実際に書き出したページを使った完全な手順は<a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a>にあります。</p>
+<h2>近日公開：MarsDawn で読む</h2>
+<p>MarsDawn は Mac 向けの Markdown エディタで、Mac App Store に近日公開予定です。<code>.md</code> ファイルを開くと、レンダリングされたページがソースの隣に表示されます。</p>
+<ul>
+  <li>入力するとプレビューが更新され、2つのペインは一緒にスクロールします。</li>
+  <li>Mermaid のフローチャートやシーケンス図はプレビュー内に描画され、コードブロックもハイライトされます。</li>
+  <li>Finder で Markdown ファイルを選んで空白キーを押せば、図も含めてクイックルックでプレビューできます。</li>
+  <li>何かを直したくなったら、ソースはすぐそこにあります。MarsDawn はビューアだけでなく、エディタでもあります。</li>
+</ul>
+<p>AI エージェントがそのファイルを書いたなら、これはまさに MarsDawn が想定しているループです。エージェントが書き、あなたがレンダリングされたページを読み、エージェントが直します。<a href="/ja/">ホームページ</a>をご覧ください。エージェントに代わりにファイルを開かせたい場合は<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>もどうぞ。</p>
+<h2>次に</h2>
+<ul>
+  <li>コマンドラインツールのすべてのオプション：<a href="/ja/cli/">コマンドライン</a>。</li>
+  <li>MarsDawn ができないこと：<a href="/ja/limits/">その一覧</a>。</li>
+  <li>VS Code やブラウザ、Claude Desktop で Markdown を読む場合との比較：<a href="/ja/vs/markdown-preview-tools/">比較はこちら</a>。</li>
+</ul>
+</main>
+<footer class="footer">
+  <span>エージェントが書いた Markdown を読む。</span>
+  <a href="/ja/support/">サポート</a>
+  <a href="/ja/privacy/">プライバシーポリシー</a>
+  <a href="/ja/cli/">コマンドライン</a>
+  <span>MarsDawn は Mac App Store で近日公開予定です。</span>
+</footer>
+</div>
+</body>
+</html>

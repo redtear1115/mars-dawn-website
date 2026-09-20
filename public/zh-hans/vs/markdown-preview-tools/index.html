@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>在别处看 Markdown，对比 MarsDawn · MarsDawn</title>
+<meta name="description" content="MarsDawn 对比在 VS Code 内置预览、浏览器扩展，或 Claude Desktop 文件预览里看 Markdown：各自能排版出什么，打开一个文件要花多少功夫。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/vs/markdown-preview-tools/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/vs/markdown-preview-tools/">
+<link rel="alternate" type="text/markdown" href="/zh-hans/vs/markdown-preview-tools/index.md">
+<meta property="og:title" content="在别处看 Markdown，对比 MarsDawn · MarsDawn">
+<meta property="og:description" content="MarsDawn 对比在 VS Code 内置预览、浏览器扩展，或 Claude Desktop 文件预览里看 Markdown：各自能排版出什么，打开一个文件要花多少功夫。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/vs/markdown-preview-tools/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hans/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/vs/markdown-preview-tools/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/markdown-preview-tools/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/markdown-preview-tools/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/markdown-preview-tools/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>在别处看 Markdown，对比 MarsDawn。</h1>
+  <p>如果你手边刚好开着 VS Code、浏览器或 Claude Desktop，用它们顺手看一眼 Markdown 文件也合理。以下是它们各自实际排版出什么、要花多少功夫才能看到，和在 MarsDawn 里打开同一份文件的比较。</p>
+</section>
+<h2>VS Code 内置的预览</h2>
+<p>在 VS Code 按 <kbd>&#8984;&#8679;V</kbd>，就会用内置的预览窗格排版出 Markdown 文件，免费，不用另外安装。从 VS Code 1.121（2026 年 5 月）开始，这个预览也能原生画出 Mermaid 图表&#8212;&#8212;微软把一个 Mermaid 扩展并进了 VS Code 本体，以前需要另外装扩展，现在不用了。它做不到的：这是编辑器里的一个预览窗格，不是为了阅读而做的编辑器&#8212;&#8212;窗格旁边还有文件树、终端和 VS Code 能显示的其他所有面板，而 VS Code 本身是 Electron app，在 Mac 上下载大约 150 到 250MB。</p>
+<h2>看本机文件的浏览器扩展</h2>
+<p>看本机 <code>.md</code> 文件，没有哪一个浏览器扩展是主流：Local Markdown Viewer、Markdown Viewer、MarkView 等等做的事都差不多，没有哪一个是默认会装的。每一个都要先做同一件事才能打开任何文件：把该扩展的“允许访问文件网址”打开，因为浏览器默认不让扩展读取 <code>file://</code> 开头的页面。这个权限每个扩展只要开一次，但也很容易忘记自己开过，或忘记为什么要开。开了之后，文件会显示在浏览器标签页里&#8212;&#8212;也就是说，看一个文件要开一整个浏览器。</p>
+<h2>Claude Desktop 的文件预览</h2>
+<p>对已经在 Project 或对话里的文件，Claude Desktop 能把 Markdown 正确排版出来：frontmatter 显示成表格，标题、粗体、行内代码都有样式，不是源代码。它不是为了浏览磁盘上任意文件而做的&#8212;&#8212;它预览的是已经在对话里的东西，不是一个文件夹里的笔记。那个窗格上看得到的操作是“下载”，把 <code>.md</code> 文件拿回来，不是导出 PDF，也没有离线或本机编辑：预览是对话的一部分，不是一份你可以开着继续改的文稿。</p>
+<h2>三者都跑在浏览器引擎里</h2>
+<p>VS Code 和 Claude Desktop 都是 Electron app：内置一套 Chromium 和 Node.js 运行环境，不是原生的 Mac app。走浏览器扩展这条路，则是真的在浏览器里运行。不管哪一种，看一份 Markdown 文件都要有一整套浏览器引擎在背后跑。MarsDawn 是原生的 AppKit app：下载更轻、直接打开任何本机文件，不用装扩展，也不用记得开过哪个权限。</p>
+<h2>接下来</h2>
+<ul>
+  <li>MarsDawn 也做不到的事：<a href="/zh-hans/limits/">这份清单</a>。</li>
+  <li>今天就能免费把任何 Markdown 文件转成 PDF：<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。</li>
+  <li>和一个 Mac 原生的查看器比较：<a href="/zh-hans/vs/macmd-viewer/">MacMD Viewer 对比 MarsDawn</a>。</li>
+</ul>
+</main>
+<footer class="footer">
+  <span>读 agent 写的 Markdown。</span>
+  <a href="/zh-hans/support/">支持</a>
+  <a href="/zh-hans/privacy/">隐私政策</a>
+  <a href="/zh-hans/cli/">命令行工具</a>
+  <span>MarsDawn 即将在 Mac App Store 上架。</span>
+</footer>
+</div>
+</body>
+</html>

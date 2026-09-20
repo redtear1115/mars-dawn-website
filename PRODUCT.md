@@ -65,11 +65,11 @@ The site leads with one angle on top of them. MarsDawn is the careful-read step 
 **Pricing copy ahead of launch:** the site describes the decided model (free download, 14-day trial, USD 4.99 one-time unlock) before the app or its purchase ships. That is intentional: every page says the app is coming soon, so this copy previews the model rather than claiming it is live. Keep it in step with the parent if the model changes again.
 
 **Site constraints**
-- The site is bilingual: English, and Traditional Chinese under `/zh-hant/`. Both languages ship together.
+- The site ships in four languages: English, Traditional Chinese (`/zh-hant/`), Simplified Chinese (`/zh-hans/`) and Japanese (`/ja/`). English and Traditional Chinese are the app's own interface languages and are the primary editions; Simplified Chinese and Japanese extend the site's reach beyond the app's own UI languages and must say so accurately (see the UI-labels rule below) rather than imply the app is localized further than it is.
 - The CSP in `public/_headers` allows no scripts, one same-origin stylesheet, same-origin images and system fonts only. No web fonts, inline styles, forms, frames or third-party resources. Anything that needs one of these must change the CSP deliberately.
-- `/privacy/`, `/support/`, `/zh-hant/privacy/` and `/zh-hant/support/` are public contracts linked from the App Store. They must stay at the same paths.
+- `/privacy/`, `/support/`, `/zh-hant/privacy/`, `/zh-hant/support/`, `/zh-hans/privacy/`, `/zh-hans/support/`, `/ja/privacy/` and `/ja/support/` are public contracts linked from the App Store. They must stay at the same paths.
 - `/themes/v1/` is reserved for the future theme gallery.
-- UI labels quoted on the pages must match the app's strings in each language. Nobody checks this automatically.
+- UI labels quoted on the pages must match the app's strings in each language the app itself ships (English and Traditional Chinese only). Nobody checks this automatically. When a page in Simplified Chinese or Japanese needs to state which languages the app's interface comes in, use the single `APP_UI_LANGUAGES` constant in `scripts/build_pages.py` rather than writing a new sentence — it already carries the correct phrasing for every locale.
 
 ## Brand Commitments
 
@@ -97,7 +97,7 @@ These are specific to the site:
 2. **Built for the agent loop.** Every page should make the loop of write, review and revise feel concrete.
 3. **Readable by machines as well as people.** Keep the Markdown twins, `llms.txt` and the product facts accurate and in sync with the HTML and with the parent.
 4. **Static, private and fast.** No scripts, no tracking and no third parties, the same privacy stance as the app.
-5. **Two languages, one product.** English and Traditional Chinese are equal editions, not a primary and a translation. This is inherited from the parent.
+5. **Two languages, one product.** English and Traditional Chinese are equal editions, not a primary and a translation. This is inherited from the parent and describes the *app's* interface. The site additionally publishes in Simplified Chinese and Japanese (see Site constraints) to reach readers beyond the app's own UI languages — that extension is the site's own choice, not a claim about the app.
 
 ## Accessibility & Inclusion
 

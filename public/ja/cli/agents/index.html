@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI エージェント向け marsdawn：スクリプトから Markdown を PDF に · MarsDawn</title>
+<meta name="description" content="Markdown を PDF に変換するために marsdawn を呼び出す AI エージェントやスクリプトのためのリファレンス：コマンド、JSON 出力、スキーマ、終了コード、動作要件。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/cli/agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/cli/agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/cli/agents/">
+<link rel="alternate" type="text/markdown" href="/ja/cli/agents/index.md">
+<meta property="og:title" content="AI エージェント向け marsdawn：スクリプトから Markdown を PDF に · MarsDawn">
+<meta property="og:description" content="Markdown を PDF に変換するために marsdawn を呼び出す AI エージェントやスクリプトのためのリファレンス：コマンド、JSON 出力、スキーマ、終了コード、動作要件。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/cli/agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/cli/agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/agents/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>AI エージェント向け marsdawn</h1>
+  <p><code>marsdawn</code> コマンドラインツールを呼び出す AI エージェントやスクリプトのためのリファレンスです。このページのすべての例は、現在のソースからビルドしたツールに対して実際に実行したものです。</p>
+</section>
+
+<div class="summary"><p><strong>Markdown ファイルを PDF に変換するには、<code>marsdawn export notes.md --json</code> を実行し、stdout から1つの JSON オブジェクトを読み取ってください。</strong>Mermaid 図とハイライトされたコードは、MarsDawn アプリと同じ方法で描画されます。<code>export</code> にアプリは不要ですが、<code>open</code> には必要です。</p></div>
+
+<h2>できること</h2>
+<ul>
+  <li><code>export</code>：MarsDawn アプリと同じ書き出しエンジンで、1つの Markdown ファイルをページ分割された PDF に変換します。ウインドウは開きません。</li>
+  <li><code>open</code>：1つ以上の Markdown ファイルを MarsDawn アプリで開き、人がレビューできるようにします。各ファイルが移動すべき行を指定することもできます。</li>
+</ul>
+
+<h2>できないこと</h2>
+<ul>
+  <li>stdin から Markdown を読み込みません。ファイルパスを渡してください。</li>
+  <li>PDF を stdout に書き出しません。PDF は必ずファイルに書き込まれ、stdout には結果だけが出力されます。</li>
+  <li><code>--force</code> を指定しない限り、既存のファイルを置き換えません。</li>
+  <li><code>--allow-remote-images</code> を指定しない限りウェブから画像を読み込まず、指定した場合も https のみです。</li>
+  <li><code>open</code> は MarsDawn アプリがインストールされていないと動作せず、代コード 3 で終了します。<code>export</code> にアプリは不要です。</li>
+  <li>MarsDawn 1.0 はまだ <code>open</code> が指定した行へジャンプしません。ファイルの先頭を開きます。</li>
+  <li>macOS でのみ動作します。</li>
+</ul>
+
+<h2>export</h2>
+<pre><code>marsdawn export notes.md --json</code></pre>
+<p><code>notes.md</code> の隣に <code>notes.pdf</code> を書き出します。オプション：</p>
+<ul>
+  <li><code>-o, --output &lt;path&gt;</code>：PDF の書き出し先。デフォルトは入力パスの拡張子を <code>.pdf</code> に変えたものです。</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：テーマのライトカラー。デフォルトは <code>$MARSDAWN_THEME</code>、それもなければ <code>dawn</code> です。</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>：紙のサイズ。デフォルトは <code>a4</code> です。</li>
+  <li><code>--allow-remote-images</code>：書き出し中にウェブから https の画像を読み込みます。</li>
+  <li><code>--force</code>：出力先ファイルが存在する場合に置き換えます。</li>
+  <li><code>--json</code>：テキストの代わりに、stdout に1つの JSON オブジェクトを出力します。</li>
+</ul>
+<pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
+<p>成功、終了コード 0：</p>
+<pre><code>{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}</code></pre>
+<ul>
+  <li><code>output</code>：書き出された PDF の絶対パス。</li>
+  <li><code>pages</code>：ページ数。</li>
+  <li><code>theme</code> と <code>paper</code>：実際に使われた値。</li>
+  <li><code>diagramErrors</code>：描画に失敗した Mermaid 図ごとに1件のメッセージ。PDF はそれでも書き出されます。</li>
+</ul>
+
+<h2>open</h2>
+<pre><code>marsdawn open notes.md --json
+marsdawn open notes.md:120 --json
+marsdawn open notes.md --line 120 --json</code></pre>
+<ul>
+  <li><code>path:line</code> は移動先の行を指定します。後ろにさらに列番号が続く場合（<code>notes.md:120:8</code> など）は無視されます。存在するファイル名そのものを指す引数は常にそのファイル名として扱われるので、<code>weird:12</code> という名前のファイルはそのまま開きます。</li>
+  <li><code>--line &lt;n&gt;</code> は単一ファイルの行を指定します。ファイル名自体がコロンと数字で終わる場合も含みます。ファイルは1つだけ指定できます。</li>
+  <li>行番号の範囲は 1 から 999999999 です。それ以外は使い方の誤りになります。</li>
+  <li>行番号は marsdawn 0.3.0 で追加されました。MarsDawn 1.0 はファイルを開きますが、まだその行へジャンプしません。</li>
+</ul>
+<p>成功、終了コード 0：</p>
+<pre><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
+<ul>
+  <li><code>opened</code>：指定した順に、ファイルごとの1オブジェクト。<code>path</code> はファイルの絶対パス、<code>line</code> は行が指定された場合にのみ含まれます。</li>
+  <li><code>app</code>：それらを開いた MarsDawn アプリのパス。</li>
+</ul>
+<p>marsdawn 0.2.x では <code>opened</code> はパス文字列のリストでした。両方に対応する必要がある場合は <code>marsdawn --version</code> を確認してください。</p>
+
+<h2>失敗</h2>
+<p><code>--json</code> を指定すると、失敗時は stdout に1つの JSON オブジェクトを出力し、対応するコードで終了します：</p>
+<pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
+<ul>
+  <li><code>2</code>、<code>input_not_found</code>：入力が存在しない、フォルダである、または UTF-8 テキストでない。</li>
+  <li><code>3</code>、<code>app_not_installed</code>：MarsDawn がインストールされていません。これを返すのは <code>open</code> だけです。</li>
+  <li><code>4</code>、<code>output_exists</code>：出力先ファイルがすでに存在します。<code>--force</code> を指定してください。</li>
+  <li><code>5</code>、<code>export_failed</code>：書き出し自体が失敗しました。</li>
+  <li><code>64</code>：使い方の誤り。未知のオプション、無効な値、範囲外の行番号、複数ファイルに対する <code>--line</code> など。これは <code>--json</code> を指定していても、常にテキストとして stderr に出力されます。</li>
+</ul>
+
+<h2>JSON スキーマ</h2>
+<p>それぞれの <code>--json</code> 結果に対する JSON Schema（draft 2020-12）：</p>
+<ul>
+  <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功時</li>
+  <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功時、marsdawn 0.3.0 以降</li>
+  <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: 失敗時、両方のコマンド共通</li>
+  <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）</li>
+</ul>
+
+<h2>環境変数</h2>
+<ul>
+  <li><code>MARSDAWN_THEME</code>：<code>--theme</code> が指定されないときに <code>export</code> が使うテーマ。未知の値はエラーなしで <code>dawn</code> にフォールバックします。</li>
+</ul>
+
+<h2>動作要件</h2>
+<ul>
+  <li>このツールは macOS 15 以降で動作します。Apple シリコンでは Homebrew がビルド済みのボトルをインストールし、他には何も必要ありません。自分でビルドする場合（Intel Mac、またはソースから）は Swift 6.2 以降が必要で、これは Xcode 26 以降に含まれています。</li>
+  <li>MarsDawn アプリには macOS 26 以降が必要です。</li>
+</ul>
+
+<h2>インストール</h2>
+<p>Homebrew を使います。Apple シリコンではビルド済みのボトルを数秒で取得でき、Xcode は不要です。Intel Mac ではソースから marsdawn をコンパイルするため数分かかり、Xcode 26 以降が必要です。</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn
+marsdawn --version</code></pre>
+<p>または<a href="https://github.com/redtear1115/mars-dawn-kit">ソース</a>からビルドすることもできます。最初のビルドでは依存関係の取得とコンパイルが行われ、これも数分かかります。</p>
+<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift build -c release --product marsdawn
+.build/release/marsdawn export notes.md --json</code></pre>
+<p><code>marsdawn --version</code> は <code>0.3.0</code> のようなバージョン番号を出力し、終了コード 0 で終了します。</p>
+
+<h2>次に</h2>
+<ul>
+  <li>シェルではなく指示を読むエージェント向けの、1ファイルの skill：<a href="/ja/cli/skill/">marsdawn skill</a>。</li>
+  <li>同じ <code>export</code> をラップする MCP サーバー：<a href="/ja/cli/mcp/">marsdawn-mcp</a>。</li>
+  <li>この JSON 結果が、なぜエージェント自身の context にとって安上がりなのか：<a href="/ja/token-efficient-review/">トークンを節約するレビュー方法</a>。</li>
+</ul>
+</main>
+<footer class="footer">
+  <span>エージェントが書いた Markdown を読む。</span>
+  <a href="/ja/support/">サポート</a>
+  <a href="/ja/privacy/">プライバシーポリシー</a>
+  <a href="/ja/cli/">コマンドライン</a>
+  <span>MarsDawn は Mac App Store で近日公開予定です。</span>
+</footer>
+</div>
+</body>
+</html>

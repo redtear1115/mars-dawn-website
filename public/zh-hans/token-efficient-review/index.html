@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>不花 agent token 的审阅方式 · MarsDawn</title>
+<meta name="description" content="人在 MarsDawn 里读排版后的页面，不会被读回 agent 的 context。工具调用本身返回的也只是精简的 JSON，不是排版内容，调用本身就很便宜。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/token-efficient-review/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/token-efficient-review/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/token-efficient-review/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/token-efficient-review/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/token-efficient-review/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/token-efficient-review/">
+<link rel="alternate" type="text/markdown" href="/zh-hans/token-efficient-review/index.md">
+<meta property="og:title" content="不花 agent token 的审阅方式 · MarsDawn">
+<meta property="og:description" content="人在 MarsDawn 里读排版后的页面，不会被读回 agent 的 context。工具调用本身返回的也只是精简的 JSON，不是排版内容，调用本身就很便宜。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/token-efficient-review/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hans/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/token-efficient-review/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/token-efficient-review/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/token-efficient-review/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/token-efficient-review/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>审阅不花 agent 的 token。</h1>
+  <p>这个循环里有两件事分开来看，都很省：agent 调用工具拿回什么，以及确认结果排版正确要花多少力气。</p>
+</section>
+
+<div class="summary"><p><strong>工具调用返回的是一个小小的 JSON 对象，不是排版后的页面；排版后的页面由人在 MarsDawn 里阅读&#8212;&#8212;不会被读回 agent 的 context。</strong></p></div>
+
+<h2>工具调用本身很便宜</h2>
+<p>不管是从 CLI、skill，还是<a href="/zh-hans/cli/mcp/">MCP 服务器</a>调用 <code>marsdawn export</code>，返回的都是<a href="/zh-hans/cli/agents/">精简的 JSON 对象</a>：<code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 和 <code>diagramErrors</code>。完整 schema 在 <a href="/schemas/cli/export.v1.json">export.v1.json</a>。里面没有排版后的文稿内容。一份 50 页、有十几张 Mermaid 图表的 PDF，返回的字段和一份一页的笔记一样多。</p>
+
+<h2>审阅在另一边进行</h2>
+<p>PDF 生成之后，人会打开它&#8212;&#8212;在 MarsDawn 里，或任何 PDF 查看器&#8212;&#8212;阅读排版好的图表、数学式和版面。agent 不需要把排版结果读回自己的 context 才能确认它看起来对：审阅在另一个窗口、另一个屏幕上进行，不会变成又一轮花 token 描述一张图表长什么样子。</p>
+
+<h2>这样省下什么</h2>
+<ul>
+  <li>不用把排版后的 Markdown、一张截图，或对截图的描述贴回对话里，只为了让 agent 确认导出成功。</li>
+  <li>agent 不需要重建 Mermaid 图表或 KaTeX 公式排版后的样子，直接让人去看就好。</li>
+  <li>不需要在第一次调用已经报告成功之后，再多一次调用去读取 PDF 的内容。</li>
+</ul>
+
+<h2>接下来</h2>
+<ul>
+  <li>调用 marsdawn 的三种方式&#8212;&#8212;CLI、skill 文件、MCP 服务器：<a href="/zh-hans/cli/mcp/">三种入口</a>。</li>
+  <li>JSON 结果的每个字段：<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</li>
+  <li>为什么还是需要有人读 agent 写的东西：<a href="/zh-hans/reviewing-ai-output/">审阅的理由</a>。</li>
+</ul>
+</main>
+<footer class="footer">
+  <span>读 agent 写的 Markdown。</span>
+  <a href="/zh-hans/support/">支持</a>
+  <a href="/zh-hans/privacy/">隐私政策</a>
+  <a href="/zh-hans/cli/">命令行工具</a>
+  <span>MarsDawn 即将在 Mac App Store 上架。</span>
+</footer>
+</div>
+</body>
+</html>
