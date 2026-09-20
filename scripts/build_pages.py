@@ -215,6 +215,12 @@ PAGES = {
 <p>Agent 也能直接操作 MarsDawn：免費的 <a href="/zh-hant/cli/">marsdawn</a> 命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
 """,
     },
+    # The Purchases paragraph is in the present tense ("MarsDawn is sold through the Mac App
+    # Store"), approved by the owner on 2026-09-20 (website #44) after reading how comparable apps
+    # write theirs: MacMD Viewer, Ulysses, NotePlan, MWeb and iA Writer all describe the product in
+    # the present tense, and none hedges on whether it is currently for sale. It is accurate from
+    # launch, because this change deploys with the launch. PRIVACY_UPDATED doesn't move: what the
+    # policy says about data is unchanged.
     ("en", "privacy"): {
         "title": "Privacy Policy · MarsDawn",
         "description": "MarsDawn does not collect personal data. Your documents and settings stay on your Mac.",
