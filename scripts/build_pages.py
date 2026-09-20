@@ -32,11 +32,11 @@ KIT_URL = "https://github.com/redtear1115/mars-dawn-kit"
 KIT_LICENSE = "Apache-2.0"
 BREW_TAP_INSTALL = "brew tap redtear1115/tap && brew install marsdawn"
 
-# The schema.org availability of the Mac App Store offer. PreOrder until the app is actually
-# downloadable: a priced offer with no availability reads to a crawler as obtainable today.
-# Launch day flips this to "https://schema.org/InStock" with the rest of the go-live copy
-# (website #44, and docs/go-live-checklist.md in the app repo, beside the deploy).
-AVAILABILITY = "https://schema.org/PreOrder"
+# The schema.org availability of the Mac App Store offer. This branch is the launch state, so it
+# says InStock: the copy here already says the app is on the Mac App Store, and a build that says
+# both things at once is the failure `check_invariants.py` exists to catch. `main` stays on
+# PreOrder until this merges (docs/go-live-checklist.md in the app repo, B4/B5).
+AVAILABILITY = "https://schema.org/InStock"
 
 # The app's Mac App Store listing. PLACEHOLDER until the owner reads the Apple ID in App Store Connect
 # (App Information); this goes live on launch day only (docs/go-live-checklist.md in the app repo, B5).
