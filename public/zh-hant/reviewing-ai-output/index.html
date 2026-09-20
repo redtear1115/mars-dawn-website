@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>為什麼 AI 寫的東西還是需要人讀過 · MarsDawn</title>
+<meta name="description" content="AI 寫的 Markdown 還是得由人來理解，不能因為讀起來通順就直接相信。MarsDawn 把排版後的頁面和原始碼並排，也把 Mermaid 圖表與 KaTeX 數學式畫出來，讓結構一眼就看得懂。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-ai-output/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reviewing-ai-output/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reviewing-ai-output/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-ai-output/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/reviewing-ai-output/index.md">
+<meta property="og:title" content="為什麼 AI 寫的東西還是需要人讀過 · MarsDawn">
+<meta property="og:description" content="AI 寫的 Markdown 還是得由人來理解，不能因為讀起來通順就直接相信。MarsDawn 把排版後的頁面和原始碼並排，也把 Mermaid 圖表與 KaTeX 數學式畫出來，讓結構一眼就看得懂。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/reviewing-ai-output/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reviewing-ai-output/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reviewing-ai-output/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reviewing-ai-output/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main>
+<section class="intro">
+  <h1>agent 寫出來，還是得由你理解。</h1>
+  <p>AI agent 可以很快寫出一份計畫、一份規格或一堆筆記。它寫出來的東西，還是得由要照著做的人去理解&#8212;&#8212;不能因為讀起來通順，就直接相信。</p>
+</section>
+
+<div class="summary"><p><strong>MarsDawn 就是為了這種閱讀而做的：排版後的頁面和原始碼並排，Mermaid 圖表和 KaTeX 數學式直接畫出來，而不是留著記號，讓文件的結構一眼就看得懂。</strong></p></div>
+
+<h2>讀起來通順，不代表是對的</h2>
+<p>Simon Willison 在談 AI 輔助寫程式時，對那些還會被繼續維護、不是寫完就丟的程式碼這麼說：「the quality and understandability of the underlying code is crucial」（底層程式碼的品質和是否容易理解，至關重要，<a href="https://simonwillison.net/2025/Mar/6/vibe-coding/">Vibe coding</a>，2025）。文件也一樣：agent 寫出來讀起來很順的草稿，結構、數字或邏輯還是可能是錯的，而通順的文字並不會告訴你哪裡該多留意。</p>
+
+<h2>是推論，不是編譯</h2>
+<p>Thoughtworks 的 Birgitta B&#246;ckeler 講得很直接：「LLMs are NOT compilers, interpreters, transpilers or assemblers of natural language, they are inferrers」（LLM 不是自然語言的編譯器、直譯器、轉譯器或組譯器，它們是推論器，<a href="https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html">I still care about the code</a>）。編譯器要嘛接受你的輸入，要嘛回報錯誤；agent 給你的東西即使能跑、讀起來也通順，也不保證是對的。還是得有人檢查。</p>
+
+<h2>MarsDawn 給讀的人什麼</h2>
+<ul>
+  <li>排版後的頁面和原始碼並排，兩邊一改就同步更新，讓文字裡的說法和它的結構同時在你眼前。</li>
+  <li>Mermaid 圖表畫出來：agent 用文字描述的流程圖，變成一個你真的能看懂的形狀。</li>
+  <li>KaTeX 數學式排版出來，不是留著一串反斜線：公式看起來就是公式。</li>
+  <li>它本身不會自動做任何事。MarsDawn 不會幫你評分、摘要或標記這份文件&#8212;&#8212;它只是把結構攤在你面前，讓你自己判斷。</li>
+</ul>
+
+<h2>接下來</h2>
+<ul>
+  <li>這樣的審閱怎麼不花 agent 自己的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
+  <li>把審閱過的文件交給別人：<a href="/zh-hant/sharing-exported-pdfs/">分享 PDF</a>。</li>
+  <li>MarsDawn 是什麼，一頁講完：<a href="/zh-hant/">首頁</a>。</li>
+</ul>
+</main>
+<footer class="footer">
+  <span>讀 agent 寫的 Markdown。</span>
+  <a href="/zh-hant/support/">支援</a>
+  <a href="/zh-hant/privacy/">隱私權政策</a>
+  <a href="/zh-hant/cli/">命令列工具</a>
+  <span>MarsDawn 即將在 Mac App Store 上架。</span>
+</footer>
+</div>
+</body>
+</html>

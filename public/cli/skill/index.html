@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/skill/">
 <link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/skill/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/cli/skill/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/cli/skill/">
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/skill/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/cli/skill/">
 <link rel="alternate" type="text/markdown" href="/cli/skill/index.md">
@@ -28,7 +30,7 @@
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <nav class="lang" aria-label="Language"><a href="/cli/skill/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/cli/skill/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
+  <nav class="lang" aria-label="Language"><a href="/cli/skill/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/cli/skill/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/skill/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/skill/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
 <main>
 <section class="intro">
@@ -52,7 +54,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
   <li>It doesn't give itself permission to run anything. Your agent still asks before it installs <code>marsdawn</code> or runs it, as it would for any other command.</li>
   <li>It doesn't send your documents anywhere. <code>marsdawn</code> renders on your Mac, and it leaves out images from the web unless you pass <code>--allow-remote-images</code>.</li>
 </ul>
-<p>The whole contract, every field and every code, is in <a href="/cli/agents/">marsdawn for agents</a>.</p>
+<p>The whole contract, every field and every code, is in <a href="/cli/agents/">marsdawn for agents</a>. For an agent that calls tools over MCP instead of reading a skill file, there's also <a href="/cli/mcp/">an MCP server</a>.</p>
 </main>
 <footer class="footer">
   <span>Read what your agent wrote.</span>
