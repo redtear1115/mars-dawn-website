@@ -159,7 +159,7 @@ def build(k) -> dict:
   <li><strong>你在 MarsDawn 里读。</strong>打开文件，看排版后的页面，Mermaid 图表和代码高亮都在，旁边就是源代码。</li>
   <li><strong>Agent 修改。</strong>提出修改意见，agent 改好之后，再打开来读一次。</li>
 </ol>
-<p>Agent 也能直接操作 MarsDawn：免费的 <a href="/zh-hans/cli/">marsdawn</a> 命令行工具能打开文件供你检阅，也能输出 PDF，并提供给脚本使用的 JSON 输出。细节请看<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</p>
+<p>Agent 也能直接操作 MarsDawn：免费的 <a href="/zh-hans/cli/">marsdawn</a> 命令行工具能打开文件供你审阅，也能输出 PDF，并提供给脚本使用的 JSON 输出。细节请看<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</p>
 """,
     }
     pages['cli'] = {
@@ -247,7 +247,7 @@ marsdawn open notes.md --line 120</code></pre>
 <h2>能做什么</h2>
 <ul>
   <li><code>export</code>：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件输出成分页的 PDF，不会打开任何窗口。</li>
-  <li><code>open</code>：在 MarsDawn app 中打开一或多个 Markdown 文件，让人检阅，也可以指定每个文件要定位的行。</li>
+  <li><code>open</code>：在 MarsDawn app 中打开一或多个 Markdown 文件，让人审阅，也可以指定每个文件要定位的行。</li>
 </ul>
 
 <h2>不做什么</h2>

@@ -137,6 +137,21 @@ def check_site(src: dict, css: str, pages: dict) -> list:
     return problems
 
 
+# Pages that list the themes by name, in a language whose app names them differently from
+# English. Their list must use the app's names, in the kit's order (COPY-REVIEW §3.2).
+THEME_LISTS = {"ja": "ja/themes/index.html"}
+
+
+def check_theme_lists(src: dict, pages: dict) -> list:
+    problems = []
+    for locale, html in pages.items():
+        names = re.findall(r"<li><strong>([^<]+)</strong>", html)[:len(src["themes"])]
+        want = [t["names"][locale] for t in src["themes"]]
+        if names != want:
+            problems.append(f"{THEME_LISTS[locale]}: the theme list reads {names}, the app says {want}")
+    return problems
+
+
 def kit_files(tag: str) -> dict:
     paths = ["Sources/MarsDawnKit/PreviewTheme.swift"] + [
         sync.KIT_STRINGS.format(lproj=lproj) for locale, lproj in sync.LOCALES.items() if locale != "en"]
@@ -157,7 +172,7 @@ def check_kit(src: dict, files: dict) -> list:
     return problems
 
 
-def self_test(src: dict, css: str, pages: dict, kit: dict) -> list:
+def self_test(src: dict, css: str, pages: dict, lists: dict, kit: dict) -> list:
     """Each plant must make its check fail; returns the ones that didn't."""
     dawn = src["themes"][0]
     en_label = dawn["names"]["en"]
@@ -171,6 +186,7 @@ def self_test(src: dict, css: str, pages: dict, kit: dict) -> list:
         "a layout label on a page": (lambda: check_site(src, css, {**pages, "ja": pages["ja"].replace(src["labels"]["ja"]["split"] + "<kbd", "並べて<kbd", 1)})),
         "a word in the source pane": (lambda: check_site(src, css, {**pages, "zh-hant": pages["zh-hant"].replace("MarsDawn</span>", "MarsDusk</span>", 1)})),
         "a word in the preview": (lambda: check_site(src, css, {**pages, "zh-hans": re.sub(r"(<p class=\"md-h1\">[^<]*)MarsDawn", r"\1MarsDusk", pages["zh-hans"], count=1)})),
+        "an English theme name in the ja theme list": (lambda: check_theme_lists(src, {"ja": lists["ja"].replace("<strong>クラシック</strong>", "<strong>Classic</strong>", 1)})),
     }
     if kit:
         swapped = json.loads(json.dumps(src))
@@ -196,8 +212,9 @@ def main() -> int:
     src = json.loads((ROOT / "scripts" / "hero_sources.json").read_text(encoding="utf-8"))
     css = (ROOT / "public" / "assets" / "hero.css").read_text(encoding="utf-8")
     pages = {locale: (ROOT / "public" / path).read_text(encoding="utf-8") for locale, path in PAGES.items()}
+    lists = {locale: (ROOT / "public" / path).read_text(encoding="utf-8") for locale, path in THEME_LISTS.items()}
     kit = kit_files(src["kit"]["tag"]) if args.kit else None
-    problems = check_site(src, css, pages) + (check_kit(src, kit) if kit else [])
+    problems = check_site(src, css, pages) + check_theme_lists(src, lists) + (check_kit(src, kit) if kit else [])
     for p in problems:
         print(f"::error::{p}")
     if problems:
@@ -205,7 +222,7 @@ def main() -> int:
     print(f"The homepage window matches hero_sources.json" + (f" and kit {src['kit']['tag']}." if kit else "."))
     if args.self_test:
         print("Planted drift:")
-        missed = self_test(src, css, pages, kit)
+        missed = self_test(src, css, pages, lists, kit)
         if missed:
             print(f"::error::The check missed planted drift: {', '.join(missed)}")
             return 1

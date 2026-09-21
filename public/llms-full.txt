@@ -946,7 +946,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/
 2. **你在 MarsDawn 裡讀。**打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。
 3. **Agent 修改。**提出修改意見，agent 改好之後，再打開來讀一次。
 
-Agent 也能直接操作 MarsDawn：免費的 [marsdawn](/zh-hant/cli/) 命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+Agent 也能直接操作 MarsDawn：免費的 [marsdawn](/zh-hant/cli/) 命令列工具能開啟檔案供你審閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
 ---
 
 ## 你寫的內容留在你的 Mac 上
@@ -1491,7 +1491,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/agents/
 ## 能做什麼
 
 - `export`：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。
-- `open`：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱，也可以指定每個檔案要定位的行。
+- `open`：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人審閱，也可以指定每個檔案要定位的行。
 
 ## 不做什麼
 
@@ -1874,7 +1874,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/
 2. **你在 MarsDawn 里读。**打开文件，看排版后的页面，Mermaid 图表和代码高亮都在，旁边就是源代码。
 3. **Agent 修改。**提出修改意见，agent 改好之后，再打开来读一次。
 
-Agent 也能直接操作 MarsDawn：免费的 [marsdawn](/zh-hans/cli/) 命令行工具能打开文件供你检阅，也能输出 PDF，并提供给脚本使用的 JSON 输出。细节请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。
+Agent 也能直接操作 MarsDawn：免费的 [marsdawn](/zh-hans/cli/) 命令行工具能打开文件供你审阅，也能输出 PDF，并提供给脚本使用的 JSON 输出。细节请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。
 ---
 
 ## 你写的内容留在你的 Mac 上
@@ -2415,7 +2415,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/agents/
 ## 能做什么
 
 - `export`：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件输出成分页的 PDF，不会打开任何窗口。
-- `open`：在 MarsDawn app 中打开一或多个 Markdown 文件，让人检阅，也可以指定每个文件要定位的行。
+- `open`：在 MarsDawn app 中打开一或多个 Markdown 文件，让人审阅，也可以指定每个文件要定位的行。
 
 ## 不做什么
 
@@ -2803,7 +2803,7 @@ Source: https://marsdawn.southern-light.dev/ja/yours/
 
 MarsDawn にはアカウントも同期もクラウドもありません。ファイルを開いて、あなたが書き、選んだ場所に保存します。
 
-![MarsDawn が Classic テーマで文書を表示し、プレビューがウインドウいっぱいに広がっている。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
+![MarsDawn がクラシックテーマで文書を表示し、プレビューがウインドウいっぱいに広がっている。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
 
 このスクリーンショットの内容：
 
@@ -2829,7 +2829,7 @@ Source: https://marsdawn.southern-light.dev/ja/pay-once/
 
 MarsDawn は無料でダウンロードできます。14日間のトライアルを始めればすべての機能が使えます。その後も使い続けるには、USD 4.99 の一度きりの購入でロックが解除されます。サブスクリプションもアカウントもありません。
 
-![MarsDawn が Vivid テーマで、左に Markdown のソース、右にレンダリングされたページを表示している。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
+![MarsDawn がビビッドテーマで、左に Markdown のソース、右にレンダリングされたページを表示している。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
 このスクリーンショットの内容：
 
@@ -2932,7 +2932,7 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 - **共有：**アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。
 - **編集：**左に Markdown を書き、右でページを読みます。ページ自体は編集できません。
 - **形式：**MarsDawn は PDF の書き出しと印刷に対応していますが、Word ファイルへの書き出しはできません。
-- **テーマ：**Dawn、Classic、Modern、Vivid の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。
+- **テーマ：**夜明け、クラシック、モダン、ビビッド の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。
 - **その他のファイル：**プレーンテキストファイルと PDF は読み取り専用で開きます。
 - **トライアル終了後：**14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。
 - **システム：**MarsDawn には macOS 26 以降が必要です。
@@ -3197,7 +3197,7 @@ Source: https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/
 ## それぞれのアプリでできること
 
 - **編集：**MacMD Viewer は設計上、読み取り専用です。MarsDawn はソースを編集しながらその場でレンダリングするので、入力すると変更が表示されます。
-- **プレビューのテーマ：**MacMD Viewer には12種類の文書テーマがあります。MarsDawn は Dawn、Classic、Modern、Vivid の4種類で、それぞれライトとダークのパレットがあります。
+- **プレビューのテーマ：**MacMD Viewer には12種類の文書テーマがあります。MarsDawn は 夜明け、クラシック、モダン、ビビッド の4種類で、それぞれライトとダークのパレットがあります。
 - **図と数式：**どちらも Mermaid 図をレンダリングし、コードをハイライトします。MarsDawn は KaTeX の数式もレンダリングしますが、MacMD Viewer 自身の紹介には数式のレンダリングについて記載がありません。
 - **Finder 連携：**どちらもクイックルック拡張機能を追加しており、Finder で `.md` ファイルを選んでスペースキーを押すとレンダリングされたページが表示されます。
 - **PDF と印刷：**どちらもレンダリングされたページを PDF として書き出したり印刷したりできます。
@@ -3523,11 +3523,11 @@ MarsDawn には自前の AI モデルがありません。Markdown を書くた�
 
 - 完全な JSON スキーマとすべての終了コード：[AI エージェント向け marsdawn](/ja/cli/agents/)。
 - Claude Code などのエージェント向けの1ファイルの skill：[marsdawn skill](/ja/cli/skill/)。
-- 精簡な JSON 結果が、なぜエージェント自身の context にとって重要なのか：[トークンを節約するレビュー方法](/ja/token-efficient-review/)。
+- 簡潔な JSON 結果が、なぜエージェント自身の context にとって重要なのか：[トークンを節約するレビュー方法](/ja/token-efficient-review/)。
 
 ---
 
-## トークンを使わないレビュー
+## トークンを抑えたレビュー
 
 Source: https://marsdawn.southern-light.dev/ja/token-efficient-review/
 
@@ -3539,7 +3539,7 @@ Source: https://marsdawn.southern-light.dev/ja/token-efficient-review/
 
 ## ツール呼び出し自体が安い
 
-`marsdawn export` を、CLI、skill、または[MCP サーバー](/ja/cli/mcp/)のいずれからでも呼び出すと、返ってくるのは[精簡な JSON オブジェクト](/ja/cli/agents/)です：`ok`、`output`、`pages`、`theme`、`paper`、`diagramErrors`。完全なスキーマは [export.v1.json](/schemas/cli/export.v1.json) にあります。そのどれもレンダリングされた文書そのものではありません。十数個の Mermaid 図がある50ページの PDF も、1ページのメモと同じ数のフィールドしか返しません。
+`marsdawn export` を、CLI、skill、または[MCP サーバー](/ja/cli/mcp/)のいずれからでも呼び出すと、返ってくるのは[簡潔な JSON オブジェクト](/ja/cli/agents/)です：`ok`、`output`、`pages`、`theme`、`paper`、`diagramErrors`。完全なスキーマは [export.v1.json](/schemas/cli/export.v1.json) にあります。そのどれもレンダリングされた文書そのものではありません。十数個の Mermaid 図がある50ページの PDF も、1ページのメモと同じ数のフィールドしか返しません。
 
 ## レビューは、別のところで行われる
 
@@ -3597,16 +3597,16 @@ Source: https://marsdawn.southern-light.dev/ja/themes/
 
 # 8つの見た目、1つの書き出し。
 
-MarsDawn には Dawn、Classic、Modern、Vivid の4種類のプレビューテーマが付属し、それぞれライトとダークがあります。文書を読むための8通りの組み合わせです。PDF に書き出す、または印刷すると、そのとき読んでいたものと同じ見た目でページが出てきます。
+MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種類のプレビューテーマが付属し、それぞれライトとダークがあります。文書を読むための8通りの組み合わせです。PDF に書き出す、または印刷すると、そのとき読んでいたものと同じ見た目でページが出てきます。
 
 **4つのテーマ × ライトとダーク＝文書を読む8つの方法があり、書き出しはどれを選んでいても対応します。**もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーは計画中で、まだ作られていません。
 
 ## 4種類のテーマ
 
-- **Dawn**、デフォルト：このサイトと同じ、温かみのある紙の質感と Mars Rust のアクセントカラー。
-- **Classic**（典雅）：より素朴で、紙の文書らしい配色。
-- **Modern**（流行）：より涼しげで、現代的な配色。
-- **Vivid**（活潑）：より明るく、コントラストの高い配色。
+- **夜明け**、デフォルト：このサイトと同じ、温かみのある紙の質感と Mars Rust のアクセントカラー。
+- **クラシック**：より素朴で、紙の文書らしい配色。
+- **モダン**：より涼しげで、現代的な配色。
+- **ビビッド**：より明るく、コントラストの高い配色。
 
 それぞれ独自のライトとダークの配色を持つので、Mac の外観を切り替えると、インターフェースの色だけでなくテーマの配色自体も切り替わります。
 

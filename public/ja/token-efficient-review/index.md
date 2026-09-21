@@ -6,7 +6,7 @@
 
 ## ツール呼び出し自体が安い
 
-`marsdawn export` を、CLI、skill、または[MCP サーバー](/ja/cli/mcp/)のいずれからでも呼び出すと、返ってくるのは[精簡な JSON オブジェクト](/ja/cli/agents/)です：`ok`、`output`、`pages`、`theme`、`paper`、`diagramErrors`。完全なスキーマは [export.v1.json](/schemas/cli/export.v1.json) にあります。そのどれもレンダリングされた文書そのものではありません。十数個の Mermaid 図がある50ページの PDF も、1ページのメモと同じ数のフィールドしか返しません。
+`marsdawn export` を、CLI、skill、または[MCP サーバー](/ja/cli/mcp/)のいずれからでも呼び出すと、返ってくるのは[簡潔な JSON オブジェクト](/ja/cli/agents/)です：`ok`、`output`、`pages`、`theme`、`paper`、`diagramErrors`。完全なスキーマは [export.v1.json](/schemas/cli/export.v1.json) にあります。そのどれもレンダリングされた文書そのものではありません。十数個の Mermaid 図がある50ページの PDF も、1ページのメモと同じ数のフィールドしか返しません。
 
 ## レビューは、別のところで行われる
 

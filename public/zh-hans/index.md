@@ -12,7 +12,7 @@
 2. **你在 MarsDawn 里读。**打开文件，看排版后的页面，Mermaid 图表和代码高亮都在，旁边就是源代码。
 3. **Agent 修改。**提出修改意见，agent 改好之后，再打开来读一次。
 
-Agent 也能直接操作 MarsDawn：免费的 [marsdawn](/zh-hans/cli/) 命令行工具能打开文件供你检阅，也能输出 PDF，并提供给脚本使用的 JSON 输出。细节请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。
+Agent 也能直接操作 MarsDawn：免费的 [marsdawn](/zh-hans/cli/) 命令行工具能打开文件供你审阅，也能输出 PDF，并提供给脚本使用的 JSON 输出。细节请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。
 
 ## 其他页面
 
