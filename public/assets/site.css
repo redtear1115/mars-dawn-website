@@ -595,12 +595,17 @@ html { overflow-x: hidden; }
   .hero-shot .shot { margin-top: 0; }
 }
 
-/* The hero's MarsDawn window: a working model of the app, not a screenshot. Two
-   radio groups in its toolbar pick the preview theme and the layout, and :has()
-   reads them, so it needs no script. The theme palettes and fonts are the kit's
-   own (hero.css, generated from scripts/hero_sources.json); this block gives the
-   window its frame and each theme its shapes, following the kit's preview.css.
-   It is a depicted object, so it keeps the hero screenshot's shadow. */
+/* The hero's MarsDawn window: a working model of the app, drawn after its macOS 26
+   window (public/assets/screens/01-split and 03-dark). The theme menu and the layout
+   control are radio groups that :has() reads, so it needs no script. The theme
+   palettes, fonts and editor colours are the kit's and the app's own (hero.css, from
+   scripts/hero_sources.json); this block draws the frame and each theme's shapes,
+   following the kit's preview.css.
+
+   The title bar and toolbar are the system's, not the theme's: macOS draws them the
+   same whatever the document looks like, light or dark with the Mac. Their colours
+   below were measured from the app captures, pixel by pixel, not picked by eye. The
+   window is a depicted object, so it keeps the hero screenshot's shadow. */
 .mdw {
   --radius: 8px;
   --heading-weight: 650;
@@ -608,15 +613,22 @@ html { overflow-x: hidden; }
   --line-height: 1.65;
   --code-chip: var(--surface);
   --code-chip-edge: var(--border);
+  --chrome-bg: #FFFFFF;
+  --chrome-rule: #E6E6E6;
+  --chrome-ink: #575757;
+  --chrome-ink-on: #4D4D4D;
+  --chrome-pill: #FFFFFF;
+  --chrome-pill-edge: color-mix(in srgb, #000 7%, transparent);
+  --chrome-on: #E6E6E6;
+  --chrome-divider: #E9E9E9;
   --mdw-width: min(60rem, 100vw - 32px);
   margin: 0 calc((100% - var(--mdw-width)) / 2);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   background: var(--bg);
   color: var(--fg);
   font: 13px/1.4 var(--font);
   box-shadow: 0 0 0 1px color-mix(in srgb, #000 22%, transparent),
-              0 1px 0 color-mix(in srgb, #fff 12%, transparent) inset,
               0 40px 64px -28px color-mix(in srgb, #000 70%, transparent),
               0 14px 28px -14px color-mix(in srgb, #000 55%, transparent);
 }
@@ -624,32 +636,22 @@ html { overflow-x: hidden; }
   .mdw {
     --code-chip: color-mix(in srgb, var(--surface), var(--fg) 10%);
     --code-chip-edge: color-mix(in srgb, var(--border), var(--fg) 25%);
+    --chrome-bg: #242B2F;
+    --chrome-rule: #232323;
+    --chrome-ink: #ECECED;
+    --chrome-ink-on: #ECECED;
+    --chrome-pill: #273136;
+    --chrome-pill-edge: #3E5058;
+    --chrome-on: #4D555A;
+    --chrome-divider: #000000;
   }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .mdw, .mdw-bar, .mdw-source, .mdw-preview, .mdw label {
+  .mdw, .mdw-source, .mdw-preview {
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
 }
-
-.mdw-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 16px;
-  padding: 10px 14px;
-  background: color-mix(in srgb, var(--surface) 70%, var(--bg));
-  border-bottom: 1px solid var(--border);
-}
-.mdw-lights { display: flex; gap: 8px; margin-right: 6px; }
-.mdw-lights span {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--muted) 35%, var(--bg));
-}
-.mdw fieldset { display: flex; gap: 2px; margin: 0; padding: 0; border: 0; min-width: 0; }
-.mdw legend {
+.mdw-sr, .mdw legend {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -657,6 +659,48 @@ html { overflow-x: hidden; }
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+/* Title bar: traffic lights, the document's title, and the toolbar's two glass pills. */
+.mdw-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 8px 0 20px;
+  background: var(--chrome-bg);
+  border-bottom: 1px solid var(--chrome-rule);
+  color: var(--chrome-ink);
+}
+.mdw-lights { display: flex; gap: 8px; margin-right: 24px; flex: none; }
+.mdw-lights span {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.5px color-mix(in srgb, #000 12%, transparent);
+}
+.mdw-lights span:nth-child(1) { background: #FA5C5F; }
+.mdw-lights span:nth-child(2) { background: #FAC800; }
+.mdw-lights span:nth-child(3) { background: #34C758; }
+.mdw-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 650;
+  font-size: 15px;
+}
+.mdw svg { display: block; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.mdw-pill, .mdw-themes > summary, .mdw-layouts {
+  display: flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 5px;
+  border-radius: 19px;
+  background: var(--chrome-pill);
+  box-shadow: 0 0 0 0.5px var(--chrome-pill-edge), 0 2px 6px color-mix(in srgb, #000 8%, transparent);
+}
+.mdw fieldset { margin: 0; border: 0; min-width: 0; }
 /* The radios stay in the tab order and keep their arrow keys; the labels are what shows. */
 .mdw input[type="radio"] {
   position: absolute;
@@ -666,45 +710,80 @@ html { overflow-x: hidden; }
   opacity: 0;
   pointer-events: none;
 }
-.mdw label {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 28px;
-  padding: 0 10px;
-  border-radius: 6px;
-  color: var(--muted);
+.mdw label { cursor: pointer; user-select: none; }
+
+/* Layout: three icon segments, the active one tinted, as the app's segmented control. */
+.mdw-layouts { gap: 0; }
+.mdw-layouts label {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 30px;
+  border-radius: 15px;
+}
+.mdw-layouts svg { width: 26px; height: 21px; }
+.mdw-layouts input:checked + label { background: var(--chrome-on); color: var(--chrome-ink-on); }
+.mdw-layouts input:focus-visible + label,
+.mdw-menu input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+/* Theme: a palette button with a chevron that opens the theme menu. A <details>, so it
+   opens and closes from the keyboard too; choosing a theme leaves it open, and the
+   button closes it. */
+.mdw-themes { position: relative; margin-left: auto; }
+.mdw-themes > summary {
+  gap: 2px;
+  padding: 0 9px 0 12px;
+  list-style: none;
   cursor: pointer;
+}
+.mdw-themes > summary::-webkit-details-marker { display: none; }
+.mdw-themes > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mdw-themes > summary svg { width: 26px; height: 23px; }
+.mdw-themes > summary .chev { width: 10px; height: 10px; stroke-width: 1.6; }
+.mdw-themes[open] > summary { background: var(--chrome-on); }
+.mdw .mdw-menu {
+  position: absolute;
+  z-index: 2;
+  top: 44px;
+  right: 0;
+  min-width: 190px;
+  padding: 6px;
+  border-radius: 12px;
+  background: var(--chrome-pill);
+  box-shadow: 0 0 0 0.5px var(--chrome-pill-edge), 0 10px 30px color-mix(in srgb, #000 22%, transparent);
+  color: var(--chrome-ink-on);
+}
+.mdw-menu legend {
+  position: static;
+  float: left;
+  width: 100%;
+  height: auto;
+  clip-path: none;
+  padding: 4px 10px 4px 30px;
+  font-size: 11px;
+  font-weight: 650;
+  color: var(--chrome-ink);
+}
+.mdw-menu label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  clear: both;
+  height: 28px;
+  padding: 0 12px 0 8px;
+  border-radius: 7px;
   white-space: nowrap;
-  user-select: none;
 }
-.mdw label:hover { color: var(--fg); }
-.mdw input:checked + label {
-  color: var(--fg);
-  background: var(--bg);
-  box-shadow: inset 0 0 0 1px var(--border);
-}
-.mdw input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 1px; }
-.mdw-layouts {
-  padding: 2px;
-  background: var(--surface);
-  border-radius: 8px;
-  box-shadow: inset 0 0 0 1px var(--border);
-}
-.mdw kbd {
-  padding: 0;
-  border: 0;
-  background: none;
-  font: 11px var(--font);
-  color: var(--muted);
-}
-.mdw-themes { margin-left: auto; }
+.mdw-menu label:hover { background: var(--chrome-on); }
+.mdw .pupil { fill: currentColor; stroke: none; }
+.mdw-menu .tick { width: 12px; height: 12px; stroke-width: 1.8; visibility: hidden; }
+.mdw-menu input:checked + label .tick { visibility: visible; }
 .mdw .swatch {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--sw-bg) 50%, var(--sw-accent) 50%);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fg) 25%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--chrome-ink) 30%, transparent);
 }
 
 .mdw-panes {
@@ -717,22 +796,30 @@ html { overflow-x: hidden; }
   -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent);
   mask-image: linear-gradient(to bottom, #000 78%, transparent);
 }
+/* The source editor: the app's monospaced font and its highlighting colours (hero.css
+   maps each role to the theme's palette, as EditorTheme does). */
 .mdw-source {
   margin: 0;
-  padding: 22px 24px;
+  padding: 24px 24px;
   border-radius: 0;
-  border-right: 1px solid var(--border);
+  border-right: 1px solid var(--chrome-divider);
   background: var(--bg);
-  color: var(--fg);
-  font: 12.5px/1.65 var(--mono);
+  color: var(--ed-text);
+  font: 13px/1.42 var(--mono);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
-.mdw-source .mk { color: var(--muted); }
-.mdw-source .hd { color: var(--heading); font-weight: 700; }
-.mdw-source .cd { color: var(--keyword); }
-.mdw-source .ln { color: var(--link); }
-.mdw-source b { font-weight: 700; }
+.mdw-source .ed-heading { color: var(--ed-heading); }
+.mdw-source .ed-marker { color: var(--ed-marker); }
+.mdw-source .ed-emphasis { color: var(--ed-emphasis); }
+.mdw-source .ed-code { color: var(--ed-code); }
+.mdw-source .ed-codeFence { color: var(--ed-codeFence); }
+.mdw-source .ed-link { color: var(--ed-link); }
+.mdw-source .ed-muted { color: var(--ed-muted); }
+.mdw-source .ed-quote { color: var(--ed-quote); }
+.mdw-source .ed-bold { font-weight: 600; }
+.mdw-source .ed-italic { font-style: italic; }
+.mdw-source .ed-strike { text-decoration: line-through; }
 
 .mdw:has(#mdw-source:checked) .mdw-panes,
 .mdw:has(#mdw-preview:checked) .mdw-panes { grid-template-columns: 1fr; }
@@ -787,6 +874,7 @@ html { overflow-x: hidden; }
 
 /* Each theme's shapes, as the kit's preview.css draws them. */
 .mdw:has(#mdw-classic:checked) { --heading-weight: 600; --body-size: 16px; --line-height: 1.75; --radius: 4px; }
+.mdw:has(#mdw-classic:checked):has(#mdw-preview:checked) .mdw-preview > * { max-width: 720px; }
 .mdw:has(#mdw-classic:checked) .md-h1 { text-align: center; font-size: 2.2em; letter-spacing: 0.01em; border-bottom: 0; padding-bottom: 0; }
 .mdw:has(#mdw-classic:checked) .md-h1::after { content: ""; display: block; width: 48px; height: 1px; margin: 0.5em auto 0; background: var(--accent); }
 .mdw:has(#mdw-classic:checked) .md-h2 { font-style: italic; }
@@ -820,16 +908,14 @@ html { overflow-x: hidden; }
 .mdw:has(#mdw-vivid:checked) .mdw-preview code { color: var(--keyword); }
 .mdw:has(#mdw-vivid:checked) .mdw-preview th { background: var(--heading); color: var(--bg); border-color: var(--heading); }
 
-/* Phones: one pane. Split shows the rendered page, and the toolbar wraps to two rows. */
+/* Phones: one pane (Split shows the rendered page), and the title gives way to the toolbar. */
 @media (max-width: 500px) {
-  .mdw { border-radius: 10px; }
+  .mdw { border-radius: 12px; }
   .mdw-panes { grid-template-columns: 1fr; height: 400px; }
   .mdw:has(#mdw-split:checked) .mdw-source { display: none; }
-  .mdw kbd { display: none; }
-  .mdw-lights { display: none; }
-  .mdw-bar { padding: 8px; gap: 8px; }
-  .mdw-themes { margin-left: 0; flex-wrap: wrap; }
-  .mdw label { padding: 0 8px; }
+  .mdw-bar { padding: 0 6px 0 14px; }
+  .mdw-lights { gap: 7px; margin-right: 8px; }
+  .mdw-title { visibility: hidden; }
   .mdw-source { padding: 16px; }
   .mdw-preview { padding: 18px 18px; font-size: calc(var(--body-size) - 1px); }
 }

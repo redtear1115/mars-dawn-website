@@ -33,7 +33,8 @@ import sync_hero_sources as sync  # noqa: E402
 PAGES = {"en": "index.html", "zh-hant": "zh-hant/index.html", "zh-hans": "zh-hans/index.html", "ja": "ja/index.html"}
 KIT_RAW = "https://raw.githubusercontent.com/redtear1115/mars-dawn-kit/{tag}/{path}"
 VARS = {"bg": "background", "surface": "surface", "fg": "text", "muted": "muted", "border": "border",
-        "heading": "heading", "accent": "accent", "link": "link", "quote": "quote", "keyword": "keyword"}
+        "heading": "heading", "accent": "accent", "link": "link", "quote": "quote", "keyword": "keyword",
+        "function": "function", "string": "string", "comment": "comment"}
 
 
 def css_palettes(css: str) -> dict:
@@ -100,7 +101,7 @@ def rendered_text(html: str) -> str:
 
 
 def check_site(src: dict, css: str, pages: dict) -> list:
-    problems = []
+    problems = check_editor_roles(src, css)
     palettes = css_palettes(css)
     for theme in src["themes"]:
         for scheme in ("light", "dark"):
@@ -128,8 +129,9 @@ def check_site(src: dict, css: str, pages: dict) -> list:
         for key, text in want.items():
             if found.get(key, "").strip() != text:
                 problems.append(f"{locale}: control {key} reads {found.get(key, '').strip()!r}, the app says {text!r}")
-        if [s.strip() for s in found.get("legends", [])] != [labels["layout"], labels["theme"]]:
-            problems.append(f"{locale}: group names {found.get('legends')} aren't the app's {[labels['layout'], labels['theme']]}")
+        if [s.strip() for s in found.get("legends", [])] != [labels["preview_theme"], labels["layout"]]:
+            problems.append(f"{locale}: group names {found.get('legends')} aren't the app's {[labels['preview_theme'], labels['layout']]}")
+        problems += check_chrome(locale, html, src)
         if found.get("source", "") != src["sample"][locale]["markdown"].rstrip("\n"):
             problems.append(f"{locale}: the source pane isn't the Welcome.md excerpt")
         if rendered_text(found.get("preview", "")) != rendered_text(src["sample"][locale]["html"]):
@@ -154,6 +156,41 @@ def check_theme_lists(src: dict, pages: dict) -> list:
         if names != want:
             problems.append(f"{THEME_LISTS[locale]}: the theme list reads {names}, the app says {want}")
     return problems
+
+
+def check_chrome(locale: str, html: str, src: dict) -> list:
+    """The window's title bar and toolbar say and show what the app's do."""
+    labels, problems = src["labels"][locale], []
+    title = re.search(r'<span class="mdw-title">([^<]*)</span>', html)
+    if not title or title[1] != labels["title"]:
+        problems.append(f"{locale}: the window title is {title and title[1]!r}, the app titles its guide {labels['title']!r}")
+    summary = re.search(r'<summary title="([^"]*)"><span class="mdw-sr">([^<]*)</span><svg', html)
+    if not summary or summary.groups() != (labels["preview_theme"], labels["theme"]):
+        problems.append(f"{locale}: the theme button's tooltip and name are {summary and summary.groups()}, "
+                        f"the app's are {(labels['preview_theme'], labels['theme'])}")
+    for mode, key in (("source", "1"), ("split", "2"), ("preview", "3")):
+        tip = re.search(rf'<label for="mdw-{mode}" title="([^"]*)"><svg', html)
+        want = f"{labels[mode + '_title']} (⌘{key})"
+        if not tip or tip[1] != want:
+            problems.append(f"{locale}: the {mode} button's tooltip is {tip and tip[1]!r}, the app's is {want!r}, with an icon")
+    for theme in src["themes"]:
+        if not re.search(rf'<label for="mdw-{theme["id"]}"><svg class="tick"', html):
+            problems.append(f"{locale}: the {theme['id']} menu item has no checkmark")
+    checked = re.findall(r'id="mdw-(\w+)" value="\w+" checked', html)
+    if checked != ["dawn", "split"]:
+        problems.append(f"{locale}: the window opens on {checked}, not Dawn in Split")
+    return problems
+
+
+def check_editor_roles(src: dict, css: str) -> list:
+    """hero.css maps each editor colour role to the palette field the app's EditorTheme uses."""
+    block = re.search(r"\.mdw-source \{([^}]*)\}", css)
+    got = dict(re.findall(r"--ed-(\w+): var\(--(\w+)\);", block[1])) if block else {}
+    var_of = {field: var for var, field in VARS.items()}
+    return [f"hero.css: editor role {role} is --{got.get(role)}, the app's EditorTheme uses {field} (--{var_of.get(field)})"
+            for role, field in src["editor"].items()
+            if role in ("text", "heading", "marker", "emphasis", "code", "codeFence", "link", "muted", "quote")
+            and got.get(role) != var_of.get(field)]
 
 
 def kit_files(tag: str) -> dict:
@@ -187,8 +224,14 @@ def self_test(src: dict, css: str, pages: dict, lists: dict, kit: dict) -> list:
         "a swatch colour in hero.css": (lambda: check_site(src, re.sub(r"(\.sw-dawn \{ --sw-bg: )#[0-9A-F]{6}", r"\1#00FF00", css, count=1), pages)),
         "a dark swatch colour in hero.css": (lambda: check_site(src, re.sub(r"(  \.sw-vivid \{ --sw-bg: #[0-9A-F]{6}; --sw-accent: )#[0-9A-F]{6}", r"\1#00FF00", css, count=1), pages)),
         "a theme name on a page": (lambda: check_site(src, css, {**pages, "en": pages["en"].replace(f"</span>{en_label}</label>", "</span>Sunrise</label>", 1)})),
-        "a layout label on a page": (lambda: check_site(src, css, {**pages, "ja": pages["ja"].replace(src["labels"]["ja"]["split"] + "<kbd", "並べて<kbd", 1)})),
-        "a word in the source pane": (lambda: check_site(src, css, {**pages, "zh-hant": pages["zh-hant"].replace("MarsDawn</span>", "MarsDusk</span>", 1)})),
+        "a layout label on a page": (lambda: check_site(src, css, {**pages, "ja": pages["ja"].replace(f'<span class="mdw-sr">{src["labels"]["ja"]["split"]}</span>', '<span class="mdw-sr">並べて</span>', 1)})),
+        "a word in the source pane": (lambda: check_site(src, css, {**pages, "zh-hant": re.sub(r'(<pre class="mdw-source"[^>]*>.*?)MarsDawn', r"\1MarsDusk", pages["zh-hant"], count=1, flags=re.S)})),
+        "the window title": (lambda: check_site(src, css, {**pages, "en": pages["en"].replace('<span class="mdw-title">Welcome to MarsDawn</span>', '<span class="mdw-title">Welcome.md</span>', 1)})),
+        "a layout tooltip": (lambda: check_site(src, css, {**pages, "zh-hant": pages["zh-hant"].replace("(⌘2)", "(⌘3)", 1)})),
+        "a menu item without its checkmark": (lambda: check_site(src, css, {**pages, "ja": pages["ja"].replace('<label for="mdw-vivid"><svg class="tick"', '<label for="mdw-vivid"><svg class="x"', 1)})),
+        "the theme button's name": (lambda: check_site(src, css, {**pages, "zh-hans": re.sub(r'(<summary title="[^"]*"><span class="mdw-sr">)[^<]*', r"\1Palette", pages["zh-hans"], count=1)})),
+        "an editor colour role": (lambda: check_site(src, css.replace("--ed-code: var(--string);", "--ed-code: var(--keyword);", 1), pages)),
+        "the default theme": (lambda: check_site(src, css, {**pages, "en": pages["en"].replace('value="dawn" checked', 'value="dawn"', 1).replace('value="modern">', 'value="modern" checked>', 1)})),
         "a word in the preview": (lambda: check_site(src, css, {**pages, "zh-hans": re.sub(r"(<p class=\"md-h1\">[^<]*)MarsDawn", r"\1MarsDusk", pages["zh-hans"], count=1)})),
         "an English theme name in the ja theme list": (lambda: check_theme_lists(src, {"ja": lists["ja"].replace("<strong>クラシック</strong>", "<strong>Classic</strong>", 1)})),
         "an English theme name in the zh-Hant theme list": (lambda: check_theme_lists(src, {"zh-hant": lists["zh-hant"].replace("<strong>黎明</strong>", "<strong>Dawn</strong>", 1)})),

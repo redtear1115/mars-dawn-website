@@ -11,6 +11,9 @@
   --link: #B03C0C;
   --quote: #D97A4A;
   --keyword: #B03C0C;
+  --function: #5B3E8C;
+  --string: #2F6F5E;
+  --comment: #8A817B;
   --font-body: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang TC", "PingFang SC", sans-serif;
 }
 .mdw:has(#mdw-classic:checked) {
@@ -24,6 +27,9 @@
   --link: #7A2E3A;
   --quote: #A08A5C;
   --keyword: #7A2E3A;
+  --function: #2E4A6B;
+  --string: #56642A;
+  --comment: #8F8577;
   --font-body: ui-serif, "New York", Georgia, "Songti TC", "Songti SC", serif;
 }
 .mdw:has(#mdw-modern:checked) {
@@ -37,6 +43,9 @@
   --link: #0969DA;
   --quote: #D1D9E0;
   --keyword: #CF222E;
+  --function: #8250DF;
+  --string: #0A3069;
+  --comment: #59636E;
   --font-body: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang TC", "PingFang SC", sans-serif;
 }
 .mdw:has(#mdw-vivid:checked) {
@@ -50,6 +59,9 @@
   --link: #087481;
   --quote: #FFB020;
   --keyword: #B8246A;
+  --function: #5B3BE0;
+  --string: #07734F;
+  --comment: #857D91;
   --font-body: ui-rounded, "SF Pro Rounded", -apple-system, "PingFang TC", "PingFang SC", sans-serif;
 }
 .sw-dawn { --sw-bg: #FFFDFB; --sw-accent: #C8471B; }
@@ -68,6 +80,9 @@
     --link: #FF9E6B;
     --quote: #E08A5C;
     --keyword: #FF9E6B;
+    --function: #C7A6F5;
+    --string: #7FD1B9;
+    --comment: #8C837D;
   }
   .mdw:has(#mdw-classic:checked) {
     --bg: #1E1B18;
@@ -80,6 +95,9 @@
     --link: #E0A9B1;
     --quote: #C9AE78;
     --keyword: #E0A9B1;
+    --function: #9DB8D9;
+    --string: #B8C58A;
+    --comment: #8F8577;
   }
   .mdw:has(#mdw-modern:checked) {
     --bg: #0D1117;
@@ -92,6 +110,9 @@
     --link: #4493F8;
     --quote: #3D444D;
     --keyword: #FF7B72;
+    --function: #D2A8FF;
+    --string: #A5D6FF;
+    --comment: #9198A1;
   }
   .mdw:has(#mdw-vivid:checked) {
     --bg: #1A1625;
@@ -104,9 +125,24 @@
     --link: #3DD6D0;
     --quote: #FFC857;
     --keyword: #FF7AB8;
+    --function: #B69CFF;
+    --string: #5BE3A8;
+    --comment: #948BA6;
   }
   .sw-dawn { --sw-bg: #1C1A1F; --sw-accent: #FF8A50; }
   .sw-classic { --sw-bg: #1E1B18; --sw-accent: #D89AA4; }
   .sw-modern { --sw-bg: #0D1117; --sw-accent: #4493F8; }
   .sw-vivid { --sw-bg: #1A1625; --sw-accent: #FF7AA2; }
+}
+/* The source editor's colour roles, from the app's EditorTheme(lightTheme:darkTheme:). */
+.mdw-source {
+  --ed-text: var(--fg);
+  --ed-heading: var(--heading);
+  --ed-marker: var(--accent);
+  --ed-emphasis: var(--function);
+  --ed-code: var(--string);
+  --ed-codeFence: var(--comment);
+  --ed-link: var(--link);
+  --ed-muted: var(--muted);
+  --ed-quote: var(--muted);
 }

@@ -99,42 +99,46 @@
 <div class="mdw" role="group" aria-label="可以操作的 MarsDawn 視窗：選一個主題和版面">
   <div class="mdw-bar">
     <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="mdw-title">歡迎使用 MarsDawn</span>
+    <details class="mdw-themes">
+      <summary title="預覽主題"><span class="mdw-sr">主題</span><svg viewBox="0 0 20 18" aria-hidden="true" focusable="false"><path d="M10 2C5.3 2 1.8 5.2 1.8 9.2c0 3.6 2.9 6.6 6.6 6.6 1.3 0 1.9-.8 1.9-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5h2c2.8 0 5-1.9 5-4.5C18.2 4.6 14.6 2 10 2Z"/><circle cx="6" cy="8.6" r="1.1"/><circle cx="8.6" cy="5.6" r="1.1"/><circle cx="12.4" cy="5.6" r="1.1"/><circle cx="14.6" cy="8.4" r="1.1"/></svg><svg class="chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M2.5 3.8 5 6.3l2.5-2.5"/></svg></summary>
+      <fieldset class="mdw-menu">
+        <legend>預覽主題</legend>
+        <input type="radio" name="mdw-theme" id="mdw-dawn" value="dawn" checked><label for="mdw-dawn"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-dawn" aria-hidden="true"></span>黎明</label>
+        <input type="radio" name="mdw-theme" id="mdw-classic" value="classic"><label for="mdw-classic"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-classic" aria-hidden="true"></span>典雅</label>
+        <input type="radio" name="mdw-theme" id="mdw-modern" value="modern"><label for="mdw-modern"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-modern" aria-hidden="true"></span>流行</label>
+        <input type="radio" name="mdw-theme" id="mdw-vivid" value="vivid"><label for="mdw-vivid"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-vivid" aria-hidden="true"></span>活潑</label>
+      </fieldset>
+    </details>
     <fieldset class="mdw-layouts">
       <legend>版面</legend>
-      <input type="radio" name="mdw-layout" id="mdw-source" value="source"><label for="mdw-source">原始碼<kbd aria-hidden="true">⌘1</kbd></label>
-      <input type="radio" name="mdw-layout" id="mdw-split" value="split" checked><label for="mdw-split">並排<kbd aria-hidden="true">⌘2</kbd></label>
-      <input type="radio" name="mdw-layout" id="mdw-preview" value="preview"><label for="mdw-preview">預覽<kbd aria-hidden="true">⌘3</kbd></label>
-    </fieldset>
-    <fieldset class="mdw-themes">
-      <legend>主題</legend>
-      <input type="radio" name="mdw-theme" id="mdw-dawn" value="dawn" checked><label for="mdw-dawn"><span class="swatch sw-dawn" aria-hidden="true"></span>黎明</label>
-      <input type="radio" name="mdw-theme" id="mdw-classic" value="classic"><label for="mdw-classic"><span class="swatch sw-classic" aria-hidden="true"></span>典雅</label>
-      <input type="radio" name="mdw-theme" id="mdw-modern" value="modern"><label for="mdw-modern"><span class="swatch sw-modern" aria-hidden="true"></span>流行</label>
-      <input type="radio" name="mdw-theme" id="mdw-vivid" value="vivid"><label for="mdw-vivid"><span class="swatch sw-vivid" aria-hidden="true"></span>活潑</label>
+      <input type="radio" name="mdw-layout" id="mdw-source" value="source"><label for="mdw-source" title="只顯示原始碼 (⌘1)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M6.5 3.5 2 8l4.5 4.5M13.5 3.5 18 8l-4.5 4.5M11.4 2.5 8.6 13.5"/></svg><span class="mdw-sr">原始碼</span></label>
+      <input type="radio" name="mdw-layout" id="mdw-split" value="split" checked><label for="mdw-split" title="原始碼與預覽 (⌘2)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><rect x="2" y="2.5" width="16" height="11" rx="2.5"/><path d="M10 2.5v11"/></svg><span class="mdw-sr">並排</span></label>
+      <input type="radio" name="mdw-layout" id="mdw-preview" value="preview"><label for="mdw-preview" title="只顯示預覽 (⌘3)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M1.8 8C4 4.4 6.8 2.8 10 2.8S16 4.4 18.2 8C16 11.6 13.2 13.2 10 13.2S4 11.6 1.8 8Z"/><circle cx="10" cy="8" r="3.1"/><circle class="pupil" cx="10" cy="8" r="1.3"/></svg><span class="mdw-sr">預覽</span></label>
     </fieldset>
   </div>
   <div class="mdw-panes">
-    <pre class="mdw-source" aria-label="原始碼"><span class="mk"># </span><span class="hd">歡迎使用 MarsDawn</span>
+    <pre class="mdw-source" aria-label="原始碼"><span class="ed-heading ed-bold"># 歡迎使用 MarsDawn</span>
 
-<span class="mk">*</span><i>Markdown 的新黎明。</i><span class="mk">*</span> 左邊寫，右邊排版好的頁面會隨著打字更新。這份指南就是一般的文件，隨意改改看會發生什麼事；沒有儲存的話，關閉時不會詢問。
+<span class="ed-emphasis ed-italic">*Markdown 的新黎明。*</span> 左邊寫，右邊排版好的頁面會隨著打字更新。這份指南就是一般的文件，隨意改改看會發生什麼事；沒有儲存的話，關閉時不會詢問。
 
-<span class="mk">## </span><span class="hd">版面</span>
+<span class="ed-heading ed-bold">## 版面</span>
 
-<span class="mk">|</span> 快捷鍵 <span class="mk">|</span> 版面 <span class="mk">|</span>
-<span class="mk">|</span><span class="mk">:------:</span><span class="mk">|</span><span class="mk">:-----</span><span class="mk">|</span>
-<span class="mk">|</span> ⌘1 <span class="mk">|</span> 只顯示原始碼 <span class="mk">|</span>
-<span class="mk">|</span> ⌘2 <span class="mk">|</span> 原始碼與預覽並排 <span class="mk">|</span>
-<span class="mk">|</span> ⌘3 <span class="mk">|</span> 只顯示預覽 <span class="mk">|</span>
+| 快捷鍵 | 版面 |
+|:------:|:-----|
+| ⌘1 | 只顯示原始碼 |
+| ⌘2 | 原始碼與預覽並排 |
+| ⌘3 | 只顯示預覽 |
 
-<span class="mk">## </span><span class="hd">寫作</span>
+<span class="ed-heading ed-bold">## 寫作</span>
 
-<span class="mk">**</span><b>粗體</b><span class="mk">**</span>、<span class="mk">*</span><i>斜體</i><span class="mk">*</span>、<span class="mk">~~</span><s>刪除線</s><span class="mk">~~</span>、<span class="mk">`</span><span class="cd">行內程式碼</span><span class="mk">`</span>和<span class="mk">[</span>連結<span class="mk">](</span><span class="ln">https://marsdawn.southern-light.dev/zh-hant/support/</span><span class="mk">)</span>都照常使用。
+<span class="ed-bold">**粗體**</span>、<span class="ed-emphasis ed-italic">*斜體*</span>、<span class="ed-muted ed-strike">~~刪除線~~</span>、<span class="ed-code">`行內程式碼`</span>和<span class="ed-link">[連結]</span><span class="ed-muted">(</span><span class="ed-link">https://marsdawn.southern-light.dev/zh-hant/support/</span><span class="ed-muted">)</span>都照常使用。
 
-<span class="mk">&gt; </span>引言左邊會有一條暖色的線。
+<span class="ed-quote">&gt; 引言左邊會有一條暖色的線。</span>
 
-<span class="mk">- [x] </span>可以打勾的待辦清單
-<span class="mk">- [ ] </span>巢狀清單
-  <span class="mk">- </span>像這樣</pre>
+<span class="ed-marker ed-bold">-</span> <span class="ed-marker ed-bold">[x]</span> 可以打勾的待辦清單
+<span class="ed-marker ed-bold">-</span> <span class="ed-marker ed-bold">[ ]</span> 巢狀清單
+<span class="ed-marker ed-bold">  -</span> 像這樣</pre>
     <div class="mdw-preview" aria-label="預覽" role="region">
 <p class="md-h1">歡迎使用 MarsDawn</p>
 <p><em>Markdown 的新黎明。</em> 左邊寫，右邊排版好的頁面會隨著打字更新。這份指南就是一般的文件，隨意改改看會發生什麼事；沒有儲存的話，關閉時不會詢問。</p>

@@ -99,42 +99,46 @@
 <div class="mdw" role="group" aria-label="操作できる MarsDawn のウインドウ：テーマとレイアウトを選べます">
   <div class="mdw-bar">
     <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="mdw-title">MarsDawn へようこそ</span>
+    <details class="mdw-themes">
+      <summary title="プレビューのテーマ"><span class="mdw-sr">テーマ</span><svg viewBox="0 0 20 18" aria-hidden="true" focusable="false"><path d="M10 2C5.3 2 1.8 5.2 1.8 9.2c0 3.6 2.9 6.6 6.6 6.6 1.3 0 1.9-.8 1.9-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5h2c2.8 0 5-1.9 5-4.5C18.2 4.6 14.6 2 10 2Z"/><circle cx="6" cy="8.6" r="1.1"/><circle cx="8.6" cy="5.6" r="1.1"/><circle cx="12.4" cy="5.6" r="1.1"/><circle cx="14.6" cy="8.4" r="1.1"/></svg><svg class="chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M2.5 3.8 5 6.3l2.5-2.5"/></svg></summary>
+      <fieldset class="mdw-menu">
+        <legend>プレビューのテーマ</legend>
+        <input type="radio" name="mdw-theme" id="mdw-dawn" value="dawn" checked><label for="mdw-dawn"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-dawn" aria-hidden="true"></span>夜明け</label>
+        <input type="radio" name="mdw-theme" id="mdw-classic" value="classic"><label for="mdw-classic"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-classic" aria-hidden="true"></span>クラシック</label>
+        <input type="radio" name="mdw-theme" id="mdw-modern" value="modern"><label for="mdw-modern"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-modern" aria-hidden="true"></span>モダン</label>
+        <input type="radio" name="mdw-theme" id="mdw-vivid" value="vivid"><label for="mdw-vivid"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-vivid" aria-hidden="true"></span>ビビッド</label>
+      </fieldset>
+    </details>
     <fieldset class="mdw-layouts">
       <legend>レイアウト</legend>
-      <input type="radio" name="mdw-layout" id="mdw-source" value="source"><label for="mdw-source">ソース<kbd aria-hidden="true">⌘1</kbd></label>
-      <input type="radio" name="mdw-layout" id="mdw-split" value="split" checked><label for="mdw-split">分割<kbd aria-hidden="true">⌘2</kbd></label>
-      <input type="radio" name="mdw-layout" id="mdw-preview" value="preview"><label for="mdw-preview">プレビュー<kbd aria-hidden="true">⌘3</kbd></label>
-    </fieldset>
-    <fieldset class="mdw-themes">
-      <legend>テーマ</legend>
-      <input type="radio" name="mdw-theme" id="mdw-dawn" value="dawn" checked><label for="mdw-dawn"><span class="swatch sw-dawn" aria-hidden="true"></span>夜明け</label>
-      <input type="radio" name="mdw-theme" id="mdw-classic" value="classic"><label for="mdw-classic"><span class="swatch sw-classic" aria-hidden="true"></span>クラシック</label>
-      <input type="radio" name="mdw-theme" id="mdw-modern" value="modern"><label for="mdw-modern"><span class="swatch sw-modern" aria-hidden="true"></span>モダン</label>
-      <input type="radio" name="mdw-theme" id="mdw-vivid" value="vivid"><label for="mdw-vivid"><span class="swatch sw-vivid" aria-hidden="true"></span>ビビッド</label>
+      <input type="radio" name="mdw-layout" id="mdw-source" value="source"><label for="mdw-source" title="ソースのみ (⌘1)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M6.5 3.5 2 8l4.5 4.5M13.5 3.5 18 8l-4.5 4.5M11.4 2.5 8.6 13.5"/></svg><span class="mdw-sr">ソース</span></label>
+      <input type="radio" name="mdw-layout" id="mdw-split" value="split" checked><label for="mdw-split" title="ソースとプレビュー (⌘2)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><rect x="2" y="2.5" width="16" height="11" rx="2.5"/><path d="M10 2.5v11"/></svg><span class="mdw-sr">分割</span></label>
+      <input type="radio" name="mdw-layout" id="mdw-preview" value="preview"><label for="mdw-preview" title="プレビューのみ (⌘3)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M1.8 8C4 4.4 6.8 2.8 10 2.8S16 4.4 18.2 8C16 11.6 13.2 13.2 10 13.2S4 11.6 1.8 8Z"/><circle cx="10" cy="8" r="3.1"/><circle class="pupil" cx="10" cy="8" r="1.3"/></svg><span class="mdw-sr">プレビュー</span></label>
     </fieldset>
   </div>
   <div class="mdw-panes">
-    <pre class="mdw-source" aria-label="ソース"><span class="mk"># </span><span class="hd">MarsDawn へようこそ</span>
+    <pre class="mdw-source" aria-label="ソース"><span class="ed-heading ed-bold"># MarsDawn へようこそ</span>
 
-<span class="mk">*</span><i>Markdown の新しい夜明け。</i><span class="mk">*</span> 左側に書くと、右側の整形されたページが入力に合わせて更新されます。このガイドはふつうの書類なので、どこでも自由に編集して試してみてください。保存しなければ、閉じるときに確認されることはありません。
+<span class="ed-emphasis ed-italic">*Markdown の新しい夜明け。*</span> 左側に書くと、右側の整形されたページが入力に合わせて更新されます。このガイドはふつうの書類なので、どこでも自由に編集して試してみてください。保存しなければ、閉じるときに確認されることはありません。
 
-<span class="mk">## </span><span class="hd">レイアウト</span>
+<span class="ed-heading ed-bold">## レイアウト</span>
 
-<span class="mk">|</span> ショートカット <span class="mk">|</span> レイアウト <span class="mk">|</span>
-<span class="mk">|</span><span class="mk">:------:</span><span class="mk">|</span><span class="mk">:-----</span><span class="mk">|</span>
-<span class="mk">|</span> ⌘1 <span class="mk">|</span> ソースのみ <span class="mk">|</span>
-<span class="mk">|</span> ⌘2 <span class="mk">|</span> ソースとプレビューを並べて表示 <span class="mk">|</span>
-<span class="mk">|</span> ⌘3 <span class="mk">|</span> プレビューのみ <span class="mk">|</span>
+| ショートカット | レイアウト |
+|:------:|:-----|
+| ⌘1 | ソースのみ |
+| ⌘2 | ソースとプレビューを並べて表示 |
+| ⌘3 | プレビューのみ |
 
-<span class="mk">## </span><span class="hd">書く</span>
+<span class="ed-heading ed-bold">## 書く</span>
 
-<span class="mk">**</span><b>太字</b><span class="mk">**</span>、<span class="mk">*</span><i>斜体</i><span class="mk">*</span>、<span class="mk">~~</span><s>取り消し線</s><span class="mk">~~</span>、<span class="mk">`</span><span class="cd">インラインコード</span><span class="mk">`</span>、<span class="mk">[</span>リンク<span class="mk">](</span><span class="ln">https://marsdawn.southern-light.dev/support/</span><span class="mk">)</span>は、いつもどおり使えます。
+<span class="ed-bold">**太字**</span>、<span class="ed-emphasis ed-italic">*斜体*</span>、<span class="ed-muted ed-strike">~~取り消し線~~</span>、<span class="ed-code">`インラインコード`</span>、<span class="ed-link">[リンク]</span><span class="ed-muted">(</span><span class="ed-link">https://marsdawn.southern-light.dev/support/</span><span class="ed-muted">)</span>は、いつもどおり使えます。
 
-<span class="mk">&gt; </span>引用の左側には暖色の線が表示されます。
+<span class="ed-quote">&gt; 引用の左側には暖色の線が表示されます。</span>
 
-<span class="mk">- [x] </span>チェックを付けられる ToDo リスト
-<span class="mk">- [ ] </span>入れ子のリスト
-  <span class="mk">- </span>このように</pre>
+<span class="ed-marker ed-bold">-</span> <span class="ed-marker ed-bold">[x]</span> チェックを付けられる ToDo リスト
+<span class="ed-marker ed-bold">-</span> <span class="ed-marker ed-bold">[ ]</span> 入れ子のリスト
+<span class="ed-marker ed-bold">  -</span> このように</pre>
     <div class="mdw-preview" aria-label="プレビュー" role="region">
 <p class="md-h1">MarsDawn へようこそ</p>
 <p><em>Markdown の新しい夜明け。</em> 左側に書くと、右側の整形されたページが入力に合わせて更新されます。このガイドはふつうの書類なので、どこでも自由に編集して試してみてください。保存しなければ、閉じるときに確認されることはありません。</p>

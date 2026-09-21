@@ -29,7 +29,10 @@ WINDOW_LABEL = {
 
 # The kit's palette fields, as the custom properties site.css reads inside the window.
 PALETTE_VARS = {"background": "bg", "surface": "surface", "text": "fg", "muted": "muted", "border": "border",
-                "heading": "heading", "accent": "accent", "link": "link", "quote": "quote", "keyword": "keyword"}
+                "heading": "heading", "accent": "accent", "link": "link", "quote": "quote", "keyword": "keyword",
+                "function": "function", "string": "string", "comment": "comment"}
+# The editor's colour roles, which EditorTheme takes from these palette fields (snapshot "editor").
+EDITOR_ROLES = ["text", "heading", "marker", "emphasis", "code", "codeFence", "link", "muted", "quote"]
 
 
 def preview_html(locale: str) -> str:
@@ -46,48 +49,109 @@ def preview_html(locale: str) -> str:
     return out.strip()
 
 
+# The editor's highlighting is the app's MarkdownHighlighter, read into the snapshot: its
+# patterns, the order styleProse runs them in, the capture group each one styles, and each
+# attribute set's colour role and font traits. Code blocks take the "code" set, with their
+# fence lines in "fence". Later passes win, as attributes added later do in the app.
+HIGHLIGHT = SOURCES["highlighter"]
+FENCE = re.compile(r"^ {0,3}(`{3,}|~{3,})")
+
+
+def _style(name: str) -> dict:
+    attrs = HIGHLIGHT["attrs"][name]
+    return {key: value for key, value in attrs.items() if value}
+
+
+def source_runs(markdown: str) -> list:
+    """(text, style) runs for the editor pane, styled as the app's editor styles them."""
+    styles = [{} for _ in markdown]
+    pos, open_fence, gap_start, gaps = 0, None, 0, []
+    for line in markdown.split("\n"):
+        end = pos + len(line)
+        fence = FENCE.match(line)
+        if open_fence is None and fence:
+            gaps.append((gap_start, pos))
+            open_fence, block_start = fence[1], pos
+            for i in range(pos, end):
+                styles[i] = _style("fence")
+        elif open_fence is not None:
+            closes = fence and fence[1][0] == open_fence[0] and len(fence[1]) >= len(open_fence) and not line[fence.end():].strip()
+            for i in range(pos, end):
+                styles[i] = _style("fence") if closes else _style("code")
+            if closes:
+                open_fence, gap_start = None, end + 1
+        pos = end + 1
+    if open_fence is None:
+        gaps.append((gap_start, len(markdown)))
+    for rule in HIGHLIGHT["rules"]:
+        pattern, group, attrs = re.compile(rule["pattern"], re.M), rule["group"], _style(rule["attrs"])
+        for start, stop in gaps:
+            for m in pattern.finditer(markdown, start, stop):
+                if m.start(group) < 0:
+                    continue
+                for i in range(m.start(group), m.end(group)):
+                    styles[i] = {**styles[i], **attrs}
+    runs, i = [], 0
+    while i < len(markdown):
+        if markdown[i] == "\n":
+            runs.append(("\n", {}))
+            i += 1
+            continue
+        j = i
+        while j < len(markdown) and styles[j] == styles[i] and markdown[j] != "\n":
+            j += 1
+        runs.append((markdown[i:j], styles[i]))
+        i = j
+    return runs
+
+
 def source_html(locale: str) -> str:
-    """The Markdown, marked the way the editor colours it: syntax in muted, headings in the heading colour."""
-    lines = []
-    for raw in SOURCES["sample"][locale]["markdown"].rstrip("\n").split("\n"):
-        line = html.escape(raw, quote=False)
-        if m := re.match(r"(#{1,6} )(.*)", line):
-            line = f'<span class="mk">{m[1]}</span><span class="hd">{m[2]}</span>'
-        else:
-            line = re.sub(r"^(\s*)(&gt; |- \[[ x]\] |- )", r'\1<span class="mk">\2</span>', line)
-            line = re.sub(r"(\*\*)(.+?)(\*\*)", r'<span class="mk">\1</span><b>\2</b><span class="mk">\3</span>', line)
-            line = re.sub(r"(?<![*\w])(\*)([^*]+?)(\*)(?!\*)", r'<span class="mk">\1</span><i>\2</i><span class="mk">\3</span>', line)
-            line = re.sub(r"(~~)(.+?)(~~)", r'<span class="mk">\1</span><s>\2</s><span class="mk">\3</span>', line)
-            line = re.sub(r"(`)([^`]+)(`)", r'<span class="mk">\1</span><span class="cd">\2</span><span class="mk">\3</span>', line)
-            line = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<span class="mk">[</span>\1<span class="mk">](</span><span class="ln">\2</span><span class="mk">)</span>', line)
-            if line.startswith("|"):
-                line = re.sub(r"(\||:?-{3,}:?)", r'<span class="mk">\1</span>', line)
-        lines.append(line)
-    return "\n".join(lines)
+    out = []
+    for text, style in source_runs(SOURCES["sample"][locale]["markdown"].rstrip("\n")):
+        classes = ([f'ed-{style["color"]}'] if "color" in style else []) + [
+            f"ed-{flag}" for flag in ("bold", "italic", "strike") if style.get(flag)]
+        body = html.escape(text, quote=False)
+        out.append(f'<span class="{" ".join(classes)}">{body}</span>' if classes else body)
+    return "".join(out)
+
+
+# Icons for the toolbar, drawn for this page in the spirit of the app's (not Apple's glyphs).
+ICONS = {
+    "source": '<svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M6.5 3.5 2 8l4.5 4.5M13.5 3.5 18 8l-4.5 4.5M11.4 2.5 8.6 13.5"/></svg>',
+    "split": '<svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><rect x="2" y="2.5" width="16" height="11" rx="2.5"/><path d="M10 2.5v11"/></svg>',
+    "preview": '<svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M1.8 8C4 4.4 6.8 2.8 10 2.8S16 4.4 18.2 8C16 11.6 13.2 13.2 10 13.2S4 11.6 1.8 8Z"/><circle cx="10" cy="8" r="3.1"/><circle class="pupil" cx="10" cy="8" r="1.3"/></svg>',
+    "palette": '<svg viewBox="0 0 20 18" aria-hidden="true" focusable="false"><path d="M10 2C5.3 2 1.8 5.2 1.8 9.2c0 3.6 2.9 6.6 6.6 6.6 1.3 0 1.9-.8 1.9-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5h2c2.8 0 5-1.9 5-4.5C18.2 4.6 14.6 2 10 2Z"/><circle cx="6" cy="8.6" r="1.1"/><circle cx="8.6" cy="5.6" r="1.1"/><circle cx="12.4" cy="5.6" r="1.1"/><circle cx="14.6" cy="8.4" r="1.1"/></svg>',
+    "chevron": '<svg class="chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M2.5 3.8 5 6.3l2.5-2.5"/></svg>',
+    "check": '<svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>',
+}
 
 
 def window_html(locale: str) -> str:
     labels = SOURCES["labels"][locale]
     layouts = "\n".join(
         f'      <input type="radio" name="mdw-layout" id="mdw-{mode}" value="{mode}"{" checked" if mode == DEFAULT_LAYOUT else ""}>'
-        f'<label for="mdw-{mode}">{labels[mode]}<kbd aria-hidden="true">⌘{key}</kbd></label>'
+        f'<label for="mdw-{mode}" title="{labels[mode + "_title"]} (⌘{key})">{ICONS[mode]}<span class="mdw-sr">{labels[mode]}</span></label>'
         for mode, key in LAYOUTS
     )
     themes = "\n".join(
-        f'      <input type="radio" name="mdw-theme" id="mdw-{t["id"]}" value="{t["id"]}"{" checked" if t["id"] == DEFAULT_THEME else ""}>'
-        f'<label for="mdw-{t["id"]}"><span class="swatch sw-{t["id"]}" aria-hidden="true"></span>{t["names"][locale]}</label>'
+        f'        <input type="radio" name="mdw-theme" id="mdw-{t["id"]}" value="{t["id"]}"{" checked" if t["id"] == DEFAULT_THEME else ""}>'
+        f'<label for="mdw-{t["id"]}">{ICONS["check"]}<span class="swatch sw-{t["id"]}" aria-hidden="true"></span>{t["names"][locale]}</label>'
         for t in THEMES
     )
     return f"""<div class="mdw" role="group" aria-label="{WINDOW_LABEL[locale]}">
   <div class="mdw-bar">
     <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="mdw-title">{labels["title"]}</span>
+    <details class="mdw-themes">
+      <summary title="{labels["preview_theme"]}"><span class="mdw-sr">{labels["theme"]}</span>{ICONS["palette"]}{ICONS["chevron"]}</summary>
+      <fieldset class="mdw-menu">
+        <legend>{labels["preview_theme"]}</legend>
+{themes}
+      </fieldset>
+    </details>
     <fieldset class="mdw-layouts">
       <legend>{labels["layout"]}</legend>
 {layouts}
-    </fieldset>
-    <fieldset class="mdw-themes">
-      <legend>{labels["theme"]}</legend>
-{themes}
     </fieldset>
   </div>
   <div class="mdw-panes">
@@ -117,6 +181,10 @@ def window_css() -> str:
     dark = [block(selector(t["id"]), t["dark"], None, "  ") for t in THEMES]
     swatches = [f".sw-{t['id']} {{ --sw-bg: {t['light']['background']}; --sw-accent: {t['light']['accent']}; }}" for t in THEMES]
     dark_swatches = [f"  .sw-{t['id']} {{ --sw-bg: {t['dark']['background']}; --sw-accent: {t['dark']['accent']}; }}" for t in THEMES]
+    editor = SOURCES["editor"]
+    field_var = {field: var for field, var in PALETTE_VARS.items()}
+    roles = ".mdw-source {\n" + "\n".join(
+        f"  --ed-{role}: var(--{field_var[editor[role]]});" for role in EDITOR_ROLES) + "\n}"
     return "\n".join([
         "/* Generated by scripts/build_pages.py from scripts/hero_sources.json: the preview themes",
         f"   of mars-dawn-kit {kit['tag']} ({kit['commit'][:7]}), PreviewTheme.swift. Don't edit by hand. */",
@@ -126,6 +194,8 @@ def window_css() -> str:
         *dark,
         *dark_swatches,
         "}",
+        "/* The source editor's colour roles, from the app's EditorTheme(lightTheme:darkTheme:). */",
+        roles,
     ]) + "\n"
 
 
