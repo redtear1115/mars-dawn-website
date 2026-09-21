@@ -54,6 +54,10 @@ LOCALES = {
 # zh_CN is the standard token for Simplified Chinese; it names a language, not a storefront.
 OG_LOCALE = {"en": "en_US", "zh-hant": "zh_TW", "zh-hans": "zh_CN", "ja": "ja_JP"}
 
+# The social card every page shares, English for now: the hero's dawn, wordmark and headline,
+# rendered from tools/og/build_og.py (see there) to public/assets/og-en.png.
+OG_IMAGE_ALT = "MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work."
+
 # Languages that use full-width punctuation in generated text (e.g. a list label's colon).
 FULL_WIDTH = {"zh-hant", "zh-hans", "ja"}
 
@@ -2469,9 +2473,12 @@ def render(locale: str, slug: str, page: dict) -> str:
 <meta property="og:description" content="{page["description"]}">
 <meta property="og:url" content="{canonical_url}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="{abs_url("/assets/icon-192.png")}">
+<meta property="og:image" content="{abs_url("/assets/og-en.png")}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{OG_IMAGE_ALT}">
 <meta property="og:locale" content="{OG_LOCALE[locale]}">
-<meta name="twitter:card" content="summary">"""
+<meta name="twitter:card" content="summary_large_image">"""
     jsonld = ""
     if slug == "index":
         data = {

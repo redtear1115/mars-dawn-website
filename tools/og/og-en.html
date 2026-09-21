@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MarsDawn social card</title>
+<link rel="stylesheet" href="/public/assets/site.css">
+<link rel="stylesheet" href="/tools/og/og.css">
+</head>
+<body>
+<main class="og">
+<section class="hero-scene">
+<div class="dawn-wrap" aria-hidden="true">
+  <svg class="dawn-layer" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-sky-1" offset="0%"></stop>
+        <stop class="stop-sky-2" offset="42%"></stop>
+        <stop class="stop-sky-3" offset="76%"></stop>
+        <stop class="stop-sky-4" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="900" fill="url(#skyGrad)"></rect>
+  </svg>
+  <svg class="dawn-layer dawn-glow" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <radialGradient id="glowGrad" cx="50%" cy="63%" r="75%">
+        <stop class="stop-glow" offset="0%"></stop>
+        <stop class="stop-glow-mid" offset="42%"></stop>
+        <stop class="stop-glow-fade" offset="100%"></stop>
+      </radialGradient>
+    </defs>
+    <ellipse cx="600" cy="560" rx="1000" ry="430" fill="url(#glowGrad)"></ellipse>
+  </svg>
+  <svg class="dawn-layer" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="planetGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-planet-rim" offset="0%"></stop>
+        <stop class="stop-planet-deep" offset="26%"></stop>
+      </linearGradient>
+    </defs>
+    <path d="M -40 560 Q 600 428 1240 560 L 1240 920 L -40 920 Z" fill="url(#planetGrad)"></path>
+  </svg>
+  <div class="dawn-layer night-veil"></div>
+  <svg class="dawn-layer dawn-stars stars-a" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="955" cy="42" r="1.1"></circle><circle cx="982" cy="181" r="1.1"></circle><circle cx="979" cy="34" r="1.1"></circle><circle cx="720" cy="63" r="1.1"></circle><circle cx="122" cy="125" r="1.1"></circle><circle cx="956" cy="127" r="1.1"></circle><circle cx="1110" cy="43" r="1.1"></circle><circle cx="242" cy="237" r="1.1"></circle><circle cx="972" cy="257" r="1.1"></circle><circle cx="1150" cy="291" r="1.1"></circle><circle cx="4" cy="15" r="1.1"></circle><circle cx="286" cy="275" r="1.1"></circle><circle cx="1032" cy="163" r="1.1"></circle><circle cx="1095" cy="158" r="1.1"></circle><circle cx="198" cy="287" r="1.1"></circle></svg>
+  <svg class="dawn-layer dawn-stars stars-b" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="1151" cy="256" r="1.4"></circle><circle cx="1019" cy="144" r="1.4"></circle><circle cx="269" cy="166" r="1.4"></circle><circle cx="222" cy="197" r="1.4"></circle><circle cx="1131" cy="300" r="1.4"></circle><circle cx="1049" cy="26" r="1.4"></circle><circle cx="955" cy="332" r="1.4"></circle><circle cx="134" cy="293" r="1.4"></circle><circle cx="193" cy="84" r="1.4"></circle><circle cx="949" cy="252" r="1.4"></circle><circle cx="187" cy="334" r="1.4"></circle><circle cx="1187" cy="238" r="1.4"></circle></svg>
+  <svg class="dawn-layer dawn-stars stars-c" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="92" cy="93" r="1.8"></circle><circle cx="10" cy="149" r="1.8"></circle><circle cx="961" cy="188" r="1.8"></circle><circle cx="81" cy="16" r="1.8"></circle><circle cx="1028" cy="231" r="1.8"></circle><circle cx="1075" cy="52" r="1.8"></circle><circle cx="35" cy="264" r="1.8"></circle><circle cx="979" cy="96" r="1.8"></circle><circle cx="194" cy="295" r="1.8"></circle></svg>
+  <svg class="dawn-layer dawn-limb" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="limbGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop class="stop-limb-fade" offset="0%"></stop>
+        <stop class="stop-limb" offset="50%"></stop>
+        <stop class="stop-limb-fade" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <path class="limb-line" d="M -40 560 Q 600 428 1240 560" fill="none" stroke="url(#limbGrad)" stroke-width="5"></path>
+  </svg>
+</div>
+<div class="og-copy hero">
+  <p class="og-brand"><img src="/public/assets/icon-192.png" alt="" width="64" height="64"><span>MarsDawn</span></p>
+  <h1><span>Claim the map.</span> <span>Read the dawn.</span></h1>
+  <p class="og-lede">Markdown for humans who steer agentic work.</p>
+</div>
+<p class="og-url">marsdawn.southern-light.dev</p>
+</section>
+</main>
+</body>
+</html>
