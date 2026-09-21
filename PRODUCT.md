@@ -69,7 +69,7 @@ The site leads with one angle on top of them. MarsDawn is the careful-read step 
 - The CSP in `public/_headers` allows no scripts, one same-origin stylesheet, same-origin images and system fonts only. No web fonts, inline styles, forms, frames or third-party resources. Anything that needs one of these must change the CSP deliberately.
 - `/privacy/`, `/support/`, `/zh-hant/privacy/`, `/zh-hant/support/`, `/zh-hans/privacy/`, `/zh-hans/support/`, `/ja/privacy/` and `/ja/support/` are public contracts linked from the App Store. They must stay at the same paths.
 - `/themes/v1/` is reserved for the future theme gallery.
-- UI labels quoted on the pages must match the app's strings in each language the app itself ships (English and Traditional Chinese only). Nobody checks this automatically. When a page in Simplified Chinese or Japanese needs to state which languages the app's interface comes in, use the single `APP_UI_LANGUAGES` constant in `scripts/build_pages.py` rather than writing a new sentence — it already carries the correct phrasing for every locale.
+- UI labels quoted on the pages must match the app's strings in each language the app itself ships (English and Traditional Chinese only). Nobody checks this automatically, except in the home page's interactive window: its theme names, control labels, colours and sample document come from the app and the kit through `scripts/hero_sources.json`, and CI checks the page against it (`scripts/check_hero.py`). When a page in Simplified Chinese or Japanese needs to state which languages the app's interface comes in, use the single `APP_UI_LANGUAGES` constant in `scripts/build_pages.py` rather than writing a new sentence — it already carries the correct phrasing for every locale.
 
 ## Brand Commitments
 
