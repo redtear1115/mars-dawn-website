@@ -2508,7 +2508,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         )
         closing_html = (
             '<section class="dawn-close">\n'
-            f'<p><strong>{ui["tagline"]}</strong> {ui["footer_store"]}</p>\n'
+            f'<p><strong>{ui["slogan"]}</strong> {ui["footer_store"]}</p>\n'
             "</section>"
         )
         main_html = "\n".join([hero_html, page["body"].strip(), trait_nav_html(locale, ""), closing_html])
@@ -2525,7 +2525,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         footer_html = f'<footer class="footer footer-home">\n{footer_links}</footer>'
     else:
         footer_html = (
-            f'<footer class="footer">\n  <span>{ui["tagline"]}</span>\n{footer_links}'
+            f'<footer class="footer">\n  <span>{ui["slogan"]}</span>\n{footer_links}'
             f'  <span>{ui["footer_store"]}</span>\n</footer>'
         )
     return f"""<!doctype html>
