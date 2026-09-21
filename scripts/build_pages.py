@@ -2662,7 +2662,8 @@ def render(locale: str, slug: str, page: dict) -> str:
         if has_page(locale, target)
     )
     if slug == "index":
-        footer_html = f'<footer class="footer footer-home">\n  <span>{ui["slogan"]}</span>\n{footer_links}</footer>'
+        # The closing band just above already carries the slogan as its headline.
+        footer_html = f'<footer class="footer footer-home">\n{footer_links}</footer>'
     else:
         footer_html = (
             f'<footer class="footer">\n  <span>{ui["slogan"]}</span>\n{footer_links}'
