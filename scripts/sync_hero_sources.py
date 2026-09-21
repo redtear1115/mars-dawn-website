@@ -38,13 +38,21 @@ RENDERER = ROOT / "tools" / "hero-render"
 
 KIT_TAG = "0.5.1"
 # The parts of the snapshot the site shows. The rest (which commits were read) is provenance.
-SHOWN = ("themes", "labels", "sample")
+SHOWN = ("themes", "labels", "editor", "highlighter", "sample")
 LOCALES = {"en": "en", "zh-hant": "zh-Hant", "zh-hans": "zh-Hans", "ja": "ja"}
 THEME_ORDER = ["dawn", "classic", "modern", "vivid"]
 PALETTE_KEYS = ["background", "surface", "text", "muted", "border", "heading", "accent", "link", "quote"]
+# The syntax colours the site uses: code in the preview (keyword), and the editor's (EDITOR).
+SYNTAX_KEYS = ["keyword", "function", "string", "comment"]
 # The app's own strings for the two controls, keyed by what the site calls them.
 # The layout names are ViewMode.shortTitle, the ones the toolbar's segmented control shows.
-LABEL_KEYS = {"theme": "Theme", "layout": "Layout", "source": "Source", "split": "Split", "preview": "Preview"}
+LABEL_KEYS = {"theme": "Theme", "layout": "Layout", "source": "Source", "split": "Split", "preview": "Preview",
+              # The window's title for the guide (WelcomeGuide.title), the theme menu's header,
+              # and ViewMode.title, which the layout buttons' tooltips show with their shortcut.
+              "title": "Welcome to MarsDawn", "preview_theme": "Preview Theme",
+              "source_title": "Source Only", "split_title": "Source and Preview", "preview_title": "Preview Only"}
+APP_EDITOR = "MarsDawn/Editor/EditorTheme.swift"
+APP_HIGHLIGHTER = "MarsDawn/Editor/MarkdownHighlighter.swift"
 KIT_STRINGS = "Sources/MarsDawnKit/Resources/Localization/{lproj}.lproj/Localizable.strings"
 APP_STRINGS = "MarsDawn/Resources/{lproj}.lproj/Localizable.strings"
 APP_WELCOME = "MarsDawn/Resources/{lproj}.lproj/Welcome.md"
@@ -76,7 +84,8 @@ def parse_themes(swift: str) -> list:
             colours = dict(re.findall(r'(\w+): "(#[0-9A-Fa-f]{6})"', top))
             syntax = dict(re.findall(r'(\w+): "(#[0-9A-Fa-f]{6})"', re.search(r"Syntax\((.*?)\)", block).group(1)))
             palettes[scheme] = {key: colours[key].upper() for key in PALETTE_KEYS}
-            palettes[scheme]["keyword"] = syntax["keyword"].upper()
+            for key in SYNTAX_KEYS:
+                palettes[scheme][key] = syntax[key].upper()
         themes[theme_id] = {
             "id": theme_id,
             "name": re.search(r'name: String\(localized: "([^"]+)"', body).group(1),
@@ -90,6 +99,40 @@ def parse_themes(swift: str) -> list:
     ids = [name.strip() for name in order.split(",")]
     assert ids == THEME_ORDER, f"the kit's theme list changed: {ids}"
     return [themes[i] for i in ids]
+
+
+def parse_editor(swift: str) -> dict:
+    """The source editor's colour roles, as EditorTheme(lightTheme:darkTheme:) takes them from a
+    preview theme: {role: palette field}, e.g. "code": "string" (syntax.string)."""
+    body = swift[swift.index("init(lightTheme: PreviewTheme, darkTheme: PreviewTheme)"):]
+    body = body[:body.index("\n    }\n")]
+    roles = {role: path.split(".")[-1] for role, path in re.findall(r"(\w+) = color\(\\\.([\w.]+)\)", body)}
+    assert {"text", "heading", "marker", "code", "codeFence"} <= set(roles), f"EditorTheme changed shape: {roles}"
+    return roles
+
+
+def parse_highlighter(swift: str) -> dict:
+    """The editor's Markdown highlighting, read from MarkdownHighlighter.swift:
+    - rules: styleProse's passes in order, each {pattern, group, attrs}: the regex (the app's
+      raw-string literal), which capture group it styles (0 = the whole match) and which
+      attribute set it adds;
+    - attrs: each attribute set as {color: EditorTheme role, bold, italic, strike}."""
+    patterns = dict(re.findall(r'static let (\w+) = make\(#"(.*?)"#\)', swift))
+    prose = swift[swift.index("private func styleProse"):swift.index("// MARK: - Attribute sets")]
+    rules = []
+    for name, body in re.findall(r"each\(Patterns\.(\w+)\) \{(.*?)\n?\s*\}\n", prose, re.S):
+        for attrs, group in re.findall(r"addAttributes\(attrs\.(\w+), range: \$0\.range(?:\(at: (\d+)\))?\)", body):
+            rules.append({"pattern": patterns[name], "group": int(group or 0), "attrs": attrs})
+    init = swift[swift.index("init(theme: EditorTheme)"):]
+    init = init[:init.index("\n    }\n")]
+    sets = {}
+    for name, body in re.findall(r"(\w+) = \[(.*?)\]$", init, re.M):
+        color = re.search(r"\.foregroundColor: theme\.(\w+)", body)
+        sets[name] = {"color": color[1] if color else None, "bold": "boldFont" in body,
+                      "italic": "italicFont" in body, "strike": "strikethroughStyle" in body}
+    assert rules and {"code", "fence", "heading", "marker"} <= set(sets), "MarkdownHighlighter changed shape"
+    assert all(rule["attrs"] in sets for rule in rules)
+    return {"rules": rules, "attrs": sets}
 
 
 def welcome_excerpt(markdown: str) -> str:
@@ -135,6 +178,8 @@ def collect(kit: Path, app: Path, app_ref: str) -> dict:
         "app": {"ref": app_ref, "commit": git_commit(app, app_ref)},
         "themes": themes,
         "labels": labels,
+        "editor": parse_editor(git_show(app, app_ref, APP_EDITOR)),
+        "highlighter": parse_highlighter(git_show(app, app_ref, APP_HIGHLIGHTER)),
         "sample": sample,
     }
 

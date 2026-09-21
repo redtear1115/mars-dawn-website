@@ -6,7 +6,7 @@
  },
  "app": {
   "ref": "origin/main",
-  "commit": "cb9808f8af7cfaf421f0affec98ead89ecd8044d"
+  "commit": "5f43e941364574ace5bb64dd3d411ed3985e4aa5"
  },
  "themes": [
   {
@@ -22,7 +22,10 @@
     "accent": "#C8471B",
     "link": "#B03C0C",
     "quote": "#D97A4A",
-    "keyword": "#B03C0C"
+    "keyword": "#B03C0C",
+    "function": "#5B3E8C",
+    "string": "#2F6F5E",
+    "comment": "#8A817B"
    },
    "dark": {
     "background": "#1C1A1F",
@@ -34,7 +37,10 @@
     "accent": "#FF8A50",
     "link": "#FF9E6B",
     "quote": "#E08A5C",
-    "keyword": "#FF9E6B"
+    "keyword": "#FF9E6B",
+    "function": "#C7A6F5",
+    "string": "#7FD1B9",
+    "comment": "#8C837D"
    },
    "font_stack": "-apple-system, BlinkMacSystemFont, \"Helvetica Neue\", \"PingFang TC\", \"PingFang SC\", sans-serif",
    "names": {
@@ -57,7 +63,10 @@
     "accent": "#7A2E3A",
     "link": "#7A2E3A",
     "quote": "#A08A5C",
-    "keyword": "#7A2E3A"
+    "keyword": "#7A2E3A",
+    "function": "#2E4A6B",
+    "string": "#56642A",
+    "comment": "#8F8577"
    },
    "dark": {
     "background": "#1E1B18",
@@ -69,7 +78,10 @@
     "accent": "#D89AA4",
     "link": "#E0A9B1",
     "quote": "#C9AE78",
-    "keyword": "#E0A9B1"
+    "keyword": "#E0A9B1",
+    "function": "#9DB8D9",
+    "string": "#B8C58A",
+    "comment": "#8F8577"
    },
    "font_stack": "ui-serif, \"New York\", Georgia, \"Songti TC\", \"Songti SC\", serif",
    "names": {
@@ -92,7 +104,10 @@
     "accent": "#0969DA",
     "link": "#0969DA",
     "quote": "#D1D9E0",
-    "keyword": "#CF222E"
+    "keyword": "#CF222E",
+    "function": "#8250DF",
+    "string": "#0A3069",
+    "comment": "#59636E"
    },
    "dark": {
     "background": "#0D1117",
@@ -104,7 +119,10 @@
     "accent": "#4493F8",
     "link": "#4493F8",
     "quote": "#3D444D",
-    "keyword": "#FF7B72"
+    "keyword": "#FF7B72",
+    "function": "#D2A8FF",
+    "string": "#A5D6FF",
+    "comment": "#9198A1"
    },
    "font_stack": "-apple-system, BlinkMacSystemFont, \"Helvetica Neue\", \"PingFang TC\", \"PingFang SC\", sans-serif",
    "names": {
@@ -127,7 +145,10 @@
     "accent": "#E8457A",
     "link": "#087481",
     "quote": "#FFB020",
-    "keyword": "#B8246A"
+    "keyword": "#B8246A",
+    "function": "#5B3BE0",
+    "string": "#07734F",
+    "comment": "#857D91"
    },
    "dark": {
     "background": "#1A1625",
@@ -139,7 +160,10 @@
     "accent": "#FF7AA2",
     "link": "#3DD6D0",
     "quote": "#FFC857",
-    "keyword": "#FF7AB8"
+    "keyword": "#FF7AB8",
+    "function": "#B69CFF",
+    "string": "#5BE3A8",
+    "comment": "#948BA6"
    },
    "font_stack": "ui-rounded, \"SF Pro Rounded\", -apple-system, \"PingFang TC\", \"PingFang SC\", sans-serif",
    "names": {
@@ -156,28 +180,203 @@
    "layout": "Layout",
    "source": "Source",
    "split": "Split",
-   "preview": "Preview"
+   "preview": "Preview",
+   "title": "Welcome to MarsDawn",
+   "preview_theme": "Preview Theme",
+   "source_title": "Source Only",
+   "split_title": "Source and Preview",
+   "preview_title": "Preview Only"
   },
   "zh-hant": {
    "theme": "主題",
    "layout": "版面",
    "source": "原始碼",
    "split": "並排",
-   "preview": "預覽"
+   "preview": "預覽",
+   "title": "歡迎使用 MarsDawn",
+   "preview_theme": "預覽主題",
+   "source_title": "只顯示原始碼",
+   "split_title": "原始碼與預覽",
+   "preview_title": "只顯示預覽"
   },
   "zh-hans": {
    "theme": "主题",
    "layout": "布局",
    "source": "源代码",
    "split": "并排",
-   "preview": "预览"
+   "preview": "预览",
+   "title": "欢迎使用 MarsDawn",
+   "preview_theme": "预览主题",
+   "source_title": "仅显示源代码",
+   "split_title": "源代码与预览",
+   "preview_title": "仅显示预览"
   },
   "ja": {
    "theme": "テーマ",
    "layout": "レイアウト",
    "source": "ソース",
    "split": "分割",
-   "preview": "プレビュー"
+   "preview": "プレビュー",
+   "title": "MarsDawn へようこそ",
+   "preview_theme": "プレビューのテーマ",
+   "source_title": "ソースのみ",
+   "split_title": "ソースとプレビュー",
+   "preview_title": "プレビューのみ"
+  }
+ },
+ "editor": {
+  "text": "text",
+  "background": "background",
+  "heading": "heading",
+  "marker": "accent",
+  "emphasis": "function",
+  "code": "string",
+  "codeFence": "comment",
+  "link": "link",
+  "muted": "muted",
+  "quote": "muted",
+  "caret": "accent"
+ },
+ "highlighter": {
+  "rules": [
+   {
+    "pattern": "</?[A-Za-z][A-Za-z0-9-]*(?:\\s[^<>\\n]*)?/?>",
+    "group": 0,
+    "attrs": "muted"
+   },
+   {
+    "pattern": "^ {0,3}>.*$",
+    "group": 0,
+    "attrs": "quote"
+   },
+   {
+    "pattern": "^ {0,3}#{1,6}(?:[ \\t].*)?$",
+    "group": 0,
+    "attrs": "heading"
+   },
+   {
+    "pattern": "^ {0,3}(?:(?:-[ \\t]*){3,}|(?:\\*[ \\t]*){3,}|(?:_[ \\t]*){3,})$",
+    "group": 0,
+    "attrs": "marker"
+   },
+   {
+    "pattern": "^[ \\t]*(?:[-*+]|\\d{1,9}[.)])(?=[ \\t])",
+    "group": 0,
+    "attrs": "marker"
+   },
+   {
+    "pattern": "^[ \\t]*(?:[-*+]|\\d{1,9}[.)])[ \\t]+(\\[[ xX]\\])(?=[ \\t])",
+    "group": 1,
+    "attrs": "marker"
+   },
+   {
+    "pattern": "(\\*\\*|__)(?=\\S)(.+?)(?<=\\S)\\1",
+    "group": 0,
+    "attrs": "bold"
+   },
+   {
+    "pattern": "(?<![*\\w])\\*(?=[^\\s*])(.+?)(?<=[^\\s*])\\*(?![*\\w])",
+    "group": 0,
+    "attrs": "italic"
+   },
+   {
+    "pattern": "(?<![_\\w])_(?=[^\\s_])(.+?)(?<=[^\\s_])_(?![_\\w])",
+    "group": 0,
+    "attrs": "italic"
+   },
+   {
+    "pattern": "~~(?=\\S)(.+?)(?<=\\S)~~",
+    "group": 0,
+    "attrs": "strikethrough"
+   },
+   {
+    "pattern": "!?\\[[^\\]\\n]*\\](\\([^)\\n]*\\))",
+    "group": 0,
+    "attrs": "link"
+   },
+   {
+    "pattern": "!?\\[[^\\]\\n]*\\](\\([^)\\n]*\\))",
+    "group": 1,
+    "attrs": "muted"
+   },
+   {
+    "pattern": "<https?://[^>\\s]+>|\\bhttps?://[^\\s<>()]+",
+    "group": 0,
+    "attrs": "link"
+   },
+   {
+    "pattern": "(`+)(?!`)(.+?)(?<!`)\\1(?!`)",
+    "group": 0,
+    "attrs": "inlineCode"
+   }
+  ],
+  "attrs": {
+   "code": {
+    "color": "code",
+    "bold": false,
+    "italic": false,
+    "strike": false
+   },
+   "fence": {
+    "color": "codeFence",
+    "bold": false,
+    "italic": false,
+    "strike": false
+   },
+   "heading": {
+    "color": "heading",
+    "bold": true,
+    "italic": false,
+    "strike": false
+   },
+   "marker": {
+    "color": "marker",
+    "bold": true,
+    "italic": false,
+    "strike": false
+   },
+   "bold": {
+    "color": null,
+    "bold": true,
+    "italic": false,
+    "strike": false
+   },
+   "italic": {
+    "color": "emphasis",
+    "bold": false,
+    "italic": true,
+    "strike": false
+   },
+   "strikethrough": {
+    "color": "muted",
+    "bold": false,
+    "italic": false,
+    "strike": true
+   },
+   "link": {
+    "color": "link",
+    "bold": false,
+    "italic": false,
+    "strike": false
+   },
+   "inlineCode": {
+    "color": "code",
+    "bold": false,
+    "italic": false,
+    "strike": false
+   },
+   "quote": {
+    "color": "quote",
+    "bold": false,
+    "italic": false,
+    "strike": false
+   },
+   "muted": {
+    "color": "muted",
+    "bold": false,
+    "italic": false,
+    "strike": false
+   }
   }
  },
  "sample": {
