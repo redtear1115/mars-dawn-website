@@ -993,6 +993,7 @@ html { overflow-x: hidden; }
 
 .proof { margin-top: 64px; }
 .proof h3 { margin: 36px 0 0; }
-/* On a phone the command wraps instead of scrolling out of sight; one click still selects all of it. */
-.install pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* On a phone the command wraps instead of scrolling out of sight; one click still selects all of it.
+   The code element sets the wrapping: the site's `pre code` rule keeps it on one line otherwise. */
+.install pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
 :lang(ja) :is(h2, h3) { word-break: auto-phrase; }
