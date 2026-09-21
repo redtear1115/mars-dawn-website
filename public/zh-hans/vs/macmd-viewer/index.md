@@ -9,7 +9,7 @@
 ## 各自能做什么
 
 - **编辑：**MacMD Viewer 设计上就是只读。MarsDawn 边编辑源代码边在旁边排版，打字的同时就看得到改动。
-- **预览主题：**MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：Dawn、Classic、Modern 和 Vivid，各有浅色与深色。
+- **预览主题：**MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：黎明、典雅、流行和活泼，各有浅色与深色。
 - **图表与数学公式：**两者都能画出 Mermaid 图表、也都有代码高亮。MarsDawn 还能排版 KaTeX 数学公式；MacMD Viewer 自己的介绍页没有提到数学公式排版。
 - **访达集成：**两者都有访达的快速查看扩展功能，对 `.md` 文件按空格键就能看到排好版的页面。
 - **PDF 与打印：**两者都能把排好版的页面输出或打印成 PDF。

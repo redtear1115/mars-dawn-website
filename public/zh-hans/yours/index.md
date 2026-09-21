@@ -2,7 +2,7 @@
 
 MarsDawn 不需要账户，没有同步，也没有云端。它打开文件、让你写，再存回你选的位置。
 
-![MarsDawn 以 Classic 主题显示文稿，预览占满整个窗口。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
+![MarsDawn 以典雅主题显示文稿，预览占满整个窗口。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
 
 这张截图里：
 

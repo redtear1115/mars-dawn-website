@@ -7,7 +7,7 @@
 ## 能做什么
 
 - `export`：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件输出成分页的 PDF，不会打开任何窗口。
-- `open`：在 MarsDawn app 中打开一或多个 Markdown 文件，让人检阅，也可以指定每个文件要定位的行。
+- `open`：在 MarsDawn app 中打开一或多个 Markdown 文件，让人审阅，也可以指定每个文件要定位的行。
 
 ## 不做什么
 

@@ -2,7 +2,7 @@
 
 MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用；试用结束后想继续使用，花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
 
-![MarsDawn 使用 Vivid 主题，左边是 Markdown 源代码，右边是排版后的页面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
+![MarsDawn 使用活泼主题，左边是 Markdown 源代码，右边是排版后的页面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
 这张截图里：
 

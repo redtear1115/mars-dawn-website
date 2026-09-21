@@ -228,7 +228,7 @@ PAGES = {
   <li><strong>你在 MarsDawn 裡讀。</strong>打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。</li>
   <li><strong>Agent 修改。</strong>提出修改意見，agent 改好之後，再打開來讀一次。</li>
 </ol>
-<p>Agent 也能直接操作 MarsDawn：免費的 <a href="/zh-hant/cli/">marsdawn</a> 命令列工具能開啟檔案供你檢閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
+<p>Agent 也能直接操作 MarsDawn：免費的 <a href="/zh-hant/cli/">marsdawn</a> 命令列工具能開啟檔案供你審閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
 """,
     },
     ("en", "privacy"): {
@@ -856,7 +856,7 @@ swift build -c release --product marsdawn
 <h2>能做什麼</h2>
 <ul>
   <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
-  <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人檢閱，也可以指定每個檔案要定位的行。</li>
+  <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人審閱，也可以指定每個檔案要定位的行。</li>
 </ul>
 
 <h2>不做什麼</h2>
@@ -1199,7 +1199,7 @@ open notes.pdf</code></pre>
 <h2>各自能做什麼</h2>
 <ul>
   <li><strong>編輯：</strong>MacMD Viewer 設計上就是唯讀。MarsDawn 邊編輯原始碼邊在旁邊排版，打字的同時就看得到改動。</li>
-  <li><strong>預覽主題：</strong>MacMD Viewer 內建 12 種文件主題。MarsDawn 有四種：Dawn、Classic、Modern 和 Vivid，各有淺色與深色。</li>
+  <li><strong>預覽主題：</strong>MacMD Viewer 內建 12 種文件主題。MarsDawn 有四種：黎明、典雅、流行和活潑，各有淺色與深色。</li>
   <li><strong>圖表與數學式：</strong>兩者都能畫出 Mermaid 圖表、也都有程式碼上色。MarsDawn 還能排版 KaTeX 數學式；MacMD Viewer 自己的介紹頁沒有提到數學式排版。</li>
   <li><strong>Finder 整合：</strong>兩者都有 Finder 的快速查看擴充功能，對 <code>.md</code> 檔案按空白鍵就能看到排好版的頁面。</li>
   <li><strong>PDF 與列印：</strong>兩者都能把排好版的頁面輸出或列印成 PDF。</li>
@@ -1529,17 +1529,17 @@ BRAINSTORM_PAGES = {
         "body": """
 <section class="intro">
   <h1>八種樣子，一套輸出。</h1>
-  <p>MarsDawn 內建四種預覽主題：Dawn、Classic、Modern 和 Vivid，各有淺色與深色&#8212;&#8212;八種讀文件的樣子。輸出成 PDF 或列印，出來的就是你正在讀的那個樣子。</p>
+  <p>MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有淺色與深色&#8212;&#8212;八種讀文件的樣子。輸出成 PDF 或列印，出來的就是你正在讀的那個樣子。</p>
 </section>
 
 <div class="summary"><p><strong>四種主題 &#215; 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。</strong>更多可匯入的主題，還有讓大家投稿主題的主題庫，都還在規劃中，尚未推出。</p></div>
 
 <h2>四種主題</h2>
 <ul>
-  <li><strong>Dawn</strong>，預設主題：和這個網站一樣的暖色紙感與 Mars Rust 強調色。</li>
-  <li><strong>Classic（典雅）：</strong>比較樸素、像紙本文件的配色。</li>
-  <li><strong>Modern（流行）：</strong>比較冷調、當代感的配色。</li>
-  <li><strong>Vivid（活潑）：</strong>比較明亮、對比較高的配色。</li>
+  <li><strong>黎明</strong>，預設主題：和這個網站一樣的暖色紙感與 Mars Rust 強調色。</li>
+  <li><strong>典雅</strong>：比較樸素、像紙本文件的配色。</li>
+  <li><strong>流行</strong>：比較冷調、當代感的配色。</li>
+  <li><strong>活潑</strong>：比較明亮、對比較高的配色。</li>
 </ul>
 <p>每種主題都有各自的淺色和深色版本，所以切換 Mac 的外觀，連帶切換的是主題本身的配色，不只是介面的顏色。</p>
 
@@ -1796,7 +1796,7 @@ FIGURES = {
         "image": "02-classic",
         "alt": {
             "en": "MarsDawn showing a document in the Classic theme, with the preview filling the window.",
-            "zh-hant": "MarsDawn 以 Classic 主題顯示文件，預覽佔滿整個視窗。",
+            "zh-hant": "MarsDawn 以典雅主題顯示文件，預覽佔滿整個視窗。",
         },
         "callouts": [
             (16.53, 7.0, "l", {"en": "A file on your Mac, saved where you choose.", "zh-hant": "你 Mac 上的一個檔案，存在你選的地方。"}),
@@ -1807,7 +1807,7 @@ FIGURES = {
         "image": "04-vivid",
         "alt": {
             "en": "MarsDawn in the Vivid theme, with Markdown source on the left and the rendered page on the right.",
-            "zh-hant": "MarsDawn 使用 Vivid 主題，左邊是 Markdown 原始碼，右邊是排版後的頁面。",
+            "zh-hant": "MarsDawn 使用活潑主題，左邊是 Markdown 原始碼，右邊是排版後的頁面。",
         },
         "callouts": [
             (10.07, 26.22, "l", {"en": "Markdown highlighting in the editor, included.", "zh-hant": "編輯器的 Markdown 語法上色，包含在內。"}),
@@ -2084,7 +2084,7 @@ TRAIT_PAGES = {
   <li><strong>分享：</strong>沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。</li>
   <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
   <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
-  <li><strong>主題：</strong>內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
+  <li><strong>主題：</strong>內建 黎明、典雅、流行和活潑，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
   <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
   <li><strong>試用結束後：</strong>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</li>
   <li><strong>系統：</strong>MarsDawn 需要 macOS 26 以上。</li>
