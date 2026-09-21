@@ -137,16 +137,19 @@ def check_site(src: dict, css: str, pages: dict) -> list:
     return problems
 
 
-# Pages that list the themes by name, in a language whose app names them differently from
-# English. Their list must use the app's names, in the kit's order (COPY-REVIEW §3.2, and the
-# owner's call of 2026-09-21 for zh-Hant and zh-Hans).
-THEME_LISTS = {"zh-hant": "zh-hant/themes/index.html", "zh-hans": "zh-hans/themes/index.html", "ja": "ja/themes/index.html"}
+# The themes page in each language lists the themes by name. The list must use that language's
+# app names, in the kit's order, and nothing else beside them, such as another language's name
+# in brackets (COPY-REVIEW §3.2, and the owner's calls of 2026-09-21).
+THEME_LISTS = {"en": "themes/index.html", "zh-hant": "zh-hant/themes/index.html", "zh-hans": "zh-hans/themes/index.html", "ja": "ja/themes/index.html"}
 
 
 def check_theme_lists(src: dict, pages: dict) -> list:
     problems = []
     for locale, html in pages.items():
-        names = re.findall(r"<li><strong>([^<]+)</strong>", html)[:len(src["themes"])]
+        # The name, and anything set right after it before the punctuation that starts its
+        # description, so a bracketed second name counts as part of the name.
+        names = [(name + extra).strip() for name, extra in
+                 re.findall(r"<li><strong>([^<]+)</strong>([^:：,，、<]*)", html)[:len(src["themes"])]]
         want = [t["names"][locale] for t in src["themes"]]
         if names != want:
             problems.append(f"{THEME_LISTS[locale]}: the theme list reads {names}, the app says {want}")
@@ -189,6 +192,7 @@ def self_test(src: dict, css: str, pages: dict, lists: dict, kit: dict) -> list:
         "a word in the preview": (lambda: check_site(src, css, {**pages, "zh-hans": re.sub(r"(<p class=\"md-h1\">[^<]*)MarsDawn", r"\1MarsDusk", pages["zh-hans"], count=1)})),
         "an English theme name in the ja theme list": (lambda: check_theme_lists(src, {"ja": lists["ja"].replace("<strong>クラシック</strong>", "<strong>Classic</strong>", 1)})),
         "an English theme name in the zh-Hant theme list": (lambda: check_theme_lists(src, {"zh-hant": lists["zh-hant"].replace("<strong>黎明</strong>", "<strong>Dawn</strong>", 1)})),
+        "a bracketed Chinese name in the en theme list": (lambda: check_theme_lists(src, {"en": lists["en"].replace("<strong>Classic</strong>:", "<strong>Classic</strong> (典雅):", 1)})),
         "the zh-Hant name in the zh-Hans theme list": (lambda: check_theme_lists(src, {"zh-hans": lists["zh-hans"].replace("<strong>活泼</strong>", "<strong>活潑</strong>", 1)})),
     }
     if kit:
