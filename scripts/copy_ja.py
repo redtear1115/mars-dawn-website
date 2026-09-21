@@ -159,7 +159,6 @@ def build(k) -> dict:
   <li><strong>MarsDawn で確認する。</strong>ファイルを開き、Mermaid 図やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。</li>
   <li><strong>エージェントが修正する。</strong>変更を依頼します。修正されたファイルを開き、同じように読みます。</li>
 </ol>
-<p>エージェントは MarsDawn を直接操作することもできます。無料の <a href="/ja/cli/">marsdawn</a> コマンドラインツールは、確認用にファイルを開いたり PDF を書き出したりでき、スクリプト向けの JSON 出力にも対応しています。詳細は<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>をご覧ください。</p>
 """,
     }
     pages['yours'] = {

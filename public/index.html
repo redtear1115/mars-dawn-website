@@ -9,6 +9,7 @@
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/hero.css">
+<link rel="stylesheet" href="/assets/annotations.css">
 <link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/">
 <link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/">
 <link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/">
@@ -92,6 +93,7 @@
   <h1><span>Claim the map.</span> <span>Read the dawn.</span></h1>
   <p>Markdown for humans who steer agentic work.</p>
 </section>
+<p class="hero-cta"><a class="cta cta-primary" href="#install">Install the free CLI</a> <span class="store-chip">Coming soon to the Mac App Store</span></p>
 </div>
 <div class="hero-shot">
 <div class="mdw" role="group" aria-label="A working MarsDawn window: choose a theme and a layout">
@@ -174,17 +176,53 @@
   <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
   <li><strong>The agent revises.</strong> Ask for changes. Open the revised file and read it the same way.</li>
 </ol>
-<p>Agents can drive MarsDawn directly: the free <a href="/cli/">marsdawn</a> command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See <a href="/cli/agents/">marsdawn for agents</a> for the details.</p>
+<section class="install" id="install">
+<h2>Do this now</h2>
+<p>The free <code>marsdawn</code> command-line tool is ready today. Install it with Homebrew:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<ul>
+  <li><code>marsdawn export</code> turns a Markdown file into a PDF, rendered like MarsDawn's preview. It doesn't need the app.</li>
+  <li><code>marsdawn open</code> opens files in the MarsDawn app for you to review.</li>
+  <li><code>--json</code> gives scripts and agents results they can parse.</li>
+</ul>
+<p class="install-links"><a href="/cli/">Command Line</a> · <a href="/cli/agents/">marsdawn for agents</a> · <a href="/cli/skill/">Agent skill</a> · <a href="/cli/mcp/">MCP server</a></p>
+</section>
 <nav class="traits" aria-label="What to expect from MarsDawn">
 <h2>What to expect from MarsDawn</h2>
 <ul>
+  <li><a href="/native/">A Mac app</a><span>Native windows, tabs, autosave, Quick Look.</span></li>
   <li><a href="/yours/">Your writing stays on your Mac</a><span>No account, no sync, no cloud.</span></li>
   <li><a href="/pay-once/">Try free, pay once</a><span>Free for 14 days, then USD 4.99 once. No subscription.</span></li>
-  <li><a href="/pdf/">PDF export</a><span>Diagrams, highlighted code, careful page breaks.</span></li>
-  <li><a href="/native/">A Mac app</a><span>Native windows, tabs, autosave, Quick Look.</span></li>
-  <li><a href="/limits/">What MarsDawn doesn't do</a><span>Know before you buy.</span></li>
 </ul>
 </nav>
+<p class="know">Know before you buy. <a href="/limits/">What MarsDawn doesn't do</a></p>
+<section class="proof">
+<h2>The app, as it is</h2>
+<h3><a href="/native/">A Mac app</a></h3>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn in split view: the Markdown source on the left, the rendered page on the right.">
+    <span class="marker l tb co-native-1" aria-hidden="true">1</span><span class="marker l co-native-2" aria-hidden="true">2</span><span class="marker r tb co-native-3" aria-hidden="true">3</span><span class="marker r co-native-4" aria-hidden="true">4</span>
+    <span class="leader l co-native-1" aria-hidden="true"><span>A native Mac window.</span></span><span class="leader l co-native-2" aria-hidden="true"><span>The Mac's text editor, with Markdown highlighting.</span></span><span class="leader r co-native-3" aria-hidden="true"><span>⌘1 source, ⌘2 split, ⌘3 preview.</span></span><span class="leader r co-native-4" aria-hidden="true"><span>The page updates as you type.</span></span>
+  </div></div>
+  <figcaption>
+    <span class="figure-label">In this screenshot</span>
+    <ol><li>A native Mac window.</li><li>The Mac's text editor, with Markdown highlighting.</li><li>⌘1 source, ⌘2 split, ⌘3 preview.</li><li>The page updates as you type.</li></ol>
+  </figcaption>
+</figure>
+<h3><a href="/pdf/">PDF export</a></h3>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="980" height="760" alt="A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.">
+    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
+    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid diagrams, drawn into the PDF.</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>Code keeps its highlighting.</span></span>
+  </div></div>
+  <figcaption>
+    <span class="figure-label">In this screenshot</span>
+    <ol><li>Mermaid diagrams, drawn into the PDF.</li><li>Code keeps its highlighting.</li></ol>
+  </figcaption>
+</figure>
+</section>
 <section class="dawn-close">
 <p><strong>A new dawn for Markdown.</strong> MarsDawn is coming soon to the Mac App Store.</p>
 </section>

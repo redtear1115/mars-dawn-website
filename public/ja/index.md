@@ -12,7 +12,49 @@
 2. **MarsDawn で確認する。**ファイルを開き、Mermaid 図やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。
 3. **エージェントが修正する。**変更を依頼します。修正されたファイルを開き、同じように読みます。
 
-エージェントは MarsDawn を直接操作することもできます。無料の [marsdawn](/ja/cli/) コマンドラインツールは、確認用にファイルを開いたり PDF を書き出したりでき、スクリプト向けの JSON 出力にも対応しています。詳細は[AI エージェント向け marsdawn](/ja/cli/agents/)をご覧ください。
+## 今すぐできること
+
+無料の `marsdawn` コマンドラインツールは今すぐ使えます。Homebrew でインストール：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+- `marsdawn export` は Markdown ファイルを、MarsDawn のプレビューと同じ見た目の PDF にします。アプリは要りません。
+- `marsdawn open` はファイルを MarsDawn アプリで開き、確認できるようにします。
+- `--json` は、スクリプトやエージェントが解析できる結果を返します。
+
+[コマンドライン](/ja/cli/) · [AI エージェント向け marsdawn](/ja/cli/agents/) · [エージェント用スキル](/ja/cli/skill/) · [MCP サーバー](/ja/cli/mcp/)
+
+## MarsDawn に期待できること
+
+- [Mac アプリ](/ja/native/)：ネイティブのウインドウとタブ、自動保存、クイックルック。
+- [あなたの文章は Mac に残ります](/ja/yours/)：アカウント不要、同期なし、クラウドなし。
+- [無料で試して、一度だけ購入](/ja/pay-once/)：14日間無料、その後は一度だけ USD 4.99。サブスクリプションはありません。
+
+購入前に知っておくこと。 [MarsDawn ができないこと](/ja/limits/)
+
+## 実際のアプリ画面
+
+### [Mac アプリ](/ja/native/)
+
+![MarsDawn の分割ビュー：左が Markdown のソース、右がレンダリングされたページ。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+
+このスクリーンショットの内容：
+
+1. ネイティブの Mac ウインドウ。
+2. Mac のテキストエディタに、Markdown ハイライトを追加したもの。
+3. ⌘1 でソース、⌘2 で分割、⌘3 でプレビュー。
+4. 入力するとページが更新されます。
+
+### [PDF 書き出し](/ja/pdf/)
+
+![MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+
+このスクリーンショットの内容：
+
+1. Mermaid 図は PDF に描き込まれます。
+2. コードはハイライトを保ちます。
 
 ## その他
 

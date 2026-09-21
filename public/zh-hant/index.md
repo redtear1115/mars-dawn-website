@@ -12,7 +12,49 @@
 2. **你在 MarsDawn 裡讀。**打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。
 3. **Agent 修改。**提出修改意見，agent 改好之後，再打開來讀一次。
 
-Agent 也能直接操作 MarsDawn：免費的 [marsdawn](/zh-hant/cli/) 命令列工具能開啟檔案供你審閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+## 現在就能做的事
+
+免費的 `marsdawn` 命令列工具現在就能用。用 Homebrew 安裝：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+- `marsdawn export` 把 Markdown 檔輸出成 PDF，排版和 MarsDawn 的預覽一樣，不需要 app。
+- `marsdawn open` 在 MarsDawn app 裡開啟檔案，讓你審閱。
+- `--json` 回傳腳本和 agent 能解析的結果。
+
+[命令列工具](/zh-hant/cli/) · [給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/) · [給 agent 的 skill](/zh-hant/cli/skill/) · [MCP 伺服器](/zh-hant/cli/mcp/)
+
+## MarsDawn 是什麼樣的 app
+
+- [為 Mac 而做](/zh-hant/native/)：原生視窗、分頁、自動儲存、快速查看。
+- [你寫的內容留在你的 Mac 上](/zh-hant/yours/)：不需要帳號，沒有同步，也沒有雲端。
+- [免費試用，買一次就好](/zh-hant/pay-once/)：免費試用 14 天，之後 USD 4.99 買一次，沒有訂閱。
+
+購買前先知道。 [MarsDawn 做不到的事](/zh-hant/limits/)
+
+## App 實際的樣子
+
+### [為 Mac 而做](/zh-hant/native/)
+
+![MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+
+這張截圖裡：
+
+1. 原生的 Mac 視窗。
+2. Mac 原生的文字編輯器，附 Markdown 語法上色。
+3. ⌘1 原始碼、⌘2 並排、⌘3 預覽。
+4. 頁面會隨著打字更新。
+
+### [輸出 PDF](/zh-hant/pdf/)
+
+![用 MarsDawn 輸出的 PDF，在內建的 PDF 檢視器中開啟，旁邊有頁面縮圖。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+
+這張截圖裡：
+
+1. Mermaid 圖表直接畫進 PDF。
+2. 程式碼保留語法上色。
 
 ## 其他頁面
 

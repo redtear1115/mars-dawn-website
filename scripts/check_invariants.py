@@ -22,6 +22,11 @@ guards against is flipping some of them: a site that says it's on the Mac App St
 structured data still says pre-order, or one locale left saying "coming soon" after the others
 moved on. Either half-flip fails here.
 
+The home page's calls to action follow the same phase. Before launch the hero's one primary
+button installs the free CLI (it jumps to the `#install` block) and nothing store-shaped is a
+button; after launch the primary goes to the Mac App Store listing and the CLI is second. In
+neither phase is the hero's call to action an image, so it can't pass for a store badge.
+
 Two things this deliberately does not catch, so nobody reads a green run as more than it is:
 
 - **A placeholder listing URL passes.** `https://apps.apple.com/app/idPLACEHOLDER` is a link to
@@ -77,6 +82,10 @@ PRE_LAUNCH_WORDING = {
 }
 
 LISTING_HOST = "apps.apple.com"
+
+# The hero's calls to action, as (class, href) pairs in order, per phase.
+CTA = re.compile(r'<a class="cta ([\w-]+)" href="([^"]*)"')
+HERO_CTA = re.compile(r'<p class="hero-cta">(.*?)</p>', re.S)
 
 # What the offer's availability has to say in each phase.
 AVAILABILITY_FOR = {
@@ -170,7 +179,21 @@ def main():
         if home not in pages:
             problems.append(f"{home} is missing")
             continue
-        has = '"downloadUrl"' in pages[home].read_text()
+        text = pages[home].read_text()
+        ctas = CTA.findall(text)
+        if where == "pre-launch" and ctas != [("cta-primary", "#install")]:
+            problems.append(f"{home}: before launch the hero's calls to action should be just the CLI install, got {ctas}")
+        if where == "launched" and not (
+            len(ctas) == 2 and ctas[0][0] == "cta-primary" and ctas[0][1].startswith(f"https://{LISTING_HOST}/")
+            and ctas[1] == ("cta-secondary", "#install")
+        ):
+            problems.append(f"{home}: after launch the hero's calls to action should be the listing, then the CLI, got {ctas}")
+        hero_cta = HERO_CTA.search(text)
+        if not hero_cta or "<img" in hero_cta.group(1):
+            problems.append(f"{home}: the hero's call to action is missing, or is an image")
+        if 'id="install"' not in text or "brew install" not in text.split('id="install"', 1)[-1].split("</section>", 1)[0]:
+            problems.append(f"{home}: no #install block with the Homebrew command for the CTA to land on")
+        has = '"downloadUrl"' in text
         if where == "launched" and not has:
             problems.append(f"{home}: no downloadUrl in the JSON-LD after launch")
         if where == "pre-launch" and has:

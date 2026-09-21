@@ -38,6 +38,10 @@ BREW_TAP_INSTALL = "brew tap redtear1115/tap && brew install marsdawn"
 # (website #44, and docs/go-live-checklist.md in the app repo, beside the deploy).
 AVAILABILITY = "https://schema.org/PreOrder"
 
+# The app's Mac App Store listing. None until launch: before it, nothing may link to the
+# listing (check_invariants.py). Launch day sets it with AVAILABILITY (website #47).
+LISTING_URL = None
+
 # The MCP server, a separate public repo. Re-verified 2026-09-20 against
 # github.com/redtear1115/marsdawn-mcp: still 0.1.0, still not in the MCP Registry.
 MCP_URL = "https://github.com/redtear1115/marsdawn-mcp"
@@ -208,7 +212,6 @@ PAGES = {
   <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
   <li><strong>The agent revises.</strong> Ask for changes. Open the revised file and read it the same way.</li>
 </ol>
-<p>Agents can drive MarsDawn directly: the free <a href="/cli/">marsdawn</a> command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See <a href="/cli/agents/">marsdawn for agents</a> for the details.</p>
 """,
     },
     ("zh-hant", "index"): {
@@ -228,7 +231,6 @@ PAGES = {
   <li><strong>你在 MarsDawn 裡讀。</strong>打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。</li>
   <li><strong>Agent 修改。</strong>提出修改意見，agent 改好之後，再打開來讀一次。</li>
 </ol>
-<p>Agent 也能直接操作 MarsDawn：免費的 <a href="/zh-hant/cli/">marsdawn</a> 命令列工具能開啟檔案供你審閱，也能輸出 PDF，並提供給腳本使用的 JSON 輸出。細節請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
 """,
     },
     ("en", "privacy"): {
@@ -2161,6 +2163,125 @@ def all_pages_en() -> dict:
     return {slug: page for (locale, slug), page in _base_pages().items() if locale == "en"}
 
 
+# The home page after the hero (owner's IA, 2026-09-21): the loop, then one thing to do today
+# (the free CLI), three reasons for the app, one line on its limits, and the app as it is.
+HOME_TRAITS = ["native", "yours", "pay-once"]
+HOME_PROOF = ["native", "pdf"]
+HOME = {
+    "en": {
+        "cta_cli": "Install the free CLI",
+        "cta_store": "View on the Mac App Store",
+        "install_h": "Do this now",
+        "install_lede": "The free <code>marsdawn</code> command-line tool is ready today. Install it with Homebrew:",
+        "install_caps": [
+            "<code>marsdawn export</code> turns a Markdown file into a PDF, rendered like MarsDawn's preview. It doesn't need the app.",
+            "<code>marsdawn open</code> opens files in the MarsDawn app for you to review.",
+            "<code>--json</code> gives scripts and agents results they can parse.",
+        ],
+        "proof_h": "The app, as it is",
+    },
+    "zh-hant": {
+        "cta_cli": "安裝免費的 CLI",
+        "cta_store": "在 Mac App Store 查看",
+        "install_h": "現在就能做的事",
+        "install_lede": "免費的 <code>marsdawn</code> 命令列工具現在就能用。用 Homebrew 安裝：",
+        "install_caps": [
+            "<code>marsdawn export</code> 把 Markdown 檔輸出成 PDF，排版和 MarsDawn 的預覽一樣，不需要 app。",
+            "<code>marsdawn open</code> 在 MarsDawn app 裡開啟檔案，讓你審閱。",
+            "<code>--json</code> 回傳腳本和 agent 能解析的結果。",
+        ],
+        "proof_h": "App 實際的樣子",
+    },
+    "zh-hans": {
+        "cta_cli": "安装免费的 CLI",
+        "cta_store": "在 Mac App Store 查看",
+        "install_h": "现在就能做的事",
+        "install_lede": "免费的 <code>marsdawn</code> 命令行工具现在就能用。用 Homebrew 安装：",
+        "install_caps": [
+            "<code>marsdawn export</code> 把 Markdown 文件导出成 PDF，排版和 MarsDawn 的预览一样，不需要 app。",
+            "<code>marsdawn open</code> 在 MarsDawn app 里打开文件，让你审阅。",
+            "<code>--json</code> 返回脚本和 agent 能解析的结果。",
+        ],
+        "proof_h": "App 实际的样子",
+    },
+    "ja": {
+        "cta_cli": "無料の CLI をインストール",
+        "cta_store": "Mac App Store で見る",
+        "install_h": "今すぐできること",
+        "install_lede": "無料の <code>marsdawn</code> コマンドラインツールは今すぐ使えます。Homebrew でインストール：",
+        "install_caps": [
+            "<code>marsdawn export</code> は Markdown ファイルを、MarsDawn のプレビューと同じ見た目の PDF にします。アプリは要りません。",
+            "<code>marsdawn open</code> はファイルを MarsDawn アプリで開き、確認できるようにします。",
+            "<code>--json</code> は、スクリプトやエージェントが解析できる結果を返します。",
+        ],
+        "proof_h": "実際のアプリ画面",
+    },
+}
+HOME_CLI_LINKS = ["cli", "agents", "skill", "mcp"]
+
+
+def launched() -> bool:
+    return AVAILABILITY.endswith("/InStock")
+
+
+def hero_cta_html(locale: str) -> str:
+    """Before launch: install the CLI, beside the coming-soon chip. After: the listing, then the
+    CLI. Plain links in both, never a store badge."""
+    home = HOME[locale]
+    if launched():
+        assert LISTING_URL, "AVAILABILITY is InStock but LISTING_URL isn't set"
+        return (f'<p class="hero-cta"><a class="cta cta-primary" href="{LISTING_URL}">{home["cta_store"]}</a> '
+                f'<a class="cta cta-secondary" href="#install">{home["cta_cli"]}</a></p>')
+    return (f'<p class="hero-cta"><a class="cta cta-primary" href="#install">{home["cta_cli"]}</a> '
+            f'<span class="store-chip">{STORE_CHIP[locale]}</span></p>')
+
+
+def home_sections_html(locale: str) -> str:
+    home, ui = HOME[locale], UI[locale]
+    caps = "\n".join(f"  <li>{cap}</li>" for cap in home["install_caps"])
+    links = " · ".join(f'<a href="{page_path(locale, slug)}">{ui[SLUG_TO_UI_KEY[slug]]}</a>'
+                       for slug in ("cli", "cli/agents", "cli/skill", "cli/mcp") if has_page(locale, slug))
+    traits = "\n".join(
+        f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a><span>{TRAIT_LINK[locale][slug][1]}</span></li>'
+        for slug in HOME_TRAITS
+    )
+    limits_title, limits_line = TRAIT_LINK[locale]["limits"]
+    return f"""<section class="install" id="install">
+<h2>{home["install_h"]}</h2>
+<p>{home["install_lede"]}</p>
+<pre><code>{_INSTALL}</code></pre>
+<ul>
+{caps}
+</ul>
+<p class="install-links">{links}</p>
+</section>
+<nav class="traits" aria-label="{TRAIT_NAV_HEADING[locale]}">
+<h2>{TRAIT_NAV_HEADING[locale]}</h2>
+<ul>
+{traits}
+</ul>
+</nav>
+<p class="know">{limits_line} <a href="{page_path(locale, "limits")}">{limits_title}</a></p>"""
+
+
+def _home_sections_for_twin(locale: str) -> str:
+    """The same sections, shaped for html_to_markdown: the trait list's name and line are
+    joined by a colon, as the other twins list pages."""
+    colon = "：" if locale in FULL_WIDTH else ": "
+    out = home_sections_html(locale)
+    out = re.sub(r'<nav class="traits"[^>]*>', "<section>", out).replace("</nav>", "</section>")
+    return out.replace("</a><span>", f"</a>{colon}<span>")
+
+
+def home_proof(locale: str, figure) -> list:
+    """The app as it is: a heading, then each proof shot under its page's name. `figure` draws
+    one shot, as HTML for the page or as Markdown for its twin."""
+    return [f'<h2>{HOME[locale]["proof_h"]}</h2>'] + [
+        part for slug in HOME_PROOF
+        for part in (f'<h3><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a></h3>', figure(locale, slug))
+    ]
+
+
 def trait_nav_html(locale: str, current: str) -> str:
     items = "\n".join(
         f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a>'
@@ -2234,9 +2355,19 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
     page = pages[(locale, slug)]
     if "intro" not in page:
         return html_to_markdown(page["body"])
+    if slug == "index":
+        proof = [html_to_markdown(part).rstrip() if part.startswith("<h") else part
+                 for part in home_proof(locale, figure_markdown)]
+        return "\n\n".join([
+            html_to_markdown(page["intro"]).rstrip(),
+            hero_window.window_markdown(locale),
+            html_to_markdown(page["body"]).rstrip(),
+            html_to_markdown(_home_sections_for_twin(locale)).rstrip(),
+            *proof,
+        ])
     return "\n\n".join([
         html_to_markdown(page["intro"]).rstrip(),
-        hero_window.window_markdown(locale) if slug == "index" else figure_markdown(locale, slug),
+        figure_markdown(locale, slug),
         html_to_markdown(page["body"]).rstrip(),
     ])
 
@@ -2502,14 +2633,14 @@ def render(locale: str, slug: str, page: dict) -> str:
     is_trait_page = slug in TRAIT_ORDER
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
     if slug == "index":
-        extra_css = '<link rel="stylesheet" href="/assets/hero.css">\n'
+        extra_css = '<link rel="stylesheet" href="/assets/hero.css">\n<link rel="stylesheet" href="/assets/annotations.css">\n'
     chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
     if slug == "index":
         hero_html = (
             '<section class="hero-scene">\n'
             f"{DAWN_HERO_SVG}\n"
             '<div class="hero-inner">\n'
-            f'<div class="hero-copy">\n{page["intro"].strip()}\n</div>\n'
+            f'<div class="hero-copy">\n{page["intro"].strip()}\n{hero_cta_html(locale)}\n</div>\n'
             f'<div class="hero-shot">\n{hero_window.window_html(locale)}\n</div>\n'
             "</div>\n"
             "</section>"
@@ -2519,7 +2650,8 @@ def render(locale: str, slug: str, page: dict) -> str:
             f'<p><strong>{ui["slogan"]}</strong> {ui["footer_store"]}</p>\n'
             "</section>"
         )
-        main_html = "\n".join([hero_html, page["body"].strip(), trait_nav_html(locale, ""), closing_html])
+        proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
+        main_html = "\n".join([hero_html, page["body"].strip(), home_sections_html(locale), proof_html, closing_html])
     elif has_intro:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
