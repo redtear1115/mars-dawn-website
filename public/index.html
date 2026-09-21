@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MarsDawn: a Markdown editor for Mac, with live preview</title>
-<meta name="description" content="A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.">
+<meta name="description" content="Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. Coming soon to the Mac App Store.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/hero.css">
 <link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/">
 <link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/">
 <link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/">
@@ -16,13 +17,16 @@
 <link rel="canonical" href="https://marsdawn.southern-light.dev/">
 <link rel="alternate" type="text/markdown" href="/index.md">
 <meta property="og:title" content="MarsDawn: a Markdown editor for Mac, with live preview">
-<meta property="og:description" content="A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.">
+<meta property="og:description" content="Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. Coming soon to the Mac App Store.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder"}, "url": "https://marsdawn.southern-light.dev/"}</script>
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. Coming soon to the Mac App Store.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder"}, "url": "https://marsdawn.southern-light.dev/"}</script>
 </head>
 <body>
 <div class="page">
@@ -84,23 +88,87 @@
 <div class="hero-inner">
 <div class="hero-copy">
 <section class="intro hero">
-  <p class="kicker">Built for the AI workflow</p>
-  <h1>Where an agent's Markdown gets a careful read.</h1>
-  <p>An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.</p>
+  <p class="kicker">Frontier tools for builders</p>
+  <h1><span>Claim the map.</span> <span>Read the dawn.</span></h1>
+  <p>Markdown for humans who steer agentic work.</p>
 </section>
 </div>
 <div class="hero-shot">
-<figure class="shot">
-  <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 1264px) 76rem, (min-width: 736px) calc(100vw - 48px), calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn in split view: the Markdown source on the left, the rendered page on the right.">
-    
-    
-  </div></div>
-</figure>
+<div class="mdw" role="group" aria-label="A working MarsDawn window: choose a theme and a layout">
+  <div class="mdw-bar">
+    <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
+    <fieldset class="mdw-layouts">
+      <legend>Layout</legend>
+      <input type="radio" name="mdw-layout" id="mdw-source" value="source"><label for="mdw-source">Source<kbd aria-hidden="true">⌘1</kbd></label>
+      <input type="radio" name="mdw-layout" id="mdw-split" value="split" checked><label for="mdw-split">Split<kbd aria-hidden="true">⌘2</kbd></label>
+      <input type="radio" name="mdw-layout" id="mdw-preview" value="preview"><label for="mdw-preview">Preview<kbd aria-hidden="true">⌘3</kbd></label>
+    </fieldset>
+    <fieldset class="mdw-themes">
+      <legend>Theme</legend>
+      <input type="radio" name="mdw-theme" id="mdw-dawn" value="dawn" checked><label for="mdw-dawn"><span class="swatch sw-dawn" aria-hidden="true"></span>Dawn</label>
+      <input type="radio" name="mdw-theme" id="mdw-classic" value="classic"><label for="mdw-classic"><span class="swatch sw-classic" aria-hidden="true"></span>Classic</label>
+      <input type="radio" name="mdw-theme" id="mdw-modern" value="modern"><label for="mdw-modern"><span class="swatch sw-modern" aria-hidden="true"></span>Modern</label>
+      <input type="radio" name="mdw-theme" id="mdw-vivid" value="vivid"><label for="mdw-vivid"><span class="swatch sw-vivid" aria-hidden="true"></span>Vivid</label>
+    </fieldset>
+  </div>
+  <div class="mdw-panes">
+    <pre class="mdw-source" aria-label="Source"><span class="mk"># </span><span class="hd">Welcome to MarsDawn</span>
+
+<span class="mk">*</span><i>A new dawn for Markdown.</i><span class="mk">*</span> You write on the left, and the rendered page on the right updates as you type. This guide is an ordinary document, so edit anything here to see what happens. If you don't save it, it closes without asking.
+
+<span class="mk">## </span><span class="hd">Layouts</span>
+
+<span class="mk">|</span> Shortcut <span class="mk">|</span> Layout <span class="mk">|</span>
+<span class="mk">|</span><span class="mk">:--------:</span><span class="mk">|</span><span class="mk">:-------</span><span class="mk">|</span>
+<span class="mk">|</span> ⌘1 <span class="mk">|</span> Source only <span class="mk">|</span>
+<span class="mk">|</span> ⌘2 <span class="mk">|</span> Source and preview side by side <span class="mk">|</span>
+<span class="mk">|</span> ⌘3 <span class="mk">|</span> Preview only <span class="mk">|</span>
+
+<span class="mk">## </span><span class="hd">Writing</span>
+
+<span class="mk">**</span><b>Bold</b><span class="mk">**</span>, <span class="mk">*</span><i>italic</i><span class="mk">*</span>, <span class="mk">~~</span><s>strikethrough</s><span class="mk">~~</span>, <span class="mk">`</span><span class="cd">inline code</span><span class="mk">`</span> and <span class="mk">[</span>links<span class="mk">](</span><span class="ln">https://marsdawn.southern-light.dev/support/</span><span class="mk">)</span> all work as you'd expect.
+
+<span class="mk">&gt; </span>Block quotes stand out with a warm rule.
+
+<span class="mk">- [x] </span>Task lists with checkboxes
+<span class="mk">- [ ] </span>Nested lists
+  <span class="mk">- </span>like this one</pre>
+    <div class="mdw-preview" aria-label="Preview" role="region">
+<p class="md-h1">Welcome to MarsDawn</p>
+<p><em>A new dawn for Markdown.</em> You write on the left, and the rendered page on the right updates as you type. This guide is an ordinary document, so edit anything here to see what happens. If you don’t save it, it closes without asking.</p>
+<p class="md-h2">Layouts</p>
+<table>
+<thead>
+<tr><th class="align-center">Shortcut</th><th class="align-left">Layout</th></tr>
+</thead>
+<tbody>
+<tr><td class="align-center">⌘1</td><td class="align-left">Source only</td></tr>
+<tr><td class="align-center">⌘2</td><td class="align-left">Source and preview side by side</td></tr>
+<tr><td class="align-center">⌘3</td><td class="align-left">Preview only</td></tr>
+</tbody>
+</table>
+<p class="md-h2">Writing</p>
+<p><strong>Bold</strong>, <em>italic</em>, <del>strikethrough</del>, <code>inline code</code> and <span class="md-a">links</span> all work as you’d expect.</p>
+<blockquote>
+<p>Block quotes stand out with a warm rule.</p>
+</blockquote>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled checked> Task lists with checkboxes
+</li>
+<li class="task-list-item"><input type="checkbox" disabled> Nested lists
+<ul>
+<li>like this one
+</li>
+</ul>
+</li>
+</ul>
+    </div>
+  </div>
+</div>
 </div>
 </div>
 </section>
-<h2 class="loop-title">The loop</h2>
+<h2 class="loop-title">Read what your agent wrote.</h2>
 <ol class="loop-steps">
   <li><strong>The agent writes.</strong> Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.</li>
   <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
@@ -118,10 +186,11 @@
 </ul>
 </nav>
 <section class="dawn-close">
-<p><strong>Read what your agent wrote.</strong> MarsDawn is coming soon to the Mac App Store.</p>
+<p><strong>A new dawn for Markdown.</strong> MarsDawn is coming soon to the Mac App Store.</p>
 </section>
 </main>
 <footer class="footer footer-home">
+  <span>A new dawn for Markdown.</span>
   <a href="/support/">Support</a>
   <a href="/privacy/">Privacy Policy</a>
   <a href="/cli/">Command Line</a>

@@ -142,7 +142,7 @@ components:
 This system extends the app's design system, `DESIGN.md` in `redtear1115/mars-dawn`. That repository is private, and its file is the parent. The parent's North Star, palette, token names, type philosophy and brand rules apply here unless this file lists a site exception. The palette's normative source is the kit's `PreviewTheme.swift` (Dawn theme). The site mirrors those values by hand in `public/assets/site.css`.
 
 - **Inherited unchanged:** the Dawn palette and its night variant, the Ember Rule, the Warm Neutral Rule, the System Face Rule, the AA Pair Rule, the sand-or-hairline way of separating content, and Dawn's 8px radius.
-- **Site-only additions:** the scene palette (`scene-*`, `hero-*`), the one-time dawn animation, the annotated screenshot and the marketing layout. Each is listed under "Site exceptions" below.
+- **Site-only additions:** the scene palette (`scene-*`, `hero-*`), the one-time dawn animation, the hero's interactive app window, the annotated screenshot and the marketing layout. Each is listed under "Site exceptions" below.
 - **Sync rule:** change a brand color in `PreviewTheme.swift` first, then the parent DESIGN.md, then this frontmatter and `site.css`. Last synced: 2026-09-19.
 
 The CSS custom properties in `site.css` use short names. This is how they map to the parent's tokens:
@@ -245,14 +245,14 @@ The interface is flat and tonal, as in the parent. Depth comes from one tonal st
 
 ### Shadow Vocabulary (site exception)
 - **Screenshot rest** (`0 1px 2px` at 12% black, then `0 14px 34px -14px` at 35% black): an app window on its sand plate.
-- **Hero screenshot** (a 12% white inset top edge, `0 40px 64px -28px` at 70% black and `0 14px 28px -14px` at 55% black): the app window resting on the dawn scene.
+- **Hero window** (a 22% black 1px ring, a 12% white inset top edge, `0 40px 64px -28px` at 70% black and `0 14px 28px -14px` at 55% black): the interactive app window resting on the dawn scene.
 - **Printed page** (`0 1px 2px` at 10% black, then `0 12px 28px -14px` at 30% black): an exported PDF page.
 - **Marker halo** (a `3px` paper-colored ring, then `0 1px 3px` at 30% ink): separates a callout dot from the screenshot underneath.
 
 ### Named Rules
 **The Flat Page Rule** (inherited). Interface elements never get shadows, blur or glass. Use the sand tone or a hairline instead.
 
-**The Real Objects Rule** (site exception). Only depicted objects cast shadows: screenshots, printed pages and markers pinned to them. Blocks, chips, links and lists never do, and hover never adds one.
+**The Real Objects Rule** (site exception). Only depicted objects cast shadows: screenshots, the hero's app window, printed pages and markers pinned to them. Blocks, chips, links and lists never do, and hover never adds one.
 
 ## Shapes
 
@@ -287,8 +287,13 @@ The home page presents the agent loop as three stops along one horizon line, not
 ### Trait List
 Links to the other pages, set as a ruled list: a 600-weight link and a Dust description on one baseline, separated by hairlines. It uses no cards and no icons.
 
+### Interactive App Window (site signature, site exception)
+The home page hero shows a working MarsDawn window instead of a screenshot, at the owner's request (2026-09-21). Its toolbar has the app's own two controls: the Layout segmented control (Source, Split, Preview, with ⌘1 to ⌘3 as quiet hints) and the four preview themes as swatches. Both are radio groups that `site.css` reads with `:has()`, so the window needs no script and no inline style, keeps the browser's own keyboard handling (Tab into a group, arrow keys to choose) and draws its focus ring in the chosen theme's accent. It opens on Dawn and Split and follows the color scheme. Below 500px it shows one pane, and Split shows the rendered page.
+
+It is a depiction of the real app, not a mockup of an imagined one, and that is what the exception rests on: every fact it shows comes from the app or the kit, never from this site. The themes' colours and fonts are the kit's `PreviewTheme.swift` at the kit tag the app ships, generated into `hero.css`; the theme and control names are the app's strings in each language; the document is an excerpt of the app's own Welcome guide, rendered by the kit's renderer. `scripts/sync_hero_sources.py` copies them into `scripts/hero_sources.json`, and CI (`scripts/check_hero.py`) fails if the page and the snapshot disagree. The window's frame and the themes' shapes follow the kit's `preview.css`; the traffic lights are neutral dots, not Apple's colours. Page tokens never reach inside the window: it is the app's palette, not the site's.
+
 ### Dawn Scene and Dawn Close (site signature, site exception)
-The hero is an inline SVG: a graded sky, a horizon glow, the planet's mass with a lit rim, and three star layers. The kicker, headline, lede and hero screenshot sit on top of it, over a feathered radial scrim in the planet's dark tone. On load the night veil lifts, the glow rises, the stars go out faintest first and the limb lights from the center outward. It takes 4.5s or less, runs once and animates only opacity, transform and clip-path. The resting state is the final frame, so visitors with `prefers-reduced-motion` see the finished dawn. The page closes with a full-bleed band in the same sky, with a sunrise glow low beneath the tagline.
+The hero is an inline SVG: a graded sky, a horizon glow, the planet's mass with a lit rim, and three star layers. The kicker, headline, lede and the app window sit on top of it, over a feathered radial scrim in the planet's dark tone. On load the night veil lifts, the glow rises, the stars go out faintest first and the limb lights from the center outward. It takes 4.5s or less, runs once and animates only opacity, transform and clip-path. The resting state is the final frame, so visitors with `prefers-reduced-motion` see the finished dawn. The page closes with a full-bleed band in the same sky, with a sunrise glow low beneath the tagline.
 
 ## Do's and Don'ts
 
@@ -297,7 +302,7 @@ The hero is an inline SVG: a graded sky, a horizon glow, the planet's mass with 
 - **Do** keep Mars Rust (`#C8471B` / `#FF8A50`) as the only accent. It marks, points and focuses.
 - **Do** keep every page to one 44rem reading column, and break out of it only for the dawn scene, the closing band and screenshots.
 - **Do** keep text on the scene in the fixed hero palette in both color schemes.
-- **Do** show the real app. Use actual screenshots annotated with markers and leader lines, not illustrations or mockups.
+- **Do** show the real app. Use actual screenshots annotated with markers and leader lines, not illustrations or mockups. The hero's interactive window is the one exception, and only because everything it shows is generated from the app and the kit (see Interactive App Window).
 - **Do** make any motion a single authored moment that plays once, animates only compositor-friendly properties and has a finished resting state under `prefers-reduced-motion`.
 - **Do** keep text contrast at WCAG AA or better in both schemes, and keep tap targets at least 24px tall.
 

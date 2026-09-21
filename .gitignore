@@ -6,3 +6,6 @@ node_modules/
 
 # Agent worktrees and session scratch
 .claude/
+
+# SwiftPM build output of tools/hero-render
+.build/

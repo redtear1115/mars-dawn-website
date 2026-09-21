@@ -4,15 +4,15 @@
 
 Source: https://marsdawn.southern-light.dev/
 
-Built for the AI workflow
+Frontier tools for builders
 
-# Where an agent's Markdown gets a careful read.
+# Claim the map. Read the dawn.
 
-An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.
+Markdown for humans who steer agentic work.
 
-![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+The page shows a working MarsDawn window over part of the app's Welcome guide. Pick one of four preview themes (Dawn, Classic, Modern, Vivid) and one of three layouts (Source, Split, Preview).
 
-## The loop
+## Read what your agent wrote.
 
 1. **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
 2. **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
@@ -932,15 +932,15 @@ Birgitta Böckeler, writing for Thoughtworks, draws the distinction plainly: “
 
 Source: https://marsdawn.southern-light.dev/zh-hant/
 
-為 AI 工作流程而生
+給建造者的前線工具
 
-# 讓 agent 寫的 Markdown，被好好讀過一遍。
+# 拿穩地圖。讀過黎明。
 
-AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面並排顯示，再把修改意見交回去。
+給要掌舵 agentic 開發的人用的 Markdown。
 
-![MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+頁面上有一個可以操作的 MarsDawn 視窗，內容是 App 內建歡迎指南的一段。可以從四個預覽主題（黎明、典雅、流行、活潑）和三種版面（原始碼、並排、預覽）裡選。
 
-## 整個循環
+## 讀 agent 寫的 Markdown。
 
 1. **Agent 動筆。**你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。
 2. **你在 MarsDawn 裡讀。**打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。
@@ -1860,15 +1860,15 @@ Thoughtworks 的 Birgitta Böckeler 講得很直接：「LLMs are NOT compilers,
 
 Source: https://marsdawn.southern-light.dev/zh-hans/
 
-为 AI 工作流程而生
+给建造者的前线工具
 
-# 让 agent 写的 Markdown，被好好读过一遍。
+# 拿稳地图。读过黎明。
 
-AI agent 写 Markdown，你在 MarsDawn 里读，源代码和排版后的页面并排显示，再把修改意见交回去。
+给要掌舵 agentic 开发的人用的 Markdown。
 
-![MarsDawn 的并排布局：左边是 Markdown 源代码，右边是排版后的页面。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+页面上有一个可以操作的 MarsDawn 窗口，内容是 App 内置欢迎指南的一段。可以从四个预览主题（黎明、典雅、流行、活泼）和三种布局（源代码、并排、预览）里选。
 
-## 整个循环
+## 读 agent 写的 Markdown。
 
 1. **Agent 动笔。**你的代码助手或写作 agent 先写出 Markdown：README、规格文档，或一份笔记。
 2. **你在 MarsDawn 里读。**打开文件，看排版后的页面，Mermaid 图表和代码高亮都在，旁边就是源代码。
@@ -2778,15 +2778,15 @@ Thoughtworks 的 Birgitta Böckeler 讲得很直接：“LLMs are NOT compilers,
 
 Source: https://marsdawn.southern-light.dev/ja/
 
-AI ワークフローのために作られました
+ビルダーのためのフロンティアツール
 
-# エージェントが書いた Markdown を、じっくり読む場所。
+# 地図を手に。夜明けを読む。
 
-AI エージェントが Markdown を書きます。あなたは MarsDawn でそれを確認します。ソースとレンダリングされたページを並べて見て、修正を伝えます。
+エージェント開発の舵を取る人のための Markdown。
 
-![MarsDawn の分割ビュー：左が Markdown のソース、右がレンダリングされたページ。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+ページには操作できる MarsDawn のウインドウがあり、アプリ内蔵のようこそガイドの一部を表示しています。4 つのプレビューテーマ（夜明け、クラシック、モダン、ビビッド）と 3 つのレイアウト（ソース、分割、プレビュー）から選べます。
 
-## このループ
+## エージェントが書いた Markdown を読む。
 
 1. **エージェントが書く。**あなたのコーディングエージェントやライティングアシスタントが Markdown の下書きを作ります。README、仕様書、メモなど。
 2. **MarsDawn で確認する。**ファイルを開き、Mermaid 図やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。
