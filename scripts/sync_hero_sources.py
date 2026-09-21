@@ -8,7 +8,8 @@ from somewhere else:
 
 - theme colours, fonts and names: the kit's PreviewTheme.swift and its Localizable.strings,
   at the kit tag the app ships (KIT_TAG);
-- the layout and theme control labels: the app's Localizable.strings;
+- the layout and theme control labels: the app's Localizable String Catalog (or, before app
+  #90, its per-language Localizable.strings);
 - the sample: the app's Welcome.md in each language, rendered by the kit's own
   MarkdownRenderer (tools/hero-render, pinned to the same kit tag).
 
@@ -55,12 +56,34 @@ APP_EDITOR = "MarsDawn/Editor/EditorTheme.swift"
 APP_HIGHLIGHTER = "MarsDawn/Editor/MarkdownHighlighter.swift"
 KIT_STRINGS = "Sources/MarsDawnKit/Resources/Localization/{lproj}.lproj/Localizable.strings"
 APP_STRINGS = "MarsDawn/Resources/{lproj}.lproj/Localizable.strings"
+# The app's String Catalog (app #90), which replaces the .strings tables above once it lands.
+APP_CATALOG = "MarsDawn/Resources/Localizable.xcstrings"
 APP_WELCOME = "MarsDawn/Resources/{lproj}.lproj/Welcome.md"
 
 
 def git_show(repo: Path, ref: str, path: str) -> str:
     return subprocess.run(["git", "-C", str(repo), "show", f"{ref}:{path}"],
                           check=True, capture_output=True, text=True).stdout
+
+
+def git_has(repo: Path, ref: str, path: str) -> bool:
+    return subprocess.run(["git", "-C", str(repo), "cat-file", "-e", f"{ref}:{path}"], capture_output=True).returncode == 0
+
+
+def app_strings(app: Path, ref: str) -> dict:
+    """{lproj: {key: value}} for the app's Localizable table, from its String Catalog when the
+    ref has one, else from the per-language .strings files. English falls back to the key in
+    both, as the app does when a string has no en value of its own."""
+    if git_has(app, ref, APP_CATALOG):
+        catalog = json.loads(git_show(app, ref, APP_CATALOG))
+        tables = {lproj: {} for lproj in LOCALES.values()}
+        for key, entry in catalog["strings"].items():
+            for lproj in tables:
+                unit = entry.get("localizations", {}).get(lproj, {}).get("stringUnit")
+                if unit and unit.get("state") in ("translated", None):
+                    tables[lproj][key] = unit["value"]
+        return tables
+    return {lproj: parse_strings(git_show(app, ref, APP_STRINGS.format(lproj=lproj))) for lproj in LOCALES.values()}
 
 
 def git_commit(repo: Path, ref: str) -> str:
@@ -160,13 +183,14 @@ def render(markdown: str) -> str:
 def collect(kit: Path, app: Path, app_ref: str) -> dict:
     themes = parse_themes(git_show(kit, KIT_TAG, "Sources/MarsDawnKit/PreviewTheme.swift"))
     labels, sample = {}, {}
+    app_tables = app_strings(app, app_ref)
     for locale, lproj in LOCALES.items():
         kit_strings = parse_strings(git_show(kit, KIT_TAG, KIT_STRINGS.format(lproj=lproj))) if locale != "en" else {}
-        app_strings = parse_strings(git_show(app, app_ref, APP_STRINGS.format(lproj=lproj)))
+        table = app_tables[lproj]
         for theme in themes:
             theme.setdefault("names", {})[locale] = kit_strings.get(theme["name"], theme["name"])
         # An English string missing from en.lproj falls back to its key, as it does in the app.
-        labels[locale] = {site: app_strings.get(key, key) if locale == "en" else app_strings[key]
+        labels[locale] = {site: table.get(key, key) if locale == "en" else table[key]
                           for site, key in LABEL_KEYS.items()}
         excerpt = welcome_excerpt(git_show(app, app_ref, APP_WELCOME.format(lproj=lproj)))
         sample[locale] = {"markdown": excerpt, "html": render(excerpt)}
