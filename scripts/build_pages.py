@@ -797,6 +797,56 @@ marsdawn open notes.md --line 120 --json</code></pre>
 </ul>
 <p>marsdawn 0.2.x printed <code>opened</code> as a list of path strings. Check <code>marsdawn --version</code> if you need to handle both.</p>
 
+<h2>Open files as Claude Code edits them</h2>
+<p>An opt-in <a href="https://code.claude.com/docs/en/hooks">Claude Code hook</a>: after Claude writes or edits a Markdown file, it opens that file in MarsDawn in the background, once per file per session. It's off unless you add it, one project at a time, because a window you didn't ask for takes attention. It runs a shell command and costs no model tokens.</p>
+<p>It needs marsdawn 0.5.1 or later, for <code>--background</code>, and the MarsDawn app.</p>
+<p>Save this as <code>.claude/hooks/marsdawn-open.sh</code> in your project, and make it executable with <code>chmod +x</code>:</p>
+<pre><code>#!/bin/sh
+# Claude Code PostToolUse hook: open a Markdown file Claude just wrote or edited in MarsDawn,
+# in the background, once per file per session. Never blocks Claude: every path exits 0.
+input=$(cat)
+file=$(printf '%s' "$input" | /usr/bin/jq -r '.tool_input.file_path // empty' 2&gt;/dev/null)
+session=$(printf '%s' "$input" | /usr/bin/jq -r '.session_id // "unknown"' 2&gt;/dev/null)
+
+case "$file" in
+  *.md|*.markdown) ;;
+  *) exit 0 ;;
+esac
+[ -f "$file" ] || exit 0
+# A hook runs with Claude Code's PATH, which may not include Homebrew's.
+marsdawn=$(command -v marsdawn || {{ [ -x /opt/homebrew/bin/marsdawn ] &amp;&amp; echo /opt/homebrew/bin/marsdawn; }}) || exit 0
+[ -n "$marsdawn" ] || exit 0
+
+# One list per session, so a file opens once however often Claude edits it.
+seen="${{TMPDIR:-/tmp}}/marsdawn-hook/$session"
+mkdir -p "$(dirname "$seen")"
+grep -qxF "$file" "$seen" 2&gt;/dev/null &amp;&amp; exit 0
+echo "$file" &gt;&gt; "$seen"
+
+"$marsdawn" open --background "$file" &gt;/dev/null 2&gt;&amp;1 || true
+exit 0</code></pre>
+<p>Then add the hook to <code>.claude/settings.json</code> in the project, or to <code>.claude/settings.local.json</code> to keep it to yourself:</p>
+<pre><code>{{
+  "hooks": {{
+    "PostToolUse": [
+      {{
+        "matcher": "Write|Edit",
+        "hooks": [
+          {{ "type": "command", "command": "\\"$CLAUDE_PROJECT_DIR\\"/.claude/hooks/marsdawn-open.sh" }}
+        ]
+      }}
+    ]
+  }}
+}}</code></pre>
+<ul>
+  <li>It runs after Claude's Write and Edit tools. Files that don't end in <code>.md</code> or <code>.markdown</code> are left alone.</li>
+  <li>Each file opens once per Claude Code session, however often Claude edits it. The list lives in <code>$TMPDIR/marsdawn-hook/</code>, one file per session, so a new session opens the file again.</li>
+  <li><code>--background</code> keeps MarsDawn from coming to the front: the window you were working in keeps focus.</li>
+  <li>It never gets in Claude's way. Every path exits 0, and if marsdawn or the MarsDawn app isn't installed, nothing happens.</li>
+  <li>It reads the hook's input with <code>/usr/bin/jq</code>, which comes with macOS 26, the version the MarsDawn app needs.</li>
+  <li>To turn it off, remove the entry from the settings file.</li>
+</ul>
+
 <h2>Failures</h2>
 <p>With <code>--json</code>, a failure prints one JSON object on stdout and exits with its code:</p>
 <pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
