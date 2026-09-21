@@ -75,6 +75,65 @@ marsdawn open notes.md --background --json
 
 marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方を扱う必要がある場合は `marsdawn --version` を確認してください。
 
+## Claude Code が編集したファイルを開く
+
+オプトインの [Claude Code フック](https://code.claude.com/docs/en/hooks)です。Claude が Markdown ファイルを書き込んだり編集したりすると、そのファイルを MarsDawn でバックグラウンドで開きます。開くのはセッションごと、ファイルごとに一度だけです。頼んでいないウインドウは注意をそらすので、追加しない限り有効にならず、プロジェクトごとに追加します。シェルコマンドを実行するだけなので、モデルのトークンは使いません。
+
+`--background` のために marsdawn 0.5.1 以降と、MarsDawn アプリが必要です。
+
+次の内容をプロジェクトの `.claude/hooks/marsdawn-open.sh` として保存し、`chmod +x` で実行可能にします。
+
+```
+#!/bin/sh
+# Claude Code PostToolUse hook: open a Markdown file Claude just wrote or edited in MarsDawn,
+# in the background, once per file per session. Never blocks Claude: every path exits 0.
+input=$(cat)
+file=$(printf '%s' "$input" | /usr/bin/jq -r '.tool_input.file_path // empty' 2>/dev/null)
+session=$(printf '%s' "$input" | /usr/bin/jq -r '.session_id // "unknown"' 2>/dev/null)
+
+case "$file" in
+  *.md|*.markdown) ;;
+  *) exit 0 ;;
+esac
+[ -f "$file" ] || exit 0
+# A hook runs with Claude Code's PATH, which may not include Homebrew's.
+marsdawn=$(command -v marsdawn || { [ -x /opt/homebrew/bin/marsdawn ] && echo /opt/homebrew/bin/marsdawn; }) || exit 0
+[ -n "$marsdawn" ] || exit 0
+
+# One list per session, so a file opens once however often Claude edits it.
+seen="${TMPDIR:-/tmp}/marsdawn-hook/$session"
+mkdir -p "$(dirname "$seen")"
+grep -qxF "$file" "$seen" 2>/dev/null && exit 0
+echo "$file" >> "$seen"
+
+"$marsdawn" open --background "$file" >/dev/null 2>&1 || true
+exit 0
+```
+
+次に、プロジェクトの `.claude/settings.json` にフックを追加します。自分だけで使う場合は `.claude/settings.local.json` に追加します。
+
+```
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/marsdawn-open.sh" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+- Claude の Write ツールと Edit ツールのあとに実行されます。`.md` または `.markdown` で終わらないファイルには何もしません。
+- Claude が何度編集しても、各ファイルは Claude Code のセッションごとに一度だけ開きます。記録は `$TMPDIR/marsdawn-hook/` にセッションごとに一つのファイルとして残るので、新しいセッションでは再び開きます。
+- `--background` により MarsDawn は前面に出ません。作業中のウインドウのフォーカスはそのままです。
+- Claude の邪魔はしません。どの経路でも終了コード 0 で終わり、marsdawn や MarsDawn アプリがインストールされていなければ何もしません。
+- フックの入力は `/usr/bin/jq` で読みます。これは macOS 26 に含まれていて、MarsDawn アプリも macOS 26 を必要とします。
+- 無効にするには、設定ファイルからこの項目を削除します。
+
 ## 失敗時
 
 `--json` を指定すると、失敗時は stdout に1つの JSON オブジェクトを出力し、対応するコードで終了します。

@@ -75,6 +75,65 @@ marsdawn open notes.md --background --json
 
 marsdawn 0.2.x 的 `opened` 是路径字符串的清单。如果需要同时处理两种格式，请先查看 `marsdawn --version`。
 
+## 在 Claude Code 编辑时打开文件
+
+一个需要自行启用的 [Claude Code hook](https://code.claude.com/docs/en/hooks)：Claude 写入或编辑 Markdown 文件之后，在后台用 MarsDawn 打开那个文件，每个 session 每个文件只打开一次。除非你添加它，否则不会启用，而且要一个项目一个项目地添加，因为没要求就弹出来的窗口会打断注意力。它运行的是 shell 命令，不花模型 token。
+
+需要 marsdawn 0.5.1 或更新版本（为了 `--background`），以及 MarsDawn app。
+
+把下面的内容保存为项目里的 `.claude/hooks/marsdawn-open.sh`，再用 `chmod +x` 让它可以执行：
+
+```
+#!/bin/sh
+# Claude Code PostToolUse hook: open a Markdown file Claude just wrote or edited in MarsDawn,
+# in the background, once per file per session. Never blocks Claude: every path exits 0.
+input=$(cat)
+file=$(printf '%s' "$input" | /usr/bin/jq -r '.tool_input.file_path // empty' 2>/dev/null)
+session=$(printf '%s' "$input" | /usr/bin/jq -r '.session_id // "unknown"' 2>/dev/null)
+
+case "$file" in
+  *.md|*.markdown) ;;
+  *) exit 0 ;;
+esac
+[ -f "$file" ] || exit 0
+# A hook runs with Claude Code's PATH, which may not include Homebrew's.
+marsdawn=$(command -v marsdawn || { [ -x /opt/homebrew/bin/marsdawn ] && echo /opt/homebrew/bin/marsdawn; }) || exit 0
+[ -n "$marsdawn" ] || exit 0
+
+# One list per session, so a file opens once however often Claude edits it.
+seen="${TMPDIR:-/tmp}/marsdawn-hook/$session"
+mkdir -p "$(dirname "$seen")"
+grep -qxF "$file" "$seen" 2>/dev/null && exit 0
+echo "$file" >> "$seen"
+
+"$marsdawn" open --background "$file" >/dev/null 2>&1 || true
+exit 0
+```
+
+然后把 hook 加到项目的 `.claude/settings.json`；如果只想自己用，改加到 `.claude/settings.local.json`：
+
+```
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/marsdawn-open.sh" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+- 它在 Claude 的 Write 和 Edit 工具之后运行。扩展名不是 `.md` 或 `.markdown` 的文件不会处理。
+- 在同一个 Claude Code session 里，每个文件只打开一次，不管 Claude 编辑几次。清单保存在 `$TMPDIR/marsdawn-hook/`，每个 session 一个文件，所以开新的 session 会再打开一次。
+- `--background` 让 MarsDawn 不会跳到最前面：你正在用的窗口会保持焦点。
+- 它不会挡住 Claude。每条路径都以 0 退出；如果没有安装 marsdawn 或 MarsDawn app，就什么都不做。
+- 它用 `/usr/bin/jq` 读取 hook 的输入。macOS 26 自带这个工具，而 MarsDawn app 本来就需要 macOS 26。
+- 要关掉，从设置文件里删除这一项即可。
+
 ## 失败
 
 加上 `--json` 时，失败会在 stdout 输出一个 JSON 对象，并以对应的代码结束：
