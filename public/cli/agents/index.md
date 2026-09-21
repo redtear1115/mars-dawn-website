@@ -96,9 +96,10 @@ JSON Schema (draft 2020-12) for every `--json` result:
 
 - [export.v1.json](/schemas/cli/export.v1.json): export success
 - [open.v3.json](/schemas/cli/open.v3.json): open success, marsdawn 0.5.1 and later
-- [error.v1.json](/schemas/cli/error.v1.json): failure, both commands
+- [error.v2.json](/schemas/cli/error.v2.json): failure, both commands, marsdawn 0.5.2 and later
 - [open.v2.json](/schemas/cli/open.v2.json): open success, marsdawn 0.3.0 to 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open success, marsdawn 0.2.x, where `opened` was a list of paths
+- [error.v1.json](/schemas/cli/error.v1.json): failure, both commands, marsdawn 0.5.1 and earlier
 
 ## Environment variables
 

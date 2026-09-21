@@ -733,19 +733,25 @@ marsdawn open notes.md --line 120</code></pre>
 # `opened` was a list of paths; 0.3.0 reports {path, line} objects (open.v2.json). 0.5.1 can open a folder in
 # the sidebar, which adds a `folder` object and lets `opened` be empty; v2 forbids both, so that's open.v3.json,
 # taken from redtear1115/mars-dawn-kit @ b56fdd9 (0.5.1), Sources/marsdawn/Commands.swift, Open.run().
+# 0.5.2 adds a fifth failure kind, app_cannot_open_folders (exit 6); error.v1.json's enum forbids it, so
+# that's error.v2.json, from kit d2297fd, Sources/marsdawn/Commands.swift, CLIFailure.Code. error.v1.json
+# stays for 0.5.1 and earlier. scripts/check_error_kinds.py holds v2 to the kit's kinds.
 SCHEMA_BASE = "/schemas/cli/"
 SCHEMA_FILES = {
     "export": "export.v1.json",
     "open": "open.v3.json",
-    "error": "error.v1.json",
+    "error": "error.v2.json",
     "open_v2": "open.v2.json",
     "open_v1": "open.v1.json",
+    "error_v1": "error.v1.json",
 }
-SCHEMA_ORDER = ("export", "open", "error", "open_v2", "open_v1")
+SCHEMA_ORDER = ("export", "open", "error", "open_v2", "open_v1", "error_v1")
 
 THEME_IDS = ["dawn", "classic", "modern", "vivid"]
 PAPER_SIZES = ["a4", "letter"]
-ERROR_KINDS = ["input_not_found", "app_not_installed", "output_exists", "export_failed"]
+# error.v1.json's kinds, frozen with it.
+ERROR_KINDS_V1 = ["input_not_found", "app_not_installed", "output_exists", "export_failed"]
+ERROR_KINDS = ERROR_KINDS_V1 + ["app_cannot_open_folders"]
 
 
 def schema_url(kind: str) -> str:
@@ -897,13 +903,27 @@ SCHEMAS = {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": schema_url("error"),
         "title": "marsdawn --json: failure",
-        "description": "Printed on stdout as one line when a command run with --json fails with exit code 2, 3, 4 or 5. Usage errors (exit code 64) are printed as text on stderr instead.",
+        "description": "Printed on stdout as one line when a command run with --json fails with exit code 2, 3, 4, 5 or 6. marsdawn 0.5.2 and later; error.v1.json is for 0.5.1 and earlier. Usage errors (exit code 64) are printed as text on stderr instead.",
         "type": "object",
         "required": ["ok", "error", "message"],
         "additionalProperties": False,
         "properties": {
             "ok": {"const": False},
             "error": {"enum": ERROR_KINDS, "description": "Machine-readable failure kind."},
+            "message": {"type": "string", "description": "Human-readable explanation."},
+        },
+    },
+    "error_v1": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": schema_url("error_v1"),
+        "title": "marsdawn --json: failure",
+        "description": "Printed on stdout as one line when a command run with --json fails with exit code 2, 3, 4 or 5. Usage errors (exit code 64) are printed as text on stderr instead.",
+        "type": "object",
+        "required": ["ok", "error", "message"],
+        "additionalProperties": False,
+        "properties": {
+            "ok": {"const": False},
+            "error": {"enum": ERROR_KINDS_V1, "description": "Machine-readable failure kind."},
             "message": {"type": "string", "description": "Human-readable explanation."},
         },
     },
@@ -915,15 +935,17 @@ SCHEMA_NOTES = {
         "export": "export success",
         "open": "open success, marsdawn 0.5.1 and later",
         "open_v2": "open success, marsdawn 0.3.0 to 0.5.0",
-        "error": "failure, both commands",
+        "error": "failure, both commands, marsdawn 0.5.2 and later",
         "open_v1": "open success, marsdawn 0.2.x, where <code>opened</code> was a list of paths",
+        "error_v1": "failure, both commands, marsdawn 0.5.1 and earlier",
     },
     "zh-hant": {
         "export": "export 成功",
         "open": "open 成功，marsdawn 0.5.1 以後",
         "open_v2": "open 成功，marsdawn 0.3.0 到 0.5.0",
-        "error": "兩個指令的失敗結果",
+        "error": "兩個指令的失敗結果，marsdawn 0.5.2 以後",
         "open_v1": "open 成功，marsdawn 0.2.x，當時 <code>opened</code> 是路徑清單",
+        "error_v1": "兩個指令的失敗結果，marsdawn 0.5.1 以前",
     },
 }
 
@@ -1199,6 +1221,7 @@ EXIT_CODES = [
     (3, "app_not_installed", "MarsDawn isn't installed. Only `open` returns this."),
     (4, "output_exists", "The PDF already exists. Pass --force to replace it, or -o to write elsewhere."),
     (5, "export_failed", "Rendering failed."),
+    (6, "app_cannot_open_folders", "This MarsDawn can't show a folder, so nothing was opened. Only `open` returns this."),
     (64, None, "Usage error: a bad option or value. Printed as text on stderr, never as JSON."),
 ]
 assert [kind for _, kind, _ in EXIT_CODES if kind] == ERROR_KINDS, "EXIT_CODES and ERROR_KINDS disagree"

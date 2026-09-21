@@ -51,6 +51,9 @@ jobs:
         run: python3 scripts/check_hero.py --kit --self-test
       - name: The agent skill is the one the documented marsdawn release prints
         run: python3 scripts/check_skill.py
+      # Reads the kit's CLIFailure.Code at the same tag; --self-test plants drift of each kind first.
+      - name: The error schema and exit codes match the documented marsdawn release
+        run: python3 scripts/check_error_kinds.py --self-test
       # The theme gallery isn't served yet and nothing reads /themes/v1/ (see README). Once it ships,
       # make this check mandatory: from then on /themes/v1/index.json must never disappear.
       - name: Theme index is valid JSON
