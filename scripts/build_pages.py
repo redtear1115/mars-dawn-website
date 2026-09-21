@@ -1017,6 +1017,7 @@ marsdawn open notes.md --background --json</code></pre>
   <li><code>3</code>, <code>app_not_installed</code>: MarsDawn isn't installed. Only <code>open</code> returns this.</li>
   <li><code>4</code>, <code>output_exists</code>: the output file exists. Pass <code>--force</code>.</li>
   <li><code>5</code>, <code>export_failed</code>: the export itself failed.</li>
+  <li><code>6</code>, <code>app_cannot_open_folders</code>: this MarsDawn can't show a folder, so nothing was opened. Only <code>open</code> returns this.</li>
   <li><code>64</code>: usage error, such as an unknown option, an invalid value, a line out of range, or <code>--line</code> with more than one file. This one is printed as text on stderr, even with <code>--json</code>.</li>
 </ul>
 
@@ -1133,6 +1134,7 @@ marsdawn open notes.md --background --json</code></pre>
   <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
   <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
+  <li><code>6</code>，<code>app_cannot_open_folders</code>：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍，或 <code>--line</code> 搭配了多個檔案。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
 </ul>
 

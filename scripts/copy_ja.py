@@ -553,6 +553,7 @@ marsdawn open notes.md --background --json</code></pre>
   <li><code>3</code>、<code>app_not_installed</code>：MarsDawn がインストールされていない。<code>open</code> のみがこれを返します。</li>
   <li><code>4</code>、<code>output_exists</code>：出力ファイルが存在する。<code>--force</code> を指定してください。</li>
   <li><code>5</code>、<code>export_failed</code>：書き出し自体が失敗した。</li>
+  <li><code>6</code>、<code>app_cannot_open_folders</code>：この MarsDawn はまだフォルダを表示できないため、何も開かなかった。<code>open</code> のみがこれを返します。</li>
   <li><code>64</code>：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルに対する <code>--line</code> の指定など。この場合は、<code>--json</code> を指定していても stderr にテキストとして出力されます。</li>
 </ul>
 

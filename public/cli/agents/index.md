@@ -87,6 +87,7 @@ With `--json`, a failure prints one JSON object on stdout and exits with its cod
 - `3`, `app_not_installed`: MarsDawn isn't installed. Only `open` returns this.
 - `4`, `output_exists`: the output file exists. Pass `--force`.
 - `5`, `export_failed`: the export itself failed.
+- `6`, `app_cannot_open_folders`: this MarsDawn can't show a folder, so nothing was opened. Only `open` returns this.
 - `64`: usage error, such as an unknown option, an invalid value, a line out of range, or `--line` with more than one file. This one is printed as text on stderr, even with `--json`.
 
 ## JSON Schemas

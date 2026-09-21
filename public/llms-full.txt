@@ -724,6 +724,7 @@ With `--json`, a failure prints one JSON object on stdout and exits with its cod
 - `3`, `app_not_installed`: MarsDawn isn't installed. Only `open` returns this.
 - `4`, `output_exists`: the output file exists. Pass `--force`.
 - `5`, `export_failed`: the export itself failed.
+- `6`, `app_cannot_open_folders`: this MarsDawn can't show a folder, so nothing was opened. Only `open` returns this.
 - `64`: usage error, such as an unknown option, an invalid value, a line out of range, or `--line` with more than one file. This one is printed as text on stderr, even with `--json`.
 
 ## JSON Schemas
@@ -1787,6 +1788,7 @@ marsdawn 0.2.x 的 `opened` 是路徑字串的清單。如果需要同時處理�
 - `3`，`app_not_installed`：沒有安裝 MarsDawn。只有 `open` 會回傳這個代碼。
 - `4`，`output_exists`：輸出檔已存在，請加上 `--force`。
 - `5`，`export_failed`：匯出本身失敗。
+- `6`，`app_cannot_open_folders`：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西。只有 `open` 會回傳這個代碼。
 - `64`：用法錯誤，例如未知的選項、無效的值、行號超出範圍，或 `--line` 搭配了多個檔案。這種錯誤一律以文字輸出到 stderr，即使加了 `--json` 也一樣。
 
 ## JSON Schema
@@ -2846,6 +2848,7 @@ marsdawn 0.2.x 的 `opened` 是路径字符串的清单。如果需要同时处�
 - `3`，`app_not_installed`：没有安装 MarsDawn。只有 `open` 会返回这个代码。
 - `4`，`output_exists`：输出文件已存在，请加上 `--force`。
 - `5`，`export_failed`：导出本身失败。
+- `6`，`app_cannot_open_folders`：这个版本的 MarsDawn 还不能显示文件夹，所以没有打开任何东西。只有 `open` 会返回这个代码。
 - `64`：用法错误，例如未知的选项、无效的值、行号超出范围，或 `--line` 搭配了多个文件。这种错误一律以文本输出到 stderr，即使加了 `--json` 也一样。
 
 ## JSON Schema
@@ -3899,6 +3902,7 @@ marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方�
 - `3`、`app_not_installed`：MarsDawn がインストールされていない。`open` のみがこれを返します。
 - `4`、`output_exists`：出力ファイルが存在する。`--force` を指定してください。
 - `5`、`export_failed`：書き出し自体が失敗した。
+- `6`、`app_cannot_open_folders`：この MarsDawn はまだフォルダを表示できないため、何も開かなかった。`open` のみがこれを返します。
 - `64`：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルに対する `--line` の指定など。この場合は、`--json` を指定していても stderr にテキストとして出力されます。
 
 ## JSON Schema
