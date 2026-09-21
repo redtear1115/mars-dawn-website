@@ -1200,6 +1200,56 @@ marsdawn open notes.md --background --json</code></pre>
 </ul>
 <p>marsdawn 0.2.x 的 <code>opened</code> 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 <code>marsdawn --version</code>。</p>
 
+<h2>在 Claude Code 編輯時開啟檔案</h2>
+<p>一個需要自行啟用的 <a href="https://code.claude.com/docs/en/hooks">Claude Code hook</a>：Claude 寫入或編輯 Markdown 檔案之後，在背景用 MarsDawn 開啟那個檔案，每個 session 每個檔案只開一次。除非你加上它，否則不會啟用，而且要一個專案一個專案加，因為沒要求就跳出來的視窗會打斷注意力。它執行的是 shell 指令，不花模型 token。</p>
+<p>需要 marsdawn 0.5.1 或更新版本（為了 <code>--background</code>），以及 MarsDawn app。</p>
+<p>把下面的內容存成專案裡的 <code>.claude/hooks/marsdawn-open.sh</code>，再用 <code>chmod +x</code> 讓它可以執行：</p>
+<pre><code>#!/bin/sh
+# Claude Code PostToolUse hook: open a Markdown file Claude just wrote or edited in MarsDawn,
+# in the background, once per file per session. Never blocks Claude: every path exits 0.
+input=$(cat)
+file=$(printf '%s' "$input" | /usr/bin/jq -r '.tool_input.file_path // empty' 2&gt;/dev/null)
+session=$(printf '%s' "$input" | /usr/bin/jq -r '.session_id // "unknown"' 2&gt;/dev/null)
+
+case "$file" in
+  *.md|*.markdown) ;;
+  *) exit 0 ;;
+esac
+[ -f "$file" ] || exit 0
+# A hook runs with Claude Code's PATH, which may not include Homebrew's.
+marsdawn=$(command -v marsdawn || {{ [ -x /opt/homebrew/bin/marsdawn ] &amp;&amp; echo /opt/homebrew/bin/marsdawn; }}) || exit 0
+[ -n "$marsdawn" ] || exit 0
+
+# One list per session, so a file opens once however often Claude edits it.
+seen="${{TMPDIR:-/tmp}}/marsdawn-hook/$session"
+mkdir -p "$(dirname "$seen")"
+grep -qxF "$file" "$seen" 2&gt;/dev/null &amp;&amp; exit 0
+echo "$file" &gt;&gt; "$seen"
+
+"$marsdawn" open --background "$file" &gt;/dev/null 2&gt;&amp;1 || true
+exit 0</code></pre>
+<p>然後把 hook 加到專案的 <code>.claude/settings.json</code>；如果只想自己用，改加到 <code>.claude/settings.local.json</code>：</p>
+<pre><code>{{
+  "hooks": {{
+    "PostToolUse": [
+      {{
+        "matcher": "Write|Edit",
+        "hooks": [
+          {{ "type": "command", "command": "\\"$CLAUDE_PROJECT_DIR\\"/.claude/hooks/marsdawn-open.sh" }}
+        ]
+      }}
+    ]
+  }}
+}}</code></pre>
+<ul>
+  <li>它在 Claude 的 Write 和 Edit 工具之後執行。副檔名不是 <code>.md</code> 或 <code>.markdown</code> 的檔案不會處理。</li>
+  <li>在同一個 Claude Code session 裡，每個檔案只開一次，不管 Claude 編輯幾次。清單存在 <code>$TMPDIR/marsdawn-hook/</code>，每個 session 一個檔案，所以開新的 session 會再開一次。</li>
+  <li><code>--background</code> 讓 MarsDawn 不會跳到最前面：你正在用的視窗會保持焦點。</li>
+  <li>它不會擋到 Claude。每條路徑都以 0 結束；如果沒有安裝 marsdawn 或 MarsDawn app，就什麼都不做。</li>
+  <li>它用 <code>/usr/bin/jq</code> 讀取 hook 的輸入。macOS 26 內建這個工具，而 MarsDawn app 本來就需要 macOS 26。</li>
+  <li>要關掉，從設定檔移除這一項即可。</li>
+</ul>
+
 <h2>失敗</h2>
 <p>加上 <code>--json</code> 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：</p>
 <pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
