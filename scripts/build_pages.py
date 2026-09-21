@@ -639,6 +639,7 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
   <li><code>4</code>: output exists (pass <code>--force</code>).</li>
   <li><code>5</code>: export failed.</li>
+  <li><code>6</code>: this MarsDawn can't show a folder, so nothing was opened (<code>open</code> only).</li>
   <li><code>64</code>: usage error, including a line out of range, <code>--line</code> with more than one file or with a folder, or more than one folder.</li>
 </ul>
 
@@ -712,6 +713,7 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>3</code>：尚未安裝 MarsDawn（只有 <code>open</code> 會用到）。</li>
   <li><code>4</code>：輸出檔已存在（可加上 <code>--force</code>）。</li>
   <li><code>5</code>：輸出失敗。</li>
+  <li><code>6</code>：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西（只有 <code>open</code> 會用到）。</li>
   <li><code>64</code>：使用方式錯誤，包括行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾，或指定了多個資料夾。</li>
 </ul>
 
