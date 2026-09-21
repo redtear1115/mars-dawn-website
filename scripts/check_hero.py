@@ -37,12 +37,15 @@ VARS = {"bg": "background", "surface": "surface", "fg": "text", "muted": "muted"
 
 
 def css_palettes(css: str) -> dict:
-    """{(theme, scheme): {field: value}} and fonts, read back out of hero.css."""
+    """{(theme, scheme): {field: value}} and fonts, read back out of hero.css, plus each
+    theme's swatch under (theme, scheme, "swatch")."""
     out = {}
     light, _, dark = css.partition("@media (prefers-color-scheme: dark)")
     for scheme, text in (("light", light), ("dark", dark)):
         for m in re.finditer(r"\.mdw(?::has\(#mdw-(\w+):checked\))? \{([^}]*)\}", text):
             out[(m[1] or "dawn", scheme)] = dict(re.findall(r"--([\w-]+): ([^;]+);", m[2]))
+        for m in re.finditer(r"\.sw-(\w+) \{([^}]*)\}", text):
+            out[(m[1], scheme, "swatch")] = dict(re.findall(r"--([\w-]+): ([^;]+);", m[2]))
     return out
 
 
@@ -108,6 +111,11 @@ def check_site(src: dict, css: str, pages: dict) -> list:
             for var, field in VARS.items():
                 if got.get(var, "").upper() != theme[scheme][field].upper():
                     problems.append(f"hero.css: {theme['id']} {scheme} --{var} is {got.get(var)}, kit says {theme[scheme][field]}")
+            # The swatch on the theme's button: its page and accent colours.
+            swatch = palettes.get((theme["id"], scheme, "swatch"), {})
+            for var, field in (("sw-bg", "background"), ("sw-accent", "accent")):
+                if swatch.get(var, "").upper() != theme[scheme][field].upper():
+                    problems.append(f"hero.css: {theme['id']} {scheme} swatch --{var} is {swatch.get(var)}, kit says {theme[scheme][field]}")
         font = palettes.get((theme["id"], "light"), {}).get("font-body")
         if font != theme["font_stack"]:
             problems.append(f"hero.css: {theme['id']} font is {font}, kit says {theme['font_stack']}")
@@ -157,6 +165,8 @@ def self_test(src: dict, css: str, pages: dict, kit: dict) -> list:
         "a colour in hero.css": (lambda: check_site(src, css.replace(dawn["light"]["accent"], "#123456", 1), pages)),
         "a dark colour in hero.css": (lambda: check_site(src, css.replace(dawn["dark"]["background"], "#123456", 1), pages)),
         "a font in hero.css": (lambda: check_site(src, css.replace("ui-serif", "Georgia", 1), pages)),
+        "a swatch colour in hero.css": (lambda: check_site(src, re.sub(r"(\.sw-dawn \{ --sw-bg: )#[0-9A-F]{6}", r"\1#00FF00", css, count=1), pages)),
+        "a dark swatch colour in hero.css": (lambda: check_site(src, re.sub(r"(  \.sw-vivid \{ --sw-bg: #[0-9A-F]{6}; --sw-accent: )#[0-9A-F]{6}", r"\1#00FF00", css, count=1), pages)),
         "a theme name on a page": (lambda: check_site(src, css, {**pages, "en": pages["en"].replace(f"</span>{en_label}</label>", "</span>Sunrise</label>", 1)})),
         "a layout label on a page": (lambda: check_site(src, css, {**pages, "ja": pages["ja"].replace(src["labels"]["ja"]["split"] + "<kbd", "並べて<kbd", 1)})),
         "a word in the source pane": (lambda: check_site(src, css, {**pages, "zh-hant": pages["zh-hant"].replace("MarsDawn</span>", "MarsDusk</span>", 1)})),
