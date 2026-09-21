@@ -20,11 +20,11 @@ def build(k) -> dict:
             "callouts": [],
         },
         'yours': {
-            "alt": 'MarsDawn 以 Classic 主题显示文稿，预览占满整个窗口。',
+            "alt": 'MarsDawn 以典雅主题显示文稿，预览占满整个窗口。',
             "callouts": ['你 Mac 上的一个文件，存在你选的地方。', '整条工具栏只有主题和布局，没有任何需要登录的地方。'],
         },
         'pay-once': {
-            "alt": 'MarsDawn 使用 Vivid 主题，左边是 Markdown 源代码，右边是排版后的页面。',
+            "alt": 'MarsDawn 使用活泼主题，左边是 Markdown 源代码，右边是排版后的页面。',
             "callouts": ['编辑器的 Markdown 语法高亮，包含在内。', '所有主题和布局都包含在内。', 'Mermaid 图表，包含在内。', '代码高亮，包含在内。'],
         },
         'pdf': {
@@ -423,7 +423,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li><strong>分享：</strong>没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。</li>
   <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
   <li><strong>格式：</strong>MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。</li>
-  <li><strong>主题：</strong>内置 Dawn、Classic、Modern 和 Vivid，每种都有浅色与深色，无法安装其他主题。</li>
+  <li><strong>主题：</strong>内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。</li>
   <li><strong>其他文件：</strong>纯文本文件和 PDF 以只读方式打开。</li>
   <li><strong>试用结束后：</strong>如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。</li>
   <li><strong>系统：</strong>MarsDawn 需要 macOS 26 以上。</li>
@@ -614,17 +614,17 @@ marsdawn --version</code></pre>
         "body": """
 <section class="intro">
   <h1>八种样子，一套导出。</h1>
-  <p>MarsDawn 内置四种预览主题：Dawn、Classic、Modern 和 Vivid，各有浅色与深色&#8212;&#8212;八种读文稿的样子。导出成 PDF 或打印，出来的就是你正在读的那个样子。</p>
+  <p>MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有浅色与深色&#8212;&#8212;八种读文稿的样子。导出成 PDF 或打印，出来的就是你正在读的那个样子。</p>
 </section>
 
 <div class="summary"><p><strong>四种主题 &#215; 浅色与深色＝八种读文稿的方式，导出时用的正是你选的那一种。</strong>更多可导入的主题，还有让大家投稿主题的主题库，都还在规划中，尚未推出。</p></div>
 
 <h2>四种主题</h2>
 <ul>
-  <li><strong>Dawn</strong>，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。</li>
-  <li><strong>Classic（典雅）：</strong>比较朴素、像纸质文稿的配色。</li>
-  <li><strong>Modern（流行）：</strong>比较冷调、当代感的配色。</li>
-  <li><strong>Vivid（活泼）：</strong>比较明亮、对比度较高的配色。</li>
+  <li><strong>黎明</strong>，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。</li>
+  <li><strong>典雅</strong>：比较朴素、像纸质文稿的配色。</li>
+  <li><strong>流行</strong>：比较冷调、当代感的配色。</li>
+  <li><strong>活泼</strong>：比较明亮、对比度较高的配色。</li>
 </ul>
 <p>每种主题都有各自的浅色和深色版本，所以切换 Mac 的外观，连带切换的是主题本身的配色，不只是界面的颜色。</p>
 
@@ -717,7 +717,7 @@ open notes.pdf</code></pre>
 <h2>各自能做什么</h2>
 <ul>
   <li><strong>编辑：</strong>MacMD Viewer 设计上就是只读。MarsDawn 边编辑源代码边在旁边排版，打字的同时就看得到改动。</li>
-  <li><strong>预览主题：</strong>MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：Dawn、Classic、Modern 和 Vivid，各有浅色与深色。</li>
+  <li><strong>预览主题：</strong>MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：黎明、典雅、流行和活泼，各有浅色与深色。</li>
   <li><strong>图表与数学公式：</strong>两者都能画出 Mermaid 图表、也都有代码高亮。MarsDawn 还能排版 KaTeX 数学公式；MacMD Viewer 自己的介绍页没有提到数学公式排版。</li>
   <li><strong>访达集成：</strong>两者都有访达的快速查看扩展功能，对 <code>.md</code> 文件按空格键就能看到排好版的页面。</li>
   <li><strong>PDF 与打印：</strong>两者都能把排好版的页面输出或打印成 PDF。</li>

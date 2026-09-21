@@ -138,8 +138,9 @@ def check_site(src: dict, css: str, pages: dict) -> list:
 
 
 # Pages that list the themes by name, in a language whose app names them differently from
-# English. Their list must use the app's names, in the kit's order (COPY-REVIEW §3.2).
-THEME_LISTS = {"ja": "ja/themes/index.html"}
+# English. Their list must use the app's names, in the kit's order (COPY-REVIEW §3.2, and the
+# owner's call of 2026-09-21 for zh-Hant and zh-Hans).
+THEME_LISTS = {"zh-hant": "zh-hant/themes/index.html", "zh-hans": "zh-hans/themes/index.html", "ja": "ja/themes/index.html"}
 
 
 def check_theme_lists(src: dict, pages: dict) -> list:
@@ -187,6 +188,8 @@ def self_test(src: dict, css: str, pages: dict, lists: dict, kit: dict) -> list:
         "a word in the source pane": (lambda: check_site(src, css, {**pages, "zh-hant": pages["zh-hant"].replace("MarsDawn</span>", "MarsDusk</span>", 1)})),
         "a word in the preview": (lambda: check_site(src, css, {**pages, "zh-hans": re.sub(r"(<p class=\"md-h1\">[^<]*)MarsDawn", r"\1MarsDusk", pages["zh-hans"], count=1)})),
         "an English theme name in the ja theme list": (lambda: check_theme_lists(src, {"ja": lists["ja"].replace("<strong>クラシック</strong>", "<strong>Classic</strong>", 1)})),
+        "an English theme name in the zh-Hant theme list": (lambda: check_theme_lists(src, {"zh-hant": lists["zh-hant"].replace("<strong>黎明</strong>", "<strong>Dawn</strong>", 1)})),
+        "the zh-Hant name in the zh-Hans theme list": (lambda: check_theme_lists(src, {"zh-hans": lists["zh-hans"].replace("<strong>活泼</strong>", "<strong>活潑</strong>", 1)})),
     }
     if kit:
         swapped = json.loads(json.dumps(src))

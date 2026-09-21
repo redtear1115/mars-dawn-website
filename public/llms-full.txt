@@ -957,7 +957,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/yours/
 
 MarsDawn 不需要帳號，沒有同步，也沒有雲端。它打開檔案、讓你寫，再存回你選的位置。
 
-![MarsDawn 以 Classic 主題顯示文件，預覽佔滿整個視窗。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
+![MarsDawn 以典雅主題顯示文件，預覽佔滿整個視窗。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
 
 這張截圖裡：
 
@@ -983,7 +983,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/pay-once/
 
 MarsDawn 可以免費下載。開始 14 天試用後，所有功能都能使用；試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 
-![MarsDawn 使用 Vivid 主題，左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
+![MarsDawn 使用活潑主題，左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
 這張截圖裡：
 
@@ -1086,7 +1086,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 - **分享：**沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。
 - **編輯：**你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。
 - **格式：**MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。
-- **主題：**內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看[預覽主題與 PDF 輸出](/zh-hant/themes/)。
+- **主題：**內建 黎明、典雅、流行和活潑，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看[預覽主題與 PDF 輸出](/zh-hant/themes/)。
 - **其他檔案：**純文字檔和 PDF 以唯讀方式開啟。
 - **試用結束後：**如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。
 - **系統：**MarsDawn 需要 macOS 26 以上。
@@ -1354,7 +1354,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/
 ## 各自能做什麼
 
 - **編輯：**MacMD Viewer 設計上就是唯讀。MarsDawn 邊編輯原始碼邊在旁邊排版，打字的同時就看得到改動。
-- **預覽主題：**MacMD Viewer 內建 12 種文件主題。MarsDawn 有四種：Dawn、Classic、Modern 和 Vivid，各有淺色與深色。
+- **預覽主題：**MacMD Viewer 內建 12 種文件主題。MarsDawn 有四種：黎明、典雅、流行和活潑，各有淺色與深色。
 - **圖表與數學式：**兩者都能畫出 Mermaid 圖表、也都有程式碼上色。MarsDawn 還能排版 KaTeX 數學式；MacMD Viewer 自己的介紹頁沒有提到數學式排版。
 - **Finder 整合：**兩者都有 Finder 的快速查看擴充功能，對 `.md` 檔案按空白鍵就能看到排好版的頁面。
 - **PDF 與列印：**兩者都能把排好版的頁面輸出或列印成 PDF。
@@ -1761,16 +1761,16 @@ Source: https://marsdawn.southern-light.dev/zh-hant/themes/
 
 # 八種樣子，一套輸出。
 
-MarsDawn 內建四種預覽主題：Dawn、Classic、Modern 和 Vivid，各有淺色與深色——八種讀文件的樣子。輸出成 PDF 或列印，出來的就是你正在讀的那個樣子。
+MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有淺色與深色——八種讀文件的樣子。輸出成 PDF 或列印，出來的就是你正在讀的那個樣子。
 
 **四種主題 × 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。**更多可匯入的主題，還有讓大家投稿主題的主題庫，都還在規劃中，尚未推出。
 
 ## 四種主題
 
-- **Dawn**，預設主題：和這個網站一樣的暖色紙感與 Mars Rust 強調色。
-- **Classic（典雅）：**比較樸素、像紙本文件的配色。
-- **Modern（流行）：**比較冷調、當代感的配色。
-- **Vivid（活潑）：**比較明亮、對比較高的配色。
+- **黎明**，預設主題：和這個網站一樣的暖色紙感與 Mars Rust 強調色。
+- **典雅**：比較樸素、像紙本文件的配色。
+- **流行**：比較冷調、當代感的配色。
+- **活潑**：比較明亮、對比較高的配色。
 
 每種主題都有各自的淺色和深色版本，所以切換 Mac 的外觀，連帶切換的是主題本身的配色，不只是介面的顏色。
 
@@ -1885,7 +1885,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/yours/
 
 MarsDawn 不需要账户，没有同步，也没有云端。它打开文件、让你写，再存回你选的位置。
 
-![MarsDawn 以 Classic 主题显示文稿，预览占满整个窗口。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
+![MarsDawn 以典雅主题显示文稿，预览占满整个窗口。](https://marsdawn.southern-light.dev/assets/screens/02-classic-1180.png)
 
 这张截图里：
 
@@ -1911,7 +1911,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/pay-once/
 
 MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用；试用结束后想继续使用，花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
 
-![MarsDawn 使用 Vivid 主题，左边是 Markdown 源代码，右边是排版后的页面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
+![MarsDawn 使用活泼主题，左边是 Markdown 源代码，右边是排版后的页面。](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
 这张截图里：
 
@@ -2014,7 +2014,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 - **分享：**没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。
 - **编辑：**你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。
 - **格式：**MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。
-- **主题：**内置 Dawn、Classic、Modern 和 Vivid，每种都有浅色与深色，无法安装其他主题。
+- **主题：**内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。
 - **其他文件：**纯文本文件和 PDF 以只读方式打开。
 - **试用结束后：**如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。
 - **系统：**MarsDawn 需要 macOS 26 以上。
@@ -2279,7 +2279,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 ## 各自能做什么
 
 - **编辑：**MacMD Viewer 设计上就是只读。MarsDawn 边编辑源代码边在旁边排版，打字的同时就看得到改动。
-- **预览主题：**MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：Dawn、Classic、Modern 和 Vivid，各有浅色与深色。
+- **预览主题：**MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：黎明、典雅、流行和活泼，各有浅色与深色。
 - **图表与数学公式：**两者都能画出 Mermaid 图表、也都有代码高亮。MarsDawn 还能排版 KaTeX 数学公式；MacMD Viewer 自己的介绍页没有提到数学公式排版。
 - **访达集成：**两者都有访达的快速查看扩展功能，对 `.md` 文件按空格键就能看到排好版的页面。
 - **PDF 与打印：**两者都能把排好版的页面输出或打印成 PDF。
@@ -2679,16 +2679,16 @@ Source: https://marsdawn.southern-light.dev/zh-hans/themes/
 
 # 八种样子，一套导出。
 
-MarsDawn 内置四种预览主题：Dawn、Classic、Modern 和 Vivid，各有浅色与深色——八种读文稿的样子。导出成 PDF 或打印，出来的就是你正在读的那个样子。
+MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有浅色与深色——八种读文稿的样子。导出成 PDF 或打印，出来的就是你正在读的那个样子。
 
 **四种主题 × 浅色与深色＝八种读文稿的方式，导出时用的正是你选的那一种。**更多可导入的主题，还有让大家投稿主题的主题库，都还在规划中，尚未推出。
 
 ## 四种主题
 
-- **Dawn**，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。
-- **Classic（典雅）：**比较朴素、像纸质文稿的配色。
-- **Modern（流行）：**比较冷调、当代感的配色。
-- **Vivid（活泼）：**比较明亮、对比度较高的配色。
+- **黎明**，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。
+- **典雅**：比较朴素、像纸质文稿的配色。
+- **流行**：比较冷调、当代感的配色。
+- **活泼**：比较明亮、对比度较高的配色。
 
 每种主题都有各自的浅色和深色版本，所以切换 Mac 的外观，连带切换的是主题本身的配色，不只是界面的颜色。
 
