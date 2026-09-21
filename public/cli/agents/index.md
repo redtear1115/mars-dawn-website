@@ -7,7 +7,7 @@ A reference for AI agents and scripts that call the `marsdawn` command-line tool
 ## What it does
 
 - `export` renders one Markdown file to a paginated PDF with the same exporter as the MarsDawn app. No window opens.
-- `open` opens one or more Markdown files in the MarsDawn app, so a person can review them, can name the line each file should land on, and can show a folder in the window's sidebar.
+- `open` opens one or more Markdown files in the MarsDawn app, so a person can review them, and can name the line each file should land on.
 
 ## What it does not do
 
@@ -54,17 +54,15 @@ Success, exit code 0:
 marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json
-marsdawn open . --json
-marsdawn open notes.md --folder . --background --json
+marsdawn open notes.md --background --json
 ```
 
 - `path:line` names the line to land on. A column after it, as in `notes.md:120:8`, is ignored. An argument that names a file which exists is always that whole filename, so a file called `weird:12` opens as itself.
 - `--line <n>` names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.
 - Lines run from 1 to 999999999. Anything else is a usage error.
 - Lines were added in marsdawn 0.3.0.
-- A folder argument opens in the window's sidebar instead of as a document, so `marsdawn open .` shows the current folder; `--folder <path>` does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and naming the same folder twice is one folder. `--line` with a folder is a usage error, since a folder has no line. There is no `-a`: passing it is a usage error that points at `--folder`.
 - `--background` opens without bringing MarsDawn to the front, for an agent that opens files while the person works elsewhere. The JSON is the same either way.
-- Folders and `--background` were added in marsdawn 0.5.1.
+- `--background` was added in marsdawn 0.5.1.
 
 Success, exit code 0:
 
@@ -74,15 +72,6 @@ Success, exit code 0:
 
 - `opened`: one object per file, in the order given. `path` is the file's absolute path; `line` appears only when a line was asked for.
 - `app`: path of the MarsDawn app that opened them.
-
-With a folder (marsdawn 0.5.1 and later), exit code 0:
-
-```
-{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}
-```
-
-- `folder`: present only when a folder was given. `path` is its absolute path. `requested` is always `true`: marsdawn asked MarsDawn to show the folder, and can't tell whether the sidebar shows it, because the app may first ask the person for access. Report it as asked, not as done.
-- `opened` is empty when only a folder was given.
 
 marsdawn 0.2.x printed `opened` as a list of path strings. Check `marsdawn --version` if you need to handle both.
 
@@ -94,18 +83,18 @@ With `--json`, a failure prints one JSON object on stdout and exits with its cod
 {"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}
 ```
 
-- `2`, `input_not_found`: the input doesn't exist, is a folder, or isn't UTF-8 text; or a `--folder` path doesn't exist or isn't a folder.
+- `2`, `input_not_found`: the input doesn't exist, is a folder, or isn't UTF-8 text.
 - `3`, `app_not_installed`: MarsDawn isn't installed. Only `open` returns this.
 - `4`, `output_exists`: the output file exists. Pass `--force`.
 - `5`, `export_failed`: the export itself failed.
-- `64`: usage error, such as an unknown option, an invalid value, a line out of range, `--line` with more than one file or with a folder, more than one folder, or `-a`. This one is printed as text on stderr, even with `--json`.
+- `64`: usage error, such as an unknown option, an invalid value, a line out of range, or `--line` with more than one file. This one is printed as text on stderr, even with `--json`.
 
 ## JSON Schemas
 
 JSON Schema (draft 2020-12) for every `--json` result:
 
 - [export.v1.json](/schemas/cli/export.v1.json): export success
-- [open.v3.json](/schemas/cli/open.v3.json): open success, marsdawn 0.5.1 and later, including a folder shown in the sidebar
+- [open.v3.json](/schemas/cli/open.v3.json): open success, marsdawn 0.5.1 and later
 - [error.v1.json](/schemas/cli/error.v1.json): failure, both commands
 - [open.v2.json](/schemas/cli/open.v2.json): open success, marsdawn 0.3.0 to 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open success, marsdawn 0.2.x, where `opened` was a list of paths

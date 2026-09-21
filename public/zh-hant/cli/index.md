@@ -38,18 +38,15 @@ swift build -c release --product marsdawn
 marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
-marsdawn open .
-marsdawn open notes.md --folder .
 ```
 
 - `path:line`：請 MarsDawn 定位到那一行。後面再接欄位，例如 `notes.md:120:8`，會被忽略。如果有檔案的完整名稱就是這個參數，則視為那個檔案。
 - `--line <n>`：同樣的功能，只用於單一檔案，也可以用在檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。
 - 行號範圍是 1 到 999999999。
-- 資料夾參數會在視窗的側邊欄開啟，而不是當成文件：`marsdawn open .` 會顯示目前的資料夾。`--folder <path>` 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾，所以指定兩個是使用方式錯誤。
 - `--background`：開啟時不把 MarsDawn 帶到最前面。
 - `--json`：印出 JSON 結果，而不是文字。
 
-行號功能從 marsdawn 0.3.0 開始提供，資料夾與 `--background` 從 0.5.1 開始。
+行號功能從 marsdawn 0.3.0 開始提供，`--background` 從 0.5.1 開始。
 
 ### marsdawn export
 

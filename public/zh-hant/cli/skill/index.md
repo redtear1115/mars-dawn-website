@@ -22,7 +22,6 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 - 依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。
 - 用 `marsdawn open file.md:行號` 打開自己寫的文件，停在第一處修改，而且只開一次：之後的修改會自己出現在已開啟的視窗裡。
 - 如果沒有安裝 MarsDawn app，就告訴你一次然後繼續，不會一直重試。絕不用 `open` 來做 PDF。
-- 使用 `--folder`（marsdawn 0.5.1 以上）時，把資料夾回報為「已要求顯示」，而不是「已顯示」：由 app 決定，也不會有結果回報。
 
 ## 它不會做的事
 

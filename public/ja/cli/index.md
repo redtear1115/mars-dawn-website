@@ -38,18 +38,15 @@ swift build -c release --product marsdawn
 marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
-marsdawn open .
-marsdawn open notes.md --folder .
 ```
 
 - `path:line`：MarsDawn にその行に移動するよう指定します。その後にコロンが続く場合、たとえば `notes.md:120:8` の列部分は無視されます。引数全体と一致するファイル名が存在する場合、その引数はそのファイルとして扱われます。
 - `--line <n>`：単一ファイルに対して同じ指定ができ、それ自体がコロンと数字で終わるパスに対して行を指定する方法でもあります。ファイルは1つだけ指定できます。
 - 行番号は 1 から 999999999 までです。
-- フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます：`marsdawn open .` で現在のフォルダを表示します。`--folder <path>` はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つなので、2つ指定すると使用方法のエラーになります。
 - `--background`：MarsDawn を前面に出さずに開きます。
 - `--json`：テキストではなく JSON の結果を出力します。
 
-行の指定は marsdawn 0.3.0 で、フォルダと `--background` は 0.5.1 で追加されました。
+行の指定は marsdawn 0.3.0 で、`--background` は 0.5.1 で追加されました。
 
 ### marsdawn export
 
