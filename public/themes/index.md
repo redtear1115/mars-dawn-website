@@ -7,9 +7,9 @@ MarsDawn ships four preview themes, Dawn, Classic, Modern and Vivid, each with a
 ## The four themes
 
 - **Dawn**, the default: the same warm paper and Mars Rust accent this site is built from.
-- **Classic** (典雅): a plainer, document-like palette.
-- **Modern** (流行): a cooler, more contemporary palette.
-- **Vivid** (活潑): a brighter, higher-contrast palette.
+- **Classic**: a plainer, document-like palette.
+- **Modern**: a cooler, more contemporary palette.
+- **Vivid**: a brighter, higher-contrast palette.
 
 Each one has its own light and dark variant, so switching your Mac's appearance switches the theme's palette with it, not just the interface chrome.
 

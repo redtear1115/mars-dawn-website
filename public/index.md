@@ -12,7 +12,49 @@ The page shows a working MarsDawn window over part of the app's Welcome guide. P
 2. **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
 3. **The agent revises.** Ask for changes. Open the revised file and read it the same way.
 
-Agents can drive MarsDawn directly: the free [marsdawn](/cli/) command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See [marsdawn for agents](/cli/agents/) for the details.
+## Do this now
+
+The free `marsdawn` command-line tool is ready today. Install it with Homebrew:
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+- `marsdawn export` turns a Markdown file into a PDF, rendered like MarsDawn's preview. It doesn't need the app.
+- `marsdawn open` opens files in the MarsDawn app for you to review.
+- `--json` gives scripts and agents results they can parse.
+
+[Command Line](/cli/) · [marsdawn for agents](/cli/agents/) · [Agent skill](/cli/skill/) · [MCP server](/cli/mcp/)
+
+## What to expect from MarsDawn
+
+- [A Mac app](/native/): Native windows, tabs, autosave, Quick Look.
+- [Your writing stays on your Mac](/yours/): No account, no sync, no cloud.
+- [Try free, pay once](/pay-once/): Free for 14 days, then USD 4.99 once. No subscription.
+
+Know before you buy. [What MarsDawn doesn't do](/limits/)
+
+## The app, as it is
+
+### [A Mac app](/native/)
+
+![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+
+In this screenshot:
+
+1. A native Mac window.
+2. The Mac's text editor, with Markdown highlighting.
+3. ⌘1 source, ⌘2 split, ⌘3 preview.
+4. The page updates as you type.
+
+### [PDF export](/pdf/)
+
+![A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+
+In this screenshot:
+
+1. Mermaid diagrams, drawn into the PDF.
+2. Code keeps its highlighting.
 
 ## More
 
