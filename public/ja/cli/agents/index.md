@@ -96,9 +96,10 @@ marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方�
 
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功時
 - [open.v3.json](/schemas/cli/open.v3.json): open 成功時、marsdawn 0.5.1 以降
-- [error.v1.json](/schemas/cli/error.v1.json): 失敗時、両方のコマンド共通
+- [error.v2.json](/schemas/cli/error.v2.json): 失敗時、両方のコマンド共通、marsdawn 0.5.2 以降
 - [open.v2.json](/schemas/cli/open.v2.json): open 成功時、marsdawn 0.3.0〜0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功時、marsdawn 0.2.x（`opened` がパスのリストだった頃）
+- [error.v1.json](/schemas/cli/error.v1.json): 失敗時、両方のコマンド共通、marsdawn 0.5.1 以前
 
 ## 環境変数
 

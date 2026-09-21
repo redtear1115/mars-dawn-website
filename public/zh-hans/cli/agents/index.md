@@ -96,9 +96,10 @@ marsdawn 0.2.x 的 `opened` 是路径字符串的清单。如果需要同时处�
 
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功
 - [open.v3.json](/schemas/cli/open.v3.json): open 成功，marsdawn 0.5.1 以后
-- [error.v1.json](/schemas/cli/error.v1.json): 两个命令的失败结果
+- [error.v2.json](/schemas/cli/error.v2.json): 两个命令的失败结果，marsdawn 0.5.2 以后
 - [open.v2.json](/schemas/cli/open.v2.json): open 成功，marsdawn 0.3.0 到 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功，marsdawn 0.2.x，当时 `opened` 是路径清单
+- [error.v1.json](/schemas/cli/error.v1.json): 两个命令的失败结果，marsdawn 0.5.1 以前
 
 ## 环境变量
 
