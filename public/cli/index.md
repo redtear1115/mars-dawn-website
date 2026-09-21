@@ -38,18 +38,15 @@ Opens one or more Markdown files in the MarsDawn app for review. It needs the ap
 marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
-marsdawn open .
-marsdawn open notes.md --folder .
 ```
 
 - `path:line`: asks MarsDawn to land on that line. A column after it, as in `notes.md:120:8`, is ignored. If a file with the whole name exists, the argument is that file.
 - `--line <n>`: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.
 - Lines run from 1 to 999999999.
-- A folder argument opens in the window's sidebar instead of as a document: `marsdawn open .` shows the current folder. `--folder <path>` does the same alongside files. A window's sidebar shows one folder, so naming two is a usage error.
 - `--background`: open without bringing MarsDawn to the front.
 - `--json`: print a JSON result instead of text.
 
-Lines were added in marsdawn 0.3.0, and folders and `--background` in 0.5.1.
+Lines were added in marsdawn 0.3.0, and `--background` in 0.5.1.
 
 ### marsdawn export
 

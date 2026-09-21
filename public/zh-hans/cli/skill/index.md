@@ -22,7 +22,6 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 - 依退出代码分辨失败的原因：找不到文件、PDF 已经存在、导出失败、选项错误。
 - 用 `marsdawn open file.md:行号` 打开自己写的文稿，停在第一处修改，而且只打开一次：之后的修改会自己出现在已打开的窗口里。
 - 如果没有安装 MarsDawn app，就告诉你一次然后继续，不会一直重试。绝不用 `open` 来做 PDF。
-- 使用 `--folder`（marsdawn 0.5.1 以上）时，把文件夹报告为“已请求显示”，而不是“已显示”：由 app 决定，也不会有结果返回。
 
 ## 它不会做的事
 
