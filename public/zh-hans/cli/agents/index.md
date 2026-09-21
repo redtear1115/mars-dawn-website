@@ -87,6 +87,7 @@ marsdawn 0.2.x 的 `opened` 是路径字符串的清单。如果需要同时处�
 - `3`，`app_not_installed`：没有安装 MarsDawn。只有 `open` 会返回这个代码。
 - `4`，`output_exists`：输出文件已存在，请加上 `--force`。
 - `5`，`export_failed`：导出本身失败。
+- `6`，`app_cannot_open_folders`：这个版本的 MarsDawn 还不能显示文件夹，所以没有打开任何东西。只有 `open` 会返回这个代码。
 - `64`：用法错误，例如未知的选项、无效的值、行号超出范围，或 `--line` 搭配了多个文件。这种错误一律以文本输出到 stderr，即使加了 `--json` 也一样。
 
 ## JSON Schema

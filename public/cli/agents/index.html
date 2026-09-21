@@ -141,6 +141,7 @@ marsdawn open notes.md --background --json</code></pre>
   <li><code>3</code>, <code>app_not_installed</code>: MarsDawn isn't installed. Only <code>open</code> returns this.</li>
   <li><code>4</code>, <code>output_exists</code>: the output file exists. Pass <code>--force</code>.</li>
   <li><code>5</code>, <code>export_failed</code>: the export itself failed.</li>
+  <li><code>6</code>, <code>app_cannot_open_folders</code>: this MarsDawn can't show a folder, so nothing was opened. Only <code>open</code> returns this.</li>
   <li><code>64</code>: usage error, such as an unknown option, an invalid value, a line out of range, or <code>--line</code> with more than one file. This one is printed as text on stderr, even with <code>--json</code>.</li>
 </ul>
 

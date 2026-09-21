@@ -326,6 +326,7 @@ marsdawn open notes.md --background --json</code></pre>
   <li><code>3</code>，<code>app_not_installed</code>：没有安装 MarsDawn。只有 <code>open</code> 会返回这个代码。</li>
   <li><code>4</code>，<code>output_exists</code>：输出文件已存在，请加上 <code>--force</code>。</li>
   <li><code>5</code>，<code>export_failed</code>：导出本身失败。</li>
+  <li><code>6</code>，<code>app_cannot_open_folders</code>：这个版本的 MarsDawn 还不能显示文件夹，所以没有打开任何东西。只有 <code>open</code> 会返回这个代码。</li>
   <li><code>64</code>：用法错误，例如未知的选项、无效的值、行号超出范围，或 <code>--line</code> 搭配了多个文件。这种错误一律以文本输出到 stderr，即使加了 <code>--json</code> 也一样。</li>
 </ul>
 

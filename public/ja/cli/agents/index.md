@@ -87,6 +87,7 @@ marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方�
 - `3`、`app_not_installed`：MarsDawn がインストールされていない。`open` のみがこれを返します。
 - `4`、`output_exists`：出力ファイルが存在する。`--force` を指定してください。
 - `5`、`export_failed`：書き出し自体が失敗した。
+- `6`、`app_cannot_open_folders`：この MarsDawn はまだフォルダを表示できないため、何も開かなかった。`open` のみがこれを返します。
 - `64`：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルに対する `--line` の指定など。この場合は、`--json` を指定していても stderr にテキストとして出力されます。
 
 ## JSON Schema
