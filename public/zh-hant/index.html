@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MarsDawn：Mac 上的 Markdown 編輯器，即時預覽</title>
-<meta name="description" content="原生的 Mac Markdown 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出，為讀 AI agent 寫的 Markdown 而做。即將在 Mac App Store 上架。">
+<meta name="description" content="給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。即將在 Mac App Store 上架。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/hero.css">
 <link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/">
 <link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/">
 <link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/">
@@ -16,13 +17,13 @@
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/">
 <link rel="alternate" type="text/markdown" href="/zh-hant/index.md">
 <meta property="og:title" content="MarsDawn：Mac 上的 Markdown 編輯器，即時預覽">
-<meta property="og:description" content="原生的 Mac Markdown 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出，為讀 AI agent 寫的 Markdown 而做。即將在 Mac App Store 上架。">
+<meta property="og:description" content="給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。即將在 Mac App Store 上架。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "原生的 Mac Markdown 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出，為讀 AI agent 寫的 Markdown 而做。即將在 Mac App Store 上架。", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder"}, "url": "https://marsdawn.southern-light.dev/zh-hant/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。即將在 Mac App Store 上架。", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder"}, "url": "https://marsdawn.southern-light.dev/zh-hant/"}</script>
 </head>
 <body>
 <div class="page">
@@ -84,23 +85,87 @@
 <div class="hero-inner">
 <div class="hero-copy">
 <section class="intro hero">
-  <p class="kicker">為 AI 工作流程而生</p>
-  <h1>讓 agent 寫的 Markdown，被好好讀過一遍。</h1>
-  <p>AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面並排顯示，再把修改意見交回去。</p>
+  <p class="kicker">給建造者的前線工具</p>
+  <h1><span>拿穩地圖。</span><span>讀過黎明。</span></h1>
+  <p>給要掌舵 agentic 開發的人用的 Markdown。</p>
 </section>
 </div>
 <div class="hero-shot">
-<figure class="shot">
-  <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 1264px) 76rem, (min-width: 736px) calc(100vw - 48px), calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。">
-    
-    
-  </div></div>
-</figure>
+<div class="mdw" role="group" aria-label="可以操作的 MarsDawn 視窗：選一個主題和版面">
+  <div class="mdw-bar">
+    <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
+    <fieldset class="mdw-layouts">
+      <legend>版面</legend>
+      <input type="radio" name="mdw-layout" id="mdw-source" value="source"><label for="mdw-source">原始碼<kbd aria-hidden="true">⌘1</kbd></label>
+      <input type="radio" name="mdw-layout" id="mdw-split" value="split" checked><label for="mdw-split">並排<kbd aria-hidden="true">⌘2</kbd></label>
+      <input type="radio" name="mdw-layout" id="mdw-preview" value="preview"><label for="mdw-preview">預覽<kbd aria-hidden="true">⌘3</kbd></label>
+    </fieldset>
+    <fieldset class="mdw-themes">
+      <legend>主題</legend>
+      <input type="radio" name="mdw-theme" id="mdw-dawn" value="dawn" checked><label for="mdw-dawn"><span class="swatch sw-dawn" aria-hidden="true"></span>黎明</label>
+      <input type="radio" name="mdw-theme" id="mdw-classic" value="classic"><label for="mdw-classic"><span class="swatch sw-classic" aria-hidden="true"></span>典雅</label>
+      <input type="radio" name="mdw-theme" id="mdw-modern" value="modern"><label for="mdw-modern"><span class="swatch sw-modern" aria-hidden="true"></span>流行</label>
+      <input type="radio" name="mdw-theme" id="mdw-vivid" value="vivid"><label for="mdw-vivid"><span class="swatch sw-vivid" aria-hidden="true"></span>活潑</label>
+    </fieldset>
+  </div>
+  <div class="mdw-panes">
+    <pre class="mdw-source" aria-label="原始碼"><span class="mk"># </span><span class="hd">歡迎使用 MarsDawn</span>
+
+<span class="mk">*</span><i>Markdown 的新黎明。</i><span class="mk">*</span> 左邊寫，右邊排版好的頁面會隨著打字更新。這份指南就是一般的文件，隨意改改看會發生什麼事；沒有儲存的話，關閉時不會詢問。
+
+<span class="mk">## </span><span class="hd">版面</span>
+
+<span class="mk">|</span> 快捷鍵 <span class="mk">|</span> 版面 <span class="mk">|</span>
+<span class="mk">|</span><span class="mk">:------:</span><span class="mk">|</span><span class="mk">:-----</span><span class="mk">|</span>
+<span class="mk">|</span> ⌘1 <span class="mk">|</span> 只顯示原始碼 <span class="mk">|</span>
+<span class="mk">|</span> ⌘2 <span class="mk">|</span> 原始碼與預覽並排 <span class="mk">|</span>
+<span class="mk">|</span> ⌘3 <span class="mk">|</span> 只顯示預覽 <span class="mk">|</span>
+
+<span class="mk">## </span><span class="hd">寫作</span>
+
+<span class="mk">**</span><b>粗體</b><span class="mk">**</span>、<span class="mk">*</span><i>斜體</i><span class="mk">*</span>、<span class="mk">~~</span><s>刪除線</s><span class="mk">~~</span>、<span class="mk">`</span><span class="cd">行內程式碼</span><span class="mk">`</span>和<span class="mk">[</span>連結<span class="mk">](</span><span class="ln">https://marsdawn.southern-light.dev/zh-hant/support/</span><span class="mk">)</span>都照常使用。
+
+<span class="mk">&gt; </span>引言左邊會有一條暖色的線。
+
+<span class="mk">- [x] </span>可以打勾的待辦清單
+<span class="mk">- [ ] </span>巢狀清單
+  <span class="mk">- </span>像這樣</pre>
+    <div class="mdw-preview" aria-label="預覽" role="region">
+<p class="md-h1">歡迎使用 MarsDawn</p>
+<p><em>Markdown 的新黎明。</em> 左邊寫，右邊排版好的頁面會隨著打字更新。這份指南就是一般的文件，隨意改改看會發生什麼事；沒有儲存的話，關閉時不會詢問。</p>
+<p class="md-h2">版面</p>
+<table>
+<thead>
+<tr><th class="align-center">快捷鍵</th><th class="align-left">版面</th></tr>
+</thead>
+<tbody>
+<tr><td class="align-center">⌘1</td><td class="align-left">只顯示原始碼</td></tr>
+<tr><td class="align-center">⌘2</td><td class="align-left">原始碼與預覽並排</td></tr>
+<tr><td class="align-center">⌘3</td><td class="align-left">只顯示預覽</td></tr>
+</tbody>
+</table>
+<p class="md-h2">寫作</p>
+<p><strong>粗體</strong>、<em>斜體</em>、<del>刪除線</del>、<code>行內程式碼</code>和<span class="md-a">連結</span>都照常使用。</p>
+<blockquote>
+<p>引言左邊會有一條暖色的線。</p>
+</blockquote>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled checked> 可以打勾的待辦清單
+</li>
+<li class="task-list-item"><input type="checkbox" disabled> 巢狀清單
+<ul>
+<li>像這樣
+</li>
+</ul>
+</li>
+</ul>
+    </div>
+  </div>
+</div>
 </div>
 </div>
 </section>
-<h2 class="loop-title">整個循環</h2>
+<h2 class="loop-title">讀 agent 寫的 Markdown。</h2>
 <ol class="loop-steps">
   <li><strong>Agent 動筆。</strong>你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。</li>
   <li><strong>你在 MarsDawn 裡讀。</strong>打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。</li>

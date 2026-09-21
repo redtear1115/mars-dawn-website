@@ -73,7 +73,7 @@ UI = {
         "markdown-to-pdf": "Markdown to PDF", "skill": "Agent skill",
         "view-markdown-on-mac": "View Markdown on a Mac",
         "vs-macmd-viewer": "MacMD Viewer vs. MarsDawn",
-        "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.",
+        "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.", "slogan": "A new dawn for Markdown.",
         "footer_store": "MarsDawn is coming soon to the Mac App Store.",
         "more": "More",
         "yours": "Your writing stays on your Mac", "pay-once": "Try free, pay once", "pdf": "PDF export",
@@ -88,7 +88,7 @@ UI = {
         "markdown-to-pdf": "Markdown 轉 PDF", "skill": "給 agent 的 skill",
         "view-markdown-on-mac": "在 Mac 上看 Markdown",
         "vs-macmd-viewer": "MacMD Viewer 對比 MarsDawn",
-        "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。",
+        "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。", "slogan": "Markdown 的新黎明。",
         "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
         "more": "其他頁面",
         "yours": "你寫的內容留在你的 Mac 上", "pay-once": "免費試用，買一次就好", "pdf": "輸出 PDF",
@@ -188,16 +188,16 @@ DAWN_HERO_SVG = f"""<div class="dawn-wrap" aria-hidden="true">
 PAGES = {
     ("en", "index"): {
         "title": "MarsDawn: a Markdown editor for Mac, with live preview",
-        "description": "A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.",
+        "description": "Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. Coming soon to the Mac App Store.",
         "intro": """
 <section class="intro hero">
-  <p class="kicker">Built for the AI workflow</p>
-  <h1>Where an agent's Markdown gets a careful read.</h1>
-  <p>An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.</p>
+  <p class="kicker">Frontier tools for builders</p>
+  <h1><span>Claim the map.</span> <span>Read the dawn.</span></h1>
+  <p>Markdown for humans who steer agentic work.</p>
 </section>
 """,
         "body": """
-<h2 class="loop-title">The loop</h2>
+<h2 class="loop-title">Read what your agent wrote.</h2>
 <ol class="loop-steps">
   <li><strong>The agent writes.</strong> Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.</li>
   <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
@@ -208,16 +208,16 @@ PAGES = {
     },
     ("zh-hant", "index"): {
         "title": "MarsDawn：Mac 上的 Markdown 編輯器，即時預覽",
-        "description": "原生的 Mac Markdown 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出，為讀 AI agent 寫的 Markdown 而做。即將在 Mac App Store 上架。",
+        "description": "給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。即將在 Mac App Store 上架。",
         "intro": """
 <section class="intro hero">
-  <p class="kicker">為 AI 工作流程而生</p>
-  <h1>讓 agent 寫的 Markdown，被好好讀過一遍。</h1>
-  <p>AI agent 寫 Markdown，你在 MarsDawn 裡讀，原始碼和排版後的頁面並排顯示，再把修改意見交回去。</p>
+  <p class="kicker">給建造者的前線工具</p>
+  <h1><span>拿穩地圖。</span><span>讀過黎明。</span></h1>
+  <p>給要掌舵 agentic 開發的人用的 Markdown。</p>
 </section>
 """,
         "body": """
-<h2 class="loop-title">整個循環</h2>
+<h2 class="loop-title">讀 agent 寫的 Markdown。</h2>
 <ol class="loop-steps">
   <li><strong>Agent 動筆。</strong>你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。</li>
   <li><strong>你在 MarsDawn 裡讀。</strong>打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。</li>
@@ -2116,6 +2116,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untracked file after a build
 import copy_ja  # noqa: E402
 import copy_zh_hans  # noqa: E402
+import hero_window  # noqa: E402
 
 EXTRA_PAGES = {}
 
@@ -2230,7 +2231,7 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         return html_to_markdown(page["body"])
     return "\n\n".join([
         html_to_markdown(page["intro"]).rstrip(),
-        figure_markdown(locale, slug),
+        hero_window.window_markdown(locale) if slug == "index" else figure_markdown(locale, slug),
         html_to_markdown(page["body"]).rstrip(),
     ])
 
@@ -2368,6 +2369,9 @@ def _render_inline(children) -> str:
             parts.append(f"[{label}]({href})")
         elif tag == "img":
             parts.append(f"![{child.attrs.get('alt', '')}]({child.attrs.get('src', '')})")
+        elif tag == "span":
+            # Layout only (the hero headline's one-sentence lines): the text is what counts.
+            parts.append(_render_inline(child.children))
         else:
             raise MarkdownConversionError(f"unsupported inline tag <{tag}>")
     return "".join(parts)
@@ -2489,6 +2493,8 @@ def render(locale: str, slug: str, page: dict) -> str:
     has_intro = "intro" in page
     is_trait_page = slug in TRAIT_ORDER
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
+    if slug == "index":
+        extra_css = '<link rel="stylesheet" href="/assets/hero.css">\n'
     chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
     if slug == "index":
         hero_html = (
@@ -2496,7 +2502,7 @@ def render(locale: str, slug: str, page: dict) -> str:
             f"{DAWN_HERO_SVG}\n"
             '<div class="hero-inner">\n'
             f'<div class="hero-copy">\n{page["intro"].strip()}\n</div>\n'
-            f'<div class="hero-shot">\n{figure_html(locale, slug)}\n</div>\n'
+            f'<div class="hero-shot">\n{hero_window.window_html(locale)}\n</div>\n'
             "</div>\n"
             "</section>"
         )
@@ -2768,6 +2774,7 @@ def main() -> None:
     (SITE / "llms-full.txt").write_text(build_llms_full(pages), encoding="utf-8")
     print(SITE / "llms-full.txt")
     (SITE / "assets" / "annotations.css").write_text(annotations_css(), encoding="utf-8")
+    (SITE / "assets" / "hero.css").write_text(hero_window.window_css(), encoding="utf-8")
     print(SITE / "assets" / "annotations.css")
     (SITE / "robots.txt").write_text(ROBOTS_TXT, encoding="utf-8")
     print(SITE / "robots.txt")
