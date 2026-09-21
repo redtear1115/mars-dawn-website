@@ -54,9 +54,10 @@ LOCALES = {
 # zh_CN is the standard token for Simplified Chinese; it names a language, not a storefront.
 OG_LOCALE = {"en": "en_US", "zh-hant": "zh_TW", "zh-hans": "zh_CN", "ja": "ja_JP"}
 
-# The social card every page shares, English for now: the hero's dawn, wordmark and headline,
-# rendered from tools/og/build_og.py (see there) to public/assets/og-en.png.
-OG_IMAGE_ALT = "MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work."
+# The social card every page shares, English for now: the hero's dawn, wordmark, headline and
+# lede, rendered by tools/og/build_og.py to public/assets/og-en.png. Its alt text is set once
+# the English home page's copy is (hero_copy below), so card and alt say what the hero says.
+OG_IMAGE_ALT = None
 
 # Languages that use full-width punctuation in generated text (e.g. a list label's colon).
 FULL_WIDTH = {"zh-hant", "zh-hans", "ja"}
@@ -2764,6 +2765,18 @@ def build_llms_full(pages: dict) -> str:
 
 for _locale, _module in (("zh-hans", copy_zh_hans), ("ja", copy_ja)):
     _merge_locale(_locale, _module)
+
+
+def hero_copy(locale: str = "en") -> tuple:
+    """The home page hero's headline sentences and lede, as plain text, read from its copy."""
+    intro = PAGES[(locale, "index")]["intro"] if (locale, "index") in PAGES else EXTRA_PAGES[(locale, "index")]["intro"]
+    lines = re.findall(r"<span>([^<]+)</span>", re.search(r"<h1>(.*?)</h1>", intro, re.S).group(1))
+    lede = re.search(r"</h1>\s*<p>([^<]+)</p>", intro).group(1)
+    return lines, lede
+
+
+_headline, _lede = hero_copy()
+OG_IMAGE_ALT = f"MarsDawn. {' '.join(_headline)} {_lede}"
 
 
 def main() -> None:
