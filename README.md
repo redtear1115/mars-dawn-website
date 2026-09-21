@@ -11,7 +11,7 @@ The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown edito
 | `scripts/build_pages.py` | Generates every page into `public/`, with the en and zh-Hant copy |
 | `scripts/copy_zh_hans.py`, `scripts/copy_ja.py` | The zh-Hans and ja copy, merged in by `build_pages.py`, covering the same pages as en/zh-Hant. A locale may still have only some pages if one hasn't been translated yet; nothing links to a page that locale doesn't have |
 | `scripts/check_hreflang.py` | Checks that every page's hreflang set is complete (every locale that has the page) and reciprocal, in the HTML and the sitemap (runs in CI) |
-| `scripts/check_links.py` | Checks that every same-site link in the built site points at a file that exists (runs in CI) |
+| `scripts/check_links.py` | Checks that every same-site link in the built site points at a file that exists, and that any Mac App Store listing link is the country-less `…/app/id<digits>` form (runs in CI) |
 | `scripts/check_offers.py` | Checks that every schema.org Offer in the built site states an availability, and that it's PreOrder or InStock (runs in CI) |
 | `scripts/check_invariants.py` | Checks the whole-site invariants for the launch phase the build is in, read from `AVAILABILITY`: four-locale page parity, the footer's Mac App Store line, coming-soon wording and listing links (runs in CI) |
 | `scripts/deploy.sh` | Manual deploy, for emergencies |
