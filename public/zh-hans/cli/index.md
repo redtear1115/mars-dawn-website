@@ -80,6 +80,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 | `3` | 尚未安装 MarsDawn（只有 `open` 会用到）。 | 安装 app，或改用不需要 app 的 `export` |
 | `4` | 输出文件已存在（可加上 `--force`）。 | 加上 `--force` 覆盖，或用 `-o` 写到别处 |
 | `5` | 输出失败。 | 读 JSON 结果里的 `message` |
+| `6` | 这个版本的 MarsDawn 还不能显示文件夹，所以没有打开任何东西（只有 `open` 会用到）。 |  |
 | `64` | 使用方式错误，包括行号超出范围、`--line` 搭配了多个文件或文件夹，或指定了多个文件夹。 | 修正选项或值；这种错误以文本输出到 stderr，即使加了 `--json` 也一样 |
 
 ## --json 输出

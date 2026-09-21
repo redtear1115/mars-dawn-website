@@ -469,6 +469,7 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>3</code>：MarsDawn がインストールされていない（<code>open</code> のみ）。</li>
   <li><code>4</code>：出力先がすでに存在する（<code>--force</code> を指定してください）。</li>
   <li><code>5</code>：書き出しに失敗。</li>
+  <li><code>6</code>：この MarsDawn はまだフォルダを表示できないため、何も開かなかった（<code>open</code> のみ）。</li>
   <li><code>64</code>：使用方法のエラー。範囲外の行、複数ファイルやフォルダに対する <code>--line</code> の指定、複数のフォルダの指定などを含みます。</li>
 </ul>
 

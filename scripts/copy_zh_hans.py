@@ -242,6 +242,7 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>3</code>：尚未安装 MarsDawn（只有 <code>open</code> 会用到）。</li>
   <li><code>4</code>：输出文件已存在（可加上 <code>--force</code>）。</li>
   <li><code>5</code>：输出失败。</li>
+  <li><code>6</code>：这个版本的 MarsDawn 还不能显示文件夹，所以没有打开任何东西（只有 <code>open</code> 会用到）。</li>
   <li><code>64</code>：使用方式错误，包括行号超出范围、<code>--line</code> 搭配了多个文件或文件夹，或指定了多个文件夹。</li>
 </ul>
 
