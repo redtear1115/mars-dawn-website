@@ -75,13 +75,13 @@ try {
 
 <div class="summary"><p><strong>要把 Markdown 檔轉成 PDF，執行 <code>marsdawn export notes.md --json</code>，再從 stdout 讀取一個 JSON 物件。</strong>Mermaid 圖表與程式碼上色的呈現方式和 MarsDawn app 相同。<code>export</code> 不需要 app，<code>open</code> 需要。</p></div>
 
-<h2 id="what-it-does">能做什麼</h2>
+<h2>能做什麼</h2>
 <ul>
   <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
   <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人審閱，也可以指定每個檔案要定位的行。</li>
 </ul>
 
-<h2 id="what-it-does-not-do">不做什麼</h2>
+<h2>不做什麼</h2>
 <ul>
   <li>不從 stdin 讀取 Markdown，請傳入檔案路徑。</li>
   <li>不把 PDF 寫到 stdout。PDF 一律寫成檔案，stdout 只輸出結果。</li>
@@ -91,7 +91,7 @@ try {
   <li>只能在 macOS 上執行。</li>
 </ul>
 
-<h2 id="export">export</h2>
+<h2>export</h2>
 <pre><code>marsdawn export notes.md --json</code></pre>
 <p>在 <code>notes.md</code> 旁寫出 <code>notes.pdf</code>。選項：</p>
 <ul>
@@ -112,7 +112,7 @@ try {
   <li><code>diagramErrors</code>：每個算繪失敗的 Mermaid 圖表各一則訊息。PDF 仍會寫出。</li>
 </ul>
 
-<h2 id="open">open</h2>
+<h2>open</h2>
 <pre><code>marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json
@@ -133,7 +133,7 @@ marsdawn open notes.md --background --json</code></pre>
 </ul>
 <p>marsdawn 0.2.x 的 <code>opened</code> 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 <code>marsdawn --version</code>。</p>
 
-<h2 id="failures">失敗</h2>
+<h2>失敗</h2>
 <p>加上 <code>--json</code> 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：</p>
 <pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
 <ul>
@@ -145,7 +145,7 @@ marsdawn open notes.md --background --json</code></pre>
   <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍，或 <code>--line</code> 搭配了多個檔案。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
 </ul>
 
-<h2 id="json-schemas">JSON Schema</h2>
+<h2>JSON Schema</h2>
 <p>每種 <code>--json</code> 結果的 JSON Schema（draft 2020-12）：</p>
 <ul>
   <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功</li>
@@ -156,18 +156,18 @@ marsdawn open notes.md --background --json</code></pre>
   <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: 兩個指令的失敗結果，marsdawn 0.5.1 以前</li>
 </ul>
 
-<h2 id="environment-variables">環境變數</h2>
+<h2>環境變數</h2>
 <ul>
   <li><code>MARSDAWN_THEME</code>：沒有傳入 <code>--theme</code> 時，<code>export</code> 使用的主題。未知的值會直接改用 <code>dawn</code>，不會報錯。</li>
 </ul>
 
-<h2 id="requirements">系統需求</h2>
+<h2>系統需求</h2>
 <ul>
   <li>這個工具需要 macOS 15 以上。在 Apple 晶片的 Mac 上，Homebrew 會安裝預先建置好的版本，不需要其他東西。自己建置時（在 Intel Mac 上，或從原始碼建置），需要 Swift 6.2 以上，也就是 Xcode 26 以上。</li>
   <li>MarsDawn app 需要 macOS 26 以上。</li>
 </ul>
 
-<h2 id="install">安裝</h2>
+<h2>安裝</h2>
 <p>使用 Homebrew。在 Apple 晶片的 Mac 上，會直接安裝預先建置好的版本，幾秒就完成，不需要 Xcode。在 Intel Mac 上則會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn --version</code></pre>
@@ -178,7 +178,7 @@ swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
 <p><code>marsdawn --version</code> 會印出版本號，例如 <code>0.3.0</code>，並以代碼 0 結束。</p>
 
-<h2 id="next">接下來</h2>
+<h2>接下來</h2>
 <ul>
   <li>給讀指令檔而不是執行 shell 的 agent 用的一個檔案：<a href="/zh-hant/cli/skill/">marsdawn skill</a>。</li>
   <li>包住同一個 <code>export</code> 的 MCP 伺服器：<a href="/zh-hant/cli/mcp/">marsdawn-mcp</a>。</li>

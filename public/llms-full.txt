@@ -713,6 +713,65 @@ Success, exit code 0:
 
 marsdawn 0.2.x printed `opened` as a list of path strings. Check `marsdawn --version` if you need to handle both.
 
+## Open files as Claude Code edits them
+
+An opt-in [Claude Code hook](https://code.claude.com/docs/en/hooks): after Claude writes or edits a Markdown file, it opens that file in MarsDawn in the background, once per file per session. It's off unless you add it, one project at a time, because a window you didn't ask for takes attention. It runs a shell command and costs no model tokens.
+
+It needs marsdawn 0.5.1 or later, for `--background`, and the MarsDawn app.
+
+Save this as `.claude/hooks/marsdawn-open.sh` in your project, and make it executable with `chmod +x`:
+
+```
+#!/bin/sh
+# Claude Code PostToolUse hook: open a Markdown file Claude just wrote or edited in MarsDawn,
+# in the background, once per file per session. Never blocks Claude: every path exits 0.
+input=$(cat)
+file=$(printf '%s' "$input" | /usr/bin/jq -r '.tool_input.file_path // empty' 2>/dev/null)
+session=$(printf '%s' "$input" | /usr/bin/jq -r '.session_id // "unknown"' 2>/dev/null)
+
+case "$file" in
+  *.md|*.markdown) ;;
+  *) exit 0 ;;
+esac
+[ -f "$file" ] || exit 0
+# A hook runs with Claude Code's PATH, which may not include Homebrew's.
+marsdawn=$(command -v marsdawn || { [ -x /opt/homebrew/bin/marsdawn ] && echo /opt/homebrew/bin/marsdawn; }) || exit 0
+[ -n "$marsdawn" ] || exit 0
+
+# One list per session, so a file opens once however often Claude edits it.
+seen="${TMPDIR:-/tmp}/marsdawn-hook/$session"
+mkdir -p "$(dirname "$seen")"
+grep -qxF "$file" "$seen" 2>/dev/null && exit 0
+echo "$file" >> "$seen"
+
+"$marsdawn" open --background "$file" >/dev/null 2>&1 || true
+exit 0
+```
+
+Then add the hook to `.claude/settings.json` in the project, or to `.claude/settings.local.json` to keep it to yourself:
+
+```
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/marsdawn-open.sh" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+- It runs after Claude's Write and Edit tools. Files that don't end in `.md` or `.markdown` are left alone.
+- Each file opens once per Claude Code session, however often Claude edits it. The list lives in `$TMPDIR/marsdawn-hook/`, one file per session, so a new session opens the file again.
+- `--background` keeps MarsDawn from coming to the front: the window you were working in keeps focus.
+- It never gets in Claude's way. Every path exits 0, and if marsdawn or the MarsDawn app isn't installed, nothing happens.
+- It reads the hook's input with `/usr/bin/jq`, which comes with macOS 26, the version the MarsDawn app needs.
+- To turn it off, remove the entry from the settings file.
+
 ## Failures
 
 With `--json`, a failure prints one JSON object on stdout and exits with its code:
