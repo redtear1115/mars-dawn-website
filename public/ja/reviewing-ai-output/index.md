@@ -21,7 +21,7 @@ Thoughtworks の Birgitta Böckeler は、この違いをはっきりと言い�
 
 ## 次に
 
-- このレビューが、なぜエージェント自身の context にとって安上がりなのか：[トークンを節約するレビュー方法](/ja/token-efficient-review/)。
+- このレビューが、なぜエージェント自身の context にとって安上がりなのか：[トークンを抑えたレビュー](/ja/token-efficient-review/)。
 - レビュー済みの文書を、ほかの人に渡す：[PDF を共有する](/ja/sharing-exported-pdfs/)。
 - MarsDawn とは何か、1ページで：[ホームページ](/ja/)。
 

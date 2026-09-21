@@ -3523,7 +3523,7 @@ MarsDawn には自前の AI モデルがありません。Markdown を書くた�
 
 - 完全な JSON スキーマとすべての終了コード：[AI エージェント向け marsdawn](/ja/cli/agents/)。
 - Claude Code などのエージェント向けの1ファイルの skill：[marsdawn skill](/ja/cli/skill/)。
-- 簡潔な JSON 結果が、なぜエージェント自身の context にとって重要なのか：[トークンを節約するレビュー方法](/ja/token-efficient-review/)。
+- 簡潔な JSON 結果が、なぜエージェント自身の context にとって重要なのか：[トークンを抑えたレビュー](/ja/token-efficient-review/)。
 
 ---
 
@@ -3686,6 +3686,6 @@ Thoughtworks の Birgitta Böckeler は、この違いをはっきりと言い�
 
 ## 次に
 
-- このレビューが、なぜエージェント自身の context にとって安上がりなのか：[トークンを節約するレビュー方法](/ja/token-efficient-review/)。
+- このレビューが、なぜエージェント自身の context にとって安上がりなのか：[トークンを抑えたレビュー](/ja/token-efficient-review/)。
 - レビュー済みの文書を、ほかの人に渡す：[PDF を共有する](/ja/sharing-exported-pdfs/)。
 - MarsDawn とは何か、1ページで：[ホームページ](/ja/)。

@@ -29,7 +29,7 @@ MarsDawn には自前の AI モデルがありません。Markdown を書くた�
 
 - 完全な JSON スキーマとすべての終了コード：[AI エージェント向け marsdawn](/ja/cli/agents/)。
 - Claude Code などのエージェント向けの1ファイルの skill：[marsdawn skill](/ja/cli/skill/)。
-- 簡潔な JSON 結果が、なぜエージェント自身の context にとって重要なのか：[トークンを節約するレビュー方法](/ja/token-efficient-review/)。
+- 簡潔な JSON 結果が、なぜエージェント自身の context にとって重要なのか：[トークンを抑えたレビュー](/ja/token-efficient-review/)。
 
 ## その他
 

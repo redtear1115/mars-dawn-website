@@ -633,7 +633,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <ul>
   <li>完全な JSON スキーマとすべての終了コード：<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>。</li>
   <li>Claude Code などのエージェント向けの1ファイルの skill：<a href="/ja/cli/skill/">marsdawn skill</a>。</li>
-  <li>簡潔な JSON 結果が、なぜエージェント自身の context にとって重要なのか：<a href="/ja/token-efficient-review/">トークンを節約するレビュー方法</a>。</li>
+  <li>簡潔な JSON 結果が、なぜエージェント自身の context にとって重要なのか：<a href="/ja/token-efficient-review/">{ui['token-efficient-review']}</a>。</li>
 </ul>
 """,
     }
@@ -768,7 +768,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
     pages['reviewing-ai-output'] = {
         "title": 'なぜ AI の出力には、今も人の目が必要なのか · MarsDawn',
         "description": 'AI が書いた Markdown も、結局は人が理解しなければなりません。読みやすいからといって鵜呑みにはできません。MarsDawn はレンダリングされたページとソースを並べ、Mermaid 図と KaTeX 数式を描画するので、構造が一目で分かります。',
-        "body": """
+        "body": f"""
 <section class="intro">
   <h1>エージェントが書く。それでも、あなたが理解しなければならない。</h1>
   <p>AI エージェントは、計画書や仕様書、メモをすばやく書き上げられます。それでも、書かれたものを実際に行動に移す人が理解する必要があります。読みやすいからといって、そのまま信用してはいけません。</p>
@@ -792,7 +792,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 
 <h2>次に</h2>
 <ul>
-  <li>このレビューが、なぜエージェント自身の context にとって安上がりなのか：<a href="/ja/token-efficient-review/">トークンを節約するレビュー方法</a>。</li>
+  <li>このレビューが、なぜエージェント自身の context にとって安上がりなのか：<a href="/ja/token-efficient-review/">{ui['token-efficient-review']}</a>。</li>
   <li>レビュー済みの文書を、ほかの人に渡す：<a href="/ja/sharing-exported-pdfs/">PDF を共有する</a>。</li>
   <li>MarsDawn とは何か、1ページで：<a href="/ja/">ホームページ</a>。</li>
 </ul>
