@@ -18,7 +18,10 @@ both checkouts, and CI checks the site against the snapshot it writes (check_her
     python3 scripts/sync_hero_sources.py --kit ../mars-dawn-kit --app ../mars-dawn          # rewrite
     python3 scripts/sync_hero_sources.py --kit ../mars-dawn-kit --app ../mars-dawn --check  # drift?
 
---check exits 1, and names what moved, if the sources no longer match the snapshot.
+--check exits 1, and names what moved, if what the site shows no longer matches the
+sources: a theme's colours, font or names, a control label, or the Welcome excerpt and
+its rendering. Which app or kit commit was read is recorded but never compared, so an app
+commit that changes none of those, like most, leaves the check green.
 The app is read at --app-ref (default origin/main), the kit at KIT_TAG; neither
 working tree is touched, so stale local branches don't matter.
 """
@@ -34,6 +37,8 @@ SNAPSHOT = ROOT / "scripts" / "hero_sources.json"
 RENDERER = ROOT / "tools" / "hero-render"
 
 KIT_TAG = "0.5.1"
+# The parts of the snapshot the site shows. The rest (which commits were read) is provenance.
+SHOWN = ("themes", "labels", "sample")
 LOCALES = {"en": "en", "zh-hant": "zh-Hant", "zh-hans": "zh-Hans", "ja": "ja"}
 THEME_ORDER = ["dawn", "classic", "modern", "vivid"]
 PALETTE_KEYS = ["background", "surface", "text", "muted", "border", "heading", "accent", "link", "quote"]
@@ -153,8 +158,7 @@ def main() -> int:
     new = collect(args.kit, args.app, args.app_ref)
     if args.check:
         old = json.loads(args.snapshot.read_text(encoding="utf-8"))
-        # Moving commits alone isn't drift; a changed colour, name or sample is.
-        moved = [d for d in drift(old, new) if not d.endswith(".commit")]
+        moved = drift({key: old.get(key) for key in SHOWN}, {key: new[key] for key in SHOWN})
         if moved:
             print(f"{args.snapshot.name} no longer matches the app ({args.app_ref}) and kit {KIT_TAG}:", file=sys.stderr)
             for path in moved:
