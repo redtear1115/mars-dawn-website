@@ -197,6 +197,22 @@ kbd {
 
 .faq h3 { margin-top: 32px; }
 
+/* 404 page: the illustration on a sand plate, rounded like the trait screenshots.
+   It carries its own sky, so it needs no separate dark-mode treatment. */
+.error-figure {
+  margin: 36px 0;
+  padding: clamp(10px, 2.2vw, 28px);
+  background: var(--sand);
+  border-radius: 16px;
+}
+.error-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.error-home { margin-top: 8px; }
+
 .footer {
   margin-top: 64px;
   padding-top: 20px;
@@ -204,10 +220,16 @@ kbd {
   color: var(--dust);
   font-size: 0.9rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
+  flex-direction: column;
+  gap: 10px;
 }
+/* Two rows (#65): the site's links, then the meta line. */
+.footer-nav,
+.footer-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0; }
 .footer a { color: var(--dust); white-space: nowrap; }
+.footer a[aria-current="page"] { color: var(--ink); }
+/* The origin mark, set as Futari's site sets it: tracked caps, the same in every language. */
+.footer-origin { font-size: 0.78rem; letter-spacing: 2px; white-space: nowrap; }
 
 /* Cloudflare can inject a hidden trap link at the top of <body>, hidden with an
    inline style that the CSP blocks. Hide it here so it is not a keyboard stop. */
@@ -383,6 +405,11 @@ img.pdf-page {
     line-height: 1.45;
     text-wrap: pretty;
   }
+  /* A close pair in one gutter (build_pages.py, CLOSE_CALLOUTS): the upper label grows up and the
+     lower one down, each keeping the line of text nearest the other on its leader. 0.64em is half
+     a line (line-height 1.45). */
+  .leader.up > span { translate: 0 calc(-100% + 0.64em); }
+  .leader.down > span { translate: 0 -0.64em; }
   .leader.r > span { left: 100%; padding-left: 0.7rem; }
   .leader.l > span { right: 100%; padding-right: 0.7rem; text-align: right; }
   /* The labels are drawn in the gutters; the list stays for screen readers. */
@@ -1026,7 +1053,8 @@ html { overflow-x: hidden; }
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
-.footer-home { margin-top: 20px; border-top: 0; }
+/* The home footer keeps the hairline, so the closing band, the rule and the links read as layers. */
+.footer-home { margin-top: 40px; }
 
 /* ---- Home page after the hero (owner's IA, 2026-09-21) --------------------
    Two things carry weight: the hero's call to action and the CLI block, the one
