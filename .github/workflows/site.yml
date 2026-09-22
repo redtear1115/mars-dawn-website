@@ -32,6 +32,10 @@ jobs:
         run: python3 scripts/check_hreflang.py
       - name: Every same-site link points at a file that exists
         run: python3 scripts/check_links.py
+      # public/_redirects: fixed destinations, no tracking parameters, and the phase's rule for
+      # /go/app-store. --self-test plants a break of each kind first and fails if one is missed.
+      - name: Every redirect goes where the phase allows, and nowhere else
+        run: python3 scripts/check_redirects.py --self-test
       - name: Every schema.org Offer states its availability
         run: python3 scripts/check_offers.py
       # The theme gallery isn't served yet and nothing reads /themes/v1/ (see README). Once it ships,

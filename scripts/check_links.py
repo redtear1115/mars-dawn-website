@@ -10,6 +10,14 @@ alternate hrefs in the sitemap; url() in CSS. Relative paths ("/x/"), and absolu
 marsdawn.southern-light.dev, both count. A path ending in "/" needs its index.html. Query strings
 and fragments are ignored. mailto:, other hosts and data: URLs are not checked.
 
+A same-site link may also point at a redirect: a source listed in public/_redirects, which Cloudflare
+answers with a redirect and no file (`/go/app-store`, the link published for the Mac App Store
+listing). Those sources count as existing; scripts/check_redirects.py checks where they go. A link
+to a `/go/` path that isn't listed there is broken like any other:
+
+    cp -R public /tmp/site && sed -i '' 's#href="/zh-hant/support/"#href="/go/nope"#' /tmp/site/support/index.html
+    python3 scripts/check_links.py --root /tmp/site
+
 Exits 1 and lists every broken link. To see it catch one, check a copy of public/ with a link
 pointed at a page that doesn't exist:
 
@@ -52,9 +60,23 @@ def site_path(link: str):
     return re.split(r"[?#]", link, maxsplit=1)[0]
 
 
+def redirect_sources(root: Path) -> set:
+    """The paths public/_redirects answers with a redirect, so a link to one isn't broken."""
+    file = root / "_redirects"
+    if not file.is_file():
+        return set()
+    sources = set()
+    for line in file.read_text(encoding="utf-8").splitlines():
+        fields = line.split()
+        if fields and not fields[0].startswith("#") and len(fields) in (2, 3):
+            sources.add(fields[0])
+    return sources
+
+
 def main(argv) -> int:
     root = Path(argv[argv.index("--root") + 1]) if "--root" in argv else Path(__file__).resolve().parent.parent / "public"
     broken, checked = [], 0
+    redirected = redirect_sources(root)
     for path in sorted(root.rglob("*")):
         if path.suffix not in {".html", ".md", ".txt", ".xml", ".css"} or not path.is_file():
             continue
@@ -67,7 +89,7 @@ def main(argv) -> int:
             file = root / target.lstrip("/")
             if target.endswith("/"):
                 file = file / "index.html"
-            if not file.is_file():
+            if not file.is_file() and target not in redirected:
                 broken.append(f"{path.relative_to(root)}: {link}")
     print(f"{checked} same-site links checked: {len(broken)} broken")
     for line in broken:
