@@ -23,7 +23,7 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 
 ## 只能在你允許的資料夾裡運作
 
-兩個工具都只能在你允許的資料夾裡讀寫：擴充功能的「Allowed folders」設定（預設是空的，沒有預設值），或是你的 MCP 用戶端提供的 root。兩者都沒有設定時，每次呼叫都會被拒絕，拒絕訊息會說明怎麼設定。每個路徑都必須是絕對路徑，而 `export_markdown_to_pdf` 只會寫出 `.pdf` 檔案，不會透過 symlink 寫。
+兩個工具都只能在你允許的資料夾裡讀寫：擴充功能的「Allowed folders」設定（預設是空的），或是你的 MCP 用戶端提供的 roots。兩者都沒有設定時，每次呼叫都會被拒絕，拒絕訊息會說明怎麼設定。每個路徑都必須是絕對路徑，而 `export_markdown_to_pdf` 只會寫出 `.pdf` 檔案，不會透過 symlink 寫。
 
 **安全性：**請更新到 [0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1)——0.1.0 和 0.2.0 會讓呼叫把 PDF 寫到你帳號能寫入的任何路徑，已在 [GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc) 修好。
 

@@ -1771,7 +1771,7 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 
 ## 只能在你允許的資料夾裡運作
 
-兩個工具都只能在你允許的資料夾裡讀寫：擴充功能的「Allowed folders」設定（預設是空的，沒有預設值），或是你的 MCP 用戶端提供的 root。兩者都沒有設定時，每次呼叫都會被拒絕，拒絕訊息會說明怎麼設定。每個路徑都必須是絕對路徑，而 `export_markdown_to_pdf` 只會寫出 `.pdf` 檔案，不會透過 symlink 寫。
+兩個工具都只能在你允許的資料夾裡讀寫：擴充功能的「Allowed folders」設定（預設是空的），或是你的 MCP 用戶端提供的 roots。兩者都沒有設定時，每次呼叫都會被拒絕，拒絕訊息會說明怎麼設定。每個路徑都必須是絕對路徑，而 `export_markdown_to_pdf` 只會寫出 `.pdf` 檔案，不會透過 symlink 寫。
 
 **安全性：**請更新到 [0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1)——0.1.0 和 0.2.0 會讓呼叫把 PDF 寫到你帳號能寫入的任何路徑，已在 [GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc) 修好。
 
@@ -2735,9 +2735,9 @@ MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不
 - **托管：**只能自架，没有代管服务。服务器跑在你自己的机器上，就在 marsdawn 旁边。
 - **系统要求：**macOS、marsdawn 0.5.0 以上，以及运行服务器需要的 Node.js 20 以上。
 
-## 只能在你允许的文件夹里运作
+## 只能在你允许的文件夹里运行
 
-两个工具都只能在你允许的文件夹里读写：扩展的「Allowed folders」设置（默认是空的，没有预设值），或者你的 MCP 客户端提供的 root。两者都没设置时，每次调用都会被拒绝，拒绝消息会说明怎么设置。每个路径都必须是绝对路径，而 `export_markdown_to_pdf` 只会写出 `.pdf` 文件，不会通过 symlink 写。
+两个工具都只能在你允许的文件夹里读写：扩展的「Allowed folders」设置（默认是空的），或者你的 MCP 客户端提供的 roots。两者都没设置时，每次调用都会被拒绝，拒绝消息会说明怎么设置。每个路径都必须是绝对路径，而 `export_markdown_to_pdf` 只会写出 `.pdf` 文件，不会通过 symlink 写。
 
 **安全性：**请更新到 [0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1)——0.1.0 和 0.2.0 会让调用把 PDF 写到你账号能写入的任何路径，已在 [GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc) 修复。
 
@@ -3701,9 +3701,9 @@ MarsDawn には自前の AI モデルがありません。Markdown を書くた�
 - **ホスティング：**自分でホストするしかありません。marsdawn-mcp のホスティングサービスは存在せず、サーバーは marsdawn 自身の隣、あなた自身のマシン上で動きます。
 - **動作要件：**macOS、marsdawn 0.5.0 以降、そしてサーバーを実行するための Node.js 20 以降。
 
-## 許可したフォルダーの中でしか動きません
+## 許可したフォルダの中でしか動きません
 
-両方のツールとも、許可したフォルダーの中でしか読み書きしません：拡張機能の「Allowed folders」設定（デフォルトは空で、既定値はありません）、またはお使いの MCP クライアントが提供する root のどちらかです。どちらも設定されていない場合、すべての呼び出しは拒否され、拒否メッセージに設定方法が書かれています。パスはすべて絶対パスである必要があり、`export_markdown_to_pdf` が書き出すのは `.pdf` ファイルだけで、シンボリックリンク経由で書き込むことはありません。
+両方のツールとも、許可したフォルダの中でしか読み書きしません：拡張機能の「Allowed folders」設定（デフォルトは空です）、またはお使いの MCP クライアントが提供する roots のどちらかです。どちらも設定されていない場合、すべての呼び出しは拒否され、拒否メッセージに設定方法が書かれています。パスはすべて絶対パスである必要があり、`export_markdown_to_pdf` が書き出すのは `.pdf` ファイルだけで、シンボリックリンク経由で書き込むことはありません。
 
 **セキュリティ：**[0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1) に更新してください——0.1.0 と 0.2.0 では、呼び出しがあなたのアカウントが書き込めるどのパスにも PDF を書き込めてしまう問題があり、[GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc) で修正されました。
 
