@@ -112,6 +112,7 @@ UI = {
         "mcp": "MCP server", "token-efficient-review": "Token-efficient review",
         "vs-markdown-preview-tools": "Viewing Markdown elsewhere vs. MarsDawn", "themes": "Preview themes and PDF export",
         "sharing-exported-pdfs": "Sharing exported PDFs", "reviewing-ai-output": "Why AI output still needs a human reader",
+        "changelog": "Changelog",
     },
     "zh-hant": {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
@@ -128,6 +129,7 @@ UI = {
         "mcp": "MCP 伺服器", "token-efficient-review": "節省 token 的審閱方式",
         "vs-markdown-preview-tools": "在別處看 Markdown，對比 MarsDawn", "themes": "預覽主題與 PDF 輸出",
         "sharing-exported-pdfs": "分享輸出的 PDF", "reviewing-ai-output": "為什麼 AI 寫的東西還是需要人讀過",
+        "changelog": "更新紀錄",
     },
 }
 
@@ -1714,6 +1716,42 @@ BRAINSTORM_PAGES = {
 </ul>
 """,
     },
+    ("en", "changelog"): {
+        "title": "Changelog · MarsDawn",
+        "description": "What changed in the free marsdawn command-line tool.",
+        "body": """
+<section class="intro">
+  <h1>Changelog</h1>
+  <p>What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.</p>
+</section>
+
+<h2>marsdawn 0.5.1</h2>
+<p>19 September 2026. PDF export, and opening a file from the command line.</p>
+<ul>
+  <li>The text layer of an exported PDF is repaired for Chinese, Japanese and Korean.</li>
+  <li><code>marsdawn open --background</code> opens a file without bringing MarsDawn to the front.</li>
+  <li><code>marsdawn open</code> can be given a folder. The app on the Mac App Store does not show a folder yet, so that option waits for an app that can take one.</li>
+</ul>
+""",
+    },
+    ("zh-hant", "changelog"): {
+        "title": "更新紀錄 · MarsDawn",
+        "description": "免費的 marsdawn 命令列工具改了什麼。",
+        "body": """
+<section class="intro">
+  <h1>更新紀錄</h1>
+  <p>免費的 marsdawn 命令列工具改了什麼。Mac App Store 上的 MarsDawn，只有在某個版本值得單獨記一筆時才會出現在這裡。0.5.1 以前的版本不列。</p>
+</section>
+
+<h2>marsdawn 0.5.1</h2>
+<p>2026 年 9 月 19 日。PDF 輸出，以及從命令列打開檔案。</p>
+<ul>
+  <li>輸出的 PDF 中，中文、日文與韓文的文字層已修正。</li>
+  <li><code>marsdawn open --background</code> 會打開檔案，但不會把 MarsDawn 帶到最前面。</li>
+  <li><code>marsdawn open</code> 可以指定一個資料夾。Mac App Store 上的 app 還不能顯示資料夾，所以這個選項要等做得到的版本。</li>
+</ul>
+""",
+    },
 }
 
 
@@ -2414,14 +2452,15 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
     ])
 
 PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
-              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "sharing-exported-pdfs", "reviewing-ai-output"]
+              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "sharing-exported-pdfs", "reviewing-ai-output", "changelog"]
 SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
                   "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
                   "vs/macmd-viewer": "vs-macmd-viewer",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
                   "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes",
-                  "sharing-exported-pdfs": "sharing-exported-pdfs", "reviewing-ai-output": "reviewing-ai-output"}
+                  "sharing-exported-pdfs": "sharing-exported-pdfs", "reviewing-ai-output": "reviewing-ai-output",
+                  "changelog": "changelog"}
 
 
 def _base_pages() -> dict:
