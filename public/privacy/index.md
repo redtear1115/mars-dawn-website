@@ -2,9 +2,24 @@
 
 How MarsDawn, the Markdown editor for macOS, handles your information.
 
-Last updated 2026-09-19
+Last updated 2026-09-23
 
-**MarsDawn does not collect any data about you.** There is no account, no analytics, no advertising and no tracking. Your documents and settings stay on your Mac.
+**The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
+
+## The website
+
+The app and this website are two different things. The app collects nothing. A visit can be recorded only here, on marsdawn.southern-light.dev.
+
+**This is not on yet.** This website sends nothing to an analytics service today. The list below is what it will record once that is switched on. It is published now so the description is already public before the first event. On the day it is switched on, delete this paragraph and leave the list.
+
+Once it is on:
+
+- **Page views.** The server records that a page was requested, and the referring address when the browser sends one.
+- **Clicks that leave through this site.** A click that goes out through a redirect on this site, such as the link to the Mac App Store, is recorded. The destination is a fixed address, and the redirect adds no tracking parameters.
+- **What is not recorded.** No cookies, no local storage, and no analytics script in the page. No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under `/themes/` are skipped, and are not sent on.
+- **A visit is only a page view.** Each request is given a new random id, used for that request and not again. The site cannot recognise you on a later visit.
+- **Where it goes.** The site's own server sends these events to PostHog's United States region. Your browser does not contact PostHog. PostHog keeps the events for 12 months. The full IP address is not forwarded.
+- **The host.** Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.
 
 ## What stays on your Mac
 
@@ -39,7 +54,7 @@ The optional `marsdawn` command-line tool, distributed separately, also runs ent
 
 ## Children
 
-MarsDawn does not collect data from anyone, including children.
+The MarsDawn app does not collect data from anyone, including children. A visit recorded on the website is not an account, and it is not used to identify anyone.
 
 ## Purchases
 
