@@ -196,6 +196,22 @@ kbd {
 
 .faq h3 { margin-top: 32px; }
 
+/* 404 page: the illustration on a sand plate, rounded like the trait screenshots.
+   It carries its own sky, so it needs no separate dark-mode treatment. */
+.error-figure {
+  margin: 36px 0;
+  padding: clamp(10px, 2.2vw, 28px);
+  background: var(--sand);
+  border-radius: 16px;
+}
+.error-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.error-home { margin-top: 8px; }
+
 .footer {
   margin-top: 64px;
   padding-top: 20px;

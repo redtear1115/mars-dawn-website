@@ -2775,6 +2775,118 @@ def build_llms_full(pages: dict) -> str:
     return "# MarsDawn — full content\n\n" + "\n---\n\n".join(sections)
 
 
+# The 404 page. Deliberately outside PAGES/all_pages(): it must not appear in the sitemap, in any
+# other page's hreflang alternates, in llms.txt/llms-full.txt, as a Markdown twin, in the language
+# switcher of other pages, or in trait "more" navs (#64). It's built and linked separately below.
+NOT_FOUND_COPY = {
+    "en": {
+        "title": "Page not found · MarsDawn",
+        "headline": "Lost among the stars.",
+        "body": "This path isn’t on the map. A quiet neighbor pointed the way home.",
+        "home": "Back to MarsDawn",
+        "alt": "A small craft drifts in a Martian dawn sky while a friendly alien points toward "
+               "the planet’s bright limb.",
+    },
+    "zh-hant": {
+        "title": "找不到頁面 · MarsDawn",
+        "headline": "迷航在星空裡。",
+        "body": "這條路徑不在地圖上。一位安靜的"
+                "鄰居指了回家的方向。",
+        "home": "回到 MarsDawn",
+        "alt": "一艦小船飄在火星黎明的星空，"
+               "一位友善的外星訪客指向明亮的"
+               "行星邊緣。",
+    },
+    "zh-hans": {
+        "title": "找不到页面 · MarsDawn",
+        "headline": "迷航在星空里。",
+        "body": "这条路径不在地图上。一位安静的"
+                "邻居指了回家的方向。",
+        "home": "回到 MarsDawn",
+        "alt": "一舶小船飄在火星黎明的星空，"
+               "一位友善的外星访客指向明亮的"
+               "行星边缘。",
+    },
+    "ja": {
+        "title": "ページが見つかりません · MarsDawn",
+        "headline": "星のあいだで迷って。",
+        "body": "この道は地図にありません。静か"
+                "な隣人に、帰り道を教えられま"
+                "した。",
+        "home": "MarsDawn へ戻る",
+        "alt": "火星の夜明けの空に小さな船が漂"
+               "い、友好的な宇宙人が輝く惑星の"
+               "縁を指さしている。",
+    },
+}
+
+
+def not_found_path(locale: str) -> str:
+    return LOCALES[locale]["root"] + "404.html"
+
+
+def render_404(locale: str) -> str:
+    ui = UI[locale]
+    lang = LOCALES[locale]["html_lang"]
+    copy = NOT_FOUND_COPY[locale]
+    canonical_url = abs_url(not_found_path(locale))
+    # Links to each locale's home, never to a nonexistent /xx/404/.
+    switch = " · ".join(
+        f'<a href="{home_path(other)}" hreflang="{LOCALES[other]["html_lang"]}"'
+        + (' aria-current="true"' if other == locale else "")
+        + f' lang="{LOCALES[other]["html_lang"]}">{LOCALES[other]["label"]}</a>'
+        for other in LOCALES
+    )
+    footer_links = "".join(
+        f'    <a href="{page_path(locale, target)}">{ui[target]}</a>\n'
+        for target in ("support", "privacy", "cli")
+        if has_page(locale, target)
+    )
+    footer_meta = f'<span>{ui["tagline"]}</span> <span>{ui["footer_store"]}</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span>'
+    footer_html = (
+        '<footer class="footer">\n'
+        f'  <nav class="footer-nav" aria-label="{ui["footer_nav"]}">\n{footer_links}  </nav>\n'
+        f'  <p class="footer-meta">{footer_meta}</p>\n</footer>'
+    )
+    return f"""<!doctype html>
+<html lang="{lang}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{copy["title"]}</title>
+<meta name="description" content="{copy["body"]}">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="canonical" href="{canonical_url}">
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="{home_path(locale)}">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language">{switch}</nav>
+</header>
+<main>
+<section class="intro">
+  <h1>{copy["headline"]}</h1>
+  <p>{copy["body"]}</p>
+</section>
+<figure class="error-figure">
+  <img src="/assets/404.svg" width="1600" height="900" alt="{copy["alt"]}">
+</figure>
+<p class="error-home"><a href="{home_path(locale)}">{copy["home"]}</a></p>
+</main>
+{footer_html}
+</div>
+</body>
+</html>
+"""
+
+
 for _locale, _module in (("zh-hans", copy_zh_hans), ("ja", copy_ja)):
     _merge_locale(_locale, _module)
 
@@ -2803,6 +2915,12 @@ def main() -> None:
     (SITE / "sitemap.xml").write_text(
         build_sitemap(pages, extra_urls=[BASE_URL + PRODUCT_FACTS_PATH]), encoding="utf-8"
     )
+    # The 404 page, per locale. Not part of `pages`/PAGE_ORDER on purpose (#64): see NOT_FOUND_COPY.
+    for locale in LOCALES:
+        target = SITE / LOCALES[locale]["prefix"] / "404.html" if LOCALES[locale]["prefix"] else SITE / "404.html"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(render_404(locale), encoding="utf-8")
+        print(target)
     skill = SITE / "cli" / "skill" / "SKILL.md"
     skill.parent.mkdir(parents=True, exist_ok=True)
     skill.write_text(build_skill_md(), encoding="utf-8")
