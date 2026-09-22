@@ -530,7 +530,7 @@ marsdawn open notes.md --line 120 --json</code></pre>
 <p>marsdawn 0.2.x では <code>opened</code> はパス文字列のリストでした。両方を扱う必要がある場合は <code>marsdawn --version</code> を確認してください。</p>
 
 <h2>Claude Code が編集したファイルを開く</h2>
-<p>オプトインの <a href="https://code.claude.com/docs/en/hooks">Claude Code フック</a>です。Claude が Markdown ファイルを書き込んだり編集したりすると、そのファイルを MarsDawn でバックグラウンドで開きます。開くのはセッションごと、ファイルごとに一度だけです。頼んでいないウインドウは注意をそらすので、追加しない限り有効にならず、プロジェクトごとに追加します。シェルコマンドを実行するだけなので、モデルのトークンは使いません。</p>
+<p>オプトインの <a href="https://code.claude.com/docs/en/hooks">Claude Code フック</a>です。Claude が Markdown ファイルを書き込んだり編集したりすると、そのファイルを MarsDawn でバックグラウンドで開きます。開くのはセッションごと、ファイルごとに一度だけです。頼んでいないウィンドウは注意をそらすので、追加しない限り有効にならず、プロジェクトごとに追加します。シェルコマンドを実行するだけなので、モデルのトークンは使いません。</p>
 <p><code>--background</code> のために marsdawn 0.5.1 以降と、MarsDawn アプリが必要です。</p>
 <p>次の内容をプロジェクトの <code>.claude/hooks/marsdawn-open.sh</code> として保存し、<code>chmod +x</code> で実行可能にします。</p>
 <pre><code>#!/bin/sh
@@ -573,7 +573,7 @@ exit 0</code></pre>
 <ul>
   <li>Claude の Write ツールと Edit ツールのあとに実行されます。<code>.md</code> または <code>.markdown</code> で終わらないファイルには何もしません。</li>
   <li>Claude が何度編集しても、各ファイルは Claude Code のセッションごとに一度だけ開きます。記録は <code>$TMPDIR/marsdawn-hook/</code> にセッションごとに一つのファイルとして残るので、新しいセッションでは再び開きます。</li>
-  <li><code>--background</code> により MarsDawn は前面に出ません。作業中のウインドウのフォーカスはそのままです。</li>
+  <li><code>--background</code> により MarsDawn は前面に出ません。作業中のウィンドウのフォーカスはそのままです。</li>
   <li>Claude の邪魔はしません。どの経路でも終了コード 0 で終わり、marsdawn や MarsDawn アプリがインストールされていなければ何もしません。</li>
   <li>フックの入力は <code>/usr/bin/jq</code> で読みます。これは macOS 26 に含まれていて、MarsDawn アプリも macOS 26 を必要とします。</li>
   <li>無効にするには、設定ファイルからこの項目を削除します。</li>
