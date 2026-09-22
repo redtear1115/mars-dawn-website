@@ -134,8 +134,8 @@ marsdawn open notes.md --background --json</code></pre>
 <p>marsdawn 0.2.x 的 <code>opened</code> 是路径字符串的清单。如果需要同时处理两种格式，请先查看 <code>marsdawn --version</code>。</p>
 
 <h2>在 Claude Code 编辑时打开文件</h2>
-<p>一个需要自行启用的 <a href="https://code.claude.com/docs/en/hooks">Claude Code hook</a>：Claude 写入或编辑 Markdown 文件之后，在后台用 MarsDawn 打开那个文件，每个 session 每个文件只打开一次。除非你添加它，否则不会启用，而且要一个项目一个项目地添加，因为没要求就弹出来的窗口会打断注意力。它运行的是 shell 命令，不花模型 token。</p>
-<p>需要 marsdawn 0.5.1 或更新版本（为了 <code>--background</code>），以及 MarsDawn app。</p>
+<p>一个需要自行启用的 <a href="https://code.claude.com/docs/en/hooks">Claude Code hook</a>：Claude 写入或编辑 Markdown 文件之后，在后台用 MarsDawn 打开那个文件，每个 session 每个文件只打开一次。除非你添加它，否则不会启用，而且要一个项目一个项目地添加，因为你没要求就弹出来的窗口会打断注意力。它运行的是 shell 命令，不花模型 token。</p>
+<p>需要 marsdawn 0.5.1 或更新版本，才有 <code>--background</code>，以及 MarsDawn app。</p>
 <p>把下面的内容保存为项目里的 <code>.claude/hooks/marsdawn-open.sh</code>，再用 <code>chmod +x</code> 让它可以执行：</p>
 <pre><code>#!/bin/sh
 # Claude Code PostToolUse hook: open a Markdown file Claude just wrote or edited in MarsDawn,
@@ -178,8 +178,8 @@ exit 0</code></pre>
   <li>它在 Claude 的 Write 和 Edit 工具之后运行。扩展名不是 <code>.md</code> 或 <code>.markdown</code> 的文件不会处理。</li>
   <li>在同一个 Claude Code session 里，每个文件只打开一次，不管 Claude 编辑几次。清单保存在 <code>$TMPDIR/marsdawn-hook/</code>，每个 session 一个文件，所以开新的 session 会再打开一次。</li>
   <li><code>--background</code> 让 MarsDawn 不会跳到最前面：你正在用的窗口会保持焦点。</li>
-  <li>它不会挡住 Claude。每条路径都以 0 退出；如果没有安装 marsdawn 或 MarsDawn app，就什么都不做。</li>
-  <li>它用 <code>/usr/bin/jq</code> 读取 hook 的输入。macOS 26 自带这个工具，而 MarsDawn app 本来就需要 macOS 26。</li>
+  <li>它不会妨碍 Claude。每条路径都以 0 退出；如果没有安装 marsdawn 或 MarsDawn app，就什么都不做。</li>
+  <li>它用 <code>/usr/bin/jq</code> 读取 hook 的输入。macOS 26 自带这个工具，而 MarsDawn app 也需要 macOS 26。</li>
   <li>要关掉，从设置文件里删除这一项即可。</li>
 </ul>
 
