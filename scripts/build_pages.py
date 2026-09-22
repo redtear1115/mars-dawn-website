@@ -1336,13 +1336,17 @@ BRAINSTORM_PAGES = {
 <p>For an agent that reads plain-Markdown instructions instead of calling a shell directly &#8212; Claude Code today &#8212; <a href="/cli/skill/">the marsdawn skill</a> is one file that teaches it to install marsdawn, run <code>export</code> and read the result. It's plain Markdown, so other agents that load instruction files can use the same one.</p>
 
 <h2>The MCP server</h2>
-<p><a href="{MCP_URL}">marsdawn-mcp</a> is a separate, public, {MCP_LICENSE} repository. It's an MCP server with one tool, <code>export_markdown_to_pdf</code>, that wraps <code>marsdawn export --json</code>: point an MCP client at it and the tool call returns the same JSON as the CLI.</p>
+<p><a href="{MCP_URL}">marsdawn-mcp</a> is a separate, public, {MCP_LICENSE} repository. It's an MCP server with two tools, <code>export_markdown_to_pdf</code> and <code>open_in_marsdawn</code>, that wrap <code>marsdawn export --json</code> and <code>marsdawn open --json</code>: point an MCP client at it and a tool call returns the same JSON as the CLI.</p>
 <ul>
   <li><strong>Get it:</strong> as an MCP Bundle, <code>marsdawn.mcpb</code>, attached to <a href="{MCP_URL}/releases">its GitHub release</a>, or by running the server from source over stdio.</li>
-  <li><strong>Registry:</strong> not yet listed in the MCP Registry (current release: 0.1.0). Check the repository for the current status before relying on registry discovery.</li>
+  <li><strong>Registry:</strong> not yet listed in the MCP Registry (current release: 0.2.1). Check the repository for the current status before relying on registry discovery.</li>
   <li><strong>Hosting:</strong> self-hosted only. There is no hosted marsdawn-mcp service; the server runs on your own machine, next to marsdawn itself.</li>
   <li><strong>Requirements:</strong> macOS, marsdawn 0.5.0 or later, and Node.js 20 or later to run the server.</li>
 </ul>
+
+<h2>Confined to folders you allow</h2>
+<p>Both tools only reach inside folders you allow: the extension's <strong>Allowed folders</strong> setting, which starts empty with no preset, or the roots your MCP client offers instead. With neither set, every call is refused, and the refusal message says how to fix that. Every path has to be absolute, and <code>export_markdown_to_pdf</code> only ever writes a <code>.pdf</code> file, never through a symlink.</p>
+<p><strong>Security:</strong> update to <a href="{MCP_URL}/releases/tag/v0.2.1">0.2.1</a> &#8212; 0.1.0 and 0.2.0 let a call write a PDF to any path your account could write, fixed as <a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a>.</p>
 
 <h2>Same export, three doors</h2>
 <p>Whichever surface calls it, the underlying behavior doesn't change: the same exporter, the same themes and paper sizes, the same <code>diagramErrors</code> when a Mermaid diagram fails to render. This page doesn't repeat that contract &#8212; <a href="/cli/agents/">marsdawn for agents</a> does, in full.</p>
@@ -1373,13 +1377,17 @@ BRAINSTORM_PAGES = {
 <p>如果你的 agent 讀的是純 Markdown 指令，而不是直接執行 shell&#8212;&#8212;目前是 Claude Code&#8212;&#8212;<a href="/zh-hant/cli/skill/">marsdawn skill</a> 就是一個檔案，教它安裝 marsdawn、執行 <code>export</code>、讀懂結果。因為它就是純 Markdown，其他會讀指令檔的 agent 也能用同一個檔案。</p>
 
 <h2>MCP 伺服器</h2>
-<p><a href="{MCP_URL}">marsdawn-mcp</a> 是另一個獨立、公開、{MCP_LICENSE} 授權的 repository。它是一個只有一個工具的 MCP 伺服器，<code>export_markdown_to_pdf</code>，包住 <code>marsdawn export --json</code>：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。</p>
+<p><a href="{MCP_URL}">marsdawn-mcp</a> 是另一個獨立、公開、{MCP_LICENSE} 授權的 repository。它是一個有兩個工具的 MCP 伺服器，<code>export_markdown_to_pdf</code> 和 <code>open_in_marsdawn</code>，分別包住 <code>marsdawn export --json</code> 和 <code>marsdawn open --json</code>：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。</p>
 <ul>
   <li><strong>取得方式：</strong>以 MCP Bundle（<code>marsdawn.mcpb</code>）的形式附在<a href="{MCP_URL}/releases">GitHub release</a> 上，或從原始碼以 stdio 執行伺服器。</li>
-  <li><strong>Registry：</strong>還沒上架 MCP Registry（目前版本：0.1.0）。要靠 registry 搜尋找到它之前，請先到 repository 確認目前狀態。</li>
+  <li><strong>Registry：</strong>還沒上架 MCP Registry（目前版本：0.2.1）。要靠 registry 搜尋找到它之前，請先到 repository 確認目前狀態。</li>
   <li><strong>託管：</strong>只能自架，沒有代管服務。伺服器跑在你自己的機器上，就在 marsdawn 旁邊。</li>
   <li><strong>系統需求：</strong>macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。</li>
 </ul>
+
+<h2>只能在你允許的資料夾裡運作</h2>
+<p>兩個工具都只能在你允許的資料夾裡讀寫：擴充功能的「Allowed folders」設定（預設是空的，沒有預設值），或是你的 MCP 用戶端提供的 root。兩者都沒有設定時，每次呼叫都會被拒絕，拒絕訊息會說明怎麼設定。每個路徑都必須是絕對路徑，而 <code>export_markdown_to_pdf</code> 只會寫出 <code>.pdf</code> 檔案，不會透過 symlink 寫。</p>
+<p><strong>安全性：</strong>請更新到 <a href="{MCP_URL}/releases/tag/v0.2.1">0.2.1</a>&#8212;&#8212;0.1.0 和 0.2.0 會讓呼叫把 PDF 寫到你帳號能寫入的任何路徑，已在 <a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a> 修好。</p>
 
 <h2>同一個 export，三扇門</h2>
 <p>不管從哪個介面呼叫，底層行為都一樣：同一套輸出程式、同樣的主題和紙張大小，Mermaid 圖表畫不出來時也是同樣的 <code>diagramErrors</code>。這頁不重複那份規格&#8212;&#8212;<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡有完整內容。</p>

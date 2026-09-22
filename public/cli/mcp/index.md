@@ -14,12 +14,18 @@ For an agent that reads plain-Markdown instructions instead of calling a shell d
 
 ## The MCP server
 
-[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) is a separate, public, Apache-2.0 repository. It's an MCP server with one tool, `export_markdown_to_pdf`, that wraps `marsdawn export --json`: point an MCP client at it and the tool call returns the same JSON as the CLI.
+[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) is a separate, public, Apache-2.0 repository. It's an MCP server with two tools, `export_markdown_to_pdf` and `open_in_marsdawn`, that wrap `marsdawn export --json` and `marsdawn open --json`: point an MCP client at it and a tool call returns the same JSON as the CLI.
 
 - **Get it:** as an MCP Bundle, `marsdawn.mcpb`, attached to [its GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases), or by running the server from source over stdio.
-- **Registry:** not yet listed in the MCP Registry (current release: 0.1.0). Check the repository for the current status before relying on registry discovery.
+- **Registry:** not yet listed in the MCP Registry (current release: 0.2.1). Check the repository for the current status before relying on registry discovery.
 - **Hosting:** self-hosted only. There is no hosted marsdawn-mcp service; the server runs on your own machine, next to marsdawn itself.
 - **Requirements:** macOS, marsdawn 0.5.0 or later, and Node.js 20 or later to run the server.
+
+## Confined to folders you allow
+
+Both tools only reach inside folders you allow: the extension's **Allowed folders** setting, which starts empty with no preset, or the roots your MCP client offers instead. With neither set, every call is refused, and the refusal message says how to fix that. Every path has to be absolute, and `export_markdown_to_pdf` only ever writes a `.pdf` file, never through a symlink.
+
+**Security:** update to [0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1) — 0.1.0 and 0.2.0 let a call write a PDF to any path your account could write, fixed as [GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc).
 
 ## Same export, three doors
 

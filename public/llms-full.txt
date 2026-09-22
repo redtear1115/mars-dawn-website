@@ -786,12 +786,18 @@ For an agent that reads plain-Markdown instructions instead of calling a shell d
 
 ## The MCP server
 
-[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) is a separate, public, Apache-2.0 repository. It's an MCP server with one tool, `export_markdown_to_pdf`, that wraps `marsdawn export --json`: point an MCP client at it and the tool call returns the same JSON as the CLI.
+[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) is a separate, public, Apache-2.0 repository. It's an MCP server with two tools, `export_markdown_to_pdf` and `open_in_marsdawn`, that wrap `marsdawn export --json` and `marsdawn open --json`: point an MCP client at it and a tool call returns the same JSON as the CLI.
 
 - **Get it:** as an MCP Bundle, `marsdawn.mcpb`, attached to [its GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases), or by running the server from source over stdio.
-- **Registry:** not yet listed in the MCP Registry (current release: 0.1.0). Check the repository for the current status before relying on registry discovery.
+- **Registry:** not yet listed in the MCP Registry (current release: 0.2.1). Check the repository for the current status before relying on registry discovery.
 - **Hosting:** self-hosted only. There is no hosted marsdawn-mcp service; the server runs on your own machine, next to marsdawn itself.
 - **Requirements:** macOS, marsdawn 0.5.0 or later, and Node.js 20 or later to run the server.
+
+## Confined to folders you allow
+
+Both tools only reach inside folders you allow: the extension's **Allowed folders** setting, which starts empty with no preset, or the roots your MCP client offers instead. With neither set, every call is refused, and the refusal message says how to fix that. Every path has to be absolute, and `export_markdown_to_pdf` only ever writes a `.pdf` file, never through a symlink.
+
+**Security:** update to [0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1) — 0.1.0 and 0.2.0 let a call write a PDF to any path your account could write, fixed as [GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc).
 
 ## Same export, three doors
 
@@ -1756,12 +1762,18 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 
 ## MCP 伺服器
 
-[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一個獨立、公開、Apache-2.0 授權的 repository。它是一個只有一個工具的 MCP 伺服器，`export_markdown_to_pdf`，包住 `marsdawn export --json`：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。
+[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一個獨立、公開、Apache-2.0 授權的 repository。它是一個有兩個工具的 MCP 伺服器，`export_markdown_to_pdf` 和 `open_in_marsdawn`，分別包住 `marsdawn export --json` 和 `marsdawn open --json`：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。
 
 - **取得方式：**以 MCP Bundle（`marsdawn.mcpb`）的形式附在[GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases) 上，或從原始碼以 stdio 執行伺服器。
-- **Registry：**還沒上架 MCP Registry（目前版本：0.1.0）。要靠 registry 搜尋找到它之前，請先到 repository 確認目前狀態。
+- **Registry：**還沒上架 MCP Registry（目前版本：0.2.1）。要靠 registry 搜尋找到它之前，請先到 repository 確認目前狀態。
 - **託管：**只能自架，沒有代管服務。伺服器跑在你自己的機器上，就在 marsdawn 旁邊。
 - **系統需求：**macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。
+
+## 只能在你允許的資料夾裡運作
+
+兩個工具都只能在你允許的資料夾裡讀寫：擴充功能的「Allowed folders」設定（預設是空的，沒有預設值），或是你的 MCP 用戶端提供的 root。兩者都沒有設定時，每次呼叫都會被拒絕，拒絕訊息會說明怎麼設定。每個路徑都必須是絕對路徑，而 `export_markdown_to_pdf` 只會寫出 `.pdf` 檔案，不會透過 symlink 寫。
+
+**安全性：**請更新到 [0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1)——0.1.0 和 0.2.0 會讓呼叫把 PDF 寫到你帳號能寫入的任何路徑，已在 [GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc) 修好。
 
 ## 同一個 export，三扇門
 
@@ -2716,12 +2728,18 @@ MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不
 
 ## MCP 服务器
 
-[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一个独立、公开、Apache-2.0 授权的 repository。它是一个只有一个工具的 MCP 服务器，`export_markdown_to_pdf`，包住 `marsdawn export --json`：把 MCP 客户端指向它，工具调用返回的 JSON 和 CLI 一样。
+[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一个独立、公开、Apache-2.0 授权的 repository。它是一个有两个工具的 MCP 服务器，`export_markdown_to_pdf` 和 `open_in_marsdawn`，分别包住 `marsdawn export --json` 和 `marsdawn open --json`：把 MCP 客户端指向它，工具调用返回的 JSON 和 CLI 一样。
 
 - **获取方式：**以 MCP Bundle（`marsdawn.mcpb`）的形式附在[GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases) 上，或从源代码以 stdio 运行服务器。
-- **Registry：**还没上架 MCP Registry（目前版本：0.1.0）。要靠 registry 搜索找到它之前，请先到 repository 确认目前状态。
+- **Registry：**还没上架 MCP Registry（目前版本：0.2.1）。要靠 registry 搜索找到它之前，请先到 repository 确认目前状态。
 - **托管：**只能自架，没有代管服务。服务器跑在你自己的机器上，就在 marsdawn 旁边。
 - **系统要求：**macOS、marsdawn 0.5.0 以上，以及运行服务器需要的 Node.js 20 以上。
+
+## 只能在你允许的文件夹里运作
+
+两个工具都只能在你允许的文件夹里读写：扩展的「Allowed folders」设置（默认是空的，没有预设值），或者你的 MCP 客户端提供的 root。两者都没设置时，每次调用都会被拒绝，拒绝消息会说明怎么设置。每个路径都必须是绝对路径，而 `export_markdown_to_pdf` 只会写出 `.pdf` 文件，不会通过 symlink 写。
+
+**安全性：**请更新到 [0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1)——0.1.0 和 0.2.0 会让调用把 PDF 写到你账号能写入的任何路径，已在 [GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc) 修复。
 
 ## 同一个 export，三扇门
 
@@ -3676,12 +3694,18 @@ MarsDawn には自前の AI モデルがありません。Markdown を書くた�
 
 ## MCP サーバー
 
-[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) は、別の、公開された、Apache-2.0 ライセンスの独立した repository です。`export_markdown_to_pdf` という1つのツールを持つ MCP サーバーで、`marsdawn export --json` をラップしています。MCP クライアントをそれに向ければ、ツール呼び出しは CLI と同じ JSON を返します。
+[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) は、別の、公開された、Apache-2.0 ライセンスの独立した repository です。`export_markdown_to_pdf` と `open_in_marsdawn` という2つのツールを持つ MCP サーバーで、それぞれ `marsdawn export --json` と `marsdawn open --json` をラップしています。MCP クライアントをそれに向ければ、ツール呼び出しは CLI と同じ JSON を返します。
 
 - **入手方法：**[GitHub のリリース](https://github.com/redtear1115/marsdawn-mcp/releases)に添付された MCP Bundle（`marsdawn.mcpb`）として、またはソースから stdio でサーバーを実行することで入手できます。
-- **Registry：**まだ MCP Registry には登録されていません（現在のリリース：0.1.0）。registry 経由で見つかる前に、repository で現在の状況を確認してください。
+- **Registry：**まだ MCP Registry には登録されていません（現在のリリース：0.2.1）。registry 経由で見つかる前に、repository で現在の状況を確認してください。
 - **ホスティング：**自分でホストするしかありません。marsdawn-mcp のホスティングサービスは存在せず、サーバーは marsdawn 自身の隣、あなた自身のマシン上で動きます。
 - **動作要件：**macOS、marsdawn 0.5.0 以降、そしてサーバーを実行するための Node.js 20 以降。
+
+## 許可したフォルダーの中でしか動きません
+
+両方のツールとも、許可したフォルダーの中でしか読み書きしません：拡張機能の「Allowed folders」設定（デフォルトは空で、既定値はありません）、またはお使いの MCP クライアントが提供する root のどちらかです。どちらも設定されていない場合、すべての呼び出しは拒否され、拒否メッセージに設定方法が書かれています。パスはすべて絶対パスである必要があり、`export_markdown_to_pdf` が書き出すのは `.pdf` ファイルだけで、シンボリックリンク経由で書き込むことはありません。
+
+**セキュリティ：**[0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1) に更新してください——0.1.0 と 0.2.0 では、呼び出しがあなたのアカウントが書き込めるどのパスにも PDF を書き込めてしまう問題があり、[GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc) で修正されました。
 
 ## 同じ export、三つの入り口
 

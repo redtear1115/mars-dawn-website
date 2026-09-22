@@ -14,12 +14,18 @@ MarsDawn には自前の AI モデルがありません。Markdown を書くた�
 
 ## MCP サーバー
 
-[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) は、別の、公開された、Apache-2.0 ライセンスの独立した repository です。`export_markdown_to_pdf` という1つのツールを持つ MCP サーバーで、`marsdawn export --json` をラップしています。MCP クライアントをそれに向ければ、ツール呼び出しは CLI と同じ JSON を返します。
+[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) は、別の、公開された、Apache-2.0 ライセンスの独立した repository です。`export_markdown_to_pdf` と `open_in_marsdawn` という2つのツールを持つ MCP サーバーで、それぞれ `marsdawn export --json` と `marsdawn open --json` をラップしています。MCP クライアントをそれに向ければ、ツール呼び出しは CLI と同じ JSON を返します。
 
 - **入手方法：**[GitHub のリリース](https://github.com/redtear1115/marsdawn-mcp/releases)に添付された MCP Bundle（`marsdawn.mcpb`）として、またはソースから stdio でサーバーを実行することで入手できます。
-- **Registry：**まだ MCP Registry には登録されていません（現在のリリース：0.1.0）。registry 経由で見つかる前に、repository で現在の状況を確認してください。
+- **Registry：**まだ MCP Registry には登録されていません（現在のリリース：0.2.1）。registry 経由で見つかる前に、repository で現在の状況を確認してください。
 - **ホスティング：**自分でホストするしかありません。marsdawn-mcp のホスティングサービスは存在せず、サーバーは marsdawn 自身の隣、あなた自身のマシン上で動きます。
 - **動作要件：**macOS、marsdawn 0.5.0 以降、そしてサーバーを実行するための Node.js 20 以降。
+
+## 許可したフォルダーの中でしか動きません
+
+両方のツールとも、許可したフォルダーの中でしか読み書きしません：拡張機能の「Allowed folders」設定（デフォルトは空で、既定値はありません）、またはお使いの MCP クライアントが提供する root のどちらかです。どちらも設定されていない場合、すべての呼び出しは拒否され、拒否メッセージに設定方法が書かれています。パスはすべて絶対パスである必要があり、`export_markdown_to_pdf` が書き出すのは `.pdf` ファイルだけで、シンボリックリンク経由で書き込むことはありません。
+
+**セキュリティ：**[0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1) に更新してください——0.1.0 と 0.2.0 では、呼び出しがあなたのアカウントが書き込めるどのパスにも PDF を書き込めてしまう問題があり、[GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc) で修正されました。
 
 ## 同じ export、三つの入り口
 
