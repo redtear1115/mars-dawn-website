@@ -21,7 +21,7 @@ from xml.sax.saxutils import escape as xml_escape
 SITE = Path(__file__).resolve().parent.parent / "public"
 UPDATED = "2026-09-17"
 # The privacy page has its own date: it changes when the policy does, not when other pages do.
-PRIVACY_UPDATED = "2026-09-19"
+PRIVACY_UPDATED = "2026-09-23"
 EMAIL = "support@southern-light.dev"
 BASE_URL = "https://marsdawn.southern-light.dev"
 
@@ -266,7 +266,20 @@ PAGES = {
   <p class="updated">Last updated {PRIVACY_UPDATED}</p>
 </section>
 
-<div class="summary"><p><strong>MarsDawn does not collect any data about you.</strong> There is no account, no analytics, no advertising and no tracking. Your documents and settings stay on your Mac.</p></div>
+<div class="summary"><p><strong>The MarsDawn app does not collect any data about you.</strong> There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.</p></div>
+
+<h2>The website</h2>
+<p>The app and this website are two different things. The app collects nothing. A visit can be recorded only here, on marsdawn.southern-light.dev.</p>
+<p><strong>This is not on yet.</strong> This website sends nothing to an analytics service today. The list below is what it will record once that is switched on. It is published now so the description is already public before the first event. On the day it is switched on, delete this paragraph and leave the list.</p>
+<p>Once it is on:</p>
+<ul>
+  <li><strong>Page views.</strong> The server records that a page was requested, and the referring address when the browser sends one.</li>
+  <li><strong>Clicks that leave through this site.</strong> A click that goes out through a redirect on this site, such as the link to the Mac App Store, is recorded. The destination is a fixed address, and the redirect adds no tracking parameters.</li>
+  <li><strong>What is not recorded.</strong> No cookies, no local storage, and no analytics script in the page. No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under <code>/themes/</code> are skipped, and are not sent on.</li>
+  <li><strong>A visit is only a page view.</strong> Each request is given a new random id, used for that request and not again. The site cannot recognise you on a later visit.</li>
+  <li><strong>Where it goes.</strong> The site's own server sends these events to PostHog, in the {{{{POSTHOG_REGION}}}} region. Your browser does not contact PostHog. PostHog keeps the events for {{{{RETENTION}}}}. The full IP address is not forwarded.</li>
+  <li><strong>The host.</strong> Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.</li>
+</ul>
 
 <h2>What stays on your Mac</h2>
 <ul>
@@ -295,7 +308,7 @@ PAGES = {
 <p>The optional <code>marsdawn</code> command-line tool, distributed separately, also runs entirely on your Mac. It reads the Markdown file you name and writes the PDF you ask for. It loads web images only when you pass <code>--allow-remote-images</code>.</p>
 
 <h2>Children</h2>
-<p>MarsDawn does not collect data from anyone, including children.</p>
+<p>The MarsDawn app does not collect data from anyone, including children. A visit recorded on the website is not an account, and it is not used to identify anyone.</p>
 
 <h2>Purchases</h2>
 <p>MarsDawn will be sold through the Mac App Store. Apple will process the purchase under its own terms, and the developer never receives your payment details.</p>
@@ -317,7 +330,20 @@ PAGES = {
   <p class="updated">最後更新：{PRIVACY_UPDATED}</p>
 </section>
 
-<div class="summary"><p><strong>MarsDawn 不收集任何關於你的資料。</strong>沒有帳號、沒有分析、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。</p></div>
+<div class="summary"><p><strong>MarsDawn app 不收集任何關於你的資料。</strong>沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。</p></div>
+
+<h2>這個網站</h2>
+<p>App 和這個網站是兩件事。App 不收集資料。會記下造訪的，只有 marsdawn.southern-light.dev。</p>
+<p><strong>目前還沒有開啟。</strong>這個網站今天不會把任何東西送到分析服務。下面是開啟之後會記錄的內容，先寫在這裡，讓第一筆記錄出現之前，說明就已經公開。開啟的那天，刪掉這一段，其餘留下。</p>
+<p>開啟之後：</p>
+<ul>
+  <li><strong>頁面瀏覽。</strong>伺服器會記錄某個頁面被請求，以及瀏覽器有送出來源網址時的那個網址。</li>
+  <li><strong>經由本站轉出去的點擊。</strong>經由本站轉址才離開的點擊會被記錄，例如前往 Mac App Store 的連結。目的地是固定網址，轉址不會附加追蹤參數。</li>
+  <li><strong>不會記錄的。</strong>沒有 cookie，也不使用瀏覽器的本地儲存，頁面裡沒有分析程式。沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 <code>/themes/</code> 索取主題檔案的請求會被略過，不會送出。</li>
+  <li><strong>一次造訪只是一次瀏覽。</strong>每個請求配一組只用一次的隨機編號，用完即棄。網站無法在你下次來時認出你。</li>
+  <li><strong>資料去哪裡。</strong>這些事件由網站自己的伺服器送給 PostHog（{{{{POSTHOG_REGION}}}} 區）。你的瀏覽器不會連到 PostHog。PostHog 會把這些事件保留 {{{{RETENTION}}}}。完整的 IP 位址不會轉送過去。</li>
+  <li><strong>主機。</strong>網站放在 Cloudflare。和任何主機一樣，它在回應請求時會看到你的 IP 位址。那是主機自己的日誌，不是上面的分析。</li>
+</ul>
 
 <h2>留在你 Mac 上的東西</h2>
 <ul>
@@ -346,7 +372,7 @@ PAGES = {
 <p>另外發佈、可自由選用的 <code>marsdawn</code> 命令列工具，同樣完全在你的 Mac 上執行：只讀取你指定的 Markdown 檔，並寫出你要求的 PDF。只有在加上 <code>--allow-remote-images</code> 時才會載入網路圖片。</p>
 
 <h2>兒童</h2>
-<p>MarsDawn 不向任何人收集資料，包括兒童。</p>
+<p>MarsDawn app 不向任何人收集資料，包括兒童。網站上記下的造訪不是帳號，也不用來辨認任何人。</p>
 
 <h2>購買</h2>
 <p>MarsDawn 將透過 Mac App Store 販售，付款會由 Apple 依其條款處理，開發者不會取得你的付款資訊。</p>
