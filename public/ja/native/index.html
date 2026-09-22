@@ -43,7 +43,7 @@
   <div class="shot-frame"><div class="shot-canvas">
     <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn の分割ビュー：左が Markdown のソース、右がレンダリングされたページ。">
     <span class="marker l tb co-native-1" aria-hidden="true">1</span><span class="marker l co-native-2" aria-hidden="true">2</span><span class="marker r tb co-native-3" aria-hidden="true">3</span><span class="marker r co-native-4" aria-hidden="true">4</span>
-    <span class="leader l co-native-1" aria-hidden="true"><span>ネイティブの Mac ウインドウ。</span></span><span class="leader l co-native-2" aria-hidden="true"><span>Mac のテキストエディタに、Markdown ハイライトを追加したもの。</span></span><span class="leader r co-native-3" aria-hidden="true"><span>⌘1 でソース、⌘2 で分割、⌘3 でプレビュー。</span></span><span class="leader r co-native-4" aria-hidden="true"><span>入力するとページが更新されます。</span></span>
+    <span class="leader l up co-native-1" aria-hidden="true"><span>ネイティブの Mac ウインドウ。</span></span><span class="leader l down co-native-2" aria-hidden="true"><span>Mac のテキストエディタに、Markdown ハイライトを追加したもの。</span></span><span class="leader r up co-native-3" aria-hidden="true"><span>⌘1 でソース、⌘2 で分割、⌘3 でプレビュー。</span></span><span class="leader r down co-native-4" aria-hidden="true"><span>入力するとページが更新されます。</span></span>
   </div></div>
   <figcaption>
     <span class="figure-label">このスクリーンショットの内容</span>
@@ -71,11 +71,12 @@
 </nav>
 </main>
 <footer class="footer">
-  <span>エージェントが書いた Markdown を読む。</span>
-  <a href="/ja/support/">サポート</a>
-  <a href="/ja/privacy/">プライバシーポリシー</a>
-  <a href="/ja/cli/">コマンドライン</a>
-  <span>MarsDawn は Mac App Store で近日公開予定です。</span>
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+  </nav>
+  <p class="footer-meta"><span>エージェントが書いた Markdown を読む。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>
