@@ -277,7 +277,7 @@ PAGES = {
   <li><strong>Clicks that leave through this site.</strong> A click that goes out through a redirect on this site, such as the link to the Mac App Store, is recorded. The destination is a fixed address, and the redirect adds no tracking parameters.</li>
   <li><strong>What is not recorded.</strong> No cookies, no local storage, and no analytics script in the page. No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under <code>/themes/</code> are skipped, and are not sent on.</li>
   <li><strong>A visit is only a page view.</strong> Each request is given a new random id, used for that request and not again. The site cannot recognise you on a later visit.</li>
-  <li><strong>Where it goes.</strong> The site's own server sends these events to PostHog, in the {{{{POSTHOG_REGION}}}} region. Your browser does not contact PostHog. PostHog keeps the events for {{{{RETENTION}}}}. The full IP address is not forwarded.</li>
+  <li><strong>Where it goes.</strong> The site's own server sends these events to PostHog, in the United States region. Your browser does not contact PostHog. PostHog keeps the events for 12 months. The full IP address is not forwarded.</li>
   <li><strong>The host.</strong> Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.</li>
 </ul>
 
@@ -341,7 +341,7 @@ PAGES = {
   <li><strong>經由本站轉出去的點擊。</strong>經由本站轉址才離開的點擊會被記錄，例如前往 Mac App Store 的連結。目的地是固定網址，轉址不會附加追蹤參數。</li>
   <li><strong>不會記錄的。</strong>沒有 cookie，也不使用瀏覽器的本地儲存，頁面裡沒有分析程式。沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 <code>/themes/</code> 索取主題檔案的請求會被略過，不會送出。</li>
   <li><strong>一次造訪只是一次瀏覽。</strong>每個請求配一組只用一次的隨機編號，用完即棄。網站無法在你下次來時認出你。</li>
-  <li><strong>資料去哪裡。</strong>這些事件由網站自己的伺服器送給 PostHog（{{{{POSTHOG_REGION}}}} 區）。你的瀏覽器不會連到 PostHog。PostHog 會把這些事件保留 {{{{RETENTION}}}}。完整的 IP 位址不會轉送過去。</li>
+  <li><strong>資料去哪裡。</strong>這些事件由網站自己的伺服器送給 PostHog（美國區）。你的瀏覽器不會連到 PostHog。PostHog 會把這些事件保留 12 個月。完整的 IP 位址不會轉送過去。</li>
   <li><strong>主機。</strong>網站放在 Cloudflare。和任何主機一樣，它在回應請求時會看到你的 IP 位址。那是主機自己的日誌，不是上面的分析。</li>
 </ul>
 
