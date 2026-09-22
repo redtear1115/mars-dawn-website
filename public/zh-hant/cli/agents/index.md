@@ -75,9 +75,9 @@ marsdawn 0.2.x 的 `opened` 是路徑字串的清單。如果需要同時處理�
 
 ## 在 Claude Code 編輯時開啟檔案
 
-一個需要自行啟用的 [Claude Code hook](https://code.claude.com/docs/en/hooks)：Claude 寫入或編輯 Markdown 檔案之後，在背景用 MarsDawn 開啟那個檔案，每個 session 每個檔案只開一次。除非你加上它，否則不會啟用，而且要一個專案一個專案加，因為沒要求就跳出來的視窗會打斷注意力。它執行的是 shell 指令，不花模型 token。
+一個需要自行啟用的 [Claude Code hook](https://code.claude.com/docs/en/hooks)：Claude 寫入或編輯 Markdown 檔案之後，在背景用 MarsDawn 開啟那個檔案，每個 session 每個檔案只開一次。除非你加上它，否則不會啟用，而且要一個專案一個專案加，因為你沒要求就跳出來的視窗會打斷注意力。它執行的是 shell 指令，不花模型 token。
 
-需要 marsdawn 0.5.1 或更新版本（為了 `--background`），以及 MarsDawn app。
+需要 marsdawn 0.5.1 或更新版本，才有 `--background`，以及 MarsDawn app。
 
 把下面的內容存成專案裡的 `.claude/hooks/marsdawn-open.sh`，再用 `chmod +x` 讓它可以執行：
 
@@ -129,7 +129,7 @@ exit 0
 - 在同一個 Claude Code session 裡，每個檔案只開一次，不管 Claude 編輯幾次。清單存在 `$TMPDIR/marsdawn-hook/`，每個 session 一個檔案，所以開新的 session 會再開一次。
 - `--background` 讓 MarsDawn 不會跳到最前面：你正在用的視窗會保持焦點。
 - 它不會擋到 Claude。每條路徑都以 0 結束；如果沒有安裝 marsdawn 或 MarsDawn app，就什麼都不做。
-- 它用 `/usr/bin/jq` 讀取 hook 的輸入。macOS 26 內建這個工具，而 MarsDawn app 本來就需要 macOS 26。
+- 它用 `/usr/bin/jq` 讀取 hook 的輸入。macOS 26 內建這個工具，而 MarsDawn app 也需要 macOS 26。
 - 要關掉，從設定檔移除這一項即可。
 
 ## 失敗
