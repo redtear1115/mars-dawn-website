@@ -388,6 +388,11 @@ img.pdf-page {
     line-height: 1.45;
     text-wrap: pretty;
   }
+  /* A close pair in one gutter (build_pages.py, CLOSE_CALLOUTS): the upper label grows up and the
+     lower one down, each keeping the line of text nearest the other on its leader. 0.64em is half
+     a line (line-height 1.45). */
+  .leader.up > span { translate: 0 calc(-100% + 0.64em); }
+  .leader.down > span { translate: 0 -0.64em; }
   .leader.r > span { left: 100%; padding-left: 0.7rem; }
   .leader.l > span { right: 100%; padding-right: 0.7rem; text-align: right; }
   /* The labels are drawn in the gutters; the list stays for screen readers. */

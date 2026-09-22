@@ -2167,6 +2167,24 @@ def trait_nav_html(locale: str, current: str) -> str:
     return f'<nav class="traits" aria-label="{TRAIT_NAV_HEADING[locale]}">\n<h2>{TRAIT_NAV_HEADING[locale]}</h2>\n<ul>\n{items}\n</ul>\n</nav>'
 
 
+# Two labels in the same gutter whose markers are closer than this (in % of the screenshot's
+# height) would overlap once a label wraps to three or four lines, as the Japanese ones do. Each
+# label is centred on its leader, and the site has no script to move one out of the other's way,
+# so the pair is split at build time: the upper label grows up from its leader, the lower one down.
+CLOSE_CALLOUTS = 20
+
+
+def callout_growth(callouts: list) -> dict:
+    """Index -> " up" / " down" for each label in a close same-side pair; centred otherwise."""
+    growth = {}
+    for side in ("l", "r"):
+        ordered = sorted((y, i) for i, (_, y, s, _) in enumerate(callouts) if s == side)
+        for (y1, upper), (y2, lower) in zip(ordered, ordered[1:]):
+            if y2 - y1 < CLOSE_CALLOUTS and upper not in growth and lower not in growth:
+                growth[upper], growth[lower] = " up", " down"
+    return growth
+
+
 def figure_html(locale: str, slug: str) -> str:
     # The homepage hero shot spans min(76rem, 100vw - 48px); trait shots sit
     # inside 12rem gutters, so about 50rem.
@@ -2182,7 +2200,8 @@ def figure_html(locale: str, slug: str) -> str:
         cls = f"co-{slug}-{index}"
         edge = " tb" if y < 9 else ""
         markers.append(f'<span class="marker {side}{edge} {cls}" aria-hidden="true">{index}</span>')
-        lines.append(f'<span class="leader {side} {cls}" aria-hidden="true"><span>{label[locale]}</span></span>')
+        grow = callout_growth(fig["callouts"]).get(index - 1, "")
+        lines.append(f'<span class="leader {side}{grow} {cls}" aria-hidden="true"><span>{label[locale]}</span></span>')
         legend.append(f"<li>{label[locale]}</li>")
     figcaption = ""
     if legend:
