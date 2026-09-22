@@ -75,6 +75,7 @@ UI = {
         "vs-macmd-viewer": "MacMD Viewer vs. MarsDawn",
         "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.",
         "footer_store": "MarsDawn is coming soon to the Mac App Store.",
+        "footer_nav": "Site",
         "more": "More",
         "yours": "Your writing stays on your Mac", "pay-once": "Try free, pay once", "pdf": "PDF export",
         "native": "A Mac app", "limits": "What MarsDawn doesn't do",
@@ -90,6 +91,7 @@ UI = {
         "vs-macmd-viewer": "MacMD Viewer 對比 MarsDawn",
         "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。",
         "footer_store": "MarsDawn 即將在 Mac App Store 上架。",
+        "footer_nav": "網站",
         "more": "其他頁面",
         "yours": "你寫的內容留在你的 Mac 上", "pay-once": "免費試用，買一次就好", "pdf": "輸出 PDF",
         "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
@@ -2510,18 +2512,23 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
         main_html = page["body"].strip()
+    # Two rows, the same on every page (#65): the site's links, then a meta line. The home page's meta
+    # line is the origin mark alone, because the closing band just above already says the tagline and
+    # the store line. The origin mark is deliberately untranslated, as on Futari's site.
+    current = {slug: ' aria-current="page"'}
     footer_links = "".join(
-        f'  <a href="{page_path(locale, target)}">{ui[target]}</a>\n'
+        f'    <a href="{page_path(locale, target)}"{current.get(target, "")}>{ui[target]}</a>\n'
         for target in ("support", "privacy", "cli")
         if has_page(locale, target)
     )
-    if slug == "index":
-        footer_html = f'<footer class="footer footer-home">\n{footer_links}</footer>'
-    else:
-        footer_html = (
-            f'<footer class="footer">\n  <span>{ui["tagline"]}</span>\n{footer_links}'
-            f'  <span>{ui["footer_store"]}</span>\n</footer>'
-        )
+    footer_meta = '<span class="footer-origin">© 2026 · MADE IN TAIWAN</span>'
+    if slug != "index":
+        footer_meta = f'<span>{ui["tagline"]}</span> <span>{ui["footer_store"]}</span> {footer_meta}'
+    footer_html = (
+        f'<footer class="footer{" footer-home" if slug == "index" else ""}">\n'
+        f'  <nav class="footer-nav" aria-label="{ui["footer_nav"]}">\n{footer_links}  </nav>\n'
+        f'  <p class="footer-meta">{footer_meta}</p>\n</footer>'
+    )
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>

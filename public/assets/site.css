@@ -203,10 +203,16 @@ kbd {
   color: var(--dust);
   font-size: 0.9rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
+  flex-direction: column;
+  gap: 10px;
 }
+/* Two rows (#65): the site's links, then the meta line. */
+.footer-nav,
+.footer-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0; }
 .footer a { color: var(--dust); white-space: nowrap; }
+.footer a[aria-current="page"] { color: var(--ink); }
+/* The origin mark, set as Futari's site sets it: tracked caps, the same in every language. */
+.footer-origin { font-size: 0.78rem; letter-spacing: 2px; white-space: nowrap; }
 
 /* Cloudflare can inject a hidden trap link at the top of <body>, hidden with an
    inline style that the CSP blocks. Hide it here so it is not a keyboard stop. */
@@ -695,4 +701,5 @@ html { overflow-x: hidden; }
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
-.footer-home { margin-top: 20px; border-top: 0; }
+/* The home footer keeps the hairline, so the closing band, the rule and the links read as layers. */
+.footer-home { margin-top: 40px; }
