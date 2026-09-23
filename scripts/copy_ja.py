@@ -7,7 +7,7 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 
 
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'footer_store': 'MarsDawn は Mac App Store で近日公開予定です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを使わないレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由'}
+    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': 'MarsDawn は Mac App Store で近日公開予定です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'changelog': '更新履歴', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定'}
     store_chip = 'Mac App Store で近日公開'
     schema_notes = {'export': 'export 成功時', 'open': 'open 成功時、marsdawn 0.3.0 以降', 'error': '失敗時、両方のコマンド共通', 'open_v1': 'open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）'}
     example_plan = '# 計画：エクスポートを高速化\n\nこの計画はエージェントが書きました。内容を確認してから、PDF にします。\n\n## ステップ\n\n| ステップ | 担当 | 状況 |\n|------|-------|--------|\n| 遅いページを計測する | エージェント | 完了 |\n| レンダリング済み図をキャッシュする | エージェント | レビュー中 |\n\n50 ページの文書で目標とするのは $t < 2\\,\\text{s}$：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  ドラフト --> レビュー --> 公開\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -20,11 +20,11 @@ def build(k) -> dict:
             "callouts": [],
         },
         'yours': {
-            "alt": 'MarsDawn が Classic テーマで文書を表示し、プレビューがウインドウいっぱいに広がっている。',
+            "alt": 'MarsDawn がクラシックテーマで文書を表示し、プレビューがウインドウいっぱいに広がっている。',
             "callouts": ['あなたの Mac 上のファイルで、選んだ場所に保存されます。', 'ツールバーにあるのはテーマとレイアウトだけで、サインインするものは何もありません。'],
         },
         'pay-once': {
-            "alt": 'MarsDawn が Vivid テーマで、左に Markdown のソース、右にレンダリングされたページを表示している。',
+            "alt": 'MarsDawn がビビッドテーマで、左に Markdown のソース、右にレンダリングされたページを表示している。',
             "callouts": ['エディタの Markdown ハイライトも含まれます。', 'すべてのテーマとレイアウトが含まれます。', 'Mermaid 図も含まれます。', 'コードのハイライトも含まれます。'],
         },
         'pdf': {
@@ -101,7 +101,22 @@ def build(k) -> dict:
   <p class="updated">最終更新日：{k.PRIVACY_UPDATED}</p>
 </section>
 
-<div class="summary"><p><strong>MarsDawn はあなたに関するデータを一切収集しません。</strong>アカウントも、アナリティクスも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。</p></div>
+<div class="summary"><p><strong>MarsDawn アプリは、あなたに関するデータを一切収集しません。</strong>アカウントも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。</p></div>
+
+<h2>このウェブサイト</h2>
+<p>アプリとこのウェブサイトは別のものです。アプリはデータを収集しません。訪問が記録され得るのは、marsdawn.southern-light.dev だけです。</p>
+<p>このサイトは<strong>Google タグマネージャー</strong>経由で読み込まれる<strong>Google アナリティクス 4</strong>を使用しています。訪問者は最初、分析が拒否された状態で始まります。Google の同意モードは、バナーで「同意する」を選ぶまで、クッキーを使わず持続的な識別子も含まない通信だけを送ります。「同意しない」を選んだ場合、または何も選ばなかった場合も、この状態が続きます。以前に「同意する」を選んでいた場合でも、あとから「同意しない」に変更すると、分析はすぐに無効になり、下記のクッキーも削除されます。いつでもフッターの「Cookie 設定」リンクから選択を変更できます。この選択はブラウザのローカルストレージにのみ保存され、当サイト独自のクッキーではありません。</p>
+<p>同意すると、Google アナリティクスは自身のクッキー（<code>_ga</code> と <code>_ga_&lt;測定 ID&gt;</code>）を設定し、次を記録します。</p>
+<ul>
+  <li><strong>ページビューと参照元。</strong>閲覧されたページと、ブラウザが送信した場合の参照元アドレス。</li>
+  <li><strong>おおよその位置情報、デバイス、ブラウザ。</strong>IP アドレスから推定される、市区町村レベル程度までの位置情報、デバイスの種類、OS、ブラウザ。いずれも個人を特定できるものではありません。</li>
+  <li><strong>サイトを離れるクリックとスクロール。</strong>Google アナリティクスの拡張計測機能は、サイトを離れるクリック（Mac App Store へのリンクなど）と、ページをどこまでスクロールしたかを記録します。</li>
+  <li><strong>IP アドレス。</strong>Google アナリティクス 4 は IP アドレスを記録・保存しません。</li>
+  <li><strong>記録しないもの。</strong>アカウントはありません。このサイトにアカウント機能がないためです。文書も、入力した文字も記録しません。サイトをまたいだ広告もなく、あなたのプロフィールも作りません。アプリが <code>/themes/</code> 以下のテーマファイルを取りに行くリクエストは対象外で、送られません。</li>
+  <li><strong>保持期間。</strong>Google はこのデータを14か月保持したあと、削除します。</li>
+  <li><strong>データの処理場所。</strong>Google タグマネージャーと Google アナリティクスは Google が運営しており、データは米国および Google が事業を行うその他の国で処理される場合があります。</li>
+  <li><strong>ホスティング。</strong>サイトは Cloudflare 上にあります。どのホストとも同じく、リクエストに応答する間は IP アドレスを見ます。それはホスト自身のログであり、上のアナリティクスではありません。</li>
+</ul>
 
 <h2>あなたの Mac に残るもの</h2>
 <ul>
@@ -130,7 +145,7 @@ def build(k) -> dict:
 <p>別途配布される、使うかどうかを選べる <code>marsdawn</code> コマンドラインツールも、完全にあなたの Mac 上で動作します。指定した Markdown ファイルを読み込み、要求された PDF を書き出します。<code>--allow-remote-images</code> を指定したときだけウェブ画像を読み込みます。</p>
 
 <h2>子ども</h2>
-<p>MarsDawn は、子どもを含め、誰からもデータを収集しません。</p>
+<p>MarsDawn アプリは、子どもを含め、誰からもデータを収集しません。ウェブサイトに記録される訪問はアカウントではなく、誰かを識別するためにも使いません。</p>
 
 <h2>購入</h2>
 <p>MarsDawn は Mac App Store を通じて販売されます。購入は Apple 自身の規約のもとで処理され、開発者があなたの支払い情報を受け取ることはありません。</p>
@@ -144,22 +159,21 @@ def build(k) -> dict:
     }
     pages['index'] = {
         "title": 'MarsDawn：ライブプレビュー搭載、Mac 向け Markdown エディタ',
-        "description": 'ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向け Markdown エディタ。AI エージェントが書いた文章を読むために作られました。Mac App Store で近日公開予定です。',
+        "description": 'エージェント開発の舵を取る人のための Markdown。ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向けエディタです。Mac App Store で近日公開予定です。',
         "intro": f"""
 <section class="intro hero">
-  <p class="kicker">AI ワークフローのために作られました</p>
-  <h1>エージェントが書いた Markdown を、じっくり読む場所。</h1>
-  <p>AI エージェントが Markdown を書きます。あなたは MarsDawn でそれを確認します。ソースとレンダリングされたページを並べて見て、修正を伝えます。</p>
+  <p class="kicker">ビルダーのためのフロンティアツール</p>
+  <h1><span>地図を手に。</span><span>夜明けを読む。</span></h1>
+  <p>エージェント開発の舵を取る人のための Markdown。</p>
 </section>
 """,
         "body": f"""
-<h2 class="loop-title">このループ</h2>
+<h2 class="loop-title">エージェントが書いた Markdown を読む。</h2>
 <ol class="loop-steps">
   <li><strong>エージェントが書く。</strong>あなたのコーディングエージェントやライティングアシスタントが Markdown の下書きを作ります。README、仕様書、メモなど。</li>
   <li><strong>MarsDawn で確認する。</strong>ファイルを開き、Mermaid 図やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。</li>
   <li><strong>エージェントが修正する。</strong>変更を依頼します。修正されたファイルを開き、同じように読みます。</li>
 </ol>
-<p>エージェントは MarsDawn を直接操作することもできます。無料の <a href="/ja/cli/">marsdawn</a> コマンドラインツールは、確認用にファイルを開いたり PDF を書き出したりでき、スクリプト向けの JSON 出力にも対応しています。詳細は<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>をご覧ください。</p>
 """,
     }
     pages['yours'] = {
@@ -194,10 +208,12 @@ def build(k) -> dict:
 """,
         "body": f"""
 <h2>仕組み</h2>
+<ol class="loop-steps">
+  <li><strong>無料でダウンロード。</strong> MarsDawn は Mac App Store から無料でダウンロードできます。</li>
+  <li><strong>14 日間、すべて使える。</strong> トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。</li>
+  <li><strong>一度の購入で解除。</strong> その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。</li>
+</ol>
 <ul>
-  <li>MarsDawn は Mac App Store から無料でダウンロードできます。</li>
-  <li>トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。</li>
-  <li>その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。</li>
   <li>トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。</li>
   <li>アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。</li>
 </ul>
@@ -241,10 +257,14 @@ def build(k) -> dict:
 """,
         "body": f"""
 <h2>それが意味すること</h2>
+<h3>編集</h3>
 <ul>
   <li>ソース、分割、プレビューの3つのレイアウトを、キー1つで切り替え（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
   <li>2つのペインは一緒にスクロールするので、編集中の段落が常に見えています。</li>
   <li>エディタの Markdown シンタックスハイライトは、プレビューのテーマに合わせられます。</li>
+</ul>
+<h3>Mac のほかの部分と</h3>
+<ul>
   <li>ネイティブなウインドウ、タブ、自動保存、バージョン履歴。</li>
   <li>クイックルック：Finder で Markdown ファイルを選んでスペースキーを押すとプレビューでき、図も表示されます。</li>
   <li>Siri とショートカット：テンプレートから新しい文書を作成する、メモの受信トレイに1行追加する、最近使った文書を再度開く、といった操作ができます。</li>
@@ -263,18 +283,23 @@ def build(k) -> dict:
 """,
         "body": f"""
 <h2>省かれているもの</h2>
+<h3>デバイスと使う人</h3>
 <ul>
   <li><strong>同期：</strong>MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。</li>
   <li><strong>iPhone と iPad：</strong>これらの端末向けアプリはありません。MarsDawn は Mac 専用です。</li>
-  <li><strong>プラグイン：</strong>MarsDawn にプラグインや拡張機能はありません。</li>
   <li><strong>共有：</strong>アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。</li>
-  <li><strong>編集：</strong>左に Markdown を書き、右でページを読みます。ページ自体は編集できません。</li>
-  <li><strong>形式：</strong>MarsDawn は PDF の書き出しと印刷に対応していますが、Word ファイルへの書き出しはできません。</li>
-  <li><strong>テーマ：</strong>Dawn、Classic、Modern、Vivid の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。</li>
-  <li><strong>その他のファイル：</strong>プレーンテキストファイルと PDF は読み取り専用で開きます。</li>
-  <li><strong>トライアル終了後：</strong>14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。</li>
   <li><strong>システム：</strong>MarsDawn には macOS 26 以降が必要です。</li>
 </ul>
+<h3>ファイルと機能</h3>
+<ul>
+  <li><strong>編集：</strong>左に Markdown を書き、右でページを読みます。ページ自体は編集できません。</li>
+  <li><strong>形式：</strong>MarsDawn は PDF の書き出しと印刷に対応していますが、Word ファイルへの書き出しはできません。</li>
+  <li><strong>その他のファイル：</strong>プレーンテキストファイルと PDF は読み取り専用で開きます。</li>
+  <li><strong>テーマ：</strong>夜明け、クラシック、モダン、ビビッド の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。</li>
+  <li><strong>プラグイン：</strong>MarsDawn にプラグインや拡張機能はありません。</li>
+</ul>
+<h2>試用期間が終わったら</h2>
+<p>14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。</p>
 """,
     }
     pages['view-markdown-on-mac'] = {
@@ -362,23 +387,9 @@ marsdawn --version</code></pre>
 <h2>読むだけでよく、編集の必要がない場合</h2>
 <p>他の人が書いた Markdown を読むことだけが仕事で、ソースに触れる必要が一切ないなら、MacMD Viewer は妥当な選択です。まさにそのために作られており、今すぐ入手でき、より古い macOS でも動作します。読むことだけが仕事ではなくなったときに MarsDawn が価値を持ちます。エージェントの Markdown はたいてい、もう一度手直しが入るからです。</p>
 <h2>それぞれのアプリでできること</h2>
-<ul>
-  <li><strong>編集：</strong>MacMD Viewer は設計上、読み取り専用です。MarsDawn はソースを編集しながらその場でレンダリングするので、入力すると変更が表示されます。</li>
-  <li><strong>プレビューのテーマ：</strong>MacMD Viewer には12種類の文書テーマがあります。MarsDawn は Dawn、Classic、Modern、Vivid の4種類で、それぞれライトとダークのパレットがあります。</li>
-  <li><strong>図と数式：</strong>どちらも Mermaid 図をレンダリングし、コードをハイライトします。MarsDawn は KaTeX の数式もレンダリングしますが、MacMD Viewer 自身の紹介には数式のレンダリングについて記載がありません。</li>
-  <li><strong>Finder 連携：</strong>どちらもクイックルック拡張機能を追加しており、Finder で <code>.md</code> ファイルを選んでスペースキーを押すとレンダリングされたページが表示されます。</li>
-  <li><strong>PDF と印刷：</strong>どちらもレンダリングされたページを PDF として書き出したり印刷したりできます。</li>
-  <li><strong>システム要件：</strong>MacMD Viewer は macOS 14（Sonoma）以降が必要です。MarsDawn は macOS 26（Tahoe）以降が必要です。</li>
-  <li><strong>言語：</strong>MarsDawn のインターフェースは{k.APP_UI_LANGUAGES}に対応しています。MacMD Viewer 自身の資料は UI の言語を明記していないため、このページではその点を比較していません。</li>
-</ul>
+<!--compare:macmd-features-->
 <h2>価格と購入方法</h2>
-<ul>
-  <li><strong>購入場所：</strong>MacMD Viewer は自社サイトから直接ダウンロードでき、Homebrew と Setapp にもありますが、Mac App Store にはありません。MarsDawn は Mac App Store のみです。</li>
-  <li><strong>価格：</strong>MacMD Viewer は1台の Mac につき一度きり USD 19.99（3台パックやボリュームパックはより高額）。MarsDawn は無料でダウンロードでき、その後 USD 4.99 の一度きりのロック解除です。</li>
-  <li><strong>先に試す：</strong>MacMD Viewer には無料トライアルはなく、直接購入には代わりに14日間の返金保証が付いています。MarsDawn は支払う前に14日間のトライアルを提供します。</li>
-  <li><strong>返金と更新：</strong>MacMD Viewer の返金と更新は自社サイトで処理されます。MarsDawn の購入は Apple を通じて行われるため、返金と更新は Apple の標準プロセスを使います。</li>
-  <li><strong>アカウント：</strong>どちらのアプリも利用にアカウントは不要です。</li>
-</ul>
+<!--compare:macmd-buying-->
 <h2>今すぐ無料で試す</h2>
 <p>MarsDawn は Mac App Store で近日公開予定で、まだ販売されていません。それまでは、無料の <code>marsdawn</code> コマンドラインツールが、今すぐどんな Markdown ファイルも Mermaid 図とハイライトされたコード付きの PDF にレンダリングでき、他に何もインストールする必要はありません。</p>
 <pre><code>{k.BREW_TAP_INSTALL}
@@ -450,6 +461,7 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> は、<code>--force</code> を指定しない限り、既存の出力ファイルを置き換えません。</p>
 
 <h2>終了コード</h2>
+<!--exit-table-->
 <ul>
   <li><code>0</code>：成功。</li>
   <li><code>2</code>：入力が見つからない。</li>
@@ -578,6 +590,7 @@ swift build -c release --product marsdawn
   <h1>PDF 作成をエージェントに任せる。</h1>
   <p>このスキルは1つの Markdown ファイルです。コーディングエージェントに <code>marsdawn</code> のインストール方法、動作確認の方法、文書を PDF に書き出す方法、結果の読み方を教えます。これにより、Markdown を書いたエージェントが PDF もあなたに渡せるようになります。</p>
 </section>
+<div class="summary"><p><strong>1つの Markdown ファイルを <code>~/.claude/skills/marsdawn/SKILL.md</code> に置くだけ。</strong>これでエージェントが <code>marsdawn</code> をインストールし、PDF に書き出し、JSON の結果を読みます。何かを実行する前には、これまでどおり確認を求めます。</p></div>
 <h2>Claude Code にインストールする</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
@@ -611,6 +624,9 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 
 <div class="summary"><p><strong>使っているツールが対応しているものを選んでください：無料の <code>marsdawn</code> CLI、プレーンな Markdown の skill ファイル、または <a href="{_mcp_url}">marsdawn-mcp</a> という MCP サーバーです。</strong>三つとも同じ <code>marsdawn export</code> を呼び出し、同じ JSON 結果を返します。</p></div>
 
+<h2>どれを使うか</h2>
+<!--compare:mcp-choice-->
+
 <h2>CLI</h2>
 <p><code>marsdawn export notes.md --json</code> は、シェルコマンドを実行できるエージェントやスクリプトならどれからでも呼び出せます。構造上、モデルに依存しません。返されるすべてのフィールドは<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>に文書化されており、そこが JSON スキーマの正典で、以下の二つの経路もそこを参照します。</p>
 
@@ -618,13 +634,17 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <p>シェルを直接呼び出すのではなく、プレーンな Markdown の指示を読むエージェント向け——現時点では Claude Code——には、<a href="/ja/cli/skill/">marsdawn skill</a> という1ファイルが、marsdawn のインストール、<code>export</code> の実行、結果の読み取りを教えます。プレーンな Markdown なので、指示ファイルを読み込む他のエージェントも同じファイルを使えます。</p>
 
 <h2>MCP サーバー</h2>
-<p><a href="{_mcp_url}">marsdawn-mcp</a> は、別の、公開された、{_mcp_license} ライセンスの独立した repository です。<code>export_markdown_to_pdf</code> という1つのツールを持つ MCP サーバーで、<code>marsdawn export --json</code> をラップしています。MCP クライアントをそれに向ければ、ツール呼び出しは CLI と同じ JSON を返します。</p>
+<p><a href="{_mcp_url}">marsdawn-mcp</a> は、別の、公開された、{_mcp_license} ライセンスの独立した repository です。<code>export_markdown_to_pdf</code> と <code>open_in_marsdawn</code> という2つのツールを持つ MCP サーバーで、それぞれ <code>marsdawn export --json</code> と <code>marsdawn open --json</code> をラップしています。MCP クライアントをそれに向ければ、ツール呼び出しは CLI と同じ JSON を返します。</p>
 <ul>
   <li><strong>入手方法：</strong><a href="{_mcp_url}/releases">GitHub のリリース</a>に添付された MCP Bundle（<code>marsdawn.mcpb</code>）として、またはソースから stdio でサーバーを実行することで入手できます。</li>
-  <li><strong>Registry：</strong>まだ MCP Registry には登録されていません（現在のリリース：0.1.0）。registry 経由で見つかる前に、repository で現在の状況を確認してください。</li>
+  <li><strong>Registry：</strong>まだ MCP Registry には登録されていません（現在のリリース：0.2.1）。registry 経由で見つかる前に、repository で現在の状況を確認してください。</li>
   <li><strong>ホスティング：</strong>自分でホストするしかありません。marsdawn-mcp のホスティングサービスは存在せず、サーバーは marsdawn 自身の隣、あなた自身のマシン上で動きます。</li>
   <li><strong>動作要件：</strong>macOS、marsdawn 0.5.0 以降、そしてサーバーを実行するための Node.js 20 以降。</li>
 </ul>
+
+<h2>許可したフォルダの中でしか動きません</h2>
+<p>両方のツールとも、許可したフォルダの中でしか読み書きしません：拡張機能の「Allowed folders」設定（デフォルトは空です）、またはお使いの MCP クライアントが提供する roots のどちらかです。どちらも設定されていない場合、すべての呼び出しは拒否され、拒否メッセージに設定方法が書かれています。パスはすべて絶対パスである必要があり、<code>export_markdown_to_pdf</code> が書き出すのは <code>.pdf</code> ファイルだけで、シンボリックリンク経由で書き込むことはありません。</p>
+<p><strong>セキュリティ：</strong><a href="{_mcp_url}/releases/tag/v0.2.1">0.2.1</a> に更新してください&#8212;&#8212;0.1.0 と 0.2.0 では、呼び出しがあなたのアカウントが書き込めるどのパスにも PDF を書き込めてしまう問題があり、<a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a> で修正されました。</p>
 
 <h2>同じ export、三つの入り口</h2>
 <p>どの入り口から呼び出しても、内部の動作は変わりません。同じ書き出しエンジン、同じテーマと紙のサイズ、Mermaid 図の描画に失敗したときの同じ <code>diagramErrors</code>。このページではその契約内容を繰り返しません。<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>に完全な内容があります。</p>
@@ -633,13 +653,13 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <ul>
   <li>完全な JSON スキーマとすべての終了コード：<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>。</li>
   <li>Claude Code などのエージェント向けの1ファイルの skill：<a href="/ja/cli/skill/">marsdawn skill</a>。</li>
-  <li>精簡な JSON 結果が、なぜエージェント自身の context にとって重要なのか：<a href="/ja/token-efficient-review/">トークンを節約するレビュー方法</a>。</li>
+  <li>簡潔な JSON 結果が、なぜエージェント自身の context にとって重要なのか：<a href="/ja/token-efficient-review/">{ui['token-efficient-review']}</a>。</li>
 </ul>
 """,
     }
     pages['token-efficient-review'] = {
         "title": 'エージェントのトークンを使わずに MarsDawn の出力をレビューする · MarsDawn',
-        "description": '人が MarsDawn でレンダリングされたページを読みます。それがエージェントの context に読み戻されることはありません。ツール呼び出し自体も、レンダリングされた内容ではなく精簡な JSON 結果を返すので、呼び出し自体も安上がりです。',
+        "description": '人が MarsDawn でレンダリングされたページを読みます。それがエージェントの context に読み戻されることはありません。ツール呼び出し自体も、レンダリングされた内容ではなく簡潔な JSON 結果を返すので、呼び出し自体も安上がりです。',
         "body": """
 <section class="intro">
   <h1>エージェントのトークンを使わずにレビューする。</h1>
@@ -649,7 +669,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <div class="summary"><p><strong>ツール呼び出しが返すのは小さな JSON オブジェクトであり、レンダリングされたページではありません。レンダリングされたページ自体は、人が MarsDawn の中で読みます。エージェントの context に読み戻されることは決してありません。</strong></p></div>
 
 <h2>ツール呼び出し自体が安い</h2>
-<p><code>marsdawn export</code> を、CLI、skill、または<a href="/ja/cli/mcp/">MCP サーバー</a>のいずれからでも呼び出すと、返ってくるのは<a href="/ja/cli/agents/">精簡な JSON オブジェクト</a>です：<code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code>。完全なスキーマは <a href="/schemas/cli/export.v1.json">export.v1.json</a> にあります。そのどれもレンダリングされた文書そのものではありません。十数個の Mermaid 図がある50ページの PDF も、1ページのメモと同じ数のフィールドしか返しません。</p>
+<p><code>marsdawn export</code> を、CLI、skill、または<a href="/ja/cli/mcp/">MCP サーバー</a>のいずれからでも呼び出すと、返ってくるのは<a href="/ja/cli/agents/">簡潔な JSON オブジェクト</a>です：<code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code>。完全なスキーマは <a href="/schemas/cli/export.v1.json">export.v1.json</a> にあります。そのどれもレンダリングされた文書そのものではありません。十数個の Mermaid 図がある50ページの PDF も、1ページのメモと同じ数のフィールドしか返しません。</p>
 
 <h2>レビューは、別のところで行われる</h2>
 <p>PDF ができたら、人がそれを開きます。MarsDawn でも、どんな PDF ビューアでも構いません。そして図、数式、レイアウトがレンダリングされた状態で読みます。エージェントは、それが正しく見えることを確認するために、レンダリング結果を自分の context に読み戻す必要はありません。レビューは別のウインドウ、別の画面で行われ、図がどう見えるかを説明するために token を使うもう一往復にはなりません。</p>
@@ -678,6 +698,9 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <p>すでに VS Code やブラウザ、Claude Desktop を開いているなら、それらで Markdown ファイルをちらっと見るのは妥当な選択です。それぞれが実際に何をレンダリングし、そこにたどり着くのに何が必要か、MarsDawn で同じファイルを開いた場合と比較してみます。</p>
 </section>
 
+<h2>ひと目で比較</h2>
+<!--compare:preview-tools-->
+
 <h2>VS Code の内蔵プレビュー</h2>
 <p>VS Code で <kbd>&#8984;&#8679;V</kbd> を押すと、内蔵のプレビューパネルで Markdown ファイルがレンダリングされます。無料で、インストールするものもありません。VS Code 1.121（2026年5月）以降、このプレビューは Mermaid 図もネイティブに描画します。Microsoft が Mermaid 拡張機能を VS Code 本体に組み込んだためで、以前は別の拡張機能が必要でしたが、今は不要です。できないこと：これはエディタの中のプレビューパネルであって、読むために作られたエディタではありません。パネルの隣にはファイルツリー、ターミナル、VS Code が表示できるその他のパネルが並び、VS Code 自体も Electron アプリで、インストールするのは開発環境一式であって、1つのファイルを読むために開くものではありません。</p>
 
@@ -704,17 +727,18 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
         "body": """
 <section class="intro">
   <h1>8つの見た目、1つの書き出し。</h1>
-  <p>MarsDawn には Dawn、Classic、Modern、Vivid の4種類のプレビューテーマが付属し、それぞれライトとダークがあります。文書を読むための8通りの組み合わせです。PDF に書き出す、または印刷すると、そのとき読んでいたものと同じ見た目でページが出てきます。</p>
+  <p>MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種類のプレビューテーマが付属し、それぞれライトとダークがあります。文書を読むための8通りの組み合わせです。PDF に書き出す、または印刷すると、そのとき読んでいたものと同じ見た目でページが出てきます。</p>
 </section>
 
 <div class="summary"><p><strong>4つのテーマ × ライトとダーク＝文書を読む8つの方法があり、書き出しはどれを選んでいても対応します。</strong>もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーは計画中で、まだ作られていません。</p></div>
 
 <h2>4種類のテーマ</h2>
+<!--theme-gallery-->
 <ul>
-  <li><strong>Dawn</strong>、デフォルト：このサイトと同じ、温かみのある紙の質感と Mars Rust のアクセントカラー。</li>
-  <li><strong>Classic</strong>（典雅）：より素朴で、紙の文書らしい配色。</li>
-  <li><strong>Modern</strong>（流行）：より涼しげで、現代的な配色。</li>
-  <li><strong>Vivid</strong>（活潑）：より明るく、コントラストの高い配色。</li>
+  <li><strong>夜明け</strong>、デフォルト：このサイトと同じ、温かみのある紙の質感と Mars Rust のアクセントカラー。</li>
+  <li><strong>クラシック</strong>：より素朴で、紙の文書らしい配色。</li>
+  <li><strong>モダン</strong>：より涼しげで、現代的な配色。</li>
+  <li><strong>ビビッド</strong>：より明るく、コントラストの高い配色。</li>
 </ul>
 <p>それぞれ独自のライトとダークの配色を持つので、Mac の外観を切り替えると、インターフェースの色だけでなくテーマの配色自体も切り替わります。</p>
 
@@ -768,7 +792,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
     pages['reviewing-ai-output'] = {
         "title": 'なぜ AI の出力には、今も人の目が必要なのか · MarsDawn',
         "description": 'AI が書いた Markdown も、結局は人が理解しなければなりません。読みやすいからといって鵜呑みにはできません。MarsDawn はレンダリングされたページとソースを並べ、Mermaid 図と KaTeX 数式を描画するので、構造が一目で分かります。',
-        "body": """
+        "body": f"""
 <section class="intro">
   <h1>エージェントが書く。それでも、あなたが理解しなければならない。</h1>
   <p>AI エージェントは、計画書や仕様書、メモをすばやく書き上げられます。それでも、書かれたものを実際に行動に移す人が理解する必要があります。読みやすいからといって、そのまま信用してはいけません。</p>
@@ -792,9 +816,27 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 
 <h2>次に</h2>
 <ul>
-  <li>このレビューが、なぜエージェント自身の context にとって安上がりなのか：<a href="/ja/token-efficient-review/">トークンを節約するレビュー方法</a>。</li>
+  <li>このレビューが、なぜエージェント自身の context にとって安上がりなのか：<a href="/ja/token-efficient-review/">{ui['token-efficient-review']}</a>。</li>
   <li>レビュー済みの文書を、ほかの人に渡す：<a href="/ja/sharing-exported-pdfs/">PDF を共有する</a>。</li>
   <li>MarsDawn とは何か、1ページで：<a href="/ja/">ホームページ</a>。</li>
+</ul>
+""",
+    }
+    pages['changelog'] = {
+        "title": '更新履歴 · MarsDawn',
+        "description": '無料の marsdawn コマンドラインツールの変更点です。',
+        "body": f"""
+<section class="intro">
+  <h1>更新履歴</h1>
+  <p>無料の marsdawn コマンドラインツールの変更点です。Mac App Store 版の MarsDawn は、そのバージョン自身について書くことがある場合だけ、ここに載せます。0.5.1 より前のバージョンは載せていません。</p>
+</section>
+
+<h2>marsdawn 0.5.1</h2>
+<p>2026年9月19日。PDF 書き出しと、コマンドラインからファイルを開くこと。</p>
+<ul>
+  <li>書き出した PDF のテキストレイヤーを、中国語、日本語、韓国語について修正しました。</li>
+  <li><code>marsdawn open --background</code> はファイルを開きますが、MarsDawn を前面には出しません。</li>
+  <li><code>marsdawn open</code> にフォルダを渡せます。Mac App Store のアプリはまだフォルダを表示できないので、このオプションは、それができるアプリを待ちます。</li>
 </ul>
 """,
     }

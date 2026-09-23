@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog · MarsDawn</title>
+<meta name="description" content="What changed in the free marsdawn command-line tool.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/changelog/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/changelog/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/changelog/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/changelog/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/changelog/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/changelog/">
+<link rel="alternate" type="text/markdown" href="/changelog/index.md">
+<meta property="og:title" content="Changelog · MarsDawn">
+<meta property="og:description" content="What changed in the free marsdawn command-line tool.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/changelog/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/changelog/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/changelog/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/changelog/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/changelog/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Changelog</h1>
+  <p>What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.</p>
+</section>
+
+<h2 id="marsdawn-0-5-1">marsdawn 0.5.1</h2>
+<p>19 September 2026. PDF export, and opening a file from the command line.</p>
+<ul>
+  <li>The text layer of an exported PDF is repaired for Chinese, Japanese and Korean.</li>
+  <li><code>marsdawn open --background</code> opens a file without bringing MarsDawn to the front.</li>
+  <li><code>marsdawn open</code> can be given a folder. The app on the Mac App Store does not show a folder yet, so that option waits for an app that can take one.</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/support/">Support</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
+  </nav>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

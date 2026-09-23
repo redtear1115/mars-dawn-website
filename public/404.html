@@ -2,6 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found · MarsDawn</title>
 <meta name="description" content="This path isn’t on the map. A quiet neighbor pointed the way home.">
@@ -10,8 +32,17 @@
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/404.html">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/">
@@ -20,7 +51,7 @@
   </a>
   <nav class="lang" aria-label="Language"><a href="/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Lost among the stars.</h1>
   <p>This path isn’t on the map. A quiet neighbor pointed the way home.</p>
@@ -35,8 +66,9 @@
     <a href="/support/">Support</a>
     <a href="/privacy/">Privacy Policy</a>
     <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
   </nav>
-  <p class="footer-meta"><span>Read what your agent wrote.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

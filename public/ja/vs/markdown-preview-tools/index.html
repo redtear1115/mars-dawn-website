@@ -2,6 +2,28 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ほかの場所で Markdown を見る、対 MarsDawn · MarsDawn</title>
 <meta name="description" content="VS Code の内蔵プレビュー、ブラウザ拡張機能、Claude Desktop のファイルプレビューで Markdown を読む場合と、MarsDawn を比較：それぞれが実際にレンダリングするもの、1つのファイルを開くのにかかる手間。">
@@ -19,38 +41,62 @@
 <meta property="og:description" content="VS Code の内蔵プレビュー、ブラウザ拡張機能、Claude Desktop のファイルプレビューで Markdown を読む場合と、MarsDawn を比較：それぞれが実際にレンダリングするもの、1つのファイルを開くのにかかる手間。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/vs/markdown-preview-tools/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/ja/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/vs/markdown-preview-tools/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/markdown-preview-tools/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/markdown-preview-tools/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/markdown-preview-tools/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>ほかの場所で Markdown を見る、対 MarsDawn。</h1>
   <p>すでに VS Code やブラウザ、Claude Desktop を開いているなら、それらで Markdown ファイルをちらっと見るのは妥当な選択です。それぞれが実際に何をレンダリングし、そこにたどり着くのに何が必要か、MarsDawn で同じファイルを開いた場合と比較してみます。</p>
 </section>
 
-<h2>VS Code の内蔵プレビュー</h2>
+<h2 id="at-a-glance">ひと目で比較</h2>
+<div class="table-scroll"><table class="compare compare-wide">
+<thead><tr><th scope="col"></th><th scope="col">VS Code のプレビュー</th><th scope="col">ブラウザ拡張機能</th><th scope="col">Claude Desktop</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">ディスク上の Markdown ファイルを開く</th><td data-label="VS Code のプレビュー">開ける</td><td data-label="ブラウザ拡張機能">開ける（ファイルへのアクセスを許可したあと）</td><td data-label="Claude Desktop">開けない：Markdown はアップロードできる形式にない</td><td data-label="MarsDawn">開ける</td></tr>
+  <tr><th scope="row">最初のファイルを開く前に</th><td data-label="VS Code のプレビュー">VS Code という開発環境一式をインストール</td><td data-label="ブラウザ拡張機能">拡張機能を入れ、「ファイルの URL へのアクセスを許可」をオン</td><td data-label="Claude Desktop">ディスク上のファイルを参照できない</td><td data-label="MarsDawn">MarsDawn をインストール</td></tr>
+  <tr><th scope="row">何のためのものか</th><td data-label="VS Code のプレビュー">コードを書くため。プレビューは多くのパネルの1つ</td><td data-label="ブラウザ拡張機能">Web を見るため</td><td data-label="Claude Desktop">Claude との会話のため</td><td data-label="MarsDawn">Markdown を読み、編集するため</td></tr>
+  <tr><th scope="row">ページを描くもの</th><td data-label="VS Code のプレビュー">Electron：同梱の Chromium と Node.js</td><td data-label="ブラウザ拡張機能">ブラウザ全体</td><td data-label="Claude Desktop">Claude Desktop アプリ</td><td data-label="MarsDawn">ネイティブの AppKit アプリ。ページは WebKit が描画</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="vs-code-s-built-in-preview">VS Code の内蔵プレビュー</h2>
 <p>VS Code で <kbd>&#8984;&#8679;V</kbd> を押すと、内蔵のプレビューパネルで Markdown ファイルがレンダリングされます。無料で、インストールするものもありません。VS Code 1.121（2026年5月）以降、このプレビューは Mermaid 図もネイティブに描画します。Microsoft が Mermaid 拡張機能を VS Code 本体に組み込んだためで、以前は別の拡張機能が必要でしたが、今は不要です。できないこと：これはエディタの中のプレビューパネルであって、読むために作られたエディタではありません。パネルの隣にはファイルツリー、ターミナル、VS Code が表示できるその他のパネルが並び、VS Code 自体も Electron アプリで、インストールするのは開発環境一式であって、1つのファイルを読むために開くものではありません。</p>
 
-<h2>ローカルファイル用のブラウザ拡張機能</h2>
+<h2 id="a-browser-extension-for-local-files">ローカルファイル用のブラウザ拡張機能</h2>
 <p>ローカルの <code>.md</code> ファイルを読むために主流と呼べるブラウザ拡張機能はありません。Local Markdown Viewer、Markdown Viewer、MarkView などがだいたい同じことをしていて、どれもデフォルトではありません。どれも、何かを開く前に同じ手順が必要です。ブラウザはデフォルトで拡張機能に <code>file://</code> のページを読ませないので、その拡張機能の「ファイルの URL へのアクセスを許可」を有効にする必要があります。これは拡張機能ごとに一度だけ与える権限ですが、与えたこと自体や、なぜ与えたのかを忘れやすいものです。有効にすると、ファイルはブラウザのタブに表示されます。つまり、1つのファイルを見るために、ブラウザを丸ごと動かすことになります。</p>
 
-<h2>Claude Desktop のファイルプレビュー</h2>
+<h2 id="claude-desktop-s-file-preview">Claude Desktop のファイルプレビュー</h2>
 <p>Claude Desktop が表示するのは、すでに Project や会話の中にあるファイルです。それが作られていないのは、ディスク上の任意のファイルを閲覧することです。見られるのは会話がすでに持っているものであって、作業の傍らに開いておくメモのフォルダではありません。Anthropic 自身が挙げている<a href="https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai">アップロードできるファイルの種類</a>は PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON、XLSX で、Markdown は入っていません。</p>
 
-<h2>1つのファイルを読むために、ブラウザエンジンが動く</h2>
+<h2 id="a-browser-engine-to-read-one-file">1つのファイルを読むために、ブラウザエンジンが動く</h2>
 <p>VS Code は Electron アプリです。Chromium と Node.js のランタイムが同梱されていて、ネイティブの Mac アプリではありません。ブラウザ拡張機能という道は、実際のブラウザの中で動きます。どちらにしても、1つの Markdown ファイルを見るために、丸ごとのブラウザエンジンが裏で動いていることになります。MarsDawn はネイティブの AppKit アプリです。ブラウザのランタイムを同梱しておらず、どんなローカルファイルも直接開けて、インストールする拡張機能も、覚えておくべき権限フラグもありません。</p>
 
-<h2>次に</h2>
+<h2 id="next">次に</h2>
 <ul>
   <li>MarsDawn もできないこと：<a href="/ja/limits/">その一覧</a>。</li>
   <li>今日、無料でどんな Markdown ファイルも PDF にする：<a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a>。</li>
@@ -62,8 +108,9 @@
     <a href="/ja/support/">サポート</a>
     <a href="/ja/privacy/">プライバシーポリシー</a>
     <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>エージェントが書いた Markdown を読む。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

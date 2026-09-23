@@ -2,9 +2,31 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>エージェントのトークンを使わずに MarsDawn の出力をレビューする · MarsDawn</title>
-<meta name="description" content="人が MarsDawn でレンダリングされたページを読みます。それがエージェントの context に読み戻されることはありません。ツール呼び出し自体も、レンダリングされた内容ではなく精簡な JSON 結果を返すので、呼び出し自体も安上がりです。">
+<meta name="description" content="人が MarsDawn でレンダリングされたページを読みます。それがエージェントの context に読み戻されることはありません。ツール呼び出し自体も、レンダリングされた内容ではなく簡潔な JSON 結果を返すので、呼び出し自体も安上がりです。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -16,23 +38,36 @@
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ja/token-efficient-review/">
 <link rel="alternate" type="text/markdown" href="/ja/token-efficient-review/index.md">
 <meta property="og:title" content="エージェントのトークンを使わずに MarsDawn の出力をレビューする · MarsDawn">
-<meta property="og:description" content="人が MarsDawn でレンダリングされたページを読みます。それがエージェントの context に読み戻されることはありません。ツール呼び出し自体も、レンダリングされた内容ではなく精簡な JSON 結果を返すので、呼び出し自体も安上がりです。">
+<meta property="og:description" content="人が MarsDawn でレンダリングされたページを読みます。それがエージェントの context に読み戻されることはありません。ツール呼び出し自体も、レンダリングされた内容ではなく簡潔な JSON 結果を返すので、呼び出し自体も安上がりです。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/token-efficient-review/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/ja/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/token-efficient-review/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/token-efficient-review/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/token-efficient-review/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/token-efficient-review/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>エージェントのトークンを使わずにレビューする。</h1>
   <p>このループでは、二つの別々のことがどちらも安く済みます。エージェントがツール呼び出しから受け取るもの、そして結果が正しく見えることを確認するのに必要なもの、です。</p>
@@ -40,20 +75,20 @@
 
 <div class="summary"><p><strong>ツール呼び出しが返すのは小さな JSON オブジェクトであり、レンダリングされたページではありません。レンダリングされたページ自体は、人が MarsDawn の中で読みます。エージェントの context に読み戻されることは決してありません。</strong></p></div>
 
-<h2>ツール呼び出し自体が安い</h2>
-<p><code>marsdawn export</code> を、CLI、skill、または<a href="/ja/cli/mcp/">MCP サーバー</a>のいずれからでも呼び出すと、返ってくるのは<a href="/ja/cli/agents/">精簡な JSON オブジェクト</a>です：<code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code>。完全なスキーマは <a href="/schemas/cli/export.v1.json">export.v1.json</a> にあります。そのどれもレンダリングされた文書そのものではありません。十数個の Mermaid 図がある50ページの PDF も、1ページのメモと同じ数のフィールドしか返しません。</p>
+<h2 id="the-tool-call-itself-is-cheap">ツール呼び出し自体が安い</h2>
+<p><code>marsdawn export</code> を、CLI、skill、または<a href="/ja/cli/mcp/">MCP サーバー</a>のいずれからでも呼び出すと、返ってくるのは<a href="/ja/cli/agents/">簡潔な JSON オブジェクト</a>です：<code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code>。完全なスキーマは <a href="/schemas/cli/export.v1.json">export.v1.json</a> にあります。そのどれもレンダリングされた文書そのものではありません。十数個の Mermaid 図がある50ページの PDF も、1ページのメモと同じ数のフィールドしか返しません。</p>
 
-<h2>レビューは、別のところで行われる</h2>
+<h2 id="review-happens-off-to-the-side">レビューは、別のところで行われる</h2>
 <p>PDF ができたら、人がそれを開きます。MarsDawn でも、どんな PDF ビューアでも構いません。そして図、数式、レイアウトがレンダリングされた状態で読みます。エージェントは、それが正しく見えることを確認するために、レンダリング結果を自分の context に読み戻す必要はありません。レビューは別のウインドウ、別の画面で行われ、図がどう見えるかを説明するために token を使うもう一往復にはなりません。</p>
 
-<h2>これが避けられるもの</h2>
+<h2 id="what-this-avoids">これが避けられるもの</h2>
 <ul>
   <li>レンダリングされた Markdown やスクリーンショット、あるいはその説明を、書き出しが成功したことをエージェントに確認させるためだけに会話に貼り戻すこと。</li>
   <li>エージェントが、Mermaid 図や KaTeX の数式がどう描画されるかを、人が見れば済むところを自分で再構成しなければならないこと。</li>
   <li>最初の呼び出しがすでに成功を報告した後で、PDF の内容を取得するために二度目のツール呼び出しをすること。</li>
 </ul>
 
-<h2>次に</h2>
+<h2 id="next">次に</h2>
 <ul>
   <li>marsdawn を呼び出す三つの方法、CLI、skill ファイル、MCP サーバー：<a href="/ja/cli/mcp/">三つの入り口</a>。</li>
   <li>JSON 結果のすべてのフィールド：<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>。</li>
@@ -65,8 +100,9 @@
     <a href="/ja/support/">サポート</a>
     <a href="/ja/privacy/">プライバシーポリシー</a>
     <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>エージェントが書いた Markdown を読む。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

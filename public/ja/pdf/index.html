@@ -2,6 +2,28 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mac で Markdown を PDF に書き出す、図も含めて · MarsDawn</title>
 <meta name="description" content="Mac で Markdown を PDF に書き出したり印刷したりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックや表を分断しないよう配慮されます。">
@@ -20,11 +42,23 @@
 <meta property="og:description" content="Mac で Markdown を PDF に書き出したり印刷したりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックや表を分断しないよう配慮されます。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/pdf/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/ja/">
@@ -34,7 +68,7 @@
   <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/pdf/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/pdf/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/pdf/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/pdf/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>PDF は、あなたが書いたページそのままに見えます。</h1>
   <p>テーマのライトカラーで PDF に書き出す、または印刷できます。図やハイライトされたコードもそのまま反映され、改ページはひとまとまりの内容を分断しないよう配慮されます。</p>
@@ -50,7 +84,7 @@
     <ol><li>Mermaid 図は PDF に描き込まれます。</li><li>コードはハイライトを保ちます。</li></ol>
   </figcaption>
 </figure>
-<h2>それが意味すること</h2>
+<h2 id="what-that-means">それが意味すること</h2>
 <ul>
   <li>Mermaid 図は PDF に描き込まれます。</li>
   <li>コードブロックはシンタックスハイライトを保ちます。</li>
@@ -73,8 +107,9 @@
     <a href="/ja/support/">サポート</a>
     <a href="/ja/privacy/">プライバシーポリシー</a>
     <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>エージェントが書いた Markdown を読む。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

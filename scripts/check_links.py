@@ -18,6 +18,13 @@ to a `/go/` path that isn't listed there is broken like any other:
     cp -R public /tmp/site && sed -i '' 's#href="/zh-hant/support/"#href="/go/nope"#' /tmp/site/support/index.html
     python3 scripts/check_links.py --root /tmp/site
 
+It also checks the form of every Mac App Store listing link. The listing URL has to be
+`https://apps.apple.com/app/id<digits>` with no country segment: Apple then sends each visitor to
+their own storefront. App Store Connect and the iTunes lookup API hand you a `trackViewUrl` instead,
+which looks like `https://apps.apple.com/us/app/some-slug/id123456789?uo=4` — pasting that whole
+string works in a browser, so nothing else here would notice, and every page of a four-locale site
+would point at one country's storefront.
+
 Exits 1 and lists every broken link. To see it catch one, check a copy of public/ with a link
 pointed at a page that doesn't exist:
 
@@ -29,6 +36,12 @@ import sys
 from pathlib import Path
 
 BASE_URL = "https://marsdawn.southern-light.dev"
+
+# The one form a Mac App Store listing link may take. Country-less on purpose: Apple redirects each
+# visitor to their own storefront. `PLACEHOLDER` is the held state before the owner reads the Apple
+# ID (website #44 fails the check on it separately), so it isn't reported as a malformed URL here.
+LISTING_LINK = re.compile(r"https?://apps\.apple\.com/[^\s\"'<>)]*")
+LISTING_FORM = re.compile(r"^https://apps\.apple\.com/app/id\d+$")
 
 PATTERNS = [
     re.compile(r'(?:href|src)="([^"]+)"'),
@@ -77,6 +90,7 @@ def main(argv) -> int:
     root = Path(argv[argv.index("--root") + 1]) if "--root" in argv else Path(__file__).resolve().parent.parent / "public"
     broken, checked = [], 0
     redirected = redirect_sources(root)
+    malformed, listings = [], 0
     for path in sorted(root.rglob("*")):
         if path.suffix not in {".html", ".md", ".txt", ".xml", ".css"} or not path.is_file():
             continue
@@ -91,10 +105,20 @@ def main(argv) -> int:
                 file = file / "index.html"
             if not file.is_file() and target not in redirected:
                 broken.append(f"{path.relative_to(root)}: {link}")
+        for listing in LISTING_LINK.findall(text):
+            listings += 1
+            if "PLACEHOLDER" in listing:
+                continue
+            if not LISTING_FORM.match(listing):
+                malformed.append(f"{path.relative_to(root)}: {listing}")
     print(f"{checked} same-site links checked: {len(broken)} broken")
     for line in broken:
         print(" -", line)
-    return 1 if broken else 0
+    print(f"{listings} Mac App Store links checked: {len(malformed)} not the listing form")
+    for line in malformed:
+        print(f" - {line}\n   wanted https://apps.apple.com/app/id<digits>, with no country segment,"
+              f" no slug and no query (a trackViewUrl has all three)")
+    return 1 if broken or malformed else 0
 
 
 if __name__ == "__main__":

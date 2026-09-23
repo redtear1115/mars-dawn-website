@@ -1,0 +1,19 @@
+/* The social card: the hero's scene at exactly 1200x630, copy on the left. */
+html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #171022; }
+.og .hero-scene { left: 0; transform: none; width: 1200px; height: 630px; padding: 0; }
+.og-copy { position: relative; z-index: 1; padding: 64px 80px; }
+.og-copy::before {
+  content: "";
+  position: absolute;
+  inset: -40px 200px -60px -120px;
+  background: radial-gradient(60% 70% at 35% 40%, color-mix(in srgb, var(--dawn-planet) 70%, transparent), transparent 80%);
+  z-index: -1;
+}
+.og-brand { display: flex; align-items: center; gap: 16px; margin: 0 0 56px; color: var(--hero-ink); font-size: 30px; font-weight: 650; letter-spacing: -0.01em; }
+.og-brand img { width: 56px; height: 56px; border-radius: 12px; }
+.og .hero h1 { margin: 0 0 22px; font-size: 84px; line-height: 1.06; letter-spacing: -0.025em; font-weight: 700; }
+.og .og-lede { margin: 0; font-size: 30px; color: var(--hero-sub); }
+/* A taller scene, cropped at the card's bottom edge: the horizon sits low, under the copy,
+   so the headline reads against the sky. The address sits across from the wordmark. */
+.og .dawn-wrap { inset: 0 0 auto 0; height: 1100px; }
+.og-url { position: absolute; z-index: 1; right: 80px; top: 80px; margin: 0; color: var(--hero-sub); font-size: 22px; letter-spacing: 0.01em; }

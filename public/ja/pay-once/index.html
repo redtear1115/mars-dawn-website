@@ -2,6 +2,28 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>無料で試して、一度だけ購入 · MarsDawn</title>
 <meta name="description" content="MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。">
@@ -20,11 +42,23 @@
 <meta property="og:description" content="MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/pay-once/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/ja/">
@@ -34,14 +68,14 @@
   <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/pay-once/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/pay-once/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/pay-once/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/pay-once/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>すべて試してから、一度だけ支払う。</h1>
   <p>MarsDawn は無料でダウンロードできます。14日間のトライアルを始めればすべての機能が使えます。その後も使い続けるには、USD 4.99 の一度きりの購入でロックが解除されます。サブスクリプションもアカウントもありません。</p>
 </section>
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/04-vivid-1180.png" srcset="/assets/screens/04-vivid-800.png 800w, /assets/screens/04-vivid-1180.png 1180w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn が Vivid テーマで、左に Markdown のソース、右にレンダリングされたページを表示している。">
+    <img src="/assets/screens/04-vivid-1180.png" srcset="/assets/screens/04-vivid-800.png 800w, /assets/screens/04-vivid-1180.png 1180w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn がビビッドテーマで、左に Markdown のソース、右にレンダリングされたページを表示している。">
     <span class="marker l co-pay-once-1" aria-hidden="true">1</span><span class="marker r tb co-pay-once-2" aria-hidden="true">2</span><span class="marker r co-pay-once-3" aria-hidden="true">3</span><span class="marker r co-pay-once-4" aria-hidden="true">4</span>
     <span class="leader l co-pay-once-1" aria-hidden="true"><span>エディタの Markdown ハイライトも含まれます。</span></span><span class="leader r co-pay-once-2" aria-hidden="true"><span>すべてのテーマとレイアウトが含まれます。</span></span><span class="leader r co-pay-once-3" aria-hidden="true"><span>Mermaid 図も含まれます。</span></span><span class="leader r co-pay-once-4" aria-hidden="true"><span>コードのハイライトも含まれます。</span></span>
   </div></div>
@@ -50,15 +84,17 @@
     <ol><li>エディタの Markdown ハイライトも含まれます。</li><li>すべてのテーマとレイアウトが含まれます。</li><li>Mermaid 図も含まれます。</li><li>コードのハイライトも含まれます。</li></ol>
   </figcaption>
 </figure>
-<h2>仕組み</h2>
+<h2 id="how-it-works">仕組み</h2>
+<ol class="loop-steps">
+  <li><strong>無料でダウンロード。</strong> MarsDawn は Mac App Store から無料でダウンロードできます。</li>
+  <li><strong>14 日間、すべて使える。</strong> トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。</li>
+  <li><strong>一度の購入で解除。</strong> その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。</li>
+</ol>
 <ul>
-  <li>MarsDawn は Mac App Store から無料でダウンロードできます。</li>
-  <li>トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。</li>
-  <li>その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。</li>
   <li>トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。</li>
   <li>アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。</li>
 </ul>
-<h2>ロックを解除しない場合</h2>
+<h2 id="if-you-don-t-unlock">ロックを解除しない場合</h2>
 <ul>
   <li>14日後、ロックを解除するまでは、MarsDawn で文書を読んだり編集したり書き出したり印刷したりできません。文書自体は開きますが、内容は覆われます。</li>
   <li>あなたのファイルは変わりません。Mac 上の普通のファイルのままで、Finder のクイックルックでも引き続き表示されます。</li>
@@ -80,8 +116,9 @@
     <a href="/ja/support/">サポート</a>
     <a href="/ja/privacy/">プライバシーポリシー</a>
     <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>エージェントが書いた Markdown を読む。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

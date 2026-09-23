@@ -7,7 +7,7 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 
 
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'footer_store': 'MarsDawn 即将在 Mac App Store 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '输出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过'}
+    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': 'MarsDawn 即将在 Mac App Store 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '输出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'changelog': '更新记录', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置'}
     store_chip = '即将在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.3.0 以后', 'error': '两个命令的失败结果', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单'}
     example_plan = '# 计划：让输出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -20,11 +20,11 @@ def build(k) -> dict:
             "callouts": [],
         },
         'yours': {
-            "alt": 'MarsDawn 以 Classic 主题显示文稿，预览占满整个窗口。',
+            "alt": 'MarsDawn 以典雅主题显示文稿，预览占满整个窗口。',
             "callouts": ['你 Mac 上的一个文件，存在你选的地方。', '整条工具栏只有主题和布局，没有任何需要登录的地方。'],
         },
         'pay-once': {
-            "alt": 'MarsDawn 使用 Vivid 主题，左边是 Markdown 源代码，右边是排版后的页面。',
+            "alt": 'MarsDawn 使用活泼主题，左边是 Markdown 源代码，右边是排版后的页面。',
             "callouts": ['编辑器的 Markdown 语法高亮，包含在内。', '所有主题和布局都包含在内。', 'Mermaid 图表，包含在内。', '代码高亮，包含在内。'],
         },
         'pdf': {
@@ -101,7 +101,22 @@ def build(k) -> dict:
   <p class="updated">最后更新：{k.PRIVACY_UPDATED}</p>
 </section>
 
-<div class="summary"><p><strong>MarsDawn 不收集任何关于你的数据。</strong>没有账户、没有分析、没有广告，也不追踪。你的文稿与设置都留在你的 Mac 上。</p></div>
+<div class="summary"><p><strong>MarsDawn app 不收集任何关于你的数据。</strong>没有账户、没有广告，也不追踪。你的文稿与设置都留在你的 Mac 上。</p></div>
+
+<h2>这个网站</h2>
+<p>App 和这个网站是两件事。App 不收集数据。会记下访问的，只有 marsdawn.southern-light.dev。</p>
+<p>这个网站使用通过<strong>Google Tag Manager</strong>载入的<strong>Google Analytics 4</strong>。每位访客一开始的分析状态都是拒绝：Google 的同意模式只会发送一个没有 cookie、不含任何持续性标识符的连接，直到你在横幅中选择“接受”为止。选择“拒绝”，或是不做选择，都会维持这个状态；如果先前选过“接受”后又改选“拒绝”，分析会立即关闭，下面提到的 cookie 也会被移除。你可以随时用每一页页脚的“Cookie 设置”链接改变选择；这个选择只存在你浏览器的本地存储里，不是我们设下的 cookie。</p>
+<p>一旦你点击接受，Google Analytics 就会设置自己的 cookie（<code>_ga</code> 与 <code>_ga_&lt;衡量 ID&gt;</code>），并记录：</p>
+<ul>
+  <li><strong>页面浏览与来源网址。</strong>被浏览的页面，以及浏览器有发送来源网址时的那个网址。</li>
+  <li><strong>大致位置、设备与浏览器。</strong>由你的 IP 地址推算出的粗略位置（最多到城市级别）、设备类型、操作系统与浏览器，都不足以用来识别你是谁。</li>
+  <li><strong>经由本站离开的点击与滚动。</strong>Google Analytics 的增强型衡量会记录离开本站的点击（例如前往 Mac App Store 的链接），以及你在页面上滚动的程度。</li>
+  <li><strong>IP 地址。</strong>Google Analytics 4 不会记录或保存 IP 地址。</li>
+  <li><strong>不会记录的。</strong>没有账户，因为这个网站不需要账户。没有你的文稿，也没有你打的字。没有跨站广告，也不会建立你的个人档案。App 向 <code>/themes/</code> 索取主题文件的请求会被跳过，不会送出。</li>
+  <li><strong>保留期限。</strong>Google 会保留这些数据 14 个月，之后删除。</li>
+  <li><strong>数据处理地点。</strong>Google Tag Manager 与 Google Analytics 由 Google 运营；你的数据可能会在美国及 Google 运营所在的其他国家处理。</li>
+  <li><strong>主机。</strong>网站放在 Cloudflare 上。和任何主机一样，它在响应请求时会看到你的 IP 地址。那是主机自己的日志，不是上面的分析。</li>
+</ul>
 
 <h2>留在你 Mac 上的东西</h2>
 <ul>
@@ -130,7 +145,7 @@ def build(k) -> dict:
 <p>另外发布、可自由选用的 <code>marsdawn</code> 命令行工具，同样完全在你的 Mac 上运行：只读取你指定的 Markdown 文件，并写出你要求的 PDF。只有在加上 <code>--allow-remote-images</code> 时才会加载网络图片。</p>
 
 <h2>儿童</h2>
-<p>MarsDawn 不向任何人收集数据，包括儿童。</p>
+<p>MarsDawn app 不向任何人收集数据，包括儿童。网站上记下的访问不是账户，也不用来辨认任何人。</p>
 
 <h2>购买</h2>
 <p>MarsDawn 将通过 Mac App Store 销售，付款会由 Apple 依其条款处理，开发者不会取得你的付款信息。</p>
@@ -144,22 +159,21 @@ def build(k) -> dict:
     }
     pages['index'] = {
         "title": 'MarsDawn：Mac 上的 Markdown 编辑器，实时预览',
-        "description": '原生的 Mac Markdown 编辑器，有实时预览、Mermaid 图表和 PDF 输出，为读 AI agent 写的 Markdown 而做。即将在 Mac App Store 上架。',
+        "description": '给要掌舵 agentic 开发的人用的 Markdown：原生的 Mac 编辑器，有实时预览、Mermaid 图表和 PDF 输出。即将在 Mac App Store 上架。',
         "intro": f"""
 <section class="intro hero">
-  <p class="kicker">为 AI 工作流程而生</p>
-  <h1>让 agent 写的 Markdown，被好好读过一遍。</h1>
-  <p>AI agent 写 Markdown，你在 MarsDawn 里读，源代码和排版后的页面并排显示，再把修改意见交回去。</p>
+  <p class="kicker">给建造者的前线工具</p>
+  <h1><span>拿稳地图。</span><span>读过黎明。</span></h1>
+  <p>给要掌舵 agentic 开发的人用的 Markdown。</p>
 </section>
 """,
         "body": f"""
-<h2 class="loop-title">整个循环</h2>
+<h2 class="loop-title">读 agent 写的 Markdown。</h2>
 <ol class="loop-steps">
   <li><strong>Agent 动笔。</strong>你的代码助手或写作 agent 先写出 Markdown：README、规格文档，或一份笔记。</li>
   <li><strong>你在 MarsDawn 里读。</strong>打开文件，看排版后的页面，Mermaid 图表和代码高亮都在，旁边就是源代码。</li>
   <li><strong>Agent 修改。</strong>提出修改意见，agent 改好之后，再打开来读一次。</li>
 </ol>
-<p>Agent 也能直接操作 MarsDawn：免费的 <a href="/zh-hans/cli/">marsdawn</a> 命令行工具能打开文件供你检阅，也能输出 PDF，并提供给脚本使用的 JSON 输出。细节请看<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</p>
 """,
     }
     pages['cli'] = {
@@ -220,6 +234,7 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> 默认不会覆盖已存在的输出文件，除非加上 <code>--force</code>。</p>
 
 <h2>退出代码</h2>
+<!--exit-table-->
 <ul>
   <li><code>0</code>：成功。</li>
   <li><code>2</code>：找不到输入文件。</li>
@@ -247,7 +262,7 @@ marsdawn open notes.md --line 120</code></pre>
 <h2>能做什么</h2>
 <ul>
   <li><code>export</code>：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件输出成分页的 PDF，不会打开任何窗口。</li>
-  <li><code>open</code>：在 MarsDawn app 中打开一或多个 Markdown 文件，让人检阅，也可以指定每个文件要定位的行。</li>
+  <li><code>open</code>：在 MarsDawn app 中打开一或多个 Markdown 文件，让人审阅，也可以指定每个文件要定位的行。</li>
 </ul>
 
 <h2>不做什么</h2>
@@ -351,6 +366,9 @@ swift build -c release --product marsdawn
 
 <div class="summary"><p><strong>挑你的工具支持的那一种：免费的 <code>marsdawn</code> CLI、纯 Markdown 的 skill 文件，或是 <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> 这个 MCP 服务器。</strong>三者都调用同一个 <code>marsdawn export</code>，返回一样的 JSON 结果。</p></div>
 
+<h2>该用哪一个</h2>
+<!--compare:mcp-choice-->
+
 <h2>CLI</h2>
 <p><code>marsdawn export notes.md --json</code> 可以被任何能运行 shell 命令的 agent 或脚本调用，因为是命令行工具，天生就跟模型无关。它返回的每个字段都写在<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>里，那一页是 JSON schema 的权威来源，下面另外两种方式都会连回去。</p>
 
@@ -358,13 +376,17 @@ swift build -c release --product marsdawn
 <p>如果你的 agent 读的是纯 Markdown 指令，而不是直接运行 shell&#8212;&#8212;目前是 Claude Code&#8212;&#8212;<a href="/zh-hans/cli/skill/">marsdawn skill</a> 就是一个文件，教它安装 marsdawn、运行 <code>export</code>、读懂结果。因为它就是纯 Markdown，其他会读指令文件的 agent 也能用同一个文件。</p>
 
 <h2>MCP 服务器</h2>
-<p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> 是另一个独立、公开、Apache-2.0 授权的 repository。它是一个只有一个工具的 MCP 服务器，<code>export_markdown_to_pdf</code>，包住 <code>marsdawn export --json</code>：把 MCP 客户端指向它，工具调用返回的 JSON 和 CLI 一样。</p>
+<p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> 是另一个独立、公开、Apache-2.0 授权的 repository。它是一个有两个工具的 MCP 服务器，<code>export_markdown_to_pdf</code> 和 <code>open_in_marsdawn</code>，分别包住 <code>marsdawn export --json</code> 和 <code>marsdawn open --json</code>：把 MCP 客户端指向它，工具调用返回的 JSON 和 CLI 一样。</p>
 <ul>
   <li><strong>获取方式：</strong>以 MCP Bundle（<code>marsdawn.mcpb</code>）的形式附在<a href="https://github.com/redtear1115/marsdawn-mcp/releases">GitHub release</a> 上，或从源代码以 stdio 运行服务器。</li>
-  <li><strong>Registry：</strong>还没上架 MCP Registry（目前版本：0.1.0）。要靠 registry 搜索找到它之前，请先到 repository 确认目前状态。</li>
+  <li><strong>Registry：</strong>还没上架 MCP Registry（目前版本：0.2.1）。要靠 registry 搜索找到它之前，请先到 repository 确认目前状态。</li>
   <li><strong>托管：</strong>只能自架，没有代管服务。服务器跑在你自己的机器上，就在 marsdawn 旁边。</li>
   <li><strong>系统要求：</strong>macOS、marsdawn 0.5.0 以上，以及运行服务器需要的 Node.js 20 以上。</li>
 </ul>
+
+<h2>只能在你允许的文件夹里运行</h2>
+<p>两个工具都只能在你允许的文件夹里读写：扩展的「Allowed folders」设置（默认是空的），或者你的 MCP 客户端提供的 roots。两者都没设置时，每次调用都会被拒绝，拒绝消息会说明怎么设置。每个路径都必须是绝对路径，而 <code>export_markdown_to_pdf</code> 只会写出 <code>.pdf</code> 文件，不会通过 symlink 写。</p>
+<p><strong>安全性：</strong>请更新到 <a href="https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1">0.2.1</a>&#8212;&#8212;0.1.0 和 0.2.0 会让调用把 PDF 写到你账号能写入的任何路径，已在 <a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a> 修复。</p>
 
 <h2>同一个 export，三扇门</h2>
 <p>不管从哪个界面调用，底层行为都一样：同一套输出程序、同样的主题和纸张大小，Mermaid 图表画不出来时也是同样的 <code>diagramErrors</code>。这页不重复那份规格&#8212;&#8212;<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>里有完整内容。</p>
@@ -385,6 +407,7 @@ swift build -c release --product marsdawn
   <h1>让 agent 帮你做出 PDF。</h1>
   <p>这个 skill 是一个 Markdown 文件。它教写程序的 agent 安装 <code>marsdawn</code>、确认它能用、把文稿导出成 PDF 并读懂结果，这样写出 Markdown 的 agent，也能把 PDF 交给你。</p>
 </section>
+<div class="summary"><p><strong>一个 Markdown 文件，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 会安装 <code>marsdawn</code>、导出 PDF 并读懂 JSON 结果；运行任何命令之前，它还是会先问你。</p></div>
 <h2>在 Claude Code 中安装</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
@@ -416,18 +439,23 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 """,
         "body": f"""
 <h2>刻意不做的</h2>
+<h3>设备与使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。</li>
   <li><strong>iPhone 和 iPad：</strong>没有这两个平台的版本，MarsDawn 只给 Mac。</li>
-  <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
   <li><strong>分享：</strong>没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。</li>
-  <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
-  <li><strong>格式：</strong>MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。</li>
-  <li><strong>主题：</strong>内置 Dawn、Classic、Modern 和 Vivid，每种都有浅色与深色，无法安装其他主题。</li>
-  <li><strong>其他文件：</strong>纯文本文件和 PDF 以只读方式打开。</li>
-  <li><strong>试用结束后：</strong>如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。</li>
   <li><strong>系统：</strong>MarsDawn 需要 macOS 26 以上。</li>
 </ul>
+<h3>文件与功能</h3>
+<ul>
+  <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
+  <li><strong>格式：</strong>MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。</li>
+  <li><strong>其他文件：</strong>纯文本文件和 PDF 以只读方式打开。</li>
+  <li><strong>主题：</strong>内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。</li>
+  <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
+</ul>
+<h2>试用结束之后</h2>
+<p>如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。</p>
 """,
     }
     pages['markdown-to-pdf'] = {
@@ -484,10 +512,14 @@ marsdawn --version</code></pre>
 """,
         "body": f"""
 <h2>这代表什么</h2>
+<h3>编辑</h3>
 <ul>
   <li>源代码、并排、预览三种布局，一个快捷键切换（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
   <li>两侧同步滚动，正在编辑的段落一直在眼前。</li>
   <li>编辑器内置 Markdown 语法高亮，颜色与预览主题一致。</li>
+</ul>
+<h3>和 Mac 的其他部分</h3>
+<ul>
   <li>原生窗口、标签页、自动保存和版本记录。</li>
   <li>快速查看：在访达选取 Markdown 文件按空格键就能预览，图表也会显示。</li>
   <li>Siri 和快捷指令：用模板添加文稿、在笔记收件箱加上一行，或重新打开最近的文稿。</li>
@@ -506,10 +538,12 @@ marsdawn --version</code></pre>
 """,
         "body": f"""
 <h2>怎么运作</h2>
+<ol class="loop-steps">
+  <li><strong>免费下载。</strong> 在 Mac App Store 免费下载 MarsDawn。</li>
+  <li><strong>14 天，全部都能用。</strong> 开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。</li>
+  <li><strong>买一次就解锁。</strong> 试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。</li>
+</ol>
 <ul>
-  <li>在 Mac App Store 免费下载 MarsDawn。</li>
-  <li>开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。</li>
-  <li>试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。</li>
   <li>试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。</li>
   <li>不需要账户，MarsDawn 从不要求你创建账户。</li>
 </ul>
@@ -614,17 +648,18 @@ marsdawn --version</code></pre>
         "body": """
 <section class="intro">
   <h1>八种样子，一套导出。</h1>
-  <p>MarsDawn 内置四种预览主题：Dawn、Classic、Modern 和 Vivid，各有浅色与深色&#8212;&#8212;八种读文稿的样子。导出成 PDF 或打印，出来的就是你正在读的那个样子。</p>
+  <p>MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有浅色与深色&#8212;&#8212;八种读文稿的样子。导出成 PDF 或打印，出来的就是你正在读的那个样子。</p>
 </section>
 
 <div class="summary"><p><strong>四种主题 &#215; 浅色与深色＝八种读文稿的方式，导出时用的正是你选的那一种。</strong>更多可导入的主题，还有让大家投稿主题的主题库，都还在规划中，尚未推出。</p></div>
 
 <h2>四种主题</h2>
+<!--theme-gallery-->
 <ul>
-  <li><strong>Dawn</strong>，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。</li>
-  <li><strong>Classic（典雅）：</strong>比较朴素、像纸质文稿的配色。</li>
-  <li><strong>Modern（流行）：</strong>比较冷调、当代感的配色。</li>
-  <li><strong>Vivid（活泼）：</strong>比较明亮、对比度较高的配色。</li>
+  <li><strong>黎明</strong>，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。</li>
+  <li><strong>典雅</strong>：比较朴素、像纸质文稿的配色。</li>
+  <li><strong>流行</strong>：比较冷调、当代感的配色。</li>
+  <li><strong>活泼</strong>：比较明亮、对比度较高的配色。</li>
 </ul>
 <p>每种主题都有各自的浅色和深色版本，所以切换 Mac 的外观，连带切换的是主题本身的配色，不只是界面的颜色。</p>
 
@@ -715,23 +750,9 @@ open notes.pdf</code></pre>
 <h2>如果你只需要读，不需要编辑</h2>
 <p>如果你的工作就是读别人写好的 Markdown，完全不用碰源代码，MacMD Viewer 是合理的选择：它就是为这件事做的，现在就能买，也能在比较旧的 macOS 上跑。当阅读不是全部的工作时，MarsDawn 才值得，因为 agent 写的 Markdown 通常还要再改一轮。</p>
 <h2>各自能做什么</h2>
-<ul>
-  <li><strong>编辑：</strong>MacMD Viewer 设计上就是只读。MarsDawn 边编辑源代码边在旁边排版，打字的同时就看得到改动。</li>
-  <li><strong>预览主题：</strong>MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：Dawn、Classic、Modern 和 Vivid，各有浅色与深色。</li>
-  <li><strong>图表与数学公式：</strong>两者都能画出 Mermaid 图表、也都有代码高亮。MarsDawn 还能排版 KaTeX 数学公式；MacMD Viewer 自己的介绍页没有提到数学公式排版。</li>
-  <li><strong>访达集成：</strong>两者都有访达的快速查看扩展功能，对 <code>.md</code> 文件按空格键就能看到排好版的页面。</li>
-  <li><strong>PDF 与打印：</strong>两者都能把排好版的页面输出或打印成 PDF。</li>
-  <li><strong>系统需求：</strong>MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。</li>
-  <li><strong>语言：</strong>MarsDawn 的界面有{k.APP_UI_LANGUAGES}。MacMD Viewer 自己的资料没有写出界面语言，这页就不比较这一项。</li>
-</ul>
+<!--compare:macmd-features-->
 <h2>价格与购买方式</h2>
-<ul>
-  <li><strong>从哪里买：</strong>MacMD Viewer 从自己的网站直接下载，也上架 Homebrew 和 Setapp，但不在 Mac App Store 上；MarsDawn 只在 Mac App Store 上架。</li>
-  <li><strong>价格：</strong>MacMD Viewer 一台 Mac 一次 USD 19.99（三台的组合包和批量授权更贵）。MarsDawn 免费下载，之后以 USD 4.99 一次解锁。</li>
-  <li><strong>先试用：</strong>MacMD Viewer 没有免费试用，直接购买改用 14 天内可退款的保证。MarsDawn 在你付费之前，先给你 14 天的试用。</li>
-  <li><strong>退款与更新：</strong>MacMD Viewer 的退款和更新都在它自己的网站上处理。MarsDawn 通过 Apple 购买，退款和更新都走 Apple 的标准流程。</li>
-  <li><strong>账户：</strong>两者都不需要账户就能使用。</li>
-</ul>
+<!--compare:macmd-buying-->
 <h2>现在就能免费试试看</h2>
 <p>MarsDawn 即将在 Mac App Store 上架，现在还没开卖。在那之前，免费的 <code>marsdawn</code> 命令行工具今天就能把任何 Markdown 文件转成 PDF，Mermaid 图表和代码高亮都在，而且不需要安装其他东西：</p>
 <pre><code>{k.BREW_TAP_INSTALL}
@@ -753,6 +774,9 @@ open notes.pdf</code></pre>
   <h1>在别处看 Markdown，对比 MarsDawn。</h1>
   <p>如果你手边刚好开着 VS Code、浏览器或 Claude Desktop，用它们顺手看一眼 Markdown 文件也合理。以下是它们各自实际排版出什么、要花多少功夫才能看到，和在 MarsDawn 里打开同一份文件的比较。</p>
 </section>
+<h2>一眼看完</h2>
+<!--compare:preview-tools-->
+
 <h2>VS Code 内置的预览</h2>
 <p>在 VS Code 按 <kbd>&#8984;&#8679;V</kbd>，就会用内置的预览窗格排版出 Markdown 文件，免费，不用另外安装。从 VS Code 1.121（2026 年 5 月）开始，这个预览也能原生画出 Mermaid 图表&#8212;&#8212;微软把一个 Mermaid 扩展并进了 VS Code 本体，以前需要另外装扩展，现在不用了。它做不到的：这是编辑器里的一个预览窗格，不是为了阅读而做的编辑器&#8212;&#8212;窗格旁边还有文件树、终端和 VS Code 能显示的其他所有面板，而 VS Code 本身是 Electron app，你装的是一整套开发环境，不是一个用来读文件的工具。</p>
 <h2>看本机文件的浏览器扩展</h2>
@@ -788,6 +812,24 @@ open notes.pdf</code></pre>
   <li>本地图片在你授权文件夹访问后，就会显示在预览中。</li>
 </ul>
 <p>完整说明请看<a href="/zh-hans/privacy/">隐私政策</a>。</p>
+""",
+    }
+    pages['changelog'] = {
+        "title": '更新记录 · MarsDawn',
+        "description": '免费的 marsdawn 命令行工具改了什么。',
+        "body": f"""
+<section class="intro">
+  <h1>更新记录</h1>
+  <p>免费的 marsdawn 命令行工具改了什么。Mac App Store 上的 MarsDawn，只有某个版本值得单独记一笔时才会出现在这里。0.5.1 以前的版本不列。</p>
+</section>
+
+<h2>marsdawn 0.5.1</h2>
+<p>2026 年 9 月 19 日。PDF 输出，以及从命令行打开文件。</p>
+<ul>
+  <li>输出的 PDF 中，中文、日文与韩文的文字层已修正。</li>
+  <li><code>marsdawn open --background</code> 会打开文件，但不会把 MarsDawn 带到最前面。</li>
+  <li><code>marsdawn open</code> 可以指定一个文件夹。Mac App Store 上的 app 还不能显示文件夹，所以这个选项要等做得到的版本。</li>
+</ul>
 """,
     }
     return {

@@ -2,6 +2,28 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>marsdawn：無料の Markdown から PDF へのコマンドラインツール · MarsDawn</title>
 <meta name="description" content="無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。">
@@ -19,20 +41,33 @@
 <meta property="og:description" content="無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/cli/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/ja/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/cli/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>コマンドライン</h1>
   <p>無料の <code>marsdawn</code> コマンドラインツール：シェルや LLM エージェントから Markdown を PDF に書き出せます。MarsDawn アプリがインストールされていれば、そのアプリでファイルを開くこともできます。</p>
@@ -42,7 +77,7 @@
 
 <p>AI エージェントやスクリプトから marsdawn を呼び出しますか？JSON 出力とそのスキーマ、すべての終了コードについては<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>をご覧ください。</p>
 
-<h2>インストール</h2>
+<h2 id="install">インストール</h2>
 <p><a href="https://brew.sh">Homebrew</a> を使う場合：</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
 <p>Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールし、他に何もインストールする必要はありません。Intel Mac では代わりにソースから marsdawn をビルドするため数分かかり、Xcode 26 以降（Swift 6.2）が必要です。このツールは macOS 15 以降で動作します。</p>
@@ -52,7 +87,7 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>インストールされているバージョンは <code>marsdawn --version</code> で確認できます。</p>
 
-<h2>コマンド</h2>
+<h2 id="commands">コマンド</h2>
 
 <h3>marsdawn open</h3>
 <p>1つ以上の Markdown ファイルを MarsDawn アプリで開いて確認できます。アプリのインストールが必要です。インストールされていない場合、<code>marsdawn open</code> はコード 3 で終了し、MarsDawn がインストールされていないことを知らせます。<code>export</code> にはアプリは不要です。</p>
@@ -80,23 +115,26 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
 </ul>
 
-<h2>$MARSDAWN_THEME 環境変数</h2>
+<h2 id="the-marsdawn-theme-variable">$MARSDAWN_THEME 環境変数</h2>
 <p><code>--theme</code> が指定されない場合、<code>export</code> は <code>$MARSDAWN_THEME</code> 環境変数を読み取ります。値は <code>dawn</code>、<code>classic</code>、<code>modern</code>、<code>vivid</code> のいずれかである必要があり、それ以外は <code>dawn</code> にフォールバックします。CLI はアプリ自身のテーマ設定を読み取りません。他のアプリのコンテナを読み取ると、macOS のプライバシープロンプトが表示されることがあるためです。</p>
 
-<h2>ファイルの上書き</h2>
+<h2 id="overwriting-files">ファイルの上書き</h2>
 <p><code>export</code> は、<code>--force</code> を指定しない限り、既存の出力ファイルを置き換えません。</p>
 
-<h2>終了コード</h2>
-<ul>
-  <li><code>0</code>：成功。</li>
-  <li><code>2</code>：入力が見つからない。</li>
-  <li><code>3</code>：MarsDawn がインストールされていない（<code>open</code> のみ）。</li>
-  <li><code>4</code>：出力先がすでに存在する（<code>--force</code> を指定してください）。</li>
-  <li><code>5</code>：書き出しに失敗。</li>
-  <li><code>64</code>：使用方法のエラー。範囲外の行や、複数ファイルに対する <code>--line</code> の指定などを含みます。</li>
-</ul>
+<h2 id="exit-codes">終了コード</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">コード</th><th scope="col">意味</th><th scope="col">対処</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>0</code></th><td data-label="意味">成功。</td><td data-label="対処"><code>--json</code> を付けた場合は、stdout の1行の JSON を読む</td></tr>
+  <tr><th scope="row"><code>2</code></th><td data-label="意味">入力が見つからない。</td><td data-label="対処">パスとファイル名を確認する</td></tr>
+  <tr><th scope="row"><code>3</code></th><td data-label="意味">MarsDawn がインストールされていない（<code>open</code> のみ）。</td><td data-label="対処">アプリをインストールするか、アプリが不要な <code>export</code> を使う</td></tr>
+  <tr><th scope="row"><code>4</code></th><td data-label="意味">出力先がすでに存在する（<code>--force</code> を指定してください）。</td><td data-label="対処"><code>--force</code> で上書きするか、<code>-o</code> で別の場所に書き出す</td></tr>
+  <tr><th scope="row"><code>5</code></th><td data-label="意味">書き出しに失敗。</td><td data-label="対処">JSON の結果の <code>message</code> を読む</td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="意味">使用方法のエラー。範囲外の行や、複数ファイルに対する <code>--line</code> の指定などを含みます。</td><td data-label="対処">オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される</td></tr>
+</tbody>
+</table></div>
 
-<h2>--json 出力</h2>
+<h2 id="json-output">--json 出力</h2>
 <p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含む）、<code>app</code>（アプリのパス）を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時はどちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>
 </main>
 <footer class="footer">
@@ -104,8 +142,9 @@ marsdawn open notes.md --line 120</code></pre>
     <a href="/ja/support/">サポート</a>
     <a href="/ja/privacy/">プライバシーポリシー</a>
     <a href="/ja/cli/" aria-current="page">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>エージェントが書いた Markdown を読む。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

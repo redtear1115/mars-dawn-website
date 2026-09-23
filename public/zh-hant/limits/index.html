@@ -2,6 +2,28 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MarsDawn 做不到的事 · MarsDawn</title>
 <meta name="description" content="沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號，內建四種主題。購買前先知道。">
@@ -20,11 +42,23 @@
 <meta property="og:description" content="沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號，內建四種主題。購買前先知道。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/limits/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="zh_TW">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到內容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/zh-hant/">
@@ -34,7 +68,7 @@
   <span class="store-chip">即將在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/limits/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/limits/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/limits/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/limits/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>MarsDawn 做不到的事。</h1>
   <p>有些功能是刻意不做的。如果你需要其中一項，現在知道總比買了之後才發現好。</p>
@@ -50,19 +84,24 @@
     <ol><li>一個視窗一份文件，就在這台 Mac 上。</li><li>你在這裡寫 Markdown。</li><li>工具列只有主題和版面，沒有外掛選單。</li><li>這一側用來閱讀，不能直接編輯。</li></ol>
   </figcaption>
 </figure>
-<h2>刻意不做的</h2>
+<h2 id="left-out">刻意不做的</h2>
+<h3>裝置與使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。</li>
   <li><strong>iPhone 和 iPad：</strong>沒有這兩個平台的版本，MarsDawn 只給 Mac。</li>
-  <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
   <li><strong>分享：</strong>沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。</li>
-  <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
-  <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
-  <li><strong>主題：</strong>內建 Dawn、Classic、Modern 和 Vivid，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
-  <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
-  <li><strong>試用結束後：</strong>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</li>
   <li><strong>系統：</strong>MarsDawn 需要 macOS 26 以上。</li>
 </ul>
+<h3>檔案與功能</h3>
+<ul>
+  <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
+  <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
+  <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
+  <li><strong>主題：</strong>內建 黎明、典雅、流行和活潑，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
+  <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
+</ul>
+<h2 id="after-the-trial">試用結束之後</h2>
+<p>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</p>
 <nav class="traits" aria-label="MarsDawn 是什麼樣的 app">
 <h2>MarsDawn 是什麼樣的 app</h2>
 <ul>
@@ -78,8 +117,9 @@
     <a href="/zh-hant/support/">支援</a>
     <a href="/zh-hant/privacy/">隱私權政策</a>
     <a href="/zh-hant/cli/">命令列工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>讀 agent 寫的 Markdown。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

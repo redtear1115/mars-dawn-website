@@ -2,6 +2,28 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MacMD Viewer 対 MarsDawn：ビューアかエディタか · MarsDawn</title>
 <meta name="description" content="MacMD Viewer は読み取り専用で Markdown をレンダリングし、USD 19.99。MarsDawn は編集とプレビューを並べて表示し、無料で試したあと Mac App Store で USD 4.99 の一度きりの購入です。">
@@ -19,50 +41,69 @@
 <meta property="og:description" content="MacMD Viewer は読み取り専用で Markdown をレンダリングし、USD 19.99。MarsDawn は編集とプレビューを並べて表示し、無料で試したあと Mac App Store で USD 4.99 の一度きりの購入です。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/ja/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/vs/macmd-viewer/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/macmd-viewer/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/macmd-viewer/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/macmd-viewer/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>MacMD Viewer 対 MarsDawn。</h1>
   <p>どちらも Markdown をレンダリングして読むための Mac アプリです。MacMD Viewer は <code>.md</code> ファイルを開いて完成したページを表示しますが、編集はできません。MarsDawn は同じようにレンダリングされたプレビューの隣にエディタを置き、1つのウインドウで書きながら確認できます。ここでは機能ごとに両者の違いを見ていきます。</p>
 </section>
-<h2>読むだけでよく、編集の必要がない場合</h2>
+<h2 id="if-you-only-need-to-read-not-edit">読むだけでよく、編集の必要がない場合</h2>
 <p>他の人が書いた Markdown を読むことだけが仕事で、ソースに触れる必要が一切ないなら、MacMD Viewer は妥当な選択です。まさにそのために作られており、今すぐ入手でき、より古い macOS でも動作します。読むことだけが仕事ではなくなったときに MarsDawn が価値を持ちます。エージェントの Markdown はたいてい、もう一度手直しが入るからです。</p>
-<h2>それぞれのアプリでできること</h2>
-<ul>
-  <li><strong>編集：</strong>MacMD Viewer は設計上、読み取り専用です。MarsDawn はソースを編集しながらその場でレンダリングするので、入力すると変更が表示されます。</li>
-  <li><strong>プレビューのテーマ：</strong>MacMD Viewer には12種類の文書テーマがあります。MarsDawn は Dawn、Classic、Modern、Vivid の4種類で、それぞれライトとダークのパレットがあります。</li>
-  <li><strong>図と数式：</strong>どちらも Mermaid 図をレンダリングし、コードをハイライトします。MarsDawn は KaTeX の数式もレンダリングしますが、MacMD Viewer 自身の紹介には数式のレンダリングについて記載がありません。</li>
-  <li><strong>Finder 連携：</strong>どちらもクイックルック拡張機能を追加しており、Finder で <code>.md</code> ファイルを選んでスペースキーを押すとレンダリングされたページが表示されます。</li>
-  <li><strong>PDF と印刷：</strong>どちらもレンダリングされたページを PDF として書き出したり印刷したりできます。</li>
-  <li><strong>システム要件：</strong>MacMD Viewer は macOS 14（Sonoma）以降が必要です。MarsDawn は macOS 26（Tahoe）以降が必要です。</li>
-  <li><strong>言語：</strong>MarsDawn のインターフェースは英語と繁体字中国語に対応しています。MacMD Viewer 自身の資料は UI の言語を明記していないため、このページではその点を比較していません。</li>
-</ul>
-<h2>価格と購入方法</h2>
-<ul>
-  <li><strong>購入場所：</strong>MacMD Viewer は自社サイトから直接ダウンロードでき、Homebrew と Setapp にもありますが、Mac App Store にはありません。MarsDawn は Mac App Store のみです。</li>
-  <li><strong>価格：</strong>MacMD Viewer は1台の Mac につき一度きり USD 19.99（3台パックやボリュームパックはより高額）。MarsDawn は無料でダウンロードでき、その後 USD 4.99 の一度きりのロック解除です。</li>
-  <li><strong>先に試す：</strong>MacMD Viewer には無料トライアルはなく、直接購入には代わりに14日間の返金保証が付いています。MarsDawn は支払う前に14日間のトライアルを提供します。</li>
-  <li><strong>返金と更新：</strong>MacMD Viewer の返金と更新は自社サイトで処理されます。MarsDawn の購入は Apple を通じて行われるため、返金と更新は Apple の標準プロセスを使います。</li>
-  <li><strong>アカウント：</strong>どちらのアプリも利用にアカウントは不要です。</li>
-</ul>
-<h2>今すぐ無料で試す</h2>
+<h2 id="what-each-app-does">それぞれのアプリでできること</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">編集</th><td data-label="MacMD Viewer">設計上、読み取り専用</td><td data-label="MarsDawn">ソースを編集し、その隣にレンダリングされたページ</td></tr>
+  <tr><th scope="row">プレビューテーマ</th><td data-label="MacMD Viewer">12 種類のドキュメントテーマ</td><td data-label="MarsDawn">4 種類、それぞれにライトとダーク</td></tr>
+  <tr><th scope="row">図と数式</th><td data-label="MacMD Viewer">Mermaid とコードのハイライト。数式の表示は紹介ページに記載なし</td><td data-label="MarsDawn">Mermaid、コードのハイライト、KaTeX の数式</td></tr>
+  <tr><th scope="row">Finder のクイックルック</th><td data-label="MacMD Viewer">あり</td><td data-label="MarsDawn">あり</td></tr>
+  <tr><th scope="row">PDF と印刷</th><td data-label="MacMD Viewer">あり</td><td data-label="MarsDawn">あり</td></tr>
+  <tr><th scope="row">動作環境</th><td data-label="MacMD Viewer">macOS 14（Sonoma）以降</td><td data-label="MarsDawn">macOS 26（Tahoe）以降</td></tr>
+  <tr><th scope="row">インターフェイスの言語</th><td data-label="MacMD Viewer">公式の資料に記載なし</td><td data-label="MarsDawn">英語と繁体字中国語</td></tr>
+</tbody>
+</table></div>
+<h2 id="pricing-and-how-you-buy-it">価格と購入方法</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">購入場所</th><td data-label="MacMD Viewer">公式サイト、Homebrew、Setapp。Mac App Store にはない</td><td data-label="MarsDawn">Mac App Store のみ</td></tr>
+  <tr><th scope="row">価格</th><td data-label="MacMD Viewer">Mac 1 台につき USD 19.99 を一度。複数台のパックはより高額</td><td data-label="MarsDawn">無料ダウンロード、その後 USD 4.99 を一度</td></tr>
+  <tr><th scope="row">購入前に試す</th><td data-label="MacMD Viewer">試用なし。直接購入には 14 日間の返金保証</td><td data-label="MarsDawn">14 日間の無料試用</td></tr>
+  <tr><th scope="row">返金とアップデート</th><td data-label="MacMD Viewer">公式サイト経由</td><td data-label="MarsDawn">Apple 経由</td></tr>
+  <tr><th scope="row">アカウント</th><td data-label="MacMD Viewer">不要</td><td data-label="MarsDawn">不要</td></tr>
+</tbody>
+</table></div>
+<h2 id="try-it-today-free">今すぐ無料で試す</h2>
 <p>MarsDawn は Mac App Store で近日公開予定で、まだ販売されていません。それまでは、無料の <code>marsdawn</code> コマンドラインツールが、今すぐどんな Markdown ファイルも Mermaid 図とハイライトされたコード付きの PDF にレンダリングでき、他に何もインストールする必要はありません。</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
-<h2>次に</h2>
+<h2 id="next">次に</h2>
 <ul>
   <li>完全な解説：<a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a>。</li>
   <li>MarsDawn ができないこと：<a href="/ja/limits/">一覧はこちら</a>。</li>
@@ -74,8 +115,9 @@ open notes.pdf</code></pre>
     <a href="/ja/support/">サポート</a>
     <a href="/ja/privacy/">プライバシーポリシー</a>
     <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>エージェントが書いた Markdown を読む。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

@@ -2,6 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Three ways to call marsdawn: CLI, skill file, MCP server · MarsDawn</title>
 <meta name="description" content="marsdawn has no AI model of its own, so it doesn't matter which agent wrote the Markdown. Call it from the CLI, a skill file, or the marsdawn-mcp MCP server: all three run the same export.">
@@ -19,20 +41,33 @@
 <meta property="og:description" content="marsdawn has no AI model of its own, so it doesn't matter which agent wrote the Markdown. Call it from the CLI, a skill file, or the marsdawn-mcp MCP server: all three run the same export.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/cli/mcp/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/cli/mcp/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/cli/mcp/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/mcp/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/mcp/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Three ways to call marsdawn.</h1>
   <p>MarsDawn has no AI model of its own: it's built to review Markdown, not write it, so it doesn't matter which agent or model produced the file. There are three ways for an agent or a script to call <code>marsdawn</code>, and all three end up running the same <code>export</code>.</p>
@@ -40,25 +75,39 @@
 
 <div class="summary"><p><strong>Pick whichever your tooling supports: the free <code>marsdawn</code> CLI, a plain-Markdown skill file, or the <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> MCP server.</strong> All three call the same <code>marsdawn export</code> and return the same JSON result.</p></div>
 
-<h2>The CLI</h2>
+<h2 id="which-one-to-use">Which one to use</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">If your agent</th><th scope="col">Use</th><th scope="col">Needs</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Can run a shell command</th><td data-label="Use"><a href="/cli/agents/">The CLI</a></td><td data-label="Needs">macOS 15 or later</td></tr>
+  <tr><th scope="row">Loads instruction files, like Claude Code</th><td data-label="Use"><a href="/cli/skill/">The skill file</a></td><td data-label="Needs">The CLI, which the skill installs</td></tr>
+  <tr><th scope="row">Calls tools over MCP</th><td data-label="Use"><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td data-label="Needs">marsdawn-mcp 0.2.1 or later, marsdawn 0.5.0 or later, and Node.js 20 or later</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="the-cli">The CLI</h2>
 <p><code>marsdawn export notes.md --json</code> is callable by any agent or script that can run a shell command, model-agnostic by construction. Every field it returns is documented at <a href="/cli/agents/">marsdawn for agents</a>, which is the source of truth for the JSON schema the other two surfaces below point back to.</p>
 
-<h2>The skill file</h2>
+<h2 id="the-skill-file">The skill file</h2>
 <p>For an agent that reads plain-Markdown instructions instead of calling a shell directly &#8212; Claude Code today &#8212; <a href="/cli/skill/">the marsdawn skill</a> is one file that teaches it to install marsdawn, run <code>export</code> and read the result. It's plain Markdown, so other agents that load instruction files can use the same one.</p>
 
-<h2>The MCP server</h2>
-<p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> is a separate, public, Apache-2.0 repository. It's an MCP server with one tool, <code>export_markdown_to_pdf</code>, that wraps <code>marsdawn export --json</code>: point an MCP client at it and the tool call returns the same JSON as the CLI.</p>
+<h2 id="the-mcp-server">The MCP server</h2>
+<p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> is a separate, public, Apache-2.0 repository. It's an MCP server with two tools, <code>export_markdown_to_pdf</code> and <code>open_in_marsdawn</code>, that wrap <code>marsdawn export --json</code> and <code>marsdawn open --json</code>: point an MCP client at it and a tool call returns the same JSON as the CLI.</p>
 <ul>
   <li><strong>Get it:</strong> as an MCP Bundle, <code>marsdawn.mcpb</code>, attached to <a href="https://github.com/redtear1115/marsdawn-mcp/releases">its GitHub release</a>, or by running the server from source over stdio.</li>
-  <li><strong>Registry:</strong> not yet listed in the MCP Registry (current release: 0.1.0). Check the repository for the current status before relying on registry discovery.</li>
+  <li><strong>Registry:</strong> not yet listed in the MCP Registry (current release: 0.2.1). Check the repository for the current status before relying on registry discovery.</li>
   <li><strong>Hosting:</strong> self-hosted only. There is no hosted marsdawn-mcp service; the server runs on your own machine, next to marsdawn itself.</li>
   <li><strong>Requirements:</strong> macOS, marsdawn 0.5.0 or later, and Node.js 20 or later to run the server.</li>
 </ul>
 
-<h2>Same export, three doors</h2>
+<h2 id="confined-to-folders-you-allow">Confined to folders you allow</h2>
+<p>Both tools only reach inside folders you allow: the extension's <strong>Allowed folders</strong> setting, which starts empty with no preset, or the roots your MCP client offers instead. With neither set, every call is refused, and the refusal message says how to fix that. Every path has to be absolute, and <code>export_markdown_to_pdf</code> only ever writes a <code>.pdf</code> file, never through a symlink.</p>
+<p><strong>Security:</strong> update to <a href="https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1">0.2.1</a> &#8212; 0.1.0 and 0.2.0 let a call write a PDF to any path your account could write, fixed as <a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a>.</p>
+
+<h2 id="same-export-three-doors">Same export, three doors</h2>
 <p>Whichever surface calls it, the underlying behavior doesn't change: the same exporter, the same themes and paper sizes, the same <code>diagramErrors</code> when a Mermaid diagram fails to render. This page doesn't repeat that contract &#8212; <a href="/cli/agents/">marsdawn for agents</a> does, in full.</p>
 
-<h2>Next</h2>
+<h2 id="next">Next</h2>
 <ul>
   <li>The full JSON schema and every exit code: <a href="/cli/agents/">marsdawn for agents</a>.</li>
   <li>The one-file skill for Claude Code and similar agents: <a href="/cli/skill/">the marsdawn skill</a>.</li>
@@ -70,8 +119,9 @@
     <a href="/support/">Support</a>
     <a href="/privacy/">Privacy Policy</a>
     <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
   </nav>
-  <p class="footer-meta"><span>Read what your agent wrote.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

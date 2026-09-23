@@ -71,12 +71,14 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 
 ## 結束代碼
 
-- `0`：成功。
-- `2`：找不到輸入檔。
-- `3`：尚未安裝 MarsDawn（只有 `open` 會用到）。
-- `4`：輸出檔已存在（可加上 `--force`）。
-- `5`：輸出失敗。
-- `64`：使用方式錯誤，包括行號超出範圍，或 `--line` 搭配了多個檔案。
+| 代碼 | 意思 | 怎麼處理 |
+|---|---|---|
+| `0` | 成功。 | 加了 `--json` 時，讀 stdout 上的那一行 JSON |
+| `2` | 找不到輸入檔。 | 檢查路徑和檔名 |
+| `3` | 尚未安裝 MarsDawn（只有 `open` 會用到）。 | 安裝 app，或改用不需要 app 的 `export` |
+| `4` | 輸出檔已存在（可加上 `--force`）。 | 加上 `--force` 覆寫，或用 `-o` 寫到別處 |
+| `5` | 輸出失敗。 | 讀 JSON 結果裡的 `message` |
+| `64` | 使用方式錯誤，包括行號超出範圍，或 `--line` 搭配了多個檔案。 | 修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 `--json` 也一樣 |
 
 ## --json 輸出
 
@@ -84,7 +86,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 
 ## 其他頁面
 
-- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 原生的 Mac Markdown 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出，為讀 AI agent 寫的 Markdown 而做。即將在 Mac App Store 上架。
+- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。即將在 Mac App Store 上架。
 - [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hant/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。
@@ -103,6 +105,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - [預覽主題與 PDF 輸出](https://marsdawn.southern-light.dev/zh-hant/themes/index.md): 四種主題，各有淺色與深色，一套輸出對應你正在看的主題。更多可匯入的主題，和讓大家投稿主題的主題庫，都在規劃中。
 - [分享輸出的 PDF](https://marsdawn.southern-light.dev/zh-hant/sharing-exported-pdfs/index.md): 把 agent 寫的 Markdown 輸出成 PDF，交給不寫 Markdown、也不會安裝任何東西的同事。不用懂語法，不用裝 app，也不需要帳號就能打開。
 - [為什麼 AI 寫的東西還是需要人讀過](https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/index.md): AI 寫的 Markdown 還是得由人來理解，不能因為讀起來通順就直接相信。MarsDawn 把排版後的頁面和原始碼並排，也把 Mermaid 圖表與 KaTeX 數學式畫出來，讓結構一眼就看得懂。
+- [更新紀錄](https://marsdawn.southern-light.dev/zh-hant/changelog/index.md): 免費的 marsdawn 命令列工具改了什麼。
 - [English](https://marsdawn.southern-light.dev/cli/index.md): The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/cli/index.md): 免费的 marsdawn 命令行工具：在 Mac 上从终端、脚本或 LLM agent 把 Markdown 导出成 PDF，并提供 JSON 输出。用 Homebrew 安装。
 - [日本語](https://marsdawn.southern-light.dev/ja/cli/index.md): 無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。

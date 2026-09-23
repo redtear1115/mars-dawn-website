@@ -1,15 +1,22 @@
 # 八种样子，一套导出。
 
-MarsDawn 内置四种预览主题：Dawn、Classic、Modern 和 Vivid，各有浅色与深色——八种读文稿的样子。导出成 PDF 或打印，出来的就是你正在读的那个样子。
+MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有浅色与深色——八种读文稿的样子。导出成 PDF 或打印，出来的就是你正在读的那个样子。
 
 **四种主题 × 浅色与深色＝八种读文稿的方式，导出时用的正是你选的那一种。**更多可导入的主题，还有让大家投稿主题的主题库，都还在规划中，尚未推出。
 
 ## 四种主题
 
-- **Dawn**，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。
-- **Classic（典雅）：**比较朴素、像纸质文稿的配色。
-- **Modern（流行）：**比较冷调、当代感的配色。
-- **Vivid（活泼）：**比较明亮、对比度较高的配色。
+- ![黎明主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。](/assets/screens/01-split-800.png) **黎明（默认）**
+- ![典雅主题，预览占满整个窗口。](/assets/screens/02-classic-800.png) **典雅**
+- ![活泼主题的并排版面。](/assets/screens/04-vivid-800.png) **活泼**
+- ![MarsDawn 的深色模式，并排版面。](/assets/screens/03-dark-800.png) **深色模式**
+
+流行主题还没有截图；第四张是深色模式。
+
+- **黎明**，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。
+- **典雅**：比较朴素、像纸质文稿的配色。
+- **流行**：比较冷调、当代感的配色。
+- **活泼**：比较明亮、对比度较高的配色。
 
 每种主题都有各自的浅色和深色版本，所以切换 Mac 的外观，连带切换的是主题本身的配色，不只是界面的颜色。
 
@@ -29,7 +36,7 @@ MarsDawn 内置四种预览主题：Dawn、Classic、Modern 和 Vivid，各有�
 
 ## 其他页面
 
-- [MarsDawn](https://marsdawn.southern-light.dev/zh-hans/index.md): 原生的 Mac Markdown 编辑器，有实时预览、Mermaid 图表和 PDF 输出，为读 AI agent 写的 Markdown 而做。即将在 Mac App Store 上架。
+- [MarsDawn](https://marsdawn.southern-light.dev/zh-hans/index.md): 给要掌舵 agentic 开发的人用的 Markdown：原生的 Mac 编辑器，有实时预览、Mermaid 图表和 PDF 输出。即将在 Mac App Store 上架。
 - [你写的内容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hans/yours/index.md): MarsDawn 不需要账户，没有同步，也没有云端。你的 Markdown 文稿留在你的 Mac 上，就在你选的文件和文件夹里。
 - [免费试用，买一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
 - [输出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 输出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码和表格，超过一页的会接到下一页。
@@ -48,6 +55,7 @@ MarsDawn 内置四种预览主题：Dawn、Classic、Modern 和 Vivid，各有�
 - [在别处看 Markdown，对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/markdown-preview-tools/index.md): MarsDawn 对比在 VS Code 内置预览、浏览器扩展，或 Claude Desktop 文件预览里看 Markdown：各自能排版出什么，打开一个文件要花多少功夫。
 - [分享导出的 PDF](https://marsdawn.southern-light.dev/zh-hans/sharing-exported-pdfs/index.md): 把 agent 写的 Markdown 导出成 PDF，交给不写 Markdown、也不会安装任何东西的同事。不用懂语法，不用装 app，也不需要账号就能打开。
 - [为什么 AI 写的东西还是需要人读过](https://marsdawn.southern-light.dev/zh-hans/reviewing-ai-output/index.md): AI 写的 Markdown 还是得由人来理解，不能因为读起来通顺就直接相信。MarsDawn 把排版后的页面和源代码并排，也把 Mermaid 图表与 KaTeX 数学式画出来，让结构一眼就看得懂。
+- [更新记录](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): 免费的 marsdawn 命令行工具改了什么。
 - [English](https://marsdawn.southern-light.dev/themes/index.md): Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. More importable themes, and a gallery to share your own, are planned.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/themes/index.md): 四種主題，各有淺色與深色，一套輸出對應你正在看的主題。更多可匯入的主題，和讓大家投稿主題的主題庫，都在規劃中。
 - [日本語](https://marsdawn.southern-light.dev/ja/themes/index.md): それぞれライトとダークを持つ4種類のプレビューテーマと、今見ているテーマに合わせた1つの PDF・印刷書き出し。もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーも計画されています。

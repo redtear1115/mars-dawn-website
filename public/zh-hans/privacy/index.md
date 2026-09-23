@@ -2,9 +2,26 @@
 
 macOS 的 Markdown 编辑器 MarsDawn 如何处理你的信息。
 
-最后更新：2026-09-19
+最后更新：2026-09-23
 
-**MarsDawn 不收集任何关于你的数据。**没有账户、没有分析、没有广告，也不追踪。你的文稿与设置都留在你的 Mac 上。
+**MarsDawn app 不收集任何关于你的数据。**没有账户、没有广告，也不追踪。你的文稿与设置都留在你的 Mac 上。
+
+## 这个网站
+
+App 和这个网站是两件事。App 不收集数据。会记下访问的，只有 marsdawn.southern-light.dev。
+
+这个网站使用通过**Google Tag Manager**载入的**Google Analytics 4**。每位访客一开始的分析状态都是拒绝：Google 的同意模式只会发送一个没有 cookie、不含任何持续性标识符的连接，直到你在横幅中选择“接受”为止。选择“拒绝”，或是不做选择，都会维持这个状态；如果先前选过“接受”后又改选“拒绝”，分析会立即关闭，下面提到的 cookie 也会被移除。你可以随时用每一页页脚的“Cookie 设置”链接改变选择；这个选择只存在你浏览器的本地存储里，不是我们设下的 cookie。
+
+一旦你点击接受，Google Analytics 就会设置自己的 cookie（`_ga` 与 `_ga_<衡量 ID>`），并记录：
+
+- **页面浏览与来源网址。**被浏览的页面，以及浏览器有发送来源网址时的那个网址。
+- **大致位置、设备与浏览器。**由你的 IP 地址推算出的粗略位置（最多到城市级别）、设备类型、操作系统与浏览器，都不足以用来识别你是谁。
+- **经由本站离开的点击与滚动。**Google Analytics 的增强型衡量会记录离开本站的点击（例如前往 Mac App Store 的链接），以及你在页面上滚动的程度。
+- **IP 地址。**Google Analytics 4 不会记录或保存 IP 地址。
+- **不会记录的。**没有账户，因为这个网站不需要账户。没有你的文稿，也没有你打的字。没有跨站广告，也不会建立你的个人档案。App 向 `/themes/` 索取主题文件的请求会被跳过，不会送出。
+- **保留期限。**Google 会保留这些数据 14 个月，之后删除。
+- **数据处理地点。**Google Tag Manager 与 Google Analytics 由 Google 运营；你的数据可能会在美国及 Google 运营所在的其他国家处理。
+- **主机。**网站放在 Cloudflare 上。和任何主机一样，它在响应请求时会看到你的 IP 地址。那是主机自己的日志，不是上面的分析。
 
 ## 留在你 Mac 上的东西
 
@@ -39,7 +56,7 @@ MarsDawn 提供 Siri、快捷指令 App 和 Spotlight 可用的动作，例如�
 
 ## 儿童
 
-MarsDawn 不向任何人收集数据，包括儿童。
+MarsDawn app 不向任何人收集数据，包括儿童。网站上记下的访问不是账户，也不用来辨认任何人。
 
 ## 购买
 
@@ -55,7 +72,7 @@ MarsDawn 将通过 Mac App Store 销售，付款会由 Apple 依其条款处理�
 
 ## 其他页面
 
-- [MarsDawn](https://marsdawn.southern-light.dev/zh-hans/index.md): 原生的 Mac Markdown 编辑器，有实时预览、Mermaid 图表和 PDF 输出，为读 AI agent 写的 Markdown 而做。即将在 Mac App Store 上架。
+- [MarsDawn](https://marsdawn.southern-light.dev/zh-hans/index.md): 给要掌舵 agentic 开发的人用的 Markdown：原生的 Mac 编辑器，有实时预览、Mermaid 图表和 PDF 输出。即将在 Mac App Store 上架。
 - [你写的内容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hans/yours/index.md): MarsDawn 不需要账户，没有同步，也没有云端。你的 Markdown 文稿留在你的 Mac 上，就在你选的文件和文件夹里。
 - [免费试用，买一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
 - [输出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 输出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码和表格，超过一页的会接到下一页。
@@ -74,6 +91,7 @@ MarsDawn 将通过 Mac App Store 销售，付款会由 Apple 依其条款处理�
 - [预览主题与 PDF 导出](https://marsdawn.southern-light.dev/zh-hans/themes/index.md): 四种主题，各有浅色与深色，一套导出对应你正在看的主题。更多可导入的主题，和让大家投稿主题的主题库，都在规划中。
 - [分享导出的 PDF](https://marsdawn.southern-light.dev/zh-hans/sharing-exported-pdfs/index.md): 把 agent 写的 Markdown 导出成 PDF，交给不写 Markdown、也不会安装任何东西的同事。不用懂语法，不用装 app，也不需要账号就能打开。
 - [为什么 AI 写的东西还是需要人读过](https://marsdawn.southern-light.dev/zh-hans/reviewing-ai-output/index.md): AI 写的 Markdown 还是得由人来理解，不能因为读起来通顺就直接相信。MarsDawn 把排版后的页面和源代码并排，也把 Mermaid 图表与 KaTeX 数学式画出来，让结构一眼就看得懂。
+- [更新记录](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): 免费的 marsdawn 命令行工具改了什么。
 - [English](https://marsdawn.southern-light.dev/privacy/index.md): MarsDawn does not collect personal data. Your documents and settings stay on your Mac.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/privacy/index.md): MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。
 - [日本語](https://marsdawn.southern-light.dev/ja/privacy/index.md): MarsDawn は個人データを収集しません。文書と設定はあなたの Mac 上に残ります。

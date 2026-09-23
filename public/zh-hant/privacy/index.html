@@ -2,6 +2,28 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>隱私權政策 · MarsDawn</title>
 <meta name="description" content="MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。">
@@ -19,36 +41,79 @@
 <meta property="og:description" content="MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/privacy/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="zh_TW">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到內容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/zh-hant/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">即將在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/privacy/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/privacy/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/privacy/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/privacy/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>隱私權政策</h1>
   <p>macOS 的 Markdown 編輯器 MarsDawn 如何處理你的資訊。</p>
-  <p class="updated">最後更新：2026-09-19</p>
+  <p class="updated">最後更新：2026-09-23</p>
 </section>
 
-<div class="summary"><p><strong>MarsDawn 不收集任何關於你的資料。</strong>沒有帳號、沒有分析、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。</p></div>
+<div class="summary"><p><strong>MarsDawn app 不收集任何關於你的資料。</strong>沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。</p></div>
+<nav class="toc" aria-label="本頁內容">
+<p>本頁內容</p>
+<ul>
+  <li><a href="#the-website">這個網站</a></li>
+  <li><a href="#what-stays-on-your-mac">留在你 Mac 上的東西</a></li>
+  <li><a href="#when-marsdawn-uses-the-internet">MarsDawn 什麼時候會連上網路</a></li>
+  <li><a href="#siri-shortcuts-and-spotlight">Siri、捷徑和 Spotlight</a></li>
+  <li><a href="#exporting-and-printing">輸出 PDF 和列印</a></li>
+  <li><a href="#the-marsdawn-command-line-tool">marsdawn 命令列工具</a></li>
+  <li><a href="#children">兒童</a></li>
+  <li><a href="#purchases">購買</a></li>
+  <li><a href="#changes-to-this-policy">政策變更</a></li>
+  <li><a href="#contact">聯絡我們</a></li>
+</ul>
+</nav>
 
-<h2>留在你 Mac 上的東西</h2>
+<h2 id="the-website">這個網站</h2>
+<p>App 和這個網站是兩件事。App 不收集資料。會記下造訪的，只有 marsdawn.southern-light.dev。</p>
+<p>這個網站使用透過<strong>Google Tag Manager</strong>載入的<strong>Google Analytics 4</strong>。每位訪客一開始的分析狀態都是拒絕：Google 的同意模式只會送出一個沒有 cookie、不含任何持續性識別碼的連線，直到你在橫幅中選擇「接受」為止。選擇「拒絕」，或是不做選擇，都會維持這個狀態；如果先前選過「接受」再改選「拒絕」，分析會立即關閉，下面提到的 cookie 也會被移除。你可以隨時用每一頁頁尾的「Cookie 設定」連結改變選擇；這個選擇只存在你瀏覽器的本機儲存空間裡，不是我們設下的 cookie。</p>
+<p>一旦你按下接受，Google Analytics 就會設定自己的 cookie（<code>_ga</code> 與 <code>_ga_&lt;評估 ID&gt;</code>），並記錄：</p>
+<ul>
+  <li><strong>頁面瀏覽與來源網址。</strong>被瀏覽的頁面，以及瀏覽器有送出來源網址時的那個網址。</li>
+  <li><strong>大略位置、裝置與瀏覽器。</strong>由你的 IP 位址推算出的粗略位置（最多到城市層級）、裝置類型、作業系統與瀏覽器，都不足以用來辨識你是誰。</li>
+  <li><strong>經由本站離開的點擊與捲動。</strong>Google Analytics 的加強型評估會記錄離開本站的點擊（例如前往 Mac App Store 的連結），以及你在頁面上捲動的程度。</li>
+  <li><strong>IP 位址。</strong>Google Analytics 4 不會記錄或保存 IP 位址。</li>
+  <li><strong>不會記錄的。</strong>沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 <code>/themes/</code> 索取主題檔案的請求會被略過，不會送出。</li>
+  <li><strong>保留期限。</strong>Google 會保留這些資料 14 個月，之後刪除。</li>
+  <li><strong>資料處理地點。</strong>Google Tag Manager 與 Google Analytics 由 Google 營運；你的資料可能會在美國及 Google 營運所在的其他國家處理。</li>
+  <li><strong>主機。</strong>網站放在 Cloudflare。和任何主機一樣，它在回應請求時會看到你的 IP 位址。那是主機自己的日誌，不是上面的分析。</li>
+</ul>
+
+<h2 id="what-stays-on-your-mac">留在你 Mac 上的東西</h2>
 <ul>
   <li><strong>你的文件。</strong>MarsDawn 只讀寫你打開、儲存或選擇的檔案與資料夾，App 不會把它們上傳到任何地方。</li>
   <li><strong>你的設定。</strong>外觀、預覽主題、視窗版面和圖片偏好，都存在 App 自己的偏好設定裡。</li>
   <li><strong>你授權的資料夾。</strong>當你讓 MarsDawn 顯示某個資料夾裡的圖片或網頁檔案，或選擇筆記資料夾時，App 會保存 macOS 書籤，以便之後再次開啟。你在側邊欄開啟的資料夾，MarsDawn 會保持可讀寫，直到你在設定中移除為止，而不只是在那個視窗開著的時候。你隨時可以到 MarsDawn › 設定⋯ 移除。</li>
 </ul>
 
-<h2>MarsDawn 什麼時候會連上網路</h2>
+<h2 id="when-marsdawn-uses-the-internet">MarsDawn 什麼時候會連上網路</h2>
 <p>MarsDawn 可以完全離線使用，只有在<strong>你自己選擇時</strong>，才會為引用網路內容的文件連網：</p>
 <ul>
   <li><strong>Markdown 文件。</strong>網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。</li>
@@ -58,25 +123,25 @@
 <p>載入網路內容時，你的 Mac 會直接向存放內容的伺服器發出請求。和所有網路請求一樣，這些伺服器會看到你的 IP 位址與請求的內容。MarsDawn 的開發者不會收到任何這類資訊。</p>
 <p>在預覽中點選的連結會用你的預設瀏覽器打開，適用該瀏覽器的隱私做法。音訊與影片不會自動播放。</p>
 
-<h2>Siri、捷徑和 Spotlight</h2>
+<h2 id="siri-shortcuts-and-spotlight">Siri、捷徑和 Spotlight</h2>
 <p>MarsDawn 提供 Siri、捷徑 App 和 Spotlight 可用的動作，例如新增文件或加入筆記。使用時，你提供的文字會交給你 Mac 上的 MarsDawn，並只存到動作指定的位置（新文件，或你所選筆記資料夾中的 <code>Inbox.md</code>）。對 Siri 說的話由 Apple 依 <a href="https://www.apple.com/legal/privacy/">Apple 隱私權政策</a> 處理。</p>
 
-<h2>輸出 PDF 和列印</h2>
+<h2 id="exporting-and-printing">輸出 PDF 和列印</h2>
 <p>輸出 PDF 和列印都在你的 Mac 上完成。PDF 存在你選擇的位置，列印則透過 macOS 送到你選的印表機。</p>
 
-<h2>marsdawn 命令列工具</h2>
+<h2 id="the-marsdawn-command-line-tool">marsdawn 命令列工具</h2>
 <p>另外發佈、可自由選用的 <code>marsdawn</code> 命令列工具，同樣完全在你的 Mac 上執行：只讀取你指定的 Markdown 檔，並寫出你要求的 PDF。只有在加上 <code>--allow-remote-images</code> 時才會載入網路圖片。</p>
 
-<h2>兒童</h2>
-<p>MarsDawn 不向任何人收集資料，包括兒童。</p>
+<h2 id="children">兒童</h2>
+<p>MarsDawn app 不向任何人收集資料，包括兒童。網站上記下的造訪不是帳號，也不用來辨認任何人。</p>
 
-<h2>購買</h2>
+<h2 id="purchases">購買</h2>
 <p>MarsDawn 將透過 Mac App Store 販售，付款會由 Apple 依其條款處理，開發者不會取得你的付款資訊。</p>
 
-<h2>政策變更</h2>
+<h2 id="changes-to-this-policy">政策變更</h2>
 <p>如果 MarsDawn 未來處理資料的方式有所改變，本頁會在該版本推出前更新，頁首的日期也會一併更改。</p>
 
-<h2>聯絡我們</h2>
+<h2 id="contact">聯絡我們</h2>
 <p>隱私相關問題：<a href="mailto:support@southern-light.dev">support@southern-light.dev</a></p>
 </main>
 <footer class="footer">
@@ -84,8 +149,9 @@
     <a href="/zh-hant/support/">支援</a>
     <a href="/zh-hant/privacy/" aria-current="page">隱私權政策</a>
     <a href="/zh-hant/cli/">命令列工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>讀 agent 寫的 Markdown。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

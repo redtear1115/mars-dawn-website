@@ -2,6 +2,28 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MacMD Viewer 對比 MarsDawn：檢視器與編輯器 · MarsDawn</title>
 <meta name="description" content="MacMD Viewer 是唯讀檢視器，直接購買 USD 19.99。MarsDawn 邊編輯邊預覽，免費試用後在 Mac App Store 一次解鎖 USD 4.99。逐項比較功能、價格和購買方式。">
@@ -19,50 +41,69 @@
 <meta property="og:description" content="MacMD Viewer 是唯讀檢視器，直接購買 USD 19.99。MarsDawn 邊編輯邊預覽，免費試用後在 Mac App Store 一次解鎖 USD 4.99。逐項比較功能、價格和購買方式。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="zh_TW">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到內容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/zh-hant/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">即將在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/vs/macmd-viewer/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/macmd-viewer/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/macmd-viewer/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/macmd-viewer/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>MacMD Viewer 對比 MarsDawn。</h1>
   <p>兩者都是給 Mac 用的 app，都能把 Markdown 排版出來讀。MacMD Viewer 打開 <code>.md</code> 檔案，顯示排好版的頁面，但不能編輯它。MarsDawn 則是在同樣的預覽旁邊放了編輯器，讓你在同一個視窗裡寫和讀。以下逐項比較兩者的差異。</p>
 </section>
-<h2>如果你只需要讀，不需要編輯</h2>
+<h2 id="if-you-only-need-to-read-not-edit">如果你只需要讀，不需要編輯</h2>
 <p>如果你的工作就是讀別人寫好的 Markdown，完全不用碰原始碼，MacMD Viewer 是合理的選擇：它就是為這件事做的，現在就能買，也能在比較舊的 macOS 上跑。當閱讀不是全部的工作時，MarsDawn 才值得，因為 agent 寫的 Markdown 通常還要再改一輪。</p>
-<h2>各自能做什麼</h2>
-<ul>
-  <li><strong>編輯：</strong>MacMD Viewer 設計上就是唯讀。MarsDawn 邊編輯原始碼邊在旁邊排版，打字的同時就看得到改動。</li>
-  <li><strong>預覽主題：</strong>MacMD Viewer 內建 12 種文件主題。MarsDawn 有四種：Dawn、Classic、Modern 和 Vivid，各有淺色與深色。</li>
-  <li><strong>圖表與數學式：</strong>兩者都能畫出 Mermaid 圖表、也都有程式碼上色。MarsDawn 還能排版 KaTeX 數學式；MacMD Viewer 自己的介紹頁沒有提到數學式排版。</li>
-  <li><strong>Finder 整合：</strong>兩者都有 Finder 的快速查看擴充功能，對 <code>.md</code> 檔案按空白鍵就能看到排好版的頁面。</li>
-  <li><strong>PDF 與列印：</strong>兩者都能把排好版的頁面輸出或列印成 PDF。</li>
-  <li><strong>系統需求：</strong>MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。</li>
-  <li><strong>語言：</strong>MarsDawn 的介面有英文和繁體中文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。</li>
-</ul>
-<h2>價格與購買方式</h2>
-<ul>
-  <li><strong>從哪裡買：</strong>MacMD Viewer 從自己的網站直接下載，也上架 Homebrew 和 Setapp，但不在 Mac App Store 上；MarsDawn 只在 Mac App Store 上架。</li>
-  <li><strong>價格：</strong>MacMD Viewer 一台 Mac 一次 USD 19.99（三台的組合包和大量授權更貴）。MarsDawn 免費下載，之後以 USD 4.99 一次解鎖。</li>
-  <li><strong>先試用：</strong>MacMD Viewer 沒有免費試用，直接購買改用 14 天內可退款的保證。MarsDawn 在你付費之前，先給你 14 天的試用。</li>
-  <li><strong>退款與更新：</strong>MacMD Viewer 的退款和更新都在它自己的網站上處理。MarsDawn 透過 Apple 購買，退款和更新都走 Apple 的標準流程。</li>
-  <li><strong>帳號：</strong>兩者都不需要帳號就能使用。</li>
-</ul>
-<h2>現在就能免費試試看</h2>
+<h2 id="what-each-app-does">各自能做什麼</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">編輯</th><td data-label="MacMD Viewer">設計上就是唯讀</td><td data-label="MarsDawn">編輯原始碼，排版後的頁面就在旁邊</td></tr>
+  <tr><th scope="row">預覽主題</th><td data-label="MacMD Viewer">12 種文件主題</td><td data-label="MarsDawn">4 種，各有淺色與深色</td></tr>
+  <tr><th scope="row">圖表與數學式</th><td data-label="MacMD Viewer">Mermaid 與程式碼上色；介紹頁沒有提到數學式</td><td data-label="MarsDawn">Mermaid、程式碼上色與 KaTeX 數學式</td></tr>
+  <tr><th scope="row">Finder 快速查看</th><td data-label="MacMD Viewer">有</td><td data-label="MarsDawn">有</td></tr>
+  <tr><th scope="row">PDF 與列印</th><td data-label="MacMD Viewer">有</td><td data-label="MarsDawn">有</td></tr>
+  <tr><th scope="row">系統需求</th><td data-label="MacMD Viewer">macOS 14（Sonoma）以上</td><td data-label="MarsDawn">macOS 26（Tahoe）以上</td></tr>
+  <tr><th scope="row">介面語言</th><td data-label="MacMD Viewer">自己的資料沒有寫出</td><td data-label="MarsDawn">英文和繁體中文</td></tr>
+</tbody>
+</table></div>
+<h2 id="pricing-and-how-you-buy-it">價格與購買方式</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">從哪裡買</th><td data-label="MacMD Viewer">自己的網站、Homebrew 或 Setapp；不在 Mac App Store</td><td data-label="MarsDawn">只在 Mac App Store</td></tr>
+  <tr><th scope="row">價格</th><td data-label="MacMD Viewer">一台 Mac 一次 USD 19.99；多台的組合包更貴</td><td data-label="MarsDawn">免費下載，之後一次 USD 4.99</td></tr>
+  <tr><th scope="row">先試用</th><td data-label="MacMD Viewer">沒有試用；直接購買 14 天內可退款</td><td data-label="MarsDawn">14 天免費試用</td></tr>
+  <tr><th scope="row">退款與更新</th><td data-label="MacMD Viewer">透過它自己的網站</td><td data-label="MarsDawn">透過 Apple</td></tr>
+  <tr><th scope="row">需要帳號</th><td data-label="MacMD Viewer">不用</td><td data-label="MarsDawn">不用</td></tr>
+</tbody>
+</table></div>
+<h2 id="try-it-today-free">現在就能免費試試看</h2>
 <p>MarsDawn 即將在 Mac App Store 上架，現在還沒開賣。在那之前，免費的 <code>marsdawn</code> 命令列工具今天就能把任何 Markdown 檔案轉成 PDF，Mermaid 圖表和程式碼上色都在，而且不需要安裝其他東西：</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
-<h2>接下來</h2>
+<h2 id="next">接下來</h2>
 <ul>
   <li>完整步驟：<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</li>
   <li>MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
@@ -75,8 +116,9 @@ open notes.pdf</code></pre>
     <a href="/zh-hant/support/">支援</a>
     <a href="/zh-hant/privacy/">隱私權政策</a>
     <a href="/zh-hant/cli/">命令列工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>讀 agent 寫的 Markdown。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

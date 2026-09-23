@@ -2,6 +2,15 @@
 
 If you already have VS Code, a browser or Claude Desktop open, reaching for one of them to glance at a Markdown file is reasonable. Here's what each one actually renders, and what it costs to get there, compared with opening the same file in MarsDawn.
 
+## At a glance
+
+|  | VS Code preview | Browser extension | Claude Desktop | MarsDawn |
+|---|---|---|---|---|
+| Opens a Markdown file from disk | Yes | Yes, once file access is allowed | No: Markdown isn't on its upload list | Yes |
+| Before the first file | Install VS Code, a whole development environment | Install an extension, then turn on “Allow access to file URLs” | It can't browse files on disk | Install MarsDawn |
+| Built for | Writing code; the preview is one pane among many | Browsing the web | Conversations with Claude | Reading and editing Markdown |
+| Draws the page with | Electron: a bundled Chromium and Node.js | A full browser | The Claude Desktop app | A native AppKit app; WebKit draws the page |
+
 ## VS Code's built-in preview
 
 Press `⌘⇧V` in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively — Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading — the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app you install as a whole development environment, not something you open to read one file.
@@ -26,7 +35,7 @@ VS Code is an Electron app: a bundled Chromium and Node.js runtime, not a native
 
 ## More
 
-- [MarsDawn](https://marsdawn.southern-light.dev/index.md): A native Mac Markdown editor with live preview, Mermaid diagrams and PDF export, built for reading what AI agents write. Coming soon to the Mac App Store.
+- [MarsDawn](https://marsdawn.southern-light.dev/index.md): Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. Coming soon to the Mac App Store.
 - [Your writing stays on your Mac](https://marsdawn.southern-light.dev/yours/index.md): MarsDawn has no account, no sync and no cloud. Your Markdown documents stay on your Mac, in the files and folders you choose.
 - [Try free, pay once](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.
 - [PDF export](https://marsdawn.southern-light.dev/pdf/index.md): Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks and tables.
@@ -45,6 +54,7 @@ VS Code is an Electron app: a bundled Chromium and Node.js runtime, not a native
 - [Preview themes and PDF export](https://marsdawn.southern-light.dev/themes/index.md): Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. More importable themes, and a gallery to share your own, are planned.
 - [Sharing exported PDFs](https://marsdawn.southern-light.dev/sharing-exported-pdfs/index.md): Export an agent's Markdown to PDF and hand it to a colleague who doesn't read Markdown and won't install anything. No syntax, no app and no account needed to open it.
 - [Why AI output still needs a human reader](https://marsdawn.southern-light.dev/reviewing-ai-output/index.md): AI-written Markdown still has to be understood by a person, not trusted on sight. MarsDawn pairs the rendered page with the source, and draws Mermaid diagrams and KaTeX math, so structure is legible at a glance.
+- [Changelog](https://marsdawn.southern-light.dev/changelog/index.md): What changed in the free marsdawn command-line tool.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/index.md): MarsDawn 對比在 VS Code 內建預覽、瀏覽器擴充功能，或 Claude Desktop 檔案預覽裡看 Markdown：各自能排版出什麼，打開一個檔案要花多少功夫。
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/vs/markdown-preview-tools/index.md): MarsDawn 对比在 VS Code 内置预览、浏览器扩展，或 Claude Desktop 文件预览里看 Markdown：各自能排版出什么，打开一个文件要花多少功夫。
 - [日本語](https://marsdawn.southern-light.dev/ja/vs/markdown-preview-tools/index.md): VS Code の内蔵プレビュー、ブラウザ拡張機能、Claude Desktop のファイルプレビューで Markdown を読む場合と、MarsDawn を比較：それぞれが実際にレンダリングするもの、1つのファイルを開くのにかかる手間。

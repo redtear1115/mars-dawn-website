@@ -4,6 +4,14 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 
 **挑你的工具支援的那一種：免費的 `marsdawn` CLI、純 Markdown 的 skill 檔案，或是 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 這個 MCP 伺服器。**三者都呼叫同一個 `marsdawn export`，回傳一樣的 JSON 結果。
 
+## 該用哪一個
+
+| 如果你的 agent | 就用 | 需要 |
+|---|---|---|
+| 能執行 shell 指令 | [命令列工具](/zh-hant/cli/agents/) | macOS 15 以上 |
+| 會載入指令檔，例如 Claude Code | [skill 檔案](/zh-hant/cli/skill/) | 命令列工具（skill 會幫你安裝） |
+| 透過 MCP 呼叫工具 | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 以上、marsdawn 0.5.0 以上，以及 Node.js 20 以上 |
+
 ## CLI
 
 `marsdawn export notes.md --json` 可以被任何能執行 shell 指令的 agent 或腳本呼叫，因為是命令列工具，天生就跟模型無關。它回傳的每個欄位都寫在[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)裡，那一頁是 JSON schema 的權威來源，底下另外兩種方式都會連回去。
@@ -14,12 +22,18 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 
 ## MCP 伺服器
 
-[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一個獨立、公開、Apache-2.0 授權的 repository。它是一個只有一個工具的 MCP 伺服器，`export_markdown_to_pdf`，包住 `marsdawn export --json`：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。
+[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一個獨立、公開、Apache-2.0 授權的 repository。它是一個有兩個工具的 MCP 伺服器，`export_markdown_to_pdf` 和 `open_in_marsdawn`，分別包住 `marsdawn export --json` 和 `marsdawn open --json`：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。
 
 - **取得方式：**以 MCP Bundle（`marsdawn.mcpb`）的形式附在[GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases) 上，或從原始碼以 stdio 執行伺服器。
-- **Registry：**還沒上架 MCP Registry（目前版本：0.1.0）。要靠 registry 搜尋找到它之前，請先到 repository 確認目前狀態。
+- **Registry：**還沒上架 MCP Registry（目前版本：0.2.1）。要靠 registry 搜尋找到它之前，請先到 repository 確認目前狀態。
 - **託管：**只能自架，沒有代管服務。伺服器跑在你自己的機器上，就在 marsdawn 旁邊。
 - **系統需求：**macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。
+
+## 只能在你允許的資料夾裡運作
+
+兩個工具都只能在你允許的資料夾裡讀寫：擴充功能的「Allowed folders」設定（預設是空的），或是你的 MCP 用戶端提供的 roots。兩者都沒有設定時，每次呼叫都會被拒絕，拒絕訊息會說明怎麼設定。每個路徑都必須是絕對路徑，而 `export_markdown_to_pdf` 只會寫出 `.pdf` 檔案，不會透過 symlink 寫。
+
+**安全性：**請更新到 [0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1)——0.1.0 和 0.2.0 會讓呼叫把 PDF 寫到你帳號能寫入的任何路徑，已在 [GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc) 修好。
 
 ## 同一個 export，三扇門
 
@@ -33,7 +47,7 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 
 ## 其他頁面
 
-- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 原生的 Mac Markdown 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出，為讀 AI agent 寫的 Markdown 而做。即將在 Mac App Store 上架。
+- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。即將在 Mac App Store 上架。
 - [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hant/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。
@@ -52,6 +66,7 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 - [預覽主題與 PDF 輸出](https://marsdawn.southern-light.dev/zh-hant/themes/index.md): 四種主題，各有淺色與深色，一套輸出對應你正在看的主題。更多可匯入的主題，和讓大家投稿主題的主題庫，都在規劃中。
 - [分享輸出的 PDF](https://marsdawn.southern-light.dev/zh-hant/sharing-exported-pdfs/index.md): 把 agent 寫的 Markdown 輸出成 PDF，交給不寫 Markdown、也不會安裝任何東西的同事。不用懂語法，不用裝 app，也不需要帳號就能打開。
 - [為什麼 AI 寫的東西還是需要人讀過](https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/index.md): AI 寫的 Markdown 還是得由人來理解，不能因為讀起來通順就直接相信。MarsDawn 把排版後的頁面和原始碼並排，也把 Mermaid 圖表與 KaTeX 數學式畫出來，讓結構一眼就看得懂。
+- [更新紀錄](https://marsdawn.southern-light.dev/zh-hant/changelog/index.md): 免費的 marsdawn 命令列工具改了什麼。
 - [English](https://marsdawn.southern-light.dev/cli/mcp/index.md): marsdawn has no AI model of its own, so it doesn't matter which agent wrote the Markdown. Call it from the CLI, a skill file, or the marsdawn-mcp MCP server: all three run the same export.
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/cli/mcp/index.md): marsdawn 没有自己的 AI 模型，是哪个 agent 写出 Markdown 都无所谓。可以从 CLI、skill 文件，或 marsdawn-mcp 这个 MCP 服务器调用，三者最后都运行同一个 export。
 - [日本語](https://marsdawn.southern-light.dev/ja/cli/mcp/index.md): marsdawn には自前の AI モデルがないので、どのエージェントが書いた Markdown かは関係ありません。CLI、skill ファイル、marsdawn-mcp という MCP サーバーのいずれからでも呼び出せ、三つとも同じ export を実行します。

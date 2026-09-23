@@ -2,6 +2,28 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MarsDawn ができないこと · MarsDawn</title>
 <meta name="description" content="同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類。購入前に知っておいてください。">
@@ -20,11 +42,23 @@
 <meta property="og:description" content="同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類。購入前に知っておいてください。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/limits/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/ja/">
@@ -34,7 +68,7 @@
   <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/limits/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/limits/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/limits/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/limits/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>MarsDawn ができないこと。</h1>
   <p>いくつかの機能は意図的に省かれています。必要な機能があれば、購入したあとより今知っておくほうがいいはずです。</p>
@@ -50,19 +84,24 @@
     <ol><li>この Mac で、ウインドウひとつにつき文書ひとつ。</li><li>ここで Markdown を書きます。</li><li>ツールバーにあるのはテーマとレイアウトだけで、プラグインメニューはありません。</li><li>このページは読むためのもので、編集はできません。</li></ol>
   </figcaption>
 </figure>
-<h2>省かれているもの</h2>
+<h2 id="left-out">省かれているもの</h2>
+<h3>デバイスと使う人</h3>
 <ul>
   <li><strong>同期：</strong>MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。</li>
   <li><strong>iPhone と iPad：</strong>これらの端末向けアプリはありません。MarsDawn は Mac 専用です。</li>
-  <li><strong>プラグイン：</strong>MarsDawn にプラグインや拡張機能はありません。</li>
   <li><strong>共有：</strong>アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。</li>
-  <li><strong>編集：</strong>左に Markdown を書き、右でページを読みます。ページ自体は編集できません。</li>
-  <li><strong>形式：</strong>MarsDawn は PDF の書き出しと印刷に対応していますが、Word ファイルへの書き出しはできません。</li>
-  <li><strong>テーマ：</strong>Dawn、Classic、Modern、Vivid の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。</li>
-  <li><strong>その他のファイル：</strong>プレーンテキストファイルと PDF は読み取り専用で開きます。</li>
-  <li><strong>トライアル終了後：</strong>14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。</li>
   <li><strong>システム：</strong>MarsDawn には macOS 26 以降が必要です。</li>
 </ul>
+<h3>ファイルと機能</h3>
+<ul>
+  <li><strong>編集：</strong>左に Markdown を書き、右でページを読みます。ページ自体は編集できません。</li>
+  <li><strong>形式：</strong>MarsDawn は PDF の書き出しと印刷に対応していますが、Word ファイルへの書き出しはできません。</li>
+  <li><strong>その他のファイル：</strong>プレーンテキストファイルと PDF は読み取り専用で開きます。</li>
+  <li><strong>テーマ：</strong>夜明け、クラシック、モダン、ビビッド の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。</li>
+  <li><strong>プラグイン：</strong>MarsDawn にプラグインや拡張機能はありません。</li>
+</ul>
+<h2 id="after-the-trial">試用期間が終わったら</h2>
+<p>14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。</p>
 <nav class="traits" aria-label="MarsDawn に期待できること">
 <h2>MarsDawn に期待できること</h2>
 <ul>
@@ -78,8 +117,9 @@
     <a href="/ja/support/">サポート</a>
     <a href="/ja/privacy/">プライバシーポリシー</a>
     <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>エージェントが書いた Markdown を読む。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

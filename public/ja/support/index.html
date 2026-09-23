@@ -2,6 +2,28 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>サポート · MarsDawn</title>
 <meta name="description" content="macOS 向け Markdown エディタ MarsDawn のヘルプ。">
@@ -19,24 +41,51 @@
 <meta property="og:description" content="macOS 向け Markdown エディタ MarsDawn のヘルプ。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/support/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/ja/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/support/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/support/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/support/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/support/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>サポート</h1>
   <p>macOS 向け Markdown エディタ、MarsDawn のヘルプです。</p>
 </section>
+<nav class="toc" aria-label="質問へ移動">
+<p>質問へ移動</p>
+<ul>
+  <li><a href="#what-do-i-need-to-run-marsdawn">MarsDawn を動かすには何が必要ですか？</a></li>
+  <li><a href="#how-do-i-switch-between-the-editor-and-the-preview">エディタとプレビューはどう切り替えますか？</a></li>
+  <li><a href="#an-image-in-my-document-doesn-t-show">文書内の画像が表示されません。</a></li>
+  <li><a href="#how-do-i-add-an-image">画像を追加するには？</a></li>
+  <li><a href="#a-mermaid-diagram-shows-an-error">Mermaid 図にエラーが表示されます。</a></li>
+  <li><a href="#how-do-i-make-a-pdf">PDF を作るには？</a></li>
+  <li><a href="#how-do-i-use-marsdawn-with-siri-or-shortcuts">Siri やショートカットで MarsDawn を使うには？</a></li>
+  <li><a href="#where-are-my-settings">設定はどこにありますか？</a></li>
+  <li><a href="#how-do-i-get-a-refund">返金してもらうには？</a></li>
+</ul>
+</nav>
 
 <section class="contact">
   <h2>お問い合わせ</h2>
@@ -47,34 +96,34 @@
 <section class="faq">
   <h2>よくある質問</h2>
 
-  <h3>MarsDawn を動かすには何が必要ですか？</h3>
+  <h3 id="what-do-i-need-to-run-marsdawn">MarsDawn を動かすには何が必要ですか？</h3>
   <p>macOS 26 Tahoe 以降を搭載した Mac。Apple シリコンでも Intel でも動作します。</p>
 
-  <h3>エディタとプレビューはどう切り替えますか？</h3>
+  <h3 id="how-do-i-switch-between-the-editor-and-the-preview">エディタとプレビューはどう切り替えますか？</h3>
   <p><kbd>⌘1</kbd> でソースのみ、<kbd>⌘2</kbd> で左右分割、<kbd>⌘3</kbd> でプレビューのみになります。同じ選択肢は「表示」メニューとツールバーにもあります。</p>
 
-  <h3>文書内の画像が表示されません。</h3>
+  <h3 id="an-image-in-my-document-doesn-t-show">文書内の画像が表示されません。</h3>
   <ul>
     <li><strong>Mac 上の画像：</strong>まず文書を保存し、プレビューの<em>フォルダへのアクセスを許可…</em>をクリックして、画像があるフォルダを選んでください。MarsDawn はそのフォルダを記憶します。許可したフォルダは MarsDawn › 設定 › フォルダへのアクセスで確認できます。</li>
     <li><strong>ウェブ上の画像：</strong>ウェブ画像は、プレビュー上部の<em>イメージを読み込む</em>をクリックするまでブロックされます。常に読み込みたい場合は、設定で<em>リモートイメージを自動的に読み込む</em>をオンにしてください。</li>
   </ul>
 
-  <h3>画像を追加するには？</h3>
+  <h3 id="how-do-i-add-an-image">画像を追加するには？</h3>
   <p>エディタにドラッグするか、貼り付けてください。文書は先に保存しておく必要があります。MarsDawn が画像を文書の隣にある <code>assets</code> フォルダにコピーし、Markdown のリンクを書き込みます。</p>
 
-  <h3>Mermaid 図にエラーが表示されます。</h3>
+  <h3 id="a-mermaid-diagram-shows-an-error">Mermaid 図にエラーが表示されます。</h3>
   <p>MarsDawn は図のソースと、その下に Mermaid のエラーメッセージの最初の行を表示します。示された行を確認してください。たとえば矢印の先に何もない、または括弧が閉じられていない、といった箇所です。</p>
 
-  <h3>PDF を作るには？</h3>
+  <h3 id="how-do-i-make-a-pdf">PDF を作るには？</h3>
   <p>ファイル › PDF として書き出す…（<kbd>⌥⌘E</kbd>）を選んでください。PDF はどのレイアウトであっても、プレビューテーマのライト版を使い、ページごとに分割されます。ファイル › プリント…でも同じページが印刷されます。</p>
 
-  <h3>Siri やショートカットで MarsDawn を使うには？</h3>
+  <h3 id="how-do-i-use-marsdawn-with-siri-or-shortcuts">Siri やショートカットで MarsDawn を使うには？</h3>
   <p>ショートカット App を開いて MarsDawn を検索すると、<em>新規 Markdown 書類</em>、<em>受信トレイにメモを追加</em>、<em>最近使った書類を開く</em>が見つかります。メモを追加する前に、MarsDawn › 設定 › メモフォルダでメモフォルダを選んでください。メモはそのフォルダの <code>Inbox.md</code> に追加されます。</p>
 
-  <h3>設定はどこにありますか？</h3>
+  <h3 id="where-are-my-settings">設定はどこにありますか？</h3>
   <p>MarsDawn › 設定（<kbd>⌘,</kbd>）に、外観モード、イメージ、メモフォルダ、フォルダへのアクセス、プレビューのテーマがあります。</p>
 
-  <h3>返金してもらうには？</h3>
+  <h3 id="how-do-i-get-a-refund">返金してもらうには？</h3>
   <p>購入は Apple が処理します。<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> で返金を申請してください。</p>
 </section>
 </main>
@@ -83,8 +132,9 @@
     <a href="/ja/support/" aria-current="page">サポート</a>
     <a href="/ja/privacy/">プライバシーポリシー</a>
     <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>エージェントが書いた Markdown を読む。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

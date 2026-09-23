@@ -1,18 +1,60 @@
-Built for the AI workflow
+Frontier tools for builders
 
-# Where an agent's Markdown gets a careful read.
+# Claim the map. Read the dawn.
 
-An AI agent writes the Markdown. You review it in MarsDawn, source and rendered page side by side, then send it back for changes.
+Markdown for humans who steer agentic work.
 
-![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+The page shows a working MarsDawn window over part of the app's Welcome guide. Pick one of four preview themes (Dawn, Classic, Modern, Vivid) and one of three layouts (Source, Split, Preview).
 
-## The loop
+## Read what your agent wrote.
 
 1. **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
 2. **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
 3. **The agent revises.** Ask for changes. Open the revised file and read it the same way.
 
-Agents can drive MarsDawn directly: the free [marsdawn](/cli/) command-line tool opens a file for review or exports a PDF, with JSON output built for scripts. See [marsdawn for agents](/cli/agents/) for the details.
+## Do this now
+
+The free `marsdawn` command-line tool is ready today. Install it with Homebrew:
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+- `marsdawn export` turns a Markdown file into a PDF, rendered like MarsDawn's preview. It doesn't need the app.
+- `marsdawn open` opens files in the MarsDawn app for you to review.
+- `--json` gives scripts and agents results they can parse.
+
+[Command Line](/cli/) · [marsdawn for agents](/cli/agents/) · [Agent skill](/cli/skill/) · [MCP server](/cli/mcp/)
+
+## What to expect from MarsDawn
+
+- [A Mac app](/native/): Native windows, tabs, autosave, Quick Look.
+- [Your writing stays on your Mac](/yours/): No account, no sync, no cloud.
+- [Try free, pay once](/pay-once/): Free for 14 days, then USD 4.99 once. No subscription.
+
+Know before you buy. [What MarsDawn doesn't do](/limits/)
+
+## The app, as it is
+
+### [A Mac app](/native/)
+
+![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
+
+In this screenshot:
+
+1. A native Mac window.
+2. The Mac's text editor, with Markdown highlighting.
+3. ⌘1 source, ⌘2 split, ⌘3 preview.
+4. The page updates as you type.
+
+### [PDF export](/pdf/)
+
+![A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+
+In this screenshot:
+
+1. Mermaid diagrams, drawn into the PDF.
+2. Code keeps its highlighting.
 
 ## More
 
@@ -35,6 +77,7 @@ Agents can drive MarsDawn directly: the free [marsdawn](/cli/) command-line tool
 - [Preview themes and PDF export](https://marsdawn.southern-light.dev/themes/index.md): Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. More importable themes, and a gallery to share your own, are planned.
 - [Sharing exported PDFs](https://marsdawn.southern-light.dev/sharing-exported-pdfs/index.md): Export an agent's Markdown to PDF and hand it to a colleague who doesn't read Markdown and won't install anything. No syntax, no app and no account needed to open it.
 - [Why AI output still needs a human reader](https://marsdawn.southern-light.dev/reviewing-ai-output/index.md): AI-written Markdown still has to be understood by a person, not trusted on sight. MarsDawn pairs the rendered page with the source, and draws Mermaid diagrams and KaTeX math, so structure is legible at a glance.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/index.md): 原生的 Mac Markdown 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出，為讀 AI agent 寫的 Markdown 而做。即將在 Mac App Store 上架。
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/index.md): 原生的 Mac Markdown 编辑器，有实时预览、Mermaid 图表和 PDF 输出，为读 AI agent 写的 Markdown 而做。即将在 Mac App Store 上架。
-- [日本語](https://marsdawn.southern-light.dev/ja/index.md): ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向け Markdown エディタ。AI エージェントが書いた文章を読むために作られました。Mac App Store で近日公開予定です。
+- [Changelog](https://marsdawn.southern-light.dev/changelog/index.md): What changed in the free marsdawn command-line tool.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/index.md): 給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。即將在 Mac App Store 上架。
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/index.md): 给要掌舵 agentic 开发的人用的 Markdown：原生的 Mac 编辑器，有实时预览、Mermaid 图表和 PDF 输出。即将在 Mac App Store 上架。
+- [日本語](https://marsdawn.southern-light.dev/ja/index.md): エージェント開発の舵を取る人のための Markdown。ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向けエディタです。Mac App Store で近日公開予定です。

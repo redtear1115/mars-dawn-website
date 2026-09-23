@@ -2,6 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Support · MarsDawn</title>
 <meta name="description" content="Get help with MarsDawn, the Markdown editor for macOS.">
@@ -19,24 +41,51 @@
 <meta property="og:description" content="Get help with MarsDawn, the Markdown editor for macOS.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/support/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/support/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/support/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/support/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/support/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Support</h1>
   <p>Help with MarsDawn, the Markdown editor for macOS.</p>
 </section>
+<nav class="toc" aria-label="Jump to a question">
+<p>Jump to a question</p>
+<ul>
+  <li><a href="#what-do-i-need-to-run-marsdawn">What do I need to run MarsDawn?</a></li>
+  <li><a href="#how-do-i-switch-between-the-editor-and-the-preview">How do I switch between the editor and the preview?</a></li>
+  <li><a href="#an-image-in-my-document-doesn-t-show">An image in my document doesn't show.</a></li>
+  <li><a href="#how-do-i-add-an-image">How do I add an image?</a></li>
+  <li><a href="#a-mermaid-diagram-shows-an-error">A Mermaid diagram shows an error.</a></li>
+  <li><a href="#how-do-i-make-a-pdf">How do I make a PDF?</a></li>
+  <li><a href="#how-do-i-use-marsdawn-with-siri-or-shortcuts">How do I use MarsDawn with Siri or Shortcuts?</a></li>
+  <li><a href="#where-are-my-settings">Where are my settings?</a></li>
+  <li><a href="#how-do-i-get-a-refund">How do I get a refund?</a></li>
+</ul>
+</nav>
 
 <section class="contact">
   <h2>Write to us</h2>
@@ -47,34 +96,34 @@
 <section class="faq">
   <h2>Common questions</h2>
 
-  <h3>What do I need to run MarsDawn?</h3>
+  <h3 id="what-do-i-need-to-run-marsdawn">What do I need to run MarsDawn?</h3>
   <p>A Mac with macOS 26 Tahoe or later, on Apple silicon or Intel.</p>
 
-  <h3>How do I switch between the editor and the preview?</h3>
+  <h3 id="how-do-i-switch-between-the-editor-and-the-preview">How do I switch between the editor and the preview?</h3>
   <p>Press <kbd>⌘1</kbd> for the source only, <kbd>⌘2</kbd> for side by side, and <kbd>⌘3</kbd> for the preview only. The same choices are in the View menu and the toolbar.</p>
 
-  <h3>An image in my document doesn't show.</h3>
+  <h3 id="an-image-in-my-document-doesn-t-show">An image in my document doesn't show.</h3>
   <ul>
     <li><strong>Image on your Mac:</strong> save the document first, then click <em>Grant Folder Access…</em> in the preview and choose the folder that holds the image. MarsDawn remembers the folder. You can review granted folders in MarsDawn › Settings › Folder Access.</li>
     <li><strong>Image from the web:</strong> web images are blocked until you click <em>Load Images</em> at the top of the preview. To always load them, turn on <em>Load remote images automatically</em> in Settings.</li>
   </ul>
 
-  <h3>How do I add an image?</h3>
+  <h3 id="how-do-i-add-an-image">How do I add an image?</h3>
   <p>Drag it into the editor, or paste it. The document must be saved first: MarsDawn copies the image into an <code>assets</code> folder next to the document and writes the Markdown link for you.</p>
 
-  <h3>A Mermaid diagram shows an error.</h3>
+  <h3 id="a-mermaid-diagram-shows-an-error">A Mermaid diagram shows an error.</h3>
   <p>MarsDawn shows the diagram's source with the first line of Mermaid's error message underneath. Check the line it names, for example for an arrow with nothing after it or a bracket that isn't closed.</p>
 
-  <h3>How do I make a PDF?</h3>
+  <h3 id="how-do-i-make-a-pdf">How do I make a PDF?</h3>
   <p>Choose File › Export as PDF… (<kbd>⌥⌘E</kbd>). The PDF uses the light version of your preview theme and is split into pages, whichever layout you are in. File › Print… prints the same pages.</p>
 
-  <h3>How do I use MarsDawn with Siri or Shortcuts?</h3>
+  <h3 id="how-do-i-use-marsdawn-with-siri-or-shortcuts">How do I use MarsDawn with Siri or Shortcuts?</h3>
   <p>Open the Shortcuts app and search for MarsDawn to find <em>New Markdown Document</em>, <em>Add Note to Inbox</em> and <em>Open Recent Document</em>. Before adding notes, choose a notes folder in MarsDawn › Settings › Notes Folder. Notes are added to <code>Inbox.md</code> in that folder.</p>
 
-  <h3>Where are my settings?</h3>
+  <h3 id="where-are-my-settings">Where are my settings?</h3>
   <p>MarsDawn › Settings (<kbd>⌘,</kbd>) has appearance, images, the notes folder, folder access and the preview theme.</p>
 
-  <h3>How do I get a refund?</h3>
+  <h3 id="how-do-i-get-a-refund">How do I get a refund?</h3>
   <p>Purchases are handled by Apple. Request a refund at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
 </section>
 </main>
@@ -83,8 +132,9 @@
     <a href="/support/" aria-current="page">Support</a>
     <a href="/privacy/">Privacy Policy</a>
     <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
   </nav>
-  <p class="footer-meta"><span>Read what your agent wrote.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

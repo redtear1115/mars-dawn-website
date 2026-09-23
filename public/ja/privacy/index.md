@@ -2,9 +2,26 @@
 
 macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情報を扱うか。
 
-最終更新日：2026-09-19
+最終更新日：2026-09-23
 
-**MarsDawn はあなたに関するデータを一切収集しません。**アカウントも、アナリティクスも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。
+**MarsDawn アプリは、あなたに関するデータを一切収集しません。**アカウントも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。
+
+## このウェブサイト
+
+アプリとこのウェブサイトは別のものです。アプリはデータを収集しません。訪問が記録され得るのは、marsdawn.southern-light.dev だけです。
+
+このサイトは**Google タグマネージャー**経由で読み込まれる**Google アナリティクス 4**を使用しています。訪問者は最初、分析が拒否された状態で始まります。Google の同意モードは、バナーで「同意する」を選ぶまで、クッキーを使わず持続的な識別子も含まない通信だけを送ります。「同意しない」を選んだ場合、または何も選ばなかった場合も、この状態が続きます。以前に「同意する」を選んでいた場合でも、あとから「同意しない」に変更すると、分析はすぐに無効になり、下記のクッキーも削除されます。いつでもフッターの「Cookie 設定」リンクから選択を変更できます。この選択はブラウザのローカルストレージにのみ保存され、当サイト独自のクッキーではありません。
+
+同意すると、Google アナリティクスは自身のクッキー（`_ga` と `_ga_<測定 ID>`）を設定し、次を記録します。
+
+- **ページビューと参照元。**閲覧されたページと、ブラウザが送信した場合の参照元アドレス。
+- **おおよその位置情報、デバイス、ブラウザ。**IP アドレスから推定される、市区町村レベル程度までの位置情報、デバイスの種類、OS、ブラウザ。いずれも個人を特定できるものではありません。
+- **サイトを離れるクリックとスクロール。**Google アナリティクスの拡張計測機能は、サイトを離れるクリック（Mac App Store へのリンクなど）と、ページをどこまでスクロールしたかを記録します。
+- **IP アドレス。**Google アナリティクス 4 は IP アドレスを記録・保存しません。
+- **記録しないもの。**アカウントはありません。このサイトにアカウント機能がないためです。文書も、入力した文字も記録しません。サイトをまたいだ広告もなく、あなたのプロフィールも作りません。アプリが `/themes/` 以下のテーマファイルを取りに行くリクエストは対象外で、送られません。
+- **保持期間。**Google はこのデータを14か月保持したあと、削除します。
+- **データの処理場所。**Google タグマネージャーと Google アナリティクスは Google が運営しており、データは米国および Google が事業を行うその他の国で処理される場合があります。
+- **ホスティング。**サイトは Cloudflare 上にあります。どのホストとも同じく、リクエストに応答する間は IP アドレスを見ます。それはホスト自身のログであり、上のアナリティクスではありません。
 
 ## あなたの Mac に残るもの
 
@@ -39,7 +56,7 @@ PDF の書き出しと印刷は、あなたの Mac 上で行われます。PDF �
 
 ## 子ども
 
-MarsDawn は、子どもを含め、誰からもデータを収集しません。
+MarsDawn アプリは、子どもを含め、誰からもデータを収集しません。ウェブサイトに記録される訪問はアカウントではなく、誰かを識別するためにも使いません。
 
 ## 購入
 
@@ -55,7 +72,7 @@ MarsDawn がデータの扱い方を変える場合、そのバージョンが�
 
 ## その他
 
-- [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向け Markdown エディタ。AI エージェントが書いた文章を読むために作られました。Mac App Store で近日公開予定です。
+- [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): エージェント開発の舵を取る人のための Markdown。ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向けエディタです。Mac App Store で近日公開予定です。
 - [あなたの文章は Mac に残ります](https://marsdawn.southern-light.dev/ja/yours/index.md): MarsDawn にはアカウントも同期もクラウドもありません。Markdown 文書はあなたの Mac 上に、選んだファイルとフォルダの中に残ります。
 - [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
 - [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したり印刷したりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックや表を分断しないよう配慮されます。
@@ -69,11 +86,12 @@ MarsDawn がデータの扱い方を変える場合、そのバージョンが�
 - [AI エージェント向け marsdawn](https://marsdawn.southern-light.dev/ja/cli/agents/index.md): marsdawn を呼び出して Markdown を PDF に変換する AI エージェントとスクリプトのためのリファレンス：コマンド、JSON 出力、スキーマ、終了コード、必要環境。
 - [エージェント用スキル](https://marsdawn.southern-light.dev/ja/cli/skill/index.md): コーディングエージェントが読み込んで marsdawn をインストールし、動作確認をし、Markdown を PDF に書き出し、JSON の結果を読み取るための1つのファイルです。
 - [MCP サーバー](https://marsdawn.southern-light.dev/ja/cli/mcp/index.md): marsdawn には自前の AI モデルがないので、どのエージェントが書いた Markdown かは関係ありません。CLI、skill ファイル、marsdawn-mcp という MCP サーバーのいずれからでも呼び出せ、三つとも同じ export を実行します。
-- [トークンを使わないレビュー](https://marsdawn.southern-light.dev/ja/token-efficient-review/index.md): 人が MarsDawn でレンダリングされたページを読みます。それがエージェントの context に読み戻されることはありません。ツール呼び出し自体も、レンダリングされた内容ではなく精簡な JSON 結果を返すので、呼び出し自体も安上がりです。
+- [トークンを抑えたレビュー](https://marsdawn.southern-light.dev/ja/token-efficient-review/index.md): 人が MarsDawn でレンダリングされたページを読みます。それがエージェントの context に読み戻されることはありません。ツール呼び出し自体も、レンダリングされた内容ではなく簡潔な JSON 結果を返すので、呼び出し自体も安上がりです。
 - [他のツールで Markdown を見る場合との比較](https://marsdawn.southern-light.dev/ja/vs/markdown-preview-tools/index.md): VS Code の内蔵プレビュー、ブラウザ拡張機能、Claude Desktop のファイルプレビューで Markdown を読む場合と、MarsDawn を比較：それぞれが実際にレンダリングするもの、1つのファイルを開くのにかかる手間。
 - [プレビューテーマと PDF 書き出し](https://marsdawn.southern-light.dev/ja/themes/index.md): それぞれライトとダークを持つ4種類のプレビューテーマと、今見ているテーマに合わせた1つの PDF・印刷書き出し。もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーも計画されています。
 - [書き出した PDF を共有する](https://marsdawn.southern-light.dev/ja/sharing-exported-pdfs/index.md): エージェントの書いた Markdown を PDF に書き出し、Markdown を読まず何もインストールしない同僚に渡します。構文もアプリもアカウントも、開くのに一切不要です。
 - [AI の出力を人が確認する理由](https://marsdawn.southern-light.dev/ja/reviewing-ai-output/index.md): AI が書いた Markdown も、結局は人が理解しなければなりません。読みやすいからといって鵜呑みにはできません。MarsDawn はレンダリングされたページとソースを並べ、Mermaid 図と KaTeX 数式を描画するので、構造が一目で分かります。
+- [更新履歴](https://marsdawn.southern-light.dev/ja/changelog/index.md): 無料の marsdawn コマンドラインツールの変更点です。
 - [English](https://marsdawn.southern-light.dev/privacy/index.md): MarsDawn does not collect personal data. Your documents and settings stay on your Mac.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/privacy/index.md): MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/privacy/index.md): MarsDawn 不收集任何个人数据，你的文稿与设置都留在你的 Mac 上。

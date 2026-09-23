@@ -2,12 +2,36 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MarsDawn：ライブプレビュー搭載、Mac 向け Markdown エディタ</title>
-<meta name="description" content="ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向け Markdown エディタ。AI エージェントが書いた文章を読むために作られました。Mac App Store で近日公開予定です。">
+<meta name="description" content="エージェント開発の舵を取る人のための Markdown。ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向けエディタです。Mac App Store で近日公開予定です。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/hero.css">
+<link rel="stylesheet" href="/assets/annotations.css">
 <link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/">
 <link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/">
 <link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/">
@@ -16,15 +40,27 @@
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ja/">
 <link rel="alternate" type="text/markdown" href="/ja/index.md">
 <meta property="og:title" content="MarsDawn：ライブプレビュー搭載、Mac 向け Markdown エディタ">
-<meta property="og:description" content="ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向け Markdown エディタ。AI エージェントが書いた文章を読むために作られました。Mac App Store で近日公開予定です。">
+<meta property="og:description" content="エージェント開発の舵を取る人のための Markdown。ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向けエディタです。Mac App Store で近日公開予定です。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向け Markdown エディタ。AI エージェントが書いた文章を読むために作られました。Mac App Store で近日公開予定です。", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder"}, "url": "https://marsdawn.southern-light.dev/ja/"}</script>
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "エージェント開発の舵を取る人のための Markdown。ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向けエディタです。Mac App Store で近日公開予定です。", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder"}, "url": "https://marsdawn.southern-light.dev/ja/"}</script>
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/ja/">
@@ -33,7 +69,7 @@
   </a>
   <nav class="lang" aria-label="Language"><a href="/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="hero-scene">
 <div class="dawn-wrap" aria-hidden="true">
   <svg class="dawn-layer" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
@@ -84,41 +120,146 @@
 <div class="hero-inner">
 <div class="hero-copy">
 <section class="intro hero">
-  <p class="kicker">AI ワークフローのために作られました</p>
-  <h1>エージェントが書いた Markdown を、じっくり読む場所。</h1>
-  <p>AI エージェントが Markdown を書きます。あなたは MarsDawn でそれを確認します。ソースとレンダリングされたページを並べて見て、修正を伝えます。</p>
+  <p class="kicker">ビルダーのためのフロンティアツール</p>
+  <h1><span>地図を手に。</span><span>夜明けを読む。</span></h1>
+  <p>エージェント開発の舵を取る人のための Markdown。</p>
 </section>
+<p class="hero-cta"><a class="cta cta-primary" href="#install">無料の CLI をインストール</a> <span class="store-chip">Mac App Store で近日公開</span></p>
 </div>
 <div class="hero-shot">
-<figure class="shot">
-  <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 1264px) 76rem, (min-width: 736px) calc(100vw - 48px), calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn の分割ビュー：左が Markdown のソース、右がレンダリングされたページ。">
-    
-    
-  </div></div>
-</figure>
+<div class="mdw" role="group" aria-label="操作できる MarsDawn のウインドウ：テーマとレイアウトを選べます">
+  <div class="mdw-bar">
+    <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="mdw-title">MarsDawn へようこそ</span>
+    <details class="mdw-themes">
+      <summary title="プレビューのテーマ"><span class="mdw-sr">テーマ</span><svg viewBox="0 0 20 18" aria-hidden="true" focusable="false"><path d="M10 2C5.3 2 1.8 5.2 1.8 9.2c0 3.6 2.9 6.6 6.6 6.6 1.3 0 1.9-.8 1.9-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5h2c2.8 0 5-1.9 5-4.5C18.2 4.6 14.6 2 10 2Z"/><circle cx="6" cy="8.6" r="1.1"/><circle cx="8.6" cy="5.6" r="1.1"/><circle cx="12.4" cy="5.6" r="1.1"/><circle cx="14.6" cy="8.4" r="1.1"/></svg><svg class="chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M2.5 3.8 5 6.3l2.5-2.5"/></svg></summary>
+      <fieldset class="mdw-menu">
+        <legend>プレビューのテーマ</legend>
+        <input type="radio" name="mdw-theme" id="mdw-dawn" value="dawn" checked><label for="mdw-dawn"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-dawn" aria-hidden="true"></span>夜明け</label>
+        <input type="radio" name="mdw-theme" id="mdw-classic" value="classic"><label for="mdw-classic"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-classic" aria-hidden="true"></span>クラシック</label>
+        <input type="radio" name="mdw-theme" id="mdw-modern" value="modern"><label for="mdw-modern"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-modern" aria-hidden="true"></span>モダン</label>
+        <input type="radio" name="mdw-theme" id="mdw-vivid" value="vivid"><label for="mdw-vivid"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-vivid" aria-hidden="true"></span>ビビッド</label>
+      </fieldset>
+    </details>
+    <fieldset class="mdw-layouts">
+      <legend>レイアウト</legend>
+      <input type="radio" name="mdw-layout" id="mdw-source" value="source"><label for="mdw-source" title="ソースのみ (⌘1)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M6.5 3.5 2 8l4.5 4.5M13.5 3.5 18 8l-4.5 4.5M11.4 2.5 8.6 13.5"/></svg><span class="mdw-sr">ソース</span></label>
+      <input type="radio" name="mdw-layout" id="mdw-split" value="split" checked><label for="mdw-split" title="ソースとプレビュー (⌘2)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><rect x="2" y="2.5" width="16" height="11" rx="2.5"/><path d="M10 2.5v11"/></svg><span class="mdw-sr">分割</span></label>
+      <input type="radio" name="mdw-layout" id="mdw-preview" value="preview"><label for="mdw-preview" title="プレビューのみ (⌘3)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M1.8 8C4 4.4 6.8 2.8 10 2.8S16 4.4 18.2 8C16 11.6 13.2 13.2 10 13.2S4 11.6 1.8 8Z"/><circle cx="10" cy="8" r="3.1"/><circle class="pupil" cx="10" cy="8" r="1.3"/></svg><span class="mdw-sr">プレビュー</span></label>
+    </fieldset>
+  </div>
+  <div class="mdw-panes">
+    <pre class="mdw-source" aria-label="ソース"><span class="ed-heading ed-bold"># MarsDawn へようこそ</span>
+
+<span class="ed-emphasis ed-italic">*Markdown の新しい夜明け。*</span> 左側に書くと、右側の整形されたページが入力に合わせて更新されます。このガイドはふつうの書類なので、どこでも自由に編集して試してみてください。保存しなければ、閉じるときに確認されることはありません。
+
+<span class="ed-heading ed-bold">## レイアウト</span>
+
+| ショートカット | レイアウト |
+|:------:|:-----|
+| ⌘1 | ソースのみ |
+| ⌘2 | ソースとプレビューを並べて表示 |
+| ⌘3 | プレビューのみ |
+
+<span class="ed-heading ed-bold">## 書く</span>
+
+<span class="ed-bold">**太字**</span>、<span class="ed-emphasis ed-italic">*斜体*</span>、<span class="ed-muted ed-strike">~~取り消し線~~</span>、<span class="ed-code">`インラインコード`</span>、<span class="ed-link">[リンク]</span><span class="ed-muted">(</span><span class="ed-link">https://marsdawn.southern-light.dev/support/</span><span class="ed-muted">)</span>は、いつもどおり使えます。
+
+<span class="ed-quote">&gt; 引用の左側には暖色の線が表示されます。</span>
+
+<span class="ed-marker ed-bold">-</span> <span class="ed-marker ed-bold">[x]</span> チェックを付けられる ToDo リスト
+<span class="ed-marker ed-bold">-</span> <span class="ed-marker ed-bold">[ ]</span> 入れ子のリスト
+<span class="ed-marker ed-bold">  -</span> このように</pre>
+    <div class="mdw-preview" aria-label="プレビュー" role="region">
+<p class="md-h1">MarsDawn へようこそ</p>
+<p><em>Markdown の新しい夜明け。</em> 左側に書くと、右側の整形されたページが入力に合わせて更新されます。このガイドはふつうの書類なので、どこでも自由に編集して試してみてください。保存しなければ、閉じるときに確認されることはありません。</p>
+<p class="md-h2">レイアウト</p>
+<table>
+<thead>
+<tr><th class="align-center">ショートカット</th><th class="align-left">レイアウト</th></tr>
+</thead>
+<tbody>
+<tr><td class="align-center">⌘1</td><td class="align-left">ソースのみ</td></tr>
+<tr><td class="align-center">⌘2</td><td class="align-left">ソースとプレビューを並べて表示</td></tr>
+<tr><td class="align-center">⌘3</td><td class="align-left">プレビューのみ</td></tr>
+</tbody>
+</table>
+<p class="md-h2">書く</p>
+<p><strong>太字</strong>、<em>斜体</em>、<del>取り消し線</del>、<code>インラインコード</code>、<span class="md-a">リンク</span>は、いつもどおり使えます。</p>
+<blockquote>
+<p>引用の左側には暖色の線が表示されます。</p>
+</blockquote>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled checked> チェックを付けられる ToDo リスト
+</li>
+<li class="task-list-item"><input type="checkbox" disabled> 入れ子のリスト
+<ul>
+<li>このように
+</li>
+</ul>
+</li>
+</ul>
+    </div>
+  </div>
+</div>
 </div>
 </div>
 </section>
-<h2 class="loop-title">このループ</h2>
+<h2 class="loop-title">エージェントが書いた Markdown を読む。</h2>
 <ol class="loop-steps">
   <li><strong>エージェントが書く。</strong>あなたのコーディングエージェントやライティングアシスタントが Markdown の下書きを作ります。README、仕様書、メモなど。</li>
   <li><strong>MarsDawn で確認する。</strong>ファイルを開き、Mermaid 図やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。</li>
   <li><strong>エージェントが修正する。</strong>変更を依頼します。修正されたファイルを開き、同じように読みます。</li>
 </ol>
-<p>エージェントは MarsDawn を直接操作することもできます。無料の <a href="/ja/cli/">marsdawn</a> コマンドラインツールは、確認用にファイルを開いたり PDF を書き出したりでき、スクリプト向けの JSON 出力にも対応しています。詳細は<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>をご覧ください。</p>
+<section class="install" id="install">
+<h2>今すぐできること</h2>
+<p>無料の <code>marsdawn</code> コマンドラインツールは今すぐ使えます。Homebrew でインストール：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<ul>
+  <li><code>marsdawn export</code> は Markdown ファイルを、MarsDawn のプレビューと同じ見た目の PDF にします。アプリは要りません。</li>
+  <li><code>marsdawn open</code> はファイルを MarsDawn アプリで開き、確認できるようにします。</li>
+  <li><code>--json</code> は、スクリプトやエージェントが解析できる結果を返します。</li>
+</ul>
+<p class="install-links"><a href="/ja/cli/">コマンドライン</a> · <a href="/ja/cli/agents/">AI エージェント向け marsdawn</a> · <a href="/ja/cli/skill/">エージェント用スキル</a> · <a href="/ja/cli/mcp/">MCP サーバー</a></p>
+</section>
 <nav class="traits" aria-label="MarsDawn に期待できること">
 <h2>MarsDawn に期待できること</h2>
 <ul>
+  <li><a href="/ja/native/">Mac アプリ</a><span>ネイティブのウインドウとタブ、自動保存、クイックルック。</span></li>
   <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a><span>アカウント不要、同期なし、クラウドなし。</span></li>
   <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a><span>14日間無料、その後は一度だけ USD 4.99。サブスクリプションはありません。</span></li>
-  <li><a href="/ja/pdf/">PDF 書き出し</a><span>図表、コードのハイライト、配慮された改ページ。</span></li>
-  <li><a href="/ja/native/">Mac アプリ</a><span>ネイティブのウインドウとタブ、自動保存、クイックルック。</span></li>
-  <li><a href="/ja/limits/">MarsDawn ができないこと</a><span>購入前に知っておくこと。</span></li>
 </ul>
 </nav>
+<p class="know">購入前に知っておくこと。 <a href="/ja/limits/">MarsDawn ができないこと</a></p>
+<section class="proof">
+<h2>実際のアプリ画面</h2>
+<h3><a href="/ja/native/">Mac アプリ</a></h3>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn の分割ビュー：左が Markdown のソース、右がレンダリングされたページ。">
+    <span class="marker l tb co-native-1" aria-hidden="true">1</span><span class="marker l co-native-2" aria-hidden="true">2</span><span class="marker r tb co-native-3" aria-hidden="true">3</span><span class="marker r co-native-4" aria-hidden="true">4</span>
+    <span class="leader l up co-native-1" aria-hidden="true"><span>ネイティブの Mac ウインドウ。</span></span><span class="leader l down co-native-2" aria-hidden="true"><span>Mac のテキストエディタに、Markdown ハイライトを追加したもの。</span></span><span class="leader r up co-native-3" aria-hidden="true"><span>⌘1 でソース、⌘2 で分割、⌘3 でプレビュー。</span></span><span class="leader r down co-native-4" aria-hidden="true"><span>入力するとページが更新されます。</span></span>
+  </div></div>
+  <figcaption>
+    <span class="figure-label">このスクリーンショットの内容</span>
+    <ol><li>ネイティブの Mac ウインドウ。</li><li>Mac のテキストエディタに、Markdown ハイライトを追加したもの。</li><li>⌘1 でソース、⌘2 で分割、⌘3 でプレビュー。</li><li>入力するとページが更新されます。</li></ol>
+  </figcaption>
+</figure>
+<h3><a href="/ja/pdf/">PDF 書き出し</a></h3>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 1100px) 50rem, calc(100vw - 32px)" width="980" height="760" alt="MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。">
+    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
+    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid 図は PDF に描き込まれます。</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>コードはハイライトを保ちます。</span></span>
+  </div></div>
+  <figcaption>
+    <span class="figure-label">このスクリーンショットの内容</span>
+    <ol><li>Mermaid 図は PDF に描き込まれます。</li><li>コードはハイライトを保ちます。</li></ol>
+  </figcaption>
+</figure>
+</section>
 <section class="dawn-close">
-<p><strong>エージェントが書いた Markdown を読む。</strong> MarsDawn は Mac App Store で近日公開予定です。</p>
+<p><strong>Markdown の新しい夜明け。</strong> MarsDawn は Mac App Store で近日公開予定です。</p>
 </section>
 </main>
 <footer class="footer footer-home">
@@ -126,6 +267,7 @@
     <a href="/ja/support/">サポート</a>
     <a href="/ja/privacy/">プライバシーポリシー</a>
     <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
   <p class="footer-meta"><span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>

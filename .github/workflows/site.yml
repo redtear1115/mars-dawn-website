@@ -38,6 +38,14 @@ jobs:
         run: python3 scripts/check_redirects.py --self-test
       - name: Every schema.org Offer states its availability
         run: python3 scripts/check_offers.py
+      - name: The site's launch-phase invariants hold
+        run: python3 scripts/check_invariants.py
+      # The homepage window's themes, labels and sample must be the kit's and the app's.
+      # --kit reads the kit's public source at the pinned tag; --self-test plants drift of
+      # each kind and fails if any goes unnoticed. The app side is checked on a Mac:
+      # python3 scripts/sync_hero_sources.py --kit ... --app ... --check
+      - name: The homepage window matches the kit and the app
+        run: python3 scripts/check_hero.py --kit --self-test
       # The theme gallery isn't served yet and nothing reads /themes/v1/ (see README). Once it ships,
       # make this check mandatory: from then on /themes/v1/index.json must never disappear.
       - name: Theme index is valid JSON

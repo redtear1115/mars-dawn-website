@@ -2,6 +2,28 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>调用 marsdawn 的三种方式：CLI、skill 文件、MCP 服务器 · MarsDawn</title>
 <meta name="description" content="marsdawn 没有自己的 AI 模型，是哪个 agent 写出 Markdown 都无所谓。可以从 CLI、skill 文件，或 marsdawn-mcp 这个 MCP 服务器调用，三者最后都运行同一个 export。">
@@ -19,20 +41,33 @@
 <meta property="og:description" content="marsdawn 没有自己的 AI 模型，是哪个 agent 写出 Markdown 都无所谓。可以从 CLI、skill 文件，或 marsdawn-mcp 这个 MCP 服务器调用，三者最后都运行同一个 export。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/cli/mcp/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="zh_CN">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到内容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
+  <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒绝</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/zh-hans/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">即将在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/cli/mcp/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/mcp/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/mcp/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/mcp/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>调用 marsdawn 的三种方式。</h1>
   <p>MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不是用来写的，所以是哪个 agent 或模型写出这份 Markdown 并不重要。agent 或脚本调用 <code>marsdawn</code> 有三种方式，最后都会运行同一个 <code>export</code>。</p>
@@ -40,25 +75,39 @@
 
 <div class="summary"><p><strong>挑你的工具支持的那一种：免费的 <code>marsdawn</code> CLI、纯 Markdown 的 skill 文件，或是 <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> 这个 MCP 服务器。</strong>三者都调用同一个 <code>marsdawn export</code>，返回一样的 JSON 结果。</p></div>
 
-<h2>CLI</h2>
+<h2 id="which-one-to-use">该用哪一个</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">如果你的 agent</th><th scope="col">就用</th><th scope="col">需要</th></tr></thead>
+<tbody>
+  <tr><th scope="row">能运行 shell 命令</th><td data-label="就用"><a href="/zh-hans/cli/agents/">命令行工具</a></td><td data-label="需要">macOS 15 或更高版本</td></tr>
+  <tr><th scope="row">会加载指令文件，例如 Claude Code</th><td data-label="就用"><a href="/zh-hans/cli/skill/">skill 文件</a></td><td data-label="需要">命令行工具（skill 会帮你安装）</td></tr>
+  <tr><th scope="row">通过 MCP 调用工具</th><td data-label="就用"><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td data-label="需要">marsdawn-mcp 0.2.1 或更高版本、marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="the-cli">CLI</h2>
 <p><code>marsdawn export notes.md --json</code> 可以被任何能运行 shell 命令的 agent 或脚本调用，因为是命令行工具，天生就跟模型无关。它返回的每个字段都写在<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>里，那一页是 JSON schema 的权威来源，下面另外两种方式都会连回去。</p>
 
-<h2>Skill 文件</h2>
+<h2 id="the-skill-file">Skill 文件</h2>
 <p>如果你的 agent 读的是纯 Markdown 指令，而不是直接运行 shell&#8212;&#8212;目前是 Claude Code&#8212;&#8212;<a href="/zh-hans/cli/skill/">marsdawn skill</a> 就是一个文件，教它安装 marsdawn、运行 <code>export</code>、读懂结果。因为它就是纯 Markdown，其他会读指令文件的 agent 也能用同一个文件。</p>
 
-<h2>MCP 服务器</h2>
-<p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> 是另一个独立、公开、Apache-2.0 授权的 repository。它是一个只有一个工具的 MCP 服务器，<code>export_markdown_to_pdf</code>，包住 <code>marsdawn export --json</code>：把 MCP 客户端指向它，工具调用返回的 JSON 和 CLI 一样。</p>
+<h2 id="the-mcp-server">MCP 服务器</h2>
+<p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> 是另一个独立、公开、Apache-2.0 授权的 repository。它是一个有两个工具的 MCP 服务器，<code>export_markdown_to_pdf</code> 和 <code>open_in_marsdawn</code>，分别包住 <code>marsdawn export --json</code> 和 <code>marsdawn open --json</code>：把 MCP 客户端指向它，工具调用返回的 JSON 和 CLI 一样。</p>
 <ul>
   <li><strong>获取方式：</strong>以 MCP Bundle（<code>marsdawn.mcpb</code>）的形式附在<a href="https://github.com/redtear1115/marsdawn-mcp/releases">GitHub release</a> 上，或从源代码以 stdio 运行服务器。</li>
-  <li><strong>Registry：</strong>还没上架 MCP Registry（目前版本：0.1.0）。要靠 registry 搜索找到它之前，请先到 repository 确认目前状态。</li>
+  <li><strong>Registry：</strong>还没上架 MCP Registry（目前版本：0.2.1）。要靠 registry 搜索找到它之前，请先到 repository 确认目前状态。</li>
   <li><strong>托管：</strong>只能自架，没有代管服务。服务器跑在你自己的机器上，就在 marsdawn 旁边。</li>
   <li><strong>系统要求：</strong>macOS、marsdawn 0.5.0 以上，以及运行服务器需要的 Node.js 20 以上。</li>
 </ul>
 
-<h2>同一个 export，三扇门</h2>
+<h2 id="confined-to-folders-you-allow">只能在你允许的文件夹里运行</h2>
+<p>两个工具都只能在你允许的文件夹里读写：扩展的「Allowed folders」设置（默认是空的），或者你的 MCP 客户端提供的 roots。两者都没设置时，每次调用都会被拒绝，拒绝消息会说明怎么设置。每个路径都必须是绝对路径，而 <code>export_markdown_to_pdf</code> 只会写出 <code>.pdf</code> 文件，不会通过 symlink 写。</p>
+<p><strong>安全性：</strong>请更新到 <a href="https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1">0.2.1</a>&#8212;&#8212;0.1.0 和 0.2.0 会让调用把 PDF 写到你账号能写入的任何路径，已在 <a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a> 修复。</p>
+
+<h2 id="same-export-three-doors">同一个 export，三扇门</h2>
 <p>不管从哪个界面调用，底层行为都一样：同一套输出程序、同样的主题和纸张大小，Mermaid 图表画不出来时也是同样的 <code>diagramErrors</code>。这页不重复那份规格&#8212;&#8212;<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>里有完整内容。</p>
 
-<h2>接下来</h2>
+<h2 id="next">接下来</h2>
 <ul>
   <li>完整 JSON schema 和所有退出代码：<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</li>
   <li>给 Claude Code 等 agent 用的一个文件：<a href="/zh-hans/cli/skill/">marsdawn skill</a>。</li>
@@ -70,8 +119,9 @@
     <a href="/zh-hans/support/">支持</a>
     <a href="/zh-hans/privacy/">隐私政策</a>
     <a href="/zh-hans/cli/">命令行工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 设置</button>
   </nav>
-  <p class="footer-meta"><span>读 agent 写的 Markdown。</span> <span>MarsDawn 即将在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 即将在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

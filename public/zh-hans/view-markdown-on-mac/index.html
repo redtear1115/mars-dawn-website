@@ -2,6 +2,28 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>在 Mac 上怎么看 Markdown 文件 · MarsDawn</title>
 <meta name="description" content="md 文件是加上格式记号的纯文本。这页说明怎么在 Mac 上看到排版后的样子：现在可以用免费的 marsdawn 命令行工具转成 PDF，之后可以用即将在 Mac App Store 上架的 MarsDawn app。">
@@ -19,31 +41,44 @@
 <meta property="og:description" content="md 文件是加上格式记号的纯文本。这页说明怎么在 Mac 上看到排版后的样子：现在可以用免费的 marsdawn 命令行工具转成 PDF，之后可以用即将在 Mac App Store 上架的 MarsDawn app。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/icon-192.png">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="zh_CN">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到内容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
+  <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒绝</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/zh-hans/">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">即将在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/view-markdown-on-mac/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/view-markdown-on-mac/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/view-markdown-on-mac/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/view-markdown-on-mac/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>在 Mac 上，怎么看 Markdown 文件。</h1>
   <p><code>.md</code> 文件是纯文本。标题、粗体、表格和图表，都是用记号写成的：<code>#</code> 代表标题，<code>**</code> 包住粗体，直线符号画出表格，<code>mermaid</code> 代码块则是一张图。用纯文本编辑器打开，看到的就是这些记号。想照作者的意思读到排好的页面，就需要有东西把它排版出来。</p>
 </section>
-<h2>现在就能用，而且免费：转成 PDF</h2>
+<h2 id="today-for-free-turn-it-into-a-pdf">现在就能用，而且免费：转成 PDF</h2>
 <p>免费的 <code>marsdawn</code> 命令行工具，能把 Markdown 文件排版成 PDF，任何一台 Mac 都打得开。表格、数学公式、Mermaid 图表和代码高亮都会排好，而且不需要安装其他东西，连 MarsDawn app 都不用。</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <p><code>export</code> 会在 Markdown 文件旁边写出 <code>notes.pdf</code>，<code>open</code> 会用你的 PDF 查看器打开它。这个工具需要 macOS 15 以上。完整步骤和一页实际导出的结果，请看<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。</p>
-<h2>即将推出：在 MarsDawn 里读</h2>
+<h2 id="coming-soon-read-it-in-marsdawn">即将推出：在 MarsDawn 里读</h2>
 <p>MarsDawn 是为 Mac 做的 Markdown 编辑器，即将在 Mac App Store 上架。打开 <code>.md</code> 文件，排好的页面就在源代码旁边：</p>
 <ul>
   <li>预览会随着你打字实时更新，两边的窗格一起滚动。</li>
@@ -52,7 +87,7 @@ open notes.pdf</code></pre>
   <li>想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。</li>
 </ul>
 <p>如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看<a href="/zh-hans/">首页</a>，想让 agent 帮你开文件，请看<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</p>
-<h2>接下来</h2>
+<h2 id="next">接下来</h2>
 <ul>
   <li>命令行工具的所有选项：<a href="/zh-hans/cli/">命令行工具</a>。</li>
   <li>MarsDawn 做不到的事：<a href="/zh-hans/limits/">这份清单</a>。</li>
@@ -63,8 +98,9 @@ open notes.pdf</code></pre>
     <a href="/zh-hans/support/">支持</a>
     <a href="/zh-hans/privacy/">隐私政策</a>
     <a href="/zh-hans/cli/">命令行工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 设置</button>
   </nav>
-  <p class="footer-meta"><span>读 agent 写的 Markdown。</span> <span>MarsDawn 即将在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 即将在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>
