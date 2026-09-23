@@ -10,9 +10,9 @@ Last updated 2026-09-23
 
 The app and this website are two different things. The app collects nothing. A visit can be recorded only here, on marsdawn.southern-light.dev.
 
-This site uses **Google Analytics 4**, loaded through **Google Tag Manager**. Every visitor starts with analytics denied: Google's Consent Mode sends only a cookieless ping with no analytics cookie and no identifier, until you choose *Accept* in the banner. Choosing *Decline*, or making no choice at all, keeps it that way. Change your choice at any time with the "Cookie settings" link in the footer of every page. The choice itself is stored only in your browser's local storage, never in a cookie of ours.
+This site uses **Google Analytics 4**, loaded through **Google Tag Manager**. Every visitor starts with analytics denied: Google's Consent Mode sends only a cookieless ping with no analytics cookie and no persistent identifier, until you choose *Accept* in the banner. Choosing *Decline*, or making no choice at all, keeps it that way, and choosing *Decline* after a prior *Accept* turns analytics back off immediately and removes the cookies below. Change your choice at any time with the "Cookie settings" link in the footer of every page. The choice itself is stored only in your browser's local storage, never in a cookie of ours.
 
-Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<container id>`) and records:
+Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<measurement id>`) and records:
 
 - **Page views and referrer.** Which page was viewed, and the referring address when the browser sends one.
 - **Approximate location, device and browser.** A coarse location derived from your IP address (city level at most), your device type, operating system and browser — none of it precise enough to identify you.
