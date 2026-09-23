@@ -2,6 +2,15 @@
 
 If you already have VS Code, a browser or Claude Desktop open, reaching for one of them to glance at a Markdown file is reasonable. Here's what each one actually renders, and what it costs to get there, compared with opening the same file in MarsDawn.
 
+## At a glance
+
+|  | VS Code preview | Browser extension | Claude Desktop | MarsDawn |
+|---|---|---|---|---|
+| Opens a Markdown file from disk | Yes | Yes, once file access is allowed | No: Markdown isn't on its upload list | Yes |
+| Before the first file | Install VS Code, a whole development environment | Install an extension, then turn on “Allow access to file URLs” | It can't browse files on disk | Install MarsDawn |
+| Built for | Writing code; the preview is one pane among many | Browsing the web | Conversations with Claude | Reading and editing Markdown |
+| Draws the page with | Electron: a bundled Chromium and Node.js | A full browser | The Claude Desktop app | A native AppKit app; WebKit draws the page |
+
 ## VS Code's built-in preview
 
 Press `⌘⇧V` in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively — Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading — the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app you install as a whole development environment, not something you open to read one file.

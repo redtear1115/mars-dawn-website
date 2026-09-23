@@ -51,6 +51,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
   <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
   <div class="consent-actions">
@@ -67,7 +68,7 @@ try {
   <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/pay-once/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/pay-once/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/pay-once/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/pay-once/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>すべて試してから、一度だけ支払う。</h1>
   <p>MarsDawn は無料でダウンロードできます。14日間のトライアルを始めればすべての機能が使えます。その後も使い続けるには、USD 4.99 の一度きりの購入でロックが解除されます。サブスクリプションもアカウントもありません。</p>
@@ -83,15 +84,17 @@ try {
     <ol><li>エディタの Markdown ハイライトも含まれます。</li><li>すべてのテーマとレイアウトが含まれます。</li><li>Mermaid 図も含まれます。</li><li>コードのハイライトも含まれます。</li></ol>
   </figcaption>
 </figure>
-<h2>仕組み</h2>
+<h2 id="how-it-works">仕組み</h2>
+<ol class="loop-steps">
+  <li><strong>無料でダウンロード。</strong> MarsDawn は Mac App Store から無料でダウンロードできます。</li>
+  <li><strong>14 日間、すべて使える。</strong> トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。</li>
+  <li><strong>一度の購入で解除。</strong> その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。</li>
+</ol>
 <ul>
-  <li>MarsDawn は Mac App Store から無料でダウンロードできます。</li>
-  <li>トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。</li>
-  <li>その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。</li>
   <li>トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。</li>
   <li>アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。</li>
 </ul>
-<h2>ロックを解除しない場合</h2>
+<h2 id="if-you-don-t-unlock">ロックを解除しない場合</h2>
 <ul>
   <li>14日後、ロックを解除するまでは、MarsDawn で文書を読んだり編集したり書き出したり印刷したりできません。文書自体は開きますが、内容は覆われます。</li>
   <li>あなたのファイルは変わりません。Mac 上の普通のファイルのままで、Finder のクイックルックでも引き続き表示されます。</li>

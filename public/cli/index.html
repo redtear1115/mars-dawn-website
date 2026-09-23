@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
   <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
   <div class="consent-actions">
@@ -63,9 +64,10 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/cli/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/cli/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Command Line</h1>
   <p>The free <code>marsdawn</code> command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.</p>
@@ -75,7 +77,7 @@ try {
 
 <p>Calling marsdawn from an AI agent or a script? See <a href="/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code, or <a href="/cli/mcp/">the MCP server</a> if your agent calls tools over MCP instead.</p>
 
-<h2>Install</h2>
+<h2 id="install">Install</h2>
 <p>With <a href="https://brew.sh">Homebrew</a>:</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
 <p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.</p>
@@ -85,7 +87,7 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>Check which version you have with <code>marsdawn --version</code>.</p>
 
-<h2>Commands</h2>
+<h2 id="commands">Commands</h2>
 
 <h3>marsdawn open</h3>
 <p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app.</p>
@@ -113,23 +115,26 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>--json</code>: print a JSON result instead of text.</li>
 </ul>
 
-<h2>The $MARSDAWN_THEME variable</h2>
+<h2 id="the-marsdawn-theme-variable">The $MARSDAWN_THEME variable</h2>
 <p>When <code>--theme</code> isn't passed, <code>export</code> reads the <code>$MARSDAWN_THEME</code> environment variable. Its value must be one of <code>dawn</code>, <code>classic</code>, <code>modern</code> or <code>vivid</code>; anything else falls back to <code>dawn</code>. The CLI doesn't read the app's own theme setting, because reading another app's container can trigger a macOS privacy prompt.</p>
 
-<h2>Overwriting files</h2>
+<h2 id="overwriting-files">Overwriting files</h2>
 <p><code>export</code> refuses to replace an existing output file unless you pass <code>--force</code>.</p>
 
-<h2>Exit codes</h2>
-<ul>
-  <li><code>0</code>: success.</li>
-  <li><code>2</code>: input not found.</li>
-  <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
-  <li><code>4</code>: output exists (pass <code>--force</code>).</li>
-  <li><code>5</code>: export failed.</li>
-  <li><code>64</code>: usage error, including a line out of range or <code>--line</code> with more than one file.</li>
-</ul>
+<h2 id="exit-codes">Exit codes</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">Code</th><th scope="col">Means</th><th scope="col">What to do</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>0</code></th><td data-label="Means">success.</td><td data-label="What to do">With <code>--json</code>, read the one JSON line on stdout</td></tr>
+  <tr><th scope="row"><code>2</code></th><td data-label="Means">input not found.</td><td data-label="What to do">Check the path and the file name</td></tr>
+  <tr><th scope="row"><code>3</code></th><td data-label="Means">MarsDawn is not installed (<code>open</code> only).</td><td data-label="What to do">Install the app, or use <code>export</code>, which doesn't need it</td></tr>
+  <tr><th scope="row"><code>4</code></th><td data-label="Means">output exists (pass <code>--force</code>).</td><td data-label="What to do">Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere</td></tr>
+  <tr><th scope="row"><code>5</code></th><td data-label="Means">export failed.</td><td data-label="What to do">Read <code>message</code> in the JSON result</td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="Means">usage error, including a line out of range or <code>--line</code> with more than one file.</td><td data-label="What to do">Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
+</tbody>
+</table></div>
 
-<h2>--json output</h2>
+<h2 id="json-output">--json output</h2>
 <p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 </main>
 <footer class="footer">

@@ -621,6 +621,7 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> refuses to replace an existing output file unless you pass <code>--force</code>.</p>
 
 <h2>Exit codes</h2>
+<!--exit-table-->
 <ul>
   <li><code>0</code>: success.</li>
   <li><code>2</code>: input not found.</li>
@@ -692,6 +693,7 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> 預設不會覆蓋已存在的輸出檔，除非加上 <code>--force</code>。</p>
 
 <h2>結束代碼</h2>
+<!--exit-table-->
 <ul>
   <li><code>0</code>：成功。</li>
   <li><code>2</code>：找不到輸入檔。</li>
@@ -1278,23 +1280,9 @@ marsdawn --version</code></pre>
 <h2>If you only need to read, not edit</h2>
 <p>If your job is strictly reading Markdown someone else wrote, and you never need to touch the source, MacMD Viewer is a reasonable fit: it's built for exactly that, is available now and works down to an older macOS. MarsDawn is worth it once reading isn't the whole job, because an agent's Markdown usually comes back for another pass.</p>
 <h2>What each app does</h2>
-<ul>
-  <li><strong>Editing:</strong> MacMD Viewer is read-only by design. MarsDawn edits the source and renders it side by side, so a change shows up as you type.</li>
-  <li><strong>Preview themes:</strong> MacMD Viewer ships 12 document themes. MarsDawn ships four, Dawn, Classic, Modern and Vivid, each with a light and a dark palette.</li>
-  <li><strong>Diagrams and math:</strong> both render Mermaid diagrams and highlight code. MarsDawn also renders KaTeX math; MacMD Viewer's own listing doesn't mention math rendering.</li>
-  <li><strong>Finder integration:</strong> both add a Quick Look extension, so pressing Space on a <code>.md</code> file in Finder shows the rendered page.</li>
-  <li><strong>PDF and print:</strong> both export or print a PDF of the rendered page.</li>
-  <li><strong>System requirements:</strong> MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.</li>
-  <li><strong>Languages:</strong> MarsDawn's interface ships in {langs}. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.</li>
-</ul>
+<!--compare:macmd-features-->
 <h2>Pricing and how you buy it</h2>
-<ul>
-  <li><strong>Where you buy it:</strong> MacMD Viewer is a direct download from its own site, also on Homebrew and Setapp; it isn't on the Mac App Store. MarsDawn is Mac App Store only.</li>
-  <li><strong>Price:</strong> MacMD Viewer is USD 19.99 once for one Mac (a 3-Mac pack and volume packs cost more). MarsDawn is a free download, then a USD 4.99 one-time unlock.</li>
-  <li><strong>Trying it first:</strong> MacMD Viewer has no free trial; direct purchases carry a 14-day money-back guarantee instead. MarsDawn gives you a 14-day trial before you pay anything.</li>
-  <li><strong>Refunds and updates:</strong> MacMD Viewer's refunds and updates run through its own site. MarsDawn's purchase goes through Apple, so refunds and updates use Apple's standard process.</li>
-  <li><strong>Accounts:</strong> neither app needs an account to use.</li>
-</ul>
+<!--compare:macmd-buying-->
 <h2>Try it today, free</h2>
 <p>MarsDawn is coming soon to the Mac App Store, not on sale yet. Until then, the free <code>marsdawn</code> command-line tool renders any Markdown file to a PDF today, with Mermaid diagrams and highlighted code, and needs nothing else installed:</p>
 <pre><code>{brew}
@@ -1320,23 +1308,9 @@ open notes.pdf</code></pre>
 <h2>如果你只需要讀，不需要編輯</h2>
 <p>如果你的工作就是讀別人寫好的 Markdown，完全不用碰原始碼，MacMD Viewer 是合理的選擇：它就是為這件事做的，現在就能買，也能在比較舊的 macOS 上跑。當閱讀不是全部的工作時，MarsDawn 才值得，因為 agent 寫的 Markdown 通常還要再改一輪。</p>
 <h2>各自能做什麼</h2>
-<ul>
-  <li><strong>編輯：</strong>MacMD Viewer 設計上就是唯讀。MarsDawn 邊編輯原始碼邊在旁邊排版，打字的同時就看得到改動。</li>
-  <li><strong>預覽主題：</strong>MacMD Viewer 內建 12 種文件主題。MarsDawn 有四種：黎明、典雅、流行和活潑，各有淺色與深色。</li>
-  <li><strong>圖表與數學式：</strong>兩者都能畫出 Mermaid 圖表、也都有程式碼上色。MarsDawn 還能排版 KaTeX 數學式；MacMD Viewer 自己的介紹頁沒有提到數學式排版。</li>
-  <li><strong>Finder 整合：</strong>兩者都有 Finder 的快速查看擴充功能，對 <code>.md</code> 檔案按空白鍵就能看到排好版的頁面。</li>
-  <li><strong>PDF 與列印：</strong>兩者都能把排好版的頁面輸出或列印成 PDF。</li>
-  <li><strong>系統需求：</strong>MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。</li>
-  <li><strong>語言：</strong>MarsDawn 的介面有{langs}。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。</li>
-</ul>
+<!--compare:macmd-features-->
 <h2>價格與購買方式</h2>
-<ul>
-  <li><strong>從哪裡買：</strong>MacMD Viewer 從自己的網站直接下載，也上架 Homebrew 和 Setapp，但不在 Mac App Store 上；MarsDawn 只在 Mac App Store 上架。</li>
-  <li><strong>價格：</strong>MacMD Viewer 一台 Mac 一次 USD 19.99（三台的組合包和大量授權更貴）。MarsDawn 免費下載，之後以 USD 4.99 一次解鎖。</li>
-  <li><strong>先試用：</strong>MacMD Viewer 沒有免費試用，直接購買改用 14 天內可退款的保證。MarsDawn 在你付費之前，先給你 14 天的試用。</li>
-  <li><strong>退款與更新：</strong>MacMD Viewer 的退款和更新都在它自己的網站上處理。MarsDawn 透過 Apple 購買，退款和更新都走 Apple 的標準流程。</li>
-  <li><strong>帳號：</strong>兩者都不需要帳號就能使用。</li>
-</ul>
+<!--compare:macmd-buying-->
 <h2>現在就能免費試試看</h2>
 <p>MarsDawn 即將在 Mac App Store 上架，現在還沒開賣。在那之前，免費的 <code>marsdawn</code> 命令列工具今天就能把任何 Markdown 檔案轉成 PDF，Mermaid 圖表和程式碼上色都在，而且不需要安裝其他東西：</p>
 <pre><code>{brew}
@@ -1362,6 +1336,7 @@ SKILL_PAGES = {
   <h1>Let your agent make the PDF.</h1>
   <p>This skill is one Markdown file. It teaches a coding agent to install <code>marsdawn</code>, check that it works, export a document to PDF and read the result, so the agent that wrote the Markdown can hand you the PDF as well.</p>
 </section>
+<div class="summary"><p><strong>One Markdown file, at <code>~/.claude/skills/marsdawn/SKILL.md</code>.</strong> With it your agent installs <code>marsdawn</code>, exports to PDF and reads the JSON result, and it still asks before it runs anything.</p></div>
 <h2>Install it in Claude Code</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
@@ -1390,6 +1365,7 @@ curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <h1>讓 agent 幫你做出 PDF。</h1>
   <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果，這樣寫出 Markdown 的 agent，也能把 PDF 交給你。</p>
 </section>
+<div class="summary"><p><strong>一個 Markdown 檔案，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 會安裝 <code>marsdawn</code>、輸出 PDF 並讀懂 JSON 結果；執行任何指令之前，它還是會先問你。</p></div>
 <h2>在 Claude Code 中安裝</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
@@ -1426,6 +1402,9 @@ BRAINSTORM_PAGES = {
 </section>
 
 <div class="summary"><p><strong>Pick whichever your tooling supports: the free <code>marsdawn</code> CLI, a plain-Markdown skill file, or the <a href="{MCP_URL}">marsdawn-mcp</a> MCP server.</strong> All three call the same <code>marsdawn export</code> and return the same JSON result.</p></div>
+
+<h2>Which one to use</h2>
+<!--compare:mcp-choice-->
 
 <h2>The CLI</h2>
 <p><code>marsdawn export notes.md --json</code> is callable by any agent or script that can run a shell command, model-agnostic by construction. Every field it returns is documented at <a href="/cli/agents/">marsdawn for agents</a>, which is the source of truth for the JSON schema the other two surfaces below point back to.</p>
@@ -1467,6 +1446,9 @@ BRAINSTORM_PAGES = {
 </section>
 
 <div class="summary"><p><strong>挑你的工具支援的那一種：免費的 <code>marsdawn</code> CLI、純 Markdown 的 skill 檔案，或是 <a href="{MCP_URL}">marsdawn-mcp</a> 這個 MCP 伺服器。</strong>三者都呼叫同一個 <code>marsdawn export</code>，回傳一樣的 JSON 結果。</p></div>
+
+<h2>該用哪一個</h2>
+<!--compare:mcp-choice-->
 
 <h2>CLI</h2>
 <p><code>marsdawn export notes.md --json</code> 可以被任何能執行 shell 指令的 agent 或腳本呼叫，因為是命令列工具，天生就跟模型無關。它回傳的每個欄位都寫在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡，那一頁是 JSON schema 的權威來源，底下另外兩種方式都會連回去。</p>
@@ -1571,6 +1553,9 @@ BRAINSTORM_PAGES = {
   <p>If you already have VS Code, a browser or Claude Desktop open, reaching for one of them to glance at a Markdown file is reasonable. Here's what each one actually renders, and what it costs to get there, compared with opening the same file in MarsDawn.</p>
 </section>
 
+<h2>At a glance</h2>
+<!--compare:preview-tools-->
+
 <h2>VS Code's built-in preview</h2>
 <p>Press <kbd>&#8984;&#8679;V</kbd> in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively &#8212; Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading &#8212; the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app you install as a whole development environment, not something you open to read one file.</p>
 
@@ -1599,6 +1584,9 @@ BRAINSTORM_PAGES = {
   <h1>在別處看 Markdown，對比 MarsDawn。</h1>
   <p>如果你手邊剛好開著 VS Code、瀏覽器或 Claude Desktop，用它們順手看一眼 Markdown 檔案也合理。以下是它們各自實際排版出什麼、要花多少功夫才能看到，和在 MarsDawn 裡打開同一份檔案的比較。</p>
 </section>
+
+<h2>一眼看完</h2>
+<!--compare:preview-tools-->
 
 <h2>VS Code 內建的預覽</h2>
 <p>在 VS Code 按 <kbd>&#8984;&#8679;V</kbd>，就會用內建的預覽窗格排版出 Markdown 檔案，免費，不用另外安裝。從 VS Code 1.121（2026 年 5 月）開始，這個預覽也能原生畫出 Mermaid 圖表&#8212;&#8212;微軟把一個 Mermaid 擴充功能併進了 VS Code 本體，以前需要另外裝擴充功能，現在不用了。它做不到的：這是編輯器裡的一個預覽窗格，不是為了閱讀而做的編輯器&#8212;&#8212;窗格旁邊還有檔案樹、終端機和 VS Code 能顯示的其他所有面板，而 VS Code 本身是 Electron app，你裝的是一整套開發環境，不是一個用來讀檔案的工具。</p>
@@ -1632,6 +1620,7 @@ BRAINSTORM_PAGES = {
 <div class="summary"><p><strong>Four themes &#215; light and dark = eight ways to read a document, and one export path that matches whichever you chose.</strong> More importable themes, and a gallery to share your own, are planned &#8212; not built yet.</p></div>
 
 <h2>The four themes</h2>
+<!--theme-gallery-->
 <ul>
   <li><strong>Dawn</strong>, the default: the same warm paper and Mars Rust accent this site is built from.</li>
   <li><strong>Classic</strong>: a plainer, document-like palette.</li>
@@ -1666,6 +1655,7 @@ BRAINSTORM_PAGES = {
 <div class="summary"><p><strong>四種主題 &#215; 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。</strong>更多可匯入的主題，還有讓大家投稿主題的主題庫，都還在規劃中，尚未推出。</p></div>
 
 <h2>四種主題</h2>
+<!--theme-gallery-->
 <ul>
   <li><strong>黎明</strong>，預設主題：和這個網站一樣的暖色紙感與 Mars Rust 強調色。</li>
   <li><strong>典雅</strong>：比較樸素、像紙本文件的配色。</li>
@@ -2081,10 +2071,12 @@ TRAIT_PAGES = {
 """,
         """
 <h2>How it works</h2>
+<ol class="loop-steps">
+  <li><strong>Download it free.</strong> MarsDawn is free to download from the Mac App Store.</li>
+  <li><strong>Try all of it for 14 days.</strong> Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.</li>
+  <li><strong>Unlock it once.</strong> To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.</li>
+</ol>
 <ul>
-  <li>MarsDawn is free to download from the Mac App Store.</li>
-  <li>Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.</li>
-  <li>To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.</li>
   <li>The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.</li>
   <li>There is no account. MarsDawn never asks you to create one.</li>
 </ul>
@@ -2108,10 +2100,12 @@ TRAIT_PAGES = {
 """,
         """
 <h2>怎麼運作</h2>
+<ol class="loop-steps">
+  <li><strong>免費下載。</strong> 在 Mac App Store 免費下載 MarsDawn。</li>
+  <li><strong>14 天，全部都能用。</strong> 開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。</li>
+  <li><strong>買一次就解鎖。</strong> 試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。</li>
+</ol>
 <ul>
-  <li>在 Mac App Store 免費下載 MarsDawn。</li>
-  <li>開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。</li>
-  <li>試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。</li>
   <li>試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。</li>
   <li>不需要帳號，MarsDawn 從不要求你建立帳號。</li>
 </ul>
@@ -2175,10 +2169,14 @@ TRAIT_PAGES = {
 """,
         f"""
 <h2>What that means</h2>
+<h3>Editing</h3>
 <ul>
   <li>Source, split and preview layouts, one keystroke apart (<kbd>⌘1</kbd>, <kbd>⌘2</kbd>, <kbd>⌘3</kbd>).</li>
   <li>The two panes scroll together, so the paragraph you are editing stays in view.</li>
   <li>Markdown syntax highlighting in the editor, matched to your preview theme.</li>
+</ul>
+<h3>The rest of the Mac</h3>
+<ul>
   <li>Native windows, tabs, autosave and version history.</li>
   <li>Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.</li>
   <li>Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.</li>
@@ -2197,10 +2195,14 @@ TRAIT_PAGES = {
 """,
         f"""
 <h2>這代表什麼</h2>
+<h3>編輯</h3>
 <ul>
   <li>原始碼、並排、預覽三種版面，一個快捷鍵切換（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
   <li>兩側同步捲動，正在編輯的段落一直在眼前。</li>
   <li>編輯器內建 Markdown 語法上色，顏色與預覽主題一致。</li>
+</ul>
+<h3>和 Mac 的其他部分</h3>
+<ul>
   <li>原生視窗、分頁、自動儲存和版本記錄。</li>
   <li>快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。</li>
   <li>Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。</li>
@@ -2219,18 +2221,23 @@ TRAIT_PAGES = {
 """,
         """
 <h2>Left out</h2>
+<h3>Devices and people</h3>
 <ul>
   <li><strong>Sync:</strong> MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.</li>
   <li><strong>iPhone and iPad:</strong> there is no app for them; MarsDawn is for the Mac.</li>
-  <li><strong>Plugins:</strong> MarsDawn has no plugins or extensions.</li>
   <li><strong>Sharing:</strong> there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.</li>
-  <li><strong>Editing:</strong> you write Markdown on the left and read the page on the right; the page itself can't be edited.</li>
-  <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
-  <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet — see <a href="/themes/">preview themes and PDF export</a> for what's planned.</li>
-  <li><strong>Other files:</strong> plain text files and PDFs open read-only.</li>
-  <li><strong>After the trial:</strong> if you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.</li>
   <li><strong>System:</strong> MarsDawn needs macOS 26 or later.</li>
 </ul>
+<h3>Files and features</h3>
+<ul>
+  <li><strong>Editing:</strong> you write Markdown on the left and read the page on the right; the page itself can't be edited.</li>
+  <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
+  <li><strong>Other files:</strong> plain text files and PDFs open read-only.</li>
+  <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet; see <a href="/themes/">preview themes and PDF export</a> for what's planned.</li>
+  <li><strong>Plugins:</strong> MarsDawn has no plugins or extensions.</li>
+</ul>
+<h2>After the trial</h2>
+<p>If you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.</p>
 """,
     ),
     ("zh-hant", "limits"): _trait_page(
@@ -2244,18 +2251,23 @@ TRAIT_PAGES = {
 """,
         """
 <h2>刻意不做的</h2>
+<h3>裝置與使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。</li>
   <li><strong>iPhone 和 iPad：</strong>沒有這兩個平台的版本，MarsDawn 只給 Mac。</li>
-  <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
   <li><strong>分享：</strong>沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。</li>
-  <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
-  <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
-  <li><strong>主題：</strong>內建 黎明、典雅、流行和活潑，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
-  <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
-  <li><strong>試用結束後：</strong>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</li>
   <li><strong>系統：</strong>MarsDawn 需要 macOS 26 以上。</li>
 </ul>
+<h3>檔案與功能</h3>
+<ul>
+  <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
+  <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
+  <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
+  <li><strong>主題：</strong>內建 黎明、典雅、流行和活潑，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
+  <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
+</ul>
+<h2>試用結束之後</h2>
+<p>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</p>
 """,
     ),
 }
@@ -2447,6 +2459,276 @@ def home_proof(locale: str, figure) -> list:
     ]
 
 
+# The comparison pages set their facts side by side in tables, one per marker, instead of in prose
+# lists, so a reader can scan a row. Every cell restates a fact the page's own prose or the parent
+# PRODUCT.md already carries; nothing here is new. {langs} is the app's interface languages.
+COMPARE_TABLES = {
+    "macmd-features": {
+        "head": {"en": ["", "MacMD Viewer", "MarsDawn"], "zh-hant": ["", "MacMD Viewer", "MarsDawn"],
+                 "zh-hans": ["", "MacMD Viewer", "MarsDawn"], "ja": ["", "MacMD Viewer", "MarsDawn"]},
+        "rows": {
+            "en": [
+                ["Editing", "Read-only by design", "Edits the source, with the rendered page beside it"],
+                ["Preview themes", "12 document themes", "4 themes, each with a light and a dark palette"],
+                ["Diagrams and math", "Mermaid and code highlighting; its listing doesn't mention math", "Mermaid, code highlighting and KaTeX math"],
+                ["Quick Look in Finder", "Yes", "Yes"],
+                ["PDF and print", "Yes", "Yes"],
+                ["Requires", "macOS 14 (Sonoma) or later", "macOS 26 (Tahoe) or later"],
+                ["Interface languages", "Not stated in its own materials", "{langs}"],
+            ],
+            "zh-hant": [
+                ["編輯", "設計上就是唯讀", "編輯原始碼，排版後的頁面就在旁邊"],
+                ["預覽主題", "12 種文件主題", "4 種，各有淺色與深色"],
+                ["圖表與數學式", "Mermaid 與程式碼上色；介紹頁沒有提到數學式", "Mermaid、程式碼上色與 KaTeX 數學式"],
+                ["Finder 快速查看", "有", "有"],
+                ["PDF 與列印", "有", "有"],
+                ["系統需求", "macOS 14（Sonoma）以上", "macOS 26（Tahoe）以上"],
+                ["介面語言", "自己的資料沒有寫出", "{langs}"],
+            ],
+            "zh-hans": [
+                ["编辑", "设计上就是只读", "编辑源代码，排版后的页面就在旁边"],
+                ["预览主题", "12 种文档主题", "4 种，各有浅色与深色"],
+                ["图表与数学公式", "Mermaid 与代码高亮；介绍页没有提到数学公式", "Mermaid、代码高亮与 KaTeX 数学公式"],
+                ["访达快速查看", "有", "有"],
+                ["PDF 与打印", "有", "有"],
+                ["系统要求", "macOS 14（Sonoma）或更高版本", "macOS 26（Tahoe）或更高版本"],
+                ["界面语言", "自己的资料没有写明", "{langs}"],
+            ],
+            "ja": [
+                ["編集", "設計上、読み取り専用", "ソースを編集し、その隣にレンダリングされたページ"],
+                ["プレビューテーマ", "12 種類のドキュメントテーマ", "4 種類、それぞれにライトとダーク"],
+                ["図と数式", "Mermaid とコードのハイライト。数式の表示は紹介ページに記載なし", "Mermaid、コードのハイライト、KaTeX の数式"],
+                ["Finder のクイックルック", "あり", "あり"],
+                ["PDF と印刷", "あり", "あり"],
+                ["動作環境", "macOS 14（Sonoma）以降", "macOS 26（Tahoe）以降"],
+                ["インターフェイスの言語", "公式の資料に記載なし", "{langs}"],
+            ],
+        },
+    },
+    "macmd-buying": {
+        "head": {"en": ["", "MacMD Viewer", "MarsDawn"], "zh-hant": ["", "MacMD Viewer", "MarsDawn"],
+                 "zh-hans": ["", "MacMD Viewer", "MarsDawn"], "ja": ["", "MacMD Viewer", "MarsDawn"]},
+        "rows": {
+            "en": [
+                ["Where you buy it", "Its own site, Homebrew or Setapp; not the Mac App Store", "The Mac App Store only"],
+                ["Price", "USD 19.99 once, for one Mac; multi-Mac packs cost more", "Free download, then USD 4.99 once"],
+                ["Trying it first", "No trial; a 14-day money-back guarantee on direct purchases", "A 14-day free trial"],
+                ["Refunds and updates", "Through its own site", "Through Apple"],
+                ["Account needed", "No", "No"],
+            ],
+            "zh-hant": [
+                ["從哪裡買", "自己的網站、Homebrew 或 Setapp；不在 Mac App Store", "只在 Mac App Store"],
+                ["價格", "一台 Mac 一次 USD 19.99；多台的組合包更貴", "免費下載，之後一次 USD 4.99"],
+                ["先試用", "沒有試用；直接購買 14 天內可退款", "14 天免費試用"],
+                ["退款與更新", "透過它自己的網站", "透過 Apple"],
+                ["需要帳號", "不用", "不用"],
+            ],
+            "zh-hans": [
+                ["从哪里买", "官网、Homebrew 或 Setapp；不在 Mac App Store", "只在 Mac App Store"],
+                ["价格", "一台 Mac 一次 USD 19.99；多台的组合包更贵", "免费下载，之后一次 USD 4.99"],
+                ["先试用", "没有试用；直接购买 14 天内可退款", "14 天免费试用"],
+                ["退款与更新", "通过它自己的网站", "通过 Apple"],
+                ["需要账号", "不需要", "不需要"],
+            ],
+            "ja": [
+                ["購入場所", "公式サイト、Homebrew、Setapp。Mac App Store にはない", "Mac App Store のみ"],
+                ["価格", "Mac 1 台につき USD 19.99 を一度。複数台のパックはより高額", "無料ダウンロード、その後 USD 4.99 を一度"],
+                ["購入前に試す", "試用なし。直接購入には 14 日間の返金保証", "14 日間の無料試用"],
+                ["返金とアップデート", "公式サイト経由", "Apple 経由"],
+                ["アカウント", "不要", "不要"],
+            ],
+        },
+    },
+    "preview-tools": {
+        "head": {
+            "en": ["", "VS Code preview", "Browser extension", "Claude Desktop", "MarsDawn"],
+            "zh-hant": ["", "VS Code 預覽", "瀏覽器擴充功能", "Claude Desktop", "MarsDawn"],
+            "zh-hans": ["", "VS Code 预览", "浏览器扩展", "Claude Desktop", "MarsDawn"],
+            "ja": ["", "VS Code のプレビュー", "ブラウザ拡張機能", "Claude Desktop", "MarsDawn"],
+        },
+        "rows": {
+            "en": [
+                ["Opens a Markdown file from disk", "Yes", "Yes, once file access is allowed", "No: Markdown isn't on its upload list", "Yes"],
+                ["Before the first file", "Install VS Code, a whole development environment", "Install an extension, then turn on “Allow access to file URLs”", "It can't browse files on disk", "Install MarsDawn"],
+                ["Built for", "Writing code; the preview is one pane among many", "Browsing the web", "Conversations with Claude", "Reading and editing Markdown"],
+                ["Draws the page with", "Electron: a bundled Chromium and Node.js", "A full browser", "The Claude Desktop app", "A native AppKit app; WebKit draws the page"],
+            ],
+            "zh-hant": [
+                ["開啟磁碟上的 Markdown 檔案", "可以", "可以，但要先允許存取檔案", "不行：Markdown 不在可上傳的類型裡", "可以"],
+                ["開第一個檔案之前", "安裝 VS Code，一整套開發環境", "安裝擴充功能，再打開「允許存取檔案網址」", "無法瀏覽磁碟上的檔案", "安裝 MarsDawn"],
+                ["為什麼而做", "寫程式；預覽只是眾多面板之一", "瀏覽網頁", "和 Claude 對話", "閱讀與編輯 Markdown"],
+                ["用什麼畫出頁面", "Electron：內含 Chromium 和 Node.js", "一整個瀏覽器", "Claude Desktop 本身", "原生的 AppKit app，頁面由 WebKit 繪製"],
+            ],
+            "zh-hans": [
+                ["打开磁盘上的 Markdown 文件", "可以", "可以，但要先允许访问文件", "不行：Markdown 不在可上传的类型里", "可以"],
+                ["打开第一个文件之前", "安装 VS Code，一整套开发环境", "安装扩展，再打开“允许访问文件网址”", "无法浏览磁盘上的文件", "安装 MarsDawn"],
+                ["为什么而做", "写代码；预览只是众多面板之一", "浏览网页", "和 Claude 对话", "阅读与编辑 Markdown"],
+                ["用什么画出页面", "Electron：内含 Chromium 和 Node.js", "一整个浏览器", "Claude Desktop 本身", "原生的 AppKit app，页面由 WebKit 绘制"],
+            ],
+            "ja": [
+                ["ディスク上の Markdown ファイルを開く", "開ける", "開ける（ファイルへのアクセスを許可したあと）", "開けない：Markdown はアップロードできる形式にない", "開ける"],
+                ["最初のファイルを開く前に", "VS Code という開発環境一式をインストール", "拡張機能を入れ、「ファイルの URL へのアクセスを許可」をオン", "ディスク上のファイルを参照できない", "MarsDawn をインストール"],
+                ["何のためのものか", "コードを書くため。プレビューは多くのパネルの1つ", "Web を見るため", "Claude との会話のため", "Markdown を読み、編集するため"],
+                ["ページを描くもの", "Electron：同梱の Chromium と Node.js", "ブラウザ全体", "Claude Desktop アプリ", "ネイティブの AppKit アプリ。ページは WebKit が描画"],
+            ],
+        },
+    },
+}
+
+
+COMPARE_TABLES["mcp-choice"] = {
+    "head": {"en": ["If your agent", "Use", "Needs"], "zh-hant": ["如果你的 agent", "就用", "需要"],
+             "zh-hans": ["如果你的 agent", "就用", "需要"], "ja": ["エージェントが", "使うもの", "必要なもの"]},
+    "rows": {
+        "en": [
+            ["Can run a shell command", '<a href="{root}cli/agents/">The CLI</a>', "macOS 15 or later"],
+            ["Loads instruction files, like Claude Code", '<a href="{root}cli/skill/">The skill file</a>', "The CLI, which the skill installs"],
+            ["Calls tools over MCP", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn-mcp 0.2.1 or later, marsdawn 0.5.0 or later, and Node.js 20 or later"],
+        ],
+        "zh-hant": [
+            ["能執行 shell 指令", '<a href="{root}cli/agents/">命令列工具</a>', "macOS 15 以上"],
+            ["會載入指令檔，例如 Claude Code", '<a href="{root}cli/skill/">skill 檔案</a>', "命令列工具（skill 會幫你安裝）"],
+            ["透過 MCP 呼叫工具", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn-mcp 0.2.1 以上、marsdawn 0.5.0 以上，以及 Node.js 20 以上"],
+        ],
+        "zh-hans": [
+            ["能运行 shell 命令", '<a href="{root}cli/agents/">命令行工具</a>', "macOS 15 或更高版本"],
+            ["会加载指令文件，例如 Claude Code", '<a href="{root}cli/skill/">skill 文件</a>', "命令行工具（skill 会帮你安装）"],
+            ["通过 MCP 调用工具", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn-mcp 0.2.1 或更高版本、marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本"],
+        ],
+        "ja": [
+            ["シェルコマンドを実行できる", '<a href="{root}cli/agents/">CLI</a>', "macOS 15 以降"],
+            ["Claude Code のように指示ファイルを読み込む", '<a href="{root}cli/skill/">スキルファイル</a>', "CLI（スキルがインストールします）"],
+            ["MCP でツールを呼び出す", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn-mcp 0.2.1 以降、marsdawn 0.5.0 以降、Node.js 20 以降"],
+        ],
+    },
+}
+
+
+# The CLI page's exit codes, with what to do about each one. The list itself stays in the page copy,
+# word for word as reviewed, behind an <!--exit-table--> mark; the build turns it into a table and adds
+# a remedy column from here, keyed by code. The remedies come from the CLI's own contract (EXIT_CODES
+# and the --json section). A code with no remedy here gets an empty cell rather than a guess.
+EXIT_TABLE_MARK = "<!--exit-table-->"
+EXIT_TABLE_HEAD = {"en": ["Code", "Means", "What to do"], "zh-hant": ["代碼", "意思", "怎麼處理"],
+                   "zh-hans": ["代码", "意思", "怎么处理"], "ja": ["コード", "意味", "対処"]}
+EXIT_REMEDY = {
+    "en": {
+        "0": "With <code>--json</code>, read the one JSON line on stdout",
+        "2": "Check the path and the file name",
+        "3": "Install the app, or use <code>export</code>, which doesn't need it",
+        "4": "Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere",
+        "5": "Read <code>message</code> in the JSON result",
+        "64": "Fix the option or value; this error is text on stderr, even with <code>--json</code>",
+    },
+    "zh-hant": {
+        "0": "加了 <code>--json</code> 時，讀 stdout 上的那一行 JSON",
+        "2": "檢查路徑和檔名",
+        "3": "安裝 app，或改用不需要 app 的 <code>export</code>",
+        "4": "加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處",
+        "5": "讀 JSON 結果裡的 <code>message</code>",
+        "64": "修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣",
+    },
+    "zh-hans": {
+        "0": "加了 <code>--json</code> 时，读 stdout 上的那一行 JSON",
+        "2": "检查路径和文件名",
+        "3": "安装 app，或改用不需要 app 的 <code>export</code>",
+        "4": "加上 <code>--force</code> 覆盖，或用 <code>-o</code> 写到别处",
+        "5": "读 JSON 结果里的 <code>message</code>",
+        "64": "修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样",
+    },
+    "ja": {
+        "0": "<code>--json</code> を付けた場合は、stdout の1行の JSON を読む",
+        "2": "パスとファイル名を確認する",
+        "3": "アプリをインストールするか、アプリが不要な <code>export</code> を使う",
+        "4": "<code>--force</code> で上書きするか、<code>-o</code> で別の場所に書き出す",
+        "5": "JSON の結果の <code>message</code> を読む",
+        "64": "オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される",
+    },
+}
+_EXIT_LIST = re.compile(re.escape(EXIT_TABLE_MARK) + r"\n<ul>\n(.*?)</ul>", re.S)
+_EXIT_ITEM = re.compile(r"<li><code>(\d+)</code>\s*[:：]\s*(.*?)</li>")
+
+
+def exit_table_html(locale: str, body: str) -> str:
+    def table(m):
+        head = "".join(f'<th scope="col">{cell}</th>' for cell in EXIT_TABLE_HEAD[locale])
+        labels = EXIT_TABLE_HEAD[locale][1:]
+        rows = "\n".join(
+            f'  <tr><th scope="row"><code>{code}</code></th><td data-label="{labels[0]}">{means}</td>'
+            f'<td data-label="{labels[1]}">{EXIT_REMEDY[locale].get(code, "")}</td></tr>'
+            for code, means in _EXIT_ITEM.findall(m.group(1))
+        )
+        return (f'<div class="table-scroll"><table class="compare">\n<thead><tr>{head}</tr></thead>\n'
+                f"<tbody>\n{rows}\n</tbody>\n</table></div>")
+    return _EXIT_LIST.sub(table, body)
+
+
+def compare_table_html(locale: str, key: str) -> str:
+    table = COMPARE_TABLES[key]
+    langs = APP_UI_LANGUAGES[locale]
+    heads = table["head"][locale]
+    head = "".join(f'<th scope="col">{cell}</th>' for cell in heads)
+
+    def cell_html(cell):
+        return cell.replace('{langs}', langs).replace('{root}', LOCALES[locale]['root']).replace('{mcp}', MCP_URL)
+    # data-label names each cell's column, for the stacked layout on narrow screens (site.css).
+    rows = "\n".join(
+        f'  <tr><th scope="row">{row[0]}</th>'
+        + "".join(f'<td data-label="{label}">{cell_html(cell)}</td>' for label, cell in zip(heads[1:], row[1:]))
+        + "</tr>"
+        for row in table["rows"][locale]
+    )
+    cls = "compare compare-wide" if len(table["head"][locale]) > 3 else "compare"
+    return f'<div class="table-scroll"><table class="{cls}">\n<thead><tr>{head}</tr></thead>\n<tbody>\n{rows}\n</tbody>\n</table></div>'
+
+
+# The themes page shows the themes, not just their names: real screenshots, two to a row on wide
+# screens. Modern has no screenshot yet, so it isn't pictured; the list under the gallery covers it.
+THEME_GALLERY_MARK = "<!--theme-gallery-->"
+THEME_SHOTS = [
+    ("01-split", {"en": "Dawn, the default", "zh-hant": "黎明（預設）", "zh-hans": "黎明（默认）", "ja": "夜明け（デフォルト）"},
+     {"en": "The Dawn theme in split view: Markdown source on the left, the rendered page on the right.",
+      "zh-hant": "黎明主題的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。",
+      "zh-hans": "黎明主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。",
+      "ja": "夜明けテーマの分割表示：左に Markdown のソース、右にレンダリングされたページ。"}),
+    ("02-classic", {"en": "Classic", "zh-hant": "典雅", "zh-hans": "典雅", "ja": "クラシック"},
+     {"en": "The Classic theme, with the preview filling the window.",
+      "zh-hant": "典雅主題，預覽佔滿整個視窗。",
+      "zh-hans": "典雅主题，预览占满整个窗口。",
+      "ja": "クラシックテーマ。プレビューがウインドウ全体に表示されています。"}),
+    ("04-vivid", {"en": "Vivid", "zh-hant": "活潑", "zh-hans": "活泼", "ja": "ビビッド"},
+     {"en": "The Vivid theme in split view.",
+      "zh-hant": "活潑主題的並排版面。",
+      "zh-hans": "活泼主题的并排版面。",
+      "ja": "ビビッドテーマの分割表示。"}),
+    ("03-dark", {"en": "Dark mode", "zh-hant": "深色模式", "zh-hans": "深色模式", "ja": "ダークモード"},
+     {"en": "MarsDawn in dark mode, in split view.",
+      "zh-hant": "MarsDawn 的深色模式，並排版面。",
+      "zh-hans": "MarsDawn 的深色模式，并排版面。",
+      "ja": "ダークモードの MarsDawn、分割表示。"}),
+]
+
+
+def theme_gallery_html(locale: str) -> str:
+    items = []
+    for image, name, alt in THEME_SHOTS:
+        _, _, width, height = CROPS[image]
+        items.append(
+            f'  <li><img src="/assets/screens/{image}-{SMALL_WIDTH}.png" srcset="/assets/screens/{image}-{SMALL_WIDTH}.png {SMALL_WIDTH}w, '
+            f'/assets/screens/{image}-{width}.png {width}w" sizes="(min-width: 760px) 31rem, calc(100vw - 32px)" '
+            f'width="{width}" height="{height}" alt="{alt[locale]}" loading="lazy"> <strong class="theme-name">{name[locale]}</strong></li>'
+        )
+    return '<ul class="theme-gallery">\n' + "\n".join(items) + "\n</ul>\n" + f'<p class="gallery-note">{THEME_GALLERY_NOTE[locale]}</p>'
+
+
+THEME_GALLERY_NOTE = {
+    "en": "Modern isn't pictured yet; the fourth shot shows dark mode instead.",
+    "zh-hant": "流行主題還沒有截圖；第四張是深色模式。",
+    "zh-hans": "流行主题还没有截图；第四张是深色模式。",
+    "ja": "モダンのスクリーンショットはまだありません。4枚目はダークモードです。",
+}
+
+
 def trait_nav_html(locale: str, current: str) -> str:
     items = "\n".join(
         f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a>'
@@ -2581,6 +2863,16 @@ def _base_pages() -> dict:
 def all_pages() -> dict:
     merged = _base_pages()
     merged.update(EXTRA_PAGES)
+    for (locale, slug), page in merged.items():
+        body = page["body"]
+        if THEME_GALLERY_MARK in body:
+            body = body.replace(THEME_GALLERY_MARK, theme_gallery_html(locale))
+        if EXIT_TABLE_MARK in body:
+            body = exit_table_html(locale, body)
+        for key in COMPARE_TABLES:
+            body = body.replace(f"<!--compare:{key}-->", compare_table_html(locale, key))
+        if body != page["body"]:
+            merged[(locale, slug)] = {**page, "body": body}
     return merged
 
 
@@ -2739,6 +3031,21 @@ def _render_block(node: _Node) -> str:
             bullet = f"{len(items) + 1}." if tag == "ol" else "-"
             items.append(f"{bullet} " + _render_inline(child.children).strip())
         return "\n".join(items) + "\n\n"
+    if tag == "table":
+        rows = []
+        for section in node.children:
+            if isinstance(section, str):
+                continue
+            for tr in ([section] if section.tag == "tr" else section.children):
+                if isinstance(tr, str):
+                    continue
+                if tr.tag != "tr":
+                    raise MarkdownConversionError(f"unsupported child <{tr.tag}> in a table")
+                rows.append([_render_inline(cell.children).strip().replace("|", "\\|")
+                             for cell in tr.children if not isinstance(cell, str)])
+        lines = ["| " + " | ".join(rows[0]) + " |", "|" + "---|" * len(rows[0])]
+        lines += ["| " + " | ".join(row) + " |" for row in rows[1:]]
+        return "\n".join(lines) + "\n\n"
     if tag == "pre":
         text = _pre_text(node)
         fence = "`" * max(3, _longest_backtick_run(text) + 1)
@@ -2767,6 +3074,54 @@ def html_to_markdown(fragment: str) -> str:
     builder.feed(fragment)
     builder.close()
     return _render_children(builder.root.children).strip() + "\n"
+
+
+SKIP_LABEL = {"en": "Skip to content", "zh-hant": "跳到內容", "zh-hans": "跳到内容", "ja": "本文へ移動"}
+
+# Privacy and support are long, linked from the App Store, and get linked into from support email:
+# every section gets a stable anchor, named from the English heading so a link works in any
+# language, and the page opens with a list of them.
+TOC_PAGES = {"privacy": "h2", "support": "h3"}
+TOC_LABEL = {
+    "privacy": {"en": "On this page", "zh-hant": "本頁內容", "zh-hans": "本页内容", "ja": "このページの内容"},
+    "support": {"en": "Jump to a question", "zh-hant": "直接看問題", "zh-hans": "直接看问题", "ja": "質問へ移動"},
+}
+
+
+def _anchor_ids(slug: str) -> list:
+    tag = TOC_PAGES[slug]
+    body = all_pages()[("en", slug)]["body"]
+    heads = re.findall(rf"<{tag}>(.*?)</{tag}>", body)
+    return [re.sub(r"[^a-z0-9]+", "-", re.sub(r"<[^>]+>", "", h).lower()).strip("-") for h in heads]
+
+
+def add_toc(locale: str, slug: str, html: str) -> str:
+    tag = TOC_PAGES[slug]
+    ids = _anchor_ids(slug)
+    heads = re.findall(rf"<{tag}>(.*?)</{tag}>", html)
+    assert len(heads) == len(ids), f"{locale}/{slug}: {len(heads)} headings, en has {len(ids)}"
+    for anchor in ids:
+        html = re.sub(rf"<{tag}>", f'<{tag} id="{anchor}">', html, count=1)
+    items = "\n".join(f'  <li><a href="#{anchor}">{re.sub(r"<[^>]+>", "", head)}</a></li>' for anchor, head in zip(ids, heads))
+    toc = (f'<nav class="toc" aria-label="{TOC_LABEL[slug][locale]}">\n<p>{TOC_LABEL[slug][locale]}</p>\n'
+           f'<ul>\n{items}\n</ul>\n</nav>\n')
+    cut = html.index("</section>") + len("</section>\n")
+    # The one-line answer, where a page has one, stays first.
+    if html[cut:].lstrip().startswith('<div class="summary">'):
+        cut = html.index("</div>", cut) + len("</div>\n")
+    return html[:cut] + toc + html[cut:]
+
+
+def add_h2_ids(locale: str, slug: str, page: dict, html: str) -> str:
+    """Give each section of a page a stable anchor, named from the English heading so a link works
+    in every language. Skipped where a locale's sections don't line up one for one with English."""
+    heads = re.findall(r"<h2>(.*?)</h2>", all_pages()[("en", slug)]["body"])
+    if len(re.findall(r"<h2>", page["body"])) != len(heads):
+        return html
+    for head in heads:
+        anchor = re.sub(r"[^a-z0-9]+", "-", re.sub(r"<[^>]+>", "", head).lower()).strip("-")
+        html = html.replace("<h2>", f'<h2 id="{anchor}">', 1)
+    return html
 
 
 def render(locale: str, slug: str, page: dict) -> str:
@@ -2816,6 +3171,10 @@ def render(locale: str, slug: str, page: dict) -> str:
         jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
     has_intro = "intro" in page
     is_trait_page = slug in TRAIT_ORDER
+    # The trait pages' chip is `chip` below. Every other page's masthead says the same, as a
+    # statement; the home page says it in the hero instead.
+    statement_chip = (f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  '
+                      if not is_trait_page and slug != "index" else "")
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
     if slug == "index":
         extra_css = '<link rel="stylesheet" href="/assets/hero.css">\n<link rel="stylesheet" href="/assets/annotations.css">\n'
@@ -2841,6 +3200,10 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
         main_html = page["body"].strip()
+    if slug in TOC_PAGES:
+        main_html = add_toc(locale, slug, main_html)
+    elif slug != "index":
+        main_html = add_h2_ids(locale, slug, page, main_html)
     # Two rows, the same on every page (#65): the site's links, then a meta line. The home page's meta
     # line is the origin mark alone, because the closing band just above already says the tagline and
     # the store line. The origin mark is deliberately untranslated, as on Futari's site.
@@ -2879,6 +3242,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 {jsonld}<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">{SKIP_LABEL[locale]}</a>
 {consent_banner_html(locale)}
 <div class="page">
 <header class="masthead">
@@ -2886,9 +3250,9 @@ def render(locale: str, slug: str, page: dict) -> str:
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  {chip}<nav class="lang" aria-label="Language">{switch}</nav>
+  {chip}{statement_chip}<nav class="lang" aria-label="Language">{switch}</nav>
 </header>
-<main>
+<main id="main">
 {main_html}
 </main>
 {footer_html}
@@ -3179,6 +3543,7 @@ def render_404(locale: str) -> str:
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">{SKIP_LABEL[locale]}</a>
 {consent_banner_html(locale)}
 <div class="page">
 <header class="masthead">
@@ -3188,7 +3553,7 @@ def render_404(locale: str) -> str:
   </a>
   <nav class="lang" aria-label="Language">{switch}</nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>{copy["headline"]}</h1>
   <p>{copy["body"]}</p>

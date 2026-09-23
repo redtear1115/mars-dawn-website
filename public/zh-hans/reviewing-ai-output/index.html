@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到内容</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
   <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
   <div class="consent-actions">
@@ -63,9 +64,10 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">即将在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/reviewing-ai-output/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reviewing-ai-output/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reviewing-ai-output/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/reviewing-ai-output/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>agent 写出来，还是得由你理解。</h1>
   <p>AI agent 可以很快写出一份计划、一份规格或一堆笔记。它写出来的东西，还是得由要照着做的人去理解&#8212;&#8212;不能因为读起来通顺，就直接相信。</p>
@@ -73,13 +75,13 @@ try {
 
 <div class="summary"><p><strong>MarsDawn 就是为了这种阅读而做的：排版后的页面和源代码并排，Mermaid 图表和 KaTeX 数学式直接画出来，而不是留着记号，让文稿的结构一眼就看得懂。</strong></p></div>
 
-<h2>读起来通顺，不代表是对的</h2>
+<h2 id="fluent-isn-t-the-same-as-correct">读起来通顺，不代表是对的</h2>
 <p>Simon Willison 在谈 AI 辅助写代码时，对那些还会被继续维护、不是写完就丢的代码这么说：“the quality and understandability of the underlying code is crucial”（底层代码的质量和是否容易理解，至关重要，<a href="https://simonwillison.net/2025/Mar/6/vibe-coding/">Vibe coding</a>，2025）。文稿也一样：agent 写出来读起来很顺的草稿，结构、数字或逻辑还是可能是错的，而通顺的文字并不会告诉你哪里该多留意。</p>
 
-<h2>是推理，不是编译</h2>
+<h2 id="inference-not-compilation">是推理，不是编译</h2>
 <p>Thoughtworks 的 Birgitta B&#246;ckeler 讲得很直接：“LLMs are NOT compilers, interpreters, transpilers or assemblers of natural language, they are inferrers”（LLM 不是自然语言的编译器、解释器、转译器或汇编器，它们是推理器，<a href="https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html">I still care about the code</a>）。编译器要么接受你的输入，要么报告错误；agent 给你的东西即使能运行、读起来也通顺，也不保证是对的。还是得有人检查。</p>
 
-<h2>MarsDawn 给读的人什么</h2>
+<h2 id="what-marsdawn-gives-that-reader">MarsDawn 给读的人什么</h2>
 <ul>
   <li>排版后的页面和源代码并排，两边一改就同步更新，让文字里的说法和它的结构同时在你眼前。</li>
   <li>Mermaid 图表画出来：agent 用文字描述的流程图，变成一个你真的能看懂的形状。</li>
@@ -87,7 +89,7 @@ try {
   <li>它本身不会自动做任何事。MarsDawn 不会帮你评分、摘要或标记这份文稿&#8212;&#8212;它只是把结构摊在你面前，让你自己判断。</li>
 </ul>
 
-<h2>接下来</h2>
+<h2 id="next">接下来</h2>
 <ul>
   <li>这样的审阅怎么不花 agent 自己的 context：<a href="/zh-hans/token-efficient-review/">节省 token 的审阅方式</a>。</li>
   <li>把审阅过的文稿交给别人：<a href="/zh-hans/sharing-exported-pdfs/">分享 PDF</a>。</li>

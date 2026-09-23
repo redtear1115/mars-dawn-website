@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到内容</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
   <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
   <div class="consent-actions">
@@ -63,9 +64,10 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">即将在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/sharing-exported-pdfs/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/sharing-exported-pdfs/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/sharing-exported-pdfs/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/sharing-exported-pdfs/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>把 PDF 交出去，不是把 Markdown 交出去。</h1>
   <p>agent 写完一份文稿，你审阅、修改过后，公司里不写程序的人也要看&#8212;&#8212;主管、客户，或另一个团队的人。他们不需要知道 <code>##</code> 或表格的竖线符号是什么意思。导出成 PDF，交给他们那份就好。</p>
@@ -73,13 +75,13 @@ try {
 
 <div class="summary"><p><strong>把审阅过的文稿导出成 PDF，发那个文件就好。</strong>它在任何地方都打得开，不需要懂 Markdown，也不用安装任何东西，看起来就跟你在预览里看到的一样&#8212;&#8212;图表、表格、格式都在。</p></div>
 
-<h2>为什么不直接发 .md 文件</h2>
+<h2 id="why-not-just-send-the-md-file">为什么不直接发 .md 文件</h2>
 <p>用纯文本编辑器打开 <code>.md</code> 文件，看到的是记号，不是排好版的页面：<code>#</code> 是标题，<code>**</code> 包住粗体文字，围住 Mermaid 图表的代码块没有画出图。不写 Markdown 的人看不出这些记号原本要呈现什么，而为了一份文稿就要对方先装一个查看器，也要求太多。</p>
 
-<h2>为什么不直接发截图</h2>
+<h2 id="why-not-a-screenshot">为什么不直接发截图</h2>
 <p>截图只能定格文稿的其中一个画面，文稿可能有好几页，内容不能搜索也不能选取，转发几次、被压缩后也会更难读。PDF 不管文稿多长，都能保留文字、图表和分页。</p>
 
-<h2>PDF 能给你什么</h2>
+<h2 id="what-a-pdf-gets-you">PDF 能给你什么</h2>
 <ul>
   <li>对方已经有的东西就能打开&#8212;&#8212;Preview、浏览器、Acrobat、手机都行，不需要任何 Markdown 工具。</li>
   <li>Mermaid 图表会画出来，不会留着代码原样；代码块保留语法上色。</li>
@@ -87,7 +89,7 @@ try {
   <li>不管是从 MarsDawn app 还是免费的命令行导出，得到的都是同一份文件&#8212;&#8212;完整步骤请看<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。</li>
 </ul>
 
-<h2>接下来</h2>
+<h2 id="next">接下来</h2>
 <ul>
   <li>可以用哪些主题和布局导出：<a href="/zh-hans/themes/">预览主题与 PDF 导出</a>。</li>
   <li>从脚本或 agent 导出，而不是从 app：<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</li>

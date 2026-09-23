@@ -13,16 +13,24 @@ In this screenshot:
 
 ## Left out
 
+### Devices and people
+
 - **Sync:** MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.
 - **iPhone and iPad:** there is no app for them; MarsDawn is for the Mac.
-- **Plugins:** MarsDawn has no plugins or extensions.
 - **Sharing:** there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.
+- **System:** MarsDawn needs macOS 26 or later.
+
+### Files and features
+
 - **Editing:** you write Markdown on the left and read the page on the right; the page itself can't be edited.
 - **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
-- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet — see [preview themes and PDF export](/themes/) for what's planned.
 - **Other files:** plain text files and PDFs open read-only.
-- **After the trial:** if you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
-- **System:** MarsDawn needs macOS 26 or later.
+- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet; see [preview themes and PDF export](/themes/) for what's planned.
+- **Plugins:** MarsDawn has no plugins or extensions.
+
+## After the trial
+
+If you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
 
 ## More
 

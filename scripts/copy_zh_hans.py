@@ -234,6 +234,7 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> 默认不会覆盖已存在的输出文件，除非加上 <code>--force</code>。</p>
 
 <h2>退出代码</h2>
+<!--exit-table-->
 <ul>
   <li><code>0</code>：成功。</li>
   <li><code>2</code>：找不到输入文件。</li>
@@ -365,6 +366,9 @@ swift build -c release --product marsdawn
 
 <div class="summary"><p><strong>挑你的工具支持的那一种：免费的 <code>marsdawn</code> CLI、纯 Markdown 的 skill 文件，或是 <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> 这个 MCP 服务器。</strong>三者都调用同一个 <code>marsdawn export</code>，返回一样的 JSON 结果。</p></div>
 
+<h2>该用哪一个</h2>
+<!--compare:mcp-choice-->
+
 <h2>CLI</h2>
 <p><code>marsdawn export notes.md --json</code> 可以被任何能运行 shell 命令的 agent 或脚本调用，因为是命令行工具，天生就跟模型无关。它返回的每个字段都写在<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>里，那一页是 JSON schema 的权威来源，下面另外两种方式都会连回去。</p>
 
@@ -403,6 +407,7 @@ swift build -c release --product marsdawn
   <h1>让 agent 帮你做出 PDF。</h1>
   <p>这个 skill 是一个 Markdown 文件。它教写程序的 agent 安装 <code>marsdawn</code>、确认它能用、把文稿导出成 PDF 并读懂结果，这样写出 Markdown 的 agent，也能把 PDF 交给你。</p>
 </section>
+<div class="summary"><p><strong>一个 Markdown 文件，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 会安装 <code>marsdawn</code>、导出 PDF 并读懂 JSON 结果；运行任何命令之前，它还是会先问你。</p></div>
 <h2>在 Claude Code 中安装</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
@@ -434,18 +439,23 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 """,
         "body": f"""
 <h2>刻意不做的</h2>
+<h3>设备与使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。</li>
   <li><strong>iPhone 和 iPad：</strong>没有这两个平台的版本，MarsDawn 只给 Mac。</li>
-  <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
   <li><strong>分享：</strong>没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。</li>
-  <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
-  <li><strong>格式：</strong>MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。</li>
-  <li><strong>主题：</strong>内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。</li>
-  <li><strong>其他文件：</strong>纯文本文件和 PDF 以只读方式打开。</li>
-  <li><strong>试用结束后：</strong>如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。</li>
   <li><strong>系统：</strong>MarsDawn 需要 macOS 26 以上。</li>
 </ul>
+<h3>文件与功能</h3>
+<ul>
+  <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
+  <li><strong>格式：</strong>MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。</li>
+  <li><strong>其他文件：</strong>纯文本文件和 PDF 以只读方式打开。</li>
+  <li><strong>主题：</strong>内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。</li>
+  <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
+</ul>
+<h2>试用结束之后</h2>
+<p>如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。</p>
 """,
     }
     pages['markdown-to-pdf'] = {
@@ -502,10 +512,14 @@ marsdawn --version</code></pre>
 """,
         "body": f"""
 <h2>这代表什么</h2>
+<h3>编辑</h3>
 <ul>
   <li>源代码、并排、预览三种布局，一个快捷键切换（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
   <li>两侧同步滚动，正在编辑的段落一直在眼前。</li>
   <li>编辑器内置 Markdown 语法高亮，颜色与预览主题一致。</li>
+</ul>
+<h3>和 Mac 的其他部分</h3>
+<ul>
   <li>原生窗口、标签页、自动保存和版本记录。</li>
   <li>快速查看：在访达选取 Markdown 文件按空格键就能预览，图表也会显示。</li>
   <li>Siri 和快捷指令：用模板添加文稿、在笔记收件箱加上一行，或重新打开最近的文稿。</li>
@@ -524,10 +538,12 @@ marsdawn --version</code></pre>
 """,
         "body": f"""
 <h2>怎么运作</h2>
+<ol class="loop-steps">
+  <li><strong>免费下载。</strong> 在 Mac App Store 免费下载 MarsDawn。</li>
+  <li><strong>14 天，全部都能用。</strong> 开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。</li>
+  <li><strong>买一次就解锁。</strong> 试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。</li>
+</ol>
 <ul>
-  <li>在 Mac App Store 免费下载 MarsDawn。</li>
-  <li>开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。</li>
-  <li>试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。</li>
   <li>试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。</li>
   <li>不需要账户，MarsDawn 从不要求你创建账户。</li>
 </ul>
@@ -638,6 +654,7 @@ marsdawn --version</code></pre>
 <div class="summary"><p><strong>四种主题 &#215; 浅色与深色＝八种读文稿的方式，导出时用的正是你选的那一种。</strong>更多可导入的主题，还有让大家投稿主题的主题库，都还在规划中，尚未推出。</p></div>
 
 <h2>四种主题</h2>
+<!--theme-gallery-->
 <ul>
   <li><strong>黎明</strong>，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。</li>
   <li><strong>典雅</strong>：比较朴素、像纸质文稿的配色。</li>
@@ -733,23 +750,9 @@ open notes.pdf</code></pre>
 <h2>如果你只需要读，不需要编辑</h2>
 <p>如果你的工作就是读别人写好的 Markdown，完全不用碰源代码，MacMD Viewer 是合理的选择：它就是为这件事做的，现在就能买，也能在比较旧的 macOS 上跑。当阅读不是全部的工作时，MarsDawn 才值得，因为 agent 写的 Markdown 通常还要再改一轮。</p>
 <h2>各自能做什么</h2>
-<ul>
-  <li><strong>编辑：</strong>MacMD Viewer 设计上就是只读。MarsDawn 边编辑源代码边在旁边排版，打字的同时就看得到改动。</li>
-  <li><strong>预览主题：</strong>MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：黎明、典雅、流行和活泼，各有浅色与深色。</li>
-  <li><strong>图表与数学公式：</strong>两者都能画出 Mermaid 图表、也都有代码高亮。MarsDawn 还能排版 KaTeX 数学公式；MacMD Viewer 自己的介绍页没有提到数学公式排版。</li>
-  <li><strong>访达集成：</strong>两者都有访达的快速查看扩展功能，对 <code>.md</code> 文件按空格键就能看到排好版的页面。</li>
-  <li><strong>PDF 与打印：</strong>两者都能把排好版的页面输出或打印成 PDF。</li>
-  <li><strong>系统需求：</strong>MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。</li>
-  <li><strong>语言：</strong>MarsDawn 的界面有{k.APP_UI_LANGUAGES}。MacMD Viewer 自己的资料没有写出界面语言，这页就不比较这一项。</li>
-</ul>
+<!--compare:macmd-features-->
 <h2>价格与购买方式</h2>
-<ul>
-  <li><strong>从哪里买：</strong>MacMD Viewer 从自己的网站直接下载，也上架 Homebrew 和 Setapp，但不在 Mac App Store 上；MarsDawn 只在 Mac App Store 上架。</li>
-  <li><strong>价格：</strong>MacMD Viewer 一台 Mac 一次 USD 19.99（三台的组合包和批量授权更贵）。MarsDawn 免费下载，之后以 USD 4.99 一次解锁。</li>
-  <li><strong>先试用：</strong>MacMD Viewer 没有免费试用，直接购买改用 14 天内可退款的保证。MarsDawn 在你付费之前，先给你 14 天的试用。</li>
-  <li><strong>退款与更新：</strong>MacMD Viewer 的退款和更新都在它自己的网站上处理。MarsDawn 通过 Apple 购买，退款和更新都走 Apple 的标准流程。</li>
-  <li><strong>账户：</strong>两者都不需要账户就能使用。</li>
-</ul>
+<!--compare:macmd-buying-->
 <h2>现在就能免费试试看</h2>
 <p>MarsDawn 即将在 Mac App Store 上架，现在还没开卖。在那之前，免费的 <code>marsdawn</code> 命令行工具今天就能把任何 Markdown 文件转成 PDF，Mermaid 图表和代码高亮都在，而且不需要安装其他东西：</p>
 <pre><code>{k.BREW_TAP_INSTALL}
@@ -771,6 +774,9 @@ open notes.pdf</code></pre>
   <h1>在别处看 Markdown，对比 MarsDawn。</h1>
   <p>如果你手边刚好开着 VS Code、浏览器或 Claude Desktop，用它们顺手看一眼 Markdown 文件也合理。以下是它们各自实际排版出什么、要花多少功夫才能看到，和在 MarsDawn 里打开同一份文件的比较。</p>
 </section>
+<h2>一眼看完</h2>
+<!--compare:preview-tools-->
+
 <h2>VS Code 内置的预览</h2>
 <p>在 VS Code 按 <kbd>&#8984;&#8679;V</kbd>，就会用内置的预览窗格排版出 Markdown 文件，免费，不用另外安装。从 VS Code 1.121（2026 年 5 月）开始，这个预览也能原生画出 Mermaid 图表&#8212;&#8212;微软把一个 Mermaid 扩展并进了 VS Code 本体，以前需要另外装扩展，现在不用了。它做不到的：这是编辑器里的一个预览窗格，不是为了阅读而做的编辑器&#8212;&#8212;窗格旁边还有文件树、终端和 VS Code 能显示的其他所有面板，而 VS Code 本身是 Electron app，你装的是一整套开发环境，不是一个用来读文件的工具。</p>
 <h2>看本机文件的浏览器扩展</h2>

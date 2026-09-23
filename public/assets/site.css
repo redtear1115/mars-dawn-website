@@ -19,6 +19,8 @@
 :lang(zh-Hans) { --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", sans-serif; }
 :lang(ja) { --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif; }
 body [lang] { font-family: var(--font); }
+/* Japanese headings break between phrases, not inside a word (Chromium; others keep the default). */
+:lang(ja) :is(h1, h2, h3) { word-break: auto-phrase; }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -123,11 +125,18 @@ a:focus-visible {
 
 h2 {
   margin: 48px 0 10px;
-  font-size: 1.3rem;
+  font-size: 1.375rem;
   line-height: 1.3;
   font-weight: 650;
   letter-spacing: -0.01em;
   text-wrap: balance;
+}
+/* Each section of a reading page starts on a hairline, so a long page reads
+   as a run of distinct parts rather than one column of equal paragraphs. */
+main > h2:not(.loop-title) {
+  margin-top: 52px;
+  padding-top: 22px;
+  border-top: 1px solid var(--hairline);
 }
 h3 {
   margin: 28px 0 6px;
@@ -341,10 +350,13 @@ html { scrollbar-color: var(--hairline) var(--paper); }
 }
 /* After the base rules above, so these win at the same specificity. */
 @media (max-width: 480px) {
-  .masthead { gap: 12px 10px; }
-  .brand { flex-basis: 100%; }
-  .store-chip { margin-left: 0; padding: 2px 8px; font-size: 0.74rem; }
-  .lang { margin-left: auto; font-size: 0.84rem; }
+  /* Two rows, not three: the name and the store status share the first,
+     the languages take the second. */
+  .masthead { gap: 10px 12px; }
+  .brand { gap: 10px; }
+  .brand img { width: 34px; height: 34px; }
+  .masthead .store-chip { padding: 2px 8px; font-size: 0.72rem; }
+  .lang { flex-basis: 100%; font-size: 0.84rem; }
 }
 
 .shot {
@@ -385,7 +397,7 @@ img.pdf-page {
   border: 1px solid var(--hairline);
   border-radius: 6px;
   box-shadow: 0 1px 2px color-mix(in srgb, #000 10%, transparent),
-              0 12px 28px -14px color-mix(in srgb, #000 30%, transparent);
+              0 3px 8px -4px color-mix(in srgb, #000 16%, transparent);
 }
 
 .marker {
@@ -1196,3 +1208,163 @@ html { overflow-x: hidden; }
    The code element sets the wrapping: the site's `pre code` rule keeps it on one line otherwise. */
 .install pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
 :lang(ja) :is(h2, h3) { word-break: auto-phrase; }
+
+/* ---- Themes page: the themes themselves, two to a row ----------------------
+   Wider than the text column, like the trait-page screenshots, so the
+   palettes are big enough to judge. Each plate is the page's own sand. */
+.theme-gallery {
+  --gallery-width: max(100%, min(64rem, 100vw - 48px));
+  width: var(--gallery-width);
+  margin: 20px calc((100% - var(--gallery-width)) / 2) 28px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 760px) {
+  .theme-gallery { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+.theme-gallery li {
+  margin: 0;
+  padding: clamp(8px, 1.4vw, 14px) clamp(8px, 1.4vw, 14px) 12px;
+  background: var(--sand);
+  border-radius: 12px;
+}
+.theme-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px color-mix(in srgb, #000 12%, transparent),
+              0 8px 20px -12px color-mix(in srgb, #000 30%, transparent);
+}
+.theme-gallery strong {
+  display: block;
+  margin-top: 10px;
+  padding-inline: 2px;
+  font-size: 0.95rem;
+}
+
+/* ---- Comparison tables ------------------------------------------------------
+   Facts side by side, read across a row. Ruled with hairlines, no fills,
+   MarsDawn's column last and in ink so it reads as the answer, the other
+   columns in dust. Wide tables scroll inside their own box on a phone
+   rather than pushing the page sideways. */
+.table-scroll {
+  margin: 16px 0 22px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.compare {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.compare th,
+.compare td {
+  padding: 11px 14px 11px 0;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--hairline);
+}
+.compare th:last-child,
+.compare td:last-child { padding-right: 0; }
+.compare thead th {
+  padding-top: 0;
+  color: var(--dust);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-bottom-color: var(--ink);
+}
+.compare-ours thead th:last-child { color: var(--ember); }
+.compare tbody th[scope="row"] {
+  width: 26%;
+  font-weight: 650;
+}
+.compare-ours td { color: var(--dust); }
+.compare-ours td:last-child { color: var(--ink); }
+.compare-wide { min-width: 40rem; }
+.compare-wide tbody th[scope="row"] { width: 18%; }
+/* On a phone the row labels stay put while the columns scroll under them. */
+.compare-wide th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--paper);
+}
+
+/* ---- Skip link: off screen until it has keyboard focus -------------------- */
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 10;
+  padding: 8px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip:focus-visible { top: 12px; outline-offset: 2px; }
+
+/* ---- On-this-page list for privacy and support --------------------------- */
+.toc {
+  margin: 32px 0 8px;
+  padding: 18px 22px 16px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+}
+.toc p {
+  margin: 0 0 8px;
+  color: var(--dust);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.toc ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 2 15rem;
+  column-gap: 28px;
+}
+.toc li { margin: 0; padding: 3px 0; break-inside: avoid; }
+.toc li + li { margin-top: 0; }
+:target { scroll-margin-top: 20px; }
+
+.gallery-note {
+  margin: -14px 0 18px;
+  color: var(--dust);
+  font-size: 0.9rem;
+}
+
+/* On a phone, a four-column comparison stacks: one block per row, the row's
+   name on top and each column's answer under its own label. */
+@media (max-width: 719px) {
+  .compare-wide { min-width: 0; }
+  .compare-wide thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .compare-wide tr { display: block; padding: 14px 0 10px; border-bottom: 1px solid var(--hairline); }
+  .compare-wide th,
+  .compare-wide td { display: block; padding: 0; border: 0; }
+  .compare-wide th:first-child { position: static; background: none; }
+  .compare-wide tbody th[scope="row"] { width: auto; margin-bottom: 6px; }
+  .compare-wide td {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 12px;
+    padding: 3px 0;
+  }
+  .compare-wide td::before {
+    content: attr(data-label);
+    color: var(--dust);
+    font-size: 0.85rem;
+  }
+  .compare-ours.compare-wide td:last-child::before { color: var(--ember); }
+}

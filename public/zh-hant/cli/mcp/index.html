@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到內容</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
   <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
   <div class="consent-actions">
@@ -63,9 +64,10 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">即將在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/cli/mcp/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/mcp/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/mcp/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/mcp/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>呼叫 marsdawn 的三種方式。</h1>
   <p>MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不是用來寫的，所以是哪個 agent 或模型寫出這份 Markdown 並不重要。agent 或腳本呼叫 <code>marsdawn</code> 有三種方式，最後都會執行同一個 <code>export</code>。</p>
@@ -73,13 +75,23 @@ try {
 
 <div class="summary"><p><strong>挑你的工具支援的那一種：免費的 <code>marsdawn</code> CLI、純 Markdown 的 skill 檔案，或是 <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> 這個 MCP 伺服器。</strong>三者都呼叫同一個 <code>marsdawn export</code>，回傳一樣的 JSON 結果。</p></div>
 
-<h2>CLI</h2>
+<h2 id="which-one-to-use">該用哪一個</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">如果你的 agent</th><th scope="col">就用</th><th scope="col">需要</th></tr></thead>
+<tbody>
+  <tr><th scope="row">能執行 shell 指令</th><td data-label="就用"><a href="/zh-hant/cli/agents/">命令列工具</a></td><td data-label="需要">macOS 15 以上</td></tr>
+  <tr><th scope="row">會載入指令檔，例如 Claude Code</th><td data-label="就用"><a href="/zh-hant/cli/skill/">skill 檔案</a></td><td data-label="需要">命令列工具（skill 會幫你安裝）</td></tr>
+  <tr><th scope="row">透過 MCP 呼叫工具</th><td data-label="就用"><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td data-label="需要">marsdawn-mcp 0.2.1 以上、marsdawn 0.5.0 以上，以及 Node.js 20 以上</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="the-cli">CLI</h2>
 <p><code>marsdawn export notes.md --json</code> 可以被任何能執行 shell 指令的 agent 或腳本呼叫，因為是命令列工具，天生就跟模型無關。它回傳的每個欄位都寫在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡，那一頁是 JSON schema 的權威來源，底下另外兩種方式都會連回去。</p>
 
-<h2>Skill 檔案</h2>
+<h2 id="the-skill-file">Skill 檔案</h2>
 <p>如果你的 agent 讀的是純 Markdown 指令，而不是直接執行 shell&#8212;&#8212;目前是 Claude Code&#8212;&#8212;<a href="/zh-hant/cli/skill/">marsdawn skill</a> 就是一個檔案，教它安裝 marsdawn、執行 <code>export</code>、讀懂結果。因為它就是純 Markdown，其他會讀指令檔的 agent 也能用同一個檔案。</p>
 
-<h2>MCP 伺服器</h2>
+<h2 id="the-mcp-server">MCP 伺服器</h2>
 <p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> 是另一個獨立、公開、Apache-2.0 授權的 repository。它是一個有兩個工具的 MCP 伺服器，<code>export_markdown_to_pdf</code> 和 <code>open_in_marsdawn</code>，分別包住 <code>marsdawn export --json</code> 和 <code>marsdawn open --json</code>：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。</p>
 <ul>
   <li><strong>取得方式：</strong>以 MCP Bundle（<code>marsdawn.mcpb</code>）的形式附在<a href="https://github.com/redtear1115/marsdawn-mcp/releases">GitHub release</a> 上，或從原始碼以 stdio 執行伺服器。</li>
@@ -88,14 +100,14 @@ try {
   <li><strong>系統需求：</strong>macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。</li>
 </ul>
 
-<h2>只能在你允許的資料夾裡運作</h2>
+<h2 id="confined-to-folders-you-allow">只能在你允許的資料夾裡運作</h2>
 <p>兩個工具都只能在你允許的資料夾裡讀寫：擴充功能的「Allowed folders」設定（預設是空的），或是你的 MCP 用戶端提供的 roots。兩者都沒有設定時，每次呼叫都會被拒絕，拒絕訊息會說明怎麼設定。每個路徑都必須是絕對路徑，而 <code>export_markdown_to_pdf</code> 只會寫出 <code>.pdf</code> 檔案，不會透過 symlink 寫。</p>
 <p><strong>安全性：</strong>請更新到 <a href="https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1">0.2.1</a>&#8212;&#8212;0.1.0 和 0.2.0 會讓呼叫把 PDF 寫到你帳號能寫入的任何路徑，已在 <a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a> 修好。</p>
 
-<h2>同一個 export，三扇門</h2>
+<h2 id="same-export-three-doors">同一個 export，三扇門</h2>
 <p>不管從哪個介面呼叫，底層行為都一樣：同一套輸出程式、同樣的主題和紙張大小，Mermaid 圖表畫不出來時也是同樣的 <code>diagramErrors</code>。這頁不重複那份規格&#8212;&#8212;<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡有完整內容。</p>
 
-<h2>接下來</h2>
+<h2 id="next">接下來</h2>
 <ul>
   <li>完整 JSON schema 和所有離開代碼：<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</li>
   <li>給 Claude Code 等 agent 用的一個檔案：<a href="/zh-hant/cli/skill/">marsdawn skill</a>。</li>

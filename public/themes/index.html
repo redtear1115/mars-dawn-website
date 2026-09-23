@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
   <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
   <div class="consent-actions">
@@ -63,9 +64,10 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/themes/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/themes/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/themes/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/themes/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Eight looks, one export.</h1>
   <p>MarsDawn ships four preview themes, Dawn, Classic, Modern and Vivid, each with a light and a dark palette &#8212; eight combinations to read a document in. Export to PDF or print, and the page comes out in whichever one you were reading.</p>
@@ -73,7 +75,14 @@ try {
 
 <div class="summary"><p><strong>Four themes &#215; light and dark = eight ways to read a document, and one export path that matches whichever you chose.</strong> More importable themes, and a gallery to share your own, are planned &#8212; not built yet.</p></div>
 
-<h2>The four themes</h2>
+<h2 id="the-four-themes">The four themes</h2>
+<ul class="theme-gallery">
+  <li><img src="/assets/screens/01-split-800.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 760px) 31rem, calc(100vw - 32px)" width="1180" height="844" alt="The Dawn theme in split view: Markdown source on the left, the rendered page on the right." loading="lazy"> <strong class="theme-name">Dawn, the default</strong></li>
+  <li><img src="/assets/screens/02-classic-800.png" srcset="/assets/screens/02-classic-800.png 800w, /assets/screens/02-classic-1180.png 1180w" sizes="(min-width: 760px) 31rem, calc(100vw - 32px)" width="1180" height="844" alt="The Classic theme, with the preview filling the window." loading="lazy"> <strong class="theme-name">Classic</strong></li>
+  <li><img src="/assets/screens/04-vivid-800.png" srcset="/assets/screens/04-vivid-800.png 800w, /assets/screens/04-vivid-1180.png 1180w" sizes="(min-width: 760px) 31rem, calc(100vw - 32px)" width="1180" height="844" alt="The Vivid theme in split view." loading="lazy"> <strong class="theme-name">Vivid</strong></li>
+  <li><img src="/assets/screens/03-dark-800.png" srcset="/assets/screens/03-dark-800.png 800w, /assets/screens/03-dark-1180.png 1180w" sizes="(min-width: 760px) 31rem, calc(100vw - 32px)" width="1180" height="844" alt="MarsDawn in dark mode, in split view." loading="lazy"> <strong class="theme-name">Dark mode</strong></li>
+</ul>
+<p class="gallery-note">Modern isn't pictured yet; the fourth shot shows dark mode instead.</p>
 <ul>
   <li><strong>Dawn</strong>, the default: the same warm paper and Mars Rust accent this site is built from.</li>
   <li><strong>Classic</strong>: a plainer, document-like palette.</li>
@@ -82,13 +91,13 @@ try {
 </ul>
 <p>Each one has its own light and dark variant, so switching your Mac's appearance switches the theme's palette with it, not just the interface chrome.</p>
 
-<h2>PDF export and print use the same theme</h2>
+<h2 id="pdf-export-and-print-use-the-same-theme">PDF export and print use the same theme</h2>
 <p>Export to PDF or print, and the page uses your theme's light palette: Mermaid diagrams are drawn into it, code blocks keep their syntax highlighting, and page breaks avoid splitting a heading from its section or cutting a table or diagram in half. The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so a script or an agent produces the identical PDF, in any of the four themes, with <code>--theme</code>.</p>
 
-<h2>Planned: more themes, and a gallery</h2>
+<h2 id="planned-more-themes-and-a-gallery">Planned: more themes, and a gallery</h2>
 <p>Coming later, not shipped yet: more importable preview themes, and a gallery on this site where people can submit their own. <code>/themes/v1/</code> is already reserved for it. Until that ships, the four built-in themes are what MarsDawn has, and you can't install others.</p>
 
-<h2>Next</h2>
+<h2 id="next">Next</h2>
 <ul>
   <li>The full PDF export walk-through, from the command line: <a href="/markdown-to-pdf/">Markdown to PDF</a>.</li>
   <li>What MarsDawn doesn't do yet: <a href="/limits/">the list</a>.</li>

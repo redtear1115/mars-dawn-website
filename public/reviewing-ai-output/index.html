@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
   <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
   <div class="consent-actions">
@@ -63,9 +64,10 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/reviewing-ai-output/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/reviewing-ai-output/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reviewing-ai-output/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reviewing-ai-output/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>An agent writes it. You still have to understand it.</h1>
   <p>An AI agent can draft a plan, a spec or a set of notes quickly. What it produces still has to be understood by the person who acts on it &#8212; not trusted because it reads fluently.</p>
@@ -73,13 +75,13 @@ try {
 
 <div class="summary"><p><strong>MarsDawn is built for that read: the rendered page next to the source, with Mermaid diagrams and KaTeX math drawn out instead of left as marks, so a document's structure is legible at a glance.</strong></p></div>
 
-<h2>Fluent isn't the same as correct</h2>
+<h2 id="fluent-isn-t-the-same-as-correct">Fluent isn't the same as correct</h2>
 <p>Writing about AI-assisted coding, Simon Willison put it this way about code that will be worked on again, not thrown away: &#8220;the quality and understandability of the underlying code is crucial&#8221; (<a href="https://simonwillison.net/2025/Mar/6/vibe-coding/">Vibe coding</a>, 2025). The same holds for a document: an agent's draft that reads smoothly can still get the structure, the numbers or the logic wrong, and fluent prose doesn't announce which parts to check.</p>
 
-<h2>Inference, not compilation</h2>
+<h2 id="inference-not-compilation">Inference, not compilation</h2>
 <p>Birgitta B&#246;ckeler, writing for Thoughtworks, draws the distinction plainly: &#8220;LLMs are NOT compilers, interpreters, transpilers or assemblers of natural language, they are inferrers&#8221; (<a href="https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html">I still care about the code</a>). A compiler either accepts your input or reports an error; an agent can hand back something that runs, or reads, without being right. Somebody still has to check it.</p>
 
-<h2>What MarsDawn gives that reader</h2>
+<h2 id="what-marsdawn-gives-that-reader">What MarsDawn gives that reader</h2>
 <ul>
   <li>The rendered page next to the source, updating as either side changes, so a claim in the text and the way it's structured are both in view at once.</li>
   <li>Mermaid diagrams drawn out: a flowchart an agent described in text becomes a shape you can actually follow.</li>
@@ -87,7 +89,7 @@ try {
   <li>Nothing runs on its own. MarsDawn doesn't grade, summarize or flag the document for you &#8212; it puts the structure in front of you so you can.</li>
 </ul>
 
-<h2>Next</h2>
+<h2 id="next">Next</h2>
 <ul>
   <li>How that review stays cheap for the agent's own context: <a href="/token-efficient-review/">token-efficient review</a>.</li>
   <li>Handing the reviewed document to someone else: <a href="/sharing-exported-pdfs/">sharing a PDF</a>.</li>

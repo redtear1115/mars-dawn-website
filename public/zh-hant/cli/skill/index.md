@@ -2,6 +2,8 @@
 
 這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 安裝 `marsdawn`、確認它能用、把文件匯出成 PDF 並讀懂結果，這樣寫出 Markdown 的 agent，也能把 PDF 交給你。
 
+**一個 Markdown 檔案，放在 `~/.claude/skills/marsdawn/SKILL.md`。**有了它，你的 agent 會安裝 `marsdawn`、輸出 PDF 並讀懂 JSON 結果；執行任何指令之前，它還是會先問你。
+
 ## 在 Claude Code 中安裝
 
 ```

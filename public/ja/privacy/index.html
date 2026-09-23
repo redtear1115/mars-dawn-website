@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
   <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
   <div class="consent-actions">
@@ -63,9 +64,10 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/privacy/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/privacy/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/privacy/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/privacy/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>プライバシーポリシー</h1>
   <p>macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情報を扱うか。</p>
@@ -73,8 +75,23 @@ try {
 </section>
 
 <div class="summary"><p><strong>MarsDawn アプリは、あなたに関するデータを一切収集しません。</strong>アカウントも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。</p></div>
+<nav class="toc" aria-label="このページの内容">
+<p>このページの内容</p>
+<ul>
+  <li><a href="#the-website">このウェブサイト</a></li>
+  <li><a href="#what-stays-on-your-mac">あなたの Mac に残るもの</a></li>
+  <li><a href="#when-marsdawn-uses-the-internet">MarsDawn がインターネットを使うとき</a></li>
+  <li><a href="#siri-shortcuts-and-spotlight">Siri、ショートカット、Spotlight</a></li>
+  <li><a href="#exporting-and-printing">書き出しと印刷</a></li>
+  <li><a href="#the-marsdawn-command-line-tool">marsdawn コマンドラインツール</a></li>
+  <li><a href="#children">子ども</a></li>
+  <li><a href="#purchases">購入</a></li>
+  <li><a href="#changes-to-this-policy">このポリシーの変更</a></li>
+  <li><a href="#contact">お問い合わせ</a></li>
+</ul>
+</nav>
 
-<h2>このウェブサイト</h2>
+<h2 id="the-website">このウェブサイト</h2>
 <p>アプリとこのウェブサイトは別のものです。アプリはデータを収集しません。訪問が記録され得るのは、marsdawn.southern-light.dev だけです。</p>
 <p>このサイトは<strong>Google タグマネージャー</strong>経由で読み込まれる<strong>Google アナリティクス 4</strong>を使用しています。訪問者は最初、分析が拒否された状態で始まります。Google の同意モードは、バナーで「同意する」を選ぶまで、クッキーを使わず持続的な識別子も含まない通信だけを送ります。「同意しない」を選んだ場合、または何も選ばなかった場合も、この状態が続きます。以前に「同意する」を選んでいた場合でも、あとから「同意しない」に変更すると、分析はすぐに無効になり、下記のクッキーも削除されます。いつでもフッターの「Cookie 設定」リンクから選択を変更できます。この選択はブラウザのローカルストレージにのみ保存され、当サイト独自のクッキーではありません。</p>
 <p>同意すると、Google アナリティクスは自身のクッキー（<code>_ga</code> と <code>_ga_&lt;測定 ID&gt;</code>）を設定し、次を記録します。</p>
@@ -89,14 +106,14 @@ try {
   <li><strong>ホスティング。</strong>サイトは Cloudflare 上にあります。どのホストとも同じく、リクエストに応答する間は IP アドレスを見ます。それはホスト自身のログであり、上のアナリティクスではありません。</li>
 </ul>
 
-<h2>あなたの Mac に残るもの</h2>
+<h2 id="what-stays-on-your-mac">あなたの Mac に残るもの</h2>
 <ul>
   <li><strong>あなたの文書。</strong>MarsDawn は、あなたが開いた、保存した、または選んだファイルとフォルダだけを読み書きします。App がそれらをどこかにアップロードすることはありません。</li>
   <li><strong>あなたの設定。</strong>外観、プレビューのテーマ、ウインドウのレイアウト、画像の設定は、あなたの Mac 上にある App 自身の環境設定に保存されます。</li>
   <li><strong>許可したフォルダへのアクセス。</strong>フォルダ内の画像やページファイルを MarsDawn に表示させたり、メモフォルダを選んだりすると、App はそのフォルダを再び開けるように macOS のブックマークを保持します。サイドバーで開いたフォルダは、ウインドウが開いている間だけでなく、設定で削除するまで MarsDawn から読み書き可能な状態が続きます。フォルダはいつでも MarsDawn › 設定で削除できます。</li>
 </ul>
 
-<h2>MarsDawn がインターネットを使うとき</h2>
+<h2 id="when-marsdawn-uses-the-internet">MarsDawn がインターネットを使うとき</h2>
 <p>MarsDawn は完全にオフラインで動作します。インターネットに接続するのは<strong>あなたが選んだときだけ</strong>、ウェブを参照する文書に対してです。</p>
 <ul>
   <li><strong>Markdown 文書。</strong>ウェブ画像はデフォルトでブロックされています。プレビューで<em>イメージを読み込む</em>をクリックするか、設定で<em>リモートイメージを自動的に読み込む</em>をオンにしたときだけ読み込まれます。Markdown 文書が参照するそれ以外のものは、ウェブから読み込まれません。</li>
@@ -106,25 +123,25 @@ try {
 <p>ウェブコンテンツを読み込むとき、あなたの Mac はそれを配信するサーバーへ直接リクエストを送ります。他のウェブリクエストと同様に、これによってそれらのサーバーはあなたの IP アドレスとリクエストされた内容を知ることができます。MarsDawn の開発者はこれらの情報を一切受け取りません。</p>
 <p>プレビュー内でクリックしたリンクは、デフォルトのウェブブラウザで、そのブラウザ自体のプライバシー方針に従って開きます。音声と動画が自動的に再生されることはありません。</p>
 
-<h2>Siri、ショートカット、Spotlight</h2>
+<h2 id="siri-shortcuts-and-spotlight">Siri、ショートカット、Spotlight</h2>
 <p>MarsDawn は Siri、ショートカット App、Spotlight 向けに、文書の作成やメモの追加などのアクションを提供します。これらを使用すると、入力したテキストはあなたの Mac 上の MarsDawn に渡され、そのアクションが指定する場所（新規文書、または選んだメモフォルダ内の <code>Inbox.md</code>）にのみ保存されます。Siri に話した音声は、<a href="https://www.apple.com/legal/privacy/">Apple のプライバシーポリシー</a>のもとで Apple が処理します。</p>
 
-<h2>書き出しと印刷</h2>
+<h2 id="exporting-and-printing">書き出しと印刷</h2>
 <p>PDF の書き出しと印刷は、あなたの Mac 上で行われます。PDF は選んだ場所に保存されます。印刷は macOS を通じて選んだプリンタに送られます。</p>
 
-<h2>marsdawn コマンドラインツール</h2>
+<h2 id="the-marsdawn-command-line-tool">marsdawn コマンドラインツール</h2>
 <p>別途配布される、使うかどうかを選べる <code>marsdawn</code> コマンドラインツールも、完全にあなたの Mac 上で動作します。指定した Markdown ファイルを読み込み、要求された PDF を書き出します。<code>--allow-remote-images</code> を指定したときだけウェブ画像を読み込みます。</p>
 
-<h2>子ども</h2>
+<h2 id="children">子ども</h2>
 <p>MarsDawn アプリは、子どもを含め、誰からもデータを収集しません。ウェブサイトに記録される訪問はアカウントではなく、誰かを識別するためにも使いません。</p>
 
-<h2>購入</h2>
+<h2 id="purchases">購入</h2>
 <p>MarsDawn は Mac App Store を通じて販売されます。購入は Apple 自身の規約のもとで処理され、開発者があなたの支払い情報を受け取ることはありません。</p>
 
-<h2>このポリシーの変更</h2>
+<h2 id="changes-to-this-policy">このポリシーの変更</h2>
 <p>MarsDawn がデータの扱い方を変える場合、そのバージョンがリリースされる前にこのページが更新され、冒頭の日付も変わります。</p>
 
-<h2>お問い合わせ</h2>
+<h2 id="contact">お問い合わせ</h2>
 <p>プライバシーに関するご質問：<a href="mailto:support@southern-light.dev">support@southern-light.dev</a></p>
 </main>
 <footer class="footer">

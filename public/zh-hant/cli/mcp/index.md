@@ -4,6 +4,14 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 
 **挑你的工具支援的那一種：免費的 `marsdawn` CLI、純 Markdown 的 skill 檔案，或是 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 這個 MCP 伺服器。**三者都呼叫同一個 `marsdawn export`，回傳一樣的 JSON 結果。
 
+## 該用哪一個
+
+| 如果你的 agent | 就用 | 需要 |
+|---|---|---|
+| 能執行 shell 指令 | [命令列工具](/zh-hant/cli/agents/) | macOS 15 以上 |
+| 會載入指令檔，例如 Claude Code | [skill 檔案](/zh-hant/cli/skill/) | 命令列工具（skill 會幫你安裝） |
+| 透過 MCP 呼叫工具 | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 以上、marsdawn 0.5.0 以上，以及 Node.js 20 以上 |
+
 ## CLI
 
 `marsdawn export notes.md --json` 可以被任何能執行 shell 指令的 agent 或腳本呼叫，因為是命令列工具，天生就跟模型無關。它回傳的每個欄位都寫在[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)裡，那一頁是 JSON schema 的權威來源，底下另外兩種方式都會連回去。

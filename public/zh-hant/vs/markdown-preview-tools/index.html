@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到內容</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
   <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
   <div class="consent-actions">
@@ -63,27 +64,39 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">即將在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/vs/markdown-preview-tools/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/markdown-preview-tools/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/markdown-preview-tools/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/markdown-preview-tools/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>在別處看 Markdown，對比 MarsDawn。</h1>
   <p>如果你手邊剛好開著 VS Code、瀏覽器或 Claude Desktop，用它們順手看一眼 Markdown 檔案也合理。以下是它們各自實際排版出什麼、要花多少功夫才能看到，和在 MarsDawn 裡打開同一份檔案的比較。</p>
 </section>
 
-<h2>VS Code 內建的預覽</h2>
+<h2 id="at-a-glance">一眼看完</h2>
+<div class="table-scroll"><table class="compare compare-wide">
+<thead><tr><th scope="col"></th><th scope="col">VS Code 預覽</th><th scope="col">瀏覽器擴充功能</th><th scope="col">Claude Desktop</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">開啟磁碟上的 Markdown 檔案</th><td data-label="VS Code 預覽">可以</td><td data-label="瀏覽器擴充功能">可以，但要先允許存取檔案</td><td data-label="Claude Desktop">不行：Markdown 不在可上傳的類型裡</td><td data-label="MarsDawn">可以</td></tr>
+  <tr><th scope="row">開第一個檔案之前</th><td data-label="VS Code 預覽">安裝 VS Code，一整套開發環境</td><td data-label="瀏覽器擴充功能">安裝擴充功能，再打開「允許存取檔案網址」</td><td data-label="Claude Desktop">無法瀏覽磁碟上的檔案</td><td data-label="MarsDawn">安裝 MarsDawn</td></tr>
+  <tr><th scope="row">為什麼而做</th><td data-label="VS Code 預覽">寫程式；預覽只是眾多面板之一</td><td data-label="瀏覽器擴充功能">瀏覽網頁</td><td data-label="Claude Desktop">和 Claude 對話</td><td data-label="MarsDawn">閱讀與編輯 Markdown</td></tr>
+  <tr><th scope="row">用什麼畫出頁面</th><td data-label="VS Code 預覽">Electron：內含 Chromium 和 Node.js</td><td data-label="瀏覽器擴充功能">一整個瀏覽器</td><td data-label="Claude Desktop">Claude Desktop 本身</td><td data-label="MarsDawn">原生的 AppKit app，頁面由 WebKit 繪製</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="vs-code-s-built-in-preview">VS Code 內建的預覽</h2>
 <p>在 VS Code 按 <kbd>&#8984;&#8679;V</kbd>，就會用內建的預覽窗格排版出 Markdown 檔案，免費，不用另外安裝。從 VS Code 1.121（2026 年 5 月）開始，這個預覽也能原生畫出 Mermaid 圖表&#8212;&#8212;微軟把一個 Mermaid 擴充功能併進了 VS Code 本體，以前需要另外裝擴充功能，現在不用了。它做不到的：這是編輯器裡的一個預覽窗格，不是為了閱讀而做的編輯器&#8212;&#8212;窗格旁邊還有檔案樹、終端機和 VS Code 能顯示的其他所有面板，而 VS Code 本身是 Electron app，你裝的是一整套開發環境，不是一個用來讀檔案的工具。</p>
 
-<h2>看本機檔案的瀏覽器擴充功能</h2>
+<h2 id="a-browser-extension-for-local-files">看本機檔案的瀏覽器擴充功能</h2>
 <p>看本機 <code>.md</code> 檔案，沒有哪一個瀏覽器擴充功能是主流：Local Markdown Viewer、Markdown Viewer、MarkView 等等做的事都差不多，沒有哪一個是預設會裝的。每一個都要先做同一件事才能打開任何檔案：把該擴充功能的「允許存取檔案網址」打開，因為瀏覽器預設不讓擴充功能讀取 <code>file://</code> 開頭的頁面。這個權限每個擴充功能只要開一次，但也很容易忘記自己開過，或忘記為什麼要開。開了之後，檔案會顯示在瀏覽器分頁裡&#8212;&#8212;也就是說，看一個檔案要開一整個瀏覽器。</p>
 
-<h2>Claude Desktop 的檔案預覽</h2>
+<h2 id="claude-desktop-s-file-preview">Claude Desktop 的檔案預覽</h2>
 <p>Claude Desktop 顯示的是已經在 Project 或對話裡的檔案。它不是為了瀏覽磁碟上任意檔案而做的&#8212;&#8212;你能看的是對話裡已經有的東西，不是一個可以一直開在旁邊的筆記資料夾。Anthropic 自己列出<a href="https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai">可以上傳的檔案類型</a>是 PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON 和 XLSX，裡面沒有 Markdown。</p>
 
-<h2>為了讀一份檔案，背後跑著一整套瀏覽器引擎</h2>
+<h2 id="a-browser-engine-to-read-one-file">為了讀一份檔案，背後跑著一整套瀏覽器引擎</h2>
 <p>VS Code 是 Electron app：內建一套 Chromium 和 Node.js 執行環境，不是原生的 Mac app。走瀏覽器擴充功能這條路，則是真的在瀏覽器裡執行。不管哪一種，看一份 Markdown 檔案都要有一整套瀏覽器引擎在背後跑。MarsDawn 是原生的 AppKit app：沒有內建的瀏覽器執行環境、直接打開任何本機檔案，不用裝擴充功能，也不用記得開過哪個權限。</p>
 
-<h2>接下來</h2>
+<h2 id="next">接下來</h2>
 <ul>
   <li>MarsDawn 也做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
   <li>今天就能免費把任何 Markdown 檔案轉成 PDF：<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</li>

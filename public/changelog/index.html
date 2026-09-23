@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
   <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
   <div class="consent-actions">
@@ -63,15 +64,16 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/changelog/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/changelog/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/changelog/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/changelog/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Changelog</h1>
   <p>What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.</p>
 </section>
 
-<h2>marsdawn 0.5.1</h2>
+<h2 id="marsdawn-0-5-1">marsdawn 0.5.1</h2>
 <p>19 September 2026. PDF export, and opening a file from the command line.</p>
 <ul>
   <li>The text layer of an exported PDF is repaired for Chinese, Japanese and Korean.</li>

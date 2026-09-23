@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
   <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
   <div class="consent-actions">
@@ -63,9 +64,10 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/token-efficient-review/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/token-efficient-review/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/token-efficient-review/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/token-efficient-review/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Review without spending your agent's tokens.</h1>
   <p>Two separate things stay cheap in this loop: what the agent gets back from calling the tool, and what it takes to confirm the result looks right.</p>
@@ -73,20 +75,20 @@ try {
 
 <div class="summary"><p><strong>The tool call returns a small JSON object, not the rendered page, and the rendered page itself is reviewed by a person in MarsDawn &#8212; never read back into the agent's context.</strong></p></div>
 
-<h2>The tool call itself is cheap</h2>
+<h2 id="the-tool-call-itself-is-cheap">The tool call itself is cheap</h2>
 <p>Call <code>marsdawn export</code> &#8212; from the CLI, the skill, or <a href="/cli/mcp/">the MCP server</a> &#8212; and what comes back is <a href="/cli/agents/">a compact JSON object</a>: <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. The full schema is <a href="/schemas/cli/export.v1.json">export.v1.json</a>. None of that is the rendered document. A 50-page PDF with a dozen Mermaid diagrams returns the same handful of fields as a one-page note.</p>
 
-<h2>Review happens off to the side</h2>
+<h2 id="review-happens-off-to-the-side">Review happens off to the side</h2>
 <p>Once the PDF exists, a person opens it &#8212; in MarsDawn, or any PDF viewer &#8212; and reads the diagrams, the math and the layout rendered. The agent never needs that rendered output read back into its own context window to confirm it looks right: the review happens in a separate window, on a separate screen, not as another round-trip of tokens spent describing what a diagram looks like.</p>
 
-<h2>What this avoids</h2>
+<h2 id="what-this-avoids">What this avoids</h2>
 <ul>
   <li>Pasting rendered Markdown, a screenshot, or a description of one back into the conversation just so the agent can confirm the export worked.</li>
   <li>An agent that has to reconstruct what a Mermaid diagram or a KaTeX formula renders as, rather than a person just looking at it.</li>
   <li>A second tool call to fetch the PDF's contents after the first one already reported success.</li>
 </ul>
 
-<h2>Next</h2>
+<h2 id="next">Next</h2>
 <ul>
   <li>The three ways to call marsdawn &#8212; CLI, skill file, MCP server: <a href="/cli/mcp/">three ways in</a>.</li>
   <li>Every field in the JSON result: <a href="/cli/agents/">marsdawn for agents</a>.</li>

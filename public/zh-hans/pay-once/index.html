@@ -51,6 +51,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到内容</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
   <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
   <div class="consent-actions">
@@ -67,7 +68,7 @@ try {
   <span class="store-chip">即将在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/pay-once/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/pay-once/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/pay-once/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/pay-once/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>先全部试用，再买一次。</h1>
   <p>MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用；试用结束后想继续使用，花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。</p>
@@ -83,15 +84,17 @@ try {
     <ol><li>编辑器的 Markdown 语法高亮，包含在内。</li><li>所有主题和布局都包含在内。</li><li>Mermaid 图表，包含在内。</li><li>代码高亮，包含在内。</li></ol>
   </figcaption>
 </figure>
-<h2>怎么运作</h2>
+<h2 id="how-it-works">怎么运作</h2>
+<ol class="loop-steps">
+  <li><strong>免费下载。</strong> 在 Mac App Store 免费下载 MarsDawn。</li>
+  <li><strong>14 天，全部都能用。</strong> 开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。</li>
+  <li><strong>买一次就解锁。</strong> 试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。</li>
+</ol>
 <ul>
-  <li>在 Mac App Store 免费下载 MarsDawn。</li>
-  <li>开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。</li>
-  <li>试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。</li>
   <li>试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。</li>
   <li>不需要账户，MarsDawn 从不要求你创建账户。</li>
 </ul>
-<h2>如果没有解锁</h2>
+<h2 id="if-you-don-t-unlock">如果没有解锁</h2>
 <ul>
   <li>14 天后，在你解锁之前，无法在 MarsDawn 中阅读、编辑、输出或打印文稿。文稿仍会打开，但内容会被遮住。</li>
   <li>你的文件不会有任何改变。它们就是你 Mac 上的一般文件，在访达中用“快速查看”依然看得到。</li>

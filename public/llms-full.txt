@@ -108,9 +108,10 @@ In this screenshot:
 
 ## How it works
 
-- MarsDawn is free to download from the Mac App Store.
-- Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.
-- To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.
+1. **Download it free.** MarsDawn is free to download from the Mac App Store.
+2. **Try all of it for 14 days.** Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.
+3. **Unlock it once.** To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.
+
 - The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.
 - There is no account. MarsDawn never asks you to create one.
 
@@ -166,9 +167,14 @@ In this screenshot:
 
 ## What that means
 
+### Editing
+
 - Source, split and preview layouts, one keystroke apart (`⌘1`, `⌘2`, `⌘3`).
 - The two panes scroll together, so the paragraph you are editing stays in view.
 - Markdown syntax highlighting in the editor, matched to your preview theme.
+
+### The rest of the Mac
+
 - Native windows, tabs, autosave and version history.
 - Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.
 - Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.
@@ -194,16 +200,24 @@ In this screenshot:
 
 ## Left out
 
+### Devices and people
+
 - **Sync:** MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.
 - **iPhone and iPad:** there is no app for them; MarsDawn is for the Mac.
-- **Plugins:** MarsDawn has no plugins or extensions.
 - **Sharing:** there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.
+- **System:** MarsDawn needs macOS 26 or later.
+
+### Files and features
+
 - **Editing:** you write Markdown on the left and read the page on the right; the page itself can't be edited.
 - **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
-- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet — see [preview themes and PDF export](/themes/) for what's planned.
 - **Other files:** plain text files and PDFs open read-only.
-- **After the trial:** if you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
-- **System:** MarsDawn needs macOS 26 or later.
+- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet; see [preview themes and PDF export](/themes/) for what's planned.
+- **Plugins:** MarsDawn has no plugins or extensions.
+
+## After the trial
+
+If you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
 ---
 
 ## Support
@@ -484,21 +498,25 @@ If your job is strictly reading Markdown someone else wrote, and you never need 
 
 ## What each app does
 
-- **Editing:** MacMD Viewer is read-only by design. MarsDawn edits the source and renders it side by side, so a change shows up as you type.
-- **Preview themes:** MacMD Viewer ships 12 document themes. MarsDawn ships four, Dawn, Classic, Modern and Vivid, each with a light and a dark palette.
-- **Diagrams and math:** both render Mermaid diagrams and highlight code. MarsDawn also renders KaTeX math; MacMD Viewer's own listing doesn't mention math rendering.
-- **Finder integration:** both add a Quick Look extension, so pressing Space on a `.md` file in Finder shows the rendered page.
-- **PDF and print:** both export or print a PDF of the rendered page.
-- **System requirements:** MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.
-- **Languages:** MarsDawn's interface ships in English and Traditional Chinese. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| Editing | Read-only by design | Edits the source, with the rendered page beside it |
+| Preview themes | 12 document themes | 4 themes, each with a light and a dark palette |
+| Diagrams and math | Mermaid and code highlighting; its listing doesn't mention math | Mermaid, code highlighting and KaTeX math |
+| Quick Look in Finder | Yes | Yes |
+| PDF and print | Yes | Yes |
+| Requires | macOS 14 (Sonoma) or later | macOS 26 (Tahoe) or later |
+| Interface languages | Not stated in its own materials | English and Traditional Chinese |
 
 ## Pricing and how you buy it
 
-- **Where you buy it:** MacMD Viewer is a direct download from its own site, also on Homebrew and Setapp; it isn't on the Mac App Store. MarsDawn is Mac App Store only.
-- **Price:** MacMD Viewer is USD 19.99 once for one Mac (a 3-Mac pack and volume packs cost more). MarsDawn is a free download, then a USD 4.99 one-time unlock.
-- **Trying it first:** MacMD Viewer has no free trial; direct purchases carry a 14-day money-back guarantee instead. MarsDawn gives you a 14-day trial before you pay anything.
-- **Refunds and updates:** MacMD Viewer's refunds and updates run through its own site. MarsDawn's purchase goes through Apple, so refunds and updates use Apple's standard process.
-- **Accounts:** neither app needs an account to use.
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| Where you buy it | Its own site, Homebrew or Setapp; not the Mac App Store | The Mac App Store only |
+| Price | USD 19.99 once, for one Mac; multi-Mac packs cost more | Free download, then USD 4.99 once |
+| Trying it first | No trial; a 14-day money-back guarantee on direct purchases | A 14-day free trial |
+| Refunds and updates | Through its own site | Through Apple |
+| Account needed | No | No |
 
 ## Try it today, free
 
@@ -596,12 +614,14 @@ When `--theme` isn't passed, `export` reads the `$MARSDAWN_THEME` environment va
 
 ## Exit codes
 
-- `0`: success.
-- `2`: input not found.
-- `3`: MarsDawn is not installed (`open` only).
-- `4`: output exists (pass `--force`).
-- `5`: export failed.
-- `64`: usage error, including a line out of range or `--line` with more than one file.
+| Code | Means | What to do |
+|---|---|---|
+| `0` | success. | With `--json`, read the one JSON line on stdout |
+| `2` | input not found. | Check the path and the file name |
+| `3` | MarsDawn is not installed (`open` only). | Install the app, or use `export`, which doesn't need it |
+| `4` | output exists (pass `--force`). | Pass `--force` to replace it, or `-o` to write elsewhere |
+| `5` | export failed. | Read `message` in the JSON result |
+| `64` | usage error, including a line out of range or `--line` with more than one file. | Fix the option or value; this error is text on stderr, even with `--json` |
 
 ## --json output
 
@@ -756,6 +776,8 @@ Source: https://marsdawn.southern-light.dev/cli/skill/
 
 This skill is one Markdown file. It teaches a coding agent to install `marsdawn`, check that it works, export a document to PDF and read the result, so the agent that wrote the Markdown can hand you the PDF as well.
 
+**One Markdown file, at `~/.claude/skills/marsdawn/SKILL.md`.** With it your agent installs `marsdawn`, exports to PDF and reads the JSON result, and it still asks before it runs anything.
+
 ## Install it in Claude Code
 
 ```
@@ -792,6 +814,14 @@ Source: https://marsdawn.southern-light.dev/cli/mcp/
 MarsDawn has no AI model of its own: it's built to review Markdown, not write it, so it doesn't matter which agent or model produced the file. There are three ways for an agent or a script to call `marsdawn`, and all three end up running the same `export`.
 
 **Pick whichever your tooling supports: the free `marsdawn` CLI, a plain-Markdown skill file, or the [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) MCP server.** All three call the same `marsdawn export` and return the same JSON result.
+
+## Which one to use
+
+| If your agent | Use | Needs |
+|---|---|---|
+| Can run a shell command | [The CLI](/cli/agents/) | macOS 15 or later |
+| Loads instruction files, like Claude Code | [The skill file](/cli/skill/) | The CLI, which the skill installs |
+| Calls tools over MCP | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 or later, marsdawn 0.5.0 or later, and Node.js 20 or later |
 
 ## The CLI
 
@@ -868,6 +898,15 @@ Source: https://marsdawn.southern-light.dev/vs/markdown-preview-tools/
 
 If you already have VS Code, a browser or Claude Desktop open, reaching for one of them to glance at a Markdown file is reasonable. Here's what each one actually renders, and what it costs to get there, compared with opening the same file in MarsDawn.
 
+## At a glance
+
+|  | VS Code preview | Browser extension | Claude Desktop | MarsDawn |
+|---|---|---|---|---|
+| Opens a Markdown file from disk | Yes | Yes, once file access is allowed | No: Markdown isn't on its upload list | Yes |
+| Before the first file | Install VS Code, a whole development environment | Install an extension, then turn on “Allow access to file URLs” | It can't browse files on disk | Install MarsDawn |
+| Built for | Writing code; the preview is one pane among many | Browsing the web | Conversations with Claude | Reading and editing Markdown |
+| Draws the page with | Electron: a bundled Chromium and Node.js | A full browser | The Claude Desktop app | A native AppKit app; WebKit draws the page |
+
 ## VS Code's built-in preview
 
 Press `⌘⇧V` in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively — Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading — the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app you install as a whole development environment, not something you open to read one file.
@@ -903,6 +942,13 @@ MarsDawn ships four preview themes, Dawn, Classic, Modern and Vivid, each with a
 **Four themes × light and dark = eight ways to read a document, and one export path that matches whichever you chose.** More importable themes, and a gallery to share your own, are planned — not built yet.
 
 ## The four themes
+
+- ![The Dawn theme in split view: Markdown source on the left, the rendered page on the right.](/assets/screens/01-split-800.png) **Dawn, the default**
+- ![The Classic theme, with the preview filling the window.](/assets/screens/02-classic-800.png) **Classic**
+- ![The Vivid theme in split view.](/assets/screens/04-vivid-800.png) **Vivid**
+- ![MarsDawn in dark mode, in split view.](/assets/screens/03-dark-800.png) **Dark mode**
+
+Modern isn't pictured yet; the fourth shot shows dark mode instead.
 
 - **Dawn**, the default: the same warm paper and Mars Rust accent this site is built from.
 - **Classic**: a plainer, document-like palette.
@@ -1119,9 +1165,10 @@ MarsDawn 可以免費下載。開始 14 天試用後，所有功能都能使用�
 
 ## 怎麼運作
 
-- 在 Mac App Store 免費下載 MarsDawn。
-- 開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。
-- 試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。
+1. **免費下載。** 在 Mac App Store 免費下載 MarsDawn。
+2. **14 天，全部都能用。** 開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。
+3. **買一次就解鎖。** 試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。
+
 - 試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。
 - 不需要帳號，MarsDawn 從不要求你建立帳號。
 
@@ -1177,9 +1224,14 @@ Source: https://marsdawn.southern-light.dev/zh-hant/native/
 
 ## 這代表什麼
 
+### 編輯
+
 - 原始碼、並排、預覽三種版面，一個快捷鍵切換（`⌘1`、`⌘2`、`⌘3`）。
 - 兩側同步捲動，正在編輯的段落一直在眼前。
 - 編輯器內建 Markdown 語法上色，顏色與預覽主題一致。
+
+### 和 Mac 的其他部分
+
 - 原生視窗、分頁、自動儲存和版本記錄。
 - 快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。
 - Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。
@@ -1205,16 +1257,24 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 
 ## 刻意不做的
 
+### 裝置與使用的人
+
 - **同步：**MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。
 - **iPhone 和 iPad：**沒有這兩個平台的版本，MarsDawn 只給 Mac。
-- **外掛：**MarsDawn 沒有外掛或擴充功能。
 - **分享：**沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。
+- **系統：**MarsDawn 需要 macOS 26 以上。
+
+### 檔案與功能
+
 - **編輯：**你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。
 - **格式：**MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。
-- **主題：**內建 黎明、典雅、流行和活潑，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看[預覽主題與 PDF 輸出](/zh-hant/themes/)。
 - **其他檔案：**純文字檔和 PDF 以唯讀方式開啟。
-- **試用結束後：**如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。
-- **系統：**MarsDawn 需要 macOS 26 以上。
+- **主題：**內建 黎明、典雅、流行和活潑，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看[預覽主題與 PDF 輸出](/zh-hant/themes/)。
+- **外掛：**MarsDawn 沒有外掛或擴充功能。
+
+## 試用結束之後
+
+如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。
 ---
 
 ## 支援
@@ -1495,21 +1555,25 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/
 
 ## 各自能做什麼
 
-- **編輯：**MacMD Viewer 設計上就是唯讀。MarsDawn 邊編輯原始碼邊在旁邊排版，打字的同時就看得到改動。
-- **預覽主題：**MacMD Viewer 內建 12 種文件主題。MarsDawn 有四種：黎明、典雅、流行和活潑，各有淺色與深色。
-- **圖表與數學式：**兩者都能畫出 Mermaid 圖表、也都有程式碼上色。MarsDawn 還能排版 KaTeX 數學式；MacMD Viewer 自己的介紹頁沒有提到數學式排版。
-- **Finder 整合：**兩者都有 Finder 的快速查看擴充功能，對 `.md` 檔案按空白鍵就能看到排好版的頁面。
-- **PDF 與列印：**兩者都能把排好版的頁面輸出或列印成 PDF。
-- **系統需求：**MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。
-- **語言：**MarsDawn 的介面有英文和繁體中文。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| 編輯 | 設計上就是唯讀 | 編輯原始碼，排版後的頁面就在旁邊 |
+| 預覽主題 | 12 種文件主題 | 4 種，各有淺色與深色 |
+| 圖表與數學式 | Mermaid 與程式碼上色；介紹頁沒有提到數學式 | Mermaid、程式碼上色與 KaTeX 數學式 |
+| Finder 快速查看 | 有 | 有 |
+| PDF 與列印 | 有 | 有 |
+| 系統需求 | macOS 14（Sonoma）以上 | macOS 26（Tahoe）以上 |
+| 介面語言 | 自己的資料沒有寫出 | 英文和繁體中文 |
 
 ## 價格與購買方式
 
-- **從哪裡買：**MacMD Viewer 從自己的網站直接下載，也上架 Homebrew 和 Setapp，但不在 Mac App Store 上；MarsDawn 只在 Mac App Store 上架。
-- **價格：**MacMD Viewer 一台 Mac 一次 USD 19.99（三台的組合包和大量授權更貴）。MarsDawn 免費下載，之後以 USD 4.99 一次解鎖。
-- **先試用：**MacMD Viewer 沒有免費試用，直接購買改用 14 天內可退款的保證。MarsDawn 在你付費之前，先給你 14 天的試用。
-- **退款與更新：**MacMD Viewer 的退款和更新都在它自己的網站上處理。MarsDawn 透過 Apple 購買，退款和更新都走 Apple 的標準流程。
-- **帳號：**兩者都不需要帳號就能使用。
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| 從哪裡買 | 自己的網站、Homebrew 或 Setapp；不在 Mac App Store | 只在 Mac App Store |
+| 價格 | 一台 Mac 一次 USD 19.99；多台的組合包更貴 | 免費下載，之後一次 USD 4.99 |
+| 先試用 | 沒有試用；直接購買 14 天內可退款 | 14 天免費試用 |
+| 退款與更新 | 透過它自己的網站 | 透過 Apple |
+| 需要帳號 | 不用 | 不用 |
 
 ## 現在就能免費試試看
 
@@ -1607,12 +1671,14 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 
 ## 結束代碼
 
-- `0`：成功。
-- `2`：找不到輸入檔。
-- `3`：尚未安裝 MarsDawn（只有 `open` 會用到）。
-- `4`：輸出檔已存在（可加上 `--force`）。
-- `5`：輸出失敗。
-- `64`：使用方式錯誤，包括行號超出範圍，或 `--line` 搭配了多個檔案。
+| 代碼 | 意思 | 怎麼處理 |
+|---|---|---|
+| `0` | 成功。 | 加了 `--json` 時，讀 stdout 上的那一行 JSON |
+| `2` | 找不到輸入檔。 | 檢查路徑和檔名 |
+| `3` | 尚未安裝 MarsDawn（只有 `open` 會用到）。 | 安裝 app，或改用不需要 app 的 `export` |
+| `4` | 輸出檔已存在（可加上 `--force`）。 | 加上 `--force` 覆寫，或用 `-o` 寫到別處 |
+| `5` | 輸出失敗。 | 讀 JSON 結果裡的 `message` |
+| `64` | 使用方式錯誤，包括行號超出範圍，或 `--line` 搭配了多個檔案。 | 修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 `--json` 也一樣 |
 
 ## --json 輸出
 
@@ -1767,6 +1833,8 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/skill/
 
 這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 安裝 `marsdawn`、確認它能用、把文件匯出成 PDF 並讀懂結果，這樣寫出 Markdown 的 agent，也能把 PDF 交給你。
 
+**一個 Markdown 檔案，放在 `~/.claude/skills/marsdawn/SKILL.md`。**有了它，你的 agent 會安裝 `marsdawn`、輸出 PDF 並讀懂 JSON 結果；執行任何指令之前，它還是會先問你。
+
 ## 在 Claude Code 中安裝
 
 ```
@@ -1803,6 +1871,14 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/mcp/
 MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不是用來寫的，所以是哪個 agent 或模型寫出這份 Markdown 並不重要。agent 或腳本呼叫 `marsdawn` 有三種方式，最後都會執行同一個 `export`。
 
 **挑你的工具支援的那一種：免費的 `marsdawn` CLI、純 Markdown 的 skill 檔案，或是 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 這個 MCP 伺服器。**三者都呼叫同一個 `marsdawn export`，回傳一樣的 JSON 結果。
+
+## 該用哪一個
+
+| 如果你的 agent | 就用 | 需要 |
+|---|---|---|
+| 能執行 shell 指令 | [命令列工具](/zh-hant/cli/agents/) | macOS 15 以上 |
+| 會載入指令檔，例如 Claude Code | [skill 檔案](/zh-hant/cli/skill/) | 命令列工具（skill 會幫你安裝） |
+| 透過 MCP 呼叫工具 | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 以上、marsdawn 0.5.0 以上，以及 Node.js 20 以上 |
 
 ## CLI
 
@@ -1879,6 +1955,15 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/
 
 如果你手邊剛好開著 VS Code、瀏覽器或 Claude Desktop，用它們順手看一眼 Markdown 檔案也合理。以下是它們各自實際排版出什麼、要花多少功夫才能看到，和在 MarsDawn 裡打開同一份檔案的比較。
 
+## 一眼看完
+
+|  | VS Code 預覽 | 瀏覽器擴充功能 | Claude Desktop | MarsDawn |
+|---|---|---|---|---|
+| 開啟磁碟上的 Markdown 檔案 | 可以 | 可以，但要先允許存取檔案 | 不行：Markdown 不在可上傳的類型裡 | 可以 |
+| 開第一個檔案之前 | 安裝 VS Code，一整套開發環境 | 安裝擴充功能，再打開「允許存取檔案網址」 | 無法瀏覽磁碟上的檔案 | 安裝 MarsDawn |
+| 為什麼而做 | 寫程式；預覽只是眾多面板之一 | 瀏覽網頁 | 和 Claude 對話 | 閱讀與編輯 Markdown |
+| 用什麼畫出頁面 | Electron：內含 Chromium 和 Node.js | 一整個瀏覽器 | Claude Desktop 本身 | 原生的 AppKit app，頁面由 WebKit 繪製 |
+
 ## VS Code 內建的預覽
 
 在 VS Code 按 `⌘⇧V`，就會用內建的預覽窗格排版出 Markdown 檔案，免費，不用另外安裝。從 VS Code 1.121（2026 年 5 月）開始，這個預覽也能原生畫出 Mermaid 圖表——微軟把一個 Mermaid 擴充功能併進了 VS Code 本體，以前需要另外裝擴充功能，現在不用了。它做不到的：這是編輯器裡的一個預覽窗格，不是為了閱讀而做的編輯器——窗格旁邊還有檔案樹、終端機和 VS Code 能顯示的其他所有面板，而 VS Code 本身是 Electron app，你裝的是一整套開發環境，不是一個用來讀檔案的工具。
@@ -1914,6 +1999,13 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 **四種主題 × 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。**更多可匯入的主題，還有讓大家投稿主題的主題庫，都還在規劃中，尚未推出。
 
 ## 四種主題
+
+- ![黎明主題的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](/assets/screens/01-split-800.png) **黎明（預設）**
+- ![典雅主題，預覽佔滿整個視窗。](/assets/screens/02-classic-800.png) **典雅**
+- ![活潑主題的並排版面。](/assets/screens/04-vivid-800.png) **活潑**
+- ![MarsDawn 的深色模式，並排版面。](/assets/screens/03-dark-800.png) **深色模式**
+
+流行主題還沒有截圖；第四張是深色模式。
 
 - **黎明**，預設主題：和這個網站一樣的暖色紙感與 Mars Rust 強調色。
 - **典雅**：比較樸素、像紙本文件的配色。
@@ -2130,9 +2222,10 @@ MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用�
 
 ## 怎么运作
 
-- 在 Mac App Store 免费下载 MarsDawn。
-- 开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。
-- 试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。
+1. **免费下载。** 在 Mac App Store 免费下载 MarsDawn。
+2. **14 天，全部都能用。** 开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。
+3. **买一次就解锁。** 试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。
+
 - 试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。
 - 不需要账户，MarsDawn 从不要求你创建账户。
 
@@ -2188,9 +2281,14 @@ Source: https://marsdawn.southern-light.dev/zh-hans/native/
 
 ## 这代表什么
 
+### 编辑
+
 - 源代码、并排、预览三种布局，一个快捷键切换（`⌘1`、`⌘2`、`⌘3`）。
 - 两侧同步滚动，正在编辑的段落一直在眼前。
 - 编辑器内置 Markdown 语法高亮，颜色与预览主题一致。
+
+### 和 Mac 的其他部分
+
 - 原生窗口、标签页、自动保存和版本记录。
 - 快速查看：在访达选取 Markdown 文件按空格键就能预览，图表也会显示。
 - Siri 和快捷指令：用模板添加文稿、在笔记收件箱加上一行，或重新打开最近的文稿。
@@ -2216,16 +2314,24 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 
 ## 刻意不做的
 
+### 设备与使用的人
+
 - **同步：**MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。
 - **iPhone 和 iPad：**没有这两个平台的版本，MarsDawn 只给 Mac。
-- **插件：**MarsDawn 没有插件或扩展功能。
 - **分享：**没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。
+- **系统：**MarsDawn 需要 macOS 26 以上。
+
+### 文件与功能
+
 - **编辑：**你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。
 - **格式：**MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。
-- **主题：**内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。
 - **其他文件：**纯文本文件和 PDF 以只读方式打开。
-- **试用结束后：**如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。
-- **系统：**MarsDawn 需要 macOS 26 以上。
+- **主题：**内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。
+- **插件：**MarsDawn 没有插件或扩展功能。
+
+## 试用结束之后
+
+如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。
 ---
 
 ## 支持
@@ -2503,21 +2609,25 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 
 ## 各自能做什么
 
-- **编辑：**MacMD Viewer 设计上就是只读。MarsDawn 边编辑源代码边在旁边排版，打字的同时就看得到改动。
-- **预览主题：**MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：黎明、典雅、流行和活泼，各有浅色与深色。
-- **图表与数学公式：**两者都能画出 Mermaid 图表、也都有代码高亮。MarsDawn 还能排版 KaTeX 数学公式；MacMD Viewer 自己的介绍页没有提到数学公式排版。
-- **访达集成：**两者都有访达的快速查看扩展功能，对 `.md` 文件按空格键就能看到排好版的页面。
-- **PDF 与打印：**两者都能把排好版的页面输出或打印成 PDF。
-- **系统需求：**MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。
-- **语言：**MarsDawn 的界面有英文和繁体中文。MacMD Viewer 自己的资料没有写出界面语言，这页就不比较这一项。
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| 编辑 | 设计上就是只读 | 编辑源代码，排版后的页面就在旁边 |
+| 预览主题 | 12 种文档主题 | 4 种，各有浅色与深色 |
+| 图表与数学公式 | Mermaid 与代码高亮；介绍页没有提到数学公式 | Mermaid、代码高亮与 KaTeX 数学公式 |
+| 访达快速查看 | 有 | 有 |
+| PDF 与打印 | 有 | 有 |
+| 系统要求 | macOS 14（Sonoma）或更高版本 | macOS 26（Tahoe）或更高版本 |
+| 界面语言 | 自己的资料没有写明 | 英文和繁体中文 |
 
 ## 价格与购买方式
 
-- **从哪里买：**MacMD Viewer 从自己的网站直接下载，也上架 Homebrew 和 Setapp，但不在 Mac App Store 上；MarsDawn 只在 Mac App Store 上架。
-- **价格：**MacMD Viewer 一台 Mac 一次 USD 19.99（三台的组合包和批量授权更贵）。MarsDawn 免费下载，之后以 USD 4.99 一次解锁。
-- **先试用：**MacMD Viewer 没有免费试用，直接购买改用 14 天内可退款的保证。MarsDawn 在你付费之前，先给你 14 天的试用。
-- **退款与更新：**MacMD Viewer 的退款和更新都在它自己的网站上处理。MarsDawn 通过 Apple 购买，退款和更新都走 Apple 的标准流程。
-- **账户：**两者都不需要账户就能使用。
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| 从哪里买 | 官网、Homebrew 或 Setapp；不在 Mac App Store | 只在 Mac App Store |
+| 价格 | 一台 Mac 一次 USD 19.99；多台的组合包更贵 | 免费下载，之后一次 USD 4.99 |
+| 先试用 | 没有试用；直接购买 14 天内可退款 | 14 天免费试用 |
+| 退款与更新 | 通过它自己的网站 | 通过 Apple |
+| 需要账号 | 不需要 | 不需要 |
 
 ## 现在就能免费试试看
 
@@ -2614,12 +2724,14 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 
 ## 退出代码
 
-- `0`：成功。
-- `2`：找不到输入文件。
-- `3`：尚未安装 MarsDawn（只有 `open` 会用到）。
-- `4`：输出文件已存在（可加上 `--force`）。
-- `5`：输出失败。
-- `64`：使用方式错误，包括行号超出范围，或 `--line` 搭配了多个文件。
+| 代码 | 意思 | 怎么处理 |
+|---|---|---|
+| `0` | 成功。 | 加了 `--json` 时，读 stdout 上的那一行 JSON |
+| `2` | 找不到输入文件。 | 检查路径和文件名 |
+| `3` | 尚未安装 MarsDawn（只有 `open` 会用到）。 | 安装 app，或改用不需要 app 的 `export` |
+| `4` | 输出文件已存在（可加上 `--force`）。 | 加上 `--force` 覆盖，或用 `-o` 写到别处 |
+| `5` | 输出失败。 | 读 JSON 结果里的 `message` |
+| `64` | 使用方式错误，包括行号超出范围，或 `--line` 搭配了多个文件。 | 修正选项或值；这种错误以文本输出到 stderr，即使加了 `--json` 也一样 |
 
 ## --json 输出
 
@@ -2768,6 +2880,8 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/skill/
 
 这个 skill 是一个 Markdown 文件。它教写程序的 agent 安装 `marsdawn`、确认它能用、把文稿导出成 PDF 并读懂结果，这样写出 Markdown 的 agent，也能把 PDF 交给你。
 
+**一个 Markdown 文件，放在 `~/.claude/skills/marsdawn/SKILL.md`。**有了它，你的 agent 会安装 `marsdawn`、导出 PDF 并读懂 JSON 结果；运行任何命令之前，它还是会先问你。
+
 ## 在 Claude Code 中安装
 
 ```
@@ -2804,6 +2918,14 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/mcp/
 MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不是用来写的，所以是哪个 agent 或模型写出这份 Markdown 并不重要。agent 或脚本调用 `marsdawn` 有三种方式，最后都会运行同一个 `export`。
 
 **挑你的工具支持的那一种：免费的 `marsdawn` CLI、纯 Markdown 的 skill 文件，或是 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 这个 MCP 服务器。**三者都调用同一个 `marsdawn export`，返回一样的 JSON 结果。
+
+## 该用哪一个
+
+| 如果你的 agent | 就用 | 需要 |
+|---|---|---|
+| 能运行 shell 命令 | [命令行工具](/zh-hans/cli/agents/) | macOS 15 或更高版本 |
+| 会加载指令文件，例如 Claude Code | [skill 文件](/zh-hans/cli/skill/) | 命令行工具（skill 会帮你安装） |
+| 通过 MCP 调用工具 | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 或更高版本、marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本 |
 
 ## CLI
 
@@ -2880,6 +3002,15 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/markdown-preview-tools/
 
 如果你手边刚好开着 VS Code、浏览器或 Claude Desktop，用它们顺手看一眼 Markdown 文件也合理。以下是它们各自实际排版出什么、要花多少功夫才能看到，和在 MarsDawn 里打开同一份文件的比较。
 
+## 一眼看完
+
+|  | VS Code 预览 | 浏览器扩展 | Claude Desktop | MarsDawn |
+|---|---|---|---|---|
+| 打开磁盘上的 Markdown 文件 | 可以 | 可以，但要先允许访问文件 | 不行：Markdown 不在可上传的类型里 | 可以 |
+| 打开第一个文件之前 | 安装 VS Code，一整套开发环境 | 安装扩展，再打开“允许访问文件网址” | 无法浏览磁盘上的文件 | 安装 MarsDawn |
+| 为什么而做 | 写代码；预览只是众多面板之一 | 浏览网页 | 和 Claude 对话 | 阅读与编辑 Markdown |
+| 用什么画出页面 | Electron：内含 Chromium 和 Node.js | 一整个浏览器 | Claude Desktop 本身 | 原生的 AppKit app，页面由 WebKit 绘制 |
+
 ## VS Code 内置的预览
 
 在 VS Code 按 `⌘⇧V`，就会用内置的预览窗格排版出 Markdown 文件，免费，不用另外安装。从 VS Code 1.121（2026 年 5 月）开始，这个预览也能原生画出 Mermaid 图表——微软把一个 Mermaid 扩展并进了 VS Code 本体，以前需要另外装扩展，现在不用了。它做不到的：这是编辑器里的一个预览窗格，不是为了阅读而做的编辑器——窗格旁边还有文件树、终端和 VS Code 能显示的其他所有面板，而 VS Code 本身是 Electron app，你装的是一整套开发环境，不是一个用来读文件的工具。
@@ -2915,6 +3046,13 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 **四种主题 × 浅色与深色＝八种读文稿的方式，导出时用的正是你选的那一种。**更多可导入的主题，还有让大家投稿主题的主题库，都还在规划中，尚未推出。
 
 ## 四种主题
+
+- ![黎明主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。](/assets/screens/01-split-800.png) **黎明（默认）**
+- ![典雅主题，预览占满整个窗口。](/assets/screens/02-classic-800.png) **典雅**
+- ![活泼主题的并排版面。](/assets/screens/04-vivid-800.png) **活泼**
+- ![MarsDawn 的深色模式，并排版面。](/assets/screens/03-dark-800.png) **深色模式**
+
+流行主题还没有截图；第四张是深色模式。
 
 - **黎明**，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。
 - **典雅**：比较朴素、像纸质文稿的配色。
@@ -3131,9 +3269,10 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 
 ## 仕組み
 
-- MarsDawn は Mac App Store から無料でダウンロードできます。
-- トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。
-- その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。
+1. **無料でダウンロード。** MarsDawn は Mac App Store から無料でダウンロードできます。
+2. **14 日間、すべて使える。** トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。
+3. **一度の購入で解除。** その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。
+
 - トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。
 - アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。
 
@@ -3189,9 +3328,14 @@ Source: https://marsdawn.southern-light.dev/ja/native/
 
 ## それが意味すること
 
+### 編集
+
 - ソース、分割、プレビューの3つのレイアウトを、キー1つで切り替え（`⌘1`、`⌘2`、`⌘3`）。
 - 2つのペインは一緒にスクロールするので、編集中の段落が常に見えています。
 - エディタの Markdown シンタックスハイライトは、プレビューのテーマに合わせられます。
+
+### Mac のほかの部分と
+
 - ネイティブなウインドウ、タブ、自動保存、バージョン履歴。
 - クイックルック：Finder で Markdown ファイルを選んでスペースキーを押すとプレビューでき、図も表示されます。
 - Siri とショートカット：テンプレートから新しい文書を作成する、メモの受信トレイに1行追加する、最近使った文書を再度開く、といった操作ができます。
@@ -3217,16 +3361,24 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 
 ## 省かれているもの
 
+### デバイスと使う人
+
 - **同期：**MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。
 - **iPhone と iPad：**これらの端末向けアプリはありません。MarsDawn は Mac 専用です。
-- **プラグイン：**MarsDawn にプラグインや拡張機能はありません。
 - **共有：**アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。
+- **システム：**MarsDawn には macOS 26 以降が必要です。
+
+### ファイルと機能
+
 - **編集：**左に Markdown を書き、右でページを読みます。ページ自体は編集できません。
 - **形式：**MarsDawn は PDF の書き出しと印刷に対応していますが、Word ファイルへの書き出しはできません。
-- **テーマ：**夜明け、クラシック、モダン、ビビッド の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。
 - **その他のファイル：**プレーンテキストファイルと PDF は読み取り専用で開きます。
-- **トライアル終了後：**14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。
-- **システム：**MarsDawn には macOS 26 以降が必要です。
+- **テーマ：**夜明け、クラシック、モダン、ビビッド の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。
+- **プラグイン：**MarsDawn にプラグインや拡張機能はありません。
+
+## 試用期間が終わったら
+
+14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。
 ---
 
 ## サポート
@@ -3504,21 +3656,25 @@ Source: https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/
 
 ## それぞれのアプリでできること
 
-- **編集：**MacMD Viewer は設計上、読み取り専用です。MarsDawn はソースを編集しながらその場でレンダリングするので、入力すると変更が表示されます。
-- **プレビューのテーマ：**MacMD Viewer には12種類の文書テーマがあります。MarsDawn は 夜明け、クラシック、モダン、ビビッド の4種類で、それぞれライトとダークのパレットがあります。
-- **図と数式：**どちらも Mermaid 図をレンダリングし、コードをハイライトします。MarsDawn は KaTeX の数式もレンダリングしますが、MacMD Viewer 自身の紹介には数式のレンダリングについて記載がありません。
-- **Finder 連携：**どちらもクイックルック拡張機能を追加しており、Finder で `.md` ファイルを選んでスペースキーを押すとレンダリングされたページが表示されます。
-- **PDF と印刷：**どちらもレンダリングされたページを PDF として書き出したり印刷したりできます。
-- **システム要件：**MacMD Viewer は macOS 14（Sonoma）以降が必要です。MarsDawn は macOS 26（Tahoe）以降が必要です。
-- **言語：**MarsDawn のインターフェースは英語と繁体字中国語に対応しています。MacMD Viewer 自身の資料は UI の言語を明記していないため、このページではその点を比較していません。
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| 編集 | 設計上、読み取り専用 | ソースを編集し、その隣にレンダリングされたページ |
+| プレビューテーマ | 12 種類のドキュメントテーマ | 4 種類、それぞれにライトとダーク |
+| 図と数式 | Mermaid とコードのハイライト。数式の表示は紹介ページに記載なし | Mermaid、コードのハイライト、KaTeX の数式 |
+| Finder のクイックルック | あり | あり |
+| PDF と印刷 | あり | あり |
+| 動作環境 | macOS 14（Sonoma）以降 | macOS 26（Tahoe）以降 |
+| インターフェイスの言語 | 公式の資料に記載なし | 英語と繁体字中国語 |
 
 ## 価格と購入方法
 
-- **購入場所：**MacMD Viewer は自社サイトから直接ダウンロードでき、Homebrew と Setapp にもありますが、Mac App Store にはありません。MarsDawn は Mac App Store のみです。
-- **価格：**MacMD Viewer は1台の Mac につき一度きり USD 19.99（3台パックやボリュームパックはより高額）。MarsDawn は無料でダウンロードでき、その後 USD 4.99 の一度きりのロック解除です。
-- **先に試す：**MacMD Viewer には無料トライアルはなく、直接購入には代わりに14日間の返金保証が付いています。MarsDawn は支払う前に14日間のトライアルを提供します。
-- **返金と更新：**MacMD Viewer の返金と更新は自社サイトで処理されます。MarsDawn の購入は Apple を通じて行われるため、返金と更新は Apple の標準プロセスを使います。
-- **アカウント：**どちらのアプリも利用にアカウントは不要です。
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| 購入場所 | 公式サイト、Homebrew、Setapp。Mac App Store にはない | Mac App Store のみ |
+| 価格 | Mac 1 台につき USD 19.99 を一度。複数台のパックはより高額 | 無料ダウンロード、その後 USD 4.99 を一度 |
+| 購入前に試す | 試用なし。直接購入には 14 日間の返金保証 | 14 日間の無料試用 |
+| 返金とアップデート | 公式サイト経由 | Apple 経由 |
+| アカウント | 不要 | 不要 |
 
 ## 今すぐ無料で試す
 
@@ -3615,12 +3771,14 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 
 ## 終了コード
 
-- `0`：成功。
-- `2`：入力が見つからない。
-- `3`：MarsDawn がインストールされていない（`open` のみ）。
-- `4`：出力先がすでに存在する（`--force` を指定してください）。
-- `5`：書き出しに失敗。
-- `64`：使用方法のエラー。範囲外の行や、複数ファイルに対する `--line` の指定などを含みます。
+| コード | 意味 | 対処 |
+|---|---|---|
+| `0` | 成功。 | `--json` を付けた場合は、stdout の1行の JSON を読む |
+| `2` | 入力が見つからない。 | パスとファイル名を確認する |
+| `3` | MarsDawn がインストールされていない（`open` のみ）。 | アプリをインストールするか、アプリが不要な `export` を使う |
+| `4` | 出力先がすでに存在する（`--force` を指定してください）。 | `--force` で上書きするか、`-o` で別の場所に書き出す |
+| `5` | 書き出しに失敗。 | JSON の結果の `message` を読む |
+| `64` | 使用方法のエラー。範囲外の行や、複数ファイルに対する `--line` の指定などを含みます。 | オプションや値を直す。このエラーは `--json` を付けても stderr にテキストで出力される |
 
 ## --json 出力
 
@@ -3769,6 +3927,8 @@ Source: https://marsdawn.southern-light.dev/ja/cli/skill/
 
 このスキルは1つの Markdown ファイルです。コーディングエージェントに `marsdawn` のインストール方法、動作確認の方法、文書を PDF に書き出す方法、結果の読み方を教えます。これにより、Markdown を書いたエージェントが PDF もあなたに渡せるようになります。
 
+**1つの Markdown ファイルを `~/.claude/skills/marsdawn/SKILL.md` に置くだけ。**これでエージェントが `marsdawn` をインストールし、PDF に書き出し、JSON の結果を読みます。何かを実行する前には、これまでどおり確認を求めます。
+
 ## Claude Code にインストールする
 
 ```
@@ -3805,6 +3965,14 @@ Source: https://marsdawn.southern-light.dev/ja/cli/mcp/
 MarsDawn には自前の AI モデルがありません。Markdown を書くためではなく、レビューするために作られているので、どのエージェントやモデルがそのファイルを作ったかは関係ありません。エージェントやスクリプトが `marsdawn` を呼び出す方法は三つあり、どれも最終的に同じ `export` を実行します。
 
 **使っているツールが対応しているものを選んでください：無料の `marsdawn` CLI、プレーンな Markdown の skill ファイル、または [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) という MCP サーバーです。**三つとも同じ `marsdawn export` を呼び出し、同じ JSON 結果を返します。
+
+## どれを使うか
+
+| エージェントが | 使うもの | 必要なもの |
+|---|---|---|
+| シェルコマンドを実行できる | [CLI](/ja/cli/agents/) | macOS 15 以降 |
+| Claude Code のように指示ファイルを読み込む | [スキルファイル](/ja/cli/skill/) | CLI（スキルがインストールします） |
+| MCP でツールを呼び出す | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 以降、marsdawn 0.5.0 以降、Node.js 20 以降 |
 
 ## CLI
 
@@ -3881,6 +4049,15 @@ Source: https://marsdawn.southern-light.dev/ja/vs/markdown-preview-tools/
 
 すでに VS Code やブラウザ、Claude Desktop を開いているなら、それらで Markdown ファイルをちらっと見るのは妥当な選択です。それぞれが実際に何をレンダリングし、そこにたどり着くのに何が必要か、MarsDawn で同じファイルを開いた場合と比較してみます。
 
+## ひと目で比較
+
+|  | VS Code のプレビュー | ブラウザ拡張機能 | Claude Desktop | MarsDawn |
+|---|---|---|---|---|
+| ディスク上の Markdown ファイルを開く | 開ける | 開ける（ファイルへのアクセスを許可したあと） | 開けない：Markdown はアップロードできる形式にない | 開ける |
+| 最初のファイルを開く前に | VS Code という開発環境一式をインストール | 拡張機能を入れ、「ファイルの URL へのアクセスを許可」をオン | ディスク上のファイルを参照できない | MarsDawn をインストール |
+| 何のためのものか | コードを書くため。プレビューは多くのパネルの1つ | Web を見るため | Claude との会話のため | Markdown を読み、編集するため |
+| ページを描くもの | Electron：同梱の Chromium と Node.js | ブラウザ全体 | Claude Desktop アプリ | ネイティブの AppKit アプリ。ページは WebKit が描画 |
+
 ## VS Code の内蔵プレビュー
 
 VS Code で `⌘⇧V` を押すと、内蔵のプレビューパネルで Markdown ファイルがレンダリングされます。無料で、インストールするものもありません。VS Code 1.121（2026年5月）以降、このプレビューは Mermaid 図もネイティブに描画します。Microsoft が Mermaid 拡張機能を VS Code 本体に組み込んだためで、以前は別の拡張機能が必要でしたが、今は不要です。できないこと：これはエディタの中のプレビューパネルであって、読むために作られたエディタではありません。パネルの隣にはファイルツリー、ターミナル、VS Code が表示できるその他のパネルが並び、VS Code 自体も Electron アプリで、インストールするのは開発環境一式であって、1つのファイルを読むために開くものではありません。
@@ -3916,6 +4093,13 @@ MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種�
 **4つのテーマ × ライトとダーク＝文書を読む8つの方法があり、書き出しはどれを選んでいても対応します。**もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーは計画中で、まだ作られていません。
 
 ## 4種類のテーマ
+
+- ![夜明けテーマの分割表示：左に Markdown のソース、右にレンダリングされたページ。](/assets/screens/01-split-800.png) **夜明け（デフォルト）**
+- ![クラシックテーマ。プレビューがウインドウ全体に表示されています。](/assets/screens/02-classic-800.png) **クラシック**
+- ![ビビッドテーマの分割表示。](/assets/screens/04-vivid-800.png) **ビビッド**
+- ![ダークモードの MarsDawn、分割表示。](/assets/screens/03-dark-800.png) **ダークモード**
+
+モダンのスクリーンショットはまだありません。4枚目はダークモードです。
 
 - **夜明け**、デフォルト：このサイトと同じ、温かみのある紙の質感と Mars Rust のアクセントカラー。
 - **クラシック**：より素朴で、紙の文書らしい配色。

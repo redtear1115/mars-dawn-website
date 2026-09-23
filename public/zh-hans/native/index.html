@@ -51,6 +51,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到内容</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
   <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
   <div class="consent-actions">
@@ -67,7 +68,7 @@ try {
   <span class="store-chip">即将在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/native/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/native/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/native/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/native/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>用 Mac 原生的组件做的。</h1>
   <p>窗口、标签页、菜单和文本编辑器都是 Mac 原生的。排版后的页面由 Safari 使用的 WebKit 引擎绘制。</p>
@@ -83,11 +84,15 @@ try {
     <ol><li>原生的 Mac 窗口。</li><li>Mac 原生的文本编辑器，附 Markdown 语法高亮。</li><li>⌘1 源代码、⌘2 并排、⌘3 预览。</li><li>页面会随着打字更新。</li></ol>
   </figcaption>
 </figure>
-<h2>这代表什么</h2>
+<h2 id="what-that-means">这代表什么</h2>
+<h3>编辑</h3>
 <ul>
   <li>源代码、并排、预览三种布局，一个快捷键切换（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
   <li>两侧同步滚动，正在编辑的段落一直在眼前。</li>
   <li>编辑器内置 Markdown 语法高亮，颜色与预览主题一致。</li>
+</ul>
+<h3>和 Mac 的其他部分</h3>
+<ul>
   <li>原生窗口、标签页、自动保存和版本记录。</li>
   <li>快速查看：在访达选取 Markdown 文件按空格键就能预览，图表也会显示。</li>
   <li>Siri 和快捷指令：用模板添加文稿、在笔记收件箱加上一行，或重新打开最近的文稿。</li>
