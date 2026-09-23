@@ -3171,11 +3171,14 @@ def render(locale: str, slug: str, page: dict) -> str:
         jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
     has_intro = "intro" in page
     is_trait_page = slug in TRAIT_ORDER
+    # The trait pages' chip is `chip` below. Every other page's masthead says the same, as a
+    # statement; the home page says it in the hero instead.
+    statement_chip = (f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  '
+                      if not is_trait_page and slug != "index" else "")
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
     if slug == "index":
         extra_css = '<link rel="stylesheet" href="/assets/hero.css">\n<link rel="stylesheet" href="/assets/annotations.css">\n'
-    # Every page's masthead says the app is coming; the home page says it in the hero instead.
-    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if slug != "index" else ""
+    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
     if slug == "index":
         hero_html = (
             '<section class="hero-scene">\n'
@@ -3247,7 +3250,7 @@ def render(locale: str, slug: str, page: dict) -> str:
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  {chip}<nav class="lang" aria-label="Language">{switch}</nav>
+  {chip}{statement_chip}<nav class="lang" aria-label="Language">{switch}</nav>
 </header>
 <main id="main">
 {main_html}
