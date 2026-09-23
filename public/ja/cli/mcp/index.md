@@ -4,6 +4,14 @@ MarsDawn には自前の AI モデルがありません。Markdown を書くた�
 
 **使っているツールが対応しているものを選んでください：無料の `marsdawn` CLI、プレーンな Markdown の skill ファイル、または [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) という MCP サーバーです。**三つとも同じ `marsdawn export` を呼び出し、同じ JSON 結果を返します。
 
+## どれを使うか
+
+| エージェントが | 使うもの | 必要なもの |
+|---|---|---|
+| シェルコマンドを実行できる | [CLI](/ja/cli/agents/) | macOS 15 以降 |
+| Claude Code のように指示ファイルを読み込む | [スキルファイル](/ja/cli/skill/) | CLI（スキルがインストールします） |
+| MCP でツールを呼び出す | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn 0.5.0 以降と Node.js 20 以降 |
+
 ## CLI
 
 `marsdawn export notes.md --json` は、シェルコマンドを実行できるエージェントやスクリプトならどれからでも呼び出せます。構造上、モデルに依存しません。返されるすべてのフィールドは[AI エージェント向け marsdawn](/ja/cli/agents/)に文書化されており、そこが JSON スキーマの正典で、以下の二つの経路もそこを参照します。

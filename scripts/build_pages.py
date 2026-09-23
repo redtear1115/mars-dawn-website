@@ -1334,6 +1334,7 @@ SKILL_PAGES = {
   <h1>Let your agent make the PDF.</h1>
   <p>This skill is one Markdown file. It teaches a coding agent to install <code>marsdawn</code>, check that it works, export a document to PDF and read the result, so the agent that wrote the Markdown can hand you the PDF as well.</p>
 </section>
+<div class="summary"><p><strong>One Markdown file, at <code>~/.claude/skills/marsdawn/SKILL.md</code>.</strong> With it your agent installs <code>marsdawn</code>, exports to PDF and reads the JSON result, and it still asks before it runs anything.</p></div>
 <h2>Install it in Claude Code</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
@@ -1362,6 +1363,7 @@ curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <h1>讓 agent 幫你做出 PDF。</h1>
   <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果，這樣寫出 Markdown 的 agent，也能把 PDF 交給你。</p>
 </section>
+<div class="summary"><p><strong>一個 Markdown 檔案，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 會安裝 <code>marsdawn</code>、輸出 PDF 並讀懂 JSON 結果；執行任何指令之前，它還是會先問你。</p></div>
 <h2>在 Claude Code 中安裝</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
@@ -1398,6 +1400,9 @@ BRAINSTORM_PAGES = {
 </section>
 
 <div class="summary"><p><strong>Pick whichever your tooling supports: the free <code>marsdawn</code> CLI, a plain-Markdown skill file, or the <a href="{MCP_URL}">marsdawn-mcp</a> MCP server.</strong> All three call the same <code>marsdawn export</code> and return the same JSON result.</p></div>
+
+<h2>Which one to use</h2>
+<!--compare:mcp-choice-->
 
 <h2>The CLI</h2>
 <p><code>marsdawn export notes.md --json</code> is callable by any agent or script that can run a shell command, model-agnostic by construction. Every field it returns is documented at <a href="/cli/agents/">marsdawn for agents</a>, which is the source of truth for the JSON schema the other two surfaces below point back to.</p>
@@ -1439,6 +1444,9 @@ BRAINSTORM_PAGES = {
 </section>
 
 <div class="summary"><p><strong>挑你的工具支援的那一種：免費的 <code>marsdawn</code> CLI、純 Markdown 的 skill 檔案，或是 <a href="{MCP_URL}">marsdawn-mcp</a> 這個 MCP 伺服器。</strong>三者都呼叫同一個 <code>marsdawn export</code>，回傳一樣的 JSON 結果。</p></div>
+
+<h2>該用哪一個</h2>
+<!--compare:mcp-choice-->
 
 <h2>CLI</h2>
 <p><code>marsdawn export notes.md --json</code> 可以被任何能執行 shell 指令的 agent 或腳本呼叫，因為是命令列工具，天生就跟模型無關。它回傳的每個欄位都寫在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡，那一頁是 JSON schema 的權威來源，底下另外兩種方式都會連回去。</p>
@@ -2061,10 +2069,12 @@ TRAIT_PAGES = {
 """,
         """
 <h2>How it works</h2>
+<ol class="loop-steps">
+  <li><strong>Download it free.</strong> MarsDawn is free to download from the Mac App Store.</li>
+  <li><strong>Try all of it for 14 days.</strong> Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.</li>
+  <li><strong>Unlock it once.</strong> To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.</li>
+</ol>
 <ul>
-  <li>MarsDawn is free to download from the Mac App Store.</li>
-  <li>Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.</li>
-  <li>To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.</li>
   <li>The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.</li>
   <li>There is no account. MarsDawn never asks you to create one.</li>
 </ul>
@@ -2088,10 +2098,12 @@ TRAIT_PAGES = {
 """,
         """
 <h2>怎麼運作</h2>
+<ol class="loop-steps">
+  <li><strong>免費下載。</strong> 在 Mac App Store 免費下載 MarsDawn。</li>
+  <li><strong>14 天，全部都能用。</strong> 開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。</li>
+  <li><strong>買一次就解鎖。</strong> 試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。</li>
+</ol>
 <ul>
-  <li>在 Mac App Store 免費下載 MarsDawn。</li>
-  <li>開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。</li>
-  <li>試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。</li>
   <li>試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。</li>
   <li>不需要帳號，MarsDawn 從不要求你建立帳號。</li>
 </ul>
@@ -2155,10 +2167,14 @@ TRAIT_PAGES = {
 """,
         f"""
 <h2>What that means</h2>
+<h3>Editing</h3>
 <ul>
   <li>Source, split and preview layouts, one keystroke apart (<kbd>⌘1</kbd>, <kbd>⌘2</kbd>, <kbd>⌘3</kbd>).</li>
   <li>The two panes scroll together, so the paragraph you are editing stays in view.</li>
   <li>Markdown syntax highlighting in the editor, matched to your preview theme.</li>
+</ul>
+<h3>The rest of the Mac</h3>
+<ul>
   <li>Native windows, tabs, autosave and version history.</li>
   <li>Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.</li>
   <li>Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.</li>
@@ -2177,10 +2193,14 @@ TRAIT_PAGES = {
 """,
         f"""
 <h2>這代表什麼</h2>
+<h3>編輯</h3>
 <ul>
   <li>原始碼、並排、預覽三種版面，一個快捷鍵切換（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
   <li>兩側同步捲動，正在編輯的段落一直在眼前。</li>
   <li>編輯器內建 Markdown 語法上色，顏色與預覽主題一致。</li>
+</ul>
+<h3>和 Mac 的其他部分</h3>
+<ul>
   <li>原生視窗、分頁、自動儲存和版本記錄。</li>
   <li>快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。</li>
   <li>Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。</li>
@@ -2199,18 +2219,23 @@ TRAIT_PAGES = {
 """,
         """
 <h2>Left out</h2>
+<h3>Devices and people</h3>
 <ul>
   <li><strong>Sync:</strong> MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.</li>
   <li><strong>iPhone and iPad:</strong> there is no app for them; MarsDawn is for the Mac.</li>
-  <li><strong>Plugins:</strong> MarsDawn has no plugins or extensions.</li>
   <li><strong>Sharing:</strong> there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.</li>
-  <li><strong>Editing:</strong> you write Markdown on the left and read the page on the right; the page itself can't be edited.</li>
-  <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
-  <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet — see <a href="/themes/">preview themes and PDF export</a> for what's planned.</li>
-  <li><strong>Other files:</strong> plain text files and PDFs open read-only.</li>
-  <li><strong>After the trial:</strong> if you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.</li>
   <li><strong>System:</strong> MarsDawn needs macOS 26 or later.</li>
 </ul>
+<h3>Files and features</h3>
+<ul>
+  <li><strong>Editing:</strong> you write Markdown on the left and read the page on the right; the page itself can't be edited.</li>
+  <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
+  <li><strong>Other files:</strong> plain text files and PDFs open read-only.</li>
+  <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet; see <a href="/themes/">preview themes and PDF export</a> for what's planned.</li>
+  <li><strong>Plugins:</strong> MarsDawn has no plugins or extensions.</li>
+</ul>
+<h2>After the trial</h2>
+<p>If you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.</p>
 """,
     ),
     ("zh-hant", "limits"): _trait_page(
@@ -2224,18 +2249,23 @@ TRAIT_PAGES = {
 """,
         """
 <h2>刻意不做的</h2>
+<h3>裝置與使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。</li>
   <li><strong>iPhone 和 iPad：</strong>沒有這兩個平台的版本，MarsDawn 只給 Mac。</li>
-  <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
   <li><strong>分享：</strong>沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。</li>
-  <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
-  <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
-  <li><strong>主題：</strong>內建 黎明、典雅、流行和活潑，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
-  <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
-  <li><strong>試用結束後：</strong>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</li>
   <li><strong>系統：</strong>MarsDawn 需要 macOS 26 以上。</li>
 </ul>
+<h3>檔案與功能</h3>
+<ul>
+  <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
+  <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
+  <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
+  <li><strong>主題：</strong>內建 黎明、典雅、流行和活潑，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
+  <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
+</ul>
+<h2>試用結束之後</h2>
+<p>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</p>
 """,
     ),
 }
@@ -2544,12 +2574,40 @@ COMPARE_TABLES = {
 }
 
 
+COMPARE_TABLES["mcp-choice"] = {
+    "head": {"en": ["If your agent", "Use", "Needs"], "zh-hant": ["如果你的 agent", "就用", "需要"],
+             "zh-hans": ["如果你的 agent", "就用", "需要"], "ja": ["エージェントが", "使うもの", "必要なもの"]},
+    "rows": {
+        "en": [
+            ["Can run a shell command", '<a href="{root}cli/agents/">The CLI</a>', "macOS 15 or later"],
+            ["Loads instruction files, like Claude Code", '<a href="{root}cli/skill/">The skill file</a>', "The CLI, which the skill installs"],
+            ["Calls tools over MCP", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn 0.5.0 or later, and Node.js 20 or later"],
+        ],
+        "zh-hant": [
+            ["能執行 shell 指令", '<a href="{root}cli/agents/">命令列工具</a>', "macOS 15 以上"],
+            ["會載入指令檔，例如 Claude Code", '<a href="{root}cli/skill/">skill 檔案</a>', "命令列工具（skill 會幫你安裝）"],
+            ["透過 MCP 呼叫工具", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn 0.5.0 以上，以及 Node.js 20 以上"],
+        ],
+        "zh-hans": [
+            ["能运行 shell 命令", '<a href="{root}cli/agents/">命令行工具</a>', "macOS 15 或更高版本"],
+            ["会加载指令文件，例如 Claude Code", '<a href="{root}cli/skill/">skill 文件</a>', "命令行工具（skill 会帮你安装）"],
+            ["通过 MCP 调用工具", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本"],
+        ],
+        "ja": [
+            ["シェルコマンドを実行できる", '<a href="{root}cli/agents/">CLI</a>', "macOS 15 以降"],
+            ["Claude Code のように指示ファイルを読み込む", '<a href="{root}cli/skill/">スキルファイル</a>', "CLI（スキルがインストールします）"],
+            ["MCP でツールを呼び出す", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn 0.5.0 以降と Node.js 20 以降"],
+        ],
+    },
+}
+
+
 def compare_table_html(locale: str, key: str) -> str:
     table = COMPARE_TABLES[key]
     langs = APP_UI_LANGUAGES[locale]
     head = "".join(f'<th scope="col">{cell}</th>' for cell in table["head"][locale])
     rows = "\n".join(
-        f'  <tr><th scope="row">{row[0]}</th>' + "".join(f"<td>{cell.replace('{langs}', langs)}</td>" for cell in row[1:]) + "</tr>"
+        f'  <tr><th scope="row">{row[0]}</th>' + "".join(f"<td>{cell.replace('{langs}', langs).replace('{root}', LOCALES[locale]['root']).replace('{mcp}', MCP_URL)}</td>" for cell in row[1:]) + "</tr>"
         for row in table["rows"][locale]
     )
     cls = "compare compare-wide" if len(table["head"][locale]) > 3 else "compare"

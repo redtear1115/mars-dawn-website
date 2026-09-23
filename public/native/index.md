@@ -13,9 +13,14 @@ In this screenshot:
 
 ## What that means
 
+### Editing
+
 - Source, split and preview layouts, one keystroke apart (`⌘1`, `⌘2`, `⌘3`).
 - The two panes scroll together, so the paragraph you are editing stays in view.
 - Markdown syntax highlighting in the editor, matched to your preview theme.
+
+### The rest of the Mac
+
 - Native windows, tabs, autosave and version history.
 - Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.
 - Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.

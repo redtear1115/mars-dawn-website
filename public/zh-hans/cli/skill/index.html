@@ -71,6 +71,7 @@ try {
   <h1>让 agent 帮你做出 PDF。</h1>
   <p>这个 skill 是一个 Markdown 文件。它教写程序的 agent 安装 <code>marsdawn</code>、确认它能用、把文稿导出成 PDF 并读懂结果，这样写出 Markdown 的 agent，也能把 PDF 交给你。</p>
 </section>
+<div class="summary"><p><strong>一个 Markdown 文件，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 会安装 <code>marsdawn</code>、导出 PDF 并读懂 JSON 结果；运行任何命令之前，它还是会先问你。</p></div>
 <h2>在 Claude Code 中安装</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>

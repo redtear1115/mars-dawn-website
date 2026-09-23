@@ -74,6 +74,16 @@ try {
 
 <div class="summary"><p><strong>挑你的工具支援的那一種：免費的 <code>marsdawn</code> CLI、純 Markdown 的 skill 檔案，或是 <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> 這個 MCP 伺服器。</strong>三者都呼叫同一個 <code>marsdawn export</code>，回傳一樣的 JSON 結果。</p></div>
 
+<h2>該用哪一個</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">如果你的 agent</th><th scope="col">就用</th><th scope="col">需要</th></tr></thead>
+<tbody>
+  <tr><th scope="row">能執行 shell 指令</th><td><a href="/zh-hant/cli/agents/">命令列工具</a></td><td>macOS 15 以上</td></tr>
+  <tr><th scope="row">會載入指令檔，例如 Claude Code</th><td><a href="/zh-hant/cli/skill/">skill 檔案</a></td><td>命令列工具（skill 會幫你安裝）</td></tr>
+  <tr><th scope="row">透過 MCP 呼叫工具</th><td><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td>marsdawn 0.5.0 以上，以及 Node.js 20 以上</td></tr>
+</tbody>
+</table></div>
+
 <h2>CLI</h2>
 <p><code>marsdawn export notes.md --json</code> 可以被任何能執行 shell 指令的 agent 或腳本呼叫，因為是命令列工具，天生就跟模型無關。它回傳的每個欄位都寫在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>裡，那一頁是 JSON schema 的權威來源，底下另外兩種方式都會連回去。</p>
 

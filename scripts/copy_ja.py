@@ -208,10 +208,12 @@ def build(k) -> dict:
 """,
         "body": f"""
 <h2>仕組み</h2>
+<ol class="loop-steps">
+  <li><strong>無料でダウンロード。</strong> MarsDawn は Mac App Store から無料でダウンロードできます。</li>
+  <li><strong>14 日間、すべて使える。</strong> トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。</li>
+  <li><strong>一度の購入で解除。</strong> その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。</li>
+</ol>
 <ul>
-  <li>MarsDawn は Mac App Store から無料でダウンロードできます。</li>
-  <li>トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。</li>
-  <li>その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。</li>
   <li>トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。</li>
   <li>アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。</li>
 </ul>
@@ -255,10 +257,14 @@ def build(k) -> dict:
 """,
         "body": f"""
 <h2>それが意味すること</h2>
+<h3>編集</h3>
 <ul>
   <li>ソース、分割、プレビューの3つのレイアウトを、キー1つで切り替え（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
   <li>2つのペインは一緒にスクロールするので、編集中の段落が常に見えています。</li>
   <li>エディタの Markdown シンタックスハイライトは、プレビューのテーマに合わせられます。</li>
+</ul>
+<h3>Mac のほかの部分と</h3>
+<ul>
   <li>ネイティブなウインドウ、タブ、自動保存、バージョン履歴。</li>
   <li>クイックルック：Finder で Markdown ファイルを選んでスペースキーを押すとプレビューでき、図も表示されます。</li>
   <li>Siri とショートカット：テンプレートから新しい文書を作成する、メモの受信トレイに1行追加する、最近使った文書を再度開く、といった操作ができます。</li>
@@ -277,18 +283,23 @@ def build(k) -> dict:
 """,
         "body": f"""
 <h2>省かれているもの</h2>
+<h3>デバイスと使う人</h3>
 <ul>
   <li><strong>同期：</strong>MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。</li>
   <li><strong>iPhone と iPad：</strong>これらの端末向けアプリはありません。MarsDawn は Mac 専用です。</li>
-  <li><strong>プラグイン：</strong>MarsDawn にプラグインや拡張機能はありません。</li>
   <li><strong>共有：</strong>アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。</li>
-  <li><strong>編集：</strong>左に Markdown を書き、右でページを読みます。ページ自体は編集できません。</li>
-  <li><strong>形式：</strong>MarsDawn は PDF の書き出しと印刷に対応していますが、Word ファイルへの書き出しはできません。</li>
-  <li><strong>テーマ：</strong>夜明け、クラシック、モダン、ビビッド の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。</li>
-  <li><strong>その他のファイル：</strong>プレーンテキストファイルと PDF は読み取り専用で開きます。</li>
-  <li><strong>トライアル終了後：</strong>14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。</li>
   <li><strong>システム：</strong>MarsDawn には macOS 26 以降が必要です。</li>
 </ul>
+<h3>ファイルと機能</h3>
+<ul>
+  <li><strong>編集：</strong>左に Markdown を書き、右でページを読みます。ページ自体は編集できません。</li>
+  <li><strong>形式：</strong>MarsDawn は PDF の書き出しと印刷に対応していますが、Word ファイルへの書き出しはできません。</li>
+  <li><strong>その他のファイル：</strong>プレーンテキストファイルと PDF は読み取り専用で開きます。</li>
+  <li><strong>テーマ：</strong>夜明け、クラシック、モダン、ビビッド の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。</li>
+  <li><strong>プラグイン：</strong>MarsDawn にプラグインや拡張機能はありません。</li>
+</ul>
+<h2>試用期間が終わったら</h2>
+<p>14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。</p>
 """,
     }
     pages['view-markdown-on-mac'] = {
@@ -578,6 +589,7 @@ swift build -c release --product marsdawn
   <h1>PDF 作成をエージェントに任せる。</h1>
   <p>このスキルは1つの Markdown ファイルです。コーディングエージェントに <code>marsdawn</code> のインストール方法、動作確認の方法、文書を PDF に書き出す方法、結果の読み方を教えます。これにより、Markdown を書いたエージェントが PDF もあなたに渡せるようになります。</p>
 </section>
+<div class="summary"><p><strong>1つの Markdown ファイルを <code>~/.claude/skills/marsdawn/SKILL.md</code> に置くだけ。</strong>これでエージェントが <code>marsdawn</code> をインストールし、PDF に書き出し、JSON の結果を読みます。何かを実行する前には、これまでどおり確認を求めます。</p></div>
 <h2>Claude Code にインストールする</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
@@ -610,6 +622,9 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 </section>
 
 <div class="summary"><p><strong>使っているツールが対応しているものを選んでください：無料の <code>marsdawn</code> CLI、プレーンな Markdown の skill ファイル、または <a href="{_mcp_url}">marsdawn-mcp</a> という MCP サーバーです。</strong>三つとも同じ <code>marsdawn export</code> を呼び出し、同じ JSON 結果を返します。</p></div>
+
+<h2>どれを使うか</h2>
+<!--compare:mcp-choice-->
 
 <h2>CLI</h2>
 <p><code>marsdawn export notes.md --json</code> は、シェルコマンドを実行できるエージェントやスクリプトならどれからでも呼び出せます。構造上、モデルに依存しません。返されるすべてのフィールドは<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>に文書化されており、そこが JSON スキーマの正典で、以下の二つの経路もそこを参照します。</p>

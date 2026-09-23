@@ -13,9 +13,10 @@ In this screenshot:
 
 ## How it works
 
-- MarsDawn is free to download from the Mac App Store.
-- Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.
-- To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.
+1. **Download it free.** MarsDawn is free to download from the Mac App Store.
+2. **Try all of it for 14 days.** Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.
+3. **Unlock it once.** To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.
+
 - The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.
 - There is no account. MarsDawn never asks you to create one.
 

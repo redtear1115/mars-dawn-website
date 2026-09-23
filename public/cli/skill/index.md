@@ -2,6 +2,8 @@
 
 This skill is one Markdown file. It teaches a coding agent to install `marsdawn`, check that it works, export a document to PDF and read the result, so the agent that wrote the Markdown can hand you the PDF as well.
 
+**One Markdown file, at `~/.claude/skills/marsdawn/SKILL.md`.** With it your agent installs `marsdawn`, exports to PDF and reads the JSON result, and it still asks before it runs anything.
+
 ## Install it in Claude Code
 
 ```

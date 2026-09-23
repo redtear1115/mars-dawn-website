@@ -365,6 +365,9 @@ swift build -c release --product marsdawn
 
 <div class="summary"><p><strong>挑你的工具支持的那一种：免费的 <code>marsdawn</code> CLI、纯 Markdown 的 skill 文件，或是 <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> 这个 MCP 服务器。</strong>三者都调用同一个 <code>marsdawn export</code>，返回一样的 JSON 结果。</p></div>
 
+<h2>该用哪一个</h2>
+<!--compare:mcp-choice-->
+
 <h2>CLI</h2>
 <p><code>marsdawn export notes.md --json</code> 可以被任何能运行 shell 命令的 agent 或脚本调用，因为是命令行工具，天生就跟模型无关。它返回的每个字段都写在<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>里，那一页是 JSON schema 的权威来源，下面另外两种方式都会连回去。</p>
 
@@ -403,6 +406,7 @@ swift build -c release --product marsdawn
   <h1>让 agent 帮你做出 PDF。</h1>
   <p>这个 skill 是一个 Markdown 文件。它教写程序的 agent 安装 <code>marsdawn</code>、确认它能用、把文稿导出成 PDF 并读懂结果，这样写出 Markdown 的 agent，也能把 PDF 交给你。</p>
 </section>
+<div class="summary"><p><strong>一个 Markdown 文件，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 会安装 <code>marsdawn</code>、导出 PDF 并读懂 JSON 结果；运行任何命令之前，它还是会先问你。</p></div>
 <h2>在 Claude Code 中安装</h2>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
@@ -434,18 +438,23 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 """,
         "body": f"""
 <h2>刻意不做的</h2>
+<h3>设备与使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。</li>
   <li><strong>iPhone 和 iPad：</strong>没有这两个平台的版本，MarsDawn 只给 Mac。</li>
-  <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
   <li><strong>分享：</strong>没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。</li>
-  <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
-  <li><strong>格式：</strong>MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。</li>
-  <li><strong>主题：</strong>内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。</li>
-  <li><strong>其他文件：</strong>纯文本文件和 PDF 以只读方式打开。</li>
-  <li><strong>试用结束后：</strong>如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。</li>
   <li><strong>系统：</strong>MarsDawn 需要 macOS 26 以上。</li>
 </ul>
+<h3>文件与功能</h3>
+<ul>
+  <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
+  <li><strong>格式：</strong>MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。</li>
+  <li><strong>其他文件：</strong>纯文本文件和 PDF 以只读方式打开。</li>
+  <li><strong>主题：</strong>内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。</li>
+  <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
+</ul>
+<h2>试用结束之后</h2>
+<p>如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。</p>
 """,
     }
     pages['markdown-to-pdf'] = {
@@ -502,10 +511,14 @@ marsdawn --version</code></pre>
 """,
         "body": f"""
 <h2>这代表什么</h2>
+<h3>编辑</h3>
 <ul>
   <li>源代码、并排、预览三种布局，一个快捷键切换（<kbd>⌘1</kbd>、<kbd>⌘2</kbd>、<kbd>⌘3</kbd>）。</li>
   <li>两侧同步滚动，正在编辑的段落一直在眼前。</li>
   <li>编辑器内置 Markdown 语法高亮，颜色与预览主题一致。</li>
+</ul>
+<h3>和 Mac 的其他部分</h3>
+<ul>
   <li>原生窗口、标签页、自动保存和版本记录。</li>
   <li>快速查看：在访达选取 Markdown 文件按空格键就能预览，图表也会显示。</li>
   <li>Siri 和快捷指令：用模板添加文稿、在笔记收件箱加上一行，或重新打开最近的文稿。</li>
@@ -524,10 +537,12 @@ marsdawn --version</code></pre>
 """,
         "body": f"""
 <h2>怎么运作</h2>
+<ol class="loop-steps">
+  <li><strong>免费下载。</strong> 在 Mac App Store 免费下载 MarsDawn。</li>
+  <li><strong>14 天，全部都能用。</strong> 开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。</li>
+  <li><strong>买一次就解锁。</strong> 试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。</li>
+</ol>
 <ul>
-  <li>在 Mac App Store 免费下载 MarsDawn。</li>
-  <li>开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。</li>
-  <li>试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。</li>
   <li>试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。</li>
   <li>不需要账户，MarsDawn 从不要求你创建账户。</li>
 </ul>

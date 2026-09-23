@@ -74,6 +74,16 @@ try {
 
 <div class="summary"><p><strong>Pick whichever your tooling supports: the free <code>marsdawn</code> CLI, a plain-Markdown skill file, or the <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> MCP server.</strong> All three call the same <code>marsdawn export</code> and return the same JSON result.</p></div>
 
+<h2>Which one to use</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">If your agent</th><th scope="col">Use</th><th scope="col">Needs</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Can run a shell command</th><td><a href="/cli/agents/">The CLI</a></td><td>macOS 15 or later</td></tr>
+  <tr><th scope="row">Loads instruction files, like Claude Code</th><td><a href="/cli/skill/">The skill file</a></td><td>The CLI, which the skill installs</td></tr>
+  <tr><th scope="row">Calls tools over MCP</th><td><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td>marsdawn 0.5.0 or later, and Node.js 20 or later</td></tr>
+</tbody>
+</table></div>
+
 <h2>The CLI</h2>
 <p><code>marsdawn export notes.md --json</code> is callable by any agent or script that can run a shell command, model-agnostic by construction. Every field it returns is documented at <a href="/cli/agents/">marsdawn for agents</a>, which is the source of truth for the JSON schema the other two surfaces below point back to.</p>
 

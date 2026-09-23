@@ -74,6 +74,16 @@ try {
 
 <div class="summary"><p><strong>使っているツールが対応しているものを選んでください：無料の <code>marsdawn</code> CLI、プレーンな Markdown の skill ファイル、または <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> という MCP サーバーです。</strong>三つとも同じ <code>marsdawn export</code> を呼び出し、同じ JSON 結果を返します。</p></div>
 
+<h2>どれを使うか</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">エージェントが</th><th scope="col">使うもの</th><th scope="col">必要なもの</th></tr></thead>
+<tbody>
+  <tr><th scope="row">シェルコマンドを実行できる</th><td><a href="/ja/cli/agents/">CLI</a></td><td>macOS 15 以降</td></tr>
+  <tr><th scope="row">Claude Code のように指示ファイルを読み込む</th><td><a href="/ja/cli/skill/">スキルファイル</a></td><td>CLI（スキルがインストールします）</td></tr>
+  <tr><th scope="row">MCP でツールを呼び出す</th><td><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td>marsdawn 0.5.0 以降と Node.js 20 以降</td></tr>
+</tbody>
+</table></div>
+
 <h2>CLI</h2>
 <p><code>marsdawn export notes.md --json</code> は、シェルコマンドを実行できるエージェントやスクリプトならどれからでも呼び出せます。構造上、モデルに依存しません。返されるすべてのフィールドは<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>に文書化されており、そこが JSON スキーマの正典で、以下の二つの経路もそこを参照します。</p>
 

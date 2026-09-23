@@ -4,6 +4,14 @@ MarsDawn has no AI model of its own: it's built to review Markdown, not write it
 
 **Pick whichever your tooling supports: the free `marsdawn` CLI, a plain-Markdown skill file, or the [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) MCP server.** All three call the same `marsdawn export` and return the same JSON result.
 
+## Which one to use
+
+| If your agent | Use | Needs |
+|---|---|---|
+| Can run a shell command | [The CLI](/cli/agents/) | macOS 15 or later |
+| Loads instruction files, like Claude Code | [The skill file](/cli/skill/) | The CLI, which the skill installs |
+| Calls tools over MCP | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn 0.5.0 or later, and Node.js 20 or later |
+
 ## The CLI
 
 `marsdawn export notes.md --json` is callable by any agent or script that can run a shell command, model-agnostic by construction. Every field it returns is documented at [marsdawn for agents](/cli/agents/), which is the source of truth for the JSON schema the other two surfaces below point back to.

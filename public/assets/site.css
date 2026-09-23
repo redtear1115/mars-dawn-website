@@ -1277,13 +1277,13 @@ html { overflow-x: hidden; }
   font-weight: 600;
   border-bottom-color: var(--ink);
 }
-.compare thead th:last-child { color: var(--ember); }
+.compare-ours thead th:last-child { color: var(--ember); }
 .compare tbody th[scope="row"] {
   width: 26%;
   font-weight: 650;
 }
-.compare td { color: var(--dust); }
-.compare td:last-child { color: var(--ink); }
+.compare-ours td { color: var(--dust); }
+.compare-ours td:last-child { color: var(--ink); }
 .compare-wide { min-width: 40rem; }
 .compare-wide tbody th[scope="row"] { width: 18%; }
 /* On a phone the row labels stay put while the columns scroll under them. */
