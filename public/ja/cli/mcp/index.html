@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
   <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/cli/mcp/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/mcp/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/mcp/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/mcp/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>marsdawn を呼び出す三つの方法。</h1>
   <p>MarsDawn には自前の AI モデルがありません。Markdown を書くためではなく、レビューするために作られているので、どのエージェントやモデルがそのファイルを作ったかは関係ありません。エージェントやスクリプトが <code>marsdawn</code> を呼び出す方法は三つあり、どれも最終的に同じ <code>export</code> を実行します。</p>
@@ -78,9 +79,9 @@ try {
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col">エージェントが</th><th scope="col">使うもの</th><th scope="col">必要なもの</th></tr></thead>
 <tbody>
-  <tr><th scope="row">シェルコマンドを実行できる</th><td><a href="/ja/cli/agents/">CLI</a></td><td>macOS 15 以降</td></tr>
-  <tr><th scope="row">Claude Code のように指示ファイルを読み込む</th><td><a href="/ja/cli/skill/">スキルファイル</a></td><td>CLI（スキルがインストールします）</td></tr>
-  <tr><th scope="row">MCP でツールを呼び出す</th><td><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td>marsdawn 0.5.0 以降と Node.js 20 以降</td></tr>
+  <tr><th scope="row">シェルコマンドを実行できる</th><td data-label="使うもの"><a href="/ja/cli/agents/">CLI</a></td><td data-label="必要なもの">macOS 15 以降</td></tr>
+  <tr><th scope="row">Claude Code のように指示ファイルを読み込む</th><td data-label="使うもの"><a href="/ja/cli/skill/">スキルファイル</a></td><td data-label="必要なもの">CLI（スキルがインストールします）</td></tr>
+  <tr><th scope="row">MCP でツールを呼び出す</th><td data-label="使うもの"><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td data-label="必要なもの">marsdawn 0.5.0 以降と Node.js 20 以降</td></tr>
 </tbody>
 </table></div>
 

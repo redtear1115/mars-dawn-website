@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
   <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/cli/mcp/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/cli/mcp/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/mcp/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/mcp/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Three ways to call marsdawn.</h1>
   <p>MarsDawn has no AI model of its own: it's built to review Markdown, not write it, so it doesn't matter which agent or model produced the file. There are three ways for an agent or a script to call <code>marsdawn</code>, and all three end up running the same <code>export</code>.</p>
@@ -78,9 +79,9 @@ try {
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col">If your agent</th><th scope="col">Use</th><th scope="col">Needs</th></tr></thead>
 <tbody>
-  <tr><th scope="row">Can run a shell command</th><td><a href="/cli/agents/">The CLI</a></td><td>macOS 15 or later</td></tr>
-  <tr><th scope="row">Loads instruction files, like Claude Code</th><td><a href="/cli/skill/">The skill file</a></td><td>The CLI, which the skill installs</td></tr>
-  <tr><th scope="row">Calls tools over MCP</th><td><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td>marsdawn 0.5.0 or later, and Node.js 20 or later</td></tr>
+  <tr><th scope="row">Can run a shell command</th><td data-label="Use"><a href="/cli/agents/">The CLI</a></td><td data-label="Needs">macOS 15 or later</td></tr>
+  <tr><th scope="row">Loads instruction files, like Claude Code</th><td data-label="Use"><a href="/cli/skill/">The skill file</a></td><td data-label="Needs">The CLI, which the skill installs</td></tr>
+  <tr><th scope="row">Calls tools over MCP</th><td data-label="Use"><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td data-label="Needs">marsdawn 0.5.0 or later, and Node.js 20 or later</td></tr>
 </tbody>
 </table></div>
 

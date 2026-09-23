@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
   <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/view-markdown-on-mac/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/view-markdown-on-mac/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/view-markdown-on-mac/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/view-markdown-on-mac/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Mac で Markdown ファイルを見る方法。</h1>
   <p><code>.md</code> ファイルはプレーンテキストです。見出し、太字、表、図は記号で書かれています。見出しには <code>#</code>、太字は <code>**</code> で囲む、表はパイプで区切る、図は <code>mermaid</code> コードブロックといった具合です。プレーンテキストエディタで開くと、これらの記号がそのまま見えます。作者の意図どおりにページを読むには、何かがそれをレンダリングする必要があります。</p>

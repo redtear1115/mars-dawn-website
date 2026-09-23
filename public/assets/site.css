@@ -1293,3 +1293,78 @@ html { overflow-x: hidden; }
   z-index: 1;
   background: var(--paper);
 }
+
+/* ---- Skip link: off screen until it has keyboard focus -------------------- */
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 10;
+  padding: 8px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip:focus-visible { top: 12px; outline-offset: 2px; }
+
+/* ---- On-this-page list for privacy and support --------------------------- */
+.toc {
+  margin: 32px 0 8px;
+  padding: 18px 22px 16px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+}
+.toc p {
+  margin: 0 0 8px;
+  color: var(--dust);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.toc ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 2 15rem;
+  column-gap: 28px;
+}
+.toc li { margin: 0; padding: 3px 0; break-inside: avoid; }
+.toc li + li { margin-top: 0; }
+:target { scroll-margin-top: 20px; }
+
+.gallery-note {
+  margin: -14px 0 18px;
+  color: var(--dust);
+  font-size: 0.9rem;
+}
+
+/* On a phone, a four-column comparison stacks: one block per row, the row's
+   name on top and each column's answer under its own label. */
+@media (max-width: 719px) {
+  .compare-wide { min-width: 0; }
+  .compare-wide thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .compare-wide tr { display: block; padding: 14px 0 10px; border-bottom: 1px solid var(--hairline); }
+  .compare-wide th,
+  .compare-wide td { display: block; padding: 0; border: 0; }
+  .compare-wide th:first-child { position: static; background: none; }
+  .compare-wide tbody th[scope="row"] { width: auto; margin-bottom: 6px; }
+  .compare-wide td {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 12px;
+    padding: 3px 0;
+  }
+  .compare-wide td::before {
+    content: attr(data-label);
+    color: var(--dust);
+    font-size: 0.85rem;
+  }
+  .compare-ours.compare-wide td:last-child::before { color: var(--ember); }
+}

@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
   <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/privacy/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/privacy/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/privacy/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/privacy/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Privacy Policy</h1>
   <p>How MarsDawn, the Markdown editor for macOS, handles your information.</p>
@@ -74,8 +75,23 @@ try {
 </section>
 
 <div class="summary"><p><strong>The MarsDawn app does not collect any data about you.</strong> There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.</p></div>
+<nav class="toc" aria-label="On this page">
+<p>On this page</p>
+<ul>
+  <li><a href="#the-website">The website</a></li>
+  <li><a href="#what-stays-on-your-mac">What stays on your Mac</a></li>
+  <li><a href="#when-marsdawn-uses-the-internet">When MarsDawn uses the internet</a></li>
+  <li><a href="#siri-shortcuts-and-spotlight">Siri, Shortcuts and Spotlight</a></li>
+  <li><a href="#exporting-and-printing">Exporting and printing</a></li>
+  <li><a href="#the-marsdawn-command-line-tool">The marsdawn command-line tool</a></li>
+  <li><a href="#children">Children</a></li>
+  <li><a href="#purchases">Purchases</a></li>
+  <li><a href="#changes-to-this-policy">Changes to this policy</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-<h2>The website</h2>
+<h2 id="the-website">The website</h2>
 <p>The app and this website are two different things. The app collects nothing. A visit can be recorded only here, on marsdawn.southern-light.dev.</p>
 <p>This site uses <strong>Google Analytics 4</strong>, loaded through <strong>Google Tag Manager</strong>. Every visitor starts with analytics denied: Google's Consent Mode sends only a cookieless ping with no analytics cookie and no persistent identifier, until you choose <em>Accept</em> in the banner. Choosing <em>Decline</em>, or making no choice at all, keeps it that way, and choosing <em>Decline</em> after a prior <em>Accept</em> turns analytics back off immediately and removes the cookies below. Change your choice at any time with the "Cookie settings" link in the footer of every page. The choice itself is stored only in your browser's local storage, never in a cookie of ours.</p>
 <p>Once you accept, Google Analytics sets its own cookies (<code>_ga</code> and <code>_ga_&lt;measurement id&gt;</code>) and records:</p>
@@ -90,14 +106,14 @@ try {
   <li><strong>The host.</strong> Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.</li>
 </ul>
 
-<h2>What stays on your Mac</h2>
+<h2 id="what-stays-on-your-mac">What stays on your Mac</h2>
 <ul>
   <li><strong>Your documents.</strong> MarsDawn reads and writes only the files and folders you open, save or choose. They are never uploaded anywhere by the app.</li>
   <li><strong>Your settings.</strong> Appearance, preview theme, window layout and the image preference are stored in the app's own preferences on your Mac.</li>
   <li><strong>Folder access you grant.</strong> When you let MarsDawn show images or page files from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. A folder you open in the sidebar stays readable and writable by MarsDawn until you remove it in Settings, not just while its window is open. You can remove folders at any time in MarsDawn › Settings.</li>
 </ul>
 
-<h2>When MarsDawn uses the internet</h2>
+<h2 id="when-marsdawn-uses-the-internet">When MarsDawn uses the internet</h2>
 <p>MarsDawn works fully offline. It connects to the internet only <strong>when you choose to</strong>, for a document that refers to the web:</p>
 <ul>
   <li><strong>Markdown documents.</strong> Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings. Nothing else a Markdown document refers to is loaded from the web.</li>
@@ -107,25 +123,25 @@ try {
 <p>When web content loads, your Mac requests it directly from the servers that host it. Like any web request, this lets those servers see your IP address and what was requested. MarsDawn's developer receives none of this information.</p>
 <p>Links you click in the preview open in your default web browser, under that browser's own privacy practices. Audio and video never play by themselves.</p>
 
-<h2>Siri, Shortcuts and Spotlight</h2>
+<h2 id="siri-shortcuts-and-spotlight">Siri, Shortcuts and Spotlight</h2>
 <p>MarsDawn offers actions for Siri, the Shortcuts app and Spotlight, such as creating a document or adding a note. When you use them, the text you provide is passed to MarsDawn on your Mac and saved only where the action says (a new document, or the <code>Inbox.md</code> file in the notes folder you chose). Speech you dictate to Siri is handled by Apple under <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
 
-<h2>Exporting and printing</h2>
+<h2 id="exporting-and-printing">Exporting and printing</h2>
 <p>PDF export and printing happen on your Mac. The PDF is saved where you choose. Printing goes through macOS to the printer you pick.</p>
 
-<h2>The marsdawn command-line tool</h2>
+<h2 id="the-marsdawn-command-line-tool">The marsdawn command-line tool</h2>
 <p>The optional <code>marsdawn</code> command-line tool, distributed separately, also runs entirely on your Mac. It reads the Markdown file you name and writes the PDF you ask for. It loads web images only when you pass <code>--allow-remote-images</code>.</p>
 
-<h2>Children</h2>
+<h2 id="children">Children</h2>
 <p>The MarsDawn app does not collect data from anyone, including children. A visit recorded on the website is not an account, and it is not used to identify anyone.</p>
 
-<h2>Purchases</h2>
+<h2 id="purchases">Purchases</h2>
 <p>MarsDawn will be sold through the Mac App Store. Apple will process the purchase under its own terms, and the developer never receives your payment details.</p>
 
-<h2>Changes to this policy</h2>
+<h2 id="changes-to-this-policy">Changes to this policy</h2>
 <p>If MarsDawn ever starts handling data differently, this page will be updated before that version is released, and the date at the top will change.</p>
 
-<h2>Contact</h2>
+<h2 id="contact">Contact</h2>
 <p>Questions about privacy: <a href="mailto:support@southern-light.dev">support@southern-light.dev</a></p>
 </main>
 <footer class="footer">

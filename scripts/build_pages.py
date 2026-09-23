@@ -2633,9 +2633,16 @@ COMPARE_TABLES["exit-codes"] = {
 def compare_table_html(locale: str, key: str) -> str:
     table = COMPARE_TABLES[key]
     langs = APP_UI_LANGUAGES[locale]
-    head = "".join(f'<th scope="col">{cell}</th>' for cell in table["head"][locale])
+    heads = table["head"][locale]
+    head = "".join(f'<th scope="col">{cell}</th>' for cell in heads)
+
+    def cell_html(cell):
+        return cell.replace('{langs}', langs).replace('{root}', LOCALES[locale]['root']).replace('{mcp}', MCP_URL)
+    # data-label names each cell's column, for the stacked layout on narrow screens (site.css).
     rows = "\n".join(
-        f'  <tr><th scope="row">{row[0]}</th>' + "".join(f"<td>{cell.replace('{langs}', langs).replace('{root}', LOCALES[locale]['root']).replace('{mcp}', MCP_URL)}</td>" for cell in row[1:]) + "</tr>"
+        f'  <tr><th scope="row">{row[0]}</th>'
+        + "".join(f'<td data-label="{label}">{cell_html(cell)}</td>' for label, cell in zip(heads[1:], row[1:]))
+        + "</tr>"
         for row in table["rows"][locale]
     )
     cls = "compare compare-wide" if len(table["head"][locale]) > 3 else "compare"
@@ -2678,7 +2685,15 @@ def theme_gallery_html(locale: str) -> str:
             f'/assets/screens/{image}-{width}.png {width}w" sizes="(min-width: 760px) 31rem, calc(100vw - 32px)" '
             f'width="{width}" height="{height}" alt="{alt[locale]}" loading="lazy"> <strong>{name[locale]}</strong></li>'
         )
-    return '<ul class="theme-gallery">\n' + "\n".join(items) + "\n</ul>"
+    return '<ul class="theme-gallery">\n' + "\n".join(items) + "\n</ul>\n" + f'<p class="gallery-note">{THEME_GALLERY_NOTE[locale]}</p>'
+
+
+THEME_GALLERY_NOTE = {
+    "en": "Modern isn't pictured yet; the fourth shot shows dark mode instead.",
+    "zh-hant": "Modern 還沒有截圖；第四張是深色模式。",
+    "zh-hans": "Modern 还没有截图；第四张是深色模式。",
+    "ja": "Modern のスクリーンショットはまだありません。4枚目はダークモードです。",
+}
 
 
 def trait_nav_html(locale: str, current: str) -> str:
@@ -3026,6 +3041,42 @@ def html_to_markdown(fragment: str) -> str:
     return _render_children(builder.root.children).strip() + "\n"
 
 
+SKIP_LABEL = {"en": "Skip to content", "zh-hant": "跳到內容", "zh-hans": "跳到内容", "ja": "本文へ移動"}
+
+# Privacy and support are long, linked from the App Store, and get linked into from support email:
+# every section gets a stable anchor, named from the English heading so a link works in any
+# language, and the page opens with a list of them.
+TOC_PAGES = {"privacy": "h2", "support": "h3"}
+TOC_LABEL = {
+    "privacy": {"en": "On this page", "zh-hant": "本頁內容", "zh-hans": "本页内容", "ja": "このページの内容"},
+    "support": {"en": "Jump to a question", "zh-hant": "直接看問題", "zh-hans": "直接看问题", "ja": "質問へ移動"},
+}
+
+
+def _anchor_ids(slug: str) -> list:
+    tag = TOC_PAGES[slug]
+    body = all_pages()[("en", slug)]["body"]
+    heads = re.findall(rf"<{tag}>(.*?)</{tag}>", body)
+    return [re.sub(r"[^a-z0-9]+", "-", re.sub(r"<[^>]+>", "", h).lower()).strip("-") for h in heads]
+
+
+def add_toc(locale: str, slug: str, html: str) -> str:
+    tag = TOC_PAGES[slug]
+    ids = _anchor_ids(slug)
+    heads = re.findall(rf"<{tag}>(.*?)</{tag}>", html)
+    assert len(heads) == len(ids), f"{locale}/{slug}: {len(heads)} headings, en has {len(ids)}"
+    for anchor in ids:
+        html = re.sub(rf"<{tag}>", f'<{tag} id="{anchor}">', html, count=1)
+    items = "\n".join(f'  <li><a href="#{anchor}">{re.sub(r"<[^>]+>", "", head)}</a></li>' for anchor, head in zip(ids, heads))
+    toc = (f'<nav class="toc" aria-label="{TOC_LABEL[slug][locale]}">\n<p>{TOC_LABEL[slug][locale]}</p>\n'
+           f'<ul>\n{items}\n</ul>\n</nav>\n')
+    cut = html.index("</section>") + len("</section>\n")
+    # The one-line answer, where a page has one, stays first.
+    if html[cut:].lstrip().startswith('<div class="summary">'):
+        cut = html.index("</div>", cut) + len("</div>\n")
+    return html[:cut] + toc + html[cut:]
+
+
 def render(locale: str, slug: str, page: dict) -> str:
     ui = UI[locale]
     lang = LOCALES[locale]["html_lang"]
@@ -3099,6 +3150,8 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
         main_html = page["body"].strip()
+    if slug in TOC_PAGES:
+        main_html = add_toc(locale, slug, main_html)
     # Two rows, the same on every page (#65): the site's links, then a meta line. The home page's meta
     # line is the origin mark alone, because the closing band just above already says the tagline and
     # the store line. The origin mark is deliberately untranslated, as on Futari's site.
@@ -3137,6 +3190,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 {jsonld}<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">{SKIP_LABEL[locale]}</a>
 {consent_banner_html(locale)}
 <div class="page">
 <header class="masthead">
@@ -3146,7 +3200,7 @@ def render(locale: str, slug: str, page: dict) -> str:
   </a>
   {chip}<nav class="lang" aria-label="Language">{switch}</nav>
 </header>
-<main>
+<main id="main">
 {main_html}
 </main>
 {footer_html}
@@ -3437,6 +3491,7 @@ def render_404(locale: str) -> str:
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">{SKIP_LABEL[locale]}</a>
 {consent_banner_html(locale)}
 <div class="page">
 <header class="masthead">
@@ -3446,7 +3501,7 @@ def render_404(locale: str) -> str:
   </a>
   <nav class="lang" aria-label="Language">{switch}</nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>{copy["headline"]}</h1>
   <p>{copy["body"]}</p>

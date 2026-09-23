@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到内容</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
   <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">即将在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/cli/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>命令行工具</h1>
   <p>免费的 <code>marsdawn</code> 命令行工具：从终端或 LLM agent 把 Markdown 导出成 PDF；装了 MarsDawn app 的话，也能用它打开文件。</p>
@@ -124,12 +125,12 @@ marsdawn open notes.md --line 120</code></pre>
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col">代码</th><th scope="col">意思</th><th scope="col">怎么处理</th></tr></thead>
 <tbody>
-  <tr><th scope="row"><code>0</code></th><td>成功</td><td>加了 <code>--json</code> 时，读 stdout 上的那一行 JSON</td></tr>
-  <tr><th scope="row"><code>2</code></th><td>找不到输入文件</td><td>检查路径和文件名</td></tr>
-  <tr><th scope="row"><code>3</code></th><td>尚未安装 MarsDawn（只有 <code>open</code> 会用到）</td><td>安装 app，或改用不需要 app 的 <code>export</code></td></tr>
-  <tr><th scope="row"><code>4</code></th><td>输出文件已存在</td><td>加上 <code>--force</code> 覆盖，或用 <code>-o</code> 写到别处</td></tr>
-  <tr><th scope="row"><code>5</code></th><td>输出失败</td><td>读 JSON 结果里的 <code>message</code></td></tr>
-  <tr><th scope="row"><code>64</code></th><td>使用方式错误，包括行号超出范围，或 <code>--line</code> 搭配了多个文件</td><td>修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样</td></tr>
+  <tr><th scope="row"><code>0</code></th><td data-label="意思">成功</td><td data-label="怎么处理">加了 <code>--json</code> 时，读 stdout 上的那一行 JSON</td></tr>
+  <tr><th scope="row"><code>2</code></th><td data-label="意思">找不到输入文件</td><td data-label="怎么处理">检查路径和文件名</td></tr>
+  <tr><th scope="row"><code>3</code></th><td data-label="意思">尚未安装 MarsDawn（只有 <code>open</code> 会用到）</td><td data-label="怎么处理">安装 app，或改用不需要 app 的 <code>export</code></td></tr>
+  <tr><th scope="row"><code>4</code></th><td data-label="意思">输出文件已存在</td><td data-label="怎么处理">加上 <code>--force</code> 覆盖，或用 <code>-o</code> 写到别处</td></tr>
+  <tr><th scope="row"><code>5</code></th><td data-label="意思">输出失败</td><td data-label="怎么处理">读 JSON 结果里的 <code>message</code></td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="意思">使用方式错误，包括行号超出范围，或 <code>--line</code> 搭配了多个文件</td><td data-label="怎么处理">修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样</td></tr>
 </tbody>
 </table></div>
 

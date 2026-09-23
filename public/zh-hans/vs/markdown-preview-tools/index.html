@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到内容</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
   <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">即将在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/vs/markdown-preview-tools/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/markdown-preview-tools/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/markdown-preview-tools/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/markdown-preview-tools/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>在别处看 Markdown，对比 MarsDawn。</h1>
   <p>如果你手边刚好开着 VS Code、浏览器或 Claude Desktop，用它们顺手看一眼 Markdown 文件也合理。以下是它们各自实际排版出什么、要花多少功夫才能看到，和在 MarsDawn 里打开同一份文件的比较。</p>
@@ -75,10 +76,10 @@ try {
 <div class="table-scroll"><table class="compare compare-wide">
 <thead><tr><th scope="col"></th><th scope="col">VS Code 预览</th><th scope="col">浏览器扩展</th><th scope="col">Claude Desktop</th><th scope="col">MarsDawn</th></tr></thead>
 <tbody>
-  <tr><th scope="row">打开磁盘上的 Markdown 文件</th><td>可以</td><td>可以，但要先允许访问文件</td><td>不行：Markdown 不在可上传的类型里</td><td>可以</td></tr>
-  <tr><th scope="row">打开第一个文件之前</th><td>安装 VS Code，一整套开发环境</td><td>安装扩展，再打开“允许访问文件网址”</td><td>无法浏览磁盘上的文件</td><td>安装 MarsDawn</td></tr>
-  <tr><th scope="row">为什么而做</th><td>写代码；预览只是众多面板之一</td><td>浏览网页</td><td>和 Claude 对话</td><td>阅读与编辑 Markdown</td></tr>
-  <tr><th scope="row">用什么画出页面</th><td>Electron：内含 Chromium 和 Node.js</td><td>一整个浏览器</td><td>Claude Desktop 本身</td><td>原生的 AppKit app，页面由 WebKit 绘制</td></tr>
+  <tr><th scope="row">打开磁盘上的 Markdown 文件</th><td data-label="VS Code 预览">可以</td><td data-label="浏览器扩展">可以，但要先允许访问文件</td><td data-label="Claude Desktop">不行：Markdown 不在可上传的类型里</td><td data-label="MarsDawn">可以</td></tr>
+  <tr><th scope="row">打开第一个文件之前</th><td data-label="VS Code 预览">安装 VS Code，一整套开发环境</td><td data-label="浏览器扩展">安装扩展，再打开“允许访问文件网址”</td><td data-label="Claude Desktop">无法浏览磁盘上的文件</td><td data-label="MarsDawn">安装 MarsDawn</td></tr>
+  <tr><th scope="row">为什么而做</th><td data-label="VS Code 预览">写代码；预览只是众多面板之一</td><td data-label="浏览器扩展">浏览网页</td><td data-label="Claude Desktop">和 Claude 对话</td><td data-label="MarsDawn">阅读与编辑 Markdown</td></tr>
+  <tr><th scope="row">用什么画出页面</th><td data-label="VS Code 预览">Electron：内含 Chromium 和 Node.js</td><td data-label="浏览器扩展">一整个浏览器</td><td data-label="Claude Desktop">Claude Desktop 本身</td><td data-label="MarsDawn">原生的 AppKit app，页面由 WebKit 绘制</td></tr>
 </tbody>
 </table></div>
 

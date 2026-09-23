@@ -11,6 +11,8 @@ MarsDawn ships four preview themes, Dawn, Classic, Modern and Vivid, each with a
 - ![The Vivid theme in split view.](/assets/screens/04-vivid-800.png) **Vivid**
 - ![MarsDawn in dark mode, in split view.](/assets/screens/03-dark-800.png) **Dark mode**
 
+Modern isn't pictured yet; the fourth shot shows dark mode instead.
+
 - **Dawn**, the default: the same warm paper and Mars Rust accent this site is built from.
 - **Classic**: a plainer, document-like palette.
 - **Modern**: a cooler, more contemporary palette.

@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到內容</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
   <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">即將在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/cli/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>命令列工具</h1>
   <p>免費的 <code>marsdawn</code> 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。</p>
@@ -124,12 +125,12 @@ marsdawn open notes.md --line 120</code></pre>
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col">代碼</th><th scope="col">意思</th><th scope="col">怎麼處理</th></tr></thead>
 <tbody>
-  <tr><th scope="row"><code>0</code></th><td>成功</td><td>加了 <code>--json</code> 時，讀 stdout 上的那一行 JSON</td></tr>
-  <tr><th scope="row"><code>2</code></th><td>找不到輸入檔</td><td>檢查路徑和檔名</td></tr>
-  <tr><th scope="row"><code>3</code></th><td>尚未安裝 MarsDawn（只有 <code>open</code> 會用到）</td><td>安裝 app，或改用不需要 app 的 <code>export</code></td></tr>
-  <tr><th scope="row"><code>4</code></th><td>輸出檔已存在</td><td>加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處</td></tr>
-  <tr><th scope="row"><code>5</code></th><td>輸出失敗</td><td>讀 JSON 結果裡的 <code>message</code></td></tr>
-  <tr><th scope="row"><code>64</code></th><td>使用方式錯誤，包括行號超出範圍，或 <code>--line</code> 搭配了多個檔案</td><td>修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣</td></tr>
+  <tr><th scope="row"><code>0</code></th><td data-label="意思">成功</td><td data-label="怎麼處理">加了 <code>--json</code> 時，讀 stdout 上的那一行 JSON</td></tr>
+  <tr><th scope="row"><code>2</code></th><td data-label="意思">找不到輸入檔</td><td data-label="怎麼處理">檢查路徑和檔名</td></tr>
+  <tr><th scope="row"><code>3</code></th><td data-label="意思">尚未安裝 MarsDawn（只有 <code>open</code> 會用到）</td><td data-label="怎麼處理">安裝 app，或改用不需要 app 的 <code>export</code></td></tr>
+  <tr><th scope="row"><code>4</code></th><td data-label="意思">輸出檔已存在</td><td data-label="怎麼處理">加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處</td></tr>
+  <tr><th scope="row"><code>5</code></th><td data-label="意思">輸出失敗</td><td data-label="怎麼處理">讀 JSON 結果裡的 <code>message</code></td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="意思">使用方式錯誤，包括行號超出範圍，或 <code>--line</code> 搭配了多個檔案</td><td data-label="怎麼處理">修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣</td></tr>
 </tbody>
 </table></div>
 

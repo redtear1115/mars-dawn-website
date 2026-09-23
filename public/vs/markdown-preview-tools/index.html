@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
   <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/vs/markdown-preview-tools/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/vs/markdown-preview-tools/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/markdown-preview-tools/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/markdown-preview-tools/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Viewing Markdown elsewhere, vs. MarsDawn.</h1>
   <p>If you already have VS Code, a browser or Claude Desktop open, reaching for one of them to glance at a Markdown file is reasonable. Here's what each one actually renders, and what it costs to get there, compared with opening the same file in MarsDawn.</p>
@@ -76,10 +77,10 @@ try {
 <div class="table-scroll"><table class="compare compare-wide">
 <thead><tr><th scope="col"></th><th scope="col">VS Code preview</th><th scope="col">Browser extension</th><th scope="col">Claude Desktop</th><th scope="col">MarsDawn</th></tr></thead>
 <tbody>
-  <tr><th scope="row">Opens a Markdown file from disk</th><td>Yes</td><td>Yes, once file access is allowed</td><td>No: Markdown isn't on its upload list</td><td>Yes</td></tr>
-  <tr><th scope="row">Before the first file</th><td>Install VS Code, a whole development environment</td><td>Install an extension, then turn on “Allow access to file URLs”</td><td>It can't browse files on disk</td><td>Install MarsDawn</td></tr>
-  <tr><th scope="row">Built for</th><td>Writing code; the preview is one pane among many</td><td>Browsing the web</td><td>Conversations with Claude</td><td>Reading and editing Markdown</td></tr>
-  <tr><th scope="row">Draws the page with</th><td>Electron: a bundled Chromium and Node.js</td><td>A full browser</td><td>The Claude Desktop app</td><td>A native AppKit app; WebKit draws the page</td></tr>
+  <tr><th scope="row">Opens a Markdown file from disk</th><td data-label="VS Code preview">Yes</td><td data-label="Browser extension">Yes, once file access is allowed</td><td data-label="Claude Desktop">No: Markdown isn't on its upload list</td><td data-label="MarsDawn">Yes</td></tr>
+  <tr><th scope="row">Before the first file</th><td data-label="VS Code preview">Install VS Code, a whole development environment</td><td data-label="Browser extension">Install an extension, then turn on “Allow access to file URLs”</td><td data-label="Claude Desktop">It can't browse files on disk</td><td data-label="MarsDawn">Install MarsDawn</td></tr>
+  <tr><th scope="row">Built for</th><td data-label="VS Code preview">Writing code; the preview is one pane among many</td><td data-label="Browser extension">Browsing the web</td><td data-label="Claude Desktop">Conversations with Claude</td><td data-label="MarsDawn">Reading and editing Markdown</td></tr>
+  <tr><th scope="row">Draws the page with</th><td data-label="VS Code preview">Electron: a bundled Chromium and Node.js</td><td data-label="Browser extension">A full browser</td><td data-label="Claude Desktop">The Claude Desktop app</td><td data-label="MarsDawn">A native AppKit app; WebKit draws the page</td></tr>
 </tbody>
 </table></div>
 

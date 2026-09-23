@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
   <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/vs/macmd-viewer/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/vs/macmd-viewer/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/macmd-viewer/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/macmd-viewer/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>MacMD Viewer vs. MarsDawn.</h1>
   <p>Both are Mac apps for reading Markdown rendered. MacMD Viewer opens a <code>.md</code> file and shows the finished page; it doesn't edit it. MarsDawn puts an editor next to the same kind of rendered preview, so you write and review in one window. Here's how they differ, feature by feature.</p>
@@ -77,24 +78,24 @@ try {
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
 <tbody>
-  <tr><th scope="row">Editing</th><td>Read-only by design</td><td>Edits the source, with the rendered page beside it</td></tr>
-  <tr><th scope="row">Preview themes</th><td>12 document themes</td><td>4 themes, each with a light and a dark palette</td></tr>
-  <tr><th scope="row">Diagrams and math</th><td>Mermaid and code highlighting; its listing doesn't mention math</td><td>Mermaid, code highlighting and KaTeX math</td></tr>
-  <tr><th scope="row">Quick Look in Finder</th><td>Yes</td><td>Yes</td></tr>
-  <tr><th scope="row">PDF and print</th><td>Yes</td><td>Yes</td></tr>
-  <tr><th scope="row">Requires</th><td>macOS 14 (Sonoma) or later</td><td>macOS 26 (Tahoe) or later</td></tr>
-  <tr><th scope="row">Interface languages</th><td>Not stated in its own materials</td><td>English and Traditional Chinese</td></tr>
+  <tr><th scope="row">Editing</th><td data-label="MacMD Viewer">Read-only by design</td><td data-label="MarsDawn">Edits the source, with the rendered page beside it</td></tr>
+  <tr><th scope="row">Preview themes</th><td data-label="MacMD Viewer">12 document themes</td><td data-label="MarsDawn">4 themes, each with a light and a dark palette</td></tr>
+  <tr><th scope="row">Diagrams and math</th><td data-label="MacMD Viewer">Mermaid and code highlighting; its listing doesn't mention math</td><td data-label="MarsDawn">Mermaid, code highlighting and KaTeX math</td></tr>
+  <tr><th scope="row">Quick Look in Finder</th><td data-label="MacMD Viewer">Yes</td><td data-label="MarsDawn">Yes</td></tr>
+  <tr><th scope="row">PDF and print</th><td data-label="MacMD Viewer">Yes</td><td data-label="MarsDawn">Yes</td></tr>
+  <tr><th scope="row">Requires</th><td data-label="MacMD Viewer">macOS 14 (Sonoma) or later</td><td data-label="MarsDawn">macOS 26 (Tahoe) or later</td></tr>
+  <tr><th scope="row">Interface languages</th><td data-label="MacMD Viewer">Not stated in its own materials</td><td data-label="MarsDawn">English and Traditional Chinese</td></tr>
 </tbody>
 </table></div>
 <h2>Pricing and how you buy it</h2>
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
 <tbody>
-  <tr><th scope="row">Where you buy it</th><td>Its own site, Homebrew or Setapp; not the Mac App Store</td><td>The Mac App Store only</td></tr>
-  <tr><th scope="row">Price</th><td>USD 19.99 once, for one Mac; multi-Mac packs cost more</td><td>Free download, then USD 4.99 once</td></tr>
-  <tr><th scope="row">Trying it first</th><td>No trial; a 14-day money-back guarantee on direct purchases</td><td>A 14-day free trial</td></tr>
-  <tr><th scope="row">Refunds and updates</th><td>Through its own site</td><td>Through Apple</td></tr>
-  <tr><th scope="row">Account needed</th><td>No</td><td>No</td></tr>
+  <tr><th scope="row">Where you buy it</th><td data-label="MacMD Viewer">Its own site, Homebrew or Setapp; not the Mac App Store</td><td data-label="MarsDawn">The Mac App Store only</td></tr>
+  <tr><th scope="row">Price</th><td data-label="MacMD Viewer">USD 19.99 once, for one Mac; multi-Mac packs cost more</td><td data-label="MarsDawn">Free download, then USD 4.99 once</td></tr>
+  <tr><th scope="row">Trying it first</th><td data-label="MacMD Viewer">No trial; a 14-day money-back guarantee on direct purchases</td><td data-label="MarsDawn">A 14-day free trial</td></tr>
+  <tr><th scope="row">Refunds and updates</th><td data-label="MacMD Viewer">Through its own site</td><td data-label="MarsDawn">Through Apple</td></tr>
+  <tr><th scope="row">Account needed</th><td data-label="MacMD Viewer">No</td><td data-label="MarsDawn">No</td></tr>
 </tbody>
 </table></div>
 <h2>Try it today, free</h2>

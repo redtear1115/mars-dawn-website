@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
   <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">Coming soon to the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/cli/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/cli/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>Command Line</h1>
   <p>The free <code>marsdawn</code> command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.</p>
@@ -124,12 +125,12 @@ marsdawn open notes.md --line 120</code></pre>
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col">Code</th><th scope="col">Means</th><th scope="col">What to do</th></tr></thead>
 <tbody>
-  <tr><th scope="row"><code>0</code></th><td>Success</td><td>With <code>--json</code>, read the one JSON line on stdout</td></tr>
-  <tr><th scope="row"><code>2</code></th><td>The input file isn't there</td><td>Check the path and the file name</td></tr>
-  <tr><th scope="row"><code>3</code></th><td>MarsDawn isn't installed (<code>open</code> only)</td><td>Install the app, or use <code>export</code>, which doesn't need it</td></tr>
-  <tr><th scope="row"><code>4</code></th><td>The output PDF already exists</td><td>Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere</td></tr>
-  <tr><th scope="row"><code>5</code></th><td>The export failed</td><td>Read <code>message</code> in the JSON result</td></tr>
-  <tr><th scope="row"><code>64</code></th><td>Usage error, including a line out of range or <code>--line</code> with more than one file</td><td>Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
+  <tr><th scope="row"><code>0</code></th><td data-label="Means">Success</td><td data-label="What to do">With <code>--json</code>, read the one JSON line on stdout</td></tr>
+  <tr><th scope="row"><code>2</code></th><td data-label="Means">The input file isn't there</td><td data-label="What to do">Check the path and the file name</td></tr>
+  <tr><th scope="row"><code>3</code></th><td data-label="Means">MarsDawn isn't installed (<code>open</code> only)</td><td data-label="What to do">Install the app, or use <code>export</code>, which doesn't need it</td></tr>
+  <tr><th scope="row"><code>4</code></th><td data-label="Means">The output PDF already exists</td><td data-label="What to do">Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere</td></tr>
+  <tr><th scope="row"><code>5</code></th><td data-label="Means">The export failed</td><td data-label="What to do">Read <code>message</code> in the JSON result</td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="Means">Usage error, including a line out of range or <code>--line</code> with more than one file</td><td data-label="What to do">Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
 </tbody>
 </table></div>
 

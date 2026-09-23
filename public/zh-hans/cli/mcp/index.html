@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到内容</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
   <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">即将在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/cli/mcp/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/mcp/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/mcp/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/mcp/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>调用 marsdawn 的三种方式。</h1>
   <p>MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不是用来写的，所以是哪个 agent 或模型写出这份 Markdown 并不重要。agent 或脚本调用 <code>marsdawn</code> 有三种方式，最后都会运行同一个 <code>export</code>。</p>
@@ -78,9 +79,9 @@ try {
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col">如果你的 agent</th><th scope="col">就用</th><th scope="col">需要</th></tr></thead>
 <tbody>
-  <tr><th scope="row">能运行 shell 命令</th><td><a href="/zh-hans/cli/agents/">命令行工具</a></td><td>macOS 15 或更高版本</td></tr>
-  <tr><th scope="row">会加载指令文件，例如 Claude Code</th><td><a href="/zh-hans/cli/skill/">skill 文件</a></td><td>命令行工具（skill 会帮你安装）</td></tr>
-  <tr><th scope="row">通过 MCP 调用工具</th><td><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td>marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本</td></tr>
+  <tr><th scope="row">能运行 shell 命令</th><td data-label="就用"><a href="/zh-hans/cli/agents/">命令行工具</a></td><td data-label="需要">macOS 15 或更高版本</td></tr>
+  <tr><th scope="row">会加载指令文件，例如 Claude Code</th><td data-label="就用"><a href="/zh-hans/cli/skill/">skill 文件</a></td><td data-label="需要">命令行工具（skill 会帮你安装）</td></tr>
+  <tr><th scope="row">通过 MCP 调用工具</th><td data-label="就用"><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td data-label="需要">marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本</td></tr>
 </tbody>
 </table></div>
 

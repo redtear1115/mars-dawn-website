@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">跳到內容</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
   <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">即將在 Mac App Store 上架</span>
   <nav class="lang" aria-label="Language"><a href="/vs/macmd-viewer/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/macmd-viewer/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/macmd-viewer/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/macmd-viewer/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>MacMD Viewer 對比 MarsDawn。</h1>
   <p>兩者都是給 Mac 用的 app，都能把 Markdown 排版出來讀。MacMD Viewer 打開 <code>.md</code> 檔案，顯示排好版的頁面，但不能編輯它。MarsDawn 則是在同樣的預覽旁邊放了編輯器，讓你在同一個視窗裡寫和讀。以下逐項比較兩者的差異。</p>
@@ -77,24 +78,24 @@ try {
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
 <tbody>
-  <tr><th scope="row">編輯</th><td>設計上就是唯讀</td><td>編輯原始碼，排版後的頁面就在旁邊</td></tr>
-  <tr><th scope="row">預覽主題</th><td>12 種文件主題</td><td>4 種，各有淺色與深色</td></tr>
-  <tr><th scope="row">圖表與數學式</th><td>Mermaid 與程式碼上色；介紹頁沒有提到數學式</td><td>Mermaid、程式碼上色與 KaTeX 數學式</td></tr>
-  <tr><th scope="row">Finder 快速查看</th><td>有</td><td>有</td></tr>
-  <tr><th scope="row">PDF 與列印</th><td>有</td><td>有</td></tr>
-  <tr><th scope="row">系統需求</th><td>macOS 14（Sonoma）以上</td><td>macOS 26（Tahoe）以上</td></tr>
-  <tr><th scope="row">介面語言</th><td>自己的資料沒有寫出</td><td>英文和繁體中文</td></tr>
+  <tr><th scope="row">編輯</th><td data-label="MacMD Viewer">設計上就是唯讀</td><td data-label="MarsDawn">編輯原始碼，排版後的頁面就在旁邊</td></tr>
+  <tr><th scope="row">預覽主題</th><td data-label="MacMD Viewer">12 種文件主題</td><td data-label="MarsDawn">4 種，各有淺色與深色</td></tr>
+  <tr><th scope="row">圖表與數學式</th><td data-label="MacMD Viewer">Mermaid 與程式碼上色；介紹頁沒有提到數學式</td><td data-label="MarsDawn">Mermaid、程式碼上色與 KaTeX 數學式</td></tr>
+  <tr><th scope="row">Finder 快速查看</th><td data-label="MacMD Viewer">有</td><td data-label="MarsDawn">有</td></tr>
+  <tr><th scope="row">PDF 與列印</th><td data-label="MacMD Viewer">有</td><td data-label="MarsDawn">有</td></tr>
+  <tr><th scope="row">系統需求</th><td data-label="MacMD Viewer">macOS 14（Sonoma）以上</td><td data-label="MarsDawn">macOS 26（Tahoe）以上</td></tr>
+  <tr><th scope="row">介面語言</th><td data-label="MacMD Viewer">自己的資料沒有寫出</td><td data-label="MarsDawn">英文和繁體中文</td></tr>
 </tbody>
 </table></div>
 <h2>價格與購買方式</h2>
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
 <tbody>
-  <tr><th scope="row">從哪裡買</th><td>自己的網站、Homebrew 或 Setapp；不在 Mac App Store</td><td>只在 Mac App Store</td></tr>
-  <tr><th scope="row">價格</th><td>一台 Mac 一次 USD 19.99；多台的組合包更貴</td><td>免費下載，之後一次 USD 4.99</td></tr>
-  <tr><th scope="row">先試用</th><td>沒有試用；直接購買 14 天內可退款</td><td>14 天免費試用</td></tr>
-  <tr><th scope="row">退款與更新</th><td>透過它自己的網站</td><td>透過 Apple</td></tr>
-  <tr><th scope="row">需要帳號</th><td>不用</td><td>不用</td></tr>
+  <tr><th scope="row">從哪裡買</th><td data-label="MacMD Viewer">自己的網站、Homebrew 或 Setapp；不在 Mac App Store</td><td data-label="MarsDawn">只在 Mac App Store</td></tr>
+  <tr><th scope="row">價格</th><td data-label="MacMD Viewer">一台 Mac 一次 USD 19.99；多台的組合包更貴</td><td data-label="MarsDawn">免費下載，之後一次 USD 4.99</td></tr>
+  <tr><th scope="row">先試用</th><td data-label="MacMD Viewer">沒有試用；直接購買 14 天內可退款</td><td data-label="MarsDawn">14 天免費試用</td></tr>
+  <tr><th scope="row">退款與更新</th><td data-label="MacMD Viewer">透過它自己的網站</td><td data-label="MarsDawn">透過 Apple</td></tr>
+  <tr><th scope="row">需要帳號</th><td data-label="MacMD Viewer">不用</td><td data-label="MarsDawn">不用</td></tr>
 </tbody>
 </table></div>
 <h2>現在就能免費試試看</h2>

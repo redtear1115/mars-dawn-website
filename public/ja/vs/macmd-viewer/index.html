@@ -50,6 +50,7 @@ try {
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">本文へ移動</a>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
   <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
   <div class="consent-actions">
@@ -66,7 +67,7 @@ try {
   <span class="store-chip">Mac App Store で近日公開</span>
   <nav class="lang" aria-label="Language"><a href="/vs/macmd-viewer/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/macmd-viewer/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/macmd-viewer/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/macmd-viewer/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
-<main>
+<main id="main">
 <section class="intro">
   <h1>MacMD Viewer 対 MarsDawn。</h1>
   <p>どちらも Markdown をレンダリングして読むための Mac アプリです。MacMD Viewer は <code>.md</code> ファイルを開いて完成したページを表示しますが、編集はできません。MarsDawn は同じようにレンダリングされたプレビューの隣にエディタを置き、1つのウインドウで書きながら確認できます。ここでは機能ごとに両者の違いを見ていきます。</p>
@@ -77,24 +78,24 @@ try {
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
 <tbody>
-  <tr><th scope="row">編集</th><td>設計上、読み取り専用</td><td>ソースを編集し、その隣にレンダリングされたページ</td></tr>
-  <tr><th scope="row">プレビューテーマ</th><td>12 種類のドキュメントテーマ</td><td>4 種類、それぞれにライトとダーク</td></tr>
-  <tr><th scope="row">図と数式</th><td>Mermaid とコードのハイライト。数式の表示は紹介ページに記載なし</td><td>Mermaid、コードのハイライト、KaTeX の数式</td></tr>
-  <tr><th scope="row">Finder のクイックルック</th><td>あり</td><td>あり</td></tr>
-  <tr><th scope="row">PDF と印刷</th><td>あり</td><td>あり</td></tr>
-  <tr><th scope="row">動作環境</th><td>macOS 14（Sonoma）以降</td><td>macOS 26（Tahoe）以降</td></tr>
-  <tr><th scope="row">インターフェイスの言語</th><td>公式の資料に記載なし</td><td>英語と繁体字中国語</td></tr>
+  <tr><th scope="row">編集</th><td data-label="MacMD Viewer">設計上、読み取り専用</td><td data-label="MarsDawn">ソースを編集し、その隣にレンダリングされたページ</td></tr>
+  <tr><th scope="row">プレビューテーマ</th><td data-label="MacMD Viewer">12 種類のドキュメントテーマ</td><td data-label="MarsDawn">4 種類、それぞれにライトとダーク</td></tr>
+  <tr><th scope="row">図と数式</th><td data-label="MacMD Viewer">Mermaid とコードのハイライト。数式の表示は紹介ページに記載なし</td><td data-label="MarsDawn">Mermaid、コードのハイライト、KaTeX の数式</td></tr>
+  <tr><th scope="row">Finder のクイックルック</th><td data-label="MacMD Viewer">あり</td><td data-label="MarsDawn">あり</td></tr>
+  <tr><th scope="row">PDF と印刷</th><td data-label="MacMD Viewer">あり</td><td data-label="MarsDawn">あり</td></tr>
+  <tr><th scope="row">動作環境</th><td data-label="MacMD Viewer">macOS 14（Sonoma）以降</td><td data-label="MarsDawn">macOS 26（Tahoe）以降</td></tr>
+  <tr><th scope="row">インターフェイスの言語</th><td data-label="MacMD Viewer">公式の資料に記載なし</td><td data-label="MarsDawn">英語と繁体字中国語</td></tr>
 </tbody>
 </table></div>
 <h2>価格と購入方法</h2>
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
 <tbody>
-  <tr><th scope="row">購入場所</th><td>公式サイト、Homebrew、Setapp。Mac App Store にはない</td><td>Mac App Store のみ</td></tr>
-  <tr><th scope="row">価格</th><td>Mac 1 台につき USD 19.99 を一度。複数台のパックはより高額</td><td>無料ダウンロード、その後 USD 4.99 を一度</td></tr>
-  <tr><th scope="row">購入前に試す</th><td>試用なし。直接購入には 14 日間の返金保証</td><td>14 日間の無料試用</td></tr>
-  <tr><th scope="row">返金とアップデート</th><td>公式サイト経由</td><td>Apple 経由</td></tr>
-  <tr><th scope="row">アカウント</th><td>不要</td><td>不要</td></tr>
+  <tr><th scope="row">購入場所</th><td data-label="MacMD Viewer">公式サイト、Homebrew、Setapp。Mac App Store にはない</td><td data-label="MarsDawn">Mac App Store のみ</td></tr>
+  <tr><th scope="row">価格</th><td data-label="MacMD Viewer">Mac 1 台につき USD 19.99 を一度。複数台のパックはより高額</td><td data-label="MarsDawn">無料ダウンロード、その後 USD 4.99 を一度</td></tr>
+  <tr><th scope="row">購入前に試す</th><td data-label="MacMD Viewer">試用なし。直接購入には 14 日間の返金保証</td><td data-label="MarsDawn">14 日間の無料試用</td></tr>
+  <tr><th scope="row">返金とアップデート</th><td data-label="MacMD Viewer">公式サイト経由</td><td data-label="MarsDawn">Apple 経由</td></tr>
+  <tr><th scope="row">アカウント</th><td data-label="MacMD Viewer">不要</td><td data-label="MarsDawn">不要</td></tr>
 </tbody>
 </table></div>
 <h2>今すぐ無料で試す</h2>
