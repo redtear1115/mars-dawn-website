@@ -123,11 +123,18 @@ a:focus-visible {
 
 h2 {
   margin: 48px 0 10px;
-  font-size: 1.3rem;
+  font-size: 1.375rem;
   line-height: 1.3;
   font-weight: 650;
   letter-spacing: -0.01em;
   text-wrap: balance;
+}
+/* Each section of a reading page starts on a hairline, so a long page reads
+   as a run of distinct parts rather than one column of equal paragraphs. */
+main > h2:not(.loop-title) {
+  margin-top: 52px;
+  padding-top: 22px;
+  border-top: 1px solid var(--hairline);
 }
 h3 {
   margin: 28px 0 6px;
@@ -341,10 +348,13 @@ html { scrollbar-color: var(--hairline) var(--paper); }
 }
 /* After the base rules above, so these win at the same specificity. */
 @media (max-width: 480px) {
-  .masthead { gap: 12px 10px; }
-  .brand { flex-basis: 100%; }
-  .store-chip { margin-left: 0; padding: 2px 8px; font-size: 0.74rem; }
-  .lang { margin-left: auto; font-size: 0.84rem; }
+  /* Two rows, not three: the name and the store status share the first,
+     the languages take the second. */
+  .masthead { gap: 10px 12px; }
+  .brand { gap: 10px; }
+  .brand img { width: 34px; height: 34px; }
+  .masthead .store-chip { padding: 2px 8px; font-size: 0.72rem; }
+  .lang { flex-basis: 100%; font-size: 0.84rem; }
 }
 
 .shot {
@@ -385,7 +395,7 @@ img.pdf-page {
   border: 1px solid var(--hairline);
   border-radius: 6px;
   box-shadow: 0 1px 2px color-mix(in srgb, #000 10%, transparent),
-              0 12px 28px -14px color-mix(in srgb, #000 30%, transparent);
+              0 3px 8px -4px color-mix(in srgb, #000 16%, transparent);
 }
 
 .marker {

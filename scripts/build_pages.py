@@ -2819,7 +2819,8 @@ def render(locale: str, slug: str, page: dict) -> str:
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
     if slug == "index":
         extra_css = '<link rel="stylesheet" href="/assets/hero.css">\n<link rel="stylesheet" href="/assets/annotations.css">\n'
-    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
+    # Every page's masthead says the app is coming; the home page says it in the hero instead.
+    chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if slug != "index" else ""
     if slug == "index":
         hero_html = (
             '<section class="hero-scene">\n'
