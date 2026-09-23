@@ -275,7 +275,9 @@ The site uses Dawn's gentle rounding and scales it by object: 4px for inline cod
 Links use Rust Ink and a 1px underline at a 0.18em offset. On hover the underline thickens to 2px. Focus shows a 2px Mars Rust outline with a 3px offset. Footer and language-switch links use Dust.
 
 ### Store Chip
-A quiet status pill: a hairline border, Dust text in the caption size and no fill. Before launch it was a statement ("Coming soon to the Mac App Store"), not a button, with no hover state. **The owner decided on 2026-09-20 that from launch it links to the App Store listing.** It keeps the pill look, with no underline and no fill, and gains what a link needs: a tap target at least 24px tall, a hover that darkens the border to Dust and the text to Ink, and the same 2px Mars Rust focus ring as every other link.
+A quiet status pill: a hairline border, Dust text in the caption size and no fill. It is a statement ("Coming soon to the Mac App Store"), not a button, and it has no hover state.
+
+**Launch exception (owner, 2026-09-20, confirmed 2026-09-23):** on and after launch, the trait pages' store chip links to the App Store listing; everywhere else a chip is still a statement. The linked chip keeps the pill look, with no underline and no fill, and gains what a link needs: a tap target at least 24px tall, a hover that darkens the border to Dust and the text to Ink, and the same 2px Mars Rust focus ring as every other link.
 
 ### Summary Block
 The one-line answer people came for, on a sand plate with Dawn's 8px radius and no border, in slightly larger text (1.05rem).
