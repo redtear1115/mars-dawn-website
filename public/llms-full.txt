@@ -616,12 +616,12 @@ When `--theme` isn't passed, `export` reads the `$MARSDAWN_THEME` environment va
 
 | Code | Means | What to do |
 |---|---|---|
-| `0` | Success | With `--json`, read the one JSON line on stdout |
-| `2` | The input file isn't there | Check the path and the file name |
-| `3` | MarsDawn isn't installed (`open` only) | Install the app, or use `export`, which doesn't need it |
-| `4` | The output PDF already exists | Pass `--force` to replace it, or `-o` to write elsewhere |
-| `5` | The export failed | Read `message` in the JSON result |
-| `64` | Usage error, including a line out of range or `--line` with more than one file | Fix the option or value; this error is text on stderr, even with `--json` |
+| `0` | success. | With `--json`, read the one JSON line on stdout |
+| `2` | input not found. | Check the path and the file name |
+| `3` | MarsDawn is not installed (`open` only). | Install the app, or use `export`, which doesn't need it |
+| `4` | output exists (pass `--force`). | Pass `--force` to replace it, or `-o` to write elsewhere |
+| `5` | export failed. | Read `message` in the JSON result |
+| `64` | usage error, including a line out of range or `--line` with more than one file. | Fix the option or value; this error is text on stderr, even with `--json` |
 
 ## --json output
 
@@ -1673,12 +1673,12 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 
 | 代碼 | 意思 | 怎麼處理 |
 |---|---|---|
-| `0` | 成功 | 加了 `--json` 時，讀 stdout 上的那一行 JSON |
-| `2` | 找不到輸入檔 | 檢查路徑和檔名 |
-| `3` | 尚未安裝 MarsDawn（只有 `open` 會用到） | 安裝 app，或改用不需要 app 的 `export` |
-| `4` | 輸出檔已存在 | 加上 `--force` 覆寫，或用 `-o` 寫到別處 |
-| `5` | 輸出失敗 | 讀 JSON 結果裡的 `message` |
-| `64` | 使用方式錯誤，包括行號超出範圍，或 `--line` 搭配了多個檔案 | 修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 `--json` 也一樣 |
+| `0` | 成功。 | 加了 `--json` 時，讀 stdout 上的那一行 JSON |
+| `2` | 找不到輸入檔。 | 檢查路徑和檔名 |
+| `3` | 尚未安裝 MarsDawn（只有 `open` 會用到）。 | 安裝 app，或改用不需要 app 的 `export` |
+| `4` | 輸出檔已存在（可加上 `--force`）。 | 加上 `--force` 覆寫，或用 `-o` 寫到別處 |
+| `5` | 輸出失敗。 | 讀 JSON 結果裡的 `message` |
+| `64` | 使用方式錯誤，包括行號超出範圍，或 `--line` 搭配了多個檔案。 | 修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 `--json` 也一樣 |
 
 ## --json 輸出
 
@@ -2726,12 +2726,12 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 
 | 代码 | 意思 | 怎么处理 |
 |---|---|---|
-| `0` | 成功 | 加了 `--json` 时，读 stdout 上的那一行 JSON |
-| `2` | 找不到输入文件 | 检查路径和文件名 |
-| `3` | 尚未安装 MarsDawn（只有 `open` 会用到） | 安装 app，或改用不需要 app 的 `export` |
-| `4` | 输出文件已存在 | 加上 `--force` 覆盖，或用 `-o` 写到别处 |
-| `5` | 输出失败 | 读 JSON 结果里的 `message` |
-| `64` | 使用方式错误，包括行号超出范围，或 `--line` 搭配了多个文件 | 修正选项或值；这种错误以文本输出到 stderr，即使加了 `--json` 也一样 |
+| `0` | 成功。 | 加了 `--json` 时，读 stdout 上的那一行 JSON |
+| `2` | 找不到输入文件。 | 检查路径和文件名 |
+| `3` | 尚未安装 MarsDawn（只有 `open` 会用到）。 | 安装 app，或改用不需要 app 的 `export` |
+| `4` | 输出文件已存在（可加上 `--force`）。 | 加上 `--force` 覆盖，或用 `-o` 写到别处 |
+| `5` | 输出失败。 | 读 JSON 结果里的 `message` |
+| `64` | 使用方式错误，包括行号超出范围，或 `--line` 搭配了多个文件。 | 修正选项或值；这种错误以文本输出到 stderr，即使加了 `--json` 也一样 |
 
 ## --json 输出
 
@@ -3773,12 +3773,12 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 
 | コード | 意味 | 対処 |
 |---|---|---|
-| `0` | 成功 | `--json` を付けた場合は、stdout の1行の JSON を読む |
-| `2` | 入力ファイルが見つからない | パスとファイル名を確認する |
-| `3` | MarsDawn がインストールされていない（`open` のみ） | アプリをインストールするか、アプリが不要な `export` を使う |
-| `4` | 出力する PDF がすでにある | `--force` で上書きするか、`-o` で別の場所に書き出す |
-| `5` | 書き出しに失敗した | JSON の結果の `message` を読む |
-| `64` | 使用方法のエラー。範囲外の行や、複数ファイルに対する `--line` の指定などを含む | オプションや値を直す。このエラーは `--json` を付けても stderr にテキストで出力される |
+| `0` | 成功。 | `--json` を付けた場合は、stdout の1行の JSON を読む |
+| `2` | 入力が見つからない。 | パスとファイル名を確認する |
+| `3` | MarsDawn がインストールされていない（`open` のみ）。 | アプリをインストールするか、アプリが不要な `export` を使う |
+| `4` | 出力先がすでに存在する（`--force` を指定してください）。 | `--force` で上書きするか、`-o` で別の場所に書き出す |
+| `5` | 書き出しに失敗。 | JSON の結果の `message` を読む |
+| `64` | 使用方法のエラー。範囲外の行や、複数ファイルに対する `--line` の指定などを含みます。 | オプションや値を直す。このエラーは `--json` を付けても stderr にテキストで出力される |
 
 ## --json 出力
 

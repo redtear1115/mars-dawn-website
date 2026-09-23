@@ -461,7 +461,15 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> は、<code>--force</code> を指定しない限り、既存の出力ファイルを置き換えません。</p>
 
 <h2>終了コード</h2>
-<!--compare:exit-codes-->
+<!--exit-table-->
+<ul>
+  <li><code>0</code>：成功。</li>
+  <li><code>2</code>：入力が見つからない。</li>
+  <li><code>3</code>：MarsDawn がインストールされていない（<code>open</code> のみ）。</li>
+  <li><code>4</code>：出力先がすでに存在する（<code>--force</code> を指定してください）。</li>
+  <li><code>5</code>：書き出しに失敗。</li>
+  <li><code>64</code>：使用方法のエラー。範囲外の行や、複数ファイルに対する <code>--line</code> の指定などを含みます。</li>
+</ul>
 
 <h2>--json 出力</h2>
 <p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含む）、<code>app</code>（アプリのパス）を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時はどちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>

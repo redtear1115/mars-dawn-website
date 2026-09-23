@@ -621,7 +621,15 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> refuses to replace an existing output file unless you pass <code>--force</code>.</p>
 
 <h2>Exit codes</h2>
-<!--compare:exit-codes-->
+<!--exit-table-->
+<ul>
+  <li><code>0</code>: success.</li>
+  <li><code>2</code>: input not found.</li>
+  <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
+  <li><code>4</code>: output exists (pass <code>--force</code>).</li>
+  <li><code>5</code>: export failed.</li>
+  <li><code>64</code>: usage error, including a line out of range or <code>--line</code> with more than one file.</li>
+</ul>
 
 <h2>--json output</h2>
 <p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
@@ -685,7 +693,15 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> 預設不會覆蓋已存在的輸出檔，除非加上 <code>--force</code>。</p>
 
 <h2>結束代碼</h2>
-<!--compare:exit-codes-->
+<!--exit-table-->
+<ul>
+  <li><code>0</code>：成功。</li>
+  <li><code>2</code>：找不到輸入檔。</li>
+  <li><code>3</code>：尚未安裝 MarsDawn（只有 <code>open</code> 會用到）。</li>
+  <li><code>4</code>：輸出檔已存在（可加上 <code>--force</code>）。</li>
+  <li><code>5</code>：輸出失敗。</li>
+  <li><code>64</code>：使用方式錯誤，包括行號超出範圍，或 <code>--line</code> 搭配了多個檔案。</li>
+</ul>
 
 <h2>--json 輸出</h2>
 <p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）與 <code>app</code>（App 路徑）；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
@@ -2588,46 +2604,63 @@ COMPARE_TABLES["mcp-choice"] = {
 }
 
 
-# The CLI page's exit codes, with what to do about each one. The remedies come from the CLI's own
-# contract (EXIT_CODES and the --json section): nothing here goes beyond it.
-COMPARE_TABLES["exit-codes"] = {
-    "head": {"en": ["Code", "Means", "What to do"], "zh-hant": ["代碼", "意思", "怎麼處理"],
-             "zh-hans": ["代码", "意思", "怎么处理"], "ja": ["コード", "意味", "対処"]},
-    "rows": {
-        "en": [
-            ["<code>0</code>", "Success", "With <code>--json</code>, read the one JSON line on stdout"],
-            ["<code>2</code>", "The input file isn't there", "Check the path and the file name"],
-            ["<code>3</code>", "MarsDawn isn't installed (<code>open</code> only)", "Install the app, or use <code>export</code>, which doesn't need it"],
-            ["<code>4</code>", "The output PDF already exists", "Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere"],
-            ["<code>5</code>", "The export failed", "Read <code>message</code> in the JSON result"],
-            ["<code>64</code>", "Usage error, including a line out of range or <code>--line</code> with more than one file", "Fix the option or value; this error is text on stderr, even with <code>--json</code>"],
-        ],
-        "zh-hant": [
-            ["<code>0</code>", "成功", "加了 <code>--json</code> 時，讀 stdout 上的那一行 JSON"],
-            ["<code>2</code>", "找不到輸入檔", "檢查路徑和檔名"],
-            ["<code>3</code>", "尚未安裝 MarsDawn（只有 <code>open</code> 會用到）", "安裝 app，或改用不需要 app 的 <code>export</code>"],
-            ["<code>4</code>", "輸出檔已存在", "加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處"],
-            ["<code>5</code>", "輸出失敗", "讀 JSON 結果裡的 <code>message</code>"],
-            ["<code>64</code>", "使用方式錯誤，包括行號超出範圍，或 <code>--line</code> 搭配了多個檔案", "修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣"],
-        ],
-        "zh-hans": [
-            ["<code>0</code>", "成功", "加了 <code>--json</code> 时，读 stdout 上的那一行 JSON"],
-            ["<code>2</code>", "找不到输入文件", "检查路径和文件名"],
-            ["<code>3</code>", "尚未安装 MarsDawn（只有 <code>open</code> 会用到）", "安装 app，或改用不需要 app 的 <code>export</code>"],
-            ["<code>4</code>", "输出文件已存在", "加上 <code>--force</code> 覆盖，或用 <code>-o</code> 写到别处"],
-            ["<code>5</code>", "输出失败", "读 JSON 结果里的 <code>message</code>"],
-            ["<code>64</code>", "使用方式错误，包括行号超出范围，或 <code>--line</code> 搭配了多个文件", "修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样"],
-        ],
-        "ja": [
-            ["<code>0</code>", "成功", "<code>--json</code> を付けた場合は、stdout の1行の JSON を読む"],
-            ["<code>2</code>", "入力ファイルが見つからない", "パスとファイル名を確認する"],
-            ["<code>3</code>", "MarsDawn がインストールされていない（<code>open</code> のみ）", "アプリをインストールするか、アプリが不要な <code>export</code> を使う"],
-            ["<code>4</code>", "出力する PDF がすでにある", "<code>--force</code> で上書きするか、<code>-o</code> で別の場所に書き出す"],
-            ["<code>5</code>", "書き出しに失敗した", "JSON の結果の <code>message</code> を読む"],
-            ["<code>64</code>", "使用方法のエラー。範囲外の行や、複数ファイルに対する <code>--line</code> の指定などを含む", "オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される"],
-        ],
+# The CLI page's exit codes, with what to do about each one. The list itself stays in the page copy,
+# word for word as reviewed, behind an <!--exit-table--> mark; the build turns it into a table and adds
+# a remedy column from here, keyed by code. The remedies come from the CLI's own contract (EXIT_CODES
+# and the --json section). A code with no remedy here gets an empty cell rather than a guess.
+EXIT_TABLE_MARK = "<!--exit-table-->"
+EXIT_TABLE_HEAD = {"en": ["Code", "Means", "What to do"], "zh-hant": ["代碼", "意思", "怎麼處理"],
+                   "zh-hans": ["代码", "意思", "怎么处理"], "ja": ["コード", "意味", "対処"]}
+EXIT_REMEDY = {
+    "en": {
+        "0": "With <code>--json</code>, read the one JSON line on stdout",
+        "2": "Check the path and the file name",
+        "3": "Install the app, or use <code>export</code>, which doesn't need it",
+        "4": "Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere",
+        "5": "Read <code>message</code> in the JSON result",
+        "64": "Fix the option or value; this error is text on stderr, even with <code>--json</code>",
+    },
+    "zh-hant": {
+        "0": "加了 <code>--json</code> 時，讀 stdout 上的那一行 JSON",
+        "2": "檢查路徑和檔名",
+        "3": "安裝 app，或改用不需要 app 的 <code>export</code>",
+        "4": "加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處",
+        "5": "讀 JSON 結果裡的 <code>message</code>",
+        "64": "修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣",
+    },
+    "zh-hans": {
+        "0": "加了 <code>--json</code> 时，读 stdout 上的那一行 JSON",
+        "2": "检查路径和文件名",
+        "3": "安装 app，或改用不需要 app 的 <code>export</code>",
+        "4": "加上 <code>--force</code> 覆盖，或用 <code>-o</code> 写到别处",
+        "5": "读 JSON 结果里的 <code>message</code>",
+        "64": "修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样",
+    },
+    "ja": {
+        "0": "<code>--json</code> を付けた場合は、stdout の1行の JSON を読む",
+        "2": "パスとファイル名を確認する",
+        "3": "アプリをインストールするか、アプリが不要な <code>export</code> を使う",
+        "4": "<code>--force</code> で上書きするか、<code>-o</code> で別の場所に書き出す",
+        "5": "JSON の結果の <code>message</code> を読む",
+        "64": "オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される",
     },
 }
+_EXIT_LIST = re.compile(re.escape(EXIT_TABLE_MARK) + r"\n<ul>\n(.*?)</ul>", re.S)
+_EXIT_ITEM = re.compile(r"<li><code>(\d+)</code>\s*[:：]\s*(.*?)</li>")
+
+
+def exit_table_html(locale: str, body: str) -> str:
+    def table(m):
+        head = "".join(f'<th scope="col">{cell}</th>' for cell in EXIT_TABLE_HEAD[locale])
+        labels = EXIT_TABLE_HEAD[locale][1:]
+        rows = "\n".join(
+            f'  <tr><th scope="row"><code>{code}</code></th><td data-label="{labels[0]}">{means}</td>'
+            f'<td data-label="{labels[1]}">{EXIT_REMEDY[locale].get(code, "")}</td></tr>'
+            for code, means in _EXIT_ITEM.findall(m.group(1))
+        )
+        return (f'<div class="table-scroll"><table class="compare">\n<thead><tr>{head}</tr></thead>\n'
+                f"<tbody>\n{rows}\n</tbody>\n</table></div>")
+    return _EXIT_LIST.sub(table, body)
 
 
 def compare_table_html(locale: str, key: str) -> str:
@@ -2834,6 +2867,8 @@ def all_pages() -> dict:
         body = page["body"]
         if THEME_GALLERY_MARK in body:
             body = body.replace(THEME_GALLERY_MARK, theme_gallery_html(locale))
+        if EXIT_TABLE_MARK in body:
+            body = exit_table_html(locale, body)
         for key in COMPARE_TABLES:
             body = body.replace(f"<!--compare:{key}-->", compare_table_html(locale, key))
         if body != page["body"]:

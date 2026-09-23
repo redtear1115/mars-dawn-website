@@ -73,12 +73,12 @@ When `--theme` isn't passed, `export` reads the `$MARSDAWN_THEME` environment va
 
 | Code | Means | What to do |
 |---|---|---|
-| `0` | Success | With `--json`, read the one JSON line on stdout |
-| `2` | The input file isn't there | Check the path and the file name |
-| `3` | MarsDawn isn't installed (`open` only) | Install the app, or use `export`, which doesn't need it |
-| `4` | The output PDF already exists | Pass `--force` to replace it, or `-o` to write elsewhere |
-| `5` | The export failed | Read `message` in the JSON result |
-| `64` | Usage error, including a line out of range or `--line` with more than one file | Fix the option or value; this error is text on stderr, even with `--json` |
+| `0` | success. | With `--json`, read the one JSON line on stdout |
+| `2` | input not found. | Check the path and the file name |
+| `3` | MarsDawn is not installed (`open` only). | Install the app, or use `export`, which doesn't need it |
+| `4` | output exists (pass `--force`). | Pass `--force` to replace it, or `-o` to write elsewhere |
+| `5` | export failed. | Read `message` in the JSON result |
+| `64` | usage error, including a line out of range or `--line` with more than one file. | Fix the option or value; this error is text on stderr, even with `--json` |
 
 ## --json output
 
