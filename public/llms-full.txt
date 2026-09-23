@@ -821,7 +821,7 @@ MarsDawn has no AI model of its own: it's built to review Markdown, not write it
 |---|---|---|
 | Can run a shell command | [The CLI](/cli/agents/) | macOS 15 or later |
 | Loads instruction files, like Claude Code | [The skill file](/cli/skill/) | The CLI, which the skill installs |
-| Calls tools over MCP | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn 0.5.0 or later, and Node.js 20 or later |
+| Calls tools over MCP | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 or later, marsdawn 0.5.0 or later, and Node.js 20 or later |
 
 ## The CLI
 
@@ -1878,7 +1878,7 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 |---|---|---|
 | 能執行 shell 指令 | [命令列工具](/zh-hant/cli/agents/) | macOS 15 以上 |
 | 會載入指令檔，例如 Claude Code | [skill 檔案](/zh-hant/cli/skill/) | 命令列工具（skill 會幫你安裝） |
-| 透過 MCP 呼叫工具 | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn 0.5.0 以上，以及 Node.js 20 以上 |
+| 透過 MCP 呼叫工具 | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 以上、marsdawn 0.5.0 以上，以及 Node.js 20 以上 |
 
 ## CLI
 
@@ -2000,12 +2000,12 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 
 ## 四種主題
 
-- ![Dawn 主題的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](/assets/screens/01-split-800.png) **Dawn（預設）**
-- ![Classic 主題，預覽佔滿整個視窗。](/assets/screens/02-classic-800.png) **Classic（典雅）**
-- ![Vivid 主題的並排版面。](/assets/screens/04-vivid-800.png) **Vivid（活潑）**
+- ![黎明主題的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](/assets/screens/01-split-800.png) **黎明（預設）**
+- ![典雅主題，預覽佔滿整個視窗。](/assets/screens/02-classic-800.png) **典雅**
+- ![活潑主題的並排版面。](/assets/screens/04-vivid-800.png) **活潑**
 - ![MarsDawn 的深色模式，並排版面。](/assets/screens/03-dark-800.png) **深色模式**
 
-Modern 還沒有截圖；第四張是深色模式。
+流行主題還沒有截圖；第四張是深色模式。
 
 - **黎明**，預設主題：和這個網站一樣的暖色紙感與 Mars Rust 強調色。
 - **典雅**：比較樸素、像紙本文件的配色。
@@ -2614,7 +2614,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 | 编辑 | 设计上就是只读 | 编辑源代码，排版后的页面就在旁边 |
 | 预览主题 | 12 种文档主题 | 4 种，各有浅色与深色 |
 | 图表与数学公式 | Mermaid 与代码高亮；介绍页没有提到数学公式 | Mermaid、代码高亮与 KaTeX 数学公式 |
-| Finder 快速查看 | 有 | 有 |
+| 访达快速查看 | 有 | 有 |
 | PDF 与打印 | 有 | 有 |
 | 系统要求 | macOS 14（Sonoma）或更高版本 | macOS 26（Tahoe）或更高版本 |
 | 界面语言 | 自己的资料没有写明 | 英文和繁体中文 |
@@ -2925,7 +2925,7 @@ MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不
 |---|---|---|
 | 能运行 shell 命令 | [命令行工具](/zh-hans/cli/agents/) | macOS 15 或更高版本 |
 | 会加载指令文件，例如 Claude Code | [skill 文件](/zh-hans/cli/skill/) | 命令行工具（skill 会帮你安装） |
-| 通过 MCP 调用工具 | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本 |
+| 通过 MCP 调用工具 | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 或更高版本、marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本 |
 
 ## CLI
 
@@ -3047,12 +3047,12 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 ## 四种主题
 
-- ![Dawn 主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。](/assets/screens/01-split-800.png) **Dawn（默认）**
-- ![Classic 主题，预览占满整个窗口。](/assets/screens/02-classic-800.png) **Classic（典雅）**
-- ![Vivid 主题的并排版面。](/assets/screens/04-vivid-800.png) **Vivid（活泼）**
+- ![黎明主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。](/assets/screens/01-split-800.png) **黎明（默认）**
+- ![典雅主题，预览占满整个窗口。](/assets/screens/02-classic-800.png) **典雅**
+- ![活泼主题的并排版面。](/assets/screens/04-vivid-800.png) **活泼**
 - ![MarsDawn 的深色模式，并排版面。](/assets/screens/03-dark-800.png) **深色模式**
 
-Modern 还没有截图；第四张是深色模式。
+流行主题还没有截图；第四张是深色模式。
 
 - **黎明**，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。
 - **典雅**：比较朴素、像纸质文稿的配色。
@@ -3972,7 +3972,7 @@ MarsDawn には自前の AI モデルがありません。Markdown を書くた�
 |---|---|---|
 | シェルコマンドを実行できる | [CLI](/ja/cli/agents/) | macOS 15 以降 |
 | Claude Code のように指示ファイルを読み込む | [スキルファイル](/ja/cli/skill/) | CLI（スキルがインストールします） |
-| MCP でツールを呼び出す | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn 0.5.0 以降と Node.js 20 以降 |
+| MCP でツールを呼び出す | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 以降、marsdawn 0.5.0 以降、Node.js 20 以降 |
 
 ## CLI
 
@@ -4094,12 +4094,12 @@ MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種�
 
 ## 4種類のテーマ
 
-- ![Dawn テーマの分割表示：左に Markdown のソース、右にレンダリングされたページ。](/assets/screens/01-split-800.png) **Dawn（デフォルト）**
-- ![Classic テーマ。プレビューがウインドウ全体に表示されています。](/assets/screens/02-classic-800.png) **Classic（典雅）**
-- ![Vivid テーマの分割表示。](/assets/screens/04-vivid-800.png) **Vivid（活潑）**
+- ![夜明けテーマの分割表示：左に Markdown のソース、右にレンダリングされたページ。](/assets/screens/01-split-800.png) **夜明け（デフォルト）**
+- ![クラシックテーマ。プレビューがウインドウ全体に表示されています。](/assets/screens/02-classic-800.png) **クラシック**
+- ![ビビッドテーマの分割表示。](/assets/screens/04-vivid-800.png) **ビビッド**
 - ![ダークモードの MarsDawn、分割表示。](/assets/screens/03-dark-800.png) **ダークモード**
 
-Modern のスクリーンショットはまだありません。4枚目はダークモードです。
+モダンのスクリーンショットはまだありません。4枚目はダークモードです。
 
 - **夜明け**、デフォルト：このサイトと同じ、温かみのある紙の質感と Mars Rust のアクセントカラー。
 - **クラシック**：より素朴で、紙の文書らしい配色。

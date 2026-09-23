@@ -2473,7 +2473,7 @@ COMPARE_TABLES = {
                 ["编辑", "设计上就是只读", "编辑源代码，排版后的页面就在旁边"],
                 ["预览主题", "12 种文档主题", "4 种，各有浅色与深色"],
                 ["图表与数学公式", "Mermaid 与代码高亮；介绍页没有提到数学公式", "Mermaid、代码高亮与 KaTeX 数学公式"],
-                ["Finder 快速查看", "有", "有"],
+                ["访达快速查看", "有", "有"],
                 ["PDF 与打印", "有", "有"],
                 ["系统要求", "macOS 14（Sonoma）或更高版本", "macOS 26（Tahoe）或更高版本"],
                 ["界面语言", "自己的资料没有写明", "{langs}"],
@@ -2567,22 +2567,22 @@ COMPARE_TABLES["mcp-choice"] = {
         "en": [
             ["Can run a shell command", '<a href="{root}cli/agents/">The CLI</a>', "macOS 15 or later"],
             ["Loads instruction files, like Claude Code", '<a href="{root}cli/skill/">The skill file</a>', "The CLI, which the skill installs"],
-            ["Calls tools over MCP", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn 0.5.0 or later, and Node.js 20 or later"],
+            ["Calls tools over MCP", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn-mcp 0.2.1 or later, marsdawn 0.5.0 or later, and Node.js 20 or later"],
         ],
         "zh-hant": [
             ["能執行 shell 指令", '<a href="{root}cli/agents/">命令列工具</a>', "macOS 15 以上"],
             ["會載入指令檔，例如 Claude Code", '<a href="{root}cli/skill/">skill 檔案</a>', "命令列工具（skill 會幫你安裝）"],
-            ["透過 MCP 呼叫工具", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn 0.5.0 以上，以及 Node.js 20 以上"],
+            ["透過 MCP 呼叫工具", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn-mcp 0.2.1 以上、marsdawn 0.5.0 以上，以及 Node.js 20 以上"],
         ],
         "zh-hans": [
             ["能运行 shell 命令", '<a href="{root}cli/agents/">命令行工具</a>', "macOS 15 或更高版本"],
             ["会加载指令文件，例如 Claude Code", '<a href="{root}cli/skill/">skill 文件</a>', "命令行工具（skill 会帮你安装）"],
-            ["通过 MCP 调用工具", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本"],
+            ["通过 MCP 调用工具", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn-mcp 0.2.1 或更高版本、marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本"],
         ],
         "ja": [
             ["シェルコマンドを実行できる", '<a href="{root}cli/agents/">CLI</a>', "macOS 15 以降"],
             ["Claude Code のように指示ファイルを読み込む", '<a href="{root}cli/skill/">スキルファイル</a>', "CLI（スキルがインストールします）"],
-            ["MCP でツールを呼び出す", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn 0.5.0 以降と Node.js 20 以降"],
+            ["MCP でツールを呼び出す", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn-mcp 0.2.1 以降、marsdawn 0.5.0 以降、Node.js 20 以降"],
         ],
     },
 }
@@ -2653,21 +2653,21 @@ def compare_table_html(locale: str, key: str) -> str:
 # screens. Modern has no screenshot yet, so it isn't pictured; the list under the gallery covers it.
 THEME_GALLERY_MARK = "<!--theme-gallery-->"
 THEME_SHOTS = [
-    ("01-split", {"en": "Dawn, the default", "zh-hant": "Dawn（預設）", "zh-hans": "Dawn（默认）", "ja": "Dawn（デフォルト）"},
+    ("01-split", {"en": "Dawn, the default", "zh-hant": "黎明（預設）", "zh-hans": "黎明（默认）", "ja": "夜明け（デフォルト）"},
      {"en": "The Dawn theme in split view: Markdown source on the left, the rendered page on the right.",
-      "zh-hant": "Dawn 主題的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。",
-      "zh-hans": "Dawn 主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。",
-      "ja": "Dawn テーマの分割表示：左に Markdown のソース、右にレンダリングされたページ。"}),
-    ("02-classic", {"en": "Classic", "zh-hant": "Classic（典雅）", "zh-hans": "Classic（典雅）", "ja": "Classic（典雅）"},
+      "zh-hant": "黎明主題的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。",
+      "zh-hans": "黎明主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。",
+      "ja": "夜明けテーマの分割表示：左に Markdown のソース、右にレンダリングされたページ。"}),
+    ("02-classic", {"en": "Classic", "zh-hant": "典雅", "zh-hans": "典雅", "ja": "クラシック"},
      {"en": "The Classic theme, with the preview filling the window.",
-      "zh-hant": "Classic 主題，預覽佔滿整個視窗。",
-      "zh-hans": "Classic 主题，预览占满整个窗口。",
-      "ja": "Classic テーマ。プレビューがウインドウ全体に表示されています。"}),
-    ("04-vivid", {"en": "Vivid", "zh-hant": "Vivid（活潑）", "zh-hans": "Vivid（活泼）", "ja": "Vivid（活潑）"},
+      "zh-hant": "典雅主題，預覽佔滿整個視窗。",
+      "zh-hans": "典雅主题，预览占满整个窗口。",
+      "ja": "クラシックテーマ。プレビューがウインドウ全体に表示されています。"}),
+    ("04-vivid", {"en": "Vivid", "zh-hant": "活潑", "zh-hans": "活泼", "ja": "ビビッド"},
      {"en": "The Vivid theme in split view.",
-      "zh-hant": "Vivid 主題的並排版面。",
-      "zh-hans": "Vivid 主题的并排版面。",
-      "ja": "Vivid テーマの分割表示。"}),
+      "zh-hant": "活潑主題的並排版面。",
+      "zh-hans": "活泼主题的并排版面。",
+      "ja": "ビビッドテーマの分割表示。"}),
     ("03-dark", {"en": "Dark mode", "zh-hant": "深色模式", "zh-hans": "深色模式", "ja": "ダークモード"},
      {"en": "MarsDawn in dark mode, in split view.",
       "zh-hant": "MarsDawn 的深色模式，並排版面。",
@@ -2690,9 +2690,9 @@ def theme_gallery_html(locale: str) -> str:
 
 THEME_GALLERY_NOTE = {
     "en": "Modern isn't pictured yet; the fourth shot shows dark mode instead.",
-    "zh-hant": "Modern 還沒有截圖；第四張是深色模式。",
-    "zh-hans": "Modern 还没有截图；第四张是深色模式。",
-    "ja": "Modern のスクリーンショットはまだありません。4枚目はダークモードです。",
+    "zh-hant": "流行主題還沒有截圖；第四張是深色模式。",
+    "zh-hans": "流行主题还没有截图；第四张是深色模式。",
+    "ja": "モダンのスクリーンショットはまだありません。4枚目はダークモードです。",
 }
 
 

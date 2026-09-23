@@ -10,7 +10,7 @@ MarsDawn has no AI model of its own: it's built to review Markdown, not write it
 |---|---|---|
 | Can run a shell command | [The CLI](/cli/agents/) | macOS 15 or later |
 | Loads instruction files, like Claude Code | [The skill file](/cli/skill/) | The CLI, which the skill installs |
-| Calls tools over MCP | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn 0.5.0 or later, and Node.js 20 or later |
+| Calls tools over MCP | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 or later, marsdawn 0.5.0 or later, and Node.js 20 or later |
 
 ## The CLI
 

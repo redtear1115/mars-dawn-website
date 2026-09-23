@@ -10,7 +10,7 @@ MarsDawn には自前の AI モデルがありません。Markdown を書くた�
 |---|---|---|
 | シェルコマンドを実行できる | [CLI](/ja/cli/agents/) | macOS 15 以降 |
 | Claude Code のように指示ファイルを読み込む | [スキルファイル](/ja/cli/skill/) | CLI（スキルがインストールします） |
-| MCP でツールを呼び出す | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn 0.5.0 以降と Node.js 20 以降 |
+| MCP でツールを呼び出す | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 以降、marsdawn 0.5.0 以降、Node.js 20 以降 |
 
 ## CLI
 

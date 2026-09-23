@@ -6,12 +6,12 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 ## 四种主题
 
-- ![Dawn 主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。](/assets/screens/01-split-800.png) **Dawn（默认）**
-- ![Classic 主题，预览占满整个窗口。](/assets/screens/02-classic-800.png) **Classic（典雅）**
-- ![Vivid 主题的并排版面。](/assets/screens/04-vivid-800.png) **Vivid（活泼）**
+- ![黎明主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。](/assets/screens/01-split-800.png) **黎明（默认）**
+- ![典雅主题，预览占满整个窗口。](/assets/screens/02-classic-800.png) **典雅**
+- ![活泼主题的并排版面。](/assets/screens/04-vivid-800.png) **活泼**
 - ![MarsDawn 的深色模式，并排版面。](/assets/screens/03-dark-800.png) **深色模式**
 
-Modern 还没有截图；第四张是深色模式。
+流行主题还没有截图；第四张是深色模式。
 
 - **黎明**，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。
 - **典雅**：比较朴素、像纸质文稿的配色。

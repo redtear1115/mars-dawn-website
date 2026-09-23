@@ -10,7 +10,7 @@ MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不
 |---|---|---|
 | 能运行 shell 命令 | [命令行工具](/zh-hans/cli/agents/) | macOS 15 或更高版本 |
 | 会加载指令文件，例如 Claude Code | [skill 文件](/zh-hans/cli/skill/) | 命令行工具（skill 会帮你安装） |
-| 通过 MCP 调用工具 | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本 |
+| 通过 MCP 调用工具 | [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) | marsdawn-mcp 0.2.1 或更高版本、marsdawn 0.5.0 或更高版本，以及 Node.js 20 或更高版本 |
 
 ## CLI
 
