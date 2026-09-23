@@ -85,20 +85,51 @@
     return document.getElementById("consent-banner");
   }
 
+  // The banner is `position: fixed` at the bottom of the viewport (site.css), so it
+  // would otherwise sit on top of whatever is there, including the hero's CTAs on
+  // mobile. Reserve exactly its own height as bottom padding on <body>, read from the
+  // banner's own rendered height (so it stays correct across locales, viewport widths
+  // and text reflow) rather than a guessed constant. The `has-consent-banner` class is
+  // what site.css keys the padding off; `--consent-banner-h` is the amount.
+  function reserveSpace(show) {
+    var root = document.documentElement;
+    if (show) {
+      var el = banner();
+      var h = el ? el.offsetHeight : 0;
+      root.style.setProperty("--consent-banner-h", h + "px");
+      root.classList.add("has-consent-banner");
+    } else {
+      root.classList.remove("has-consent-banner");
+      root.style.removeProperty("--consent-banner-h");
+    }
+  }
+
   function showBanner() {
     var el = banner();
-    if (el) el.hidden = false;
+    if (el) {
+      el.hidden = false;
+      reserveSpace(true);
+    }
   }
 
   function hideBanner() {
     var el = banner();
     if (el) el.hidden = true;
+    reserveSpace(false);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     var accept = document.getElementById("consent-accept");
     var decline = document.getElementById("consent-decline");
     var reopen = document.getElementById("consent-settings-link");
+
+    // A rotation or a resize (including the mobile URL-bar show/hide that changes
+    // viewport height) can change the banner's own height (e.g. its text rewraps),
+    // which would leave the reserved space wrong. Re-measure while it's showing.
+    window.addEventListener("resize", function () {
+      var el = banner();
+      if (el && !el.hidden) reserveSpace(true);
+    });
 
     if (accept) {
       accept.addEventListener("click", function () {
