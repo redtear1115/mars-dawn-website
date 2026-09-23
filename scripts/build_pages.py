@@ -68,6 +68,66 @@ def build_redirects() -> str:
 MCP_URL = "https://github.com/redtear1115/marsdawn-mcp"
 MCP_LICENSE = "Apache-2.0"
 
+# Website analytics: GA4 via Google Tag Manager (owner decision, #71 / mars-dawn#180).
+# Consent Mode v2 defaults every storage type to denied before GTM loads; the banner
+# (public/assets/consent.js) grants analytics_storage on "Accept" and stores the choice
+# in localStorage, never a cookie of ours. The GA4 tag itself lives inside the GTM
+# container, not in this repo's code, so only the container id appears here.
+GTM_CONTAINER_ID = "GTM-KCC7FDWZ"
+CONSENT_STORAGE_KEY = "md-consent"
+
+# The Consent Mode default + the standard GTM loader, exactly as they render in every page's
+# <head>, before anything else that could load a script. Content-Security-Policy allows each
+# by its sha256 hash (public/_headers) rather than 'unsafe-inline', so this text is the source
+# of truth for both the page and the hash: recompute the hash if either string changes.
+CONSENT_DEFAULT_SCRIPT = f"""window.dataLayer = window.dataLayer || [];
+function gtag(){{ dataLayer.push(arguments); }}
+gtag('consent', 'default', {{
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+}});
+try {{
+  if (localStorage.getItem('{CONSENT_STORAGE_KEY}') === 'accepted') {{
+    gtag('consent', 'update', {{ 'analytics_storage': 'granted' }});
+  }}
+}} catch (e) {{}}"""
+
+GTM_HEAD_SCRIPT = f"""(function(w,d,s,l,i){{
+  w[l] = w[l] || [];
+  w[l].push({{'gtm.start': new Date().getTime(), event: 'gtm.js'}});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+}})(window, document, 'script', 'dataLayer', '{GTM_CONTAINER_ID}');"""
+
+
+def consent_head_html() -> str:
+    """Consent Mode default (with the stored-choice check) then the GTM loader, as two
+    separate inline <script> elements: CSP hashes each script element's own content."""
+    return f"<script>{CONSENT_DEFAULT_SCRIPT}</script>\n<script>{GTM_HEAD_SCRIPT}</script>"
+
+
+def consent_banner_html(locale: str) -> str:
+    """The cookie-consent banner. Hidden by default (the `hidden` attribute, not CSS or JS),
+    so a no-JS visitor never sees it: consent.js only removes `hidden` once it has run and
+    found no stored choice. Accept and Decline share one button class — same size, weight and
+    style — so neither is more prominent than the other."""
+    ui = UI[locale]
+    return (
+        '<div id="consent-banner" class="consent-banner" role="region" '
+        f'aria-label="{ui["consent_aria"]}" hidden>\n'
+        f'  <p>{ui["consent_text"]}</p>\n'
+        '  <div class="consent-actions">\n'
+        f'    <button type="button" id="consent-decline" class="consent-btn">{ui["consent_decline"]}</button>\n'
+        f'    <button type="button" id="consent-accept" class="consent-btn">{ui["consent_accept"]}</button>\n'
+        "  </div>\n"
+        "</div>"
+    )
+
 LOCALES = {
     "en": {"prefix": "", "html_lang": "en", "label": "English", "root": "/"},
     "zh-hant": {"prefix": "zh-hant/", "html_lang": "zh-Hant", "label": "繁體中文", "root": "/zh-hant/"},
@@ -113,6 +173,9 @@ UI = {
         "vs-markdown-preview-tools": "Viewing Markdown elsewhere vs. MarsDawn", "themes": "Preview themes and PDF export",
         "sharing-exported-pdfs": "Sharing exported PDFs", "reviewing-ai-output": "Why AI output still needs a human reader",
         "changelog": "Changelog",
+        "consent_text": "This site uses analytics cookies to see how visitors use it. They stay off unless you accept.",
+        "consent_accept": "Accept", "consent_decline": "Decline", "consent_aria": "Cookie consent",
+        "cookie_settings": "Cookie settings",
     },
     "zh-hant": {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
@@ -130,6 +193,9 @@ UI = {
         "vs-markdown-preview-tools": "在別處看 Markdown，對比 MarsDawn", "themes": "預覽主題與 PDF 輸出",
         "sharing-exported-pdfs": "分享輸出的 PDF", "reviewing-ai-output": "為什麼 AI 寫的東西還是需要人讀過",
         "changelog": "更新紀錄",
+        "consent_text": "本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。",
+        "consent_accept": "接受", "consent_decline": "拒絕", "consent_aria": "Cookie 同意設定",
+        "cookie_settings": "Cookie 設定",
     },
 }
 
@@ -272,14 +338,16 @@ PAGES = {
 
 <h2>The website</h2>
 <p>The app and this website are two different things. The app collects nothing. A visit can be recorded only here, on marsdawn.southern-light.dev.</p>
-<p><strong>This is not on yet.</strong> This website sends nothing to an analytics service today. The list below is what it will record once that is switched on. It is published now so the description is already public before the first event. On the day it is switched on, delete this paragraph and leave the list.</p>
-<p>Once it is on:</p>
+<p>This site uses <strong>Google Analytics 4</strong>, loaded through <strong>Google Tag Manager</strong>. Every visitor starts with analytics denied: Google's Consent Mode sends only a cookieless ping with no analytics cookie and no persistent identifier, until you choose <em>Accept</em> in the banner. Choosing <em>Decline</em>, or making no choice at all, keeps it that way, and choosing <em>Decline</em> after a prior <em>Accept</em> turns analytics back off immediately and removes the cookies below. Change your choice at any time with the "Cookie settings" link in the footer of every page. The choice itself is stored only in your browser's local storage, never in a cookie of ours.</p>
+<p>Once you accept, Google Analytics sets its own cookies (<code>_ga</code> and <code>_ga_&lt;measurement id&gt;</code>) and records:</p>
 <ul>
-  <li><strong>Page views.</strong> The server records that a page was requested, and the referring address when the browser sends one.</li>
-  <li><strong>Clicks that leave through this site.</strong> A click that goes out through a redirect on this site, such as the link to the Mac App Store, is recorded. The destination is a fixed address, and the redirect adds no tracking parameters.</li>
-  <li><strong>What is not recorded.</strong> No cookies, no local storage, and no analytics script in the page. No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under <code>/themes/</code> are skipped, and are not sent on.</li>
-  <li><strong>A visit is only a page view.</strong> Each request is given a new random id, used for that request and not again. The site cannot recognise you on a later visit.</li>
-  <li><strong>Where it goes.</strong> The site's own server sends these events to PostHog's United States region. Your browser does not contact PostHog. PostHog keeps the events for 12 months. The full IP address is not forwarded.</li>
+  <li><strong>Page views and referrer.</strong> Which page was viewed, and the referring address when the browser sends one.</li>
+  <li><strong>Approximate location, device and browser.</strong> A coarse location derived from your IP address (city level at most), your device type, operating system and browser — none of it precise enough to identify you.</li>
+  <li><strong>Outbound clicks and scroll depth.</strong> Google Analytics' enhanced measurement records clicks that leave the site, such as the link to the Mac App Store, and how far you scroll down a page.</li>
+  <li><strong>IP addresses.</strong> Google Analytics 4 does not log or store IP addresses.</li>
+  <li><strong>What is not recorded.</strong> No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under <code>/themes/</code> are skipped, and are not sent on.</li>
+  <li><strong>Retention.</strong> Google keeps this data for 14 months, then deletes it.</li>
+  <li><strong>Where it's processed.</strong> Google Tag Manager and Google Analytics are operated by Google; your data may be processed in the United States as well as other countries where Google operates.</li>
   <li><strong>The host.</strong> Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.</li>
 </ul>
 
@@ -336,14 +404,16 @@ PAGES = {
 
 <h2>這個網站</h2>
 <p>App 和這個網站是兩件事。App 不收集資料。會記下造訪的，只有 marsdawn.southern-light.dev。</p>
-<p><strong>目前還沒有開啟。</strong>這個網站今天不會把任何東西送到分析服務。下面是開啟之後會記錄的內容，先寫在這裡，讓第一筆記錄出現之前，說明就已經公開。開啟的那天，刪掉這一段，其餘留下。</p>
-<p>開啟之後：</p>
+<p>這個網站使用透過<strong>Google Tag Manager</strong>載入的<strong>Google Analytics 4</strong>。每位訪客一開始的分析狀態都是拒絕：Google 的同意模式只會送出一個沒有 cookie、不含任何持續性識別碼的連線，直到你在橫幅中選擇「接受」為止。選擇「拒絕」，或是不做選擇，都會維持這個狀態；如果先前選過「接受」再改選「拒絕」，分析會立即關閉，下面提到的 cookie 也會被移除。你可以隨時用每一頁頁尾的「Cookie 設定」連結改變選擇；這個選擇只存在你瀏覽器的本機儲存空間裡，不是我們設下的 cookie。</p>
+<p>一旦你按下接受，Google Analytics 就會設定自己的 cookie（<code>_ga</code> 與 <code>_ga_&lt;評估 ID&gt;</code>），並記錄：</p>
 <ul>
-  <li><strong>頁面瀏覽。</strong>伺服器會記錄某個頁面被請求，以及瀏覽器有送出來源網址時的那個網址。</li>
-  <li><strong>經由本站轉出去的點擊。</strong>經由本站轉址才離開的點擊會被記錄，例如前往 Mac App Store 的連結。目的地是固定網址，轉址不會附加追蹤參數。</li>
-  <li><strong>不會記錄的。</strong>沒有 cookie，也不使用瀏覽器的本地儲存，頁面裡沒有分析程式。沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 <code>/themes/</code> 索取主題檔案的請求會被略過，不會送出。</li>
-  <li><strong>一次造訪只是一次瀏覽。</strong>每個請求配一組只用一次的隨機編號，用完即棄。網站無法在你下次來時認出你。</li>
-  <li><strong>資料去哪裡。</strong>這些事件由網站自己的伺服器送給 PostHog（美國區）。你的瀏覽器不會連到 PostHog。PostHog 會把這些事件保留 12 個月。完整的 IP 位址不會轉送過去。</li>
+  <li><strong>頁面瀏覽與來源網址。</strong>被瀏覽的頁面，以及瀏覽器有送出來源網址時的那個網址。</li>
+  <li><strong>大略位置、裝置與瀏覽器。</strong>由你的 IP 位址推算出的粗略位置（最多到城市層級）、裝置類型、作業系統與瀏覽器，都不足以用來辨識你是誰。</li>
+  <li><strong>經由本站離開的點擊與捲動。</strong>Google Analytics 的加強型評估會記錄離開本站的點擊（例如前往 Mac App Store 的連結），以及你在頁面上捲動的程度。</li>
+  <li><strong>IP 位址。</strong>Google Analytics 4 不會記錄或保存 IP 位址。</li>
+  <li><strong>不會記錄的。</strong>沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 <code>/themes/</code> 索取主題檔案的請求會被略過，不會送出。</li>
+  <li><strong>保留期限。</strong>Google 會保留這些資料 14 個月，之後刪除。</li>
+  <li><strong>資料處理地點。</strong>Google Tag Manager 與 Google Analytics 由 Google 營運；你的資料可能會在美國及 Google 營運所在的其他國家處理。</li>
   <li><strong>主機。</strong>網站放在 Cloudflare。和任何主機一樣，它在回應請求時會看到你的 IP 位址。那是主機自己的日誌，不是上面的分析。</li>
 </ul>
 
@@ -2780,6 +2850,10 @@ def render(locale: str, slug: str, page: dict) -> str:
         for target in ("support", "privacy", "cli")
         if has_page(locale, target)
     )
+    # Reopens the consent banner (consent.js). No cookie/analytics page of its own to link to,
+    # so it's a button styled as a link, not an <a>: nothing to navigate to without JS, and
+    # without JS there is no banner to reopen either (see consent_banner_html).
+    footer_links += f'    <button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button>\n'
     # The home page's closing band just above already carries the slogan as its headline.
     footer_meta = '<span class="footer-origin">© 2026 · MADE IN TAIWAN</span>'
     if slug != "index":
@@ -2793,6 +2867,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
+{consent_head_html()}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{page["title"]}</title>
 <meta name="description" content="{page["description"]}">
@@ -2801,8 +2876,10 @@ def render(locale: str, slug: str, page: dict) -> str:
 <link rel="stylesheet" href="/assets/site.css">
 {extra_css}{alternates}
 {seo}
-{jsonld}</head>
+{jsonld}<script src="/assets/consent.js" defer></script>
+</head>
 <body>
+{consent_banner_html(locale)}
 <div class="page">
 <header class="masthead">
   <a class="brand" href="{home_path(locale)}">
@@ -3079,6 +3156,7 @@ def render_404(locale: str) -> str:
         for target in ("support", "privacy", "cli")
         if has_page(locale, target)
     )
+    footer_links += f'    <button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button>\n'
     footer_meta = f'<span>{ui["slogan"]}</span> <span>{ui["footer_store"]}</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span>'
     footer_html = (
         '<footer class="footer">\n'
@@ -3089,6 +3167,7 @@ def render_404(locale: str) -> str:
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
+{consent_head_html()}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{copy["title"]}</title>
 <meta name="description" content="{copy["body"]}">
@@ -3097,8 +3176,10 @@ def render_404(locale: str) -> str:
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="canonical" href="{canonical_url}">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+{consent_banner_html(locale)}
 <div class="page">
 <header class="masthead">
   <a class="brand" href="{home_path(locale)}">

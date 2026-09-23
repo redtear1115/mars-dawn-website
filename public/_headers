@@ -1,9 +1,16 @@
 # Security headers for every response. Cloudflare merges all matching rules,
 # so the theme paths below get these as well as their cache rules.
-# The pages are static: one same-origin stylesheet, same-origin images,
-# system fonts, no scripts, no forms, no frames.
+# The pages are static: one same-origin stylesheet, same-origin images, system fonts, no
+# forms, no frames. The only scripts are the site's own (script-src 'self', e.g. consent.js)
+# plus Google Tag Manager and the two small inline scripts in every page's <head> that run
+# before it (Consent Mode default, then the GTM loader) — each allowed by its own sha256
+# hash rather than 'unsafe-inline', so no other inline script can run silently. connect-src
+# and img-src carry GTM's/GA4's own pings and hits; there is no frame-src because the site
+# never embeds the GTM noscript <iframe> (see README's Editing/analytics note): that iframe
+# would fire before the visitor has made any consent choice. Recompute the hashes (see
+# scripts/build_pages.py, consent_head_html) if either inline script's text ever changes.
 /*
-  Content-Security-Policy: default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://www.googletagmanager.com 'sha256-ylEE22n2STTXrv3UyLAJppGxBgV21fP9wtwHyTalatg=' 'sha256-URYC9fDjlgfDaRKcbIUOtR6DbFRxpSw7IJ3QF0x5Xxg='; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; img-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   X-Frame-Options: DENY

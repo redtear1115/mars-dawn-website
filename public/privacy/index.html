@@ -2,6 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy · MarsDawn</title>
 <meta name="description" content="MarsDawn does not collect personal data. Your documents and settings stay on your Mac.">
@@ -25,8 +47,16 @@
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/">
@@ -46,14 +76,16 @@
 
 <h2>The website</h2>
 <p>The app and this website are two different things. The app collects nothing. A visit can be recorded only here, on marsdawn.southern-light.dev.</p>
-<p><strong>This is not on yet.</strong> This website sends nothing to an analytics service today. The list below is what it will record once that is switched on. It is published now so the description is already public before the first event. On the day it is switched on, delete this paragraph and leave the list.</p>
-<p>Once it is on:</p>
+<p>This site uses <strong>Google Analytics 4</strong>, loaded through <strong>Google Tag Manager</strong>. Every visitor starts with analytics denied: Google's Consent Mode sends only a cookieless ping with no analytics cookie and no persistent identifier, until you choose <em>Accept</em> in the banner. Choosing <em>Decline</em>, or making no choice at all, keeps it that way, and choosing <em>Decline</em> after a prior <em>Accept</em> turns analytics back off immediately and removes the cookies below. Change your choice at any time with the "Cookie settings" link in the footer of every page. The choice itself is stored only in your browser's local storage, never in a cookie of ours.</p>
+<p>Once you accept, Google Analytics sets its own cookies (<code>_ga</code> and <code>_ga_&lt;measurement id&gt;</code>) and records:</p>
 <ul>
-  <li><strong>Page views.</strong> The server records that a page was requested, and the referring address when the browser sends one.</li>
-  <li><strong>Clicks that leave through this site.</strong> A click that goes out through a redirect on this site, such as the link to the Mac App Store, is recorded. The destination is a fixed address, and the redirect adds no tracking parameters.</li>
-  <li><strong>What is not recorded.</strong> No cookies, no local storage, and no analytics script in the page. No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under <code>/themes/</code> are skipped, and are not sent on.</li>
-  <li><strong>A visit is only a page view.</strong> Each request is given a new random id, used for that request and not again. The site cannot recognise you on a later visit.</li>
-  <li><strong>Where it goes.</strong> The site's own server sends these events to PostHog's United States region. Your browser does not contact PostHog. PostHog keeps the events for 12 months. The full IP address is not forwarded.</li>
+  <li><strong>Page views and referrer.</strong> Which page was viewed, and the referring address when the browser sends one.</li>
+  <li><strong>Approximate location, device and browser.</strong> A coarse location derived from your IP address (city level at most), your device type, operating system and browser — none of it precise enough to identify you.</li>
+  <li><strong>Outbound clicks and scroll depth.</strong> Google Analytics' enhanced measurement records clicks that leave the site, such as the link to the Mac App Store, and how far you scroll down a page.</li>
+  <li><strong>IP addresses.</strong> Google Analytics 4 does not log or store IP addresses.</li>
+  <li><strong>What is not recorded.</strong> No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under <code>/themes/</code> are skipped, and are not sent on.</li>
+  <li><strong>Retention.</strong> Google keeps this data for 14 months, then deletes it.</li>
+  <li><strong>Where it's processed.</strong> Google Tag Manager and Google Analytics are operated by Google; your data may be processed in the United States as well as other countries where Google operates.</li>
   <li><strong>The host.</strong> Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.</li>
 </ul>
 
@@ -100,6 +132,7 @@
     <a href="/support/">Support</a>
     <a href="/privacy/" aria-current="page">Privacy Policy</a>
     <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
   </nav>
   <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>

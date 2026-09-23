@@ -7,7 +7,7 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 
 
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': 'MarsDawn は Mac App Store で近日公開予定です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'changelog': '更新履歴'}
+    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': 'MarsDawn は Mac App Store で近日公開予定です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'changelog': '更新履歴', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定'}
     store_chip = 'Mac App Store で近日公開'
     schema_notes = {'export': 'export 成功時', 'open': 'open 成功時、marsdawn 0.3.0 以降', 'error': '失敗時、両方のコマンド共通', 'open_v1': 'open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）'}
     example_plan = '# 計画：エクスポートを高速化\n\nこの計画はエージェントが書きました。内容を確認してから、PDF にします。\n\n## ステップ\n\n| ステップ | 担当 | 状況 |\n|------|-------|--------|\n| 遅いページを計測する | エージェント | 完了 |\n| レンダリング済み図をキャッシュする | エージェント | レビュー中 |\n\n50 ページの文書で目標とするのは $t < 2\\,\\text{s}$：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  ドラフト --> レビュー --> 公開\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -105,14 +105,16 @@ def build(k) -> dict:
 
 <h2>このウェブサイト</h2>
 <p>アプリとこのウェブサイトは別のものです。アプリはデータを収集しません。訪問が記録され得るのは、marsdawn.southern-light.dev だけです。</p>
-<p><strong>まだ有効になっていません。</strong>このウェブサイトは、今日はアナリティクスのサービスへ何も送りません。以下は、有効にしたあとに記録する内容です。最初の記録より前に公開しておくため、ここに書いてあります。有効にする日にはこの段落だけを削除し、リストは残します。</p>
-<p>有効にしたあと：</p>
+<p>このサイトは<strong>Google タグマネージャー</strong>経由で読み込まれる<strong>Google アナリティクス 4</strong>を使用しています。訪問者は最初、分析が拒否された状態で始まります。Google の同意モードは、バナーで「同意する」を選ぶまで、クッキーを使わず持続的な識別子も含まない通信だけを送ります。「同意しない」を選んだ場合、または何も選ばなかった場合も、この状態が続きます。以前に「同意する」を選んでいた場合でも、あとから「同意しない」に変更すると、分析はすぐに無効になり、下記のクッキーも削除されます。いつでもフッターの「Cookie 設定」リンクから選択を変更できます。この選択はブラウザのローカルストレージにのみ保存され、当サイト独自のクッキーではありません。</p>
+<p>同意すると、Google アナリティクスは自身のクッキー（<code>_ga</code> と <code>_ga_&lt;測定 ID&gt;</code>）を設定し、次を記録します。</p>
 <ul>
-  <li><strong>ページの閲覧。</strong>サーバーは、ページがリクエストされたことと、ブラウザが参照元のアドレスを送った場合はそのアドレスを記録します。</li>
-  <li><strong>このサイト経由で外へ出るクリック。</strong>このサイト上のリダイレクトを通って離れるクリックを記録します。Mac App Store へのリンクがその例です。行き先は固定のアドレスで、リダイレクトにトラッキング用のパラメータは付きません。</li>
-  <li><strong>記録しないもの。</strong>Cookie も、ブラウザのローカルストレージも、ページ内のアナリティクス用スクリプトもありません。アカウントはありません。このサイトにアカウント機能がないためです。文書も、入力した文字も記録しません。サイトをまたいだ広告もなく、あなたのプロフィールも作りません。アプリが <code>/themes/</code> 以下のテーマファイルを取りに行くリクエストは対象外で、送られません。</li>
-  <li><strong>訪問はページの閲覧でしかありません。</strong>リクエストごとに新しいランダムな番号を一つ割り当て、そのリクエストにだけ使い、再利用しません。次に訪れたときに、あなただと分かることはありません。</li>
-  <li><strong>どこへ送られるか。</strong>これらのイベントは、このサイト自身のサーバーから PostHog（米国リージョン）へ送られます。ブラウザが PostHog に接続することはありません。PostHog の保持期間は12か月です。完全な IP アドレスは転送しません。</li>
+  <li><strong>ページビューと参照元。</strong>閲覧されたページと、ブラウザが送信した場合の参照元アドレス。</li>
+  <li><strong>おおよその位置情報、デバイス、ブラウザ。</strong>IP アドレスから推定される、市区町村レベル程度までの位置情報、デバイスの種類、OS、ブラウザ。いずれも個人を特定できるものではありません。</li>
+  <li><strong>サイトを離れるクリックとスクロール。</strong>Google アナリティクスの拡張計測機能は、サイトを離れるクリック（Mac App Store へのリンクなど）と、ページをどこまでスクロールしたかを記録します。</li>
+  <li><strong>IP アドレス。</strong>Google アナリティクス 4 は IP アドレスを記録・保存しません。</li>
+  <li><strong>記録しないもの。</strong>アカウントはありません。このサイトにアカウント機能がないためです。文書も、入力した文字も記録しません。サイトをまたいだ広告もなく、あなたのプロフィールも作りません。アプリが <code>/themes/</code> 以下のテーマファイルを取りに行くリクエストは対象外で、送られません。</li>
+  <li><strong>保持期間。</strong>Google はこのデータを14か月保持したあと、削除します。</li>
+  <li><strong>データの処理場所。</strong>Google タグマネージャーと Google アナリティクスは Google が運営しており、データは米国および Google が事業を行うその他の国で処理される場合があります。</li>
   <li><strong>ホスティング。</strong>サイトは Cloudflare 上にあります。どのホストとも同じく、リクエストに応答する間は IP アドレスを見ます。それはホスト自身のログであり、上のアナリティクスではありません。</li>
 </ul>
 
