@@ -2683,7 +2683,7 @@ def theme_gallery_html(locale: str) -> str:
         items.append(
             f'  <li><img src="/assets/screens/{image}-{SMALL_WIDTH}.png" srcset="/assets/screens/{image}-{SMALL_WIDTH}.png {SMALL_WIDTH}w, '
             f'/assets/screens/{image}-{width}.png {width}w" sizes="(min-width: 760px) 31rem, calc(100vw - 32px)" '
-            f'width="{width}" height="{height}" alt="{alt[locale]}" loading="lazy"> <strong>{name[locale]}</strong></li>'
+            f'width="{width}" height="{height}" alt="{alt[locale]}" loading="lazy"> <strong class="theme-name">{name[locale]}</strong></li>'
         )
     return '<ul class="theme-gallery">\n' + "\n".join(items) + "\n</ul>\n" + f'<p class="gallery-note">{THEME_GALLERY_NOTE[locale]}</p>'
 
