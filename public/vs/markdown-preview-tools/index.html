@@ -72,6 +72,17 @@ try {
   <p>If you already have VS Code, a browser or Claude Desktop open, reaching for one of them to glance at a Markdown file is reasonable. Here's what each one actually renders, and what it costs to get there, compared with opening the same file in MarsDawn.</p>
 </section>
 
+<h2>At a glance</h2>
+<div class="table-scroll"><table class="compare compare-wide">
+<thead><tr><th scope="col"></th><th scope="col">VS Code preview</th><th scope="col">Browser extension</th><th scope="col">Claude Desktop</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Opens a Markdown file from disk</th><td>Yes</td><td>Yes, once file access is allowed</td><td>No: Markdown isn't on its upload list</td><td>Yes</td></tr>
+  <tr><th scope="row">Before the first file</th><td>Install VS Code, a whole development environment</td><td>Install an extension, then turn on “Allow access to file URLs”</td><td>It can't browse files on disk</td><td>Install MarsDawn</td></tr>
+  <tr><th scope="row">Built for</th><td>Writing code; the preview is one pane among many</td><td>Browsing the web</td><td>Conversations with Claude</td><td>Reading and editing Markdown</td></tr>
+  <tr><th scope="row">Draws the page with</th><td>Electron: a bundled Chromium and Node.js</td><td>A full browser</td><td>The Claude Desktop app</td><td>A native AppKit app; WebKit draws the page</td></tr>
+</tbody>
+</table></div>
+
 <h2>VS Code's built-in preview</h2>
 <p>Press <kbd>&#8984;&#8679;V</kbd> in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively &#8212; Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading &#8212; the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app you install as a whole development environment, not something you open to read one file.</p>
 

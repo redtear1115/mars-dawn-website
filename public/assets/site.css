@@ -19,6 +19,8 @@
 :lang(zh-Hans) { --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", sans-serif; }
 :lang(ja) { --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif; }
 body [lang] { font-family: var(--font); }
+/* Japanese headings break between phrases, not inside a word (Chromium; others keep the default). */
+:lang(ja) :is(h1, h2, h3) { word-break: auto-phrase; }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -1241,4 +1243,53 @@ html { overflow-x: hidden; }
   margin-top: 10px;
   padding-inline: 2px;
   font-size: 0.95rem;
+}
+
+/* ---- Comparison tables ------------------------------------------------------
+   Facts side by side, read across a row. Ruled with hairlines, no fills,
+   MarsDawn's column last and in ink so it reads as the answer, the other
+   columns in dust. Wide tables scroll inside their own box on a phone
+   rather than pushing the page sideways. */
+.table-scroll {
+  margin: 16px 0 22px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.compare {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.compare th,
+.compare td {
+  padding: 11px 14px 11px 0;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--hairline);
+}
+.compare th:last-child,
+.compare td:last-child { padding-right: 0; }
+.compare thead th {
+  padding-top: 0;
+  color: var(--dust);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-bottom-color: var(--ink);
+}
+.compare thead th:last-child { color: var(--ember); }
+.compare tbody th[scope="row"] {
+  width: 26%;
+  font-weight: 650;
+}
+.compare td { color: var(--dust); }
+.compare td:last-child { color: var(--ink); }
+.compare-wide { min-width: 40rem; }
+.compare-wide tbody th[scope="row"] { width: 18%; }
+/* On a phone the row labels stay put while the columns scroll under them. */
+.compare-wide th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--paper);
 }

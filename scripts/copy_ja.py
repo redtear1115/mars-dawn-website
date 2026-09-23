@@ -376,23 +376,9 @@ marsdawn --version</code></pre>
 <h2>読むだけでよく、編集の必要がない場合</h2>
 <p>他の人が書いた Markdown を読むことだけが仕事で、ソースに触れる必要が一切ないなら、MacMD Viewer は妥当な選択です。まさにそのために作られており、今すぐ入手でき、より古い macOS でも動作します。読むことだけが仕事ではなくなったときに MarsDawn が価値を持ちます。エージェントの Markdown はたいてい、もう一度手直しが入るからです。</p>
 <h2>それぞれのアプリでできること</h2>
-<ul>
-  <li><strong>編集：</strong>MacMD Viewer は設計上、読み取り専用です。MarsDawn はソースを編集しながらその場でレンダリングするので、入力すると変更が表示されます。</li>
-  <li><strong>プレビューのテーマ：</strong>MacMD Viewer には12種類の文書テーマがあります。MarsDawn は 夜明け、クラシック、モダン、ビビッド の4種類で、それぞれライトとダークのパレットがあります。</li>
-  <li><strong>図と数式：</strong>どちらも Mermaid 図をレンダリングし、コードをハイライトします。MarsDawn は KaTeX の数式もレンダリングしますが、MacMD Viewer 自身の紹介には数式のレンダリングについて記載がありません。</li>
-  <li><strong>Finder 連携：</strong>どちらもクイックルック拡張機能を追加しており、Finder で <code>.md</code> ファイルを選んでスペースキーを押すとレンダリングされたページが表示されます。</li>
-  <li><strong>PDF と印刷：</strong>どちらもレンダリングされたページを PDF として書き出したり印刷したりできます。</li>
-  <li><strong>システム要件：</strong>MacMD Viewer は macOS 14（Sonoma）以降が必要です。MarsDawn は macOS 26（Tahoe）以降が必要です。</li>
-  <li><strong>言語：</strong>MarsDawn のインターフェースは{k.APP_UI_LANGUAGES}に対応しています。MacMD Viewer 自身の資料は UI の言語を明記していないため、このページではその点を比較していません。</li>
-</ul>
+<!--compare:macmd-features-->
 <h2>価格と購入方法</h2>
-<ul>
-  <li><strong>購入場所：</strong>MacMD Viewer は自社サイトから直接ダウンロードでき、Homebrew と Setapp にもありますが、Mac App Store にはありません。MarsDawn は Mac App Store のみです。</li>
-  <li><strong>価格：</strong>MacMD Viewer は1台の Mac につき一度きり USD 19.99（3台パックやボリュームパックはより高額）。MarsDawn は無料でダウンロードでき、その後 USD 4.99 の一度きりのロック解除です。</li>
-  <li><strong>先に試す：</strong>MacMD Viewer には無料トライアルはなく、直接購入には代わりに14日間の返金保証が付いています。MarsDawn は支払う前に14日間のトライアルを提供します。</li>
-  <li><strong>返金と更新：</strong>MacMD Viewer の返金と更新は自社サイトで処理されます。MarsDawn の購入は Apple を通じて行われるため、返金と更新は Apple の標準プロセスを使います。</li>
-  <li><strong>アカウント：</strong>どちらのアプリも利用にアカウントは不要です。</li>
-</ul>
+<!--compare:macmd-buying-->
 <h2>今すぐ無料で試す</h2>
 <p>MarsDawn は Mac App Store で近日公開予定で、まだ販売されていません。それまでは、無料の <code>marsdawn</code> コマンドラインツールが、今すぐどんな Markdown ファイルも Mermaid 図とハイライトされたコード付きの PDF にレンダリングでき、他に何もインストールする必要はありません。</p>
 <pre><code>{k.BREW_TAP_INSTALL}
@@ -695,6 +681,9 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <h1>ほかの場所で Markdown を見る、対 MarsDawn。</h1>
   <p>すでに VS Code やブラウザ、Claude Desktop を開いているなら、それらで Markdown ファイルをちらっと見るのは妥当な選択です。それぞれが実際に何をレンダリングし、そこにたどり着くのに何が必要か、MarsDawn で同じファイルを開いた場合と比較してみます。</p>
 </section>
+
+<h2>ひと目で比較</h2>
+<!--compare:preview-tools-->
 
 <h2>VS Code の内蔵プレビュー</h2>
 <p>VS Code で <kbd>&#8984;&#8679;V</kbd> を押すと、内蔵のプレビューパネルで Markdown ファイルがレンダリングされます。無料で、インストールするものもありません。VS Code 1.121（2026年5月）以降、このプレビューは Mermaid 図もネイティブに描画します。Microsoft が Mermaid 拡張機能を VS Code 本体に組み込んだためで、以前は別の拡張機能が必要でしたが、今は不要です。できないこと：これはエディタの中のプレビューパネルであって、読むために作られたエディタではありません。パネルの隣にはファイルツリー、ターミナル、VS Code が表示できるその他のパネルが並び、VS Code 自体も Electron アプリで、インストールするのは開発環境一式であって、1つのファイルを読むために開くものではありません。</p>

@@ -734,23 +734,9 @@ open notes.pdf</code></pre>
 <h2>如果你只需要读，不需要编辑</h2>
 <p>如果你的工作就是读别人写好的 Markdown，完全不用碰源代码，MacMD Viewer 是合理的选择：它就是为这件事做的，现在就能买，也能在比较旧的 macOS 上跑。当阅读不是全部的工作时，MarsDawn 才值得，因为 agent 写的 Markdown 通常还要再改一轮。</p>
 <h2>各自能做什么</h2>
-<ul>
-  <li><strong>编辑：</strong>MacMD Viewer 设计上就是只读。MarsDawn 边编辑源代码边在旁边排版，打字的同时就看得到改动。</li>
-  <li><strong>预览主题：</strong>MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：黎明、典雅、流行和活泼，各有浅色与深色。</li>
-  <li><strong>图表与数学公式：</strong>两者都能画出 Mermaid 图表、也都有代码高亮。MarsDawn 还能排版 KaTeX 数学公式；MacMD Viewer 自己的介绍页没有提到数学公式排版。</li>
-  <li><strong>访达集成：</strong>两者都有访达的快速查看扩展功能，对 <code>.md</code> 文件按空格键就能看到排好版的页面。</li>
-  <li><strong>PDF 与打印：</strong>两者都能把排好版的页面输出或打印成 PDF。</li>
-  <li><strong>系统需求：</strong>MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。</li>
-  <li><strong>语言：</strong>MarsDawn 的界面有{k.APP_UI_LANGUAGES}。MacMD Viewer 自己的资料没有写出界面语言，这页就不比较这一项。</li>
-</ul>
+<!--compare:macmd-features-->
 <h2>价格与购买方式</h2>
-<ul>
-  <li><strong>从哪里买：</strong>MacMD Viewer 从自己的网站直接下载，也上架 Homebrew 和 Setapp，但不在 Mac App Store 上；MarsDawn 只在 Mac App Store 上架。</li>
-  <li><strong>价格：</strong>MacMD Viewer 一台 Mac 一次 USD 19.99（三台的组合包和批量授权更贵）。MarsDawn 免费下载，之后以 USD 4.99 一次解锁。</li>
-  <li><strong>先试用：</strong>MacMD Viewer 没有免费试用，直接购买改用 14 天内可退款的保证。MarsDawn 在你付费之前，先给你 14 天的试用。</li>
-  <li><strong>退款与更新：</strong>MacMD Viewer 的退款和更新都在它自己的网站上处理。MarsDawn 通过 Apple 购买，退款和更新都走 Apple 的标准流程。</li>
-  <li><strong>账户：</strong>两者都不需要账户就能使用。</li>
-</ul>
+<!--compare:macmd-buying-->
 <h2>现在就能免费试试看</h2>
 <p>MarsDawn 即将在 Mac App Store 上架，现在还没开卖。在那之前，免费的 <code>marsdawn</code> 命令行工具今天就能把任何 Markdown 文件转成 PDF，Mermaid 图表和代码高亮都在，而且不需要安装其他东西：</p>
 <pre><code>{k.BREW_TAP_INSTALL}
@@ -772,6 +758,9 @@ open notes.pdf</code></pre>
   <h1>在别处看 Markdown，对比 MarsDawn。</h1>
   <p>如果你手边刚好开着 VS Code、浏览器或 Claude Desktop，用它们顺手看一眼 Markdown 文件也合理。以下是它们各自实际排版出什么、要花多少功夫才能看到，和在 MarsDawn 里打开同一份文件的比较。</p>
 </section>
+<h2>一眼看完</h2>
+<!--compare:preview-tools-->
+
 <h2>VS Code 内置的预览</h2>
 <p>在 VS Code 按 <kbd>&#8984;&#8679;V</kbd>，就会用内置的预览窗格排版出 Markdown 文件，免费，不用另外安装。从 VS Code 1.121（2026 年 5 月）开始，这个预览也能原生画出 Mermaid 图表&#8212;&#8212;微软把一个 Mermaid 扩展并进了 VS Code 本体，以前需要另外装扩展，现在不用了。它做不到的：这是编辑器里的一个预览窗格，不是为了阅读而做的编辑器&#8212;&#8212;窗格旁边还有文件树、终端和 VS Code 能显示的其他所有面板，而 VS Code 本身是 Electron app，你装的是一整套开发环境，不是一个用来读文件的工具。</p>
 <h2>看本机文件的浏览器扩展</h2>

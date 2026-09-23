@@ -2,6 +2,15 @@
 
 如果你手边刚好开着 VS Code、浏览器或 Claude Desktop，用它们顺手看一眼 Markdown 文件也合理。以下是它们各自实际排版出什么、要花多少功夫才能看到，和在 MarsDawn 里打开同一份文件的比较。
 
+## 一眼看完
+
+|  | VS Code 预览 | 浏览器扩展 | Claude Desktop | MarsDawn |
+|---|---|---|---|---|
+| 打开磁盘上的 Markdown 文件 | 可以 | 可以，但要先允许访问文件 | 不行：Markdown 不在可上传的类型里 | 可以 |
+| 打开第一个文件之前 | 安装 VS Code，一整套开发环境 | 安装扩展，再打开“允许访问文件网址” | 无法浏览磁盘上的文件 | 安装 MarsDawn |
+| 为什么而做 | 写代码；预览只是众多面板之一 | 浏览网页 | 和 Claude 对话 | 阅读与编辑 Markdown |
+| 用什么画出页面 | Electron：内含 Chromium 和 Node.js | 一整个浏览器 | Claude Desktop 本身 | 原生的 AppKit app，页面由 WebKit 绘制 |
+
 ## VS Code 内置的预览
 
 在 VS Code 按 `⌘⇧V`，就会用内置的预览窗格排版出 Markdown 文件，免费，不用另外安装。从 VS Code 1.121（2026 年 5 月）开始，这个预览也能原生画出 Mermaid 图表——微软把一个 Mermaid 扩展并进了 VS Code 本体，以前需要另外装扩展，现在不用了。它做不到的：这是编辑器里的一个预览窗格，不是为了阅读而做的编辑器——窗格旁边还有文件树、终端和 VS Code 能显示的其他所有面板，而 VS Code 本身是 Electron app，你装的是一整套开发环境，不是一个用来读文件的工具。

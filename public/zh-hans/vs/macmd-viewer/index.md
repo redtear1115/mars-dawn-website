@@ -8,21 +8,25 @@
 
 ## 各自能做什么
 
-- **编辑：**MacMD Viewer 设计上就是只读。MarsDawn 边编辑源代码边在旁边排版，打字的同时就看得到改动。
-- **预览主题：**MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：黎明、典雅、流行和活泼，各有浅色与深色。
-- **图表与数学公式：**两者都能画出 Mermaid 图表、也都有代码高亮。MarsDawn 还能排版 KaTeX 数学公式；MacMD Viewer 自己的介绍页没有提到数学公式排版。
-- **访达集成：**两者都有访达的快速查看扩展功能，对 `.md` 文件按空格键就能看到排好版的页面。
-- **PDF 与打印：**两者都能把排好版的页面输出或打印成 PDF。
-- **系统需求：**MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。
-- **语言：**MarsDawn 的界面有英文和繁体中文。MacMD Viewer 自己的资料没有写出界面语言，这页就不比较这一项。
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| 编辑 | 设计上就是只读 | 编辑源代码，排版后的页面就在旁边 |
+| 预览主题 | 12 种文档主题 | 4 种，各有浅色与深色 |
+| 图表与数学公式 | Mermaid 与代码高亮；介绍页没有提到数学公式 | Mermaid、代码高亮与 KaTeX 数学公式 |
+| Finder 快速查看 | 有 | 有 |
+| PDF 与打印 | 有 | 有 |
+| 系统要求 | macOS 14（Sonoma）或更高版本 | macOS 26（Tahoe）或更高版本 |
+| 界面语言 | 自己的资料没有写明 | 英文和繁体中文 |
 
 ## 价格与购买方式
 
-- **从哪里买：**MacMD Viewer 从自己的网站直接下载，也上架 Homebrew 和 Setapp，但不在 Mac App Store 上；MarsDawn 只在 Mac App Store 上架。
-- **价格：**MacMD Viewer 一台 Mac 一次 USD 19.99（三台的组合包和批量授权更贵）。MarsDawn 免费下载，之后以 USD 4.99 一次解锁。
-- **先试用：**MacMD Viewer 没有免费试用，直接购买改用 14 天内可退款的保证。MarsDawn 在你付费之前，先给你 14 天的试用。
-- **退款与更新：**MacMD Viewer 的退款和更新都在它自己的网站上处理。MarsDawn 通过 Apple 购买，退款和更新都走 Apple 的标准流程。
-- **账户：**两者都不需要账户就能使用。
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| 从哪里买 | 官网、Homebrew 或 Setapp；不在 Mac App Store | 只在 Mac App Store |
+| 价格 | 一台 Mac 一次 USD 19.99；多台的组合包更贵 | 免费下载，之后一次 USD 4.99 |
+| 先试用 | 没有试用；直接购买 14 天内可退款 | 14 天免费试用 |
+| 退款与更新 | 通过它自己的网站 | 通过 Apple |
+| 需要账号 | 不需要 | 不需要 |
 
 ## 现在就能免费试试看
 

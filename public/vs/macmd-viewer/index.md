@@ -8,21 +8,25 @@ If your job is strictly reading Markdown someone else wrote, and you never need 
 
 ## What each app does
 
-- **Editing:** MacMD Viewer is read-only by design. MarsDawn edits the source and renders it side by side, so a change shows up as you type.
-- **Preview themes:** MacMD Viewer ships 12 document themes. MarsDawn ships four, Dawn, Classic, Modern and Vivid, each with a light and a dark palette.
-- **Diagrams and math:** both render Mermaid diagrams and highlight code. MarsDawn also renders KaTeX math; MacMD Viewer's own listing doesn't mention math rendering.
-- **Finder integration:** both add a Quick Look extension, so pressing Space on a `.md` file in Finder shows the rendered page.
-- **PDF and print:** both export or print a PDF of the rendered page.
-- **System requirements:** MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.
-- **Languages:** MarsDawn's interface ships in English and Traditional Chinese. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| Editing | Read-only by design | Edits the source, with the rendered page beside it |
+| Preview themes | 12 document themes | 4 themes, each with a light and a dark palette |
+| Diagrams and math | Mermaid and code highlighting; its listing doesn't mention math | Mermaid, code highlighting and KaTeX math |
+| Quick Look in Finder | Yes | Yes |
+| PDF and print | Yes | Yes |
+| Requires | macOS 14 (Sonoma) or later | macOS 26 (Tahoe) or later |
+| Interface languages | Not stated in its own materials | English and Traditional Chinese |
 
 ## Pricing and how you buy it
 
-- **Where you buy it:** MacMD Viewer is a direct download from its own site, also on Homebrew and Setapp; it isn't on the Mac App Store. MarsDawn is Mac App Store only.
-- **Price:** MacMD Viewer is USD 19.99 once for one Mac (a 3-Mac pack and volume packs cost more). MarsDawn is a free download, then a USD 4.99 one-time unlock.
-- **Trying it first:** MacMD Viewer has no free trial; direct purchases carry a 14-day money-back guarantee instead. MarsDawn gives you a 14-day trial before you pay anything.
-- **Refunds and updates:** MacMD Viewer's refunds and updates run through its own site. MarsDawn's purchase goes through Apple, so refunds and updates use Apple's standard process.
-- **Accounts:** neither app needs an account to use.
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| Where you buy it | Its own site, Homebrew or Setapp; not the Mac App Store | The Mac App Store only |
+| Price | USD 19.99 once, for one Mac; multi-Mac packs cost more | Free download, then USD 4.99 once |
+| Trying it first | No trial; a 14-day money-back guarantee on direct purchases | A 14-day free trial |
+| Refunds and updates | Through its own site | Through Apple |
+| Account needed | No | No |
 
 ## Try it today, free
 

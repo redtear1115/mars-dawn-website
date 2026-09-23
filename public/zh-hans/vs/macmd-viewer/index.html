@@ -74,23 +74,29 @@ try {
 <h2>如果你只需要读，不需要编辑</h2>
 <p>如果你的工作就是读别人写好的 Markdown，完全不用碰源代码，MacMD Viewer 是合理的选择：它就是为这件事做的，现在就能买，也能在比较旧的 macOS 上跑。当阅读不是全部的工作时，MarsDawn 才值得，因为 agent 写的 Markdown 通常还要再改一轮。</p>
 <h2>各自能做什么</h2>
-<ul>
-  <li><strong>编辑：</strong>MacMD Viewer 设计上就是只读。MarsDawn 边编辑源代码边在旁边排版，打字的同时就看得到改动。</li>
-  <li><strong>预览主题：</strong>MacMD Viewer 内置 12 种文档主题。MarsDawn 有四种：黎明、典雅、流行和活泼，各有浅色与深色。</li>
-  <li><strong>图表与数学公式：</strong>两者都能画出 Mermaid 图表、也都有代码高亮。MarsDawn 还能排版 KaTeX 数学公式；MacMD Viewer 自己的介绍页没有提到数学公式排版。</li>
-  <li><strong>访达集成：</strong>两者都有访达的快速查看扩展功能，对 <code>.md</code> 文件按空格键就能看到排好版的页面。</li>
-  <li><strong>PDF 与打印：</strong>两者都能把排好版的页面输出或打印成 PDF。</li>
-  <li><strong>系统需求：</strong>MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。</li>
-  <li><strong>语言：</strong>MarsDawn 的界面有英文和繁体中文。MacMD Viewer 自己的资料没有写出界面语言，这页就不比较这一项。</li>
-</ul>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">编辑</th><td>设计上就是只读</td><td>编辑源代码，排版后的页面就在旁边</td></tr>
+  <tr><th scope="row">预览主题</th><td>12 种文档主题</td><td>4 种，各有浅色与深色</td></tr>
+  <tr><th scope="row">图表与数学公式</th><td>Mermaid 与代码高亮；介绍页没有提到数学公式</td><td>Mermaid、代码高亮与 KaTeX 数学公式</td></tr>
+  <tr><th scope="row">Finder 快速查看</th><td>有</td><td>有</td></tr>
+  <tr><th scope="row">PDF 与打印</th><td>有</td><td>有</td></tr>
+  <tr><th scope="row">系统要求</th><td>macOS 14（Sonoma）或更高版本</td><td>macOS 26（Tahoe）或更高版本</td></tr>
+  <tr><th scope="row">界面语言</th><td>自己的资料没有写明</td><td>英文和繁体中文</td></tr>
+</tbody>
+</table></div>
 <h2>价格与购买方式</h2>
-<ul>
-  <li><strong>从哪里买：</strong>MacMD Viewer 从自己的网站直接下载，也上架 Homebrew 和 Setapp，但不在 Mac App Store 上；MarsDawn 只在 Mac App Store 上架。</li>
-  <li><strong>价格：</strong>MacMD Viewer 一台 Mac 一次 USD 19.99（三台的组合包和批量授权更贵）。MarsDawn 免费下载，之后以 USD 4.99 一次解锁。</li>
-  <li><strong>先试用：</strong>MacMD Viewer 没有免费试用，直接购买改用 14 天内可退款的保证。MarsDawn 在你付费之前，先给你 14 天的试用。</li>
-  <li><strong>退款与更新：</strong>MacMD Viewer 的退款和更新都在它自己的网站上处理。MarsDawn 通过 Apple 购买，退款和更新都走 Apple 的标准流程。</li>
-  <li><strong>账户：</strong>两者都不需要账户就能使用。</li>
-</ul>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">从哪里买</th><td>官网、Homebrew 或 Setapp；不在 Mac App Store</td><td>只在 Mac App Store</td></tr>
+  <tr><th scope="row">价格</th><td>一台 Mac 一次 USD 19.99；多台的组合包更贵</td><td>免费下载，之后一次 USD 4.99</td></tr>
+  <tr><th scope="row">先试用</th><td>没有试用；直接购买 14 天内可退款</td><td>14 天免费试用</td></tr>
+  <tr><th scope="row">退款与更新</th><td>通过它自己的网站</td><td>通过 Apple</td></tr>
+  <tr><th scope="row">需要账号</th><td>不需要</td><td>不需要</td></tr>
+</tbody>
+</table></div>
 <h2>现在就能免费试试看</h2>
 <p>MarsDawn 即将在 Mac App Store 上架，现在还没开卖。在那之前，免费的 <code>marsdawn</code> 命令行工具今天就能把任何 Markdown 文件转成 PDF，Mermaid 图表和代码高亮都在，而且不需要安装其他东西：</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn

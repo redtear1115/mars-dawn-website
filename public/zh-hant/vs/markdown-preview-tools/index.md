@@ -2,6 +2,15 @@
 
 如果你手邊剛好開著 VS Code、瀏覽器或 Claude Desktop，用它們順手看一眼 Markdown 檔案也合理。以下是它們各自實際排版出什麼、要花多少功夫才能看到，和在 MarsDawn 裡打開同一份檔案的比較。
 
+## 一眼看完
+
+|  | VS Code 預覽 | 瀏覽器擴充功能 | Claude Desktop | MarsDawn |
+|---|---|---|---|---|
+| 開啟磁碟上的 Markdown 檔案 | 可以 | 可以，但要先允許存取檔案 | 不行：Markdown 不在可上傳的類型裡 | 可以 |
+| 開第一個檔案之前 | 安裝 VS Code，一整套開發環境 | 安裝擴充功能，再打開「允許存取檔案網址」 | 無法瀏覽磁碟上的檔案 | 安裝 MarsDawn |
+| 為什麼而做 | 寫程式；預覽只是眾多面板之一 | 瀏覽網頁 | 和 Claude 對話 | 閱讀與編輯 Markdown |
+| 用什麼畫出頁面 | Electron：內含 Chromium 和 Node.js | 一整個瀏覽器 | Claude Desktop 本身 | 原生的 AppKit app，頁面由 WebKit 繪製 |
+
 ## VS Code 內建的預覽
 
 在 VS Code 按 `⌘⇧V`，就會用內建的預覽窗格排版出 Markdown 檔案，免費，不用另外安裝。從 VS Code 1.121（2026 年 5 月）開始，這個預覽也能原生畫出 Mermaid 圖表——微軟把一個 Mermaid 擴充功能併進了 VS Code 本體，以前需要另外裝擴充功能，現在不用了。它做不到的：這是編輯器裡的一個預覽窗格，不是為了閱讀而做的編輯器——窗格旁邊還有檔案樹、終端機和 VS Code 能顯示的其他所有面板，而 VS Code 本身是 Electron app，你裝的是一整套開發環境，不是一個用來讀檔案的工具。

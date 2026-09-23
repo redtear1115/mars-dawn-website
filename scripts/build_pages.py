@@ -1278,23 +1278,9 @@ marsdawn --version</code></pre>
 <h2>If you only need to read, not edit</h2>
 <p>If your job is strictly reading Markdown someone else wrote, and you never need to touch the source, MacMD Viewer is a reasonable fit: it's built for exactly that, is available now and works down to an older macOS. MarsDawn is worth it once reading isn't the whole job, because an agent's Markdown usually comes back for another pass.</p>
 <h2>What each app does</h2>
-<ul>
-  <li><strong>Editing:</strong> MacMD Viewer is read-only by design. MarsDawn edits the source and renders it side by side, so a change shows up as you type.</li>
-  <li><strong>Preview themes:</strong> MacMD Viewer ships 12 document themes. MarsDawn ships four, Dawn, Classic, Modern and Vivid, each with a light and a dark palette.</li>
-  <li><strong>Diagrams and math:</strong> both render Mermaid diagrams and highlight code. MarsDawn also renders KaTeX math; MacMD Viewer's own listing doesn't mention math rendering.</li>
-  <li><strong>Finder integration:</strong> both add a Quick Look extension, so pressing Space on a <code>.md</code> file in Finder shows the rendered page.</li>
-  <li><strong>PDF and print:</strong> both export or print a PDF of the rendered page.</li>
-  <li><strong>System requirements:</strong> MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.</li>
-  <li><strong>Languages:</strong> MarsDawn's interface ships in {langs}. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.</li>
-</ul>
+<!--compare:macmd-features-->
 <h2>Pricing and how you buy it</h2>
-<ul>
-  <li><strong>Where you buy it:</strong> MacMD Viewer is a direct download from its own site, also on Homebrew and Setapp; it isn't on the Mac App Store. MarsDawn is Mac App Store only.</li>
-  <li><strong>Price:</strong> MacMD Viewer is USD 19.99 once for one Mac (a 3-Mac pack and volume packs cost more). MarsDawn is a free download, then a USD 4.99 one-time unlock.</li>
-  <li><strong>Trying it first:</strong> MacMD Viewer has no free trial; direct purchases carry a 14-day money-back guarantee instead. MarsDawn gives you a 14-day trial before you pay anything.</li>
-  <li><strong>Refunds and updates:</strong> MacMD Viewer's refunds and updates run through its own site. MarsDawn's purchase goes through Apple, so refunds and updates use Apple's standard process.</li>
-  <li><strong>Accounts:</strong> neither app needs an account to use.</li>
-</ul>
+<!--compare:macmd-buying-->
 <h2>Try it today, free</h2>
 <p>MarsDawn is coming soon to the Mac App Store, not on sale yet. Until then, the free <code>marsdawn</code> command-line tool renders any Markdown file to a PDF today, with Mermaid diagrams and highlighted code, and needs nothing else installed:</p>
 <pre><code>{brew}
@@ -1320,23 +1306,9 @@ open notes.pdf</code></pre>
 <h2>如果你只需要讀，不需要編輯</h2>
 <p>如果你的工作就是讀別人寫好的 Markdown，完全不用碰原始碼，MacMD Viewer 是合理的選擇：它就是為這件事做的，現在就能買，也能在比較舊的 macOS 上跑。當閱讀不是全部的工作時，MarsDawn 才值得，因為 agent 寫的 Markdown 通常還要再改一輪。</p>
 <h2>各自能做什麼</h2>
-<ul>
-  <li><strong>編輯：</strong>MacMD Viewer 設計上就是唯讀。MarsDawn 邊編輯原始碼邊在旁邊排版，打字的同時就看得到改動。</li>
-  <li><strong>預覽主題：</strong>MacMD Viewer 內建 12 種文件主題。MarsDawn 有四種：黎明、典雅、流行和活潑，各有淺色與深色。</li>
-  <li><strong>圖表與數學式：</strong>兩者都能畫出 Mermaid 圖表、也都有程式碼上色。MarsDawn 還能排版 KaTeX 數學式；MacMD Viewer 自己的介紹頁沒有提到數學式排版。</li>
-  <li><strong>Finder 整合：</strong>兩者都有 Finder 的快速查看擴充功能，對 <code>.md</code> 檔案按空白鍵就能看到排好版的頁面。</li>
-  <li><strong>PDF 與列印：</strong>兩者都能把排好版的頁面輸出或列印成 PDF。</li>
-  <li><strong>系統需求：</strong>MacMD Viewer 需要 macOS 14（Sonoma）以上。MarsDawn 需要 macOS 26（Tahoe）以上。</li>
-  <li><strong>語言：</strong>MarsDawn 的介面有{langs}。MacMD Viewer 自己的資料沒有寫出介面語言，這頁就不比較這一項。</li>
-</ul>
+<!--compare:macmd-features-->
 <h2>價格與購買方式</h2>
-<ul>
-  <li><strong>從哪裡買：</strong>MacMD Viewer 從自己的網站直接下載，也上架 Homebrew 和 Setapp，但不在 Mac App Store 上；MarsDawn 只在 Mac App Store 上架。</li>
-  <li><strong>價格：</strong>MacMD Viewer 一台 Mac 一次 USD 19.99（三台的組合包和大量授權更貴）。MarsDawn 免費下載，之後以 USD 4.99 一次解鎖。</li>
-  <li><strong>先試用：</strong>MacMD Viewer 沒有免費試用，直接購買改用 14 天內可退款的保證。MarsDawn 在你付費之前，先給你 14 天的試用。</li>
-  <li><strong>退款與更新：</strong>MacMD Viewer 的退款和更新都在它自己的網站上處理。MarsDawn 透過 Apple 購買，退款和更新都走 Apple 的標準流程。</li>
-  <li><strong>帳號：</strong>兩者都不需要帳號就能使用。</li>
-</ul>
+<!--compare:macmd-buying-->
 <h2>現在就能免費試試看</h2>
 <p>MarsDawn 即將在 Mac App Store 上架，現在還沒開賣。在那之前，免費的 <code>marsdawn</code> 命令列工具今天就能把任何 Markdown 檔案轉成 PDF，Mermaid 圖表和程式碼上色都在，而且不需要安裝其他東西：</p>
 <pre><code>{brew}
@@ -1571,6 +1543,9 @@ BRAINSTORM_PAGES = {
   <p>If you already have VS Code, a browser or Claude Desktop open, reaching for one of them to glance at a Markdown file is reasonable. Here's what each one actually renders, and what it costs to get there, compared with opening the same file in MarsDawn.</p>
 </section>
 
+<h2>At a glance</h2>
+<!--compare:preview-tools-->
+
 <h2>VS Code's built-in preview</h2>
 <p>Press <kbd>&#8984;&#8679;V</kbd> in VS Code and it renders the Markdown file in a built-in preview pane, free, with nothing to install. As of VS Code 1.121 (May 2026), that preview also renders Mermaid diagrams natively &#8212; Microsoft folded a Mermaid extension into VS Code itself, so this used to need a separate extension and no longer does. What it doesn't do: it's a preview pane inside an editor, not an editor built for reading &#8212; the pane sits next to a file tree, a terminal and every other panel VS Code can show, and VS Code itself is an Electron app you install as a whole development environment, not something you open to read one file.</p>
 
@@ -1599,6 +1574,9 @@ BRAINSTORM_PAGES = {
   <h1>在別處看 Markdown，對比 MarsDawn。</h1>
   <p>如果你手邊剛好開著 VS Code、瀏覽器或 Claude Desktop，用它們順手看一眼 Markdown 檔案也合理。以下是它們各自實際排版出什麼、要花多少功夫才能看到，和在 MarsDawn 裡打開同一份檔案的比較。</p>
 </section>
+
+<h2>一眼看完</h2>
+<!--compare:preview-tools-->
 
 <h2>VS Code 內建的預覽</h2>
 <p>在 VS Code 按 <kbd>&#8984;&#8679;V</kbd>，就會用內建的預覽窗格排版出 Markdown 檔案，免費，不用另外安裝。從 VS Code 1.121（2026 年 5 月）開始，這個預覽也能原生畫出 Mermaid 圖表&#8212;&#8212;微軟把一個 Mermaid 擴充功能併進了 VS Code 本體，以前需要另外裝擴充功能，現在不用了。它做不到的：這是編輯器裡的一個預覽窗格，不是為了閱讀而做的編輯器&#8212;&#8212;窗格旁邊還有檔案樹、終端機和 VS Code 能顯示的其他所有面板，而 VS Code 本身是 Electron app，你裝的是一整套開發環境，不是一個用來讀檔案的工具。</p>
@@ -2449,6 +2427,135 @@ def home_proof(locale: str, figure) -> list:
     ]
 
 
+# The comparison pages set their facts side by side in tables, one per marker, instead of in prose
+# lists, so a reader can scan a row. Every cell restates a fact the page's own prose or the parent
+# PRODUCT.md already carries; nothing here is new. {langs} is the app's interface languages.
+COMPARE_TABLES = {
+    "macmd-features": {
+        "head": {"en": ["", "MacMD Viewer", "MarsDawn"], "zh-hant": ["", "MacMD Viewer", "MarsDawn"],
+                 "zh-hans": ["", "MacMD Viewer", "MarsDawn"], "ja": ["", "MacMD Viewer", "MarsDawn"]},
+        "rows": {
+            "en": [
+                ["Editing", "Read-only by design", "Edits the source, with the rendered page beside it"],
+                ["Preview themes", "12 document themes", "4 themes, each with a light and a dark palette"],
+                ["Diagrams and math", "Mermaid and code highlighting; its listing doesn't mention math", "Mermaid, code highlighting and KaTeX math"],
+                ["Quick Look in Finder", "Yes", "Yes"],
+                ["PDF and print", "Yes", "Yes"],
+                ["Requires", "macOS 14 (Sonoma) or later", "macOS 26 (Tahoe) or later"],
+                ["Interface languages", "Not stated in its own materials", "{langs}"],
+            ],
+            "zh-hant": [
+                ["編輯", "設計上就是唯讀", "編輯原始碼，排版後的頁面就在旁邊"],
+                ["預覽主題", "12 種文件主題", "4 種，各有淺色與深色"],
+                ["圖表與數學式", "Mermaid 與程式碼上色；介紹頁沒有提到數學式", "Mermaid、程式碼上色與 KaTeX 數學式"],
+                ["Finder 快速查看", "有", "有"],
+                ["PDF 與列印", "有", "有"],
+                ["系統需求", "macOS 14（Sonoma）以上", "macOS 26（Tahoe）以上"],
+                ["介面語言", "自己的資料沒有寫出", "{langs}"],
+            ],
+            "zh-hans": [
+                ["编辑", "设计上就是只读", "编辑源代码，排版后的页面就在旁边"],
+                ["预览主题", "12 种文档主题", "4 种，各有浅色与深色"],
+                ["图表与数学公式", "Mermaid 与代码高亮；介绍页没有提到数学公式", "Mermaid、代码高亮与 KaTeX 数学公式"],
+                ["Finder 快速查看", "有", "有"],
+                ["PDF 与打印", "有", "有"],
+                ["系统要求", "macOS 14（Sonoma）或更高版本", "macOS 26（Tahoe）或更高版本"],
+                ["界面语言", "自己的资料没有写明", "{langs}"],
+            ],
+            "ja": [
+                ["編集", "設計上、読み取り専用", "ソースを編集し、その隣にレンダリングされたページ"],
+                ["プレビューテーマ", "12 種類のドキュメントテーマ", "4 種類、それぞれにライトとダーク"],
+                ["図と数式", "Mermaid とコードのハイライト。数式の表示は紹介ページに記載なし", "Mermaid、コードのハイライト、KaTeX の数式"],
+                ["Finder のクイックルック", "あり", "あり"],
+                ["PDF と印刷", "あり", "あり"],
+                ["動作環境", "macOS 14（Sonoma）以降", "macOS 26（Tahoe）以降"],
+                ["インターフェイスの言語", "公式の資料に記載なし", "{langs}"],
+            ],
+        },
+    },
+    "macmd-buying": {
+        "head": {"en": ["", "MacMD Viewer", "MarsDawn"], "zh-hant": ["", "MacMD Viewer", "MarsDawn"],
+                 "zh-hans": ["", "MacMD Viewer", "MarsDawn"], "ja": ["", "MacMD Viewer", "MarsDawn"]},
+        "rows": {
+            "en": [
+                ["Where you buy it", "Its own site, Homebrew or Setapp; not the Mac App Store", "The Mac App Store only"],
+                ["Price", "USD 19.99 once, for one Mac; multi-Mac packs cost more", "Free download, then USD 4.99 once"],
+                ["Trying it first", "No trial; a 14-day money-back guarantee on direct purchases", "A 14-day free trial"],
+                ["Refunds and updates", "Through its own site", "Through Apple"],
+                ["Account needed", "No", "No"],
+            ],
+            "zh-hant": [
+                ["從哪裡買", "自己的網站、Homebrew 或 Setapp；不在 Mac App Store", "只在 Mac App Store"],
+                ["價格", "一台 Mac 一次 USD 19.99；多台的組合包更貴", "免費下載，之後一次 USD 4.99"],
+                ["先試用", "沒有試用；直接購買 14 天內可退款", "14 天免費試用"],
+                ["退款與更新", "透過它自己的網站", "透過 Apple"],
+                ["需要帳號", "不用", "不用"],
+            ],
+            "zh-hans": [
+                ["从哪里买", "官网、Homebrew 或 Setapp；不在 Mac App Store", "只在 Mac App Store"],
+                ["价格", "一台 Mac 一次 USD 19.99；多台的组合包更贵", "免费下载，之后一次 USD 4.99"],
+                ["先试用", "没有试用；直接购买 14 天内可退款", "14 天免费试用"],
+                ["退款与更新", "通过它自己的网站", "通过 Apple"],
+                ["需要账号", "不需要", "不需要"],
+            ],
+            "ja": [
+                ["購入場所", "公式サイト、Homebrew、Setapp。Mac App Store にはない", "Mac App Store のみ"],
+                ["価格", "Mac 1 台につき USD 19.99 を一度。複数台のパックはより高額", "無料ダウンロード、その後 USD 4.99 を一度"],
+                ["購入前に試す", "試用なし。直接購入には 14 日間の返金保証", "14 日間の無料試用"],
+                ["返金とアップデート", "公式サイト経由", "Apple 経由"],
+                ["アカウント", "不要", "不要"],
+            ],
+        },
+    },
+    "preview-tools": {
+        "head": {
+            "en": ["", "VS Code preview", "Browser extension", "Claude Desktop", "MarsDawn"],
+            "zh-hant": ["", "VS Code 預覽", "瀏覽器擴充功能", "Claude Desktop", "MarsDawn"],
+            "zh-hans": ["", "VS Code 预览", "浏览器扩展", "Claude Desktop", "MarsDawn"],
+            "ja": ["", "VS Code のプレビュー", "ブラウザ拡張機能", "Claude Desktop", "MarsDawn"],
+        },
+        "rows": {
+            "en": [
+                ["Opens a Markdown file from disk", "Yes", "Yes, once file access is allowed", "No: Markdown isn't on its upload list", "Yes"],
+                ["Before the first file", "Install VS Code, a whole development environment", "Install an extension, then turn on “Allow access to file URLs”", "It can't browse files on disk", "Install MarsDawn"],
+                ["Built for", "Writing code; the preview is one pane among many", "Browsing the web", "Conversations with Claude", "Reading and editing Markdown"],
+                ["Draws the page with", "Electron: a bundled Chromium and Node.js", "A full browser", "The Claude Desktop app", "A native AppKit app; WebKit draws the page"],
+            ],
+            "zh-hant": [
+                ["開啟磁碟上的 Markdown 檔案", "可以", "可以，但要先允許存取檔案", "不行：Markdown 不在可上傳的類型裡", "可以"],
+                ["開第一個檔案之前", "安裝 VS Code，一整套開發環境", "安裝擴充功能，再打開「允許存取檔案網址」", "無法瀏覽磁碟上的檔案", "安裝 MarsDawn"],
+                ["為什麼而做", "寫程式；預覽只是眾多面板之一", "瀏覽網頁", "和 Claude 對話", "閱讀與編輯 Markdown"],
+                ["用什麼畫出頁面", "Electron：內含 Chromium 和 Node.js", "一整個瀏覽器", "Claude Desktop 本身", "原生的 AppKit app，頁面由 WebKit 繪製"],
+            ],
+            "zh-hans": [
+                ["打开磁盘上的 Markdown 文件", "可以", "可以，但要先允许访问文件", "不行：Markdown 不在可上传的类型里", "可以"],
+                ["打开第一个文件之前", "安装 VS Code，一整套开发环境", "安装扩展，再打开“允许访问文件网址”", "无法浏览磁盘上的文件", "安装 MarsDawn"],
+                ["为什么而做", "写代码；预览只是众多面板之一", "浏览网页", "和 Claude 对话", "阅读与编辑 Markdown"],
+                ["用什么画出页面", "Electron：内含 Chromium 和 Node.js", "一整个浏览器", "Claude Desktop 本身", "原生的 AppKit app，页面由 WebKit 绘制"],
+            ],
+            "ja": [
+                ["ディスク上の Markdown ファイルを開く", "開ける", "開ける（ファイルへのアクセスを許可したあと）", "開けない：Markdown はアップロードできる形式にない", "開ける"],
+                ["最初のファイルを開く前に", "VS Code という開発環境一式をインストール", "拡張機能を入れ、「ファイルの URL へのアクセスを許可」をオン", "ディスク上のファイルを参照できない", "MarsDawn をインストール"],
+                ["何のためのものか", "コードを書くため。プレビューは多くのパネルの1つ", "Web を見るため", "Claude との会話のため", "Markdown を読み、編集するため"],
+                ["ページを描くもの", "Electron：同梱の Chromium と Node.js", "ブラウザ全体", "Claude Desktop アプリ", "ネイティブの AppKit アプリ。ページは WebKit が描画"],
+            ],
+        },
+    },
+}
+
+
+def compare_table_html(locale: str, key: str) -> str:
+    table = COMPARE_TABLES[key]
+    langs = APP_UI_LANGUAGES[locale]
+    head = "".join(f'<th scope="col">{cell}</th>' for cell in table["head"][locale])
+    rows = "\n".join(
+        f'  <tr><th scope="row">{row[0]}</th>' + "".join(f"<td>{cell.replace('{langs}', langs)}</td>" for cell in row[1:]) + "</tr>"
+        for row in table["rows"][locale]
+    )
+    cls = "compare compare-wide" if len(table["head"][locale]) > 3 else "compare"
+    return f'<div class="table-scroll"><table class="{cls}">\n<thead><tr>{head}</tr></thead>\n<tbody>\n{rows}\n</tbody>\n</table></div>'
+
+
 # The themes page shows the themes, not just their names: real screenshots, two to a row on wide
 # screens. Modern has no screenshot yet, so it isn't pictured; the list under the gallery covers it.
 THEME_GALLERY_MARK = "<!--theme-gallery-->"
@@ -2623,8 +2730,13 @@ def all_pages() -> dict:
     merged = _base_pages()
     merged.update(EXTRA_PAGES)
     for (locale, slug), page in merged.items():
-        if slug == "themes":
-            merged[(locale, slug)] = {**page, "body": page["body"].replace(THEME_GALLERY_MARK, theme_gallery_html(locale))}
+        body = page["body"]
+        if THEME_GALLERY_MARK in body:
+            body = body.replace(THEME_GALLERY_MARK, theme_gallery_html(locale))
+        for key in COMPARE_TABLES:
+            body = body.replace(f"<!--compare:{key}-->", compare_table_html(locale, key))
+        if body != page["body"]:
+            merged[(locale, slug)] = {**page, "body": body}
     return merged
 
 
@@ -2783,6 +2895,21 @@ def _render_block(node: _Node) -> str:
             bullet = f"{len(items) + 1}." if tag == "ol" else "-"
             items.append(f"{bullet} " + _render_inline(child.children).strip())
         return "\n".join(items) + "\n\n"
+    if tag == "table":
+        rows = []
+        for section in node.children:
+            if isinstance(section, str):
+                continue
+            for tr in ([section] if section.tag == "tr" else section.children):
+                if isinstance(tr, str):
+                    continue
+                if tr.tag != "tr":
+                    raise MarkdownConversionError(f"unsupported child <{tr.tag}> in a table")
+                rows.append([_render_inline(cell.children).strip().replace("|", "\\|")
+                             for cell in tr.children if not isinstance(cell, str)])
+        lines = ["| " + " | ".join(rows[0]) + " |", "|" + "---|" * len(rows[0])]
+        lines += ["| " + " | ".join(row) + " |" for row in rows[1:]]
+        return "\n".join(lines) + "\n\n"
     if tag == "pre":
         text = _pre_text(node)
         fence = "`" * max(3, _longest_backtick_run(text) + 1)

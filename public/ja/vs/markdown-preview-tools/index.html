@@ -72,6 +72,17 @@ try {
   <p>すでに VS Code やブラウザ、Claude Desktop を開いているなら、それらで Markdown ファイルをちらっと見るのは妥当な選択です。それぞれが実際に何をレンダリングし、そこにたどり着くのに何が必要か、MarsDawn で同じファイルを開いた場合と比較してみます。</p>
 </section>
 
+<h2>ひと目で比較</h2>
+<div class="table-scroll"><table class="compare compare-wide">
+<thead><tr><th scope="col"></th><th scope="col">VS Code のプレビュー</th><th scope="col">ブラウザ拡張機能</th><th scope="col">Claude Desktop</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">ディスク上の Markdown ファイルを開く</th><td>開ける</td><td>開ける（ファイルへのアクセスを許可したあと）</td><td>開けない：Markdown はアップロードできる形式にない</td><td>開ける</td></tr>
+  <tr><th scope="row">最初のファイルを開く前に</th><td>VS Code という開発環境一式をインストール</td><td>拡張機能を入れ、「ファイルの URL へのアクセスを許可」をオン</td><td>ディスク上のファイルを参照できない</td><td>MarsDawn をインストール</td></tr>
+  <tr><th scope="row">何のためのものか</th><td>コードを書くため。プレビューは多くのパネルの1つ</td><td>Web を見るため</td><td>Claude との会話のため</td><td>Markdown を読み、編集するため</td></tr>
+  <tr><th scope="row">ページを描くもの</th><td>Electron：同梱の Chromium と Node.js</td><td>ブラウザ全体</td><td>Claude Desktop アプリ</td><td>ネイティブの AppKit アプリ。ページは WebKit が描画</td></tr>
+</tbody>
+</table></div>
+
 <h2>VS Code の内蔵プレビュー</h2>
 <p>VS Code で <kbd>&#8984;&#8679;V</kbd> を押すと、内蔵のプレビューパネルで Markdown ファイルがレンダリングされます。無料で、インストールするものもありません。VS Code 1.121（2026年5月）以降、このプレビューは Mermaid 図もネイティブに描画します。Microsoft が Mermaid 拡張機能を VS Code 本体に組み込んだためで、以前は別の拡張機能が必要でしたが、今は不要です。できないこと：これはエディタの中のプレビューパネルであって、読むために作られたエディタではありません。パネルの隣にはファイルツリー、ターミナル、VS Code が表示できるその他のパネルが並び、VS Code 自体も Electron アプリで、インストールするのは開発環境一式であって、1つのファイルを読むために開くものではありません。</p>
 

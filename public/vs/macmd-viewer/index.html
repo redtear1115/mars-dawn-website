@@ -74,23 +74,29 @@ try {
 <h2>If you only need to read, not edit</h2>
 <p>If your job is strictly reading Markdown someone else wrote, and you never need to touch the source, MacMD Viewer is a reasonable fit: it's built for exactly that, is available now and works down to an older macOS. MarsDawn is worth it once reading isn't the whole job, because an agent's Markdown usually comes back for another pass.</p>
 <h2>What each app does</h2>
-<ul>
-  <li><strong>Editing:</strong> MacMD Viewer is read-only by design. MarsDawn edits the source and renders it side by side, so a change shows up as you type.</li>
-  <li><strong>Preview themes:</strong> MacMD Viewer ships 12 document themes. MarsDawn ships four, Dawn, Classic, Modern and Vivid, each with a light and a dark palette.</li>
-  <li><strong>Diagrams and math:</strong> both render Mermaid diagrams and highlight code. MarsDawn also renders KaTeX math; MacMD Viewer's own listing doesn't mention math rendering.</li>
-  <li><strong>Finder integration:</strong> both add a Quick Look extension, so pressing Space on a <code>.md</code> file in Finder shows the rendered page.</li>
-  <li><strong>PDF and print:</strong> both export or print a PDF of the rendered page.</li>
-  <li><strong>System requirements:</strong> MacMD Viewer needs macOS 14 (Sonoma) or later. MarsDawn needs macOS 26 (Tahoe) or later.</li>
-  <li><strong>Languages:</strong> MarsDawn's interface ships in English and Traditional Chinese. MacMD Viewer's own materials don't state a UI language, so this page doesn't compare that.</li>
-</ul>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Editing</th><td>Read-only by design</td><td>Edits the source, with the rendered page beside it</td></tr>
+  <tr><th scope="row">Preview themes</th><td>12 document themes</td><td>4 themes, each with a light and a dark palette</td></tr>
+  <tr><th scope="row">Diagrams and math</th><td>Mermaid and code highlighting; its listing doesn't mention math</td><td>Mermaid, code highlighting and KaTeX math</td></tr>
+  <tr><th scope="row">Quick Look in Finder</th><td>Yes</td><td>Yes</td></tr>
+  <tr><th scope="row">PDF and print</th><td>Yes</td><td>Yes</td></tr>
+  <tr><th scope="row">Requires</th><td>macOS 14 (Sonoma) or later</td><td>macOS 26 (Tahoe) or later</td></tr>
+  <tr><th scope="row">Interface languages</th><td>Not stated in its own materials</td><td>English and Traditional Chinese</td></tr>
+</tbody>
+</table></div>
 <h2>Pricing and how you buy it</h2>
-<ul>
-  <li><strong>Where you buy it:</strong> MacMD Viewer is a direct download from its own site, also on Homebrew and Setapp; it isn't on the Mac App Store. MarsDawn is Mac App Store only.</li>
-  <li><strong>Price:</strong> MacMD Viewer is USD 19.99 once for one Mac (a 3-Mac pack and volume packs cost more). MarsDawn is a free download, then a USD 4.99 one-time unlock.</li>
-  <li><strong>Trying it first:</strong> MacMD Viewer has no free trial; direct purchases carry a 14-day money-back guarantee instead. MarsDawn gives you a 14-day trial before you pay anything.</li>
-  <li><strong>Refunds and updates:</strong> MacMD Viewer's refunds and updates run through its own site. MarsDawn's purchase goes through Apple, so refunds and updates use Apple's standard process.</li>
-  <li><strong>Accounts:</strong> neither app needs an account to use.</li>
-</ul>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">MacMD Viewer</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Where you buy it</th><td>Its own site, Homebrew or Setapp; not the Mac App Store</td><td>The Mac App Store only</td></tr>
+  <tr><th scope="row">Price</th><td>USD 19.99 once, for one Mac; multi-Mac packs cost more</td><td>Free download, then USD 4.99 once</td></tr>
+  <tr><th scope="row">Trying it first</th><td>No trial; a 14-day money-back guarantee on direct purchases</td><td>A 14-day free trial</td></tr>
+  <tr><th scope="row">Refunds and updates</th><td>Through its own site</td><td>Through Apple</td></tr>
+  <tr><th scope="row">Account needed</th><td>No</td><td>No</td></tr>
+</tbody>
+</table></div>
 <h2>Try it today, free</h2>
 <p>MarsDawn is coming soon to the Mac App Store, not on sale yet. Until then, the free <code>marsdawn</code> command-line tool renders any Markdown file to a PDF today, with Mermaid diagrams and highlighted code, and needs nothing else installed:</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
