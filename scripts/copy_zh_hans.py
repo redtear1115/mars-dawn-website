@@ -638,6 +638,7 @@ marsdawn --version</code></pre>
 <div class="summary"><p><strong>四种主题 &#215; 浅色与深色＝八种读文稿的方式，导出时用的正是你选的那一种。</strong>更多可导入的主题，还有让大家投稿主题的主题库，都还在规划中，尚未推出。</p></div>
 
 <h2>四种主题</h2>
+<!--theme-gallery-->
 <ul>
   <li><strong>黎明</strong>，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。</li>
   <li><strong>典雅</strong>：比较朴素、像纸质文稿的配色。</li>

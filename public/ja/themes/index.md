@@ -6,6 +6,11 @@ MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種�
 
 ## 4種類のテーマ
 
+- ![Dawn テーマの分割表示：左に Markdown のソース、右にレンダリングされたページ。](/assets/screens/01-split-800.png) **Dawn（デフォルト）**
+- ![Classic テーマ。プレビューがウインドウ全体に表示されています。](/assets/screens/02-classic-800.png) **Classic（典雅）**
+- ![Vivid テーマの分割表示。](/assets/screens/04-vivid-800.png) **Vivid（活潑）**
+- ![ダークモードの MarsDawn、分割表示。](/assets/screens/03-dark-800.png) **ダークモード**
+
 - **夜明け**、デフォルト：このサイトと同じ、温かみのある紙の質感と Mars Rust のアクセントカラー。
 - **クラシック**：より素朴で、紙の文書らしい配色。
 - **モダン**：より涼しげで、現代的な配色。

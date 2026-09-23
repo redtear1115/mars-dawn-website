@@ -904,6 +904,11 @@ MarsDawn ships four preview themes, Dawn, Classic, Modern and Vivid, each with a
 
 ## The four themes
 
+- ![The Dawn theme in split view: Markdown source on the left, the rendered page on the right.](/assets/screens/01-split-800.png) **Dawn, the default**
+- ![The Classic theme, with the preview filling the window.](/assets/screens/02-classic-800.png) **Classic**
+- ![The Vivid theme in split view.](/assets/screens/04-vivid-800.png) **Vivid**
+- ![MarsDawn in dark mode, in split view.](/assets/screens/03-dark-800.png) **Dark mode**
+
 - **Dawn**, the default: the same warm paper and Mars Rust accent this site is built from.
 - **Classic**: a plainer, document-like palette.
 - **Modern**: a cooler, more contemporary palette.
@@ -1915,6 +1920,11 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 
 ## 四種主題
 
+- ![Dawn 主題的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](/assets/screens/01-split-800.png) **Dawn（預設）**
+- ![Classic 主題，預覽佔滿整個視窗。](/assets/screens/02-classic-800.png) **Classic（典雅）**
+- ![Vivid 主題的並排版面。](/assets/screens/04-vivid-800.png) **Vivid（活潑）**
+- ![MarsDawn 的深色模式，並排版面。](/assets/screens/03-dark-800.png) **深色模式**
+
 - **黎明**，預設主題：和這個網站一樣的暖色紙感與 Mars Rust 強調色。
 - **典雅**：比較樸素、像紙本文件的配色。
 - **流行**：比較冷調、當代感的配色。
@@ -2916,6 +2926,11 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 ## 四种主题
 
+- ![Dawn 主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。](/assets/screens/01-split-800.png) **Dawn（默认）**
+- ![Classic 主题，预览占满整个窗口。](/assets/screens/02-classic-800.png) **Classic（典雅）**
+- ![Vivid 主题的并排版面。](/assets/screens/04-vivid-800.png) **Vivid（活泼）**
+- ![MarsDawn 的深色模式，并排版面。](/assets/screens/03-dark-800.png) **深色模式**
+
 - **黎明**，默认主题：和这个网站一样的暖色纸感与 Mars Rust 强调色。
 - **典雅**：比较朴素、像纸质文稿的配色。
 - **流行**：比较冷调、当代感的配色。
@@ -3916,6 +3931,11 @@ MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種�
 **4つのテーマ × ライトとダーク＝文書を読む8つの方法があり、書き出しはどれを選んでいても対応します。**もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーは計画中で、まだ作られていません。
 
 ## 4種類のテーマ
+
+- ![Dawn テーマの分割表示：左に Markdown のソース、右にレンダリングされたページ。](/assets/screens/01-split-800.png) **Dawn（デフォルト）**
+- ![Classic テーマ。プレビューがウインドウ全体に表示されています。](/assets/screens/02-classic-800.png) **Classic（典雅）**
+- ![Vivid テーマの分割表示。](/assets/screens/04-vivid-800.png) **Vivid（活潑）**
+- ![ダークモードの MarsDawn、分割表示。](/assets/screens/03-dark-800.png) **ダークモード**
 
 - **夜明け**、デフォルト：このサイトと同じ、温かみのある紙の質感と Mars Rust のアクセントカラー。
 - **クラシック**：より素朴で、紙の文書らしい配色。

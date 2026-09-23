@@ -1632,6 +1632,7 @@ BRAINSTORM_PAGES = {
 <div class="summary"><p><strong>Four themes &#215; light and dark = eight ways to read a document, and one export path that matches whichever you chose.</strong> More importable themes, and a gallery to share your own, are planned &#8212; not built yet.</p></div>
 
 <h2>The four themes</h2>
+<!--theme-gallery-->
 <ul>
   <li><strong>Dawn</strong>, the default: the same warm paper and Mars Rust accent this site is built from.</li>
   <li><strong>Classic</strong>: a plainer, document-like palette.</li>
@@ -1666,6 +1667,7 @@ BRAINSTORM_PAGES = {
 <div class="summary"><p><strong>四種主題 &#215; 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。</strong>更多可匯入的主題，還有讓大家投稿主題的主題庫，都還在規劃中，尚未推出。</p></div>
 
 <h2>四種主題</h2>
+<!--theme-gallery-->
 <ul>
   <li><strong>黎明</strong>，預設主題：和這個網站一樣的暖色紙感與 Mars Rust 強調色。</li>
   <li><strong>典雅</strong>：比較樸素、像紙本文件的配色。</li>
@@ -2447,6 +2449,45 @@ def home_proof(locale: str, figure) -> list:
     ]
 
 
+# The themes page shows the themes, not just their names: real screenshots, two to a row on wide
+# screens. Modern has no screenshot yet, so it isn't pictured; the list under the gallery covers it.
+THEME_GALLERY_MARK = "<!--theme-gallery-->"
+THEME_SHOTS = [
+    ("01-split", {"en": "Dawn, the default", "zh-hant": "Dawn（預設）", "zh-hans": "Dawn（默认）", "ja": "Dawn（デフォルト）"},
+     {"en": "The Dawn theme in split view: Markdown source on the left, the rendered page on the right.",
+      "zh-hant": "Dawn 主題的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。",
+      "zh-hans": "Dawn 主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。",
+      "ja": "Dawn テーマの分割表示：左に Markdown のソース、右にレンダリングされたページ。"}),
+    ("02-classic", {"en": "Classic", "zh-hant": "Classic（典雅）", "zh-hans": "Classic（典雅）", "ja": "Classic（典雅）"},
+     {"en": "The Classic theme, with the preview filling the window.",
+      "zh-hant": "Classic 主題，預覽佔滿整個視窗。",
+      "zh-hans": "Classic 主题，预览占满整个窗口。",
+      "ja": "Classic テーマ。プレビューがウインドウ全体に表示されています。"}),
+    ("04-vivid", {"en": "Vivid", "zh-hant": "Vivid（活潑）", "zh-hans": "Vivid（活泼）", "ja": "Vivid（活潑）"},
+     {"en": "The Vivid theme in split view.",
+      "zh-hant": "Vivid 主題的並排版面。",
+      "zh-hans": "Vivid 主题的并排版面。",
+      "ja": "Vivid テーマの分割表示。"}),
+    ("03-dark", {"en": "Dark mode", "zh-hant": "深色模式", "zh-hans": "深色模式", "ja": "ダークモード"},
+     {"en": "MarsDawn in dark mode, in split view.",
+      "zh-hant": "MarsDawn 的深色模式，並排版面。",
+      "zh-hans": "MarsDawn 的深色模式，并排版面。",
+      "ja": "ダークモードの MarsDawn、分割表示。"}),
+]
+
+
+def theme_gallery_html(locale: str) -> str:
+    items = []
+    for image, name, alt in THEME_SHOTS:
+        _, _, width, height = CROPS[image]
+        items.append(
+            f'  <li><img src="/assets/screens/{image}-{SMALL_WIDTH}.png" srcset="/assets/screens/{image}-{SMALL_WIDTH}.png {SMALL_WIDTH}w, '
+            f'/assets/screens/{image}-{width}.png {width}w" sizes="(min-width: 760px) 31rem, calc(100vw - 32px)" '
+            f'width="{width}" height="{height}" alt="{alt[locale]}" loading="lazy"> <strong>{name[locale]}</strong></li>'
+        )
+    return '<ul class="theme-gallery">\n' + "\n".join(items) + "\n</ul>"
+
+
 def trait_nav_html(locale: str, current: str) -> str:
     items = "\n".join(
         f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a>'
@@ -2581,6 +2622,9 @@ def _base_pages() -> dict:
 def all_pages() -> dict:
     merged = _base_pages()
     merged.update(EXTRA_PAGES)
+    for (locale, slug), page in merged.items():
+        if slug == "themes":
+            merged[(locale, slug)] = {**page, "body": page["body"].replace(THEME_GALLERY_MARK, theme_gallery_html(locale))}
     return merged
 
 

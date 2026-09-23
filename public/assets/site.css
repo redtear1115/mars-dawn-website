@@ -1206,3 +1206,39 @@ html { overflow-x: hidden; }
    The code element sets the wrapping: the site's `pre code` rule keeps it on one line otherwise. */
 .install pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
 :lang(ja) :is(h2, h3) { word-break: auto-phrase; }
+
+/* ---- Themes page: the themes themselves, two to a row ----------------------
+   Wider than the text column, like the trait-page screenshots, so the
+   palettes are big enough to judge. Each plate is the page's own sand. */
+.theme-gallery {
+  --gallery-width: max(100%, min(64rem, 100vw - 48px));
+  width: var(--gallery-width);
+  margin: 20px calc((100% - var(--gallery-width)) / 2) 28px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 760px) {
+  .theme-gallery { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+.theme-gallery li {
+  margin: 0;
+  padding: clamp(8px, 1.4vw, 14px) clamp(8px, 1.4vw, 14px) 12px;
+  background: var(--sand);
+  border-radius: 12px;
+}
+.theme-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px color-mix(in srgb, #000 12%, transparent),
+              0 8px 20px -12px color-mix(in srgb, #000 30%, transparent);
+}
+.theme-gallery strong {
+  display: block;
+  margin-top: 10px;
+  padding-inline: 2px;
+  font-size: 0.95rem;
+}
