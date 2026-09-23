@@ -77,7 +77,7 @@ try {
 
 <p>AI エージェントやスクリプトから marsdawn を呼び出しますか？JSON 出力とそのスキーマ、すべての終了コードについては<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>をご覧ください。</p>
 
-<h2>インストール</h2>
+<h2 id="install">インストール</h2>
 <p><a href="https://brew.sh">Homebrew</a> を使う場合：</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
 <p>Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールし、他に何もインストールする必要はありません。Intel Mac では代わりにソースから marsdawn をビルドするため数分かかり、Xcode 26 以降（Swift 6.2）が必要です。このツールは macOS 15 以降で動作します。</p>
@@ -87,7 +87,7 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>インストールされているバージョンは <code>marsdawn --version</code> で確認できます。</p>
 
-<h2>コマンド</h2>
+<h2 id="commands">コマンド</h2>
 
 <h3>marsdawn open</h3>
 <p>1つ以上の Markdown ファイルを MarsDawn アプリで開いて確認できます。アプリのインストールが必要です。インストールされていない場合、<code>marsdawn open</code> はコード 3 で終了し、MarsDawn がインストールされていないことを知らせます。<code>export</code> にはアプリは不要です。</p>
@@ -115,13 +115,13 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
 </ul>
 
-<h2>$MARSDAWN_THEME 環境変数</h2>
+<h2 id="the-marsdawn-theme-variable">$MARSDAWN_THEME 環境変数</h2>
 <p><code>--theme</code> が指定されない場合、<code>export</code> は <code>$MARSDAWN_THEME</code> 環境変数を読み取ります。値は <code>dawn</code>、<code>classic</code>、<code>modern</code>、<code>vivid</code> のいずれかである必要があり、それ以外は <code>dawn</code> にフォールバックします。CLI はアプリ自身のテーマ設定を読み取りません。他のアプリのコンテナを読み取ると、macOS のプライバシープロンプトが表示されることがあるためです。</p>
 
-<h2>ファイルの上書き</h2>
+<h2 id="overwriting-files">ファイルの上書き</h2>
 <p><code>export</code> は、<code>--force</code> を指定しない限り、既存の出力ファイルを置き換えません。</p>
 
-<h2>終了コード</h2>
+<h2 id="exit-codes">終了コード</h2>
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col">コード</th><th scope="col">意味</th><th scope="col">対処</th></tr></thead>
 <tbody>
@@ -134,7 +134,7 @@ marsdawn open notes.md --line 120</code></pre>
 </tbody>
 </table></div>
 
-<h2>--json 出力</h2>
+<h2 id="json-output">--json 出力</h2>
 <p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含む）、<code>app</code>（アプリのパス）を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時はどちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>
 </main>
 <footer class="footer">

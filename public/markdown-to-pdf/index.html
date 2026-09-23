@@ -72,11 +72,11 @@ try {
   <h1>Markdown to PDF on a Mac, from the command line.</h1>
   <p>The free <code>marsdawn</code> tool turns a Markdown file into a PDF with one command. Tables, math, Mermaid diagrams and highlighted code come out the way they read in the source, and it needs nothing else installed, not even the MarsDawn app.</p>
 </section>
-<h2>Install it</h2>
+<h2 id="install-it">Install it</h2>
 <pre><code>brew install redtear1115/tap/marsdawn
 marsdawn --version</code></pre>
 <p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds. On an Intel Mac it builds from source instead, which takes a few minutes and needs Xcode 26 or later. It runs on macOS 15 or later, and <code>marsdawn --version</code> prints the version you got.</p>
-<h2>Save a document</h2>
+<h2 id="save-a-document">Save a document</h2>
 <p>Paste this into a file named <code>plan.md</code>:</p>
 <pre><code># Plan: faster exports
 
@@ -104,13 +104,13 @@ graph LR
 let pdf = try export("plan.md")
 ```
 </code></pre>
-<h2>Export it</h2>
+<h2 id="export-it">Export it</h2>
 <pre><code>marsdawn export plan.md</code></pre>
 <p>It writes <code>plan.pdf</code> next to the source and prints where it went:</p>
 <pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>This is that page, captured from a real run of <code>marsdawn</code> 0.5.0:</p>
 <p><img class="pdf-page" src="/assets/cli/plan-en.png" alt="The exported PDF: the heading, a table of steps, an inline and a displayed formula, a Draft, Review, Ship diagram, and a highlighted line of Swift." width="989" height="930"></p>
-<h2>Choose a theme, paper size and file name</h2>
+<h2 id="choose-a-theme-paper-size-and-file-name">Choose a theme, paper size and file name</h2>
 <pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
 <ul>
   <li><code>--theme</code>: dawn, classic, modern or vivid, in the theme's light colors. Without it, <code>export</code> uses <code>$MARSDAWN_THEME</code>, then dawn.</li>
@@ -118,14 +118,14 @@ let pdf = try export("plan.md")
   <li><code>-o</code>: where to write the PDF, instead of next to the source.</li>
   <li><code>--allow-remote-images</code>: load images from the web while rendering. They stay off unless you pass it.</li>
 </ul>
-<h2>If it doesn't work</h2>
+<h2 id="if-it-doesn-t-work">If it doesn't work</h2>
 <ul>
   <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew is building <code>marsdawn</code> from source, as it does on an Intel Mac. Install Xcode 26 or later from the App Store, then run the install again.</li>
   <li><code>marsdawn: No such file: …</code> The path doesn't point at a file. Check the name, or run the command from the folder the file is in.</li>
   <li><code>… already exists. Pass --force to replace it.</code> A PDF with that name is already there. Add <code>--force</code> to replace it, or <code>-o</code> to write it somewhere else.</li>
   <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> The theme or paper size isn't one it knows. The themes are dawn, classic, modern and vivid; the paper is a4 or letter.</li>
 </ul>
-<h2>Next</h2>
+<h2 id="next">Next</h2>
 <ul>
   <li>Every option and the JSON it prints: <a href="/cli/">Command Line</a>.</li>
   <li>To have a coding agent do this for you: <a href="/cli/skill/">the marsdawn agent skill</a>.</li>

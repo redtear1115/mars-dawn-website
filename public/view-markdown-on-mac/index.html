@@ -72,13 +72,13 @@ try {
   <h1>How to view a Markdown file on a Mac.</h1>
   <p>A <code>.md</code> file is plain text. The headings, bold words, tables and diagrams are written as marks: <code>#</code> for a heading, <code>**</code> around bold, pipes for a table, a <code>mermaid</code> code block for a diagram. Open it in a plain text editor and you read the marks. To read the page the way its author meant, something has to render it.</p>
 </section>
-<h2>Today, for free: turn it into a PDF</h2>
+<h2 id="today-for-free-turn-it-into-a-pdf">Today, for free: turn it into a PDF</h2>
 <p>The free <code>marsdawn</code> command-line tool renders a Markdown file to a PDF, which any Mac can open. Tables, math, Mermaid diagrams and highlighted code come out rendered, and it needs nothing else installed, not even the MarsDawn app.</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <p><code>export</code> writes <code>notes.pdf</code> next to the Markdown file, and <code>open</code> shows it in your PDF viewer. It needs macOS 15 or later. The walk-through, with a real exported page, is on <a href="/markdown-to-pdf/">Markdown to PDF</a>.</p>
-<h2>Coming soon: read it in MarsDawn</h2>
+<h2 id="coming-soon-read-it-in-marsdawn">Coming soon: read it in MarsDawn</h2>
 <p>MarsDawn is a Markdown editor for the Mac, coming soon to the Mac App Store. Open a <code>.md</code> file and read the rendered page next to the source:</p>
 <ul>
   <li>The preview updates as you type, and the two panes scroll together.</li>
@@ -87,7 +87,7 @@ open notes.pdf</code></pre>
   <li>When you want to change something, the source is right there. MarsDawn is an editor, not only a viewer.</li>
 </ul>
 <p>If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent writes, you read it rendered, and it revises. See <a href="/">the home page</a>, and <a href="/cli/agents/">marsdawn for agents</a> for letting an agent open files for you.</p>
-<h2>Next</h2>
+<h2 id="next">Next</h2>
 <ul>
   <li>Every option of the command-line tool: <a href="/cli/">Command Line</a>.</li>
   <li>What MarsDawn doesn't do: <a href="/limits/">the list</a>.</li>

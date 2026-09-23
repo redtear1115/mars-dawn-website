@@ -75,13 +75,13 @@ try {
 
 <div class="summary"><p><strong>MarsDawn 就是為了這種閱讀而做的：排版後的頁面和原始碼並排，Mermaid 圖表和 KaTeX 數學式直接畫出來，而不是留著記號，讓文件的結構一眼就看得懂。</strong></p></div>
 
-<h2>讀起來通順，不代表是對的</h2>
+<h2 id="fluent-isn-t-the-same-as-correct">讀起來通順，不代表是對的</h2>
 <p>Simon Willison 在談 AI 輔助寫程式時，對那些還會被繼續維護、不是寫完就丟的程式碼這麼說：「the quality and understandability of the underlying code is crucial」（底層程式碼的品質和是否容易理解，至關重要，<a href="https://simonwillison.net/2025/Mar/6/vibe-coding/">Vibe coding</a>，2025）。文件也一樣：agent 寫出來讀起來很順的草稿，結構、數字或邏輯還是可能是錯的，而通順的文字並不會告訴你哪裡該多留意。</p>
 
-<h2>是推論，不是編譯</h2>
+<h2 id="inference-not-compilation">是推論，不是編譯</h2>
 <p>Thoughtworks 的 Birgitta B&#246;ckeler 講得很直接：「LLMs are NOT compilers, interpreters, transpilers or assemblers of natural language, they are inferrers」（LLM 不是自然語言的編譯器、直譯器、轉譯器或組譯器，它們是推論器，<a href="https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html">I still care about the code</a>）。編譯器要嘛接受你的輸入，要嘛回報錯誤；agent 給你的東西即使能跑、讀起來也通順，也不保證是對的。還是得有人檢查。</p>
 
-<h2>MarsDawn 給讀的人什麼</h2>
+<h2 id="what-marsdawn-gives-that-reader">MarsDawn 給讀的人什麼</h2>
 <ul>
   <li>排版後的頁面和原始碼並排，兩邊一改就同步更新，讓文字裡的說法和它的結構同時在你眼前。</li>
   <li>Mermaid 圖表畫出來：agent 用文字描述的流程圖，變成一個你真的能看懂的形狀。</li>
@@ -89,7 +89,7 @@ try {
   <li>它本身不會自動做任何事。MarsDawn 不會幫你評分、摘要或標記這份文件&#8212;&#8212;它只是把結構攤在你面前，讓你自己判斷。</li>
 </ul>
 
-<h2>接下來</h2>
+<h2 id="next">接下來</h2>
 <ul>
   <li>這樣的審閱怎麼不花 agent 自己的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
   <li>把審閱過的文件交給別人：<a href="/zh-hant/sharing-exported-pdfs/">分享 PDF</a>。</li>

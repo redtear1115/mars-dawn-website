@@ -3077,6 +3077,18 @@ def add_toc(locale: str, slug: str, html: str) -> str:
     return html[:cut] + toc + html[cut:]
 
 
+def add_h2_ids(locale: str, slug: str, page: dict, html: str) -> str:
+    """Give each section of a page a stable anchor, named from the English heading so a link works
+    in every language. Skipped where a locale's sections don't line up one for one with English."""
+    heads = re.findall(r"<h2>(.*?)</h2>", all_pages()[("en", slug)]["body"])
+    if len(re.findall(r"<h2>", page["body"])) != len(heads):
+        return html
+    for head in heads:
+        anchor = re.sub(r"[^a-z0-9]+", "-", re.sub(r"<[^>]+>", "", head).lower()).strip("-")
+        html = html.replace("<h2>", f'<h2 id="{anchor}">', 1)
+    return html
+
+
 def render(locale: str, slug: str, page: dict) -> str:
     ui = UI[locale]
     lang = LOCALES[locale]["html_lang"]
@@ -3152,6 +3164,8 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = page["body"].strip()
     if slug in TOC_PAGES:
         main_html = add_toc(locale, slug, main_html)
+    elif slug != "index":
+        main_html = add_h2_ids(locale, slug, page, main_html)
     # Two rows, the same on every page (#65): the site's links, then a meta line. The home page's meta
     # line is the origin mark alone, because the closing band just above already says the tagline and
     # the store line. The origin mark is deliberately untranslated, as on Futari's site.

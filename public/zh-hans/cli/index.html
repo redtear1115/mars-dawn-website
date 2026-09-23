@@ -77,7 +77,7 @@ try {
 
 <p>要从 AI agent 或脚本调用 marsdawn？请看<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>，里面有 JSON 输出、Schema 和所有退出代码。</p>
 
-<h2>安装</h2>
+<h2 id="install">安装</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
 <p>在 Apple 芯片的 Mac 上，Homebrew 会直接安装预先构建好的版本，几秒就完成，不需要另外安装任何东西。在 Intel Mac 上则会从源代码构建，需要几分钟，也需要 Xcode 26 以上（Swift 6.2）。这个工具需要 macOS 15 以上。</p>
@@ -87,7 +87,7 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>用 <code>marsdawn --version</code> 查看安装的版本。</p>
 
-<h2>命令</h2>
+<h2 id="commands">命令</h2>
 
 <h3>marsdawn open</h3>
 <p>在 MarsDawn app 中打开一个或多个 Markdown 文件，方便审阅。需要先安装这个 app：没有安装时，<code>marsdawn open</code> 会以代码 3 结束，并说明没有安装 MarsDawn。<code>export</code> 不需要这个 app。</p>
@@ -115,13 +115,13 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
 </ul>
 
-<h2>$MARSDAWN_THEME 环境变量</h2>
+<h2 id="the-marsdawn-theme-variable">$MARSDAWN_THEME 环境变量</h2>
 <p>没有传入 <code>--theme</code> 时，<code>export</code> 会读取 <code>$MARSDAWN_THEME</code> 环境变量，值必须是 <code>dawn</code>、<code>classic</code>、<code>modern</code> 或 <code>vivid</code> 其中之一，其他值都会改用 <code>dawn</code>。这个工具不会读取 App 本身的主题设置，因为读取其他 App 的容器可能触发 macOS 隐私提示。</p>
 
-<h2>覆盖文件的规则</h2>
+<h2 id="overwriting-files">覆盖文件的规则</h2>
 <p><code>export</code> 默认不会覆盖已存在的输出文件，除非加上 <code>--force</code>。</p>
 
-<h2>退出代码</h2>
+<h2 id="exit-codes">退出代码</h2>
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col">代码</th><th scope="col">意思</th><th scope="col">怎么处理</th></tr></thead>
 <tbody>
@@ -134,7 +134,7 @@ marsdawn open notes.md --line 120</code></pre>
 </tbody>
 </table></div>
 
-<h2>--json 输出</h2>
+<h2 id="json-output">--json 输出</h2>
 <p>成功时，<code>marsdawn open --json</code> 会输出 <code>ok</code>、<code>opened</code>（每个文件的 <code>path</code>，有指定行号时另含 <code>line</code>）与 <code>app</code>（App 路径）；<code>marsdawn export --json</code> 会输出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 与 <code>diagramErrors</code>。失败时两者都会输出 <code>ok</code>、<code>error</code> 与 <code>message</code>。</p>
 </main>
 <footer class="footer">

@@ -72,11 +72,11 @@ try {
   <h1>Mac のコマンドラインで、Markdown を PDF に。</h1>
   <p>無料の <code>marsdawn</code> ツールは、コマンド1つで Markdown ファイルを PDF に変換します。表、数式、Mermaid 図、ハイライトされたコードはソースの見た目そのままに仕上がり、MarsDawn アプリすら含め、他に何もインストールする必要はありません。</p>
 </section>
-<h2>インストール</h2>
+<h2 id="install-it">インストール</h2>
 <pre><code>brew install redtear1115/tap/marsdawn
 marsdawn --version</code></pre>
 <p>Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールします。Intel Mac ではソースからビルドするため数分かかり、Xcode 26 以降が必要です。macOS 15 以降で動作し、<code>marsdawn --version</code> がインストールされたバージョンを表示します。</p>
-<h2>文書を保存する</h2>
+<h2 id="save-a-document">文書を保存する</h2>
 <p><code>plan.md</code> という名前のファイルに、次の内容を貼り付けてください。</p>
 <pre><code># 計画：エクスポートを高速化
 
@@ -104,13 +104,13 @@ graph LR
 let pdf = try export("plan.md")
 ```
 </code></pre>
-<h2>書き出す</h2>
+<h2 id="export-it">書き出す</h2>
 <pre><code>marsdawn export plan.md</code></pre>
 <p>ソースの隣に <code>plan.pdf</code> を書き出し、保存先を表示します。</p>
 <pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>これはそのページを、<code>marsdawn</code> 0.5.0 の実行結果から実際にキャプチャしたものです。</p>
 <p><img class="pdf-page" src="/assets/cli/plan-ja.png" alt="書き出された PDF：見出し、ステップの表、インラインと独立した数式、ドラフト・レビュー・公開の図、ハイライトされた Swift のコード1行。" width="989" height="930"></p>
-<h2>テーマ、用紙サイズ、ファイル名を選ぶ</h2>
+<h2 id="choose-a-theme-paper-size-and-file-name">テーマ、用紙サイズ、ファイル名を選ぶ</h2>
 <pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
 <ul>
   <li><code>--theme</code>：dawn、classic、modern、vivid のいずれかで、テーマのライトカラーを使います。指定しない場合、<code>export</code> は <code>$MARSDAWN_THEME</code>、それもなければ dawn を使います。</li>
@@ -118,14 +118,14 @@ let pdf = try export("plan.md")
   <li><code>-o</code>：PDF をソースの隣ではなく、どこに書き出すか。</li>
   <li><code>--allow-remote-images</code>：レンダリング時にウェブから画像を読み込みます。指定しない限りオフのままです。</li>
 </ul>
-<h2>うまくいかない場合</h2>
+<h2 id="if-it-doesn-t-work">うまくいかない場合</h2>
 <ul>
   <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew が <code>marsdawn</code> をソースからビルドしています。Intel Mac ではこのようになります。App Store から Xcode 26 以降をインストールしてから、もう一度インストールしてください。</li>
   <li><code>marsdawn: No such file: …</code> パスがファイルを指していません。ファイル名を確認するか、そのファイルがあるフォルダでコマンドを実行してください。</li>
   <li><code>… already exists. Pass --force to replace it.</code> 同じ名前の PDF がすでに存在します。<code>--force</code> を付けて置き換えるか、<code>-o</code> で別の場所に書き出してください。</li>
   <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> テーマまたは用紙サイズが認識されていません。テーマは dawn、classic、modern、vivid、用紙は a4 または letter です。</li>
 </ul>
-<h2>次に</h2>
+<h2 id="next">次に</h2>
 <ul>
   <li>すべてのオプションと出力される JSON：<a href="/ja/cli/">コマンドライン</a>。</li>
   <li>コーディングエージェントにこれをやらせるには：<a href="/ja/cli/skill/">marsdawn のエージェントスキル</a>。</li>

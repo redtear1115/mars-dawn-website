@@ -72,7 +72,7 @@ try {
   <h1>在别处看 Markdown，对比 MarsDawn。</h1>
   <p>如果你手边刚好开着 VS Code、浏览器或 Claude Desktop，用它们顺手看一眼 Markdown 文件也合理。以下是它们各自实际排版出什么、要花多少功夫才能看到，和在 MarsDawn 里打开同一份文件的比较。</p>
 </section>
-<h2>一眼看完</h2>
+<h2 id="at-a-glance">一眼看完</h2>
 <div class="table-scroll"><table class="compare compare-wide">
 <thead><tr><th scope="col"></th><th scope="col">VS Code 预览</th><th scope="col">浏览器扩展</th><th scope="col">Claude Desktop</th><th scope="col">MarsDawn</th></tr></thead>
 <tbody>
@@ -83,15 +83,15 @@ try {
 </tbody>
 </table></div>
 
-<h2>VS Code 内置的预览</h2>
+<h2 id="vs-code-s-built-in-preview">VS Code 内置的预览</h2>
 <p>在 VS Code 按 <kbd>&#8984;&#8679;V</kbd>，就会用内置的预览窗格排版出 Markdown 文件，免费，不用另外安装。从 VS Code 1.121（2026 年 5 月）开始，这个预览也能原生画出 Mermaid 图表&#8212;&#8212;微软把一个 Mermaid 扩展并进了 VS Code 本体，以前需要另外装扩展，现在不用了。它做不到的：这是编辑器里的一个预览窗格，不是为了阅读而做的编辑器&#8212;&#8212;窗格旁边还有文件树、终端和 VS Code 能显示的其他所有面板，而 VS Code 本身是 Electron app，你装的是一整套开发环境，不是一个用来读文件的工具。</p>
-<h2>看本机文件的浏览器扩展</h2>
+<h2 id="a-browser-extension-for-local-files">看本机文件的浏览器扩展</h2>
 <p>看本机 <code>.md</code> 文件，没有哪一个浏览器扩展是主流：Local Markdown Viewer、Markdown Viewer、MarkView 等等做的事都差不多，没有哪一个是默认会装的。每一个都要先做同一件事才能打开任何文件：把该扩展的“允许访问文件网址”打开，因为浏览器默认不让扩展读取 <code>file://</code> 开头的页面。这个权限每个扩展只要开一次，但也很容易忘记自己开过，或忘记为什么要开。开了之后，文件会显示在浏览器标签页里&#8212;&#8212;也就是说，看一个文件要开一整个浏览器。</p>
-<h2>Claude Desktop 的文件预览</h2>
+<h2 id="claude-desktop-s-file-preview">Claude Desktop 的文件预览</h2>
 <p>Claude Desktop 显示的是已经在 Project 或对话里的文件。它不是为了浏览磁盘上任意文件而做的&#8212;&#8212;你能看的是对话里已经有的东西，不是一个可以一直开在旁边的笔记文件夹。Anthropic 自己列出<a href="https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai">可以上传的文件类型</a>是 PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON 和 XLSX，里面没有 Markdown。</p>
-<h2>为了读一份文件，背后跑着一整套浏览器引擎</h2>
+<h2 id="a-browser-engine-to-read-one-file">为了读一份文件，背后跑着一整套浏览器引擎</h2>
 <p>VS Code 是 Electron app：内置一套 Chromium 和 Node.js 运行环境，不是原生的 Mac app。走浏览器扩展这条路，则是真的在浏览器里运行。不管哪一种，看一份 Markdown 文件都要有一整套浏览器引擎在背后跑。MarsDawn 是原生的 AppKit app：没有内置的浏览器运行环境、直接打开任何本地文件，不用装扩展，也不用记得开过哪个权限。</p>
-<h2>接下来</h2>
+<h2 id="next">接下来</h2>
 <ul>
   <li>MarsDawn 也做不到的事：<a href="/zh-hans/limits/">这份清单</a>。</li>
   <li>今天就能免费把任何 Markdown 文件转成 PDF：<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。</li>

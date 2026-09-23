@@ -75,7 +75,7 @@ try {
 
 <div class="summary"><p><strong>使っているツールが対応しているものを選んでください：無料の <code>marsdawn</code> CLI、プレーンな Markdown の skill ファイル、または <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> という MCP サーバーです。</strong>三つとも同じ <code>marsdawn export</code> を呼び出し、同じ JSON 結果を返します。</p></div>
 
-<h2>どれを使うか</h2>
+<h2 id="which-one-to-use">どれを使うか</h2>
 <div class="table-scroll"><table class="compare">
 <thead><tr><th scope="col">エージェントが</th><th scope="col">使うもの</th><th scope="col">必要なもの</th></tr></thead>
 <tbody>
@@ -85,13 +85,13 @@ try {
 </tbody>
 </table></div>
 
-<h2>CLI</h2>
+<h2 id="the-cli">CLI</h2>
 <p><code>marsdawn export notes.md --json</code> は、シェルコマンドを実行できるエージェントやスクリプトならどれからでも呼び出せます。構造上、モデルに依存しません。返されるすべてのフィールドは<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>に文書化されており、そこが JSON スキーマの正典で、以下の二つの経路もそこを参照します。</p>
 
-<h2>skill ファイル</h2>
+<h2 id="the-skill-file">skill ファイル</h2>
 <p>シェルを直接呼び出すのではなく、プレーンな Markdown の指示を読むエージェント向け——現時点では Claude Code——には、<a href="/ja/cli/skill/">marsdawn skill</a> という1ファイルが、marsdawn のインストール、<code>export</code> の実行、結果の読み取りを教えます。プレーンな Markdown なので、指示ファイルを読み込む他のエージェントも同じファイルを使えます。</p>
 
-<h2>MCP サーバー</h2>
+<h2 id="the-mcp-server">MCP サーバー</h2>
 <p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> は、別の、公開された、Apache-2.0 ライセンスの独立した repository です。<code>export_markdown_to_pdf</code> と <code>open_in_marsdawn</code> という2つのツールを持つ MCP サーバーで、それぞれ <code>marsdawn export --json</code> と <code>marsdawn open --json</code> をラップしています。MCP クライアントをそれに向ければ、ツール呼び出しは CLI と同じ JSON を返します。</p>
 <ul>
   <li><strong>入手方法：</strong><a href="https://github.com/redtear1115/marsdawn-mcp/releases">GitHub のリリース</a>に添付された MCP Bundle（<code>marsdawn.mcpb</code>）として、またはソースから stdio でサーバーを実行することで入手できます。</li>
@@ -100,14 +100,14 @@ try {
   <li><strong>動作要件：</strong>macOS、marsdawn 0.5.0 以降、そしてサーバーを実行するための Node.js 20 以降。</li>
 </ul>
 
-<h2>許可したフォルダの中でしか動きません</h2>
+<h2 id="confined-to-folders-you-allow">許可したフォルダの中でしか動きません</h2>
 <p>両方のツールとも、許可したフォルダの中でしか読み書きしません：拡張機能の「Allowed folders」設定（デフォルトは空です）、またはお使いの MCP クライアントが提供する roots のどちらかです。どちらも設定されていない場合、すべての呼び出しは拒否され、拒否メッセージに設定方法が書かれています。パスはすべて絶対パスである必要があり、<code>export_markdown_to_pdf</code> が書き出すのは <code>.pdf</code> ファイルだけで、シンボリックリンク経由で書き込むことはありません。</p>
 <p><strong>セキュリティ：</strong><a href="https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1">0.2.1</a> に更新してください&#8212;&#8212;0.1.0 と 0.2.0 では、呼び出しがあなたのアカウントが書き込めるどのパスにも PDF を書き込めてしまう問題があり、<a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a> で修正されました。</p>
 
-<h2>同じ export、三つの入り口</h2>
+<h2 id="same-export-three-doors">同じ export、三つの入り口</h2>
 <p>どの入り口から呼び出しても、内部の動作は変わりません。同じ書き出しエンジン、同じテーマと紙のサイズ、Mermaid 図の描画に失敗したときの同じ <code>diagramErrors</code>。このページではその契約内容を繰り返しません。<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>に完全な内容があります。</p>
 
-<h2>次に</h2>
+<h2 id="next">次に</h2>
 <ul>
   <li>完全な JSON スキーマとすべての終了コード：<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>。</li>
   <li>Claude Code などのエージェント向けの1ファイルの skill：<a href="/ja/cli/skill/">marsdawn skill</a>。</li>
