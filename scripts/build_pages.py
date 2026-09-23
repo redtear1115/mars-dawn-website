@@ -621,14 +621,7 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> refuses to replace an existing output file unless you pass <code>--force</code>.</p>
 
 <h2>Exit codes</h2>
-<ul>
-  <li><code>0</code>: success.</li>
-  <li><code>2</code>: input not found.</li>
-  <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
-  <li><code>4</code>: output exists (pass <code>--force</code>).</li>
-  <li><code>5</code>: export failed.</li>
-  <li><code>64</code>: usage error, including a line out of range or <code>--line</code> with more than one file.</li>
-</ul>
+<!--compare:exit-codes-->
 
 <h2>--json output</h2>
 <p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
@@ -692,14 +685,7 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> 預設不會覆蓋已存在的輸出檔，除非加上 <code>--force</code>。</p>
 
 <h2>結束代碼</h2>
-<ul>
-  <li><code>0</code>：成功。</li>
-  <li><code>2</code>：找不到輸入檔。</li>
-  <li><code>3</code>：尚未安裝 MarsDawn（只有 <code>open</code> 會用到）。</li>
-  <li><code>4</code>：輸出檔已存在（可加上 <code>--force</code>）。</li>
-  <li><code>5</code>：輸出失敗。</li>
-  <li><code>64</code>：使用方式錯誤，包括行號超出範圍，或 <code>--line</code> 搭配了多個檔案。</li>
-</ul>
+<!--compare:exit-codes-->
 
 <h2>--json 輸出</h2>
 <p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）與 <code>app</code>（App 路徑）；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
@@ -2597,6 +2583,48 @@ COMPARE_TABLES["mcp-choice"] = {
             ["シェルコマンドを実行できる", '<a href="{root}cli/agents/">CLI</a>', "macOS 15 以降"],
             ["Claude Code のように指示ファイルを読み込む", '<a href="{root}cli/skill/">スキルファイル</a>', "CLI（スキルがインストールします）"],
             ["MCP でツールを呼び出す", '<a href="{mcp}">marsdawn-mcp</a>', "marsdawn 0.5.0 以降と Node.js 20 以降"],
+        ],
+    },
+}
+
+
+# The CLI page's exit codes, with what to do about each one. The remedies come from the CLI's own
+# contract (EXIT_CODES and the --json section): nothing here goes beyond it.
+COMPARE_TABLES["exit-codes"] = {
+    "head": {"en": ["Code", "Means", "What to do"], "zh-hant": ["代碼", "意思", "怎麼處理"],
+             "zh-hans": ["代码", "意思", "怎么处理"], "ja": ["コード", "意味", "対処"]},
+    "rows": {
+        "en": [
+            ["<code>0</code>", "Success", "With <code>--json</code>, read the one JSON line on stdout"],
+            ["<code>2</code>", "The input file isn't there", "Check the path and the file name"],
+            ["<code>3</code>", "MarsDawn isn't installed (<code>open</code> only)", "Install the app, or use <code>export</code>, which doesn't need it"],
+            ["<code>4</code>", "The output PDF already exists", "Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere"],
+            ["<code>5</code>", "The export failed", "Read <code>message</code> in the JSON result"],
+            ["<code>64</code>", "Usage error, including a line out of range or <code>--line</code> with more than one file", "Fix the option or value; this error is text on stderr, even with <code>--json</code>"],
+        ],
+        "zh-hant": [
+            ["<code>0</code>", "成功", "加了 <code>--json</code> 時，讀 stdout 上的那一行 JSON"],
+            ["<code>2</code>", "找不到輸入檔", "檢查路徑和檔名"],
+            ["<code>3</code>", "尚未安裝 MarsDawn（只有 <code>open</code> 會用到）", "安裝 app，或改用不需要 app 的 <code>export</code>"],
+            ["<code>4</code>", "輸出檔已存在", "加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處"],
+            ["<code>5</code>", "輸出失敗", "讀 JSON 結果裡的 <code>message</code>"],
+            ["<code>64</code>", "使用方式錯誤，包括行號超出範圍，或 <code>--line</code> 搭配了多個檔案", "修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣"],
+        ],
+        "zh-hans": [
+            ["<code>0</code>", "成功", "加了 <code>--json</code> 时，读 stdout 上的那一行 JSON"],
+            ["<code>2</code>", "找不到输入文件", "检查路径和文件名"],
+            ["<code>3</code>", "尚未安装 MarsDawn（只有 <code>open</code> 会用到）", "安装 app，或改用不需要 app 的 <code>export</code>"],
+            ["<code>4</code>", "输出文件已存在", "加上 <code>--force</code> 覆盖，或用 <code>-o</code> 写到别处"],
+            ["<code>5</code>", "输出失败", "读 JSON 结果里的 <code>message</code>"],
+            ["<code>64</code>", "使用方式错误，包括行号超出范围，或 <code>--line</code> 搭配了多个文件", "修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样"],
+        ],
+        "ja": [
+            ["<code>0</code>", "成功", "<code>--json</code> を付けた場合は、stdout の1行の JSON を読む"],
+            ["<code>2</code>", "入力ファイルが見つからない", "パスとファイル名を確認する"],
+            ["<code>3</code>", "MarsDawn がインストールされていない（<code>open</code> のみ）", "アプリをインストールするか、アプリが不要な <code>export</code> を使う"],
+            ["<code>4</code>", "出力する PDF がすでにある", "<code>--force</code> で上書きするか、<code>-o</code> で別の場所に書き出す"],
+            ["<code>5</code>", "書き出しに失敗した", "JSON の結果の <code>message</code> を読む"],
+            ["<code>64</code>", "使用方法のエラー。範囲外の行や、複数ファイルに対する <code>--line</code> の指定などを含む", "オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される"],
         ],
     },
 }

@@ -121,14 +121,17 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> は、<code>--force</code> を指定しない限り、既存の出力ファイルを置き換えません。</p>
 
 <h2>終了コード</h2>
-<ul>
-  <li><code>0</code>：成功。</li>
-  <li><code>2</code>：入力が見つからない。</li>
-  <li><code>3</code>：MarsDawn がインストールされていない（<code>open</code> のみ）。</li>
-  <li><code>4</code>：出力先がすでに存在する（<code>--force</code> を指定してください）。</li>
-  <li><code>5</code>：書き出しに失敗。</li>
-  <li><code>64</code>：使用方法のエラー。範囲外の行や、複数ファイルに対する <code>--line</code> の指定などを含みます。</li>
-</ul>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">コード</th><th scope="col">意味</th><th scope="col">対処</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>0</code></th><td>成功</td><td><code>--json</code> を付けた場合は、stdout の1行の JSON を読む</td></tr>
+  <tr><th scope="row"><code>2</code></th><td>入力ファイルが見つからない</td><td>パスとファイル名を確認する</td></tr>
+  <tr><th scope="row"><code>3</code></th><td>MarsDawn がインストールされていない（<code>open</code> のみ）</td><td>アプリをインストールするか、アプリが不要な <code>export</code> を使う</td></tr>
+  <tr><th scope="row"><code>4</code></th><td>出力する PDF がすでにある</td><td><code>--force</code> で上書きするか、<code>-o</code> で別の場所に書き出す</td></tr>
+  <tr><th scope="row"><code>5</code></th><td>書き出しに失敗した</td><td>JSON の結果の <code>message</code> を読む</td></tr>
+  <tr><th scope="row"><code>64</code></th><td>使用方法のエラー。範囲外の行や、複数ファイルに対する <code>--line</code> の指定などを含む</td><td>オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される</td></tr>
+</tbody>
+</table></div>
 
 <h2>--json 出力</h2>
 <p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含む）、<code>app</code>（アプリのパス）を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時はどちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>

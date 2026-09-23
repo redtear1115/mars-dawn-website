@@ -121,14 +121,17 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> refuses to replace an existing output file unless you pass <code>--force</code>.</p>
 
 <h2>Exit codes</h2>
-<ul>
-  <li><code>0</code>: success.</li>
-  <li><code>2</code>: input not found.</li>
-  <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
-  <li><code>4</code>: output exists (pass <code>--force</code>).</li>
-  <li><code>5</code>: export failed.</li>
-  <li><code>64</code>: usage error, including a line out of range or <code>--line</code> with more than one file.</li>
-</ul>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">Code</th><th scope="col">Means</th><th scope="col">What to do</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>0</code></th><td>Success</td><td>With <code>--json</code>, read the one JSON line on stdout</td></tr>
+  <tr><th scope="row"><code>2</code></th><td>The input file isn't there</td><td>Check the path and the file name</td></tr>
+  <tr><th scope="row"><code>3</code></th><td>MarsDawn isn't installed (<code>open</code> only)</td><td>Install the app, or use <code>export</code>, which doesn't need it</td></tr>
+  <tr><th scope="row"><code>4</code></th><td>The output PDF already exists</td><td>Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere</td></tr>
+  <tr><th scope="row"><code>5</code></th><td>The export failed</td><td>Read <code>message</code> in the JSON result</td></tr>
+  <tr><th scope="row"><code>64</code></th><td>Usage error, including a line out of range or <code>--line</code> with more than one file</td><td>Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
+</tbody>
+</table></div>
 
 <h2>--json output</h2>
 <p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>

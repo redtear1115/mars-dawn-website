@@ -234,14 +234,7 @@ marsdawn open notes.md --line 120</code></pre>
 <p><code>export</code> 默认不会覆盖已存在的输出文件，除非加上 <code>--force</code>。</p>
 
 <h2>退出代码</h2>
-<ul>
-  <li><code>0</code>：成功。</li>
-  <li><code>2</code>：找不到输入文件。</li>
-  <li><code>3</code>：尚未安装 MarsDawn（只有 <code>open</code> 会用到）。</li>
-  <li><code>4</code>：输出文件已存在（可加上 <code>--force</code>）。</li>
-  <li><code>5</code>：输出失败。</li>
-  <li><code>64</code>：使用方式错误，包括行号超出范围，或 <code>--line</code> 搭配了多个文件。</li>
-</ul>
+<!--compare:exit-codes-->
 
 <h2>--json 输出</h2>
 <p>成功时，<code>marsdawn open --json</code> 会输出 <code>ok</code>、<code>opened</code>（每个文件的 <code>path</code>，有指定行号时另含 <code>line</code>）与 <code>app</code>（App 路径）；<code>marsdawn export --json</code> 会输出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 与 <code>diagramErrors</code>。失败时两者都会输出 <code>ok</code>、<code>error</code> 与 <code>message</code>。</p>
