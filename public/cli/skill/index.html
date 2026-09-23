@@ -2,6 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>A coding-agent skill for Markdown to PDF · MarsDawn</title>
 <meta name="description" content="One file your coding agent loads to install marsdawn, check it works, export Markdown to PDF and read the JSON result.">
@@ -25,8 +47,16 @@
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
 </head>
 <body>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/">
@@ -64,6 +94,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
     <a href="/support/">Support</a>
     <a href="/privacy/">Privacy Policy</a>
     <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
   </nav>
   <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>

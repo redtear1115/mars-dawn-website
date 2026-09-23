@@ -7,7 +7,7 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 
 
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': 'MarsDawn 即将在 Mac App Store 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '输出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'changelog': '更新记录'}
+    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': 'MarsDawn 即将在 Mac App Store 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '输出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'changelog': '更新记录', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置'}
     store_chip = '即将在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.3.0 以后', 'error': '两个命令的失败结果', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单'}
     example_plan = '# 计划：让输出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -105,14 +105,16 @@ def build(k) -> dict:
 
 <h2>这个网站</h2>
 <p>App 和这个网站是两件事。App 不收集数据。会记下访问的，只有 marsdawn.southern-light.dev。</p>
-<p><strong>目前还没有开启。</strong>这个网站今天不会把任何东西送到分析服务。下面是开启之后会记录的内容，先写在这里，让第一笔记录出现之前，说明就已经公开。开启的那天，删掉这一段，其余留下。</p>
-<p>开启之后：</p>
+<p>这个网站使用通过<strong>Google Tag Manager</strong>载入的<strong>Google Analytics 4</strong>。每位访客一开始的分析状态都是拒绝：Google 的同意模式只会发送一个没有 cookie、不含任何标识符的连接，直到你在横幅中选择“接受”为止。选择“拒绝”，或是不做选择，都会维持这个状态。你可以随时用每一页页脚的“Cookie 设置”链接改变选择；这个选择只存在你浏览器的本地存储里，不是我们设下的 cookie。</p>
+<p>一旦你点击接受，Google Analytics 就会设置自己的 cookie（<code>_ga</code> 与 <code>_ga_&lt;容器 ID&gt;</code>），并记录：</p>
 <ul>
-  <li><strong>页面浏览。</strong>服务器会记录某个页面被请求，以及浏览器有送来源网址时的那个网址。</li>
-  <li><strong>经由本站转出去的点击。</strong>经由本站跳转才离开的点击会被记录，例如前往 Mac App Store 的链接。目的地是固定网址，跳转不会附加追踪参数。</li>
-  <li><strong>不会记录的。</strong>没有 cookie，也不使用浏览器的本地存储，页面里没有分析脚本。没有账户，因为这个网站不需要账户。没有你的文稿，也没有你打的字。没有跨站广告，也不会建立你的个人档案。App 向 <code>/themes/</code> 索取主题文件的请求会被跳过，不会送出。</li>
-  <li><strong>一次访问只是一次浏览。</strong>每个请求配一组只用一次的随机编号，用完即弃。网站无法在你下次来时认出你。</li>
-  <li><strong>数据去哪里。</strong>这些事件由网站自己的服务器送给 PostHog（美国区）。你的浏览器不会连到 PostHog。PostHog 会将这些事件保留 12 个月。完整的 IP 地址不会转发过去。</li>
+  <li><strong>页面浏览与来源网址。</strong>被浏览的页面，以及浏览器有发送来源网址时的那个网址。</li>
+  <li><strong>大致位置、设备与浏览器。</strong>由你的 IP 地址推算出的粗略位置（最多到城市级别）、设备类型、操作系统与浏览器，都不足以用来识别你是谁。</li>
+  <li><strong>经由本站离开的点击与滚动。</strong>Google Analytics 的增强型评估会记录离开本站的点击（例如前往 Mac App Store 的链接），以及你在页面上滚动的程度。</li>
+  <li><strong>IP 地址。</strong>Google Analytics 4 不会记录或保存 IP 地址。</li>
+  <li><strong>不会记录的。</strong>没有账户，因为这个网站不需要账户。没有你的文稿，也没有你打的字。没有跨站广告，也不会建立你的个人档案。App 向 <code>/themes/</code> 索取主题文件的请求会被跳过，不会送出。</li>
+  <li><strong>保留期限。</strong>Google 会保留这些数据 14 个月，之后删除。</li>
+  <li><strong>数据处理地点。</strong>Google Tag Manager 与 Google Analytics 由 Google 运营；你的数据可能会在美国及 Google 运营所在的其他国家处理。</li>
   <li><strong>主机。</strong>网站放在 Cloudflare 上。和任何主机一样，它在响应请求时会看到你的 IP 地址。那是主机自己的日志，不是上面的分析。</li>
 </ul>
 

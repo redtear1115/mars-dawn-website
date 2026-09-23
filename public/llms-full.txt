@@ -277,15 +277,17 @@ Last updated 2026-09-23
 
 The app and this website are two different things. The app collects nothing. A visit can be recorded only here, on marsdawn.southern-light.dev.
 
-**This is not on yet.** This website sends nothing to an analytics service today. The list below is what it will record once that is switched on. It is published now so the description is already public before the first event. On the day it is switched on, delete this paragraph and leave the list.
+This site uses **Google Analytics 4**, loaded through **Google Tag Manager**. Every visitor starts with analytics denied: Google's Consent Mode sends only a cookieless ping with no analytics cookie and no identifier, until you choose *Accept* in the banner. Choosing *Decline*, or making no choice at all, keeps it that way. Change your choice at any time with the "Cookie settings" link in the footer of every page. The choice itself is stored only in your browser's local storage, never in a cookie of ours.
 
-Once it is on:
+Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<container id>`) and records:
 
-- **Page views.** The server records that a page was requested, and the referring address when the browser sends one.
-- **Clicks that leave through this site.** A click that goes out through a redirect on this site, such as the link to the Mac App Store, is recorded. The destination is a fixed address, and the redirect adds no tracking parameters.
-- **What is not recorded.** No cookies, no local storage, and no analytics script in the page. No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under `/themes/` are skipped, and are not sent on.
-- **A visit is only a page view.** Each request is given a new random id, used for that request and not again. The site cannot recognise you on a later visit.
-- **Where it goes.** The site's own server sends these events to PostHog's United States region. Your browser does not contact PostHog. PostHog keeps the events for 12 months. The full IP address is not forwarded.
+- **Page views and referrer.** Which page was viewed, and the referring address when the browser sends one.
+- **Approximate location, device and browser.** A coarse location derived from your IP address (city level at most), your device type, operating system and browser — none of it precise enough to identify you.
+- **Outbound clicks and scroll depth.** Google Analytics' enhanced measurement records clicks that leave the site, such as the link to the Mac App Store, and how far you scroll down a page.
+- **IP addresses.** Google Analytics 4 does not log or store IP addresses.
+- **What is not recorded.** No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under `/themes/` are skipped, and are not sent on.
+- **Retention.** Google keeps this data for 14 months, then deletes it.
+- **Where it's processed.** Google Tag Manager and Google Analytics are operated by Google; your data may be processed in the United States as well as other countries where Google operates.
 - **The host.** Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.
 
 ## What stays on your Mac
@@ -1286,15 +1288,17 @@ macOS 的 Markdown 編輯器 MarsDawn 如何處理你的資訊。
 
 App 和這個網站是兩件事。App 不收集資料。會記下造訪的，只有 marsdawn.southern-light.dev。
 
-**目前還沒有開啟。**這個網站今天不會把任何東西送到分析服務。下面是開啟之後會記錄的內容，先寫在這裡，讓第一筆記錄出現之前，說明就已經公開。開啟的那天，刪掉這一段，其餘留下。
+這個網站使用透過**Google Tag Manager**載入的**Google Analytics 4**。每位訪客一開始的分析狀態都是拒絕：Google 的同意模式只會送出一個沒有 cookie、不含任何識別碼的連線，直到你在橫幅中選擇「接受」為止。選擇「拒絕」，或是不做選擇，都會維持這個狀態。你可以隨時用每一頁頁尾的「Cookie 設定」連結改變選擇；這個選擇只存在你瀏覽器的本機儲存空間裡，不是我們設下的 cookie。
 
-開啟之後：
+一旦你按下接受，Google Analytics 就會設定自己的 cookie（`_ga` 與 `_ga_<容器 ID>`），並記錄：
 
-- **頁面瀏覽。**伺服器會記錄某個頁面被請求，以及瀏覽器有送出來源網址時的那個網址。
-- **經由本站轉出去的點擊。**經由本站轉址才離開的點擊會被記錄，例如前往 Mac App Store 的連結。目的地是固定網址，轉址不會附加追蹤參數。
-- **不會記錄的。**沒有 cookie，也不使用瀏覽器的本地儲存，頁面裡沒有分析程式。沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 `/themes/` 索取主題檔案的請求會被略過，不會送出。
-- **一次造訪只是一次瀏覽。**每個請求配一組只用一次的隨機編號，用完即棄。網站無法在你下次來時認出你。
-- **資料去哪裡。**這些事件由網站自己的伺服器送給 PostHog（美國區）。你的瀏覽器不會連到 PostHog。PostHog 會把這些事件保留 12 個月。完整的 IP 位址不會轉送過去。
+- **頁面瀏覽與來源網址。**被瀏覽的頁面，以及瀏覽器有送出來源網址時的那個網址。
+- **大略位置、裝置與瀏覽器。**由你的 IP 位址推算出的粗略位置（最多到城市層級）、裝置類型、作業系統與瀏覽器，都不足以用來辨識你是誰。
+- **經由本站離開的點擊與捲動。**Google Analytics 的加強型評估會記錄離開本站的點擊（例如前往 Mac App Store 的連結），以及你在頁面上捲動的程度。
+- **IP 位址。**Google Analytics 4 不會記錄或保存 IP 位址。
+- **不會記錄的。**沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 `/themes/` 索取主題檔案的請求會被略過，不會送出。
+- **保留期限。**Google 會保留這些資料 14 個月，之後刪除。
+- **資料處理地點。**Google Tag Manager 與 Google Analytics 由 Google 營運；你的資料可能會在美國及 Google 營運所在的其他國家處理。
 - **主機。**網站放在 Cloudflare。和任何主機一樣，它在回應請求時會看到你的 IP 位址。那是主機自己的日誌，不是上面的分析。
 
 ## 留在你 Mac 上的東西
@@ -2295,15 +2299,17 @@ macOS 的 Markdown 编辑器 MarsDawn 如何处理你的信息。
 
 App 和这个网站是两件事。App 不收集数据。会记下访问的，只有 marsdawn.southern-light.dev。
 
-**目前还没有开启。**这个网站今天不会把任何东西送到分析服务。下面是开启之后会记录的内容，先写在这里，让第一笔记录出现之前，说明就已经公开。开启的那天，删掉这一段，其余留下。
+这个网站使用通过**Google Tag Manager**载入的**Google Analytics 4**。每位访客一开始的分析状态都是拒绝：Google 的同意模式只会发送一个没有 cookie、不含任何标识符的连接，直到你在横幅中选择“接受”为止。选择“拒绝”，或是不做选择，都会维持这个状态。你可以随时用每一页页脚的“Cookie 设置”链接改变选择；这个选择只存在你浏览器的本地存储里，不是我们设下的 cookie。
 
-开启之后：
+一旦你点击接受，Google Analytics 就会设置自己的 cookie（`_ga` 与 `_ga_<容器 ID>`），并记录：
 
-- **页面浏览。**服务器会记录某个页面被请求，以及浏览器有送来源网址时的那个网址。
-- **经由本站转出去的点击。**经由本站跳转才离开的点击会被记录，例如前往 Mac App Store 的链接。目的地是固定网址，跳转不会附加追踪参数。
-- **不会记录的。**没有 cookie，也不使用浏览器的本地存储，页面里没有分析脚本。没有账户，因为这个网站不需要账户。没有你的文稿，也没有你打的字。没有跨站广告，也不会建立你的个人档案。App 向 `/themes/` 索取主题文件的请求会被跳过，不会送出。
-- **一次访问只是一次浏览。**每个请求配一组只用一次的随机编号，用完即弃。网站无法在你下次来时认出你。
-- **数据去哪里。**这些事件由网站自己的服务器送给 PostHog（美国区）。你的浏览器不会连到 PostHog。PostHog 会将这些事件保留 12 个月。完整的 IP 地址不会转发过去。
+- **页面浏览与来源网址。**被浏览的页面，以及浏览器有发送来源网址时的那个网址。
+- **大致位置、设备与浏览器。**由你的 IP 地址推算出的粗略位置（最多到城市级别）、设备类型、操作系统与浏览器，都不足以用来识别你是谁。
+- **经由本站离开的点击与滚动。**Google Analytics 的增强型评估会记录离开本站的点击（例如前往 Mac App Store 的链接），以及你在页面上滚动的程度。
+- **IP 地址。**Google Analytics 4 不会记录或保存 IP 地址。
+- **不会记录的。**没有账户，因为这个网站不需要账户。没有你的文稿，也没有你打的字。没有跨站广告，也不会建立你的个人档案。App 向 `/themes/` 索取主题文件的请求会被跳过，不会送出。
+- **保留期限。**Google 会保留这些数据 14 个月，之后删除。
+- **数据处理地点。**Google Tag Manager 与 Google Analytics 由 Google 运营；你的数据可能会在美国及 Google 运营所在的其他国家处理。
 - **主机。**网站放在 Cloudflare 上。和任何主机一样，它在响应请求时会看到你的 IP 地址。那是主机自己的日志，不是上面的分析。
 
 ## 留在你 Mac 上的东西
@@ -3294,15 +3300,17 @@ macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情�
 
 アプリとこのウェブサイトは別のものです。アプリはデータを収集しません。訪問が記録され得るのは、marsdawn.southern-light.dev だけです。
 
-**まだ有効になっていません。**このウェブサイトは、今日はアナリティクスのサービスへ何も送りません。以下は、有効にしたあとに記録する内容です。最初の記録より前に公開しておくため、ここに書いてあります。有効にする日にはこの段落だけを削除し、リストは残します。
+このサイトは**Google タグマネージャー**経由で読み込まれる**Google アナリティクス 4**を使用しています。訪問者は最初、分析が拒否された状態で始まります。Google の同意モードは、バナーで「同意する」を選ぶまで、クッキーを使わず識別子も含まない通信だけを送ります。「同意しない」を選んだ場合、または何も選ばなかった場合も、この状態が続きます。いつでもフッターの「Cookie 設定」リンクから選択を変更できます。この選択はブラウザのローカルストレージにのみ保存され、当サイト独自のクッキーではありません。
 
-有効にしたあと：
+同意すると、Google アナリティクスは自身のクッキー（`_ga` と `_ga_<コンテナ ID>`）を設定し、次を記録します。
 
-- **ページの閲覧。**サーバーは、ページがリクエストされたことと、ブラウザが参照元のアドレスを送った場合はそのアドレスを記録します。
-- **このサイト経由で外へ出るクリック。**このサイト上のリダイレクトを通って離れるクリックを記録します。Mac App Store へのリンクがその例です。行き先は固定のアドレスで、リダイレクトにトラッキング用のパラメータは付きません。
-- **記録しないもの。**Cookie も、ブラウザのローカルストレージも、ページ内のアナリティクス用スクリプトもありません。アカウントはありません。このサイトにアカウント機能がないためです。文書も、入力した文字も記録しません。サイトをまたいだ広告もなく、あなたのプロフィールも作りません。アプリが `/themes/` 以下のテーマファイルを取りに行くリクエストは対象外で、送られません。
-- **訪問はページの閲覧でしかありません。**リクエストごとに新しいランダムな番号を一つ割り当て、そのリクエストにだけ使い、再利用しません。次に訪れたときに、あなただと分かることはありません。
-- **どこへ送られるか。**これらのイベントは、このサイト自身のサーバーから PostHog（米国リージョン）へ送られます。ブラウザが PostHog に接続することはありません。PostHog の保持期間は12か月です。完全な IP アドレスは転送しません。
+- **ページビューと参照元。**閲覧されたページと、ブラウザが送信した場合の参照元アドレス。
+- **おおよその位置情報、デバイス、ブラウザ。**IP アドレスから推定される、市区町村レベル程度までの位置情報、デバイスの種類、OS、ブラウザ。いずれも個人を特定できるものではありません。
+- **サイトを離れるクリックとスクロール。**Google アナリティクスの拡張計測機能は、サイトを離れるクリック（Mac App Store へのリンクなど）と、ページをどこまでスクロールしたかを記録します。
+- **IP アドレス。**Google アナリティクス 4 は IP アドレスを記録・保存しません。
+- **記録しないもの。**アカウントはありません。このサイトにアカウント機能がないためです。文書も、入力した文字も記録しません。サイトをまたいだ広告もなく、あなたのプロフィールも作りません。アプリが `/themes/` 以下のテーマファイルを取りに行くリクエストは対象外で、送られません。
+- **保持期間。**Google はこのデータを14か月保持したあと、削除します。
+- **データの処理場所。**Google タグマネージャーと Google アナリティクスは Google が運営しており、データは米国および Google が事業を行うその他の国で処理される場合があります。
 - **ホスティング。**サイトは Cloudflare 上にあります。どのホストとも同じく、リクエストに応答する間は IP アドレスを見ます。それはホスト自身のログであり、上のアナリティクスではありません。
 
 ## あなたの Mac に残るもの

@@ -231,9 +231,66 @@ kbd {
 /* The origin mark, set as Futari's site sets it: tracked caps, the same in every language. */
 .footer-origin { font-size: 0.78rem; letter-spacing: 2px; white-space: nowrap; }
 
+/* "Cookie settings" (consent.js): a footer link with nothing to navigate to (it reopens
+   the banner in place), so it's a <button> styled to match the <a>s beside it. */
+.footer-link-btn {
+  font: inherit;
+  color: var(--dust);
+  white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+.footer-link-btn:hover { text-decoration-thickness: 2px; }
+.footer-link-btn:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
 /* Cloudflare can inject a hidden trap link at the top of <body>, hidden with an
    inline style that the CSP blocks. Hide it here so it is not a keyboard stop. */
 body > a[aria-hidden="true"][href*="/cdn-cgi/"] { display: none !important; }
+
+/* ---- Cookie consent banner (consent.js) ------------------------------------
+   Hidden by the `hidden` attribute in the markup (not by CSS), so a no-JS visitor
+   never sees it at all. Accept and Decline are the same .consent-btn: same size,
+   weight and border, so neither reads as the "recommended" choice. */
+.consent-banner {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  background: var(--sand);
+  border-top: 1px solid var(--hairline);
+  padding: 16px max(16px, calc((100% - 44rem) / 2 + 16px));
+  font-size: 0.92rem;
+}
+.consent-banner[hidden] { display: none; }
+.consent-banner p { margin: 0; flex: 1 1 260px; color: var(--ink); }
+.consent-actions { display: flex; gap: 10px; flex: 0 0 auto; }
+.consent-btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+.consent-btn:hover { border-color: var(--ember); }
+.consent-btn:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
 
 /* ---- Trait pages: annotated screenshots ------------------------------------
    One real screenshot per page, wider than the text column. On wide screens
