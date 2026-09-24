@@ -73,6 +73,25 @@ try {
   <p>What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.</p>
 </section>
 
+<h2 id="marsdawn-0-5-3">marsdawn 0.5.3</h2>
+<p>1 October 2026. MarsDawn is on the Mac App Store.</p>
+<ul>
+  <li>When the app isn't installed, <code>marsdawn open</code> points to MarsDawn on the Mac App Store.</li>
+  <li>The README and the agent skill teach <code>marsdawn open .</code> and <code>--folder</code>: MarsDawn 1.0.0 shows the folder in the window's sidebar.</li>
+</ul>
+
+<h2 id="marsdawn-0-5-2">marsdawn 0.5.2</h2>
+<p>24 September 2026. Footnotes, contrast and folders.</p>
+<ul>
+  <li>Footnotes render in exported PDFs: numbered references, with the notes after the body.</li>
+  <li>Every theme meets WCAG AA contrast, light and dark. Classic is now black and white.</li>
+  <li><code>marsdawn skill</code> prints the agent skill that matches the installed marsdawn.</li>
+  <li><code>marsdawn open</code> exits 6 (<code>app_cannot_open_folders</code>) when the MarsDawn it finds can't show a folder, instead of reporting success.</li>
+  <li>The placeholders drawn into exported pages are also in German, French, Spanish and Korean.</li>
+  <li>An image placeholder no longer shows the absolute path behind a very long relative path.</li>
+  <li><code>MARSDAWN_APP_PATH</code> is used only when it points at a MarsDawn app.</li>
+</ul>
+
 <h2 id="marsdawn-0-5-1">marsdawn 0.5.1</h2>
 <p>19 September 2026. PDF export, and opening a file from the command line.</p>
 <ul>

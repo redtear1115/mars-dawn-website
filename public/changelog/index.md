@@ -2,6 +2,25 @@
 
 What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.
 
+## marsdawn 0.5.3
+
+1 October 2026. MarsDawn is on the Mac App Store.
+
+- When the app isn't installed, `marsdawn open` points to MarsDawn on the Mac App Store.
+- The README and the agent skill teach `marsdawn open .` and `--folder`: MarsDawn 1.0.0 shows the folder in the window's sidebar.
+
+## marsdawn 0.5.2
+
+24 September 2026. Footnotes, contrast and folders.
+
+- Footnotes render in exported PDFs: numbered references, with the notes after the body.
+- Every theme meets WCAG AA contrast, light and dark. Classic is now black and white.
+- `marsdawn skill` prints the agent skill that matches the installed marsdawn.
+- `marsdawn open` exits 6 (`app_cannot_open_folders`) when the MarsDawn it finds can't show a folder, instead of reporting success.
+- The placeholders drawn into exported pages are also in German, French, Spanish and Korean.
+- An image placeholder no longer shows the absolute path behind a very long relative path.
+- `MARSDAWN_APP_PATH` is used only when it points at a MarsDawn app.
+
 ## marsdawn 0.5.1
 
 19 September 2026. PDF export, and opening a file from the command line.
