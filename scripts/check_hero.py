@@ -38,15 +38,22 @@ VARS = {"bg": "background", "surface": "surface", "fg": "text", "muted": "muted"
 
 
 def css_palettes(css: str) -> dict:
-    """{(theme, scheme): {field: value}} and fonts, read back out of hero.css, plus each
-    theme's swatch under (theme, scheme, "swatch")."""
+    """{(theme, scheme): {field: value}} read back out of hero.css: Dawn's from the .mdw block's
+    --l-* and --d-*, every other theme's from the block its Light or Dark radio sets; each
+    theme's font under (theme, "font"), from the rule for the theme on show; and the
+    colour mapping under "map": {var: what .mdw sets it to}."""
     out = {}
-    light, _, dark = css.partition("@media (prefers-color-scheme: dark)")
-    for scheme, text in (("light", light), ("dark", dark)):
-        for m in re.finditer(r"\.mdw(?::has\(#mdw-(\w+):checked\))? \{([^}]*)\}", text):
-            out[(m[1] or "dawn", scheme)] = dict(re.findall(r"--([\w-]+): ([^;]+);", m[2]))
-        for m in re.finditer(r"\.sw-(\w+) \{([^}]*)\}", text):
-            out[(m[1], scheme, "swatch")] = dict(re.findall(r"--([\w-]+): ([^;]+);", m[2]))
+    base = re.search(r"^\.mdw \{([^}]*)\}", css, re.M)
+    body = dict(re.findall(r"--([\w-]+): ([^;]+);", base[1])) if base else {}
+    out["map"] = {k: v for k, v in body.items() if not k.startswith(("l-", "d-")) and k != "font-body"}
+    out[("dawn", "light")] = {k[2:]: v for k, v in body.items() if k.startswith("l-")}
+    out[("dawn", "dark")] = {k[2:]: v for k, v in body.items() if k.startswith("d-")}
+    out[("dawn", "font")] = body.get("font-body")
+    for m in re.finditer(r"^\.mdw:has\(#mdw-(light|dark)-(\w+):checked\) \{([^}]*)\}", css, re.M):
+        out[(m[2], m[1])] = {k[2:]: v for k, v in re.findall(r"--([\w-]+): ([^;]+);", m[3])}
+    for m in re.finditer(r"^\.mdw:has\(#mdw-light:checked\):has\(#mdw-light-(\w+):checked\),\n"
+                         r"\.mdw:has\(#mdw-dark:checked\):has\(#mdw-dark-\1:checked\) \{ --font-body: ([^;]+); \}", css, re.M):
+        out[(m[1], "font")] = m[2]
     return out
 
 
@@ -103,34 +110,35 @@ def rendered_text(html: str) -> str:
 def check_site(src: dict, css: str, pages: dict) -> list:
     problems = check_editor_roles(src, css)
     palettes = css_palettes(css)
+    for var in VARS:
+        want = f"light-dark(var(--l-{var}), var(--d-{var}))"
+        if palettes["map"].get(var) != want:
+            problems.append(f"hero.css: --{var} is {palettes['map'].get(var)}, not {want}")
     for theme in src["themes"]:
         for scheme in ("light", "dark"):
             got = palettes.get((theme["id"], scheme))
-            if got is None:
+            if not got:
                 problems.append(f"hero.css: no {scheme} block for {theme['id']}")
                 continue
             for var, field in VARS.items():
                 if got.get(var, "").upper() != theme[scheme][field].upper():
                     problems.append(f"hero.css: {theme['id']} {scheme} --{var} is {got.get(var)}, kit says {theme[scheme][field]}")
-            # The swatch on the theme's button: its page and accent colours.
-            swatch = palettes.get((theme["id"], scheme, "swatch"), {})
-            for var, field in (("sw-bg", "background"), ("sw-accent", "accent")):
-                if swatch.get(var, "").upper() != theme[scheme][field].upper():
-                    problems.append(f"hero.css: {theme['id']} {scheme} swatch --{var} is {swatch.get(var)}, kit says {theme[scheme][field]}")
-        font = palettes.get((theme["id"], "light"), {}).get("font-body")
+        font = palettes.get((theme["id"], "font"))
         if font != theme["font_stack"]:
             problems.append(f"hero.css: {theme['id']} font is {font}, kit says {theme['font_stack']}")
     for locale, html in pages.items():
         page = Text()
         page.feed(html)
         found, labels = page.found, src["labels"][locale]
-        want = {f"mdw-{t['id']}": t["names"][locale] for t in src["themes"]}
-        want.update({f"mdw-{mode}": labels[mode] for mode in ("source", "split", "preview")})
+        want = {f"mdw-{scheme}-{t['id']}": t["names"][locale] for t in src["themes"] for scheme in ("light", "dark")}
+        want.update({f"mdw-{mode}": labels[mode] for mode in ("source", "split", "preview", "system", "light", "dark")})
         for key, text in want.items():
             if found.get(key, "").strip() != text:
                 problems.append(f"{locale}: control {key} reads {found.get(key, '').strip()!r}, the app says {text!r}")
-        if [s.strip() for s in found.get("legends", [])] != [labels["preview_theme"], labels["layout"]]:
-            problems.append(f"{locale}: group names {found.get('legends')} aren't the app's {[labels['preview_theme'], labels['layout']]}")
+        # The menu's section headers in StyleMenu.combinedMenu()'s order, then the layout group.
+        groups = [labels[k] for k in ("appearance", "preview_theme", "light", "dark", "layout")]
+        if [s.strip() for s in found.get("legends", [])] != groups:
+            problems.append(f"{locale}: group names {found.get('legends')} aren't the app's {groups}")
         problems += check_chrome(locale, html, src)
         if found.get("source", "") != src["sample"][locale]["markdown"].rstrip("\n"):
             problems.append(f"{locale}: the source pane isn't the Welcome.md excerpt")
@@ -165,20 +173,28 @@ def check_chrome(locale: str, html: str, src: dict) -> list:
     if not title or title[1] != labels["title"]:
         problems.append(f"{locale}: the window title is {title and title[1]!r}, the app titles its guide {labels['title']!r}")
     summary = re.search(r'<summary title="([^"]*)"><span class="mdw-sr">([^<]*)</span><svg', html)
-    if not summary or summary.groups() != (labels["preview_theme"], labels["theme"]):
+    if not summary or summary.groups() != (labels["theme_tip"], labels["theme"]):
         problems.append(f"{locale}: the theme button's tooltip and name are {summary and summary.groups()}, "
-                        f"the app's are {(labels['preview_theme'], labels['theme'])}")
+                        f"the app's are {(labels['theme_tip'], labels['theme'])}")
+    settings = re.search(r'<span class="mdw-settings"[^>]*>([^<]*)</span>\s*</div>\s*</details>', html)
+    if not settings or settings[1] != labels["settings"]:
+        problems.append(f"{locale}: the menu doesn't end on {labels['settings']!r}")
     for mode, key in (("source", "1"), ("split", "2"), ("preview", "3")):
         tip = re.search(rf'<label for="mdw-{mode}" title="([^"]*)"><svg', html)
         want = f"{labels[mode + '_title']} (⌘{key})"
         if not tip or tip[1] != want:
             problems.append(f"{locale}: the {mode} button's tooltip is {tip and tip[1]!r}, the app's is {want!r}, with an icon")
+    for mode in ("system", "light", "dark"):
+        if not re.search(rf'<label for="mdw-{mode}"><svg class="tick"', html):
+            problems.append(f"{locale}: the {mode} menu item has no checkmark")
     for theme in src["themes"]:
-        if not re.search(rf'<label for="mdw-{theme["id"]}"><svg class="tick"', html):
-            problems.append(f"{locale}: the {theme['id']} menu item has no checkmark")
-    checked = re.findall(r'id="mdw-(\w+)" value="\w+" checked', html)
-    if checked != ["dawn", "split"]:
-        problems.append(f"{locale}: the window opens on {checked}, not Dawn in Split")
+        for scheme in ("light", "dark"):
+            tip = theme["summaries"][locale]
+            if not re.search(rf'<label for="mdw-{scheme}-{theme["id"]}" title="{re.escape(tip)}"><svg class="tick"', html):
+                problems.append(f"{locale}: the {scheme} {theme['id']} menu item lacks its checkmark or the kit's summary {tip!r}")
+    checked = re.findall(r'id="mdw-([\w-]+)" value="\w+" checked', html)
+    if checked != ["system", "light-dawn", "dark-dawn", "split"]:
+        problems.append(f"{locale}: the window opens on {checked}, not System, Dawn for both, in Split")
     return problems
 
 
@@ -204,10 +220,8 @@ def check_kit(src: dict, files: dict) -> list:
     themes = sync.parse_themes(files["Sources/MarsDawnKit/PreviewTheme.swift"])
     for locale, lproj in sync.LOCALES.items():
         strings = sync.parse_strings(files[sync.KIT_STRINGS.format(lproj=lproj)]) if locale != "en" else {}
-        for theme in themes:
-            theme.setdefault("names", {})[locale] = strings.get(theme["name"], theme["name"])
-    for theme in themes:
-        del theme["name"]
+        sync.localize_themes(themes, locale, strings)
+    sync.finish_themes(themes)
     for path in sync.drift(src["themes"], themes, "themes"):
         problems.append(f"hero_sources.json differs from kit {src['kit']['tag']} at {path}")
     return problems
@@ -221,17 +235,21 @@ def self_test(src: dict, css: str, pages: dict, lists: dict, kit: dict) -> list:
         "a colour in hero.css": (lambda: check_site(src, css.replace(dawn["light"]["accent"], "#123456", 1), pages)),
         "a dark colour in hero.css": (lambda: check_site(src, css.replace(dawn["dark"]["background"], "#123456", 1), pages)),
         "a font in hero.css": (lambda: check_site(src, css.replace("ui-serif", "Georgia", 1), pages)),
-        "a swatch colour in hero.css": (lambda: check_site(src, re.sub(r"(\.sw-dawn \{ --sw-bg: )#[0-9A-F]{6}", r"\1#00FF00", css, count=1), pages)),
-        "a dark swatch colour in hero.css": (lambda: check_site(src, re.sub(r"(  \.sw-vivid \{ --sw-bg: #[0-9A-F]{6}; --sw-accent: )#[0-9A-F]{6}", r"\1#00FF00", css, count=1), pages)),
-        "a theme name on a page": (lambda: check_site(src, css, {**pages, "en": pages["en"].replace(f"</span>{en_label}</label>", "</span>Sunrise</label>", 1)})),
+        "a dark colour for a picked theme": (lambda: check_site(src, css.replace(src["themes"][3]["dark"]["accent"], "#123456", 1), pages)),
+        "a colour mapped to one scheme": (lambda: check_site(src, css.replace("--fg: light-dark(var(--l-fg), var(--d-fg));", "--fg: var(--l-fg);", 1), pages)),
+        "a theme summary on a page": (lambda: check_site(src, css, {**pages, "zh-hant": pages["zh-hant"].replace(src["themes"][2]["summaries"]["zh-hant"], "現代", 1)})),
+        "an appearance label": (lambda: check_site(src, css, {**pages, "ja": pages["ja"].replace(f'</svg>{src["labels"]["ja"]["system"]}</label>', "</svg>自動</label>", 1)})),
+        "Settings… missing": (lambda: check_site(src, css, {**pages, "en": re.sub(r'<span class="mdw-settings"[^>]*>[^<]*</span>', "", pages["en"], count=1)})),
+        "a theme name on a page": (lambda: check_site(src, css, {**pages, "en": pages["en"].replace(f"</svg>{en_label}</label>", "</svg>Sunrise</label>", 1)})),
         "a layout label on a page": (lambda: check_site(src, css, {**pages, "ja": pages["ja"].replace(f'<span class="mdw-sr">{src["labels"]["ja"]["split"]}</span>', '<span class="mdw-sr">並べて</span>', 1)})),
         "a word in the source pane": (lambda: check_site(src, css, {**pages, "zh-hant": re.sub(r'(<pre class="mdw-source"[^>]*>.*?)MarsDawn', r"\1MarsDusk", pages["zh-hant"], count=1, flags=re.S)})),
         "the window title": (lambda: check_site(src, css, {**pages, "en": pages["en"].replace('<span class="mdw-title">Welcome to MarsDawn</span>', '<span class="mdw-title">Welcome.md</span>', 1)})),
         "a layout tooltip": (lambda: check_site(src, css, {**pages, "zh-hant": pages["zh-hant"].replace("(⌘2)", "(⌘3)", 1)})),
-        "a menu item without its checkmark": (lambda: check_site(src, css, {**pages, "ja": pages["ja"].replace('<label for="mdw-vivid"><svg class="tick"', '<label for="mdw-vivid"><svg class="x"', 1)})),
+        "a menu item without its checkmark": (lambda: check_site(src, css, {**pages, "ja": re.sub(r'(<label for="mdw-dark-vivid"[^>]*><svg class=")tick', r"\1x", pages["ja"], count=1)})),
         "the theme button's name": (lambda: check_site(src, css, {**pages, "zh-hans": re.sub(r'(<summary title="[^"]*"><span class="mdw-sr">)[^<]*', r"\1Palette", pages["zh-hans"], count=1)})),
         "an editor colour role": (lambda: check_site(src, css.replace("--ed-code: var(--string);", "--ed-code: var(--keyword);", 1), pages)),
         "the default theme": (lambda: check_site(src, css, {**pages, "en": pages["en"].replace('value="dawn" checked', 'value="dawn"', 1).replace('value="modern">', 'value="modern" checked>', 1)})),
+        "the default appearance": (lambda: check_site(src, css, {**pages, "en": pages["en"].replace('value="system" checked', 'value="system"', 1).replace('value="dark">', 'value="dark" checked>', 1)})),
         "a word in the preview": (lambda: check_site(src, css, {**pages, "zh-hans": re.sub(r"(<p class=\"md-h1\">[^<]*)MarsDawn", r"\1MarsDusk", pages["zh-hans"], count=1)})),
         "an English theme name in the ja theme list": (lambda: check_theme_lists(src, {"ja": lists["ja"].replace("<strong>クラシック</strong>", "<strong>Classic</strong>", 1)})),
         "an English theme name in the zh-Hant theme list": (lambda: check_theme_lists(src, {"zh-hant": lists["zh-hant"].replace("<strong>黎明</strong>", "<strong>Dawn</strong>", 1)})),

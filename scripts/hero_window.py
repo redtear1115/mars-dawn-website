@@ -5,9 +5,16 @@ sync_hero_sources.py copies from the kit and the app: theme colours, fonts and n
 control labels, and an excerpt of the Welcome guide with the kit renderer's own HTML.
 This module only arranges it.
 
-The controls are two radio groups. site.css reads the checked radio with :has(), so the
-window changes theme and layout with no script and no inline style, and the radios keep
-the browser's own keyboard handling: Tab into a group, arrow keys to choose.
+The controls are radio groups: the layout, and in the palette menu the appearance and a
+theme for each appearance, as the app's StyleMenu.combinedMenu() lays them out. The CSS
+reads the checked radios with :has(), so the window changes with no script and no inline
+style, and the radios keep the browser's own keyboard handling: Tab into a group, arrow
+keys to choose.
+
+Colours follow the window's own color-scheme through light-dark(): each appearance reads the
+palette of the theme picked for it. What isn't a colour (a theme's font and shapes) follows
+the theme that is showing, which depends on the appearance, so window_css() writes those
+rules once per way the window can be in that appearance.
 """
 import html
 import json
@@ -17,7 +24,8 @@ from pathlib import Path
 SOURCES = json.loads((Path(__file__).resolve().parent / "hero_sources.json").read_text(encoding="utf-8"))
 THEMES = SOURCES["themes"]
 LAYOUTS = [("source", "1"), ("split", "2"), ("preview", "3")]
-DEFAULT_THEME, DEFAULT_LAYOUT = "dawn", "split"
+APPEARANCES = ["system", "light", "dark"]
+DEFAULT_THEME, DEFAULT_LAYOUT, DEFAULT_APPEARANCE = "dawn", "split", "system"
 
 # The window's accessible name: the one piece of copy here that isn't the app's own.
 WINDOW_LABEL = {
@@ -133,21 +141,45 @@ def window_html(locale: str) -> str:
         f'<label for="mdw-{mode}" title="{labels[mode + "_title"]} (⌘{key})">{ICONS[mode]}<span class="mdw-sr">{labels[mode]}</span></label>'
         for mode, key in LAYOUTS
     )
-    themes = "\n".join(
-        f'        <input type="radio" name="mdw-theme" id="mdw-{t["id"]}" value="{t["id"]}"{" checked" if t["id"] == DEFAULT_THEME else ""}>'
-        f'<label for="mdw-{t["id"]}">{ICONS["check"]}<span class="swatch sw-{t["id"]}" aria-hidden="true"></span>{t["names"][locale]}</label>'
-        for t in THEMES
+    appearances = "\n".join(
+        f'        <input type="radio" name="mdw-appearance" id="mdw-{mode}" value="{mode}"{" checked" if mode == DEFAULT_APPEARANCE else ""}>'
+        f'<label for="mdw-{mode}">{ICONS["check"]}{labels[mode]}</label>'
+        for mode in APPEARANCES
     )
+
+    def themes(scheme: str) -> str:
+        return "\n".join(
+            f'          <input type="radio" name="mdw-{scheme}-theme" id="mdw-{scheme}-{t["id"]}" value="{t["id"]}"{" checked" if t["id"] == DEFAULT_THEME else ""}>'
+            f'<label for="mdw-{scheme}-{t["id"]}" title="{t["summaries"][locale]}">{ICONS["check"]}{t["names"][locale]}</label>'
+            for t in THEMES
+        )
     return f"""<div class="mdw" role="group" aria-label="{WINDOW_LABEL[locale]}">
   <div class="mdw-bar">
     <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
     <span class="mdw-title">{labels["title"]}</span>
     <details class="mdw-themes">
-      <summary title="{labels["preview_theme"]}"><span class="mdw-sr">{labels["theme"]}</span>{ICONS["palette"]}{ICONS["chevron"]}</summary>
-      <fieldset class="mdw-menu">
-        <legend>{labels["preview_theme"]}</legend>
-{themes}
+      <summary title="{labels["theme_tip"]}"><span class="mdw-sr">{labels["theme"]}</span>{ICONS["palette"]}{ICONS["chevron"]}</summary>
+      <div class="mdw-menu">
+      <fieldset>
+        <legend>{labels["appearance"]}</legend>
+{appearances}
       </fieldset>
+      <hr>
+      <fieldset>
+        <legend>{labels["preview_theme"]}</legend>
+        <fieldset>
+          <legend>{labels["light"]}</legend>
+{themes("light")}
+        </fieldset>
+        <hr>
+        <fieldset>
+          <legend>{labels["dark"]}</legend>
+{themes("dark")}
+        </fieldset>
+      </fieldset>
+      <hr>
+      <span class="mdw-settings" aria-hidden="true">{labels["settings"]}</span>
+      </div>
     </details>
     <fieldset class="mdw-layouts">
       <legend>{labels["layout"]}</legend>
@@ -163,40 +195,98 @@ def window_html(locale: str) -> str:
 </div>"""
 
 
+# Each theme's shapes, as the kit's preview.css draws them. `&` stands for the window while that
+# theme is the one showing; window_css() expands it. Dawn is the window's default and has none.
+SHAPES = {
+    "classic": """
+& { --heading-weight: 600; --body-size: 16px; --line-height: 1.75; --radius: 4px; }
+&:has(#mdw-preview:checked) .mdw-preview > * { max-width: 720px; }
+& .md-h1 { text-align: center; font-size: 2.2em; letter-spacing: 0.01em; border-bottom: 0; padding-bottom: 0; }
+& .md-h1::after { content: ""; display: block; width: 48px; height: 1px; margin: 0.5em auto 0; background: var(--accent); }
+& .md-h2 { font-style: italic; }
+& .mdw-preview blockquote { border-left-width: 2px; font-style: italic; }
+& .mdw-preview th { background: transparent; border-bottom: 2px solid var(--accent); }
+& .mdw-preview :is(th, td) { border-left: 0; border-right: 0; }
+""",
+    "modern": """
+& { --heading-weight: 700; --radius: 6px; }
+& :is(.md-h1, .md-h2) { letter-spacing: -0.015em; }
+& .mdw-preview blockquote { border-left-width: 4px; }
+& .mdw-preview li::marker { color: var(--muted); }
+""",
+    "vivid": """
+& { --heading-weight: 800; --radius: 14px; }
+& .md-h1 { border-bottom: 0; padding-bottom: 0.15em; background: linear-gradient(90deg, var(--accent), var(--heading)) left bottom / 64px 4px no-repeat; }
+& .md-h2 { border-bottom: 0; padding-bottom: 0; }
+& .md-h2::before { content: ""; display: inline-block; width: 0.5em; height: 0.5em; margin-right: 0.45em; border-radius: 50%; background: var(--accent); vertical-align: 0.12em; }
+& .mdw-preview blockquote { border-left: 0; padding: 0.6em 1em; background: var(--surface); border-radius: var(--radius); color: var(--fg); }
+& .mdw-preview code { color: var(--keyword); }
+& .mdw-preview th { background: var(--heading); color: var(--bg); border-color: var(--heading); }
+""",
+}
+
+
+def showing(theme_id: str) -> dict:
+    """The selectors under which `theme_id` is the theme on show, by the media query they need:
+    picked for Light with Light chosen, or for Dark with Dark chosen, in any case; picked for
+    Light with System chosen while the Mac is light; picked for Dark with System while it's dark."""
+    return {
+        "": [f".mdw:has(#mdw-light:checked):has(#mdw-light-{theme_id}:checked)",
+             f".mdw:has(#mdw-dark:checked):has(#mdw-dark-{theme_id}:checked)"],
+        "not all and (prefers-color-scheme: dark)": [f".mdw:has(#mdw-system:checked):has(#mdw-light-{theme_id}:checked)"],
+        "(prefers-color-scheme: dark)": [f".mdw:has(#mdw-system:checked):has(#mdw-dark-{theme_id}:checked)"],
+    }
+
+
 def window_css() -> str:
     """Each theme's light and dark palette and body font, straight from the kit, as custom
-    properties on the window. The default theme sits on .mdw itself; the others apply when
-    their radio is checked. site.css holds the window's layout and the themes' shapes."""
-    def block(selector: str, palette: dict, font, indent: str = "") -> str:
-        decls = [f"{indent}  --{PALETTE_VARS[key]}: {value};" for key, value in palette.items()]
-        if font:
-            decls.append(f"{indent}  --font-body: {font};")
-        return f"{indent}{selector} {{\n" + "\n".join(decls) + f"\n{indent}}}"
-
-    def selector(theme_id: str) -> str:
-        return ".mdw" if theme_id == DEFAULT_THEME else f".mdw:has(#mdw-{theme_id}:checked)"
+    properties on the window, and each theme's shapes. Every colour is light-dark() of the
+    theme picked for Light (--l-*) and the one picked for Dark (--d-*); the appearance radios
+    set the window's color-scheme. Fonts and shapes follow the theme on show (showing())."""
+    def decls(palette: dict, prefix: str) -> list:
+        return [f"  --{prefix}{PALETTE_VARS[key]}: {value};" for key, value in palette.items()]
 
     kit = SOURCES["kit"]
-    light = [block(selector(t["id"]), t["light"], t["font_stack"]) for t in THEMES]
-    dark = [block(selector(t["id"]), t["dark"], None, "  ") for t in THEMES]
-    swatches = [f".sw-{t['id']} {{ --sw-bg: {t['light']['background']}; --sw-accent: {t['light']['accent']}; }}" for t in THEMES]
-    dark_swatches = [f"  .sw-{t['id']} {{ --sw-bg: {t['dark']['background']}; --sw-accent: {t['dark']['accent']}; }}" for t in THEMES]
+    dawn = next(t for t in THEMES if t["id"] == DEFAULT_THEME)
+    base = [".mdw {", "  color-scheme: light dark;",
+            *[f"  --{var}: light-dark(var(--l-{var}), var(--d-{var}));" for var in PALETTE_VARS.values()],
+            *decls(dawn["light"], "l-"), *decls(dawn["dark"], "d-"),
+            f"  --font-body: {dawn['font_stack']};", "}",
+            ".mdw:has(#mdw-light:checked) { color-scheme: light; }",
+            ".mdw:has(#mdw-dark:checked) { color-scheme: dark; }"]
+    picks = []
+    for t in THEMES:
+        if t["id"] == DEFAULT_THEME:
+            continue
+        for scheme, prefix in (("light", "l-"), ("dark", "d-")):
+            picks += [f".mdw:has(#mdw-{scheme}-{t['id']}:checked) {{", *decls(t[scheme], prefix), "}"]
+    shapes = {query: [] for query in showing("x")}
+    for t in THEMES:
+        if t["id"] == DEFAULT_THEME:
+            continue
+        rules = [("&", f"--font-body: {t['font_stack']};")] + [
+            (sel.strip(), body.strip()) for sel, body in re.findall(r"^(&[^{]*)\{ (.*) \}$", SHAPES[t["id"]], re.M)]
+        for query, selectors in showing(t["id"]).items():
+            for sel, body in rules:
+                targets = ",\n".join(sel.replace("&", s) for s in selectors)
+                shapes[query].append(f"{targets} {{ {body} }}")
     editor = SOURCES["editor"]
     field_var = {field: var for field, var in PALETTE_VARS.items()}
     roles = ".mdw-source {\n" + "\n".join(
         f"  --ed-{role}: var(--{field_var[editor[role]]});" for role in EDITOR_ROLES) + "\n}"
-    return "\n".join([
+    out = [
         "/* Generated by scripts/build_pages.py from scripts/hero_sources.json: the preview themes",
         f"   of mars-dawn-kit {kit['tag']} ({kit['commit'][:7]}), PreviewTheme.swift. Don't edit by hand. */",
-        *light,
-        *swatches,
-        "@media (prefers-color-scheme: dark) {",
-        *dark,
-        *dark_swatches,
-        "}",
-        "/* The source editor's colour roles, from the app's EditorTheme(lightTheme:darkTheme:). */",
-        roles,
-    ]) + "\n"
+        *base,
+        "/* The theme picked for each appearance: its palette. */",
+        *picks,
+        "/* The theme on show: its font and shapes (hero_window.SHAPES). */",
+        *shapes[""],
+    ]
+    for query in list(shapes)[1:]:
+        out += [f"@media {query} {{", *shapes[query], "}"]
+    out += ["/* The source editor's colour roles, from the app's EditorTheme(lightTheme:darkTheme:). */", roles]
+    return "\n".join(out) + "\n"
 
 
 def window_markdown(locale: str) -> str:
@@ -204,9 +294,10 @@ def window_markdown(locale: str) -> str:
     labels = SOURCES["labels"][locale]
     names = [t["names"][locale] for t in THEMES]
     modes = [labels[mode] for mode, _ in LAYOUTS]
+    looks = [labels[mode] for mode in APPEARANCES]
     return {
-        "en": f"The page shows a working MarsDawn window over part of the app's Welcome guide. Pick one of four preview themes ({', '.join(names)}) and one of three layouts ({', '.join(modes)}).",
-        "zh-hant": f"頁面上有一個可以操作的 MarsDawn 視窗，內容是 App 內建歡迎指南的一段。可以從四個預覽主題（{'、'.join(names)}）和三種版面（{'、'.join(modes)}）裡選。",
-        "zh-hans": f"页面上有一个可以操作的 MarsDawn 窗口，内容是 App 内置欢迎指南的一段。可以从四个预览主题（{'、'.join(names)}）和三种布局（{'、'.join(modes)}）里选。",
-        "ja": f"ページには操作できる MarsDawn のウインドウがあり、アプリ内蔵のようこそガイドの一部を表示しています。4 つのプレビューテーマ（{'、'.join(names)}）と 3 つのレイアウト（{'、'.join(modes)}）から選べます。",
+        "en": f"The page shows a working MarsDawn window over part of the app's Welcome guide. Its palette menu picks an appearance ({', '.join(looks)}) and a preview theme for light and for dark from four ({', '.join(names)}), and its toolbar one of three layouts ({', '.join(modes)}).",
+        "zh-hant": f"頁面上有一個可以操作的 MarsDawn 視窗，內容是 App 內建歡迎指南的一段。調色盤選單可以選外觀（{'、'.join(looks)}），並分別替淺色和深色從四個預覽主題（{'、'.join(names)}）裡選一個；工具列可以選三種版面（{'、'.join(modes)}）。",
+        "zh-hans": f"页面上有一个可以操作的 MarsDawn 窗口，内容是 App 内置欢迎指南的一段。调色板菜单可以选外观（{'、'.join(looks)}），并分别为浅色和深色从四个预览主题（{'、'.join(names)}）里选一个；工具栏可以选三种布局（{'、'.join(modes)}）。",
+        "ja": f"ページには操作できる MarsDawn のウインドウがあり、アプリ内蔵のようこそガイドの一部を表示しています。パレットのメニューで外観モード（{'、'.join(looks)}）を選び、ライトとダークそれぞれに 4 つのプレビューテーマ（{'、'.join(names)}）から 1 つを選べます。ツールバーでは 3 つのレイアウト（{'、'.join(modes)}）から選べます。",
     }[locale]

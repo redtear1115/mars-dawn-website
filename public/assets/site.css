@@ -731,16 +731,20 @@ html { overflow-x: hidden; }
   --heading-weight: 650;
   --body-size: 15px;
   --line-height: 1.65;
-  --code-chip: var(--surface);
-  --code-chip-edge: var(--border);
-  --chrome-bg: #FFFFFF;
-  --chrome-rule: #E6E6E6;
-  --chrome-ink: #575757;
-  --chrome-ink-on: #4D4D4D;
-  --chrome-pill: #FFFFFF;
-  --chrome-pill-edge: color-mix(in srgb, #000 7%, transparent);
-  --chrome-on: #E6E6E6;
-  --chrome-divider: #E9E9E9;
+  /* Light, then dark: the window's color-scheme (hero.css) picks one, so the chrome follows the
+     appearance chosen in the menu as well as the Mac's. */
+  --code-chip: light-dark(var(--surface), color-mix(in srgb, var(--surface), var(--fg) 10%));
+  --code-chip-edge: light-dark(var(--border), color-mix(in srgb, var(--border), var(--fg) 25%));
+  --chrome-bg: light-dark(#FFFFFF, #242B2F);
+  --chrome-rule: light-dark(#E6E6E6, #232323);
+  --chrome-ink: light-dark(#575757, #ECECED);
+  --chrome-ink-on: light-dark(#4D4D4D, #ECECED);
+  --chrome-pill: light-dark(#FFFFFF, #273136);
+  --chrome-pill-edge: light-dark(color-mix(in srgb, #000 7%, transparent), #3E5058);
+  --chrome-on: light-dark(#E6E6E6, #4D555A);
+  --chrome-divider: light-dark(#E9E9E9, #000000);
+  /* A menu's highlighted item, in the system's default accent, as macOS draws it. */
+  --chrome-select: light-dark(#0A82FF, #0A84FF);
   --mdw-width: max(100%, var(--w-media));
   margin: 0 calc((100% - var(--mdw-width)) / 2);
   /* A macOS window's own corner, not a plate's. */
@@ -753,25 +757,9 @@ html { overflow-x: hidden; }
               0 40px 64px -28px color-mix(in srgb, #000 70%, transparent),
               0 14px 28px -14px color-mix(in srgb, #000 55%, transparent);
 }
-@media (prefers-color-scheme: dark) {
-  .mdw {
-    --code-chip: color-mix(in srgb, var(--surface), var(--fg) 10%);
-    --code-chip-edge: color-mix(in srgb, var(--border), var(--fg) 25%);
-    --chrome-bg: #242B2F;
-    --chrome-rule: #232323;
-    --chrome-ink: #ECECED;
-    --chrome-ink-on: #ECECED;
-    --chrome-pill: #273136;
-    --chrome-pill-edge: #3E5058;
-    --chrome-on: #4D555A;
-    --chrome-divider: #000000;
-  }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .mdw, .mdw-source, .mdw-preview {
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-  }
-}
+/* No colour transition on theme or appearance changes: Chrome doesn't restart one when only the
+   color-scheme under a light-dark() value changes, so a transition would leave the old colours
+   showing. The app switches instantly too. */
 .mdw-sr, .mdw legend {
   position: absolute;
   width: 1px;
@@ -862,55 +850,70 @@ html { overflow-x: hidden; }
 .mdw-themes > summary svg { width: 26px; height: 23px; }
 .mdw-themes > summary .chev { width: 10px; height: 10px; stroke-width: 1.6; }
 .mdw-themes[open] > summary { background: var(--chrome-on); }
+/* The menu, drawn as the app's native NSMenu (StyleMenu.combinedMenu): section headers, a
+   checkmark column, separators, and the highlighted row in the system accent. Settings… is
+   shown for the likeness and does nothing: the page has no settings to open. */
 .mdw .mdw-menu {
   position: absolute;
   z-index: 2;
   top: 44px;
   right: 0;
-  min-width: 190px;
-  padding: 6px;
-  border-radius: 12px;
+  min-width: 200px;
+  /* Never past the window's foot: a long menu scrolls, as a native one does on a short screen. */
+  max-height: var(--mdw-panes-height);
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+  padding: 5px;
+  border-radius: 10px;
   background: var(--chrome-pill);
   box-shadow: 0 0 0 0.5px var(--chrome-pill-edge), 0 10px 30px color-mix(in srgb, #000 22%, transparent);
   color: var(--chrome-ink-on);
+  font-size: 13px;
+  line-height: 1.2;
 }
+/* A fieldset starts its own formatting context, so a nested one would sit beside its parent's
+   floated legend instead of under it: clear it. */
+.mdw-menu fieldset { display: block; clear: both; padding: 0; }
 .mdw-menu legend {
   position: static;
   float: left;
   width: 100%;
   height: auto;
   clip-path: none;
-  padding: 4px 10px 4px 30px;
+  padding: 5px 10px 3px 26px;
   font-size: 11px;
   font-weight: 650;
-  color: var(--chrome-ink);
+  color: color-mix(in srgb, var(--chrome-ink) 70%, transparent);
 }
-.mdw-menu label {
+.mdw-menu label,
+.mdw-settings {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   clear: both;
-  height: 28px;
-  padding: 0 12px 0 8px;
-  border-radius: 7px;
+  height: 22px;
+  padding: 0 14px 0 10px;
+  border-radius: 5px;
   white-space: nowrap;
 }
-.mdw-menu label:hover { background: var(--chrome-on); }
-.mdw .pupil { fill: currentColor; stroke: none; }
-.mdw-menu .tick { width: 12px; height: 12px; stroke-width: 1.8; visibility: hidden; }
-.mdw-menu input:checked + label .tick { visibility: visible; }
-.mdw .swatch {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--sw-bg) 50%, var(--sw-accent) 50%);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--chrome-ink) 30%, transparent);
+.mdw-menu label:hover { background: var(--chrome-select); color: #FFFFFF; }
+.mdw-settings { padding-left: 26px; color: color-mix(in srgb, var(--chrome-ink) 55%, transparent); cursor: default; }
+.mdw-menu hr {
+  clear: both;
+  height: 0;
+  margin: 5px 10px;
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--chrome-ink) 16%, transparent);
 }
+.mdw .pupil { fill: currentColor; stroke: none; }
+.mdw-menu .tick { flex: none; width: 12px; height: 12px; stroke-width: 1.8; visibility: hidden; }
+.mdw-menu input:checked + label .tick { visibility: visible; }
 
+.mdw { --mdw-panes-height: clamp(340px, 34vw, 480px); }
 .mdw-panes {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: clamp(340px, 34vw, 480px);
+  height: var(--mdw-panes-height);
 }
 .mdw-panes > * {
   overflow: hidden;
@@ -993,46 +996,14 @@ html { overflow-x: hidden; }
 .mdw-preview .contains-task-list { list-style: none; padding-left: 1.4em; }
 .mdw-preview .task-list-item input { margin: 0 0.4em 0 -1.4em; vertical-align: middle; accent-color: var(--accent); }
 
-/* Each theme's shapes, as the kit's preview.css draws them. */
-.mdw:has(#mdw-classic:checked) { --heading-weight: 600; --body-size: 16px; --line-height: 1.75; --radius: 4px; }
-.mdw:has(#mdw-classic:checked):has(#mdw-preview:checked) .mdw-preview > * { max-width: 720px; }
-.mdw:has(#mdw-classic:checked) .md-h1 { text-align: center; font-size: 2.2em; letter-spacing: 0.01em; border-bottom: 0; padding-bottom: 0; }
-.mdw:has(#mdw-classic:checked) .md-h1::after { content: ""; display: block; width: 48px; height: 1px; margin: 0.5em auto 0; background: var(--accent); }
-.mdw:has(#mdw-classic:checked) .md-h2 { font-style: italic; }
-.mdw:has(#mdw-classic:checked) .mdw-preview blockquote { border-left-width: 2px; font-style: italic; }
-.mdw:has(#mdw-classic:checked) .mdw-preview th { background: transparent; border-bottom: 2px solid var(--accent); }
-.mdw:has(#mdw-classic:checked) .mdw-preview :is(th, td) { border-left: 0; border-right: 0; }
-
-.mdw:has(#mdw-modern:checked) { --heading-weight: 700; --radius: 6px; }
-.mdw:has(#mdw-modern:checked) :is(.md-h1, .md-h2) { letter-spacing: -0.015em; }
-.mdw:has(#mdw-modern:checked) .mdw-preview blockquote { border-left-width: 4px; }
-.mdw:has(#mdw-modern:checked) .mdw-preview li::marker { color: var(--muted); }
-
-.mdw:has(#mdw-vivid:checked) { --heading-weight: 800; --radius: 14px; }
-.mdw:has(#mdw-vivid:checked) .md-h1 {
-  border-bottom: 0;
-  padding-bottom: 0.15em;
-  background: linear-gradient(90deg, var(--accent), var(--heading)) left bottom / 64px 4px no-repeat;
-}
-.mdw:has(#mdw-vivid:checked) .md-h2 { border-bottom: 0; padding-bottom: 0; }
-.mdw:has(#mdw-vivid:checked) .md-h2::before {
-  content: "";
-  display: inline-block;
-  width: 0.5em;
-  height: 0.5em;
-  margin-right: 0.45em;
-  border-radius: 50%;
-  background: var(--accent);
-  vertical-align: 0.12em;
-}
-.mdw:has(#mdw-vivid:checked) .mdw-preview blockquote { border-left: 0; padding: 0.6em 1em; background: var(--surface); border-radius: var(--radius); color: var(--fg); }
-.mdw:has(#mdw-vivid:checked) .mdw-preview code { color: var(--keyword); }
-.mdw:has(#mdw-vivid:checked) .mdw-preview th { background: var(--heading); color: var(--bg); border-color: var(--heading); }
+/* Each theme's shapes are in hero.css, from hero_window.SHAPES: they follow the theme on show,
+   which depends on the appearance, so they are generated with the palettes. */
 
 /* Phones: one pane (Split shows the rendered page), and the title gives way to the toolbar. */
 @media (max-width: 500px) {
   .mdw { border-radius: 12px; }
-  .mdw-panes { grid-template-columns: 1fr; height: 400px; }
+  .mdw { --mdw-panes-height: 400px; }
+  .mdw-panes { grid-template-columns: 1fr; }
   .mdw:has(#mdw-split:checked) .mdw-source { display: none; }
   .mdw-bar { padding: 0 6px 0 14px; }
   .mdw-lights { gap: 7px; margin-right: 8px; }
