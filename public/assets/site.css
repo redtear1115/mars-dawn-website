@@ -593,9 +593,11 @@ html { overflow-x: hidden; }
 
 .hero-scene {
   position: relative;
-  left: 50%;
+  /* Centred with margins, not a transform: a transform would make this the containing block
+     for the theme menu's position: fixed click-catcher, so a click outside the hero wouldn't
+     close the menu. */
   width: 100vw;
-  transform: translateX(-50%);
+  margin-left: calc(50% - 50vw);
   overflow: hidden;
   padding: clamp(40px, 9vw, 88px) 0 clamp(30px, 6vw, 60px);
 }
@@ -864,7 +866,7 @@ html { overflow-x: hidden; }
   right: 0;
   min-width: 200px;
   /* Never past the window's foot: a long menu scrolls, as a native one does on a short screen. */
-  max-height: var(--mdw-panes-height);
+  max-height: calc(var(--mdw-panes-height) + 4px);
   overflow: hidden auto;
   overscroll-behavior: contain;
   padding: 5px;
@@ -884,7 +886,7 @@ html { overflow-x: hidden; }
   width: 100%;
   height: auto;
   clip-path: none;
-  padding: 5px 10px 3px 26px;
+  padding: 4px 10px 2px 26px;
   font-size: 11px;
   font-weight: 650;
   color: color-mix(in srgb, var(--chrome-ink) 70%, transparent);
@@ -912,17 +914,17 @@ html { overflow-x: hidden; }
 /* The theme picked for the appearance that isn't showing takes effect later, when the window
    or the Mac changes appearance. Its section stays choosable but steps back, so a choice there
    isn't read as a click that did nothing. */
-.mdw:has(#mdw-light:checked) .mdw-pick-dark > :is(legend, label:not(:hover)),
-.mdw:has(#mdw-dark:checked) .mdw-pick-light > :is(legend, label:not(:hover)) { color: var(--chrome-ink-later); }
+.mdw:has(#mdw-light:checked) .mdw-pick-dark > :is(legend, input:not(:checked) + label:not(:hover)),
+.mdw:has(#mdw-dark:checked) .mdw-pick-light > :is(legend, input:not(:checked) + label:not(:hover)) { color: var(--chrome-ink-later); }
 @media not all and (prefers-color-scheme: dark) {
-  .mdw:has(#mdw-system:checked) .mdw-pick-dark > :is(legend, label:not(:hover)) { color: var(--chrome-ink-later); }
+  .mdw:has(#mdw-system:checked) .mdw-pick-dark > :is(legend, input:not(:checked) + label:not(:hover)) { color: var(--chrome-ink-later); }
 }
 @media (prefers-color-scheme: dark) {
-  .mdw:has(#mdw-system:checked) .mdw-pick-light > :is(legend, label:not(:hover)) { color: var(--chrome-ink-later); }
+  .mdw:has(#mdw-system:checked) .mdw-pick-light > :is(legend, input:not(:checked) + label:not(:hover)) { color: var(--chrome-ink-later); }
 }
 /* A click anywhere outside the open menu closes it, as a native menu does: a clear layer
    behind the menu turns that click into one on the palette button. (Escape would need a
-   script.) The hero's transform makes it cover the scene, not the whole page. */
+   script.) It covers the whole viewport because no ancestor has a transform (see .hero-scene). */
 .mdw-themes[open] > summary::before {
   content: "";
   position: fixed;
@@ -930,15 +932,17 @@ html { overflow-x: hidden; }
   z-index: 1;
   cursor: default;
 }
-/* Touch: native menu rows are 22px, too small for a finger (WCAG 2.5.8). */
+/* Touch: native menu rows are 22px; 24px meets WCAG 2.5.8 and keeps the menu inside the window. */
 @media (pointer: coarse) {
-  .mdw-menu label, .mdw-settings { height: 30px; }
+  .mdw-menu label, .mdw-settings { height: 24px; }
 }
 .mdw .pupil { fill: currentColor; stroke: none; }
 .mdw-menu .tick { flex: none; width: 12px; height: 12px; stroke-width: 1.8; visibility: hidden; }
 .mdw-menu input:checked + label .tick { visibility: visible; }
 
-.mdw { --mdw-panes-height: clamp(340px, 34vw, 480px); }
+/* Never shorter than the open theme menu needs, so the menu never has to scroll. */
+.mdw { --mdw-panes-height: clamp(380px, 34vw, 480px); }
+@media (pointer: coarse) { .mdw { --mdw-panes-height: clamp(410px, 34vw, 480px); } }
 .mdw-panes {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1031,7 +1035,7 @@ html { overflow-x: hidden; }
 /* Phones: one pane (Split shows the rendered page), and the title gives way to the toolbar. */
 @media (max-width: 500px) {
   .mdw { border-radius: 12px; }
-  .mdw { --mdw-panes-height: 400px; }
+  .mdw { --mdw-panes-height: 410px; }
   .mdw-panes { grid-template-columns: 1fr; }
   .mdw:has(#mdw-split:checked) .mdw-source { display: none; }
   .mdw-bar { padding: 0 6px 0 14px; }
@@ -1110,9 +1114,8 @@ html { overflow-x: hidden; }
    hero's, fixed dark in both modes, so the text keeps the hero's palette. */
 .dawn-close {
   position: relative;
-  left: 50%;
   width: 100vw;
-  transform: translateX(-50%);
+  margin-left: calc(50% - 50vw);
   margin-top: clamp(64px, 10vw, 104px);
   padding: clamp(44px, 7vw, 72px) 16px clamp(88px, 13vw, 132px);
   text-align: center;

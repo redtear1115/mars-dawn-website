@@ -16,6 +16,9 @@
   border-radius: var(--r-plate);
   background: var(--sand);
   container-type: inline-size;
+  /* The drawing's layers stack inside the frame, so none of them rises above the page, such as
+     the hero's open theme menu and the clear layer that closes it. */
+  isolation: isolate;
 }
 /* The window follows the Mac's appearance, as the hero window does: the Dawn theme's light
    palette, or its night one (hero.css, from the kit). The terminal is dark in both. --t starts
@@ -188,8 +191,8 @@
 .loop-l2 { animation-name: loop-l2; }
 .loop-l3 { animation-name: loop-l3; color: #9FCBB1; }
 @keyframes loop-l2 { 0%, 48% { opacity: 0; transform: translateY(calc(8 * var(--u))); } 51%, 88% { opacity: 1; transform: none; } 91%, 100% { opacity: 0; transform: none; } }
-/* The reply lands once both of the agent's edits have (60%, and 60% plus .45s). */
-@keyframes loop-l3 { 0%, 65% { opacity: 0; transform: translateY(calc(8 * var(--u))); } 68%, 88% { opacity: 1; transform: none; } 91%, 100% { opacity: 0; transform: none; } }
+/* The reply lands a beat after both of the agent's edits (60%, and 60% plus .45s). */
+@keyframes loop-l3 { 0%, 68% { opacity: 0; transform: translateY(calc(8 * var(--u))); } 71%, 88% { opacity: 1; transform: none; } 91%, 100% { opacity: 0; transform: none; } }
 
 /* The pointer clicks one outline row, then leaves. */
 .loop-ptr { position: absolute; left: 0; top: 0; width: calc(30 * var(--u)); height: calc(40 * var(--u)); z-index: 4; animation-name: loop-ptr; }
@@ -222,7 +225,7 @@
 @media (max-width: 820px) {
   .loop-frame { aspect-ratio: 920 / 860; }
   .loop-stage { --u: calc(100cqw / 920); inset: auto; left: calc(-630 * var(--u)); top: calc(-50 * var(--u)); width: calc(1600 * var(--u)); height: calc(900 * var(--u)); }
-  .loop-term { left: calc(650 * var(--u)); top: calc(580 * var(--u)); --term-x: calc(130 * var(--u)); --term-y: calc(-265 * var(--u)); }
+  .loop-term { left: calc(650 * var(--u)); top: calc(540 * var(--u)); height: calc(290 * var(--u)); --term-x: calc(130 * var(--u)); --term-y: calc(-205 * var(--u)); }
   .loop-ptr { display: none; }
 }
 /* Phones: the source pane alone (x 630 to 1090), where the reader's edit and the agent's both
