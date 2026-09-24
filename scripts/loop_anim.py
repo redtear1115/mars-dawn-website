@@ -460,7 +460,13 @@ def _scene_css() -> str:
 .loop-d-c .loop-old { animation-name: loop-a-old; }
 .loop-d-c .loop-new { animation-name: loop-a-new; }
 .loop-d-c { animation-name: loop-a-glow; }
-.loop-code { color: #2F6F5E; }
+/* Scene colours, light and night, from the kit's Dawn theme (hero_sources.json): code is the
+   theme's string colour, a flow node sits on its surface. The rest reuse the --lw-* palette. */
+.loop-stage { --lw-code: #2F6F5E; --lw-node: #FFF7F4; --lw-node-edge: #E39A86; --lw-muted: #6F6660; }
+@media (prefers-color-scheme: dark) {
+  .loop-stage { --lw-code: #7FD1B9; --lw-node: #262229; --lw-node-edge: #8E5238; --lw-muted: #A39992; }
+}
+.loop-code { color: var(--lw-code); }
 
 /* A scene with a longer document: the terminal stops short of the source pane (the window's
    sidebar ends at 630u), so no line of source is hidden behind it. */
@@ -477,8 +483,8 @@ def _scene_css() -> str:
 .loop-rl.loop-r-a, .loop-rl.loop-r-b, .loop-rl.loop-r-c { animation-name: loop-a-rl; }
 @keyframes loop-u-rl {
   0%, 35% { max-height: 5em; opacity: 1; background: transparent; }
-  36%, 40.9% { max-height: 5em; opacity: 1; background: #F2C6B3; }
-  41% { max-height: 5em; opacity: 1; background: #F2C6B3; }
+  36%, 40.9% { max-height: 5em; opacity: 1; background: var(--lw-select); }
+  41% { max-height: 5em; opacity: 1; background: var(--lw-select); }
   44%, 94.9% { max-height: 0; opacity: 0; background: transparent; }
   95%, 100% { max-height: 5em; opacity: 1; background: transparent; }
 }
@@ -488,19 +494,19 @@ def _scene_css() -> str:
   95%, 100% { max-height: 5em; opacity: 1; }
 }
 @keyframes loop-a-rl {
-  0%, 57% { max-height: 5em; opacity: 1; background: rgba(200,71,27,0); }
-  59.5% { max-height: 5em; opacity: 1; background: rgba(200,71,27,.28); }
-  63%, 94.9% { max-height: 0; opacity: 0; background: rgba(200,71,27,0); }
-  95%, 100% { max-height: 5em; opacity: 1; background: rgba(200,71,27,0); }
+  0%, 57% { max-height: 5em; opacity: 1; background: var(--lw-glow-0); }
+  59.5% { max-height: 5em; opacity: 1; background: var(--lw-glow); }
+  63%, 94.9% { max-height: 0; opacity: 0; background: var(--lw-glow-0); }
+  95%, 100% { max-height: 5em; opacity: 1; background: var(--lw-glow-0); }
 }
 
 /* A flow diagram, as the preview draws a Mermaid flowchart; a step can go away. */
 .loop-flow { display: flex; align-items: center; margin: 12u 0 20u; }
 .loop-flow > * { flex-shrink: 0; }
 .loop-node { display: inline-flex; align-items: center; height: 40u; padding: 0 9u; border-radius: 7u;
-  background: #FFF7F4; border: 1.5u solid #E39A86; font-size: 14u; font-weight: 650; white-space: nowrap; }
+  background: var(--lw-node); border: 1.5u solid var(--lw-node-edge); color: var(--lw-fg); font-size: 14u; font-weight: 650; white-space: nowrap; }
 .loop-fseg { display: inline-flex; align-items: center; overflow: hidden; white-space: nowrap; max-width: 30em; }
-.loop-arrow { padding: 0 5u; color: #C8471B; font-size: 15u; }
+.loop-arrow { padding: 0 5u; color: var(--lw-accent); font-size: 15u; }
 .loop-pre .loop-rn.loop-r-u { animation-name: loop-pu-rn; }
 .loop-rn.loop-r-a, .loop-rn.loop-r-b, .loop-rn.loop-r-c { animation-name: loop-a-rn; }
 @keyframes loop-pu-rn {
@@ -519,7 +525,7 @@ def _scene_css() -> str:
 .loop-pre li { margin: 0; }
 .loop-pre li.loop-task { list-style: none; margin-left: -26u; }
 .loop-task::before { content: ""; display: inline-block; width: 0.75em; height: 0.75em; margin-right: 0.45em;
-  border: 1.5u solid #8A817B; border-radius: 3u; vertical-align: -0.05em; }
+  border: 1.5u solid var(--lw-muted); border-radius: 3u; vertical-align: -0.05em; }
 """]
     # The typed-in new text, and the caret after it, step one character at a time.
     for n in range(1, 13):
