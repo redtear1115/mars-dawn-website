@@ -209,6 +209,10 @@
 .loop-d-c { animation-name: loop-a-glow; }
 .loop-code { color: #2F6F5E; }
 
+/* A scene with a longer document: the terminal stops short of the source pane (the window's
+   sidebar ends at calc(630 * var(--u))), so no line of source is hidden behind it. */
+.loop-long .loop-term { width: calc(575 * var(--u)); }
+
 /* A line, block or list item that goes away. */
 .loop-rl { overflow: hidden; }
 .loop-src .loop-rl { display: block; }
@@ -239,10 +243,11 @@
 
 /* A flow diagram, as the preview draws a Mermaid flowchart; a step can go away. */
 .loop-flow { display: flex; align-items: center; margin: calc(12 * var(--u)) 0 calc(20 * var(--u)); }
-.loop-node { display: inline-flex; align-items: center; height: calc(44 * var(--u)); padding: 0 calc(14 * var(--u)); border-radius: calc(7 * var(--u));
-  background: #FFF7F4; border: calc(1.5 * var(--u)) solid #E39A86; font-size: calc(17 * var(--u)); font-weight: 650; white-space: nowrap; }
+.loop-flow > * { flex-shrink: 0; }
+.loop-node { display: inline-flex; align-items: center; height: calc(40 * var(--u)); padding: 0 calc(9 * var(--u)); border-radius: calc(7 * var(--u));
+  background: #FFF7F4; border: calc(1.5 * var(--u)) solid #E39A86; font-size: calc(14 * var(--u)); font-weight: 650; white-space: nowrap; }
 .loop-fseg { display: inline-flex; align-items: center; overflow: hidden; white-space: nowrap; max-width: 30em; }
-.loop-arrow { padding: 0 calc(8 * var(--u)); color: #C8471B; font-size: calc(18 * var(--u)); }
+.loop-arrow { padding: 0 calc(5 * var(--u)); color: #C8471B; font-size: calc(15 * var(--u)); }
 .loop-pre .loop-rn.loop-r-u { animation-name: loop-pu-rn; }
 .loop-rn.loop-r-a, .loop-rn.loop-r-b, .loop-rn.loop-r-c { animation-name: loop-a-rn; }
 @keyframes loop-pu-rn {

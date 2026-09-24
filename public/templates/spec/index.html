@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markdown spec (PRD) template · MarsDawn</title>
+<meta name="description" content="A Markdown spec template with requirements, a Mermaid flow diagram and acceptance criteria. Your agent fills it in; you review it in MarsDawn.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/loop.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/spec/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/spec/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/spec/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/spec/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/spec/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/templates/spec/">
+<link rel="alternate" type="text/markdown" href="/templates/spec/index.md">
+<meta property="og:title" content="Markdown spec (PRD) template · MarsDawn">
+<meta property="og:description" content="A Markdown spec template with requirements, a Mermaid flow diagram and acceptance criteria. Your agent fills it in; you review it in MarsDawn.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/templates/spec/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/templates/spec/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/templates/spec/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/templates/spec/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/templates/spec/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Markdown spec (PRD) template</h1>
+  <p>A spec your agent can fill in and you can read in one sitting: the problem, goals, requirements, a flow diagram and acceptance criteria. When you change a requirement, ask the agent to bring the rest in line.</p>
+</section>
+
+<div class="loop-anim loop-long">
+<div class="loop-frame" role="img" aria-label="A terminal opens spec.md in MarsDawn. The reader deletes requirement R3, and the agent removes its step from the flow diagram and its acceptance check.">
+<div class="loop-stage" aria-hidden="true">
+<div class="loop-win a">
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">spec.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-body">
+<div class="loop-side"><div class="loop-tabs"><span class="on">Outline</span><span>Files</span></div><div class="loop-rows"><div class="loop-h1row">Spec: Sign-in codes</div><div class="loop-sub loop-row-u a">Requirements</div><div class="loop-sub">Flow</div><div class="loop-sub">Acceptance</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> Spec: Sign-in codes</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> Requirements</span>
+<span class="loop-mk">-</span> R1: Email a six-digit code.
+<span class="loop-mk">-</span> R2: The code expires in 10 min.
+<span class="loop-rl loop-r-u a"><span class="loop-mk">-</span> R3: Ask for a second factor.</span>
+<span class="loop-h"><span class="loop-mk">##</span> Flow</span>
+<span class="loop-code">```mermaid</span>
+<span class="loop-code">flowchart LR</span>
+<span class="loop-code">  A[Email] --&gt; B[Code]</span>
+<span class="loop-rl loop-r-a a"><span class="loop-code">  B --&gt; C[Second factor]</span></span><span class="loop-code">  <span class="loop-day loop-d-b a"><span class="loop-old a">C</span><span class="loop-new loop-n1 a">B</span></span> --&gt; D[Signed in]</span>
+<span class="loop-code">```</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> Acceptance</span>
+<span class="loop-mk">- [ ]</span> R1: A code arrives in a minute.
+<span class="loop-rl loop-r-c a"><span class="loop-mk">- [ ]</span> R3: Asked once per device.</span></div>
+<div class="loop-pre"><h3>Spec: Sign-in codes</h3><h4>Requirements</h4><ul><li>R1: Email a six-digit code.</li><li>R2: The code expires in 10 min.</li><li class="loop-rl loop-r-u a">R3: Ask for a second factor.</li></ul><h4>Flow</h4><div class="loop-flow"><span class="loop-node">Email</span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">Code</span></span><span class="loop-fseg loop-rn loop-r-a a"><span class="loop-arrow">→</span><span class="loop-node">Second factor</span></span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">Signed in</span></span></div><h4>Acceptance</h4><ul><li class="loop-task">R1: A code arrives in a minute.</li><li class="loop-task loop-rl loop-r-c a">R3: Asked once per device.</li></ul></div>
+</div>
+</div>
+<div class="loop-term a">
+<div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
+<div class="loop-tbody">
+<div><span class="loop-p">›</span> <span class="loop-cmd loop-cmd-21 a">marsdawn open spec.md</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> I dropped R3. Make the flow and the acceptance criteria agree.</div>
+<div class="loop-l3 a">Done. The flow skips the second factor, and R3&#x27;s check is gone.</div>
+</div>
+</div>
+<svg class="loop-ptr loop-ptr-r1 a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="Pause the animation"><span aria-hidden="true">Pause</span></label>
+</div>
+
+<h2 id="the-template">The template</h2>
+<p><a href="/templates/spec/spec.md" download>Download spec.md</a></p>
+<pre><code># Spec: Feature name
+
+Status: draft · Owner: name · Updated: date
+
+## Problem
+
+_What is wrong today, for whom, and how we know._
+
+## Goals
+
+- _What will be true when this ships._
+
+## Non-goals
+
+- _What this deliberately doesn&#x27;t do._
+
+## Requirements
+
+| ID | Requirement | Priority |
+|----|-------------|----------|
+| R1 | _Requirement_ | Must |
+| R2 | _Requirement_ | Should |
+
+## Flow
+
+```mermaid
+flowchart LR
+  A[Start] --&gt; B[Step] --&gt; C[Result]
+```
+
+## Acceptance criteria
+
+- [ ] R1: _How we check it._
+- [ ] R2: _How we check it._
+
+## Open questions
+
+- _Question._
+</code></pre>
+
+<h2 id="how-it-looks">How it looks</h2>
+<p class="tpl-shot"><img src="/assets/templates/spec-en.png" width="1000" height="1415" loading="lazy" alt="The first page of spec.md, exported as a PDF with marsdawn export."></p>
+<p>Exported with <code>marsdawn export spec.md</code>. The free command-line tool renders like MarsDawn's preview, diagram included.</p>
+
+<h2 id="ask-your-agent">Ask your agent</h2>
+<pre class="tpl-prompt"><code>Write a spec for [the feature] in spec.md, using the template at https://marsdawn.southern-light.dev/templates/spec/spec.md. Give every requirement an ID, and use the same IDs in the flow and the acceptance criteria. When it&#x27;s written, run marsdawn open spec.md.</code></pre>
+
+<h2 id="share-it-as-a-pdf">Share it as a PDF</h2>
+<p><code>marsdawn export spec.md</code> writes spec.pdf beside it, for someone who doesn't read Markdown.</p>
+
+<h2 id="what-it-doesn-t-do">What it doesn't do</h2>
+<p>MarsDawn shows the spec, the table and the diagram. It doesn't check that the acceptance criteria cover every requirement. That's the agent's job, and your read.</p>
+
+<h2 id="questions">Questions</h2>
+<h3>Does the flow diagram need anything installed?</h3>
+<p>No. MarsDawn and <code>marsdawn export</code> draw Mermaid themselves, offline.</p>
+<h3>Can I edit the spec in MarsDawn?</h3>
+<p>Yes. It's a Markdown editor with the preview beside the source. The agent sees your edit the next time it reads the file.</p>
+
+<h2 id="more-templates">More templates</h2>
+<ul>
+  <li><a href="/templates/flowchart/">Flowchart</a>: a Mermaid diagram with the steps written out below it.</li>
+  <li><a href="/templates/meeting-notes/">Meeting notes</a>: decisions and action items, with owners.</li>
+  <li><a href="/templates/">Markdown templates</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/support/">Support</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
+  </nav>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

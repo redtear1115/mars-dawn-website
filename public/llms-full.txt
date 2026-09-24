@@ -1057,6 +1057,252 @@ What changed in the free marsdawn command-line tool. A Mac App Store build of Ma
 
 ---
 
+## Templates
+
+Source: https://marsdawn.southern-light.dev/templates/
+
+# Markdown templates
+
+For the documents an agent writes and you read. Each template comes with a prompt for your agent. Open the filled file in MarsDawn to read what it wrote.
+
+- [Spec (PRD)](/templates/spec/): problem, goals, requirements, a flow diagram and acceptance criteria.
+- [Flowchart](/templates/flowchart/): a Mermaid diagram with the steps written out below it.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, with owners.
+
+---
+
+## Spec template
+
+Source: https://marsdawn.southern-light.dev/templates/spec/
+
+# Markdown spec (PRD) template
+
+A spec your agent can fill in and you can read in one sitting: the problem, goals, requirements, a flow diagram and acceptance criteria. When you change a requirement, ask the agent to bring the rest in line.
+
+## The template
+
+[Download spec.md](/templates/spec/spec.md)
+
+````
+# Spec: Feature name
+
+Status: draft · Owner: name · Updated: date
+
+## Problem
+
+_What is wrong today, for whom, and how we know._
+
+## Goals
+
+- _What will be true when this ships._
+
+## Non-goals
+
+- _What this deliberately doesn't do._
+
+## Requirements
+
+| ID | Requirement | Priority |
+|----|-------------|----------|
+| R1 | _Requirement_ | Must |
+| R2 | _Requirement_ | Should |
+
+## Flow
+
+```mermaid
+flowchart LR
+  A[Start] --> B[Step] --> C[Result]
+```
+
+## Acceptance criteria
+
+- [ ] R1: _How we check it._
+- [ ] R2: _How we check it._
+
+## Open questions
+
+- _Question._
+````
+
+## How it looks
+
+![The first page of spec.md, exported as a PDF with marsdawn export.](/assets/templates/spec-en.png)
+
+Exported with `marsdawn export spec.md`. The free command-line tool renders like MarsDawn's preview, diagram included.
+
+## Ask your agent
+
+```
+Write a spec for [the feature] in spec.md, using the template at https://marsdawn.southern-light.dev/templates/spec/spec.md. Give every requirement an ID, and use the same IDs in the flow and the acceptance criteria. When it's written, run marsdawn open spec.md.
+```
+
+## Share it as a PDF
+
+`marsdawn export spec.md` writes spec.pdf beside it, for someone who doesn't read Markdown.
+
+## What it doesn't do
+
+MarsDawn shows the spec, the table and the diagram. It doesn't check that the acceptance criteria cover every requirement. That's the agent's job, and your read.
+
+## Questions
+
+### Does the flow diagram need anything installed?
+
+No. MarsDawn and `marsdawn export` draw Mermaid themselves, offline.
+
+### Can I edit the spec in MarsDawn?
+
+Yes. It's a Markdown editor with the preview beside the source. The agent sees your edit the next time it reads the file.
+
+## More templates
+
+- [Flowchart](/templates/flowchart/): a Mermaid diagram with the steps written out below it.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, with owners.
+- [Markdown templates](/templates/)
+
+---
+
+## Flowchart template
+
+Source: https://marsdawn.southern-light.dev/templates/flowchart/
+
+# Markdown flowchart template
+
+A Mermaid flowchart with the steps spelled out underneath, so the diagram and the words can be checked against each other. Take a step out, and ask the agent to fix the rest.
+
+## The template
+
+[Download flowchart.md](/templates/flowchart/flowchart.md)
+
+````
+# Flow name
+
+_One sentence: what goes in, what comes out._
+
+## Diagram
+
+```mermaid
+flowchart LR
+  A[First step] --> B[Second step]
+  B --> C[Third step]
+  C --> D[Done]
+```
+
+## Steps
+
+1. **First step:** _who does it, and what they hand on._
+2. **Second step:** _…_
+3. **Third step:** _…_
+4. **Done:** _what "done" means here._
+````
+
+## How it looks
+
+![The first page of flowchart.md, exported as a PDF with marsdawn export.](/assets/templates/flowchart-en.png)
+
+Exported with `marsdawn export flowchart.md`. The free command-line tool renders like MarsDawn's preview, diagram included.
+
+## Ask your agent
+
+```
+Draw the flow for [the process] in flowchart.md, using the template at https://marsdawn.southern-light.dev/templates/flowchart/flowchart.md. Keep one numbered step per node, in the same order. When it's written, run marsdawn open flowchart.md.
+```
+
+## Share it as a PDF
+
+`marsdawn export flowchart.md` — the diagram is drawn into the PDF.
+
+## What it doesn't do
+
+MarsDawn draws what the Mermaid says. It doesn't lay the diagram out by hand, and it doesn't keep the numbered steps in sync with the nodes. If the Mermaid has an error, the preview shows the error instead of a diagram.
+
+## Questions
+
+### Which diagrams work?
+
+Anything Mermaid draws: flowcharts, sequence diagrams, state diagrams and more.
+
+### Why write the steps out as well?
+
+A reader who skims sees the diagram; a reader who checks needs the words. The agent can keep both in step.
+
+## More templates
+
+- [Spec (PRD)](/templates/spec/): problem, goals, requirements, a flow diagram and acceptance criteria.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, with owners.
+- [Markdown templates](/templates/)
+
+---
+
+## Meeting notes template
+
+Source: https://marsdawn.southern-light.dev/templates/meeting-notes/
+
+# Markdown meeting notes template
+
+Decisions first, then action items, each with an owner. Let your agent write the notes from the transcript, and read them before they go out. When a decision changes, ask the agent to bring the action items in line.
+
+## The template
+
+[Download meeting-notes.md](/templates/meeting-notes/meeting-notes.md)
+
+```
+# Meeting name, date
+
+Attendees: _names_
+
+## Decisions
+
+- _What was decided, in one line each._
+
+## Action items
+
+- [ ] Name: _what, by when._
+- [ ] Name: _what, by when._
+
+## Notes
+
+- _Anything worth keeping that isn't a decision or an action._
+```
+
+## How it looks
+
+![The first page of meeting-notes.md, exported as a PDF with marsdawn export.](/assets/templates/meeting-notes-en.png)
+
+Exported with `marsdawn export meeting-notes.md`. The free command-line tool renders like MarsDawn's preview.
+
+## Ask your agent
+
+```
+Write up this meeting in meeting-notes.md, using the template at https://marsdawn.southern-light.dev/templates/meeting-notes/meeting-notes.md. Decisions first, one line each; every action item gets one owner and a date. When it's written, run marsdawn open meeting-notes.md.
+```
+
+## Share it as a PDF
+
+`marsdawn export meeting-notes.md` writes a PDF you can attach to the follow-up mail.
+
+## What it doesn't do
+
+MarsDawn doesn't record or transcribe the meeting, and it doesn't track the action items. It shows the notes as they'll be read.
+
+## Questions
+
+### Do the checkboxes work?
+
+They show as checkboxes in the preview and the PDF. Tick one by changing `[ ]` to `[x]` in the source.
+
+### Can the agent keep the notes and the action items in step?
+
+Yes, that's the point of the loop: change one, and ask it to update the rest. MarsDawn shows you the result.
+
+## More templates
+
+- [Spec (PRD)](/templates/spec/): problem, goals, requirements, a flow diagram and acceptance criteria.
+- [Flowchart](/templates/flowchart/): a Mermaid diagram with the steps written out below it.
+- [Markdown templates](/templates/)
+
+---
+
 ## MarsDawn
 
 Source: https://marsdawn.southern-light.dev/zh-hant/
@@ -2114,6 +2360,252 @@ Source: https://marsdawn.southern-light.dev/zh-hant/changelog/
 
 ---
 
+## 範本
+
+Source: https://marsdawn.southern-light.dev/zh-hant/templates/
+
+# Markdown 範本
+
+給 agent 寫、你來讀的文件。每份範本都附一段給 agent 的提示詞。把填好的檔案用 MarsDawn 打開，讀讀它寫了什麼。
+
+- [規格文件（PRD）](/zh-hant/templates/spec/)：問題、目標、需求、流程圖和驗收條件。
+- [流程圖](/zh-hant/templates/flowchart/)：一張 Mermaid 圖，下方把每個步驟寫出來。
+- [會議記錄](/zh-hant/templates/meeting-notes/)：決議和行動項目，每項都有負責人。
+
+---
+
+## 規格文件範本
+
+Source: https://marsdawn.southern-light.dev/zh-hant/templates/spec/
+
+# Markdown 規格文件（PRD）範本
+
+一份 agent 能填、你一次就能讀完的規格文件：問題、目標、需求、流程圖和驗收條件。改了一條需求，就請 agent 把其他部分跟著改好。
+
+## 範本
+
+[下載 spec.md](/zh-hant/templates/spec/spec.md)
+
+````
+# 規格：功能名稱
+
+狀態：草稿 · 負責人：姓名 · 更新：日期
+
+## 問題
+
+_現在哪裡有問題、影響誰、我們怎麼知道。_
+
+## 目標
+
+- _上線後會成立的事。_
+
+## 不做的事
+
+- _這次刻意不做的事。_
+
+## 需求
+
+| 編號 | 需求 | 優先度 |
+|------|------|--------|
+| R1 | _需求_ | 必要 |
+| R2 | _需求_ | 應該 |
+
+## 流程
+
+```mermaid
+flowchart LR
+  A[開始] --> B[步驟] --> C[結果]
+```
+
+## 驗收條件
+
+- [ ] R1：_怎麼確認。_
+- [ ] R2：_怎麼確認。_
+
+## 待決問題
+
+- _問題。_
+````
+
+## 長什麼樣子
+
+![spec.md 用 marsdawn export 輸出的 PDF 第一頁。](/assets/templates/spec-zh-hant.png)
+
+用 `marsdawn export spec.md` 輸出。免費的命令列工具排版和 MarsDawn 的預覽一樣，圖表也一起畫出來。
+
+## 交給 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hant/templates/spec/spec.md 這份範本，把［功能］的規格寫進 spec.md。每條需求都要有編號，流程圖和驗收條件用同樣的編號。寫好之後執行 marsdawn open spec.md。
+```
+
+## 輸出 PDF 分享
+
+`marsdawn export spec.md` 會在旁邊寫出 spec.pdf，給不讀 Markdown 的人。
+
+## 做不到的事
+
+MarsDawn 會顯示規格、表格和流程圖，但不會檢查驗收條件有沒有涵蓋每一條需求。那是 agent 的工作，也要靠你讀。
+
+## 常見問題
+
+### 流程圖需要另外安裝什麼嗎？
+
+不用。MarsDawn 和 `marsdawn export` 自己就會畫 Mermaid，離線也能畫。
+
+### 可以在 MarsDawn 裡改規格嗎？
+
+可以。它是 Markdown 編輯器，原始碼旁邊就是預覽。agent 下次讀這個檔案時，就會看到你的修改。
+
+## 其他範本
+
+- [流程圖](/zh-hant/templates/flowchart/)：一張 Mermaid 圖，下方把每個步驟寫出來。
+- [會議記錄](/zh-hant/templates/meeting-notes/)：決議和行動項目，每項都有負責人。
+- [Markdown 範本](/zh-hant/templates/)
+
+---
+
+## 流程圖範本
+
+Source: https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/
+
+# Markdown 流程圖範本
+
+一張 Mermaid 流程圖，下方把每個步驟寫清楚，圖和文字可以互相對照。拿掉一個步驟，再請 agent 把其他部分改好。
+
+## 範本
+
+[下載 flowchart.md](/zh-hant/templates/flowchart/flowchart.md)
+
+````
+# 流程名稱
+
+_一句話：輸入什麼，產出什麼。_
+
+## 圖
+
+```mermaid
+flowchart LR
+  A[第一步] --> B[第二步]
+  B --> C[第三步]
+  C --> D[完成]
+```
+
+## 步驟
+
+1. **第一步**：_誰來做，交給下一步什麼。_
+2. **第二步**：_……_
+3. **第三步**：_……_
+4. **完成**：_這裡的「完成」是什麼意思。_
+````
+
+## 長什麼樣子
+
+![flowchart.md 用 marsdawn export 輸出的 PDF 第一頁。](/assets/templates/flowchart-zh-hant.png)
+
+用 `marsdawn export flowchart.md` 輸出。免費的命令列工具排版和 MarsDawn 的預覽一樣，圖表也一起畫出來。
+
+## 交給 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/flowchart.md 這份範本，把［流程］畫進 flowchart.md。每個節點對應一個編號步驟，順序相同。寫好之後執行 marsdawn open flowchart.md。
+```
+
+## 輸出 PDF 分享
+
+`marsdawn export flowchart.md`：流程圖會畫進 PDF 裡。
+
+## 做不到的事
+
+MarsDawn 照 Mermaid 寫的內容畫圖，不能手動排版，也不會讓編號步驟和節點保持一致。Mermaid 有錯的話，預覽會顯示錯誤訊息，而不是圖。
+
+## 常見問題
+
+### 哪些圖可以用？
+
+Mermaid 畫得出來的都可以：流程圖、循序圖、狀態圖等等。
+
+### 為什麼還要把步驟寫出來？
+
+快速瀏覽的人看圖；要仔細確認的人需要文字。agent 可以讓兩者保持一致。
+
+## 其他範本
+
+- [規格文件（PRD）](/zh-hant/templates/spec/)：問題、目標、需求、流程圖和驗收條件。
+- [會議記錄](/zh-hant/templates/meeting-notes/)：決議和行動項目，每項都有負責人。
+- [Markdown 範本](/zh-hant/templates/)
+
+---
+
+## 會議記錄範本
+
+Source: https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/
+
+# Markdown 會議記錄範本
+
+先寫決議，再列行動項目，每項都有負責人。讓 agent 從逐字稿整理出會議記錄，寄出之前先讀一遍。決議改了，就請 agent 把行動項目跟著改好。
+
+## 範本
+
+[下載 meeting-notes.md](/zh-hant/templates/meeting-notes/meeting-notes.md)
+
+```
+# 會議名稱，日期
+
+出席：_姓名_
+
+## 決議
+
+- _決定了什麼，一項一行。_
+
+## 行動項目
+
+- [ ] 姓名：_做什麼，何時完成。_
+- [ ] 姓名：_做什麼，何時完成。_
+
+## 備註
+
+- _值得留下、但不是決議也不是行動項目的內容。_
+```
+
+## 長什麼樣子
+
+![meeting-notes.md 用 marsdawn export 輸出的 PDF 第一頁。](/assets/templates/meeting-notes-zh-hant.png)
+
+用 `marsdawn export meeting-notes.md` 輸出。免費的命令列工具排版和 MarsDawn 的預覽一樣。
+
+## 交給 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/meeting-notes.md 這份範本，把這場會議整理進 meeting-notes.md。先寫決議，一項一行；每個行動項目都要有一位負責人和日期。寫好之後執行 marsdawn open meeting-notes.md。
+```
+
+## 輸出 PDF 分享
+
+`marsdawn export meeting-notes.md` 會輸出一份 PDF，可以附在會後的信裡。
+
+## 做不到的事
+
+MarsDawn 不會錄音或轉逐字稿，也不會追蹤行動項目。它只把會議記錄呈現成讀者會看到的樣子。
+
+## 常見問題
+
+### 勾選框能用嗎？
+
+在預覽和 PDF 裡都會顯示成勾選框。要打勾，就在原始碼裡把 `[ ]` 改成 `[x]`。
+
+### agent 能讓會議記錄和行動項目保持一致嗎？
+
+可以，這就是這個循環的用意：改其中一個，再請它更新其他部分。MarsDawn 讓你看到結果。
+
+## 其他範本
+
+- [規格文件（PRD）](/zh-hant/templates/spec/)：問題、目標、需求、流程圖和驗收條件。
+- [流程圖](/zh-hant/templates/flowchart/)：一張 Mermaid 圖，下方把每個步驟寫出來。
+- [Markdown 範本](/zh-hant/templates/)
+
+---
+
 ## MarsDawn
 
 Source: https://marsdawn.southern-light.dev/zh-hans/
@@ -3161,6 +3653,252 @@ Source: https://marsdawn.southern-light.dev/zh-hans/changelog/
 
 ---
 
+## 模板
+
+Source: https://marsdawn.southern-light.dev/zh-hans/templates/
+
+# Markdown 模板
+
+给 agent 写、你来读的文档。每份模板都附一段给 agent 的提示词。把填好的文件用 MarsDawn 打开，读读它写了什么。
+
+- [规格文档（PRD）](/zh-hans/templates/spec/)：问题、目标、需求、流程图和验收标准。
+- [流程图](/zh-hans/templates/flowchart/)：一张 Mermaid 图，下方把每个步骤写出来。
+- [会议记录](/zh-hans/templates/meeting-notes/)：决议和行动项，每项都有负责人。
+
+---
+
+## 规格文档模板
+
+Source: https://marsdawn.southern-light.dev/zh-hans/templates/spec/
+
+# Markdown 规格文档（PRD）模板
+
+一份 agent 能填、你一次就能读完的规格文档：问题、目标、需求、流程图和验收标准。改了一条需求，就请 agent 把其他部分跟着改好。
+
+## 模板
+
+[下载 spec.md](/zh-hans/templates/spec/spec.md)
+
+````
+# 规格：功能名称
+
+状态：草稿 · 负责人：姓名 · 更新：日期
+
+## 问题
+
+_现在哪里有问题、影响谁、我们怎么知道。_
+
+## 目标
+
+- _上线后会成立的事。_
+
+## 不做的事
+
+- _这次刻意不做的事。_
+
+## 需求
+
+| 编号 | 需求 | 优先级 |
+|------|------|--------|
+| R1 | _需求_ | 必须 |
+| R2 | _需求_ | 应该 |
+
+## 流程
+
+```mermaid
+flowchart LR
+  A[开始] --> B[步骤] --> C[结果]
+```
+
+## 验收标准
+
+- [ ] R1：_怎么确认。_
+- [ ] R2：_怎么确认。_
+
+## 待定问题
+
+- _问题。_
+````
+
+## 长什么样子
+
+![spec.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/spec-zh-hans.png)
+
+用 `marsdawn export spec.md` 输出。免费的命令行工具排版和 MarsDawn 的预览一样，图表也一起画出来。
+
+## 交给 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hans/templates/spec/spec.md 这份模板，把［功能］的规格写进 spec.md。每条需求都要有编号，流程图和验收标准用同样的编号。写好之后运行 marsdawn open spec.md。
+```
+
+## 输出 PDF 分享
+
+`marsdawn export spec.md` 会在旁边写出 spec.pdf，给不读 Markdown 的人。
+
+## 做不到的事
+
+MarsDawn 会显示规格、表格和流程图，但不会检查验收标准有没有覆盖每一条需求。那是 agent 的工作，也要靠你读。
+
+## 常见问题
+
+### 流程图需要另外安装什么吗？
+
+不用。MarsDawn 和 `marsdawn export` 自己就会画 Mermaid，离线也能画。
+
+### 可以在 MarsDawn 里改规格吗？
+
+可以。它是 Markdown 编辑器，源代码旁边就是预览。agent 下次读这个文件时，就会看到你的修改。
+
+## 其他模板
+
+- [流程图](/zh-hans/templates/flowchart/)：一张 Mermaid 图，下方把每个步骤写出来。
+- [会议记录](/zh-hans/templates/meeting-notes/)：决议和行动项，每项都有负责人。
+- [Markdown 模板](/zh-hans/templates/)
+
+---
+
+## 流程图模板
+
+Source: https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/
+
+# Markdown 流程图模板
+
+一张 Mermaid 流程图，下方把每个步骤写清楚，图和文字可以互相对照。去掉一个步骤，再请 agent 把其他部分改好。
+
+## 模板
+
+[下载 flowchart.md](/zh-hans/templates/flowchart/flowchart.md)
+
+````
+# 流程名称
+
+_一句话：输入什么，产出什么。_
+
+## 图
+
+```mermaid
+flowchart LR
+  A[第一步] --> B[第二步]
+  B --> C[第三步]
+  C --> D[完成]
+```
+
+## 步骤
+
+1. **第一步**：_谁来做，交给下一步什么。_
+2. **第二步**：_……_
+3. **第三步**：_……_
+4. **完成**：_这里的“完成”是什么意思。_
+````
+
+## 长什么样子
+
+![flowchart.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/flowchart-zh-hans.png)
+
+用 `marsdawn export flowchart.md` 输出。免费的命令行工具排版和 MarsDawn 的预览一样，图表也一起画出来。
+
+## 交给 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/flowchart.md 这份模板，把［流程］画进 flowchart.md。每个节点对应一个编号步骤，顺序相同。写好之后运行 marsdawn open flowchart.md。
+```
+
+## 输出 PDF 分享
+
+`marsdawn export flowchart.md`：流程图会画进 PDF 里。
+
+## 做不到的事
+
+MarsDawn 按 Mermaid 写的内容画图，不能手动排版，也不会让编号步骤和节点保持一致。Mermaid 有错误时，预览会显示错误信息，而不是图。
+
+## 常见问题
+
+### 哪些图可以用？
+
+Mermaid 画得出来的都可以：流程图、时序图、状态图等等。
+
+### 为什么还要把步骤写出来？
+
+快速浏览的人看图；要仔细确认的人需要文字。agent 可以让两者保持一致。
+
+## 其他模板
+
+- [规格文档（PRD）](/zh-hans/templates/spec/)：问题、目标、需求、流程图和验收标准。
+- [会议记录](/zh-hans/templates/meeting-notes/)：决议和行动项，每项都有负责人。
+- [Markdown 模板](/zh-hans/templates/)
+
+---
+
+## 会议记录模板
+
+Source: https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/
+
+# Markdown 会议记录模板
+
+先写决议，再列行动项，每项都有负责人。让 agent 从逐字稿整理出会议记录，发出之前先读一遍。决议改了，就请 agent 把行动项跟着改好。
+
+## 模板
+
+[下载 meeting-notes.md](/zh-hans/templates/meeting-notes/meeting-notes.md)
+
+```
+# 会议名称，日期
+
+出席：_姓名_
+
+## 决议
+
+- _决定了什么，一项一行。_
+
+## 行动项
+
+- [ ] 姓名：_做什么，何时完成。_
+- [ ] 姓名：_做什么，何时完成。_
+
+## 备注
+
+- _值得留下、但不是决议也不是行动项的内容。_
+```
+
+## 长什么样子
+
+![meeting-notes.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/meeting-notes-zh-hans.png)
+
+用 `marsdawn export meeting-notes.md` 输出。免费的命令行工具排版和 MarsDawn 的预览一样。
+
+## 交给 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/meeting-notes.md 这份模板，把这场会议整理进 meeting-notes.md。先写决议，一项一行；每个行动项都要有一位负责人和日期。写好之后运行 marsdawn open meeting-notes.md。
+```
+
+## 输出 PDF 分享
+
+`marsdawn export meeting-notes.md` 会输出一份 PDF，可以附在会后的邮件里。
+
+## 做不到的事
+
+MarsDawn 不会录音或转写，也不会跟踪行动项。它只把会议记录呈现成读者会看到的样子。
+
+## 常见问题
+
+### 复选框能用吗？
+
+在预览和 PDF 里都会显示成复选框。要打勾，就在源代码里把 `[ ]` 改成 `[x]`。
+
+### agent 能让会议记录和行动项保持一致吗？
+
+可以，这就是这个循环的用意：改其中一个，再请它更新其他部分。MarsDawn 让你看到结果。
+
+## 其他模板
+
+- [规格文档（PRD）](/zh-hans/templates/spec/)：问题、目标、需求、流程图和验收标准。
+- [流程图](/zh-hans/templates/flowchart/)：一张 Mermaid 图，下方把每个步骤写出来。
+- [Markdown 模板](/zh-hans/templates/)
+
+---
+
 ## MarsDawn
 
 Source: https://marsdawn.southern-light.dev/ja/
@@ -4205,3 +4943,249 @@ Source: https://marsdawn.southern-light.dev/ja/changelog/
 - 書き出した PDF のテキストレイヤーを、中国語、日本語、韓国語について修正しました。
 - `marsdawn open --background` はファイルを開きますが、MarsDawn を前面には出しません。
 - `marsdawn open` にフォルダを渡せます。Mac App Store のアプリはまだフォルダを表示できないので、このオプションは、それができるアプリを待ちます。
+
+---
+
+## テンプレート
+
+Source: https://marsdawn.southern-light.dev/ja/templates/
+
+# Markdown テンプレート
+
+エージェントが書き、あなたが読む文書のために。各テンプレートにはエージェントへのプロンプトが付いています。書き上がったファイルを MarsDawn で開いて、何を書いたか読んでください。
+
+- [仕様書（PRD）](/ja/templates/spec/)：課題、目標、要件、フロー図、受け入れ基準。
+- [フローチャート](/ja/templates/flowchart/)：Mermaid の図と、その下に書き出した各ステップ。
+- [議事録](/ja/templates/meeting-notes/)：決定事項とアクションアイテム。それぞれに担当者。
+
+---
+
+## 仕様書テンプレート
+
+Source: https://marsdawn.southern-light.dev/ja/templates/spec/
+
+# Markdown 仕様書（PRD）テンプレート
+
+エージェントが埋められて、あなたが一度で読み通せる仕様書。課題、目標、要件、フロー図、受け入れ基準。要件をひとつ変えたら、残りを合わせるようエージェントに頼みます。
+
+## テンプレート
+
+[spec.md をダウンロード](/ja/templates/spec/spec.md)
+
+````
+# 仕様：機能名
+
+ステータス：下書き · 担当：名前 · 更新：日付
+
+## 課題
+
+_いま何が問題で、誰が困っていて、なぜそうとわかるか。_
+
+## 目標
+
+- _リリース後に成り立っていること。_
+
+## やらないこと
+
+- _今回あえてやらないこと。_
+
+## 要件
+
+| ID | 要件 | 優先度 |
+|----|------|--------|
+| R1 | _要件_ | 必須 |
+| R2 | _要件_ | 推奨 |
+
+## フロー
+
+```mermaid
+flowchart LR
+  A[開始] --> B[ステップ] --> C[結果]
+```
+
+## 受け入れ基準
+
+- [ ] R1：_どう確かめるか。_
+- [ ] R2：_どう確かめるか。_
+
+## 未決事項
+
+- _問い。_
+````
+
+## 見た目
+
+![spec.md を marsdawn export で書き出した PDF の 1 ページ目。](/assets/templates/spec-ja.png)
+
+`marsdawn export spec.md` で書き出したもの。無料のコマンドラインツールは MarsDawn のプレビューと同じ見た目で、図もそのまま描きます。
+
+## エージェントに頼む
+
+```
+https://marsdawn.southern-light.dev/ja/templates/spec/spec.md のテンプレートを使って、［機能］の仕様を spec.md に書いてください。要件にはすべて ID を付け、フローと受け入れ基準でも同じ ID を使ってください。書き終えたら marsdawn open spec.md を実行してください。
+```
+
+## PDF で共有する
+
+`marsdawn export spec.md` を実行すると、隣に spec.pdf ができます。Markdown を読まない人に渡せます。
+
+## できないこと
+
+MarsDawn は仕様、表、図を表示します。受け入れ基準がすべての要件を網羅しているかは確かめません。それはエージェントの仕事で、あなたが読んで確かめることです。
+
+## よくある質問
+
+### フロー図のために何かインストールが必要ですか？
+
+いいえ。MarsDawn と `marsdawn export` は Mermaid を自分で描きます。オフラインでも描けます。
+
+### MarsDawn で仕様を編集できますか？
+
+はい。ソースの隣にプレビューがある Markdown エディタです。エージェントは次にファイルを読むときに、あなたの編集を目にします。
+
+## ほかのテンプレート
+
+- [フローチャート](/ja/templates/flowchart/)：Mermaid の図と、その下に書き出した各ステップ。
+- [議事録](/ja/templates/meeting-notes/)：決定事項とアクションアイテム。それぞれに担当者。
+- [Markdown テンプレート](/ja/templates/)
+
+---
+
+## フローチャートテンプレート
+
+Source: https://marsdawn.southern-light.dev/ja/templates/flowchart/
+
+# Markdown フローチャートテンプレート
+
+Mermaid のフローチャートと、その下に書き出した各ステップ。図と文章を突き合わせて確かめられます。ステップをひとつ外したら、残りの修正をエージェントに頼みます。
+
+## テンプレート
+
+[flowchart.md をダウンロード](/ja/templates/flowchart/flowchart.md)
+
+````
+# フロー名
+
+_一文で：何が入り、何が出るか。_
+
+## 図
+
+```mermaid
+flowchart LR
+  A[最初のステップ] --> B[次のステップ]
+  B --> C[三つ目のステップ]
+  C --> D[完了]
+```
+
+## ステップ
+
+1. **最初のステップ**：_誰がやり、次に何を渡すか。_
+2. **次のステップ**：_……_
+3. **三つ目のステップ**：_……_
+4. **完了**：_ここでの「完了」の意味。_
+````
+
+## 見た目
+
+![flowchart.md を marsdawn export で書き出した PDF の 1 ページ目。](/assets/templates/flowchart-ja.png)
+
+`marsdawn export flowchart.md` で書き出したもの。無料のコマンドラインツールは MarsDawn のプレビューと同じ見た目で、図もそのまま描きます。
+
+## エージェントに頼む
+
+```
+https://marsdawn.southern-light.dev/ja/templates/flowchart/flowchart.md のテンプレートを使って、［プロセス］のフローを flowchart.md に描いてください。ノードごとに番号付きのステップをひとつ、同じ順番で書いてください。書き終えたら marsdawn open flowchart.md を実行してください。
+```
+
+## PDF で共有する
+
+`marsdawn export flowchart.md`：図は PDF に描き込まれます。
+
+## できないこと
+
+MarsDawn は Mermaid に書かれたとおりに図を描きます。手でレイアウトすることはできず、番号付きのステップとノードをそろえることもしません。Mermaid に誤りがあると、プレビューには図の代わりにエラーが表示されます。
+
+## よくある質問
+
+### どの図が使えますか？
+
+Mermaid で描けるものなら何でも。フローチャート、シーケンス図、状態遷移図などです。
+
+### なぜステップも書き出すのですか？
+
+ざっと見る人は図を見て、確かめる人は文章を読みます。エージェントに両方をそろえてもらえます。
+
+## ほかのテンプレート
+
+- [仕様書（PRD）](/ja/templates/spec/)：課題、目標、要件、フロー図、受け入れ基準。
+- [議事録](/ja/templates/meeting-notes/)：決定事項とアクションアイテム。それぞれに担当者。
+- [Markdown テンプレート](/ja/templates/)
+
+---
+
+## 議事録テンプレート
+
+Source: https://marsdawn.southern-light.dev/ja/templates/meeting-notes/
+
+# Markdown 議事録テンプレート
+
+まず決定事項、次にアクションアイテム。それぞれに担当者を付けます。文字起こしからエージェントに議事録を書かせ、送る前に読んでください。決定が変わったら、アクションアイテムを合わせるようエージェントに頼みます。
+
+## テンプレート
+
+[meeting-notes.md をダウンロード](/ja/templates/meeting-notes/meeting-notes.md)
+
+```
+# 会議名、日付
+
+出席者：_名前_
+
+## 決定事項
+
+- _決まったことを一行ずつ。_
+
+## アクションアイテム
+
+- [ ] 名前：_何を、いつまでに。_
+- [ ] 名前：_何を、いつまでに。_
+
+## メモ
+
+- _決定でもアクションでもないが、残しておくこと。_
+```
+
+## 見た目
+
+![meeting-notes.md を marsdawn export で書き出した PDF の 1 ページ目。](/assets/templates/meeting-notes-ja.png)
+
+`marsdawn export meeting-notes.md` で書き出したもの。無料のコマンドラインツールは MarsDawn のプレビューと同じ見た目です。
+
+## エージェントに頼む
+
+```
+https://marsdawn.southern-light.dev/ja/templates/meeting-notes/meeting-notes.md のテンプレートを使って、この会議を meeting-notes.md にまとめてください。決定事項を先に、一行ずつ。アクションアイテムにはそれぞれ担当者と期日をひとつ付けてください。書き終えたら marsdawn open meeting-notes.md を実行してください。
+```
+
+## PDF で共有する
+
+`marsdawn export meeting-notes.md` で PDF ができます。会議後のメールに添付できます。
+
+## できないこと
+
+MarsDawn は会議を録音も文字起こしもせず、アクションアイテムの管理もしません。読む人が目にするとおりに議事録を表示します。
+
+## よくある質問
+
+### チェックボックスは使えますか？
+
+プレビューでも PDF でもチェックボックスとして表示されます。チェックを入れるには、ソースの `[ ]` を `[x]` に変えます。
+
+### 議事録とアクションアイテムをエージェントにそろえてもらえますか？
+
+はい。それがこのループの目的です。どちらかを変えて、残りの更新を頼みます。MarsDawn で結果を確かめられます。
+
+## ほかのテンプレート
+
+- [仕様書（PRD）](/ja/templates/spec/)：課題、目標、要件、フロー図、受け入れ基準。
+- [フローチャート](/ja/templates/flowchart/)：Mermaid の図と、その下に書き出した各ステップ。
+- [Markdown テンプレート](/ja/templates/)

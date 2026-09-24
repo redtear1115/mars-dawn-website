@@ -172,7 +172,8 @@ def scene_html(scene: dict, locale: str) -> str:
     command = f"marsdawn open {scene['file']}"
     cmd_cls = "loop-cmd a" if len(command) == 28 else f"loop-cmd loop-cmd-{len(command)} a"
     ptr_cls = "loop-ptr a" if active == 2 else f"loop-ptr loop-ptr-r{active} a"
-    return f"""<div class="loop-anim{LANG_CLASS[locale]}">
+    long_cls = " loop-long" if scene.get("long") else ""
+    return f"""<div class="loop-anim{LANG_CLASS[locale]}{long_cls}">
 <div class="loop-frame" role="img" aria-label="{_esc(scene["alt"])}">
 <div class="loop-stage" aria-hidden="true">
 <div class="loop-win a">
@@ -432,6 +433,10 @@ def _scene_css() -> str:
 .loop-d-c { animation-name: loop-a-glow; }
 .loop-code { color: #2F6F5E; }
 
+/* A scene with a longer document: the terminal stops short of the source pane (the window's
+   sidebar ends at 630u), so no line of source is hidden behind it. */
+.loop-long .loop-term { width: 575u; }
+
 /* A line, block or list item that goes away. */
 .loop-rl { overflow: hidden; }
 .loop-src .loop-rl { display: block; }
@@ -462,10 +467,11 @@ def _scene_css() -> str:
 
 /* A flow diagram, as the preview draws a Mermaid flowchart; a step can go away. */
 .loop-flow { display: flex; align-items: center; margin: 12u 0 20u; }
-.loop-node { display: inline-flex; align-items: center; height: 44u; padding: 0 14u; border-radius: 7u;
-  background: #FFF7F4; border: 1.5u solid #E39A86; font-size: 17u; font-weight: 650; white-space: nowrap; }
+.loop-flow > * { flex-shrink: 0; }
+.loop-node { display: inline-flex; align-items: center; height: 40u; padding: 0 9u; border-radius: 7u;
+  background: #FFF7F4; border: 1.5u solid #E39A86; font-size: 14u; font-weight: 650; white-space: nowrap; }
 .loop-fseg { display: inline-flex; align-items: center; overflow: hidden; white-space: nowrap; max-width: 30em; }
-.loop-arrow { padding: 0 8u; color: #C8471B; font-size: 18u; }
+.loop-arrow { padding: 0 5u; color: #C8471B; font-size: 15u; }
 .loop-pre .loop-rn.loop-r-u { animation-name: loop-pu-rn; }
 .loop-rn.loop-r-a, .loop-rn.loop-r-b, .loop-rn.loop-r-c { animation-name: loop-a-rn; }
 @keyframes loop-pu-rn {

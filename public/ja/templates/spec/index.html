@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markdown 仕様書（PRD）テンプレート · MarsDawn</title>
+<meta name="description" content="要件、Mermaid のフロー図、受け入れ基準を含む Markdown の仕様書テンプレート。エージェントが埋め、あなたが MarsDawn で確認します。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/loop.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/spec/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/spec/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/spec/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/spec/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/spec/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/templates/spec/">
+<link rel="alternate" type="text/markdown" href="/ja/templates/spec/index.md">
+<meta property="og:title" content="Markdown 仕様書（PRD）テンプレート · MarsDawn">
+<meta property="og:description" content="要件、Mermaid のフロー図、受け入れ基準を含む Markdown の仕様書テンプレート。エージェントが埋め、あなたが MarsDawn で確認します。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/templates/spec/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
+  <nav class="lang" aria-label="Language"><a href="/templates/spec/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/templates/spec/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/templates/spec/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/templates/spec/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Markdown 仕様書（PRD）テンプレート</h1>
+  <p>エージェントが埋められて、あなたが一度で読み通せる仕様書。課題、目標、要件、フロー図、受け入れ基準。要件をひとつ変えたら、残りを合わせるようエージェントに頼みます。</p>
+</section>
+
+<div class="loop-anim loop-ja loop-long">
+<div class="loop-frame" role="img" aria-label="ターミナルが MarsDawn で spec.md を開く。読み手が要件 R3 を消し、エージェントがフロー図のステップと受け入れ基準から R3 を取り除く。">
+<div class="loop-stage" aria-hidden="true">
+<div class="loop-win a">
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">spec.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-body">
+<div class="loop-side"><div class="loop-tabs"><span class="on">アウトライン</span><span>ファイル</span></div><div class="loop-rows"><div class="loop-h1row">仕様：コードでサインイン</div><div class="loop-sub loop-row-u a">要件</div><div class="loop-sub">フロー</div><div class="loop-sub">受け入れ</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> 仕様：コードでサインイン</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> 要件</span>
+<span class="loop-mk">-</span> R1：6桁のコードをメールで送る。
+<span class="loop-mk">-</span> R2：コードは10分で失効。
+<span class="loop-rl loop-r-u a"><span class="loop-mk">-</span> R3：二要素目を求める。</span>
+<span class="loop-h"><span class="loop-mk">##</span> フロー</span>
+<span class="loop-code">```mermaid</span>
+<span class="loop-code">flowchart LR</span>
+<span class="loop-code">  A[Email] --&gt; B[コード]</span>
+<span class="loop-rl loop-r-a a"><span class="loop-code">  B --&gt; C[二要素目]</span></span><span class="loop-code">  <span class="loop-day loop-d-b a"><span class="loop-old a">C</span><span class="loop-new loop-n1 a">B</span></span> --&gt; D[サインイン完了]</span>
+<span class="loop-code">```</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> 受け入れ</span>
+<span class="loop-mk">- [ ]</span> R1：1分以内にコードが届く。
+<span class="loop-rl loop-r-c a"><span class="loop-mk">- [ ]</span> R3：端末ごとに一度だけ。</span></div>
+<div class="loop-pre"><h3>仕様：コードでサインイン</h3><h4>要件</h4><ul><li>R1：6桁のコードをメールで送る。</li><li>R2：コードは10分で失効。</li><li class="loop-rl loop-r-u a">R3：二要素目を求める。</li></ul><h4>フロー</h4><div class="loop-flow"><span class="loop-node">Email</span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">コード</span></span><span class="loop-fseg loop-rn loop-r-a a"><span class="loop-arrow">→</span><span class="loop-node">二要素目</span></span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">サインイン完了</span></span></div><h4>受け入れ</h4><ul><li class="loop-task">R1：1分以内にコードが届く。</li><li class="loop-task loop-rl loop-r-c a">R3：端末ごとに一度だけ。</li></ul></div>
+</div>
+</div>
+<div class="loop-term a">
+<div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
+<div class="loop-tbody">
+<div><span class="loop-p">›</span> <span class="loop-cmd loop-cmd-21 a">marsdawn open spec.md</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> R3 を外した。フローと受け入れ基準を合わせて。</div>
+<div class="loop-l3 a">完了。フローは二要素目を飛ばし、R3 の確認も消した。</div>
+</div>
+</div>
+<svg class="loop-ptr loop-ptr-r1 a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="アニメーションを一時停止"><span aria-hidden="true">一時停止</span></label>
+</div>
+
+<h2 id="the-template">テンプレート</h2>
+<p><a href="/ja/templates/spec/spec.md" download>spec.md をダウンロード</a></p>
+<pre><code># 仕様：機能名
+
+ステータス：下書き · 担当：名前 · 更新：日付
+
+## 課題
+
+_いま何が問題で、誰が困っていて、なぜそうとわかるか。_
+
+## 目標
+
+- _リリース後に成り立っていること。_
+
+## やらないこと
+
+- _今回あえてやらないこと。_
+
+## 要件
+
+| ID | 要件 | 優先度 |
+|----|------|--------|
+| R1 | _要件_ | 必須 |
+| R2 | _要件_ | 推奨 |
+
+## フロー
+
+```mermaid
+flowchart LR
+  A[開始] --&gt; B[ステップ] --&gt; C[結果]
+```
+
+## 受け入れ基準
+
+- [ ] R1：_どう確かめるか。_
+- [ ] R2：_どう確かめるか。_
+
+## 未決事項
+
+- _問い。_
+</code></pre>
+
+<h2 id="how-it-looks">見た目</h2>
+<p class="tpl-shot"><img src="/assets/templates/spec-ja.png" width="1000" height="1415" loading="lazy" alt="spec.md を marsdawn export で書き出した PDF の 1 ページ目。"></p>
+<p><code>marsdawn export spec.md</code> で書き出したもの。無料のコマンドラインツールは MarsDawn のプレビューと同じ見た目で、図もそのまま描きます。</p>
+
+<h2 id="ask-your-agent">エージェントに頼む</h2>
+<pre class="tpl-prompt"><code>https://marsdawn.southern-light.dev/ja/templates/spec/spec.md のテンプレートを使って、［機能］の仕様を spec.md に書いてください。要件にはすべて ID を付け、フローと受け入れ基準でも同じ ID を使ってください。書き終えたら marsdawn open spec.md を実行してください。</code></pre>
+
+<h2 id="share-it-as-a-pdf">PDF で共有する</h2>
+<p><code>marsdawn export spec.md</code> を実行すると、隣に spec.pdf ができます。Markdown を読まない人に渡せます。</p>
+
+<h2 id="what-it-doesn-t-do">できないこと</h2>
+<p>MarsDawn は仕様、表、図を表示します。受け入れ基準がすべての要件を網羅しているかは確かめません。それはエージェントの仕事で、あなたが読んで確かめることです。</p>
+
+<h2 id="questions">よくある質問</h2>
+<h3>フロー図のために何かインストールが必要ですか？</h3>
+<p>いいえ。MarsDawn と <code>marsdawn export</code> は Mermaid を自分で描きます。オフラインでも描けます。</p>
+<h3>MarsDawn で仕様を編集できますか？</h3>
+<p>はい。ソースの隣にプレビューがある Markdown エディタです。エージェントは次にファイルを読むときに、あなたの編集を目にします。</p>
+
+<h2 id="more-templates">ほかのテンプレート</h2>
+<ul>
+  <li><a href="/ja/templates/flowchart/">フローチャート</a>：Mermaid の図と、その下に書き出した各ステップ。</li>
+  <li><a href="/ja/templates/meeting-notes/">議事録</a>：決定事項とアクションアイテム。それぞれに担当者。</li>
+  <li><a href="/ja/templates/">Markdown テンプレート</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
