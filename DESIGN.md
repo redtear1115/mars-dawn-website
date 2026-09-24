@@ -92,6 +92,9 @@ spacing:
   xxl: "64px"
   page-end: "96px"
   column: "44rem"
+  text: "44rem"
+  media: "min(60rem, 100vw - 32px)"
+  bleed: "100vw"
   measure: "34rem"
   code-block: "14px 16px"
 components:
@@ -167,7 +170,7 @@ The CSS custom properties in `site.css` use short names. This is how they map to
 
 The parent describes a native Mac window with the first light of a Martian morning inside the document: stock chrome, all the warmth in the content. The website takes the same idea one step further out. The page is the document: warm Dawn paper, brown-black ink and a single ember of Mars Rust. The sunrise, which the app only hints at in its icon, is shown at full scale exactly twice: as the full-bleed scene that opens the home page and as the band of light that closes it. Everything between them reads like a Dawn-themed Markdown page.
 
-The mood is cinematic, restrained and honest. The hero is staged like a film's opening shot: a graded sky, a planet's dark mass, a limb of light. It plays once and then holds still. The rest of the site is quiet. It has one text column, hairline rules instead of cards, real app screenshots instead of illustrations, and system fonts, so the site feels like the app and not a web template. Because the site says what the app doesn't do, it also hides nothing about itself: no scripts, no tracking, and nothing that pretends to be interactive when it isn't.
+The mood is cinematic, restrained and honest. The hero is staged like a film's opening shot: a graded sky, a planet's dark mass, a limb of light. It plays once and then holds still. The rest of the site is quiet. It has one text column, hairline rules instead of cards, real app screenshots instead of illustrations, and system fonts, so the site feels like the app and not a web template. Because the site says what the app doesn't do, it also hides nothing about itself: the design needs no script, analytics wait for the visitor's consent and the privacy page says so, and nothing pretends to be interactive when it isn't.
 
 Light and dark mode are designed as two separate palettes, as in the parent. The page tokens swap. The dawn scene stays dark at the top in both modes, because the scene is always night turning into dawn.
 
@@ -176,7 +179,7 @@ Light and dark mode are designed as two separate palettes, as in the parent. The
 - One authored motion moment per surface. It runs once, never loops and is optional. The loop animation under the home page's loop steps is the one exception (see Loop Animation).
 - Full-bleed dawn at the opening and close of the home page. Dawn-paper reading everywhere else.
 - Hairline rules and sand plates carry the structure. There are no cards and no shadows on interface elements.
-- System fonts only, and a strict CSP: no web fonts, scripts or inline styles.
+- System fonts only, and a strict CSP: no web fonts or inline styles, and no script in the design itself. The only scripts are the consent banner and consented analytics.
 
 ## Colors
 
@@ -233,11 +236,19 @@ The Dawn palette, inherited whole, plus a scene palette that exists only on the 
 
 The site is a single reading column: `max-width: 44rem`, centered, with a 16px side gutter and 96px of space at the end of the page. Ledes and the closing band's paragraph narrow to a 34rem measure. The vertical rhythm is set by section breaks: 48px above each `h2`, 36px around blocks such as the summary, contact and screenshot, and 64px before the footer and the trait list.
 
-Only a few elements break out of the column:
-- **The dawn scene and the closing band** go full-bleed (`100vw`, centered with a translate), and `html { overflow-x: hidden }` absorbs rounding from classic scrollbars.
-- **Screenshots** grow wider than the column, up to `min(76rem, 100vw - 48px)`. At 1100px and wider, they reserve a 12rem gutter on each side for callout labels.
+Widths come in exactly three tiers, one per kind of content, as tokens on `:root` in `site.css`. Every block on every page takes one of them, and all of them share one centre axis:
 
-Responsive behavior is planned, not just squeezed. Below 480px the masthead wraps the brand onto its own line. Below 720px the three-step loop stacks. At 1100px the annotated screenshots change from numbered markers with a list below to leader lines with labels in the gutter.
+| Tier | Token | Value | What takes it |
+|---|---|---|---|
+| Text | `--w-text` | `44rem` (a 42rem measure inside the 16px gutter) | Prose, the loop steps, the install block, the trait list, masthead and footer |
+| Media | `--w-media` | `min(60rem, 100vw - 32px)` | Every picture of the app: the hero window, the loop animation's plate, each screenshot's sand plate |
+| Bleed | `--w-bleed` | `100vw` | The dawn scene and the closing band |
+
+A new block picks a tier by what it is, never a width of its own. Media never goes narrower than the text column, and the media edges line up with each other at every width, because they all subtract the same 32px. The dawn scene and the closing band are centred with a translate, and `html { overflow-x: hidden }` absorbs the rounding from classic scrollbars. Ledes and the closing band's paragraph narrow to the 34rem measure inside their tier; that is a measure, not a fourth tier.
+
+Screenshot callouts sit *outside* the media plate, in a 12rem gutter on each side, so the figure is 84rem wide in that mode. Leader lines appear only from 1392px (60rem + 24rem of gutters + room for a classic scrollbar). Narrower, the plate keeps its full media width and the markers are numbered, with the list below. The plate never shrinks to make room for labels.
+
+Responsive behavior is planned, not just squeezed. Below 480px the masthead wraps the brand onto its own line. Below 720px the three-step loop stacks. At 1392px the annotated screenshots change from numbered markers with a list below to leader lines with labels in the gutter.
 
 ## Elevation & Depth
 
@@ -256,7 +267,7 @@ The interface is flat and tonal, as in the parent. Depth comes from one tonal st
 
 ## Shapes
 
-The site uses Dawn's gentle rounding and scales it by object: 4px for inline code and `kbd`, 6px for a printed page, 8px (Dawn's radius) for the summary, contact and code blocks, 10px for a screenshot inside its plate, 16px for the plate itself and the hero screenshot, and a full pill for the store chip and markers. Borders are always 1px hairlines. The only exception is `kbd`, which has a 2px bottom border so it reads as a physical key. Recurring shapes are the circle (callout markers, loop dots, numbered list badges) and the horizontal rule (masthead, loop steps, trait list, footer).
+The site uses Dawn's gentle rounding and scales it by object: 4px for inline code and `kbd`, 6px for a printed page, 8px (Dawn's radius) for the summary, contact and code blocks, 10px for a screenshot inside its plate, 14px for a depicted macOS window (the hero window, the loop's window; the hero window steps down to 12px on phones, where it is drawn smaller), 16px (`--r-plate`) for every sand plate (screenshots and the loop animation), and a full pill for the store chip and markers. Borders are always 1px hairlines. The only exception is `kbd`, which has a 2px bottom border so it reads as a physical key. Recurring shapes are the circle (callout markers, loop dots, numbered list badges) and the horizontal rule (masthead, loop steps, trait list, footer).
 
 ## Components
 
@@ -269,6 +280,9 @@ A quiet status pill: a hairline border, Dust text in the caption size and no fil
 ### Summary Block
 The one-line answer people came for, on a sand plate with Dawn's 8px radius and no border, in slightly larger text (1.05rem).
 
+### Install Block (the one card)
+The home page's CLI install is a sand plate at the text width, with Dawn's 8px radius, a heading, the command on paper, and a row of links. It is the only block on the site that works like a card, and it is allowed because it is the one thing a visitor can do today. Nothing else gets this treatment. The closing band ends with a plain link back to it, in the hero palette.
+
 ### Contact Block
 A hairline-bordered box with an 8px radius on the support pages. The email address is shown larger, at `clamp(1.05rem, 5.5vw, 1.25rem)`, so it fits on one line on the narrowest phones.
 
@@ -279,13 +293,13 @@ These use the same treatment as the app's Dawn preview: sand background and SF M
 The masthead has the app icon (40px) and the name set in 650 weight on the left, with the store chip and the language switch on the right, over a hairline underline. The current language is shown in Ink at 600 weight with `aria-current`. Every tap target is at least 24px tall. The footer is a wrapping row of Dust links under a hairline rule.
 
 ### Annotated Screenshot (site signature)
-A real app screenshot sits on a sand plate that is wider than the text column. Mars Rust markers are pinned to points on the app. At 1100px and wider, thin 1px Mars Rust leader lines run from each marker to a label in the side gutter, and the caption list stays available for screen readers only. Below that width, the markers are numbered and the labels become a numbered list with matching badges. Marker positions are generated into `annotations.css` so no inline style is needed. As the page settles, each marker sends out a single ring.
+A real app screenshot sits on a sand plate at the media width. Mars Rust markers are pinned to points on the app. At 1392px and wider, thin 1px Mars Rust leader lines run from each marker to a label in the side gutter, and the caption list stays available for screen readers only. Below that width, the markers are numbered and the labels become a numbered list with matching badges. Marker positions are generated into `annotations.css` so no inline style is needed. Below 1392px the numbered list sits on the text tier under the plate, because it is prose. A screenshot follows the Mac's appearance once a Dark Mode capture of the same window, document and crop is saved beside it as `<image>-dark-<width>.png` at both widths; `build_pages.py` then wraps it in a `<picture>`. Until then it stays light, which is why the dark-mode page still shows light screenshots. As the page settles, each marker sends out a single ring.
 
 ### The Loop (site signature)
 The home page presents the agent loop as three stops along one horizon line, not as three cards. Each step has a hairline top rule with a small Dust dot. The middle step, where the person reads, is lit: its rule is tinted with Mars Rust and its dot is Mars Rust with a soft halo.
 
 ### Loop Animation (site exception)
-Under the three steps, a 10-second drawing plays the loop, at the owner's request (2026-09-24): a terminal types `marsdawn open launch-note.md`, a MarsDawn window opens beside it, the reader clicks one outline row and changes the launch day, the agent changes the other two sections to match, and the window folds back into the terminal. The last frame is the first, so it loops without a jump. It breaks two rules on purpose: it loops, and it is a drawing rather than a screenshot. Everything else holds. It is HTML and CSS from `scripts/loop_anim.py` (generated into `loop.css`), with no script and no inline style. Its lengths are in a container-query unit, so it scales without measuring. Every word is page text in the visitor's language; the sidebar's tab names are the app's own strings, and the command and file name stay English as in the app. A pause control (a checkbox read with `:has()`) sits under the frame, as WCAG 2.2.2 asks of motion longer than five seconds. With `prefers-reduced-motion` the drawing holds on the edited note and the control is hidden. The window and terminal keep their own colours in both schemes, like the screenshots; the plate behind them is `--sand`.
+Under the three steps, a 10-second drawing plays the loop, at the owner's request (2026-09-24): a terminal types `marsdawn open launch-note.md`, a MarsDawn window opens beside it, the reader clicks one outline row and changes the launch day, the agent changes the other two sections to match, and the window folds back into the terminal. The last frame is the first, so it loops without a jump. It breaks two rules on purpose: it loops, and it is a drawing rather than a screenshot. Everything else holds. It is HTML and CSS from `scripts/loop_anim.py` (generated into `loop.css`), with no script and no inline style. Its lengths are in a container-query unit, so it scales without measuring. Every word is page text in the visitor's language; the sidebar's tab names are the app's own strings, and the command and file name stay English as in the app. A pause control (a checkbox read with `:has()`) sits under the frame, as WCAG 2.2.2 asks of motion longer than five seconds. With `prefers-reduced-motion` the drawing holds on the edited note and the control is hidden. It takes the media width, the same edges as the hero window, on a `--sand` plate with the plate radius. The window follows the Mac's appearance, as the hero window does: the Dawn theme's light palette, or its night one (owner, 2026-09-25). The terminal is dark in both. The loop starts with the window already open (`--t: 2.4s`), so the frame never scrolls into view empty. Below 560px the whole stage would set its text at about 4px, so the frame crops to the source and preview panes at a larger scale, with the terminal docked along their foot; the outline pane and the pointer fall outside the crop, and the story (edit one day, the agent fixes the rest) still reads. The pause control sits under the frame's right edge, which is the media tier's edge. Its Mars Rust tab and selected row depict the app's own accent, so the Ember Rule's limit on fills doesn't apply inside the drawing, as it doesn't inside a screenshot.
 
 ### Trait List
 Links to the other pages, set as a ruled list: a 600-weight link and a Dust description on one baseline, separated by hairlines. It uses no cards and no icons.
@@ -311,7 +325,8 @@ The hero is an inline SVG: a graded sky, a horizon glow, the planet's mass with 
 
 ### Don't:
 - **Don't** use cards, drop shadows or hover lifts on interface elements. Structure comes from hairlines and sand plates.
-- **Don't** add web fonts, scripts, inline styles or third-party resources. The CSP in `public/_headers` forbids them.
+- **Don't** add web fonts, scripts, inline styles or third-party resources beyond the consent banner and Google Tag Manager. The CSP in `public/_headers` forbids them.
+- **Don't** give a block a width of its own. Pick the text, media or bleed tier.
 - **Don't** add a second accent hue, or use Mars Rust as a large fill.
 - **Don't** use pure white or black outside Print Paper, or cool greys anywhere.
 - **Don't** loop, repeat or scroll-trigger animation, apart from the loop animation (owner, 2026-09-24). The dawn happens once.
