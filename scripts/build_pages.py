@@ -2301,6 +2301,7 @@ sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untrac
 import copy_ja  # noqa: E402
 import copy_zh_hans  # noqa: E402
 import hero_window  # noqa: E402
+import loop_anim  # noqa: E402
 
 EXTRA_PAGES = {}
 
@@ -3177,7 +3178,8 @@ def render(locale: str, slug: str, page: dict) -> str:
                       if not is_trait_page and slug != "index" else "")
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
     if slug == "index":
-        extra_css = '<link rel="stylesheet" href="/assets/hero.css">\n<link rel="stylesheet" href="/assets/annotations.css">\n'
+        extra_css = ('<link rel="stylesheet" href="/assets/hero.css">\n<link rel="stylesheet" href="/assets/annotations.css">\n'
+                     '<link rel="stylesheet" href="/assets/loop.css">\n')
     chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
     if slug == "index":
         hero_html = (
@@ -3195,7 +3197,8 @@ def render(locale: str, slug: str, page: dict) -> str:
             "</section>"
         )
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
-        main_html = "\n".join([hero_html, page["body"].strip(), home_sections_html(locale), proof_html, closing_html])
+        main_html = "\n".join([hero_html, page["body"].strip(), loop_anim.loop_html(locale),
+                               home_sections_html(locale), proof_html, closing_html])
     elif has_intro:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
@@ -3602,6 +3605,7 @@ def main() -> None:
     print(SITE / "llms-full.txt")
     (SITE / "assets" / "annotations.css").write_text(annotations_css(), encoding="utf-8")
     (SITE / "assets" / "hero.css").write_text(hero_window.window_css(), encoding="utf-8")
+    (SITE / "assets" / "loop.css").write_text(loop_anim.loop_css(), encoding="utf-8")
     print(SITE / "assets" / "annotations.css")
     (SITE / "robots.txt").write_text(ROBOTS_TXT, encoding="utf-8")
     print(SITE / "robots.txt")
