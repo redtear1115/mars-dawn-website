@@ -1,0 +1,318 @@
+<!doctype html>
+<!--
+  Three plates for the homepage loop "Read what your agent wrote."
+  Rendered by render_plates.py. zh-Hant strings are what this file draws.
+  Swap these and re-render for another locale. Do not leave them out of date.
+
+  en
+    README body: Read this first.
+    README heading 2: Next
+    notes heading / body: Notes / To read.
+    spec back heading / body: Spec / A flowchart and code.
+    spec title and heading: SPEC.md / Spec
+    diagram: Write, Read, Revise
+    note: Shorter.
+
+  zh-Hans
+    README 正文：先读这份。
+    README 二级标题：下一步
+    笔记：笔记 / 待读。
+    规格背面：规格 / 流程图和代码。
+    规格标题：SPEC.md / 规格
+    流程图：动笔、阅读、修改
+    纸条：短一点。
+
+  ja
+    README 本文：まずこれを読む。
+    README 見出し 2：次
+    メモ：メモ / 未読。
+    仕様の裏：仕様 / 図とコード。
+    仕様の見出し：SPEC.md / 仕様
+    図：書く、読む、直す
+    メモ：短く。
+-->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>MarsDawn loop plates</title>
+<style>
+  :root { --p: 1; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #F6F0EC; color: #26211F; }
+  body { width: 1600px; height: 900px; overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang TC", "PingFang SC", sans-serif;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  .scene { display: none; position: relative; width: 1600px; height: 900px; background: #F6F0EC; }
+  body[data-scene="1"] .scene-1,
+  body[data-scene="2"] .scene-2,
+  body[data-scene="3"] .scene-3 { display: block; }
+
+  .reveal {
+    --at: 0;
+    --dur: 0.08;
+    opacity: clamp(0, (var(--p) - var(--at)) / var(--dur), 1);
+    transform: translateY(calc((1 - clamp(0, (var(--p) - var(--at)) / var(--dur), 1)) * 10px));
+  }
+
+  /* Scene 1. Three files. The front one is being written. */
+  .sheet {
+    position: absolute;
+    background: #FFFDFB;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 22px 40px -26px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+  }
+  .sheet.notes {
+    left: 72px; top: 168px; width: 440px; height: 540px; z-index: 1;
+    opacity: min(1, var(--p) / 0.14);
+    transform: rotate(-6.5deg) translateY(calc((1 - min(1, var(--p) / 0.14)) * 22px));
+  }
+  .sheet.spec {
+    left: 1136px; top: 180px; width: 400px; height: 520px; z-index: 1;
+    opacity: min(1, max(0, (var(--p) - 0.04) / 0.14), 1);
+    transform: rotate(6deg) translateY(calc((1 - min(1, max(0, (var(--p) - 0.04) / 0.14))) * 22px));
+  }
+  .sheet.front {
+    left: 575px; top: 112px; width: 500px; height: 660px; z-index: 2;
+    opacity: min(1, max(0, (var(--p) - 0.1) / 0.12));
+  }
+  .sheet-bar {
+    height: 58px; padding: 0 28px; display: flex; align-items: center;
+    background: #F6F0EC; border-bottom: 1px solid #EADFD8;
+    font: 20px/1 ui-monospace, "SF Mono", Menlo, monospace; color: #6F6660;
+  }
+  .sheet-body { padding: 36px 40px 0; font-size: 32px; line-height: 1.55; }
+  .sheet-body p { margin: 0; }
+  .sheet .hed { font-weight: 650; letter-spacing: -0.01em; }
+  .sheet .sub { font-weight: 650; font-size: 28px; }
+  .sheet .cmd { font: 26px/1.5 ui-monospace, "SF Mono", Menlo, monospace; }
+  .sheet .gap { height: 22px; }
+  .fn { color: #5B3E8C; }
+  .str { color: #2F6F5E; }
+  .fence, .lang { color: #2F6F5E; }
+  .tick { color: #8A817B; }
+  .line {
+    margin: 0;
+    opacity: clamp(0, (var(--p) - var(--at)) / 0.06, 1);
+  }
+  .caret {
+    display: inline-block; width: 2px; height: 0.86em; margin-left: 3px;
+    background: #C8471B; vertical-align: -0.08em;
+    opacity: calc(
+      clamp(0, (var(--p) - var(--at)) / 0.03, 1) *
+      clamp(0, (var(--until) - var(--p)) / 0.03, 1)
+    );
+  }
+  .line.last .caret {
+    opacity: max(
+      calc(clamp(0, (var(--p) - var(--at)) / 0.03, 1) * clamp(0, (var(--until) - var(--p)) / 0.03, 1)),
+      clamp(0, (var(--p) - 0.72) / 0.05, 1)
+    );
+  }
+
+  /* Scenes 2 and 3. The window uses the hero's measured chrome and the Dawn palette. */
+  .win {
+    position: absolute; border-radius: 14px; overflow: hidden; background: #FFFDFB;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 28px 44px -24px rgba(0, 0, 0, 0.45);
+  }
+  .scene-2 .win { left: 50px; top: 40px; width: 1500px; height: 820px;
+    opacity: min(1, var(--p) / 0.12);
+    transform: translateY(calc((1 - min(1, var(--p) / 0.12)) * 14px));
+  }
+  .scene-3 .win { left: 390px; top: 50px; width: 1160px; height: 800px; }
+  .bar {
+    position: relative; height: 64px; display: flex; align-items: center;
+    padding: 0 14px 0 20px; background: #fff; border-bottom: 1px solid #E6E6E6;
+  }
+  .lights { display: flex; gap: 8px; }
+  .lights i { width: 14px; height: 14px; border-radius: 50%; display: block;
+    box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.12); }
+  .lights i:nth-child(1) { background: #FA5C5F; }
+  .lights i:nth-child(2) { background: #FAC800; }
+  .lights i:nth-child(3) { background: #34C758; }
+  .title {
+    position: absolute; left: 0; right: 0; text-align: center;
+    font-weight: 650; font-size: 20px; letter-spacing: -0.01em; color: #26211F;
+  }
+  .tools { margin-left: auto; display: flex; align-items: center; gap: 8px; position: relative; z-index: 1; }
+  .pill {
+    display: flex; align-items: center; height: 40px; padding: 0 6px; border-radius: 20px;
+    background: #fff; box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.06);
+    color: #575757;
+  }
+  .pill svg { display: block; }
+  .seg { width: 46px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 16px; }
+  .seg.on { background: #E6E6E6; color: #4D4D4D; }
+  .panes { display: grid; grid-template-columns: 1fr 1fr; height: calc(100% - 64px); }
+  .source {
+    margin: 0; padding: 32px 36px; border-right: 1px solid #E9E9E9;
+    background: #FFFDFB; color: #26211F;
+    font: 22px/1.55 ui-monospace, "SF Mono", Menlo, monospace;
+    white-space: pre-wrap;
+  }
+  .scene-3 .source { font-size: 20px; padding: 28px 32px; }
+  .source .hed { color: #26211F; font-weight: 650; }
+  .preview { padding: 36px 44px; background: #FFFDFB; }
+  .scene-3 .preview { padding: 32px 40px; }
+  .doc-h {
+    margin: 0 0 28px; padding-bottom: 12px; border-bottom: 1px solid #EADFD8;
+    font-size: 48px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.2; color: #26211F;
+  }
+  .scene-3 .doc-h { font-size: 42px; }
+  .flow { display: flex; align-items: center; gap: 16px; min-height: 64px; }
+  .node {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 64px; padding: 0 22px; border-radius: 8px;
+    background: #FFF7F4; border: 1.5px solid #E39A86;
+    font-size: 28px; font-weight: 650; letter-spacing: 0.01em; color: #26211F;
+    white-space: nowrap; flex: none;
+  }
+  .scene-3 .node { height: 58px; font-size: 26px; }
+  .arrow { display: block; flex: none; }
+  .code {
+    margin-top: 36px; padding: 18px 22px; border-radius: 8px; background: #F6F0EC;
+    box-shadow: inset 0 0 0 1px #EADFD8;
+    font: 26px/1.4 ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  .scene-3 .code { font-size: 22px; margin-top: 32px; }
+  .leave-slot {
+    display: flex; align-items: center; gap: 16px; overflow: hidden;
+    max-width: calc(320px * (1 - clamp(0, (var(--p) - 0.5) / 0.16, 1)));
+    opacity: calc(1 - clamp(0, (var(--p) - 0.34) / 0.14, 1));
+  }
+  .src-swap { position: relative; display: block; height: 1.55em; }
+  .src-swap .full, .src-swap .short { position: absolute; left: 0; top: 0; }
+  .src-swap .full { opacity: calc(1 - clamp(0, (var(--p) - 0.34) / 0.18, 1)); }
+  .src-swap .short { opacity: clamp(0, (var(--p) - 0.40) / 0.18, 1); }
+
+  .note {
+    position: absolute; left: 72px; top: 214px; width: 280px;
+    padding: 26px 28px; background: #FFFDFB; border-radius: 6px;
+    border-left: 3px solid #D97A4A;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 18px 36px -24px rgba(0, 0, 0, 0.4);
+    font-size: 36px; font-weight: 650; letter-spacing: -0.01em; line-height: 1.35;
+  }
+</style>
+</head>
+<body data-scene="1">
+  <section class="scene scene-1" aria-label="Agent 動筆">
+    <article class="sheet notes">
+      <div class="sheet-bar">notes.md</div>
+      <div class="sheet-body">
+        <p class="hed"># 筆記</p>
+        <div class="gap"></div>
+        <p>待讀。</p>
+      </div>
+    </article>
+    <article class="sheet spec">
+      <div class="sheet-bar">SPEC.md</div>
+      <div class="sheet-body">
+        <p class="hed"># 規格</p>
+        <div class="gap"></div>
+        <p>流程與程式碼。</p>
+      </div>
+    </article>
+    <article class="sheet front">
+      <div class="sheet-bar">README.md</div>
+      <div class="sheet-body">
+        <p class="line hed" style="--at:0.24;--until:0.40"># README<i class="caret"></i></p>
+        <div class="gap"></div>
+        <p class="line" style="--at:0.40;--until:0.56">先讀這份。<i class="caret"></i></p>
+        <div class="gap"></div>
+        <p class="line sub" style="--at:0.56;--until:0.70">## 下一步<i class="caret"></i></p>
+        <div class="gap"></div>
+        <p class="line cmd last" style="--at:0.70;--until:0.86"><span class="fn">marsdawn</span> open <span class="str">README.md</span><i class="caret"></i></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="scene scene-2" aria-label="你在 MarsDawn 裡讀">
+    <div class="win">
+      <div class="bar">
+        <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="title">SPEC.md</span>
+        <span class="tools" aria-hidden="true">
+          <span class="pill">
+            <svg width="26" height="23" viewBox="0 0 20 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2C5.3 2 1.8 5.2 1.8 9.2c0 3.6 2.9 6.6 6.6 6.6 1.3 0 1.9-.8 1.9-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5h2c2.8 0 5-1.9 5-4.5C18.2 4.6 14.6 2 10 2Z"/><circle cx="6" cy="8.6" r="1.1" fill="currentColor" stroke="none"/><circle cx="8.6" cy="5.6" r="1.1" fill="currentColor" stroke="none"/><circle cx="12.4" cy="5.6" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.6" cy="8.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.8 5 6.3l2.5-2.5"/></svg>
+          </span>
+          <span class="pill">
+            <span class="seg"><svg width="24" height="19" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5 2 8l4.5 4.5M13.5 3.5 18 8l-4.5 4.5M11.4 2.5 8.6 13.5"/></svg></span>
+            <span class="seg on"><svg width="24" height="19" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2.5" width="16" height="11" rx="2.5"/><path d="M10 2.5v11"/></svg></span>
+            <span class="seg"><svg width="24" height="19" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 8C4 4.4 6.8 2.8 10 2.8S16 4.4 18.2 8C16 11.6 13.2 13.2 10 13.2S4 11.6 1.8 8Z"/><circle cx="10" cy="8" r="3.1"/><circle cx="10" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg></span>
+          </span>
+        </span>
+      </div>
+      <div class="panes">
+        <pre class="source"><span class="hed"># 規格</span>
+
+<span class="tick">```</span><span class="lang">mermaid</span>
+<span class="lang">flowchart LR</span>
+<span class="lang">  動筆 --&gt; 閱讀 --&gt; 修改</span>
+<span class="tick">```</span>
+
+<span class="tick">```</span>
+<span class="fn">marsdawn</span> open <span class="str">SPEC.md</span>
+<span class="tick">```</span></pre>
+        <div class="preview">
+          <h2 class="doc-h reveal" style="--at:0.22">規格</h2>
+          <div class="flow">
+            <span class="node reveal" style="--at:0.36">動筆</span>
+            <svg class="arrow reveal" style="--at:0.50" width="40" height="16" viewBox="0 0 40 16" aria-hidden="true"><path d="M1 8H33M26 2.5 34 8 26 13.5" fill="none" stroke="#C98470" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="node reveal" style="--at:0.50">閱讀</span>
+            <svg class="arrow reveal" style="--at:0.64" width="40" height="16" viewBox="0 0 40 16" aria-hidden="true"><path d="M1 8H33M26 2.5 34 8 26 13.5" fill="none" stroke="#C98470" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="node reveal" style="--at:0.64">修改</span>
+          </div>
+          <div class="code reveal" style="--at:0.76"><span class="fn">marsdawn</span> open <span class="str">SPEC.md</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene scene-3" aria-label="Agent 修改">
+    <aside class="note reveal" style="--at:0.14;--dur:0.12">短一點。</aside>
+    <div class="win">
+      <div class="bar">
+        <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="title">SPEC.md</span>
+        <span class="tools" aria-hidden="true">
+          <span class="pill">
+            <svg width="26" height="23" viewBox="0 0 20 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2C5.3 2 1.8 5.2 1.8 9.2c0 3.6 2.9 6.6 6.6 6.6 1.3 0 1.9-.8 1.9-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5h2c2.8 0 5-1.9 5-4.5C18.2 4.6 14.6 2 10 2Z"/><circle cx="6" cy="8.6" r="1.1" fill="currentColor" stroke="none"/><circle cx="8.6" cy="5.6" r="1.1" fill="currentColor" stroke="none"/><circle cx="12.4" cy="5.6" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.6" cy="8.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.8 5 6.3l2.5-2.5"/></svg>
+          </span>
+          <span class="pill">
+            <span class="seg"><svg width="24" height="19" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5 2 8l4.5 4.5M13.5 3.5 18 8l-4.5 4.5M11.4 2.5 8.6 13.5"/></svg></span>
+            <span class="seg on"><svg width="24" height="19" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2.5" width="16" height="11" rx="2.5"/><path d="M10 2.5v11"/></svg></span>
+            <span class="seg"><svg width="24" height="19" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 8C4 4.4 6.8 2.8 10 2.8S16 4.4 18.2 8C16 11.6 13.2 13.2 10 13.2S4 11.6 1.8 8Z"/><circle cx="10" cy="8" r="3.1"/><circle cx="10" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg></span>
+          </span>
+        </span>
+      </div>
+      <div class="panes">
+        <pre class="source"><span class="hed"># 規格</span>
+
+<span class="tick">```</span><span class="lang">mermaid</span>
+<span class="lang">flowchart LR</span>
+<span class="src-swap"><span class="full lang">  動筆 --&gt; 閱讀 --&gt; 修改</span><span class="short lang">  動筆 --&gt; 閱讀</span></span>
+<span class="tick">```</span>
+
+<span class="tick">```</span>
+<span class="fn">marsdawn</span> open <span class="str">SPEC.md</span>
+<span class="tick">```</span></pre>
+        <div class="preview">
+          <h2 class="doc-h">規格</h2>
+          <div class="flow">
+            <span class="node">動筆</span>
+            <svg class="arrow" width="40" height="16" viewBox="0 0 40 16" aria-hidden="true"><path d="M1 8H33M26 2.5 34 8 26 13.5" fill="none" stroke="#C98470" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="node">閱讀</span>
+            <span class="leave-slot">
+              <svg class="arrow" width="40" height="16" viewBox="0 0 40 16" aria-hidden="true"><path d="M1 8H33M26 2.5 34 8 26 13.5" fill="none" stroke="#C98470" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="node">修改</span>
+            </span>
+          </div>
+          <div class="code"><span class="fn">marsdawn</span> open <span class="str">SPEC.md</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

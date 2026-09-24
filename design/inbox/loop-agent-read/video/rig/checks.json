@@ -1,0 +1,102 @@
+[
+ {
+  "seg": "s1-ask",
+  "at": -0.15,
+  "what": "the ask",
+  "must": [
+   "typed[0]"
+  ]
+ },
+ {
+  "seg": "s2-open",
+  "at": -0.15,
+  "what": "reply and command",
+  "must": [
+   "said[-1] if said[-1].startswith('Saved') else said[0]",
+   "typed[1]"
+  ]
+ },
+ {
+  "seg": "s3-opens",
+  "at": 0.4,
+  "what": "v1 in the preview",
+  "crop": "720:900:880:0",
+  "must": [
+   "para(v1,'Starting Wednesday')"
+  ]
+ },
+ {
+  "seg": "s4-outline",
+  "at": -0.2,
+  "what": "jumped to When it ships (preview)",
+  "crop": "690:870:910:30",
+  "must": [
+   "para(v1,'Wednesday at noon')"
+  ]
+ },
+ {
+  "seg": "s5-edit",
+  "at": -0.15,
+  "what": "user's edit in the preview",
+  "crop": "660:900:940:0",
+  "must": [
+   "para(v2,'Friday at noon')"
+  ]
+ },
+ {
+  "seg": "s6-handback",
+  "at": -0.15,
+  "what": "hand-back prompt, earlier lines intact",
+  "must": [
+   "typed[0]",
+   "typed[1]",
+   "typed[2]"
+  ]
+ },
+ {
+  "seg": "s7a-reply",
+  "at": -0.15,
+  "what": "agent reply",
+  "must": [
+   "[x for x in said if x.startswith('Done')][0]",
+   "[x for x in said if x.startswith('Design')][0]"
+  ]
+ },
+ {
+  "seg": "s7b-update",
+  "at": -0.15,
+  "what": "reloaded v3 (preview)",
+  "crop": "640:900:960:0",
+  "must": [
+   "para(v3,'Starting Friday')"
+  ],
+  "never": [
+   "Wednesday"
+  ]
+ },
+ {
+  "seg": "s8-reread",
+  "at": -0.15,
+  "what": "Who does what now Friday (preview)",
+  "crop": "680:900:920:0",
+  "must": [
+   "para(v3,'- **Engineering')[2:]",
+   "para(v3,'- **Support')[2:]"
+  ],
+  "never": [
+   "Wednesday"
+  ]
+ },
+ {
+  "seg": "s9b-pdf",
+  "at": -0.15,
+  "what": "the exported PDF",
+  "must": [
+   "para(v3,'Starting Friday')",
+   "para(v3,'Friday at noon')"
+  ],
+  "never": [
+   "Wednesday"
+  ]
+ }
+]
