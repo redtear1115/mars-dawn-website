@@ -75,52 +75,143 @@ LANG_CLASS = {"en": "", "zh-hant": " loop-hant", "zh-hans": " loop-hans", "ja": 
 
 _esc = html.escape
 
+# A scene is data: the file, its source lines, its preview blocks, and what changes. Two kinds of
+# change, both keyed by a one-letter id: a swap (old text stacked on new text of the same width,
+# `{id}` inside a line) and a removal (a whole line, block or diagram step, given as `rm=id`).
+# `u` is the reader's edit (select, then type or delete, 36–46%); `a`, `b`, `c` … are the agent's,
+# a beat apart from 60%. The home page is one scene (home_scene); the /templates/ pages are others.
+AGENT_IDS = "abcdefg"
 
-def _day(copy: dict, which: str, caret: bool) -> str:
-    steps = len(copy["new"])
+
+def _swap(old: str, new: str, which: str, caret: bool) -> str:
+    steps = len(new)
     caret_html = f'<span class="loop-ecaret loop-n{steps} a"></span>' if caret else ""
-    return (f'<span class="loop-day loop-d-{which} a"><span class="loop-old a">{_esc(copy["old"])}</span>'
-            f'<span class="loop-new loop-n{steps} a">{_esc(copy["new"])}</span>{caret_html}</span>')
+    return (f'<span class="loop-day loop-d-{which} a"><span class="loop-old a">{_esc(old)}</span>'
+            f'<span class="loop-new loop-n{steps} a">{_esc(new)}</span>{caret_html}</span>')
 
 
-def _fill(text: str, copy: dict, source: bool) -> str:
-    return re.sub(r"\{([aub])\}", lambda m: _day(copy, m.group(1), source and m.group(1) == "u"), _esc(text))
+def _fill(text: str, swaps: dict, source: bool) -> str:
+    return re.sub(r"\{([a-gu])\}", lambda m: _swap(*swaps[m.group(1)], m.group(1), source and m.group(1) == "u"),
+                  _esc(text))
 
 
-def loop_html(locale: str) -> str:
-    copy = COPY[locale]
-    rows = f'<div class="loop-h1row">{_esc(copy["title"])}</div>' + "".join(
-        f'<div class="loop-sub{" loop-row-u a" if i == 1 else ""}">{_esc(h)}</div>'
-        for i, (h, _) in enumerate(copy["sections"]))
-    source = f'<span class="loop-h"><span class="loop-mk">#</span> {_esc(copy["title"])}</span>\n' + "".join(
-        f'\n<span class="loop-h"><span class="loop-mk">##</span> {_esc(h)}</span>\n{_fill(p, copy, True)}\n'
-        for h, p in copy["sections"])
-    preview = f'<h3>{_esc(copy["title"])}</h3>' + "".join(
-        f'<h4>{_esc(h)}</h4><p>{_fill(p, copy, False)}</p>' for h, p in copy["sections"])
+def _source_html(items: list, swaps: dict) -> str:
+    out = []
+    for item in items:
+        kind, text, rm = item[0], item[1], (item[2] if len(item) > 2 else None)
+        if kind == "h1":
+            piece = f'<span class="loop-h"><span class="loop-mk">#</span> {_esc(text)}</span>\n'
+        elif kind == "h2":
+            piece = f'\n<span class="loop-h"><span class="loop-mk">##</span> {_esc(text)}</span>\n'
+        elif kind == "li":
+            piece = f'<span class="loop-mk">-</span> {_fill(text, swaps, True)}\n'
+        elif kind == "task":
+            piece = f'<span class="loop-mk">- [ ]</span> {_fill(text, swaps, True)}\n'
+        elif kind == "code":
+            piece = f'<span class="loop-code">{_fill(text, swaps, True)}</span>\n'
+        elif kind == "blank":
+            piece = "\n"
+        else:
+            piece = f'{_fill(text, swaps, True)}\n'
+        if rm:
+            # A removable line is its own block, so it can collapse; the block ends the line.
+            piece = f'<span class="loop-rl loop-r-{rm} a">{piece[:-1]}</span>'
+        out.append(piece)
+    return "".join(out)
+
+
+def _preview_html(items: list, swaps: dict) -> str:
+    out, list_open = [], False
+    for item in items:
+        kind, body, rm = item[0], item[1], (item[2] if len(item) > 2 else None)
+        rmc = f' class="loop-rl loop-r-{rm} a"' if rm else ""
+        if kind in ("li", "task") and not list_open:
+            out.append("<ul>")
+            list_open = True
+        if kind not in ("li", "task") and list_open:
+            out.append("</ul>")
+            list_open = False
+        if kind == "h3":
+            out.append(f"<h3>{_esc(body)}</h3>")
+        elif kind == "h4":
+            out.append(f"<h4>{_esc(body)}</h4>")
+        elif kind == "li":
+            out.append(f"<li{rmc}>{_fill(body, swaps, False)}</li>")
+        elif kind == "task":
+            cls = f"loop-task loop-rl loop-r-{rm} a" if rm else "loop-task"
+            out.append(f'<li class="{cls}">{_fill(body, swaps, False)}</li>')
+        elif kind == "flow":
+            nodes = []
+            for i, node in enumerate(body):
+                text, nrm = (node, None) if isinstance(node, str) else node
+                cell = f'<span class="loop-node">{_esc(text)}</span>'
+                if i:
+                    seg = f'<span class="loop-arrow">→</span>{cell}'
+                    cls = f"loop-fseg loop-rn loop-r-{nrm} a" if nrm else "loop-fseg"
+                    cell = f'<span class="{cls}">{seg}</span>'
+                nodes.append(cell)
+            out.append(f'<div class="loop-flow">{"".join(nodes)}</div>')
+        else:
+            out.append(f"<p{rmc}>{_fill(body, swaps, False)}</p>")
+    if list_open:
+        out.append("</ul>")
+    return "".join(out)
+
+
+def scene_html(scene: dict, locale: str) -> str:
+    """One loop: a terminal opens `scene["file"]` in MarsDawn, the reader makes change `u`, the
+    agent makes the others, and the window folds back into the terminal."""
+    ui = COPY[locale]
+    swaps = scene.get("swaps", {})
+    headings = [(it[0], it[1]) for it in scene["source"] if it[0] in ("h1", "h2")]
+    active = headings.index(("h2", scene["active"]))
+    rows = "".join(
+        f'<div class="loop-h1row">{_esc(t)}</div>' if k == "h1" else
+        f'<div class="loop-sub{" loop-row-u a" if i == active else ""}">{_esc(t)}</div>'
+        for i, (k, t) in enumerate(headings))
+    command = f"marsdawn open {scene['file']}"
+    cmd_cls = "loop-cmd a" if len(command) == 28 else f"loop-cmd loop-cmd-{len(command)} a"
+    ptr_cls = "loop-ptr a" if active == 2 else f"loop-ptr loop-ptr-r{active} a"
     return f"""<div class="loop-anim{LANG_CLASS[locale]}">
-<div class="loop-frame" role="img" aria-label="{_esc(copy["alt"])}">
+<div class="loop-frame" role="img" aria-label="{_esc(scene["alt"])}">
 <div class="loop-stage" aria-hidden="true">
 <div class="loop-win a">
-<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">{FILE_NAME}</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">{scene["file"]}</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
 <div class="loop-body">
-<div class="loop-side"><div class="loop-tabs"><span class="on">{_esc(copy["outline"])}</span><span>{_esc(copy["files"])}</span></div><div class="loop-rows">{rows}</div></div>
-<div class="loop-src">{source}</div>
-<div class="loop-pre">{preview}</div>
+<div class="loop-side"><div class="loop-tabs"><span class="on">{_esc(ui["outline"])}</span><span>{_esc(ui["files"])}</span></div><div class="loop-rows">{rows}</div></div>
+<div class="loop-src">{_source_html(scene["source"], swaps)}</div>
+<div class="loop-pre">{_preview_html(scene["preview"], swaps)}</div>
 </div>
 </div>
 <div class="loop-term a">
 <div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
 <div class="loop-tbody">
-<div><span class="loop-p">›</span> <span class="loop-cmd a">{COMMAND}</span><span class="loop-caret a"></span></div>
-<div class="loop-l2 a"><span class="loop-p">›</span> {_esc(copy["ask"])}</div>
-<div class="loop-l3 a">{_esc(copy["reply"])}</div>
+<div><span class="loop-p">›</span> <span class="{cmd_cls}">{command}</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> {_esc(scene["ask"])}</div>
+<div class="loop-l3 a">{_esc(scene["reply"])}</div>
 </div>
 </div>
-<svg class="loop-ptr a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+<svg class="{ptr_cls}" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
 </div>
 </div>
-<label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="{_esc(copy["pause"])}"><span aria-hidden="true">{_esc(copy["pause_short"])}</span></label>
+<label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="{_esc(ui["pause"])}"><span aria-hidden="true">{_esc(ui["pause_short"])}</span></label>
 </div>"""
+
+
+def home_scene(locale: str) -> dict:
+    copy = COPY[locale]
+    source = [("h1", copy["title"])]
+    preview = [("h3", copy["title"])]
+    for h, p in copy["sections"]:
+        source += [("h2", h), ("text", p)]
+        preview += [("h4", h), ("p", p)]
+    return {"file": FILE_NAME, "source": source, "preview": preview, "active": copy["sections"][1][0],
+            "swaps": {k: (copy["old"], copy["new"]) for k in "aub"},
+            "ask": copy["ask"], "reply": copy["reply"], "alt": copy["alt"]}
+
+
+def loop_html(locale: str) -> str:
+    return scene_html(home_scene(locale), locale)
 
 
 # Lengths in the stage are written as `<number>u`; loop_css() turns them into calc() on --u.
@@ -330,5 +421,102 @@ _CSS = r"""/* The homepage loop. Generated by scripts/loop_anim.py; edit it ther
 """
 
 
+def _scene_css() -> str:
+    """Rules only the /templates/ scenes use, appended after the home page's: removals, a flow
+    diagram, task lists, commands of other lengths, the pointer on other rows, a third agent edit."""
+    parts = [r"""
+/* ---- Scenes beyond the home page (/templates/). Appended; the rules above are the home page's. ---- */
+.loop-d-c { --d: .9s; }
+.loop-d-c .loop-old { animation-name: loop-a-old; }
+.loop-d-c .loop-new { animation-name: loop-a-new; }
+.loop-d-c { animation-name: loop-a-glow; }
+.loop-code { color: #2F6F5E; }
+
+/* A line, block or list item that goes away. */
+.loop-rl { overflow: hidden; }
+.loop-src .loop-rl { display: block; }
+.loop-src .loop-r-u { animation-name: loop-u-rl; }
+.loop-pre .loop-r-u { animation-name: loop-pu-rl; }
+.loop-r-a { --d: 0s; }
+.loop-r-b { --d: .45s; }
+.loop-r-c { --d: .9s; }
+.loop-rl.loop-r-a, .loop-rl.loop-r-b, .loop-rl.loop-r-c { animation-name: loop-a-rl; }
+@keyframes loop-u-rl {
+  0%, 35% { max-height: 5em; opacity: 1; background: transparent; }
+  36%, 40.9% { max-height: 5em; opacity: 1; background: #F2C6B3; }
+  41% { max-height: 5em; opacity: 1; background: #F2C6B3; }
+  44%, 94.9% { max-height: 0; opacity: 0; background: transparent; }
+  95%, 100% { max-height: 5em; opacity: 1; background: transparent; }
+}
+@keyframes loop-pu-rl {
+  0%, 46.9% { max-height: 5em; opacity: 1; }
+  49%, 94.9% { max-height: 0; opacity: 0; }
+  95%, 100% { max-height: 5em; opacity: 1; }
+}
+@keyframes loop-a-rl {
+  0%, 57% { max-height: 5em; opacity: 1; background: rgba(200,71,27,0); }
+  59.5% { max-height: 5em; opacity: 1; background: rgba(200,71,27,.28); }
+  63%, 94.9% { max-height: 0; opacity: 0; background: rgba(200,71,27,0); }
+  95%, 100% { max-height: 5em; opacity: 1; background: rgba(200,71,27,0); }
+}
+
+/* A flow diagram, as the preview draws a Mermaid flowchart; a step can go away. */
+.loop-flow { display: flex; align-items: center; margin: 12u 0 20u; }
+.loop-node { display: inline-flex; align-items: center; height: 44u; padding: 0 14u; border-radius: 7u;
+  background: #FFF7F4; border: 1.5u solid #E39A86; font-size: 17u; font-weight: 650; white-space: nowrap; }
+.loop-fseg { display: inline-flex; align-items: center; overflow: hidden; white-space: nowrap; max-width: 30em; }
+.loop-arrow { padding: 0 8u; color: #C8471B; font-size: 18u; }
+.loop-pre .loop-rn.loop-r-u { animation-name: loop-pu-rn; }
+.loop-rn.loop-r-a, .loop-rn.loop-r-b, .loop-rn.loop-r-c { animation-name: loop-a-rn; }
+@keyframes loop-pu-rn {
+  0%, 46.9% { max-width: 30em; opacity: 1; }
+  49%, 94.9% { max-width: 0; opacity: 0; }
+  95%, 100% { max-width: 30em; opacity: 1; }
+}
+@keyframes loop-a-rn {
+  0%, 59.9% { max-width: 30em; opacity: 1; }
+  63%, 94.9% { max-width: 0; opacity: 0; }
+  95%, 100% { max-width: 30em; opacity: 1; }
+}
+
+/* Lists and task lists in the preview. */
+.loop-pre ul { margin: 0 0 4u; padding-left: 26u; font-size: 20u; line-height: 1.55; }
+.loop-pre li { margin: 0; }
+.loop-pre li.loop-task { list-style: none; margin-left: -26u; }
+.loop-task::before { content: ""; display: inline-block; width: 0.75em; height: 0.75em; margin-right: 0.45em;
+  border: 1.5u solid #8A817B; border-radius: 3u; vertical-align: -0.05em; }
+"""]
+    # The typed-in new text, and the caret after it, step one character at a time.
+    for n in range(1, 13):
+        if n in (2, 5):
+            continue
+        parts.append(f".loop-src .loop-d-u .loop-new.loop-n{n} {{ animation-timing-function: steps({n}, end); }}\n"
+                     f".loop-ecaret.loop-n{n} {{ animation-timing-function: linear, steps({n}, end); }}\n")
+    # `marsdawn open <file>` for other file names: the same typing, at that length.
+    for n in range(18, 41):
+        if n == 28:
+            continue
+        parts.append(f".loop-cmd-{n} {{ animation-name: loop-type-{n}; }}\n"
+                     f"@keyframes loop-type-{n} {{\n"
+                     f"  0%, 3% {{ width: 0; animation-timing-function: steps({n}, end); }}\n"
+                     f"  12.5%, 90% {{ width: {n}ch; }}\n"
+                     f"  92%, 100% {{ width: 0; }}\n}}\n")
+    # The pointer on outline row r (0 is the document's title), clicking it like the home page's.
+    for r in range(1, 9):
+        if r == 2:
+            continue
+        y = 162 + 38 * r
+        parts.append(f".loop-ptr-r{r} {{ animation-name: loop-ptr-r{r}; }}\n"
+                     f"@keyframes loop-ptr-r{r} {{\n"
+                     f"  0%, 22% {{ opacity: 0; transform: translate(760u, 520u); }}\n"
+                     f"  23% {{ opacity: 1; transform: translate(760u, 520u); animation-timing-function: cubic-bezier(.4,0,.2,1); }}\n"
+                     f"  28.5% {{ transform: translate(468u, {y}u) scale(1); }}\n"
+                     f"  29.3% {{ transform: translate(468u, {y}u) scale(.86); }}\n"
+                     f"  30.2% {{ opacity: 1; transform: translate(468u, {y}u) scale(1); animation-timing-function: cubic-bezier(.4,0,.2,1); }}\n"
+                     f"  36% {{ opacity: 1; }}\n"
+                     f"  38%, 100% {{ opacity: 0; transform: translate(520u, {y + 110}u); }}\n}}\n")
+    return "".join(parts)
+
+
 def loop_css() -> str:
-    return re.sub(r"(-?\d+(?:\.\d+)?)u\b", r"calc(\1 * var(--u))", _CSS)
+    return re.sub(r"(-?\d+(?:\.\d+)?)u\b", r"calc(\1 * var(--u))", _CSS + _scene_css())
