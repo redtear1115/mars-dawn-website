@@ -673,6 +673,134 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/changelog/"/>
   </url>
   <url>
+    <loc>https://marsdawn.southern-light.dev/templates/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/templates/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hans/templates/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ja/templates/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/templates/spec/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/spec/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/templates/spec/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/spec/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hans/templates/spec/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/spec/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ja/templates/spec/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/spec/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/spec/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/templates/flowchart/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/flowchart/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/flowchart/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/flowchart/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ja/templates/flowchart/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/flowchart/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/flowchart/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/templates/meeting-notes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/meeting-notes/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/meeting-notes/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/meeting-notes/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ja/templates/meeting-notes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/meeting-notes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/meeting-notes/"/>
+  </url>
+  <url>
     <loc>https://marsdawn.southern-light.dev/product-facts.md</loc>
   </url>
 </urlset>

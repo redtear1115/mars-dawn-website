@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markdown フローチャートテンプレート（Mermaid） · MarsDawn</title>
+<meta name="description" content="Markdown で書く Mermaid フローチャートのテンプレート。図の下に各ステップを書き出します。Mac でプレビューし、PDF に書き出せます。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/loop.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/flowchart/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/flowchart/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/flowchart/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/templates/flowchart/">
+<link rel="alternate" type="text/markdown" href="/ja/templates/flowchart/index.md">
+<meta property="og:title" content="Markdown フローチャートテンプレート（Mermaid） · MarsDawn">
+<meta property="og:description" content="Markdown で書く Mermaid フローチャートのテンプレート。図の下に各ステップを書き出します。Mac でプレビューし、PDF に書き出せます。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/templates/flowchart/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
+  <nav class="lang" aria-label="Language"><a href="/templates/flowchart/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/templates/flowchart/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/templates/flowchart/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/templates/flowchart/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Markdown フローチャートテンプレート</h1>
+  <p>Mermaid のフローチャートと、その下に書き出した各ステップ。図と文章を突き合わせて確かめられます。ステップをひとつ外したら、残りの修正をエージェントに頼みます。</p>
+</section>
+
+<div class="loop-anim loop-ja loop-long">
+<div class="loop-frame" role="img" aria-label="ターミナルが MarsDawn で flowchart.md を開く。読み手が Mermaid の図から法務のステップを外し、エージェントが図をつなぎ直して、下のステップの番号を振り直す。">
+<div class="loop-stage" aria-hidden="true">
+<div class="loop-win a">
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">flowchart.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-body">
+<div class="loop-side"><div class="loop-tabs"><span class="on">アウトライン</span><span>ファイル</span></div><div class="loop-rows"><div class="loop-h1row">公開フロー</div><div class="loop-sub loop-row-u a">図</div><div class="loop-sub">ステップ</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> 公開フロー</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> 図</span>
+<span class="loop-code">```mermaid</span>
+<span class="loop-code">flowchart LR</span>
+<span class="loop-code">  A[下書き] --&gt; B[レビュー]</span>
+<span class="loop-rl loop-r-u a"><span class="loop-code">  B --&gt; C[法務]</span></span><span class="loop-code">  <span class="loop-day loop-d-a a"><span class="loop-old a">C</span><span class="loop-new loop-n1 a">B</span></span> --&gt; D[公開]</span>
+<span class="loop-code">```</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> ステップ</span>
+1. 下書き：書き手の初稿。
+2. レビュー：編集者が読む。
+<span class="loop-rl loop-r-b a">3. 法務：表現を確認する。</span><span class="loop-day loop-d-c a"><span class="loop-old a">4</span><span class="loop-new loop-n1 a">3</span></span>. 公開：本番に出す。
+</div>
+<div class="loop-pre"><h3>公開フロー</h3><h4>図</h4><div class="loop-flow"><span class="loop-node">下書き</span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">レビュー</span></span><span class="loop-fseg loop-rn loop-r-u a"><span class="loop-arrow">→</span><span class="loop-node">法務</span></span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">公開</span></span></div><h4>ステップ</h4><p>1. 下書き：書き手の初稿。</p><p>2. レビュー：編集者が読む。</p><p class="loop-rl loop-r-b a">3. 法務：表現を確認する。</p><p><span class="loop-day loop-d-c a"><span class="loop-old a">4</span><span class="loop-new loop-n1 a">3</span></span>. 公開：本番に出す。</p></div>
+</div>
+</div>
+<div class="loop-term a">
+<div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
+<div class="loop-tbody">
+<div><span class="loop-p">›</span> <span class="loop-cmd loop-cmd-26 a">marsdawn open flowchart.md</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> 図から法務を外した。つなぎ方とステップを直して。</div>
+<div class="loop-l3 a">完了。レビューから公開へ直接つなぎ、番号も振り直した。</div>
+</div>
+</div>
+<svg class="loop-ptr loop-ptr-r1 a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="アニメーションを一時停止"><span aria-hidden="true">一時停止</span></label>
+</div>
+
+<h2 id="the-template">テンプレート</h2>
+<p><a href="/ja/templates/flowchart/flowchart.md" download>flowchart.md をダウンロード</a></p>
+<pre><code># フロー名
+
+_一文で：何が入り、何が出るか。_
+
+## 図
+
+```mermaid
+flowchart LR
+  A[最初のステップ] --&gt; B[次のステップ]
+  B --&gt; C[3 番目のステップ]
+  C --&gt; D[完了]
+```
+
+## ステップ
+
+1. **最初のステップ**：_誰がやり、次に何を渡すか。_
+2. **次のステップ**：_……_
+3. **3 番目のステップ**：_……_
+4. **完了**：_ここでの「完了」の意味。_
+</code></pre>
+
+<h2 id="how-it-looks">見た目</h2>
+<p class="tpl-shot"><img src="/assets/templates/flowchart-ja.png" width="1000" height="1415" loading="lazy" alt="flowchart.md を marsdawn export で書き出した PDF の 1 ページ目。"></p>
+<p><code>marsdawn export flowchart.md</code> で書き出したもの。無料のコマンドラインツールは MarsDawn のプレビューと同じ見た目で、図もそのまま描きます。</p>
+
+<h2 id="ask-your-agent">エージェントに頼む</h2>
+<pre class="tpl-prompt"><code>https://marsdawn.southern-light.dev/ja/templates/flowchart/flowchart.md のテンプレートを使って、［プロセス］のフローを flowchart.md に描いてください。ノードごとに番号付きのステップをひとつ、同じ順番で書いてください。書き終えたら marsdawn open flowchart.md を実行してください。</code></pre>
+
+<h2 id="share-it-as-a-pdf">PDF で共有する</h2>
+<p><code>marsdawn export flowchart.md</code>：図は PDF に描き込まれます。</p>
+
+<h2 id="what-it-doesn-t-do">できないこと</h2>
+<p>MarsDawn は Mermaid に書かれたとおりに図を描きます。手でレイアウトすることはできず、番号付きのステップとノードをそろえることもしません。Mermaid に誤りがあると、プレビューには図の代わりにエラーが表示されます。</p>
+
+<h2 id="questions">よくある質問</h2>
+<h3>どの図が使えますか？</h3>
+<p>Mermaid で描けるものなら何でも。フローチャート、シーケンス図、状態遷移図などです。</p>
+<h3>なぜステップも書き出すのですか？</h3>
+<p>ざっと見る人は図を見て、確かめる人は文章を読みます。エージェントに両方をそろえてもらえます。</p>
+
+<h2 id="more-templates">ほかのテンプレート</h2>
+<ul>
+  <li><a href="/ja/templates/spec/">仕様書（PRD）</a>：課題、目標、要件、フロー図、受け入れ基準。</li>
+  <li><a href="/ja/templates/meeting-notes/">議事録</a>：決定事項とアクションアイテム。それぞれに担当者。</li>
+  <li><a href="/ja/templates/">Markdown テンプレート</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

@@ -230,3 +230,297 @@
   .loop-stage .a { animation-play-state: paused; }
   .loop-pause { display: none; }
 }
+
+/* ---- Scenes beyond the home page (/templates/). Appended; the rules above are the home page's. ---- */
+.loop-d-c { --d: .9s; }
+.loop-d-c .loop-old { animation-name: loop-a-old; }
+.loop-d-c .loop-new { animation-name: loop-a-new; }
+.loop-d-c { animation-name: loop-a-glow; }
+/* Scene colours, light and night, from the kit's Dawn theme (hero_sources.json): code is the
+   theme's string colour, a flow node sits on its surface. The rest reuse the --lw-* palette. */
+.loop-stage { --lw-code: #2F6F5E; --lw-node: #FFF7F4; --lw-node-edge: #E39A86; --lw-muted: #6F6660; }
+@media (prefers-color-scheme: dark) {
+  .loop-stage { --lw-code: #7FD1B9; --lw-node: #262229; --lw-node-edge: #8E5238; --lw-muted: #A39992; }
+}
+.loop-code { color: var(--lw-code); }
+
+/* A scene with a longer document: the terminal stops short of the source pane (the window's
+   sidebar ends at calc(630 * var(--u))), so no line of source is hidden behind it. */
+.loop-long .loop-term { width: calc(575 * var(--u)); }
+
+/* A line, block or list item that goes away. */
+.loop-rl { overflow: hidden; }
+.loop-src .loop-rl { display: block; }
+.loop-src .loop-r-u { animation-name: loop-u-rl; }
+.loop-pre .loop-r-u { animation-name: loop-pu-rl; }
+.loop-r-a { --d: 0s; }
+.loop-r-b { --d: .45s; }
+.loop-r-c { --d: .9s; }
+.loop-rl.loop-r-a, .loop-rl.loop-r-b, .loop-rl.loop-r-c { animation-name: loop-a-rl; }
+@keyframes loop-u-rl {
+  0%, 35% { max-height: 5em; opacity: 1; background: transparent; }
+  36%, 40.9% { max-height: 5em; opacity: 1; background: var(--lw-select); }
+  41% { max-height: 5em; opacity: 1; background: var(--lw-select); }
+  44%, 94.9% { max-height: 0; opacity: 0; background: transparent; }
+  95%, 100% { max-height: 5em; opacity: 1; background: transparent; }
+}
+@keyframes loop-pu-rl {
+  0%, 46.9% { max-height: 5em; opacity: 1; }
+  49%, 94.9% { max-height: 0; opacity: 0; }
+  95%, 100% { max-height: 5em; opacity: 1; }
+}
+@keyframes loop-a-rl {
+  0%, 57% { max-height: 5em; opacity: 1; background: var(--lw-glow-0); }
+  59.5% { max-height: 5em; opacity: 1; background: var(--lw-glow); }
+  63%, 94.9% { max-height: 0; opacity: 0; background: var(--lw-glow-0); }
+  95%, 100% { max-height: 5em; opacity: 1; background: var(--lw-glow-0); }
+}
+
+/* A flow diagram, as the preview draws a Mermaid flowchart; a step can go away. */
+.loop-flow { display: flex; align-items: center; margin: calc(12 * var(--u)) 0 calc(20 * var(--u)); }
+.loop-flow > * { flex-shrink: 0; }
+.loop-node { display: inline-flex; align-items: center; height: calc(40 * var(--u)); padding: 0 calc(9 * var(--u)); border-radius: calc(7 * var(--u));
+  background: var(--lw-node); border: calc(1.5 * var(--u)) solid var(--lw-node-edge); color: var(--lw-fg); font-size: calc(14 * var(--u)); font-weight: 650; white-space: nowrap; }
+.loop-fseg { display: inline-flex; align-items: center; overflow: hidden; white-space: nowrap; max-width: 30em; }
+.loop-arrow { padding: 0 calc(5 * var(--u)); color: var(--lw-accent); font-size: calc(15 * var(--u)); }
+.loop-pre .loop-rn.loop-r-u { animation-name: loop-pu-rn; }
+.loop-rn.loop-r-a, .loop-rn.loop-r-b, .loop-rn.loop-r-c { animation-name: loop-a-rn; }
+@keyframes loop-pu-rn {
+  0%, 46.9% { max-width: 30em; opacity: 1; }
+  49%, 94.9% { max-width: 0; opacity: 0; }
+  95%, 100% { max-width: 30em; opacity: 1; }
+}
+@keyframes loop-a-rn {
+  0%, 59.9% { max-width: 30em; opacity: 1; }
+  63%, 94.9% { max-width: 0; opacity: 0; }
+  95%, 100% { max-width: 30em; opacity: 1; }
+}
+
+/* Lists and task lists in the preview. */
+.loop-pre ul { margin: 0 0 calc(4 * var(--u)); padding-left: calc(26 * var(--u)); font-size: calc(20 * var(--u)); line-height: 1.55; }
+.loop-pre li { margin: 0; }
+.loop-pre li.loop-task { list-style: none; margin-left: calc(-26 * var(--u)); }
+.loop-task::before { content: ""; display: inline-block; width: 0.75em; height: 0.75em; margin-right: 0.45em;
+  border: calc(1.5 * var(--u)) solid var(--lw-muted); border-radius: calc(3 * var(--u)); vertical-align: -0.05em; }
+.loop-src .loop-d-u .loop-new.loop-n1 { animation-timing-function: steps(1, end); }
+.loop-ecaret.loop-n1 { animation-timing-function: linear, steps(1, end); }
+.loop-src .loop-d-u .loop-new.loop-n3 { animation-timing-function: steps(3, end); }
+.loop-ecaret.loop-n3 { animation-timing-function: linear, steps(3, end); }
+.loop-src .loop-d-u .loop-new.loop-n4 { animation-timing-function: steps(4, end); }
+.loop-ecaret.loop-n4 { animation-timing-function: linear, steps(4, end); }
+.loop-src .loop-d-u .loop-new.loop-n6 { animation-timing-function: steps(6, end); }
+.loop-ecaret.loop-n6 { animation-timing-function: linear, steps(6, end); }
+.loop-src .loop-d-u .loop-new.loop-n7 { animation-timing-function: steps(7, end); }
+.loop-ecaret.loop-n7 { animation-timing-function: linear, steps(7, end); }
+.loop-src .loop-d-u .loop-new.loop-n8 { animation-timing-function: steps(8, end); }
+.loop-ecaret.loop-n8 { animation-timing-function: linear, steps(8, end); }
+.loop-src .loop-d-u .loop-new.loop-n9 { animation-timing-function: steps(9, end); }
+.loop-ecaret.loop-n9 { animation-timing-function: linear, steps(9, end); }
+.loop-src .loop-d-u .loop-new.loop-n10 { animation-timing-function: steps(10, end); }
+.loop-ecaret.loop-n10 { animation-timing-function: linear, steps(10, end); }
+.loop-src .loop-d-u .loop-new.loop-n11 { animation-timing-function: steps(11, end); }
+.loop-ecaret.loop-n11 { animation-timing-function: linear, steps(11, end); }
+.loop-src .loop-d-u .loop-new.loop-n12 { animation-timing-function: steps(12, end); }
+.loop-ecaret.loop-n12 { animation-timing-function: linear, steps(12, end); }
+.loop-cmd-18 { animation-name: loop-type-18; }
+@keyframes loop-type-18 {
+  0%, 3% { width: 0; animation-timing-function: steps(18, end); }
+  12.5%, 90% { width: 18ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-19 { animation-name: loop-type-19; }
+@keyframes loop-type-19 {
+  0%, 3% { width: 0; animation-timing-function: steps(19, end); }
+  12.5%, 90% { width: 19ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-20 { animation-name: loop-type-20; }
+@keyframes loop-type-20 {
+  0%, 3% { width: 0; animation-timing-function: steps(20, end); }
+  12.5%, 90% { width: 20ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-21 { animation-name: loop-type-21; }
+@keyframes loop-type-21 {
+  0%, 3% { width: 0; animation-timing-function: steps(21, end); }
+  12.5%, 90% { width: 21ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-22 { animation-name: loop-type-22; }
+@keyframes loop-type-22 {
+  0%, 3% { width: 0; animation-timing-function: steps(22, end); }
+  12.5%, 90% { width: 22ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-23 { animation-name: loop-type-23; }
+@keyframes loop-type-23 {
+  0%, 3% { width: 0; animation-timing-function: steps(23, end); }
+  12.5%, 90% { width: 23ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-24 { animation-name: loop-type-24; }
+@keyframes loop-type-24 {
+  0%, 3% { width: 0; animation-timing-function: steps(24, end); }
+  12.5%, 90% { width: 24ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-25 { animation-name: loop-type-25; }
+@keyframes loop-type-25 {
+  0%, 3% { width: 0; animation-timing-function: steps(25, end); }
+  12.5%, 90% { width: 25ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-26 { animation-name: loop-type-26; }
+@keyframes loop-type-26 {
+  0%, 3% { width: 0; animation-timing-function: steps(26, end); }
+  12.5%, 90% { width: 26ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-27 { animation-name: loop-type-27; }
+@keyframes loop-type-27 {
+  0%, 3% { width: 0; animation-timing-function: steps(27, end); }
+  12.5%, 90% { width: 27ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-29 { animation-name: loop-type-29; }
+@keyframes loop-type-29 {
+  0%, 3% { width: 0; animation-timing-function: steps(29, end); }
+  12.5%, 90% { width: 29ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-30 { animation-name: loop-type-30; }
+@keyframes loop-type-30 {
+  0%, 3% { width: 0; animation-timing-function: steps(30, end); }
+  12.5%, 90% { width: 30ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-31 { animation-name: loop-type-31; }
+@keyframes loop-type-31 {
+  0%, 3% { width: 0; animation-timing-function: steps(31, end); }
+  12.5%, 90% { width: 31ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-32 { animation-name: loop-type-32; }
+@keyframes loop-type-32 {
+  0%, 3% { width: 0; animation-timing-function: steps(32, end); }
+  12.5%, 90% { width: 32ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-33 { animation-name: loop-type-33; }
+@keyframes loop-type-33 {
+  0%, 3% { width: 0; animation-timing-function: steps(33, end); }
+  12.5%, 90% { width: 33ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-34 { animation-name: loop-type-34; }
+@keyframes loop-type-34 {
+  0%, 3% { width: 0; animation-timing-function: steps(34, end); }
+  12.5%, 90% { width: 34ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-35 { animation-name: loop-type-35; }
+@keyframes loop-type-35 {
+  0%, 3% { width: 0; animation-timing-function: steps(35, end); }
+  12.5%, 90% { width: 35ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-36 { animation-name: loop-type-36; }
+@keyframes loop-type-36 {
+  0%, 3% { width: 0; animation-timing-function: steps(36, end); }
+  12.5%, 90% { width: 36ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-37 { animation-name: loop-type-37; }
+@keyframes loop-type-37 {
+  0%, 3% { width: 0; animation-timing-function: steps(37, end); }
+  12.5%, 90% { width: 37ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-38 { animation-name: loop-type-38; }
+@keyframes loop-type-38 {
+  0%, 3% { width: 0; animation-timing-function: steps(38, end); }
+  12.5%, 90% { width: 38ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-39 { animation-name: loop-type-39; }
+@keyframes loop-type-39 {
+  0%, 3% { width: 0; animation-timing-function: steps(39, end); }
+  12.5%, 90% { width: 39ch; }
+  92%, 100% { width: 0; }
+}
+.loop-cmd-40 { animation-name: loop-type-40; }
+@keyframes loop-type-40 {
+  0%, 3% { width: 0; animation-timing-function: steps(40, end); }
+  12.5%, 90% { width: 40ch; }
+  92%, 100% { width: 0; }
+}
+.loop-ptr-r1 { animation-name: loop-ptr-r1; }
+@keyframes loop-ptr-r1 {
+  0%, 22% { opacity: 0; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); }
+  23% { opacity: 1; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  28.5% { transform: translate(calc(468 * var(--u)), calc(200 * var(--u))) scale(1); }
+  29.3% { transform: translate(calc(468 * var(--u)), calc(200 * var(--u))) scale(.86); }
+  30.2% { opacity: 1; transform: translate(calc(468 * var(--u)), calc(200 * var(--u))) scale(1); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  36% { opacity: 1; }
+  38%, 100% { opacity: 0; transform: translate(calc(520 * var(--u)), calc(310 * var(--u))); }
+}
+.loop-ptr-r3 { animation-name: loop-ptr-r3; }
+@keyframes loop-ptr-r3 {
+  0%, 22% { opacity: 0; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); }
+  23% { opacity: 1; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  28.5% { transform: translate(calc(468 * var(--u)), calc(276 * var(--u))) scale(1); }
+  29.3% { transform: translate(calc(468 * var(--u)), calc(276 * var(--u))) scale(.86); }
+  30.2% { opacity: 1; transform: translate(calc(468 * var(--u)), calc(276 * var(--u))) scale(1); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  36% { opacity: 1; }
+  38%, 100% { opacity: 0; transform: translate(calc(520 * var(--u)), calc(386 * var(--u))); }
+}
+.loop-ptr-r4 { animation-name: loop-ptr-r4; }
+@keyframes loop-ptr-r4 {
+  0%, 22% { opacity: 0; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); }
+  23% { opacity: 1; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  28.5% { transform: translate(calc(468 * var(--u)), calc(314 * var(--u))) scale(1); }
+  29.3% { transform: translate(calc(468 * var(--u)), calc(314 * var(--u))) scale(.86); }
+  30.2% { opacity: 1; transform: translate(calc(468 * var(--u)), calc(314 * var(--u))) scale(1); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  36% { opacity: 1; }
+  38%, 100% { opacity: 0; transform: translate(calc(520 * var(--u)), calc(424 * var(--u))); }
+}
+.loop-ptr-r5 { animation-name: loop-ptr-r5; }
+@keyframes loop-ptr-r5 {
+  0%, 22% { opacity: 0; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); }
+  23% { opacity: 1; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  28.5% { transform: translate(calc(468 * var(--u)), calc(352 * var(--u))) scale(1); }
+  29.3% { transform: translate(calc(468 * var(--u)), calc(352 * var(--u))) scale(.86); }
+  30.2% { opacity: 1; transform: translate(calc(468 * var(--u)), calc(352 * var(--u))) scale(1); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  36% { opacity: 1; }
+  38%, 100% { opacity: 0; transform: translate(calc(520 * var(--u)), calc(462 * var(--u))); }
+}
+.loop-ptr-r6 { animation-name: loop-ptr-r6; }
+@keyframes loop-ptr-r6 {
+  0%, 22% { opacity: 0; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); }
+  23% { opacity: 1; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  28.5% { transform: translate(calc(468 * var(--u)), calc(390 * var(--u))) scale(1); }
+  29.3% { transform: translate(calc(468 * var(--u)), calc(390 * var(--u))) scale(.86); }
+  30.2% { opacity: 1; transform: translate(calc(468 * var(--u)), calc(390 * var(--u))) scale(1); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  36% { opacity: 1; }
+  38%, 100% { opacity: 0; transform: translate(calc(520 * var(--u)), calc(500 * var(--u))); }
+}
+.loop-ptr-r7 { animation-name: loop-ptr-r7; }
+@keyframes loop-ptr-r7 {
+  0%, 22% { opacity: 0; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); }
+  23% { opacity: 1; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  28.5% { transform: translate(calc(468 * var(--u)), calc(428 * var(--u))) scale(1); }
+  29.3% { transform: translate(calc(468 * var(--u)), calc(428 * var(--u))) scale(.86); }
+  30.2% { opacity: 1; transform: translate(calc(468 * var(--u)), calc(428 * var(--u))) scale(1); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  36% { opacity: 1; }
+  38%, 100% { opacity: 0; transform: translate(calc(520 * var(--u)), calc(538 * var(--u))); }
+}
+.loop-ptr-r8 { animation-name: loop-ptr-r8; }
+@keyframes loop-ptr-r8 {
+  0%, 22% { opacity: 0; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); }
+  23% { opacity: 1; transform: translate(calc(760 * var(--u)), calc(520 * var(--u))); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  28.5% { transform: translate(calc(468 * var(--u)), calc(466 * var(--u))) scale(1); }
+  29.3% { transform: translate(calc(468 * var(--u)), calc(466 * var(--u))) scale(.86); }
+  30.2% { opacity: 1; transform: translate(calc(468 * var(--u)), calc(466 * var(--u))) scale(1); animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  36% { opacity: 1; }
+  38%, 100% { opacity: 0; transform: translate(calc(520 * var(--u)), calc(576 * var(--u))); }
+}

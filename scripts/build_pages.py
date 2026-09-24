@@ -2302,6 +2302,11 @@ import copy_ja  # noqa: E402
 import copy_zh_hans  # noqa: E402
 import hero_window  # noqa: E402
 import loop_anim  # noqa: E402
+import templates_pages  # noqa: E402
+
+# The /templates/ pages' own labels (#95) live with their copy, in templates_pages.
+for _locale in ("en", "zh-hant"):
+    UI[_locale].update(templates_pages.UI_LABELS[_locale])
 
 EXTRA_PAGES = {}
 
@@ -2313,6 +2318,7 @@ def _merge_locale(locale: str, module) -> None:
         APP_UI_LANGUAGES=APP_UI_LANGUAGES[locale], schema_links_from=schema_links_from, xml_escape=xml_escape,
     )
     t = module.build(k)
+    t["ui"] = {**t["ui"], **templates_pages.UI_LABELS[locale]}
     assert set(t["ui"]) == set(UI["en"]), f"{locale}: UI keys differ from en"
     UI[locale] = t["ui"]
     STORE_CHIP[locale] = t["store_chip"]
@@ -2848,7 +2854,8 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
     ])
 
 PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
-              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "sharing-exported-pdfs", "reviewing-ai-output", "changelog"]
+              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "sharing-exported-pdfs", "reviewing-ai-output", "changelog",
+              *templates_pages.SLUGS]
 SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
                   "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
@@ -2856,7 +2863,9 @@ SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
                   "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes",
                   "sharing-exported-pdfs": "sharing-exported-pdfs", "reviewing-ai-output": "reviewing-ai-output",
-                  "changelog": "changelog"}
+                  "changelog": "changelog",
+                  "templates": "templates", "templates/spec": "templates-spec",
+                  "templates/flowchart": "templates-flowchart", "templates/meeting-notes": "templates-meeting-notes"}
 
 
 def _base_pages() -> dict:
@@ -2867,6 +2876,7 @@ def _base_pages() -> dict:
     merged.update(SKILL_PAGES)
     merged.update(TRAIT_PAGES)
     merged.update(BRAINSTORM_PAGES)
+    merged.update(templates_pages.pages())
     return merged
 
 
@@ -3186,6 +3196,8 @@ def render(locale: str, slug: str, page: dict) -> str:
     statement_chip = (f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  '
                       if not is_trait_page and slug != "index" else "")
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
+    if slug.startswith("templates/"):
+        extra_css = '<link rel="stylesheet" href="/assets/loop.css">\n'
     if slug == "index":
         extra_css = ('<link rel="stylesheet" href="/assets/hero.css">\n<link rel="stylesheet" href="/assets/annotations.css">\n'
                      '<link rel="stylesheet" href="/assets/loop.css">\n')
@@ -3212,7 +3224,7 @@ def render(locale: str, slug: str, page: dict) -> str:
     elif has_intro:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
-        main_html = page["body"].strip()
+        main_html = templates_pages.expand_loops(locale, page["body"].strip())
     if slug in TOC_PAGES:
         main_html = add_toc(locale, slug, main_html)
     elif slug != "index":
@@ -3616,6 +3628,11 @@ def main() -> None:
     (SITE / "assets" / "annotations.css").write_text(annotations_css(), encoding="utf-8")
     (SITE / "assets" / "hero.css").write_text(hero_window.window_css(), encoding="utf-8")
     (SITE / "assets" / "loop.css").write_text(loop_anim.loop_css(), encoding="utf-8")
+    for path, text in templates_pages.downloads().items():
+        target = SITE / path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(text, encoding="utf-8")
+        print(target)
     print(SITE / "assets" / "annotations.css")
     (SITE / "robots.txt").write_text(ROBOTS_TXT, encoding="utf-8")
     print(SITE / "robots.txt")

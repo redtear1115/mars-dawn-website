@@ -49,7 +49,8 @@ PATTERNS = [
     re.compile(r"\]\(([^)\s]+)\)"),
     re.compile(r"<loc>([^<]+)</loc>"),
     re.compile(r"url\(\s*['\"]?([^'\")]+)['\"]?\s*\)"),
-    re.compile(r"(?<![\w(\"'=])(" + re.escape(BASE_URL) + r"/[^\s)\"'<>`]*)"),
+    # A bare URL in prose: sentence punctuation right after it is not part of it.
+    re.compile(r"(?<![\w(\"'=])(" + re.escape(BASE_URL) + r"/(?:[^\s)\"'<>`]*[^\s)\"'<>`.,;:!?])?)"),
 ]
 
 
