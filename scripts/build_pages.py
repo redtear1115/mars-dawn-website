@@ -150,14 +150,15 @@ OG_IMAGE_ALT = None
 FULL_WIDTH = {"zh-hant", "zh-hans", "ja"}
 
 # The app's interface languages, as /native/ and /vs/macmd-viewer/ state them. One place so the
-# sentence changes in every language at once. Four languages from the 1.0 launch (app #104), approved
-# for the site by the owner on 2026-09-20 (website #41). It's true only once that build ships, which
-# is why this goes live with the launch deploy.
+# sentence changes in every language at once. The 1.0.0 (5) launch build ships all eight: every string
+# catalog (app, Quick Look, Info.plist, App Shortcuts) and the Welcome guide are complete in each
+# (checked at the app's b35cacd, 2026-09-25). Owner, 2026-09-25: say eight from launch day. The App
+# Store listing's own languages are a separate 1.1 change (app #102).
 APP_UI_LANGUAGES = {
-    "en": "English, Traditional Chinese, Simplified Chinese and Japanese",
-    "zh-hant": "英文、繁體中文、簡體中文和日文",
-    "zh-hans": "英文、繁体中文、简体中文和日文",
-    "ja": "英語、繁体字中国語、簡体字中国語、日本語",
+    "en": "English, Traditional Chinese, Simplified Chinese, Japanese, German, French, Spanish and Korean",
+    "zh-hant": "英文、繁體中文、簡體中文、日文、德文、法文、西班牙文和韓文",
+    "zh-hans": "英文、繁体中文、简体中文、日文、德文、法文、西班牙文和韩文",
+    "ja": "英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語",
 }
 
 UI = {

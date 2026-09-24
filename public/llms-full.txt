@@ -178,7 +178,7 @@ In this screenshot:
 - Native windows, tabs, autosave and version history.
 - Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included.
 - Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.
-- English, Traditional Chinese, Simplified Chinese and Japanese.
+- English, Traditional Chinese, Simplified Chinese, Japanese, German, French, Spanish and Korean.
 ---
 
 ## What MarsDawn doesn't do
@@ -506,7 +506,7 @@ If your job is strictly reading Markdown someone else wrote, and you never need 
 | Quick Look in Finder | Yes | Yes |
 | PDF and print | Yes | Yes |
 | Requires | macOS 14 (Sonoma) or later | macOS 26 (Tahoe) or later |
-| Interface languages | Not stated in its own materials | English, Traditional Chinese, Simplified Chinese and Japanese |
+| Interface languages | Not stated in its own materials | English, Traditional Chinese, Simplified Chinese, Japanese, German, French, Spanish and Korean |
 
 ## Pricing and how you buy it
 
@@ -1318,7 +1318,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/native/
 - 原生視窗、分頁、自動儲存和版本記錄。
 - 快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。
 - Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。
-- 支援英文、繁體中文、簡體中文和日文。
+- 支援英文、繁體中文、簡體中文、日文、德文、法文、西班牙文和韓文。
 ---
 
 ## MarsDawn 做不到的事
@@ -1646,7 +1646,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/
 | Finder 快速查看 | 有 | 有 |
 | PDF 與列印 | 有 | 有 |
 | 系統需求 | macOS 14（Sonoma）以上 | macOS 26（Tahoe）以上 |
-| 介面語言 | 自己的資料沒有寫出 | 英文、繁體中文、簡體中文和日文 |
+| 介面語言 | 自己的資料沒有寫出 | 英文、繁體中文、簡體中文、日文、德文、法文、西班牙文和韓文 |
 
 ## 價格與購買方式
 
@@ -2458,7 +2458,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/native/
 - 原生窗口、标签页、自动保存和版本记录。
 - 快速查看：在访达选取 Markdown 文件按空格键就能预览，图表也会显示。
 - Siri 和快捷指令：用模板添加文稿、在笔记收件箱加上一行，或重新打开最近的文稿。
-- 支持英文、繁体中文、简体中文和日文。
+- 支持英文、繁体中文、简体中文、日文、德文、法文、西班牙文和韩文。
 ---
 
 ## MarsDawn 做不到的事
@@ -2783,7 +2783,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 | 访达快速查看 | 有 | 有 |
 | PDF 与打印 | 有 | 有 |
 | 系统要求 | macOS 14（Sonoma）或更高版本 | macOS 26（Tahoe）或更高版本 |
-| 界面语言 | 自己的资料没有写明 | 英文、繁体中文、简体中文和日文 |
+| 界面语言 | 自己的资料没有写明 | 英文、繁体中文、简体中文、日文、德文、法文、西班牙文和韩文 |
 
 ## 价格与购买方式
 
@@ -3588,7 +3588,7 @@ Source: https://marsdawn.southern-light.dev/ja/native/
 - ネイティブなウインドウ、タブ、自動保存、バージョン履歴。
 - クイックルック：Finder で Markdown ファイルを選んでスペースキーを押すとプレビューでき、図も表示されます。
 - Siri とショートカット：テンプレートから新しい文書を作成する、メモの受信トレイに1行追加する、最近使った文書を再度開く、といった操作ができます。
-- 英語、繁体字中国語、簡体字中国語、日本語に対応。
+- 英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語に対応。
 ---
 
 ## MarsDawn ができないこと
@@ -3913,7 +3913,7 @@ Source: https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/
 | Finder のクイックルック | あり | あり |
 | PDF と印刷 | あり | あり |
 | 動作環境 | macOS 14（Sonoma）以降 | macOS 26（Tahoe）以降 |
-| インターフェイスの言語 | 公式の資料に記載なし | 英語、繁体字中国語、簡体字中国語、日本語 |
+| インターフェイスの言語 | 公式の資料に記載なし | 英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語 |
 
 ## 価格と購入方法
 
