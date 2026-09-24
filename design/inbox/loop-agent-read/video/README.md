@@ -2,7 +2,7 @@
 
 **For Claude.** One recorded video of the whole loop for the homepage: the agent writes, you read and edit in MarsDawn, the agent makes the rest agree, you read again and export. There is one English cut, and every locale uses it. This folder does not wire it into the page. Do not merge it as the live change.
 
-**Do not put it on the site yet.** The video shows the Outline sidebar, and Outline is not in the App Store version (1.0.1 shipped with the Files tab only). The owner decided on 2026-09-24 that the video waits for the version with Outline. Check the iTunes lookup before placing it.
+**Place it only once the app is on sale.** The video shows the Outline sidebar. The owner decided on 2026-09-24 that the video waits for an App Store version with Outline, and the launch build, 1.0.0 (5), has it (its Welcome guide describes the Outline tab). So the hold ends when 1.0.0 goes live on 2026-10-01. Check the iTunes lookup before placing it.
 
 | File | |
 |------|--|
