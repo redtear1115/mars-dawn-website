@@ -2765,10 +2765,9 @@ def callout_growth(callouts: list) -> dict:
 
 
 def figure_html(locale: str, slug: str) -> str:
-    # The homepage hero shot spans min(76rem, 100vw - 48px); trait shots sit
-    # inside 12rem gutters, so about 50rem.
-    sizes = ("(min-width: 1264px) 76rem, (min-width: 736px) calc(100vw - 48px), calc(100vw - 32px)"
-             if slug == "index" else "(min-width: 1100px) 50rem, calc(100vw - 32px)")
+    # Every shot's plate is --w-media, min(60rem, 100vw - 32px), and the image sits inside the
+    # plate's padding (up to 28px a side): about 56.5rem wide, or the viewport less about 52px.
+    sizes = "(min-width: 992px) 57rem, calc(100vw - 52px)"
     fig = FIGURES[slug]
     img = fig["image"]
     _, _, width, height = CROPS[img]
@@ -2789,9 +2788,19 @@ def figure_html(locale: str, slug: str) -> str:
     <span class="figure-label">{FIGURE_LIST_LABEL[locale]}</span>
     <ol>{''.join(legend)}</ol>
   </figcaption>"""
+    alt = fig["alt"][locale]
+    image = (f'<img src="/assets/screens/{img}-{width}.png" srcset="/assets/screens/{img}-{SMALL_WIDTH}.png {SMALL_WIDTH}w, '
+             f'/assets/screens/{img}-{width}.png {width}w" sizes="{sizes}" width="{width}" height="{height}" alt="{alt}">')
+    # A dark capture follows the Mac's appearance, like the hero window and the loop. It has to be
+    # the same window, document and crop in Dark Mode, or the markers land on the wrong things, so
+    # it is used only once both widths are on disk: <image>-dark-<width>.png.
+    dark = [SITE / "assets" / "screens" / f"{img}-dark-{w}.png" for w in (SMALL_WIDTH, width)]
+    if all(path.exists() for path in dark):
+        image = (f'<picture><source media="(prefers-color-scheme: dark)" srcset="/assets/screens/{img}-dark-{SMALL_WIDTH}.png '
+                 f'{SMALL_WIDTH}w, /assets/screens/{img}-dark-{width}.png {width}w" sizes="{sizes}">{image}</picture>')
     return f"""<figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/{img}-{width}.png" srcset="/assets/screens/{img}-{SMALL_WIDTH}.png {SMALL_WIDTH}w, /assets/screens/{img}-{width}.png {width}w" sizes="{sizes}" width="{width}" height="{height}" alt="{fig['alt'][locale]}">
+    {image}
     {''.join(markers)}
     {''.join(lines)}
   </div></div>{figcaption}
@@ -3206,6 +3215,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         closing_html = (
             '<section class="dawn-close">\n'
             f'<p><strong>{ui["slogan"]}</strong> {ui["footer_store"]}</p>\n'
+            f'<p class="close-next"><a href="#install">{HOME[locale]["cta_cli"]}</a></p>\n'
             "</section>"
         )
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
