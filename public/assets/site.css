@@ -12,6 +12,13 @@
   --rule: #D97A4A;
   --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang TC", "PingFang SC", sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  /* Three widths, one per kind of content (DESIGN.md, Layout): prose, a depicted app, and the
+     sky. Every picture of the app (the hero window, the loop, the screenshot plates) takes
+     --w-media, so they share both edges at every width; 32px keeps the 16px page gutter. */
+  --w-text: 44rem;
+  --w-media: min(60rem, 100vw - 32px);
+  --w-bleed: 100vw;
+  --r-plate: 16px;
 }
 /* Han characters are drawn differently in each language, and the first CJK font in --font wins.
    Give Simplified Chinese and Japanese their own system fonts, including the language-switch
@@ -63,7 +70,7 @@ a:focus-visible {
 }
 
 .page {
-  max-width: 44rem;
+  max-width: var(--w-text);
   margin: 0 auto;
   padding: 0 16px 96px;
 }
@@ -361,9 +368,9 @@ html { scrollbar-color: var(--hairline) var(--paper); }
 
 .shot {
   --gutter: 0px;
-  /* 100vw counts a classic (non-overlay) scrollbar, so leave room for one and
-     never go narrower than the text column itself. */
-  --shot-width: max(100%, min(76rem, 100vw - 48px));
+  /* The plate is --w-media, never narrower than the text column; the figure adds the callout
+     gutters around it when they fit. */
+  --shot-width: calc(max(100%, var(--w-media)) + 2 * var(--gutter));
   width: var(--shot-width);
   margin: 36px calc((100% - var(--shot-width)) / 2) 8px;
 }
@@ -373,9 +380,10 @@ html { scrollbar-color: var(--hairline) var(--paper); }
   margin-inline: var(--gutter);
   padding: clamp(10px, 2.2vw, 28px);
   background: var(--sand);
-  border-radius: 16px;
+  border-radius: var(--r-plate);
 }
 .shot-canvas { position: relative; }
+.shot picture { display: block; }
 .shot img {
   display: block;
   width: 100%;
@@ -420,7 +428,9 @@ img.pdf-page {
               0 1px 3px color-mix(in srgb, var(--ink) 30%, transparent);
 }
 .leader { display: none; }
-@media (max-width: 1099px) {
+/* Leader lines need a 12rem gutter on each side of a full --w-media plate: 60rem + 24rem, plus
+   room for a classic scrollbar, is 1392px. Narrower, the markers are numbered. */
+@media (max-width: 1391px) {
   .marker { width: 18px; height: 18px; font-size: 0.68rem; }
   .marker.l { translate: -100% -50%; }
   .marker.r { translate: 0 -50%; }
@@ -428,9 +438,10 @@ img.pdf-page {
   .marker.tb { top: 0; translate: -50% -100%; }
 }
 
+/* The numbered list is prose, so it sits on the text tier under the wider plate. */
 .shot figcaption {
-  margin-top: 18px;
-  padding-inline: 4px;
+  max-width: calc(var(--w-text) - 32px);
+  margin: 18px auto 0;
 }
 .figure-label {
   display: block;
@@ -466,7 +477,7 @@ img.pdf-page {
   translate: 0 -1px;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1392px) {
   .shot { --gutter: 12rem; margin-top: 44px; }
   .marker {
     width: 9px;
@@ -653,7 +664,7 @@ html { overflow-x: hidden; }
 .hero-inner {
   position: relative;
   z-index: 1;
-  max-width: 44rem;
+  max-width: var(--w-text);
   margin: 0 auto;
   padding: 0 16px;
 }
@@ -703,21 +714,6 @@ html { overflow-x: hidden; }
 }
 
 .hero-shot { margin-top: clamp(36px, 8vw, 88px); }
-.hero-shot .shot { --gutter: 0px; margin: 0 calc((100% - var(--shot-width)) / 2); }
-.hero-shot .shot-frame {
-  padding: 0;
-  background: transparent;
-  border-radius: 16px;
-}
-.hero-shot .shot img {
-  border-radius: 16px;
-  box-shadow: 0 1px 0 color-mix(in srgb, #fff 12%, transparent) inset,
-              0 40px 64px -28px color-mix(in srgb, #000 70%, transparent),
-              0 14px 28px -14px color-mix(in srgb, #000 55%, transparent);
-}
-@media (min-width: 1100px) {
-  .hero-shot .shot { margin-top: 0; }
-}
 
 /* The hero's MarsDawn window: a working model of the app, drawn after its macOS 26
    window (public/assets/screens/01-split and 03-dark). The theme menu and the layout
@@ -745,8 +741,9 @@ html { overflow-x: hidden; }
   --chrome-pill-edge: color-mix(in srgb, #000 7%, transparent);
   --chrome-on: #E6E6E6;
   --chrome-divider: #E9E9E9;
-  --mdw-width: min(60rem, 100vw - 32px);
+  --mdw-width: max(100%, var(--w-media));
   margin: 0 calc((100% - var(--mdw-width)) / 2);
+  /* A macOS window's own corner, not a plate's. */
   border-radius: 14px;
   overflow: hidden;
   background: var(--bg);
@@ -1150,6 +1147,20 @@ html { overflow-x: hidden; }
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
+/* The page's last word is the one thing a visitor can do today: a plain link back to the
+   install block, in the hero palette (the Fixed Sky Rule). Not a .cta pill: the hero keeps the
+   only call to action with weight. */
+.dawn-close .close-next { margin-top: 20px; }
+.close-next a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--hero-ink);
+  font-weight: 650;
+  text-decoration-color: color-mix(in srgb, var(--hero-ink) 55%, transparent);
+}
+.close-next a:hover { text-decoration-color: var(--hero-ink); }
+.close-next a:focus-visible { outline-color: var(--hero-kicker); }
 /* The home footer keeps the hairline, so the closing band, the rule and the links read as layers. */
 .footer-home { margin-top: 40px; }
 
