@@ -22,6 +22,7 @@ Other agents can use the same file. It's plain Markdown, instructions and comman
 - Tell the failures apart by exit code: no such file, a PDF already there, a failed export, a bad option.
 - Open a document it wrote with `marsdawn open file.md:line`, landing on its first change, and only once: later edits show up in the open window by themselves.
 - If the MarsDawn app isn't installed, say so once and carry on, without retrying. Never use `open` to make a PDF.
+- With `--folder` (marsdawn 0.5.1 and later), report the folder as asked for, not as shown: the app decides, and nothing reports back.
 
 ## What it doesn't do
 

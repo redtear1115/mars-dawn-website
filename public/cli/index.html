@@ -94,15 +94,18 @@ swift build -c release --product marsdawn</code></pre>
 <p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app. The app is on the <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
-marsdawn open notes.md --line 120</code></pre>
+marsdawn open notes.md --line 120
+marsdawn open .
+marsdawn open notes.md --folder .</code></pre>
 <ul>
   <li><code>path:line</code>: asks MarsDawn to land on that line. A column after it, as in <code>notes.md:120:8</code>, is ignored. If a file with the whole name exists, the argument is that file.</li>
   <li><code>--line &lt;n&gt;</code>: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.</li>
   <li>Lines run from 1 to 999999999.</li>
+  <li>A folder argument opens in the window's sidebar instead of as a document: <code>marsdawn open .</code> shows the current folder. <code>--folder &lt;path&gt;</code> does the same alongside files. A window's sidebar shows one folder, so naming two is a usage error.</li>
   <li><code>--background</code>: open without bringing MarsDawn to the front.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
 </ul>
-<p>Lines were added in marsdawn 0.3.0, and <code>--background</code> in 0.5.1.</p>
+<p>Lines were added in marsdawn 0.3.0, and folders and <code>--background</code> in 0.5.1.</p>
 
 <h3>marsdawn export</h3>
 <p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.</p>

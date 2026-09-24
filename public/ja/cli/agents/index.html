@@ -78,7 +78,7 @@ try {
 <h2>できること</h2>
 <ul>
   <li><code>export</code>：MarsDawn アプリと同じ書き出しエンジンで、1つの Markdown ファイルをページ分割された PDF にレンダリングします。ウインドウは開きません。</li>
-  <li><code>open</code>：1つ以上の Markdown ファイルを MarsDawn アプリで開き、人が確認できるようにします。各ファイルが移動すべき行を指定することもできます。</li>
+  <li><code>open</code>：1つ以上の Markdown ファイルを MarsDawn アプリで開き、人が確認できるようにします。各ファイルが移動すべき行を指定したり、ウインドウのサイドバーにフォルダを表示したりすることもできます。</li>
 </ul>
 
 <h2>できないこと</h2>
@@ -116,20 +116,28 @@ try {
 <pre><code>marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json
-marsdawn open notes.md --background --json</code></pre>
+marsdawn open . --json
+marsdawn open notes.md --folder . --background --json</code></pre>
 <ul>
   <li><code>path:line</code> は移動先の行を指定します。その後にコロンが続く場合、たとえば <code>notes.md:120:8</code> の列部分は無視されます。存在するファイル名を丸ごと表す引数は常にそのファイル名として扱われるため、<code>weird:12</code> という名前のファイルはそのまま開きます。</li>
   <li><code>--line &lt;n&gt;</code> は単一ファイルの行を指定します。それ自体がコロンと数字で終わるパスも含みます。ファイルは1つだけ指定できます。</li>
   <li>行番号は 1 から 999999999 までで、それ以外は使用方法のエラーになります。</li>
   <li>行の指定は marsdawn 0.3.0 で追加されました。</li>
+  <li>フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます。<code>marsdawn open .</code> で現在のフォルダを表示し、<code>--folder &lt;path&gt;</code> はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つです：2つ指定すると使用方法のエラーになり、同じフォルダを2回指定した場合は1つとして扱います。フォルダには行がないため、フォルダに <code>--line</code> を指定すると使用方法のエラーです。<code>-a</code> はありません：指定すると使用方法のエラーになり、<code>--folder</code> を案内します。</li>
   <li><code>--background</code> は MarsDawn を前面に出さずに開きます。人が別の作業をしている間にファイルを開くエージェント向けです。JSON はどちらでも同じです。</li>
-  <li><code>--background</code> は marsdawn 0.5.1 で追加されました。</li>
+  <li>フォルダと <code>--background</code> は marsdawn 0.5.1 で追加されました。</li>
 </ul>
 <p>成功、終了コード 0：</p>
 <pre><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
 <ul>
   <li><code>opened</code>：渡された順に、ファイルごとの1つのオブジェクト。<code>path</code> はファイルの絶対パス、<code>line</code> は行が指定されたときだけ現れます。</li>
   <li><code>app</code>：それらを開いた MarsDawn アプリのパス。</li>
+</ul>
+<p>フォルダを指定した場合（marsdawn 0.5.1 以降）、終了コード 0：</p>
+<pre><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
+<ul>
+  <li><code>folder</code>：フォルダを指定したときだけ現れます。<code>path</code> はその絶対パスです。<code>requested</code> は常に <code>true</code> です：marsdawn は MarsDawn にフォルダの表示を依頼しましたが、サイドバーに実際に表示されたかどうかは分かりません。アプリが先に人にアクセスの許可を求めることがあるためです。「完了した」ではなく「依頼した」と報告してください。</li>
+  <li>フォルダだけを指定したとき、<code>opened</code> は空です。</li>
 </ul>
 <p>marsdawn 0.2.x では <code>opened</code> はパス文字列のリストでした。両方を扱う必要がある場合は <code>marsdawn --version</code> を確認してください。</p>
 
@@ -187,19 +195,19 @@ exit 0</code></pre>
 <p><code>--json</code> を指定すると、失敗時は stdout に1つの JSON オブジェクトを出力し、対応するコードで終了します。</p>
 <pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
 <ul>
-  <li><code>2</code>、<code>input_not_found</code>：入力が存在しない、フォルダである、または UTF-8 テキストでない。</li>
+  <li><code>2</code>、<code>input_not_found</code>：入力が存在しない、フォルダである、または UTF-8 テキストでない。または <code>--folder</code> のパスが存在しないか、フォルダでない。</li>
   <li><code>3</code>、<code>app_not_installed</code>：MarsDawn がインストールされていない。<code>open</code> のみがこれを返します。</li>
   <li><code>4</code>、<code>output_exists</code>：出力ファイルが存在する。<code>--force</code> を指定してください。</li>
   <li><code>5</code>、<code>export_failed</code>：書き出し自体が失敗した。</li>
   <li><code>6</code>、<code>app_cannot_open_folders</code>：この MarsDawn はまだフォルダを表示できないため、何も開かなかった。<code>open</code> のみがこれを返します。</li>
-  <li><code>64</code>：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルに対する <code>--line</code> の指定など。この場合は、<code>--json</code> を指定していても stderr にテキストとして出力されます。</li>
+  <li><code>64</code>：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルやフォルダに対する <code>--line</code> の指定、複数のフォルダの指定、<code>-a</code> の指定など。この場合は、<code>--json</code> を指定していても stderr にテキストとして出力されます。</li>
 </ul>
 
 <h2>JSON Schema</h2>
 <p>各 <code>--json</code> 結果に対応する JSON Schema（draft 2020-12）：</p>
 <ul>
   <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功時</li>
-  <li><a href="/schemas/cli/open.v3.json">open.v3.json</a>: open 成功時、marsdawn 0.5.1 以降</li>
+  <li><a href="/schemas/cli/open.v3.json">open.v3.json</a>: open 成功時、marsdawn 0.5.1 以降、サイドバーに表示するフォルダを含む</li>
   <li><a href="/schemas/cli/error.v2.json">error.v2.json</a>: 失敗時、両方のコマンド共通、marsdawn 0.5.2 以降</li>
   <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功時、marsdawn 0.3.0〜0.5.0</li>
   <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）</li>

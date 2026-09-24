@@ -85,6 +85,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
   <li>終了コードで失敗の種類を見分ける：ファイルが見つからない、PDF がすでにある、書き出しに失敗した、オプションが不正、など。</li>
   <li><code>marsdawn open file.md:line</code> で自分が書いた文書を開き、最初の変更箇所に移動する。開くのは1回だけ：その後の編集は、開いているウインドウに自動的に反映される。</li>
   <li>MarsDawn アプリがインストールされていなければ、一度だけそう伝えて作業を続け、再試行はしない。PDF を作るために <code>open</code> を使うことは絶対にない。</li>
+  <li><code>--folder</code>（marsdawn 0.5.1 以降）を使ったときは、フォルダを「表示された」ではなく「表示を依頼した」と報告する：判断するのはアプリで、結果は返ってこない。</li>
 </ul>
 <h2 id="what-it-doesn-t-do">しないこと</h2>
 <ul>
