@@ -16,7 +16,7 @@ If your job is strictly reading Markdown someone else wrote, and you never need 
 | Quick Look in Finder | Yes | Yes |
 | PDF and print | Yes | Yes |
 | Requires | macOS 14 (Sonoma) or later | macOS 26 (Tahoe) or later |
-| Interface languages | Not stated in its own materials | English, Traditional Chinese, Simplified Chinese and Japanese |
+| Interface languages | Not stated in its own materials | English, Traditional Chinese, Simplified Chinese, Japanese, German, French, Spanish and Korean |
 
 ## Pricing and how you buy it
 
