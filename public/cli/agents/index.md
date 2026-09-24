@@ -62,7 +62,7 @@ marsdawn open notes.md --folder . --background --json
 - `--line <n>` names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.
 - Lines run from 1 to 999999999. Anything else is a usage error.
 - Lines were added in marsdawn 0.3.0.
-- A folder argument opens in the window's sidebar instead of as a document, so `marsdawn open .` shows the current folder; `--folder <path>` does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and naming the same folder twice is one folder. `--line` with a folder is a usage error, since a folder has no line. There is no `-a`: passing it is a usage error that points at `--folder`.
+- A folder argument opens in the window's sidebar instead of as a document, so `marsdawn open .` shows the current folder; `--folder <path>` does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and so is using `--folder` twice, even for the same folder; the same folder given again as an argument counts once. `--line` with a folder is a usage error, since a folder has no line. There is no `-a`: passing it is a usage error that points at `--folder`.
 - `--background` opens without bringing MarsDawn to the front, for an agent that opens files while the person works elsewhere. The JSON is the same either way.
 - Folders and `--background` were added in marsdawn 0.5.1.
 

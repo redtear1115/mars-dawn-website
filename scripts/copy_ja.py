@@ -539,7 +539,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li><code>--line &lt;n&gt;</code> は単一ファイルの行を指定します。それ自体がコロンと数字で終わるパスも含みます。ファイルは1つだけ指定できます。</li>
   <li>行番号は 1 から 999999999 までで、それ以外は使用方法のエラーになります。</li>
   <li>行の指定は marsdawn 0.3.0 で追加されました。</li>
-  <li>フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます。<code>marsdawn open .</code> で現在のフォルダを表示し、<code>--folder &lt;path&gt;</code> はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つです：2つ指定すると使用方法のエラーになり、同じフォルダを2回指定した場合は1つとして扱います。フォルダには行がないため、フォルダに <code>--line</code> を指定すると使用方法のエラーです。<code>-a</code> はありません：指定すると使用方法のエラーになり、<code>--folder</code> を案内します。</li>
+  <li>フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます。<code>marsdawn open .</code> で現在のフォルダを表示し、<code>--folder &lt;path&gt;</code> はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つです：2つ指定すると使用方法のエラーになり、<code>--folder</code> を2回使った場合も（同じフォルダでも）エラーです。同じフォルダを引数でもう一度指定した場合は1つとして扱います。フォルダには行がないため、フォルダに <code>--line</code> を指定すると使用方法のエラーです。<code>-a</code> はありません：指定すると使用方法のエラーになり、<code>--folder</code> を案内します。</li>
   <li><code>--background</code> は MarsDawn を前面に出さずに開きます。人が別の作業をしている間にファイルを開くエージェント向けです。JSON はどちらでも同じです。</li>
   <li>フォルダと <code>--background</code> は marsdawn 0.5.1 で追加されました。</li>
 </ul>
@@ -904,7 +904,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <ul>
   <li>書き出した PDF のテキストレイヤーを、中国語、日本語、韓国語について修正しました。</li>
   <li><code>marsdawn open --background</code> はファイルを開きますが、MarsDawn を前面には出しません。</li>
-  <li><code>marsdawn open</code> にフォルダを渡せます。Mac App Store のアプリはまだフォルダを表示できないので、このオプションは、それができるアプリを待ちます。</li>
+  <li><code>marsdawn open</code> にフォルダを渡すと、MarsDawn がウインドウのサイドバーに表示します（MarsDawn 1.0.0 以降）。</li>
 </ul>
 """,
     }

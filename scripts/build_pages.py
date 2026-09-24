@@ -1029,7 +1029,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li><code>--line &lt;n&gt;</code> names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.</li>
   <li>Lines run from 1 to 999999999. Anything else is a usage error.</li>
   <li>Lines were added in marsdawn 0.3.0.</li>
-  <li>A folder argument opens in the window's sidebar instead of as a document, so <code>marsdawn open .</code> shows the current folder; <code>--folder &lt;path&gt;</code> does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and naming the same folder twice is one folder. <code>--line</code> with a folder is a usage error, since a folder has no line. There is no <code>-a</code>: passing it is a usage error that points at <code>--folder</code>.</li>
+  <li>A folder argument opens in the window's sidebar instead of as a document, so <code>marsdawn open .</code> shows the current folder; <code>--folder &lt;path&gt;</code> does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and so is using <code>--folder</code> twice, even for the same folder; the same folder given again as an argument counts once. <code>--line</code> with a folder is a usage error, since a folder has no line. There is no <code>-a</code>: passing it is a usage error that points at <code>--folder</code>.</li>
   <li><code>--background</code> opens without bringing MarsDawn to the front, for an agent that opens files while the person works elsewhere. The JSON is the same either way.</li>
   <li>Folders and <code>--background</code> were added in marsdawn 0.5.1.</li>
 </ul>
@@ -1204,7 +1204,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li><code>--line &lt;n&gt;</code> 為單一檔案指定行號，包括檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。</li>
   <li>行號範圍是 1 到 999999999，超出範圍是用法錯誤。</li>
   <li>行號從 marsdawn 0.3.0 開始提供。</li>
-  <li>資料夾參數會在視窗的側邊欄開啟，而不是當成文件，所以 <code>marsdawn open .</code> 會顯示目前的資料夾；<code>--folder &lt;path&gt;</code> 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾：指定兩個是用法錯誤，同一個資料夾指定兩次則算一個。資料夾沒有行號，所以 <code>--line</code> 搭配資料夾是用法錯誤。沒有 <code>-a</code>：傳入它是用法錯誤，錯誤訊息會指向 <code>--folder</code>。</li>
+  <li>資料夾參數會在視窗的側邊欄開啟，而不是當成文件，所以 <code>marsdawn open .</code> 會顯示目前的資料夾；<code>--folder &lt;path&gt;</code> 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾：指定兩個是用法錯誤，<code>--folder</code> 用兩次也是（即使是同一個資料夾）；同一個資料夾以參數再指定一次則算一個。資料夾沒有行號，所以 <code>--line</code> 搭配資料夾是用法錯誤。沒有 <code>-a</code>：傳入它是用法錯誤，錯誤訊息會指向 <code>--folder</code>。</li>
   <li><code>--background</code> 開啟時不把 MarsDawn 帶到最前面，適合在使用者做別的事時開檔的 agent。兩種情況的 JSON 都一樣。</li>
   <li>資料夾與 <code>--background</code> 從 marsdawn 0.5.1 開始提供。</li>
 </ul>
@@ -2068,7 +2068,7 @@ BRAINSTORM_PAGES = {
 <ul>
   <li>The text layer of an exported PDF is repaired for Chinese, Japanese and Korean.</li>
   <li><code>marsdawn open --background</code> opens a file without bringing MarsDawn to the front.</li>
-  <li><code>marsdawn open</code> can be given a folder. The app on the Mac App Store does not show a folder yet, so that option waits for an app that can take one.</li>
+  <li><code>marsdawn open</code> can be given a folder, and MarsDawn shows it in the window's sidebar (MarsDawn 1.0.0 and later).</li>
 </ul>
 """,
     },
@@ -2086,7 +2086,7 @@ BRAINSTORM_PAGES = {
 <ul>
   <li>輸出的 PDF 中，中文、日文與韓文的文字層已修正。</li>
   <li><code>marsdawn open --background</code> 會打開檔案，但不會把 MarsDawn 帶到最前面。</li>
-  <li><code>marsdawn open</code> 可以指定一個資料夾。Mac App Store 上的 app 還不能顯示資料夾，所以這個選項要等做得到的版本。</li>
+  <li><code>marsdawn open</code> 可以指定一個資料夾，MarsDawn 會把它顯示在視窗的側欄（MarsDawn 1.0.0 起）。</li>
 </ul>
 """,
     },

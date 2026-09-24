@@ -123,7 +123,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li><code>--line &lt;n&gt;</code> 为单一文件指定行号，包括文件名本身以冒号加数字结尾的情况。只能搭配一个文件。</li>
   <li>行号范围是 1 到 999999999，超出范围是用法错误。</li>
   <li>行号从 marsdawn 0.3.0 开始提供。</li>
-  <li>文件夹参数会在窗口的侧边栏打开，而不是当成文稿，所以 <code>marsdawn open .</code> 会显示当前的文件夹；<code>--folder &lt;path&gt;</code> 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹：指定两个是用法错误，同一个文件夹指定两次则算一个。文件夹没有行号，所以 <code>--line</code> 搭配文件夹是用法错误。没有 <code>-a</code>：传入它是用法错误，错误消息会指向 <code>--folder</code>。</li>
+  <li>文件夹参数会在窗口的侧边栏打开，而不是当成文稿，所以 <code>marsdawn open .</code> 会显示当前的文件夹；<code>--folder &lt;path&gt;</code> 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹：指定两个是用法错误，<code>--folder</code> 用两次也是（即使是同一个文件夹）；同一个文件夹以参数再指定一次则算一个。文件夹没有行号，所以 <code>--line</code> 搭配文件夹是用法错误。没有 <code>-a</code>：传入它是用法错误，错误消息会指向 <code>--folder</code>。</li>
   <li><code>--background</code> 打开时不把 MarsDawn 带到最前面，适合在用户做别的事时打开文件的 agent。两种情况的 JSON 都一样。</li>
   <li>文件夹与 <code>--background</code> 从 marsdawn 0.5.1 开始提供。</li>
 </ul>

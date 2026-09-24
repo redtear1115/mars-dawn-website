@@ -8,7 +8,7 @@
 
 - 書き出した PDF のテキストレイヤーを、中国語、日本語、韓国語について修正しました。
 - `marsdawn open --background` はファイルを開きますが、MarsDawn を前面には出しません。
-- `marsdawn open` にフォルダを渡せます。Mac App Store のアプリはまだフォルダを表示できないので、このオプションは、それができるアプリを待ちます。
+- `marsdawn open` にフォルダを渡すと、MarsDawn がウインドウのサイドバーに表示します（MarsDawn 1.0.0 以降）。
 
 ## その他
 

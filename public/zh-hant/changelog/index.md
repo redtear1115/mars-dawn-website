@@ -8,7 +8,7 @@
 
 - 輸出的 PDF 中，中文、日文與韓文的文字層已修正。
 - `marsdawn open --background` 會打開檔案，但不會把 MarsDawn 帶到最前面。
-- `marsdawn open` 可以指定一個資料夾。Mac App Store 上的 app 還不能顯示資料夾，所以這個選項要等做得到的版本。
+- `marsdawn open` 可以指定一個資料夾，MarsDawn 會把它顯示在視窗的側欄（MarsDawn 1.0.0 起）。
 
 ## 其他頁面
 
