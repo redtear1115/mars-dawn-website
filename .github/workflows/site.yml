@@ -3,11 +3,13 @@ name: Site
 # Pull requests (forks included) only run the check: no secrets, read-only token.
 # Never switch to pull_request_target, and never put PR titles, branch names or
 # commit messages straight into `run:`; pass them through `env:` if ever needed.
+# release/<version> (e.g. release/1.0.2) collects a version's PRs before one PR takes it to main;
+# its PRs and pushes run the check too. Only a push to `release` itself deploys (see `deploy`).
 on:
   pull_request:
-    branches: [main, release]
+    branches: [main, release, "release/**"]
   push:
-    branches: [main, release]
+    branches: [main, release, "release/**"]
 
 permissions: {}
 
