@@ -173,7 +173,7 @@ Light and dark mode are designed as two separate palettes, as in the parent. The
 
 **Key Characteristics:**
 - The Dawn theme, extended into a website: the same paper, ink, sand, hairline and Mars Rust as the app's default preview.
-- One authored motion moment per surface. It runs once, never loops and is optional.
+- One authored motion moment per surface. It runs once, never loops and is optional. The loop animation under the home page's loop steps is the one exception (see Loop Animation).
 - Full-bleed dawn at the opening and close of the home page. Dawn-paper reading everywhere else.
 - Hairline rules and sand plates carry the structure. There are no cards and no shadows on interface elements.
 - System fonts only, and a strict CSP: no web fonts, scripts or inline styles.
@@ -284,6 +284,9 @@ A real app screenshot sits on a sand plate that is wider than the text column. M
 ### The Loop (site signature)
 The home page presents the agent loop as three stops along one horizon line, not as three cards. Each step has a hairline top rule with a small Dust dot. The middle step, where the person reads, is lit: its rule is tinted with Mars Rust and its dot is Mars Rust with a soft halo.
 
+### Loop Animation (site exception)
+Under the three steps, a 10-second drawing plays the loop, at the owner's request (2026-09-24): a terminal types `marsdawn open launch-note.md`, a MarsDawn window opens beside it, the reader clicks one outline row and changes the launch day, the agent changes the other two sections to match, and the window folds back into the terminal. The last frame is the first, so it loops without a jump. It breaks two rules on purpose: it loops, and it is a drawing rather than a screenshot. Everything else holds. It is HTML and CSS from `scripts/loop_anim.py` (generated into `loop.css`), with no script and no inline style. Its lengths are in a container-query unit, so it scales without measuring. Every word is page text in the visitor's language; the sidebar's tab names are the app's own strings, and the command and file name stay English as in the app. A pause control (a checkbox read with `:has()`) sits under the frame, as WCAG 2.2.2 asks of motion longer than five seconds. With `prefers-reduced-motion` the drawing holds on the edited note and the control is hidden. The window and terminal keep their own colours in both schemes, like the screenshots; the plate behind them is `--sand`.
+
 ### Trait List
 Links to the other pages, set as a ruled list: a 600-weight link and a Dust description on one baseline, separated by hairlines. It uses no cards and no icons.
 
@@ -303,7 +306,7 @@ The hero is an inline SVG: a graded sky, a horizon glow, the planet's mass with 
 - **Do** keep every page to one 44rem reading column, and break out of it only for the dawn scene, the closing band and screenshots.
 - **Do** keep text on the scene in the fixed hero palette in both color schemes.
 - **Do** show the real app. Use actual screenshots annotated with markers and leader lines, not illustrations or mockups. The hero's interactive window is the one exception, and only because everything it shows is generated from the app and the kit (see Interactive App Window).
-- **Do** make any motion a single authored moment that plays once, animates only compositor-friendly properties and has a finished resting state under `prefers-reduced-motion`.
+- **Do** make any motion a single authored moment that plays once, animates only compositor-friendly properties and has a finished resting state under `prefers-reduced-motion`. The loop animation is the one that repeats, and it can be paused.
 - **Do** keep text contrast at WCAG AA or better in both schemes, and keep tap targets at least 24px tall.
 
 ### Don't:
@@ -311,6 +314,6 @@ The hero is an inline SVG: a graded sky, a horizon glow, the planet's mass with 
 - **Don't** add web fonts, scripts, inline styles or third-party resources. The CSP in `public/_headers` forbids them.
 - **Don't** add a second accent hue, or use Mars Rust as a large fill.
 - **Don't** use pure white or black outside Print Paper, or cool greys anywhere.
-- **Don't** loop, repeat or scroll-trigger animation. The dawn happens once.
+- **Don't** loop, repeat or scroll-trigger animation, apart from the loop animation (owner, 2026-09-24). The dawn happens once.
 - **Don't** invert the dawn scene for dark mode. The sky is always night breaking to dawn.
 - **Don't** introduce a site-specific token for a color the parent already defines.
