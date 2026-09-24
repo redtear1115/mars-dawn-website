@@ -32,6 +32,7 @@ try {
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/hero.css">
 <link rel="stylesheet" href="/assets/annotations.css">
+<link rel="stylesheet" href="/assets/loop.css">
 <link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/">
 <link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/">
 <link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/">
@@ -211,6 +212,40 @@ try {
   <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
   <li><strong>The agent revises.</strong> Ask for changes. Open the revised file and read it the same way.</li>
 </ol>
+<div class="loop-anim">
+<div class="loop-frame" role="img" aria-label="A terminal opens launch-note.md in MarsDawn. The reader changes the launch day from October 7 to October 9, the agent updates the other two sections to match, and the loop starts again.">
+<div class="loop-stage" aria-hidden="true">
+<div class="loop-win a">
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">launch-note.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-body">
+<div class="loop-side"><div class="loop-tabs"><span class="on">Outline</span><span>Files</span></div><div class="loop-rows"><div class="loop-h1row">Launch note</div><div class="loop-sub">What changed</div><div class="loop-sub loop-row-u a">When it ships</div><div class="loop-sub">Who does what</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> Launch note</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> What changed</span>
+The sign-in page leads with the email. It ships on <span class="loop-day loop-d-a a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span></span>.
+
+<span class="loop-h"><span class="loop-mk">##</span> When it ships</span>
+<span class="loop-day loop-d-u a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span><span class="loop-ecaret loop-n5 a"></span></span> at noon.
+
+<span class="loop-h"><span class="loop-mk">##</span> Who does what</span>
+Engineering turns on the flag on <span class="loop-day loop-d-b a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span></span>.
+</div>
+<div class="loop-pre"><h3>Launch note</h3><h4>What changed</h4><p>The sign-in page leads with the email. It ships on <span class="loop-day loop-d-a a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span></span>.</p><h4>When it ships</h4><p><span class="loop-day loop-d-u a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span></span> at noon.</p><h4>Who does what</h4><p>Engineering turns on the flag on <span class="loop-day loop-d-b a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span></span>.</p></div>
+</div>
+</div>
+<div class="loop-term a">
+<div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
+<div class="loop-tbody">
+<div><span class="loop-p">›</span> <span class="loop-cmd a">marsdawn open launch-note.md</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> I moved the launch. Make the other sections agree.</div>
+<div class="loop-l3 a">Done. Both sections now say Oct 9.</div>
+</div>
+</div>
+<svg class="loop-ptr a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="Pause the animation"><span aria-hidden="true">Pause</span></label>
+</div>
 <section class="install" id="install">
 <h2>Do this now</h2>
 <p>The free <code>marsdawn</code> command-line tool is ready today. Install it with Homebrew:</p>
