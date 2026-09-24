@@ -73,6 +73,25 @@ try {
   <p>無料の marsdawn コマンドラインツールの変更点です。Mac App Store 版の MarsDawn は、そのバージョン自身について書くことがある場合だけ、ここに載せます。0.5.1 より前のバージョンは載せていません。</p>
 </section>
 
+<h2 id="marsdawn-0-5-3">marsdawn 0.5.3</h2>
+<p>2026年10月1日。MarsDawn が Mac App Store で公開。</p>
+<ul>
+  <li>アプリがインストールされていないとき、<code>marsdawn open</code> は Mac App Store の MarsDawn を案内します。</li>
+  <li>README とエージェントスキルで <code>marsdawn open .</code> と <code>--folder</code> を説明します。MarsDawn 1.0.0 はフォルダをウインドウのサイドバーに表示します。</li>
+</ul>
+
+<h2 id="marsdawn-0-5-2">marsdawn 0.5.2</h2>
+<p>2026年9月24日。脚注、コントラスト、フォルダ。</p>
+<ul>
+  <li>書き出した PDF に脚注が表示されます。参照には番号が付き、注は本文のあとに並びます。</li>
+  <li>すべてのテーマが、ライトでもダークでも WCAG AA のコントラストを満たします。Classic は白黒になりました。</li>
+  <li><code>marsdawn skill</code> は、インストールされている marsdawn に合ったエージェントスキルを出力します。</li>
+  <li>見つかった MarsDawn がフォルダを表示できないとき、<code>marsdawn open</code> は成功を報告せず、コード 6（<code>app_cannot_open_folders</code>）で終了します。</li>
+  <li>書き出したページに描かれるプレースホルダが、ドイツ語、フランス語、スペイン語、韓国語にも対応しました。</li>
+  <li>相対パスがとても長くても、画像のプレースホルダにその先の絶対パスが表示されなくなりました。</li>
+  <li><code>MARSDAWN_APP_PATH</code> は、MarsDawn アプリを指しているときだけ使われます。</li>
+</ul>
+
 <h2 id="marsdawn-0-5-1">marsdawn 0.5.1</h2>
 <p>2026年9月19日。PDF 書き出しと、コマンドラインからファイルを開くこと。</p>
 <ul>

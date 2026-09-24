@@ -2,13 +2,32 @@
 
 免費的 marsdawn 命令列工具改了什麼。Mac App Store 上的 MarsDawn，只有在某個版本值得單獨記一筆時才會出現在這裡。0.5.1 以前的版本不列。
 
+## marsdawn 0.5.3
+
+2026 年 10 月 1 日。MarsDawn 在 Mac App Store 上架。
+
+- 沒有安裝 app 時，`marsdawn open` 會指向 Mac App Store 上的 MarsDawn。
+- README 和 agent skill 會教 `marsdawn open .` 與 `--folder`：MarsDawn 1.0.0 會把資料夾顯示在視窗的側邊欄。
+
+## marsdawn 0.5.2
+
+2026 年 9 月 24 日。註腳、對比度與資料夾。
+
+- 輸出的 PDF 會呈現註腳：引用有編號，註腳內容接在正文之後。
+- 所有主題的淺色與深色都符合 WCAG AA 對比度。Classic 改為黑白。
+- `marsdawn skill` 會印出和已安裝的 marsdawn 相符的 agent skill。
+- 找到的 MarsDawn 無法顯示資料夾時，`marsdawn open` 會以代碼 6（`app_cannot_open_folders`）結束，不再回報成功。
+- 畫進輸出頁面的佔位文字，也有德文、法文、西班牙文和韓文。
+- 相對路徑很長時，圖片佔位文字不再顯示它背後的絕對路徑。
+- `MARSDAWN_APP_PATH` 只有指向 MarsDawn app 時才會採用。
+
 ## marsdawn 0.5.1
 
 2026 年 9 月 19 日。PDF 輸出，以及從命令列打開檔案。
 
 - 輸出的 PDF 中，中文、日文與韓文的文字層已修正。
 - `marsdawn open --background` 會打開檔案，但不會把 MarsDawn 帶到最前面。
-- `marsdawn open` 可以指定一個資料夾，MarsDawn 會把它顯示在視窗的側欄（MarsDawn 1.0.0 起）。
+- `marsdawn open` 可以指定一個資料夾，MarsDawn 會把它顯示在視窗的側邊欄（MarsDawn 1.0.0 起）。
 
 ## 其他頁面
 

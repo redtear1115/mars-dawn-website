@@ -2,6 +2,25 @@
 
 免费的 marsdawn 命令行工具改了什么。Mac App Store 上的 MarsDawn，只有某个版本值得单独记一笔时才会出现在这里。0.5.1 以前的版本不列。
 
+## marsdawn 0.5.3
+
+2026 年 10 月 1 日。MarsDawn 在 Mac App Store 上架。
+
+- 没有安装 app 时，`marsdawn open` 会指向 Mac App Store 上的 MarsDawn。
+- README 和 agent skill 会教 `marsdawn open .` 与 `--folder`：MarsDawn 1.0.0 会把文件夹显示在窗口的侧边栏。
+
+## marsdawn 0.5.2
+
+2026 年 9 月 24 日。脚注、对比度与文件夹。
+
+- 输出的 PDF 会呈现脚注：引用有编号，脚注内容接在正文之后。
+- 所有主题的浅色与深色都符合 WCAG AA 对比度。Classic 改为黑白。
+- `marsdawn skill` 会打印与已安装的 marsdawn 相符的 agent skill。
+- 找到的 MarsDawn 无法显示文件夹时，`marsdawn open` 会以代码 6（`app_cannot_open_folders`）结束，不再报告成功。
+- 画进输出页面的占位文字，也有德文、法文、西班牙文和韩文。
+- 相对路径很长时，图片占位文字不再显示它背后的绝对路径。
+- `MARSDAWN_APP_PATH` 只有指向 MarsDawn app 时才会采用。
+
 ## marsdawn 0.5.1
 
 2026 年 9 月 19 日。PDF 输出，以及从命令行打开文件。

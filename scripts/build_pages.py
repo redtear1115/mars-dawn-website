@@ -2064,6 +2064,25 @@ BRAINSTORM_PAGES = {
   <p>What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.</p>
 </section>
 
+<h2>marsdawn 0.5.3</h2>
+<p>1 October 2026. MarsDawn is on the Mac App Store.</p>
+<ul>
+  <li>When the app isn't installed, <code>marsdawn open</code> points to MarsDawn on the Mac App Store.</li>
+  <li>The README and the agent skill teach <code>marsdawn open .</code> and <code>--folder</code>: MarsDawn 1.0.0 shows the folder in the window's sidebar.</li>
+</ul>
+
+<h2>marsdawn 0.5.2</h2>
+<p>24 September 2026. Footnotes, contrast and folders.</p>
+<ul>
+  <li>Footnotes render in exported PDFs: numbered references, with the notes after the body.</li>
+  <li>Every theme meets WCAG AA contrast, light and dark. Classic is now black and white.</li>
+  <li><code>marsdawn skill</code> prints the agent skill that matches the installed marsdawn.</li>
+  <li><code>marsdawn open</code> exits 6 (<code>app_cannot_open_folders</code>) when the MarsDawn it finds can't show a folder, instead of reporting success.</li>
+  <li>The placeholders drawn into exported pages are also in German, French, Spanish and Korean.</li>
+  <li>An image placeholder no longer shows the absolute path behind a very long relative path.</li>
+  <li><code>MARSDAWN_APP_PATH</code> is used only when it points at a MarsDawn app.</li>
+</ul>
+
 <h2>marsdawn 0.5.1</h2>
 <p>19 September 2026. PDF export, and opening a file from the command line.</p>
 <ul>
@@ -2082,12 +2101,31 @@ BRAINSTORM_PAGES = {
   <p>免費的 marsdawn 命令列工具改了什麼。Mac App Store 上的 MarsDawn，只有在某個版本值得單獨記一筆時才會出現在這裡。0.5.1 以前的版本不列。</p>
 </section>
 
+<h2>marsdawn 0.5.3</h2>
+<p>2026 年 10 月 1 日。MarsDawn 在 Mac App Store 上架。</p>
+<ul>
+  <li>沒有安裝 app 時，<code>marsdawn open</code> 會指向 Mac App Store 上的 MarsDawn。</li>
+  <li>README 和 agent skill 會教 <code>marsdawn open .</code> 與 <code>--folder</code>：MarsDawn 1.0.0 會把資料夾顯示在視窗的側邊欄。</li>
+</ul>
+
+<h2>marsdawn 0.5.2</h2>
+<p>2026 年 9 月 24 日。註腳、對比度與資料夾。</p>
+<ul>
+  <li>輸出的 PDF 會呈現註腳：引用有編號，註腳內容接在正文之後。</li>
+  <li>所有主題的淺色與深色都符合 WCAG AA 對比度。Classic 改為黑白。</li>
+  <li><code>marsdawn skill</code> 會印出和已安裝的 marsdawn 相符的 agent skill。</li>
+  <li>找到的 MarsDawn 無法顯示資料夾時，<code>marsdawn open</code> 會以代碼 6（<code>app_cannot_open_folders</code>）結束，不再回報成功。</li>
+  <li>畫進輸出頁面的佔位文字，也有德文、法文、西班牙文和韓文。</li>
+  <li>相對路徑很長時，圖片佔位文字不再顯示它背後的絕對路徑。</li>
+  <li><code>MARSDAWN_APP_PATH</code> 只有指向 MarsDawn app 時才會採用。</li>
+</ul>
+
 <h2>marsdawn 0.5.1</h2>
 <p>2026 年 9 月 19 日。PDF 輸出，以及從命令列打開檔案。</p>
 <ul>
   <li>輸出的 PDF 中，中文、日文與韓文的文字層已修正。</li>
   <li><code>marsdawn open --background</code> 會打開檔案，但不會把 MarsDawn 帶到最前面。</li>
-  <li><code>marsdawn open</code> 可以指定一個資料夾，MarsDawn 會把它顯示在視窗的側欄（MarsDawn 1.0.0 起）。</li>
+  <li><code>marsdawn open</code> 可以指定一個資料夾，MarsDawn 會把它顯示在視窗的側邊欄（MarsDawn 1.0.0 起）。</li>
 </ul>
 """,
     },
