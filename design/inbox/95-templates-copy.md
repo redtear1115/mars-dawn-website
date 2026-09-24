@@ -1,6 +1,6 @@
 # /templates/ — English copy for review (#95)
 
-For the owner. The English source of the first batch: the hub and three pages. Once approved, zh-Hant is written from it; zh-Hans and ja are machine drafts labelled needs-i18n (owner, 2026-09-25). The downloads (`spec.md`, `flowchart.md`, `meeting-notes.md`) are the templates below, byte for byte.
+For the owner. Revised after the copy review on #97 (2026-09-25). The English source of the first batch: the hub and three pages. Once approved, zh-Hant is written from it; zh-Hans and ja are machine drafts labelled needs-i18n (owner, 2026-09-25). The downloads (`spec.md`, `flowchart.md`, `meeting-notes.md`) are the templates below, byte for byte.
 
 Every page has the same order: H1 and lede, the loop animation, the template (copy or download), how it looks (a real `marsdawn export` PDF page), a prompt for the agent, sharing it as a PDF, what it doesn't do, two FAQs, related templates. The App Store link follows the site's launch phase, like every other page.
 
@@ -11,7 +11,7 @@ Every page has the same order: H1 and lede, the loop animation, the template (co
 - **Title:** Markdown templates · MarsDawn
 - **Description:** Markdown templates for the documents an agent writes and you read: a spec, a flowchart and meeting notes, each with a prompt for your agent.
 - **H1:** Markdown templates
-- **Lede:** For the documents an agent writes and you read. Each template comes with a prompt for your agent, and opens in MarsDawn so you can read what it wrote.
+- **Lede:** For the documents an agent writes and you read. Each template comes with a prompt for your agent. Open the filled file in MarsDawn to read what it wrote.
 
 List:
 - **Spec (PRD):** problem, goals, requirements, a flow diagram and acceptance criteria.
@@ -22,9 +22,9 @@ List:
 
 ## `/templates/spec/`
 
-- **Title:** Spec and PRD template in Markdown · MarsDawn
+- **Title:** Markdown spec (PRD) template · MarsDawn
 - **Description:** A Markdown spec template with requirements, a Mermaid flow diagram and acceptance criteria. Your agent fills it in; you review it in MarsDawn.
-- **H1:** Spec template (PRD) in Markdown
+- **H1:** Markdown spec (PRD) template
 - **Lede:** A spec your agent can fill in and you can read in one sitting: the problem, goals, requirements, a flow diagram and acceptance criteria. When you change a requirement, ask the agent to bring the rest in line.
 
 **Animation** (`spec.md`): the reader deletes "R3: Ask for a second factor." The agent removes the Second factor step from the flow, reconnects the diagram, and deletes R3's acceptance check.
@@ -81,7 +81,7 @@ flowchart LR
 
 > Write a spec for [the feature] in spec.md, using the template at https://marsdawn.southern-light.dev/templates/spec/spec.md. Give every requirement an ID, and use the same IDs in the flow and the acceptance criteria. When it's written, run `marsdawn open spec.md`.
 
-**Share it as a PDF:** `marsdawn export spec.md --theme classic` writes spec.pdf beside it, for someone who doesn't read Markdown.
+**Share it as a PDF:** `marsdawn export spec.md` writes spec.pdf beside it, for someone who doesn't read Markdown.
 
 **What it doesn't do:** MarsDawn shows the spec, the table and the diagram. It doesn't check that the acceptance criteria cover every requirement. That's the agent's job, and your read.
 
@@ -93,12 +93,12 @@ flowchart LR
 
 ## `/templates/flowchart/`
 
-- **Title:** Flowchart template in Markdown (Mermaid) · MarsDawn
+- **Title:** Markdown flowchart template (Mermaid) · MarsDawn
 - **Description:** A Mermaid flowchart template in Markdown, with the steps written out below it. Preview it on a Mac and export it to PDF.
-- **H1:** Flowchart template in Markdown
+- **H1:** Markdown flowchart template
 - **Lede:** A Mermaid flowchart with the steps spelled out underneath, so the diagram and the words can be checked against each other. Take a step out, and ask the agent to fix the rest.
 
-**Animation** (`flowchart.md`): in the diagram's source the reader deletes `B --> C[Legal]`; the preview drops the Legal step. The agent reconnects `C --> D` to `B --> D`, deletes step 3, and renumbers Publish.
+**Animation** (`flowchart.md`): in the diagram's source the reader deletes `B --> C[Legal]`; the preview drops the Legal step. The agent replaces the Legal edge with `B --> D`, deletes step 3, and renumbers Publish.
 - Ask: `I took Legal out of the diagram. Fix the edge and the steps.`
 - Reply: `Done. Review goes straight to Publish, and the steps are renumbered.`
 - Alt: A terminal opens flowchart.md in MarsDawn. The reader removes the Legal step from the Mermaid diagram, and the agent reconnects the diagram and renumbers the steps below it.
@@ -145,10 +145,10 @@ flowchart LR
 
 ## `/templates/meeting-notes/`
 
-- **Title:** Meeting notes template in Markdown · MarsDawn
-- **Description:** A Markdown meeting notes template with decisions and action items with owners. Your agent writes it up; you check it in MarsDawn.
-- **H1:** Meeting notes template in Markdown
-- **Lede:** Decisions first, then action items with an owner each. Let your agent write the notes from the transcript, and read them before they go out. If a decision changes, the action items follow.
+- **Title:** Markdown meeting notes template · MarsDawn
+- **Description:** A Markdown meeting notes template with decisions and action items, each with an owner. Your agent writes it up; you check it in MarsDawn.
+- **H1:** Markdown meeting notes template
+- **Lede:** Decisions first, then action items, each with an owner. Let your agent write the notes from the transcript, and read them before they go out. When a decision changes, ask the agent to bring the action items in line.
 
 **Animation** (`meeting-notes.md`): the reader changes the decision from 50 to 80 people. The agent changes all three action items to 80.
 - Ask: `The beta is 80 people now. Update the action items.`
@@ -189,3 +189,10 @@ Attendees: _names_
 **FAQ**
 - *Do the checkboxes work?* They show as checkboxes in the preview and the PDF. Tick one by changing `[ ]` to `[x]` in the source.
 - *Can the agent keep the notes and the action items in step?* Yes, that's the point of the loop: change one, and ask it to update the rest. MarsDawn shows you the result.
+
+---
+
+## Notes for the translations
+
+- zh-Hant: "action items" is 行動項目, not 待辦事項 (copy review, #97).
+- "How it looks" is a real `marsdawn export` PDF page in every locale, not an app screenshot (owner, 2026-09-25).
