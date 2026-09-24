@@ -82,7 +82,7 @@
 .loop-pre p { margin: 0; font-size: calc(20 * var(--u)); line-height: 1.55; }
 
 /* A day that changes: both words share one grid cell and have the same width. */
-.loop-day { display: inline-grid; border-radius: calc(4 * var(--u)); font-variant-numeric: tabular-nums; }
+.loop-day { position: relative; display: inline-grid; border-radius: calc(4 * var(--u)); font-variant-numeric: tabular-nums; }
 .loop-day > span { grid-area: 1 / 1; white-space: nowrap; }
 .loop-new { clip-path: inset(0 100% 0 0); }
 
@@ -102,7 +102,14 @@
   46%, 94.9% { clip-path: inset(0 0 0 0); }
   95%, 100% { clip-path: inset(0 100% 0 0); }
 }
-.loop-ecaret { display: inline-block; width: calc(2 * var(--u)); height: 1.05em; background: #C8471B; vertical-align: -0.15em; margin-left: calc(1 * var(--u)); opacity: 0; animation-name: loop-ecaret; }
+.loop-ecaret {
+  position: absolute; top: 0.2em; left: 0; width: calc(2 * var(--u)); height: 1.1em; background: #C8471B; opacity: 0;
+  animation-name: loop-ecaret, loop-ecaret-x;
+}
+/* The caret follows the typed characters: the same steps as the reveal. */
+.loop-ecaret.loop-n2 { animation-timing-function: linear, steps(2, end); }
+.loop-ecaret.loop-n5 { animation-timing-function: linear, steps(5, end); }
+@keyframes loop-ecaret-x { 0%, 41% { left: 0; } 46%, 100% { left: 100%; } }
 @keyframes loop-ecaret {
   0%, 40.9% { opacity: 0; }
   41%, 43%, 45%, 47%, 49%, 51% { opacity: 1; }
@@ -186,9 +193,7 @@
 .loop-pause input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
 .loop-pause:has(input:focus-visible) { outline: 2px solid var(--ember); outline-offset: 2px; }
 .loop-pause:hover { color: var(--ink); }
-.loop-pause-off { display: none; }
-.loop-pause:has(input:checked) .loop-pause-on { display: none; }
-.loop-pause:has(input:checked) .loop-pause-off { display: inline; }
+.loop-pause:has(input:checked) { color: var(--paper); background: var(--ink); border-color: var(--ink); }
 
 /* Reduced motion: the edited note, still, and nothing to pause. */
 @media (prefers-reduced-motion: reduce) {
