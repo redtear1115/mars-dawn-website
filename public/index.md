@@ -4,7 +4,7 @@ Frontier tools for builders
 
 Markdown for humans who steer agentic work.
 
-The page shows a working MarsDawn window over part of the app's Welcome guide. Pick one of four preview themes (Dawn, Classic, Modern, Vivid) and one of three layouts (Source, Split, Preview).
+The page shows a working MarsDawn window over part of the app's Welcome guide. Its palette menu picks an appearance (System, Light, Dark) and a preview theme for light and for dark from four (Dawn, Classic, Modern, Vivid), and its toolbar one of three layouts (Source, Split, Preview).
 
 ## Read what your agent wrote.
 

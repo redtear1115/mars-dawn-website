@@ -10,7 +10,7 @@ Frontier tools for builders
 
 Markdown for humans who steer agentic work.
 
-The page shows a working MarsDawn window over part of the app's Welcome guide. Pick one of four preview themes (Dawn, Classic, Modern, Vivid) and one of three layouts (Source, Split, Preview).
+The page shows a working MarsDawn window over part of the app's Welcome guide. Its palette menu picks an appearance (System, Light, Dark) and a preview theme for light and for dark from four (Dawn, Classic, Modern, Vivid), and its toolbar one of three layouts (Source, Split, Preview).
 
 ## Read what your agent wrote.
 
@@ -1067,7 +1067,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/
 
 給要掌舵 agentic 開發的人用的 Markdown。
 
-頁面上有一個可以操作的 MarsDawn 視窗，內容是 App 內建歡迎指南的一段。可以從四個預覽主題（黎明、典雅、流行、活潑）和三種版面（原始碼、並排、預覽）裡選。
+頁面上有一個可以操作的 MarsDawn 視窗，內容是 App 內建歡迎指南的一段。調色盤選單可以選外觀（系統、淺色、深色），並分別替淺色和深色從四個預覽主題（黎明、典雅、流行、活潑）裡選一個；工具列可以選三種版面（原始碼、並排、預覽）。
 
 ## 讀 agent 寫的 Markdown。
 
@@ -2124,7 +2124,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/
 
 给要掌舵 agentic 开发的人用的 Markdown。
 
-页面上有一个可以操作的 MarsDawn 窗口，内容是 App 内置欢迎指南的一段。可以从四个预览主题（黎明、典雅、流行、活泼）和三种布局（源代码、并排、预览）里选。
+页面上有一个可以操作的 MarsDawn 窗口，内容是 App 内置欢迎指南的一段。调色板菜单可以选外观（系统、浅色、深色），并分别为浅色和深色从四个预览主题（黎明、典雅、流行、活泼）里选一个；工具栏可以选三种布局（源代码、并排、预览）。
 
 ## 读 agent 写的 Markdown。
 
@@ -3171,7 +3171,7 @@ Source: https://marsdawn.southern-light.dev/ja/
 
 エージェント開発の舵を取る人のための Markdown。
 
-ページには操作できる MarsDawn のウインドウがあり、アプリ内蔵のようこそガイドの一部を表示しています。4 つのプレビューテーマ（夜明け、クラシック、モダン、ビビッド）と 3 つのレイアウト（ソース、分割、プレビュー）から選べます。
+ページには操作できる MarsDawn のウインドウがあり、アプリ内蔵のようこそガイドの一部を表示しています。パレットのメニューで外観モード（システム、ライト、ダーク）を選び、ライトとダークそれぞれに 4 つのプレビューテーマ（夜明け、クラシック、モダン、ビビッド）から 1 つを選べます。ツールバーでは 3 つのレイアウト（ソース、分割、プレビュー）から選べます。
 
 ## エージェントが書いた Markdown を読む。
 

@@ -133,14 +133,36 @@ try {
     <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
     <span class="mdw-title">Welcome to MarsDawn</span>
     <details class="mdw-themes">
-      <summary title="Preview Theme"><span class="mdw-sr">Theme</span><svg viewBox="0 0 20 18" aria-hidden="true" focusable="false"><path d="M10 2C5.3 2 1.8 5.2 1.8 9.2c0 3.6 2.9 6.6 6.6 6.6 1.3 0 1.9-.8 1.9-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5h2c2.8 0 5-1.9 5-4.5C18.2 4.6 14.6 2 10 2Z"/><circle cx="6" cy="8.6" r="1.1"/><circle cx="8.6" cy="5.6" r="1.1"/><circle cx="12.4" cy="5.6" r="1.1"/><circle cx="14.6" cy="8.4" r="1.1"/></svg><svg class="chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M2.5 3.8 5 6.3l2.5-2.5"/></svg></summary>
-      <fieldset class="mdw-menu">
-        <legend>Preview Theme</legend>
-        <input type="radio" name="mdw-theme" id="mdw-dawn" value="dawn" checked><label for="mdw-dawn"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-dawn" aria-hidden="true"></span>Dawn</label>
-        <input type="radio" name="mdw-theme" id="mdw-classic" value="classic"><label for="mdw-classic"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-classic" aria-hidden="true"></span>Classic</label>
-        <input type="radio" name="mdw-theme" id="mdw-modern" value="modern"><label for="mdw-modern"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-modern" aria-hidden="true"></span>Modern</label>
-        <input type="radio" name="mdw-theme" id="mdw-vivid" value="vivid"><label for="mdw-vivid"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg><span class="swatch sw-vivid" aria-hidden="true"></span>Vivid</label>
+      <summary title="Appearance and preview theme"><span class="mdw-sr">Theme</span><svg viewBox="0 0 20 18" aria-hidden="true" focusable="false"><path d="M10 2C5.3 2 1.8 5.2 1.8 9.2c0 3.6 2.9 6.6 6.6 6.6 1.3 0 1.9-.8 1.9-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5h2c2.8 0 5-1.9 5-4.5C18.2 4.6 14.6 2 10 2Z"/><circle cx="6" cy="8.6" r="1.1"/><circle cx="8.6" cy="5.6" r="1.1"/><circle cx="12.4" cy="5.6" r="1.1"/><circle cx="14.6" cy="8.4" r="1.1"/></svg><svg class="chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M2.5 3.8 5 6.3l2.5-2.5"/></svg></summary>
+      <div class="mdw-menu">
+      <fieldset>
+        <legend>Appearance</legend>
+        <input type="radio" name="mdw-appearance" id="mdw-system" value="system" checked><label for="mdw-system"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>System</label>
+        <input type="radio" name="mdw-appearance" id="mdw-light" value="light"><label for="mdw-light"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Light</label>
+        <input type="radio" name="mdw-appearance" id="mdw-dark" value="dark"><label for="mdw-dark"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Dark</label>
       </fieldset>
+      <hr>
+      <fieldset>
+        <legend>Preview Theme</legend>
+        <fieldset>
+          <legend>Light</legend>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-dawn" value="dawn" checked><label for="mdw-light-dawn" title="Warm Martian sunrise"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Dawn</label>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-classic" value="classic"><label for="mdw-light-classic" title="Elegant serif on paper"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Classic</label>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-modern" value="modern"><label for="mdw-light-modern" title="Clean and familiar"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Modern</label>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-vivid" value="vivid"><label for="mdw-light-vivid" title="Playful, bright and rounded"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Vivid</label>
+        </fieldset>
+        <hr>
+        <fieldset>
+          <legend>Dark</legend>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-dawn" value="dawn" checked><label for="mdw-dark-dawn" title="Warm Martian sunrise"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Dawn</label>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-classic" value="classic"><label for="mdw-dark-classic" title="Elegant serif on paper"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Classic</label>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-modern" value="modern"><label for="mdw-dark-modern" title="Clean and familiar"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Modern</label>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-vivid" value="vivid"><label for="mdw-dark-vivid" title="Playful, bright and rounded"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Vivid</label>
+        </fieldset>
+      </fieldset>
+      <hr>
+      <span class="mdw-settings" aria-hidden="true">Settings…</span>
+      </div>
     </details>
     <fieldset class="mdw-layouts">
       <legend>Layout</legend>
