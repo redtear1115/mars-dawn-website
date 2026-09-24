@@ -1,0 +1,27 @@
+{
+  "kit_tag": "0.5.1",
+  "pages": {
+    "privacy.en.md": {
+      "rendered": "privacy.en.rendered.html",
+      "rendered_sha256": "24359acf99cf8127d5a39c0de3eebdbfb06fee913c92daa3972864a849c3b49e",
+      "source_sha256": "efe091d26639da1fa47ef9705799dac9f440a43190865047bfbb4ca2834fdea7"
+    },
+    "privacy.ja.md": {
+      "rendered": "privacy.ja.rendered.html",
+      "rendered_sha256": "d54112178e747ed1fc10b36817b683e02035e4c0bb5b362a24aea317348ba5fb",
+      "source_sha256": "1135ea57a694ea650abc29d0215149e514e56bf9fb3b07c5d2704c0b58f079d0"
+    },
+    "privacy.zh-hans.md": {
+      "rendered": "privacy.zh-hans.rendered.html",
+      "rendered_sha256": "9d84c9daa3bfb2099bcf80912fce5ba57850f57edd5885488bd8bd2a70f590fa",
+      "source_sha256": "4ff4dcb0b7281d4680686b6101aff962ebaaf23f67273ace9ad3a0d26cc2cc0d"
+    },
+    "privacy.zh-hant.md": {
+      "rendered": "privacy.zh-hant.rendered.html",
+      "rendered_sha256": "15a3c4698f524ab7b7642c1e8a9232916873c3edf2b45075252f00959d1a05e9",
+      "source_sha256": "97b64b5ac9808c402fd83276bd7c42b8953b52f302926558080715ff7528c025"
+    }
+  },
+  "preview_css_sha256": "b9914e6171ba2a7e7bda1a48f54d0506bee45ae8e088e08c84e62022a845d8bd",
+  "themes_css_sha256": "022bc3ec6f8495e35a3d7152f496e30a1cb79bbdfbaa0497b239d2e10dc32145"
+}
