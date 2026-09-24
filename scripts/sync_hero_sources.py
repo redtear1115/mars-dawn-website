@@ -51,7 +51,11 @@ LABEL_KEYS = {"theme": "Theme", "layout": "Layout", "source": "Source", "split":
               # The window's title for the guide (WelcomeGuide.title), the theme menu's header,
               # and ViewMode.title, which the layout buttons' tooltips show with their shortcut.
               "title": "Welcome to MarsDawn", "preview_theme": "Preview Theme",
-              "source_title": "Source Only", "split_title": "Source and Preview", "preview_title": "Preview Only"}
+              "source_title": "Source Only", "split_title": "Source and Preview", "preview_title": "Preview Only",
+              # The palette toolbar item's tooltip, and its menu (StyleMenu.combinedMenu): the
+              # Appearance section, the Light and Dark theme sections, and Settings….
+              "theme_tip": "Appearance and preview theme", "appearance": "Appearance", "system": "System",
+              "light": "Light", "dark": "Dark", "settings": "Settings…"}
 APP_EDITOR = "MarsDawn/Editor/EditorTheme.swift"
 APP_HIGHLIGHTER = "MarsDawn/Editor/MarkdownHighlighter.swift"
 KIT_STRINGS = "Sources/MarsDawnKit/Resources/Localization/{lproj}.lproj/Localizable.strings"
@@ -112,6 +116,7 @@ def parse_themes(swift: str) -> list:
         themes[theme_id] = {
             "id": theme_id,
             "name": re.search(r'name: String\(localized: "([^"]+)"', body).group(1),
+            "summary": re.search(r'summary: String\(localized: "([^"]+)"', body).group(1),
             "font": re.search(r"fontDesign: \.(\w+)", body).group(1),
             **palettes,
         }
@@ -122,6 +127,19 @@ def parse_themes(swift: str) -> list:
     ids = [name.strip() for name in order.split(",")]
     assert ids == THEME_ORDER, f"the kit's theme list changed: {ids}"
     return [themes[i] for i in ids]
+
+
+def localize_themes(themes: list, locale: str, strings: dict) -> None:
+    """Each theme's name and summary in `locale`, from the kit's Localizable.strings for that
+    language (none for English: the key is the English text, as in the kit)."""
+    for theme in themes:
+        theme.setdefault("names", {})[locale] = strings.get(theme["name"], theme["name"])
+        theme.setdefault("summaries", {})[locale] = strings.get(theme["summary"], theme["summary"])
+
+
+def finish_themes(themes: list) -> None:
+    for theme in themes:
+        del theme["name"], theme["summary"]
 
 
 def parse_editor(swift: str) -> dict:
@@ -187,15 +205,13 @@ def collect(kit: Path, app: Path, app_ref: str) -> dict:
     for locale, lproj in LOCALES.items():
         kit_strings = parse_strings(git_show(kit, KIT_TAG, KIT_STRINGS.format(lproj=lproj))) if locale != "en" else {}
         table = app_tables[lproj]
-        for theme in themes:
-            theme.setdefault("names", {})[locale] = kit_strings.get(theme["name"], theme["name"])
+        localize_themes(themes, locale, kit_strings)
         # An English string missing from en.lproj falls back to its key, as it does in the app.
         labels[locale] = {site: table.get(key, key) if locale == "en" else table[key]
                           for site, key in LABEL_KEYS.items()}
         excerpt = welcome_excerpt(git_show(app, app_ref, APP_WELCOME.format(lproj=lproj)))
         sample[locale] = {"markdown": excerpt, "html": render(excerpt)}
-    for theme in themes:
-        del theme["name"]
+    finish_themes(themes)
     return {
         "_generated_by": "scripts/sync_hero_sources.py; edit the sources, not this file",
         "kit": {"tag": KIT_TAG, "commit": git_commit(kit, KIT_TAG)},

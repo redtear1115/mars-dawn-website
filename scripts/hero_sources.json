@@ -6,7 +6,7 @@
  },
  "app": {
   "ref": "origin/main",
-  "commit": "5f43e941364574ace5bb64dd3d411ed3985e4aa5"
+  "commit": "fa3b747b28ddbd8248ef2088dd14188776872b95"
  },
  "themes": [
   {
@@ -48,6 +48,12 @@
     "zh-hant": "黎明",
     "zh-hans": "黎明",
     "ja": "夜明け"
+   },
+   "summaries": {
+    "en": "Warm Martian sunrise",
+    "zh-hant": "溫暖的火星日出",
+    "zh-hans": "温暖的火星日出",
+    "ja": "暖かな火星の日の出"
    }
   },
   {
@@ -89,6 +95,12 @@
     "zh-hant": "典雅",
     "zh-hans": "典雅",
     "ja": "クラシック"
+   },
+   "summaries": {
+    "en": "Elegant serif on paper",
+    "zh-hant": "紙上的優雅襯線字",
+    "zh-hans": "纸上的优雅衬线字",
+    "ja": "紙に映える上品なセリフ体"
    }
   },
   {
@@ -130,6 +142,12 @@
     "zh-hant": "流行",
     "zh-hans": "流行",
     "ja": "モダン"
+   },
+   "summaries": {
+    "en": "Clean and familiar",
+    "zh-hant": "清爽又熟悉",
+    "zh-hans": "清爽又熟悉",
+    "ja": "すっきりとなじみやすい"
    }
   },
   {
@@ -171,6 +189,12 @@
     "zh-hant": "活潑",
     "zh-hans": "活泼",
     "ja": "ビビッド"
+   },
+   "summaries": {
+    "en": "Playful, bright and rounded",
+    "zh-hant": "俏皮、明亮又圓潤",
+    "zh-hans": "俏皮、明亮又圆润",
+    "ja": "遊び心があって明るく、丸みのある"
    }
   }
  ],
@@ -185,7 +209,13 @@
    "preview_theme": "Preview Theme",
    "source_title": "Source Only",
    "split_title": "Source and Preview",
-   "preview_title": "Preview Only"
+   "preview_title": "Preview Only",
+   "theme_tip": "Appearance and preview theme",
+   "appearance": "Appearance",
+   "system": "System",
+   "light": "Light",
+   "dark": "Dark",
+   "settings": "Settings…"
   },
   "zh-hant": {
    "theme": "主題",
@@ -197,7 +227,13 @@
    "preview_theme": "預覽主題",
    "source_title": "只顯示原始碼",
    "split_title": "原始碼與預覽",
-   "preview_title": "只顯示預覽"
+   "preview_title": "只顯示預覽",
+   "theme_tip": "外觀與預覽主題",
+   "appearance": "外觀",
+   "system": "系統",
+   "light": "淺色",
+   "dark": "深色",
+   "settings": "設定⋯"
   },
   "zh-hans": {
    "theme": "主题",
@@ -209,7 +245,13 @@
    "preview_theme": "预览主题",
    "source_title": "仅显示源代码",
    "split_title": "源代码与预览",
-   "preview_title": "仅显示预览"
+   "preview_title": "仅显示预览",
+   "theme_tip": "外观与预览主题",
+   "appearance": "外观",
+   "system": "系统",
+   "light": "浅色",
+   "dark": "深色",
+   "settings": "设置…"
   },
   "ja": {
    "theme": "テーマ",
@@ -221,7 +263,13 @@
    "preview_theme": "プレビューのテーマ",
    "source_title": "ソースのみ",
    "split_title": "ソースとプレビュー",
-   "preview_title": "プレビューのみ"
+   "preview_title": "プレビューのみ",
+   "theme_tip": "外観モードとプレビューのテーマ",
+   "appearance": "外観モード",
+   "system": "システム",
+   "light": "ライト",
+   "dark": "ダーク",
+   "settings": "設定…"
   }
  },
  "editor": {
