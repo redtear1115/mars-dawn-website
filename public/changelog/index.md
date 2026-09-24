@@ -8,7 +8,7 @@ What changed in the free marsdawn command-line tool. A Mac App Store build of Ma
 
 - The text layer of an exported PDF is repaired for Chinese, Japanese and Korean.
 - `marsdawn open --background` opens a file without bringing MarsDawn to the front.
-- `marsdawn open` can be given a folder. The app on the Mac App Store does not show a folder yet, so that option waits for an app that can take one.
+- `marsdawn open` can be given a folder, and MarsDawn shows it in the window's sidebar (MarsDawn 1.0.0 and later).
 
 ## More
 

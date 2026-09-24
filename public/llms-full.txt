@@ -703,7 +703,7 @@ marsdawn open notes.md --folder . --background --json
 - `--line <n>` names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.
 - Lines run from 1 to 999999999. Anything else is a usage error.
 - Lines were added in marsdawn 0.3.0.
-- A folder argument opens in the window's sidebar instead of as a document, so `marsdawn open .` shows the current folder; `--folder <path>` does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and naming the same folder twice is one folder. `--line` with a folder is a usage error, since a folder has no line. There is no `-a`: passing it is a usage error that points at `--folder`.
+- A folder argument opens in the window's sidebar instead of as a document, so `marsdawn open .` shows the current folder; `--folder <path>` does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and so is using `--folder` twice, even for the same folder; the same folder given again as an argument counts once. `--line` with a folder is a usage error, since a folder has no line. There is no `-a`: passing it is a usage error that points at `--folder`.
 - `--background` opens without bringing MarsDawn to the front, for an agent that opens files while the person works elsewhere. The JSON is the same either way.
 - Folders and `--background` were added in marsdawn 0.5.1.
 
@@ -1136,7 +1136,7 @@ What changed in the free marsdawn command-line tool. A Mac App Store build of Ma
 
 - The text layer of an exported PDF is repaired for Chinese, Japanese and Korean.
 - `marsdawn open --background` opens a file without bringing MarsDawn to the front.
-- `marsdawn open` can be given a folder. The app on the Mac App Store does not show a folder yet, so that option waits for an app that can take one.
+- `marsdawn open` can be given a folder, and MarsDawn shows it in the window's sidebar (MarsDawn 1.0.0 and later).
 
 ---
 
@@ -1843,7 +1843,7 @@ marsdawn open notes.md --folder . --background --json
 - `--line <n>` 為單一檔案指定行號，包括檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。
 - 行號範圍是 1 到 999999999，超出範圍是用法錯誤。
 - 行號從 marsdawn 0.3.0 開始提供。
-- 資料夾參數會在視窗的側邊欄開啟，而不是當成文件，所以 `marsdawn open .` 會顯示目前的資料夾；`--folder <path>` 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾：指定兩個是用法錯誤，同一個資料夾指定兩次則算一個。資料夾沒有行號，所以 `--line` 搭配資料夾是用法錯誤。沒有 `-a`：傳入它是用法錯誤，錯誤訊息會指向 `--folder`。
+- 資料夾參數會在視窗的側邊欄開啟，而不是當成文件，所以 `marsdawn open .` 會顯示目前的資料夾；`--folder <path>` 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾：指定兩個是用法錯誤，`--folder` 用兩次也是（即使是同一個資料夾）；同一個資料夾以參數再指定一次則算一個。資料夾沒有行號，所以 `--line` 搭配資料夾是用法錯誤。沒有 `-a`：傳入它是用法錯誤，錯誤訊息會指向 `--folder`。
 - `--background` 開啟時不把 MarsDawn 帶到最前面，適合在使用者做別的事時開檔的 agent。兩種情況的 JSON 都一樣。
 - 資料夾與 `--background` 從 marsdawn 0.5.1 開始提供。
 
@@ -2276,7 +2276,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/changelog/
 
 - 輸出的 PDF 中，中文、日文與韓文的文字層已修正。
 - `marsdawn open --background` 會打開檔案，但不會把 MarsDawn 帶到最前面。
-- `marsdawn open` 可以指定一個資料夾。Mac App Store 上的 app 還不能顯示資料夾，所以這個選項要等做得到的版本。
+- `marsdawn open` 可以指定一個資料夾，MarsDawn 會把它顯示在視窗的側欄（MarsDawn 1.0.0 起）。
 
 ---
 
@@ -2979,7 +2979,7 @@ marsdawn open notes.md --folder . --background --json
 - `--line <n>` 为单一文件指定行号，包括文件名本身以冒号加数字结尾的情况。只能搭配一个文件。
 - 行号范围是 1 到 999999999，超出范围是用法错误。
 - 行号从 marsdawn 0.3.0 开始提供。
-- 文件夹参数会在窗口的侧边栏打开，而不是当成文稿，所以 `marsdawn open .` 会显示当前的文件夹；`--folder <path>` 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹：指定两个是用法错误，同一个文件夹指定两次则算一个。文件夹没有行号，所以 `--line` 搭配文件夹是用法错误。没有 `-a`：传入它是用法错误，错误消息会指向 `--folder`。
+- 文件夹参数会在窗口的侧边栏打开，而不是当成文稿，所以 `marsdawn open .` 会显示当前的文件夹；`--folder <path>` 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹：指定两个是用法错误，`--folder` 用两次也是（即使是同一个文件夹）；同一个文件夹以参数再指定一次则算一个。文件夹没有行号，所以 `--line` 搭配文件夹是用法错误。没有 `-a`：传入它是用法错误，错误消息会指向 `--folder`。
 - `--background` 打开时不把 MarsDawn 带到最前面，适合在用户做别的事时打开文件的 agent。两种情况的 JSON 都一样。
 - 文件夹与 `--background` 从 marsdawn 0.5.1 开始提供。
 
@@ -3406,7 +3406,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/changelog/
 
 - 输出的 PDF 中，中文、日文与韩文的文字层已修正。
 - `marsdawn open --background` 会打开文件，但不会把 MarsDawn 带到最前面。
-- `marsdawn open` 可以指定一个文件夹。Mac App Store 上的 app 还不能显示文件夹，所以这个选项要等做得到的版本。
+- `marsdawn open` 可以指定一个文件夹，MarsDawn 会把它显示在窗口的侧边栏（MarsDawn 1.0.0 起）。
 
 ---
 
@@ -4109,7 +4109,7 @@ marsdawn open notes.md --folder . --background --json
 - `--line <n>` は単一ファイルの行を指定します。それ自体がコロンと数字で終わるパスも含みます。ファイルは1つだけ指定できます。
 - 行番号は 1 から 999999999 までで、それ以外は使用方法のエラーになります。
 - 行の指定は marsdawn 0.3.0 で追加されました。
-- フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます。`marsdawn open .` で現在のフォルダを表示し、`--folder <path>` はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つです：2つ指定すると使用方法のエラーになり、同じフォルダを2回指定した場合は1つとして扱います。フォルダには行がないため、フォルダに `--line` を指定すると使用方法のエラーです。`-a` はありません：指定すると使用方法のエラーになり、`--folder` を案内します。
+- フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます。`marsdawn open .` で現在のフォルダを表示し、`--folder <path>` はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つです：2つ指定すると使用方法のエラーになり、`--folder` を2回使った場合も（同じフォルダでも）エラーです。同じフォルダを引数でもう一度指定した場合は1つとして扱います。フォルダには行がないため、フォルダに `--line` を指定すると使用方法のエラーです。`-a` はありません：指定すると使用方法のエラーになり、`--folder` を案内します。
 - `--background` は MarsDawn を前面に出さずに開きます。人が別の作業をしている間にファイルを開くエージェント向けです。JSON はどちらでも同じです。
 - フォルダと `--background` は marsdawn 0.5.1 で追加されました。
 
@@ -4536,4 +4536,4 @@ Source: https://marsdawn.southern-light.dev/ja/changelog/
 
 - 書き出した PDF のテキストレイヤーを、中国語、日本語、韓国語について修正しました。
 - `marsdawn open --background` はファイルを開きますが、MarsDawn を前面には出しません。
-- `marsdawn open` にフォルダを渡せます。Mac App Store のアプリはまだフォルダを表示できないので、このオプションは、それができるアプリを待ちます。
+- `marsdawn open` にフォルダを渡すと、MarsDawn がウインドウのサイドバーに表示します（MarsDawn 1.0.0 以降）。
