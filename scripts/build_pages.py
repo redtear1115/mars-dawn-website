@@ -19,9 +19,10 @@ from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
 SITE = Path(__file__).resolve().parent.parent / "public"
+CONTENT_LEGAL = Path(__file__).resolve().parent.parent / "content" / "legal"
 UPDATED = "2026-09-17"
-# The privacy page has its own date: it changes when the policy does, not when other pages do.
-PRIVACY_UPDATED = "2026-09-23"
+# The privacy page's own "Last updated" line lives in its Markdown source
+# (content/legal/privacy.<locale>.md) now, not here: see render_legal_body.
 EMAIL = "support@southern-light.dev"
 BASE_URL = "https://marsdawn.southern-light.dev"
 
@@ -37,6 +38,23 @@ BREW_TAP_INSTALL = "brew tap redtear1115/tap && brew install marsdawn"
 # Launch day flips this to "https://schema.org/InStock" with the rest of the go-live copy
 # (website #44, and docs/go-live-checklist.md in the app repo, beside the deploy).
 AVAILABILITY = "https://schema.org/PreOrder"
+
+# Pages rendered from a Markdown source through the kit (issue #33), instead of hand-written
+# HTML: currently just privacy, in every locale it has. Each one's text is
+# content/legal/<slug>.<locale>.md; scripts/render_legal.py renders that through MarsDawnKit's
+# MarkdownRenderer (the app's own preview renderer) and caches the result at
+# content/legal/<slug>.<locale>.rendered.html, which is what this reads at every ordinary
+# build — no Swift needed here, so the site still builds on Ubuntu CI.
+LEGAL_PAGES = {"privacy"}
+
+
+def render_legal_body(slug: str, locale: str) -> str:
+    path = CONTENT_LEGAL / f"{slug}.{locale}.rendered.html"
+    html = re.sub(r"^<!--.*?-->\n", "", path.read_text(encoding="utf-8"), count=1)
+    # The theme's CSS variables come from themes.css's `:root[data-theme="dawn"]` rule (see
+    # render(), which sets that attribute on <html> for a page in LEGAL_PAGES) — Dawn because
+    # it's the kit's own default, and the one MarsDawn is named for.
+    return f'<div class="markdown-body">\n{html.strip()}\n</div>\n'
 
 # The app's Mac App Store listing. None until launch: before it, nothing may link to the
 # listing (check_invariants.py). Launch day sets it with AVAILABILITY (website #47).
@@ -327,134 +345,12 @@ PAGES = {
     ("en", "privacy"): {
         "title": "Privacy Policy · MarsDawn",
         "description": "MarsDawn does not collect personal data. Your documents and settings stay on your Mac.",
-        "body": f"""
-<section class="intro">
-  <h1>Privacy Policy</h1>
-  <p>How MarsDawn, the Markdown editor for macOS, handles your information.</p>
-  <p class="updated">Last updated {PRIVACY_UPDATED}</p>
-</section>
-
-<div class="summary"><p><strong>The MarsDawn app does not collect any data about you.</strong> There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.</p></div>
-
-<h2>The website</h2>
-<p>The app and this website are two different things. The app collects nothing. A visit can be recorded only here, on marsdawn.southern-light.dev.</p>
-<p>This site uses <strong>Google Analytics 4</strong>, loaded through <strong>Google Tag Manager</strong>. Every visitor starts with analytics denied: Google's Consent Mode sends only a cookieless ping with no analytics cookie and no persistent identifier, until you choose <em>Accept</em> in the banner. Choosing <em>Decline</em>, or making no choice at all, keeps it that way, and choosing <em>Decline</em> after a prior <em>Accept</em> turns analytics back off immediately and removes the cookies below. Change your choice at any time with the "Cookie settings" link in the footer of every page. The choice itself is stored only in your browser's local storage, never in a cookie of ours.</p>
-<p>Once you accept, Google Analytics sets its own cookies (<code>_ga</code> and <code>_ga_&lt;measurement id&gt;</code>) and records:</p>
-<ul>
-  <li><strong>Page views and referrer.</strong> Which page was viewed, and the referring address when the browser sends one.</li>
-  <li><strong>Approximate location, device and browser.</strong> A coarse location derived from your IP address (city level at most), your device type, operating system and browser — none of it precise enough to identify you.</li>
-  <li><strong>Outbound clicks and scroll depth.</strong> Google Analytics' enhanced measurement records clicks that leave the site, such as the link to the Mac App Store, and how far you scroll down a page.</li>
-  <li><strong>IP addresses.</strong> Google Analytics 4 does not log or store IP addresses.</li>
-  <li><strong>What is not recorded.</strong> No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under <code>/themes/</code> are skipped, and are not sent on.</li>
-  <li><strong>Retention.</strong> Google keeps this data for 14 months, then deletes it.</li>
-  <li><strong>Where it's processed.</strong> Google Tag Manager and Google Analytics are operated by Google; your data may be processed in the United States as well as other countries where Google operates.</li>
-  <li><strong>The host.</strong> Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.</li>
-</ul>
-
-<h2>What stays on your Mac</h2>
-<ul>
-  <li><strong>Your documents.</strong> MarsDawn reads and writes only the files and folders you open, save or choose. They are never uploaded anywhere by the app.</li>
-  <li><strong>Your settings.</strong> Appearance, preview theme, window layout and the image preference are stored in the app's own preferences on your Mac.</li>
-  <li><strong>Folder access you grant.</strong> When you let MarsDawn show images or page files from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. A folder you open in the sidebar stays readable and writable by MarsDawn until you remove it in Settings, not just while its window is open. You can remove folders at any time in MarsDawn › Settings.</li>
-</ul>
-
-<h2>When MarsDawn uses the internet</h2>
-<p>MarsDawn works fully offline. It connects to the internet only <strong>when you choose to</strong>, for a document that refers to the web:</p>
-<ul>
-  <li><strong>Markdown documents.</strong> Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings. Nothing else a Markdown document refers to is loaded from the web.</li>
-  <li><strong>HTML documents.</strong> An HTML document opens static: its code doesn't run and nothing is loaded from the web. If a document contains code that could run, you can choose <em>View › Run This Document</em> for that document. Its own code then runs until you stop it, the document reloads or you close the window. That choice is never remembered, and it isn't a setting. While it runs, the document can send data over the network, and read images, style sheets, fonts and media in its folder and the folders inside it. Code downloaded from the web never runs.</li>
-</ul>
-<p>MarsDawn loads web content over https only. A plain http address is never loaded, in any setting, and MarsDawn does not rewrite it to https. In a Markdown document, the preview shows a placeholder in its place.</p>
-<p>When web content loads, your Mac requests it directly from the servers that host it. Like any web request, this lets those servers see your IP address and what was requested. MarsDawn's developer receives none of this information.</p>
-<p>Links you click in the preview open in your default web browser, under that browser's own privacy practices. Audio and video never play by themselves.</p>
-
-<h2>Siri, Shortcuts and Spotlight</h2>
-<p>MarsDawn offers actions for Siri, the Shortcuts app and Spotlight, such as creating a document or adding a note. When you use them, the text you provide is passed to MarsDawn on your Mac and saved only where the action says (a new document, or the <code>Inbox.md</code> file in the notes folder you chose). Speech you dictate to Siri is handled by Apple under <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
-
-<h2>Exporting and printing</h2>
-<p>PDF export and printing happen on your Mac. The PDF is saved where you choose. Printing goes through macOS to the printer you pick.</p>
-
-<h2>The marsdawn command-line tool</h2>
-<p>The optional <code>marsdawn</code> command-line tool, distributed separately, also runs entirely on your Mac. It reads the Markdown file you name and writes the PDF you ask for. It loads web images only when you pass <code>--allow-remote-images</code>.</p>
-
-<h2>Children</h2>
-<p>The MarsDawn app does not collect data from anyone, including children. A visit recorded on the website is not an account, and it is not used to identify anyone.</p>
-
-<h2>Purchases</h2>
-<p>MarsDawn will be sold through the Mac App Store. Apple will process the purchase under its own terms, and the developer never receives your payment details.</p>
-
-<h2>Changes to this policy</h2>
-<p>If MarsDawn ever starts handling data differently, this page will be updated before that version is released, and the date at the top will change.</p>
-
-<h2>Contact</h2>
-<p>Questions about privacy: <a href="mailto:{EMAIL}">{EMAIL}</a></p>
-""",
+        "body": render_legal_body("privacy", "en"),
     },
     ("zh-hant", "privacy"): {
         "title": "隱私權政策 · MarsDawn",
         "description": "MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。",
-        "body": f"""
-<section class="intro">
-  <h1>隱私權政策</h1>
-  <p>macOS 的 Markdown 編輯器 MarsDawn 如何處理你的資訊。</p>
-  <p class="updated">最後更新：{PRIVACY_UPDATED}</p>
-</section>
-
-<div class="summary"><p><strong>MarsDawn app 不收集任何關於你的資料。</strong>沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。</p></div>
-
-<h2>這個網站</h2>
-<p>App 和這個網站是兩件事。App 不收集資料。會記下造訪的，只有 marsdawn.southern-light.dev。</p>
-<p>這個網站使用透過<strong>Google Tag Manager</strong>載入的<strong>Google Analytics 4</strong>。每位訪客一開始的分析狀態都是拒絕：Google 的同意模式只會送出一個沒有 cookie、不含任何持續性識別碼的連線，直到你在橫幅中選擇「接受」為止。選擇「拒絕」，或是不做選擇，都會維持這個狀態；如果先前選過「接受」再改選「拒絕」，分析會立即關閉，下面提到的 cookie 也會被移除。你可以隨時用每一頁頁尾的「Cookie 設定」連結改變選擇；這個選擇只存在你瀏覽器的本機儲存空間裡，不是我們設下的 cookie。</p>
-<p>一旦你按下接受，Google Analytics 就會設定自己的 cookie（<code>_ga</code> 與 <code>_ga_&lt;評估 ID&gt;</code>），並記錄：</p>
-<ul>
-  <li><strong>頁面瀏覽與來源網址。</strong>被瀏覽的頁面，以及瀏覽器有送出來源網址時的那個網址。</li>
-  <li><strong>大略位置、裝置與瀏覽器。</strong>由你的 IP 位址推算出的粗略位置（最多到城市層級）、裝置類型、作業系統與瀏覽器，都不足以用來辨識你是誰。</li>
-  <li><strong>經由本站離開的點擊與捲動。</strong>Google Analytics 的加強型評估會記錄離開本站的點擊（例如前往 Mac App Store 的連結），以及你在頁面上捲動的程度。</li>
-  <li><strong>IP 位址。</strong>Google Analytics 4 不會記錄或保存 IP 位址。</li>
-  <li><strong>不會記錄的。</strong>沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 <code>/themes/</code> 索取主題檔案的請求會被略過，不會送出。</li>
-  <li><strong>保留期限。</strong>Google 會保留這些資料 14 個月，之後刪除。</li>
-  <li><strong>資料處理地點。</strong>Google Tag Manager 與 Google Analytics 由 Google 營運；你的資料可能會在美國及 Google 營運所在的其他國家處理。</li>
-  <li><strong>主機。</strong>網站放在 Cloudflare。和任何主機一樣，它在回應請求時會看到你的 IP 位址。那是主機自己的日誌，不是上面的分析。</li>
-</ul>
-
-<h2>留在你 Mac 上的東西</h2>
-<ul>
-  <li><strong>你的文件。</strong>MarsDawn 只讀寫你打開、儲存或選擇的檔案與資料夾，App 不會把它們上傳到任何地方。</li>
-  <li><strong>你的設定。</strong>外觀、預覽主題、視窗版面和圖片偏好，都存在 App 自己的偏好設定裡。</li>
-  <li><strong>你授權的資料夾。</strong>當你讓 MarsDawn 顯示某個資料夾裡的圖片或網頁檔案，或選擇筆記資料夾時，App 會保存 macOS 書籤，以便之後再次開啟。你在側邊欄開啟的資料夾，MarsDawn 會保持可讀寫，直到你在設定中移除為止，而不只是在那個視窗開著的時候。你隨時可以到 MarsDawn › 設定⋯ 移除。</li>
-</ul>
-
-<h2>MarsDawn 什麼時候會連上網路</h2>
-<p>MarsDawn 可以完全離線使用，只有在<strong>你自己選擇時</strong>，才會為引用網路內容的文件連網：</p>
-<ul>
-  <li><strong>Markdown 文件。</strong>網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。</li>
-  <li><strong>HTML 文件。</strong>HTML 文件開啟時是靜態的：它的程式碼不會執行，也不會從網路載入任何東西。如果文件含有可以執行的程式碼，你可以針對這份文件選擇「顯示方式 › 執行這份文件」。之後它自己的程式碼會一直執行，直到你停止它、文件重新載入，或關閉視窗為止。這個選擇不會被記住，也不是一項設定。執行期間，這份文件可以透過網路傳送資料，並讀取它所在資料夾及其子資料夾中的圖片、樣式表、字型與媒體檔案。從網路下載的程式碼一律不會執行。</li>
-</ul>
-<p>MarsDawn 只透過 https 載入網路內容。http 位址一律不會載入，任何設定都無法開啟，MarsDawn 也不會自動改寫成 https。在 Markdown 文件中，預覽會以佔位圖示代替。</p>
-<p>載入網路內容時，你的 Mac 會直接向存放內容的伺服器發出請求。和所有網路請求一樣，這些伺服器會看到你的 IP 位址與請求的內容。MarsDawn 的開發者不會收到任何這類資訊。</p>
-<p>在預覽中點選的連結會用你的預設瀏覽器打開，適用該瀏覽器的隱私做法。音訊與影片不會自動播放。</p>
-
-<h2>Siri、捷徑和 Spotlight</h2>
-<p>MarsDawn 提供 Siri、捷徑 App 和 Spotlight 可用的動作，例如新增文件或加入筆記。使用時，你提供的文字會交給你 Mac 上的 MarsDawn，並只存到動作指定的位置（新文件，或你所選筆記資料夾中的 <code>Inbox.md</code>）。對 Siri 說的話由 Apple 依 <a href="https://www.apple.com/legal/privacy/">Apple 隱私權政策</a> 處理。</p>
-
-<h2>輸出 PDF 和列印</h2>
-<p>輸出 PDF 和列印都在你的 Mac 上完成。PDF 存在你選擇的位置，列印則透過 macOS 送到你選的印表機。</p>
-
-<h2>marsdawn 命令列工具</h2>
-<p>另外發佈、可自由選用的 <code>marsdawn</code> 命令列工具，同樣完全在你的 Mac 上執行：只讀取你指定的 Markdown 檔，並寫出你要求的 PDF。只有在加上 <code>--allow-remote-images</code> 時才會載入網路圖片。</p>
-
-<h2>兒童</h2>
-<p>MarsDawn app 不向任何人收集資料，包括兒童。網站上記下的造訪不是帳號，也不用來辨認任何人。</p>
-
-<h2>購買</h2>
-<p>MarsDawn 將透過 Mac App Store 販售，付款會由 Apple 依其條款處理，開發者不會取得你的付款資訊。</p>
-
-<h2>政策變更</h2>
-<p>如果 MarsDawn 未來處理資料的方式有所改變，本頁會在該版本推出前更新，頁首的日期也會一併更改。</p>
-
-<h2>聯絡我們</h2>
-<p>隱私相關問題：<a href="mailto:{EMAIL}">{EMAIL}</a></p>
-""",
+        "body": render_legal_body("privacy", "zh-hant"),
     },
     ("en", "support"): {
         "title": "Support · MarsDawn",
@@ -2313,9 +2209,10 @@ EXTRA_PAGES = {}
 
 def _merge_locale(locale: str, module) -> None:
     k = SimpleNamespace(
-        EMAIL=EMAIL, UPDATED=UPDATED, PRIVACY_UPDATED=PRIVACY_UPDATED, BASE_URL=BASE_URL,
+        EMAIL=EMAIL, UPDATED=UPDATED, BASE_URL=BASE_URL,
         KIT_URL=KIT_URL, BREW_TAP_INSTALL=BREW_TAP_INSTALL, INSTALL=_INSTALL, SKILL_URL=_SKILL_URL,
         APP_UI_LANGUAGES=APP_UI_LANGUAGES[locale], schema_links_from=schema_links_from, xml_escape=xml_escape,
+        render_legal_body=render_legal_body,
     )
     t = module.build(k)
     t["ui"] = {**t["ui"], **templates_pages.UI_LABELS[locale]}
@@ -3125,10 +3022,16 @@ def add_toc(locale: str, slug: str, html: str) -> str:
     items = "\n".join(f'  <li><a href="#{anchor}">{re.sub(r"<[^>]+>", "", head)}</a></li>' for anchor, head in zip(ids, heads))
     toc = (f'<nav class="toc" aria-label="{TOC_LABEL[slug][locale]}">\n<p>{TOC_LABEL[slug][locale]}</p>\n'
            f'<ul>\n{items}\n</ul>\n</nav>\n')
-    cut = html.index("</section>") + len("</section>\n")
-    # The one-line answer, where a page has one, stays first.
-    if html[cut:].lstrip().startswith('<div class="summary">'):
-        cut = html.index("</div>", cut) + len("</div>\n")
+    if "</section>" in html:
+        cut = html.index("</section>") + len("</section>\n")
+        # The one-line answer, where a page has one, stays first.
+        if html[cut:].lstrip().startswith('<div class="summary">'):
+            cut = html.index("</div>", cut) + len("</div>\n")
+    else:
+        # A kit-rendered page (render_legal_body) has no hand-written intro section: the
+        # opening text is plain <h1>/<p> content, so the TOC goes right before the first
+        # section heading instead.
+        cut = html.index(f"<{tag}")
     return html[:cut] + toc + html[cut:]
 
 
@@ -3198,6 +3101,10 @@ def render(locale: str, slug: str, page: dict) -> str:
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
     if slug.startswith("templates/"):
         extra_css = '<link rel="stylesheet" href="/assets/loop.css">\n'
+    if slug in LEGAL_PAGES:
+        # render_legal_body's markup is MarsDawnKit's own preview HTML (issue #33): it needs the
+        # kit's preview.css for layout and themes.css for the Dawn palette it's set to.
+        extra_css = '<link rel="stylesheet" href="/assets/themes.css">\n<link rel="stylesheet" href="/assets/preview.css">\n'
     if slug == "index":
         extra_css = ('<link rel="stylesheet" href="/assets/hero.css">\n<link rel="stylesheet" href="/assets/annotations.css">\n'
                      '<link rel="stylesheet" href="/assets/loop.css">\n')
@@ -3251,8 +3158,13 @@ def render(locale: str, slug: str, page: dict) -> str:
         f'  <nav class="footer-nav" aria-label="{ui["footer_nav"]}">\n{footer_links}  </nav>\n'
         f'  <p class="footer-meta">{footer_meta}</p>\n</footer>'
     )
+    # A page in LEGAL_PAGES carries its markdown-body content in the kit's own Dawn palette
+    # (themes.css's `:root[data-theme="dawn"]`); the attribute goes on <html>, not the div
+    # itself, because preview.css's own theme rules (e.g. `[data-theme="classic"] .markdown-body`)
+    # expect it on an ancestor, the way the app's isolated preview page has it on its own root.
+    html_theme_attr = ' data-theme="dawn"' if slug in LEGAL_PAGES else ""
     return f"""<!doctype html>
-<html lang="{lang}">
+<html lang="{lang}"{html_theme_attr}>
 <head>
 <meta charset="utf-8">
 {consent_head_html()}
