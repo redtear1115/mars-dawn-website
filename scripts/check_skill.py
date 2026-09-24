@@ -2,7 +2,7 @@
 """Checks that the site's agent skill is the one the documented marsdawn release prints.
 
 Usage:
-    python3 scripts/check_skill.py [--file public/cli/skill/SKILL.md] [--tag 0.5.2]
+    python3 scripts/check_skill.py [--file public/cli/skill/SKILL.md] [--tag 0.5.3]
 
 The kit repository owns the text: `skill/SKILL.md` there is what `marsdawn skill` prints (its
 tests hold the two to the same bytes). This fetches that file at KIT_TAG, the release the site
@@ -20,7 +20,7 @@ import sys
 import urllib.request
 from pathlib import Path
 
-KIT_TAG = "0.5.2"
+KIT_TAG = "0.5.3"
 URL = "https://raw.githubusercontent.com/redtear1115/mars-dawn-kit/{tag}/skill/SKILL.md"
 
 
