@@ -17,7 +17,7 @@ _现在哪里有问题、影响谁、我们怎么知道。_
 
 ## 目标
 
-- _上线后会成立的事。_
+- _上线后应达成的结果。_
 
 ## 不做的事
 
@@ -47,7 +47,7 @@ flowchart LR
 - _问题。_
 ````
 
-## 长什么样子
+## 导出效果
 
 ![spec.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/spec-zh-hans.png)
 

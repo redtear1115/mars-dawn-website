@@ -61,7 +61,7 @@ A reader who skims sees the diagram; a reader who checks needs the words. The ag
 ## More templates
 
 - [Spec (PRD)](/templates/spec/): problem, goals, requirements, a flow diagram and acceptance criteria.
-- [Meeting notes](/templates/meeting-notes/): decisions and action items, with owners.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, each with an owner.
 - [Markdown templates](/templates/)
 
 ## More

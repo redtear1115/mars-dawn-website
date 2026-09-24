@@ -80,7 +80,7 @@ Yes. It's a Markdown editor with the preview beside the source. The agent sees y
 ## More templates
 
 - [Flowchart](/templates/flowchart/): a Mermaid diagram with the steps written out below it.
-- [Meeting notes](/templates/meeting-notes/): decisions and action items, with owners.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, each with an owner.
 - [Markdown templates](/templates/)
 
 ## More

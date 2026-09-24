@@ -1067,7 +1067,7 @@ For the documents an agent writes and you read. Each template comes with a promp
 
 - [Spec (PRD)](/templates/spec/): problem, goals, requirements, a flow diagram and acceptance criteria.
 - [Flowchart](/templates/flowchart/): a Mermaid diagram with the steps written out below it.
-- [Meeting notes](/templates/meeting-notes/): decisions and action items, with owners.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, each with an owner.
 
 ---
 
@@ -1157,7 +1157,7 @@ Yes. It's a Markdown editor with the preview beside the source. The agent sees y
 ## More templates
 
 - [Flowchart](/templates/flowchart/): a Mermaid diagram with the steps written out below it.
-- [Meeting notes](/templates/meeting-notes/): decisions and action items, with owners.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, each with an owner.
 - [Markdown templates](/templates/)
 
 ---
@@ -1229,7 +1229,7 @@ A reader who skims sees the diagram; a reader who checks needs the words. The ag
 ## More templates
 
 - [Spec (PRD)](/templates/spec/): problem, goals, requirements, a flow diagram and acceptance criteria.
-- [Meeting notes](/templates/meeting-notes/): decisions and action items, with owners.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, each with an owner.
 - [Markdown templates](/templates/)
 
 ---
@@ -2397,7 +2397,7 @@ _現在哪裡有問題、影響誰、我們怎麼知道。_
 
 ## 目標
 
-- _上線後會成立的事。_
+- _上線後應達成的結果。_
 
 ## 不做的事
 
@@ -3690,7 +3690,7 @@ _现在哪里有问题、影响谁、我们怎么知道。_
 
 ## 目标
 
-- _上线后会成立的事。_
+- _上线后应达成的结果。_
 
 ## 不做的事
 
@@ -3720,7 +3720,7 @@ flowchart LR
 - _问题。_
 ````
 
-## 长什么样子
+## 导出效果
 
 ![spec.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/spec-zh-hans.png)
 
@@ -3792,7 +3792,7 @@ flowchart LR
 4. **完成**：_这里的“完成”是什么意思。_
 ````
 
-## 长什么样子
+## 导出效果
 
 ![flowchart.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/flowchart-zh-hans.png)
 
@@ -3861,7 +3861,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/
 - _值得留下、但不是决议也不是行动项的内容。_
 ```
 
-## 长什么样子
+## 导出效果
 
 ![meeting-notes.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/meeting-notes-zh-hans.png)
 
@@ -3879,7 +3879,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/
 
 ## 做不到的事
 
-MarsDawn 不会录音或转写，也不会跟踪行动项。它只把会议记录呈现成读者会看到的样子。
+MarsDawn 不会录音或转成逐字稿，也不会跟踪行动项。它只把会议记录呈现成读者会看到的样子。
 
 ## 常见问题
 
@@ -4952,7 +4952,7 @@ Source: https://marsdawn.southern-light.dev/ja/templates/
 
 # Markdown テンプレート
 
-エージェントが書き、あなたが読む文書のために。各テンプレートにはエージェントへのプロンプトが付いています。書き上がったファイルを MarsDawn で開いて、何を書いたか読んでください。
+エージェントが書き、あなたが読む文書のために。各テンプレートにはエージェントへのプロンプトが付いています。書き上がったファイルを MarsDawn で開けば、何を書いたか読めます。
 
 - [仕様書（PRD）](/ja/templates/spec/)：課題、目標、要件、フロー図、受け入れ基準。
 - [フローチャート](/ja/templates/flowchart/)：Mermaid の図と、その下に書き出した各ステップ。
@@ -4966,7 +4966,7 @@ Source: https://marsdawn.southern-light.dev/ja/templates/spec/
 
 # Markdown 仕様書（PRD）テンプレート
 
-エージェントが埋められて、あなたが一度で読み通せる仕様書。課題、目標、要件、フロー図、受け入れ基準。要件をひとつ変えたら、残りを合わせるようエージェントに頼みます。
+エージェントが埋め、あなたが一度で読み通せる仕様書。課題、目標、要件、フロー図、受け入れ基準。要件をひとつ変えたら、残りを合わせるようエージェントに頼みます。
 
 ## テンプレート
 
@@ -5073,7 +5073,7 @@ _一文で：何が入り、何が出るか。_
 ```mermaid
 flowchart LR
   A[最初のステップ] --> B[次のステップ]
-  B --> C[三つ目のステップ]
+  B --> C[3 番目のステップ]
   C --> D[完了]
 ```
 
@@ -5081,7 +5081,7 @@ flowchart LR
 
 1. **最初のステップ**：_誰がやり、次に何を渡すか。_
 2. **次のステップ**：_……_
-3. **三つ目のステップ**：_……_
+3. **3 番目のステップ**：_……_
 4. **完了**：_ここでの「完了」の意味。_
 ````
 
@@ -5129,7 +5129,7 @@ Source: https://marsdawn.southern-light.dev/ja/templates/meeting-notes/
 
 # Markdown 議事録テンプレート
 
-まず決定事項、次にアクションアイテム。それぞれに担当者を付けます。文字起こしからエージェントに議事録を書かせ、送る前に読んでください。決定が変わったら、アクションアイテムを合わせるようエージェントに頼みます。
+まず決定事項、次にアクションアイテム。それぞれに担当者を付けます。文字起こしからエージェントに議事録を書かせ、送る前に目を通します。決定が変わったら、アクションアイテムを合わせるようエージェントに頼みます。
 
 ## テンプレート
 
@@ -5151,7 +5151,7 @@ Source: https://marsdawn.southern-light.dev/ja/templates/meeting-notes/
 
 ## メモ
 
-- _決定でもアクションでもないが、残しておくこと。_
+- _決定事項でもアクションアイテムでもないが、残しておくこと。_
 ```
 
 ## 見た目

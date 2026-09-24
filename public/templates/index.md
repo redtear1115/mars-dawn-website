@@ -4,7 +4,7 @@ For the documents an agent writes and you read. Each template comes with a promp
 
 - [Spec (PRD)](/templates/spec/): problem, goals, requirements, a flow diagram and acceptance criteria.
 - [Flowchart](/templates/flowchart/): a Mermaid diagram with the steps written out below it.
-- [Meeting notes](/templates/meeting-notes/): decisions and action items, with owners.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, each with an owner.
 
 ## More
 

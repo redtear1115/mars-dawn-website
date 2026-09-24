@@ -25,7 +25,7 @@
 - _值得留下、但不是决议也不是行动项的内容。_
 ```
 
-## 长什么样子
+## 导出效果
 
 ![meeting-notes.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/meeting-notes-zh-hans.png)
 
@@ -43,7 +43,7 @@
 
 ## 做不到的事
 
-MarsDawn 不会录音或转写，也不会跟踪行动项。它只把会议记录呈现成读者会看到的样子。
+MarsDawn 不会录音或转成逐字稿，也不会跟踪行动项。它只把会议记录呈现成读者会看到的样子。
 
 ## 常见问题
 

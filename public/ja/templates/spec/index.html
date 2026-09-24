@@ -71,7 +71,7 @@ try {
 <main id="main">
 <section class="intro">
   <h1>Markdown 仕様書（PRD）テンプレート</h1>
-  <p>エージェントが埋められて、あなたが一度で読み通せる仕様書。課題、目標、要件、フロー図、受け入れ基準。要件をひとつ変えたら、残りを合わせるようエージェントに頼みます。</p>
+  <p>エージェントが埋め、あなたが一度で読み通せる仕様書。課題、目標、要件、フロー図、受け入れ基準。要件をひとつ変えたら、残りを合わせるようエージェントに頼みます。</p>
 </section>
 
 <div class="loop-anim loop-ja loop-long">
@@ -86,18 +86,18 @@ try {
 <span class="loop-h"><span class="loop-mk">##</span> 要件</span>
 <span class="loop-mk">-</span> R1：6桁のコードをメールで送る。
 <span class="loop-mk">-</span> R2：コードは10分で失効。
-<span class="loop-rl loop-r-u a"><span class="loop-mk">-</span> R3：二要素目を求める。</span>
+<span class="loop-rl loop-r-u a"><span class="loop-mk">-</span> R3：第二要素を求める。</span>
 <span class="loop-h"><span class="loop-mk">##</span> フロー</span>
 <span class="loop-code">```mermaid</span>
 <span class="loop-code">flowchart LR</span>
 <span class="loop-code">  A[Email] --&gt; B[コード]</span>
-<span class="loop-rl loop-r-a a"><span class="loop-code">  B --&gt; C[二要素目]</span></span><span class="loop-code">  <span class="loop-day loop-d-b a"><span class="loop-old a">C</span><span class="loop-new loop-n1 a">B</span></span> --&gt; D[サインイン完了]</span>
+<span class="loop-rl loop-r-a a"><span class="loop-code">  B --&gt; C[第二要素]</span></span><span class="loop-code">  <span class="loop-day loop-d-b a"><span class="loop-old a">C</span><span class="loop-new loop-n1 a">B</span></span> --&gt; D[サインイン完了]</span>
 <span class="loop-code">```</span>
 
 <span class="loop-h"><span class="loop-mk">##</span> 受け入れ</span>
 <span class="loop-mk">- [ ]</span> R1：1分以内にコードが届く。
 <span class="loop-rl loop-r-c a"><span class="loop-mk">- [ ]</span> R3：端末ごとに一度だけ。</span></div>
-<div class="loop-pre"><h3>仕様：コードでサインイン</h3><h4>要件</h4><ul><li>R1：6桁のコードをメールで送る。</li><li>R2：コードは10分で失効。</li><li class="loop-rl loop-r-u a">R3：二要素目を求める。</li></ul><h4>フロー</h4><div class="loop-flow"><span class="loop-node">Email</span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">コード</span></span><span class="loop-fseg loop-rn loop-r-a a"><span class="loop-arrow">→</span><span class="loop-node">二要素目</span></span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">サインイン完了</span></span></div><h4>受け入れ</h4><ul><li class="loop-task">R1：1分以内にコードが届く。</li><li class="loop-task loop-rl loop-r-c a">R3：端末ごとに一度だけ。</li></ul></div>
+<div class="loop-pre"><h3>仕様：コードでサインイン</h3><h4>要件</h4><ul><li>R1：6桁のコードをメールで送る。</li><li>R2：コードは10分で失効。</li><li class="loop-rl loop-r-u a">R3：第二要素を求める。</li></ul><h4>フロー</h4><div class="loop-flow"><span class="loop-node">Email</span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">コード</span></span><span class="loop-fseg loop-rn loop-r-a a"><span class="loop-arrow">→</span><span class="loop-node">第二要素</span></span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">サインイン完了</span></span></div><h4>受け入れ</h4><ul><li class="loop-task">R1：1分以内にコードが届く。</li><li class="loop-task loop-rl loop-r-c a">R3：端末ごとに一度だけ。</li></ul></div>
 </div>
 </div>
 <div class="loop-term a">
@@ -105,7 +105,7 @@ try {
 <div class="loop-tbody">
 <div><span class="loop-p">›</span> <span class="loop-cmd loop-cmd-21 a">marsdawn open spec.md</span><span class="loop-caret a"></span></div>
 <div class="loop-l2 a"><span class="loop-p">›</span> R3 を外した。フローと受け入れ基準を合わせて。</div>
-<div class="loop-l3 a">完了。フローは二要素目を飛ばし、R3 の確認も消した。</div>
+<div class="loop-l3 a">完了。フローは第二要素を飛ばし、R3 の確認も消した。</div>
 </div>
 </div>
 <svg class="loop-ptr loop-ptr-r1 a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>

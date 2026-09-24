@@ -47,7 +47,7 @@ LABELS = {
                 "ask": "交給 agent", "share": "輸出 PDF 分享", "doesnt": "做不到的事",
                 "faq": "常見問題", "more": "其他範本", "sep": "：",
                 "img_alt": "{file} 用 marsdawn export 輸出的 PDF 第一頁。"},
-    "zh-hans": {"template": "模板", "download": "下载 {file}", "looks": "长什么样子",
+    "zh-hans": {"template": "模板", "download": "下载 {file}", "looks": "导出效果",
                 "ask": "交给 agent", "share": "输出 PDF 分享", "doesnt": "做不到的事",
                 "faq": "常见问题", "more": "其他模板", "sep": "：",
                 "img_alt": "{file} 用 marsdawn export 输出的 PDF 第一页。"},
@@ -64,7 +64,7 @@ HUB = {
            "lede": "For the documents an agent writes and you read. Each template comes with a prompt for your agent. Open the filled file in MarsDawn to read what it wrote.",
            "items": {"spec": ("Spec (PRD)", "problem, goals, requirements, a flow diagram and acceptance criteria."),
                      "flowchart": ("Flowchart", "a Mermaid diagram with the steps written out below it."),
-                     "meeting-notes": ("Meeting notes", "decisions and action items, with owners.")}},
+                     "meeting-notes": ("Meeting notes", "decisions and action items, each with an owner.")}},
     "zh-hant": {"title": "Markdown 範本 · MarsDawn",
                 "description": "給 agent 寫、你來讀的文件用的 Markdown 範本：規格文件、流程圖和會議記錄，每份都附一段給 agent 的提示詞。",
                 "h1": "Markdown 範本",
@@ -82,7 +82,7 @@ HUB = {
     "ja": {"title": "Markdown テンプレート · MarsDawn",
            "description": "エージェントが書き、あなたが読む文書のための Markdown テンプレート。仕様書、フローチャート、議事録。それぞれにエージェントへのプロンプトが付きます。",
            "h1": "Markdown テンプレート",
-           "lede": "エージェントが書き、あなたが読む文書のために。各テンプレートにはエージェントへのプロンプトが付いています。書き上がったファイルを MarsDawn で開いて、何を書いたか読んでください。",
+           "lede": "エージェントが書き、あなたが読む文書のために。各テンプレートにはエージェントへのプロンプトが付いています。書き上がったファイルを MarsDawn で開けば、何を書いたか読めます。",
            "items": {"spec": ("仕様書（PRD）", "課題、目標、要件、フロー図、受け入れ基準。"),
                      "flowchart": ("フローチャート", "Mermaid の図と、その下に書き出した各ステップ。"),
                      "meeting-notes": ("議事録", "決定事項とアクションアイテム。それぞれに担当者。")}},
@@ -143,7 +143,7 @@ PAGES = {
                     ("可以在 MarsDawn 裡改規格嗎？", "可以。它是 Markdown 編輯器，原始碼旁邊就是預覽。agent 下次讀這個檔案時，就會看到你的修改。")],
         },
         "flowchart": {
-            "title": "Markdown 流程圖範本（Mermaid）· MarsDawn",
+            "title": "Markdown 流程圖範本（Mermaid） · MarsDawn",
             "description": "Markdown 的 Mermaid 流程圖範本，圖的下方把步驟寫出來。在 Mac 上預覽，也能輸出成 PDF。",
             "h1": "Markdown 流程圖範本",
             "lede": "一張 Mermaid 流程圖，下方把每個步驟寫清楚，圖和文字可以互相對照。拿掉一個步驟，再請 agent 把其他部分改好。",
@@ -181,7 +181,7 @@ PAGES = {
                     ("可以在 MarsDawn 里改规格吗？", "可以。它是 Markdown 编辑器，源代码旁边就是预览。agent 下次读这个文件时，就会看到你的修改。")],
         },
         "flowchart": {
-            "title": "Markdown 流程图模板（Mermaid）· MarsDawn",
+            "title": "Markdown 流程图模板（Mermaid） · MarsDawn",
             "description": "Markdown 的 Mermaid 流程图模板，图的下方把步骤写出来。在 Mac 上预览，也能输出成 PDF。",
             "h1": "Markdown 流程图模板",
             "lede": "一张 Mermaid 流程图，下方把每个步骤写清楚，图和文字可以互相对照。去掉一个步骤，再请 agent 把其他部分改好。",
@@ -200,7 +200,7 @@ PAGES = {
             "caption": "用 <code>marsdawn export meeting-notes.md</code> 输出。免费的命令行工具排版和 MarsDawn 的预览一样。",
             "prompt": "用 {url} 这份模板，把这场会议整理进 meeting-notes.md。先写决议，一项一行；每个行动项都要有一位负责人和日期。写好之后运行 marsdawn open meeting-notes.md。",
             "share": "<code>marsdawn export meeting-notes.md</code> 会输出一份 PDF，可以附在会后的邮件里。",
-            "doesnt": "MarsDawn 不会录音或转写，也不会跟踪行动项。它只把会议记录呈现成读者会看到的样子。",
+            "doesnt": "MarsDawn 不会录音或转成逐字稿，也不会跟踪行动项。它只把会议记录呈现成读者会看到的样子。",
             "faq": [("复选框能用吗？", "在预览和 PDF 里都会显示成复选框。要打勾，就在源代码里把 <code>[ ]</code> 改成 <code>[x]</code>。"),
                     ("agent 能让会议记录和行动项保持一致吗？", "可以，这就是这个循环的用意：改其中一个，再请它更新其他部分。MarsDawn 让你看到结果。")],
         },
@@ -210,7 +210,7 @@ PAGES = {
             "title": "Markdown 仕様書（PRD）テンプレート · MarsDawn",
             "description": "要件、Mermaid のフロー図、受け入れ基準を含む Markdown の仕様書テンプレート。エージェントが埋め、あなたが MarsDawn で確認します。",
             "h1": "Markdown 仕様書（PRD）テンプレート",
-            "lede": "エージェントが埋められて、あなたが一度で読み通せる仕様書。課題、目標、要件、フロー図、受け入れ基準。要件をひとつ変えたら、残りを合わせるようエージェントに頼みます。",
+            "lede": "エージェントが埋め、あなたが一度で読み通せる仕様書。課題、目標、要件、フロー図、受け入れ基準。要件をひとつ変えたら、残りを合わせるようエージェントに頼みます。",
             "caption": "<code>marsdawn export spec.md</code> で書き出したもの。無料のコマンドラインツールは MarsDawn のプレビューと同じ見た目で、図もそのまま描きます。",
             "prompt": "{url} のテンプレートを使って、［機能］の仕様を spec.md に書いてください。要件にはすべて ID を付け、フローと受け入れ基準でも同じ ID を使ってください。書き終えたら marsdawn open spec.md を実行してください。",
             "share": "<code>marsdawn export spec.md</code> を実行すると、隣に spec.pdf ができます。Markdown を読まない人に渡せます。",
@@ -219,7 +219,7 @@ PAGES = {
                     ("MarsDawn で仕様を編集できますか？", "はい。ソースの隣にプレビューがある Markdown エディタです。エージェントは次にファイルを読むときに、あなたの編集を目にします。")],
         },
         "flowchart": {
-            "title": "Markdown フローチャートテンプレート（Mermaid）· MarsDawn",
+            "title": "Markdown フローチャートテンプレート（Mermaid） · MarsDawn",
             "description": "Markdown で書く Mermaid フローチャートのテンプレート。図の下に各ステップを書き出します。Mac でプレビューし、PDF に書き出せます。",
             "h1": "Markdown フローチャートテンプレート",
             "lede": "Mermaid のフローチャートと、その下に書き出した各ステップ。図と文章を突き合わせて確かめられます。ステップをひとつ外したら、残りの修正をエージェントに頼みます。",
@@ -234,7 +234,7 @@ PAGES = {
             "title": "Markdown 議事録テンプレート · MarsDawn",
             "description": "決定事項と、担当者付きのアクションアイテムをまとめる Markdown の議事録テンプレート。エージェントが書き、あなたが MarsDawn で確かめます。",
             "h1": "Markdown 議事録テンプレート",
-            "lede": "まず決定事項、次にアクションアイテム。それぞれに担当者を付けます。文字起こしからエージェントに議事録を書かせ、送る前に読んでください。決定が変わったら、アクションアイテムを合わせるようエージェントに頼みます。",
+            "lede": "まず決定事項、次にアクションアイテム。それぞれに担当者を付けます。文字起こしからエージェントに議事録を書かせ、送る前に目を通します。決定が変わったら、アクションアイテムを合わせるようエージェントに頼みます。",
             "caption": "<code>marsdawn export meeting-notes.md</code> で書き出したもの。無料のコマンドラインツールは MarsDawn のプレビューと同じ見た目です。",
             "prompt": "{url} のテンプレートを使って、この会議を meeting-notes.md にまとめてください。決定事項を先に、一行ずつ。アクションアイテムにはそれぞれ担当者と期日をひとつ付けてください。書き終えたら marsdawn open meeting-notes.md を実行してください。",
             "share": "<code>marsdawn export meeting-notes.md</code> で PDF ができます。会議後のメールに添付できます。",
@@ -337,7 +337,7 @@ _現在哪裡有問題、影響誰、我們怎麼知道。_
 
 ## 目標
 
-- _上線後會成立的事。_
+- _上線後應達成的結果。_
 
 ## 不做的事
 
@@ -415,7 +415,7 @@ _现在哪里有问题、影响谁、我们怎么知道。_
 
 ## 目标
 
-- _上线后会成立的事。_
+- _上线后应达成的结果。_
 
 ## 不做的事
 
@@ -531,7 +531,7 @@ _一文で：何が入り、何が出るか。_
 {FENCE}mermaid
 flowchart LR
   A[最初のステップ] --> B[次のステップ]
-  B --> C[三つ目のステップ]
+  B --> C[3 番目のステップ]
   C --> D[完了]
 {FENCE}
 
@@ -539,7 +539,7 @@ flowchart LR
 
 1. **最初のステップ**：_誰がやり、次に何を渡すか。_
 2. **次のステップ**：_……_
-3. **三つ目のステップ**：_……_
+3. **3 番目のステップ**：_……_
 4. **完了**：_ここでの「完了」の意味。_
 """,
         "meeting-notes": """# 会議名、日付
@@ -557,7 +557,7 @@ flowchart LR
 
 ## メモ
 
-- _決定でもアクションでもないが、残しておくこと。_
+- _決定事項でもアクションアイテムでもないが、残しておくこと。_
 """,
     },
 }
@@ -675,21 +675,21 @@ SCENE_TEXT = {
     "ja": {
         "spec": {"title": "仕様：コードでサインイン", "req": "要件", "flow": "フロー", "acc": "受け入れ",
                  "r1": "R1：6桁のコードをメールで送る。", "r2": "R2：コードは10分で失効。",
-                 "r3": "R3：二要素目を求める。", "n1": "Email", "n2": "コード", "n3": "二要素目",
+                 "r3": "R3：第二要素を求める。", "n1": "Email", "n2": "コード", "n3": "第二要素",
                  "n4": "サインイン完了", "a1": "R1：1分以内にコードが届く。", "a3": "R3：端末ごとに一度だけ。",
                  "ask": "R3 を外した。フローと受け入れ基準を合わせて。",
-                 "reply": "完了。フローは二要素目を飛ばし、R3 の確認も消した。",
+                 "reply": "完了。フローは第二要素を飛ばし、R3 の確認も消した。",
                  "alt": "ターミナルが MarsDawn で spec.md を開く。読み手が要件 R3 を消し、エージェントがフロー図のステップと受け入れ基準から R3 を取り除く。"},
         "flowchart": {"title": "公開フロー", "diagram": "図", "steps": "ステップ",
                       "n1": "下書き", "n2": "レビュー", "n3": "法務", "n4": "公開",
                       "s1": "1. 下書き：書き手の初稿。", "s2": "2. レビュー：編集者が読む。",
-                      "s3": "3. 法務：表現を確認する。", "s4": "{c}. 公開：公開される。",
+                      "s3": "3. 法務：表現を確認する。", "s4": "{c}. 公開：本番に出す。",
                       "ask": "図から法務を外した。つなぎ方とステップを直して。",
                       "reply": "完了。レビューから公開へ直接つなぎ、番号も振り直した。",
                       "alt": "ターミナルが MarsDawn で flowchart.md を開く。読み手が Mermaid の図から法務のステップを外し、エージェントが図をつなぎ直して、下のステップの番号を振り直す。"},
         "meeting-notes": {"title": "週次定例、10/5", "decisions": "決定事項", "actions": "アクションアイテム",
                           "d1": "ベータを {u} 人に公開する。", "d2": "金曜にリリース。",
-                          "t1": "Mia：招待を {a} 通送る。", "t2": "Leo：席を {b} 追加。", "t3": "Ana：{c} 人分のサポート。",
+                          "t1": "Mia：招待を {a} 通送る。", "t2": "Leo：{b} 席を追加。", "t3": "Ana：{c} 人分のサポート。",
                           "ask": "ベータは80人になった。アクションアイテムを更新して。",
                           "reply": "完了。3つのアクションアイテムをすべて80にした。",
                           "alt": "ターミナルが MarsDawn で meeting-notes.md を開く。読み手が決定事項を50人から80人に変え、エージェントが3つのアクションアイテムを合わせる。"},

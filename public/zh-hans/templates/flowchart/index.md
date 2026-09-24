@@ -28,7 +28,7 @@ flowchart LR
 4. **完成**：_这里的“完成”是什么意思。_
 ````
 
-## 长什么样子
+## 导出效果
 
 ![flowchart.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/flowchart-zh-hans.png)
 
