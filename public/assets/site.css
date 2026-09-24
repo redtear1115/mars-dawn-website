@@ -359,7 +359,7 @@ html { scrollbar-color: var(--hairline) var(--paper); }
 @media (max-width: 480px) {
   /* Two rows, not three: the name and the store status share the first,
      the languages take the second. */
-  .masthead { gap: 10px 12px; }
+  .masthead { gap: 10px 12px; padding: 18px 0 14px; }
   .brand { gap: 10px; }
   .brand img { width: 34px; height: 34px; }
   .masthead .store-chip { padding: 2px 8px; font-size: 0.72rem; }
@@ -593,9 +593,11 @@ html { overflow-x: hidden; }
 
 .hero-scene {
   position: relative;
-  left: 50%;
+  /* Centred with margins, not a transform: a transform would make this the containing block
+     for the theme menu's position: fixed click-catcher, so a click outside the hero wouldn't
+     close the menu. */
   width: 100vw;
-  transform: translateX(-50%);
+  margin-left: calc(50% - 50vw);
   overflow: hidden;
   padding: clamp(40px, 9vw, 88px) 0 clamp(30px, 6vw, 60px);
 }
@@ -679,11 +681,12 @@ html { overflow-x: hidden; }
       color-mix(in srgb, var(--dawn-planet) 78%, transparent) 0%,
       color-mix(in srgb, var(--dawn-planet) 46%, transparent) 48%,
       transparent 88%);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 16%, #000 84%, transparent),
-                      linear-gradient(to bottom, transparent, #000 14%, #000 82%, transparent);
+  /* Long feathers on every side, so on a wide screen the scrim never shows an edge. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 34%, #000 66%, transparent),
+                      linear-gradient(to bottom, transparent, #000 32%, #000 72%, transparent);
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to right, transparent, #000 16%, #000 84%, transparent),
-              linear-gradient(to bottom, transparent, #000 14%, #000 82%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 34%, #000 66%, transparent),
+              linear-gradient(to bottom, transparent, #000 32%, #000 72%, transparent);
   mask-composite: intersect;
   z-index: -1;
   pointer-events: none;
@@ -745,6 +748,9 @@ html { overflow-x: hidden; }
   --chrome-divider: light-dark(#E9E9E9, #000000);
   /* A menu's highlighted item, in the system's default accent, as macOS draws it. */
   --chrome-select: light-dark(#0A82FF, #0A84FF);
+  /* A menu row that steps back but stays a live control: still 4.5:1 on the menu (#767676 on
+     white, #A3ABB0 on #273136). */
+  --chrome-ink-later: light-dark(#767676, #A3ABB0);
   --mdw-width: max(100%, var(--w-media));
   margin: 0 calc((100% - var(--mdw-width)) / 2);
   /* A macOS window's own corner, not a plate's. */
@@ -860,7 +866,7 @@ html { overflow-x: hidden; }
   right: 0;
   min-width: 200px;
   /* Never past the window's foot: a long menu scrolls, as a native one does on a short screen. */
-  max-height: var(--mdw-panes-height);
+  max-height: calc(var(--mdw-panes-height) + 4px);
   overflow: hidden auto;
   overscroll-behavior: contain;
   padding: 5px;
@@ -880,7 +886,7 @@ html { overflow-x: hidden; }
   width: 100%;
   height: auto;
   clip-path: none;
-  padding: 5px 10px 3px 26px;
+  padding: 4px 10px 2px 26px;
   font-size: 11px;
   font-weight: 650;
   color: color-mix(in srgb, var(--chrome-ink) 70%, transparent);
@@ -905,11 +911,38 @@ html { overflow-x: hidden; }
   border: 0;
   border-top: 1px solid color-mix(in srgb, var(--chrome-ink) 16%, transparent);
 }
+/* The theme picked for the appearance that isn't showing takes effect later, when the window
+   or the Mac changes appearance. Its section stays choosable but steps back, so a choice there
+   isn't read as a click that did nothing. */
+.mdw:has(#mdw-light:checked) .mdw-pick-dark > :is(legend, input:not(:checked) + label:not(:hover)),
+.mdw:has(#mdw-dark:checked) .mdw-pick-light > :is(legend, input:not(:checked) + label:not(:hover)) { color: var(--chrome-ink-later); }
+@media not all and (prefers-color-scheme: dark) {
+  .mdw:has(#mdw-system:checked) .mdw-pick-dark > :is(legend, input:not(:checked) + label:not(:hover)) { color: var(--chrome-ink-later); }
+}
+@media (prefers-color-scheme: dark) {
+  .mdw:has(#mdw-system:checked) .mdw-pick-light > :is(legend, input:not(:checked) + label:not(:hover)) { color: var(--chrome-ink-later); }
+}
+/* A click anywhere outside the open menu closes it, as a native menu does: a clear layer
+   behind the menu turns that click into one on the palette button. (Escape would need a
+   script.) It covers the whole viewport because no ancestor has a transform (see .hero-scene). */
+.mdw-themes[open] > summary::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  cursor: default;
+}
+/* Touch: native menu rows are 22px; 24px meets WCAG 2.5.8 and keeps the menu inside the window. */
+@media (pointer: coarse) {
+  .mdw-menu label, .mdw-settings { height: 24px; }
+}
 .mdw .pupil { fill: currentColor; stroke: none; }
 .mdw-menu .tick { flex: none; width: 12px; height: 12px; stroke-width: 1.8; visibility: hidden; }
 .mdw-menu input:checked + label .tick { visibility: visible; }
 
-.mdw { --mdw-panes-height: clamp(340px, 34vw, 480px); }
+/* Never shorter than the open theme menu needs, so the menu never has to scroll. */
+.mdw { --mdw-panes-height: clamp(380px, 34vw, 480px); }
+@media (pointer: coarse) { .mdw { --mdw-panes-height: clamp(410px, 34vw, 480px); } }
 .mdw-panes {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1002,7 +1035,7 @@ html { overflow-x: hidden; }
 /* Phones: one pane (Split shows the rendered page), and the title gives way to the toolbar. */
 @media (max-width: 500px) {
   .mdw { border-radius: 12px; }
-  .mdw { --mdw-panes-height: 400px; }
+  .mdw { --mdw-panes-height: 410px; }
   .mdw-panes { grid-template-columns: 1fr; }
   .mdw:has(#mdw-split:checked) .mdw-source { display: none; }
   .mdw-bar { padding: 0 6px 0 14px; }
@@ -1081,9 +1114,8 @@ html { overflow-x: hidden; }
    hero's, fixed dark in both modes, so the text keeps the hero's palette. */
 .dawn-close {
   position: relative;
-  left: 50%;
   width: 100vw;
-  transform: translateX(-50%);
+  margin-left: calc(50% - 50vw);
   margin-top: clamp(64px, 10vw, 104px);
   padding: clamp(44px, 7vw, 72px) 16px clamp(88px, 13vw, 132px);
   text-align: center;

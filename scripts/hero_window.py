@@ -167,12 +167,12 @@ def window_html(locale: str) -> str:
       <hr>
       <fieldset>
         <legend>{labels["preview_theme"]}</legend>
-        <fieldset>
+        <fieldset class="mdw-pick-light">
           <legend>{labels["light"]}</legend>
 {themes("light")}
         </fieldset>
         <hr>
-        <fieldset>
+        <fieldset class="mdw-pick-dark">
           <legend>{labels["dark"]}</legend>
 {themes("dark")}
         </fieldset>
