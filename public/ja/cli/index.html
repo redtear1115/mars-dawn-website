@@ -94,15 +94,18 @@ swift build -c release --product marsdawn</code></pre>
 <p>1つ以上の Markdown ファイルを MarsDawn アプリで開いて確認できます。アプリのインストールが必要です。インストールされていない場合、<code>marsdawn open</code> はコード 3 で終了し、MarsDawn がインストールされていないことを知らせます。<code>export</code> にはアプリは不要です。アプリは <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a> で配信中です。</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
-marsdawn open notes.md --line 120</code></pre>
+marsdawn open notes.md --line 120
+marsdawn open .
+marsdawn open notes.md --folder .</code></pre>
 <ul>
   <li><code>path:line</code>：MarsDawn にその行に移動するよう指定します。その後にコロンが続く場合、たとえば <code>notes.md:120:8</code> の列部分は無視されます。引数全体と一致するファイル名が存在する場合、その引数はそのファイルとして扱われます。</li>
   <li><code>--line &lt;n&gt;</code>：単一ファイルに対して同じ指定ができ、それ自体がコロンと数字で終わるパスに対して行を指定する方法でもあります。ファイルは1つだけ指定できます。</li>
   <li>行番号は 1 から 999999999 までです。</li>
+  <li>フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます：<code>marsdawn open .</code> で現在のフォルダを表示します。<code>--folder &lt;path&gt;</code> はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つなので、2つ指定すると使用方法のエラーになります。</li>
   <li><code>--background</code>：MarsDawn を前面に出さずに開きます。</li>
   <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
 </ul>
-<p>行の指定は marsdawn 0.3.0 で、<code>--background</code> は 0.5.1 で追加されました。</p>
+<p>行の指定は marsdawn 0.3.0 で、フォルダと <code>--background</code> は 0.5.1 で追加されました。</p>
 
 <h3>marsdawn export</h3>
 <p>Markdown ファイルを、MarsDawn 自身の PDF 書き出しと同じ書き出しエンジンで、ページ分割された PDF にレンダリングします。MarsDawn アプリは不要です。相対パスの画像は、入力ファイルのあるフォルダを基準に解決されます。</p>
