@@ -144,7 +144,7 @@ try {
       <hr>
       <fieldset>
         <legend>预览主题</legend>
-        <fieldset>
+        <fieldset class="mdw-pick-light">
           <legend>浅色</legend>
           <input type="radio" name="mdw-light-theme" id="mdw-light-dawn" value="dawn" checked><label for="mdw-light-dawn" title="温暖的火星日出"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>黎明</label>
           <input type="radio" name="mdw-light-theme" id="mdw-light-classic" value="classic"><label for="mdw-light-classic" title="纸上的优雅衬线字"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>典雅</label>
@@ -152,7 +152,7 @@ try {
           <input type="radio" name="mdw-light-theme" id="mdw-light-vivid" value="vivid"><label for="mdw-light-vivid" title="俏皮、明亮又圆润"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>活泼</label>
         </fieldset>
         <hr>
-        <fieldset>
+        <fieldset class="mdw-pick-dark">
           <legend>深色</legend>
           <input type="radio" name="mdw-dark-theme" id="mdw-dark-dawn" value="dawn" checked><label for="mdw-dark-dawn" title="温暖的火星日出"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>黎明</label>
           <input type="radio" name="mdw-dark-theme" id="mdw-dark-classic" value="classic"><label for="mdw-dark-classic" title="纸上的优雅衬线字"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>典雅</label>
@@ -174,8 +174,6 @@ try {
   <div class="mdw-panes">
     <pre class="mdw-source" aria-label="源代码"><span class="ed-heading ed-bold"># 欢迎使用 MarsDawn</span>
 
-<span class="ed-emphasis ed-italic">*Markdown 的新黎明。*</span> 左边写，右边排版好的页面会随着输入实时更新。这份指南就是一份普通的文稿，随意改改看会发生什么；如果不存储，关闭时不会询问。
-
 <span class="ed-heading ed-bold">## 布局</span>
 
 | 快捷键 | 布局 |
@@ -195,7 +193,6 @@ try {
 <span class="ed-marker ed-bold">  -</span> 像这样</pre>
     <div class="mdw-preview" aria-label="预览" role="region">
 <p class="md-h1">欢迎使用 MarsDawn</p>
-<p><em>Markdown 的新黎明。</em> 左边写，右边排版好的页面会随着输入实时更新。这份指南就是一份普通的文稿，随意改改看会发生什么；如果不存储，关闭时不会询问。</p>
 <p class="md-h2">布局</p>
 <table>
 <thead>

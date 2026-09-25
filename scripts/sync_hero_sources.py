@@ -177,9 +177,10 @@ def parse_highlighter(swift: str) -> dict:
 
 
 def welcome_excerpt(markdown: str) -> str:
-    """The title and its paragraph, the Layouts heading and its table, and the whole
-    Writing section: the third ## section. Every language's guide has the same shape,
-    which the asserts hold it to, so the excerpt is the same part of it in each."""
+    """The title, the Layouts heading and its table, and the whole Writing section: the
+    third ## section. Every language's guide has the same shape, which the asserts hold it
+    to, so the excerpt is the same part of it in each. The title's paragraph is left out:
+    it invites the reader to edit the guide, and the window on the page can't be edited."""
     lines = markdown.split("\n")
     starts = [i for i, line in enumerate(lines) if line.startswith("## ")]
     head = lines[:starts[0]]
@@ -188,7 +189,7 @@ def welcome_excerpt(markdown: str) -> str:
     writing = lines[starts[2]:starts[3]]
     assert head[0].startswith("# ") and layouts[2].startswith("|"), "Welcome.md's opening changed shape"
     assert any(line.startswith("- [x]") for line in writing), "Welcome.md's third section is no longer Writing"
-    return "\n".join(head + layouts[:table_end + 1] + [""] + writing).rstrip("\n") + "\n"
+    return "\n".join(head[:1] + [""] + layouts[:table_end + 1] + [""] + writing).rstrip("\n") + "\n"
 
 
 def render(markdown: str) -> str:
