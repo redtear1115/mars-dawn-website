@@ -899,7 +899,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <p>無料の marsdawn コマンドラインツールの変更点です。Mac App Store 版の MarsDawn は、そのバージョン自身について書くことがある場合だけ、ここに載せます。0.5.1 より前のバージョンは載せていません。</p>
 </section>
 
-<h2>marsdawn 0.5.4</h2>
+<h2>marsdawn 0.6.0</h2>
 <p>2026年10月1日。MarsDawn が Mac App Store で公開。</p>
 <ul>
   <li>アプリがインストールされていないとき、<code>marsdawn open</code> は Mac App Store の MarsDawn を案内します。</li>

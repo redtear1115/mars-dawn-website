@@ -2,7 +2,7 @@
 
 What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.
 
-## marsdawn 0.5.4
+## marsdawn 0.6.0
 
 1 October 2026. MarsDawn is on the Mac App Store.
 
