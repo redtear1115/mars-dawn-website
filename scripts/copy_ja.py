@@ -906,10 +906,6 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li>README とエージェントスキルで <code>marsdawn open .</code> と <code>--folder</code> を説明します。MarsDawn 1.0.0 はフォルダをウインドウのサイドバーに表示します。</li>
 </ul>
 
-<!-- DRAFT (needs-copy, needs-i18n): the 0.5.3 entry (open --folder status, Mermaid errors,
-     front-matter bound, footnoteBackLabel, highlight.js provenance, I/O policy restore) is
-     pending translation. See website #47 and the Grok request issue it opens. -->
-
 <h2>marsdawn 0.5.2</h2>
 <p>2026年9月24日。脚注、コントラスト、フォルダ。</p>
 <ul>

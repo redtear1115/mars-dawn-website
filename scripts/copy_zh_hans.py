@@ -898,10 +898,6 @@ open notes.pdf</code></pre>
   <li>README 和 agent skill 会教 <code>marsdawn open .</code> 与 <code>--folder</code>：MarsDawn 1.0.0 会把文件夹显示在窗口的侧边栏。</li>
 </ul>
 
-<!-- DRAFT (needs-copy, needs-i18n): the 0.5.3 entry (open --folder status, Mermaid errors,
-     front-matter bound, footnoteBackLabel, highlight.js provenance, I/O policy restore) is
-     pending translation. See website #47 and the Grok request issue it opens. -->
-
 <h2>marsdawn 0.5.2</h2>
 <p>2026 年 9 月 24 日。脚注、对比度与文件夹。</p>
 <ul>
