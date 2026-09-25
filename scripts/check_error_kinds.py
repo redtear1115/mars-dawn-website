@@ -2,7 +2,7 @@
 """Checks that the published error schema and exit codes are the ones the documented marsdawn has.
 
 Usage:
-    python3 scripts/check_error_kinds.py [--tag 0.5.3] [--kit-file Commands.swift] [--self-test]
+    python3 scripts/check_error_kinds.py [--tag 0.5.4] [--kit-file Commands.swift] [--self-test]
 
 The kit owns the failure kinds: `CLIFailure.Code` in Sources/marsdawn/Commands.swift gives each exit
 code and the `error` string `--json` prints for it. This fetches that file at KIT_TAG (the same tag
