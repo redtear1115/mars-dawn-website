@@ -2,7 +2,7 @@
 
 無料の marsdawn コマンドラインツールの変更点です。Mac App Store 版の MarsDawn は、そのバージョン自身について書くことがある場合だけ、ここに載せます。0.5.1 より前のバージョンは載せていません。
 
-## marsdawn 0.5.3
+## marsdawn 0.5.4
 
 2026年10月1日。MarsDawn が Mac App Store で公開。
 

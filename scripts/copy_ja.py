@@ -899,12 +899,16 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <p>無料の marsdawn コマンドラインツールの変更点です。Mac App Store 版の MarsDawn は、そのバージョン自身について書くことがある場合だけ、ここに載せます。0.5.1 より前のバージョンは載せていません。</p>
 </section>
 
-<h2>marsdawn 0.5.3</h2>
+<h2>marsdawn 0.5.4</h2>
 <p>2026年10月1日。MarsDawn が Mac App Store で公開。</p>
 <ul>
   <li>アプリがインストールされていないとき、<code>marsdawn open</code> は Mac App Store の MarsDawn を案内します。</li>
   <li>README とエージェントスキルで <code>marsdawn open .</code> と <code>--folder</code> を説明します。MarsDawn 1.0.0 はフォルダをウインドウのサイドバーに表示します。</li>
 </ul>
+
+<!-- DRAFT (needs-copy, needs-i18n): the 0.5.3 entry (open --folder status, Mermaid errors,
+     front-matter bound, footnoteBackLabel, highlight.js provenance, I/O policy restore) is
+     pending translation. See website #47 and the Grok request issue it opens. -->
 
 <h2>marsdawn 0.5.2</h2>
 <p>2026年9月24日。脚注、コントラスト、フォルダ。</p>

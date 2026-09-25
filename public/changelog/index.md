@@ -2,12 +2,23 @@
 
 What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.
 
-## marsdawn 0.5.3
+## marsdawn 0.5.4
 
 1 October 2026. MarsDawn is on the Mac App Store.
 
 - When the app isn't installed, `marsdawn open` points to MarsDawn on the Mac App Store.
 - The README and the agent skill teach `marsdawn open .` and `--folder`: MarsDawn 1.0.0 shows the folder in the window's sidebar.
+
+## marsdawn 0.5.3
+
+25 September 2026. Folder status, clearer diagram errors, and export fixes.
+
+- `marsdawn open --folder` can report back what happened to the folder, with `--wait`: `attached`, `needsUser`, and more, from an app that opts in.
+- A Mermaid diagram's parse error shows the full message, mapped to the document's line, instead of only its first line.
+- Scanning for an unclosed front-matter block stops after 1000 lines, instead of scanning the rest of a large document on every edit.
+- Exported PDFs can carry a localized label for the footnote back-link.
+- The vendored highlight.js is now recorded by version, source and SHA-256, the way KaTeX and Mermaid already are.
+- Reading a file iCloud has offloaded restores the thread's file-materialization policy correctly, even when the previous one couldn't be read.
 
 ## marsdawn 0.5.2
 

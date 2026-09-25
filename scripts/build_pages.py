@@ -2042,11 +2042,24 @@ BRAINSTORM_PAGES = {
   <p>What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.</p>
 </section>
 
-<h2>marsdawn 0.5.3</h2>
+<h2>marsdawn 0.5.4</h2>
 <p>1 October 2026. MarsDawn is on the Mac App Store.</p>
 <ul>
   <li>When the app isn't installed, <code>marsdawn open</code> points to MarsDawn on the Mac App Store.</li>
   <li>The README and the agent skill teach <code>marsdawn open .</code> and <code>--folder</code>: MarsDawn 1.0.0 shows the folder in the window's sidebar.</li>
+</ul>
+
+<!-- DRAFT (needs-copy, needs-i18n): en only, pending owner review and the Grok translation
+     request for zh-Hant/zh-Hans/ja before this ships. See website #47. -->
+<h2>marsdawn 0.5.3</h2>
+<p>25 September 2026. Folder status, clearer diagram errors, and export fixes.</p>
+<ul>
+  <li><code>marsdawn open --folder</code> can report back what happened to the folder, with <code>--wait</code>: <code>attached</code>, <code>needsUser</code>, and more, from an app that opts in.</li>
+  <li>A Mermaid diagram's parse error shows the full message, mapped to the document's line, instead of only its first line.</li>
+  <li>Scanning for an unclosed front-matter block stops after 1000 lines, instead of scanning the rest of a large document on every edit.</li>
+  <li>Exported PDFs can carry a localized label for the footnote back-link.</li>
+  <li>The vendored highlight.js is now recorded by version, source and SHA-256, the way KaTeX and Mermaid already are.</li>
+  <li>Reading a file iCloud has offloaded restores the thread's file-materialization policy correctly, even when the previous one couldn't be read.</li>
 </ul>
 
 <h2>marsdawn 0.5.2</h2>
@@ -2079,12 +2092,16 @@ BRAINSTORM_PAGES = {
   <p>免費的 marsdawn 命令列工具改了什麼。Mac App Store 上的 MarsDawn，只有在某個版本值得單獨記一筆時才會出現在這裡。0.5.1 以前的版本不列。</p>
 </section>
 
-<h2>marsdawn 0.5.3</h2>
+<h2>marsdawn 0.5.4</h2>
 <p>2026 年 10 月 1 日。MarsDawn 在 Mac App Store 上架。</p>
 <ul>
   <li>沒有安裝 app 時，<code>marsdawn open</code> 會指向 Mac App Store 上的 MarsDawn。</li>
   <li>README 和 agent skill 會教 <code>marsdawn open .</code> 與 <code>--folder</code>：MarsDawn 1.0.0 會把資料夾顯示在視窗的側邊欄。</li>
 </ul>
+
+<!-- DRAFT (needs-copy, needs-i18n): the 0.5.3 entry (open --folder status, Mermaid errors,
+     front-matter bound, footnoteBackLabel, highlight.js provenance, I/O policy restore) is
+     pending translation. See website #47 and the Grok request issue it opens. -->
 
 <h2>marsdawn 0.5.2</h2>
 <p>2026 年 9 月 24 日。註腳、對比度與資料夾。</p>
