@@ -2,7 +2,7 @@
 
 免費的 marsdawn 命令列工具改了什麼。Mac App Store 上的 MarsDawn，只有在某個版本值得單獨記一筆時才會出現在這裡。0.5.1 以前的版本不列。
 
-## marsdawn 0.5.4
+## marsdawn 0.6.0
 
 2026 年 10 月 1 日。MarsDawn 在 Mac App Store 上架。
 

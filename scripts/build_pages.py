@@ -2064,7 +2064,7 @@ BRAINSTORM_PAGES = {
   <p>What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.</p>
 </section>
 
-<h2>marsdawn 0.5.4</h2>
+<h2>marsdawn 0.6.0</h2>
 <p>1 October 2026. MarsDawn is on the Mac App Store.</p>
 <ul>
   <li>When the app isn't installed, <code>marsdawn open</code> points to MarsDawn on the Mac App Store.</li>
@@ -2111,7 +2111,7 @@ BRAINSTORM_PAGES = {
   <p>免費的 marsdawn 命令列工具改了什麼。Mac App Store 上的 MarsDawn，只有在某個版本值得單獨記一筆時才會出現在這裡。0.5.1 以前的版本不列。</p>
 </section>
 
-<h2>marsdawn 0.5.4</h2>
+<h2>marsdawn 0.6.0</h2>
 <p>2026 年 10 月 1 日。MarsDawn 在 Mac App Store 上架。</p>
 <ul>
   <li>沒有安裝 app 時，<code>marsdawn open</code> 會指向 Mac App Store 上的 MarsDawn。</li>

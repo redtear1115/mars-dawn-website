@@ -1130,7 +1130,7 @@ Source: https://marsdawn.southern-light.dev/changelog/
 
 What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.
 
-## marsdawn 0.5.4
+## marsdawn 0.6.0
 
 1 October 2026. MarsDawn is on the Mac App Store.
 
@@ -2299,7 +2299,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/changelog/
 
 免費的 marsdawn 命令列工具改了什麼。Mac App Store 上的 MarsDawn，只有在某個版本值得單獨記一筆時才會出現在這裡。0.5.1 以前的版本不列。
 
-## marsdawn 0.5.4
+## marsdawn 0.6.0
 
 2026 年 10 月 1 日。MarsDawn 在 Mac App Store 上架。
 
@@ -3458,7 +3458,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/changelog/
 
 免费的 marsdawn 命令行工具改了什么。Mac App Store 上的 MarsDawn，只有某个版本值得单独记一笔时才会出现在这里。0.5.1 以前的版本不列。
 
-## marsdawn 0.5.4
+## marsdawn 0.6.0
 
 2026 年 10 月 1 日。MarsDawn 在 Mac App Store 上架。
 
@@ -4617,7 +4617,7 @@ Source: https://marsdawn.southern-light.dev/ja/changelog/
 
 無料の marsdawn コマンドラインツールの変更点です。Mac App Store 版の MarsDawn は、そのバージョン自身について書くことがある場合だけ、ここに載せます。0.5.1 より前のバージョンは載せていません。
 
-## marsdawn 0.5.4
+## marsdawn 0.6.0
 
 2026年10月1日。MarsDawn が Mac App Store で公開。
 

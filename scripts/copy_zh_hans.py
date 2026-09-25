@@ -891,7 +891,7 @@ open notes.pdf</code></pre>
   <p>免费的 marsdawn 命令行工具改了什么。Mac App Store 上的 MarsDawn，只有某个版本值得单独记一笔时才会出现在这里。0.5.1 以前的版本不列。</p>
 </section>
 
-<h2>marsdawn 0.5.4</h2>
+<h2>marsdawn 0.6.0</h2>
 <p>2026 年 10 月 1 日。MarsDawn 在 Mac App Store 上架。</p>
 <ul>
   <li>没有安装 app 时，<code>marsdawn open</code> 会指向 Mac App Store 上的 MarsDawn。</li>
