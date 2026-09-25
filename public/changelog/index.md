@@ -11,7 +11,7 @@ What changed in the free marsdawn command-line tool. A Mac App Store build of Ma
 
 ## marsdawn 0.5.4
 
-30 September 2026. Mermaid fixes, diagram error lines and installing the skill.
+26 September 2026. Mermaid fixes, diagram error lines and installing the skill.
 
 - In a sequence diagram, a message label that crosses other participants' lifelines stays readable, in the preview and in exported PDFs.
 - `marsdawn export` copes with documents full of Mermaid diagrams. One with 50 diagrams, which used to fail with exit 5, now exports.

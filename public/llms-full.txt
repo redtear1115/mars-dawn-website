@@ -1139,7 +1139,7 @@ What changed in the free marsdawn command-line tool. A Mac App Store build of Ma
 
 ## marsdawn 0.5.4
 
-30 September 2026. Mermaid fixes, diagram error lines and installing the skill.
+26 September 2026. Mermaid fixes, diagram error lines and installing the skill.
 
 - In a sequence diagram, a message label that crosses other participants' lifelines stays readable, in the preview and in exported PDFs.
 - `marsdawn export` copes with documents full of Mermaid diagrams. One with 50 diagrams, which used to fail with exit 5, now exports.
@@ -2317,7 +2317,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/changelog/
 
 ## marsdawn 0.5.4
 
-2026 年 9 月 30 日。Mermaid 修正、圖表錯誤的行號，以及安裝 skill。
+2026 年 9 月 26 日。Mermaid 修正、圖表錯誤的行號，以及安裝 skill。
 
 - 循序圖中，訊息標籤跨過其他參與者的生命線時，文字仍清楚可讀；預覽和輸出的 PDF 都一樣。
 - `marsdawn export` 能處理含有大量 Mermaid 圖表的文件。一份有 50 張圖表、原本會以代碼 5 結束的文件，現在可以順利輸出。
@@ -3485,7 +3485,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/changelog/
 
 ## marsdawn 0.5.4
 
-2026 年 9 月 30 日。Mermaid 修复、图表错误的行号，以及安装 skill。
+2026 年 9 月 26 日。Mermaid 修复、图表错误的行号，以及安装 skill。
 
 - 时序图中，消息标签跨过其他参与者的生命线时，文字仍清晰可读；预览和导出的 PDF 都是如此。
 - `marsdawn export` 能处理包含大量 Mermaid 图表的文稿。一份有 50 张图表、以前会以代码 5 结束的文稿，现在可以顺利导出。
@@ -4653,7 +4653,7 @@ Source: https://marsdawn.southern-light.dev/ja/changelog/
 
 ## marsdawn 0.5.4
 
-2026年9月30日。Mermaid の修正、図のエラーの行番号、スキルのインストール。
+2026年9月26日。Mermaid の修正、図のエラーの行番号、スキルのインストール。
 
 - シーケンス図で、メッセージのラベルがほかの参加者のライフラインをまたいでも、文字が読みやすいままです。プレビューでも、書き出した PDF でも同じです。
 - `marsdawn export` が、Mermaid の図をたくさん含むファイルを書き出せるようになりました。図が 50 個あり、これまでコード 5 で終了していたファイルも書き出せます。

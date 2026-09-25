@@ -2072,7 +2072,7 @@ BRAINSTORM_PAGES = {
 </ul>
 
 <h2>marsdawn 0.5.4</h2>
-<p>30 September 2026. Mermaid fixes, diagram error lines and installing the skill.</p>
+<p>26 September 2026. Mermaid fixes, diagram error lines and installing the skill.</p>
 <ul>
   <li>In a sequence diagram, a message label that crosses other participants' lifelines stays readable, in the preview and in exported PDFs.</li>
   <li><code>marsdawn export</code> copes with documents full of Mermaid diagrams. One with 50 diagrams, which used to fail with exit 5, now exports.</li>
@@ -2128,7 +2128,7 @@ BRAINSTORM_PAGES = {
 </ul>
 
 <h2>marsdawn 0.5.4</h2>
-<p>2026 年 9 月 30 日。Mermaid 修正、圖表錯誤的行號，以及安裝 skill。</p>
+<p>2026 年 9 月 26 日。Mermaid 修正、圖表錯誤的行號，以及安裝 skill。</p>
 <ul>
   <li>循序圖中，訊息標籤跨過其他參與者的生命線時，文字仍清楚可讀；預覽和輸出的 PDF 都一樣。</li>
   <li><code>marsdawn export</code> 能處理含有大量 Mermaid 圖表的文件。一份有 50 張圖表、原本會以代碼 5 結束的文件，現在可以順利輸出。</li>

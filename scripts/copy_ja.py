@@ -907,7 +907,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 </ul>
 
 <h2>marsdawn 0.5.4</h2>
-<p>2026年9月30日。Mermaid の修正、図のエラーの行番号、スキルのインストール。</p>
+<p>2026年9月26日。Mermaid の修正、図のエラーの行番号、スキルのインストール。</p>
 <ul>
   <li>シーケンス図で、メッセージのラベルがほかの参加者のライフラインをまたいでも、文字が読みやすいままです。プレビューでも、書き出した PDF でも同じです。</li>
   <li><code>marsdawn export</code> が、Mermaid の図をたくさん含むファイルを書き出せるようになりました。図が 50 個あり、これまでコード 5 で終了していたファイルも書き出せます。</li>
