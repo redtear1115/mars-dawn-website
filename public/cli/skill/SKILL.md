@@ -37,6 +37,7 @@ On success it exits 0 and prints one JSON line:
 - `theme`: Theme used for the export.
 - `paper`: Paper size used for the export.
 - `diagramErrors`: One message per Mermaid diagram that failed to render. The PDF is still written.
+- `diagramErrorDetails`: One entry per diagramErrors entry, in the same order, with the document line each error is on when known.
 
 If `diagramErrors` isn't empty, the PDF was still written: tell the user which diagrams failed.
 
