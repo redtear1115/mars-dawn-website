@@ -2071,6 +2071,16 @@ BRAINSTORM_PAGES = {
   <li>The README and the agent skill teach <code>marsdawn open .</code> and <code>--folder</code>: MarsDawn 1.0.0 shows the folder in the window's sidebar.</li>
 </ul>
 
+<h2>marsdawn 0.5.3</h2>
+<p>25 September 2026. Folder status, full Mermaid errors and smaller fixes.</p>
+<ul>
+  <li><code>marsdawn open --folder</code> can say what happened to the folder. With an app that reports back, it waits up to <code>--wait</code> seconds (2 by default), and <code>--json</code> gives a status such as <code>attached</code> or <code>needsUser</code>.</li>
+  <li>A Mermaid diagram that doesn't parse shows Mermaid's whole error message instead of only its first line, with the line number counted from the top of your document.</li>
+  <li>The search for the end of a front-matter block stops after 1,000 lines, so an unclosed block no longer means scanning the rest of a large document.</li>
+  <li>An app can give the footnote back-link a translated label for PDF export and printing. The label isn't printed on the page, and <code>marsdawn export</code> keeps the English one.</li>
+  <li>The bundled highlight.js is now pinned by version, source and SHA-256, like KaTeX and Mermaid.</li>
+</ul>
+
 <h2>marsdawn 0.5.2</h2>
 <p>24 September 2026. Footnotes, contrast and folders.</p>
 <ul>
@@ -2106,6 +2116,16 @@ BRAINSTORM_PAGES = {
 <ul>
   <li>沒有安裝 app 時，<code>marsdawn open</code> 會指向 Mac App Store 上的 MarsDawn。</li>
   <li>README 和 agent skill 會教 <code>marsdawn open .</code> 與 <code>--folder</code>：MarsDawn 1.0.0 會把資料夾顯示在視窗的側邊欄。</li>
+</ul>
+
+<h2>marsdawn 0.5.3</h2>
+<p>2026 年 9 月 25 日。資料夾狀態、完整的 Mermaid 錯誤訊息，以及其他小修正。</p>
+<ul>
+  <li><code>marsdawn open --folder</code> 可以回報資料夾後來怎麼了。搭配會回報狀態的 app，它最多等待 <code>--wait</code> 秒（預設 2 秒），<code>--json</code> 會給出 <code>attached</code>、<code>needsUser</code> 等狀態。</li>
+  <li>Mermaid 圖表無法解析時，會顯示 Mermaid 完整的錯誤訊息，不再只有第一行；行號也改成從文件開頭算起。</li>
+  <li>尋找 front matter 區塊的結尾時，最多只找 1,000 行；沒有結尾的區塊，不再讓大型文件每次都被掃描到最後。</li>
+  <li>app 可以為 PDF 輸出與列印，替註腳的返回連結提供翻譯後的標籤。這個標籤不會印在頁面上，<code>marsdawn export</code> 仍使用英文。</li>
+  <li>內建的 highlight.js 現在和 KaTeX、Mermaid 一樣，記錄版本、來源與 SHA-256。</li>
 </ul>
 
 <h2>marsdawn 0.5.2</h2>

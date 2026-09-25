@@ -9,6 +9,16 @@
 - 沒有安裝 app 時，`marsdawn open` 會指向 Mac App Store 上的 MarsDawn。
 - README 和 agent skill 會教 `marsdawn open .` 與 `--folder`：MarsDawn 1.0.0 會把資料夾顯示在視窗的側邊欄。
 
+## marsdawn 0.5.3
+
+2026 年 9 月 25 日。資料夾狀態、完整的 Mermaid 錯誤訊息，以及其他小修正。
+
+- `marsdawn open --folder` 可以回報資料夾後來怎麼了。搭配會回報狀態的 app，它最多等待 `--wait` 秒（預設 2 秒），`--json` 會給出 `attached`、`needsUser` 等狀態。
+- Mermaid 圖表無法解析時，會顯示 Mermaid 完整的錯誤訊息，不再只有第一行；行號也改成從文件開頭算起。
+- 尋找 front matter 區塊的結尾時，最多只找 1,000 行；沒有結尾的區塊，不再讓大型文件每次都被掃描到最後。
+- app 可以為 PDF 輸出與列印，替註腳的返回連結提供翻譯後的標籤。這個標籤不會印在頁面上，`marsdawn export` 仍使用英文。
+- 內建的 highlight.js 現在和 KaTeX、Mermaid 一樣，記錄版本、來源與 SHA-256。
+
 ## marsdawn 0.5.2
 
 2026 年 9 月 24 日。註腳、對比度與資料夾。
