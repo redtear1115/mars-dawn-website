@@ -9,6 +9,16 @@
 - 没有安装 app 时，`marsdawn open` 会指向 Mac App Store 上的 MarsDawn。
 - README 和 agent skill 会教 `marsdawn open .` 与 `--folder`：MarsDawn 1.0.0 会把文件夹显示在窗口的侧边栏。
 
+## marsdawn 0.5.3
+
+2026 年 9 月 25 日。文件夹状态、完整的 Mermaid 错误信息，以及其他小修复。
+
+- `marsdawn open --folder` 可以报告文件夹最后的状态。配合会回报状态的 app，它最多等待 `--wait` 秒（默认 2 秒），`--json` 会给出 `attached`、`needsUser` 等状态。
+- Mermaid 图表无法解析时，会显示 Mermaid 完整的错误信息，不再只有第一行；行号也改为从文稿开头算起。
+- 查找 front matter 区块的结尾时，最多只查找 1,000 行；未闭合的区块，不再让大型文稿每次都被扫描到最后。
+- app 可以在导出 PDF 和打印时，为脚注的返回链接提供翻译后的标签。这个标签不会打印在页面上，`marsdawn export` 仍使用英文。
+- 内置的 highlight.js 现在和 KaTeX、Mermaid 一样，记录版本、来源与 SHA-256。
+
 ## marsdawn 0.5.2
 
 2026 年 9 月 24 日。脚注、对比度与文件夹。

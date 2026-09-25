@@ -80,6 +80,16 @@ try {
   <li>The README and the agent skill teach <code>marsdawn open .</code> and <code>--folder</code>: MarsDawn 1.0.0 shows the folder in the window's sidebar.</li>
 </ul>
 
+<h2 id="marsdawn-0-5-3">marsdawn 0.5.3</h2>
+<p>25 September 2026. Folder status, full Mermaid errors and smaller fixes.</p>
+<ul>
+  <li><code>marsdawn open --folder</code> can say what happened to the folder. With an app that reports back, it waits up to <code>--wait</code> seconds (2 by default), and <code>--json</code> gives a status such as <code>attached</code> or <code>needsUser</code>.</li>
+  <li>A Mermaid diagram that doesn't parse shows Mermaid's whole error message instead of only its first line, with the line number counted from the top of your document.</li>
+  <li>The search for the end of a front-matter block stops after 1,000 lines, so an unclosed block no longer means scanning the rest of a large document.</li>
+  <li>An app can give the footnote back-link a translated label for PDF export and printing. The label isn't printed on the page, and <code>marsdawn export</code> keeps the English one.</li>
+  <li>The bundled highlight.js is now pinned by version, source and SHA-256, like KaTeX and Mermaid.</li>
+</ul>
+
 <h2 id="marsdawn-0-5-2">marsdawn 0.5.2</h2>
 <p>24 September 2026. Footnotes, contrast and folders.</p>
 <ul>
