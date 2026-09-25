@@ -9,6 +9,15 @@ What changed in the free marsdawn command-line tool. A Mac App Store build of Ma
 - When the app isn't installed, `marsdawn open` points to MarsDawn on the Mac App Store.
 - The README and the agent skill teach `marsdawn open .` and `--folder`: MarsDawn 1.0.0 shows the folder in the window's sidebar.
 
+## marsdawn 0.5.4
+
+30 September 2026. Mermaid fixes, diagram error lines and installing the skill.
+
+- In a sequence diagram, a message label that crosses other participants' lifelines stays readable, in the preview and in exported PDFs.
+- `marsdawn export` copes with documents full of Mermaid diagrams. One with 50 diagrams, which used to fail with exit 5, now exports.
+- `marsdawn export --json` adds `diagramErrorDetails`, with line numbers for each diagram error: where the diagram starts in your document and, when Mermaid names one, the line of the error itself.
+- `marsdawn skill --install` installs the agent skill for Claude Code at `~/.claude/skills/marsdawn/SKILL.md`, or in another folder with `--dir`. It leaves an identical file alone and replaces a different one only with `--force`. Otherwise it exits 64 (`skill_differs`) and changes nothing.
+
 ## marsdawn 0.5.3
 
 25 September 2026. Folder status, full Mermaid errors and smaller fixes.

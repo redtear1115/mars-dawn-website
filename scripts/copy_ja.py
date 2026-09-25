@@ -906,6 +906,15 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li>README とエージェントスキルで <code>marsdawn open .</code> と <code>--folder</code> を説明します。MarsDawn 1.0.0 はフォルダをウインドウのサイドバーに表示します。</li>
 </ul>
 
+<h2>marsdawn 0.5.4</h2>
+<p>2026年9月30日。Mermaid の修正、図のエラーの行番号、スキルのインストール。</p>
+<ul>
+  <li>シーケンス図で、メッセージのラベルがほかの参加者のライフラインをまたいでも、文字が読みやすいままです。プレビューでも、書き出した PDF でも同じです。</li>
+  <li><code>marsdawn export</code> が、Mermaid の図をたくさん含むファイルを書き出せるようになりました。図が 50 個あり、これまでコード 5 で終了していたファイルも書き出せます。</li>
+  <li><code>marsdawn export --json</code> に <code>diagramErrorDetails</code> が加わりました。図のエラーごとに、その図がファイルの何行目から始まるかと、Mermaid が行を示している場合はエラーそのものの行を、行番号で返します。</li>
+  <li><code>marsdawn skill --install</code> は、Claude Code 用のエージェントスキルを <code>~/.claude/skills/marsdawn/SKILL.md</code> にインストールします。<code>--dir</code> でほかのフォルダも指定できます。同じ内容のファイルがあればそのままにし、内容が違うファイルは <code>--force</code> を付けたときだけ置き換えます。付けないときはコード 64（<code>skill_differs</code>）で終了し、何も変更しません。</li>
+</ul>
+
 <h2>marsdawn 0.5.3</h2>
 <p>2026年9月25日。フォルダの状態、Mermaid エラーの全文、そのほかの修正。</p>
 <ul>

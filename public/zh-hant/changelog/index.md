@@ -9,6 +9,15 @@
 - 沒有安裝 app 時，`marsdawn open` 會指向 Mac App Store 上的 MarsDawn。
 - README 和 agent skill 會教 `marsdawn open .` 與 `--folder`：MarsDawn 1.0.0 會把資料夾顯示在視窗的側邊欄。
 
+## marsdawn 0.5.4
+
+2026 年 9 月 30 日。Mermaid 修正、圖表錯誤的行號，以及安裝 skill。
+
+- 循序圖中，訊息標籤跨過其他參與者的生命線時，文字仍清楚可讀；預覽和輸出的 PDF 都一樣。
+- `marsdawn export` 能處理含有大量 Mermaid 圖表的文件。一份有 50 張圖表、原本會以代碼 5 結束的文件，現在可以順利輸出。
+- `marsdawn export --json` 新增 `diagramErrorDetails`，用行號標出每個圖表錯誤：圖表在文件中從第幾行開始；Mermaid 指出行號時，也列出錯誤本身所在的行。
+- `marsdawn skill --install` 會把 agent skill 安裝到 `~/.claude/skills/marsdawn/SKILL.md`，供 Claude Code 使用；加上 `--dir` 可以改裝到其他資料夾。已有相同的檔案時不會動它；內容不同時，只有加上 `--force` 才會取代，否則以代碼 64（`skill_differs`）結束，不做任何更動。
+
 ## marsdawn 0.5.3
 
 2026 年 9 月 25 日。資料夾狀態、完整的 Mermaid 錯誤訊息，以及其他小修正。

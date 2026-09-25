@@ -9,6 +9,15 @@
 - アプリがインストールされていないとき、`marsdawn open` は Mac App Store の MarsDawn を案内します。
 - README とエージェントスキルで `marsdawn open .` と `--folder` を説明します。MarsDawn 1.0.0 はフォルダをウインドウのサイドバーに表示します。
 
+## marsdawn 0.5.4
+
+2026年9月30日。Mermaid の修正、図のエラーの行番号、スキルのインストール。
+
+- シーケンス図で、メッセージのラベルがほかの参加者のライフラインをまたいでも、文字が読みやすいままです。プレビューでも、書き出した PDF でも同じです。
+- `marsdawn export` が、Mermaid の図をたくさん含むファイルを書き出せるようになりました。図が 50 個あり、これまでコード 5 で終了していたファイルも書き出せます。
+- `marsdawn export --json` に `diagramErrorDetails` が加わりました。図のエラーごとに、その図がファイルの何行目から始まるかと、Mermaid が行を示している場合はエラーそのものの行を、行番号で返します。
+- `marsdawn skill --install` は、Claude Code 用のエージェントスキルを `~/.claude/skills/marsdawn/SKILL.md` にインストールします。`--dir` でほかのフォルダも指定できます。同じ内容のファイルがあればそのままにし、内容が違うファイルは `--force` を付けたときだけ置き換えます。付けないときはコード 64（`skill_differs`）で終了し、何も変更しません。
+
 ## marsdawn 0.5.3
 
 2026年9月25日。フォルダの状態、Mermaid エラーの全文、そのほかの修正。

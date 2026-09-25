@@ -2071,6 +2071,15 @@ BRAINSTORM_PAGES = {
   <li>The README and the agent skill teach <code>marsdawn open .</code> and <code>--folder</code>: MarsDawn 1.0.0 shows the folder in the window's sidebar.</li>
 </ul>
 
+<h2>marsdawn 0.5.4</h2>
+<p>30 September 2026. Mermaid fixes, diagram error lines and installing the skill.</p>
+<ul>
+  <li>In a sequence diagram, a message label that crosses other participants' lifelines stays readable, in the preview and in exported PDFs.</li>
+  <li><code>marsdawn export</code> copes with documents full of Mermaid diagrams. One with 50 diagrams, which used to fail with exit 5, now exports.</li>
+  <li><code>marsdawn export --json</code> adds <code>diagramErrorDetails</code>, with line numbers for each diagram error: where the diagram starts in your document and, when Mermaid names one, the line of the error itself.</li>
+  <li><code>marsdawn skill --install</code> installs the agent skill for Claude Code at <code>~/.claude/skills/marsdawn/SKILL.md</code>, or in another folder with <code>--dir</code>. It leaves an identical file alone and replaces a different one only with <code>--force</code>. Otherwise it exits 64 (<code>skill_differs</code>) and changes nothing.</li>
+</ul>
+
 <h2>marsdawn 0.5.3</h2>
 <p>25 September 2026. Folder status, full Mermaid errors and smaller fixes.</p>
 <ul>
@@ -2116,6 +2125,15 @@ BRAINSTORM_PAGES = {
 <ul>
   <li>沒有安裝 app 時，<code>marsdawn open</code> 會指向 Mac App Store 上的 MarsDawn。</li>
   <li>README 和 agent skill 會教 <code>marsdawn open .</code> 與 <code>--folder</code>：MarsDawn 1.0.0 會把資料夾顯示在視窗的側邊欄。</li>
+</ul>
+
+<h2>marsdawn 0.5.4</h2>
+<p>2026 年 9 月 30 日。Mermaid 修正、圖表錯誤的行號，以及安裝 skill。</p>
+<ul>
+  <li>循序圖中，訊息標籤跨過其他參與者的生命線時，文字仍清楚可讀；預覽和輸出的 PDF 都一樣。</li>
+  <li><code>marsdawn export</code> 能處理含有大量 Mermaid 圖表的文件。一份有 50 張圖表、原本會以代碼 5 結束的文件，現在可以順利輸出。</li>
+  <li><code>marsdawn export --json</code> 新增 <code>diagramErrorDetails</code>，用行號標出每個圖表錯誤：圖表在文件中從第幾行開始；Mermaid 指出行號時，也列出錯誤本身所在的行。</li>
+  <li><code>marsdawn skill --install</code> 會把 agent skill 安裝到 <code>~/.claude/skills/marsdawn/SKILL.md</code>，供 Claude Code 使用；加上 <code>--dir</code> 可以改裝到其他資料夾。已有相同的檔案時不會動它；內容不同時，只有加上 <code>--force</code> 才會取代，否則以代碼 64（<code>skill_differs</code>）結束，不做任何更動。</li>
 </ul>
 
 <h2>marsdawn 0.5.3</h2>

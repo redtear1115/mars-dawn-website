@@ -80,6 +80,15 @@ try {
   <li>The README and the agent skill teach <code>marsdawn open .</code> and <code>--folder</code>: MarsDawn 1.0.0 shows the folder in the window's sidebar.</li>
 </ul>
 
+<h2 id="marsdawn-0-5-4">marsdawn 0.5.4</h2>
+<p>30 September 2026. Mermaid fixes, diagram error lines and installing the skill.</p>
+<ul>
+  <li>In a sequence diagram, a message label that crosses other participants' lifelines stays readable, in the preview and in exported PDFs.</li>
+  <li><code>marsdawn export</code> copes with documents full of Mermaid diagrams. One with 50 diagrams, which used to fail with exit 5, now exports.</li>
+  <li><code>marsdawn export --json</code> adds <code>diagramErrorDetails</code>, with line numbers for each diagram error: where the diagram starts in your document and, when Mermaid names one, the line of the error itself.</li>
+  <li><code>marsdawn skill --install</code> installs the agent skill for Claude Code at <code>~/.claude/skills/marsdawn/SKILL.md</code>, or in another folder with <code>--dir</code>. It leaves an identical file alone and replaces a different one only with <code>--force</code>. Otherwise it exits 64 (<code>skill_differs</code>) and changes nothing.</li>
+</ul>
+
 <h2 id="marsdawn-0-5-3">marsdawn 0.5.3</h2>
 <p>25 September 2026. Folder status, full Mermaid errors and smaller fixes.</p>
 <ul>
