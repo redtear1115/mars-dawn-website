@@ -2967,6 +2967,9 @@ def _render_block(node: _Node) -> str:
         text = _pre_text(node)
         fence = "`" * max(3, _longest_backtick_run(text) + 1)
         return f"{fence}\n{text}\n{fence}\n\n"
+    if tag == "blockquote":
+        inner = _render_children(node.children).rstrip("\n")
+        return "\n".join(("> " + line) if line else ">" for line in inner.split("\n")) + "\n\n"
     if tag in ("strong", "em", "code", "kbd", "a"):
         # An inline element used directly as a block child (e.g. the support
         # page's standalone <a class="email">). Render it as its own paragraph.
