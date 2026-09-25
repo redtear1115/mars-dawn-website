@@ -3,23 +3,23 @@
   "pages": {
     "privacy.en.md": {
       "rendered": "privacy.en.rendered.html",
-      "rendered_sha256": "24359acf99cf8127d5a39c0de3eebdbfb06fee913c92daa3972864a849c3b49e",
-      "source_sha256": "efe091d26639da1fa47ef9705799dac9f440a43190865047bfbb4ca2834fdea7"
+      "rendered_sha256": "adace3d698abbfcff40d494c9d96493fb8e6a8a660540f2dcdc908977e531df9",
+      "source_sha256": "88861cb14ccc07cd16c9a68daac18fc289db858ffca3c146ffdf6feb96eb6e67"
     },
     "privacy.ja.md": {
       "rendered": "privacy.ja.rendered.html",
-      "rendered_sha256": "d54112178e747ed1fc10b36817b683e02035e4c0bb5b362a24aea317348ba5fb",
-      "source_sha256": "1135ea57a694ea650abc29d0215149e514e56bf9fb3b07c5d2704c0b58f079d0"
+      "rendered_sha256": "c442172621441b876c43763127e54b04f3e741a80d839f44309e70a582e9e0f1",
+      "source_sha256": "6fce5511ffe332694ac269ee2366b69b729c75c7c4e7ef97bcdcbccf732fc087"
     },
     "privacy.zh-hans.md": {
       "rendered": "privacy.zh-hans.rendered.html",
-      "rendered_sha256": "9d84c9daa3bfb2099bcf80912fce5ba57850f57edd5885488bd8bd2a70f590fa",
-      "source_sha256": "4ff4dcb0b7281d4680686b6101aff962ebaaf23f67273ace9ad3a0d26cc2cc0d"
+      "rendered_sha256": "a72cdc4c5c9b5c4441df64114b703f58a3c18ac72a9280c386d789b3fe0d004c",
+      "source_sha256": "c771e592e3bfaf24b0a2152b030e12330bb5054c7131f5ded66a8eb0bf9d5dfe"
     },
     "privacy.zh-hant.md": {
       "rendered": "privacy.zh-hant.rendered.html",
-      "rendered_sha256": "15a3c4698f524ab7b7642c1e8a9232916873c3edf2b45075252f00959d1a05e9",
-      "source_sha256": "97b64b5ac9808c402fd83276bd7c42b8953b52f302926558080715ff7528c025"
+      "rendered_sha256": "ae23360c13e389b19b85cc20e88aa3442a271694277a44624197066527e13735",
+      "source_sha256": "a95150d258976fceaab415660fac2137c157473f891d3d4c3a187e9c995db59a"
     }
   },
   "preview_css_sha256": "b9914e6171ba2a7e7bda1a48f54d0506bee45ae8e088e08c84e62022a845d8bd",

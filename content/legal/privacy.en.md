@@ -4,7 +4,7 @@ How MarsDawn, the Markdown editor for macOS, handles your information.
 
 Last updated 2026-09-23
 
-**The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
+> **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
 
 ## The website
 
