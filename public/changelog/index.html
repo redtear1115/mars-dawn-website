@@ -64,7 +64,7 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <span class="store-chip">Coming soon to the Mac App Store</span>
+  <span class="store-chip">On the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/changelog/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/changelog/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/changelog/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/changelog/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
 <main id="main">
@@ -73,12 +73,50 @@ try {
   <p>What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.</p>
 </section>
 
+<h2 id="marsdawn-0-6-0">marsdawn 0.6.0</h2>
+<p>1 October 2026. MarsDawn is on the Mac App Store.</p>
+<ul>
+  <li>When the app isn't installed, <code>marsdawn open</code> points to MarsDawn on the Mac App Store.</li>
+  <li>The README and the agent skill teach <code>marsdawn open .</code> and <code>--folder</code>: MarsDawn 1.0.0 shows the folder in the window's sidebar.</li>
+</ul>
+
+<h2 id="marsdawn-0-5-4">marsdawn 0.5.4</h2>
+<p>26 September 2026. Mermaid fixes, diagram error lines and installing the skill.</p>
+<ul>
+  <li>In a sequence diagram, a message label that crosses other participants' lifelines stays readable, in the preview and in exported PDFs.</li>
+  <li><code>marsdawn export</code> copes with documents full of Mermaid diagrams. One with 50 diagrams, which used to fail with exit 5, now exports.</li>
+  <li><code>marsdawn export --json</code> adds <code>diagramErrorDetails</code>, with line numbers for each diagram error: where the diagram starts in your document and, when Mermaid names one, the line of the error itself.</li>
+  <li><code>marsdawn skill --install</code> installs the agent skill for Claude Code at <code>~/.claude/skills/marsdawn/SKILL.md</code>, or in another folder with <code>--dir</code>. It leaves an identical file alone and replaces a different one only with <code>--force</code>. Otherwise it exits 64 (<code>skill_differs</code>) and changes nothing.</li>
+</ul>
+
+<h2 id="marsdawn-0-5-3">marsdawn 0.5.3</h2>
+<p>25 September 2026. Folder status, full Mermaid errors and smaller fixes.</p>
+<ul>
+  <li><code>marsdawn open --folder</code> can say what happened to the folder. With an app that reports back, it waits up to <code>--wait</code> seconds (2 by default), and <code>--json</code> gives a status such as <code>attached</code> or <code>needsUser</code>.</li>
+  <li>A Mermaid diagram that doesn't parse shows Mermaid's whole error message instead of only its first line, with the line number counted from the top of your document.</li>
+  <li>The search for the end of a front-matter block stops after 1,000 lines, so an unclosed block no longer means scanning the rest of a large document.</li>
+  <li>An app can give the footnote back-link a translated label for PDF export and printing. The label isn't printed on the page, and <code>marsdawn export</code> keeps the English one.</li>
+  <li>The bundled highlight.js is now pinned by version, source and SHA-256, like KaTeX and Mermaid.</li>
+</ul>
+
+<h2 id="marsdawn-0-5-2">marsdawn 0.5.2</h2>
+<p>24 September 2026. Footnotes, contrast and folders.</p>
+<ul>
+  <li>Footnotes render in exported PDFs: numbered references, with the notes after the body.</li>
+  <li>Every theme meets WCAG AA contrast, light and dark. Classic is now black and white.</li>
+  <li><code>marsdawn skill</code> prints the agent skill that matches the installed marsdawn.</li>
+  <li><code>marsdawn open</code> exits 6 (<code>app_cannot_open_folders</code>) when the MarsDawn it finds can't show a folder, instead of reporting success.</li>
+  <li>The placeholders drawn into exported pages are also in German, French, Spanish and Korean.</li>
+  <li>An image placeholder no longer shows the absolute path behind a very long relative path.</li>
+  <li><code>MARSDAWN_APP_PATH</code> is used only when it points at a MarsDawn app.</li>
+</ul>
+
 <h2 id="marsdawn-0-5-1">marsdawn 0.5.1</h2>
 <p>19 September 2026. PDF export, and opening a file from the command line.</p>
 <ul>
   <li>The text layer of an exported PDF is repaired for Chinese, Japanese and Korean.</li>
   <li><code>marsdawn open --background</code> opens a file without bringing MarsDawn to the front.</li>
-  <li><code>marsdawn open</code> can be given a folder. The app on the Mac App Store does not show a folder yet, so that option waits for an app that can take one.</li>
+  <li><code>marsdawn open</code> can be given a folder, and MarsDawn shows it in the window's sidebar (MarsDawn 1.0.0 and later).</li>
 </ul>
 </main>
 <footer class="footer">
@@ -88,7 +126,7 @@ try {
     <a href="/cli/">Command Line</a>
     <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
   </nav>
-  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

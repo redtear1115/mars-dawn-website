@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dawn">
 <head>
 <meta charset="utf-8">
 <script>window.dataLayer = window.dataLayer || [];
@@ -30,6 +30,8 @@ try {
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/themes.css">
+<link rel="stylesheet" href="/assets/preview.css">
 <link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/privacy/">
 <link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/privacy/">
 <link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/privacy/">
@@ -64,17 +66,17 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <span class="store-chip">Coming soon to the Mac App Store</span>
+  <span class="store-chip">On the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/privacy/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/privacy/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/privacy/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/privacy/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
 <main id="main">
-<section class="intro">
-  <h1>Privacy Policy</h1>
-  <p>How MarsDawn, the Markdown editor for macOS, handles your information.</p>
-  <p class="updated">Last updated 2026-09-23</p>
-</section>
-
-<div class="summary"><p><strong>The MarsDawn app does not collect any data about you.</strong> There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.</p></div>
+<div class="markdown-body">
+<h1>Privacy Policy</h1>
+<p>How MarsDawn, the Markdown editor for macOS, handles your information.</p>
+<p>Last updated 2026-09-23</p>
+<blockquote>
+<p><strong>The MarsDawn app does not collect any data about you.</strong> There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.</p>
+</blockquote>
 <nav class="toc" aria-label="On this page">
 <p>On this page</p>
 <ul>
@@ -90,59 +92,65 @@ try {
   <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
-
 <h2 id="the-website">The website</h2>
 <p>The app and this website are two different things. The app collects nothing. A visit can be recorded only here, on marsdawn.southern-light.dev.</p>
 <p>This site uses <strong>Google Analytics 4</strong>, loaded through <strong>Google Tag Manager</strong>. Every visitor starts with analytics denied: Google's Consent Mode sends only a cookieless ping with no analytics cookie and no persistent identifier, until you choose <em>Accept</em> in the banner. Choosing <em>Decline</em>, or making no choice at all, keeps it that way, and choosing <em>Decline</em> after a prior <em>Accept</em> turns analytics back off immediately and removes the cookies below. Change your choice at any time with the "Cookie settings" link in the footer of every page. The choice itself is stored only in your browser's local storage, never in a cookie of ours.</p>
 <p>Once you accept, Google Analytics sets its own cookies (<code>_ga</code> and <code>_ga_&lt;measurement id&gt;</code>) and records:</p>
 <ul>
-  <li><strong>Page views and referrer.</strong> Which page was viewed, and the referring address when the browser sends one.</li>
-  <li><strong>Approximate location, device and browser.</strong> A coarse location derived from your IP address (city level at most), your device type, operating system and browser — none of it precise enough to identify you.</li>
-  <li><strong>Outbound clicks and scroll depth.</strong> Google Analytics' enhanced measurement records clicks that leave the site, such as the link to the Mac App Store, and how far you scroll down a page.</li>
-  <li><strong>IP addresses.</strong> Google Analytics 4 does not log or store IP addresses.</li>
-  <li><strong>What is not recorded.</strong> No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under <code>/themes/</code> are skipped, and are not sent on.</li>
-  <li><strong>Retention.</strong> Google keeps this data for 14 months, then deletes it.</li>
-  <li><strong>Where it's processed.</strong> Google Tag Manager and Google Analytics are operated by Google; your data may be processed in the United States as well as other countries where Google operates.</li>
-  <li><strong>The host.</strong> Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.</li>
+<li><strong>Page views and referrer.</strong> Which page was viewed, and the referring address when the browser sends one.
+</li>
+<li><strong>Approximate location, device and browser.</strong> A coarse location derived from your IP address (city level at most), your device type, operating system and browser — none of it precise enough to identify you.
+</li>
+<li><strong>Outbound clicks and scroll depth.</strong> Google Analytics' enhanced measurement records clicks that leave the site, such as the link to the Mac App Store, and how far you scroll down a page.
+</li>
+<li><strong>IP addresses.</strong> Google Analytics 4 does not log or store IP addresses.
+</li>
+<li><strong>What is not recorded.</strong> No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under <code>/themes/</code> are skipped, and are not sent on.
+</li>
+<li><strong>Retention.</strong> Google keeps this data for 14 months, then deletes it.
+</li>
+<li><strong>Where it's processed.</strong> Google Tag Manager and Google Analytics are operated by Google; your data may be processed in the United States as well as other countries where Google operates.
+</li>
+<li><strong>The host.</strong> Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.
+</li>
 </ul>
-
 <h2 id="what-stays-on-your-mac">What stays on your Mac</h2>
 <ul>
-  <li><strong>Your documents.</strong> MarsDawn reads and writes only the files and folders you open, save or choose. They are never uploaded anywhere by the app.</li>
-  <li><strong>Your settings.</strong> Appearance, preview theme, window layout and the image preference are stored in the app's own preferences on your Mac.</li>
-  <li><strong>Folder access you grant.</strong> When you let MarsDawn show images or page files from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. A folder you open in the sidebar stays readable and writable by MarsDawn until you remove it in Settings, not just while its window is open. You can remove folders at any time in MarsDawn › Settings.</li>
+<li><strong>Your documents.</strong> MarsDawn reads and writes only the files and folders you open, save or choose. They are never uploaded anywhere by the app.
+</li>
+<li><strong>Your settings.</strong> Appearance, preview theme, window layout and the image preference are stored in the app's own preferences on your Mac.
+</li>
+<li><strong>Folder access you grant.</strong> When you let MarsDawn show images or page files from a folder, or choose a notes folder, the app keeps a macOS bookmark so it can open that folder again. A folder you open in the sidebar stays readable and writable by MarsDawn until you remove it in Settings, not just while its window is open. You can remove folders at any time in MarsDawn › Settings.
+</li>
 </ul>
-
 <h2 id="when-marsdawn-uses-the-internet">When MarsDawn uses the internet</h2>
 <p>MarsDawn works fully offline. It connects to the internet only <strong>when you choose to</strong>, for a document that refers to the web:</p>
 <ul>
-  <li><strong>Markdown documents.</strong> Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings. Nothing else a Markdown document refers to is loaded from the web.</li>
-  <li><strong>HTML documents.</strong> An HTML document opens static: its code doesn't run and nothing is loaded from the web. If a document contains code that could run, you can choose <em>View › Run This Document</em> for that document. Its own code then runs until you stop it, the document reloads or you close the window. That choice is never remembered, and it isn't a setting. While it runs, the document can send data over the network, and read images, style sheets, fonts and media in its folder and the folders inside it. Code downloaded from the web never runs.</li>
+<li><strong>Markdown documents.</strong> Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings. Nothing else a Markdown document refers to is loaded from the web.
+</li>
+<li><strong>HTML documents.</strong> An HTML document opens static: its code doesn't run and nothing is loaded from the web. If a document contains code that could run, you can choose <em>View › Run This Document</em> for that document. Its own code then runs until you stop it, the document reloads or you close the window. That choice is never remembered, and it isn't a setting. While it runs, the document can send data over the network, and read images, style sheets, fonts and media in its folder and the folders inside it. Code downloaded from the web never runs.
+</li>
 </ul>
 <p>MarsDawn loads web content over https only. A plain http address is never loaded, in any setting, and MarsDawn does not rewrite it to https. In a Markdown document, the preview shows a placeholder in its place.</p>
 <p>When web content loads, your Mac requests it directly from the servers that host it. Like any web request, this lets those servers see your IP address and what was requested. MarsDawn's developer receives none of this information.</p>
 <p>Links you click in the preview open in your default web browser, under that browser's own privacy practices. Audio and video never play by themselves.</p>
-
 <h2 id="siri-shortcuts-and-spotlight">Siri, Shortcuts and Spotlight</h2>
 <p>MarsDawn offers actions for Siri, the Shortcuts app and Spotlight, such as creating a document or adding a note. When you use them, the text you provide is passed to MarsDawn on your Mac and saved only where the action says (a new document, or the <code>Inbox.md</code> file in the notes folder you chose). Speech you dictate to Siri is handled by Apple under <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
-
 <h2 id="exporting-and-printing">Exporting and printing</h2>
 <p>PDF export and printing happen on your Mac. The PDF is saved where you choose. Printing goes through macOS to the printer you pick.</p>
-
 <h2 id="the-marsdawn-command-line-tool">The marsdawn command-line tool</h2>
 <p>The optional <code>marsdawn</code> command-line tool, distributed separately, also runs entirely on your Mac. It reads the Markdown file you name and writes the PDF you ask for. It loads web images only when you pass <code>--allow-remote-images</code>.</p>
-
 <h2 id="children">Children</h2>
 <p>The MarsDawn app does not collect data from anyone, including children. A visit recorded on the website is not an account, and it is not used to identify anyone.</p>
-
 <h2 id="purchases">Purchases</h2>
-<p>MarsDawn will be sold through the Mac App Store. Apple will process the purchase under its own terms, and the developer never receives your payment details.</p>
-
+<p>MarsDawn is sold through the Mac App Store. Apple processes the purchase under its own terms, and the developer never receives your payment details.</p>
 <h2 id="changes-to-this-policy">Changes to this policy</h2>
 <p>If MarsDawn ever starts handling data differently, this page will be updated before that version is released, and the date at the top will change.</p>
-
 <h2 id="contact">Contact</h2>
 <p>Questions about privacy: <a href="mailto:support@southern-light.dev">support@southern-light.dev</a></p>
+</div>
+<p class="markdown-source"><a href="/privacy/index.md">View the Markdown source</a></p>
+
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="Site">
@@ -151,7 +159,7 @@ try {
     <a href="/cli/">Command Line</a>
     <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
   </nav>
-  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

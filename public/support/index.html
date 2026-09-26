@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dawn">
 <head>
 <meta charset="utf-8">
 <script>window.dataLayer = window.dataLayer || [];
@@ -30,6 +30,8 @@ try {
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/themes.css">
+<link rel="stylesheet" href="/assets/preview.css">
 <link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/support/">
 <link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/support/">
 <link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/support/">
@@ -64,14 +66,17 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <span class="store-chip">Coming soon to the Mac App Store</span>
+  <span class="store-chip">On the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/support/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/support/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/support/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/support/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
 <main id="main">
-<section class="intro">
-  <h1>Support</h1>
-  <p>Help with MarsDawn, the Markdown editor for macOS.</p>
-</section>
+<div class="markdown-body">
+<h1>Support</h1>
+<p>Help with MarsDawn, the Markdown editor for macOS.</p>
+<h2>Write to us</h2>
+<p><a href="mailto:support@southern-light.dev?subject=MarsDawn%20support">support@southern-light.dev</a></p>
+<p>Please include your macOS version and your MarsDawn version (MarsDawn › About MarsDawn). If something looks wrong, a screenshot or a small sample document helps a lot.</p>
+<h2>Common questions</h2>
 <nav class="toc" aria-label="Jump to a question">
 <p>Jump to a question</p>
 <ul>
@@ -86,46 +91,32 @@ try {
   <li><a href="#how-do-i-get-a-refund">How do I get a refund?</a></li>
 </ul>
 </nav>
+<h3 id="what-do-i-need-to-run-marsdawn">What do I need to run MarsDawn?</h3>
+<p>A Mac with macOS 26 Tahoe or later, on Apple silicon or Intel.</p>
+<h3 id="how-do-i-switch-between-the-editor-and-the-preview">How do I switch between the editor and the preview?</h3>
+<p>Press <kbd>⌘1</kbd> for the source only, <kbd>⌘2</kbd> for side by side, and <kbd>⌘3</kbd> for the preview only. The same choices are in the View menu and the toolbar.</p>
+<h3 id="an-image-in-my-document-doesn-t-show">An image in my document doesn't show.</h3>
+<ul>
+<li><strong>Image on your Mac:</strong> save the document first, then click <em>Grant Folder Access…</em> in the preview and choose the folder that holds the image. MarsDawn remembers the folder. You can review granted folders in MarsDawn › Settings › Folder Access.
+</li>
+<li><strong>Image from the web:</strong> web images are blocked until you click <em>Load Images</em> at the top of the preview. To always load them, turn on <em>Load remote images automatically</em> in Settings.
+</li>
+</ul>
+<h3 id="how-do-i-add-an-image">How do I add an image?</h3>
+<p>Drag it into the editor, or paste it. The document must be saved first: MarsDawn copies the image into an <code>assets</code> folder next to the document and writes the Markdown link for you.</p>
+<h3 id="a-mermaid-diagram-shows-an-error">A Mermaid diagram shows an error.</h3>
+<p>MarsDawn shows the diagram's source with the first line of Mermaid's error message underneath. Check the line it names, for example for an arrow with nothing after it or a bracket that isn't closed.</p>
+<h3 id="how-do-i-make-a-pdf">How do I make a PDF?</h3>
+<p>Choose File › Export as PDF… (<kbd>⌥⌘E</kbd>). The PDF uses the light version of your preview theme and is split into pages, whichever layout you are in. File › Print… prints the same pages.</p>
+<h3 id="how-do-i-use-marsdawn-with-siri-or-shortcuts">How do I use MarsDawn with Siri or Shortcuts?</h3>
+<p>Open the Shortcuts app and search for MarsDawn to find <em>New Markdown Document</em>, <em>Add Note to Inbox</em> and <em>Open Recent Document</em>. Before adding notes, choose a notes folder in MarsDawn › Settings › Notes Folder. Notes are added to <code>Inbox.md</code> in that folder.</p>
+<h3 id="where-are-my-settings">Where are my settings?</h3>
+<p>MarsDawn › Settings (<kbd>⌘,</kbd>) has appearance, images, the notes folder, folder access and the preview theme.</p>
+<h3 id="how-do-i-get-a-refund">How do I get a refund?</h3>
+<p>Purchases are handled by Apple. Request a refund at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+</div>
+<p class="markdown-source"><a href="/support/index.md">View the Markdown source</a></p>
 
-<section class="contact">
-  <h2>Write to us</h2>
-  <a class="email" href="mailto:support@southern-light.dev?subject=MarsDawn%20support">support@southern-light.dev</a>
-  <p>Please include your macOS version and your MarsDawn version (MarsDawn › About MarsDawn). If something looks wrong, a screenshot or a small sample document helps a lot.</p>
-</section>
-
-<section class="faq">
-  <h2>Common questions</h2>
-
-  <h3 id="what-do-i-need-to-run-marsdawn">What do I need to run MarsDawn?</h3>
-  <p>A Mac with macOS 26 Tahoe or later, on Apple silicon or Intel.</p>
-
-  <h3 id="how-do-i-switch-between-the-editor-and-the-preview">How do I switch between the editor and the preview?</h3>
-  <p>Press <kbd>⌘1</kbd> for the source only, <kbd>⌘2</kbd> for side by side, and <kbd>⌘3</kbd> for the preview only. The same choices are in the View menu and the toolbar.</p>
-
-  <h3 id="an-image-in-my-document-doesn-t-show">An image in my document doesn't show.</h3>
-  <ul>
-    <li><strong>Image on your Mac:</strong> save the document first, then click <em>Grant Folder Access…</em> in the preview and choose the folder that holds the image. MarsDawn remembers the folder. You can review granted folders in MarsDawn › Settings › Folder Access.</li>
-    <li><strong>Image from the web:</strong> web images are blocked until you click <em>Load Images</em> at the top of the preview. To always load them, turn on <em>Load remote images automatically</em> in Settings.</li>
-  </ul>
-
-  <h3 id="how-do-i-add-an-image">How do I add an image?</h3>
-  <p>Drag it into the editor, or paste it. The document must be saved first: MarsDawn copies the image into an <code>assets</code> folder next to the document and writes the Markdown link for you.</p>
-
-  <h3 id="a-mermaid-diagram-shows-an-error">A Mermaid diagram shows an error.</h3>
-  <p>MarsDawn shows the diagram's source with the first line of Mermaid's error message underneath. Check the line it names, for example for an arrow with nothing after it or a bracket that isn't closed.</p>
-
-  <h3 id="how-do-i-make-a-pdf">How do I make a PDF?</h3>
-  <p>Choose File › Export as PDF… (<kbd>⌥⌘E</kbd>). The PDF uses the light version of your preview theme and is split into pages, whichever layout you are in. File › Print… prints the same pages.</p>
-
-  <h3 id="how-do-i-use-marsdawn-with-siri-or-shortcuts">How do I use MarsDawn with Siri or Shortcuts?</h3>
-  <p>Open the Shortcuts app and search for MarsDawn to find <em>New Markdown Document</em>, <em>Add Note to Inbox</em> and <em>Open Recent Document</em>. Before adding notes, choose a notes folder in MarsDawn › Settings › Notes Folder. Notes are added to <code>Inbox.md</code> in that folder.</p>
-
-  <h3 id="where-are-my-settings">Where are my settings?</h3>
-  <p>MarsDawn › Settings (<kbd>⌘,</kbd>) has appearance, images, the notes folder, folder access and the preview theme.</p>
-
-  <h3 id="how-do-i-get-a-refund">How do I get a refund?</h3>
-  <p>Purchases are handled by Apple. Request a refund at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
-</section>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="Site">
@@ -134,7 +125,7 @@ try {
     <a href="/cli/">Command Line</a>
     <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
   </nav>
-  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

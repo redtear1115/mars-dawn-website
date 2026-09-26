@@ -1,6 +1,6 @@
 ---
 name: marsdawn
-description: Export Markdown to PDF with the marsdawn command-line tool on macOS, and read its JSON result. Use when asked to turn a Markdown file into a PDF, or to render Markdown with tables, math, Mermaid diagrams or highlighted code into a PDF.
+description: Export Markdown to PDF with the marsdawn command-line tool on macOS and read its JSON result, and open Markdown you wrote in MarsDawn for the user to review. Use when asked to turn a Markdown file into a PDF, or to render Markdown with tables, math, Mermaid diagrams or highlighted code into a PDF. Also use after writing or revising a Markdown document the user will read, to open it in MarsDawn for review.
 ---
 
 # marsdawn
@@ -52,12 +52,29 @@ On failure with `--json` it prints `{"ok": false, "error": <kind>, "message": ..
 | 3 | `app_not_installed` | MarsDawn isn't installed. Only `open` returns this. |
 | 4 | `output_exists` | The PDF already exists. Pass --force to replace it, or -o to write elsewhere. |
 | 5 | `export_failed` | Rendering failed. |
+| 6 | `app_cannot_open_folders` | This MarsDawn can't show a folder, so nothing was opened. Only `open` returns this. |
 | 64 | — | Usage error: a bad option or value. Printed as text on stderr, never as JSON. |
 
-## open
+## Review: open what you wrote
 
-`marsdawn open file.md` opens a file in the MarsDawn app for review. It needs the app; without
-it, it exits 3. Never use it to make a PDF: that's `export`.
+After writing or revising a Markdown document the user will read, open it in the MarsDawn app,
+where they read it rendered next to the source:
+
+```sh
+marsdawn open plan.md:42 --json
+```
+
+- `:42` is the line of your first change, counted from 1, so the user lands on it. Leave it off
+  when the whole document is new.
+- Open it **once**. When you edit the file again, the open window picks up the change by itself
+  and tells the user, with Undo. Don't run `open` again after every edit.
+- It needs the MarsDawn app. Without it, `open` exits 3 (`app_not_installed`): tell the user once
+  and carry on. Don't retry, and don't try to install the app.
+- To show the project in the window's sidebar as well, add `--folder <path>` (marsdawn 0.5.1 and
+  later; one folder). The JSON then includes `"folder": {"path": ..., "requested": true}`.
+  `requested` means marsdawn asked the app. It can't tell whether the sidebar shows the folder
+  (the app may first ask the user for access), so report it as asked, not as done.
+- Never use `open` to make a PDF: that's `export`.
 
 ## Full contract
 

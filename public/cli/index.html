@@ -64,7 +64,7 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <span class="store-chip">Coming soon to the Mac App Store</span>
+  <span class="store-chip">On the Mac App Store</span>
   <nav class="lang" aria-label="Language"><a href="/cli/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/cli/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/" hreflang="ja" lang="ja">日本語</a></nav>
 </header>
 <main id="main">
@@ -80,6 +80,7 @@ try {
 <h2 id="install">Install</h2>
 <p>With <a href="https://brew.sh">Homebrew</a>:</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
+<p>Using a coding agent? <a href="/cli/skill/">Add the marsdawn skill</a>: one file that teaches it to open what it wrote in MarsDawn for your review, and to export PDFs.</p>
 <p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.</p>
 <p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> with Swift Package Manager:</p>
 <pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
@@ -90,18 +91,22 @@ swift build -c release --product marsdawn</code></pre>
 <h2 id="commands">Commands</h2>
 
 <h3>marsdawn open</h3>
-<p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app.</p>
+<p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app. The app is on the <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</p>
 <pre><code>marsdawn open notes.md
 marsdawn open notes.md:120
-marsdawn open notes.md --line 120</code></pre>
+marsdawn open notes.md --line 120
+marsdawn open .
+marsdawn open notes.md --folder .</code></pre>
 <ul>
   <li><code>path:line</code>: asks MarsDawn to land on that line. A column after it, as in <code>notes.md:120:8</code>, is ignored. If a file with the whole name exists, the argument is that file.</li>
   <li><code>--line &lt;n&gt;</code>: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.</li>
   <li>Lines run from 1 to 999999999.</li>
-  <li>MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
+  <li>MarsDawn 1.0 opens the file at that line.</li>
+  <li>A folder argument opens in the window's sidebar instead of as a document: <code>marsdawn open .</code> shows the current folder. <code>--folder &lt;path&gt;</code> does the same alongside files. A window's sidebar shows one folder, so naming two is a usage error.</li>
+  <li><code>--background</code>: open without bringing MarsDawn to the front.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
 </ul>
-<p>Lines were added in marsdawn 0.3.0.</p>
+<p>Lines were added in marsdawn 0.3.0, and folders and <code>--background</code> in 0.5.1.</p>
 
 <h3>marsdawn export</h3>
 <p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.</p>
@@ -130,12 +135,13 @@ marsdawn open notes.md --line 120</code></pre>
   <tr><th scope="row"><code>3</code></th><td data-label="Means">MarsDawn is not installed (<code>open</code> only).</td><td data-label="What to do">Install the app, or use <code>export</code>, which doesn't need it</td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="Means">output exists (pass <code>--force</code>).</td><td data-label="What to do">Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere</td></tr>
   <tr><th scope="row"><code>5</code></th><td data-label="Means">export failed.</td><td data-label="What to do">Read <code>message</code> in the JSON result</td></tr>
-  <tr><th scope="row"><code>64</code></th><td data-label="Means">usage error, including a line out of range or <code>--line</code> with more than one file.</td><td data-label="What to do">Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
+  <tr><th scope="row"><code>6</code></th><td data-label="Means">this MarsDawn can't show a folder, so nothing was opened (<code>open</code> only).</td><td data-label="What to do"></td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="Means">usage error, including a line out of range, <code>--line</code> with more than one file or with a folder, or more than one folder.</td><td data-label="What to do">Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
 </tbody>
 </table></div>
 
 <h2 id="json-output">--json output</h2>
-<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when a folder was given, <code>folder</code>. <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="Site">
@@ -144,7 +150,7 @@ marsdawn open notes.md --line 120</code></pre>
     <a href="/cli/" aria-current="page">Command Line</a>
     <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
   </nav>
-  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

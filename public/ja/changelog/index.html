@@ -64,7 +64,7 @@ try {
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <span class="store-chip">Mac App Store で近日公開</span>
+  <span class="store-chip">Mac App Store で配信中</span>
   <nav class="lang" aria-label="Language"><a href="/changelog/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/changelog/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/changelog/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/changelog/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
 <main id="main">
@@ -73,12 +73,50 @@ try {
   <p>無料の marsdawn コマンドラインツールの変更点です。Mac App Store 版の MarsDawn は、そのバージョン自身について書くことがある場合だけ、ここに載せます。0.5.1 より前のバージョンは載せていません。</p>
 </section>
 
+<h2 id="marsdawn-0-6-0">marsdawn 0.6.0</h2>
+<p>2026年10月1日。MarsDawn が Mac App Store で公開。</p>
+<ul>
+  <li>アプリがインストールされていないとき、<code>marsdawn open</code> は Mac App Store の MarsDawn を案内します。</li>
+  <li>README とエージェントスキルで <code>marsdawn open .</code> と <code>--folder</code> を説明します。MarsDawn 1.0.0 はフォルダをウインドウのサイドバーに表示します。</li>
+</ul>
+
+<h2 id="marsdawn-0-5-4">marsdawn 0.5.4</h2>
+<p>2026年9月26日。Mermaid の修正、図のエラーの行番号、スキルのインストール。</p>
+<ul>
+  <li>シーケンス図で、メッセージのラベルがほかの参加者のライフラインをまたいでも、文字が読みやすいままです。プレビューでも、書き出した PDF でも同じです。</li>
+  <li><code>marsdawn export</code> が、Mermaid の図をたくさん含むファイルを書き出せるようになりました。図が 50 個あり、これまでコード 5 で終了していたファイルも書き出せます。</li>
+  <li><code>marsdawn export --json</code> に <code>diagramErrorDetails</code> が加わりました。図のエラーごとに、その図がファイルの何行目から始まるかと、Mermaid が行を示している場合はエラーそのものの行を、行番号で返します。</li>
+  <li><code>marsdawn skill --install</code> は、Claude Code 用のエージェントスキルを <code>~/.claude/skills/marsdawn/SKILL.md</code> にインストールします。<code>--dir</code> でほかのフォルダも指定できます。同じ内容のファイルがあればそのままにし、内容が違うファイルは <code>--force</code> を付けたときだけ置き換えます。付けないときはコード 64（<code>skill_differs</code>）で終了し、何も変更しません。</li>
+</ul>
+
+<h2 id="marsdawn-0-5-3">marsdawn 0.5.3</h2>
+<p>2026年9月25日。フォルダの状態、Mermaid エラーの全文、そのほかの修正。</p>
+<ul>
+  <li><code>marsdawn open --folder</code> が、フォルダがどうなったかを返せるようになりました。状態を返すアプリが相手なら、<code>--wait</code> の秒数（デフォルトは 2 秒）まで応答を待ち、<code>--json</code> に <code>attached</code> や <code>needsUser</code> などの状態が入ります。</li>
+  <li>Mermaid の図を解析できないとき、最初の行だけでなく Mermaid のエラーメッセージ全文を表示します。行番号もファイルの先頭から数えた値になりました。</li>
+  <li>フロントマターの終わりを探すのは 1,000 行までになりました。閉じていないブロックがあっても、大きなファイルを毎回最後まで調べることはありません。</li>
+  <li>脚注の戻りリンクのラベルを、アプリが PDF の書き出しとプリント用に翻訳して渡せるようになりました。このラベルはページにはプリントされず、<code>marsdawn export</code> では英語のままです。</li>
+  <li>同梱の highlight.js を、KaTeX や Mermaid と同じく、バージョン、入手元、SHA-256 で記録するようになりました。</li>
+</ul>
+
+<h2 id="marsdawn-0-5-2">marsdawn 0.5.2</h2>
+<p>2026年9月24日。脚注、コントラスト、フォルダ。</p>
+<ul>
+  <li>書き出した PDF に脚注が表示されます。参照には番号が付き、注は本文のあとに並びます。</li>
+  <li>すべてのテーマが、ライトでもダークでも WCAG AA のコントラストを満たします。Classic は白黒になりました。</li>
+  <li><code>marsdawn skill</code> は、インストールされている marsdawn に合ったエージェントスキルを出力します。</li>
+  <li>見つかった MarsDawn がフォルダを表示できないとき、<code>marsdawn open</code> は成功を報告せず、コード 6（<code>app_cannot_open_folders</code>）で終了します。</li>
+  <li>書き出したページに描かれるプレースホルダが、ドイツ語、フランス語、スペイン語、韓国語にも対応しました。</li>
+  <li>相対パスがとても長くても、画像のプレースホルダにその先の絶対パスが表示されなくなりました。</li>
+  <li><code>MARSDAWN_APP_PATH</code> は、MarsDawn アプリを指しているときだけ使われます。</li>
+</ul>
+
 <h2 id="marsdawn-0-5-1">marsdawn 0.5.1</h2>
 <p>2026年9月19日。PDF 書き出しと、コマンドラインからファイルを開くこと。</p>
 <ul>
   <li>書き出した PDF のテキストレイヤーを、中国語、日本語、韓国語について修正しました。</li>
   <li><code>marsdawn open --background</code> はファイルを開きますが、MarsDawn を前面には出しません。</li>
-  <li><code>marsdawn open</code> にフォルダを渡せます。Mac App Store のアプリはまだフォルダを表示できないので、このオプションは、それができるアプリを待ちます。</li>
+  <li><code>marsdawn open</code> にフォルダを渡すと、MarsDawn がウインドウのサイドバーに表示します（MarsDawn 1.0.0 以降）。</li>
 </ul>
 </main>
 <footer class="footer">
@@ -88,7 +126,7 @@ try {
     <a href="/ja/cli/">コマンドライン</a>
     <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
   </nav>
-  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>
