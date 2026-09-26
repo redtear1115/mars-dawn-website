@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agents should be transparent. Who reads what they show? · MarsDawn</title>
+<meta name="description" content="Anthropic's guide to building agents asks for transparency: show the planning steps. What it says, what it doesn't, and why the steps usually end up as a Markdown file someone has to read.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-transparency/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-transparency/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-transparency/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-transparency/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-transparency/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/agent-transparency/">
+<link rel="alternate" type="text/markdown" href="/agent-transparency/index.md">
+<meta property="og:title" content="Agents should be transparent. Who reads what they show? · MarsDawn">
+<meta property="og:description" content="Anthropic's guide to building agents asks for transparency: show the planning steps. What it says, what it doesn't, and why the steps usually end up as a Markdown file someone has to read.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/agent-transparency/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">On the Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/agent-transparency/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/agent-transparency/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/agent-transparency/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/agent-transparency/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Anthropic says agents should be transparent &#8212; so who reads what they lay out?</h1>
+  <p>In December 2024 Anthropic published &#8220;Building Effective Agents,&#8221; a guide for people who build AI agents. Its summary lists three principles, and one of them is transparency. This post is about the other end of that principle: once an agent lays out its steps, somebody has to read them.</p>
+</section>
+
+<div class="summary"><p><strong>Transparency is something the agent does. Reading is something you do. Anthropic asks builders to show an agent's planning steps; for most people driving a coding agent, those steps arrive as a Markdown file that someone has to read at the right moment.</strong></p></div>
+
+<h2 id="what-the-guide-says">What the guide says</h2>
+<p>Erik S. and Barry Zhang sum up their advice like this:</p>
+<blockquote><p>&#8220;When implementing agents, we try to follow three core principles: Maintain simplicity in your agent's design. Prioritize transparency by explicitly showing the agent&#8217;s planning steps. Carefully craft your agent-computer interface (ACI) through thorough tool documentation and testing.&#8221;</p></blockquote>
+<p>These are design principles for people who build agents, not instructions for the person using one. The principle asks for the steps to be shown. It doesn't say who reads them.</p>
+<p>The same post describes what an agent does once it has a task: &#8220;Once the task is clear, agents plan and operate independently, potentially returning to the human for further information or judgement.&#8221; And: &#8220;Agents can then pause for human feedback at checkpoints or when encountering blockers.&#8221; Look at the verbs, <em>potentially</em> and <em>can</em>. Checkpoints are described as something an agent can have, not something it must.</p>
+
+<h2 id="most-of-the-checking-isn-t-done-by-you">Most of the checking isn't done by you</h2>
+<p>It's easy to overstate this, so here's what the guide actually puts first. The agent checks itself against the world: &#8220;During execution, it's crucial for the agents to gain &#8220;ground truth&#8221; from the environment at each step (such as tool call results or code execution) to assess its progress.&#8221; In that sentence, ground truth means test results and tool output. It doesn't mean a person.</p>
+<p>The guide is also direct about the risk: &#8220;The autonomous nature of agents means higher costs, and the potential for compounding errors.&#8221; Its answer is extensive testing in sandboxed environments, with guardrails. It doesn't say &#8220;read more carefully&#8221;.</p>
+<p>A person does come in later, in the appendix on coding agents: &#8220;However, whereas automated testing helps verify functionality, human review remains crucial for ensuring solutions align with broader system requirements.&#8221; That sentence is about code. The gap it points at is familiar from any agent, though: a test can tell you something works, not that it's what you meant.</p>
+
+<h2 id="where-the-steps-end-up">Where the steps end up</h2>
+<p><strong>From here on this is our reading, not Anthropic's.</strong></p>
+<p>If you use a coding agent day to day, its planning steps usually don't show up in a dashboard. They show up as files: <code>plan.md</code>, a task list with checkboxes, a progress file the agent keeps rewriting, a summary at the end. Transparency, from your side, means more to read.</p>
+<p>Showing the steps is the agent's half of the deal. The other half is a person reading them when it matters: before the migration runs, before the branch merges, before &#8220;done&#8221; is accepted. An agent that lays everything out in a 600-line file nobody opens is transparent on paper and unsupervised in practice.</p>
+<p>Harrison Chase made a related point in 2024, writing about how agent frameworks should work rather than about documents: &#8220;You&#8217;ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.&#8221; He was talking about tooling for the people building agents. If you're the one driving the agent, the plain file it keeps writing is often the part you can watch.</p>
+<p>None of these authors mention MarsDawn, and none of them endorse it or any other Markdown tool.</p>
+
+<h2 id="why-that-read-is-harder-than-it-looks">Why that read is harder than it looks</h2>
+<p>The file is long, and what matters is rarely near the top. The diagram that explains the change is Mermaid source, not a picture (seeing it drawn is covered in <a href="/view-markdown-on-mac/">How to view a Markdown file on a Mac</a>). The agent may rewrite the file while you're halfway down. There's often more than one file, sometimes on different branches or worktrees. And when you do spot a problem, &#8220;the cache part looks off&#8221; leaves the agent guessing. The longer version of this is on <a href="/reading-agent-output/">Reading what your agent hands back</a>.</p>
+
+<h2 id="where-marsdawn-fits-and-where-it-doesn-t">Where MarsDawn fits, and where it doesn't</h2>
+<p>MarsDawn is a Mac app for this read. It doesn't make an agent more transparent, and it has no AI model inside: it won't summarize the plan or tell you whether it's right. What it does:</p>
+<ul>
+  <li><strong>Long files:</strong> View &#9656; Show Sidebar (&#8963;&#8984;S) opens the Outline tab, which lists the headings. Click one to jump there.</li>
+  <li><strong>Diagrams and math:</strong> the source and the rendered page sit side by side (&#8984;2) and scroll together, with Mermaid and KaTeX drawn out. If a diagram is broken, the preview shows its source with the error underneath.</li>
+  <li><strong>Rewritten while you read:</strong> when the agent rewrites the file, MarsDawn reloads it and keeps your place, as long as you have no unsaved edits of your own.</li>
+  <li><strong>Several files:</strong> open the agent's folder with File &#9656; Open Folder&#8230; (&#8679;&#8984;O). New files show up in the Files tab within about a second, and for a git checkout the header names the branch or worktree.</li>
+  <li><strong>Pointing at a line:</strong> Edit &#9656; Copy Reference (&#8997;&#8984;C) copies your place as <code>docs/plan.md:42</code>, and Copy for AI (&#8963;&#8997;&#8984;C) adds the selected text under it, ready to paste into the agent's chat.</li>
+</ul>
+<p>You still do the reading. MarsDawn keeps a long, changing file readable while you do.</p>
+
+<h2 id="try-it">Try it</h2>
+<p>MarsDawn is on the <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>. There's also the free <code>marsdawn</code> command-line tool:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>It exports Markdown to PDF without the app.</p>
+<p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
+
+<h2 id="next">Next</h2>
+<ul>
+  <li>Why agent output is hard to read, and a checklist for it: <a href="/reading-agent-output/">Reading what your agent hands back</a>.</li>
+  <li>The checklist, step by step with an example: <a href="/reviewing-agent-plans/">Reviewing an agent plan in five minutes</a>.</li>
+  <li>Which documents different kinds of agents hand you: <a href="/agent-design-patterns/">Four agent design patterns and the documents each one hands you</a>.</li>
+  <li>The short case for reading AI output at all: <a href="/reviewing-ai-output/">Why AI output still needs a human reader</a>.</li>
+</ul>
+
+<h2 id="sources">Sources</h2>
+<ul>
+  <li>Erik S. and Barry Zhang, &#8220;Building Effective Agents,&#8221; Anthropic, December 19, 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (quoted from the version online on 2026-09-26; the post now notes that much of the tooling it describes has changed since December 2024).</li>
+  <li>Harrison Chase, &#8220;What is an agent?,&#8221; LangChain, June 28, 2024, archived copy: <a href="http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/">http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/</a> (the original address now shows a different 2026 article).</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/support/">Support</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
+  </nav>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

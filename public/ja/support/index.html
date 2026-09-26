@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ja" data-theme="dawn">
 <head>
 <meta charset="utf-8">
 <script>window.dataLayer = window.dataLayer || [];
@@ -30,6 +30,8 @@ try {
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/themes.css">
+<link rel="stylesheet" href="/assets/preview.css">
 <link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/support/">
 <link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/support/">
 <link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/support/">
@@ -68,10 +70,13 @@ try {
   <nav class="lang" aria-label="Language"><a href="/support/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/support/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/support/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/support/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
 </header>
 <main id="main">
-<section class="intro">
-  <h1>サポート</h1>
-  <p>macOS 向け Markdown エディタ、MarsDawn のヘルプです。</p>
-</section>
+<div class="markdown-body">
+<h1>サポート</h1>
+<p>macOS 向け Markdown エディタ、MarsDawn のヘルプです。</p>
+<h2>お問い合わせ</h2>
+<p><a href="mailto:support@southern-light.dev?subject=MarsDawn%20support">support@southern-light.dev</a></p>
+<p>macOS のバージョンと MarsDawn のバージョン（MarsDawn › MarsDawnについて）を書き添えてください。何かおかしく見える場合は、スクリーンショットや小さなサンプル文書がとても役立ちます。</p>
+<h2>よくある質問</h2>
 <nav class="toc" aria-label="質問へ移動">
 <p>質問へ移動</p>
 <ul>
@@ -86,46 +91,32 @@ try {
   <li><a href="#how-do-i-get-a-refund">返金してもらうには？</a></li>
 </ul>
 </nav>
+<h3 id="what-do-i-need-to-run-marsdawn">MarsDawn を動かすには何が必要ですか？</h3>
+<p>macOS 26 Tahoe 以降を搭載した Mac。Apple シリコンでも Intel でも動作します。</p>
+<h3 id="how-do-i-switch-between-the-editor-and-the-preview">エディタとプレビューはどう切り替えますか？</h3>
+<p><kbd>⌘1</kbd> でソースのみ、<kbd>⌘2</kbd> で左右分割、<kbd>⌘3</kbd> でプレビューのみになります。同じ選択肢は「表示」メニューとツールバーにもあります。</p>
+<h3 id="an-image-in-my-document-doesn-t-show">文書内の画像が表示されません。</h3>
+<ul>
+<li><strong>Mac 上の画像</strong>：まず文書を保存し、プレビューの<em>フォルダへのアクセスを許可</em>…をクリックして、画像があるフォルダを選んでください。MarsDawn はそのフォルダを記憶します。許可したフォルダは MarsDawn › 設定 › フォルダへのアクセスで確認できます。
+</li>
+<li><strong>ウェブ上の画像</strong>：ウェブ画像は、プレビュー上部の<em>イメージを読み込む</em>をクリックするまでブロックされます。常に読み込みたい場合は、設定で<em>リモートイメージを自動的に読み込む</em>をオンにしてください。
+</li>
+</ul>
+<h3 id="how-do-i-add-an-image">画像を追加するには？</h3>
+<p>エディタにドラッグするか、貼り付けてください。文書は先に保存しておく必要があります。MarsDawn が画像を文書の隣にある <code>assets</code> フォルダにコピーし、Markdown のリンクを書き込みます。</p>
+<h3 id="a-mermaid-diagram-shows-an-error">Mermaid 図にエラーが表示されます。</h3>
+<p>MarsDawn は図のソースと、その下に Mermaid のエラーメッセージの最初の行を表示します。示された行を確認してください。たとえば矢印の先に何もない、または括弧が閉じられていない、といった箇所です。</p>
+<h3 id="how-do-i-make-a-pdf">PDF を作るには？</h3>
+<p>ファイル › PDF として書き出す…（<kbd>⌥⌘E</kbd>）を選んでください。PDF はどのレイアウトであっても、プレビューテーマのライト版を使い、ページごとに分割されます。ファイル › プリント…でも同じページがプリントされます。</p>
+<h3 id="how-do-i-use-marsdawn-with-siri-or-shortcuts">Siri やショートカットで MarsDawn を使うには？</h3>
+<p>ショートカット App を開いて MarsDawn を検索すると、<em>新規 Markdown 書類</em>、<em>受信トレイにメモを追加</em>、<em>最近使った書類を開く</em>が見つかります。メモを追加する前に、MarsDawn › 設定 › メモフォルダでメモフォルダを選んでください。メモはそのフォルダの <code>Inbox.md</code> に追加されます。</p>
+<h3 id="where-are-my-settings">設定はどこにありますか？</h3>
+<p>MarsDawn › 設定（<kbd>⌘,</kbd>）に、外観モード、イメージ、メモフォルダ、フォルダへのアクセス、プレビューのテーマがあります。</p>
+<h3 id="how-do-i-get-a-refund">返金してもらうには？</h3>
+<p>購入は Apple が処理します。<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> で返金を申請してください。</p>
+</div>
+<p class="markdown-source"><a href="/ja/support/index.md">Markdown のソースを見る</a></p>
 
-<section class="contact">
-  <h2>お問い合わせ</h2>
-  <a class="email" href="mailto:support@southern-light.dev?subject=MarsDawn%20support">support@southern-light.dev</a>
-  <p>macOS のバージョンと MarsDawn のバージョン（MarsDawn › MarsDawnについて）を書き添えてください。何かおかしく見える場合は、スクリーンショットや小さなサンプル文書がとても役立ちます。</p>
-</section>
-
-<section class="faq">
-  <h2>よくある質問</h2>
-
-  <h3 id="what-do-i-need-to-run-marsdawn">MarsDawn を動かすには何が必要ですか？</h3>
-  <p>macOS 26 Tahoe 以降を搭載した Mac。Apple シリコンでも Intel でも動作します。</p>
-
-  <h3 id="how-do-i-switch-between-the-editor-and-the-preview">エディタとプレビューはどう切り替えますか？</h3>
-  <p><kbd>⌘1</kbd> でソースのみ、<kbd>⌘2</kbd> で左右分割、<kbd>⌘3</kbd> でプレビューのみになります。同じ選択肢は「表示」メニューとツールバーにもあります。</p>
-
-  <h3 id="an-image-in-my-document-doesn-t-show">文書内の画像が表示されません。</h3>
-  <ul>
-    <li><strong>Mac 上の画像：</strong>まず文書を保存し、プレビューの<em>フォルダへのアクセスを許可…</em>をクリックして、画像があるフォルダを選んでください。MarsDawn はそのフォルダを記憶します。許可したフォルダは MarsDawn › 設定 › フォルダへのアクセスで確認できます。</li>
-    <li><strong>ウェブ上の画像：</strong>ウェブ画像は、プレビュー上部の<em>イメージを読み込む</em>をクリックするまでブロックされます。常に読み込みたい場合は、設定で<em>リモートイメージを自動的に読み込む</em>をオンにしてください。</li>
-  </ul>
-
-  <h3 id="how-do-i-add-an-image">画像を追加するには？</h3>
-  <p>エディタにドラッグするか、貼り付けてください。文書は先に保存しておく必要があります。MarsDawn が画像を文書の隣にある <code>assets</code> フォルダにコピーし、Markdown のリンクを書き込みます。</p>
-
-  <h3 id="a-mermaid-diagram-shows-an-error">Mermaid 図にエラーが表示されます。</h3>
-  <p>MarsDawn は図のソースと、その下に Mermaid のエラーメッセージの最初の行を表示します。示された行を確認してください。たとえば矢印の先に何もない、または括弧が閉じられていない、といった箇所です。</p>
-
-  <h3 id="how-do-i-make-a-pdf">PDF を作るには？</h3>
-  <p>ファイル › PDF として書き出す…（<kbd>⌥⌘E</kbd>）を選んでください。PDF はどのレイアウトであっても、プレビューテーマのライト版を使い、ページごとに分割されます。ファイル › プリント…でも同じページが印刷されます。</p>
-
-  <h3 id="how-do-i-use-marsdawn-with-siri-or-shortcuts">Siri やショートカットで MarsDawn を使うには？</h3>
-  <p>ショートカット App を開いて MarsDawn を検索すると、<em>新規 Markdown 書類</em>、<em>受信トレイにメモを追加</em>、<em>最近使った書類を開く</em>が見つかります。メモを追加する前に、MarsDawn › 設定 › メモフォルダでメモフォルダを選んでください。メモはそのフォルダの <code>Inbox.md</code> に追加されます。</p>
-
-  <h3 id="where-are-my-settings">設定はどこにありますか？</h3>
-  <p>MarsDawn › 設定（<kbd>⌘,</kbd>）に、外観モード、イメージ、メモフォルダ、フォルダへのアクセス、プレビューのテーマがあります。</p>
-
-  <h3 id="how-do-i-get-a-refund">返金してもらうには？</h3>
-  <p>購入は Apple が処理します。<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> で返金を申請してください。</p>
-</section>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="サイト">

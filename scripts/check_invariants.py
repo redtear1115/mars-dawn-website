@@ -78,7 +78,7 @@ PRE_LAUNCH_WORDING = {
     "en": ["coming soon to the Mac App Store", "not on sale yet"],
     "zh-hant": ["即將在 Mac App Store 上架", "還沒開賣"],
     "zh-hans": ["即将在 Mac App Store 上架", "还没开卖"],
-    "ja": ["Mac App Store で近日公開", "近日公開：", "まだ販売されていません"],
+    "ja": ["Mac App Store で近日公開", "近日公開：", "まだ販売されていません", "近日 Mac App Store に登場予定"],
 }
 
 LISTING_HOST = "apps.apple.com"

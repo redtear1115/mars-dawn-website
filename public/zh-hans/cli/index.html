@@ -101,6 +101,7 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>path:line</code>：请 MarsDawn 定位到那一行。后面再接列号，例如 <code>notes.md:120:8</code>，会被忽略。如果有文件的完整名称就是这个参数，则视为那个文件。</li>
   <li><code>--line &lt;n&gt;</code>：同样的功能，只用于单一文件，也可以用在文件名本身以冒号加数字结尾的情况。只能搭配一个文件。</li>
   <li>行号范围是 1 到 999999999。</li>
+  <li>MarsDawn 1.0 会打开文件，并跳到指定的行。</li>
   <li>文件夹参数会在窗口的侧边栏打开，而不是当成文稿：<code>marsdawn open .</code> 会显示当前的文件夹。<code>--folder &lt;path&gt;</code> 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹，所以指定两个是使用方式错误。</li>
   <li><code>--background</code>：打开时不把 MarsDawn 带到最前面。</li>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
@@ -108,13 +109,13 @@ marsdawn open notes.md --folder .</code></pre>
 <p>行号功能从 marsdawn 0.3.0 开始提供，文件夹与 <code>--background</code> 从 0.5.1 开始。</p>
 
 <h3>marsdawn export</h3>
-<p>把 Markdown 文件输出成分页的 PDF，使用和 MarsDawn 输出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。</p>
+<p>把 Markdown 文件导出成分页的 PDF，使用和 MarsDawn 导出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。</p>
 <pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
 <ul>
   <li><code>-o, --output &lt;path&gt;</code>：PDF 的输出位置，默认是把输入文件的扩展名换成 <code>.pdf</code>。</li>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：预览主题的浅色版本，默认读取 <code>$MARSDAWN_THEME</code>，否则用 <code>dawn</code>。</li>
   <li><code>--paper &lt;a4|letter&gt;</code>：纸张大小，默认 <code>a4</code>。</li>
-  <li><code>--allow-remote-images</code>：输出时加载网络图片，默认关闭。</li>
+  <li><code>--allow-remote-images</code>：导出时加载网络图片，默认关闭。</li>
   <li><code>--force</code>：如果输出文件已存在就直接覆盖。</li>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
 </ul>
@@ -133,7 +134,7 @@ marsdawn open notes.md --folder .</code></pre>
   <tr><th scope="row"><code>2</code></th><td data-label="意思">找不到输入文件。</td><td data-label="怎么处理">检查路径和文件名</td></tr>
   <tr><th scope="row"><code>3</code></th><td data-label="意思">尚未安装 MarsDawn（只有 <code>open</code> 会用到）。</td><td data-label="怎么处理">安装 app，或改用不需要 app 的 <code>export</code></td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="意思">输出文件已存在（可加上 <code>--force</code>）。</td><td data-label="怎么处理">加上 <code>--force</code> 覆盖，或用 <code>-o</code> 写到别处</td></tr>
-  <tr><th scope="row"><code>5</code></th><td data-label="意思">输出失败。</td><td data-label="怎么处理">读 JSON 结果里的 <code>message</code></td></tr>
+  <tr><th scope="row"><code>5</code></th><td data-label="意思">导出失败。</td><td data-label="怎么处理">读 JSON 结果里的 <code>message</code></td></tr>
   <tr><th scope="row"><code>6</code></th><td data-label="意思">这个版本的 MarsDawn 还不能显示文件夹，所以没有打开任何东西（只有 <code>open</code> 会用到）。</td><td data-label="怎么处理"></td></tr>
   <tr><th scope="row"><code>64</code></th><td data-label="意思">使用方式错误，包括行号超出范围、<code>--line</code> 搭配了多个文件或文件夹，或指定了多个文件夹。</td><td data-label="怎么处理">修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样</td></tr>
 </tbody>
