@@ -760,6 +760,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <ul>
   <li>このレビューが、なぜエージェント自身の context にとって安上がりなのか：<a href="/ja/token-efficient-review/">{ui['token-efficient-review']}</a>。</li>
   <li>レビュー済みの文書を、ほかの人に渡す：<a href="/ja/sharing-exported-pdfs/">PDF を共有する</a>。</li>
+  <li>なぜ読みにくいのか、どう読むか：<a href="/ja/reading-agent-output/">エージェントが返してくるものを読む</a>。</li>
   <li>なぜエージェントはそもそも計画を示すのか：<a href="/ja/agent-transparency/">Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？</a></li>
   <li>MarsDawn とは何か、1ページで：<a href="/ja/">ホームページ</a>。</li>
 </ul>

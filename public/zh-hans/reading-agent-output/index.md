@@ -58,7 +58,7 @@ brew install redtear1115/tap/marsdawn
 
 ## 接下来
 
-- 为什么 AI 写的东西还是需要人读，短一点的版本：[为什么 AI 写的东西还是需要人读过](/zh-hans/reviewing-ai-output/)。
+- 为什么 AI 写的东西需要人读，短一点的版本：[为什么 AI 写的东西还是需要人读过](/zh-hans/reviewing-ai-output/)。
 - 审阅时不占用 agent 的 context：[节省 token 的审阅方式](/zh-hans/token-efficient-review/)。
 - agent 为什么要把计划摊开：[Anthropic 说 agent 要透明，那摊开的东西谁来读？](/zh-hans/agent-transparency/)
 - 上面那份清单一步一步来，附实际例子：[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。

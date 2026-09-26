@@ -545,6 +545,7 @@ marsdawn --version</code></pre>
 <ul>
   <li>这样的审阅怎么不花 agent 自己的 context：<a href="/zh-hans/token-efficient-review/">节省 token 的审阅方式</a>。</li>
   <li>把审阅过的文稿交给别人：<a href="/zh-hans/sharing-exported-pdfs/">分享 PDF</a>。</li>
+  <li>为什么难读、该怎么读：<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>。</li>
   <li>agent 为什么要把计划摊开：<a href="/zh-hans/agent-transparency/">Anthropic 说 agent 要透明，那摊开的东西谁来读？</a></li>
   <li>MarsDawn 是什么，一页讲完：<a href="/zh-hans/">首页</a>。</li>
 </ul>
@@ -812,7 +813,7 @@ open notes.pdf</code></pre>
 
 <h2>接下来</h2>
 <ul>
-  <li>为什么 AI 写的东西还是需要人读，短一点的版本：<a href="/zh-hans/reviewing-ai-output/">为什么 AI 写的东西还是需要人读过</a>。</li>
+  <li>为什么 AI 写的东西需要人读，短一点的版本：<a href="/zh-hans/reviewing-ai-output/">为什么 AI 写的东西还是需要人读过</a>。</li>
   <li>审阅时不占用 agent 的 context：<a href="/zh-hans/token-efficient-review/">节省 token 的审阅方式</a>。</li>
   <li>agent 为什么要把计划摊开：<a href="/zh-hans/agent-transparency/">Anthropic 说 agent 要透明，那摊开的东西谁来读？</a></li>
   <li>上面那份清单一步一步来，附实际例子：<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>。</li>

@@ -1679,6 +1679,7 @@ BRAINSTORM_PAGES = {
 <ul>
   <li>How that review stays cheap for the agent's own context: <a href="/token-efficient-review/">token-efficient review</a>.</li>
   <li>Handing the reviewed document to someone else: <a href="/sharing-exported-pdfs/">sharing a PDF</a>.</li>
+  <li>Why it's hard to read, and how to do it: <a href="/reading-agent-output/">Reading what your agent hands back</a>.</li>
   <li>Why agents lay their plans out at all: <a href="/agent-transparency/">Anthropic says agents should be transparent &#8212; so who reads what they lay out?</a></li>
   <li>What MarsDawn is, in one page: <a href="/">the home page</a>.</li>
 </ul>
@@ -1713,6 +1714,7 @@ BRAINSTORM_PAGES = {
 <ul>
   <li>這樣的審閱怎麼不花 agent 自己的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
   <li>把審閱過的文件交給別人：<a href="/zh-hant/sharing-exported-pdfs/">分享 PDF</a>。</li>
+  <li>為什麼難讀、該怎麼讀：<a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a>。</li>
   <li>agent 為什麼要把計畫攤開：<a href="/zh-hant/agent-transparency/">Anthropic 說 agent 要透明，那攤開的東西誰來讀？</a></li>
   <li>MarsDawn 是什麼，一頁講完：<a href="/zh-hant/">首頁</a>。</li>
 </ul>
@@ -1843,7 +1845,7 @@ BRAINSTORM_PAGES = {
 
 <h2>接下來</h2>
 <ul>
-  <li>為什麼 AI 寫的東西還是需要人讀，短一點的版本：<a href="/zh-hant/reviewing-ai-output/">為什麼 AI 寫的東西還是需要人讀過</a>。</li>
+  <li>為什麼 AI 寫的東西需要人讀，短一點的版本：<a href="/zh-hant/reviewing-ai-output/">為什麼 AI 寫的東西還是需要人讀過</a>。</li>
   <li>審閱時不佔用 agent 的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
   <li>agent 為什麼要把計畫攤開：<a href="/zh-hant/agent-transparency/">Anthropic 說 agent 要透明，那攤開的東西誰來讀？</a></li>
   <li>上面那份清單一步一步來，附實際例子：<a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>。</li>

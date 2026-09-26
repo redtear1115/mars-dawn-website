@@ -58,7 +58,7 @@ brew install redtear1115/tap/marsdawn
 
 ## 接下來
 
-- 為什麼 AI 寫的東西還是需要人讀，短一點的版本：[為什麼 AI 寫的東西還是需要人讀過](/zh-hant/reviewing-ai-output/)。
+- 為什麼 AI 寫的東西需要人讀，短一點的版本：[為什麼 AI 寫的東西還是需要人讀過](/zh-hant/reviewing-ai-output/)。
 - 審閱時不佔用 agent 的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
 - agent 為什麼要把計畫攤開：[Anthropic 說 agent 要透明，那攤開的東西誰來讀？](/zh-hant/agent-transparency/)
 - 上面那份清單一步一步來，附實際例子：[五分鐘審完一份 agent 計畫](/zh-hant/reviewing-agent-plans/)。

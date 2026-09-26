@@ -1039,6 +1039,7 @@ Birgitta Böckeler, writing for Thoughtworks, draws the distinction plainly: “
 
 - How that review stays cheap for the agent's own context: [token-efficient review](/token-efficient-review/).
 - Handing the reviewed document to someone else: [sharing a PDF](/sharing-exported-pdfs/).
+- Why it's hard to read, and how to do it: [Reading what your agent hands back](/reading-agent-output/).
 - Why agents lay their plans out at all: [Anthropic says agents should be transparent — so who reads what they lay out?](/agent-transparency/)
 - What MarsDawn is, in one page: [the home page](/).
 
@@ -2705,6 +2706,7 @@ Thoughtworks 的 Birgitta Böckeler 講得很直接：「LLMs are NOT compilers,
 
 - 這樣的審閱怎麼不花 agent 自己的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
 - 把審閱過的文件交給別人：[分享 PDF](/zh-hant/sharing-exported-pdfs/)。
+- 為什麼難讀、該怎麼讀：[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)。
 - agent 為什麼要把計畫攤開：[Anthropic 說 agent 要透明，那攤開的東西誰來讀？](/zh-hant/agent-transparency/)
 - MarsDawn 是什麼，一頁講完：[首頁](/zh-hant/)。
 
@@ -2774,7 +2776,7 @@ brew install redtear1115/tap/marsdawn
 
 ## 接下來
 
-- 為什麼 AI 寫的東西還是需要人讀，短一點的版本：[為什麼 AI 寫的東西還是需要人讀過](/zh-hant/reviewing-ai-output/)。
+- 為什麼 AI 寫的東西需要人讀，短一點的版本：[為什麼 AI 寫的東西還是需要人讀過](/zh-hant/reviewing-ai-output/)。
 - 審閱時不佔用 agent 的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
 - agent 為什麼要把計畫攤開：[Anthropic 說 agent 要透明，那攤開的東西誰來讀？](/zh-hant/agent-transparency/)
 - 上面那份清單一步一步來，附實際例子：[五分鐘審完一份 agent 計畫](/zh-hant/reviewing-agent-plans/)。
@@ -4365,6 +4367,7 @@ Thoughtworks 的 Birgitta Böckeler 讲得很直接：“LLMs are NOT compilers,
 
 - 这样的审阅怎么不花 agent 自己的 context：[节省 token 的审阅方式](/zh-hans/token-efficient-review/)。
 - 把审阅过的文稿交给别人：[分享 PDF](/zh-hans/sharing-exported-pdfs/)。
+- 为什么难读、该怎么读：[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
 - agent 为什么要把计划摊开：[Anthropic 说 agent 要透明，那摊开的东西谁来读？](/zh-hans/agent-transparency/)
 - MarsDawn 是什么，一页讲完：[首页](/zh-hans/)。
 
@@ -4434,7 +4437,7 @@ brew install redtear1115/tap/marsdawn
 
 ## 接下来
 
-- 为什么 AI 写的东西还是需要人读，短一点的版本：[为什么 AI 写的东西还是需要人读过](/zh-hans/reviewing-ai-output/)。
+- 为什么 AI 写的东西需要人读，短一点的版本：[为什么 AI 写的东西还是需要人读过](/zh-hans/reviewing-ai-output/)。
 - 审阅时不占用 agent 的 context：[节省 token 的审阅方式](/zh-hans/token-efficient-review/)。
 - agent 为什么要把计划摊开：[Anthropic 说 agent 要透明，那摊开的东西谁来读？](/zh-hans/agent-transparency/)
 - 上面那份清单一步一步来，附实际例子：[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
@@ -6025,6 +6028,7 @@ Thoughtworks の Birgitta Böckeler は、この違いをはっきりと言い�
 
 - このレビューが、なぜエージェント自身の context にとって安上がりなのか：[トークンを抑えたレビュー](/ja/token-efficient-review/)。
 - レビュー済みの文書を、ほかの人に渡す：[PDF を共有する](/ja/sharing-exported-pdfs/)。
+- なぜ読みにくいのか、どう読むか：[エージェントが返してくるものを読む](/ja/reading-agent-output/)。
 - なぜエージェントはそもそも計画を示すのか：[Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？](/ja/agent-transparency/)
 - MarsDawn とは何か、1ページで：[ホームページ](/ja/)。
 

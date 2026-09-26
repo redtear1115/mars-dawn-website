@@ -23,6 +23,7 @@ Thoughtworks 的 Birgitta Böckeler 讲得很直接：“LLMs are NOT compilers,
 
 - 这样的审阅怎么不花 agent 自己的 context：[节省 token 的审阅方式](/zh-hans/token-efficient-review/)。
 - 把审阅过的文稿交给别人：[分享 PDF](/zh-hans/sharing-exported-pdfs/)。
+- 为什么难读、该怎么读：[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
 - agent 为什么要把计划摊开：[Anthropic 说 agent 要透明，那摊开的东西谁来读？](/zh-hans/agent-transparency/)
 - MarsDawn 是什么，一页讲完：[首页](/zh-hans/)。
 

@@ -23,6 +23,7 @@ Birgitta Böckeler, writing for Thoughtworks, draws the distinction plainly: “
 
 - How that review stays cheap for the agent's own context: [token-efficient review](/token-efficient-review/).
 - Handing the reviewed document to someone else: [sharing a PDF](/sharing-exported-pdfs/).
+- Why it's hard to read, and how to do it: [Reading what your agent hands back](/reading-agent-output/).
 - Why agents lay their plans out at all: [Anthropic says agents should be transparent — so who reads what they lay out?](/agent-transparency/)
 - What MarsDawn is, in one page: [the home page](/).
 

@@ -23,6 +23,7 @@ Thoughtworks の Birgitta Böckeler は、この違いをはっきりと言い�
 
 - このレビューが、なぜエージェント自身の context にとって安上がりなのか：[トークンを抑えたレビュー](/ja/token-efficient-review/)。
 - レビュー済みの文書を、ほかの人に渡す：[PDF を共有する](/ja/sharing-exported-pdfs/)。
+- なぜ読みにくいのか、どう読むか：[エージェントが返してくるものを読む](/ja/reading-agent-output/)。
 - なぜエージェントはそもそも計画を示すのか：[Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？](/ja/agent-transparency/)
 - MarsDawn とは何か、1ページで：[ホームページ](/ja/)。
 
