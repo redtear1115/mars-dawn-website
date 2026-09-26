@@ -559,7 +559,7 @@ def rule_path_escape_javascript(root):
 
 
 RULES = [
-    ("missing index.json", rule_missing_index, ["missing"]),
+    ("missing index.json", rule_missing_index, ["missing", "exists"]),
     ("malformed JSON", rule_malformed_json, ["not valid JSON"]),
     ("top level not an object", rule_top_level_not_object, ["top level must be a JSON object"]),
     ("schemaVersion is a boolean", rule_schema_version_bool, ["schemaVersion must be an integer"]),
@@ -613,24 +613,29 @@ RULES = [
 def self_test() -> int:
     failures = 0
 
-    # No public/themes/v1/ at all: mandatory now, must fail with its own message.
+    # No public/themes/v1/ at all: mandatory now, must fail with its own message. "missing" alone
+    # isn't distinctive: it's also in "index.json: missing, but v1/ exists" below, so deleting this
+    # branch's own code and falling through to that other message would still contain "missing" and
+    # pass. Require this branch's own words ("mandatory") instead.
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp) / "public"
         root.mkdir()
         problems = check(root)
-        if len(problems) != 1 or "missing" not in problems[0]:
-            print(f"self-test: an absent themes/v1/ should fail with 'missing', got {problems}")
+        if len(problems) != 1 or "mandatory" not in problems[0]:
+            print(f"self-test: an absent themes/v1/ should fail with 'mandatory', got {problems}")
             failures += 1
 
-    # A directory present with an extra file but no index.json: must fail, and say so.
+    # A directory present with an extra file but no index.json: must fail, and say so. Require
+    # "exists" too (present only in this message, not in the absent-v1/ one above), so this can't
+    # be satisfied by the wrong branch's message just because both happen to say "missing".
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp) / "public"
         themes_dir = root / "themes" / "v1"
         themes_dir.mkdir(parents=True)
         (themes_dir / "some-theme").mkdir()
         problems = check(root)
-        if not problems or not any("missing" in p for p in problems):
-            print(f"self-test: themes/v1/ present without index.json should fail with 'missing', got {problems}")
+        if not problems or not any("missing" in p and "exists" in p for p in problems):
+            print(f"self-test: themes/v1/ present without index.json should fail with 'missing' and 'exists', got {problems}")
             failures += 1
 
     # Unbroken fixture must pass first.
