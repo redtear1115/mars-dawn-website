@@ -745,6 +745,13 @@ html { overflow-x: hidden; }
   --chrome-divider: light-dark(#E9E9E9, #000000);
   /* A menu's highlighted item, in the system's default accent, as macOS draws it. */
   --chrome-select: light-dark(#0A82FF, #0A84FF);
+  /* Liquid-glass hint tokens (issue #87): warm, Dawn-leaning tints for the title bar
+     fill and its bright rim/specular, built from the window's own chrome-bg (so they
+     still follow the light/dark/system appearance choice, not the document theme)
+     mixed with the hero's own dawn colours — never a cold iOS grey. */
+  --chrome-glass: color-mix(in srgb, var(--chrome-bg) 75%, light-dark(var(--dawn-glow), var(--dawn-sky-3)) 25%);
+  --chrome-glass-edge: color-mix(in srgb, light-dark(var(--dawn-limb), var(--dawn-glow)) 60%, transparent);
+  --chrome-glass-specular: light-dark(color-mix(in srgb, #FFFFFF 60%, transparent), color-mix(in srgb, var(--dawn-limb) 35%, transparent));
   --mdw-width: max(100%, var(--w-media));
   margin: 0 calc((100% - var(--mdw-width)) / 2);
   /* A macOS window's own corner, not a plate's. */
@@ -798,6 +805,30 @@ html { overflow-x: hidden; }
   white-space: nowrap;
   font-weight: 650;
   font-size: 15px;
+}
+/* Liquid-glass hint (macOS 26, issue #87): title bar + outer rim only. The dawn scene
+   shows through the blurred bar; every content pane (.mdw-source / .mdw-preview, both
+   below) stays the solid --bg paper set above, so text keeps its AA contrast — this
+   block never touches them. Skipped under Reduced Motion or below 700px, and wherever
+   the browser has no backdrop-filter: the opaque chrome above is then the whole
+   design, not a broken fallback of it. */
+@media (min-width: 700px) and (prefers-reduced-motion: no-preference) {
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .mdw {
+      box-shadow: 0 0 0 1px var(--chrome-glass-edge),
+                  0 40px 64px -28px color-mix(in srgb, #000 70%, transparent),
+                  0 14px 28px -14px color-mix(in srgb, #000 55%, transparent);
+    }
+    .mdw-bar {
+      background: color-mix(in srgb, var(--chrome-glass) 45%, transparent);
+      -webkit-backdrop-filter: blur(28px) saturate(1.4);
+      backdrop-filter: blur(28px) saturate(1.4);
+      border-bottom: 1px solid color-mix(in srgb, var(--chrome-glass-edge) 70%, transparent);
+      /* The bright edge's "lighter on top": a specular line along the bar's own top,
+         which is the window's top edge. */
+      box-shadow: inset 0 1px 0 var(--chrome-glass-specular);
+    }
+  }
 }
 .mdw svg { display: block; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 .mdw-pill, .mdw-themes > summary, .mdw-layouts {
