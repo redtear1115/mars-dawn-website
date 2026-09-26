@@ -8,6 +8,7 @@ A reference for AI agents and scripts that call the `marsdawn` command-line tool
 
 - `export` renders one Markdown file to a paginated PDF with the same exporter as the MarsDawn app. No window opens.
 - `open` opens one or more Markdown files in the MarsDawn app, so a person can review them, and can name the line each file should land on.
+- `open --folder <path>` also asks MarsDawn to show a folder in the window's sidebar, alongside any files, and, from an app that reports back, waits to say what happened to it.
 
 ## What it does not do
 
@@ -73,6 +74,27 @@ Success, exit code 0:
 
 marsdawn 0.2.x printed `opened` as a list of path strings. Check `marsdawn --version` if you need to handle both.
 
+## Showing a folder
+
+```
+marsdawn open . --folder . --json
+```
+
+`--folder <path>` (or a folder passed as one of the file arguments, as above) asks MarsDawn to show that folder in the window's sidebar too, alongside any files. A window's sidebar shows one folder, so naming two is a usage error. An app that can't show a folder refuses before opening anything, exit code 6 (`app_cannot_open_folders`); files on their own still open as usual.
+
+Success, exit code 0:
+
+```
+{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/notes","requested":true,"status":"attached"},"ok":true,"opened":[]}
+```
+
+- `folder.path`: absolute path of the folder.
+- `folder.requested`: always `true` — `open` handed the folder to MarsDawn and returned.
+- `folder.status`: present only from a MarsDawn that reports back (marsdawn 0.5.3 and later, paired with an app that declares it) and a `--wait` above 0. One of `attached`, `needsUser` (see `waitingFor`), `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable`, or `unknown` (the app didn't answer before `--wait` ran out — try again with a longer `--wait`, or treat it as "don't know"). `needsUser` means the user has to act: don't retry, just tell them.
+- `folder.waitingFor`: present only alongside `status: "needsUser"`: `confirmation` or `folderChoice`.
+- `--wait <seconds>`: how long to wait for the app's report, 0–30, default 2. `--wait 0`, or an older MarsDawn that doesn't report back, skips waiting: `folder` only ever carries `path` and `requested: true`, the same as before this existed.
+- A `--wait` value ArgumentParser can parse as a number but outside 0–30 is a usage error, exit 64, with `error: wait_out_of_range` in `--json`. Write a negative value as `--wait=-1`, not `--wait -1`: with a space, ArgumentParser reads it as another flag and gives its own plain usage error instead (still exit 64, but no `wait_out_of_range`).
+
 ## Failures
 
 With `--json`, a failure prints one JSON object on stdout and exits with its code:
@@ -85,7 +107,8 @@ With `--json`, a failure prints one JSON object on stdout and exits with its cod
 - `3`, `app_not_installed`: MarsDawn isn't installed. Only `open` returns this.
 - `4`, `output_exists`: the output file exists. Pass `--force`.
 - `5`, `export_failed`: the export itself failed.
-- `64`: usage error, such as an unknown option, an invalid value, a line out of range or `--line` with more than one file. This one is printed as text on stderr, even with `--json`.
+- `6`, `app_cannot_open_folders`: this MarsDawn can't show a folder, so nothing was opened. Only `open` returns this.
+- `64`: usage error, such as an unknown option, an invalid value, a line out of range, `--line` with more than one file, or (only for `--folder`) `--wait` out of range. This one is printed as text on stderr, even with `--json` — except `wait_out_of_range`, which does print as JSON.
 
 ## JSON Schemas
 

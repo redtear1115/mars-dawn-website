@@ -21,6 +21,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 - 用 `marsdawn export … --json` 匯出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。
 - 依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。
 - 只有裝了 MarsDawn app 才用 `open`，而且絕不用它來做 PDF。
+- 同時被要求顯示資料夾（`--folder`）時，讀取 MarsDawn 自己回報的結果，使用者需要處理時就告訴使用者，而不是重試。
 
 ## 它不會做的事
 

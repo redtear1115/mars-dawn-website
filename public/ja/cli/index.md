@@ -43,8 +43,9 @@ marsdawn open notes.md --line 120
 - 行番号は 1 から 999999999 までです。
 - MarsDawn 1.0 はその行にジャンプしてファイルを開きます。
 - `--json`：テキストではなく JSON の結果を出力します。
+- `--folder <path>`（またはフォルダを直接指定）：そのフォルダもウインドウのサイドバーに、ファイルと並べて表示します。フォルダを表示できるアプリが必要で、そうでなければ何も開く前にコード 6 で終了します。報告してくるアプリでは、`--wait <seconds>`（0 から 30、デフォルト 2）で結果を待つ時間を指定します。
 
-行の指定は marsdawn 0.3.0 で追加されました。
+行の指定は marsdawn 0.3.0 で追加されました。`--folder` は 0.5.1 から、その報告結果は 0.5.3 から追加され、詳細は[AI エージェント向け marsdawn](/ja/cli/agents/)にあります。
 
 ### marsdawn export
 
@@ -78,11 +79,12 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 | `3` | MarsDawn がインストールされていない（`open` のみ）。 | アプリをインストールするか、アプリが不要な `export` を使う |
 | `4` | 出力先がすでに存在する（`--force` を指定してください）。 | `--force` で上書きするか、`-o` で別の場所に書き出す |
 | `5` | 書き出しに失敗。 | JSON の結果の `message` を読む |
-| `64` | 使用方法のエラー。範囲外の行や、複数ファイルに対する `--line` の指定などを含みます。 | オプションや値を直す。このエラーは `--json` を付けても stderr にテキストで出力される |
+| `6` | MarsDawn がフォルダを表示できない（`open --folder` のみ）。 | フォルダを表示できるアプリを使うか、`--folder` を外す |
+| `64` | 使用方法のエラー。範囲外の行、複数ファイルに対する `--line` の指定、範囲外の `--wait` などを含みます。 | オプションや値を直す。このエラーは `--json` を付けても stderr にテキストで出力される |
 
 ## --json 出力
 
-成功時、`marsdawn open --json` は `ok`、`opened`（各ファイルの `path`、行が指定されていれば `line` も含む）、`app`（アプリのパス）を出力します。`marsdawn export --json` は `ok`、`output`、`pages`、`theme`、`paper`、`diagramErrors` を出力します。失敗時はどちらも `ok`、`error`、`message` を出力します。
+成功時、`marsdawn open --json` は `ok`、`opened`（各ファイルの `path`、行が指定されていれば `line` も含む）、`app`（アプリのパス）、そして `--folder` でフォルダを指定したときの `folder`（その `path`、`requested: true`、報告してくるアプリではさらに `status`）を出力します。`marsdawn export --json` は `ok`、`output`、`pages`、`theme`、`paper`、`diagramErrors` を出力します。失敗時はどちらも `ok`、`error`、`message` を出力します。
 
 ## その他
 

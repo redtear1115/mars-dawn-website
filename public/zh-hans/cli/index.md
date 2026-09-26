@@ -43,8 +43,9 @@ marsdawn open notes.md --line 120
 - 行号范围是 1 到 999999999。
 - MarsDawn 1.0 会打开文件，并跳到指定的行。
 - `--json`：输出 JSON 结果，而不是文本。
+- `--folder <path>`（或直接给一个文件夹）：也会在窗口的侧栏显示那个文件夹，和文件并列。需要能显示文件夹的 app，否则会在打开任何东西之前就以代码 6 结束。从会回报的 app，`--wait <seconds>`（0 到 30，默认 2）决定要等多久才知道结果。
 
-行号功能从 marsdawn 0.3.0 开始提供。
+行号功能从 marsdawn 0.3.0 开始提供。`--folder` 从 0.5.1 开始；它回报的结果从 0.5.3 开始，完整说明在[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。
 
 ### marsdawn export
 
@@ -78,11 +79,12 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 | `3` | 尚未安装 MarsDawn（只有 `open` 会用到）。 | 安装 app，或改用不需要 app 的 `export` |
 | `4` | 输出文件已存在（可加上 `--force`）。 | 加上 `--force` 覆盖，或用 `-o` 写到别处 |
 | `5` | 导出失败。 | 读 JSON 结果里的 `message` |
-| `64` | 使用方式错误，包括行号超出范围，或 `--line` 搭配了多个文件。 | 修正选项或值；这种错误以文本输出到 stderr，即使加了 `--json` 也一样 |
+| `6` | MarsDawn 不能显示文件夹（只有 `open --folder` 会用到）。 | 改用能显示文件夹的 app，或不要用 `--folder` |
+| `64` | 使用方式错误，包括行号超出范围、`--line` 搭配了多个文件，或 `--wait` 超出范围。 | 修正选项或值；这种错误以文本输出到 stderr，即使加了 `--json` 也一样 |
 
 ## --json 输出
 
-成功时，`marsdawn open --json` 会输出 `ok`、`opened`（每个文件的 `path`，有指定行号时另含 `line`）与 `app`（App 路径）；`marsdawn export --json` 会输出 `ok`、`output`、`pages`、`theme`、`paper` 与 `diagramErrors`。失败时两者都会输出 `ok`、`error` 与 `message`。
+成功时，`marsdawn open --json` 会输出 `ok`、`opened`（每个文件的 `path`，有指定行号时另含 `line`）、`app`（App 路径），以及有指定 `--folder` 时的 `folder`（它的 `path`、`requested: true`，从会回报的 app 还有 `status`）；`marsdawn export --json` 会输出 `ok`、`output`、`pages`、`theme`、`paper` 与 `diagramErrors`。失败时两者都会输出 `ok`、`error` 与 `message`。
 
 ## 其他页面
 

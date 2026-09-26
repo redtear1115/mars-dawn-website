@@ -100,8 +100,9 @@ marsdawn open notes.md --line 120</code></pre>
   <li>行番号は 1 から 999999999 までです。</li>
   <li>MarsDawn 1.0 はその行にジャンプしてファイルを開きます。</li>
   <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
+  <li><code>--folder &lt;path&gt;</code>（またはフォルダを直接指定）：そのフォルダもウインドウのサイドバーに、ファイルと並べて表示します。フォルダを表示できるアプリが必要で、そうでなければ何も開く前にコード 6 で終了します。報告してくるアプリでは、<code>--wait &lt;seconds&gt;</code>（0 から 30、デフォルト 2）で結果を待つ時間を指定します。</li>
 </ul>
-<p>行の指定は marsdawn 0.3.0 で追加されました。</p>
+<p>行の指定は marsdawn 0.3.0 で追加されました。<code>--folder</code> は 0.5.1 から、その報告結果は 0.5.3 から追加され、詳細は<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>にあります。</p>
 
 <h3>marsdawn export</h3>
 <p>Markdown ファイルを、MarsDawn 自身の PDF 書き出しと同じ書き出しエンジンで、ページ分割された PDF にレンダリングします。MarsDawn アプリは不要です。相対パスの画像は、入力ファイルのあるフォルダを基準に解決されます。</p>
@@ -130,12 +131,13 @@ marsdawn open notes.md --line 120</code></pre>
   <tr><th scope="row"><code>3</code></th><td data-label="意味">MarsDawn がインストールされていない（<code>open</code> のみ）。</td><td data-label="対処">アプリをインストールするか、アプリが不要な <code>export</code> を使う</td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="意味">出力先がすでに存在する（<code>--force</code> を指定してください）。</td><td data-label="対処"><code>--force</code> で上書きするか、<code>-o</code> で別の場所に書き出す</td></tr>
   <tr><th scope="row"><code>5</code></th><td data-label="意味">書き出しに失敗。</td><td data-label="対処">JSON の結果の <code>message</code> を読む</td></tr>
-  <tr><th scope="row"><code>64</code></th><td data-label="意味">使用方法のエラー。範囲外の行や、複数ファイルに対する <code>--line</code> の指定などを含みます。</td><td data-label="対処">オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される</td></tr>
+  <tr><th scope="row"><code>6</code></th><td data-label="意味">MarsDawn がフォルダを表示できない（<code>open --folder</code> のみ）。</td><td data-label="対処">フォルダを表示できるアプリを使うか、<code>--folder</code> を外す</td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="意味">使用方法のエラー。範囲外の行、複数ファイルに対する <code>--line</code> の指定、範囲外の <code>--wait</code> などを含みます。</td><td data-label="対処">オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される</td></tr>
 </tbody>
 </table></div>
 
 <h2 id="json-output">--json 出力</h2>
-<p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含む）、<code>app</code>（アプリのパス）を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時はどちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>
+<p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含む）、<code>app</code>（アプリのパス）、そして <code>--folder</code> でフォルダを指定したときの <code>folder</code>（その <code>path</code>、<code>requested: true</code>、報告してくるアプリではさらに <code>status</code>）を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時はどちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="サイト">

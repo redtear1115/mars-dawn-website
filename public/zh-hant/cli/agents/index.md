@@ -8,6 +8,7 @@
 
 - `export`：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。
 - `open`：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人審閱，也可以指定每個檔案要定位的行。
+- `open --folder <path>`：也會請 MarsDawn 在視窗的側欄顯示一個資料夾，和檔案並列；從會回報的 app，還會等著說出那個資料夾的下場。
 
 ## 不做什麼
 
@@ -73,6 +74,27 @@ marsdawn open notes.md --line 120 --json
 
 marsdawn 0.2.x 的 `opened` 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 `marsdawn --version`。
 
+## 顯示資料夾
+
+```
+marsdawn open . --folder . --json
+```
+
+`--folder <path>`（或像上面一樣，把資料夾當成檔案參數之一傳入）會請 MarsDawn 同時在視窗的側欄顯示那個資料夾，和檔案並列。一個視窗的側欄只能顯示一個資料夾，所以給兩個是用法錯誤。無法顯示資料夾的 app 會在開啟任何東西之前就拒絕，離開代碼 6（`app_cannot_open_folders`）；單獨的檔案仍會照常開啟。
+
+成功，離開代碼 0：
+
+```
+{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/notes","requested":true,"status":"attached"},"ok":true,"opened":[]}
+```
+
+- `folder.path`：資料夾的絕對路徑。
+- `folder.requested`：一律是 `true`——`open` 把資料夾交給 MarsDawn 之後就回傳了。
+- `folder.status`：只有 MarsDawn 會回報結果（marsdawn 0.5.3 以後，且搭配宣告支援的 app）、且 `--wait` 大於 0 時才會有。可能是 `attached`、`needsUser`（見 `waitingFor`）、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable`，或 `unknown`（app 在 `--wait` 到期前沒有回應——可以用更長的 `--wait` 再試一次，或當成「不知道」處理）。`needsUser` 代表使用者得自己處理：不要重試，直接告訴使用者。
+- `folder.waitingFor`：只有在 `status` 是 `"needsUser"` 時才會有：`confirmation` 或 `folderChoice`。
+- `--wait <seconds>`：等待 app 回報的秒數，0 到 30，預設 2。`--wait 0`，或不會回報的舊版 MarsDawn，都會跳過等待：`folder` 只會有 `path` 和 `requested: true`，和這個功能出現以前一樣。
+- ArgumentParser 能解析成數字、但超出 0 到 30 的 `--wait` 值是用法錯誤，離開代碼 64，`--json` 中會有 `error: wait_out_of_range`——負值請寫成 `--wait=-1`，不要寫 `--wait -1`，否則 ArgumentParser 會把它當成另一個旗標，改印出自己的用法錯誤（一樣是 64，但不會有 `wait_out_of_range`）。
+
 ## 失敗
 
 加上 `--json` 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：
@@ -85,7 +107,8 @@ marsdawn 0.2.x 的 `opened` 是路徑字串的清單。如果需要同時處理�
 - `3`，`app_not_installed`：沒有安裝 MarsDawn。只有 `open` 會回傳這個代碼。
 - `4`，`output_exists`：輸出檔已存在，請加上 `--force`。
 - `5`，`export_failed`：匯出本身失敗。
-- `64`：用法錯誤，例如未知的選項、無效的值、行號超出範圍，或 `--line` 搭配了多個檔案。這種錯誤一律以文字輸出到 stderr，即使加了 `--json` 也一樣。
+- `6`，`app_cannot_open_folders`：這個 MarsDawn 不能顯示資料夾，所以什麼都沒有開啟。只有 `open` 會回傳這個代碼。
+- `64`：用法錯誤，例如未知的選項、無效的值、行號超出範圍、`--line` 搭配了多個檔案，或（只有 `--folder` 才會）`--wait` 超出範圍。這種錯誤一律以文字輸出到 stderr，即使加了 `--json` 也一樣——但 `wait_out_of_range` 例外，它會印成 JSON。
 
 ## JSON Schema
 
