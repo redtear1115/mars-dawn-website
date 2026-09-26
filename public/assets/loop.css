@@ -238,9 +238,9 @@
 .loop-d-c { animation-name: loop-a-glow; }
 /* Scene colours, light and night, from the kit's Dawn theme (hero_sources.json): code is the
    theme's string colour, a flow node sits on its surface. The rest reuse the --lw-* palette. */
-.loop-stage { --lw-code: #2F6F5E; --lw-node: #FFF7F4; --lw-node-edge: #E39A86; --lw-muted: #6F6660; }
+.loop-stage { --lw-code: #2F6F5E; --lw-node: #FFF7F4; --lw-node-edge: #D66A4D; --lw-muted: #6F6660; }
 @media (prefers-color-scheme: dark) {
-  .loop-stage { --lw-code: #7FD1B9; --lw-node: #262229; --lw-node-edge: #8E5238; --lw-muted: #A39992; }
+  .loop-stage { --lw-code: #7FD1B9; --lw-node: #262229; --lw-node-edge: #A15D3F; --lw-muted: #A39992; }
 }
 .loop-code { color: var(--lw-code); }
 
