@@ -886,6 +886,11 @@ html { overflow-x: hidden; }
      Reduced Motion, not on Reduced Transparency, so it would otherwise still apply
      here even though the bar itself has gone back to fully opaque. */
   .mdw-title { color: var(--chrome-ink); }
+  /* Same reasoning: the glass block's .mdw-panes background is gated on width +
+     Reduced Motion too, so its own @media still matches under Reduced Transparency
+     and would otherwise keep painting .mdw-panes here, when .mdw itself (above) has
+     already gone back to fully opaque and needs no help from .mdw-panes. */
+  .mdw-panes { background: none; }
 }
 .mdw svg { display: block; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 .mdw-pill, .mdw-themes > summary, .mdw-layouts {
