@@ -752,9 +752,16 @@ html { overflow-x: hidden; }
      kept --bg, an opaque, theme-dependent paint, directly behind the bar, so the "scene"
      the blur saw was always flat and the tint leaked the document theme). The edge and
      specular are a fixed warm cream, not the ember/dawn-glow accent, so the rim never
-     reads as a brand-coloured outline. */
-  --chrome-glass: color-mix(in srgb, var(--chrome-bg) 35%, transparent);
-  --chrome-glass-bar: color-mix(in srgb, var(--chrome-bg) 30%, transparent);
+     reads as a brand-coloured outline.
+     v3 fix: 35%/30% read as a grey-mauve bar over the night sky and put the title text
+     (--chrome-ink) below AA — some of the dawn scene is genuinely near-black, and no
+     small amount of white can lift ink-on-near-black to 4.5:1. 60%/70% is the lowest
+     pair that keeps the worst real sample (measured across the bar, clear of the title
+     glyphs) at or above 4.5:1 in light (dark was already comfortably past it), while
+     still leaving well over 100 distinct sampled colours — the scene still visibly
+     varies across the bar, just from behind a whiter glass. */
+  --chrome-glass: color-mix(in srgb, var(--chrome-bg) 60%, transparent);
+  --chrome-glass-bar: color-mix(in srgb, var(--chrome-bg) 70%, transparent);
   --chrome-glass-edge: color-mix(in srgb, #FFE9C7 45%, transparent);
   --chrome-glass-edge-soft: color-mix(in srgb, #FFE9C7 22%, transparent);
   --chrome-glass-specular: color-mix(in srgb, #FFE9C7 40%, transparent);
@@ -980,6 +987,13 @@ html { overflow-x: hidden; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: var(--mdw-panes-height);
+  /* Its own opaque base coat (issue #87 round 3, verify2 B): the bottom fade below
+     masks each pane's own opaque background too, so without this the fade reveals
+     whatever is behind .mdw-panes — which, once .mdw's own background became
+     translucent for the glass hint, is the dawn scene, not paper. This restores
+     exactly what the fade always revealed pre-glass hint (--bg), independent of
+     .mdw's own background. */
+  background: var(--bg);
 }
 .mdw-panes > * {
   overflow: hidden;
