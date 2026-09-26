@@ -1315,6 +1315,13 @@ html { overflow-x: hidden; }
 .toc li + li { margin-top: 0; }
 :target { scroll-margin-top: 20px; }
 
+/* ---- Markdown-source link, after a kit-rendered page's body -------------- */
+.markdown-source {
+  margin-top: 32px;
+  font-size: 0.9rem;
+  color: var(--dust);
+}
+
 .gallery-note {
   margin: -14px 0 18px;
   color: var(--dust);

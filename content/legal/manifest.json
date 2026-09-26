@@ -20,6 +20,26 @@
       "rendered": "privacy.zh-hant.rendered.html",
       "rendered_sha256": "ae23360c13e389b19b85cc20e88aa3442a271694277a44624197066527e13735",
       "source_sha256": "a95150d258976fceaab415660fac2137c157473f891d3d4c3a187e9c995db59a"
+    },
+    "support.en.md": {
+      "rendered": "support.en.rendered.html",
+      "rendered_sha256": "96cbedfbf6351b3f712d9b6b0af629860f51c0d75ba5e49859dcdddc0255d542",
+      "source_sha256": "f9494356f53aa1bfad51540336b238f62bfa40c28182e674e58ac9f7a4c6b3b3"
+    },
+    "support.ja.md": {
+      "rendered": "support.ja.rendered.html",
+      "rendered_sha256": "2fc4d74d2c0af798481138c548c98cb874b6c687e27ff287e2826044a92a818e",
+      "source_sha256": "7525fb3da3582d00103cb07a6f548783062622939eb2d92012d1c6c85033a447"
+    },
+    "support.zh-hans.md": {
+      "rendered": "support.zh-hans.rendered.html",
+      "rendered_sha256": "2705fb02cc7237e46bd430107fc4c01b741ac25ad13ffc237571cd7ab9275298",
+      "source_sha256": "70a055c60fd056439e4947b69d040e12796e2dc8b7803b9a463211aed2731ccb"
+    },
+    "support.zh-hant.md": {
+      "rendered": "support.zh-hant.rendered.html",
+      "rendered_sha256": "1960dc0ac037fd398a5695c2da127eefd70fe1ab849070e5086e403f3c69cc84",
+      "source_sha256": "5779c3532ac11ef3252bc6455cd7455ae8341f33d965b27c2cacc5ae7d08b904"
     }
   },
   "preview_css_sha256": "b9914e6171ba2a7e7bda1a48f54d0506bee45ae8e088e08c84e62022a845d8bd",
