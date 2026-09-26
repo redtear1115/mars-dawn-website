@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>編者的閱讀筆記 · MarsDawn</title>
+<meta name="description" content="六篇短筆記，談打造 AI agent 的人實際主張了什麼——Anthropic、Chip Huyen、Lilian Weng、Harrison Chase、LangChain 與 Andrew Ng——以及這些主張對「要讀 agent 交回來的東西」的人分別意味著什麼。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/reading-notes/index.md">
+<meta property="og:title" content="編者的閱讀筆記 · MarsDawn">
+<meta property="og:description" content="六篇短筆記，談打造 AI agent 的人實際主張了什麼——Anthropic、Chip Huyen、Lilian Weng、Harrison Chase、LangChain 與 Andrew Ng——以及這些主張對「要讀 agent 交回來的東西」的人分別意味著什麼。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/reading-notes/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">即將在 Mac App Store 上架</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>編者的閱讀筆記</h1>
+  <p>有六個人寫過 AI agent 是怎麼運作的：agent 是什麼組成的、什麼樣才算「agentic」、哪些設計模式真的撐得住、哪些還不成熟。他們都沒有寫過「怎麼讀 agent 交回來的東西」，也都沒有提到 MarsDawn 或推薦任何 Markdown 工具。我們照每篇文章自己的脈絡去讀，清楚標出我們自己的解讀從哪裡開始，然後對每個來源問同一個問題：因為這篇文章講的東西，最後會有什麼檔案落進你的資料夾？讀那份檔案的時候，MarsDawn 幫得上什麼忙？</p>
+</section>
+
+<p>想先看實用一點的版本，可以從〈<a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a>〉和〈<a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>〉開始。這六篇筆記比那兩頁更貼近原始文章；每一篇都能單獨讀，順序不拘。</p>
+
+<ul>
+  <li>〈<a href="/zh-hant/reading-notes/anthropic-building-effective-agents/">Anthropic 把 workflow 和 agent 分開來看，你的閱讀落在哪一邊？</a>〉&#8212;&#8212;Anthropic 寫給打造 agent 的人的指南，把固定的流程和自己決定下一步的模型分開來，還描述了一種「審查者」其實是另一次 LLM 呼叫、不是人的 workflow。</li>
+  <li>〈<a href="/zh-hant/reading-notes/chip-huyen-agents/">Chip Huyen 的 read-only／write action 分類，核准前為什麼要看它</a>〉&#8212;&#8212;她對 agent 的簡單定義，以及「只是看」和「會改變東西」這兩種動作的差別，正好是五分鐘審閱最該花時間的地方。</li>
+  <li>〈<a href="/zh-hant/reading-notes/lilian-weng-llm-agents/">Lilian Weng 2023 年畫的 agent 藍圖，每個部件會留下什麼檔案</a>〉&#8212;&#8212;大腦、規劃、記憶、工具使用：她自己對 agent 組成的架構，以及她點名的一個限制：計畫遇到意外時不太會調整。</li>
+  <li>〈<a href="/zh-hant/reading-notes/harrison-chase-what-is-an-agent/">Harrison Chase 的 agentic 光譜：愈自主，愈需要盯著看</a>〉&#8212;&#8212;他對 agent 的技術定義，以及他自己主張的：系統愈往光譜的自主那端走，就愈需要看得到系統內部。</li>
+  <li>〈<a href="/zh-hant/reading-notes/langchain-what-is-an-agent/">Jess Ou 的評測流程，裡面還留給你的那一步</a>〉&#8212;&#8212;2026 年 7 月，LangChain 在 Harrison Chase 2024 年那篇文章原本的網址上，發表了 Jess Ou 寫的新版〈What is an AI agent?〉；她的定義幾乎和他的一字不差，接下來也講清楚自動化評測到哪裡為止，剩下的還是要人來做。</li>
+  <li>〈<a href="/zh-hant/reading-notes/andrew-ng-design-patterns/">Andrew Ng 自己幫四種設計模式的可預測程度排序</a>〉&#8212;&#8212;在 The Batch 的五篇文章裡，他直接說出自己覺得哪些模式比較可靠、哪些難以預測。</li>
+</ul>
+
+<p>這六篇文章都沒有主張「應該更仔細審閱 agent 的產出」，也都不是在談 MarsDawn。這個連結是我們自己畫的，每篇筆記都會這樣說清楚。</p>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="網站">
+    <a href="/zh-hant/support/">支援</a>
+    <a href="/zh-hant/privacy/">隱私權政策</a>
+    <a href="/zh-hant/cli/">命令列工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

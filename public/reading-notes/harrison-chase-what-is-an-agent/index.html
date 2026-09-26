@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harrison Chase's spectrum: the more agentic it is, the more you'll want to watch it · MarsDawn</title>
+<meta name="description" content="Harrison Chase's 2024 definition of an agent and his spectrum of agentic behavior, and his case for observability as a system moves along it — read from the side of whoever reads the file it hands back.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="alternate" type="text/markdown" href="/reading-notes/harrison-chase-what-is-an-agent/index.md">
+<meta property="og:title" content="Harrison Chase's spectrum: the more agentic it is, the more you'll want to watch it · MarsDawn">
+<meta property="og:description" content="Harrison Chase's 2024 definition of an agent and his spectrum of agentic behavior, and his case for observability as a system moves along it — read from the side of whoever reads the file it hands back.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/reading-notes/harrison-chase-what-is-an-agent/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/harrison-chase-what-is-an-agent/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/reading-notes/harrison-chase-what-is-an-agent/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/harrison-chase-what-is-an-agent/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/harrison-chase-what-is-an-agent/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Harrison Chase's spectrum: the more agentic it is, the more you'll want to watch it</h1>
+</section>
+
+<div class="summary"><p><strong>In June 2024, LangChain's Harrison Chase opened a new series with a deceptively small question &#8212; &#8220;What is an agent?&#8221; &#8212; and answered it with a technical definition and a spectrum of &#8220;agentic&#8221; behavior. The more of that spectrum a system occupies, he argues, the more you need to be able to see inside it while it runs.</strong></p></div>
+
+<h2 id="what-the-post-argues">What the post argues</h2>
+<p>Chase's own definition, offered with a caveat that it's more technical, and broader, than most people's idea of an agent:</p>
+<blockquote><p>&#8220;An agent is a system that uses an LLM to decide the control flow of an application.&#8221;</p></blockquote>
+<p>Control flow just means which step a program runs next. He immediately admits the definition is imperfect &#8212; a simple system where an LLM routes between two paths counts as an agent by his definition but wouldn't match most people's intuition of &#8220;agent.&#8221; Rather than fight over the label, he takes up a suggestion from Andrew Ng, whose tweet he quotes and credits directly: &#8220;rather than arguing over which work to include or exclude as being a true agent, we can acknowledge that there are different degrees to which systems can be agentic.&#8221; Chase's own comment on it:
+&#8220;I really agree with this viewpoint and I think Andrew expressed it nicely.&#8221; From there: a system is more &#8220;agentic&#8221; the more an LLM decides how it behaves, from a fixed router up through a state machine to a fully autonomous agent that builds and remembers its own tools. His practical argument follows from that spectrum &#8212; the more agentic a system is, the more certain kinds of infrastructure matter, observability chief among them:</p>
+<blockquote><p>&#8220;You&#8217;ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.&#8221;</p></blockquote>
+<p>He extends that into an argument for intervening, not just watching: you'll also want the ability to modify the state or instructions of a running agent at a particular point, to nudge it back on track if it's drifting from the intended path. Chase doesn't mention MarsDawn anywhere in this post, and doesn't recommend any Markdown tool.</p>
+
+<h2 id="our-reading-not-chase-s">Our reading, not Chase's</h2>
+<p>Chase is writing about tooling for people building agent frameworks &#8212; LangGraph and LangSmith, by name &#8212; not about a person reading a finished document. But his spectrum gives a useful way to size up what you're about to read before you start: the more agentic the system that produced a file, the less you should expect its steps to be predictable from the prompt alone, and the more the file in front of you is worth treating as a record of what actually happened rather than what was supposed to happen.
+His &#8220;observe what is going on inside&#8221; is about a running system's internals &#8212; traces (a recorded log of everything the agent did during one run), intermediate steps, tool calls &#8212; not about reading a Markdown plan after the fact. But the underlying reason he gives, that the exact steps taken may not be known ahead of time, applies just as well to the document an agent hands you when it's done: if the steps weren't predictable going in, the report coming out is the only place left to check them.</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">Where MarsDawn helps, and where it doesn't</h2>
+<p>MarsDawn doesn't observe a running agent's internals &#8212; it has no AI model inside and no connection to whatever framework produced the file, so it can't tell you where on Chase's spectrum a given agent sat. It works on the document that lands afterward: the Outline tab (View &#9656; Show Sidebar, &#8963;&#8984;S) for a long report's shape, the source and rendered preview side by side (&#8984;2) for diagrams and math, and live reload that keeps your place when the agent rewrites the file, as long as you have no unsaved edits of your own &#8212; the file-level version of watching something that's still moving. Edit &#9656; Copy Reference (&#8997;&#8984;C) and Copy for AI (&#8963;&#8997;&#8984;C) let you point at exactly where a step went off track, which is the document equivalent of nudging a running agent back on course.</p>
+
+<h2 id="try-it">Try it</h2>
+<p>MarsDawn is coming soon to the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>It exports Markdown to PDF without the app.</p>
+<p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
+
+<h2 id="next">Next</h2>
+<ul>
+  <li>This series' fuller treatment of transparency and checkpoints: <a href="/agent-transparency/">Anthropic says agents should be transparent &#8212; so who reads what they lay out?</a></li>
+  <li>LangChain's 2026 post at this same address, with an almost identical definition: <a href="/reading-notes/langchain-what-is-an-agent/">Jess Ou's evals pipeline, and the one step in it that's still yours</a></li>
+  <li>Back to the series: <a href="/reading-notes/">Editor's reading notes</a></li>
+</ul>
+
+<h2 id="sources">Sources</h2>
+<ul>
+  <li>Harrison Chase, &#8220;What is an agent?,&#8221; LangChain, June 28, 2024, archived copy: <a href="http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/">http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/</a> (fetched and quoted 2026-09-26 via the Wayback Machine; the original address now shows a 2026 article by Jess Ou).</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/support/">Support</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
+  </nav>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
