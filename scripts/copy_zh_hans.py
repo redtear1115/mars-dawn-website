@@ -7,7 +7,7 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 
 
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': 'MarsDawn 即将在 Mac App Store 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '输出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'changelog': '更新记录', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置'}
+    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': 'MarsDawn 即将在 Mac App Store 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '输出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置'}
     store_chip = '即将在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.3.0 以后', 'error': '两个命令的失败结果', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单'}
     example_plan = '# 计划：让输出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -113,6 +113,7 @@ def build(k) -> dict:
   <li><strong>你在 MarsDawn 里读。</strong>打开文件，看排版后的页面，Mermaid 图表和代码高亮都在，旁边就是源代码。</li>
   <li><strong>Agent 修改。</strong>提出修改意见，agent 改好之后，再打开来读一次。</li>
 </ol>
+<p><a href="/zh-hans/reading-agent-output/">如何审阅 agent 交回来的东西</a>。</p>
 """,
     }
     pages['cli'] = {
@@ -544,6 +545,7 @@ marsdawn --version</code></pre>
 <ul>
   <li>这样的审阅怎么不花 agent 自己的 context：<a href="/zh-hans/token-efficient-review/">节省 token 的审阅方式</a>。</li>
   <li>把审阅过的文稿交给别人：<a href="/zh-hans/sharing-exported-pdfs/">分享 PDF</a>。</li>
+  <li>agent 为什么要把计划摊开：<a href="/zh-hans/agent-transparency/">Anthropic 说 agent 要透明，那摊开的东西谁来读？</a></li>
   <li>MarsDawn 是什么，一页讲完：<a href="/zh-hans/">首页</a>。</li>
 </ul>
 """,
@@ -578,6 +580,7 @@ marsdawn --version</code></pre>
   <li>可以用哪些主题和布局导出：<a href="/zh-hans/themes/">预览主题与 PDF 导出</a>。</li>
   <li>从脚本或 agent 导出，而不是从 app：<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</li>
   <li>为什么还是要先有人读过这份文稿：<a href="/zh-hans/reviewing-ai-output/">审阅的理由</a>。</li>
+  <li>多 agent 交接常常就是要分享 PDF 的时候：<a href="/zh-hans/agent-design-patterns/">四种 agent 设计模式，各自会交给你什么文件</a>。</li>
 </ul>
 """,
     }
@@ -645,6 +648,7 @@ marsdawn --version</code></pre>
   <li>调用 marsdawn 的三种方式&#8212;&#8212;CLI、skill 文件、MCP 服务器：<a href="/zh-hans/cli/mcp/">三种入口</a>。</li>
   <li>JSON 结果的每个字段：<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</li>
   <li>为什么还是需要有人读 agent 写的东西：<a href="/zh-hans/reviewing-ai-output/">审阅的理由</a>。</li>
+  <li>更完整的理由和检查清单：<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>。</li>
 </ul>
 """,
     }
@@ -670,7 +674,7 @@ open notes.pdf</code></pre>
   <li>在访达里对 Markdown 文件按空格键，就有“快速查看”预览，图表也在。</li>
   <li>想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。</li>
 </ul>
-<p>如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看<a href="/zh-hans/">首页</a>，想让 agent 帮你开文件，请看<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</p>
+<p>如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看<a href="/zh-hans/">首页</a>，想让 agent 帮你开文件，请看<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。为什么这样的阅读重要、怎么审一份计划，请看<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>和<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>。</p>
 <h2>接下来</h2>
 <ul>
   <li>命令行工具的所有选项：<a href="/zh-hans/cli/">命令行工具</a>。</li>
@@ -753,6 +757,296 @@ open notes.pdf</code></pre>
 <p>完整说明请看<a href="/zh-hans/privacy/">隐私政策</a>。</p>
 """,
     }
+    pages['reading-agent-output'] = {
+        "title": "读懂 agent 交回来的 Markdown · MarsDawn",
+        "description": "AI agent 把工作成果交成 Markdown：计划、规格、进度报告。做 agent 的人怎么谈检查点和失败、这些产出为什么难读，以及五分钟审完一份计划的检查清单。",
+        "body": f"""
+<section class="intro">
+  <h1>agent 做完的工作，最后都变成一份你要读的 Markdown。</h1>
+  <p>你请 coding agent 规划一次数据库迁移、写一份规格，或追一个 bug。它自己跑了一阵子，交回来的是一个文件：<code>plan.md</code>、<code>SPEC.md</code>、一份进度报告，或一份研究摘要。你能检查的工作，全在这份文件里。</p>
+</section>
+
+<div class="summary"><p><strong>agent 有没有做对，要读过它交回来的东西才知道。MarsDawn 就是为这种阅读做的 Mac app。</strong></p></div>
+
+<h2>做 agent 的人怎么说</h2>
+<p>以下引文照原文，我们的解读放在最后。</p>
+<ul>
+  <li>Anthropic 的〈Building Effective Agents〉（Erik S. 与 Barry Zhang，2024 年 12 月）列出打造 agent 的三个核心原则，其中一条是“Prioritize transparency by explicitly showing the agent&#8217;s planning steps.”（优先重视透明度：明确展示 agent 的规划步骤。）这是写给开发 agent 的人的原则；站在你这边，这份透明就是你手上那份要读的计划。</li>
+  <li>同一篇也写到：“Agents can then pause for human feedback at checkpoints or when encountering blockers.”（Agent 可以在检查点或遇到阻碍时暂停，等待人类反馈。）注意原文用的是 <em>can</em>，可以，没有说必须。</li>
+  <li>Chip Huyen 在〈Agents〉（2025 年 1 月）解释为什么规划要和执行分开：“Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it&#8217;s not going anywhere.”（没有监督的话，agent 可能执行那些步骤好几个小时，在 API 呼叫上浪费时间和金钱，你才发现它根本没有进展。）她也描述了一种失败：“The agent is convinced that it&#8217;s accomplished a task when it hasn&#8217;t.”（Agent 深信自己已完成任务，但其实并没有。）请它把 50 个人分到 30 间饭店房间，它只排了 40 人，还坚称做完了。</li>
+  <li>Andrew Ng 在 The Batch（2024 年 4 月）谈 planning 这个设计模式：“On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results.”（一方面，规划是非常强大的能力；另一方面，它会导致较难预测的结果。）他讲的是可预测性，并没有呼吁要人工审阅，而且他相信规划能力很快会进步。</li>
+</ul>
+<p><strong>以下是我们的推论，不是作者的主张：</strong>agent 把计划摊开、在检查点停下来，那在检查点读计划的通常就是你。agent 可能以为自己做完了，那它的“完成报告”也得有人读过。上面这几位作者都没有提到 MarsDawn，也没有推荐 MarsDawn 或任何 Markdown 工具。</p>
+
+<h2>比看起来难读</h2>
+<p>文件很长，重要的地方很少在最上面。里面有 Mermaid 图表和数学式，看原始码很难跟上。你读到一半，agent 可能还在改写同一个文件。它通常不只交一个文件，有时还分散在不同的分支或 worktree。等你找到问题，说“缓存那段怪怪的”，agent 只能用猜的；说“<code>docs/plan.md:42</code> 在回填跑完前就把旧表删了”，它就知道要改哪里。</p>
+
+<h2>MarsDawn 帮得上忙的地方</h2>
+<ul>
+  <li><strong>文件很长：</strong>侧边栏（&#8963;&#8984;S）的“大纲”标签页列出所有标题，点一下，两边窗格都会跳过去。</li>
+  <li><strong>图表和数学式：</strong>Mermaid 和 KaTeX 直接画在预览里，和原始码并排（&#8984;2），两边一起卷动。</li>
+  <li><strong>读到一半被改写：</strong>agent 改写文件时，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。</li>
+  <li><strong>好几个文件：</strong>用“文件 &#9656; 打开文件夹&#8943;”（&#8679;&#8984;O）打开 agent 工作的文件夹，新文件大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树。</li>
+  <li><strong>反馈要准：</strong>“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）把目前位置拷贝成 <code>docs/plan.md:42</code>，“拷贝给 AI”（&#8963;&#8997;&#8984;C）会在下面附上你选取的文字，直接贴给 agent 就好。</li>
+</ul>
+<p>另外两件事也和这个循环有关：agent 可以执行 <code>marsdawn open plan.md:42</code>，在 MarsDawn 里帮你打开文件，直接停在第 42 行，也就是它想先让你看的那一行；审完的文件可以从 app 输出 PDF，也可以用免费的 <code>marsdawn export</code> 指令。</p>
+<p>MarsDawn 里没有 AI 模型。它不会帮你摘要计划、打分数，也不会告诉你哪里错了。读的人是你，它负责让又长又会变的文件保持好读，让你能准确指出是哪一行。</p>
+
+<h2>五分钟审完一份 agent 计划</h2>
+<p>用什么编辑器都适用。</p>
+<ol>
+  <li>先只看标题。大纲和你要求的对得上吗？少一段，通常就是少做一件事。</li>
+  <li>找出所有写着“完成”“通过”“已验证”的地方，挑一个自己查：打开那个文件、跑那个测试、数一下笔数。</li>
+  <li>找出做了就回不去的步骤：删资料、数据库迁移、force push，还有任何会寄出、付款或发布的动作。这些要等你明确点头。</li>
+  <li>图表要看画出来的样子，逐一对照每个箭头和文字说的是不是同一回事。</li>
+  <li>列出计划会动到的文件和系统。你没要求的部分，执行前先问清楚。</li>
+  <li>反馈写成“位置、问题、改法”：“<code>plan.md:88</code>：回填排在删表之后，第 4、5 步对调。”一行只讲一个问题。</li>
+</ol>
+<p>时间只够做一步的话，就做第 2 步吧。以为自己已经做完的 agent，多半是在这一步被抓到的。完整版本、附实际例子：<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>。</p>
+
+<h2>试试看</h2>
+<p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>它不需要 app 就能把 Markdown 输出成 PDF。app 上架之后，agent 也能用 <code>marsdawn open</code> 在 MarsDawn 里帮你打开文件。</p>
+<p><a href="/zh-hans/cli/">命令行工具</a> &#183; <a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
+
+<h2>接下来</h2>
+<ul>
+  <li>为什么 AI 写的东西还是需要人读，短一点的版本：<a href="/zh-hans/reviewing-ai-output/">为什么 AI 写的东西还是需要人读过</a>。</li>
+  <li>审阅时不占用 agent 的 context：<a href="/zh-hans/token-efficient-review/">节省 token 的审阅方式</a>。</li>
+  <li>agent 为什么要把计划摊开：<a href="/zh-hans/agent-transparency/">Anthropic 说 agent 要透明，那摊开的东西谁来读？</a></li>
+  <li>上面那份清单一步一步来，附实际例子：<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>。</li>
+  <li>不同类型的 agent 会交给你什么文件：<a href="/zh-hans/agent-design-patterns/">四种 agent 设计模式，各自会交给你什么文件</a>。</li>
+</ul>
+
+<h2>资料来源</h2>
+<ul>
+  <li>Erik S. 与 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：<a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> （引文依 2026-09-26 的线上版本；该文现已注明，文中提到的工具生态自 2024 年 12 月以来已有很多改变）</li>
+  <li>Chip Huyen，〈Agents〉，2025 年 1 月 7 日：<a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Andrew Ng，〈Agentic Design Patterns Part 4, Planning〉，The Batch，2024 年 4 月 10 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a></li>
+</ul>
+""",
+    }
+
+    pages['agent-transparency'] = {
+        "title": "Anthropic 说 agent 要透明，那摊开的东西谁来读？ · MarsDawn",
+        "description": "Anthropic 谈打造 agent 的指南要求透明：把规划步骤摊开来。它说了什么、没说什么，以及为什么这些步骤最后多半变成一份要有人读的 Markdown。",
+        "body": f"""
+<section class="intro">
+  <h1>Anthropic 说 agent 要透明，那摊开的东西谁来读？</h1>
+  <p>Anthropic 在 2024 年 12 月发表了〈Building Effective Agents〉，写给打造 AI agent 的人。文章的总结列出三个原则，其中一个是透明。这篇要谈的是这个原则的另一端：agent 把步骤摊开之后，总得有人去读。</p>
+</section>
+
+<div class="summary"><p><strong>透明是 agent 要做到的事，读是你要做的事。Anthropic 要求开发者把 agent 的规划步骤摊开；对大多数在驱动 coding agent 的人来说，这些步骤最后会变成一份 Markdown 文件，要有人在对的时间点读它。</strong></p></div>
+
+<h2>指南里写了什么</h2>
+<p>Erik S. 与 Barry Zhang 在总结里这样写：</p>
+<blockquote><p>&#8220;When implementing agents, we try to follow three core principles: Maintain simplicity in your agent's design. Prioritize transparency by explicitly showing the agent&#8217;s planning steps. Carefully craft your agent-computer interface (ACI) through thorough tool documentation and testing.&#8221;</p></blockquote>
+<p>（实作 agent 时，我们尽量遵守三个核心原则：让 agent 的设计保持简单；优先重视透明度，明确展示 agent 的规划步骤；通过完整的工具文件与测试，仔细打造 agent 与电脑之间的接口（ACI）。）</p>
+<p>这些是写给开发 agent 的人的设计原则，不是给使用者的操作指示。原则要求把步骤摊开，但没有说谁来读。</p>
+<p>同一篇也描述了 agent 拿到任务之后会做什么：“Once the task is clear, agents plan and operate independently, potentially returning to the human for further information or judgement.”（任务明确之后，agent 会自己规划、独立运作，必要时回头找人类要更多信息或判断。）还有：“Agents can then pause for human feedback at checkpoints or when encountering blockers.”（Agent 可以在检查点或遇到阻碍时暂停，等待人类反馈。）注意用词：<em>potentially</em>（必要时）和 <em>can</em>（可以）。检查点是 agent 可以有的设计，不是一定要有。</p>
+
+<h2>大部分的检查，不是你在做</h2>
+<p>这里很容易讲过头，所以先看指南真正放在前面的是什么。agent 会拿外界的结果来检查自己：“During execution, it's crucial for the agents to gain &#8220;ground truth&#8221; from the environment at each step (such as tool call results or code execution) to assess its progress.”（执行过程中，agent 必须在每一步从环境取得“ground truth”，例如工具呼叫的结果或程序执行的结果，用来评估自己的进度。）这句话里的 ground truth 指的是测试结果和工具输出，不是人。</p>
+<p>指南对风险也讲得很直接：“The autonomous nature of agents means higher costs, and the potential for compounding errors.”（Agent 的自主性意味着更高的成本，以及错误不断累积的可能。）它给的解方是在沙盒环境里大量测试、加上适当的防护，并没有说“要读得更仔细”。</p>
+<p>人真正出场，是在附录谈 coding agent 的段落：“However, whereas automated testing helps verify functionality, human review remains crucial for ensuring solutions align with broader system requirements.”（然而，自动化测试虽然有助于验证功能，但要确保解法符合更广泛的系统需求，人工审阅仍然至关重要。）这句讲的是代码。不过它点出的落差，用过 agent 的人都不陌生：测试能告诉你东西能动，不能告诉你那是不是你要的。</p>
+
+<h2>摊开的步骤，最后去了哪里</h2>
+<p><strong>以下是我们的解读，不是 Anthropic 的主张。</strong></p>
+<p>如果你每天都在用 coding agent，它的规划步骤通常不会出现在什么仪表板上，而是变成文件：<code>plan.md</code>、一份有勾选框的待办清单、一个 agent 一直在改写的进度档，最后再来一份总结。从你这边看，透明的意思就是要读的东西变多了。</p>
+<p>把步骤摊开，是 agent 那一半的责任。另一半，是有人在关键时刻读它：数据库迁移执行之前、分支合并之前、接受“做完了”之前。一个 agent 把所有东西都写进一份 600 行、没人打开的文件，纸面上很透明，实际上没人在看。</p>
+<p>Harrison Chase 在 2024 年也讲过类似的话，不过他谈的是 agent 框架该怎么设计，不是文件：“You&#8217;ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.”（你会希望能观察系统内部发生了什么，因为它实际采取的步骤事先可能无法得知。）他讲的是给开发 agent 的人用的工具。如果你是驱动 agent 的那个人，它一直在写的那份纯文字档，常常就是你看得到的部分。</p>
+<p>以上几位作者都没有提到 MarsDawn，也没有推荐 MarsDawn 或任何 Markdown 工具。</p>
+
+<h2>比看起来难读</h2>
+<p>文件很长，重要的地方很少在最上面。说明这次改动的那张图，是一段 Mermaid 原始码，不是图（想在 Mac 上看到排好的样子，可以先看<a href="/zh-hans/view-markdown-on-mac/">在 Mac 上怎么看 Markdown 文件</a>）。你读到一半，agent 可能正在改写它。文件常常不只一份，有时还分散在不同的分支或 worktree。等你真的找到问题，说“缓存那段怪怪的”，agent 只能用猜的。完整的说明在<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>。</p>
+
+<h2>MarsDawn 帮得上、帮不上的地方</h2>
+<p>MarsDawn 是为这种阅读做的 Mac app。它不会让 agent 变得更透明，里面也没有 AI 模型：它不会帮你摘要计划，也不会告诉你计划对不对。它做的是：</p>
+<ul>
+  <li><strong>文件很长：</strong>“显示方式 &#9656; 显示侧边栏”（&#8963;&#8984;S）打开“大纲”标签页，列出所有标题，点一下就跳过去。</li>
+  <li><strong>图表和数学式：</strong>原始码和排好的页面并排（&#8984;2），两边一起卷动，Mermaid 和 KaTeX 直接画出来。图表写错时，预览会显示它的原始码，下方附上错误信息。</li>
+  <li><strong>读到一半被改写：</strong>agent 改写文件时，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。</li>
+  <li><strong>好几个文件：</strong>用“文件 &#9656; 打开文件夹&#8943;”（&#8679;&#8984;O）打开 agent 工作的文件夹，新文件大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树。</li>
+  <li><strong>指出是哪一行：</strong>“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）把目前位置拷贝成 <code>docs/plan.md:42</code>，“拷贝给 AI”（&#8963;&#8997;&#8984;C）会在下面附上你选取的文字，直接贴给 agent 就好。</li>
+</ul>
+<p>读的人还是你。MarsDawn 负责让一份又长又会变的文件，在你读的时候保持好读。</p>
+
+<h2>试试看</h2>
+<p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>它不需要 app 就能把 Markdown 输出成 PDF。</p>
+<p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
+
+<h2>接下来</h2>
+<ul>
+  <li>agent 的产出为什么难读，以及一份检查清单：<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>。</li>
+  <li>那份清单一步一步来，附实际例子：<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>。</li>
+  <li>不同类型的 agent 会交给你什么文件：<a href="/zh-hans/agent-design-patterns/">四种 agent 设计模式，各自会交给你什么文件</a>。</li>
+  <li>为什么 AI 写的东西需要人读，短一点的版本：<a href="/zh-hans/reviewing-ai-output/">为什么 AI 写的东西还是需要人读过</a>。</li>
+</ul>
+
+<h2>资料来源</h2>
+<ul>
+  <li>Erik S. 与 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：<a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> （引文依 2026-09-26 的线上版本；该文现已注明，文中提到的工具生态自 2024 年 12 月以来已有很多改变）</li>
+  <li>Harrison Chase，〈What is an agent?〉，LangChain，2024 年 6 月 28 日，存档版本：<a href="http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/">http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/</a> （原网址现在显示的是 2026 年的另一篇文章）</li>
+</ul>
+""",
+    }
+
+    pages['reviewing-agent-plans'] = {
+        "title": "五分钟审完一份 agent 计划 · MarsDawn",
+        "description": "agent 交出计划、还没开始执行之前，用六个步骤、大约五分钟把它审完。什么编辑器都能用，附一份实际的例子。",
+        "body": f"""
+<section class="intro">
+  <h1>五分钟审完一份 agent 计划</h1>
+  <p>agent 写好一份计划，正等你点头。你手上只有五分钟，不是一个小时。下面这套做法用什么编辑器都行，连纯文字编辑器也可以。其中几步 MarsDawn 帮得上忙，我们会讲清楚是哪几步；最重要的那一步，它帮不上。</p>
+</section>
+
+<div class="summary"><p><strong>不要从头读到尾。先看架构，再查一个宣称，找出做了就回不去的步骤，看图表和影响范围，最后写出 agent 看得懂、改得动的反馈。六个步骤，大约五分钟。</strong></p></div>
+
+<h2>为什么要在执行前审</h2>
+<p>Chip Huyen 解释为什么规划要和执行分开时，把代价讲得很白：“Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it&#8217;s not going anywhere.”（没有监督的话，agent 可能执行那些步骤好几个小时，在 API 呼叫上浪费时间和金钱，你才发现它根本没有进展。）我们补一句：计划是抓错最便宜的地方。在 <code>plan.md</code> 里改一行，只要一句话；等 agent 跑完再收拾，可能要花掉一个下午。</p>
+
+<h2>范例</h2>
+<p>你请 agent 把使用者头像搬到物件储存，而且旧链接不能坏。它交回来的是这份：</p>
+<pre><code># 计划：把使用者头像搬到物件储存
+
+## 目标
+头像改由物件储存提供，不再放在 app 服务器上。
+
+## 步骤
+1. 加入储存用的 client 与设定。&#9989; 完成
+2. 写一支脚本，把现有头像复制到 bucket。
+3. 把模板里的头像网址换掉。
+4. 从服务器删除 `public/avatars/`。
+5. 执行复制脚本。
+
+## 状态
+所有测试都通过。</code></pre>
+<p>读起来很顺。照做的话，它也会在复制任何一张头像之前，先把全部头像删光。</p>
+
+<h2>六个步骤</h2>
+<p><strong>1. 先只看标题。</strong>（大约一分钟）大纲和你要求的对得上吗？少一段，通常就是少做一件事。这份只有“目标”“步骤”“状态”。你要求旧链接不能坏，可是没有任何一段讲旧链接，也没有讲出问题时怎么退回去。这就是你的第一条意见。</p>
+<p>在终端机跑 <code>grep -n '^#' plan.md</code>，就只会印出标题；大部分编辑器也有大纲预览。在 MarsDawn 里，侧边栏（“显示方式 &#9656; 显示侧边栏”，&#8963;&#8984;S）的“大纲”标签页会列出所有标题，点一下就跳过去。</p>
+<p><strong>2. 找出所有写着“完成”“通过”“已验证”的地方，挑一个自己查。</strong>（大约一分钟）打开那个文件、跑那个测试、数一下笔数。Chip Huyen 描述过一种失败：“The agent is convinced that it&#8217;s accomplished a task when it hasn&#8217;t.”（Agent 深信自己已完成任务，但其实并没有。）她举的例子是：请 agent 把 50 个人分到 30 间饭店房间，它只排了 40 人，还坚称做完了。</p>
+<pre><code>grep -n -E '完成|通过|验证|&#9989;' plan.md</code></pre>
+<p>在这份计划里，会找到“&#9989; 完成”和“所有测试都通过”。是哪些测试？有任何一个碰到头像吗？自己跑一次，或直接问。这一步 MarsDawn 没办法替你做，除了你，没有人能替你做。</p>
+<p><strong>3. 找出做了就回不去的步骤。</strong>（大约一分钟）删资料、数据库迁移、force push，还有任何会寄出、付款或发布的动作。这些要等你明确点头。Chip Huyen 从系统设计的角度讲过同一件事：“If a plan involves risky operations, such as updating a database or merging a code change, the system can ask for explicit human approval before executing or defer to humans to execute these operations.”（如果计划牵涉有风险的操作，例如更新数据库或合并代码变更，系统可以在执行前要求人类明确核准，或交给人类自己执行。）这份计划的第 4 步会删掉原始文件，而且排在第 5 步复制之前。</p>
+<p><strong>4. 图表要看画出来的样子，逐一对照每个箭头和文字说的是不是同一回事。</strong>流程图画着“复制 &#8594; 检查 &#8594; 删除”，步骤却不是这个顺序，这本身就是一个发现。这份计划没有图，今天可以跳过。有图的时候，请看画出来的图，不要看 Mermaid 原始码：很多编辑器都有预览，〈<a href="/zh-hans/view-markdown-on-mac/">在 Mac 上怎么看 Markdown 文件</a>〉和〈<a href="/zh-hans/vs/markdown-preview-tools/">在别处看 Markdown，对比 MarsDawn</a>〉整理了各种做法。在 MarsDawn 里，画好的图就在原始码旁边（&#8984;2）；图表写错时，预览会显示原始码、下方附上错误信息，这也值得单独写一条意见。</p>
+<p><strong>5. 列出计划会动到的文件和系统，你没要求的部分，先问清楚。</strong>（第 4、5 步合起来大约一分钟）这份会动到：储存设定、模板、服务器上的一个文件夹、一个 bucket。这个 bucket 谁读得到？你没说它要公开。如果你用 MarsDawn 打开 agent 工作的文件夹（“文件 &#9656; 打开文件夹&#8943;”，&#8679;&#8984;O），它新写的文件大约一秒内就会出现在“文件”标签页，清单上方也会标出 git 分支或工作树，你就知道自己审的是哪一份检出。</p>
+<p><strong>6. 反馈写成“位置、问题、改法”，一行只讲一个问题。</strong>（最后一分钟）</p>
+<pre><code>plan.md:10：第 5 步还没复制，这里就先删了。先复制、核对数量，再删；删之前等我确认。
+plan.md:14：是哪些测试？加一个切换后加载旧头像网址的测试。
+plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写出怎么退回去。</code></pre>
+<p>有行号的编辑器都能做到。在 MarsDawn 里，“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）会把目前位置拷贝成 <code>plan.md:10</code>，“拷贝给 AI”（&#8963;&#8997;&#8984;C）会在下面附上你选取的文字。</p>
+
+<h2>只有一分钟的话</h2>
+<p>就做第 2 步吧。以为自己已经做完的 agent，多半是在这一步被抓到的。</p>
+
+<h2>五分钟不够的时候</h2>
+<p>有时候你判断不了某一步对不对，因为它超出你熟悉的范围。Jess Ou 在 LangChain 2026 年介绍 agent 的文章里，用两句话讲完：“Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.”（无法评估的判断，就不要外包出去。如果你自己认不出正确答案，agent 也认不出来。）我们的看法是：判断不了，不是赶快核准的理由，而是该去找懂的人问一下的理由。</p>
+
+<h2>MarsDawn 在这里做什么、不做什么</h2>
+<p>MarsDawn 里没有 AI 模型。它不会帮你找出这份计划的问题，第 2、3 步也不会替你做。它做的是让文件在你审的时候保持好读：第 1 步有大纲，第 4 步有画好的图，第 5 步有“文件”标签页，第 6 步有行号引用。你读到一半 agent 改了计划，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。</p>
+<p>计划定案、要给别人看的时候，〈<a href="/zh-hans/sharing-exported-pdfs/">把 agent 写的东西交出去，不用教对方 Markdown</a>〉和〈<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF 工具</a>〉说明了怎么转成 PDF 交出去。</p>
+
+<h2>试试看</h2>
+<p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>它不需要 app 就能把 Markdown 输出成 PDF。</p>
+<p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
+
+<h2>接下来</h2>
+<ul>
+  <li>agent 的产出为什么难读：<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>。</li>
+  <li>agent 为什么要把计划摊开：<a href="/zh-hans/agent-transparency/">Anthropic 说 agent 要透明，那摊开的东西谁来读？</a></li>
+  <li>agent 交回来的不只有计划：<a href="/zh-hans/agent-design-patterns/">四种 agent 设计模式，各自会交给你什么文件</a>。</li>
+</ul>
+
+<h2>资料来源</h2>
+<ul>
+  <li>Chip Huyen，〈Agents〉，2025 年 1 月 7 日：<a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Jess Ou，〈What is an AI agent?〉，LangChain，2026 年 7 月 31 日：<a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a></li>
+</ul>
+""",
+    }
+
+    pages['agent-design-patterns'] = {
+        "title": "四种 agent 设计模式，各自会交给你什么文件 · MarsDawn",
+        "description": "Andrew Ng 提出的四种 agent 设计模式：reflection、tool use、planning、multi-agent collaboration，以及每一种通常会交回什么要你读的文件。",
+        "body": f"""
+<section class="intro">
+  <h1>四种 agent 设计模式，各自会交给你什么文件</h1>
+  <p>2024 年 3 月，Andrew Ng 在他的电子报 The Batch 介绍了四种 AI agent 的设计模式：reflection（反思）、tool use（使用工具）、planning（规划）和 multi-agent collaboration（多 agent 协作）。大家通常从开发者的角度谈它们，当成让模型表现更好的方法。这篇换个方向看：如果你用的 agent 是照这些模式做的，最后会有什么东西落进你的文件夹？你该先读哪里？</p>
+</section>
+
+<div class="summary"><p><strong>四种模式是 Andrew Ng 提出的。每种模式通常会交给你什么文件、该检查什么，是我们自己的推论。这两件事他都没有写，他在这个系列里也没有主张要人工审阅。</strong></p></div>
+
+<h2>四种模式，简单说</h2>
+<p>Ng 在〈Agentic Design Patterns Part 1〉里介绍了这四种模式。简单说：<strong>reflection</strong> 是模型回头检查自己的成果，再加以改进；<strong>tool use</strong> 是让模型能呼叫网络搜寻、执行代码之类的工具；<strong>planning</strong> 是模型自己拟出多步骤的计划再执行；<strong>multi-agent collaboration</strong> 是好几个 agent 分工、互相讨论。</p>
+<p>他在 Part 1 用一个代码基准测试 HumanEval 说明这些模式的效果，数据是他的团队整理多个研究团队的结果：“GPT-3.5 (zero shot) was 48.1% correct. GPT-4 (zero shot) does better at 67.0%. However, the improvement from GPT-3.5 to GPT-4 is dwarfed by incorporating an iterative agent workflow. Indeed, wrapped in an agent loop, GPT-3.5 achieves up to 95.1%.”（GPT-3.5 在 zero-shot 下的正确率是 48.1%，GPT-4 在 zero-shot 下好一些，是 67.0%。但和加入迭代式 agent 工作流程相比，从 GPT-3.5 换到 GPT-4 的进步就显得微不足道：放进 agent 循环后，GPT-3.5 最高可达 95.1%。）这些数字只针对一个代码基准测试，95.1% 是最好的情况（"up to"，最高可达）。它们说明 agent 工作流程能提升产出质量，但完全没有谈到谁来检查。</p>
+<p><strong>以下“交给你什么文件”和“该检查什么”，都是我们的解读，不是 Ng 的。</strong>实际的 agent 通常会混用好几种模式。一个 coding agent 可能在同一次工作里规划、跑工具、再检查自己的成果，所以四种文件你常常会一次全收到。</p>
+
+<h2>1. Reflection：一份已经自己审过的草稿</h2>
+<p>Ng 谈 reflection 的那篇，把它说成是把原本由人给的反馈自动化：“What if you automate the step of delivering critical feedback, so the model automatically criticizes its own output and improves its response?”（如果把提出批评性反馈这一步自动化，让模型自动批评自己的产出、改进它的回答呢？）</p>
+<p><strong>通常会交给你：</strong>一份改过的文件，有时附上一段自我检查，或是“边界情况都再确认过了”之类的句子。</p>
+<p><strong>该检查什么：</strong>拿结果对照“你”的要求，不是对照 agent 自己的批评。自我检查也会出错。Chip Huyen 写道：“An interesting mode of planning failure is caused by errors in reflection. The agent is convinced that it&#8217;s accomplished a task when it hasn&#8217;t.”（有一种有趣的规划失败，是反思出错造成的：agent 深信自己已完成任务，但其实并没有。）Lilian Weng 在 2023 年 6 月（当时任职 OpenAI）于她的博客 Lil’Log 谈到当时的模型：“The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.”（缺乏专业知识可能使 LLM 不知道自己的缺陷，因而无法妥善判断任务结果的正确性。）她描述的那项研究里，LLM 对结果的评估和人类专家的评估并不一致。文件里写“已验证”的话，自己挑一项查。</p>
+
+<h2>2. Tool use：一份“跑了什么”的报告</h2>
+<p><strong>通常会交给你：</strong>一份总结，说 agent 跑了什么、搜了什么、得到什么结果。“跑完测试：全部通过。”一张结果表格。它找到的一串链接。</p>
+<p>Anthropic 的指南把工具结果说成 agent 自我检查的依据：“During execution, it's crucial for the agents to gain &#8220;ground truth&#8221; from the environment at each step (such as tool call results or code execution) to assess its progress.”（执行过程中，agent 必须在每一步从环境取得“ground truth”，例如工具呼叫的结果或程序执行的结果，用来评估自己的进度。）这个检查发生在 agent 内部。到你手上的，是 agent 对这些结果的转述。</p>
+<p><strong>该检查什么：</strong>每个宣称都要追得回你看得到的输出。挑总结里的一个数字，对照真正的输出；点开其中一个链接看看。</p>
+
+<h2>3. Planning：<code>plan.md</code></h2>
+<p><strong>通常会交给你：</strong>一份计划、一份规格，或一份 agent 做完一项就勾一项的待办清单。</p>
+<p>Ng 在 Part 4 对这个模式讲得很坦白：</p>
+<blockquote><p>&#8220;On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results. In my experience, while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications&#8217; performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do.&#8221;</p></blockquote>
+<p>（一方面，规划是非常强大的能力；另一方面，它会导致较难预测的结果。就我的经验，Reflection 和 Tool Use 这两种模式我都能让它们稳定运作、提升应用程序的表现，但 Planning 还是比较不成熟的技术，我很难事先预测它会怎么做。）</p>
+<p>他也很乐观：“But the field continues to evolve rapidly, and I'm confident that Planning abilities will improve quickly.”（不过这个领域持续快速发展，我相信规划能力很快就会进步。）</p>
+<p><strong>该检查什么：</strong>在执行前审计划，用〈<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>〉的方法：看架构、查一个宣称、找出回不去的步骤、看图表、看影响范围。agent 中途改写计划的话，拿它和你核准的版本比对；如果有用 git，<code>git diff plan.md</code> 就看得到改了什么。在 MarsDawn 里，“大纲”标签页让你一眼看出长计划的架构；计划被改写时会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。</p>
+
+<h2>4. Multi-agent collaboration：好几份文件，好几个作者</h2>
+<p><strong>通常会交给你：</strong>一个 agent 写的规格、另一个写的实作笔记、第三个写的审查意见，还有它们之间互相交接的摘要。有时每个 agent 各自在自己的分支或 worktree 里工作。</p>
+<p><strong>该检查什么：</strong>交接的地方。一个 agent 在总结另一个的成果时，看有没有哪条需求没被带过去。找出彼此矛盾的两份文件，在任何人接着往下做之前，先决定哪一份才算数。在 MarsDawn 里，用“文件 &#9656; 打开文件夹&#8943;”（&#8679;&#8984;O）打开它们共用的文件夹：agent 写出新文件，大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树，两个窗口就算开着不同分支上同名的文件，也不会搞混。成果要交给不读 Markdown 的人时，可以看〈<a href="/zh-hans/sharing-exported-pdfs/">把 agent 写的东西交出去，不用教对方 Markdown</a>〉。</p>
+
+<h2>一览表</h2>
+<table>
+<thead><tr><th>模式（Ng 提出）</th><th>通常会交给你（我们的推论）</th><th>先读哪里（我们的建议）</th></tr></thead>
+<tbody>
+<tr><td>Reflection 反思</td><td>一份改过的草稿，可能附自我检查</td><td>对照你自己的要求；挑一个“已验证”自己查</td></tr>
+<tr><td>Tool use 使用工具</td><td>一份“跑了什么、得到什么”的报告</td><td>挑一个宣称，追回真正的输出</td></tr>
+<tr><td>Planning 规划</td><td><code>plan.md</code>、规格、待办清单</td><td>执行前的五分钟审阅</td></tr>
+<tr><td>Multi-agent collaboration 多 agent 协作</td><td>好几个 agent 写的好几份文件，可能分散在不同分支</td><td>交接的地方，以及哪一份才算数</td></tr>
+</tbody>
+</table>
+<p>上面引用的作者都没有提到 MarsDawn，也没有推荐 MarsDawn 或任何 Markdown 工具。MarsDawn 里没有 AI 模型：它不知道一份文件是哪种模式产生的，也不会替你做这些检查。它负责让这些文件在你检查的时候保持好读。</p>
+
+<h2>试试看</h2>
+<p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>它不需要 app 就能把 Markdown 输出成 PDF，详见〈<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF 工具</a>〉。</p>
+<p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
+
+<h2>接下来</h2>
+<ul>
+  <li>agent 的产出为什么难读，以及一份检查清单：<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>。</li>
+  <li>完整的计划审阅方法：<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>。</li>
+  <li>透明对你的要求是什么、不是什么：<a href="/zh-hans/agent-transparency/">Anthropic 说 agent 要透明，那摊开的东西谁来读？</a></li>
+</ul>
+
+<h2>资料来源</h2>
+<ul>
+  <li>Andrew Ng，〈Agentic Design Patterns Part 1〉，The Batch，2024 年 3 月 20 日：<a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng，〈Agentic Design Patterns Part 2, Reflection〉，The Batch，2024 年 3 月 27 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/</a></li>
+  <li>Andrew Ng，〈Agentic Design Patterns Part 4, Planning〉，The Batch，2024 年 4 月 10 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a></li>
+  <li>Chip Huyen，〈Agents〉，2025 年 1 月 7 日：<a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Lilian Weng，〈LLM Powered Autonomous Agents〉，Lil’Log，2023 年 6 月 23 日：<a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a></li>
+  <li>Erik S. 与 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：<a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> （引文依 2026-09-26 的线上版本）</li>
+</ul>
+""",
+    }
+
     pages['changelog'] = {
         "title": '更新记录 · MarsDawn',
         "description": '免费的 marsdawn 命令行工具改了什么。',

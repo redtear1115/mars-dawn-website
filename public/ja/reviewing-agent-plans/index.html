@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>エージェントの計画を 5 分でレビューする · MarsDawn</title>
+<meta name="description" content="AI エージェントが実行前に渡してくる計画を、どのエディタでも使える 6 ステップの方法で、実例を交えて約 5 分でレビューする。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-agent-plans/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/">
+<link rel="alternate" type="text/markdown" href="/ja/reviewing-agent-plans/index.md">
+<meta property="og:title" content="エージェントの計画を 5 分でレビューする · MarsDawn">
+<meta property="og:description" content="AI エージェントが実行前に渡してくる計画を、どのエディタでも使える 6 ステップの方法で、実例を交えて約 5 分でレビューする。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
+  <nav class="lang" aria-label="Language"><a href="/reviewing-agent-plans/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reviewing-agent-plans/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reviewing-agent-plans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reviewing-agent-plans/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>エージェントの計画を 5 分でレビューする</h1>
+  <p>エージェントが計画を書き上げ、ゴーサインを待っている。あなたにあるのは 5 分で、1 時間ではない。ここでは、その 5 分の使い方を紹介する。プレーンテキストのエディタでも、どんなエディタでも使える方法だ。MarsDawn が助けになるステップもあるので、どこかは明記する。ただし、いちばん大事なステップでは助けにならない。</p>
+</section>
+
+<div class="summary"><p><strong>計画は最初から最後まで読まない。まず形を見て、主張を 1 つ確認し、取り消せないものを探し、図と範囲を見て、それからエージェントが動けるフィードバックを書く。6 ステップ、約 5 分。</strong></p></div>
+
+<h2 id="why-bother-before-it-runs">実行前に手間をかける理由</h2>
+<p>Chip Huyen は、計画と実行を分けるべき理由を説明しながら、コストをはっきり言う：「Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it&#8217;s not going anywhere.」（監督がなければ、エージェントは何時間もそのステップを実行し続け、API 呼び出しに時間とお金を浪費したあとで、それが何も進んでいないことにあなたが気づく、ということもあり得る。）私たちからの補足：計画は、間違いを見つけるのにいちばん安上がりな場所だ。<code>plan.md</code> の 1 行を直すのは、1 文で済む。エージェントが実行し終わったあとの後始末は、午後まるごとかかることもある。</p>
+
+<h2 id="the-example">例</h2>
+<p>ユーザーのアバターをオブジェクトストレージに移す作業を、既存のリンクを壊さずにやるようエージェントに頼んだ。返ってきたのはこれだ：</p>
+<pre><code># Plan: move user avatars to object storage
+
+## Goal
+Serve avatars from object storage instead of the app server.
+
+## Steps
+1. Add a storage client and config. &#9989; done
+2. Write a script that copies existing avatars to the bucket.
+3. Switch the avatar URLs in the templates.
+4. Delete `public/avatars/` from the server.
+5. Run the copy script.
+
+## Status
+All tests pass.</code></pre>
+<p>読んだ感じは問題なさそうだ。だがこのとおりにやると、コピーする前に、すべてのアバターを削除してしまう。</p>
+
+<h2 id="the-six-steps">6 つのステップ</h2>
+<p><strong>1. 見出しだけを読む。</strong>（約 1 分）アウトラインは頼んだ内容と一致しているか。ここでは Goal、Steps、Status。既存のリンクを壊さないでほしいと頼んだのに、古いリンクや、変更を取り消す方法についての見出しがない。これが最初のコメントになる。</p>
+<p>ターミナルから <code>grep -n '^#' plan.md</code> を実行すれば、見出しだけが表示される。多くのエディタにもアウトライン表示がある。MarsDawn では、サイドバーのアウトラインタブ（表示 &#9656; サイドバーを表示、&#8963;&#8984;S）に見出しが並び、クリックするとそこへ移動する。</p>
+<p><strong>2. 「完了」「合格」「検証済み」と書かれている箇所をすべて見つけ、そのうち 1 つを自分で確認する。</strong>（約 1 分）ファイルを開く、テストを実行する、行数を数える。Chip Huyen は、こんな失敗を描いている：「The agent is convinced that it&#8217;s accomplished a task when it hasn&#8217;t.」（エージェントは、実際には終わっていないのに、タスクを終えたと確信している。）彼女の例では、50 人を 30 部屋に割り振るよう頼まれたエージェントが、40 人しか割り振らないまま、終わったと言い張る。</p>
+<pre><code>grep -n -i -E 'done|pass|verified|&#9989;' plan.md</code></pre>
+<p>この例では「&#9989; done」と「All tests pass.」が見つかる。どのテストか？ アバターに触れるものはあるか？ 自分で実行するか、聞いてみる。この作業を MarsDawn が代わりにやることはできない。あなた以外、誰にもできない。</p>
+<p><strong>3. 取り消せないステップを探す。</strong>（約 1 分）データの削除、マイグレーション、force push、何かを送信・支払い・公開する処理。それらはあなたの明示的な OK を待つべきだ。Chip Huyen は、同じ考えをシステム側の視点からこう述べている：「If a plan involves risky operations, such as updating a database or merging a code change, the system can ask for explicit human approval before executing or defer to humans to execute these operations.」（計画にリスクのある操作、たとえばデータベースの更新やコード変更のマージが含まれる場合、システムは実行前に明示的な人間の承認を求めることも、それらの操作の実行自体を人間に委ねることもできる。）この例では、ステップ 4 が元のファイルを削除し、それがステップ 5 のコピーより前に来ている。</p>
+<p><strong>4. 図はレンダリングした状態で読み、矢印の 1 つひとつを本文と照らし合わせる。</strong>フローチャートが「copy &#8594; verify &#8594; delete」と描いているのに、ステップの記述がそうなっていなければ、それ自体が発見だ。この計画には図がないので、今日は飛ばしてよい。図があるときは、Mermaid のソースではなく、描画された絵を見よう。多くのエディタにプレビュー機能があり、<a href="/ja/view-markdown-on-mac/">「Mac で Markdown を見る方法」</a>と<a href="/ja/vs/markdown-preview-tools/">「他のツールで Markdown を見る場合との比較」</a>で選択肢を紹介している。MarsDawn では、レンダリングされた図がソースの隣にあり（&#8984;2）、図が壊れていればソースとエラーが一緒に表示される。それ自体、コメントに値する。</p>
+<p><strong>5. 計画が触れるファイルとシステムを列挙し、頼んでいないことがあれば確認する。</strong>（4 と 5 を合わせて約 1 分）ここでは、ストレージの設定、テンプレート、サーバー上のフォルダ、バケット。そのバケットは誰が読めるのか？ 公開すべきだとは頼んでいない。MarsDawn でエージェントの作業フォルダを開いていれば（「ファイル &#9656; フォルダを開く&#8943;」、&#8679;&#8984;O）、エージェントが書いた新しいファイルは 1 秒ほどでファイルタブに現れ、ヘッダーに git のブランチや worktree の名前が出るので、自分がどのチェックアウトをレビューしているか分かる。</p>
+<p><strong>6. フィードバックは「場所・問題・直し方」で、1 行に 1 つの問題だけを書く。</strong>（最後の 1 分）</p>
+<pre><code>plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
+plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
+plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.</code></pre>
+<p>行番号のあるエディタなら何でもいい。MarsDawn では、「編集 &#9656; 参照をコピー」（&#8997;&#8984;C）でいまいる場所を <code>plan.md:10</code> の形でコピーでき、「AI 用にコピー」（&#8963;&#8997;&#8984;C）はその下に選択したテキストを付け加える。</p>
+
+<h2 id="if-you-have-one-minute">1 分しかないなら</h2>
+<p>ステップ 2 をやろう。終わったと思い込んでいるエージェントが見つかるのは、たいていそこだ。</p>
+
+<h2 id="when-five-minutes-isn-t-enough">5 分では足りないとき</h2>
+<p>あるステップが正しいかどうか、あなたには判断できないこともある。それがあなたの知識の外にあるからだ。Jess Ou は、LangChain の 2026 年のエージェント解説記事で、2 文でこう言い切っている：「Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.」（評価できない判断を、外部に委ねてはいけない。正しい答えを自分が見分けられないなら、エージェントにも見分けられない。）私たちの受け止め方：あるステップを判断できないなら、それは早く承認する理由にはならない。分かる人に聞く理由になる。</p>
+
+<h2 id="what-marsdawn-does-here-and-what-it-doesn-t">ここで MarsDawn がすること、しないこと</h2>
+<p>MarsDawn の中に AI モデルはない。この計画の問題を見つけたりはせず、ステップ 2 や 3 を代わりにやることもない。作業中、ファイルを読みやすく保つだけだ：ステップ 1 にはアウトライン、ステップ 4 には描画された図、ステップ 5 にはファイルタブ、ステップ 6 には行の参照。読んでいる途中でエージェントが計画を修正しても、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ。</p>
+<p>計画が固まり、ほかの人にも見せる必要が出てきたら、<a href="/ja/sharing-exported-pdfs/">「書き出した PDF を共有する」</a>と<a href="/ja/markdown-to-pdf/">「Markdown から PDF へ」</a>が、PDF として渡す方法を扱っている。</p>
+
+<h2 id="try-it">試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2 id="next">次に</h2>
+<ul>
+  <li>そもそもエージェントの出力がなぜ読みにくいか：<a href="/ja/reading-agent-output/">エージェントが返してくるものを読む</a>。</li>
+  <li>なぜエージェントはそもそも計画を示すのか：<a href="/ja/agent-transparency/">Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？</a></li>
+  <li>エージェントが返すのは計画だけではない：<a href="/ja/agent-design-patterns/">4 つのエージェント設計パターンと、それぞれが返す文書</a>。</li>
+</ul>
+
+<h2 id="sources">出典</h2>
+<ul>
+  <li>Chip Huyen, &#8220;Agents,&#8221; January 7, 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Jess Ou, &#8220;What is an AI agent?,&#8221; LangChain, July 31, 2026: <a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

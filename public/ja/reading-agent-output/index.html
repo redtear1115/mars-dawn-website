@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>エージェントが返してくるものを読む · MarsDawn</title>
+<meta name="description" content="AI エージェントは仕事の成果を Markdown で返します：計画、仕様書、進捗報告。エージェントを作る人たちがチェックポイントや失敗について何を言うか、その出力がなぜ読みづらいのか、そして計画を 5 分でレビューするチェックリスト。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-agent-output/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-agent-output/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-agent-output/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-agent-output/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/reading-agent-output/">
+<link rel="alternate" type="text/markdown" href="/ja/reading-agent-output/index.md">
+<meta property="og:title" content="エージェントが返してくるものを読む · MarsDawn">
+<meta property="og:description" content="AI エージェントは仕事の成果を Markdown で返します：計画、仕様書、進捗報告。エージェントを作る人たちがチェックポイントや失敗について何を言うか、その出力がなぜ読みづらいのか、そして計画を 5 分でレビューするチェックリスト。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/reading-agent-output/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-agent-output/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-agent-output/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-agent-output/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-agent-output/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>エージェントの仕事は、あなたが読む Markdown ファイルとして返ってくる。</h1>
+  <p>コーディングエージェントに移行を計画させたり、仕様書を書かせたり、バグを追わせたりする。しばらく自分で動いたあと、返ってくるのは 1 つのファイルだ。<code>plan.md</code>、<code>SPEC.md</code>、進捗報告、調査のまとめ。確認できる範囲では、そのファイルが仕事そのものだ。</p>
+</section>
+
+<div class="summary"><p><strong>エージェントが正しくやったかどうかは、返ってきたものを読んで初めて分かる。MarsDawn は、その読み方のための Mac アプリだ。</strong></p></div>
+
+<h2 id="what-people-who-build-agents-say">エージェントを作る人たちの言葉</h2>
+<p>引用はそのまま。私たちの解釈はあとに書く。</p>
+<ul>
+  <li>Anthropic の「Building Effective Agents」（Erik S. と Barry Zhang、2024 年 12 月）は、エージェントを作るための 3 つの原則を挙げていて、その 1 つが「Prioritize transparency by explicitly showing the agent&#8217;s planning steps.」（透明性を優先し、エージェントの計画のステップを明示的に示す。）これはエージェントを作る人向けの原則だ。あなたの側から見れば、その透明性とは、結局あなたが読むことになる計画のことだ。</li>
+  <li>同じ記事：「Agents can then pause for human feedback at checkpoints or when encountering blockers.」（エージェントはチェックポイントや障害に出会ったとき、人間のフィードバックを待って一時停止できる。）動詞に注目してほしい：<em>can</em>（できる）。</li>
+  <li>Chip Huyen は「Agents」（2025 年 1 月）で、計画と実行を分けるべき理由をこう説明する：「Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it&#8217;s not going anywhere.」（監督がなければ、エージェントは何時間もそのステップを実行し続け、API 呼び出しに時間とお金を浪費したあとで、それが何も進んでいないことにあなたが気づく、ということもあり得る。）彼女はさらにこんな失敗も描いている：「The agent is convinced that it&#8217;s accomplished a task when it hasn&#8217;t.」（エージェントは、実際には終わっていないのに、タスクを終えたと確信している。）50 人を 30 部屋に割り振るよう頼まれたエージェントは、40 人しか割り振らないまま、終わったと言い張る。</li>
+  <li>Andrew Ng は The Batch（2024 年 4 月）で planning パターンについてこう述べる：「On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results.」（一方で、計画は非常に強力な能力だ。他方で、予測しにくい結果につながる。）これは予測可能性についての指摘であって、人によるレビューを求めているわけではない。彼は計画能力が急速に向上すると見ている。</li>
+</ul>
+<p><strong>ここからは著者たちの主張ではなく、私たちの推論だ：</strong>エージェントが計画を示し、チェックポイントで止まるなら、そのチェックポイントで計画を読むのは、たいていあなただ。エージェントが終わっていないのに終わったと思い込むことがあるなら、その「完了報告」にも読み手が必要になる。ここに挙げた著者は誰も MarsDawn について触れておらず、MarsDawn や他の Markdown ツールを推奨してもいない。</p>
+
+<h2 id="why-it-s-a-harder-read-than-it-looks">見た目より読みにくい理由</h2>
+<p>ファイルは長く、重要な部分はたいてい先頭にはない。Mermaid の図や数式が入っていて、ソースのままでは追いにくい。読んでいる途中で、エージェントがまだファイルを書き換えていることもある。ファイルは複数にまたがることが多く、ブランチや worktree をまたぐこともある。そして問題を見つけたとき、「キャッシュの部分がおかしい」ではエージェントは推測するしかないが、「<code>docs/plan.md:42</code> はバックフィルが終わる前に古いテーブルを落としている」ならそうはならない。</p>
+
+<h2 id="where-marsdawn-helps">MarsDawn が助けになるところ</h2>
+<ul>
+  <li><strong>長いファイル：</strong>サイドバーのアウトラインタブ（&#8963;&#8984;S）に見出しが並ぶ。クリックすると両方のペインがそこへ移動する。</li>
+  <li><strong>図と数式：</strong>Mermaid と KaTeX はソースの隣のプレビューに描画され（&#8984;2）、両方のペインが一緒にスクロールする。</li>
+  <li><strong>読んでいる途中の書き換え：</strong>エージェントがファイルを書き換えると、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ。</li>
+  <li><strong>複数のファイル：</strong>「ファイル &#9656; フォルダを開く&#8943;」（&#8679;&#8984;O）でエージェントの作業フォルダを開く。新しいファイルは 1 秒ほどでファイルタブに現れ、git のチェックアウトならヘッダーにブランチや worktree の名前が出る。</li>
+  <li><strong>正確なフィードバック：</strong>「編集 &#9656; 参照をコピー」（&#8997;&#8984;C）で、いまいる場所を <code>docs/plan.md:42</code> の形でコピーできる。「AI 用にコピー」（&#8963;&#8997;&#8984;C）は、その下に選択したテキストを付け加える。どちらもエージェントのチャットに貼り付ければいい。</li>
+</ul>
+<p>このループにはもう 2 つ関係がある。エージェントは <code>marsdawn open plan.md:42</code> を実行して、MarsDawn でファイルを 42 行目、つまりまず見てほしい行で開かせることができる。そしてレビューが終わったファイルは、アプリから、あるいは無料の <code>marsdawn export</code> コマンドで PDF に書き出せる。</p>
+<p>MarsDawn の中に AI モデルはない。計画を要約したり、採点したり、何が間違っているか教えたりはしない。読むのはあなたで、MarsDawn は長く変わり続けるファイルを読みやすく保ち、正確な行を指し示せるようにするだけだ。</p>
+
+<h2 id="review-an-agent-s-plan-in-five-minutes">5 分でエージェントの計画をレビューする</h2>
+<p>どんなエディタでも使える方法だ。</p>
+<ol>
+  <li>見出しだけを読む。アウトラインは頼んだ内容と一致しているか。セクションが欠けていれば、たいてい作業も欠けている。</li>
+  <li>「完了」「合格」「検証済み」と書かれている箇所をすべて見つけ、そのうち 1 つを自分で確認する：ファイルを開く、テストを実行する、行数を数える。</li>
+  <li>取り消せないステップを探す：データの削除、マイグレーション、force push、何かを送信・支払い・公開する処理。それらはあなたの明示的な OK を待つべきだ。</li>
+  <li>図はレンダリングした状態で読み、矢印の 1 つひとつを本文と照らし合わせる。</li>
+  <li>計画が触れるファイルとシステムを列挙する。頼んでいないことがあれば、実行前に確認する。</li>
+  <li>フィードバックは「場所・問題・直し方」で書く：「<code>plan.md:88</code>：バックフィルが drop のあとに実行される。ステップ 4 と 5 を入れ替えて。」1 行に 1 つの問題だけを書く。</li>
+</ol>
+<p>時間がないなら、ステップ 2 だけをやろう。終わったと思い込んでいるエージェントが見つかるのは、たいていそこだ。より詳しい説明と実例は<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a>にある。</p>
+
+<h2 id="try-it">試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。アプリが出たあとは、<code>marsdawn open</code> でエージェントにファイルを開かせることもできます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; AI エージェント向けの参照：<a href="/ja/cli/agents/">marsdawn for agents</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2 id="next">次に</h2>
+<ul>
+  <li>AI の出力をそもそも読むべき理由（短い版）：<a href="/ja/reviewing-ai-output/">AI の出力を人が確認する理由</a>。</li>
+  <li>レビュー中もエージェントの context を小さく保つ：<a href="/ja/token-efficient-review/">トークンを抑えたレビュー</a>。</li>
+  <li>なぜエージェントはそもそも計画を示すのか：<a href="/ja/agent-transparency/">Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？</a></li>
+  <li>上のチェックリストを、実例つきで詳しく：<a href="/ja/reviewing-agent-plans/">エージェントの計画を 5 分でレビューする</a>。</li>
+  <li>エージェントの種類ごとに、どんな文書が返ってくるか：<a href="/ja/agent-design-patterns/">4 つのエージェント設計パターンと、それぞれが返す文書</a>。</li>
+</ul>
+
+<h2 id="sources">出典</h2>
+<ul>
+  <li>Erik S. and Barry Zhang, &#8220;Building Effective Agents,&#8221; Anthropic, December 19, 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a>（2026-09-26 時点のオンライン版から引用。同記事は現在、2024 年 12 月以降ツール環境が大きく変わったと注記している）</li>
+  <li>Chip Huyen, &#8220;Agents,&#8221; January 7, 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 4, Planning,&#8221; The Batch, April 10, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
