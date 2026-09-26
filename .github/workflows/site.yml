@@ -55,13 +55,18 @@ jobs:
       # hashes — see content/legal/manifest.json and the script's own docstring.
       - name: Legal pages match their Markdown source and the pinned kit tag
         run: python3 scripts/check_legal_render.py --self-test && python3 scripts/check_legal_render.py
-      # The theme gallery isn't served yet and nothing reads /themes/v1/ (see README). Once it ships,
-      # make this check mandatory: from then on /themes/v1/index.json must never disappear.
-      - name: Theme index is valid JSON
-        run: |
-          if [ -f public/themes/v1/index.json ]; then
-            python3 -m json.tool public/themes/v1/index.json >/dev/null
-          fi
+      # /themes/v1/ is reserved until the theme gallery ships (see README). Nothing committed under
+      # it yet passes trivially; once anything is, index.json must exist and match the design doc's
+      # shape field for field (docs/theme-ecosystem-design.md §5.1 in the app repo) — this always
+      # runs, not only when the file happens to be present. --self-test plants a break of each rule
+      # first and requires the check's own message for it.
+      # TODO(website #77 follow-up): this still passes if public/themes/v1/ is deleted outright
+      # after the gallery has shipped ("index.json must never disappear" isn't enforced yet). That
+      # needs a ship signal this repo doesn't have — AVAILABILITY (scripts/build_pages.py) tracks
+      # Mac App Store launch, a different and unrelated launch, so it isn't one. Once a real
+      # "gallery has shipped" signal exists, make absence fail too.
+      - name: Theme index is present and valid whenever the gallery has shipped
+        run: python3 scripts/check_theme_index.py --self-test && python3 scripts/check_theme_index.py
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/release'

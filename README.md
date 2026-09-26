@@ -19,6 +19,7 @@ The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown edito
 | `content/legal/` | The single-source Markdown for the legal pages (currently just `privacy.<locale>.md`; issue #33), and its cache: `<slug>.<locale>.rendered.html` plus `manifest.json` (a sha256 of every source and rendered file, and the kit tag). `build_pages.py` reads the cache, not the Markdown, so the site still builds on Ubuntu CI with no Swift toolchain |
 | `scripts/render_legal.py` | Renders `content/legal/*.md` through the kit's own `MarkdownRenderer` (the app's preview renderer) and vendors `public/assets/preview.css` and `public/assets/themes.css` from the same pinned kit tag as `tools/hero-render`. Needs macOS; rerun it after editing a legal page's Markdown or bumping the kit tag, then commit its output |
 | `scripts/check_legal_render.py` | Checks that `content/legal/`'s cached HTML and the vendored CSS still match `manifest.json`'s recorded hashes, and that the manifest's kit tag matches `tools/hero-render/Package.swift`'s pin — a Swift-free consistency check, not a re-render. `--self-test` plants a break of each kind first (runs in CI) |
+| `scripts/check_theme_index.py` | Checks `public/themes/v1/index.json` against the shape `docs/theme-ecosystem-design.md` (app repo) §5.1 fixes: passes trivially while `public/themes/v1/` doesn't exist, and once it does, requires `index.json` to exist and validate. `--self-test` plants a break of each kind first (runs in CI) |
 | `scripts/deploy.sh` | Manual deploy, for emergencies |
 | `wrangler.jsonc` | Cloudflare Workers static-assets config |
 
@@ -26,7 +27,7 @@ These URLs are public contracts and must keep working at the same paths:
 `/privacy/`, `/support/`, `/zh-hant/privacy/`, `/zh-hant/support/`, `/zh-hans/privacy/`, `/zh-hans/support/`, `/ja/privacy/`, `/ja/support/` (linked from the App Store).
 `/go/app-store` is one too, once anything outside the site links to it: it is a redirect, not a page, and only its destination may change.
 
-`/themes/v1/` is **reserved** for the theme gallery, whose design is `docs/theme-ecosystem-design.md` in the app repository. Nothing is served there yet, and neither the app nor the `marsdawn` CLI reads it. Once the gallery ships and the app reads it, it becomes a contract too. Until then, the cache rules in `public/_headers` and the CI check below, which runs only when the index exists, are preparation.
+`/themes/v1/` is **reserved** for the theme gallery, whose design is `docs/theme-ecosystem-design.md` in the app repository. Nothing is served there yet, and neither the app nor the `marsdawn` CLI reads it. Once the gallery ships and the app reads it, it becomes a contract too. Until then, the cache rules in `public/_headers` are preparation, but `scripts/check_theme_index.py` runs on every push and pull request regardless: it passes trivially while nothing is committed under `public/themes/v1/`, and once anything is, it requires `index.json` to exist and match the design doc's §5.1 shape field for field. **TODO:** it still can't fail on `public/themes/v1/` being deleted outright after the gallery has shipped, because this repo has no "gallery has shipped" signal to key that on (`AVAILABILITY` tracks the unrelated Mac App Store launch) — wire one in once a real signal exists.
 
 ## Editing
 
@@ -55,7 +56,7 @@ After a deploy, open every page in a private window. They must load without a lo
   git push origin main:release
   ```
 
-- Every push and pull request runs the check: the regenerated pages must match the commit, and `public/themes/v1/index.json`, when present, must be valid JSON.
+- Every push and pull request runs the check: the regenerated pages must match the commit, and `public/themes/v1/index.json` must exist and be valid whenever anything is committed under `public/themes/v1/`.
 
 The deploy needs two settings on the `production` environment:
 
