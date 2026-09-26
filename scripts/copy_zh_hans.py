@@ -7,7 +7,7 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 
 
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': 'MarsDawn 即将在 Mac App Store 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置'}
+    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': 'MarsDawn 即将在 Mac App Store 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
     store_chip = '即将在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.3.0 以后', 'error': '两个命令的失败结果', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单'}
     example_plan = '# 计划：让导出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -44,52 +44,7 @@ def build(k) -> dict:
     pages['support'] = {
         "title": '支持 · MarsDawn',
         "description": 'MarsDawn（macOS Markdown 编辑器）的使用说明与联系方式。',
-        "body": f"""
-<section class="intro">
-  <h1>支持</h1>
-  <p>macOS Markdown 编辑器 MarsDawn 的使用说明。</p>
-</section>
-
-<section class="contact">
-  <h2>写信给我们</h2>
-  <a class="email" href="mailto:{k.EMAIL}?subject=MarsDawn%20support">{k.EMAIL}</a>
-  <p>请附上你的 macOS 版本与 MarsDawn 版本（MarsDawn › 关于 MarsDawn）。如果画面看起来不对，附上截图或一份小的范例文稿会很有帮助。</p>
-</section>
-
-<section class="faq">
-  <h2>常见问题</h2>
-
-  <h3>MarsDawn 需要什么环境？</h3>
-  <p>macOS 26 Tahoe 或更新版本的 Mac，Apple 芯片或 Intel 皆可。</p>
-
-  <h3>怎么切换编辑器与预览？</h3>
-  <p>按 <kbd>⌘1</kbd> 只看源代码、<kbd>⌘2</kbd> 左右并排、<kbd>⌘3</kbd> 只看预览。“显示”菜单和工具栏也有相同选项。</p>
-
-  <h3>文稿里的图片没有显示。</h3>
-  <ul>
-    <li><strong>Mac 上的图片：</strong>先保存文稿，再按预览中的“授予文件夹访问权限…”，选择图片所在的文件夹。MarsDawn 会记住这个文件夹，你可以到 MarsDawn › 设置… › 文件夹访问查看。</li>
-    <li><strong>网络上的图片：</strong>网络图片在你按下预览上方的“载入图像”之前不会加载。想要一律加载，可在设置中打开“自动载入网络图像”。</li>
-  </ul>
-
-  <h3>怎么加入图片？</h3>
-  <p>把图片拖进编辑器，或直接粘贴。文稿需要先保存：MarsDawn 会把图片复制到文稿旁的 <code>assets</code> 文件夹，并帮你写好 Markdown 链接。</p>
-
-  <h3>Mermaid 图表显示错误。</h3>
-  <p>MarsDawn 会显示图表的源代码，下方附上 Mermaid 错误消息的第一行。请检查消息指出的那一行，例如箭头后面缺了目标，或括号没有闭合。</p>
-
-  <h3>怎么产生 PDF？</h3>
-  <p>选择“文件 › 导出为 PDF…”（<kbd>⌥⌘E</kbd>）。不论目前是哪种布局，PDF 都会使用预览主题的浅色版本并自动分页。“文件 › 打印…”会打印出相同的页面。</p>
-
-  <h3>怎么搭配 Siri 或快捷指令使用？</h3>
-  <p>打开“快捷指令”App 搜索 MarsDawn，就能找到“新建 Markdown 文稿”、“添加笔记到收件箱”与“打开最近使用的文稿”。要添加笔记之前，请先到 MarsDawn › 设置… › 笔记文件夹选择文件夹，笔记会加到该文件夹的 <code>Inbox.md</code>。</p>
-
-  <h3>设置在哪里？</h3>
-  <p>MarsDawn › 设置…（<kbd>⌘,</kbd>），包含外观、图片、笔记文件夹、文件夹访问与预览主题。</p>
-
-  <h3>怎么申请退款？</h3>
-  <p>购买由 Apple 处理，请到 <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> 申请退款。</p>
-</section>
-""",
+        "body": k.render_legal_body("support", "zh-hans"),
     }
     pages['privacy'] = {
         "title": '隐私政策 · MarsDawn',

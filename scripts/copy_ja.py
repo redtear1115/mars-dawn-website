@@ -7,7 +7,7 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 
 
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': 'MarsDawn は Mac App Store で近日公開予定です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定'}
+    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': 'MarsDawn は Mac App Store で近日公開予定です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
     store_chip = 'Mac App Store で近日公開'
     schema_notes = {'export': 'export 成功時', 'open': 'open 成功時、marsdawn 0.3.0 以降', 'error': '失敗時、両方のコマンド共通', 'open_v1': 'open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）'}
     example_plan = '# 計画：書き出しを高速化\n\nこの計画はエージェントが書きました。内容を確認してから、PDF にします。\n\n## ステップ\n\n| ステップ | 担当 | 状況 |\n|------|-------|--------|\n| 遅いページを計測する | エージェント | 完了 |\n| レンダリング済み図をキャッシュする | エージェント | レビュー中 |\n\n50 ページの文書で目標とするのは $t < 2\\,\\text{s}$：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  ドラフト --> レビュー --> 公開\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -44,52 +44,7 @@ def build(k) -> dict:
     pages['support'] = {
         "title": 'サポート · MarsDawn',
         "description": 'macOS 向け Markdown エディタ MarsDawn のヘルプ。',
-        "body": f"""
-<section class="intro">
-  <h1>サポート</h1>
-  <p>macOS 向け Markdown エディタ、MarsDawn のヘルプです。</p>
-</section>
-
-<section class="contact">
-  <h2>お問い合わせ</h2>
-  <a class="email" href="mailto:{k.EMAIL}?subject=MarsDawn%20support">{k.EMAIL}</a>
-  <p>macOS のバージョンと MarsDawn のバージョン（MarsDawn › MarsDawnについて）を書き添えてください。何かおかしく見える場合は、スクリーンショットや小さなサンプル文書がとても役立ちます。</p>
-</section>
-
-<section class="faq">
-  <h2>よくある質問</h2>
-
-  <h3>MarsDawn を動かすには何が必要ですか？</h3>
-  <p>macOS 26 Tahoe 以降を搭載した Mac。Apple シリコンでも Intel でも動作します。</p>
-
-  <h3>エディタとプレビューはどう切り替えますか？</h3>
-  <p><kbd>⌘1</kbd> でソースのみ、<kbd>⌘2</kbd> で左右分割、<kbd>⌘3</kbd> でプレビューのみになります。同じ選択肢は「表示」メニューとツールバーにもあります。</p>
-
-  <h3>文書内の画像が表示されません。</h3>
-  <ul>
-    <li><strong>Mac 上の画像：</strong>まず文書を保存し、プレビューの<em>フォルダへのアクセスを許可…</em>をクリックして、画像があるフォルダを選んでください。MarsDawn はそのフォルダを記憶します。許可したフォルダは MarsDawn › 設定 › フォルダへのアクセスで確認できます。</li>
-    <li><strong>ウェブ上の画像：</strong>ウェブ画像は、プレビュー上部の<em>イメージを読み込む</em>をクリックするまでブロックされます。常に読み込みたい場合は、設定で<em>リモートイメージを自動的に読み込む</em>をオンにしてください。</li>
-  </ul>
-
-  <h3>画像を追加するには？</h3>
-  <p>エディタにドラッグするか、貼り付けてください。文書は先に保存しておく必要があります。MarsDawn が画像を文書の隣にある <code>assets</code> フォルダにコピーし、Markdown のリンクを書き込みます。</p>
-
-  <h3>Mermaid 図にエラーが表示されます。</h3>
-  <p>MarsDawn は図のソースと、その下に Mermaid のエラーメッセージの最初の行を表示します。示された行を確認してください。たとえば矢印の先に何もない、または括弧が閉じられていない、といった箇所です。</p>
-
-  <h3>PDF を作るには？</h3>
-  <p>ファイル › PDF として書き出す…（<kbd>⌥⌘E</kbd>）を選んでください。PDF はどのレイアウトであっても、プレビューテーマのライト版を使い、ページごとに分割されます。ファイル › プリント…でも同じページがプリントされます。</p>
-
-  <h3>Siri やショートカットで MarsDawn を使うには？</h3>
-  <p>ショートカット App を開いて MarsDawn を検索すると、<em>新規 Markdown 書類</em>、<em>受信トレイにメモを追加</em>、<em>最近使った書類を開く</em>が見つかります。メモを追加する前に、MarsDawn › 設定 › メモフォルダでメモフォルダを選んでください。メモはそのフォルダの <code>Inbox.md</code> に追加されます。</p>
-
-  <h3>設定はどこにありますか？</h3>
-  <p>MarsDawn › 設定（<kbd>⌘,</kbd>）に、外観モード、イメージ、メモフォルダ、フォルダへのアクセス、プレビューのテーマがあります。</p>
-
-  <h3>返金してもらうには？</h3>
-  <p>購入は Apple が処理します。<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> で返金を申請してください。</p>
-</section>
-""",
+        "body": k.render_legal_body("support", "ja"),
     }
     pages['privacy'] = {
         "title": 'プライバシーポリシー · MarsDawn',

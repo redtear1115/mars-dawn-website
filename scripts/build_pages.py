@@ -40,12 +40,12 @@ BREW_TAP_INSTALL = "brew tap redtear1115/tap && brew install marsdawn"
 AVAILABILITY = "https://schema.org/PreOrder"
 
 # Pages rendered from a Markdown source through the kit (issue #33), instead of hand-written
-# HTML: currently just privacy, in every locale it has. Each one's text is
+# HTML: privacy and support, in every locale each has. Each one's text is
 # content/legal/<slug>.<locale>.md; scripts/render_legal.py renders that through MarsDawnKit's
 # MarkdownRenderer (the app's own preview renderer) and caches the result at
 # content/legal/<slug>.<locale>.rendered.html, which is what this reads at every ordinary
 # build — no Swift needed here, so the site still builds on Ubuntu CI.
-LEGAL_PAGES = {"privacy"}
+LEGAL_PAGES = {"privacy", "support"}
 
 
 def render_legal_body(slug: str, locale: str) -> str:
@@ -200,6 +200,7 @@ UI = {
         "consent_text": "This site uses analytics cookies to see how visitors use it. They stay off unless you accept.",
         "consent_accept": "Accept", "consent_decline": "Decline", "consent_aria": "Cookie consent",
         "cookie_settings": "Cookie settings",
+        "view_markdown_source": "View the Markdown source",
     },
     "zh-hant": {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
@@ -226,6 +227,7 @@ UI = {
         "consent_text": "本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。",
         "consent_accept": "接受", "consent_decline": "拒絕", "consent_aria": "Cookie 同意設定",
         "cookie_settings": "Cookie 設定",
+        "view_markdown_source": "查看 Markdown 原始檔",
     },
 }
 
@@ -369,102 +371,12 @@ PAGES = {
     ("en", "support"): {
         "title": "Support · MarsDawn",
         "description": "Get help with MarsDawn, the Markdown editor for macOS.",
-        "body": f"""
-<section class="intro">
-  <h1>Support</h1>
-  <p>Help with MarsDawn, the Markdown editor for macOS.</p>
-</section>
-
-<section class="contact">
-  <h2>Write to us</h2>
-  <a class="email" href="mailto:{EMAIL}?subject=MarsDawn%20support">{EMAIL}</a>
-  <p>Please include your macOS version and your MarsDawn version (MarsDawn › About MarsDawn). If something looks wrong, a screenshot or a small sample document helps a lot.</p>
-</section>
-
-<section class="faq">
-  <h2>Common questions</h2>
-
-  <h3>What do I need to run MarsDawn?</h3>
-  <p>A Mac with macOS 26 Tahoe or later, on Apple silicon or Intel.</p>
-
-  <h3>How do I switch between the editor and the preview?</h3>
-  <p>Press <kbd>⌘1</kbd> for the source only, <kbd>⌘2</kbd> for side by side, and <kbd>⌘3</kbd> for the preview only. The same choices are in the View menu and the toolbar.</p>
-
-  <h3>An image in my document doesn't show.</h3>
-  <ul>
-    <li><strong>Image on your Mac:</strong> save the document first, then click <em>Grant Folder Access…</em> in the preview and choose the folder that holds the image. MarsDawn remembers the folder. You can review granted folders in MarsDawn › Settings › Folder Access.</li>
-    <li><strong>Image from the web:</strong> web images are blocked until you click <em>Load Images</em> at the top of the preview. To always load them, turn on <em>Load remote images automatically</em> in Settings.</li>
-  </ul>
-
-  <h3>How do I add an image?</h3>
-  <p>Drag it into the editor, or paste it. The document must be saved first: MarsDawn copies the image into an <code>assets</code> folder next to the document and writes the Markdown link for you.</p>
-
-  <h3>A Mermaid diagram shows an error.</h3>
-  <p>MarsDawn shows the diagram's source with the first line of Mermaid's error message underneath. Check the line it names, for example for an arrow with nothing after it or a bracket that isn't closed.</p>
-
-  <h3>How do I make a PDF?</h3>
-  <p>Choose File › Export as PDF… (<kbd>⌥⌘E</kbd>). The PDF uses the light version of your preview theme and is split into pages, whichever layout you are in. File › Print… prints the same pages.</p>
-
-  <h3>How do I use MarsDawn with Siri or Shortcuts?</h3>
-  <p>Open the Shortcuts app and search for MarsDawn to find <em>New Markdown Document</em>, <em>Add Note to Inbox</em> and <em>Open Recent Document</em>. Before adding notes, choose a notes folder in MarsDawn › Settings › Notes Folder. Notes are added to <code>Inbox.md</code> in that folder.</p>
-
-  <h3>Where are my settings?</h3>
-  <p>MarsDawn › Settings (<kbd>⌘,</kbd>) has appearance, images, the notes folder, folder access and the preview theme.</p>
-
-  <h3>How do I get a refund?</h3>
-  <p>Purchases are handled by Apple. Request a refund at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
-</section>
-""",
+        "body": render_legal_body("support", "en"),
     },
     ("zh-hant", "support"): {
         "title": "支援 · MarsDawn",
         "description": "MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。",
-        "body": f"""
-<section class="intro">
-  <h1>支援</h1>
-  <p>macOS Markdown 編輯器 MarsDawn 的使用說明。</p>
-</section>
-
-<section class="contact">
-  <h2>寫信給我們</h2>
-  <a class="email" href="mailto:{EMAIL}?subject=MarsDawn%20support">{EMAIL}</a>
-  <p>請附上你的 macOS 版本與 MarsDawn 版本（MarsDawn › 關於 MarsDawn）。如果畫面看起來不對，附上截圖或一份小的範例文件會很有幫助。</p>
-</section>
-
-<section class="faq">
-  <h2>常見問題</h2>
-
-  <h3>MarsDawn 需要什麼環境？</h3>
-  <p>macOS 26 Tahoe 或更新版本的 Mac，Apple 晶片或 Intel 皆可。</p>
-
-  <h3>怎麼切換編輯器與預覽？</h3>
-  <p>按 <kbd>⌘1</kbd> 只看原始碼、<kbd>⌘2</kbd> 左右並排、<kbd>⌘3</kbd> 只看預覽。「顯示方式」選單和工具列也有相同選項。</p>
-
-  <h3>文件裡的圖片沒有顯示。</h3>
-  <ul>
-    <li><strong>Mac 上的圖片：</strong>先儲存文件，再按預覽中的「授權資料夾存取⋯」，選擇圖片所在的資料夾。MarsDawn 會記住這個資料夾，你可以到 MarsDawn › 設定⋯ › 資料夾存取查看。</li>
-    <li><strong>網路上的圖片：</strong>網路圖片在你按下預覽上方的「載入圖片」之前不會載入。想要一律載入，可在設定中開啟「自動載入網路圖片」。</li>
-  </ul>
-
-  <h3>怎麼加入圖片？</h3>
-  <p>把圖片拖進編輯器，或直接貼上。文件需要先儲存：MarsDawn 會把圖片複製到文件旁的 <code>assets</code> 資料夾，並幫你寫好 Markdown 連結。</p>
-
-  <h3>Mermaid 圖表顯示錯誤。</h3>
-  <p>MarsDawn 會顯示圖表的原始碼，下方附上 Mermaid 錯誤訊息的第一行。請檢查訊息指出的那一行，例如箭頭後面缺了目標，或括號沒有閉合。</p>
-
-  <h3>怎麼產生 PDF？</h3>
-  <p>選擇「檔案 › 輸出為 PDF⋯」（<kbd>⌥⌘E</kbd>）。不論目前是哪種版面，PDF 都會使用預覽主題的淺色版本並自動分頁。「檔案 › 列印⋯」會印出相同的頁面。</p>
-
-  <h3>怎麼搭配 Siri 或捷徑使用？</h3>
-  <p>打開「捷徑」App 搜尋 MarsDawn，就能找到「新增 Markdown 文件」、「新增筆記到收件匣」與「打開最近的文件」。要新增筆記之前，請先到 MarsDawn › 設定⋯ › 筆記資料夾選擇資料夾，筆記會加到該資料夾的 <code>Inbox.md</code>。</p>
-
-  <h3>設定在哪裡？</h3>
-  <p>MarsDawn › 設定⋯（<kbd>⌘,</kbd>），包含外觀、圖片、筆記資料夾、資料夾存取與預覽主題。</p>
-
-  <h3>怎麼申請退款？</h3>
-  <p>購買由 Apple 處理，請到 <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> 申請退款。</p>
-</section>
-""",
+        "body": render_legal_body("support", "zh-hant"),
     },
 }
 
@@ -4241,8 +4153,8 @@ def _render_block(node: _Node) -> str:
         inner = _render_children(node.children).rstrip("\n")
         return "\n".join(("> " + line) if line else ">" for line in inner.split("\n")) + "\n\n"
     if tag in ("strong", "em", "code", "kbd", "a"):
-        # An inline element used directly as a block child (e.g. the support
-        # page's standalone <a class="email">). Render it as its own paragraph.
+        # An inline element used directly as a block child (e.g. a standalone
+        # <a> outside any <p>). Render it as its own paragraph.
         text = _render_inline([node]).strip()
         return (text + "\n\n") if text else ""
     raise MarkdownConversionError(f"unsupported tag <{tag}>")
@@ -4409,6 +4321,13 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = add_toc(locale, slug, main_html)
     elif slug != "index":
         main_html = add_h2_ids(locale, slug, page, main_html)
+    if slug in LEGAL_PAGES:
+        # A visible link to this page's own .md mirror (issue #33), so a reader can see the
+        # Markdown source MarsDawnKit rendered this from. It sits right after the kit-rendered
+        # content, outside render_legal_body's own markup, so it's never part of the Markdown
+        # source itself and never leaks into the .md mirror (page_markdown converts only
+        # page["body"], which this isn't appended to).
+        main_html += f'\n<p class="markdown-source"><a href="{md_path(locale, slug)}">{ui["view_markdown_source"]}</a></p>\n'
     # Two rows, the same on every page (#65): the site's links, then a meta line. The home page's meta
     # line is the origin mark alone, because the closing band just above already says the tagline and
     # the store line. The origin mark is deliberately untranslated, as on Futari's site.
