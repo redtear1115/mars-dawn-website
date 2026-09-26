@@ -395,7 +395,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
 </ul>
 <h2>试用结束之后</h2>
-<p>如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读、编辑、导出或打印文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能把它们导出成 PDF。<a href="/zh-hans/pay-once/">试用与解锁页面</a>有三个阶段的对照表。</p>
+<p>如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读、编辑、导出或打印文稿：文稿会打开，但内容会被遮住。你的文件保持原样，“快速查看”仍然可以显示它们，免费的命令行工具也仍然可以把它们导出为 PDF。<a href="/zh-hans/pay-once/">试用与解锁页面</a>列出了三个阶段的对照表。</p>
 """,
     }
     pages['markdown-to-pdf'] = {
@@ -480,7 +480,7 @@ marsdawn --version</code></pre>
 <h2>怎么运作</h2>
 <ol class="loop-steps">
   <li><strong>免费下载。</strong> 在 Mac App Store 免费下载 MarsDawn。</li>
-  <li><strong>14 天，全部都能用。</strong> 开始试用后，14 天内 MarsDawn 的所有功能都能使用：所有主题与布局、PDF 导出与打印，以及 Siri 和快捷指令操作。访达的“快速查看”不论有没有试用都能用。</li>
+  <li><strong>14 天，全部都能用。</strong> 开始试用后，14 天内 MarsDawn 的所有功能都能使用：所有主题与布局、PDF 导出与打印，以及 Siri 和快捷指令操作。无论是否试用，访达中的“快速查看”都能使用。</li>
   <li><strong>买一次就解锁。</strong> 试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。</li>
 </ol>
 <ul>
@@ -489,13 +489,13 @@ marsdawn --version</code></pre>
 </ul>
 <h2>各阶段能做什么</h2>
 <!--compare:pay-once-states-->
-<p>开始试用之前，MarsDawn 会先显示免费试用的画面。开始试用不用付费。</p>
-<p>试用结束后，在 MarsDawn 里打开的 PDF 文件也一样会被锁住。</p>
+<p>开始试用之前，MarsDawn 会先显示免费试用页面。开始试用不收费。</p>
+<p>试用结束后，在 MarsDawn 中打开的 PDF 文件也会同样被锁定。</p>
 <h2>如果没有解锁</h2>
 <ul>
   <li>14 天后，在你解锁之前，无法在 MarsDawn 中阅读、编辑、导出或打印文稿。文稿仍会打开，但内容会被遮住。</li>
   <li>你的文件不会有任何改变。它们就是你 Mac 上的一般文件，在访达中用“快速查看”依然看得到。</li>
-  <li>免费的 <a href="/zh-hans/cli/"><code>marsdawn</code> 命令行工具</a>不受试用影响，依然能把它们导出成 PDF。</li>
+  <li>免费的 <a href="/zh-hans/cli/"><code>marsdawn</code> 命令行工具</a>不受试用影响，仍然可以把它们导出为 PDF。</li>
   <li>如果试用结束时有文稿正开在 MarsDawn 里，你输入的文本不会遗失，可以用“文件”▸“保存为…”保存。</li>
 </ul>
 """,
