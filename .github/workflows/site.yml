@@ -62,9 +62,9 @@ jobs:
       # first and requires the check's own message for it.
       # TODO(website #77 follow-up): this still passes if public/themes/v1/ is deleted outright
       # after the gallery has shipped ("index.json must never disappear" isn't enforced yet). That
-      # needs a ship signal this repo doesn't have — AVAILABILITY (below) tracks Mac App Store
-      # launch, a different and unrelated launch, so it isn't one. Once a real "gallery has shipped"
-      # signal exists, make absence fail too.
+      # needs a ship signal this repo doesn't have — AVAILABILITY (scripts/build_pages.py) tracks
+      # Mac App Store launch, a different and unrelated launch, so it isn't one. Once a real
+      # "gallery has shipped" signal exists, make absence fail too.
       - name: Theme index is present and valid whenever the gallery has shipped
         run: python3 scripts/check_theme_index.py --self-test && python3 scripts/check_theme_index.py
 

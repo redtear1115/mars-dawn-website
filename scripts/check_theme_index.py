@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Checks public/themes/v1/index.json, the theme gallery's published index.
+r"""Checks public/themes/v1/index.json, the theme gallery's published index.
 
 Usage:
     python3 scripts/check_theme_index.py [--root public]
@@ -24,15 +24,18 @@ field, with nothing invented beyond it:
   - `author`: an object with a `name` string (`github` is shown in the example but §5.1 never says
     it's required, so it isn't checked).
   - `files`: an object with `theme.json` and `theme.css` entries, each an object with a `path`
-    string and a `sha256` string of 64 lowercase hex characters (a sha256 digest's fixed encoded
-    length, not an extra rule).
+    string and a `sha256` string of exactly 64 lowercase hex characters (a sha256 digest's fixed
+    encoded length, not an extra rule).
   - `previews`: an object with `light` and `dark` string paths (the app reads
     `preview-light.png`/`preview-dark.png`; §5.1's URL list).
-  - Every `path` (in `files.*` and `previews.*`) must be a safe relative path: no leading `/`, no
-    `://` scheme, no `\`, no `//`, and no `..` segment. §5.1: "The base URL .../themes/v1/ is fixed
-    in the app. Paths from the index are resolved against it, and anything outside that prefix is
-    rejected" — this is what makes a resolved path stay under that prefix; the check doesn't chase a
-    fuller path-safety spec than that sentence states.
+  - Every `path` (in `files.*` and `previews.*`) must resolve under `/themes/v1/` and nowhere else
+    (§5.1: "Paths from the index are resolved against [the base URL], and anything outside that
+    prefix is rejected"). `path_is_safe` below decodes percent-escapes exactly once, rejects a
+    decode failure or a decoded NUL/control character, rejects a `.` or `..` path segment, rejects
+    any URL scheme (`c:`, `javascript:`, ...), rejects a leading `/`, a `//`, and a `\`, and finally
+    resolves the raw value against `https://example.invalid/themes/v1/` with `urllib.parse.urljoin`
+    (the same mechanics a WHATWG `URL` resolution uses) and requires the result to still start with
+    that prefix — a last check for anything the earlier rules didn't anticipate.
 - `revoked`, when present: a list; each entry an object with `id`, `reason`, `revokedAt` as
   non-empty strings (§5.1's example; §5.3 never adds more fields).
 
@@ -40,10 +43,17 @@ This is what issue #77 asks for: the check used to run only `if -f index.json`, 
 nothing before the gallery shipped and could keep validating nothing even after, if the file were
 ever accidentally dropped, or its shape drifted, without the change being flagged.
 
-`--self-test` plants one break per rule above (`RULES` below) in a copy of a valid fixture, and
-requires the check's own message for that break to name that rule and no other rule's break to also
-report; it also checks that an unbroken index, and an absent `public/themes/v1/`, both pass first,
-so a check that can't pass can't pass as catching everything.
+`--self-test` plants one break per condition in `RULES` below, in a copy of a valid fixture, and
+requires the check's own report of that break to be **exactly one problem**, carrying that
+condition's own words — not just any problem, and not that problem plus others, so a plant can't be
+credited to the wrong rule or hide a second broken rule behind it. It also checks that an unbroken
+index, and an absent `public/themes/v1/`, both pass first, so a check that can't pass can't pass as
+catching everything. Two conditions have no dedicated plant, both documented at their `RULES` entry
+instead: an unreadable (as opposed to merely malformed or absent) `index.json` isn't something a
+plant can portably arrange (permissions differ by OS and by whether CI runs as root); and the final
+`urljoin` assertion above is a backstop that, given the rules that already run before it, no known
+input reaches while still failing only it — every attempt to construct one is already caught by an
+earlier, more specific rule first.
 
 **Ship signal (not covered): absence still passes.** If `public/themes/v1/` is deleted outright
 after the gallery has shipped, this check still passes (nothing to validate, by the same rule that
@@ -59,11 +69,13 @@ import json
 import re
 import sys
 import tempfile
+import urllib.parse
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
+RESOLVE_BASE = "https://example.invalid/themes/v1/"
 
 VALID_INDEX = {
     "schemaVersion": 1,
@@ -106,32 +118,59 @@ def is_nonempty_str(value) -> bool:
     return isinstance(value, str) and bool(value)
 
 
-def path_is_safe(value) -> bool:
-    """A relative path that, resolved against .../themes/v1/, can't land outside it."""
+def path_is_safe(value):
+    """Returns (True, "") for a path safe to resolve under /themes/v1/, or (False, reason)."""
     if not is_nonempty_str(value):
-        return False
-    if value.startswith("/"):
-        return False
-    if "://" in value:
-        return False
-    if "\\" in value:
-        return False
-    if "//" in value:
-        return False
-    if ".." in value.split("/"):
-        return False
-    return True
+        return False, "must be a non-empty string"
+
+    try:
+        decoded = urllib.parse.unquote(value, encoding="utf-8", errors="strict")
+    except UnicodeDecodeError:
+        return False, "must decode as valid UTF-8 percent-encoding"
+
+    if any(ord(ch) < 0x20 or ord(ch) == 0x7F for ch in decoded):
+        return False, "must not decode to a NUL or control character"
+
+    if any(segment in (".", "..") for segment in decoded.split("/")):
+        return False, "must not contain a '.' or '..' path segment"
+
+    if SCHEME_RE.match(decoded):
+        return False, "must not include a URL scheme"
+
+    if decoded.startswith("/"):
+        return False, "must not be an absolute path"
+
+    if "//" in decoded:
+        return False, "must not contain a double slash"
+
+    if "\\" in decoded:
+        return False, "must not contain a backslash"
+
+    resolved = urllib.parse.urljoin(RESOLVE_BASE, value)
+    if not resolved.startswith(RESOLVE_BASE):
+        return False, "must resolve under themes/v1/"
+
+    return True, ""
+
+
+def check_path(problems, where, value):
+    ok, reason = path_is_safe(value)
+    if not ok:
+        problems.append(f"{where}: {reason}")
 
 
 def check_file_entry(problems, where, entry, kind):
     if not isinstance(entry, dict):
         problems.append(f"{where}: files[{kind!r}] must be an object")
         return
-    if not path_is_safe(entry.get("path")):
-        problems.append(f"{where}: files[{kind!r}].path must be a safe relative path under themes/v1/")
+    check_path(problems, f"{where}: files[{kind!r}].path", entry.get("path"))
     sha = entry.get("sha256")
-    if not isinstance(sha, str) or not SHA256_RE.match(sha):
-        problems.append(f"{where}: files[{kind!r}].sha256 must be 64 lowercase hex characters")
+    if not isinstance(sha, str):
+        problems.append(f"{where}: files[{kind!r}].sha256 must be a string")
+    elif len(sha) != 64:
+        problems.append(f"{where}: files[{kind!r}].sha256 must be exactly 64 characters")
+    elif not re.fullmatch(r"[0-9a-f]{64}", sha):
+        problems.append(f"{where}: files[{kind!r}].sha256 must be lowercase hex only")
 
 
 def check_theme(problems, where, theme):
@@ -169,10 +208,8 @@ def check_theme(problems, where, theme):
     if not isinstance(previews, dict) or "light" not in previews or "dark" not in previews:
         problems.append(f"{where}: previews must be an object with 'light' and 'dark' entries")
     else:
-        if not path_is_safe(previews.get("light")):
-            problems.append(f"{where}: previews.light must be a safe relative path under themes/v1/")
-        if not path_is_safe(previews.get("dark")):
-            problems.append(f"{where}: previews.dark must be a safe relative path under themes/v1/")
+        check_path(problems, f"{where}: previews.light", previews.get("light"))
+        check_path(problems, f"{where}: previews.dark", previews.get("dark"))
 
 
 def check_revoked_entry(problems, where, entry):
@@ -202,6 +239,7 @@ def check(root: Path) -> list:
     try:
         text = index_path.read_text()
     except OSError as error:
+        # Not covered by --self-test: see the module docstring.
         return [f"{index_path}: unreadable ({error})"]
 
     try:
@@ -256,10 +294,10 @@ def read_index(root: Path):
     return json.loads((root / "themes" / "v1" / "index.json").read_text())
 
 
-# Each rule: a short name, a mutator that damages one fixture field, and the word(s) that must
-# appear in the check's own report of that break. `run` gets a fresh copy of VALID_INDEX and the
-# fixture root; it plants the break itself (rather than editing files) so the same mutator also
-# backs the "sabotage the rule itself" table in the PR, run by hand outside this file.
+# Each rule: a short name, a mutator that damages exactly one condition in an otherwise-valid
+# fixture, and the word(s) that must appear in the check's single resulting problem. `self_test`
+# requires len(problems) == 1 for every one of these: a plant that also breaks a second condition,
+# or that a second, unrelated bug also breaks, both fail loudly instead of passing quietly.
 def rule_missing_index(root):
     (root / "themes" / "v1" / "index.json").unlink()
 
@@ -332,21 +370,39 @@ def rule_theme_author(root):
     write_index(root, data)
 
 
-def rule_theme_files_missing(root):
+def rule_theme_files_missing_theme_json(root):
+    data = read_index(root)
+    del data["themes"][0]["files"]["theme.json"]
+    write_index(root, data)
+
+
+def rule_theme_files_missing_theme_css(root):
     data = read_index(root)
     del data["themes"][0]["files"]["theme.css"]
     write_index(root, data)
 
 
-def rule_theme_file_path_unsafe(root):
+def rule_theme_file_entry_not_object(root):
     data = read_index(root)
-    data["themes"][0]["files"]["theme.json"]["path"] = "../../etc/passwd"
+    data["themes"][0]["files"]["theme.json"] = "nope"
     write_index(root, data)
 
 
-def rule_theme_file_sha256(root):
+def rule_theme_file_sha256_not_string(root):
     data = read_index(root)
-    data["themes"][0]["files"]["theme.json"]["sha256"] = "not-hex"
+    data["themes"][0]["files"]["theme.json"]["sha256"] = 12345
+    write_index(root, data)
+
+
+def rule_theme_file_sha256_wrong_length(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["sha256"] = "a" * 63
+    write_index(root, data)
+
+
+def rule_theme_file_sha256_uppercase(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["sha256"] = "A" * 64
     write_index(root, data)
 
 
@@ -356,15 +412,33 @@ def rule_theme_previews_missing(root):
     write_index(root, data)
 
 
-def rule_theme_preview_path_unsafe(root):
+def rule_theme_previews_missing_light(root):
     data = read_index(root)
-    data["themes"][0]["previews"]["light"] = "/themes/v1/../escaped.png"
+    del data["themes"][0]["previews"]["light"]
+    write_index(root, data)
+
+
+def rule_theme_previews_missing_dark(root):
+    data = read_index(root)
+    del data["themes"][0]["previews"]["dark"]
+    write_index(root, data)
+
+
+def rule_theme_preview_dark_unsafe(root):
+    data = read_index(root)
+    data["themes"][0]["previews"]["dark"] = "a//b.png"
     write_index(root, data)
 
 
 def rule_revoked_not_list(root):
     data = read_index(root)
     data["revoked"] = "nope"
+    write_index(root, data)
+
+
+def rule_revoked_entry_not_object(root):
+    data = read_index(root)
+    data["revoked"][0] = "nope"
     write_index(root, data)
 
 
@@ -386,6 +460,72 @@ def rule_revoked_entry_revoked_at(root):
     write_index(root, data)
 
 
+# path_is_safe's own conditions, isolated one at a time: each fixture value trips exactly the
+# named condition and no other (a value with a leading '/' but no '..', a double slash with no
+# leading '/', and so on), which is exactly what verify2's round-2 review found missing (its
+# `/themes/v1/../escaped.png` preview plant tripped the '..' rule, not the leading-'/' rule it was
+# meant to isolate).
+def rule_path_not_string(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = 12345
+    write_index(root, data)
+
+
+def rule_path_decode_failure(root):
+    data = read_index(root)
+    # A lone continuation byte: not valid UTF-8 on its own.
+    data["themes"][0]["files"]["theme.json"]["path"] = "a%80b.json"
+    write_index(root, data)
+
+
+def rule_path_control_char(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "a%00b.json"
+    write_index(root, data)
+
+
+def rule_path_dot_segment(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "a/../b.json"
+    write_index(root, data)
+
+
+def rule_path_percent_encoded_dot_segment(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "%2e%2e/%2e%2e/escaped.css"
+    write_index(root, data)
+
+
+def rule_path_scheme_drive_letter(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "c:/escaped.css"
+    write_index(root, data)
+
+
+def rule_path_scheme_javascript(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "javascript:alert(1)"
+    write_index(root, data)
+
+
+def rule_path_leading_slash(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "/escaped.json"
+    write_index(root, data)
+
+
+def rule_path_double_slash(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "a//escaped.json"
+    write_index(root, data)
+
+
+def rule_path_backslash(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "a\\escaped.json"
+    write_index(root, data)
+
+
 RULES = [
     ("missing index.json", rule_missing_index, ["missing"]),
     ("malformed JSON", rule_malformed_json, ["not valid JSON"]),
@@ -400,15 +540,31 @@ RULES = [
     ("theme.name wrong type", rule_theme_name, ["name must be an object"]),
     ("theme.summary missing 'en'", rule_theme_summary, ["summary must be an object"]),
     ("theme.author wrong type", rule_theme_author, ["author must be an object"]),
-    ("theme.files missing theme.css", rule_theme_files_missing, ["files must be an object with 'theme.json' and 'theme.css'"]),
-    ("theme.files path traversal", rule_theme_file_path_unsafe, ["path must be a safe relative path"]),
-    ("theme.files sha256 not hex", rule_theme_file_sha256, ["sha256 must be 64 lowercase hex characters"]),
+    ("theme.files missing 'theme.json' key", rule_theme_files_missing_theme_json, ["files must be an object with 'theme.json' and 'theme.css'"]),
+    ("theme.files missing 'theme.css' key", rule_theme_files_missing_theme_css, ["files must be an object with 'theme.json' and 'theme.css'"]),
+    ("theme.files entry not an object", rule_theme_file_entry_not_object, ["files['theme.json'] must be an object"]),
+    ("theme.files.sha256 not a string", rule_theme_file_sha256_not_string, ["sha256 must be a string"]),
+    ("theme.files.sha256 wrong length", rule_theme_file_sha256_wrong_length, ["sha256 must be exactly 64 characters"]),
+    ("theme.files.sha256 uppercase", rule_theme_file_sha256_uppercase, ["sha256 must be lowercase hex only"]),
     ("theme.previews missing", rule_theme_previews_missing, ["previews must be an object"]),
-    ("theme.previews.light escapes v1/", rule_theme_preview_path_unsafe, ["previews.light must be a safe relative path"]),
+    ("theme.previews missing 'light' key", rule_theme_previews_missing_light, ["previews must be an object with 'light' and 'dark'"]),
+    ("theme.previews missing 'dark' key", rule_theme_previews_missing_dark, ["previews must be an object with 'light' and 'dark'"]),
+    ("theme.previews.dark unsafe path", rule_theme_preview_dark_unsafe, ["previews.dark", "double slash"]),
     ("revoked not a list", rule_revoked_not_list, ["revoked must be a list"]),
+    ("revoked entry not an object", rule_revoked_entry_not_object, ["revoked[0]", "is not an object"]),
     ("revoked[].id missing", rule_revoked_entry_id, ["revoked[0]", "id must be a non-empty string"]),
     ("revoked[].reason missing", rule_revoked_entry_reason, ["revoked[0]", "reason must be a non-empty string"]),
     ("revoked[].revokedAt missing", rule_revoked_entry_revoked_at, ["revoked[0]", "revokedAt must be a non-empty string"]),
+    ("path: not a string", rule_path_not_string, ["path", "must be a non-empty string"]),
+    ("path: invalid percent-encoding", rule_path_decode_failure, ["path", "must decode as valid UTF-8"]),
+    ("path: decodes to a control character", rule_path_control_char, ["path", "must not decode to a NUL or control character"]),
+    ("path: literal '..' segment", rule_path_dot_segment, ["path", "must not contain a '.' or '..' path segment"]),
+    ("path: percent-encoded '..' segment", rule_path_percent_encoded_dot_segment, ["path", "must not contain a '.' or '..' path segment"]),
+    ("path: drive-letter scheme", rule_path_scheme_drive_letter, ["path", "must not include a URL scheme"]),
+    ("path: javascript: scheme", rule_path_scheme_javascript, ["path", "must not include a URL scheme"]),
+    ("path: leading slash", rule_path_leading_slash, ["path", "must not be an absolute path"]),
+    ("path: double slash", rule_path_double_slash, ["path", "must not contain a double slash"]),
+    ("path: backslash", rule_path_backslash, ["path", "must not contain a backslash"]),
 ]
 
 
@@ -448,9 +604,12 @@ def self_test() -> int:
             root = make_fixture(tmp)
             rule(root)
             problems = check(root)
-            joined = " ".join(problems)
-            if not problems or not all(word in joined for word in words):
-                print(f"self-test: planted {name!r}; wanted {words!r}, got {problems}")
+            if len(problems) != 1:
+                print(f"self-test: planted {name!r}; wanted exactly 1 problem, got {problems}")
+                failures += 1
+                continue
+            if not all(word in problems[0] for word in words):
+                print(f"self-test: planted {name!r}; wanted {words!r} in the single problem, got {problems[0]!r}")
                 failures += 1
 
     total = 3 + len(RULES)
