@@ -1,0 +1,47 @@
+{
+  "kit_tag": "0.5.2",
+  "pages": {
+    "privacy.en.md": {
+      "rendered": "privacy.en.rendered.html",
+      "rendered_sha256": "89281a1370f349e70f90bf0cfc6d0ddf363c9f17568c729c334642ea861f1608",
+      "source_sha256": "5f79543f55df1518ce83e8584fbfbd19d2a408357c0e0342577cfb5dffc29a32"
+    },
+    "privacy.ja.md": {
+      "rendered": "privacy.ja.rendered.html",
+      "rendered_sha256": "e252291c64848f8d3136aa8c3ccdd652eff9c84240f3fe68d3cd95a60ab43295",
+      "source_sha256": "d4147a564c5932bf93dfe201ef531e7c6777030ee6de66554412f1eca17fbdde"
+    },
+    "privacy.zh-hans.md": {
+      "rendered": "privacy.zh-hans.rendered.html",
+      "rendered_sha256": "c645299af9061524e38e2fd90a175a03c95d7d70d0bd423d145ecc901ece6d2d",
+      "source_sha256": "3911b22b89a4a09fe779d52051c1d3f59a62324a76c3cf0c61b4bd20dec4501b"
+    },
+    "privacy.zh-hant.md": {
+      "rendered": "privacy.zh-hant.rendered.html",
+      "rendered_sha256": "0f3d7203b61d238cfb048609c260fc2b91b97db0c3951b63120bb9d405f0e6eb",
+      "source_sha256": "aa2732f2555f26bbee41177beadf3b44d8374f0ed393080e12809497627d3f6b"
+    },
+    "support.en.md": {
+      "rendered": "support.en.rendered.html",
+      "rendered_sha256": "96cbedfbf6351b3f712d9b6b0af629860f51c0d75ba5e49859dcdddc0255d542",
+      "source_sha256": "f9494356f53aa1bfad51540336b238f62bfa40c28182e674e58ac9f7a4c6b3b3"
+    },
+    "support.ja.md": {
+      "rendered": "support.ja.rendered.html",
+      "rendered_sha256": "2fc4d74d2c0af798481138c548c98cb874b6c687e27ff287e2826044a92a818e",
+      "source_sha256": "7525fb3da3582d00103cb07a6f548783062622939eb2d92012d1c6c85033a447"
+    },
+    "support.zh-hans.md": {
+      "rendered": "support.zh-hans.rendered.html",
+      "rendered_sha256": "2705fb02cc7237e46bd430107fc4c01b741ac25ad13ffc237571cd7ab9275298",
+      "source_sha256": "70a055c60fd056439e4947b69d040e12796e2dc8b7803b9a463211aed2731ccb"
+    },
+    "support.zh-hant.md": {
+      "rendered": "support.zh-hant.rendered.html",
+      "rendered_sha256": "1960dc0ac037fd398a5695c2da127eefd70fe1ab849070e5086e403f3c69cc84",
+      "source_sha256": "5779c3532ac11ef3252bc6455cd7455ae8341f33d965b27c2cacc5ae7d08b904"
+    }
+  },
+  "preview_css_sha256": "b4bac0e20f8f233aeac9d4c3fe0facc02f6abf0e71f340867220517992e4ec50",
+  "themes_css_sha256": "437e4f48e3c666c6ec04127925a1f420227398df6523c45b89201a0c0a673a12"
+}

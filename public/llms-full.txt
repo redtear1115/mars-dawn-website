@@ -18,6 +18,8 @@ The page shows a working MarsDawn window over part of the app's Welcome guide. I
 2. **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
 3. **The agent revises.** Ask for changes. Open the revised file and read it the same way.
 
+[How to review what your agent hands back](/reading-agent-output/).
+
 ## Do this now
 
 The free `marsdawn` command-line tool is ready today. Install it with Homebrew:
@@ -109,11 +111,28 @@ In this screenshot:
 ## How it works
 
 1. **Download it free.** MarsDawn is free to download from the Mac App Store.
-2. **Try all of it for 14 days.** Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.
+2. **Try all of it for 14 days.** Start the trial and everything in MarsDawn works for 14 days: every theme and layout, PDF export and printing, and the Siri and Shortcuts actions. Quick Look in Finder works with or without the trial.
 3. **Unlock it once.** To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.
 
 - The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.
 - There is no account. MarsDawn never asks you to create one.
+
+## What works when
+
+|  | Trial (days 1–14) | Trial ended, not unlocked | Unlocked |
+|---|---|---|---|
+| Open a document in MarsDawn | Yes | Opens, with the content covered | Yes |
+| Read and edit in MarsDawn (source, preview, Mermaid, math) | Yes | No | Yes |
+| Export as PDF and print from MarsDawn | Yes | No | Yes |
+| Keep typed text with File ▸ Save As… | Yes | Yes, in a window open when the trial ended | Yes |
+| Siri and Shortcuts actions | Yes | No | Yes |
+| Quick Look in Finder, with Mermaid diagrams and math | Yes | Yes, unchanged | Yes |
+| `marsdawn export` (free command-line tool): PDF with diagrams and math | Yes | Yes, unchanged | Yes |
+| Your files on disk | As you saved them | As you saved them; the lock never changes them | As you saved them |
+
+Before you start the trial, MarsDawn shows the trial offer. Starting it costs nothing.
+
+PDF files you open in MarsDawn are locked the same way once the trial ends.
 
 ## If you don't unlock
 
@@ -217,7 +236,7 @@ In this screenshot:
 
 ## After the trial
 
-If you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
+If you don't unlock MarsDawn once the 14-day trial ends, you can't read, edit, export or print documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them. The [trial and unlock page](/pay-once/) sets all three stages side by side.
 ---
 
 ## Support
@@ -285,7 +304,7 @@ How MarsDawn, the Markdown editor for macOS, handles your information.
 
 Last updated 2026-09-23
 
-**The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
+> **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
 
 ## The website
 
@@ -382,7 +401,7 @@ MarsDawn is a Markdown editor for the Mac, on the Mac App Store. Open a `.md` fi
 - In Finder, press Space on a Markdown file for a Quick Look preview, diagrams included.
 - When you want to change something, the source is right there. MarsDawn is an editor, not only a viewer.
 
-If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent writes, you read it rendered, and it revises. See [the home page](/), and [marsdawn for agents](/cli/agents/) for letting an agent open files for you.
+If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent writes, you read it rendered, and it revises. See [the home page](/), and [marsdawn for agents](/cli/agents/) for letting an agent open files for you. For why that reading matters and how to review a plan, see [Reading what your agent hands back](/reading-agent-output/) and [Reviewing an agent plan in five minutes](/reviewing-agent-plans/).
 
 ## Next
 
@@ -588,6 +607,7 @@ marsdawn open notes.md --folder .
 - `path:line`: asks MarsDawn to land on that line. A column after it, as in `notes.md:120:8`, is ignored. If a file with the whole name exists, the argument is that file.
 - `--line <n>`: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.
 - Lines run from 1 to 999999999.
+- MarsDawn 1.0 opens the file at that line.
 - A folder argument opens in the window's sidebar instead of as a document: `marsdawn open .` shows the current folder. `--folder <path>` does the same alongside files. A window's sidebar shows one folder, so naming two is a usage error.
 - `--background`: open without bringing MarsDawn to the front.
 - `--json`: print a JSON result instead of text.
@@ -657,6 +677,7 @@ A reference for AI agents and scripts that call the `marsdawn` command-line tool
 - It doesn't replace an existing file unless you pass `--force`.
 - It doesn't load images from the web unless you pass `--allow-remote-images`, and then only over https.
 - `open` doesn't work without the MarsDawn app installed; it exits with code 3. `export` doesn't need the app. The app is on the [Mac App Store](https://apps.apple.com/app/id6812925073).
+- MarsDawn 1.0 opens the file at the line `open` names.
 - It runs on macOS only.
 
 ## export
@@ -702,7 +723,7 @@ marsdawn open notes.md --folder . --background --json
 - `path:line` names the line to land on. A column after it, as in `notes.md:120:8`, is ignored. An argument that names a file which exists is always that whole filename, so a file called `weird:12` opens as itself.
 - `--line <n>` names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.
 - Lines run from 1 to 999999999. Anything else is a usage error.
-- Lines were added in marsdawn 0.3.0.
+- Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file at that line.
 - A folder argument opens in the window's sidebar instead of as a document, so `marsdawn open .` shows the current folder; `--folder <path>` does the same alongside files. A window's sidebar shows one folder: naming two is a usage error, and so is using `--folder` twice, even for the same folder; the same folder given again as an argument counts once. `--line` with a folder is a usage error, since a folder has no line. There is no `-a`: passing it is a usage error that points at `--folder`.
 - `--background` opens without bringing MarsDawn to the front, for an agent that opens files while the person works elsewhere. The JSON is the same either way.
 - Folders and `--background` were added in marsdawn 0.5.1.
@@ -970,6 +991,7 @@ Once the PDF exists, a person opens it — in MarsDawn, or any PDF viewer — an
 - The three ways to call marsdawn — CLI, skill file, MCP server: [three ways in](/cli/mcp/).
 - Every field in the JSON result: [marsdawn for agents](/cli/agents/).
 - Why a person still needs to read what an agent wrote: [the case for review](/reviewing-ai-output/).
+- The longer case for reading agent output, and a checklist: [Reading what your agent hands back](/reading-agent-output/).
 
 ---
 
@@ -1086,6 +1108,7 @@ A screenshot freezes one screen's worth of a document that may run to several pa
 - The themes and layouts the export can come from: [preview themes and PDF export](/themes/).
 - Export from a script or an agent instead of the app: [marsdawn for agents](/cli/agents/).
 - Why a person still needs to read the document first: [the case for review](/reviewing-ai-output/).
+- Multi-agent handoffs are a natural source of PDFs to share: [Four agent design patterns and the documents each one hands you](/agent-design-patterns/).
 
 ---
 
@@ -1118,7 +1141,367 @@ Birgitta Böckeler, writing for Thoughtworks, draws the distinction plainly: “
 
 - How that review stays cheap for the agent's own context: [token-efficient review](/token-efficient-review/).
 - Handing the reviewed document to someone else: [sharing a PDF](/sharing-exported-pdfs/).
+- Why it's hard to read, and how to do it: [Reading what your agent hands back](/reading-agent-output/).
+- Why agents lay their plans out at all: [Anthropic says agents should be transparent — so who reads what they lay out?](/agent-transparency/)
 - What MarsDawn is, in one page: [the home page](/).
+
+---
+
+## Reading what your agent hands back
+
+Source: https://marsdawn.southern-light.dev/reading-agent-output/
+
+# Your agent's work comes back as a Markdown file.
+
+You ask a coding agent to plan a migration, write a spec or chase a bug. It works on its own for a while, then hands you a file: `plan.md`, `SPEC.md`, a progress report, a research summary. As far as you can check the work, that file is the work.
+
+**Whether the agent got it right, you find out by reading what it hands back. MarsDawn is a Mac app for that read.**
+
+## What people who build agents say
+
+Quoted as written; our reading follows.
+
+- Anthropic's “Building Effective Agents” (Erik S. and Barry Zhang, December 2024) gives three core principles for building agents. One is “Prioritize transparency by explicitly showing the agent’s planning steps.” It's written for people who build agents. From your side, that transparency is the plan you end up reading.
+- The same post: “Agents can then pause for human feedback at checkpoints or when encountering blockers.” Note the verb: *can*.
+- Chip Huyen, in “Agents” (January 2025), on why planning should be kept apart from execution: “Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it’s not going anywhere.” She also describes a failure where “The agent is convinced that it’s accomplished a task when it hasn’t.” Asked to put 50 people in 30 hotel rooms, it places 40 and insists it's done.
+- Andrew Ng, on the planning design pattern in The Batch (April 2024): “On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results.” That's a point about predictability, not a call for human review, and he expects planning to improve quickly.
+
+**Our inference, not theirs:** if an agent lays out its plan and stops at checkpoints, somebody reads that plan at the checkpoint, and usually that's you. If an agent can think it's finished when it isn't, its “done” report needs a reader too. None of these authors mention MarsDawn or endorse it or any other Markdown tool.
+
+## Why it's a harder read than it looks
+
+The file is long, and the part that matters is rarely near the top. It has Mermaid diagrams and formulas that are hard to follow as source. The agent may still be rewriting it while you're halfway down. It's often one of several files, sometimes across branches or worktrees. And when you find a problem, “the cache part looks off” leaves the agent guessing; “`docs/plan.md:42` drops the old table before the backfill finishes” doesn't.
+
+## Where MarsDawn helps
+
+- **Long files:** the Outline tab in the sidebar (⌃⌘S) lists the headings. Click one and both panes jump there.
+- **Diagrams and math:** Mermaid and KaTeX are drawn in the preview beside the source (⌘2), and the two panes scroll together.
+- **Rewritten while you read:** when the agent rewrites the file, MarsDawn reloads it and keeps your place, as long as you have no unsaved edits of your own.
+- **Several files:** open the agent's folder with File ▸ Open Folder… (⇧⌘O). New files show up in the Files tab within about a second, and for a git checkout the header names the branch or worktree.
+- **Exact feedback:** Edit ▸ Copy Reference (⌥⌘C) copies your place as `docs/plan.md:42`. Copy for AI (⌃⌥⌘C) adds the selected text under it. Paste either into the agent's chat.
+
+Two more for the loop: an agent can run `marsdawn open plan.md:42` to open the file in MarsDawn at line 42, the line it wants you to see first, and a reviewed file exports to PDF from the app or with the free `marsdawn export` command.
+
+MarsDawn has no AI model inside. It won't summarize the plan, grade it or tell you what's wrong. You do the reading; it keeps a long, changing file readable and lets you point at the exact line.
+
+## Review an agent's plan in five minutes
+
+This works in any editor.
+
+1. Read only the headings. Does the outline match what you asked for? A missing section usually means missing work.
+2. Find every place that says something is done, passing or verified, and check one yourself: open the file, run the test, count the rows.
+3. Look for steps that can't be undone: deleting data, migrations, force-pushes, anything that sends, pays or publishes. Those wait for your explicit yes.
+4. Read the diagrams rendered, and check each arrow against the text.
+5. List the files and systems the plan touches. Ask about anything you didn't request before it runs.
+6. Write feedback as place, problem, fix: “`plan.md:88`: the backfill runs after the drop. Swap steps 4 and 5.” One problem per line.
+
+Short on time? Do step 2. That's where an agent that thinks it's finished gets caught. The long version, with a worked example: [Reviewing an agent plan in five minutes](/reviewing-agent-plans/).
+
+## Try it
+
+MarsDawn is on the [Mac App Store](https://apps.apple.com/app/id6812925073). There's also the free `marsdawn` command-line tool:
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+It exports Markdown to PDF without the app, and `marsdawn open` lets your agent open files in MarsDawn for you.
+
+[Command Line](/cli/) · [marsdawn for agents](/cli/agents/) · Know before you buy: [What MarsDawn doesn't do](/limits/)
+
+## Next
+
+- The short case for reading AI output at all: [Why AI output still needs a human reader](/reviewing-ai-output/).
+- Keeping the agent's context small while you review: [token-efficient review](/token-efficient-review/).
+- Why agents lay their plans out at all: [Anthropic says agents should be transparent — so who reads what they lay out?](/agent-transparency/)
+- The checklist above, step by step with an example: [Reviewing an agent plan in five minutes](/reviewing-agent-plans/).
+- Which documents different kinds of agents hand you: [Four agent design patterns and the documents each one hands you](/agent-design-patterns/).
+
+## Sources
+
+- Erik S. and Barry Zhang, “Building Effective Agents,” Anthropic, December 19, 2024: [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) (quoted from the version online on 2026-09-26; the post now notes that much of the tooling it describes has changed since December 2024).
+- Chip Huyen, “Agents,” January 7, 2025: [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Andrew Ng, “Agentic Design Patterns Part 4, Planning,” The Batch, April 10, 2024: [https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/)
+
+---
+
+## Agent transparency
+
+Source: https://marsdawn.southern-light.dev/agent-transparency/
+
+# Anthropic says agents should be transparent — so who reads what they lay out?
+
+In December 2024 Anthropic published “Building Effective Agents,” a guide for people who build AI agents. Its summary lists three principles, and one of them is transparency. This post is about the other end of that principle: once an agent lays out its steps, somebody has to read them.
+
+**Transparency is something the agent does. Reading is something you do. Anthropic asks builders to show an agent's planning steps; for most people driving a coding agent, those steps arrive as a Markdown file that someone has to read at the right moment.**
+
+## What the guide says
+
+Erik S. and Barry Zhang sum up their advice like this:
+
+> “When implementing agents, we try to follow three core principles: Maintain simplicity in your agent's design. Prioritize transparency by explicitly showing the agent’s planning steps. Carefully craft your agent-computer interface (ACI) through thorough tool documentation and testing.”
+
+These are design principles for people who build agents, not instructions for the person using one. The principle asks for the steps to be shown. It doesn't say who reads them.
+
+The same post describes what an agent does once it has a task: “Once the task is clear, agents plan and operate independently, potentially returning to the human for further information or judgement.” And: “Agents can then pause for human feedback at checkpoints or when encountering blockers.” Look at the verbs, *potentially* and *can*. Checkpoints are described as something an agent can have, not something it must.
+
+## Most of the checking isn't done by you
+
+It's easy to overstate this, so here's what the guide actually puts first. The agent checks itself against the world: “During execution, it's crucial for the agents to gain “ground truth” from the environment at each step (such as tool call results or code execution) to assess its progress.” In that sentence, ground truth means test results and tool output. It doesn't mean a person.
+
+The guide is also direct about the risk: “The autonomous nature of agents means higher costs, and the potential for compounding errors.” Its answer is extensive testing in sandboxed environments, with guardrails. It doesn't say “read more carefully”.
+
+A person does come in later, in the appendix on coding agents: “However, whereas automated testing helps verify functionality, human review remains crucial for ensuring solutions align with broader system requirements.” That sentence is about code. The gap it points at is familiar from any agent, though: a test can tell you something works, not that it's what you meant.
+
+## Where the steps end up
+
+**From here on this is our reading, not Anthropic's.**
+
+If you use a coding agent day to day, its planning steps usually don't show up in a dashboard. They show up as files: `plan.md`, a task list with checkboxes, a progress file the agent keeps rewriting, a summary at the end. Transparency, from your side, means more to read.
+
+Showing the steps is the agent's half of the deal. The other half is a person reading them when it matters: before the migration runs, before the branch merges, before “done” is accepted. An agent that lays everything out in a 600-line file nobody opens is transparent on paper and unsupervised in practice.
+
+Harrison Chase made a related point in 2024, writing about how agent frameworks should work rather than about documents: “You’ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.” He was talking about tooling for the people building agents. If you're the one driving the agent, the plain file it keeps writing is often the part you can watch.
+
+None of these authors mention MarsDawn, and none of them endorse it or any other Markdown tool.
+
+## Why that read is harder than it looks
+
+The file is long, and what matters is rarely near the top. The diagram that explains the change is Mermaid source, not a picture (seeing it drawn is covered in [How to view a Markdown file on a Mac](/view-markdown-on-mac/)). The agent may rewrite the file while you're halfway down. There's often more than one file, sometimes on different branches or worktrees. And when you do spot a problem, “the cache part looks off” leaves the agent guessing. The longer version of this is on [Reading what your agent hands back](/reading-agent-output/).
+
+## Where MarsDawn fits, and where it doesn't
+
+MarsDawn is a Mac app for this read. It doesn't make an agent more transparent, and it has no AI model inside: it won't summarize the plan or tell you whether it's right. What it does:
+
+- **Long files:** View ▸ Show Sidebar (⌃⌘S) opens the Outline tab, which lists the headings. Click one to jump there.
+- **Diagrams and math:** the source and the rendered page sit side by side (⌘2) and scroll together, with Mermaid and KaTeX drawn out. If a diagram is broken, the preview shows its source with the error underneath.
+- **Rewritten while you read:** when the agent rewrites the file, MarsDawn reloads it and keeps your place, as long as you have no unsaved edits of your own.
+- **Several files:** open the agent's folder with File ▸ Open Folder… (⇧⌘O). New files show up in the Files tab within about a second, and for a git checkout the header names the branch or worktree.
+- **Pointing at a line:** Edit ▸ Copy Reference (⌥⌘C) copies your place as `docs/plan.md:42`, and Copy for AI (⌃⌥⌘C) adds the selected text under it, ready to paste into the agent's chat.
+
+You still do the reading. MarsDawn keeps a long, changing file readable while you do.
+
+## Try it
+
+MarsDawn is on the [Mac App Store](https://apps.apple.com/app/id6812925073). There's also the free `marsdawn` command-line tool:
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+It exports Markdown to PDF without the app.
+
+[Command Line](/cli/) · Know before you buy: [What MarsDawn doesn't do](/limits/)
+
+## Next
+
+- Why agent output is hard to read, and a checklist for it: [Reading what your agent hands back](/reading-agent-output/).
+- The checklist, step by step with an example: [Reviewing an agent plan in five minutes](/reviewing-agent-plans/).
+- Which documents different kinds of agents hand you: [Four agent design patterns and the documents each one hands you](/agent-design-patterns/).
+- The short case for reading AI output at all: [Why AI output still needs a human reader](/reviewing-ai-output/).
+
+## Sources
+
+- Erik S. and Barry Zhang, “Building Effective Agents,” Anthropic, December 19, 2024: [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) (quoted from the version online on 2026-09-26; the post now notes that much of the tooling it describes has changed since December 2024).
+- Harrison Chase, “What is an agent?,” LangChain, June 28, 2024, archived copy: [http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/](http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/) (the original address now shows a different 2026 article).
+
+---
+
+## Reviewing an agent plan
+
+Source: https://marsdawn.southern-light.dev/reviewing-agent-plans/
+
+# Reviewing an agent plan in five minutes
+
+Your agent has written a plan and is waiting for a go-ahead. You have five minutes, not an hour. Here's a way to use them that works in any editor, even a plain text one. MarsDawn helps with some of the steps, and we'll say which. It doesn't help with the most important one.
+
+**Don't read the plan top to bottom. Check its shape, check one claim, find what can't be undone, look at the diagrams and the scope, then write feedback the agent can act on. Six steps, about five minutes.**
+
+## Why bother before it runs
+
+Chip Huyen, explaining why planning should be kept apart from execution, puts the cost plainly: “Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it’s not going anywhere.” Our addition: a plan is the cheapest place to catch a mistake. Fixing a line in `plan.md` costs a sentence. Fixing what the agent did after it ran costs an afternoon.
+
+## The example
+
+You asked an agent to move user avatars to object storage without breaking existing links. It hands back this:
+
+```
+# Plan: move user avatars to object storage
+
+## Goal
+Serve avatars from object storage instead of the app server.
+
+## Steps
+1. Add a storage client and config. ✅ done
+2. Write a script that copies existing avatars to the bucket.
+3. Switch the avatar URLs in the templates.
+4. Delete `public/avatars/` from the server.
+5. Run the copy script.
+
+## Status
+All tests pass.
+```
+
+It reads fine. It would also delete every avatar before copying any of them.
+
+## The six steps
+
+**1. Read only the headings.** *(about a minute)* Does the outline match what you asked for? A missing section usually means missing work. Here: Goal, Steps, Status. You asked for existing links to keep working, and there's no heading about old links or about undoing the change. That's your first comment.
+
+From a terminal, `grep -n '^#' plan.md` prints just the headings, and most editors can show an outline too. In MarsDawn, the Outline tab in the sidebar (View ▸ Show Sidebar, ⌃⌘S) lists them, and clicking one jumps there.
+
+**2. Find every place that says something is done, passing or verified, and check one yourself.** *(about a minute)* Open the file, run the test, count the rows. Chip Huyen describes a failure where “The agent is convinced that it’s accomplished a task when it hasn’t.” In her example, an agent asked to put 50 people in 30 hotel rooms places 40 and insists it's finished.
+
+```
+grep -n -i -E 'done|pass|verified|✅' plan.md
+```
+
+Here that finds “✅ done” and “All tests pass.” Which tests? Do any of them touch avatars? Run them, or ask. MarsDawn can't do this step for you. Nothing can but you.
+
+**3. Look for steps that can't be undone.** *(about a minute)* Deleting data, migrations, force-pushes, anything that sends, pays or publishes. Those wait for your explicit yes. Chip Huyen describes the same idea from the system's side: “If a plan involves risky operations, such as updating a database or merging a code change, the system can ask for explicit human approval before executing or defer to humans to execute these operations.” Here, step 4 deletes the originals, and it comes before step 5, the copy.
+
+**4. Read the diagrams rendered, and check each arrow against the text.** A flowchart that says “copy → verify → delete” while the steps say otherwise is a finding. This plan has no diagram, so skip it today. When there is one, look at the picture, not the Mermaid source: many editors have a preview, and [How to view a Markdown file on a Mac](/view-markdown-on-mac/) and [Viewing Markdown elsewhere](/vs/markdown-preview-tools/) cover the options. In MarsDawn the rendered diagram sits beside its source (⌘2), and a broken diagram shows its source with the error underneath, which is worth a comment of its own.
+
+**5. List the files and systems the plan touches, and ask about anything you didn't request.** *(steps 4 and 5 together, about a minute)* Here: the storage config, the templates, a folder on the server, a bucket. Who can read the bucket? You didn't say it should be public. If you opened the agent's working folder in MarsDawn (File ▸ Open Folder…, ⇧⌘O), new files it writes show up in the Files tab within about a second, and the header names the git branch or worktree, so you know which checkout you're reviewing.
+
+**6. Write feedback as place, problem, fix, one problem per line.** *(the last minute)*
+
+```
+plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
+plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
+plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.
+```
+
+Any editor with line numbers will do. In MarsDawn, Edit ▸ Copy Reference (⌥⌘C) copies your place as `plan.md:10`, and Copy for AI (⌃⌥⌘C) adds the selected text under it.
+
+## If you have one minute
+
+Do step 2. That's where an agent that thinks it's finished gets caught.
+
+## When five minutes isn't enough
+
+Sometimes you can't tell whether a step is right, because it's outside what you know. Jess Ou, in LangChain's 2026 explainer on agents, puts it in two sentences: “Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.” Our takeaway: if you can't judge a step, that isn't a reason to approve it faster. It's a reason to ask someone who can.
+
+## What MarsDawn does here, and what it doesn't
+
+MarsDawn has no AI model inside. It won't find the problems in this plan, and it doesn't do steps 2 or 3. It keeps the file readable while you work: the outline for step 1, rendered diagrams for step 4, the Files tab for step 5, line references for step 6. And if the agent revises the plan while you're reading, MarsDawn reloads it and keeps your place, as long as you have no unsaved edits of your own.
+
+Once the plan is settled and someone else needs to see it, [Sharing exported PDFs](/sharing-exported-pdfs/) and [Markdown to PDF](/markdown-to-pdf/) cover handing it over as a PDF.
+
+## Try it
+
+MarsDawn is on the [Mac App Store](https://apps.apple.com/app/id6812925073). There's also the free `marsdawn` command-line tool:
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+It exports Markdown to PDF without the app.
+
+[Command Line](/cli/) · Know before you buy: [What MarsDawn doesn't do](/limits/)
+
+## Next
+
+- Why agent output is hard to read in the first place: [Reading what your agent hands back](/reading-agent-output/).
+- Why agents lay their plans out at all: [Anthropic says agents should be transparent — so who reads what they lay out?](/agent-transparency/)
+- Plans aren't the only thing agents hand back: [Four agent design patterns and the documents each one hands you](/agent-design-patterns/).
+
+## Sources
+
+- Chip Huyen, “Agents,” January 7, 2025: [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Jess Ou, “What is an AI agent?,” LangChain, July 31, 2026: [https://www.langchain.com/blog/what-is-an-agent](https://www.langchain.com/blog/what-is-an-agent)
+
+---
+
+## Agent design patterns
+
+Source: https://marsdawn.southern-light.dev/agent-design-patterns/
+
+# Four agent design patterns and the documents each one hands you
+
+In March 2024, Andrew Ng used his newsletter, The Batch, to describe four design patterns for AI agents: reflection, tool use, planning and multi-agent collaboration. They're usually discussed from the builder's side, as ways to get better results out of a model. This post looks from the other side. If you use an agent built on one of these patterns, what lands in your folder, and what should you read first?
+
+**The four patterns are Andrew Ng's. Which documents each one tends to hand you, and what to check in them, is our own inference. He doesn't write about either, and he doesn't argue for human review in this series.**
+
+## The four patterns, briefly
+
+Ng describes them in “Agentic Design Patterns Part 1.” In short: with **reflection**, the model looks over its own work and improves it. With **tool use**, it can call tools such as web search or code execution. With **planning**, it comes up with a multistep plan and carries it out. With **multi-agent collaboration**, several agents split up the work and discuss it.
+
+In Part 1 he shows the payoff with a coding benchmark, HumanEval, using results his team gathered from several research groups: “GPT-3.5 (zero shot) was 48.1% correct. GPT-4 (zero shot) does better at 67.0%. However, the improvement from GPT-3.5 to GPT-4 is dwarfed by incorporating an iterative agent workflow. Indeed, wrapped in an agent loop, GPT-3.5 achieves up to 95.1%.” Those numbers are about one coding benchmark, and 95.1% is a best case (“up to”). They show agent workflows can improve output. They don't say anything about who checks it.
+
+**From here on, the documents and the checks are our reading, not Ng's.** Real agents mix patterns, too. A coding agent may plan, run tools and review its own work in one session, so you'll often get all four kinds of file.
+
+## 1. Reflection: a draft that has already reviewed itself
+
+Ng's post on reflection frames it as automating the feedback a person would otherwise give: “What if you automate the step of delivering critical feedback, so the model automatically criticizes its own output and improves its response?”
+
+**What it tends to hand you:** a revised document, sometimes with a self-review section or lines like “double-checked the edge cases.”
+
+**What to check:** the result against *your* request, not against the agent's own critique. Self-review can go wrong in its own way. Chip Huyen: “An interesting mode of planning failure is caused by errors in reflection. The agent is convinced that it’s accomplished a task when it hasn’t.” Lilian Weng, writing on her blog Lil’Log in June 2023 while at OpenAI, about models of that time: “The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.” (In the study she was describing, an LLM's evaluation of the results and human experts' evaluation didn't agree.) If it says “verified,” check one thing yourself.
+
+## 2. Tool use: a report of what ran
+
+**What it tends to hand you:** a summary of what the agent ran or searched and what came back. “Ran the test suite: all passing.” A results table. Links it found.
+
+Anthropic's guide describes tool results as the agent's own check on itself: “During execution, it's crucial for the agents to gain “ground truth” from the environment at each step (such as tool call results or code execution) to assess its progress.” That check happens inside the agent. What reaches you is the agent's retelling of it.
+
+**What to check:** that each claim traces back to output you can see. Match one number in the summary to the real output. Open one of the links.
+
+## 3. Planning: `plan.md`
+
+**What it tends to hand you:** a plan, a spec, a task list with checkboxes the agent ticks as it goes.
+
+Ng is candid about this pattern in Part 4:
+
+> “On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results. In my experience, while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do.”
+
+He's optimistic, too: “But the field continues to evolve rapidly, and I'm confident that Planning abilities will improve quickly.”
+
+**What to check:** the plan before it runs, using [the five-minute review](/reviewing-agent-plans/): shape, one claim, steps that can't be undone, diagrams, scope. If the agent rewrites the plan midway, compare it with the version you approved; if it's in git, `git diff plan.md` shows what changed. In MarsDawn, the Outline tab shows a long plan's shape, and a rewritten plan reloads without losing your place, as long as you have no unsaved edits of your own.
+
+## 4. Multi-agent collaboration: several files, several authors
+
+**What it tends to hand you:** a spec from one agent, implementation notes from another, a review from a third, and summaries passed between them. Sometimes each works in its own branch or worktree.
+
+**What to check:** the handoffs. Where one agent summarizes another's work, look for a requirement that didn't make it across. Look for two files that disagree, and decide which one is the source of truth before anyone builds on the other. In MarsDawn, open the shared folder with File ▸ Open Folder… (⇧⌘O): new files show up in the Files tab within about a second as the agents write them, and for a git checkout the header names the branch or worktree, so two windows on the same file name from different branches don't look alike. When the result has to go to people who don't read Markdown, [Sharing exported PDFs](/sharing-exported-pdfs/) covers that step.
+
+## At a glance
+
+| Pattern (Ng) | What it tends to hand you (our inference) | Read first (our suggestion) |
+|---|---|---|
+| Reflection | A revised draft, maybe with a self-review | The result against your own request; check one “verified” |
+| Tool use | A report of what ran and what came back | One claim traced to real output |
+| Planning | `plan.md`, a spec, a task list | The five-minute review, before it runs |
+| Multi-agent collaboration | Several files from several agents, maybe on several branches | The handoffs, and which file is the source of truth |
+
+None of the authors quoted here mention MarsDawn, and none of them endorse it or any other Markdown tool. MarsDawn has no AI model inside: it doesn't know which pattern produced a file, and it won't do these checks for you. It keeps the files readable while you do.
+
+## Try it
+
+MarsDawn is on the [Mac App Store](https://apps.apple.com/app/id6812925073). There's also the free `marsdawn` command-line tool:
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+It exports Markdown to PDF without the app: see [Markdown to PDF](/markdown-to-pdf/).
+
+[Command Line](/cli/) · Know before you buy: [What MarsDawn doesn't do](/limits/)
+
+## Next
+
+- Why agent output is hard to read, and a checklist for it: [Reading what your agent hands back](/reading-agent-output/).
+- The planning check in full: [Reviewing an agent plan in five minutes](/reviewing-agent-plans/).
+- What transparency does and doesn't ask of you: [Anthropic says agents should be transparent — so who reads what they lay out?](/agent-transparency/)
+
+## Sources
+
+- Andrew Ng, “Agentic Design Patterns Part 1,” The Batch, March 20, 2024: [https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/](https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/)
+- Andrew Ng, “Agentic Design Patterns Part 2, Reflection,” The Batch, March 27, 2024: [https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/)
+- Andrew Ng, “Agentic Design Patterns Part 4, Planning,” The Batch, April 10, 2024: [https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/)
+- Chip Huyen, “Agents,” January 7, 2025: [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Lilian Weng, “LLM Powered Autonomous Agents,” Lil’Log, June 23, 2023: [https://lilianweng.github.io/posts/2023-06-23-agent/](https://lilianweng.github.io/posts/2023-06-23-agent/)
+- Erik S. and Barry Zhang, “Building Effective Agents,” Anthropic, December 19, 2024: [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) (quoted from the version online on 2026-09-26).
 
 ---
 
@@ -1178,6 +1561,252 @@ What changed in the free marsdawn command-line tool. A Mac App Store build of Ma
 
 ---
 
+## Templates
+
+Source: https://marsdawn.southern-light.dev/templates/
+
+# Markdown templates
+
+For the documents an agent writes and you read. Each template comes with a prompt for your agent. Open the filled file in MarsDawn to read what it wrote.
+
+- [Spec (PRD)](/templates/spec/): problem, goals, requirements, a flow diagram and acceptance criteria.
+- [Flowchart](/templates/flowchart/): a Mermaid diagram with the steps written out below it.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, each with an owner.
+
+---
+
+## Spec template
+
+Source: https://marsdawn.southern-light.dev/templates/spec/
+
+# Markdown spec (PRD) template
+
+A spec your agent can fill in and you can read in one sitting: the problem, goals, requirements, a flow diagram and acceptance criteria. When you change a requirement, ask the agent to bring the rest in line.
+
+## The template
+
+[Download spec.md](/templates/spec/spec.md)
+
+````
+# Spec: Feature name
+
+Status: draft · Owner: name · Updated: date
+
+## Problem
+
+_What is wrong today, for whom, and how we know._
+
+## Goals
+
+- _What will be true when this ships._
+
+## Non-goals
+
+- _What this deliberately doesn't do._
+
+## Requirements
+
+| ID | Requirement | Priority |
+|----|-------------|----------|
+| R1 | _Requirement_ | Must |
+| R2 | _Requirement_ | Should |
+
+## Flow
+
+```mermaid
+flowchart LR
+  A[Start] --> B[Step] --> C[Result]
+```
+
+## Acceptance criteria
+
+- [ ] R1: _How we check it._
+- [ ] R2: _How we check it._
+
+## Open questions
+
+- _Question._
+````
+
+## How it looks
+
+![The first page of spec.md, exported as a PDF with marsdawn export.](/assets/templates/spec-en.png)
+
+Exported with `marsdawn export spec.md`. The free command-line tool renders like MarsDawn's preview, diagram included.
+
+## Ask your agent
+
+```
+Write a spec for [the feature] in spec.md, using the template at https://marsdawn.southern-light.dev/templates/spec/spec.md. Give every requirement an ID, and use the same IDs in the flow and the acceptance criteria. When it's written, run marsdawn open spec.md.
+```
+
+## Share it as a PDF
+
+`marsdawn export spec.md` writes spec.pdf beside it, for someone who doesn't read Markdown.
+
+## What it doesn't do
+
+MarsDawn shows the spec, the table and the diagram. It doesn't check that the acceptance criteria cover every requirement. That's the agent's job, and your read.
+
+## Questions
+
+### Does the flow diagram need anything installed?
+
+No. MarsDawn and `marsdawn export` draw Mermaid themselves, offline.
+
+### Can I edit the spec in MarsDawn?
+
+Yes. It's a Markdown editor with the preview beside the source. The agent sees your edit the next time it reads the file.
+
+## More templates
+
+- [Flowchart](/templates/flowchart/): a Mermaid diagram with the steps written out below it.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, each with an owner.
+- [Markdown templates](/templates/)
+
+---
+
+## Flowchart template
+
+Source: https://marsdawn.southern-light.dev/templates/flowchart/
+
+# Markdown flowchart template
+
+A Mermaid flowchart with the steps spelled out underneath, so the diagram and the words can be checked against each other. Take a step out, and ask the agent to fix the rest.
+
+## The template
+
+[Download flowchart.md](/templates/flowchart/flowchart.md)
+
+````
+# Flow name
+
+_One sentence: what goes in, what comes out._
+
+## Diagram
+
+```mermaid
+flowchart LR
+  A[First step] --> B[Second step]
+  B --> C[Third step]
+  C --> D[Done]
+```
+
+## Steps
+
+1. **First step:** _who does it, and what they hand on._
+2. **Second step:** _…_
+3. **Third step:** _…_
+4. **Done:** _what "done" means here._
+````
+
+## How it looks
+
+![The first page of flowchart.md, exported as a PDF with marsdawn export.](/assets/templates/flowchart-en.png)
+
+Exported with `marsdawn export flowchart.md`. The free command-line tool renders like MarsDawn's preview, diagram included.
+
+## Ask your agent
+
+```
+Draw the flow for [the process] in flowchart.md, using the template at https://marsdawn.southern-light.dev/templates/flowchart/flowchart.md. Keep one numbered step per node, in the same order. When it's written, run marsdawn open flowchart.md.
+```
+
+## Share it as a PDF
+
+`marsdawn export flowchart.md` — the diagram is drawn into the PDF.
+
+## What it doesn't do
+
+MarsDawn draws what the Mermaid says. It doesn't lay the diagram out by hand, and it doesn't keep the numbered steps in sync with the nodes. If the Mermaid has an error, the preview shows the error instead of a diagram.
+
+## Questions
+
+### Which diagrams work?
+
+Anything Mermaid draws: flowcharts, sequence diagrams, state diagrams and more.
+
+### Why write the steps out as well?
+
+A reader who skims sees the diagram; a reader who checks needs the words. The agent can keep both in step.
+
+## More templates
+
+- [Spec (PRD)](/templates/spec/): problem, goals, requirements, a flow diagram and acceptance criteria.
+- [Meeting notes](/templates/meeting-notes/): decisions and action items, each with an owner.
+- [Markdown templates](/templates/)
+
+---
+
+## Meeting notes template
+
+Source: https://marsdawn.southern-light.dev/templates/meeting-notes/
+
+# Markdown meeting notes template
+
+Decisions first, then action items, each with an owner. Let your agent write the notes from the transcript, and read them before they go out. When a decision changes, ask the agent to bring the action items in line.
+
+## The template
+
+[Download meeting-notes.md](/templates/meeting-notes/meeting-notes.md)
+
+```
+# Meeting name, date
+
+Attendees: _names_
+
+## Decisions
+
+- _What was decided, in one line each._
+
+## Action items
+
+- [ ] Name: _what, by when._
+- [ ] Name: _what, by when._
+
+## Notes
+
+- _Anything worth keeping that isn't a decision or an action._
+```
+
+## How it looks
+
+![The first page of meeting-notes.md, exported as a PDF with marsdawn export.](/assets/templates/meeting-notes-en.png)
+
+Exported with `marsdawn export meeting-notes.md`. The free command-line tool renders like MarsDawn's preview.
+
+## Ask your agent
+
+```
+Write up this meeting in meeting-notes.md, using the template at https://marsdawn.southern-light.dev/templates/meeting-notes/meeting-notes.md. Decisions first, one line each; every action item gets one owner and a date. When it's written, run marsdawn open meeting-notes.md.
+```
+
+## Share it as a PDF
+
+`marsdawn export meeting-notes.md` writes a PDF you can attach to the follow-up mail.
+
+## What it doesn't do
+
+MarsDawn doesn't record or transcribe the meeting, and it doesn't track the action items. It shows the notes as they'll be read.
+
+## Questions
+
+### Do the checkboxes work?
+
+They show as checkboxes in the preview and the PDF. Tick one by changing `[ ]` to `[x]` in the source.
+
+### Can the agent keep the notes and the action items in step?
+
+Yes, that's the point of the loop: change one, and ask it to update the rest. MarsDawn shows you the result.
+
+## More templates
+
+- [Spec (PRD)](/templates/spec/): problem, goals, requirements, a flow diagram and acceptance criteria.
+- [Flowchart](/templates/flowchart/): a Mermaid diagram with the steps written out below it.
+- [Markdown templates](/templates/)
+
+---
+
 ## MarsDawn
 
 Source: https://marsdawn.southern-light.dev/zh-hant/
@@ -1195,6 +1824,8 @@ Source: https://marsdawn.southern-light.dev/zh-hant/
 1. **Agent 動筆。**你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。
 2. **你在 MarsDawn 裡讀。**打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。
 3. **Agent 修改。**提出修改意見，agent 改好之後，再打開來讀一次。
+
+[如何審閱 agent 交回來的東西](/zh-hant/reading-agent-output/)。
 
 ## 現在就能做的事
 
@@ -1287,18 +1918,35 @@ MarsDawn 可以免費下載。開始 14 天試用後，所有功能都能使用�
 ## 怎麼運作
 
 1. **免費下載。** 在 Mac App Store 免費下載 MarsDawn。
-2. **14 天，全部都能用。** 開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。
+2. **14 天，全部都能用。** 開始試用後，14 天內 MarsDawn 的所有功能都能使用：所有主題與版面、PDF 輸出與列印，以及 Siri 和捷徑動作。Finder 的「快速查看」不論有沒有試用都能用。
 3. **買一次就解鎖。** 試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。
 
 - 試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。
 - 不需要帳號，MarsDawn 從不要求你建立帳號。
 
+## 各階段能做什麼
+
+|  | 試用期間（第 1–14 天） | 試用結束、未解鎖 | 已解鎖 |
+|---|---|---|---|
+| 在 MarsDawn 打開文件 | 可以 | 會開啟，但內容被遮住 | 可以 |
+| 在 MarsDawn 閱讀與編輯（原始碼、預覽、Mermaid、數學式） | 可以 | 不行 | 可以 |
+| 在 MarsDawn 輸出 PDF 與列印 | 可以 | 不行 | 可以 |
+| 用「檔案」▸「儲存為⋯」保存輸入的文字 | 可以 | 可以，限試用結束時已開著的視窗 | 可以 |
+| Siri 和捷徑動作 | 可以 | 不行 | 可以 |
+| Finder 快速查看，含 Mermaid 圖表與數學式 | 可以 | 可以，不受影響 | 可以 |
+| `marsdawn export`（免費命令列工具）：含圖表與數學式的 PDF | 可以 | 可以，不受影響 | 可以 |
+| 你磁碟上的檔案 | 維持你存的樣子 | 維持你存的樣子，鎖定不會改動它們 | 維持你存的樣子 |
+
+開始試用之前，MarsDawn 會先顯示免費試用的畫面。開始試用不用付費。
+
+試用結束後，在 MarsDawn 裡打開的 PDF 檔案也一樣會被鎖住。
+
 ## 如果沒有解鎖
 
 - 14 天後，在你解鎖之前，無法在 MarsDawn 中閱讀、編輯、輸出或列印文件。文件仍會開啟，但內容會被遮住。
 - 你的檔案不會有任何改變。它們就是你 Mac 上的一般檔案，在 Finder 中用「快速查看」依然看得到。
-- 免費的 [`marsdawn` 命令列工具](/zh-hant/cli/)不受試用影響，依然能把它們匯出成 PDF。
-- 如果試用結束時有文件正開在 MarsDawn 裡，你輸入的文字不會遺失，可以用「檔案」▸「另存新檔⋯」保存。
+- 免費的 [`marsdawn` 命令列工具](/zh-hant/cli/)不受試用影響，依然能把它們輸出成 PDF。
+- 如果試用結束時有文件正開在 MarsDawn 裡，你輸入的文字不會遺失，可以用「檔案」▸「儲存為⋯」保存。
 ---
 
 ## 輸出 PDF
@@ -1395,7 +2043,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 
 ## 試用結束之後
 
-如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。
+如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀、編輯、輸出或列印文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能把它們輸出成 PDF。[試用與解鎖頁面](/zh-hant/pay-once/)有三個階段的對照表。
 ---
 
 ## 支援
@@ -1424,8 +2072,8 @@ macOS 26 Tahoe 或更新版本的 Mac，Apple 晶片或 Intel 皆可。
 
 ### 文件裡的圖片沒有顯示。
 
-- **Mac 上的圖片：**先儲存文件，再按預覽中的「授權資料夾存取⋯」，選擇圖片所在的資料夾。MarsDawn 會記住這個資料夾，你可以到 MarsDawn › 設定⋯ › 資料夾存取查看。
-- **網路上的圖片：**網路圖片在你按下預覽上方的「載入圖片」之前不會載入。想要一律載入，可在設定中開啟「自動載入網路圖片」。
+- **Mac 上的圖片**：先儲存文件，再按預覽中的「授權資料夾存取⋯」，選擇圖片所在的資料夾。MarsDawn 會記住這個資料夾，你可以到 MarsDawn › 設定⋯ › 資料夾存取查看。
+- **網路上的圖片**：網路圖片在你按下預覽上方的「載入圖片」之前不會載入。想要一律載入，可在設定中開啟「自動載入網路圖片」。
 
 ### 怎麼加入圖片？
 
@@ -1463,7 +2111,7 @@ macOS 的 Markdown 編輯器 MarsDawn 如何處理你的資訊。
 
 最後更新：2026-09-23
 
-**MarsDawn app 不收集任何關於你的資料。**沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。
+> **MarsDawn app 不收集任何關於你的資料**。沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。
 
 ## 這個網站
 
@@ -1473,27 +2121,27 @@ App 和這個網站是兩件事。App 不收集資料。會記下造訪的，只
 
 一旦你按下接受，Google Analytics 就會設定自己的 cookie（`_ga` 與 `_ga_<評估 ID>`），並記錄：
 
-- **頁面瀏覽與來源網址。**被瀏覽的頁面，以及瀏覽器有送出來源網址時的那個網址。
-- **大略位置、裝置與瀏覽器。**由你的 IP 位址推算出的粗略位置（最多到城市層級）、裝置類型、作業系統與瀏覽器，都不足以用來辨識你是誰。
-- **經由本站離開的點擊與捲動。**Google Analytics 的加強型評估會記錄離開本站的點擊（例如前往 Mac App Store 的連結），以及你在頁面上捲動的程度。
-- **IP 位址。**Google Analytics 4 不會記錄或保存 IP 位址。
-- **不會記錄的。**沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 `/themes/` 索取主題檔案的請求會被略過，不會送出。
-- **保留期限。**Google 會保留這些資料 14 個月，之後刪除。
-- **資料處理地點。**Google Tag Manager 與 Google Analytics 由 Google 營運；你的資料可能會在美國及 Google 營運所在的其他國家處理。
-- **主機。**網站放在 Cloudflare。和任何主機一樣，它在回應請求時會看到你的 IP 位址。那是主機自己的日誌，不是上面的分析。
+- **頁面瀏覽與來源網址**。被瀏覽的頁面，以及瀏覽器有送出來源網址時的那個網址。
+- **大略位置、裝置與瀏覽器**。由你的 IP 位址推算出的粗略位置（最多到城市層級）、裝置類型、作業系統與瀏覽器，都不足以用來辨識你是誰。
+- **經由本站離開的點擊與捲動**。Google Analytics 的加強型評估會記錄離開本站的點擊（例如前往 Mac App Store 的連結），以及你在頁面上捲動的程度。
+- **IP 位址**。Google Analytics 4 不會記錄或保存 IP 位址。
+- **不會記錄的**。沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 `/themes/` 索取主題檔案的請求會被略過，不會送出。
+- **保留期限**。Google 會保留這些資料 14 個月，之後刪除。
+- **資料處理地點**。Google Tag Manager 與 Google Analytics 由 Google 營運；你的資料可能會在美國及 Google 營運所在的其他國家處理。
+- **主機**。網站放在 Cloudflare。和任何主機一樣，它在回應請求時會看到你的 IP 位址。那是主機自己的日誌，不是上面的分析。
 
 ## 留在你 Mac 上的東西
 
-- **你的文件。**MarsDawn 只讀寫你打開、儲存或選擇的檔案與資料夾，App 不會把它們上傳到任何地方。
-- **你的設定。**外觀、預覽主題、視窗版面和圖片偏好，都存在 App 自己的偏好設定裡。
-- **你授權的資料夾。**當你讓 MarsDawn 顯示某個資料夾裡的圖片或網頁檔案，或選擇筆記資料夾時，App 會保存 macOS 書籤，以便之後再次開啟。你在側邊欄開啟的資料夾，MarsDawn 會保持可讀寫，直到你在設定中移除為止，而不只是在那個視窗開著的時候。你隨時可以到 MarsDawn › 設定⋯ 移除。
+- **你的文件**。MarsDawn 只讀寫你打開、儲存或選擇的檔案與資料夾，App 不會把它們上傳到任何地方。
+- **你的設定**。外觀、預覽主題、視窗版面和圖片偏好，都存在 App 自己的偏好設定裡。
+- **你授權的資料夾**。當你讓 MarsDawn 顯示某個資料夾裡的圖片或網頁檔案，或選擇筆記資料夾時，App 會保存 macOS 書籤，以便之後再次開啟。你在側邊欄開啟的資料夾，MarsDawn 會保持可讀寫，直到你在設定中移除為止，而不只是在那個視窗開著的時候。你隨時可以到 MarsDawn › 設定⋯ 移除。
 
 ## MarsDawn 什麼時候會連上網路
 
 MarsDawn 可以完全離線使用，只有在**你自己選擇時**，才會為引用網路內容的文件連網：
 
-- **Markdown 文件。**網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。
-- **HTML 文件。**HTML 文件開啟時是靜態的：它的程式碼不會執行，也不會從網路載入任何東西。如果文件含有可以執行的程式碼，你可以針對這份文件選擇「顯示方式 › 執行這份文件」。之後它自己的程式碼會一直執行，直到你停止它、文件重新載入，或關閉視窗為止。這個選擇不會被記住，也不是一項設定。執行期間，這份文件可以透過網路傳送資料，並讀取它所在資料夾及其子資料夾中的圖片、樣式表、字型與媒體檔案。從網路下載的程式碼一律不會執行。
+- **Markdown 文件**。網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。
+- **HTML 文件**。HTML 文件開啟時是靜態的：它的程式碼不會執行，也不會從網路載入任何東西。如果文件含有可以執行的程式碼，你可以針對這份文件選擇「顯示方式 › 執行這份文件」。之後它自己的程式碼會一直執行，直到你停止它、文件重新載入，或關閉視窗為止。這個選擇不會被記住，也不是一項設定。執行期間，這份文件可以透過網路傳送資料，並讀取它所在資料夾及其子資料夾中的圖片、樣式表、字型與媒體檔案。從網路下載的程式碼一律不會執行。
 
 MarsDawn 只透過 https 載入網路內容。http 位址一律不會載入，任何設定都無法開啟，MarsDawn 也不會自動改寫成 https。在 Markdown 文件中，預覽會以佔位圖示代替。
 
@@ -1560,7 +2208,7 @@ MarsDawn 是為 Mac 做的 Markdown 編輯器，已在 Mac App Store 上架。�
 - 在 Finder 裡對 Markdown 檔案按空白鍵，就有「快速查看」預覽，圖表也在。
 - 想改的時候，原始碼就在旁邊。MarsDawn 是編輯器，不只是檢視器。
 
-如果這份檔案是 AI agent 寫的，這正是 MarsDawn 要支援的循環：agent 寫，你讀排好的頁面，agent 再修改。請看[首頁](/zh-hant/)，想讓 agent 幫你開檔案，請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+如果這份檔案是 AI agent 寫的，這正是 MarsDawn 要支援的循環：agent 寫，你讀排好的頁面，agent 再修改。請看[首頁](/zh-hant/)，想讓 agent 幫你開檔案，請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。為什麼這樣的閱讀重要、怎麼審一份計畫，請看[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)和[五分鐘審完一份 agent 計畫](/zh-hant/reviewing-agent-plans/)。
 
 ## 接下來
 
@@ -1766,6 +2414,7 @@ marsdawn open notes.md --folder .
 - `path:line`：請 MarsDawn 定位到那一行。後面再接欄位，例如 `notes.md:120:8`，會被忽略。如果有檔案的完整名稱就是這個參數，則視為那個檔案。
 - `--line <n>`：同樣的功能，只用於單一檔案，也可以用在檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。
 - 行號範圍是 1 到 999999999。
+- MarsDawn 1.0 會打開檔案，並跳到指定的行。
 - 資料夾參數會在視窗的側邊欄開啟，而不是當成文件：`marsdawn open .` 會顯示目前的資料夾。`--folder <path>` 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾，所以指定兩個是使用方式錯誤。
 - `--background`：開啟時不把 MarsDawn 帶到最前面。
 - `--json`：印出 JSON 結果，而不是文字。
@@ -1835,6 +2484,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/agents/
 - 檔案已存在時不會覆寫，除非加上 `--force`。
 - 不載入網路圖片，除非加上 `--allow-remote-images`，而且只走 https。
 - 沒有安裝 MarsDawn 時，`open` 無法使用，會以代碼 3 結束。`export` 不需要 app。App 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。
+- MarsDawn 1.0 會跳到 `open` 指定的行。
 - 只能在 macOS 上執行。
 
 ## export
@@ -1880,7 +2530,7 @@ marsdawn open notes.md --folder . --background --json
 - `path:line` 指定要定位的行。後面再接欄位，例如 `notes.md:120:8`，會被忽略。如果參數本身就是一個存在的檔名，就一律當成那個檔案，所以名為 `weird:12` 的檔案會照原名開啟。
 - `--line <n>` 為單一檔案指定行號，包括檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。
 - 行號範圍是 1 到 999999999，超出範圍是用法錯誤。
-- 行號從 marsdawn 0.3.0 開始提供。
+- 行號從 marsdawn 0.3.0 開始提供。MarsDawn 1.0 會打開檔案，並跳到指定的行。
 - 資料夾參數會在視窗的側邊欄開啟，而不是當成文件，所以 `marsdawn open .` 會顯示目前的資料夾；`--folder <path>` 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾：指定兩個是用法錯誤，`--folder` 用兩次也是（即使是同一個資料夾）；同一個資料夾以參數再指定一次則算一個。資料夾沒有行號，所以 `--line` 搭配資料夾是用法錯誤。沒有 `-a`：傳入它是用法錯誤，錯誤訊息會指向 `--folder`。
 - `--background` 開啟時不把 MarsDawn 帶到最前面，適合在使用者做別的事時開檔的 agent。兩種情況的 JSON 都一樣。
 - 資料夾與 `--background` 從 marsdawn 0.5.1 開始提供。
@@ -2148,6 +2798,7 @@ PDF 產生之後，人會打開它——在 MarsDawn 裡，或任何 PDF 檢視�
 - 呼叫 marsdawn 的三種方式——CLI、skill 檔案、MCP 伺服器：[三種入口](/zh-hant/cli/mcp/)。
 - JSON 結果的每個欄位：[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
 - 為什麼還是需要有人讀 agent 寫的東西：[審閱的理由](/zh-hant/reviewing-ai-output/)。
+- 更完整的理由和檢查清單：[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)。
 
 ---
 
@@ -2264,6 +2915,7 @@ agent 寫完一份文件，你審閱、修改過後，公司裡不寫程式的�
 - 可以用哪些主題和版面輸出：[預覽主題與 PDF 輸出](/zh-hant/themes/)。
 - 從腳本或 agent 輸出，而不是從 app：[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
 - 為什麼還是要先有人讀過這份文件：[審閱的理由](/zh-hant/reviewing-ai-output/)。
+- 多 agent 交接常常就是要分享 PDF 的時候：[四種 agent 設計模式，各自會交給你什麼文件](/zh-hant/agent-design-patterns/)。
 
 ---
 
@@ -2296,7 +2948,371 @@ Thoughtworks 的 Birgitta Böckeler 講得很直接：「LLMs are NOT compilers,
 
 - 這樣的審閱怎麼不花 agent 自己的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
 - 把審閱過的文件交給別人：[分享 PDF](/zh-hant/sharing-exported-pdfs/)。
+- 為什麼難讀、該怎麼讀：[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)。
+- agent 為什麼要把計畫攤開：[Anthropic 說 agent 要透明，那攤開的東西誰來讀？](/zh-hant/agent-transparency/)
 - MarsDawn 是什麼，一頁講完：[首頁](/zh-hant/)。
+
+---
+
+## 讀懂 agent 交回來的 Markdown
+
+Source: https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/
+
+# agent 做完的工作，最後都變成一份你要讀的 Markdown。
+
+你請 coding agent 規劃一次資料庫遷移、寫一份規格，或追一個 bug。它自己跑了一陣子，交回來的是一個檔案：`plan.md`、`SPEC.md`、一份進度報告，或一份研究摘要。你能檢查的工作，全在這份檔案裡。
+
+**agent 有沒有做對，要讀過它交回來的東西才知道。MarsDawn 就是為這種閱讀做的 Mac app。**
+
+## 做 agent 的人怎麼說
+
+以下引文照原文，我們的解讀放在最後。
+
+- Anthropic 的〈Building Effective Agents〉（Erik S. 與 Barry Zhang，2024 年 12 月）列出打造 agent 的三個核心原則，其中一條是「Prioritize transparency by explicitly showing the agent’s planning steps.」（優先重視透明度：明確展示 agent 的規劃步驟。）這是寫給開發 agent 的人的原則；站在你這邊，這份透明就是你手上那份要讀的計畫。
+- 同一篇也寫到：「Agents can then pause for human feedback at checkpoints or when encountering blockers.」（Agent 可以在檢查點或遇到阻礙時暫停，等待人類回饋。）注意原文用的是 *can*，可以，沒有說必須。
+- Chip Huyen 在〈Agents〉（2025 年 1 月）解釋為什麼規劃要和執行分開：「Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it’s not going anywhere.」（沒有監督的話，agent 可能執行那些步驟好幾個小時，在 API 呼叫上浪費時間和金錢，你才發現它根本沒有進展。）她也描述了一種失敗：「The agent is convinced that it’s accomplished a task when it hasn’t.」（Agent 深信自己已完成任務，但其實並沒有。）請它把 50 個人分到 30 間飯店房間，它只排了 40 人，還堅稱做完了。
+- Andrew Ng 在 The Batch（2024 年 4 月）談 planning 這個設計模式：「On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results.」（一方面，規劃是非常強大的能力；另一方面，它會導致較難預測的結果。）他講的是可預測性，並沒有呼籲要人工審閱，而且他相信規劃能力很快會進步。
+
+**以下是我們的推論，不是作者的主張：**agent 把計畫攤開、在檢查點停下來，那在檢查點讀計畫的通常就是你。agent 可能以為自己做完了，那它的「完成報告」也得有人讀過。上面這幾位作者都沒有提到 MarsDawn，也沒有推薦 MarsDawn 或任何 Markdown 工具。
+
+## 比看起來難讀
+
+檔案很長，重要的地方很少在最上面。裡面有 Mermaid 圖表和數學式，看原始碼很難跟上。你讀到一半，agent 可能還在改寫同一個檔案。它通常不只交一個檔案，有時還分散在不同的分支或 worktree。等你找到問題，說「快取那段怪怪的」，agent 只能用猜的；說「`docs/plan.md:42` 在回填跑完前就把舊表刪了」，它就知道要改哪裡。
+
+## MarsDawn 幫得上忙的地方
+
+- **檔案很長：**側邊欄（⌃⌘S）的「大綱」分頁列出所有標題，點一下，兩邊窗格都會跳過去。
+- **圖表和數學式：**Mermaid 和 KaTeX 直接畫在預覽裡，和原始碼並排（⌘2），兩邊一起捲動。
+- **讀到一半被改寫：**agent 改寫檔案時，MarsDawn 會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改。
+- **好幾個檔案：**用「檔案 ▸ 打開資料夾⋯」（⇧⌘O）打開 agent 工作的資料夾，新檔案大約一秒內就會出現在「檔案」分頁；如果是 git 檢出，清單上方會標出分支或工作樹。
+- **回饋要準：**「編輯 ▸ 拷貝引用」（⌥⌘C）把目前位置拷貝成 `docs/plan.md:42`，「拷貝給 AI」（⌃⌥⌘C）會在下面附上你選取的文字，直接貼給 agent 就好。
+
+另外兩件事也和這個循環有關：agent 可以執行 `marsdawn open plan.md:42`，在 MarsDawn 裡幫你打開檔案，直接停在第 42 行，也就是它想先讓你看的那一行；審完的檔案可以從 app 輸出 PDF，也可以用免費的 `marsdawn export` 指令。
+
+MarsDawn 裡沒有 AI 模型。它不會幫你摘要計畫、打分數，也不會告訴你哪裡錯了。讀的人是你，它負責讓又長又會變的檔案保持好讀，讓你能準確指出是哪一行。
+
+## 五分鐘審完一份 agent 計畫
+
+用什麼編輯器都適用。
+
+1. 先只看標題。大綱和你要求的對得上嗎？少一段，通常就是少做一件事。
+2. 找出所有寫著「完成」「通過」「已驗證」的地方，挑一個自己查：打開那個檔案、跑那個測試、數一下筆數。
+3. 找出做了就回不去的步驟：刪資料、資料庫遷移、force push，還有任何會寄出、付款或發佈的動作。這些要等你明確點頭。
+4. 圖表要看畫出來的樣子，逐一對照每個箭頭和文字說的是不是同一回事。
+5. 列出計畫會動到的檔案和系統。你沒要求的部分，執行前先問清楚。
+6. 回饋寫成「位置、問題、改法」：「`plan.md:88`：回填排在刪表之後，第 4、5 步對調。」一行只講一個問題。
+
+時間只夠做一步的話，就做第 2 步吧。以為自己已經做完的 agent，多半是在這一步被抓到的。完整版本、附實際例子：[五分鐘審完一份 agent 計畫](/zh-hant/reviewing-agent-plans/)。
+
+## 試試看
+
+MarsDawn 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。另外還有免費的 `marsdawn` 命令列工具：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+它不需要 app 就能把 Markdown 輸出成 PDF；agent 也能用 `marsdawn open` 在 MarsDawn 裡幫你打開檔案。
+
+[命令列工具](/zh-hant/cli/) · [給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/) · 買之前先看：[MarsDawn 做不到的事](/zh-hant/limits/)
+
+## 接下來
+
+- 為什麼 AI 寫的東西需要人讀，短一點的版本：[為什麼 AI 寫的東西還是需要人讀過](/zh-hant/reviewing-ai-output/)。
+- 審閱時不佔用 agent 的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
+- agent 為什麼要把計畫攤開：[Anthropic 說 agent 要透明，那攤開的東西誰來讀？](/zh-hant/agent-transparency/)
+- 上面那份清單一步一步來，附實際例子：[五分鐘審完一份 agent 計畫](/zh-hant/reviewing-agent-plans/)。
+- 不同類型的 agent 會交給你什麼文件：[四種 agent 設計模式，各自會交給你什麼文件](/zh-hant/agent-design-patterns/)。
+
+## 資料來源
+
+- Erik S. 與 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：[https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) （引文依 2026-09-26 的線上版本；該文現已註明，文中提到的工具生態自 2024 年 12 月以來已有很多改變）
+- Chip Huyen，〈Agents〉，2025 年 1 月 7 日：[https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Andrew Ng，〈Agentic Design Patterns Part 4, Planning〉，The Batch，2024 年 4 月 10 日：[https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/)
+
+---
+
+## agent 的透明
+
+Source: https://marsdawn.southern-light.dev/zh-hant/agent-transparency/
+
+# Anthropic 說 agent 要透明，那攤開的東西誰來讀？
+
+Anthropic 在 2024 年 12 月發表了〈Building Effective Agents〉，寫給打造 AI agent 的人。文章的總結列出三個原則，其中一個是透明。這篇要談的是這個原則的另一端：agent 把步驟攤開之後，總得有人去讀。
+
+**透明是 agent 要做到的事，讀是你要做的事。Anthropic 要求開發者把 agent 的規劃步驟攤開；對大多數在驅動 coding agent 的人來說，這些步驟最後會變成一份 Markdown 檔案，要有人在對的時間點讀它。**
+
+## 指南裡寫了什麼
+
+Erik S. 與 Barry Zhang 在總結裡這樣寫：
+
+> “When implementing agents, we try to follow three core principles: Maintain simplicity in your agent's design. Prioritize transparency by explicitly showing the agent’s planning steps. Carefully craft your agent-computer interface (ACI) through thorough tool documentation and testing.”
+
+（實作 agent 時，我們盡量遵守三個核心原則：讓 agent 的設計保持簡單；優先重視透明度，明確展示 agent 的規劃步驟；透過完整的工具文件與測試，仔細打造 agent 與電腦之間的介面（ACI）。）
+
+這些是寫給開發 agent 的人的設計原則，不是給使用者的操作指示。原則要求把步驟攤開，但沒有說誰來讀。
+
+同一篇也描述了 agent 拿到任務之後會做什麼：「Once the task is clear, agents plan and operate independently, potentially returning to the human for further information or judgement.」（任務明確之後，agent 會自己規劃、獨立運作，必要時回頭找人類要更多資訊或判斷。）還有：「Agents can then pause for human feedback at checkpoints or when encountering blockers.」（Agent 可以在檢查點或遇到阻礙時暫停，等待人類回饋。）注意用詞：*potentially*（必要時）和 *can*（可以）。檢查點是 agent 可以有的設計，不是一定要有。
+
+## 大部分的檢查，不是你在做
+
+這裡很容易講過頭，所以先看指南真正放在前面的是什麼。agent 會拿外界的結果來檢查自己：「During execution, it's crucial for the agents to gain “ground truth” from the environment at each step (such as tool call results or code execution) to assess its progress.」（執行過程中，agent 必須在每一步從環境取得「ground truth」，例如工具呼叫的結果或程式執行的結果，用來評估自己的進度。）這句話裡的 ground truth 指的是測試結果和工具輸出，不是人。
+
+指南對風險也講得很直接：「The autonomous nature of agents means higher costs, and the potential for compounding errors.」（Agent 的自主性意味著更高的成本，以及錯誤不斷累積的可能。）它給的解方是在沙盒環境裡大量測試、加上適當的防護，並沒有說「要讀得更仔細」。
+
+人真正出場，是在附錄談 coding agent 的段落：「However, whereas automated testing helps verify functionality, human review remains crucial for ensuring solutions align with broader system requirements.」（然而，自動化測試雖然有助於驗證功能，但要確保解法符合更廣泛的系統需求，人工審閱仍然至關重要。）這句講的是程式碼。不過它點出的落差，用過 agent 的人都不陌生：測試能告訴你東西能動，不能告訴你那是不是你要的。
+
+## 攤開的步驟，最後去了哪裡
+
+**以下是我們的解讀，不是 Anthropic 的主張。**
+
+如果你每天都在用 coding agent，它的規劃步驟通常不會出現在什麼儀表板上，而是變成檔案：`plan.md`、一份有勾選框的待辦清單、一個 agent 一直在改寫的進度檔，最後再來一份總結。從你這邊看，透明的意思就是要讀的東西變多了。
+
+把步驟攤開，是 agent 那一半的責任。另一半，是有人在關鍵時刻讀它：資料庫遷移執行之前、分支合併之前、接受「做完了」之前。一個 agent 把所有東西都寫進一份 600 行、沒人打開的檔案，紙面上很透明，實際上沒人在看。
+
+Harrison Chase 在 2024 年也講過類似的話，不過他談的是 agent 框架該怎麼設計，不是文件：「You’ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.」（你會希望能觀察系統內部發生了什麼，因為它實際採取的步驟事先可能無法得知。）他講的是給開發 agent 的人用的工具。如果你是驅動 agent 的那個人，它一直在寫的那份純文字檔，常常就是你看得到的部分。
+
+以上幾位作者都沒有提到 MarsDawn，也沒有推薦 MarsDawn 或任何 Markdown 工具。
+
+## 比看起來難讀
+
+檔案很長，重要的地方很少在最上面。說明這次改動的那張圖，是一段 Mermaid 原始碼，不是圖（想在 Mac 上看到排好的樣子，可以先看[在 Mac 上怎麼看 Markdown 檔案](/zh-hant/view-markdown-on-mac/)）。你讀到一半，agent 可能正在改寫它。檔案常常不只一份，有時還分散在不同的分支或 worktree。等你真的找到問題，說「快取那段怪怪的」，agent 只能用猜的。完整的說明在[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)。
+
+## MarsDawn 幫得上、幫不上的地方
+
+MarsDawn 是為這種閱讀做的 Mac app。它不會讓 agent 變得更透明，裡面也沒有 AI 模型：它不會幫你摘要計畫，也不會告訴你計畫對不對。它做的是：
+
+- **檔案很長：**「顯示方式 ▸ 顯示側邊欄」（⌃⌘S）打開「大綱」分頁，列出所有標題，點一下就跳過去。
+- **圖表和數學式：**原始碼和排好的頁面並排（⌘2），兩邊一起捲動，Mermaid 和 KaTeX 直接畫出來。圖表寫錯時，預覽會顯示它的原始碼，下方附上錯誤訊息。
+- **讀到一半被改寫：**agent 改寫檔案時，MarsDawn 會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改。
+- **好幾個檔案：**用「檔案 ▸ 打開資料夾⋯」（⇧⌘O）打開 agent 工作的資料夾，新檔案大約一秒內就會出現在「檔案」分頁；如果是 git 檢出，清單上方會標出分支或工作樹。
+- **指出是哪一行：**「編輯 ▸ 拷貝引用」（⌥⌘C）把目前位置拷貝成 `docs/plan.md:42`，「拷貝給 AI」（⌃⌥⌘C）會在下面附上你選取的文字，直接貼給 agent 就好。
+
+讀的人還是你。MarsDawn 負責讓一份又長又會變的檔案，在你讀的時候保持好讀。
+
+## 試試看
+
+MarsDawn 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。另外還有免費的 `marsdawn` 命令列工具：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+它不需要 app 就能把 Markdown 輸出成 PDF。
+
+[命令列工具](/zh-hant/cli/) · 買之前先看：[MarsDawn 做不到的事](/zh-hant/limits/)
+
+## 接下來
+
+- agent 的產出為什麼難讀，以及一份檢查清單：[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)。
+- 那份清單一步一步來，附實際例子：[五分鐘審完一份 agent 計畫](/zh-hant/reviewing-agent-plans/)。
+- 不同類型的 agent 會交給你什麼文件：[四種 agent 設計模式，各自會交給你什麼文件](/zh-hant/agent-design-patterns/)。
+- 為什麼 AI 寫的東西需要人讀，短一點的版本：[為什麼 AI 寫的東西還是需要人讀過](/zh-hant/reviewing-ai-output/)。
+
+## 資料來源
+
+- Erik S. 與 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：[https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) （引文依 2026-09-26 的線上版本；該文現已註明，文中提到的工具生態自 2024 年 12 月以來已有很多改變）
+- Harrison Chase，〈What is an agent?〉，LangChain，2024 年 6 月 28 日，存檔版本：[http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/](http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/) （原網址現在顯示的是 2026 年的另一篇文章）
+
+---
+
+## 審 agent 計畫
+
+Source: https://marsdawn.southern-light.dev/zh-hant/reviewing-agent-plans/
+
+# 五分鐘審完一份 agent 計畫
+
+agent 寫好一份計畫，正等你點頭。你手上只有五分鐘，不是一個小時。下面這套做法用什麼編輯器都行，連純文字編輯器也可以。其中幾步 MarsDawn 幫得上忙，我們會講清楚是哪幾步；最重要的那一步，它幫不上。
+
+**不要從頭讀到尾。先看架構，再查一個宣稱，找出做了就回不去的步驟，看圖表和影響範圍，最後寫出 agent 看得懂、改得動的回饋。六個步驟，大約五分鐘。**
+
+## 為什麼要在執行前審
+
+Chip Huyen 解釋為什麼規劃要和執行分開時，把代價講得很白：「Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it’s not going anywhere.」（沒有監督的話，agent 可能執行那些步驟好幾個小時，在 API 呼叫上浪費時間和金錢，你才發現它根本沒有進展。）我們補一句：計畫是抓錯最便宜的地方。在 `plan.md` 裡改一行，只要一句話；等 agent 跑完再收拾，可能要花掉一個下午。
+
+## 範例
+
+你請 agent 把使用者頭像搬到物件儲存，而且舊連結不能壞。它交回來的是這份：
+
+```
+# 計畫：把使用者頭像搬到物件儲存
+
+## 目標
+頭像改由物件儲存提供，不再放在 app 伺服器上。
+
+## 步驟
+1. 加入儲存用的 client 與設定。✅ 完成
+2. 寫一支腳本，把現有頭像複製到 bucket。
+3. 把模板裡的頭像網址換掉。
+4. 從伺服器刪除 `public/avatars/`。
+5. 執行複製腳本。
+
+## 狀態
+所有測試都通過。
+```
+
+讀起來很順。照做的話，它也會在複製任何一張頭像之前，先把全部頭像刪光。
+
+## 六個步驟
+
+**1. 先只看標題。**（大約一分鐘）大綱和你要求的對得上嗎？少一段，通常就是少做一件事。這份只有「目標」「步驟」「狀態」。你要求舊連結不能壞，可是沒有任何一段講舊連結，也沒有講出問題時怎麼退回去。這就是你的第一條意見。
+
+在終端機跑 `grep -n '^#' plan.md`，就只會印出標題；大部分編輯器也有大綱檢視。在 MarsDawn 裡，側邊欄（「顯示方式 ▸ 顯示側邊欄」，⌃⌘S）的「大綱」分頁會列出所有標題，點一下就跳過去。
+
+**2. 找出所有寫著「完成」「通過」「已驗證」的地方，挑一個自己查。**（大約一分鐘）打開那個檔案、跑那個測試、數一下筆數。Chip Huyen 描述過一種失敗：「The agent is convinced that it’s accomplished a task when it hasn’t.」（Agent 深信自己已完成任務，但其實並沒有。）她舉的例子是：請 agent 把 50 個人分到 30 間飯店房間，它只排了 40 人，還堅稱做完了。
+
+```
+grep -n -E '完成|通過|驗證|✅' plan.md
+```
+
+在這份計畫裡，會找到「✅ 完成」和「所有測試都通過」。是哪些測試？有任何一個碰到頭像嗎？自己跑一次，或直接問。這一步 MarsDawn 沒辦法替你做，除了你，沒有人能替你做。
+
+**3. 找出做了就回不去的步驟。**（大約一分鐘）刪資料、資料庫遷移、force push，還有任何會寄出、付款或發佈的動作。這些要等你明確點頭。Chip Huyen 從系統設計的角度講過同一件事：「If a plan involves risky operations, such as updating a database or merging a code change, the system can ask for explicit human approval before executing or defer to humans to execute these operations.」（如果計畫牽涉有風險的操作，例如更新資料庫或合併程式碼變更，系統可以在執行前要求人類明確核准，或交給人類自己執行。）這份計畫的第 4 步會刪掉原始檔案，而且排在第 5 步複製之前。
+
+**4. 圖表要看畫出來的樣子，逐一對照每個箭頭和文字說的是不是同一回事。**流程圖畫著「複製 → 檢查 → 刪除」，步驟卻不是這個順序，這本身就是一個發現。這份計畫沒有圖，今天可以跳過。有圖的時候，請看畫出來的圖，不要看 Mermaid 原始碼：很多編輯器都有預覽，〈[在 Mac 上怎麼看 Markdown 檔案](/zh-hant/view-markdown-on-mac/)〉和〈[在別處看 Markdown，對比 MarsDawn](/zh-hant/vs/markdown-preview-tools/)〉整理了各種做法。在 MarsDawn 裡，畫好的圖就在原始碼旁邊（⌘2）；圖表寫錯時，預覽會顯示原始碼、下方附上錯誤訊息，這也值得單獨寫一條意見。
+
+**5. 列出計畫會動到的檔案和系統，你沒要求的部分，先問清楚。**（第 4、5 步合起來大約一分鐘）這份會動到：儲存設定、模板、伺服器上的一個資料夾、一個 bucket。這個 bucket 誰讀得到？你沒說它要公開。如果你用 MarsDawn 打開 agent 工作的資料夾（「檔案 ▸ 打開資料夾⋯」，⇧⌘O），它新寫的檔案大約一秒內就會出現在「檔案」分頁，清單上方也會標出 git 分支或工作樹，你就知道自己審的是哪一份檢出。
+
+**6. 回饋寫成「位置、問題、改法」，一行只講一個問題。**（最後一分鐘）
+
+```
+plan.md:10：第 5 步還沒複製，這裡就先刪了。先複製、核對數量，再刪；刪之前等我確認。
+plan.md:14：是哪些測試？加一個切換後載入舊頭像網址的測試。
+plan.md:6：沒有處理舊連結。加一步讓舊連結繼續能用，也寫出怎麼退回去。
+```
+
+有行號的編輯器都能做到。在 MarsDawn 裡，「編輯 ▸ 拷貝引用」（⌥⌘C）會把目前位置拷貝成 `plan.md:10`，「拷貝給 AI」（⌃⌥⌘C）會在下面附上你選取的文字。
+
+## 只有一分鐘的話
+
+就做第 2 步吧。以為自己已經做完的 agent，多半是在這一步被抓到的。
+
+## 五分鐘不夠的時候
+
+有時候你判斷不了某一步對不對，因為它超出你熟悉的範圍。Jess Ou 在 LangChain 2026 年介紹 agent 的文章裡，用兩句話講完：「Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.」（無法評估的判斷，就不要外包出去。如果你自己認不出正確答案，agent 也認不出來。）我們的看法是：判斷不了，不是趕快核准的理由，而是該去找懂的人問一下的理由。
+
+## MarsDawn 在這裡做什麼、不做什麼
+
+MarsDawn 裡沒有 AI 模型。它不會幫你找出這份計畫的問題，第 2、3 步也不會替你做。它做的是讓檔案在你審的時候保持好讀：第 1 步有大綱，第 4 步有畫好的圖，第 5 步有「檔案」分頁，第 6 步有行號引用。你讀到一半 agent 改了計畫，MarsDawn 會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改。
+
+計畫定案、要給別人看的時候，〈[把 agent 寫的東西交出去，不用教對方 Markdown](/zh-hant/sharing-exported-pdfs/)〉和〈[Markdown 轉 PDF 工具](/zh-hant/markdown-to-pdf/)〉說明了怎麼轉成 PDF 交出去。
+
+## 試試看
+
+MarsDawn 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。另外還有免費的 `marsdawn` 命令列工具：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+它不需要 app 就能把 Markdown 輸出成 PDF。
+
+[命令列工具](/zh-hant/cli/) · 買之前先看：[MarsDawn 做不到的事](/zh-hant/limits/)
+
+## 接下來
+
+- agent 的產出為什麼難讀：[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)。
+- agent 為什麼要把計畫攤開：[Anthropic 說 agent 要透明，那攤開的東西誰來讀？](/zh-hant/agent-transparency/)
+- agent 交回來的不只有計畫：[四種 agent 設計模式，各自會交給你什麼文件](/zh-hant/agent-design-patterns/)。
+
+## 資料來源
+
+- Chip Huyen，〈Agents〉，2025 年 1 月 7 日：[https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Jess Ou，〈What is an AI agent?〉，LangChain，2026 年 7 月 31 日：[https://www.langchain.com/blog/what-is-an-agent](https://www.langchain.com/blog/what-is-an-agent)
+
+---
+
+## agent 設計模式
+
+Source: https://marsdawn.southern-light.dev/zh-hant/agent-design-patterns/
+
+# 四種 agent 設計模式，各自會交給你什麼文件
+
+2024 年 3 月，Andrew Ng 在他的電子報 The Batch 介紹了四種 AI agent 的設計模式：reflection（反思）、tool use（使用工具）、planning（規劃）和 multi-agent collaboration（多 agent 協作）。大家通常從開發者的角度談它們，當成讓模型表現更好的方法。這篇換個方向看：如果你用的 agent 是照這些模式做的，最後會有什麼東西落進你的資料夾？你該先讀哪裡？
+
+**四種模式是 Andrew Ng 提出的。每種模式通常會交給你什麼文件、該檢查什麼，是我們自己的推論。這兩件事他都沒有寫，他在這個系列裡也沒有主張要人工審閱。**
+
+## 四種模式，簡單說
+
+Ng 在〈Agentic Design Patterns Part 1〉裡介紹了這四種模式。簡單說：**reflection** 是模型回頭檢查自己的成果，再加以改進；**tool use** 是讓模型能呼叫網路搜尋、執行程式碼之類的工具；**planning** 是模型自己擬出多步驟的計畫再執行；**multi-agent collaboration** 是好幾個 agent 分工、互相討論。
+
+他在 Part 1 用一個程式碼基準測試 HumanEval 說明這些模式的效果，數據是他的團隊整理多個研究團隊的結果：「GPT-3.5 (zero shot) was 48.1% correct. GPT-4 (zero shot) does better at 67.0%. However, the improvement from GPT-3.5 to GPT-4 is dwarfed by incorporating an iterative agent workflow. Indeed, wrapped in an agent loop, GPT-3.5 achieves up to 95.1%.」（GPT-3.5 在 zero-shot 下的正確率是 48.1%，GPT-4 在 zero-shot 下好一些，是 67.0%。但和加入迭代式 agent 工作流程相比，從 GPT-3.5 換到 GPT-4 的進步就顯得微不足道：放進 agent 迴圈後，GPT-3.5 最高可達 95.1%。）這些數字只針對一個程式碼基準測試，95.1% 是最好的情況（"up to"，最高可達）。它們說明 agent 工作流程能提升產出品質，但完全沒有談到誰來檢查。
+
+**以下「交給你什麼文件」和「該檢查什麼」，都是我們的解讀，不是 Ng 的。**實際的 agent 通常會混用好幾種模式。一個 coding agent 可能在同一次工作裡規劃、跑工具、再檢查自己的成果，所以四種文件你常常會一次全收到。
+
+## 1. Reflection：一份已經自己審過的草稿
+
+Ng 談 reflection 的那篇，把它說成是把原本由人給的回饋自動化：「What if you automate the step of delivering critical feedback, so the model automatically criticizes its own output and improves its response?」（如果把提出批評性回饋這一步自動化，讓模型自動批評自己的產出、改進它的回答呢？）
+
+**通常會交給你：**一份改過的文件，有時附上一段自我檢查，或是「邊界情況都再確認過了」之類的句子。
+
+**該檢查什麼：**拿結果對照「你」的要求，不是對照 agent 自己的批評。自我檢查也會出錯。Chip Huyen 寫道：「An interesting mode of planning failure is caused by errors in reflection. The agent is convinced that it’s accomplished a task when it hasn’t.」（有一種有趣的規劃失敗，是反思出錯造成的：agent 深信自己已完成任務，但其實並沒有。）Lilian Weng 在 2023 年 6 月（當時任職 OpenAI）於她的部落格 Lil’Log 談到當時的模型：「The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.」（缺乏專業知識可能使 LLM 不知道自己的缺陷，因而無法妥善判斷任務結果的正確性。）她描述的那項研究裡，LLM 對結果的評估和人類專家的評估並不一致。文件裡寫「已驗證」的話，自己挑一項查。
+
+## 2. Tool use：一份「跑了什麼」的報告
+
+**通常會交給你：**一份總結，說 agent 跑了什麼、搜了什麼、得到什麼結果。「跑完測試：全部通過。」一張結果表格。它找到的一串連結。
+
+Anthropic 的指南把工具結果說成 agent 自我檢查的依據：「During execution, it's crucial for the agents to gain “ground truth” from the environment at each step (such as tool call results or code execution) to assess its progress.」（執行過程中，agent 必須在每一步從環境取得「ground truth」，例如工具呼叫的結果或程式執行的結果，用來評估自己的進度。）這個檢查發生在 agent 內部。到你手上的，是 agent 對這些結果的轉述。
+
+**該檢查什麼：**每個宣稱都要追得回你看得到的輸出。挑總結裡的一個數字，對照真正的輸出；點開其中一個連結看看。
+
+## 3. Planning：`plan.md`
+
+**通常會交給你：**一份計畫、一份規格，或一份 agent 做完一項就勾一項的待辦清單。
+
+Ng 在 Part 4 對這個模式講得很坦白：
+
+> “On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results. In my experience, while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do.”
+
+（一方面，規劃是非常強大的能力；另一方面，它會導致較難預測的結果。就我的經驗，Reflection 和 Tool Use 這兩種模式我都能讓它們穩定運作、提升應用程式的表現，但 Planning 還是比較不成熟的技術，我很難事先預測它會怎麼做。）
+
+他也很樂觀：「But the field continues to evolve rapidly, and I'm confident that Planning abilities will improve quickly.」（不過這個領域持續快速發展，我相信規劃能力很快就會進步。）
+
+**該檢查什麼：**在執行前審計畫，用〈[五分鐘審完一份 agent 計畫](/zh-hant/reviewing-agent-plans/)〉的方法：看架構、查一個宣稱、找出回不去的步驟、看圖表、看影響範圍。agent 中途改寫計畫的話，拿它和你核准的版本比對；如果有用 git，`git diff plan.md` 就看得到改了什麼。在 MarsDawn 裡，「大綱」分頁讓你一眼看出長計畫的架構；計畫被改寫時會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改。
+
+## 4. Multi-agent collaboration：好幾份檔案，好幾個作者
+
+**通常會交給你：**一個 agent 寫的規格、另一個寫的實作筆記、第三個寫的審查意見，還有它們之間互相交接的摘要。有時每個 agent 各自在自己的分支或 worktree 裡工作。
+
+**該檢查什麼：**交接的地方。一個 agent 在總結另一個的成果時，看有沒有哪條需求沒被帶過去。找出彼此矛盾的兩份檔案，在任何人接著往下做之前，先決定哪一份才算數。在 MarsDawn 裡，用「檔案 ▸ 打開資料夾⋯」（⇧⌘O）打開它們共用的資料夾：agent 寫出新檔案，大約一秒內就會出現在「檔案」分頁；如果是 git 檢出，清單上方會標出分支或工作樹，兩個視窗就算開著不同分支上同名的檔案，也不會搞混。成果要交給不讀 Markdown 的人時，可以看〈[把 agent 寫的東西交出去，不用教對方 Markdown](/zh-hant/sharing-exported-pdfs/)〉。
+
+## 一覽表
+
+| 模式（Ng 提出） | 通常會交給你（我們的推論） | 先讀哪裡（我們的建議） |
+|---|---|---|
+| Reflection 反思 | 一份改過的草稿，可能附自我檢查 | 對照你自己的要求；挑一個「已驗證」自己查 |
+| Tool use 使用工具 | 一份「跑了什麼、得到什麼」的報告 | 挑一個宣稱，追回真正的輸出 |
+| Planning 規劃 | `plan.md`、規格、待辦清單 | 執行前的五分鐘審閱 |
+| Multi-agent collaboration 多 agent 協作 | 好幾個 agent 寫的好幾份檔案，可能分散在不同分支 | 交接的地方，以及哪一份才算數 |
+
+上面引用的作者都沒有提到 MarsDawn，也沒有推薦 MarsDawn 或任何 Markdown 工具。MarsDawn 裡沒有 AI 模型：它不知道一份檔案是哪種模式產生的，也不會替你做這些檢查。它負責讓這些檔案在你檢查的時候保持好讀。
+
+## 試試看
+
+MarsDawn 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。另外還有免費的 `marsdawn` 命令列工具：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+它不需要 app 就能把 Markdown 輸出成 PDF，詳見〈[Markdown 轉 PDF 工具](/zh-hant/markdown-to-pdf/)〉。
+
+[命令列工具](/zh-hant/cli/) · 買之前先看：[MarsDawn 做不到的事](/zh-hant/limits/)
+
+## 接下來
+
+- agent 的產出為什麼難讀，以及一份檢查清單：[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)。
+- 完整的計畫審閱方法：[五分鐘審完一份 agent 計畫](/zh-hant/reviewing-agent-plans/)。
+- 透明對你的要求是什麼、不是什麼：[Anthropic 說 agent 要透明，那攤開的東西誰來讀？](/zh-hant/agent-transparency/)
+
+## 資料來源
+
+- Andrew Ng，〈Agentic Design Patterns Part 1〉，The Batch，2024 年 3 月 20 日：[https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/](https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/)
+- Andrew Ng，〈Agentic Design Patterns Part 2, Reflection〉，The Batch，2024 年 3 月 27 日：[https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/)
+- Andrew Ng，〈Agentic Design Patterns Part 4, Planning〉，The Batch，2024 年 4 月 10 日：[https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/)
+- Chip Huyen，〈Agents〉，2025 年 1 月 7 日：[https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Lilian Weng，〈LLM Powered Autonomous Agents〉，Lil’Log，2023 年 6 月 23 日：[https://lilianweng.github.io/posts/2023-06-23-agent/](https://lilianweng.github.io/posts/2023-06-23-agent/)
+- Erik S. 與 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：[https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) （引文依 2026-09-26 的線上版本）
 
 ---
 
@@ -2356,6 +3372,252 @@ Source: https://marsdawn.southern-light.dev/zh-hant/changelog/
 
 ---
 
+## 範本
+
+Source: https://marsdawn.southern-light.dev/zh-hant/templates/
+
+# Markdown 範本
+
+給 agent 寫、你來讀的文件。每份範本都附一段給 agent 的提示詞。把填好的檔案用 MarsDawn 打開，讀讀它寫了什麼。
+
+- [規格文件（PRD）](/zh-hant/templates/spec/)：問題、目標、需求、流程圖和驗收條件。
+- [流程圖](/zh-hant/templates/flowchart/)：一張 Mermaid 圖，下方把每個步驟寫出來。
+- [會議記錄](/zh-hant/templates/meeting-notes/)：決議和行動項目，每項都有負責人。
+
+---
+
+## 規格文件範本
+
+Source: https://marsdawn.southern-light.dev/zh-hant/templates/spec/
+
+# Markdown 規格文件（PRD）範本
+
+一份 agent 能填、你一次就能讀完的規格文件：問題、目標、需求、流程圖和驗收條件。改了一條需求，就請 agent 把其他部分跟著改好。
+
+## 範本
+
+[下載 spec.md](/zh-hant/templates/spec/spec.md)
+
+````
+# 規格：功能名稱
+
+狀態：草稿 · 負責人：姓名 · 更新：日期
+
+## 問題
+
+_現在哪裡有問題、影響誰、我們怎麼知道。_
+
+## 目標
+
+- _上線後應達成的結果。_
+
+## 不做的事
+
+- _這次刻意不做的事。_
+
+## 需求
+
+| 編號 | 需求 | 優先度 |
+|------|------|--------|
+| R1 | _需求_ | 必要 |
+| R2 | _需求_ | 應該 |
+
+## 流程
+
+```mermaid
+flowchart LR
+  A[開始] --> B[步驟] --> C[結果]
+```
+
+## 驗收條件
+
+- [ ] R1：_怎麼確認。_
+- [ ] R2：_怎麼確認。_
+
+## 待決問題
+
+- _問題。_
+````
+
+## 長什麼樣子
+
+![spec.md 用 marsdawn export 輸出的 PDF 第一頁。](/assets/templates/spec-zh-hant.png)
+
+用 `marsdawn export spec.md` 輸出。免費的命令列工具排版和 MarsDawn 的預覽一樣，圖表也一起畫出來。
+
+## 交給 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hant/templates/spec/spec.md 這份範本，把［功能］的規格寫進 spec.md。每條需求都要有編號，流程圖和驗收條件用同樣的編號。寫好之後執行 marsdawn open spec.md。
+```
+
+## 輸出 PDF 分享
+
+`marsdawn export spec.md` 會在旁邊寫出 spec.pdf，給不讀 Markdown 的人。
+
+## 做不到的事
+
+MarsDawn 會顯示規格、表格和流程圖，但不會檢查驗收條件有沒有涵蓋每一條需求。那是 agent 的工作，也要靠你讀。
+
+## 常見問題
+
+### 流程圖需要另外安裝什麼嗎？
+
+不用。MarsDawn 和 `marsdawn export` 自己就會畫 Mermaid，離線也能畫。
+
+### 可以在 MarsDawn 裡改規格嗎？
+
+可以。它是 Markdown 編輯器，原始碼旁邊就是預覽。agent 下次讀這個檔案時，就會看到你的修改。
+
+## 其他範本
+
+- [流程圖](/zh-hant/templates/flowchart/)：一張 Mermaid 圖，下方把每個步驟寫出來。
+- [會議記錄](/zh-hant/templates/meeting-notes/)：決議和行動項目，每項都有負責人。
+- [Markdown 範本](/zh-hant/templates/)
+
+---
+
+## 流程圖範本
+
+Source: https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/
+
+# Markdown 流程圖範本
+
+一張 Mermaid 流程圖，下方把每個步驟寫清楚，圖和文字可以互相對照。拿掉一個步驟，再請 agent 把其他部分改好。
+
+## 範本
+
+[下載 flowchart.md](/zh-hant/templates/flowchart/flowchart.md)
+
+````
+# 流程名稱
+
+_一句話：輸入什麼，產出什麼。_
+
+## 圖
+
+```mermaid
+flowchart LR
+  A[第一步] --> B[第二步]
+  B --> C[第三步]
+  C --> D[完成]
+```
+
+## 步驟
+
+1. **第一步**：_誰來做，交給下一步什麼。_
+2. **第二步**：_……_
+3. **第三步**：_……_
+4. **完成**：_這裡的「完成」是什麼意思。_
+````
+
+## 長什麼樣子
+
+![flowchart.md 用 marsdawn export 輸出的 PDF 第一頁。](/assets/templates/flowchart-zh-hant.png)
+
+用 `marsdawn export flowchart.md` 輸出。免費的命令列工具排版和 MarsDawn 的預覽一樣，圖表也一起畫出來。
+
+## 交給 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/flowchart.md 這份範本，把［流程］畫進 flowchart.md。每個節點對應一個編號步驟，順序相同。寫好之後執行 marsdawn open flowchart.md。
+```
+
+## 輸出 PDF 分享
+
+`marsdawn export flowchart.md`：流程圖會畫進 PDF 裡。
+
+## 做不到的事
+
+MarsDawn 照 Mermaid 寫的內容畫圖，不能手動排版，也不會讓編號步驟和節點保持一致。Mermaid 有錯的話，預覽會顯示錯誤訊息，而不是圖。
+
+## 常見問題
+
+### 哪些圖可以用？
+
+Mermaid 畫得出來的都可以：流程圖、循序圖、狀態圖等等。
+
+### 為什麼還要把步驟寫出來？
+
+快速瀏覽的人看圖；要仔細確認的人需要文字。agent 可以讓兩者保持一致。
+
+## 其他範本
+
+- [規格文件（PRD）](/zh-hant/templates/spec/)：問題、目標、需求、流程圖和驗收條件。
+- [會議記錄](/zh-hant/templates/meeting-notes/)：決議和行動項目，每項都有負責人。
+- [Markdown 範本](/zh-hant/templates/)
+
+---
+
+## 會議記錄範本
+
+Source: https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/
+
+# Markdown 會議記錄範本
+
+先寫決議，再列行動項目，每項都有負責人。讓 agent 從逐字稿整理出會議記錄，寄出之前先讀一遍。決議改了，就請 agent 把行動項目跟著改好。
+
+## 範本
+
+[下載 meeting-notes.md](/zh-hant/templates/meeting-notes/meeting-notes.md)
+
+```
+# 會議名稱，日期
+
+出席：_姓名_
+
+## 決議
+
+- _決定了什麼，一項一行。_
+
+## 行動項目
+
+- [ ] 姓名：_做什麼，何時完成。_
+- [ ] 姓名：_做什麼，何時完成。_
+
+## 備註
+
+- _值得留下、但不是決議也不是行動項目的內容。_
+```
+
+## 長什麼樣子
+
+![meeting-notes.md 用 marsdawn export 輸出的 PDF 第一頁。](/assets/templates/meeting-notes-zh-hant.png)
+
+用 `marsdawn export meeting-notes.md` 輸出。免費的命令列工具排版和 MarsDawn 的預覽一樣。
+
+## 交給 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/meeting-notes.md 這份範本，把這場會議整理進 meeting-notes.md。先寫決議，一項一行；每個行動項目都要有一位負責人和日期。寫好之後執行 marsdawn open meeting-notes.md。
+```
+
+## 輸出 PDF 分享
+
+`marsdawn export meeting-notes.md` 會輸出一份 PDF，可以附在會後的信裡。
+
+## 做不到的事
+
+MarsDawn 不會錄音或轉逐字稿，也不會追蹤行動項目。它只把會議記錄呈現成讀者會看到的樣子。
+
+## 常見問題
+
+### 勾選框能用嗎？
+
+在預覽和 PDF 裡都會顯示成勾選框。要打勾，就在原始碼裡把 `[ ]` 改成 `[x]`。
+
+### agent 能讓會議記錄和行動項目保持一致嗎？
+
+可以，這就是這個循環的用意：改其中一個，再請它更新其他部分。MarsDawn 讓你看到結果。
+
+## 其他範本
+
+- [規格文件（PRD）](/zh-hant/templates/spec/)：問題、目標、需求、流程圖和驗收條件。
+- [流程圖](/zh-hant/templates/flowchart/)：一張 Mermaid 圖，下方把每個步驟寫出來。
+- [Markdown 範本](/zh-hant/templates/)
+
+---
+
 ## MarsDawn
 
 Source: https://marsdawn.southern-light.dev/zh-hans/
@@ -2373,6 +3635,8 @@ Source: https://marsdawn.southern-light.dev/zh-hans/
 1. **Agent 动笔。**你的代码助手或写作 agent 先写出 Markdown：README、规格文档，或一份笔记。
 2. **你在 MarsDawn 里读。**打开文件，看排版后的页面，Mermaid 图表和代码高亮都在，旁边就是源代码。
 3. **Agent 修改。**提出修改意见，agent 改好之后，再打开来读一次。
+
+[如何审阅 agent 交回来的东西](/zh-hans/reading-agent-output/)。
 
 ## 现在就能做的事
 
@@ -2409,9 +3673,9 @@ brew install redtear1115/tap/marsdawn
 3. ⌘1 源代码、⌘2 并排、⌘3 预览。
 4. 页面会随着打字更新。
 
-### [输出 PDF](/zh-hans/pdf/)
+### [导出 PDF](/zh-hans/pdf/)
 
-![用 MarsDawn 输出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![用 MarsDawn 导出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
 这张截图里：
 
@@ -2465,29 +3729,46 @@ MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用�
 ## 怎么运作
 
 1. **免费下载。** 在 Mac App Store 免费下载 MarsDawn。
-2. **14 天，全部都能用。** 开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。
+2. **14 天，全部都能用。** 开始试用后，14 天内 MarsDawn 的所有功能都能使用：所有主题与布局、PDF 导出与打印，以及 Siri 和快捷指令操作。无论是否试用，访达中的“快速查看”都能使用。
 3. **买一次就解锁。** 试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。
 
 - 试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。
 - 不需要账户，MarsDawn 从不要求你创建账户。
 
+## 各阶段能做什么
+
+|  | 试用期间（第 1–14 天） | 试用结束、未解锁 | 已解锁 |
+|---|---|---|---|
+| 在 MarsDawn 中打开文稿 | 可以 | 会打开，但内容被遮住 | 可以 |
+| 在 MarsDawn 中阅读和编辑（源代码、预览、Mermaid、数学公式） | 可以 | 不行 | 可以 |
+| 在 MarsDawn 中导出 PDF 和打印 | 可以 | 不行 | 可以 |
+| 用“文件”▸“保存为…”保留已输入的文本 | 可以 | 可以，仅限试用结束时已打开的窗口 | 可以 |
+| Siri 和快捷指令操作 | 可以 | 不行 | 可以 |
+| 访达中的“快速查看”，包括 Mermaid 图表和数学公式 | 可以 | 可以，不受影响 | 可以 |
+| `marsdawn export`（免费命令行工具）：导出含图表和数学公式的 PDF | 可以 | 可以，不受影响 | 可以 |
+| 你 Mac 上的文件 | 保持你保存时的样子 | 保持你保存时的样子，锁定不会改动它们 | 保持你保存时的样子 |
+
+开始试用之前，MarsDawn 会先显示免费试用页面。开始试用不收费。
+
+试用结束后，在 MarsDawn 中打开的 PDF 文件也会同样被锁定。
+
 ## 如果没有解锁
 
-- 14 天后，在你解锁之前，无法在 MarsDawn 中阅读、编辑、输出或打印文稿。文稿仍会打开，但内容会被遮住。
+- 14 天后，在你解锁之前，无法在 MarsDawn 中阅读、编辑、导出或打印文稿。文稿仍会打开，但内容会被遮住。
 - 你的文件不会有任何改变。它们就是你 Mac 上的一般文件，在访达中用“快速查看”依然看得到。
-- 免费的 [`marsdawn` 命令行工具](/zh-hans/cli/)不受试用影响，依然能把它们导出成 PDF。
-- 如果试用结束时有文稿正开在 MarsDawn 里，你输入的文本不会遗失，可以用“文件”▸“存储为…”保存。
+- 免费的 [`marsdawn` 命令行工具](/zh-hans/cli/)不受试用影响，仍然可以把它们导出为 PDF。
+- 如果试用结束时有文稿正开在 MarsDawn 里，你输入的文本不会遗失，可以用“文件”▸“保存为…”保存。
 ---
 
-## 输出 PDF
+## 导出 PDF
 
 Source: https://marsdawn.southern-light.dev/zh-hans/pdf/
 
 # PDF 看起来就是你写的那一页。
 
-输出成 PDF 或打印，使用主题的浅色配色。图表和代码高亮都会保留，分页位置也经过安排。
+导出成 PDF 或打印，使用主题的浅色配色。图表和代码高亮都会保留，分页位置也经过安排。
 
-![用 MarsDawn 输出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![用 MarsDawn 导出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
 这张截图里：
 
@@ -2499,9 +3780,9 @@ Source: https://marsdawn.southern-light.dev/zh-hans/pdf/
 - Mermaid 图表直接画进 PDF。
 - 代码块保留语法高亮。
 - 分页时会尽量不让标题落在页面底部，也不切开代码、表格和图表。
-- 任何布局都能输出，只显示源代码时也可以。
+- 任何布局都能导出，只显示源代码时也可以。
 
-免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套输出程序，所以脚本或 AI agent 也能得到一样的 PDF。
+免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 AI agent 也能得到一样的 PDF。
 ---
 
 ## 为 Mac 而做
@@ -2566,14 +3847,14 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 ### 文件与功能
 
 - **编辑：**你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。
-- **格式：**MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。
+- **格式：**MarsDawn 能导出 PDF 和打印，不能导出 Word 文件。
 - **其他文件：**纯文本文件和 PDF 以只读方式打开。
 - **主题：**内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。
 - **插件：**MarsDawn 没有插件或扩展功能。
 
 ## 试用结束之后
 
-如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。
+如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读、编辑、导出或打印文稿：文稿会打开，但内容会被遮住。你的文件保持原样，“快速查看”仍然可以显示它们，免费的命令行工具也仍然可以把它们导出为 PDF。[试用与解锁页面](/zh-hans/pay-once/)列出了三个阶段的对照表。
 ---
 
 ## 支持
@@ -2602,8 +3883,8 @@ macOS 26 Tahoe 或更新版本的 Mac，Apple 芯片或 Intel 皆可。
 
 ### 文稿里的图片没有显示。
 
-- **Mac 上的图片：**先保存文稿，再按预览中的“授予文件夹访问权限…”，选择图片所在的文件夹。MarsDawn 会记住这个文件夹，你可以到 MarsDawn › 设置… › 文件夹访问查看。
-- **网络上的图片：**网络图片在你按下预览上方的“载入图像”之前不会加载。想要一律加载，可在设置中打开“自动载入网络图像”。
+- **Mac 上的图片**：先保存文稿，再按预览中的“授予文件夹访问权限…”，选择图片所在的文件夹。MarsDawn 会记住这个文件夹，你可以到 MarsDawn › 设置… › 文件夹访问查看。
+- **网络上的图片**：网络图片在你按下预览上方的“载入图像”之前不会加载。想要一律加载，可在设置中打开“自动载入网络图像”。
 
 ### 怎么加入图片？
 
@@ -2641,7 +3922,7 @@ macOS 的 Markdown 编辑器 MarsDawn 如何处理你的信息。
 
 最后更新：2026-09-23
 
-**MarsDawn app 不收集任何关于你的数据。**没有账户、没有广告，也不追踪。你的文稿与设置都留在你的 Mac 上。
+> **MarsDawn app 不收集任何关于你的数据**。没有账户、没有广告，也不追踪。你的文稿与设置都留在你的 Mac 上。
 
 ## 这个网站
 
@@ -2651,27 +3932,27 @@ App 和这个网站是两件事。App 不收集数据。会记下访问的，只
 
 一旦你点击接受，Google Analytics 就会设置自己的 cookie（`_ga` 与 `_ga_<衡量 ID>`），并记录：
 
-- **页面浏览与来源网址。**被浏览的页面，以及浏览器有发送来源网址时的那个网址。
-- **大致位置、设备与浏览器。**由你的 IP 地址推算出的粗略位置（最多到城市级别）、设备类型、操作系统与浏览器，都不足以用来识别你是谁。
-- **经由本站离开的点击与滚动。**Google Analytics 的增强型衡量会记录离开本站的点击（例如前往 Mac App Store 的链接），以及你在页面上滚动的程度。
-- **IP 地址。**Google Analytics 4 不会记录或保存 IP 地址。
-- **不会记录的。**没有账户，因为这个网站不需要账户。没有你的文稿，也没有你打的字。没有跨站广告，也不会建立你的个人档案。App 向 `/themes/` 索取主题文件的请求会被跳过，不会送出。
-- **保留期限。**Google 会保留这些数据 14 个月，之后删除。
-- **数据处理地点。**Google Tag Manager 与 Google Analytics 由 Google 运营；你的数据可能会在美国及 Google 运营所在的其他国家处理。
-- **主机。**网站放在 Cloudflare 上。和任何主机一样，它在响应请求时会看到你的 IP 地址。那是主机自己的日志，不是上面的分析。
+- **页面浏览与来源网址**。被浏览的页面，以及浏览器有发送来源网址时的那个网址。
+- **大致位置、设备与浏览器**。由你的 IP 地址推算出的粗略位置（最多到城市级别）、设备类型、操作系统与浏览器，都不足以用来识别你是谁。
+- **经由本站离开的点击与滚动**。Google Analytics 的增强型衡量会记录离开本站的点击（例如前往 Mac App Store 的链接），以及你在页面上滚动的程度。
+- **IP 地址**。Google Analytics 4 不会记录或保存 IP 地址。
+- **不会记录的**。没有账户，因为这个网站不需要账户。没有你的文稿，也没有你打的字。没有跨站广告，也不会建立你的个人档案。App 向 `/themes/` 索取主题文件的请求会被跳过，不会送出。
+- **保留期限**。Google 会保留这些数据 14 个月，之后删除。
+- **数据处理地点**。Google Tag Manager 与 Google Analytics 由 Google 运营；你的数据可能会在美国及 Google 运营所在的其他国家处理。
+- **主机**。网站放在 Cloudflare 上。和任何主机一样，它在响应请求时会看到你的 IP 地址。那是主机自己的日志，不是上面的分析。
 
 ## 留在你 Mac 上的东西
 
-- **你的文稿。**MarsDawn 只读写你打开、保存或选择的文件与文件夹，App 不会把它们上传到任何地方。
-- **你的设置。**外观、预览主题、窗口布局和图片偏好，都存在 App 自己的偏好设置里。
-- **你授权的文件夹。**当你让 MarsDawn 显示某个文件夹里的图片或网页文件，或选择笔记文件夹时，App 会保存 macOS 书签，以便之后再次打开。你在侧边栏打开的文件夹，MarsDawn 会保持可读写，直到你在设置中移除为止，而不只是在那个窗口开着的时候。你随时可以到 MarsDawn › 设置… 移除。
+- **你的文稿**。MarsDawn 只读写你打开、保存或选择的文件与文件夹，App 不会把它们上传到任何地方。
+- **你的设置**。外观、预览主题、窗口布局和图片偏好，都存在 App 自己的偏好设置里。
+- **你授权的文件夹**。当你让 MarsDawn 显示某个文件夹里的图片或网页文件，或选择笔记文件夹时，App 会保存 macOS 书签，以便之后再次打开。你在侧边栏打开的文件夹，MarsDawn 会保持可读写，直到你在设置中移除为止，而不只是在那个窗口开着的时候。你随时可以到 MarsDawn › 设置… 移除。
 
 ## MarsDawn 什么时候会连上网络
 
 MarsDawn 可以完全离线使用，只有在**你自己选择时**，才会为引用网络内容的文稿连网：
 
-- **Markdown 文稿。**网络图片默认不加载，只有在你按下预览中的“载入图像”，或在设置中打开“自动载入网络图像”后才会加载。Markdown 文稿引用的其他网络内容一律不加载。
-- **HTML 文稿。**HTML 文稿打开时是静态的：它的代码不会运行，也不会从网络加载任何东西。如果文稿含有可以运行的代码，你可以针对这份文稿选择“显示 › 运行这份文稿”。之后它自己的代码会一直运行，直到你停止它、文稿重新加载，或关闭窗口为止。这个选择不会被记住，也不是一项设置。运行期间，这份文稿可以通过网络发送数据，并读取它所在文件夹及其子文件夹中的图片、样式表、字体与媒体文件。从网络下载的代码一律不会运行。
+- **Markdown 文稿**。网络图片默认不加载，只有在你按下预览中的“载入图像”，或在设置中打开“自动载入网络图像”后才会加载。Markdown 文稿引用的其他网络内容一律不加载。
+- **HTML 文稿**。HTML 文稿打开时是静态的：它的代码不会运行，也不会从网络加载任何东西。如果文稿含有可以运行的代码，你可以针对这份文稿选择“显示 › 运行这份文稿”。之后它自己的代码会一直运行，直到你停止它、文稿重新加载，或关闭窗口为止。这个选择不会被记住，也不是一项设置。运行期间，这份文稿可以通过网络发送数据，并读取它所在文件夹及其子文件夹中的图片、样式表、字体与媒体文件。从网络下载的代码一律不会运行。
 
 MarsDawn 只通过 https 加载网络内容。http 地址一律不会加载，任何设置都无法打开，MarsDawn 也不会自动改写成 https。在 Markdown 文稿中，预览会以占位图标代替。
 
@@ -2683,9 +3964,9 @@ MarsDawn 只通过 https 加载网络内容。http 地址一律不会加载，�
 
 MarsDawn 提供 Siri、快捷指令 App 和 Spotlight 可用的动作，例如添加文稿或加入笔记。使用时，你提供的文本会交给你 Mac 上的 MarsDawn，并只存到动作指定的位置（新文稿，或你所选笔记文件夹中的 `Inbox.md`）。对 Siri 说的话由 Apple 依 [Apple 隐私政策](https://www.apple.com/legal/privacy/) 处理。
 
-## 输出 PDF 和打印
+## 导出 PDF 和打印
 
-输出 PDF 和打印都在你的 Mac 上完成。PDF 存在你选择的位置，打印则通过 macOS 送到你选的打印机。
+导出 PDF 和打印都在你的 Mac 上完成。PDF 存在你选择的位置，打印则通过 macOS 送到你选的打印机。
 
 ## marsdawn 命令行工具
 
@@ -2738,7 +4019,7 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器，已在 Mac App Store 上架。�
 - 在访达里对 Markdown 文件按空格键，就有“快速查看”预览，图表也在。
 - 想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。
 
-如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看[首页](/zh-hans/)，想让 agent 帮你开文件，请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。
+如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看[首页](/zh-hans/)，想让 agent 帮你开文件，请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。为什么这样的阅读重要、怎么审一份计划，请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)和[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
 
 ## 接下来
 
@@ -2769,7 +4050,7 @@ marsdawn --version
 把下面的内容贴进一个叫 `plan.md` 的文件：
 
 ````
-# 计划：让输出更快
+# 计划：让导出更快
 
 这份计划由 agent 撰写，你审阅后再把它转成 PDF。
 
@@ -2940,6 +4221,7 @@ marsdawn open notes.md --folder .
 - `path:line`：请 MarsDawn 定位到那一行。后面再接列号，例如 `notes.md:120:8`，会被忽略。如果有文件的完整名称就是这个参数，则视为那个文件。
 - `--line <n>`：同样的功能，只用于单一文件，也可以用在文件名本身以冒号加数字结尾的情况。只能搭配一个文件。
 - 行号范围是 1 到 999999999。
+- MarsDawn 1.0 会打开文件，并跳到指定的行。
 - 文件夹参数会在窗口的侧边栏打开，而不是当成文稿：`marsdawn open .` 会显示当前的文件夹。`--folder <path>` 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹，所以指定两个是使用方式错误。
 - `--background`：打开时不把 MarsDawn 带到最前面。
 - `--json`：输出 JSON 结果，而不是文本。
@@ -2948,7 +4230,7 @@ marsdawn open notes.md --folder .
 
 ### marsdawn export
 
-把 Markdown 文件输出成分页的 PDF，使用和 MarsDawn 输出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。
+把 Markdown 文件导出成分页的 PDF，使用和 MarsDawn 导出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。
 
 ```
 marsdawn export notes.md -o notes.pdf --theme classic --paper a4
@@ -2957,7 +4239,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `-o, --output <path>`：PDF 的输出位置，默认是把输入文件的扩展名换成 `.pdf`。
 - `--theme <dawn|classic|modern|vivid>`：预览主题的浅色版本，默认读取 `$MARSDAWN_THEME`，否则用 `dawn`。
 - `--paper <a4|letter>`：纸张大小，默认 `a4`。
-- `--allow-remote-images`：输出时加载网络图片，默认关闭。
+- `--allow-remote-images`：导出时加载网络图片，默认关闭。
 - `--force`：如果输出文件已存在就直接覆盖。
 - `--json`：输出 JSON 结果，而不是文本。
 
@@ -2977,7 +4259,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 | `2` | 找不到输入文件。 | 检查路径和文件名 |
 | `3` | 尚未安装 MarsDawn（只有 `open` 会用到）。 | 安装 app，或改用不需要 app 的 `export` |
 | `4` | 输出文件已存在（可加上 `--force`）。 | 加上 `--force` 覆盖，或用 `-o` 写到别处 |
-| `5` | 输出失败。 | 读 JSON 结果里的 `message` |
+| `5` | 导出失败。 | 读 JSON 结果里的 `message` |
 | `6` | 这个版本的 MarsDawn 还不能显示文件夹，所以没有打开任何东西（只有 `open` 会用到）。 |  |
 | `64` | 使用方式错误，包括行号超出范围、`--line` 搭配了多个文件或文件夹，或指定了多个文件夹。 | 修正选项或值；这种错误以文本输出到 stderr，即使加了 `--json` 也一样 |
 
@@ -2999,7 +4281,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/agents/
 
 ## 能做什么
 
-- `export`：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件输出成分页的 PDF，不会打开任何窗口。
+- `export`：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件导出成分页的 PDF，不会打开任何窗口。
 - `open`：在 MarsDawn app 中打开一或多个 Markdown 文件，让人审阅，也可以指定每个文件要定位的行，或在窗口的侧边栏显示一个文件夹。
 
 ## 不做什么
@@ -3009,6 +4291,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/agents/
 - 文件已存在时不会覆盖，除非加上 `--force`。
 - 不加载网络图片，除非加上 `--allow-remote-images`，而且只走 https。
 - 没有安装 MarsDawn 时，`open` 无法使用，会以代码 3 结束。`export` 不需要 app。App 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。
+- MarsDawn 1.0 会跳到 `open` 指定的行。
 - 只能在 macOS 上运行。
 
 ## export
@@ -3054,7 +4337,7 @@ marsdawn open notes.md --folder . --background --json
 - `path:line` 指定要定位的行。后面再接列号，例如 `notes.md:120:8`，会被忽略。如果参数本身就是一个存在的文件名，就一律当成那个文件，所以名为 `weird:12` 的文件会照原名打开。
 - `--line <n>` 为单一文件指定行号，包括文件名本身以冒号加数字结尾的情况。只能搭配一个文件。
 - 行号范围是 1 到 999999999，超出范围是用法错误。
-- 行号从 marsdawn 0.3.0 开始提供。
+- 行号从 marsdawn 0.3.0 开始提供。MarsDawn 1.0 会打开文件，并跳到指定的行。
 - 文件夹参数会在窗口的侧边栏打开，而不是当成文稿，所以 `marsdawn open .` 会显示当前的文件夹；`--folder <path>` 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹：指定两个是用法错误，`--folder` 用两次也是（即使是同一个文件夹）；同一个文件夹以参数再指定一次则算一个。文件夹没有行号，所以 `--line` 搭配文件夹是用法错误。没有 `-a`：传入它是用法错误，错误消息会指向 `--folder`。
 - `--background` 打开时不把 MarsDawn 带到最前面，适合在用户做别的事时打开文件的 agent。两种情况的 JSON 都一样。
 - 文件夹与 `--background` 从 marsdawn 0.5.1 开始提供。
@@ -3277,7 +4560,7 @@ MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不
 
 ## 同一个 export，三扇门
 
-不管从哪个界面调用，底层行为都一样：同一套输出程序、同样的主题和纸张大小，Mermaid 图表画不出来时也是同样的 `diagramErrors`。这页不重复那份规格——[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)里有完整内容。
+不管从哪个界面调用，底层行为都一样：同一套导出程序、同样的主题和纸张大小，Mermaid 图表画不出来时也是同样的 `diagramErrors`。这页不重复那份规格——[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)里有完整内容。
 
 ## 接下来
 
@@ -3316,6 +4599,7 @@ PDF 生成之后，人会打开它——在 MarsDawn 里，或任何 PDF 查看�
 - 调用 marsdawn 的三种方式——CLI、skill 文件、MCP 服务器：[三种入口](/zh-hans/cli/mcp/)。
 - JSON 结果的每个字段：[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。
 - 为什么还是需要有人读 agent 写的东西：[审阅的理由](/zh-hans/reviewing-ai-output/)。
+- 更完整的理由和检查清单：[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
 
 ---
 
@@ -3388,7 +4672,7 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 ## PDF 导出和打印用同一个主题
 
-导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套输出程序，所以脚本或 agent 也能用 `--theme` 生成一模一样的 PDF，四种主题都可以。
+导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 agent 也能用 `--theme` 生成一模一样的 PDF，四种主题都可以。
 
 ## 规划中：更多主题，还有主题库
 
@@ -3432,6 +4716,7 @@ agent 写完一份文稿，你审阅、修改过后，公司里不写程序的�
 - 可以用哪些主题和布局导出：[预览主题与 PDF 导出](/zh-hans/themes/)。
 - 从脚本或 agent 导出，而不是从 app：[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。
 - 为什么还是要先有人读过这份文稿：[审阅的理由](/zh-hans/reviewing-ai-output/)。
+- 多 agent 交接常常就是要分享 PDF 的时候：[四种 agent 设计模式，各自会交给你什么文件](/zh-hans/agent-design-patterns/)。
 
 ---
 
@@ -3464,7 +4749,371 @@ Thoughtworks 的 Birgitta Böckeler 讲得很直接：“LLMs are NOT compilers,
 
 - 这样的审阅怎么不花 agent 自己的 context：[节省 token 的审阅方式](/zh-hans/token-efficient-review/)。
 - 把审阅过的文稿交给别人：[分享 PDF](/zh-hans/sharing-exported-pdfs/)。
+- 为什么难读、该怎么读：[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
+- agent 为什么要把计划摊开：[Anthropic 说 agent 要透明，那摊开的东西谁来读？](/zh-hans/agent-transparency/)
 - MarsDawn 是什么，一页讲完：[首页](/zh-hans/)。
+
+---
+
+## 读懂 agent 交回来的 Markdown
+
+Source: https://marsdawn.southern-light.dev/zh-hans/reading-agent-output/
+
+# agent 做完的工作，最后都变成一份你要读的 Markdown。
+
+你请 coding agent 规划一次数据库迁移、写一份规格，或追一个 bug。它自己跑了一阵子，交回来的是一个文件：`plan.md`、`SPEC.md`、一份进度报告，或一份研究摘要。你能检查的工作，全在这份文件里。
+
+**agent 有没有做对，要读过它交回来的东西才知道。MarsDawn 就是为这种阅读做的 Mac app。**
+
+## 做 agent 的人怎么说
+
+以下引文照原文，我们的解读放在最后。
+
+- Anthropic 的〈Building Effective Agents〉（Erik S. 与 Barry Zhang，2024 年 12 月）列出打造 agent 的三个核心原则，其中一条是“Prioritize transparency by explicitly showing the agent’s planning steps.”（优先重视透明度：明确展示 agent 的规划步骤。）这是写给开发 agent 的人的原则；站在你这边，这份透明就是你手上那份要读的计划。
+- 同一篇也写到：“Agents can then pause for human feedback at checkpoints or when encountering blockers.”（Agent 可以在检查点或遇到阻碍时暂停，等待人类反馈。）注意原文用的是 *can*，可以，没有说必须。
+- Chip Huyen 在〈Agents〉（2025 年 1 月）解释为什么规划要和执行分开：“Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it’s not going anywhere.”（没有监督的话，agent 可能执行那些步骤好几个小时，在 API 呼叫上浪费时间和金钱，你才发现它根本没有进展。）她也描述了一种失败：“The agent is convinced that it’s accomplished a task when it hasn’t.”（Agent 深信自己已完成任务，但其实并没有。）请它把 50 个人分到 30 间饭店房间，它只排了 40 人，还坚称做完了。
+- Andrew Ng 在 The Batch（2024 年 4 月）谈 planning 这个设计模式：“On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results.”（一方面，规划是非常强大的能力；另一方面，它会导致较难预测的结果。）他讲的是可预测性，并没有呼吁要人工审阅，而且他相信规划能力很快会进步。
+
+**以下是我们的推论，不是作者的主张：**agent 把计划摊开、在检查点停下来，那在检查点读计划的通常就是你。agent 可能以为自己做完了，那它的“完成报告”也得有人读过。上面这几位作者都没有提到 MarsDawn，也没有推荐 MarsDawn 或任何 Markdown 工具。
+
+## 比看起来难读
+
+文件很长，重要的地方很少在最上面。里面有 Mermaid 图表和数学式，看原始码很难跟上。你读到一半，agent 可能还在改写同一个文件。它通常不只交一个文件，有时还分散在不同的分支或 worktree。等你找到问题，说“缓存那段怪怪的”，agent 只能用猜的；说“`docs/plan.md:42` 在回填跑完前就把旧表删了”，它就知道要改哪里。
+
+## MarsDawn 帮得上忙的地方
+
+- **文件很长：**侧边栏（⌃⌘S）的“大纲”标签页列出所有标题，点一下，两边窗格都会跳过去。
+- **图表和数学式：**Mermaid 和 KaTeX 直接画在预览里，和原始码并排（⌘2），两边一起卷动。
+- **读到一半被改写：**agent 改写文件时，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。
+- **好几个文件：**用“文件 ▸ 打开文件夹⋯”（⇧⌘O）打开 agent 工作的文件夹，新文件大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树。
+- **反馈要准：**“编辑 ▸ 拷贝引用”（⌥⌘C）把目前位置拷贝成 `docs/plan.md:42`，“拷贝给 AI”（⌃⌥⌘C）会在下面附上你选取的文字，直接贴给 agent 就好。
+
+另外两件事也和这个循环有关：agent 可以执行 `marsdawn open plan.md:42`，在 MarsDawn 里帮你打开文件，直接停在第 42 行，也就是它想先让你看的那一行；审完的文件可以从 app 导出 PDF，也可以用免费的 `marsdawn export` 指令。
+
+MarsDawn 里没有 AI 模型。它不会帮你摘要计划、打分数，也不会告诉你哪里错了。读的人是你，它负责让又长又会变的文件保持好读，让你能准确指出是哪一行。
+
+## 五分钟审完一份 agent 计划
+
+用什么编辑器都适用。
+
+1. 先只看标题。大纲和你要求的对得上吗？少一段，通常就是少做一件事。
+2. 找出所有写着“完成”“通过”“已验证”的地方，挑一个自己查：打开那个文件、跑那个测试、数一下笔数。
+3. 找出做了就回不去的步骤：删资料、数据库迁移、force push，还有任何会寄出、付款或发布的动作。这些要等你明确点头。
+4. 图表要看画出来的样子，逐一对照每个箭头和文字说的是不是同一回事。
+5. 列出计划会动到的文件和系统。你没要求的部分，执行前先问清楚。
+6. 反馈写成“位置、问题、改法”：“`plan.md:88`：回填排在删表之后，第 4、5 步对调。”一行只讲一个问题。
+
+时间只够做一步的话，就做第 2 步吧。以为自己已经做完的 agent，多半是在这一步被抓到的。完整版本、附实际例子：[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
+
+## 试试看
+
+MarsDawn 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。另外还有免费的 `marsdawn` 命令行工具：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+它不需要 app 就能把 Markdown 导出成 PDF；agent 也能用 `marsdawn open` 在 MarsDawn 里帮你打开文件。
+
+[命令行工具](/zh-hans/cli/) · [给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/) · 买之前先看：[MarsDawn 做不到的事](/zh-hans/limits/)
+
+## 接下来
+
+- 为什么 AI 写的东西需要人读，短一点的版本：[为什么 AI 写的东西还是需要人读过](/zh-hans/reviewing-ai-output/)。
+- 审阅时不占用 agent 的 context：[节省 token 的审阅方式](/zh-hans/token-efficient-review/)。
+- agent 为什么要把计划摊开：[Anthropic 说 agent 要透明，那摊开的东西谁来读？](/zh-hans/agent-transparency/)
+- 上面那份清单一步一步来，附实际例子：[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
+- 不同类型的 agent 会交给你什么文件：[四种 agent 设计模式，各自会交给你什么文件](/zh-hans/agent-design-patterns/)。
+
+## 资料来源
+
+- Erik S. 与 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：[https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) （引文依 2026-09-26 的线上版本；该文现已注明，文中提到的工具生态自 2024 年 12 月以来已有很多改变）
+- Chip Huyen，〈Agents〉，2025 年 1 月 7 日：[https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Andrew Ng，〈Agentic Design Patterns Part 4, Planning〉，The Batch，2024 年 4 月 10 日：[https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/)
+
+---
+
+## agent 的透明
+
+Source: https://marsdawn.southern-light.dev/zh-hans/agent-transparency/
+
+# Anthropic 说 agent 要透明，那摊开的东西谁来读？
+
+Anthropic 在 2024 年 12 月发表了〈Building Effective Agents〉，写给打造 AI agent 的人。文章的总结列出三个原则，其中一个是透明。这篇要谈的是这个原则的另一端：agent 把步骤摊开之后，总得有人去读。
+
+**透明是 agent 要做到的事，读是你要做的事。Anthropic 要求开发者把 agent 的规划步骤摊开；对大多数在驱动 coding agent 的人来说，这些步骤最后会变成一份 Markdown 文件，要有人在对的时间点读它。**
+
+## 指南里写了什么
+
+Erik S. 与 Barry Zhang 在总结里这样写：
+
+> “When implementing agents, we try to follow three core principles: Maintain simplicity in your agent's design. Prioritize transparency by explicitly showing the agent’s planning steps. Carefully craft your agent-computer interface (ACI) through thorough tool documentation and testing.”
+
+（实作 agent 时，我们尽量遵守三个核心原则：让 agent 的设计保持简单；优先重视透明度，明确展示 agent 的规划步骤；通过完整的工具文件与测试，仔细打造 agent 与电脑之间的接口（ACI）。）
+
+这些是写给开发 agent 的人的设计原则，不是给使用者的操作指示。原则要求把步骤摊开，但没有说谁来读。
+
+同一篇也描述了 agent 拿到任务之后会做什么：“Once the task is clear, agents plan and operate independently, potentially returning to the human for further information or judgement.”（任务明确之后，agent 会自己规划、独立运作，必要时回头找人类要更多信息或判断。）还有：“Agents can then pause for human feedback at checkpoints or when encountering blockers.”（Agent 可以在检查点或遇到阻碍时暂停，等待人类反馈。）注意用词：*potentially*（必要时）和 *can*（可以）。检查点是 agent 可以有的设计，不是一定要有。
+
+## 大部分的检查，不是你在做
+
+这里很容易讲过头，所以先看指南真正放在前面的是什么。agent 会拿外界的结果来检查自己：“During execution, it's crucial for the agents to gain “ground truth” from the environment at each step (such as tool call results or code execution) to assess its progress.”（执行过程中，agent 必须在每一步从环境取得“ground truth”，例如工具呼叫的结果或程序执行的结果，用来评估自己的进度。）这句话里的 ground truth 指的是测试结果和工具输出，不是人。
+
+指南对风险也讲得很直接：“The autonomous nature of agents means higher costs, and the potential for compounding errors.”（Agent 的自主性意味着更高的成本，以及错误不断累积的可能。）它给的解方是在沙盒环境里大量测试、加上适当的防护，并没有说“要读得更仔细”。
+
+人真正出场，是在附录谈 coding agent 的段落：“However, whereas automated testing helps verify functionality, human review remains crucial for ensuring solutions align with broader system requirements.”（然而，自动化测试虽然有助于验证功能，但要确保解法符合更广泛的系统需求，人工审阅仍然至关重要。）这句讲的是代码。不过它点出的落差，用过 agent 的人都不陌生：测试能告诉你东西能动，不能告诉你那是不是你要的。
+
+## 摊开的步骤，最后去了哪里
+
+**以下是我们的解读，不是 Anthropic 的主张。**
+
+如果你每天都在用 coding agent，它的规划步骤通常不会出现在什么仪表板上，而是变成文件：`plan.md`、一份有勾选框的待办清单、一个 agent 一直在改写的进度档，最后再来一份总结。从你这边看，透明的意思就是要读的东西变多了。
+
+把步骤摊开，是 agent 那一半的责任。另一半，是有人在关键时刻读它：数据库迁移执行之前、分支合并之前、接受“做完了”之前。一个 agent 把所有东西都写进一份 600 行、没人打开的文件，纸面上很透明，实际上没人在看。
+
+Harrison Chase 在 2024 年也讲过类似的话，不过他谈的是 agent 框架该怎么设计，不是文件：“You’ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.”（你会希望能观察系统内部发生了什么，因为它实际采取的步骤事先可能无法得知。）他讲的是给开发 agent 的人用的工具。如果你是驱动 agent 的那个人，它一直在写的那份纯文字档，常常就是你看得到的部分。
+
+以上几位作者都没有提到 MarsDawn，也没有推荐 MarsDawn 或任何 Markdown 工具。
+
+## 比看起来难读
+
+文件很长，重要的地方很少在最上面。说明这次改动的那张图，是一段 Mermaid 原始码，不是图（想在 Mac 上看到排好的样子，可以先看[在 Mac 上怎么看 Markdown 文件](/zh-hans/view-markdown-on-mac/)）。你读到一半，agent 可能正在改写它。文件常常不只一份，有时还分散在不同的分支或 worktree。等你真的找到问题，说“缓存那段怪怪的”，agent 只能用猜的。完整的说明在[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
+
+## MarsDawn 帮得上、帮不上的地方
+
+MarsDawn 是为这种阅读做的 Mac app。它不会让 agent 变得更透明，里面也没有 AI 模型：它不会帮你摘要计划，也不会告诉你计划对不对。它做的是：
+
+- **文件很长：**“显示方式 ▸ 显示侧边栏”（⌃⌘S）打开“大纲”标签页，列出所有标题，点一下就跳过去。
+- **图表和数学式：**原始码和排好的页面并排（⌘2），两边一起卷动，Mermaid 和 KaTeX 直接画出来。图表写错时，预览会显示它的原始码，下方附上错误信息。
+- **读到一半被改写：**agent 改写文件时，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。
+- **好几个文件：**用“文件 ▸ 打开文件夹⋯”（⇧⌘O）打开 agent 工作的文件夹，新文件大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树。
+- **指出是哪一行：**“编辑 ▸ 拷贝引用”（⌥⌘C）把目前位置拷贝成 `docs/plan.md:42`，“拷贝给 AI”（⌃⌥⌘C）会在下面附上你选取的文字，直接贴给 agent 就好。
+
+读的人还是你。MarsDawn 负责让一份又长又会变的文件，在你读的时候保持好读。
+
+## 试试看
+
+MarsDawn 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。另外还有免费的 `marsdawn` 命令行工具：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+它不需要 app 就能把 Markdown 导出成 PDF。
+
+[命令行工具](/zh-hans/cli/) · 买之前先看：[MarsDawn 做不到的事](/zh-hans/limits/)
+
+## 接下来
+
+- agent 的产出为什么难读，以及一份检查清单：[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
+- 那份清单一步一步来，附实际例子：[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
+- 不同类型的 agent 会交给你什么文件：[四种 agent 设计模式，各自会交给你什么文件](/zh-hans/agent-design-patterns/)。
+- 为什么 AI 写的东西需要人读，短一点的版本：[为什么 AI 写的东西还是需要人读过](/zh-hans/reviewing-ai-output/)。
+
+## 资料来源
+
+- Erik S. 与 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：[https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) （引文依 2026-09-26 的线上版本；该文现已注明，文中提到的工具生态自 2024 年 12 月以来已有很多改变）
+- Harrison Chase，〈What is an agent?〉，LangChain，2024 年 6 月 28 日，存档版本：[http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/](http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/) （原网址现在显示的是 2026 年的另一篇文章）
+
+---
+
+## 审 agent 计划
+
+Source: https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/
+
+# 五分钟审完一份 agent 计划
+
+agent 写好一份计划，正等你点头。你手上只有五分钟，不是一个小时。下面这套做法用什么编辑器都行，连纯文字编辑器也可以。其中几步 MarsDawn 帮得上忙，我们会讲清楚是哪几步；最重要的那一步，它帮不上。
+
+**不要从头读到尾。先看架构，再查一个宣称，找出做了就回不去的步骤，看图表和影响范围，最后写出 agent 看得懂、改得动的反馈。六个步骤，大约五分钟。**
+
+## 为什么要在执行前审
+
+Chip Huyen 解释为什么规划要和执行分开时，把代价讲得很白：“Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it’s not going anywhere.”（没有监督的话，agent 可能执行那些步骤好几个小时，在 API 呼叫上浪费时间和金钱，你才发现它根本没有进展。）我们补一句：计划是抓错最便宜的地方。在 `plan.md` 里改一行，只要一句话；等 agent 跑完再收拾，可能要花掉一个下午。
+
+## 范例
+
+你请 agent 把使用者头像搬到物件储存，而且旧链接不能坏。它交回来的是这份：
+
+```
+# 计划：把使用者头像搬到物件储存
+
+## 目标
+头像改由物件储存提供，不再放在 app 服务器上。
+
+## 步骤
+1. 加入储存用的 client 与设定。✅ 完成
+2. 写一支脚本，把现有头像复制到 bucket。
+3. 把模板里的头像网址换掉。
+4. 从服务器删除 `public/avatars/`。
+5. 执行复制脚本。
+
+## 状态
+所有测试都通过。
+```
+
+读起来很顺。照做的话，它也会在复制任何一张头像之前，先把全部头像删光。
+
+## 六个步骤
+
+**1. 先只看标题。**（大约一分钟）大纲和你要求的对得上吗？少一段，通常就是少做一件事。这份只有“目标”“步骤”“状态”。你要求旧链接不能坏，可是没有任何一段讲旧链接，也没有讲出问题时怎么退回去。这就是你的第一条意见。
+
+在终端机跑 `grep -n '^#' plan.md`，就只会印出标题；大部分编辑器也有大纲预览。在 MarsDawn 里，侧边栏（“显示方式 ▸ 显示侧边栏”，⌃⌘S）的“大纲”标签页会列出所有标题，点一下就跳过去。
+
+**2. 找出所有写着“完成”“通过”“已验证”的地方，挑一个自己查。**（大约一分钟）打开那个文件、跑那个测试、数一下笔数。Chip Huyen 描述过一种失败：“The agent is convinced that it’s accomplished a task when it hasn’t.”（Agent 深信自己已完成任务，但其实并没有。）她举的例子是：请 agent 把 50 个人分到 30 间饭店房间，它只排了 40 人，还坚称做完了。
+
+```
+grep -n -E '完成|通过|验证|✅' plan.md
+```
+
+在这份计划里，会找到“✅ 完成”和“所有测试都通过”。是哪些测试？有任何一个碰到头像吗？自己跑一次，或直接问。这一步 MarsDawn 没办法替你做，除了你，没有人能替你做。
+
+**3. 找出做了就回不去的步骤。**（大约一分钟）删资料、数据库迁移、force push，还有任何会寄出、付款或发布的动作。这些要等你明确点头。Chip Huyen 从系统设计的角度讲过同一件事：“If a plan involves risky operations, such as updating a database or merging a code change, the system can ask for explicit human approval before executing or defer to humans to execute these operations.”（如果计划牵涉有风险的操作，例如更新数据库或合并代码变更，系统可以在执行前要求人类明确核准，或交给人类自己执行。）这份计划的第 4 步会删掉原始文件，而且排在第 5 步复制之前。
+
+**4. 图表要看画出来的样子，逐一对照每个箭头和文字说的是不是同一回事。**流程图画着“复制 → 检查 → 删除”，步骤却不是这个顺序，这本身就是一个发现。这份计划没有图，今天可以跳过。有图的时候，请看画出来的图，不要看 Mermaid 原始码：很多编辑器都有预览，〈[在 Mac 上怎么看 Markdown 文件](/zh-hans/view-markdown-on-mac/)〉和〈[在别处看 Markdown，对比 MarsDawn](/zh-hans/vs/markdown-preview-tools/)〉整理了各种做法。在 MarsDawn 里，画好的图就在原始码旁边（⌘2）；图表写错时，预览会显示原始码、下方附上错误信息，这也值得单独写一条意见。
+
+**5. 列出计划会动到的文件和系统，你没要求的部分，先问清楚。**（第 4、5 步合起来大约一分钟）这份会动到：储存设定、模板、服务器上的一个文件夹、一个 bucket。这个 bucket 谁读得到？你没说它要公开。如果你用 MarsDawn 打开 agent 工作的文件夹（“文件 ▸ 打开文件夹⋯”，⇧⌘O），它新写的文件大约一秒内就会出现在“文件”标签页，清单上方也会标出 git 分支或工作树，你就知道自己审的是哪一份检出。
+
+**6. 反馈写成“位置、问题、改法”，一行只讲一个问题。**（最后一分钟）
+
+```
+plan.md:10：第 5 步还没复制，这里就先删了。先复制、核对数量，再删；删之前等我确认。
+plan.md:14：是哪些测试？加一个切换后加载旧头像网址的测试。
+plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写出怎么退回去。
+```
+
+有行号的编辑器都能做到。在 MarsDawn 里，“编辑 ▸ 拷贝引用”（⌥⌘C）会把目前位置拷贝成 `plan.md:10`，“拷贝给 AI”（⌃⌥⌘C）会在下面附上你选取的文字。
+
+## 只有一分钟的话
+
+就做第 2 步吧。以为自己已经做完的 agent，多半是在这一步被抓到的。
+
+## 五分钟不够的时候
+
+有时候你判断不了某一步对不对，因为它超出你熟悉的范围。Jess Ou 在 LangChain 2026 年介绍 agent 的文章里，用两句话讲完：“Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.”（无法评估的判断，就不要外包出去。如果你自己认不出正确答案，agent 也认不出来。）我们的看法是：判断不了，不是赶快核准的理由，而是该去找懂的人问一下的理由。
+
+## MarsDawn 在这里做什么、不做什么
+
+MarsDawn 里没有 AI 模型。它不会帮你找出这份计划的问题，第 2、3 步也不会替你做。它做的是让文件在你审的时候保持好读：第 1 步有大纲，第 4 步有画好的图，第 5 步有“文件”标签页，第 6 步有行号引用。你读到一半 agent 改了计划，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。
+
+计划定案、要给别人看的时候，〈[把 agent 写的东西交出去，不用教对方 Markdown](/zh-hans/sharing-exported-pdfs/)〉和〈[Markdown 转 PDF 工具](/zh-hans/markdown-to-pdf/)〉说明了怎么转成 PDF 交出去。
+
+## 试试看
+
+MarsDawn 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。另外还有免费的 `marsdawn` 命令行工具：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+它不需要 app 就能把 Markdown 导出成 PDF。
+
+[命令行工具](/zh-hans/cli/) · 买之前先看：[MarsDawn 做不到的事](/zh-hans/limits/)
+
+## 接下来
+
+- agent 的产出为什么难读：[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
+- agent 为什么要把计划摊开：[Anthropic 说 agent 要透明，那摊开的东西谁来读？](/zh-hans/agent-transparency/)
+- agent 交回来的不只有计划：[四种 agent 设计模式，各自会交给你什么文件](/zh-hans/agent-design-patterns/)。
+
+## 资料来源
+
+- Chip Huyen，〈Agents〉，2025 年 1 月 7 日：[https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Jess Ou，〈What is an AI agent?〉，LangChain，2026 年 7 月 31 日：[https://www.langchain.com/blog/what-is-an-agent](https://www.langchain.com/blog/what-is-an-agent)
+
+---
+
+## agent 设计模式
+
+Source: https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/
+
+# 四种 agent 设计模式，各自会交给你什么文件
+
+2024 年 3 月，Andrew Ng 在他的电子报 The Batch 介绍了四种 AI agent 的设计模式：reflection（反思）、tool use（使用工具）、planning（规划）和 multi-agent collaboration（多 agent 协作）。大家通常从开发者的角度谈它们，当成让模型表现更好的方法。这篇换个方向看：如果你用的 agent 是照这些模式做的，最后会有什么东西落进你的文件夹？你该先读哪里？
+
+**四种模式是 Andrew Ng 提出的。每种模式通常会交给你什么文件、该检查什么，是我们自己的推论。这两件事他都没有写，他在这个系列里也没有主张要人工审阅。**
+
+## 四种模式，简单说
+
+Ng 在〈Agentic Design Patterns Part 1〉里介绍了这四种模式。简单说：**reflection** 是模型回头检查自己的成果，再加以改进；**tool use** 是让模型能呼叫网络搜寻、执行代码之类的工具；**planning** 是模型自己拟出多步骤的计划再执行；**multi-agent collaboration** 是好几个 agent 分工、互相讨论。
+
+他在 Part 1 用一个代码基准测试 HumanEval 说明这些模式的效果，数据是他的团队整理多个研究团队的结果：“GPT-3.5 (zero shot) was 48.1% correct. GPT-4 (zero shot) does better at 67.0%. However, the improvement from GPT-3.5 to GPT-4 is dwarfed by incorporating an iterative agent workflow. Indeed, wrapped in an agent loop, GPT-3.5 achieves up to 95.1%.”（GPT-3.5 在 zero-shot 下的正确率是 48.1%，GPT-4 在 zero-shot 下好一些，是 67.0%。但和加入迭代式 agent 工作流程相比，从 GPT-3.5 换到 GPT-4 的进步就显得微不足道：放进 agent 循环后，GPT-3.5 最高可达 95.1%。）这些数字只针对一个代码基准测试，95.1% 是最好的情况（"up to"，最高可达）。它们说明 agent 工作流程能提升产出质量，但完全没有谈到谁来检查。
+
+**以下“交给你什么文件”和“该检查什么”，都是我们的解读，不是 Ng 的。**实际的 agent 通常会混用好几种模式。一个 coding agent 可能在同一次工作里规划、跑工具、再检查自己的成果，所以四种文件你常常会一次全收到。
+
+## 1. Reflection：一份已经自己审过的草稿
+
+Ng 谈 reflection 的那篇，把它说成是把原本由人给的反馈自动化：“What if you automate the step of delivering critical feedback, so the model automatically criticizes its own output and improves its response?”（如果把提出批评性反馈这一步自动化，让模型自动批评自己的产出、改进它的回答呢？）
+
+**通常会交给你：**一份改过的文件，有时附上一段自我检查，或是“边界情况都再确认过了”之类的句子。
+
+**该检查什么：**拿结果对照“你”的要求，不是对照 agent 自己的批评。自我检查也会出错。Chip Huyen 写道：“An interesting mode of planning failure is caused by errors in reflection. The agent is convinced that it’s accomplished a task when it hasn’t.”（有一种有趣的规划失败，是反思出错造成的：agent 深信自己已完成任务，但其实并没有。）Lilian Weng 在 2023 年 6 月（当时任职 OpenAI）于她的博客 Lil’Log 谈到当时的模型：“The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.”（缺乏专业知识可能使 LLM 不知道自己的缺陷，因而无法妥善判断任务结果的正确性。）她描述的那项研究里，LLM 对结果的评估和人类专家的评估并不一致。文件里写“已验证”的话，自己挑一项查。
+
+## 2. Tool use：一份“跑了什么”的报告
+
+**通常会交给你：**一份总结，说 agent 跑了什么、搜了什么、得到什么结果。“跑完测试：全部通过。”一张结果表格。它找到的一串链接。
+
+Anthropic 的指南把工具结果说成 agent 自我检查的依据：“During execution, it's crucial for the agents to gain “ground truth” from the environment at each step (such as tool call results or code execution) to assess its progress.”（执行过程中，agent 必须在每一步从环境取得“ground truth”，例如工具呼叫的结果或程序执行的结果，用来评估自己的进度。）这个检查发生在 agent 内部。到你手上的，是 agent 对这些结果的转述。
+
+**该检查什么：**每个宣称都要追得回你看得到的输出。挑总结里的一个数字，对照真正的输出；点开其中一个链接看看。
+
+## 3. Planning：`plan.md`
+
+**通常会交给你：**一份计划、一份规格，或一份 agent 做完一项就勾一项的待办清单。
+
+Ng 在 Part 4 对这个模式讲得很坦白：
+
+> “On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results. In my experience, while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do.”
+
+（一方面，规划是非常强大的能力；另一方面，它会导致较难预测的结果。就我的经验，Reflection 和 Tool Use 这两种模式我都能让它们稳定运作、提升应用程序的表现，但 Planning 还是比较不成熟的技术，我很难事先预测它会怎么做。）
+
+他也很乐观：“But the field continues to evolve rapidly, and I'm confident that Planning abilities will improve quickly.”（不过这个领域持续快速发展，我相信规划能力很快就会进步。）
+
+**该检查什么：**在执行前审计划，用〈[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)〉的方法：看架构、查一个宣称、找出回不去的步骤、看图表、看影响范围。agent 中途改写计划的话，拿它和你核准的版本比对；如果有用 git，`git diff plan.md` 就看得到改了什么。在 MarsDawn 里，“大纲”标签页让你一眼看出长计划的架构；计划被改写时会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。
+
+## 4. Multi-agent collaboration：好几份文件，好几个作者
+
+**通常会交给你：**一个 agent 写的规格、另一个写的实作笔记、第三个写的审查意见，还有它们之间互相交接的摘要。有时每个 agent 各自在自己的分支或 worktree 里工作。
+
+**该检查什么：**交接的地方。一个 agent 在总结另一个的成果时，看有没有哪条需求没被带过去。找出彼此矛盾的两份文件，在任何人接着往下做之前，先决定哪一份才算数。在 MarsDawn 里，用“文件 ▸ 打开文件夹⋯”（⇧⌘O）打开它们共用的文件夹：agent 写出新文件，大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树，两个窗口就算开着不同分支上同名的文件，也不会搞混。成果要交给不读 Markdown 的人时，可以看〈[把 agent 写的东西交出去，不用教对方 Markdown](/zh-hans/sharing-exported-pdfs/)〉。
+
+## 一览表
+
+| 模式（Ng 提出） | 通常会交给你（我们的推论） | 先读哪里（我们的建议） |
+|---|---|---|
+| Reflection 反思 | 一份改过的草稿，可能附自我检查 | 对照你自己的要求；挑一个“已验证”自己查 |
+| Tool use 使用工具 | 一份“跑了什么、得到什么”的报告 | 挑一个宣称，追回真正的输出 |
+| Planning 规划 | `plan.md`、规格、待办清单 | 执行前的五分钟审阅 |
+| Multi-agent collaboration 多 agent 协作 | 好几个 agent 写的好几份文件，可能分散在不同分支 | 交接的地方，以及哪一份才算数 |
+
+上面引用的作者都没有提到 MarsDawn，也没有推荐 MarsDawn 或任何 Markdown 工具。MarsDawn 里没有 AI 模型：它不知道一份文件是哪种模式产生的，也不会替你做这些检查。它负责让这些文件在你检查的时候保持好读。
+
+## 试试看
+
+MarsDawn 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架。另外还有免费的 `marsdawn` 命令行工具：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+它不需要 app 就能把 Markdown 导出成 PDF，详见〈[Markdown 转 PDF 工具](/zh-hans/markdown-to-pdf/)〉。
+
+[命令行工具](/zh-hans/cli/) · 买之前先看：[MarsDawn 做不到的事](/zh-hans/limits/)
+
+## 接下来
+
+- agent 的产出为什么难读，以及一份检查清单：[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
+- 完整的计划审阅方法：[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
+- 透明对你的要求是什么、不是什么：[Anthropic 说 agent 要透明，那摊开的东西谁来读？](/zh-hans/agent-transparency/)
+
+## 资料来源
+
+- Andrew Ng，〈Agentic Design Patterns Part 1〉，The Batch，2024 年 3 月 20 日：[https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/](https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/)
+- Andrew Ng，〈Agentic Design Patterns Part 2, Reflection〉，The Batch，2024 年 3 月 27 日：[https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/)
+- Andrew Ng，〈Agentic Design Patterns Part 4, Planning〉，The Batch，2024 年 4 月 10 日：[https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/)
+- Chip Huyen，〈Agents〉，2025 年 1 月 7 日：[https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Lilian Weng，〈LLM Powered Autonomous Agents〉，Lil’Log，2023 年 6 月 23 日：[https://lilianweng.github.io/posts/2023-06-23-agent/](https://lilianweng.github.io/posts/2023-06-23-agent/)
+- Erik S. 与 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：[https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) （引文依 2026-09-26 的线上版本）
 
 ---
 
@@ -3506,21 +5155,267 @@ Source: https://marsdawn.southern-light.dev/zh-hans/changelog/
 
 2026 年 9 月 24 日。脚注、对比度与文件夹。
 
-- 输出的 PDF 会呈现脚注：引用有编号，脚注内容接在正文之后。
+- 导出的 PDF 会呈现脚注：引用有编号，脚注内容接在正文之后。
 - 所有主题的浅色与深色都符合 WCAG AA 对比度。Classic 改为黑白。
 - `marsdawn skill` 会打印与已安装的 marsdawn 相符的 agent skill。
 - 找到的 MarsDawn 无法显示文件夹时，`marsdawn open` 会以代码 6（`app_cannot_open_folders`）结束，不再报告成功。
-- 画进输出页面的占位文字，也有德文、法文、西班牙文和韩文。
+- 画进导出页面的占位文字，也有德文、法文、西班牙文和韩文。
 - 相对路径很长时，图片占位文字不再显示它背后的绝对路径。
 - `MARSDAWN_APP_PATH` 只有指向 MarsDawn app 时才会采用。
 
 ## marsdawn 0.5.1
 
-2026 年 9 月 19 日。PDF 输出，以及从命令行打开文件。
+2026 年 9 月 19 日。PDF 导出，以及从命令行打开文件。
 
-- 输出的 PDF 中，中文、日文与韩文的文字层已修正。
+- 导出的 PDF 中，中文、日文与韩文的文字层已修正。
 - `marsdawn open --background` 会打开文件，但不会把 MarsDawn 带到最前面。
 - `marsdawn open` 可以指定一个文件夹，MarsDawn 会把它显示在窗口的侧边栏（MarsDawn 1.0.0 起）。
+
+---
+
+## 模板
+
+Source: https://marsdawn.southern-light.dev/zh-hans/templates/
+
+# Markdown 模板
+
+给 agent 写、你来读的文档。每份模板都附一段给 agent 的提示词。把填好的文件用 MarsDawn 打开，读读它写了什么。
+
+- [规格文档（PRD）](/zh-hans/templates/spec/)：问题、目标、需求、流程图和验收标准。
+- [流程图](/zh-hans/templates/flowchart/)：一张 Mermaid 图，下方把每个步骤写出来。
+- [会议记录](/zh-hans/templates/meeting-notes/)：决议和行动项，每项都有负责人。
+
+---
+
+## 规格文档模板
+
+Source: https://marsdawn.southern-light.dev/zh-hans/templates/spec/
+
+# Markdown 规格文档（PRD）模板
+
+一份 agent 能填、你一次就能读完的规格文档：问题、目标、需求、流程图和验收标准。改了一条需求，就请 agent 把其他部分跟着改好。
+
+## 模板
+
+[下载 spec.md](/zh-hans/templates/spec/spec.md)
+
+````
+# 规格：功能名称
+
+状态：草稿 · 负责人：姓名 · 更新：日期
+
+## 问题
+
+_现在哪里有问题、影响谁、我们怎么知道。_
+
+## 目标
+
+- _上线后应达成的结果。_
+
+## 不做的事
+
+- _这次刻意不做的事。_
+
+## 需求
+
+| 编号 | 需求 | 优先级 |
+|------|------|--------|
+| R1 | _需求_ | 必须 |
+| R2 | _需求_ | 应该 |
+
+## 流程
+
+```mermaid
+flowchart LR
+  A[开始] --> B[步骤] --> C[结果]
+```
+
+## 验收标准
+
+- [ ] R1：_怎么确认。_
+- [ ] R2：_怎么确认。_
+
+## 待定问题
+
+- _问题。_
+````
+
+## 导出效果
+
+![spec.md 用 marsdawn export 导出的 PDF 第一页。](/assets/templates/spec-zh-hans.png)
+
+用 `marsdawn export spec.md` 导出。免费的命令行工具排版和 MarsDawn 的预览一样，图表也一起画出来。
+
+## 交给 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hans/templates/spec/spec.md 这份模板，把［功能］的规格写进 spec.md。每条需求都要有编号，流程图和验收标准用同样的编号。写好之后运行 marsdawn open spec.md。
+```
+
+## 导出 PDF 分享
+
+`marsdawn export spec.md` 会在旁边写出 spec.pdf，给不读 Markdown 的人。
+
+## 做不到的事
+
+MarsDawn 会显示规格、表格和流程图，但不会检查验收标准有没有覆盖每一条需求。那是 agent 的工作，也要靠你读。
+
+## 常见问题
+
+### 流程图需要另外安装什么吗？
+
+不用。MarsDawn 和 `marsdawn export` 自己就会画 Mermaid，离线也能画。
+
+### 可以在 MarsDawn 里改规格吗？
+
+可以。它是 Markdown 编辑器，源代码旁边就是预览。agent 下次读这个文件时，就会看到你的修改。
+
+## 其他模板
+
+- [流程图](/zh-hans/templates/flowchart/)：一张 Mermaid 图，下方把每个步骤写出来。
+- [会议记录](/zh-hans/templates/meeting-notes/)：决议和行动项，每项都有负责人。
+- [Markdown 模板](/zh-hans/templates/)
+
+---
+
+## 流程图模板
+
+Source: https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/
+
+# Markdown 流程图模板
+
+一张 Mermaid 流程图，下方把每个步骤写清楚，图和文字可以互相对照。去掉一个步骤，再请 agent 把其他部分改好。
+
+## 模板
+
+[下载 flowchart.md](/zh-hans/templates/flowchart/flowchart.md)
+
+````
+# 流程名称
+
+_一句话：输入什么，产出什么。_
+
+## 图
+
+```mermaid
+flowchart LR
+  A[第一步] --> B[第二步]
+  B --> C[第三步]
+  C --> D[完成]
+```
+
+## 步骤
+
+1. **第一步**：_谁来做，交给下一步什么。_
+2. **第二步**：_……_
+3. **第三步**：_……_
+4. **完成**：_这里的“完成”是什么意思。_
+````
+
+## 导出效果
+
+![flowchart.md 用 marsdawn export 导出的 PDF 第一页。](/assets/templates/flowchart-zh-hans.png)
+
+用 `marsdawn export flowchart.md` 导出。免费的命令行工具排版和 MarsDawn 的预览一样，图表也一起画出来。
+
+## 交给 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/flowchart.md 这份模板，把［流程］画进 flowchart.md。每个节点对应一个编号步骤，顺序相同。写好之后运行 marsdawn open flowchart.md。
+```
+
+## 导出 PDF 分享
+
+`marsdawn export flowchart.md`：流程图会画进 PDF 里。
+
+## 做不到的事
+
+MarsDawn 按 Mermaid 写的内容画图，不能手动排版，也不会让编号步骤和节点保持一致。Mermaid 有错误时，预览会显示错误信息，而不是图。
+
+## 常见问题
+
+### 哪些图可以用？
+
+Mermaid 画得出来的都可以：流程图、时序图、状态图等等。
+
+### 为什么还要把步骤写出来？
+
+快速浏览的人看图；要仔细确认的人需要文字。agent 可以让两者保持一致。
+
+## 其他模板
+
+- [规格文档（PRD）](/zh-hans/templates/spec/)：问题、目标、需求、流程图和验收标准。
+- [会议记录](/zh-hans/templates/meeting-notes/)：决议和行动项，每项都有负责人。
+- [Markdown 模板](/zh-hans/templates/)
+
+---
+
+## 会议记录模板
+
+Source: https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/
+
+# Markdown 会议记录模板
+
+先写决议，再列行动项，每项都有负责人。让 agent 从逐字稿整理出会议记录，发出之前先读一遍。决议改了，就请 agent 把行动项跟着改好。
+
+## 模板
+
+[下载 meeting-notes.md](/zh-hans/templates/meeting-notes/meeting-notes.md)
+
+```
+# 会议名称，日期
+
+出席：_姓名_
+
+## 决议
+
+- _决定了什么，一项一行。_
+
+## 行动项
+
+- [ ] 姓名：_做什么，何时完成。_
+- [ ] 姓名：_做什么，何时完成。_
+
+## 备注
+
+- _值得留下、但不是决议也不是行动项的内容。_
+```
+
+## 导出效果
+
+![meeting-notes.md 用 marsdawn export 导出的 PDF 第一页。](/assets/templates/meeting-notes-zh-hans.png)
+
+用 `marsdawn export meeting-notes.md` 导出。免费的命令行工具排版和 MarsDawn 的预览一样。
+
+## 交给 agent
+
+```
+用 https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/meeting-notes.md 这份模板，把这场会议整理进 meeting-notes.md。先写决议，一项一行；每个行动项都要有一位负责人和日期。写好之后运行 marsdawn open meeting-notes.md。
+```
+
+## 导出 PDF 分享
+
+`marsdawn export meeting-notes.md` 会导出一份 PDF，可以附在会后的邮件里。
+
+## 做不到的事
+
+MarsDawn 不会录音或转成逐字稿，也不会跟踪行动项。它只把会议记录呈现成读者会看到的样子。
+
+## 常见问题
+
+### 复选框能用吗？
+
+在预览和 PDF 里都会显示成复选框。要打勾，就在源代码里把 `[ ]` 改成 `[x]`。
+
+### agent 能让会议记录和行动项保持一致吗？
+
+可以，这就是这个循环的用意：改其中一个，再请它更新其他部分。MarsDawn 让你看到结果。
+
+## 其他模板
+
+- [规格文档（PRD）](/zh-hans/templates/spec/)：问题、目标、需求、流程图和验收标准。
+- [流程图](/zh-hans/templates/flowchart/)：一张 Mermaid 图，下方把每个步骤写出来。
+- [Markdown 模板](/zh-hans/templates/)
 
 ---
 
@@ -3541,6 +5436,8 @@ Source: https://marsdawn.southern-light.dev/ja/
 1. **エージェントが書く。**あなたのコーディングエージェントやライティングアシスタントが Markdown の下書きを作ります。README、仕様書、メモなど。
 2. **MarsDawn で確認する。**ファイルを開き、Mermaid 図やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。
 3. **エージェントが修正する。**変更を依頼します。修正されたファイルを開き、同じように読みます。
+
+[エージェントが返してくるものをどう確認するか](/ja/reading-agent-output/)。
 
 ## 今すぐできること
 
@@ -3633,15 +5530,32 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 ## 仕組み
 
 1. **無料でダウンロード。** MarsDawn は Mac App Store から無料でダウンロードできます。
-2. **14 日間、すべて使える。** トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。
+2. **14 日間、すべて使える。** トライアルを始めると、14日間は MarsDawn のすべての機能（すべてのテーマとレイアウト、PDF の書き出しとプリント、Siri とショートカットのアクション）が使えます。Finder のクイックルックは、トライアルの有無にかかわらず使えます。
 3. **一度の購入で解除。** その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。
 
 - トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。
 - アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。
 
+## 各段階でできること
+
+|  | トライアル期間（1〜14日目） | トライアル終了、ロック未解除 | ロック解除済み |
+|---|---|---|---|
+| MarsDawn で文書を開く | できる | 開くが、内容は覆われる | できる |
+| MarsDawn で読む・編集する（ソース、プレビュー、Mermaid、数式） | できる | できない | できる |
+| MarsDawn から PDF に書き出す・プリントする | できる | できない | できる |
+| 入力した文字を「ファイル」▸「別名で保存…」で保存する | できる | できる（トライアル終了時に開いていたウインドウのみ） | できる |
+| Siri とショートカットのアクション | できる | できない | できる |
+| Finder のクイックルック（Mermaid 図と数式つき） | できる | できる（変わらない） | できる |
+| `marsdawn export`（無料のコマンドラインツール）：図と数式つきの PDF | できる | できる（変わらない） | できる |
+| Mac 上のファイル | 保存したときのまま | 保存したときのまま（ロックによって変更されることはない） | 保存したときのまま |
+
+トライアルを始める前は、MarsDawn がトライアルの案内を表示します。開始しても料金はかかりません。
+
+トライアル終了後は、MarsDawn で開いた PDF ファイルも同じようにロックされます。
+
 ## ロックを解除しない場合
 
-- 14日後、ロックを解除するまでは、MarsDawn で文書を読んだり編集したり書き出したり印刷したりできません。文書自体は開きますが、内容は覆われます。
+- 14日後、ロックを解除するまでは、MarsDawn で文書を読んだり編集したり書き出したりプリントしたりできません。文書自体は開きますが、内容は覆われます。
 - あなたのファイルは変わりません。Mac 上の普通のファイルのままで、Finder のクイックルックでも引き続き表示されます。
 - 無料の[`marsdawn` コマンドラインツール](/ja/cli/)は、トライアルの有無にかかわらず、引き続き PDF に書き出せます。
 - トライアル終了時に MarsDawn で文書が開いていた場合、入力した文字が失われることはありません。「ファイル」▸「別名で保存…」で保存してください。
@@ -3653,7 +5567,7 @@ Source: https://marsdawn.southern-light.dev/ja/pdf/
 
 # PDF は、あなたが書いたページそのままに見えます。
 
-テーマのライトカラーで PDF に書き出す、または印刷できます。図やハイライトされたコードもそのまま反映され、改ページはひとまとまりの内容を分断しないよう配慮されます。
+テーマのライトカラーで PDF に書き出す、またはプリントできます。図やハイライトされたコードもそのまま反映され、改ページはひとまとまりの内容を分断しないよう配慮されます。
 
 ![MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -3734,14 +5648,14 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 ### ファイルと機能
 
 - **編集：**左に Markdown を書き、右でページを読みます。ページ自体は編集できません。
-- **形式：**MarsDawn は PDF の書き出しと印刷に対応していますが、Word ファイルへの書き出しはできません。
+- **形式：**MarsDawn は PDF の書き出しとプリントに対応していますが、Word ファイルへの書き出しはできません。
 - **その他のファイル：**プレーンテキストファイルと PDF は読み取り専用で開きます。
 - **テーマ：**夜明け、クラシック、モダン、ビビッド の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。
 - **プラグイン：**MarsDawn にプラグインや拡張機能はありません。
 
 ## 試用期間が終わったら
 
-14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。
+14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したり書き出したりプリントしたりできません。文書は開きますが、内容は覆われます。ファイルはそのまま残り、クイックルックでも引き続き表示され、無料のコマンドラインツールで PDF に書き出すこともできます。[トライアルとロック解除のページ](/ja/pay-once/)に、3つの段階を並べた表があります。
 ---
 
 ## サポート
@@ -3770,8 +5684,8 @@ macOS 26 Tahoe 以降を搭載した Mac。Apple シリコンでも Intel でも
 
 ### 文書内の画像が表示されません。
 
-- **Mac 上の画像：**まず文書を保存し、プレビューの*フォルダへのアクセスを許可…*をクリックして、画像があるフォルダを選んでください。MarsDawn はそのフォルダを記憶します。許可したフォルダは MarsDawn › 設定 › フォルダへのアクセスで確認できます。
-- **ウェブ上の画像：**ウェブ画像は、プレビュー上部の*イメージを読み込む*をクリックするまでブロックされます。常に読み込みたい場合は、設定で*リモートイメージを自動的に読み込む*をオンにしてください。
+- **Mac 上の画像**：まず文書を保存し、プレビューの*フォルダへのアクセスを許可*…をクリックして、画像があるフォルダを選んでください。MarsDawn はそのフォルダを記憶します。許可したフォルダは MarsDawn › 設定 › フォルダへのアクセスで確認できます。
+- **ウェブ上の画像**：ウェブ画像は、プレビュー上部の*イメージを読み込む*をクリックするまでブロックされます。常に読み込みたい場合は、設定で*リモートイメージを自動的に読み込む*をオンにしてください。
 
 ### 画像を追加するには？
 
@@ -3783,7 +5697,7 @@ MarsDawn は図のソースと、その下に Mermaid のエラーメッセー�
 
 ### PDF を作るには？
 
-ファイル › PDF として書き出す…（`⌥⌘E`）を選んでください。PDF はどのレイアウトであっても、プレビューテーマのライト版を使い、ページごとに分割されます。ファイル › プリント…でも同じページが印刷されます。
+ファイル › PDF として書き出す…（`⌥⌘E`）を選んでください。PDF はどのレイアウトであっても、プレビューテーマのライト版を使い、ページごとに分割されます。ファイル › プリント…でも同じページがプリントされます。
 
 ### Siri やショートカットで MarsDawn を使うには？
 
@@ -3809,7 +5723,7 @@ macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情�
 
 最終更新日：2026-09-23
 
-**MarsDawn アプリは、あなたに関するデータを一切収集しません。**アカウントも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。
+> **MarsDawn アプリは、あなたに関するデータを一切収集しません**。アカウントも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。
 
 ## このウェブサイト
 
@@ -3819,27 +5733,27 @@ macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情�
 
 同意すると、Google アナリティクスは自身のクッキー（`_ga` と `_ga_<測定 ID>`）を設定し、次を記録します。
 
-- **ページビューと参照元。**閲覧されたページと、ブラウザが送信した場合の参照元アドレス。
-- **おおよその位置情報、デバイス、ブラウザ。**IP アドレスから推定される、市区町村レベル程度までの位置情報、デバイスの種類、OS、ブラウザ。いずれも個人を特定できるものではありません。
-- **サイトを離れるクリックとスクロール。**Google アナリティクスの拡張計測機能は、サイトを離れるクリック（Mac App Store へのリンクなど）と、ページをどこまでスクロールしたかを記録します。
-- **IP アドレス。**Google アナリティクス 4 は IP アドレスを記録・保存しません。
-- **記録しないもの。**アカウントはありません。このサイトにアカウント機能がないためです。文書も、入力した文字も記録しません。サイトをまたいだ広告もなく、あなたのプロフィールも作りません。アプリが `/themes/` 以下のテーマファイルを取りに行くリクエストは対象外で、送られません。
-- **保持期間。**Google はこのデータを14か月保持したあと、削除します。
-- **データの処理場所。**Google タグマネージャーと Google アナリティクスは Google が運営しており、データは米国および Google が事業を行うその他の国で処理される場合があります。
-- **ホスティング。**サイトは Cloudflare 上にあります。どのホストとも同じく、リクエストに応答する間は IP アドレスを見ます。それはホスト自身のログであり、上のアナリティクスではありません。
+- **ページビューと参照元**。閲覧されたページと、ブラウザが送信した場合の参照元アドレス。
+- **おおよその位置情報、デバイス、ブラウザ**。IP アドレスから推定される、市区町村レベル程度までの位置情報、デバイスの種類、OS、ブラウザ。いずれも個人を特定できるものではありません。
+- **サイトを離れるクリックとスクロール**。Google アナリティクスの拡張計測機能は、サイトを離れるクリック（Mac App Store へのリンクなど）と、ページをどこまでスクロールしたかを記録します。
+- **IP アドレス**。Google アナリティクス 4 は IP アドレスを記録・保存しません。
+- **記録しないもの**。アカウントはありません。このサイトにアカウント機能がないためです。文書も、入力した文字も記録しません。サイトをまたいだ広告もなく、あなたのプロフィールも作りません。アプリが `/themes/` 以下のテーマファイルを取りに行くリクエストは対象外で、送られません。
+- **保持期間**。Google はこのデータを14か月保持したあと、削除します。
+- **データの処理場所**。Google タグマネージャーと Google アナリティクスは Google が運営しており、データは米国および Google が事業を行うその他の国で処理される場合があります。
+- **ホスティング**。サイトは Cloudflare 上にあります。どのホストとも同じく、リクエストに応答する間は IP アドレスを見ます。それはホスト自身のログであり、上のアナリティクスではありません。
 
 ## あなたの Mac に残るもの
 
-- **あなたの文書。**MarsDawn は、あなたが開いた、保存した、または選んだファイルとフォルダだけを読み書きします。App がそれらをどこかにアップロードすることはありません。
-- **あなたの設定。**外観、プレビューのテーマ、ウインドウのレイアウト、画像の設定は、あなたの Mac 上にある App 自身の環境設定に保存されます。
-- **許可したフォルダへのアクセス。**フォルダ内の画像やページファイルを MarsDawn に表示させたり、メモフォルダを選んだりすると、App はそのフォルダを再び開けるように macOS のブックマークを保持します。サイドバーで開いたフォルダは、ウインドウが開いている間だけでなく、設定で削除するまで MarsDawn から読み書き可能な状態が続きます。フォルダはいつでも MarsDawn › 設定で削除できます。
+- **あなたの文書**。MarsDawn は、あなたが開いた、保存した、または選んだファイルとフォルダだけを読み書きします。App がそれらをどこかにアップロードすることはありません。
+- **あなたの設定**。外観、プレビューのテーマ、ウインドウのレイアウト、画像の設定は、あなたの Mac 上にある App 自身の環境設定に保存されます。
+- **許可したフォルダへのアクセス**。フォルダ内の画像やページファイルを MarsDawn に表示させたり、メモフォルダを選んだりすると、App はそのフォルダを再び開けるように macOS のブックマークを保持します。サイドバーで開いたフォルダは、ウインドウが開いている間だけでなく、設定で削除するまで MarsDawn から読み書き可能な状態が続きます。フォルダはいつでも MarsDawn › 設定で削除できます。
 
 ## MarsDawn がインターネットを使うとき
 
 MarsDawn は完全にオフラインで動作します。インターネットに接続するのは**あなたが選んだときだけ**、ウェブを参照する文書に対してです。
 
-- **Markdown 文書。**ウェブ画像はデフォルトでブロックされています。プレビューで*イメージを読み込む*をクリックするか、設定で*リモートイメージを自動的に読み込む*をオンにしたときだけ読み込まれます。Markdown 文書が参照するそれ以外のものは、ウェブから読み込まれません。
-- **HTML 文書。**HTML 文書は静的な状態で開きます。コードは実行されず、ウェブから何も読み込まれません。文書に実行され得るコードが含まれる場合、その文書について*表示 › この書類を実行*を選ぶことができます。すると、その文書自身のコードは、あなたが停止するか、文書が再読み込みされるか、ウインドウを閉じるまで実行され続けます。この選択が記憶されることはなく、設定項目でもありません。実行中、文書はネットワーク経由でデータを送信でき、自身のフォルダとその中のフォルダにある画像、スタイルシート、フォント、メディアを読み取れます。ウェブからダウンロードされたコードが実行されることはありません。
+- **Markdown 文書**。ウェブ画像はデフォルトでブロックされています。プレビューで*イメージを読み込む*をクリックするか、設定で*リモートイメージを自動的に読み込む*をオンにしたときだけ読み込まれます。Markdown 文書が参照するそれ以外のものは、ウェブから読み込まれません。
+- **HTML 文書**。HTML 文書は静的な状態で開きます。コードは実行されず、ウェブから何も読み込まれません。文書に実行され得るコードが含まれる場合、その文書について*表示 › この書類を実行*を選ぶことができます。すると、その文書自身のコードは、あなたが停止するか、文書が再読み込みされるか、ウインドウを閉じるまで実行され続けます。この選択が記憶されることはなく、設定項目でもありません。実行中、文書はネットワーク経由でデータを送信でき、自身のフォルダとその中のフォルダにある画像、スタイルシート、フォント、メディアを読み取れます。ウェブからダウンロードされたコードが実行されることはありません。
 
 MarsDawn は https 経由でのみウェブコンテンツを読み込みます。http のみのアドレスは、どの設定でも読み込まれることはなく、MarsDawn がそれを https に書き換えることもありません。Markdown 文書では、プレビューにその代わりのプレースホルダーが表示されます。
 
@@ -3851,9 +5765,9 @@ MarsDawn は https 経由でのみウェブコンテンツを読み込みます�
 
 MarsDawn は Siri、ショートカット App、Spotlight 向けに、文書の作成やメモの追加などのアクションを提供します。これらを使用すると、入力したテキストはあなたの Mac 上の MarsDawn に渡され、そのアクションが指定する場所（新規文書、または選んだメモフォルダ内の `Inbox.md`）にのみ保存されます。Siri に話した音声は、[Apple のプライバシーポリシー](https://www.apple.com/legal/privacy/)のもとで Apple が処理します。
 
-## 書き出しと印刷
+## 書き出しとプリント
 
-PDF の書き出しと印刷は、あなたの Mac 上で行われます。PDF は選んだ場所に保存されます。印刷は macOS を通じて選んだプリンタに送られます。
+PDF の書き出しとプリントは、あなたの Mac 上で行われます。PDF は選んだ場所に保存されます。プリントは macOS を通じて選んだプリンタに送られます。
 
 ## marsdawn コマンドラインツール
 
@@ -3906,7 +5820,7 @@ MarsDawn は Mac 向けの Markdown エディタで、Mac App Store で配信中
 - Finder で Markdown ファイルを選んでスペースキーを押せば、図も含めてクイックルックでプレビューできます。
 - 何かを変更したいときは、ソースがすぐそこにあります。MarsDawn はビューアだけでなくエディタでもあります。
 
-もしそのファイルを AI エージェントが書いたなら、これはまさに MarsDawn が想定しているループです。エージェントが書き、あなたがレンダリングされたページを読み、エージェントが修正します。[ホームページ](/ja/)と、エージェントにファイルを開かせる方法については[AI エージェント向け marsdawn](/ja/cli/agents/)をご覧ください。
+もしそのファイルを AI エージェントが書いたなら、これはまさに MarsDawn が想定しているループです。エージェントが書き、あなたがレンダリングされたページを読み、エージェントが修正します。[ホームページ](/ja/)と、エージェントにファイルを開かせる方法については[AI エージェント向け marsdawn](/ja/cli/agents/)をご覧ください。その読み方がなぜ重要か、計画をどうレビューするかは、[「エージェントが返してくるものを読む」](/ja/reading-agent-output/)と[「エージェントの計画を 5 分でレビューする」](/ja/reviewing-agent-plans/)にあります。
 
 ## 次に
 
@@ -3937,7 +5851,7 @@ Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数
 `plan.md` という名前のファイルに、次の内容を貼り付けてください。
 
 ````
-# 計画：エクスポートを高速化
+# 計画：書き出しを高速化
 
 この計画はエージェントが書きました。内容を確認してから、PDF にします。
 
@@ -4025,7 +5939,7 @@ Source: https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/
 | プレビューテーマ | 12 種類のドキュメントテーマ | 4 種類、それぞれにライトとダーク |
 | 図と数式 | Mermaid とコードのハイライト。数式の表示は紹介ページに記載なし | Mermaid、コードのハイライト、KaTeX の数式 |
 | Finder のクイックルック | あり | あり |
-| PDF と印刷 | あり | あり |
+| PDF とプリント | あり | あり |
 | 動作環境 | macOS 14（Sonoma）以降 | macOS 26（Tahoe）以降 |
 | インターフェイスの言語 | 公式の資料に記載なし | 英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語 |
 
@@ -4108,6 +6022,7 @@ marsdawn open notes.md --folder .
 - `path:line`：MarsDawn にその行に移動するよう指定します。その後にコロンが続く場合、たとえば `notes.md:120:8` の列部分は無視されます。引数全体と一致するファイル名が存在する場合、その引数はそのファイルとして扱われます。
 - `--line <n>`：単一ファイルに対して同じ指定ができ、それ自体がコロンと数字で終わるパスに対して行を指定する方法でもあります。ファイルは1つだけ指定できます。
 - 行番号は 1 から 999999999 までです。
+- MarsDawn 1.0 はその行にジャンプしてファイルを開きます。
 - フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます：`marsdawn open .` で現在のフォルダを表示します。`--folder <path>` はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つなので、2つ指定すると使用方法のエラーになります。
 - `--background`：MarsDawn を前面に出さずに開きます。
 - `--json`：テキストではなく JSON の結果を出力します。
@@ -4177,6 +6092,7 @@ Source: https://marsdawn.southern-light.dev/ja/cli/agents/
 - `--force` を指定しない限り、既存のファイルを置き換えません。
 - `--allow-remote-images` を指定しない限りウェブから画像を読み込まず、指定した場合も https のみです。
 - `open` は MarsDawn アプリがインストールされていないと動作せず、コード 3 で終了します。`export` にアプリは不要です。アプリは [Mac App Store](https://apps.apple.com/app/id6812925073) で配信中です。
+- MarsDawn 1.0 は `open` が指定した行にジャンプします。
 - macOS でのみ動作します。
 
 ## export
@@ -4222,7 +6138,7 @@ marsdawn open notes.md --folder . --background --json
 - `path:line` は移動先の行を指定します。その後にコロンが続く場合、たとえば `notes.md:120:8` の列部分は無視されます。存在するファイル名を丸ごと表す引数は常にそのファイル名として扱われるため、`weird:12` という名前のファイルはそのまま開きます。
 - `--line <n>` は単一ファイルの行を指定します。それ自体がコロンと数字で終わるパスも含みます。ファイルは1つだけ指定できます。
 - 行番号は 1 から 999999999 までで、それ以外は使用方法のエラーになります。
-- 行の指定は marsdawn 0.3.0 で追加されました。
+- 行の指定は marsdawn 0.3.0 で追加されました。MarsDawn 1.0 はその行にジャンプしてファイルを開きます。
 - フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます。`marsdawn open .` で現在のフォルダを表示し、`--folder <path>` はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つです：2つ指定すると使用方法のエラーになり、`--folder` を2回使った場合も（同じフォルダでも）エラーです。同じフォルダを引数でもう一度指定した場合は1つとして扱います。フォルダには行がないため、フォルダに `--line` を指定すると使用方法のエラーです。`-a` はありません：指定すると使用方法のエラーになり、`--folder` を案内します。
 - `--background` は MarsDawn を前面に出さずに開きます。人が別の作業をしている間にファイルを開くエージェント向けです。JSON はどちらでも同じです。
 - フォルダと `--background` は marsdawn 0.5.1 で追加されました。
@@ -4484,6 +6400,7 @@ PDF ができたら、人がそれを開きます。MarsDawn でも、どんな 
 - marsdawn を呼び出す三つの方法、CLI、skill ファイル、MCP サーバー：[三つの入り口](/ja/cli/mcp/)。
 - JSON 結果のすべてのフィールド：[AI エージェント向け marsdawn](/ja/cli/agents/)。
 - なぜ人がエージェントの書いたものを読む必要が今もあるのか：[レビューが必要な理由](/ja/reviewing-ai-output/)。
+- より詳しい理由とチェックリスト：[エージェントが返してくるものを読む](/ja/reading-agent-output/)。
 
 ---
 
@@ -4534,7 +6451,7 @@ Source: https://marsdawn.southern-light.dev/ja/themes/
 
 # 8つの見た目、1つの書き出し。
 
-MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種類のプレビューテーマが付属し、それぞれライトとダークがあります。文書を読むための8通りの組み合わせです。PDF に書き出す、または印刷すると、そのとき読んでいたものと同じ見た目でページが出てきます。
+MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種類のプレビューテーマが付属し、それぞれライトとダークがあります。文書を読むための8通りの組み合わせです。PDF に書き出す、またはプリントすると、そのとき読んでいたものと同じ見た目でページが出てきます。
 
 **4つのテーマ × ライトとダーク＝文書を読む8つの方法があり、書き出しはどれを選んでいても対応します。**もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーは計画中で、まだ作られていません。
 
@@ -4554,9 +6471,9 @@ MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種�
 
 それぞれ独自のライトとダークの配色を持つので、Mac の外観を切り替えると、インターフェースの色だけでなくテーマの配色自体も切り替わります。
 
-## PDF 書き出しと印刷は同じテーマを使う
+## PDF 書き出しとプリントは同じテーマを使う
 
-PDF に書き出す、または印刷すると、テーマのライトカラーが使われます。Mermaid 図はそこに描き込まれ、コードブロックは構文のハイライトを保ち、改ページは見出しをそのセクションから切り離したり、表や図を途中で切ったりしないよう配慮されます。無料の[marsdawn コマンドラインツール](/ja/cli/)も同じ書き出しエンジンを使うので、スクリプトやエージェントも `--theme` で、4種類のどのテーマでも同一の PDF を作れます。
+PDF に書き出す、またはプリントすると、テーマのライトカラーが使われます。Mermaid 図はそこに描き込まれ、コードブロックは構文のハイライトを保ち、改ページは見出しをそのセクションから切り離したり、表や図を途中で切ったりしないよう配慮されます。無料の[marsdawn コマンドラインツール](/ja/cli/)も同じ書き出しエンジンを使うので、スクリプトやエージェントも `--theme` で、4種類のどのテーマでも同一の PDF を作れます。
 
 ## 計画中：もっと多くのテーマと、ギャラリー
 
@@ -4600,6 +6517,7 @@ Source: https://marsdawn.southern-light.dev/ja/sharing-exported-pdfs/
 - 書き出しに使えるテーマとレイアウト：[プレビューテーマと PDF 書き出し](/ja/themes/)。
 - アプリの代わりに、スクリプトやエージェントから書き出す：[AI エージェント向け marsdawn](/ja/cli/agents/)。
 - なぜ、まず人がその文書を読む必要があるのか：[レビューが必要な理由](/ja/reviewing-ai-output/)。
+- 複数のエージェントの引き継ぎは、共有すべき PDF が生まれやすい場面です：[4 つのエージェント設計パターンと、それぞれが返す文書](/ja/agent-design-patterns/)。
 
 ---
 
@@ -4632,7 +6550,371 @@ Thoughtworks の Birgitta Böckeler は、この違いをはっきりと言い�
 
 - このレビューが、なぜエージェント自身の context にとって安上がりなのか：[トークンを抑えたレビュー](/ja/token-efficient-review/)。
 - レビュー済みの文書を、ほかの人に渡す：[PDF を共有する](/ja/sharing-exported-pdfs/)。
+- なぜ読みにくいのか、どう読むか：[エージェントが返してくるものを読む](/ja/reading-agent-output/)。
+- なぜエージェントはそもそも計画を示すのか：[Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？](/ja/agent-transparency/)
 - MarsDawn とは何か、1ページで：[ホームページ](/ja/)。
+
+---
+
+## エージェントが返してくるものを読む
+
+Source: https://marsdawn.southern-light.dev/ja/reading-agent-output/
+
+# エージェントの仕事は、あなたが読む Markdown ファイルとして返ってくる。
+
+コーディングエージェントに移行を計画させたり、仕様書を書かせたり、バグを追わせたりする。しばらく自分で動いたあと、返ってくるのは 1 つのファイルだ。`plan.md`、`SPEC.md`、進捗報告、調査のまとめ。確認できる範囲では、そのファイルが仕事そのものだ。
+
+**エージェントが正しくやったかどうかは、返ってきたものを読んで初めて分かる。MarsDawn は、その読み方のための Mac アプリだ。**
+
+## エージェントを作る人たちの言葉
+
+引用はそのまま。私たちの解釈はあとに書く。
+
+- Anthropic の「Building Effective Agents」（Erik S. と Barry Zhang、2024 年 12 月）は、エージェントを作るための 3 つの原則を挙げていて、その 1 つが「Prioritize transparency by explicitly showing the agent’s planning steps.」（透明性を優先し、エージェントの計画のステップを明示的に示す。）これはエージェントを作る人向けの原則だ。あなたの側から見れば、その透明性とは、結局あなたが読むことになる計画のことだ。
+- 同じ記事：「Agents can then pause for human feedback at checkpoints or when encountering blockers.」（エージェントはチェックポイントや障害に出会ったとき、人間のフィードバックを待って一時停止できる。）動詞に注目してほしい：*can*（できる）。
+- Chip Huyen は「Agents」（2025 年 1 月）で、計画と実行を分けるべき理由をこう説明する：「Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it’s not going anywhere.」（監督がなければ、エージェントは何時間もそのステップを実行し続け、API 呼び出しに時間とお金を浪費したあとで、それが何も進んでいないことにあなたが気づく、ということもあり得る。）彼女はさらにこんな失敗も描いている：「The agent is convinced that it’s accomplished a task when it hasn’t.」（エージェントは、実際には終わっていないのに、タスクを終えたと確信している。）50 人を 30 部屋に割り振るよう頼まれたエージェントは、40 人しか割り振らないまま、終わったと言い張る。
+- Andrew Ng は The Batch（2024 年 4 月）で planning パターンについてこう述べる：「On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results.」（一方で、計画は非常に強力な能力だ。他方で、予測しにくい結果につながる。）これは予測可能性についての指摘であって、人によるレビューを求めているわけではない。彼は計画能力が急速に向上すると見ている。
+
+**ここからは著者たちの主張ではなく、私たちの推論だ：**エージェントが計画を示し、チェックポイントで止まるなら、そのチェックポイントで計画を読むのは、たいていあなただ。エージェントが終わっていないのに終わったと思い込むことがあるなら、その「完了報告」にも読み手が必要になる。ここに挙げた著者は誰も MarsDawn について触れておらず、MarsDawn や他の Markdown ツールを推奨してもいない。
+
+## 見た目より読みにくい理由
+
+ファイルは長く、重要な部分はたいてい先頭にはない。Mermaid の図や数式が入っていて、ソースのままでは追いにくい。読んでいる途中で、エージェントがまだファイルを書き換えていることもある。ファイルは複数にまたがることが多く、ブランチや worktree をまたぐこともある。そして問題を見つけたとき、「キャッシュの部分がおかしい」ではエージェントは推測するしかないが、「`docs/plan.md:42` はバックフィルが終わる前に古いテーブルを落としている」ならそうはならない。
+
+## MarsDawn が助けになるところ
+
+- **長いファイル：**サイドバーのアウトラインタブ（⌃⌘S）に見出しが並ぶ。クリックすると両方のペインがそこへ移動する。
+- **図と数式：**Mermaid と KaTeX はソースの隣のプレビューに描画され（⌘2）、両方のペインが一緒にスクロールする。
+- **読んでいる途中の書き換え：**エージェントがファイルを書き換えると、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ。
+- **複数のファイル：**「ファイル ▸ フォルダを開く⋯」（⇧⌘O）でエージェントの作業フォルダを開く。新しいファイルは 1 秒ほどでファイルタブに現れ、git のチェックアウトならヘッダーにブランチや worktree の名前が出る。
+- **正確なフィードバック：**「編集 ▸ 参照をコピー」（⌥⌘C）で、いまいる場所を `docs/plan.md:42` の形でコピーできる。「AI 用にコピー」（⌃⌥⌘C）は、その下に選択したテキストを付け加える。どちらもエージェントのチャットに貼り付ければいい。
+
+このループにはもう 2 つ関係がある。エージェントは `marsdawn open plan.md:42` を実行して、MarsDawn でファイルを 42 行目、つまりまず見てほしい行で開かせることができる。そしてレビューが終わったファイルは、アプリから、あるいは無料の `marsdawn export` コマンドで PDF に書き出せる。
+
+MarsDawn の中に AI モデルはない。計画を要約したり、採点したり、何が間違っているか教えたりはしない。読むのはあなたで、MarsDawn は長く変わり続けるファイルを読みやすく保ち、正確な行を指し示せるようにするだけだ。
+
+## 5 分でエージェントの計画をレビューする
+
+どんなエディタでも使える方法だ。
+
+1. 見出しだけを読む。アウトラインは頼んだ内容と一致しているか。セクションが欠けていれば、たいてい作業も欠けている。
+2. 「完了」「合格」「検証済み」と書かれている箇所をすべて見つけ、そのうち 1 つを自分で確認する：ファイルを開く、テストを実行する、行数を数える。
+3. 取り消せないステップを探す：データの削除、マイグレーション、force push、何かを送信・支払い・公開する処理。それらはあなたの明示的な OK を待つべきだ。
+4. 図はレンダリングした状態で読み、矢印の 1 つひとつを本文と照らし合わせる。
+5. 計画が触れるファイルとシステムを列挙する。頼んでいないことがあれば、実行前に確認する。
+6. フィードバックは「場所・問題・直し方」で書く：「`plan.md:88`：バックフィルが drop のあとに実行される。ステップ 4 と 5 を入れ替えて。」1 行に 1 つの問題だけを書く。
+
+時間がないなら、ステップ 2 だけをやろう。終わったと思い込んでいるエージェントが見つかるのは、たいていそこだ。より詳しい説明と実例は[「エージェントの計画を 5 分でレビューする」](/ja/reviewing-agent-plans/)にある。
+
+## 試してみる
+
+MarsDawn は [Mac App Store](https://apps.apple.com/app/id6812925073) で配信中です。無料の `marsdawn` コマンドラインツールもあります：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+アプリなしで Markdown を PDF に書き出せます。`marsdawn open` でエージェントにファイルを MarsDawn で開かせることもできます。
+
+[コマンドライン](/ja/cli/) · AI エージェント向けの参照：[marsdawn for agents](/ja/cli/agents/) · 購入前に：[MarsDawn ができないこと](/ja/limits/)
+
+## 次に
+
+- AI の出力をそもそも読むべき理由（短い版）：[AI の出力を人が確認する理由](/ja/reviewing-ai-output/)。
+- レビュー中もエージェントの context を小さく保つ：[トークンを抑えたレビュー](/ja/token-efficient-review/)。
+- なぜエージェントはそもそも計画を示すのか：[Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？](/ja/agent-transparency/)
+- 上のチェックリストを、実例つきで詳しく：[エージェントの計画を 5 分でレビューする](/ja/reviewing-agent-plans/)。
+- エージェントの種類ごとに、どんな文書が返ってくるか：[4 つのエージェント設計パターンと、それぞれが返す文書](/ja/agent-design-patterns/)。
+
+## 出典
+
+- Erik S. and Barry Zhang, “Building Effective Agents,” Anthropic, December 19, 2024: [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents)（2026-09-26 時点のオンライン版から引用。同記事は現在、2024 年 12 月以降ツール環境が大きく変わったと注記している）
+- Chip Huyen, “Agents,” January 7, 2025: [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Andrew Ng, “Agentic Design Patterns Part 4, Planning,” The Batch, April 10, 2024: [https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/)
+
+---
+
+## エージェントの透明性
+
+Source: https://marsdawn.southern-light.dev/ja/agent-transparency/
+
+# Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？
+
+2024 年 12 月、Anthropic は AI エージェントを作る人向けのガイド「Building Effective Agents」を発表した。その要約は 3 つの原則を挙げていて、その 1 つが透明性だ。この記事は、その原則のもう一方の端について書く。エージェントが自分のステップを示したあと、結局は誰かがそれを読むことになる。
+
+**透明性はエージェントがすることで、読むのはあなたがすることだ。Anthropic は開発者に、エージェントの計画のステップを示すよう求めている。コーディングエージェントを日々動かす多くの人にとって、そのステップは結局、しかるべきタイミングで誰かが読む Markdown ファイルとしてやって来る。**
+
+## ガイドが書いていること
+
+Erik S. と Barry Zhang は、要約でこうまとめている。
+
+> “When implementing agents, we try to follow three core principles: Maintain simplicity in your agent's design. Prioritize transparency by explicitly showing the agent’s planning steps. Carefully craft your agent-computer interface (ACI) through thorough tool documentation and testing.”
+
+（エージェントを実装するとき、私たちは 3 つの中心的な原則に従おうとする。エージェントの設計をシンプルに保つこと。透明性を優先し、エージェントの計画のステップを明示的に示すこと。十分なツールのドキュメントとテストを通じて、エージェントとコンピュータの間のインターフェース（ACI）を丁寧に作り込むこと。）
+
+これらはエージェントを作る人向けの設計原則であって、使う人への操作指示ではない。原則が求めているのはステップを示すことで、誰がそれを読むかは書かれていない。
+
+同じ記事は、タスクを受け取ったあとエージェントが何をするかも描いている：「Once the task is clear, agents plan and operate independently, potentially returning to the human for further information or judgement.」（タスクが明確になると、エージェントは計画を立て、自律的に動く。必要に応じて、追加の情報や判断を求めて人間に戻ってくることもある。）そして：「Agents can then pause for human feedback at checkpoints or when encountering blockers.」（エージェントはチェックポイントや障害に出会ったとき、人間のフィードバックを待って一時停止できる。）動詞に注目してほしい：*potentially*（必要に応じて）と *can*（できる）。チェックポイントは、エージェントが持ちうる設計として描かれていて、必須のものとしてではない。
+
+## チェックのほとんどは、あなたがしているわけではない
+
+ここは誇張しやすいところなので、ガイドが実際に最初に置いていることを見ておこう。エージェントは、世界に対して自分自身をチェックする：「During execution, it's crucial for the agents to gain “ground truth” from the environment at each step (such as tool call results or code execution) to assess its progress.」（実行中、エージェントが自分の進捗を評価するには、各ステップで環境から「ground truth」（ツール呼び出しの結果やコード実行の結果など）を得ることが重要だ。）この一文の ground truth は、テスト結果やツールの出力を指していて、人間のことではない。
+
+ガイドはリスクについても率直だ：「The autonomous nature of agents means higher costs, and the potential for compounding errors.」（エージェントの自律的な性質は、より高いコストと、エラーが積み重なる可能性を意味する。）その答えは、ガードレール付きのサンドボックス環境での広範なテストであって、「もっと注意深く読め」ではない。
+
+人が実際に登場するのは、コーディングエージェントについての付録だ：「However, whereas automated testing helps verify functionality, human review remains crucial for ensuring solutions align with broader system requirements.」（しかし、自動テストは機能の検証には役立つ一方、解決策がより広いシステム要件に沿っているかを確かめるには、人によるレビューが依然として重要だ。）この一文はコードについてのものだが、それが指し示すギャップは、どんなエージェントを使っていても見覚えがあるはずだ。テストは、何かが動くことは教えてくれても、それがあなたの意図どおりかまでは教えてくれない。
+
+## 示されたステップは、どこへ行くのか
+
+**ここから先は、私たちの解釈であって、Anthropic の主張ではない。**
+
+コーディングエージェントを日々使っているなら、その計画のステップは、たいていダッシュボードには現れない。ファイルとして現れる：`plan.md`、チェックボックス付きのタスクリスト、エージェントが書き換え続ける進捗ファイル、最後にまとめの文書。透明性は、あなたの側から見ると、読むものが増えるということを意味する。
+
+ステップを示すのはエージェント側の役割だ。もう半分は、それが重要な場面で人が読むこと。マイグレーションを実行する前、ブランチをマージする前、「完了」を受け入れる前。すべてを 600 行の、誰も開かないファイルに書き出すエージェントは、紙の上では透明でも、実際には監督されていない。
+
+Harrison Chase は 2024 年、文書についてではなくエージェントフレームワークがどう動くべきかについて、関連することを述べている：「You’ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.」（内部で何が起きているかを観察できる必要がある。実際に取られるステップは、事前には分からないことがあるからだ。）彼が話しているのは、エージェントを作る人向けのツールだ。もしあなたがエージェントを動かしている当人なら、それがずっと書き続けている素のファイルこそ、あなたが観察できる部分であることが多い。
+
+ここに挙げた著者は誰も MarsDawn について触れておらず、MarsDawn や他の Markdown ツールを推奨してもいない。
+
+## 見た目より読みにくい理由
+
+ファイルは長く、重要な部分はたいてい先頭にはない。変更を説明する図は Mermaid のソースであって、絵ではない（実際に描画されたものを見る方法は[「Mac で Markdown を見る方法」](/ja/view-markdown-on-mac/)にある）。読んでいる途中で、エージェントがファイルを書き換えることもある。ファイルは複数にまたがることが多く、ブランチや worktree が違うこともある。そして問題を見つけたとき、「キャッシュの部分がおかしい」ではエージェントは推測するしかない。この話の詳しい版は[「エージェントが返してくるものを読む」](/ja/reading-agent-output/)にある。
+
+## MarsDawn ができること、できないこと
+
+MarsDawn は、この読み方のための Mac アプリだ。エージェントをより透明にするわけではなく、中に AI モデルもない。計画を要約したり、正しいかどうか教えたりはしない。できることは：
+
+- **長いファイル：**「表示 ▸ サイドバーを表示」（⌃⌘S）でアウトラインタブを開くと、見出しが並ぶ。クリックするとそこへ移動する。
+- **図と数式：**ソースとレンダリングされたページが並んで表示され（⌘2）、一緒にスクロールする。Mermaid と KaTeX は描画される。図が壊れている場合、プレビューはそのソースとエラーを一緒に表示する。
+- **読んでいる途中の書き換え：**エージェントがファイルを書き換えると、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ。
+- **複数のファイル：**「ファイル ▸ フォルダを開く⋯」（⇧⌘O）でエージェントの作業フォルダを開く。新しいファイルは 1 秒ほどでファイルタブに現れ、git のチェックアウトならヘッダーにブランチや worktree の名前が出る。
+- **行を指し示す：**「編集 ▸ 参照をコピー」（⌥⌘C）で、いまいる場所を `docs/plan.md:42` の形でコピーできる。「AI 用にコピー」（⌃⌥⌘C）は、その下に選択したテキストを付け加える。エージェントのチャットに貼り付ければいい。
+
+読むのはやはりあなただ。MarsDawn は、長く変わり続けるファイルを、あなたが読んでいる間、読みやすく保つだけだ。
+
+## 試してみる
+
+MarsDawn は [Mac App Store](https://apps.apple.com/app/id6812925073) で配信中です。無料の `marsdawn` コマンドラインツールもあります：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+アプリなしで Markdown を PDF に書き出せます。
+
+[コマンドライン](/ja/cli/) · 購入前に：[MarsDawn ができないこと](/ja/limits/)
+
+## 次に
+
+- エージェントの出力がなぜ読みにくいか、そのチェックリスト：[エージェントが返してくるものを読む](/ja/reading-agent-output/)。
+- そのチェックリストを、実例つきで詳しく：[エージェントの計画を 5 分でレビューする](/ja/reviewing-agent-plans/)。
+- エージェントの種類ごとに、どんな文書が返ってくるか：[4 つのエージェント設計パターンと、それぞれが返す文書](/ja/agent-design-patterns/)。
+- AI の出力をそもそも読むべき理由（短い版）：[AI の出力を人が確認する理由](/ja/reviewing-ai-output/)。
+
+## 出典
+
+- Erik S. and Barry Zhang, “Building Effective Agents,” Anthropic, December 19, 2024: [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents)（2026-09-26 時点のオンライン版から引用。同記事は現在、2024 年 12 月以降ツール環境が大きく変わったと注記している）
+- Harrison Chase, “What is an agent?,” LangChain, June 28, 2024, archived copy: [http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/](http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/)（元の URL は現在 2026 年の別記事を表示している）
+
+---
+
+## エージェントの計画をレビューする
+
+Source: https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/
+
+# エージェントの計画を 5 分でレビューする
+
+エージェントが計画を書き上げ、ゴーサインを待っている。あなたにあるのは 5 分で、1 時間ではない。ここでは、その 5 分の使い方を紹介する。プレーンテキストのエディタでも、どんなエディタでも使える方法だ。MarsDawn が助けになるステップもあるので、どこかは明記する。ただし、いちばん大事なステップでは助けにならない。
+
+**計画は最初から最後まで読まない。まず形を見て、主張を 1 つ確認し、取り消せないものを探し、図と範囲を見て、それからエージェントが動けるフィードバックを書く。6 ステップ、約 5 分。**
+
+## 実行前に手間をかける理由
+
+Chip Huyen は、計画と実行を分けるべき理由を説明しながら、コストをはっきり言う：「Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it’s not going anywhere.」（監督がなければ、エージェントは何時間もそのステップを実行し続け、API 呼び出しに時間とお金を浪費したあとで、それが何も進んでいないことにあなたが気づく、ということもあり得る。）私たちからの補足：計画は、間違いを見つけるのにいちばん安上がりな場所だ。`plan.md` の 1 行を直すのは、1 文で済む。エージェントが実行し終わったあとの後始末は、午後まるごとかかることもある。
+
+## 例
+
+ユーザーのアバターをオブジェクトストレージに移す作業を、既存のリンクを壊さずにやるようエージェントに頼んだ。返ってきたのはこれだ：
+
+```
+# Plan: move user avatars to object storage
+
+## Goal
+Serve avatars from object storage instead of the app server.
+
+## Steps
+1. Add a storage client and config. ✅ done
+2. Write a script that copies existing avatars to the bucket.
+3. Switch the avatar URLs in the templates.
+4. Delete `public/avatars/` from the server.
+5. Run the copy script.
+
+## Status
+All tests pass.
+```
+
+読んだ感じは問題なさそうだ。だがこのとおりにやると、コピーする前に、すべてのアバターを削除してしまう。
+
+## 6 つのステップ
+
+**1. 見出しだけを読む。**（約 1 分）アウトラインは頼んだ内容と一致しているか。ここでは Goal、Steps、Status。既存のリンクを壊さないでほしいと頼んだのに、古いリンクや、変更を取り消す方法についての見出しがない。これが最初のコメントになる。
+
+ターミナルから `grep -n '^#' plan.md` を実行すれば、見出しだけが表示される。多くのエディタにもアウトライン表示がある。MarsDawn では、サイドバーのアウトラインタブ（表示 ▸ サイドバーを表示、⌃⌘S）に見出しが並び、クリックするとそこへ移動する。
+
+**2. 「完了」「合格」「検証済み」と書かれている箇所をすべて見つけ、そのうち 1 つを自分で確認する。**（約 1 分）ファイルを開く、テストを実行する、行数を数える。Chip Huyen は、こんな失敗を描いている：「The agent is convinced that it’s accomplished a task when it hasn’t.」（エージェントは、実際には終わっていないのに、タスクを終えたと確信している。）彼女の例では、50 人を 30 部屋に割り振るよう頼まれたエージェントが、40 人しか割り振らないまま、終わったと言い張る。
+
+```
+grep -n -i -E 'done|pass|verified|✅' plan.md
+```
+
+この例では「✅ done」と「All tests pass.」が見つかる。どのテストか？ アバターに触れるものはあるか？ 自分で実行するか、聞いてみる。この作業を MarsDawn が代わりにやることはできない。あなた以外、誰にもできない。
+
+**3. 取り消せないステップを探す。**（約 1 分）データの削除、マイグレーション、force push、何かを送信・支払い・公開する処理。それらはあなたの明示的な OK を待つべきだ。Chip Huyen は、同じ考えをシステム側の視点からこう述べている：「If a plan involves risky operations, such as updating a database or merging a code change, the system can ask for explicit human approval before executing or defer to humans to execute these operations.」（計画にリスクのある操作、たとえばデータベースの更新やコード変更のマージが含まれる場合、システムは実行前に明示的な人間の承認を求めることも、それらの操作の実行自体を人間に委ねることもできる。）この例では、ステップ 4 が元のファイルを削除し、それがステップ 5 のコピーより前に来ている。
+
+**4. 図はレンダリングした状態で読み、矢印の 1 つひとつを本文と照らし合わせる。**フローチャートが「copy → verify → delete」と描いているのに、ステップの記述がそうなっていなければ、それ自体が発見だ。この計画には図がないので、今日は飛ばしてよい。図があるときは、Mermaid のソースではなく、描画された絵を見よう。多くのエディタにプレビュー機能があり、[「Mac で Markdown を見る方法」](/ja/view-markdown-on-mac/)と[「他のツールで Markdown を見る場合との比較」](/ja/vs/markdown-preview-tools/)で選択肢を紹介している。MarsDawn では、レンダリングされた図がソースの隣にあり（⌘2）、図が壊れていればソースとエラーが一緒に表示される。それ自体、コメントに値する。
+
+**5. 計画が触れるファイルとシステムを列挙し、頼んでいないことがあれば確認する。**（4 と 5 を合わせて約 1 分）ここでは、ストレージの設定、テンプレート、サーバー上のフォルダ、バケット。そのバケットは誰が読めるのか？ 公開すべきだとは頼んでいない。MarsDawn でエージェントの作業フォルダを開いていれば（「ファイル ▸ フォルダを開く⋯」、⇧⌘O）、エージェントが書いた新しいファイルは 1 秒ほどでファイルタブに現れ、ヘッダーに git のブランチや worktree の名前が出るので、自分がどのチェックアウトをレビューしているか分かる。
+
+**6. フィードバックは「場所・問題・直し方」で、1 行に 1 つの問題だけを書く。**（最後の 1 分）
+
+```
+plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
+plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
+plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.
+```
+
+行番号のあるエディタなら何でもいい。MarsDawn では、「編集 ▸ 参照をコピー」（⌥⌘C）でいまいる場所を `plan.md:10` の形でコピーでき、「AI 用にコピー」（⌃⌥⌘C）はその下に選択したテキストを付け加える。
+
+## 1 分しかないなら
+
+ステップ 2 をやろう。終わったと思い込んでいるエージェントが見つかるのは、たいていそこだ。
+
+## 5 分では足りないとき
+
+あるステップが正しいかどうか、あなたには判断できないこともある。それがあなたの知識の外にあるからだ。Jess Ou は、LangChain の 2026 年のエージェント解説記事で、2 文でこう言い切っている：「Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.」（評価できない判断を、外部に委ねてはいけない。正しい答えを自分が見分けられないなら、エージェントにも見分けられない。）私たちの受け止め方：あるステップを判断できないなら、それは早く承認する理由にはならない。分かる人に聞く理由になる。
+
+## ここで MarsDawn がすること、しないこと
+
+MarsDawn の中に AI モデルはない。この計画の問題を見つけたりはせず、ステップ 2 や 3 を代わりにやることもない。作業中、ファイルを読みやすく保つだけだ：ステップ 1 にはアウトライン、ステップ 4 には描画された図、ステップ 5 にはファイルタブ、ステップ 6 には行の参照。読んでいる途中でエージェントが計画を修正しても、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ。
+
+計画が固まり、ほかの人にも見せる必要が出てきたら、[「書き出した PDF を共有する」](/ja/sharing-exported-pdfs/)と[「Markdown から PDF へ」](/ja/markdown-to-pdf/)が、PDF として渡す方法を扱っている。
+
+## 試してみる
+
+MarsDawn は [Mac App Store](https://apps.apple.com/app/id6812925073) で配信中です。無料の `marsdawn` コマンドラインツールもあります：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+アプリなしで Markdown を PDF に書き出せます。
+
+[コマンドライン](/ja/cli/) · 購入前に：[MarsDawn ができないこと](/ja/limits/)
+
+## 次に
+
+- そもそもエージェントの出力がなぜ読みにくいか：[エージェントが返してくるものを読む](/ja/reading-agent-output/)。
+- なぜエージェントはそもそも計画を示すのか：[Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？](/ja/agent-transparency/)
+- エージェントが返すのは計画だけではない：[4 つのエージェント設計パターンと、それぞれが返す文書](/ja/agent-design-patterns/)。
+
+## 出典
+
+- Chip Huyen, “Agents,” January 7, 2025: [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Jess Ou, “What is an AI agent?,” LangChain, July 31, 2026: [https://www.langchain.com/blog/what-is-an-agent](https://www.langchain.com/blog/what-is-an-agent)
+
+---
+
+## エージェント設計パターン
+
+Source: https://marsdawn.southern-light.dev/ja/agent-design-patterns/
+
+# 4 つのエージェント設計パターンと、それぞれが返す文書
+
+2024 年 3 月、Andrew Ng は自身のニュースレター The Batch で、AI エージェントの 4 つの設計パターンを紹介した：reflection、tool use、planning、multi-agent collaboration。これらはふつう、モデルからより良い結果を引き出す方法として、作る側の視点から語られる。この記事は反対側から見る。あなたが使っているエージェントが、このどれかのパターンで作られているなら、フォルダには何が入ってくるのか。まず何を読めばいいのか。
+
+**4 つのパターンは Andrew Ng のものだ。それぞれがどんな文書を返しがちで、何をチェックすべきかは、私たちの推論だ。彼はそのどちらについても書いておらず、このシリーズで人によるレビューを主張してもいない。**
+
+## 4 つのパターン、手短に
+
+Ng はこれを「Agentic Design Patterns Part 1」で説明している。手短に言えば：**reflection** はモデルが自分の成果を見直して改善するもの。**tool use** は Web 検索やコード実行などのツールを呼べるようにするもの。**planning** はモデルが多段階の計画を立てて実行するもの。**multi-agent collaboration** は複数のエージェントが作業を分担し、議論するものだ。
+
+Part 1 で彼は、コーディングのベンチマーク HumanEval を使い、複数の研究グループの結果をチームでまとめた数字で効果を示している：「GPT-3.5 (zero shot) was 48.1% correct. GPT-4 (zero shot) does better at 67.0%. However, the improvement from GPT-3.5 to GPT-4 is dwarfed by incorporating an iterative agent workflow. Indeed, wrapped in an agent loop, GPT-3.5 achieves up to 95.1%.」（GPT-3.5 の zero-shot での正答率は 48.1%、GPT-4 の zero-shot はもう少し良く 67.0%。しかし、GPT-3.5 から GPT-4 への向上は、反復的なエージェントワークフローを組み込むことに比べれば見劣りする。実際、エージェントのループに包むと、GPT-3.5 は最大で 95.1% に達する。）これらの数字は 1 つのコーディングベンチマークについてのもので、95.1% は最良のケース（「up to」＝最大で）だ。エージェントのワークフローが出力を改善しうることは示しているが、誰がそれを確認するかについては何も語っていない。
+
+**ここから先の、文書とチェック項目は、私たちの解釈であって Ng のものではない。**実際のエージェントは複数のパターンを混ぜて使うことも多い。1 つのコーディングエージェントが、同じセッションの中で計画を立て、ツールを実行し、自分の成果を見直すこともあるので、この 4 種類のファイルを一度に受け取ることもよくある。
+
+## 1. Reflection：すでに自分で見直した草稿
+
+Ng が reflection について書いた記事は、これを、本来は人が与えるフィードバックを自動化するものとして描いている：「What if you automate the step of delivering critical feedback, so the model automatically criticizes its own output and improves its response?」（批判的なフィードバックを与えるステップを自動化し、モデルが自分の出力を自動的に批評して回答を改善するとしたらどうだろうか？）
+
+**返ってきがちなもの：**修正済みの文書。自己レビューのセクションや、「エッジケースは再確認済み」のような一文が付いていることもある。
+
+**チェックすべきこと：**結果を、エージェント自身の批評ではなく、*あなた*の依頼内容と照らし合わせる。自己レビューはそれ自体の仕方で間違うことがある。Chip Huyen：「An interesting mode of planning failure is caused by errors in reflection. The agent is convinced that it’s accomplished a task when it hasn’t.」（計画の失敗の興味深い一形態は、reflection の誤りによって引き起こされる。エージェントは、実際には終わっていないのに、タスクを終えたと確信している。）Lilian Weng は、2023 年 6 月、当時 OpenAI に在籍しながら、ブログ Lil’Log で当時のモデルについてこう書いている：「The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.」（専門知識の不足により、LLM は自分の欠陥に気づかず、タスク結果の正しさをうまく判断できないことがある。）（彼女が説明していた研究では、LLM による結果の評価と、人間の専門家による評価が一致していなかった。）「検証済み」と書かれていたら、1 つは自分で確認しよう。
+
+## 2. Tool use：何を実行したかの報告
+
+**返ってきがちなもの：**エージェントが何を実行または検索し、何が返ってきたかのまとめ。「テストスイートを実行：全て合格。」結果の表。見つかったリンク。
+
+Anthropic のガイドは、ツールの結果をエージェント自身のチェックとして描いている：「During execution, it's crucial for the agents to gain “ground truth” from the environment at each step (such as tool call results or code execution) to assess its progress.」（実行中、エージェントが自分の進捗を評価するには、各ステップで環境から「ground truth」（ツール呼び出しの結果やコード実行の結果など）を得ることが重要だ。）そのチェックはエージェントの内部で起きる。あなたのもとに届くのは、エージェントによるその語り直しだ。
+
+**チェックすべきこと：**それぞれの主張が、実際に見える出力までたどれるか。まとめの中の 1 つの数字を、本当の出力と照合する。リンクを 1 つ開いてみる。
+
+## 3. Planning：`plan.md`
+
+**返ってきがちなもの：**計画、仕様書、エージェントが進めながらチェックしていくタスクリスト。
+
+Ng は Part 4 で、このパターンについて率直に語っている：
+
+> “On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results. In my experience, while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do.”
+
+（一方で、計画は非常に強力な能力だ。他方で、予測しにくい結果につながる。私の経験では、Reflection と Tool Use という設計パターンは信頼できる形で動かし、アプリケーションの性能を上げられる一方、Planning はまだ成熟度の低い技術で、それが何をするか事前に予測するのは難しいと感じている。）
+
+楽観的でもある：「But the field continues to evolve rapidly, and I'm confident that Planning abilities will improve quickly.」（しかしこの分野は急速に進化し続けていて、計画の能力は早く向上すると確信している。）
+
+**チェックすべきこと：**実行前の計画を、[「5 分でのレビュー」](/ja/reviewing-agent-plans/)の方法で見る：形、主張を 1 つ、取り消せないステップ、図、範囲。エージェントが途中で計画を書き換えたら、あなたが承認したバージョンと比較する。git を使っているなら、`git diff plan.md` で何が変わったか分かる。MarsDawn では、アウトラインタブが長い計画の形を示し、書き換えられた計画は、あなた自身に未保存の編集がなければ、読んでいた位置を保ったまま再読み込みされる。
+
+## 4. Multi-agent collaboration：複数のファイル、複数の書き手
+
+**返ってきがちなもの：**あるエージェントによる仕様書、別のエージェントによる実装メモ、さらに別のエージェントによるレビュー、そしてそれらの間でやり取りされる要約。それぞれが自分のブランチや worktree で作業していることもある。
+
+**チェックすべきこと：**引き継ぎの部分。あるエージェントが別のエージェントの成果をまとめるとき、伝わらなかった要件がないか探す。食い違う 2 つのファイルを見つけたら、誰かがそれを土台に作業を進める前に、どちらを正とするか決める。MarsDawn では、「ファイル ▸ フォルダを開く⋯」（⇧⌘O）で共有フォルダを開く。エージェントが書いた新しいファイルは 1 秒ほどでファイルタブに現れ、git のチェックアウトならヘッダーにブランチや worktree の名前が出るので、別々のブランチにある同名のファイルを開いた 2 つのウィンドウを見間違えることもない。結果を Markdown を読まない人に渡す必要があるときは、[「書き出した PDF を共有する」](/ja/sharing-exported-pdfs/)が、その手順を扱っている。
+
+## ひと目で見る
+
+| パターン（Ng） | 返ってきがちなもの（私たちの推論） | まず読むべきところ（私たちの提案） |
+|---|---|---|
+| Reflection | 修正済みの草稿。自己レビュー付きのことも | 自分自身の依頼内容と照らし合わせる。「検証済み」を 1 つ確認 |
+| Tool use | 何を実行し、何が返ってきたかの報告 | 主張を 1 つ、実際の出力までたどる |
+| Planning | `plan.md`、仕様書、タスクリスト | 実行前の 5 分レビュー |
+| Multi-agent collaboration | 複数のエージェントによる複数のファイル。複数のブランチにまたがることも | 引き継ぎの部分と、どれが正か |
+
+ここに引用した著者は誰も MarsDawn について触れておらず、MarsDawn や他の Markdown ツールを推奨してもいない。MarsDawn の中に AI モデルはない：どのパターンがそのファイルを生んだかを知ることはなく、これらのチェックを代わりにやることもない。ファイルを、あなたがチェックしている間、読みやすく保つだけだ。
+
+## 試してみる
+
+MarsDawn は [Mac App Store](https://apps.apple.com/app/id6812925073) で配信中です。無料の `marsdawn` コマンドラインツールもあります：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+アプリなしで Markdown を PDF に書き出せます。詳しくは[「Markdown から PDF へ」](/ja/markdown-to-pdf/)を見てください。
+
+[コマンドライン](/ja/cli/) · 購入前に：[MarsDawn ができないこと](/ja/limits/)
+
+## 次に
+
+- エージェントの出力がなぜ読みにくいか、そのチェックリスト：[エージェントが返してくるものを読む](/ja/reading-agent-output/)。
+- 計画のチェックを、完全な形で：[エージェントの計画を 5 分でレビューする](/ja/reviewing-agent-plans/)。
+- 透明性があなたに求めること、求めないこと：[Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？](/ja/agent-transparency/)
+
+## 出典
+
+- Andrew Ng, “Agentic Design Patterns Part 1,” The Batch, March 20, 2024: [https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/](https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/)
+- Andrew Ng, “Agentic Design Patterns Part 2, Reflection,” The Batch, March 27, 2024: [https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/)
+- Andrew Ng, “Agentic Design Patterns Part 4, Planning,” The Batch, April 10, 2024: [https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/)
+- Chip Huyen, “Agents,” January 7, 2025: [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Lilian Weng, “LLM Powered Autonomous Agents,” Lil’Log, June 23, 2023: [https://lilianweng.github.io/posts/2023-06-23-agent/](https://lilianweng.github.io/posts/2023-06-23-agent/)
+- Erik S. and Barry Zhang, “Building Effective Agents,” Anthropic, December 19, 2024: [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents)（2026-09-26 時点のオンライン版から引用）
 
 ---
 
@@ -4667,7 +6949,7 @@ Source: https://marsdawn.southern-light.dev/ja/changelog/
 - `marsdawn open --folder` が、フォルダがどうなったかを返せるようになりました。状態を返すアプリが相手なら、`--wait` の秒数（デフォルトは 2 秒）まで応答を待ち、`--json` に `attached` や `needsUser` などの状態が入ります。
 - Mermaid の図を解析できないとき、最初の行だけでなく Mermaid のエラーメッセージ全文を表示します。行番号もファイルの先頭から数えた値になりました。
 - フロントマターの終わりを探すのは 1,000 行までになりました。閉じていないブロックがあっても、大きなファイルを毎回最後まで調べることはありません。
-- 脚注の戻りリンクのラベルを、アプリが PDF の書き出しとプリント用に翻訳して渡せるようになりました。このラベルはページには印刷されず、`marsdawn export` では英語のままです。
+- 脚注の戻りリンクのラベルを、アプリが PDF の書き出しとプリント用に翻訳して渡せるようになりました。このラベルはページにはプリントされず、`marsdawn export` では英語のままです。
 - 同梱の highlight.js を、KaTeX や Mermaid と同じく、バージョン、入手元、SHA-256 で記録するようになりました。
 
 ## marsdawn 0.5.2
@@ -4689,3 +6971,249 @@ Source: https://marsdawn.southern-light.dev/ja/changelog/
 - 書き出した PDF のテキストレイヤーを、中国語、日本語、韓国語について修正しました。
 - `marsdawn open --background` はファイルを開きますが、MarsDawn を前面には出しません。
 - `marsdawn open` にフォルダを渡すと、MarsDawn がウインドウのサイドバーに表示します（MarsDawn 1.0.0 以降）。
+
+---
+
+## テンプレート
+
+Source: https://marsdawn.southern-light.dev/ja/templates/
+
+# Markdown テンプレート
+
+エージェントが書き、あなたが読む文書のために。各テンプレートにはエージェントへのプロンプトが付いています。書き上がったファイルを MarsDawn で開けば、何を書いたか読めます。
+
+- [仕様書（PRD）](/ja/templates/spec/)：課題、目標、要件、フロー図、受け入れ基準。
+- [フローチャート](/ja/templates/flowchart/)：Mermaid の図と、その下に書き出した各ステップ。
+- [議事録](/ja/templates/meeting-notes/)：決定事項とアクションアイテム。それぞれに担当者。
+
+---
+
+## 仕様書テンプレート
+
+Source: https://marsdawn.southern-light.dev/ja/templates/spec/
+
+# Markdown 仕様書（PRD）テンプレート
+
+エージェントが埋め、あなたが一度で読み通せる仕様書。課題、目標、要件、フロー図、受け入れ基準。要件をひとつ変えたら、残りを合わせるようエージェントに頼みます。
+
+## テンプレート
+
+[spec.md をダウンロード](/ja/templates/spec/spec.md)
+
+````
+# 仕様：機能名
+
+ステータス：下書き · 担当：名前 · 更新：日付
+
+## 課題
+
+_いま何が問題で、誰が困っていて、なぜそうとわかるか。_
+
+## 目標
+
+- _リリース後に成り立っていること。_
+
+## やらないこと
+
+- _今回あえてやらないこと。_
+
+## 要件
+
+| ID | 要件 | 優先度 |
+|----|------|--------|
+| R1 | _要件_ | 必須 |
+| R2 | _要件_ | 推奨 |
+
+## フロー
+
+```mermaid
+flowchart LR
+  A[開始] --> B[ステップ] --> C[結果]
+```
+
+## 受け入れ基準
+
+- [ ] R1：_どう確かめるか。_
+- [ ] R2：_どう確かめるか。_
+
+## 未決事項
+
+- _問い。_
+````
+
+## 見た目
+
+![spec.md を marsdawn export で書き出した PDF の 1 ページ目。](/assets/templates/spec-ja.png)
+
+`marsdawn export spec.md` で書き出したもの。無料のコマンドラインツールは MarsDawn のプレビューと同じ見た目で、図もそのまま描きます。
+
+## エージェントに頼む
+
+```
+https://marsdawn.southern-light.dev/ja/templates/spec/spec.md のテンプレートを使って、［機能］の仕様を spec.md に書いてください。要件にはすべて ID を付け、フローと受け入れ基準でも同じ ID を使ってください。書き終えたら marsdawn open spec.md を実行してください。
+```
+
+## PDF で共有する
+
+`marsdawn export spec.md` を実行すると、隣に spec.pdf ができます。Markdown を読まない人に渡せます。
+
+## できないこと
+
+MarsDawn は仕様、表、図を表示します。受け入れ基準がすべての要件を網羅しているかは確かめません。それはエージェントの仕事で、あなたが読んで確かめることです。
+
+## よくある質問
+
+### フロー図のために何かインストールが必要ですか？
+
+いいえ。MarsDawn と `marsdawn export` は Mermaid を自分で描きます。オフラインでも描けます。
+
+### MarsDawn で仕様を編集できますか？
+
+はい。ソースの隣にプレビューがある Markdown エディタです。エージェントは次にファイルを読むときに、あなたの編集を目にします。
+
+## ほかのテンプレート
+
+- [フローチャート](/ja/templates/flowchart/)：Mermaid の図と、その下に書き出した各ステップ。
+- [議事録](/ja/templates/meeting-notes/)：決定事項とアクションアイテム。それぞれに担当者。
+- [Markdown テンプレート](/ja/templates/)
+
+---
+
+## フローチャートテンプレート
+
+Source: https://marsdawn.southern-light.dev/ja/templates/flowchart/
+
+# Markdown フローチャートテンプレート
+
+Mermaid のフローチャートと、その下に書き出した各ステップ。図と文章を突き合わせて確かめられます。ステップをひとつ外したら、残りの修正をエージェントに頼みます。
+
+## テンプレート
+
+[flowchart.md をダウンロード](/ja/templates/flowchart/flowchart.md)
+
+````
+# フロー名
+
+_一文で：何が入り、何が出るか。_
+
+## 図
+
+```mermaid
+flowchart LR
+  A[最初のステップ] --> B[次のステップ]
+  B --> C[3 番目のステップ]
+  C --> D[完了]
+```
+
+## ステップ
+
+1. **最初のステップ**：_誰がやり、次に何を渡すか。_
+2. **次のステップ**：_……_
+3. **3 番目のステップ**：_……_
+4. **完了**：_ここでの「完了」の意味。_
+````
+
+## 見た目
+
+![flowchart.md を marsdawn export で書き出した PDF の 1 ページ目。](/assets/templates/flowchart-ja.png)
+
+`marsdawn export flowchart.md` で書き出したもの。無料のコマンドラインツールは MarsDawn のプレビューと同じ見た目で、図もそのまま描きます。
+
+## エージェントに頼む
+
+```
+https://marsdawn.southern-light.dev/ja/templates/flowchart/flowchart.md のテンプレートを使って、［プロセス］のフローを flowchart.md に描いてください。ノードごとに番号付きのステップをひとつ、同じ順番で書いてください。書き終えたら marsdawn open flowchart.md を実行してください。
+```
+
+## PDF で共有する
+
+`marsdawn export flowchart.md`：図は PDF に描き込まれます。
+
+## できないこと
+
+MarsDawn は Mermaid に書かれたとおりに図を描きます。手でレイアウトすることはできず、番号付きのステップとノードをそろえることもしません。Mermaid に誤りがあると、プレビューには図の代わりにエラーが表示されます。
+
+## よくある質問
+
+### どの図が使えますか？
+
+Mermaid で描けるものなら何でも。フローチャート、シーケンス図、状態遷移図などです。
+
+### なぜステップも書き出すのですか？
+
+ざっと見る人は図を見て、確かめる人は文章を読みます。エージェントに両方をそろえてもらえます。
+
+## ほかのテンプレート
+
+- [仕様書（PRD）](/ja/templates/spec/)：課題、目標、要件、フロー図、受け入れ基準。
+- [議事録](/ja/templates/meeting-notes/)：決定事項とアクションアイテム。それぞれに担当者。
+- [Markdown テンプレート](/ja/templates/)
+
+---
+
+## 議事録テンプレート
+
+Source: https://marsdawn.southern-light.dev/ja/templates/meeting-notes/
+
+# Markdown 議事録テンプレート
+
+まず決定事項、次にアクションアイテム。それぞれに担当者を付けます。文字起こしからエージェントに議事録を書かせ、送る前に目を通します。決定が変わったら、アクションアイテムを合わせるようエージェントに頼みます。
+
+## テンプレート
+
+[meeting-notes.md をダウンロード](/ja/templates/meeting-notes/meeting-notes.md)
+
+```
+# 会議名、日付
+
+出席者：_名前_
+
+## 決定事項
+
+- _決まったことを一行ずつ。_
+
+## アクションアイテム
+
+- [ ] 名前：_何を、いつまでに。_
+- [ ] 名前：_何を、いつまでに。_
+
+## メモ
+
+- _決定事項でもアクションアイテムでもないが、残しておくこと。_
+```
+
+## 見た目
+
+![meeting-notes.md を marsdawn export で書き出した PDF の 1 ページ目。](/assets/templates/meeting-notes-ja.png)
+
+`marsdawn export meeting-notes.md` で書き出したもの。無料のコマンドラインツールは MarsDawn のプレビューと同じ見た目です。
+
+## エージェントに頼む
+
+```
+https://marsdawn.southern-light.dev/ja/templates/meeting-notes/meeting-notes.md のテンプレートを使って、この会議を meeting-notes.md にまとめてください。決定事項を先に、一行ずつ。アクションアイテムにはそれぞれ担当者と期日をひとつ付けてください。書き終えたら marsdawn open meeting-notes.md を実行してください。
+```
+
+## PDF で共有する
+
+`marsdawn export meeting-notes.md` で PDF ができます。会議後のメールに添付できます。
+
+## できないこと
+
+MarsDawn は会議を録音も文字起こしもせず、アクションアイテムの管理もしません。読む人が目にするとおりに議事録を表示します。
+
+## よくある質問
+
+### チェックボックスは使えますか？
+
+プレビューでも PDF でもチェックボックスとして表示されます。チェックを入れるには、ソースの `[ ]` を `[x]` に変えます。
+
+### 議事録とアクションアイテムをエージェントにそろえてもらえますか？
+
+はい。それがこのループの目的です。どちらかを変えて、残りの更新を頼みます。MarsDawn で結果を確かめられます。
+
+## ほかのテンプレート
+
+- [仕様書（PRD）](/ja/templates/spec/)：課題、目標、要件、フロー図、受け入れ基準。
+- [フローチャート](/ja/templates/flowchart/)：Mermaid の図と、その下に書き出した各ステップ。
+- [Markdown テンプレート](/ja/templates/)

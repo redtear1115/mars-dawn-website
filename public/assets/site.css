@@ -1365,6 +1365,13 @@ html { overflow-x: hidden; }
 .toc li + li { margin-top: 0; }
 :target { scroll-margin-top: 20px; }
 
+/* ---- Markdown-source link, after a kit-rendered page's body -------------- */
+.markdown-source {
+  margin-top: 32px;
+  font-size: 0.9rem;
+  color: var(--dust);
+}
+
 .gallery-note {
   margin: -14px 0 18px;
   color: var(--dust);
@@ -1400,3 +1407,22 @@ html { overflow-x: hidden; }
   }
   .compare-ours.compare-wide td:last-child::before { color: var(--ember); }
 }
+
+/* /templates/ (#95): the rendered first page of a template, cropped to its top and framed, and
+   the agent prompt, wrapped so the template's URL stays on screen. */
+.tpl-shot { margin: 18px 0 8px; }
+.tpl-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 34rem;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  background: #fff;
+}
+.tpl-prompt code { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* auto-phrase keeps a Japanese phrase whole; a heading whose phrase is wider than a phone
+   (フローチャートテンプレート) may still break inside it rather than widen the page. */
+:lang(ja) :is(h1, h2, h3) { overflow-wrap: anywhere; }
