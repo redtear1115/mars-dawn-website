@@ -46,9 +46,9 @@ MarsDawn 只通过 https 加载网络内容。http 地址一律不会加载，�
 
 MarsDawn 提供 Siri、快捷指令 App 和 Spotlight 可用的动作，例如添加文稿或加入笔记。使用时，你提供的文本会交给你 Mac 上的 MarsDawn，并只存到动作指定的位置（新文稿，或你所选笔记文件夹中的 `Inbox.md`）。对 Siri 说的话由 Apple 依 [Apple 隐私政策](https://www.apple.com/legal/privacy/) 处理。
 
-## 输出 PDF 和打印
+## 导出 PDF 和打印
 
-输出 PDF 和打印都在你的 Mac 上完成。PDF 存在你选择的位置，打印则通过 macOS 送到你选的打印机。
+导出 PDF 和打印都在你的 Mac 上完成。PDF 存在你选择的位置，打印则通过 macOS 送到你选的打印机。
 
 ## marsdawn 命令行工具
 
