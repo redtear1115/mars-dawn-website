@@ -30,9 +30,9 @@ flowchart LR
 
 ## 导出效果
 
-![flowchart.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/flowchart-zh-hans.png)
+![flowchart.md 用 marsdawn export 导出的 PDF 第一页。](/assets/templates/flowchart-zh-hans.png)
 
-用 `marsdawn export flowchart.md` 输出。免费的命令行工具排版和 MarsDawn 的预览一样，图表也一起画出来。
+用 `marsdawn export flowchart.md` 导出。免费的命令行工具排版和 MarsDawn 的预览一样，图表也一起画出来。
 
 ## 交给 agent
 
@@ -40,7 +40,7 @@ flowchart LR
 用 https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/flowchart.md 这份模板，把［流程］画进 flowchart.md。每个节点对应一个编号步骤，顺序相同。写好之后运行 marsdawn open flowchart.md。
 ```
 
-## 输出 PDF 分享
+## 导出 PDF 分享
 
 `marsdawn export flowchart.md`：流程图会画进 PDF 里。
 
@@ -66,10 +66,10 @@ Mermaid 画得出来的都可以：流程图、时序图、状态图等等。
 
 ## 其他页面
 
-- [MarsDawn](https://marsdawn.southern-light.dev/zh-hans/index.md): 给要掌舵 agentic 开发的人用的 Markdown：原生的 Mac 编辑器，有实时预览、Mermaid 图表和 PDF 输出。即将在 Mac App Store 上架。
+- [MarsDawn](https://marsdawn.southern-light.dev/zh-hans/index.md): 给要掌舵 agentic 开发的人用的 Markdown：原生的 Mac 编辑器，有实时预览、Mermaid 图表和 PDF 导出。即将在 Mac App Store 上架。
 - [你写的内容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hans/yours/index.md): MarsDawn 不需要账户，没有同步，也没有云端。你的 Markdown 文稿留在你的 Mac 上，就在你选的文件和文件夹里。
 - [免费试用，买一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
-- [输出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 输出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码和表格，超过一页的会接到下一页。
+- [导出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 导出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码和表格，超过一页的会接到下一页。
 - [为 Mac 而做](https://marsdawn.southern-light.dev/zh-hans/native/index.md): 真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在访达用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。
 - [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户，内置四种主题。购买前先知道。
 - [支持](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 编辑器）的使用说明与联系方式。

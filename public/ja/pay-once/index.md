@@ -14,7 +14,7 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 ## 仕組み
 
 1. **無料でダウンロード。** MarsDawn は Mac App Store から無料でダウンロードできます。
-2. **14 日間、すべて使える。** トライアルを始めると、14日間は MarsDawn のすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、Siri とショートカットのアクションです。Finder のクイックルックはトライアルの有無にかかわらず使えます。
+2. **14 日間、すべて使える。** トライアルを始めると、14日間は MarsDawn のすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しとプリント、Siri とショートカットのアクションです。Finder のクイックルックはトライアルの有無にかかわらず使えます。
 3. **一度の購入で解除。** その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。
 
 - トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。
@@ -26,7 +26,7 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 |---|---|---|---|
 | MarsDawn で文書を開く | できる | 開くが、内容は覆われる | できる |
 | MarsDawn で読み書き（ソース、プレビュー、Mermaid、数式） | できる | できない | できる |
-| MarsDawn から PDF に書き出す・印刷する | できる | できない | できる |
+| MarsDawn から PDF に書き出す・プリントする | できる | できない | できる |
 | 「ファイル」▸「別名で保存…」で入力した文字を残す | できる | できる（トライアル終了時に開いていたウインドウのみ） | できる |
 | Siri とショートカットのアクション | できる | できない | できる |
 | Finder のクイックルック（Mermaid 図と数式つき） | できる | できる、変わらず | できる |
@@ -39,7 +39,7 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 
 ## ロックを解除しない場合
 
-- 14日後、ロックを解除するまでは、MarsDawn で文書を読んだり編集したり書き出したり印刷したりできません。文書自体は開きますが、内容は覆われます。
+- 14日後、ロックを解除するまでは、MarsDawn で文書を読んだり編集したり書き出したりプリントしたりできません。文書自体は開きますが、内容は覆われます。
 - あなたのファイルは変わりません。Mac 上の普通のファイルのままで、Finder のクイックルックでも引き続き表示されます。
 - 無料の[`marsdawn` コマンドラインツール](/ja/cli/)は、トライアルの有無にかかわらず、引き続き PDF に書き出せます。
 - トライアル終了時に MarsDawn で文書が開いていた場合、入力した文字が失われることはありません。「ファイル」▸「別名で保存…」で保存してください。
@@ -48,7 +48,7 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 
 - [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): エージェント開発の舵を取る人のための Markdown。ライブプレビュー、Mermaid 図、PDF 書き出しに対応したネイティブ Mac 向けエディタです。Mac App Store で近日公開予定です。
 - [あなたの文章は Mac に残ります](https://marsdawn.southern-light.dev/ja/yours/index.md): MarsDawn にはアカウントも同期もクラウドもありません。Markdown 文書はあなたの Mac 上に、選んだファイルとフォルダの中に残ります。
-- [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したり印刷したりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックや表を分断しないよう配慮されます。
+- [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックや表を分断しないよう配慮されます。
 - [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
 - [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類。購入前に知っておいてください。
 - [サポート](https://marsdawn.southern-light.dev/ja/support/index.md): macOS 向け Markdown エディタ MarsDawn のヘルプ。
@@ -62,7 +62,7 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 - [MCP サーバー](https://marsdawn.southern-light.dev/ja/cli/mcp/index.md): marsdawn には自前の AI モデルがないので、どのエージェントが書いた Markdown かは関係ありません。CLI、skill ファイル、marsdawn-mcp という MCP サーバーのいずれからでも呼び出せ、三つとも同じ export を実行します。
 - [トークンを抑えたレビュー](https://marsdawn.southern-light.dev/ja/token-efficient-review/index.md): 人が MarsDawn でレンダリングされたページを読みます。それがエージェントの context に読み戻されることはありません。ツール呼び出し自体も、レンダリングされた内容ではなく簡潔な JSON 結果を返すので、呼び出し自体も安上がりです。
 - [他のツールで Markdown を見る場合との比較](https://marsdawn.southern-light.dev/ja/vs/markdown-preview-tools/index.md): VS Code の内蔵プレビュー、ブラウザ拡張機能、Claude Desktop のファイルプレビューで Markdown を読む場合と、MarsDawn を比較：それぞれが実際にレンダリングするもの、1つのファイルを開くのにかかる手間。
-- [プレビューテーマと PDF 書き出し](https://marsdawn.southern-light.dev/ja/themes/index.md): それぞれライトとダークを持つ4種類のプレビューテーマと、今見ているテーマに合わせた1つの PDF・印刷書き出し。もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーも計画されています。
+- [プレビューテーマと PDF 書き出し](https://marsdawn.southern-light.dev/ja/themes/index.md): それぞれライトとダークを持つ4種類のプレビューテーマと、今見ているテーマに合わせた1つの PDF・プリント書き出し。もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーも計画されています。
 - [書き出した PDF を共有する](https://marsdawn.southern-light.dev/ja/sharing-exported-pdfs/index.md): エージェントの書いた Markdown を PDF に書き出し、Markdown を読まず何もインストールしない同僚に渡します。構文もアプリもアカウントも、開くのに一切不要です。
 - [AI の出力を人が確認する理由](https://marsdawn.southern-light.dev/ja/reviewing-ai-output/index.md): AI が書いた Markdown も、結局は人が理解しなければなりません。読みやすいからといって鵜呑みにはできません。MarsDawn はレンダリングされたページとソースを並べ、Mermaid 図と KaTeX 数式を描画するので、構造が一目で分かります。
 - [エージェントが返してくるものを読む](https://marsdawn.southern-light.dev/ja/reading-agent-output/index.md): AI エージェントは仕事の成果を Markdown で返します：計画、仕様書、進捗報告。エージェントを作る人たちがチェックポイントや失敗について何を言うか、その出力がなぜ読みづらいのか、そして計画を 5 分でレビューするチェックリスト。

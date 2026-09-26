@@ -3427,9 +3427,9 @@ brew install redtear1115/tap/marsdawn
 3. ⌘1 源代码、⌘2 并排、⌘3 预览。
 4. 页面会随着打字更新。
 
-### [输出 PDF](/zh-hans/pdf/)
+### [导出 PDF](/zh-hans/pdf/)
 
-![用 MarsDawn 输出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![用 MarsDawn 导出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
 这张截图里：
 
@@ -3483,7 +3483,7 @@ MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用�
 ## 怎么运作
 
 1. **免费下载。** 在 Mac App Store 免费下载 MarsDawn。
-2. **14 天，全部都能用。** 开始试用后，14 天内 MarsDawn 的所有功能都能使用：所有主题与布局、PDF 输出与打印，以及 Siri 和快捷指令操作。访达的“快速查看”不论有没有试用都能用。
+2. **14 天，全部都能用。** 开始试用后，14 天内 MarsDawn 的所有功能都能使用：所有主题与布局、PDF 导出与打印，以及 Siri 和快捷指令操作。访达的“快速查看”不论有没有试用都能用。
 3. **买一次就解锁。** 试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。
 
 - 试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。
@@ -3495,7 +3495,7 @@ MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用�
 |---|---|---|---|
 | 在 MarsDawn 打开文件 | 可以 | 会打开，但内容被遮住 | 可以 |
 | 在 MarsDawn 阅读与编辑（源代码、预览、Mermaid、数学公式） | 可以 | 不行 | 可以 |
-| 在 MarsDawn 输出 PDF 与打印 | 可以 | 不行 | 可以 |
+| 在 MarsDawn 导出 PDF 与打印 | 可以 | 不行 | 可以 |
 | 用“文件”▸“存储为…”保存输入的文本 | 可以 | 可以，仅限试用结束时已打开的窗口 | 可以 |
 | Siri 和快捷指令操作 | 可以 | 不行 | 可以 |
 | 访达快速查看，含 Mermaid 图表与数学公式 | 可以 | 可以，不受影响 | 可以 |
@@ -3508,21 +3508,21 @@ MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用�
 
 ## 如果没有解锁
 
-- 14 天后，在你解锁之前，无法在 MarsDawn 中阅读、编辑、输出或打印文稿。文稿仍会打开，但内容会被遮住。
+- 14 天后，在你解锁之前，无法在 MarsDawn 中阅读、编辑、导出或打印文稿。文稿仍会打开，但内容会被遮住。
 - 你的文件不会有任何改变。它们就是你 Mac 上的一般文件，在访达中用“快速查看”依然看得到。
-- 免费的 [`marsdawn` 命令行工具](/zh-hans/cli/)不受试用影响，依然能把它们输出成 PDF。
+- 免费的 [`marsdawn` 命令行工具](/zh-hans/cli/)不受试用影响，依然能把它们导出成 PDF。
 - 如果试用结束时有文稿正开在 MarsDawn 里，你输入的文本不会遗失，可以用“文件”▸“存储为…”保存。
 ---
 
-## 输出 PDF
+## 导出 PDF
 
 Source: https://marsdawn.southern-light.dev/zh-hans/pdf/
 
 # PDF 看起来就是你写的那一页。
 
-输出成 PDF 或打印，使用主题的浅色配色。图表和代码高亮都会保留，分页位置也经过安排。
+导出成 PDF 或打印，使用主题的浅色配色。图表和代码高亮都会保留，分页位置也经过安排。
 
-![用 MarsDawn 输出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![用 MarsDawn 导出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
 这张截图里：
 
@@ -3534,9 +3534,9 @@ Source: https://marsdawn.southern-light.dev/zh-hans/pdf/
 - Mermaid 图表直接画进 PDF。
 - 代码块保留语法高亮。
 - 分页时会尽量不让标题落在页面底部，也不切开代码、表格和图表。
-- 任何布局都能输出，只显示源代码时也可以。
+- 任何布局都能导出，只显示源代码时也可以。
 
-免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套输出程序，所以脚本或 AI agent 也能得到一样的 PDF。
+免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 AI agent 也能得到一样的 PDF。
 ---
 
 ## 为 Mac 而做
@@ -3601,14 +3601,14 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 ### 文件与功能
 
 - **编辑：**你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。
-- **格式：**MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。
+- **格式：**MarsDawn 能导出 PDF 和打印，不能导出 Word 文件。
 - **其他文件：**纯文本文件和 PDF 以只读方式打开。
 - **主题：**内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。
 - **插件：**MarsDawn 没有插件或扩展功能。
 
 ## 试用结束之后
 
-如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读、编辑、输出或打印文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能把它们输出成 PDF。[试用与解锁页面](/zh-hans/pay-once/)有三个阶段的对照表。
+如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读、编辑、导出或打印文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能把它们导出成 PDF。[试用与解锁页面](/zh-hans/pay-once/)有三个阶段的对照表。
 ---
 
 ## 支持
@@ -3804,7 +3804,7 @@ marsdawn --version
 把下面的内容贴进一个叫 `plan.md` 的文件：
 
 ````
-# 计划：让输出更快
+# 计划：让导出更快
 
 这份计划由 agent 撰写，你审阅后再把它转成 PDF。
 
@@ -3978,7 +3978,7 @@ marsdawn open notes.md --line 120
 
 ### marsdawn export
 
-把 Markdown 文件输出成分页的 PDF，使用和 MarsDawn 输出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。
+把 Markdown 文件导出成分页的 PDF，使用和 MarsDawn 导出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。
 
 ```
 marsdawn export notes.md -o notes.pdf --theme classic --paper a4
@@ -3987,7 +3987,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `-o, --output <path>`：PDF 的输出位置，默认是把输入文件的扩展名换成 `.pdf`。
 - `--theme <dawn|classic|modern|vivid>`：预览主题的浅色版本，默认读取 `$MARSDAWN_THEME`，否则用 `dawn`。
 - `--paper <a4|letter>`：纸张大小，默认 `a4`。
-- `--allow-remote-images`：输出时加载网络图片，默认关闭。
+- `--allow-remote-images`：导出时加载网络图片，默认关闭。
 - `--force`：如果输出文件已存在就直接覆盖。
 - `--json`：输出 JSON 结果，而不是文本。
 
@@ -4007,7 +4007,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 | `2` | 找不到输入文件。 | 检查路径和文件名 |
 | `3` | 尚未安装 MarsDawn（只有 `open` 会用到）。 | 安装 app，或改用不需要 app 的 `export` |
 | `4` | 输出文件已存在（可加上 `--force`）。 | 加上 `--force` 覆盖，或用 `-o` 写到别处 |
-| `5` | 输出失败。 | 读 JSON 结果里的 `message` |
+| `5` | 导出失败。 | 读 JSON 结果里的 `message` |
 | `64` | 使用方式错误，包括行号超出范围，或 `--line` 搭配了多个文件。 | 修正选项或值；这种错误以文本输出到 stderr，即使加了 `--json` 也一样 |
 
 ## --json 输出
@@ -4028,7 +4028,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/agents/
 
 ## 能做什么
 
-- `export`：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件输出成分页的 PDF，不会打开任何窗口。
+- `export`：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件导出成分页的 PDF，不会打开任何窗口。
 - `open`：在 MarsDawn app 中打开一或多个 Markdown 文件，让人审阅，也可以指定每个文件要定位的行。
 
 ## 不做什么
@@ -4229,7 +4229,7 @@ MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不
 
 ## 同一个 export，三扇门
 
-不管从哪个界面调用，底层行为都一样：同一套输出程序、同样的主题和纸张大小，Mermaid 图表画不出来时也是同样的 `diagramErrors`。这页不重复那份规格——[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)里有完整内容。
+不管从哪个界面调用，底层行为都一样：同一套导出程序、同样的主题和纸张大小，Mermaid 图表画不出来时也是同样的 `diagramErrors`。这页不重复那份规格——[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)里有完整内容。
 
 ## 接下来
 
@@ -4341,7 +4341,7 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 ## PDF 导出和打印用同一个主题
 
-导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套输出程序，所以脚本或 agent 也能用 `--theme` 生成一模一样的 PDF，四种主题都可以。
+导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 agent 也能用 `--theme` 生成一模一样的 PDF，四种主题都可以。
 
 ## 规划中：更多主题，还有主题库
 
@@ -4457,7 +4457,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/reading-agent-output/
 - **好几个文件：**用“文件 ▸ 打开文件夹⋯”（⇧⌘O）打开 agent 工作的文件夹，新文件大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树。
 - **反馈要准：**“编辑 ▸ 拷贝引用”（⌥⌘C）把目前位置拷贝成 `docs/plan.md:42`，“拷贝给 AI”（⌃⌥⌘C）会在下面附上你选取的文字，直接贴给 agent 就好。
 
-另外两件事也和这个循环有关：agent 可以执行 `marsdawn open plan.md:42`，在 MarsDawn 里帮你打开文件，直接停在第 42 行，也就是它想先让你看的那一行；审完的文件可以从 app 输出 PDF，也可以用免费的 `marsdawn export` 指令。
+另外两件事也和这个循环有关：agent 可以执行 `marsdawn open plan.md:42`，在 MarsDawn 里帮你打开文件，直接停在第 42 行，也就是它想先让你看的那一行；审完的文件可以从 app 导出 PDF，也可以用免费的 `marsdawn export` 指令。
 
 MarsDawn 里没有 AI 模型。它不会帮你摘要计划、打分数，也不会告诉你哪里错了。读的人是你，它负责让又长又会变的文件保持好读，让你能准确指出是哪一行。
 
@@ -4482,7 +4482,7 @@ MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具�
 brew install redtear1115/tap/marsdawn
 ```
 
-它不需要 app 就能把 Markdown 输出成 PDF。app 上架之后，agent 也能用 `marsdawn open` 在 MarsDawn 里帮你打开文件。
+它不需要 app 就能把 Markdown 导出成 PDF。app 上架之后，agent 也能用 `marsdawn open` 在 MarsDawn 里帮你打开文件。
 
 [命令行工具](/zh-hans/cli/) · [给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/) · 买之前先看：[MarsDawn 做不到的事](/zh-hans/limits/)
 
@@ -4568,7 +4568,7 @@ MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具�
 brew install redtear1115/tap/marsdawn
 ```
 
-它不需要 app 就能把 Markdown 输出成 PDF。
+它不需要 app 就能把 Markdown 导出成 PDF。
 
 [命令行工具](/zh-hans/cli/) · 买之前先看：[MarsDawn 做不到的事](/zh-hans/limits/)
 
@@ -4675,7 +4675,7 @@ MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具�
 brew install redtear1115/tap/marsdawn
 ```
 
-它不需要 app 就能把 Markdown 输出成 PDF。
+它不需要 app 就能把 Markdown 导出成 PDF。
 
 [命令行工具](/zh-hans/cli/) · 买之前先看：[MarsDawn 做不到的事](/zh-hans/limits/)
 
@@ -4765,7 +4765,7 @@ MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具�
 brew install redtear1115/tap/marsdawn
 ```
 
-它不需要 app 就能把 Markdown 输出成 PDF，详见〈[Markdown 转 PDF 工具](/zh-hans/markdown-to-pdf/)〉。
+它不需要 app 就能把 Markdown 导出成 PDF，详见〈[Markdown 转 PDF 工具](/zh-hans/markdown-to-pdf/)〉。
 
 [命令行工具](/zh-hans/cli/) · 买之前先看：[MarsDawn 做不到的事](/zh-hans/limits/)
 
@@ -4796,9 +4796,9 @@ Source: https://marsdawn.southern-light.dev/zh-hans/changelog/
 
 ## marsdawn 0.5.1
 
-2026 年 9 月 19 日。PDF 输出，以及从命令行打开文件。
+2026 年 9 月 19 日。PDF 导出，以及从命令行打开文件。
 
-- 输出的 PDF 中，中文、日文与韩文的文字层已修正。
+- 导出的 PDF 中，中文、日文与韩文的文字层已修正。
 - `marsdawn open --background` 会打开文件，但不会把 MarsDawn 带到最前面。
 - `marsdawn open` 可以指定一个文件夹。Mac App Store 上的 app 还不能显示文件夹，所以这个选项要等做得到的版本。
 
@@ -4873,9 +4873,9 @@ flowchart LR
 
 ## 导出效果
 
-![spec.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/spec-zh-hans.png)
+![spec.md 用 marsdawn export 导出的 PDF 第一页。](/assets/templates/spec-zh-hans.png)
 
-用 `marsdawn export spec.md` 输出。免费的命令行工具排版和 MarsDawn 的预览一样，图表也一起画出来。
+用 `marsdawn export spec.md` 导出。免费的命令行工具排版和 MarsDawn 的预览一样，图表也一起画出来。
 
 ## 交给 agent
 
@@ -4883,7 +4883,7 @@ flowchart LR
 用 https://marsdawn.southern-light.dev/zh-hans/templates/spec/spec.md 这份模板，把［功能］的规格写进 spec.md。每条需求都要有编号，流程图和验收标准用同样的编号。写好之后运行 marsdawn open spec.md。
 ```
 
-## 输出 PDF 分享
+## 导出 PDF 分享
 
 `marsdawn export spec.md` 会在旁边写出 spec.pdf，给不读 Markdown 的人。
 
@@ -4945,9 +4945,9 @@ flowchart LR
 
 ## 导出效果
 
-![flowchart.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/flowchart-zh-hans.png)
+![flowchart.md 用 marsdawn export 导出的 PDF 第一页。](/assets/templates/flowchart-zh-hans.png)
 
-用 `marsdawn export flowchart.md` 输出。免费的命令行工具排版和 MarsDawn 的预览一样，图表也一起画出来。
+用 `marsdawn export flowchart.md` 导出。免费的命令行工具排版和 MarsDawn 的预览一样，图表也一起画出来。
 
 ## 交给 agent
 
@@ -4955,7 +4955,7 @@ flowchart LR
 用 https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/flowchart.md 这份模板，把［流程］画进 flowchart.md。每个节点对应一个编号步骤，顺序相同。写好之后运行 marsdawn open flowchart.md。
 ```
 
-## 输出 PDF 分享
+## 导出 PDF 分享
 
 `marsdawn export flowchart.md`：流程图会画进 PDF 里。
 
@@ -5014,9 +5014,9 @@ Source: https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/
 
 ## 导出效果
 
-![meeting-notes.md 用 marsdawn export 输出的 PDF 第一页。](/assets/templates/meeting-notes-zh-hans.png)
+![meeting-notes.md 用 marsdawn export 导出的 PDF 第一页。](/assets/templates/meeting-notes-zh-hans.png)
 
-用 `marsdawn export meeting-notes.md` 输出。免费的命令行工具排版和 MarsDawn 的预览一样。
+用 `marsdawn export meeting-notes.md` 导出。免费的命令行工具排版和 MarsDawn 的预览一样。
 
 ## 交给 agent
 
@@ -5024,9 +5024,9 @@ Source: https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/
 用 https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/meeting-notes.md 这份模板，把这场会议整理进 meeting-notes.md。先写决议，一项一行；每个行动项都要有一位负责人和日期。写好之后运行 marsdawn open meeting-notes.md。
 ```
 
-## 输出 PDF 分享
+## 导出 PDF 分享
 
-`marsdawn export meeting-notes.md` 会输出一份 PDF，可以附在会后的邮件里。
+`marsdawn export meeting-notes.md` 会导出一份 PDF，可以附在会后的邮件里。
 
 ## 做不到的事
 
@@ -5161,7 +5161,7 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 ## 仕組み
 
 1. **無料でダウンロード。** MarsDawn は Mac App Store から無料でダウンロードできます。
-2. **14 日間、すべて使える。** トライアルを始めると、14日間は MarsDawn のすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、Siri とショートカットのアクションです。Finder のクイックルックはトライアルの有無にかかわらず使えます。
+2. **14 日間、すべて使える。** トライアルを始めると、14日間は MarsDawn のすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しとプリント、Siri とショートカットのアクションです。Finder のクイックルックはトライアルの有無にかかわらず使えます。
 3. **一度の購入で解除。** その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。
 
 - トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。
@@ -5173,7 +5173,7 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 |---|---|---|---|
 | MarsDawn で文書を開く | できる | 開くが、内容は覆われる | できる |
 | MarsDawn で読み書き（ソース、プレビュー、Mermaid、数式） | できる | できない | できる |
-| MarsDawn から PDF に書き出す・印刷する | できる | できない | できる |
+| MarsDawn から PDF に書き出す・プリントする | できる | できない | できる |
 | 「ファイル」▸「別名で保存…」で入力した文字を残す | できる | できる（トライアル終了時に開いていたウインドウのみ） | できる |
 | Siri とショートカットのアクション | できる | できない | できる |
 | Finder のクイックルック（Mermaid 図と数式つき） | できる | できる、変わらず | できる |
@@ -5186,7 +5186,7 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 
 ## ロックを解除しない場合
 
-- 14日後、ロックを解除するまでは、MarsDawn で文書を読んだり編集したり書き出したり印刷したりできません。文書自体は開きますが、内容は覆われます。
+- 14日後、ロックを解除するまでは、MarsDawn で文書を読んだり編集したり書き出したりプリントしたりできません。文書自体は開きますが、内容は覆われます。
 - あなたのファイルは変わりません。Mac 上の普通のファイルのままで、Finder のクイックルックでも引き続き表示されます。
 - 無料の[`marsdawn` コマンドラインツール](/ja/cli/)は、トライアルの有無にかかわらず、引き続き PDF に書き出せます。
 - トライアル終了時に MarsDawn で文書が開いていた場合、入力した文字が失われることはありません。「ファイル」▸「別名で保存…」で保存してください。
@@ -5198,7 +5198,7 @@ Source: https://marsdawn.southern-light.dev/ja/pdf/
 
 # PDF は、あなたが書いたページそのままに見えます。
 
-テーマのライトカラーで PDF に書き出す、または印刷できます。図やハイライトされたコードもそのまま反映され、改ページはひとまとまりの内容を分断しないよう配慮されます。
+テーマのライトカラーで PDF に書き出す、またはプリントできます。図やハイライトされたコードもそのまま反映され、改ページはひとまとまりの内容を分断しないよう配慮されます。
 
 ![MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -5279,14 +5279,14 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 ### ファイルと機能
 
 - **編集：**左に Markdown を書き、右でページを読みます。ページ自体は編集できません。
-- **形式：**MarsDawn は PDF の書き出しと印刷に対応していますが、Word ファイルへの書き出しはできません。
+- **形式：**MarsDawn は PDF の書き出しとプリントに対応していますが、Word ファイルへの書き出しはできません。
 - **その他のファイル：**プレーンテキストファイルと PDF は読み取り専用で開きます。
 - **テーマ：**夜明け、クラシック、モダン、ビビッド の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。
 - **プラグイン：**MarsDawn にプラグインや拡張機能はありません。
 
 ## 試用期間が終わったら
 
-14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したり書き出したり印刷したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。[トライアルとロック解除のページ](/ja/pay-once/)に、3つの段階を並べた表があります。
+14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したり書き出したりプリントしたりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。[トライアルとロック解除のページ](/ja/pay-once/)に、3つの段階を並べた表があります。
 ---
 
 ## サポート
@@ -5328,7 +5328,7 @@ MarsDawn は図のソースと、その下に Mermaid のエラーメッセー�
 
 ### PDF を作るには？
 
-ファイル › PDF として書き出す…（`⌥⌘E`）を選んでください。PDF はどのレイアウトであっても、プレビューテーマのライト版を使い、ページごとに分割されます。ファイル › プリント…でも同じページが印刷されます。
+ファイル › PDF として書き出す…（`⌥⌘E`）を選んでください。PDF はどのレイアウトであっても、プレビューテーマのライト版を使い、ページごとに分割されます。ファイル › プリント…でも同じページがプリントされます。
 
 ### Siri やショートカットで MarsDawn を使うには？
 
@@ -5482,7 +5482,7 @@ Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数
 `plan.md` という名前のファイルに、次の内容を貼り付けてください。
 
 ````
-# 計画：エクスポートを高速化
+# 計画：書き出しを高速化
 
 この計画はエージェントが書きました。内容を確認してから、PDF にします。
 
@@ -5570,7 +5570,7 @@ Source: https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/
 | プレビューテーマ | 12 種類のドキュメントテーマ | 4 種類、それぞれにライトとダーク |
 | 図と数式 | Mermaid とコードのハイライト。数式の表示は紹介ページに記載なし | Mermaid、コードのハイライト、KaTeX の数式 |
 | Finder のクイックルック | あり | あり |
-| PDF と印刷 | あり | あり |
+| PDF とプリント | あり | あり |
 | 動作環境 | macOS 14（Sonoma）以降 | macOS 26（Tahoe）以降 |
 | インターフェイスの言語 | 公式の資料に記載なし | 英語と繁体字中国語 |
 
@@ -5997,7 +5997,7 @@ Source: https://marsdawn.southern-light.dev/ja/themes/
 
 # 8つの見た目、1つの書き出し。
 
-MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種類のプレビューテーマが付属し、それぞれライトとダークがあります。文書を読むための8通りの組み合わせです。PDF に書き出す、または印刷すると、そのとき読んでいたものと同じ見た目でページが出てきます。
+MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種類のプレビューテーマが付属し、それぞれライトとダークがあります。文書を読むための8通りの組み合わせです。PDF に書き出す、またはプリントすると、そのとき読んでいたものと同じ見た目でページが出てきます。
 
 **4つのテーマ × ライトとダーク＝文書を読む8つの方法があり、書き出しはどれを選んでいても対応します。**もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーは計画中で、まだ作られていません。
 
@@ -6017,9 +6017,9 @@ MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種�
 
 それぞれ独自のライトとダークの配色を持つので、Mac の外観を切り替えると、インターフェースの色だけでなくテーマの配色自体も切り替わります。
 
-## PDF 書き出しと印刷は同じテーマを使う
+## PDF 書き出しとプリントは同じテーマを使う
 
-PDF に書き出す、または印刷すると、テーマのライトカラーが使われます。Mermaid 図はそこに描き込まれ、コードブロックは構文のハイライトを保ち、改ページは見出しをそのセクションから切り離したり、表や図を途中で切ったりしないよう配慮されます。無料の[marsdawn コマンドラインツール](/ja/cli/)も同じ書き出しエンジンを使うので、スクリプトやエージェントも `--theme` で、4種類のどのテーマでも同一の PDF を作れます。
+PDF に書き出す、またはプリントすると、テーマのライトカラーが使われます。Mermaid 図はそこに描き込まれ、コードブロックは構文のハイライトを保ち、改ページは見出しをそのセクションから切り離したり、表や図を途中で切ったりしないよう配慮されます。無料の[marsdawn コマンドラインツール](/ja/cli/)も同じ書き出しエンジンを使うので、スクリプトやエージェントも `--theme` で、4種類のどのテーマでも同一の PDF を作れます。
 
 ## 計画中：もっと多くのテーマと、ギャラリー
 
