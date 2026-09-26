@@ -30,12 +30,21 @@ field, with nothing invented beyond it:
     `preview-light.png`/`preview-dark.png`; §5.1's URL list).
   - Every `path` (in `files.*` and `previews.*`) must resolve under `/themes/v1/` and nowhere else
     (§5.1: "Paths from the index are resolved against [the base URL], and anything outside that
-    prefix is rejected"). `path_is_safe` below decodes percent-escapes exactly once, rejects a
-    decode failure or a decoded NUL/control character, rejects a `.` or `..` path segment, rejects
-    any URL scheme (`c:`, `javascript:`, ...), rejects a leading `/`, a `//`, and a `\`, and finally
-    resolves the raw value against `https://example.invalid/themes/v1/` with `urllib.parse.urljoin`
-    (the same mechanics a WHATWG `URL` resolution uses) and requires the result to still start with
-    that prefix — a last check for anything the earlier rules didn't anticipate.
+    prefix is rejected"). This used to be a denylist (reject `..`, reject a scheme, reject `//`,
+    ...), and round 2 of review found real gaps in it: the `://` scheme test missed single-colon
+    schemes (`c:`, `javascript:`), and the `..` test missed the percent-encoded form (`%2e%2e`).
+    `path_is_safe` below is an **allowlist** instead: every path must fully match
+    `^[a-z0-9][a-z0-9._-]*(/[a-z0-9][a-z0-9._-]*)*$` — lowercase letters, digits, `.`, `_`, `-`
+    within a segment, segments separated by a single `/`, every segment starting with a letter or
+    digit. Nothing needs decoding, because nothing outside that character class can pass: no `%`
+    (so no percent-encoding of anything, decoded or not), no `?`, `#`, `:` (so no scheme and no
+    query/fragment for a resolver to reinterpret), no `\`, no uppercase, no empty segment (`//` or a
+    leading/trailing `/`), and no segment starting with `.` (which rules out `.` and `..` segments
+    the same way, since their first character isn't `[a-z0-9]`). Checked against every path shape
+    §5.1 actually fixes (`olympus-dusk/1.0.0/theme.json`, `.../theme.css`, `.../preview-light.png`,
+    `.../preview-dark.png`, and `id` from §4.2's own `^[a-z0-9]+(-[a-z0-9]+)*$`): all lowercase,
+    hyphen- and dot-separated, nothing this pattern would reject, so no character class widening was
+    needed.
 - `revoked`, when present: a list; each entry an object with `id`, `reason`, `revokedAt` as
   non-empty strings (§5.1's example; §5.3 never adds more fields).
 
@@ -48,12 +57,9 @@ requires the check's own report of that break to be **exactly one problem**, car
 condition's own words — not just any problem, and not that problem plus others, so a plant can't be
 credited to the wrong rule or hide a second broken rule behind it. It also checks that an unbroken
 index, and an absent `public/themes/v1/`, both pass first, so a check that can't pass can't pass as
-catching everything. Two conditions have no dedicated plant, both documented at their `RULES` entry
-instead: an unreadable (as opposed to merely malformed or absent) `index.json` isn't something a
-plant can portably arrange (permissions differ by OS and by whether CI runs as root); and the final
-`urljoin` assertion above is a backstop that, given the rules that already run before it, no known
-input reaches while still failing only it — every attempt to construct one is already caught by an
-earlier, more specific rule first.
+catching everything. One condition has no dedicated plant, documented at its `RULES` entry instead:
+an unreadable (as opposed to merely malformed or absent) `index.json` isn't something a plant can
+portably arrange (permissions differ by OS and by whether CI runs as root).
 
 **Ship signal (not covered): absence still passes.** If `public/themes/v1/` is deleted outright
 after the gallery has shipped, this check still passes (nothing to validate, by the same rule that
@@ -69,13 +75,13 @@ import json
 import re
 import sys
 import tempfile
-import urllib.parse
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
-RESOLVE_BASE = "https://example.invalid/themes/v1/"
+# Allowlist: see the module docstring for why this replaced a denylist, and for the check against
+# every path shape §5.1 and §4.2 actually fix.
+PATH_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*(/[a-z0-9][a-z0-9._-]*)*$")
 
 VALID_INDEX = {
     "schemaVersion": 1,
@@ -118,45 +124,15 @@ def is_nonempty_str(value) -> bool:
     return isinstance(value, str) and bool(value)
 
 
-def path_is_safe(value):
-    """Returns (True, "") for a path safe to resolve under /themes/v1/, or (False, reason)."""
-    if not is_nonempty_str(value):
-        return False, "must be a non-empty string"
-
-    try:
-        decoded = urllib.parse.unquote(value, encoding="utf-8", errors="strict")
-    except UnicodeDecodeError:
-        return False, "must decode as valid UTF-8 percent-encoding"
-
-    if any(ord(ch) < 0x20 or ord(ch) == 0x7F for ch in decoded):
-        return False, "must not decode to a NUL or control character"
-
-    if any(segment in (".", "..") for segment in decoded.split("/")):
-        return False, "must not contain a '.' or '..' path segment"
-
-    if SCHEME_RE.match(decoded):
-        return False, "must not include a URL scheme"
-
-    if decoded.startswith("/"):
-        return False, "must not be an absolute path"
-
-    if "//" in decoded:
-        return False, "must not contain a double slash"
-
-    if "\\" in decoded:
-        return False, "must not contain a backslash"
-
-    resolved = urllib.parse.urljoin(RESOLVE_BASE, value)
-    if not resolved.startswith(RESOLVE_BASE):
-        return False, "must resolve under themes/v1/"
-
-    return True, ""
+def path_is_safe(value) -> bool:
+    return isinstance(value, str) and bool(PATH_RE.fullmatch(value))
 
 
 def check_path(problems, where, value):
-    ok, reason = path_is_safe(value)
-    if not ok:
-        problems.append(f"{where}: {reason}")
+    if not isinstance(value, str):
+        problems.append(f"{where}: must be a string")
+    elif not PATH_RE.fullmatch(value):
+        problems.append(f"{where}: must match {PATH_RE.pattern}")
 
 
 def check_file_entry(problems, where, entry, kind):
@@ -460,69 +436,130 @@ def rule_revoked_entry_revoked_at(root):
     write_index(root, data)
 
 
-# path_is_safe's own conditions, isolated one at a time: each fixture value trips exactly the
-# named condition and no other (a value with a leading '/' but no '..', a double slash with no
-# leading '/', and so on), which is exactly what verify2's round-2 review found missing (its
-# `/themes/v1/../escaped.png` preview plant tripped the '..' rule, not the leading-'/' rule it was
-# meant to isolate).
+# path_is_safe's own conditions. With an allowlist there are really only two: "not a string" and
+# "doesn't match the pattern" — but the pattern is exercised with one plant per way of failing it
+# (upper case, each disallowed character, an empty segment, a leading-dot segment, and verify2's own
+# round-2/round-3 escape attempts), on the file-entry path (theme.json AND theme.css, since round 3
+# only ever exercised theme.json) and on both preview paths (light AND dark, since round 3 only ever
+# exercised dark).
 def rule_path_not_string(root):
     data = read_index(root)
     data["themes"][0]["files"]["theme.json"]["path"] = 12345
     write_index(root, data)
 
 
-def rule_path_decode_failure(root):
+def rule_path_uppercase(root):
     data = read_index(root)
-    # A lone continuation byte: not valid UTF-8 on its own.
-    data["themes"][0]["files"]["theme.json"]["path"] = "a%80b.json"
+    data["themes"][0]["files"]["theme.json"]["path"] = "Olympus-Dusk/theme.json"
     write_index(root, data)
 
 
-def rule_path_control_char(root):
+def rule_path_percent(root):
     data = read_index(root)
-    data["themes"][0]["files"]["theme.json"]["path"] = "a%00b.json"
+    data["themes"][0]["files"]["theme.json"]["path"] = "a%2ejson"
     write_index(root, data)
 
 
-def rule_path_dot_segment(root):
+def rule_path_question_mark(root):
     data = read_index(root)
-    data["themes"][0]["files"]["theme.json"]["path"] = "a/../b.json"
+    data["themes"][0]["files"]["theme.json"]["path"] = "a?x=1"
     write_index(root, data)
 
 
-def rule_path_percent_encoded_dot_segment(root):
+def rule_path_hash(root):
     data = read_index(root)
-    data["themes"][0]["files"]["theme.json"]["path"] = "%2e%2e/%2e%2e/escaped.css"
+    data["themes"][0]["files"]["theme.json"]["path"] = "a#frag"
     write_index(root, data)
 
 
-def rule_path_scheme_drive_letter(root):
+def rule_path_colon(root):
     data = read_index(root)
-    data["themes"][0]["files"]["theme.json"]["path"] = "c:/escaped.css"
-    write_index(root, data)
-
-
-def rule_path_scheme_javascript(root):
-    data = read_index(root)
-    data["themes"][0]["files"]["theme.json"]["path"] = "javascript:alert(1)"
-    write_index(root, data)
-
-
-def rule_path_leading_slash(root):
-    data = read_index(root)
-    data["themes"][0]["files"]["theme.json"]["path"] = "/escaped.json"
-    write_index(root, data)
-
-
-def rule_path_double_slash(root):
-    data = read_index(root)
-    data["themes"][0]["files"]["theme.json"]["path"] = "a//escaped.json"
+    data["themes"][0]["files"]["theme.json"]["path"] = "a:b.json"
     write_index(root, data)
 
 
 def rule_path_backslash(root):
     data = read_index(root)
-    data["themes"][0]["files"]["theme.json"]["path"] = "a\\escaped.json"
+    data["themes"][0]["files"]["theme.json"]["path"] = "a\\b.json"
+    write_index(root, data)
+
+
+def rule_path_leading_slash(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "/a.json"
+    write_index(root, data)
+
+
+def rule_path_double_slash(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "a//b.json"
+    write_index(root, data)
+
+
+def rule_path_single_dot_segment(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "a/./b.json"
+    write_index(root, data)
+
+
+def rule_path_double_dot_segment(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "a/../b.json"
+    write_index(root, data)
+
+
+def rule_path_del_char(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "a\x7fb.json"
+    write_index(root, data)
+
+
+def rule_path_theme_css_unsafe(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.css"]["path"] = "/a.css"
+    write_index(root, data)
+
+
+def rule_path_preview_light_unsafe(root):
+    data = read_index(root)
+    data["themes"][0]["previews"]["light"] = "/a.png"
+    write_index(root, data)
+
+
+def rule_path_preview_dark_unsafe(root):
+    data = read_index(root)
+    data["themes"][0]["previews"]["dark"] = "/a.png"
+    write_index(root, data)
+
+
+# verify2's own escape attempts (round 2 and round 3), replayed as plants directly.
+def rule_path_escape_encoded_dot_hash(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "%2e%2e#"
+    write_index(root, data)
+
+
+def rule_path_escape_dotdot_query(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "..?x"
+    write_index(root, data)
+
+
+def rule_path_escape_mixed_encoded_dot_hash(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "%2e.#"
+    write_index(root, data)
+
+
+def rule_path_escape_drive_letter(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "c:/x"
+    write_index(root, data)
+
+
+def rule_path_escape_javascript(root):
+    data = read_index(root)
+    data["themes"][0]["files"]["theme.json"]["path"] = "javascript:alert(1)"
     write_index(root, data)
 
 
@@ -549,22 +586,32 @@ RULES = [
     ("theme.previews missing", rule_theme_previews_missing, ["previews must be an object"]),
     ("theme.previews missing 'light' key", rule_theme_previews_missing_light, ["previews must be an object with 'light' and 'dark'"]),
     ("theme.previews missing 'dark' key", rule_theme_previews_missing_dark, ["previews must be an object with 'light' and 'dark'"]),
-    ("theme.previews.dark unsafe path", rule_theme_preview_dark_unsafe, ["previews.dark", "double slash"]),
+    ("theme.previews.dark unsafe path", rule_theme_preview_dark_unsafe, ["previews.dark", "must match"]),
     ("revoked not a list", rule_revoked_not_list, ["revoked must be a list"]),
     ("revoked entry not an object", rule_revoked_entry_not_object, ["revoked[0]", "is not an object"]),
     ("revoked[].id missing", rule_revoked_entry_id, ["revoked[0]", "id must be a non-empty string"]),
     ("revoked[].reason missing", rule_revoked_entry_reason, ["revoked[0]", "reason must be a non-empty string"]),
     ("revoked[].revokedAt missing", rule_revoked_entry_revoked_at, ["revoked[0]", "revokedAt must be a non-empty string"]),
-    ("path: not a string", rule_path_not_string, ["path", "must be a non-empty string"]),
-    ("path: invalid percent-encoding", rule_path_decode_failure, ["path", "must decode as valid UTF-8"]),
-    ("path: decodes to a control character", rule_path_control_char, ["path", "must not decode to a NUL or control character"]),
-    ("path: literal '..' segment", rule_path_dot_segment, ["path", "must not contain a '.' or '..' path segment"]),
-    ("path: percent-encoded '..' segment", rule_path_percent_encoded_dot_segment, ["path", "must not contain a '.' or '..' path segment"]),
-    ("path: drive-letter scheme", rule_path_scheme_drive_letter, ["path", "must not include a URL scheme"]),
-    ("path: javascript: scheme", rule_path_scheme_javascript, ["path", "must not include a URL scheme"]),
-    ("path: leading slash", rule_path_leading_slash, ["path", "must not be an absolute path"]),
-    ("path: double slash", rule_path_double_slash, ["path", "must not contain a double slash"]),
-    ("path: backslash", rule_path_backslash, ["path", "must not contain a backslash"]),
+    ("path: not a string", rule_path_not_string, ["path", "must be a string"]),
+    ("path: uppercase", rule_path_uppercase, ["path", "must match"]),
+    ("path: percent sign", rule_path_percent, ["path", "must match"]),
+    ("path: question mark", rule_path_question_mark, ["path", "must match"]),
+    ("path: hash", rule_path_hash, ["path", "must match"]),
+    ("path: colon", rule_path_colon, ["path", "must match"]),
+    ("path: backslash", rule_path_backslash, ["path", "must match"]),
+    ("path: leading slash (empty segment)", rule_path_leading_slash, ["path", "must match"]),
+    ("path: double slash (empty segment)", rule_path_double_slash, ["path", "must match"]),
+    ("path: single '.' segment", rule_path_single_dot_segment, ["path", "must match"]),
+    ("path: '..' segment", rule_path_double_dot_segment, ["path", "must match"]),
+    ("path: DEL (0x7F) character", rule_path_del_char, ["path", "must match"]),
+    ("path: theme.css file entry", rule_path_theme_css_unsafe, ["files['theme.css'].path", "must match"]),
+    ("path: previews.light", rule_path_preview_light_unsafe, ["previews.light", "must match"]),
+    ("path: previews.dark (direct)", rule_path_preview_dark_unsafe, ["previews.dark", "must match"]),
+    ("path: verify2 escape '%2e%2e#'", rule_path_escape_encoded_dot_hash, ["path", "must match"]),
+    ("path: verify2 escape '..?x'", rule_path_escape_dotdot_query, ["path", "must match"]),
+    ("path: verify2 escape '%2e.#'", rule_path_escape_mixed_encoded_dot_hash, ["path", "must match"]),
+    ("path: verify2 escape 'c:/x'", rule_path_escape_drive_letter, ["path", "must match"]),
+    ("path: verify2 escape 'javascript:alert(1)'", rule_path_escape_javascript, ["path", "must match"]),
 ]
 
 
