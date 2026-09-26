@@ -32,7 +32,7 @@ Evaluator-optimizer 特别值得停下来想一下，因为指南把原本可能
 
 ## MarsDawn 帮得上、帮不上的地方
 
-MarsDawn 不知道一份文件是哪种 workflow 模式做出来的，里面也没有 AI 模型——它不会自己跑一次 evaluator 步骤，也没办法告诉你 Anthropic 描述的那个评估到底做得好不好。它做的是：侧边栏（“显示 ▸ 显示边栏”，⌃⌘S）的“大纲”标签页列出一份 orchestrator 拼出来的长文件的所有标题，点一下就跳过去；原始码和排好的页面并排（⌘2），一起滚动，Mermaid 图表和 KaTeX 数学式都直接画出来。agent 读到一半改写文件的话，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未保存的修改。“编辑 ▸ 拷贝引用”（⌥⌘C）把你的位置拷贝成 `docs/plan.md:42`，直接贴回 agent 的对话里就好。
+MarsDawn 不知道一份文件是哪种 workflow 模式做出来的，里面也没有 AI 模型——它不会自己跑一次 evaluator 步骤，也没办法告诉你 Anthropic 描述的那个评估到底做得好不好。它做的是：侧边栏（“显示 ▸ 显示边栏”，⌃⌘S）的“大纲”标签页列出一份 orchestrator 拼出来的长文件的所有标题，点一下就跳过去；源代码和排好的页面并排（⌘2），一起滚动，Mermaid 图表和 KaTeX 数学式都直接画出来。agent 读到一半改写文件的话，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未保存的修改。“编辑 ▸ 拷贝引用”（⌥⌘C）把你的位置拷贝成 `docs/plan.md:42`，直接贴回 agent 的对话里就好。
 
 ## 试试看
 
@@ -42,7 +42,7 @@ MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具�
 brew install redtear1115/tap/marsdawn
 ```
 
-它不需要 app 就能把 Markdown 输出成 PDF。
+它不需要 app 就能把 Markdown 导出成 PDF。
 
 [命令行工具](/zh-hans/cli/) · 买之前先看：[MarsDawn 做不到的事](/zh-hans/limits/)
 

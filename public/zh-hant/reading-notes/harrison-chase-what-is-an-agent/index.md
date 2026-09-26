@@ -10,7 +10,7 @@ Chase 自己給的定義，還先承認這比大部分人的定義更技術性�
 
 （Agent 是用 LLM 來決定應用程式控制流程的系統。「控制流程」指的就是程式接下來要跑哪一步。）
 
-他馬上承認這個定義並不完美——一個只是讓 LLM 在兩條路徑之間做選擇的簡單系統，照他的定義算是 agent，但不太符合大部分人對「agent」的直覺想像。與其去爭誰才是「真正的」agent，他採用了 Andrew Ng 的說法——他引用 Ng 的一則推文，並註明出自 Ng：「rather than arguing over which work to include or exclude as being a true agent, we can acknowledge that there are different degrees to which systems can be agentic」（與其去爭該把哪些工作算進「真正的」agent、哪些不算，不如承認系統可以有不同程度的 agentic）。Chase 自己的回應是：「I really agree with this viewpoint and I think Andrew expressed it nicely」（我很認同這個看法，覺得 Andrew 講得很好）。從這裡出發：系統愈由 LLM 決定該怎麼運作，就愈「agentic」，從固定的路由器，到狀態機，一路到能自己建立並記住工具的完全自主 agent。他從這條光譜出發，提出一個實際的主張：系統愈 agentic，某些基礎建設就愈重要，其中最重要的是可觀測性：
+他馬上承認這個定義並不完美——一個只是讓 LLM 在兩條路徑之間做選擇的簡單系統，照他的定義算是 agent，但不太符合大部分人對「agent」的直覺想像。與其去爭誰才是「真正的」agent，他採用了 Andrew Ng 的說法——他引用 Ng 的一則推文，並註明出自 Ng：「rather than arguing over which work to include or exclude as being a true agent, we can acknowledge that there are different degrees to which systems can be agentic」（與其去爭該把哪些工作算進「真正的」agent、哪些不算，不如承認系統可以有不同程度的 agentic）。 Chase 自己的回應是：「I really agree with this viewpoint and I think Andrew expressed it nicely」（我很認同這個看法，覺得 Andrew 講得很好）。從這裡出發：系統愈由 LLM 決定該怎麼運作，就愈「agentic」，從固定的路由器，到狀態機，一路到能自己建立並記住工具的完全自主 agent。他從這條光譜出發，提出一個實際的主張：系統愈 agentic，某些基礎建設就愈重要，其中最重要的是可觀測性：
 
 > “You’ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.”
 
@@ -20,7 +20,7 @@ Chase 自己給的定義，還先承認這比大部分人的定義更技術性�
 
 ## 以下是我們的解讀，不是 Chase 的
 
-Chase 談的是給打造 agent 框架的人用的工具——他點名了 LangGraph 和 LangSmith——不是給讀一份完成文件的人看的。但他這條光譜，給了一個很實用的方式，讓你在開始讀之前先估量一下手上這份東西：產出它的系統愈 agentic，你就愈不該預期它的步驟從最初的 prompt 就能猜得到，手上這份檔案也就愈值得當成「實際發生了什麼」的紀錄來讀，而不是「原本該發生什麼」的紀錄。他說的「觀察系統內部」，講的是一個正在運作的系統的內部狀態——trace（一次執行過程中，agent 做過的所有事的紀錄）、中間步驟、工具呼叫——不是事後讀一份 Markdown 計畫。但他給的理由——步驟事先無法得知——用在 agent 做完之後交給你的那份文件上，一樣說得通：如果一開始步驟就無法預測，那份做完之後的報告，就是唯一還能檢查它們的地方。
+Chase 談的是給打造 agent 框架的人用的工具——他點名了 LangGraph 和 LangSmith——不是給讀一份完成文件的人看的。但他這條光譜，給了一個很實用的方式，讓你在開始讀之前先估量一下手上這份東西：產出它的系統愈 agentic，你就愈不該預期它的步驟從最初的 prompt 就能猜得到，手上這份檔案也就愈值得當成「實際發生了什麼」的紀錄來讀，而不是「原本該發生什麼」的紀錄。 他說的「觀察系統內部」，講的是一個正在運作的系統的內部狀態——trace（一次執行過程中，agent 做過的所有事的紀錄）、中間步驟、工具呼叫——不是事後讀一份 Markdown 計畫。但他給的理由——步驟事先無法得知——用在 agent 做完之後交給你的那份文件上，一樣說得通：如果一開始步驟就無法預測，那份做完之後的報告，就是唯一還能檢查它們的地方。
 
 ## MarsDawn 幫得上、幫不上的地方
 

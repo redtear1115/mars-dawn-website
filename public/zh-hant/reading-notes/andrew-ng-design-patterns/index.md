@@ -4,7 +4,7 @@
 
 ## 這幾篇文章主張什麼
 
-〈[四種 agent 設計模式，各自會交給你什麼文件](/zh-hant/agent-design-patterns/)〉已經完整談過這四種模式各自是什麼、當成我們自己的推論各自通常會交給你什麼文件，還有 Ng 自己對 planning 的評語，引自 Part 4：「while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do」（Reflection 和 Tool Use 這兩種設計模式我都能讓它們穩定運作、提升應用程式的表現，但 Planning 還是比較不成熟的技術，我很難事先預測它會怎麼做）。這篇要補的，是那篇沒用到的另外兩封信裡同一個排序：Part 3，寫在 Part 4 之前一週，先講出了這個排序；Part 5，把排序延伸到 Part 4 沒提到的那一種模式——multi-agent collaboration。在介紹 tool use 的 Part 3 裡，他寫道：
+〈[四種 agent 設計模式，各自會交給你什麼文件](/zh-hant/agent-design-patterns/)〉已經完整談過這四種模式各自是什麼、當成我們自己的推論各自通常會交給你什麼文件，還有 Ng 自己對 planning 的評語，引自 Part 4：「while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do」（Reflection 和 Tool Use 這兩種設計模式我都能讓它們穩定運作、提升應用程式的表現，但 Planning 還是比較不成熟的技術，我很難事先預測它會怎麼做）。 這篇要補的，是那篇沒用到的另外兩封信裡同一個排序：Part 3，寫在 Part 4 之前一週，先講出了這個排序；Part 5，把排序延伸到 Part 4 沒提到的那一種模式——multi-agent collaboration。在介紹 tool use 的 Part 3 裡，他寫道：
 
 > “In future letters, I’ll describe the Planning and Multi-agent collaboration design patterns. They allow AI agents to do much more but are less mature, less predictable — albeit very exciting — technologies.”
 
@@ -20,7 +20,7 @@
 
 ## 以下是我們的解讀，不是 Ng 的
 
-Ng 的排序談的是開發者視角下的輸出品質和可預測性，但大致對應到每種模式留下的紀錄，從你的角度該花多少心力去查。他覺得比較可靠的 reflection 和 tool use，通常會交給你描述「已經做完的事」的東西——一份改過的草稿、一份跑了什麼的報告——所以拿裡面一個宣稱去對照真正的輸出，通常就能覆蓋大部分風險。他覺得難以預測的 planning 和 multi-agent collaboration，通常會交給你「事情發生之前」寫好的東西，或是分散在好幾個 agent 手上的好幾份檔案：一份還在等你點頭的計畫，或是還沒被實際執行驗證過的 agent 交接。照他自己的說法，這兩種正是「寫下來的東西」和「實際會發生的事」落差最大的地方——這也正是〈五分鐘審完一份 agent 計畫〉從 Chip Huyen 那篇文章裡引出的道理，在「為什麼要在執行前審」那一段：在事情跑之前抓到問題，是最便宜的時機。
+Ng 的排序談的是開發者視角下的輸出品質和可預測性，但大致對應到每種模式留下的紀錄，從你的角度該花多少心力去查。他覺得比較可靠的 reflection 和 tool use，通常會交給你描述「已經做完的事」的東西——一份改過的草稿、一份跑了什麼的報告——所以拿裡面一個宣稱去對照真正的輸出，通常就能覆蓋大部分風險。 他覺得難以預測的 planning 和 multi-agent collaboration，通常會交給你「事情發生之前」寫好的東西，或是分散在好幾個 agent 手上的好幾份檔案：一份還在等你點頭的計畫，或是還沒被實際執行驗證過的 agent 交接。照他自己的說法，這兩種正是「寫下來的東西」和「實際會發生的事」落差最大的地方——這也正是〈五分鐘審完一份 agent 計畫〉從 Chip Huyen 那篇文章裡引出的道理，在「為什麼要在執行前審」那一段：在事情跑之前抓到問題，是最便宜的時機。
 
 ## MarsDawn 幫得上、幫不上的地方
 

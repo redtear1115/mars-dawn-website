@@ -1,6 +1,6 @@
 # Harrison Chase のスペクトラム：agentic であるほど、見ていたくなる
 
-**2024 年 6 月、LangChain の Harrison Chase は「エージェントとは何か？」という、一見単純な問いから新しいシリーズを始めた。彼は技術的な定義と、「agentic」の度合いを表すスペクトラムを示す。彼の主張では、システムがこのスペクトラムのどこまで進むかによって、それが動いているあいだの内部を見られる必要性が変わってくる。**
+**2024 年 6 月、LangChain の Harrison Chase は「エージェントとは何か？」という、一見単純な問いから新しいシリーズを始めた。彼は技術的な定義と、「agentic」の度合いを表すスペクトラムを示す。彼の主張では、システムがこのスペクトラムを先へ進むほど、それが動いているあいだの内部を見られる必要が高まる。**
 
 ## この記事が主張すること
 
@@ -10,7 +10,7 @@ Chase 自身の定義は、多くの人の直感より技術的で、範囲も�
 
 （エージェントとは、LLM を使ってアプリケーションの制御フローを決めるシステムだ。「制御フロー」とは、プログラムが次にどのステップを実行するかのことにすぎない。）
 
-彼はすぐに、この定義が完璧ではないことを認める——LLM が 2 つの経路のどちらかを選ぶだけの単純なシステムも、彼の定義では agent に含まれるが、多くの人の「agent」という直感には合わない。何を「本物の」エージェントに含めるか、含めないかを争うのではなく、彼は Andrew Ng の言い方を採用する——彼は Ng のツイートを引用し、出典を明記している：「rather than arguing over which work to include or exclude as being a true agent, we can acknowledge that there are different degrees to which systems can be agentic」（どの仕事を「本物の」エージェントに含めるか、含めないかを争うより、システムには agentic である度合いにさまざまな段階があると認めればいい）。Chase 自身のコメントはこうだ：「I really agree with this viewpoint and I think Andrew expressed it nicely」（私はこの見方に心から同意する。Andrew はうまく言い表したと思う）。そこから：システムがどれだけ LLM に自分の動き方を決めさせているかによって、システムはより「agentic」になっていく。固定されたルーターから、状態機械、そして自分でツールを作り、記憶する完全に自律したエージェントまで。この光谱をもとに、彼は実際的な主張を展開する：システムが agentic であるほど、あるインフラがより重要になり、中でも一番重要なのが可観測性だ。
+彼はすぐに、この定義が完璧ではないことを認める——LLM が 2 つの経路のどちらかを選ぶだけの単純なシステムも、彼の定義では agent に含まれるが、多くの人の「agent」という直感には合わない。何を「本物の」エージェントに含めるか、含めないかを争うのではなく、彼は Andrew Ng の言い方を採用する——彼は Ng のツイートを引用し、出典を明記している：「rather than arguing over which work to include or exclude as being a true agent, we can acknowledge that there are different degrees to which systems can be agentic」（どの仕事を「本物の」エージェントに含めるか、含めないかを争うより、システムには agentic である度合いにさまざまな段階があると認めればいい）。Chase 自身のコメントはこうだ：「I really agree with this viewpoint and I think Andrew expressed it nicely」（私はこの見方に心から同意する。Andrew はうまく言い表したと思う）。そこから：システムがどれだけ LLM に自分の動き方を決めさせているかによって、システムはより「agentic」になっていく。固定されたルーターから、状態機械、そして自分でツールを作り、記憶する完全に自律したエージェントまで。このスペクトラムをもとに、彼は実際的な主張を展開する：システムが agentic であるほど、あるインフラがより重要になり、中でも一番重要なのが可観測性だ。
 
 > “You’ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.”
 

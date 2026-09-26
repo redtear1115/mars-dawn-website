@@ -84,7 +84,7 @@ try {
 <p>より多くの構造が必要なとき向けに、彼らは 5 つの workflow パターンを説明している：prompt chaining（タスクを一連の呼び出しに分割し、ステップの間に任意でチェックを挟む）、routing（ルーティング）、parallelization（並列化）、orchestrator-workers（1 つの LLM がタスクを複数の部分に分け、複数の worker LLM に渡し、その結果をまとめる）、そして evaluator-optimizer。最後のこのパターンについて、原文はこう書いている。</p>
 <blockquote><p>&#8220;In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.&#8221;</p></blockquote>
 <p>（evaluator-optimizer workflow では、1 回の LLM 呼び出しが応答を生成し、もう 1 回の呼び出しがループの中で評価とフィードバックを行う。）</p>
-<p>Anthropic はこのガイドのなかで MarsDawn にはまったく触れておらず、どんな Markdown ツールも勧めていない。このガイドの透明性の原則と「チェックポイント」という言葉については、<a href="/ja/agent-transparency/">「Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？」</a>がすでにくわしく扱っているので、このノートでは繰り返さない。人によるコードレビューについての一文も、あの記事が扱っている、コーディングエージェント専用の付録という文脈でこそ意味を持つ。</p>
+<p>Anthropic はこのガイドのなかで MarsDawn にはまったく触れておらず、どんな Markdown ツールも勧めていない。このガイドの透明性の原則と「チェックポイント」という言葉については、<a href="/ja/agent-transparency/">「Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？」</a>がすでにくわしく扱っているので、このノートでは繰り返さない。人によるコードレビューについての一文も、本来の文脈（コーディングエージェントに特化した付録）とともに、あの記事で扱っている。</p>
 
 <h2 id="our-reading-not-anthropic-s">ここから先は、私たちの解釈であって、Anthropic の主張ではない</h2>
 <p>Anthropic は、workflow が終わったあと最終的な出力を誰がチェックするかについては書いていない。そもそもこの記事全体が文書についてのものではなく、作る人向けのアーキテクチャの決め方についてのものだ。とはいえ、この 5 つのパターンが、あなたに読ませることになるファイルの種類は同じではない。prompt chaining と routing は、たいてい目に見えない配管のようなもので、何かがあなたのところに届くとしても、それはこの連鎖の最後の呼び出しの出力にすぎず、ほかの単発の応答と変わらない。Orchestrator-workers は違う：あなたのコーディングエージェントが内部でこのパターンを使っているなら、フォルダに落ちてくるのは、複数の worker の呼び出しを orchestrator がつなぎ合わせて組み立てた 1 つの文書かもしれず、そのうち 1 つの worker の担当箇所にあるミスは、全体としてなめらかに読める要約のなかに埋もれて見逃されやすい。</p>

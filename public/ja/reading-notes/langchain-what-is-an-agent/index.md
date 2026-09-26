@@ -14,7 +14,7 @@ Ou の定義は、Chase のあの一文をほとんどそのまま繰り返し�
 
 > “For sensitive or irreversible actions, we recommend human-in-the-loop controls that pause the agent for approval, edits, rejection, or clarification.”
 
-（機密性の高い、あるいは取り消せない行動については、承認、編集、拒否、または明確化のためにエージェントを一時停止させる human-in-the-loop の仕組みを勧める。）
+（慎重な扱いが必要な、あるいは取り消せない行動については、承認、編集、拒否、または明確化のためにエージェントを一時停止させる human-in-the-loop の仕組みを勧める。）
 
 また彼女には、パイプラインがどれだけ整っても省けない判断についての一文もある：「Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.」（自分で評価できない判断を、外部に任せてはいけない。あなたが正しい答えを見分けられないなら、エージェントにもできない。）[「エージェントの計画を 5 分でレビューする」](/ja/reviewing-agent-plans/)はすでにこの一文をもとに議論を組み立てているので、このノートでは繰り返さない。Ou はこの記事のなかで MarsDawn にはまったく触れておらず、どんな Markdown ツールも勧めていない。また彼女は Chase の名前にも一度も触れていない。この 2 つの記事をつないでいるのは、LangChain が 2026 年に、Chase の 2024 年の記事があった URL に彼女のこの記事を公開したこと、そして定義がほぼ同一であることだ——これは私たちの観察であって、彼女自身の主張ではない。
 
