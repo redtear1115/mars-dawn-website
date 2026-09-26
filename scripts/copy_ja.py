@@ -338,8 +338,9 @@ marsdawn open notes.md --line 120</code></pre>
   <li>行番号は 1 から 999999999 までです。</li>
   <li>MarsDawn 1.0 はその行にジャンプしてファイルを開きます。</li>
   <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
+  <li><code>--folder &lt;path&gt;</code>（またはフォルダを直接指定）：そのフォルダもウインドウのサイドバーに、ファイルと並べて表示します。フォルダを表示できるアプリが必要で、そうでなければ何も開く前にコード 6 で終了します。報告してくるアプリでは、<code>--wait &lt;seconds&gt;</code>（0 から 30、デフォルト 2）で結果を待つ時間を指定します。</li>
 </ul>
-<p>行の指定は marsdawn 0.3.0 で追加されました。</p>
+<p>行の指定は marsdawn 0.3.0 で追加されました。<code>--folder</code> は 0.5.1 から、その報告結果は 0.5.3 から追加され、詳細は<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>にあります。</p>
 
 <h3>marsdawn export</h3>
 <p>Markdown ファイルを、MarsDawn 自身の PDF 書き出しと同じ書き出しエンジンで、ページ分割された PDF にレンダリングします。MarsDawn アプリは不要です。相対パスの画像は、入力ファイルのあるフォルダを基準に解決されます。</p>
@@ -367,11 +368,12 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>3</code>：MarsDawn がインストールされていない（<code>open</code> のみ）。</li>
   <li><code>4</code>：出力先がすでに存在する（<code>--force</code> を指定してください）。</li>
   <li><code>5</code>：書き出しに失敗。</li>
-  <li><code>64</code>：使用方法のエラー。範囲外の行や、複数ファイルに対する <code>--line</code> の指定などを含みます。</li>
+  <li><code>6</code>：MarsDawn がフォルダを表示できない（<code>open --folder</code> のみ）。</li>
+  <li><code>64</code>：使用方法のエラー。範囲外の行、複数ファイルに対する <code>--line</code> の指定、範囲外の <code>--wait</code> などを含みます。</li>
 </ul>
 
 <h2>--json 出力</h2>
-<p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含む）、<code>app</code>（アプリのパス）を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時はどちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>
+<p>成功時、<code>marsdawn open --json</code> は <code>ok</code>、<code>opened</code>（各ファイルの <code>path</code>、行が指定されていれば <code>line</code> も含む）、<code>app</code>（アプリのパス）、そして <code>--folder</code> でフォルダを指定したときの <code>folder</code>（その <code>path</code>、<code>requested: true</code>、報告してくるアプリではさらに <code>status</code>）を出力します。<code>marsdawn export --json</code> は <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> を出力します。失敗時はどちらも <code>ok</code>、<code>error</code>、<code>message</code> を出力します。</p>
 """,
     }
     pages['cli/agents'] = {
@@ -389,6 +391,7 @@ marsdawn open notes.md --line 120</code></pre>
 <ul>
   <li><code>export</code>：MarsDawn アプリと同じ書き出しエンジンで、1つの Markdown ファイルをページ分割された PDF にレンダリングします。ウインドウは開きません。</li>
   <li><code>open</code>：1つ以上の Markdown ファイルを MarsDawn アプリで開き、人が確認できるようにします。各ファイルが移動すべき行を指定することもできます。</li>
+  <li><code>open --folder &lt;path&gt;</code>：フォルダもウインドウのサイドバーに表示するよう依頼し、報告してくるアプリからは、それがどうなったかを待って伝えます。</li>
 </ul>
 
 <h2>できないこと</h2>
@@ -441,6 +444,20 @@ marsdawn open notes.md --line 120 --json</code></pre>
 </ul>
 <p>marsdawn 0.2.x では <code>opened</code> はパス文字列のリストでした。両方を扱う必要がある場合は <code>marsdawn --version</code> を確認してください。</p>
 
+<h2>フォルダを表示する</h2>
+<pre><code>marsdawn open . --folder . --json</code></pre>
+<p><code>--folder &lt;path&gt;</code>（または上のようにファイル引数の1つとして渡したフォルダ）は、そのフォルダもウインドウのサイドバーに、ファイルと並べて表示するよう MarsDawn に依頼します。ウインドウのサイドバーが表示できるフォルダは1つだけなので、2つ指定すると使用方法のエラーになります。フォルダを表示できないアプリは、何も開く前に拒否し、終了コード 6（<code>app_cannot_open_folders</code>）になります。ファイルだけは、そのまま開かれます。</p>
+<p>成功、終了コード 0：</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","folder":{{"path":"/path/to/notes","requested":true,"status":"attached"}},"ok":true,"opened":[]}}</code></pre>
+<ul>
+  <li><code>folder.path</code>：フォルダの絶対パス。</li>
+  <li><code>folder.requested</code>：常に <code>true</code>。<code>open</code> はフォルダを MarsDawn に渡してすぐに戻ります。</li>
+  <li><code>folder.status</code>：結果を報告してくる MarsDawn（marsdawn 0.5.3 以降、対応を宣言したアプリと組み合わせたとき）で、かつ <code>--wait</code> が 0 より大きいときだけ現れます。<code>attached</code>、<code>needsUser</code>（<code>waitingFor</code> を参照）、<code>declined</code>、<code>failed</code>、<code>attachedDifferentFolder</code>、<code>full</code>、<code>unavailable</code>、または <code>unknown</code>（アプリが <code>--wait</code> の時間内に応答しなかった場合。<code>--wait</code> を長くして再試行するか、「わからない」として扱ってください）のいずれかです。<code>needsUser</code> はユーザーが対応する必要があることを意味します。再試行せず、そのままユーザーに伝えてください。</li>
+  <li><code>folder.waitingFor</code>：<code>status</code> が <code>"needsUser"</code> のときだけ現れます：<code>confirmation</code> または <code>folderChoice</code>。</li>
+  <li><code>--wait &lt;seconds&gt;</code>：アプリからの報告を待つ秒数。0 から 30、デフォルトは 2。<code>--wait 0</code>、または報告してこない古い MarsDawn では待機がスキップされ、<code>folder</code> には <code>path</code> と <code>requested: true</code> しか含まれません。この機能が追加される前と同じです。</li>
+  <li>ArgumentParser が数値として解釈できるものの 0 から 30 の範囲外の <code>--wait</code> は使用方法のエラーで、終了コード 64、<code>--json</code> では <code>error: wait_out_of_range</code> になります。負の値は <code>--wait -1</code> ではなく <code>--wait=-1</code> と書いてください。空白があると ArgumentParser は別のフラグとして読み取り、独自のプレーンな使用方法エラーになります（終了コードは同じ 64 ですが、<code>wait_out_of_range</code> は付きません）。</li>
+</ul>
+
 <h2>失敗時</h2>
 <p><code>--json</code> を指定すると、失敗時は stdout に1つの JSON オブジェクトを出力し、対応するコードで終了します。</p>
 <pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
@@ -449,7 +466,8 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>3</code>、<code>app_not_installed</code>：MarsDawn がインストールされていない。<code>open</code> のみがこれを返します。</li>
   <li><code>4</code>、<code>output_exists</code>：出力ファイルが存在する。<code>--force</code> を指定してください。</li>
   <li><code>5</code>、<code>export_failed</code>：書き出し自体が失敗した。</li>
-  <li><code>64</code>：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルに対する <code>--line</code> の指定など。この場合は、<code>--json</code> を指定していても stderr にテキストとして出力されます。</li>
+  <li><code>6</code>、<code>app_cannot_open_folders</code>：この MarsDawn はフォルダを表示できないため、何も開かれませんでした。<code>open</code> のみがこれを返します。</li>
+  <li><code>64</code>：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルに対する <code>--line</code> の指定、（<code>--folder</code> のときのみ）範囲外の <code>--wait</code> など。この場合は、<code>--json</code> を指定していても stderr にテキストとして出力されます&#8212;ただし <code>wait_out_of_range</code> は例外で、JSON として出力されます。</li>
 </ul>
 
 <h2>JSON Schema</h2>
@@ -501,6 +519,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li><code>marsdawn export … --json</code> で書き出し、結果を読み取る：PDF の書き出し先、ページ数、レンダリングされなかった Mermaid 図の有無。</li>
   <li>終了コードで失敗の種類を見分ける：ファイルが見つからない、PDF がすでにある、書き出しに失敗した、オプションが不正、など。</li>
   <li>MarsDawn アプリがインストールされているときだけ <code>open</code> を使い、PDF を作るためには絶対に使わない。</li>
+  <li>フォルダの表示も依頼された場合（<code>--folder</code>）、MarsDawn 自身の報告を読み取り、ユーザーの対応が必要なときは再試行せずユーザーに伝える。</li>
 </ul>
 <h2>しないこと</h2>
 <ul>

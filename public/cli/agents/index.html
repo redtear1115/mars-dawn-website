@@ -79,6 +79,7 @@ try {
 <ul>
   <li><code>export</code> renders one Markdown file to a paginated PDF with the same exporter as the MarsDawn app. No window opens.</li>
   <li><code>open</code> opens one or more Markdown files in the MarsDawn app, so a person can review them, and can name the line each file should land on.</li>
+  <li><code>open --folder &lt;path&gt;</code> also asks MarsDawn to show a folder in the window's sidebar, alongside any files, and, from an app that reports back, waits to say what happened to it.</li>
 </ul>
 
 <h2 id="what-it-does-not-do">What it does not do</h2>
@@ -131,6 +132,20 @@ marsdawn open notes.md --line 120 --json</code></pre>
 </ul>
 <p>marsdawn 0.2.x printed <code>opened</code> as a list of path strings. Check <code>marsdawn --version</code> if you need to handle both.</p>
 
+<h2 id="showing-a-folder">Showing a folder</h2>
+<pre><code>marsdawn open . --folder . --json</code></pre>
+<p><code>--folder &lt;path&gt;</code> (or a folder passed as one of the file arguments, as above) asks MarsDawn to show that folder in the window's sidebar too, alongside any files. A window's sidebar shows one folder, so naming two is a usage error. An app that can't show a folder refuses before opening anything, exit code 6 (<code>app_cannot_open_folders</code>); files on their own still open as usual.</p>
+<p>Success, exit code 0:</p>
+<pre><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/notes","requested":true,"status":"attached"},"ok":true,"opened":[]}</code></pre>
+<ul>
+  <li><code>folder.path</code>: absolute path of the folder.</li>
+  <li><code>folder.requested</code>: always <code>true</code> &#8212; <code>open</code> handed the folder to MarsDawn and returned.</li>
+  <li><code>folder.status</code>: present only from a MarsDawn that reports back (marsdawn 0.5.3 and later, paired with an app that declares it) and a <code>--wait</code> above 0. One of <code>attached</code>, <code>needsUser</code> (see <code>waitingFor</code>), <code>declined</code>, <code>failed</code>, <code>attachedDifferentFolder</code>, <code>full</code>, <code>unavailable</code>, or <code>unknown</code> (the app didn't answer before <code>--wait</code> ran out &#8212; try again with a longer <code>--wait</code>, or treat it as "don't know"). <code>needsUser</code> means the user has to act: don't retry, just tell them.</li>
+  <li><code>folder.waitingFor</code>: present only alongside <code>status: "needsUser"</code>: <code>confirmation</code> or <code>folderChoice</code>.</li>
+  <li><code>--wait &lt;seconds&gt;</code>: how long to wait for the app's report, 0&#8211;30, default 2. <code>--wait 0</code>, or an older MarsDawn that doesn't report back, skips waiting: <code>folder</code> only ever carries <code>path</code> and <code>requested: true</code>, the same as before this existed.</li>
+  <li>A <code>--wait</code> value ArgumentParser can parse as a number but outside 0&#8211;30 is a usage error, exit 64, with <code>error: wait_out_of_range</code> in <code>--json</code>. Write a negative value as <code>--wait=-1</code>, not <code>--wait -1</code>: with a space, ArgumentParser reads it as another flag and gives its own plain usage error instead (still exit 64, but no <code>wait_out_of_range</code>).</li>
+</ul>
+
 <h2 id="failures">Failures</h2>
 <p>With <code>--json</code>, a failure prints one JSON object on stdout and exits with its code:</p>
 <pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
@@ -139,7 +154,8 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>3</code>, <code>app_not_installed</code>: MarsDawn isn't installed. Only <code>open</code> returns this.</li>
   <li><code>4</code>, <code>output_exists</code>: the output file exists. Pass <code>--force</code>.</li>
   <li><code>5</code>, <code>export_failed</code>: the export itself failed.</li>
-  <li><code>64</code>: usage error, such as an unknown option, an invalid value, a line out of range or <code>--line</code> with more than one file. This one is printed as text on stderr, even with <code>--json</code>.</li>
+  <li><code>6</code>, <code>app_cannot_open_folders</code>: this MarsDawn can't show a folder, so nothing was opened. Only <code>open</code> returns this.</li>
+  <li><code>64</code>: usage error, such as an unknown option, an invalid value, a line out of range, <code>--line</code> with more than one file, or (only for <code>--folder</code>) <code>--wait</code> out of range. This one is printed as text on stderr, even with <code>--json</code> &#8212; except <code>wait_out_of_range</code>, which does print as JSON.</li>
 </ul>
 
 <h2 id="json-schemas">JSON Schemas</h2>

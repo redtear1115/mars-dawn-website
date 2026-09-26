@@ -107,8 +107,9 @@ marsdawn open notes.md --line 120</code></pre>
   <li>行号范围是 1 到 999999999。</li>
   <li>MarsDawn 1.0 会打开文件，并跳到指定的行。</li>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
+  <li><code>--folder &lt;path&gt;</code>（或直接给一个文件夹）：也会在窗口的侧栏显示那个文件夹，和文件并列。需要能显示文件夹的 app，否则会在打开任何东西之前就以代码 6 结束。从会回报的 app，<code>--wait &lt;seconds&gt;</code>（0 到 30，默认 2）决定要等多久才知道结果。</li>
 </ul>
-<p>行号功能从 marsdawn 0.3.0 开始提供。</p>
+<p>行号功能从 marsdawn 0.3.0 开始提供。<code>--folder</code> 从 0.5.1 开始；它回报的结果从 0.5.3 开始，完整说明在<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</p>
 
 <h3>marsdawn export</h3>
 <p>把 Markdown 文件导出成分页的 PDF，使用和 MarsDawn 导出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。</p>
@@ -136,11 +137,12 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>3</code>：尚未安装 MarsDawn（只有 <code>open</code> 会用到）。</li>
   <li><code>4</code>：输出文件已存在（可加上 <code>--force</code>）。</li>
   <li><code>5</code>：导出失败。</li>
-  <li><code>64</code>：使用方式错误，包括行号超出范围，或 <code>--line</code> 搭配了多个文件。</li>
+  <li><code>6</code>：MarsDawn 不能显示文件夹（只有 <code>open --folder</code> 会用到）。</li>
+  <li><code>64</code>：使用方式错误，包括行号超出范围、<code>--line</code> 搭配了多个文件，或 <code>--wait</code> 超出范围。</li>
 </ul>
 
 <h2>--json 输出</h2>
-<p>成功时，<code>marsdawn open --json</code> 会输出 <code>ok</code>、<code>opened</code>（每个文件的 <code>path</code>，有指定行号时另含 <code>line</code>）与 <code>app</code>（App 路径）；<code>marsdawn export --json</code> 会输出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 与 <code>diagramErrors</code>。失败时两者都会输出 <code>ok</code>、<code>error</code> 与 <code>message</code>。</p>
+<p>成功时，<code>marsdawn open --json</code> 会输出 <code>ok</code>、<code>opened</code>（每个文件的 <code>path</code>，有指定行号时另含 <code>line</code>）、<code>app</code>（App 路径），以及有指定 <code>--folder</code> 时的 <code>folder</code>（它的 <code>path</code>、<code>requested: true</code>，从会回报的 app 还有 <code>status</code>）；<code>marsdawn export --json</code> 会输出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 与 <code>diagramErrors</code>。失败时两者都会输出 <code>ok</code>、<code>error</code> 与 <code>message</code>。</p>
 """,
     }
     pages['cli/agents'] = {
@@ -158,6 +160,7 @@ marsdawn open notes.md --line 120</code></pre>
 <ul>
   <li><code>export</code>：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件导出成分页的 PDF，不会打开任何窗口。</li>
   <li><code>open</code>：在 MarsDawn app 中打开一或多个 Markdown 文件，让人审阅，也可以指定每个文件要定位的行。</li>
+  <li><code>open --folder &lt;path&gt;</code>：也会请 MarsDawn 在窗口的侧栏显示一个文件夹，和文件并列；从会回报的 app，还会等着说出那个文件夹的下场。</li>
 </ul>
 
 <h2>不做什么</h2>
@@ -210,6 +213,20 @@ marsdawn open notes.md --line 120 --json</code></pre>
 </ul>
 <p>marsdawn 0.2.x 的 <code>opened</code> 是路径字符串的清单。如果需要同时处理两种格式，请先查看 <code>marsdawn --version</code>。</p>
 
+<h2>显示文件夹</h2>
+<pre><code>marsdawn open . --folder . --json</code></pre>
+<p><code>--folder &lt;path&gt;</code>（或像上面一样，把文件夹当成文件参数之一传入）会请 MarsDawn 同时在窗口的侧栏显示那个文件夹，和文件并列。一个窗口的侧栏只能显示一个文件夹，所以给两个是用法错误。无法显示文件夹的 app 会在打开任何东西之前就拒绝，退出代码 6（<code>app_cannot_open_folders</code>）；单独的文件仍会照常打开。</p>
+<p>成功，退出代码 0：</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","folder":{{"path":"/path/to/notes","requested":true,"status":"attached"}},"ok":true,"opened":[]}}</code></pre>
+<ul>
+  <li><code>folder.path</code>：文件夹的绝对路径。</li>
+  <li><code>folder.requested</code>：一律是 <code>true</code>——<code>open</code> 把文件夹交给 MarsDawn 之后就返回了。</li>
+  <li><code>folder.status</code>：只有 MarsDawn 会回报结果（marsdawn 0.5.3 以后，且搭配声明支持的 app）、且 <code>--wait</code> 大于 0 时才会有。可能是 <code>attached</code>、<code>needsUser</code>（见 <code>waitingFor</code>）、<code>declined</code>、<code>failed</code>、<code>attachedDifferentFolder</code>、<code>full</code>、<code>unavailable</code>，或 <code>unknown</code>（app 在 <code>--wait</code> 到期前没有回应——可以用更长的 <code>--wait</code> 再试一次，或当成“不知道”处理）。<code>needsUser</code> 代表用户得自己处理：不要重试，直接告诉用户。</li>
+  <li><code>folder.waitingFor</code>：只有在 <code>status</code> 是 <code>"needsUser"</code> 时才会有：<code>confirmation</code> 或 <code>folderChoice</code>。</li>
+  <li><code>--wait &lt;seconds&gt;</code>：等待 app 回报的秒数，0 到 30，默认 2。<code>--wait 0</code>，或不会回报的旧版 MarsDawn，都会跳过等待：<code>folder</code> 只会有 <code>path</code> 和 <code>requested: true</code>，和这个功能出现以前一样。</li>
+  <li>ArgumentParser 能解析成数字、但超出 0 到 30 的 <code>--wait</code> 值是用法错误，退出代码 64，<code>--json</code> 中会有 <code>error: wait_out_of_range</code>——负值请写成 <code>--wait=-1</code>，不要写 <code>--wait -1</code>，否则 ArgumentParser 会把它当成另一个标志，改输出自己的用法错误（同样是 64，但不会有 <code>wait_out_of_range</code>）。</li>
+</ul>
+
 <h2>失败</h2>
 <p>加上 <code>--json</code> 时，失败会在 stdout 输出一个 JSON 对象，并以对应的代码结束：</p>
 <pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
@@ -218,7 +235,8 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>3</code>，<code>app_not_installed</code>：没有安装 MarsDawn。只有 <code>open</code> 会返回这个代码。</li>
   <li><code>4</code>，<code>output_exists</code>：输出文件已存在，请加上 <code>--force</code>。</li>
   <li><code>5</code>，<code>export_failed</code>：导出本身失败。</li>
-  <li><code>64</code>：用法错误，例如未知的选项、无效的值、行号超出范围，或 <code>--line</code> 搭配了多个文件。这种错误一律以文本输出到 stderr，即使加了 <code>--json</code> 也一样。</li>
+  <li><code>6</code>，<code>app_cannot_open_folders</code>：这个 MarsDawn 不能显示文件夹，所以什么都没有打开。只有 <code>open</code> 会返回这个代码。</li>
+  <li><code>64</code>：用法错误，例如未知的选项、无效的值、行号超出范围、<code>--line</code> 搭配了多个文件，或（只有 <code>--folder</code> 才会）<code>--wait</code> 超出范围。这种错误一律以文本输出到 stderr，即使加了 <code>--json</code> 也一样——但 <code>wait_out_of_range</code> 例外，它会输出为 JSON。</li>
 </ul>
 
 <h2>JSON Schema</h2>
@@ -314,6 +332,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li>用 <code>marsdawn export … --json</code> 导出，并读懂结果：PDF 存到哪里、有几页，以及有没有 Mermaid 图表没画出来。</li>
   <li>依退出代码分辨失败的原因：找不到文件、PDF 已经存在、导出失败、选项错误。</li>
   <li>只有装了 MarsDawn app 才用 <code>open</code>，而且绝不用它来做 PDF。</li>
+  <li>同时被要求显示文件夹（<code>--folder</code>）时，读取 MarsDawn 自己回报的结果，用户需要处理时就告诉用户，而不是重试。</li>
 </ul>
 <h2>它不会做的事</h2>
 <ul>

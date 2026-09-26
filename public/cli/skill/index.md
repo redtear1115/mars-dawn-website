@@ -21,6 +21,7 @@ Other agents can use the same file. It's plain Markdown, instructions and comman
 - Export with `marsdawn export … --json`, and read the result: where the PDF went, how many pages it has, and any Mermaid diagram that didn't render.
 - Tell the failures apart by exit code: no such file, a PDF already there, a failed export, a bad option.
 - Use `open` only when the MarsDawn app is installed, and never to make a PDF.
+- When also asked to show a folder (`--folder`), read what MarsDawn reports back about it, and tell the user rather than retry when it needs the user to act.
 
 ## What it doesn't do
 

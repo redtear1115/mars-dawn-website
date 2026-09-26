@@ -84,6 +84,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
   <li><code>marsdawn export … --json</code> で書き出し、結果を読み取る：PDF の書き出し先、ページ数、レンダリングされなかった Mermaid 図の有無。</li>
   <li>終了コードで失敗の種類を見分ける：ファイルが見つからない、PDF がすでにある、書き出しに失敗した、オプションが不正、など。</li>
   <li>MarsDawn アプリがインストールされているときだけ <code>open</code> を使い、PDF を作るためには絶対に使わない。</li>
+  <li>フォルダの表示も依頼された場合（<code>--folder</code>）、MarsDawn 自身の報告を読み取り、ユーザーの対応が必要なときは再試行せずユーザーに伝える。</li>
 </ul>
 <h2 id="what-it-doesn-t-do">しないこと</h2>
 <ul>

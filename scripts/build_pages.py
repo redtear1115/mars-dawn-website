@@ -421,8 +421,9 @@ marsdawn open notes.md --line 120</code></pre>
   <li>Lines run from 1 to 999999999.</li>
   <li>MarsDawn 1.0 opens the file at that line.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
+  <li><code>--folder &lt;path&gt;</code> (or a folder given directly): also shows that folder in the window's sidebar, alongside any files. Needs an app that can take one, or it exits with code 6 before opening anything. From an app that reports back, <code>--wait &lt;seconds&gt;</code> (0&#8211;30, default 2) says how long to wait for what happened to it.</li>
 </ul>
-<p>Lines were added in marsdawn 0.3.0.</p>
+<p>Lines were added in marsdawn 0.3.0. <code>--folder</code> in 0.5.1; its reported result in 0.5.3, described in full on <a href="/cli/agents/">marsdawn for agents</a>.</p>
 
 <h3>marsdawn export</h3>
 <p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.</p>
@@ -450,11 +451,12 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
   <li><code>4</code>: output exists (pass <code>--force</code>).</li>
   <li><code>5</code>: export failed.</li>
-  <li><code>64</code>: usage error, including a line out of range or <code>--line</code> with more than one file.</li>
+  <li><code>6</code>: MarsDawn can't show a folder (<code>open --folder</code> only).</li>
+  <li><code>64</code>: usage error, including a line out of range, <code>--line</code> with more than one file, or <code>--wait</code> out of range.</li>
 </ul>
 
 <h2>--json output</h2>
-<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when <code>--folder</code> named a folder, <code>folder</code> (its <code>path</code>, <code>requested: true</code>, and, from an app that reports back, <code>status</code>). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 """,
     },
     ("zh-hant", "cli"): {
@@ -493,8 +495,9 @@ marsdawn open notes.md --line 120</code></pre>
   <li>行號範圍是 1 到 999999999。</li>
   <li>MarsDawn 1.0 會打開檔案，並跳到指定的行。</li>
   <li><code>--json</code>：印出 JSON 結果，而不是文字。</li>
+  <li><code>--folder &lt;path&gt;</code>（或直接給一個資料夾）：也會在視窗的側欄顯示那個資料夾，和檔案並列。需要能顯示資料夾的 app，否則會在開啟任何東西之前就以代碼 6 結束。從會回報的 app，<code>--wait &lt;seconds&gt;</code>（0 到 30，預設 2）決定要等多久才知道結果。</li>
 </ul>
-<p>行號功能從 marsdawn 0.3.0 開始提供。</p>
+<p>行號功能從 marsdawn 0.3.0 開始提供。<code>--folder</code> 從 0.5.1 開始；它回報的結果從 0.5.3 開始，完整說明在<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
 
 <h3>marsdawn export</h3>
 <p>把 Markdown 檔案輸出成分頁的 PDF，使用和 MarsDawn 輸出 PDF 相同的元件。不需要安裝 MarsDawn app。相對路徑的圖片，會以輸入檔案所在的資料夾為準。</p>
@@ -522,11 +525,12 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>3</code>：尚未安裝 MarsDawn（只有 <code>open</code> 會用到）。</li>
   <li><code>4</code>：輸出檔已存在（可加上 <code>--force</code>）。</li>
   <li><code>5</code>：輸出失敗。</li>
-  <li><code>64</code>：使用方式錯誤，包括行號超出範圍，或 <code>--line</code> 搭配了多個檔案。</li>
+  <li><code>6</code>：MarsDawn 不能顯示資料夾（只有 <code>open --folder</code> 會用到）。</li>
+  <li><code>64</code>：使用方式錯誤，包括行號超出範圍、<code>--line</code> 搭配了多個檔案，或 <code>--wait</code> 超出範圍。</li>
 </ul>
 
 <h2>--json 輸出</h2>
-<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）與 <code>app</code>（App 路徑）；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
+<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）、<code>app</code>（App 路徑），以及有指定 <code>--folder</code> 時的 <code>folder</code>（它的 <code>path</code>、<code>requested: true</code>，從會回報的 app 還有 <code>status</code>）；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
 """,
     },
 }
@@ -550,7 +554,7 @@ SCHEMA_FILES = {
 
 THEME_IDS = ["dawn", "classic", "modern", "vivid"]
 PAPER_SIZES = ["a4", "letter"]
-ERROR_KINDS = ["input_not_found", "app_not_installed", "output_exists", "export_failed"]
+ERROR_KINDS = ["input_not_found", "app_not_installed", "output_exists", "export_failed", "app_cannot_open_folders"]
 
 
 def schema_url(kind: str) -> str:
@@ -609,6 +613,24 @@ SCHEMAS = {
                 "description": "The files that were opened, in the order given.",
             },
             "app": {"type": "string", "description": "Path of the MarsDawn app that opened them."},
+            "folder": {
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["path", "requested"],
+                "properties": {
+                    "path": {"type": "string", "description": "Absolute path of the folder MarsDawn was asked to show in the window's sidebar."},
+                    "requested": {"const": True, "description": "Always true: open handed the folder to MarsDawn and returned."},
+                    "status": {
+                        "enum": ["attached", "needsUser", "declined", "failed", "attachedDifferentFolder", "full", "unavailable", "unknown"],
+                        "description": "What happened to the folder. Present only from a MarsDawn that reports back (marsdawn 0.5.3 and later, paired with an app that declares it) and a --wait above 0. needsUser means the user has to act; see waitingFor. unknown means the app didn't answer before --wait ran out.",
+                    },
+                    "waitingFor": {
+                        "enum": ["confirmation", "folderChoice"],
+                        "description": "Present only alongside status \"needsUser\": what the user has to do. Don't retry; tell them.",
+                    },
+                },
+                "description": "Present only when --folder, or a directory argument, named a folder to show in the sidebar.",
+            },
         },
     },
     "open_v1": {
@@ -690,6 +712,7 @@ AGENT_PAGES = {
 <ul>
   <li><code>export</code> renders one Markdown file to a paginated PDF with the same exporter as the MarsDawn app. No window opens.</li>
   <li><code>open</code> opens one or more Markdown files in the MarsDawn app, so a person can review them, and can name the line each file should land on.</li>
+  <li><code>open --folder &lt;path&gt;</code> also asks MarsDawn to show a folder in the window's sidebar, alongside any files, and, from an app that reports back, waits to say what happened to it.</li>
 </ul>
 
 <h2>What it does not do</h2>
@@ -742,6 +765,20 @@ marsdawn open notes.md --line 120 --json</code></pre>
 </ul>
 <p>marsdawn 0.2.x printed <code>opened</code> as a list of path strings. Check <code>marsdawn --version</code> if you need to handle both.</p>
 
+<h2>Showing a folder</h2>
+<pre><code>marsdawn open . --folder . --json</code></pre>
+<p><code>--folder &lt;path&gt;</code> (or a folder passed as one of the file arguments, as above) asks MarsDawn to show that folder in the window's sidebar too, alongside any files. A window's sidebar shows one folder, so naming two is a usage error. An app that can't show a folder refuses before opening anything, exit code 6 (<code>app_cannot_open_folders</code>); files on their own still open as usual.</p>
+<p>Success, exit code 0:</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","folder":{{"path":"/path/to/notes","requested":true,"status":"attached"}},"ok":true,"opened":[]}}</code></pre>
+<ul>
+  <li><code>folder.path</code>: absolute path of the folder.</li>
+  <li><code>folder.requested</code>: always <code>true</code> &#8212; <code>open</code> handed the folder to MarsDawn and returned.</li>
+  <li><code>folder.status</code>: present only from a MarsDawn that reports back (marsdawn 0.5.3 and later, paired with an app that declares it) and a <code>--wait</code> above 0. One of <code>attached</code>, <code>needsUser</code> (see <code>waitingFor</code>), <code>declined</code>, <code>failed</code>, <code>attachedDifferentFolder</code>, <code>full</code>, <code>unavailable</code>, or <code>unknown</code> (the app didn't answer before <code>--wait</code> ran out &#8212; try again with a longer <code>--wait</code>, or treat it as "don't know"). <code>needsUser</code> means the user has to act: don't retry, just tell them.</li>
+  <li><code>folder.waitingFor</code>: present only alongside <code>status: "needsUser"</code>: <code>confirmation</code> or <code>folderChoice</code>.</li>
+  <li><code>--wait &lt;seconds&gt;</code>: how long to wait for the app's report, 0&#8211;30, default 2. <code>--wait 0</code>, or an older MarsDawn that doesn't report back, skips waiting: <code>folder</code> only ever carries <code>path</code> and <code>requested: true</code>, the same as before this existed.</li>
+  <li>A <code>--wait</code> value ArgumentParser can parse as a number but outside 0&#8211;30 is a usage error, exit 64, with <code>error: wait_out_of_range</code> in <code>--json</code>. Write a negative value as <code>--wait=-1</code>, not <code>--wait -1</code>: with a space, ArgumentParser reads it as another flag and gives its own plain usage error instead (still exit 64, but no <code>wait_out_of_range</code>).</li>
+</ul>
+
 <h2>Failures</h2>
 <p>With <code>--json</code>, a failure prints one JSON object on stdout and exits with its code:</p>
 <pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
@@ -750,7 +787,8 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>3</code>, <code>app_not_installed</code>: MarsDawn isn't installed. Only <code>open</code> returns this.</li>
   <li><code>4</code>, <code>output_exists</code>: the output file exists. Pass <code>--force</code>.</li>
   <li><code>5</code>, <code>export_failed</code>: the export itself failed.</li>
-  <li><code>64</code>: usage error, such as an unknown option, an invalid value, a line out of range or <code>--line</code> with more than one file. This one is printed as text on stderr, even with <code>--json</code>.</li>
+  <li><code>6</code>, <code>app_cannot_open_folders</code>: this MarsDawn can't show a folder, so nothing was opened. Only <code>open</code> returns this.</li>
+  <li><code>64</code>: usage error, such as an unknown option, an invalid value, a line out of range, <code>--line</code> with more than one file, or (only for <code>--folder</code>) <code>--wait</code> out of range. This one is printed as text on stderr, even with <code>--json</code> &#8212; except <code>wait_out_of_range</code>, which does print as JSON.</li>
 </ul>
 
 <h2>JSON Schemas</h2>
@@ -804,6 +842,7 @@ swift build -c release --product marsdawn
 <ul>
   <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
   <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人審閱，也可以指定每個檔案要定位的行。</li>
+  <li><code>open --folder &lt;path&gt;</code>：也會請 MarsDawn 在視窗的側欄顯示一個資料夾，和檔案並列；從會回報的 app，還會等著說出那個資料夾的下場。</li>
 </ul>
 
 <h2>不做什麼</h2>
@@ -856,6 +895,20 @@ marsdawn open notes.md --line 120 --json</code></pre>
 </ul>
 <p>marsdawn 0.2.x 的 <code>opened</code> 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 <code>marsdawn --version</code>。</p>
 
+<h2>顯示資料夾</h2>
+<pre><code>marsdawn open . --folder . --json</code></pre>
+<p><code>--folder &lt;path&gt;</code>（或像上面一樣，把資料夾當成檔案參數之一傳入）會請 MarsDawn 同時在視窗的側欄顯示那個資料夾，和檔案並列。一個視窗的側欄只能顯示一個資料夾，所以給兩個是用法錯誤。無法顯示資料夾的 app 會在開啟任何東西之前就拒絕，離開代碼 6（<code>app_cannot_open_folders</code>）；單獨的檔案仍會照常開啟。</p>
+<p>成功，離開代碼 0：</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","folder":{{"path":"/path/to/notes","requested":true,"status":"attached"}},"ok":true,"opened":[]}}</code></pre>
+<ul>
+  <li><code>folder.path</code>：資料夾的絕對路徑。</li>
+  <li><code>folder.requested</code>：一律是 <code>true</code>——<code>open</code> 把資料夾交給 MarsDawn 之後就回傳了。</li>
+  <li><code>folder.status</code>：只有 MarsDawn 會回報結果（marsdawn 0.5.3 以後，且搭配宣告支援的 app）、且 <code>--wait</code> 大於 0 時才會有。可能是 <code>attached</code>、<code>needsUser</code>（見 <code>waitingFor</code>）、<code>declined</code>、<code>failed</code>、<code>attachedDifferentFolder</code>、<code>full</code>、<code>unavailable</code>，或 <code>unknown</code>（app 在 <code>--wait</code> 到期前沒有回應——可以用更長的 <code>--wait</code> 再試一次，或當成「不知道」處理）。<code>needsUser</code> 代表使用者得自己處理：不要重試，直接告訴使用者。</li>
+  <li><code>folder.waitingFor</code>：只有在 <code>status</code> 是 <code>"needsUser"</code> 時才會有：<code>confirmation</code> 或 <code>folderChoice</code>。</li>
+  <li><code>--wait &lt;seconds&gt;</code>：等待 app 回報的秒數，0 到 30，預設 2。<code>--wait 0</code>，或不會回報的舊版 MarsDawn，都會跳過等待：<code>folder</code> 只會有 <code>path</code> 和 <code>requested: true</code>，和這個功能出現以前一樣。</li>
+  <li>ArgumentParser 能解析成數字、但超出 0 到 30 的 <code>--wait</code> 值是用法錯誤，離開代碼 64，<code>--json</code> 中會有 <code>error: wait_out_of_range</code>——負值請寫成 <code>--wait=-1</code>，不要寫 <code>--wait -1</code>，否則 ArgumentParser 會把它當成另一個旗標，改印出自己的用法錯誤（一樣是 64，但不會有 <code>wait_out_of_range</code>）。</li>
+</ul>
+
 <h2>失敗</h2>
 <p>加上 <code>--json</code> 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：</p>
 <pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
@@ -864,7 +917,8 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
   <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
-  <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍，或 <code>--line</code> 搭配了多個檔案。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
+  <li><code>6</code>，<code>app_cannot_open_folders</code>：這個 MarsDawn 不能顯示資料夾，所以什麼都沒有開啟。只有 <code>open</code> 會回傳這個代碼。</li>
+  <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍、<code>--line</code> 搭配了多個檔案，或（只有 <code>--folder</code> 才會）<code>--wait</code> 超出範圍。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣——但 <code>wait_out_of_range</code> 例外，它會印成 JSON。</li>
 </ul>
 
 <h2>JSON Schema</h2>
@@ -928,6 +982,7 @@ EXIT_CODES = [
     (3, "app_not_installed", "MarsDawn isn't installed. Only `open` returns this."),
     (4, "output_exists", "The PDF already exists. Pass --force to replace it, or -o to write elsewhere."),
     (5, "export_failed", "Rendering failed."),
+    (6, "app_cannot_open_folders", "This MarsDawn can't show a folder, so nothing was opened. Only `open` returns this."),
     (64, None, "Usage error: a bad option or value. Printed as text on stderr, never as JSON."),
 ]
 assert [kind for _, kind, _ in EXIT_CODES if kind] == ERROR_KINDS, "EXIT_CODES and ERROR_KINDS disagree"
@@ -1170,6 +1225,7 @@ curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li>Export with <code>marsdawn export … --json</code>, and read the result: where the PDF went, how many pages it has, and any Mermaid diagram that didn't render.</li>
   <li>Tell the failures apart by exit code: no such file, a PDF already there, a failed export, a bad option.</li>
   <li>Use <code>open</code> only when the MarsDawn app is installed, and never to make a PDF.</li>
+  <li>When also asked to show a folder (<code>--folder</code>), read what MarsDawn reports back about it, and tell the user rather than retry when it needs the user to act.</li>
 </ul>
 <h2>What it doesn't do</h2>
 <ul>
@@ -1199,6 +1255,7 @@ curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li>用 <code>marsdawn export … --json</code> 匯出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。</li>
   <li>依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。</li>
   <li>只有裝了 MarsDawn app 才用 <code>open</code>，而且絕不用它來做 PDF。</li>
+  <li>同時被要求顯示資料夾（<code>--folder</code>）時，讀取 MarsDawn 自己回報的結果，使用者需要處理時就告訴使用者，而不是重試。</li>
 </ul>
 <h2>它不會做的事</h2>
 <ul>
@@ -2922,6 +2979,18 @@ On failure with `--json` it prints `{{"ok": false, "error": <kind>, "message": .
 `marsdawn open file.md` opens a file in the MarsDawn app for review. It needs the app; without
 it, it exits 3. Never use it to make a PDF: that's `export`.
 
+### Showing a folder
+
+`marsdawn open . --folder . --json` (or a folder path as an argument) also asks MarsDawn to show
+that folder in the window's sidebar, alongside any files. An app that can't take one refuses before
+opening anything, exit 6 (`app_cannot_open_folders`). With a MarsDawn that reports back, the
+`folder` object in `--json` carries a `status` once the wait ends: `attached`, `needsUser` (see
+`waitingFor`: `confirmation` or `folderChoice`, meaning the user has to act — don't retry, just
+tell them), `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable`, or `unknown`
+(the app didn't answer in time; try again with a longer `--wait`, or treat it as "don't know").
+`--wait <seconds>` sets how long to wait, 0–30, default 2. `--wait 0`, or an older MarsDawn that
+doesn't report back, skips waiting: the `folder` object only carries `path` and `requested: true`.
+
 ## Full contract
 
 Every field, schema and code: {BASE_URL}/cli/agents/
@@ -3698,6 +3767,7 @@ EXIT_REMEDY = {
         "3": "Install the app, or use <code>export</code>, which doesn't need it",
         "4": "Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere",
         "5": "Read <code>message</code> in the JSON result",
+        "6": "Use an app that can take a folder, or drop <code>--folder</code>",
         "64": "Fix the option or value; this error is text on stderr, even with <code>--json</code>",
     },
     "zh-hant": {
@@ -3706,6 +3776,7 @@ EXIT_REMEDY = {
         "3": "安裝 app，或改用不需要 app 的 <code>export</code>",
         "4": "加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處",
         "5": "讀 JSON 結果裡的 <code>message</code>",
+        "6": "改用能顯示資料夾的 app，或不要用 <code>--folder</code>",
         "64": "修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣",
     },
     "zh-hans": {
@@ -3714,6 +3785,7 @@ EXIT_REMEDY = {
         "3": "安装 app，或改用不需要 app 的 <code>export</code>",
         "4": "加上 <code>--force</code> 覆盖，或用 <code>-o</code> 写到别处",
         "5": "读 JSON 结果里的 <code>message</code>",
+        "6": "改用能显示文件夹的 app，或不要用 <code>--folder</code>",
         "64": "修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样",
     },
     "ja": {
@@ -3722,6 +3794,7 @@ EXIT_REMEDY = {
         "3": "アプリをインストールするか、アプリが不要な <code>export</code> を使う",
         "4": "<code>--force</code> で上書きするか、<code>-o</code> で別の場所に書き出す",
         "5": "JSON の結果の <code>message</code> を読む",
+        "6": "フォルダを表示できるアプリを使うか、<code>--folder</code> を外す",
         "64": "オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される",
     },
 }

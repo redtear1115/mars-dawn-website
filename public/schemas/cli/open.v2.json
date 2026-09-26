@@ -41,6 +41,45 @@
     "app": {
       "type": "string",
       "description": "Path of the MarsDawn app that opened them."
+    },
+    "folder": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "requested"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Absolute path of the folder MarsDawn was asked to show in the window's sidebar."
+        },
+        "requested": {
+          "const": true,
+          "description": "Always true: open handed the folder to MarsDawn and returned."
+        },
+        "status": {
+          "enum": [
+            "attached",
+            "needsUser",
+            "declined",
+            "failed",
+            "attachedDifferentFolder",
+            "full",
+            "unavailable",
+            "unknown"
+          ],
+          "description": "What happened to the folder. Present only from a MarsDawn that reports back (marsdawn 0.5.3 and later, paired with an app that declares it) and a --wait above 0. needsUser means the user has to act; see waitingFor. unknown means the app didn't answer before --wait ran out."
+        },
+        "waitingFor": {
+          "enum": [
+            "confirmation",
+            "folderChoice"
+          ],
+          "description": "Present only alongside status \"needsUser\": what the user has to do. Don't retry; tell them."
+        }
+      },
+      "description": "Present only when --folder, or a directory argument, named a folder to show in the sidebar."
     }
   }
 }
