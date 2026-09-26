@@ -170,6 +170,10 @@ a[href^="mailto:"] {
   overflow-wrap: anywhere;
 }
 code { line-height: 1.45; }
+/* A bare URL cited in a list (an article's Sources) breaks rather than widening the page on a
+   phone. break-word, not anywhere: it only applies when the line would overflow, and it doesn't
+   change the list's min-content width. */
+main li a[href^="http"] { overflow-wrap: break-word; }
 /* Multi-line command examples on the CLI page. */
 pre {
   margin: 0 0 14px;
@@ -194,24 +198,6 @@ kbd {
   border-radius: 4px;
   background: var(--paper);
 }
-
-/* Contact block on the support page. */
-.contact {
-  margin: 36px 0 8px;
-  padding: 24px 22px;
-  border: 1px solid var(--hairline);
-  border-radius: 8px;
-}
-.contact h2 { margin-top: 0; }
-.contact .email {
-  display: inline-block;
-  margin: 4px 0 10px;
-  /* Slightly smaller on the narrowest phones so the address fits on one line. */
-  font-size: clamp(1.05rem, 5.5vw, 1.25rem);
-  font-weight: 600;
-}
-
-.faq h3 { margin-top: 32px; }
 
 /* 404 page: the illustration on a sand plate, rounded like the trait screenshots.
    It carries its own sky, so it needs no separate dark-mode treatment. */
