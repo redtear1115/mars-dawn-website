@@ -745,6 +745,29 @@ html { overflow-x: hidden; }
   --chrome-divider: light-dark(#E9E9E9, #000000);
   /* A menu's highlighted item, in the system's default accent, as macOS draws it. */
   --chrome-select: light-dark(#0A82FF, #0A84FF);
+  /* Liquid-glass hint tokens (issue #87): translucency built only from the window's own
+     --chrome-bg, which is fixed per light/dark/system appearance choice and never the
+     document theme or the OS scheme — the warmth reads from the real dawn scene showing
+     through the blur, not from a tint baked into these tokens (v2 fix: the shipped v1
+     kept --bg, an opaque, theme-dependent paint, directly behind the bar, so the "scene"
+     the blur saw was always flat and the tint leaked the document theme). The edge and
+     specular are a fixed warm cream, not the ember/dawn-glow accent, so the rim never
+     reads as a brand-coloured outline.
+     v4 (owner-approved new approach, #87 option 1): v3's 60%/70% cleared AA by nearly
+     opaquing the glass — the bar read as flat light grey, 96.9% one colour, not "the
+     dawn scene through blur". Back to a thin 38% here: AA is restored instead by
+     darkening the LIGHT-scheme title ink only inside .mdw-bar (below), which is a text
+     colour, not a bar opacity, so it doesn't flatten the scene. */
+  --chrome-glass: color-mix(in srgb, var(--chrome-bg) 38%, transparent);
+  --chrome-glass-bar: color-mix(in srgb, var(--chrome-bg) 38%, transparent);
+  --chrome-glass-edge: color-mix(in srgb, #FFE9C7 45%, transparent);
+  --chrome-glass-edge-soft: color-mix(in srgb, #FFE9C7 22%, transparent);
+  --chrome-glass-specular: color-mix(in srgb, #FFE9C7 40%, transparent);
+  /* The light scheme's title ink, only over the glass: the ordinary --chrome-ink
+     (#575757) doesn't survive a thin, honestly-translucent bar over a near-black night
+     sky at every point in the scene's animation. Dark scheme's ink is untouched — it
+     was already comfortably past AA (light text over the darker chrome). */
+  --chrome-title-ink-glass: light-dark(#1B1B1B, var(--chrome-ink));
   --mdw-width: max(100%, var(--w-media));
   margin: 0 calc((100% - var(--mdw-width)) / 2);
   /* A macOS window's own corner, not a plate's. */
@@ -798,6 +821,76 @@ html { overflow-x: hidden; }
   white-space: nowrap;
   font-weight: 650;
   font-size: 15px;
+}
+/* Liquid-glass hint (macOS 26, issue #87): title bar + outer rim only. .mdw's own
+   background — normally the opaque --bg paper — is what sits directly behind the bar
+   in the paint stack, above the hero's dawn scene; making it translucent here (not
+   just the bar) is what actually lets the scene reach the bar's backdrop-filter (v2
+   fix: --bg is also where the document theme lives, so this is also why the tint no
+   longer shifts with the picked theme — only with the window's own light/dark/system
+   appearance choice, via --chrome-bg). .mdw-panes gets its own opaque --bg background
+   ONLY here (v4: previously unconditional, which put it — harmlessly but needlessly —
+   in every fallback's CSS too): the panes' own bottom fade mask would otherwise reveal
+   .mdw's now-translucent background past ~78%, but only once .mdw's background is
+   actually translucent, i.e. only in this block. Every content pane (.mdw-source /
+   .mdw-preview, both below) keeps its own opaque --bg background regardless, so text
+   keeps its AA contrast. The rim is brighter on the top and leading (left) edges only,
+   not a uniform ring, and stays a low-alpha warm cream — never the ember/dawn-glow
+   accent, which DESIGN.md reserves for focus and tiny accents. Skipped under Reduced
+   Motion, Reduced Transparency (see below) or below 700px, and wherever the browser
+   has no backdrop-filter: the opaque chrome above is then the whole design, not a
+   broken fallback of it. */
+@media (min-width: 700px) and (prefers-reduced-motion: no-preference) {
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .mdw {
+      background: var(--chrome-glass);
+      box-shadow: 0 -1px 0 0 var(--chrome-glass-edge),
+                  -1px 0 0 0 var(--chrome-glass-edge-soft),
+                  0 0 0 1px color-mix(in srgb, #000 18%, transparent),
+                  0 40px 64px -28px color-mix(in srgb, #000 70%, transparent),
+                  0 14px 28px -14px color-mix(in srgb, #000 55%, transparent);
+    }
+    .mdw-bar {
+      background: var(--chrome-glass-bar);
+      -webkit-backdrop-filter: blur(28px) saturate(1.4);
+      backdrop-filter: blur(28px) saturate(1.4);
+      border-bottom: 1px solid color-mix(in srgb, var(--chrome-rule) 70%, transparent);
+      /* The bright edge's "lighter on top": a specular line along the bar's own top,
+         which is the window's top edge. */
+      box-shadow: inset 0 1px 0 var(--chrome-glass-specular);
+    }
+    /* Light scheme only, via light-dark(): darkening the title text itself, not the
+       bar's own opacity, is what keeps AA over a thin, honestly translucent glass. */
+    .mdw-title { color: var(--chrome-title-ink-glass); }
+    .mdw-panes { background: var(--bg); }
+  }
+}
+/* macOS "Reduce transparency" (and any browser that honours the media feature):
+   drop straight back to the exact pre-glass chrome, regardless of width or motion —
+   the same values as the base .mdw / .mdw-bar rules above, byte for byte. */
+@media (prefers-reduced-transparency: reduce) {
+  .mdw {
+    background: var(--bg);
+    box-shadow: 0 0 0 1px color-mix(in srgb, #000 22%, transparent),
+                0 40px 64px -28px color-mix(in srgb, #000 70%, transparent),
+                0 14px 28px -14px color-mix(in srgb, #000 55%, transparent);
+  }
+  .mdw-bar {
+    background: var(--chrome-bg);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom: 1px solid var(--chrome-rule);
+    box-shadow: none;
+  }
+  /* The glass block's title-ink darkening (light scheme only) is gated on width +
+     Reduced Motion, not on Reduced Transparency, so it would otherwise still apply
+     here even though the bar itself has gone back to fully opaque. */
+  .mdw-title { color: var(--chrome-ink); }
+  /* Same reasoning: the glass block's .mdw-panes background is gated on width +
+     Reduced Motion too, so its own @media still matches under Reduced Transparency
+     and would otherwise keep painting .mdw-panes here, when .mdw itself (above) has
+     already gone back to fully opaque and needs no help from .mdw-panes. */
+  .mdw-panes { background: none; }
 }
 .mdw svg { display: block; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 .mdw-pill, .mdw-themes > summary, .mdw-layouts {
