@@ -641,6 +641,134 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-ai-output/"/>
   </url>
   <url>
+    <loc>https://marsdawn.southern-light.dev/reading-agent-output/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-agent-output/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-agent-output/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hans/reading-agent-output/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-agent-output/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ja/reading-agent-output/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-agent-output/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-agent-output/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/agent-transparency/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-transparency/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/agent-transparency/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-transparency/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hans/agent-transparency/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-transparency/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ja/agent-transparency/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-transparency/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-transparency/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/reviewing-agent-plans/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/reviewing-agent-plans/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/agent-design-patterns/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-design-patterns/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/agent-design-patterns/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-design-patterns/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-design-patterns/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ja/agent-design-patterns/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-design-patterns/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-design-patterns/"/>
+  </url>
+  <url>
     <loc>https://marsdawn.southern-light.dev/changelog/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/changelog/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/changelog/"/>

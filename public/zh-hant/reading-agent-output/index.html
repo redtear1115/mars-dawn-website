@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>讀懂 agent 交回來的 Markdown · MarsDawn</title>
+<meta name="description" content="AI agent 把工作成果交成 Markdown：計畫、規格、進度報告。做 agent 的人怎麼談檢查點和失敗、這些產出為什麼難讀，以及五分鐘審完一份計畫的檢查清單。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-agent-output/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-agent-output/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-agent-output/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-agent-output/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/reading-agent-output/index.md">
+<meta property="og:title" content="讀懂 agent 交回來的 Markdown · MarsDawn">
+<meta property="og:description" content="AI agent 把工作成果交成 Markdown：計畫、規格、進度報告。做 agent 的人怎麼談檢查點和失敗、這些產出為什麼難讀，以及五分鐘審完一份計畫的檢查清單。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">即將在 Mac App Store 上架</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-agent-output/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-agent-output/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-agent-output/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-agent-output/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>agent 做完的工作，最後都變成一份你要讀的 Markdown。</h1>
+  <p>你請 coding agent 規劃一次資料庫遷移、寫一份規格，或追一個 bug。它自己跑了一陣子，交回來的是一個檔案：<code>plan.md</code>、<code>SPEC.md</code>、一份進度報告，或一份研究摘要。你能檢查的工作，全在這份檔案裡。</p>
+</section>
+
+<div class="summary"><p><strong>agent 有沒有做對，要讀過它交回來的東西才知道。MarsDawn 就是為這種閱讀做的 Mac app。</strong></p></div>
+
+<h2 id="what-people-who-build-agents-say">做 agent 的人怎麼說</h2>
+<p>以下引文照原文，我們的解讀放在最後。</p>
+<ul>
+  <li>Anthropic 的〈Building Effective Agents〉（Erik S. 與 Barry Zhang，2024 年 12 月）列出打造 agent 的三個核心原則，其中一條是「Prioritize transparency by explicitly showing the agent&#8217;s planning steps.」（優先重視透明度：明確展示 agent 的規劃步驟。）這是寫給開發 agent 的人的原則；站在你這邊，這份透明就是你手上那份要讀的計畫。</li>
+  <li>同一篇也寫到：「Agents can then pause for human feedback at checkpoints or when encountering blockers.」（Agent 可以在檢查點或遇到阻礙時暫停，等待人類回饋。）注意原文用的是 <em>can</em>，可以，沒有說必須。</li>
+  <li>Chip Huyen 在〈Agents〉（2025 年 1 月）解釋為什麼規劃要和執行分開：「Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it&#8217;s not going anywhere.」（沒有監督的話，agent 可能執行那些步驟好幾個小時，在 API 呼叫上浪費時間和金錢，你才發現它根本沒有進展。）她也描述了一種失敗：「The agent is convinced that it&#8217;s accomplished a task when it hasn&#8217;t.」（Agent 深信自己已完成任務，但其實並沒有。）請它把 50 個人分到 30 間飯店房間，它只排了 40 人，還堅稱做完了。</li>
+  <li>Andrew Ng 在 The Batch（2024 年 4 月）談 planning 這個設計模式：「On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results.」（一方面，規劃是非常強大的能力；另一方面，它會導致較難預測的結果。）他講的是可預測性，並沒有呼籲要人工審閱，而且他相信規劃能力很快會進步。</li>
+</ul>
+<p><strong>以下是我們的推論，不是作者的主張：</strong>agent 把計畫攤開、在檢查點停下來，那在檢查點讀計畫的通常就是你。agent 可能以為自己做完了，那它的「完成報告」也得有人讀過。上面這幾位作者都沒有提到 MarsDawn，也沒有推薦 MarsDawn 或任何 Markdown 工具。</p>
+
+<h2 id="why-it-s-a-harder-read-than-it-looks">比看起來難讀</h2>
+<p>檔案很長，重要的地方很少在最上面。裡面有 Mermaid 圖表和數學式，看原始碼很難跟上。你讀到一半，agent 可能還在改寫同一個檔案。它通常不只交一個檔案，有時還分散在不同的分支或 worktree。等你找到問題，說「快取那段怪怪的」，agent 只能用猜的；說「<code>docs/plan.md:42</code> 在回填跑完前就把舊表刪了」，它就知道要改哪裡。</p>
+
+<h2 id="where-marsdawn-helps">MarsDawn 幫得上忙的地方</h2>
+<ul>
+  <li><strong>檔案很長：</strong>側邊欄（&#8963;&#8984;S）的「大綱」分頁列出所有標題，點一下，兩邊窗格都會跳過去。</li>
+  <li><strong>圖表和數學式：</strong>Mermaid 和 KaTeX 直接畫在預覽裡，和原始碼並排（&#8984;2），兩邊一起捲動。</li>
+  <li><strong>讀到一半被改寫：</strong>agent 改寫檔案時，MarsDawn 會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改。</li>
+  <li><strong>好幾個檔案：</strong>用「檔案 &#9656; 打開資料夾&#8943;」（&#8679;&#8984;O）打開 agent 工作的資料夾，新檔案大約一秒內就會出現在「檔案」分頁；如果是 git 檢出，清單上方會標出分支或工作樹。</li>
+  <li><strong>回饋要準：</strong>「編輯 &#9656; 拷貝引用」（&#8997;&#8984;C）把目前位置拷貝成 <code>docs/plan.md:42</code>，「拷貝給 AI」（&#8963;&#8997;&#8984;C）會在下面附上你選取的文字，直接貼給 agent 就好。</li>
+</ul>
+<p>另外兩件事也和這個循環有關：agent 可以執行 <code>marsdawn open plan.md:42</code>，在 MarsDawn 裡幫你打開檔案，直接停在第 42 行，也就是它想先讓你看的那一行；審完的檔案可以從 app 輸出 PDF，也可以用免費的 <code>marsdawn export</code> 指令。</p>
+<p>MarsDawn 裡沒有 AI 模型。它不會幫你摘要計畫、打分數，也不會告訴你哪裡錯了。讀的人是你，它負責讓又長又會變的檔案保持好讀，讓你能準確指出是哪一行。</p>
+
+<h2 id="review-an-agent-s-plan-in-five-minutes">五分鐘審完一份 agent 計畫</h2>
+<p>用什麼編輯器都適用。</p>
+<ol>
+  <li>先只看標題。大綱和你要求的對得上嗎？少一段，通常就是少做一件事。</li>
+  <li>找出所有寫著「完成」「通過」「已驗證」的地方，挑一個自己查：打開那個檔案、跑那個測試、數一下筆數。</li>
+  <li>找出做了就回不去的步驟：刪資料、資料庫遷移、force push，還有任何會寄出、付款或發佈的動作。這些要等你明確點頭。</li>
+  <li>圖表要看畫出來的樣子，逐一對照每個箭頭和文字說的是不是同一回事。</li>
+  <li>列出計畫會動到的檔案和系統。你沒要求的部分，執行前先問清楚。</li>
+  <li>回饋寫成「位置、問題、改法」：「<code>plan.md:88</code>：回填排在刪表之後，第 4、5 步對調。」一行只講一個問題。</li>
+</ol>
+<p>時間只夠做一步的話，就做第 2 步吧。以為自己已經做完的 agent，多半是在這一步被抓到的。完整版本、附實際例子：<a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>。</p>
+
+<h2 id="try-it">試試看</h2>
+<p>MarsDawn 即將在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>它不需要 app 就能把 Markdown 輸出成 PDF。app 上架之後，agent 也能用 <code>marsdawn open</code> 在 MarsDawn 裡幫你打開檔案。</p>
+<p><a href="/zh-hant/cli/">命令列工具</a> &#183; <a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
+
+<h2 id="next">接下來</h2>
+<ul>
+  <li>為什麼 AI 寫的東西需要人讀，短一點的版本：<a href="/zh-hant/reviewing-ai-output/">為什麼 AI 寫的東西還是需要人讀過</a>。</li>
+  <li>審閱時不佔用 agent 的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
+  <li>agent 為什麼要把計畫攤開：<a href="/zh-hant/agent-transparency/">Anthropic 說 agent 要透明，那攤開的東西誰來讀？</a></li>
+  <li>上面那份清單一步一步來，附實際例子：<a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>。</li>
+  <li>不同類型的 agent 會交給你什麼文件：<a href="/zh-hant/agent-design-patterns/">四種 agent 設計模式，各自會交給你什麼文件</a>。</li>
+</ul>
+
+<h2 id="sources">資料來源</h2>
+<ul>
+  <li>Erik S. 與 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：<a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> （引文依 2026-09-26 的線上版本；該文現已註明，文中提到的工具生態自 2024 年 12 月以來已有很多改變）</li>
+  <li>Chip Huyen，〈Agents〉，2025 年 1 月 7 日：<a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Andrew Ng，〈Agentic Design Patterns Part 4, Planning〉，The Batch，2024 年 4 月 10 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="網站">
+    <a href="/zh-hant/support/">支援</a>
+    <a href="/zh-hant/privacy/">隱私權政策</a>
+    <a href="/zh-hant/cli/">命令列工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
