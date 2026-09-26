@@ -1052,7 +1052,7 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
   <li>《<a href="/zh-hans/reading-notes/andrew-ng-design-patterns/">Andrew Ng 自己帮四种设计模式的可预测程度排序</a>》&#8212;&#8212;在 The Batch 的五篇文章里，他直接说出自己觉得哪些模式比较可靠、哪些难以预测。</li>
 </ul>
 
-<p>这六篇文章都没有主张“应该更仔细审阅 agent 的产出”，也都不是在谈 MarsDawn。这个连结是我们自己画的，每篇笔记都会这样说清楚。</p>
+<p>这六篇文章都没有主张“应该更仔细审阅 agent 的产出”，也都不是在谈 MarsDawn。这个链接是我们自己画的，每篇笔记都会这样说清楚。</p>
 """,
     }
     pages['reading-notes/anthropic-building-effective-agents'] = {
@@ -1068,7 +1068,7 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
 <h2>指南主张什么</h2>
 <p>Erik S. 与 Barry Zhang 写这篇文章，是给正在决定怎么用 LLM 打造系统的工程师看的。文章一开头先下了一个定义：</p>
 <blockquote><p>&#8220;Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.&#8221;</p></blockquote>
-<p>（Workflow 是 LLM 和工具透过事先写好的程序路径被安排执行的系统；相对地，agent 则是 LLM 自己动态决定流程、自己决定怎么使用工具、掌控自己怎么完成任务的系统。）</p>
+<p>（Workflow 是 LLM 和工具通过事先写好的程序路径被安排执行的系统；相对地，agent 则是 LLM 自己动态决定流程、自己决定怎么使用工具、掌控自己怎么完成任务的系统。）</p>
 <p>接着，他们的建议很克制：</p>
 <blockquote><p>&#8220;When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed. This might mean not building agentic systems at all.&#8221;</p></blockquote>
 <p>（用 LLM 打造应用程序时，我们建议先找出最简单可行的做法，只有在真的需要时才增加复杂度。这可能代表根本不需要打造 agentic 系统。）</p>
@@ -1123,7 +1123,7 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
 <p>但她也直接点出第二种动作带来的风险：“the prospect of giving AI the ability to automatically alter our lives is frightening”（让 AI 有能力自动改变我们的生活，这个念头令人不安），照她的说法：“you shouldn&#8217;t allow an unreliable AI to initiate bank transfers”（不该让一个不可靠的 AI 去发起银行转账）。她对 agent 最难搞定的那一块也讲得很坦白：</p>
 <blockquote><p>&#8220;If you&#8217;ve ever been in any planning meeting, you know that planning is hard.&#8221;</p></blockquote>
 <p>（如果你参加过任何一场规划会议，就知道规划有多难。）</p>
-<p>Huyen 在这篇文章里完全没有提到 MarsDawn，也没有推荐任何 Markdown 工具。《<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>》已经引用她这篇文章里三句话：执行前不监督的代价、以为自己做完其实没做完的 agent，还有第三步里她说系统遇到有风险的操作“可以在执行前要求人类明确核准”那一句。这篇不重复这些引文；还没看过那篇的话，下面有连结。</p>
+<p>Huyen 在这篇文章里完全没有提到 MarsDawn，也没有推荐任何 Markdown 工具。《<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>》已经引用她这篇文章里三句话：执行前不监督的代价、以为自己做完其实没做完的 agent，还有第三步里她说系统遇到有风险的操作“可以在执行前要求人类明确核准”那一句。这篇不重复这些引文；还没看过那篇的话，下面有链接。</p>
 
 <h2>以下是我们的解读，不是 Huyen 的</h2>
 <p>Huyen 的 read-only／write action 分法，不是写给审阅用的建议，而是一种给工具分类的方式。但它是一个很好用的通用判断法，可以用来抓出《五分钟审完一份 agent 计划》第三步已经要你放慢脚步的那种有风险的操作：读一个文件、跑一次搜索、列一下目录，这些是 read-only，做错了顶多重跑一次；删数据、force push、合并分支、发信、扣款，这些是 write action&#8212;&#8212;照她的说法，这种一旦做错就是“令人不安”的那种，而且等你读到 agent 的报告时，它可能已经做完了。她说连人坐在一起开会都觉得规划很难，这也提醒我们别对一份计划的精确度期待过高：计划读起来自信，不代表它是对的。</p>

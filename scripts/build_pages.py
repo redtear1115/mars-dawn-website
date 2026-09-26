@@ -2739,7 +2739,7 @@ Chase 自己的回應是：「I really agree with this viewpoint and I think And
 <p>他還進一步主張不只要看，還要能介入：你也會希望能在某個時間點，修改一個正在運作的 agent 的狀態或指示，如果它偏離了原本設定的路徑，就把它拉回來。Chase 在這篇文章裡完全沒有提到 MarsDawn，也沒有推薦任何 Markdown 工具。</p>
 
 <h2>以下是我們的解讀，不是 Chase 的</h2>
-<p>Chase 談的是給打造 agent 框架的人用的工具&#8212;&#8212;他點名了 LangGraph 和 LangSmith&#8212;&#8212;不是給讀一份完成文件的人看的。但他這條光譜，給了一個很實用的方式，讓你在開始讀之前先估量一下手上這份東西：產出它的系統愈 agentic，你就愈不該預期它的步驟從最初的 prompt 就能猜得到，手上這份檔案也就愈值得當成「實際發生了什麼」的紀錄來讀，而不是「原本該發生什麼」的紀錄。
+<p>Chase 談的是給打造 agent 框架的人用的工具&#8212;&#8212;他點名了 LangGraph 和 LangSmith&#8212;&#8212;不是給讀一份完成文件的人看的。但他這條光譜，給了一個很實用的方式，讓你在開始讀之前先估量一下手上這份東西：產出它的系統愈 agentic，你就愈不該預期它的步驟從最初的 prompt 就能猜得到，手上這份檔案也就愈值得當成「實際發生了什麼」的紀錄來讀，而不是「原本該發生什麼」的紀錄。\
 他說的「觀察系統內部」，講的是一個正在運作的系統的內部狀態&#8212;&#8212;trace（一次執行過程中，agent 做過的所有事的紀錄）、中間步驟、工具呼叫&#8212;&#8212;不是事後讀一份 Markdown 計畫。但他給的理由&#8212;&#8212;步驟事先無法得知&#8212;&#8212;用在 agent 做完之後交給你的那份文件上，一樣說得通：如果一開始步驟就無法預測，那份做完之後的報告，就是唯一還能檢查它們的地方。</p>
 
 <h2>MarsDawn 幫得上、幫不上的地方</h2>
@@ -2784,7 +2784,7 @@ Chase 自己的回應是：「I really agree with this viewpoint and I think And
 <p>她也有一句話講的是不管流程多完善都省不掉的判斷：「Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.」（無法評估的判斷，就不要外包出去。如果你自己認不出正確答案，agent 也認不出來。）〈<a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>〉已經拿這句話建過討論，這篇不重複。Ou 在這篇文章裡完全沒有提到 MarsDawn，也沒有推薦任何 Markdown 工具。她也從來沒提過 Chase 這個人；把這兩篇文章連在一起的，是 LangChain 在 2026 年把她這篇發表在 Chase 2024 年那篇文章原本的網址上，而且定義幾乎一模一樣&#8212;&#8212;這是我們自己的觀察，不是她的主張。</p>
 
 <h2>以下是我們的解讀，不是 Ou 的</h2>
-<p>Ou 講的 human-in-the-loop，是在特定動作執行前先攔下來&#8212;&#8212;暫停一個 write 動作、等人核准，跟 Chip Huyen 那個 read-only／write action 的分法，其實是同一件事的不同角度&#8212;&#8212;不是讀一份已經完成的報告。仔細看她整套流程，大部分設計是要把人從例行檢查裡拿掉，而不是加進去：online evals、offline evals 和 LLM-as-a-judge，存在的目的就是讓團隊不用手動看每一次的執行紀錄。
+<p>Ou 講的 human-in-the-loop，是在特定動作執行前先攔下來&#8212;&#8212;暫停一個 write 動作、等人核准，跟 Chip Huyen 那個 read-only／write action 的分法，其實是同一件事的不同角度&#8212;&#8212;不是讀一份已經完成的報告。仔細看她整套流程，大部分設計是要把人從例行檢查裡拿掉，而不是加進去：online evals、offline evals 和 LLM-as-a-judge，存在的目的就是讓團隊不用手動看每一次的執行紀錄。\
 這不是在批評這篇文章&#8212;&#8212;這本來就是她講明的目標，在正式營運的規模下也很合理。但這代表你親自動手做的審閱&#8212;&#8212;直接讀一份 agent 交給你的計畫或報告&#8212;&#8212;正好就是她這套流程想要減少、而不是取代的那種檢查。她自己那句判斷的話，替這種減少畫了一條底線：你自己讀了都認不出對錯的地方，還是得自己讀過。</p>
 
 <h2>MarsDawn 幫得上、幫不上的地方</h2>
@@ -2820,7 +2820,7 @@ Chase 自己的回應是：「I really agree with this viewpoint and I think And
 <div class="summary"><p><strong>2024 年初，Andrew Ng 在 The Batch 用五篇文章介紹了四種 agentic 設計模式&#8212;&#8212;reflection（反思）、tool use（使用工具）、planning（規劃）、multi-agent collaboration（多 agent 協作）&#8212;&#8212;而且很少見地直接告訴讀者，這四種裡他覺得哪兩種比較可靠、哪兩種難以預測。</strong></p></div>
 
 <h2>這幾篇文章主張什麼</h2>
-<p>〈<a href="/zh-hant/agent-design-patterns/">四種 agent 設計模式，各自會交給你什麼文件</a>〉已經完整談過這四種模式各自是什麼、當成我們自己的推論各自通常會交給你什麼文件，還有 Ng 自己對 planning 的評語，引自 Part 4：「while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications&#8217; performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do」（Reflection 和 Tool Use 這兩種設計模式我都能讓它們穩定運作、提升應用程式的表現，但 Planning 還是比較不成熟的技術，我很難事先預測它會怎麼做）。
+<p>〈<a href="/zh-hant/agent-design-patterns/">四種 agent 設計模式，各自會交給你什麼文件</a>〉已經完整談過這四種模式各自是什麼、當成我們自己的推論各自通常會交給你什麼文件，還有 Ng 自己對 planning 的評語，引自 Part 4：「while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications&#8217; performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do」（Reflection 和 Tool Use 這兩種設計模式我都能讓它們穩定運作、提升應用程式的表現，但 Planning 還是比較不成熟的技術，我很難事先預測它會怎麼做）。\
 這篇要補的，是那篇沒用到的另外兩封信裡同一個排序：Part 3，寫在 Part 4 之前一週，先講出了這個排序；Part 5，把排序延伸到 Part 4 沒提到的那一種模式&#8212;&#8212;multi-agent collaboration。在介紹 tool use 的 Part 3 裡，他寫道：</p>
 <blockquote><p>&#8220;In future letters, I&#8217;ll describe the Planning and Multi-agent collaboration design patterns. They allow AI agents to do much more but are less mature, less predictable &#8212; albeit very exciting &#8212; technologies.&#8221;</p></blockquote>
 <p>（在接下來的信裡，我會介紹 Planning 和 Multi-agent collaboration 這兩種設計模式。它們能讓 AI agent 做到更多事，但也是比較不成熟、比較難預測的技術&#8212;&#8212;雖然非常令人興奮。）</p>
@@ -2830,7 +2830,7 @@ Chase 自己的回應是：「I really agree with this viewpoint and I think And
 <p>他講的是這幾種模式對他自己應用程式表現的提升效果，不是在談應該多仔細審閱它們的產出&#8212;&#8212;這個系列完全沒有主張要人工審閱，也沒有提到 MarsDawn 或推薦任何 Markdown 工具。</p>
 
 <h2>以下是我們的解讀，不是 Ng 的</h2>
-<p>Ng 的排序談的是開發者視角下的輸出品質和可預測性，但大致對應到每種模式留下的紀錄，從你的角度該花多少心力去查。他覺得比較可靠的 reflection 和 tool use，通常會交給你描述「已經做完的事」的東西&#8212;&#8212;一份改過的草稿、一份跑了什麼的報告&#8212;&#8212;所以拿裡面一個宣稱去對照真正的輸出，通常就能覆蓋大部分風險。
+<p>Ng 的排序談的是開發者視角下的輸出品質和可預測性，但大致對應到每種模式留下的紀錄，從你的角度該花多少心力去查。他覺得比較可靠的 reflection 和 tool use，通常會交給你描述「已經做完的事」的東西&#8212;&#8212;一份改過的草稿、一份跑了什麼的報告&#8212;&#8212;所以拿裡面一個宣稱去對照真正的輸出，通常就能覆蓋大部分風險。\
 他覺得難以預測的 planning 和 multi-agent collaboration，通常會交給你「事情發生之前」寫好的東西，或是分散在好幾個 agent 手上的好幾份檔案：一份還在等你點頭的計畫，或是還沒被實際執行驗證過的 agent 交接。照他自己的說法，這兩種正是「寫下來的東西」和「實際會發生的事」落差最大的地方&#8212;&#8212;這也正是〈五分鐘審完一份 agent 計畫〉從 Chip Huyen 那篇文章裡引出的道理，在「為什麼要在執行前審」那一段：在事情跑之前抓到問題，是最便宜的時機。</p>
 
 <h2>MarsDawn 幫得上、幫不上的地方</h2>

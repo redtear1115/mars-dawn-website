@@ -8,7 +8,7 @@ Erik S. 与 Barry Zhang 写这篇文章，是给正在决定怎么用 LLM 打造
 
 > “Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.”
 
-（Workflow 是 LLM 和工具透过事先写好的程序路径被安排执行的系统；相对地，agent 则是 LLM 自己动态决定流程、自己决定怎么使用工具、掌控自己怎么完成任务的系统。）
+（Workflow 是 LLM 和工具通过事先写好的程序路径被安排执行的系统；相对地，agent 则是 LLM 自己动态决定流程、自己决定怎么使用工具、掌控自己怎么完成任务的系统。）
 
 接着，他们的建议很克制：
 

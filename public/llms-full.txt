@@ -3725,7 +3725,7 @@ Chase 自己給的定義，還先承認這比大部分人的定義更技術性�
 
 ## 以下是我們的解讀，不是 Chase 的
 
-Chase 談的是給打造 agent 框架的人用的工具——他點名了 LangGraph 和 LangSmith——不是給讀一份完成文件的人看的。但他這條光譜，給了一個很實用的方式，讓你在開始讀之前先估量一下手上這份東西：產出它的系統愈 agentic，你就愈不該預期它的步驟從最初的 prompt 就能猜得到，手上這份檔案也就愈值得當成「實際發生了什麼」的紀錄來讀，而不是「原本該發生什麼」的紀錄。 他說的「觀察系統內部」，講的是一個正在運作的系統的內部狀態——trace（一次執行過程中，agent 做過的所有事的紀錄）、中間步驟、工具呼叫——不是事後讀一份 Markdown 計畫。但他給的理由——步驟事先無法得知——用在 agent 做完之後交給你的那份文件上，一樣說得通：如果一開始步驟就無法預測，那份做完之後的報告，就是唯一還能檢查它們的地方。
+Chase 談的是給打造 agent 框架的人用的工具——他點名了 LangGraph 和 LangSmith——不是給讀一份完成文件的人看的。但他這條光譜，給了一個很實用的方式，讓你在開始讀之前先估量一下手上這份東西：產出它的系統愈 agentic，你就愈不該預期它的步驟從最初的 prompt 就能猜得到，手上這份檔案也就愈值得當成「實際發生了什麼」的紀錄來讀，而不是「原本該發生什麼」的紀錄。他說的「觀察系統內部」，講的是一個正在運作的系統的內部狀態——trace（一次執行過程中，agent 做過的所有事的紀錄）、中間步驟、工具呼叫——不是事後讀一份 Markdown 計畫。但他給的理由——步驟事先無法得知——用在 agent 做完之後交給你的那份文件上，一樣說得通：如果一開始步驟就無法預測，那份做完之後的報告，就是唯一還能檢查它們的地方。
 
 ## MarsDawn 幫得上、幫不上的地方
 
@@ -3781,7 +3781,7 @@ Ou 的定義幾乎就是 Chase 那句話的迴聲：
 
 ## 以下是我們的解讀，不是 Ou 的
 
-Ou 講的 human-in-the-loop，是在特定動作執行前先攔下來——暫停一個 write 動作、等人核准，跟 Chip Huyen 那個 read-only／write action 的分法，其實是同一件事的不同角度——不是讀一份已經完成的報告。仔細看她整套流程，大部分設計是要把人從例行檢查裡拿掉，而不是加進去：online evals、offline evals 和 LLM-as-a-judge，存在的目的就是讓團隊不用手動看每一次的執行紀錄。 這不是在批評這篇文章——這本來就是她講明的目標，在正式營運的規模下也很合理。但這代表你親自動手做的審閱——直接讀一份 agent 交給你的計畫或報告——正好就是她這套流程想要減少、而不是取代的那種檢查。她自己那句判斷的話，替這種減少畫了一條底線：你自己讀了都認不出對錯的地方，還是得自己讀過。
+Ou 講的 human-in-the-loop，是在特定動作執行前先攔下來——暫停一個 write 動作、等人核准，跟 Chip Huyen 那個 read-only／write action 的分法，其實是同一件事的不同角度——不是讀一份已經完成的報告。仔細看她整套流程，大部分設計是要把人從例行檢查裡拿掉，而不是加進去：online evals、offline evals 和 LLM-as-a-judge，存在的目的就是讓團隊不用手動看每一次的執行紀錄。這不是在批評這篇文章——這本來就是她講明的目標，在正式營運的規模下也很合理。但這代表你親自動手做的審閱——直接讀一份 agent 交給你的計畫或報告——正好就是她這套流程想要減少、而不是取代的那種檢查。她自己那句判斷的話，替這種減少畫了一條底線：你自己讀了都認不出對錯的地方，還是得自己讀過。
 
 ## MarsDawn 幫得上、幫不上的地方
 
@@ -3821,7 +3821,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/reading-notes/andrew-ng-desi
 
 ## 這幾篇文章主張什麼
 
-〈[四種 agent 設計模式，各自會交給你什麼文件](/zh-hant/agent-design-patterns/)〉已經完整談過這四種模式各自是什麼、當成我們自己的推論各自通常會交給你什麼文件，還有 Ng 自己對 planning 的評語，引自 Part 4：「while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do」（Reflection 和 Tool Use 這兩種設計模式我都能讓它們穩定運作、提升應用程式的表現，但 Planning 還是比較不成熟的技術，我很難事先預測它會怎麼做）。 這篇要補的，是那篇沒用到的另外兩封信裡同一個排序：Part 3，寫在 Part 4 之前一週，先講出了這個排序；Part 5，把排序延伸到 Part 4 沒提到的那一種模式——multi-agent collaboration。在介紹 tool use 的 Part 3 裡，他寫道：
+〈[四種 agent 設計模式，各自會交給你什麼文件](/zh-hant/agent-design-patterns/)〉已經完整談過這四種模式各自是什麼、當成我們自己的推論各自通常會交給你什麼文件，還有 Ng 自己對 planning 的評語，引自 Part 4：「while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do」（Reflection 和 Tool Use 這兩種設計模式我都能讓它們穩定運作、提升應用程式的表現，但 Planning 還是比較不成熟的技術，我很難事先預測它會怎麼做）。這篇要補的，是那篇沒用到的另外兩封信裡同一個排序：Part 3，寫在 Part 4 之前一週，先講出了這個排序；Part 5，把排序延伸到 Part 4 沒提到的那一種模式——multi-agent collaboration。在介紹 tool use 的 Part 3 裡，他寫道：
 
 > “In future letters, I’ll describe the Planning and Multi-agent collaboration design patterns. They allow AI agents to do much more but are less mature, less predictable — albeit very exciting — technologies.”
 
@@ -3837,7 +3837,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/reading-notes/andrew-ng-desi
 
 ## 以下是我們的解讀，不是 Ng 的
 
-Ng 的排序談的是開發者視角下的輸出品質和可預測性，但大致對應到每種模式留下的紀錄，從你的角度該花多少心力去查。他覺得比較可靠的 reflection 和 tool use，通常會交給你描述「已經做完的事」的東西——一份改過的草稿、一份跑了什麼的報告——所以拿裡面一個宣稱去對照真正的輸出，通常就能覆蓋大部分風險。 他覺得難以預測的 planning 和 multi-agent collaboration，通常會交給你「事情發生之前」寫好的東西，或是分散在好幾個 agent 手上的好幾份檔案：一份還在等你點頭的計畫，或是還沒被實際執行驗證過的 agent 交接。照他自己的說法，這兩種正是「寫下來的東西」和「實際會發生的事」落差最大的地方——這也正是〈五分鐘審完一份 agent 計畫〉從 Chip Huyen 那篇文章裡引出的道理，在「為什麼要在執行前審」那一段：在事情跑之前抓到問題，是最便宜的時機。
+Ng 的排序談的是開發者視角下的輸出品質和可預測性，但大致對應到每種模式留下的紀錄，從你的角度該花多少心力去查。他覺得比較可靠的 reflection 和 tool use，通常會交給你描述「已經做完的事」的東西——一份改過的草稿、一份跑了什麼的報告——所以拿裡面一個宣稱去對照真正的輸出，通常就能覆蓋大部分風險。他覺得難以預測的 planning 和 multi-agent collaboration，通常會交給你「事情發生之前」寫好的東西，或是分散在好幾個 agent 手上的好幾份檔案：一份還在等你點頭的計畫，或是還沒被實際執行驗證過的 agent 交接。照他自己的說法，這兩種正是「寫下來的東西」和「實際會發生的事」落差最大的地方——這也正是〈五分鐘審完一份 agent 計畫〉從 Chip Huyen 那篇文章裡引出的道理，在「為什麼要在執行前審」那一段：在事情跑之前抓到問題，是最便宜的時機。
 
 ## MarsDawn 幫得上、幫不上的地方
 
@@ -5572,7 +5572,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/reading-notes/
 - 《[Jess Ou 的评测流程，里面还留给你的那一步](/zh-hans/reading-notes/langchain-what-is-an-agent/)》——2026 年 7 月，LangChain 在 Harrison Chase 2024 年那篇文章原本的网址上，发表了 Jess Ou 写的新版《What is an AI agent?》；她的定义几乎和他的一字不差，接下来也讲清楚自动化评测到哪里为止，剩下的还是要人来做。
 - 《[Andrew Ng 自己帮四种设计模式的可预测程度排序](/zh-hans/reading-notes/andrew-ng-design-patterns/)》——在 The Batch 的五篇文章里，他直接说出自己觉得哪些模式比较可靠、哪些难以预测。
 
-这六篇文章都没有主张“应该更仔细审阅 agent 的产出”，也都不是在谈 MarsDawn。这个连结是我们自己画的，每篇笔记都会这样说清楚。
+这六篇文章都没有主张“应该更仔细审阅 agent 的产出”，也都不是在谈 MarsDawn。这个链接是我们自己画的，每篇笔记都会这样说清楚。
 
 ---
 
@@ -5590,7 +5590,7 @@ Erik S. 与 Barry Zhang 写这篇文章，是给正在决定怎么用 LLM 打造
 
 > “Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.”
 
-（Workflow 是 LLM 和工具透过事先写好的程序路径被安排执行的系统；相对地，agent 则是 LLM 自己动态决定流程、自己决定怎么使用工具、掌控自己怎么完成任务的系统。）
+（Workflow 是 LLM 和工具通过事先写好的程序路径被安排执行的系统；相对地，agent 则是 LLM 自己动态决定流程、自己决定怎么使用工具、掌控自己怎么完成任务的系统。）
 
 接着，他们的建议很克制：
 
@@ -5668,7 +5668,7 @@ Huyen 开门见山：
 
 （如果你参加过任何一场规划会议，就知道规划有多难。）
 
-Huyen 在这篇文章里完全没有提到 MarsDawn，也没有推荐任何 Markdown 工具。《[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)》已经引用她这篇文章里三句话：执行前不监督的代价、以为自己做完其实没做完的 agent，还有第三步里她说系统遇到有风险的操作“可以在执行前要求人类明确核准”那一句。这篇不重复这些引文；还没看过那篇的话，下面有连结。
+Huyen 在这篇文章里完全没有提到 MarsDawn，也没有推荐任何 Markdown 工具。《[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)》已经引用她这篇文章里三句话：执行前不监督的代价、以为自己做完其实没做完的 agent，还有第三步里她说系统遇到有风险的操作“可以在执行前要求人类明确核准”那一句。这篇不重复这些引文；还没看过那篇的话，下面有链接。
 
 ## 以下是我们的解读，不是 Huyen 的
 
