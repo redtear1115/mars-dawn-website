@@ -8,13 +8,13 @@
     },
     "privacy.ja.md": {
       "rendered": "privacy.ja.rendered.html",
-      "rendered_sha256": "c442172621441b876c43763127e54b04f3e741a80d839f44309e70a582e9e0f1",
-      "source_sha256": "6fce5511ffe332694ac269ee2366b69b729c75c7c4e7ef97bcdcbccf732fc087"
+      "rendered_sha256": "e252291c64848f8d3136aa8c3ccdd652eff9c84240f3fe68d3cd95a60ab43295",
+      "source_sha256": "d4147a564c5932bf93dfe201ef531e7c6777030ee6de66554412f1eca17fbdde"
     },
     "privacy.zh-hans.md": {
       "rendered": "privacy.zh-hans.rendered.html",
-      "rendered_sha256": "a72cdc4c5c9b5c4441df64114b703f58a3c18ac72a9280c386d789b3fe0d004c",
-      "source_sha256": "c771e592e3bfaf24b0a2152b030e12330bb5054c7131f5ded66a8eb0bf9d5dfe"
+      "rendered_sha256": "874b9c9e49346a2def0044b0e071833e82f79b169d3542fa2b5eb7e0406b209c",
+      "source_sha256": "c91285baec39114ee4da106408e9af6752c36b348cfae26ef6bbe972da517d22"
     },
     "privacy.zh-hant.md": {
       "rendered": "privacy.zh-hant.rendered.html",
