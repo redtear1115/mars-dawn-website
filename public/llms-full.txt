@@ -584,7 +584,7 @@ marsdawn open notes.md --line 120
 - `path:line`: asks MarsDawn to land on that line. A column after it, as in `notes.md:120:8`, is ignored. If a file with the whole name exists, the argument is that file.
 - `--line <n>`: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.
 - Lines run from 1 to 999999999.
-- MarsDawn 1.0 opens the file but doesn't jump to the line yet.
+- MarsDawn 1.0 opens the file at that line.
 - `--json`: print a JSON result instead of text.
 
 Lines were added in marsdawn 0.3.0.
@@ -651,7 +651,7 @@ A reference for AI agents and scripts that call the `marsdawn` command-line tool
 - It doesn't replace an existing file unless you pass `--force`.
 - It doesn't load images from the web unless you pass `--allow-remote-images`, and then only over https.
 - `open` doesn't work without the MarsDawn app installed; it exits with code 3. `export` doesn't need the app.
-- MarsDawn 1.0 doesn't jump to the line `open` names yet. It opens the file at the top.
+- MarsDawn 1.0 opens the file at the line `open` names.
 - It runs on macOS only.
 
 ## export
@@ -695,7 +695,7 @@ marsdawn open notes.md --line 120 --json
 - `path:line` names the line to land on. A column after it, as in `notes.md:120:8`, is ignored. An argument that names a file which exists is always that whole filename, so a file called `weird:12` opens as itself.
 - `--line <n>` names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.
 - Lines run from 1 to 999999999. Anything else is a usage error.
-- Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file but doesn't jump to the line yet.
+- Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file at that line.
 
 Success, exit code 0:
 
@@ -1887,7 +1887,7 @@ marsdawn open notes.md --line 120
 - `path:line`：請 MarsDawn 定位到那一行。後面再接欄位，例如 `notes.md:120:8`，會被忽略。如果有檔案的完整名稱就是這個參數，則視為那個檔案。
 - `--line <n>`：同樣的功能，只用於單一檔案，也可以用在檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。
 - 行號範圍是 1 到 999999999。
-- MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。
+- MarsDawn 1.0 會打開檔案，並跳到指定的行。
 - `--json`：印出 JSON 結果，而不是文字。
 
 行號功能從 marsdawn 0.3.0 開始提供。
@@ -1954,7 +1954,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/agents/
 - 檔案已存在時不會覆寫，除非加上 `--force`。
 - 不載入網路圖片，除非加上 `--allow-remote-images`，而且只走 https。
 - 沒有安裝 MarsDawn 時，`open` 無法使用，會以代碼 3 結束。`export` 不需要 app。
-- MarsDawn 1.0 還不會跳到 `open` 指定的行，會從檔案開頭顯示。
+- MarsDawn 1.0 會跳到 `open` 指定的行。
 - 只能在 macOS 上執行。
 
 ## export
@@ -1998,7 +1998,7 @@ marsdawn open notes.md --line 120 --json
 - `path:line` 指定要定位的行。後面再接欄位，例如 `notes.md:120:8`，會被忽略。如果參數本身就是一個存在的檔名，就一律當成那個檔案，所以名為 `weird:12` 的檔案會照原名開啟。
 - `--line <n>` 為單一檔案指定行號，包括檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。
 - 行號範圍是 1 到 999999999，超出範圍是用法錯誤。
-- 行號從 marsdawn 0.3.0 開始提供。MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。
+- 行號從 marsdawn 0.3.0 開始提供。MarsDawn 1.0 會打開檔案，並跳到指定的行。
 
 成功，離開代碼 0：
 
@@ -3186,7 +3186,7 @@ marsdawn open notes.md --line 120
 - `path:line`：请 MarsDawn 定位到那一行。后面再接列号，例如 `notes.md:120:8`，会被忽略。如果有文件的完整名称就是这个参数，则视为那个文件。
 - `--line <n>`：同样的功能，只用于单一文件，也可以用在文件名本身以冒号加数字结尾的情况。只能搭配一个文件。
 - 行号范围是 1 到 999999999。
-- MarsDawn 1.0 会打开文件，但还不会跳到指定的行。
+- MarsDawn 1.0 会打开文件，并跳到指定的行。
 - `--json`：输出 JSON 结果，而不是文本。
 
 行号功能从 marsdawn 0.3.0 开始提供。
@@ -3253,7 +3253,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/agents/
 - 文件已存在时不会覆盖，除非加上 `--force`。
 - 不加载网络图片，除非加上 `--allow-remote-images`，而且只走 https。
 - 没有安装 MarsDawn 时，`open` 无法使用，会以代码 3 结束。`export` 不需要 app。
-- MarsDawn 1.0 还不会跳到 `open` 指定的行，会从文件开头显示。
+- MarsDawn 1.0 会跳到 `open` 指定的行。
 - 只能在 macOS 上运行。
 
 ## export
@@ -3297,7 +3297,7 @@ marsdawn open notes.md --line 120 --json
 - `path:line` 指定要定位的行。后面再接列号，例如 `notes.md:120:8`，会被忽略。如果参数本身就是一个存在的文件名，就一律当成那个文件，所以名为 `weird:12` 的文件会照原名打开。
 - `--line <n>` 为单一文件指定行号，包括文件名本身以冒号加数字结尾的情况。只能搭配一个文件。
 - 行号范围是 1 到 999999999，超出范围是用法错误。
-- 行号从 marsdawn 0.3.0 开始提供。MarsDawn 1.0 会打开文件，但还不会跳到指定的行。
+- 行号从 marsdawn 0.3.0 开始提供。MarsDawn 1.0 会打开文件，并跳到指定的行。
 
 成功，退出代码 0：
 
@@ -4479,7 +4479,7 @@ marsdawn open notes.md --line 120
 - `path:line`：MarsDawn にその行に移動するよう指定します。その後にコロンが続く場合、たとえば `notes.md:120:8` の列部分は無視されます。引数全体と一致するファイル名が存在する場合、その引数はそのファイルとして扱われます。
 - `--line <n>`：単一ファイルに対して同じ指定ができ、それ自体がコロンと数字で終わるパスに対して行を指定する方法でもあります。ファイルは1つだけ指定できます。
 - 行番号は 1 から 999999999 までです。
-- MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。
+- MarsDawn 1.0 はその行にジャンプしてファイルを開きます。
 - `--json`：テキストではなく JSON の結果を出力します。
 
 行の指定は marsdawn 0.3.0 で追加されました。
@@ -4546,7 +4546,7 @@ Source: https://marsdawn.southern-light.dev/ja/cli/agents/
 - `--force` を指定しない限り、既存のファイルを置き換えません。
 - `--allow-remote-images` を指定しない限りウェブから画像を読み込まず、指定した場合も https のみです。
 - `open` は MarsDawn アプリがインストールされていないと動作せず、コード 3 で終了します。`export` にアプリは不要です。
-- MarsDawn 1.0 はまだ `open` が指定した行にジャンプしません。ファイルは先頭から開きます。
+- MarsDawn 1.0 は `open` が指定した行にジャンプします。
 - macOS でのみ動作します。
 
 ## export
@@ -4590,7 +4590,7 @@ marsdawn open notes.md --line 120 --json
 - `path:line` は移動先の行を指定します。その後にコロンが続く場合、たとえば `notes.md:120:8` の列部分は無視されます。存在するファイル名を丸ごと表す引数は常にそのファイル名として扱われるため、`weird:12` という名前のファイルはそのまま開きます。
 - `--line <n>` は単一ファイルの行を指定します。それ自体がコロンと数字で終わるパスも含みます。ファイルは1つだけ指定できます。
 - 行番号は 1 から 999999999 までで、それ以外は使用方法のエラーになります。
-- 行の指定は marsdawn 0.3.0 で追加されました。MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。
+- 行の指定は marsdawn 0.3.0 で追加されました。MarsDawn 1.0 はその行にジャンプしてファイルを開きます。
 
 成功、終了コード 0：
 

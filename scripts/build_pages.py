@@ -493,7 +493,7 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>path:line</code>: asks MarsDawn to land on that line. A column after it, as in <code>notes.md:120:8</code>, is ignored. If a file with the whole name exists, the argument is that file.</li>
   <li><code>--line &lt;n&gt;</code>: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.</li>
   <li>Lines run from 1 to 999999999.</li>
-  <li>MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
+  <li>MarsDawn 1.0 opens the file at that line.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
 </ul>
 <p>Lines were added in marsdawn 0.3.0.</p>
@@ -565,7 +565,7 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>path:line</code>：請 MarsDawn 定位到那一行。後面再接欄位，例如 <code>notes.md:120:8</code>，會被忽略。如果有檔案的完整名稱就是這個參數，則視為那個檔案。</li>
   <li><code>--line &lt;n&gt;</code>：同樣的功能，只用於單一檔案，也可以用在檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。</li>
   <li>行號範圍是 1 到 999999999。</li>
-  <li>MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。</li>
+  <li>MarsDawn 1.0 會打開檔案，並跳到指定的行。</li>
   <li><code>--json</code>：印出 JSON 結果，而不是文字。</li>
 </ul>
 <p>行號功能從 marsdawn 0.3.0 開始提供。</p>
@@ -773,7 +773,7 @@ AGENT_PAGES = {
   <li>It doesn't replace an existing file unless you pass <code>--force</code>.</li>
   <li>It doesn't load images from the web unless you pass <code>--allow-remote-images</code>, and then only over https.</li>
   <li><code>open</code> doesn't work without the MarsDawn app installed; it exits with code 3. <code>export</code> doesn't need the app.</li>
-  <li>MarsDawn 1.0 doesn't jump to the line <code>open</code> names yet. It opens the file at the top.</li>
+  <li>MarsDawn 1.0 opens the file at the line <code>open</code> names.</li>
   <li>It runs on macOS only.</li>
 </ul>
 
@@ -806,7 +806,7 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>path:line</code> names the line to land on. A column after it, as in <code>notes.md:120:8</code>, is ignored. An argument that names a file which exists is always that whole filename, so a file called <code>weird:12</code> opens as itself.</li>
   <li><code>--line &lt;n&gt;</code> names the line for a single file, including a path that itself ends in a colon and digits. It needs exactly one file.</li>
   <li>Lines run from 1 to 999999999. Anything else is a usage error.</li>
-  <li>Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file but doesn't jump to the line yet.</li>
+  <li>Lines were added in marsdawn 0.3.0. MarsDawn 1.0 opens the file at that line.</li>
 </ul>
 <p>Success, exit code 0:</p>
 <pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{{"line":120,"path":"/path/to/notes.md"}}]}}</code></pre>
@@ -887,7 +887,7 @@ swift build -c release --product marsdawn
   <li>檔案已存在時不會覆寫，除非加上 <code>--force</code>。</li>
   <li>不載入網路圖片，除非加上 <code>--allow-remote-images</code>，而且只走 https。</li>
   <li>沒有安裝 MarsDawn 時，<code>open</code> 無法使用，會以代碼 3 結束。<code>export</code> 不需要 app。</li>
-  <li>MarsDawn 1.0 還不會跳到 <code>open</code> 指定的行，會從檔案開頭顯示。</li>
+  <li>MarsDawn 1.0 會跳到 <code>open</code> 指定的行。</li>
   <li>只能在 macOS 上執行。</li>
 </ul>
 
@@ -920,7 +920,7 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>path:line</code> 指定要定位的行。後面再接欄位，例如 <code>notes.md:120:8</code>，會被忽略。如果參數本身就是一個存在的檔名，就一律當成那個檔案，所以名為 <code>weird:12</code> 的檔案會照原名開啟。</li>
   <li><code>--line &lt;n&gt;</code> 為單一檔案指定行號，包括檔名本身以冒號加數字結尾的情況。只能搭配一個檔案。</li>
   <li>行號範圍是 1 到 999999999，超出範圍是用法錯誤。</li>
-  <li>行號從 marsdawn 0.3.0 開始提供。MarsDawn 1.0 會打開檔案，但還不會跳到指定的行。</li>
+  <li>行號從 marsdawn 0.3.0 開始提供。MarsDawn 1.0 會打開檔案，並跳到指定的行。</li>
 </ul>
 <p>成功，離開代碼 0：</p>
 <pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{{"line":120,"path":"/path/to/notes.md"}}]}}</code></pre>

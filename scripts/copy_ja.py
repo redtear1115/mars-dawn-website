@@ -376,7 +376,7 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>path:line</code>：MarsDawn にその行に移動するよう指定します。その後にコロンが続く場合、たとえば <code>notes.md:120:8</code> の列部分は無視されます。引数全体と一致するファイル名が存在する場合、その引数はそのファイルとして扱われます。</li>
   <li><code>--line &lt;n&gt;</code>：単一ファイルに対して同じ指定ができ、それ自体がコロンと数字で終わるパスに対して行を指定する方法でもあります。ファイルは1つだけ指定できます。</li>
   <li>行番号は 1 から 999999999 までです。</li>
-  <li>MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。</li>
+  <li>MarsDawn 1.0 はその行にジャンプしてファイルを開きます。</li>
   <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
 </ul>
 <p>行の指定は marsdawn 0.3.0 で追加されました。</p>
@@ -438,7 +438,7 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>--force</code> を指定しない限り、既存のファイルを置き換えません。</li>
   <li><code>--allow-remote-images</code> を指定しない限りウェブから画像を読み込まず、指定した場合も https のみです。</li>
   <li><code>open</code> は MarsDawn アプリがインストールされていないと動作せず、コード 3 で終了します。<code>export</code> にアプリは不要です。</li>
-  <li>MarsDawn 1.0 はまだ <code>open</code> が指定した行にジャンプしません。ファイルは先頭から開きます。</li>
+  <li>MarsDawn 1.0 は <code>open</code> が指定した行にジャンプします。</li>
   <li>macOS でのみ動作します。</li>
 </ul>
 
@@ -471,7 +471,7 @@ marsdawn open notes.md --line 120 --json</code></pre>
   <li><code>path:line</code> は移動先の行を指定します。その後にコロンが続く場合、たとえば <code>notes.md:120:8</code> の列部分は無視されます。存在するファイル名を丸ごと表す引数は常にそのファイル名として扱われるため、<code>weird:12</code> という名前のファイルはそのまま開きます。</li>
   <li><code>--line &lt;n&gt;</code> は単一ファイルの行を指定します。それ自体がコロンと数字で終わるパスも含みます。ファイルは1つだけ指定できます。</li>
   <li>行番号は 1 から 999999999 までで、それ以外は使用方法のエラーになります。</li>
-  <li>行の指定は marsdawn 0.3.0 で追加されました。MarsDawn 1.0 はファイルを開きますが、まだその行にジャンプしません。</li>
+  <li>行の指定は marsdawn 0.3.0 で追加されました。MarsDawn 1.0 はその行にジャンプしてファイルを開きます。</li>
 </ul>
 <p>成功、終了コード 0：</p>
 <pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{{"line":120,"path":"/path/to/notes.md"}}]}}</code></pre>

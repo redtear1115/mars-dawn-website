@@ -41,7 +41,7 @@ marsdawn open notes.md --line 120
 - `path:line`: asks MarsDawn to land on that line. A column after it, as in `notes.md:120:8`, is ignored. If a file with the whole name exists, the argument is that file.
 - `--line <n>`: the same for a single file, and the way to ask for a line on a path that itself ends in a colon and digits. Needs exactly one file.
 - Lines run from 1 to 999999999.
-- MarsDawn 1.0 opens the file but doesn't jump to the line yet.
+- MarsDawn 1.0 opens the file at that line.
 - `--json`: print a JSON result instead of text.
 
 Lines were added in marsdawn 0.3.0.
