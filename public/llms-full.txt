@@ -111,11 +111,28 @@ In this screenshot:
 ## How it works
 
 1. **Download it free.** MarsDawn is free to download from the Mac App Store.
-2. **Try all of it for 14 days.** Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.
+2. **Try all of it for 14 days.** Start the trial and everything in MarsDawn works for 14 days: every theme and layout, PDF export and printing, and the Siri and Shortcuts actions. Quick Look in Finder works with or without the trial.
 3. **Unlock it once.** To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.
 
 - The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.
 - There is no account. MarsDawn never asks you to create one.
+
+## What works when
+
+|  | Trial (days 1–14) | Trial ended, not unlocked | Unlocked |
+|---|---|---|---|
+| Open a document in MarsDawn | Yes | Opens, with the content covered | Yes |
+| Read and edit in MarsDawn (source, preview, Mermaid, math) | Yes | No | Yes |
+| Export as PDF and print from MarsDawn | Yes | No | Yes |
+| Keep typed text with File ▸ Save As… | Yes | Yes, in a window open when the trial ended | Yes |
+| Siri and Shortcuts actions | Yes | No | Yes |
+| Quick Look in Finder, with Mermaid diagrams and math | Yes | Yes, unchanged | Yes |
+| `marsdawn export` (free command-line tool): PDF with diagrams and math | Yes | Yes, unchanged | Yes |
+| Your files on disk | As you saved them | As you saved them; the lock never changes them | As you saved them |
+
+Before you start the trial, MarsDawn shows the trial offer. Starting it costs nothing.
+
+PDF files you open in MarsDawn are locked the same way once the trial ends.
 
 ## If you don't unlock
 
@@ -219,7 +236,7 @@ In this screenshot:
 
 ## After the trial
 
-If you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
+If you don't unlock MarsDawn once the 14-day trial ends, you can't read, edit, export or print documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them. The [trial and unlock page](/pay-once/) sets all three stages side by side.
 ---
 
 ## Support
@@ -1778,17 +1795,34 @@ MarsDawn 可以免費下載。開始 14 天試用後，所有功能都能使用�
 ## 怎麼運作
 
 1. **免費下載。** 在 Mac App Store 免費下載 MarsDawn。
-2. **14 天，全部都能用。** 開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。
+2. **14 天，全部都能用。** 開始試用後，14 天內 MarsDawn 的所有功能都能使用：所有主題與版面、PDF 輸出與列印，以及 Siri 和捷徑動作。Finder 的「快速查看」不論有沒有試用都能用。
 3. **買一次就解鎖。** 試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。
 
 - 試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。
 - 不需要帳號，MarsDawn 從不要求你建立帳號。
 
+## 各階段能做什麼
+
+|  | 試用期間（第 1–14 天） | 試用結束、未解鎖 | 已解鎖 |
+|---|---|---|---|
+| 在 MarsDawn 打開文件 | 可以 | 會開啟，但內容被遮住 | 可以 |
+| 在 MarsDawn 閱讀與編輯（原始碼、預覽、Mermaid、數學式） | 可以 | 不行 | 可以 |
+| 在 MarsDawn 輸出 PDF 與列印 | 可以 | 不行 | 可以 |
+| 用「檔案」▸「另存新檔⋯」保存輸入的文字 | 可以 | 可以，限試用結束時已開著的視窗 | 可以 |
+| Siri 和捷徑動作 | 可以 | 不行 | 可以 |
+| Finder 快速查看，含 Mermaid 圖表與數學式 | 可以 | 可以，不受影響 | 可以 |
+| `marsdawn export`（免費命令列工具）：含圖表與數學式的 PDF | 可以 | 可以，不受影響 | 可以 |
+| 你磁碟上的檔案 | 維持你存的樣子 | 維持你存的樣子，鎖定不會改動它們 | 維持你存的樣子 |
+
+開始試用之前，MarsDawn 會先顯示免費試用的畫面。開始試用不用付費。
+
+試用結束後，在 MarsDawn 裡打開的 PDF 檔案也一樣會被鎖住。
+
 ## 如果沒有解鎖
 
 - 14 天後，在你解鎖之前，無法在 MarsDawn 中閱讀、編輯、輸出或列印文件。文件仍會開啟，但內容會被遮住。
 - 你的檔案不會有任何改變。它們就是你 Mac 上的一般檔案，在 Finder 中用「快速查看」依然看得到。
-- 免費的 [`marsdawn` 命令列工具](/zh-hant/cli/)不受試用影響，依然能把它們匯出成 PDF。
+- 免費的 [`marsdawn` 命令列工具](/zh-hant/cli/)不受試用影響，依然能把它們輸出成 PDF。
 - 如果試用結束時有文件正開在 MarsDawn 裡，你輸入的文字不會遺失，可以用「檔案」▸「另存新檔⋯」保存。
 ---
 
@@ -1886,7 +1920,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 
 ## 試用結束之後
 
-如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。
+如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀、編輯、輸出或列印文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能把它們輸出成 PDF。[試用與解鎖頁面](/zh-hant/pay-once/)有三個階段的對照表。
 ---
 
 ## 支援
@@ -3449,17 +3483,34 @@ MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用�
 ## 怎么运作
 
 1. **免费下载。** 在 Mac App Store 免费下载 MarsDawn。
-2. **14 天，全部都能用。** 开始试用后，14 天内所有功能都能使用：所有主题与布局、PDF 输出与打印、快速查看，以及 Siri 和快捷指令操作。
+2. **14 天，全部都能用。** 开始试用后，14 天内 MarsDawn 的所有功能都能使用：所有主题与布局、PDF 输出与打印，以及 Siri 和快捷指令操作。访达的“快速查看”不论有没有试用都能用。
 3. **买一次就解锁。** 试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。
 
 - 试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。
 - 不需要账户，MarsDawn 从不要求你创建账户。
 
+## 各阶段能做什么
+
+|  | 试用期间（第 1–14 天） | 试用结束、未解锁 | 已解锁 |
+|---|---|---|---|
+| 在 MarsDawn 打开文件 | 可以 | 会打开，但内容被遮住 | 可以 |
+| 在 MarsDawn 阅读与编辑（源代码、预览、Mermaid、数学公式） | 可以 | 不行 | 可以 |
+| 在 MarsDawn 输出 PDF 与打印 | 可以 | 不行 | 可以 |
+| 用“文件”▸“存储为…”保存输入的文本 | 可以 | 可以，仅限试用结束时已打开的窗口 | 可以 |
+| Siri 和快捷指令操作 | 可以 | 不行 | 可以 |
+| 访达快速查看，含 Mermaid 图表与数学公式 | 可以 | 可以，不受影响 | 可以 |
+| `marsdawn export`（免费命令行工具）：含图表与数学公式的 PDF | 可以 | 可以，不受影响 | 可以 |
+| 你磁盘上的文件 | 维持你存的样子 | 维持你存的样子，锁定不会改动它们 | 维持你存的样子 |
+
+开始试用之前，MarsDawn 会先显示免费试用的画面。开始试用不用付费。
+
+试用结束后，在 MarsDawn 里打开的 PDF 文件也一样会被锁住。
+
 ## 如果没有解锁
 
 - 14 天后，在你解锁之前，无法在 MarsDawn 中阅读、编辑、输出或打印文稿。文稿仍会打开，但内容会被遮住。
 - 你的文件不会有任何改变。它们就是你 Mac 上的一般文件，在访达中用“快速查看”依然看得到。
-- 免费的 [`marsdawn` 命令行工具](/zh-hans/cli/)不受试用影响，依然能把它们导出成 PDF。
+- 免费的 [`marsdawn` 命令行工具](/zh-hans/cli/)不受试用影响，依然能把它们输出成 PDF。
 - 如果试用结束时有文稿正开在 MarsDawn 里，你输入的文本不会遗失，可以用“文件”▸“存储为…”保存。
 ---
 
@@ -3557,7 +3608,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 
 ## 试用结束之后
 
-如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读和编辑文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能导出它们。
+如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读、编辑、输出或打印文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能把它们输出成 PDF。[试用与解锁页面](/zh-hans/pay-once/)有三个阶段的对照表。
 ---
 
 ## 支持
@@ -5110,11 +5161,28 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 ## 仕組み
 
 1. **無料でダウンロード。** MarsDawn は Mac App Store から無料でダウンロードできます。
-2. **14 日間、すべて使える。** トライアルを始めると、14日間はすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、クイックルック、Siri とショートカットのアクションです。
+2. **14 日間、すべて使える。** トライアルを始めると、14日間は MarsDawn のすべての機能が使えます。すべてのテーマとレイアウト、PDF 書き出しと印刷、Siri とショートカットのアクションです。Finder のクイックルックはトライアルの有無にかかわらず使えます。
 3. **一度の購入で解除。** その後も使い続けるには、USD 4.99 の一度きりの購入でロックを解除します。App 内課金であり、サブスクリプションではないので、自動更新もあとから請求されることもありません。
 
 - トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。
 - アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。
+
+## 各段階でできること
+
+|  | トライアル期間（1〜14日目） | トライアル終了、ロック未解除 | ロック解除済み |
+|---|---|---|---|
+| MarsDawn で文書を開く | できる | 開くが、内容は覆われる | できる |
+| MarsDawn で読み書き（ソース、プレビュー、Mermaid、数式） | できる | できない | できる |
+| MarsDawn から PDF に書き出す・印刷する | できる | できない | できる |
+| 「ファイル」▸「別名で保存…」で入力した文字を残す | できる | できる（トライアル終了時に開いていたウインドウのみ） | できる |
+| Siri とショートカットのアクション | できる | できない | できる |
+| Finder のクイックルック（Mermaid 図と数式つき） | できる | できる、変わらず | できる |
+| `marsdawn export`（無料のコマンドラインツール）：図と数式つきの PDF | できる | できる、変わらず | できる |
+| Mac 上のファイル | 保存したままの状態 | 保存したままの状態。ロックはファイルを変更しない | 保存したままの状態 |
+
+トライアルを始める前は、MarsDawn がトライアルの案内を表示します。開始しても料金はかかりません。
+
+トライアル終了後は、MarsDawn で開いた PDF ファイルも同じようにロックされます。
 
 ## ロックを解除しない場合
 
@@ -5218,7 +5286,7 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 
 ## 試用期間が終わったら
 
-14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。
+14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したり書き出したり印刷したりできません。内容が覆われた状態で開きます。ファイルはそのまま残り、クイックルックでは引き続き表示され、無料のコマンドラインツールも引き続き書き出せます。[トライアルとロック解除のページ](/ja/pay-once/)に、3つの段階を並べた表があります。
 ---
 
 ## サポート
