@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chip Huyen's read-only/write-action split, and why it matters before you approve anything · MarsDawn</title>
+<meta name="description" content="Chip Huyen's January 2025 essay on agents splits their actions into read-only and write actions. Why that split is a fast way to spot the line in a plan worth a closer look before you approve it.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/chip-huyen-agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/chip-huyen-agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/chip-huyen-agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/chip-huyen-agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/chip-huyen-agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/reading-notes/chip-huyen-agents/">
+<link rel="alternate" type="text/markdown" href="/reading-notes/chip-huyen-agents/index.md">
+<meta property="og:title" content="Chip Huyen's read-only/write-action split, and why it matters before you approve anything · MarsDawn">
+<meta property="og:description" content="Chip Huyen's January 2025 essay on agents splits their actions into read-only and write actions. Why that split is a fast way to spot the line in a plan worth a closer look before you approve it.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/reading-notes/chip-huyen-agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/chip-huyen-agents/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/reading-notes/chip-huyen-agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/chip-huyen-agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/chip-huyen-agents/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Chip Huyen's read-only/write-action split, and why it matters before you approve anything</h1>
+</section>
+
+<div class="summary"><p><strong>Chip Huyen's January 2025 essay &#8220;Agents&#8221; starts from the textbook definition and works up to something more specific: an agent's actions split into ones that only look at the world and ones that change it. That split is a good way to decide, in the five minutes you have, which lines in a plan deserve a closer look before you say yes.</strong></p></div>
+
+<h2 id="what-the-piece-argues">What the piece argues</h2>
+<p>Huyen opens plainly:</p>
+<blockquote><p>&#8220;An agent is anything that can perceive its environment and act upon that environment.&#8221;</p></blockquote>
+<p>From there she builds out what an agent needs: an environment to act in, and a set of tools &#8212; its &#8220;tool inventory&#8221; &#8212; that determines what it's able to do. She names a distinction between actions that only let an agent perceive its environment (&#8220;read-only actions&#8221;) and actions that let it act upon that environment (&#8220;write actions&#8221;). She's also direct about the risk that comes with the second kind: &#8220;Write actions enable a system to do more&#8221;, but &#8220;the prospect of giving AI the ability to automatically alter our lives is frightening&#8221; &#8212; as she puts it, &#8220;you shouldn&#8217;t allow an unreliable AI to initiate bank transfers.&#8221; She's also candid about the part of an agent that's hardest to get right:</p>
+<blockquote><p>&#8220;If you&#8217;ve ever been in any planning meeting, you know that planning is hard.&#8221;</p></blockquote>
+<p>Huyen doesn't mention MarsDawn anywhere in this essay, and doesn't recommend any Markdown tool. <code>/reviewing-agent-plans/</code> already quotes three of her lines from this same essay: the cost of skipping oversight before a plan runs, the agent that thinks it's finished when it isn't, and, inside step 3 of its checklist, her line that a system facing a risky operation &#8220;can ask for explicit human approval before executing&#8221;. This note doesn't repeat those quotes; if you haven't read that page, it's linked below.</p>
+
+<h2 id="our-reading-not-huyen-s">Our reading, not Huyen's</h2>
+<p>Huyen's read-only/write-action split isn't written as review advice &#8212; it's a way of classifying what a tool does. But it's a plain, general-purpose test for spotting the kind of risky-operation line that step 3 of that checklist already asks you to slow down for: reading a file, running a search, listing a directory are read-only, and a read-only step going wrong costs you a re-run; deleting data, force-pushing, merging a branch, sending an email, charging a card are write actions, and &#8212; as she says &#8212; a write step going wrong is the frightening kind, and by the time you're reading the agent's report, it may already have happened. Her point that planning is hard even for people in a room together is a useful check on expecting more precision from a plan than the format can bear: a plan reading confidently isn't the same as a plan being right.</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">Where MarsDawn helps, and where it doesn't</h2>
+<p>MarsDawn can't tell a read-only step from a write step in a plan &#8212; that's a judgment call the text doesn't label, and nothing in the app reads for meaning. It has no AI model inside: it won't flag the risky line for you, run the planning-hardness check, or grade the plan. What it does is keep the file legible while you make that call yourself: the Outline tab (View &#9656; Show Sidebar, &#8963;&#8984;S) lets you scan a plan's shape before reading it line by line, the source and the rendered page sit side by side (&#8984;2) so a diagram of the steps doesn't stay stuck as raw Mermaid text, and Edit &#9656; Copy Reference (&#8997;&#8984;C) turns your place in the file into <code>plan.md:10</code>, ready to paste as feedback the moment you spot a write action in the wrong order.</p>
+
+<h2 id="try-it">Try it</h2>
+<p>MarsDawn is coming soon to the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>It exports Markdown to PDF without the app.</p>
+<p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
+
+<h2 id="next">Next</h2>
+<ul>
+  <li>The full six-step, five-minute checklist built from this same essay: <a href="/reviewing-agent-plans/">Reviewing an agent plan in five minutes</a></li>
+  <li>Why agent output is hard to read in general: <a href="/reading-agent-output/">Reading what your agent hands back</a></li>
+  <li>Back to the series: <a href="/reading-notes/">Editor's reading notes</a></li>
+</ul>
+
+<h2 id="sources">Sources</h2>
+<ul>
+  <li>Chip Huyen, &#8220;Agents,&#8221; January 7, 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a> (fetched and quoted 2026-09-26).</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/support/">Support</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
+  </nav>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

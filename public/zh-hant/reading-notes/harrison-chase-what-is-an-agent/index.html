@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harrison Chase 的 agentic 光譜：愉自主，愉需要盯著看 · MarsDawn</title>
+<meta name="description" content="Harrison Chase 2024 年對 agent 的定義，以及他自己的 agentic 光譜；他主張系統愉往自主那端走，就愉需要可觀測性——從讀那份檔案的人的角度重新看一遍。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/harrison-chase-what-is-an-agent/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/reading-notes/harrison-chase-what-is-an-agent/index.md">
+<meta property="og:title" content="Harrison Chase 的 agentic 光譜：愉自主，愉需要盯著看 · MarsDawn">
+<meta property="og:description" content="Harrison Chase 2024 年對 agent 的定義，以及他自己的 agentic 光譜；他主張系統愉往自主那端走，就愉需要可觀測性——從讀那份檔案的人的角度重新看一遍。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/reading-notes/harrison-chase-what-is-an-agent/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">即將在 Mac App Store 上架</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/harrison-chase-what-is-an-agent/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/harrison-chase-what-is-an-agent/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/harrison-chase-what-is-an-agent/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/harrison-chase-what-is-an-agent/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Harrison Chase 的 agentic 光譜：愈自主，愈需要盯著看</h1>
+</section>
+
+<div class="summary"><p><strong>2024 年 6 月，LangChain 的 Harrison Chase 用一個看似簡單的問題&#8212;&#8212;「什麼是 agent？」&#8212;&#8212;開啟了一個新系列，給出一個技術定義，還有一條「agentic」程度的光譜。他主張：系統在這條光譜上愈往自主那端走，就愈需要能在它運作時看得到裡面發生了什麼。</strong></p></div>
+
+<h2 id="what-the-post-argues">這篇文章主張什麼</h2>
+<p>Chase 自己給的定義，還先承認這比大部分人的定義更技術性、涵蓋的範圍也更廣：</p>
+<blockquote><p>&#8220;An agent is a system that uses an LLM to decide the control flow of an application.&#8221;</p></blockquote>
+<p>（Agent 是用 LLM 來決定應用程式控制流程的系統。「控制流程」指的就是程式接下來要跑哪一步。）</p>
+<p>他馬上承認這個定義並不完美&#8212;&#8212;一個只是讓 LLM 在兩條路徑之間做選擇的簡單系統，照他的定義算是 agent，但不太符合大部分人對「agent」的直覺想像。與其去爭誰才是「真正的」agent，他採用了 Andrew Ng 的說法&#8212;&#8212;他引用 Ng 的一則推文，並註明出自 Ng：「rather than arguing over which work to include or exclude as being a true agent, we can acknowledge that there are different degrees to which systems can be agentic」（與其去爭該把哪些工作算進「真正的」agent、哪些不算，不如承認系統可以有不同程度的 agentic）。Chase 自己的回應是：「I really agree with this viewpoint and I think Andrew expressed it nicely」（我很認同這個看法，覺得 Andrew 講得很好）。從這裡出發：系統愈由 LLM 決定該怎麼運作，就愈「agentic」，從固定的路由器，到狀態機，一路到能自己建立並記住工具的完全自主 agent。他從這條光譜出發，提出一個實際的主張：系統愈 agentic，某些基礎建設就愈重要，其中最重要的是可觀測性：</p>
+<blockquote><p>&#8220;You&#8217;ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.&#8221;</p></blockquote>
+<p>（你會希望能觀察系統內部發生了什麼，因為它實際採取的步驟事先可能無法得知。）</p>
+<p>他還進一步主張不只要看，還要能介入：你也會希望能在某個時間點，修改一個正在運作的 agent 的狀態或指示，如果它偏離了原本設定的路徑，就把它拉回來。Chase 在這篇文章裡完全沒有提到 MarsDawn，也沒有推薦任何 Markdown 工具。</p>
+
+<h2 id="our-reading-not-chase-s">以下是我們的解讀，不是 Chase 的</h2>
+<p>Chase 談的是給打造 agent 框架的人用的工具&#8212;&#8212;他點名了 LangGraph 和 LangSmith&#8212;&#8212;不是給讀一份完成文件的人看的。但他這條光譜，給了一個很實用的方式，讓你在開始讀之前先估量一下手上這份東西：產出它的系統愈 agentic，你就愈不該預期它的步驟從最初的 prompt 就能猜得到，手上這份檔案也就愈值得當成「實際發生了什麼」的紀錄來讀，而不是「原本該發生什麼」的紀錄。他說的「觀察系統內部」，講的是一個正在運作的系統的內部狀態&#8212;&#8212;trace（一次執行過程中，agent 做過的所有事的紀錄）、中間步驟、工具呼叫&#8212;&#8212;不是事後讀一份 Markdown 計畫。但他給的理由&#8212;&#8212;步驟事先無法得知&#8212;&#8212;用在 agent 做完之後交給你的那份文件上，一樣說得通：如果一開始步驟就無法預測，那份做完之後的報告，就是唯一還能檢查它們的地方。</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn 幫得上、幫不上的地方</h2>
+<p>MarsDawn 不會去觀察一個正在運作的 agent 的內部&#8212;&#8212;它裡面沒有 AI 模型，也沒有連到產生這份檔案的任何框架，所以沒辦法告訴你某個 agent 在 Chase 的光譜上落在哪裡。它處理的是事後落到你手上的那份文件：側邊欄（「顯示方式 &#9656; 顯示側邊欄」，&#8963;&#8984;S）的「大綱」分頁讓你看清楚一份長報告的架構；原始碼和排好的預覽並排（&#8984;2），處理圖表和數學式；agent 改寫檔案時會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改&#8212;&#8212;這就是「盯著還在動的東西」的檔案版本。「編輯 &#9656; 拷貝引用」（&#8997;&#8984;C）和「拷貝給 AI」（&#8963;&#8997;&#8984;C）讓你精準指出哪一步走偏了，等於是文件版的「把跑偏的 agent 拉回正軌」。</p>
+
+<h2 id="try-it">試試看</h2>
+<p>MarsDawn 即將在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>它不需要 app 就能把 Markdown 輸出成 PDF。</p>
+<p><a href="/zh-hant/cli/">命令列工具</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
+
+<h2 id="next">接下來</h2>
+<ul>
+  <li>這個系列對透明和檢查點更完整的討論：〈<a href="/zh-hant/agent-transparency/">Anthropic 說 agent 要透明，那攤開的東西誰來讀？</a>〉</li>
+  <li>LangChain 2026 年在這篇文章原本的網址上發表的新文章，定義幾乎一模一樣：〈<a href="/zh-hant/reading-notes/langchain-what-is-an-agent/">Jess Ou 的評測流程，裡面還留給你的那一步</a>〉</li>
+  <li>回到系列索引：〈<a href="/zh-hant/reading-notes/">編者的閱讀筆記</a>〉</li>
+</ul>
+
+<h2 id="sources">資料來源</h2>
+<ul>
+  <li>Harrison Chase，〈What is an agent?〉，LangChain，2024 年 6 月 28 日，存檔版本：<a href="http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/">http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/</a> （透過 Wayback Machine 於 2026-09-26 讀取並引用；原網址現在顯示的是 Jess Ou 在 2026 年寫的另一篇文章）</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="網站">
+    <a href="/zh-hant/support/">支援</a>
+    <a href="/zh-hant/privacy/">隱私權政策</a>
+    <a href="/zh-hant/cli/">命令列工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andrew Ng が自分の設計パターンを予測可能性で自らランク付けする · MarsDawn</title>
+<meta name="description" content="The Batch の 5 本の手紙のなかで、Andrew Ng は reflection、tool use、planning、multi-agent collaboration を、信頼性と予測可能性でランク付けしている。そのランク付けが、どのパターンの出力をどれだけ注意深くチェックすべきかについて、何を示唆しているか。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/andrew-ng-design-patterns/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" type="text/markdown" href="/ja/reading-notes/andrew-ng-design-patterns/index.md">
+<meta property="og:title" content="Andrew Ng が自分の設計パターンを予測可能性で自らランク付けする · MarsDawn">
+<meta property="og:description" content="The Batch の 5 本の手紙のなかで、Andrew Ng は reflection、tool use、planning、multi-agent collaboration を、信頼性と予測可能性でランク付けしている。そのランク付けが、どのパターンの出力をどれだけ注意深くチェックすべきかについて、何を示唆しているか。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/reading-notes/andrew-ng-design-patterns/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/andrew-ng-design-patterns/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/andrew-ng-design-patterns/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/andrew-ng-design-patterns/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/andrew-ng-design-patterns/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Andrew Ng が自分の設計パターンを予測可能性で自らランク付けする</h1>
+</section>
+
+<div class="summary"><p><strong>2024 年の初め、Andrew Ng は The Batch の 5 本の手紙で、4 つの agentic な設計パターン——reflection（反省）、tool use（ツール利用）、planning（プランニング）、multi-agent collaboration（複数エージェントの協調）——を説明した。そして珍しく、この 4 つのうちどれをより信頼でき、どれを予測しづらいと感じているかを、読者にはっきり伝えている。</strong></p></div>
+
+<h2 id="what-the-letters-argue">これらの手紙が主張すること</h2>
+<p><a href="/ja/agent-design-patterns/">「4 つのエージェント設計パターンと、それぞれが渡してくる文書」</a>は、この 4 つのパターンがそれぞれ何であるか、私たち自身の推論として、それぞれが普通あなたに何を渡してくるか、そして Part 4 から引用した、planning についての Ng 自身の評価——「while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications&#8217; performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do」（Reflection と Tool Use という設計パターンは、どちらも自分のアプリケーションで確実に動かし、性能を高められている。しかし Planning はまだ成熟していない技術で、それが何をするか事前に予測するのは難しいと感じる）——をすでにくわしく扱っている。このノートで補うのは、あの記事が使っていない、残り 2 本の手紙にある同じランク付けだ：Part 3 は Part 4 の 1 週間前に書かれ、先にこのランク付けを述べている。Part 5 は、Part 4 が触れていないパターン——multi-agent collaboration——にまでランク付けを広げる。tool use を紹介する Part 3 で、彼はこう書いている。</p>
+<blockquote><p>&#8220;In future letters, I&#8217;ll describe the Planning and Multi-agent collaboration design patterns. They allow AI agents to do much more but are less mature, less predictable &#8212; albeit very exciting &#8212; technologies.&#8221;</p></blockquote>
+<p>（今後の手紙では、Planning と Multi-agent collaboration という設計パターンについて説明する。これらは AI エージェントにずっと多くのことをさせられるが、成熟度が低く、予測しづらい——とはいえ、とても刺激的な——技術だ。）</p>
+<p>2 週間後、彼はシリーズの最後の手紙で multi-agent collaboration を扱いながら、別の角度から同じランク付けを確認している。</p>
+<blockquote><p>&#8220;Like the design pattern of Planning, I find the output quality of multi-agent collaboration hard to predict, especially when allowing agents to interact freely and providing them with multiple tools. The more mature patterns of Reflection and Tool Use are more reliable.&#8221;</p></blockquote>
+<p>（Planning という設計パターンと同じように、multi-agent collaboration の出力品質は予測しづらいと感じる。特に、エージェント同士を自由にやり取りさせ、複数のツールを与えたときはそうだ。より成熟した Reflection と Tool Use のパターンのほうが、より信頼できる。）</p>
+<p>彼が語っているのは、これらのパターンが自分のアプリケーションの成果をどれだけ高めるかについてであって、その出力をどれだけ注意深く審査すべきかについてではない——このシリーズは人によるレビューをまったく求めておらず、MarsDawn にも、どんな Markdown ツールにも触れていない。</p>
+
+<h2 id="our-reading-not-ng-s">ここから先は、私たちの解釈であって、Ng の主張ではない</h2>
+<p>Ng のランク付けは、開発者の椅子から見た出力品質と予測可能性についてのものだが、大まかに言えば、それぞれのパターンが残す記録に、あなたの側からどれだけの注意を払う価値があるかにも対応している。彼がより信頼できると感じている reflection と tool use は、たいてい「すでに終わった作業」を描くもの——修正済みの草稿、何を実行したかのレポート——を渡してくるので、そのなかの 1 つの主張を実際の出力と照らし合わせれば、たいていリスクの大部分をカバーできる。彼が予測しづらいと感じている planning と multi-agent collaboration は、たいてい「まだ起きていないこと」について書かれたもの、あるいは複数のエージェントに分散した複数のファイルを渡してくる：あなたの承認を待っている計画や、まだ実行によって検証されていないエージェント間の引き継ぎだ。彼自身の言葉を借りれば、この 2 つこそ、「書かれていること」と「実際に起きること」のギャップが一番大きい場所であり——これはまさに〈エージェントの計画を 5 分でレビューする〉が、Chip Huyen のエッセイから引き出している「なぜ実行前に見るのか」という節の道理でもある。何かが実行される前に問題を見つけることが、一番安く済むタイミングだ。</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn が助けになるところ、ならないところ</h2>
+<p>MarsDawn は、あるファイルが Ng の 4 つのパターンのどれから生まれたのかを知らないし、何かを予測可能性でランク付けすることもなく、中に AI モデルもない——彼のランク付けが示唆しているようなチェックを、代わりにしてくれるわけではない。MarsDawn がしているのは、あなた自身がチェックするあいだ、ファイルを読みやすく保つことだ：サイドバー（「表示 &#9656; サイドバーを表示」、&#8963;&#8984;S）のアウトラインタブで、長い計画の形が見て取れる。ソースとレンダリングされたプレビューは並んで表示される（&#8984;2）。複数エージェントの引き継ぎの場合は、「ファイル &#9656; フォルダを開く&#8230;」（&#8679;&#8984;O）で共有フォルダを開くと、別々のエージェントが新しいファイルを書いたとき、それはおよそ 1 秒でファイルタブに現れ、リストの上には git のブランチや worktree の名前も表示されるので、別々のエージェントが書いた同じ名前のファイルを取り違えることもない。</p>
+
+<h2 id="try-it">試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2 id="next">次に</h2>
+<ul>
+  <li>それぞれのパターンが渡してくる文書の全体像：<a href="/ja/agent-design-patterns/">「4 つのエージェント設計パターンと、それぞれが渡してくる文書」</a></li>
+  <li>実行前に計画を 5 分でレビューする方法：<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a></li>
+  <li>シリーズに戻る：<a href="/ja/reading-notes/">「編集者の読書ノート」</a></li>
+</ul>
+
+<h2 id="sources">出典</h2>
+<ul>
+  <li>Andrew Ng、「Agentic Design Patterns Part 1」、The Batch、2024 年 3 月 20 日：<a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng、「Agentic Design Patterns Part 3: Tool Use」、The Batch、2024 年 4 月 3 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/</a>（2026-09-26 に取得・引用）</li>
+  <li>Andrew Ng、「Agentic Design Patterns Part 4: Planning」、The Batch、2024 年 4 月 10 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a>（引用は <code>design/inbox/276-agent-blog-series.md</code> からそのまま再利用したもので、<code>/ja/agent-design-patterns/</code> ですでに使われている）</li>
+  <li>Andrew Ng、「Agentic Design Patterns Part 5, Multi-Agent Collaboration」、The Batch、2024 年 4 月 17 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/</a>（2026-09-26 に取得・引用）</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

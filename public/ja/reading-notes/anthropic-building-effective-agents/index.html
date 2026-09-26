@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic は workflow と agent を分けて考える。あなたの読み方はどちらに近いか？ · MarsDawn</title>
+<meta name="description" content="2024 年 12 月に Anthropic が発表したガイドは workflow と agent を分けて考え、5 つの workflow パターンを説明している。そのうち 1 つは、もう一回の LLM 呼び出しがレビューを担う。これは、あなたのフォルダに落ちてくるものにとって何を意味するか。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/anthropic-building-effective-agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" type="text/markdown" href="/ja/reading-notes/anthropic-building-effective-agents/index.md">
+<meta property="og:title" content="Anthropic は workflow と agent を分けて考える。あなたの読み方はどちらに近いか？ · MarsDawn">
+<meta property="og:description" content="2024 年 12 月に Anthropic が発表したガイドは workflow と agent を分けて考え、5 つの workflow パターンを説明している。そのうち 1 つは、もう一回の LLM 呼び出しがレビューを担う。これは、あなたのフォルダに落ちてくるものにとって何を意味するか。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/reading-notes/anthropic-building-effective-agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/anthropic-building-effective-agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/anthropic-building-effective-agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/anthropic-building-effective-agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/anthropic-building-effective-agents/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Anthropic は workflow と agent を分けて考える。あなたの読み方はどちらに近いか？</h1>
+</section>
+
+<div class="summary"><p><strong>2024 年 12 月に Anthropic が発表した「Building Effective Agents」は、AI エージェントを作る人向けのガイドだ。冒頭で「workflow」と「agent」という 2 つの言葉を分け、そのあと、まず使える中で一番シンプルなやり方から始めること——場合によっては agentic なシステムをまったく作らないことさえ含めて——を勧め、それでは足りないときにだけ、整理された 5 つの workflow パターンのどれかに手を伸ばすよう提案する。そのパターンの 1 つでは、もう一回の LLM 呼び出しがレビュアーの席に座る。このノートはそのパターンについて、そして残りの 4 つがあなたに何を読ませることになるかについて書く。</strong></p></div>
+
+<h2 id="what-the-guide-argues">ガイドが主張すること</h2>
+<p>Erik S. と Barry Zhang がこの記事を書いたのは、LLM でどうシステムを作るか決めようとしているエンジニア向けだ。まず、こういう定義から始まる。</p>
+<blockquote><p>&#8220;Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.&#8221;</p></blockquote>
+<p>（Workflow とは、LLM とツールがあらかじめ決められたコードの経路にしたがってオーケストレーションされるシステムだ。一方 agent は、LLM が自分自身のプロセスとツールの使い方を動的に決め、タスクをどう成し遂げるかをみずから制御し続けるシステムだ。）</p>
+<p>そのあと、彼らのアドバイスは控えめに始まる。</p>
+<blockquote><p>&#8220;When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed. This might mean not building agentic systems at all.&#8221;</p></blockquote>
+<p>（LLM を使ってアプリケーションを作るとき、私たちはまず可能な限りシンプルな解決策を見つけ、必要なときだけ複雑さを増やしていくことを勧める。これは、agentic なシステムをまったく作らないことを意味する場合もある。）</p>
+<p>より多くの構造が必要なとき向けに、彼らは 5 つの workflow パターンを説明している：prompt chaining（タスクを一連の呼び出しに分割し、ステップの間に任意でチェックを挟む）、routing（ルーティング）、parallelization（並列化）、orchestrator-workers（1 つの LLM がタスクを複数の部分に分け、複数の worker LLM に渡し、その結果をまとめる）、そして evaluator-optimizer。最後のこのパターンについて、原文はこう書いている。</p>
+<blockquote><p>&#8220;In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.&#8221;</p></blockquote>
+<p>（evaluator-optimizer workflow では、1 回の LLM 呼び出しが応答を生成し、もう 1 回の呼び出しがループの中で評価とフィードバックを行う。）</p>
+<p>Anthropic はこのガイドのなかで MarsDawn にはまったく触れておらず、どんな Markdown ツールも勧めていない。このガイドの透明性の原則と「チェックポイント」という言葉については、<a href="/ja/agent-transparency/">「Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？」</a>がすでにくわしく扱っているので、このノートでは繰り返さない。人によるコードレビューについての一文も、あの記事が扱っている、コーディングエージェント専用の付録という文脈でこそ意味を持つ。</p>
+
+<h2 id="our-reading-not-anthropic-s">ここから先は、私たちの解釈であって、Anthropic の主張ではない</h2>
+<p>Anthropic は、workflow が終わったあと最終的な出力を誰がチェックするかについては書いていない。そもそもこの記事全体が文書についてのものではなく、作る人向けのアーキテクチャの決め方についてのものだ。とはいえ、この 5 つのパターンが、あなたに読ませることになるファイルの種類は同じではない。prompt chaining と routing は、たいてい目に見えない配管のようなもので、何かがあなたのところに届くとしても、それはこの連鎖の最後の呼び出しの出力にすぎず、ほかの単発の応答と変わらない。Orchestrator-workers は違う：あなたのコーディングエージェントが内部でこのパターンを使っているなら、フォルダに落ちてくるのは、複数の worker の呼び出しを orchestrator がつなぎ合わせて組み立てた 1 つの文書かもしれず、そのうち 1 つの worker の担当箇所にあるミスは、全体としてなめらかに読める要約のなかに埋もれて見逃されやすい。</p>
+<p>Evaluator-optimizer は特に立ち止まる価値がある。もともと人間のレビュアーが座っていたかもしれない位置に、このガイドはもう一回の LLM 呼び出しを置いているからだ。これは一種のミスを安く捕まえる正当な方法ではあるが、結局はモデルが、与えられた基準にしたがって別のモデルをチェックしているにすぎない——このシリーズのほかの著者たちも、モデルが自分自身や別のモデルの成果を判定することについて、同じ懸念を口にしている。このガイドは、人が evaluator の判定をもう一度確かめるべきだとはどこにも書いておらず、そのこと自体について立場を取っていない。もしあなたがこの一連のプロセスの返してきたものを最後に読む立場なら、「ループが通した」ことと「私が確認した」ことは同じ文ではない——手元のファイルが両方の場合でまったく同じに見えたとしても。</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn が助けになるところ、ならないところ</h2>
+<p>MarsDawn は、あるファイルがどの workflow パターンから生まれたのかを知らないし、中に AI モデルもない——自前で evaluator のステップを走らせることもなければ、Anthropic が描いたその評価がきちんと仕事をしたかどうかを教えてくれることもない。MarsDawn がしているのは：サイドバー（「表示 &#9656; サイドバーを表示」、&#8963;&#8984;S）のアウトラインタブが、orchestrator が組み立てた長いファイルの見出しを一覧にし、クリックするとそこへジャンプする。ソースとレンダリングされたページは並んで表示され（&#8984;2）、一緒にスクロールし、Mermaid の図や KaTeX の数式もソースのままではなく描画される。読んでいる途中でエージェントがファイルを書き換えても、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ。「編集 &#9656; 参照をコピー」（&#8997;&#8984;C）は、いまいる場所を <code>docs/plan.md:42</code> の形でコピーし、そのままエージェントとのチャットに貼り付ければいい。</p>
+
+<h2 id="try-it">試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2 id="next">次に</h2>
+<ul>
+  <li>このガイドの透明性の原則とチェックポイントについての、より詳しい話：<a href="/ja/agent-transparency/">「Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？」</a></li>
+  <li>エージェントの出力が一般になぜ読みにくいか：<a href="/ja/reading-agent-output/">「エージェントが返してくるものを読む」</a></li>
+  <li>シリーズに戻る：<a href="/ja/reading-notes/">「編集者の読書ノート」</a></li>
+</ul>
+
+<h2 id="sources">出典</h2>
+<ul>
+  <li>Erik S. と Barry Zhang、「Building Effective Agents」、Anthropic、2024 年 12 月 19 日：<a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a>（2026-09-26 に取得・引用）</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

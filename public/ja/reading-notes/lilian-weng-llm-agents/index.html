@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lilian Weng が 2023 年に描いたエージェントの設計図、各部分が残すファイル · MarsDawn</title>
+<meta name="description" content="Lilian Weng が 2023 年に書いた、広く引用されているサーベイは、LLM エージェントを、脳とプランニング、記憶、ツール利用の組み合わせとして描く。各部分が普通あなたに何を読ませることになるか、そして計画が予想外の事態に調整できないという、彼女自身が挙げる限界。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/lilian-weng-llm-agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" type="text/markdown" href="/ja/reading-notes/lilian-weng-llm-agents/index.md">
+<meta property="og:title" content="Lilian Weng が 2023 年に描いたエージェントの設計図、各部分が残すファイル · MarsDawn">
+<meta property="og:description" content="Lilian Weng が 2023 年に書いた、広く引用されているサーベイは、LLM エージェントを、脳とプランニング、記憶、ツール利用の組み合わせとして描く。各部分が普通あなたに何を読ませることになるか、そして計画が予想外の事態に調整できないという、彼女自身が挙げる限界。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/reading-notes/lilian-weng-llm-agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/lilian-weng-llm-agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/lilian-weng-llm-agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/lilian-weng-llm-agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/lilian-weng-llm-agents/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Lilian Weng が 2023 年に描いたエージェントの設計図、各部分が残すファイル</h1>
+</section>
+
+<div class="summary"><p><strong>2023 年 6 月、当時 OpenAI に在籍していた Lilian Weng は、自身のブログ Lil'Log に長いサーベイを発表し、LLM を使ったエージェントを、脳（モデル）とプランニング、記憶、ツール利用という 3 つの部品の組み合わせとして描いた。これは広く引用されている初期のエージェントの枠組みであり、彼女はその枠組みがどこでまだ崩れるかについても率直だ。</strong></p></div>
+
+<h2 id="what-the-post-argues">この記事が主張すること</h2>
+<p>Weng は冒頭で、記事全体の枠組みをこう定める。</p>
+<blockquote><p>&#8220;In a LLM-powered autonomous agent system, LLM functions as the agent&#8217;s brain, complemented by several key components: Planning ... Memory ... Tool use&#8221;.</p></blockquote>
+<p>（LLM を使った自律型エージェントのシステムでは、LLM がエージェントの脳として機能し、いくつかの主要な部品——プランニング……記憶……ツール利用……によって補われる。）</p>
+<p>彼女の説明では、プランニングはタスクをサブゴールに分解することと、過去の行動を振り返って今後の行動を改善することの両方を含む。記憶は短期（モデルがいま見ているコンテキストで、彼女は in-context と呼ぶ）と長期（通常はモデルの外、検索可能なデータベースに保存され、彼女は vector store と呼ぶ）に分かれる。ツール利用は、モデルが自分の重みの中にない情報——最新の情報、コードの実行、ほかの API——を外部に求めることを可能にする。記事の終わりに近い、彼女自身が「Challenges」と題した節で、彼女はある限界をはっきりと指摘する。</p>
+<blockquote><p>&#8220;LLMs struggle to adjust plans when faced with unexpected errors, making them less robust compared to humans who learn from trial and error.&#8221;</p></blockquote>
+<p>（LLM は予想外のエラーに直面したとき、計画を調整するのが苦手であり、試行錯誤から学ぶ人間と比べて頑健さに欠ける。）</p>
+<p>また、化学エージェント「ChemCrow」についてのツール利用の事例研究のなかで、彼女はもっと狭い問題を指摘している：LLM による評価では GPT-4 とほぼ同等とされたが、人間の専門家による評価では、ChemCrow は正確性の点でずっと優れているとされた。彼女の結論は「自己評価」についてのものであり、彼女自身の「反省（reflection）」の部品そのものについてではない。</p>
+<blockquote><p>&#8220;The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.&#8221;</p></blockquote>
+<p>（専門知識が欠けていることが原因で、LLM は自分自身の欠陥に気づかず、タスクの結果が正しいかどうかをうまく判断できないことがある。）</p>
+<p>Weng はこの記事のなかで MarsDawn にはまったく触れておらず、どんな Markdown ツールも勧めていない。</p>
+
+<h2 id="our-reading-not-weng-s">ここから先は、私たちの解釈であって、Weng の主張ではない</h2>
+<p>Weng が描いているのは 2023 年時点のエージェントのアーキテクチャであって、「誰かがエージェントの出力を読む」という話はまったく出てこない——ファイルを確認する人がいるとすら、彼女は書いていない。とはいえ、彼女自身が挙げる 3 つの部品は、あなたが読むことになりうる 3 種類のものにちょうど対応している。プランニングは、たいてい実行前に読む文書——計画そのもの——を残す。すでにその中に、ひとまわりの「反省」や自己チェックが組み込まれていることもある。記憶は、たいてい目に見えない。ただしエージェントが長期記憶を、書き続けている下書きファイルとして保存している場合は別で、そのファイル自体を単独で開く価値がある。なぜなら、それは古い、間違った前提を、何も言わないまま後続の多くのステップに持ち越してしまうことがあるからだ。ツール利用は、たいてい「何を実行し、何を得たか」というレポートを残す——計画というより、記録に近い。</p>
+<p>計画が予想外の事態に調整できないという彼女の指摘は、あなたの側から見れば、昨日承認した計画が、今日にはもう古くなっているかもしれない理由になる：計画が想定していなかった何かが途中で起きても、エージェントは計画を立て直すのではなく、そのまま進んでしまうかもしれない。すると最後のレポートは、途中で回り道をしたことには触れずに、もとの計画が「成功した」ことだけを描くかもしれない。これは私たちの推論であって、彼女自身の主張ではない——彼女が語っているのはモデル自身の頑健さについてであって、読み手が何に注意すべきかについてではない。</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn が助けになるところ、ならないところ</h2>
+<p>MarsDawn の中に AI モデルはなく、ある計画が実際に起きたことから静かにずれてしまっていないかを教えてくれることもなければ、あるファイルがプランニングのファイルなのか、記憶のファイルなのか、ツール利用のレポートなのかを見分けてくれることもない——それは内容を読み込んで初めてできる判断であり、あなた自身がする必要がある。MarsDawn がしているのは：サイドバー（「表示 &#9656; サイドバーを表示」、&#8963;&#8984;S）のアウトラインタブが、長い計画の形をひと目で見せてくれる。ソースとレンダリングされたプレビューは並んで表示され（&#8984;2）、Mermaid と KaTeX はそのまま描画される。読んでいる途中でエージェントがファイルを書き換えても、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ——これは特に役に立つ。なぜなら、静かに書き換えられた計画こそ、彼女が「Challenges」の節でモデル側から描いている、まさにその失敗モードだからだ。</p>
+
+<h2 id="try-it">試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2 id="next">次に</h2>
+<ul>
+  <li>異なるエージェントの設計パターンがそれぞれ何のファイルを渡してくるか：<a href="/ja/agent-design-patterns/">「4 つのエージェント設計パターンと、それぞれが渡してくる文書」</a></li>
+  <li>実行前に計画を 5 分でレビューする方法：<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a></li>
+  <li>シリーズに戻る：<a href="/ja/reading-notes/">「編集者の読書ノート」</a></li>
+</ul>
+
+<h2 id="sources">出典</h2>
+<ul>
+  <li>Lilian Weng、「LLM Powered Autonomous Agents」、Lil'Log、2023 年 6 月 23 日：<a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a>（2026-09-26 に取得・引用。この記事を書いた当時、彼女は OpenAI に在籍しており、ここでもその当時の立場としてのみ記す）</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

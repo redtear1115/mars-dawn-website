@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jess Ou's evals pipeline, and the one step in it that's still yours · MarsDawn</title>
+<meta name="description" content="LangChain's 2026 “What is an AI agent?” by Jess Ou echoes Harrison Chase's 2024 definition and describes a pipeline for evaluating agents automatically. Where that pipeline still hands a step to a person, and where it doesn't.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/langchain-what-is-an-agent/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/langchain-what-is-an-agent/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/langchain-what-is-an-agent/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/langchain-what-is-an-agent/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/langchain-what-is-an-agent/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/reading-notes/langchain-what-is-an-agent/">
+<link rel="alternate" type="text/markdown" href="/reading-notes/langchain-what-is-an-agent/index.md">
+<meta property="og:title" content="Jess Ou's evals pipeline, and the one step in it that's still yours · MarsDawn">
+<meta property="og:description" content="LangChain's 2026 “What is an AI agent?” by Jess Ou echoes Harrison Chase's 2024 definition and describes a pipeline for evaluating agents automatically. Where that pipeline still hands a step to a person, and where it doesn't.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/reading-notes/langchain-what-is-an-agent/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Coming soon to the Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/langchain-what-is-an-agent/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/reading-notes/langchain-what-is-an-agent/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/langchain-what-is-an-agent/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/langchain-what-is-an-agent/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Jess Ou's evals pipeline, and the one step in it that's still yours</h1>
+</section>
+
+<div class="summary"><p><strong>In July 2026, LangChain published a new &#8220;What is an AI agent?&#8221; at the address where Harrison Chase's 2024 post &#8220;What is an agent?&#8221; used to live &#8212; this one written by Jess Ou, with a definition that's almost word for word his. Most of her post is about something his didn't cover: a whole pipeline for evaluating agents automatically. Her post is candid about where that pipeline still needs a person, and where it doesn't.</strong></p></div>
+
+<h2 id="what-the-post-argues">What the post argues</h2>
+<p>Ou's definition echoes Chase's closely:</p>
+<blockquote><p>&#8220;An AI agent is a system that uses a large language model to decide the control flow of an application.&#8221;</p></blockquote>
+<p>Control flow, again, just means which step runs next. From there she describes LangChain's Agent Development Lifecycle &#8212; build, test, deploy, monitor &#8212; and a layered approach to checking an agent's work without a person reading every run: online evals sample production traces (recorded logs of real runs) for regressions, offline evals run against curated datasets to catch a bad change before it ships, and &#8220;LLM-as-a-judge&#8221; scores a run's output against criteria a person defined up front, at a scale manual review can't match. She's direct about where a person still belongs in that pipeline:</p>
+<blockquote><p>&#8220;For sensitive or irreversible actions, we recommend human-in-the-loop controls that pause the agent for approval, edits, rejection, or clarification.&#8221;</p></blockquote>
+<p>She also has a line about judgment that doesn't scale away no matter how good the pipeline gets: &#8220;Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.&#8221; <code>/reviewing-agent-plans/</code> already builds on that exact sentence &#8212; this note doesn't repeat that discussion. Ou doesn't mention MarsDawn anywhere in this post, and doesn't recommend any Markdown tool. She also never mentions Chase by name; what connects the two posts is that LangChain published hers in 2026 at the address his 2024 post used to occupy, with a nearly identical definition &#8212; an observation we're making, not one she makes.</p>
+
+<h2 id="our-reading-not-ou-s">Our reading, not Ou's</h2>
+<p>Ou's human-in-the-loop line is about gating specific actions before they run &#8212; pausing a write action for approval, the same idea Chip Huyen's read-only/write-action split points at from a different angle &#8212; not about a person reading a finished report after the fact. Read carefully, most of her pipeline is designed to remove a person from routine checking, not add one: online and offline evals and LLM-as-a-judge exist specifically so a team doesn't have to manually review every trace. That's not a criticism of the piece &#8212; it's her stated goal, and a reasonable one at production scale. But it means the review you do by hand &#8212; reading a plan or a report an agent hands you directly &#8212; is exactly the kind of check her pipeline is built to reduce, not replace. Her own judgment line puts a floor under that reduction: wherever you personally can't tell a right answer from a wrong one, you still have to read it for yourself.</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">Where MarsDawn helps, and where it doesn't</h2>
+<p>MarsDawn isn't an evals pipeline and has no AI model inside &#8212; it won't score a trace, run an LLM-as-a-judge pass, or decide which actions are sensitive enough to pause. It's built for the moment her pipeline still hands to a person: reading the thing directly. The Outline tab (View &#9656; Show Sidebar, &#8963;&#8984;S) lists a long report's headings, the source and rendered preview sit side by side (&#8984;2) with Mermaid and KaTeX drawn out, and Edit &#9656; Copy Reference (&#8997;&#8984;C) with Copy for AI (&#8963;&#8997;&#8984;C) let you turn a spot check into precise feedback the agent can act on.</p>
+
+<h2 id="try-it">Try it</h2>
+<p>MarsDawn is coming soon to the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>It exports Markdown to PDF without the app.</p>
+<p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
+
+<h2 id="next">Next</h2>
+<ul>
+  <li>The full checklist built partly from her &#8220;outsource judgment&#8221; line: <a href="/reviewing-agent-plans/">Reviewing an agent plan in five minutes</a></li>
+  <li>Where this same definition started, in 2024: <a href="/reading-notes/harrison-chase-what-is-an-agent/">Harrison Chase's spectrum: the more agentic it is, the more you'll want to watch it</a></li>
+  <li>Back to the series: <a href="/reading-notes/">Editor's reading notes</a></li>
+</ul>
+
+<h2 id="sources">Sources</h2>
+<ul>
+  <li>Jess Ou, &#8220;What is an AI agent?,&#8221; LangChain, July 31, 2026: <a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a> (fetched and quoted 2026-09-26).</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/support/">Support</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
+  </nav>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is coming soon to the Mac App Store.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

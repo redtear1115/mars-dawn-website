@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andrew Ng 自己幫四種設計模式的可預測程度排序 · MarsDawn</title>
+<meta name="description" content="在 The Batch 的五篇文章裡，Andrew Ng 依可靠與可預測的程度，幫 reflection、tool use、planning 和 multi-agent collaboration 排序——這個排序，對你該多仔細檢查哪一種的產出，有什麼提示。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/andrew-ng-design-patterns/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/reading-notes/andrew-ng-design-patterns/index.md">
+<meta property="og:title" content="Andrew Ng 自己幫四種設計模式的可預測程度排序 · MarsDawn">
+<meta property="og:description" content="在 The Batch 的五篇文章裡，Andrew Ng 依可靠與可預測的程度，幫 reflection、tool use、planning 和 multi-agent collaboration 排序——這個排序，對你該多仔細檢查哪一種的產出，有什麼提示。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/reading-notes/andrew-ng-design-patterns/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">即將在 Mac App Store 上架</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/andrew-ng-design-patterns/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/andrew-ng-design-patterns/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/andrew-ng-design-patterns/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/andrew-ng-design-patterns/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Andrew Ng 自己幫四種設計模式的可預測程度排序</h1>
+</section>
+
+<div class="summary"><p><strong>2024 年初，Andrew Ng 在 The Batch 用五篇文章介紹了四種 agentic 設計模式&#8212;&#8212;reflection（反思）、tool use（使用工具）、planning（規劃）、multi-agent collaboration（多 agent 協作）&#8212;&#8212;而且很少見地直接告訴讀者，這四種裡他覺得哪兩種比較可靠、哪兩種難以預測。</strong></p></div>
+
+<h2 id="what-the-letters-argue">這幾篇文章主張什麼</h2>
+<p>〈<a href="/zh-hant/agent-design-patterns/">四種 agent 設計模式，各自會交給你什麼文件</a>〉已經完整談過這四種模式各自是什麼、當成我們自己的推論各自通常會交給你什麼文件，還有 Ng 自己對 planning 的評語，引自 Part 4：「while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications&#8217; performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do」（Reflection 和 Tool Use 這兩種設計模式我都能讓它們穩定運作、提升應用程式的表現，但 Planning 還是比較不成熟的技術，我很難事先預測它會怎麼做）。這篇要補的，是那篇沒用到的另外兩封信裡同一個排序：Part 3，寫在 Part 4 之前一週，先講出了這個排序；Part 5，把排序延伸到 Part 4 沒提到的那一種模式&#8212;&#8212;multi-agent collaboration。在介紹 tool use 的 Part 3 裡，他寫道：</p>
+<blockquote><p>&#8220;In future letters, I&#8217;ll describe the Planning and Multi-agent collaboration design patterns. They allow AI agents to do much more but are less mature, less predictable &#8212; albeit very exciting &#8212; technologies.&#8221;</p></blockquote>
+<p>（在接下來的信裡，我會介紹 Planning 和 Multi-agent collaboration 這兩種設計模式。它們能讓 AI agent 做到更多事，但也是比較不成熟、比較難預測的技術&#8212;&#8212;雖然非常令人興奮。）</p>
+<p>兩週後，他在系列最後一篇談 multi-agent collaboration 時，從另一個角度確認了同樣的排序：</p>
+<blockquote><p>&#8220;Like the design pattern of Planning, I find the output quality of multi-agent collaboration hard to predict, especially when allowing agents to interact freely and providing them with multiple tools. The more mature patterns of Reflection and Tool Use are more reliable.&#8221;</p></blockquote>
+<p>（就像 Planning 這個設計模式一樣，我發現 multi-agent collaboration 的輸出品質很難預測，尤其是讓 agent 之間自由互動、又給它們多種工具的時候。比較成熟的 Reflection 和 Tool Use 模式則可靠得多。）</p>
+<p>他講的是這幾種模式對他自己應用程式表現的提升效果，不是在談應該多仔細審閱它們的產出&#8212;&#8212;這個系列完全沒有主張要人工審閱，也沒有提到 MarsDawn 或推薦任何 Markdown 工具。</p>
+
+<h2 id="our-reading-not-ng-s">以下是我們的解讀，不是 Ng 的</h2>
+<p>Ng 的排序談的是開發者視角下的輸出品質和可預測性，但大致對應到每種模式留下的紀錄，從你的角度該花多少心力去查。他覺得比較可靠的 reflection 和 tool use，通常會交給你描述「已經做完的事」的東西&#8212;&#8212;一份改過的草稿、一份跑了什麼的報告&#8212;&#8212;所以拿裡面一個宣稱去對照真正的輸出，通常就能覆蓋大部分風險。他覺得難以預測的 planning 和 multi-agent collaboration，通常會交給你「事情發生之前」寫好的東西，或是分散在好幾個 agent 手上的好幾份檔案：一份還在等你點頭的計畫，或是還沒被實際執行驗證過的 agent 交接。照他自己的說法，這兩種正是「寫下來的東西」和「實際會發生的事」落差最大的地方&#8212;&#8212;這也正是〈五分鐘審完一份 agent 計畫〉從 Chip Huyen 那篇文章裡引出的道理，在「為什麼要在執行前審」那一段：在事情跑之前抓到問題，是最便宜的時機。</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn 幫得上、幫不上的地方</h2>
+<p>MarsDawn 不知道一份檔案是 Ng 四種模式裡哪一種做出來的，也不會替任何東西按可預測程度排序，裡面也沒有 AI 模型&#8212;&#8212;他排序背後暗示值得做的那些檢查，它不會替你做。它做的是讓檔案在你自己檢查的時候保持好讀：側邊欄（「顯示方式 &#9656; 顯示側邊欄」，&#8963;&#8984;S）的「大綱」分頁看得出一份長計畫的架構；原始碼和排好的預覽並排（&#8984;2）；multi-agent 交接的情況下，用「檔案 &#9656; 打開資料夾⋯」（&#8679;&#8984;O）打開共用的資料夾，不同 agent 寫出新檔案時，大約一秒內就會出現在「檔案」分頁，清單上方也會標出 git 分支或工作樹，兩份不同 agent 寫的同名檔案就不會搞混。</p>
+
+<h2 id="try-it">試試看</h2>
+<p>MarsDawn 即將在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>它不需要 app 就能把 Markdown 輸出成 PDF。</p>
+<p><a href="/zh-hant/cli/">命令列工具</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
+
+<h2 id="next">接下來</h2>
+<ul>
+  <li>每種模式完整會交給你什麼文件：〈<a href="/zh-hant/agent-design-patterns/">四種 agent 設計模式，各自會交給你什麼文件</a>〉</li>
+  <li>執行前五分鐘審完一份計畫的方法：〈<a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>〉</li>
+  <li>回到系列索引：〈<a href="/zh-hant/reading-notes/">編者的閱讀筆記</a>〉</li>
+</ul>
+
+<h2 id="sources">資料來源</h2>
+<ul>
+  <li>Andrew Ng，〈Agentic Design Patterns Part 1〉，The Batch，2024 年 3 月 20 日：<a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng，〈Agentic Design Patterns Part 3: Tool Use〉，The Batch，2024 年 4 月 3 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/</a> （2026-09-26 讀取並引用）</li>
+  <li>Andrew Ng，〈Agentic Design Patterns Part 4: Planning〉，The Batch，2024 年 4 月 10 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a> （引文原封不動沿用自 <code>design/inbox/276-agent-blog-series.md</code>，該引文已用在 <code>/zh-hant/agent-design-patterns/</code>）</li>
+  <li>Andrew Ng，〈Agentic Design Patterns Part 5, Multi-Agent Collaboration〉，The Batch，2024 年 4 月 17 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/</a> （2026-09-26 讀取並引用）</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="網站">
+    <a href="/zh-hant/support/">支援</a>
+    <a href="/zh-hant/privacy/">隱私權政策</a>
+    <a href="/zh-hant/cli/">命令列工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

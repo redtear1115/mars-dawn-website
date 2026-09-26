@@ -7,7 +7,7 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 
 
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': 'MarsDawn は Mac App Store で近日公開予定です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定'}
+    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': 'MarsDawn は Mac App Store で近日公開予定です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定'}
     store_chip = 'Mac App Store で近日公開'
     schema_notes = {'export': 'export 成功時', 'open': 'open 成功時、marsdawn 0.3.0 以降', 'error': '失敗時、両方のコマンド共通', 'open_v1': 'open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）'}
     example_plan = '# 計画：書き出しを高速化\n\nこの計画はエージェントが書きました。内容を確認してから、PDF にします。\n\n## ステップ\n\n| ステップ | 担当 | 状況 |\n|------|-------|--------|\n| 遅いページを計測する | エージェント | 完了 |\n| レンダリング済み図をキャッシュする | エージェント | レビュー中 |\n\n50 ページの文書で目標とするのは $t < 2\\,\\text{s}$：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  ドラフト --> レビュー --> 公開\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -830,6 +830,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li>なぜエージェントはそもそも計画を示すのか：<a href="/ja/agent-transparency/">Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？</a></li>
   <li>上のチェックリストを、実例つきで詳しく：<a href="/ja/reviewing-agent-plans/">エージェントの計画を 5 分でレビューする</a>。</li>
   <li>エージェントの種類ごとに、どんな文書が返ってくるか：<a href="/ja/agent-design-patterns/">4 つのエージェント設計パターンと、それぞれが返す文書</a>。</li>
+  <li>エージェントを作る人たちが実際に何を語っているか、6 本の長めのノート：<a href="/ja/reading-notes/">編集者の読書ノート</a>。</li>
 </ul>
 
 <h2>出典</h2>
@@ -897,6 +898,8 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li>そのチェックリストを、実例つきで詳しく：<a href="/ja/reviewing-agent-plans/">エージェントの計画を 5 分でレビューする</a>。</li>
   <li>エージェントの種類ごとに、どんな文書が返ってくるか：<a href="/ja/agent-design-patterns/">4 つのエージェント設計パターンと、それぞれが返す文書</a>。</li>
   <li>AI の出力をそもそも読むべき理由（短い版）：<a href="/ja/reviewing-ai-output/">AI の出力を人が確認する理由</a>。</li>
+  <li>このガイド自身の workflow パターンを、より詳しく：<a href="/ja/reading-notes/anthropic-building-effective-agents/">Anthropic は workflow と agent を分けて考える。あなたの読み方はどちらに近いか？</a></li>
+  <li>Harrison Chase の可観測性についての主張を、より詳しく：<a href="/ja/reading-notes/harrison-chase-what-is-an-agent/">Harrison Chase のスペクトラム：agentic であるほど、見ていたくなる</a></li>
 </ul>
 
 <h2>出典</h2>
@@ -975,6 +978,8 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
   <li>そもそもエージェントの出力がなぜ読みにくいか：<a href="/ja/reading-agent-output/">エージェントが返してくるものを読む</a>。</li>
   <li>なぜエージェントはそもそも計画を示すのか：<a href="/ja/agent-transparency/">Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？</a></li>
   <li>エージェントが返すのは計画だけではない：<a href="/ja/agent-design-patterns/">4 つのエージェント設計パターンと、それぞれが返す文書</a>。</li>
+  <li>Chip Huyen の read-only／write action という分け方を、より詳しく：<a href="/ja/reading-notes/chip-huyen-agents/">Chip Huyen の read-only／write action という分け方、承認する前になぜ大事か</a></li>
+  <li>Andrew Ng が自分の設計パターンをどうランク付けしているか、より詳しく：<a href="/ja/reading-notes/andrew-ng-design-patterns/">Andrew Ng が自分の設計パターンを予測可能性で自らランク付けする</a></li>
 </ul>
 
 <h2>出典</h2>
@@ -1046,6 +1051,8 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
   <li>エージェントの出力がなぜ読みにくいか、そのチェックリスト：<a href="/ja/reading-agent-output/">エージェントが返してくるものを読む</a>。</li>
   <li>計画のチェックを、完全な形で：<a href="/ja/reviewing-agent-plans/">エージェントの計画を 5 分でレビューする</a>。</li>
   <li>透明性があなたに求めること、求めないこと：<a href="/ja/agent-transparency/">Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？</a></li>
+  <li>Andrew Ng が自分でこれらのパターンをどうランク付けしているか、より詳しく：<a href="/ja/reading-notes/andrew-ng-design-patterns/">Andrew Ng が自分の設計パターンを予測可能性で自らランク付けする</a></li>
+  <li>Lilian Weng によるもっと早い時期のエージェントの設計図、より詳しく：<a href="/ja/reading-notes/lilian-weng-llm-agents/">Lilian Weng が 2023 年に描いたエージェントの設計図、各部分が残すファイル</a></li>
 </ul>
 
 <h2>出典</h2>
@@ -1075,6 +1082,307 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
   <li>書き出した PDF のテキストレイヤーを、中国語、日本語、韓国語について修正しました。</li>
   <li><code>marsdawn open --background</code> はファイルを開きますが、MarsDawn を前面には出しません。</li>
   <li><code>marsdawn open</code> にフォルダを渡せます。Mac App Store のアプリはまだフォルダを表示できないので、このオプションは、それができるアプリを待ちます。</li>
+</ul>
+""",
+    }
+    pages['reading-notes'] = {
+        "title": "編集者の読書ノート · MarsDawn",
+        "description": "AI エージェントを作っている人たちが実際に何を主張しているかを見る、6 本の短いノート——Anthropic、Chip Huyen、Lilian Weng、Harrison Chase、LangChain、Andrew Ng——それぞれが、エージェントの返してきたものを読む人にとって何を意味するか。",
+        "body": f"""
+<section class="intro">
+  <h1>編集者の読書ノート</h1>
+  <p>AI エージェントがどう動くかについて、6 人がそれぞれ書いている：エージェントが何でできているか、何が「agentic」と呼べるのか、どの設計パターンが実際に通用し、どれがまだ未成熟か。誰も「エージェントの返してきたものをどう読むか」については書いていないし、誰も MarsDawn には触れておらず、Markdown ツールを勧めてもいない。私たちはそれぞれの記事をその文脈のまま読み、私たち自身の解釈がどこから始まるかをはっきり示したうえで、どの出典にも同じ問いを立てた：この記事のせいで、あなたのフォルダにはどんなファイルが落ちてくるのか、そしてそれを読むとき MarsDawn は何の役に立つのか。</p>
+</section>
+
+<p>まず実用的なほうから読みたいなら、<a href="/ja/reading-agent-output/">「エージェントが返してくるものを読む」</a>と<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a>から始めてほしい。この 6 本のノートは、そのもとになった出典によりくわしく踏み込んでいる。どれも単独で読めるので、順番は問わない。</p>
+
+<ul>
+  <li><a href="/ja/reading-notes/anthropic-building-effective-agents/">Anthropic は workflow と agent を分けて考える。あなたの読み方はどちらに近いか？</a>&#8212;&#8212;エージェントを作る人向けの Anthropic のガイドは、決まった手順と、自分で次の一手を決めるモデルを分けて説明し、「レビュアー」が実は人ではなく、もう一回の LLM 呼び出しである workflow を 1 つ描いている。</li>
+  <li><a href="/ja/reading-notes/chip-huyen-agents/">Chip Huyen の read-only／write action という分け方、承認する前になぜ大事か</a>&#8212;&#8212;彼女によるエージェントの平易な定義と、「見るだけ」の行動と「何かを変える」行動の違い。これこそ 5 分のレビューで一番時間をかける価値がある場所だ。</li>
+  <li><a href="/ja/reading-notes/lilian-weng-llm-agents/">Lilian Weng が 2023 年に描いたエージェントの設計図、各部分が残すファイル</a>&#8212;&#8212;脳、プランニング、記憶、ツール利用：エージェントが何でできているかについての、彼女自身のフレームワークと、うまくいかないときに彼女が名指ししている限界。</li>
+  <li><a href="/ja/reading-notes/harrison-chase-what-is-an-agent/">Harrison Chase のスペクトラム：agentic であるほど、見ていたくなる</a>&#8212;&#8212;彼によるエージェントの技術的な定義と、システムがそのスペクトラムを進むほど観測可能性が必要だという、彼自身の主張。</li>
+  <li><a href="/ja/reading-notes/langchain-what-is-an-agent/">Jess Ou の評価パイプライン、そのうち 1 ステップだけはまだあなたの仕事</a>&#8212;&#8212;2026 年 7 月、LangChain は Harrison Chase の 2024 年の記事があった URL に、Jess Ou が書いた新しい「What is an AI agent?」を公開した。定義はほぼ彼のものと一言一句同じで、そこから先は、自動評価がどこで止まり、どこから先は人がやるしかないかを説明している。</li>
+  <li><a href="/ja/reading-notes/andrew-ng-design-patterns/">Andrew Ng が自分の設計パターンを予測可能性で自らランク付けする</a>&#8212;&#8212;The Batch の 5 本の手紙のなかで、彼はどのパターンをより信頼でき、どれを予測しづらいと感じているか、はっきり書いている。</li>
+</ul>
+
+<p>この 6 本のどれも、「エージェントの出力をもっと注意深く読むべきだ」とは主張していないし、どれも MarsDawn についてのものではない。その結びつきをつけているのは私たちであって、どのノートもそう断っている。</p>
+""",
+    }
+    pages['reading-notes/anthropic-building-effective-agents'] = {
+        "title": "Anthropic は workflow と agent を分けて考える。あなたの読み方はどちらに近いか？ · MarsDawn",
+        "description": "2024 年 12 月に Anthropic が発表したガイドは workflow と agent を分けて考え、5 つの workflow パターンを説明している。そのうち 1 つは、もう一回の LLM 呼び出しがレビューを担う。これは、あなたのフォルダに落ちてくるものにとって何を意味するか。",
+        "body": f"""
+<section class="intro">
+  <h1>Anthropic は workflow と agent を分けて考える。あなたの読み方はどちらに近いか？</h1>
+</section>
+
+<div class="summary"><p><strong>2024 年 12 月に Anthropic が発表した「Building Effective Agents」は、AI エージェントを作る人向けのガイドだ。冒頭で「workflow」と「agent」という 2 つの言葉を分け、そのあと、まず使える中で一番シンプルなやり方から始めること——場合によっては agentic なシステムをまったく作らないことさえ含めて——を勧め、それでは足りないときにだけ、整理された 5 つの workflow パターンのどれかに手を伸ばすよう提案する。そのパターンの 1 つでは、もう一回の LLM 呼び出しがレビュアーの席に座る。このノートはそのパターンについて、そして残りの 4 つがあなたに何を読ませることになるかについて書く。</strong></p></div>
+
+<h2>ガイドが主張すること</h2>
+<p>Erik S. と Barry Zhang がこの記事を書いたのは、LLM でどうシステムを作るか決めようとしているエンジニア向けだ。まず、こういう定義から始まる。</p>
+<blockquote><p>&#8220;Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.&#8221;</p></blockquote>
+<p>（Workflow とは、LLM とツールがあらかじめ決められたコードの経路にしたがってオーケストレーションされるシステムだ。一方 agent は、LLM が自分自身のプロセスとツールの使い方を動的に決め、タスクをどう成し遂げるかをみずから制御し続けるシステムだ。）</p>
+<p>そのあと、彼らのアドバイスは控えめに始まる。</p>
+<blockquote><p>&#8220;When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed. This might mean not building agentic systems at all.&#8221;</p></blockquote>
+<p>（LLM を使ってアプリケーションを作るとき、私たちはまず可能な限りシンプルな解決策を見つけ、必要なときだけ複雑さを増やしていくことを勧める。これは、agentic なシステムをまったく作らないことを意味する場合もある。）</p>
+<p>より多くの構造が必要なとき向けに、彼らは 5 つの workflow パターンを説明している：prompt chaining（タスクを一連の呼び出しに分割し、ステップの間に任意でチェックを挟む）、routing（ルーティング）、parallelization（並列化）、orchestrator-workers（1 つの LLM がタスクを複数の部分に分け、複数の worker LLM に渡し、その結果をまとめる）、そして evaluator-optimizer。最後のこのパターンについて、原文はこう書いている。</p>
+<blockquote><p>&#8220;In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.&#8221;</p></blockquote>
+<p>（evaluator-optimizer workflow では、1 回の LLM 呼び出しが応答を生成し、もう 1 回の呼び出しがループの中で評価とフィードバックを行う。）</p>
+<p>Anthropic はこのガイドのなかで MarsDawn にはまったく触れておらず、どんな Markdown ツールも勧めていない。このガイドの透明性の原則と「チェックポイント」という言葉については、<a href="/ja/agent-transparency/">「Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？」</a>がすでにくわしく扱っているので、このノートでは繰り返さない。人によるコードレビューについての一文も、あの記事が扱っている、コーディングエージェント専用の付録という文脈でこそ意味を持つ。</p>
+
+<h2>ここから先は、私たちの解釈であって、Anthropic の主張ではない</h2>
+<p>Anthropic は、workflow が終わったあと最終的な出力を誰がチェックするかについては書いていない。そもそもこの記事全体が文書についてのものではなく、作る人向けのアーキテクチャの決め方についてのものだ。とはいえ、この 5 つのパターンが、あなたに読ませることになるファイルの種類は同じではない。prompt chaining と routing は、たいてい目に見えない配管のようなもので、何かがあなたのところに届くとしても、それはこの連鎖の最後の呼び出しの出力にすぎず、ほかの単発の応答と変わらない。Orchestrator-workers は違う：あなたのコーディングエージェントが内部でこのパターンを使っているなら、フォルダに落ちてくるのは、複数の worker の呼び出しを orchestrator がつなぎ合わせて組み立てた 1 つの文書かもしれず、そのうち 1 つの worker の担当箇所にあるミスは、全体としてなめらかに読める要約のなかに埋もれて見逃されやすい。</p>
+<p>Evaluator-optimizer は特に立ち止まる価値がある。もともと人間のレビュアーが座っていたかもしれない位置に、このガイドはもう一回の LLM 呼び出しを置いているからだ。これは一種のミスを安く捕まえる正当な方法ではあるが、結局はモデルが、与えられた基準にしたがって別のモデルをチェックしているにすぎない——このシリーズのほかの著者たちも、モデルが自分自身や別のモデルの成果を判定することについて、同じ懸念を口にしている。このガイドは、人が evaluator の判定をもう一度確かめるべきだとはどこにも書いておらず、そのこと自体について立場を取っていない。もしあなたがこの一連のプロセスの返してきたものを最後に読む立場なら、「ループが通した」ことと「私が確認した」ことは同じ文ではない——手元のファイルが両方の場合でまったく同じに見えたとしても。</p>
+
+<h2>MarsDawn が助けになるところ、ならないところ</h2>
+<p>MarsDawn は、あるファイルがどの workflow パターンから生まれたのかを知らないし、中に AI モデルもない——自前で evaluator のステップを走らせることもなければ、Anthropic が描いたその評価がきちんと仕事をしたかどうかを教えてくれることもない。MarsDawn がしているのは：サイドバー（「表示 &#9656; サイドバーを表示」、&#8963;&#8984;S）のアウトラインタブが、orchestrator が組み立てた長いファイルの見出しを一覧にし、クリックするとそこへジャンプする。ソースとレンダリングされたページは並んで表示され（&#8984;2）、一緒にスクロールし、Mermaid の図や KaTeX の数式もソースのままではなく描画される。読んでいる途中でエージェントがファイルを書き換えても、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ。「編集 &#9656; 参照をコピー」（&#8997;&#8984;C）は、いまいる場所を <code>docs/plan.md:42</code> の形でコピーし、そのままエージェントとのチャットに貼り付ければいい。</p>
+
+<h2>試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2>次に</h2>
+<ul>
+  <li>このガイドの透明性の原則とチェックポイントについての、より詳しい話：<a href="/ja/agent-transparency/">「Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？」</a></li>
+  <li>エージェントの出力が一般になぜ読みにくいか：<a href="/ja/reading-agent-output/">「エージェントが返してくるものを読む」</a></li>
+  <li>シリーズに戻る：<a href="/ja/reading-notes/">「編集者の読書ノート」</a></li>
+</ul>
+
+<h2>出典</h2>
+<ul>
+  <li>Erik S. と Barry Zhang、「Building Effective Agents」、Anthropic、2024 年 12 月 19 日：<a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a>（2026-09-26 に取得・引用）</li>
+</ul>
+""",
+    }
+    pages['reading-notes/chip-huyen-agents'] = {
+        "title": "Chip Huyen の read-only／write action という分け方、承認する前になぜ大事か · MarsDawn",
+        "description": "Chip Huyen が 2025 年 1 月に書いたエッセイは、エージェントの行動を read-only と write action に分ける。承認する前の 5 分間で、計画のどの行を特に見るべきかを見分ける、手早い方法。",
+        "body": f"""
+<section class="intro">
+  <h1>Chip Huyen の read-only／write action という分け方、承認する前になぜ大事か</h1>
+</section>
+
+<div class="summary"><p><strong>Chip Huyen が 2025 年 1 月に発表したエッセイ「Agents」は、教科書的な定義から出発し、もっと具体的な分け方にたどり着く：エージェントの行動は、世界を見るだけのものと、世界を変えるものに分かれる、というものだ。この分け方は、あなたに与えられた 5 分間で、計画のどの行を特によく見るべきかを決めるのに役立つ。</strong></p></div>
+
+<h2>この記事が主張すること</h2>
+<p>Huyen はまっすぐにこう始める。</p>
+<blockquote><p>&#8220;An agent is anything that can perceive its environment and act upon that environment.&#8221;</p></blockquote>
+<p>（エージェントとは、自分の環境を知覚し、その環境に対して行動できる、あらゆるものだ。）</p>
+<p>そこから彼女は、エージェントに何が必要かを組み立てていく：行動できる環境と、それが何をできるかを決める一組のツール——彼女はこれを「tool inventory」と呼ぶ。彼女は、エージェントが環境を知覚するだけの行動（「read-only actions」）と、環境に対して行動する行動（「write actions」）を分ける。後者について、彼女はとても率直だ。</p>
+<blockquote><p>&#8220;Write actions enable a system to do more.&#8221;</p></blockquote>
+<p>（Write action は、システムがより多くのことをできるようにする。）</p>
+<p>ただし彼女は、その 2 つ目の種類がもたらすリスクについてもはっきり指摘している。「the prospect of giving AI the ability to automatically alter our lives is frightening」（AI に、私たちの生活を自動的に変える力を与えるという見通しは恐ろしい）、彼女の言葉を借りれば「you shouldn&#8217;t allow an unreliable AI to initiate bank transfers」（信頼できない AI に、銀行送金を開始させるべきではない）。エージェントで一番うまくいかせるのが難しい部分についても、彼女は率直だ。</p>
+<blockquote><p>&#8220;If you&#8217;ve ever been in any planning meeting, you know that planning is hard.&#8221;</p></blockquote>
+<p>（計画づくりの会議に出たことがあるなら、計画がいかに難しいかを知っているはずだ。）</p>
+<p>Huyen はこのエッセイのなかで MarsDawn にはまったく触れておらず、どんな Markdown ツールも勧めていない。<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a>は、同じエッセイから彼女の 3 つの文をすでに引用している：監督なしで実行することの代償、終わっていないのに終わったと思い込むエージェント、そしてステップ 3 のなかで、リスクのある操作に対しては「実行前に人間の明示的な承認を求められる」と述べている一文だ。このノートではそれらの引用を繰り返さない。まだ読んでいなければ、下にリンクがある。</p>
+
+<h2>ここから先は、私たちの解釈であって、Huyen の主張ではない</h2>
+<p>Huyen の read-only／write action という分け方は、レビューのために書かれたアドバイスではなく、ツールを分類するための方法だ。とはいえ、これは〈エージェントの計画を 5 分でレビューする〉のステップ 3 がすでに立ち止まるよう求めているような、リスクのある操作を見分けるための、平易で汎用的な判定法でもある。ファイルを読む、検索を実行する、ディレクトリを一覧表示する、といったものは read-only で、間違えても、やり直すコストで済む。データを削除する、force push する、ブランチをマージする、メールを送る、カードに課金する、といったものは write action で——彼女の言うとおり、間違えたときには「恐ろしい」種類のものであり、あなたがエージェントのレポートを読むころには、すでに実行されてしまっているかもしれない。人が一緒の部屋にいてさえ計画は難しいという彼女の指摘は、計画の精度に対して、その形式が支えられる以上のものを期待しないための、有用な歯止めでもある。自信たっぷりに読める計画が、正しい計画とは限らない。</p>
+
+<h2>MarsDawn が助けになるところ、ならないところ</h2>
+<p>MarsDawn は、計画のどのステップが read-only でどれが write なのかを見分けられない——それは文章にラベルとしては書かれていない判断であり、アプリの中の何かが意味を読み取ってくれるわけではない。中に AI モデルもない：リスクの高い行を教えてくれることもなければ、「計画づくりはどれほど難しいか」というチェックを代わりに走らせることもなく、計画に点数をつけることもない。MarsDawn がしているのは、その判断を自分でするあいだ、ファイルを読みやすく保つことだ：サイドバー（「表示 &#9656; サイドバーを表示」、&#8963;&#8984;S）のアウトラインタブで、1 行ずつ読む前に計画の形を見ておける。ソースとレンダリングされたページは並んで表示され（&#8984;2）、手順の図が Mermaid のソースのままで止まってしまうこともない。「編集 &#9656; 参照をコピー」（&#8997;&#8984;C）は、いまいる場所を <code>plan.md:10</code> の形でコピーし、順番のおかしい write の動作を見つけたその場で、フィードバックとして貼り付けられる。</p>
+
+<h2>試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2>次に</h2>
+<ul>
+  <li>同じエッセイから組み立てた、6 ステップ・5 分のチェックリスト全体：<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a></li>
+  <li>エージェントの出力が一般になぜ読みにくいか：<a href="/ja/reading-agent-output/">「エージェントが返してくるものを読む」</a></li>
+  <li>シリーズに戻る：<a href="/ja/reading-notes/">「編集者の読書ノート」</a></li>
+</ul>
+
+<h2>出典</h2>
+<ul>
+  <li>Chip Huyen、「Agents」、2025 年 1 月 7 日：<a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a>（2026-09-26 に取得・引用）</li>
+</ul>
+""",
+    }
+    pages['reading-notes/lilian-weng-llm-agents'] = {
+        "title": "Lilian Weng が 2023 年に描いたエージェントの設計図、各部分が残すファイル · MarsDawn",
+        "description": "Lilian Weng が 2023 年に書いた、広く引用されているサーベイは、LLM エージェントを、脳とプランニング、記憶、ツール利用の組み合わせとして描く。各部分が普通あなたに何を読ませることになるか、そして計画が予想外の事態に調整できないという、彼女自身が挙げる限界。",
+        "body": f"""
+<section class="intro">
+  <h1>Lilian Weng が 2023 年に描いたエージェントの設計図、各部分が残すファイル</h1>
+</section>
+
+<div class="summary"><p><strong>2023 年 6 月、当時 OpenAI に在籍していた Lilian Weng は、自身のブログ Lil'Log に長いサーベイを発表し、LLM を使ったエージェントを、脳（モデル）とプランニング、記憶、ツール利用という 3 つの部品の組み合わせとして描いた。これは広く引用されている初期のエージェントの枠組みであり、彼女はその枠組みがどこでまだ崩れるかについても率直だ。</strong></p></div>
+
+<h2>この記事が主張すること</h2>
+<p>Weng は冒頭で、記事全体の枠組みをこう定める。</p>
+<blockquote><p>&#8220;In a LLM-powered autonomous agent system, LLM functions as the agent&#8217;s brain, complemented by several key components: Planning ... Memory ... Tool use&#8221;.</p></blockquote>
+<p>（LLM を使った自律型エージェントのシステムでは、LLM がエージェントの脳として機能し、いくつかの主要な部品——プランニング……記憶……ツール利用……によって補われる。）</p>
+<p>彼女の説明では、プランニングはタスクをサブゴールに分解することと、過去の行動を振り返って今後の行動を改善することの両方を含む。記憶は短期（モデルがいま見ているコンテキストで、彼女は in-context と呼ぶ）と長期（通常はモデルの外、検索可能なデータベースに保存され、彼女は vector store と呼ぶ）に分かれる。ツール利用は、モデルが自分の重みの中にない情報——最新の情報、コードの実行、ほかの API——を外部に求めることを可能にする。記事の終わりに近い、彼女自身が「Challenges」と題した節で、彼女はある限界をはっきりと指摘する。</p>
+<blockquote><p>&#8220;LLMs struggle to adjust plans when faced with unexpected errors, making them less robust compared to humans who learn from trial and error.&#8221;</p></blockquote>
+<p>（LLM は予想外のエラーに直面したとき、計画を調整するのが苦手であり、試行錯誤から学ぶ人間と比べて頑健さに欠ける。）</p>
+<p>また、化学エージェント「ChemCrow」についてのツール利用の事例研究のなかで、彼女はもっと狭い問題を指摘している：LLM による評価では GPT-4 とほぼ同等とされたが、人間の専門家による評価では、ChemCrow は正確性の点でずっと優れているとされた。彼女の結論は「自己評価」についてのものであり、彼女自身の「反省（reflection）」の部品そのものについてではない。</p>
+<blockquote><p>&#8220;The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.&#8221;</p></blockquote>
+<p>（専門知識が欠けていることが原因で、LLM は自分自身の欠陥に気づかず、タスクの結果が正しいかどうかをうまく判断できないことがある。）</p>
+<p>Weng はこの記事のなかで MarsDawn にはまったく触れておらず、どんな Markdown ツールも勧めていない。</p>
+
+<h2>ここから先は、私たちの解釈であって、Weng の主張ではない</h2>
+<p>Weng が描いているのは 2023 年時点のエージェントのアーキテクチャであって、「誰かがエージェントの出力を読む」という話はまったく出てこない——ファイルを確認する人がいるとすら、彼女は書いていない。とはいえ、彼女自身が挙げる 3 つの部品は、あなたが読むことになりうる 3 種類のものにちょうど対応している。プランニングは、たいてい実行前に読む文書——計画そのもの——を残す。すでにその中に、ひとまわりの「反省」や自己チェックが組み込まれていることもある。記憶は、たいてい目に見えない。ただしエージェントが長期記憶を、書き続けている下書きファイルとして保存している場合は別で、そのファイル自体を単独で開く価値がある。なぜなら、それは古い、間違った前提を、何も言わないまま後続の多くのステップに持ち越してしまうことがあるからだ。ツール利用は、たいてい「何を実行し、何を得たか」というレポートを残す——計画というより、記録に近い。</p>
+<p>計画が予想外の事態に調整できないという彼女の指摘は、あなたの側から見れば、昨日承認した計画が、今日にはもう古くなっているかもしれない理由になる：計画が想定していなかった何かが途中で起きても、エージェントは計画を立て直すのではなく、そのまま進んでしまうかもしれない。すると最後のレポートは、途中で回り道をしたことには触れずに、もとの計画が「成功した」ことだけを描くかもしれない。これは私たちの推論であって、彼女自身の主張ではない——彼女が語っているのはモデル自身の頑健さについてであって、読み手が何に注意すべきかについてではない。</p>
+
+<h2>MarsDawn が助けになるところ、ならないところ</h2>
+<p>MarsDawn の中に AI モデルはなく、ある計画が実際に起きたことから静かにずれてしまっていないかを教えてくれることもなければ、あるファイルがプランニングのファイルなのか、記憶のファイルなのか、ツール利用のレポートなのかを見分けてくれることもない——それは内容を読み込んで初めてできる判断であり、あなた自身がする必要がある。MarsDawn がしているのは：サイドバー（「表示 &#9656; サイドバーを表示」、&#8963;&#8984;S）のアウトラインタブが、長い計画の形をひと目で見せてくれる。ソースとレンダリングされたプレビューは並んで表示され（&#8984;2）、Mermaid と KaTeX はそのまま描画される。読んでいる途中でエージェントがファイルを書き換えても、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ——これは特に役に立つ。なぜなら、静かに書き換えられた計画こそ、彼女が「Challenges」の節でモデル側から描いている、まさにその失敗モードだからだ。</p>
+
+<h2>試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2>次に</h2>
+<ul>
+  <li>異なるエージェントの設計パターンがそれぞれ何のファイルを渡してくるか：<a href="/ja/agent-design-patterns/">「4 つのエージェント設計パターンと、それぞれが渡してくる文書」</a></li>
+  <li>実行前に計画を 5 分でレビューする方法：<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a></li>
+  <li>シリーズに戻る：<a href="/ja/reading-notes/">「編集者の読書ノート」</a></li>
+</ul>
+
+<h2>出典</h2>
+<ul>
+  <li>Lilian Weng、「LLM Powered Autonomous Agents」、Lil'Log、2023 年 6 月 23 日：<a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a>（2026-09-26 に取得・引用。この記事を書いた当時、彼女は OpenAI に在籍しており、ここでもその当時の立場としてのみ記す）</li>
+</ul>
+""",
+    }
+    pages['reading-notes/harrison-chase-what-is-an-agent'] = {
+        "title": "Harrison Chase のスペクトラム：agentic であるほど、見ていたくなる · MarsDawn",
+        "description": "Harrison Chase による 2024 年のエージェントの定義と、彼自身の agentic なふるまいのスペクトラム。システムがそのスペクトラムを進むほど観測可能性が重要になるという彼の主張を、そのファイルを読む人の側から見直す。",
+        "body": f"""
+<section class="intro">
+  <h1>Harrison Chase のスペクトラム：agentic であるほど、見ていたくなる</h1>
+</section>
+
+<div class="summary"><p><strong>2024 年 6 月、LangChain の Harrison Chase は「エージェントとは何か？」という、一見単純な問いから新しいシリーズを始めた。彼は技術的な定義と、「agentic」の度合いを表すスペクトラムを示す。彼の主張では、システムがこのスペクトラムのどこまで進むかによって、それが動いているあいだの内部を見られる必要性が変わってくる。</strong></p></div>
+
+<h2>この記事が主張すること</h2>
+<p>Chase 自身の定義は、多くの人の直感より技術的で、範囲も広いと最初に断ったうえで示される。</p>
+<blockquote><p>&#8220;An agent is a system that uses an LLM to decide the control flow of an application.&#8221;</p></blockquote>
+<p>（エージェントとは、LLM を使ってアプリケーションの制御フローを決めるシステムだ。「制御フロー」とは、プログラムが次にどのステップを実行するかのことにすぎない。）</p>
+<p>彼はすぐに、この定義が完璧ではないことを認める——LLM が 2 つの経路のどちらかを選ぶだけの単純なシステムも、彼の定義では agent に含まれるが、多くの人の「agent」という直感には合わない。何を「本物の」エージェントに含めるか、含めないかを争うのではなく、彼は Andrew Ng の言い方を採用する——彼は Ng のツイートを引用し、出典を明記している：「rather than arguing over which work to include or exclude as being a true agent, we can acknowledge that there are different degrees to which systems can be agentic」（どの仕事を「本物の」エージェントに含めるか、含めないかを争うより、システムには agentic である度合いにさまざまな段階があると認めればいい）。Chase 自身のコメントはこうだ：「I really agree with this viewpoint and I think Andrew expressed it nicely」（私はこの見方に心から同意する。Andrew はうまく言い表したと思う）。そこから：システムがどれだけ LLM に自分の動き方を決めさせているかによって、システムはより「agentic」になっていく。固定されたルーターから、状態機械、そして自分でツールを作り、記憶する完全に自律したエージェントまで。この光谱をもとに、彼は実際的な主張を展開する：システムが agentic であるほど、あるインフラがより重要になり、中でも一番重要なのが可観測性だ。</p>
+<blockquote><p>&#8220;You&#8217;ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.&#8221;</p></blockquote>
+<p>（内部で何が起きているかを観察できる必要がある。実際に取られるステップは、事前には分からないことがあるからだ。）</p>
+<p>彼はさらに、見るだけでなく介入する能力も必要だと主張を進める：動いているエージェントの状態や指示を、ある時点で修正できる能力もほしくなる。もし意図した経路から外れているなら、それを軌道に戻すために。Chase はこの記事のなかで MarsDawn にはまったく触れておらず、どんな Markdown ツールも勧めていない。</p>
+
+<h2>ここから先は、私たちの解釈であって、Chase の主張ではない</h2>
+<p>Chase が語っているのは、エージェントのフレームワークを作る人向けのツール——彼は LangGraph と LangSmith を名指ししている——についてであって、完成した文書を読む人についてではない。とはいえ、彼のスペクトラムは、読み始める前に手元のものを見積もる、とても実用的な方法をくれる：あるファイルを生み出したシステムが agentic であればあるほど、その手順がもとのプロンプトから予測できるとは期待しないほうがよく、手元のファイルは「本来起きるはずだったこと」の記録というより、「実際に何が起きたか」の記録として読む価値が増す。彼が言う「内部で何が起きているかを観察する」とは、動いているシステムの内部状態——trace（1 回の実行のあいだにエージェントが行ったすべての記録）、途中のステップ、ツール呼び出し——についてであり、あとから Markdown の計画を読むことについてではない。ただし彼が挙げる理由——手順が事前には分からない——は、エージェントが仕事を終えたあとにあなたに渡してくる文書にも同じように当てはまる：最初から手順が予測できないなら、終わったあとのレポートこそが、それをチェックできる唯一の場所になる。</p>
+
+<h2>MarsDawn が助けになるところ、ならないところ</h2>
+<p>MarsDawn は、動いているエージェントの内部を観察したりはしない——中に AI モデルはなく、そのファイルを生み出したどんなフレームワークにも接続していないので、あるエージェントが Chase のスペクトラムのどこにいたかを教えてくれることもない。MarsDawn が扱うのは、事後にあなたの手元に届く文書のほうだ：サイドバー（「表示 &#9656; サイドバーを表示」、&#8963;&#8984;S）のアウトラインタブが、長いレポートの形をはっきり見せてくれる。ソースとレンダリングされたプレビューは並んで表示され（&#8984;2）、図や数式を扱う。エージェントがファイルを書き換えたときは再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ——これは「まだ動いているものを見ている」ことの、ファイル版だ。「編集 &#9656; 参照をコピー」（&#8997;&#8984;C）と「AI 用にコピー」（&#8963;&#8997;&#8984;C）を使えば、どのステップで外れたかを正確に指し示せる。これは、走り出したエージェントを軌道に戻すことの、文書版にあたる。</p>
+
+<h2>試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2>次に</h2>
+<ul>
+  <li>このシリーズによる、透明性とチェックポイントについてのより完全な議論：<a href="/ja/agent-transparency/">「Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？」</a></li>
+  <li>LangChain が 2026 年に、この記事と同じ URL で発表した新しい記事。定義はほぼ同一：<a href="/ja/reading-notes/langchain-what-is-an-agent/">「Jess Ou の評価パイプライン、そのうち 1 ステップだけはまだあなたの仕事」</a></li>
+  <li>シリーズに戻る：<a href="/ja/reading-notes/">「編集者の読書ノート」</a></li>
+</ul>
+
+<h2>出典</h2>
+<ul>
+  <li>Harrison Chase、「What is an agent?」、LangChain、2024 年 6 月 28 日、アーカイブ版：<a href="http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/">http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/</a>（Wayback Machine 経由で 2026-09-26 に取得・引用。元の URL には現在、Jess Ou が 2026 年に書いた別の記事が表示される）</li>
+</ul>
+""",
+    }
+    pages['reading-notes/langchain-what-is-an-agent'] = {
+        "title": "Jess Ou の評価パイプライン、そのうち 1 ステップだけはまだあなたの仕事 · MarsDawn",
+        "description": "LangChain が 2026 年に Jess Ou 名義で発表した「What is an AI agent?」は、Harrison Chase による 2024 年の定義とほぼ同一で、エージェントを自動評価する一連のパイプラインを説明している。そのパイプラインのどこがまだ人に委ねられ、どこがそうではないか。",
+        "body": f"""
+<section class="intro">
+  <h1>Jess Ou の評価パイプライン、そのうち 1 ステップだけはまだあなたの仕事</h1>
+</section>
+
+<div class="summary"><p><strong>2026 年 7 月、LangChain は Harrison Chase の 2024 年の記事「What is an agent?」があった URL に、新しい「What is an AI agent?」を公開した——今回は Jess Ou が書いたもので、定義は当時の彼の一文とほぼ一言一句同じだ。彼女の記事の大半は、彼の記事が扱わなかったこと、つまりエージェントを自動的に評価する一連のパイプライン全体について書かれている。そのパイプラインのどこにまだ人が必要で、どこはもう必要ないか、彼女の文章は率直に書いている。</strong></p></div>
+
+<h2>この記事が主張すること</h2>
+<p>Ou の定義は、Chase のあの一文をほとんどそのまま繰り返している。</p>
+<blockquote><p>&#8220;An AI agent is a system that uses a large language model to decide the control flow of an application.&#8221;</p></blockquote>
+<p>（AI エージェントとは、大規模言語モデルを使ってアプリケーションの制御フローを決めるシステムだ。「制御フロー」も、次にどのステップを実行するかのことを指す。）</p>
+<p>そこから彼女は、LangChain の Agent Development Lifecycle を説明する：build、test、deploy、monitor の 4 段階と、人がすべての実行記録を読まなくてもエージェントの働きをチェックできる、階層的なやり方だ。online evals は本番のトラフィックの trace（1 回の実行の記録）をサンプリングして退行を検出し、offline evals は整理されたデータセットに対して実行し、変更をリリースする前に問題を見つける。「LLM-as-a-judge」は、人があらかじめ決めた基準にしたがって 1 回の実行の出力に点数をつける方法で、人手によるレビューでは届かない規模で動く。彼女はまた、このパイプラインの中で人がまだどこに立つべきかについても、率直に書いている。</p>
+<blockquote><p>&#8220;For sensitive or irreversible actions, we recommend human-in-the-loop controls that pause the agent for approval, edits, rejection, or clarification.&#8221;</p></blockquote>
+<p>（機密性の高い、あるいは取り消せない行動については、承認、編集、拒否、または明確化のためにエージェントを一時停止させる human-in-the-loop の仕組みを勧める。）</p>
+<p>また彼女には、パイプラインがどれだけ整っても省けない判断についての一文もある：「Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.」（自分で評価できない判断を、外部に任せてはいけない。あなたが正しい答えを見分けられないなら、エージェントにもできない。）<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a>はすでにこの一文をもとに議論を組み立てているので、このノートでは繰り返さない。Ou はこの記事のなかで MarsDawn にはまったく触れておらず、どんな Markdown ツールも勧めていない。また彼女は Chase の名前にも一度も触れていない。この 2 つの記事をつないでいるのは、LangChain が 2026 年に、Chase の 2024 年の記事があった URL に彼女のこの記事を公開したこと、そして定義がほぼ同一であることだ——これは私たちの観察であって、彼女自身の主張ではない。</p>
+
+<h2>ここから先は、私たちの解釈であって、Ou の主張ではない</h2>
+<p>Ou の言う human-in-the-loop は、特定の行動が実行される前にそれを止めること——write の動作を一時停止し、人の承認を待つこと——についてであり、これは Chip Huyen の read-only／write action という分け方を、別の角度から見たのと同じことだ。完成したレポートをあとから読むこととは違う。彼女のパイプライン全体をよく見ると、その大部分は、人を日常的なチェックから外すために設計されている。加えるためではない：online evals、offline evals、LLM-as-a-judge が存在する目的は、そのままチームが 1 回 1 回の実行記録を手作業で確認しなくて済むようにすることだ。これはこの記事への批判ではない——それは彼女自身がはっきり述べている目標であり、本番の規模ではもっともなことでもある。ただしそれは、あなたが自分の手で行うレビュー——エージェントが渡してきた計画やレポートを直接読むこと——が、まさに彼女のパイプラインが減らそうとしている、置き換えようとしているのではない、その種のチェックであることを意味する。彼女自身のあの判断についての一文は、その削減に下限を引いている：自分で読んでも正しいかどうか見分けられない場所は、それでも自分で読むしかない。</p>
+
+<h2>MarsDawn が助けになるところ、ならないところ</h2>
+<p>MarsDawn は評価パイプラインではなく、中に AI モデルもない——1 回の実行記録に点数をつけたり、LLM-as-a-judge を走らせたり、どの行動が一時停止するほど機密性が高いかを決めたりはしない。MarsDawn がしているのは、彼女のパイプラインがそれでも人に残しているその瞬間、つまり直接読むことだ。サイドバー（「表示 &#9656; サイドバーを表示」、&#8963;&#8984;S）のアウトラインタブが、長いレポートの見出しを一覧にする。ソースとレンダリングされたプレビューは並んで表示され（&#8984;2）、Mermaid と KaTeX はそのまま描画される。「編集 &#9656; 参照をコピー」（&#8997;&#8984;C）と「AI 用にコピー」（&#8963;&#8997;&#8984;C）を組み合わせれば、抜き取りチェックを、エージェントが理解でき、直せる具体的なフィードバックに変えられる。</p>
+
+<h2>試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2>次に</h2>
+<ul>
+  <li>彼女の「判断を外部に任せるな」という一文を一部使って組み立てた、完全なチェックリスト：<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a></li>
+  <li>この定義が 2024 年に最初どう書かれていたか：<a href="/ja/reading-notes/harrison-chase-what-is-an-agent/">「Harrison Chase のスペクトラム：agentic であるほど、見ていたくなる」</a></li>
+  <li>シリーズに戻る：<a href="/ja/reading-notes/">「編集者の読書ノート」</a></li>
+</ul>
+
+<h2>出典</h2>
+<ul>
+  <li>Jess Ou、「What is an AI agent?」、LangChain、2026 年 7 月 31 日：<a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a>（2026-09-26 に取得・引用）</li>
+</ul>
+""",
+    }
+    pages['reading-notes/andrew-ng-design-patterns'] = {
+        "title": "Andrew Ng が自分の設計パターンを予測可能性で自らランク付けする · MarsDawn",
+        "description": "The Batch の 5 本の手紙のなかで、Andrew Ng は reflection、tool use、planning、multi-agent collaboration を、信頼性と予測可能性でランク付けしている。そのランク付けが、どのパターンの出力をどれだけ注意深くチェックすべきかについて、何を示唆しているか。",
+        "body": f"""
+<section class="intro">
+  <h1>Andrew Ng が自分の設計パターンを予測可能性で自らランク付けする</h1>
+</section>
+
+<div class="summary"><p><strong>2024 年の初め、Andrew Ng は The Batch の 5 本の手紙で、4 つの agentic な設計パターン——reflection（反省）、tool use（ツール利用）、planning（プランニング）、multi-agent collaboration（複数エージェントの協調）——を説明した。そして珍しく、この 4 つのうちどれをより信頼でき、どれを予測しづらいと感じているかを、読者にはっきり伝えている。</strong></p></div>
+
+<h2>これらの手紙が主張すること</h2>
+<p><a href="/ja/agent-design-patterns/">「4 つのエージェント設計パターンと、それぞれが渡してくる文書」</a>は、この 4 つのパターンがそれぞれ何であるか、私たち自身の推論として、それぞれが普通あなたに何を渡してくるか、そして Part 4 から引用した、planning についての Ng 自身の評価——「while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications&#8217; performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do」（Reflection と Tool Use という設計パターンは、どちらも自分のアプリケーションで確実に動かし、性能を高められている。しかし Planning はまだ成熟していない技術で、それが何をするか事前に予測するのは難しいと感じる）——をすでにくわしく扱っている。このノートで補うのは、あの記事が使っていない、残り 2 本の手紙にある同じランク付けだ：Part 3 は Part 4 の 1 週間前に書かれ、先にこのランク付けを述べている。Part 5 は、Part 4 が触れていないパターン——multi-agent collaboration——にまでランク付けを広げる。tool use を紹介する Part 3 で、彼はこう書いている。</p>
+<blockquote><p>&#8220;In future letters, I&#8217;ll describe the Planning and Multi-agent collaboration design patterns. They allow AI agents to do much more but are less mature, less predictable &#8212; albeit very exciting &#8212; technologies.&#8221;</p></blockquote>
+<p>（今後の手紙では、Planning と Multi-agent collaboration という設計パターンについて説明する。これらは AI エージェントにずっと多くのことをさせられるが、成熟度が低く、予測しづらい——とはいえ、とても刺激的な——技術だ。）</p>
+<p>2 週間後、彼はシリーズの最後の手紙で multi-agent collaboration を扱いながら、別の角度から同じランク付けを確認している。</p>
+<blockquote><p>&#8220;Like the design pattern of Planning, I find the output quality of multi-agent collaboration hard to predict, especially when allowing agents to interact freely and providing them with multiple tools. The more mature patterns of Reflection and Tool Use are more reliable.&#8221;</p></blockquote>
+<p>（Planning という設計パターンと同じように、multi-agent collaboration の出力品質は予測しづらいと感じる。特に、エージェント同士を自由にやり取りさせ、複数のツールを与えたときはそうだ。より成熟した Reflection と Tool Use のパターンのほうが、より信頼できる。）</p>
+<p>彼が語っているのは、これらのパターンが自分のアプリケーションの成果をどれだけ高めるかについてであって、その出力をどれだけ注意深く審査すべきかについてではない——このシリーズは人によるレビューをまったく求めておらず、MarsDawn にも、どんな Markdown ツールにも触れていない。</p>
+
+<h2>ここから先は、私たちの解釈であって、Ng の主張ではない</h2>
+<p>Ng のランク付けは、開発者の椅子から見た出力品質と予測可能性についてのものだが、大まかに言えば、それぞれのパターンが残す記録に、あなたの側からどれだけの注意を払う価値があるかにも対応している。彼がより信頼できると感じている reflection と tool use は、たいてい「すでに終わった作業」を描くもの——修正済みの草稿、何を実行したかのレポート——を渡してくるので、そのなかの 1 つの主張を実際の出力と照らし合わせれば、たいていリスクの大部分をカバーできる。彼が予測しづらいと感じている planning と multi-agent collaboration は、たいてい「まだ起きていないこと」について書かれたもの、あるいは複数のエージェントに分散した複数のファイルを渡してくる：あなたの承認を待っている計画や、まだ実行によって検証されていないエージェント間の引き継ぎだ。彼自身の言葉を借りれば、この 2 つこそ、「書かれていること」と「実際に起きること」のギャップが一番大きい場所であり——これはまさに〈エージェントの計画を 5 分でレビューする〉が、Chip Huyen のエッセイから引き出している「なぜ実行前に見るのか」という節の道理でもある。何かが実行される前に問題を見つけることが、一番安く済むタイミングだ。</p>
+
+<h2>MarsDawn が助けになるところ、ならないところ</h2>
+<p>MarsDawn は、あるファイルが Ng の 4 つのパターンのどれから生まれたのかを知らないし、何かを予測可能性でランク付けすることもなく、中に AI モデルもない——彼のランク付けが示唆しているようなチェックを、代わりにしてくれるわけではない。MarsDawn がしているのは、あなた自身がチェックするあいだ、ファイルを読みやすく保つことだ：サイドバー（「表示 &#9656; サイドバーを表示」、&#8963;&#8984;S）のアウトラインタブで、長い計画の形が見て取れる。ソースとレンダリングされたプレビューは並んで表示される（&#8984;2）。複数エージェントの引き継ぎの場合は、「ファイル &#9656; フォルダを開く&#8230;」（&#8679;&#8984;O）で共有フォルダを開くと、別々のエージェントが新しいファイルを書いたとき、それはおよそ 1 秒でファイルタブに現れ、リストの上には git のブランチや worktree の名前も表示されるので、別々のエージェントが書いた同じ名前のファイルを取り違えることもない。</p>
+
+<h2>試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2>次に</h2>
+<ul>
+  <li>それぞれのパターンが渡してくる文書の全体像：<a href="/ja/agent-design-patterns/">「4 つのエージェント設計パターンと、それぞれが渡してくる文書」</a></li>
+  <li>実行前に計画を 5 分でレビューする方法：<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a></li>
+  <li>シリーズに戻る：<a href="/ja/reading-notes/">「編集者の読書ノート」</a></li>
+</ul>
+
+<h2>出典</h2>
+<ul>
+  <li>Andrew Ng、「Agentic Design Patterns Part 1」、The Batch、2024 年 3 月 20 日：<a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng、「Agentic Design Patterns Part 3: Tool Use」、The Batch、2024 年 4 月 3 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/</a>（2026-09-26 に取得・引用）</li>
+  <li>Andrew Ng、「Agentic Design Patterns Part 4: Planning」、The Batch、2024 年 4 月 10 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a>（引用は <code>design/inbox/276-agent-blog-series.md</code> からそのまま再利用したもので、<code>/ja/agent-design-patterns/</code> ですでに使われている）</li>
+  <li>Andrew Ng、「Agentic Design Patterns Part 5, Multi-Agent Collaboration」、The Batch、2024 年 4 月 17 日：<a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/</a>（2026-09-26 に取得・引用）</li>
 </ul>
 """,
     }
