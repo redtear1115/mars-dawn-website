@@ -49,13 +49,15 @@ After a deploy, open every page in a private window. They must load without a lo
 ## Branches and deploys
 
 - `main` holds the latest work. Pull requests target `main`.
-- `release` is what the site serves. A push to `release` deploys through GitHub Actions (`production` environment). To publish, fast-forward `release` to `main`:
+- `release` is what the site serves. A push to `release` deploys through GitHub Actions (`production` environment). To publish, open a deploy pull request from `main` into `release` and merge it with a merge commit:
 
   ```sh
-  git push origin main:release
+  gh pr create --base release --head main --title "Deploy main: …"
   ```
 
-- Every push and pull request runs the check: the regenerated pages must match the commit, and `public/themes/v1/index.json`, when present, must be valid JSON.
+  Don't push `main:release` directly. Each deploy's merge commit exists only on `release`, so that push isn't a fast-forward, and the "protect main and release" ruleset declines it (precedents: #96, #99, #103, #114).
+- `release-<version>` (for example `release-1.0.2`) collects a version's pull requests before one pull request takes it to `main`.
+- Every pull request into `main`, `release` or `release-<version>`, and every push to them, runs the check: the regenerated pages must match the commit, and `public/themes/v1/index.json`, when present, must be valid JSON.
 
 The deploy needs two settings on the `production` environment:
 
