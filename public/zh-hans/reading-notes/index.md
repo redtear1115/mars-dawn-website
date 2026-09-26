@@ -11,7 +11,7 @@
 - 《[Jess Ou 的评测流程，里面还留给你的那一步](/zh-hans/reading-notes/langchain-what-is-an-agent/)》——2026 年 7 月，LangChain 在 Harrison Chase 2024 年那篇文章原本的网址上，发表了 Jess Ou 写的新版《What is an AI agent?》；她的定义几乎和他的一字不差，接下来也讲清楚自动化评测到哪里为止，剩下的还是要人来做。
 - 《[Andrew Ng 自己帮四种设计模式的可预测程度排序](/zh-hans/reading-notes/andrew-ng-design-patterns/)》——在 The Batch 的五篇文章里，他直接说出自己觉得哪些模式比较可靠、哪些难以预测。
 
-这六篇文章都没有主张“应该更仔细审阅 agent 的产出”，也都不是在谈 MarsDawn。这个链接是我们自己画的，每篇笔记都会这样说清楚。
+这六篇文章都没有主张“应该更仔细审阅 agent 的产出”，也都不是在谈 MarsDawn。这层关联是我们自己建立的，每篇笔记都会这样说清楚。
 
 ## 其他页面
 
