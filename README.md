@@ -55,7 +55,7 @@ After a deploy, open every page in a private window. They must load without a lo
   gh pr create --base release --head main --title "Deploy main: …"
   ```
 
-  Don't push `main:release` directly. Each deploy's merge commit exists only on `release`, so that push isn't a fast-forward, and the "protect main and release" ruleset declines it (precedents: #96, #99, #103, #114).
+  Don't push `main:release` directly. The "protect main and release" ruleset only takes changes to `main` and `release` through a pull request whose `check` passes (#76). The push also wouldn't be a fast-forward, because each deploy's merge commit exists only on `release` (precedents: #96, #99, #103, #114).
 - `release-<version>` (for example `release-1.0.2`) collects a version's pull requests before one pull request takes it to `main`.
 - Every pull request into `main`, `release` or `release-<version>`, and every push to them, runs the check: the regenerated pages must match the commit, and `public/themes/v1/index.json`, when present, must be valid JSON.
 
