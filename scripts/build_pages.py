@@ -2554,13 +2554,17 @@ TRAIT_PAGES = {
 <h2>How it works</h2>
 <ol class="loop-steps">
   <li><strong>Download it free.</strong> MarsDawn is free to download from the Mac App Store.</li>
-  <li><strong>Try all of it for 14 days.</strong> Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.</li>
+  <li><strong>Try all of it for 14 days.</strong> Start the trial and everything in MarsDawn works for 14 days: every theme and layout, PDF export and printing, and the Siri and Shortcuts actions. Quick Look in Finder works with or without the trial.</li>
   <li><strong>Unlock it once.</strong> To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.</li>
 </ol>
 <ul>
   <li>The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.</li>
   <li>There is no account. MarsDawn never asks you to create one.</li>
 </ul>
+<h2>What works when</h2>
+<!--compare:pay-once-states-->
+<p>Before you start the trial, MarsDawn shows the trial offer. Starting it costs nothing.</p>
+<p>PDF files you open in MarsDawn are locked the same way once the trial ends.</p>
 <h2>If you don't unlock</h2>
 <ul>
   <li>After 14 days, until you unlock it, you can't read, edit, export or print documents in MarsDawn. A document still opens, but its content is covered.</li>
@@ -2583,18 +2587,22 @@ TRAIT_PAGES = {
 <h2>怎麼運作</h2>
 <ol class="loop-steps">
   <li><strong>免費下載。</strong> 在 Mac App Store 免費下載 MarsDawn。</li>
-  <li><strong>14 天，全部都能用。</strong> 開始試用後，14 天內所有功能都能使用：所有主題與版面、PDF 輸出與列印、快速查看，以及 Siri 和捷徑動作。</li>
+  <li><strong>14 天，全部都能用。</strong> 開始試用後，14 天內 MarsDawn 的所有功能都能使用：所有主題與版面、PDF 輸出與列印，以及 Siri 和捷徑動作。Finder 的「快速查看」不論有沒有試用都能用。</li>
   <li><strong>買一次就解鎖。</strong> 試用結束後想繼續使用，花 USD 4.99 解鎖一次就好。這是 App 內購買，不是訂閱，不會自動續費，之後也不會再扣款。</li>
 </ol>
 <ul>
   <li>試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。</li>
   <li>不需要帳號，MarsDawn 從不要求你建立帳號。</li>
 </ul>
+<h2>各階段能做什麼</h2>
+<!--compare:pay-once-states-->
+<p>開始試用之前，MarsDawn 會先顯示免費試用的畫面。開始試用不用付費。</p>
+<p>試用結束後，在 MarsDawn 裡打開的 PDF 檔案也一樣會被鎖住。</p>
 <h2>如果沒有解鎖</h2>
 <ul>
   <li>14 天後，在你解鎖之前，無法在 MarsDawn 中閱讀、編輯、輸出或列印文件。文件仍會開啟，但內容會被遮住。</li>
   <li>你的檔案不會有任何改變。它們就是你 Mac 上的一般檔案，在 Finder 中用「快速查看」依然看得到。</li>
-  <li>免費的 <a href="/zh-hant/cli/"><code>marsdawn</code> 命令列工具</a>不受試用影響，依然能把它們匯出成 PDF。</li>
+  <li>免費的 <a href="/zh-hant/cli/"><code>marsdawn</code> 命令列工具</a>不受試用影響，依然能把它們輸出成 PDF。</li>
   <li>如果試用結束時有文件正開在 MarsDawn 裡，你輸入的文字不會遺失，可以用「檔案」▸「另存新檔⋯」保存。</li>
 </ul>
 """,
@@ -2718,7 +2726,7 @@ TRAIT_PAGES = {
   <li><strong>Plugins:</strong> MarsDawn has no plugins or extensions.</li>
 </ul>
 <h2>After the trial</h2>
-<p>If you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.</p>
+<p>If you don't unlock MarsDawn once the 14-day trial ends, you can't read, edit, export or print documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them. The <a href="/pay-once/">trial and unlock page</a> sets all three stages side by side.</p>
 """,
     ),
     ("zh-hant", "limits"): _trait_page(
@@ -2748,7 +2756,7 @@ TRAIT_PAGES = {
   <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
 </ul>
 <h2>試用結束之後</h2>
-<p>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀和編輯文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能匯出它們。</p>
+<p>如果 14 天試用結束後沒有解鎖，就無法在 MarsDawn 中閱讀、編輯、輸出或列印文件：文件會開啟，但內容會被遮住。你的檔案維持原樣，「快速查看」依然看得到，免費的命令列工具也依然能把它們輸出成 PDF。<a href="/zh-hant/pay-once/">試用與解鎖頁面</a>有三個階段的對照表。</p>
 """,
     ),
 }
@@ -3061,6 +3069,58 @@ COMPARE_TABLES = {
                 ["ページを描くもの", "Electron：同梱の Chromium と Node.js", "ブラウザ全体", "Claude Desktop アプリ", "ネイティブの AppKit アプリ。ページは WebKit が描画"],
             ],
         },
+    },
+}
+
+
+COMPARE_TABLES["pay-once-states"] = {
+    "head": {
+        "en": ["", "Trial (days 1–14)", "Trial ended, not unlocked", "Unlocked"],
+        "zh-hant": ["", "試用期間（第 1–14 天）", "試用結束、未解鎖", "已解鎖"],
+        "zh-hans": ["", "试用期间（第 1–14 天）", "试用结束、未解锁", "已解锁"],
+        "ja": ["", "トライアル期間（1〜14日目）", "トライアル終了、ロック未解除", "ロック解除済み"],
+    },
+    "rows": {
+        "en": [
+            ["Open a document in MarsDawn", "Yes", "Opens, with the content covered", "Yes"],
+            ["Read and edit in MarsDawn (source, preview, Mermaid, math)", "Yes", "No", "Yes"],
+            ["Export as PDF and print from MarsDawn", "Yes", "No", "Yes"],
+            ["Keep typed text with File ▸ Save As…", "Yes", "Yes, in a window open when the trial ended", "Yes"],
+            ["Siri and Shortcuts actions", "Yes", "No", "Yes"],
+            ["Quick Look in Finder, with Mermaid diagrams and math", "Yes", "Yes, unchanged", "Yes"],
+            ["<code>marsdawn export</code> (free command-line tool): PDF with diagrams and math", "Yes", "Yes, unchanged", "Yes"],
+            ["Your files on disk", "As you saved them", "As you saved them; the lock never changes them", "As you saved them"],
+        ],
+        "zh-hant": [
+            ["在 MarsDawn 打開文件", "可以", "會開啟，但內容被遮住", "可以"],
+            ["在 MarsDawn 閱讀與編輯（原始碼、預覽、Mermaid、數學式）", "可以", "不行", "可以"],
+            ["在 MarsDawn 輸出 PDF 與列印", "可以", "不行", "可以"],
+            ["用「檔案」▸「另存新檔⋯」保存輸入的文字", "可以", "可以，限試用結束時已開著的視窗", "可以"],
+            ["Siri 和捷徑動作", "可以", "不行", "可以"],
+            ["Finder 快速查看，含 Mermaid 圖表與數學式", "可以", "可以，不受影響", "可以"],
+            ["<code>marsdawn export</code>（免費命令列工具）：含圖表與數學式的 PDF", "可以", "可以，不受影響", "可以"],
+            ["你磁碟上的檔案", "維持你存的樣子", "維持你存的樣子，鎖定不會改動它們", "維持你存的樣子"],
+        ],
+        "zh-hans": [
+            ["在 MarsDawn 打开文件", "可以", "会打开，但内容被遮住", "可以"],
+            ["在 MarsDawn 阅读与编辑（源代码、预览、Mermaid、数学公式）", "可以", "不行", "可以"],
+            ["在 MarsDawn 输出 PDF 与打印", "可以", "不行", "可以"],
+            ["用“文件”▸“存储为…”保存输入的文本", "可以", "可以，仅限试用结束时已打开的窗口", "可以"],
+            ["Siri 和快捷指令操作", "可以", "不行", "可以"],
+            ["访达快速查看，含 Mermaid 图表与数学公式", "可以", "可以，不受影响", "可以"],
+            ["<code>marsdawn export</code>（免费命令行工具）：含图表与数学公式的 PDF", "可以", "可以，不受影响", "可以"],
+            ["你磁盘上的文件", "维持你存的样子", "维持你存的样子，锁定不会改动它们", "维持你存的样子"],
+        ],
+        "ja": [
+            ["MarsDawn で文書を開く", "できる", "開くが、内容は覆われる", "できる"],
+            ["MarsDawn で読み書き（ソース、プレビュー、Mermaid、数式）", "できる", "できない", "できる"],
+            ["MarsDawn から PDF に書き出す・印刷する", "できる", "できない", "できる"],
+            ["「ファイル」▸「別名で保存…」で入力した文字を残す", "できる", "できる（トライアル終了時に開いていたウインドウのみ）", "できる"],
+            ["Siri とショートカットのアクション", "できる", "できない", "できる"],
+            ["Finder のクイックルック（Mermaid 図と数式つき）", "できる", "できる、変わらず", "できる"],
+            ["<code>marsdawn export</code>（無料のコマンドラインツール）：図と数式つきの PDF", "できる", "できる、変わらず", "できる"],
+            ["Mac 上のファイル", "保存したままの状態", "保存したままの状態。ロックはファイルを変更しない", "保存したままの状態"],
+        ],
     },
 }
 

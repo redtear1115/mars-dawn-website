@@ -14,11 +14,28 @@ In this screenshot:
 ## How it works
 
 1. **Download it free.** MarsDawn is free to download from the Mac App Store.
-2. **Try all of it for 14 days.** Start the trial and everything works for 14 days: every theme and layout, PDF export and printing, Quick Look, and the Siri and Shortcuts actions.
+2. **Try all of it for 14 days.** Start the trial and everything in MarsDawn works for 14 days: every theme and layout, PDF export and printing, and the Siri and Shortcuts actions. Quick Look in Finder works with or without the trial.
 3. **Unlock it once.** To keep using it after that, unlock it once for USD 4.99. It's an in-app purchase, not a subscription, so nothing renews and nothing charges you later.
 
 - The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.
 - There is no account. MarsDawn never asks you to create one.
+
+## What works when
+
+|  | Trial (days 1–14) | Trial ended, not unlocked | Unlocked |
+|---|---|---|---|
+| Open a document in MarsDawn | Yes | Opens, with the content covered | Yes |
+| Read and edit in MarsDawn (source, preview, Mermaid, math) | Yes | No | Yes |
+| Export as PDF and print from MarsDawn | Yes | No | Yes |
+| Keep typed text with File ▸ Save As… | Yes | Yes, in a window open when the trial ended | Yes |
+| Siri and Shortcuts actions | Yes | No | Yes |
+| Quick Look in Finder, with Mermaid diagrams and math | Yes | Yes, unchanged | Yes |
+| `marsdawn export` (free command-line tool): PDF with diagrams and math | Yes | Yes, unchanged | Yes |
+| Your files on disk | As you saved them | As you saved them; the lock never changes them | As you saved them |
+
+Before you start the trial, MarsDawn shows the trial offer. Starting it costs nothing.
+
+PDF files you open in MarsDawn are locked the same way once the trial ends.
 
 ## If you don't unlock
 

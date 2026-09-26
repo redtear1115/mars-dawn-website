@@ -30,7 +30,7 @@ In this screenshot:
 
 ## After the trial
 
-If you don't unlock MarsDawn once the 14-day trial ends, you can't read or edit documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them.
+If you don't unlock MarsDawn once the 14-day trial ends, you can't read, edit, export or print documents in it: they open with their content covered. Your files stay as they are, Quick Look still shows them, and the free command-line tool still exports them. The [trial and unlock page](/pay-once/) sets all three stages side by side.
 
 ## More
 
