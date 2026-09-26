@@ -7,11 +7,11 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 
 
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': 'MarsDawn 即将在 Mac App Store 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '输出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置'}
+    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': 'MarsDawn 即将在 Mac App Store 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置'}
     store_chip = '即将在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.3.0 以后', 'error': '两个命令的失败结果', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单'}
-    example_plan = '# 计划：让输出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
-    trait_link = {'yours': ('你写的内容留在你的 Mac 上', '不需要账户，没有同步，也没有云端。'), 'pay-once': ('免费试用，买一次就好', '免费试用 14 天，之后 USD 4.99 买一次，没有订阅。'), 'pdf': ('输出 PDF', '图表、代码高亮、经过安排的分页。'), 'native': ('为 Mac 而做', '原生窗口、标签页、自动保存、快速查看。'), 'limits': ('MarsDawn 做不到的事', '购买前先知道。')}
+    example_plan = '# 计划：让导出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
+    trait_link = {'yours': ('你写的内容留在你的 Mac 上', '不需要账户，没有同步，也没有云端。'), 'pay-once': ('免费试用，买一次就好', '免费试用 14 天，之后 USD 4.99 买一次，没有订阅。'), 'pdf': ('导出 PDF', '图表、代码高亮、经过安排的分页。'), 'native': ('为 Mac 而做', '原生窗口、标签页、自动保存、快速查看。'), 'limits': ('MarsDawn 做不到的事', '购买前先知道。')}
     trait_nav_heading = 'MarsDawn 是什么样的 app'
     figure_list_label = '这张截图里'
     figures = {
@@ -28,7 +28,7 @@ def build(k) -> dict:
             "callouts": ['编辑器的 Markdown 语法高亮，包含在内。', '所有主题和布局都包含在内。', 'Mermaid 图表，包含在内。', '代码高亮，包含在内。'],
         },
         'pdf': {
-            "alt": '用 MarsDawn 输出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。',
+            "alt": '用 MarsDawn 导出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。',
             "callouts": ['Mermaid 图表直接画进 PDF。', '代码保留语法高亮。'],
         },
         'native': {
@@ -98,7 +98,7 @@ def build(k) -> dict:
     }
     pages['index'] = {
         "title": 'MarsDawn：Mac 上的 Markdown 编辑器，实时预览',
-        "description": '给要掌舵 agentic 开发的人用的 Markdown：原生的 Mac 编辑器，有实时预览、Mermaid 图表和 PDF 输出。即将在 Mac App Store 上架。',
+        "description": '给要掌舵 agentic 开发的人用的 Markdown：原生的 Mac 编辑器，有实时预览、Mermaid 图表和 PDF 导出。即将在 Mac App Store 上架。',
         "intro": f"""
 <section class="intro hero">
   <p class="kicker">给建造者的前线工具</p>
@@ -156,13 +156,13 @@ marsdawn open notes.md --line 120</code></pre>
 <p>行号功能从 marsdawn 0.3.0 开始提供。</p>
 
 <h3>marsdawn export</h3>
-<p>把 Markdown 文件输出成分页的 PDF，使用和 MarsDawn 输出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。</p>
+<p>把 Markdown 文件导出成分页的 PDF，使用和 MarsDawn 导出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。</p>
 <pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
 <ul>
   <li><code>-o, --output &lt;path&gt;</code>：PDF 的输出位置，默认是把输入文件的扩展名换成 <code>.pdf</code>。</li>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：预览主题的浅色版本，默认读取 <code>$MARSDAWN_THEME</code>，否则用 <code>dawn</code>。</li>
   <li><code>--paper &lt;a4|letter&gt;</code>：纸张大小，默认 <code>a4</code>。</li>
-  <li><code>--allow-remote-images</code>：输出时加载网络图片，默认关闭。</li>
+  <li><code>--allow-remote-images</code>：导出时加载网络图片，默认关闭。</li>
   <li><code>--force</code>：如果输出文件已存在就直接覆盖。</li>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
 </ul>
@@ -180,7 +180,7 @@ marsdawn open notes.md --line 120</code></pre>
   <li><code>2</code>：找不到输入文件。</li>
   <li><code>3</code>：尚未安装 MarsDawn（只有 <code>open</code> 会用到）。</li>
   <li><code>4</code>：输出文件已存在（可加上 <code>--force</code>）。</li>
-  <li><code>5</code>：输出失败。</li>
+  <li><code>5</code>：导出失败。</li>
   <li><code>64</code>：使用方式错误，包括行号超出范围，或 <code>--line</code> 搭配了多个文件。</li>
 </ul>
 
@@ -201,7 +201,7 @@ marsdawn open notes.md --line 120</code></pre>
 
 <h2>能做什么</h2>
 <ul>
-  <li><code>export</code>：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件输出成分页的 PDF，不会打开任何窗口。</li>
+  <li><code>export</code>：用和 MarsDawn app 相同的导出程序，把一个 Markdown 文件导出成分页的 PDF，不会打开任何窗口。</li>
   <li><code>open</code>：在 MarsDawn app 中打开一或多个 Markdown 文件，让人审阅，也可以指定每个文件要定位的行。</li>
 </ul>
 
@@ -329,7 +329,7 @@ swift build -c release --product marsdawn
 <p><strong>安全性：</strong>请更新到 <a href="https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1">0.2.1</a>&#8212;&#8212;0.1.0 和 0.2.0 会让调用把 PDF 写到你账号能写入的任何路径，已在 <a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a> 修复。</p>
 
 <h2>同一个 export，三扇门</h2>
-<p>不管从哪个界面调用，底层行为都一样：同一套输出程序、同样的主题和纸张大小，Mermaid 图表画不出来时也是同样的 <code>diagramErrors</code>。这页不重复那份规格&#8212;&#8212;<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>里有完整内容。</p>
+<p>不管从哪个界面调用，底层行为都一样：同一套导出程序、同样的主题和纸张大小，Mermaid 图表画不出来时也是同样的 <code>diagramErrors</code>。这页不重复那份规格&#8212;&#8212;<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>里有完整内容。</p>
 
 <h2>接下来</h2>
 <ul>
@@ -389,13 +389,13 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <h3>文件与功能</h3>
 <ul>
   <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
-  <li><strong>格式：</strong>MarsDawn 能输出 PDF 和打印，不能输出 Word 文件。</li>
+  <li><strong>格式：</strong>MarsDawn 能导出 PDF 和打印，不能导出 Word 文件。</li>
   <li><strong>其他文件：</strong>纯文本文件和 PDF 以只读方式打开。</li>
   <li><strong>主题：</strong>内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。</li>
   <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
 </ul>
 <h2>试用结束之后</h2>
-<p>如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读、编辑、输出或打印文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能把它们输出成 PDF。<a href="/zh-hans/pay-once/">试用与解锁页面</a>有三个阶段的对照表。</p>
+<p>如果 14 天试用结束后没有解锁，就无法在 MarsDawn 中阅读、编辑、导出或打印文稿：文稿会打开，但内容会被遮住。你的文件维持原样，“快速查看”依然看得到，免费的命令行工具也依然能把它们导出成 PDF。<a href="/zh-hans/pay-once/">试用与解锁页面</a>有三个阶段的对照表。</p>
 """,
     }
     pages['markdown-to-pdf'] = {
@@ -480,7 +480,7 @@ marsdawn --version</code></pre>
 <h2>怎么运作</h2>
 <ol class="loop-steps">
   <li><strong>免费下载。</strong> 在 Mac App Store 免费下载 MarsDawn。</li>
-  <li><strong>14 天，全部都能用。</strong> 开始试用后，14 天内 MarsDawn 的所有功能都能使用：所有主题与布局、PDF 输出与打印，以及 Siri 和快捷指令操作。访达的“快速查看”不论有没有试用都能用。</li>
+  <li><strong>14 天，全部都能用。</strong> 开始试用后，14 天内 MarsDawn 的所有功能都能使用：所有主题与布局、PDF 导出与打印，以及 Siri 和快捷指令操作。访达的“快速查看”不论有没有试用都能用。</li>
   <li><strong>买一次就解锁。</strong> 试用结束后想继续使用，花 USD 4.99 解锁一次就好。这是 App 内购买，不是订阅，不会自动续费，之后也不会再扣款。</li>
 </ol>
 <ul>
@@ -493,20 +493,20 @@ marsdawn --version</code></pre>
 <p>试用结束后，在 MarsDawn 里打开的 PDF 文件也一样会被锁住。</p>
 <h2>如果没有解锁</h2>
 <ul>
-  <li>14 天后，在你解锁之前，无法在 MarsDawn 中阅读、编辑、输出或打印文稿。文稿仍会打开，但内容会被遮住。</li>
+  <li>14 天后，在你解锁之前，无法在 MarsDawn 中阅读、编辑、导出或打印文稿。文稿仍会打开，但内容会被遮住。</li>
   <li>你的文件不会有任何改变。它们就是你 Mac 上的一般文件，在访达中用“快速查看”依然看得到。</li>
-  <li>免费的 <a href="/zh-hans/cli/"><code>marsdawn</code> 命令行工具</a>不受试用影响，依然能把它们输出成 PDF。</li>
+  <li>免费的 <a href="/zh-hans/cli/"><code>marsdawn</code> 命令行工具</a>不受试用影响，依然能把它们导出成 PDF。</li>
   <li>如果试用结束时有文稿正开在 MarsDawn 里，你输入的文本不会遗失，可以用“文件”▸“存储为…”保存。</li>
 </ul>
 """,
     }
     pages['pdf'] = {
-        "title": '在 Mac 把 Markdown 输出成 PDF，图表也在 · MarsDawn',
-        "description": '在 Mac 上把 Markdown 输出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码和表格，超过一页的会接到下一页。',
+        "title": '在 Mac 把 Markdown 导出成 PDF，图表也在 · MarsDawn',
+        "description": '在 Mac 上把 Markdown 导出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码和表格，超过一页的会接到下一页。',
         "intro": f"""
 <section class="intro">
   <h1>PDF 看起来就是你写的那一页。</h1>
-  <p>输出成 PDF 或打印，使用主题的浅色配色。图表和代码高亮都会保留，分页位置也经过安排。</p>
+  <p>导出成 PDF 或打印，使用主题的浅色配色。图表和代码高亮都会保留，分页位置也经过安排。</p>
 </section>
 """,
         "body": f"""
@@ -515,9 +515,9 @@ marsdawn --version</code></pre>
   <li>Mermaid 图表直接画进 PDF。</li>
   <li>代码块保留语法高亮。</li>
   <li>分页时会尽量不让标题落在页面底部，也不切开代码、表格和图表。</li>
-  <li>任何布局都能输出，只显示源代码时也可以。</li>
+  <li>任何布局都能导出，只显示源代码时也可以。</li>
 </ul>
-<p>免费的 <a href="/zh-hans/cli/">marsdawn 命令行工具</a>使用同一套输出程序，所以脚本或 AI agent 也能得到一样的 PDF。</p>
+<p>免费的 <a href="/zh-hans/cli/">marsdawn 命令行工具</a>使用同一套导出程序，所以脚本或 AI agent 也能得到一样的 PDF。</p>
 """,
     }
     pages['reviewing-ai-output'] = {
@@ -611,7 +611,7 @@ marsdawn --version</code></pre>
 <p>每种主题都有各自的浅色和深色版本，所以切换 Mac 的外观，连带切换的是主题本身的配色，不只是界面的颜色。</p>
 
 <h2>PDF 导出和打印用同一个主题</h2>
-<p>导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 <a href="/zh-hans/cli/">marsdawn 命令行工具</a>使用同一套输出程序，所以脚本或 agent 也能用 <code>--theme</code> 生成一模一样的 PDF，四种主题都可以。</p>
+<p>导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 <a href="/zh-hans/cli/">marsdawn 命令行工具</a>使用同一套导出程序，所以脚本或 agent 也能用 <code>--theme</code> 生成一模一样的 PDF，四种主题都可以。</p>
 
 <h2>规划中：更多主题，还有主题库</h2>
 <p>之后会推出、但现在还没做的：更多可导入的预览主题，以及一个让大家投稿自己主题的网站主题库。<code>/themes/v1/</code> 这个路径已经为它保留。在那之前，MarsDawn 有的就是这四种内置主题，无法安装其他的。</p>
@@ -794,7 +794,7 @@ open notes.pdf</code></pre>
   <li><strong>好几个文件：</strong>用“文件 &#9656; 打开文件夹&#8943;”（&#8679;&#8984;O）打开 agent 工作的文件夹，新文件大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树。</li>
   <li><strong>反馈要准：</strong>“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）把目前位置拷贝成 <code>docs/plan.md:42</code>，“拷贝给 AI”（&#8963;&#8997;&#8984;C）会在下面附上你选取的文字，直接贴给 agent 就好。</li>
 </ul>
-<p>另外两件事也和这个循环有关：agent 可以执行 <code>marsdawn open plan.md:42</code>，在 MarsDawn 里帮你打开文件，直接停在第 42 行，也就是它想先让你看的那一行；审完的文件可以从 app 输出 PDF，也可以用免费的 <code>marsdawn export</code> 指令。</p>
+<p>另外两件事也和这个循环有关：agent 可以执行 <code>marsdawn open plan.md:42</code>，在 MarsDawn 里帮你打开文件，直接停在第 42 行，也就是它想先让你看的那一行；审完的文件可以从 app 导出 PDF，也可以用免费的 <code>marsdawn export</code> 指令。</p>
 <p>MarsDawn 里没有 AI 模型。它不会帮你摘要计划、打分数，也不会告诉你哪里错了。读的人是你，它负责让又长又会变的文件保持好读，让你能准确指出是哪一行。</p>
 
 <h2>五分钟审完一份 agent 计划</h2>
@@ -812,7 +812,7 @@ open notes.pdf</code></pre>
 <h2>试试看</h2>
 <p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
 <pre><code>{k.INSTALL}</code></pre>
-<p>它不需要 app 就能把 Markdown 输出成 PDF。app 上架之后，agent 也能用 <code>marsdawn open</code> 在 MarsDawn 里帮你打开文件。</p>
+<p>它不需要 app 就能把 Markdown 导出成 PDF。app 上架之后，agent 也能用 <code>marsdawn open</code> 在 MarsDawn 里帮你打开文件。</p>
 <p><a href="/zh-hans/cli/">命令行工具</a> &#183; <a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
 
 <h2>接下来</h2>
@@ -880,7 +880,7 @@ open notes.pdf</code></pre>
 <h2>试试看</h2>
 <p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
 <pre><code>{k.INSTALL}</code></pre>
-<p>它不需要 app 就能把 Markdown 输出成 PDF。</p>
+<p>它不需要 app 就能把 Markdown 导出成 PDF。</p>
 <p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
 
 <h2>接下来</h2>
@@ -959,7 +959,7 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
 <h2>试试看</h2>
 <p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
 <pre><code>{k.INSTALL}</code></pre>
-<p>它不需要 app 就能把 Markdown 输出成 PDF。</p>
+<p>它不需要 app 就能把 Markdown 导出成 PDF。</p>
 <p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
 
 <h2>接下来</h2>
@@ -1030,7 +1030,7 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
 <h2>试试看</h2>
 <p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
 <pre><code>{k.INSTALL}</code></pre>
-<p>它不需要 app 就能把 Markdown 输出成 PDF，详见〈<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF 工具</a>〉。</p>
+<p>它不需要 app 就能把 Markdown 导出成 PDF，详见〈<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF 工具</a>〉。</p>
 <p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
 
 <h2>接下来</h2>
@@ -1062,9 +1062,9 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
 </section>
 
 <h2>marsdawn 0.5.1</h2>
-<p>2026 年 9 月 19 日。PDF 输出，以及从命令行打开文件。</p>
+<p>2026 年 9 月 19 日。PDF 导出，以及从命令行打开文件。</p>
 <ul>
-  <li>输出的 PDF 中，中文、日文与韩文的文字层已修正。</li>
+  <li>导出的 PDF 中，中文、日文与韩文的文字层已修正。</li>
   <li><code>marsdawn open --background</code> 会打开文件，但不会把 MarsDawn 带到最前面。</li>
   <li><code>marsdawn open</code> 可以指定一个文件夹。Mac App Store 上的 app 还不能显示文件夹，所以这个选项要等做得到的版本。</li>
 </ul>

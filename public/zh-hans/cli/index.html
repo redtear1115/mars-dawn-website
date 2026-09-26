@@ -104,13 +104,13 @@ marsdawn open notes.md --line 120</code></pre>
 <p>行号功能从 marsdawn 0.3.0 开始提供。</p>
 
 <h3>marsdawn export</h3>
-<p>把 Markdown 文件输出成分页的 PDF，使用和 MarsDawn 输出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。</p>
+<p>把 Markdown 文件导出成分页的 PDF，使用和 MarsDawn 导出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。</p>
 <pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
 <ul>
   <li><code>-o, --output &lt;path&gt;</code>：PDF 的输出位置，默认是把输入文件的扩展名换成 <code>.pdf</code>。</li>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：预览主题的浅色版本，默认读取 <code>$MARSDAWN_THEME</code>，否则用 <code>dawn</code>。</li>
   <li><code>--paper &lt;a4|letter&gt;</code>：纸张大小，默认 <code>a4</code>。</li>
-  <li><code>--allow-remote-images</code>：输出时加载网络图片，默认关闭。</li>
+  <li><code>--allow-remote-images</code>：导出时加载网络图片，默认关闭。</li>
   <li><code>--force</code>：如果输出文件已存在就直接覆盖。</li>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
 </ul>
@@ -129,7 +129,7 @@ marsdawn open notes.md --line 120</code></pre>
   <tr><th scope="row"><code>2</code></th><td data-label="意思">找不到输入文件。</td><td data-label="怎么处理">检查路径和文件名</td></tr>
   <tr><th scope="row"><code>3</code></th><td data-label="意思">尚未安装 MarsDawn（只有 <code>open</code> 会用到）。</td><td data-label="怎么处理">安装 app，或改用不需要 app 的 <code>export</code></td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="意思">输出文件已存在（可加上 <code>--force</code>）。</td><td data-label="怎么处理">加上 <code>--force</code> 覆盖，或用 <code>-o</code> 写到别处</td></tr>
-  <tr><th scope="row"><code>5</code></th><td data-label="意思">输出失败。</td><td data-label="怎么处理">读 JSON 结果里的 <code>message</code></td></tr>
+  <tr><th scope="row"><code>5</code></th><td data-label="意思">导出失败。</td><td data-label="怎么处理">读 JSON 结果里的 <code>message</code></td></tr>
   <tr><th scope="row"><code>64</code></th><td data-label="意思">使用方式错误，包括行号超出范围，或 <code>--line</code> 搭配了多个文件。</td><td data-label="怎么处理">修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样</td></tr>
 </tbody>
 </table></div>
