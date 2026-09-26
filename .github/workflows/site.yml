@@ -57,8 +57,14 @@ jobs:
         run: python3 scripts/check_legal_render.py --self-test && python3 scripts/check_legal_render.py
       # /themes/v1/ is reserved until the theme gallery ships (see README). Nothing committed under
       # it yet passes trivially; once anything is, index.json must exist and match the design doc's
-      # shape (docs/theme-ecosystem-design.md §5.1 in the app repo) — this always runs, not only
-      # when the file happens to be present. --self-test plants a break of each kind first.
+      # shape field for field (docs/theme-ecosystem-design.md §5.1 in the app repo) — this always
+      # runs, not only when the file happens to be present. --self-test plants a break of each rule
+      # first and requires the check's own message for it.
+      # TODO(website #77 follow-up): this still passes if public/themes/v1/ is deleted outright
+      # after the gallery has shipped ("index.json must never disappear" isn't enforced yet). That
+      # needs a ship signal this repo doesn't have — AVAILABILITY (below) tracks Mac App Store
+      # launch, a different and unrelated launch, so it isn't one. Once a real "gallery has shipped"
+      # signal exists, make absence fail too.
       - name: Theme index is present and valid whenever the gallery has shipped
         run: python3 scripts/check_theme_index.py --self-test && python3 scripts/check_theme_index.py
 
