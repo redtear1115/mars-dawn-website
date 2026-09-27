@@ -9,3 +9,8 @@ node_modules/
 
 # SwiftPM build output of tools/hero-render
 .build/
+
+# The kit's theme contract, vendored+drift-checked at a pinned SHA (plan-website-104 WA, not yet
+# landed). Until WA's scripts/sync_theme_kit.py exists, populate this locally and uncommitted (see
+# scripts/check_theme_sim.mjs's header) to run the theme simulator's parity check for real.
+/vendor/kit-themes/

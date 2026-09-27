@@ -189,6 +189,7 @@ UI = {
         "native": "A Mac app", "limits": "What MarsDawn doesn't do",
         "mcp": "MCP server", "token-efficient-review": "Token-efficient review",
         "vs-markdown-preview-tools": "Viewing Markdown elsewhere vs. MarsDawn", "themes": "Preview themes and PDF export",
+        "themes-new": "Build a theme",
         "sharing-exported-pdfs": "Sharing exported PDFs", "reviewing-ai-output": "Why AI output still needs a human reader",
         "reading-agent-output": "Reading what your agent hands back", "agent-transparency": "Agent transparency",
         "reviewing-agent-plans": "Reviewing an agent plan", "agent-design-patterns": "Agent design patterns",
@@ -216,6 +217,7 @@ UI = {
         "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
         "mcp": "MCP 伺服器", "token-efficient-review": "節省 token 的審閱方式",
         "vs-markdown-preview-tools": "在別處看 Markdown，對比 MarsDawn", "themes": "預覽主題與 PDF 輸出",
+        "themes-new": "打造一個主題",
         "sharing-exported-pdfs": "分享輸出的 PDF", "reviewing-ai-output": "為什麼 AI 寫的東西還是需要人讀過",
         "reading-agent-output": "讀懂 agent 交回來的 Markdown", "agent-transparency": "agent 的透明",
         "reviewing-agent-plans": "審 agent 計畫", "agent-design-patterns": "agent 設計模式",
@@ -377,6 +379,39 @@ PAGES = {
         "title": "支援 · MarsDawn",
         "description": "MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。",
         "body": render_legal_body("support", "zh-hant"),
+    },
+}
+
+
+# The theme simulator (mars-dawn-website #142, plan-website-104 W1): a page where a designer
+# builds a MarsDawn preview theme in the browser and submits it as a prefilled GitHub issue. The
+# body here is deliberately just a container: every control, the live preview and the validation
+# messages are built by theme-sim/app.js at load time, so the static HTML and its Markdown twin
+# stay simple (see render()'s "themes/new" case for the stylesheet/module-script wiring).
+THEME_SIM_PAGES = {
+    ("en", "themes/new"): {
+        "title": "Build a MarsDawn theme in your browser · MarsDawn",
+        "description": "Pick colours and a handful of style options, see them applied to a sample document live, and submit your theme as a GitHub issue. No install, no git.",
+        "body": """
+<section class="intro">
+  <h1>Build a theme</h1>
+  <p>Pick a palette and a few style options below. The sample document on the right updates as you go, in light and dark, and every check the gallery's CI runs shows up here too &#8212; so a theme that reaches the submission issue has usually already passed.</p>
+  <p>You'll need a GitHub account to submit. No install, no git required for this page itself.</p>
+</section>
+<div id="theme-sim-app"><p>This page needs JavaScript to build and preview a theme.</p></div>
+""",
+    },
+    ("zh-hant", "themes/new"): {
+        "title": "在瀏覽器裡打造一個 MarsDawn 主題 · MarsDawn",
+        "description": "挑選顏色和幾個樣式選項，即時看它們套用在範例文件上，再把主題送出成一個 GitHub issue。不用安裝，也不用 git。",
+        "body": """
+<section class="intro">
+  <h1>打造一個主題</h1>
+  <p>在下面挑一組色盤和幾個樣式選項。右邊的範例文件會即時更新，同時有淺色和深色兩種，主題庫 CI 會做的每一項檢查也會顯示在這裡——所以送出投稿 issue 的主題，通常已經先過關了。</p>
+  <p>投稿需要一個 GitHub 帳號。這個頁面本身不用安裝，也不用 git。</p>
+</section>
+<div id="theme-sim-app"><p>這個頁面需要 JavaScript 才能建立與預覽主題。</p></div>
+""",
     },
 }
 
@@ -3927,7 +3962,7 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
     ])
 
 PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
-              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "sharing-exported-pdfs", "reviewing-ai-output",
+              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
@@ -3936,7 +3971,7 @@ SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
                   "vs/macmd-viewer": "vs-macmd-viewer",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
-                  "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes",
+                  "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes", "themes/new": "themes-new",
                   "sharing-exported-pdfs": "sharing-exported-pdfs", "reviewing-ai-output": "reviewing-ai-output",
                   "reading-agent-output": "reading-agent-output", "agent-transparency": "agent-transparency",
                   "reviewing-agent-plans": "reviewing-agent-plans", "agent-design-patterns": "agent-design-patterns",
@@ -3948,6 +3983,7 @@ SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "
 
 def _base_pages() -> dict:
     merged = dict(PAGES)
+    merged.update(THEME_SIM_PAGES)
     merged.update(CLI_PAGES)
     merged.update(AGENT_PAGES)
     merged.update(START_PAGES)
@@ -4293,6 +4329,18 @@ def render(locale: str, slug: str, page: dict) -> str:
     if slug == "index":
         extra_css = ('<link rel="stylesheet" href="/assets/hero.css">\n<link rel="stylesheet" href="/assets/annotations.css">\n'
                      '<link rel="stylesheet" href="/assets/loop.css">\n')
+    # The theme simulator (#142): its own layout stylesheet, same-origin so script-src 'self'
+    # already allows it -- no new CSP hash. Its module script builds the whole interactive page
+    # into #theme-sim-app; see theme-sim/app.js for why the body above is just that container.
+    extra_js = ""
+    if slug == "themes/new":
+        extra_css = '<link rel="stylesheet" href="/assets/theme-sim.css">\n'
+        extra_js = (
+            '<script type="module">\n'
+            "  import { mount } from \"/assets/theme-sim/app.js\";\n"
+            '  mount(document.getElementById("theme-sim-app"));\n'
+            "</script>\n"
+        )
     chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
     if slug == "index":
         hero_html = (
@@ -4369,7 +4417,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 {extra_css}{alternates}
 {seo}
 {jsonld}<script src="/assets/consent.js" defer></script>
-</head>
+{extra_js}</head>
 <body>
 <a class="skip" href="#main">{SKIP_LABEL[locale]}</a>
 {consent_banner_html(locale)}
