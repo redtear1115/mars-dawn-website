@@ -5,13 +5,15 @@ Usage:
     python3 scripts/check_theme_index.py [--root public]
     python3 scripts/check_theme_index.py --self-test
 
-`/themes/v1/` is reserved (see README.md) until the theme gallery ships (app repo's
-docs/theme-ecosystem-design.md, read at origin/main c0d4addb9349298a305725f4d5ae97e7d0e48c0b).
-Nothing under it is committed yet, and that is a valid state: if `public/themes/v1/` doesn't exist
-at all, this check passes without looking further — there is nothing to validate.
+`public/themes/v1/index.json` is published and mandatory (issue #77; app repo's
+docs/theme-ecosystem-design.md §5.1, read at origin/main c0d4addb9349298a305725f4d5ae97e7d0e48c0b).
+The gallery itself hasn't shipped — the app doesn't read this file yet — but the empty index is
+committed so the check has something real to hold the shape to from day one, instead of waiting
+for the gallery and letting the check validate nothing in the meantime. A missing `public/themes/v1/`
+directory, or a missing `index.json` inside it, both fail: there is no "reserved, nothing to check
+yet" state left.
 
-Once anything is committed under `public/themes/v1/`, the directory is no longer just reserved:
-`index.json` must exist there, must parse as JSON, and must match the shape §5.1 fixes, field for
+`index.json` must exist, must parse as JSON, and must match the shape §5.1 fixes, field for
 field, with nothing invented beyond it:
 
 - `schemaVersion`: an integer (a JSON `true`/`false` is not one, even though Python's `bool` is an
@@ -50,25 +52,20 @@ field, with nothing invented beyond it:
 
 This is what issue #77 asks for: the check used to run only `if -f index.json`, so it validated
 nothing before the gallery shipped and could keep validating nothing even after, if the file were
-ever accidentally dropped, or its shape drifted, without the change being flagged.
+ever accidentally dropped, or its shape drifted, without the change being flagged. It is now
+mandatory outright: a missing `public/themes/v1/` or a missing `index.json` inside it both fail,
+with their own message, rather than passing as "nothing to validate".
 
 `--self-test` plants one break per condition in `RULES` below, in a copy of a valid fixture, and
 requires the check's own report of that break to be **exactly one problem**, carrying that
 condition's own words — not just any problem, and not that problem plus others, so a plant can't be
 credited to the wrong rule or hide a second broken rule behind it. It also checks that an unbroken
-index, and an absent `public/themes/v1/`, both pass first, so a check that can't pass can't pass as
-catching everything. One condition has no dedicated plant, documented at its `RULES` entry instead:
-an unreadable (as opposed to merely malformed or absent) `index.json` isn't something a plant can
-portably arrange (permissions differ by OS and by whether CI runs as root).
-
-**Ship signal (not covered): absence still passes.** If `public/themes/v1/` is deleted outright
-after the gallery has shipped, this check still passes (nothing to validate, by the same rule that
-lets it pass today). Turning that into a failure needs a ship signal — something in this repo that
-says "the gallery has shipped, so index.json is now mandatory" — and nothing here decides gallery
-launch the way `AVAILABILITY` (scripts/build_pages.py) decides Mac App Store launch: they are
-different, unrelated launches, so reusing `AVAILABILITY` would be wrong, not just unwired. Until a
-ship signal exists, treat this line, and the TODO beside the CI step and in README.md, as the
-reminder that this must become mandatory once one does.
+index passes first, and that an absent `public/themes/v1/` now fails with its own message, so a
+check that can't pass can't pass as catching everything, and a check that can't fail can't be
+credited with catching the ship-signal gap either. One condition has no dedicated plant, documented
+at its `RULES` entry instead: an unreadable (as opposed to merely malformed or absent) `index.json`
+isn't something a plant can portably arrange (permissions differ by OS and by whether CI runs as
+root).
 """
 import argparse
 import json
@@ -203,12 +200,10 @@ def check_revoked_entry(problems, where, entry):
 def check(root: Path) -> list:
     """Returns a list of problem strings; empty means the check passes."""
     themes_dir = root / "themes" / "v1"
-    if not themes_dir.exists():
-        # Reserved and not shipped yet (README.md). Nothing to validate. See the module
-        # docstring's "Ship signal" note: this is also why deleting v1/ after ship still passes.
-        return []
-
     index_path = themes_dir / "index.json"
+    if not themes_dir.exists():
+        return [f"{themes_dir.relative_to(root.parent)}: missing; public/themes/v1/index.json is mandatory"]
+
     if not index_path.is_file():
         return [f"{index_path.relative_to(root.parent)}: missing, but {themes_dir.name}/ exists"]
 
@@ -564,7 +559,7 @@ def rule_path_escape_javascript(root):
 
 
 RULES = [
-    ("missing index.json", rule_missing_index, ["missing"]),
+    ("missing index.json", rule_missing_index, ["missing", "exists"]),
     ("malformed JSON", rule_malformed_json, ["not valid JSON"]),
     ("top level not an object", rule_top_level_not_object, ["top level must be a JSON object"]),
     ("schemaVersion is a boolean", rule_schema_version_bool, ["schemaVersion must be an integer"]),
@@ -618,24 +613,29 @@ RULES = [
 def self_test() -> int:
     failures = 0
 
-    # No public/themes/v1/ at all: passes, nothing to check.
+    # No public/themes/v1/ at all: mandatory now, must fail with its own message. "missing" alone
+    # isn't distinctive: it's also in "index.json: missing, but v1/ exists" below, so deleting this
+    # branch's own code and falling through to that other message would still contain "missing" and
+    # pass. Require this branch's own words ("mandatory") instead.
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp) / "public"
         root.mkdir()
         problems = check(root)
-        if problems:
-            print(f"self-test: an absent themes/v1/ should pass, got {problems}")
+        if len(problems) != 1 or "mandatory" not in problems[0]:
+            print(f"self-test: an absent themes/v1/ should fail with 'mandatory', got {problems}")
             failures += 1
 
-    # A directory present with an extra file but no index.json: must fail, and say so.
+    # A directory present with an extra file but no index.json: must fail, and say so. Require
+    # "exists" too (present only in this message, not in the absent-v1/ one above), so this can't
+    # be satisfied by the wrong branch's message just because both happen to say "missing".
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp) / "public"
         themes_dir = root / "themes" / "v1"
         themes_dir.mkdir(parents=True)
         (themes_dir / "some-theme").mkdir()
         problems = check(root)
-        if not problems or not any("missing" in p for p in problems):
-            print(f"self-test: themes/v1/ present without index.json should fail with 'missing', got {problems}")
+        if not problems or not any("missing" in p and "exists" in p for p in problems):
+            print(f"self-test: themes/v1/ present without index.json should fail with 'missing' and 'exists', got {problems}")
             failures += 1
 
     # Unbroken fixture must pass first.
