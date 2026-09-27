@@ -400,7 +400,7 @@ THEME_SIM_PAGES = {
   <p>Pick a palette and a few style options below. The sample document on the right updates as you go, in light and dark, and every check the gallery's CI runs shows up here too &#8212; so a theme that reaches the submission issue has usually already passed.</p>
   <p>You'll need a GitHub account to submit. No install, no git required for this page itself.</p>
 </section>
-<div id="theme-sim-app"><p>This page needs JavaScript to build and preview a theme.</p></div>
+<div id="theme-sim-app" data-locale="en"><p>This page needs JavaScript to build and preview a theme.</p></div>
 """,
     },
     ("zh-hant", "themes/new"): {
@@ -412,7 +412,7 @@ THEME_SIM_PAGES = {
   <p>在下面挑一組色盤和幾個樣式選項。右邊的範例文件會即時更新，同時有淺色和深色兩種，主題庫 CI 會做的每一項檢查也會顯示在這裡——所以送出投稿 issue 的主題，通常已經先過關了。</p>
   <p>投稿需要一個 GitHub 帳號。這個頁面本身不用安裝，也不用 git。</p>
 </section>
-<div id="theme-sim-app"><p>這個頁面需要 JavaScript 才能建立與預覽主題。</p></div>
+<div id="theme-sim-app" data-locale="zh-hant"><p>這個頁面需要 JavaScript 才能建立與預覽主題。</p></div>
 """,
     },
 }
@@ -4332,17 +4332,17 @@ def render(locale: str, slug: str, page: dict) -> str:
         extra_css = ('<link rel="stylesheet" href="/assets/hero.css">\n<link rel="stylesheet" href="/assets/annotations.css">\n'
                      '<link rel="stylesheet" href="/assets/loop.css">\n')
     # The theme simulator (#142): its own layout stylesheet, same-origin so script-src 'self'
-    # already allows it -- no new CSP hash. Its module script builds the whole interactive page
-    # into #theme-sim-app; see theme-sim/app.js for why the body above is just that container.
+    # already allows it -- no new CSP hash. Its bootstrap must be an external module script too:
+    # the CSP's script-src is 'self' plus two sha256-hashed inline scripts (Consent Mode default,
+    # the GTM loader) ONLY, so an inline `<script type="module">` here (mars-dawn-website#147's
+    # verifier-caught bug) is silently blocked in every real browser and the simulator never
+    # mounts. boot.js takes no inline text of its own; anything it needs from the page comes off
+    # #theme-sim-app's own data-* attributes (data-locale), read as text via .dataset, never
+    # inline JS. scripts/check_no_inline_scripts.py holds every generated page to this.
     extra_js = ""
     if slug == "themes/new":
         extra_css = '<link rel="stylesheet" href="/assets/theme-sim.css">\n'
-        extra_js = (
-            '<script type="module">\n'
-            "  import { mount } from \"/assets/theme-sim/app.js\";\n"
-            '  mount(document.getElementById("theme-sim-app"));\n'
-            "</script>\n"
-        )
+        extra_js = '<script type="module" src="/assets/theme-sim/boot.js"></script>\n'
     chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
     if slug == "index":
         hero_html = (

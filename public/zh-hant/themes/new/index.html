@@ -49,10 +49,7 @@ try {
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
 <script src="/assets/consent.js" defer></script>
-<script type="module">
-  import { mount } from "/assets/theme-sim/app.js";
-  mount(document.getElementById("theme-sim-app"));
-</script>
+<script type="module" src="/assets/theme-sim/boot.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到內容</a>
@@ -78,7 +75,7 @@ try {
   <p>在下面挑一組色盤和幾個樣式選項。右邊的範例文件會即時更新，同時有淺色和深色兩種，主題庫 CI 會做的每一項檢查也會顯示在這裡——所以送出投稿 issue 的主題，通常已經先過關了。</p>
   <p>投稿需要一個 GitHub 帳號。這個頁面本身不用安裝，也不用 git。</p>
 </section>
-<div id="theme-sim-app"><p>這個頁面需要 JavaScript 才能建立與預覽主題。</p></div>
+<div id="theme-sim-app" data-locale="zh-hant"><p>這個頁面需要 JavaScript 才能建立與預覽主題。</p></div>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="網站">

@@ -630,7 +630,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <p>下で配色といくつかのスタイルオプションを選んでください。右側のサンプル文書がライトとダークの両方でその場で更新され、テーマギャラリーの CI が行うチェックもここに表示されます。投稿用の issue に届く頃には、たいてい先にすべて通っています。</p>
   <p>投稿には GitHub アカウントが必要です。このページ自体はインストールも git も不要です。</p>
 </section>
-<div id="theme-sim-app"><p>このページの作成とプレビューには JavaScript が必要です。</p></div>
+<div id="theme-sim-app" data-locale="ja"><p>このページの作成とプレビューには JavaScript が必要です。</p></div>
 """,
     }
     pages['themes'] = {

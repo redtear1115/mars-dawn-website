@@ -62,6 +62,12 @@ function unset(obj, path) {
 class ThemeSimApp {
   constructor(root) {
     this.root = root;
+    // Passed from the page as plain text via #theme-sim-app's own data-locale attribute (never
+    // inline JS -- see boot.js), for whichever future control needs to know the page's locale.
+    // Not otherwise read yet: the page copy above the control panel is what varies per locale
+    // today; the panel's own labels are English in every locale (a known limitation, tracked
+    // separately from this fix).
+    this.locale = root.dataset.locale || "en";
     this.state = stateFromBuiltIn("dawn");
     this.lightSheet = new CSSStyleSheet();
     this.baseSheet = null; // adopted once, from the kit's own preview-sim.css

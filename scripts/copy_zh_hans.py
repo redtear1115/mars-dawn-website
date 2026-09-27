@@ -553,7 +553,7 @@ marsdawn --version</code></pre>
   <p>在下面挑一组色板和几个样式选项。右边的范例文档会实时更新，同时有浅色和深色两种，主题库 CI 会做的每一项检查也会显示在这里——所以送出投稿 issue 的主题，通常已经先过关了。</p>
   <p>投稿需要一个 GitHub 账号。这个页面本身不用安装，也不用 git。</p>
 </section>
-<div id="theme-sim-app"><p>这个页面需要 JavaScript 才能建立与预览主题。</p></div>
+<div id="theme-sim-app" data-locale="zh-hans"><p>这个页面需要 JavaScript 才能建立与预览主题。</p></div>
 """,
     }
     pages['themes'] = {

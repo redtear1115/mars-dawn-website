@@ -129,9 +129,17 @@ function checkBuiltIns() {
     }
     ok(`${id}: validates clean`);
     if (id === "dawn") Validator.setDawnFallback(report.theme.light, report.theme.dark);
-    const { variables, rules } = Generator.stylesheetFor(report.theme);
-    if (variables.includes("{{") || rules.includes("{{")) bad(`${id}: no unresolved placeholder`);
-    else ok(`${id}: generates CSS with no unresolved placeholder`);
+    try {
+      const { variables, rules } = Generator.stylesheetFor(report.theme);
+      if (variables.includes("{{") || rules.includes("{{")) bad(`${id}: no unresolved placeholder`);
+      else ok(`${id}: generates CSS with no unresolved placeholder`);
+    } catch (e) {
+      // A validated theme that the generator then refuses is a real bug (the generator re-checks
+      // everything the validator already passed, defence in depth) -- but it's this one fixture's
+      // bug, not a reason to crash the whole run and hide every other result. See
+      // Generator.GeneratorRefusal.
+      bad(`${id}: generates CSS with no unresolved placeholder`, `generator refused a validated theme: ${e}`);
+    }
   }
 }
 
@@ -161,9 +169,15 @@ function expectCSSMatch(label, expectedCSSDir, expectedCSSName, report) {
   const cssPath = path.join(expectedCSSDir, expectedCSSName);
   if (!existsSync(cssPath) || !report.theme) return;
   const want = JSON.parse(readFileSync(cssPath, "utf8"));
-  const { variables, rules } = Generator.stylesheetFor(report.theme);
-  if (variables === want.variables && rules === want.rules) ok(`${label}: css matches expected-css`);
-  else bad(`${label}: css`, "generated CSS does not match expected-css");
+  // A validated theme that the generator then refuses (Generator.GeneratorRefusal) is a real bug
+  // worth a red line of its own -- never a crash that hides every fixture after it.
+  try {
+    const { variables, rules } = Generator.stylesheetFor(report.theme);
+    if (variables === want.variables && rules === want.rules) ok(`${label}: css matches expected-css`);
+    else bad(`${label}: css`, "generated CSS does not match expected-css");
+  } catch (e) {
+    bad(`${label}: css`, `generator refused a validated theme: ${e}`);
+  }
 }
 
 function checkVendorParity() {
@@ -267,7 +281,13 @@ function checkLineHeightFormattingChangeIsRed() {
   const report = Validator.validate(BuiltIns.BUILT_IN_THEME_JSON.classic, { requireComplete: true });
   const expectedCSSDir = path.join(vendorDir, "expected-css");
   const want = JSON.parse(readFileSync(path.join(expectedCSSDir, "classic.json"), "utf8"));
-  const good = Generator.stylesheetFor(report.theme);
+  let good;
+  try {
+    good = Generator.stylesheetFor(report.theme);
+  } catch (e) {
+    bad("lineHeight formatting control: baseline", `generator refused classic: ${e}`);
+    return;
+  }
   if (good.rules !== want.rules) {
     bad("lineHeight formatting control: baseline", "classic's css doesn't match expected-css before any mutation");
     return;

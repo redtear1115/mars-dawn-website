@@ -49,10 +49,7 @@ try {
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <script src="/assets/consent.js" defer></script>
-<script type="module">
-  import { mount } from "/assets/theme-sim/app.js";
-  mount(document.getElementById("theme-sim-app"));
-</script>
+<script type="module" src="/assets/theme-sim/boot.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -78,7 +75,7 @@ try {
   <p>Pick a palette and a few style options below. The sample document on the right updates as you go, in light and dark, and every check the gallery's CI runs shows up here too &#8212; so a theme that reaches the submission issue has usually already passed.</p>
   <p>You'll need a GitHub account to submit. No install, no git required for this page itself.</p>
 </section>
-<div id="theme-sim-app"><p>This page needs JavaScript to build and preview a theme.</p></div>
+<div id="theme-sim-app" data-locale="en"><p>This page needs JavaScript to build and preview a theme.</p></div>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="Site">
