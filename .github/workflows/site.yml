@@ -9,6 +9,9 @@ name: Site
 on:
   pull_request:
     branches: [main, release, "release-*"]
+    # labeled/unlabeled: the theme check reads the theme-author-change label (#144), and a re-run
+    # reuses the original event's labels, so a label change needs an event of its own.
+    types: [opened, synchronize, reopened, labeled, unlabeled]
   push:
     branches: [main, release, "release-*"]
 
@@ -55,13 +58,18 @@ jobs:
       # hashes — see content/legal/manifest.json and the script's own docstring.
       - name: Legal pages match their Markdown source and the pinned kit tag
         run: python3 scripts/check_legal_render.py --self-test && python3 scripts/check_legal_render.py
-      # public/themes/v1/index.json is published (empty, ahead of the gallery) and mandatory
-      # (issue #77): it must exist and match the design doc's shape field for field
-      # (docs/theme-ecosystem-design.md §5.1 in the app repo). A missing public/themes/v1/ or a
-      # missing index.json inside it both fail. --self-test plants a break of each rule first and
-      # requires the check's own message for it.
+      # public/themes/v1/ (index.json, versioned files, published.json) against themes/ (#77,
+      # #144): the index's shape (design §5.1), index <-> themes/ bijection, sha256s, previews,
+      # revocations; then, against the base branch fetched explicitly by SHA (fails closed if it
+      # can't be read), published.json only grows, ids aren't reused, author.github holds; and
+      # the PR author's class (bot / maintainer / anyone else), read by id from the event payload
+      # file, never from event text in `run:`. THEME_MAINTAINER_IDS is a repo variable (numeric
+      # GitHub ids); unset means the script's default. --self-test plants a break of each rule
+      # first and requires the check's own message for it.
       - name: Theme index is present and valid
-        run: python3 scripts/check_theme_index.py --self-test && python3 scripts/check_theme_index.py
+        env:
+          THEME_MAINTAINER_IDS: ${{ vars.THEME_MAINTAINER_IDS }}
+        run: python3 scripts/check_theme_index.py --self-test && python3 scripts/check_theme_index.py --ci
       # vendor/kit-themes/<sha>/ (scripts/sync_theme_kit.py, run locally on macOS) is the kit's
       # theme contract the simulator's JS ports are checked against; this holds it to the kit's
       # pinned commit on GitHub, to its own manifest, and to full sweep coverage, without
