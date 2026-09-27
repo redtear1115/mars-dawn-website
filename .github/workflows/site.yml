@@ -62,6 +62,12 @@ jobs:
       # requires the check's own message for it.
       - name: Theme index is present and valid
         run: python3 scripts/check_theme_index.py --self-test && python3 scripts/check_theme_index.py
+      # vendor/kit-themes/<sha>/ (scripts/sync_theme_kit.py, run locally on macOS) is the kit's
+      # theme contract the simulator's JS ports are checked against; this holds it to the kit's
+      # pinned commit on GitHub, to its own manifest, and to full sweep coverage, without
+      # building the kit itself.
+      - name: The vendored kit theme contract matches the pinned commit
+        run: python3 scripts/check_theme_kit.py --self-test && python3 scripts/check_theme_kit.py
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/release'
