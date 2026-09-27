@@ -1,4 +1,4 @@
-// Port of ResolvedPalette (ThemePairs.swift, kit origin/release-0.6.1, d6eae71): a palette with
+// Port of ResolvedPalette (ThemePairs.swift, kit origin/release-0.6.1, f1c66e16509e): a palette with
 // every colour present (the file's own syntax/diagram groups, or Dawn's for the same appearance
 // where the file leaves one out), and the derived tokens a pair can name.
 

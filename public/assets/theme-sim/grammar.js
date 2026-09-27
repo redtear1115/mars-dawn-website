@@ -1,9 +1,10 @@
 // Port of mars-dawn-kit Sources/MarsDawnThemes/ThemeGrammar.swift (read at origin/release-0.6.1,
-// d6eae71). Byte-level (here: UTF-16 code-unit-level, which agrees with the kit's UTF-8 byte walk
-// for the ASCII-only grammars below) patterns, kept a line-for-line match to the Swift so the two
-// can't drift silently. This is a *port*, not a copy of vendored data: it has no dependency on
-// vendor/kit-themes/, which WA (not this slice) vendors and drift-checks against the kit's actual
-// source at a pinned SHA.
+// f1c66e16509e). Byte-level (here: UTF-16 code-unit-level, which agrees with the kit's UTF-8 byte
+// walk for the ASCII-only grammars below) patterns, kept a line-for-line match to the Swift so the
+// two can't drift silently. This is a *port*, hand-kept in sync, not vendored data: unlike
+// styles-data.js/built-ins.js (which now load their data from vendor/kit-themes/<tag>/, WA), logic
+// has no JSON form in the kit to load instead, so it stays a hand-kept copy, checked for drift by
+// scripts/check_theme_sim.mjs's parity run against the vendored fixtures and expected-css.
 
 export const MAX_ID_LENGTH = 32;
 
@@ -52,6 +53,18 @@ export function isHexColor(text) {
     if (c.codePointAt(0) > 0x7f || !isHexDigit(c)) return false;
   }
   return true;
+}
+
+/** Test-only hook (scripts/check_theme_sim.mjs's "lowercase hex is accepted" control): swaps in a
+ * replacement for `isHexColor` and returns the previous one, so the check can plant a broken
+ * (e.g. uppercase-only) grammar, confirm validation then fails through the real pipeline, and
+ * restore the original -- never used at runtime. A function declaration's binding is reassignable
+ * from within its own module, and `import * as Grammar` sees the live binding either way, so
+ * `Grammar.isHexColor` reflects this from the outside without validator.js changing at all. */
+export function __setIsHexColorForTest(fn) {
+  const previous = isHexColor;
+  isHexColor = fn;
+  return previous;
 }
 
 /** `MAJOR.MINOR.PATCH`, each 1-4 ASCII digits. */

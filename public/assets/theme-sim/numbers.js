@@ -1,4 +1,4 @@
-// Port of ThemeNumbers.swift (kit origin/release-0.6.1, d6eae71): the bounded numbers of design
+// Port of ThemeNumbers.swift (kit origin/release-0.6.1, f1c66e16509e): the bounded numbers of design
 // §4.3, and the one way the kit writes a number into CSS. See grammar.js's header note: a port,
 // not vendored data.
 

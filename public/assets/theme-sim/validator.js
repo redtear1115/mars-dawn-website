@@ -1,5 +1,5 @@
 // Port of ThemeValidator.swift + ThemeDocument.swift/ThemeStyle.swift's strict decoding (kit
-// origin/release-0.6.1, d6eae71). Not the gate (the kit's Swift validator is); a convenience for
+// origin/release-0.6.1, f1c66e16509e). Not the gate (the kit's Swift validator is); a convenience for
 // instant feedback, kept honest by scripts/check_theme_sim.mjs's parity check against the kit's
 // own fixtures (design §6, plan-website-104 W1).
 //

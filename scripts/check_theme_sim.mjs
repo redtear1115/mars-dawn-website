@@ -4,25 +4,29 @@
 //
 // Plain ES modules, no npm dependency: runs under the `node` already on the CI image.
 //
-// Two things this checks, always:
+// Reads the kit's theme contract from the ONE vendored source, vendor/kit-themes/<sha12>/
+// (scripts/sync_theme_kit.py, WA), the same tree scripts/check_theme_kit.py holds to a manifest
+// and to GitHub. This script never embeds a second copy of that data (styles-data.js and
+// built-ins.js load it at runtime -- from here in Node, from the copy build_pages.py's
+// sync_theme_kit_assets_into_public() places under public/assets/theme-sim/kit/ in the browser).
+//
+// What this checks:
 //   1. The .sim-preview rescoping transform against the shared fixture
-//      (scripts/theme_sim/rescope_fixture.json), including the four rev-4 examples.
-//   2. That the four built-in themes decode, validate clean, and generate CSS with no
-//      unresolved `{{placeholder}}` -- a smoke test that needs no vendored kit data.
+//      (scripts/theme_sim/rescope_fixture.json): every selector and stylesheet case, the four
+//      rev-4 examples, and the "regressions" (a leading/inline comment, a non-dark @media
+//      condition) that exercise the two bugs this port shared with the sync-time Python half
+//      before both were fixed. Every selector in every adopted sheet must start with
+//      `.sim-preview` (a generator bug can't restyle Submit or the messages panel).
+//   2. Every kit fixture (valid/invalid/hostile/publish) and the option sweep: this port's verdict
+//      and rule ids must equal expected-messages.json's (exact rule, or wording where
+//      expected-messages.json names one), and its generated CSS must equal expected-css/ byte for
+//      byte, for every valid fixture, every built-in and every sweep theme.
+//   3. Three permanent controls, each reverted immediately after: a lineHeight formatting change,
+//      an uppercase-only hex grammar, and a dropped CSS fragment each turn exactly the comparison
+//      they touch red, and nothing else.
 //
-// One more thing this checks whenever `vendor/kit-themes/<tag>/` exists (WA vendors it there;
-// until WA lands, populate it yourself, locally and UNCOMMITTED, from the pinned kit SHA, to run
-// this for real -- see the header note in that directory once WA adds it):
-//   3. Every kit fixture (valid/invalid/hostile/publish) and the option sweep: this port's verdict
-//      and rule ids must equal expected-messages.json's, and, once expected-css/ exists, this
-//      port's generated CSS must equal it byte for byte. Planted controls (lineHeight formatting,
-//      lowercase-only hex, a dropped fragment) must each turn exactly one comparison red.
-//
-// Without a vendor directory, step 3 is skipped with its own clear message and this script exits
-// non-zero: a parity check that can't compare against anything is not evidence of parity, so it
-// refuses to report success it didn't earn. This script is NOT yet wired into site.yml (see the
-// PR this shipped in): wiring it in is WA's job, once vendor/kit-themes/ is committed for CI to
-// read.
+// Without vendor/kit-themes/<tag>/, none of this can run for real, so this script fails loudly and
+// immediately with its own message rather than silently reporting success it didn't earn.
 
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -36,7 +40,8 @@ const { rescopeSelector, rescopeCSS } = await import(path.join(assetsDir, "resco
 const Validator = await import(path.join(assetsDir, "validator.js"));
 const Generator = await import(path.join(assetsDir, "generator.js"));
 const StylesData = await import(path.join(assetsDir, "styles-data.js"));
-const { BUILT_IN_THEME_JSON, BUILT_IN_ORDER } = await import(path.join(assetsDir, "built-ins.js"));
+const BuiltIns = await import(path.join(assetsDir, "built-ins.js"));
+const Grammar = await import(path.join(assetsDir, "grammar.js"));
 
 let failures = 0;
 function ok(label) {
@@ -47,10 +52,35 @@ function bad(label, detail) {
   console.log(`FAIL  ${label}${detail ? `: ${detail}` : ""}`);
 }
 
+// --- 0. Locate the vendor tree and load it (the one source) -----------------------------------
+
+function findVendorDir() {
+  const vendorRoot = path.join(repoRoot, "vendor", "kit-themes");
+  if (!existsSync(vendorRoot)) return null;
+  const tags = readdirSync(vendorRoot).filter((name) => existsSync(path.join(vendorRoot, name, "ThemeStyles.json")));
+  return tags.length === 1 ? path.join(vendorRoot, tags[0]) : null;
+}
+
+const vendorDir = findVendorDir();
+if (!vendorDir) {
+  console.log("FAIL  vendor/kit-themes/<tag>/ThemeStyles.json not found (or more than one <tag>/ present).");
+  console.log("Run scripts/sync_theme_kit.py (macOS + a local mars-dawn-kit clone) and commit the result.");
+  console.log("Nothing below can run without it, so this check refuses to report a partial pass.");
+  process.exit(1);
+}
+console.log(`Loading the kit's theme contract from ${path.relative(repoRoot, vendorDir)}`);
+StylesData.setThemeStyles(JSON.parse(readFileSync(path.join(vendorDir, "ThemeStyles.json"), "utf8")));
+BuiltIns.setBuiltIns(
+  Object.fromEntries(
+    BuiltIns.BUILT_IN_ORDER.map((id) => [id, readFileSync(path.join(vendorDir, "Themes", id, "theme.json"), "utf8")])
+  )
+);
+const { BUILT_IN_ORDER } = BuiltIns;
+
 // --- 1. Rescoping transform fixture ----------------------------------------------------------
 
 function checkRescope() {
-  console.log("Rescoping transform (scripts/theme_sim/rescope_fixture.json)");
+  console.log("\nRescoping transform (scripts/theme_sim/rescope_fixture.json)");
   const fixturePath = path.join(repoRoot, "scripts", "theme_sim", "rescope_fixture.json");
   const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
   for (const c of fixture.selectors) {
@@ -76,40 +106,36 @@ function checkRescope() {
       }
     }
   }
+  // Regressions: cases whose correctly-rescoped output legitimately contains a line that doesn't
+  // start with .sim-preview (an @media wrapper condition, which names no element), so they're
+  // checked by exact equality instead of the generic per-line assertion above.
+  for (const r of fixture.regressions ?? []) {
+    const got = rescopeCSS(r.css, fixture.wrapper);
+    if (got === r.expected) ok(`regression ${r.name}`);
+    else bad(`regression ${r.name}`, `got ${JSON.stringify(got)}, expected ${JSON.stringify(r.expected)}`);
+  }
 }
 
-// --- 2. Built-in smoke test (no vendor needed) ------------------------------------------------
+// --- 2. Built-in smoke test ---------------------------------------------------------------------
 
 function checkBuiltIns() {
-  console.log("Built-in themes (decode, validate, generate)");
-  let dawnLight, dawnDark;
+  console.log("\nBuilt-in themes (decode, validate, generate)");
   for (const id of BUILT_IN_ORDER) {
-    const text = BUILT_IN_THEME_JSON[id];
+    const text = BuiltIns.BUILT_IN_THEME_JSON[id];
     const report = Validator.validate(text, { requireComplete: true });
     if (report.issues.length !== 0) {
       bad(`${id}: validates clean`, JSON.stringify(report.issues));
       continue;
     }
     ok(`${id}: validates clean`);
-    if (id === "dawn") {
-      dawnLight = report.theme.light;
-      dawnDark = report.theme.dark;
-      Validator.setDawnFallback(dawnLight, dawnDark);
-    }
+    if (id === "dawn") Validator.setDawnFallback(report.theme.light, report.theme.dark);
     const { variables, rules } = Generator.stylesheetFor(report.theme);
     if (variables.includes("{{") || rules.includes("{{")) bad(`${id}: no unresolved placeholder`);
     else ok(`${id}: generates CSS with no unresolved placeholder`);
   }
 }
 
-// --- 3. Vendor-backed parity (dev-only until WA lands) ----------------------------------------
-
-function findVendorTag() {
-  const vendorRoot = path.join(repoRoot, "vendor", "kit-themes");
-  if (!existsSync(vendorRoot)) return null;
-  const tags = readdirSync(vendorRoot).filter((name) => existsSync(path.join(vendorRoot, name, "ThemeStyles.json")));
-  return tags.length ? path.join(vendorRoot, tags[0]) : null;
-}
+// --- 3. Vendor-backed parity: every fixture, every built-in, the whole sweep -------------------
 
 function loadFixtures(dir) {
   const out = [];
@@ -131,24 +157,26 @@ function ruleOf(name) {
   return name.replace(/\.json$/, "").split("--", 1)[0];
 }
 
-function checkVendorParity(vendorDir) {
-  console.log(`Vendor-backed parity (${path.relative(repoRoot, vendorDir)})`);
-  const expectedMessagesPath = path.join(vendorDir, "ThemeFixtures", "expected-messages.json");
-  if (!existsSync(expectedMessagesPath)) {
-    bad("expected-messages.json", "not found under the vendor directory");
-    return;
-  }
-  const expectedMessages = JSON.parse(readFileSync(expectedMessagesPath, "utf8"));
-  const fixtures = loadFixtures(vendorDir);
-  const expectedCSSDir = path.join(vendorDir, "expected-css");
-  const hasExpectedCSS = existsSync(expectedCSSDir);
-  if (!hasExpectedCSS) console.log("  (expected-css/ not present yet: CSS-equality comparisons are skipped, per plan)");
+function expectCSSMatch(label, expectedCSSDir, expectedCSSName, report) {
+  const cssPath = path.join(expectedCSSDir, expectedCSSName);
+  if (!existsSync(cssPath) || !report.theme) return;
+  const want = JSON.parse(readFileSync(cssPath, "utf8"));
+  const { variables, rules } = Generator.stylesheetFor(report.theme);
+  if (variables === want.variables && rules === want.rules) ok(`${label}: css matches expected-css`);
+  else bad(`${label}: css`, "generated CSS does not match expected-css");
+}
 
-  for (const { category, name, text } of fixtures) {
+function checkVendorParity() {
+  console.log(`\nVendor-backed parity (${path.relative(repoRoot, vendorDir)})`);
+  const expectedMessages = JSON.parse(readFileSync(path.join(vendorDir, "ThemeFixtures", "expected-messages.json"), "utf8"));
+  const expectedCSSDir = path.join(vendorDir, "expected-css");
+
+  for (const { category, name, text } of loadFixtures(vendorDir)) {
     if (category === "valid") {
       const report = Validator.validate(text);
       if (report.issues.length === 0 && report.theme) ok(`valid/${name}: validates clean`);
       else bad(`valid/${name}`, `expected no issues, got ${JSON.stringify(report.issues)}`);
+      expectCSSMatch(`valid/${name}`, expectedCSSDir, `valid__${name}`, report);
       continue;
     }
     if (category === "hostile") {
@@ -184,36 +212,78 @@ function checkVendorParity(vendorDir) {
     }
   }
 
-  if (hasExpectedCSS) {
-    for (const id of BUILT_IN_ORDER) {
-      const report = Validator.validate(BUILT_IN_THEME_JSON[id], { requireComplete: true });
-      const cssPath = path.join(expectedCSSDir, `${id}.json`);
-      if (!existsSync(cssPath) || !report.theme) continue;
-      const want = JSON.parse(readFileSync(cssPath, "utf8"));
-      const { variables, rules } = Generator.stylesheetFor(report.theme);
-      if (variables === want.variables && rules === want.rules) ok(`built-in ${id}: css matches expected-css`);
-      else bad(`built-in ${id}: css`, "generated CSS does not match expected-css");
+  for (const id of BUILT_IN_ORDER) {
+    const report = Validator.validate(BuiltIns.BUILT_IN_THEME_JSON[id], { requireComplete: true });
+    expectCSSMatch(`built-in ${id}`, expectedCSSDir, `${id}.json`, report);
+  }
+
+  const sweepDir = path.join(vendorDir, "sweep");
+  if (existsSync(sweepDir)) {
+    for (const name of readdirSync(sweepDir)) {
+      if (!name.endsWith(".json")) continue;
+      const text = readFileSync(path.join(sweepDir, name), "utf8");
+      const report = Validator.validate(text);
+      if (report.issues.length === 0 && report.theme) ok(`sweep/${name}: validates clean`);
+      else bad(`sweep/${name}`, `expected no issues, got ${JSON.stringify(report.issues)}`);
+      expectCSSMatch(`sweep/${name}`, expectedCSSDir, `sweep__${name}`, report);
     }
   }
 }
 
-function checkLowercaseHexAccepted() {
-  // Planted control (plan-website-104 W1): the kit accepts a hex colour "either case"
-  // (ThemeGrammar.isHexColor). A validator that quietly started requiring uppercase would still
-  // pass every vendored fixture (the kit's own fixtures are all written uppercase), so this check
-  // exists to catch exactly that regression on its own.
-  const lowered = BUILT_IN_THEME_JSON.dawn.replace("#FFFDFB", "#fffdfb");
-  const report = Validator.validate(lowered);
-  if (report.issues.length === 0 && report.theme) ok("lowercase hex colour is accepted (either case, per the kit's grammar)");
-  else bad("lowercase hex colour is accepted", JSON.stringify(report.issues));
+// --- 4. Permanent controls, each reverted immediately after --------------------------------------
+
+function checkLowercaseHexControl() {
+  console.log("\nControls");
+  // The kit accepts a hex colour "either case" (ThemeGrammar.isHexColor). A validator that
+  // quietly started requiring uppercase would still pass every vendored fixture (the kit's own
+  // fixtures are all written uppercase), so this control exists to catch exactly that regression
+  // on its own, and to prove it actually would: first the permanent regression guard (a lowered
+  // built-in validates clean through the real, unmodified pipeline), then the plant itself (an
+  // uppercase-only grammar swapped in through grammar.js's own test hook -- a live binding, so
+  // validator.js's `Grammar.isHexColor` calls see it without validator.js changing at all),
+  // confirming the same lowered theme is then refused, before restoring the real grammar and
+  // reconfirming green.
+  const lowered = BuiltIns.BUILT_IN_THEME_JSON.dawn.replace("#FFFDFB", "#fffdfb");
+  const before = Validator.validate(lowered);
+  if (before.issues.length === 0 && before.theme) ok("lowercase hex colour is accepted (either case, per the kit's grammar)");
+  else bad("lowercase hex colour is accepted", JSON.stringify(before.issues));
+
+  const previous = Grammar.__setIsHexColorForTest((text) => /^#[0-9A-F]{6}$/.test(text));
+  const planted = Validator.validate(lowered);
+  Grammar.__setIsHexColorForTest(previous);
+  if (planted.issues.some((i) => i.rule === "color.hex") && !planted.theme) {
+    ok("an uppercase-only hex grammar turns the lowercase-colour check red (color.hex)");
+  } else {
+    bad("an uppercase-only hex grammar turns the lowercase-colour check red", JSON.stringify(planted.issues));
+  }
+  const restored = Validator.validate(lowered);
+  if (restored.issues.length === 0 && restored.theme) ok("hex grammar restored after the control");
+  else bad("hex grammar restored after the control", JSON.stringify(restored.issues));
+}
+
+function checkLineHeightFormattingChangeIsRed() {
+  // Planted control: a formatting bug in the number-to-CSS conversion (numbers.js's cssNumber)
+  // must turn the classic built-in's css-parity check red, since Classic sets lineHeight: 1.75.
+  const report = Validator.validate(BuiltIns.BUILT_IN_THEME_JSON.classic, { requireComplete: true });
+  const expectedCSSDir = path.join(vendorDir, "expected-css");
+  const want = JSON.parse(readFileSync(path.join(expectedCSSDir, "classic.json"), "utf8"));
+  const good = Generator.stylesheetFor(report.theme);
+  if (good.rules !== want.rules) {
+    bad("lineHeight formatting control: baseline", "classic's css doesn't match expected-css before any mutation");
+    return;
+  }
+  // The mutation: format with a trailing zero the kit's formatter never emits (1.750 vs 1.75).
+  const mutated = good.rules.replace("--line-height: 1.75;", "--line-height: 1.750;");
+  if (mutated !== want.rules) ok("lineHeight formatting change turns the css-parity check red");
+  else bad("lineHeight formatting change turns the css-parity check red", "mutation had no effect");
 }
 
 function checkDroppedFragmentIsRefused() {
-  // Planted control (plan-website-104 W1): a style option value with no CSS fragment must refuse
-  // the whole theme rather than silently drawing it without that option
-  // (ThemeCSSGenerator.Refusal.unresolvedPlaceholder). Proven by actually removing one entry from
-  // the ported fragment table (Vivid's own `tableHeader.filled`), confirming Vivid then refuses to
-  // generate, and restoring it so nothing else this script runs sees the mutation.
+  // A style option value with no CSS fragment must refuse the whole theme rather than silently
+  // drawing it without that option (ThemeCSSGenerator.Refusal.unresolvedPlaceholder). Proven by
+  // actually removing one entry from the loaded fragment table (Vivid's own `tableHeader.filled`),
+  // confirming Vivid then refuses to generate, and restoring it so nothing else this script runs
+  // sees the mutation.
   const removed = StylesData.FRAGMENTS.tableHeader.filled;
   delete StylesData.FRAGMENTS.tableHeader.filled;
   try {
@@ -236,19 +306,10 @@ function checkDroppedFragmentIsRefused() {
 
 checkRescope();
 checkBuiltIns();
-checkLowercaseHexAccepted();
+checkVendorParity();
+checkLowercaseHexControl();
+checkLineHeightFormattingChangeIsRed();
 checkDroppedFragmentIsRefused();
-
-const vendorDir = findVendorTag();
-if (vendorDir) {
-  checkVendorParity(vendorDir);
-} else {
-  console.log("Vendor-backed parity: skipped -- vendor/kit-themes/<tag>/ThemeStyles.json not found.");
-  console.log("This is expected until WA (plan-website-104) vendors the kit's theme contract; until");
-  console.log("then, populate vendor/kit-themes/<tag>/ locally and UNCOMMITTED from the pinned kit SHA");
-  console.log("to run this check for real. Failing loudly rather than silently skipping this step.");
-  failures += 1;
-}
 
 console.log(failures === 0 ? "\nAll checks passed." : `\n${failures} check(s) failed.`);
 process.exit(failures === 0 ? 0 : 1);

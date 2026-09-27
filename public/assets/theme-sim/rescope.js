@@ -114,11 +114,22 @@ function splitTopLevel(css) {
 }
 
 const DARK_MEDIA = /^@media\s*\(\s*prefers-color-scheme\s*:\s*dark\s*\)$/;
+const ANY_MEDIA = /^@media\b/;
+const COMMENT = /\/\*[\s\S]*?\*\//g;
 
 /** Rescopes a whole stylesheet: every top-level rule under `wrapper`, every rule inside
  * `@media (prefers-color-scheme: dark) { … }` unwrapped under `.sim-preview[data-appearance="dark"]`
- * (or `wrapper` with that attribute merged on, if `wrapper` already carries a leading compound). */
+ * (or `wrapper` with that attribute merged on, if `wrapper` already carries a leading compound),
+ * and every rule inside any *other* `@media` condition (e.g. `@media print`, which the kit's own
+ * preview.css also has) rescoped in place, still inside that same `@media` wrapper.
+ *
+ * Comments are stripped first: a comment between two rules has no `{`/`}` of its own, so without
+ * this a leading top-of-file comment would otherwise be swallowed into the *next* rule's selector
+ * text -- turning `:root` into "(the comment) :root", a descendant selector that matches nothing,
+ * rather than the bare `:root` this transform means to rescope. Byte-for-byte the same two fixes
+ * as scripts/rescope_css.py (the sync-time Python half); see that file's own docstring. */
 export function rescopeCSS(css, wrapper = DEFAULT_WRAPPER) {
+  css = css.replace(COMMENT, "");
   let out = "";
   for (const { header, body } of splitTopLevel(css)) {
     if (DARK_MEDIA.test(header)) {
@@ -126,6 +137,19 @@ export function rescopeCSS(css, wrapper = DEFAULT_WRAPPER) {
       for (const inner of splitTopLevel(body)) {
         out += `${rescopeSelectorList(inner.header, darkWrapper)} {${inner.body}}\n`;
       }
+      continue;
+    }
+    if (ANY_MEDIA.test(header)) {
+      // Any other @media condition: the condition itself names no element, so it is never a
+      // selector to rescope -- only the rules nested inside it are. Recursing (rather than
+      // treating "@media print" as if it were a compound selector, which would silently ship
+      // every inner selector un-rescoped, outside .sim-preview entirely) keeps every declaration
+      // under the wrapper.
+      let inner = "";
+      for (const innerRule of splitTopLevel(body)) {
+        inner += `${rescopeSelectorList(innerRule.header, wrapper)} {${innerRule.body}}\n`;
+      }
+      out += `${header} {\n${inner}}\n`;
       continue;
     }
     out += `${rescopeSelectorList(header, wrapper)} {${body}}\n`;

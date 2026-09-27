@@ -12,14 +12,16 @@ Static output, no build step at deploy time. Edit the copy here and rerun:
 """
 import json
 import re
+import shutil
 import sys
 from types import SimpleNamespace
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
-SITE = Path(__file__).resolve().parent.parent / "public"
-CONTENT_LEGAL = Path(__file__).resolve().parent.parent / "content" / "legal"
+ROOT = Path(__file__).resolve().parent.parent
+SITE = ROOT / "public"
+CONTENT_LEGAL = ROOT / "content" / "legal"
 UPDATED = "2026-09-17"
 # The privacy page's own "Last updated" line lives in its Markdown source
 # (content/legal/privacy.<locale>.md) now, not here: see render_legal_body.
@@ -4763,7 +4765,43 @@ _headline, _lede = hero_copy()
 OG_IMAGE_ALT = f"MarsDawn. {' '.join(_headline)} {_lede}"
 
 
+THEME_SIM_KIT_BUILT_INS = ["dawn", "classic", "modern", "vivid"]
+
+
+def sync_theme_kit_assets_into_public() -> None:
+    """Copies exactly what the theme simulator's browser code needs (public/assets/theme-sim/) from
+    the vendored kit tree (vendor/kit-themes/<sha12>/, scripts/sync_theme_kit.py) into
+    public/assets/theme-sim/kit/: ThemeStyles.json, the four built-in theme.json files and
+    preview-sim.css. The browser can only fetch from public/, never from vendor/, and this is meant
+    to be the *only* copy of that data the page reads -- see theme-sim/styles-data.js and
+    theme-sim/built-ins.js, which fetch it from here rather than embedding their own.
+
+    Pure file copy, no Swift and no network, so it runs on Ubuntu CI too: `main()` calls this every
+    time, and site.yml's "Regenerated pages match the commit" step (which reruns this whole script
+    and diffs public/ against the commit) is what holds this copy to the vendored source, the same
+    way it already holds every generated page to source.
+    """
+    vendor_root = ROOT / "vendor" / "kit-themes"
+    dest = SITE / "assets" / "theme-sim" / "kit"
+    dirs = sorted(p for p in vendor_root.iterdir() if p.is_dir()) if vendor_root.is_dir() else []
+    assert len(dirs) == 1, f"expected exactly one vendor/kit-themes/<sha>/, found {[d.name for d in dirs]} -- run scripts/sync_theme_kit.py"
+    vendor = dirs[0]
+    if dest.exists():
+        shutil.rmtree(dest)
+    dest.mkdir(parents=True)
+    shutil.copy2(vendor / "ThemeStyles.json", dest / "ThemeStyles.json")
+    print(dest / "ThemeStyles.json")
+    shutil.copy2(vendor / "preview-sim.css", dest / "preview-sim.css")
+    print(dest / "preview-sim.css")
+    themes_dest = dest / "themes"
+    themes_dest.mkdir()
+    for theme_id in THEME_SIM_KIT_BUILT_INS:
+        shutil.copy2(vendor / "Themes" / theme_id / "theme.json", themes_dest / f"{theme_id}.json")
+        print(themes_dest / f"{theme_id}.json")
+
+
 def main() -> None:
+    sync_theme_kit_assets_into_public()
     pages = all_pages()
     for (locale, slug), page in pages.items():
         folder = SITE / LOCALES[locale]["prefix"] / ("" if slug == "index" else slug)

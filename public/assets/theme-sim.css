@@ -1,7 +1,9 @@
 /* Layout for /themes/new/, the theme simulator (plan-website-104 W1). The live preview's own
- * styling is adopted at runtime as constructable stylesheets (theme-sim/sim-preview-base.css and
+ * styling is adopted at runtime as constructable stylesheets (the kit's own preview-sim.css, and
  * the generated, rescoped theme CSS) -- see theme-sim/app.js. This file only lays out the page
- * shell: the control panel and the two preview boxes, never the preview's own content.
+ * shell (the control panel and the two preview boxes) plus the one element that isn't the kit's:
+ * the hand-made sample diagram (theme-sim/sample-document.js), which preview-sim.css doesn't know
+ * about and so doesn't size. Never the rest of the preview's own content.
  */
 
 #theme-sim-app {
@@ -140,4 +142,15 @@
   background: transparent;
   cursor: pointer;
   margin: 0.35em 0.35em 0.35em 0;
+}
+
+/* The one preview element that isn't the kit's own preview.css: the simulator's hand-made sample
+ * diagram (theme-sim/sample-document.js). A normal rule, not part of the constructable stylesheet
+ * that carries theme colours -- this only sizes the SVG, using no colour of its own. */
+.sim-preview .mm-sample {
+  width: 100%;
+  height: auto;
+  max-width: 360px;
+  display: block;
+  margin: 0.5em 0;
 }

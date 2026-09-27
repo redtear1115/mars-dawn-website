@@ -1,4 +1,4 @@
-// Port of ThemeCSSGenerator.swift (kit origin/release-0.6.1, d6eae71): turns a validated theme's
+// Port of ThemeCSSGenerator.swift (kit origin/release-0.6.1, f1c66e16509e): turns a validated theme's
 // style options into the same CSS the kit's ThemeCSSGenerator would emit. See styles-data.js's
 // header note on what "port" means here.
 

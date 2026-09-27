@@ -1,4 +1,4 @@
-// Port of ThemeContrast.swift (kit origin/release-0.6.1, d6eae71). WCAG 2.x contrast between
+// Port of ThemeContrast.swift (kit origin/release-0.6.1, f1c66e16509e). WCAG 2.x contrast between
 // #RRGGBB colours, and the sRGB color-mix the stylesheet uses. Only ever called with colours
 // grammar.js's isHexColor accepted.
 

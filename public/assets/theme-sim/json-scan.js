@@ -1,4 +1,4 @@
-// Port of JSONStructureScan.swift (kit origin/release-0.6.1, d6eae71): a pre-pass over a
+// Port of JSONStructureScan.swift (kit origin/release-0.6.1, f1c66e16509e): a pre-pass over a
 // theme.json's text, before JSON.parse sees it. JSON.parse silently keeps one value of a repeated
 // object key, so this walks the grammar itself and refuses a repeat, and refuses nesting deeper
 // than any theme needs.

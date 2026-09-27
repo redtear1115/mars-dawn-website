@@ -11,7 +11,8 @@ import * as Validator from "./validator.js";
 import * as Generator from "./generator.js";
 import { PALETTE_ROLES } from "./palette.js";
 import { rescopeCSS } from "./rescope.js";
-import { BUILT_IN_THEME_JSON, BUILT_IN_ORDER } from "./built-ins.js";
+import { BUILT_IN_THEME_JSON, BUILT_IN_ORDER, loadBuiltIns } from "./built-ins.js";
+import { loadThemeStyles } from "./styles-data.js";
 import { sampleDocumentHTML } from "./sample-document.js";
 import { THEME_NUMBERS } from "./numbers.js";
 
@@ -63,13 +64,15 @@ class ThemeSimApp {
     this.root = root;
     this.state = stateFromBuiltIn("dawn");
     this.lightSheet = new CSSStyleSheet();
-    this.baseSheet = null; // adopted once, from sim-preview-base.css
+    this.baseSheet = null; // adopted once, from the kit's own preview-sim.css
     this.render();
   }
 
   async adoptBaseSheetOnce() {
     if (this.baseSheet) return;
-    const res = await fetch(new URL("./sim-preview-base.css", import.meta.url));
+    // The kit's own preview.css, already rescoped to .sim-preview at sync time
+    // (scripts/rescope_css.py) -- see build_pages.py's sync_theme_kit_assets_into_public().
+    const res = await fetch(new URL("./kit/preview-sim.css", import.meta.url));
     const text = await res.text();
     const sheet = new CSSStyleSheet();
     sheet.replaceSync(text);
@@ -634,6 +637,17 @@ class ThemeSimApp {
   }
 }
 
-export function mount(root) {
+/** Loads the kit's theme contract (ThemeStyles.json, the four built-ins) from this page's own
+ * copy under ./kit/ -- see build_pages.py's sync_theme_kit_assets_into_public(), which puts it
+ * there from vendor/kit-themes/<tag>/ (scripts/sync_theme_kit.py) -- then builds the page. Both
+ * loads must finish before anything reads FRAGMENTS/SHARED_PAIRS/OPTION_PAIRS/BUILT_IN_THEME_JSON,
+ * so `mount` is async; the container's own "needs JavaScript" fallback text stays on screen for
+ * the brief moment this takes, and ThemeSimApp's own render() clears it once construction starts. */
+export async function mount(root) {
+  const kitBase = new URL("./kit/", import.meta.url);
+  await Promise.all([
+    loadThemeStyles(new URL("ThemeStyles.json", kitBase)),
+    loadBuiltIns(new URL("themes/", kitBase)),
+  ]);
   return new ThemeSimApp(root);
 }

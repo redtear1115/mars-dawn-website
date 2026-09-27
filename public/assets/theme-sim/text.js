@@ -1,4 +1,4 @@
-// Port of ThemeText.swift (kit origin/release-0.6.1, d6eae71): display-string rules for `name`,
+// Port of ThemeText.swift (kit origin/release-0.6.1, f1c66e16509e): display-string rules for `name`,
 // `summary`, `author.name`, and the message-safe quoting of attacker-chosen text.
 
 export const NAME_LIMIT = 48;
