@@ -12,9 +12,12 @@ For every themes/<id>/theme.json (see scripts/check_theme_index.py for the whole
    so what is validated is what is published.
 2. `marsdawn theme validate --require-complete --json` on those bytes: the kit is the authority on
    validity (plan Envelope). The id it reports must equal the folder name.
-3. Re-check the id and version against the kit's grammar here too, and the rest of the rules
-   check_theme_index.py holds CI to (scenarios, author, a revoked or reused id, author.github
-   binding) -- the build refuses anything CI would.
+3. Re-check the id and version against the site's grammar here too (stricter than the kit's: no
+   leading zeros), and the rest of the rules check_theme_index.py holds CI to (scenarios, author,
+   a revoked or reused id, author.github binding, a new version never lower than the listed one)
+   -- the build refuses anything CI would. --allow-author-change / --allow-version-rollback lift
+   the last two for one id, and are only for PRs carrying the matching label (the rollback one only
+   on a maintainer's PR).
 4. Publish `<id>/<version>/`: theme.json plus preview-light.png and preview-dark.png from
    `marsdawn theme preview --width 1200`, **only if that version isn't published yet**. A version
    already in HEAD's published.json is never re-rendered or rewritten; its source bytes must equal
@@ -39,7 +42,12 @@ their published.json entries stay, and the id can never be listed again. Revocat
 
 The kit CLI is WA's: scripts/sync_theme_kit.py's KIT_SHA, built by its own build_cli (a detached
 worktree of a local kit clone, `swift build --only-use-versions-from-resolved-file`) and
-smoke-tested by its own smoke_test; this script adds no second way to build it.
+smoke-tested by its own smoke_test; this script adds no second way to build it. A --marsdawn-bin
+must report the same --version as the vendored manifest's cli_version.
+
+public/, public/themes/, public/themes/v1/ and themes/ must be real directories, and a .DS_Store
+anywhere under public/themes/v1/ or themes/ stops the build (check_theme_index.py refuses a
+committed one). A crash prints an ::error:: line and exits 1.
 """
 import argparse
 import datetime
@@ -50,6 +58,7 @@ import stat
 import subprocess
 import sys
 import tempfile
+import traceback
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -148,9 +157,11 @@ def render_preview(binary: Path, file: Path, appearance: str, out: Path) -> byte
         raise BuildError(f"marsdawn theme preview {appearance} exited {result.returncode}: "
                          f"{result.stdout.strip()} {result.stderr.strip()}")
     data = out.read_bytes()
-    size = rules.png_size(data)
-    if size is None or size[0] != rules.PREVIEW_WIDTH or not 1 <= size[1] <= rules.PREVIEW_MAX_HEIGHT:
-        raise BuildError(f"{out.name}: not a {rules.PREVIEW_WIDTH}-wide PNG ({size})")
+    problem, size = rules.png_info(data)
+    if problem:
+        raise BuildError(f"{out.name}: the kit's PNG {problem}")
+    if size[0] != rules.PREVIEW_WIDTH or not 1 <= size[1] <= rules.PREVIEW_MAX_HEIGHT:
+        raise BuildError(f"{out.name}: {size[0]}x{size[1]}, not {rules.PREVIEW_WIDTH} wide and 1-{rules.PREVIEW_MAX_HEIGHT} tall")
     if len(data) > rules.MAX_PREVIEW_BYTES:
         raise BuildError(f"{out.name}: {len(data)} bytes; previews are at most {rules.MAX_PREVIEW_BYTES}")
     return data
@@ -205,13 +216,15 @@ def scan_v1() -> dict:
             rel = full.relative_to(V1).as_posix()
             if full.is_symlink():
                 raise BuildError(f"{rules.V1_REL}/{rel}: is a symlink; remove it")
-            if name in filenames and name != ".DS_Store":
+            if name == ".DS_Store":
+                raise BuildError(f"{rules.V1_REL}/{rel}: a .DS_Store; remove it")
+            if name in filenames:
                 found[rel] = full
     return found
 
 
 def collect(binary: Path, work: Path, published: dict, previous: dict, revoked_ids: set,
-            author_changes: set) -> list:
+            author_changes: set, rollbacks: set) -> list:
     """Validates every theme and returns [(doc, data, private_copy)] sorted by id. Raises
     BuildError listing every problem found (all themes are checked before anything is written)."""
     problems = []
@@ -243,6 +256,11 @@ def collect(binary: Path, work: Path, published: dict, previous: dict, revoked_i
                 if rules.github_of(old) != rules.github_of(entry):
                     raise BuildError(f"themes/{folder}/: author.github changed from {rules.github_of(old)!r}; "
                                      f"pass --allow-author-change {folder} only with the {rules.AUTHOR_CHANGE_LABEL} label")
+            if (old is not None and folder not in rollbacks and rules.is_version(old.get("version"))
+                    and rules.version_key(doc["version"]) < rules.version_key(old["version"])):
+                raise BuildError(f"themes/{folder}/: version {doc['version']} is lower than the listed {old['version']}; "
+                                 f"pass --allow-version-rollback {folder} only for a maintainer PR with the "
+                                 f"{rules.ROLLBACK_LABEL} label")
             rel = f"{folder}/{doc['version']}/theme.json"
             if rel in published and published[rel] != rules.sha256(data):
                 raise BuildError(f"themes/{folder}/theme.json: version {doc['version']} is already published with "
@@ -255,13 +273,14 @@ def collect(binary: Path, work: Path, published: dict, previous: dict, revoked_i
     return out
 
 
-def build(binary: Path, author_changes: set) -> None:
+def build(binary: Path, author_changes: set, rollbacks: set) -> None:
+    for d in rules.DIRS:
+        path = ROOT / d
+        if path.is_symlink() or not path.is_dir():
+            raise BuildError(f"{d}: missing, a symlink or not a directory; it must be a real directory")
     if git("status", "--porcelain", "--", rules.THEMES_REL).strip():
         raise BuildError("themes/ has uncommitted changes; commit them first (generatedAt is the "
                          "newest themes/ commit's time, so the build depends on HEAD alone)")
-    if not V1.is_dir() or V1.is_symlink():
-        raise BuildError(f"{rules.V1_REL}: missing or a symlink")
-
     published = head_json(rules.PUBLISHED_REL, None)
     head_index = head_json(rules.INDEX_REL, {})
     if published is None:
@@ -286,7 +305,7 @@ def build(binary: Path, author_changes: set) -> None:
 
     with tempfile.TemporaryDirectory(prefix="build-themes-") as tmp:
         work = Path(tmp)
-        themes = collect(binary, work, published, previous, {r["id"] for r in revoked}, author_changes)
+        themes = collect(binary, work, published, previous, {r["id"] for r in revoked}, author_changes, rollbacks)
 
         new_files = {}
         for doc, data, copy in themes:
@@ -335,22 +354,42 @@ def main() -> int:
                         help="a marsdawn built at the pinned commit, inside its build tree")
     parser.add_argument("--allow-author-change", action="append", default=[], metavar="ID",
                         help=f"let this id's author.github change (only with the {rules.AUTHOR_CHANGE_LABEL} label)")
+    parser.add_argument("--allow-version-rollback", action="append", default=[], metavar="ID",
+                        help=f"let this id go to a lower version (only a maintainer PR with the {rules.ROLLBACK_LABEL} label)")
     args = parser.parse_args()
+    try:
+        return run(args)
+    except Exception as error:  # a crash is a failure with a readable reason, never a pass
+        print(f"::error::build_themes.py crashed: {type(error).__name__}: {error}", file=sys.stderr)
+        traceback.print_exc()
+        return 1
 
+
+def check_cli_version(binary: Path) -> None:
+    """The binary must be the one the vendored contract was made with: its --version equals
+    vendor/kit-themes/<sha12>/manifest.json's cli_version (a --marsdawn-bin from another kit
+    commit would validate and render by different rules)."""
+    manifest = ROOT / "vendor" / "kit-themes" / kit.KIT_SHA[:12] / "manifest.json"
+    expected = json.loads(manifest.read_text(encoding="utf-8"))["cli_version"]
+    version = run_cli(binary, "--version")
+    if version.returncode != 0 or version.stdout.strip() != expected:
+        raise BuildError(f"{binary}: --version says {version.stdout.strip()!r} (exit {version.returncode}); "
+                         f"the vendored contract at {kit.KIT_SHA[:12]} was made with {expected!r}")
+
+
+def run(args) -> int:
     built_worktree = None
     try:
         if args.marsdawn_bin:
             binary = args.marsdawn_bin
-            version = run_cli(binary, "--version")
-            if version.returncode != 0:
-                raise BuildError(f"{binary}: --version failed")
         else:
             if not args.kit_repo.is_dir():
                 raise BuildError(f"{args.kit_repo} isn't a directory; pass --kit-repo")
             print(f"Building marsdawn at {kit.KIT_SHA} from {args.kit_repo} ...")
             built_worktree, binary = kit.build_cli(args.kit_repo, kit.KIT_SHA)
+        check_cli_version(binary)
         kit.smoke_test(binary, ROOT / "vendor" / "kit-themes" / kit.KIT_SHA[:12] / "Themes" / "dawn" / "theme.json")
-        build(binary, set(args.allow_author_change))
+        build(binary, set(args.allow_author_change), set(args.allow_version_rollback))
     except (BuildError, kit.SyncError) as error:
         for line in str(error).splitlines():
             print(f"::error::{line}", file=sys.stderr)

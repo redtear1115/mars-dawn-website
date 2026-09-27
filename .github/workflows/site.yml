@@ -22,6 +22,11 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       contents: read
+    # One run per PR: a newer push or label change cancels the older run (#144 review L7). Pushes
+    # get a group of their own (run_id), so a push's run is never cancelled.
+    concurrency:
+      group: check-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || github.run_id }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -60,12 +65,15 @@ jobs:
         run: python3 scripts/check_legal_render.py --self-test && python3 scripts/check_legal_render.py
       # public/themes/v1/ (index.json, versioned files, published.json) against themes/ (#77,
       # #144): the index's shape (design §5.1), index <-> themes/ bijection, sha256s, previews,
-      # revocations; then, against the base branch fetched explicitly by SHA (fails closed if it
-      # can't be read), published.json only grows, ids aren't reused, author.github holds; and
-      # the PR author's class (bot / maintainer / anyone else), read by id from the event payload
-      # file, never from event text in `run:`. THEME_MAINTAINER_IDS is a repo variable (numeric
-      # GitHub ids); unset means the script's default. --self-test plants a break of each rule
-      # first and requires the check's own message for it.
+      # revocations; then, against the base -- the merge commit's first parent, fetched by SHA
+      # (fails closed if it can't be read) -- published.json only grows, ids aren't reused, and
+      # on PRs author.github, version order and revocations hold; and the PR author's class (bot /
+      # maintainer / anyone else), read by id from the event payload file, never from event text
+      # in `run:`. THEME_MAINTAINER_IDS is a repo variable (numeric GitHub ids); unset means the
+      # script's default. ADVISORY for a PR that touches scripts/** or .github/**: it runs the PR's
+      # own copy of this script and workflow, so for those PRs the diff review is the gate. Labels
+      # (theme-author-change, theme-version-rollback) can be applied by anyone with triage access.
+      # --self-test plants a break of each rule first and requires the check's own message for it.
       - name: Theme index is present and valid
         env:
           THEME_MAINTAINER_IDS: ${{ vars.THEME_MAINTAINER_IDS }}
