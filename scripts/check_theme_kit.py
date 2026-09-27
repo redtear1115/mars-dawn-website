@@ -15,12 +15,13 @@ Three things this holds vendor/kit-themes/<sha12>/ to:
    this rule is what catches a hand-edit to a file rule 1 doesn't reach: expected-css/,
    preview-sim.css and the sweep/ theme.json inputs, none of which exist in the kit itself.
 3. The **sweep** covers every enum-fragment option/value in the vendored ThemeStyles.json and
-   every scalar style option (a fixed list mirroring the kit's ThemeNumber enum, since Ubuntu CI
-   can't ask the kit itself for that list) -- both read from manifest.json's own "sweep" record,
-   which is itself covered by rule 2 (a manifest edited to claim coverage it doesn't have would
-   change files without changing sha256... no: the manifest's sweep record and its hash are the
-   same file, so this rule cross-checks the *content*, not just its hash, against the
-   independently-derived ThemeStyles.json content and this script's own scalar-option list).
+   every scalar style option in the vendored ThemeNumbers.swift, parsed by
+   sync_theme_kit.parse_scalar_options rather than a hand-kept list -- so a scalar option the kit
+   adds later shows up as a missing sweep entry here too, the same way it would in
+   sync_theme_kit.py itself, instead of both scripts silently agreeing on a list that's gone
+   stale. Both are read from manifest.json's own "sweep" record: a manifest edited to claim
+   coverage it doesn't have is still caught, since this rule cross-checks the record's *content*
+   against the independently-parsed ThemeStyles.json/ThemeNumbers.swift, not just its hash.
 4. The .sim-preview rescoping transform (scripts/rescope_css.py) still passes its own fixture
    (scripts/theme_sim/rescope_fixture.json) and regression cases.
 
@@ -49,6 +50,7 @@ KIT_RAW = "https://raw.githubusercontent.com/redtear1115/mars-dawn-kit/{sha}/{pa
 # don't exist in the kit, so rule 2 (manifest hash) is what covers them instead.
 KIT_SOURCE_PATHS = {
     "ThemeStyles.json": "Sources/MarsDawnThemes/Resources/ThemeStyles.json",
+    "ThemeNumbers.swift": "Sources/MarsDawnThemes/ThemeNumbers.swift",
     "preview.css": "Sources/MarsDawnKit/Resources/Preview/preview.css",
 }
 for _id in sync.BUILT_IN_IDS:
@@ -145,7 +147,8 @@ def check_sweep_coverage(vendor: Path, manifest: dict) -> list:
             elif not (vendor / "expected-css" / f"sweep__enum__{option}__{value}.json").is_file():
                 problems.append(f"sweep: {option}={value} is recorded as swept but its expected-css file is missing")
     swept_scalar = manifest.get("sweep", {}).get("scalar", {})
-    for code in sync.SCALAR_OPTIONS:
+    scalar_options = sync.parse_scalar_options((vendor / "ThemeNumbers.swift").read_text(encoding="utf-8"))
+    for code in scalar_options:
         cases = set(swept_scalar.get(code, []))
         for case in ("min", "default", "max", "step"):
             if case not in cases:
