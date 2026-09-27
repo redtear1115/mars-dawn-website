@@ -350,17 +350,32 @@ class ThemeSimApp {
     return wrap;
   }
 
+  /** A bare-boolean style option (h2.italic, blockquote.italic, table.verticalRules,
+   * table.rounded, link.underline, syntax.boldKeywords, ...) is three states, not two: unset
+   * (take the default), explicit true, or explicit false. A theme can need any of the three --
+   * Classic's own theme.json sets `table.verticalRules: false` -- so a plain checkbox (which can
+   * only write `true` or remove the field) can't express it. */
   boolField(labelText, path) {
     const wrap = document.createElement("label");
-    wrap.className = "sim-checkbox-field";
-    const input = document.createElement("input");
-    input.type = "checkbox";
-    input.checked = !!get(this.state, path);
-    input.addEventListener("change", () => {
-      set(this.state, path, input.checked || undefined);
+    wrap.className = "sim-field";
+    const span = document.createElement("span");
+    span.textContent = labelText;
+    const select = document.createElement("select");
+    const current = get(this.state, path);
+    for (const [value, text] of [["", "(default)"], ["true", "On"], ["false", "Off"]]) {
+      const opt = document.createElement("option");
+      opt.value = value;
+      opt.textContent = text;
+      const selected = (current === undefined && value === "") || (current === true && value === "true") || (current === false && value === "false");
+      if (selected) opt.selected = true;
+      select.appendChild(opt);
+    }
+    select.addEventListener("change", () => {
+      if (select.value === "") unset(this.state, path);
+      else set(this.state, path, select.value === "true");
       this.recompute();
     });
-    wrap.append(input, document.createTextNode(labelText));
+    wrap.append(span, select);
     return wrap;
   }
 
