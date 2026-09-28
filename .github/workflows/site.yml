@@ -95,6 +95,12 @@ jobs:
       # both, plus the .sim-preview rescoping transform's own fixture. Plain `node`, no npm.
       - name: The theme simulator's JS ports match the kit
         run: node scripts/check_theme_sim.mjs
+      # The community gallery (#145, W4): a hostile fixture (name/summary containing `"<>&'`,
+      # `</script>`, `javascript:`) proves every index-derived string is escaped and that only a
+      # theme's own id/version -- never its name or summary -- ever reaches an href; the report
+      # link and its mailto both round-trip to exactly id + version through urllib.parse.
+      - name: The community theme gallery escapes and links correctly
+        run: python3 scripts/check_theme_gallery.py --self-test
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/release'

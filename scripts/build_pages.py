@@ -15,6 +15,7 @@ import re
 import shutil
 import sys
 from types import SimpleNamespace
+from html import escape as html_escape
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
@@ -191,7 +192,7 @@ UI = {
         "native": "A Mac app", "limits": "What MarsDawn doesn't do",
         "mcp": "MCP server", "token-efficient-review": "Token-efficient review",
         "vs-markdown-preview-tools": "Viewing Markdown elsewhere vs. MarsDawn", "themes": "Preview themes and PDF export",
-        "themes-new": "Build a theme",
+        "themes-new": "Build a theme", "themes-gallery": "Theme gallery",
         "sharing-exported-pdfs": "Sharing exported PDFs", "reviewing-ai-output": "Why AI output still needs a human reader",
         "reading-agent-output": "Reading what your agent hands back", "agent-transparency": "Agent transparency",
         "reviewing-agent-plans": "Reviewing an agent plan", "agent-design-patterns": "Agent design patterns",
@@ -219,7 +220,7 @@ UI = {
         "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
         "mcp": "MCP 伺服器", "token-efficient-review": "節省 token 的審閱方式",
         "vs-markdown-preview-tools": "在別處看 Markdown，對比 MarsDawn", "themes": "預覽主題與 PDF 輸出",
-        "themes-new": "打造一個主題",
+        "themes-new": "打造一個主題", "themes-gallery": "主題庫",
         "sharing-exported-pdfs": "分享輸出的 PDF", "reviewing-ai-output": "為什麼 AI 寫的東西還是需要人讀過",
         "reading-agent-output": "讀懂 agent 交回來的 Markdown", "agent-transparency": "agent 的透明",
         "reviewing-agent-plans": "審 agent 計畫", "agent-design-patterns": "agent 設計模式",
@@ -413,6 +414,192 @@ THEME_SIM_PAGES = {
   <p>投稿需要一個 GitHub 帳號。這個頁面本身不用安裝，也不用 git。</p>
 </section>
 <div id="theme-sim-app" data-locale="zh-hant"><p>這個頁面需要 JavaScript 才能建立與預覽主題。</p></div>
+""",
+    },
+}
+
+
+# The community theme gallery (mars-dawn-website #145, plan-website-104 W4): built at build time
+# from public/themes/v1/index.json, published by scripts/build_themes.py (#144, W3). A theme's
+# name, summary and author name are supplied by whoever submitted it, not by this repo, so every
+# index-derived string is escaped with html.escape(quote=True) before it reaches the page --
+# never trusted as markup. Only a theme's own id and version (both already constrained by
+# check_theme_index.py's regexes before they ever reach this file) go into an href: the "Report"
+# link and the mailto subject, built with urllib.parse.quote. name/summary/author never appear in
+# an href. The empty-state message covers the index's current, real, empty state (issue #77).
+#
+# Card markup deliberately avoids <p>: scripts/build_pages.py's HTML-to-Markdown converter (see
+# html_to_markdown below) only knows how to put INLINE children (img/strong/span/a/text) inside an
+# <li>, the way the existing built-in theme_gallery_html() above already does, so every fact on a
+# card is an inline element and the visual stacking comes from theme-gallery.css, not from <p>.
+COMMUNITY_GALLERY_MARK = "<!--community-theme-gallery-->"
+
+THEME_INDEX_PATH = SITE / "themes" / "v1" / "index.json"
+
+# The closed scenario list (app repo docs/theme-ecosystem-design.md §4.5). IDs and zh-Hant labels
+# are final (owner, 2026-09-25, app issue #258); "en" is this site's own wording for the same
+# rows; zh-Hans/ja are drafts (this PR is labelled needs-copy). A scenario id an index entry
+# names that isn't in this table is left out of both the filter and the card, the same way an
+# older app version would leave an unknown id out of its own filter.
+SCENARIOS = ["agent-review", "technical-docs", "formal-output", "notes-sharing"]
+
+SCENARIO_LABELS = {
+    "agent-review": {"en": "Agent review", "zh-hant": "審閱代理產出", "zh-hans": "审阅代理产出", "ja": "エージェント出力のレビュー"},
+    "technical-docs": {"en": "Technical docs", "zh-hant": "技術文件", "zh-hans": "技术文档", "ja": "技術ドキュメント"},
+    "formal-output": {"en": "Formal output", "zh-hant": "正式輸出", "zh-hans": "正式输出", "ja": "フォーマルな出力"},
+    "notes-sharing": {"en": "Notes & sharing", "zh-hant": "筆記分享", "zh-hans": "笔记分享", "ja": "メモ・共有"},
+}
+
+GALLERY_FILTER_ALL = {"en": "All", "zh-hant": "全部", "zh-hans": "全部", "ja": "すべて"}
+GALLERY_FILTER_LABEL = {
+    "en": "Filter by scenario", "zh-hant": "依情境篩選", "zh-hans": "按场景筛选", "ja": "シナリオで絞り込む",
+}
+GALLERY_BY_LABEL = {"en": "by", "zh-hant": "作者：", "zh-hans": "作者：", "ja": "作者："}
+GALLERY_REPORT_LABEL = {"en": "Report", "zh-hant": "檢舉", "zh-hans": "举报", "ja": "通報"}
+GALLERY_REPORT_MAIL_LABEL = {
+    "en": "Report by email", "zh-hant": "用電子郵件檢舉", "zh-hans": "用电子邮件举报", "ja": "メールで通報",
+}
+GALLERY_EMPTY = {
+    "en": "No themes are published yet. Be the first: build one in the browser and submit it.",
+    "zh-hant": "目前還沒有任何投稿的主題。第一個做一個吧：在瀏覽器裡打造一個主題，然後送出投稿。",
+    "zh-hans": "目前还没有任何投稿的主题。第一个做一个吧：在浏览器里打造一个主题，然后送出投稿。",
+    "ja": "まだ公開されているテーマはありません。最初のひとりになりませんか。ブラウザでテーマを作って投稿してください。",
+}
+
+# The issue form theme-report.yml (.github/ISSUE_TEMPLATE/): no @mention of the theme's author,
+# and no workflow watches it -- a report is read and acted on by a maintainer, by hand (app repo
+# docs/theme-ecosystem-design.md §8.2). GitHub prefills a form's fields from query parameters
+# named after each field's `id`.
+#
+# Neither the report link nor its mailto twin is a plain <a href> (round 2 review, mars-dawn-website
+# #151): GA4's enhanced measurement records an outbound click by the <a>'s own href (`link_url`),
+# so a real href carrying theme_id/theme_version would report a theme's id to analytics on every
+# click, the very thing the privacy policy says never happens. Both buttons are built and opened
+# by public/assets/theme-gallery.js instead, exactly like the simulator's own Submit button
+# (public/assets/theme-sim/app.js, ThemeSimApp.submit()): a <button>, never an <a>, whose click
+# handler builds the URL from a constant base + URLSearchParams and opens it with window.open --
+# so there is never a real href for anything to read. The card carries only `data-theme-id` and
+# `data-theme-version`, both already constrained by check_theme_index.py's regexes, in the button's
+# own data-* attributes; the base URL and the URLSearchParams construction live in the JS file, the
+# one place that builds the URL, not duplicated here. A plain, id-free mailto (no subject, so no
+# theme data) stays in the page's own text below the gallery, for anyone without JavaScript.
+def read_theme_index() -> dict:
+    data = json.loads(THEME_INDEX_PATH.read_text(encoding="utf-8"))
+    return data if isinstance(data, dict) else {}
+
+
+def _localized(value, locale: str) -> str:
+    """An index string map's value for `locale`, falling back to `en` (§4.2: "en is required,
+    other languages are optional" -- written for theme.json, the index carries the same shape)."""
+    if not isinstance(value, dict):
+        return ""
+    return value.get(locale) or value.get("en") or ""
+
+
+def _theme_card_html(locale: str, entry: dict) -> str:
+    theme_id = str(entry.get("id", ""))
+    version = str(entry.get("version", ""))
+    name = html_escape(_localized(entry.get("name"), locale), quote=True)
+    summary = html_escape(_localized(entry.get("summary"), locale), quote=True)
+    author = html_escape(str((entry.get("author") or {}).get("name", "")), quote=True)
+    scenarios = [s for s in entry.get("scenarios", []) if s in SCENARIOS]
+    previews = entry.get("previews") or {}
+    light = html_escape("/themes/v1/" + str(previews.get("light", "")), quote=True)
+    dark = html_escape("/themes/v1/" + str(previews.get("dark", "")), quote=True)
+    badges = "".join(f' <span class="theme-scenario">{SCENARIO_LABELS[s][locale]}</span>' for s in scenarios)
+    data_scenarios = html_escape(" ".join(scenarios), quote=True)
+    version_text = html_escape(version, quote=True)
+    data_id = html_escape(theme_id, quote=True)
+    data_version = html_escape(version, quote=True)
+    return (
+        f'  <li class="theme-card" data-scenarios="{data_scenarios}">\n'
+        f'    <img src="{light}" alt="{name} — light preview" loading="lazy">\n'
+        f'    <img src="{dark}" alt="{name} — dark preview" loading="lazy">\n'
+        f'    <strong class="theme-name">{name}</strong> <span class="theme-version">v{version_text}</span>\n'
+        f'    <span class="theme-summary">{summary}</span>\n'
+        f'    <span class="theme-scenarios">{badges.strip()}</span>\n'
+        f'    <span class="theme-author">{GALLERY_BY_LABEL[locale]} {author}</span>\n'
+        f'    <button type="button" class="theme-report" data-theme-id="{data_id}" data-theme-version="{data_version}">{GALLERY_REPORT_LABEL[locale]}</button>\n'
+        f'    <button type="button" class="theme-report-mail" data-theme-id="{data_id}" data-theme-version="{data_version}">{GALLERY_REPORT_MAIL_LABEL[locale]}</button>\n'
+        f'  </li>'
+    )
+
+
+def _theme_gallery_filter_html(locale: str, present: list) -> str:
+    buttons = [f'<button type="button" class="theme-filter-btn" data-scenario="all" aria-pressed="true">{GALLERY_FILTER_ALL[locale]}</button>']
+    for scenario in present:
+        buttons.append(
+            f'<button type="button" class="theme-filter-btn" data-scenario="{scenario}" aria-pressed="false">'
+            f'{SCENARIO_LABELS[scenario][locale]}</button>'
+        )
+    return (
+        f'<div class="theme-gallery-filter" id="theme-gallery-filter" role="group" aria-label="{GALLERY_FILTER_LABEL[locale]}">\n  '
+        + "\n  ".join(buttons) + "\n</div>"
+    )
+
+
+def community_gallery_html(locale: str) -> str:
+    data = read_theme_index()
+    themes = [t for t in data.get("themes", []) if isinstance(t, dict)]
+    if not themes:
+        return f'<p class="theme-gallery-empty">{GALLERY_EMPTY[locale]}</p>'
+    present = [s for s in SCENARIOS if any(s in (t.get("scenarios") or []) for t in themes)]
+    cards = "\n".join(_theme_card_html(locale, t) for t in themes)
+    filter_html = (_theme_gallery_filter_html(locale, present) + "\n") if present else ""
+    return f'{filter_html}<ul class="theme-gallery-cards" id="theme-gallery-cards">\n{cards}\n</ul>'
+
+
+GALLERY_PAGES = {
+    ("en", "themes/gallery"): {
+        "title": "Theme gallery: community MarsDawn themes · MarsDawn",
+        "description": "Browse preview themes the community submitted for MarsDawn, filter them by scenario, and report a problem with one. Build your own in the browser, no install, no git.",
+        "body": f"""
+<section class="intro">
+  <h1>Theme gallery</h1>
+  <p>Preview themes the community submitted, each reviewed and merged by the developer before it appears here. Filter by scenario, or <a href="/themes/new/">build your own</a> in the browser &#8212; no install, no git.</p>
+</section>
+{COMMUNITY_GALLERY_MARK}
+<h2>Something wrong with a theme?</h2>
+<p>Use the "Report" button on its card (it needs JavaScript), or write directly to <a href="mailto:{EMAIL}">{EMAIL}</a> with its name and version, JavaScript or not. Reports are reviewed by hand; a theme that's confirmed to be a problem is delisted within a day.</p>
+""",
+    },
+    ("zh-hant", "themes/gallery"): {
+        "title": "主題庫：MarsDawn 的社群主題 · MarsDawn",
+        "description": "瀏覽社群投稿的 MarsDawn 預覽主題，依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造一個自己的主題，不用安裝，也不用 git。",
+        "body": f"""
+<section class="intro">
+  <h1>主題庫</h1>
+  <p>社群投稿的預覽主題，每一個都經過開發者審核、合併後才會出現在這裡。依情境篩選，或是<a href="/zh-hant/themes/new/">在瀏覽器裡打造一個自己的主題</a>——不用安裝，也不用 git。</p>
+</section>
+{COMMUNITY_GALLERY_MARK}
+<h2>主題有問題嗎？</h2>
+<p>用主題卡片上的「檢舉」按鈕（需要 JavaScript），或直接寫信到 <a href="mailto:{EMAIL}">{EMAIL}</a>，附上主題名稱和版本——不論有沒有 JavaScript 都可以。檢舉會有人親自審核，確認屬實的主題會在一天內下架。</p>
+""",
+    },
+    ("zh-hans", "themes/gallery"): {
+        "title": "主题库：MarsDawn 的社区主题 · MarsDawn",
+        "description": "浏览社区投稿的 MarsDawn 预览主题，按场景筛选，也可以举报有问题的主题。在浏览器里打造一个自己的主题，不用安装，也不用 git。",
+        "body": f"""
+<section class="intro">
+  <h1>主题库</h1>
+  <p>社区投稿的预览主题，每一个都经过开发者审核、合并后才会出现在这里。按场景筛选，或是<a href="/zh-hans/themes/new/">在浏览器里打造一个自己的主题</a>——不用安装，也不用 git。</p>
+</section>
+{COMMUNITY_GALLERY_MARK}
+<h2>主题有问题吗？</h2>
+<p>用主题卡片上的“举报”按钮（需要 JavaScript），或直接写信到 <a href="mailto:{EMAIL}">{EMAIL}</a>，附上主题名称和版本——不论有没有 JavaScript 都可以。举报会有人亲自审核，确认属实的主题会在一天内下架。</p>
+""",
+    },
+    ("ja", "themes/gallery"): {
+        "title": "テーマギャラリー：MarsDawn のコミュニティテーマ · MarsDawn",
+        "description": "コミュニティが投稿した MarsDawn のプレビューテーマを閲覧し、シナリオで絞り込み、問題があれば通報できます。ブラウザで自分のテーマを作れます。インストールも git も不要です。",
+        "body": f"""
+<section class="intro">
+  <h1>テーマギャラリー</h1>
+  <p>コミュニティが投稿したプレビューテーマです。それぞれ開発者がレビューし、マージしてからここに表示されます。シナリオで絞り込むか、<a href="/ja/themes/new/">ブラウザで自分のテーマを作る</a>こともできます &#8212; インストールも git も不要です。</p>
+</section>
+{COMMUNITY_GALLERY_MARK}
+<h2>テーマに問題がありますか？</h2>
+<p>カードの「通報」ボタンを使うか（JavaScript が必要です）、テーマ名とバージョンを添えて直接 <a href="mailto:{EMAIL}">{EMAIL}</a> までメールしてください — JavaScript の有無を問いません。通報は人の目で確認し、事実であれば1日以内に取り下げます。</p>
 """,
     },
 }
@@ -1471,14 +1658,14 @@ BRAINSTORM_PAGES = {
     },
     ("en", "themes"): {
         "title": "Preview themes and PDF export in MarsDawn · MarsDawn",
-        "description": "Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. More importable themes, and a gallery to share your own, are planned.",
+        "description": "Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. Build your own theme in the browser, and browse the community gallery.",
         "body": """
 <section class="intro">
   <h1>Eight looks, one export.</h1>
   <p>MarsDawn ships four preview themes, Dawn, Classic, Modern and Vivid, each with a light and a dark palette &#8212; eight combinations to read a document in. Export to PDF or print, and the page comes out in whichever one you were reading.</p>
 </section>
 
-<div class="summary"><p><strong>Four themes &#215; light and dark = eight ways to read a document, and one export path that matches whichever you chose.</strong> More importable themes, and a gallery to share your own, are planned &#8212; not built yet.</p></div>
+<div class="summary"><p><strong>Four themes &#215; light and dark = eight ways to read a document, and one export path that matches whichever you chose.</strong> <a href="/themes/new/">Build your own</a> in the browser, or <a href="/themes/gallery/">browse the gallery</a> for what others have submitted.</p></div>
 
 <h2>The four themes</h2>
 <!--theme-gallery-->
@@ -1493,8 +1680,8 @@ BRAINSTORM_PAGES = {
 <h2>PDF export and print use the same theme</h2>
 <p>Export to PDF or print, and the page uses your theme's light palette: Mermaid diagrams are drawn into it, code blocks keep their syntax highlighting, and page breaks avoid splitting a heading from its section or cutting a table or diagram in half. The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so a script or an agent produces the identical PDF, in any of the four themes, with <code>--theme</code>.</p>
 
-<h2>Planned: more themes, and a gallery</h2>
-<p>Coming later, not shipped yet: more importable preview themes, and a gallery on this site where people can submit their own. <code>/themes/v1/</code> is already reserved for it. Until that ships, the four built-in themes are what MarsDawn has, and you can't install others.</p>
+<h2>Build your own, and browse what others made</h2>
+<p><a href="/themes/new/">Build a theme in your browser</a>: pick colours and a few style options, see them applied live, and submit it as a GitHub issue for review &#8212; no install, no git. <a href="/themes/gallery/">The gallery</a> shows every submitted theme a maintainer has reviewed and merged; it's empty today, since the review path only just opened, but every theme that lands there will show up there, filterable by what it's good for.</p>
 
 <h2>Next</h2>
 <ul>
@@ -1506,14 +1693,14 @@ BRAINSTORM_PAGES = {
     },
     ("zh-hant", "themes"): {
         "title": "MarsDawn 的預覽主題與 PDF 輸出 · MarsDawn",
-        "description": "四種主題，各有淺色與深色，一套輸出對應你正在看的主題。更多可匯入的主題，和讓大家投稿主題的主題庫，都在規劃中。",
+        "description": "四種主題，各有淺色與深色，一套輸出對應你正在看的主題。在瀏覽器裡打造自己的主題，也可以逛逛社群主題庫。",
         "body": """
 <section class="intro">
   <h1>八種樣子，一套輸出。</h1>
   <p>MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有淺色與深色&#8212;&#8212;八種讀文件的樣子。輸出成 PDF 或列印，出來的就是你正在讀的那個樣子。</p>
 </section>
 
-<div class="summary"><p><strong>四種主題 &#215; 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。</strong>更多可匯入的主題，還有讓大家投稿主題的主題庫，都還在規劃中，尚未推出。</p></div>
+<div class="summary"><p><strong>四種主題 &#215; 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。</strong><a href="/zh-hant/themes/new/">在瀏覽器裡打造一個自己的主題</a>，或是<a href="/zh-hant/themes/gallery/">逛逛主題庫</a>，看看別人投稿了什麼。</p></div>
 
 <h2>四種主題</h2>
 <!--theme-gallery-->
@@ -1528,8 +1715,8 @@ BRAINSTORM_PAGES = {
 <h2>PDF 輸出和列印用同一個主題</h2>
 <p>輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開表格與圖表。免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>使用同一套輸出程式，所以腳本或 agent 也能用 <code>--theme</code> 產生一模一樣的 PDF，四種主題都可以。</p>
 
-<h2>規劃中：更多主題，還有主題庫</h2>
-<p>之後會推出、但現在還沒做的：更多可匯入的預覽主題，以及一個讓大家投稿自己主題的網站主題庫。<code>/themes/v1/</code> 這個路徑已經為它保留。在那之前，MarsDawn 有的就是這四種內建主題，無法安裝其他的。</p>
+<h2>打造自己的主題，也看看別人做的</h2>
+<p><a href="/zh-hant/themes/new/">在瀏覽器裡打造一個主題</a>：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。<a href="/zh-hant/themes/gallery/">主題庫</a>會列出每一個經過審核、合併的投稿主題；因為審核管道才剛開放，現在還是空的，但之後每個通過的主題都會出現在那裡，還能依用途篩選。</p>
 
 <h2>接下來</h2>
 <ul>
@@ -3964,7 +4151,7 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
     ])
 
 PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
-              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "sharing-exported-pdfs", "reviewing-ai-output",
+              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
@@ -3974,6 +4161,7 @@ SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "
                   "vs/macmd-viewer": "vs-macmd-viewer",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
                   "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes", "themes/new": "themes-new",
+                  "themes/gallery": "themes-gallery",
                   "sharing-exported-pdfs": "sharing-exported-pdfs", "reviewing-ai-output": "reviewing-ai-output",
                   "reading-agent-output": "reading-agent-output", "agent-transparency": "agent-transparency",
                   "reviewing-agent-plans": "reviewing-agent-plans", "agent-design-patterns": "agent-design-patterns",
@@ -3986,6 +4174,7 @@ SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "
 def _base_pages() -> dict:
     merged = dict(PAGES)
     merged.update(THEME_SIM_PAGES)
+    merged.update(GALLERY_PAGES)
     merged.update(CLI_PAGES)
     merged.update(AGENT_PAGES)
     merged.update(START_PAGES)
@@ -4004,6 +4193,8 @@ def all_pages() -> dict:
         body = page["body"]
         if THEME_GALLERY_MARK in body:
             body = body.replace(THEME_GALLERY_MARK, theme_gallery_html(locale))
+        if COMMUNITY_GALLERY_MARK in body:
+            body = body.replace(COMMUNITY_GALLERY_MARK, community_gallery_html(locale))
         if EXIT_TABLE_MARK in body:
             body = exit_table_html(locale, body)
         for key in COMPARE_TABLES:
@@ -4122,6 +4313,11 @@ def _render_inline(children) -> str:
         elif tag == "span":
             # Layout only (the hero headline's one-sentence lines): the text is what counts.
             parts.append(_render_inline(child.children))
+        elif tag == "button":
+            # The community gallery's scenario filter (#145): a real <button> for accessibility,
+            # not a styled <a>. It does nothing without JavaScript, so its label is what counts
+            # here too, same as span.
+            parts.append(_render_inline(child.children))
         else:
             raise MarkdownConversionError(f"unsupported inline tag <{tag}>")
     return "".join(parts)
@@ -4190,9 +4386,11 @@ def _render_block(node: _Node) -> str:
     if tag == "blockquote":
         inner = _render_children(node.children).rstrip("\n")
         return "\n".join(("> " + line) if line else ">" for line in inner.split("\n")) + "\n\n"
-    if tag in ("strong", "em", "code", "kbd", "a"):
+    if tag in ("strong", "em", "code", "kbd", "a", "button"):
         # An inline element used directly as a block child (e.g. a standalone
-        # <a> outside any <p>). Render it as its own paragraph.
+        # <a> outside any <p>, or the gallery's filter <button>s inside their
+        # own <div>, which is transparent -- see _TRANSPARENT_TAGS). Render it
+        # as its own paragraph.
         text = _render_inline([node]).strip()
         return (text + "\n\n") if text else ""
     raise MarkdownConversionError(f"unsupported tag <{tag}>")
@@ -4343,6 +4541,12 @@ def render(locale: str, slug: str, page: dict) -> str:
     if slug == "themes/new":
         extra_css = '<link rel="stylesheet" href="/assets/theme-sim.css">\n'
         extra_js = '<script type="module" src="/assets/theme-sim/boot.js"></script>\n'
+    # The community gallery (#145): same reasoning as the simulator above -- an external
+    # stylesheet needs no CSP change, and the filter's bootstrap must be an external module
+    # script, never inline, or it's silently blocked and the filter buttons never do anything.
+    elif slug == "themes/gallery":
+        extra_css = '<link rel="stylesheet" href="/assets/theme-gallery.css">\n'
+        extra_js = '<script type="module" src="/assets/theme-gallery.js"></script>\n'
     chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
     if slug == "index":
         hero_html = (
@@ -4588,7 +4792,12 @@ def build_llms_txt(pages: dict) -> str:
         heading = "Docs" if locale == "en" else LOCALES[locale]["label"]
         lines.append(f"## {heading}")
         for slug in PAGE_ORDER:
-            if (locale, slug) not in pages:
+            # The community gallery's own content (submitted names, summaries, authors) is kept
+            # out of llms.txt/llms-full.txt on purpose (#145, W4): it's user-submitted text about
+            # third-party themes, not MarsDawn's own facts, and it changes independently of a
+            # site rebuild once W3's publish pipeline lands. The page itself is still a normal
+            # page: linked from /themes/, in the sitemap, hreflang-complete, with its own twin.
+            if slug == "themes/gallery" or (locale, slug) not in pages:
                 continue
             page = pages[(locale, slug)]
             label = UI[locale][SLUG_TO_UI_KEY[slug]]
@@ -4626,7 +4835,8 @@ def build_llms_full(pages: dict) -> str:
     sections = []
     for locale in LOCALES:
         for slug in PAGE_ORDER:
-            if (locale, slug) not in pages:
+            # Kept out of llms-full.txt too -- see the matching comment in build_llms_txt.
+            if slug == "themes/gallery" or (locale, slug) not in pages:
                 continue
             page = pages[(locale, slug)]
             label = UI[locale][SLUG_TO_UI_KEY[slug]]
