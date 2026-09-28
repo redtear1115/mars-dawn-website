@@ -128,8 +128,6 @@ try {
 <ul>
 <li><strong>Markdown documents.</strong> Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings. Nothing else a Markdown document refers to is loaded from the web.
 </li>
-<li><strong>Theme gallery.</strong> MarsDawn fetches <code>/themes/v1/index.json</code> from marsdawn.southern-light.dev at launch and when you open the gallery, and, when you install a theme, that theme's files from the same address. Like any request to this site, this sends your IP address and User-Agent to Cloudflare, which hosts it. MarsDawn sends no identifiers and no document data.
-</li>
 <li><strong>HTML documents.</strong> An HTML document opens static: its code doesn't run and nothing is loaded from the web. If a document contains code that could run, you can choose <em>View › Run This Document</em> for that document. Its own code then runs until you stop it, the document reloads or you close the window. That choice is never remembered, and it isn't a setting. While it runs, the document can send data over the network, and read images, style sheets, fonts and media in its folder and the folders inside it. Code downloaded from the web never runs.
 </li>
 </ul>

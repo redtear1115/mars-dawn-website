@@ -334,7 +334,6 @@ Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<measurem
 MarsDawn works fully offline. It connects to the internet only **when you choose to**, for a document that refers to the web:
 
 - **Markdown documents.** Web images are blocked by default. They load only after you click *Load Images* in the preview, or if you turn on *Load remote images automatically* in Settings. Nothing else a Markdown document refers to is loaded from the web.
-- **Theme gallery.** MarsDawn fetches `/themes/v1/index.json` from marsdawn.southern-light.dev at launch and when you open the gallery, and, when you install a theme, that theme's files from the same address. Like any request to this site, this sends your IP address and User-Agent to Cloudflare, which hosts it. MarsDawn sends no identifiers and no document data.
 - **HTML documents.** An HTML document opens static: its code doesn't run and nothing is loaded from the web. If a document contains code that could run, you can choose *View › Run This Document* for that document. Its own code then runs until you stop it, the document reloads or you close the window. That choice is never remembered, and it isn't a setting. While it runs, the document can send data over the network, and read images, style sheets, fonts and media in its folder and the folders inside it. Code downloaded from the web never runs.
 
 MarsDawn loads web content over https only. A plain http address is never loaded, in any setting, and MarsDawn does not rewrite it to https. In a Markdown document, the preview shows a placeholder in its place.
@@ -2388,7 +2387,6 @@ App 和這個網站是兩件事。App 不收集資料。會記下造訪的，只
 MarsDawn 可以完全離線使用，只有在**你自己選擇時**，才會為引用網路內容的文件連網：
 
 - **Markdown 文件**。網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。
-- **主題庫**。MarsDawn 會在啟動時、以及你打開主題庫時，向 marsdawn.southern-light.dev 索取 `/themes/v1/index.json`；安裝某個主題時，也會向同一個網址索取那個主題的檔案。和任何對這個網站的請求一樣，這會把你的 IP 位址和 User-Agent 送給負責代管的 Cloudflare。MarsDawn 不會送出任何識別碼，也不會送出文件內容。
 - **HTML 文件**。HTML 文件開啟時是靜態的：它的程式碼不會執行，也不會從網路載入任何東西。如果文件含有可以執行的程式碼，你可以針對這份文件選擇「顯示方式 › 執行這份文件」。之後它自己的程式碼會一直執行，直到你停止它、文件重新載入，或關閉視窗為止。這個選擇不會被記住，也不是一項設定。執行期間，這份文件可以透過網路傳送資料，並讀取它所在資料夾及其子資料夾中的圖片、樣式表、字型與媒體檔案。從網路下載的程式碼一律不會執行。
 
 MarsDawn 只透過 https 載入網路內容。http 位址一律不會載入，任何設定都無法開啟，MarsDawn 也不會自動改寫成 https。在 Markdown 文件中，預覽會以佔位圖示代替。
@@ -4480,7 +4478,6 @@ App 和这个网站是两件事。App 不收集数据。会记下访问的，只
 MarsDawn 可以完全离线使用，只有在**你自己选择时**，才会为引用网络内容的文稿连网：
 
 - **Markdown 文稿**。网络图片默认不加载，只有在你按下预览中的“载入图像”，或在设置中打开“自动载入网络图像”后才会加载。Markdown 文稿引用的其他网络内容一律不加载。
-- **主题库**。MarsDawn 会在启动时、以及你打开主题库时，向 marsdawn.southern-light.dev 请求 `/themes/v1/index.json`；安装某个主题时，也会向同一个地址请求那个主题的文件。和任何对这个网站的请求一样，这会把你的 IP 地址和 User-Agent 发送给负责托管的 Cloudflare。MarsDawn 不会发送任何标识符，也不会发送文稿内容。
 - **HTML 文稿**。HTML 文稿打开时是静态的：它的代码不会运行，也不会从网络加载任何东西。如果文稿含有可以运行的代码，你可以针对这份文稿选择“显示 › 运行这份文稿”。之后它自己的代码会一直运行，直到你停止它、文稿重新加载，或关闭窗口为止。这个选择不会被记住，也不是一项设置。运行期间，这份文稿可以通过网络发送数据，并读取它所在文件夹及其子文件夹中的图片、样式表、字体与媒体文件。从网络下载的代码一律不会运行。
 
 MarsDawn 只通过 https 加载网络内容。http 地址一律不会加载，任何设置都无法打开，MarsDawn 也不会自动改写成 https。在 Markdown 文稿中，预览会以占位图标代替。
@@ -6562,7 +6559,6 @@ macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情�
 MarsDawn は完全にオフラインで動作します。インターネットに接続するのは**あなたが選んだときだけ**、ウェブを参照する文書に対してです。
 
 - **Markdown 文書**。ウェブ画像はデフォルトでブロックされています。プレビューで*イメージを読み込む*をクリックするか、設定で*リモートイメージを自動的に読み込む*をオンにしたときだけ読み込まれます。Markdown 文書が参照するそれ以外のものは、ウェブから読み込まれません。
-- **テーマギャラリー**。MarsDawn は起動時、およびギャラリーを開いたときに marsdawn.southern-light.dev の `/themes/v1/index.json` を取得し、テーマをインストールするときは同じアドレスからそのテーマのファイルを取得します。このサイトへの他のリクエストと同様に、これによりホスティングを行う Cloudflare にあなたの IP アドレスと User-Agent が送られます。MarsDawn は識別子も文書の内容も送信しません。
 - **HTML 文書**。HTML 文書は静的な状態で開きます。コードは実行されず、ウェブから何も読み込まれません。文書に実行され得るコードが含まれる場合、その文書について*表示 › この書類を実行*を選ぶことができます。すると、その文書自身のコードは、あなたが停止するか、文書が再読み込みされるか、ウインドウを閉じるまで実行され続けます。この選択が記憶されることはなく、設定項目でもありません。実行中、文書はネットワーク経由でデータを送信でき、自身のフォルダとその中のフォルダにある画像、スタイルシート、フォント、メディアを読み取れます。ウェブからダウンロードされたコードが実行されることはありません。
 
 MarsDawn は https 経由でのみウェブコンテンツを読み込みます。http のみのアドレスは、どの設定でも読み込まれることはなく、MarsDawn がそれを https に書き換えることもありません。Markdown 文書では、プレビューにその代わりのプレースホルダーが表示されます。
