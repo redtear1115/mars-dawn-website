@@ -2,7 +2,24 @@
 
 Preview themes the community submitted, each reviewed and merged by the developer before it appears here. Filter by scenario, or [build your own](/themes/new/) in the browser — no install, no git.
 
-No themes are published yet. Be the first: build one in the browser and submit it.
+All
+
+Agent review
+
+Technical docs
+
+Formal output
+
+Notes & sharing
+
+- ![Dracula — light preview](/themes/v1/dracula/1.0.0/preview-light.png) ![Dracula — dark preview](/themes/v1/dracula/1.0.0/preview-dark.png) **Dracula** v1.0.0 The classic dark vampire palette, with Alucard by day — adjusted for readability, credited to Dracula Theme Technical docs Agent review by Southern Light Report Report by email
+- ![Gruvbox — light preview](/themes/v1/gruvbox/1.0.0/preview-light.png) ![Gruvbox — dark preview](/themes/v1/gruvbox/1.0.0/preview-dark.png) **Gruvbox** v1.0.0 A warm retro palette of cream, brown and orange — credited to morhetz/gruvbox Technical docs Notes & sharing by Southern Light Report Report by email
+- ![Guide — light preview](/themes/v1/guide/1.0.0/preview-light.png) ![Guide — dark preview](/themes/v1/guide/1.0.0/preview-dark.png) **Guide** v1.0.0 A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs Technical docs by Southern Light Report Report by email
+- ![Ledger — light preview](/themes/v1/ledger/1.0.0/preview-light.png) ![Ledger — dark preview](/themes/v1/ledger/1.0.0/preview-dark.png) **Ledger** v1.0.0 Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates Formal output by Southern Light Report Report by email
+- ![Nord — light preview](/themes/v1/nord/1.0.0/preview-light.png) ![Nord — dark preview](/themes/v1/nord/1.0.0/preview-dark.png) **Nord** v1.0.0 An arctic, north-bluish palette, with an original light companion — adjusted for readability, credited to Nord Technical docs Agent review by Southern Light Report Report by email
+- ![Solarized — light preview](/themes/v1/solarized/1.0.0/preview-light.png) ![Solarized — dark preview](/themes/v1/solarized/1.0.0/preview-dark.png) **Solarized** v1.0.0 Ethan Schoonover's teal-and-gold precision palette, base3 by day and base03 by night Technical docs Agent review by Southern Light Report Report by email
+- ![Spec — light preview](/themes/v1/spec/1.0.0/preview-light.png) ![Spec — dark preview](/themes/v1/spec/1.0.0/preview-dark.png) **Spec** v1.0.0 Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs Agent review Formal output by Southern Light Report Report by email
+- ![Story — light preview](/themes/v1/story/1.0.0/preview-light.png) ![Story — dark preview](/themes/v1/story/1.0.0/preview-dark.png) **Story** v1.0.0 Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes Notes & sharing Agent review by Southern Light Report Report by email
 
 ## Something wrong with a theme?
 

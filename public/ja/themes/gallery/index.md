@@ -2,7 +2,24 @@
 
 コミュニティが投稿したプレビューテーマです。それぞれ開発者がレビューし、マージしてからここに表示されます。シナリオで絞り込むか、[ブラウザで自分のテーマを作る](/ja/themes/new/)こともできます — インストールも git も不要です。
 
-まだ公開されているテーマはありません。最初のひとりになりませんか。ブラウザでテーマを作って投稿してください。
+すべて
+
+エージェント出力のレビュー
+
+技術ドキュメント
+
+フォーマルな出力
+
+メモ・共有
+
+- ![ドラキュラ — light preview](/themes/v1/dracula/1.0.0/preview-light.png) ![ドラキュラ — dark preview](/themes/v1/dracula/1.0.0/preview-dark.png) **ドラキュラ** v1.0.0 The classic dark vampire palette, with Alucard by day — adjusted for readability, credited to Dracula Theme 技術ドキュメント エージェント出力のレビュー 作者： Southern Light 通報 メールで通報
+- ![グラブボックス — light preview](/themes/v1/gruvbox/1.0.0/preview-light.png) ![グラブボックス — dark preview](/themes/v1/gruvbox/1.0.0/preview-dark.png) **グラブボックス** v1.0.0 A warm retro palette of cream, brown and orange — credited to morhetz/gruvbox 技術ドキュメント メモ・共有 作者： Southern Light 通報 メールで通報
+- ![ガイド — light preview](/themes/v1/guide/1.0.0/preview-light.png) ![ガイド — dark preview](/themes/v1/guide/1.0.0/preview-dark.png) **ガイド** v1.0.0 A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs 技術ドキュメント 作者： Southern Light 通報 メールで通報
+- ![台帳 — light preview](/themes/v1/ledger/1.0.0/preview-light.png) ![台帳 — dark preview](/themes/v1/ledger/1.0.0/preview-dark.png) **台帳** v1.0.0 Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates フォーマルな出力 作者： Southern Light 通報 メールで通報
+- ![ノルド — light preview](/themes/v1/nord/1.0.0/preview-light.png) ![ノルド — dark preview](/themes/v1/nord/1.0.0/preview-dark.png) **ノルド** v1.0.0 An arctic, north-bluish palette, with an original light companion — adjusted for readability, credited to Nord 技術ドキュメント エージェント出力のレビュー 作者： Southern Light 通報 メールで通報
+- ![ソラライズド — light preview](/themes/v1/solarized/1.0.0/preview-light.png) ![ソラライズド — dark preview](/themes/v1/solarized/1.0.0/preview-dark.png) **ソラライズド** v1.0.0 Ethan Schoonover's teal-and-gold precision palette, base3 by day and base03 by night 技術ドキュメント エージェント出力のレビュー 作者： Southern Light 通報 メールで通報
+- ![仕様書 — light preview](/themes/v1/spec/1.0.0/preview-light.png) ![仕様書 — dark preview](/themes/v1/spec/1.0.0/preview-dark.png) **仕様書** v1.0.0 Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs エージェント出力のレビュー フォーマルな出力 作者： Southern Light 通報 メールで通報
+- ![ストーリー — light preview](/themes/v1/story/1.0.0/preview-light.png) ![ストーリー — dark preview](/themes/v1/story/1.0.0/preview-dark.png) **ストーリー** v1.0.0 Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes メモ・共有 エージェント出力のレビュー 作者： Southern Light 通報 メールで通報
 
 ## テーマに問題がありますか？
 

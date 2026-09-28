@@ -2,7 +2,24 @@
 
 社区投稿的预览主题，每一个都经过开发者审核、合并后才会出现在这里。按场景筛选，或是[在浏览器里打造一个自己的主题](/zh-hans/themes/new/)——不用安装，也不用 git。
 
-目前还没有任何投稿的主题。第一个做一个吧：在浏览器里打造一个主题，然后送出投稿。
+全部
+
+审阅代理产出
+
+技术文档
+
+正式输出
+
+笔记分享
+
+- ![Dracula — light preview](/themes/v1/dracula/1.0.0/preview-light.png) ![Dracula — dark preview](/themes/v1/dracula/1.0.0/preview-dark.png) **Dracula** v1.0.0 The classic dark vampire palette, with Alucard by day — adjusted for readability, credited to Dracula Theme 技术文档 审阅代理产出 作者： Southern Light 举报 用电子邮件举报
+- ![Gruvbox — light preview](/themes/v1/gruvbox/1.0.0/preview-light.png) ![Gruvbox — dark preview](/themes/v1/gruvbox/1.0.0/preview-dark.png) **Gruvbox** v1.0.0 A warm retro palette of cream, brown and orange — credited to morhetz/gruvbox 技术文档 笔记分享 作者： Southern Light 举报 用电子邮件举报
+- ![Guide — light preview](/themes/v1/guide/1.0.0/preview-light.png) ![Guide — dark preview](/themes/v1/guide/1.0.0/preview-dark.png) **Guide** v1.0.0 A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs 技术文档 作者： Southern Light 举报 用电子邮件举报
+- ![Ledger — light preview](/themes/v1/ledger/1.0.0/preview-light.png) ![Ledger — dark preview](/themes/v1/ledger/1.0.0/preview-dark.png) **Ledger** v1.0.0 Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates 正式输出 作者： Southern Light 举报 用电子邮件举报
+- ![Nord — light preview](/themes/v1/nord/1.0.0/preview-light.png) ![Nord — dark preview](/themes/v1/nord/1.0.0/preview-dark.png) **Nord** v1.0.0 An arctic, north-bluish palette, with an original light companion — adjusted for readability, credited to Nord 技术文档 审阅代理产出 作者： Southern Light 举报 用电子邮件举报
+- ![Solarized — light preview](/themes/v1/solarized/1.0.0/preview-light.png) ![Solarized — dark preview](/themes/v1/solarized/1.0.0/preview-dark.png) **Solarized** v1.0.0 Ethan Schoonover's teal-and-gold precision palette, base3 by day and base03 by night 技术文档 审阅代理产出 作者： Southern Light 举报 用电子邮件举报
+- ![Spec — light preview](/themes/v1/spec/1.0.0/preview-light.png) ![Spec — dark preview](/themes/v1/spec/1.0.0/preview-dark.png) **Spec** v1.0.0 Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs 审阅代理产出 正式输出 作者： Southern Light 举报 用电子邮件举报
+- ![Story — light preview](/themes/v1/story/1.0.0/preview-light.png) ![Story — dark preview](/themes/v1/story/1.0.0/preview-dark.png) **Story** v1.0.0 Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes 笔记分享 审阅代理产出 作者： Southern Light 举报 用电子邮件举报
 
 ## 主题有问题吗？
 
