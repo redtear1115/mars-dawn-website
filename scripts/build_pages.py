@@ -466,6 +466,29 @@ GALLERY_EMPTY = {
     "ja": "まだ公開されているテーマはありません。最初のひとりになりませんか。ブラウザでテーマを作って投稿してください。",
 }
 
+# Four gallery themes (dracula, nord, gruvbox, solarized) are ports of existing open-source colour
+# schemes; each credits its upstream project in its own summary text (theme.json), and this label
+# links from the card to public/themes/third-party-notices.html, which carries each project's
+# copyright notice and full MIT licence text (owner decision 2026-09-28, PR #153 verifier findings).
+# en/zh-hant are the owner's own wording; zh-hans/ja are drafts (needs-copy, same as SCENARIO_LABELS).
+PORTED_THEME_IDS = ("dracula", "nord", "gruvbox", "solarized")
+THIRD_PARTY_NOTICES_PATH = "/themes/third-party-notices.html"
+GALLERY_CREDIT_LABEL = {
+    "en": "Credits & licence", "zh-hant": "版權與授權", "zh-hans": "版权与授权", "ja": "クレジットとライセンス",
+}
+GALLERY_CREDIT_NOTE = {
+    "en": ('Dracula, Nord, Gruvbox and Solarized are adapted from open-source colour schemes; '
+           f'see <a href="{THIRD_PARTY_NOTICES_PATH}">third-party notices</a> for each project’s '
+           'copyright and full licence text.'),
+    "zh-hant": (f'Dracula、Nord、Gruvbox 與 Solarized 改編自開放原始碼的配色專案；每個專案的版權聲明與'
+                f'完整授權條文請見<a href="{THIRD_PARTY_NOTICES_PATH}">第三方授權聲明</a>。'),
+    "zh-hans": (f'Dracula、Nord、Gruvbox 与 Solarized 改编自开源配色项目；每个项目的版权声明与'
+                f'完整授权条文请见<a href="{THIRD_PARTY_NOTICES_PATH}">第三方授权声明</a>。'),
+    "ja": (f'Dracula、Nord、Gruvbox、Solarized はオープンソースの配色プロジェクトを基にしています。'
+           f'各プロジェクトの著作権表示と完全なライセンス全文は<a href="{THIRD_PARTY_NOTICES_PATH}">'
+           'サードパーティ通知</a>をご覧ください。'),
+}
+
 # The issue form theme-report.yml (.github/ISSUE_TEMPLATE/): no @mention of the theme's author,
 # and no workflow watches it -- a report is read and acted on by a maintainer, by hand (app repo
 # docs/theme-ecosystem-design.md §8.2). GitHub prefills a form's fields from query parameters
@@ -511,6 +534,13 @@ def _theme_card_html(locale: str, entry: dict) -> str:
     version_text = html_escape(version, quote=True)
     data_id = html_escape(theme_id, quote=True)
     data_version = html_escape(version, quote=True)
+    # Ported themes (dracula/nord/gruvbox/solarized) credit their upstream project in their own
+    # summary text; this line adds a link to the licence text itself (owner decision 2026-09-28).
+    credit_html = ""
+    if theme_id in PORTED_THEME_IDS:
+        credit_label = html_escape(GALLERY_CREDIT_LABEL[locale], quote=True)
+        credit_href = html_escape(THIRD_PARTY_NOTICES_PATH + "#" + theme_id, quote=True)
+        credit_html = f'    <span class="theme-credit"><a href="{credit_href}">{credit_label}</a></span>\n'
     return (
         f'  <li class="theme-card" data-scenarios="{data_scenarios}">\n'
         f'    <img src="{light}" alt="{name} — light preview" loading="lazy">\n'
@@ -519,6 +549,7 @@ def _theme_card_html(locale: str, entry: dict) -> str:
         f'    <span class="theme-summary">{summary}</span>\n'
         f'    <span class="theme-scenarios">{badges.strip()}</span>\n'
         f'    <span class="theme-author">{GALLERY_BY_LABEL[locale]} {author}</span>\n'
+        f'{credit_html}'
         f'    <button type="button" class="theme-report" data-theme-id="{data_id}" data-theme-version="{data_version}">{GALLERY_REPORT_LABEL[locale]}</button>\n'
         f'    <button type="button" class="theme-report-mail" data-theme-id="{data_id}" data-theme-version="{data_version}">{GALLERY_REPORT_MAIL_LABEL[locale]}</button>\n'
         f'  </li>'
@@ -559,6 +590,8 @@ GALLERY_PAGES = {
   <p>Preview themes the community submitted, each reviewed and merged by the developer before it appears here. Filter by scenario, or <a href="/themes/new/">build your own</a> in the browser &#8212; no install, no git.</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
+<h2>Credits</h2>
+<p>{GALLERY_CREDIT_NOTE["en"]}</p>
 <h2>Something wrong with a theme?</h2>
 <p>Use the "Report" button on its card (it needs JavaScript), or write directly to <a href="mailto:{EMAIL}">{EMAIL}</a> with its name and version, JavaScript or not. Reports are reviewed by hand; a theme that's confirmed to be a problem is delisted within a day.</p>
 """,
@@ -572,6 +605,8 @@ GALLERY_PAGES = {
   <p>社群投稿的預覽主題，每一個都經過開發者審核、合併後才會出現在這裡。依情境篩選，或是<a href="/zh-hant/themes/new/">在瀏覽器裡打造一個自己的主題</a>——不用安裝，也不用 git。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
+<h2>版權與授權</h2>
+<p>{GALLERY_CREDIT_NOTE["zh-hant"]}</p>
 <h2>主題有問題嗎？</h2>
 <p>用主題卡片上的「檢舉」按鈕（需要 JavaScript），或直接寫信到 <a href="mailto:{EMAIL}">{EMAIL}</a>，附上主題名稱和版本——不論有沒有 JavaScript 都可以。檢舉會有人親自審核，確認屬實的主題會在一天內下架。</p>
 """,
@@ -585,6 +620,8 @@ GALLERY_PAGES = {
   <p>社区投稿的预览主题，每一个都经过开发者审核、合并后才会出现在这里。按场景筛选，或是<a href="/zh-hans/themes/new/">在浏览器里打造一个自己的主题</a>——不用安装，也不用 git。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
+<h2>版权与授权</h2>
+<p>{GALLERY_CREDIT_NOTE["zh-hans"]}</p>
 <h2>主题有问题吗？</h2>
 <p>用主题卡片上的“举报”按钮（需要 JavaScript），或直接写信到 <a href="mailto:{EMAIL}">{EMAIL}</a>，附上主题名称和版本——不论有没有 JavaScript 都可以。举报会有人亲自审核，确认属实的主题会在一天内下架。</p>
 """,
@@ -598,6 +635,8 @@ GALLERY_PAGES = {
   <p>コミュニティが投稿したプレビューテーマです。それぞれ開発者がレビューし、マージしてからここに表示されます。シナリオで絞り込むか、<a href="/ja/themes/new/">ブラウザで自分のテーマを作る</a>こともできます &#8212; インストールも git も不要です。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
+<h2>クレジットとライセンス</h2>
+<p>{GALLERY_CREDIT_NOTE["ja"]}</p>
 <h2>テーマに問題がありますか？</h2>
 <p>カードの「通報」ボタンを使うか（JavaScript が必要です）、テーマ名とバージョンを添えて直接 <a href="mailto:{EMAIL}">{EMAIL}</a> までメールしてください — JavaScript の有無を問いません。通報は人の目で確認し、事実であれば1日以内に取り下げます。</p>
 """,
