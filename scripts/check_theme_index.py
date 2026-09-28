@@ -85,6 +85,8 @@ event payload file, never from text spliced into `run:`):
   themes/revoked.json, under public/themes/v1/ only that id's folder, index.json and
   published.json, nothing under scripts/ or .github/, and elsewhere only generated pages
   (GENERATED_PAGE_*: index.html/index.md under public/, sitemap, llms*.txt, product-facts.md).
+  Deliberately not public/assets/theme-sim/kit/**: build_pages.py copies it from vendor/, never
+  from theme data, so a theme PR has no reason to change it.
 - **maintainer** (id in $THEME_MAINTAINER_IDS, a repo variable; comma-separated numeric ids; unset
   means 16503101): anything, still subject to every rule on the tree and the base.
 - **anyone else**: nothing under scripts/ or .github/; no public/themes/v1/**, themes/revoked.json
@@ -1538,6 +1540,8 @@ RULES = [
     ("authorship: bot edits .github/", add_file(".github/workflows/site.yml", "on: push\n"), ["bot PR may not change scripts/ or .github/"], BOT),
     ("authorship: bot changes a hand-written file", add_file("public/_headers", "/*\n"),
      ["bot PR may change only themes/, public/themes/v1/ and generated pages", "public/_headers"], BOT),
+    ("authorship: bot changes the simulator's vendored kit copy", add_file("public/assets/theme-sim/kit/ThemeStyles.json", "{}"),
+     ["bot PR may change only themes/, public/themes/v1/ and generated pages", "public/assets/theme-sim/kit/ThemeStyles.json"], BOT),
     ("authorship: non-maintainer theme PR changes a hand-written file", plant_other_theme_pr_edits_headers,
      ["PR author (id 12345) may change only themes/, public/themes/v1/ and generated pages", "public/_headers"], OTHER),
     ("authorship: bot changes two themes", base_without_themes("olympus-dusk", "second-theme"), ["bot PR may change at most one themes/<id>/"], BOT, two_themes),
