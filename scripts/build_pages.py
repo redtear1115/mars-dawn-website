@@ -18,7 +18,6 @@ from types import SimpleNamespace
 from html import escape as html_escape
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import quote as url_quote
 from xml.sax.saxutils import escape as xml_escape
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -471,9 +470,19 @@ GALLERY_EMPTY = {
 # and no workflow watches it -- a report is read and acted on by a maintainer, by hand (app repo
 # docs/theme-ecosystem-design.md §8.2). GitHub prefills a form's fields from query parameters
 # named after each field's `id`.
-THEME_REPORT_ISSUE_URL = "https://github.com/redtear1115/mars-dawn-website/issues/new"
-
-
+#
+# Neither the report link nor its mailto twin is a plain <a href> (round 2 review, mars-dawn-website
+# #151): GA4's enhanced measurement records an outbound click by the <a>'s own href (`link_url`),
+# so a real href carrying theme_id/theme_version would report a theme's id to analytics on every
+# click, the very thing the privacy policy says never happens. Both buttons are built and opened
+# by public/assets/theme-gallery.js instead, exactly like the simulator's own Submit button
+# (public/assets/theme-sim/app.js, ThemeSimApp.submit()): a <button>, never an <a>, whose click
+# handler builds the URL from a constant base + URLSearchParams and opens it with window.open --
+# so there is never a real href for anything to read. The card carries only `data-theme-id` and
+# `data-theme-version`, both already constrained by check_theme_index.py's regexes, in the button's
+# own data-* attributes; the base URL and the URLSearchParams construction live in the JS file, the
+# one place that builds the URL, not duplicated here. A plain, id-free mailto (no subject, so no
+# theme data) stays in the page's own text below the gallery, for anyone without JavaScript.
 def read_theme_index() -> dict:
     data = json.loads(THEME_INDEX_PATH.read_text(encoding="utf-8"))
     return data if isinstance(data, dict) else {}
@@ -487,16 +496,6 @@ def _localized(value, locale: str) -> str:
     return value.get(locale) or value.get("en") or ""
 
 
-def theme_report_url(theme_id: str, version: str) -> str:
-    return (f"{THEME_REPORT_ISSUE_URL}?template=theme-report.yml"
-            f"&theme_id={url_quote(theme_id, safe='')}&theme_version={url_quote(version, safe='')}")
-
-
-def theme_report_mailto(theme_id: str, version: str) -> str:
-    subject = f"Theme report: {theme_id} {version}"
-    return f"mailto:{EMAIL}?subject={url_quote(subject, safe='')}"
-
-
 def _theme_card_html(locale: str, entry: dict) -> str:
     theme_id = str(entry.get("id", ""))
     version = str(entry.get("version", ""))
@@ -508,10 +507,10 @@ def _theme_card_html(locale: str, entry: dict) -> str:
     light = html_escape("/themes/v1/" + str(previews.get("light", "")), quote=True)
     dark = html_escape("/themes/v1/" + str(previews.get("dark", "")), quote=True)
     badges = "".join(f' <span class="theme-scenario">{SCENARIO_LABELS[s][locale]}</span>' for s in scenarios)
-    report_href = html_escape(theme_report_url(theme_id, version), quote=True)
-    mail_href = html_escape(theme_report_mailto(theme_id, version), quote=True)
     data_scenarios = html_escape(" ".join(scenarios), quote=True)
     version_text = html_escape(version, quote=True)
+    data_id = html_escape(theme_id, quote=True)
+    data_version = html_escape(version, quote=True)
     return (
         f'  <li class="theme-card" data-scenarios="{data_scenarios}">\n'
         f'    <img src="{light}" alt="{name} — light preview" loading="lazy">\n'
@@ -520,8 +519,8 @@ def _theme_card_html(locale: str, entry: dict) -> str:
         f'    <span class="theme-summary">{summary}</span>\n'
         f'    <span class="theme-scenarios">{badges.strip()}</span>\n'
         f'    <span class="theme-author">{GALLERY_BY_LABEL[locale]} {author}</span>\n'
-        f'    <a href="{report_href}" class="theme-report">{GALLERY_REPORT_LABEL[locale]}</a>\n'
-        f'    <a href="{mail_href}" class="theme-report-mail">{GALLERY_REPORT_MAIL_LABEL[locale]}</a>\n'
+        f'    <button type="button" class="theme-report" data-theme-id="{data_id}" data-theme-version="{data_version}">{GALLERY_REPORT_LABEL[locale]}</button>\n'
+        f'    <button type="button" class="theme-report-mail" data-theme-id="{data_id}" data-theme-version="{data_version}">{GALLERY_REPORT_MAIL_LABEL[locale]}</button>\n'
         f'  </li>'
     )
 
@@ -561,7 +560,7 @@ GALLERY_PAGES = {
 </section>
 {COMMUNITY_GALLERY_MARK}
 <h2>Something wrong with a theme?</h2>
-<p>Use the "Report" link on its card, or write to <a href="mailto:{EMAIL}">{EMAIL}</a> with its name and version. Reports are reviewed by hand; a theme that's confirmed to be a problem is delisted within a day.</p>
+<p>Use the "Report" button on its card (it needs JavaScript), or write directly to <a href="mailto:{EMAIL}">{EMAIL}</a> with its name and version, JavaScript or not. Reports are reviewed by hand; a theme that's confirmed to be a problem is delisted within a day.</p>
 """,
     },
     ("zh-hant", "themes/gallery"): {
@@ -574,7 +573,7 @@ GALLERY_PAGES = {
 </section>
 {COMMUNITY_GALLERY_MARK}
 <h2>主題有問題嗎？</h2>
-<p>用主題卡片上的「檢舉」連結，或寫信到 <a href="mailto:{EMAIL}">{EMAIL}</a>，附上主題名稱和版本。檢舉會有人親自審核，確認屬實的主題會在一天內下架。</p>
+<p>用主題卡片上的「檢舉」按鈕（需要 JavaScript），或直接寫信到 <a href="mailto:{EMAIL}">{EMAIL}</a>，附上主題名稱和版本——不論有沒有 JavaScript 都可以。檢舉會有人親自審核，確認屬實的主題會在一天內下架。</p>
 """,
     },
     ("zh-hans", "themes/gallery"): {
@@ -587,7 +586,7 @@ GALLERY_PAGES = {
 </section>
 {COMMUNITY_GALLERY_MARK}
 <h2>主题有问题吗？</h2>
-<p>用主题卡片上的“举报”链接，或写信到 <a href="mailto:{EMAIL}">{EMAIL}</a>，附上主题名称和版本。举报会有人亲自审核，确认属实的主题会在一天内下架。</p>
+<p>用主题卡片上的“举报”按钮（需要 JavaScript），或直接写信到 <a href="mailto:{EMAIL}">{EMAIL}</a>，附上主题名称和版本——不论有没有 JavaScript 都可以。举报会有人亲自审核，确认属实的主题会在一天内下架。</p>
 """,
     },
     ("ja", "themes/gallery"): {
@@ -600,7 +599,7 @@ GALLERY_PAGES = {
 </section>
 {COMMUNITY_GALLERY_MARK}
 <h2>テーマに問題がありますか？</h2>
-<p>カードの「通報」リンクを使うか、テーマ名とバージョンを添えて <a href="mailto:{EMAIL}">{EMAIL}</a> までメールしてください。通報は人の目で確認し、事実であれば1日以内に取り下げます。</p>
+<p>カードの「通報」ボタンを使うか（JavaScript が必要です）、テーマ名とバージョンを添えて直接 <a href="mailto:{EMAIL}">{EMAIL}</a> までメールしてください — JavaScript の有無を問いません。通報は人の目で確認し、事実であれば1日以内に取り下げます。</p>
 """,
     },
 }

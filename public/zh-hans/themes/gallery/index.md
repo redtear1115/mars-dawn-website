@@ -6,7 +6,7 @@
 
 ## 主题有问题吗？
 
-用主题卡片上的“举报”链接，或写信到 [support@southern-light.dev](mailto:support@southern-light.dev)，附上主题名称和版本。举报会有人亲自审核，确认属实的主题会在一天内下架。
+用主题卡片上的“举报”按钮（需要 JavaScript），或直接写信到 [support@southern-light.dev](mailto:support@southern-light.dev)，附上主题名称和版本——不论有没有 JavaScript 都可以。举报会有人亲自审核，确认属实的主题会在一天内下架。
 
 ## 其他页面
 

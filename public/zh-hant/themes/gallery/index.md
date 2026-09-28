@@ -6,7 +6,7 @@
 
 ## 主題有問題嗎？
 
-用主題卡片上的「檢舉」連結，或寫信到 [support@southern-light.dev](mailto:support@southern-light.dev)，附上主題名稱和版本。檢舉會有人親自審核，確認屬實的主題會在一天內下架。
+用主題卡片上的「檢舉」按鈕（需要 JavaScript），或直接寫信到 [support@southern-light.dev](mailto:support@southern-light.dev)，附上主題名稱和版本——不論有沒有 JavaScript 都可以。檢舉會有人親自審核，確認屬實的主題會在一天內下架。
 
 ## 其他頁面
 

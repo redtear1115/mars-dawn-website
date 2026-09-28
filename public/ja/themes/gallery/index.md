@@ -6,7 +6,7 @@
 
 ## テーマに問題がありますか？
 
-カードの「通報」リンクを使うか、テーマ名とバージョンを添えて [support@southern-light.dev](mailto:support@southern-light.dev) までメールしてください。通報は人の目で確認し、事実であれば1日以内に取り下げます。
+カードの「通報」ボタンを使うか（JavaScript が必要です）、テーマ名とバージョンを添えて直接 [support@southern-light.dev](mailto:support@southern-light.dev) までメールしてください — JavaScript の有無を問いません。通報は人の目で確認し、事実であれば1日以内に取り下げます。
 
 ## その他
 

@@ -6,7 +6,7 @@ No themes are published yet. Be the first: build one in the browser and submit i
 
 ## Something wrong with a theme?
 
-Use the "Report" link on its card, or write to [support@southern-light.dev](mailto:support@southern-light.dev) with its name and version. Reports are reviewed by hand; a theme that's confirmed to be a problem is delisted within a day.
+Use the "Report" button on its card (it needs JavaScript), or write directly to [support@southern-light.dev](mailto:support@southern-light.dev) with its name and version, JavaScript or not. Reports are reviewed by hand; a theme that's confirmed to be a problem is delisted within a day.
 
 ## More
 
