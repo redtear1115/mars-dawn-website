@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "ledger",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "name": {
     "en": "Ledger",
     "zh-Hant": "帳冊",
