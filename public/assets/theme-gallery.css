@@ -1,0 +1,125 @@
+/* The community theme gallery (mars-dawn-website #145, plan-website-104 W4). Cards and filter
+   buttons are built at build time by scripts/build_pages.py from public/themes/v1/index.json;
+   scripts/theme-gallery.js only toggles the [hidden] attribute and aria-pressed -- no inline
+   style anywhere, since the site's CSP has no 'unsafe-inline' for style-src. */
+
+.theme-gallery-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: var(--w-media);
+  margin: 20px auto 0;
+}
+
+.theme-filter-btn {
+  font: inherit;
+  padding: 6px 14px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.theme-filter-btn[aria-pressed="true"] {
+  background: var(--ember);
+  border-color: var(--ember);
+  color: var(--paper);
+}
+
+.theme-gallery-cards {
+  --gallery-width: var(--w-media);
+  width: var(--gallery-width);
+  margin: 20px auto 28px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 760px) {
+  .theme-gallery-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+.theme-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 14px;
+  background: var(--sand);
+  border-radius: var(--r-plate, 12px);
+}
+
+/* [hidden] already means display:none in every browser; stated again because a flex/grid
+   container is exactly the case where a forgotten override has bitten this site before
+   (mars-dawn-website#147 round 2, on a different property). */
+.theme-card[hidden] { display: none; }
+
+.theme-card img {
+  display: inline-block;
+  width: calc(50% - 4px);
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px color-mix(in srgb, #000 12%, transparent),
+              0 8px 20px -12px color-mix(in srgb, #000 30%, transparent);
+}
+
+.theme-card .theme-name { font-size: 1rem; }
+
+.theme-card .theme-version,
+.theme-card .theme-author {
+  display: block;
+  color: var(--dust);
+  font-size: 0.9rem;
+}
+
+.theme-card .theme-summary { display: block; }
+
+.theme-card .theme-scenarios { display: block; }
+
+.theme-card .theme-scenario {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  margin: 2px 4px 0 0;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  color: var(--dust);
+}
+
+/* Report / Report-by-email are real <button>s, not <a>s (see the comment in build_pages.py above
+   COMMUNITY_GALLERY_MARK and in theme-gallery.js): reset the button chrome so each still reads as
+   a plain link, underlined, in the site's link colour, on its own line. */
+.theme-card .theme-report,
+.theme-card .theme-report-mail {
+  display: block;
+  width: fit-content;
+  margin-top: 4px;
+  font: inherit;
+  color: var(--link);
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+.theme-card .theme-report:hover,
+.theme-card .theme-report-mail:hover {
+  text-decoration-thickness: 2px;
+}
+.theme-card .theme-report:focus-visible,
+.theme-card .theme-report-mail:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.theme-gallery-empty {
+  width: var(--w-text);
+  max-width: calc(100vw - 32px);
+  margin: 20px auto;
+  color: var(--dust);
+}
