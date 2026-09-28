@@ -1,0 +1,153 @@
+name: Theme pull request
+
+# Called by theme-approve.yml and theme-from-pr.yml once their gate has passed (#143;
+# plan-website-104 W2). Every input is a gate output that already matched a closed grammar; each
+# script checks it again. The theme's bytes arrive as the caller's `theme-source` artifact.
+#
+#   build   macOS, no permissions, no credentials in git config: the kit CLI at the pinned commit
+#           (cache by commit; tree hash, --version and smoke test checked), the theme committed to
+#           themes/<id>/ first, then scripts/build_themes.py (kit validation again, previews, index,
+#           published.json, pages, check_theme_index.py). Only paths a bot theme PR may change are
+#           handed on, with a manifest whose sha256 is this job's output.
+#   commit  ubuntu, the only write scopes, runs no third-party code and no kit: re-checks the
+#           artifact against that sha256 and every path, size and PNG, commits with `git commit -F`
+#           as github-actions[bot] with the submitter as co-author, pushes theme/<issue|pr>-<n> only,
+#           and opens the pull request. That PR starts no workflows (GITHUB_TOKEN): a maintainer
+#           closes and reopens it to run `check`.
+
+on:
+  workflow_call:
+    inputs:
+      source:
+        type: string
+        required: true
+      number:
+        type: string
+        required: true
+      sha256:
+        type: string
+        required: true
+      theme_id:
+        type: string
+        required: true
+      version:
+        type: string
+        required: true
+      login:
+        type: string
+        required: true
+      user_id:
+        type: string
+        required: true
+      author_change:
+        type: string
+        required: true
+      base_branch:
+        type: string
+        required: true
+
+permissions: {}
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 45
+    permissions: {}
+    outputs:
+      manifest_sha256: ${{ steps.stage.outputs.manifest_sha256 }}
+      base_sha: ${{ steps.stage.outputs.base_sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.base_branch }}
+          persist-credentials: false
+      - name: Kit CLI cache key (the pinned kit commit)
+        id: key
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 scripts/submission/kit_cli.py key
+      - id: cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/kit-cli
+          key: ${{ steps.key.outputs.key }}-${{ runner.os }}-${{ runner.arch }}
+      - name: Use Xcode 26
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          app=$(ls -d /Applications/Xcode_26*.app | sort -V | tail -1)
+          echo "Selecting $app"
+          sudo xcode-select -s "$app"
+      - name: Build the kit CLI at the pinned commit
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 scripts/submission/kit_cli.py build --dir "$RUNNER_TEMP/kit-cli"
+      - if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/kit-cli
+          key: ${{ steps.key.outputs.key }}-${{ runner.os }}-${{ runner.arch }}
+      - name: Check the kit CLI (tree hash, version, smoke test)
+        id: kit
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 scripts/submission/kit_cli.py verify --dir "$RUNNER_TEMP/kit-cli"
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: theme-source
+          path: ${{ runner.temp }}/theme
+      - name: Commit the theme, then build_themes.py
+        id: stage
+        env:
+          SOURCE: ${{ inputs.source }}
+          NUMBER: ${{ inputs.number }}
+          GATE_SHA256: ${{ inputs.sha256 }}
+          THEME_ID: ${{ inputs.theme_id }}
+          VERSION: ${{ inputs.version }}
+          AUTHOR_CHANGE: ${{ inputs.author_change }}
+          KIT_BIN: ${{ steps.kit.outputs.bin }}
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: >-
+          python3 scripts/submission/stage.py --theme "$RUNNER_TEMP/theme/theme.json" --bin "$KIT_BIN"
+          --out "$RUNNER_TEMP/staged"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: theme-build
+          path: ${{ runner.temp }}/staged
+          if-no-files-found: error
+          retention-days: 7
+
+  commit:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.build.outputs.base_sha }}
+          persist-credentials: false
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: theme-build
+          path: ${{ runner.temp }}/staged
+      - name: Commit, push theme/<source>-<n> and open the pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE: ${{ inputs.source }}
+          NUMBER: ${{ inputs.number }}
+          GATE_SHA256: ${{ inputs.sha256 }}
+          THEME_ID: ${{ inputs.theme_id }}
+          VERSION: ${{ inputs.version }}
+          LOGIN: ${{ inputs.login }}
+          USER_ID: ${{ inputs.user_id }}
+          AUTHOR_CHANGE: ${{ inputs.author_change }}
+          BASE_BRANCH: ${{ inputs.base_branch }}
+          BASE_SHA: ${{ needs.build.outputs.base_sha }}
+          MANIFEST_SHA256: ${{ needs.build.outputs.manifest_sha256 }}
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 scripts/submission/publish.py --staged "$RUNNER_TEMP/staged"

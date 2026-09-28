@@ -1,0 +1,6 @@
+# Theme gallery data and the workflows that publish it (#143; design §8.1). Only a maintainer merges;
+# a code-owner review is requested on every pull request that touches these paths.
+/themes/ @redtear1115
+/public/themes/ @redtear1115
+/.github/ @redtear1115
+/scripts/submission/ @redtear1115

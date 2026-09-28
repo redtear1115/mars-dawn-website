@@ -1,0 +1,79 @@
+name: Theme approval
+
+# A maintainer approves a validated submission by adding the theme-approved label; this opens a pull
+# request adding themes/<id>/theme.json and its published files (#143; plan-website-104 W2).
+#
+#   gate     ubuntu, no permissions: acts only on theme-approved added by a sender whose numeric id
+#            is in THEME_MAINTAINER_IDS (repo variable; unset = the owner's id), on an open
+#            theme-submission issue whose theme's sha256 equals the latest validation comment's (by
+#            github-actions[bot], verdict valid), DCO still ticked, author.github equal to the issue
+#            opener's login unless the issue has theme-author-change. Hands on the exact bytes.
+#   publish  theme-pr.yml: build (macOS, no permissions, kit + build_themes.py) then commit (ubuntu,
+#            the only write scopes, no third-party code), which opens the pull request.
+# Anyone with triage access can add a label, which is why the sender's id is checked. No secrets.
+
+on:
+  issues:
+    types: [labeled]
+
+permissions: {}
+
+concurrency:
+  group: theme-approve-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    if: ${{ github.event.label.name == 'theme-approved' && contains(github.event.issue.labels.*.name, 'theme-submission') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions: {}
+    outputs:
+      action: ${{ steps.gate.outputs.action }}
+      source: ${{ steps.gate.outputs.source }}
+      number: ${{ steps.gate.outputs.number }}
+      sha256: ${{ steps.gate.outputs.sha256 }}
+      theme_id: ${{ steps.gate.outputs.theme_id }}
+      version: ${{ steps.gate.outputs.version }}
+      login: ${{ steps.gate.outputs.login }}
+      user_id: ${{ steps.gate.outputs.user_id }}
+      author_change: ${{ steps.gate.outputs.author_change }}
+      base_branch: ${{ steps.gate.outputs.base_branch }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check the approval
+        id: gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          THEME_MAINTAINER_IDS: ${{ vars.THEME_MAINTAINER_IDS }}
+          THEME_BASE_BRANCH: ${{ vars.THEME_BASE_BRANCH }}
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 scripts/submission/gate.py approve --out "$RUNNER_TEMP/theme"
+      - if: ${{ steps.gate.outputs.action == 'build' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: theme-source
+          path: ${{ runner.temp }}/theme/theme.json
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    needs: gate
+    if: ${{ needs.gate.outputs.action == 'build' }}
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    uses: ./.github/workflows/theme-pr.yml
+    with:
+      source: ${{ needs.gate.outputs.source }}
+      number: ${{ needs.gate.outputs.number }}
+      sha256: ${{ needs.gate.outputs.sha256 }}
+      theme_id: ${{ needs.gate.outputs.theme_id }}
+      version: ${{ needs.gate.outputs.version }}
+      login: ${{ needs.gate.outputs.login }}
+      user_id: ${{ needs.gate.outputs.user_id }}
+      author_change: ${{ needs.gate.outputs.author_change }}
+      base_branch: ${{ needs.gate.outputs.base_branch }}
