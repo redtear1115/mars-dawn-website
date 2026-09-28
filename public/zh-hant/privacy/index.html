@@ -73,7 +73,7 @@ try {
 <div class="markdown-body">
 <h1>隱私權政策</h1>
 <p>macOS 的 Markdown 編輯器 MarsDawn 如何處理你的資訊。</p>
-<p>最後更新：2026-09-23</p>
+<p>最後更新：2026-09-28</p>
 <blockquote>
 <p><strong>MarsDawn app 不收集任何關於你的資料</strong>。沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。</p>
 </blockquote>
@@ -105,7 +105,7 @@ try {
 </li>
 <li><strong>IP 位址</strong>。Google Analytics 4 不會記錄或保存 IP 位址。
 </li>
-<li><strong>不會記錄的</strong>。沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 <code>/themes/</code> 索取主題檔案的請求會被略過，不會送出。
+<li><strong>不會記錄的</strong>。沒有帳號，因為這個網站不需要帳號。沒有你的文件，也沒有你打的字。沒有跨站廣告，也不會建立你的個人檔案。App 向 <code>/themes/</code> 索取主題檔案的請求會被略過，不會送出。<code>/themes/new/</code> 和 <code>/themes/gallery/</code> 的主題模擬器與主題庫完全在你的瀏覽器裡執行，也不會把主題資料送給 Google Analytics。
 </li>
 <li><strong>保留期限</strong>。Google 會保留這些資料 14 個月，之後刪除。
 </li>
@@ -127,6 +127,8 @@ try {
 <p>MarsDawn 可以完全離線使用，只有在<strong>你自己選擇時</strong>，才會為引用網路內容的文件連網：</p>
 <ul>
 <li><strong>Markdown 文件</strong>。網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。
+</li>
+<li><strong>主題庫</strong>。MarsDawn 會在啟動時、以及你打開主題庫時，向 marsdawn.southern-light.dev 索取 <code>/themes/v1/index.json</code>；安裝某個主題時，也會向同一個網址索取那個主題的檔案。和任何對這個網站的請求一樣，這會把你的 IP 位址和 User-Agent 送給負責代管的 Cloudflare。MarsDawn 不會送出任何識別碼，也不會送出文件內容。
 </li>
 <li><strong>HTML 文件</strong>。HTML 文件開啟時是靜態的：它的程式碼不會執行，也不會從網路載入任何東西。如果文件含有可以執行的程式碼，你可以針對這份文件選擇「顯示方式 › 執行這份文件」。之後它自己的程式碼會一直執行，直到你停止它、文件重新載入，或關閉視窗為止。這個選擇不會被記住，也不是一項設定。執行期間，這份文件可以透過網路傳送資料，並讀取它所在資料夾及其子資料夾中的圖片、樣式表、字型與媒體檔案。從網路下載的程式碼一律不會執行。
 </li>

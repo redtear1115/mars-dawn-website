@@ -7,7 +7,7 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 
 
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': 'MarsDawn は Mac App Store で近日公開予定です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'themes-new': 'テーマを作る', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
+    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': 'MarsDawn は Mac App Store で近日公開予定です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'themes-new': 'テーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
     store_chip = 'Mac App Store で近日公開'
     schema_notes = {'export': 'export 成功時', 'open': 'open 成功時、marsdawn 0.3.0 以降', 'error': '失敗時、両方のコマンド共通', 'open_v1': 'open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）'}
     example_plan = '# 計画：書き出しを高速化\n\nこの計画はエージェントが書きました。内容を確認してから、PDF にします。\n\n## ステップ\n\n| ステップ | 担当 | 状況 |\n|------|-------|--------|\n| 遅いページを計測する | エージェント | 完了 |\n| レンダリング済み図をキャッシュする | エージェント | レビュー中 |\n\n50 ページの文書で目標とするのは $t < 2\\,\\text{s}$：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  ドラフト --> レビュー --> 公開\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -635,14 +635,14 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
     }
     pages['themes'] = {
         "title": 'MarsDawn のプレビューテーマと PDF 書き出し · MarsDawn',
-        "description": 'それぞれライトとダークを持つ4種類のプレビューテーマと、今見ているテーマに合わせた1つの PDF・プリント書き出し。もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーも計画されています。',
+        "description": 'それぞれライトとダークを持つ4種類のプレビューテーマと、今見ているテーマに合わせた1つの PDF・プリント書き出し。ブラウザで自分のテーマを作り、コミュニティギャラリーも閲覧できます。',
         "body": """
 <section class="intro">
   <h1>8つの見た目、1つの書き出し。</h1>
   <p>MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種類のプレビューテーマが付属し、それぞれライトとダークがあります。文書を読むための8通りの組み合わせです。PDF に書き出す、またはプリントすると、そのとき読んでいたものと同じ見た目でページが出てきます。</p>
 </section>
 
-<div class="summary"><p><strong>4つのテーマ × ライトとダーク＝文書を読む8つの方法があり、書き出しはどれを選んでいても対応します。</strong>もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーは計画中で、まだ作られていません。</p></div>
+<div class="summary"><p><strong>4つのテーマ × ライトとダーク＝文書を読む8つの方法があり、書き出しはどれを選んでいても対応します。</strong><a href="/ja/themes/new/">ブラウザで自分のテーマを作る</a>か、<a href="/ja/themes/gallery/">ギャラリー</a>で他の人が投稿したものを見てみましょう。</p></div>
 
 <h2>4種類のテーマ</h2>
 <!--theme-gallery-->
@@ -657,8 +657,8 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <h2>PDF 書き出しとプリントは同じテーマを使う</h2>
 <p>PDF に書き出す、またはプリントすると、テーマのライトカラーが使われます。Mermaid 図はそこに描き込まれ、コードブロックは構文のハイライトを保ち、改ページは見出しをそのセクションから切り離したり、表や図を途中で切ったりしないよう配慮されます。無料の<a href="/ja/cli/">marsdawn コマンドラインツール</a>も同じ書き出しエンジンを使うので、スクリプトやエージェントも <code>--theme</code> で、4種類のどのテーマでも同一の PDF を作れます。</p>
 
-<h2>計画中：もっと多くのテーマと、ギャラリー</h2>
-<p>今後登場する予定でまだ実装されていないもの：輸入可能なプレビューテーマの追加と、このサイト上で誰もが自分のテーマを投稿できるギャラリーです。<code>/themes/v1/</code> はすでにそのために予約されています。それが公開されるまで、MarsDawn にあるのはこの4つの内蔵テーマだけで、他のテーマをインストールすることはできません。</p>
+<h2>自分のテーマを作り、他の人が作ったものも見る</h2>
+<p><a href="/ja/themes/new/">ブラウザでテーマを作れます</a>：色といくつかのスタイルオプションを選び、その場で確認し、レビュー用に GitHub の issue として送信します — インストールも git も不要です。<a href="/ja/themes/gallery/">ギャラリー</a>には、メンテナがレビューしてマージしたテーマが並びます。レビューの窓口が開いたばかりなので今日はまだ空ですが、通過したテーマは順次ここに表示され、用途で絞り込めます。</p>
 
 <h2>次に</h2>
 <ul>

@@ -2,7 +2,7 @@
 
 How MarsDawn, the Markdown editor for macOS, handles your information.
 
-Last updated 2026-09-23
+Last updated 2026-09-28
 
 > **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
 
@@ -18,7 +18,7 @@ Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<measurem
 - **Approximate location, device and browser.** A coarse location derived from your IP address (city level at most), your device type, operating system and browser — none of it precise enough to identify you.
 - **Outbound clicks and scroll depth.** Google Analytics' enhanced measurement records clicks that leave the site, such as the link to the Mac App Store, and how far you scroll down a page.
 - **IP addresses.** Google Analytics 4 does not log or store IP addresses.
-- **What is not recorded.** No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under `/themes/` are skipped, and are not sent on.
+- **What is not recorded.** No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under `/themes/` are skipped, and are not sent on. The theme simulator and gallery on `/themes/new/` and `/themes/gallery/` run entirely in your browser and send no theme data to Google Analytics either.
 - **Retention.** Google keeps this data for 14 months, then deletes it.
 - **Where it's processed.** Google Tag Manager and Google Analytics are operated by Google; your data may be processed in the United States as well as other countries where Google operates.
 - **The host.** Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.
@@ -34,6 +34,7 @@ Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<measurem
 MarsDawn works fully offline. It connects to the internet only **when you choose to**, for a document that refers to the web:
 
 - **Markdown documents.** Web images are blocked by default. They load only after you click *Load Images* in the preview, or if you turn on *Load remote images automatically* in Settings. Nothing else a Markdown document refers to is loaded from the web.
+- **Theme gallery.** MarsDawn fetches `/themes/v1/index.json` from marsdawn.southern-light.dev at launch and when you open the gallery, and, when you install a theme, that theme's files from the same address. Like any request to this site, this sends your IP address and User-Agent to Cloudflare, which hosts it. MarsDawn sends no identifiers and no document data.
 - **HTML documents.** An HTML document opens static: its code doesn't run and nothing is loaded from the web. If a document contains code that could run, you can choose *View › Run This Document* for that document. Its own code then runs until you stop it, the document reloads or you close the window. That choice is never remembered, and it isn't a setting. While it runs, the document can send data over the network, and read images, style sheets, fonts and media in its folder and the folders inside it. Code downloaded from the web never runs.
 
 MarsDawn loads web content over https only. A plain http address is never loaded, in any setting, and MarsDawn does not rewrite it to https. In a Markdown document, the preview shows a placeholder in its place.

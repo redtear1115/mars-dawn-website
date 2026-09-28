@@ -2,7 +2,7 @@
 
 MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有淺色與深色——八種讀文件的樣子。輸出成 PDF 或列印，出來的就是你正在讀的那個樣子。
 
-**四種主題 × 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。**更多可匯入的主題，還有讓大家投稿主題的主題庫，都還在規劃中，尚未推出。
+**四種主題 × 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。**[在瀏覽器裡打造一個自己的主題](/zh-hant/themes/new/)，或是[逛逛主題庫](/zh-hant/themes/gallery/)，看看別人投稿了什麼。
 
 ## 四種主題
 
@@ -24,9 +24,9 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 
 輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開表格與圖表。免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，所以腳本或 agent 也能用 `--theme` 產生一模一樣的 PDF，四種主題都可以。
 
-## 規劃中：更多主題，還有主題庫
+## 打造自己的主題，也看看別人做的
 
-之後會推出、但現在還沒做的：更多可匯入的預覽主題，以及一個讓大家投稿自己主題的網站主題庫。`/themes/v1/` 這個路徑已經為它保留。在那之前，MarsDawn 有的就是這四種內建主題，無法安裝其他的。
+[在瀏覽器裡打造一個主題](/zh-hant/themes/new/)：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。[主題庫](/zh-hant/themes/gallery/)會列出每一個經過審核、合併的投稿主題；因為審核管道才剛開放，現在還是空的，但之後每個通過的主題都會出現在那裡，還能依用途篩選。
 
 ## 接下來
 
@@ -54,6 +54,7 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 - [節省 token 的審閱方式](https://marsdawn.southern-light.dev/zh-hant/token-efficient-review/index.md): 人在 MarsDawn 裡讀排版後的頁面，不會被讀回 agent 的 context。工具呼叫本身回傳的也只是精簡的 JSON，不是排版內容，呼叫本身就很便宜。
 - [在別處看 Markdown，對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/index.md): MarsDawn 對比在 VS Code 內建預覽、瀏覽器擴充功能，或 Claude Desktop 檔案預覽裡看 Markdown：各自能排版出什麼，打開一個檔案要花多少功夫。
 - [打造一個主題](https://marsdawn.southern-light.dev/zh-hant/themes/new/index.md): 挑選顏色和幾個樣式選項，即時看它們套用在範例文件上，再把主題送出成一個 GitHub issue。不用安裝，也不用 git。
+- [主題庫](https://marsdawn.southern-light.dev/zh-hant/themes/gallery/index.md): 瀏覽社群投稿的 MarsDawn 預覽主題，依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造一個自己的主題，不用安裝，也不用 git。
 - [分享輸出的 PDF](https://marsdawn.southern-light.dev/zh-hant/sharing-exported-pdfs/index.md): 把 agent 寫的 Markdown 輸出成 PDF，交給不寫 Markdown、也不會安裝任何東西的同事。不用懂語法，不用裝 app，也不需要帳號就能打開。
 - [為什麼 AI 寫的東西還是需要人讀過](https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/index.md): AI 寫的 Markdown 還是得由人來理解，不能因為讀起來通順就直接相信。MarsDawn 把排版後的頁面和原始碼並排，也把 Mermaid 圖表與 KaTeX 數學式畫出來，讓結構一眼就看得懂。
 - [讀懂 agent 交回來的 Markdown](https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/index.md): AI agent 把工作成果交成 Markdown：計畫、規格、進度報告。做 agent 的人怎麼談檢查點和失敗、這些產出為什麼難讀，以及五分鐘審完一份計畫的檢查清單。
@@ -72,6 +73,6 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 - [規格文件範本](https://marsdawn.southern-light.dev/zh-hant/templates/spec/index.md): Markdown 規格文件範本，含需求、Mermaid 流程圖和驗收條件。agent 來填，你在 MarsDawn 裡審閱。
 - [流程圖範本](https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/index.md): Markdown 的 Mermaid 流程圖範本，圖的下方把步驟寫出來。在 Mac 上預覽，也能輸出成 PDF。
 - [會議記錄範本](https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/index.md): Markdown 會議記錄範本，列出決議和行動項目，每項都有負責人。agent 來寫，你在 MarsDawn 裡確認。
-- [English](https://marsdawn.southern-light.dev/themes/index.md): Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. More importable themes, and a gallery to share your own, are planned.
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/themes/index.md): 四种主题，各有浅色与深色，一套导出对应你正在看的主题。更多可导入的主题，和让大家投稿主题的主题库，都在规划中。
-- [日本語](https://marsdawn.southern-light.dev/ja/themes/index.md): それぞれライトとダークを持つ4種類のプレビューテーマと、今見ているテーマに合わせた1つの PDF・プリント書き出し。もっと多くの輸入可能なテーマと、自分のテーマを共有できるギャラリーも計画されています。
+- [English](https://marsdawn.southern-light.dev/themes/index.md): Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. Build your own theme in the browser, and browse the community gallery.
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/themes/index.md): 四种主题，各有浅色与深色，一套导出对应你正在看的主题。在浏览器里打造自己的主题，也可以逛逛社区主题库。
+- [日本語](https://marsdawn.southern-light.dev/ja/themes/index.md): それぞれライトとダークを持つ4種類のプレビューテーマと、今見ているテーマに合わせた1つの PDF・プリント書き出し。ブラウザで自分のテーマを作り、コミュニティギャラリーも閲覧できます。

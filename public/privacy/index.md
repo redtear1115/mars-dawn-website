@@ -2,7 +2,7 @@
 
 How MarsDawn, the Markdown editor for macOS, handles your information.
 
-Last updated 2026-09-23
+Last updated 2026-09-28
 
 > **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
 
@@ -18,7 +18,7 @@ Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<measurem
 - **Approximate location, device and browser.** A coarse location derived from your IP address (city level at most), your device type, operating system and browser — none of it precise enough to identify you.
 - **Outbound clicks and scroll depth.** Google Analytics' enhanced measurement records clicks that leave the site, such as the link to the Mac App Store, and how far you scroll down a page.
 - **IP addresses.** Google Analytics 4 does not log or store IP addresses.
-- **What is not recorded.** No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under `/themes/` are skipped, and are not sent on.
+- **What is not recorded.** No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under `/themes/` are skipped, and are not sent on. The theme simulator and gallery on `/themes/new/` and `/themes/gallery/` run entirely in your browser and send no theme data to Google Analytics either.
 - **Retention.** Google keeps this data for 14 months, then deletes it.
 - **Where it's processed.** Google Tag Manager and Google Analytics are operated by Google; your data may be processed in the United States as well as other countries where Google operates.
 - **The host.** Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.
@@ -34,6 +34,7 @@ Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<measurem
 MarsDawn works fully offline. It connects to the internet only **when you choose to**, for a document that refers to the web:
 
 - **Markdown documents.** Web images are blocked by default. They load only after you click *Load Images* in the preview, or if you turn on *Load remote images automatically* in Settings. Nothing else a Markdown document refers to is loaded from the web.
+- **Theme gallery.** MarsDawn fetches `/themes/v1/index.json` from marsdawn.southern-light.dev at launch and when you open the gallery, and, when you install a theme, that theme's files from the same address. Like any request to this site, this sends your IP address and User-Agent to Cloudflare, which hosts it. MarsDawn sends no identifiers and no document data.
 - **HTML documents.** An HTML document opens static: its code doesn't run and nothing is loaded from the web. If a document contains code that could run, you can choose *View › Run This Document* for that document. Its own code then runs until you stop it, the document reloads or you close the window. That choice is never remembered, and it isn't a setting. While it runs, the document can send data over the network, and read images, style sheets, fonts and media in its folder and the folders inside it. Code downloaded from the web never runs.
 
 MarsDawn loads web content over https only. A plain http address is never loaded, in any setting, and MarsDawn does not rewrite it to https. In a Markdown document, the preview shows a placeholder in its place.
@@ -88,8 +89,9 @@ Questions about privacy: [support@southern-light.dev](mailto:support@southern-li
 - [MCP server](https://marsdawn.southern-light.dev/cli/mcp/index.md): marsdawn has no AI model of its own, so it doesn't matter which agent wrote the Markdown. Call it from the CLI, a skill file, or the marsdawn-mcp MCP server: all three run the same export.
 - [Token-efficient review](https://marsdawn.southern-light.dev/token-efficient-review/index.md): A person reviews the rendered page in MarsDawn, never read back into the agent's context. The tool call itself returns a compact JSON result, not the rendered content, so calling it is cheap too.
 - [Viewing Markdown elsewhere vs. MarsDawn](https://marsdawn.southern-light.dev/vs/markdown-preview-tools/index.md): How MarsDawn compares to reading Markdown in VS Code's built-in preview, a browser extension, or Claude Desktop's file preview: what each renders, and what it takes to open one file.
-- [Preview themes and PDF export](https://marsdawn.southern-light.dev/themes/index.md): Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. More importable themes, and a gallery to share your own, are planned.
+- [Preview themes and PDF export](https://marsdawn.southern-light.dev/themes/index.md): Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. Build your own theme in the browser, and browse the community gallery.
 - [Build a theme](https://marsdawn.southern-light.dev/themes/new/index.md): Pick colours and a handful of style options, see them applied to a sample document live, and submit your theme as a GitHub issue. No install, no git.
+- [Theme gallery](https://marsdawn.southern-light.dev/themes/gallery/index.md): Browse preview themes the community submitted for MarsDawn, filter them by scenario, and report a problem with one. Build your own in the browser, no install, no git.
 - [Sharing exported PDFs](https://marsdawn.southern-light.dev/sharing-exported-pdfs/index.md): Export an agent's Markdown to PDF and hand it to a colleague who doesn't read Markdown and won't install anything. No syntax, no app and no account needed to open it.
 - [Why AI output still needs a human reader](https://marsdawn.southern-light.dev/reviewing-ai-output/index.md): AI-written Markdown still has to be understood by a person, not trusted on sight. MarsDawn pairs the rendered page with the source, and draws Mermaid diagrams and KaTeX math, so structure is legible at a glance.
 - [Reading what your agent hands back](https://marsdawn.southern-light.dev/reading-agent-output/index.md): AI agents hand back their work as Markdown: plans, specs, progress reports. What people who build agents say about checkpoints and failures, why that output is hard to read, and a five-minute checklist for reviewing a plan.

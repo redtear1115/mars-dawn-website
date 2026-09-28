@@ -73,7 +73,7 @@ try {
 <div class="markdown-body">
 <h1>Privacy Policy</h1>
 <p>How MarsDawn, the Markdown editor for macOS, handles your information.</p>
-<p>Last updated 2026-09-23</p>
+<p>Last updated 2026-09-28</p>
 <blockquote>
 <p><strong>The MarsDawn app does not collect any data about you.</strong> There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.</p>
 </blockquote>
@@ -105,7 +105,7 @@ try {
 </li>
 <li><strong>IP addresses.</strong> Google Analytics 4 does not log or store IP addresses.
 </li>
-<li><strong>What is not recorded.</strong> No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under <code>/themes/</code> are skipped, and are not sent on.
+<li><strong>What is not recorded.</strong> No account, because the site has none. No document, and nothing you type. No cross-site advertising, and no profile of you. Requests the app makes for theme files under <code>/themes/</code> are skipped, and are not sent on. The theme simulator and gallery on <code>/themes/new/</code> and <code>/themes/gallery/</code> run entirely in your browser and send no theme data to Google Analytics either.
 </li>
 <li><strong>Retention.</strong> Google keeps this data for 14 months, then deletes it.
 </li>
@@ -127,6 +127,8 @@ try {
 <p>MarsDawn works fully offline. It connects to the internet only <strong>when you choose to</strong>, for a document that refers to the web:</p>
 <ul>
 <li><strong>Markdown documents.</strong> Web images are blocked by default. They load only after you click <em>Load Images</em> in the preview, or if you turn on <em>Load remote images automatically</em> in Settings. Nothing else a Markdown document refers to is loaded from the web.
+</li>
+<li><strong>Theme gallery.</strong> MarsDawn fetches <code>/themes/v1/index.json</code> from marsdawn.southern-light.dev at launch and when you open the gallery, and, when you install a theme, that theme's files from the same address. Like any request to this site, this sends your IP address and User-Agent to Cloudflare, which hosts it. MarsDawn sends no identifiers and no document data.
 </li>
 <li><strong>HTML documents.</strong> An HTML document opens static: its code doesn't run and nothing is loaded from the web. If a document contains code that could run, you can choose <em>View › Run This Document</em> for that document. Its own code then runs until you stop it, the document reloads or you close the window. That choice is never remembered, and it isn't a setting. While it runs, the document can send data over the network, and read images, style sheets, fonts and media in its folder and the folders inside it. Code downloaded from the web never runs.
 </li>
