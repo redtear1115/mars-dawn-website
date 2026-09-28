@@ -513,10 +513,22 @@ def read_theme_index() -> dict:
 
 def _localized(value, locale: str) -> str:
     """An index string map's value for `locale`, falling back to `en` (§4.2: "en is required,
-    other languages are optional" -- written for theme.json, the index carries the same shape)."""
+    other languages are optional" -- written for theme.json, the index carries the same shape).
+
+    `locale` here is the site's own lowercase locale key (e.g. "zh-hant"), but a theme.json's
+    string map uses the kit's own casing for its keys (e.g. "zh-Hant", "zh-Hans" -- see
+    validator.js's `locale.key` rule). An exact-key lookup between the two therefore always
+    misses for zh-Hant/zh-Hans and silently falls back to `en` (mars-dawn-website#151 follow-up).
+    Match case-insensitively so either casing works, preferring an exact match first."""
     if not isinstance(value, dict):
         return ""
-    return value.get(locale) or value.get("en") or ""
+    if locale in value:
+        return value[locale] or value.get("en") or ""
+    locale_fold = locale.casefold()
+    for key, val in value.items():
+        if key.casefold() == locale_fold:
+            return val or value.get("en") or ""
+    return value.get("en") or ""
 
 
 def _theme_card_html(locale: str, entry: dict) -> str:

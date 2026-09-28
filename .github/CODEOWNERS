@@ -1,0 +1,4 @@
+# Theme gallery data (#143; design §8.1: a ruleset and CODEOWNERS on themes/). A code-owner review is
+# requested on every pull request that changes a theme or the published tree.
+/themes/ @redtear1115
+/public/themes/v1/ @redtear1115

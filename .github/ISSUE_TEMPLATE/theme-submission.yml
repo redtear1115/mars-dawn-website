@@ -1,0 +1,31 @@
+name: Theme submission
+description: Submit a theme you made in the MarsDawn theme simulator for the gallery.
+title: "Theme submission"
+labels: ["theme-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for making a theme. The **Submit** button in the [theme simulator](https://marsdawn.southern-light.dev/themes/new/) fills in the Theme field below; tick the box and press **Submit new issue**.
+
+        A workflow checks the theme with the same validator the app uses and replies in a comment. A maintainer then reviews the look, the name, the summary and the author line. Approved themes are added by a pull request with you as co-author, and are published once it is merged.
+
+        **What becomes public, permanently:** your GitHub username, and the theme's author name, name and summary. They appear in this issue, in the repository's git history (which is never rewritten) and in the gallery. Use only a name you are happy to publish. Set `author.github` in the theme to the GitHub account opening this issue.
+
+        Themes are released under Apache-2.0. Please don't paste anything but the theme's JSON into the Theme field.
+  - type: textarea
+    id: theme
+    attributes:
+      label: Theme
+      description: The theme's JSON, exactly as the simulator exports it.
+      render: json
+    validations:
+      required: true
+  - type: checkboxes
+    id: dco
+    attributes:
+      label: Developer Certificate of Origin
+      description: Read the Developer Certificate of Origin at https://developercertificate.org before ticking.
+      options:
+        - label: "I certify the Developer Certificate of Origin 1.1 (https://developercertificate.org) for this theme: it is my own work or I have the right to submit it, and I release it under Apache-2.0. I understand that my GitHub username and the theme's author, name and summary become public permanently."
+          required: true

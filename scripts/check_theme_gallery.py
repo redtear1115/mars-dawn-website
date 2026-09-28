@@ -308,6 +308,52 @@ def check_scenario_filter() -> list:
     return problems
 
 
+def check_kit_locale_casing() -> list:
+    """A theme.json's own name/summary maps use the kit's locale-tag casing (validator.js's
+    `locale.key` rule: "en, zh-Hant or pt-BR"), but the site's own page-locale keys are lowercase
+    (build_pages.LOCALES: "zh-hant", "zh-hans"). _localized() must match the two despite the
+    casing difference, or a kit-cased zh-Hant/zh-Hans entry silently falls back to `en` on the
+    zh-hant/zh-hans pages -- exactly the bug in mars-dawn-website#151 that a lowercase-keyed test
+    fixture hid. This uses the kit's real casing, "zh-Hant", never lowercase."""
+    problems = []
+    entry = _fixture_theme(name="Hello", summary="A summary")
+    entry["name"] = {"en": "Hello", "zh-Hant": "哈囉"}
+    entry["summary"] = {"en": "A summary", "zh-Hant": "一個摘要"}
+    card = bp._theme_card_html("zh-hant", entry)
+    if "哈囉" not in card:
+        problems.append("kit locale casing: zh-hant page did not render the zh-Hant (kit-cased) name")
+    if "一個摘要" not in card:
+        problems.append("kit locale casing: zh-hant page did not render the zh-Hant (kit-cased) summary")
+    if html.escape("Hello", quote=True) in card:
+        problems.append("kit locale casing: zh-hant page fell back to the English name")
+    return problems
+
+
+def check_kit_locale_casing_plant_is_caught() -> list:
+    """Proves check_kit_locale_casing's own assertions actually catch the bug: plants the old,
+    exact-match-only lookup (locale.get(locale) or locale.get('en')) in place of _localized() and
+    requires check_kit_locale_casing to go red under it -- the "plant -> red" the coordinator
+    asked for. Restores the real _localized() in a finally, regardless of outcome."""
+    problems = []
+
+    def buggy_localized(value, locale):
+        if not isinstance(value, dict):
+            return ""
+        return value.get(locale) or value.get("en") or ""
+
+    original = bp._localized
+    bp._localized = buggy_localized
+    try:
+        found = check_kit_locale_casing()
+    finally:
+        bp._localized = original
+    if not found:
+        problems.append(
+            "kit locale casing check: the old exact-match _localized() (zh-hant vs zh-Hant) went uncaught"
+        )
+    return problems
+
+
 def self_test() -> int:
     checks = [
         ("escaping and hrefs", check_escaping_and_hrefs),
@@ -317,6 +363,8 @@ def self_test() -> int:
         ("report link / mailto round-trip (theme-gallery.js under node)", check_report_link_roundtrip),
         ("empty state", check_empty_state),
         ("scenario filter", check_scenario_filter),
+        ("kit locale casing (zh-Hant)", check_kit_locale_casing),
+        ("kit locale casing plant is caught", check_kit_locale_casing_plant_is_caught),
     ]
     failures = 0
     for name, check in checks:
