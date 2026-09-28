@@ -14,6 +14,17 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
+  /* Belt and suspenders alongside minmax(0, ...) below: a grid item's automatic minimum size is
+     its content's min-content width, which for this page (a data table, a <pre>, a fixed-width
+     colour grid) is wider than a narrow viewport -- exactly the round-2 #147 bug (515-517px on a
+     390px viewport, 640px+ engine-independent overflow). min-width: 0 on every level between here
+     and the content that can shrink or scroll on its own (the kit's preview-sim.css already sets
+     overflow-wrap: break-word and pre { overflow-x: auto }) is what actually lets it shrink. */
+  min-width: 0;
+}
+
+.sim-layout > * {
+  min-width: 0;
 }
 
 @media (min-width: 900px) {
@@ -110,13 +121,25 @@
 
 .sim-preview-boxes {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.25rem;
+  min-width: 0;
+}
+
+.sim-preview-boxes > section {
+  min-width: 0;
 }
 
 @media (min-width: 640px) {
   .sim-preview-boxes {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
+}
+
+.sim-preview {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .sim-preview-label {

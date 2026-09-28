@@ -15,6 +15,7 @@ import { BUILT_IN_THEME_JSON, BUILT_IN_ORDER, loadBuiltIns } from "./built-ins.j
 import { loadThemeStyles } from "./styles-data.js";
 import { sampleDocumentHTML } from "./sample-document.js";
 import { THEME_NUMBERS } from "./numbers.js";
+import { previewThemeIdFor } from "./preview-theme.js";
 
 const SCENARIOS = [
   { id: "agent-review", label: "Agent review" },
@@ -71,6 +72,10 @@ class ThemeSimApp {
     this.state = stateFromBuiltIn("dawn");
     this.lightSheet = new CSSStyleSheet();
     this.baseSheet = null; // adopted once, from the kit's own preview-sim.css
+    // The id the preview wrapper's data-theme currently shows (see preview-theme.js). "sim" is
+    // just the initial placeholder from the template below; it matches no real theme's generated
+    // CSS, which is exactly the point until the first recompute() sets a real one.
+    this.previewThemeId = "sim";
     this.render();
   }
 
@@ -92,6 +97,16 @@ class ThemeSimApp {
     const report = Validator.validate(text, { requireComplete: false });
     this.lastReport = report;
     this.renderMessages(report);
+
+    // The generator scopes its CSS to the theme's own id ([data-theme="<id>"]), so the preview
+    // wrapper's own data-theme has to carry that same id -- see preview-theme.js. An invalid or
+    // empty id keeps showing the last id that did validate, rather than snapping to a scope
+    // nothing is generated for.
+    const nextThemeId = previewThemeIdFor(report, this.previewThemeId);
+    if (nextThemeId !== this.previewThemeId) {
+      this.previewThemeId = nextThemeId;
+      for (const box of this.root.querySelectorAll(".sim-preview")) box.dataset.theme = nextThemeId;
+    }
 
     // Replace the previous generated sheet, never leaving two adopted at once.
     document.adoptedStyleSheets = document.adoptedStyleSheets.filter((s) => s !== this.lightSheet);

@@ -10,7 +10,6 @@ export const SAMPLE_DIAGRAM_SVG = `
 <svg class="mm-sample" viewBox="0 0 320 110" role="img" aria-label="">
   <g fill="none" stroke="var(--mm-line)" stroke-width="2">
     <path d="M 78 55 L 150 55" marker-end="url(#sim-arrow)"></path>
-    <path d="M 238 55 L 150 55" marker-end="url(#sim-arrow)" style="display:none"></path>
   </g>
   <defs>
     <marker id="sim-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">

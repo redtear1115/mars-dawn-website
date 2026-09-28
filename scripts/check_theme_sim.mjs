@@ -42,6 +42,7 @@ const Generator = await import(path.join(assetsDir, "generator.js"));
 const StylesData = await import(path.join(assetsDir, "styles-data.js"));
 const BuiltIns = await import(path.join(assetsDir, "built-ins.js"));
 const Grammar = await import(path.join(assetsDir, "grammar.js"));
+const { previewThemeIdFor } = await import(path.join(assetsDir, "preview-theme.js"));
 
 let failures = 0;
 function ok(label) {
@@ -324,12 +325,47 @@ function checkDroppedFragmentIsRefused() {
   else bad("fragment table restored after the control", "tableHeader.filled still missing");
 }
 
+function checkPreviewThemeIdMatchesGenerator() {
+  // Round-2 #147 regression (verifier item (c)): the generator scopes its CSS to the theme's own
+  // id ([data-theme="<id>"]), so the preview wrapper's data-theme has to carry that same id, not a
+  // fixed placeholder -- otherwise no real theme's CSS ever matches it. previewThemeIdFor is the
+  // DOM-free function app.js calls to decide that id; this exercises it end to end against a real
+  // built-in and a real generated stylesheet, plus the "keep the last valid id" behaviour for an
+  // invalid/empty one.
+  console.log("\nPreview theme id (round 2 of #147, item (c))");
+  const report = Validator.validate(BuiltIns.BUILT_IN_THEME_JSON.classic, { requireComplete: true });
+  if (!report.theme) {
+    bad("preview theme id: setup", `classic didn't validate: ${JSON.stringify(report.issues)}`);
+    return;
+  }
+  const id = previewThemeIdFor(report, "sim");
+  if (id === report.theme.document.id) ok(`previewThemeIdFor returns the validated theme's own id (${JSON.stringify(id)})`);
+  else bad("previewThemeIdFor returns the validated theme's own id", `got ${JSON.stringify(id)}, expected ${JSON.stringify(report.theme.document.id)}`);
+
+  const { rules } = Generator.stylesheetFor(report.theme);
+  const scopedSelector = `[data-theme="${id}"]`;
+  if (rules.includes(scopedSelector)) ok(`the generator's own CSS is scoped to the same id (${JSON.stringify(scopedSelector)})`);
+  else bad("the generator's own CSS is scoped to the same id", `${JSON.stringify(scopedSelector)} not found in generated rules`);
+
+  // An invalid theme (or one with no id yet) must never invent a new, unstyled scope: the
+  // previously-shown id sticks until something validates again.
+  const invalidReport = { issues: [{ rule: "id.pattern", path: "id", message: "bad id" }], theme: null };
+  const stuck = previewThemeIdFor(invalidReport, id);
+  if (stuck === id) ok("an invalid report keeps the last valid preview theme id");
+  else bad("an invalid report keeps the last valid preview theme id", `got ${JSON.stringify(stuck)}, expected ${JSON.stringify(id)}`);
+
+  const stuckEmpty = previewThemeIdFor({ issues: [], theme: null }, "");
+  if (stuckEmpty === "") ok("an empty starting id stays empty (never invents a scope) when the report doesn't validate");
+  else bad("an empty starting id stays empty", `got ${JSON.stringify(stuckEmpty)}`);
+}
+
 checkRescope();
 checkBuiltIns();
 checkVendorParity();
 checkLowercaseHexControl();
 checkLineHeightFormattingChangeIsRed();
 checkDroppedFragmentIsRefused();
+checkPreviewThemeIdMatchesGenerator();
 
 console.log(failures === 0 ? "\nAll checks passed." : `\n${failures} check(s) failed.`);
 process.exit(failures === 0 ? 0 : 1);
