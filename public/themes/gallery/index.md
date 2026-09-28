@@ -2,7 +2,28 @@
 
 Preview themes the community submitted, each reviewed and merged by the developer before it appears here. Filter by scenario, or [build your own](/themes/new/) in the browser — no install, no git.
 
-No themes are published yet. Be the first: build one in the browser and submit it.
+All
+
+Agent review
+
+Technical docs
+
+Formal output
+
+Notes & sharing
+
+- ![Dracula — light preview](/themes/v1/dracula/1.0.0/preview-light.png) ![Dracula — dark preview](/themes/v1/dracula/1.0.0/preview-dark.png) **Dracula** v1.0.0 The classic dark vampire palette, with Alucard by day — adapted from Dracula Theme, adjusted for readability Technical docs Agent review by Southern Light [Credits & licence](/themes/third-party-notices.html#dracula) Report Report by email
+- ![Gruvbox — light preview](/themes/v1/gruvbox/1.0.0/preview-light.png) ![Gruvbox — dark preview](/themes/v1/gruvbox/1.0.0/preview-dark.png) **Gruvbox** v1.0.0 A warm retro palette of cream, brown and orange — adapted from Gruvbox, adjusted for readability Technical docs Notes & sharing by Southern Light [Credits & licence](/themes/third-party-notices.html#gruvbox) Report Report by email
+- ![Guide — light preview](/themes/v1/guide/1.0.0/preview-light.png) ![Guide — dark preview](/themes/v1/guide/1.0.0/preview-dark.png) **Guide** v1.0.0 A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs Technical docs by Southern Light Report Report by email
+- ![Ledger — light preview](/themes/v1/ledger/1.0.0/preview-light.png) ![Ledger — dark preview](/themes/v1/ledger/1.0.0/preview-dark.png) **Ledger** v1.0.0 Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates Formal output by Southern Light Report Report by email
+- ![Nord — light preview](/themes/v1/nord/1.0.0/preview-light.png) ![Nord — dark preview](/themes/v1/nord/1.0.0/preview-dark.png) **Nord** v1.0.0 An arctic, north-bluish palette, with an original light companion — adapted from Nord, adjusted for readability Technical docs Agent review by Southern Light [Credits & licence](/themes/third-party-notices.html#nord) Report Report by email
+- ![Solarized — light preview](/themes/v1/solarized/1.0.0/preview-light.png) ![Solarized — dark preview](/themes/v1/solarized/1.0.0/preview-dark.png) **Solarized** v1.0.0 Ethan Schoonover's teal-and-gold precision palette — adapted from Solarized, adjusted for readability Technical docs Agent review by Southern Light [Credits & licence](/themes/third-party-notices.html#solarized) Report Report by email
+- ![Spec — light preview](/themes/v1/spec/1.0.0/preview-light.png) ![Spec — dark preview](/themes/v1/spec/1.0.0/preview-dark.png) **Spec** v1.0.0 Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs Agent review Formal output by Southern Light Report Report by email
+- ![Story — light preview](/themes/v1/story/1.0.0/preview-light.png) ![Story — dark preview](/themes/v1/story/1.0.0/preview-dark.png) **Story** v1.0.0 Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes Notes & sharing Agent review by Southern Light Report Report by email
+
+## Credits
+
+Dracula, Nord, Gruvbox and Solarized are adapted from open-source colour schemes; see [third-party notices](/themes/third-party-notices.html) for each project’s copyright and full licence text.
 
 ## Something wrong with a theme?
 

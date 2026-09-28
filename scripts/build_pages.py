@@ -23,6 +23,7 @@ from xml.sax.saxutils import escape as xml_escape
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
 CONTENT_LEGAL = ROOT / "content" / "legal"
+CONTENT_THIRD_PARTY_LICENSES = ROOT / "content" / "third-party-licenses"
 UPDATED = "2026-09-17"
 # The privacy page's own "Last updated" line lives in its Markdown source
 # (content/legal/privacy.<locale>.md) now, not here: see render_legal_body.
@@ -466,6 +467,29 @@ GALLERY_EMPTY = {
     "ja": "まだ公開されているテーマはありません。最初のひとりになりませんか。ブラウザでテーマを作って投稿してください。",
 }
 
+# Four gallery themes (dracula, nord, gruvbox, solarized) are ports of existing open-source colour
+# schemes; each credits its upstream project in its own summary text (theme.json), and this label
+# links from the card to public/themes/third-party-notices.html, which carries each project's
+# copyright notice and full MIT licence text (owner decision 2026-09-28, PR #153 verifier findings).
+# en/zh-hant are the owner's own wording; zh-hans/ja are drafts (needs-copy, same as SCENARIO_LABELS).
+PORTED_THEME_IDS = ("dracula", "nord", "gruvbox", "solarized")
+THIRD_PARTY_NOTICES_PATH = "/themes/third-party-notices.html"
+GALLERY_CREDIT_LABEL = {
+    "en": "Credits & licence", "zh-hant": "版權與授權", "zh-hans": "版权与授权", "ja": "クレジットとライセンス",
+}
+GALLERY_CREDIT_NOTE = {
+    "en": ('Dracula, Nord, Gruvbox and Solarized are adapted from open-source colour schemes; '
+           f'see <a href="{THIRD_PARTY_NOTICES_PATH}">third-party notices</a> for each project’s '
+           'copyright and full licence text.'),
+    "zh-hant": (f'Dracula、Nord、Gruvbox 與 Solarized 改編自開放原始碼的配色專案；每個專案的版權聲明與'
+                f'完整授權條文請見<a href="{THIRD_PARTY_NOTICES_PATH}">第三方授權聲明</a>。'),
+    "zh-hans": (f'Dracula、Nord、Gruvbox 与 Solarized 改编自开源配色项目；每个项目的版权声明与'
+                f'完整授权条文请见<a href="{THIRD_PARTY_NOTICES_PATH}">第三方授权声明</a>。'),
+    "ja": (f'Dracula、Nord、Gruvbox、Solarized はオープンソースの配色プロジェクトを基にしています。'
+           f'各プロジェクトの著作権表示と完全なライセンス全文は<a href="{THIRD_PARTY_NOTICES_PATH}">'
+           'サードパーティ通知</a>をご覧ください。'),
+}
+
 # The issue form theme-report.yml (.github/ISSUE_TEMPLATE/): no @mention of the theme's author,
 # and no workflow watches it -- a report is read and acted on by a maintainer, by hand (app repo
 # docs/theme-ecosystem-design.md §8.2). GitHub prefills a form's fields from query parameters
@@ -523,6 +547,13 @@ def _theme_card_html(locale: str, entry: dict) -> str:
     version_text = html_escape(version, quote=True)
     data_id = html_escape(theme_id, quote=True)
     data_version = html_escape(version, quote=True)
+    # Ported themes (dracula/nord/gruvbox/solarized) credit their upstream project in their own
+    # summary text; this line adds a link to the licence text itself (owner decision 2026-09-28).
+    credit_html = ""
+    if theme_id in PORTED_THEME_IDS:
+        credit_label = html_escape(GALLERY_CREDIT_LABEL[locale], quote=True)
+        credit_href = html_escape(THIRD_PARTY_NOTICES_PATH + "#" + theme_id, quote=True)
+        credit_html = f'    <span class="theme-credit"><a href="{credit_href}">{credit_label}</a></span>\n'
     return (
         f'  <li class="theme-card" data-scenarios="{data_scenarios}">\n'
         f'    <img src="{light}" alt="{name} — light preview" loading="lazy">\n'
@@ -531,6 +562,7 @@ def _theme_card_html(locale: str, entry: dict) -> str:
         f'    <span class="theme-summary">{summary}</span>\n'
         f'    <span class="theme-scenarios">{badges.strip()}</span>\n'
         f'    <span class="theme-author">{GALLERY_BY_LABEL[locale]} {author}</span>\n'
+        f'{credit_html}'
         f'    <button type="button" class="theme-report" data-theme-id="{data_id}" data-theme-version="{data_version}">{GALLERY_REPORT_LABEL[locale]}</button>\n'
         f'    <button type="button" class="theme-report-mail" data-theme-id="{data_id}" data-theme-version="{data_version}">{GALLERY_REPORT_MAIL_LABEL[locale]}</button>\n'
         f'  </li>'
@@ -561,6 +593,91 @@ def community_gallery_html(locale: str) -> str:
     return f'{filter_html}<ul class="theme-gallery-cards" id="theme-gallery-cards">\n{cards}\n</ul>'
 
 
+# public/themes/third-party-notices.html (#153, verify290 round 2): the MIT copyright notice and
+# full licence text for each of the four ported themes (Dracula, Nord, Gruvbox, Solarized), read
+# from content/third-party-licenses/*.LICENSE -- fetched once from each upstream project's own
+# LICENSE file (or, for gruvbox, which ships none, built from package.json's declared author and
+# the repository's creation year; content/third-party-licenses/manifest.json says so) -- never
+# retyped. English only (a licence notice isn't user-facing copy the needs-copy process covers),
+# `noindex`, and not part of PAGES/all_pages(): it needs no hreflang set, so it's a leaf file, not
+# an index.html (check_hreflang.py and check_invariants.py both scan only `**/index.html`). It
+# still uses the site's own masthead/main/footer classes (site.css) for the gutter and the same
+# consent/GTM scripts as every other page, so it isn't a bare, unstyled page (verify290's round-2
+# finding: no masthead/main/footer meant no gutter, and the "Licence text source: https://..."
+# lines overflowed at 390px). `.notice-source` (site.css) wraps a long URL instead.
+def third_party_notices_html() -> str:
+    manifest = json.loads((CONTENT_THIRD_PARTY_LICENSES / "manifest.json").read_text(encoding="utf-8"))
+    ui = UI["en"]
+    sections = []
+    for theme_id in PORTED_THEME_IDS:
+        entry = manifest[theme_id]
+        license_text = (CONTENT_THIRD_PARTY_LICENSES / entry["license_file"]).read_text(encoding="utf-8").rstrip("\n")
+        sections.append(
+            f'<h2 id="{html_escape(theme_id, quote=True)}">{html_escape(entry["name"])}</h2>\n'
+            f'<p>Upstream project: <a href="{html_escape(entry["upstream_url"], quote=True)}">'
+            f'{html_escape(entry["upstream_url"])}</a>. {html_escape(entry["note"])}</p>\n'
+            f'<p class="notice-source">Licence text source: '
+            + (f'<a href="{html_escape(entry["license_source"], quote=True)}">{html_escape(entry["license_source"])}</a>'
+               if entry["license_source"].startswith("http") else html_escape(entry["license_source"]))
+            + "</p>\n"
+            f"<pre>{html_escape(license_text)}</pre>"
+        )
+    main_html = (
+        "<section class=\"intro\">\n  <h1>Third-party notices</h1>\n"
+        "  <p>Four of the MarsDawn theme gallery's first-party themes — Dracula, Nord, Gruvbox and "
+        "Solarized — are adapted from existing open-source colour schemes. This page carries each "
+        "project's copyright notice and full licence text. MarsDawn's own four themes (Ledger, Spec, "
+        "Story, Guide) are original and are licensed Apache-2.0 like the rest of this site's code.</p>\n"
+        "</section>\n" + "\n".join(sections)
+    )
+    footer_links = "".join(
+        f'    <a href="{page_path("en", target)}">{ui[target]}</a>\n'
+        for target in ("support", "privacy", "cli")
+        if has_page("en", target)
+    )
+    footer_links += f'    <button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button>\n'
+    footer_html = (
+        '<footer class="footer">\n'
+        f'  <nav class="footer-nav" aria-label="{ui["footer_nav"]}">\n{footer_links}  </nav>\n'
+        f'  <p class="footer-meta"><span>{ui["slogan"]}</span> <span>{ui["footer_store"]}</span> '
+        '<span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>\n</footer>'
+    )
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+{consent_head_html()}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Third-party notices · MarsDawn</title>
+<meta name="description" content="Copyright notices and full MIT licence text for the open-source colour schemes MarsDawn's Dracula, Nord, Gruvbox and Solarized gallery themes are adapted from.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="canonical" href="{abs_url("/themes/third-party-notices.html")}">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">{SKIP_LABEL["en"]}</a>
+{consent_banner_html("en")}
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="{home_path("en")}">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <a href="/themes/gallery/">&#8592; Theme gallery</a>
+</header>
+<main id="main">
+{main_html}
+</main>
+{footer_html}
+</div>
+</body>
+</html>
+"""
+
+
 GALLERY_PAGES = {
     ("en", "themes/gallery"): {
         "title": "Theme gallery: community MarsDawn themes · MarsDawn",
@@ -571,6 +688,8 @@ GALLERY_PAGES = {
   <p>Preview themes the community submitted, each reviewed and merged by the developer before it appears here. Filter by scenario, or <a href="/themes/new/">build your own</a> in the browser &#8212; no install, no git.</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
+<h2>Credits</h2>
+<p>{GALLERY_CREDIT_NOTE["en"]}</p>
 <h2>Something wrong with a theme?</h2>
 <p>Use the "Report" button on its card (it needs JavaScript), or write directly to <a href="mailto:{EMAIL}">{EMAIL}</a> with its name and version, JavaScript or not. Reports are reviewed by hand; a theme that's confirmed to be a problem is delisted within a day.</p>
 """,
@@ -584,6 +703,8 @@ GALLERY_PAGES = {
   <p>社群投稿的預覽主題，每一個都經過開發者審核、合併後才會出現在這裡。依情境篩選，或是<a href="/zh-hant/themes/new/">在瀏覽器裡打造一個自己的主題</a>——不用安裝，也不用 git。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
+<h2>版權與授權</h2>
+<p>{GALLERY_CREDIT_NOTE["zh-hant"]}</p>
 <h2>主題有問題嗎？</h2>
 <p>用主題卡片上的「檢舉」按鈕（需要 JavaScript），或直接寫信到 <a href="mailto:{EMAIL}">{EMAIL}</a>，附上主題名稱和版本——不論有沒有 JavaScript 都可以。檢舉會有人親自審核，確認屬實的主題會在一天內下架。</p>
 """,
@@ -597,6 +718,8 @@ GALLERY_PAGES = {
   <p>社区投稿的预览主题，每一个都经过开发者审核、合并后才会出现在这里。按场景筛选，或是<a href="/zh-hans/themes/new/">在浏览器里打造一个自己的主题</a>——不用安装，也不用 git。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
+<h2>版权与授权</h2>
+<p>{GALLERY_CREDIT_NOTE["zh-hans"]}</p>
 <h2>主题有问题吗？</h2>
 <p>用主题卡片上的“举报”按钮（需要 JavaScript），或直接写信到 <a href="mailto:{EMAIL}">{EMAIL}</a>，附上主题名称和版本——不论有没有 JavaScript 都可以。举报会有人亲自审核，确认属实的主题会在一天内下架。</p>
 """,
@@ -610,6 +733,8 @@ GALLERY_PAGES = {
   <p>コミュニティが投稿したプレビューテーマです。それぞれ開発者がレビューし、マージしてからここに表示されます。シナリオで絞り込むか、<a href="/ja/themes/new/">ブラウザで自分のテーマを作る</a>こともできます &#8212; インストールも git も不要です。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
+<h2>クレジットとライセンス</h2>
+<p>{GALLERY_CREDIT_NOTE["ja"]}</p>
 <h2>テーマに問題がありますか？</h2>
 <p>カードの「通報」ボタンを使うか（JavaScript が必要です）、テーマ名とバージョンを添えて直接 <a href="mailto:{EMAIL}">{EMAIL}</a> までメールしてください — JavaScript の有無を問いません。通報は人の目で確認し、事実であれば1日以内に取り下げます。</p>
 """,
@@ -5037,6 +5162,10 @@ def main() -> None:
     print(SITE / "llms.txt")
     (SITE / "llms-full.txt").write_text(build_llms_full(pages), encoding="utf-8")
     print(SITE / "llms-full.txt")
+    notices_path = SITE / "themes" / "third-party-notices.html"
+    notices_path.parent.mkdir(parents=True, exist_ok=True)
+    notices_path.write_text(third_party_notices_html(), encoding="utf-8")
+    print(notices_path)
     (SITE / "assets" / "annotations.css").write_text(annotations_css(), encoding="utf-8")
     (SITE / "assets" / "hero.css").write_text(hero_window.window_css(), encoding="utf-8")
     (SITE / "assets" / "loop.css").write_text(loop_anim.loop_css(), encoding="utf-8")

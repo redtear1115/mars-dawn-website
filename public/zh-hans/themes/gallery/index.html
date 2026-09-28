@@ -74,7 +74,101 @@ try {
   <h1>主题库</h1>
   <p>社区投稿的预览主题，每一个都经过开发者审核、合并后才会出现在这里。按场景筛选，或是<a href="/zh-hans/themes/new/">在浏览器里打造一个自己的主题</a>——不用安装，也不用 git。</p>
 </section>
-<p class="theme-gallery-empty">目前还没有任何投稿的主题。第一个做一个吧：在浏览器里打造一个主题，然后送出投稿。</p>
+<div class="theme-gallery-filter" id="theme-gallery-filter" role="group" aria-label="按场景筛选">
+  <button type="button" class="theme-filter-btn" data-scenario="all" aria-pressed="true">全部</button>
+  <button type="button" class="theme-filter-btn" data-scenario="agent-review" aria-pressed="false">审阅代理产出</button>
+  <button type="button" class="theme-filter-btn" data-scenario="technical-docs" aria-pressed="false">技术文档</button>
+  <button type="button" class="theme-filter-btn" data-scenario="formal-output" aria-pressed="false">正式输出</button>
+  <button type="button" class="theme-filter-btn" data-scenario="notes-sharing" aria-pressed="false">笔记分享</button>
+</div>
+<ul class="theme-gallery-cards" id="theme-gallery-cards">
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <img src="/themes/v1/dracula/1.0.0/preview-light.png" alt="德古拉 — light preview" loading="lazy">
+    <img src="/themes/v1/dracula/1.0.0/preview-dark.png" alt="德古拉 — dark preview" loading="lazy">
+    <strong class="theme-name">德古拉</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">The classic dark vampire palette, with Alucard by day — adapted from Dracula Theme, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">技术文档</span> <span class="theme-scenario">审阅代理产出</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#dracula">版权与授权</a></span>
+    <button type="button" class="theme-report" data-theme-id="dracula" data-theme-version="1.0.0">举报</button>
+    <button type="button" class="theme-report-mail" data-theme-id="dracula" data-theme-version="1.0.0">用电子邮件举报</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs notes-sharing">
+    <img src="/themes/v1/gruvbox/1.0.0/preview-light.png" alt="复古方块 — light preview" loading="lazy">
+    <img src="/themes/v1/gruvbox/1.0.0/preview-dark.png" alt="复古方块 — dark preview" loading="lazy">
+    <strong class="theme-name">复古方块</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">A warm retro palette of cream, brown and orange — adapted from Gruvbox, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">技术文档</span> <span class="theme-scenario">笔记分享</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#gruvbox">版权与授权</a></span>
+    <button type="button" class="theme-report" data-theme-id="gruvbox" data-theme-version="1.0.0">举报</button>
+    <button type="button" class="theme-report-mail" data-theme-id="gruvbox" data-theme-version="1.0.0">用电子邮件举报</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs">
+    <img src="/themes/v1/guide/1.0.0/preview-light.png" alt="导览手册 — light preview" loading="lazy">
+    <img src="/themes/v1/guide/1.0.0/preview-dark.png" alt="导览手册 — dark preview" loading="lazy">
+    <strong class="theme-name">导览手册</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs</span>
+    <span class="theme-scenarios"><span class="theme-scenario">技术文档</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="guide" data-theme-version="1.0.0">举报</button>
+    <button type="button" class="theme-report-mail" data-theme-id="guide" data-theme-version="1.0.0">用电子邮件举报</button>
+  </li>
+  <li class="theme-card" data-scenarios="formal-output">
+    <img src="/themes/v1/ledger/1.0.0/preview-light.png" alt="账册 — light preview" loading="lazy">
+    <img src="/themes/v1/ledger/1.0.0/preview-dark.png" alt="账册 — dark preview" loading="lazy">
+    <strong class="theme-name">账册</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates</span>
+    <span class="theme-scenarios"><span class="theme-scenario">正式输出</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="ledger" data-theme-version="1.0.0">举报</button>
+    <button type="button" class="theme-report-mail" data-theme-id="ledger" data-theme-version="1.0.0">用电子邮件举报</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <img src="/themes/v1/nord/1.0.0/preview-light.png" alt="极地雪境 — light preview" loading="lazy">
+    <img src="/themes/v1/nord/1.0.0/preview-dark.png" alt="极地雪境 — dark preview" loading="lazy">
+    <strong class="theme-name">极地雪境</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">An arctic, north-bluish palette, with an original light companion — adapted from Nord, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">技术文档</span> <span class="theme-scenario">审阅代理产出</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#nord">版权与授权</a></span>
+    <button type="button" class="theme-report" data-theme-id="nord" data-theme-version="1.0.0">举报</button>
+    <button type="button" class="theme-report-mail" data-theme-id="nord" data-theme-version="1.0.0">用电子邮件举报</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <img src="/themes/v1/solarized/1.0.0/preview-light.png" alt="日光色 — light preview" loading="lazy">
+    <img src="/themes/v1/solarized/1.0.0/preview-dark.png" alt="日光色 — dark preview" loading="lazy">
+    <strong class="theme-name">日光色</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Ethan Schoonover&#x27;s teal-and-gold precision palette — adapted from Solarized, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">技术文档</span> <span class="theme-scenario">审阅代理产出</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#solarized">版权与授权</a></span>
+    <button type="button" class="theme-report" data-theme-id="solarized" data-theme-version="1.0.0">举报</button>
+    <button type="button" class="theme-report-mail" data-theme-id="solarized" data-theme-version="1.0.0">用电子邮件举报</button>
+  </li>
+  <li class="theme-card" data-scenarios="agent-review formal-output">
+    <img src="/themes/v1/spec/1.0.0/preview-light.png" alt="规格书 — light preview" loading="lazy">
+    <img src="/themes/v1/spec/1.0.0/preview-dark.png" alt="规格书 — dark preview" loading="lazy">
+    <strong class="theme-name">规格书</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs</span>
+    <span class="theme-scenarios"><span class="theme-scenario">审阅代理产出</span> <span class="theme-scenario">正式输出</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="spec" data-theme-version="1.0.0">举报</button>
+    <button type="button" class="theme-report-mail" data-theme-id="spec" data-theme-version="1.0.0">用电子邮件举报</button>
+  </li>
+  <li class="theme-card" data-scenarios="notes-sharing agent-review">
+    <img src="/themes/v1/story/1.0.0/preview-light.png" alt="故事卡 — light preview" loading="lazy">
+    <img src="/themes/v1/story/1.0.0/preview-dark.png" alt="故事卡 — dark preview" loading="lazy">
+    <strong class="theme-name">故事卡</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes</span>
+    <span class="theme-scenarios"><span class="theme-scenario">笔记分享</span> <span class="theme-scenario">审阅代理产出</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="story" data-theme-version="1.0.0">举报</button>
+    <button type="button" class="theme-report-mail" data-theme-id="story" data-theme-version="1.0.0">用电子邮件举报</button>
+  </li>
+</ul>
+<h2 id="credits">版权与授权</h2>
+<p>Dracula、Nord、Gruvbox 与 Solarized 改编自开源配色项目；每个项目的版权声明与完整授权条文请见<a href="/themes/third-party-notices.html">第三方授权声明</a>。</p>
 <h2 id="something-wrong-with-a-theme">主题有问题吗？</h2>
 <p>用主题卡片上的“举报”按钮（需要 JavaScript），或直接写信到 <a href="mailto:support@southern-light.dev">support@southern-light.dev</a>，附上主题名称和版本——不论有没有 JavaScript 都可以。举报会有人亲自审核，确认属实的主题会在一天内下架。</p>
 </main>

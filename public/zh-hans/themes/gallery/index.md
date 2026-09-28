@@ -2,7 +2,28 @@
 
 社区投稿的预览主题，每一个都经过开发者审核、合并后才会出现在这里。按场景筛选，或是[在浏览器里打造一个自己的主题](/zh-hans/themes/new/)——不用安装，也不用 git。
 
-目前还没有任何投稿的主题。第一个做一个吧：在浏览器里打造一个主题，然后送出投稿。
+全部
+
+审阅代理产出
+
+技术文档
+
+正式输出
+
+笔记分享
+
+- ![德古拉 — light preview](/themes/v1/dracula/1.0.0/preview-light.png) ![德古拉 — dark preview](/themes/v1/dracula/1.0.0/preview-dark.png) **德古拉** v1.0.0 The classic dark vampire palette, with Alucard by day — adapted from Dracula Theme, adjusted for readability 技术文档 审阅代理产出 作者： Southern Light [版权与授权](/themes/third-party-notices.html#dracula) 举报 用电子邮件举报
+- ![复古方块 — light preview](/themes/v1/gruvbox/1.0.0/preview-light.png) ![复古方块 — dark preview](/themes/v1/gruvbox/1.0.0/preview-dark.png) **复古方块** v1.0.0 A warm retro palette of cream, brown and orange — adapted from Gruvbox, adjusted for readability 技术文档 笔记分享 作者： Southern Light [版权与授权](/themes/third-party-notices.html#gruvbox) 举报 用电子邮件举报
+- ![导览手册 — light preview](/themes/v1/guide/1.0.0/preview-light.png) ![导览手册 — dark preview](/themes/v1/guide/1.0.0/preview-dark.png) **导览手册** v1.0.0 A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs 技术文档 作者： Southern Light 举报 用电子邮件举报
+- ![账册 — light preview](/themes/v1/ledger/1.0.0/preview-light.png) ![账册 — dark preview](/themes/v1/ledger/1.0.0/preview-dark.png) **账册** v1.0.0 Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates 正式输出 作者： Southern Light 举报 用电子邮件举报
+- ![极地雪境 — light preview](/themes/v1/nord/1.0.0/preview-light.png) ![极地雪境 — dark preview](/themes/v1/nord/1.0.0/preview-dark.png) **极地雪境** v1.0.0 An arctic, north-bluish palette, with an original light companion — adapted from Nord, adjusted for readability 技术文档 审阅代理产出 作者： Southern Light [版权与授权](/themes/third-party-notices.html#nord) 举报 用电子邮件举报
+- ![日光色 — light preview](/themes/v1/solarized/1.0.0/preview-light.png) ![日光色 — dark preview](/themes/v1/solarized/1.0.0/preview-dark.png) **日光色** v1.0.0 Ethan Schoonover's teal-and-gold precision palette — adapted from Solarized, adjusted for readability 技术文档 审阅代理产出 作者： Southern Light [版权与授权](/themes/third-party-notices.html#solarized) 举报 用电子邮件举报
+- ![规格书 — light preview](/themes/v1/spec/1.0.0/preview-light.png) ![规格书 — dark preview](/themes/v1/spec/1.0.0/preview-dark.png) **规格书** v1.0.0 Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs 审阅代理产出 正式输出 作者： Southern Light 举报 用电子邮件举报
+- ![故事卡 — light preview](/themes/v1/story/1.0.0/preview-light.png) ![故事卡 — dark preview](/themes/v1/story/1.0.0/preview-dark.png) **故事卡** v1.0.0 Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes 笔记分享 审阅代理产出 作者： Southern Light 举报 用电子邮件举报
+
+## 版权与授权
+
+Dracula、Nord、Gruvbox 与 Solarized 改编自开源配色项目；每个项目的版权声明与完整授权条文请见[第三方授权声明](/themes/third-party-notices.html)。
 
 ## 主题有问题吗？
 

@@ -2,7 +2,28 @@
 
 社群投稿的預覽主題，每一個都經過開發者審核、合併後才會出現在這裡。依情境篩選，或是[在瀏覽器裡打造一個自己的主題](/zh-hant/themes/new/)——不用安裝，也不用 git。
 
-目前還沒有任何投稿的主題。第一個做一個吧：在瀏覽器裡打造一個主題，然後送出投稿。
+全部
+
+審閱代理產出
+
+技術文件
+
+正式輸出
+
+筆記分享
+
+- ![德古拉 — light preview](/themes/v1/dracula/1.0.0/preview-light.png) ![德古拉 — dark preview](/themes/v1/dracula/1.0.0/preview-dark.png) **德古拉** v1.0.0 經典吸血鬼深色調色盤，白日則用 Alucard 版本 — 改編自 Dracula Theme，為可讀性調整 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#dracula) 檢舉 用電子郵件檢舉
+- ![復古方塊 — light preview](/themes/v1/gruvbox/1.0.0/preview-light.png) ![復古方塊 — dark preview](/themes/v1/gruvbox/1.0.0/preview-dark.png) **復古方塊** v1.0.0 溫暖復古的米色、棕色與橘色調色盤 — 改編自 Gruvbox，為可讀性調整 技術文件 筆記分享 作者： Southern Light [版權與授權](/themes/third-party-notices.html#gruvbox) 檢舉 用電子郵件檢舉
+- ![導覽手冊 — light preview](/themes/v1/guide/1.0.0/preview-light.png) ![導覽手冊 — dark preview](/themes/v1/guide/1.0.0/preview-dark.png) **導覽手冊** v1.0.0 冷白背景搭配海軍藍標題與清亮藍色連結，字級加大，適合使用者指南、教學與 README 技術文件 作者： Southern Light 檢舉 用電子郵件檢舉
+- ![帳冊 — light preview](/themes/v1/ledger/1.0.0/preview-light.png) ![帳冊 — dark preview](/themes/v1/ledger/1.0.0/preview-dark.png) **帳冊** v1.0.0 米白紙面、深綠分隔線與實心表頭，適合預算、對帳單與估價單 正式輸出 作者： Southern Light 檢舉 用電子郵件檢舉
+- ![極地雪境 — light preview](/themes/v1/nord/1.0.0/preview-light.png) ![極地雪境 — dark preview](/themes/v1/nord/1.0.0/preview-dark.png) **極地雪境** v1.0.0 北歐冰藍色調，並原創搭配一款淺色版本 — 改編自 Nord，為可讀性調整 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#nord) 檢舉 用電子郵件檢舉
+- ![日光色 — light preview](/themes/v1/solarized/1.0.0/preview-light.png) ![日光色 — dark preview](/themes/v1/solarized/1.0.0/preview-dark.png) **日光色** v1.0.0 Ethan Schoonover 設計的藍綠與金色精準色盤 — 改編自 Solarized，為可讀性調整 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#solarized) 檢舉 用電子郵件檢舉
+- ![規格書 — light preview](/themes/v1/spec/1.0.0/preview-light.png) ![規格書 — dark preview](/themes/v1/spec/1.0.0/preview-dark.png) **規格書** v1.0.0 白底正文搭配單一磚紅強調色，決策與風險以陶土色面板呈現，適合 PRD 與 RFC 審閱代理產出 正式輸出 作者： Southern Light 檢舉 用電子郵件檢舉
+- ![故事卡 — light preview](/themes/v1/story/1.0.0/preview-light.png) ![故事卡 — dark preview](/themes/v1/story/1.0.0/preview-dark.png) **故事卡** v1.0.0 亮色便利貼、圓角外觀與鮮明任務勾選框，適合使用者故事與衝刺筆記 筆記分享 審閱代理產出 作者： Southern Light 檢舉 用電子郵件檢舉
+
+## 版權與授權
+
+Dracula、Nord、Gruvbox 與 Solarized 改編自開放原始碼的配色專案；每個專案的版權聲明與完整授權條文請見[第三方授權聲明](/themes/third-party-notices.html)。
 
 ## 主題有問題嗎？
 

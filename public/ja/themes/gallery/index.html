@@ -74,7 +74,101 @@ try {
   <h1>テーマギャラリー</h1>
   <p>コミュニティが投稿したプレビューテーマです。それぞれ開発者がレビューし、マージしてからここに表示されます。シナリオで絞り込むか、<a href="/ja/themes/new/">ブラウザで自分のテーマを作る</a>こともできます &#8212; インストールも git も不要です。</p>
 </section>
-<p class="theme-gallery-empty">まだ公開されているテーマはありません。最初のひとりになりませんか。ブラウザでテーマを作って投稿してください。</p>
+<div class="theme-gallery-filter" id="theme-gallery-filter" role="group" aria-label="シナリオで絞り込む">
+  <button type="button" class="theme-filter-btn" data-scenario="all" aria-pressed="true">すべて</button>
+  <button type="button" class="theme-filter-btn" data-scenario="agent-review" aria-pressed="false">エージェント出力のレビュー</button>
+  <button type="button" class="theme-filter-btn" data-scenario="technical-docs" aria-pressed="false">技術ドキュメント</button>
+  <button type="button" class="theme-filter-btn" data-scenario="formal-output" aria-pressed="false">フォーマルな出力</button>
+  <button type="button" class="theme-filter-btn" data-scenario="notes-sharing" aria-pressed="false">メモ・共有</button>
+</div>
+<ul class="theme-gallery-cards" id="theme-gallery-cards">
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <img src="/themes/v1/dracula/1.0.0/preview-light.png" alt="ドラキュラ — light preview" loading="lazy">
+    <img src="/themes/v1/dracula/1.0.0/preview-dark.png" alt="ドラキュラ — dark preview" loading="lazy">
+    <strong class="theme-name">ドラキュラ</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">The classic dark vampire palette, with Alucard by day — adapted from Dracula Theme, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">技術ドキュメント</span> <span class="theme-scenario">エージェント出力のレビュー</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#dracula">クレジットとライセンス</a></span>
+    <button type="button" class="theme-report" data-theme-id="dracula" data-theme-version="1.0.0">通報</button>
+    <button type="button" class="theme-report-mail" data-theme-id="dracula" data-theme-version="1.0.0">メールで通報</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs notes-sharing">
+    <img src="/themes/v1/gruvbox/1.0.0/preview-light.png" alt="グラブボックス — light preview" loading="lazy">
+    <img src="/themes/v1/gruvbox/1.0.0/preview-dark.png" alt="グラブボックス — dark preview" loading="lazy">
+    <strong class="theme-name">グラブボックス</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">A warm retro palette of cream, brown and orange — adapted from Gruvbox, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">技術ドキュメント</span> <span class="theme-scenario">メモ・共有</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#gruvbox">クレジットとライセンス</a></span>
+    <button type="button" class="theme-report" data-theme-id="gruvbox" data-theme-version="1.0.0">通報</button>
+    <button type="button" class="theme-report-mail" data-theme-id="gruvbox" data-theme-version="1.0.0">メールで通報</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs">
+    <img src="/themes/v1/guide/1.0.0/preview-light.png" alt="ガイド — light preview" loading="lazy">
+    <img src="/themes/v1/guide/1.0.0/preview-dark.png" alt="ガイド — dark preview" loading="lazy">
+    <strong class="theme-name">ガイド</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs</span>
+    <span class="theme-scenarios"><span class="theme-scenario">技術ドキュメント</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="guide" data-theme-version="1.0.0">通報</button>
+    <button type="button" class="theme-report-mail" data-theme-id="guide" data-theme-version="1.0.0">メールで通報</button>
+  </li>
+  <li class="theme-card" data-scenarios="formal-output">
+    <img src="/themes/v1/ledger/1.0.0/preview-light.png" alt="台帳 — light preview" loading="lazy">
+    <img src="/themes/v1/ledger/1.0.0/preview-dark.png" alt="台帳 — dark preview" loading="lazy">
+    <strong class="theme-name">台帳</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates</span>
+    <span class="theme-scenarios"><span class="theme-scenario">フォーマルな出力</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="ledger" data-theme-version="1.0.0">通報</button>
+    <button type="button" class="theme-report-mail" data-theme-id="ledger" data-theme-version="1.0.0">メールで通報</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <img src="/themes/v1/nord/1.0.0/preview-light.png" alt="ノルド — light preview" loading="lazy">
+    <img src="/themes/v1/nord/1.0.0/preview-dark.png" alt="ノルド — dark preview" loading="lazy">
+    <strong class="theme-name">ノルド</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">An arctic, north-bluish palette, with an original light companion — adapted from Nord, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">技術ドキュメント</span> <span class="theme-scenario">エージェント出力のレビュー</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#nord">クレジットとライセンス</a></span>
+    <button type="button" class="theme-report" data-theme-id="nord" data-theme-version="1.0.0">通報</button>
+    <button type="button" class="theme-report-mail" data-theme-id="nord" data-theme-version="1.0.0">メールで通報</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <img src="/themes/v1/solarized/1.0.0/preview-light.png" alt="ソラライズド — light preview" loading="lazy">
+    <img src="/themes/v1/solarized/1.0.0/preview-dark.png" alt="ソラライズド — dark preview" loading="lazy">
+    <strong class="theme-name">ソラライズド</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Ethan Schoonover&#x27;s teal-and-gold precision palette — adapted from Solarized, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">技術ドキュメント</span> <span class="theme-scenario">エージェント出力のレビュー</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#solarized">クレジットとライセンス</a></span>
+    <button type="button" class="theme-report" data-theme-id="solarized" data-theme-version="1.0.0">通報</button>
+    <button type="button" class="theme-report-mail" data-theme-id="solarized" data-theme-version="1.0.0">メールで通報</button>
+  </li>
+  <li class="theme-card" data-scenarios="agent-review formal-output">
+    <img src="/themes/v1/spec/1.0.0/preview-light.png" alt="仕様書 — light preview" loading="lazy">
+    <img src="/themes/v1/spec/1.0.0/preview-dark.png" alt="仕様書 — dark preview" loading="lazy">
+    <strong class="theme-name">仕様書</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs</span>
+    <span class="theme-scenarios"><span class="theme-scenario">エージェント出力のレビュー</span> <span class="theme-scenario">フォーマルな出力</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="spec" data-theme-version="1.0.0">通報</button>
+    <button type="button" class="theme-report-mail" data-theme-id="spec" data-theme-version="1.0.0">メールで通報</button>
+  </li>
+  <li class="theme-card" data-scenarios="notes-sharing agent-review">
+    <img src="/themes/v1/story/1.0.0/preview-light.png" alt="ストーリー — light preview" loading="lazy">
+    <img src="/themes/v1/story/1.0.0/preview-dark.png" alt="ストーリー — dark preview" loading="lazy">
+    <strong class="theme-name">ストーリー</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes</span>
+    <span class="theme-scenarios"><span class="theme-scenario">メモ・共有</span> <span class="theme-scenario">エージェント出力のレビュー</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="story" data-theme-version="1.0.0">通報</button>
+    <button type="button" class="theme-report-mail" data-theme-id="story" data-theme-version="1.0.0">メールで通報</button>
+  </li>
+</ul>
+<h2 id="credits">クレジットとライセンス</h2>
+<p>Dracula、Nord、Gruvbox、Solarized はオープンソースの配色プロジェクトを基にしています。各プロジェクトの著作権表示と完全なライセンス全文は<a href="/themes/third-party-notices.html">サードパーティ通知</a>をご覧ください。</p>
 <h2 id="something-wrong-with-a-theme">テーマに問題がありますか？</h2>
 <p>カードの「通報」ボタンを使うか（JavaScript が必要です）、テーマ名とバージョンを添えて直接 <a href="mailto:support@southern-light.dev">support@southern-light.dev</a> までメールしてください — JavaScript の有無を問いません。通報は人の目で確認し、事実であれば1日以内に取り下げます。</p>
 </main>
