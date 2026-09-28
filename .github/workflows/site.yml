@@ -95,6 +95,20 @@ jobs:
       # both, plus the .sim-preview rescoping transform's own fixture. Plain `node`, no npm.
       - name: The theme simulator's JS ports match the kit
         run: node scripts/check_theme_sim.mjs
+      # Every workflow (#143, plan F15): no ${{ github.event.* }} inside `run:`, no
+      # pull_request_target, every `uses:` pinned to a full commit SHA, and no write permission in a
+      # job that runs brew/swift/the kit. --self-test plants a break of each rule first (in a
+      # synthetic workflow and in the real ones) and fails unless each is caught by its own rule.
+      - name: Workflows keep event text out of shells and write scopes away from the kit
+        run: python3 scripts/check_workflows.py --self-test && python3 scripts/check_workflows.py
+      # The theme submission workflows (theme-submission / theme-approve / theme-from-pr) only run
+      # from the default branch, so their logic lives in scripts/submission/ and is tested here on
+      # synthetic event payloads and API responses, positive and negative. The runner fails on too
+      # few tests, not only on a failing one.
+      - name: Theme submission scripts pass their unit tests
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 scripts/submission/run_tests.py
       # The community gallery (#145, W4): a hostile fixture (name/summary containing `"<>&'`,
       # `</script>`, `javascript:`) proves every index-derived string is escaped and that only a
       # theme's own id/version -- never its name or summary -- ever reaches an href; the report
