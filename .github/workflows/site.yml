@@ -39,6 +39,12 @@ jobs:
             echo "::error::Run python3 scripts/build_pages.py and commit the result."
             exit 1
           fi
+      # Every generated page's only inline <script> is the CSP's own hashed pair (Consent Mode
+      # default, GTM loader); anything else is silently blocked by script-src in a real browser
+      # (mars-dawn-website#147's verifier-caught bug: an inline theme-sim bootstrap). --self-test
+      # plants an inline <script> first and fails unless it's caught.
+      - name: No inline <script> outside the CSP's hashed pair
+        run: python3 scripts/check_no_inline_scripts.py --self-test && python3 scripts/check_no_inline_scripts.py
       - name: Every page's hreflang set is complete and reciprocal
         run: python3 scripts/check_hreflang.py
       - name: Every same-site link points at a file that exists
@@ -84,6 +90,11 @@ jobs:
       # building the kit itself.
       - name: The vendored kit theme contract matches the pinned commit
         run: python3 scripts/check_theme_kit.py --self-test && python3 scripts/check_theme_kit.py
+      # The theme simulator's JavaScript ports (public/assets/theme-sim/) against the vendored kit
+      # tree above: every fixture, every built-in and the whole option sweep, rule ids and CSS
+      # both, plus the .sim-preview rescoping transform's own fixture. Plain `node`, no npm.
+      - name: The theme simulator's JS ports match the kit
+        run: node scripts/check_theme_sim.mjs
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/release'

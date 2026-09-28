@@ -39,6 +39,28 @@
       "name": "per-theme-rule-and-pseudo-element",
       "css": "[data-theme=\"vivid\"] h2::before { content: \"\"; background: var(--accent); }",
       "expectedSelectors": [".sim-preview[data-theme=\"vivid\"] h2::before"]
+    },
+    {
+      "name": "leading-top-of-file-comment",
+      "css": "/* a comment */\n\n:root {\n  --x: 1;\n}\n",
+      "expectedSelectors": [".sim-preview {"]
+    },
+    {
+      "name": "inline-comment-between-rules",
+      "css": ":root {\n  --a: 1;\n}\n/* a comment */\n.foo {\n  --b: 2;\n}\n",
+      "expectedSelectors": [".sim-preview .foo {"]
+    },
+    {
+      "name": "selector-list",
+      "css": "h1, h2 {\n  color: red;\n}\n",
+      "expectedSelectors": [".sim-preview h1", ".sim-preview h2"]
+    }
+  ],
+  "regressions": [
+    {
+      "name": "non-dark-media",
+      "css": "@media print {\n  body { color: black; }\n}\n",
+      "expected": "@media print {\n.sim-preview { color: black; }\n}\n"
     }
   ]
 }

@@ -993,6 +993,20 @@ Coming later, not shipped yet: more importable preview themes, and a gallery on 
 
 ---
 
+## Build a theme
+
+Source: https://marsdawn.southern-light.dev/themes/new/
+
+# Build a theme
+
+Pick a palette and a few style options below. The sample document on the right updates as you go, in light and dark, and every check the gallery's CI runs shows up here too — so a theme that reaches the submission issue has usually already passed.
+
+You'll need a GitHub account to submit. No install, no git required for this page itself.
+
+This page needs JavaScript to build and preview a theme.
+
+---
+
 ## Sharing exported PDFs
 
 Source: https://marsdawn.southern-light.dev/sharing-exported-pdfs/
@@ -3029,6 +3043,20 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 - 完整的 PDF 輸出步驟，從命令列開始：[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
 - MarsDawn 現在還做不到的事：[這份清單](/zh-hant/limits/)。
 - 把輸出的 PDF 交給不寫 Markdown 的人：[分享 PDF](/zh-hant/sharing-exported-pdfs/)。
+
+---
+
+## 打造一個主題
+
+Source: https://marsdawn.southern-light.dev/zh-hant/themes/new/
+
+# 打造一個主題
+
+在下面挑一組色盤和幾個樣式選項。右邊的範例文件會即時更新，同時有淺色和深色兩種，主題庫 CI 會做的每一項檢查也會顯示在這裡——所以送出投稿 issue 的主題，通常已經先過關了。
+
+投稿需要一個 GitHub 帳號。這個頁面本身不用安裝，也不用 git。
+
+這個頁面需要 JavaScript 才能建立與預覽主題。
 
 ---
 
@@ -5099,6 +5127,20 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 ---
 
+## 打造一个主题
+
+Source: https://marsdawn.southern-light.dev/zh-hans/themes/new/
+
+# 打造一个主题
+
+在下面挑一组色板和几个样式选项。右边的范例文档会实时更新，同时有浅色和深色两种，主题库 CI 会做的每一项检查也会显示在这里——所以送出投稿 issue 的主题，通常已经先过关了。
+
+投稿需要一个 GitHub 账号。这个页面本身不用安装，也不用 git。
+
+这个页面需要 JavaScript 才能建立与预览主题。
+
+---
+
 ## 分享导出的 PDF
 
 Source: https://marsdawn.southern-light.dev/zh-hans/sharing-exported-pdfs/
@@ -7163,6 +7205,20 @@ PDF に書き出す、またはプリントすると、テーマのライトカ�
 - コマンドラインからの、完全な PDF 書き出しの手順：[Markdown から PDF へ](/ja/markdown-to-pdf/)。
 - MarsDawn がまだできないこと：[その一覧](/ja/limits/)。
 - Markdown を使わない人に、書き出した PDF を渡す：[PDF を共有する](/ja/sharing-exported-pdfs/)。
+
+---
+
+## テーマを作る
+
+Source: https://marsdawn.southern-light.dev/ja/themes/new/
+
+# テーマを作る
+
+下で配色といくつかのスタイルオプションを選んでください。右側のサンプル文書がライトとダークの両方でその場で更新され、テーマギャラリーの CI が行うチェックもここに表示されます。投稿用の issue に届く頃には、たいてい先にすべて通っています。
+
+投稿には GitHub アカウントが必要です。このページ自体はインストールも git も不要です。
+
+このページの作成とプレビューには JavaScript が必要です。
 
 ---
 

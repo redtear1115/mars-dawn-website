@@ -1,0 +1,179 @@
+/* Layout for /themes/new/, the theme simulator (plan-website-104 W1). The live preview's own
+ * styling is adopted at runtime as constructable stylesheets (the kit's own preview-sim.css, and
+ * the generated, rescoped theme CSS) -- see theme-sim/app.js. This file only lays out the page
+ * shell (the control panel and the two preview boxes) plus the one element that isn't the kit's:
+ * the hand-made sample diagram (theme-sim/sample-document.js), which preview-sim.css doesn't know
+ * about and so doesn't size. Never the rest of the preview's own content.
+ */
+
+#theme-sim-app {
+  margin-top: 1rem;
+}
+
+.sim-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  /* Belt and suspenders alongside minmax(0, ...) below: a grid item's automatic minimum size is
+     its content's min-content width, which for this page (a data table, a <pre>, a fixed-width
+     colour grid) is wider than a narrow viewport -- exactly the round-2 #147 bug (515-517px on a
+     390px viewport, 640px+ engine-independent overflow). min-width: 0 on every level between here
+     and the content that can shrink or scroll on its own (the kit's preview-sim.css already sets
+     overflow-wrap: break-word and pre { overflow-x: auto }) is what actually lets it shrink. */
+  min-width: 0;
+}
+
+.sim-layout > * {
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .sim-layout {
+    grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.sim-controls fieldset {
+  border: 1px solid var(--rule, #ddd);
+  border-radius: 8px;
+  padding: 0.75rem 1rem 1rem;
+  margin: 0 0 1rem;
+}
+
+.sim-controls legend {
+  font-weight: 600;
+  padding: 0 0.35em;
+}
+
+.sim-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.sim-field input[type="text"],
+.sim-field input[type="number"],
+.sim-field select,
+.sim-controls textarea {
+  font: inherit;
+  padding: 0.35em 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.sim-checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+}
+
+.sim-color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.5rem 0.75rem;
+  margin: 0.5rem 0;
+}
+
+.sim-color-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  font-size: 0.82rem;
+}
+
+.sim-color-field input[type="color"] {
+  width: 100%;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.sim-decoration-extra {
+  display: inline-flex;
+  gap: 0.5em;
+  margin-left: 0.5em;
+  flex-wrap: wrap;
+}
+
+.sim-messages {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.sim-messages ul {
+  margin: 0;
+  padding-left: 1.25em;
+}
+
+.sim-messages .sim-ok {
+  margin: 0;
+  font-weight: 600;
+}
+
+.sim-preview-boxes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.sim-preview-boxes > section {
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .sim-preview-boxes {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.sim-preview {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.sim-preview-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+.sim-controls textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+}
+
+#theme-sim-app button {
+  font: inherit;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  border: 1px solid #888;
+  background: transparent;
+  cursor: pointer;
+  margin: 0.35em 0.35em 0.35em 0;
+}
+
+/* The one preview element that isn't the kit's own preview.css: the simulator's hand-made sample
+ * diagram (theme-sim/sample-document.js). A normal rule, not part of the constructable stylesheet
+ * that carries theme colours -- this only sizes the SVG, using no colour of its own. */
+.sim-preview .mm-sample {
+  width: 100%;
+  height: auto;
+  max-width: 360px;
+  display: block;
+  margin: 0.5em 0;
+}

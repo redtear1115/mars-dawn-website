@@ -12,14 +12,16 @@ Static output, no build step at deploy time. Edit the copy here and rerun:
 """
 import json
 import re
+import shutil
 import sys
 from types import SimpleNamespace
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
-SITE = Path(__file__).resolve().parent.parent / "public"
-CONTENT_LEGAL = Path(__file__).resolve().parent.parent / "content" / "legal"
+ROOT = Path(__file__).resolve().parent.parent
+SITE = ROOT / "public"
+CONTENT_LEGAL = ROOT / "content" / "legal"
 UPDATED = "2026-09-17"
 # The privacy page's own "Last updated" line lives in its Markdown source
 # (content/legal/privacy.<locale>.md) now, not here: see render_legal_body.
@@ -189,6 +191,7 @@ UI = {
         "native": "A Mac app", "limits": "What MarsDawn doesn't do",
         "mcp": "MCP server", "token-efficient-review": "Token-efficient review",
         "vs-markdown-preview-tools": "Viewing Markdown elsewhere vs. MarsDawn", "themes": "Preview themes and PDF export",
+        "themes-new": "Build a theme",
         "sharing-exported-pdfs": "Sharing exported PDFs", "reviewing-ai-output": "Why AI output still needs a human reader",
         "reading-agent-output": "Reading what your agent hands back", "agent-transparency": "Agent transparency",
         "reviewing-agent-plans": "Reviewing an agent plan", "agent-design-patterns": "Agent design patterns",
@@ -216,6 +219,7 @@ UI = {
         "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
         "mcp": "MCP 伺服器", "token-efficient-review": "節省 token 的審閱方式",
         "vs-markdown-preview-tools": "在別處看 Markdown，對比 MarsDawn", "themes": "預覽主題與 PDF 輸出",
+        "themes-new": "打造一個主題",
         "sharing-exported-pdfs": "分享輸出的 PDF", "reviewing-ai-output": "為什麼 AI 寫的東西還是需要人讀過",
         "reading-agent-output": "讀懂 agent 交回來的 Markdown", "agent-transparency": "agent 的透明",
         "reviewing-agent-plans": "審 agent 計畫", "agent-design-patterns": "agent 設計模式",
@@ -377,6 +381,39 @@ PAGES = {
         "title": "支援 · MarsDawn",
         "description": "MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。",
         "body": render_legal_body("support", "zh-hant"),
+    },
+}
+
+
+# The theme simulator (mars-dawn-website #142, plan-website-104 W1): a page where a designer
+# builds a MarsDawn preview theme in the browser and submits it as a prefilled GitHub issue. The
+# body here is deliberately just a container: every control, the live preview and the validation
+# messages are built by theme-sim/app.js at load time, so the static HTML and its Markdown twin
+# stay simple (see render()'s "themes/new" case for the stylesheet/module-script wiring).
+THEME_SIM_PAGES = {
+    ("en", "themes/new"): {
+        "title": "Build a MarsDawn theme in your browser · MarsDawn",
+        "description": "Pick colours and a handful of style options, see them applied to a sample document live, and submit your theme as a GitHub issue. No install, no git.",
+        "body": """
+<section class="intro">
+  <h1>Build a theme</h1>
+  <p>Pick a palette and a few style options below. The sample document on the right updates as you go, in light and dark, and every check the gallery's CI runs shows up here too &#8212; so a theme that reaches the submission issue has usually already passed.</p>
+  <p>You'll need a GitHub account to submit. No install, no git required for this page itself.</p>
+</section>
+<div id="theme-sim-app" data-locale="en"><p>This page needs JavaScript to build and preview a theme.</p></div>
+""",
+    },
+    ("zh-hant", "themes/new"): {
+        "title": "在瀏覽器裡打造一個 MarsDawn 主題 · MarsDawn",
+        "description": "挑選顏色和幾個樣式選項，即時看它們套用在範例文件上，再把主題送出成一個 GitHub issue。不用安裝，也不用 git。",
+        "body": """
+<section class="intro">
+  <h1>打造一個主題</h1>
+  <p>在下面挑一組色盤和幾個樣式選項。右邊的範例文件會即時更新，同時有淺色和深色兩種，主題庫 CI 會做的每一項檢查也會顯示在這裡——所以送出投稿 issue 的主題，通常已經先過關了。</p>
+  <p>投稿需要一個 GitHub 帳號。這個頁面本身不用安裝，也不用 git。</p>
+</section>
+<div id="theme-sim-app" data-locale="zh-hant"><p>這個頁面需要 JavaScript 才能建立與預覽主題。</p></div>
+""",
     },
 }
 
@@ -3927,7 +3964,7 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
     ])
 
 PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
-              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "sharing-exported-pdfs", "reviewing-ai-output",
+              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
@@ -3936,7 +3973,7 @@ SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
                   "vs/macmd-viewer": "vs-macmd-viewer",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
-                  "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes",
+                  "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes", "themes/new": "themes-new",
                   "sharing-exported-pdfs": "sharing-exported-pdfs", "reviewing-ai-output": "reviewing-ai-output",
                   "reading-agent-output": "reading-agent-output", "agent-transparency": "agent-transparency",
                   "reviewing-agent-plans": "reviewing-agent-plans", "agent-design-patterns": "agent-design-patterns",
@@ -3948,6 +3985,7 @@ SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "
 
 def _base_pages() -> dict:
     merged = dict(PAGES)
+    merged.update(THEME_SIM_PAGES)
     merged.update(CLI_PAGES)
     merged.update(AGENT_PAGES)
     merged.update(START_PAGES)
@@ -4293,6 +4331,18 @@ def render(locale: str, slug: str, page: dict) -> str:
     if slug == "index":
         extra_css = ('<link rel="stylesheet" href="/assets/hero.css">\n<link rel="stylesheet" href="/assets/annotations.css">\n'
                      '<link rel="stylesheet" href="/assets/loop.css">\n')
+    # The theme simulator (#142): its own layout stylesheet, same-origin so script-src 'self'
+    # already allows it -- no new CSP hash. Its bootstrap must be an external module script too:
+    # the CSP's script-src is 'self' plus two sha256-hashed inline scripts (Consent Mode default,
+    # the GTM loader) ONLY, so an inline `<script type="module">` here (mars-dawn-website#147's
+    # verifier-caught bug) is silently blocked in every real browser and the simulator never
+    # mounts. boot.js takes no inline text of its own; anything it needs from the page comes off
+    # #theme-sim-app's own data-* attributes (data-locale), read as text via .dataset, never
+    # inline JS. scripts/check_no_inline_scripts.py holds every generated page to this.
+    extra_js = ""
+    if slug == "themes/new":
+        extra_css = '<link rel="stylesheet" href="/assets/theme-sim.css">\n'
+        extra_js = '<script type="module" src="/assets/theme-sim/boot.js"></script>\n'
     chip = f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  ' if is_trait_page else ""
     if slug == "index":
         hero_html = (
@@ -4369,7 +4419,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 {extra_css}{alternates}
 {seo}
 {jsonld}<script src="/assets/consent.js" defer></script>
-</head>
+{extra_js}</head>
 <body>
 <a class="skip" href="#main">{SKIP_LABEL[locale]}</a>
 {consent_banner_html(locale)}
@@ -4715,7 +4765,43 @@ _headline, _lede = hero_copy()
 OG_IMAGE_ALT = f"MarsDawn. {' '.join(_headline)} {_lede}"
 
 
+THEME_SIM_KIT_BUILT_INS = ["dawn", "classic", "modern", "vivid"]
+
+
+def sync_theme_kit_assets_into_public() -> None:
+    """Copies exactly what the theme simulator's browser code needs (public/assets/theme-sim/) from
+    the vendored kit tree (vendor/kit-themes/<sha12>/, scripts/sync_theme_kit.py) into
+    public/assets/theme-sim/kit/: ThemeStyles.json, the four built-in theme.json files and
+    preview-sim.css. The browser can only fetch from public/, never from vendor/, and this is meant
+    to be the *only* copy of that data the page reads -- see theme-sim/styles-data.js and
+    theme-sim/built-ins.js, which fetch it from here rather than embedding their own.
+
+    Pure file copy, no Swift and no network, so it runs on Ubuntu CI too: `main()` calls this every
+    time, and site.yml's "Regenerated pages match the commit" step (which reruns this whole script
+    and diffs public/ against the commit) is what holds this copy to the vendored source, the same
+    way it already holds every generated page to source.
+    """
+    vendor_root = ROOT / "vendor" / "kit-themes"
+    dest = SITE / "assets" / "theme-sim" / "kit"
+    dirs = sorted(p for p in vendor_root.iterdir() if p.is_dir()) if vendor_root.is_dir() else []
+    assert len(dirs) == 1, f"expected exactly one vendor/kit-themes/<sha>/, found {[d.name for d in dirs]} -- run scripts/sync_theme_kit.py"
+    vendor = dirs[0]
+    if dest.exists():
+        shutil.rmtree(dest)
+    dest.mkdir(parents=True)
+    shutil.copy2(vendor / "ThemeStyles.json", dest / "ThemeStyles.json")
+    print(dest / "ThemeStyles.json")
+    shutil.copy2(vendor / "preview-sim.css", dest / "preview-sim.css")
+    print(dest / "preview-sim.css")
+    themes_dest = dest / "themes"
+    themes_dest.mkdir()
+    for theme_id in THEME_SIM_KIT_BUILT_INS:
+        shutil.copy2(vendor / "Themes" / theme_id / "theme.json", themes_dest / f"{theme_id}.json")
+        print(themes_dest / f"{theme_id}.json")
+
+
 def main() -> None:
+    sync_theme_kit_assets_into_public()
     pages = all_pages()
     for (locale, slug), page in pages.items():
         folder = SITE / LOCALES[locale]["prefix"] / ("" if slug == "index" else slug)
