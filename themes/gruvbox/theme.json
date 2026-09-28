@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "gruvbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "en": "Gruvbox",
     "zh-Hant": "復古方塊",
@@ -9,8 +9,8 @@
     "ja": "グラブボックス"
   },
   "summary": {
-    "en": "A warm retro palette of cream, brown and orange — credited to morhetz/gruvbox",
-    "zh-Hant": "溫暖復古的米色、棕色與橘色調色盤 — 致敬 morhetz/gruvbox"
+    "en": "A warm retro palette of cream, brown and orange — adapted from Gruvbox, adjusted for readability",
+    "zh-Hant": "溫暖復古的米色、棕色與橘色調色盤 — 改編自 Gruvbox，為可讀性調整"
   },
   "fontDesign": "sans",
   "scenarios": [

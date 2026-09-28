@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "story",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "en": "Story",
     "zh-Hant": "故事卡",
@@ -10,7 +10,7 @@
   },
   "summary": {
     "en": "Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes",
-    "zh-Hant": "亮色便利貼、圓角外觀與鮮明任務勾選框,適合使用者故事與衝刺筆記"
+    "zh-Hant": "亮色便利貼、圓角外觀與鮮明任務勾選框，適合使用者故事與衝刺筆記"
   },
   "fontDesign": "rounded",
   "scenarios": [

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "solarized",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "en": "Solarized",
     "zh-Hant": "日光色",
@@ -9,8 +9,8 @@
     "ja": "ソラライズド"
   },
   "summary": {
-    "en": "Ethan Schoonover's teal-and-gold precision palette, base3 by day and base03 by night",
-    "zh-Hant": "Ethan Schoonover 設計的藍綠與金色精準色盤，日間 base3、夜間 base03"
+    "en": "Ethan Schoonover's teal-and-gold precision palette — adapted from Solarized, adjusted for readability",
+    "zh-Hant": "Ethan Schoonover 設計的藍綠與金色精準色盤 — 改編自 Solarized，為可讀性調整"
   },
   "fontDesign": "sans",
   "scenarios": [

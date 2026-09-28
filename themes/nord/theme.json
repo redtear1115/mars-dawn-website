@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "nord",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "en": "Nord",
     "zh-Hant": "極地雪境",
@@ -9,8 +9,8 @@
     "ja": "ノルド"
   },
   "summary": {
-    "en": "An arctic, north-bluish palette, with an original light companion — adjusted for readability, credited to Nord",
-    "zh-Hant": "北歐冰藍色調,並原創搭配一款淺色版本 — 為可讀性調整,致敬 Nord 專案"
+    "en": "An arctic, north-bluish palette, with an original light companion — adapted from Nord, adjusted for readability",
+    "zh-Hant": "北歐冰藍色調，並原創搭配一款淺色版本 — 改編自 Nord，為可讀性調整"
   },
   "fontDesign": "sans",
   "scenarios": [
