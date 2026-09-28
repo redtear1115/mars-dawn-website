@@ -1328,6 +1328,10 @@ html { overflow-x: hidden; }
   font-size: 0.9rem;
 }
 
+/* third-party-notices.html (#153): a source URL is one unbroken token that would otherwise
+   force the page wider than the viewport at phone width (verify290 round 2). */
+.notice-source { overflow-wrap: anywhere; }
+
 /* On a phone, a four-column comparison stacks: one block per row, the row's
    name on top and each column's answer under its own label. */
 @media (max-width: 719px) {

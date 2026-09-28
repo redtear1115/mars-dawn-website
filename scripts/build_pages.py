@@ -23,6 +23,7 @@ from xml.sax.saxutils import escape as xml_escape
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
 CONTENT_LEGAL = ROOT / "content" / "legal"
+CONTENT_THIRD_PARTY_LICENSES = ROOT / "content" / "third-party-licenses"
 UPDATED = "2026-09-17"
 # The privacy page's own "Last updated" line lives in its Markdown source
 # (content/legal/privacy.<locale>.md) now, not here: see render_legal_body.
@@ -590,6 +591,91 @@ def community_gallery_html(locale: str) -> str:
     cards = "\n".join(_theme_card_html(locale, t) for t in themes)
     filter_html = (_theme_gallery_filter_html(locale, present) + "\n") if present else ""
     return f'{filter_html}<ul class="theme-gallery-cards" id="theme-gallery-cards">\n{cards}\n</ul>'
+
+
+# public/themes/third-party-notices.html (#153, verify290 round 2): the MIT copyright notice and
+# full licence text for each of the four ported themes (Dracula, Nord, Gruvbox, Solarized), read
+# from content/third-party-licenses/*.LICENSE -- fetched once from each upstream project's own
+# LICENSE file (or, for gruvbox, which ships none, built from package.json's declared author and
+# the repository's creation year; content/third-party-licenses/manifest.json says so) -- never
+# retyped. English only (a licence notice isn't user-facing copy the needs-copy process covers),
+# `noindex`, and not part of PAGES/all_pages(): it needs no hreflang set, so it's a leaf file, not
+# an index.html (check_hreflang.py and check_invariants.py both scan only `**/index.html`). It
+# still uses the site's own masthead/main/footer classes (site.css) for the gutter and the same
+# consent/GTM scripts as every other page, so it isn't a bare, unstyled page (verify290's round-2
+# finding: no masthead/main/footer meant no gutter, and the "Licence text source: https://..."
+# lines overflowed at 390px). `.notice-source` (site.css) wraps a long URL instead.
+def third_party_notices_html() -> str:
+    manifest = json.loads((CONTENT_THIRD_PARTY_LICENSES / "manifest.json").read_text(encoding="utf-8"))
+    ui = UI["en"]
+    sections = []
+    for theme_id in PORTED_THEME_IDS:
+        entry = manifest[theme_id]
+        license_text = (CONTENT_THIRD_PARTY_LICENSES / entry["license_file"]).read_text(encoding="utf-8").rstrip("\n")
+        sections.append(
+            f'<h2 id="{html_escape(theme_id, quote=True)}">{html_escape(entry["name"])}</h2>\n'
+            f'<p>Upstream project: <a href="{html_escape(entry["upstream_url"], quote=True)}">'
+            f'{html_escape(entry["upstream_url"])}</a>. {html_escape(entry["note"])}</p>\n'
+            f'<p class="notice-source">Licence text source: '
+            + (f'<a href="{html_escape(entry["license_source"], quote=True)}">{html_escape(entry["license_source"])}</a>'
+               if entry["license_source"].startswith("http") else html_escape(entry["license_source"]))
+            + "</p>\n"
+            f"<pre>{html_escape(license_text)}</pre>"
+        )
+    main_html = (
+        "<section class=\"intro\">\n  <h1>Third-party notices</h1>\n"
+        "  <p>Four of the MarsDawn theme gallery's first-party themes — Dracula, Nord, Gruvbox and "
+        "Solarized — are adapted from existing open-source colour schemes. This page carries each "
+        "project's copyright notice and full licence text. MarsDawn's own four themes (Ledger, Spec, "
+        "Story, Guide) are original and are licensed Apache-2.0 like the rest of this site's code.</p>\n"
+        "</section>\n" + "\n".join(sections)
+    )
+    footer_links = "".join(
+        f'    <a href="{page_path("en", target)}">{ui[target]}</a>\n'
+        for target in ("support", "privacy", "cli")
+        if has_page("en", target)
+    )
+    footer_links += f'    <button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button>\n'
+    footer_html = (
+        '<footer class="footer">\n'
+        f'  <nav class="footer-nav" aria-label="{ui["footer_nav"]}">\n{footer_links}  </nav>\n'
+        f'  <p class="footer-meta"><span>{ui["slogan"]}</span> <span>{ui["footer_store"]}</span> '
+        '<span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>\n</footer>'
+    )
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+{consent_head_html()}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Third-party notices · MarsDawn</title>
+<meta name="description" content="Copyright notices and full MIT licence text for the open-source colour schemes MarsDawn's Dracula, Nord, Gruvbox and Solarized gallery themes are adapted from.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="canonical" href="{abs_url("/themes/third-party-notices.html")}">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">{SKIP_LABEL["en"]}</a>
+{consent_banner_html("en")}
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="{home_path("en")}">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <a href="/themes/gallery/">&#8592; Theme gallery</a>
+</header>
+<main id="main">
+{main_html}
+</main>
+{footer_html}
+</div>
+</body>
+</html>
+"""
 
 
 GALLERY_PAGES = {
@@ -5076,6 +5162,10 @@ def main() -> None:
     print(SITE / "llms.txt")
     (SITE / "llms-full.txt").write_text(build_llms_full(pages), encoding="utf-8")
     print(SITE / "llms-full.txt")
+    notices_path = SITE / "themes" / "third-party-notices.html"
+    notices_path.parent.mkdir(parents=True, exist_ok=True)
+    notices_path.write_text(third_party_notices_html(), encoding="utf-8")
+    print(notices_path)
     (SITE / "assets" / "annotations.css").write_text(annotations_css(), encoding="utf-8")
     (SITE / "assets" / "hero.css").write_text(hero_window.window_css(), encoding="utf-8")
     (SITE / "assets" / "loop.css").write_text(loop_anim.loop_css(), encoding="utf-8")
