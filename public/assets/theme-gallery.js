@@ -34,9 +34,16 @@ export function reportUrl(themeId, version) {
 }
 
 export function mailUrl(themeId, version) {
-  const params = new URLSearchParams();
-  params.set("subject", `Theme report: ${themeId} ${version}`);
-  return `mailto:${SUPPORT_EMAIL}?${params.toString()}`;
+  // Not URLSearchParams: it encodes a space as "+" (application/x-www-form-urlencoded), but a
+  // mailto URI's query is defined by RFC 6068, which has no "+ means space" rule -- a mail client
+  // reading it strictly would show the subject with literal plus signs instead of spaces
+  // (verifier finding, PR #151). encodeURIComponent percent-encodes a space as %20, which RFC
+  // 6068 decoding turns back into a space, so this is the one place in this file that builds a
+  // query string by hand instead of with URLSearchParams. check_theme_gallery.py decodes this
+  // with urllib.parse.unquote (not parse_qs, which is the form-decoding rule) and requires no
+  // '+' in the result.
+  const subject = encodeURIComponent(`Theme report: ${themeId} ${version}`);
+  return `mailto:${SUPPORT_EMAIL}?subject=${subject}`;
 }
 
 // Split out from module-load time (rather than run directly below) so this file can be imported
