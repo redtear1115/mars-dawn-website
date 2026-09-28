@@ -11,6 +11,7 @@ import hashlib
 import json
 import os
 import re
+import secrets
 import sys
 import urllib.error
 import urllib.request
@@ -249,6 +250,15 @@ def error(message: str) -> None:
     LF are still escaped per the workflow-command rules so one can't start a second command."""
     text = message.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
     print(f"::error::{text}")
+
+
+def echo_untrusted(text: str) -> None:
+    """Prints output that may quote submitted text (build_themes.py, build_pages.py) between
+    ::stop-commands:: and a random token, so no line of it can act as a workflow command (review L3)."""
+    token = secrets.token_hex(16)
+    print(f"::stop-commands::{token}")
+    print(text.rstrip("\n"))
+    print(f"::{token}::", flush=True)
 
 
 def notice(message: str) -> None:

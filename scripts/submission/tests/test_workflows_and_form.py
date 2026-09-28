@@ -100,6 +100,24 @@ class JobSplit(unittest.TestCase):
             publish_job = self.jobs(name)["publish"]
             self.assertEqual(publish_job["uses"], "./.github/workflows/theme-pr.yml")
 
+    def test_both_pr_jobs_check_out_the_gates_base_sha(self):
+        jobs = self.jobs("theme-pr.yml")
+        for job_id in ("build", "commit"):
+            checkout = [st for st in jobs[job_id]["steps"] if str(st.get("uses", "")).startswith("actions/checkout@")]
+            self.assertEqual([st["with"]["ref"] for st in checkout], ["${{ inputs.base_sha }}"], job_id)
+        for name in ("theme-approve.yml", "theme-from-pr.yml"):
+            workflow = load(name)
+            self.assertEqual(workflow["jobs"]["gate"]["outputs"]["base_sha"], "${{ steps.gate.outputs.base_sha }}")
+            self.assertEqual(workflow["jobs"]["publish"]["with"]["base_sha"], "${{ needs.gate.outputs.base_sha }}")
+        self.assertNotIn("base_sha", jobs["build"]["outputs"])
+
+    def test_the_post_approval_build_uses_no_cache(self):
+        build = self.jobs("theme-pr.yml")["build"]
+        self.assertFalse([u for u in self.uses(build) if u.startswith("actions/cache")])
+        runs = " ".join(step.get("run", "") for step in build["steps"])
+        self.assertIn("kit_cli.py build", runs)
+        self.assertEqual(build["timeout-minutes"], "45")
+
     def test_write_jobs_run_no_third_party_code_and_no_kit(self):
         for name, job_id in (("theme-submission.yml", "comment"), ("theme-pr.yml", "commit")):
             job = self.jobs(name)[job_id]

@@ -14,8 +14,18 @@ one `git push` through the environment only.
    change, within its size cap; previews are whole PNGs of the preview width; themes/<id>/theme.json
    and the published copy are both exactly the gate's bytes; index.json lists this id at this version
    with that sha256, and published.json records the three new files.
-2. Those files are written onto a checkout of BASE_SHA, and staged; the staged set must equal the
-   manifest's. One commit, by github-actions[bot]'s noreply identity, at the build's commit time (so
+2. BASE_SHA is the base-branch tip the gate resolved (both jobs check out exactly it; review H1).
+   Before anything is written, refs/heads/<BASE_BRANCH> is fetched and BASE_SHA must be that tip or
+   an ancestor of it -- an ancestor because another PR may merge between the gate and this job, and
+   a commit reachable from the protected branch is code that was reviewed into it. Then (review M4)
+   index.json must be the base's with exactly this id's entry added or replaced (the entry
+   index_entry() makes from the theme, revoked unchanged, generatedAt the build's commit time) and
+   published.json the base's plus exactly this version's three files; only the theme, its three
+   published files, index.json and published.json are written, and **build_pages.py** (this
+   commit's own, on ubuntu) regenerates the pages: the working tree must then differ from BASE_SHA
+   in exactly the manifest's paths, every one byte-equal to the artifact's. A page the artifact
+   carries that build_pages.py doesn't produce, or produces differently, is refused. build_pages.py's
+   output is echoed between ::stop-commands:: markers (review L3). One commit, by github-actions[bot]'s noreply identity, at the build's commit time (so
    index.json's generatedAt stays the newest themes/ commit's time), message from a file
    (`git commit -F`) holding only the id, version, the issue or PR number, sha256s, the DCO line and
    `Co-authored-by: <login> <<id>+<login>@users.noreply.github.com>`.
@@ -207,17 +217,72 @@ def write_tree(contents: dict) -> None:
             handle.write(data)
 
 
+def check_base_on_branch(values: dict) -> None:
+    """BASE_SHA must be the tip of refs/heads/<BASE_BRANCH> on origin, or an ancestor of it."""
+    branch = values["base_branch"]
+    if not common.BASE_BRANCH_RE.fullmatch(branch):
+        raise Refusal("base", "BASE_BRANCH isn't main or release-<version>")
+    env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
+    git("fetch", "--quiet", "--no-tags", "origin", f"+refs/heads/{branch}:refs/theme-base/{branch}", env=env)
+    tip = git("rev-parse", f"refs/theme-base/{branch}").strip()
+    ok = subprocess.run(["git", "-C", str(ROOT), "merge-base", "--is-ancestor", values["base_sha"], tip],
+                        capture_output=True, text=True)
+    if ok.returncode != 0:
+        raise Refusal("base", f"BASE_SHA {values['base_sha']} isn't {branch}'s tip {tip} or an ancestor of it")
+
+
+def base_json(values: dict, rel: str):
+    return rules.strict_json(git("show", f"{values['base_sha']}:{rel}").encode("utf-8"))
+
+
+def check_data_diffs(values: dict, manifest: dict, contents: dict) -> None:
+    """index.json and published.json differ from the base by exactly this theme (review M4)."""
+    import datetime
+    tid, version = values["theme_id"], values["version"]
+    doc = rules.strict_json(contents[f"{rules.THEMES_REL}/{tid}/theme.json"])
+    old, new = base_json(values, rules.INDEX_REL), rules.strict_json(contents[rules.INDEX_REL])
+    stamp = datetime.datetime.fromtimestamp(manifest["epoch"], tz=datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    others_old = [t for t in old.get("themes", []) if not (isinstance(t, dict) and t.get("id") == tid)]
+    others_new = [t for t in new.get("themes", []) if not (isinstance(t, dict) and t.get("id") == tid)]
+    mine = [t for t in new.get("themes", []) if isinstance(t, dict) and t.get("id") == tid]
+    expected = dict(old, generatedAt=stamp,
+                    themes=sorted(others_old + [rules.index_entry(doc, values["sha256"])], key=lambda t: t.get("id", "")))
+    if (set(new) != set(old) or new.get("revoked") != old.get("revoked") or others_new != others_old
+            or mine != [rules.index_entry(doc, values["sha256"])] or new != expected):
+        raise Refusal("artifact", f"index.json differs from the base by more than {tid} {version}'s entry")
+    old_pub, new_pub = base_json(values, rules.PUBLISHED_REL), rules.strict_json(contents[rules.PUBLISHED_REL])
+    v1 = f"{rules.V1_REL}/{tid}/{version}/"
+    added = {f"{tid}/{version}/{name}": common.sha256(contents[v1 + name]) for name in rules.FILE_NAMES}
+    if new_pub != dict(old_pub, **added) or set(added) & set(old_pub):
+        raise Refusal("artifact", f"published.json differs from the base by more than {tid} {version}'s three files")
+
+
 def make_commit(values: dict, manifest: dict, contents: dict) -> str:
+    check_base_on_branch(values)
     head = git("rev-parse", "HEAD").strip()
     if head != values["base_sha"]:
-        raise Refusal("git", "the checkout isn't the build's base commit")
+        raise Refusal("git", "the checkout isn't the base commit the gate resolved")
     if git("status", "--porcelain", "--untracked-files=all").strip():
         raise Refusal("git", "the checkout isn't clean")
-    write_tree(contents)
-    git("add", "--", *sorted(contents))
-    staged = sorted(p for p in git("diff", "--cached", "--name-only", "-z").split("\0") if p)
-    if staged != sorted(contents):
-        raise Refusal("git", "the staged paths aren't exactly the manifest's")
+    check_data_diffs(values, manifest, contents)
+    data_files = {p: d for p, d in contents.items() if common.bot_path_kind(p, values["theme_id"], values["version"]) != "page"}
+    write_tree(data_files)
+    pages = subprocess.run([sys.executable, str(ROOT / "scripts" / "build_pages.py")], cwd=str(ROOT),
+                           capture_output=True, text=True, timeout=600,
+                           env=dict(os.environ, PYTHONDONTWRITEBYTECODE="1"))
+    common.echo_untrusted(pages.stdout + pages.stderr)
+    if pages.returncode != 0:
+        raise Refusal("pages", f"build_pages.py failed (exit {pages.returncode})")
+    git("add", "-A")
+    out = git("diff", "--cached", "--name-status", "-z", "--no-renames", values["base_sha"])
+    parts = [p for p in out.split("\0") if p]
+    changed = {parts[i + 1]: parts[i] for i in range(0, len(parts) - 1, 2)}
+    if sorted(changed) != sorted(contents) or set(changed.values()) - {"A", "M"}:
+        extra = sorted(set(changed) ^ set(contents))
+        raise Refusal("pages", f"the rebuilt tree and the artifact differ in which paths change: {', '.join(extra)}")
+    for path, data in contents.items():
+        if read_regular(ROOT / path, common.SIZE_CAPS["page"]) != data:
+            raise Refusal("pages", f"{path}: build_pages.py here doesn't produce the artifact's bytes")
     epoch = manifest["epoch"]
     env = dict(os.environ)
     env.update({"GIT_AUTHOR_NAME": common.BOT_NAME, "GIT_AUTHOR_EMAIL": common.BOT_EMAIL,

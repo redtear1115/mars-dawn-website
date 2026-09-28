@@ -75,8 +75,9 @@ class ParseSubmission(unittest.TestCase):
 
 
 class SubmissionGate(unittest.TestCase):
-    def run_gate(self, issue, comments=()):
-        api = s.FakeGitHub({f"/repos/{s.REPO}/issues/7": issue, f"/repos/{s.REPO}/issues/7/comments": list(comments)})
+    def run_gate(self, issue, comments=(), open_issues=None):
+        api = s.FakeGitHub({f"/repos/{s.REPO}/issues/7": issue, f"/repos/{s.REPO}/issues/7/comments": list(comments),
+                            f"/repos/{s.REPO}/issues": open_issues if open_issues is not None else [issue]})
         out = out_dir()
         return gate.submission(api, s.issues_event(), out), out, api
 
@@ -120,6 +121,21 @@ class SubmissionGate(unittest.TestCase):
             self.assertEqual((outputs["action"], outputs["reason"]), ("reject", code), code)
             self.assertFalse((out / "theme.json").exists())
 
+    def test_site_rules_are_screened_on_ubuntu_before_any_mac_job(self):
+        for doc in (s.theme_doc(tid="dawn"), s.theme_doc(version="01.0.0"), s.theme_doc(tid="Bad_Id"),
+                    dict(s.theme_doc(), scenarios=["fun"])):
+            outputs, out, _ = self.run_gate(s.issue(body=s.issue_body(s.theme_text(doc))))
+            self.assertEqual((outputs["action"], outputs["reason"]), ("reject", "site-rules"))
+            self.assertFalse((out / "theme.json").exists())
+
+    def test_more_than_three_open_submissions_are_rejected(self):
+        body = s.issue_body(s.theme_text(s.theme_doc()))
+        four = [s.issue(number=n, body="x") for n in (7, 8, 9, 10)]
+        outputs, out, _ = self.run_gate(s.issue(body=body), open_issues=four)
+        self.assertEqual((outputs["action"], outputs["reason"]), ("reject", "too-many"))
+        three_and_a_pr = four[:3] + [dict(four[3], pull_request={})]
+        self.assertEqual(self.run_gate(s.issue(body=body), open_issues=three_and_a_pr)[0]["action"], "validate")
+
     def test_unchanged_theme_is_not_validated_again(self):
         text = s.theme_text(s.theme_doc())
         sha = common.sha256(s.expected_bytes(text))
@@ -152,10 +168,13 @@ class ApproveGate(unittest.TestCase):
         os.environ.pop("THEME_BASE_BRANCH", None)
 
     def run_gate(self, issue=None, comments=None, label=common.APPROVED_LABEL, sender=("redtear1115", s.OWNER_ID),
-                 maintainers=(s.OWNER_ID,)):
+                 maintainers=(s.OWNER_ID,), events=None, branch="main"):
         issue = issue or s.issue(body=s.issue_body(self.text))
         comments = comments if comments is not None else [s.bot_comment(1, "valid", self.sha)]
-        api = s.FakeGitHub({f"/repos/{s.REPO}/issues/7": issue, f"/repos/{s.REPO}/issues/7/comments": comments})
+        routes = {f"/repos/{s.REPO}/issues/7": issue, f"/repos/{s.REPO}/issues/7/comments": comments,
+                  f"/repos/{s.REPO}/issues/7/events": events or []}
+        routes.update(s.base_routes(branch))
+        api = s.FakeGitHub(routes)
         out = out_dir()
         return gate.approve(api, s.issues_event(action="labeled", label=label, sender=sender), set(maintainers), out), out
 
@@ -171,7 +190,8 @@ class ApproveGate(unittest.TestCase):
         self.assertEqual(outputs["sha256"], self.sha)
         self.assertEqual((outputs["theme_id"], outputs["version"], outputs["login"], outputs["user_id"]),
                          ("olympus-dusk", "1.0.0", "janedoe", s.OPENER[1]))
-        self.assertEqual((outputs["author_change"], outputs["base_branch"]), ("false", "main"))
+        self.assertEqual((outputs["author_change"], outputs["base_branch"], outputs["base_sha"]),
+                         ("false", "main", s.BASE_TIP))
         self.assertEqual((out / "theme.json").read_bytes(), s.expected_bytes(self.text))
 
     def test_non_maintainer_label_does_nothing(self):
@@ -232,12 +252,31 @@ class ApproveGate(unittest.TestCase):
         self.refused("author", issue=s.issue(body=s.issue_body(text)),
                      comments=[s.bot_comment(1, "valid", common.sha256(s.expected_bytes(text)))])
 
-    def test_author_change_label_allows_another_author(self):
+    def author_change_case(self, events):
         text = s.theme_text(s.theme_doc(github="someoneelse"))
         sha = common.sha256(s.expected_bytes(text))
-        outputs, _ = self.run_gate(issue=s.issue(body=s.issue_body(text), labels=(common.SUBMISSION_LABEL, common.AUTHOR_CHANGE_LABEL)),
-                                   comments=[s.bot_comment(1, "valid", sha)])
+        return dict(issue=s.issue(body=s.issue_body(text), labels=(common.SUBMISSION_LABEL, common.AUTHOR_CHANGE_LABEL)),
+                    comments=[s.bot_comment(1, "valid", sha)], events=events)
+
+    def test_author_change_label_by_a_maintainer_allows_another_author(self):
+        events = [s.label_event(common.AUTHOR_CHANGE_LABEL, ("redtear1115", s.OWNER_ID))]
+        outputs, _ = self.run_gate(**self.author_change_case(events))
         self.assertEqual((outputs["action"], outputs["author_change"]), ("build", "true"))
+
+    def test_author_change_label_by_a_non_maintainer_doesnt_count(self):
+        self.refused("author", **self.author_change_case([s.label_event(common.AUTHOR_CHANGE_LABEL, s.STRANGER)]))
+
+    def test_author_change_label_readded_by_a_non_maintainer_doesnt_count(self):
+        events = [s.label_event(common.AUTHOR_CHANGE_LABEL, ("redtear1115", s.OWNER_ID)),
+                  s.label_event(common.AUTHOR_CHANGE_LABEL, s.STRANGER)]
+        self.refused("author", **self.author_change_case(events))
+
+    def test_author_change_label_with_no_labeled_event_doesnt_count(self):
+        self.refused("author", **self.author_change_case([]))
+
+    def test_base_branch_that_doesnt_resolve_is_refused(self):
+        with self.assertRaises(common.ApiError):
+            self.run_gate(branch="release-9.9.9")
 
     def test_author_matches_ascii_case_insensitively_only(self):
         self.assertTrue(common.author_matches({"author": {"github": "JaneDoe"}}, "janedoe"))
@@ -251,7 +290,7 @@ class ApproveGate(unittest.TestCase):
     def test_base_branch_variable(self):
         os.environ["THEME_BASE_BRANCH"] = "release-1.0.4"
         try:
-            self.assertEqual(self.run_gate()[0]["base_branch"], "release-1.0.4")
+            self.assertEqual(self.run_gate(branch="release-1.0.4")[0]["base_branch"], "release-1.0.4")
             os.environ["THEME_BASE_BRANCH"] = "release; rm -rf /"
             with self.assertRaises(common.Refusal):
                 self.run_gate()
@@ -294,10 +333,16 @@ class FromPrGate(unittest.TestCase):
         message = self.refused("author", routes=s.pr_routes(theme=theme))
         self.assertIn("PR author", message)
 
-    def test_author_change_label_on_the_pr_allows_it(self):
+    def test_author_change_label_on_the_pr_by_a_maintainer_allows_it(self):
         theme = s.expected_bytes(s.theme_text(s.theme_doc(github="someoneelse")))
         outputs, _ = self.run_gate(routes=s.pr_routes(theme=theme, labels=(common.AUTHOR_CHANGE_LABEL,)))
-        self.assertEqual(outputs["author_change"], "true")
+        self.assertEqual((outputs["author_change"], outputs["base_sha"]), ("true", s.BASE_TIP))
+
+    def test_author_change_label_on_the_pr_by_its_author_doesnt_count(self):
+        theme = s.expected_bytes(s.theme_text(s.theme_doc(github="someoneelse")))
+        routes = s.pr_routes(theme=theme, labels=(common.AUTHOR_CHANGE_LABEL,))
+        routes[f"/repos/{s.REPO}/issues/31/events"] = [s.label_event(common.AUTHOR_CHANGE_LABEL, s.OPENER)]
+        self.refused("author", routes=routes)
 
     def test_missing_signoff_is_refused(self):
         commits = [s.signed_commit("b" * 40, "janedoe", s.OPENER[1]),

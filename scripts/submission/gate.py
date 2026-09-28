@@ -13,14 +13,22 @@ where the next job checks the file against it. Outputs are closed-grammar tokens
 (common.write_outputs).
 
 submission -> action=skip (closed, not a submission, theme unchanged since the last validation) |
-reject (reason=too-large/no-theme/json/dco; the comment job says why) | validate.
+reject (reason=too-large/no-theme/json/dco/site-rules/too-many; the comment job says why) | validate.
+The site's own rules (id grammar and not a built-in's, version, name/summary/author/scenarios) are
+checked here, on ubuntu, before any macOS job starts (review L2), and an opener with more than
+MAX_OPEN_SUBMISSIONS open submission issues gets a fixed-text rejection instead of a validation.
 
 approve -> action=skip (a label other than theme-approved, or a sender outside the maintainer id
 allowlist: nothing happens) | build. Anything else is refused: an ::error:: naming the rule and exit
 1, and no pull request. The rules: issue open and labelled theme-submission; body parses; DCO still
 ticked; the theme's sha256 equals the sha256 in the latest bot validation comment and that comment's
 verdict is valid; author.github equals the issue opener's login (ASCII case-insensitively) unless the
-issue has the theme-author-change label; id and version in the site's grammar, id not a built-in's.
+issue has the theme-author-change label **applied by a maintainer** (the latest `labeled` event for
+it in /issues/{n}/events has an allowlisted actor.id; review L1); id and version in the site's
+grammar, id not a built-in's.
+
+approve and from-pr also resolve the tip of THEME_BASE_BRANCH through the API and output it as
+base_sha: the build job and the commit job both check out exactly that commit (review H1).
 
 from-pr -> build, or refused as above. The sender must be in the maintainer allowlist; PR_NUMBER a
 plain integer; the PR open, on this repository, changing exactly one path, themes/<id>/theme.json
@@ -45,6 +53,7 @@ import common  # noqa: E402
 from common import Refusal, rules  # noqa: E402
 
 THEME_PATH_RE = re.compile(r"themes/([a-z0-9]+(?:-[a-z0-9]+)*)/theme\.json")
+MAX_OPEN_SUBMISSIONS = 3
 
 
 def issue_number(event: dict) -> int:
@@ -63,6 +72,47 @@ def base_branch() -> str:
     if not common.BASE_BRANCH_RE.fullmatch(value):
         raise Refusal("input", "THEME_BASE_BRANCH must be main or release-<version>")
     return value
+
+
+def base_tip(api, branch: str) -> str:
+    """The commit at the tip of refs/heads/<branch>, read through the API by this (trusted) gate."""
+    ref = api.get(f"/repos/{{repo}}/git/ref/heads/{branch}")
+    obj = ref.get("object") if isinstance(ref, dict) else None
+    sha = obj.get("sha") if isinstance(obj, dict) else None
+    if not isinstance(obj, dict) or obj.get("type") != "commit" or not common.COMMIT_RE.fullmatch(sha or ""):
+        raise Refusal("base", f"refs/heads/{branch} doesn't resolve to a commit")
+    return sha
+
+
+def author_change_allowed(api, number: int, labels: set, maintainers: set) -> bool:
+    """theme-author-change counts only while it's on the issue/PR and the latest `labeled` event
+    that added it was by an allowlisted maintainer (anyone with triage access can add labels)."""
+    if common.AUTHOR_CHANGE_LABEL not in labels:
+        return False
+    events = api.paginate(f"/repos/{{repo}}/issues/{number}/events", common.MAX_COMMENT_PAGES)
+    added = [e for e in events if isinstance(e, dict) and e.get("event") == "labeled"
+             and isinstance(e.get("label"), dict) and e["label"].get("name") == common.AUTHOR_CHANGE_LABEL]
+    if not added:
+        return False
+    actor = added[-1].get("actor")
+    actor_id = actor.get("id") if isinstance(actor, dict) else None
+    return common.int_not_bool(actor_id) and actor_id in maintainers
+
+
+def site_rules_ok(doc: dict) -> bool:
+    """The site's own publishing rules, the ones that need no kit (check_theme_index.py's)."""
+    try:
+        tid, _ = publishable(doc)
+    except Refusal:
+        return False
+    problems = []
+    rules.check_source_doc(problems, "theme.json", tid, doc)
+    return not problems
+
+
+def open_submissions(api, login: str) -> int:
+    items = api.get(f"/repos/{{repo}}/issues?state=open&labels={common.SUBMISSION_LABEL}&creator={login}&per_page=100")
+    return len([i for i in items or [] if isinstance(i, dict) and "pull_request" not in i])
 
 
 def publishable(doc: dict) -> tuple:
@@ -98,9 +148,13 @@ def submission(api, event: dict, out: Path) -> dict:
         return {"action": "skip", "reason": "not-a-submission", "number": number}
     login, _ = common.user_of(issue)
     try:
-        data, _doc, ticked = common.parse_submission(issue.get("body"))
+        if open_submissions(api, login) > MAX_OPEN_SUBMISSIONS:
+            raise Refusal("too-many", "The opener has too many open submissions.")
+        data, doc, ticked = common.parse_submission(issue.get("body"))
         if not ticked:
             raise Refusal("dco", "The Developer Certificate of Origin box isn't ticked.")
+        if not site_rules_ok(doc):
+            raise Refusal("site-rules", "The theme doesn't meet the gallery's own rules.")
     except Refusal as refusal:
         return {"action": "reject", "reason": refusal.code, "number": number}
     digest = common.sha256(data)
@@ -150,15 +204,17 @@ def approve(api, event: dict, maintainers: set, out: Path) -> dict:
     if verdict != "valid":
         raise Refusal("verdict", f"#{number}: the latest validation comment (sha256 {digest}) says {verdict}, not valid")
 
-    author_change = common.AUTHOR_CHANGE_LABEL in labels
+    author_change = author_change_allowed(api, number, labels, maintainers)
     if not author_change and not common.author_matches(doc, login):
         raise Refusal("author", f"#{number}: author.github isn't the login of the account that opened the issue "
-                                f"({login}); add {common.AUTHOR_CHANGE_LABEL} if that is intended")
+                                f"({login}); a maintainer adds {common.AUTHOR_CHANGE_LABEL} if that is intended")
     tid, version = publishable(doc)
+    branch = base_branch()
+    base_sha = base_tip(api, branch)
     write_theme(out, data)
     return {"action": "build", "source": "issue", "number": number, "sha256": digest, "theme_id": tid,
             "version": version, "login": login, "user_id": uid,
-            "author_change": "true" if author_change else "false", "base_branch": base_branch()}
+            "author_change": "true" if author_change else "false", "base_branch": branch, "base_sha": base_sha}
 
 
 # --- theme-from-pr.yml ----------------------------------------------------------------------------
@@ -254,10 +310,10 @@ def from_pr(api, event: dict, pr_text: str, maintainers: set, out: Path) -> dict
         raise Refusal("id", f"PR #{number}: the theme's id isn't its folder name {folder}")
 
     labels = common.label_names(pr)
-    author_change = common.AUTHOR_CHANGE_LABEL in labels
+    author_change = author_change_allowed(api, number, labels, maintainers)
     if not author_change and not common.author_matches(doc, login):
-        raise Refusal("author", f"PR #{number}: author.github isn't the PR author's login ({login}); add "
-                                f"{common.AUTHOR_CHANGE_LABEL} to the PR if that is intended")
+        raise Refusal("author", f"PR #{number}: author.github isn't the PR author's login ({login}); a maintainer "
+                                f"adds {common.AUTHOR_CHANGE_LABEL} to the PR if that is intended")
 
     count = pr.get("commits")
     if not common.int_not_bool(count) or count > common.MAX_PR_COMMITS:
@@ -272,10 +328,12 @@ def from_pr(api, event: dict, pr_text: str, maintainers: set, out: Path) -> dict
                              f"sign off every commit (git commit -s) with your GitHub noreply address or an "
                              f"email GitHub links to your account")
 
+    branch = base_branch()
+    base_sha = base_tip(api, branch)
     write_theme(out, data)
     return {"action": "build", "source": "pr", "number": number, "sha256": common.sha256(data), "theme_id": tid,
             "version": version, "login": login, "user_id": uid,
-            "author_change": "true" if author_change else "false", "base_branch": base_branch()}
+            "author_change": "true" if author_change else "false", "base_branch": branch, "base_sha": base_sha}
 
 
 def main(argv=None) -> int:

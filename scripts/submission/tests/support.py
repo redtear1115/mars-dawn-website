@@ -61,6 +61,18 @@ def person_comment(cid, body, who=STRANGER) -> dict:
     return {"id": cid, "body": body, "user": user(*who)}
 
 
+BASE_TIP = "9" * 40
+
+
+def base_routes(branch="main", sha=BASE_TIP) -> dict:
+    return {f"/repos/{REPO}/git/ref/heads/{branch}": {"ref": f"refs/heads/{branch}",
+                                                        "object": {"type": "commit", "sha": sha}}}
+
+
+def label_event(name, actor) -> dict:
+    return {"event": "labeled", "label": {"name": name}, "actor": user(*actor)}
+
+
 def issues_event(number=7, action="opened", label=None, sender=OPENER) -> dict:
     event = {"action": action, "issue": {"number": number}, "sender": user(*sender)}
     if label is not None:
@@ -108,7 +120,7 @@ def pr_routes(number=31, theme: bytes = None, author=OPENER, files=None, mode="1
         commits = [signed_commit("b" * 40, login, uid)]
     if files is None:
         files = [{"filename": f"themes/{tid}/theme.json", "status": "added", "sha": blob}]
-    return {
+    routes = {
         f"/repos/{REPO}/pulls/{number}": {"number": number, "state": state, "user": user(login, uid),
                                            "head": {"sha": head}, "base": {"repo": {"full_name": base_repo}},
                                            "labels": [{"name": n} for n in labels], "commits": len(commits)},
@@ -120,7 +132,10 @@ def pr_routes(number=31, theme: bytes = None, author=OPENER, files=None, mode="1
         f"/repos/{REPO}/git/trees/{trees['folder']}": {"tree": [{"path": "theme.json", "type": "blob", "mode": mode,
                                                                  "sha": blob, "size": len(theme)}]},
         f"/repos/{REPO}/git/blobs/{blob}": {"encoding": "base64", "content": base64.b64encode(theme).decode()},
+        f"/repos/{REPO}/issues/{number}/events": [label_event(n, ("redtear1115", OWNER_ID)) for n in labels],
     }
+    routes.update(base_routes())
+    return routes
 
 
 def signed_commit(sha, login, uid, email=None, signoff=True, gh_author_id=None) -> dict:

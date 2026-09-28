@@ -38,6 +38,12 @@ REJECTIONS = {
     "json": f"The **{common.THEME_HEADING}** field isn't one valid JSON object (or it repeats a key). "
             f"Paste the JSON exactly as the simulator exports it.",
     "dco": f"Tick the **{common.DCO_HEADING}** box by editing this issue; the theme is checked once it's ticked.",
+    "site-rules": f"The theme doesn't meet the gallery's rules for an id (lowercase words joined by single hyphens, at "
+                  f"most 32 characters, not a built-in theme's), a version (MAJOR.MINOR.PATCH, no leading zeros), "
+                  f"an English name and summary, an author name and one or two scenarios. The simulator "
+                  f"({common.SIMULATOR_URL}) produces themes that meet them.",
+    "too-many": f"You have more than {3} open theme submissions. Please wait until some of them are reviewed, then "
+                f"edit this issue to have it checked.",
 }
 
 

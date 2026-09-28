@@ -3,7 +3,10 @@
 from kit_cli.py; runs on a checkout of the target branch with no credentials in its git config.
 
     SOURCE=issue|pr NUMBER=<n> GATE_SHA256=<hex> THEME_ID=<id> VERSION=<v> AUTHOR_CHANGE=true|false \
-        stage.py --theme theme.json --bin MARSDAWN --out DIR
+        BASE_SHA=<commit> stage.py --theme theme.json --bin MARSDAWN --out DIR
+
+The checkout must be exactly BASE_SHA, the base-branch tip the gate resolved (review H1).
+build_themes.py's output is echoed between ::stop-commands:: markers (review L3).
 
 1. The gate's theme.json must have the gate's sha256, id and version.
 2. It's written to themes/<id>/theme.json and **committed** locally first (build_themes.py needs
@@ -70,6 +73,7 @@ def gate_values() -> dict:
         "theme_id": common.env_token("THEME_ID", rules.ID_RE),
         "version": common.env_token("VERSION", rules.VERSION_RE),
         "author_change": common.env_token("AUTHOR_CHANGE", re.compile(r"true|false")) == "true",
+        "base_sha": common.env_token("BASE_SHA", common.COMMIT_RE),
     }
 
 
@@ -113,8 +117,8 @@ def stage(theme: Path, binary: Path, out: Path, values: dict, build_cmd=None) ->
         raise Refusal("input", "the theme's id or version isn't the gate's")
 
     base = git("rev-parse", "HEAD").strip()
-    if not common.COMMIT_RE.fullmatch(base):
-        raise Refusal("git", "HEAD isn't a commit id")
+    if base != values["base_sha"]:
+        raise Refusal("git", "the checkout isn't the base commit the gate resolved")
     if git("status", "--porcelain", "--untracked-files=all").strip():
         raise Refusal("git", "the checkout isn't clean")
 
@@ -126,9 +130,10 @@ def stage(theme: Path, binary: Path, out: Path, values: dict, build_cmd=None) ->
     cmd = build_cmd or [sys.executable, str(ROOT / "scripts" / "build_themes.py"), "--marsdawn-bin", str(binary)]
     if values["author_change"]:
         cmd += ["--allow-author-change", tid]
-    build = subprocess.run(cmd, cwd=str(ROOT), env=bot_env(epoch), timeout=1500)
+    build = subprocess.run(cmd, cwd=str(ROOT), env=bot_env(epoch), timeout=1500, capture_output=True, text=True)
+    common.echo_untrusted(build.stdout + build.stderr)
     if build.returncode != 0:
-        raise Refusal("build", f"build_themes.py refused or failed (exit {build.returncode}); see its ::error:: lines")
+        raise Refusal("build", f"build_themes.py refused or failed (exit {build.returncode}); see its output above")
 
     files = {}
     for status, path in changed_against(base):
@@ -151,7 +156,7 @@ def stage(theme: Path, binary: Path, out: Path, values: dict, build_cmd=None) ->
                 "files": dict(sorted(files.items()))}
     text = json.dumps(manifest, indent=2, sort_keys=True) + "\n"
     (out / "manifest.json").write_text(text, encoding="utf-8")
-    return {"manifest_sha256": common.sha256(text.encode("utf-8")), "base_sha": base, "epoch": epoch}
+    return {"manifest_sha256": common.sha256(text.encode("utf-8")), "epoch": epoch}
 
 
 def main(argv=None) -> int:

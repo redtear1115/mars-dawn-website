@@ -39,6 +39,7 @@ jobs:
       user_id: ${{ steps.gate.outputs.user_id }}
       author_change: ${{ steps.gate.outputs.author_change }}
       base_branch: ${{ steps.gate.outputs.base_branch }}
+      base_sha: ${{ steps.gate.outputs.base_sha }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -77,3 +78,4 @@ jobs:
       user_id: ${{ needs.gate.outputs.user_id }}
       author_change: ${{ needs.gate.outputs.author_change }}
       base_branch: ${{ needs.gate.outputs.base_branch }}
+      base_sha: ${{ needs.gate.outputs.base_sha }}

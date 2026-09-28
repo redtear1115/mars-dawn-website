@@ -12,7 +12,7 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 TESTS = Path(__file__).resolve().parent / "tests"
-MIN_TESTS = 120
+MIN_TESTS = 140
 
 
 def main() -> int:
