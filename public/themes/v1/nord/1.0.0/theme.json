@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "nord",
+  "version": "1.0.0",
+  "name": {
+    "en": "Nord",
+    "zh-Hant": "極地雪境",
+    "zh-Hans": "极地雪境",
+    "ja": "ノルド"
+  },
+  "summary": {
+    "en": "An arctic, north-bluish palette, with an original light companion — adjusted for readability, credited to Nord",
+    "zh-Hant": "北歐冰藍色調,並原創搭配一款淺色版本 — 為可讀性調整,致敬 Nord 專案"
+  },
+  "fontDesign": "sans",
+  "scenarios": [
+    "technical-docs",
+    "agent-review"
+  ],
+  "author": {
+    "name": "Southern Light",
+    "github": "redtear1115"
+  },
+  "license": "Apache-2.0",
+  "light": {
+    "background": "#ECEFF4",
+    "surface": "#E5E9F0",
+    "text": "#2E3440",
+    "muted": "#4C566A",
+    "border": "#D8DEE9",
+    "heading": "#4E6E97",
+    "accent": "#B44953",
+    "link": "#4E6E97",
+    "quote": "#4393AA",
+    "syntax": {
+      "keyword": "#4B6B92",
+      "string": "#47733B",
+      "comment": "#4C566A",
+      "number": "#885A80",
+      "function": "#077480",
+      "type": "#3A6BA1"
+    },
+    "diagram": {
+      "node": "#D8DEE9",
+      "nodeBorder": "#5C7FAB",
+      "text": "#2E3440",
+      "line": "#4C566A",
+      "secondary": "#DCEAE9",
+      "tertiary": "#F1EDF4",
+      "note": "#F1E9D4"
+    }
+  },
+  "dark": {
+    "background": "#2E3440",
+    "surface": "#3B4252",
+    "text": "#D8DEE9",
+    "muted": "#A4AFBF",
+    "border": "#4C566A",
+    "heading": "#88C0D0",
+    "accent": "#88C0D0",
+    "link": "#81A1C1",
+    "quote": "#707E98",
+    "syntax": {
+      "keyword": "#96B1CB",
+      "string": "#A3BE8C",
+      "comment": "#A4AFBF",
+      "number": "#C3A5BD",
+      "function": "#88C0D0",
+      "type": "#8FBCBB"
+    },
+    "diagram": {
+      "node": "#3B4252",
+      "nodeBorder": "#88C0D0",
+      "text": "#ECEFF4",
+      "line": "#707E98",
+      "secondary": "#2E3B3A",
+      "tertiary": "#332E3D",
+      "note": "#3A3626"
+    }
+  },
+  "style": {
+    "radius": 4,
+    "hr": {
+      "style": {
+        "type": "line",
+        "color": "border",
+        "thickness": 1
+      }
+    },
+    "table": {
+      "header": {
+        "type": "surface"
+      }
+    },
+    "blockquote": {
+      "style": {
+        "type": "bar",
+        "width": 3
+      }
+    },
+    "listMarker": "muted"
+  }
+}
