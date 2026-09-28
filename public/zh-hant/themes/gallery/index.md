@@ -12,14 +12,18 @@
 
 筆記分享
 
-- ![Dracula — light preview](/themes/v1/dracula/1.0.0/preview-light.png) ![Dracula — dark preview](/themes/v1/dracula/1.0.0/preview-dark.png) **Dracula** v1.0.0 The classic dark vampire palette, with Alucard by day — adjusted for readability, credited to Dracula Theme 技術文件 審閱代理產出 作者： Southern Light 檢舉 用電子郵件檢舉
-- ![Gruvbox — light preview](/themes/v1/gruvbox/1.0.0/preview-light.png) ![Gruvbox — dark preview](/themes/v1/gruvbox/1.0.0/preview-dark.png) **Gruvbox** v1.0.0 A warm retro palette of cream, brown and orange — credited to morhetz/gruvbox 技術文件 筆記分享 作者： Southern Light 檢舉 用電子郵件檢舉
+- ![Dracula — light preview](/themes/v1/dracula/1.0.1/preview-light.png) ![Dracula — dark preview](/themes/v1/dracula/1.0.1/preview-dark.png) **Dracula** v1.0.1 The classic dark vampire palette, with Alucard by day — adapted from Dracula Theme, adjusted for readability 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#dracula) 檢舉 用電子郵件檢舉
+- ![Gruvbox — light preview](/themes/v1/gruvbox/1.0.1/preview-light.png) ![Gruvbox — dark preview](/themes/v1/gruvbox/1.0.1/preview-dark.png) **Gruvbox** v1.0.1 A warm retro palette of cream, brown and orange — adapted from Gruvbox, adjusted for readability 技術文件 筆記分享 作者： Southern Light [版權與授權](/themes/third-party-notices.html#gruvbox) 檢舉 用電子郵件檢舉
 - ![Guide — light preview](/themes/v1/guide/1.0.0/preview-light.png) ![Guide — dark preview](/themes/v1/guide/1.0.0/preview-dark.png) **Guide** v1.0.0 A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs 技術文件 作者： Southern Light 檢舉 用電子郵件檢舉
-- ![Ledger — light preview](/themes/v1/ledger/1.0.0/preview-light.png) ![Ledger — dark preview](/themes/v1/ledger/1.0.0/preview-dark.png) **Ledger** v1.0.0 Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates 正式輸出 作者： Southern Light 檢舉 用電子郵件檢舉
-- ![Nord — light preview](/themes/v1/nord/1.0.0/preview-light.png) ![Nord — dark preview](/themes/v1/nord/1.0.0/preview-dark.png) **Nord** v1.0.0 An arctic, north-bluish palette, with an original light companion — adjusted for readability, credited to Nord 技術文件 審閱代理產出 作者： Southern Light 檢舉 用電子郵件檢舉
-- ![Solarized — light preview](/themes/v1/solarized/1.0.0/preview-light.png) ![Solarized — dark preview](/themes/v1/solarized/1.0.0/preview-dark.png) **Solarized** v1.0.0 Ethan Schoonover's teal-and-gold precision palette, base3 by day and base03 by night 技術文件 審閱代理產出 作者： Southern Light 檢舉 用電子郵件檢舉
+- ![Ledger — light preview](/themes/v1/ledger/1.0.1/preview-light.png) ![Ledger — dark preview](/themes/v1/ledger/1.0.1/preview-dark.png) **Ledger** v1.0.1 Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates 正式輸出 作者： Southern Light 檢舉 用電子郵件檢舉
+- ![Nord — light preview](/themes/v1/nord/1.0.1/preview-light.png) ![Nord — dark preview](/themes/v1/nord/1.0.1/preview-dark.png) **Nord** v1.0.1 An arctic, north-bluish palette, with an original light companion — adapted from Nord, adjusted for readability 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#nord) 檢舉 用電子郵件檢舉
+- ![Solarized — light preview](/themes/v1/solarized/1.0.1/preview-light.png) ![Solarized — dark preview](/themes/v1/solarized/1.0.1/preview-dark.png) **Solarized** v1.0.1 Ethan Schoonover's teal-and-gold precision palette — adapted from Solarized, adjusted for readability 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#solarized) 檢舉 用電子郵件檢舉
 - ![Spec — light preview](/themes/v1/spec/1.0.0/preview-light.png) ![Spec — dark preview](/themes/v1/spec/1.0.0/preview-dark.png) **Spec** v1.0.0 Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs 審閱代理產出 正式輸出 作者： Southern Light 檢舉 用電子郵件檢舉
-- ![Story — light preview](/themes/v1/story/1.0.0/preview-light.png) ![Story — dark preview](/themes/v1/story/1.0.0/preview-dark.png) **Story** v1.0.0 Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes 筆記分享 審閱代理產出 作者： Southern Light 檢舉 用電子郵件檢舉
+- ![Story — light preview](/themes/v1/story/1.0.1/preview-light.png) ![Story — dark preview](/themes/v1/story/1.0.1/preview-dark.png) **Story** v1.0.1 Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes 筆記分享 審閱代理產出 作者： Southern Light 檢舉 用電子郵件檢舉
+
+## 版權與授權
+
+Dracula、Nord、Gruvbox 與 Solarized 改編自開放原始碼的配色專案；每個專案的版權聲明與完整授權條文請見[第三方授權聲明](/themes/third-party-notices.html)。
 
 ## 主題有問題嗎？
 

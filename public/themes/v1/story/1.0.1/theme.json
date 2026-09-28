@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "story",
+  "version": "1.0.1",
+  "name": {
+    "en": "Story",
+    "zh-Hant": "故事卡",
+    "zh-Hans": "故事卡",
+    "ja": "ストーリー"
+  },
+  "summary": {
+    "en": "Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes",
+    "zh-Hant": "亮色便利貼、圓角外觀與鮮明任務勾選框，適合使用者故事與衝刺筆記"
+  },
+  "fontDesign": "rounded",
+  "scenarios": [
+    "notes-sharing",
+    "agent-review"
+  ],
+  "author": {
+    "name": "Southern Light",
+    "github": "redtear1115"
+  },
+  "license": "Apache-2.0",
+  "light": {
+    "background": "#FFF9E5",
+    "surface": "#FFF0B8",
+    "text": "#2E2A1F",
+    "muted": "#6E6248",
+    "border": "#F0DE8C",
+    "heading": "#B5451B",
+    "accent": "#C21858",
+    "link": "#146B8C",
+    "quote": "#8A7B3E",
+    "syntax": {
+      "keyword": "#C21858",
+      "string": "#177A4B",
+      "comment": "#6E6248",
+      "number": "#A34D14",
+      "function": "#5B3E8C",
+      "type": "#146B8C"
+    },
+    "diagram": {
+      "node": "#FFF0B8",
+      "nodeBorder": "#C21858",
+      "text": "#2E2A1F",
+      "line": "#8A7B3E",
+      "secondary": "#DFF3EA",
+      "tertiary": "#FDEAF1",
+      "note": "#FFF3D0"
+    }
+  },
+  "dark": {
+    "background": "#241E2E",
+    "surface": "#332B40",
+    "text": "#F3EFE3",
+    "muted": "#B6ABCB",
+    "border": "#4A4058",
+    "heading": "#FFB37A",
+    "accent": "#FF6FA5",
+    "link": "#59D6D0",
+    "quote": "#C8B98A",
+    "syntax": {
+      "keyword": "#FF89B5",
+      "string": "#7BE0A0",
+      "comment": "#B6ABCB",
+      "number": "#FFC367",
+      "function": "#C9A8FF",
+      "type": "#59D6D0"
+    },
+    "diagram": {
+      "node": "#3A3048",
+      "nodeBorder": "#FF6FA5",
+      "text": "#F3EFE3",
+      "line": "#C8B98A",
+      "secondary": "#25332F",
+      "tertiary": "#3A2735",
+      "note": "#3A331C"
+    }
+  },
+  "style": {
+    "headingWeight": 800,
+    "radius": 16,
+    "h1": {
+      "decoration": {
+        "type": "gradientBar",
+        "from": "accent",
+        "to": "heading"
+      }
+    },
+    "h2": {
+      "decoration": {
+        "type": "dot",
+        "color": "accent"
+      }
+    },
+    "blockquote": {
+      "style": {
+        "type": "panel"
+      }
+    },
+    "table": {
+      "header": {
+        "type": "filled",
+        "background": "accent",
+        "text": "background"
+      },
+      "rounded": true
+    },
+    "hr": {
+      "style": {
+        "type": "gradient",
+        "colors": [
+          "accent",
+          "heading",
+          "link"
+        ]
+      }
+    },
+    "listMarker": "accent",
+    "inlineCode": "keyword"
+  }
+}
