@@ -109,6 +109,12 @@ jobs:
         env:
           PYTHONDONTWRITEBYTECODE: "1"
         run: python3 scripts/submission/run_tests.py
+      # The community gallery (#145, W4): a hostile fixture (name/summary containing `"<>&'`,
+      # `</script>`, `javascript:`) proves every index-derived string is escaped and that only a
+      # theme's own id/version -- never its name or summary -- ever reaches an href; the report
+      # link and its mailto both round-trip to exactly id + version through urllib.parse.
+      - name: The community theme gallery escapes and links correctly
+        run: python3 scripts/check_theme_gallery.py --self-test
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/release'

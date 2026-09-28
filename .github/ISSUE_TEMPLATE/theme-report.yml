@@ -1,0 +1,35 @@
+name: Report a theme
+description: Report a problem with a theme published in the MarsDawn gallery (/themes/gallery/).
+title: "[theme-report] "
+labels: ["theme-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to report a problem with a theme in the gallery: offensive or infringing
+        content, or a theme that behaves in a way it shouldn't. A maintainer reviews every report
+        by hand. This form never @-mentions the theme's author, and nothing here triggers an
+        automated workflow -- a person reads this.
+  - type: input
+    id: theme_id
+    attributes:
+      label: Theme ID
+      description: The theme's id, as shown on its card in the gallery.
+      placeholder: olympus-dusk
+    validations:
+      required: true
+  - type: input
+    id: theme_version
+    attributes:
+      label: Theme version
+      description: The version shown on the theme's card.
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong with this theme?
+      description: Describe the problem as specifically as you can.
+    validations:
+      required: true
