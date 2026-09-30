@@ -8,6 +8,7 @@
 
 - `export`：MarsDawn アプリと同じ書き出しエンジンで、1つの Markdown ファイルをページ分割された PDF にレンダリングします。ウインドウは開きません。
 - `open`：1つ以上の Markdown ファイルを MarsDawn アプリで開き、人が確認できるようにします。各ファイルが移動すべき行を指定することもできます。
+- `open --folder <path>`：フォルダもウインドウのサイドバーに表示するよう依頼し、報告してくるアプリからは、それがどうなったかを待って伝えます。
 
 ## できないこと
 
@@ -73,6 +74,27 @@ marsdawn open notes.md --line 120 --json
 
 marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方を扱う必要がある場合は `marsdawn --version` を確認してください。
 
+## フォルダを表示する
+
+```
+marsdawn open . --folder . --json
+```
+
+`--folder <path>`（または上のようにファイル引数の1つとして渡したフォルダ）は、そのフォルダもウインドウのサイドバーに、ファイルと並べて表示するよう MarsDawn に依頼します。ウインドウのサイドバーが表示できるフォルダは1つだけなので、2つ指定すると使用方法のエラーになります。フォルダを表示できないアプリは、何も開く前に拒否し、終了コード 6（`app_cannot_open_folders`）になります。ファイルだけは、そのまま開かれます。
+
+成功、終了コード 0：
+
+```
+{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/notes","requested":true,"status":"attached"},"ok":true,"opened":[]}
+```
+
+- `folder.path`：フォルダの絶対パス。
+- `folder.requested`：常に `true`。`open` はフォルダを MarsDawn に渡してすぐに戻ります。
+- `folder.status`：結果を報告してくる MarsDawn（marsdawn 0.5.3 以降、対応を宣言したアプリと組み合わせたとき）で、かつ `--wait` が 0 より大きいときだけ現れます。`attached`、`needsUser`（`waitingFor` を参照）、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable`、または `unknown`（アプリが `--wait` の時間内に応答しなかった場合。`--wait` を長くして再試行するか、「わからない」として扱ってください）のいずれかです。`needsUser` はユーザーが対応する必要があることを意味します。再試行せず、そのままユーザーに伝えてください。
+- `folder.waitingFor`：`status` が `"needsUser"` のときだけ現れます：`confirmation` または `folderChoice`。
+- `--wait <seconds>`：アプリからの報告を待つ秒数。0 から 30、デフォルトは 2。`--wait 0`、または報告してこない古い MarsDawn では待機がスキップされ、`folder` には `path` と `requested: true` しか含まれません。この機能が追加される前と同じです。
+- ArgumentParser が数値として解釈できるものの 0 から 30 の範囲外の `--wait` は使用方法のエラーで、終了コード 64、`--json` では `error: wait_out_of_range` になります。負の値は `--wait -1` ではなく `--wait=-1` と書いてください。空白があると ArgumentParser は別のフラグとして読み取り、独自のプレーンな使用方法エラーになります（終了コードは同じ 64 ですが、`wait_out_of_range` は付きません）。
+
 ## 失敗時
 
 `--json` を指定すると、失敗時は stdout に1つの JSON オブジェクトを出力し、対応するコードで終了します。
@@ -85,7 +107,8 @@ marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方�
 - `3`、`app_not_installed`：MarsDawn がインストールされていない。`open` のみがこれを返します。
 - `4`、`output_exists`：出力ファイルが存在する。`--force` を指定してください。
 - `5`、`export_failed`：書き出し自体が失敗した。
-- `64`：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルに対する `--line` の指定など。この場合は、`--json` を指定していても stderr にテキストとして出力されます。
+- `6`、`app_cannot_open_folders`：この MarsDawn はフォルダを表示できないため、何も開かれませんでした。`open` のみがこれを返します。
+- `64`：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルに対する `--line` の指定、（`--folder` のときのみ）範囲外の `--wait` など。この場合は、`--json` を指定していても stderr にテキストとして出力されます—ただし `wait_out_of_range` は例外で、JSON として出力されます。
 
 ## JSON Schema
 

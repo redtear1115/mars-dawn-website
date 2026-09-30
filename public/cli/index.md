@@ -43,8 +43,9 @@ marsdawn open notes.md --line 120
 - Lines run from 1 to 999999999.
 - MarsDawn 1.0 opens the file at that line.
 - `--json`: print a JSON result instead of text.
+- `--folder <path>` (or a folder given directly): also shows that folder in the window's sidebar, alongside any files. Needs an app that can take one, or it exits with code 6 before opening anything. From an app that reports back, `--wait <seconds>` (0–30, default 2) says how long to wait for what happened to it.
 
-Lines were added in marsdawn 0.3.0.
+Lines were added in marsdawn 0.3.0. `--folder` in 0.5.1; its reported result in 0.5.3, described in full on [marsdawn for agents](/cli/agents/).
 
 ### marsdawn export
 
@@ -78,11 +79,12 @@ When `--theme` isn't passed, `export` reads the `$MARSDAWN_THEME` environment va
 | `3` | MarsDawn is not installed (`open` only). | Install the app, or use `export`, which doesn't need it |
 | `4` | output exists (pass `--force`). | Pass `--force` to replace it, or `-o` to write elsewhere |
 | `5` | export failed. | Read `message` in the JSON result |
-| `64` | usage error, including a line out of range or `--line` with more than one file. | Fix the option or value; this error is text on stderr, even with `--json` |
+| `6` | MarsDawn can't show a folder (`open --folder` only). | Use an app that can take a folder, or drop `--folder` |
+| `64` | usage error, including a line out of range, `--line` with more than one file, or `--wait` out of range. | Fix the option or value; this error is text on stderr, even with `--json` |
 
 ## --json output
 
-On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file's `path`, plus `line` when one was asked for) and `app` (the app path). `marsdawn export --json` prints `ok`, `output`, `pages`, `theme`, `paper` and `diagramErrors`. On failure, both print `ok`, `error` and `message`.
+On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file's `path`, plus `line` when one was asked for), `app` (the app path) and, when `--folder` named a folder, `folder` (its `path`, `requested: true`, and, from an app that reports back, `status`). `marsdawn export --json` prints `ok`, `output`, `pages`, `theme`, `paper` and `diagramErrors`. On failure, both print `ok`, `error` and `message`.
 
 ## More
 

@@ -19,7 +19,8 @@
         "input_not_found",
         "app_not_installed",
         "output_exists",
-        "export_failed"
+        "export_failed",
+        "app_cannot_open_folders"
       ],
       "description": "Machine-readable failure kind."
     },

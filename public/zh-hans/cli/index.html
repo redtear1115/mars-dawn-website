@@ -100,8 +100,9 @@ marsdawn open notes.md --line 120</code></pre>
   <li>行号范围是 1 到 999999999。</li>
   <li>MarsDawn 1.0 会打开文件，并跳到指定的行。</li>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
+  <li><code>--folder &lt;path&gt;</code>（或直接给一个文件夹）：也会在窗口的侧栏显示那个文件夹，和文件并列。需要能显示文件夹的 app，否则会在打开任何东西之前就以代码 6 结束。从会回报的 app，<code>--wait &lt;seconds&gt;</code>（0 到 30，默认 2）决定要等多久才知道结果。</li>
 </ul>
-<p>行号功能从 marsdawn 0.3.0 开始提供。</p>
+<p>行号功能从 marsdawn 0.3.0 开始提供。<code>--folder</code> 从 0.5.1 开始；它回报的结果从 0.5.3 开始，完整说明在<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</p>
 
 <h3>marsdawn export</h3>
 <p>把 Markdown 文件导出成分页的 PDF，使用和 MarsDawn 导出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。</p>
@@ -130,12 +131,13 @@ marsdawn open notes.md --line 120</code></pre>
   <tr><th scope="row"><code>3</code></th><td data-label="意思">尚未安装 MarsDawn（只有 <code>open</code> 会用到）。</td><td data-label="怎么处理">安装 app，或改用不需要 app 的 <code>export</code></td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="意思">输出文件已存在（可加上 <code>--force</code>）。</td><td data-label="怎么处理">加上 <code>--force</code> 覆盖，或用 <code>-o</code> 写到别处</td></tr>
   <tr><th scope="row"><code>5</code></th><td data-label="意思">导出失败。</td><td data-label="怎么处理">读 JSON 结果里的 <code>message</code></td></tr>
-  <tr><th scope="row"><code>64</code></th><td data-label="意思">使用方式错误，包括行号超出范围，或 <code>--line</code> 搭配了多个文件。</td><td data-label="怎么处理">修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样</td></tr>
+  <tr><th scope="row"><code>6</code></th><td data-label="意思">MarsDawn 不能显示文件夹（只有 <code>open --folder</code> 会用到）。</td><td data-label="怎么处理">改用能显示文件夹的 app，或不要用 <code>--folder</code></td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="意思">使用方式错误，包括行号超出范围、<code>--line</code> 搭配了多个文件，或 <code>--wait</code> 超出范围。</td><td data-label="怎么处理">修正选项或值；这种错误以文本输出到 stderr，即使加了 <code>--json</code> 也一样</td></tr>
 </tbody>
 </table></div>
 
 <h2 id="json-output">--json 输出</h2>
-<p>成功时，<code>marsdawn open --json</code> 会输出 <code>ok</code>、<code>opened</code>（每个文件的 <code>path</code>，有指定行号时另含 <code>line</code>）与 <code>app</code>（App 路径）；<code>marsdawn export --json</code> 会输出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 与 <code>diagramErrors</code>。失败时两者都会输出 <code>ok</code>、<code>error</code> 与 <code>message</code>。</p>
+<p>成功时，<code>marsdawn open --json</code> 会输出 <code>ok</code>、<code>opened</code>（每个文件的 <code>path</code>，有指定行号时另含 <code>line</code>）、<code>app</code>（App 路径），以及有指定 <code>--folder</code> 时的 <code>folder</code>（它的 <code>path</code>、<code>requested: true</code>，从会回报的 app 还有 <code>status</code>）；<code>marsdawn export --json</code> 会输出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 与 <code>diagramErrors</code>。失败时两者都会输出 <code>ok</code>、<code>error</code> 与 <code>message</code>。</p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="网站">

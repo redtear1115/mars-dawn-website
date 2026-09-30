@@ -51,12 +51,25 @@ On failure with `--json` it prints `{"ok": false, "error": <kind>, "message": ..
 | 3 | `app_not_installed` | MarsDawn isn't installed. Only `open` returns this. |
 | 4 | `output_exists` | The PDF already exists. Pass --force to replace it, or -o to write elsewhere. |
 | 5 | `export_failed` | Rendering failed. |
+| 6 | `app_cannot_open_folders` | This MarsDawn can't show a folder, so nothing was opened. Only `open` returns this. |
 | 64 | — | Usage error: a bad option or value. Printed as text on stderr, never as JSON. |
 
 ## open
 
 `marsdawn open file.md` opens a file in the MarsDawn app for review. It needs the app; without
 it, it exits 3. Never use it to make a PDF: that's `export`.
+
+### Showing a folder
+
+`marsdawn open . --folder . --json` (or a folder path as an argument) also asks MarsDawn to show
+that folder in the window's sidebar, alongside any files. An app that can't take one refuses before
+opening anything, exit 6 (`app_cannot_open_folders`). With a MarsDawn that reports back, the
+`folder` object in `--json` carries a `status` once the wait ends: `attached`, `needsUser` (see
+`waitingFor`: `confirmation` or `folderChoice`, meaning the user has to act — don't retry, just
+tell them), `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable`, or `unknown`
+(the app didn't answer in time; try again with a longer `--wait`, or treat it as "don't know").
+`--wait <seconds>` sets how long to wait, 0–30, default 2. `--wait 0`, or an older MarsDawn that
+doesn't report back, skips waiting: the `folder` object only carries `path` and `requested: true`.
 
 ## Full contract
 

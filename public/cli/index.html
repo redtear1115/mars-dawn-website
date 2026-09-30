@@ -100,8 +100,9 @@ marsdawn open notes.md --line 120</code></pre>
   <li>Lines run from 1 to 999999999.</li>
   <li>MarsDawn 1.0 opens the file at that line.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
+  <li><code>--folder &lt;path&gt;</code> (or a folder given directly): also shows that folder in the window's sidebar, alongside any files. Needs an app that can take one, or it exits with code 6 before opening anything. From an app that reports back, <code>--wait &lt;seconds&gt;</code> (0&#8211;30, default 2) says how long to wait for what happened to it.</li>
 </ul>
-<p>Lines were added in marsdawn 0.3.0.</p>
+<p>Lines were added in marsdawn 0.3.0. <code>--folder</code> in 0.5.1; its reported result in 0.5.3, described in full on <a href="/cli/agents/">marsdawn for agents</a>.</p>
 
 <h3>marsdawn export</h3>
 <p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.</p>
@@ -130,12 +131,13 @@ marsdawn open notes.md --line 120</code></pre>
   <tr><th scope="row"><code>3</code></th><td data-label="Means">MarsDawn is not installed (<code>open</code> only).</td><td data-label="What to do">Install the app, or use <code>export</code>, which doesn't need it</td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="Means">output exists (pass <code>--force</code>).</td><td data-label="What to do">Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere</td></tr>
   <tr><th scope="row"><code>5</code></th><td data-label="Means">export failed.</td><td data-label="What to do">Read <code>message</code> in the JSON result</td></tr>
-  <tr><th scope="row"><code>64</code></th><td data-label="Means">usage error, including a line out of range or <code>--line</code> with more than one file.</td><td data-label="What to do">Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
+  <tr><th scope="row"><code>6</code></th><td data-label="Means">MarsDawn can't show a folder (<code>open --folder</code> only).</td><td data-label="What to do">Use an app that can take a folder, or drop <code>--folder</code></td></tr>
+  <tr><th scope="row"><code>64</code></th><td data-label="Means">usage error, including a line out of range, <code>--line</code> with more than one file, or <code>--wait</code> out of range.</td><td data-label="What to do">Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
 </tbody>
 </table></div>
 
 <h2 id="json-output">--json output</h2>
-<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for) and <code>app</code> (the app path). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when <code>--folder</code> named a folder, <code>folder</code> (its <code>path</code>, <code>requested: true</code>, and, from an app that reports back, <code>status</code>). <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="Site">
