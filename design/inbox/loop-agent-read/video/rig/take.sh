@@ -4,7 +4,7 @@
 set -u
 S=/private/tmp/claude-501/-Users-redtear-Projects-swift-mars-dawn/8534784c-2ee2-47fc-a0ec-9c913a59325e/scratchpad; R=/Users/redtear/Projects/swift/mars-dawn/.claude/worktrees/demo-video
 X=$S/rig/vidax
-FIX="$HOME/Obsidian/vault/MarsDawn Product Loop Video fixtures"
+FIX="$HOME/Obsidian/vault/MarsDawn/Product Loop Video fixtures"
 ID=dev.southern-light.marsdawn.video
 CPREF="$HOME/Library/Containers/$ID/Data/Library/Preferences/$ID.plist"
 TAKE=$S/rec/take-$(date +%H%M%S); mkdir -p "$TAKE/sig" "$TAKE/notes"

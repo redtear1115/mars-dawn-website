@@ -4,7 +4,7 @@ Expected strings come from the fixtures and from replay.sh, read from disk, neve
 import subprocess, sys, os, re, json
 S = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V = sys.argv[1] if len(sys.argv) > 1 else f"{S}/post/master.mp4"
-FIX = os.path.expanduser("~/Obsidian/vault/MarsDawn Product Loop Video fixtures")
+FIX = os.path.expanduser("~/Obsidian/vault/MarsDawn/Product Loop Video fixtures")
 v1, v2, v3 = (open(f"{FIX}/launch-note.{n}.md").read() for n in ("v1", "v2-user", "v3-agent"))
 replay = open(f"{S}/rec/replay.sh").read()
 typed = re.findall(r"type_line ['\"](.+?)['\"]\n", replay)
