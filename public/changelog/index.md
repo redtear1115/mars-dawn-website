@@ -2,9 +2,9 @@
 
 What changed in the free marsdawn command-line tool. A Mac App Store build of MarsDawn is mentioned here only when it has a line of its own. Versions before 0.5.1 are not listed.
 
-## marsdawn 0.6.0
+## marsdawn 0.6.3
 
-1 October 2026. MarsDawn is on the Mac App Store.
+6 October 2026. MarsDawn is on the Mac App Store.
 
 - When the app isn't installed, `marsdawn open` points to MarsDawn on the Mac App Store.
 - The README and the agent skill teach `marsdawn open .` and `--folder`: MarsDawn 1.0.0 shows the folder in the window's sidebar.

@@ -37,9 +37,23 @@ On success it exits 0 and prints one JSON line:
 - `theme`: Theme used for the export.
 - `paper`: Paper size used for the export.
 - `diagramErrors`: One message per Mermaid diagram that failed to render. The PDF is still written.
-- `diagramErrorDetails`: One entry per diagramErrors entry, in the same order, with the document line each error is on when known.
+- `diagramErrorDetails`: The same failures as `diagramErrors`, in the same order, each as
+  `{message, fenceLine, line}`. `fenceLine` is the document line the diagram's fence starts on,
+  present whenever that's known. `line` is the document line of the error itself (`fenceLine` plus
+  Mermaid's own line number from its message), present only when Mermaid's message names a line —
+  some errors, like an undetected diagram type, don't. Either can be absent on its own.
 
 If `diagramErrors` isn't empty, the PDF was still written: tell the user which diagrams failed.
+
+## Themes
+
+`marsdawn theme validate theme.json --json` checks a MarsDawn theme file with the app's own
+validator; exit 1 means invalid, with each problem under `issues`. `--require-complete` is the
+check for a theme to publish. `marsdawn theme css theme.json --json` prints the CSS the preview
+serves for a valid theme, as `variables` and `rules`. `marsdawn theme preview theme.json --appearance light -o preview.png`
+renders a sample document with the theme to a PNG (`--appearance light|dark`, `--width` 600–2000,
+default 1200; `--force` replaces an existing PNG). All three refuse a symlinked or oversized theme
+file, and an invalid theme exits 1 with its problems.
 
 ## Exit codes
 
@@ -48,12 +62,13 @@ On failure with `--json` it prints `{"ok": false, "error": <kind>, "message": ..
 | Code | `error` | Meaning |
 |---|---|---|
 | 0 | — | Success. With --json, stdout is one JSON line. |
+| 1 | — | The theme isn't valid. Only the `theme` commands return this; with --json its problems are under `issues`. |
 | 2 | `input_not_found` | The input file isn't there. |
 | 3 | `app_not_installed` | MarsDawn isn't installed. Only `open` returns this. |
-| 4 | `output_exists` | The PDF already exists. Pass --force to replace it, or -o to write elsewhere. |
+| 4 | `output_exists` | The PDF (or `theme preview`'s PNG) already exists. Pass --force to replace it, or -o to write elsewhere. |
 | 5 | `export_failed` | Rendering failed. |
 | 6 | `app_cannot_open_folders` | This MarsDawn can't show a folder, so nothing was opened. Only `open` returns this. |
-| 64 | — | Usage error: a bad option or value. Printed as text on stderr, never as JSON. |
+| 64 | — | Usage error: a bad option or value. Printed as text on stderr, never as JSON, except `theme preview`'s refused -o (`output_folder_missing`, `output_symlink`, `output_not_a_file`). |
 
 ## Review: open what you wrote
 
@@ -75,6 +90,23 @@ marsdawn open plan.md:42 --json
   `requested` means marsdawn asked the app. It can't tell whether the sidebar shows the folder
   (the app may first ask the user for access), so report it as asked, not as done.
 - Never use `open` to make a PDF: that's `export`.
+
+### Showing a folder
+
+`marsdawn open . --folder . --json` (or a folder path as an argument) also asks MarsDawn to show
+that folder in the window's sidebar, alongside any files. With a MarsDawn that reports back, the
+`folder` object in `--json` carries a `status` once the wait ends: `attached`, `needsUser` (see
+`waitingFor`: `confirmation` or `folderChoice`, meaning the user has to act — don't retry, just
+tell them), `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable`, or `unknown`
+(the app didn't answer in time; try again with a longer `--wait`, or treat it as "don't know").
+`--wait <seconds>` sets how long to wait, 0–30, default 2; a value ArgumentParser can parse as a
+number but outside that range is a usage error, exit 64, with `error: wait_out_of_range` in
+`--json`. Write a negative value as `--wait=-1`, not `--wait -1`: with a space, ArgumentParser reads
+it as another flag and gives its own plain usage error instead — still exit 64, but no
+`wait_out_of_range`; a value too large to be a number at all gets the same plain error. `--wait 0`,
+or an older MarsDawn that doesn't report
+back, skips waiting: the `folder` object only carries `path` and `requested: true`, same as
+before this existed.
 
 ## Full contract
 

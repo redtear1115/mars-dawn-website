@@ -2,9 +2,9 @@
 
 無料の marsdawn コマンドラインツールの変更点です。Mac App Store 版の MarsDawn は、そのバージョン自身について書くことがある場合だけ、ここに載せます。0.5.1 より前のバージョンは載せていません。
 
-## marsdawn 0.6.0
+## marsdawn 0.6.3
 
-2026年10月1日。MarsDawn が Mac App Store で公開。
+2026年10月6日。MarsDawn が Mac App Store で公開。
 
 - アプリがインストールされていないとき、`marsdawn open` は Mac App Store の MarsDawn を案内します。
 - README とエージェントスキルで `marsdawn open .` と `--folder` を説明します。MarsDawn 1.0.0 はフォルダをウインドウのサイドバーに表示します。

@@ -2,9 +2,9 @@
 
 免費的 marsdawn 命令列工具改了什麼。Mac App Store 上的 MarsDawn，只有在某個版本值得單獨記一筆時才會出現在這裡。0.5.1 以前的版本不列。
 
-## marsdawn 0.6.0
+## marsdawn 0.6.3
 
-2026 年 10 月 1 日。MarsDawn 在 Mac App Store 上架。
+2026 年 10 月 6 日。MarsDawn 在 Mac App Store 上架。
 
 - 沒有安裝 app 時，`marsdawn open` 會指向 Mac App Store 上的 MarsDawn。
 - README 和 agent skill 會教 `marsdawn open .` 與 `--folder`：MarsDawn 1.0.0 會把資料夾顯示在視窗的側邊欄。

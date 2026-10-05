@@ -1094,8 +1094,8 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
   <p>無料の marsdawn コマンドラインツールの変更点です。Mac App Store 版の MarsDawn は、そのバージョン自身について書くことがある場合だけ、ここに載せます。0.5.1 より前のバージョンは載せていません。</p>
 </section>
 
-<h2>marsdawn 0.6.0</h2>
-<p>2026年10月1日。MarsDawn が Mac App Store で公開。</p>
+<h2>marsdawn 0.6.3</h2>
+<p>2026年10月6日。MarsDawn が Mac App Store で公開。</p>
 <ul>
   <li>アプリがインストールされていないとき、<code>marsdawn open</code> は Mac App Store の MarsDawn を案内します。</li>
   <li>README とエージェントスキルで <code>marsdawn open .</code> と <code>--folder</code> を説明します。MarsDawn 1.0.0 はフォルダをウインドウのサイドバーに表示します。</li>
