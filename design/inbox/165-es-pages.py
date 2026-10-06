@@ -1,10 +1,12 @@
-"""Spanish (es) page copy for the MarsDawn site, tranche 2 (#165).
+"""Spanish (es) page copy for the MarsDawn site (#165): every page except the theme gallery and
+simulator, which wait for release-1.0.4.
 
 Same shape as scripts/copy_ja.py: build(k) returns the tables build_pages.py keeps per locale.
 Translated from the en copy on main @ 6fe8435. Neutral, Latin-American-leaning Spanish, tú (no
 vosotros). UI terms follow the app's es strings (release/1.1.0): Vista rápida (Quick Look),
 Archivo, Visualización, Ajustes, Atajos, prueba (trial), desbloquear (unlock); «» quotes.
-Built-in theme names stay English. Inline build_pages.py tables are returned under their own keys.
+Built-in theme names stay English. Inline build_pages.py tables are returned under their own keys, as are schema_notes,
+theme_shots, theme_gallery_note, templates (templates_pages.py tables) and loop_copy (loop_anim.COPY).
 """
 
 
@@ -1229,8 +1231,182 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
 """,
     }
 
+    # /templates/ pages (scripts/templates_pages.py), one entry per table there, for #162 to merge.
+    # The downloads are TEMPLATES byte for byte; Mermaid node labels are translated, as in ja.
+    templates = {
+        'ui_labels': {"templates": "Plantillas", "templates-spec": "Plantilla de especificación",
+                      "templates-flowchart": "Plantilla de diagrama de flujo", "templates-meeting-notes": "Plantilla de minuta de reunión"},
+        'labels': {"template": "La plantilla", "download": "Descargar {file}", "looks": "Cómo se ve",
+                   "ask": "Pídeselo a tu agente", "share": "Compártela en PDF", "doesnt": "Lo que no hace",
+                   "faq": "Preguntas", "more": "Más plantillas", "sep": ": ",
+                   "img_alt": "La primera página de {file}, exportada a PDF con marsdawn export."},
+        'hub': {"title": "Plantillas de Markdown · MarsDawn",
+                "description": "Plantillas de Markdown para los documentos que escribe un agente y lees tú: una especificación, un diagrama de flujo y una minuta de reunión, cada una con un prompt para tu agente.",
+                "h1": "Plantillas de Markdown",
+                "lede": "Para los documentos que escribe un agente y lees tú. Cada plantilla incluye un prompt para tu agente. Abre el archivo completado en MarsDawn para leer lo que escribió.",
+                "items": {"spec": ("Especificación (PRD)", "problema, objetivos, requisitos, un diagrama del flujo y criterios de aceptación."),
+                          "flowchart": ("Diagrama de flujo", "un diagrama Mermaid con los pasos escritos debajo."),
+                          "meeting-notes": ("Minuta de reunión", "decisiones y tareas, cada una con un responsable.")}},
+        'pages': {
+            "spec": {
+                "title": "Plantilla de especificación (PRD) en Markdown · MarsDawn",
+                "description": "Una plantilla de especificación en Markdown con requisitos, un diagrama de flujo Mermaid y criterios de aceptación. Tu agente la completa; tú la revisas en MarsDawn.",
+                "h1": "Plantilla de especificación (PRD) en Markdown",
+                "lede": "Una especificación que tu agente puede completar y tú puedes leer de una sentada: el problema, los objetivos, los requisitos, un diagrama del flujo y los criterios de aceptación. Cuando cambies un requisito, pídele al agente que ajuste el resto.",
+                "caption": "Exportada con <code>marsdawn export spec.md</code>. La herramienta de línea de comandos gratuita renderiza igual que la vista previa de MarsDawn, diagrama incluido.",
+                "prompt": "Escribe una especificación para [la función] en spec.md, usando la plantilla de {url}. Dale un ID a cada requisito y usa los mismos ID en el flujo y en los criterios de aceptación. Cuando esté escrita, ejecuta marsdawn open spec.md.",
+                "share": "<code>marsdawn export spec.md</code> escribe spec.pdf junto al archivo, para quien no lee Markdown.",
+                "doesnt": "MarsDawn muestra la especificación, la tabla y el diagrama. No comprueba que los criterios de aceptación cubran cada requisito. Eso es trabajo del agente, y de tu lectura.",
+                "faq": [("¿El diagrama de flujo necesita que instale algo?", "No. MarsDawn y <code>marsdawn export</code> dibujan Mermaid por sí mismos, sin conexión."),
+                        ("¿Puedo editar la especificación en MarsDawn?", "Sí. Es un editor de Markdown con la vista previa junto al código fuente. El agente verá tu cambio la próxima vez que lea el archivo.")],
+            },
+            "flowchart": {
+                "title": "Plantilla de diagrama de flujo en Markdown (Mermaid) · MarsDawn",
+                "description": "Una plantilla de diagrama de flujo Mermaid en Markdown, con los pasos escritos debajo. Previsualízala en la Mac y expórtala a PDF.",
+                "h1": "Plantilla de diagrama de flujo en Markdown",
+                "lede": "Un diagrama de flujo Mermaid con los pasos detallados debajo, para que el diagrama y el texto se puedan contrastar entre sí. Quita un paso y pídele al agente que corrija el resto.",
+                "caption": "Exportada con <code>marsdawn export flowchart.md</code>. La herramienta de línea de comandos gratuita renderiza igual que la vista previa de MarsDawn, diagrama incluido.",
+                "prompt": "Dibuja el flujo de [el proceso] en flowchart.md, usando la plantilla de {url}. Un paso numerado por nodo, en el mismo orden. Cuando esté escrito, ejecuta marsdawn open flowchart.md.",
+                "share": "<code>marsdawn export flowchart.md</code>: el diagrama se dibuja dentro del PDF.",
+                "doesnt": "MarsDawn dibuja lo que dice el Mermaid. No permite acomodar el diagrama a mano ni mantiene los pasos numerados sincronizados con los nodos. Si el Mermaid tiene un error, la vista previa muestra el error en lugar del diagrama.",
+                "faq": [("¿Qué diagramas funcionan?", "Todo lo que dibuja Mermaid: diagramas de flujo, de secuencia, de estados y más."),
+                        ("¿Por qué escribir también los pasos?", "Quien lee por encima ve el diagrama; quien comprueba necesita el texto. El agente puede mantener ambos al día.")],
+            },
+            "meeting-notes": {
+                "title": "Plantilla de minuta de reunión en Markdown · MarsDawn",
+                "description": "Una plantilla de minuta de reunión en Markdown con decisiones y tareas, cada una con un responsable. Tu agente la redacta; tú la revisas en MarsDawn.",
+                "h1": "Plantilla de minuta de reunión en Markdown",
+                "lede": "Primero las decisiones, luego las tareas, cada una con un responsable. Deja que tu agente redacte la minuta a partir de la transcripción, y léela antes de enviarla. Cuando cambie una decisión, pídele al agente que ajuste las tareas.",
+                "caption": "Exportada con <code>marsdawn export meeting-notes.md</code>. La herramienta de línea de comandos gratuita renderiza igual que la vista previa de MarsDawn.",
+                "prompt": "Redacta la minuta de esta reunión en meeting-notes.md, usando la plantilla de {url}. Primero las decisiones, una por línea; cada tarea lleva un solo responsable y una fecha. Cuando esté escrita, ejecuta marsdawn open meeting-notes.md.",
+                "share": "<code>marsdawn export meeting-notes.md</code> escribe un PDF que puedes adjuntar al correo de seguimiento.",
+                "doesnt": "MarsDawn no graba ni transcribe la reunión, y no hace seguimiento de las tareas. Muestra la minuta tal como se va a leer.",
+                "faq": [("¿Funcionan las casillas de verificación?", "Se muestran como casillas en la vista previa y en el PDF. Para marcar una, cambia <code>[ ]</code> por <code>[x]</code> en el código fuente."),
+                        ("¿Puede el agente mantener la minuta y las tareas al día?", "Sí, ese es el sentido del ciclo: cambia una cosa y pídele que actualice el resto. MarsDawn te muestra el resultado.")],
+            },
+        },
+        'templates': {
+            "spec": """# Especificación: nombre de la función
+
+Estado: borrador · Responsable: nombre · Actualizado: fecha
+
+## Problema
+
+_Qué falla hoy, a quién afecta y cómo lo sabemos._
+
+## Objetivos
+
+- _Qué será cierto cuando esto salga._
+
+## Fuera de alcance
+
+- _Lo que esto no hace, a propósito._
+
+## Requisitos
+
+| ID | Requisito | Prioridad |
+|----|-----------|-----------|
+| R1 | _Requisito_ | Obligatorio |
+| R2 | _Requisito_ | Recomendado |
+
+## Flujo
+
+```mermaid
+flowchart LR
+  A[Inicio] --> B[Paso] --> C[Resultado]
+```
+
+## Criterios de aceptación
+
+- [ ] R1: _Cómo lo comprobamos._
+- [ ] R2: _Cómo lo comprobamos._
+
+## Preguntas abiertas
+
+- _Pregunta._
+""",
+            "flowchart": """# Nombre del flujo
+
+_Una frase: qué entra y qué sale._
+
+## Diagrama
+
+```mermaid
+flowchart LR
+  A[Primer paso] --> B[Segundo paso]
+  B --> C[Tercer paso]
+  C --> D[Listo]
+```
+
+## Pasos
+
+1. **Primer paso:** _quién lo hace y qué entrega al siguiente._
+2. **Segundo paso:** _…_
+3. **Tercer paso:** _…_
+4. **Listo:** _qué significa «listo» aquí._
+""",
+            "meeting-notes": """# Nombre de la reunión, fecha
+
+Asistentes: _nombres_
+
+## Decisiones
+
+- _Qué se decidió, una por línea._
+
+## Tareas
+
+- [ ] Nombre: _qué y para cuándo._
+- [ ] Nombre: _qué y para cuándo._
+
+## Notas
+
+- _Todo lo que valga la pena conservar y no sea una decisión ni una tarea._
+""",
+        },
+        'scene_text': {
+            "spec": {"title": "Especificación: códigos de acceso", "req": "Requisitos", "flow": "Flujo", "acc": "Aceptación",
+                     "r1": "R1: Enviar un código de seis dígitos.", "r2": "R2: El código vence en 10 min.",
+                     "r3": "R3: Pedir un segundo factor.", "n1": "Correo", "n2": "Código", "n3": "Segundo factor",
+                     "n4": "Sesión iniciada", "a1": "R1: El código llega en 1 min.", "a3": "R3: Una vez por dispositivo.",
+                     "ask": "Quité R3. Haz que el flujo y los criterios de aceptación coincidan.",
+                     "reply": "Listo. El flujo se salta el segundo factor y la comprobación de R3 ya no está.",
+                     "alt": "Una terminal abre spec.md en MarsDawn. Quien lee borra el requisito R3, y el agente quita su paso del diagrama de flujo y su comprobación de aceptación."},
+            "flowchart": {"title": "Flujo de publicación", "diagram": "Diagrama", "steps": "Pasos",
+                          "n1": "Borrador", "n2": "Revisión", "n3": "Legal", "n4": "Publicar",
+                          "s1": "1. Borrador: la primera versión.", "s2": "2. Revisión: lo lee un editor.",
+                          "s3": "3. Legal: revisa lo que se afirma.", "s4": "{c}. Publicar: queda en línea.",
+                          "ask": "Quité Legal del diagrama. Corrige la conexión y los pasos.",
+                          "reply": "Listo. Revisión va directo a Publicar, y los pasos están renumerados.",
+                          "alt": "Una terminal abre flowchart.md en MarsDawn. Quien lee quita el paso Legal del diagrama Mermaid, y el agente vuelve a conectar el diagrama y renumera los pasos de abajo."},
+            "meeting-notes": {"title": "Reunión semanal, 5 oct.", "decisions": "Decisiones", "actions": "Tareas",
+                              "d1": "Abrir la beta a {u} personas.", "d2": "Lanzarla el viernes.",
+                              "t1": "Mia: enviar {a} invitaciones.", "t2": "Leo: agregar {b} lugares.", "t3": "Ana: dar soporte a {c} usuarios.",
+                              "ask": "La beta ahora es de 80 personas. Actualiza las tareas.",
+                              "reply": "Listo. Las tres tareas dicen 80.",
+                              "alt": "Una terminal abre meeting-notes.md en MarsDawn. Quien lee cambia una decisión de 50 a 80 personas, y el agente actualiza las tres tareas para que coincidan."},
+        },
+    }
+    # The homepage loop (scripts/loop_anim.py COPY). Tab names follow the app's es strings; the two
+    # days have the same width (tabular digits), as the stacked swap needs.
+    loop_copy = {
+        "outline": "Esquema", "files": "Archivos",
+        "title": "Nota de lanzamiento",
+        "sections": [("Qué cambia", "La página de inicio de sesión empieza por el correo. Sale el {a}."),
+                     ("Cuándo sale", "El {u} al mediodía."),
+                     ("Quién hace qué", "Ingeniería activa el flag el {b}.")],
+        "old": "7 oct.", "new": "9 oct.",
+        "ask": "Moví el lanzamiento. Haz que las demás secciones coincidan.",
+        "reply": "Listo. Las dos secciones ahora dicen 9 oct.",
+        "alt": "Una terminal abre launch-note.md en MarsDawn. Quien lee cambia el día del lanzamiento "
+               "del 7 al 9 de octubre, el agente actualiza las otras dos secciones para que coincidan, y "
+               "el ciclo vuelve a empezar.",
+        "pause": "Pausar la animación", "pause_short": "Pausa",
+    }
+
     app_ui_languages = 'inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano'
     return {
         'pages': pages, 'figures': figures, 'home': home, 'compare_tables': compare_tables,
         'exit_table_head': exit_table_head, 'exit_remedy': exit_remedy, 'app_ui_languages': app_ui_languages, 'example_plan': example_plan,
+        'schema_notes': schema_notes, 'theme_shots': theme_shots, 'theme_gallery_note': theme_gallery_note,
+        'templates': templates, 'loop_copy': loop_copy,
     }
