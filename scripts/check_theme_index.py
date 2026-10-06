@@ -583,7 +583,11 @@ def check_index_shape(data, where: str) -> list:
             label = f"{where}: themes[{i}]" + (f" ({theme_id!r})" if theme_id else "")
             check_theme(problems, label, theme)
 
-    if "revoked" in data:
+    if "revoked" not in data:
+        # The app replaces its stored revocation list with this one at every fetch and treats an
+        # index without the key as malformed (mars-dawn#293); a missing key must never read as [].
+        problems.append(f"{where}: revoked is required (a list, [] when nothing is revoked)")
+    else:
         revoked = data["revoked"]
         if not isinstance(revoked, list):
             problems.append(f"{where}: revoked must be a list when present")
@@ -1440,6 +1444,7 @@ RULES = [
     ("theme.previews missing 'light' key", edit_entry(lambda t: t["previews"].pop("light")), ["previews must be an object with 'light' and 'dark'"]),
     ("theme.previews missing 'dark' key", edit_entry(lambda t: t["previews"].pop("dark")), ["previews must be an object with 'light' and 'dark'"]),
     ("theme.previews.dark unsafe path", edit_entry(lambda t: t["previews"].__setitem__("dark", "a//b.png")), ["previews.dark", "must match"]),
+    ("revoked key missing", edit_index(lambda d: d.pop("revoked")), ["revoked is required"]),
     ("revoked not a list", edit_index(lambda d: d.__setitem__("revoked", "nope")), ["revoked must be a list"]),
     ("revoked entry not an object", edit_index(lambda d: d.__setitem__("revoked", ["nope"])), ["revoked[0]", "is not an object"]),
     ("revoked[].id missing", edit_index(lambda d: d.__setitem__("revoked", [{"reason": "r", "revokedAt": "t"}])), ["revoked[0]", "id must be a non-empty string"]),
