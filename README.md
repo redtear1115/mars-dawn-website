@@ -1,6 +1,6 @@
 # marsdawn.southern-light.dev
 
-The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown editor for the Mac, in four languages: English, Traditional Chinese, Simplified Chinese and Japanese. English and Traditional Chinese are the app's own interface languages; Simplified Chinese and Japanese extend the site's reach beyond that — see PRODUCT.md's Site constraints.
+The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown editor for the Mac, in four languages: English, Traditional Chinese, Simplified Chinese and Japanese (German, French, Spanish and Korean are built once their copy lands: see "Adding de, fr, es or ko"). English and Traditional Chinese are the app's own interface languages; Simplified Chinese and Japanese extend the site's reach beyond that — see PRODUCT.md's Site constraints.
 
 ## Layout
 
@@ -11,6 +11,8 @@ The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown edito
 | `public/_headers` | Security headers for every page (CSP, nosniff, no referrer) and cache rules (theme index short, versioned theme files long). Scripts are limited to the site's own (`script-src 'self'`), Google Tag Manager, and the two small inline scripts in every page's `<head>` (Consent Mode default, then the GTM loader), each allowed by its own sha256 hash — see the comment above the CSP line. Anything that adds a script, inline style, web font or third-party resource must update the CSP |
 | `scripts/build_pages.py` | Generates every page into `public/`, with the en and zh-Hant copy. Also generates the consent-mode head scripts and banner markup on every page (`consent_head_html`, `consent_banner_html`) for the site's GA4-via-GTM analytics (owner decision, #71): every storage type defaults to denied until the visitor accepts in the banner, whose choice lives only in `localStorage`, never a cookie of ours. `public/assets/consent.js` (hand-written, not generated) is the banner's behaviour. The site deliberately never embeds GTM's `<noscript>` iframe, because it would load before any consent choice exists |
 | `scripts/copy_zh_hans.py`, `scripts/copy_ja.py` | The zh-Hans and ja copy, merged in by `build_pages.py`, covering the same pages as en/zh-Hant. A locale may still have only some pages if one hasn't been translated yet; nothing links to a page that locale doesn't have |
+| `scripts/locales.py`, `scripts/copy_de.py`, `copy_fr.py`, `copy_es.py`, `copy_ko.py` | The eight locales the site knows, and which it builds. de, fr, es and ko are known but **not built** until their `copy_<l>.py` says `COMPLETE = True`; the files in the repo are skeletons (every key, every value empty), so the site is the four-locale site. See "Adding de, fr, es or ko" below |
+| `scripts/new_locale.py`, `scripts/check_locales.py`, `scripts/selftest_locales.py` | `new_locale.py <l>` writes a skeleton; `--check` fails when a skeleton's structure differs from en's (CI). `check_locales.py` fails a half-served locale: pages, legal, English copy, images, sitemap, or a trace of one that isn't complete (CI); `--self-test` builds a throwaway locale in a scratch copy and plants a break of each rule (CI) |
 | `scripts/check_hreflang.py` | Checks that every page's hreflang set is complete (every locale that has the page) and reciprocal, in the HTML and the sitemap (runs in CI) |
 | `scripts/check_links.py` | Checks that every same-site link in the built site points at a file that exists (or a source in `public/_redirects`), and that any Mac App Store listing link is the country-less `…/app/id<digits>` form (runs in CI) |
 | `scripts/check_redirects.py` | Checks `public/_redirects`: every destination is a page of this site or the Mac App Store listing, carries no tracking parameters, and `/go/app-store` goes where the launch phase allows (the home page before launch, the listing after). `--self-test` plants a break of each kind first (runs in CI) |
@@ -27,6 +29,20 @@ These URLs are public contracts and must keep working at the same paths:
 `/go/app-store` is one too, once anything outside the site links to it: it is a redirect, not a page, and only its destination may change.
 
 `/themes/v1/` is **reserved** for the theme gallery, whose design is `docs/theme-ecosystem-design.md` in the app repository. Nothing is served there yet, and neither the app nor the `marsdawn` CLI reads it. Once the gallery ships and the app reads it, it becomes a contract too. Until then, the cache rules in `public/_headers` and the CI check below, which runs only when the index exists, are preparation.
+
+## Adding de, fr, es or ko
+
+A planned locale is served only when it is all there. Until `scripts/copy_<l>.py` says `COMPLETE = True`, nothing is generated under `/<l>/` and nothing links to it, so a half-translated or English page can't go live under a German URL.
+
+To bring one in (the copy comes through the `needs-i18n` flow, issues #163–#167):
+
+1. Fill in `scripts/copy_<l>.py`: translate every value, keep every key and every list's length. The structure is en's (`python3 scripts/new_locale.py --check`); the build also says exactly what is missing or empty if the flag is set too early. If the file doesn't exist, `python3 scripts/new_locale.py <l>` writes the skeleton.
+2. Legal pages: `content/legal/privacy.<l>.md` and `support.<l>.md`, then `python3 scripts/render_legal.py` on a Mac (renders them through the kit, updates `manifest.json`).
+3. The hero window's snapshot: `python3 scripts/sync_hero_sources.py --kit … --app … --with <l>` on a Mac (the app's labels and Welcome guide, the kit's theme names, in that language).
+4. Images: `tools/templates/render_images.sh` (`public/assets/templates/<case>-<l>.png`) and `public/assets/cli/plan-<l>.png`.
+5. Set `COMPLETE = True`, run `python3 scripts/build_pages.py`, commit the output, and run the checks (`check_locales.py` and `check_hreflang.py` first).
+
+Then every en page exists under `/<l>/` with the same slug, the language switch, `<html lang>`, hreflang (all enabled locales, reciprocal, x-default = en), the sitemap, `llms.txt` and IndexNow's list include it. Not handled by the plumbing, so look at it when a locale goes live: a `:lang(<l>)` font stack in `public/assets/site.css` (ja and zh-Hans have one) and the `loop-<l>` class in `loop_anim.py`'s CSS.
 
 ## Editing
 

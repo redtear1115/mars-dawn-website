@@ -73,6 +73,13 @@ COPY = {
 
 LANG_CLASS = {"en": "", "zh-hant": " loop-hant", "zh-hans": " loop-hans", "ja": " loop-ja"}
 
+
+def register_locale(locale: str, copy: dict) -> None:
+    """Adds a locale's loop copy (the same keys as COPY["ja"]); its class is loop-<locale>.
+    The two days that trade places must be the same width in the language (see the docstring)."""
+    COPY[locale] = copy
+    LANG_CLASS[locale] = f" loop-{locale}"
+
 _esc = html.escape
 
 # A scene is data: the file, its source lines, its preview blocks, and what changes. Two kinds of
