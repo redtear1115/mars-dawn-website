@@ -3,10 +3,7 @@
   "id": "spec",
   "version": "1.0.0",
   "name": {
-    "en": "Spec",
-    "zh-Hant": "規格書",
-    "zh-Hans": "规格书",
-    "ja": "仕様書"
+    "en": "Spec"
   },
   "summary": {
     "en": "Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs",

@@ -3,10 +3,7 @@
   "id": "story",
   "version": "1.0.0",
   "name": {
-    "en": "Story",
-    "zh-Hant": "故事卡",
-    "zh-Hans": "故事卡",
-    "ja": "ストーリー"
+    "en": "Story"
   },
   "summary": {
     "en": "Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes",

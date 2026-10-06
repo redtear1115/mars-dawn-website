@@ -3,10 +3,7 @@
   "id": "nord",
   "version": "1.0.0",
   "name": {
-    "en": "Nord",
-    "zh-Hant": "極地雪境",
-    "zh-Hans": "极地雪境",
-    "ja": "ノルド"
+    "en": "Nord"
   },
   "summary": {
     "en": "An arctic, north-bluish palette, with an original light companion — adapted from Nord, adjusted for readability",

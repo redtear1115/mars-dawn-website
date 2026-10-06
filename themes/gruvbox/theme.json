@@ -3,10 +3,7 @@
   "id": "gruvbox",
   "version": "1.0.0",
   "name": {
-    "en": "Gruvbox",
-    "zh-Hant": "復古方塊",
-    "zh-Hans": "复古方块",
-    "ja": "グラブボックス"
+    "en": "Gruvbox"
   },
   "summary": {
     "en": "A warm retro palette of cream, brown and orange — adapted from Gruvbox, adjusted for readability",
