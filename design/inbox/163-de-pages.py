@@ -345,8 +345,143 @@ marsdawn open notes.md --folder .</code></pre>
         "5": '<code>message</code> im JSON-Ergebnis lesen',
         "64": 'Option oder Wert korrigieren; dieser Fehler erscheint als Text auf stderr, auch mit <code>--json</code>',
     }
+    # markdown-to-pdf shows /assets/cli/plan-de.png, which does not exist yet. Before this ships,
+    # export example_plan with marsdawn 0.5.0 the way EXAMPLE_PLAN's comment in build_pages.py
+    # describes, or fall back to plan-en.png with EXAMPLE_PLAN['en'].
+    example_plan = '# Plan: schnellere Exporte\n\nDiesen Plan hat ein Agent geschrieben. Du prüfst ihn und machst daraus ein PDF.\n\n## Schritte\n\n| Schritt | Zuständig | Status |\n|---------|-----------|--------|\n| Langsame Seiten messen | Agent | Erledigt |\n| Gerenderte Diagramme cachen | Agent | In Prüfung |\n\nZiel sind $t < 2\\,\\text{s}$ für ein Dokument mit 50 Seiten:\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  Entwurf --> Prüfung --> Veröffentlichung\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
+
+    pages['markdown-to-pdf'] = {
+        "title": 'Markdown in PDF auf dem Mac, über die Befehlszeile · MarsDawn',
+        "description": 'Wandle Markdown auf dem Mac mit dem kostenlosen Befehlszeilenwerkzeug marsdawn in ein PDF um. Mit Homebrew installieren, einen Befehl ausführen: Tabellen, Mathematik, Mermaid und Code.',
+        "body": f"""
+<section class="intro">
+  <h1>Markdown in PDF auf dem Mac, über die Befehlszeile.</h1>
+  <p>Das kostenlose Werkzeug <code>marsdawn</code> macht mit einem einzigen Befehl aus einer Markdown-Datei ein PDF. Tabellen, Formeln, Mermaid-Diagramme und hervorgehobener Code sehen so aus, wie sie im Quelltext gemeint sind, und es braucht sonst nichts, nicht einmal die MarsDawn-App.</p>
+</section>
+<h2>Installieren</h2>
+<pre><code>{k.INSTALL}
+marsdawn --version</code></pre>
+<p>Auf einem Mac mit Apple Chip installiert Homebrew in Sekunden eine fertig gebaute Kopie. Auf einem Intel-Mac wird stattdessen aus dem Quellcode gebaut. Das dauert ein paar Minuten und erfordert Xcode 26 oder neuer. Das Werkzeug läuft unter macOS 15 oder neuer, und <code>marsdawn --version</code> zeigt die installierte Version an.</p>
+<h2>Ein Dokument sichern</h2>
+<p>Füge Folgendes in eine Datei namens <code>plan.md</code> ein:</p>
+<pre><code>{k.xml_escape(example_plan)}</code></pre>
+<h2>Exportieren</h2>
+<pre><code>marsdawn export plan.md</code></pre>
+<p>Es schreibt <code>plan.pdf</code> neben die Quelldatei und gibt aus, wo die Datei gelandet ist:</p>
+<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<p>Das ist diese Seite, aufgenommen aus einem echten Lauf von <code>marsdawn</code> 0.5.0:</p>
+<p><img class="pdf-page" src="/assets/cli/plan-de.png" alt="Das exportierte PDF: die Überschrift, eine Tabelle mit Schritten, eine Formel im Text und eine abgesetzte Formel, ein Diagramm Entwurf, Prüfung, Veröffentlichung und eine hervorgehobene Zeile Swift." width="989" height="930"></p>
+<h2>Thema, Papierformat und Dateiname wählen</h2>
+<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<ul>
+  <li><code>--theme</code>: dawn, classic, modern oder vivid, jeweils in den hellen Farben des Themas. Ohne diese Option verwendet <code>export</code> <code>$MARSDAWN_THEME</code> und sonst dawn.</li>
+  <li><code>--paper</code>: a4 oder letter. Standard ist a4.</li>
+  <li><code>-o</code>: wohin das PDF geschrieben wird, statt neben die Quelldatei.</li>
+  <li><code>--allow-remote-images</code>: lädt beim Rendern Bilder aus dem Web. Ohne diese Option bleiben sie aus.</li>
+</ul>
+<h2>Wenn es nicht klappt</h2>
+<ul>
+  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew baut <code>marsdawn</code> aus dem Quellcode, wie auf einem Intel-Mac. Installiere Xcode 26 oder neuer aus dem App Store und starte die Installation erneut.</li>
+  <li><code>marsdawn: No such file: …</code> Der Pfad zeigt auf keine Datei. Prüfe den Namen oder führe den Befehl in dem Ordner aus, in dem die Datei liegt.</li>
+  <li><code>… already exists. Pass --force to replace it.</code> Ein PDF mit diesem Namen gibt es schon. Füge <code>--force</code> hinzu, um es zu ersetzen, oder <code>-o</code>, um woanders hinzuschreiben.</li>
+  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> Das Thema oder Papierformat ist unbekannt. Die Themen sind dawn, classic, modern und vivid, das Papier ist a4 oder letter.</li>
+</ul>
+<h2>Weiter</h2>
+<ul>
+  <li>Alle Optionen und das JSON, das ausgegeben wird: <a href="/de/cli/">Befehlszeile</a>.</li>
+  <li>Wenn ein Coding-Agent das für dich erledigen soll: <a href="/de/cli/skill/">der marsdawn-Agent-Skill</a>.</li>
+  <li>Alle vier Vorschauthemen und wohin sich der PDF-Export entwickelt: <a href="/de/themes/">Vorschauthemen und PDF-Export</a>.</li>
+  <li>Das PDF an jemanden weitergeben, der kein Markdown nutzt: <a href="/de/sharing-exported-pdfs/">ein PDF teilen</a>.</li>
+</ul>
+""",
+    }
+
+    pages['view-markdown-on-mac'] = {
+        "title": 'Eine Markdown-Datei auf dem Mac ansehen · MarsDawn',
+        "description": 'Eine .md-Datei ist reiner Text mit Formatierungszeichen. So liest du sie auf dem Mac gerendert: heute als PDF mit dem kostenlosen Befehlszeilenwerkzeug marsdawn und in der MarsDawn-App aus dem Mac App Store.',
+        "body": f"""
+<section class="intro">
+  <h1>Eine Markdown-Datei auf dem Mac ansehen.</h1>
+  <p>Eine <code>.md</code>-Datei ist reiner Text. Überschriften, fette Wörter, Tabellen und Diagramme stehen darin als Zeichen: <code>#</code> für eine Überschrift, <code>**</code> um fetten Text, senkrechte Striche für eine Tabelle, ein <code>mermaid</code>-Codeblock für ein Diagramm. In einem einfachen Texteditor liest du die Zeichen. Um die Seite so zu lesen, wie sie gemeint ist, muss sie jemand rendern.</p>
+</section>
+<h2>Heute und kostenlos: als PDF</h2>
+<p>Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> rendert eine Markdown-Datei als PDF, das jeder Mac öffnen kann. Tabellen, Formeln, Mermaid-Diagramme und hervorgehobener Code kommen gerendert heraus, und es braucht sonst nichts, nicht einmal die MarsDawn-App.</p>
+<pre><code>{k.BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<p><code>export</code> schreibt <code>notes.pdf</code> neben die Markdown-Datei, und <code>open</code> zeigt sie in deinem PDF-Programm an. Erforderlich ist macOS 15 oder neuer. Die Schritt-für-Schritt-Anleitung mit einer echten exportierten Seite findest du unter <a href="/de/markdown-to-pdf/">Markdown in PDF</a>.</p>
+<h2>In MarsDawn lesen</h2>
+<p>MarsDawn ist ein Markdown-Editor für den Mac, im Mac App Store. Öffne eine <code>.md</code>-Datei und lies die gerenderte Seite neben dem Quelltext:</p>
+<ul>
+  <li>Die Vorschau aktualisiert sich beim Tippen, und beide Bereiche scrollen gemeinsam.</li>
+  <li>Mermaid-Flussdiagramme und Sequenzdiagramme werden in der Vorschau gezeichnet, Codeblöcke werden hervorgehoben.</li>
+  <li>Drücke im Finder die Leertaste auf einer Markdown-Datei, um eine Übersicht zu sehen, Diagramme inklusive.</li>
+  <li>Wenn du etwas ändern willst, ist der Quelltext direkt da. MarsDawn ist ein Editor, nicht nur ein Viewer.</li>
+</ul>
+<p>Wenn ein KI-Agent die Datei geschrieben hat, ist das genau der Ablauf, für den MarsDawn gebaut ist: Der Agent schreibt, du liest es gerendert, und er überarbeitet. Siehe <a href="/de/">die Startseite</a> und <a href="/de/cli/agents/">marsdawn für Agenten</a>, wenn ein Agent Dateien für dich öffnen soll. Warum dieses Lesen wichtig ist und wie du einen Plan prüfst, steht unter <a href="/de/reading-agent-output/">Lesen, was dein Agent zurückgibt</a> und <a href="/de/reviewing-agent-plans/">Einen Agentenplan in fünf Minuten prüfen</a>.</p>
+<h2>Weiter</h2>
+<ul>
+  <li>Alle Optionen des Befehlszeilenwerkzeugs: <a href="/de/cli/">Befehlszeile</a>.</li>
+  <li>Was MarsDawn nicht kann: <a href="/de/limits/">die Liste</a>.</li>
+  <li>Markdown stattdessen in VS Code, im Browser oder in Claude Desktop lesen: <a href="/de/vs/markdown-preview-tools/">der Vergleich</a>.</li>
+</ul>
+""",
+    }
+
+    pages['vs/macmd-viewer'] = {
+        "title": 'MacMD Viewer oder MarsDawn: Viewer oder Editor · MarsDawn',
+        "description": 'MacMD Viewer zeigt Markdown nur zum Lesen an, für 19,99 USD. MarsDawn bearbeitet und zeigt die Vorschau daneben, kostenlos testen, dann einmalig 4,99 USD im Mac App Store.',
+        "body": f"""
+<section class="intro">
+  <h1>MacMD Viewer oder MarsDawn.</h1>
+  <p>Beides sind Mac-Apps, um Markdown gerendert zu lesen. MacMD Viewer öffnet eine <code>.md</code>-Datei und zeigt die fertige Seite, bearbeiten kann man sie darin nicht. MarsDawn stellt neben dieselbe Art gerenderter Vorschau einen Editor, sodass du in einem Fenster schreibst und prüfst. Hier die Unterschiede, Funktion für Funktion.</p>
+</section>
+<h2>Wenn du nur lesen und nicht bearbeiten musst</h2>
+<p>Wenn deine Aufgabe ausschließlich darin besteht, Markdown von anderen zu lesen, und du den Quelltext nie anfassen musst, passt MacMD Viewer gut: Die App ist genau dafür gebaut, jetzt erhältlich und läuft auch unter älteren macOS-Versionen. MarsDawn lohnt sich, sobald Lesen nicht die ganze Arbeit ist, denn das Markdown eines Agenten kommt meist noch einmal zur Überarbeitung zurück.</p>
+<h2>Was die Apps können</h2>
+<!--compare:macmd-features-->
+<h2>Preis und Kauf</h2>
+<!--compare:macmd-buying-->
+<h2>Heute kostenlos ausprobieren</h2>
+<p>MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> rendert außerdem jede Markdown-Datei als PDF, mit Mermaid-Diagrammen und hervorgehobenem Code, und braucht sonst nichts:</p>
+<pre><code>{k.BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<h2>Weiter</h2>
+<ul>
+  <li>Die vollständige Anleitung: <a href="/de/markdown-to-pdf/">Markdown in PDF</a>.</li>
+  <li>Was MarsDawn nicht kann: <a href="/de/limits/">die Liste</a>.</li>
+  <li>Alle Optionen des Befehlszeilenwerkzeugs: <a href="/de/cli/">Befehlszeile</a>.</li>
+  <li>Im Vergleich dazu Markdown in VS Code, im Browser oder in Claude Desktop lesen: <a href="/de/vs/markdown-preview-tools/">der Vergleich</a>.</li>
+</ul>
+""",
+    }
+
+    compare_tables['macmd-features'] = {
+        'head': ['', 'MacMD Viewer', 'MarsDawn'],
+        'rows': [
+            ['Bearbeiten', 'Bewusst nur zum Lesen', 'Bearbeitet den Quelltext, mit der gerenderten Seite daneben'],
+            ['Vorschauthemen', '12 Dokumentthemen', '4 Themen, jeweils mit heller und dunkler Farbpalette'],
+            ['Diagramme und Mathematik', 'Mermaid und Code-Hervorhebung; die Beschreibung erwähnt keine Mathematik', 'Mermaid, Code-Hervorhebung und KaTeX-Mathematik'],
+            ['Übersicht im Finder', 'Ja', 'Ja'],
+            ['PDF und Drucken', 'Ja', 'Ja'],
+            ['Voraussetzung', 'macOS 14 (Sonoma) oder neuer', 'macOS 26 (Tahoe) oder neuer'],
+            ['Sprachen der Oberfläche', 'In den eigenen Unterlagen nicht angegeben', '{langs}'],
+        ],
+    }
+    compare_tables['macmd-buying'] = {
+        'head': ['', 'MacMD Viewer', 'MarsDawn'],
+        'rows': [
+            ['Wo du es kaufst', 'Eigene Website, Homebrew oder Setapp; nicht im Mac App Store', 'Nur im Mac App Store'],
+            ['Preis', 'Einmalig 19,99 USD für einen Mac; Pakete für mehrere Macs kosten mehr', 'Kostenloser Download, dann einmalig 4,99 USD'],
+            ['Vorher ausprobieren', 'Keine Testphase; 14 Tage Geld-zurück-Garantie bei Direktkauf', '14 Tage kostenlos testen'],
+            ['Rückerstattung und Updates', 'Über die eigene Website', 'Über Apple'],
+            ['Account nötig', 'Nein', 'Nein'],
+        ],
+    }
+
     app_ui_languages = 'Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch'
     return {
         'pages': pages, 'figures': figures, 'home': home, 'compare_tables': compare_tables,
-        'exit_table_head': exit_table_head, 'exit_remedy': exit_remedy, 'app_ui_languages': app_ui_languages,
+        'exit_table_head': exit_table_head, 'exit_remedy': exit_remedy, 'app_ui_languages': app_ui_languages, 'example_plan': example_plan,
     }
