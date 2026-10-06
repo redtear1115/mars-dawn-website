@@ -836,6 +836,247 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
     }
     theme_gallery_note = 'Modern todavía no aparece en las imágenes; la cuarta muestra el modo oscuro en su lugar.'
 
+    pages['token-efficient-review'] = {
+        "title": 'Revisar lo que genera MarsDawn sin gastar los tokens de tu agente · MarsDawn',
+        "description": 'Una persona revisa la página renderizada en MarsDawn, y nunca se vuelve a leer en el contexto del agente. La llamada a la herramienta devuelve un resultado JSON compacto, no el contenido renderizado, así que llamarla también sale barato.',
+        "body": f"""
+<section class="intro">
+  <h1>Revisa sin gastar los tokens de tu agente.</h1>
+  <p>En este ciclo hay dos cosas distintas que salen baratas: lo que el agente recibe al llamar a la herramienta y lo que hace falta para confirmar que el resultado está bien.</p>
+</section>
+
+<div class="summary"><p><strong>La llamada a la herramienta devuelve un objeto JSON pequeño, no la página renderizada, y la página renderizada la revisa una persona en MarsDawn; nunca se vuelve a leer en el contexto del agente.</strong></p></div>
+
+<h2>La llamada a la herramienta sale barata</h2>
+<p>Llama a <code>marsdawn export</code>, desde la CLI, la skill o <a href="/es/cli/mcp/">el servidor MCP</a>, y lo que vuelve es <a href="/es/cli/agents/">un objeto JSON compacto</a>: <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> y <code>diagramErrors</code>. El esquema completo es <a href="/schemas/cli/export.v1.json">export.v1.json</a>. Nada de eso es el documento renderizado. Un PDF de 50 páginas con una docena de diagramas Mermaid devuelve los mismos pocos campos que una nota de una página.</p>
+
+<h2>La revisión ocurre aparte</h2>
+<p>Cuando el PDF ya existe, una persona lo abre, en MarsDawn o en cualquier visor de PDF, y lee los diagramas, las fórmulas y el diseño ya renderizados. El agente nunca necesita volver a leer ese resultado en su propia ventana de contexto para confirmar que está bien: la revisión ocurre en otra ventana, en otra pantalla, no en otra ronda de tokens gastados en describir cómo se ve un diagrama.</p>
+
+<h2>Lo que esto evita</h2>
+<ul>
+  <li>Pegar de nuevo en la conversación Markdown renderizado, una captura de pantalla o su descripción, solo para que el agente confirme que la exportación funcionó.</li>
+  <li>Un agente que tiene que reconstruir cómo se ve un diagrama Mermaid o una fórmula KaTeX renderizados, en lugar de una persona que simplemente lo mira.</li>
+  <li>Una segunda llamada a la herramienta para obtener el contenido del PDF cuando la primera ya informó que todo salió bien.</li>
+</ul>
+
+<h2>Siguiente</h2>
+<ul>
+  <li>Las tres formas de llamar a marsdawn, CLI, archivo de skill y servidor MCP: <a href="/es/cli/mcp/">tres puertas de entrada</a>.</li>
+  <li>Cada campo del resultado JSON: <a href="/es/cli/agents/">marsdawn para agentes</a>.</li>
+  <li>Por qué una persona todavía tiene que leer lo que escribió un agente: <a href="/es/reviewing-ai-output/">por qué revisar</a>.</li>
+  <li>El argumento completo para leer lo que entrega un agente, con una lista de verificación: <a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a>.</li>
+</ul>
+""",
+    }
+
+    pages['sharing-exported-pdfs'] = {
+        "title": 'Comparte lo que escribió un agente sin enseñar Markdown · MarsDawn',
+        "description": 'Exporta a PDF el Markdown de un agente y entrégaselo a un colega que no lee Markdown y no va a instalar nada. Para abrirlo no hace falta sintaxis, ni app, ni cuenta.',
+        "body": f"""
+<section class="intro">
+  <h1>Entrégales el PDF, no el Markdown.</h1>
+  <p>Un agente termina un documento, tú lo revisas y lo corriges, y luego alguien fuera del equipo técnico también tiene que leerlo: un gerente, un cliente, alguien de otro equipo. No necesitan saber qué significa <code>##</code> ni una tabla con barras verticales. Exporta a PDF y entrégales eso.</p>
+</section>
+
+<div class="summary"><p><strong>Exporta el documento revisado a PDF y envía ese archivo.</strong> Se abre en cualquier lado, no requiere saber Markdown ni instalar nada, y se ve como lo viste en la vista previa, con diagramas, tablas y formato incluidos.</p></div>
+
+<h2>Por qué no enviar simplemente el archivo .md</h2>
+<p>Un archivo <code>.md</code> sin procesar, abierto en un editor de texto plano, muestra las marcas, no la página: <code>#</code> para un título, <code>**</code> alrededor de la negrita, un bloque delimitado para un diagrama Mermaid que no se dibuja. Alguien que no escribe Markdown no lee nada de eso como se pensó, y pedirle que primero instale un visor es mucho pedir para un solo documento.</p>
+
+<h2>Por qué no una captura de pantalla</h2>
+<p>Una captura congela una pantalla de un documento que puede tener varias páginas, no se puede buscar ni seleccionar, y se lee peor después de comprimirla y reenviarla unas cuantas veces. Un PDF conserva intactos el texto, los diagramas y los saltos de página, sin importar la extensión.</p>
+
+<h2>Lo que te da un PDF</h2>
+<ul>
+  <li>Se abre con lo que la otra persona ya tiene, Vista Previa, un navegador, Acrobat, su teléfono, sin necesidad de una herramienta de Markdown.</li>
+  <li>Los diagramas Mermaid aparecen dibujados, no como código; los bloques de código conservan el resaltado.</li>
+  <li>Los saltos de página se eligen para que un título no quede solo al pie de una página y para que una tabla o un diagrama no se parta en dos.</li>
+  <li>El mismo archivo, venga de la app MarsDawn o de la línea de comandos gratuita; la guía paso a paso está en <a href="/es/markdown-to-pdf/">Markdown a PDF</a>.</li>
+</ul>
+
+<h2>Siguiente</h2>
+<ul>
+  <li>Los temas y diseños de los que puede salir la exportación: <a href="/es/themes/">temas de vista previa y exportación a PDF</a>.</li>
+  <li>Exportar desde un script o un agente en lugar de la app: <a href="/es/cli/agents/">marsdawn para agentes</a>.</li>
+  <li>Por qué una persona tiene que leer el documento primero: <a href="/es/reviewing-ai-output/">por qué revisar</a>.</li>
+  <li>Las entregas entre varios agentes son una fuente natural de PDF para compartir: <a href="/es/agent-design-patterns/">Cuatro patrones de diseño de agentes y los documentos que te entrega cada uno</a>.</li>
+</ul>
+""",
+    }
+
+    pages['reviewing-ai-output'] = {
+        "title": 'Por qué lo que genera la IA todavía necesita un lector humano · MarsDawn',
+        "description": 'El Markdown escrito por una IA tiene que entenderlo una persona, no creerlo a simple vista. MarsDawn pone la página renderizada junto al código fuente y dibuja diagramas Mermaid y fórmulas KaTeX, para que la estructura se lea de un vistazo.',
+        "body": f"""
+<section class="intro">
+  <h1>Un agente lo escribe. Tú todavía tienes que entenderlo.</h1>
+  <p>Un agente de IA puede redactar rápido un plan, una especificación o unas notas. Lo que produce todavía tiene que entenderlo la persona que va a actuar en consecuencia, no creerlo solo porque se lee con fluidez.</p>
+</section>
+
+<div class="summary"><p><strong>MarsDawn está hecho para esa lectura: la página renderizada junto al código fuente, con los diagramas Mermaid y las fórmulas KaTeX dibujados en lugar de quedar como marcas, para que la estructura de un documento se lea de un vistazo.</strong></p></div>
+
+<h2>Fluido no es lo mismo que correcto</h2>
+<p>Al escribir sobre la programación asistida por IA, Simon Willison lo dijo así sobre el código en el que se va a seguir trabajando, no el que se tira: «la calidad y la comprensibilidad del código subyacente son cruciales» (<a href="https://simonwillison.net/2025/Mar/6/vibe-coding/">Vibe coding</a>, 2025). Lo mismo vale para un documento: el borrador de un agente que se lee sin tropiezos puede equivocarse en la estructura, en los números o en la lógica, y la prosa fluida no avisa qué partes hay que revisar.</p>
+
+<h2>Inferencia, no compilación</h2>
+<p>Birgitta Böckeler, en un texto para Thoughtworks, marca la diferencia sin rodeos: «los LLM NO son compiladores, intérpretes, transpiladores ni ensambladores del lenguaje natural, son inferidores» (<a href="https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html">I still care about the code</a>). Un compilador acepta tu entrada o informa un error; un agente puede devolver algo que se ejecuta, o que se lee, sin ser correcto. Alguien todavía tiene que revisarlo.</p>
+
+<h2>Lo que MarsDawn le da a ese lector</h2>
+<ul>
+  <li>La página renderizada junto al código fuente, que se actualiza cuando cambia cualquiera de los dos lados, para tener a la vista a la vez una afirmación del texto y la forma en que está estructurada.</li>
+  <li>Diagramas Mermaid dibujados: un diagrama de flujo que un agente describió en texto se convierte en una forma que de verdad puedes seguir.</li>
+  <li>Fórmulas KaTeX renderizadas, no una tira de barras invertidas: una fórmula se lee como fórmula.</li>
+  <li>Nada se ejecuta por su cuenta. MarsDawn no califica, no resume ni marca nada del documento por ti; pone la estructura frente a ti para que tú lo hagas.</li>
+</ul>
+
+<h2>Siguiente</h2>
+<ul>
+  <li>Cómo esa revisión sale barata para el contexto del propio agente: <a href="/es/token-efficient-review/">revisión con pocos tokens</a>.</li>
+  <li>Entregar el documento revisado a otra persona: <a href="/es/sharing-exported-pdfs/">compartir un PDF</a>.</li>
+  <li>Por qué cuesta leerlo y cómo hacerlo: <a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a>.</li>
+  <li>Por qué los agentes muestran sus planes: <a href="/es/agent-transparency/">Anthropic dice que los agentes deben ser transparentes. ¿Quién lee lo que muestran?</a></li>
+  <li>Qué es MarsDawn, en una página: <a href="/es/">la página de inicio</a>.</li>
+</ul>
+""",
+    }
+
+    pages['reading-agent-output'] = {
+        "title": 'Leer lo que te devuelve tu agente · MarsDawn',
+        "description": 'Los agentes de IA entregan su trabajo en Markdown: planes, especificaciones, informes de avance. Qué dicen quienes construyen agentes sobre los puntos de control y los fallos, por qué ese resultado cuesta leerlo y una lista para revisar un plan en cinco minutos.',
+        "body": f"""
+<section class="intro">
+  <h1>El trabajo de tu agente vuelve como un archivo Markdown.</h1>
+  <p>Le pides a un agente de programación que planifique una migración, escriba una especificación o persiga un bug. Trabaja solo un rato y luego te entrega un archivo: <code>plan.md</code>, <code>SPEC.md</code>, un informe de avance, un resumen de investigación. Hasta donde puedes comprobar el trabajo, ese archivo es el trabajo.</p>
+</section>
+
+<div class="summary"><p><strong>Si el agente lo hizo bien, lo averiguas leyendo lo que te entrega. MarsDawn es una app para Mac hecha para esa lectura.</strong></p></div>
+
+<h2>Qué dicen quienes construyen agentes</h2>
+<p>Citado tal como se escribió; nuestra lectura viene después.</p>
+<ul>
+  <li>«Building Effective Agents», de Anthropic (Erik S. y Barry Zhang, diciembre de 2024), propone tres principios básicos para construir agentes. Uno es «Prioriza la transparencia mostrando explícitamente los pasos de planificación del agente». Está escrito para quienes construyen agentes. Desde tu lado, esa transparencia es el plan que terminas leyendo.</li>
+  <li>El mismo artículo: «Luego, los agentes pueden hacer una pausa para recibir comentarios humanos en puntos de control o cuando encuentran obstáculos». Fíjate en el verbo: <em>pueden</em>.</li>
+  <li>Chip Huyen, en «Agents» (enero de 2025), sobre por qué la planificación debe estar separada de la ejecución: «Sin supervisión, un agente puede ejecutar esos pasos durante horas, desperdiciando tiempo y dinero en llamadas a la API, antes de que te des cuenta de que no va a ninguna parte». También describe un fallo en el que «el agente está convencido de que completó una tarea cuando no es así». Si le pides que aloje a 50 personas en 30 habitaciones de hotel, ubica a 40 e insiste en que terminó.</li>
+  <li>Andrew Ng, sobre el patrón de diseño de planificación en The Batch (abril de 2024): «Por un lado, la planificación es una capacidad muy poderosa; por otro, produce resultados menos predecibles». Es una observación sobre la previsibilidad, no un llamado a la revisión humana, y él espera que la planificación mejore rápido.</li>
+</ul>
+<p><strong>Nuestra conclusión, no la de ellos:</strong> si un agente expone su plan y se detiene en puntos de control, alguien lee ese plan en el punto de control, y casi siempre eres tú. Si un agente puede creer que terminó cuando no es así, su informe de «listo» también necesita un lector. Ninguno de estos autores menciona MarsDawn ni lo recomienda, ni tampoco ninguna otra herramienta de Markdown.</p>
+
+<h2>Por qué cuesta más leerlo de lo que parece</h2>
+<p>El archivo es largo, y la parte que importa rara vez está arriba. Tiene diagramas Mermaid y fórmulas que cuesta seguir como código fuente. Puede que el agente lo siga reescribiendo cuando vas por la mitad. Suele ser uno de varios archivos, a veces repartidos entre ramas o worktrees. Y cuando encuentras un problema, «la parte del caché se ve rara» deja al agente adivinando; «<code>docs/plan.md:42</code> borra la tabla vieja antes de que termine el backfill», no.</p>
+
+<h2>Dónde ayuda MarsDawn</h2>
+<ul>
+  <li><strong>Archivos largos:</strong> la pestaña Esquema de la barra lateral (&#8963;&#8984;S) lista los títulos. Haz clic en uno y los dos paneles saltan ahí.</li>
+  <li><strong>Diagramas y fórmulas:</strong> Mermaid y KaTeX se dibujan en la vista previa junto al código fuente (&#8984;2), y los dos paneles se desplazan juntos.</li>
+  <li><strong>Reescrito mientras lees:</strong> cuando el agente reescribe el archivo, MarsDawn lo vuelve a cargar y conserva tu posición, siempre que no tengas cambios propios sin guardar.</li>
+  <li><strong>Varios archivos:</strong> abre la carpeta del agente con Archivo &#9656; Abrir carpeta&#8230; (&#8679;&#8984;O). Los archivos nuevos aparecen en la pestaña Archivos en aproximadamente un segundo y, en un checkout de git, el encabezado indica la rama o el worktree.</li>
+  <li><strong>Comentarios exactos:</strong> Edición &#9656; Copiar referencia (&#8997;&#8984;C) copia tu posición como <code>docs/plan.md:42</code>. Copiar para IA (&#8963;&#8997;&#8984;C) agrega el texto seleccionado debajo. Pega cualquiera de los dos en el chat con el agente.</li>
+</ul>
+<p>Dos más para el ciclo: un agente puede ejecutar <code>marsdawn open plan.md:42</code> para abrir el archivo en MarsDawn en la línea 42, la que quiere que veas primero, y un archivo revisado se exporta a PDF desde la app o con el comando gratuito <code>marsdawn export</code>.</p>
+<p>MarsDawn no tiene ningún modelo de IA dentro. No resume el plan, no lo califica ni te dice qué está mal. Tú lees; la app mantiene legible un archivo largo que cambia y te deja señalar la línea exacta.</p>
+
+<h2>Revisar el plan de un agente en cinco minutos</h2>
+<p>Esto funciona en cualquier editor.</p>
+<ol>
+  <li>Lee solo los títulos. ¿El esquema coincide con lo que pediste? Una sección que falta suele significar trabajo que falta.</li>
+  <li>Busca cada lugar que diga que algo está hecho, que pasa o que se verificó, y comprueba uno tú mismo: abre el archivo, ejecuta la prueba, cuenta las filas.</li>
+  <li>Busca pasos que no se pueden deshacer: borrar datos, migraciones, force-push, cualquier cosa que envíe, pague o publique. Esos esperan tu sí explícito.</li>
+  <li>Lee los diagramas renderizados y compara cada flecha con el texto.</li>
+  <li>Haz una lista de los archivos y sistemas que toca el plan. Pregunta por todo lo que no pediste antes de que se ejecute.</li>
+  <li>Escribe los comentarios como lugar, problema, solución: «<code>plan.md:88</code>: el backfill se ejecuta después del borrado. Intercambia los pasos 4 y 5». Un problema por línea.</li>
+</ol>
+<p>¿Poco tiempo? Haz el paso 2. Ahí es donde se descubre a un agente que cree que terminó. La versión larga, con un ejemplo completo: <a href="/es/reviewing-agent-plans/">Revisar el plan de un agente en cinco minutos</a>.</p>
+
+<h2>Pruébalo</h2>
+<p>MarsDawn está en el <a href="{k.LISTING_URL}">Mac App Store</a>. También existe la herramienta de línea de comandos gratuita <code>marsdawn</code>:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Exporta Markdown a PDF sin la app, y <code>marsdawn open</code> le permite a tu agente abrir archivos en MarsDawn por ti.</p>
+<p><a href="/es/cli/">Línea de comandos</a> &#183; <a href="/es/cli/agents/">marsdawn para agentes</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+
+<h2>Siguiente</h2>
+<ul>
+  <li>El argumento breve para leer lo que genera la IA: <a href="/es/reviewing-ai-output/">Por qué lo que genera la IA todavía necesita un lector humano</a>.</li>
+  <li>Mantener pequeño el contexto del agente mientras revisas: <a href="/es/token-efficient-review/">revisión con pocos tokens</a>.</li>
+  <li>Por qué los agentes muestran sus planes: <a href="/es/agent-transparency/">Anthropic dice que los agentes deben ser transparentes. ¿Quién lee lo que muestran?</a></li>
+  <li>La lista de arriba, paso a paso con un ejemplo: <a href="/es/reviewing-agent-plans/">Revisar el plan de un agente en cinco minutos</a>.</li>
+  <li>Qué documentos te entregan los distintos tipos de agentes: <a href="/es/agent-design-patterns/">Cuatro patrones de diseño de agentes y los documentos que te entrega cada uno</a>.</li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+  <li>Erik S. y Barry Zhang, «Building Effective Agents», Anthropic, 19 de diciembre de 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (citado de la versión publicada el 26/09/2026; el artículo ahora indica que buena parte de las herramientas que describe cambió desde diciembre de 2024).</li>
+  <li>Chip Huyen, «Agents», 7 de enero de 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Andrew Ng, «Agentic Design Patterns Part 4, Planning», The Batch, 10 de abril de 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a></li>
+</ul>
+""",
+    }
+
+    pages['agent-transparency'] = {
+        "title": 'Los agentes deben ser transparentes. ¿Quién lee lo que muestran? · MarsDawn',
+        "description": 'La guía de Anthropic para construir agentes pide transparencia: mostrar los pasos de planificación. Qué dice, qué no dice y por qué esos pasos suelen terminar en un archivo Markdown que alguien tiene que leer.',
+        "body": f"""
+<section class="intro">
+  <h1>Anthropic dice que los agentes deben ser transparentes. ¿Quién lee lo que muestran?</h1>
+  <p>En diciembre de 2024, Anthropic publicó «Building Effective Agents», una guía para quienes construyen agentes de IA. Su resumen enumera tres principios, y uno de ellos es la transparencia. Este artículo trata del otro extremo de ese principio: cuando un agente muestra sus pasos, alguien tiene que leerlos.</p>
+</section>
+
+<div class="summary"><p><strong>La transparencia la pone el agente. La lectura la pones tú. Anthropic les pide a quienes construyen agentes que muestren los pasos de planificación; para la mayoría de las personas que manejan un agente de programación, esos pasos llegan como un archivo Markdown que alguien tiene que leer en el momento justo.</strong></p></div>
+
+<h2>Qué dice la guía</h2>
+<p>Erik S. y Barry Zhang resumen sus consejos así:</p>
+<blockquote><p>«Al implementar agentes, intentamos seguir tres principios básicos: mantener la simplicidad en el diseño del agente. Priorizar la transparencia mostrando explícitamente los pasos de planificación del agente. Diseñar con cuidado la interfaz entre el agente y la computadora (ACI) mediante una documentación y unas pruebas exhaustivas de las herramientas».</p></blockquote>
+<p>Son principios de diseño para quienes construyen agentes, no instrucciones para la persona que usa uno. El principio pide que se muestren los pasos. No dice quién los lee.</p>
+<p>El mismo artículo describe lo que hace un agente una vez que tiene una tarea: «Una vez que la tarea está clara, los agentes planifican y operan de forma independiente, y posiblemente vuelven al humano para pedir más información o su criterio». Y: «Luego, los agentes pueden hacer una pausa para recibir comentarios humanos en puntos de control o cuando encuentran obstáculos». Fíjate en las palabras <em>posiblemente</em> y <em>pueden</em>. Los puntos de control se describen como algo que un agente puede tener, no algo que deba tener.</p>
+
+<h2>La mayor parte de la verificación no la haces tú</h2>
+<p>Es fácil exagerar esto, así que esto es lo que la guía pone primero en realidad. El agente se verifica a sí mismo contra el mundo: «Durante la ejecución, es crucial que los agentes obtengan en cada paso una “verdad de referencia” del entorno (como los resultados de llamadas a herramientas o de la ejecución de código) para evaluar su avance». En esa frase, la verdad de referencia son resultados de pruebas y salidas de herramientas. No una persona.</p>
+<p>La guía también es directa sobre el riesgo: «La naturaleza autónoma de los agentes implica costos más altos y la posibilidad de errores que se acumulan». Su respuesta son pruebas exhaustivas en entornos aislados, con salvaguardas. No dice «lee con más cuidado».</p>
+<p>Una persona sí aparece más adelante, en el apéndice sobre agentes de programación: «Sin embargo, aunque las pruebas automatizadas ayudan a verificar la funcionalidad, la revisión humana sigue siendo crucial para asegurar que las soluciones se ajusten a los requisitos más amplios del sistema». Esa frase habla de código. Pero el hueco que señala es conocido con cualquier agente: una prueba puede decirte que algo funciona, no que es lo que querías.</p>
+
+<h2>Dónde terminan los pasos</h2>
+<p><strong>De aquí en adelante, esta es nuestra lectura, no la de Anthropic.</strong></p>
+<p>Si usas un agente de programación todos los días, sus pasos de planificación no suelen aparecer en un panel. Aparecen como archivos: <code>plan.md</code>, una lista de tareas con casillas, un archivo de avance que el agente no deja de reescribir, un resumen al final. La transparencia, desde tu lado, significa más cosas que leer.</p>
+<p>Mostrar los pasos es la mitad que le toca al agente. La otra mitad es una persona que los lee cuando importa: antes de que se ejecute la migración, antes de fusionar la rama, antes de aceptar el «listo». Un agente que lo expone todo en un archivo de 600 líneas que nadie abre es transparente en el papel y no tiene supervisión en la práctica.</p>
+<p>Harrison Chase planteó algo parecido en 2024, al escribir sobre cómo deberían funcionar los frameworks de agentes y no sobre documentos: «Vas a querer poder observar lo que pasa dentro, ya que es posible que los pasos exactos no se conozcan de antemano». Hablaba de herramientas para quienes construyen agentes. Si eres tú quien maneja el agente, el archivo simple que no deja de escribir suele ser la parte que puedes observar.</p>
+<p>Ninguno de estos autores menciona MarsDawn, y ninguno lo recomienda, ni tampoco ninguna otra herramienta de Markdown.</p>
+
+<h2>Por qué esa lectura cuesta más de lo que parece</h2>
+<p>El archivo es largo, y lo que importa rara vez está arriba. El diagrama que explica el cambio es código Mermaid, no una imagen (cómo verlo dibujado se explica en <a href="/es/view-markdown-on-mac/">Cómo ver un archivo Markdown en Mac</a>). Puede que el agente reescriba el archivo cuando vas por la mitad. A menudo hay más de un archivo, a veces en distintas ramas o worktrees. Y cuando detectas un problema, «la parte del caché se ve rara» deja al agente adivinando. La versión larga está en <a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a>.</p>
+
+<h2>Dónde encaja MarsDawn y dónde no</h2>
+<p>MarsDawn es una app para Mac hecha para esa lectura. No hace más transparente a un agente y no tiene ningún modelo de IA dentro: no va a resumir el plan ni a decirte si está bien. Lo que sí hace:</p>
+<ul>
+  <li><strong>Archivos largos:</strong> Visualización &#9656; Mostrar barra lateral (&#8963;&#8984;S) abre la pestaña Esquema, que lista los títulos. Haz clic en uno para saltar ahí.</li>
+  <li><strong>Diagramas y fórmulas:</strong> el código fuente y la página renderizada quedan lado a lado (&#8984;2) y se desplazan juntos, con Mermaid y KaTeX dibujados. Si un diagrama tiene un error, la vista previa muestra su código con el error debajo.</li>
+  <li><strong>Reescrito mientras lees:</strong> cuando el agente reescribe el archivo, MarsDawn lo vuelve a cargar y conserva tu posición, siempre que no tengas cambios propios sin guardar.</li>
+  <li><strong>Varios archivos:</strong> abre la carpeta del agente con Archivo &#9656; Abrir carpeta&#8230; (&#8679;&#8984;O). Los archivos nuevos aparecen en la pestaña Archivos en aproximadamente un segundo y, en un checkout de git, el encabezado indica la rama o el worktree.</li>
+  <li><strong>Señalar una línea:</strong> Edición &#9656; Copiar referencia (&#8997;&#8984;C) copia tu posición como <code>docs/plan.md:42</code>, y Copiar para IA (&#8963;&#8997;&#8984;C) agrega el texto seleccionado debajo, listo para pegar en el chat con el agente.</li>
+</ul>
+<p>La lectura la sigues haciendo tú. MarsDawn mantiene legible un archivo largo que cambia mientras la haces.</p>
+
+<h2>Pruébalo</h2>
+<p>MarsDawn está en el <a href="{k.LISTING_URL}">Mac App Store</a>. También existe la herramienta de línea de comandos gratuita <code>marsdawn</code>:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Exporta Markdown a PDF sin la app.</p>
+<p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+
+<h2>Siguiente</h2>
+<ul>
+  <li>Por qué cuesta leer lo que entrega un agente, con una lista de verificación: <a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a>.</li>
+  <li>La lista, paso a paso con un ejemplo: <a href="/es/reviewing-agent-plans/">Revisar el plan de un agente en cinco minutos</a>.</li>
+  <li>Qué documentos te entregan los distintos tipos de agentes: <a href="/es/agent-design-patterns/">Cuatro patrones de diseño de agentes y los documentos que te entrega cada uno</a>.</li>
+  <li>El argumento breve para leer lo que genera la IA: <a href="/es/reviewing-ai-output/">Por qué lo que genera la IA todavía necesita un lector humano</a>.</li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+  <li>Erik S. y Barry Zhang, «Building Effective Agents», Anthropic, 19 de diciembre de 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (citado de la versión publicada el 26/09/2026; el artículo ahora indica que buena parte de las herramientas que describe cambió desde diciembre de 2024).</li>
+  <li>Harrison Chase, «What is an agent?», LangChain, 28 de junio de 2024, copia archivada: <a href="http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/">http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/</a> (la dirección original ahora muestra otro artículo, de 2026).</li>
+</ul>
+""",
+    }
+
     app_ui_languages = 'inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano'
     return {
         'pages': pages, 'figures': figures, 'home': home, 'compare_tables': compare_tables,
