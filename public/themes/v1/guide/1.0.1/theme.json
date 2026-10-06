@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "guide",
+  "version": "1.0.1",
+  "name": {
+    "en": "Guide"
+  },
+  "summary": {
+    "en": "A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs",
+    "zh-Hant": "冷白背景搭配海軍藍標題與清亮藍色連結，字級加大，適合使用者指南、教學與 README",
+    "zh-Hans": "冷白背景搭配海军蓝标题与清亮蓝色链接，字级加大，适合用户指南、教程与 README",
+    "ja": "クールな白背景にネイビーの見出しと鮮明な青のリンク。ユーザーガイド、チュートリアル、README 向けに大きめの文字",
+    "de": "Kühles Weiß, marineblaue Überschriften und klare blaue Links, größere Schrift für Anleitungen, Tutorials und READMEs",
+    "fr": "Fond blanc froid, titres bleu marine, liens d’un bleu net et texte plus grand, pour guides, tutoriels et README",
+    "es": "Fondo blanco frío, encabezados azul marino y enlaces azul nítido, letra más grande para guías, tutoriales y README",
+    "ko": "차가운 흰색 배경에 네이비 제목과 선명한 파란색 링크, 큰 글자 — 사용자 가이드, 튜토리얼, README에 적합"
+  },
+  "fontDesign": "sans",
+  "scenarios": [
+    "technical-docs"
+  ],
+  "author": {
+    "name": "Southern Light",
+    "github": "redtear1115"
+  },
+  "license": "Apache-2.0",
+  "light": {
+    "background": "#F7F9FC",
+    "surface": "#EAF0F8",
+    "text": "#1E2530",
+    "muted": "#5C6773",
+    "border": "#D7E2EE",
+    "heading": "#16345C",
+    "accent": "#1565D8",
+    "link": "#1565D8",
+    "quote": "#4C7FBF",
+    "syntax": {
+      "keyword": "#2E4C8C",
+      "string": "#2D7A50",
+      "comment": "#5C6773",
+      "number": "#87672D",
+      "function": "#1565D8",
+      "type": "#3D6E99"
+    },
+    "diagram": {
+      "node": "#E0EAF7",
+      "nodeBorder": "#1565D8",
+      "text": "#1E2530",
+      "line": "#5C6773",
+      "secondary": "#E7EEF0",
+      "tertiary": "#F2F6FB",
+      "note": "#FBF3DC"
+    }
+  },
+  "dark": {
+    "background": "#0A1B3D",
+    "surface": "#122A54",
+    "text": "#DCE6F5",
+    "muted": "#8CA0C2",
+    "border": "#1D3A66",
+    "heading": "#7FB0F0",
+    "accent": "#4C90FF",
+    "link": "#4C90FF",
+    "quote": "#5C87C2",
+    "syntax": {
+      "keyword": "#6FA8F5",
+      "string": "#7FCB8D",
+      "comment": "#8CA0C2",
+      "number": "#D2A15E",
+      "function": "#4C90FF",
+      "type": "#5FB8D9"
+    },
+    "diagram": {
+      "node": "#16305C",
+      "nodeBorder": "#4C90FF",
+      "text": "#DCE6F5",
+      "line": "#8CA0C2",
+      "secondary": "#163A4A",
+      "tertiary": "#1A2650",
+      "note": "#332C1C"
+    }
+  },
+  "style": {
+    "bodySize": 17,
+    "lineHeight": 1.8,
+    "headingWeight": 700,
+    "radius": 8,
+    "maxWidth": 860,
+    "blockquote": {
+      "style": {
+        "type": "panel"
+      }
+    },
+    "table": {
+      "header": {
+        "type": "surface"
+      }
+    },
+    "hr": {
+      "style": {
+        "type": "line",
+        "color": "border",
+        "thickness": 1
+      }
+    },
+    "link": {
+      "underline": true
+    },
+    "syntax": {
+      "boldKeywords": true
+    }
+  }
+}
