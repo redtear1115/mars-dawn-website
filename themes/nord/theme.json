@@ -1,13 +1,19 @@
 {
   "schemaVersion": 1,
   "id": "nord",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "en": "Nord"
   },
   "summary": {
     "en": "An arctic, north-bluish palette, with an original light companion — adapted from Nord, adjusted for readability",
-    "zh-Hant": "北歐冰藍色調，並原創搭配一款淺色版本 — 改編自 Nord，為可讀性調整"
+    "zh-Hant": "北歐冰藍色調，並原創搭配一款淺色版本 — 改編自 Nord，為可讀性調整",
+    "zh-Hans": "北欧冰蓝色调，并原创搭配一款浅色版本 — 改编自 Nord，为可读性调整",
+    "ja": "北極のような北国ブルーのパレット。ライト版は独自追加 — Nord を基に、読みやすさのために調整",
+    "de": "Eine arktische, nordisch-bläuliche Palette mit eigener heller Variante – nach Nord, für bessere Lesbarkeit angepasst",
+    "fr": "Palette arctique aux bleus nordiques, avec une variante claire originale – adaptée de Nord, ajustée pour la lisibilité",
+    "es": "Una paleta ártica de azules nórdicos, con una variante clara original —adaptada de Nord y ajustada para leer mejor",
+    "ko": "북극의 푸른빛 팔레트에 새로 만든 라이트 버전을 더함 — Nord를 바탕으로 가독성에 맞게 조정"
   },
   "fontDesign": "sans",
   "scenarios": [

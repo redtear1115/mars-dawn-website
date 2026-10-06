@@ -1,13 +1,19 @@
 {
   "schemaVersion": 1,
   "id": "ledger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "en": "Ledger"
   },
   "summary": {
     "en": "Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates",
-    "zh-Hant": "米白紙面、深綠分隔線與實心表頭，適合預算、對帳單與估價單"
+    "zh-Hant": "米白紙面、深綠分隔線與實心表頭，適合預算、對帳單與估價單",
+    "zh-Hans": "米白纸面、深绿分隔线与实心表头，适合预算、对账单与估价单",
+    "ja": "オフホワイトの紙面、濃い緑の罫線、塗りつぶしの表ヘッダー。予算書、明細書、見積書向け",
+    "de": "Cremeweißes Papier, dunkelgrüne Linien und ein farbiger Tabellenkopf, für Budgets, Abrechnungen und Angebote",
+    "fr": "Papier blanc cassé, filets vert foncé et en-tête de tableau plein, pour budgets, relevés et devis",
+    "es": "Papel blanco roto, líneas verde oscuro y encabezado de tabla relleno, para presupuestos, extractos y cotizaciones",
+    "ko": "미색 종이, 짙은 녹색 구분선, 채워진 표 머리글 — 예산서, 명세서, 견적서에 적합"
   },
   "fontDesign": "serif",
   "scenarios": [

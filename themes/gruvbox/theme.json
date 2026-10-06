@@ -1,13 +1,19 @@
 {
   "schemaVersion": 1,
   "id": "gruvbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "en": "Gruvbox"
   },
   "summary": {
     "en": "A warm retro palette of cream, brown and orange — adapted from Gruvbox, adjusted for readability",
-    "zh-Hant": "溫暖復古的米色、棕色與橘色調色盤 — 改編自 Gruvbox，為可讀性調整"
+    "zh-Hant": "溫暖復古的米色、棕色與橘色調色盤 — 改編自 Gruvbox，為可讀性調整",
+    "zh-Hans": "温暖复古的米色、棕色与橘色调色盘 — 改编自 Gruvbox，为可读性调整",
+    "ja": "クリーム、ブラウン、オレンジの温かなレトロパレット — Gruvbox を基に、読みやすさのために調整",
+    "de": "Eine warme Retropalette aus Creme, Braun und Orange – nach Gruvbox, für bessere Lesbarkeit angepasst",
+    "fr": "Une palette rétro chaleureuse de crème, de brun et d’orange – adaptée de Gruvbox, ajustée pour la lisibilité",
+    "es": "Una cálida paleta retro de crema, marrón y naranja —adaptada de Gruvbox y ajustada para leer mejor",
+    "ko": "크림, 브라운, 오렌지로 이루어진 따뜻한 레트로 팔레트 — Gruvbox를 바탕으로 가독성에 맞게 조정"
   },
   "fontDesign": "sans",
   "scenarios": [

@@ -1,13 +1,19 @@
 {
   "schemaVersion": 1,
   "id": "spec",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "en": "Spec"
   },
   "summary": {
     "en": "Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs",
-    "zh-Hant": "白底正文搭配單一磚紅強調色，決策與風險以陶土色面板呈現，適合 PRD 與 RFC"
+    "zh-Hant": "白底正文搭配單一磚紅強調色，決策與風險以陶土色面板呈現，適合 PRD 與 RFC",
+    "zh-Hans": "白底正文搭配单一砖红强调色，决策与风险以陶土色面板呈现，适合 PRD 与 RFC",
+    "ja": "白地にインク、アクセントはレンガ赤ひとつ。決定事項とリスクはテラコッタ調のパネルで。PRD と RFC 向け",
+    "de": "Tinte auf Weiß mit einem ziegelroten Akzent, Entscheidungen und Risiken im Terrakotta-Kasten, für PRDs und RFCs",
+    "fr": "Encre sur blanc, un seul accent rouge brique, décisions et risques dans un encadré terre cuite, pour PRD et RFC",
+    "es": "Tinta sobre blanco con un único acento rojo ladrillo, decisiones y riesgos en un panel terracota, para PRD y RFC",
+    "ko": "흰 바탕의 잉크색 본문에 벽돌색 강조 하나, 결정과 위험은 테라코타 패널 — PRD와 RFC에 적합"
   },
   "fontDesign": "sans",
   "scenarios": [

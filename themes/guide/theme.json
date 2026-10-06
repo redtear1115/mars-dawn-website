@@ -1,13 +1,19 @@
 {
   "schemaVersion": 1,
   "id": "guide",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "en": "Guide"
   },
   "summary": {
     "en": "A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs",
-    "zh-Hant": "冷白背景搭配海軍藍標題與清亮藍色連結，字級加大，適合使用者指南、教學與 README"
+    "zh-Hant": "冷白背景搭配海軍藍標題與清亮藍色連結，字級加大，適合使用者指南、教學與 README",
+    "zh-Hans": "冷白背景搭配海军蓝标题与清亮蓝色链接，字级加大，适合用户指南、教程与 README",
+    "ja": "クールな白背景にネイビーの見出しと鮮明な青のリンク。ユーザーガイド、チュートリアル、README 向けに大きめの文字",
+    "de": "Kühles Weiß, marineblaue Überschriften und klare blaue Links, größere Schrift für Anleitungen, Tutorials und READMEs",
+    "fr": "Fond blanc froid, titres bleu marine, liens d’un bleu net et texte plus grand, pour guides, tutoriels et README",
+    "es": "Fondo blanco frío, encabezados azul marino y enlaces azul nítido, letra más grande para guías, tutoriales y README",
+    "ko": "차가운 흰색 배경에 네이비 제목과 선명한 파란색 링크, 큰 글자 — 사용자 가이드, 튜토리얼, README에 적합"
   },
   "fontDesign": "sans",
   "scenarios": [

@@ -1,13 +1,19 @@
 {
   "schemaVersion": 1,
   "id": "solarized",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "en": "Solarized"
   },
   "summary": {
     "en": "Ethan Schoonover's teal-and-gold precision palette — adapted from Solarized, adjusted for readability",
-    "zh-Hant": "Ethan Schoonover 設計的藍綠與金色精準色盤 — 改編自 Solarized，為可讀性調整"
+    "zh-Hant": "Ethan Schoonover 設計的藍綠與金色精準色盤 — 改編自 Solarized，為可讀性調整",
+    "zh-Hans": "Ethan Schoonover 设计的蓝绿与金色精准色盘 — 改编自 Solarized，为可读性调整",
+    "ja": "Ethan Schoonover によるティールとゴールドの精密パレット — Solarized を基に、読みやすさのために調整",
+    "de": "Ethan Schoonovers präzise Palette in Petrol und Gold – nach Solarized, für bessere Lesbarkeit angepasst",
+    "fr": "La palette de précision bleu canard et or d’Ethan Schoonover – adaptée de Solarized, ajustée pour la lisibilité",
+    "es": "La precisa paleta en verde azulado y dorado de Ethan Schoonover —adaptada de Solarized y ajustada para leer mejor",
+    "ko": "Ethan Schoonover가 만든 청록색과 금색의 정밀한 팔레트 — Solarized를 바탕으로 가독성에 맞게 조정"
   },
   "fontDesign": "sans",
   "scenarios": [

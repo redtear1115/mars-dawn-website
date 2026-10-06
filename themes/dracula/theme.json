@@ -1,13 +1,19 @@
 {
   "schemaVersion": 1,
   "id": "dracula",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": {
     "en": "Dracula"
   },
   "summary": {
     "en": "The classic dark vampire palette, with Alucard by day — adapted from Dracula Theme, adjusted for readability",
-    "zh-Hant": "經典吸血鬼深色調色盤，白日則用 Alucard 版本 — 改編自 Dracula Theme，為可讀性調整"
+    "zh-Hant": "經典吸血鬼深色調色盤，白日則用 Alucard 版本 — 改編自 Dracula Theme，為可讀性調整",
+    "zh-Hans": "经典吸血鬼深色调色盘，白日则用 Alucard 版本 — 改编自 Dracula Theme，为可读性调整",
+    "ja": "クラシックな吸血鬼風のダークパレット。昼間は Alucard — Dracula Theme を基に、読みやすさのために調整",
+    "de": "Die klassische dunkle Vampirpalette, tagsüber mit Alucard – nach Dracula Theme, für bessere Lesbarkeit angepasst",
+    "fr": "La palette vampirique sombre classique, avec Alucard le jour – adaptée de Dracula Theme, ajustée pour la lisibilité",
+    "es": "La clásica paleta oscura de vampiro, con Alucard de día —adaptada de Dracula Theme y ajustada para leer mejor",
+    "ko": "클래식한 다크 뱀파이어 팔레트, 낮에는 Alucard — Dracula Theme을 바탕으로 가독성에 맞게 조정"
   },
   "fontDesign": "sans",
   "scenarios": [
