@@ -26,6 +26,22 @@ SLUGS = ["templates"] + [f"templates/{case}" for case in CASES]
 LOOP_MARK = "<!--loop:{case}-->"
 IMAGE_DIR = ROOT / "public" / "assets" / "templates"
 
+
+def register_locale(locale: str, root: str, data: dict) -> None:
+    """Adds a locale's templates copy: data has the same keys as the tables below, each holding this
+    locale's part of it ("ui_labels", "labels", "hub", "pages", "templates", "scene_text")."""
+    LOCALE_ROOT[locale] = root
+    for name, table in (("ui_labels", UI_LABELS), ("labels", LABELS), ("hub", HUB), ("pages", PAGES),
+                        ("templates", TEMPLATES), ("scene_text", SCENE_TEXT)):
+        table[locale] = data[name]
+
+
+def locale_data(locale: str) -> dict:
+    """The inverse of register_locale, for a locale already in the tables."""
+    return {"ui_labels": UI_LABELS[locale], "labels": LABELS[locale], "hub": HUB[locale], "pages": PAGES[locale],
+            "templates": TEMPLATES[locale], "scene_text": SCENE_TEXT[locale]}
+
+
 # The outline row labels on the site's other pages (UI keys), for build_pages' UI tables.
 UI_LABELS = {
     "en": {"templates": "Templates", "templates-spec": "Spec template",

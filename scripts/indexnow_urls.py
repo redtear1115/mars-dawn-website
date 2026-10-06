@@ -52,8 +52,8 @@ def file_to_url(path: str) -> Optional[str]:
     return None
 
 
-def sitemap_urls() -> list[str]:
-    tree = ET.parse(PUBLIC / "sitemap.xml")
+def sitemap_urls(public: Path = PUBLIC) -> list[str]:
+    tree = ET.parse(public / "sitemap.xml")
     ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     return [loc.text for loc in tree.getroot().findall("s:url/s:loc", ns) if loc.text]
 

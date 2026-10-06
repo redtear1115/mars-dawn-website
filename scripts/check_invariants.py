@@ -50,7 +50,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 BUILD_PAGES = ROOT / "scripts" / "build_pages.py"
 
-PREFIX = {"zh-hant/": "zh-hant", "zh-hans/": "zh-hans", "ja/": "ja"}
+PREFIX = {"zh-hant/": "zh-hant", "zh-hans/": "zh-hans", "ja/": "ja", "de/": "de", "fr/": "fr", "es/": "es", "ko/": "ko"}
+NEW_LOCALES = ("de", "fr", "es", "ko")  # served only once their copy is complete (scripts/locales.py)
 
 # The footer's Mac App Store line, per locale, in either phase: (before launch, after launch).
 # The launch form wraps "Mac App Store" in a link, so it's matched as a pattern.
@@ -72,6 +73,11 @@ FOOTER = {
         r"MarsDawn は <a href=\"[^\"]+\">Mac App Store</a> で配信中です。",
     ),
 }
+# de, fr, es and ko are switched on with app 1.1.0, after launch, so their footers have no
+# pre-launch line to compare: after launch the footer must link the listing, in any wording.
+# Before launch such a locale must not be served at all (see below). The line sits in the footer, or
+# in the home page's closing section, so the pattern is the link itself.
+LAUNCHED_FOOTER_ANY = r"<a href=\"https://apps\.apple\.com/app/id\d+\">Mac App Store</a>"
 
 # Wording that may not survive launch day, per locale.
 PRE_LAUNCH_WORDING = {
@@ -133,14 +139,14 @@ def main():
     problems = []
 
     # Same page set in every locale.
-    by_locale = {"en": set(), "zh-hant": set(), "zh-hans": set(), "ja": set()}
+    by_locale = {"en": set(), "zh-hant": set(), "zh-hans": set(), "ja": set(), **{l: set() for l in NEW_LOCALES}}
     for relative in pages:
         locale = locale_of(relative)
         slug = relative if locale == "en" else relative[len(locale) + 1 :]
         by_locale[locale].add(slug)
     for locale, slugs in by_locale.items():
-        if locale == "en":
-            continue
+        if locale == "en" or (locale in NEW_LOCALES and not slugs):
+            continue  # de, fr, es and ko are either all there or not built; check_locales.py says which
         for missing in sorted(by_locale["en"] - slugs):
             problems.append(f"{locale} is missing {missing}, which en has")
         for extra in sorted(slugs - by_locale["en"]):
@@ -149,14 +155,20 @@ def main():
     for relative, page in pages.items():
         locale = locale_of(relative)
         text = page.read_text()
-        before, after = FOOTER[locale]
-        wanted = after if where == "launched" else re.escape(before)
-        if not re.search(wanted, text):
-            problems.append(
-                f"{relative}: no {locale} footer Mac App Store line for the {where} phase"
-            )
+        if locale in NEW_LOCALES:
+            if where != "launched":
+                problems.append(f"{relative}: {locale} is served before launch; it ships with 1.1.0, after launch")
+            elif not re.search(LAUNCHED_FOOTER_ANY, text):
+                problems.append(f"{relative}: no {locale} footer Mac App Store line for the {where} phase")
+        else:
+            before, after = FOOTER[locale]
+            wanted = after if where == "launched" else re.escape(before)
+            if not re.search(wanted, text):
+                problems.append(
+                    f"{relative}: no {locale} footer Mac App Store line for the {where} phase"
+                )
         if where == "launched":
-            for wording in PRE_LAUNCH_WORDING[locale]:
+            for wording in PRE_LAUNCH_WORDING.get(locale, []):
                 if wording in text:
                     problems.append(f"{relative}: still says {wording!r} after launch")
         offers = len(OFFER.findall(text))
@@ -175,7 +187,9 @@ def main():
         if where == "launched" and not links_out:
             problems.append(f"{relative}: doesn't link to {LISTING_HOST} after launch")
 
-    for home in ("index.html", "zh-hant/index.html", "zh-hans/index.html", "ja/index.html"):
+    homes = ["index.html", "zh-hant/index.html", "zh-hans/index.html", "ja/index.html"]
+    homes += [f"{l}/index.html" for l in NEW_LOCALES if by_locale[l]]
+    for home in homes:
         if home not in pages:
             problems.append(f"{home} is missing")
             continue

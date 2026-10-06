@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""Generates the MarsDawn site in public/, in four languages: en, zh-Hant, zh-Hans and ja.
+"""Generates the MarsDawn site in public/, in the locales locales.py enables: always en, zh-Hant,
+zh-Hans and ja, and de, fr, es and ko once each one's copy is complete (#162).
 
 The en and zh-Hant copy is in this file. The zh-Hans and ja copy, translated from it, is in
-copy_zh_hans.py and copy_ja.py, one module per language, merged in below.
+copy_zh_hans.py and copy_ja.py, one module per language, merged in below. de, fr, es and ko have
+the same kind of module (copy_de.py ...), which also carries the tables zh-Hans and ja keep in
+this file (see locale_tables); none of them is built until its module says COMPLETE = True.
 
 UI labels quoted on each page must match the app's own strings in that language.
 The app lives in another repository, so check them by hand when either side changes.
@@ -17,6 +20,10 @@ from types import SimpleNamespace
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untracked file after a build
+import locales  # noqa: E402
 
 SITE = Path(__file__).resolve().parent.parent / "public"
 CONTENT_LEGAL = Path(__file__).resolve().parent.parent / "content" / "legal"
@@ -148,24 +155,22 @@ def consent_banner_html(locale: str) -> str:
         "</div>"
     )
 
-LOCALES = {
-    "en": {"prefix": "", "html_lang": "en", "label": "English", "root": "/"},
-    "zh-hant": {"prefix": "zh-hant/", "html_lang": "zh-Hant", "label": "繁體中文", "root": "/zh-hant/"},
-    "zh-hans": {"prefix": "zh-hans/", "html_lang": "zh-Hans", "label": "简体中文", "root": "/zh-hans/"},
-    "ja": {"prefix": "ja/", "html_lang": "ja", "label": "日本語", "root": "/ja/"},
-}
+# The locales this build serves, in the order locales.py lists them: the four base locales, then
+# each of de, fr, es and ko whose copy is complete. A planned locale that isn't complete is not in
+# here, so nothing below generates or links it.
+ENABLED = locales.enabled()
+LOCALES = {l: {k: locales.DEFS[l][k] for k in ("prefix", "html_lang", "label", "root")} for l in ENABLED}
 
 # OG locale tokens (underscore-separated, per the Open Graph protocol).
 # zh_CN is the standard token for Simplified Chinese; it names a language, not a storefront.
-OG_LOCALE = {"en": "en_US", "zh-hant": "zh_TW", "zh-hans": "zh_CN", "ja": "ja_JP"}
+OG_LOCALE = {l: locales.DEFS[l]["og"] for l in ENABLED}
 
 # The social card every page shares, English for now: the hero's dawn, wordmark, headline and
 # lede, rendered by tools/og/build_og.py to public/assets/og-en.png. Its alt text is set once
 # the English home page's copy is (hero_copy below), so card and alt say what the hero says.
 OG_IMAGE_ALT = None
 
-# Languages that use full-width punctuation in generated text (e.g. a list label's colon).
-FULL_WIDTH = {"zh-hant", "zh-hans", "ja"}
+# (What follows a list label's colon, full-width in the CJK languages, is locales.DEFS[l]["colon"].)
 
 # The app's interface languages, as /native/ and /vs/macmd-viewer/ state them. One place so the
 # sentence changes in every language at once. The 1.0.0 (5) launch build ships all eight: every string
@@ -178,6 +183,7 @@ APP_UI_LANGUAGES = {
     "zh-hans": "英文、繁体中文、简体中文、日文、德文、法文、西班牙文和韩文",
     "ja": "英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語",
 }
+# (de, fr, es and ko add theirs from their copy module's tables["app_ui_languages"], in _merge_tables.)
 
 UI = {
     "en": {
@@ -3071,6 +3077,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untracked file after a build
 import copy_ja  # noqa: E402
 import copy_zh_hans  # noqa: E402
+import importlib  # noqa: E402
 import hero_window  # noqa: E402
 import loop_anim  # noqa: E402
 import templates_pages  # noqa: E402
@@ -3082,14 +3089,18 @@ for _locale in ("en", "zh-hant"):
 EXTRA_PAGES = {}
 
 
-def _merge_locale(locale: str, module) -> None:
-    k = SimpleNamespace(
+def _make_k(locale: str) -> SimpleNamespace:
+    """What a copy module's build(k) is handed: the shared constants, so each is written once."""
+    return SimpleNamespace(
         EMAIL=EMAIL, UPDATED=UPDATED, BASE_URL=BASE_URL,
         KIT_URL=KIT_URL, BREW_TAP_INSTALL=BREW_TAP_INSTALL, LISTING_URL=LISTING_URL, INSTALL=_INSTALL, SKILL_URL=_SKILL_URL,
-        APP_UI_LANGUAGES=APP_UI_LANGUAGES[locale], schema_links_from=schema_links_from, xml_escape=xml_escape,
+        APP_UI_LANGUAGES=APP_UI_LANGUAGES.get(locale, ""), schema_links_from=schema_links_from, xml_escape=xml_escape,
         render_legal_body=render_legal_body,
     )
-    t = module.build(k)
+
+
+def _merge_locale(locale: str, module) -> None:
+    t = module.build(_make_k(locale))
     t["ui"] = {**t["ui"], **templates_pages.UI_LABELS[locale]}
     assert set(t["ui"]) == set(UI["en"]), f"{locale}: UI keys differ from en"
     UI[locale] = t["ui"]
@@ -3223,7 +3234,7 @@ def home_sections_html(locale: str) -> str:
 def _home_sections_for_twin(locale: str) -> str:
     """The same sections, shaped for html_to_markdown: the trait list's name and line are
     joined by a colon, as the other twins list pages."""
-    colon = "：" if locale in FULL_WIDTH else ": "
+    colon = locales.DEFS[locale]["colon"]
     out = home_sections_html(locale)
     out = re.sub(r'<nav class="traits"[^>]*>', "<section>", out).replace("</nav>", "</section>")
     return out.replace("</a><span>", f"</a>{colon}<span>")
@@ -3638,7 +3649,7 @@ def figure_markdown(locale: str, slug: str) -> str:
     src = abs_url(f"/assets/screens/{image}-{width}.png")
     lines = [f"![{fig['alt'][locale]}]({src})"]
     if fig["callouts"]:
-        colon = "：" if locale in FULL_WIDTH else ":"
+        colon = locales.DEFS[locale]["colon"].rstrip()
         lines += ["", f"{FIGURE_LIST_LABEL[locale]}{colon}", ""]
         lines += [f"{i}. {label[locale]}" for i, (_, _, _, label) in enumerate(fig["callouts"], start=1)]
     return "\n".join(lines)
@@ -3727,7 +3738,7 @@ def all_pages() -> dict:
 # which the App Store listings link to). Nothing may link to a page that doesn't exist: the language
 # switch and hreflang list only the locales that have the page, the footer only the locale's own pages,
 # and a locale without a home page takes its brand link from HOME_FALLBACK.
-HOME_FALLBACK = {"zh-hans": "zh-hant", "ja": "en"}
+HOME_FALLBACK = {"zh-hans": "zh-hant", "ja": "en", "de": "en", "fr": "en", "es": "en", "ko": "en"}
 
 
 def has_page(locale: str, slug: str) -> bool:
@@ -4452,6 +4463,152 @@ def render_404(locale: str) -> str:
 
 for _locale, _module in (("zh-hans", copy_zh_hans), ("ja", copy_ja)):
     _merge_locale(_locale, _module)
+
+
+# --- de, fr, es and ko (#162) ---------------------------------------------------
+# A planned locale is built only when its copy module says COMPLETE = True (locales.py). Its
+# build(k) returns what ja's does, plus "tables": the tables zh-Hans and ja keep in this file
+# (HOME, COMPARE_TABLES, ...), which locale_tables() gathers and _merge_tables() puts back. The
+# shape every one of them must have is en's, and no string may be empty where en's isn't: see
+# shape_problems. scripts/new_locale.py writes a skeleton (keys only) from that shape.
+TABLES_HERO_MARKDOWN = {"template": "", "sep": ""}
+
+
+def locale_tables(locale: str) -> dict:
+    """The per-locale tables of this file, gathered into the shape a copy module's tables has."""
+    return {
+        "app_ui_languages": APP_UI_LANGUAGES[locale],
+        "home": HOME[locale],
+        "compare": {key: {"head": t["head"][locale], "rows": t["rows"][locale]} for key, t in COMPARE_TABLES.items()},
+        "exit_table_head": EXIT_TABLE_HEAD[locale],
+        "exit_remedy": EXIT_REMEDY[locale],
+        "theme_shots": {image: {"name": name[locale], "alt": alt[locale]} for image, name, alt in THEME_SHOTS},
+        "theme_gallery_note": THEME_GALLERY_NOTE[locale],
+        "skip_label": SKIP_LABEL[locale],
+        "toc_label": {slug: labels[locale] for slug, labels in TOC_LABEL.items()},
+        "not_found": NOT_FOUND_COPY[locale],
+        "hero_window_label": hero_window.WINDOW_LABEL[locale],
+        # zh-Hans and ja spell the sentence out in hero_window.window_markdown; only a locale added
+        # through _merge_tables has a template to give back.
+        "hero_window_markdown": hero_window.MARKDOWN_TEMPLATE.get(locale, TABLES_HERO_MARKDOWN),
+        "loop": loop_anim.COPY[locale],
+        "templates": templates_pages.locale_data(locale),
+    }
+
+
+def _merge_tables(locale: str, t: dict) -> None:
+    """Puts a locale's tables into the tables of this file and the modules that keep their own."""
+    APP_UI_LANGUAGES[locale] = t["app_ui_languages"]
+    HOME[locale] = t["home"]
+    for key, table in COMPARE_TABLES.items():
+        table["head"][locale] = t["compare"][key]["head"]
+        table["rows"][locale] = t["compare"][key]["rows"]
+    EXIT_TABLE_HEAD[locale] = t["exit_table_head"]
+    EXIT_REMEDY[locale] = t["exit_remedy"]
+    for image, name, alt in THEME_SHOTS:
+        name[locale] = t["theme_shots"][image]["name"]
+        alt[locale] = t["theme_shots"][image]["alt"]
+    THEME_GALLERY_NOTE[locale] = t["theme_gallery_note"]
+    SKIP_LABEL[locale] = t["skip_label"]
+    for slug, labels in TOC_LABEL.items():
+        labels[locale] = t["toc_label"][slug]
+    NOT_FOUND_COPY[locale] = t["not_found"]
+    hero_window.register_locale(locale, t["hero_window_label"], t["hero_window_markdown"])
+    loop_anim.register_locale(locale, t["loop"])
+    templates_pages.register_locale(locale, LOCALES[locale]["root"], t["templates"])
+
+
+def en_reference() -> dict:
+    """What a copy module's build(k) returns, with en's words: the shape and the non-empty strings
+    a complete locale must match."""
+    en_pages = {slug: page for slug, page in all_pages_en().items() if slug not in templates_pages.SLUGS}
+    return {
+        # The templates' outline labels travel in tables["templates"]["ui_labels"], not in ui.
+        "ui": {key: value for key, value in UI["en"].items() if key not in templates_pages.UI_LABELS["en"]},
+        "store_chip": STORE_CHIP["en"], "schema_notes": SCHEMA_NOTES["en"], "example_plan": EXAMPLE_PLAN["en"],
+        "trait_link": TRAIT_LINK["en"], "trait_nav_heading": TRAIT_NAV_HEADING["en"],
+        "figure_list_label": FIGURE_LIST_LABEL["en"],
+        "figures": {slug: {"alt": fig["alt"]["en"], "callouts": [label["en"] for _, _, _, label in fig["callouts"]]}
+                    for slug, fig in FIGURES.items()},
+        "pages": {slug: {key: page[key] for key in ("title", "description", "body", "intro") if key in page}
+                  for slug, page in en_pages.items()},
+        "tables": locale_tables("en"),
+    }
+
+
+def shape_problems(ref, got, path: str = "", allow_empty: bool = False) -> list:
+    """Where got differs in shape from ref (same keys, same list lengths, same types) or, unless
+    allow_empty (a skeleton, which is keys only), has an empty string where ref has words."""
+    where = path or "(top level)"
+    if isinstance(ref, dict):
+        if not isinstance(got, dict):
+            return [f"{where}: expected a table, got {type(got).__name__}"]
+        out = [f"{where}: missing key {key!r}" for key in ref if key not in got]
+        out += [f"{where}: unexpected key {key!r}" for key in got if key not in ref]
+        for key in ref:
+            if key in got:
+                out += shape_problems(ref[key], got[key], f"{path}.{key}" if path else str(key), allow_empty)
+        return out
+    if isinstance(ref, (list, tuple)):
+        if not isinstance(got, (list, tuple)):
+            return [f"{where}: expected a list, got {type(got).__name__}"]
+        if len(ref) != len(got):
+            return [f"{where}: {len(got)} items, en has {len(ref)}"]
+        return [problem for i, (r, g) in enumerate(zip(ref, got)) for problem in shape_problems(r, g, f"{path}[{i}]", allow_empty)]
+    if isinstance(ref, str):
+        if not isinstance(got, str):
+            return [f"{where}: expected text, got {type(got).__name__}"]
+        return [f"{where}: empty, en has text"] if ref.strip() and not got.strip() and not allow_empty else []
+    if isinstance(ref, (int, float)):
+        return [] if isinstance(got, (int, float)) else [f"{where}: expected a number, got {type(got).__name__}"]
+    return []
+
+
+def preflight_problems(locale: str) -> list:
+    """What a complete locale needs besides its copy module: legal pages, the hero window's snapshot,
+    and the images its pages show."""
+    out = []
+    for slug in ("privacy", "support"):
+        for name in (f"{slug}.{locale}.md", f"{slug}.{locale}.rendered.html"):
+            if not (CONTENT_LEGAL / name).is_file():
+                out.append(f"content/legal/{name} is missing (legal pages are required; rerun scripts/render_legal.py)")
+    manifest = json.loads((CONTENT_LEGAL / "manifest.json").read_text(encoding="utf-8"))["pages"]
+    for slug in ("privacy", "support"):
+        if f"{slug}.{locale}.md" not in manifest:
+            out.append(f"content/legal/manifest.json has no {slug}.{locale}.md (rerun scripts/render_legal.py)")
+    sources = hero_window.SOURCES
+    for table in ("labels", "sample"):
+        if locale not in sources[table]:
+            out.append(f"scripts/hero_sources.json has no {table}[{locale!r}] (rerun scripts/sync_hero_sources.py)")
+    for theme in sources["themes"]:
+        for field in ("names", "summaries"):
+            if locale not in theme[field]:
+                out.append(f"scripts/hero_sources.json: theme {theme['id']} has no {field}[{locale!r}]")
+    images = [f"assets/templates/{case}-{locale}.png" for case in templates_pages.CASES]
+    for image in images + [f"assets/cli/plan-{locale}.png"]:
+        if not (SITE / image).is_file():
+            out.append(f"public/{image} is missing (tools/templates/render_images.sh renders the templates'; the CLI plan page's is a marsdawn export screenshot)")
+    return out
+
+
+def merge_planned_locale(locale: str) -> None:
+    """Merges de, fr, es or ko, which locales.enabled() has said is complete, or stops and says what is missing."""
+    module = importlib.import_module(locales.module_name(locale))
+    problems = preflight_problems(locale)
+    t = None
+    if not problems:
+        t = module.build(_make_k(locale))
+        problems = shape_problems(en_reference(), t)
+    if problems:
+        raise SystemExit(f"scripts/{locales.module_name(locale)}.py says COMPLETE = True, but {locale} is not complete:\n  - "
+                         + "\n  - ".join(problems))
+    _merge_tables(locale, t["tables"])
+    _merge_locale(locale, SimpleNamespace(build=lambda k: t))
+
+
+for _locale in ENABLED:
+    if _locale in locales.PLANNED:
+        merge_planned_locale(_locale)
 
 
 def hero_copy(locale: str = "en") -> tuple:
