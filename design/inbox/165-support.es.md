@@ -12,7 +12,7 @@ Indica tu versión de macOS y tu versión de MarsDawn (MarsDawn › Acerca de Ma
 
 ### ¿Qué necesito para usar MarsDawn?
 
-Un Mac con macOS 26 Tahoe o posterior, con chip de Apple o procesador Intel.
+Una Mac con macOS 26 Tahoe o posterior, con chip de Apple o procesador Intel.
 
 ### ¿Cómo cambio entre el editor y la vista previa?
 
