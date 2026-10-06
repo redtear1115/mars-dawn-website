@@ -1078,6 +1078,158 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 """,
     }
 
+    pages['reviewing-agent-plans'] = {
+        "title": '에이전트의 계획을 5분 안에 검토하는 법 · MarsDawn',
+        "description": 'AI 에이전트가 넘긴 계획을 실행 전에 약 5분 동안, 어떤 에디터에서든 검토하는 6단계 방법을 예시와 함께 소개합니다.',
+        "body": f"""
+<section class="intro">
+  <h1>에이전트의 계획을 5분 안에 검토하는 법</h1>
+  <p>에이전트가 계획을 작성하고 승인을 기다리고 있습니다. 주어진 시간은 한 시간이 아니라 5분입니다. 일반 텍스트 에디터를 포함해 어떤 에디터에서든 통하는 활용법을 소개합니다. MarsDawn은 몇몇 단계에서 도움이 되며, 어느 단계인지 함께 알려 드립니다. 가장 중요한 단계에서는 도움이 되지 않습니다.</p>
+</section>
+
+<div class="summary"><p><strong>계획을 위에서부터 차례로 읽지 마세요. 구조를 확인하고, 주장 하나를 직접 검증하고, 되돌릴 수 없는 작업을 찾고, 다이어그램과 범위를 살핀 다음, 에이전트가 바로 반영할 수 있는 피드백을 쓰세요. 6단계, 약 5분입니다.</strong></p></div>
+
+<h2>실행 전에 신경 써야 하는 이유</h2>
+<p>Chip Huyen은 계획과 실행을 분리해야 하는 이유를 설명하며 비용을 단도직입적으로 말합니다. “감독이 없으면 에이전트는 그 단계들을 몇 시간이고 실행하며 API 호출에 시간과 돈을 낭비할 수 있고, 그동안 여러분은 그것이 아무 데도 이르지 못한다는 사실을 깨닫지 못할 수 있습니다.” 저희가 덧붙이자면, 계획은 실수를 잡아내기에 가장 저렴한 곳입니다. <code>plan.md</code>의 한 줄을 고치는 데는 문장 하나면 됩니다. 에이전트가 실행한 뒤에 고치려면 오후 한나절이 걸립니다.</p>
+
+<h2>예시</h2>
+<p>사용자 아바타를 기존 링크가 깨지지 않게 오브젝트 스토리지로 옮겨 달라고 에이전트에게 요청했다고 해 봅시다. 에이전트가 이런 계획을 돌려줍니다.</p>
+<pre><code># Plan: move user avatars to object storage
+
+## Goal
+Serve avatars from object storage instead of the app server.
+
+## Steps
+1. Add a storage client and config. &#9989; done
+2. Write a script that copies existing avatars to the bucket.
+3. Switch the avatar URLs in the templates.
+4. Delete `public/avatars/` from the server.
+5. Run the copy script.
+
+## Status
+All tests pass.</code></pre>
+<p>깔끔하게 읽힙니다. 그런데 이대로라면 아바타를 하나도 복사하기 전에 전부 삭제하게 됩니다.</p>
+
+<h2>6단계</h2>
+<p><strong>1. 제목만 읽으세요.</strong> <em>(약 1분)</em> 계획이 요청한 내용과 맞나요? 섹션이 빠져 있다면 대개 작업도 빠져 있습니다. 여기에는 Goal, Steps, Status가 있습니다. 기존 링크가 계속 작동해야 한다고 요청했는데, 기존 링크나 변경을 되돌리는 방법을 다루는 제목이 없습니다. 이것이 첫 번째 코멘트입니다.</p>
+<p>터미널에서는 <code>grep -n '^#' plan.md</code>로 제목만 볼 수 있고, 대부분의 에디터도 개요를 보여 줍니다. MarsDawn에서는 사이드바의 개요 탭(보기 &#9656; 사이드바 보기, &#8963;&#8984;S)에 제목이 나열되고, 클릭하면 해당 위치로 이동합니다.</p>
+<p><strong>2. 무언가가 완료됐다, 통과했다, 확인됐다고 주장하는 곳을 모두 찾고, 그중 하나를 직접 확인하세요.</strong> <em>(약 1분)</em> 파일을 열고, 테스트를 실행하고, 행 수를 세어 보세요. Chip Huyen은 “에이전트가 작업을 완료하지 않았는데도 완료했다고 확신하는” 실패를 설명합니다. 그의 예시에서는 50명을 호텔 객실 30개에 배정하라는 요청을 받은 에이전트가 40명만 배정하고 완료했다고 말합니다.</p>
+<pre><code>grep -n -i -E 'done|pass|verified|&#9989;' plan.md</code></pre>
+<p>여기서는 “&#9989; done”과 “All tests pass.”가 걸립니다. 어떤 테스트일까요? 그중 아바타와 관련된 테스트가 있나요? 직접 실행하거나 물어보세요. 이 단계는 MarsDawn이 대신할 수 없습니다. 여러분 말고는 아무도 할 수 없습니다.</p>
+<p><strong>3. 되돌릴 수 없는 단계를 찾으세요.</strong> <em>(약 1분)</em> 데이터 삭제, 마이그레이션, force-push, 무언가를 보내거나 결제하거나 게시하는 모든 작업입니다. 이런 단계는 여러분의 명시적인 승인을 기다려야 합니다. Chip Huyen은 같은 생각을 시스템 쪽에서 설명합니다. “계획에 데이터베이스 업데이트나 코드 변경 병합처럼 위험한 작업이 포함되어 있다면, 시스템은 실행 전에 사람의 명시적 승인을 요청하거나 사람이 직접 실행하도록 할 수 있습니다.” 여기서는 4단계가 원본을 삭제하는데, 복사하는 5단계보다 앞에 있습니다.</p>
+<p><strong>4. 렌더링된 다이어그램을 읽고, 화살표 하나하나를 본문과 대조하세요.</strong> 순서도에는 “복사 &#8594; 확인 &#8594; 삭제”라고 되어 있는데 단계 설명은 다르다면, 그것이 발견입니다. 이 계획에는 다이어그램이 없으니 오늘은 넘어갑니다. 다이어그램이 있다면 Mermaid 소스가 아니라 이미지를 보세요. 미리 보기를 지원하는 에디터가 많으며, <a href="/ko/view-markdown-on-mac/">Mac에서 Markdown 파일 보는 법</a>과 <a href="/ko/vs/markdown-preview-tools/">다른 곳에서 Markdown 보기</a>에서 선택지를 살펴볼 수 있습니다. MarsDawn에서는 렌더링된 다이어그램이 소스 옆에 표시되고(&#8984;2), 깨진 다이어그램은 소스와 그 아래 오류를 보여 주는데, 그 자체로 코멘트할 거리입니다.</p>
+<p><strong>5. 계획이 건드리는 파일과 시스템을 나열하고, 요청하지 않은 것은 무엇이든 질문하세요.</strong> <em>(4단계와 5단계를 합쳐 약 1분)</em> 여기서는 스토리지 설정, 템플릿, 서버의 폴더 하나, 버킷 하나입니다. 버킷은 누가 읽을 수 있나요? 공개로 해 달라고 한 적은 없습니다. 에이전트의 작업 폴더를 MarsDawn에서 열어 두었다면(파일 &#9656; 폴더 열기&#8230;, &#8679;&#8984;O) 에이전트가 쓰는 새 파일이 1초 정도 안에 파일 탭에 나타나고, 헤더에 git 브랜치나 worktree가 표시되어 어느 체크아웃을 검토하고 있는지 알 수 있습니다.</p>
+<p><strong>6. 피드백은 위치, 문제, 수정 방법의 형식으로, 한 줄에 문제 하나씩 쓰세요.</strong> <em>(마지막 1분)</em></p>
+<pre><code>plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
+plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
+plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.</code></pre>
+<p>줄 번호가 있는 에디터라면 무엇이든 괜찮습니다. MarsDawn에서는 편집 &#9656; 참조 복사(&#8997;&#8984;C)로 현재 위치를 <code>plan.md:10</code> 형식으로 복사하고, AI용으로 복사(&#8963;&#8997;&#8984;C)로 선택한 텍스트를 그 아래에 덧붙일 수 있습니다.</p>
+
+<h2>1분밖에 없다면</h2>
+<p>2단계를 하세요. 끝났다고 믿는 에이전트를 잡아내는 곳이 바로 여기입니다.</p>
+
+<h2>5분으로 부족할 때</h2>
+<p>어떤 단계가 맞는지 알 수 없을 때가 있습니다. 여러분이 아는 범위를 벗어나기 때문입니다. Jess Ou는 2026년 LangChain의 에이전트 해설 글에서 이를 두 문장으로 말합니다. “평가할 수 없는 판단은 위임하지 마세요. 좋은 답을 알아보지 못한다면 에이전트도 마찬가지입니다.” 저희의 결론은 이렇습니다. 어떤 단계를 판단할 수 없다는 것은 더 빨리 승인할 이유가 아니라, 판단할 수 있는 사람에게 물어볼 이유입니다.</p>
+
+<h2>여기서 MarsDawn이 하는 일과 하지 않는 일</h2>
+<p>MarsDawn에는 AI 모델이 들어 있지 않습니다. 이 계획의 문제를 찾아내지 않으며, 2단계도 3단계도 하지 않습니다. 작업하는 동안 파일을 읽기 쉽게 유지해 줄 뿐입니다. 1단계에는 개요를, 4단계에는 렌더링된 다이어그램을, 5단계에는 파일 탭을, 6단계에는 줄 참조를 제공합니다. 그리고 읽는 도중에 에이전트가 계획을 수정하면, 저장하지 않은 변경 사항이 없는 한 MarsDawn이 파일을 다시 불러오면서 읽던 위치를 유지합니다.</p>
+<p>계획이 확정된 뒤 다른 사람도 봐야 한다면, <a href="/ko/sharing-exported-pdfs/">내보낸 PDF 공유하기</a>와 <a href="/ko/markdown-to-pdf/">Markdown을 PDF로</a>에서 PDF로 보내는 방법을 확인하세요.</p>
+
+<h2>사용해 보기</h2>
+<p>MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에 있습니다. 무료 명령줄 도구 <code>marsdawn</code>도 있습니다.</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>앱 없이 Markdown을 PDF로 내보냅니다.</p>
+<p><a href="/ko/cli/">명령줄</a> &#183; 구매 전에 알아 두세요: <a href="/ko/limits/">MarsDawn이 하지 않는 것</a></p>
+
+<h2>더 읽어 보기</h2>
+<ul>
+  <li>에이전트가 넘긴 결과물이 읽기 어려운 이유: <a href="/ko/reading-agent-output/">에이전트가 넘긴 결과물 읽기</a></li>
+  <li>에이전트가 계획을 드러내는 이유: <a href="/ko/agent-transparency/">Anthropic은 투명한 에이전트를 원합니다. 그런데 드러낸 것은 누가 읽을까요?</a></li>
+  <li>에이전트가 넘기는 것은 계획만이 아닙니다: <a href="/ko/agent-design-patterns/">에이전트 디자인 패턴 네 가지와 각각이 넘기는 문서</a></li>
+</ul>
+
+<h2>출처</h2>
+<ul>
+  <li>Chip Huyen, “Agents”, 2025년 1월 7일: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Jess Ou, “What is an AI agent?”, LangChain, 2026년 7월 31일: <a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a></li>
+</ul>
+""",
+    }
+
+    pages['agent-design-patterns'] = {
+        "title": '에이전트 디자인 패턴 네 가지와 각각이 넘기는 문서 · MarsDawn',
+        "description": 'Andrew Ng이 설명한 리플렉션, 도구 사용, 계획, 멀티 에이전트 협업과, 각 패턴이 보통 읽을거리로 넘기는 것을 정리했습니다.',
+        "body": f"""
+<section class="intro">
+  <h1>에이전트 디자인 패턴 네 가지와 각각이 넘기는 문서</h1>
+  <p>2024년 3월, Andrew Ng은 자신의 뉴스레터 The Batch에서 AI 에이전트의 디자인 패턴 네 가지를 소개했습니다. 리플렉션, 도구 사용, 계획, 멀티 에이전트 협업입니다. 이 패턴들은 보통 에이전트를 만드는 쪽의 시각에서, 모델에서 더 나은 결과를 끌어내는 방법으로 설명됩니다. 이 글은 반대편에서 봅니다. 이런 패턴으로 만들어진 에이전트를 쓴다면, 폴더에는 무엇이 들어오고, 무엇부터 읽어야 할까요?</p>
+</section>
+
+<div class="summary"><p><strong>네 가지 패턴은 Andrew Ng의 것입니다. 각 패턴이 보통 넘기는 문서와 그 안에서 확인할 점은 저희의 추론입니다. 그는 둘 중 어느 것에 대해서도 쓰지 않았고, 이 시리즈에서 사람의 검토를 주장하지도 않습니다.</strong></p></div>
+
+<h2>네 가지 패턴 간단히 보기</h2>
+<p>Ng은 “Agentic Design Patterns Part 1”에서 이 패턴들을 설명합니다. 요약하면 이렇습니다. <strong>리플렉션</strong>에서는 모델이 자기 작업을 검토하고 개선합니다. <strong>도구 사용</strong>에서는 웹 검색이나 코드 실행 같은 도구를 호출할 수 있습니다. <strong>계획</strong>에서는 여러 단계의 계획을 세워 실행합니다. <strong>멀티 에이전트 협업</strong>에서는 여러 에이전트가 일을 나누고 논의합니다.</p>
+<p>Part 1에서 그는 코딩 벤치마크 HumanEval에서의 향상을, 그의 팀이 여러 연구 그룹에서 모은 결과로 보여 줍니다. “GPT-3.5(zero-shot)는 48.1%를 맞혔습니다. GPT-4(zero-shot)는 67.0%로 더 낫습니다. 그러나 GPT-3.5에서 GPT-4로의 향상은 반복적인 에이전트 워크플로를 도입했을 때의 향상에 비하면 미미합니다. 실제로 에이전트 루프로 감싸면 GPT-3.5는 최대 95.1%를 달성합니다.” 이 수치는 코딩 벤치마크 하나에 대한 것이고, 95.1%는 최선의 경우(“최대”)입니다. 에이전트 워크플로가 결과물을 개선할 수 있다는 것을 보여 줄 뿐, 그것을 누가 확인하는지에 대해서는 아무것도 말하지 않습니다.</p>
+<p><strong>여기서부터 문서와 확인 사항은 Ng이 아니라 저희의 해석입니다.</strong> 또한 실제 에이전트는 여러 패턴을 섞어 씁니다. 코딩 에이전트는 한 세션 안에서 계획을 세우고, 도구를 실행하고, 자기 작업을 검토하기도 하므로 네 종류의 파일을 모두 받게 되는 경우가 많습니다.</p>
+
+<h2>1. 리플렉션: 이미 스스로 검토를 거친 초안</h2>
+<p>리플렉션에 관한 Ng의 글은 이 패턴을, 원래라면 사람이 했을 피드백을 자동화하는 것으로 설명합니다. “비판적 피드백을 주는 단계를 자동화해서, 모델이 자기 출력을 자동으로 비판하고 응답을 개선하게 하면 어떨까요?”</p>
+<p><strong>보통 넘기는 것:</strong> 수정된 문서. 때로는 자기 평가 섹션이나 “엣지 케이스를 다시 확인함” 같은 문장이 붙어 있습니다.</p>
+<p><strong>확인할 점:</strong> 에이전트의 자기 비판이 아니라 <em>여러분의</em> 요청과 결과를 비교하세요. 자기 평가도 나름의 방식으로 틀릴 수 있습니다. Chip Huyen은 이렇게 말합니다. “흥미로운 계획 실패 유형 하나는 리플렉션의 오류에서 비롯됩니다. 에이전트가 작업을 완료하지 않았는데도 완료했다고 확신하는 것입니다.” 당시 OpenAI에 있던 Lilian Weng은 2023년 6월 블로그 Lil’Log에서 그 시기의 모델에 대해 이렇게 썼습니다. “전문 지식이 부족하면 LLM은 자기 결함을 알지 못하고, 따라서 작업 결과가 옳은지 제대로 판단하지 못할 수 있습니다.” (그가 소개한 연구에서는 LLM의 결과 평가와 인간 전문가의 평가가 일치하지 않았습니다.) “확인됨”이라고 쓰여 있다면, 하나는 직접 확인하세요.</p>
+
+<h2>2. 도구 사용: 무엇을 실행했는지에 대한 보고</h2>
+<p><strong>보통 넘기는 것:</strong> 에이전트가 무엇을 실행하거나 검색했고 무엇이 나왔는지에 대한 요약. “테스트 스위트를 실행함: 모두 통과.” 결과 표. 찾아낸 링크들.</p>
+<p>Anthropic의 가이드는 도구 결과를 에이전트가 스스로를 확인하는 수단으로 설명합니다. “실행 중에는 에이전트가 진행 상황을 평가하기 위해 각 단계에서 환경으로부터 ‘실측 정보’(도구 호출 결과나 코드 실행 등)를 얻는 것이 중요합니다.” 그 확인은 에이전트 내부에서 일어납니다. 여러분에게 도착하는 것은 그에 대한 에이전트의 설명입니다.</p>
+<p><strong>확인할 점:</strong> 모든 주장이 여러분이 볼 수 있는 출력으로 거슬러 올라가는지. 요약에 있는 숫자 하나를 실제 출력과 비교하세요. 링크 하나를 열어 보세요.</p>
+
+<h2>3. 계획: <code>plan.md</code></h2>
+<p><strong>보통 넘기는 것:</strong> 계획, 명세, 에이전트가 하나씩 체크해 나가는 작업 목록.</p>
+<p>Ng은 Part 4에서 이 패턴에 대해 솔직하게 말합니다.</p>
+<blockquote><p>“한편으로 계획은 매우 강력한 능력이지만, 다른 한편으로는 결과를 예측하기 어렵게 만듭니다. 제 경험상 리플렉션과 도구 사용이라는 에이전트 디자인 패턴은 안정적으로 작동시켜 애플리케이션의 성능을 높일 수 있지만, 계획은 아직 덜 성숙한 기술이라 그것이 무엇을 할지 미리 예측하기가 어렵습니다.”</p></blockquote>
+<p>그는 낙관적이기도 합니다. “하지만 이 분야는 계속 빠르게 발전하고 있으며, 계획 능력도 빠르게 향상될 것이라고 확신합니다.”</p>
+<p><strong>확인할 점:</strong> 실행되기 전의 계획. <a href="/ko/reviewing-agent-plans/">5분 검토법</a>으로 구조, 주장 하나, 되돌릴 수 없는 단계, 다이어그램, 범위를 확인하세요. 에이전트가 도중에 계획을 다시 쓰면 승인한 버전과 비교하세요. git으로 관리 중이라면 <code>git diff plan.md</code>로 무엇이 바뀌었는지 볼 수 있습니다. MarsDawn에서는 개요 탭으로 긴 계획의 구조를 볼 수 있고, 다시 쓰인 계획은 저장하지 않은 변경 사항이 없는 한 읽던 위치를 잃지 않고 다시 불러옵니다.</p>
+
+<h2>4. 멀티 에이전트 협업: 여러 파일, 여러 작성자</h2>
+<p><strong>보통 넘기는 것:</strong> 한 에이전트의 명세, 다른 에이전트의 구현 노트, 세 번째 에이전트의 검토, 그리고 그 사이를 오가는 요약. 각자 자기 브랜치나 worktree에서 작업하기도 합니다.</p>
+<p><strong>확인할 점:</strong> 인계 지점. 한 에이전트가 다른 에이전트의 작업을 요약한 곳에서 빠진 요구 사항이 없는지 찾아보세요. 서로 모순되는 두 파일을 찾고, 누군가 다른 쪽을 바탕으로 작업하기 전에 어느 쪽이 기준인지 정하세요. MarsDawn에서 파일 &#9656; 폴더 열기&#8230;(&#8679;&#8984;O)로 공유 폴더를 열면, 에이전트가 새 파일을 쓰는 대로 1초 정도 안에 파일 탭에 나타나고, git 체크아웃에서는 헤더에 브랜치나 worktree가 표시되므로 서로 다른 브랜치에서 같은 이름의 파일을 연 두 창이 똑같아 보이지 않습니다. Markdown을 읽지 않는 사람들에게 결과를 전달해야 한다면 <a href="/ko/sharing-exported-pdfs/">내보낸 PDF 공유하기</a>에서 그 단계를 다룹니다.</p>
+
+<h2>한눈에 보기</h2>
+<table>
+<thead><tr><th>패턴(Ng)</th><th>보통 넘기는 것(저희의 추론)</th><th>먼저 읽을 것(저희의 제안)</th></tr></thead>
+<tbody>
+<tr><td>리플렉션</td><td>수정된 초안, 경우에 따라 자기 평가 포함</td><td>요청 대비 결과, “확인됨” 하나 직접 검증</td></tr>
+<tr><td>도구 사용</td><td>무엇을 실행했고 무엇이 나왔는지에 대한 보고</td><td>주장 하나를 실제 출력까지 추적</td></tr>
+<tr><td>계획</td><td><code>plan.md</code>, 명세, 작업 목록</td><td>실행 전 5분 검토</td></tr>
+<tr><td>멀티 에이전트 협업</td><td>여러 에이전트의 여러 파일, 경우에 따라 여러 브랜치</td><td>인계 지점과 기준이 되는 파일</td></tr>
+</tbody>
+</table>
+<p>여기 인용된 저자 중 누구도 MarsDawn을 언급하거나 추천하지 않으며, 다른 어떤 Markdown 도구도 추천하지 않습니다. MarsDawn에는 AI 모델이 들어 있지 않습니다. 어떤 모델이 파일을 만들었는지 알지 못하고, 이런 확인을 대신 해 주지도 않습니다. 여러분이 확인하는 동안 파일을 읽기 쉽게 유지해 줄 뿐입니다.</p>
+
+<h2>사용해 보기</h2>
+<p>MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에 있습니다. 무료 명령줄 도구 <code>marsdawn</code>도 있습니다.</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>앱 없이 Markdown을 PDF로 내보냅니다. <a href="/ko/markdown-to-pdf/">Markdown을 PDF로</a>를 참고하세요.</p>
+<p><a href="/ko/cli/">명령줄</a> &#183; 구매 전에 알아 두세요: <a href="/ko/limits/">MarsDawn이 하지 않는 것</a></p>
+
+<h2>더 읽어 보기</h2>
+<ul>
+  <li>에이전트가 넘긴 결과물이 읽기 어려운 이유와 체크리스트: <a href="/ko/reading-agent-output/">에이전트가 넘긴 결과물 읽기</a></li>
+  <li>계획 확인의 전체 과정: <a href="/ko/reviewing-agent-plans/">에이전트의 계획을 5분 안에 검토하는 법</a></li>
+  <li>투명성이 여러분에게 요구하는 것과 요구하지 않는 것: <a href="/ko/agent-transparency/">Anthropic은 투명한 에이전트를 원합니다. 그런데 드러낸 것은 누가 읽을까요?</a></li>
+</ul>
+
+<h2>출처</h2>
+<ul>
+  <li>Andrew Ng, “Agentic Design Patterns Part 1”, The Batch, 2024년 3월 20일: <a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng, “Agentic Design Patterns Part 2, Reflection”, The Batch, 2024년 3월 27일: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/</a></li>
+  <li>Andrew Ng, “Agentic Design Patterns Part 4, Planning”, The Batch, 2024년 4월 10일: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a></li>
+  <li>Chip Huyen, “Agents”, 2025년 1월 7일: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Lilian Weng, “LLM Powered Autonomous Agents”, Lil’Log, 2023년 6월 23일: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a></li>
+  <li>Erik S., Barry Zhang, “Building Effective Agents”, Anthropic, 2024년 12월 19일: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (2026년 9월 26일 기준 온라인 버전에서 인용)</li>
+</ul>
+""",
+    }
+
     app_ui_languages = '영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어'
     return {
         'pages': pages, 'figures': figures, 'home': home, 'compare_tables': compare_tables,
