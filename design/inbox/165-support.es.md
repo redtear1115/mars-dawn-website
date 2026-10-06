@@ -16,7 +16,7 @@ Un Mac con macOS 26 Tahoe o posterior, con chip de Apple o procesador Intel.
 
 ### ¿Cómo cambio entre el editor y la vista previa?
 
-Pulsa <kbd>⌘1</kbd> para ver solo el código, <kbd>⌘2</kbd> para verlos uno al lado del otro y <kbd>⌘3</kbd> para ver solo la vista previa. Las mismas opciones están en el menú Visualización y en la barra de herramientas.
+Presiona <kbd>⌘1</kbd> para ver solo el código, <kbd>⌘2</kbd> para verlos uno al lado del otro y <kbd>⌘3</kbd> para ver solo la vista previa. Las mismas opciones están en el menú Visualización y en la barra de herramientas.
 
 ### Una imagen de mi documento no se ve.
 

@@ -40,7 +40,7 @@ MarsDawn carga contenido web solo por https. Una dirección http simple nunca se
 
 Cuando se carga contenido web, tu Mac lo solicita directamente a los servidores que lo alojan. Como en cualquier solicitud web, esos servidores pueden ver así tu dirección IP y lo que se solicitó. El desarrollador de MarsDawn no recibe nada de esta información.
 
-Los enlaces en los que haces clic en la vista previa se abren en tu navegador web predeterminado, según las prácticas de privacidad de ese navegador. El audio y el vídeo nunca se reproducen solos.
+Los enlaces en los que haces clic en la vista previa se abren en tu navegador web predeterminado, según las prácticas de privacidad de ese navegador. El audio y el video nunca se reproducen solos.
 
 ## Siri, Atajos y Spotlight
 
