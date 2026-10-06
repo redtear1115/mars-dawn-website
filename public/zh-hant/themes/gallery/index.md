@@ -12,14 +12,14 @@
 
 筆記分享
 
-- ![Dracula — light preview](/themes/v1/dracula/1.0.0/preview-light.png) ![Dracula — dark preview](/themes/v1/dracula/1.0.0/preview-dark.png) **Dracula** v1.0.0 經典吸血鬼深色調色盤，白日則用 Alucard 版本 — 改編自 Dracula Theme，為可讀性調整 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#dracula) 檢舉 用電子郵件檢舉
-- ![Gruvbox — light preview](/themes/v1/gruvbox/1.0.0/preview-light.png) ![Gruvbox — dark preview](/themes/v1/gruvbox/1.0.0/preview-dark.png) **Gruvbox** v1.0.0 溫暖復古的米色、棕色與橘色調色盤 — 改編自 Gruvbox，為可讀性調整 技術文件 筆記分享 作者： Southern Light [版權與授權](/themes/third-party-notices.html#gruvbox) 檢舉 用電子郵件檢舉
-- ![Guide — light preview](/themes/v1/guide/1.0.0/preview-light.png) ![Guide — dark preview](/themes/v1/guide/1.0.0/preview-dark.png) **Guide** v1.0.0 冷白背景搭配海軍藍標題與清亮藍色連結，字級加大，適合使用者指南、教學與 README 技術文件 作者： Southern Light 檢舉 用電子郵件檢舉
-- ![Ledger — light preview](/themes/v1/ledger/1.0.0/preview-light.png) ![Ledger — dark preview](/themes/v1/ledger/1.0.0/preview-dark.png) **Ledger** v1.0.0 米白紙面、深綠分隔線與實心表頭，適合預算、對帳單與估價單 正式輸出 作者： Southern Light 檢舉 用電子郵件檢舉
-- ![Nord — light preview](/themes/v1/nord/1.0.0/preview-light.png) ![Nord — dark preview](/themes/v1/nord/1.0.0/preview-dark.png) **Nord** v1.0.0 北歐冰藍色調，並原創搭配一款淺色版本 — 改編自 Nord，為可讀性調整 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#nord) 檢舉 用電子郵件檢舉
-- ![Solarized — light preview](/themes/v1/solarized/1.0.0/preview-light.png) ![Solarized — dark preview](/themes/v1/solarized/1.0.0/preview-dark.png) **Solarized** v1.0.0 Ethan Schoonover 設計的藍綠與金色精準色盤 — 改編自 Solarized，為可讀性調整 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#solarized) 檢舉 用電子郵件檢舉
-- ![Spec — light preview](/themes/v1/spec/1.0.0/preview-light.png) ![Spec — dark preview](/themes/v1/spec/1.0.0/preview-dark.png) **Spec** v1.0.0 白底正文搭配單一磚紅強調色，決策與風險以陶土色面板呈現，適合 PRD 與 RFC 審閱代理產出 正式輸出 作者： Southern Light 檢舉 用電子郵件檢舉
-- ![Story — light preview](/themes/v1/story/1.0.0/preview-light.png) ![Story — dark preview](/themes/v1/story/1.0.0/preview-dark.png) **Story** v1.0.0 亮色便利貼、圓角外觀與鮮明任務勾選框，適合使用者故事與衝刺筆記 筆記分享 審閱代理產出 作者： Southern Light 檢舉 用電子郵件檢舉
+- ![Dracula — light preview](/themes/v1/dracula/1.0.1/preview-light.png) ![Dracula — dark preview](/themes/v1/dracula/1.0.1/preview-dark.png) **Dracula** v1.0.1 經典吸血鬼深色調色盤，白日則用 Alucard 版本 — 改編自 Dracula Theme，為可讀性調整 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#dracula) 檢舉 用電子郵件檢舉
+- ![Gruvbox — light preview](/themes/v1/gruvbox/1.0.1/preview-light.png) ![Gruvbox — dark preview](/themes/v1/gruvbox/1.0.1/preview-dark.png) **Gruvbox** v1.0.1 溫暖復古的米色、棕色與橘色調色盤 — 改編自 Gruvbox，為可讀性調整 技術文件 筆記分享 作者： Southern Light [版權與授權](/themes/third-party-notices.html#gruvbox) 檢舉 用電子郵件檢舉
+- ![Guide — light preview](/themes/v1/guide/1.0.1/preview-light.png) ![Guide — dark preview](/themes/v1/guide/1.0.1/preview-dark.png) **Guide** v1.0.1 冷白背景搭配海軍藍標題與清亮藍色連結，字級加大，適合使用者指南、教學與 README 技術文件 作者： Southern Light 檢舉 用電子郵件檢舉
+- ![Ledger — light preview](/themes/v1/ledger/1.0.1/preview-light.png) ![Ledger — dark preview](/themes/v1/ledger/1.0.1/preview-dark.png) **Ledger** v1.0.1 米白紙面、深綠分隔線與實心表頭，適合預算、對帳單與估價單 正式輸出 作者： Southern Light 檢舉 用電子郵件檢舉
+- ![Nord — light preview](/themes/v1/nord/1.0.1/preview-light.png) ![Nord — dark preview](/themes/v1/nord/1.0.1/preview-dark.png) **Nord** v1.0.1 北歐冰藍色調，並原創搭配一款淺色版本 — 改編自 Nord，為可讀性調整 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#nord) 檢舉 用電子郵件檢舉
+- ![Solarized — light preview](/themes/v1/solarized/1.0.1/preview-light.png) ![Solarized — dark preview](/themes/v1/solarized/1.0.1/preview-dark.png) **Solarized** v1.0.1 Ethan Schoonover 設計的藍綠與金色精準色盤 — 改編自 Solarized，為可讀性調整 技術文件 審閱代理產出 作者： Southern Light [版權與授權](/themes/third-party-notices.html#solarized) 檢舉 用電子郵件檢舉
+- ![Spec — light preview](/themes/v1/spec/1.0.1/preview-light.png) ![Spec — dark preview](/themes/v1/spec/1.0.1/preview-dark.png) **Spec** v1.0.1 白底正文搭配單一磚紅強調色，決策與風險以陶土色面板呈現，適合 PRD 與 RFC 審閱代理產出 正式輸出 作者： Southern Light 檢舉 用電子郵件檢舉
+- ![Story — light preview](/themes/v1/story/1.0.1/preview-light.png) ![Story — dark preview](/themes/v1/story/1.0.1/preview-dark.png) **Story** v1.0.1 亮色便利貼、圓角外觀與鮮明任務勾選框，適合使用者故事與衝刺筆記 筆記分享 審閱代理產出 作者： Southern Light 檢舉 用電子郵件檢舉
 
 ## 版權與授權
 
