@@ -1077,6 +1077,158 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 """,
     }
 
+    pages['reviewing-agent-plans'] = {
+        "title": 'Revisar el plan de un agente en cinco minutos · MarsDawn',
+        "description": 'Un método de seis pasos para revisar el plan que te entrega un agente de IA antes de que se ejecute, en unos cinco minutos y en cualquier editor, con un ejemplo detallado.',
+        "body": f"""
+<section class="intro">
+  <h1>Revisar el plan de un agente en cinco minutos</h1>
+  <p>Tu agente escribió un plan y espera tu visto bueno. Tienes cinco minutos, no una hora. Esta es una forma de aprovecharlos que funciona en cualquier editor, incluso en uno de texto plano. MarsDawn ayuda con algunos pasos, y te diremos cuáles. No ayuda con el más importante.</p>
+</section>
+
+<div class="summary"><p><strong>No leas el plan de arriba abajo. Revisa su estructura, comprueba una afirmación, encuentra lo irreversible, mira los diagramas y el alcance, y escribe comentarios que el agente pueda aplicar. Seis pasos, unos cinco minutos.</strong></p></div>
+
+<h2>Por qué importa antes de ejecutarlo</h2>
+<p>Chip Huyen, al explicar por qué la planificación debe ir separada de la ejecución, pone el costo sin rodeos: «Sin supervisión, un agente puede ejecutar esos pasos durante horas, gastando tiempo y dinero en llamadas a la API, antes de que te des cuenta de que no lleva a ninguna parte». Lo que añadimos nosotros: un plan es el lugar más barato para detectar un error. Corregir una línea de <code>plan.md</code> cuesta una frase. Corregir lo que el agente hizo después cuesta una tarde.</p>
+
+<h2>El ejemplo</h2>
+<p>Le pediste a un agente que moviera los avatares de los usuarios a un almacenamiento de objetos sin romper los enlaces existentes. Te devuelve esto:</p>
+<pre><code># Plan: move user avatars to object storage
+
+## Goal
+Serve avatars from object storage instead of the app server.
+
+## Steps
+1. Add a storage client and config. &#9989; done
+2. Write a script that copies existing avatars to the bucket.
+3. Switch the avatar URLs in the templates.
+4. Delete `public/avatars/` from the server.
+5. Run the copy script.
+
+## Status
+All tests pass.</code></pre>
+<p>Se lee bien. También borraría todos los avatares antes de copiar uno solo.</p>
+
+<h2>Los seis pasos</h2>
+<p><strong>1. Lee solo los encabezados.</strong> <em>(un minuto aproximadamente)</em> ¿El plan coincide con lo que pediste? Si falta una sección, normalmente falta trabajo. Aquí: Goal, Steps, Status. Pediste que los enlaces existentes siguieran funcionando, y ningún encabezado habla de los enlaces antiguos ni de cómo deshacer el cambio. Ese es tu primer comentario.</p>
+<p>En una terminal, <code>grep -n '^#' plan.md</code> muestra solo los encabezados, y la mayoría de los editores también pueden mostrar un esquema. En MarsDawn, la pestaña Esquema de la barra lateral (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) los enumera, y un clic te lleva a cada uno.</p>
+<p><strong>2. Encuentra cada lugar que afirme que algo está hecho, que pasó o que se verificó, y comprueba uno tú mismo.</strong> <em>(un minuto aproximadamente)</em> Abre el archivo, ejecuta la prueba, cuenta las filas. Chip Huyen describe un fallo en el que «el agente está convencido de haber completado una tarea cuando no es así». En su ejemplo, a un agente se le pide alojar a 50 personas en 30 habitaciones de hotel, acomoda a 40 y dice que terminó.</p>
+<pre><code>grep -n -i -E 'done|pass|verified|&#9989;' plan.md</code></pre>
+<p>Aquí encuentra «&#9989; done» y «All tests pass.» ¿Qué pruebas? ¿Alguna toca los avatares? Ejecútalas, o pregunta. MarsDawn no puede hacer este paso por ti. Nadie más que tú puede.</p>
+<p><strong>3. Busca los pasos que no se pueden deshacer.</strong> <em>(un minuto aproximadamente)</em> Borrar datos, migraciones, force-push, cualquier cosa que envíe, pague o publique. Esos esperan tu aprobación explícita. Chip Huyen describe la misma idea desde el lado del sistema: «Si un plan incluye operaciones riesgosas, como actualizar una base de datos o fusionar un cambio de código, el sistema puede pedir aprobación humana explícita antes de ejecutarlas, o dejar que las ejecuten personas». Aquí, el paso 4 borra los originales, y va antes del paso 5, la copia.</p>
+<p><strong>4. Lee los diagramas renderizados y compara cada flecha con el texto.</strong> Un diagrama de flujo que dice «copiar &#8594; verificar &#8594; borrar» mientras los pasos dicen otra cosa es un hallazgo. Este plan no tiene diagramas, así que hoy te lo saltas. Cuando haya uno, mira la imagen, no el código Mermaid: muchos editores tienen vista previa, y <a href="/es/view-markdown-on-mac/">Cómo ver un archivo Markdown en la Mac</a> y <a href="/es/vs/markdown-preview-tools/">Ver Markdown en otros lugares</a> recorren las opciones. En MarsDawn, el diagrama renderizado está junto a su código (&#8984;2), y un diagrama roto muestra su código con el error debajo, lo que merece un comentario propio.</p>
+<p><strong>5. Haz una lista de los archivos y sistemas que toca el plan, y pregunta por todo lo que no pediste.</strong> <em>(pasos 4 y 5 juntos, un minuto aproximadamente)</em> Aquí: la configuración de almacenamiento, las plantillas, una carpeta en el servidor, un bucket. ¿Quién puede leer el bucket? No dijiste que debiera ser público. Si abriste la carpeta de trabajo del agente en MarsDawn (Archivo &#9656; Abrir carpeta&#8230;, &#8679;&#8984;O), los archivos nuevos que escribe aparecen en la pestaña Archivos en un segundo aproximadamente, y el encabezado muestra la rama de git o el worktree, para que sepas qué copia de trabajo estás revisando.</p>
+<p><strong>6. Escribe tus comentarios como lugar, problema y solución, un problema por línea.</strong> <em>(el último minuto)</em></p>
+<pre><code>plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
+plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
+plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.</code></pre>
+<p>Cualquier editor con números de línea sirve. En MarsDawn, Edición &#9656; Copiar referencia (&#8997;&#8984;C) copia tu posición como <code>plan.md:10</code>, y Copiar para IA (&#8963;&#8997;&#8984;C) añade debajo el texto seleccionado.</p>
+
+<h2>Si tienes un minuto</h2>
+<p>Haz el paso 2. Ahí es donde atrapas a un agente que cree que ya terminó.</p>
+
+<h2>Cuando cinco minutos no bastan</h2>
+<p>A veces no puedes saber si un paso es correcto, porque está fuera de lo que conoces. Jess Ou, en el artículo explicativo de LangChain sobre agentes de 2026, lo dice en dos frases: «No delegues un juicio que no puedes evaluar. Si tú no reconocerías una buena respuesta, el agente tampoco». Lo que concluimos nosotros: si no puedes juzgar un paso, eso no es motivo para aprobarlo más rápido. Es motivo para preguntarle a alguien que sí pueda.</p>
+
+<h2>Qué hace MarsDawn aquí, y qué no</h2>
+<p>MarsDawn no incluye ningún modelo de IA. No encontrará los problemas de este plan, y no hace ni el paso 2 ni el paso 3. Mantiene el archivo legible mientras trabajas: el esquema para el paso 1, los diagramas renderizados para el paso 4, la pestaña Archivos para el paso 5, las referencias de línea para el paso 6. Y si el agente revisa el plan mientras lo lees, MarsDawn lo recarga y conserva tu posición, siempre que no tengas cambios sin guardar.</p>
+<p>Cuando el plan esté decidido, si alguien más necesita verlo, <a href="/es/sharing-exported-pdfs/">Compartir PDF exportados</a> y <a href="/es/markdown-to-pdf/">Markdown a PDF</a> explican cómo enviarlo en PDF.</p>
+
+<h2>Pruébalo</h2>
+<p>MarsDawn está en el <a href="{k.LISTING_URL}">Mac App Store</a>. También existe la herramienta de línea de comandos gratuita <code>marsdawn</code>:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Exporta Markdown a PDF sin la app.</p>
+<p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar, conviene saber: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+
+<h2>Para seguir leyendo</h2>
+<ul>
+  <li>Por qué lo que entrega un agente es difícil de leer: <a href="/es/reading-agent-output/">Leer lo que te entrega tu agente</a>.</li>
+  <li>Por qué los agentes exponen sus planes: <a href="/es/agent-transparency/">Anthropic quiere agentes transparentes. ¿Quién lee lo que exponen?</a></li>
+  <li>Los planes no son lo único que entregan los agentes: <a href="/es/agent-design-patterns/">Cuatro patrones de diseño de agentes y los documentos que te entrega cada uno</a>.</li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+  <li>Chip Huyen, «Agents», 7 de enero de 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Jess Ou, «What is an AI agent?», LangChain, 31 de julio de 2026: <a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a></li>
+</ul>
+""",
+    }
+
+    pages['agent-design-patterns'] = {
+        "title": 'Cuatro patrones de diseño de agentes y los documentos que te entregan · MarsDawn',
+        "description": 'Reflexión, uso de herramientas, planificación y colaboración multiagente, tal como los describió Andrew Ng, y lo que cada uno suele entregarte para leer.',
+        "body": f"""
+<section class="intro">
+  <h1>Cuatro patrones de diseño de agentes y los documentos que te entrega cada uno</h1>
+  <p>En marzo de 2024, Andrew Ng describió en su boletín, The Batch, cuatro patrones de diseño para agentes de IA: reflexión, uso de herramientas, planificación y colaboración multiagente. Normalmente se explican desde el lado de quien construye agentes, como formas de obtener mejores resultados de un modelo. Este artículo mira desde el otro lado. Si usas un agente basado en uno de estos patrones, ¿qué llega a tu carpeta y qué deberías leer primero?</p>
+</section>
+
+<div class="summary"><p><strong>Los cuatro patrones son de Andrew Ng. Los documentos que suele entregarte cada uno, y qué revisar en ellos, son deducción nuestra. Él no escribe sobre ninguna de las dos cosas, y en esta serie no defiende la revisión humana.</strong></p></div>
+
+<h2>Los cuatro patrones, en breve</h2>
+<p>Ng los describe en «Agentic Design Patterns Part 1». En resumen: con la <strong>reflexión</strong>, el modelo revisa su propio trabajo y lo mejora. Con el <strong>uso de herramientas</strong>, puede llamar a herramientas como la búsqueda web o la ejecución de código. Con la <strong>planificación</strong>, elabora un plan de varios pasos y lo ejecuta. Con la <strong>colaboración multiagente</strong>, varios agentes se reparten el trabajo y lo discuten.</p>
+<p>En la parte 1 muestra la mejora en un benchmark de programación, HumanEval, con resultados que su equipo reunió de varios grupos de investigación: «GPT-3.5 (zero-shot) acertaba el 48,1&#160;%. GPT-4 (zero-shot) lo hace mejor, con un 67,0&#160;%. Sin embargo, la mejora de GPT-3.5 a GPT-4 queda eclipsada al incorporar un flujo de trabajo agéntico iterativo. De hecho, dentro de un bucle de agente, GPT-3.5 alcanza hasta un 95,1&#160;%». Estas cifras corresponden a un solo benchmark de programación, y 95,1&#160;% es el mejor caso («hasta»). Muestran que los flujos de trabajo con agentes pueden mejorar el resultado. No dicen nada sobre quién lo comprueba.</p>
+<p><strong>A partir de aquí, los documentos y las comprobaciones son nuestra lectura, no la de Ng.</strong> Además, los agentes reales mezclan patrones. Un agente de programación puede planificar, ejecutar herramientas y revisar su propio trabajo en una misma sesión, así que a menudo recibirás los cuatro tipos de archivo.</p>
+
+<h2>1. Reflexión: un borrador que ya se revisó a sí mismo</h2>
+<p>El artículo de Ng sobre la reflexión la plantea como automatizar los comentarios que, de otro modo, daría una persona: «¿Y si automatizamos el paso de los comentarios críticos, de modo que el modelo critique automáticamente su propia salida y mejore su respuesta?».</p>
+<p><strong>Lo que suele entregarte:</strong> un documento revisado, a veces con una sección de autoevaluación o líneas como «casos límite revisados de nuevo».</p>
+<p><strong>Qué revisar:</strong> el resultado frente a <em>tu</em> pedido, no frente a la autocrítica del agente. La autoevaluación puede equivocarse a su manera. Chip Huyen: «Un modo interesante de fallo de planificación se debe a errores en la reflexión. El agente está convencido de haber completado una tarea cuando no es así». Lilian Weng, en su blog Lil’Log en junio de 2023, entonces en OpenAI, sobre los modelos de esa época: «La falta de conocimiento experto puede impedir que los LLM conozcan sus defectos y, por lo tanto, que juzguen bien si los resultados de una tarea son correctos». (En el estudio que describía, la evaluación de resultados hecha por un LLM y la de expertos humanos no coincidían). Si dice «verificado», comprueba una cosa tú mismo.</p>
+
+<h2>2. Uso de herramientas: un informe de lo que se ejecutó</h2>
+<p><strong>Lo que suele entregarte:</strong> un resumen de lo que el agente ejecutó o buscó y de lo que obtuvo. «Ejecuté la suite de pruebas: todo pasa». Una tabla de resultados. Enlaces que encontró.</p>
+<p>La guía de Anthropic presenta los resultados de las herramientas como la comprobación que el agente hace de sí mismo: «Durante la ejecución, es crucial que los agentes obtengan del entorno, en cada paso, una “verdad de referencia” (como los resultados de llamadas a herramientas o la ejecución de código) para evaluar su avance». Esa comprobación ocurre dentro del agente. Lo que te llega a ti es su relato de ella.</p>
+<p><strong>Qué revisar:</strong> que cada afirmación remita a una salida que puedas ver. Compara una cifra del resumen con la salida real. Abre uno de los enlaces.</p>
+
+<h2>3. Planificación: <code>plan.md</code></h2>
+<p><strong>Lo que suele entregarte:</strong> un plan, una especificación, una lista de tareas que el agente va marcando.</p>
+<p>Ng es franco sobre este patrón en la parte 4:</p>
+<blockquote><p>«Por un lado, la planificación es una capacidad muy potente; por otro, produce resultados menos predecibles. En mi experiencia, aunque consigo que los patrones agénticos de reflexión y uso de herramientas funcionen de forma fiable y mejoren el rendimiento de mis aplicaciones, la planificación es una tecnología menos madura, y me cuesta predecir de antemano qué va a hacer».</p></blockquote>
+<p>También es optimista: «Pero el campo sigue avanzando rápido, y estoy seguro de que las capacidades de planificación mejorarán pronto».</p>
+<p><strong>Qué revisar:</strong> el plan antes de que se ejecute, con <a href="/es/reviewing-agent-plans/">la revisión de cinco minutos</a>: estructura, una afirmación, pasos irreversibles, diagramas, alcance. Si el agente reescribe el plan a mitad de camino, compáralo con la versión que aprobaste; si está en git, <code>git diff plan.md</code> muestra qué cambió. En MarsDawn, la pestaña Esquema muestra la estructura de un plan largo, y un plan reescrito se recarga sin que pierdas tu posición, siempre que no tengas cambios sin guardar.</p>
+
+<h2>4. Colaboración multiagente: varios archivos, varios autores</h2>
+<p><strong>Lo que suele entregarte:</strong> una especificación de un agente, notas de implementación de otro, una revisión de un tercero, y resúmenes que pasan de uno a otro. A veces cada uno trabaja en su propia rama o worktree.</p>
+<p><strong>Qué revisar:</strong> los traspasos. Donde un agente resume el trabajo de otro, busca un requisito que no haya pasado. Busca dos archivos que se contradigan, y decide cuál manda antes de que alguien construya sobre el otro. En MarsDawn, abre la carpeta compartida con Archivo &#9656; Abrir carpeta&#8230; (&#8679;&#8984;O): los archivos nuevos aparecen en la pestaña Archivos en un segundo aproximadamente, a medida que los agentes los escriben, y en una copia de trabajo de git el encabezado muestra la rama o el worktree, para que dos ventanas con el mismo nombre de archivo en ramas distintas no parezcan iguales. Cuando el resultado tiene que llegar a personas que no leen Markdown, <a href="/es/sharing-exported-pdfs/">Compartir PDF exportados</a> cubre ese paso.</p>
+
+<h2>De un vistazo</h2>
+<table>
+<thead><tr><th>Patrón (Ng)</th><th>Lo que suele entregarte (deducción nuestra)</th><th>Qué leer primero (sugerencia nuestra)</th></tr></thead>
+<tbody>
+<tr><td>Reflexión</td><td>Un borrador revisado, quizá con una autoevaluación</td><td>El resultado frente a tu pedido; comprueba un «verificado»</td></tr>
+<tr><td>Uso de herramientas</td><td>Un informe de lo que se ejecutó y lo que obtuvo</td><td>Una afirmación rastreada hasta la salida real</td></tr>
+<tr><td>Planificación</td><td><code>plan.md</code>, una especificación, una lista de tareas</td><td>La revisión de cinco minutos, antes de ejecutar</td></tr>
+<tr><td>Colaboración multiagente</td><td>Varios archivos de varios agentes, quizá en varias ramas</td><td>Los traspasos, y qué archivo manda</td></tr>
+</tbody>
+</table>
+<p>Ninguno de los autores citados aquí menciona MarsDawn ni lo recomienda, ni a ninguna otra herramienta de Markdown. MarsDawn no incluye ningún modelo de IA: no sabe qué modelo produjo un archivo, y no hará estas comprobaciones por ti. Mantiene los archivos legibles mientras tú las haces.</p>
+
+<h2>Pruébalo</h2>
+<p>MarsDawn está en el <a href="{k.LISTING_URL}">Mac App Store</a>. También existe la herramienta de línea de comandos gratuita <code>marsdawn</code>:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Exporta Markdown a PDF sin la app: consulta <a href="/es/markdown-to-pdf/">Markdown a PDF</a>.</p>
+<p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar, conviene saber: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+
+<h2>Para seguir leyendo</h2>
+<ul>
+  <li>Por qué lo que entrega un agente es difícil de leer, con una lista de comprobación: <a href="/es/reading-agent-output/">Leer lo que te entrega tu agente</a>.</li>
+  <li>La comprobación del plan completa: <a href="/es/reviewing-agent-plans/">Revisar el plan de un agente en cinco minutos</a>.</li>
+  <li>Lo que la transparencia te pide, y lo que no: <a href="/es/agent-transparency/">Anthropic quiere agentes transparentes. ¿Quién lee lo que exponen?</a></li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+  <li>Andrew Ng, «Agentic Design Patterns Part 1», The Batch, 20 de marzo de 2024: <a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng, «Agentic Design Patterns Part 2, Reflection», The Batch, 27 de marzo de 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/</a></li>
+  <li>Andrew Ng, «Agentic Design Patterns Part 4, Planning», The Batch, 10 de abril de 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a></li>
+  <li>Chip Huyen, «Agents», 7 de enero de 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Lilian Weng, «LLM Powered Autonomous Agents», Lil’Log, 23 de junio de 2023: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a></li>
+  <li>Erik S. y Barry Zhang, «Building Effective Agents», Anthropic, 19 de diciembre de 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (citado según la versión en línea del 26/09/2026).</li>
+</ul>
+""",
+    }
+
     app_ui_languages = 'inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano'
     return {
         'pages': pages, 'figures': figures, 'home': home, 'compare_tables': compare_tables,
