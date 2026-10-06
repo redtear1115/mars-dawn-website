@@ -53,11 +53,11 @@ def build(k) -> dict:
     }
     pages['pay-once'] = {
         "title": 'Essayez gratuitement, puis payez une fois · MarsDawn',
-        "description": 'MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.',
+        "description": 'MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.',
         "intro": """
 <section class="intro">
   <h1>Essayez tout. Puis payez une fois.</h1>
-  <p>MarsDawn se télécharge gratuitement. Lancez l’essai de 14 jours et toutes les fonctionnalités sont disponibles ; pour continuer ensuite, un achat unique de 4,99 USD le déverrouille. Il n’y a ni abonnement ni compte.</p>
+  <p>MarsDawn se télécharge gratuitement. Lancez l’essai de 14 jours et toutes les fonctionnalités sont disponibles ; pour continuer ensuite, un achat unique de 4,99 USD le déverrouille. Il n’y a ni abonnement ni compte.</p>
 </section>
 """,
         "body": """
@@ -65,7 +65,7 @@ def build(k) -> dict:
 <ol class="loop-steps">
   <li><strong>Téléchargez-le gratuitement.</strong> MarsDawn se télécharge gratuitement sur le Mac App Store.</li>
   <li><strong>Essayez tout pendant 14 jours.</strong> Lancez l’essai et tout MarsDawn fonctionne pendant 14 jours : tous les thèmes et toutes les dispositions, l’export PDF et l’impression, ainsi que les actions Siri et Raccourcis. Coup d’œil dans le Finder fonctionne avec ou sans essai.</li>
-  <li><strong>Déverrouillez-le une fois.</strong> Pour continuer ensuite, déverrouillez-le une fois pour 4,99 USD. C’est un achat intégré, pas un abonnement : rien ne se renouvelle et rien ne vous sera facturé plus tard.</li>
+  <li><strong>Déverrouillez-le une fois.</strong> Pour continuer ensuite, déverrouillez-le une fois pour 4,99 USD. C’est un achat intégré, pas un abonnement : rien ne se renouvelle et rien ne vous sera facturé plus tard.</li>
 </ol>
 <ul>
   <li>L’essai ne vous coûte rien non plus. À la fin, rien n’est acheté, sauf si vous choisissez de déverrouiller.</li>
@@ -344,8 +344,143 @@ marsdawn open notes.md --folder .</code></pre>
         "5": 'Lire <code>message</code> dans le résultat JSON',
         "64": 'Corriger l’option ou la valeur ; cette erreur est du texte sur stderr, même avec <code>--json</code>',
     }
+    # markdown-to-pdf shows /assets/cli/plan-fr.png, which does not exist yet. Before this ships,
+    # export example_plan with marsdawn 0.5.0 the way EXAMPLE_PLAN's comment in build_pages.py
+    # describes, or fall back to plan-en.png with EXAMPLE_PLAN['en'].
+    example_plan = '# Plan : des exports plus rapides\n\nUn agent a rédigé ce plan. Vous le relisez, puis vous le transformez en PDF.\n\n## Étapes\n\n| Étape | Responsable | État |\n|-------|-------------|------|\n| Mesurer les pages lentes | Agent | Fait |\n| Mettre en cache les diagrammes rendus | Agent | En relecture |\n\nL\'objectif est $t < 2\\,\\text{s}$ pour un document de 50 pages :\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  Brouillon --> Relecture --> Publication\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
+
+    pages['markdown-to-pdf'] = {
+        "title": 'Markdown en PDF sur Mac, en ligne de commande · MarsDawn',
+        "description": 'Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.',
+        "body": f"""
+<section class="intro">
+  <h1>Markdown en PDF sur Mac, en ligne de commande.</h1>
+  <p>L’outil gratuit <code>marsdawn</code> transforme un fichier Markdown en PDF en une seule commande. Les tableaux, les formules, les diagrammes Mermaid et le code coloré sortent tels qu’on les lit dans la source, et rien d’autre n’est nécessaire, pas même l’app MarsDawn.</p>
+</section>
+<h2>L’installer</h2>
+<pre><code>{k.INSTALL}
+marsdawn --version</code></pre>
+<p>Sur un Mac à puce Apple, Homebrew installe une copie précompilée en quelques secondes. Sur un Mac Intel, il compile à partir des sources, ce qui prend quelques minutes et nécessite Xcode 26 ou version ultérieure. L’outil fonctionne sous macOS 15 ou version ultérieure, et <code>marsdawn --version</code> affiche la version installée.</p>
+<h2>Enregistrer un document</h2>
+<p>Collez ceci dans un fichier nommé <code>plan.md</code> :</p>
+<pre><code>{k.xml_escape(example_plan)}</code></pre>
+<h2>L’exporter</h2>
+<pre><code>marsdawn export plan.md</code></pre>
+<p>Il écrit <code>plan.pdf</code> à côté de la source et indique où il l’a placé :</p>
+<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<p>Voici cette page, capturée lors d’une véritable exécution de <code>marsdawn</code> 0.5.0 :</p>
+<p><img class="pdf-page" src="/assets/cli/plan-fr.png" alt="Le PDF exporté : le titre, un tableau d’étapes, une formule dans le texte et une formule centrée, un diagramme Brouillon, Relecture, Publication et une ligne de Swift colorée." width="989" height="930"></p>
+<h2>Choisir un thème, un format de papier et un nom de fichier</h2>
+<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<ul>
+  <li><code>--theme</code> : dawn, classic, modern ou vivid, dans les couleurs claires du thème. Sans cette option, <code>export</code> utilise <code>$MARSDAWN_THEME</code>, sinon dawn.</li>
+  <li><code>--paper</code> : a4 ou letter. La valeur par défaut est a4.</li>
+  <li><code>-o</code> : où écrire le PDF, au lieu de le placer à côté de la source.</li>
+  <li><code>--allow-remote-images</code> : charge les images du web pendant le rendu. Elles restent désactivées si vous ne le précisez pas.</li>
+</ul>
+<h2>Si ça ne fonctionne pas</h2>
+<ul>
+  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew compile <code>marsdawn</code> à partir des sources, comme sur un Mac Intel. Installez Xcode 26 ou version ultérieure depuis l’App Store, puis relancez l’installation.</li>
+  <li><code>marsdawn: No such file: …</code> Le chemin ne mène pas à un fichier. Vérifiez le nom, ou lancez la commande depuis le dossier qui contient le fichier.</li>
+  <li><code>… already exists. Pass --force to replace it.</code> Un PDF portant ce nom existe déjà. Ajoutez <code>--force</code> pour le remplacer, ou <code>-o</code> pour l’écrire ailleurs.</li>
+  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> Le thème ou le format de papier n’est pas reconnu. Les thèmes sont dawn, classic, modern et vivid ; le papier est a4 ou letter.</li>
+</ul>
+<h2>Pour aller plus loin</h2>
+<ul>
+  <li>Toutes les options et le JSON produit : <a href="/fr/cli/">Ligne de commande</a>.</li>
+  <li>Pour qu’un agent de code le fasse à votre place : <a href="/fr/cli/skill/">la compétence d’agent marsdawn</a>.</li>
+  <li>Les quatre thèmes d’aperçu, et la direction que prend l’export PDF : <a href="/fr/themes/">thèmes d’aperçu et export PDF</a>.</li>
+  <li>Remettre le PDF à quelqu’un qui n’utilise pas Markdown : <a href="/fr/sharing-exported-pdfs/">partager un PDF</a>.</li>
+</ul>
+""",
+    }
+
+    pages['view-markdown-on-mac'] = {
+        "title": 'Comment afficher un fichier Markdown sur Mac · MarsDawn',
+        "description": 'Un fichier .md est du texte brut avec des marques de mise en forme. Voici comment le lire rendu sur Mac : en PDF avec l’outil en ligne de commande gratuit marsdawn dès aujourd’hui, et dans l’app MarsDawn, sur le Mac App Store.',
+        "body": f"""
+<section class="intro">
+  <h1>Comment afficher un fichier Markdown sur Mac.</h1>
+  <p>Un fichier <code>.md</code> est du texte brut. Les titres, les mots en gras, les tableaux et les diagrammes y sont écrits sous forme de marques : <code>#</code> pour un titre, <code>**</code> autour du gras, des barres verticales pour un tableau, un bloc de code <code>mermaid</code> pour un diagramme. Ouvrez-le dans un éditeur de texte brut et vous lisez les marques. Pour lire la page telle que l’auteur l’a voulue, il faut qu’un outil en fasse le rendu.</p>
+</section>
+<h2>Dès aujourd’hui, gratuitement : en faire un PDF</h2>
+<p>L’outil en ligne de commande gratuit <code>marsdawn</code> fait le rendu d’un fichier Markdown en PDF, que n’importe quel Mac peut ouvrir. Les tableaux, les formules, les diagrammes Mermaid et le code coloré sont rendus, et rien d’autre n’est nécessaire, pas même l’app MarsDawn.</p>
+<pre><code>{k.BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<p><code>export</code> écrit <code>notes.pdf</code> à côté du fichier Markdown, et <code>open</code> l’affiche dans votre lecteur PDF. macOS 15 ou version ultérieure est requis. Le pas-à-pas, avec une vraie page exportée, se trouve sur <a href="/fr/markdown-to-pdf/">Markdown en PDF</a>.</p>
+<h2>Le lire dans MarsDawn</h2>
+<p>MarsDawn est un éditeur Markdown pour Mac, sur le Mac App Store. Ouvrez un fichier <code>.md</code> et lisez la page rendue à côté de la source :</p>
+<ul>
+  <li>L’aperçu se met à jour pendant la saisie, et les deux volets défilent ensemble.</li>
+  <li>Les organigrammes et diagrammes de séquence Mermaid sont dessinés dans l’aperçu, et les blocs de code sont colorés.</li>
+  <li>Dans le Finder, appuyez sur Espace sur un fichier Markdown pour un aperçu Coup d’œil, diagrammes compris.</li>
+  <li>Quand vous voulez modifier quelque chose, la source est juste là. MarsDawn est un éditeur, pas seulement une visionneuse.</li>
+</ul>
+<p>Si un agent IA a rédigé le fichier, c’est la boucle pour laquelle MarsDawn est conçu : l’agent écrit, vous lisez le rendu, et il révise. Consultez <a href="/fr/">la page d’accueil</a>, ainsi que <a href="/fr/cli/agents/">marsdawn pour les agents</a> pour laisser un agent ouvrir des fichiers à votre place. Pour comprendre pourquoi cette lecture compte et comment relire un plan, consultez <a href="/fr/reading-agent-output/">Lire ce que votre agent vous rend</a> et <a href="/fr/reviewing-agent-plans/">Relire le plan d’un agent en cinq minutes</a>.</p>
+<h2>Pour aller plus loin</h2>
+<ul>
+  <li>Toutes les options de l’outil en ligne de commande : <a href="/fr/cli/">Ligne de commande</a>.</li>
+  <li>Ce que MarsDawn ne fait pas : <a href="/fr/limits/">la liste</a>.</li>
+  <li>Lire du Markdown plutôt dans VS Code, un navigateur ou Claude Desktop : <a href="/fr/vs/markdown-preview-tools/">la comparaison</a>.</li>
+</ul>
+""",
+    }
+
+    pages['vs/macmd-viewer'] = {
+        "title": 'MacMD Viewer ou MarsDawn : une visionneuse ou un éditeur · MarsDawn',
+        "description": 'MacMD Viewer affiche le Markdown en lecture seule pour 19,99 USD. MarsDawn modifie et affiche l’aperçu côte à côte, gratuit à l’essai puis 4,99 USD une seule fois sur le Mac App Store.',
+        "body": f"""
+<section class="intro">
+  <h1>MacMD Viewer ou MarsDawn.</h1>
+  <p>Ce sont deux apps Mac pour lire du Markdown rendu. MacMD Viewer ouvre un fichier <code>.md</code> et affiche la page finie ; il ne permet pas de la modifier. MarsDawn place un éditeur à côté du même type d’aperçu rendu, pour écrire et relire dans une seule fenêtre. Voici leurs différences, fonction par fonction.</p>
+</section>
+<h2>Si vous devez seulement lire, pas modifier</h2>
+<p>Si votre travail consiste uniquement à lire du Markdown écrit par d’autres, sans jamais toucher à la source, MacMD Viewer est un choix raisonnable : il est conçu exactement pour cela, il est disponible dès maintenant et fonctionne sur des versions plus anciennes de macOS. MarsDawn vaut la peine dès que la lecture n’est pas tout le travail, car le Markdown d’un agent revient en général pour une nouvelle passe.</p>
+<h2>Ce que fait chaque app</h2>
+<!--compare:macmd-features-->
+<h2>Prix et mode d’achat</h2>
+<!--compare:macmd-buying-->
+<h2>Essayez-le gratuitement dès aujourd’hui</h2>
+<p>MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit <code>marsdawn</code> fait aussi le rendu de n’importe quel fichier Markdown en PDF, avec les diagrammes Mermaid et le code coloré, et rien d’autre n’est nécessaire :</p>
+<pre><code>{k.BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<h2>Pour aller plus loin</h2>
+<ul>
+  <li>Le pas-à-pas complet : <a href="/fr/markdown-to-pdf/">Markdown en PDF</a>.</li>
+  <li>Ce que MarsDawn ne fait pas : <a href="/fr/limits/">la liste</a>.</li>
+  <li>Toutes les options de l’outil en ligne de commande : <a href="/fr/cli/">Ligne de commande</a>.</li>
+  <li>Par rapport à la lecture du Markdown dans VS Code, un navigateur ou Claude Desktop : <a href="/fr/vs/markdown-preview-tools/">la comparaison</a>.</li>
+</ul>
+""",
+    }
+
+    compare_tables['macmd-features'] = {
+        'head': ['', 'MacMD Viewer', 'MarsDawn'],
+        'rows': [
+            ['Modification', 'Lecture seule, par choix', 'Modifie la source, avec la page rendue à côté'],
+            ['Thèmes d’aperçu', '12 thèmes de document', '4 thèmes, chacun avec une palette claire et une palette sombre'],
+            ['Diagrammes et maths', 'Mermaid et coloration du code ; sa fiche ne mentionne pas les maths', 'Mermaid, coloration du code et maths KaTeX'],
+            ['Coup d’œil dans le Finder', 'Oui', 'Oui'],
+            ['PDF et impression', 'Oui', 'Oui'],
+            ['Configuration requise', 'macOS 14 (Sonoma) ou version ultérieure', 'macOS 26 (Tahoe) ou version ultérieure'],
+            ['Langues de l’interface', 'Non précisé dans ses propres documents', '{langs}'],
+        ],
+    }
+    compare_tables['macmd-buying'] = {
+        'head': ['', 'MacMD Viewer', 'MarsDawn'],
+        'rows': [
+            ['Où l’acheter', 'Son propre site, Homebrew ou Setapp ; pas le Mac App Store', 'Uniquement sur le Mac App Store'],
+            ['Prix', '19,99 USD une seule fois, pour un Mac ; les packs multi-Mac coûtent plus cher', 'Téléchargement gratuit, puis 4,99 USD une seule fois'],
+            ['L’essayer d’abord', 'Pas d’essai ; garantie de remboursement de 14 jours pour les achats directs', 'Un essai gratuit de 14 jours'],
+            ['Remboursements et mises à jour', 'Via son propre site', 'Via Apple'],
+            ['Compte requis', 'Non', 'Non'],
+        ],
+    }
+
     app_ui_languages = 'anglais, chinois traditionnel, chinois simplifié, japonais, allemand, français, espagnol et coréen'
     return {
         'pages': pages, 'figures': figures, 'home': home, 'compare_tables': compare_tables,
-        'exit_table_head': exit_table_head, 'exit_remedy': exit_remedy, 'app_ui_languages': app_ui_languages,
+        'exit_table_head': exit_table_head, 'exit_remedy': exit_remedy, 'app_ui_languages': app_ui_languages, 'example_plan': example_plan,
     }
