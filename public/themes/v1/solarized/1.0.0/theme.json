@@ -3,7 +3,10 @@
   "id": "solarized",
   "version": "1.0.0",
   "name": {
-    "en": "Solarized"
+    "en": "Solarized",
+    "zh-Hant": "日光色",
+    "zh-Hans": "日光色",
+    "ja": "ソラライズド"
   },
   "summary": {
     "en": "Ethan Schoonover's teal-and-gold precision palette — adapted from Solarized, adjusted for readability",

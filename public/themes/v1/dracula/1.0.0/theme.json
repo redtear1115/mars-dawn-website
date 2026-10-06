@@ -3,7 +3,10 @@
   "id": "dracula",
   "version": "1.0.0",
   "name": {
-    "en": "Dracula"
+    "en": "Dracula",
+    "zh-Hant": "德古拉",
+    "zh-Hans": "德古拉",
+    "ja": "ドラキュラ"
   },
   "summary": {
     "en": "The classic dark vampire palette, with Alucard by day — adapted from Dracula Theme, adjusted for readability",

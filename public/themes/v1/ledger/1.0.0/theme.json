@@ -3,7 +3,10 @@
   "id": "ledger",
   "version": "1.0.0",
   "name": {
-    "en": "Ledger"
+    "en": "Ledger",
+    "zh-Hant": "帳冊",
+    "zh-Hans": "账册",
+    "ja": "台帳"
   },
   "summary": {
     "en": "Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates",

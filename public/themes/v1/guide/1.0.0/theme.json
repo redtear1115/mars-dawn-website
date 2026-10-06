@@ -3,7 +3,10 @@
   "id": "guide",
   "version": "1.0.0",
   "name": {
-    "en": "Guide"
+    "en": "Guide",
+    "zh-Hant": "導覽手冊",
+    "zh-Hans": "导览手册",
+    "ja": "ガイド"
   },
   "summary": {
     "en": "A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs",
