@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "spec",
+  "version": "1.0.0",
+  "name": {
+    "en": "Spec"
+  },
+  "summary": {
+    "en": "Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs",
+    "zh-Hant": "白底正文搭配單一磚紅強調色，決策與風險以陶土色面板呈現，適合 PRD 與 RFC"
+  },
+  "fontDesign": "sans",
+  "scenarios": [
+    "agent-review",
+    "formal-output"
+  ],
+  "author": {
+    "name": "Southern Light",
+    "github": "redtear1115"
+  },
+  "license": "Apache-2.0",
+  "light": {
+    "background": "#FFFFFF",
+    "surface": "#FBEAE4",
+    "text": "#181818",
+    "muted": "#6B6B6B",
+    "border": "#E3CFC7",
+    "heading": "#B33A2E",
+    "accent": "#B33A2E",
+    "link": "#B33A2E",
+    "quote": "#C97A64",
+    "syntax": {
+      "keyword": "#8F2F22",
+      "string": "#3F6B4A",
+      "comment": "#6F6B66",
+      "number": "#6B4A24",
+      "function": "#4A5A6B",
+      "type": "#5B6B4A"
+    },
+    "diagram": {
+      "node": "#FBEAE4",
+      "nodeBorder": "#B33A2E",
+      "text": "#181818",
+      "line": "#7A7570",
+      "secondary": "#F3E3DD",
+      "tertiary": "#FCF1EC",
+      "note": "#FCEFCF"
+    }
+  },
+  "dark": {
+    "background": "#141414",
+    "surface": "#1F1F1F",
+    "text": "#EDEDED",
+    "muted": "#9A9A9A",
+    "border": "#2C2C2C",
+    "heading": "#E2735C",
+    "accent": "#E2735C",
+    "link": "#E2735C",
+    "quote": "#C98670",
+    "syntax": {
+      "keyword": "#E2735C",
+      "string": "#7FBF95",
+      "comment": "#9A9A9A",
+      "number": "#D19A5D",
+      "function": "#8FA8BF",
+      "type": "#9DBF8F"
+    },
+    "diagram": {
+      "node": "#241A17",
+      "nodeBorder": "#E2735C",
+      "text": "#EDEDED",
+      "line": "#9A9A9A",
+      "secondary": "#1D2620",
+      "tertiary": "#241D1A",
+      "note": "#241F14"
+    }
+  },
+  "style": {
+    "headingWeight": 700,
+    "radius": 6,
+    "h1": {
+      "decoration": {
+        "type": "shortRule",
+        "color": "accent"
+      }
+    },
+    "h2": {
+      "letterSpacing": -0.01
+    },
+    "blockquote": {
+      "style": {
+        "type": "panel"
+      }
+    },
+    "hr": {
+      "style": {
+        "type": "line",
+        "color": "accent",
+        "thickness": 2
+      }
+    },
+    "table": {
+      "header": {
+        "type": "accentRule",
+        "color": "accent"
+      }
+    }
+  }
+}
