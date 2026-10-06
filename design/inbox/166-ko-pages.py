@@ -1,11 +1,13 @@
-"""Korean (ko) page copy for the MarsDawn site, tranche 2 (#166).
+"""Korean (ko) page copy for the MarsDawn site (#166): every page except the theme gallery and
+simulator, which wait for release-1.0.4.
 
 Same shape as scripts/copy_ja.py: build(k) returns the tables build_pages.py keeps per locale.
 Translated from the en copy on main @ 6fe8435. Marketing pages: 합니다 statements with 세요
 requests; legal/support stay 합니다/하십시오. UI terms follow the app's ko strings
 (release/1.1.0): 훑어보기 (Quick Look), 파일, 보기, 설정, 단축어, 윈도우, 프린트, 내보내기,
 체험 (trial), 잠금 해제 (unlock), 구입. ASCII punctuation. Built-in theme names stay English.
-Inline build_pages.py tables are returned under their own keys.
+Inline build_pages.py tables are returned under their own keys, as are schema_notes,
+theme_shots, theme_gallery_note, templates (templates_pages.py tables) and loop_copy (loop_anim.COPY).
 """
 
 
@@ -1230,8 +1232,181 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
 """,
     }
 
+    # /templates/ pages (scripts/templates_pages.py), one entry per table there, for #162 to merge.
+    # The downloads are TEMPLATES byte for byte; Mermaid node labels are translated, as in ja.
+    templates = {
+        'ui_labels': {"templates": "템플릿", "templates-spec": "명세서 템플릿",
+                      "templates-flowchart": "순서도 템플릿", "templates-meeting-notes": "회의록 템플릿"},
+        'labels': {"template": "템플릿", "download": "{file} 다운로드", "looks": "보이는 모습",
+                   "ask": "에이전트에게 맡기기", "share": "PDF로 공유하기", "doesnt": "하지 않는 일",
+                   "faq": "자주 묻는 질문", "more": "다른 템플릿", "sep": ": ",
+                   "img_alt": "{file}를 marsdawn export로 내보낸 PDF의 첫 페이지."},
+        'hub': {"title": "Markdown 템플릿 · MarsDawn",
+                "description": "에이전트가 쓰고 여러분이 읽는 문서를 위한 Markdown 템플릿입니다. 명세서, 순서도, 회의록이 있으며, 각각 에이전트에게 줄 프롬프트가 함께 제공됩니다.",
+                "h1": "Markdown 템플릿",
+                "lede": "에이전트가 쓰고 여러분이 읽는 문서를 위한 템플릿입니다. 템플릿마다 에이전트에게 줄 프롬프트가 함께 있습니다. 채워진 파일을 MarsDawn에서 열어 에이전트가 쓴 내용을 읽어 보세요.",
+                "items": {"spec": ("명세서(PRD)", "문제, 목표, 요구 사항, 흐름도, 인수 기준."),
+                          "flowchart": ("순서도", "Mermaid 다이어그램과 그 아래에 풀어 쓴 단계."),
+                          "meeting-notes": ("회의록", "결정 사항과 실행 항목, 항목마다 담당자 한 명.")}},
+        'pages': {
+            "spec": {
+                "title": "Markdown 명세서(PRD) 템플릿 · MarsDawn",
+                "description": "요구 사항, Mermaid 흐름도, 인수 기준이 들어 있는 Markdown 명세서 템플릿입니다. 에이전트가 채우고, 여러분은 MarsDawn에서 검토하세요.",
+                "h1": "Markdown 명세서(PRD) 템플릿",
+                "lede": "에이전트가 채우고 여러분이 한 번에 읽을 수 있는 명세서입니다. 문제, 목표, 요구 사항, 흐름도, 인수 기준으로 이루어져 있습니다. 요구 사항을 바꿨다면 나머지를 맞춰 달라고 에이전트에게 요청하세요.",
+                "caption": "<code>marsdawn export spec.md</code>로 내보냈습니다. 무료 명령줄 도구는 다이어그램을 포함해 MarsDawn의 미리 보기와 똑같이 렌더링합니다.",
+                "prompt": "{url}의 템플릿을 사용해 [기능]의 명세를 spec.md에 작성해 주세요. 모든 요구 사항에 ID를 붙이고, 흐름도와 인수 기준에서도 같은 ID를 사용해 주세요. 다 쓰면 marsdawn open spec.md를 실행해 주세요.",
+                "share": "<code>marsdawn export spec.md</code>를 실행하면 옆에 spec.pdf가 생깁니다. Markdown을 읽지 않는 사람에게 건네세요.",
+                "doesnt": "MarsDawn은 명세, 표, 다이어그램을 보여 줍니다. 인수 기준이 모든 요구 사항을 빠짐없이 다루는지는 확인하지 않습니다. 그것은 에이전트의 일이고, 여러분이 읽으며 확인할 일입니다.",
+                "faq": [("흐름도를 그리려면 무언가를 설치해야 하나요?", "아니요. MarsDawn과 <code>marsdawn export</code>가 Mermaid를 직접 그리며, 오프라인에서도 됩니다."),
+                        ("MarsDawn에서 명세를 편집할 수 있나요?", "네. 소스 옆에 미리 보기가 있는 Markdown 편집기입니다. 에이전트는 다음에 파일을 읽을 때 여러분의 수정 내용을 보게 됩니다.")],
+            },
+            "flowchart": {
+                "title": "Markdown 순서도 템플릿(Mermaid) · MarsDawn",
+                "description": "Markdown으로 쓰는 Mermaid 순서도 템플릿으로, 다이어그램 아래에 단계를 풀어 씁니다. Mac에서 미리 보고 PDF로 내보내세요.",
+                "h1": "Markdown 순서도 템플릿",
+                "lede": "Mermaid 순서도 아래에 단계를 하나하나 적어 두어, 다이어그램과 글을 서로 대조할 수 있습니다. 단계를 하나 빼고, 나머지를 고쳐 달라고 에이전트에게 요청하세요.",
+                "caption": "<code>marsdawn export flowchart.md</code>로 내보냈습니다. 무료 명령줄 도구는 다이어그램을 포함해 MarsDawn의 미리 보기와 똑같이 렌더링합니다.",
+                "prompt": "{url}의 템플릿을 사용해 [프로세스]의 흐름을 flowchart.md에 그려 주세요. 노드마다 번호 붙은 단계를 하나씩, 같은 순서로 적어 주세요. 다 쓰면 marsdawn open flowchart.md를 실행해 주세요.",
+                "share": "<code>marsdawn export flowchart.md</code>: 다이어그램이 PDF 안에 그려집니다.",
+                "doesnt": "MarsDawn은 Mermaid에 적힌 대로 그립니다. 다이어그램을 손으로 배치할 수는 없고, 번호 붙은 단계와 노드를 맞춰 주지도 않습니다. Mermaid에 오류가 있으면 미리 보기에 다이어그램 대신 오류가 표시됩니다.",
+                "faq": [("어떤 다이어그램을 쓸 수 있나요?", "Mermaid가 그리는 것이라면 무엇이든 됩니다. 순서도, 시퀀스 다이어그램, 상태 다이어그램 등입니다."),
+                        ("왜 단계도 따로 적나요?", "훑어보는 사람은 다이어그램을 보고, 확인하는 사람은 글이 필요합니다. 에이전트가 둘을 맞춰 둘 수 있습니다.")],
+            },
+            "meeting-notes": {
+                "title": "Markdown 회의록 템플릿 · MarsDawn",
+                "description": "결정 사항과 담당자가 정해진 실행 항목을 정리하는 Markdown 회의록 템플릿입니다. 에이전트가 쓰고, 여러분은 MarsDawn에서 확인하세요.",
+                "h1": "Markdown 회의록 템플릿",
+                "lede": "결정 사항을 먼저, 그다음 실행 항목을 적고, 항목마다 담당자를 정합니다. 녹취록을 바탕으로 에이전트가 회의록을 쓰게 하고, 보내기 전에 읽어 보세요. 결정이 바뀌면 실행 항목을 맞춰 달라고 에이전트에게 요청하세요.",
+                "caption": "<code>marsdawn export meeting-notes.md</code>로 내보냈습니다. 무료 명령줄 도구는 MarsDawn의 미리 보기와 똑같이 렌더링합니다.",
+                "prompt": "{url}의 템플릿을 사용해 이 회의를 meeting-notes.md에 정리해 주세요. 결정 사항을 먼저 한 줄씩 쓰고, 실행 항목마다 담당자 한 명과 날짜를 정해 주세요. 다 쓰면 marsdawn open meeting-notes.md를 실행해 주세요.",
+                "share": "<code>marsdawn export meeting-notes.md</code>를 실행하면 PDF가 생깁니다. 회의 후 보내는 메일에 첨부하세요.",
+                "doesnt": "MarsDawn은 회의를 녹음하거나 받아 적지 않고, 실행 항목을 추적하지도 않습니다. 읽는 사람이 보게 될 모습 그대로 회의록을 보여 줍니다.",
+                "faq": [("체크박스가 작동하나요?", "미리 보기와 PDF에서 체크박스로 표시됩니다. 체크하려면 소스에서 <code>[ ]</code>를 <code>[x]</code>로 바꾸세요."),
+                        ("에이전트가 회의록과 실행 항목을 맞춰 둘 수 있나요?", "네, 그것이 이 루프의 핵심입니다. 하나를 바꾸고 나머지를 업데이트해 달라고 요청하세요. MarsDawn이 결과를 보여 줍니다.")],
+            },
+        },
+        'templates': {
+            "spec": """# 명세: 기능 이름
+
+상태: 초안 · 담당: 이름 · 업데이트: 날짜
+
+## 문제
+
+_지금 무엇이 문제인지, 누구에게 문제인지, 어떻게 알게 됐는지._
+
+## 목표
+
+- _출시되면 달라져 있을 것._
+
+## 하지 않을 것
+
+- _이번에 일부러 하지 않는 것._
+
+## 요구 사항
+
+| ID | 요구 사항 | 우선순위 |
+|----|-----------|----------|
+| R1 | _요구 사항_ | 필수 |
+| R2 | _요구 사항_ | 권장 |
+
+## 흐름
+
+```mermaid
+flowchart LR
+  A[시작] --> B[단계] --> C[결과]
+```
+
+## 인수 기준
+
+- [ ] R1: _확인 방법._
+- [ ] R2: _확인 방법._
+
+## 미결 질문
+
+- _질문._
+""",
+            "flowchart": """# 흐름 이름
+
+_한 문장으로: 무엇이 들어가고 무엇이 나오는지._
+
+## 다이어그램
+
+```mermaid
+flowchart LR
+  A[첫 번째 단계] --> B[두 번째 단계]
+  B --> C[세 번째 단계]
+  C --> D[완료]
+```
+
+## 단계
+
+1. **첫 번째 단계:** _누가 맡고, 다음 단계에 무엇을 넘기는지._
+2. **두 번째 단계:** _…_
+3. **세 번째 단계:** _…_
+4. **완료:** _여기서 ‘완료’가 무슨 뜻인지._
+""",
+            "meeting-notes": """# 회의 이름, 날짜
+
+참석자: _이름_
+
+## 결정 사항
+
+- _결정된 내용, 한 줄에 하나씩._
+
+## 실행 항목
+
+- [ ] 이름: _무엇을, 언제까지._
+- [ ] 이름: _무엇을, 언제까지._
+
+## 메모
+
+- _결정 사항도 실행 항목도 아니지만 남겨 둘 만한 내용._
+""",
+        },
+        'scene_text': {
+            "spec": {"title": "명세: 로그인 코드", "req": "요구 사항", "flow": "흐름", "acc": "인수 기준",
+                     "r1": "R1: 6자리 코드를 메일로 보낸다.", "r2": "R2: 코드는 10분 후 만료.",
+                     "r3": "R3: 2단계 인증을 요구한다.", "n1": "이메일", "n2": "코드", "n3": "2단계 인증",
+                     "n4": "로그인 완료", "a1": "R1: 1분 안에 코드 도착.", "a3": "R3: 기기당 한 번만.",
+                     "ask": "R3를 뺐어요. 흐름과 인수 기준을 맞춰 주세요.",
+                     "reply": "완료했어요. 흐름에서 2단계 인증을 건너뛰고, R3 확인 항목도 지웠어요.",
+                     "alt": "터미널에서 MarsDawn으로 spec.md를 엽니다. 읽는 사람이 요구 사항 R3를 지우면, 에이전트가 흐름도의 해당 단계와 인수 기준의 확인 항목을 함께 지웁니다."},
+            "flowchart": {"title": "게시 흐름", "diagram": "다이어그램", "steps": "단계",
+                          "n1": "초안", "n2": "검토", "n3": "법무", "n4": "게시",
+                          "s1": "1. 초안: 작성자의 첫 버전.", "s2": "2. 검토: 편집자가 읽는다.",
+                          "s3": "3. 법무: 표현을 확인한다.", "s4": "{c}. 게시: 공개된다.",
+                          "ask": "다이어그램에서 법무를 뺐어요. 연결과 단계를 고쳐 주세요.",
+                          "reply": "완료했어요. 검토에서 바로 게시로 이어지고, 단계 번호도 다시 매겼어요.",
+                          "alt": "터미널에서 MarsDawn으로 flowchart.md를 엽니다. 읽는 사람이 Mermaid 다이어그램에서 법무 단계를 빼면, 에이전트가 다이어그램을 다시 연결하고 아래 단계의 번호를 다시 매깁니다."},
+            "meeting-notes": {"title": "주간 회의, 10/5", "decisions": "결정 사항", "actions": "실행 항목",
+                              "d1": "베타를 {u}명에게 공개.", "d2": "금요일에 출시.",
+                              "t1": "Mia: 초대장 {a}통 발송.", "t2": "Leo: {b}석 추가.", "t3": "Ana: {c}명 지원 준비.",
+                              "ask": "베타가 80명으로 늘었어요. 실행 항목을 업데이트해 주세요.",
+                              "reply": "완료했어요. 실행 항목 세 개 모두 80으로 바꿨어요.",
+                              "alt": "터미널에서 MarsDawn으로 meeting-notes.md를 엽니다. 읽는 사람이 결정 사항을 50명에서 80명으로 바꾸면, 에이전트가 실행 항목 세 개를 그에 맞게 고칩니다."},
+        },
+    }
+    # The homepage loop (scripts/loop_anim.py COPY). Tab names follow the app's ko strings; the two
+    # days have the same width (tabular digits), as the stacked swap needs.
+    loop_copy = {
+        "outline": "개요", "files": "파일",
+        "title": "출시 노트",
+        "sections": [("바뀌는 점", "로그인 화면이 이메일부터 묻습니다. {a}에 출시합니다."),
+                     ("출시 일정", "{u} 정오."),
+                     ("담당", "{b}에 엔지니어링이 플래그를 켭니다.")],
+        "old": "10월 7일", "new": "10월 9일",
+        "ask": "출시일을 옮겼어요. 다른 섹션도 맞춰 주세요.",
+        "reply": "완료했어요. 두 섹션 모두 10월 9일로 바꿨어요.",
+        "alt": "터미널에서 MarsDawn으로 launch-note.md를 엽니다. 읽는 사람이 출시일을 10월 7일에서 "
+               "10월 9일로 바꾸면, 에이전트가 나머지 두 섹션을 맞추고, 루프가 처음부터 다시 시작됩니다.",
+        "pause": "애니메이션 일시 정지", "pause_short": "일시 정지",
+    }
+
     app_ui_languages = '영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어'
     return {
         'pages': pages, 'figures': figures, 'home': home, 'compare_tables': compare_tables,
         'exit_table_head': exit_table_head, 'exit_remedy': exit_remedy, 'app_ui_languages': app_ui_languages, 'example_plan': example_plan,
+        'schema_notes': schema_notes, 'theme_shots': theme_shots, 'theme_gallery_note': theme_gallery_note,
+        'templates': templates, 'loop_copy': loop_copy,
     }
