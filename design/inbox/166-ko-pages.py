@@ -480,6 +480,363 @@ open notes.pdf</code></pre>
         ],
     }
 
+    schema_notes = {
+        "export": "export 성공",
+        "open": "open 성공, marsdawn 0.5.1 이상, 사이드바에 표시되는 폴더 포함",
+        "open_v2": "open 성공, marsdawn 0.3.0~0.5.0",
+        "error": "실패, 두 명령 공통, marsdawn 0.5.2 이상",
+        "open_v1": "open 성공, marsdawn 0.2.x, 이때 <code>opened</code>는 경로 목록이었음",
+        "error_v1": "실패, 두 명령 공통, marsdawn 0.5.1 이하",
+    }
+
+    pages['cli/agents'] = {
+        "title": '에이전트를 위한 marsdawn: 스크립트에서 Markdown을 PDF로 · MarsDawn',
+        "description": 'marsdawn을 호출해 Markdown을 PDF로 바꾸는 AI 에이전트와 스크립트를 위한 레퍼런스입니다. 명령, JSON 출력, 스키마, 종료 코드, 요구 사항을 다룹니다.',
+        "body": f"""
+<section class="intro">
+  <h1>에이전트를 위한 marsdawn</h1>
+  <p><code>marsdawn</code> 명령줄 도구를 호출하는 AI 에이전트와 스크립트를 위한 레퍼런스입니다. 이 페이지의 모든 예시는 현재 소스로 빌드한 도구에서 실제로 실행했습니다.</p>
+</section>
+
+<div class="summary"><p><strong>Markdown 파일을 PDF로 바꾸려면 <code>marsdawn export notes.md --json</code>을 실행하고 stdout에서 JSON 객체 하나를 읽으세요.</strong> Mermaid 다이어그램과 강조 표시된 코드는 MarsDawn 앱에서와 똑같이 렌더링됩니다. <code>export</code>에는 앱이 필요 없고, <code>open</code>에는 필요합니다.</p></div>
+
+<h2>하는 일</h2>
+<ul>
+  <li><code>export</code>는 MarsDawn 앱과 같은 내보내기 엔진으로 Markdown 파일 하나를 페이지가 나뉜 PDF로 렌더링합니다. 윈도우는 열리지 않습니다.</li>
+  <li><code>open</code>은 사람이 검토할 수 있도록 하나 이상의 Markdown 파일을 MarsDawn 앱에서 엽니다. 각 파일이 열릴 줄을 지정할 수 있고, 윈도우 사이드바에 폴더를 표시할 수도 있습니다.</li>
+</ul>
+
+<h2>하지 않는 일</h2>
+<ul>
+  <li>stdin에서 Markdown을 읽지 않습니다. 파일 경로를 전달하세요.</li>
+  <li>PDF를 stdout에 쓰지 않습니다. PDF는 항상 파일로 저장되고, stdout에는 결과만 나옵니다.</li>
+  <li><code>--force</code>를 주지 않으면 기존 파일을 덮어쓰지 않습니다.</li>
+  <li><code>--allow-remote-images</code>를 주지 않으면 웹에서 이미지를 불러오지 않으며, 줄 때도 https로만 불러옵니다.</li>
+  <li><code>open</code>은 MarsDawn 앱이 설치되어 있지 않으면 동작하지 않고 코드 3으로 종료합니다. <code>export</code>에는 앱이 필요 없습니다. 앱은 <a href="{k.LISTING_URL}">Mac App Store</a>에 있습니다.</li>
+  <li>MarsDawn 1.0은 <code>open</code>이 지정한 줄에서 파일을 엽니다.</li>
+  <li>macOS에서만 실행됩니다.</li>
+</ul>
+
+<h2>export</h2>
+<pre><code>marsdawn export notes.md --json</code></pre>
+<p><code>notes.md</code> 옆에 <code>notes.pdf</code>를 씁니다. 옵션:</p>
+<ul>
+  <li><code>-o, --output &lt;path&gt;</code>: PDF를 쓸 위치. 기본값은 입력 경로에 확장자 <code>.pdf</code>를 붙인 것입니다.</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: 테마의 라이트 팔레트. 기본값은 <code>$MARSDAWN_THEME</code>, 그것도 없으면 <code>dawn</code>입니다.</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>: 용지 크기. 기본값은 <code>a4</code>입니다.</li>
+  <li><code>--allow-remote-images</code>: 렌더링하는 동안 웹에서 https 이미지를 불러옵니다.</li>
+  <li><code>--force</code>: 출력 파일이 있으면 덮어씁니다.</li>
+  <li><code>--json</code>: 텍스트 대신 stdout에 JSON 객체 하나를 출력합니다.</li>
+</ul>
+<pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
+<p>성공, 종료 코드 0:</p>
+<pre><code>{{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}}</code></pre>
+<ul>
+  <li><code>output</code>: 저장된 PDF의 절대 경로.</li>
+  <li><code>pages</code>: 페이지 수.</li>
+  <li><code>theme</code>과 <code>paper</code>: 실제로 사용된 값.</li>
+  <li><code>diagramErrors</code>: 렌더링에 실패한 Mermaid 다이어그램마다 메시지 하나. PDF는 그래도 저장됩니다.</li>
+</ul>
+
+<h2>open</h2>
+<pre><code>marsdawn open notes.md --json
+marsdawn open notes.md:120 --json
+marsdawn open notes.md --line 120 --json
+marsdawn open . --json
+marsdawn open notes.md --folder . --background --json</code></pre>
+<ul>
+  <li><code>path:line</code>은 열릴 줄을 지정합니다. <code>notes.md:120:8</code>처럼 뒤에 붙은 열 번호는 무시됩니다. 존재하는 파일을 가리키는 인수는 항상 그 전체가 파일 이름이므로, <code>weird:12</code>라는 파일은 그 파일 자체로 열립니다.</li>
+  <li><code>--line &lt;n&gt;</code>은 파일 하나의 줄을 지정하며, 경로 자체가 콜론과 숫자로 끝나는 경우에도 쓸 수 있습니다. 파일이 정확히 하나여야 합니다.</li>
+  <li>줄 번호는 1부터 999999999까지입니다. 그 밖의 값은 사용법 오류입니다.</li>
+  <li>줄 지정은 marsdawn 0.3.0에서 추가되었습니다. MarsDawn 1.0은 그 줄에서 파일을 엽니다.</li>
+  <li>폴더 인수는 문서가 아니라 윈도우 사이드바에 열리므로, <code>marsdawn open .</code>은 현재 폴더를 보여 줍니다. <code>--folder &lt;path&gt;</code>는 파일과 함께 같은 일을 합니다. 윈도우 사이드바에는 폴더가 하나만 표시되므로, 폴더를 두 개 지정하면 사용법 오류이고, 같은 폴더라도 <code>--folder</code>를 두 번 쓰면 사용법 오류입니다. 같은 폴더를 인수로 한 번 더 주면 한 번으로 셉니다. 폴더에는 줄이 없으므로 폴더와 함께 <code>--line</code>을 쓰면 사용법 오류입니다. <code>-a</code>는 없습니다. 이를 주면 <code>--folder</code>를 안내하는 사용법 오류가 납니다.</li>
+  <li><code>--background</code>는 MarsDawn을 앞으로 가져오지 않고 엽니다. 사람이 다른 곳에서 일하는 동안 에이전트가 파일을 여는 경우를 위한 옵션입니다. JSON은 어느 쪽이든 같습니다.</li>
+  <li>폴더와 <code>--background</code>는 marsdawn 0.5.1에서 추가되었습니다.</li>
+</ul>
+<p>성공, 종료 코드 0:</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{{"line":120,"path":"/path/to/notes.md"}}]}}</code></pre>
+<ul>
+  <li><code>opened</code>: 파일마다 객체 하나, 주어진 순서대로. <code>path</code>는 파일의 절대 경로이고, <code>line</code>은 줄을 요청했을 때만 나타납니다.</li>
+  <li><code>app</code>: 파일을 연 MarsDawn 앱의 경로.</li>
+</ul>
+<p>폴더를 준 경우(marsdawn 0.5.1 이상), 종료 코드 0:</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","folder":{{"path":"/path/to/project","requested":true}},"ok":true,"opened":[{{"path":"/path/to/project/notes.md"}}]}}</code></pre>
+<ul>
+  <li><code>folder</code>: 폴더를 줬을 때만 나타납니다. <code>path</code>는 폴더의 절대 경로입니다. <code>requested</code>는 항상 <code>true</code>입니다. marsdawn은 MarsDawn에 폴더를 보여 달라고 요청했을 뿐이고, 앱이 먼저 사람에게 접근 권한을 물을 수 있으므로 사이드바에 실제로 표시됐는지는 알 수 없습니다. 완료가 아니라 요청됨으로 보고하세요.</li>
+  <li>폴더만 줬을 때 <code>opened</code>는 비어 있습니다.</li>
+</ul>
+<p>marsdawn 0.2.x는 <code>opened</code>를 경로 문자열 목록으로 출력했습니다. 두 형식을 모두 처리해야 한다면 <code>marsdawn --version</code>을 확인하세요.</p>
+
+<h2>Claude Code가 편집하는 파일 바로 열기</h2>
+<p>선택해서 쓰는 <a href="https://code.claude.com/docs/en/hooks">Claude Code 훅</a>입니다. Claude가 Markdown 파일을 쓰거나 편집하면 그 파일을 MarsDawn에서 백그라운드로 엽니다. 세션마다 파일당 한 번입니다. 요청하지 않은 윈도우는 주의를 빼앗기 때문에, 직접 추가하기 전까지는 꺼져 있고 프로젝트별로 하나씩 켭니다. 셸 명령을 실행할 뿐이라 모델 토큰은 들지 않습니다.</p>
+<p><code>--background</code>를 쓰므로 marsdawn 0.5.1 이상과 MarsDawn 앱이 필요합니다.</p>
+<p>다음을 프로젝트의 <code>.claude/hooks/marsdawn-open.sh</code>로 저장하고 <code>chmod +x</code>로 실행 권한을 주세요.</p>
+<pre><code>#!/bin/sh
+# Claude Code PostToolUse hook: open a Markdown file Claude just wrote or edited in MarsDawn,
+# in the background, once per file per session. Never blocks Claude: every path exits 0.
+input=$(cat)
+file=$(printf '%s' "$input" | /usr/bin/jq -r '.tool_input.file_path // empty' 2&gt;/dev/null)
+session=$(printf '%s' "$input" | /usr/bin/jq -r '.session_id // "unknown"' 2&gt;/dev/null)
+
+case "$file" in
+  *.md|*.markdown) ;;
+  *) exit 0 ;;
+esac
+[ -f "$file" ] || exit 0
+# A hook runs with Claude Code's PATH, which may not include Homebrew's.
+marsdawn=$(command -v marsdawn || {{ [ -x /opt/homebrew/bin/marsdawn ] &amp;&amp; echo /opt/homebrew/bin/marsdawn; }}) || exit 0
+[ -n "$marsdawn" ] || exit 0
+
+# One list per session, so a file opens once however often Claude edits it.
+seen="${{TMPDIR:-/tmp}}/marsdawn-hook/$session"
+mkdir -p "$(dirname "$seen")"
+grep -qxF "$file" "$seen" 2&gt;/dev/null &amp;&amp; exit 0
+echo "$file" &gt;&gt; "$seen"
+
+"$marsdawn" open --background "$file" &gt;/dev/null 2&gt;&amp;1 || true
+exit 0</code></pre>
+<p>그런 다음 프로젝트의 <code>.claude/settings.json</code>에 훅을 추가하세요. 나만 쓰려면 <code>.claude/settings.local.json</code>에 추가하면 됩니다.</p>
+<pre><code>{{
+  "hooks": {{
+    "PostToolUse": [
+      {{
+        "matcher": "Write|Edit",
+        "hooks": [
+          {{ "type": "command", "command": "\\"$CLAUDE_PROJECT_DIR\\"/.claude/hooks/marsdawn-open.sh" }}
+        ]
+      }}
+    ]
+  }}
+}}</code></pre>
+<ul>
+  <li>Claude의 Write와 Edit 도구 다음에 실행됩니다. <code>.md</code>나 <code>.markdown</code>으로 끝나지 않는 파일은 건드리지 않습니다.</li>
+  <li>Claude가 몇 번을 편집하든 각 파일은 Claude Code 세션마다 한 번만 열립니다. 목록은 <code>$TMPDIR/marsdawn-hook/</code>에 세션마다 파일 하나로 저장되므로, 새 세션에서는 파일이 다시 열립니다.</li>
+  <li><code>--background</code> 덕분에 MarsDawn이 앞으로 나오지 않습니다. 작업하던 윈도우가 포커스를 유지합니다.</li>
+  <li>Claude를 방해하지 않습니다. 모든 경로가 0으로 끝나며, marsdawn이나 MarsDawn 앱이 설치되어 있지 않으면 아무 일도 일어나지 않습니다.</li>
+  <li>훅의 입력은 <code>/usr/bin/jq</code>로 읽습니다. jq는 MarsDawn 앱이 요구하는 macOS 26에 기본으로 들어 있습니다.</li>
+  <li>끄려면 설정 파일에서 해당 항목을 지우세요.</li>
+</ul>
+
+<h2>실패</h2>
+<p><code>--json</code>을 주면 실패 시 stdout에 JSON 객체 하나를 출력하고 해당 코드로 종료합니다.</p>
+<pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
+<ul>
+  <li><code>2</code>, <code>input_not_found</code>: 입력이 없거나, 폴더이거나, UTF-8 텍스트가 아닙니다. 또는 <code>--folder</code> 경로가 없거나 폴더가 아닙니다.</li>
+  <li><code>3</code>, <code>app_not_installed</code>: MarsDawn이 설치되어 있지 않습니다. <code>open</code>만 이 코드를 반환합니다.</li>
+  <li><code>4</code>, <code>output_exists</code>: 출력 파일이 이미 있습니다. <code>--force</code>를 주세요.</li>
+  <li><code>5</code>, <code>export_failed</code>: 내보내기 자체가 실패했습니다.</li>
+  <li><code>6</code>, <code>app_cannot_open_folders</code>: 이 버전의 MarsDawn은 폴더를 표시할 수 없어서 아무것도 열지 않았습니다. <code>open</code>만 이 코드를 반환합니다.</li>
+  <li><code>64</code>: 사용법 오류. 알 수 없는 옵션, 잘못된 값, 범위를 벗어난 줄, 파일 두 개 이상이나 폴더와 함께 쓴 <code>--line</code>, 폴더 두 개 이상, <code>-a</code> 등이 해당합니다. 이 오류는 <code>--json</code>을 줘도 stderr에 텍스트로 출력됩니다.</li>
+</ul>
+
+<h2>JSON 스키마</h2>
+<p>모든 <code>--json</code> 결과에 대한 JSON Schema(draft 2020-12):</p>
+<ul>
+{k.schema_links_from(schema_notes)}
+</ul>
+
+<h2>환경 변수</h2>
+<ul>
+  <li><code>MARSDAWN_THEME</code>: <code>--theme</code>을 주지 않았을 때 <code>export</code>가 쓰는 테마. 알 수 없는 값이면 오류 없이 <code>dawn</code>으로 돌아갑니다.</li>
+</ul>
+
+<h2>요구 사항</h2>
+<ul>
+  <li>이 도구는 macOS 15 이상에서 실행됩니다. Apple 실리콘에서는 Homebrew가 미리 빌드된 bottle을 설치하므로 다른 것은 필요 없습니다. Intel Mac에서나 소스로 직접 빌드하려면 Swift 6.2 이상이 필요하며, 이는 Xcode 26 이상에 들어 있습니다.</li>
+  <li>MarsDawn 앱은 macOS 26 이상이 필요합니다.</li>
+</ul>
+
+<h2>설치</h2>
+<p>Homebrew로 설치합니다. Apple 실리콘에서는 미리 빌드된 bottle을 몇 초 만에 설치하며 Xcode가 필요 없습니다. Intel Mac에서는 marsdawn을 소스에서 컴파일하므로 몇 분이 걸리고 Xcode 26 이상이 필요합니다.</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn
+marsdawn --version</code></pre>
+<p>또는 <a href="{k.KIT_URL}">소스</a>에서 직접 빌드하세요. 첫 빌드는 의존성을 가져와 컴파일하므로 역시 몇 분이 걸립니다.</p>
+<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift build -c release --product marsdawn
+.build/release/marsdawn export notes.md --json</code></pre>
+<p><code>marsdawn --version</code>은 <code>0.3.0</code> 같은 버전 번호를 출력하고 코드 0으로 종료합니다.</p>
+
+<h2>다음</h2>
+<ul>
+  <li>셸 대신 지침 파일을 읽는 에이전트를 위한 파일 하나짜리 스킬: <a href="/ko/cli/skill/">marsdawn 스킬</a>.</li>
+  <li>이 <code>export</code>를 그대로 감싼 MCP 서버: <a href="/ko/cli/mcp/">marsdawn-mcp</a>.</li>
+  <li>이 JSON 결과가 에이전트 자신의 컨텍스트에 부담이 적은 이유: <a href="/ko/token-efficient-review/">토큰을 아끼는 검토</a>.</li>
+</ul>
+""",
+    }
+
+    pages['cli/skill'] = {
+        "title": 'Markdown을 PDF로 만드는 코딩 에이전트 스킬 · MarsDawn',
+        "description": '코딩 에이전트가 불러오는 파일 하나로, 에이전트가 쓴 Markdown을 MarsDawn에서 열어 검토하게 하고, marsdawn을 설치해 Markdown을 PDF로 내보내고 JSON 결과를 읽게 합니다.',
+        "body": f"""
+<section class="intro">
+  <h1>에이전트가 쓴 글을 직접 보여 주고, PDF도 만들게 하세요.</h1>
+  <p>이 스킬은 Markdown 파일 하나입니다. 코딩 에이전트에게 자신이 쓴 문서를 MarsDawn에서 열어 여러분이 검토하게 하는 법, 그리고 <code>marsdawn</code>을 설치하고, 동작을 확인하고, 문서를 PDF로 내보내고, 결과를 읽는 법을 가르칩니다.</p>
+</section>
+<div class="summary"><p><strong><code>~/.claude/skills/marsdawn/SKILL.md</code>에 두는 Markdown 파일 하나.</strong> 이 파일이 있으면 에이전트가 <code>marsdawn</code>을 설치하고, PDF로 내보내고, JSON 결과를 읽습니다. 무언가를 실행하기 전에는 여전히 먼저 묻습니다.</p></div>
+<h2>Claude Code에 설치하기</h2>
+<pre><code>mkdir -p ~/.claude/skills/marsdawn
+curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
+<p>Claude Code는 PDF가 필요한 작업일 때, 또는 여러분이 읽을 Markdown 문서를 쓰거나 고쳤을 때 이 스킬을 불러옵니다. <code>/marsdawn</code>으로 직접 실행할 수도 있습니다. <a href="/cli/skill/SKILL.md">짧은 파일 하나</a>이니 설치하기 전에 읽어 보세요.</p>
+<p>다른 에이전트도 같은 파일을 쓸 수 있습니다. 지침과 명령으로 된 일반 Markdown이므로, 에이전트에게 URL을 알려 주거나 내용을 붙여 넣으세요.</p>
+<h2>가르치는 내용</h2>
+<ul>
+  <li><code>marsdawn</code>이 없으면 Homebrew로 설치하고, 버전을 짐작하지 말고 <code>marsdawn --version</code>으로 확인하기.</li>
+  <li><code>marsdawn export … --json</code>으로 내보내고 결과 읽기: PDF가 저장된 위치, 페이지 수, 렌더링되지 않은 Mermaid 다이어그램.</li>
+  <li>종료 코드로 실패를 구분하기: 파일 없음, PDF가 이미 있음, 내보내기 실패, 잘못된 옵션.</li>
+  <li>자신이 쓴 문서를 <code>marsdawn open file.md:line</code>으로 첫 번째 변경 위치에서, 한 번만 열기. 이후의 편집은 열린 윈도우에 알아서 반영됩니다.</li>
+  <li>MarsDawn 앱이 설치되어 있지 않으면 한 번만 알리고, 다시 시도하지 말고 계속 진행하기. PDF를 만들 때 <code>open</code>은 절대 쓰지 않기.</li>
+  <li><code>--folder</code>(marsdawn 0.5.1 이상)를 쓸 때는 폴더를 표시됨이 아니라 요청됨으로 보고하기. 앱이 결정하고, 결과를 알려 주는 것은 없습니다.</li>
+</ul>
+<h2>하지 않는 일</h2>
+<ul>
+  <li>스스로에게 실행 권한을 주지 않습니다. 에이전트는 다른 명령과 마찬가지로 <code>marsdawn</code>을 설치하거나 실행하기 전에 여전히 묻습니다.</li>
+  <li>문서를 어디에도 보내지 않습니다. <code>marsdawn</code>은 여러분의 Mac에서 렌더링하며, <code>--allow-remote-images</code>를 주지 않으면 웹 이미지를 빼고 렌더링합니다.</li>
+</ul>
+<p>모든 필드와 코드를 포함한 전체 규약은 <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a>에 있습니다. 스킬 파일을 읽는 대신 MCP로 도구를 호출하는 에이전트라면 <a href="/ko/cli/mcp/">MCP 서버</a>도 있습니다.</p>
+""",
+    }
+
+    pages['cli/mcp'] = {
+        "title": 'marsdawn을 호출하는 세 가지 방법: CLI, 스킬 파일, MCP 서버 · MarsDawn',
+        "description": 'marsdawn에는 자체 AI 모델이 없으므로 어떤 에이전트가 Markdown을 썼는지는 상관없습니다. CLI, 스킬 파일, MCP 서버 marsdawn-mcp 중 어디서 호출하든 세 가지 모두 같은 내보내기를 실행합니다.',
+        "body": f"""
+<section class="intro">
+  <h1>marsdawn을 호출하는 세 가지 방법.</h1>
+  <p>MarsDawn에는 자체 AI 모델이 없습니다. Markdown을 쓰는 것이 아니라 검토하려고 만든 앱이므로, 어떤 에이전트나 모델이 파일을 만들었는지는 상관없습니다. 에이전트나 스크립트가 <code>marsdawn</code>을 호출하는 방법은 세 가지이며, 세 가지 모두 결국 같은 <code>export</code>를 실행합니다.</p>
+</section>
+
+<div class="summary"><p><strong>쓰는 도구가 지원하는 것을 고르세요. 무료 <code>marsdawn</code> CLI, 일반 Markdown으로 된 스킬 파일, MCP 서버 <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a>.</strong> 세 가지 모두 같은 <code>marsdawn export</code>를 호출하고 같은 JSON 결과를 돌려줍니다.</p></div>
+
+<h2>무엇을 쓸까</h2>
+<!--compare:mcp-choice-->
+
+<h2>CLI</h2>
+<p><code>marsdawn export notes.md --json</code>은 셸 명령을 실행할 수 있는 에이전트나 스크립트라면 무엇이든 호출할 수 있으므로, 구조상 특정 모델에 묶이지 않습니다. 반환하는 모든 필드는 <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a>에 문서화되어 있으며, 아래의 다른 두 방법도 JSON 스키마는 이 문서를 기준으로 삼습니다.</p>
+
+<h2>스킬 파일</h2>
+<p>셸을 직접 호출하지 않고 일반 Markdown 지침을 읽는 에이전트(현재는 Claude Code)를 위해, <a href="/ko/cli/skill/">marsdawn 스킬</a>은 marsdawn을 설치하고 <code>export</code>를 실행하고 결과를 읽는 법을 가르치는 파일 하나입니다. 일반 Markdown이므로 지침 파일을 불러오는 다른 에이전트도 같은 파일을 쓸 수 있습니다.</p>
+
+<h2>MCP 서버</h2>
+<p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a>는 Apache-2.0 라이선스의 별도 공개 저장소입니다. <code>export_markdown_to_pdf</code>와 <code>open_in_marsdawn</code> 두 도구를 가진 MCP 서버로, 각각 <code>marsdawn export --json</code>과 <code>marsdawn open --json</code>을 감쌉니다. MCP 클라이언트가 이 서버를 가리키게 하면 도구 호출이 CLI와 같은 JSON을 돌려줍니다.</p>
+<ul>
+  <li><strong>받는 곳:</strong> MCP Bundle인 <code>marsdawn.mcpb</code>를 <a href="https://github.com/redtear1115/marsdawn-mcp/releases">GitHub 릴리스</a>에서 받거나, 소스에서 stdio로 서버를 실행합니다.</li>
+  <li><strong>레지스트리:</strong> 아직 MCP Registry에 등록되지 않았습니다(현재 릴리스: 0.2.1). 레지스트리 검색에 의존하기 전에 저장소에서 현재 상태를 확인하세요.</li>
+  <li><strong>호스팅:</strong> 직접 호스팅만 가능합니다. 호스팅된 marsdawn-mcp 서비스는 없으며, 서버는 marsdawn과 함께 여러분의 컴퓨터에서 실행됩니다.</li>
+  <li><strong>요구 사항:</strong> macOS, marsdawn 0.5.0 이상, 그리고 서버를 실행할 Node.js 20 이상.</li>
+</ul>
+
+<h2>허용한 폴더 안에서만</h2>
+<p>두 도구 모두 여러분이 허용한 폴더 안에만 접근합니다. 확장 프로그램의 <strong>Allowed folders</strong> 설정(처음에는 비어 있고 기본값도 없음)이나, 그 대신 MCP 클라이언트가 제공하는 루트가 기준입니다. 둘 다 설정되어 있지 않으면 모든 호출이 거부되며, 거부 메시지에 해결 방법이 나옵니다. 모든 경로는 절대 경로여야 하고, <code>export_markdown_to_pdf</code>는 <code>.pdf</code> 파일만 쓰며 심볼릭 링크를 통해서는 절대 쓰지 않습니다.</p>
+<p><strong>보안:</strong> <a href="https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1">0.2.1</a>로 업데이트하세요. 0.1.0과 0.2.0에서는 호출 한 번으로 여러분의 계정이 쓸 수 있는 어떤 경로에든 PDF를 쓸 수 있었으며, <a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a>로 수정되었습니다.</p>
+
+<h2>같은 내보내기, 세 개의 문</h2>
+<p>어느 쪽에서 호출하든 그 아래의 동작은 바뀌지 않습니다. 같은 내보내기 엔진, 같은 테마와 용지 크기, Mermaid 다이어그램 렌더링이 실패했을 때의 같은 <code>diagramErrors</code>. 이 페이지에서는 그 규약을 반복하지 않습니다. 전체 내용은 <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a>에 있습니다.</p>
+
+<h2>다음</h2>
+<ul>
+  <li>전체 JSON 스키마와 모든 종료 코드: <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a>.</li>
+  <li>Claude Code와 비슷한 에이전트를 위한 파일 하나짜리 스킬: <a href="/ko/cli/skill/">marsdawn 스킬</a>.</li>
+  <li>간결한 JSON 결과가 에이전트 자신의 컨텍스트에 중요한 이유: <a href="/ko/token-efficient-review/">토큰을 아끼는 검토</a>.</li>
+</ul>
+""",
+    }
+
+    pages['vs/markdown-preview-tools'] = {
+        "title": '다른 도구로 Markdown 보기와 MarsDawn 비교 · MarsDawn',
+        "description": 'VS Code의 기본 미리보기, 브라우저 확장 프로그램, Claude Desktop의 파일 미리보기에서 Markdown을 읽는 것과 MarsDawn을 비교합니다. 각각 무엇을 렌더링하는지, 파일 하나를 여는 데 무엇이 필요한지 살펴보세요.',
+        "body": f"""
+<section class="intro">
+  <h1>다른 도구로 Markdown 보기와 MarsDawn.</h1>
+  <p>VS Code, 브라우저, Claude Desktop이 이미 열려 있다면 Markdown 파일을 잠깐 볼 때 그중 하나를 쓰는 것도 자연스럽습니다. 각각이 실제로 무엇을 렌더링하는지, 거기까지 가는 데 무엇이 드는지를 같은 파일을 MarsDawn에서 여는 것과 비교해 보세요.</p>
+</section>
+
+<h2>한눈에 보기</h2>
+<!--compare:preview-tools-->
+
+<h2>VS Code의 기본 미리보기</h2>
+<p>VS Code에서 <kbd>&#8984;&#8679;V</kbd>를 누르면 기본 미리보기 패널에 Markdown 파일이 렌더링됩니다. 무료이고 따로 설치할 것도 없습니다. VS Code 1.121(2026년 5월)부터는 이 미리보기가 Mermaid 다이어그램도 기본으로 렌더링합니다. Microsoft가 Mermaid 확장 프로그램을 VS Code 자체에 넣었기 때문에, 예전에는 별도 확장 프로그램이 필요했지만 이제는 필요 없습니다. 하지 않는 일: 이것은 편집기 안의 미리보기 패널이지, 읽기 위해 만든 편집기가 아닙니다. 패널 옆에는 파일 트리, 터미널, 그 밖에 VS Code가 보여 줄 수 있는 온갖 패널이 있고, VS Code 자체는 파일 하나를 읽으려고 여는 앱이 아니라 개발 환경 전체로 설치하는 Electron 앱입니다.</p>
+
+<h2>로컬 파일용 브라우저 확장 프로그램</h2>
+<p>로컬 <code>.md</code> 파일을 읽는 데 압도적으로 쓰이는 브라우저 확장 프로그램은 없습니다. Local Markdown Viewer, Markdown Viewer, MarkView 등이 거의 같은 일을 하며, 어느 것도 기본으로 깔려 있지 않습니다. 모두 무언가를 열기 전에 같은 단계가 하나 더 필요합니다. 브라우저는 기본적으로 확장 프로그램이 <code>file://</code> 페이지를 읽지 못하게 막기 때문에, 해당 확장 프로그램에서 ‘파일 URL에 대한 액세스 허용’을 켜야 합니다. 확장 프로그램마다 한 번 주는 권한이라, 줬다는 사실이나 그 이유를 잊기 쉽습니다. 권한을 켜면 파일이 브라우저 탭에 렌더링됩니다. 즉, 파일 하나를 보려고 브라우저 전체를 실행하는 셈입니다.</p>
+
+<h2>Claude Desktop의 파일 미리보기</h2>
+<p>Claude Desktop은 이미 프로젝트나 대화에 들어 있는 파일을 보여 줍니다. 디스크의 아무 파일이나 둘러보는 용도로 만든 것은 아닙니다. 볼 수 있는 것은 대화에 이미 들어 있는 것이지, 작업 옆에 열어 두는 노트 폴더가 아닙니다. Anthropic이 직접 밝힌 <a href="https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai">업로드할 수 있는 문서 유형</a>은 PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON, XLSX이며, Markdown은 목록에 없습니다.</p>
+
+<h2>파일 하나를 읽으려고 브라우저 엔진을</h2>
+<p>VS Code는 Electron 앱입니다. Chromium과 Node.js 런타임을 통째로 담고 있으며, 네이티브 Mac 앱이 아닙니다. 브라우저 확장 프로그램은 실제 브라우저 안에서 실행됩니다. 어느 쪽이든 Markdown 파일 하나를 보려고 브라우저 엔진 전체가 돌아갑니다. MarsDawn은 네이티브 AppKit 앱입니다. 브라우저 런타임을 담고 있지 않으며, 설치할 확장 프로그램이나 기억해야 할 권한 설정 없이 로컬 파일을 바로 엽니다.</p>
+
+<h2>다음</h2>
+<ul>
+  <li>MarsDawn도 하지 않는 일: <a href="/ko/limits/">목록</a>.</li>
+  <li>지금 무료로 어떤 Markdown 파일이든 PDF로 바꾸기: <a href="/ko/markdown-to-pdf/">Markdown을 PDF로</a>.</li>
+  <li>네이티브 Mac 뷰어와 비교하기: <a href="/ko/vs/macmd-viewer/">MacMD Viewer와 MarsDawn</a>.</li>
+</ul>
+""",
+    }
+
+    pages['themes'] = {
+        "title": 'MarsDawn의 미리보기 테마와 PDF 내보내기 · MarsDawn',
+        "description": '라이트와 다크 팔레트를 각각 갖춘 미리보기 테마 네 가지, 그리고 지금 쓰는 테마를 그대로 따르는 PDF 내보내기와 프린트. 가져올 수 있는 테마를 더 늘리고, 직접 만든 테마를 공유하는 갤러리도 계획하고 있습니다.',
+        "body": f"""
+<section class="intro">
+  <h1>여덟 가지 모습, 하나의 내보내기.</h1>
+  <p>MarsDawn에는 Dawn, Classic, Modern, Vivid 네 가지 미리보기 테마가 있고, 각각 라이트와 다크 팔레트를 갖추고 있습니다. 문서를 읽는 여덟 가지 조합입니다. PDF로 내보내거나 프린트하면, 읽고 있던 바로 그 조합으로 페이지가 나옵니다.</p>
+</section>
+
+<div class="summary"><p><strong>테마 네 가지 &#215; 라이트와 다크 = 문서를 읽는 여덟 가지 방법, 그리고 고른 것을 그대로 따르는 하나의 내보내기 경로.</strong> 가져올 수 있는 테마를 더 늘리고 직접 만든 테마를 공유하는 갤러리도 계획하고 있지만, 아직 만들어지지 않았습니다.</p></div>
+
+<h2>네 가지 테마</h2>
+<!--theme-gallery-->
+<ul>
+  <li><strong>Dawn</strong>(기본값): 이 사이트를 이루는 것과 같은 따뜻한 종이 색과 Mars Rust 강조색.</li>
+  <li><strong>Classic</strong>: 더 담백하고 문서다운 팔레트.</li>
+  <li><strong>Modern</strong>: 더 차분하고 현대적인 팔레트.</li>
+  <li><strong>Vivid</strong>: 더 밝고 대비가 강한 팔레트.</li>
+</ul>
+<p>테마마다 라이트와 다크 변형이 따로 있어서, Mac의 화면 모드를 바꾸면 인터페이스만이 아니라 테마의 팔레트도 함께 바뀝니다.</p>
+
+<h2>PDF 내보내기와 프린트도 같은 테마로</h2>
+<p>PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레트를 씁니다. Mermaid 다이어그램이 그대로 그려지고, 코드 블록은 구문 강조를 유지하며, 페이지 나눔은 제목과 본문을 떼어 놓거나 표나 다이어그램을 반으로 자르지 않습니다. 무료 <a href="/ko/cli/">marsdawn 명령줄 도구</a>도 같은 내보내기 엔진을 쓰므로, 스크립트나 에이전트도 <code>--theme</code>으로 네 가지 테마 중 어느 것이든 똑같은 PDF를 만듭니다.</p>
+
+<h2>계획: 더 많은 테마와 갤러리</h2>
+<p>아직 출시되지 않았고 나중에 나올 예정입니다. 가져올 수 있는 미리보기 테마를 더 늘리고, 사람들이 직접 만든 테마를 올릴 수 있는 갤러리를 이 사이트에 만들 계획입니다. <code>/themes/v1/</code>은 이미 그 용도로 잡아 두었습니다. 그전까지 MarsDawn에 있는 테마는 기본 테마 네 가지이며, 다른 테마는 설치할 수 없습니다.</p>
+
+<h2>다음</h2>
+<ul>
+  <li>명령줄에서 PDF로 내보내는 전체 안내: <a href="/ko/markdown-to-pdf/">Markdown을 PDF로</a>.</li>
+  <li>MarsDawn이 아직 하지 않는 일: <a href="/ko/limits/">목록</a>.</li>
+  <li>Markdown을 쓰지 않는 사람에게 내보낸 PDF 전달하기: <a href="/ko/sharing-exported-pdfs/">PDF 공유하기</a>.</li>
+</ul>
+""",
+    }
+
+    compare_tables['mcp-choice'] = {
+        'head': ['에이전트가', '쓸 것', '필요한 것'],
+        'rows': [
+            ['셸 명령을 실행할 수 있다면', '<a href="{root}cli/agents/">CLI</a>', 'macOS 15 이상'],
+            ['Claude Code처럼 지침 파일을 불러온다면', '<a href="{root}cli/skill/">스킬 파일</a>', 'CLI(스킬이 설치해 줌)'],
+            ['MCP로 도구를 호출한다면', '<a href="{mcp}">marsdawn-mcp</a>', 'marsdawn-mcp 0.2.1 이상, marsdawn 0.5.0 이상, Node.js 20 이상'],
+        ],
+    }
+    compare_tables['preview-tools'] = {
+        'head': ['', 'VS Code 미리보기', '브라우저 확장 프로그램', 'Claude Desktop', 'MarsDawn'],
+        'rows': [
+            ['디스크의 Markdown 파일 열기', '예', '예, 파일 접근을 허용한 뒤', '아니요. Markdown이 업로드 목록에 없음', '예'],
+            ['첫 파일을 열기 전에', '개발 환경 전체인 VS Code 설치', '확장 프로그램 설치 후 ‘파일 URL에 대한 액세스 허용’ 켜기', '디스크의 파일을 둘러볼 수 없음', 'MarsDawn 설치'],
+            ['만든 목적', '코드 작성. 미리보기는 여러 패널 중 하나', '웹 브라우징', 'Claude와의 대화', 'Markdown 읽기와 편집'],
+            ['페이지를 그리는 방식', 'Electron: Chromium과 Node.js 내장', '브라우저 전체', 'Claude Desktop 앱', '네이티브 AppKit 앱. 페이지는 WebKit이 그림'],
+        ],
+    }
+    theme_shots = {
+        '01-split': ('Dawn(기본값)', '분할 화면의 Dawn 테마: 왼쪽은 Markdown 소스, 오른쪽은 렌더링된 페이지.'),
+        '02-classic': ('Classic', '미리보기가 윈도우 전체를 채운 Classic 테마.'),
+        '04-vivid': ('Vivid', '분할 화면의 Vivid 테마.'),
+        '03-dark': ('다크 모드', '다크 모드의 MarsDawn, 분할 화면.'),
+    }
+    theme_gallery_note = 'Modern은 아직 스크린샷이 없어서, 네 번째 이미지는 대신 다크 모드를 보여 줍니다.'
+
     app_ui_languages = '영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어'
     return {
         'pages': pages, 'figures': figures, 'home': home, 'compare_tables': compare_tables,
