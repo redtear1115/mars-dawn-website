@@ -1,6 +1,6 @@
 ---
 name: marsdawn
-description: Export Markdown to PDF with the marsdawn command-line tool on macOS, and read its JSON result. Use when asked to turn a Markdown file into a PDF, or to render Markdown with tables, math, Mermaid diagrams or highlighted code into a PDF.
+description: Export Markdown to PDF with the marsdawn command-line tool on macOS and read its JSON result, and open Markdown you wrote in MarsDawn for the user to review. Use when asked to turn a Markdown file into a PDF, or to render Markdown with tables, math, Mermaid diagrams or highlighted code into a PDF. Also use after writing or revising a Markdown document the user will read, to open it in MarsDawn for review.
 ---
 
 # marsdawn
@@ -37,9 +37,23 @@ On success it exits 0 and prints one JSON line:
 - `theme`: Theme used for the export.
 - `paper`: Paper size used for the export.
 - `diagramErrors`: One message per Mermaid diagram that failed to render. The PDF is still written.
-- `diagramErrorDetails`: One entry per diagramErrors entry, in the same order, with the document line each error is on when known.
+- `diagramErrorDetails`: The same failures as `diagramErrors`, in the same order, each as
+  `{message, fenceLine, line}`. `fenceLine` is the document line the diagram's fence starts on,
+  present whenever that's known. `line` is the document line of the error itself (`fenceLine` plus
+  Mermaid's own line number from its message), present only when Mermaid's message names a line —
+  some errors, like an undetected diagram type, don't. Either can be absent on its own.
 
 If `diagramErrors` isn't empty, the PDF was still written: tell the user which diagrams failed.
+
+## Themes
+
+`marsdawn theme validate theme.json --json` checks a MarsDawn theme file with the app's own
+validator; exit 1 means invalid, with each problem under `issues`. `--require-complete` is the
+check for a theme to publish. `marsdawn theme css theme.json --json` prints the CSS the preview
+serves for a valid theme, as `variables` and `rules`. `marsdawn theme preview theme.json --appearance light -o preview.png`
+renders a sample document with the theme to a PNG (`--appearance light|dark`, `--width` 600–2000,
+default 1200; `--force` replaces an existing PNG). All three refuse a symlinked or oversized theme
+file, and an invalid theme exits 1 with its problems.
 
 ## Exit codes
 
@@ -48,16 +62,51 @@ On failure with `--json` it prints `{"ok": false, "error": <kind>, "message": ..
 | Code | `error` | Meaning |
 |---|---|---|
 | 0 | — | Success. With --json, stdout is one JSON line. |
+| 1 | — | The theme isn't valid. Only the `theme` commands return this; with --json its problems are under `issues`. |
 | 2 | `input_not_found` | The input file isn't there. |
 | 3 | `app_not_installed` | MarsDawn isn't installed. Only `open` returns this. |
-| 4 | `output_exists` | The PDF already exists. Pass --force to replace it, or -o to write elsewhere. |
+| 4 | `output_exists` | The PDF (or `theme preview`'s PNG) already exists. Pass --force to replace it, or -o to write elsewhere. |
 | 5 | `export_failed` | Rendering failed. |
-| 64 | — | Usage error: a bad option or value. Printed as text on stderr, never as JSON. |
+| 6 | `app_cannot_open_folders` | This MarsDawn can't show a folder, so nothing was opened. Only `open` returns this. |
+| 64 | — | Usage error: a bad option or value. Printed as text on stderr, never as JSON, except `theme preview`'s refused -o (`output_folder_missing`, `output_symlink`, `output_not_a_file`). |
 
-## open
+## Review: open what you wrote
 
-`marsdawn open file.md` opens a file in the MarsDawn app for review. It needs the app; without
-it, it exits 3. Never use it to make a PDF: that's `export`.
+After writing or revising a Markdown document the user will read, open it in the MarsDawn app,
+where they read it rendered next to the source:
+
+```sh
+marsdawn open plan.md:42 --json
+```
+
+- `:42` is the line of your first change, counted from 1, so the user lands on it. Leave it off
+  when the whole document is new.
+- Open it **once**. When you edit the file again, the open window picks up the change by itself
+  and tells the user, with Undo. Don't run `open` again after every edit.
+- It needs the MarsDawn app. Without it, `open` exits 3 (`app_not_installed`): tell the user once
+  and carry on. Don't retry, and don't try to install the app.
+- To show the project in the window's sidebar as well, add `--folder <path>` (marsdawn 0.5.1 and
+  later; one folder). The JSON then includes `"folder": {"path": ..., "requested": true}`.
+  `requested` means marsdawn asked the app. It can't tell whether the sidebar shows the folder
+  (the app may first ask the user for access), so report it as asked, not as done.
+- Never use `open` to make a PDF: that's `export`.
+
+### Showing a folder
+
+`marsdawn open . --folder . --json` (or a folder path as an argument) also asks MarsDawn to show
+that folder in the window's sidebar, alongside any files. With a MarsDawn that reports back, the
+`folder` object in `--json` carries a `status` once the wait ends: `attached`, `needsUser` (see
+`waitingFor`: `confirmation` or `folderChoice`, meaning the user has to act — don't retry, just
+tell them), `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable`, or `unknown`
+(the app didn't answer in time; try again with a longer `--wait`, or treat it as "don't know").
+`--wait <seconds>` sets how long to wait, 0–30, default 2; a value ArgumentParser can parse as a
+number but outside that range is a usage error, exit 64, with `error: wait_out_of_range` in
+`--json`. Write a negative value as `--wait=-1`, not `--wait -1`: with a space, ArgumentParser reads
+it as another flag and gives its own plain usage error instead — still exit 64, but no
+`wait_out_of_range`; a value too large to be a number at all gets the same plain error. `--wait 0`,
+or an older MarsDawn that doesn't report
+back, skips waiting: the `folder` object only carries `path` and `requested: true`, same as
+before this existed.
 
 ## Full contract
 

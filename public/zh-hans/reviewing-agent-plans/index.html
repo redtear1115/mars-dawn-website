@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>五分钟审完一份 agent 计划 · MarsDawn</title>
+<meta name="description" content="agent 交出计划、还没开始执行之前，用六个步骤、大约五分钟把它审完。什么编辑器都能用，附一份实际的例子。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-agent-plans/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/">
+<link rel="alternate" type="text/markdown" href="/zh-hans/reviewing-agent-plans/index.md">
+<meta property="og:title" content="五分钟审完一份 agent 计划 · MarsDawn">
+<meta property="og:description" content="agent 交出计划、还没开始执行之前，用六个步骤、大约五分钟把它审完。什么编辑器都能用，附一份实际的例子。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到内容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
+  <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒绝</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hans/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">已在 Mac App Store 上架</span>
+  <nav class="lang" aria-label="Language"><a href="/reviewing-agent-plans/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reviewing-agent-plans/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reviewing-agent-plans/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/reviewing-agent-plans/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>五分钟审完一份 agent 计划</h1>
+  <p>agent 写好一份计划，正等你点头。你手上只有五分钟，不是一个小时。下面这套做法用什么编辑器都行，连纯文字编辑器也可以。其中几步 MarsDawn 帮得上忙，我们会讲清楚是哪几步；最重要的那一步，它帮不上。</p>
+</section>
+
+<div class="summary"><p><strong>不要从头读到尾。先看架构，再查一个宣称，找出做了就回不去的步骤，看图表和影响范围，最后写出 agent 看得懂、改得动的反馈。六个步骤，大约五分钟。</strong></p></div>
+
+<h2 id="why-bother-before-it-runs">为什么要在执行前审</h2>
+<p>Chip Huyen 解释为什么规划要和执行分开时，把代价讲得很白：“Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it&#8217;s not going anywhere.”（没有监督的话，agent 可能执行那些步骤好几个小时，在 API 呼叫上浪费时间和金钱，你才发现它根本没有进展。）我们补一句：计划是抓错最便宜的地方。在 <code>plan.md</code> 里改一行，只要一句话；等 agent 跑完再收拾，可能要花掉一个下午。</p>
+
+<h2 id="the-example">范例</h2>
+<p>你请 agent 把使用者头像搬到物件储存，而且旧链接不能坏。它交回来的是这份：</p>
+<pre><code># 计划：把使用者头像搬到物件储存
+
+## 目标
+头像改由物件储存提供，不再放在 app 服务器上。
+
+## 步骤
+1. 加入储存用的 client 与设定。&#9989; 完成
+2. 写一支脚本，把现有头像复制到 bucket。
+3. 把模板里的头像网址换掉。
+4. 从服务器删除 `public/avatars/`。
+5. 执行复制脚本。
+
+## 状态
+所有测试都通过。</code></pre>
+<p>读起来很顺。照做的话，它也会在复制任何一张头像之前，先把全部头像删光。</p>
+
+<h2 id="the-six-steps">六个步骤</h2>
+<p><strong>1. 先只看标题。</strong>（大约一分钟）大纲和你要求的对得上吗？少一段，通常就是少做一件事。这份只有“目标”“步骤”“状态”。你要求旧链接不能坏，可是没有任何一段讲旧链接，也没有讲出问题时怎么退回去。这就是你的第一条意见。</p>
+<p>在终端机跑 <code>grep -n '^#' plan.md</code>，就只会印出标题；大部分编辑器也有大纲预览。在 MarsDawn 里，侧边栏（“显示方式 &#9656; 显示侧边栏”，&#8963;&#8984;S）的“大纲”标签页会列出所有标题，点一下就跳过去。</p>
+<p><strong>2. 找出所有写着“完成”“通过”“已验证”的地方，挑一个自己查。</strong>（大约一分钟）打开那个文件、跑那个测试、数一下笔数。Chip Huyen 描述过一种失败：“The agent is convinced that it&#8217;s accomplished a task when it hasn&#8217;t.”（Agent 深信自己已完成任务，但其实并没有。）她举的例子是：请 agent 把 50 个人分到 30 间饭店房间，它只排了 40 人，还坚称做完了。</p>
+<pre><code>grep -n -E '完成|通过|验证|&#9989;' plan.md</code></pre>
+<p>在这份计划里，会找到“&#9989; 完成”和“所有测试都通过”。是哪些测试？有任何一个碰到头像吗？自己跑一次，或直接问。这一步 MarsDawn 没办法替你做，除了你，没有人能替你做。</p>
+<p><strong>3. 找出做了就回不去的步骤。</strong>（大约一分钟）删资料、数据库迁移、force push，还有任何会寄出、付款或发布的动作。这些要等你明确点头。Chip Huyen 从系统设计的角度讲过同一件事：“If a plan involves risky operations, such as updating a database or merging a code change, the system can ask for explicit human approval before executing or defer to humans to execute these operations.”（如果计划牵涉有风险的操作，例如更新数据库或合并代码变更，系统可以在执行前要求人类明确核准，或交给人类自己执行。）这份计划的第 4 步会删掉原始文件，而且排在第 5 步复制之前。</p>
+<p><strong>4. 图表要看画出来的样子，逐一对照每个箭头和文字说的是不是同一回事。</strong>流程图画着“复制 &#8594; 检查 &#8594; 删除”，步骤却不是这个顺序，这本身就是一个发现。这份计划没有图，今天可以跳过。有图的时候，请看画出来的图，不要看 Mermaid 原始码：很多编辑器都有预览，〈<a href="/zh-hans/view-markdown-on-mac/">在 Mac 上怎么看 Markdown 文件</a>〉和〈<a href="/zh-hans/vs/markdown-preview-tools/">在别处看 Markdown，对比 MarsDawn</a>〉整理了各种做法。在 MarsDawn 里，画好的图就在原始码旁边（&#8984;2）；图表写错时，预览会显示原始码、下方附上错误信息，这也值得单独写一条意见。</p>
+<p><strong>5. 列出计划会动到的文件和系统，你没要求的部分，先问清楚。</strong>（第 4、5 步合起来大约一分钟）这份会动到：储存设定、模板、服务器上的一个文件夹、一个 bucket。这个 bucket 谁读得到？你没说它要公开。如果你用 MarsDawn 打开 agent 工作的文件夹（“文件 &#9656; 打开文件夹&#8943;”，&#8679;&#8984;O），它新写的文件大约一秒内就会出现在“文件”标签页，清单上方也会标出 git 分支或工作树，你就知道自己审的是哪一份检出。</p>
+<p><strong>6. 反馈写成“位置、问题、改法”，一行只讲一个问题。</strong>（最后一分钟）</p>
+<pre><code>plan.md:10：第 5 步还没复制，这里就先删了。先复制、核对数量，再删；删之前等我确认。
+plan.md:14：是哪些测试？加一个切换后加载旧头像网址的测试。
+plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写出怎么退回去。</code></pre>
+<p>有行号的编辑器都能做到。在 MarsDawn 里，“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）会把目前位置拷贝成 <code>plan.md:10</code>，“拷贝给 AI”（&#8963;&#8997;&#8984;C）会在下面附上你选取的文字。</p>
+
+<h2 id="if-you-have-one-minute">只有一分钟的话</h2>
+<p>就做第 2 步吧。以为自己已经做完的 agent，多半是在这一步被抓到的。</p>
+
+<h2 id="when-five-minutes-isn-t-enough">五分钟不够的时候</h2>
+<p>有时候你判断不了某一步对不对，因为它超出你熟悉的范围。Jess Ou 在 LangChain 2026 年介绍 agent 的文章里，用两句话讲完：“Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.”（无法评估的判断，就不要外包出去。如果你自己认不出正确答案，agent 也认不出来。）我们的看法是：判断不了，不是赶快核准的理由，而是该去找懂的人问一下的理由。</p>
+
+<h2 id="what-marsdawn-does-here-and-what-it-doesn-t">MarsDawn 在这里做什么、不做什么</h2>
+<p>MarsDawn 里没有 AI 模型。它不会帮你找出这份计划的问题，第 2、3 步也不会替你做。它做的是让文件在你审的时候保持好读：第 1 步有大纲，第 4 步有画好的图，第 5 步有“文件”标签页，第 6 步有行号引用。你读到一半 agent 改了计划，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。</p>
+<p>计划定案、要给别人看的时候，〈<a href="/zh-hans/sharing-exported-pdfs/">把 agent 写的东西交出去，不用教对方 Markdown</a>〉和〈<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF 工具</a>〉说明了怎么转成 PDF 交出去。</p>
+
+<h2 id="try-it">试试看</h2>
+<p>MarsDawn 已在 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a> 上架。另外还有免费的 <code>marsdawn</code> 命令行工具：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>它不需要 app 就能把 Markdown 导出成 PDF。</p>
+<p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
+
+<h2 id="next">接下来</h2>
+<ul>
+  <li>agent 的产出为什么难读：<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>。</li>
+  <li>agent 为什么要把计划摊开：<a href="/zh-hans/agent-transparency/">Anthropic 说 agent 要透明，那摊开的东西谁来读？</a></li>
+  <li>agent 交回来的不只有计划：<a href="/zh-hans/agent-design-patterns/">四种 agent 设计模式，各自会交给你什么文件</a>。</li>
+</ul>
+
+<h2 id="sources">资料来源</h2>
+<ul>
+  <li>Chip Huyen，〈Agents〉，2025 年 1 月 7 日：<a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Jess Ou，〈What is an AI agent?〉，LangChain，2026 年 7 月 31 日：<a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="网站">
+    <a href="/zh-hans/support/">支持</a>
+    <a href="/zh-hans/privacy/">隐私政策</a>
+    <a href="/zh-hans/cli/">命令行工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 设置</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

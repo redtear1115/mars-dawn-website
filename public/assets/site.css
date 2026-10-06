@@ -170,6 +170,10 @@ a[href^="mailto:"] {
   overflow-wrap: anywhere;
 }
 code { line-height: 1.45; }
+/* A bare URL cited in a list (an article's Sources) breaks rather than widening the page on a
+   phone. break-word, not anywhere: it only applies when the line would overflow, and it doesn't
+   change the list's min-content width. */
+main li a[href^="http"] { overflow-wrap: break-word; }
 /* Multi-line command examples on the CLI page. */
 pre {
   margin: 0 0 14px;
@@ -194,24 +198,6 @@ kbd {
   border-radius: 4px;
   background: var(--paper);
 }
-
-/* Contact block on the support page. */
-.contact {
-  margin: 36px 0 8px;
-  padding: 24px 22px;
-  border: 1px solid var(--hairline);
-  border-radius: 8px;
-}
-.contact h2 { margin-top: 0; }
-.contact .email {
-  display: inline-block;
-  margin: 4px 0 10px;
-  /* Slightly smaller on the narrowest phones so the address fits on one line. */
-  font-size: clamp(1.05rem, 5.5vw, 1.25rem);
-  font-weight: 600;
-}
-
-.faq h3 { margin-top: 32px; }
 
 /* 404 page: the illustration on a sand plate, rounded like the trait screenshots.
    It carries its own sky, so it needs no separate dark-mode treatment. */
@@ -345,7 +331,12 @@ html.has-consent-banner body {
 html { scrollbar-color: var(--hairline) var(--paper); }
 
 .masthead { flex-wrap: wrap; }
+/* A link to the listing since launch (owner, 2026-09-20), so it needs a tap target and states,
+   but it keeps the quiet pill look: Dust text, hairline border, no fill and no underline. */
 .store-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   margin-left: auto;
   padding: 3px 10px;
   border: 1px solid var(--hairline);
@@ -354,6 +345,16 @@ html { scrollbar-color: var(--hairline) var(--paper); }
   font-size: 0.82rem;
   line-height: 1.4;
   white-space: nowrap;
+  text-decoration: none;
+}
+.store-chip:hover {
+  border-color: var(--dust);
+  color: var(--ink);
+}
+.store-chip:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+  border-radius: 999px;
 }
 /* After the base rules above, so these win at the same specificity. */
 @media (max-width: 480px) {
@@ -1140,6 +1141,9 @@ html { overflow-x: hidden; }
   color: var(--hero-sub);
   font-size: 1.05rem;
 }
+/* The Fixed Sky Rule: a link on the band (the listing, from launch) uses the hero ink in both
+   schemes. Rust Ink is for page paper and is unreadable on the night sky. */
+.dawn-close a { color: var(--hero-ink); }
 .dawn-close strong {
   display: block;
   margin-bottom: 8px;
@@ -1347,6 +1351,13 @@ html { overflow-x: hidden; }
 .toc li + li { margin-top: 0; }
 :target { scroll-margin-top: 20px; }
 
+/* ---- Markdown-source link, after a kit-rendered page's body -------------- */
+.markdown-source {
+  margin-top: 32px;
+  font-size: 0.9rem;
+  color: var(--dust);
+}
+
 .gallery-note {
   margin: -14px 0 18px;
   color: var(--dust);
@@ -1382,3 +1393,22 @@ html { overflow-x: hidden; }
   }
   .compare-ours.compare-wide td:last-child::before { color: var(--ember); }
 }
+
+/* /templates/ (#95): the rendered first page of a template, cropped to its top and framed, and
+   the agent prompt, wrapped so the template's URL stays on screen. */
+.tpl-shot { margin: 18px 0 8px; }
+.tpl-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 34rem;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  background: #fff;
+}
+.tpl-prompt code { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* auto-phrase keeps a Japanese phrase whole; a heading whose phrase is wider than a phone
+   (フローチャートテンプレート) may still break inside it rather than widen the page. */
+:lang(ja) :is(h1, h2, h3) { overflow-wrap: anywhere; }

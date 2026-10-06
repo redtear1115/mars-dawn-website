@@ -209,6 +209,18 @@ def check_editor_roles(src: dict, css: str) -> list:
             and got.get(role) != var_of.get(field)]
 
 
+def check_kit_tag(src: dict) -> list:
+    """hero_sources.json's own kit.tag must be the tag sync_hero_sources.py would fetch next
+    time it runs. Otherwise a rebase or a hand edit can leave the snapshot pointing at an old
+    kit release — wrong colours and labels with no drift the rest of this script can see,
+    since check_site and check_kit only compare the built site against whatever the snapshot
+    already says, never against what it should say."""
+    if src["kit"]["tag"] != sync.KIT_TAG:
+        return [f"hero_sources.json's kit.tag is {src['kit']['tag']}, "
+                f"but sync_hero_sources.KIT_TAG is {sync.KIT_TAG}: rerun sync_hero_sources.py"]
+    return []
+
+
 def kit_files(tag: str) -> dict:
     paths = ["Sources/MarsDawnKit/PreviewTheme.swift"] + [
         sync.KIT_STRINGS.format(lproj=lproj) for locale, lproj in sync.LOCALES.items() if locale != "en"]
@@ -248,6 +260,7 @@ def self_test(src: dict, css: str, pages: dict, lists: dict, kit: dict) -> list:
         "a menu item without its checkmark": (lambda: check_site(src, css, {**pages, "ja": re.sub(r'(<label for="mdw-dark-vivid"[^>]*><svg class=")tick', r"\1x", pages["ja"], count=1)})),
         "the theme button's name": (lambda: check_site(src, css, {**pages, "zh-hans": re.sub(r'(<summary title="[^"]*"><span class="mdw-sr">)[^<]*', r"\1Palette", pages["zh-hans"], count=1)})),
         "an editor colour role": (lambda: check_site(src, css.replace("--ed-code: var(--string);", "--ed-code: var(--keyword);", 1), pages)),
+        "the snapshot's kit tag stale against sync_hero_sources.KIT_TAG": (lambda: check_kit_tag({**src, "kit": {**src["kit"], "tag": "0.0.0"}})),
         "the default theme": (lambda: check_site(src, css, {**pages, "en": pages["en"].replace('value="dawn" checked', 'value="dawn"', 1).replace('value="modern">', 'value="modern" checked>', 1)})),
         "the default appearance": (lambda: check_site(src, css, {**pages, "en": pages["en"].replace('value="system" checked', 'value="system"', 1).replace('value="dark">', 'value="dark" checked>', 1)})),
         "a word in the preview": (lambda: check_site(src, css, {**pages, "zh-hans": re.sub(r"(<p class=\"md-h1\">[^<]*)MarsDawn", r"\1MarsDusk", pages["zh-hans"], count=1)})),
@@ -282,7 +295,8 @@ def main() -> int:
     pages = {locale: (ROOT / "public" / path).read_text(encoding="utf-8") for locale, path in PAGES.items()}
     lists = {locale: (ROOT / "public" / path).read_text(encoding="utf-8") for locale, path in THEME_LISTS.items()}
     kit = kit_files(src["kit"]["tag"]) if args.kit else None
-    problems = check_site(src, css, pages) + check_theme_lists(src, lists) + (check_kit(src, kit) if kit else [])
+    problems = (check_kit_tag(src) + check_site(src, css, pages) + check_theme_lists(src, lists)
+                + (check_kit(src, kit) if kit else []))
     for p in problems:
         print(f"::error::{p}")
     if problems:

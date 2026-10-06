@@ -25,6 +25,9 @@ which looks like `https://apps.apple.com/us/app/some-slug/id123456789?uo=4` — 
 string works in a browser, so nothing else here would notice, and every page of a four-locale site
 would point at one country's storefront.
 
+It also fails on any placeholder left in a URL ("PLACEHOLDER", as in the Mac App Store listing
+URL before its Apple ID is set), so a held go-live change can't deploy with a dead store link.
+
 Exits 1 and lists every broken link. To see it catch one, check a copy of public/ with a link
 pointed at a page that doesn't exist:
 
@@ -49,7 +52,8 @@ PATTERNS = [
     re.compile(r"\]\(([^)\s]+)\)"),
     re.compile(r"<loc>([^<]+)</loc>"),
     re.compile(r"url\(\s*['\"]?([^'\")]+)['\"]?\s*\)"),
-    re.compile(r"(?<![\w(\"'=])(" + re.escape(BASE_URL) + r"/[^\s)\"'<>`]*)"),
+    # A bare URL in prose: sentence punctuation right after it is not part of it.
+    re.compile(r"(?<![\w(\"'=])(" + re.escape(BASE_URL) + r"/(?:[^\s)\"'<>`]*[^\s)\"'<>`.,;:!?])?)"),
 ]
 
 
@@ -88,13 +92,15 @@ def redirect_sources(root: Path) -> set:
 
 def main(argv) -> int:
     root = Path(argv[argv.index("--root") + 1]) if "--root" in argv else Path(__file__).resolve().parent.parent / "public"
-    broken, checked = [], 0
+    broken, checked, placeholders = [], 0, []
     redirected = redirect_sources(root)
     malformed, listings = [], 0
     for path in sorted(root.rglob("*")):
         if path.suffix not in {".html", ".md", ".txt", ".xml", ".css"} or not path.is_file():
             continue
         text = path.read_text(encoding="utf-8", errors="replace")
+        for match in re.finditer(r"https?://[^\s\"'<>)]*PLACEHOLDER[^\s\"'<>)]*", text):
+            placeholders.append(f"{path.relative_to(root)}: {match.group(0)}")
         for link in targets(text):
             target = site_path(link)
             if target is None:
@@ -118,7 +124,10 @@ def main(argv) -> int:
     for line in malformed:
         print(f" - {line}\n   wanted https://apps.apple.com/app/id<digits>, with no country segment,"
               f" no slug and no query (a trackViewUrl has all three)")
-    return 1 if broken or malformed else 0
+    if placeholders:
+        files = len({p.split(": ", 1)[0] for p in placeholders})
+        print(f"{len(placeholders)} placeholder URLs in {files} files, e.g. {placeholders[0]}")
+    return 1 if broken or malformed or placeholders else 0
 
 
 if __name__ == "__main__":
