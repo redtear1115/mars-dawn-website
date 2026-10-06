@@ -345,8 +345,143 @@ marsdawn open notes.md --folder .</code></pre>
         "5": 'JSON 결과의 <code>message</code>를 읽으세요',
         "64": '옵션이나 값을 고치세요. 이 오류는 <code>--json</code>을 줘도 stderr에 텍스트로 나옵니다',
     }
+    # markdown-to-pdf shows /assets/cli/plan-ko.png, which does not exist yet. Before this ships,
+    # export example_plan with marsdawn 0.5.0 the way EXAMPLE_PLAN's comment in build_pages.py
+    # describes, or fall back to plan-en.png with EXAMPLE_PLAN['en'].
+    example_plan = '# 계획: 더 빠른 내보내기\n\n이 계획은 에이전트가 작성했습니다. 검토한 다음 PDF로 만드세요.\n\n## 단계\n\n| 단계 | 담당 | 상태 |\n|------|------|------|\n| 느린 페이지 측정 | 에이전트 | 완료 |\n| 렌더링한 다이어그램 캐시 | 에이전트 | 검토 중 |\n\n목표는 50페이지 문서를 $t < 2\\,\\text{s}$ 안에 처리하는 것입니다.\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  초안 --> 검토 --> 배포\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
+
+    pages['markdown-to-pdf'] = {
+        "title": 'Mac의 명령줄에서 Markdown을 PDF로 · MarsDawn',
+        "description": '무료 marsdawn 명령줄 도구로 Mac에서 Markdown을 PDF로 변환하세요. Homebrew로 설치하고 명령 하나만 실행하면 됩니다. 표, 수식, Mermaid, 코드까지 지원합니다.',
+        "body": f"""
+<section class="intro">
+  <h1>Mac의 명령줄에서 Markdown을 PDF로.</h1>
+  <p>무료 도구 <code>marsdawn</code>은 명령 하나로 Markdown 파일을 PDF로 바꿉니다. 표, 수식, Mermaid 다이어그램, 강조 표시된 코드가 원본에서 읽히는 그대로 나오며, 다른 것은 아무것도 설치할 필요가 없습니다. MarsDawn 앱조차 필요 없습니다.</p>
+</section>
+<h2>설치하기</h2>
+<pre><code>{k.INSTALL}
+marsdawn --version</code></pre>
+<p>Apple 실리콘 Mac에서는 Homebrew가 미리 빌드된 사본을 몇 초 만에 설치합니다. Intel Mac에서는 대신 소스에서 빌드하므로 몇 분이 걸리고 Xcode 26 이상이 필요합니다. macOS 15 이상에서 실행되며, <code>marsdawn --version</code>으로 설치된 버전을 확인할 수 있습니다.</p>
+<h2>문서 저장하기</h2>
+<p>다음 내용을 <code>plan.md</code>라는 파일에 붙여 넣으세요.</p>
+<pre><code>{k.xml_escape(example_plan)}</code></pre>
+<h2>내보내기</h2>
+<pre><code>marsdawn export plan.md</code></pre>
+<p>원본 옆에 <code>plan.pdf</code>를 쓰고, 저장된 위치를 출력합니다.</p>
+<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<p>아래는 <code>marsdawn</code> 0.5.0을 실제로 실행해서 캡처한 바로 그 페이지입니다.</p>
+<p><img class="pdf-page" src="/assets/cli/plan-ko.png" alt="내보낸 PDF: 제목, 단계 표, 본문 속 수식과 별도 줄의 수식, 초안, 검토, 배포 다이어그램, 강조 표시된 Swift 코드 한 줄." width="989" height="930"></p>
+<h2>테마, 용지 크기, 파일 이름 선택하기</h2>
+<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<ul>
+  <li><code>--theme</code>: dawn, classic, modern, vivid 중 하나이며, 테마의 라이트 색상을 사용합니다. 지정하지 않으면 <code>export</code>는 <code>$MARSDAWN_THEME</code>을, 그것도 없으면 dawn을 사용합니다.</li>
+  <li><code>--paper</code>: a4 또는 letter. 기본값은 a4입니다.</li>
+  <li><code>-o</code>: 원본 옆 대신 PDF를 쓸 위치입니다.</li>
+  <li><code>--allow-remote-images</code>: 렌더링하는 동안 웹에서 이미지를 불러옵니다. 이 옵션을 주지 않으면 꺼진 상태로 유지됩니다.</li>
+</ul>
+<h2>잘 안 될 때</h2>
+<ul>
+  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Intel Mac에서처럼 Homebrew가 <code>marsdawn</code>을 소스에서 빌드하고 있습니다. App Store에서 Xcode 26 이상을 설치한 다음 설치를 다시 실행하세요.</li>
+  <li><code>marsdawn: No such file: …</code> 경로가 파일을 가리키지 않습니다. 이름을 확인하거나, 파일이 있는 폴더에서 명령을 실행하세요.</li>
+  <li><code>… already exists. Pass --force to replace it.</code> 같은 이름의 PDF가 이미 있습니다. 바꾸려면 <code>--force</code>를, 다른 곳에 쓰려면 <code>-o</code>를 추가하세요.</li>
+  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> 알 수 없는 테마나 용지 크기입니다. 테마는 dawn, classic, modern, vivid이고, 용지는 a4 또는 letter입니다.</li>
+</ul>
+<h2>다음</h2>
+<ul>
+  <li>모든 옵션과 출력되는 JSON: <a href="/ko/cli/">명령줄</a>.</li>
+  <li>코딩 에이전트에게 이 작업을 맡기려면: <a href="/ko/cli/skill/">marsdawn 에이전트 스킬</a>.</li>
+  <li>네 가지 미리보기 테마와 PDF 내보내기의 방향: <a href="/ko/themes/">미리보기 테마와 PDF 내보내기</a>.</li>
+  <li>Markdown을 쓰지 않는 사람에게 PDF 전달하기: <a href="/ko/sharing-exported-pdfs/">PDF 공유하기</a>.</li>
+</ul>
+""",
+    }
+
+    pages['view-markdown-on-mac'] = {
+        "title": 'Mac에서 Markdown 파일을 보는 방법 · MarsDawn',
+        "description": '.md 파일은 서식 기호가 들어 있는 일반 텍스트입니다. Mac에서 렌더링된 상태로 읽는 방법을 소개합니다. 지금 바로 무료 marsdawn 명령줄 도구로 PDF를 만들 수 있고, Mac App Store의 MarsDawn 앱에서 읽을 수도 있습니다.',
+        "body": f"""
+<section class="intro">
+  <h1>Mac에서 Markdown 파일을 보는 방법.</h1>
+  <p><code>.md</code> 파일은 일반 텍스트입니다. 제목, 굵은 글씨, 표, 다이어그램은 기호로 적혀 있습니다. 제목은 <code>#</code>, 굵은 글씨는 <code>**</code>로 감싸고, 표는 세로 막대로, 다이어그램은 <code>mermaid</code> 코드 블록으로 씁니다. 일반 텍스트 편집기로 열면 이 기호들이 그대로 보입니다. 작성자가 의도한 대로 페이지를 읽으려면 무언가가 렌더링해 줘야 합니다.</p>
+</section>
+<h2>지금 무료로: PDF로 바꾸기</h2>
+<p>무료 <code>marsdawn</code> 명령줄 도구는 Markdown 파일을 어떤 Mac에서든 열 수 있는 PDF로 렌더링합니다. 표, 수식, Mermaid 다이어그램, 강조 표시된 코드가 렌더링된 상태로 나오며, 다른 것은 아무것도 설치할 필요가 없습니다. MarsDawn 앱조차 필요 없습니다.</p>
+<pre><code>{k.BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<p><code>export</code>는 Markdown 파일 옆에 <code>notes.pdf</code>를 쓰고, <code>open</code>은 그 파일을 PDF 뷰어에서 보여 줍니다. macOS 15 이상이 필요합니다. 실제로 내보낸 페이지와 함께 보는 단계별 안내는 <a href="/ko/markdown-to-pdf/">Markdown을 PDF로</a>에 있습니다.</p>
+<h2>MarsDawn에서 읽기</h2>
+<p>MarsDawn은 Mac App Store에 있는 Mac용 Markdown 편집기입니다. <code>.md</code> 파일을 열고 원본 옆에서 렌더링된 페이지를 읽으세요.</p>
+<ul>
+  <li>입력하는 동안 미리보기가 업데이트되고, 두 패널이 함께 스크롤됩니다.</li>
+  <li>Mermaid 순서도와 시퀀스 다이어그램이 미리보기에 그려지고, 코드 블록은 강조 표시됩니다.</li>
+  <li>Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램까지 포함된 훑어보기 미리보기가 나타납니다.</li>
+  <li>무언가를 고치고 싶을 때 원본이 바로 옆에 있습니다. MarsDawn은 뷰어만이 아니라 편집기입니다.</li>
+</ul>
+<p>AI 에이전트가 쓴 파일이라면, 이것이 바로 MarsDawn이 만들어진 이유인 반복 과정입니다. 에이전트가 쓰고, 여러분이 렌더링된 결과를 읽고, 에이전트가 고칩니다. <a href="/ko/">홈페이지</a>를 참고하고, 에이전트가 대신 파일을 열게 하려면 <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a>을 참고하세요. 이렇게 읽는 일이 왜 중요한지, 계획은 어떻게 검토하는지는 <a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a>와 <a href="/ko/reviewing-agent-plans/">에이전트의 계획을 5분 만에 검토하기</a>에서 확인하세요.</p>
+<h2>다음</h2>
+<ul>
+  <li>명령줄 도구의 모든 옵션: <a href="/ko/cli/">명령줄</a>.</li>
+  <li>MarsDawn이 하지 않는 일: <a href="/ko/limits/">목록</a>.</li>
+  <li>VS Code, 브라우저, Claude Desktop에서 Markdown을 읽는 경우: <a href="/ko/vs/markdown-preview-tools/">비교해 보기</a>.</li>
+</ul>
+""",
+    }
+
+    pages['vs/macmd-viewer'] = {
+        "title": 'MacMD Viewer와 MarsDawn: 뷰어인가, 편집기인가 · MarsDawn',
+        "description": 'MacMD Viewer는 Markdown을 읽기 전용으로 렌더링하며 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 무료로 체험한 뒤 Mac App Store에서 USD 4.99에 한 번만 구입하면 됩니다.',
+        "body": f"""
+<section class="intro">
+  <h1>MacMD Viewer와 MarsDawn.</h1>
+  <p>둘 다 Markdown을 렌더링해서 읽기 위한 Mac 앱입니다. MacMD Viewer는 <code>.md</code> 파일을 열어 완성된 페이지를 보여 주지만, 편집은 하지 않습니다. MarsDawn은 같은 종류의 렌더링된 미리보기 옆에 편집기를 두어, 한 윈도우에서 쓰고 검토할 수 있게 합니다. 기능별로 어떻게 다른지 살펴보세요.</p>
+</section>
+<h2>편집하지 않고 읽기만 한다면</h2>
+<p>다른 사람이 쓴 Markdown을 읽기만 하고 원본은 전혀 건드릴 필요가 없다면, MacMD Viewer도 괜찮은 선택입니다. 바로 그 용도로 만들어졌고, 지금 구할 수 있으며, 더 오래된 macOS에서도 동작합니다. 읽는 것만으로 일이 끝나지 않을 때 MarsDawn이 가치를 발휘합니다. 에이전트의 Markdown은 대개 한 번 더 손볼 일이 생기기 때문입니다.</p>
+<h2>각 앱이 하는 일</h2>
+<!--compare:macmd-features-->
+<h2>가격과 구입 방법</h2>
+<!--compare:macmd-buying-->
+<h2>지금 무료로 사용해 보세요</h2>
+<p>MarsDawn은 Mac App Store에 있습니다. 무료 <code>marsdawn</code> 명령줄 도구도 어떤 Markdown 파일이든 Mermaid 다이어그램과 강조 표시된 코드를 포함한 PDF로 렌더링하며, 다른 것은 아무것도 설치할 필요가 없습니다.</p>
+<pre><code>{k.BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<h2>다음</h2>
+<ul>
+  <li>전체 안내: <a href="/ko/markdown-to-pdf/">Markdown을 PDF로</a>.</li>
+  <li>MarsDawn이 하지 않는 일: <a href="/ko/limits/">목록</a>.</li>
+  <li>명령줄 도구의 모든 옵션: <a href="/ko/cli/">명령줄</a>.</li>
+  <li>VS Code, 브라우저, Claude Desktop에서 Markdown을 읽는 경우와 비교: <a href="/ko/vs/markdown-preview-tools/">비교해 보기</a>.</li>
+</ul>
+""",
+    }
+
+    compare_tables['macmd-features'] = {
+        'head': ['', 'MacMD Viewer', 'MarsDawn'],
+        'rows': [
+            ['편집', '설계상 읽기 전용', '렌더링된 페이지를 옆에 두고 원본을 편집'],
+            ['미리보기 테마', '문서 테마 12개', '테마 4개, 각각 라이트와 다크 팔레트 제공'],
+            ['다이어그램과 수식', 'Mermaid와 코드 강조 표시. 앱 설명에 수식 언급은 없음', 'Mermaid, 코드 강조 표시, KaTeX 수식'],
+            ['Finder에서 훑어보기', '예', '예'],
+            ['PDF와 프린트', '예', '예'],
+            ['요구 사항', 'macOS 14(Sonoma) 이상', 'macOS 26(Tahoe) 이상'],
+            ['인터페이스 언어', '자체 자료에 명시되지 않음', '{langs}'],
+        ],
+    }
+    compare_tables['macmd-buying'] = {
+        'head': ['', 'MacMD Viewer', 'MarsDawn'],
+        'rows': [
+            ['구입처', '자체 사이트, Homebrew 또는 Setapp. Mac App Store에는 없음', 'Mac App Store에서만'],
+            ['가격', 'Mac 1대용 USD 19.99 일회성 결제. 여러 대용 패키지는 더 비쌈', '무료 다운로드 후 USD 4.99 일회성 결제'],
+            ['먼저 사용해 보기', '체험판 없음. 직접 구입 시 14일 환불 보장', '14일 무료 체험'],
+            ['환불과 업데이트', '자체 사이트를 통해', 'Apple을 통해'],
+            ['계정 필요', '아니요', '아니요'],
+        ],
+    }
+
     app_ui_languages = '영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어'
     return {
         'pages': pages, 'figures': figures, 'home': home, 'compare_tables': compare_tables,
-        'exit_table_head': exit_table_head, 'exit_remedy': exit_remedy, 'app_ui_languages': app_ui_languages,
+        'exit_table_head': exit_table_head, 'exit_remedy': exit_remedy, 'app_ui_languages': app_ui_languages, 'example_plan': example_plan,
     }
