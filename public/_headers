@@ -202,3 +202,90 @@
 /ja/reviewing-ai-output/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
+
+# /templates/ (#95): the pages' Markdown twins and the template downloads. CJK text needs
+# the charset, or a browser opening the file directly may guess the wrong encoding.
+/templates/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/templates/spec/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/templates/flowchart/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/templates/meeting-notes/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/templates/spec/spec.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/templates/flowchart/flowchart.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/templates/meeting-notes/meeting-notes.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/templates/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/templates/spec/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/templates/flowchart/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/templates/meeting-notes/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/templates/spec/spec.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/templates/flowchart/flowchart.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/templates/meeting-notes/meeting-notes.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/templates/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/templates/spec/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/templates/flowchart/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/templates/meeting-notes/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/templates/spec/spec.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/templates/flowchart/flowchart.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/templates/meeting-notes/meeting-notes.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/templates/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/templates/spec/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/templates/flowchart/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/templates/meeting-notes/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/templates/spec/spec.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/templates/flowchart/flowchart.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/templates/meeting-notes/meeting-notes.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300

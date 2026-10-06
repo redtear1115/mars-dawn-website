@@ -1,13 +1,13 @@
 {
-  "originHash" : "f57e206c474d2ab3c9cdab0c4ed3717f411dd09d882655280ebd37b170edd0c5",
+  "originHash" : "c08edc2f05e3610dd188266765fbf1755b7669b2676525b9986fd11e4a91d221",
   "pins" : [
     {
       "identity" : "mars-dawn-kit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/redtear1115/mars-dawn-kit.git",
       "state" : {
-        "revision" : "b56fdd964eced3734e781212b1c5b7412c60281d",
-        "version" : "0.5.1"
+        "revision" : "ff4d5f1e58302d574304ba0ac8022c710523148d",
+        "version" : "0.5.2"
       }
     },
     {

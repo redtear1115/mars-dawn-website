@@ -37,7 +37,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SNAPSHOT = ROOT / "scripts" / "hero_sources.json"
 RENDERER = ROOT / "tools" / "hero-render"
 
-KIT_TAG = "0.5.1"
+KIT_TAG = "0.5.2"
 # The parts of the snapshot the site shows. The rest (which commits were read) is provenance.
 SHOWN = ("themes", "labels", "editor", "highlighter", "sample")
 LOCALES = {"en": "en", "zh-hant": "zh-Hant", "zh-hans": "zh-Hans", "ja": "ja"}

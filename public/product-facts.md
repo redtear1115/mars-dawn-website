@@ -5,7 +5,7 @@ Source: https://marsdawn.southern-light.dev/product-facts.md
 
 ## What MarsDawn is
 
-Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. Coming soon to the Mac App Store.
+Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. On the Mac App Store.
 
 ## Requirements
 

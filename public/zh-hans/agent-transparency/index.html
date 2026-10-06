@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic 说 agent 要透明，那摊开的东西谁来读？ · MarsDawn</title>
+<meta name="description" content="Anthropic 谈打造 agent 的指南要求透明：把规划步骤摊开来。它说了什么、没说什么，以及为什么这些步骤最后多半变成一份要有人读的 Markdown。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-transparency/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-transparency/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-transparency/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-transparency/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-transparency/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/agent-transparency/">
+<link rel="alternate" type="text/markdown" href="/zh-hans/agent-transparency/index.md">
+<meta property="og:title" content="Anthropic 说 agent 要透明，那摊开的东西谁来读？ · MarsDawn">
+<meta property="og:description" content="Anthropic 谈打造 agent 的指南要求透明：把规划步骤摊开来。它说了什么、没说什么，以及为什么这些步骤最后多半变成一份要有人读的 Markdown。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/agent-transparency/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到内容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
+  <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒绝</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hans/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">已在 Mac App Store 上架</span>
+  <nav class="lang" aria-label="Language"><a href="/agent-transparency/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/agent-transparency/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/agent-transparency/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a> · <a href="/ja/agent-transparency/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Anthropic 说 agent 要透明，那摊开的东西谁来读？</h1>
+  <p>Anthropic 在 2024 年 12 月发表了〈Building Effective Agents〉，写给打造 AI agent 的人。文章的总结列出三个原则，其中一个是透明。这篇要谈的是这个原则的另一端：agent 把步骤摊开之后，总得有人去读。</p>
+</section>
+
+<div class="summary"><p><strong>透明是 agent 要做到的事，读是你要做的事。Anthropic 要求开发者把 agent 的规划步骤摊开；对大多数在驱动 coding agent 的人来说，这些步骤最后会变成一份 Markdown 文件，要有人在对的时间点读它。</strong></p></div>
+
+<h2 id="what-the-guide-says">指南里写了什么</h2>
+<p>Erik S. 与 Barry Zhang 在总结里这样写：</p>
+<blockquote><p>&#8220;When implementing agents, we try to follow three core principles: Maintain simplicity in your agent's design. Prioritize transparency by explicitly showing the agent&#8217;s planning steps. Carefully craft your agent-computer interface (ACI) through thorough tool documentation and testing.&#8221;</p></blockquote>
+<p>（实作 agent 时，我们尽量遵守三个核心原则：让 agent 的设计保持简单；优先重视透明度，明确展示 agent 的规划步骤；通过完整的工具文件与测试，仔细打造 agent 与电脑之间的接口（ACI）。）</p>
+<p>这些是写给开发 agent 的人的设计原则，不是给使用者的操作指示。原则要求把步骤摊开，但没有说谁来读。</p>
+<p>同一篇也描述了 agent 拿到任务之后会做什么：“Once the task is clear, agents plan and operate independently, potentially returning to the human for further information or judgement.”（任务明确之后，agent 会自己规划、独立运作，必要时回头找人类要更多信息或判断。）还有：“Agents can then pause for human feedback at checkpoints or when encountering blockers.”（Agent 可以在检查点或遇到阻碍时暂停，等待人类反馈。）注意用词：<em>potentially</em>（必要时）和 <em>can</em>（可以）。检查点是 agent 可以有的设计，不是一定要有。</p>
+
+<h2 id="most-of-the-checking-isn-t-done-by-you">大部分的检查，不是你在做</h2>
+<p>这里很容易讲过头，所以先看指南真正放在前面的是什么。agent 会拿外界的结果来检查自己：“During execution, it's crucial for the agents to gain &#8220;ground truth&#8221; from the environment at each step (such as tool call results or code execution) to assess its progress.”（执行过程中，agent 必须在每一步从环境取得“ground truth”，例如工具呼叫的结果或程序执行的结果，用来评估自己的进度。）这句话里的 ground truth 指的是测试结果和工具输出，不是人。</p>
+<p>指南对风险也讲得很直接：“The autonomous nature of agents means higher costs, and the potential for compounding errors.”（Agent 的自主性意味着更高的成本，以及错误不断累积的可能。）它给的解方是在沙盒环境里大量测试、加上适当的防护，并没有说“要读得更仔细”。</p>
+<p>人真正出场，是在附录谈 coding agent 的段落：“However, whereas automated testing helps verify functionality, human review remains crucial for ensuring solutions align with broader system requirements.”（然而，自动化测试虽然有助于验证功能，但要确保解法符合更广泛的系统需求，人工审阅仍然至关重要。）这句讲的是代码。不过它点出的落差，用过 agent 的人都不陌生：测试能告诉你东西能动，不能告诉你那是不是你要的。</p>
+
+<h2 id="where-the-steps-end-up">摊开的步骤，最后去了哪里</h2>
+<p><strong>以下是我们的解读，不是 Anthropic 的主张。</strong></p>
+<p>如果你每天都在用 coding agent，它的规划步骤通常不会出现在什么仪表板上，而是变成文件：<code>plan.md</code>、一份有勾选框的待办清单、一个 agent 一直在改写的进度档，最后再来一份总结。从你这边看，透明的意思就是要读的东西变多了。</p>
+<p>把步骤摊开，是 agent 那一半的责任。另一半，是有人在关键时刻读它：数据库迁移执行之前、分支合并之前、接受“做完了”之前。一个 agent 把所有东西都写进一份 600 行、没人打开的文件，纸面上很透明，实际上没人在看。</p>
+<p>Harrison Chase 在 2024 年也讲过类似的话，不过他谈的是 agent 框架该怎么设计，不是文件：“You&#8217;ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.”（你会希望能观察系统内部发生了什么，因为它实际采取的步骤事先可能无法得知。）他讲的是给开发 agent 的人用的工具。如果你是驱动 agent 的那个人，它一直在写的那份纯文字档，常常就是你看得到的部分。</p>
+<p>以上几位作者都没有提到 MarsDawn，也没有推荐 MarsDawn 或任何 Markdown 工具。</p>
+
+<h2 id="why-that-read-is-harder-than-it-looks">比看起来难读</h2>
+<p>文件很长，重要的地方很少在最上面。说明这次改动的那张图，是一段 Mermaid 原始码，不是图（想在 Mac 上看到排好的样子，可以先看<a href="/zh-hans/view-markdown-on-mac/">在 Mac 上怎么看 Markdown 文件</a>）。你读到一半，agent 可能正在改写它。文件常常不只一份，有时还分散在不同的分支或 worktree。等你真的找到问题，说“缓存那段怪怪的”，agent 只能用猜的。完整的说明在<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>。</p>
+
+<h2 id="where-marsdawn-fits-and-where-it-doesn-t">MarsDawn 帮得上、帮不上的地方</h2>
+<p>MarsDawn 是为这种阅读做的 Mac app。它不会让 agent 变得更透明，里面也没有 AI 模型：它不会帮你摘要计划，也不会告诉你计划对不对。它做的是：</p>
+<ul>
+  <li><strong>文件很长：</strong>“显示方式 &#9656; 显示侧边栏”（&#8963;&#8984;S）打开“大纲”标签页，列出所有标题，点一下就跳过去。</li>
+  <li><strong>图表和数学式：</strong>原始码和排好的页面并排（&#8984;2），两边一起卷动，Mermaid 和 KaTeX 直接画出来。图表写错时，预览会显示它的原始码，下方附上错误信息。</li>
+  <li><strong>读到一半被改写：</strong>agent 改写文件时，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。</li>
+  <li><strong>好几个文件：</strong>用“文件 &#9656; 打开文件夹&#8943;”（&#8679;&#8984;O）打开 agent 工作的文件夹，新文件大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树。</li>
+  <li><strong>指出是哪一行：</strong>“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）把目前位置拷贝成 <code>docs/plan.md:42</code>，“拷贝给 AI”（&#8963;&#8997;&#8984;C）会在下面附上你选取的文字，直接贴给 agent 就好。</li>
+</ul>
+<p>读的人还是你。MarsDawn 负责让一份又长又会变的文件，在你读的时候保持好读。</p>
+
+<h2 id="try-it">试试看</h2>
+<p>MarsDawn 已在 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a> 上架。另外还有免费的 <code>marsdawn</code> 命令行工具：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>它不需要 app 就能把 Markdown 导出成 PDF。</p>
+<p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
+
+<h2 id="next">接下来</h2>
+<ul>
+  <li>agent 的产出为什么难读，以及一份检查清单：<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>。</li>
+  <li>那份清单一步一步来，附实际例子：<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>。</li>
+  <li>不同类型的 agent 会交给你什么文件：<a href="/zh-hans/agent-design-patterns/">四种 agent 设计模式，各自会交给你什么文件</a>。</li>
+  <li>为什么 AI 写的东西需要人读，短一点的版本：<a href="/zh-hans/reviewing-ai-output/">为什么 AI 写的东西还是需要人读过</a>。</li>
+</ul>
+
+<h2 id="sources">资料来源</h2>
+<ul>
+  <li>Erik S. 与 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：<a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> （引文依 2026-09-26 的线上版本；该文现已注明，文中提到的工具生态自 2024 年 12 月以来已有很多改变）</li>
+  <li>Harrison Chase，〈What is an agent?〉，LangChain，2024 年 6 月 28 日，存档版本：<a href="http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/">http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/</a> （原网址现在显示的是 2026 年的另一篇文章）</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="网站">
+    <a href="/zh-hans/support/">支持</a>
+    <a href="/zh-hans/privacy/">隐私政策</a>
+    <a href="/zh-hans/cli/">命令行工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 设置</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

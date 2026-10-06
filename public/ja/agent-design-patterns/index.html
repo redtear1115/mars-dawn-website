@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4 つのエージェント設計パターンと、それぞれが返す文書 · MarsDawn</title>
+<meta name="description" content="Andrew Ng が描いた reflection、tool use、planning、multi-agent collaboration という 4 つの設計パターン、それぞれがどんな文書を返してくる傍向があるか。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-design-patterns/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-design-patterns/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-design-patterns/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-design-patterns/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/agent-design-patterns/">
+<link rel="alternate" type="text/markdown" href="/ja/agent-design-patterns/index.md">
+<meta property="og:title" content="4 つのエージェント設計パターンと、それぞれが返す文書 · MarsDawn">
+<meta property="og:description" content="Andrew Ng が描いた reflection、tool use、planning、multi-agent collaboration という 4 つの設計パターン、それぞれがどんな文書を返してくる傍向があるか。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/agent-design-patterns/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で配信中</span>
+  <nav class="lang" aria-label="Language"><a href="/agent-design-patterns/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/agent-design-patterns/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/agent-design-patterns/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/agent-design-patterns/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>4 つのエージェント設計パターンと、それぞれが返す文書</h1>
+  <p>2024 年 3 月、Andrew Ng は自身のニュースレター The Batch で、AI エージェントの 4 つの設計パターンを紹介した：reflection、tool use、planning、multi-agent collaboration。これらはふつう、モデルからより良い結果を引き出す方法として、作る側の視点から語られる。この記事は反対側から見る。あなたが使っているエージェントが、このどれかのパターンで作られているなら、フォルダには何が入ってくるのか。まず何を読めばいいのか。</p>
+</section>
+
+<div class="summary"><p><strong>4 つのパターンは Andrew Ng のものだ。それぞれがどんな文書を返しがちで、何をチェックすべきかは、私たちの推論だ。彼はそのどちらについても書いておらず、このシリーズで人によるレビューを主張してもいない。</strong></p></div>
+
+<h2 id="the-four-patterns-briefly">4 つのパターン、手短に</h2>
+<p>Ng はこれを「Agentic Design Patterns Part 1」で説明している。手短に言えば：<strong>reflection</strong> はモデルが自分の成果を見直して改善するもの。<strong>tool use</strong> は Web 検索やコード実行などのツールを呼べるようにするもの。<strong>planning</strong> はモデルが多段階の計画を立てて実行するもの。<strong>multi-agent collaboration</strong> は複数のエージェントが作業を分担し、議論するものだ。</p>
+<p>Part 1 で彼は、コーディングのベンチマーク HumanEval を使い、複数の研究グループの結果をチームでまとめた数字で効果を示している：「GPT-3.5 (zero shot) was 48.1% correct. GPT-4 (zero shot) does better at 67.0%. However, the improvement from GPT-3.5 to GPT-4 is dwarfed by incorporating an iterative agent workflow. Indeed, wrapped in an agent loop, GPT-3.5 achieves up to 95.1%.」（GPT-3.5 の zero-shot での正答率は 48.1%、GPT-4 の zero-shot はもう少し良く 67.0%。しかし、GPT-3.5 から GPT-4 への向上は、反復的なエージェントワークフローを組み込むことに比べれば見劣りする。実際、エージェントのループに包むと、GPT-3.5 は最大で 95.1% に達する。）これらの数字は 1 つのコーディングベンチマークについてのもので、95.1% は最良のケース（「up to」＝最大で）だ。エージェントのワークフローが出力を改善しうることは示しているが、誰がそれを確認するかについては何も語っていない。</p>
+<p><strong>ここから先の、文書とチェック項目は、私たちの解釈であって Ng のものではない。</strong>実際のエージェントは複数のパターンを混ぜて使うことも多い。1 つのコーディングエージェントが、同じセッションの中で計画を立て、ツールを実行し、自分の成果を見直すこともあるので、この 4 種類のファイルを一度に受け取ることもよくある。</p>
+
+<h2 id="1-reflection-a-draft-that-has-already-reviewed-itself">1. Reflection：すでに自分で見直した草稿</h2>
+<p>Ng が reflection について書いた記事は、これを、本来は人が与えるフィードバックを自動化するものとして描いている：「What if you automate the step of delivering critical feedback, so the model automatically criticizes its own output and improves its response?」（批判的なフィードバックを与えるステップを自動化し、モデルが自分の出力を自動的に批評して回答を改善するとしたらどうだろうか？）</p>
+<p><strong>返ってきがちなもの：</strong>修正済みの文書。自己レビューのセクションや、「エッジケースは再確認済み」のような一文が付いていることもある。</p>
+<p><strong>チェックすべきこと：</strong>結果を、エージェント自身の批評ではなく、<em>あなた</em>の依頼内容と照らし合わせる。自己レビューはそれ自体の仕方で間違うことがある。Chip Huyen：「An interesting mode of planning failure is caused by errors in reflection. The agent is convinced that it&#8217;s accomplished a task when it hasn&#8217;t.」（計画の失敗の興味深い一形態は、reflection の誤りによって引き起こされる。エージェントは、実際には終わっていないのに、タスクを終えたと確信している。）Lilian Weng は、2023 年 6 月、当時 OpenAI に在籍しながら、ブログ Lil’Log で当時のモデルについてこう書いている：「The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.」（専門知識の不足により、LLM は自分の欠陥に気づかず、タスク結果の正しさをうまく判断できないことがある。）（彼女が説明していた研究では、LLM による結果の評価と、人間の専門家による評価が一致していなかった。）「検証済み」と書かれていたら、1 つは自分で確認しよう。</p>
+
+<h2 id="2-tool-use-a-report-of-what-ran">2. Tool use：何を実行したかの報告</h2>
+<p><strong>返ってきがちなもの：</strong>エージェントが何を実行または検索し、何が返ってきたかのまとめ。「テストスイートを実行：全て合格。」結果の表。見つかったリンク。</p>
+<p>Anthropic のガイドは、ツールの結果をエージェント自身のチェックとして描いている：「During execution, it's crucial for the agents to gain &#8220;ground truth&#8221; from the environment at each step (such as tool call results or code execution) to assess its progress.」（実行中、エージェントが自分の進捗を評価するには、各ステップで環境から「ground truth」（ツール呼び出しの結果やコード実行の結果など）を得ることが重要だ。）そのチェックはエージェントの内部で起きる。あなたのもとに届くのは、エージェントによるその語り直しだ。</p>
+<p><strong>チェックすべきこと：</strong>それぞれの主張が、実際に見える出力までたどれるか。まとめの中の 1 つの数字を、本当の出力と照合する。リンクを 1 つ開いてみる。</p>
+
+<h2 id="3-planning-plan-md">3. Planning：<code>plan.md</code></h2>
+<p><strong>返ってきがちなもの：</strong>計画、仕様書、エージェントが進めながらチェックしていくタスクリスト。</p>
+<p>Ng は Part 4 で、このパターンについて率直に語っている：</p>
+<blockquote><p>&#8220;On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results. In my experience, while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications&#8217; performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do.&#8221;</p></blockquote>
+<p>（一方で、計画は非常に強力な能力だ。他方で、予測しにくい結果につながる。私の経験では、Reflection と Tool Use という設計パターンは信頼できる形で動かし、アプリケーションの性能を上げられる一方、Planning はまだ成熟度の低い技術で、それが何をするか事前に予測するのは難しいと感じている。）</p>
+<p>楽観的でもある：「But the field continues to evolve rapidly, and I'm confident that Planning abilities will improve quickly.」（しかしこの分野は急速に進化し続けていて、計画の能力は早く向上すると確信している。）</p>
+<p><strong>チェックすべきこと：</strong>実行前の計画を、<a href="/ja/reviewing-agent-plans/">「5 分でのレビュー」</a>の方法で見る：形、主張を 1 つ、取り消せないステップ、図、範囲。エージェントが途中で計画を書き換えたら、あなたが承認したバージョンと比較する。git を使っているなら、<code>git diff plan.md</code> で何が変わったか分かる。MarsDawn では、アウトラインタブが長い計画の形を示し、書き換えられた計画は、あなた自身に未保存の編集がなければ、読んでいた位置を保ったまま再読み込みされる。</p>
+
+<h2 id="4-multi-agent-collaboration-several-files-several-authors">4. Multi-agent collaboration：複数のファイル、複数の書き手</h2>
+<p><strong>返ってきがちなもの：</strong>あるエージェントによる仕様書、別のエージェントによる実装メモ、さらに別のエージェントによるレビュー、そしてそれらの間でやり取りされる要約。それぞれが自分のブランチや worktree で作業していることもある。</p>
+<p><strong>チェックすべきこと：</strong>引き継ぎの部分。あるエージェントが別のエージェントの成果をまとめるとき、伝わらなかった要件がないか探す。食い違う 2 つのファイルを見つけたら、誰かがそれを土台に作業を進める前に、どちらを正とするか決める。MarsDawn では、「ファイル &#9656; フォルダを開く&#8943;」（&#8679;&#8984;O）で共有フォルダを開く。エージェントが書いた新しいファイルは 1 秒ほどでファイルタブに現れ、git のチェックアウトならヘッダーにブランチや worktree の名前が出るので、別々のブランチにある同名のファイルを開いた 2 つのウィンドウを見間違えることもない。結果を Markdown を読まない人に渡す必要があるときは、<a href="/ja/sharing-exported-pdfs/">「書き出した PDF を共有する」</a>が、その手順を扱っている。</p>
+
+<h2 id="at-a-glance">ひと目で見る</h2>
+<table>
+<thead><tr><th>パターン（Ng）</th><th>返ってきがちなもの（私たちの推論）</th><th>まず読むべきところ（私たちの提案）</th></tr></thead>
+<tbody>
+<tr><td>Reflection</td><td>修正済みの草稿。自己レビュー付きのことも</td><td>自分自身の依頼内容と照らし合わせる。「検証済み」を 1 つ確認</td></tr>
+<tr><td>Tool use</td><td>何を実行し、何が返ってきたかの報告</td><td>主張を 1 つ、実際の出力までたどる</td></tr>
+<tr><td>Planning</td><td><code>plan.md</code>、仕様書、タスクリスト</td><td>実行前の 5 分レビュー</td></tr>
+<tr><td>Multi-agent collaboration</td><td>複数のエージェントによる複数のファイル。複数のブランチにまたがることも</td><td>引き継ぎの部分と、どれが正か</td></tr>
+</tbody>
+</table>
+<p>ここに引用した著者は誰も MarsDawn について触れておらず、MarsDawn や他の Markdown ツールを推奨してもいない。MarsDawn の中に AI モデルはない：どのパターンがそのファイルを生んだかを知ることはなく、これらのチェックを代わりにやることもない。ファイルを、あなたがチェックしている間、読みやすく保つだけだ。</p>
+
+<h2 id="try-it">試してみる</h2>
+<p>MarsDawn は <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a> で配信中です。無料の <code>marsdawn</code> コマンドラインツールもあります：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。詳しくは<a href="/ja/markdown-to-pdf/">「Markdown から PDF へ」</a>を見てください。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2 id="next">次に</h2>
+<ul>
+  <li>エージェントの出力がなぜ読みにくいか、そのチェックリスト：<a href="/ja/reading-agent-output/">エージェントが返してくるものを読む</a>。</li>
+  <li>計画のチェックを、完全な形で：<a href="/ja/reviewing-agent-plans/">エージェントの計画を 5 分でレビューする</a>。</li>
+  <li>透明性があなたに求めること、求めないこと：<a href="/ja/agent-transparency/">Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？</a></li>
+</ul>
+
+<h2 id="sources">出典</h2>
+<ul>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 1,&#8221; The Batch, March 20, 2024: <a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 2, Reflection,&#8221; The Batch, March 27, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/</a></li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 4, Planning,&#8221; The Batch, April 10, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a></li>
+  <li>Chip Huyen, &#8220;Agents,&#8221; January 7, 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Lilian Weng, &#8220;LLM Powered Autonomous Agents,&#8221; Lil&#8217;Log, June 23, 2023: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a></li>
+  <li>Erik S. and Barry Zhang, &#8220;Building Effective Agents,&#8221; Anthropic, December 19, 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a>（2026-09-26 時点のオンライン版から引用）</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

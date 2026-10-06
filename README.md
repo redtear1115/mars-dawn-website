@@ -16,6 +16,9 @@ The website of [MarsDawn](https://marsdawn.southern-light.dev), a Markdown edito
 | `scripts/check_redirects.py` | Checks `public/_redirects`: every destination is a page of this site or the Mac App Store listing, carries no tracking parameters, and `/go/app-store` goes where the launch phase allows (the home page before launch, the listing after). `--self-test` plants a break of each kind first (runs in CI) |
 | `scripts/check_offers.py` | Checks that every schema.org Offer in the built site states an availability, and that it's PreOrder or InStock (runs in CI) |
 | `scripts/check_invariants.py` | Checks the whole-site invariants for the launch phase the build is in, read from `AVAILABILITY`: four-locale page parity, the footer's Mac App Store line, coming-soon wording and listing links (runs in CI) |
+| `content/legal/` | The single-source Markdown for the legal pages (currently just `privacy.<locale>.md`; issue #33), and its cache: `<slug>.<locale>.rendered.html` plus `manifest.json` (a sha256 of every source and rendered file, and the kit tag). `build_pages.py` reads the cache, not the Markdown, so the site still builds on Ubuntu CI with no Swift toolchain |
+| `scripts/render_legal.py` | Renders `content/legal/*.md` through the kit's own `MarkdownRenderer` (the app's preview renderer) and vendors `public/assets/preview.css` and `public/assets/themes.css` from the same pinned kit tag as `tools/hero-render`. Needs macOS; rerun it after editing a legal page's Markdown or bumping the kit tag, then commit its output |
+| `scripts/check_legal_render.py` | Checks that `content/legal/`'s cached HTML and the vendored CSS still match `manifest.json`'s recorded hashes, and that the manifest's kit tag matches `tools/hero-render/Package.swift`'s pin — a Swift-free consistency check, not a re-render. `--self-test` plants a break of each kind first (runs in CI) |
 | `scripts/deploy.sh` | Manual deploy, for emergencies |
 | `wrangler.jsonc` | Cloudflare Workers static-assets config |
 
@@ -46,13 +49,15 @@ After a deploy, open every page in a private window. They must load without a lo
 ## Branches and deploys
 
 - `main` holds the latest work. Pull requests target `main`.
-- `release` is what the site serves. A push to `release` deploys through GitHub Actions (`production` environment). To publish, fast-forward `release` to `main`:
+- `release` is what the site serves. A push to `release` deploys through GitHub Actions (`production` environment). To publish, open a deploy pull request from `main` into `release` and merge it with a merge commit:
 
   ```sh
-  git push origin main:release
+  gh pr create --base release --head main --title "Deploy main: …"
   ```
 
-- Every push and pull request runs the check: the regenerated pages must match the commit, and `public/themes/v1/index.json`, when present, must be valid JSON.
+  Don't push `main:release` directly. The "protect main and release" ruleset only takes changes to `main` and `release` through a pull request whose `check` passes (#76). The push also wouldn't be a fast-forward, because each deploy's merge commit exists only on `release` (precedents: #96, #99, #103, #114).
+- `release-<version>` (for example `release-1.0.2`) collects a version's pull requests before one pull request takes it to `main`.
+- Every pull request into `main`, `release` or `release-<version>`, and every push to them, runs the check: the regenerated pages must match the commit, and `public/themes/v1/index.json`, when present, must be valid JSON.
 
 The deploy needs two settings on the `production` environment:
 

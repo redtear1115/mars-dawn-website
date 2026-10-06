@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？ · MarsDawn</title>
+<meta name="description" content="Anthropic のエージェント構築ガイドは透明性を求めている：計画のステップを示せと。そこに何が書いてあり、何が書いてないか、そしてそのステップがなぜ結局読む必要のある Markdown ファイルになるのか。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-transparency/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-transparency/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-transparency/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-transparency/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-transparency/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/agent-transparency/">
+<link rel="alternate" type="text/markdown" href="/ja/agent-transparency/index.md">
+<meta property="og:title" content="Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？ · MarsDawn">
+<meta property="og:description" content="Anthropic のエージェント構築ガイドは透明性を求めている：計画のステップを示せと。そこに何が書いてあり、何が書いてないか、そしてそのステップがなぜ結局読む必要のある Markdown ファイルになるのか。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/agent-transparency/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で配信中</span>
+  <nav class="lang" aria-label="Language"><a href="/agent-transparency/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/agent-transparency/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/agent-transparency/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/agent-transparency/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Anthropic はエージェントに透明性を求めた。では誰がそれを読むのか？</h1>
+  <p>2024 年 12 月、Anthropic は AI エージェントを作る人向けのガイド「Building Effective Agents」を発表した。その要約は 3 つの原則を挙げていて、その 1 つが透明性だ。この記事は、その原則のもう一方の端について書く。エージェントが自分のステップを示したあと、結局は誰かがそれを読むことになる。</p>
+</section>
+
+<div class="summary"><p><strong>透明性はエージェントがすることで、読むのはあなたがすることだ。Anthropic は開発者に、エージェントの計画のステップを示すよう求めている。コーディングエージェントを日々動かす多くの人にとって、そのステップは結局、しかるべきタイミングで誰かが読む Markdown ファイルとしてやって来る。</strong></p></div>
+
+<h2 id="what-the-guide-says">ガイドが書いていること</h2>
+<p>Erik S. と Barry Zhang は、要約でこうまとめている。</p>
+<blockquote><p>&#8220;When implementing agents, we try to follow three core principles: Maintain simplicity in your agent's design. Prioritize transparency by explicitly showing the agent&#8217;s planning steps. Carefully craft your agent-computer interface (ACI) through thorough tool documentation and testing.&#8221;</p></blockquote>
+<p>（エージェントを実装するとき、私たちは 3 つの中心的な原則に従おうとする。エージェントの設計をシンプルに保つこと。透明性を優先し、エージェントの計画のステップを明示的に示すこと。十分なツールのドキュメントとテストを通じて、エージェントとコンピュータの間のインターフェース（ACI）を丁寧に作り込むこと。）</p>
+<p>これらはエージェントを作る人向けの設計原則であって、使う人への操作指示ではない。原則が求めているのはステップを示すことで、誰がそれを読むかは書かれていない。</p>
+<p>同じ記事は、タスクを受け取ったあとエージェントが何をするかも描いている：「Once the task is clear, agents plan and operate independently, potentially returning to the human for further information or judgement.」（タスクが明確になると、エージェントは計画を立て、自律的に動く。必要に応じて、追加の情報や判断を求めて人間に戻ってくることもある。）そして：「Agents can then pause for human feedback at checkpoints or when encountering blockers.」（エージェントはチェックポイントや障害に出会ったとき、人間のフィードバックを待って一時停止できる。）動詞に注目してほしい：<em>potentially</em>（必要に応じて）と <em>can</em>（できる）。チェックポイントは、エージェントが持ちうる設計として描かれていて、必須のものとしてではない。</p>
+
+<h2 id="most-of-the-checking-isn-t-done-by-you">チェックのほとんどは、あなたがしているわけではない</h2>
+<p>ここは誇張しやすいところなので、ガイドが実際に最初に置いていることを見ておこう。エージェントは、世界に対して自分自身をチェックする：「During execution, it's crucial for the agents to gain &#8220;ground truth&#8221; from the environment at each step (such as tool call results or code execution) to assess its progress.」（実行中、エージェントが自分の進捗を評価するには、各ステップで環境から「ground truth」（ツール呼び出しの結果やコード実行の結果など）を得ることが重要だ。）この一文の ground truth は、テスト結果やツールの出力を指していて、人間のことではない。</p>
+<p>ガイドはリスクについても率直だ：「The autonomous nature of agents means higher costs, and the potential for compounding errors.」（エージェントの自律的な性質は、より高いコストと、エラーが積み重なる可能性を意味する。）その答えは、ガードレール付きのサンドボックス環境での広範なテストであって、「もっと注意深く読め」ではない。</p>
+<p>人が実際に登場するのは、コーディングエージェントについての付録だ：「However, whereas automated testing helps verify functionality, human review remains crucial for ensuring solutions align with broader system requirements.」（しかし、自動テストは機能の検証には役立つ一方、解決策がより広いシステム要件に沿っているかを確かめるには、人によるレビューが依然として重要だ。）この一文はコードについてのものだが、それが指し示すギャップは、どんなエージェントを使っていても見覚えがあるはずだ。テストは、何かが動くことは教えてくれても、それがあなたの意図どおりかまでは教えてくれない。</p>
+
+<h2 id="where-the-steps-end-up">示されたステップは、どこへ行くのか</h2>
+<p><strong>ここから先は、私たちの解釈であって、Anthropic の主張ではない。</strong></p>
+<p>コーディングエージェントを日々使っているなら、その計画のステップは、たいていダッシュボードには現れない。ファイルとして現れる：<code>plan.md</code>、チェックボックス付きのタスクリスト、エージェントが書き換え続ける進捗ファイル、最後にまとめの文書。透明性は、あなたの側から見ると、読むものが増えるということを意味する。</p>
+<p>ステップを示すのはエージェント側の役割だ。もう半分は、それが重要な場面で人が読むこと。マイグレーションを実行する前、ブランチをマージする前、「完了」を受け入れる前。すべてを 600 行の、誰も開かないファイルに書き出すエージェントは、紙の上では透明でも、実際には監督されていない。</p>
+<p>Harrison Chase は 2024 年、文書についてではなくエージェントフレームワークがどう動くべきかについて、関連することを述べている：「You&#8217;ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.」（内部で何が起きているかを観察できる必要がある。実際に取られるステップは、事前には分からないことがあるからだ。）彼が話しているのは、エージェントを作る人向けのツールだ。もしあなたがエージェントを動かしている当人なら、それがずっと書き続けている素のファイルこそ、あなたが観察できる部分であることが多い。</p>
+<p>ここに挙げた著者は誰も MarsDawn について触れておらず、MarsDawn や他の Markdown ツールを推奨してもいない。</p>
+
+<h2 id="why-that-read-is-harder-than-it-looks">見た目より読みにくい理由</h2>
+<p>ファイルは長く、重要な部分はたいてい先頭にはない。変更を説明する図は Mermaid のソースであって、絵ではない（実際に描画されたものを見る方法は<a href="/ja/view-markdown-on-mac/">「Mac で Markdown を見る方法」</a>にある）。読んでいる途中で、エージェントがファイルを書き換えることもある。ファイルは複数にまたがることが多く、ブランチや worktree が違うこともある。そして問題を見つけたとき、「キャッシュの部分がおかしい」ではエージェントは推測するしかない。この話の詳しい版は<a href="/ja/reading-agent-output/">「エージェントが返してくるものを読む」</a>にある。</p>
+
+<h2 id="where-marsdawn-fits-and-where-it-doesn-t">MarsDawn ができること、できないこと</h2>
+<p>MarsDawn は、この読み方のための Mac アプリだ。エージェントをより透明にするわけではなく、中に AI モデルもない。計画を要約したり、正しいかどうか教えたりはしない。できることは：</p>
+<ul>
+  <li><strong>長いファイル：</strong>「表示 &#9656; サイドバーを表示」（&#8963;&#8984;S）でアウトラインタブを開くと、見出しが並ぶ。クリックするとそこへ移動する。</li>
+  <li><strong>図と数式：</strong>ソースとレンダリングされたページが並んで表示され（&#8984;2）、一緒にスクロールする。Mermaid と KaTeX は描画される。図が壊れている場合、プレビューはそのソースとエラーを一緒に表示する。</li>
+  <li><strong>読んでいる途中の書き換え：</strong>エージェントがファイルを書き換えると、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ。</li>
+  <li><strong>複数のファイル：</strong>「ファイル &#9656; フォルダを開く&#8943;」（&#8679;&#8984;O）でエージェントの作業フォルダを開く。新しいファイルは 1 秒ほどでファイルタブに現れ、git のチェックアウトならヘッダーにブランチや worktree の名前が出る。</li>
+  <li><strong>行を指し示す：</strong>「編集 &#9656; 参照をコピー」（&#8997;&#8984;C）で、いまいる場所を <code>docs/plan.md:42</code> の形でコピーできる。「AI 用にコピー」（&#8963;&#8997;&#8984;C）は、その下に選択したテキストを付け加える。エージェントのチャットに貼り付ければいい。</li>
+</ul>
+<p>読むのはやはりあなただ。MarsDawn は、長く変わり続けるファイルを、あなたが読んでいる間、読みやすく保つだけだ。</p>
+
+<h2 id="try-it">試してみる</h2>
+<p>MarsDawn は <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a> で配信中です。無料の <code>marsdawn</code> コマンドラインツールもあります：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2 id="next">次に</h2>
+<ul>
+  <li>エージェントの出力がなぜ読みにくいか、そのチェックリスト：<a href="/ja/reading-agent-output/">エージェントが返してくるものを読む</a>。</li>
+  <li>そのチェックリストを、実例つきで詳しく：<a href="/ja/reviewing-agent-plans/">エージェントの計画を 5 分でレビューする</a>。</li>
+  <li>エージェントの種類ごとに、どんな文書が返ってくるか：<a href="/ja/agent-design-patterns/">4 つのエージェント設計パターンと、それぞれが返す文書</a>。</li>
+  <li>AI の出力をそもそも読むべき理由（短い版）：<a href="/ja/reviewing-ai-output/">AI の出力を人が確認する理由</a>。</li>
+</ul>
+
+<h2 id="sources">出典</h2>
+<ul>
+  <li>Erik S. and Barry Zhang, &#8220;Building Effective Agents,&#8221; Anthropic, December 19, 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a>（2026-09-26 時点のオンライン版から引用。同記事は現在、2024 年 12 月以降ツール環境が大きく変わったと注記している）</li>
+  <li>Harrison Chase, &#8220;What is an agent?,&#8221; LangChain, June 28, 2024, archived copy: <a href="http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/">http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/</a>（元の URL は現在 2026 年の別記事を表示している）</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
