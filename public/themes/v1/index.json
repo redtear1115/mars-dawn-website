@@ -1,18 +1,21 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-28T12:50:58Z",
+  "generatedAt": "2026-10-06T16:22:00Z",
   "themes": [
     {
       "id": "dracula",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "name": {
-        "en": "Dracula",
-        "ja": "ドラキュラ",
-        "zh-Hans": "德古拉",
-        "zh-Hant": "德古拉"
+        "en": "Dracula"
       },
       "summary": {
+        "de": "Die klassische dunkle Vampirpalette, tagsüber mit Alucard – nach Dracula Theme, für bessere Lesbarkeit angepasst",
         "en": "The classic dark vampire palette, with Alucard by day — adapted from Dracula Theme, adjusted for readability",
+        "es": "La clásica paleta oscura de vampiro, con Alucard de día —adaptada de Dracula Theme y ajustada para leer mejor",
+        "fr": "La palette vampirique sombre classique, avec Alucard le jour – adaptée de Dracula Theme, ajustée pour la lisibilité",
+        "ja": "クラシックな吸血鬼風のダークパレット。昼間は Alucard — Dracula Theme を基に、読みやすさのために調整",
+        "ko": "클래식한 다크 뱀파이어 팔레트, 낮에는 Alucard — Dracula Theme을 바탕으로 가독성에 맞게 조정",
+        "zh-Hans": "经典吸血鬼深色调色盘，白日则用 Alucard 版本 — 改编自 Dracula Theme，为可读性调整",
         "zh-Hant": "經典吸血鬼深色調色盤，白日則用 Alucard 版本 — 改編自 Dracula Theme，為可讀性調整"
       },
       "scenarios": [
@@ -23,29 +26,32 @@
         "name": "Southern Light",
         "github": "redtear1115"
       },
-      "minAppVersion": "1.1.1",
+      "minAppVersion": "1.1.0",
       "files": {
         "theme.json": {
-          "path": "dracula/1.0.0/theme.json",
-          "sha256": "5e291c8f085ee549895b21b382f1cdcf4ff5fd7de0a2755c893bbf59df788d6d"
+          "path": "dracula/1.0.1/theme.json",
+          "sha256": "3041b55631f471c8b0f4aed0a8cce0c0f79b82ae8c073944d8d8f8d462f90393"
         }
       },
       "previews": {
-        "light": "dracula/1.0.0/preview-light.png",
-        "dark": "dracula/1.0.0/preview-dark.png"
+        "light": "dracula/1.0.1/preview-light.png",
+        "dark": "dracula/1.0.1/preview-dark.png"
       }
     },
     {
       "id": "gruvbox",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "name": {
-        "en": "Gruvbox",
-        "ja": "グラブボックス",
-        "zh-Hans": "复古方块",
-        "zh-Hant": "復古方塊"
+        "en": "Gruvbox"
       },
       "summary": {
+        "de": "Eine warme Retropalette aus Creme, Braun und Orange – nach Gruvbox, für bessere Lesbarkeit angepasst",
         "en": "A warm retro palette of cream, brown and orange — adapted from Gruvbox, adjusted for readability",
+        "es": "Una cálida paleta retro de crema, marrón y naranja —adaptada de Gruvbox y ajustada para leer mejor",
+        "fr": "Une palette rétro chaleureuse de crème, de brun et d’orange – adaptée de Gruvbox, ajustée pour la lisibilité",
+        "ja": "クリーム、ブラウン、オレンジの温かなレトロパレット — Gruvbox を基に、読みやすさのために調整",
+        "ko": "크림, 브라운, 오렌지로 이루어진 따뜻한 레트로 팔레트 — Gruvbox를 바탕으로 가독성에 맞게 조정",
+        "zh-Hans": "温暖复古的米色、棕色与橘色调色盘 — 改编自 Gruvbox，为可读性调整",
         "zh-Hant": "溫暖復古的米色、棕色與橘色調色盤 — 改編自 Gruvbox，為可讀性調整"
       },
       "scenarios": [
@@ -56,29 +62,32 @@
         "name": "Southern Light",
         "github": "redtear1115"
       },
-      "minAppVersion": "1.1.1",
+      "minAppVersion": "1.1.0",
       "files": {
         "theme.json": {
-          "path": "gruvbox/1.0.0/theme.json",
-          "sha256": "a92c9a6708c3e4fc6c54e4f38e70f4db1ff7f921938832269894df638aedd640"
+          "path": "gruvbox/1.0.1/theme.json",
+          "sha256": "2207de0ea2a7be3acdb128554980df09c817f8703c630ac309737fad72a12ff0"
         }
       },
       "previews": {
-        "light": "gruvbox/1.0.0/preview-light.png",
-        "dark": "gruvbox/1.0.0/preview-dark.png"
+        "light": "gruvbox/1.0.1/preview-light.png",
+        "dark": "gruvbox/1.0.1/preview-dark.png"
       }
     },
     {
       "id": "guide",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "name": {
-        "en": "Guide",
-        "ja": "ガイド",
-        "zh-Hans": "导览手册",
-        "zh-Hant": "導覽手冊"
+        "en": "Guide"
       },
       "summary": {
+        "de": "Kühles Weiß, marineblaue Überschriften und klare blaue Links, größere Schrift für Anleitungen, Tutorials und READMEs",
         "en": "A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs",
+        "es": "Fondo blanco frío, encabezados azul marino y enlaces azul nítido, letra más grande para guías, tutoriales y README",
+        "fr": "Fond blanc froid, titres bleu marine, liens d’un bleu net et texte plus grand, pour guides, tutoriels et README",
+        "ja": "クールな白背景にネイビーの見出しと鮮明な青のリンク。ユーザーガイド、チュートリアル、README 向けに大きめの文字",
+        "ko": "차가운 흰색 배경에 네이비 제목과 선명한 파란색 링크, 큰 글자 — 사용자 가이드, 튜토리얼, README에 적합",
+        "zh-Hans": "冷白背景搭配海军蓝标题与清亮蓝色链接，字级加大，适合用户指南、教程与 README",
         "zh-Hant": "冷白背景搭配海軍藍標題與清亮藍色連結，字級加大，適合使用者指南、教學與 README"
       },
       "scenarios": [
@@ -88,29 +97,32 @@
         "name": "Southern Light",
         "github": "redtear1115"
       },
-      "minAppVersion": "1.1.1",
+      "minAppVersion": "1.1.0",
       "files": {
         "theme.json": {
-          "path": "guide/1.0.0/theme.json",
-          "sha256": "3e8f48e2540c2a36c8494ff0437f9585953aab18b96bb4b73829a3e78fba1472"
+          "path": "guide/1.0.1/theme.json",
+          "sha256": "d7590b9be7de29efd8d9057bba97c8c4b0f70428fee203fe9e46269b3f97c802"
         }
       },
       "previews": {
-        "light": "guide/1.0.0/preview-light.png",
-        "dark": "guide/1.0.0/preview-dark.png"
+        "light": "guide/1.0.1/preview-light.png",
+        "dark": "guide/1.0.1/preview-dark.png"
       }
     },
     {
       "id": "ledger",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "name": {
-        "en": "Ledger",
-        "ja": "台帳",
-        "zh-Hans": "账册",
-        "zh-Hant": "帳冊"
+        "en": "Ledger"
       },
       "summary": {
+        "de": "Cremeweißes Papier, dunkelgrüne Linien und ein farbiger Tabellenkopf, für Budgets, Abrechnungen und Angebote",
         "en": "Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates",
+        "es": "Papel blanco roto, líneas verde oscuro y encabezado de tabla relleno, para presupuestos, extractos y cotizaciones",
+        "fr": "Papier blanc cassé, filets vert foncé et en-tête de tableau plein, pour budgets, relevés et devis",
+        "ja": "オフホワイトの紙面、濃い緑の罫線、塗りつぶしの表ヘッダー。予算書、明細書、見積書向け",
+        "ko": "미색 종이, 짙은 녹색 구분선, 채워진 표 머리글 — 예산서, 명세서, 견적서에 적합",
+        "zh-Hans": "米白纸面、深绿分隔线与实心表头，适合预算、对账单与估价单",
         "zh-Hant": "米白紙面、深綠分隔線與實心表頭，適合預算、對帳單與估價單"
       },
       "scenarios": [
@@ -120,29 +132,32 @@
         "name": "Southern Light",
         "github": "redtear1115"
       },
-      "minAppVersion": "1.1.1",
+      "minAppVersion": "1.1.0",
       "files": {
         "theme.json": {
-          "path": "ledger/1.0.0/theme.json",
-          "sha256": "18f65c057aff69fa9a959c6b10a374296683a35517c8a5f8a8ee0bac72c0aa84"
+          "path": "ledger/1.0.1/theme.json",
+          "sha256": "1264f0065009f5ff7e92bd62611dda98df4af2aac4eee0b12a8530ab4d5701a0"
         }
       },
       "previews": {
-        "light": "ledger/1.0.0/preview-light.png",
-        "dark": "ledger/1.0.0/preview-dark.png"
+        "light": "ledger/1.0.1/preview-light.png",
+        "dark": "ledger/1.0.1/preview-dark.png"
       }
     },
     {
       "id": "nord",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "name": {
-        "en": "Nord",
-        "ja": "ノルド",
-        "zh-Hans": "极地雪境",
-        "zh-Hant": "極地雪境"
+        "en": "Nord"
       },
       "summary": {
+        "de": "Eine arktische, nordisch-bläuliche Palette mit eigener heller Variante – nach Nord, für bessere Lesbarkeit angepasst",
         "en": "An arctic, north-bluish palette, with an original light companion — adapted from Nord, adjusted for readability",
+        "es": "Una paleta ártica de azules nórdicos, con una variante clara original —adaptada de Nord y ajustada para leer mejor",
+        "fr": "Palette arctique aux bleus nordiques, avec une variante claire originale – adaptée de Nord, ajustée pour la lisibilité",
+        "ja": "北極のような北国ブルーのパレット。ライト版は独自追加 — Nord を基に、読みやすさのために調整",
+        "ko": "북극의 푸른빛 팔레트에 새로 만든 라이트 버전을 더함 — Nord를 바탕으로 가독성에 맞게 조정",
+        "zh-Hans": "北欧冰蓝色调，并原创搭配一款浅色版本 — 改编自 Nord，为可读性调整",
         "zh-Hant": "北歐冰藍色調，並原創搭配一款淺色版本 — 改編自 Nord，為可讀性調整"
       },
       "scenarios": [
@@ -153,29 +168,32 @@
         "name": "Southern Light",
         "github": "redtear1115"
       },
-      "minAppVersion": "1.1.1",
+      "minAppVersion": "1.1.0",
       "files": {
         "theme.json": {
-          "path": "nord/1.0.0/theme.json",
-          "sha256": "7419a3cf0eda5b8e4e39939e1cc31290a9d3a980ae62a3e9c72a1b82be9cb3bf"
+          "path": "nord/1.0.1/theme.json",
+          "sha256": "bc50d00ae2d1e6a7476800bc425ded3f533afd80c3b083e55df062f0b61b00c9"
         }
       },
       "previews": {
-        "light": "nord/1.0.0/preview-light.png",
-        "dark": "nord/1.0.0/preview-dark.png"
+        "light": "nord/1.0.1/preview-light.png",
+        "dark": "nord/1.0.1/preview-dark.png"
       }
     },
     {
       "id": "solarized",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "name": {
-        "en": "Solarized",
-        "ja": "ソラライズド",
-        "zh-Hans": "日光色",
-        "zh-Hant": "日光色"
+        "en": "Solarized"
       },
       "summary": {
+        "de": "Ethan Schoonovers präzise Palette in Petrol und Gold – nach Solarized, für bessere Lesbarkeit angepasst",
         "en": "Ethan Schoonover's teal-and-gold precision palette — adapted from Solarized, adjusted for readability",
+        "es": "La precisa paleta en verde azulado y dorado de Ethan Schoonover —adaptada de Solarized y ajustada para leer mejor",
+        "fr": "La palette de précision bleu canard et or d’Ethan Schoonover – adaptée de Solarized, ajustée pour la lisibilité",
+        "ja": "Ethan Schoonover によるティールとゴールドの精密パレット — Solarized を基に、読みやすさのために調整",
+        "ko": "Ethan Schoonover가 만든 청록색과 금색의 정밀한 팔레트 — Solarized를 바탕으로 가독성에 맞게 조정",
+        "zh-Hans": "Ethan Schoonover 设计的蓝绿与金色精准色盘 — 改编自 Solarized，为可读性调整",
         "zh-Hant": "Ethan Schoonover 設計的藍綠與金色精準色盤 — 改編自 Solarized，為可讀性調整"
       },
       "scenarios": [
@@ -186,29 +204,32 @@
         "name": "Southern Light",
         "github": "redtear1115"
       },
-      "minAppVersion": "1.1.1",
+      "minAppVersion": "1.1.0",
       "files": {
         "theme.json": {
-          "path": "solarized/1.0.0/theme.json",
-          "sha256": "fc19e17eac2a84e132ec3fd56a4d568e6bf499f5c7754da077a2ac6c772831a5"
+          "path": "solarized/1.0.1/theme.json",
+          "sha256": "6017cd04632ad746420de3ef99f2c6e5bd33f2c199894c1cb977fe37f1bc9d6e"
         }
       },
       "previews": {
-        "light": "solarized/1.0.0/preview-light.png",
-        "dark": "solarized/1.0.0/preview-dark.png"
+        "light": "solarized/1.0.1/preview-light.png",
+        "dark": "solarized/1.0.1/preview-dark.png"
       }
     },
     {
       "id": "spec",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "name": {
-        "en": "Spec",
-        "ja": "仕様書",
-        "zh-Hans": "规格书",
-        "zh-Hant": "規格書"
+        "en": "Spec"
       },
       "summary": {
+        "de": "Tinte auf Weiß mit einem ziegelroten Akzent, Entscheidungen und Risiken im Terrakotta-Kasten, für PRDs und RFCs",
         "en": "Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs",
+        "es": "Tinta sobre blanco con un único acento rojo ladrillo, decisiones y riesgos en un panel terracota, para PRD y RFC",
+        "fr": "Encre sur blanc, un seul accent rouge brique, décisions et risques dans un encadré terre cuite, pour PRD et RFC",
+        "ja": "白地にインク、アクセントはレンガ赤ひとつ。決定事項とリスクはテラコッタ調のパネルで。PRD と RFC 向け",
+        "ko": "흰 바탕의 잉크색 본문에 벽돌색 강조 하나, 결정과 위험은 테라코타 패널 — PRD와 RFC에 적합",
+        "zh-Hans": "白底正文搭配单一砖红强调色，决策与风险以陶土色面板呈现，适合 PRD 与 RFC",
         "zh-Hant": "白底正文搭配單一磚紅強調色，決策與風險以陶土色面板呈現，適合 PRD 與 RFC"
       },
       "scenarios": [
@@ -219,29 +240,32 @@
         "name": "Southern Light",
         "github": "redtear1115"
       },
-      "minAppVersion": "1.1.1",
+      "minAppVersion": "1.1.0",
       "files": {
         "theme.json": {
-          "path": "spec/1.0.0/theme.json",
-          "sha256": "b69e6401870bfdaa4ef78fa98d10eeeed5e5209cfc83aa53006362d7bbbeab63"
+          "path": "spec/1.0.1/theme.json",
+          "sha256": "1c782f72c9f564b67a9b591d3762a4b223ef5e7ab8d9d4382e55d85aa307c64b"
         }
       },
       "previews": {
-        "light": "spec/1.0.0/preview-light.png",
-        "dark": "spec/1.0.0/preview-dark.png"
+        "light": "spec/1.0.1/preview-light.png",
+        "dark": "spec/1.0.1/preview-dark.png"
       }
     },
     {
       "id": "story",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "name": {
-        "en": "Story",
-        "ja": "ストーリー",
-        "zh-Hans": "故事卡",
-        "zh-Hant": "故事卡"
+        "en": "Story"
       },
       "summary": {
+        "de": "Kräftige Haftnotizfarben, abgerundete Ecken und auffällige Aufgaben-Checkboxen, für User Stories und Sprint-Notizen",
         "en": "Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes",
+        "es": "Colores de notas adhesivas, esquinas redondeadas y casillas de tarea vivas, para historias de usuario y notas de sprint",
+        "fr": "Couleurs vives de notes adhésives, coins arrondis et cases de tâche bien visibles, pour user stories et notes de sprint",
+        "ja": "明るい付箋カラー、角丸、鮮やかなタスクのチェックボックス。ユーザーストーリーとスプリントメモ向け",
+        "ko": "밝은 메모지 색상, 둥근 모서리, 선명한 작업 체크박스 — 사용자 스토리와 스프린트 노트에 적합",
+        "zh-Hans": "亮色便利贴、圆角外观与鲜明任务勾选框，适合用户故事与冲刺笔记",
         "zh-Hant": "亮色便利貼、圓角外觀與鮮明任務勾選框，適合使用者故事與衝刺筆記"
       },
       "scenarios": [
@@ -252,16 +276,16 @@
         "name": "Southern Light",
         "github": "redtear1115"
       },
-      "minAppVersion": "1.1.1",
+      "minAppVersion": "1.1.0",
       "files": {
         "theme.json": {
-          "path": "story/1.0.0/theme.json",
-          "sha256": "af0a1204db32ea1e90aff6e3e8b730ae32ebad848f280a71cbb8588344701263"
+          "path": "story/1.0.1/theme.json",
+          "sha256": "7b17b6691b455ed8d0582de5a63f41fa506f160c85d98f00a222d4685e3a102d"
         }
       },
       "previews": {
-        "light": "story/1.0.0/preview-light.png",
-        "dark": "story/1.0.0/preview-dark.png"
+        "light": "story/1.0.1/preview-light.png",
+        "dark": "story/1.0.1/preview-dark.png"
       }
     }
   ],

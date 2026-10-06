@@ -162,8 +162,9 @@ PNG_CHUNKS = {b"IHDR", b"PLTE", b"IDAT", b"IEND", b"tRNS", b"sRGB", b"gAMA", b"c
               b"sBIT", b"pHYs", b"bKGD", b"eXIf"}
 PNG_DEPTHS = {0: {1, 2, 4, 8, 16}, 2: {8, 16}, 3: {1, 2, 4, 8}, 4: {8, 16}, 6: {8, 16}}
 FILE_NAMES = ("theme.json", "preview-light.png", "preview-dark.png")
-# The first app version with the gallery (app #293, milestone "1.1.1 theme gallery").
-MIN_APP_VERSION = "1.1.1"
+# The first app version with the gallery: it ships in app 1.1.0 (owner decision 2026-10-06;
+# milestone "1.1.0 locales and theme gallery", app #293).
+MIN_APP_VERSION = "1.1.0"
 # The exact empty index #141 committed (public/themes/v1/index.json at release-1.0.4 81be4f85):
 # the one v1/ a base may have without a published.json.
 BOOTSTRAP_INDEX_BLOB = "e6d8e0fcf3db23e34edeea6b780d59a590ba43d0"
