@@ -1077,6 +1077,158 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 """,
     }
 
+    pages['reviewing-agent-plans'] = {
+        "title": 'Relire le plan d’un agent en cinq minutes · MarsDawn',
+        "description": 'Une méthode en six étapes pour relire le plan qu’un agent IA vous remet avant qu’il ne s’exécute, en cinq minutes environ et dans n’importe quel éditeur, avec un exemple détaillé.',
+        "body": f"""
+<section class="intro">
+  <h1>Relire le plan d’un agent en cinq minutes</h1>
+  <p>Votre agent a rédigé un plan et attend votre feu vert. Vous avez cinq minutes, pas une heure. Voici une façon de les utiliser qui fonctionne dans n’importe quel éditeur, même un simple éditeur de texte. MarsDawn aide pour certaines étapes, et nous dirons lesquelles. Il n’aide pas pour la plus importante.</p>
+</section>
+
+<div class="summary"><p><strong>Ne lisez pas le plan de haut en bas. Vérifiez sa structure, vérifiez une affirmation, repérez ce qui est irréversible, regardez les diagrammes et le périmètre, puis rédigez un retour exploitable par l’agent. Six étapes, cinq minutes environ.</strong></p></div>
+
+<h2>Pourquoi s’en soucier avant l’exécution</h2>
+<p>Chip Huyen, expliquant pourquoi la planification doit rester séparée de l’exécution, chiffre le coût sans détour : « Sans supervision, un agent peut exécuter ces étapes pendant des heures, gaspillant temps et argent en appels d’API, avant que vous ne vous rendiez compte qu’il n’aboutit à rien. » Notre ajout : un plan est l’endroit le moins coûteux pour repérer une erreur. Corriger une ligne de <code>plan.md</code> coûte une phrase. Corriger ce que l’agent a fait après coup coûte un après-midi.</p>
+
+<h2>L’exemple</h2>
+<p>Vous avez demandé à un agent de déplacer les avatars des utilisateurs vers un stockage objet sans casser les liens existants. Il vous rend ceci :</p>
+<pre><code># Plan: move user avatars to object storage
+
+## Goal
+Serve avatars from object storage instead of the app server.
+
+## Steps
+1. Add a storage client and config. &#9989; done
+2. Write a script that copies existing avatars to the bucket.
+3. Switch the avatar URLs in the templates.
+4. Delete `public/avatars/` from the server.
+5. Run the copy script.
+
+## Status
+All tests pass.</code></pre>
+<p>Cela se lit bien. Cela supprimerait aussi tous les avatars avant d’en avoir copié un seul.</p>
+
+<h2>Les six étapes</h2>
+<p><strong>1. Lisez seulement les titres.</strong> <em>(une minute environ)</em> Le plan correspond-il à ce que vous avez demandé ? Une section manquante signifie généralement du travail manquant. Ici : Goal, Steps, Status. Vous avez demandé que les liens existants continuent de fonctionner, et aucun titre ne parle des anciens liens ni de la façon d’annuler le changement. C’est votre premier commentaire.</p>
+<p>Dans un terminal, <code>grep -n '^#' plan.md</code> affiche uniquement les titres, et la plupart des éditeurs savent aussi afficher un plan. Dans MarsDawn, l’onglet Plan de la barre latérale (Présentation &#9656; Afficher la barre latérale, &#8963;&#8984;S) les liste, et un clic y mène.</p>
+<p><strong>2. Repérez chaque endroit qui affirme que quelque chose est fait, réussi ou vérifié, et vérifiez-en un vous-même.</strong> <em>(une minute environ)</em> Ouvrez le fichier, lancez le test, comptez les lignes. Chip Huyen décrit un échec où « l’agent est convaincu d’avoir accompli une tâche alors que ce n’est pas le cas ». Dans son exemple, un agent chargé de loger 50 personnes dans 30 chambres d’hôtel en place 40 et affirme avoir terminé.</p>
+<pre><code>grep -n -i -E 'done|pass|verified|&#9989;' plan.md</code></pre>
+<p>Ici, cela trouve « &#9989; done » et « All tests pass. » Quels tests ? L’un d’eux touche-t-il aux avatars ? Lancez-les, ou demandez. MarsDawn ne peut pas faire cette étape à votre place. Personne d’autre que vous ne le peut.</p>
+<p><strong>3. Cherchez les étapes irréversibles.</strong> <em>(une minute environ)</em> Suppression de données, migrations, force-push, tout ce qui envoie, paie ou publie. Celles-là attendent votre accord explicite. Chip Huyen décrit la même idée du côté du système : « Si un plan comporte des opérations risquées, comme mettre à jour une base de données ou fusionner une modification de code, le système peut demander une approbation humaine explicite avant de les exécuter, ou laisser des humains les exécuter. » Ici, l’étape 4 supprime les originaux, et elle vient avant l’étape 5, la copie.</p>
+<p><strong>4. Lisez les diagrammes rendus, et confrontez chaque flèche au texte.</strong> Un organigramme qui dit « copier &#8594; vérifier &#8594; supprimer » alors que les étapes disent autre chose, c’est une trouvaille. Ce plan n’a pas de diagramme : on passe pour aujourd’hui. Quand il y en a un, regardez l’image, pas le source Mermaid : beaucoup d’éditeurs ont un aperçu, et <a href="/fr/view-markdown-on-mac/">Comment afficher un fichier Markdown sur Mac</a> et <a href="/fr/vs/markdown-preview-tools/">Afficher du Markdown ailleurs</a> présentent les options. Dans MarsDawn, le diagramme rendu se trouve à côté de son source (&#8984;2), et un diagramme cassé affiche son source avec l’erreur en dessous, ce qui mérite un commentaire à part entière.</p>
+<p><strong>5. Listez les fichiers et systèmes que le plan touche, et posez des questions sur tout ce que vous n’avez pas demandé.</strong> <em>(étapes 4 et 5 ensemble, une minute environ)</em> Ici : la configuration du stockage, les templates, un dossier sur le serveur, un bucket. Qui peut lire le bucket ? Vous n’avez pas dit qu’il devait être public. Si vous avez ouvert le dossier de travail de l’agent dans MarsDawn (Fichier &#9656; Ouvrir un dossier&#8230;, &#8679;&#8984;O), les nouveaux fichiers qu’il écrit apparaissent dans l’onglet Fichiers en une seconde environ, et l’en-tête indique la branche git ou le worktree, pour que vous sachiez quel checkout vous relisez.</p>
+<p><strong>6. Rédigez vos retours sous la forme endroit, problème, correction, un problème par ligne.</strong> <em>(la dernière minute)</em></p>
+<pre><code>plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
+plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
+plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.</code></pre>
+<p>N’importe quel éditeur avec des numéros de ligne fait l’affaire. Dans MarsDawn, Édition &#9656; Copier la référence (&#8997;&#8984;C) copie votre position sous la forme <code>plan.md:10</code>, et Copier pour l’IA (&#8963;&#8997;&#8984;C) ajoute le texte sélectionné en dessous.</p>
+
+<h2>Si vous avez une minute</h2>
+<p>Faites l’étape 2. C’est là qu’on prend en défaut un agent qui se croit fini.</p>
+
+<h2>Quand cinq minutes ne suffisent pas</h2>
+<p>Parfois, vous ne pouvez pas savoir si une étape est juste, parce qu’elle sort de votre domaine. Jess Ou, dans l’article explicatif de LangChain sur les agents paru en 2026, le dit en deux phrases : « Ne déléguez pas un jugement que vous ne pouvez pas évaluer. Si vous ne reconnaîtriez pas une bonne réponse, l’agent non plus. » Notre conclusion : si vous ne pouvez pas juger une étape, ce n’est pas une raison pour l’approuver plus vite. C’est une raison pour demander à quelqu’un qui le peut.</p>
+
+<h2>Ce que MarsDawn fait ici, et ce qu’il ne fait pas</h2>
+<p>MarsDawn n’embarque aucun modèle d’IA. Il ne trouvera pas les problèmes de ce plan, et il ne fait ni l’étape 2 ni l’étape 3. Il garde le fichier lisible pendant que vous travaillez : le plan pour l’étape 1, les diagrammes rendus pour l’étape 4, l’onglet Fichiers pour l’étape 5, les références de ligne pour l’étape 6. Et si l’agent révise le plan pendant votre lecture, MarsDawn le recharge et garde votre position, tant que vous n’avez pas de modifications non enregistrées.</p>
+<p>Une fois le plan arrêté, si quelqu’un d’autre doit le voir, <a href="/fr/sharing-exported-pdfs/">Partager des PDF exportés</a> et <a href="/fr/markdown-to-pdf/">Markdown en PDF</a> expliquent comment le transmettre en PDF.</p>
+
+<h2>Essayer</h2>
+<p>MarsDawn est sur le <a href="{k.LISTING_URL}">Mac App Store</a>. Il existe aussi l’outil en ligne de commande gratuit <code>marsdawn</code> :</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Il exporte le Markdown en PDF sans l’app.</p>
+<p><a href="/fr/cli/">Ligne de commande</a> &#183; À savoir avant d’acheter : <a href="/fr/limits/">Ce que MarsDawn ne fait pas</a></p>
+
+<h2>Pour aller plus loin</h2>
+<ul>
+  <li>Pourquoi ce que rend un agent est difficile à lire : <a href="/fr/reading-agent-output/">Lire ce que votre agent vous rend</a>.</li>
+  <li>Pourquoi les agents exposent leurs plans : <a href="/fr/agent-transparency/">Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?</a></li>
+  <li>Les plans ne sont pas la seule chose que rendent les agents : <a href="/fr/agent-design-patterns/">Quatre modèles de conception d’agents et les documents que chacun vous remet</a>.</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+  <li>Chip Huyen, « Agents », 7 janvier 2025 : <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Jess Ou, « What is an AI agent? », LangChain, 31 juillet 2026 : <a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a></li>
+</ul>
+""",
+    }
+
+    pages['agent-design-patterns'] = {
+        "title": 'Quatre modèles de conception d’agents et les documents qu’ils vous remettent · MarsDawn',
+        "description": 'Réflexion, utilisation d’outils, planification et collaboration multi-agents, tels qu’Andrew Ng les a décrits, et ce que chacun vous rend généralement à lire.',
+        "body": f"""
+<section class="intro">
+  <h1>Quatre modèles de conception d’agents et les documents que chacun vous remet</h1>
+  <p>En mars 2024, Andrew Ng a décrit dans sa newsletter, The Batch, quatre modèles de conception pour les agents IA : la réflexion, l’utilisation d’outils, la planification et la collaboration multi-agents. On les aborde généralement du point de vue de ceux qui construisent les agents, comme des moyens d’obtenir de meilleurs résultats d’un modèle. Cet article se place de l’autre côté. Si vous utilisez un agent fondé sur l’un de ces modèles, qu’est-ce qui atterrit dans votre dossier, et que devez-vous lire en premier ?</p>
+</section>
+
+<div class="summary"><p><strong>Les quatre modèles sont d’Andrew Ng. Les documents que chacun tend à vous remettre, et ce qu’il faut y vérifier, relèvent de notre propre déduction. Il n’écrit sur aucun des deux points, et il ne plaide pas pour la relecture humaine dans cette série.</strong></p></div>
+
+<h2>Les quatre modèles, en bref</h2>
+<p>Ng les décrit dans « Agentic Design Patterns Part 1 ». En résumé : avec la <strong>réflexion</strong>, le modèle relit son propre travail et l’améliore. Avec l’<strong>utilisation d’outils</strong>, il peut appeler des outils comme la recherche web ou l’exécution de code. Avec la <strong>planification</strong>, il élabore un plan en plusieurs étapes et l’exécute. Avec la <strong>collaboration multi-agents</strong>, plusieurs agents se répartissent le travail et en discutent.</p>
+<p>Dans la partie 1, il montre le gain sur un benchmark de code, HumanEval, avec des résultats que son équipe a rassemblés auprès de plusieurs groupes de recherche : « GPT-3.5 (zero-shot) obtenait 48,1 % de réponses correctes. GPT-4 (zero-shot) fait mieux, avec 67,0 %. Cependant, le progrès de GPT-3.5 à GPT-4 est éclipsé par l’intégration d’un workflow agentique itératif. De fait, intégré à une boucle d’agent, GPT-3.5 atteint jusqu’à 95,1 %. » Ces chiffres portent sur un seul benchmark de code, et 95,1 % est le meilleur cas (« jusqu’à »). Ils montrent que les workflows d’agents peuvent améliorer le résultat. Ils ne disent rien de qui le vérifie.</p>
+<p><strong>À partir d’ici, les documents et les vérifications sont notre lecture, pas celle de Ng.</strong> Les vrais agents mélangent d’ailleurs les modèles. Un agent de code peut planifier, lancer des outils et relire son propre travail dans une même session : vous recevrez donc souvent les quatre types de fichiers.</p>
+
+<h2>1. Réflexion : un brouillon qui s’est déjà relu</h2>
+<p>L’article de Ng sur la réflexion la présente comme l’automatisation du retour qu’une personne donnerait sinon : « Et si l’on automatisait l’étape du retour critique, pour que le modèle critique automatiquement sa propre sortie et améliore sa réponse ? »</p>
+<p><strong>Ce qu’il tend à vous remettre :</strong> un document révisé, parfois avec une section d’autoévaluation ou des lignes comme « cas limites revérifiés ».</p>
+<p><strong>Ce qu’il faut vérifier :</strong> le résultat par rapport à <em>votre</em> demande, pas par rapport à l’autocritique de l’agent. L’autoévaluation peut se tromper à sa façon. Chip Huyen : « Un mode intéressant d’échec de planification provient d’erreurs de réflexion. L’agent est convaincu d’avoir accompli une tâche alors que ce n’est pas le cas. » Lilian Weng, sur son blog Lil’Log en juin 2023, alors chez OpenAI, à propos des modèles de l’époque : « Le manque d’expertise peut empêcher les LLM de connaître leurs défauts, et donc de bien juger de la justesse des résultats d’une tâche. » (Dans l’étude qu’elle décrivait, l’évaluation des résultats par un LLM et celle d’experts humains ne concordaient pas.) S’il est écrit « vérifié », vérifiez une chose vous-même.</p>
+
+<h2>2. Utilisation d’outils : un compte rendu de ce qui a tourné</h2>
+<p><strong>Ce qu’il tend à vous remettre :</strong> un résumé de ce que l’agent a lancé ou recherché et de ce qui en est ressorti. « Suite de tests lancée : tout passe. » Un tableau de résultats. Des liens trouvés.</p>
+<p>Le guide d’Anthropic présente les résultats d’outils comme la vérification que l’agent fait de lui-même : « Pendant l’exécution, il est crucial que les agents obtiennent à chaque étape une “vérité terrain” de l’environnement (comme les résultats d’appels d’outils ou d’exécution de code) pour évaluer leur progression. » Cette vérification se fait à l’intérieur de l’agent. Ce qui vous parvient, c’est le récit qu’il en fait.</p>
+<p><strong>Ce qu’il faut vérifier :</strong> que chaque affirmation remonte à une sortie que vous pouvez voir. Comparez un chiffre du résumé à la vraie sortie. Ouvrez l’un des liens.</p>
+
+<h2>3. Planification : <code>plan.md</code></h2>
+<p><strong>Ce qu’il tend à vous remettre :</strong> un plan, une spécification, une liste de tâches que l’agent coche au fur et à mesure.</p>
+<p>Ng est franc sur ce modèle dans la partie 4 :</p>
+<blockquote><p>« D’un côté, la planification est une capacité très puissante ; de l’autre, elle produit des résultats moins prévisibles. D’après mon expérience, si j’arrive à faire fonctionner de façon fiable les modèles agentiques de réflexion et d’utilisation d’outils et à améliorer ainsi les performances de mes applications, la planification est une technologie moins mûre, et j’ai du mal à prévoir à l’avance ce qu’elle va faire. »</p></blockquote>
+<p>Il est aussi optimiste : « Mais le domaine continue d’évoluer rapidement, et je suis convaincu que les capacités de planification vont progresser vite. »</p>
+<p><strong>Ce qu’il faut vérifier :</strong> le plan avant qu’il ne s’exécute, avec <a href="/fr/reviewing-agent-plans/">la relecture en cinq minutes</a> : structure, une affirmation, étapes irréversibles, diagrammes, périmètre. Si l’agent réécrit le plan en cours de route, comparez-le à la version que vous avez approuvée ; s’il est dans git, <code>git diff plan.md</code> montre ce qui a changé. Dans MarsDawn, l’onglet Plan montre la structure d’un long plan, et un plan réécrit se recharge sans vous faire perdre votre position, tant que vous n’avez pas de modifications non enregistrées.</p>
+
+<h2>4. Collaboration multi-agents : plusieurs fichiers, plusieurs auteurs</h2>
+<p><strong>Ce qu’il tend à vous remettre :</strong> une spécification d’un agent, des notes d’implémentation d’un deuxième, une relecture d’un troisième, et des résumés qui circulent entre eux. Parfois, chacun travaille dans sa propre branche ou son propre worktree.</p>
+<p><strong>Ce qu’il faut vérifier :</strong> les passations. Là où un agent résume le travail d’un autre, cherchez une exigence qui ne serait pas passée. Cherchez deux fichiers qui se contredisent, et décidez lequel fait foi avant que quiconque ne s’appuie sur l’autre. Dans MarsDawn, ouvrez le dossier partagé avec Fichier &#9656; Ouvrir un dossier&#8230; (&#8679;&#8984;O) : les nouveaux fichiers apparaissent dans l’onglet Fichiers en une seconde environ, à mesure que les agents les écrivent, et pour un checkout git, l’en-tête indique la branche ou le worktree, pour que deux fenêtres affichant le même nom de fichier sur des branches différentes ne se ressemblent pas. Quand le résultat doit parvenir à des personnes qui ne lisent pas le Markdown, <a href="/fr/sharing-exported-pdfs/">Partager des PDF exportés</a> couvre cette étape.</p>
+
+<h2>En un coup d’œil</h2>
+<table>
+<thead><tr><th>Modèle (Ng)</th><th>Ce qu’il tend à vous remettre (notre déduction)</th><th>À lire en premier (notre suggestion)</th></tr></thead>
+<tbody>
+<tr><td>Réflexion</td><td>Un brouillon révisé, peut-être avec une autoévaluation</td><td>Le résultat par rapport à votre demande ; vérifier un « vérifié »</td></tr>
+<tr><td>Utilisation d’outils</td><td>Un compte rendu de ce qui a tourné et de ce qui en est ressorti</td><td>Une affirmation remontée jusqu’à la vraie sortie</td></tr>
+<tr><td>Planification</td><td><code>plan.md</code>, une spécification, une liste de tâches</td><td>La relecture en cinq minutes, avant l’exécution</td></tr>
+<tr><td>Collaboration multi-agents</td><td>Plusieurs fichiers de plusieurs agents, peut-être sur plusieurs branches</td><td>Les passations, et le fichier qui fait foi</td></tr>
+</tbody>
+</table>
+<p>Aucun des auteurs cités ici ne mentionne MarsDawn, et aucun ne le recommande, pas plus qu’aucun autre outil Markdown. MarsDawn n’embarque aucun modèle d’IA : il ne sait pas quel modèle a produit un fichier, et il ne fera pas ces vérifications à votre place. Il garde les fichiers lisibles pendant que vous les faites.</p>
+
+<h2>Essayer</h2>
+<p>MarsDawn est sur le <a href="{k.LISTING_URL}">Mac App Store</a>. Il existe aussi l’outil en ligne de commande gratuit <code>marsdawn</code> :</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Il exporte le Markdown en PDF sans l’app : voir <a href="/fr/markdown-to-pdf/">Markdown en PDF</a>.</p>
+<p><a href="/fr/cli/">Ligne de commande</a> &#183; À savoir avant d’acheter : <a href="/fr/limits/">Ce que MarsDawn ne fait pas</a></p>
+
+<h2>Pour aller plus loin</h2>
+<ul>
+  <li>Pourquoi ce que rend un agent est difficile à lire, avec une liste de vérification : <a href="/fr/reading-agent-output/">Lire ce que votre agent vous rend</a>.</li>
+  <li>La vérification du plan en entier : <a href="/fr/reviewing-agent-plans/">Relire le plan d’un agent en cinq minutes</a>.</li>
+  <li>Ce que la transparence vous demande, et ce qu’elle ne vous demande pas : <a href="/fr/agent-transparency/">Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?</a></li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+  <li>Andrew Ng, « Agentic Design Patterns Part 1 », The Batch, 20 mars 2024 : <a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng, « Agentic Design Patterns Part 2, Reflection », The Batch, 27 mars 2024 : <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/</a></li>
+  <li>Andrew Ng, « Agentic Design Patterns Part 4, Planning », The Batch, 10 avril 2024 : <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a></li>
+  <li>Chip Huyen, « Agents », 7 janvier 2025 : <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Lilian Weng, « LLM Powered Autonomous Agents », Lil’Log, 23 juin 2023 : <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a></li>
+  <li>Erik S. et Barry Zhang, « Building Effective Agents », Anthropic, 19 décembre 2024 : <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (cité d’après la version en ligne le 26/09/2026).</li>
+</ul>
+""",
+    }
+
     app_ui_languages = 'anglais, chinois traditionnel, chinois simplifié, japonais, allemand, français, espagnol et coréen'
     return {
         'pages': pages, 'figures': figures, 'home': home, 'compare_tables': compare_tables,
