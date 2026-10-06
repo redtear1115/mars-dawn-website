@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ein Coding-Agent-Skill für Markdown in PDF · MarsDawn</title>
+<meta name="description" content="Eine Datei, die dein Coding-Agent lädt, um geschriebenes Markdown zur Prüfung in MarsDawn zu öffnen, marsdawn zu installieren, Markdown als PDF zu exportieren und das JSON-Ergebnis zu lesen.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/skill/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/skill/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/cli/skill/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/cli/skill/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/cli/skill/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/cli/skill/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/cli/skill/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/cli/skill/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/skill/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/de/cli/skill/">
+<link rel="alternate" type="text/markdown" href="/de/cli/skill/index.md">
+<meta property="og:title" content="Ein Coding-Agent-Skill für Markdown in PDF · MarsDawn">
+<meta property="og:description" content="Eine Datei, die dein Coding-Agent lädt, um geschriebenes Markdown zur Prüfung in MarsDawn zu öffnen, marsdawn zu installieren, Markdown als PDF zu exportieren und das JSON-Ergebnis zu lesen.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/de/cli/skill/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>
+  <p>Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Ablehnen</button>
+    <button type="button" id="consent-accept" class="consent-btn">Akzeptieren</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/de/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Im Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/cli/skill/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/skill/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/skill/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/skill/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/cli/skill/" hreflang="de" aria-current="true" lang="de">Deutsch</a> · <a href="/fr/cli/skill/" hreflang="fr" lang="fr">Français</a> · <a href="/es/cli/skill/" hreflang="es" lang="es">Español</a> · <a href="/ko/cli/skill/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Lass deinen Agenten zeigen, was er geschrieben hat, und das PDF erstellen.</h1>
+  <p>Dieser Skill ist eine Markdown-Datei. Er bringt einem Coding-Agenten bei, ein Dokument, das er geschrieben hat, zur Prüfung für dich in MarsDawn zu öffnen, <code>marsdawn</code> zu installieren, zu prüfen, ob es funktioniert, ein Dokument als PDF zu exportieren und das Ergebnis zu lesen.</p>
+</section>
+<div class="summary"><p><strong>Eine Markdown-Datei unter <code>~/.claude/skills/marsdawn/SKILL.md</code>.</strong> Damit installiert dein Agent <code>marsdawn</code>, exportiert als PDF und liest das JSON-Ergebnis, und er fragt trotzdem, bevor er etwas ausführt.</p></div>
+<h2 id="install-it-in-claude-code">In Claude Code installieren</h2>
+<pre><code>mkdir -p ~/.claude/skills/marsdawn
+curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
+<p>Claude Code lädt ihn, wenn eine Aufgabe ein PDF verlangt oder wenn es ein Markdown-Dokument zum Lesen für dich geschrieben oder überarbeitet hat, und du kannst ihn selbst als <code>/marsdawn</code> aufrufen. Es ist <a href="/cli/skill/SKILL.md">eine kurze Datei</a>, lies sie also, bevor du sie installierst.</p>
+<p>Andere Agenten können dieselbe Datei verwenden. Sie ist reines Markdown, Anweisungen und Befehle, also verweise deinen Agenten auf die URL oder füge sie ein.</p>
+<h2 id="what-it-teaches">Was er beibringt</h2>
+<ul>
+  <li><code>marsdawn</code> mit Homebrew installieren, falls es fehlt, und es dann mit <code>marsdawn --version</code> prüfen, statt eine Version anzunehmen.</li>
+  <li>Mit <code>marsdawn export … --json</code> exportieren und das Ergebnis lesen: wo das PDF gelandet ist, wie viele Seiten es hat und welches Mermaid-Diagramm nicht gerendert wurde.</li>
+  <li>Fehler am Exit-Code unterscheiden: keine solche Datei, ein PDF ist schon da, ein fehlgeschlagener Export, eine falsche Option.</li>
+  <li>Ein geschriebenes Dokument mit <code>marsdawn open file.md:line</code> öffnen, bei der ersten Änderung, und nur einmal: Spätere Änderungen erscheinen von selbst im offenen Fenster.</li>
+  <li>Wenn die MarsDawn-App nicht installiert ist, das einmal sagen und weitermachen, ohne es erneut zu versuchen. Nie <code>open</code> verwenden, um ein PDF zu erstellen.</li>
+  <li>Mit <code>--folder</code> (marsdawn 0.5.1 und neuer) den Ordner als angefragt melden, nicht als angezeigt: Die App entscheidet, und nichts meldet zurück.</li>
+</ul>
+<h2 id="what-it-doesn-t-do">Was er nicht tut</h2>
+<ul>
+  <li>Er gibt sich nicht selbst die Erlaubnis, etwas auszuführen. Dein Agent fragt weiterhin, bevor er <code>marsdawn</code> installiert oder ausführt, wie bei jedem anderen Befehl.</li>
+  <li>Er schickt deine Dokumente nirgendwohin. <code>marsdawn</code> rendert auf deinem Mac und lässt Bilder aus dem Web weg, außer du übergibst <code>--allow-remote-images</code>.</li>
+</ul>
+<p>Der vollständige Vertrag, jedes Feld und jeder Code, steht unter <a href="/de/cli/agents/">marsdawn für Agenten</a>. Für einen Agenten, der Werkzeuge über MCP aufruft, statt eine Skill-Datei zu lesen, gibt es außerdem <a href="/de/cli/mcp/">einen MCP-Server</a>.</p>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Website">
+    <a href="/de/support/">Support</a>
+    <a href="/de/privacy/">Datenschutzrichtlinie</a>
+    <a href="/de/cli/">Befehlszeile</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie-Einstellungen</button>
+  </nav>
+  <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

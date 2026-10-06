@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarsDawn: un editor de Markdown para Mac, con vista previa en vivo</title>
+<meta name="description" content="Markdown para las personas que dirigen el trabajo de los agentes: un editor nativo para Mac con vista previa en vivo, diagramas Mermaid y exportación a PDF. En el Mac App Store.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/hero.css">
+<link rel="stylesheet" href="/assets/annotations.css">
+<link rel="stylesheet" href="/assets/loop.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/es/">
+<link rel="alternate" type="text/markdown" href="/es/index.md">
+<meta property="og:title" content="MarsDawn: un editor de Markdown para Mac, con vista previa en vivo">
+<meta property="og:description" content="Markdown para las personas que dirigen el trabajo de los agentes: un editor nativo para Mac con vista previa en vivo, diagramas Mermaid y exportación a PDF. En el Mac App Store.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/es/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "Markdown para las personas que dirigen el trabajo de los agentes: un editor nativo para Mac con vista previa en vivo, diagramas Mermaid y exportación a PDF. En el Mac App Store.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/es/"}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>
+  <p>Este sitio usa cookies de analítica para ver cómo lo usan los visitantes. Permanecen desactivadas a menos que las aceptes.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Rechazar</button>
+    <button type="button" id="consent-accept" class="consent-btn">Aceptar</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/es/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/" hreflang="fr" lang="fr">Français</a> · <a href="/es/" hreflang="es" aria-current="true" lang="es">Español</a> · <a href="/ko/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="hero-scene">
+<div class="dawn-wrap" aria-hidden="true">
+  <svg class="dawn-layer" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-sky-1" offset="0%"></stop>
+        <stop class="stop-sky-2" offset="42%"></stop>
+        <stop class="stop-sky-3" offset="76%"></stop>
+        <stop class="stop-sky-4" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="900" fill="url(#skyGrad)"></rect>
+  </svg>
+  <svg class="dawn-layer dawn-glow" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <radialGradient id="glowGrad" cx="50%" cy="63%" r="75%">
+        <stop class="stop-glow" offset="0%"></stop>
+        <stop class="stop-glow-mid" offset="42%"></stop>
+        <stop class="stop-glow-fade" offset="100%"></stop>
+      </radialGradient>
+    </defs>
+    <ellipse cx="600" cy="560" rx="1000" ry="430" fill="url(#glowGrad)"></ellipse>
+  </svg>
+  <svg class="dawn-layer" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="planetGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-planet-rim" offset="0%"></stop>
+        <stop class="stop-planet-deep" offset="26%"></stop>
+      </linearGradient>
+    </defs>
+    <path d="M -40 560 Q 600 428 1240 560 L 1240 920 L -40 920 Z" fill="url(#planetGrad)"></path>
+  </svg>
+  <div class="dawn-layer night-veil"></div>
+  <svg class="dawn-layer dawn-stars stars-a" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="955" cy="42" r="1.1"></circle><circle cx="982" cy="181" r="1.1"></circle><circle cx="979" cy="34" r="1.1"></circle><circle cx="720" cy="63" r="1.1"></circle><circle cx="122" cy="125" r="1.1"></circle><circle cx="956" cy="127" r="1.1"></circle><circle cx="1110" cy="43" r="1.1"></circle><circle cx="242" cy="237" r="1.1"></circle><circle cx="972" cy="257" r="1.1"></circle><circle cx="1150" cy="291" r="1.1"></circle><circle cx="4" cy="15" r="1.1"></circle><circle cx="286" cy="275" r="1.1"></circle><circle cx="1032" cy="163" r="1.1"></circle><circle cx="1095" cy="158" r="1.1"></circle><circle cx="198" cy="287" r="1.1"></circle></svg>
+  <svg class="dawn-layer dawn-stars stars-b" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="1151" cy="256" r="1.4"></circle><circle cx="1019" cy="144" r="1.4"></circle><circle cx="269" cy="166" r="1.4"></circle><circle cx="222" cy="197" r="1.4"></circle><circle cx="1131" cy="300" r="1.4"></circle><circle cx="1049" cy="26" r="1.4"></circle><circle cx="955" cy="332" r="1.4"></circle><circle cx="134" cy="293" r="1.4"></circle><circle cx="193" cy="84" r="1.4"></circle><circle cx="949" cy="252" r="1.4"></circle><circle cx="187" cy="334" r="1.4"></circle><circle cx="1187" cy="238" r="1.4"></circle></svg>
+  <svg class="dawn-layer dawn-stars stars-c" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="92" cy="93" r="1.8"></circle><circle cx="10" cy="149" r="1.8"></circle><circle cx="961" cy="188" r="1.8"></circle><circle cx="81" cy="16" r="1.8"></circle><circle cx="1028" cy="231" r="1.8"></circle><circle cx="1075" cy="52" r="1.8"></circle><circle cx="35" cy="264" r="1.8"></circle><circle cx="979" cy="96" r="1.8"></circle><circle cx="194" cy="295" r="1.8"></circle></svg>
+  <svg class="dawn-layer dawn-limb" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="limbGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop class="stop-limb-fade" offset="0%"></stop>
+        <stop class="stop-limb" offset="50%"></stop>
+        <stop class="stop-limb-fade" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <path class="limb-line" d="M -40 560 Q 600 428 1240 560" fill="none" stroke="url(#limbGrad)" stroke-width="5"></path>
+  </svg>
+</div>
+<div class="hero-inner">
+<div class="hero-copy">
+<section class="intro hero">
+  <p class="kicker">Herramientas de frontera para quienes construyen</p>
+  <h1><span>Toma el mapa.</span> <span>Lee el amanecer.</span></h1>
+  <p>Markdown para las personas que dirigen el trabajo de los agentes.</p>
+</section>
+<p class="hero-cta"><a class="cta cta-primary" href="https://apps.apple.com/app/id6812925073">Ver en el Mac App Store</a> <a class="cta cta-secondary" href="#install">Instala la CLI gratuita</a></p>
+</div>
+<div class="hero-shot">
+<div class="mdw" role="group" aria-label="Una ventana de MarsDawn en funcionamiento: elige un tema y una disposición">
+  <div class="mdw-bar">
+    <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="mdw-title">Te damos la bienvenida a MarsDawn</span>
+    <details class="mdw-themes">
+      <summary title="Aspecto y tema de la vista previa"><span class="mdw-sr">Tema</span><svg viewBox="0 0 20 18" aria-hidden="true" focusable="false"><path d="M10 2C5.3 2 1.8 5.2 1.8 9.2c0 3.6 2.9 6.6 6.6 6.6 1.3 0 1.9-.8 1.9-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5h2c2.8 0 5-1.9 5-4.5C18.2 4.6 14.6 2 10 2Z"/><circle cx="6" cy="8.6" r="1.1"/><circle cx="8.6" cy="5.6" r="1.1"/><circle cx="12.4" cy="5.6" r="1.1"/><circle cx="14.6" cy="8.4" r="1.1"/></svg><svg class="chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M2.5 3.8 5 6.3l2.5-2.5"/></svg></summary>
+      <div class="mdw-menu">
+      <fieldset>
+        <legend>Aspecto</legend>
+        <input type="radio" name="mdw-appearance" id="mdw-system" value="system" checked><label for="mdw-system"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Sistema</label>
+        <input type="radio" name="mdw-appearance" id="mdw-light" value="light"><label for="mdw-light"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Claro</label>
+        <input type="radio" name="mdw-appearance" id="mdw-dark" value="dark"><label for="mdw-dark"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Oscuro</label>
+      </fieldset>
+      <hr>
+      <fieldset>
+        <legend>Tema de la vista previa</legend>
+        <fieldset class="mdw-pick-light">
+          <legend>Claro</legend>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-dawn" value="dawn" checked><label for="mdw-light-dawn" title="Cálido amanecer marciano"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Amanecer</label>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-classic" value="classic"><label for="mdw-light-classic" title="Serifa elegante sobre papel"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Clásico</label>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-modern" value="modern"><label for="mdw-light-modern" title="Limpio y familiar"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Moderno</label>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-vivid" value="vivid"><label for="mdw-light-vivid" title="Divertido, luminoso y redondeado"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Vívido</label>
+        </fieldset>
+        <hr>
+        <fieldset class="mdw-pick-dark">
+          <legend>Oscuro</legend>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-dawn" value="dawn" checked><label for="mdw-dark-dawn" title="Cálido amanecer marciano"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Amanecer</label>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-classic" value="classic"><label for="mdw-dark-classic" title="Serifa elegante sobre papel"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Clásico</label>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-modern" value="modern"><label for="mdw-dark-modern" title="Limpio y familiar"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Moderno</label>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-vivid" value="vivid"><label for="mdw-dark-vivid" title="Divertido, luminoso y redondeado"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>Vívido</label>
+        </fieldset>
+      </fieldset>
+      <hr>
+      <span class="mdw-settings" aria-hidden="true">Ajustes…</span>
+      </div>
+    </details>
+    <fieldset class="mdw-layouts">
+      <legend>Disposición</legend>
+      <input type="radio" name="mdw-layout" id="mdw-source" value="source"><label for="mdw-source" title="Solo código (⌘1)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M6.5 3.5 2 8l4.5 4.5M13.5 3.5 18 8l-4.5 4.5M11.4 2.5 8.6 13.5"/></svg><span class="mdw-sr">Código</span></label>
+      <input type="radio" name="mdw-layout" id="mdw-split" value="split" checked><label for="mdw-split" title="Código y vista previa (⌘2)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><rect x="2" y="2.5" width="16" height="11" rx="2.5"/><path d="M10 2.5v11"/></svg><span class="mdw-sr">Dividido</span></label>
+      <input type="radio" name="mdw-layout" id="mdw-preview" value="preview"><label for="mdw-preview" title="Solo vista previa (⌘3)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M1.8 8C4 4.4 6.8 2.8 10 2.8S16 4.4 18.2 8C16 11.6 13.2 13.2 10 13.2S4 11.6 1.8 8Z"/><circle cx="10" cy="8" r="3.1"/><circle class="pupil" cx="10" cy="8" r="1.3"/></svg><span class="mdw-sr">Vista previa</span></label>
+    </fieldset>
+  </div>
+  <div class="mdw-panes">
+    <pre class="mdw-source" aria-label="Código"><span class="ed-heading ed-bold"># Te damos la bienvenida a MarsDawn</span>
+
+<span class="ed-heading ed-bold">## Disposiciones</span>
+
+| Atajo | Disposición |
+|:--------:|:-------|
+| ⌘1 | Solo código |
+| ⌘2 | Código y vista previa lado a lado |
+| ⌘3 | Solo vista previa |
+
+<span class="ed-heading ed-bold">## Escribir</span>
+
+La <span class="ed-bold">**negrita**</span>, la <span class="ed-emphasis ed-italic">*cursiva*</span>, el <span class="ed-muted ed-strike">~~tachado~~</span>, el <span class="ed-code">`código en línea`</span> y los <span class="ed-link">[enlaces]</span><span class="ed-muted">(</span><span class="ed-link">https://marsdawn.southern-light.dev/support/</span><span class="ed-muted">)</span> funcionan como esperas.
+
+<span class="ed-quote">&gt; Las citas destacan con una línea de color cálido.</span>
+
+<span class="ed-marker ed-bold">-</span> <span class="ed-marker ed-bold">[x]</span> Listas de tareas con casillas
+<span class="ed-marker ed-bold">-</span> <span class="ed-marker ed-bold">[ ]</span> Listas anidadas
+<span class="ed-marker ed-bold">  -</span> como esta</pre>
+    <div class="mdw-preview" aria-label="Vista previa" role="region">
+<p class="md-h1">Te damos la bienvenida a MarsDawn</p>
+<p class="md-h2">Disposiciones</p>
+<table>
+<thead>
+<tr><th class="align-center">Atajo</th><th class="align-left">Disposición</th></tr>
+</thead>
+<tbody>
+<tr><td class="align-center">⌘1</td><td class="align-left">Solo código</td></tr>
+<tr><td class="align-center">⌘2</td><td class="align-left">Código y vista previa lado a lado</td></tr>
+<tr><td class="align-center">⌘3</td><td class="align-left">Solo vista previa</td></tr>
+</tbody>
+</table>
+<p class="md-h2">Escribir</p>
+<p>La <strong>negrita</strong>, la <em>cursiva</em>, el <del>tachado</del>, el <code>código en línea</code> y los <span class="md-a">enlaces</span> funcionan como esperas.</p>
+<blockquote>
+<p>Las citas destacan con una línea de color cálido.</p>
+</blockquote>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled checked> Listas de tareas con casillas
+</li>
+<li class="task-list-item"><input type="checkbox" disabled> Listas anidadas
+<ul>
+<li>como esta
+</li>
+</ul>
+</li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+<h2 class="loop-title">Lee lo que escribió tu agente.</h2>
+<ol class="loop-steps">
+  <li><strong>El agente escribe.</strong> Tu agente de programación o tu asistente de escritura redacta el Markdown: un README, una especificación, unas notas.</li>
+  <li><strong>Tú lo revisas en MarsDawn.</strong> Abre el archivo y léelo ya renderizado, con diagramas Mermaid y código resaltado, junto al código fuente.</li>
+  <li><strong>El agente corrige.</strong> Pide cambios. Abre el archivo corregido y léelo de la misma manera.</li>
+</ol>
+<p><a href="/es/reading-agent-output/">Cómo revisar lo que te devuelve tu agente</a>.</p>
+<div class="loop-anim loop-es">
+<div class="loop-frame" role="img" aria-label="Una terminal abre launch-note.md en MarsDawn. Quien lee cambia el día del lanzamiento del 7 al 9 de octubre, el agente actualiza las otras dos secciones para que coincidan, y el ciclo vuelve a empezar.">
+<div class="loop-stage" aria-hidden="true">
+<div class="loop-win a">
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">launch-note.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-body">
+<div class="loop-side"><div class="loop-tabs"><span class="on">Esquema</span><span>Archivos</span></div><div class="loop-rows"><div class="loop-h1row">Nota de lanzamiento</div><div class="loop-sub">Qué cambia</div><div class="loop-sub loop-row-u a">Cuándo sale</div><div class="loop-sub">Quién hace qué</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> Nota de lanzamiento</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> Qué cambia</span>
+La página de inicio de sesión empieza por el correo. Sale el <span class="loop-day loop-d-a a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span></span>.
+
+<span class="loop-h"><span class="loop-mk">##</span> Cuándo sale</span>
+El <span class="loop-day loop-d-u a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span><span class="loop-ecaret loop-n6 a"></span></span> al mediodía.
+
+<span class="loop-h"><span class="loop-mk">##</span> Quién hace qué</span>
+Ingeniería activa el flag el <span class="loop-day loop-d-b a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span></span>.
+</div>
+<div class="loop-pre"><h3>Nota de lanzamiento</h3><h4>Qué cambia</h4><p>La página de inicio de sesión empieza por el correo. Sale el <span class="loop-day loop-d-a a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span></span>.</p><h4>Cuándo sale</h4><p>El <span class="loop-day loop-d-u a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span></span> al mediodía.</p><h4>Quién hace qué</h4><p>Ingeniería activa el flag el <span class="loop-day loop-d-b a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span></span>.</p></div>
+</div>
+</div>
+<div class="loop-term a">
+<div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
+<div class="loop-tbody">
+<div><span class="loop-p">›</span> <span class="loop-cmd a">marsdawn open launch-note.md</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> Moví el lanzamiento. Haz que las demás secciones coincidan.</div>
+<div class="loop-l3 a">Listo. Las dos secciones ahora dicen 9 oct.</div>
+</div>
+</div>
+<svg class="loop-ptr a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="Pausar la animación"><span aria-hidden="true">Pausa</span></label>
+</div>
+<section class="install" id="install">
+<h2>Hazlo ahora</h2>
+<p>La herramienta de línea de comandos gratuita <code>marsdawn</code> ya está lista. Instálala con Homebrew:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<ul>
+  <li><code>marsdawn export</code> convierte un archivo Markdown en un PDF, renderizado como la vista previa de MarsDawn. No necesita la app.</li>
+  <li><code>marsdawn open</code> abre archivos en la app MarsDawn para que los revises.</li>
+  <li><code>--json</code> les da a los scripts y a los agentes resultados que pueden analizar.</li>
+</ul>
+<p class="install-links"><a href="/es/cli/">Línea de comandos</a> · <a href="/es/cli/agents/">marsdawn para agentes</a> · <a href="/es/cli/skill/">Skill para agentes</a> · <a href="/es/cli/mcp/">Servidor MCP</a></p>
+</section>
+<nav class="traits" aria-label="Qué esperar de MarsDawn">
+<h2>Qué esperar de MarsDawn</h2>
+<ul>
+  <li><a href="/es/native/">Una app para Mac</a><span>Ventanas y pestañas nativas, guardado automático, Vista rápida.</span></li>
+  <li><a href="/es/yours/">Lo que escribes se queda en tu Mac</a><span>Sin cuenta, sin sincronización, sin nube.</span></li>
+  <li><a href="/es/pay-once/">Pruébalo gratis, paga una vez</a><span>Gratis durante 14 días; después, 4,99 USD una sola vez. Sin suscripción.</span></li>
+</ul>
+</nav>
+<p class="know">Lo que conviene saber antes de comprar. <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+<section class="proof">
+<h2>La app, tal como es</h2>
+<h3><a href="/es/native/">Una app para Mac</a></h3>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="1180" height="844" alt="MarsDawn en vista dividida: el código Markdown a la izquierda y la página renderizada a la derecha.">
+    <span class="marker l tb co-native-1" aria-hidden="true">1</span><span class="marker l co-native-2" aria-hidden="true">2</span><span class="marker r tb co-native-3" aria-hidden="true">3</span><span class="marker r co-native-4" aria-hidden="true">4</span>
+    <span class="leader l up co-native-1" aria-hidden="true"><span>Una ventana nativa de Mac.</span></span><span class="leader l down co-native-2" aria-hidden="true"><span>El editor de texto de la Mac, con resaltado de Markdown.</span></span><span class="leader r up co-native-3" aria-hidden="true"><span>⌘1 código, ⌘2 dividido, ⌘3 vista previa.</span></span><span class="leader r down co-native-4" aria-hidden="true"><span>La página se actualiza mientras escribes.</span></span>
+  </div></div>
+  <figcaption>
+    <span class="figure-label">En esta captura de pantalla</span>
+    <ol><li>Una ventana nativa de Mac.</li><li>El editor de texto de la Mac, con resaltado de Markdown.</li><li>⌘1 código, ⌘2 dividido, ⌘3 vista previa.</li><li>La página se actualiza mientras escribes.</li></ol>
+  </figcaption>
+</figure>
+<h3><a href="/es/pdf/">Exportación a PDF</a></h3>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="Un PDF exportado desde MarsDawn, abierto en su visor de PDF con miniaturas de las páginas.">
+    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
+    <span class="leader r co-pdf-1" aria-hidden="true"><span>Diagramas Mermaid, dibujados dentro del PDF.</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>El código conserva su resaltado.</span></span>
+  </div></div>
+  <figcaption>
+    <span class="figure-label">En esta captura de pantalla</span>
+    <ol><li>Diagramas Mermaid, dibujados dentro del PDF.</li><li>El código conserva su resaltado.</li></ol>
+  </figcaption>
+</figure>
+</section>
+<section class="dawn-close">
+<p><strong>Un nuevo amanecer para Markdown.</strong> MarsDawn está en el <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</p>
+<p class="close-next"><a href="#install">Instala la CLI gratuita</a></p>
+</section>
+</main>
+<footer class="footer footer-home">
+  <nav class="footer-nav" aria-label="Sitio">
+    <a href="/es/support/">Soporte</a>
+    <a href="/es/privacy/">Política de privacidad</a>
+    <a href="/es/cli/">Línea de comandos</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Ajustes de cookies</button>
+  </nav>
+  <p class="footer-meta"><span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tres formas de llamar a marsdawn: CLI, archivo de skill, servidor MCP · MarsDawn</title>
+<meta name="description" content="marsdawn no tiene un modelo de IA propio, así que no importa qué agente escribió el Markdown. Llámalo desde la CLI, un archivo de skill o el servidor MCP marsdawn-mcp: los tres ejecutan la misma exportación.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/mcp/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/mcp/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/cli/mcp/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/cli/mcp/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/cli/mcp/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/cli/mcp/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/cli/mcp/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/cli/mcp/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/mcp/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/es/cli/mcp/">
+<link rel="alternate" type="text/markdown" href="/es/cli/mcp/index.md">
+<meta property="og:title" content="Tres formas de llamar a marsdawn: CLI, archivo de skill, servidor MCP · MarsDawn">
+<meta property="og:description" content="marsdawn no tiene un modelo de IA propio, así que no importa qué agente escribió el Markdown. Llámalo desde la CLI, un archivo de skill o el servidor MCP marsdawn-mcp: los tres ejecutan la misma exportación.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/es/cli/mcp/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>
+  <p>Este sitio usa cookies de analítica para ver cómo lo usan los visitantes. Permanecen desactivadas a menos que las aceptes.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Rechazar</button>
+    <button type="button" id="consent-accept" class="consent-btn">Aceptar</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/es/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">En el Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/cli/mcp/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/mcp/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/mcp/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/mcp/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/cli/mcp/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/cli/mcp/" hreflang="fr" lang="fr">Français</a> · <a href="/es/cli/mcp/" hreflang="es" aria-current="true" lang="es">Español</a> · <a href="/ko/cli/mcp/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Tres formas de llamar a marsdawn.</h1>
+  <p>MarsDawn no tiene un modelo de IA propio: está hecho para revisar Markdown, no para escribirlo, así que no importa qué agente o modelo generó el archivo. Hay tres formas de que un agente o un script llame a <code>marsdawn</code>, y las tres terminan ejecutando el mismo <code>export</code>.</p>
+</section>
+
+<div class="summary"><p><strong>Elige la que admitan tus herramientas: la CLI gratuita <code>marsdawn</code>, un archivo de skill en Markdown simple o el servidor MCP <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a>.</strong> Los tres llaman al mismo <code>marsdawn export</code> y devuelven el mismo resultado JSON.</p></div>
+
+<h2 id="which-one-to-use">Cuál usar</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">Si tu agente</th><th scope="col">Usa</th><th scope="col">Necesita</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Puede ejecutar un comando de shell</th><td data-label="Usa"><a href="/es/cli/agents/">La CLI</a></td><td data-label="Necesita">macOS 15 o posterior</td></tr>
+  <tr><th scope="row">Carga archivos de instrucciones, como Claude Code</th><td data-label="Usa"><a href="/es/cli/skill/">El archivo de skill</a></td><td data-label="Necesita">La CLI, que la skill instala</td></tr>
+  <tr><th scope="row">Llama a herramientas por MCP</th><td data-label="Usa"><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td data-label="Necesita">marsdawn-mcp 0.2.1 o posterior, marsdawn 0.5.0 o posterior y Node.js 20 o posterior</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="the-cli">La CLI</h2>
+<p><code>marsdawn export notes.md --json</code> lo puede llamar cualquier agente o script capaz de ejecutar un comando de shell, así que no depende de ningún modelo. Cada campo que devuelve está documentado en <a href="/es/cli/agents/">marsdawn para agentes</a>, la fuente de referencia del esquema JSON a la que remiten las otras dos opciones de abajo.</p>
+
+<h2 id="the-skill-file">El archivo de skill</h2>
+<p>Para un agente que lee instrucciones en Markdown simple en lugar de llamar directamente a una shell (hoy, Claude Code), <a href="/es/cli/skill/">la skill de marsdawn</a> es un archivo que le enseña a instalar marsdawn, ejecutar <code>export</code> y leer el resultado. Es Markdown simple, así que otros agentes que cargan archivos de instrucciones pueden usar el mismo.</p>
+
+<h2 id="the-mcp-server">El servidor MCP</h2>
+<p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> es un repositorio aparte, público y con licencia Apache-2.0. Es un servidor MCP con dos herramientas, <code>export_markdown_to_pdf</code> y <code>open_in_marsdawn</code>, que envuelven <code>marsdawn export --json</code> y <code>marsdawn open --json</code>: apunta un cliente MCP hacia él y una llamada a una herramienta devuelve el mismo JSON que la CLI.</p>
+<ul>
+  <li><strong>Dónde obtenerlo:</strong> como MCP Bundle, <code>marsdawn.mcpb</code>, adjunto a <a href="https://github.com/redtear1115/marsdawn-mcp/releases">su release de GitHub</a>, o ejecutando el servidor desde el código fuente por stdio.</li>
+  <li><strong>Registro:</strong> todavía no aparece en el MCP Registry (versión actual: 0.2.1). Revisa el estado actual en el repositorio antes de depender del descubrimiento por el registro.</li>
+  <li><strong>Alojamiento:</strong> solo autoalojado. No existe un servicio de marsdawn-mcp alojado; el servidor se ejecuta en tu propia máquina, junto a marsdawn.</li>
+  <li><strong>Requisitos:</strong> macOS, marsdawn 0.5.0 o posterior y Node.js 20 o posterior para ejecutar el servidor.</li>
+</ul>
+
+<h2 id="confined-to-folders-you-allow">Limitado a las carpetas que permitas</h2>
+<p>Las dos herramientas solo acceden a las carpetas que permitas: el ajuste <strong>Allowed folders</strong> de la extensión, que empieza vacío y sin valores predefinidos, o bien las raíces que ofrece tu cliente MCP. Si no hay ninguno de los dos, se rechaza cada llamada, y el mensaje de rechazo explica cómo solucionarlo. Cada ruta tiene que ser absoluta, y <code>export_markdown_to_pdf</code> solo escribe un archivo <code>.pdf</code>, nunca a través de un enlace simbólico.</p>
+<p><strong>Seguridad:</strong> actualiza a <a href="https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1">0.2.1</a>. Las versiones 0.1.0 y 0.2.0 permitían que una llamada escribiera un PDF en cualquier ruta en la que tu cuenta pudiera escribir; se corrigió como <a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a>.</p>
+
+<h2 id="same-export-three-doors">La misma exportación, tres puertas</h2>
+<p>Sea cual sea la vía que lo llame, el comportamiento de fondo no cambia: el mismo exportador, los mismos temas y tamaños de papel, los mismos <code>diagramErrors</code> cuando un diagrama Mermaid no se puede renderizar. Esta página no repite ese contrato; <a href="/es/cli/agents/">marsdawn para agentes</a> lo describe completo.</p>
+
+<h2 id="next">Siguiente</h2>
+<ul>
+  <li>El esquema JSON completo y cada código de salida: <a href="/es/cli/agents/">marsdawn para agentes</a>.</li>
+  <li>La skill de un solo archivo para Claude Code y agentes similares: <a href="/es/cli/skill/">la skill de marsdawn</a>.</li>
+  <li>Por qué un resultado JSON compacto importa para el contexto de tu agente: <a href="/es/token-efficient-review/">revisión con pocos tokens</a>.</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Sitio">
+    <a href="/es/support/">Soporte</a>
+    <a href="/es/privacy/">Política de privacidad</a>
+    <a href="/es/cli/">Línea de comandos</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Ajustes de cookies</button>
+  </nav>
+  <p class="footer-meta"><span>Un nuevo amanecer para Markdown.</span> <span>MarsDawn está en el <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

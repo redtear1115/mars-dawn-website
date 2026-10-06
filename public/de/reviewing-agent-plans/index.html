@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Einen Agentenplan in fünf Minuten prüfen · MarsDawn</title>
+<meta name="description" content="Ein Weg in sechs Schritten, den Plan eines KI-Agenten zu prüfen, bevor er läuft, in etwa fünf Minuten und in jedem Editor, mit einem durchgespielten Beispiel.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-agent-plans/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/reviewing-agent-plans/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/reviewing-agent-plans/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/reviewing-agent-plans/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/reviewing-agent-plans/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-agent-plans/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/de/reviewing-agent-plans/">
+<link rel="alternate" type="text/markdown" href="/de/reviewing-agent-plans/index.md">
+<meta property="og:title" content="Einen Agentenplan in fünf Minuten prüfen · MarsDawn">
+<meta property="og:description" content="Ein Weg in sechs Schritten, den Plan eines KI-Agenten zu prüfen, bevor er läuft, in etwa fünf Minuten und in jedem Editor, mit einem durchgespielten Beispiel.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/de/reviewing-agent-plans/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>
+  <p>Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Ablehnen</button>
+    <button type="button" id="consent-accept" class="consent-btn">Akzeptieren</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/de/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Im Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/reviewing-agent-plans/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reviewing-agent-plans/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reviewing-agent-plans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reviewing-agent-plans/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/reviewing-agent-plans/" hreflang="de" aria-current="true" lang="de">Deutsch</a> · <a href="/fr/reviewing-agent-plans/" hreflang="fr" lang="fr">Français</a> · <a href="/es/reviewing-agent-plans/" hreflang="es" lang="es">Español</a> · <a href="/ko/reviewing-agent-plans/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Einen Agentenplan in fünf Minuten prüfen</h1>
+  <p>Dein Agent hat einen Plan geschrieben und wartet auf grünes Licht. Du hast fünf Minuten, keine Stunde. Hier ist ein Weg, sie zu nutzen, der in jedem Editor funktioniert, sogar in einem einfachen Texteditor. MarsDawn hilft bei einigen Schritten, und wir sagen, bei welchen. Beim wichtigsten hilft es nicht.</p>
+</section>
+
+<div class="summary"><p><strong>Lies den Plan nicht von oben nach unten. Prüfe seine Form, prüfe eine Behauptung, finde, was sich nicht rückgängig machen lässt, sieh dir Diagramme und Umfang an und schreib dann Feedback, mit dem der Agent arbeiten kann. Sechs Schritte, etwa fünf Minuten.</strong></p></div>
+
+<h2 id="why-bother-before-it-runs">Warum vorher prüfen</h2>
+<p>Chip Huyen erklärt, warum Planung von Ausführung getrennt sein sollte, und benennt die Kosten deutlich: „Ohne Aufsicht kann ein Agent diese Schritte stundenlang ausführen und Zeit und Geld für API-Aufrufe verschwenden, bevor du merkst, dass er nicht vorankommt.“ Unsere Ergänzung: Ein Plan ist der günstigste Ort, einen Fehler zu finden. Eine Zeile in <code>plan.md</code> zu korrigieren kostet einen Satz. Zu korrigieren, was der Agent getan hat, nachdem er gelaufen ist, kostet einen Nachmittag.</p>
+
+<h2 id="the-example">Das Beispiel</h2>
+<p>Du hast einen Agenten gebeten, Benutzer-Avatare in einen Objektspeicher zu verschieben, ohne bestehende Links zu brechen. Er gibt dir das hier zurück:</p>
+<pre><code># Plan: move user avatars to object storage
+
+## Goal
+Serve avatars from object storage instead of the app server.
+
+## Steps
+1. Add a storage client and config. &#9989; done
+2. Write a script that copies existing avatars to the bucket.
+3. Switch the avatar URLs in the templates.
+4. Delete `public/avatars/` from the server.
+5. Run the copy script.
+
+## Status
+All tests pass.</code></pre>
+<p>Es liest sich gut. Es würde auch jeden Avatar löschen, bevor auch nur einer kopiert ist.</p>
+
+<h2 id="the-six-steps">Die sechs Schritte</h2>
+<p><strong>1. Lies nur die Überschriften.</strong> <em>(etwa eine Minute)</em> Passt die Gliederung zu dem, worum du gebeten hast? Ein fehlender Abschnitt bedeutet meist fehlende Arbeit. Hier: Goal, Steps, Status. Du wolltest, dass bestehende Links weiter funktionieren, und es gibt keine Überschrift zu alten Links oder dazu, wie man die Änderung rückgängig macht. Das ist dein erster Kommentar.</p>
+<p>Im Terminal gibt <code>grep -n '^#' plan.md</code> nur die Überschriften aus, und die meisten Editoren können auch eine Gliederung zeigen. In MarsDawn listet der Tab Gliederung in der Seitenleiste (Darstellung &#9656; Seitenleiste einblenden, &#8963;&#8984;S) sie auf, und ein Klick springt dorthin.</p>
+<p><strong>2. Finde jede Stelle, die sagt, dass etwas erledigt, bestanden oder geprüft ist, und prüfe eine selbst.</strong> <em>(etwa eine Minute)</em> Öffne die Datei, führe den Test aus, zähle die Zeilen. Chip Huyen beschreibt einen Fehler, bei dem „der Agent überzeugt ist, eine Aufgabe erledigt zu haben, obwohl er es nicht hat“. In ihrem Beispiel soll ein Agent 50 Personen auf 30 Hotelzimmer verteilen, bringt 40 unter und besteht darauf, fertig zu sein.</p>
+<pre><code>grep -n -i -E 'done|pass|verified|&#9989;' plan.md</code></pre>
+<p>Hier findet das „&#9989; done“ und „All tests pass.“ Welche Tests? Berührt einer davon die Avatare? Führ sie aus oder frag nach. Diesen Schritt kann MarsDawn dir nicht abnehmen. Das kann niemand außer dir.</p>
+<p><strong>3. Achte auf Schritte, die sich nicht rückgängig machen lassen.</strong> <em>(etwa eine Minute)</em> Daten löschen, Migrationen, Force-Pushes, alles, was sendet, bezahlt oder veröffentlicht. Die warten auf dein ausdrückliches Ja. Chip Huyen beschreibt dieselbe Idee von der Seite des Systems aus: „Wenn ein Plan riskante Vorgänge umfasst, etwa eine Datenbank zu aktualisieren oder eine Codeänderung zu mergen, kann das System vor der Ausführung ausdrücklich um menschliche Zustimmung bitten oder die Ausführung dieser Vorgänge Menschen überlassen.“ Hier löscht Schritt 4 die Originale, und er kommt vor Schritt 5, dem Kopieren.</p>
+<p><strong>4. Lies die Diagramme gerendert und prüfe jeden Pfeil gegen den Text.</strong> Ein Flussdiagramm, das „kopieren &#8594; prüfen &#8594; löschen“ sagt, während die Schritte etwas anderes sagen, ist ein Befund. Dieser Plan hat kein Diagramm, also fällt der Schritt heute weg. Wenn es eines gibt, sieh dir das Bild an, nicht den Mermaid-Quelltext: Viele Editoren haben eine Vorschau, und <a href="/de/view-markdown-on-mac/">Eine Markdown-Datei auf dem Mac ansehen</a> und <a href="/de/vs/markdown-preview-tools/">Markdown anderswo ansehen</a> zeigen die Möglichkeiten. In MarsDawn steht das gerenderte Diagramm neben seinem Quelltext (&#8984;2), und ein fehlerhaftes Diagramm zeigt seinen Quelltext mit dem Fehler darunter, was einen eigenen Kommentar wert ist.</p>
+<p><strong>5. Liste die Dateien und Systeme auf, die der Plan berührt, und frag nach allem, worum du nicht gebeten hast.</strong> <em>(Schritte 4 und 5 zusammen, etwa eine Minute)</em> Hier: die Speicherkonfiguration, die Templates, ein Ordner auf dem Server, ein Bucket. Wer kann den Bucket lesen? Du hast nicht gesagt, dass er öffentlich sein soll. Wenn du den Arbeitsordner des Agenten in MarsDawn geöffnet hast (Ablage &#9656; Ordner öffnen&#160;&#8230;, &#8679;&#8984;O), erscheinen neue Dateien, die er schreibt, innerhalb etwa einer Sekunde im Tab Dateien, und die Kopfzeile nennt den Git-Branch oder Worktree, damit du weißt, welchen Checkout du prüfst.</p>
+<p><strong>6. Schreib Feedback als Stelle, Problem, Lösung, ein Problem pro Zeile.</strong> <em>(die letzte Minute)</em></p>
+<pre><code>plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
+plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
+plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.</code></pre>
+<p>Jeder Editor mit Zeilennummern genügt. In MarsDawn kopiert Bearbeiten &#9656; Verweis kopieren (&#8997;&#8984;C) deine Stelle als <code>plan.md:10</code>, und Für KI kopieren (&#8963;&#8997;&#8984;C) fügt den ausgewählten Text darunter ein.</p>
+
+<h2 id="if-you-have-one-minute">Wenn du nur eine Minute hast</h2>
+<p>Mach Schritt 2. Dort fliegt ein Agent auf, der glaubt, fertig zu sein.</p>
+
+<h2 id="when-five-minutes-isn-t-enough">Wenn fünf Minuten nicht reichen</h2>
+<p>Manchmal kannst du nicht beurteilen, ob ein Schritt richtig ist, weil er außerhalb deines Wissens liegt. Jess Ou bringt es in LangChains Erklärtext über Agenten von 2026 in zwei Sätzen auf den Punkt: „Lagere kein Urteil aus, das du nicht bewerten kannst. Wenn du eine richtige Antwort nicht erkennen würdest, erkennt der Agent sie auch nicht.“ Unsere Folgerung: Wenn du einen Schritt nicht beurteilen kannst, ist das kein Grund, ihn schneller freizugeben. Es ist ein Grund, jemanden zu fragen, der es kann.</p>
+
+<h2 id="what-marsdawn-does-here-and-what-it-doesn-t">Was MarsDawn hier tut und was nicht</h2>
+<p>In MarsDawn steckt kein KI-Modell. Es findet die Probleme in diesem Plan nicht und übernimmt weder Schritt 2 noch Schritt 3. Es hält die Datei lesbar, während du arbeitest: die Gliederung für Schritt 1, gerenderte Diagramme für Schritt 4, den Tab Dateien für Schritt 5, Zeilenverweise für Schritt 6. Und wenn der Agent den Plan überarbeitet, während du liest, lädt MarsDawn ihn neu und behält deine Stelle, solange du keine eigenen ungesicherten Änderungen hast.</p>
+<p>Wenn der Plan steht und jemand anderes ihn sehen muss, zeigen <a href="/de/sharing-exported-pdfs/">Exportierte PDFs teilen</a> und <a href="/de/markdown-to-pdf/">Markdown in PDF</a>, wie du ihn als PDF weitergibst.</p>
+
+<h2 id="try-it">Ausprobieren</h2>
+<p>MarsDawn gibt es im <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>. Dazu kommt das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code>:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Es exportiert Markdown ohne die App als PDF.</p>
+<p><a href="/de/cli/">Befehlszeile</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
+
+<h2 id="next">Weiter</h2>
+<ul>
+  <li>Warum Agentenausgaben überhaupt schwer zu lesen sind: <a href="/de/reading-agent-output/">Lesen, was dein Agent zurückgibt</a>.</li>
+  <li>Warum Agenten ihre Pläne überhaupt offenlegen: <a href="/de/agent-transparency/">Anthropic sagt, Agenten sollen transparent sein. Wer liest, was sie offenlegen?</a></li>
+  <li>Pläne sind nicht das Einzige, was Agenten zurückgeben: <a href="/de/agent-design-patterns/">Vier Agenten-Entwurfsmuster und die Dokumente, die jedes dir übergibt</a>.</li>
+</ul>
+
+<h2 id="sources">Quellen</h2>
+<ul>
+  <li>Chip Huyen, „Agents“, 7. Januar 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Jess Ou, „What is an AI agent?“, LangChain, 31. Juli 2026: <a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Website">
+    <a href="/de/support/">Support</a>
+    <a href="/de/privacy/">Datenschutzrichtlinie</a>
+    <a href="/de/cli/">Befehlszeile</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie-Einstellungen</button>
+  </nav>
+  <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>다른 도구로 Markdown 보기와 MarsDawn 비교 · MarsDawn</title>
+<meta name="description" content="VS Code의 기본 미리보기, 브라우저 확장 프로그램, Claude Desktop의 파일 미리보기에서 Markdown을 읽는 것과 MarsDawn을 비교합니다. 각각 무엇을 렌더링하는지, 파일 하나를 여는 데 무엇이 필요한지 살펴보세요.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/vs/markdown-preview-tools/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/vs/markdown-preview-tools/">
+<link rel="alternate" type="text/markdown" href="/ko/vs/markdown-preview-tools/index.md">
+<meta property="og:title" content="다른 도구로 Markdown 보기와 MarsDawn 비교 · MarsDawn">
+<meta property="og:description" content="VS Code의 기본 미리보기, 브라우저 확장 프로그램, Claude Desktop의 파일 미리보기에서 Markdown을 읽는 것과 MarsDawn을 비교합니다. 각각 무엇을 렌더링하는지, 파일 하나를 여는 데 무엇이 필요한지 살펴보세요.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/vs/markdown-preview-tools/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store에서 판매 중</span>
+  <nav class="lang" aria-label="Language"><a href="/vs/markdown-preview-tools/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/markdown-preview-tools/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/markdown-preview-tools/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/markdown-preview-tools/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/vs/markdown-preview-tools/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/vs/markdown-preview-tools/" hreflang="fr" lang="fr">Français</a> · <a href="/es/vs/markdown-preview-tools/" hreflang="es" lang="es">Español</a> · <a href="/ko/vs/markdown-preview-tools/" hreflang="ko" aria-current="true" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>다른 도구로 Markdown 보기와 MarsDawn.</h1>
+  <p>VS Code, 브라우저, Claude Desktop이 이미 열려 있다면 Markdown 파일을 잠깐 볼 때 그중 하나를 쓰는 것도 자연스럽습니다. 각각이 실제로 무엇을 렌더링하는지, 거기까지 가는 데 무엇이 드는지를 같은 파일을 MarsDawn에서 여는 것과 비교해 보세요.</p>
+</section>
+
+<h2 id="at-a-glance">한눈에 보기</h2>
+<div class="table-scroll"><table class="compare compare-wide">
+<thead><tr><th scope="col"></th><th scope="col">VS Code 미리보기</th><th scope="col">브라우저 확장 프로그램</th><th scope="col">Claude Desktop</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">디스크의 Markdown 파일 열기</th><td data-label="VS Code 미리보기">예</td><td data-label="브라우저 확장 프로그램">예, 파일 접근을 허용한 뒤</td><td data-label="Claude Desktop">아니요. Markdown이 업로드 목록에 없음</td><td data-label="MarsDawn">예</td></tr>
+  <tr><th scope="row">첫 파일을 열기 전에</th><td data-label="VS Code 미리보기">개발 환경 전체인 VS Code 설치</td><td data-label="브라우저 확장 프로그램">확장 프로그램 설치 후 ‘파일 URL에 대한 액세스 허용’ 켜기</td><td data-label="Claude Desktop">디스크의 파일을 둘러볼 수 없음</td><td data-label="MarsDawn">MarsDawn 설치</td></tr>
+  <tr><th scope="row">만든 목적</th><td data-label="VS Code 미리보기">코드 작성. 미리보기는 여러 패널 중 하나</td><td data-label="브라우저 확장 프로그램">웹 브라우징</td><td data-label="Claude Desktop">Claude와의 대화</td><td data-label="MarsDawn">Markdown 읽기와 편집</td></tr>
+  <tr><th scope="row">페이지를 그리는 방식</th><td data-label="VS Code 미리보기">Electron: Chromium과 Node.js 내장</td><td data-label="브라우저 확장 프로그램">브라우저 전체</td><td data-label="Claude Desktop">Claude Desktop 앱</td><td data-label="MarsDawn">네이티브 AppKit 앱. 페이지는 WebKit이 그림</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="vs-code-s-built-in-preview">VS Code의 기본 미리보기</h2>
+<p>VS Code에서 <kbd>&#8984;&#8679;V</kbd>를 누르면 기본 미리보기 패널에 Markdown 파일이 렌더링됩니다. 무료이고 따로 설치할 것도 없습니다. VS Code 1.121(2026년 5월)부터는 이 미리보기가 Mermaid 다이어그램도 기본으로 렌더링합니다. Microsoft가 Mermaid 확장 프로그램을 VS Code 자체에 넣었기 때문에, 예전에는 별도 확장 프로그램이 필요했지만 이제는 필요 없습니다. 하지 않는 일: 이것은 편집기 안의 미리보기 패널이지, 읽기 위해 만든 편집기가 아닙니다. 패널 옆에는 파일 트리, 터미널, 그 밖에 VS Code가 보여 줄 수 있는 온갖 패널이 있고, VS Code 자체는 파일 하나를 읽으려고 여는 앱이 아니라 개발 환경 전체로 설치하는 Electron 앱입니다.</p>
+
+<h2 id="a-browser-extension-for-local-files">로컬 파일용 브라우저 확장 프로그램</h2>
+<p>로컬 <code>.md</code> 파일을 읽는 데 압도적으로 쓰이는 브라우저 확장 프로그램은 없습니다. Local Markdown Viewer, Markdown Viewer, MarkView 등이 거의 같은 일을 하며, 어느 것도 기본으로 깔려 있지 않습니다. 모두 무언가를 열기 전에 같은 단계가 하나 더 필요합니다. 브라우저는 기본적으로 확장 프로그램이 <code>file://</code> 페이지를 읽지 못하게 막기 때문에, 해당 확장 프로그램에서 ‘파일 URL에 대한 액세스 허용’을 켜야 합니다. 확장 프로그램마다 한 번 주는 권한이라, 줬다는 사실이나 그 이유를 잊기 쉽습니다. 권한을 켜면 파일이 브라우저 탭에 렌더링됩니다. 즉, 파일 하나를 보려고 브라우저 전체를 실행하는 셈입니다.</p>
+
+<h2 id="claude-desktop-s-file-preview">Claude Desktop의 파일 미리보기</h2>
+<p>Claude Desktop은 이미 프로젝트나 대화에 들어 있는 파일을 보여 줍니다. 디스크의 아무 파일이나 둘러보는 용도로 만든 것은 아닙니다. 볼 수 있는 것은 대화에 이미 들어 있는 것이지, 작업 옆에 열어 두는 노트 폴더가 아닙니다. Anthropic이 직접 밝힌 <a href="https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai">업로드할 수 있는 문서 유형</a>은 PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON, XLSX이며, Markdown은 목록에 없습니다.</p>
+
+<h2 id="a-browser-engine-to-read-one-file">파일 하나를 읽으려고 브라우저 엔진을</h2>
+<p>VS Code는 Electron 앱입니다. Chromium과 Node.js 런타임을 통째로 담고 있으며, 네이티브 Mac 앱이 아닙니다. 브라우저 확장 프로그램은 실제 브라우저 안에서 실행됩니다. 어느 쪽이든 Markdown 파일 하나를 보려고 브라우저 엔진 전체가 돌아갑니다. MarsDawn은 네이티브 AppKit 앱입니다. 브라우저 런타임을 담고 있지 않으며, 설치할 확장 프로그램이나 기억해야 할 권한 설정 없이 로컬 파일을 바로 엽니다.</p>
+
+<h2 id="next">다음</h2>
+<ul>
+  <li>MarsDawn도 하지 않는 일: <a href="/ko/limits/">목록</a>.</li>
+  <li>지금 무료로 어떤 Markdown 파일이든 PDF로 바꾸기: <a href="/ko/markdown-to-pdf/">Markdown을 PDF로</a>.</li>
+  <li>네이티브 Mac 뷰어와 비교하기: <a href="/ko/vs/macmd-viewer/">MacMD Viewer와 MarsDawn</a>.</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트">
+    <a href="/ko/support/">지원</a>
+    <a href="/ko/privacy/">개인정보 처리방침</a>
+    <a href="/ko/cli/">명령줄</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
