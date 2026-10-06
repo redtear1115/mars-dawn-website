@@ -480,6 +480,363 @@ open notes.pdf</code></pre>
         ],
     }
 
+    schema_notes = {
+        "export": "export erfolgreich",
+        "open": "open erfolgreich, marsdawn 0.5.1 und neuer, einschließlich eines in der Seitenleiste angezeigten Ordners",
+        "open_v2": "open erfolgreich, marsdawn 0.3.0 bis 0.5.0",
+        "error": "Fehler, beide Befehle, marsdawn 0.5.2 und neuer",
+        "open_v1": "open erfolgreich, marsdawn 0.2.x, wo <code>opened</code> eine Liste von Pfaden war",
+        "error_v1": "Fehler, beide Befehle, marsdawn 0.5.1 und älter",
+    }
+
+    pages['cli/agents'] = {
+        "title": 'marsdawn für Agenten: Markdown in PDF aus Skripten · MarsDawn',
+        "description": 'Eine Referenz für KI-Agenten und Skripte, die marsdawn aufrufen, um Markdown in PDF umzuwandeln: Befehle, JSON-Ausgabe, Schemas, Exit-Codes und Voraussetzungen.',
+        "body": f"""
+<section class="intro">
+  <h1>marsdawn für Agenten</h1>
+  <p>Eine Referenz für KI-Agenten und Skripte, die das Befehlszeilenwerkzeug <code>marsdawn</code> aufrufen. Jedes Beispiel auf dieser Seite wurde mit dem aus dem aktuellen Quellcode gebauten Werkzeug ausgeführt.</p>
+</section>
+
+<div class="summary"><p><strong>Um eine Markdown-Datei in ein PDF umzuwandeln, führe <code>marsdawn export notes.md --json</code> aus und lies ein JSON-Objekt von stdout.</strong> Mermaid-Diagramme und hervorgehobener Code werden genauso gerendert wie in der MarsDawn-App. <code>export</code> braucht die App nicht, <code>open</code> schon.</p></div>
+
+<h2>Was es tut</h2>
+<ul>
+  <li><code>export</code> rendert eine Markdown-Datei mit demselben Exporter wie die MarsDawn-App zu einem PDF mit Seitenumbrüchen. Es öffnet sich kein Fenster.</li>
+  <li><code>open</code> öffnet eine oder mehrere Markdown-Dateien in der MarsDawn-App, damit ein Mensch sie prüfen kann. Es kann für jede Datei die Zeile angeben, bei der sie aufgehen soll, und einen Ordner in der Seitenleiste des Fensters anzeigen.</li>
+</ul>
+
+<h2>Was es nicht tut</h2>
+<ul>
+  <li>Es liest kein Markdown von stdin. Übergib einen Dateipfad.</li>
+  <li>Es schreibt das PDF nicht nach stdout. Das PDF landet immer in einer Datei; stdout enthält nur das Ergebnis.</li>
+  <li>Es ersetzt keine vorhandene Datei, außer du übergibst <code>--force</code>.</li>
+  <li>Es lädt keine Bilder aus dem Web, außer du übergibst <code>--allow-remote-images</code>, und dann nur über https.</li>
+  <li><code>open</code> funktioniert nicht ohne installierte MarsDawn-App und endet mit Code 3. <code>export</code> braucht die App nicht. Die App gibt es im <a href="{k.LISTING_URL}">Mac App Store</a>.</li>
+  <li>MarsDawn 1.0 öffnet die Datei in der Zeile, die <code>open</code> angibt.</li>
+  <li>Es läuft nur unter macOS.</li>
+</ul>
+
+<h2>export</h2>
+<pre><code>marsdawn export notes.md --json</code></pre>
+<p>Schreibt <code>notes.pdf</code> neben <code>notes.md</code>. Optionen:</p>
+<ul>
+  <li><code>-o, --output &lt;path&gt;</code>: wohin das PDF geschrieben wird. Standard ist der Eingabepfad mit der Endung <code>.pdf</code>.</li>
+  <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: die helle Farbpalette des Themas. Standard ist <code>$MARSDAWN_THEME</code>, sonst <code>dawn</code>.</li>
+  <li><code>--paper &lt;a4|letter&gt;</code>: Papierformat. Standard ist <code>a4</code>.</li>
+  <li><code>--allow-remote-images</code>: lädt beim Rendern https-Bilder aus dem Web.</li>
+  <li><code>--force</code>: ersetzt die Ausgabedatei, falls sie existiert.</li>
+  <li><code>--json</code>: gibt statt Text ein JSON-Objekt auf stdout aus.</li>
+</ul>
+<pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
+<p>Erfolg, Exit-Code 0:</p>
+<pre><code>{{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}}</code></pre>
+<ul>
+  <li><code>output</code>: absoluter Pfad des geschriebenen PDFs.</li>
+  <li><code>pages</code>: Anzahl der Seiten.</li>
+  <li><code>theme</code> und <code>paper</code>: die verwendeten Werte.</li>
+  <li><code>diagramErrors</code>: eine Meldung pro Mermaid-Diagramm, das nicht gerendert werden konnte. Das PDF wird trotzdem geschrieben.</li>
+</ul>
+
+<h2>open</h2>
+<pre><code>marsdawn open notes.md --json
+marsdawn open notes.md:120 --json
+marsdawn open notes.md --line 120 --json
+marsdawn open . --json
+marsdawn open notes.md --folder . --background --json</code></pre>
+<ul>
+  <li><code>path:line</code> gibt die Zeile an, bei der die Datei aufgehen soll. Eine Spalte dahinter, wie in <code>notes.md:120:8</code>, wird ignoriert. Ein Argument, das eine existierende Datei benennt, gilt immer als ganzer Dateiname, eine Datei namens <code>weird:12</code> öffnet sich also als sie selbst.</li>
+  <li><code>--line &lt;n&gt;</code> gibt die Zeile für eine einzelne Datei an, auch für einen Pfad, der selbst auf Doppelpunkt und Ziffern endet. Es braucht genau eine Datei.</li>
+  <li>Zeilen reichen von 1 bis 999999999. Alles andere ist ein Bedienungsfehler.</li>
+  <li>Zeilen kamen mit marsdawn 0.3.0 hinzu. MarsDawn 1.0 öffnet die Datei in dieser Zeile.</li>
+  <li>Ein Ordner als Argument öffnet sich in der Seitenleiste des Fensters statt als Dokument, <code>marsdawn open .</code> zeigt also den aktuellen Ordner; <code>--folder &lt;path&gt;</code> tut dasselbe zusätzlich zu Dateien. Die Seitenleiste eines Fensters zeigt einen Ordner: Zwei anzugeben ist ein Bedienungsfehler, ebenso <code>--folder</code> zweimal, selbst für denselben Ordner; derselbe Ordner noch einmal als Argument zählt einmal. <code>--line</code> mit einem Ordner ist ein Bedienungsfehler, da ein Ordner keine Zeile hat. Es gibt kein <code>-a</code>: Wer es übergibt, bekommt einen Bedienungsfehler mit Verweis auf <code>--folder</code>.</li>
+  <li><code>--background</code> öffnet, ohne MarsDawn in den Vordergrund zu holen, für einen Agenten, der Dateien öffnet, während der Mensch woanders arbeitet. Das JSON ist in beiden Fällen gleich.</li>
+  <li>Ordner und <code>--background</code> kamen mit marsdawn 0.5.1 hinzu.</li>
+</ul>
+<p>Erfolg, Exit-Code 0:</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{{"line":120,"path":"/path/to/notes.md"}}]}}</code></pre>
+<ul>
+  <li><code>opened</code>: ein Objekt pro Datei, in der angegebenen Reihenfolge. <code>path</code> ist der absolute Pfad der Datei; <code>line</code> erscheint nur, wenn eine Zeile angefragt wurde.</li>
+  <li><code>app</code>: Pfad der MarsDawn-App, die sie geöffnet hat.</li>
+</ul>
+<p>Mit einem Ordner (marsdawn 0.5.1 und neuer), Exit-Code 0:</p>
+<pre><code>{{"app":"/Applications/MarsDawn.app","folder":{{"path":"/path/to/project","requested":true}},"ok":true,"opened":[{{"path":"/path/to/project/notes.md"}}]}}</code></pre>
+<ul>
+  <li><code>folder</code>: nur vorhanden, wenn ein Ordner angegeben wurde. <code>path</code> ist sein absoluter Pfad. <code>requested</code> ist immer <code>true</code>: marsdawn hat MarsDawn gebeten, den Ordner anzuzeigen, und kann nicht wissen, ob die Seitenleiste ihn zeigt, denn die App fragt den Menschen womöglich erst nach Zugriff. Melde es als angefragt, nicht als erledigt.</li>
+  <li><code>opened</code> ist leer, wenn nur ein Ordner angegeben wurde.</li>
+</ul>
+<p>marsdawn 0.2.x gab <code>opened</code> als Liste von Pfad-Strings aus. Prüfe <code>marsdawn --version</code>, wenn du beides verarbeiten musst.</p>
+
+<h2>Dateien öffnen, während Claude Code sie bearbeitet</h2>
+<p>Ein optionaler <a href="https://code.claude.com/docs/en/hooks">Claude Code Hook</a>: Nachdem Claude eine Markdown-Datei geschrieben oder bearbeitet hat, öffnet er diese Datei im Hintergrund in MarsDawn, einmal pro Datei und Sitzung. Er ist aus, bis du ihn hinzufügst, Projekt für Projekt, denn ein Fenster, um das du nicht gebeten hast, kostet Aufmerksamkeit. Er führt einen Shell-Befehl aus und kostet keine Modell-Tokens.</p>
+<p>Er braucht marsdawn 0.5.1 oder neuer, wegen <code>--background</code>, und die MarsDawn-App.</p>
+<p>Sichere das als <code>.claude/hooks/marsdawn-open.sh</code> in deinem Projekt und mach es mit <code>chmod +x</code> ausführbar:</p>
+<pre><code>#!/bin/sh
+# Claude Code PostToolUse hook: open a Markdown file Claude just wrote or edited in MarsDawn,
+# in the background, once per file per session. Never blocks Claude: every path exits 0.
+input=$(cat)
+file=$(printf '%s' "$input" | /usr/bin/jq -r '.tool_input.file_path // empty' 2&gt;/dev/null)
+session=$(printf '%s' "$input" | /usr/bin/jq -r '.session_id // "unknown"' 2&gt;/dev/null)
+
+case "$file" in
+  *.md|*.markdown) ;;
+  *) exit 0 ;;
+esac
+[ -f "$file" ] || exit 0
+# A hook runs with Claude Code's PATH, which may not include Homebrew's.
+marsdawn=$(command -v marsdawn || {{ [ -x /opt/homebrew/bin/marsdawn ] &amp;&amp; echo /opt/homebrew/bin/marsdawn; }}) || exit 0
+[ -n "$marsdawn" ] || exit 0
+
+# One list per session, so a file opens once however often Claude edits it.
+seen="${{TMPDIR:-/tmp}}/marsdawn-hook/$session"
+mkdir -p "$(dirname "$seen")"
+grep -qxF "$file" "$seen" 2&gt;/dev/null &amp;&amp; exit 0
+echo "$file" &gt;&gt; "$seen"
+
+"$marsdawn" open --background "$file" &gt;/dev/null 2&gt;&amp;1 || true
+exit 0</code></pre>
+<p>Füge den Hook dann zu <code>.claude/settings.json</code> im Projekt hinzu, oder zu <code>.claude/settings.local.json</code>, wenn er nur für dich gelten soll:</p>
+<pre><code>{{
+  "hooks": {{
+    "PostToolUse": [
+      {{
+        "matcher": "Write|Edit",
+        "hooks": [
+          {{ "type": "command", "command": "\\"$CLAUDE_PROJECT_DIR\\"/.claude/hooks/marsdawn-open.sh" }}
+        ]
+      }}
+    ]
+  }}
+}}</code></pre>
+<ul>
+  <li>Er läuft nach Claudes Write- und Edit-Werkzeugen. Dateien, die nicht auf <code>.md</code> oder <code>.markdown</code> enden, bleiben unberührt.</li>
+  <li>Jede Datei öffnet sich einmal pro Claude-Code-Sitzung, egal wie oft Claude sie bearbeitet. Die Liste liegt in <code>$TMPDIR/marsdawn-hook/</code>, eine Datei pro Sitzung, eine neue Sitzung öffnet die Datei also erneut.</li>
+  <li><code>--background</code> hält MarsDawn im Hintergrund: Das Fenster, in dem du gearbeitet hast, behält den Fokus.</li>
+  <li>Er kommt Claude nie in die Quere. Jeder Pfad endet mit 0, und wenn marsdawn oder die MarsDawn-App nicht installiert ist, passiert nichts.</li>
+  <li>Er liest die Eingabe des Hooks mit <code>/usr/bin/jq</code>, das bei macOS 26 dabei ist, der Version, die die MarsDawn-App braucht.</li>
+  <li>Zum Abschalten entferne den Eintrag aus der Einstellungsdatei.</li>
+</ul>
+
+<h2>Fehler</h2>
+<p>Mit <code>--json</code> gibt ein Fehler ein JSON-Objekt auf stdout aus und endet mit seinem Code:</p>
+<pre><code>{{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}}</code></pre>
+<ul>
+  <li><code>2</code>, <code>input_not_found</code>: Die Eingabe existiert nicht, ist ein Ordner oder ist kein UTF-8-Text; oder ein <code>--folder</code>-Pfad existiert nicht oder ist kein Ordner.</li>
+  <li><code>3</code>, <code>app_not_installed</code>: MarsDawn ist nicht installiert. Nur <code>open</code> liefert das.</li>
+  <li><code>4</code>, <code>output_exists</code>: Die Ausgabedatei existiert. Übergib <code>--force</code>.</li>
+  <li><code>5</code>, <code>export_failed</code>: Der Export selbst ist fehlgeschlagen.</li>
+  <li><code>6</code>, <code>app_cannot_open_folders</code>: Dieses MarsDawn kann keinen Ordner anzeigen, also wurde nichts geöffnet. Nur <code>open</code> liefert das.</li>
+  <li><code>64</code>: Bedienungsfehler, etwa eine unbekannte Option, ein ungültiger Wert, eine Zeile außerhalb des Bereichs, <code>--line</code> mit mehr als einer Datei oder mit einem Ordner, mehr als ein Ordner oder <code>-a</code>. Dieser wird als Text auf stderr ausgegeben, auch mit <code>--json</code>.</li>
+</ul>
+
+<h2>JSON-Schemas</h2>
+<p>JSON Schema (Draft 2020-12) für jedes <code>--json</code>-Ergebnis:</p>
+<ul>
+{k.schema_links_from(schema_notes)}
+</ul>
+
+<h2>Umgebungsvariablen</h2>
+<ul>
+  <li><code>MARSDAWN_THEME</code>: das Thema, das <code>export</code> verwendet, wenn <code>--theme</code> nicht übergeben wird. Ein unbekannter Wert fällt ohne Fehler auf <code>dawn</code> zurück.</li>
+</ul>
+
+<h2>Voraussetzungen</h2>
+<ul>
+  <li>Das Werkzeug läuft unter macOS 15 oder neuer. Auf Apple Chips installiert Homebrew eine fertig gebaute Bottle, und sonst wird nichts gebraucht. Selbst bauen, auf einem Intel-Mac oder aus dem Quellcode, erfordert Swift 6.2 oder neuer, das mit Xcode 26 oder neuer kommt.</li>
+  <li>Die MarsDawn-App erfordert macOS 26 oder neuer.</li>
+</ul>
+
+<h2>Installieren</h2>
+<p>Mit Homebrew. Auf Apple Chips installiert es in Sekunden eine fertig gebaute Bottle, ganz ohne Xcode. Auf einem Intel-Mac kompiliert es marsdawn aus dem Quellcode, was ein paar Minuten dauert und Xcode 26 oder neuer erfordert.</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn
+marsdawn --version</code></pre>
+<p>Oder bau es aus <a href="{k.KIT_URL}">dem Quellcode</a>. Der erste Build lädt Abhängigkeiten und kompiliert, was ebenfalls ein paar Minuten dauert.</p>
+<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+cd mars-dawn-kit
+swift build -c release --product marsdawn
+.build/release/marsdawn export notes.md --json</code></pre>
+<p><code>marsdawn --version</code> gibt die Versionsnummer aus, etwa <code>0.3.0</code>, und endet mit Code 0.</p>
+
+<h2>Weiter</h2>
+<ul>
+  <li>Ein Skill in einer Datei für Agenten, die Anweisungen lesen statt eine Shell zu benutzen: <a href="/de/cli/skill/">der marsdawn-Skill</a>.</li>
+  <li>Ein MCP-Server, der genau dieses <code>export</code> umschließt: <a href="/de/cli/mcp/">marsdawn-mcp</a>.</li>
+  <li>Warum dieses JSON-Ergebnis für den eigenen Kontext eines Agenten günstig bleibt: <a href="/de/token-efficient-review/">Token-sparsames Prüfen</a>.</li>
+</ul>
+""",
+    }
+
+    pages['cli/skill'] = {
+        "title": 'Ein Coding-Agent-Skill für Markdown in PDF · MarsDawn',
+        "description": 'Eine Datei, die dein Coding-Agent lädt, um geschriebenes Markdown zur Prüfung in MarsDawn zu öffnen, marsdawn zu installieren, Markdown als PDF zu exportieren und das JSON-Ergebnis zu lesen.',
+        "body": f"""
+<section class="intro">
+  <h1>Lass deinen Agenten zeigen, was er geschrieben hat, und das PDF erstellen.</h1>
+  <p>Dieser Skill ist eine Markdown-Datei. Er bringt einem Coding-Agenten bei, ein Dokument, das er geschrieben hat, zur Prüfung für dich in MarsDawn zu öffnen, <code>marsdawn</code> zu installieren, zu prüfen, ob es funktioniert, ein Dokument als PDF zu exportieren und das Ergebnis zu lesen.</p>
+</section>
+<div class="summary"><p><strong>Eine Markdown-Datei unter <code>~/.claude/skills/marsdawn/SKILL.md</code>.</strong> Damit installiert dein Agent <code>marsdawn</code>, exportiert als PDF und liest das JSON-Ergebnis, und er fragt trotzdem, bevor er etwas ausführt.</p></div>
+<h2>In Claude Code installieren</h2>
+<pre><code>mkdir -p ~/.claude/skills/marsdawn
+curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
+<p>Claude Code lädt ihn, wenn eine Aufgabe ein PDF verlangt oder wenn es ein Markdown-Dokument zum Lesen für dich geschrieben oder überarbeitet hat, und du kannst ihn selbst als <code>/marsdawn</code> aufrufen. Es ist <a href="/cli/skill/SKILL.md">eine kurze Datei</a>, lies sie also, bevor du sie installierst.</p>
+<p>Andere Agenten können dieselbe Datei verwenden. Sie ist reines Markdown, Anweisungen und Befehle, also verweise deinen Agenten auf die URL oder füge sie ein.</p>
+<h2>Was er beibringt</h2>
+<ul>
+  <li><code>marsdawn</code> mit Homebrew installieren, falls es fehlt, und es dann mit <code>marsdawn --version</code> prüfen, statt eine Version anzunehmen.</li>
+  <li>Mit <code>marsdawn export … --json</code> exportieren und das Ergebnis lesen: wo das PDF gelandet ist, wie viele Seiten es hat und welches Mermaid-Diagramm nicht gerendert wurde.</li>
+  <li>Fehler am Exit-Code unterscheiden: keine solche Datei, ein PDF ist schon da, ein fehlgeschlagener Export, eine falsche Option.</li>
+  <li>Ein geschriebenes Dokument mit <code>marsdawn open file.md:line</code> öffnen, bei der ersten Änderung, und nur einmal: Spätere Änderungen erscheinen von selbst im offenen Fenster.</li>
+  <li>Wenn die MarsDawn-App nicht installiert ist, das einmal sagen und weitermachen, ohne es erneut zu versuchen. Nie <code>open</code> verwenden, um ein PDF zu erstellen.</li>
+  <li>Mit <code>--folder</code> (marsdawn 0.5.1 und neuer) den Ordner als angefragt melden, nicht als angezeigt: Die App entscheidet, und nichts meldet zurück.</li>
+</ul>
+<h2>Was er nicht tut</h2>
+<ul>
+  <li>Er gibt sich nicht selbst die Erlaubnis, etwas auszuführen. Dein Agent fragt weiterhin, bevor er <code>marsdawn</code> installiert oder ausführt, wie bei jedem anderen Befehl.</li>
+  <li>Er schickt deine Dokumente nirgendwohin. <code>marsdawn</code> rendert auf deinem Mac und lässt Bilder aus dem Web weg, außer du übergibst <code>--allow-remote-images</code>.</li>
+</ul>
+<p>Der vollständige Vertrag, jedes Feld und jeder Code, steht unter <a href="/de/cli/agents/">marsdawn für Agenten</a>. Für einen Agenten, der Werkzeuge über MCP aufruft, statt eine Skill-Datei zu lesen, gibt es außerdem <a href="/de/cli/mcp/">einen MCP-Server</a>.</p>
+""",
+    }
+
+    pages['cli/mcp'] = {
+        "title": 'Drei Wege, marsdawn aufzurufen: CLI, Skill-Datei, MCP-Server · MarsDawn',
+        "description": 'marsdawn hat kein eigenes KI-Modell, daher ist egal, welcher Agent das Markdown geschrieben hat. Ruf es über die CLI, eine Skill-Datei oder den MCP-Server marsdawn-mcp auf: Alle drei führen denselben Export aus.',
+        "body": f"""
+<section class="intro">
+  <h1>Drei Wege, marsdawn aufzurufen.</h1>
+  <p>MarsDawn hat kein eigenes KI-Modell: Es ist gebaut, um Markdown zu prüfen, nicht um es zu schreiben, daher ist egal, welcher Agent oder welches Modell die Datei erzeugt hat. Es gibt drei Wege, wie ein Agent oder ein Skript <code>marsdawn</code> aufrufen kann, und alle drei führen am Ende dasselbe <code>export</code> aus.</p>
+</section>
+
+<div class="summary"><p><strong>Nimm, was deine Werkzeuge unterstützen: die kostenlose <code>marsdawn</code>-CLI, eine Skill-Datei in reinem Markdown oder den MCP-Server <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a>.</strong> Alle drei rufen dasselbe <code>marsdawn export</code> auf und liefern dasselbe JSON-Ergebnis.</p></div>
+
+<h2>Welchen Weg nehmen</h2>
+<!--compare:mcp-choice-->
+
+<h2>Die CLI</h2>
+<p><code>marsdawn export notes.md --json</code> kann jeder Agent und jedes Skript aufrufen, das einen Shell-Befehl ausführen kann, und ist damit von Haus aus modellunabhängig. Jedes Feld, das es liefert, ist unter <a href="/de/cli/agents/">marsdawn für Agenten</a> dokumentiert. Das ist die maßgebliche Quelle für das JSON-Schema, auf die die beiden anderen Wege unten verweisen.</p>
+
+<h2>Die Skill-Datei</h2>
+<p>Für einen Agenten, der Anweisungen in reinem Markdown liest, statt direkt eine Shell aufzurufen (heute Claude Code), ist <a href="/de/cli/skill/">der marsdawn-Skill</a> eine Datei, die ihm beibringt, marsdawn zu installieren, <code>export</code> auszuführen und das Ergebnis zu lesen. Sie ist reines Markdown, also können andere Agenten, die Anweisungsdateien laden, dieselbe verwenden.</p>
+
+<h2>Der MCP-Server</h2>
+<p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> ist ein eigenes, öffentliches Repository unter Apache-2.0. Es ist ein MCP-Server mit zwei Werkzeugen, <code>export_markdown_to_pdf</code> und <code>open_in_marsdawn</code>, die <code>marsdawn export --json</code> und <code>marsdawn open --json</code> umschließen: Richte einen MCP-Client darauf, und ein Werkzeugaufruf liefert dasselbe JSON wie die CLI.</p>
+<ul>
+  <li><strong>Bezugsquelle:</strong> als MCP Bundle, <code>marsdawn.mcpb</code>, angehängt an <a href="https://github.com/redtear1115/marsdawn-mcp/releases">sein GitHub-Release</a>, oder indem du den Server aus dem Quellcode über stdio startest.</li>
+  <li><strong>Registry:</strong> noch nicht in der MCP Registry gelistet (aktuelles Release: 0.2.1). Prüfe den aktuellen Stand im Repository, bevor du dich auf die Suche über die Registry verlässt.</li>
+  <li><strong>Hosting:</strong> nur selbst gehostet. Es gibt keinen gehosteten marsdawn-mcp-Dienst; der Server läuft auf deinem eigenen Rechner, neben marsdawn selbst.</li>
+  <li><strong>Voraussetzungen:</strong> macOS, marsdawn 0.5.0 oder neuer und Node.js 20 oder neuer, um den Server auszuführen.</li>
+</ul>
+
+<h2>Auf Ordner beschränkt, die du erlaubst</h2>
+<p>Beide Werkzeuge greifen nur auf Ordner zu, die du erlaubst: die Einstellung <strong>Allowed folders</strong> der Erweiterung, die leer und ohne Voreinstellung beginnt, oder stattdessen die Roots, die dein MCP-Client anbietet. Ist beides nicht gesetzt, wird jeder Aufruf abgelehnt, und die Meldung sagt, wie du das behebst. Jeder Pfad muss absolut sein, und <code>export_markdown_to_pdf</code> schreibt immer nur eine <code>.pdf</code>-Datei, nie über einen symbolischen Link.</p>
+<p><strong>Sicherheit:</strong> Aktualisiere auf <a href="https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1">0.2.1</a>. Mit 0.1.0 und 0.2.0 konnte ein Aufruf ein PDF an jeden Pfad schreiben, auf den dein Benutzerkonto schreiben durfte; behoben als <a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a>.</p>
+
+<h2>Derselbe Export, drei Türen</h2>
+<p>Egal, welcher Weg es aufruft, das Verhalten darunter ändert sich nicht: derselbe Exporter, dieselben Themen und Papierformate, dieselben <code>diagramErrors</code>, wenn ein Mermaid-Diagramm nicht gerendert werden kann. Diese Seite wiederholt diesen Vertrag nicht; das tut <a href="/de/cli/agents/">marsdawn für Agenten</a>, vollständig.</p>
+
+<h2>Weiter</h2>
+<ul>
+  <li>Das vollständige JSON-Schema und jeder Exit-Code: <a href="/de/cli/agents/">marsdawn für Agenten</a>.</li>
+  <li>Der Skill in einer Datei für Claude Code und ähnliche Agenten: <a href="/de/cli/skill/">der marsdawn-Skill</a>.</li>
+  <li>Warum ein kompaktes JSON-Ergebnis für den eigenen Kontext deines Agenten zählt: <a href="/de/token-efficient-review/">Token-sparsames Prüfen</a>.</li>
+</ul>
+""",
+    }
+
+    pages['vs/markdown-preview-tools'] = {
+        "title": 'Markdown anderswo ansehen oder in MarsDawn · MarsDawn',
+        "description": 'Wie sich MarsDawn mit dem Lesen von Markdown in der eingebauten Vorschau von VS Code, einer Browsererweiterung oder der Dateivorschau von Claude Desktop vergleicht: was jeweils gerendert wird und was es braucht, eine Datei zu öffnen.',
+        "body": f"""
+<section class="intro">
+  <h1>Markdown anderswo ansehen oder in MarsDawn.</h1>
+  <p>Wenn du VS Code, einen Browser oder Claude Desktop ohnehin offen hast, liegt es nahe, damit kurz in eine Markdown-Datei zu schauen. Hier siehst du, was jedes davon tatsächlich rendert und was es kostet, dorthin zu kommen, im Vergleich dazu, dieselbe Datei in MarsDawn zu öffnen.</p>
+</section>
+
+<h2>Auf einen Blick</h2>
+<!--compare:preview-tools-->
+
+<h2>Die eingebaute Vorschau von VS Code</h2>
+<p>Drück in VS Code <kbd>&#8984;&#8679;V</kbd>, und es rendert die Markdown-Datei in einem eingebauten Vorschaubereich, kostenlos und ohne etwas zu installieren. Seit VS Code 1.121 (Mai 2026) rendert diese Vorschau auch Mermaid-Diagramme direkt: Microsoft hat eine Mermaid-Erweiterung in VS Code selbst übernommen, was früher eine eigene Erweiterung brauchte, jetzt nicht mehr. Was sie nicht tut: Sie ist ein Vorschaubereich in einem Editor, kein Editor, der zum Lesen gebaut ist. Der Bereich sitzt neben einem Dateibaum, einem Terminal und jedem anderen Panel, das VS Code anzeigen kann, und VS Code selbst ist eine Electron-App, die du als ganze Entwicklungsumgebung installierst, nichts, was du öffnest, um eine Datei zu lesen.</p>
+
+<h2>Eine Browsererweiterung für lokale Dateien</h2>
+<p>Keine einzelne Browsererweiterung dominiert beim Lesen einer lokalen <code>.md</code>-Datei: Local Markdown Viewer, Markdown Viewer, MarkView und andere tun ungefähr dasselbe, und keine ist Standard. Jede braucht denselben zusätzlichen Schritt, bevor sie etwas öffnen kann: „Zugriff auf Datei-URLs zulassen“ für diese Erweiterung einschalten, weil Browser Erweiterungen standardmäßig daran hindern, <code>file://</code>-Seiten zu lesen. Diese Berechtigung erteilst du einmal pro Erweiterung, und man vergisst leicht, dass man es getan hat, oder warum. Ist sie an, wird die Datei in einem Browser-Tab gerendert, du lässt also einen vollständigen Browser laufen, um eine Datei anzusehen.</p>
+
+<h2>Die Dateivorschau von Claude Desktop</h2>
+<p>Claude Desktop zeigt eine Datei, die schon in einem Projekt oder einer Unterhaltung ist. Wofür es nicht gebaut ist: beliebige Dateien auf der Festplatte zu durchsuchen. Ansehen kannst du, was die Unterhaltung schon enthält, nicht einen Ordner mit Notizen, den du neben deiner Arbeit offen hältst. Anthropics eigene Liste <a href="https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai">der Dokumenttypen, die du hochladen kannst</a>, umfasst PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON und XLSX: Markdown steht nicht darauf.</p>
+
+<h2>Eine Browser-Engine, um eine Datei zu lesen</h2>
+<p>VS Code ist eine Electron-App: ein mitgeliefertes Chromium samt Node.js-Laufzeit, keine native Mac-App. Der Weg über die Browsererweiterung läuft in einem echten Browser. So oder so läuft eine vollständige Browser-Engine, nur um eine Markdown-Datei anzuzeigen. MarsDawn ist eine native AppKit-App: keine mitgelieferte Browser-Laufzeit, sie öffnet jede lokale Datei direkt, ohne Erweiterung zum Installieren und ohne Berechtigung, an die man denken muss.</p>
+
+<h2>Weiter</h2>
+<ul>
+  <li>Was MarsDawn auch nicht kann: <a href="/de/limits/">die Liste</a>.</li>
+  <li>Jede Markdown-Datei heute kostenlos in ein PDF verwandeln: <a href="/de/markdown-to-pdf/">Markdown in PDF</a>.</li>
+  <li>Im Vergleich mit einem nativen Mac-Viewer: <a href="/de/vs/macmd-viewer/">MacMD Viewer oder MarsDawn</a>.</li>
+</ul>
+""",
+    }
+
+    pages['themes'] = {
+        "title": 'Vorschauthemen und PDF-Export in MarsDawn · MarsDawn',
+        "description": 'Vier Vorschauthemen mit je einer hellen und einer dunklen Palette und ein PDF- und Druckexport, der zum gewählten Thema passt. Weitere importierbare Themen und eine Galerie zum Teilen eigener Themen sind geplant.',
+        "body": f"""
+<section class="intro">
+  <h1>Acht Looks, ein Export.</h1>
+  <p>MarsDawn bringt vier Vorschauthemen mit, Dawn, Classic, Modern und Vivid, jedes mit einer hellen und einer dunklen Palette: acht Kombinationen, um ein Dokument zu lesen. Exportierst du als PDF oder druckst, kommt die Seite in dem Thema heraus, in dem du gerade gelesen hast.</p>
+</section>
+
+<div class="summary"><p><strong>Vier Themen &#215; hell und dunkel = acht Arten, ein Dokument zu lesen, und ein Exportweg, der zu deiner Wahl passt.</strong> Weitere importierbare Themen und eine Galerie zum Teilen eigener Themen sind geplant, aber noch nicht gebaut.</p></div>
+
+<h2>Die vier Themen</h2>
+<!--theme-gallery-->
+<ul>
+  <li><strong>Dawn</strong>, der Standard: dasselbe warme Papier und derselbe Akzent in Mars Rust, aus denen diese Website gebaut ist.</li>
+  <li><strong>Classic</strong>: eine schlichtere Palette, die an ein Dokument erinnert.</li>
+  <li><strong>Modern</strong>: eine kühlere, zeitgemäßere Palette.</li>
+  <li><strong>Vivid</strong>: eine hellere Palette mit stärkerem Kontrast.</li>
+</ul>
+<p>Jedes hat seine eigene helle und dunkle Variante: Wechselst du das Erscheinungsbild deines Macs, wechselt die Palette des Themas mit, nicht nur die Oberfläche drumherum.</p>
+
+<h2>PDF-Export und Drucken verwenden dasselbe Thema</h2>
+<p>Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themas: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden keine Tabelle und kein Diagramm in der Mitte durch. Das kostenlose <a href="/de/cli/">Befehlszeilenwerkzeug marsdawn</a> verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit <code>--theme</code> das identische PDF, in jedem der vier Themen.</p>
+
+<h2>Geplant: mehr Themen und eine Galerie</h2>
+<p>Kommt später, noch nicht veröffentlicht: weitere importierbare Vorschauthemen und eine Galerie auf dieser Website, in der man eigene Themen einreichen kann. <code>/themes/v1/</code> ist dafür schon reserviert. Bis dahin hat MarsDawn die vier eingebauten Themen, und du kannst keine anderen installieren.</p>
+
+<h2>Weiter</h2>
+<ul>
+  <li>Die vollständige Anleitung zum PDF-Export über die Befehlszeile: <a href="/de/markdown-to-pdf/">Markdown in PDF</a>.</li>
+  <li>Was MarsDawn noch nicht kann: <a href="/de/limits/">die Liste</a>.</li>
+  <li>Ein exportiertes PDF an jemanden weitergeben, der kein Markdown nutzt: <a href="/de/sharing-exported-pdfs/">ein PDF teilen</a>.</li>
+</ul>
+""",
+    }
+
+    compare_tables['mcp-choice'] = {
+        'head': ['Wenn dein Agent', 'Nimm', 'Braucht'],
+        'rows': [
+            ['Einen Shell-Befehl ausführen kann', '<a href="{root}cli/agents/">Die CLI</a>', 'macOS 15 oder neuer'],
+            ['Anweisungsdateien lädt, wie Claude Code', '<a href="{root}cli/skill/">Die Skill-Datei</a>', 'Die CLI, die der Skill installiert'],
+            ['Werkzeuge über MCP aufruft', '<a href="{mcp}">marsdawn-mcp</a>', 'marsdawn-mcp 0.2.1 oder neuer, marsdawn 0.5.0 oder neuer und Node.js 20 oder neuer'],
+        ],
+    }
+    compare_tables['preview-tools'] = {
+        'head': ['', 'VS-Code-Vorschau', 'Browsererweiterung', 'Claude Desktop', 'MarsDawn'],
+        'rows': [
+            ['Öffnet eine Markdown-Datei von der Festplatte', 'Ja', 'Ja, sobald der Dateizugriff erlaubt ist', 'Nein: Markdown steht nicht auf der Upload-Liste', 'Ja'],
+            ['Vor der ersten Datei', 'VS Code installieren, eine ganze Entwicklungsumgebung', 'Eine Erweiterung installieren, dann „Zugriff auf Datei-URLs zulassen“ einschalten', 'Es kann keine Dateien auf der Festplatte durchsuchen', 'MarsDawn installieren'],
+            ['Gebaut für', 'Code schreiben; die Vorschau ist ein Bereich unter vielen', 'Im Web surfen', 'Unterhaltungen mit Claude', 'Markdown lesen und bearbeiten'],
+            ['Zeichnet die Seite mit', 'Electron: ein mitgeliefertes Chromium samt Node.js', 'Einem vollständigen Browser', 'Der Claude-Desktop-App', 'Einer nativen AppKit-App; WebKit zeichnet die Seite'],
+        ],
+    }
+    theme_shots = {
+        '01-split': ('Dawn (Standard)', 'Das Thema Dawn in geteilter Ansicht: links der Markdown-Quelltext, rechts die gerenderte Seite.'),
+        '02-classic': ('Classic', 'Das Thema Classic, die Vorschau füllt das Fenster.'),
+        '04-vivid': ('Vivid', 'Das Thema Vivid in geteilter Ansicht.'),
+        '03-dark': ('Dunkelmodus', 'MarsDawn im Dunkelmodus, geteilte Ansicht.'),
+    }
+    theme_gallery_note = 'Modern ist noch nicht abgebildet; das vierte Bild zeigt stattdessen den Dunkelmodus.'
+
     app_ui_languages = 'Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch'
     return {
         'pages': pages, 'figures': figures, 'home': home, 'compare_tables': compare_tables,
