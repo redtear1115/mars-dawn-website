@@ -1433,8 +1433,8 @@ Participants : _noms_
         'toc_label': {'privacy': 'Sur cette page', 'support': 'Aller à une question'},
         'not_found': {'title': 'Page introuvable · MarsDawn', 'headline': 'Perdu parmi les étoiles.', 'body': 'Ce chemin ne figure sur aucune carte. Un voisin discret a montré la route du retour.', 'home': 'Retour à MarsDawn', 'alt': 'Un petit vaisseau dérive dans le ciel de l’aube martienne, tandis qu’un extraterrestre amical montre le bord lumineux de la planète.'},
         # Not in Grok's material (the window label and the Markdown twin's sentence): written for #162.
-        'hero_window_label': 'Une fenêtre MarsDawn fonctionnelle\xa0: choisissez un thème et une disposition',
-        'hero_window_markdown': {'template': 'La page montre une fenêtre MarsDawn fonctionnelle, posée sur un extrait du guide de bienvenue de l’app. Son menu de palette choisit une apparence ({looks}) et un thème d’aperçu pour le clair et pour le sombre parmi quatre ({themes}), et sa barre d’outils l’une des trois dispositions ({layouts}).', 'sep': ', '},
+        'hero_window_label': 'Une fenêtre MarsDawn interactive\xa0: choisissez un thème et une disposition',
+        'hero_window_markdown': {'template': 'La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide de bienvenue de l’app. Dans son menu de palette, vous choisissez une apparence ({looks}) et, pour le clair comme pour le sombre, l’un des quatre thèmes d’aperçu ({themes}). Sa barre d’outils propose trois dispositions ({layouts}).', 'sep': ', '},
         'loop': loop_copy,
         'templates': templates,
     }

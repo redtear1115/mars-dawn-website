@@ -1433,8 +1433,8 @@ Teilnehmende: _Namen_
         'toc_label': {'privacy': 'Auf dieser Seite', 'support': 'Zu einer Frage springen'},
         'not_found': {'title': 'Seite nicht gefunden · MarsDawn', 'headline': 'Verloren zwischen den Sternen.', 'body': 'Dieser Weg ist auf keiner Karte verzeichnet. Ein stiller Nachbar hat den Heimweg gezeigt.', 'home': 'Zurück zu MarsDawn', 'alt': 'Ein kleines Raumschiff treibt durch den Morgenhimmel über dem Mars, während ein freundlicher Außerirdischer auf den hellen Rand des Planeten zeigt.'},
         # Not in Grok's material (the window label and the Markdown twin's sentence): written for #162.
-        'hero_window_label': 'Ein funktionierendes MarsDawn-Fenster: Wähle ein Thema und ein Layout',
-        'hero_window_markdown': {'template': 'Die Seite zeigt ein funktionierendes MarsDawn-Fenster über einem Ausschnitt aus der Willkommensanleitung der App. Das Palettenmenü wählt ein Erscheinungsbild ({looks}) und je ein Vorschau-Thema für Hell und Dunkel aus vier ({themes}), die Symbolleiste eines von drei Layouts ({layouts}).', 'sep': ', '},
+        'hero_window_label': 'Ein bedienbares MarsDawn-Fenster: Wähle ein Thema und ein Layout',
+        'hero_window_markdown': {'template': 'Die Seite zeigt ein bedienbares MarsDawn-Fenster mit einem Ausschnitt aus der Einführung der App. Im Palettenmenü wählst du ein Erscheinungsbild ({looks}) und für Hell und Dunkel je eines von vier Vorschau-Themen ({themes}), in der Symbolleiste eines von drei Layouts ({layouts}).', 'sep': ', '},
         'loop': loop_copy,
         'templates': templates,
     }

@@ -4,7 +4,7 @@ Des outils de pionnier pour ceux qui construisent
 
 Du Markdown pour les humains qui pilotent le travail des agents.
 
-La page montre une fenêtre MarsDawn fonctionnelle, posée sur un extrait du guide de bienvenue de l’app. Son menu de palette choisit une apparence (Système, Clair, Sombre) et un thème d’aperçu pour le clair et pour le sombre parmi quatre (Aube, Classique, Moderne, Vif), et sa barre d’outils l’une des trois dispositions (Source, Partagé, Aperçu).
+La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide de bienvenue de l’app. Dans son menu de palette, vous choisissez une apparence (Système, Clair, Sombre) et, pour le clair comme pour le sombre, l’un des quatre thèmes d’aperçu (Aube, Classique, Moderne, Vif). Sa barre d’outils propose trois dispositions (Source, Partagé, Aperçu).
 
 ## Lisez ce que votre agent a écrit.
 

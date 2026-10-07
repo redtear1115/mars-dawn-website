@@ -792,7 +792,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 <h2>네 가지 테마</h2>
 <!--theme-gallery-->
 <ul>
-  <li><strong>새벽</strong>, 기본값: 이 사이트를 이루는 것과 같은 따뜻한 종이 색과 Mars Rust 강조색.</li>
+  <li><strong>새벽</strong>, 기본 테마: 이 사이트를 이루는 것과 같은 따뜻한 종이 색과 Mars Rust 강조색.</li>
   <li><strong>클래식</strong>: 더 담백하고 문서다운 팔레트.</li>
   <li><strong>모던</strong>: 더 차분하고 현대적인 팔레트.</li>
   <li><strong>비비드</strong>: 더 밝고 대비가 강한 팔레트.</li>
@@ -832,7 +832,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
         ],
     }
     theme_shots = {
-        '01-split': ('새벽(기본값)', '분할 화면의 새벽 테마: 왼쪽은 Markdown 소스, 오른쪽은 렌더링된 페이지.'),
+        '01-split': ('새벽(기본 테마)', '분할 화면의 새벽 테마: 왼쪽은 Markdown 소스, 오른쪽은 렌더링된 페이지.'),
         '02-classic': ('클래식', '미리보기가 윈도우 전체를 채운 클래식 테마.'),
         '04-vivid': ('비비드', '분할 화면의 비비드 테마.'),
         '03-dark': ('다크 모드', '다크 모드의 MarsDawn, 분할 화면.'),
@@ -1432,8 +1432,8 @@ flowchart LR
         'toc_label': {'privacy': '이 페이지의 내용', 'support': '질문으로 이동'},
         'not_found': {'title': '페이지를 찾을 수 없음 · MarsDawn', 'headline': '별들 사이에서 길을 잃었습니다.', 'body': '이 길은 지도에 없습니다. 조용한 이웃이 집으로 가는 길을 가리켜 주었습니다.', 'home': 'MarsDawn으로 돌아가기', 'alt': '화성의 새벽하늘에 작은 우주선이 떠 있고, 친근한 외계인이 행성의 밝은 가장자리를 가리키고 있습니다.'},
         # Not in Grok's material (the window label and the Markdown twin's sentence): written for #162.
-        'hero_window_label': '작동하는 MarsDawn 창: 테마와 레이아웃을 고르세요',
-        'hero_window_markdown': {'template': '이 페이지에는 앱의 환영 가이드 일부 위에 작동하는 MarsDawn 창이 있습니다. 팔레트 메뉴에서 화면 모드({looks})를 고르고, 밝은 모드와 어두운 모드 각각에 네 가지 미리보기 테마({themes}) 중 하나를 고를 수 있으며, 도구 막대에서는 세 가지 레이아웃({layouts}) 중 하나를 고를 수 있습니다.', 'sep': ', '},
+        'hero_window_label': '직접 조작할 수 있는 MarsDawn 창: 테마와 레이아웃을 고르세요',
+        'hero_window_markdown': {'template': '이 페이지에는 앱의 시작 가이드 일부를 보여 주는, 직접 조작할 수 있는 MarsDawn 창이 있습니다. 팔레트 메뉴에서 화면 모드({looks})를 고르고, 라이트와 다크에 각각 네 가지 미리보기 테마({themes}) 중 하나를 지정할 수 있으며, 도구 막대에서는 세 가지 레이아웃({layouts}) 중 하나를 고를 수 있습니다.', 'sep': ', '},
         'loop': loop_copy,
         'templates': templates,
     }

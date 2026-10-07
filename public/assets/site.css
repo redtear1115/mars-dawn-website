@@ -28,6 +28,8 @@
 body [lang] { font-family: var(--font); }
 /* Japanese headings break between phrases, not inside a word (Chromium; others keep the default). */
 :lang(ja) :is(h1, h2, h3) { word-break: auto-phrase; }
+/* Korean breaks between words, not inside one; a long URL or code token still wraps (anywhere) rather than overflowing. */
+:lang(ko) { word-break: keep-all; overflow-wrap: anywhere; }
 
 @media (prefers-color-scheme: dark) {
   :root {

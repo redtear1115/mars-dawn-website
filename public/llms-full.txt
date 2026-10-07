@@ -7230,7 +7230,7 @@ Pionierwerkzeug für alle, die bauen
 
 Markdown für Menschen, die agentische Arbeit steuern.
 
-Die Seite zeigt ein funktionierendes MarsDawn-Fenster über einem Ausschnitt aus der Willkommensanleitung der App. Das Palettenmenü wählt ein Erscheinungsbild (System, Hell, Dunkel) und je ein Vorschau-Thema für Hell und Dunkel aus vier (Morgenrot, Klassisch, Modern, Lebhaft), die Symbolleiste eines von drei Layouts (Quelltext, Geteilt, Vorschau).
+Die Seite zeigt ein bedienbares MarsDawn-Fenster mit einem Ausschnitt aus der Einführung der App. Im Palettenmenü wählst du ein Erscheinungsbild (System, Hell, Dunkel) und für Hell und Dunkel je eines von vier Vorschau-Themen (Morgenrot, Klassisch, Modern, Lebhaft), in der Symbolleiste eines von drei Layouts (Quelltext, Geteilt, Vorschau).
 
 ## Lies, was dein Agent geschrieben hat.
 
@@ -9037,7 +9037,7 @@ Des outils de pionnier pour ceux qui construisent
 
 Du Markdown pour les humains qui pilotent le travail des agents.
 
-La page montre une fenêtre MarsDawn fonctionnelle, posée sur un extrait du guide de bienvenue de l’app. Son menu de palette choisit une apparence (Système, Clair, Sombre) et un thème d’aperçu pour le clair et pour le sombre parmi quatre (Aube, Classique, Moderne, Vif), et sa barre d’outils l’une des trois dispositions (Source, Partagé, Aperçu).
+La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide de bienvenue de l’app. Dans son menu de palette, vous choisissez une apparence (Système, Clair, Sombre) et, pour le clair comme pour le sombre, l’un des quatre thèmes d’aperçu (Aube, Classique, Moderne, Vif). Sa barre d’outils propose trois dispositions (Source, Partagé, Aperçu).
 
 ## Lisez ce que votre agent a écrit.
 
@@ -10844,7 +10844,7 @@ Herramientas de frontera para quienes construyen
 
 Markdown para las personas que dirigen el trabajo de los agentes.
 
-La página muestra una ventana de MarsDawn en funcionamiento sobre un fragmento de la guía de bienvenida de la app. Su menú de paleta elige una apariencia (Sistema, Claro, Oscuro) y un tema de vista previa para claro y para oscuro entre cuatro (Amanecer, Clásico, Moderno, Vívido), y su barra de herramientas una de tres disposiciones (Código, Dividido, Vista previa).
+La página muestra una ventana de MarsDawn interactiva que presenta un fragmento de la guía de bienvenida de la app. En su menú de paleta eliges un aspecto (Sistema, Claro, Oscuro) y, para claro y para oscuro, uno de cuatro temas de vista previa (Amanecer, Clásico, Moderno, Vívido). Su barra de herramientas ofrece tres disposiciones (Código, Dividido, Vista previa).
 
 ## Lee lo que escribió tu agente.
 
@@ -12651,7 +12651,7 @@ Source: https://marsdawn.southern-light.dev/ko/
 
 에이전트의 작업을 이끄는 사람을 위한 Markdown.
 
-이 페이지에는 앱의 환영 가이드 일부 위에 작동하는 MarsDawn 창이 있습니다. 팔레트 메뉴에서 화면 모드(시스템, 라이트, 다크)를 고르고, 밝은 모드와 어두운 모드 각각에 네 가지 미리보기 테마(새벽, 클래식, 모던, 비비드) 중 하나를 고를 수 있으며, 도구 막대에서는 세 가지 레이아웃(소스, 분할, 미리보기) 중 하나를 고를 수 있습니다.
+이 페이지에는 앱의 시작 가이드 일부를 보여 주는, 직접 조작할 수 있는 MarsDawn 창이 있습니다. 팔레트 메뉴에서 화면 모드(시스템, 라이트, 다크)를 고르고, 라이트와 다크에 각각 네 가지 미리보기 테마(새벽, 클래식, 모던, 비비드) 중 하나를 지정할 수 있으며, 도구 막대에서는 세 가지 레이아웃(소스, 분할, 미리보기) 중 하나를 고를 수 있습니다.
 
 ## 에이전트가 쓴 글을 읽으세요.
 
@@ -13689,14 +13689,14 @@ MarsDawn에는 새벽, 클래식, 모던, 비비드 네 가지 미리보기 테�
 
 ## 네 가지 테마
 
-- ![분할 화면의 새벽 테마: 왼쪽은 Markdown 소스, 오른쪽은 렌더링된 페이지.](/assets/screens/01-split-800.png) **새벽(기본값)**
+- ![분할 화면의 새벽 테마: 왼쪽은 Markdown 소스, 오른쪽은 렌더링된 페이지.](/assets/screens/01-split-800.png) **새벽(기본 테마)**
 - ![미리보기가 윈도우 전체를 채운 클래식 테마.](/assets/screens/02-classic-800.png) **클래식**
 - ![분할 화면의 비비드 테마.](/assets/screens/04-vivid-800.png) **비비드**
 - ![다크 모드의 MarsDawn, 분할 화면.](/assets/screens/03-dark-800.png) **다크 모드**
 
 모던은 아직 스크린샷이 없어서, 네 번째 이미지는 대신 다크 모드를 보여 줍니다.
 
-- **새벽**, 기본값: 이 사이트를 이루는 것과 같은 따뜻한 종이 색과 Mars Rust 강조색.
+- **새벽**, 기본 테마: 이 사이트를 이루는 것과 같은 따뜻한 종이 색과 Mars Rust 강조색.
 - **클래식**: 더 담백하고 문서다운 팔레트.
 - **모던**: 더 차분하고 현대적인 팔레트.
 - **비비드**: 더 밝고 대비가 강한 팔레트.

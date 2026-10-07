@@ -4,7 +4,7 @@ Pionierwerkzeug für alle, die bauen
 
 Markdown für Menschen, die agentische Arbeit steuern.
 
-Die Seite zeigt ein funktionierendes MarsDawn-Fenster über einem Ausschnitt aus der Willkommensanleitung der App. Das Palettenmenü wählt ein Erscheinungsbild (System, Hell, Dunkel) und je ein Vorschau-Thema für Hell und Dunkel aus vier (Morgenrot, Klassisch, Modern, Lebhaft), die Symbolleiste eines von drei Layouts (Quelltext, Geteilt, Vorschau).
+Die Seite zeigt ein bedienbares MarsDawn-Fenster mit einem Ausschnitt aus der Einführung der App. Im Palettenmenü wählst du ein Erscheinungsbild (System, Hell, Dunkel) und für Hell und Dunkel je eines von vier Vorschau-Themen (Morgenrot, Klassisch, Modern, Lebhaft), in der Symbolleiste eines von drei Layouts (Quelltext, Geteilt, Vorschau).
 
 ## Lies, was dein Agent geschrieben hat.
 

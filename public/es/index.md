@@ -4,7 +4,7 @@ Herramientas de frontera para quienes construyen
 
 Markdown para las personas que dirigen el trabajo de los agentes.
 
-La página muestra una ventana de MarsDawn en funcionamiento sobre un fragmento de la guía de bienvenida de la app. Su menú de paleta elige una apariencia (Sistema, Claro, Oscuro) y un tema de vista previa para claro y para oscuro entre cuatro (Amanecer, Clásico, Moderno, Vívido), y su barra de herramientas una de tres disposiciones (Código, Dividido, Vista previa).
+La página muestra una ventana de MarsDawn interactiva que presenta un fragmento de la guía de bienvenida de la app. En su menú de paleta eliges un aspecto (Sistema, Claro, Oscuro) y, para claro y para oscuro, uno de cuatro temas de vista previa (Amanecer, Clásico, Moderno, Vívido). Su barra de herramientas ofrece tres disposiciones (Código, Dividido, Vista previa).
 
 ## Lee lo que escribió tu agente.
 
