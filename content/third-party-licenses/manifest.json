@@ -1,0 +1,30 @@
+{
+  "dracula": {
+    "name": "Dracula Theme",
+    "upstream_url": "https://github.com/dracula/dracula-theme",
+    "license_file": "dracula.LICENSE",
+    "license_source": "https://github.com/dracula/dracula-theme/blob/master/LICENSE",
+    "note": "Colour codes are from the project's published Color Palette (OSS); several were darkened for the MarsDawn theme system's own contrast requirements."
+  },
+  "nord": {
+    "name": "Nord",
+    "upstream_url": "https://github.com/nordtheme/nord",
+    "license_file": "nord.LICENSE",
+    "license_source": "https://github.com/nordtheme/nord/blob/develop/license",
+    "note": "Nord publishes a dark palette only; this theme's light mode is an original companion built from Nord's own 16 colours. Several colours were darkened for the MarsDawn theme system's own contrast requirements."
+  },
+  "gruvbox": {
+    "name": "Gruvbox",
+    "upstream_url": "https://github.com/morhetz/gruvbox",
+    "license_file": "gruvbox.LICENSE",
+    "license_source": "github.com/morhetz/gruvbox package.json (“license”: “MIT”); the repository ships no separate LICENSE file, so the copyright line below uses the author named in package.json and the repository's creation year (2012).",
+    "note": "Colour codes are from colors/gruvbox.vim's official palette table; several were darkened or lightened for the MarsDawn theme system's own contrast requirements."
+  },
+  "solarized": {
+    "name": "Solarized",
+    "upstream_url": "https://github.com/altercation/solarized",
+    "license_file": "solarized.LICENSE",
+    "license_source": "https://github.com/altercation/solarized/blob/master/LICENSE",
+    "note": "Colour codes are from the project's published SCSS variables; several were brightened or darkened, by luminance only, for the MarsDawn theme system's own contrast requirements — every accent's hue and the base3/base03 background tones are unmodified."
+  }
+}

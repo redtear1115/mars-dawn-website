@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>編集者の読書ノート · MarsDawn</title>
+<meta name="description" content="AI エージェントを作っている人たちが実際に何を主張しているかを見る、6 本の短いノート——Anthropic、Chip Huyen、Lilian Weng、Harrison Chase、LangChain、Andrew Ng——それぞれが、エージェントの返してきたものを読む人にとって何を意味するか。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/reading-notes/">
+<link rel="alternate" type="text/markdown" href="/ja/reading-notes/index.md">
+<meta property="og:title" content="編集者の読書ノート · MarsDawn">
+<meta property="og:description" content="AI エージェントを作っている人たちが実際に何を主張しているかを見る、6 本の短いノート——Anthropic、Chip Huyen、Lilian Weng、Harrison Chase、LangChain、Andrew Ng——それぞれが、エージェントの返してきたものを読む人にとって何を意味するか。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/reading-notes/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>編集者の読書ノート</h1>
+  <p>AI エージェントがどう動くかについて、6 人がそれぞれ書いている：エージェントが何でできているか、何が「agentic」と呼べるのか、どの設計パターンが実際に通用し、どれがまだ未成熟か。誰も「エージェントの返してきたものをどう読むか」については書いていないし、誰も MarsDawn には触れておらず、Markdown ツールを勧めてもいない。私たちはそれぞれの記事をその文脈のまま読み、私たち自身の解釈がどこから始まるかをはっきり示したうえで、どの出典にも同じ問いを立てた：この記事の内容から、あなたのフォルダにはどんなファイルが落ちてくるのか、そしてそれを読むとき MarsDawn は何の役に立つのか。</p>
+</section>
+
+<p>まず実用的なほうから読みたいなら、<a href="/ja/reading-agent-output/">「エージェントが返してくるものを読む」</a>と<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a>から始めてほしい。この 6 本のノートは、そのもとになった出典によりくわしく踏み込んでいる。どれも単独で読めるので、順番は問わない。</p>
+
+<ul>
+  <li><a href="/ja/reading-notes/anthropic-building-effective-agents/">Anthropic は workflow と agent を分けて考える。あなたの読み方はどちらに近いか？</a>&#8212;&#8212;エージェントを作る人向けの Anthropic のガイドは、決まった手順と、自分で次の一手を決めるモデルを分けて説明し、「レビュアー」が実は人ではなく、もう一回の LLM 呼び出しである workflow を 1 つ描いている。</li>
+  <li><a href="/ja/reading-notes/chip-huyen-agents/">Chip Huyen の read-only／write action という分け方、承認する前になぜ大事か</a>&#8212;&#8212;彼女によるエージェントの平易な定義と、「見るだけ」の行動と「何かを変える」行動の違い。これこそ 5 分のレビューで一番時間をかける価値がある場所だ。</li>
+  <li><a href="/ja/reading-notes/lilian-weng-llm-agents/">Lilian Weng が 2023 年に描いたエージェントの設計図、各部分が残すファイル</a>&#8212;&#8212;脳、プランニング、記憶、ツール利用：エージェントが何でできているかについての、彼女自身のフレームワークと、うまくいかないときに彼女が名指ししている限界。</li>
+  <li><a href="/ja/reading-notes/harrison-chase-what-is-an-agent/">Harrison Chase のスペクトラム：agentic であるほど、見ていたくなる</a>&#8212;&#8212;彼によるエージェントの技術的な定義と、システムがそのスペクトラムを進むほど観測可能性が必要だという、彼自身の主張。</li>
+  <li><a href="/ja/reading-notes/langchain-what-is-an-agent/">Jess Ou の評価パイプライン、そのうち 1 ステップだけはまだあなたの仕事</a>&#8212;&#8212;2026 年 7 月、LangChain は Harrison Chase の 2024 年の記事があった URL に、Jess Ou が書いた新しい「What is an AI agent?」を公開した。定義はほぼ彼のものと一言一句同じで、そこから先は、自動評価がどこで止まり、どこから先は人がやるしかないかを説明している。</li>
+  <li><a href="/ja/reading-notes/andrew-ng-design-patterns/">Andrew Ng が自分の設計パターンを予測可能性で自らランク付けする</a>&#8212;&#8212;The Batch の 5 本の手紙のなかで、彼はどのパターンをより信頼でき、どれを予測しづらいと感じているか、はっきり書いている。</li>
+</ul>
+
+<p>この 6 本のどれも、「エージェントの出力をもっと注意深く読むべきだ」とは主張していないし、どれも MarsDawn についてのものではない。その結びつきをつけているのは私たちであって、どのノートもそう断っている。</p>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

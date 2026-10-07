@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jess Ou の評価パイプライン、そのうち 1 ステップだけはまだあなたの仕事 · MarsDawn</title>
+<meta name="description" content="LangChain が 2026 年に Jess Ou 名義で発表した「What is an AI agent?」は、Harrison Chase による 2024 年の定義とほぼ同一で、エージェントを自動評価する一連のパイプラインを説明している。そのパイプラインのどこがまだ人に委ねられ、どこがそうではないか。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/langchain-what-is-an-agent/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/langchain-what-is-an-agent/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/langchain-what-is-an-agent/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/langchain-what-is-an-agent/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/langchain-what-is-an-agent/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/reading-notes/langchain-what-is-an-agent/">
+<link rel="alternate" type="text/markdown" href="/ja/reading-notes/langchain-what-is-an-agent/index.md">
+<meta property="og:title" content="Jess Ou の評価パイプライン、そのうち 1 ステップだけはまだあなたの仕事 · MarsDawn">
+<meta property="og:description" content="LangChain が 2026 年に Jess Ou 名義で発表した「What is an AI agent?」は、Harrison Chase による 2024 年の定義とほぼ同一で、エージェントを自動評価する一連のパイプラインを説明している。そのパイプラインのどこがまだ人に委ねられ、どこがそうではないか。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/reading-notes/langchain-what-is-an-agent/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で近日公開</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/langchain-what-is-an-agent/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/langchain-what-is-an-agent/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/langchain-what-is-an-agent/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/langchain-what-is-an-agent/" hreflang="ja" aria-current="true" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Jess Ou の評価パイプライン、そのうち 1 ステップだけはまだあなたの仕事</h1>
+</section>
+
+<div class="summary"><p><strong>2026 年 7 月、LangChain は Harrison Chase の 2024 年の記事「What is an agent?」があった URL に、新しい「What is an AI agent?」を公開した——今回は Jess Ou が書いたもので、定義は当時の彼の一文とほぼ一言一句同じだ。彼女の記事の大半は、彼の記事が扱わなかったこと、つまりエージェントを自動的に評価する一連のパイプライン全体について書かれている。そのパイプラインのどこにまだ人が必要で、どこはもう必要ないか、彼女の文章は率直に書いている。</strong></p></div>
+
+<h2 id="what-the-post-argues">この記事が主張すること</h2>
+<p>Ou の定義は、Chase のあの一文をほとんどそのまま繰り返している。</p>
+<blockquote><p>&#8220;An AI agent is a system that uses a large language model to decide the control flow of an application.&#8221;</p></blockquote>
+<p>（AI エージェントとは、大規模言語モデルを使ってアプリケーションの制御フローを決めるシステムだ。「制御フロー」も、次にどのステップを実行するかのことを指す。）</p>
+<p>そこから彼女は、LangChain の Agent Development Lifecycle を説明する：build、test、deploy、monitor の 4 段階と、人がすべての実行記録を読まなくてもエージェントの働きをチェックできる、階層的なやり方だ。online evals は本番のトラフィックの trace（1 回の実行の記録）をサンプリングして退行を検出し、offline evals は整理されたデータセットに対して実行し、変更をリリースする前に問題を見つける。「LLM-as-a-judge」は、人があらかじめ決めた基準にしたがって 1 回の実行の出力に点数をつける方法で、人手によるレビューでは届かない規模で動く。彼女はまた、このパイプラインの中で人がまだどこに立つべきかについても、率直に書いている。</p>
+<blockquote><p>&#8220;For sensitive or irreversible actions, we recommend human-in-the-loop controls that pause the agent for approval, edits, rejection, or clarification.&#8221;</p></blockquote>
+<p>（慎重な扱いが必要な、あるいは取り消せない行動については、承認、編集、拒否、または明確化のためにエージェントを一時停止させる human-in-the-loop の仕組みを勧める。）</p>
+<p>また彼女には、パイプラインがどれだけ整っても省けない判断についての一文もある：「Do not outsource judgment you cannot evaluate. If you wouldn't recognize a correct answer, neither will the agent.」（自分で評価できない判断を、外部に任せてはいけない。あなたが正しい答えを見分けられないなら、エージェントにもできない。）<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a>はすでにこの一文をもとに議論を組み立てているので、このノートでは繰り返さない。Ou はこの記事のなかで MarsDawn にはまったく触れておらず、どんな Markdown ツールも勧めていない。また彼女は Chase の名前にも一度も触れていない。この 2 つの記事をつないでいるのは、LangChain が 2026 年に、Chase の 2024 年の記事があった URL に彼女のこの記事を公開したこと、そして定義がほぼ同一であることだ——これは私たちの観察であって、彼女自身の主張ではない。</p>
+
+<h2 id="our-reading-not-ou-s">ここから先は、私たちの解釈であって、Ou の主張ではない</h2>
+<p>Ou の言う human-in-the-loop は、特定の行動が実行される前にそれを止めること——write の動作を一時停止し、人の承認を待つこと——についてであり、これは Chip Huyen の read-only／write action という分け方を、別の角度から見たのと同じことだ。完成したレポートをあとから読むこととは違う。彼女のパイプライン全体をよく見ると、その大部分は、人を日常的なチェックから外すために設計されている。加えるためではない：online evals、offline evals、LLM-as-a-judge が存在する目的は、そのままチームが 1 回 1 回の実行記録を手作業で確認しなくて済むようにすることだ。これはこの記事への批判ではない——それは彼女自身がはっきり述べている目標であり、本番の規模ではもっともなことでもある。ただしそれは、あなたが自分の手で行うレビュー——エージェントが渡してきた計画やレポートを直接読むこと——が、まさに彼女のパイプラインが減らそうとしている、置き換えようとしているのではない、その種のチェックであることを意味する。彼女自身のあの判断についての一文は、その削減に下限を引いている：自分で読んでも正しいかどうか見分けられない場所は、それでも自分で読むしかない。</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn が助けになるところ、ならないところ</h2>
+<p>MarsDawn は評価パイプラインではなく、中に AI モデルもない——1 回の実行記録に点数をつけたり、LLM-as-a-judge を走らせたり、どの行動が一時停止するほど機密性が高いかを決めたりはしない。MarsDawn がしているのは、彼女のパイプラインがそれでも人に残しているその瞬間、つまり直接読むことだ。サイドバー（「表示 &#9656; サイドバーを表示」、&#8963;&#8984;S）のアウトラインタブが、長いレポートの見出しを一覧にする。ソースとレンダリングされたプレビューは並んで表示され（&#8984;2）、Mermaid と KaTeX はそのまま描画される。「編集 &#9656; 参照をコピー」（&#8997;&#8984;C）と「AI 用にコピー」（&#8963;&#8997;&#8984;C）を組み合わせれば、抜き取りチェックを、エージェントが理解でき、直せる具体的なフィードバックに変えられる。</p>
+
+<h2 id="try-it">試してみる</h2>
+<p>MarsDawn は近日 Mac App Store に登場予定です。無料の <code>marsdawn</code> コマンドラインツールは今日から使えます：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>アプリなしで Markdown を PDF に書き出せます。</p>
+<p><a href="/ja/cli/">コマンドライン</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
+
+<h2 id="next">次に</h2>
+<ul>
+  <li>彼女の「判断を外部に任せるな」という一文を一部使って組み立てた、完全なチェックリスト：<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a></li>
+  <li>この定義が 2024 年に最初どう書かれていたか：<a href="/ja/reading-notes/harrison-chase-what-is-an-agent/">「Harrison Chase のスペクトラム：agentic であるほど、見ていたくなる」</a></li>
+  <li>シリーズに戻る：<a href="/ja/reading-notes/">「編集者の読書ノート」</a></li>
+</ul>
+
+<h2 id="sources">出典</h2>
+<ul>
+  <li>Jess Ou、「What is an AI agent?」、LangChain、2026 年 7 月 31 日：<a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a>（2026-09-26 に取得・引用）</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は Mac App Store で近日公開予定です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

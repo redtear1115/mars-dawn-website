@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lilian Weng 2023 年畫的 agent 藍圖，每個部件會留下什麼檔案 · MarsDawn</title>
+<meta name="description" content="Lilian Weng 2023 年被廣泛引用的整理，把 LLM agent 描述成大腦加上規劃、記憶、工具使用。每個部件通常會留給你讀什麼，以及她點名的一個限制：計畫遇到意外不太會調整。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/lilian-weng-llm-agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/reading-notes/lilian-weng-llm-agents/index.md">
+<meta property="og:title" content="Lilian Weng 2023 年畫的 agent 藍圖，每個部件會留下什麼檔案 · MarsDawn">
+<meta property="og:description" content="Lilian Weng 2023 年被廣泛引用的整理，把 LLM agent 描述成大腦加上規劃、記憶、工具使用。每個部件通常會留給你讀什麼，以及她點名的一個限制：計畫遇到意外不太會調整。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/reading-notes/lilian-weng-llm-agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">即將在 Mac App Store 上架</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/lilian-weng-llm-agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/lilian-weng-llm-agents/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/lilian-weng-llm-agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/lilian-weng-llm-agents/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Lilian Weng 2023 年畫的 agent 藍圖，每個部件會留下什麼檔案</h1>
+</section>
+
+<div class="summary"><p><strong>2023 年 6 月，當時任職 OpenAI 的 Lilian Weng 在她的部落格 Lil'Log 發表了一篇長篇整理，把 LLM-powered agent 描述成一個大腦（模型）加上三個部件：規劃、記憶、工具使用。這是一個被廣泛引用的早期 agent 架構，而她對這套架構哪裡還會出問題，講得也很坦白。</strong></p></div>
+
+<h2 id="what-the-post-argues">這篇文章主張什麼</h2>
+<p>Weng 一開頭就定了整篇的架構：</p>
+<blockquote><p>&#8220;In a LLM-powered autonomous agent system, LLM functions as the agent&#8217;s brain, complemented by several key components: Planning ... Memory ... Tool use&#8221;.</p></blockquote>
+<p>（在一個 LLM-powered 自主 agent 系統裡，LLM 扮演 agent 的大腦，再搭配幾個關鍵部件：規劃&#8230;&#8230;記憶&#8230;&#8230;工具使用。）</p>
+<p>在她的說法裡，規劃同時包含把任務拆成子目標，以及回頭反思過去的行動來改進未來的步驟。記憶分成短期（模型目前看得到的內容，她稱為 in-context）和長期（通常存在模型之外、一個可以搜尋的資料庫裡，她稱為 vector store）。工具使用則讓模型能對外求助，取得模型權重裡沒有的東西&#8212;&#8212;最新資訊、程式執行能力、其他 API。文章接近尾聲，在她自己標題為「Challenges」的段落裡，她直接點出一個限制：</p>
+<blockquote><p>&#8220;LLMs struggle to adjust plans when faced with unexpected errors, making them less robust compared to humans who learn from trial and error.&#8221;</p></blockquote>
+<p>（LLM 在遇到意外錯誤時，不太擅長調整計畫，這讓它們比起會從試誤中學習的人類，更缺乏韌性。）</p>
+<p>另外，在一個屬於「工具使用」案例研究、談化學 agent「ChemCrow」的段落裡，她點出一個較窄的問題：用 LLM 評分的結果認為它和 GPT-4 差不多，但人類專家評估後認為 ChemCrow 在正確性上好得多。她的結論談的是「自我評估」，不是她的「反思」部件本身：</p>
+<blockquote><p>&#8220;The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.&#8221;</p></blockquote>
+<p>（缺乏專業知識可能使 LLM 不知道自己的缺陷，因而無法妥善判斷任務結果的正確性。）</p>
+<p>Weng 在這篇文章裡完全沒有提到 MarsDawn，也沒有推薦任何 Markdown 工具。</p>
+
+<h2 id="our-reading-not-weng-s">以下是我們的解讀，不是 Weng 的</h2>
+<p>Weng 描述的是 2023 年的 agent 架構，完全沒有談到「有人在讀 agent 的產出」這件事&#8212;&#8212;她根本沒提到有人在檢查檔案。但她自己講的三個部件，剛好對應到三種你可能會讀到的東西。規劃通常會留給你一份要在執行前讀的文件&#8212;&#8212;計畫本身，有時候裡面已經先自己做過一輪「反思」或自我檢查。記憶通常是看不到的，除非 agent 把長期記憶存成一個持續在寫的草稿檔案，這種情況下那份檔案本身就值得單獨打開看，因為它可能悄悄把一個舊的、錯的假設，一路帶進後面好幾個步驟裡，卻完全沒說。工具使用通常會留給你一份「跑了什麼、拿到什麼結果」的報告&#8212;&#8212;比較像逐字稿，不像計畫。</p>
+<p>她說計畫遇到意外不太會調整，從你的角度來看，這代表你昨天核准的計畫，今天可能已經不新鮮了：如果計畫沒預料到的事在中途發生了，agent 可能還是照原本的計畫走下去，而不是重新規劃，最後那份報告可能只描述了原本計畫「成功了」，卻沒提到中間繞了路。這是我們的推論，不是她的主張&#8212;&#8212;她講的是模型本身的韌性，不是讀者該注意什麼。</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn 幫得上、幫不上的地方</h2>
+<p>MarsDawn 裡沒有 AI 模型，沒辦法告訴你一份計畫是不是已經悄悄偏離了實際發生的事，也不會替你分辨一份檔案是規劃檔、記憶檔還是工具使用報告&#8212;&#8212;這是讀懂內容之後才能做的判斷，要你自己來。它做的是：側邊欄（「顯示方式 &#9656; 顯示側邊欄」，&#8963;&#8984;S）的「大綱」分頁一眼看出長計畫的架構；原始碼和排好的預覽並排（&#8984;2），Mermaid 和 KaTeX 都直接畫出來；agent 讀到一半改寫檔案的話，MarsDawn 會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改&#8212;&#8212;這一點特別有用，因為一份被悄悄改過的計畫，正是她「Challenges」那段從模型那一側描述的失敗模式。</p>
+
+<h2 id="try-it">試試看</h2>
+<p>MarsDawn 即將在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>它不需要 app 就能把 Markdown 輸出成 PDF。</p>
+<p><a href="/zh-hant/cli/">命令列工具</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
+
+<h2 id="next">接下來</h2>
+<ul>
+  <li>不同 agent 設計模式各自會交給你什麼文件：〈<a href="/zh-hant/agent-design-patterns/">四種 agent 設計模式，各自會交給你什麼文件</a>〉</li>
+  <li>執行前五分鐘審完一份計畫的方法：〈<a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>〉</li>
+  <li>回到系列索引：〈<a href="/zh-hant/reading-notes/">編者的閱讀筆記</a>〉</li>
+</ul>
+
+<h2 id="sources">資料來源</h2>
+<ul>
+  <li>Lilian Weng，〈LLM Powered Autonomous Agents〉，Lil'Log，2023 年 6 月 23 日：<a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a> （2026-09-26 讀取並引用；她寫這篇時任職於 OpenAI，這裡只描述她當時的身分）</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="網站">
+    <a href="/zh-hant/support/">支援</a>
+    <a href="/zh-hant/privacy/">隱私權政策</a>
+    <a href="/zh-hant/cli/">命令列工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

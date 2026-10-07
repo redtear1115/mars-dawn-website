@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chip Huyen 的 read-only／write action 分類，核準前為什麼要看它 · MarsDawn</title>
+<meta name="description" content="Chip Huyen 在 2025 年 1 月的文章裡，把 agent 的動作分成 read-only 和 write action 兩種。這個分法為什麼是核準計畫前，快速拓出該多看一眼的那一行的好方法。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/chip-huyen-agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/chip-huyen-agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/chip-huyen-agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/chip-huyen-agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/chip-huyen-agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/chip-huyen-agents/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/reading-notes/chip-huyen-agents/index.md">
+<meta property="og:title" content="Chip Huyen 的 read-only／write action 分類，核準前為什麼要看它 · MarsDawn">
+<meta property="og:description" content="Chip Huyen 在 2025 年 1 月的文章裡，把 agent 的動作分成 read-only 和 write action 兩種。這個分法為什麼是核準計畫前，快速拓出該多看一眼的那一行的好方法。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/reading-notes/chip-huyen-agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">即將在 Mac App Store 上架</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/chip-huyen-agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/chip-huyen-agents/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/chip-huyen-agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/chip-huyen-agents/" hreflang="ja" lang="ja">日本語</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Chip Huyen 的 read-only／write action 分類，核准前為什麼要看它</h1>
+</section>
+
+<div class="summary"><p><strong>Chip Huyen 在 2025 年 1 月發表的〈Agents〉，從教科書式的定義出發，一路寫到一個更具體的分類：agent 的動作分成「只是看世界」跟「會改變世界」兩種。這個分類，正好可以用來判斷你手上五分鐘該花在計畫裡的哪幾行。</strong></p></div>
+
+<h2 id="what-the-piece-argues">這篇文章主張什麼</h2>
+<p>Huyen 開門見山：</p>
+<blockquote><p>&#8220;An agent is anything that can perceive its environment and act upon that environment.&#8221;</p></blockquote>
+<p>（Agent 是任何能感知環境、並對環境採取行動的東西。）</p>
+<p>從這裡出發，她說明 agent 需要什麼：一個可以行動的環境，還有一組決定它能做什麼的工具&#8212;&#8212;她稱之為「tool inventory」。她點出一個分界：只是讓 agent 能感知環境的動作是「read-only actions」，能讓它對環境採取行動的動作是「write actions」。對於後者，她講得很直接：</p>
+<blockquote><p>&#8220;Write actions enable a system to do more.&#8221;</p></blockquote>
+<p>（Write action 能讓系統做到更多事。）</p>
+<p>但她也直接點出第二種動作帶來的風險：「the prospect of giving AI the ability to automatically alter our lives is frightening」（讓 AI 有能力自動改變我們的生活，這個念頭令人不安），照她的說法：「you shouldn&#8217;t allow an unreliable AI to initiate bank transfers」（不該讓一個不可靠的 AI 去發起銀行轉帳）。她對 agent 最難搞定的那一塊也講得很坦白：</p>
+<blockquote><p>&#8220;If you&#8217;ve ever been in any planning meeting, you know that planning is hard.&#8221;</p></blockquote>
+<p>（如果你參加過任何一場規劃會議，就知道規劃有多難。）</p>
+<p>Huyen 在這篇文章裡完全沒有提到 MarsDawn，也沒有推薦任何 Markdown 工具。〈<a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>〉已經引用她這篇文章裡三句話：執行前不監督的代價、以為自己做完其實沒做完的 agent，還有第三步裡她說系統遇到有風險的操作「可以在執行前要求人類明確核准」那一句。這篇不重複這些引文；還沒看過那篇的話，下面有連結。</p>
+
+<h2 id="our-reading-not-huyen-s">以下是我們的解讀，不是 Huyen 的</h2>
+<p>Huyen 的 read-only／write action 分法，不是寫給審閱用的建議，而是一種給工具分類的方式。但它是一個很好用的通用判斷法，可以用來抓出〈五分鐘審完一份 agent 計畫〉第三步已經要你放慢腳步的那種有風險的操作：讀一個檔案、跑一次搜尋、列一下目錄，這些是 read-only，做錯了頂多重跑一次；刪資料、force push、合併分支、寄信、扣款，這些是 write action&#8212;&#8212;照她的說法，這種一旦做錯就是「令人不安」的那種，而且等你讀到 agent 的報告時，它可能已經做完了。她說連人坐在一起開會都覺得規劃很難，這也提醒我們別對一份計畫的精確度期待過高：計畫讀起來自信，不代表它是對的。</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn 幫得上、幫不上的地方</h2>
+<p>MarsDawn 沒辦法幫你判斷計畫裡哪一步是 read-only、哪一步是 write&#8212;&#8212;這是文字沒標出來的判斷，app 裡的任何東西都不會替你讀出語意。它裡面也沒有 AI 模型：不會幫你標出風險高的那一行，不會替你跑「規劃到底有多難」的檢查，也不會給計畫打分數。它做的是讓檔案在你自己做判斷的時候保持好讀：側邊欄（「顯示方式 &#9656; 顯示側邊欄」，&#8963;&#8984;S）的「大綱」分頁讓你先看過計畫的架構，再逐行讀；原始碼和排好的頁面並排（&#8984;2），步驟圖就不會卡在 Mermaid 原始碼那個階段；「編輯 &#9656; 拷貝引用」（&#8997;&#8984;C）把你的位置拷貝成 <code>plan.md:10</code>，你一發現順序不對的 write 動作，馬上就能貼出去當回饋。</p>
+
+<h2 id="try-it">試試看</h2>
+<p>MarsDawn 即將在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>它不需要 app 就能把 Markdown 輸出成 PDF。</p>
+<p><a href="/zh-hant/cli/">命令列工具</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
+
+<h2 id="next">接下來</h2>
+<ul>
+  <li>用同一篇文章建出來的完整六步驟五分鐘檢查清單：〈<a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>〉</li>
+  <li>agent 的產出為什麼普遍難讀：〈<a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a>〉</li>
+  <li>回到系列索引：〈<a href="/zh-hant/reading-notes/">編者的閱讀筆記</a>〉</li>
+</ul>
+
+<h2 id="sources">資料來源</h2>
+<ul>
+  <li>Chip Huyen，〈Agents〉，2025 年 1 月 7 日：<a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a> （2026-09-26 讀取並引用）</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="網站">
+    <a href="/zh-hant/support/">支援</a>
+    <a href="/zh-hant/privacy/">隱私權政策</a>
+    <a href="/zh-hant/cli/">命令列工具</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 即將在 Mac App Store 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
