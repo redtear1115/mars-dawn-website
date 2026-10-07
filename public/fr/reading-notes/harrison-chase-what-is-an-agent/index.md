@@ -24,7 +24,7 @@ MarsDawn n’observe pas l’intérieur d’un agent en cours — il n’a aucun
 
 ## Essayer
 
-MarsDawn arrive bientôt sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn

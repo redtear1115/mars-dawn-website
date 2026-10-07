@@ -1494,7 +1494,7 @@ Asistentes: _nombres_
 <p>MarsDawn no sabe qué patrón de workflow produjo un archivo, y no tiene ningún modelo de IA dentro &#8212; no ejecutará su propio paso de evaluador, ni te dirá si el que describe Anthropic hizo su trabajo. Lo que hace: la pestaña Esquema de la barra lateral (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) lista los encabezados de un archivo largo ensamblado por un orquestador, y un clic salta ahí. El código y la página renderizada van lado a lado (&#8984;2) y se desplazan juntos, con diagramas Mermaid y matemáticas KaTeX dibujados en lugar de dejados como fuente. Si el agente revisa el archivo mientras lees, MarsDawn lo vuelve a cargar y mantiene tu sitio, siempre que no tengas cambios sin guardar. Edición &#9656; Copiar referencia (&#8997;&#8984;C) copia tu sitio como <code>docs/plan.md:42</code>, listo para pegar en el chat con el agente.</p>
 
 <h2>Probarlo</h2>
-<p>MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Exporta Markdown a PDF sin la app.</p>
 <p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
@@ -1538,7 +1538,7 @@ Asistentes: _nombres_
 <p>MarsDawn no puede distinguir un paso read-only de uno write en un plan &#8212; es un juicio que el texto no etiqueta, y nada en la app lee por significado. No tiene ningún modelo de IA dentro: no marcará la línea arriesgada por ti, no hará la comprobación de «planificar es difícil» ni calificará el plan. Lo que hace es mantener el archivo legible mientras tú haces ese juicio: la pestaña Esquema (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) te deja recorrer la forma de un plan antes de leerlo línea a línea, el código y la página renderizada lado a lado (&#8984;2) para que un diagrama de los pasos no se quede atascado como Mermaid en bruto, y Edición &#9656; Copiar referencia (&#8997;&#8984;C) convierte tu sitio en <code>plan.md:10</code>, listo para pegar como feedback en cuanto veas una write action en el orden equivocado.</p>
 
 <h2>Probarlo</h2>
-<p>MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Exporta Markdown a PDF sin la app.</p>
 <p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
@@ -1585,7 +1585,7 @@ Asistentes: _nombres_
 <p>MarsDawn no tiene ningún modelo de IA dentro, así que no puede decirte si un plan se ha desviado en silencio de lo que realmente pasó, y no distingue un archivo de planificación de uno de memoria o de un informe de uso de herramientas &#8212; eso es una lectura del contenido, y te toca a ti. Lo que hace: la pestaña Esquema (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) muestra de un vistazo la forma de un plan largo, el código y la vista previa renderizada van lado a lado (&#8984;2) con Mermaid y KaTeX dibujados, y si el agente reescribe el archivo a mitad de lectura, MarsDawn lo vuelve a cargar y mantiene tu sitio, siempre que no tengas cambios sin guardar &#8212; útil precisamente porque un plan revisado en silencio es exactamente el modo de fallo que su sección «Challenges» describe desde el lado del modelo.</p>
 
 <h2>Probarlo</h2>
-<p>MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Exporta Markdown a PDF sin la app.</p>
 <p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
@@ -1630,7 +1630,7 @@ Su «observe what is going on inside» habla del interior de un sistema en march
 <p>MarsDawn no observa el interior de un agente en marcha &#8212; no tiene ningún modelo de IA dentro ni conexión con el framework que produjo el archivo, así que no puede decirte dónde en el espectro de Chase se situaba un agente dado. Trabaja sobre el documento que aterriza después: la pestaña Esquema (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) para la forma de un informe largo, el código y la vista previa renderizada lado a lado (&#8984;2) para diagramas y matemáticas, y la recarga en vivo que mantiene tu sitio cuando el agente reescribe el archivo, siempre que no tengas cambios sin guardar &#8212; la versión a nivel de archivo de vigilar algo que todavía se mueve. Edición &#9656; Copiar referencia (&#8997;&#8984;C) y Copiar para IA (&#8963;&#8997;&#8984;C) te dejan señalar exactamente dónde un paso se salió del camino &#8212; el equivalente en documento de empujar de vuelta a un agente en marcha.</p>
 
 <h2>Probarlo</h2>
-<p>MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Exporta Markdown a PDF sin la app.</p>
 <p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
@@ -1675,7 +1675,7 @@ Eso no es una crítica del texto &#8212; es su objetivo declarado, y uno razonab
 <p>MarsDawn no es un pipeline de evals y no tiene ningún modelo de IA dentro &#8212; no puntuarás un trace, no lanzará un pase LLM-as-a-judge ni decidirá qué acciones son lo bastante sensibles para pausarlas. Está hecho para el momento que su pipeline todavía entrega a una persona: leer la cosa directamente. La pestaña Esquema (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) lista los encabezados de un informe largo, el código y la vista previa renderizada van lado a lado (&#8984;2) con Mermaid y KaTeX dibujados, y Edición &#9656; Copiar referencia (&#8997;&#8984;C) con Copiar para IA (&#8963;&#8997;&#8984;C) convierten una revisión puntual en feedback preciso con el que el agente puede actuar.</p>
 
 <h2>Probarlo</h2>
-<p>MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Exporta Markdown a PDF sin la app.</p>
 <p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
@@ -1720,7 +1720,7 @@ un plan que espera el visto bueno, o un traspaso entre agentes que la ejecución
 <p>MarsDawn no sabe cuál de los cuatro patrones de Ng produjo un archivo dado, no ordena nada por previsibilidad y no tiene ningún modelo de IA dentro &#8212; no hará la comprobación que su orden sugiere que vale la pena. Mantiene el archivo legible mientras tú la haces: la pestaña Esquema (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) muestra la forma de un plan largo, el código y la vista previa renderizada van lado a lado (&#8984;2), y para un traspaso multiagente, abrir la carpeta compartida con Archivo &#9656; Abrir carpeta&#8230; (&#8679;&#8984;O) muestra archivos nuevos en la pestaña Archivos en cerca de un segundo a medida que distintos agentes los escriben, con el encabezado nombrando la rama git o el worktree para que dos archivos con el mismo nombre de agentes distintos no se confundan.</p>
 
 <h2>Probarlo</h2>
-<p>MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Exporta Markdown a PDF sin la app.</p>
 <p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>

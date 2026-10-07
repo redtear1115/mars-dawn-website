@@ -10430,7 +10430,7 @@ MarsDawn weiß nicht, welches Workflow-Muster eine Datei erzeugt hat, und hat ke
 
 ## Ausprobieren
 
-MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
+MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -10482,7 +10482,7 @@ MarsDawn kann in einem Plan keinen read-only- von einem write-Schritt unterschei
 
 ## Ausprobieren
 
-MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
+MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -10540,7 +10540,7 @@ MarsDawn hat kein KI-Modell innen, kann also nicht sagen, ob ein Plan still vom 
 
 ## Ausprobieren
 
-MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
+MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -10592,7 +10592,7 @@ MarsDawn beobachtet die Innereien eines laufenden Agenten nicht — es hat kein 
 
 ## Ausprobieren
 
-MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
+MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -10644,7 +10644,7 @@ MarsDawn ist keine Eval-Pipeline und hat kein KI-Modell innen — es bewertet ke
 
 ## Ausprobieren
 
-MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
+MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -10696,7 +10696,7 @@ MarsDawn weiß nicht, welches von Ngs vier Mustern eine gegebene Datei erzeugt h
 
 ## Ausprobieren
 
-MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
+MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -12599,7 +12599,7 @@ MarsDawn ne sait pas quel patron de workflow a produit un fichier, et n’a aucu
 
 ## Essayer
 
-MarsDawn arrive bientôt sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -12651,7 +12651,7 @@ MarsDawn ne peut pas distinguer une étape read-only d’une write dans un plan 
 
 ## Essayer
 
-MarsDawn arrive bientôt sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -12709,7 +12709,7 @@ MarsDawn n’a aucun modèle d’IA à l’intérieur, donc il ne peut pas vous 
 
 ## Essayer
 
-MarsDawn arrive bientôt sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -12761,7 +12761,7 @@ MarsDawn n’observe pas l’intérieur d’un agent en cours — il n’a aucun
 
 ## Essayer
 
-MarsDawn arrive bientôt sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -12813,7 +12813,7 @@ MarsDawn n’est pas un pipeline d’evals et n’a aucun modèle d’IA à l’
 
 ## Essayer
 
-MarsDawn arrive bientôt sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -12865,7 +12865,7 @@ MarsDawn ne sait pas lequel des quatre patrons de Ng a produit un fichier donné
 
 ## Essayer
 
-MarsDawn arrive bientôt sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -14768,7 +14768,7 @@ MarsDawn no sabe qué patrón de workflow produjo un archivo, y no tiene ningún
 
 ## Probarlo
 
-MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
+MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -14820,7 +14820,7 @@ MarsDawn no puede distinguir un paso read-only de uno write en un plan — es un
 
 ## Probarlo
 
-MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
+MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -14878,7 +14878,7 @@ MarsDawn no tiene ningún modelo de IA dentro, así que no puede decirte si un p
 
 ## Probarlo
 
-MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
+MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -14930,7 +14930,7 @@ MarsDawn no observa el interior de un agente en marcha — no tiene ningún mode
 
 ## Probarlo
 
-MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
+MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -14982,7 +14982,7 @@ MarsDawn no es un pipeline de evals y no tiene ningún modelo de IA dentro — n
 
 ## Probarlo
 
-MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
+MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -15034,7 +15034,7 @@ MarsDawn no sabe cuál de los cuatro patrones de Ng produjo un archivo dado, no 
 
 ## Probarlo
 
-MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
+MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -16937,7 +16937,7 @@ MarsDawn은 어떤 workflow 패턴이 파일을 만들었는지 모르고, 안�
 
 ## 사용해 보기
 
-MarsDawn은 곧 Mac App Store에 올라갑니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
+MarsDawn은 Mac App Store에 있습니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -16989,7 +16989,7 @@ MarsDawn은 계획에서 read-only 단계와 write 단계를 구분하지 못합
 
 ## 사용해 보기
 
-MarsDawn은 곧 Mac App Store에 올라갑니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
+MarsDawn은 Mac App Store에 있습니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -17047,7 +17047,7 @@ MarsDawn 안에는 AI 모델이 없어 계획이 실제로 일어난 일에서 �
 
 ## 사용해 보기
 
-MarsDawn은 곧 Mac App Store에 올라갑니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
+MarsDawn은 Mac App Store에 있습니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -17099,7 +17099,7 @@ MarsDawn은 실행 중 에이전트의 내부를 관측하지 않습니다 — �
 
 ## 사용해 보기
 
-MarsDawn은 곧 Mac App Store에 올라갑니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
+MarsDawn은 Mac App Store에 있습니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -17151,7 +17151,7 @@ MarsDawn은 eval 파이프라인이 아니고 안에 AI 모델도 없습니다 �
 
 ## 사용해 보기
 
-MarsDawn은 곧 Mac App Store에 올라갑니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
+MarsDawn은 Mac App Store에 있습니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -17203,7 +17203,7 @@ MarsDawn은 Ng의 네 패턴 중 어느 것이 주어진 파일을 만들었는�
 
 ## 사용해 보기
 
-MarsDawn은 곧 Mac App Store에 올라갑니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
+MarsDawn은 Mac App Store에 있습니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
 
 ```
 brew install redtear1115/tap/marsdawn

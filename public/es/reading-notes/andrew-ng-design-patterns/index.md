@@ -24,7 +24,7 @@ MarsDawn no sabe cuál de los cuatro patrones de Ng produjo un archivo dado, no 
 
 ## Probarlo
 
-MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
+MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
 
 ```
 brew install redtear1115/tap/marsdawn

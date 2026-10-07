@@ -24,7 +24,7 @@ MarsDawn ne peut pas distinguer une étape read-only d’une write dans un plan 
 
 ## Essayer
 
-MarsDawn arrive bientôt sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn

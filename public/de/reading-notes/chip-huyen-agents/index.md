@@ -24,7 +24,7 @@ MarsDawn kann in einem Plan keinen read-only- von einem write-Schritt unterschei
 
 ## Ausprobieren
 
-MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
+MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
 
 ```
 brew install redtear1115/tap/marsdawn

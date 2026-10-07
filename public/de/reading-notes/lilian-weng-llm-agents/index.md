@@ -30,7 +30,7 @@ MarsDawn hat kein KI-Modell innen, kann also nicht sagen, ob ein Plan still vom 
 
 ## Ausprobieren
 
-MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
+MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
 
 ```
 brew install redtear1115/tap/marsdawn

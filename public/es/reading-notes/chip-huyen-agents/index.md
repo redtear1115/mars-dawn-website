@@ -24,7 +24,7 @@ MarsDawn no puede distinguir un paso read-only de uno write en un plan — es un
 
 ## Probarlo
 
-MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
+MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
 
 ```
 brew install redtear1115/tap/marsdawn

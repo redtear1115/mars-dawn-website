@@ -30,7 +30,7 @@ MarsDawn weiß nicht, welches Workflow-Muster eine Datei erzeugt hat, und hat ke
 
 ## Ausprobieren
 
-MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
+MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
 
 ```
 brew install redtear1115/tap/marsdawn

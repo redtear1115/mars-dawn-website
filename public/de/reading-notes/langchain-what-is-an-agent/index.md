@@ -24,7 +24,7 @@ MarsDawn ist keine Eval-Pipeline und hat kein KI-Modell innen — es bewertet ke
 
 ## Ausprobieren
 
-MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
+MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug `marsdawn` funktioniert schon heute:
 
 ```
 brew install redtear1115/tap/marsdawn

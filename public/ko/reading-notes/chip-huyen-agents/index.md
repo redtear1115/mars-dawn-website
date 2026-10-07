@@ -24,7 +24,7 @@ MarsDawn은 계획에서 read-only 단계와 write 단계를 구분하지 못합
 
 ## 사용해 보기
 
-MarsDawn은 곧 Mac App Store에 올라갑니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
+MarsDawn은 Mac App Store에 있습니다. 무료 `marsdawn` 명령줄 도구는 오늘부터 쓸 수 있습니다:
 
 ```
 brew install redtear1115/tap/marsdawn

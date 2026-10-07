@@ -1494,7 +1494,7 @@ Teilnehmende: _Namen_
 <p>MarsDawn weiß nicht, welches Workflow-Muster eine Datei erzeugt hat, und hat kein KI-Modell innen &#8212; es führt keinen eigenen Evaluator-Schritt aus und sagt dir nicht, ob der von Anthropic beschriebene seine Arbeit getan hat. Was es tut: Der Tab Gliederung in der Seitenleiste (Darstellung &#9656; Seitenleiste einblenden, &#8963;&#8984;S) listet die Überschriften einer langen, vom Orchestrator zusammengefügten Datei, und ein Klick springt dorthin. Quelltext und gerenderte Seite stehen nebeneinander (&#8984;2) und scrollen zusammen, mit gezeichneten Mermaid-Diagrammen und KaTeX-Formeln statt Rohquelle. Überarbeitet der Agent die Datei während du liest, lädt MarsDawn sie neu und behält deine Stelle, solange du keine eigenen ungesicherten Änderungen hast. Bearbeiten &#9656; Verweis kopieren (&#8997;&#8984;C) kopiert deine Stelle als <code>docs/plan.md:42</code>, bereit zum Einfügen in den Chat mit dem Agenten.</p>
 
 <h2>Ausprobieren</h2>
-<p>MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
+<p>MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Es exportiert Markdown ohne die App als PDF.</p>
 <p><a href="/de/cli/">Befehlszeile</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
@@ -1538,7 +1538,7 @@ Teilnehmende: _Namen_
 <p>MarsDawn kann in einem Plan keinen read-only- von einem write-Schritt unterscheiden &#8212; das ist ein Urteil, das der Text nicht etikettiert, und nichts in der App liest auf Bedeutung. Es hat kein KI-Modell innen: es markiert die riskante Zeile nicht für dich, führt den „Planung-ist-schwer“-Check nicht aus und bewertet den Plan nicht. Was es tut: die Datei lesbar halten, während du dieses Urteil selbst fällst. Der Tab Gliederung (Darstellung &#9656; Seitenleiste einblenden, &#8963;&#8984;S) lässt dich die Form eines Plans scannen, bevor du Zeile für Zeile liest; Quelltext und gerenderte Seite stehen nebeneinander (&#8984;2), damit ein Diagramm der Schritte nicht als rohes Mermaid stecken bleibt; und Bearbeiten &#9656; Verweis kopieren (&#8997;&#8984;C) macht aus deiner Stelle <code>plan.md:10</code>, bereit als Feedback, sobald du eine write action in der falschen Reihenfolge siehst.</p>
 
 <h2>Ausprobieren</h2>
-<p>MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
+<p>MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Es exportiert Markdown ohne die App als PDF.</p>
 <p><a href="/de/cli/">Befehlszeile</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
@@ -1585,7 +1585,7 @@ Teilnehmende: _Namen_
 <p>MarsDawn hat kein KI-Modell innen, kann also nicht sagen, ob ein Plan still vom Tatsächlichen abgewichen ist, und unterscheidet auch keine Planungs-, Gedächtnis- oder Werkzeugnutzungs-Datei &#8212; das ist eine Lesart des Inhalts, und die liegt bei dir. Was es tut: Der Tab Gliederung (Darstellung &#9656; Seitenleiste einblenden, &#8963;&#8984;S) zeigt die Form eines langen Plans auf einen Blick, Quelltext und gerenderte Vorschau stehen nebeneinander (&#8984;2) mit gezeichnetem Mermaid und KaTeX, und wenn der Agent die Datei mitten im Lesen umschreibt, lädt MarsDawn sie neu und behält deine Stelle, solange du keine eigenen ungesicherten Änderungen hast &#8212; nützlich gerade deshalb, weil ein still überarbeiteter Plan genau der Fehlermodus ist, den ihr Abschnitt „Challenges“ von der Modellseite beschreibt.</p>
 
 <h2>Ausprobieren</h2>
-<p>MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
+<p>MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Es exportiert Markdown ohne die App als PDF.</p>
 <p><a href="/de/cli/">Befehlszeile</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
@@ -1630,7 +1630,7 @@ Sein „observe what is going on inside“ gilt den Innereien eines laufenden Sy
 <p>MarsDawn beobachtet die Innereien eines laufenden Agenten nicht &#8212; es hat kein KI-Modell innen und keine Verbindung zum Framework, das die Datei erzeugt hat, und kann dir nicht sagen, wo auf Chases Spektrum ein gegebener Agent saß. Es arbeitet an dem Dokument, das danach landet: der Tab Gliederung (Darstellung &#9656; Seitenleiste einblenden, &#8963;&#8984;S) für die Form eines langen Berichts, Quelltext und gerenderte Vorschau nebeneinander (&#8984;2) für Diagramme und Formeln, und Live-Neuladen, das deine Stelle behält, wenn der Agent die Datei umschreibt, solange du keine eigenen ungesicherten Änderungen hast &#8212; die Dateiebene davon, etwas zu beobachten, das sich noch bewegt. Bearbeiten &#9656; Verweis kopieren (&#8997;&#8984;C) und Für KI kopieren (&#8963;&#8997;&#8984;C) lassen dich genau zeigen, wo ein Schritt vom Kurs abkam &#8212; das Dokument-Äquivalent dazu, einen laufenden Agenten zurückzustoßen.</p>
 
 <h2>Ausprobieren</h2>
-<p>MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
+<p>MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Es exportiert Markdown ohne die App als PDF.</p>
 <p><a href="/de/cli/">Befehlszeile</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
@@ -1675,7 +1675,7 @@ Das ist keine Kritik am Text &#8212; es ist ihr erklärtes Ziel, und in Produkti
 <p>MarsDawn ist keine Eval-Pipeline und hat kein KI-Modell innen &#8212; es bewertet keinen Trace, führt keinen LLM-as-a-judge-Durchlauf aus und entscheidet nicht, welche Aktionen sensibel genug zum Anhalten sind. Es ist für den Moment gebaut, den ihre Pipeline noch einer Person übergibt: die Sache direkt lesen. Der Tab Gliederung (Darstellung &#9656; Seitenleiste einblenden, &#8963;&#8984;S) listet die Überschriften eines langen Berichts, Quelltext und gerenderte Vorschau stehen nebeneinander (&#8984;2) mit gezeichnetem Mermaid und KaTeX, und Bearbeiten &#9656; Verweis kopieren (&#8997;&#8984;C) mit Für KI kopieren (&#8963;&#8997;&#8984;C) machen aus einem Spot-Check präzises Feedback, mit dem der Agent arbeiten kann.</p>
 
 <h2>Ausprobieren</h2>
-<p>MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
+<p>MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Es exportiert Markdown ohne die App als PDF.</p>
 <p><a href="/de/cli/">Befehlszeile</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
@@ -1720,7 +1720,7 @@ einen Plan, der auf ein Go wartet, oder eine Übergabe zwischen Agenten, die die
 <p>MarsDawn weiß nicht, welches von Ngs vier Mustern eine gegebene Datei erzeugt hat, ordnet nichts nach Vorhersagbarkeit und hat kein KI-Modell innen &#8212; es führt die Prüfung nicht aus, die seine Rangfolge nahelegt. Es hält die Datei lesbar, während du das selbst tust: Der Tab Gliederung (Darstellung &#9656; Seitenleiste einblenden, &#8963;&#8984;S) zeigt die Form eines langen Plans, Quelltext und gerenderte Vorschau stehen nebeneinander (&#8984;2), und für eine Multi-Agenten-Übergabe zeigt das Öffnen des gemeinsamen Ordners mit Ablage &#9656; Ordner öffnen&#160;&#8230; (&#8679;&#8984;O) neue Dateien im Tab Dateien innerhalb etwa einer Sekunde, sobald verschiedene Agenten schreiben, und die Kopfzeile nennt den Git-Branch oder Worktree, damit zwei Dateien mit demselben Namen von verschiedenen Agenten nicht verwechselt werden.</p>
 
 <h2>Ausprobieren</h2>
-<p>MarsDawn kommt bald in den Mac App Store. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
+<p>MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>Es exportiert Markdown ohne die App als PDF.</p>
 <p><a href="/de/cli/">Befehlszeile</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>

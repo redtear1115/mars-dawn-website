@@ -24,7 +24,7 @@ MarsDawn no es un pipeline de evals y no tiene ningún modelo de IA dentro — n
 
 ## Probarlo
 
-MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
+MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
 
 ```
 brew install redtear1115/tap/marsdawn

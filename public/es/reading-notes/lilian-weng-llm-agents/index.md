@@ -30,7 +30,7 @@ MarsDawn no tiene ningún modelo de IA dentro, así que no puede decirte si un p
 
 ## Probarlo
 
-MarsDawn llegará pronto al Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
+MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita `marsdawn` ya funciona hoy:
 
 ```
 brew install redtear1115/tap/marsdawn
