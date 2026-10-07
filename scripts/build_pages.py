@@ -463,26 +463,39 @@ THEME_INDEX_PATH = SITE / "themes" / "v1" / "index.json"
 SCENARIOS = ["agent-review", "technical-docs", "formal-output", "notes-sharing"]
 
 SCENARIO_LABELS = {
-    "agent-review": {"en": "Agent review", "zh-hant": "審閱代理產出", "zh-hans": "审阅代理产出", "ja": "エージェント出力のレビュー"},
-    "technical-docs": {"en": "Technical docs", "zh-hant": "技術文件", "zh-hans": "技术文档", "ja": "技術ドキュメント"},
-    "formal-output": {"en": "Formal output", "zh-hant": "正式輸出", "zh-hans": "正式输出", "ja": "フォーマルな出力"},
-    "notes-sharing": {"en": "Notes & sharing", "zh-hant": "筆記分享", "zh-hans": "笔记分享", "ja": "メモ・共有"},
+    "agent-review": {"en": "Agent review", "zh-hant": "審閱代理產出", "zh-hans": "审阅代理产出", "ja": "エージェント出力のレビュー",
+                     "de": "Agentenausgabe prüfen", "fr": "Revue de sortie d’agent", "es": "Revisar salida de agente", "ko": "에이전트 결과 검토"},
+    "technical-docs": {"en": "Technical docs", "zh-hant": "技術文件", "zh-hans": "技术文档", "ja": "技術ドキュメント",
+                       "de": "Technische Docs", "fr": "Docs techniques", "es": "Docs técnicos", "ko": "기술 문서"},
+    "formal-output": {"en": "Formal output", "zh-hant": "正式輸出", "zh-hans": "正式输出", "ja": "フォーマルな出力",
+                      "de": "Formale Ausgabe", "fr": "Sortie formelle", "es": "Salida formal", "ko": "공식 산출물"},
+    "notes-sharing": {"en": "Notes & sharing", "zh-hant": "筆記分享", "zh-hans": "笔记分享", "ja": "メモ・共有",
+                      "de": "Notizen & Teilen", "fr": "Notes et partage", "es": "Notas y compartir", "ko": "메모·공유"},
 }
 
-GALLERY_FILTER_ALL = {"en": "All", "zh-hant": "全部", "zh-hans": "全部", "ja": "すべて"}
+GALLERY_FILTER_ALL = {"en": "All", "zh-hant": "全部", "zh-hans": "全部", "ja": "すべて",
+                       "de": "Alle", "fr": "Tous", "es": "Todos", "ko": "전체"}
 GALLERY_FILTER_LABEL = {
     "en": "Filter by scenario", "zh-hant": "依情境篩選", "zh-hans": "按场景筛选", "ja": "シナリオで絞り込む",
+    "de": "Nach Szenario filtern", "fr": "Filtrer par scénario", "es": "Filtrar por escenario", "ko": "용도로 필터",
 }
-GALLERY_BY_LABEL = {"en": "by", "zh-hant": "作者：", "zh-hans": "作者：", "ja": "作者："}
-GALLERY_REPORT_LABEL = {"en": "Report", "zh-hant": "檢舉", "zh-hans": "举报", "ja": "通報"}
+GALLERY_BY_LABEL = {"en": "by", "zh-hant": "作者：", "zh-hans": "作者：", "ja": "作者：",
+                     "de": "von", "fr": "par", "es": "por", "ko": "작성:"}
+GALLERY_REPORT_LABEL = {"en": "Report", "zh-hant": "檢舉", "zh-hans": "举报", "ja": "通報",
+                         "de": "Melden", "fr": "Signaler", "es": "Denunciar", "ko": "신고"}
 GALLERY_REPORT_MAIL_LABEL = {
     "en": "Report by email", "zh-hant": "用電子郵件檢舉", "zh-hans": "用电子邮件举报", "ja": "メールで通報",
+    "de": "Per E-Mail melden", "fr": "Signaler par e-mail", "es": "Denunciar por correo", "ko": "이메일로 신고",
 }
 GALLERY_EMPTY = {
     "en": "No themes are published yet. Be the first: build one in the browser and submit it.",
     "zh-hant": "目前還沒有任何投稿的主題。第一個做一個吧：在瀏覽器裡打造一個主題，然後送出投稿。",
     "zh-hans": "目前还没有任何投稿的主题。第一个做一个吧：在浏览器里打造一个主题，然后送出投稿。",
     "ja": "まだ公開されているテーマはありません。最初のひとりになりませんか。ブラウザでテーマを作って投稿してください。",
+    "de": "Noch sind keine Themen veröffentlicht. Sei die Erste oder der Erste: Bau eines im Browser und reiche es ein.",
+    "fr": "Aucun thème n’est encore publié. Soyez le premier : créez-en un dans le navigateur et envoyez-le.",
+    "es": "Todavía no hay temas publicados. Sé el primero: crea uno en el navegador y envíalo.",
+    "ko": "아직 공개된 테마가 없습니다. 첫 번째로 브라우저에서 테마를 만들어 제출해 보세요.",
 }
 
 # Four gallery themes (dracula, nord, gruvbox, solarized) are ports of existing open-source colour
@@ -494,6 +507,7 @@ PORTED_THEME_IDS = ("dracula", "nord", "gruvbox", "solarized")
 THIRD_PARTY_NOTICES_PATH = "/themes/third-party-notices.html"
 GALLERY_CREDIT_LABEL = {
     "en": "Credits & licence", "zh-hant": "版權與授權", "zh-hans": "版权与授权", "ja": "クレジットとライセンス",
+    "de": "Credits & Lizenz", "fr": "Crédits et licence", "es": "Créditos y licencia", "ko": "크레딧 및 라이선스",
 }
 GALLERY_CREDIT_NOTE = {
     "en": ('Dracula, Nord, Gruvbox and Solarized are adapted from open-source colour schemes; '
@@ -506,6 +520,18 @@ GALLERY_CREDIT_NOTE = {
     "ja": (f'Dracula、Nord、Gruvbox、Solarized はオープンソースの配色プロジェクトを基にしています。'
            f'各プロジェクトの著作権表示と完全なライセンス全文は<a href="{THIRD_PARTY_NOTICES_PATH}">'
            'サードパーティ通知</a>をご覧ください。'),
+    "de": (f'Dracula, Nord, Gruvbox und Solarized basieren auf Open-Source-Farbschemata; '
+           f'Urheberrecht und vollständiger Lizenztext jedes Projekts stehen in den '
+           f'<a href="{THIRD_PARTY_NOTICES_PATH}">Hinweisen zu Drittanbietern</a>.'),
+    "fr": (f'Dracula, Nord, Gruvbox et Solarized s’appuient sur des palettes open source ; '
+           f'voir les <a href="{THIRD_PARTY_NOTICES_PATH}">mentions des tiers</a> pour le copyright '
+           'et le texte complet de la licence de chaque projet.'),
+    "es": (f'Dracula, Nord, Gruvbox y Solarized se adaptan de esquemas de color de código abierto; '
+           f've las <a href="{THIRD_PARTY_NOTICES_PATH}">notificaciones de terceros</a> para el copyright '
+           'y el texto completo de la licencia de cada proyecto.'),
+    "ko": (f'Dracula, Nord, Gruvbox, Solarized는 오픈 소스 배색 프로젝트를 바탕으로 합니다. '
+           f'각 프로젝트의 저작권 표시와 전체 라이선스 본문은 '
+           f'<a href="{THIRD_PARTY_NOTICES_PATH}">서드파티 고지</a>에서 확인하세요.'),
 }
 
 # The issue form theme-report.yml (.github/ISSUE_TEMPLATE/): no @mention of the theme's author,

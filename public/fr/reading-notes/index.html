@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes de lecture de la rédaction · MarsDawn</title>
+<meta name="description" content="Six courtes notes sur ce que les gens qui construisent des agents IA avancent réellement — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain et Andrew Ng — et ce que cela signifie pour la personne qui doit lire ce qu’un tel agent rend.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/reading-notes/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/reading-notes/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/reading-notes/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/reading-notes/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/fr/reading-notes/">
+<link rel="alternate" type="text/markdown" href="/fr/reading-notes/index.md">
+<meta property="og:title" content="Notes de lecture de la rédaction · MarsDawn">
+<meta property="og:description" content="Six courtes notes sur ce que les gens qui construisent des agents IA avancent réellement — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain et Andrew Ng — et ce que cela signifie pour la personne qui doit lire ce qu’un tel agent rend.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/fr/reading-notes/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentement aux cookies" hidden>
+  <p>Ce site utilise des cookies de mesure d’audience pour voir comment les visiteurs l’utilisent. Ils restent désactivés tant que vous n’acceptez pas.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Refuser</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accepter</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/fr/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Sur le Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/reading-notes/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/reading-notes/" hreflang="fr" aria-current="true" lang="fr">Français</a> · <a href="/es/reading-notes/" hreflang="es" lang="es">Español</a> · <a href="/ko/reading-notes/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Notes de lecture de la rédaction</h1>
+  <p>Six personnes ont écrit sur le fonctionnement des agents IA : de quoi ils sont faits, ce qui rend un système « agentic », quels patrons de conception tiennent en pratique et lesquels pas encore. Aucune n’a écrit sur la lecture de ce qu’un agent rend, et aucune ne mentionne MarsDawn ni ne recommande d’outil Markdown. Nous avons lu chaque texte pour lui-même, marqué clairement où commence notre propre lecture, et posé à chaque source la même question : quel document tend à atterrir dans votre dossier à cause de ceci, et où MarsDawn aide à le lire ?</p>
+</section>
+
+<p>Si vous voulez d’abord la version courte et pratique, commencez par <a href="/fr/reading-agent-output/">Lire ce que votre agent vous rend</a> et <a href="/fr/reviewing-agent-plans/">Relire le plan d’un agent en cinq minutes</a>. Ces six notes vont plus près des sources derrière ces pages. Chacune se suffit ; lisez-les dans n’importe quel ordre.</p>
+
+<ul>
+  <li><a href="/fr/reading-notes/anthropic-building-effective-agents/">Anthropic trace une ligne entre workflows et agents. Où se situe votre lecture ?</a> &#8212; Le guide d’Anthropic pour qui construit des agents sépare un pipeline fixe d’un modèle qui dirige lui-même l’étape suivante, et décrit un workflow où le « relecteur » est un second appel LLM, pas une personne.</li>
+  <li><a href="/fr/reading-notes/chip-huyen-agents/">La distinction read-only / write action de Chip Huyen, et pourquoi elle compte avant d’approuver</a> &#8212; sa définition simple d’un agent, et la différence entre actions qui ne font que regarder et actions qui changent quelque chose : c’est là qu’une relecture de cinq minutes gagne son temps.</li>
+  <li><a href="/fr/reading-notes/lilian-weng-llm-agents/">Le plan d’agent de Lilian Weng en 2023, et le fichier que chaque partie laisse</a> &#8212; cerveau, planification, mémoire, usage d’outils : son propre cadre de ce dont un agent est fait, et la limite qu’elle nomme dans les plans qui ne s’ajustent pas quand quelque chose tourne mal.</li>
+  <li><a href="/fr/reading-notes/harrison-chase-what-is-an-agent/">Le spectre de Harrison Chase : plus c’est agentic, plus vous voudrez regarder</a> &#8212; sa définition technique d’un agent, et son plaidoyer pour l’observabilité à mesure qu’un système avance sur ce spectre.</li>
+  <li><a href="/fr/reading-notes/langchain-what-is-an-agent/">Le pipeline d’evals de Jess Ou, et l’étape qui reste encore la vôtre</a> &#8212; en juillet 2026, LangChain a publié un nouveau « What is an AI agent ? » de Jess Ou à l’adresse où se trouvait le billet 2024 de Harrison Chase ; sa définition est presque mot pour mot la sienne, et elle décrit où l’évaluation automatique s’arrête et où une personne doit intervenir.</li>
+  <li><a href="/fr/reading-notes/andrew-ng-design-patterns/">Andrew Ng classe ses propres patrons de conception selon leur prévisibilité</a> &#8212; sur cinq lettres dans The Batch, il dit clairement lesquels il trouve plus fiables et lesquels il peines à prévoir.</li>
+</ul>
+
+<p>Aucun de ces six textes n’argumente qu’il faille lire plus soigneusement la sortie d’un agent, et aucun ne parle de MarsDawn. Ce lien, là où nous le traçons, est le nôtre, et chaque note le dit.</p>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/fr/support/">Assistance</a>
+    <a href="/fr/privacy/">Politique de confidentialité</a>
+    <a href="/fr/cli/">Ligne de commande</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Réglages des cookies</button>
+  </nav>
+  <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
