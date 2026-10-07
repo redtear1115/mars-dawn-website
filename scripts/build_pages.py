@@ -4143,6 +4143,7 @@ HOME_PROOF = ["native", "pdf"]
 HOME = {
     "en": {
         "cta_cli": "Install the free CLI",
+        "cta_try": "Download and try it free",
         "cta_store": "View on the Mac App Store",
         "install_h": "Do this now",
         "install_lede": "The free <code>marsdawn</code> command-line tool is ready today. Install it with Homebrew:",
@@ -4155,6 +4156,7 @@ HOME = {
     },
     "zh-hant": {
         "cta_cli": "安裝免費的 CLI",
+        "cta_try": "立刻下載試用",
         "cta_store": "在 Mac App Store 查看",
         "install_h": "現在就能做的事",
         "install_lede": "免費的 <code>marsdawn</code> 命令列工具現在就能用。用 Homebrew 安裝：",
@@ -4167,6 +4169,7 @@ HOME = {
     },
     "zh-hans": {
         "cta_cli": "安装免费的 CLI",
+        "cta_try": "立即下载试用",
         "cta_store": "在 Mac App Store 查看",
         "install_h": "现在就能做的事",
         "install_lede": "免费的 <code>marsdawn</code> 命令行工具现在就能用。用 Homebrew 安装：",
@@ -4179,6 +4182,7 @@ HOME = {
     },
     "ja": {
         "cta_cli": "無料の CLI をインストール",
+        "cta_try": "今すぐダウンロードして試す",
         "cta_store": "Mac App Store で見る",
         "install_h": "今すぐできること",
         "install_lede": "無料の <code>marsdawn</code> コマンドラインツールは今すぐ使えます。Homebrew でインストール：",
@@ -4207,6 +4211,15 @@ def hero_cta_html(locale: str) -> str:
                 f'<a class="cta cta-secondary" href="#install">{home["cta_cli"]}</a></p>')
     return (f'<p class="hero-cta"><a class="cta cta-primary" href="#install">{home["cta_cli"]}</a> '
             f'<span class="store-chip">{STORE_CHIP[locale]}</span></p>')
+
+
+def closing_cta_html(locale: str) -> str:
+    """The closing line's one link: the app's listing once there is one, the CLI install before."""
+    home = HOME[locale]
+    if launched():
+        assert LISTING_URL, "AVAILABILITY is InStock but LISTING_URL isn't set"
+        return f'<a href="{LISTING_URL}">{home["cta_try"]}</a>'
+    return f'<a href="#install">{home["cta_cli"]}</a>'
 
 
 def home_sections_html(locale: str) -> str:
@@ -5108,7 +5121,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         closing_html = (
             '<section class="dawn-close">\n'
             f'<p><strong>{ui["slogan"]}</strong> {ui["footer_store"]}</p>\n'
-            f'<p class="close-next"><a href="#install">{HOME[locale]["cta_cli"]}</a></p>\n'
+            f'<p class="close-next">{closing_cta_html(locale)}</p>\n'
             "</section>"
         )
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"

@@ -313,6 +313,7 @@ marsdawn open notes.md --folder .</code></pre>
     }
     home = {
         "cta_cli": 'Kostenlose CLI installieren',
+        "cta_try": 'Jetzt laden und testen',
         "cta_store": 'Im Mac App Store ansehen',
         "install_h": 'Gleich loslegen',
         "install_lede": 'Das kostenlose Befehlszeilenprogramm <code>marsdawn</code> ist schon heute verfügbar. Installiere es mit Homebrew:',
