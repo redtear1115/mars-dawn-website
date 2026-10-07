@@ -1,0 +1,72 @@
+# Afficher du Markdown ailleurs, ou dans MarsDawn.
+
+Si VS Code, un navigateur ou Claude Desktop est déjà ouvert, il est logique de s’en servir pour jeter un œil à un fichier Markdown. Voici ce que chacun affiche réellement, et ce qu’il en coûte pour y arriver, comparé à l’ouverture du même fichier dans MarsDawn.
+
+## En un coup d’œil
+
+|  | Aperçu VS Code | Extension de navigateur | Claude Desktop | MarsDawn |
+|---|---|---|---|---|
+| Ouvre un fichier Markdown depuis le disque | Oui | Oui, une fois l’accès aux fichiers autorisé | Non : Markdown ne figure pas dans sa liste d’import | Oui |
+| Avant le premier fichier | Installer VS Code, un environnement de développement complet | Installer une extension, puis activer « Autoriser l’accès aux URL de fichier » | Il ne peut pas parcourir les fichiers du disque | Installer MarsDawn |
+| Conçu pour | Écrire du code ; l’aperçu est un volet parmi d’autres | Naviguer sur le web | Converser avec Claude | Lire et modifier du Markdown |
+| Dessine la page avec | Electron : un Chromium et Node.js embarqués | Un navigateur complet | L’app Claude Desktop | Une app AppKit native ; WebKit dessine la page |
+
+## L’aperçu intégré de VS Code
+
+Appuyez sur `⌘⇧V` dans VS Code et il fait le rendu du fichier Markdown dans un volet d’aperçu intégré, gratuitement, sans rien installer. Depuis VS Code 1.121 (mai 2026), cet aperçu affiche aussi les diagrammes Mermaid nativement : Microsoft a intégré une extension Mermaid à VS Code lui-même, alors qu’il fallait auparavant une extension séparée. Ce qu’il ne fait pas : c’est un volet d’aperçu à l’intérieur d’un éditeur, pas un éditeur conçu pour la lecture. Le volet se trouve à côté d’une arborescence de fichiers, d’un terminal et de tous les autres panneaux que VS Code peut afficher, et VS Code lui-même est une app Electron qu’on installe comme un environnement de développement complet, pas quelque chose qu’on ouvre pour lire un fichier.
+
+## Une extension de navigateur pour les fichiers locaux
+
+Aucune extension de navigateur ne s’impose pour lire un fichier `.md` local : Local Markdown Viewer, Markdown Viewer, MarkView et d’autres font à peu près la même chose, et aucune n’est installée par défaut. Toutes ont besoin de la même étape supplémentaire avant de pouvoir ouvrir quoi que ce soit : activer « Autoriser l’accès aux URL de fichier » pour l’extension, car les navigateurs empêchent par défaut les extensions de lire les pages `file://`. C’est une autorisation que l’on accorde une fois par extension, et on oublie facilement qu’on l’a fait, ou pourquoi. Une fois activée, le fichier s’affiche dans un onglet du navigateur : il faut donc faire tourner un navigateur complet pour regarder un fichier.
+
+## L’aperçu de fichiers de Claude Desktop
+
+Claude Desktop affiche un fichier qui se trouve déjà dans un projet ou une conversation. Ce pour quoi il n’est pas conçu, c’est parcourir des fichiers quelconques sur le disque : vous pouvez regarder ce que la conversation contient déjà, pas un dossier de notes que vous gardez ouvert à côté de votre travail. La liste d’Anthropic [des types de documents que l’on peut importer](https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai) comprend PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON et XLSX : Markdown n’y figure pas.
+
+## Un moteur de navigateur pour lire un fichier
+
+VS Code est une app Electron : un Chromium et un environnement Node.js embarqués, pas une app Mac native. L’extension de navigateur, elle, tourne dans un vrai navigateur. Dans les deux cas, afficher un fichier Markdown suppose de faire tourner un moteur de navigateur complet. MarsDawn est une app AppKit native : pas de navigateur embarqué ; elle ouvre directement n’importe quel fichier local, sans extension à installer ni autorisation à retenir.
+
+## Pour aller plus loin
+
+- Ce que MarsDawn ne fait pas non plus : [la liste](/fr/limits/).
+- Transformer n’importe quel fichier Markdown en PDF dès aujourd’hui, gratuitement : [Markdown en PDF](/fr/markdown-to-pdf/).
+- Par rapport à une visionneuse Mac native : [MacMD Viewer ou MarsDawn](/fr/vs/macmd-viewer/).
+
+## Plus
+
+- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Du Markdown pour les humains qui pilotent le travail des agents : un éditeur Mac natif avec aperçu en direct, diagrammes Mermaid et export PDF. Sur le Mac App Store.
+- [Vos textes restent sur votre Mac](https://marsdawn.southern-light.dev/fr/yours/index.md): MarsDawn n’a ni compte, ni synchronisation, ni cloud. Vos documents Markdown restent sur votre Mac, dans les fichiers et dossiers que vous choisissez.
+- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
+- [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts et les tableaux.
+- [Une app Mac](https://marsdawn.southern-light.dev/fr/native/index.md): Un éditeur Markdown qui est une vraie app Mac : fenêtres et onglets natifs, enregistrement automatique, historique des versions, Coup d’œil dans le Finder et un éditeur de texte qui se comporte comme sur Mac.
+- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Quatre thèmes intégrés. À savoir avant d’acheter.
+- [Assistance](https://marsdawn.southern-light.dev/fr/support/index.md): De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
+- [Politique de confidentialité](https://marsdawn.southern-light.dev/fr/privacy/index.md): MarsDawn ne collecte aucune donnée personnelle. Vos documents et vos réglages restent sur votre Mac.
+- [Afficher du Markdown sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Un fichier .md est du texte brut avec des marques de mise en forme. Voici comment le lire rendu sur Mac : en PDF avec l’outil en ligne de commande gratuit marsdawn dès aujourd’hui, et dans l’app MarsDawn, sur le Mac App Store.
+- [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
+- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer affiche le Markdown en lecture seule pour 19,99 USD. MarsDawn modifie et affiche l’aperçu côte à côte, gratuit à l’essai puis 4,99 USD une seule fois sur le Mac App Store.
+- [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.
+- [marsdawn pour les agents](https://marsdawn.southern-light.dev/fr/cli/agents/index.md): Une référence pour les agents IA et les scripts qui appellent marsdawn pour convertir du Markdown en PDF : commandes, sortie JSON, schémas, codes de sortie et configuration requise.
+- [Skill pour agents](https://marsdawn.southern-light.dev/fr/cli/skill/index.md): Un fichier que votre agent de code charge pour ouvrir dans MarsDawn le Markdown qu’il a écrit, afin que vous le relisiez, et pour installer marsdawn, exporter du Markdown en PDF et lire le résultat JSON.
+- [Serveur MCP](https://marsdawn.southern-light.dev/fr/cli/mcp/index.md): marsdawn n’a pas de modèle d’IA à lui : peu importe quel agent a écrit le Markdown. Appelez-le depuis la CLI, un fichier de compétence ou le serveur MCP marsdawn-mcp : tous trois lancent le même export.
+- [Relire en économisant les tokens](https://marsdawn.southern-light.dev/fr/token-efficient-review/index.md): Une personne relit la page rendue dans MarsDawn ; elle n’est jamais relue dans le contexte de l’agent. L’appel d’outil renvoie un résultat JSON compact, pas le contenu rendu : l’appeler coûte donc peu aussi.
+- [Thèmes de l’aperçu et export PDF](https://marsdawn.southern-light.dev/fr/themes/index.md): Quatre thèmes d’aperçu, chacun avec une palette claire et une palette sombre, et un seul export PDF et impression qui suit celui que vous utilisez. D’autres thèmes importables et une galerie pour partager les vôtres sont prévus.
+- [Partager les PDF exportés](https://marsdawn.southern-light.dev/fr/sharing-exported-pdfs/index.md): Exportez le Markdown d’un agent en PDF et remettez-le à un collègue qui ne lit pas le Markdown et n’installera rien. Aucune syntaxe, aucune app et aucun compte nécessaires pour l’ouvrir.
+- [Pourquoi ce que produit l’IA a encore besoin d’un lecteur humain](https://marsdawn.southern-light.dev/fr/reviewing-ai-output/index.md): Le Markdown écrit par une IA doit être compris par une personne, pas cru sur parole. MarsDawn place la page rendue à côté de la source et dessine les diagrammes Mermaid et les formules KaTeX, pour que la structure se lise d’un coup d’œil.
+- [Lire ce que votre agent vous rend](https://marsdawn.southern-light.dev/fr/reading-agent-output/index.md): Les agents IA rendent leur travail en Markdown : plans, spécifications, rapports d’avancement. Ce que disent ceux qui construisent des agents sur les points de contrôle et les échecs, pourquoi ces fichiers sont difficiles à lire, et une liste de vérification pour relire un plan en cinq minutes.
+- [Transparence des agents](https://marsdawn.southern-light.dev/fr/agent-transparency/index.md): Le guide d’Anthropic pour construire des agents demande de la transparence : montrer les étapes de planification. Ce qu’il dit, ce qu’il ne dit pas, et pourquoi ces étapes finissent généralement dans un fichier Markdown que quelqu’un doit lire.
+- [Relire le plan d’un agent](https://marsdawn.southern-light.dev/fr/reviewing-agent-plans/index.md): Une méthode en six étapes pour relire le plan qu’un agent IA vous remet avant qu’il ne s’exécute, en cinq minutes environ et dans n’importe quel éditeur, avec un exemple détaillé.
+- [Patrons de conception d’agents](https://marsdawn.southern-light.dev/fr/agent-design-patterns/index.md): Réflexion, utilisation d’outils, planification et collaboration multi-agents, tels qu’Andrew Ng les a décrits, et ce que chacun vous rend généralement à lire.
+- [Historique des versions](https://marsdawn.southern-light.dev/fr/changelog/index.md): Ce qui a changé dans l’outil en ligne de commande gratuit marsdawn.
+- [Modèles](https://marsdawn.southern-light.dev/fr/templates/index.md): Des modèles Markdown pour les documents qu’un agent rédige et que vous lisez : une spécification, un organigramme et un compte rendu de réunion, chacun avec un prompt pour votre agent.
+- [Modèle de spécification](https://marsdawn.southern-light.dev/fr/templates/spec/index.md): Un modèle de spécification en Markdown avec exigences, diagramme de flux Mermaid et critères d’acceptation. Votre agent le remplit ; vous le relisez dans MarsDawn.
+- [Modèle d’organigramme](https://marsdawn.southern-light.dev/fr/templates/flowchart/index.md): Un modèle d’organigramme Mermaid en Markdown, avec les étapes écrites en dessous. Prévisualisez-le sur Mac et exportez-le en PDF.
+- [Modèle de compte rendu](https://marsdawn.southern-light.dev/fr/templates/meeting-notes/index.md): Un modèle de compte rendu de réunion en Markdown, avec les décisions et les actions, chacune avec un responsable. Votre agent le rédige ; vous le vérifiez dans MarsDawn.
+- [English](https://marsdawn.southern-light.dev/vs/markdown-preview-tools/index.md): How MarsDawn compares to reading Markdown in VS Code's built-in preview, a browser extension, or Claude Desktop's file preview: what each renders, and what it takes to open one file.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/index.md): MarsDawn 對比在 VS Code 內建預覽、瀏覽器擴充功能，或 Claude Desktop 檔案預覽裡看 Markdown：各自能排版出什麼，打開一個檔案要花多少功夫。
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/vs/markdown-preview-tools/index.md): MarsDawn 对比在 VS Code 内置预览、浏览器扩展，或 Claude Desktop 文件预览里看 Markdown：各自能排版出什么，打开一个文件要花多少功夫。
+- [日本語](https://marsdawn.southern-light.dev/ja/vs/markdown-preview-tools/index.md): VS Code の内蔵プレビュー、ブラウザ拡張機能、Claude Desktop のファイルプレビューで Markdown を読む場合と、MarsDawn を比較：それぞれが実際にレンダリングするもの、1つのファイルを開くのにかかる手間。
+- [Deutsch](https://marsdawn.southern-light.dev/de/vs/markdown-preview-tools/index.md): Wie sich MarsDawn mit dem Lesen von Markdown in der eingebauten Vorschau von VS Code, einer Browsererweiterung oder der Dateivorschau von Claude Desktop vergleicht: was jeweils gerendert wird und was es braucht, eine Datei zu öffnen.
+- [Español](https://marsdawn.southern-light.dev/es/vs/markdown-preview-tools/index.md): Cómo se compara MarsDawn con leer Markdown en la vista previa integrada de VS Code, una extensión del navegador o la vista previa de archivos de Claude Desktop: qué renderiza cada uno y qué hace falta para abrir un archivo.
+- [한국어](https://marsdawn.southern-light.dev/ko/vs/markdown-preview-tools/index.md): VS Code의 기본 미리보기, 브라우저 확장 프로그램, Claude Desktop의 파일 미리보기에서 Markdown을 읽는 것과 MarsDawn을 비교합니다. 각각 무엇을 렌더링하는지, 파일 하나를 여는 데 무엇이 필요한지 살펴보세요.

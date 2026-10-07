@@ -5,8 +5,8 @@
   "commit": "ff4d5f1e58302d574304ba0ac8022c710523148d"
  },
  "app": {
-  "ref": "b35cacd",
-  "commit": "b35cacdced323d4eada2ab88f2484c4ee77927aa"
+  "ref": "origin/release/1.1.0",
+  "commit": "31b2688a4813b37aa296fea30ee6bd378df2dbfd"
  },
  "themes": [
   {
@@ -47,13 +47,21 @@
     "en": "Dawn",
     "zh-hant": "黎明",
     "zh-hans": "黎明",
-    "ja": "夜明け"
+    "ja": "夜明け",
+    "de": "Morgenrot",
+    "fr": "Aube",
+    "es": "Amanecer",
+    "ko": "새벽"
    },
    "summaries": {
     "en": "Warm Martian sunrise",
     "zh-hant": "溫暖的火星日出",
     "zh-hans": "温暖的火星日出",
-    "ja": "暖かな火星の日の出"
+    "ja": "暖かな火星の日の出",
+    "de": "Warmer Sonnenaufgang auf dem Mars",
+    "fr": "Lever de soleil martien chaleureux",
+    "es": "Cálido amanecer marciano",
+    "ko": "따뜻한 화성의 일출"
    }
   },
   {
@@ -94,13 +102,21 @@
     "en": "Classic",
     "zh-hant": "典雅",
     "zh-hans": "典雅",
-    "ja": "クラシック"
+    "ja": "クラシック",
+    "de": "Klassisch",
+    "fr": "Classique",
+    "es": "Clásico",
+    "ko": "클래식"
    },
    "summaries": {
     "en": "Elegant serif on paper",
     "zh-hant": "紙上的優雅襯線字",
     "zh-hans": "纸上的优雅衬线字",
-    "ja": "紙に映える上品なセリフ体"
+    "ja": "紙に映える上品なセリフ体",
+    "de": "Elegante Serifenschrift auf Papier",
+    "fr": "Empattements élégants sur papier",
+    "es": "Serifa elegante sobre papel",
+    "ko": "종이 위의 우아한 세리프"
    }
   },
   {
@@ -141,13 +157,21 @@
     "en": "Modern",
     "zh-hant": "流行",
     "zh-hans": "流行",
-    "ja": "モダン"
+    "ja": "モダン",
+    "de": "Modern",
+    "fr": "Moderne",
+    "es": "Moderno",
+    "ko": "모던"
    },
    "summaries": {
     "en": "Clean and familiar",
     "zh-hant": "清爽又熟悉",
     "zh-hans": "清爽又熟悉",
-    "ja": "すっきりとなじみやすい"
+    "ja": "すっきりとなじみやすい",
+    "de": "Klar und vertraut",
+    "fr": "Net et familier",
+    "es": "Limpio y familiar",
+    "ko": "깔끔하고 친숙한"
    }
   },
   {
@@ -188,13 +212,21 @@
     "en": "Vivid",
     "zh-hant": "活潑",
     "zh-hans": "活泼",
-    "ja": "ビビッド"
+    "ja": "ビビッド",
+    "de": "Lebhaft",
+    "fr": "Vif",
+    "es": "Vívido",
+    "ko": "비비드"
    },
    "summaries": {
     "en": "Playful, bright and rounded",
     "zh-hant": "俏皮、明亮又圓潤",
     "zh-hans": "俏皮、明亮又圆润",
-    "ja": "遊び心があって明るく、丸みのある"
+    "ja": "遊び心があって明るく、丸みのある",
+    "de": "Verspielt, hell und rund",
+    "fr": "Ludique, lumineux et arrondi",
+    "es": "Divertido, luminoso y redondeado",
+    "ko": "경쾌하고 밝고 둥근"
    }
   }
  ],
@@ -270,6 +302,78 @@
    "light": "ライト",
    "dark": "ダーク",
    "settings": "設定…"
+  },
+  "de": {
+   "theme": "Thema",
+   "layout": "Layout",
+   "source": "Quelltext",
+   "split": "Geteilt",
+   "preview": "Vorschau",
+   "title": "Willkommen bei MarsDawn",
+   "preview_theme": "Vorschau-Thema",
+   "source_title": "Nur Quelltext",
+   "split_title": "Quelltext und Vorschau",
+   "preview_title": "Nur Vorschau",
+   "theme_tip": "Erscheinungsbild und Vorschau-Thema",
+   "appearance": "Erscheinungsbild",
+   "system": "System",
+   "light": "Hell",
+   "dark": "Dunkel",
+   "settings": "Einstellungen …"
+  },
+  "fr": {
+   "theme": "Thème",
+   "layout": "Disposition",
+   "source": "Source",
+   "split": "Partagé",
+   "preview": "Aperçu",
+   "title": "Bienvenue dans MarsDawn",
+   "preview_theme": "Thème de l’aperçu",
+   "source_title": "Source uniquement",
+   "split_title": "Source et aperçu",
+   "preview_title": "Aperçu uniquement",
+   "theme_tip": "Apparence et thème de l’aperçu",
+   "appearance": "Apparence",
+   "system": "Système",
+   "light": "Clair",
+   "dark": "Sombre",
+   "settings": "Réglages…"
+  },
+  "es": {
+   "theme": "Tema",
+   "layout": "Disposición",
+   "source": "Código",
+   "split": "Dividido",
+   "preview": "Vista previa",
+   "title": "Te damos la bienvenida a MarsDawn",
+   "preview_theme": "Tema de la vista previa",
+   "source_title": "Solo código",
+   "split_title": "Código y vista previa",
+   "preview_title": "Solo vista previa",
+   "theme_tip": "Aspecto y tema de la vista previa",
+   "appearance": "Aspecto",
+   "system": "Sistema",
+   "light": "Claro",
+   "dark": "Oscuro",
+   "settings": "Ajustes…"
+  },
+  "ko": {
+   "theme": "테마",
+   "layout": "레이아웃",
+   "source": "소스",
+   "split": "분할",
+   "preview": "미리보기",
+   "title": "MarsDawn에 오신 것을 환영합니다",
+   "preview_theme": "미리보기 테마",
+   "source_title": "소스만",
+   "split_title": "소스 및 미리보기",
+   "preview_title": "미리보기만",
+   "theme_tip": "화면 모드 및 미리보기 테마",
+   "appearance": "화면 모드",
+   "system": "시스템",
+   "light": "라이트",
+   "dark": "다크",
+   "settings": "설정…"
   }
  },
  "editor": {
@@ -443,6 +547,22 @@
   "ja": {
    "markdown": "# MarsDawn へようこそ\n\n## レイアウト\n\n| ショートカット | レイアウト |\n|:------:|:-----|\n| ⌘1 | ソースのみ |\n| ⌘2 | ソースとプレビューを並べて表示 |\n| ⌘3 | プレビューのみ |\n\n## 書く\n\n**太字**、*斜体*、~~取り消し線~~、`インラインコード`、[リンク](https://marsdawn.southern-light.dev/support/)は、いつもどおり使えます。\n\n> 引用の左側には暖色の線が表示されます。\n\n- [x] チェックを付けられる ToDo リスト\n- [ ] 入れ子のリスト\n  - このように\n",
    "html": "<h1 id=\"marsdawn-へようこそ\" data-line=\"1\">MarsDawn へようこそ</h1>\n<h2 id=\"レイアウト\" data-line=\"3\">レイアウト</h2>\n<table data-line=\"5\">\n<thead>\n<tr data-line=\"5\"><th style=\"text-align:center\">ショートカット</th><th style=\"text-align:left\">レイアウト</th></tr>\n</thead>\n<tbody>\n<tr data-line=\"7\"><td style=\"text-align:center\">⌘1</td><td style=\"text-align:left\">ソースのみ</td></tr>\n<tr data-line=\"8\"><td style=\"text-align:center\">⌘2</td><td style=\"text-align:left\">ソースとプレビューを並べて表示</td></tr>\n<tr data-line=\"9\"><td style=\"text-align:center\">⌘3</td><td style=\"text-align:left\">プレビューのみ</td></tr>\n</tbody>\n</table>\n<h2 id=\"書く\" data-line=\"11\">書く</h2>\n<p data-line=\"13\"><strong>太字</strong>、<em>斜体</em>、<del>取り消し線</del>、<code>インラインコード</code>、<a href=\"https://marsdawn.southern-light.dev/support/\">リンク</a>は、いつもどおり使えます。</p>\n<blockquote data-line=\"15\">\n<p data-line=\"15\">引用の左側には暖色の線が表示されます。</p>\n</blockquote>\n<ul class=\"contains-task-list\" data-line=\"17\">\n<li class=\"task-list-item\" data-line=\"17\"><input type=\"checkbox\" disabled checked> チェックを付けられる ToDo リスト\n</li>\n<li class=\"task-list-item\" data-line=\"18\"><input type=\"checkbox\" disabled> 入れ子のリスト\n<ul data-line=\"19\">\n<li data-line=\"19\">このように\n</li>\n</ul>\n</li>\n</ul>\n"
+  },
+  "de": {
+   "markdown": "# Willkommen bei MarsDawn\n\n## Layouts\n\n| Kurzbefehl | Layout |\n|:--------:|:-------|\n| ⌘1 | Nur Quelltext |\n| ⌘2 | Quelltext und Vorschau nebeneinander |\n| ⌘3 | Nur Vorschau |\n\n## Schreiben\n\n**Fett**, *kursiv*, ~~durchgestrichen~~, `Inline-Code` und [Links](https://marsdawn.southern-light.dev/support/) funktionieren wie erwartet.\n\n> Zitate heben sich mit einer warmen Linie ab.\n\n- [x] Aufgabenlisten mit Kästchen\n- [ ] Verschachtelte Listen\n  - wie diese hier\n",
+   "html": "<h1 id=\"willkommen-bei-marsdawn\" data-line=\"1\">Willkommen bei MarsDawn</h1>\n<h2 id=\"layouts\" data-line=\"3\">Layouts</h2>\n<table data-line=\"5\">\n<thead>\n<tr data-line=\"5\"><th style=\"text-align:center\">Kurzbefehl</th><th style=\"text-align:left\">Layout</th></tr>\n</thead>\n<tbody>\n<tr data-line=\"7\"><td style=\"text-align:center\">⌘1</td><td style=\"text-align:left\">Nur Quelltext</td></tr>\n<tr data-line=\"8\"><td style=\"text-align:center\">⌘2</td><td style=\"text-align:left\">Quelltext und Vorschau nebeneinander</td></tr>\n<tr data-line=\"9\"><td style=\"text-align:center\">⌘3</td><td style=\"text-align:left\">Nur Vorschau</td></tr>\n</tbody>\n</table>\n<h2 id=\"schreiben\" data-line=\"11\">Schreiben</h2>\n<p data-line=\"13\"><strong>Fett</strong>, <em>kursiv</em>, <del>durchgestrichen</del>, <code>Inline-Code</code> und <a href=\"https://marsdawn.southern-light.dev/support/\">Links</a> funktionieren wie erwartet.</p>\n<blockquote data-line=\"15\">\n<p data-line=\"15\">Zitate heben sich mit einer warmen Linie ab.</p>\n</blockquote>\n<ul class=\"contains-task-list\" data-line=\"17\">\n<li class=\"task-list-item\" data-line=\"17\"><input type=\"checkbox\" disabled checked> Aufgabenlisten mit Kästchen\n</li>\n<li class=\"task-list-item\" data-line=\"18\"><input type=\"checkbox\" disabled> Verschachtelte Listen\n<ul data-line=\"19\">\n<li data-line=\"19\">wie diese hier\n</li>\n</ul>\n</li>\n</ul>\n"
+  },
+  "fr": {
+   "markdown": "# Bienvenue dans MarsDawn\n\n## Dispositions\n\n| Raccourci | Disposition |\n|:--------:|:-------|\n| ⌘1 | Source uniquement |\n| ⌘2 | Source et aperçu côte à côte |\n| ⌘3 | Aperçu uniquement |\n\n## Écrire\n\nLe **gras**, l’*italique*, le ~~barré~~, le `code en ligne` et les [liens](https://marsdawn.southern-light.dev/support/) fonctionnent comme prévu.\n\n> Les citations se distinguent par un filet de couleur chaude.\n\n- [x] Listes de tâches avec cases à cocher\n- [ ] Listes imbriquées\n  - comme celle-ci\n",
+   "html": "<h1 id=\"bienvenue-dans-marsdawn\" data-line=\"1\">Bienvenue dans MarsDawn</h1>\n<h2 id=\"dispositions\" data-line=\"3\">Dispositions</h2>\n<table data-line=\"5\">\n<thead>\n<tr data-line=\"5\"><th style=\"text-align:center\">Raccourci</th><th style=\"text-align:left\">Disposition</th></tr>\n</thead>\n<tbody>\n<tr data-line=\"7\"><td style=\"text-align:center\">⌘1</td><td style=\"text-align:left\">Source uniquement</td></tr>\n<tr data-line=\"8\"><td style=\"text-align:center\">⌘2</td><td style=\"text-align:left\">Source et aperçu côte à côte</td></tr>\n<tr data-line=\"9\"><td style=\"text-align:center\">⌘3</td><td style=\"text-align:left\">Aperçu uniquement</td></tr>\n</tbody>\n</table>\n<h2 id=\"écrire\" data-line=\"11\">Écrire</h2>\n<p data-line=\"13\">Le <strong>gras</strong>, l’<em>italique</em>, le <del>barré</del>, le <code>code en ligne</code> et les <a href=\"https://marsdawn.southern-light.dev/support/\">liens</a> fonctionnent comme prévu.</p>\n<blockquote data-line=\"15\">\n<p data-line=\"15\">Les citations se distinguent par un filet de couleur chaude.</p>\n</blockquote>\n<ul class=\"contains-task-list\" data-line=\"17\">\n<li class=\"task-list-item\" data-line=\"17\"><input type=\"checkbox\" disabled checked> Listes de tâches avec cases à cocher\n</li>\n<li class=\"task-list-item\" data-line=\"18\"><input type=\"checkbox\" disabled> Listes imbriquées\n<ul data-line=\"19\">\n<li data-line=\"19\">comme celle-ci\n</li>\n</ul>\n</li>\n</ul>\n"
+  },
+  "es": {
+   "markdown": "# Te damos la bienvenida a MarsDawn\n\n## Disposiciones\n\n| Atajo | Disposición |\n|:--------:|:-------|\n| ⌘1 | Solo código |\n| ⌘2 | Código y vista previa lado a lado |\n| ⌘3 | Solo vista previa |\n\n## Escribir\n\nLa **negrita**, la *cursiva*, el ~~tachado~~, el `código en línea` y los [enlaces](https://marsdawn.southern-light.dev/support/) funcionan como esperas.\n\n> Las citas destacan con una línea de color cálido.\n\n- [x] Listas de tareas con casillas\n- [ ] Listas anidadas\n  - como esta\n",
+   "html": "<h1 id=\"te-damos-la-bienvenida-a-marsdawn\" data-line=\"1\">Te damos la bienvenida a MarsDawn</h1>\n<h2 id=\"disposiciones\" data-line=\"3\">Disposiciones</h2>\n<table data-line=\"5\">\n<thead>\n<tr data-line=\"5\"><th style=\"text-align:center\">Atajo</th><th style=\"text-align:left\">Disposición</th></tr>\n</thead>\n<tbody>\n<tr data-line=\"7\"><td style=\"text-align:center\">⌘1</td><td style=\"text-align:left\">Solo código</td></tr>\n<tr data-line=\"8\"><td style=\"text-align:center\">⌘2</td><td style=\"text-align:left\">Código y vista previa lado a lado</td></tr>\n<tr data-line=\"9\"><td style=\"text-align:center\">⌘3</td><td style=\"text-align:left\">Solo vista previa</td></tr>\n</tbody>\n</table>\n<h2 id=\"escribir\" data-line=\"11\">Escribir</h2>\n<p data-line=\"13\">La <strong>negrita</strong>, la <em>cursiva</em>, el <del>tachado</del>, el <code>código en línea</code> y los <a href=\"https://marsdawn.southern-light.dev/support/\">enlaces</a> funcionan como esperas.</p>\n<blockquote data-line=\"15\">\n<p data-line=\"15\">Las citas destacan con una línea de color cálido.</p>\n</blockquote>\n<ul class=\"contains-task-list\" data-line=\"17\">\n<li class=\"task-list-item\" data-line=\"17\"><input type=\"checkbox\" disabled checked> Listas de tareas con casillas\n</li>\n<li class=\"task-list-item\" data-line=\"18\"><input type=\"checkbox\" disabled> Listas anidadas\n<ul data-line=\"19\">\n<li data-line=\"19\">como esta\n</li>\n</ul>\n</li>\n</ul>\n"
+  },
+  "ko": {
+   "markdown": "# MarsDawn에 오신 것을 환영합니다\n\n## 레이아웃\n\n| 단축키 | 레이아웃 |\n|:--------:|:-------|\n| ⌘1 | 소스만 |\n| ⌘2 | 소스와 미리보기를 나란히 |\n| ⌘3 | 미리보기만 |\n\n## 쓰기\n\n**굵게**, *기울임*, ~~취소선~~, `인라인 코드`, [링크](https://marsdawn.southern-light.dev/support/) 모두 예상대로 작동합니다.\n\n> 인용문은 따뜻한 색의 선으로 눈에 띕니다.\n\n- [x] 체크박스가 있는 할 일 목록\n- [ ] 중첩 목록\n  - 이렇게\n",
+   "html": "<h1 id=\"marsdawn에-오신-것을-환영합니다\" data-line=\"1\">MarsDawn에 오신 것을 환영합니다</h1>\n<h2 id=\"레이아웃\" data-line=\"3\">레이아웃</h2>\n<table data-line=\"5\">\n<thead>\n<tr data-line=\"5\"><th style=\"text-align:center\">단축키</th><th style=\"text-align:left\">레이아웃</th></tr>\n</thead>\n<tbody>\n<tr data-line=\"7\"><td style=\"text-align:center\">⌘1</td><td style=\"text-align:left\">소스만</td></tr>\n<tr data-line=\"8\"><td style=\"text-align:center\">⌘2</td><td style=\"text-align:left\">소스와 미리보기를 나란히</td></tr>\n<tr data-line=\"9\"><td style=\"text-align:center\">⌘3</td><td style=\"text-align:left\">미리보기만</td></tr>\n</tbody>\n</table>\n<h2 id=\"쓰기\" data-line=\"11\">쓰기</h2>\n<p data-line=\"13\"><strong>굵게</strong>, <em>기울임</em>, <del>취소선</del>, <code>인라인 코드</code>, <a href=\"https://marsdawn.southern-light.dev/support/\">링크</a> 모두 예상대로 작동합니다.</p>\n<blockquote data-line=\"15\">\n<p data-line=\"15\">인용문은 따뜻한 색의 선으로 눈에 띕니다.</p>\n</blockquote>\n<ul class=\"contains-task-list\" data-line=\"17\">\n<li class=\"task-list-item\" data-line=\"17\"><input type=\"checkbox\" disabled checked> 체크박스가 있는 할 일 목록\n</li>\n<li class=\"task-list-item\" data-line=\"18\"><input type=\"checkbox\" disabled> 중첩 목록\n<ul data-line=\"19\">\n<li data-line=\"19\">이렇게\n</li>\n</ul>\n</li>\n</ul>\n"
   }
  }
 }

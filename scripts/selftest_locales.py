@@ -7,8 +7,8 @@ the Japanese copy relabelled as German: different from en (so the English-copy r
 flag) and real enough to go through every table, page and link. It is a fixture, not a translation.
 
 Steps, each printed:
-  1. the scratch site builds, with the four skeletons present and COMPLETE = False, to exactly the
-     committed public/ (a planned locale that isn't complete changes nothing);
+  1. the scratch site (de, fr, es and ko put back to COMPLETE = False, nothing of theirs served: see
+     unship_planned) builds without any of them, and a second build changes nothing;
   2. with the fixture's COMPLETE = True it builds again, every en page exists under /de/, a second
      build changes nothing, and check_hreflang, check_links, check_invariants, check_locales,
      check_offers, check_hero and check_legal_render pass on it;
@@ -49,7 +49,37 @@ def make_scratch(tmp: Path) -> Path:
         shutil.copytree(REPO / name, scratch / name, ignore=ignore)
     (scratch / "tools" / "hero-render").mkdir(parents=True)
     shutil.copy(REPO / "tools" / "hero-render" / "Package.swift", scratch / "tools" / "hero-render" / "Package.swift")
+    unship_planned(scratch)
     return scratch
+
+
+def unship_planned(scratch: Path) -> None:
+    """Puts the scratch copy back in the state this test is written for: de, fr, es and ko known but
+    not complete, with nothing of theirs served. Once a real locale ships (COMPLETE = True, its pages,
+    legal sources, images and hero snapshot in the checkout) the test would otherwise find five
+    locales where it plants one, and its "nothing changes" step would have nothing to compare."""
+    for locale in ("de", "fr", "es", "ko"):
+        copy = scratch / "scripts" / f"copy_{locale}.py"
+        copy.write_text(copy.read_text(encoding="utf-8").replace("COMPLETE = True", "COMPLETE = False"), encoding="utf-8")
+        shutil.rmtree(scratch / "public" / locale, ignore_errors=True)
+        for path in list((scratch / "public" / "assets").rglob(f"*-{locale}.png")):
+            path.unlink()
+        for path in list((scratch / "content" / "legal").glob(f"*.{locale}.*")):
+            path.unlink()
+    legal = scratch / "content" / "legal" / "manifest.json"
+    manifest = json.loads(legal.read_text(encoding="utf-8"))
+    manifest["pages"] = {name: v for name, v in manifest["pages"].items() if not re.search(r"\.(de|fr|es|ko)\.md$", name)}
+    legal.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    hero = scratch / "scripts" / "hero_sources.json"
+    src = json.loads(hero.read_text(encoding="utf-8"))
+    for table in ("labels", "sample"):
+        for locale in ("de", "fr", "es", "ko"):
+            src[table].pop(locale, None)
+    for theme in src["themes"]:
+        for field in ("names", "summaries"):
+            for locale in ("de", "fr", "es", "ko"):
+                theme[field].pop(locale, None)
+    hero.write_text(json.dumps(src, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
 FIXTURE_WRITER = r'''
@@ -121,15 +151,18 @@ def run() -> int:
     with tempfile.TemporaryDirectory(prefix="locales-selftest-") as tmpdir:
         scratch = make_scratch(Path(tmpdir))
         pub = scratch / "public"
-        committed = tree_hash(REPO / "public")
 
         print("1. A planned locale that isn't complete changes nothing")
         out = sh(scratch, "scripts/build_pages.py")
-        r.expect(out.returncode == 0 and tree_hash(pub) == committed, "the build, skeletons present, equals the committed public/", out.stderr[-600:])
+        committed = tree_hash(pub)
+        out2 = sh(scratch, "scripts/build_pages.py")
+        r.expect(out.returncode == 0 and out2.returncode == 0 and tree_hash(pub) == committed
+                 and not any((pub / l).exists() for l in ("de", "fr", "es", "ko")),
+                 "the build, with de, fr, es and ko not complete, serves none of them and changes nothing on a second run", out.stderr[-600:])
         out = sh(scratch, "scripts/check_locales.py")
         r.expect(out.returncode == 0 and "0 problems" in out.stdout, "check_locales is clean", out.stdout + out.stderr)
-        out = sh(scratch, "scripts/new_locale.py", "--check")
-        r.expect(out.returncode == 0, "the four skeletons have en's structure", out.stdout + out.stderr)
+        out = sh(REPO, "scripts/new_locale.py", "--check")  # the checkout's own modules: the scratch copy has their legal pages removed
+        r.expect(out.returncode == 0, "the four modules have en's structure", out.stdout + out.stderr)
 
         print("2. With a complete locale (throwaway fixture under /de/)")
         make_fixture(scratch)

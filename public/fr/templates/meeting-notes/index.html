@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modèle de compte rendu de réunion en Markdown · MarsDawn</title>
+<meta name="description" content="Un modèle de compte rendu de réunion en Markdown, avec les décisions et les actions, chacune avec un responsable. Votre agent le rédige ; vous le vérifiez dans MarsDawn.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/loop.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/meeting-notes/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/meeting-notes/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/templates/meeting-notes/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/templates/meeting-notes/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/templates/meeting-notes/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/templates/meeting-notes/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/meeting-notes/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/fr/templates/meeting-notes/">
+<link rel="alternate" type="text/markdown" href="/fr/templates/meeting-notes/index.md">
+<meta property="og:title" content="Modèle de compte rendu de réunion en Markdown · MarsDawn">
+<meta property="og:description" content="Un modèle de compte rendu de réunion en Markdown, avec les décisions et les actions, chacune avec un responsable. Votre agent le rédige ; vous le vérifiez dans MarsDawn.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/fr/templates/meeting-notes/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentement aux cookies" hidden>
+  <p>Ce site utilise des cookies de mesure d’audience pour voir comment les visiteurs l’utilisent. Ils restent désactivés tant que vous n’acceptez pas.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Refuser</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accepter</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/fr/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Sur le Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/templates/meeting-notes/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/templates/meeting-notes/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/templates/meeting-notes/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/templates/meeting-notes/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/templates/meeting-notes/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/templates/meeting-notes/" hreflang="fr" aria-current="true" lang="fr">Français</a> · <a href="/es/templates/meeting-notes/" hreflang="es" lang="es">Español</a> · <a href="/ko/templates/meeting-notes/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Modèle de compte rendu de réunion en Markdown</h1>
+  <p>D’abord les décisions, puis les actions, chacune avec un responsable. Laissez votre agent rédiger le compte rendu à partir de la transcription, et lisez-le avant qu’il ne parte. Quand une décision change, demandez à l’agent d’harmoniser les actions.</p>
+</section>
+
+<div class="loop-anim loop-fr loop-long">
+<div class="loop-frame" role="img" aria-label="Un terminal ouvre meeting-notes.md dans MarsDawn. Le lecteur fait passer une décision de 50 à 80 personnes, et l’agent met à jour les trois actions en conséquence.">
+<div class="loop-stage" aria-hidden="true">
+<div class="loop-win a">
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">meeting-notes.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-body">
+<div class="loop-side"><div class="loop-tabs"><span class="on">Plan</span><span>Fichiers</span></div><div class="loop-rows"><div class="loop-h1row">Point hebdo, 5 oct.</div><div class="loop-sub loop-row-u a">Décisions</div><div class="loop-sub">Actions</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> Point hebdo, 5 oct.</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> Décisions</span>
+<span class="loop-mk">-</span> Ouvrir la bêta à <span class="loop-day loop-d-u a"><span class="loop-old a">50</span><span class="loop-new loop-n2 a">80</span><span class="loop-ecaret loop-n2 a"></span></span> personnes.
+<span class="loop-mk">-</span> Livrer vendredi.
+
+<span class="loop-h"><span class="loop-mk">##</span> Actions</span>
+<span class="loop-mk">- [ ]</span> Mia : envoyer <span class="loop-day loop-d-a a"><span class="loop-old a">50</span><span class="loop-new loop-n2 a">80</span></span> invitations.
+<span class="loop-mk">- [ ]</span> Leo : ajouter <span class="loop-day loop-d-b a"><span class="loop-old a">50</span><span class="loop-new loop-n2 a">80</span></span> places.
+<span class="loop-mk">- [ ]</span> Ana : assister <span class="loop-day loop-d-c a"><span class="loop-old a">50</span><span class="loop-new loop-n2 a">80</span></span> utilisateurs.
+</div>
+<div class="loop-pre"><h3>Point hebdo, 5 oct.</h3><h4>Décisions</h4><ul><li>Ouvrir la bêta à <span class="loop-day loop-d-u a"><span class="loop-old a">50</span><span class="loop-new loop-n2 a">80</span></span> personnes.</li><li>Livrer vendredi.</li></ul><h4>Actions</h4><ul><li class="loop-task">Mia : envoyer <span class="loop-day loop-d-a a"><span class="loop-old a">50</span><span class="loop-new loop-n2 a">80</span></span> invitations.</li><li class="loop-task">Leo : ajouter <span class="loop-day loop-d-b a"><span class="loop-old a">50</span><span class="loop-new loop-n2 a">80</span></span> places.</li><li class="loop-task">Ana : assister <span class="loop-day loop-d-c a"><span class="loop-old a">50</span><span class="loop-new loop-n2 a">80</span></span> utilisateurs.</li></ul></div>
+</div>
+</div>
+<div class="loop-term a">
+<div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
+<div class="loop-tbody">
+<div><span class="loop-p">›</span> <span class="loop-cmd loop-cmd-30 a">marsdawn open meeting-notes.md</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> La bêta passe à 80 personnes. Mets à jour les actions.</div>
+<div class="loop-l3 a">C’est fait. Les trois actions disent 80.</div>
+</div>
+</div>
+<svg class="loop-ptr loop-ptr-r1 a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="Mettre l’animation en pause"><span aria-hidden="true">Pause</span></label>
+</div>
+
+<h2 id="the-template">Le modèle</h2>
+<p><a href="/fr/templates/meeting-notes/meeting-notes.md" download>Télécharger meeting-notes.md</a></p>
+<pre><code># Nom de la réunion, date
+
+Participants : _noms_
+
+## Décisions
+
+- _Ce qui a été décidé, une ligne chacune._
+
+## Actions
+
+- [ ] Nom : _quoi, pour quand._
+- [ ] Nom : _quoi, pour quand._
+
+## Notes
+
+- _Tout ce qui mérite d’être gardé sans être une décision ni une action._
+</code></pre>
+
+<h2 id="how-it-looks">À quoi il ressemble</h2>
+<p class="tpl-shot"><img src="/assets/templates/meeting-notes-fr.png" width="1000" height="1415" loading="lazy" alt="La première page de meeting-notes.md, exportée en PDF avec marsdawn export."></p>
+<p>Exporté avec <code>marsdawn export meeting-notes.md</code>. L’outil en ligne de commande gratuit produit le même rendu que l’aperçu de MarsDawn.</p>
+
+<h2 id="ask-your-agent">Demandez à votre agent</h2>
+<pre class="tpl-prompt"><code>Rédige le compte rendu de cette réunion dans meeting-notes.md, à partir du modèle disponible à https://marsdawn.southern-light.dev/fr/templates/meeting-notes/meeting-notes.md. Les décisions d’abord, une ligne chacune ; chaque action a un seul responsable et une date. Une fois que c’est écrit, lance marsdawn open meeting-notes.md.</code></pre>
+
+<h2 id="share-it-as-a-pdf">Le partager en PDF</h2>
+<p><code>marsdawn export meeting-notes.md</code> écrit un PDF que vous pouvez joindre au mail de suivi.</p>
+
+<h2 id="what-it-doesn-t-do">Ce qu’il ne fait pas</h2>
+<p>MarsDawn n’enregistre pas la réunion, ne la transcrit pas et ne suit pas les actions. Il affiche le compte rendu tel qu’il sera lu.</p>
+
+<h2 id="questions">Questions</h2>
+<h3>Les cases à cocher fonctionnent-elles ?</h3>
+<p>Elles s’affichent comme des cases à cocher dans l’aperçu et dans le PDF. Pour en cocher une, remplacez <code>[ ]</code> par <code>[x]</code> dans le source.</p>
+<h3>L’agent peut-il garder le compte rendu et les actions en phase ?</h3>
+<p>Oui, c’est tout l’intérêt de la boucle : modifiez l’un, et demandez-lui de mettre à jour le reste. MarsDawn vous montre le résultat.</p>
+
+<h2 id="more-templates">Autres modèles</h2>
+<ul>
+  <li><a href="/fr/templates/spec/">Spécification (PRD)</a> : problème, objectifs, exigences, un diagramme de flux et des critères d’acceptation.</li>
+  <li><a href="/fr/templates/flowchart/">Organigramme</a> : un diagramme Mermaid, avec les étapes écrites en dessous.</li>
+  <li><a href="/fr/templates/">Modèles Markdown</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/fr/support/">Assistance</a>
+    <a href="/fr/privacy/">Politique de confidentialité</a>
+    <a href="/fr/cli/">Ligne de commande</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Réglages des cookies</button>
+  </nav>
+  <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac에서 Markdown을 PDF로 내보내기, 다이어그램까지 · MarsDawn</title>
+<meta name="description" content="Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록과 표를 가르지 않도록 합니다.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/annotations.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/pdf/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/pdf/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/pdf/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/pdf/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/pdf/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/pdf/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/pdf/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/pdf/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/pdf/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/pdf/">
+<link rel="alternate" type="text/markdown" href="/ko/pdf/index.md">
+<meta property="og:title" content="Mac에서 Markdown을 PDF로 내보내기, 다이어그램까지 · MarsDawn">
+<meta property="og:description" content="Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록과 표를 가르지 않도록 합니다.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/pdf/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <a class="store-chip" href="https://apps.apple.com/app/id6812925073">Mac App Store에서 판매 중</a>
+  <nav class="lang" aria-label="Language"><a href="/pdf/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/pdf/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/pdf/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/pdf/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/pdf/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/pdf/" hreflang="fr" lang="fr">Français</a> · <a href="/es/pdf/" hreflang="es" lang="es">Español</a> · <a href="/ko/pdf/" hreflang="ko" aria-current="true" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>PDF가 내가 쓴 페이지 그대로 보입니다.</h1>
+  <p>테마의 라이트 색상으로 PDF로 내보내거나 프린트하세요. 다이어그램과 하이라이트된 코드가 그대로 담기고, 페이지 나눔은 함께 있어야 할 것을 떼어 놓지 않습니다.</p>
+</section>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="MarsDawn에서 내보낸 PDF를 페이지 축소판과 함께 PDF 뷰어로 연 모습.">
+    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
+    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid 다이어그램이 PDF 안에 그려집니다.</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>코드는 하이라이트를 유지합니다.</span></span>
+  </div></div>
+  <figcaption>
+    <span class="figure-label">이 스크린샷의 내용</span>
+    <ol><li>Mermaid 다이어그램이 PDF 안에 그려집니다.</li><li>코드는 하이라이트를 유지합니다.</li></ol>
+  </figcaption>
+</figure>
+<h2 id="what-that-means">무슨 뜻인가요</h2>
+<ul>
+  <li>Mermaid 다이어그램이 PDF 안에 그려집니다.</li>
+  <li>코드 블록은 구문 하이라이트를 유지합니다.</li>
+  <li>페이지 나눔은 제목이 페이지 맨 아래에 홀로 남거나 코드, 표, 다이어그램이 갈라지지 않도록 합니다.</li>
+  <li>어떤 레이아웃에서든 됩니다. 소스만 보이는 상태에서도 내보낼 수 있습니다.</li>
+</ul>
+<p>무료 <a href="/ko/cli/">marsdawn 명령줄 도구</a>도 같은 내보내기 엔진을 쓰므로, 스크립트나 AI 에이전트도 같은 PDF를 얻습니다.</p>
+<nav class="traits" aria-label="MarsDawn에서 기대할 수 있는 것">
+<h2>MarsDawn에서 기대할 수 있는 것</h2>
+<ul>
+  <li><a href="/ko/yours/">내 글은 내 Mac에</a><span>계정도, 동기화도, 클라우드도 없습니다.</span></li>
+  <li><a href="/ko/pay-once/">무료로 체험하고, 한 번만 구입</a><span>14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.</span></li>
+  <li><a href="/ko/native/">Mac 앱</a><span>네이티브 윈도우와 탭, 자동 저장, 훑어보기.</span></li>
+  <li><a href="/ko/limits/">MarsDawn이 하지 않는 일</a><span>구입 전에 알아 둘 점.</span></li>
+</ul>
+</nav>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트">
+    <a href="/ko/support/">지원</a>
+    <a href="/ko/privacy/">개인정보 처리방침</a>
+    <a href="/ko/cli/">명령줄</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

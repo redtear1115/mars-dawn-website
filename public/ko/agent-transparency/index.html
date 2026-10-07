@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>에이전트는 투명해야 합니다. 보여 준 것은 누가 읽을까요? · MarsDawn</title>
+<meta name="description" content="Anthropic의 에이전트 구축 가이드는 투명성, 즉 계획 단계를 보여 줄 것을 요구합니다. 가이드가 말하는 것과 말하지 않는 것, 그리고 그 단계들이 왜 대개 누군가 읽어야 하는 Markdown 파일로 끝나는지 살펴봅니다.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-transparency/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-transparency/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-transparency/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-transparency/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/agent-transparency/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/agent-transparency/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/agent-transparency/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/agent-transparency/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-transparency/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/agent-transparency/">
+<link rel="alternate" type="text/markdown" href="/ko/agent-transparency/index.md">
+<meta property="og:title" content="에이전트는 투명해야 합니다. 보여 준 것은 누가 읽을까요? · MarsDawn">
+<meta property="og:description" content="Anthropic의 에이전트 구축 가이드는 투명성, 즉 계획 단계를 보여 줄 것을 요구합니다. 가이드가 말하는 것과 말하지 않는 것, 그리고 그 단계들이 왜 대개 누군가 읽어야 하는 Markdown 파일로 끝나는지 살펴봅니다.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/agent-transparency/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store에서 판매 중</span>
+  <nav class="lang" aria-label="Language"><a href="/agent-transparency/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/agent-transparency/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/agent-transparency/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/agent-transparency/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/agent-transparency/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/agent-transparency/" hreflang="fr" lang="fr">Français</a> · <a href="/es/agent-transparency/" hreflang="es" lang="es">Español</a> · <a href="/ko/agent-transparency/" hreflang="ko" aria-current="true" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Anthropic은 에이전트가 투명해야 한다고 말합니다. 그럼 펼쳐 놓은 것은 누가 읽을까요?</h1>
+  <p>2024년 12월 Anthropic은 AI 에이전트를 만드는 사람들을 위한 가이드 “Building Effective Agents”를 발표했습니다. 요약에는 세 가지 원칙이 나오고, 그중 하나가 투명성입니다. 이 글은 그 원칙의 반대편 끝에 관한 이야기입니다. 에이전트가 단계를 펼쳐 놓으면, 누군가는 그것을 읽어야 합니다.</p>
+</section>
+
+<div class="summary"><p><strong>투명성은 에이전트가 하는 일이고, 읽기는 여러분이 하는 일입니다. Anthropic은 만드는 사람들에게 에이전트의 계획 단계를 보여 달라고 합니다. 코딩 에이전트를 부리는 대부분의 사람에게 그 단계는 누군가 적절한 순간에 읽어야 하는 Markdown 파일로 도착합니다.</strong></p></div>
+
+<h2 id="what-the-guide-says">가이드가 말하는 것</h2>
+<p>Erik S.와 Barry Zhang은 조언을 이렇게 요약합니다.</p>
+<blockquote><p>“에이전트를 구현할 때 우리는 세 가지 핵심 원칙을 따르려고 한다. 에이전트의 설계를 단순하게 유지하라. 에이전트의 계획 단계를 명시적으로 보여 줌으로써 투명성을 우선하라. 철저한 도구 문서화와 테스트를 통해 에이전트와 컴퓨터 사이의 인터페이스(ACI)를 신중하게 설계하라.”</p></blockquote>
+<p>이는 에이전트를 만드는 사람을 위한 설계 원칙이지, 에이전트를 쓰는 사람을 위한 지침이 아닙니다. 원칙은 단계를 보여 달라고 요구할 뿐, 누가 읽는지는 말하지 않습니다.</p>
+<p>같은 글은 에이전트가 작업을 받은 뒤 하는 일을 이렇게 설명합니다. “작업이 명확해지면 에이전트는 독립적으로 계획하고 실행하며, 추가 정보나 판단이 필요할 경우 사람에게 돌아올 수도 있다.” 그리고 “그러면 에이전트는 체크포인트에서 또는 장애물을 만났을 때 사람의 피드백을 받기 위해 멈출 수 있다.” <em>수도 있다</em>와 <em>수 있다</em>라는 표현을 보세요. 체크포인트는 에이전트가 반드시 가져야 하는 것이 아니라 가질 수 있는 것으로 설명됩니다.</p>
+
+<h2 id="most-of-the-checking-isn-t-done-by-you">확인의 대부분은 여러분이 하지 않습니다</h2>
+<p>이 부분은 과장하기 쉬우니, 가이드가 실제로 무엇을 앞세우는지 보겠습니다. 에이전트는 바깥 세계에 비추어 스스로를 확인합니다. “실행 중에는 에이전트가 진행 상황을 평가하기 위해 각 단계에서 환경으로부터 ‘실측 정보(ground truth)’(도구 호출 결과나 코드 실행 결과 등)를 얻는 것이 매우 중요하다.” 이 문장에서 실측 정보란 테스트 결과와 도구 출력이지, 사람이 아닙니다.</p>
+<p>가이드는 위험에 대해서도 직설적입니다. “에이전트의 자율적인 특성은 더 높은 비용과 오류가 누적될 가능성을 뜻한다.” 그에 대한 답은 샌드박스 환경에서의 광범위한 테스트와 안전장치입니다. “더 꼼꼼히 읽으라”고는 하지 않습니다.</p>
+<p>사람은 뒤쪽, 코딩 에이전트에 관한 부록에서 등장합니다. “하지만 자동화된 테스트가 기능 검증을 돕는다 해도, 해결책이 더 넓은 시스템 요구 사항에 부합하는지 확인하려면 사람의 검토가 여전히 매우 중요하다.” 이 문장은 코드에 관한 것입니다. 하지만 이 문장이 가리키는 빈틈은 어떤 에이전트에서든 익숙합니다. 테스트는 무언가가 동작한다는 것을 알려 줄 수는 있어도, 그것이 여러분이 의도한 것인지는 알려 주지 못합니다.</p>
+
+<h2 id="where-the-steps-end-up">단계는 어디로 가는가</h2>
+<p><strong>여기서부터는 Anthropic이 아니라 우리의 해석입니다.</strong></p>
+<p>코딩 에이전트를 매일 쓴다면, 에이전트의 계획 단계는 대개 대시보드에 나타나지 않습니다. 파일로 나타납니다. <code>plan.md</code>, 체크박스가 달린 작업 목록, 에이전트가 계속 고쳐 쓰는 진행 파일, 마지막의 요약. 여러분 쪽에서 투명성이란 읽을 것이 늘어난다는 뜻입니다.</p>
+<p>단계를 보여 주는 것은 에이전트의 몫입니다. 나머지 절반은 중요한 순간에 그것을 읽는 사람입니다. 마이그레이션이 실행되기 전, 브랜치가 병합되기 전, ‘완료’를 받아들이기 전. 아무도 열어 보지 않는 600줄짜리 파일에 모든 것을 펼쳐 놓는 에이전트는 서류상으로는 투명하지만 실제로는 감독받지 않는 셈입니다.</p>
+<p>Harrison Chase도 2024년에 비슷한 이야기를 했습니다. 문서가 아니라 에이전트 프레임워크가 어떻게 동작해야 하는지에 관한 글이었습니다. “정확히 어떤 단계를 밟을지 미리 알 수 없을 수 있으므로, 내부에서 무슨 일이 일어나는지 관찰할 수 있기를 원하게 될 것이다.” 그는 에이전트를 만드는 사람을 위한 도구를 말하고 있었습니다. 에이전트를 부리는 사람이 여러분이라면, 에이전트가 계속 써 나가는 평범한 파일이 여러분이 지켜볼 수 있는 부분인 경우가 많습니다.</p>
+<p>이 저자들 중 누구도 MarsDawn을 언급하지 않으며, MarsDawn이나 다른 Markdown 도구를 추천하지도 않습니다.</p>
+
+<h2 id="why-that-read-is-harder-than-it-looks">그 읽기가 보기보다 어려운 이유</h2>
+<p>파일은 길고, 중요한 내용은 위쪽에 있는 경우가 드뭅니다. 변경 사항을 설명하는 다이어그램은 그림이 아니라 Mermaid 소스입니다(그려진 모습을 보는 방법은 <a href="/ko/view-markdown-on-mac/">Mac에서 Markdown 파일을 보는 방법</a>에 있습니다). 여러분이 절반쯤 읽는 동안 에이전트가 파일을 고쳐 쓸 수도 있습니다. 파일이 하나가 아닌 경우가 많고, 때로는 서로 다른 브랜치나 워크트리에 있습니다. 그리고 문제를 발견해도 “캐시 부분이 좀 이상해”라고 하면 에이전트는 짐작할 수밖에 없습니다. 더 자세한 내용은 <a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a>에 있습니다.</p>
+
+<h2 id="where-marsdawn-fits-and-where-it-doesn-t">MarsDawn이 맞는 곳과 맞지 않는 곳</h2>
+<p>MarsDawn은 이 읽기를 위한 Mac 앱입니다. 에이전트를 더 투명하게 만들지는 않으며, 안에 AI 모델도 없습니다. 계획을 요약하거나 맞는지 알려 주지 않습니다. 하는 일은 다음과 같습니다.</p>
+<ul>
+  <li><strong>긴 파일:</strong> 보기 &#9656; 사이드바 보기(&#8963;&#8984;S)를 선택하면 제목이 나열된 개요 탭이 열립니다. 하나를 클릭하면 그곳으로 이동합니다.</li>
+  <li><strong>다이어그램과 수식:</strong> 소스와 렌더링된 페이지가 나란히 놓이고(&#8984;2) 함께 스크롤되며, Mermaid와 KaTeX가 그려집니다. 다이어그램에 오류가 있으면 미리보기에 소스와 그 아래 오류가 표시됩니다.</li>
+  <li><strong>읽는 동안 고쳐 쓰일 때:</strong> 에이전트가 파일을 고쳐 쓰면 MarsDawn이 다시 불러오고 읽던 위치를 유지합니다. 여러분이 저장하지 않은 편집이 없는 한 그렇습니다.</li>
+  <li><strong>여러 파일:</strong> 파일 &#9656; 폴더 열기&#8230;(&#8679;&#8984;O)로 에이전트의 폴더를 여세요. 새 파일은 약 1초 안에 파일 탭에 나타나고, git 체크아웃이라면 헤더에 브랜치나 워크트리 이름이 표시됩니다.</li>
+  <li><strong>줄 가리키기:</strong> 편집 &#9656; 참조 복사(&#8997;&#8984;C)는 현재 위치를 <code>docs/plan.md:42</code> 형식으로 복사하고, AI용으로 복사(&#8963;&#8997;&#8984;C)는 그 아래에 선택한 텍스트를 덧붙여 에이전트와의 채팅에 바로 붙여 넣을 수 있게 합니다.</li>
+</ul>
+<p>읽는 것은 여전히 여러분입니다. MarsDawn은 그동안 길고 계속 바뀌는 파일을 읽기 좋게 유지합니다.</p>
+
+<h2 id="try-it">사용해 보기</h2>
+<p>MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에 있습니다. 무료 <code>marsdawn</code> 명령줄 도구도 있습니다.</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>앱 없이 Markdown을 PDF로 내보냅니다.</p>
+<p><a href="/ko/cli/">명령줄</a> &#183; 구입 전에 알아 두세요: <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+
+<h2 id="next">다음</h2>
+<ul>
+  <li>에이전트의 결과물이 읽기 어려운 이유와 체크리스트: <a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a>.</li>
+  <li>체크리스트를 예시와 함께 단계별로: <a href="/ko/reviewing-agent-plans/">에이전트의 계획을 5분 만에 검토하기</a>.</li>
+  <li>여러 종류의 에이전트가 건네는 문서: <a href="/ko/agent-design-patterns/">네 가지 에이전트 설계 패턴과 각각이 건네는 문서</a>.</li>
+  <li>AI의 결과물을 왜 읽어야 하는지 짧게: <a href="/ko/reviewing-ai-output/">AI의 결과물에 여전히 사람 독자가 필요한 이유</a>.</li>
+</ul>
+
+<h2 id="sources">출처</h2>
+<ul>
+  <li>Erik S., Barry Zhang, “Building Effective Agents”, Anthropic, 2024년 12월 19일: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (2026-09-26 기준 온라인 버전에서 인용. 현재 이 글에는 설명된 도구 중 상당수가 2024년 12월 이후 바뀌었다는 안내가 붙어 있습니다.)</li>
+  <li>Harrison Chase, “What is an agent?”, LangChain, 2024년 6월 28일, 보관된 사본: <a href="http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/">http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/</a> (원래 주소에는 현재 2026년의 다른 글이 있습니다.)</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트">
+    <a href="/ko/support/">지원</a>
+    <a href="/ko/privacy/">개인정보 처리방침</a>
+    <a href="/ko/cli/">명령줄</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

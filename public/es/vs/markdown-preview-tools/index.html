@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ver Markdown en otras herramientas o en MarsDawn · MarsDawn</title>
+<meta name="description" content="Cómo se compara MarsDawn con leer Markdown en la vista previa integrada de VS Code, una extensión del navegador o la vista previa de archivos de Claude Desktop: qué renderiza cada uno y qué hace falta para abrir un archivo.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/vs/markdown-preview-tools/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/vs/markdown-preview-tools/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/es/vs/markdown-preview-tools/">
+<link rel="alternate" type="text/markdown" href="/es/vs/markdown-preview-tools/index.md">
+<meta property="og:title" content="Ver Markdown en otras herramientas o en MarsDawn · MarsDawn">
+<meta property="og:description" content="Cómo se compara MarsDawn con leer Markdown en la vista previa integrada de VS Code, una extensión del navegador o la vista previa de archivos de Claude Desktop: qué renderiza cada uno y qué hace falta para abrir un archivo.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/es/vs/markdown-preview-tools/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>
+  <p>Este sitio usa cookies de analítica para ver cómo lo usan los visitantes. Permanecen desactivadas a menos que las aceptes.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Rechazar</button>
+    <button type="button" id="consent-accept" class="consent-btn">Aceptar</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/es/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">En el Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/vs/markdown-preview-tools/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/markdown-preview-tools/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/markdown-preview-tools/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/markdown-preview-tools/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/vs/markdown-preview-tools/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/vs/markdown-preview-tools/" hreflang="fr" lang="fr">Français</a> · <a href="/es/vs/markdown-preview-tools/" hreflang="es" aria-current="true" lang="es">Español</a> · <a href="/ko/vs/markdown-preview-tools/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Ver Markdown en otras herramientas, o en MarsDawn.</h1>
+  <p>Si ya tienes abierto VS Code, un navegador o Claude Desktop, es razonable usarlos para echar un vistazo a un archivo Markdown. Esto es lo que cada uno renderiza de verdad, y lo que cuesta llegar ahí, comparado con abrir el mismo archivo en MarsDawn.</p>
+</section>
+
+<h2 id="at-a-glance">De un vistazo</h2>
+<div class="table-scroll"><table class="compare compare-wide">
+<thead><tr><th scope="col"></th><th scope="col">Vista previa de VS Code</th><th scope="col">Extensión del navegador</th><th scope="col">Claude Desktop</th><th scope="col">MarsDawn</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Abre un archivo Markdown del disco</th><td data-label="Vista previa de VS Code">Sí</td><td data-label="Extensión del navegador">Sí, después de permitir el acceso a archivos</td><td data-label="Claude Desktop">No: Markdown no está en su lista de archivos admitidos</td><td data-label="MarsDawn">Sí</td></tr>
+  <tr><th scope="row">Antes del primer archivo</th><td data-label="Vista previa de VS Code">Instalar VS Code, un entorno de desarrollo completo</td><td data-label="Extensión del navegador">Instalar una extensión y activar «Permitir el acceso a las URL de archivo»</td><td data-label="Claude Desktop">No puede explorar archivos del disco</td><td data-label="MarsDawn">Instalar MarsDawn</td></tr>
+  <tr><th scope="row">Hecho para</th><td data-label="Vista previa de VS Code">Escribir código; la vista previa es un panel entre muchos</td><td data-label="Extensión del navegador">Navegar por la web</td><td data-label="Claude Desktop">Conversar con Claude</td><td data-label="MarsDawn">Leer y editar Markdown</td></tr>
+  <tr><th scope="row">Dibuja la página con</th><td data-label="Vista previa de VS Code">Electron: un Chromium y Node.js integrados</td><td data-label="Extensión del navegador">Un navegador completo</td><td data-label="Claude Desktop">La app Claude Desktop</td><td data-label="MarsDawn">Una app nativa de AppKit; WebKit dibuja la página</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="vs-code-s-built-in-preview">La vista previa integrada de VS Code</h2>
+<p>Presiona <kbd>&#8984;&#8679;V</kbd> en VS Code y renderiza el archivo Markdown en un panel de vista previa integrado, gratis y sin instalar nada. Desde VS Code 1.121 (mayo de 2026), esa vista previa también renderiza diagramas Mermaid de forma nativa: Microsoft incorporó una extensión de Mermaid a VS Code, así que lo que antes necesitaba una extensión aparte ya no la necesita. Lo que no hace: es un panel de vista previa dentro de un editor, no un editor hecho para leer. El panel convive con un árbol de archivos, una terminal y cualquier otro panel que VS Code pueda mostrar, y VS Code en sí es una app de Electron que instalas como un entorno de desarrollo completo, no algo que abres para leer un archivo.</p>
+
+<h2 id="a-browser-extension-for-local-files">Una extensión del navegador para archivos locales</h2>
+<p>Ninguna extensión del navegador domina a la hora de leer un archivo <code>.md</code> local: Local Markdown Viewer, Markdown Viewer, MarkView y otras hacen más o menos lo mismo, y ninguna viene de forma predeterminada. Todas necesitan el mismo paso adicional antes de poder abrir algo: activar «Permitir el acceso a las URL de archivo» para esa extensión, porque los navegadores impiden de forma predeterminada que las extensiones lean páginas <code>file://</code>. Es un permiso que das una vez por extensión, y es fácil olvidar que lo diste, o por qué. Una vez activado, el archivo se renderiza en una pestaña del navegador, lo que significa tener un navegador completo en marcha para ver un archivo.</p>
+
+<h2 id="claude-desktop-s-file-preview">La vista previa de archivos de Claude Desktop</h2>
+<p>Claude Desktop muestra un archivo que ya está en un proyecto o en una conversación. Para lo que no está hecho es para explorar archivos cualesquiera del disco: lo que puedes ver es lo que la conversación ya contiene, no una carpeta de notas que tienes abierta junto a tu trabajo. La propia lista de Anthropic de <a href="https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai">los tipos de documentos que puedes subir</a> incluye PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON y XLSX: Markdown no está.</p>
+
+<h2 id="a-browser-engine-to-read-one-file">Un motor de navegador para leer un archivo</h2>
+<p>VS Code es una app de Electron: un Chromium y un entorno de Node.js integrados, no una app nativa para Mac. La vía de la extensión del navegador se ejecuta dentro de un navegador de verdad. En los dos casos, ver un archivo Markdown significa tener en marcha un motor de navegador completo. MarsDawn es una app nativa de AppKit: sin un navegador integrado, abre cualquier archivo local directamente, sin extensiones que instalar ni permisos que recordar.</p>
+
+<h2 id="next">Siguiente</h2>
+<ul>
+  <li>Lo que MarsDawn tampoco hace: <a href="/es/limits/">la lista</a>.</li>
+  <li>Convierte cualquier archivo Markdown en PDF hoy, gratis: <a href="/es/markdown-to-pdf/">Markdown a PDF</a>.</li>
+  <li>Comparado con un visor nativo para Mac: <a href="/es/vs/macmd-viewer/">MacMD Viewer vs. MarsDawn</a>.</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Sitio">
+    <a href="/es/support/">Soporte</a>
+    <a href="/es/privacy/">Política de privacidad</a>
+    <a href="/es/cli/">Línea de comandos</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Ajustes de cookies</button>
+  </nav>
+  <p class="footer-meta"><span>Un nuevo amanecer para Markdown.</span> <span>MarsDawn está en el <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

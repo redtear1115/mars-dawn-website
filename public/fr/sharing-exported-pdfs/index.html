@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partager ce qu’un agent a écrit, sans enseigner le Markdown · MarsDawn</title>
+<meta name="description" content="Exportez le Markdown d’un agent en PDF et remettez-le à un collègue qui ne lit pas le Markdown et n’installera rien. Aucune syntaxe, aucune app et aucun compte nécessaires pour l’ouvrir.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/sharing-exported-pdfs/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/sharing-exported-pdfs/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/sharing-exported-pdfs/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/sharing-exported-pdfs/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/sharing-exported-pdfs/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/sharing-exported-pdfs/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/sharing-exported-pdfs/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/sharing-exported-pdfs/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/sharing-exported-pdfs/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/fr/sharing-exported-pdfs/">
+<link rel="alternate" type="text/markdown" href="/fr/sharing-exported-pdfs/index.md">
+<meta property="og:title" content="Partager ce qu’un agent a écrit, sans enseigner le Markdown · MarsDawn">
+<meta property="og:description" content="Exportez le Markdown d’un agent en PDF et remettez-le à un collègue qui ne lit pas le Markdown et n’installera rien. Aucune syntaxe, aucune app et aucun compte nécessaires pour l’ouvrir.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/fr/sharing-exported-pdfs/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentement aux cookies" hidden>
+  <p>Ce site utilise des cookies de mesure d’audience pour voir comment les visiteurs l’utilisent. Ils restent désactivés tant que vous n’acceptez pas.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Refuser</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accepter</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/fr/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Sur le Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/sharing-exported-pdfs/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/sharing-exported-pdfs/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/sharing-exported-pdfs/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/sharing-exported-pdfs/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/sharing-exported-pdfs/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/sharing-exported-pdfs/" hreflang="fr" aria-current="true" lang="fr">Français</a> · <a href="/es/sharing-exported-pdfs/" hreflang="es" lang="es">Español</a> · <a href="/ko/sharing-exported-pdfs/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Donnez-leur le PDF, pas le Markdown.</h1>
+  <p>Un agent termine un document, vous le relisez et le révisez, puis quelqu’un en dehors de l’équipe technique doit le lire aussi : un responsable, un client, quelqu’un d’une autre équipe. Ces personnes n’ont pas besoin de savoir ce que signifient <code>##</code> ou un tableau à barres verticales. Exportez en PDF et donnez-leur cela à la place.</p>
+</section>
+
+<div class="summary"><p><strong>Exportez le document relu en PDF et envoyez ce fichier.</strong> Il s’ouvre partout, ne demande ni connaissance du Markdown ni installation, et ressemble à ce que vous avez vu dans l’aperçu, diagrammes, tableaux et mise en forme compris.</p></div>
+
+<h2 id="why-not-just-send-the-md-file">Pourquoi ne pas simplement envoyer le fichier .md</h2>
+<p>Un fichier <code>.md</code> brut ouvert dans un éditeur de texte montre les marques, pas la page : <code>#</code> pour un titre, <code>**</code> autour du gras, un bloc délimité pour un diagramme Mermaid qui n’est pas dessiné. Quelqu’un qui n’écrit pas de Markdown ne lit rien de tout cela comme prévu, et lui demander d’installer d’abord une visionneuse, c’est beaucoup demander pour un seul document.</p>
+
+<h2 id="why-not-a-screenshot">Pourquoi pas une capture d’écran</h2>
+<p>Une capture d’écran fige un écran d’un document qui peut faire plusieurs pages, ne permet ni recherche ni sélection, et devient moins lisible après quelques compressions et transferts. Un PDF conserve le texte, les diagrammes et les sauts de page, quelle que soit la longueur.</p>
+
+<h2 id="what-a-pdf-gets-you">Ce qu’apporte un PDF</h2>
+<ul>
+  <li>Il s’ouvre avec ce que le destinataire a déjà, Aperçu, un navigateur, Acrobat, son téléphone, sans outil Markdown.</li>
+  <li>Les diagrammes Mermaid sont dessinés, pas laissés sous forme de code ; les blocs de code gardent leur coloration.</li>
+  <li>Les sauts de page sont choisis pour qu’un titre ne se retrouve pas seul en bas d’une page, et qu’un tableau ou un diagramme ne soit pas coupé sur deux pages.</li>
+  <li>Le même fichier, qu’il vienne de l’app MarsDawn ou de la ligne de commande gratuite ; le pas-à-pas se trouve sur <a href="/fr/markdown-to-pdf/">Markdown en PDF</a>.</li>
+</ul>
+
+<h2 id="next">Pour aller plus loin</h2>
+<ul>
+  <li>Les thèmes et mises en page dont l’export peut provenir : <a href="/fr/themes/">thèmes d’aperçu et export PDF</a>.</li>
+  <li>Exporter depuis un script ou un agent plutôt que depuis l’app : <a href="/fr/cli/agents/">marsdawn pour les agents</a>.</li>
+  <li>Pourquoi une personne doit d’abord lire le document : <a href="/fr/reviewing-ai-output/">pourquoi relire</a>.</li>
+  <li>Les passations entre plusieurs agents produisent naturellement des PDF à partager : <a href="/fr/agent-design-patterns/">Quatre modèles de conception d’agents et les documents que chacun vous remet</a>.</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/fr/support/">Assistance</a>
+    <a href="/fr/privacy/">Politique de confidentialité</a>
+    <a href="/fr/cli/">Ligne de commande</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Réglages des cookies</button>
+  </nav>
+  <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
