@@ -2,7 +2,7 @@
 
 Cómo trata tu información MarsDawn, el editor de Markdown para macOS.
 
-Última actualización: 2026-09-23
+Última actualización: 2026-09-28
 
 > **La app MarsDawn no recopila ningún dato sobre ti.** No hay cuenta, ni publicidad, ni seguimiento. Tus documentos y tus ajustes se quedan en tu Mac.
 
@@ -18,7 +18,7 @@ Una vez que aceptas, Google Analytics instala sus propias cookies (`_ga` y `_ga_
 - **Ubicación aproximada, dispositivo y navegador.** Una ubicación aproximada derivada de tu dirección IP (como mucho, a nivel de ciudad), tu tipo de dispositivo, tu sistema operativo y tu navegador. Nada de ello es lo bastante preciso para identificarte.
 - **Clics salientes y profundidad de desplazamiento.** La medición mejorada de Google Analytics registra los clics que salen del sitio, como el enlace al Mac App Store, y hasta dónde te desplazas en una página.
 - **Direcciones IP.** Google Analytics 4 no registra ni almacena direcciones IP.
-- **Lo que no se registra.** Ninguna cuenta, porque el sitio no tiene. Ningún documento, ni nada de lo que escribes. Ninguna publicidad entre sitios, ni ningún perfil tuyo. Las solicitudes que hace la app de archivos de tema en `/themes/` se omiten y no se reenvían.
+- **Lo que no se registra.** Ninguna cuenta, porque el sitio no tiene. Ningún documento, ni nada de lo que escribes. Ninguna publicidad entre sitios, ni ningún perfil tuyo. Las solicitudes que hace la app de archivos de tema en `/themes/` se omiten y no se reenvían. El simulador de temas y la galería en `/themes/new/` y `/themes/gallery/` se ejecutan por completo en tu navegador y tampoco envían datos de tema a Google Analytics.
 - **Conservación.** Google conserva estos datos durante 14 meses y después los elimina.
 - **Dónde se tratan.** Google Tag Manager y Google Analytics los opera Google; tus datos pueden tratarse en Estados Unidos y en otros países donde Google opera.
 - **El proveedor de alojamiento.** Cloudflare aloja el sitio y, como cualquier proveedor de alojamiento, ve tu dirección IP mientras responde a la solicitud. Ese registro pertenece al proveedor. No es la analítica descrita arriba.

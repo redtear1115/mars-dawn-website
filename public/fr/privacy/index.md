@@ -2,7 +2,7 @@
 
 Comment MarsDawn, l’éditeur Markdown pour macOS, traite vos informations.
 
-Dernière mise à jour : 2026-09-23
+Dernière mise à jour : 2026-09-28
 
 > **L’app MarsDawn ne collecte aucune donnée vous concernant.** Il n’y a ni compte, ni publicité, ni suivi. Vos documents et vos réglages restent sur votre Mac.
 
@@ -18,7 +18,7 @@ Une fois que vous avez accepté, Google Analytics dépose ses propres cookies (`
 - **Localisation approximative, appareil et navigateur.** Une localisation grossière déduite de votre adresse IP (au plus au niveau de la ville), votre type d’appareil, votre système d’exploitation et votre navigateur. Rien de tout cela n’est assez précis pour vous identifier.
 - **Clics sortants et profondeur de défilement.** Les mesures améliorées de Google Analytics enregistrent les clics qui quittent le site, comme le lien vers le Mac App Store, ainsi que la distance que vous faites défiler sur une page.
 - **Adresses IP.** Google Analytics 4 ne journalise ni ne stocke les adresses IP.
-- **Ce qui n’est pas enregistré.** Aucun compte, puisque le site n’en a pas. Aucun document, et rien de ce que vous saisissez. Aucune publicité intersites, et aucun profil de vous. Les requêtes de l’app pour les fichiers de thème sous `/themes/` sont ignorées et ne sont pas transmises.
+- **Ce qui n’est pas enregistré.** Aucun compte, puisque le site n’en a pas. Aucun document, et rien de ce que vous saisissez. Aucune publicité intersites, et aucun profil de vous. Les requêtes de l’app pour les fichiers de thème sous `/themes/` sont ignorées et ne sont pas transmises. Le simulateur de thèmes et la galerie sur `/themes/new/` et `/themes/gallery/` s’exécutent entièrement dans votre navigateur et n’envoient aucune donnée de thème à Google Analytics non plus.
 - **Conservation.** Google conserve ces données pendant 14 mois, puis les supprime.
 - **Lieu de traitement.** Google Tag Manager et Google Analytics sont exploités par Google ; vos données peuvent être traitées aux États-Unis ainsi que dans d’autres pays où Google exerce ses activités.
 - **L’hébergeur.** Cloudflare héberge le site et, comme tout hébergeur, voit votre adresse IP pendant qu’il répond à la requête. Ce journal appartient à l’hébergeur. Il ne s’agit pas de la mesure d’audience décrite ci-dessus.

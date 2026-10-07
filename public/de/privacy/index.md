@@ -2,7 +2,7 @@
 
 Wie MarsDawn, der Markdown-Editor für macOS, mit deinen Daten umgeht.
 
-Zuletzt aktualisiert am 2026-09-23
+Zuletzt aktualisiert am 2026-09-28
 
 > **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
 
@@ -18,7 +18,7 @@ Sobald du zustimmst, setzt Google Analytics eigene Cookies (`_ga` und `_ga_<meas
 - **Ungefährer Standort, Gerät und Browser.** Ein grober Standort, abgeleitet aus deiner IP-Adresse (höchstens auf Stadtebene), dein Gerätetyp, dein Betriebssystem und dein Browser. Nichts davon ist genau genug, um dich zu identifizieren.
 - **Klicks nach außen und Scrolltiefe.** Die erweiterten Messfunktionen von Google Analytics erfassen Klicks, mit denen du die Website verlässt, etwa auf den Link zum Mac App Store, und wie weit du auf einer Seite nach unten scrollst.
 - **IP-Adressen.** Google Analytics 4 protokolliert oder speichert keine IP-Adressen.
-- **Was nicht erfasst wird.** Kein Konto, denn die Website hat keine. Kein Dokument und nichts, was du eingibst. Keine websiteübergreifende Werbung und kein Profil von dir. Anfragen der App nach Themadateien unter `/themes/` werden ausgelassen und nicht weitergegeben.
+- **Was nicht erfasst wird.** Kein Konto, denn die Website hat keine. Kein Dokument und nichts, was du eingibst. Keine websiteübergreifende Werbung und kein Profil von dir. Anfragen der App nach Themadateien unter `/themes/` werden ausgelassen und nicht weitergegeben. Der Themensimulator und die Galerie unter `/themes/new/` und `/themes/gallery/` laufen vollständig in deinem Browser und senden ebenfalls keine Themendaten an Google Analytics.
 - **Aufbewahrung.** Google bewahrt diese Daten 14 Monate lang auf und löscht sie dann.
 - **Wo die Daten verarbeitet werden.** Google Tag Manager und Google Analytics werden von Google betrieben. Deine Daten können in den Vereinigten Staaten sowie in anderen Ländern verarbeitet werden, in denen Google tätig ist.
 - **Der Hoster.** Cloudflare hostet die Website und sieht, wie jeder Hoster, deine IP-Adresse, während die Anfrage beantwortet wird. Dieses Protokoll gehört dem Hoster. Es ist nicht die oben beschriebene Analyse.

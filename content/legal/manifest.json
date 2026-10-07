@@ -3,8 +3,8 @@
   "pages": {
     "privacy.de.md": {
       "rendered": "privacy.de.rendered.html",
-      "rendered_sha256": "589e9c8cb2029d2750c90891d6cc12bc33e5c62a3f6025c06ad135b9cf1febc0",
-      "source_sha256": "9010f839b53a8ed05675d2b9d5c9c8fe22aaab543b7f95a760f307b49e2864a6"
+      "rendered_sha256": "3ee7983c93c0f9939e42437785c8a7975ec540884e0298cf54fbafa385544096",
+      "source_sha256": "ab52f3e56a40ef318e2c25511508afd16c68dfcce1368630869367039c37605c"
     },
     "privacy.en.md": {
       "rendered": "privacy.en.rendered.html",
@@ -13,13 +13,13 @@
     },
     "privacy.es.md": {
       "rendered": "privacy.es.rendered.html",
-      "rendered_sha256": "fff367cb09a0086b89b732585c091eff23b66459a471ccd1a51b1f8d0ddaffbf",
-      "source_sha256": "e754613c5030bd1a756e08e497cd3c88ed29e06f5ca6df39a30205bc0200849b"
+      "rendered_sha256": "a67d4f719d6233a908911393370dcc29cc7622b880e94ae4a4d4d751387f3210",
+      "source_sha256": "358bdd172144b88ab5eabf80c6f79e2619ce8672f00234fcf8bcc58bb4d06521"
     },
     "privacy.fr.md": {
       "rendered": "privacy.fr.rendered.html",
-      "rendered_sha256": "5d21c8945e1559220f9aea6ca20f61b905031348870590c32efb55d6a6c85405",
-      "source_sha256": "ec3f3347edf5b887b9b71c485930a8846ee328eac92fbd3a304b682269ad8348"
+      "rendered_sha256": "3fd485cc881a1ecfedc76bae9170247b8aec2e62753746a55ef2781494dbaa51",
+      "source_sha256": "649128db5268de471faa453f2f9bd3dd916db2abc57bfa788f8354f1da249f18"
     },
     "privacy.ja.md": {
       "rendered": "privacy.ja.rendered.html",
@@ -28,8 +28,8 @@
     },
     "privacy.ko.md": {
       "rendered": "privacy.ko.rendered.html",
-      "rendered_sha256": "a6d62e266146a8ff0736783fcca6f3856b3ebcae2ce2e719668c3f43c4607343",
-      "source_sha256": "ec8918405c04a41301a0ff1f2199609f84fe216ebdfe63d16e89e00a85f2cd3b"
+      "rendered_sha256": "38898d21ec4586193820f8d20e71fc7382fc9cad995a1259b3b9385aaba9db1a",
+      "source_sha256": "3973e3dccdb78366feb80102ce9ffa7f4e28c145cfeb0aee6bdda76bfd7f77ee"
     },
     "privacy.zh-hans.md": {
       "rendered": "privacy.zh-hans.rendered.html",

@@ -9100,7 +9100,7 @@ Source: https://marsdawn.southern-light.dev/de/privacy/
 
 Wie MarsDawn, der Markdown-Editor für macOS, mit deinen Daten umgeht.
 
-Zuletzt aktualisiert am 2026-09-23
+Zuletzt aktualisiert am 2026-09-28
 
 > **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
 
@@ -9116,7 +9116,7 @@ Sobald du zustimmst, setzt Google Analytics eigene Cookies (`_ga` und `_ga_<meas
 - **Ungefährer Standort, Gerät und Browser.** Ein grober Standort, abgeleitet aus deiner IP-Adresse (höchstens auf Stadtebene), dein Gerätetyp, dein Betriebssystem und dein Browser. Nichts davon ist genau genug, um dich zu identifizieren.
 - **Klicks nach außen und Scrolltiefe.** Die erweiterten Messfunktionen von Google Analytics erfassen Klicks, mit denen du die Website verlässt, etwa auf den Link zum Mac App Store, und wie weit du auf einer Seite nach unten scrollst.
 - **IP-Adressen.** Google Analytics 4 protokolliert oder speichert keine IP-Adressen.
-- **Was nicht erfasst wird.** Kein Konto, denn die Website hat keine. Kein Dokument und nichts, was du eingibst. Keine websiteübergreifende Werbung und kein Profil von dir. Anfragen der App nach Themadateien unter `/themes/` werden ausgelassen und nicht weitergegeben.
+- **Was nicht erfasst wird.** Kein Konto, denn die Website hat keine. Kein Dokument und nichts, was du eingibst. Keine websiteübergreifende Werbung und kein Profil von dir. Anfragen der App nach Themadateien unter `/themes/` werden ausgelassen und nicht weitergegeben. Der Themensimulator und die Galerie unter `/themes/new/` und `/themes/gallery/` laufen vollständig in deinem Browser und senden ebenfalls keine Themendaten an Google Analytics.
 - **Aufbewahrung.** Google bewahrt diese Daten 14 Monate lang auf und löscht sie dann.
 - **Wo die Daten verarbeitet werden.** Google Tag Manager und Google Analytics werden von Google betrieben. Deine Daten können in den Vereinigten Staaten sowie in anderen Ländern verarbeitet werden, in denen Google tätig ist.
 - **Der Hoster.** Cloudflare hostet die Website und sieht, wie jeder Hoster, deine IP-Adresse, während die Anfrage beantwortet wird. Dieses Protokoll gehört dem Hoster. Es ist nicht die oben beschriebene Analyse.
@@ -11269,7 +11269,7 @@ Source: https://marsdawn.southern-light.dev/fr/privacy/
 
 Comment MarsDawn, l’éditeur Markdown pour macOS, traite vos informations.
 
-Dernière mise à jour : 2026-09-23
+Dernière mise à jour : 2026-09-28
 
 > **L’app MarsDawn ne collecte aucune donnée vous concernant.** Il n’y a ni compte, ni publicité, ni suivi. Vos documents et vos réglages restent sur votre Mac.
 
@@ -11285,7 +11285,7 @@ Une fois que vous avez accepté, Google Analytics dépose ses propres cookies (`
 - **Localisation approximative, appareil et navigateur.** Une localisation grossière déduite de votre adresse IP (au plus au niveau de la ville), votre type d’appareil, votre système d’exploitation et votre navigateur. Rien de tout cela n’est assez précis pour vous identifier.
 - **Clics sortants et profondeur de défilement.** Les mesures améliorées de Google Analytics enregistrent les clics qui quittent le site, comme le lien vers le Mac App Store, ainsi que la distance que vous faites défiler sur une page.
 - **Adresses IP.** Google Analytics 4 ne journalise ni ne stocke les adresses IP.
-- **Ce qui n’est pas enregistré.** Aucun compte, puisque le site n’en a pas. Aucun document, et rien de ce que vous saisissez. Aucune publicité intersites, et aucun profil de vous. Les requêtes de l’app pour les fichiers de thème sous `/themes/` sont ignorées et ne sont pas transmises.
+- **Ce qui n’est pas enregistré.** Aucun compte, puisque le site n’en a pas. Aucun document, et rien de ce que vous saisissez. Aucune publicité intersites, et aucun profil de vous. Les requêtes de l’app pour les fichiers de thème sous `/themes/` sont ignorées et ne sont pas transmises. Le simulateur de thèmes et la galerie sur `/themes/new/` et `/themes/gallery/` s’exécutent entièrement dans votre navigateur et n’envoient aucune donnée de thème à Google Analytics non plus.
 - **Conservation.** Google conserve ces données pendant 14 mois, puis les supprime.
 - **Lieu de traitement.** Google Tag Manager et Google Analytics sont exploités par Google ; vos données peuvent être traitées aux États-Unis ainsi que dans d’autres pays où Google exerce ses activités.
 - **L’hébergeur.** Cloudflare héberge le site et, comme tout hébergeur, voit votre adresse IP pendant qu’il répond à la requête. Ce journal appartient à l’hébergeur. Il ne s’agit pas de la mesure d’audience décrite ci-dessus.
@@ -13438,7 +13438,7 @@ Source: https://marsdawn.southern-light.dev/es/privacy/
 
 Cómo trata tu información MarsDawn, el editor de Markdown para macOS.
 
-Última actualización: 2026-09-23
+Última actualización: 2026-09-28
 
 > **La app MarsDawn no recopila ningún dato sobre ti.** No hay cuenta, ni publicidad, ni seguimiento. Tus documentos y tus ajustes se quedan en tu Mac.
 
@@ -13454,7 +13454,7 @@ Una vez que aceptas, Google Analytics instala sus propias cookies (`_ga` y `_ga_
 - **Ubicación aproximada, dispositivo y navegador.** Una ubicación aproximada derivada de tu dirección IP (como mucho, a nivel de ciudad), tu tipo de dispositivo, tu sistema operativo y tu navegador. Nada de ello es lo bastante preciso para identificarte.
 - **Clics salientes y profundidad de desplazamiento.** La medición mejorada de Google Analytics registra los clics que salen del sitio, como el enlace al Mac App Store, y hasta dónde te desplazas en una página.
 - **Direcciones IP.** Google Analytics 4 no registra ni almacena direcciones IP.
-- **Lo que no se registra.** Ninguna cuenta, porque el sitio no tiene. Ningún documento, ni nada de lo que escribes. Ninguna publicidad entre sitios, ni ningún perfil tuyo. Las solicitudes que hace la app de archivos de tema en `/themes/` se omiten y no se reenvían.
+- **Lo que no se registra.** Ninguna cuenta, porque el sitio no tiene. Ningún documento, ni nada de lo que escribes. Ninguna publicidad entre sitios, ni ningún perfil tuyo. Las solicitudes que hace la app de archivos de tema en `/themes/` se omiten y no se reenvían. El simulador de temas y la galería en `/themes/new/` y `/themes/gallery/` se ejecutan por completo en tu navegador y tampoco envían datos de tema a Google Analytics.
 - **Conservación.** Google conserva estos datos durante 14 meses y después los elimina.
 - **Dónde se tratan.** Google Tag Manager y Google Analytics los opera Google; tus datos pueden tratarse en Estados Unidos y en otros países donde Google opera.
 - **El proveedor de alojamiento.** Cloudflare aloja el sitio y, como cualquier proveedor de alojamiento, ve tu dirección IP mientras responde a la solicitud. Ese registro pertenece al proveedor. No es la analítica descrita arriba.
@@ -15607,7 +15607,7 @@ Source: https://marsdawn.southern-light.dev/ko/privacy/
 
 macOS용 Markdown 편집기 MarsDawn이 사용자의 정보를 어떻게 다루는지 설명합니다.
 
-최종 업데이트: 2026-09-23
+최종 업데이트: 2026-09-28
 
 > **MarsDawn 앱은 사용자에 관한 데이터를 일절 수집하지 않습니다.** 계정도, 광고도, 추적도 없습니다. 문서와 설정은 사용자의 Mac에 남습니다.
 
@@ -15623,7 +15623,7 @@ macOS용 Markdown 편집기 MarsDawn이 사용자의 정보를 어떻게 다루�
 - **대략적인 위치, 기기 및 브라우저.** IP 주소에서 추정한 대략적인 위치(최대 도시 수준), 기기 유형, 운영 체제 및 브라우저. 어느 것도 사용자를 식별할 만큼 정확하지 않습니다.
 - **외부 링크 클릭 및 스크롤 깊이.** Google Analytics의 향상된 측정 기능은 Mac App Store 링크처럼 사이트를 떠나는 클릭과, 페이지를 얼마나 아래로 스크롤했는지를 기록합니다.
 - **IP 주소.** Google Analytics 4는 IP 주소를 기록하거나 저장하지 않습니다.
-- **기록하지 않는 것.** 사이트에 계정이 없으므로 계정 정보는 없습니다. 문서도, 입력한 내용도 기록하지 않습니다. 교차 사이트 광고도, 사용자 프로필도 없습니다. 앱이 `/themes/` 아래의 테마 파일을 요청하는 경우는 제외되며, 전달되지 않습니다.
+- **기록하지 않는 것.** 사이트에 계정이 없으므로 계정 정보는 없습니다. 문서도, 입력한 내용도 기록하지 않습니다. 교차 사이트 광고도, 사용자 프로필도 없습니다. 앱이 `/themes/` 아래의 테마 파일을 요청하는 경우는 제외되며, 전달되지 않습니다. `/themes/new/`와 `/themes/gallery/`의 테마 시뮬레이터와 갤러리는 전적으로 브라우저에서 실행되며, 테마 데이터를 Google Analytics로 보내지도 않습니다.
 - **보관 기간.** Google은 이 데이터를 14개월 동안 보관한 뒤 삭제합니다.
 - **처리 위치.** Google Tag Manager와 Google Analytics는 Google이 운영합니다. 데이터는 미국을 비롯해 Google이 사업을 운영하는 다른 국가에서 처리될 수 있습니다.
 - **호스팅 업체.** 이 사이트는 Cloudflare가 호스팅하며, 여느 호스팅 업체와 마찬가지로 요청에 응답하는 동안 IP 주소를 보게 됩니다. 그 로그는 호스팅 업체의 것이며, 위에서 설명한 분석과는 별개입니다.
