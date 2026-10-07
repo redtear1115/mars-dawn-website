@@ -313,6 +313,7 @@ marsdawn open notes.md --folder .</code></pre>
     }
     home = {
         "cta_cli": 'Instala la CLI gratuita',
+        "cta_try": 'Descárgala y pruébala',
         "cta_store": 'Ver en el Mac App Store',
         "install_h": 'Hazlo ahora',
         "install_lede": 'La herramienta de línea de comandos gratuita <code>marsdawn</code> ya está lista. Instálala con Homebrew:',
@@ -780,14 +781,14 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 
     pages['themes'] = {
         "title": 'Temas de vista previa y exportación a PDF en MarsDawn · MarsDawn',
-        "description": 'Cuatro temas de vista previa, cada uno con una paleta clara y una oscura, y una sola exportación a PDF e impresión que respeta el que estés usando. Están previstos más temas importables y una galería para compartir los tuyos.',
+        "description": 'Cuatro temas de vista previa, cada uno con una paleta clara y una oscura, y una sola exportación a PDF e impresión que respeta el que estés usando. Crea tu propio tema en el navegador y explora la galería de la comunidad.',
         "body": f"""
 <section class="intro">
   <h1>Ocho estilos, una exportación.</h1>
   <p>MarsDawn incluye cuatro temas de vista previa, Amanecer, Clásico, Moderno y Vívido, cada uno con una paleta clara y una oscura: ocho combinaciones para leer un documento. Exporta a PDF o imprime, y la página sale con la que estabas leyendo.</p>
 </section>
 
-<div class="summary"><p><strong>Cuatro temas &#215; claro y oscuro = ocho formas de leer un documento, y una sola vía de exportación que respeta lo que elegiste.</strong> Están previstos más temas importables y una galería para compartir los tuyos; todavía no existen.</p></div>
+<div class="summary"><p><strong>Cuatro temas &#215; claro y oscuro = ocho formas de leer un documento, y una sola vía de exportación que respeta lo que elegiste.</strong> <a href="/es/themes/new/">Crea el tuyo</a> en el navegador, o <a href="/es/themes/gallery/">explora la galería</a> para ver lo que otros han enviado.</p></div>
 
 <h2>Los cuatro temas</h2>
 <!--theme-gallery-->
@@ -802,8 +803,8 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 <h2>La exportación a PDF y la impresión usan el mismo tema</h2>
 <p>Exporta a PDF o imprime, y la página usa la paleta clara de tu tema: los diagramas Mermaid se dibujan en ella, los bloques de código conservan el resaltado de sintaxis, y los saltos de página evitan separar un título de su sección o partir una tabla o un diagrama por la mitad. La <a href="/es/cli/">herramienta de línea de comandos marsdawn</a>, gratuita, usa el mismo exportador, así que un script o un agente genera el mismo PDF, en cualquiera de los cuatro temas, con <code>--theme</code>.</p>
 
-<h2>Previsto: más temas y una galería</h2>
-<p>Llegará más adelante, todavía no está disponible: más temas de vista previa importables y una galería en este sitio donde la gente pueda enviar los suyos. <code>/themes/v1/</code> ya está reservado para eso. Hasta entonces, MarsDawn tiene los cuatro temas integrados, y no puedes instalar otros.</p>
+<h2>Crea el tuyo y explora lo que hicieron otros</h2>
+<p><a href="/es/themes/new/">Crea un tema en tu navegador</a>: elige colores y unas pocas opciones de estilo, míralos aplicados en vivo y envíalo como un issue de GitHub para revisión &#8212; sin instalación, sin git. <a href="/es/themes/gallery/">La galería</a> muestra cada tema enviado que un mantenedor haya revisado y fusionado; hoy está vacía, porque la vía de revisión acaba de abrirse, pero cada tema que llegue allí aparecerá allí, filtrable por para qué sirve.</p>
 
 <h2>Siguiente</h2>
 <ul>
@@ -811,6 +812,35 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
   <li>Lo que MarsDawn todavía no hace: <a href="/es/limits/">la lista</a>.</li>
   <li>Entregar un PDF exportado a alguien que no usa Markdown: <a href="/es/sharing-exported-pdfs/">compartir un PDF</a>.</li>
 </ul>
+""",
+    }
+
+
+    pages['themes/new'] = {
+        "title": "Crear un tema de MarsDawn en el navegador · MarsDawn",
+        "description": "Elige colores y unas pocas opciones de estilo, míralos aplicados en vivo a un documento de ejemplo y envía tu tema como un issue de GitHub. Sin instalación, sin git.",
+        "body": """
+<section class="intro">
+  <h1>Crear un tema</h1>
+  <p>Elige abajo una paleta y unas pocas opciones de estilo. El documento de ejemplo a la derecha se actualiza sobre la marcha, en claro y en oscuro, y cada comprobación que ejecuta la CI de la galería también aparece aquí &#8212; así que un tema que llega al issue de envío suele haber pasado ya.</p>
+  <p>Para enviar necesitas una cuenta de GitHub. Esta página en sí no requiere instalación ni git.</p>
+</section>
+<div id="theme-sim-app" data-locale="es"><p>Esta página necesita JavaScript para crear y previsualizar un tema.</p></div>
+""",
+    }
+    pages['themes/gallery'] = {
+        "title": "Galería de temas: temas de la comunidad para MarsDawn · MarsDawn",
+        "description": "Explora temas de vista previa que la comunidad envió para MarsDawn, fíltralos por escenario y denuncia un problema. Crea el tuyo en el navegador, sin instalación y sin git.",
+        "body": f"""
+<section class="intro">
+  <h1>Galería de temas</h1>
+  <p>Temas de vista previa enviados por la comunidad; cada uno fue revisado y fusionado por el desarrollador antes de aparecer aquí. Filtra por escenario, o <a href="/es/themes/new/">crea el tuyo</a> en el navegador &#8212; sin instalación, sin git.</p>
+</section>
+<!--community-theme-gallery-->
+<h2>Créditos y licencia</h2>
+<p>Dracula, Nord, Gruvbox y Solarized se adaptan de esquemas de color de código abierto; ve las <a href="/themes/third-party-notices.html">notificaciones de terceros</a> para el copyright y el texto completo de la licencia de cada proyecto.</p>
+<h2>¿Algo va mal con un tema?</h2>
+<p>Usa el botón «Denunciar» de su tarjeta (necesita JavaScript), o escribe directamente a <a href="mailto:{k.EMAIL}">{k.EMAIL}</a> con su nombre y versión, con JavaScript o sin él. Las denuncias se revisan a mano; un tema confirmado como problemático se retira en un día.</p>
 """,
     }
 
@@ -1405,11 +1435,312 @@ Asistentes: _nombres_
     }
 
     app_ui_languages = 'inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano'
-    ui = {'home': 'MarsDawn', 'privacy': 'Política de privacidad', 'support': 'Soporte', 'cli': 'Línea de comandos', 'agents': 'marsdawn para agentes', 'using_cli': 'Usar la CLI', 'markdown-to-pdf': 'De Markdown a PDF', 'skill': 'Skill para agentes', 'view-markdown-on-mac': 'Ver Markdown en una Mac', 'vs-macmd-viewer': 'MacMD Viewer frente a MarsDawn', 'updated': f'Última actualización: {k.UPDATED}', 'tagline': 'Lee lo que escribió tu agente.', 'slogan': 'Un nuevo amanecer para Markdown.', 'footer_store': f'MarsDawn está en el <a href="{k.LISTING_URL}">Mac App Store</a>.', 'footer_nav': 'Sitio', 'more': 'Más', 'yours': 'Lo que escribes se queda en tu Mac', 'pay-once': 'Pruébalo gratis, paga una vez', 'pdf': 'Exportación a PDF', 'native': 'Una app para Mac', 'limits': 'Lo que MarsDawn no hace', 'mcp': 'Servidor MCP', 'token-efficient-review': 'Revisión que ahorra tokens', 'vs-markdown-preview-tools': 'Ver Markdown en otras herramientas frente a MarsDawn', 'themes': 'Temas de la vista previa y exportación a PDF', 'sharing-exported-pdfs': 'Compartir los PDF exportados', 'reviewing-ai-output': 'Por qué lo que produce la IA todavía necesita un lector humano', 'reading-agent-output': 'Leer lo que te devuelve tu agente', 'agent-transparency': 'Transparencia de los agentes', 'reviewing-agent-plans': 'Revisar el plan de un agente', 'agent-design-patterns': 'Patrones de diseño de agentes', 'changelog': 'Historial de cambios', 'consent_text': 'Este sitio usa cookies de analítica para ver cómo lo usan los visitantes. Permanecen desactivadas a menos que las aceptes.', 'consent_accept': 'Aceptar', 'consent_decline': 'Rechazar', 'consent_aria': 'Consentimiento de cookies', 'cookie_settings': 'Ajustes de cookies', 'view_markdown_source': 'Ver el código Markdown'}
+    ui = {'home': 'MarsDawn', 'privacy': 'Política de privacidad', 'support': 'Soporte', 'cli': 'Línea de comandos', 'agents': 'marsdawn para agentes', 'using_cli': 'Usar la CLI', 'markdown-to-pdf': 'De Markdown a PDF', 'skill': 'Skill para agentes', 'view-markdown-on-mac': 'Ver Markdown en una Mac', 'vs-macmd-viewer': 'MacMD Viewer frente a MarsDawn', 'updated': f'Última actualización: {k.UPDATED}', 'tagline': 'Lee lo que escribió tu agente.', 'slogan': 'Un nuevo amanecer para Markdown.', 'footer_store': f'MarsDawn está en el <a href="{k.LISTING_URL}">Mac App Store</a>.', 'footer_nav': 'Sitio', 'more': 'Más', 'yours': 'Lo que escribes se queda en tu Mac', 'pay-once': 'Pruébalo gratis, paga una vez', 'pdf': 'Exportación a PDF', 'native': 'Una app para Mac', 'limits': 'Lo que MarsDawn no hace', 'mcp': 'Servidor MCP', 'token-efficient-review': 'Revisión que ahorra tokens', 'vs-markdown-preview-tools': 'Ver Markdown en otras herramientas frente a MarsDawn', 'themes': 'Temas de la vista previa y exportación a PDF', 'themes-new': 'Crear un tema', 'themes-gallery': 'Galería de temas', 'sharing-exported-pdfs': 'Compartir los PDF exportados', 'reviewing-ai-output': 'Por qué lo que produce la IA todavía necesita un lector humano', 'reading-agent-output': 'Leer lo que te devuelve tu agente', 'agent-transparency': 'Transparencia de los agentes', 'reviewing-agent-plans': 'Revisar el plan de un agente', 'agent-design-patterns': 'Patrones de diseño de agentes', 'changelog': 'Historial de cambios', 'reading-notes': 'Notas de lectura de la redacción', 'reading-notes-anthropic': 'Notas de lectura: Anthropic', 'reading-notes-chip-huyen': 'Notas de lectura: Chip Huyen', 'reading-notes-lilian-weng': 'Notas de lectura: Lilian Weng', 'reading-notes-harrison-chase': 'Notas de lectura: Harrison Chase', 'reading-notes-langchain': 'Notas de lectura: LangChain (Jess Ou)', 'reading-notes-andrew-ng': 'Notas de lectura: Andrew Ng', 'consent_text': 'Este sitio usa cookies de analítica para ver cómo lo usan los visitantes. Permanecen desactivadas a menos que las aceptes.', 'consent_accept': 'Aceptar', 'consent_decline': 'Rechazar', 'consent_aria': 'Consentimiento de cookies', 'cookie_settings': 'Ajustes de cookies', 'view_markdown_source': 'Ver el código Markdown'}
     store_chip = 'En el Mac App Store'
     trait_link = {'yours': ('Lo que escribes se queda en tu Mac', 'Sin cuenta, sin sincronización, sin nube.'), 'pay-once': ('Pruébalo gratis, paga una vez', 'Gratis durante 14 días; después, 4,99 USD una sola vez. Sin suscripción.'), 'pdf': ('Exportación a PDF', 'Diagramas, código resaltado, saltos de página cuidados.'), 'native': ('Una app para Mac', 'Ventanas y pestañas nativas, guardado automático, Vista rápida.'), 'limits': ('Lo que MarsDawn no hace', 'Lo que conviene saber antes de comprar.')}
     trait_nav_heading = 'Qué esperar de MarsDawn'
     figure_list_label = 'En esta captura de pantalla'
+
+
+    pages['reading-notes'] = {
+        "title": "Notas de lectura de la redacción · MarsDawn",
+        "description": "Seis notas breves sobre lo que argumentan de verdad las personas que construyen agentes de IA — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain y Andrew Ng — y qué significa cada una para quien tiene que leer lo que ese agente devuelve.",
+        "body": f"""
+<section class="intro">
+  <h1>Notas de lectura de la redacción</h1>
+  <p>Seis personas han escrito sobre cómo funcionan los agentes de IA: de qué están hechos, qué hace que un sistema sea «agentic», qué patrones de diseño aguantan en la práctica y cuáles aún no. Ninguna escribió sobre cómo leer lo que un agente devuelve, y ninguna menciona MarsDawn ni recomienda una herramienta Markdown. Leímos cada texto en sus propios términos, marcamos con claridad dónde empieza nuestra lectura, y le hicimos a cada fuente la misma pregunta: qué documento suele aterrizar en tu carpeta por esto, y dónde ayuda MarsDawn a leerlo.</p>
+</section>
+
+<p>Si quieres primero la versión corta y práctica, empieza por <a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a> y <a href="/es/reviewing-agent-plans/">Revisar el plan de un agente en cinco minutos</a>. Estas seis notas se acercan más a las fuentes detrás de esas páginas. Cada una se sostiene sola; léelas en cualquier orden.</p>
+
+<ul>
+  <li><a href="/es/reading-notes/anthropic-building-effective-agents/">Anthropic traza una línea entre workflows y agentes. ¿Dónde encaja tu lectura?</a> &#8212; La guía de Anthropic para quien construye agentes separa una pipeline fija de un modelo que dirige su propio siguiente paso, y describe un workflow en el que el «revisor» es una segunda llamada a un LLM, no una persona.</li>
+  <li><a href="/es/reading-notes/chip-huyen-agents/">La división read-only/write action de Chip Huyen, y por qué importa antes de aprobar nada</a> &#8212; su definición sencilla de un agente, y la distinción entre acciones que solo miran y acciones que cambian algo: ahí es donde una revisión de cinco minutos vale la pena.</li>
+  <li><a href="/es/reading-notes/lilian-weng-llm-agents/">El plano de agente de Lilian Weng de 2023, y el archivo que deja cada parte</a> &#8212; cerebro, planificación, memoria, uso de herramientas: su propio marco de de qué está hecho un agente, y el límite que nombra en planes que no se ajustan cuando algo sale mal.</li>
+  <li><a href="/es/reading-notes/harrison-chase-what-is-an-agent/">El espectro de Harrison Chase: cuanto más agentic, más querrás vigilarlo</a> &#8212; su definición técnica de un agente, y su argumento a favor de la observabilidad a medida que un sistema avanza por ese espectro.</li>
+  <li><a href="/es/reading-notes/langchain-what-is-an-agent/">El pipeline de evals de Jess Ou, y el paso que sigue siendo tuyo</a> &#8212; en julio de 2026 LangChain publicó un nuevo «What is an AI agent?» de Jess Ou en la dirección donde estaba el post de 2024 de Harrison Chase; su definición es casi palabra por palabra la suya, y describe dónde termina la evaluación automática y dónde tiene que intervenir una persona.</li>
+  <li><a href="/es/reading-notes/andrew-ng-design-patterns/">Andrew Ng ordena sus propios patrones de diseño según lo predecibles que son</a> &#8212; a lo largo de cinco cartas en The Batch, dice sin rodeos cuáles le parecen más fiables y cuáles le cuesta predecir.</li>
+</ul>
+
+<p>Ninguno de estos seis textos argumenta que haya que leer con más cuidado la salida de un agente, y ninguno habla de MarsDawn. Esa conexión, donde la hacemos, es nuestra, y cada nota lo dice.</p>
+""",
+    }
+
+
+    pages['reading-notes/anthropic-building-effective-agents'] = {
+        "title": 'Anthropic traza una línea entre workflows y agentes. ¿Dónde encaja tu lectura? · MarsDawn',
+        "description": 'La guía de Anthropic de diciembre de 2024 para quien construye agentes separa workflows de agentes y describe cinco patrones de workflow, incluido uno en el que una segunda llamada a un LLM revisa la primera. Qué significa eso para lo que aterriza en tu carpeta.',
+        "body": f"""
+<section class="intro">
+  <h1>Anthropic traza una línea entre workflows y agentes. ¿Dónde encaja tu lectura?</h1>
+</section>
+
+<div class="summary"><p><strong>La guía de Anthropic de diciembre de 2024 para quien construye agentes de IA empieza separando dos cosas que llama «workflows» y «agents», recomienda empezar por lo más simple que funcione &#8212; quizá ningún sistema agentic &#8212; y solo alcanzar uno de sus cinco patrones de workflow cuando eso no baste. Uno de esos patrones pone una segunda llamada a un LLM en el asiento del revisor. Esta nota trata de ese patrón, y de lo que los otros cuatro te dejan para leer.</strong></p></div>
+
+<h2>Lo que sostiene la guía</h2>
+<p>Erik S. y Barry Zhang escribieron «Building Effective Agents» para ingenieros que deciden cómo construir con LLMs. Empieza con una definición:</p>
+<blockquote><p>&#8220;Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.&#8221;</p></blockquote>
+<p>Luego el consejo empieza con contención:</p>
+<blockquote><p>&#8220;When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed. This might mean not building agentic systems at all.&#8221;</p></blockquote>
+<p>Cuando hace falta más estructura, describen cinco patrones de workflow: prompt chaining (una tarea partida en una secuencia de llamadas, con comprobaciones opcionales entre pasos), routing, parallelization, orchestrator-workers (un LLM parte una tarea, se la pasa a LLM workers y combina los resultados) y evaluator-optimizer. Este último:</p>
+<blockquote><p>&#8220;In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.&#8221;</p></blockquote>
+<p>Anthropic no menciona MarsDawn en ningún sitio de esta guía y no recomienda ninguna herramienta Markdown. <code>/agent-transparency/</code> ya cubre con detalle el principio de transparencia de esta guía y su lenguaje de «checkpoints» &#8212; esta nota no lo repite. Ahí también vive la línea de la guía sobre la revisión humana de código, en su contexto propio (un apéndice sobre agentes de codificación).</p>
+
+<h2>Nuestra lectura, no la de Anthropic</h2>
+<p>Anthropic no dice quién comprueba la salida final de un workflow cuando termina, y nada de esto describe un documento &#8212; es una decisión de arquitectura para quien construye el sistema. Pero los cinco patrones no producen el mismo tipo de archivo para leer. Prompt chaining y routing suelen ser fontanería invisible; si algo te llega, es la última salida de la cadena, igual que cualquier otra respuesta suelta. Orchestrator-workers es distinto: si tu agente de código usa este patrón por dentro, lo que aterriza en tu carpeta puede ser un documento ensamblado a partir de varias llamadas a workers cosidas por el orquestador, y un error en el trozo de un worker es fácil de pasar por alto dentro de un resumen que se lee fluido de punta a punta.</p>
+<p>Evaluator-optimizer merece una pausa, porque la guía pone una segunda llamada a un LLM donde podría sentarse un revisor humano. Es una forma legítima de pillar barato una clase de errores, pero sigue siendo un modelo comprobando a otro modelo según los criterios que le dieron &#8212; la misma salvedad que otros autores aquí plantean cuando un modelo juzga su propio trabajo o el de otro. Nada en la guía dice que una persona deba volver a comprobar el veredicto del evaluador; no toma postura. Si tú lees lo que cualquiera de esto te devuelve, «el bucle lo aprobó» y «yo lo comprobé» no son la misma frase, aunque el archivo delante tuyo se vea idéntico en ambos casos.</p>
+
+<h2>Dónde ayuda MarsDawn y dónde no</h2>
+<p>MarsDawn no sabe qué patrón de workflow produjo un archivo, y no tiene ningún modelo de IA dentro &#8212; no ejecutará su propio paso de evaluador, ni te dirá si el que describe Anthropic hizo su trabajo. Lo que hace: la pestaña Esquema de la barra lateral (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) lista los encabezados de un archivo largo ensamblado por un orquestador, y un clic salta ahí. El código y la página renderizada van lado a lado (&#8984;2) y se desplazan juntos, con diagramas Mermaid y matemáticas KaTeX dibujados en lugar de dejados como fuente. Si el agente revisa el archivo mientras lees, MarsDawn lo vuelve a cargar y mantiene tu sitio, siempre que no tengas cambios sin guardar. Edición &#9656; Copiar referencia (&#8997;&#8984;C) copia tu sitio como <code>docs/plan.md:42</code>, listo para pegar en el chat con el agente.</p>
+
+<h2>Probarlo</h2>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>Exporta Markdown a PDF sin la app.</p>
+<p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+
+<h2>Siguiente</h2>
+<ul>
+  <li>El resto del principio de transparencia y el lenguaje de checkpoints de esta guía: <a href="/es/agent-transparency/">Anthropic dice que los agentes deben ser transparentes. ¿Quién lee lo que exponen?</a></li>
+  <li>Por qué en general cuesta leer la salida de un agente: <a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a></li>
+  <li>Volver a la serie: <a href="/es/reading-notes/">Notas de lectura de la redacción</a></li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+  <li>Erik S. and Barry Zhang, &#8220;Building Effective Agents,&#8221; Anthropic, December 19, 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (obtenido y citado el 2026-09-26).</li>
+</ul>
+""",
+    }
+
+
+    pages['reading-notes/chip-huyen-agents'] = {
+        "title": 'La división read-only/write action de Chip Huyen, y por qué importa antes de aprobar nada · MarsDawn',
+        "description": 'El ensayo «Agents» de Chip Huyen de enero de 2025 reparte las acciones de un agente en read-only y write. Por qué esa división es una forma rápida de ver, en un plan, la línea que merece una mirada más atenta antes de aprobar.',
+        "body": f"""
+<section class="intro">
+  <h1>La división read-only/write action de Chip Huyen, y por qué importa antes de aprobar nada</h1>
+</section>
+
+<div class="summary"><p><strong>El ensayo «Agents» de Chip Huyen de enero de 2025 parte de la definición de manual y llega a algo más concreto: las acciones de un agente se parten en las que solo miran el mundo y las que lo cambian. Esa división es una buena forma de decidir, en los cinco minutos que tienes, qué líneas de un plan merecen una mirada más atenta antes de decir que sí.</strong></p></div>
+
+<h2>Lo que sostiene el texto</h2>
+<p>Huyen abre con sencillez:</p>
+<blockquote><p>&#8220;An agent is anything that can perceive its environment and act upon that environment.&#8221;</p></blockquote>
+<p>Desde ahí construye lo que necesita un agente: un entorno en el que actuar y un conjunto de herramientas &#8212; su «tool inventory» &#8212; que determina qué puede hacer. Nombra la distinción entre acciones que solo dejan al agente percibir su entorno («read-only actions») y acciones que le permiten actuar sobre ese entorno («write actions»). Sobre el riesgo del segundo tipo es directa: «Write actions enable a system to do more», pero «the prospect of giving AI the ability to automatically alter our lives is frightening» &#8212; en sus palabras, «you shouldn’t allow an unreliable AI to initiate bank transfers.» Igual de clara sobre la parte de un agente más difícil de acertar:</p>
+<blockquote><p>&#8220;If you’ve ever been in any planning meeting, you know that planning is hard.&#8221;</p></blockquote>
+<p>Huyen no menciona MarsDawn en ningún sitio de este ensayo y no recomienda ninguna herramienta Markdown. <code>/reviewing-agent-plans/</code> ya cita tres de sus frases del mismo ensayo: el coste de saltarse la supervisión antes de que corra un plan, el agente que cree haber terminado cuando no lo ha hecho, y, en el paso 3 de su checklist, su línea de que un sistema ante una operación arriesgada «can ask for explicit human approval before executing». Esta nota no repite esas citas; si no has leído esa página, está enlazada abajo.</p>
+
+<h2>Nuestra lectura, no la de Huyen</h2>
+<p>La división read-only/write de Huyen no está escrita como consejo de revisión &#8212; es una forma de clasificar lo que hace una herramienta. Pero es una prueba sencilla y de propósito general para detectar exactamente el tipo de línea de operación arriesgada ante la que el paso 3 de esa checklist ya te pide frenar: leer un archivo, lanzar una búsqueda, listar un directorio son solo lectura, y un paso read-only que falla te cuesta un nuevo intento; borrar datos, forzar un push, fusionar una rama, enviar un correo, cargar una tarjeta son write actions, y &#8212; como ella dice &#8212; un paso write que falla es el tipo aterrador, y para cuando lees el informe del agente puede haber ocurrido ya. Su punto de que planificar es difícil incluso para personas en una sala es un buen freno a esperar de un plan más precisión de la que el formato puede cargar: un plan que se lee con seguridad no es lo mismo que un plan correcto.</p>
+
+<h2>Dónde ayuda MarsDawn y dónde no</h2>
+<p>MarsDawn no puede distinguir un paso read-only de uno write en un plan &#8212; es un juicio que el texto no etiqueta, y nada en la app lee por significado. No tiene ningún modelo de IA dentro: no marcará la línea arriesgada por ti, no hará la comprobación de «planificar es difícil» ni calificará el plan. Lo que hace es mantener el archivo legible mientras tú haces ese juicio: la pestaña Esquema (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) te deja recorrer la forma de un plan antes de leerlo línea a línea, el código y la página renderizada lado a lado (&#8984;2) para que un diagrama de los pasos no se quede atascado como Mermaid en bruto, y Edición &#9656; Copiar referencia (&#8997;&#8984;C) convierte tu sitio en <code>plan.md:10</code>, listo para pegar como feedback en cuanto veas una write action en el orden equivocado.</p>
+
+<h2>Probarlo</h2>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>Exporta Markdown a PDF sin la app.</p>
+<p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+
+<h2>Siguiente</h2>
+<ul>
+  <li>La checklist completa de seis pasos y cinco minutos sacada del mismo ensayo: <a href="/es/reviewing-agent-plans/">Revisar el plan de un agente en cinco minutos</a></li>
+  <li>Por qué en general cuesta leer la salida de un agente: <a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a></li>
+  <li>Volver a la serie: <a href="/es/reading-notes/">Notas de lectura de la redacción</a></li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+  <li>Chip Huyen, &#8220;Agents,&#8221; January 7, 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a> (obtenido y citado el 2026-09-26).</li>
+</ul>
+""",
+    }
+
+
+    pages['reading-notes/lilian-weng-llm-agents'] = {
+        "title": 'El plano de agente de Lilian Weng de 2023, y el archivo que deja cada parte · MarsDawn',
+        "description": 'La encuesta muy citada de Lilian Weng de 2023 describe un agente LLM como un cerebro más planificación, memoria y uso de herramientas. Qué suele dejarte cada parte para leer, y el límite que nombra en planes que no se ajustan a las sorpresas.',
+        "body": f"""
+<section class="intro">
+  <h1>El plano de agente de Lilian Weng de 2023, y el archivo que deja cada parte</h1>
+</section>
+
+<div class="summary"><p><strong>En junio de 2023, entonces en OpenAI, Lilian Weng publicó en su blog Lil’Log una larga encuesta que describe un agente impulsado por LLM como un cerebro (el modelo) más tres componentes: planificación, memoria y uso de herramientas. Es un marco temprano y muy citado de de qué está hecho un agente, y sincero sobre dónde ese marco todavía se rompe.</strong></p></div>
+
+<h2>Lo que sostiene el post</h2>
+<p>La visión general de Weng fija el marco de todo el texto:</p>
+<blockquote><p>&#8220;In a LLM-powered autonomous agent system, LLM functions as the agent&#8217;s brain, complemented by several key components: Planning ... Memory ... Tool use&#8221;.</p></blockquote>
+<p>La planificación, en su relato, cubre tanto partir una tarea en submetas como reflexionar sobre acciones pasadas para mejorar las futuras. La memoria se parte en corto plazo (el contexto que el modelo ve ahora, que llama in-context) y largo plazo (suele guardarse fuera del modelo, en un almacén vectorial consultable). El uso de herramientas deja al modelo pedir todo lo que un conjunto de pesos congelado no puede dar solo &#8212; información actual, ejecución de código, otras APIs. Hacia el final, en una sección titulada «Challenges», nombra un límite con claridad:</p>
+<blockquote><p>&#8220;LLMs struggle to adjust plans when faced with unexpected errors, making them less robust compared to humans who learn from trial and error.&#8221;</p></blockquote>
+<p>En otro lugar, en un caso de estudio sobre el agente de química ChemCrow, señala un problema más estrecho: una evaluación basada en LLM lo puntuaba casi igual que GPT-4, mientras expertos humanos juzgaban ChemCrow mucho mejor en corrección. Su conclusión habla de autoevaluación, no específicamente de su componente «reflection»:</p>
+<blockquote><p>&#8220;The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.&#8221;</p></blockquote>
+<p>Weng no menciona MarsDawn en ningún sitio de este post y no recomienda ninguna herramienta Markdown.</p>
+
+<h2>Nuestra lectura, no la de Weng</h2>
+<p>Weng describe arquitectura de agentes en 2023, no a nadie leyendo la salida de un agente &#8212; no menciona a una persona comprobando un archivo. Pero sus tres componentes se proyectan sobre tres cosas distintas que puedes encontrarte leyendo. La planificación suele dejarte un documento antes de que corra &#8212; el plan mismo, a veces con una «reflection» o auto-revisión ya plegada dentro. La memoria suele ser invisible salvo que el agente lleve un archivo borrador como almacén a largo plazo; entonces ese archivo merece abrirse por sí solo, porque puede arrastrar una asunción vieja y equivocada a lo largo de muchos pasos posteriores sin decirlo. El uso de herramientas suele dejarte un informe de lo que corrió y lo que volvió &#8212; más cerca de una transcripción que de un plan.</p>
+<p>Su punto sobre planes que no se ajustan a errores inesperados es, leído desde tu lado, una razón para que un plan que aprobaste ayer esté obsoleto hoy: si entre entonces y ahora pasó algo que el plan no anticipó, el agente puede seguir en lugar de replanificar, y el informe final puede describir el éxito del plan original sin describir el desvío. Esa es nuestra inferencia, no una afirmación suya &#8212; escribe sobre la robustez del modelo, no sobre lo que un lector debería vigilar.</p>
+
+<h2>Dónde ayuda MarsDawn y dónde no</h2>
+<p>MarsDawn no tiene ningún modelo de IA dentro, así que no puede decirte si un plan se ha desviado en silencio de lo que realmente pasó, y no distingue un archivo de planificación de uno de memoria o de un informe de uso de herramientas &#8212; eso es una lectura del contenido, y te toca a ti. Lo que hace: la pestaña Esquema (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) muestra de un vistazo la forma de un plan largo, el código y la vista previa renderizada van lado a lado (&#8984;2) con Mermaid y KaTeX dibujados, y si el agente reescribe el archivo a mitad de lectura, MarsDawn lo vuelve a cargar y mantiene tu sitio, siempre que no tengas cambios sin guardar &#8212; útil precisamente porque un plan revisado en silencio es exactamente el modo de fallo que su sección «Challenges» describe desde el lado del modelo.</p>
+
+<h2>Probarlo</h2>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>Exporta Markdown a PDF sin la app.</p>
+<p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+
+<h2>Siguiente</h2>
+<ul>
+  <li>Qué documentos suelen entregarte los distintos patrones de diseño de agentes: <a href="/es/agent-design-patterns/">Cuatro patrones de diseño de agentes y los documentos que cada uno te entrega</a></li>
+  <li>La revisión de cinco minutos de un plan antes de que corra: <a href="/es/reviewing-agent-plans/">Revisar el plan de un agente en cinco minutos</a></li>
+  <li>Volver a la serie: <a href="/es/reading-notes/">Notas de lectura de la redacción</a></li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+  <li>Lilian Weng, &#8220;LLM Powered Autonomous Agents,&#8221; Lil’Log, June 23, 2023: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a> (obtenido y citado el 2026-09-26; estaba en OpenAI cuando lo escribió, descrita aquí solo como era entonces).</li>
+</ul>
+""",
+    }
+
+
+    pages['reading-notes/harrison-chase-what-is-an-agent'] = {
+        "title": 'El espectro de Harrison Chase: cuanto más agentic, más querrás vigilarlo · MarsDawn',
+        "description": 'La definición de agente de Harrison Chase de 2024 y su espectro de comportamiento agentic, y su argumento a favor de la observabilidad a medida que un sistema avanza por él — leído desde quien lee el archivo que te devuelve.',
+        "body": f"""
+<section class="intro">
+  <h1>El espectro de Harrison Chase: cuanto más agentic, más querrás vigilarlo</h1>
+</section>
+
+<div class="summary"><p><strong>En junio de 2024, Harrison Chase de LangChain abrió una serie nueva con una pregunta engañosamente pequeña &#8212; «What is an agent?» &#8212; y la respondió con una definición técnica y un espectro de comportamiento «agentic». Cuanto más de ese espectro ocupa un sistema, sostiene, más necesitas poder ver por dentro mientras corre.</strong></p></div>
+
+<h2>Lo que sostiene el post</h2>
+<p>La propia definición de Chase, ofrecida con la salvedad de que es más técnica, y más amplia, que la idea que tiene la mayoría de un agente:</p>
+<blockquote><p>&#8220;An agent is a system that uses an LLM to decide the control flow of an application.&#8221;</p></blockquote>
+<p>Control flow solo significa qué paso ejecuta a continuación un programa. Admite enseguida que la definición es imperfecta &#8212; un sistema simple en el que un LLM enruta entre dos caminos cuenta como agente según su definición pero no coincidiría con la intuición de «agente» de la mayoría. En lugar de pelear por la etiqueta, recoge una sugerencia de Andrew Ng, cuyo tuit cita y acredita directamente: «rather than arguing over which work to include or exclude as being a true agent, we can acknowledge that there are different degrees to which systems can be agentic.» El comentario de Chase: «I really agree with this viewpoint and I think Andrew expressed it nicely.» Desde ahí: un sistema es más «agentic» cuantas más decisiones de comportamiento toma un LLM, desde un enrutador fijo hasta un agente plenamente autónomo que construye y recuerda sus propias herramientas. Su argumento práctico sigue de ese espectro &#8212; cuanto más agentic es un sistema, más importan ciertos tipos de infraestructura, la observabilidad a la cabeza:</p>
+<blockquote><p>&#8220;You&#8217;ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.&#8221;</p></blockquote>
+<p>Lo extiende a intervenir, no solo mirar: también querrás poder modificar el estado o las instrucciones de un agente en marcha en un punto concreto, para empujarlo de vuelta al camino si se desvía. Chase no menciona MarsDawn en ningún sitio de este post y no recomienda ninguna herramienta Markdown.</p>
+
+<h2>Nuestra lectura, no la de Chase</h2>
+<p>Chase escribe sobre herramientas para quien construye frameworks de agentes &#8212; LangGraph y LangSmith, por nombre &#8212; no sobre una persona que lee un documento terminado. Pero su espectro da una forma útil de calibrar lo que vas a leer antes de empezar: cuanto más agentic sea el sistema que produjo un archivo, menos debes esperar que sus pasos se predicen solo desde el prompt, y más vale tratar el archivo delante como un registro de lo que realmente pasó y no de lo que se supone que debía pasar.
+Su «observe what is going on inside» habla del interior de un sistema en marcha &#8212; traces (un registro de todo lo que hizo el agente en una ejecución), pasos intermedios, llamadas a herramientas &#8212; no de leer un plan Markdown a posteriori. Pero la razón de fondo que da, que los pasos exactos pueden no conocerse de antemano, aplica igual al documento que un agente te entrega cuando termina: si los pasos no eran predecibles de entrada, el informe de salida es el único sitio que queda para comprobarlos.</p>
+
+<h2>Dónde ayuda MarsDawn y dónde no</h2>
+<p>MarsDawn no observa el interior de un agente en marcha &#8212; no tiene ningún modelo de IA dentro ni conexión con el framework que produjo el archivo, así que no puede decirte dónde en el espectro de Chase se situaba un agente dado. Trabaja sobre el documento que aterriza después: la pestaña Esquema (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) para la forma de un informe largo, el código y la vista previa renderizada lado a lado (&#8984;2) para diagramas y matemáticas, y la recarga en vivo que mantiene tu sitio cuando el agente reescribe el archivo, siempre que no tengas cambios sin guardar &#8212; la versión a nivel de archivo de vigilar algo que todavía se mueve. Edición &#9656; Copiar referencia (&#8997;&#8984;C) y Copiar para IA (&#8963;&#8997;&#8984;C) te dejan señalar exactamente dónde un paso se salió del camino &#8212; el equivalente en documento de empujar de vuelta a un agente en marcha.</p>
+
+<h2>Probarlo</h2>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>Exporta Markdown a PDF sin la app.</p>
+<p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+
+<h2>Siguiente</h2>
+<ul>
+  <li>El tratamiento más completo de transparencia y checkpoints en esta serie: <a href="/es/agent-transparency/">Anthropic dice que los agentes deben ser transparentes. ¿Quién lee lo que exponen?</a></li>
+  <li>El post de LangChain de 2026 en la misma dirección, con una definición casi idéntica: <a href="/es/reading-notes/langchain-what-is-an-agent/">El pipeline de evals de Jess Ou, y el paso que sigue siendo tuyo</a></li>
+  <li>Volver a la serie: <a href="/es/reading-notes/">Notas de lectura de la redacción</a></li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+  <li>Harrison Chase, &#8220;What is an agent?,&#8221; LangChain, June 28, 2024, copia archivada: <a href="http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/">http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/</a> (obtenido y citado el 2026-09-26 vía Wayback Machine; la dirección original muestra ahora un artículo de 2026 de Jess Ou).</li>
+</ul>
+""",
+    }
+
+
+    pages['reading-notes/langchain-what-is-an-agent'] = {
+        "title": 'El pipeline de evals de Jess Ou, y el paso que sigue siendo tuyo · MarsDawn',
+        "description": 'El «What is an AI agent?» de LangChain de Jess Ou (2026) recoge la definición de 2024 de Harrison Chase y describe un pipeline para evaluar agentes automáticamente. Dónde ese pipeline todavía entrega un paso a una persona — y dónde no.',
+        "body": f"""
+<section class="intro">
+  <h1>El pipeline de evals de Jess Ou, y el paso que sigue siendo tuyo</h1>
+</section>
+
+<div class="summary"><p><strong>En julio de 2026, LangChain publicó un nuevo «What is an AI agent?» en la dirección donde estaba el post de 2024 de Harrison Chase «What is an agent?» &#8212; este escrito por Jess Ou, con una definición casi palabra por palabra la suya. La mayor parte de su post trata algo que el de él no cubría: todo un pipeline para evaluar agentes automáticamente. Su texto es sincero sobre dónde ese pipeline todavía necesita a una persona — y dónde no.</strong></p></div>
+
+<h2>Lo que sostiene el post</h2>
+<p>La definición de Ou hace eco de cerca de la de Chase:</p>
+<blockquote><p>&#8220;An AI agent is a system that uses a large language model to decide the control flow of an application.&#8221;</p></blockquote>
+<p>Control flow, otra vez, solo significa qué paso corre a continuación. Desde ahí describe el Agent Development Lifecycle de LangChain &#8212; build, test, deploy, monitor &#8212; y un enfoque por capas para comprobar el trabajo de un agente sin que una persona lea cada ejecución: las evals online muestrean traces de producción (registros de ejecuciones reales) buscando regresiones, las evals offline corren contra conjuntos curados para pillar un mal cambio antes de publicarlo, y «LLM-as-a-judge» puntúa la salida de una ejecución según criterios que una persona definió de antemano, a una escala que la revisión manual no alcanza. Es directa sobre dónde sigue cabiendo una persona en ese pipeline:</p>
+<blockquote><p>&#8220;For sensitive or irreversible actions, we recommend human-in-the-loop controls that pause the agent for approval, edits, rejection, or clarification.&#8221;</p></blockquote>
+<p>También tiene una frase sobre el juicio que no se escala aunque el pipeline mejore: «Do not outsource judgment you cannot evaluate. If you wouldn’t recognize a correct answer, neither will the agent.» <code>/reviewing-agent-plans/</code> ya se apoya en exactamente esa frase &#8212; esta nota no repite esa discusión. Ou no menciona MarsDawn en ningún sitio y no recomienda ninguna herramienta Markdown. Tampoco nombra a Chase; lo que une los dos posts es que LangChain publicó el suyo en 2026 en la dirección que ocupaba el de 2024, con una definición casi idéntica &#8212; una observación nuestra, no suya.</p>
+
+<h2>Nuestra lectura, no la de Ou</h2>
+<p>La línea human-in-the-loop de Ou habla de frenar acciones concretas antes de que corran &#8212; pausar una write action para aprobación, la misma idea que la división read-only/write de Chip Huyen apunta desde otro ángulo &#8212; no de una persona leyendo un informe terminado a posteriori. Leída con cuidado, la mayor parte de su pipeline está hecha para sacar a una persona de la comprobación rutinaria, no para meterla: las evals online y offline y el LLM-as-a-judge existen precisamente para que un equipo no tenga que revisar a mano cada trace.
+Eso no es una crítica del texto &#8212; es su objetivo declarado, y uno razonable a escala de producción. Pero significa que la revisión que haces a mano &#8212; leer un plan o un informe que un agente te entrega directamente &#8212; es exactamente el tipo de comprobación que su pipeline está construido para reducir, no reemplazar. Su propia frase sobre el juicio pone un suelo bajo esa reducción: allí donde tú personalmente no puedes distinguir una respuesta correcta de una incorrecta, todavía tienes que leerlo tú.</p>
+
+<h2>Dónde ayuda MarsDawn y dónde no</h2>
+<p>MarsDawn no es un pipeline de evals y no tiene ningún modelo de IA dentro &#8212; no puntuarás un trace, no lanzará un pase LLM-as-a-judge ni decidirá qué acciones son lo bastante sensibles para pausarlas. Está hecho para el momento que su pipeline todavía entrega a una persona: leer la cosa directamente. La pestaña Esquema (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) lista los encabezados de un informe largo, el código y la vista previa renderizada van lado a lado (&#8984;2) con Mermaid y KaTeX dibujados, y Edición &#9656; Copiar referencia (&#8997;&#8984;C) con Copiar para IA (&#8963;&#8997;&#8984;C) convierten una revisión puntual en feedback preciso con el que el agente puede actuar.</p>
+
+<h2>Probarlo</h2>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>Exporta Markdown a PDF sin la app.</p>
+<p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+
+<h2>Siguiente</h2>
+<ul>
+  <li>La checklist completa construida en parte sobre su frase de «outsource judgment»: <a href="/es/reviewing-agent-plans/">Revisar el plan de un agente en cinco minutos</a></li>
+  <li>Dónde empezó esta misma definición, en 2024: <a href="/es/reading-notes/harrison-chase-what-is-an-agent/">El espectro de Harrison Chase: cuanto más agentic, más querrás vigilarlo</a></li>
+  <li>Volver a la serie: <a href="/es/reading-notes/">Notas de lectura de la redacción</a></li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+  <li>Jess Ou, &#8220;What is an AI agent?,&#8221; LangChain, July 31, 2026: <a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a> (obtenido y citado el 2026-09-26).</li>
+</ul>
+""",
+    }
+
+
+    pages['reading-notes/andrew-ng-design-patterns'] = {
+        "title": 'Andrew Ng ordena sus propios patrones de diseño según lo predecibles que son · MarsDawn',
+        "description": 'A lo largo de cinco cartas en The Batch, Andrew Ng ordena reflexión, uso de herramientas, planificación y colaboración multiagente según lo fiables y predecibles que le parecen — y qué sugiere ese orden sobre con cuánto cuidado conviene comprobar la salida de cada uno.',
+        "body": f"""
+<section class="intro">
+  <h1>Andrew Ng ordena sus propios patrones de diseño según lo predecibles que son</h1>
+</section>
+
+<div class="summary"><p><strong>A lo largo de cinco cartas en The Batch a principios de 2024, Andrew Ng describió cuatro patrones de diseño agentic &#8212; reflexión, uso de herramientas, planificación y colaboración multiagente &#8212; y, de forma poco habitual, dijo a sus lectores sin rodeos cuáles le parecen más fiables y cuáles le cuesta predecir.</strong></p></div>
+
+<h2>Lo que sostienen las cartas</h2>
+<p><code>/agent-design-patterns/</code> ya cubre qué es cada uno de los cuatro patrones, qué documentos suele entregarte cada uno (nuestra inferencia), y el propio veredicto de Ng sobre la planificación, citado de la Parte 4: «while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do.» Esta nota añade el mismo orden desde las dos cartas que esa página deja fuera: la Parte 3, escrita una semana antes de la Parte 4, donde enuncia el orden por adelantado, y la Parte 5, donde lo extiende al patrón que la Parte 4 no menciona &#8212; la colaboración multiagente. Al introducir el uso de herramientas, en la Parte 3, escribe:</p>
+<blockquote><p>&#8220;In future letters, I&#8217;ll describe the Planning and Multi-agent collaboration design patterns. They allow AI agents to do much more but are less mature, less predictable &#8212; albeit very exciting &#8212; technologies.&#8221;</p></blockquote>
+<p>Dos semanas después, al cerrar la serie con la colaboración multiagente, confirma el mismo orden desde el otro lado:</p>
+<blockquote><p>&#8220;Like the design pattern of Planning, I find the output quality of multi-agent collaboration hard to predict, especially when allowing agents to interact freely and providing them with multiple tools. The more mature patterns of Reflection and Tool Use are more reliable.&#8221;</p></blockquote>
+<p>Lo dice sobre lo bien que cada patrón mejora los resultados de sus aplicaciones, no sobre con cuánto cuidado una persona debería comprobar su salida &#8212; nada en esta serie pide revisión humana, y nada menciona MarsDawn ni recomienda ninguna herramienta Markdown.</p>
+
+<h2>Nuestra lectura, no la de Ng</h2>
+<p>El orden de Ng habla de calidad y previsibilidad de la salida desde la silla de quien construye, pero encaja, a grandes rasgos, con cuánta atención merece la pista en papel de cada patrón desde la tuya. Reflexión y uso de herramientas, los dos que encuentra más fiables, suelen entregarte algo que describe trabajo ya hecho &#8212; un borrador revisado, un informe de lo que corrió &#8212; así que comprobar una afirmación contra la salida real suele cubrir el riesgo. Planificación y colaboración multiagente, los dos que le cuesta predecir, suelen entregarte algo escrito antes de que ocurra el trabajo, o repartido en varios archivos de varios agentes:
+un plan que espera el visto bueno, o un traspaso entre agentes que la ejecución aún no ha probado. Según su propio relato, esos dos son exactamente los documentos donde la brecha entre lo escrito y lo que realmente pasará es más ancha &#8212; el mismo punto que <code>/reviewing-agent-plans/</code> saca del ensayo de Chip Huyen, en su sección «Por qué molestarse antes de que corra»: pillar un problema antes de que nada haya corrido es el sitio más barato para pillararlo.</p>
+
+<h2>Dónde ayuda MarsDawn y dónde no</h2>
+<p>MarsDawn no sabe cuál de los cuatro patrones de Ng produjo un archivo dado, no ordena nada por previsibilidad y no tiene ningún modelo de IA dentro &#8212; no hará la comprobación que su orden sugiere que vale la pena. Mantiene el archivo legible mientras tú la haces: la pestaña Esquema (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) muestra la forma de un plan largo, el código y la vista previa renderizada van lado a lado (&#8984;2), y para un traspaso multiagente, abrir la carpeta compartida con Archivo &#9656; Abrir carpeta&#8230; (&#8679;&#8984;O) muestra archivos nuevos en la pestaña Archivos en cerca de un segundo a medida que distintos agentes los escriben, con el encabezado nombrando la rama git o el worktree para que dos archivos con el mismo nombre de agentes distintos no se confundan.</p>
+
+<h2>Probarlo</h2>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>Exporta Markdown a PDF sin la app.</p>
+<p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+
+<h2>Siguiente</h2>
+<ul>
+  <li>Lo que cada patrón suele entregarte, completo: <a href="/es/agent-design-patterns/">Cuatro patrones de diseño de agentes y los documentos que cada uno te entrega</a></li>
+  <li>La revisión de cinco minutos de un plan antes de que corra: <a href="/es/reviewing-agent-plans/">Revisar el plan de un agente en cinco minutos</a></li>
+  <li>Volver a la serie: <a href="/es/reading-notes/">Notas de lectura de la redacción</a></li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 1,&#8221; The Batch, March 20, 2024: <a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 3: Tool Use,&#8221; The Batch, April 3, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/</a> (obtenido y citado el 2026-09-26).</li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 4: Planning,&#8221; The Batch, April 10, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a> (cita reutilizada literalmente de <code>design/inbox/276-agent-blog-series.md</code>, ya citada en <code>/agent-design-patterns/</code>).</li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 5, Multi-Agent Collaboration,&#8221; The Batch, April 17, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/</a> (obtenido y citado el 2026-09-26).</li>
+</ul>
+""",
+    }
 
     pages['privacy'] = {
         "title": 'Política de privacidad · MarsDawn',

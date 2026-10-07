@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andrew Ng ordnet seine eigenen Entwurfsmuster nach Vorhersagbarkeit · MarsDawn</title>
+<meta name="description" content="Über fünf Briefe in The Batch ordnet Andrew Ng Reflexion, Werkzeugnutzung, Planung und Multi-Agenten-Zusammenarbeit danach, wie verlässlich und vorhersagbar er jedes findet — und was diese Rangfolge dazu nahelegt, wie genau man die Ausgabe jedes Musters prüfen sollte.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/andrew-ng-design-patterns/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/de/reading-notes/andrew-ng-design-patterns/">
+<link rel="alternate" type="text/markdown" href="/de/reading-notes/andrew-ng-design-patterns/index.md">
+<meta property="og:title" content="Andrew Ng ordnet seine eigenen Entwurfsmuster nach Vorhersagbarkeit · MarsDawn">
+<meta property="og:description" content="Über fünf Briefe in The Batch ordnet Andrew Ng Reflexion, Werkzeugnutzung, Planung und Multi-Agenten-Zusammenarbeit danach, wie verlässlich und vorhersagbar er jedes findet — und was diese Rangfolge dazu nahelegt, wie genau man die Ausgabe jedes Musters prüfen sollte.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/de/reading-notes/andrew-ng-design-patterns/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>
+  <p>Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Ablehnen</button>
+    <button type="button" id="consent-accept" class="consent-btn">Akzeptieren</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/de/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Im Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/andrew-ng-design-patterns/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/andrew-ng-design-patterns/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/andrew-ng-design-patterns/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/andrew-ng-design-patterns/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/reading-notes/andrew-ng-design-patterns/" hreflang="de" aria-current="true" lang="de">Deutsch</a> · <a href="/fr/reading-notes/andrew-ng-design-patterns/" hreflang="fr" lang="fr">Français</a> · <a href="/es/reading-notes/andrew-ng-design-patterns/" hreflang="es" lang="es">Español</a> · <a href="/ko/reading-notes/andrew-ng-design-patterns/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Andrew Ng ordnet seine eigenen Entwurfsmuster nach Vorhersagbarkeit</h1>
+</section>
+
+<div class="summary"><p><strong>Über fünf Briefe in The Batch Anfang 2024 beschrieb Andrew Ng vier agentische Entwurfsmuster &#8212; Reflexion, Werkzeugnutzung, Planung und Multi-Agenten-Zusammenarbeit &#8212; und sagte seinen Lesern ungewöhnlich klar, welche er für verlässlicher hält und welche er schwer vorhersagen kann.</strong></p></div>
+
+<h2 id="what-the-letters-argue">Was die Briefe argumentieren</h2>
+<p><code>/agent-design-patterns/</code> behandelt schon, was jedes der vier Muster ist, welche Dokumente jedes typischerweise zum Lesen übergibt (unsere Folgerung), und Ngs eigenes Urteil zur Planung aus Teil 4: „while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do.“ Diese Notiz ergänzt dieselbe Rangfolge aus den zwei Briefen, die jene Seite auslässt: Teil 3, eine Woche vor Teil 4, wo er die Rangfolge im Voraus nennt, und Teil 5, wo er sie auf das Muster ausdehnt, das Teil 4 nicht nennt &#8212; Multi-Agenten-Zusammenarbeit. Zur Einführung von Werkzeugnutzung in Teil 3 schreibt er:</p>
+<blockquote><p>&#8220;In future letters, I&#8217;ll describe the Planning and Multi-agent collaboration design patterns. They allow AI agents to do much more but are less mature, less predictable &#8212; albeit very exciting &#8212; technologies.&#8221;</p></blockquote>
+<p>Zwei Wochen später, am Ende der Reihe mit Multi-Agenten-Zusammenarbeit, bestätigt er dieselbe Rangfolge von der anderen Seite:</p>
+<blockquote><p>&#8220;Like the design pattern of Planning, I find the output quality of multi-agent collaboration hard to predict, especially when allowing agents to interact freely and providing them with multiple tools. The more mature patterns of Reflection and Tool Use are more reliable.&#8221;</p></blockquote>
+<p>Das sagt er darüber, wie gut jedes Muster die Ergebnisse seiner Anwendungen verbessert, nicht darüber, wie sorgfältig eine Person ihre Ausgabe prüfen sollte &#8212; nichts in dieser Reihe fordert menschliche Prüfung, und nichts erwähnt MarsDawn oder empfiehlt ein Markdown-Werkzeug.</p>
+
+<h2 id="our-reading-not-ng-s">Unsere Lesart, nicht die von Ng</h2>
+<p>Ngs Rangfolge gilt Ausgabequalität und Vorhersagbarkeit vom Stuhl des Bauenden aus, aber sie deckt sich grob damit, wie viel Prüfung die Papierspur jedes Musters von deinem Stuhl aus verdient. Reflexion und Werkzeugnutzung, die beiden, die er für verlässlicher hält, übergeben dir typischerweise etwas, das schon getane Arbeit beschreibt &#8212; einen überarbeiteten Entwurf, einen Bericht darüber, was lief &#8212; sodass das Prüfen einer Behauptung gegen die echte Ausgabe meist das Risiko abdeckt. Planung und Multi-Agenten-Zusammenarbeit, die beiden, die er schwer vorhersagen kann, übergeben dir typischerweise etwas, das vor der Arbeit geschrieben wurde, oder über mehrere Dateien mehrerer Agenten verteilt ist:
+einen Plan, der auf ein Go wartet, oder eine Übergabe zwischen Agenten, die die Ausführung noch nicht getestet hat. Nach seiner eigenen Darstellung sind genau das die Dokumente, bei denen die Lücke zwischen Geschriebenem und dem, was wirklich passieren wird, am weitesten ist &#8212; derselbe Punkt, den <code>/reviewing-agent-plans/</code> aus Chip Huyens Essay im Abschnitt „Warum überhaupt vor dem Lauf“ zieht: Ein Problem zu fangen, bevor etwas gelaufen ist, ist der günstigste Ort, es zu fangen.</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">Wo MarsDawn hilft und wo nicht</h2>
+<p>MarsDawn weiß nicht, welches von Ngs vier Mustern eine gegebene Datei erzeugt hat, ordnet nichts nach Vorhersagbarkeit und hat kein KI-Modell innen &#8212; es führt die Prüfung nicht aus, die seine Rangfolge nahelegt. Es hält die Datei lesbar, während du das selbst tust: Der Tab Gliederung (Darstellung &#9656; Seitenleiste einblenden, &#8963;&#8984;S) zeigt die Form eines langen Plans, Quelltext und gerenderte Vorschau stehen nebeneinander (&#8984;2), und für eine Multi-Agenten-Übergabe zeigt das Öffnen des gemeinsamen Ordners mit Ablage &#9656; Ordner öffnen&#160;&#8230; (&#8679;&#8984;O) neue Dateien im Tab Dateien innerhalb etwa einer Sekunde, sobald verschiedene Agenten schreiben, und die Kopfzeile nennt den Git-Branch oder Worktree, damit zwei Dateien mit demselben Namen von verschiedenen Agenten nicht verwechselt werden.</p>
+
+<h2 id="try-it">Ausprobieren</h2>
+<p>MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Es exportiert Markdown ohne die App als PDF.</p>
+<p><a href="/de/cli/">Befehlszeile</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
+
+<h2 id="next">Weiter</h2>
+<ul>
+  <li>Was jedes Muster dir typischerweise übergibt, vollständig: <a href="/de/agent-design-patterns/">Vier Agenten-Entwurfsmuster und die Dokumente, die jedes dir übergibt</a></li>
+  <li>Die Fünf-Minuten-Prüfung eines Plans vor dem Lauf: <a href="/de/reviewing-agent-plans/">Den Plan eines Agenten in fünf Minuten prüfen</a></li>
+  <li>Zurück zur Reihe: <a href="/de/reading-notes/">Lektürenotizen der Redaktion</a></li>
+</ul>
+
+<h2 id="sources">Quellen</h2>
+<ul>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 1,&#8221; The Batch, March 20, 2024: <a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 3: Tool Use,&#8221; The Batch, April 3, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/</a> (abgerufen und zitiert am 2026-09-26).</li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 4: Planning,&#8221; The Batch, April 10, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a> (Zitat wörtlich aus <code>design/inbox/276-agent-blog-series.md</code>, bereits auf <code>/agent-design-patterns/</code> zitiert).</li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 5, Multi-Agent Collaboration,&#8221; The Batch, April 17, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/</a> (abgerufen und zitiert am 2026-09-26).</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Website">
+    <a href="/de/support/">Support</a>
+    <a href="/de/privacy/">Datenschutzrichtlinie</a>
+    <a href="/de/cli/">Befehlszeile</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie-Einstellungen</button>
+  </nav>
+  <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

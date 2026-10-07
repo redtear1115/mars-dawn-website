@@ -1,0 +1,66 @@
+{
+  "_comment": "Shared fixture for the .sim-preview rescoping transform (plan-website-104 W1/WA, design theme-ecosystem-design.md §3.4). Read by public/assets/theme-sim/rescope.js's test (scripts/check_theme_sim.mjs) and, once it exists, by WA's sync-time Python transform's own test -- both must produce exactly `expected` for `selector`/`css`, or the fixture's own name.",
+  "wrapper": ".sim-preview",
+  "darkWrapper": ".sim-preview[data-appearance=\"dark\"]",
+  "selectors": [
+    { "name": "root", "selector": ":root", "expected": ".sim-preview" },
+    { "name": "html", "selector": "html", "expected": ".sim-preview" },
+    { "name": "body", "selector": "body", "expected": ".sim-preview" },
+    { "name": "root-data-theme", "selector": ":root[data-theme=\"classic\"]", "expected": ".sim-preview[data-theme=\"classic\"]" },
+    { "name": "data-theme-h1", "selector": "[data-theme=\"classic\"] h1", "expected": ".sim-preview[data-theme=\"classic\"] h1" },
+    { "name": "data-theme-markdown-body", "selector": "[data-theme=\"classic\"] .markdown-body", "expected": ".sim-preview[data-theme=\"classic\"] .markdown-body" },
+    { "name": "data-theme-no-value-markdown-body", "selector": "[data-theme] .markdown-body", "expected": ".sim-preview[data-theme] .markdown-body" },
+    { "name": "data-theme-h2-before", "selector": "[data-theme=\"vivid\"] h2::before", "expected": ".sim-preview[data-theme=\"vivid\"] h2::before" },
+    { "name": "plain-class", "selector": ".markdown-body", "expected": ".sim-preview .markdown-body" },
+    { "name": "plain-tag", "selector": "hr", "expected": ".sim-preview hr" },
+    {
+      "name": "root-data-theme-dark",
+      "selector": ":root[data-theme=\"classic\"]",
+      "wrapper": ".sim-preview[data-appearance=\"dark\"]",
+      "expected": ".sim-preview[data-appearance=\"dark\"][data-theme=\"classic\"]"
+    },
+    {
+      "name": "data-theme-h1-dark",
+      "selector": "[data-theme=\"classic\"] h1",
+      "wrapper": ".sim-preview[data-appearance=\"dark\"]",
+      "expected": ".sim-preview[data-appearance=\"dark\"][data-theme=\"classic\"] h1"
+    }
+  ],
+  "stylesheets": [
+    {
+      "name": "palette-block-with-dark-media",
+      "css": ":root[data-theme=\"classic\"] {\n  --bg: #FCFCFB;\n}\n@media (prefers-color-scheme: dark) {\n  :root[data-theme=\"classic\"] {\n  --bg: #171717;\n  }\n}",
+      "expectedSelectors": [
+        ".sim-preview[data-theme=\"classic\"]",
+        ".sim-preview[data-appearance=\"dark\"][data-theme=\"classic\"]"
+      ]
+    },
+    {
+      "name": "per-theme-rule-and-pseudo-element",
+      "css": "[data-theme=\"vivid\"] h2::before { content: \"\"; background: var(--accent); }",
+      "expectedSelectors": [".sim-preview[data-theme=\"vivid\"] h2::before"]
+    },
+    {
+      "name": "leading-top-of-file-comment",
+      "css": "/* a comment */\n\n:root {\n  --x: 1;\n}\n",
+      "expectedSelectors": [".sim-preview {"]
+    },
+    {
+      "name": "inline-comment-between-rules",
+      "css": ":root {\n  --a: 1;\n}\n/* a comment */\n.foo {\n  --b: 2;\n}\n",
+      "expectedSelectors": [".sim-preview .foo {"]
+    },
+    {
+      "name": "selector-list",
+      "css": "h1, h2 {\n  color: red;\n}\n",
+      "expectedSelectors": [".sim-preview h1", ".sim-preview h2"]
+    }
+  ],
+  "regressions": [
+    {
+      "name": "non-dark-media",
+      "css": "@media print {\n  body { color: black; }\n}\n",
+      "expected": "@media print {\n.sim-preview { color: black; }\n}\n"
+    }
+  ]
+}

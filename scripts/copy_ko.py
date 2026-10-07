@@ -313,6 +313,7 @@ marsdawn open notes.md --folder .</code></pre>
     }
     home = {
         "cta_cli": '무료 CLI 설치하기',
+        "cta_try": '지금 다운로드하고 체험하기',
         "cta_store": 'Mac App Store에서 보기',
         "install_h": '지금 바로 해 보세요',
         "install_lede": '무료 <code>marsdawn</code> 명령줄 도구는 지금 바로 쓸 수 있습니다. Homebrew로 설치하세요.',
@@ -780,14 +781,14 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 
     pages['themes'] = {
         "title": 'MarsDawn의 미리보기 테마와 PDF 내보내기 · MarsDawn',
-        "description": '라이트와 다크 팔레트를 각각 갖춘 미리보기 테마 네 가지, 그리고 지금 쓰는 테마를 그대로 따르는 PDF 내보내기와 프린트. 가져올 수 있는 테마를 더 늘리고, 직접 만든 테마를 공유하는 갤러리도 계획하고 있습니다.',
+        "description": '라이트와 다크 팔레트를 각각 갖춘 미리보기 테마 네 가지, 그리고 지금 쓰는 테마를 그대로 따르는 PDF 내보내기와 프린트. 브라우저에서 테마를 직접 만들고, 커뮤니티 갤러리도 둘러보세요.',
         "body": f"""
 <section class="intro">
   <h1>여덟 가지 모습, 하나의 내보내기.</h1>
   <p>MarsDawn에는 새벽, 클래식, 모던, 비비드 네 가지 미리보기 테마가 있고, 각각 라이트와 다크 팔레트를 갖추고 있습니다. 문서를 읽는 여덟 가지 조합입니다. PDF로 내보내거나 프린트하면, 읽고 있던 바로 그 조합으로 페이지가 나옵니다.</p>
 </section>
 
-<div class="summary"><p><strong>테마 네 가지 &#215; 라이트와 다크 = 문서를 읽는 여덟 가지 방법, 그리고 고른 것을 그대로 따르는 하나의 내보내기 경로.</strong> 가져올 수 있는 테마를 더 늘리고 직접 만든 테마를 공유하는 갤러리도 계획하고 있지만, 아직 만들어지지 않았습니다.</p></div>
+<div class="summary"><p><strong>테마 네 가지 &#215; 라이트와 다크 = 문서를 읽는 여덟 가지 방법, 그리고 고른 것을 그대로 따르는 하나의 내보내기 경로.</strong> <a href="/ko/themes/new/">브라우저에서 직접 만들거나</a>, <a href="/ko/themes/gallery/">갤러리</a>에서 다른 사람이 올린 것을 둘러보세요.</p></div>
 
 <h2>네 가지 테마</h2>
 <!--theme-gallery-->
@@ -802,8 +803,8 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 <h2>PDF 내보내기와 프린트도 같은 테마로</h2>
 <p>PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레트를 씁니다. Mermaid 다이어그램이 그대로 그려지고, 코드 블록은 구문 강조를 유지하며, 페이지 나눔은 제목과 본문을 떼어 놓거나 표나 다이어그램을 반으로 자르지 않습니다. 무료 <a href="/ko/cli/">marsdawn 명령줄 도구</a>도 같은 내보내기 엔진을 쓰므로, 스크립트나 에이전트도 <code>--theme</code>으로 네 가지 테마 중 어느 것이든 똑같은 PDF를 만듭니다.</p>
 
-<h2>계획: 더 많은 테마와 갤러리</h2>
-<p>아직 출시되지 않았고 나중에 나올 예정입니다. 가져올 수 있는 미리보기 테마를 더 늘리고, 사람들이 직접 만든 테마를 올릴 수 있는 갤러리를 이 사이트에 만들 계획입니다. <code>/themes/v1/</code>은 이미 그 용도로 잡아 두었습니다. 그전까지 MarsDawn에 있는 테마는 기본 테마 네 가지이며, 다른 테마는 설치할 수 없습니다.</p>
+<h2>직접 만들고, 다른 사람이 만든 것도 둘러보세요</h2>
+<p><a href="/ko/themes/new/">브라우저에서 테마를 만드세요</a>. 색과 몇 가지 스타일 옵션을 고르고, 실시간으로 적용된 모습을 본 뒤, 검토용 GitHub 이슈로 제출하면 됩니다. 설치도 git도 필요 없습니다. <a href="/ko/themes/gallery/">갤러리</a>에는 유지 관리자가 검토하고 병합한 제출 테마가 나열됩니다. 검토 창구가 막 열렸기 때문에 오늘은 비어 있지만, 통과한 테마는 여기에 나타나며 용도로 걸러 볼 수 있습니다.</p>
 
 <h2>다음</h2>
 <ul>
@@ -811,6 +812,35 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
   <li>MarsDawn이 아직 하지 않는 일: <a href="/ko/limits/">목록</a>.</li>
   <li>Markdown을 쓰지 않는 사람에게 내보낸 PDF 전달하기: <a href="/ko/sharing-exported-pdfs/">PDF 공유하기</a>.</li>
 </ul>
+""",
+    }
+
+
+    pages['themes/new'] = {
+        "title": "브라우저에서 MarsDawn 테마 만들기 · MarsDawn",
+        "description": "색과 몇 가지 스타일 옵션을 고르면 샘플 문서에 바로 반영됩니다. 만든 테마는 GitHub 이슈로 제출할 수 있습니다. 설치도 git도 필요 없습니다.",
+        "body": """
+<section class="intro">
+  <h1>테마 만들기</h1>
+  <p>아래에서 팔레트와 몇 가지 스타일 옵션을 고르세요. 오른쪽 샘플 문서가 라이트와 다크 모두에서 바로바로 바뀌고, 테마 갤러리 CI가 돌리는 검사도 여기에 표시됩니다. 제출용 이슈에 도착할 즈음에는 대개 이미 통과한 상태입니다.</p>
+  <p>제출하려면 GitHub 계정이 필요합니다. 이 페이지 자체는 설치도 git도 필요 없습니다.</p>
+</section>
+<div id="theme-sim-app" data-locale="ko"><p>이 페이지에서 테마를 만들고 미리 보려면 JavaScript가 필요합니다.</p></div>
+""",
+    }
+    pages['themes/gallery'] = {
+        "title": "테마 갤러리: MarsDawn 커뮤니티 테마 · MarsDawn",
+        "description": "커뮤니티가 MarsDawn에 제출한 미리보기 테마를 둘러보고, 용도로 걸러 보고, 문제가 있으면 신고하세요. 브라우저에서 직접 만드세요. 설치도 git도 필요 없습니다.",
+        "body": f"""
+<section class="intro">
+  <h1>테마 갤러리</h1>
+  <p>커뮤니티가 제출한 미리보기 테마입니다. 각각 개발자가 검토하고 병합한 뒤에야 여기에 나타납니다. 용도로 걸러 보거나, <a href="/ko/themes/new/">브라우저에서 직접 만드세요</a>. 설치도 git도 필요 없습니다.</p>
+</section>
+<!--community-theme-gallery-->
+<h2>크레딧 및 라이선스</h2>
+<p>Dracula, Nord, Gruvbox, Solarized는 오픈 소스 배색 프로젝트를 바탕으로 합니다. 각 프로젝트의 저작권 표시와 전체 라이선스 본문은 <a href="/themes/third-party-notices.html">서드파티 고지</a>에서 확인하세요.</p>
+<h2>테마에 문제가 있나요?</h2>
+<p>카드의 «신고» 버튼을 쓰거나(JavaScript 필요), 테마 이름과 버전을 적어 <a href="mailto:{k.EMAIL}">{k.EMAIL}</a>로 직접 메일을 보내세요. JavaScript 여부와 관계없습니다. 신고는 사람이 직접 검토하며, 문제로 확인되면 하루 안에 목록에서 내립니다.</p>
 """,
     }
 
@@ -1404,11 +1434,312 @@ flowchart LR
     }
 
     app_ui_languages = '영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어'
-    ui = {'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 Markdown 보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': 'PDF 내보내기', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '미리보기 테마와 PDF 내보내기', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'changelog': '변경 내역', 'consent_text': '이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
+    ui = {'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 Markdown 보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': 'PDF 내보내기', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '미리보기 테마와 PDF 내보내기', 'themes-new': '테마 만들기', 'themes-gallery': '테마 갤러리', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'changelog': '변경 내역', 'reading-notes': '편집자의 독서 노트', 'reading-notes-anthropic': '독서 노트: Anthropic', 'reading-notes-chip-huyen': '독서 노트: Chip Huyen', 'reading-notes-lilian-weng': '독서 노트: Lilian Weng', 'reading-notes-harrison-chase': '독서 노트: Harrison Chase', 'reading-notes-langchain': '독서 노트: LangChain(Jess Ou)', 'reading-notes-andrew-ng': '독서 노트: Andrew Ng', 'consent_text': '이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
     store_chip = 'Mac App Store에서 판매 중'
     trait_link = {'yours': ('내 글은 내 Mac에', '계정도, 동기화도, 클라우드도 없습니다.'), 'pay-once': ('무료로 체험하고, 한 번만 구입', '14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.'), 'pdf': ('PDF 내보내기', '다이어그램, 코드 하이라이트, 세심한 페이지 나눔.'), 'native': ('Mac 앱', '네이티브 윈도우와 탭, 자동 저장, 훑어보기.'), 'limits': ('MarsDawn이 하지 않는 일', '구입 전에 알아 둘 점.')}
     trait_nav_heading = 'MarsDawn에서 기대할 수 있는 것'
     figure_list_label = '이 스크린샷의 내용'
+
+
+    pages['reading-notes'] = {
+        "title": "편집자의 독서 노트 · MarsDawn",
+        "description": "AI 에이전트를 만드는 사람들이 실제로 무엇을 주장하는지 살피는 짧은 노트 여섯 편 — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain, Andrew Ng — 그리고 각각이 그런 에이전트가 돌려준 것을 읽어야 하는 사람에게 무엇을 의미하는지.",
+        "body": f"""
+<section class="intro">
+  <h1>편집자의 독서 노트</h1>
+  <p>AI 에이전트가 어떻게 작동하는지에 대해 여섯 사람이 글을 썼습니다. 무엇으로 만들어지는지, 무엇이 시스템을 «agentic»하게 만드는지, 어떤 설계 패턴이 실제로 버티고 어떤 것은 아직 아닌지. 누구도 «에이전트가 돌려준 것을 어떻게 읽을지»는 쓰지 않았고, 누구도 MarsDawn을 언급하거나 Markdown 도구를 추천하지 않습니다. 우리는 각 글을 그 글의 조건으로 읽고, 우리 자신의 해석이 어디서 시작되는지 분명히 표시한 뒤, 모든 출처에 같은 질문을 던졌습니다. 이 글 때문에 폴더에 어떤 문서가 떨어지기 쉬운지, 그리고 그것을 읽을 때 MarsDawn은 어디에 도움이 되는가.</p>
+</section>
+
+<p>먼저 짧고 실용적인 쪽부터 보고 싶다면 <a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a>와 <a href="/ko/reviewing-agent-plans/">에이전트의 계획을 5분 만에 검토하기</a>부터 시작하세요. 이 여섯 노트는 그 페이지 뒤의 출처에 더 가까이 갑니다. 각각 단독으로 읽을 수 있으니 순서는 상관없습니다.</p>
+
+<ul>
+  <li><a href="/ko/reading-notes/anthropic-building-effective-agents/">Anthropic은 workflow와 agent를 나눕니다. 당신의 읽기는 어디에 가깝나요?</a> &#8212; 에이전트를 만드는 사람을 위한 Anthropic 가이드는 고정된 파이프라인과 다음 단계를 스스로 정하는 모델을 구분하고, «검토자»가 사람이 아니라 두 번째 LLM 호출인 workflow 하나를 그립니다.</li>
+  <li><a href="/ko/reading-notes/chip-huyen-agents/">Chip Huyen의 read-only/write action 구분, 승인하기 전에 왜 중요한지</a> &#8212; 에이전트에 대한 그녀의 담백한 정의, 그리고 보기만 하는 행동과 무언가를 바꾸는 행동의 차이. 5분 검토에서 가장 시간을 들일 만한 지점입니다.</li>
+  <li><a href="/ko/reading-notes/lilian-weng-llm-agents/">Lilian Weng이 2023년에 그린 에이전트 설계도, 각 부분이 남기는 파일</a> &#8212; 뇌, 계획, 기억, 도구 사용: 에이전트가 무엇으로 되어 있는지에 대한 그녀 자신의 틀, 그리고 문제가 생겼을 때 조정되지 않는 계획에서 그녀가 짚는 한계.</li>
+  <li><a href="/ko/reading-notes/harrison-chase-what-is-an-agent/">Harrison Chase의 스펙트럼: agentic할수록 더 지켜보고 싶어진다</a> &#8212; 에이전트에 대한 그의 기술적 정의, 그리고 시스템이 그 스펙트럼을 따라 갈수록 관측 가능성이 필요하다는 그의 주장.</li>
+  <li><a href="/ko/reading-notes/langchain-what-is-an-agent/">Jess Ou의 평가 파이프라인, 그중 한 단계는 여전히 당신의 일</a> &#8212; 2026년 7월 LangChain은 Harrison Chase의 2024년 글이 있던 주소에 Jess Ou가 쓴 새 «What is an AI agent?»를 올렸습니다. 정의는 거의 그의 것과 한 글자 같고, 자동 평가가 어디서 멈추고 어디서부터 사람이 나서야 하는지를 이어서 설명합니다.</li>
+  <li><a href="/ko/reading-notes/andrew-ng-design-patterns/">Andrew Ng이 자신의 설계 패턴을 예측 가능성으로 순위를 매깁니다</a> &#8212; The Batch의 편지 다섯 편에서, 어떤 패턴을 더 믿을 만하고 어떤 것을 예측하기 어렵다고 보는지 분명히 말합니다.</li>
+</ul>
+
+<p>이 여섯 편 중 어느 것도 에이전트 출력을 더 주의 깊게 읽어야 한다고 주장하지 않으며, 어느 것도 MarsDawn에 관한 글이 아닙니다. 그 연결을 짓는 것은 우리이고, 각 노트가 그렇게 말합니다.</p>
+""",
+    }
+
+
+    pages['reading-notes/anthropic-building-effective-agents'] = {
+        "title": 'Anthropic은 workflow와 agent를 나눕니다. 당신의 읽기는 어디에 가깝나요? · MarsDawn',
+        "description": '2024년 12월 Anthropic이 에이전트를 만드는 사람을 위해 낸 가이드는 workflow와 agent를 나누고, 그중 하나가 두 번째 LLM 호출로 첫 번째를 검토하는 다섯 가지 workflow 패턴을 설명합니다. 그게 폴더에 떨어지는 파일에 무엇을 뜻하는지.',
+        "body": f"""
+<section class="intro">
+  <h1>Anthropic은 workflow와 agent를 나눕니다. 당신의 읽기는 어디에 가깝나요?</h1>
+</section>
+
+<div class="summary"><p><strong>2024년 12월 Anthropic이 AI 에이전트를 만드는 사람을 위해 낸 가이드는 맨 앞에서 «workflow»와 «agent»라는 두 가지를 나눈 뒤, 되는 것 중 가장 단순한 것부터 시작하라고 &#8212; 어쩌면 agentic 시스템을 아예 만들지 않는 것까지 포함해 &#8212; 권하고, 그것으로 부족할 때만 정리된 다섯 workflow 패턴 중 하나에 손을 뻗으라고 합니다. 그중 하나는 두 번째 LLM 호출을 검토자 자리에 앉힙니다. 이 노트는 그 패턴, 그리고 나머지 넷이 당신에게 무엇을 읽히게 남기는지에 관한 것입니다.</strong></p></div>
+
+<h2>가이드가 주장하는 것</h2>
+<p>Erik S.와 Barry Zhang이 «Building Effective Agents»를 쓴 대상은 LLM으로 어떻게 시스템을 만들지 정하려는 엔지니어입니다. 정의부터 시작합니다.</p>
+<blockquote><p>&#8220;Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.&#8221;</p></blockquote>
+<p>이어지는 조언은 절제에서 시작합니다.</p>
+<blockquote><p>&#8220;When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed. This might mean not building agentic systems at all.&#8221;</p></blockquote>
+<p>더 많은 구조가 필요할 때를 위해 다섯 workflow 패턴을 설명합니다. prompt chaining(작업을 일련의 호출로 나누고 단계 사이에 선택적으로 검사를 넣는 것), routing, parallelization, orchestrator-workers(하나의 LLM이 작업을 쪼개 worker LLM에 넘긴 뒤 결과를 합침), evaluator-optimizer. 마지막 것은 이렇게 말합니다.</p>
+<blockquote><p>&#8220;In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.&#8221;</p></blockquote>
+<p>Anthropic은 이 가이드 어디에서도 MarsDawn을 언급하지 않고, Markdown 도구도 추천하지 않습니다. <code>/agent-transparency/</code>가 이미 이 가이드의 투명성 원칙과 «checkpoints» 표현을 자세히 다루므로 &#8212; 이 노트는 그 땅을 다시 밟지 않습니다. 사람 코드 리뷰에 관한 가이드의 문장도, 코딩 에이전트에 한정된 부록이라는 맥락에서, 그 페이지에 있습니다.</p>
+
+<h2>우리의 읽기이지 Anthropic의 것이 아님</h2>
+<p>Anthropic은 workflow가 끝난 뒤 최종 출력을 누가 확인하는지는 말하지 않고, 이 중 어느 것도 문서를 묘사하지 않습니다 &#8212; 시스템을 만드는 사람을 위한 아키텍처 결정입니다. 하지만 다섯 패턴이 남기는 읽을 파일의 종류는 같지 않습니다. Prompt chaining과 routing은 대개 보이지 않는 배관이고, 당신에게 닿는 것이 있다면 체인의 마지막 출력으로, 다른 단일 응답과 같습니다. Orchestrator-workers는 다릅니다. 코딩 에이전트가 내부에서 이 패턴을 쓰면, 폴더에 떨어지는 것은 여러 worker 호출을 오케스트레이터가 이어 붙인 문서일 수 있고, 처음부터 끝까지 매끄럽게 읽히는 요약 안에서 한 worker 조각의 실수는 놓치기 쉽습니다.</p>
+<p>Evaluator-optimizer는 특히 멈출 가치가 있습니다. 가이드가 사람 검토자가 앉았을 자리에 두 번째 LLM 호출을 두기 때문입니다. 어떤 종류의 실수를 값싸게 잡는 타당한 방법이지만, 결국 모델이 주어진 기준으로 다른 모델을 검사하는 것일 뿐입니다 &#8212; 이 시리즈의 다른 저자들도 모델이 자신이나 다른 모델의 결과를 판정하는 일에 같은 주의를 겁니다. 가이드는 사람이 evaluator의 판정을 다시 확인해야 한다고 어디에도 쓰지 않으며, 그 점에 대해 입장을 취하지도 않습니다. 이 일련의 과정이 돌려준 것을 마지막으로 읽는 사람이 당신이라면, «루프가 통과시켰다»와 «내가 확인했다»는 같은 문장이 아닙니다. 앞의 파일이 두 경우 모두 똑같이 보여도 말입니다.</p>
+
+<h2>MarsDawn이 돕는 곳, 돕지 않는 곳</h2>
+<p>MarsDawn은 어떤 workflow 패턴이 파일을 만들었는지 모르고, 안에 AI 모델도 없습니다 &#8212; 스스로 evaluator 단계를 돌리지도 않고, Anthropic이 그린 그 평가가 제 일을 했는지 알려 주지도 않습니다. 하는 일은 이렇습니다. 사이드바(보기 &#9656; 사이드바 보기, &#8963;&#8984;S)의 개요 탭이 오케스트레이터가 이어 붙인 긴 파일의 제목을 나열하고, 클릭하면 그곳으로 이동합니다. 소스와 렌더링된 페이지는 나란히(⌘2) 함께 스크롤되며, Mermaid 다이어그램과 KaTeX 수식도 소스로 두지 않고 그립니다. 읽는 도중에 에이전트가 파일을 고치면, 저장하지 않은 변경이 없는 한 MarsDawn이 다시 불러오면서 읽던 위치를 유지합니다. 편집 &#9656; 참조 복사 (&#8997;&#8984;C)는 지금 자리를 <code>docs/plan.md:42</code> 형식으로 복사해, 에이전트와의 채팅에 바로 붙여 넣을 수 있게 합니다.</p>
+
+<h2>사용해 보기</h2>
+<p>MarsDawn은 Mac App Store에 있습니다. 무료 <code>marsdawn</code> 명령줄 도구는 오늘부터 쓸 수 있습니다:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>앱 없이 Markdown을 PDF로 내보냅니다.</p>
+<p><a href="/ko/cli/">명령줄</a> &#183; 구입 전에: <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+
+<h2>다음</h2>
+<ul>
+  <li>이 가이드의 투명성 원칙과 체크포인트 표현의 나머지: <a href="/ko/agent-transparency/">Anthropic은 에이전트가 투명해야 한다고 말합니다. 그럼 펼쳐 놓은 것은 누가 읽을까요?</a></li>
+  <li>에이전트 출력이 일반적으로 왜 읽기 어려운지: <a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a></li>
+  <li>시리즈로 돌아가기: <a href="/ko/reading-notes/">편집자의 독서 노트</a></li>
+</ul>
+
+<h2>출처</h2>
+<ul>
+  <li>Erik S. and Barry Zhang, &#8220;Building Effective Agents,&#8221; Anthropic, December 19, 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (2026-09-26에 가져와 인용).</li>
+</ul>
+""",
+    }
+
+
+    pages['reading-notes/chip-huyen-agents'] = {
+        "title": 'Chip Huyen의 read-only/write action 구분, 승인하기 전에 왜 중요한지 · MarsDawn',
+        "description": 'Chip Huyen의 2025년 1월 에세이 «Agents»는 에이전트 행동을 read-only와 write로 나눕니다. 그 구분이 계획에서 승인 전에 더 자세히 볼 줄을 빠르게 짚는 방법이 되는 이유.',
+        "body": f"""
+<section class="intro">
+  <h1>Chip Huyen의 read-only/write action 구분, 승인하기 전에 왜 중요한지</h1>
+</section>
+
+<div class="summary"><p><strong>Chip Huyen의 2025년 1월 에세이 «Agents»는 교과서적 정의에서 시작해 더 구체적인 데로 갑니다. 에이전트의 행동은 세상을 보기만 하는 것과 바꾸는 것으로 나뉩니다. 그 구분은 주어진 5분 안에서, 계획의 어떤 줄이 승인 전에 더 자세히 볼 가치가 있는지 정하는 좋은 방법입니다.</strong></p></div>
+
+<h2>글이 주장하는 것</h2>
+<p>Huyen은 담백하게 엽니다.</p>
+<blockquote><p>&#8220;An agent is anything that can perceive its environment and act upon that environment.&#8221;</p></blockquote>
+<p>거기서 에이전트에 필요한 것을 쌓아 올립니다. 행동할 환경, 그리고 할 수 있는 일을 정하는 도구 집합 &#8212; «tool inventory». 환경을 지각만 하게 하는 행동(«read-only actions»)과 환경에 작용하게 하는 행동(«write actions»)을 구분합니다. 두 번째 종류의 위험에 대해서도 직설적입니다. «Write actions enable a system to do more»이지만 «the prospect of giving AI the ability to automatically alter our lives is frightening» &#8212; 그녀의 말로 «you shouldn’t allow an unreliable AI to initiate bank transfers.» 에이전트에서 가장 맞추기 어려운 부분에 대해서도 솔직합니다.</p>
+<blockquote><p>&#8220;If you’ve ever been in any planning meeting, you know that planning is hard.&#8221;</p></blockquote>
+<p>Huyen은 이 에세이 어디에서도 MarsDawn을 언급하지 않고 Markdown 도구도 추천하지 않습니다. <code>/reviewing-agent-plans/</code>는 이미 같은 에세이에서 그녀 문장 셋을 인용합니다. 계획이 돌기 전에 감독을 건너뛰는 비용, 끝나지 않았는데 끝났다고 믿는 에이전트, 그리고 체크리스트 3단계 안의 «위험한 작업 앞에서 시스템 can ask for explicit human approval before executing»라는 줄. 이 노트는 그 인용을 반복하지 않습니다. 그 페이지를 아직 안 읽었다면 아래에 링크가 있습니다.</p>
+
+<h2>우리의 읽기이지 Huyen의 것이 아님</h2>
+<p>Huyen의 read-only/write 구분은 검토 조언으로 쓰인 것이 아닙니다 &#8212; 도구가 무엇을 하는지 분류하는 방식입니다. 하지만 그 체크리스트 3단계가 이미 천천히 보라고 하는, 위험한 작업 줄을 짚는 담백하고 범용적인 검사입니다. 파일 읽기, 검색 실행, 디렉터리 나열은 read-only이고, read-only 단계가 잘못되면 다시 돌리는 비용입니다. 데이터 삭제, force-push, 브랜치 병합, 메일 발송, 카드 결제는 write action이고 &#8212; 그녀가 말하듯 &#8212; write 단계가 잘못되면 무서운 쪽이며, 에이전트 보고서를 읽을 즈음에는 이미 벌어졌을 수 있습니다. 방에 모인 사람에게도 계획이 어렵다는 지적은, 형식이 감당할 수 있는 것보다 더 정밀한 계획을 기대하지 말라는 점검이 됩니다. 자신 있게 읽히는 계획이 곧 맞는 계획은 아닙니다.</p>
+
+<h2>MarsDawn이 돕는 곳, 돕지 않는 곳</h2>
+<p>MarsDawn은 계획에서 read-only 단계와 write 단계를 구분하지 못합니다 &#8212; 텍스트가 라벨을 붙이지 않은 판단이고, 앱 안에는 의미를 읽는 기능이 없습니다. AI 모델도 없습니다. 위험한 줄을 대신 표시해 주지도, «계획은 어렵다» 검사를 돌리지도, 계획에 점수를 매기지도 않습니다. 하는 일은 당신이 그 판단을 하는 동안 파일을 읽기 쉽게 유지하는 것입니다. 개요 탭(보기 &#9656; 사이드바 보기, &#8963;&#8984;S)으로 줄마다 읽기 전에 계획의 형태를 훑을 수 있고, 소스와 렌더링된 페이지를 나란히(⌘2) 두어 단계 다이어그램이 날 Mermaid로 남지 않게 하며, 편집 &#9656; 참조 복사 (&#8997;&#8984;C)는 자리를 <code>plan.md:10</code>으로 만들어, 잘못된 순서의 write action을 보는 순간 피드백으로 붙여 넣을 수 있게 합니다.</p>
+
+<h2>사용해 보기</h2>
+<p>MarsDawn은 Mac App Store에 있습니다. 무료 <code>marsdawn</code> 명령줄 도구는 오늘부터 쓸 수 있습니다:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>앱 없이 Markdown을 PDF로 내보냅니다.</p>
+<p><a href="/ko/cli/">명령줄</a> &#183; 구입 전에: <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+
+<h2>다음</h2>
+<ul>
+  <li>같은 에세이에서 나온 6단계·5분 체크리스트 전체: <a href="/ko/reviewing-agent-plans/">에이전트의 계획을 5분 만에 검토하기</a></li>
+  <li>에이전트 출력이 일반적으로 왜 읽기 어려운지: <a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a></li>
+  <li>시리즈로 돌아가기: <a href="/ko/reading-notes/">편집자의 독서 노트</a></li>
+</ul>
+
+<h2>출처</h2>
+<ul>
+  <li>Chip Huyen, &#8220;Agents,&#8221; January 7, 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a> (2026-09-26에 가져와 인용).</li>
+</ul>
+""",
+    }
+
+
+    pages['reading-notes/lilian-weng-llm-agents'] = {
+        "title": 'Lilian Weng이 2023년에 그린 에이전트 설계도, 각 부분이 남기는 파일 · MarsDawn',
+        "description": 'Lilian Weng의 널리 인용되는 2023년 서베이는 LLM 에이전트를 뇌와 계획·기억·도구 사용으로 그립니다. 각 부분이 당신에게 남기기 쉬운 파일, 그리고 예상치 못한 일에 조정되지 않는 계획에서 그녀가 짚는 한계.',
+        "body": f"""
+<section class="intro">
+  <h1>Lilian Weng이 2023년에 그린 에이전트 설계도, 각 부분이 남기는 파일</h1>
+</section>
+
+<div class="summary"><p><strong>2023년 6월, 당시 OpenAI에 있던 Lilian Weng은 블로그 Lil’Log에 긴 서베이를 올렸습니다. LLM 기반 에이전트를 뇌(모델)와 세 구성요소 &#8212; 계획, 기억, 도구 사용 &#8212; 로 그립니다. 에이전트가 무엇으로 되어 있는지에 대한 초기이자 널리 인용되는 틀이며, 그 틀이 아직 어디서 깨지는지도 솔직합니다.</strong></p></div>
+
+<h2>글이 주장하는 것</h2>
+<p>Weng의 개요는 글 전체의 틀을 잡습니다.</p>
+<blockquote><p>&#8220;In a LLM-powered autonomous agent system, LLM functions as the agent&#8217;s brain, complemented by several key components: Planning ... Memory ... Tool use&#8221;.</p></blockquote>
+<p>계획에는 작업을 하위 목표로 나누는 일과, 지난 행동을 돌아보며 다음을 낫게 하는 일이 모두 들어갑니다. 기억은 단기(모델이 지금 보는 맥락, in-context)와 장기(대개 모델 밖, 검색 가능한 벡터 저장소)로 나뉩니다. 도구 사용은 고정된 가중치만으로는 못 주는 것 &#8212; 최신 정보, 코드 실행, 다른 API &#8212; 을 모델이 밖으로 부르게 합니다. 끝부분 «Challenges»에서 한계를 분명히 짚습니다.</p>
+<blockquote><p>&#8220;LLMs struggle to adjust plans when faced with unexpected errors, making them less robust compared to humans who learn from trial and error.&#8221;</p></blockquote>
+<p>화학 에이전트 ChemCrow 사례에서는 더 좁은 문제도 짚습니다. LLM 기반 평가는 GPT-4와 거의 같다고 매겼지만, 사람 전문가는 정확성에서 ChemCrow가 훨씬 낫다고 봤습니다. 결론은 «reflection» 구성요소만이 아니라 자기 평가에 관한 것입니다.</p>
+<blockquote><p>&#8220;The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.&#8221;</p></blockquote>
+<p>Weng은 이 글 어디에서도 MarsDawn을 언급하지 않고 Markdown 도구도 추천하지 않습니다.</p>
+
+<h2>우리의 읽기이지 Weng의 것이 아님</h2>
+<p>Weng은 2023년의 에이전트 아키텍처를 설명할 뿐, 에이전트 출력을 읽는 사람을 쓰지 않습니다 &#8212; 파일을 확인하는 사람도 언급하지 않습니다. 하지만 세 구성요소는 당신이 읽게 될 수 있는 서로 다른 세 가지에 대응합니다. 계획은 대개 실행 전에 읽을 문서를 남깁니다 &#8212; 계획 자체, 때로는 이미 접혀 든 «reflection»이나 자기 검토와 함께. 기억은 대개 보이지 않지만, 에이전트가 장기 저장으로 스크래치 파일을 유지하면 그 파일만 따로 열어 볼 가치가 있습니다. 옛 잘못된 가정이 이후 여러 단계에 말없이 실릴 수 있기 때문입니다. 도구 사용은 무엇이 돌았고 무엇이 돌아왔는지에 대한 보고서를 남기기 쉽습니다 &#8212; 계획보다 전사에 가깝습니다.</p>
+<p>예상치 못한 오류에 계획이 조정되지 않는다는 지적은, 당신 쪽에서 보면 어제 승인한 계획이 오늘은 이미 낡았을 수 있는 이유입니다. 계획이 예상하지 못한 일이 중간에 생겨도 에이전트는 다시 계획하지 않고 그대로 갈 수 있고, 마지막 보고는 우회를 말하지 않은 채 원래 계획의 성공만 그릴 수 있습니다. 이는 우리의 추론이지 그녀의 주장이 아닙니다 &#8212; 그녀는 모델 자체의 견고함을 쓰고, 읽는 사람이 무엇을 봐야 하는지는 쓰지 않습니다.</p>
+
+<h2>MarsDawn이 돕는 곳, 돕지 않는 곳</h2>
+<p>MarsDawn 안에는 AI 모델이 없어 계획이 실제로 일어난 일에서 조용히 벗어났는지 말해 주지 못하고, 계획 파일·기억 파일·도구 사용 보고서도 구분하지 않습니다 &#8212; 내용에 대한 읽기이고, 그 판단은 당신 몫입니다. 하는 일은 이렇습니다. 개요 탭(보기 &#9656; 사이드바 보기, &#8963;&#8984;S)이 긴 계획의 형태를 한눈에 보여 주고, 소스와 렌더링된 미리보기가 나란히(⌘2) Mermaid와 KaTeX를 그리며, 읽는 도중에 에이전트가 파일을 다시 쓰면 저장하지 않은 변경이 없는 한 위치를 유지한 채 다시 불러옵니다 &#8212; 말없이 고쳐진 계획이 바로 그녀가 «Challenges»에서 모델 쪽에서 묘사한 실패 모드이기 때문에 특히 쓸모 있습니다.</p>
+
+<h2>사용해 보기</h2>
+<p>MarsDawn은 Mac App Store에 있습니다. 무료 <code>marsdawn</code> 명령줄 도구는 오늘부터 쓸 수 있습니다:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>앱 없이 Markdown을 PDF로 내보냅니다.</p>
+<p><a href="/ko/cli/">명령줄</a> &#183; 구입 전에: <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+
+<h2>다음</h2>
+<ul>
+  <li>서로 다른 에이전트 설계 패턴이 남기기 쉬운 문서: <a href="/ko/agent-design-patterns/">에이전트 설계 패턴 네 가지와 각각이 건네는 문서</a></li>
+  <li>계획이 돌기 전 5분 검토법: <a href="/ko/reviewing-agent-plans/">에이전트의 계획을 5분 만에 검토하기</a></li>
+  <li>시리즈로 돌아가기: <a href="/ko/reading-notes/">편집자의 독서 노트</a></li>
+</ul>
+
+<h2>출처</h2>
+<ul>
+  <li>Lilian Weng, &#8220;LLM Powered Autonomous Agents,&#8221; Lil’Log, June 23, 2023: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a> (2026-09-26에 가져와 인용; 쓸 당시 OpenAI에 있었으며, 여기서는 그때의 소속만 적습니다).</li>
+</ul>
+""",
+    }
+
+
+    pages['reading-notes/harrison-chase-what-is-an-agent'] = {
+        "title": 'Harrison Chase의 스펙트럼: agentic할수록 더 지켜보고 싶어진다 · MarsDawn',
+        "description": 'Harrison Chase의 2024년 에이전트 정의와 agentic 행동의 스펙트럼, 그리고 시스템이 그 위를 따라갈수록 관측 가능성이 필요하다는 주장 — 에이전트가 돌려준 파일을 읽는 쪽에서의 읽기.',
+        "body": f"""
+<section class="intro">
+  <h1>Harrison Chase의 스펙트럼: agentic할수록 더 지켜보고 싶어진다</h1>
+</section>
+
+<div class="summary"><p><strong>2024년 6월 LangChain의 Harrison Chase는 겉보기엔 작은 질문 &#8212; «What is an agent?» &#8212; 으로 새 시리즈를 열었고, 기술적 정의와 «agentic» 행동의 스펙트럼으로 답했습니다. 시스템이 그 스펙트럼을 더 많이 차지할수록, 그는 말합니다, 돌아가는 동안 안을 볼 수 있어야 합니다.</strong></p></div>
+
+<h2>글이 주장하는 것</h2>
+<p>Chase 자신의 정의는, 대부분의 사람이 생각하는 에이전트보다 더 기술적이고 더 넓다는 단서와 함께 나옵니다.</p>
+<blockquote><p>&#8220;An agent is a system that uses an LLM to decide the control flow of an application.&#8221;</p></blockquote>
+<p>Control flow는 프로그램이 다음에 어떤 단계를 돌릴지일 뿐입니다. 그는 바로 정의가 불완전하다고 인정합니다 &#8212; LLM이 두 경로 사이를 라우팅만 하는 단순 시스템도 그의 정의로는 에이전트지만, 대부분의 «에이전트» 직관과는 맞지 않습니다. 라벨을 두고 싸우기보다 Andrew Ng의 제안을 받아들입니다. 트윗을 직접 인용하고 출처를 밝힙니다. «rather than arguing over which work to include or exclude as being a true agent, we can acknowledge that there are different degrees to which systems can be agentic.» Chase의 코멘트: «I really agree with this viewpoint and I think Andrew expressed it nicely.» 거기서부터, 시스템이 «agentic»한 정도는 LLM이 행동을 얼마나 결정하느냐에 따라, 고정 라우터에서 상태 기계, 자신의 도구를 만들고 기억하는 완전 자율 에이전트까지입니다. 실용적 주장은 그 스펙트럼에서 나옵니다 &#8212; 더 agentic할수록 특정 인프라가 더 중요하고, 그중 으뜸이 관측 가능성입니다.</p>
+<blockquote><p>&#8220;You&#8217;ll want the ability to observe what is going on inside, since the exact steps taken may not be known ahead of time.&#8221;</p></blockquote>
+<p>보기만이 아니라 개입까지 확장합니다. 실행 중인 에이전트의 상태나 지시를 특정 지점에서 바꿔, 의도한 길에서 벗어나면 다시 밀어 넣을 수 있어야 한다는 것입니다. Chase는 이 글 어디에서도 MarsDawn을 언급하지 않고 Markdown 도구도 추천하지 않습니다.</p>
+
+<h2>우리의 읽기이지 Chase의 것이 아님</h2>
+<p>Chase가 쓰는 대상은 에이전트 프레임워크를 만드는 사람을 위한 도구 &#8212; 이름으로 LangGraph와 LangSmith &#8212; 이지, 끝난 문서를 읽는 사람이 아닙니다. 하지만 그 스펙트럼은 읽기 전에 앞에 놓인 것을 가늠하는 유용한 방법입니다. 파일을 만든 시스템이 더 agentic할수록, 프롬프트만으로 단계를 예측하기 어렵고, 앞의 파일은 «되어야 할 일»보다 «실제로 일어난 일»의 기록으로 다룰 가치가 커집니다.
+«observe what is going on inside»는 실행 중 시스템의 내부 &#8212; 트레이스(한 번의 실행에서 에이전트가 한 일의 기록), 중간 단계, 도구 호출 &#8212; 에 관한 것이지, 끝난 뒤 Markdown 계획을 읽는 일이 아닙니다. 하지만 그가 드는 이유, 정확한 단계를 미리 알 수 없을 수 있다는 점은, 에이전트가 끝난 뒤 건네는 문서에도 그대로 적용됩니다. 들어가는 쪽에서 단계가 예측되지 않았다면, 나오는 쪽 보고서가 그 단계를 확인할 유일한 자리입니다.</p>
+
+<h2>MarsDawn이 돕는 곳, 돕지 않는 곳</h2>
+<p>MarsDawn은 실행 중 에이전트의 내부를 관측하지 않습니다 &#8212; 안에 AI 모델도 없고 파일을 만든 프레임워크와도 연결되어 있지 않아, 주어진 에이전트가 Chase의 스펙트럼 어디에 있었는지 말해 줄 수 없습니다. 나중에 떨어지는 문서를 다룹니다. 긴 보고서의 형태를 위한 개요 탭(보기 &#9656; 사이드바 보기, &#8963;&#8984;S), 다이어그램과 수식을 위한 소스·렌더 나란히(⌘2), 에이전트가 파일을 다시 쓸 때 저장하지 않은 변경이 없는 한 위치를 유지하는 다시 불러오기 &#8212; 아직 움직이는 것을 지켜보는 일의 파일 버전입니다. 편집 &#9656; 참조 복사 (&#8997;&#8984;C)와 AI용으로 복사 (&#8963;&#8997;&#8984;C)로 단계가 빗나간 곳을 정확히 가리킬 수 있습니다 &#8212; 실행 중 에이전트를 다시 밀어 넣는 일의 문서 쪽 대응입니다.</p>
+
+<h2>사용해 보기</h2>
+<p>MarsDawn은 Mac App Store에 있습니다. 무료 <code>marsdawn</code> 명령줄 도구는 오늘부터 쓸 수 있습니다:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>앱 없이 Markdown을 PDF로 내보냅니다.</p>
+<p><a href="/ko/cli/">명령줄</a> &#183; 구입 전에: <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+
+<h2>다음</h2>
+<ul>
+  <li>이 시리즈에서 투명성과 체크포인트를 더 자세히 다룬 글: <a href="/ko/agent-transparency/">Anthropic은 에이전트가 투명해야 한다고 말합니다. 그럼 펼쳐 놓은 것은 누가 읽을까요?</a></li>
+  <li>같은 주소의 2026년 LangChain 글, 거의 같은 정의: <a href="/ko/reading-notes/langchain-what-is-an-agent/">Jess Ou의 평가 파이프라인, 그중 한 단계는 여전히 당신의 일</a></li>
+  <li>시리즈로 돌아가기: <a href="/ko/reading-notes/">편집자의 독서 노트</a></li>
+</ul>
+
+<h2>출처</h2>
+<ul>
+  <li>Harrison Chase, &#8220;What is an agent?,&#8221; LangChain, June 28, 2024, 아카이브 사본: <a href="http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/">http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/</a> (2026-09-26에 Wayback Machine으로 가져와 인용; 원래 주소에는 이제 Jess Ou의 2026년 글이 있습니다).</li>
+</ul>
+""",
+    }
+
+
+    pages['reading-notes/langchain-what-is-an-agent'] = {
+        "title": 'Jess Ou의 평가 파이프라인, 그중 한 단계는 여전히 당신의 일 · MarsDawn',
+        "description": 'LangChain의 2026년 «What is an AI agent?»(Jess Ou)는 Harrison Chase의 2024년 정의를 이어받고, 에이전트를 자동으로 평가하는 파이프라인을 그립니다. 그 파이프라인이 아직 사람에게 넘기는 단계, 그리고 넘기지 않는 단계.',
+        "body": f"""
+<section class="intro">
+  <h1>Jess Ou의 평가 파이프라인, 그중 한 단계는 여전히 당신의 일</h1>
+</section>
+
+<div class="summary"><p><strong>2026년 7월 LangChain은 Harrison Chase의 2024년 «What is an agent?»가 있던 주소에 Jess Ou가 쓴 새 «What is an AI agent?»를 올렸습니다. 정의는 거의 그의 것과 한 글자 같습니다. 글의 대부분은 그의 글이 다루지 않았던 것, 에이전트를 자동으로 평가하는 파이프라인 전체에 관한 것입니다. 그 파이프라인이 아직 사람이 필요한 곳과 아닌 곳을 솔직히 말합니다.</strong></p></div>
+
+<h2>글이 주장하는 것</h2>
+<p>Ou의 정의는 Chase의 것과 가깝게 맞닿습니다.</p>
+<blockquote><p>&#8220;An AI agent is a system that uses a large language model to decide the control flow of an application.&#8221;</p></blockquote>
+<p>Control flow는 다시, 다음에 어떤 단계가 도는지일 뿐입니다. 이어서 LangChain의 Agent Development Lifecycle &#8212; build, test, deploy, monitor &#8212; 과, 사람이 매번 실행을 읽지 않고도 에이전트 일을 검사하는 층위 접근을 설명합니다. 온라인 eval은 프로덕션 트레이스(실제 실행의 기록)를 샘플링해 회귀를 찾고, 오프라인 eval은 큐레이션된 데이터셋으로 배포 전 나쁜 변경을 잡으며, «LLM-as-a-judge»는 사람이 미리 정한 기준으로 실행 출력을 채점해 수동 검토가 못 미치는 규모를 감당합니다. 그 파이프라인에 사람이 남는 자리를 분명히 말합니다.</p>
+<blockquote><p>&#8220;For sensitive or irreversible actions, we recommend human-in-the-loop controls that pause the agent for approval, edits, rejection, or clarification.&#8221;</p></blockquote>
+<p>파이프라인이 아무리 좋아져도 스케일되지 않는 판단에 대한 문장도 있습니다. «Do not outsource judgment you cannot evaluate. If you wouldn’t recognize a correct answer, neither will the agent.» <code>/reviewing-agent-plans/</code>가 이미 바로 그 문장 위에 세워져 있으므로 &#8212; 이 노트는 그 논의를 반복하지 않습니다. Ou는 MarsDawn을 언급하지 않고 Markdown 도구도 추천하지 않습니다. Chase의 이름도 부르지 않습니다. 두 글을 잇는 것은 LangChain이 2026년에 그의 2024년 글이 있던 주소에, 거의 같은 정의로 그녀의 글을 올렸다는 점 &#8212; 그녀가 아니라 우리가 하는 관찰입니다.</p>
+
+<h2>우리의 읽기이지 Ou의 것이 아님</h2>
+<p>Ou의 human-in-the-loop 줄은 특정 행동을 실행 전에 막는 일에 관한 것입니다 &#8212; write action을 승인 위해 멈추는 것, Chip Huyen의 read-only/write 구분이 다른 각도에서 가리키는 같은 아이디어 &#8212; 이지, 끝난 보고서를 나중에 읽는 일이 아닙니다. 자세히 읽으면 파이프라인의 대부분은 사람을 일상 검사에서 빼내도록 설계되어 있습니다. 넣도록이 아니라. 온라인·오프라인 eval과 LLM-as-a-judge는 팀이 모든 트레이스를 손으로 검토하지 않아도 되게 하려고 있습니다.
+글에 대한 비판이 아닙니다 &#8212; 그것이 명시된 목표이고, 프로덕션 규모에서는 합리적입니다. 하지만 손으로 하는 검토 &#8212; 에이전트가 직접 건네는 계획이나 보고서를 읽는 일 &#8212; 은 바로 그 파이프라인이 줄이려 하지, 대체하려 하지 않는 종류의 확인입니다. 판단에 대한 그녀 자신의 문장은 그 축소에 바닥을 둡니다. 옳은 답과 틀린 답을 스스로 구별할 수 없는 곳에서는, 여전히 직접 읽어야 합니다.</p>
+
+<h2>MarsDawn이 돕는 곳, 돕지 않는 곳</h2>
+<p>MarsDawn은 eval 파이프라인이 아니고 안에 AI 모델도 없습니다 &#8212; 트레이스를 채점하지도, LLM-as-a-judge를 돌리지도, 어떤 행동이 멈출 만큼 민감한지 정하지도 않습니다. 그 파이프라인이 아직 사람에게 넘기는 순간, 즉 직접 읽는 일을 위해 만들어졌습니다. 개요 탭(보기 &#9656; 사이드바 보기, &#8963;&#8984;S)이 긴 보고서의 제목을 나열하고, 소스와 렌더 미리보기가 나란히(⌘2) Mermaid와 KaTeX를 그리며, 편집 &#9656; 참조 복사 (&#8997;&#8984;C)와 AI용으로 복사 (&#8963;&#8997;&#8984;C)가 한곳 확인을 에이전트가 움직일 수 있는 정확한 피드백으로 바꿉니다.</p>
+
+<h2>사용해 보기</h2>
+<p>MarsDawn은 Mac App Store에 있습니다. 무료 <code>marsdawn</code> 명령줄 도구는 오늘부터 쓸 수 있습니다:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>앱 없이 Markdown을 PDF로 내보냅니다.</p>
+<p><a href="/ko/cli/">명령줄</a> &#183; 구입 전에: <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+
+<h2>다음</h2>
+<ul>
+  <li>그녀의 «outsource judgment» 줄에서 일부 나온 체크리스트 전체: <a href="/ko/reviewing-agent-plans/">에이전트의 계획을 5분 만에 검토하기</a></li>
+  <li>같은 정의가 2024년에 처음 적힌 곳: <a href="/ko/reading-notes/harrison-chase-what-is-an-agent/">Harrison Chase의 스펙트럼: agentic할수록 더 지켜보고 싶어진다</a></li>
+  <li>시리즈로 돌아가기: <a href="/ko/reading-notes/">편집자의 독서 노트</a></li>
+</ul>
+
+<h2>출처</h2>
+<ul>
+  <li>Jess Ou, &#8220;What is an AI agent?,&#8221; LangChain, July 31, 2026: <a href="https://www.langchain.com/blog/what-is-an-agent">https://www.langchain.com/blog/what-is-an-agent</a> (2026-09-26에 가져와 인용).</li>
+</ul>
+""",
+    }
+
+
+    pages['reading-notes/andrew-ng-design-patterns'] = {
+        "title": 'Andrew Ng이 자신의 설계 패턴을 예측 가능성으로 순위를 매깁니다 · MarsDawn',
+        "description": 'The Batch의 편지 다섯 편에서 Andrew Ng은 성찰, 도구 사용, 계획, 다중 에이전트 협업을 각각 얼마나 믿을 만하고 예측 가능한지로 순위를 매깁니다 — 그리고 그 순위가 각 패턴의 출력을 얼마나 자세히 볼지에 대해 시사하는 바.',
+        "body": f"""
+<section class="intro">
+  <h1>Andrew Ng이 자신의 설계 패턴을 예측 가능성으로 순위를 매깁니다</h1>
+</section>
+
+<div class="summary"><p><strong>2024년 초 The Batch의 편지 다섯 편에서 Andrew Ng은 네 가지 agentic 설계 패턴 &#8212; 성찰, 도구 사용, 계획, 다중 에이전트 협업 &#8212; 을 설명하고, 드물게도 어떤 것을 더 믿을 만하고 어떤 것을 예측하기 어렵다고 보는지 독자에게 분명히 말했습니다.</strong></p></div>
+
+<h2>편지가 주장하는 것</h2>
+<p><code>/agent-design-patterns/</code>는 이미 네 패턴이 각각 무엇인지, 각각이 읽히게 남기기 쉬운 문서(우리의 추론), 그리고 4부에서 인용한 계획에 대한 Ng 자신의 판정을 다룹니다. «while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do.» 이 노트는 그 페이지가 빼놓은 편지 두 편에서 같은 순위를 보탭니다. 4부 일주일 전인 3부에서 미리 순위를 말하고, 4부가 언급하지 않은 패턴 &#8212; 다중 에이전트 협업 &#8212; 까지 5부에서 확장합니다. 3부에서 도구 사용을 소개하며 이렇게 씁니다.</p>
+<blockquote><p>&#8220;In future letters, I&#8217;ll describe the Planning and Multi-agent collaboration design patterns. They allow AI agents to do much more but are less mature, less predictable &#8212; albeit very exciting &#8212; technologies.&#8221;</p></blockquote>
+<p>이틀 주 뒤, 다중 에이전트 협업으로 시리즈를 닫으며 같은 순위를 반대쪽에서 확인합니다.</p>
+<blockquote><p>&#8220;Like the design pattern of Planning, I find the output quality of multi-agent collaboration hard to predict, especially when allowing agents to interact freely and providing them with multiple tools. The more mature patterns of Reflection and Tool Use are more reliable.&#8221;</p></blockquote>
+<p>이는 각 패턴이 애플리케이션 결과를 얼마나 잘 개선하는지에 관한 말이지, 사람이 출력을 얼마나 자세히 봐야 하는지에 관한 말이 아닙니다 &#8212; 이 시리즈 어디에도 사람 검토를 요구하지 않고, MarsDawn을 언급하거나 Markdown 도구를 추천하지도 않습니다.</p>
+
+<h2>우리의 읽기이지 Ng의 것이 아님</h2>
+<p>Ng의 순위는 만드는 사람 자리에서의 출력 품질과 예측 가능성에 관한 것이지만, 대략 당신 자리에서 각 패턴의 종이 흔적을 얼마나 자세히 볼지에 맞춰집니다. 그가 더 믿을 만하다고 보는 성찰과 도구 사용은 대개 이미 끝난 일을 적는 것을 건넵니다 &#8212; 고쳐진 초안, 무엇이 돌았는지에 대한 보고서 &#8212; 그래서 주장 하나를 실제 출력과 맞춰 보면 대개 위험을 덮습니다. 예측하기 어렵다고 보는 계획과 다중 에이전트 협업은 대개 일이 일어나기 전에 쓰인 것, 또는 여러 에이전트의 여러 파일에 나뉜 것을 건넵니다.
+승인을 기다리는 계획, 또는 실행이 아직 시험하지 않은 에이전트 간 인수인계. 그 자신의 말로, 바로 그 두 문서에서 적힌 것과 실제로 일어날 일 사이의 틈이 가장 넓습니다 &#8212; <code>/reviewing-agent-plans/</code>가 Chip Huyen 에세이의 «왜 돌리기 전에 보나» 절에서 끌어오는 같은 지점입니다. 아무것도 돌기 전에 문제를 잡는 것이 가장 값싼 자리입니다.</p>
+
+<h2>MarsDawn이 돕는 곳, 돕지 않는 곳</h2>
+<p>MarsDawn은 Ng의 네 패턴 중 어느 것이 주어진 파일을 만들었는지 모르고, 예측 가능성으로 순위를 매기지도 않으며, 안에 AI 모델도 없습니다 &#8212; 그 순위가 시사하는 확인을 대신 해 주지 않습니다. 당신이 하는 동안 파일을 읽기 쉽게 유지합니다. 개요 탭(보기 &#9656; 사이드바 보기, &#8963;&#8984;S)이 긴 계획의 형태를 보여 주고, 소스와 렌더 미리보기가 나란히(⌘2) 있으며, 다중 에이전트 인수인계에서는 파일 &#9656; 폴더 열기&#8230; (&#8679;&#8984;O)으로 공유 폴더를 열면 서로 다른 에이전트가 쓸 때 약 1초 안에 파일 탭에 새 파일이 나타나고, 헤더가 git 브랜치나 worktree 이름을 보여 같은 이름의 파일이 서로 다른 에이전트 것인데 헷갈리지 않게 합니다.</p>
+
+<h2>사용해 보기</h2>
+<p>MarsDawn은 Mac App Store에 있습니다. 무료 <code>marsdawn</code> 명령줄 도구는 오늘부터 쓸 수 있습니다:</p>
+<pre><code>{k.INSTALL}</code></pre>
+<p>앱 없이 Markdown을 PDF로 내보냅니다.</p>
+<p><a href="/ko/cli/">명령줄</a> &#183; 구입 전에: <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+
+<h2>다음</h2>
+<ul>
+  <li>각 패턴이 건네기 쉬운 문서 전체: <a href="/ko/agent-design-patterns/">에이전트 설계 패턴 네 가지와 각각이 건네는 문서</a></li>
+  <li>계획이 돌기 전 5분 검토법: <a href="/ko/reviewing-agent-plans/">에이전트의 계획을 5분 만에 검토하기</a></li>
+  <li>시리즈로 돌아가기: <a href="/ko/reading-notes/">편집자의 독서 노트</a></li>
+</ul>
+
+<h2>출처</h2>
+<ul>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 1,&#8221; The Batch, March 20, 2024: <a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 3: Tool Use,&#8221; The Batch, April 3, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-3-tool-use/</a> (2026-09-26에 가져와 인용).</li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 4: Planning,&#8221; The Batch, April 10, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a> (<code>design/inbox/276-agent-blog-series.md</code>에서 그대로 재사용, 이미 <code>/agent-design-patterns/</code>에 인용됨).</li>
+  <li>Andrew Ng, &#8220;Agentic Design Patterns Part 5, Multi-Agent Collaboration,&#8221; The Batch, April 17, 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-5-multi-agent-collaboration/</a> (2026-09-26에 가져와 인용).</li>
+</ul>
+""",
+    }
 
     pages['privacy'] = {
         "title": '개인정보 처리방침 · MarsDawn',

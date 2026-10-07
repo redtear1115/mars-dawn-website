@@ -1,0 +1,81 @@
+name: Theme from pull request
+
+# A designer who uses git opens a pull request that adds or changes one themes/<id>/theme.json, with
+# every commit signed off. That PR is data, never code: a maintainer runs this workflow with its
+# number, and it reads that one blob through the API (mode 100644, at most 16 KB, the PR's only
+# changed path), checks author.github against the PR author and every commit's Signed-off-by, then
+# builds and opens a new PR from the target branch with the designer as co-author, and closes the
+# original with credit (#143; plan-website-104 W2, F2). No step checks out, runs or pushes to the
+# PR's code or fork. No secrets.
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: Number of the pull request that adds or changes one themes/<id>/theme.json
+        required: true
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: theme-from-pr
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions: {}
+    outputs:
+      action: ${{ steps.gate.outputs.action }}
+      source: ${{ steps.gate.outputs.source }}
+      number: ${{ steps.gate.outputs.number }}
+      sha256: ${{ steps.gate.outputs.sha256 }}
+      theme_id: ${{ steps.gate.outputs.theme_id }}
+      version: ${{ steps.gate.outputs.version }}
+      login: ${{ steps.gate.outputs.login }}
+      user_id: ${{ steps.gate.outputs.user_id }}
+      author_change: ${{ steps.gate.outputs.author_change }}
+      base_branch: ${{ steps.gate.outputs.base_branch }}
+      base_sha: ${{ steps.gate.outputs.base_sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Read the pull request's theme as data
+        id: gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ inputs.pr }}
+          THEME_MAINTAINER_IDS: ${{ vars.THEME_MAINTAINER_IDS }}
+          THEME_BASE_BRANCH: ${{ vars.THEME_BASE_BRANCH }}
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 scripts/submission/gate.py from-pr --out "$RUNNER_TEMP/theme"
+      - if: ${{ steps.gate.outputs.action == 'build' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: theme-source
+          path: ${{ runner.temp }}/theme/theme.json
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    needs: gate
+    if: ${{ needs.gate.outputs.action == 'build' }}
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    uses: ./.github/workflows/theme-pr.yml
+    with:
+      source: ${{ needs.gate.outputs.source }}
+      number: ${{ needs.gate.outputs.number }}
+      sha256: ${{ needs.gate.outputs.sha256 }}
+      theme_id: ${{ needs.gate.outputs.theme_id }}
+      version: ${{ needs.gate.outputs.version }}
+      login: ${{ needs.gate.outputs.login }}
+      user_id: ${{ needs.gate.outputs.user_id }}
+      author_change: ${{ needs.gate.outputs.author_change }}
+      base_branch: ${{ needs.gate.outputs.base_branch }}
+      base_sha: ${{ needs.gate.outputs.base_sha }}

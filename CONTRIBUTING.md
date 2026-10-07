@@ -39,6 +39,19 @@ when either side changes; nothing automated catches a mismatch there.
 The URLs `/privacy/`, `/support/` and their `/zh-hant/`, `/zh-hans/` and `/ja/` versions are public contracts
 that must keep working at the same paths. Don't move or remove them without a redirect plan.
 
+## Themes
+
+Make a theme in the [theme simulator](https://marsdawn.southern-light.dev/themes/new/) and press
+**Submit**: it opens a prefilled issue. Tick the Developer Certificate of Origin box and submit; a
+workflow checks the theme and replies. Your GitHub username and the theme's author, name and
+summary become public permanently. See README's "Theme submissions" for what happens next.
+
+If you use git, you can instead open a pull request that adds or changes **only**
+`themes/<id>/theme.json`, with `author.github` set to your GitHub login and **every commit signed
+off** (`git commit -s`, with your GitHub noreply address or an email GitHub links to your account).
+A maintainer turns it into the site's own pull request with you as co-author and closes yours with
+credit; your PR's code is never run.
+
 ## Issues and pull requests
 
 Pull requests target `main`. A small, focused PR is easier to review than one that bundles several

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>편집자의 독서 노트 · MarsDawn</title>
+<meta name="description" content="AI 에이전트를 만드는 사람들이 실제로 무엇을 주장하는지 살피는 짧은 노트 여섯 편 — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain, Andrew Ng — 그리고 각각이 그런 에이전트가 돌려준 것을 읽어야 하는 사람에게 무엇을 의미하는지.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/reading-notes/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/reading-notes/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/reading-notes/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/reading-notes/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/reading-notes/">
+<link rel="alternate" type="text/markdown" href="/ko/reading-notes/index.md">
+<meta property="og:title" content="편집자의 독서 노트 · MarsDawn">
+<meta property="og:description" content="AI 에이전트를 만드는 사람들이 실제로 무엇을 주장하는지 살피는 짧은 노트 여섯 편 — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain, Andrew Ng — 그리고 각각이 그런 에이전트가 돌려준 것을 읽어야 하는 사람에게 무엇을 의미하는지.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/reading-notes/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store에서 판매 중</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/reading-notes/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/reading-notes/" hreflang="fr" lang="fr">Français</a> · <a href="/es/reading-notes/" hreflang="es" lang="es">Español</a> · <a href="/ko/reading-notes/" hreflang="ko" aria-current="true" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>편집자의 독서 노트</h1>
+  <p>AI 에이전트가 어떻게 작동하는지에 대해 여섯 사람이 글을 썼습니다. 무엇으로 만들어지는지, 무엇이 시스템을 «agentic»하게 만드는지, 어떤 설계 패턴이 실제로 버티고 어떤 것은 아직 아닌지. 누구도 «에이전트가 돌려준 것을 어떻게 읽을지»는 쓰지 않았고, 누구도 MarsDawn을 언급하거나 Markdown 도구를 추천하지 않습니다. 우리는 각 글을 그 글의 조건으로 읽고, 우리 자신의 해석이 어디서 시작되는지 분명히 표시한 뒤, 모든 출처에 같은 질문을 던졌습니다. 이 글 때문에 폴더에 어떤 문서가 떨어지기 쉬운지, 그리고 그것을 읽을 때 MarsDawn은 어디에 도움이 되는가.</p>
+</section>
+
+<p>먼저 짧고 실용적인 쪽부터 보고 싶다면 <a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a>와 <a href="/ko/reviewing-agent-plans/">에이전트의 계획을 5분 만에 검토하기</a>부터 시작하세요. 이 여섯 노트는 그 페이지 뒤의 출처에 더 가까이 갑니다. 각각 단독으로 읽을 수 있으니 순서는 상관없습니다.</p>
+
+<ul>
+  <li><a href="/ko/reading-notes/anthropic-building-effective-agents/">Anthropic은 workflow와 agent를 나눕니다. 당신의 읽기는 어디에 가깝나요?</a> &#8212; 에이전트를 만드는 사람을 위한 Anthropic 가이드는 고정된 파이프라인과 다음 단계를 스스로 정하는 모델을 구분하고, «검토자»가 사람이 아니라 두 번째 LLM 호출인 workflow 하나를 그립니다.</li>
+  <li><a href="/ko/reading-notes/chip-huyen-agents/">Chip Huyen의 read-only/write action 구분, 승인하기 전에 왜 중요한지</a> &#8212; 에이전트에 대한 그녀의 담백한 정의, 그리고 보기만 하는 행동과 무언가를 바꾸는 행동의 차이. 5분 검토에서 가장 시간을 들일 만한 지점입니다.</li>
+  <li><a href="/ko/reading-notes/lilian-weng-llm-agents/">Lilian Weng이 2023년에 그린 에이전트 설계도, 각 부분이 남기는 파일</a> &#8212; 뇌, 계획, 기억, 도구 사용: 에이전트가 무엇으로 되어 있는지에 대한 그녀 자신의 틀, 그리고 문제가 생겼을 때 조정되지 않는 계획에서 그녀가 짚는 한계.</li>
+  <li><a href="/ko/reading-notes/harrison-chase-what-is-an-agent/">Harrison Chase의 스펙트럼: agentic할수록 더 지켜보고 싶어진다</a> &#8212; 에이전트에 대한 그의 기술적 정의, 그리고 시스템이 그 스펙트럼을 따라 갈수록 관측 가능성이 필요하다는 그의 주장.</li>
+  <li><a href="/ko/reading-notes/langchain-what-is-an-agent/">Jess Ou의 평가 파이프라인, 그중 한 단계는 여전히 당신의 일</a> &#8212; 2026년 7월 LangChain은 Harrison Chase의 2024년 글이 있던 주소에 Jess Ou가 쓴 새 «What is an AI agent?»를 올렸습니다. 정의는 거의 그의 것과 한 글자 같고, 자동 평가가 어디서 멈추고 어디서부터 사람이 나서야 하는지를 이어서 설명합니다.</li>
+  <li><a href="/ko/reading-notes/andrew-ng-design-patterns/">Andrew Ng이 자신의 설계 패턴을 예측 가능성으로 순위를 매깁니다</a> &#8212; The Batch의 편지 다섯 편에서, 어떤 패턴을 더 믿을 만하고 어떤 것을 예측하기 어렵다고 보는지 분명히 말합니다.</li>
+</ul>
+
+<p>이 여섯 편 중 어느 것도 에이전트 출력을 더 주의 깊게 읽어야 한다고 주장하지 않으며, 어느 것도 MarsDawn에 관한 글이 아닙니다. 그 연결을 짓는 것은 우리이고, 각 노트가 그렇게 말합니다.</p>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트">
+    <a href="/ko/support/">지원</a>
+    <a href="/ko/privacy/">개인정보 처리방침</a>
+    <a href="/ko/cli/">명령줄</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "dracula",
+  "version": "1.0.0",
+  "name": {
+    "en": "Dracula",
+    "zh-Hant": "德古拉",
+    "zh-Hans": "德古拉",
+    "ja": "ドラキュラ"
+  },
+  "summary": {
+    "en": "The classic dark vampire palette, with Alucard by day — adapted from Dracula Theme, adjusted for readability",
+    "zh-Hant": "經典吸血鬼深色調色盤，白日則用 Alucard 版本 — 改編自 Dracula Theme，為可讀性調整"
+  },
+  "fontDesign": "sans",
+  "scenarios": [
+    "technical-docs",
+    "agent-review"
+  ],
+  "author": {
+    "name": "Southern Light",
+    "github": "redtear1115"
+  },
+  "license": "Apache-2.0",
+  "light": {
+    "background": "#FFFBEB",
+    "surface": "#CFCFDE",
+    "text": "#1F1F1F",
+    "muted": "#5F5942",
+    "border": "#E8DFBE",
+    "heading": "#644AC9",
+    "accent": "#A3144D",
+    "link": "#036A96",
+    "quote": "#6C664B",
+    "syntax": {
+      "keyword": "#A3144D",
+      "string": "#6A5811",
+      "comment": "#5F5942",
+      "number": "#904412",
+      "function": "#126809",
+      "type": "#035F87"
+    },
+    "diagram": {
+      "node": "#EFE9D8",
+      "nodeBorder": "#A34D14",
+      "text": "#1F1F1F",
+      "line": "#6C664B",
+      "secondary": "#E3E9DE",
+      "tertiary": "#F1E6DE",
+      "note": "#F3ECD2"
+    }
+  },
+  "dark": {
+    "background": "#282A36",
+    "surface": "#44475A",
+    "text": "#F8F8F2",
+    "muted": "#AEB6D0",
+    "border": "#3A3D4E",
+    "heading": "#BD93F9",
+    "accent": "#FF79C6",
+    "link": "#8BE9FD",
+    "quote": "#6272A4",
+    "syntax": {
+      "keyword": "#FFBEE3",
+      "string": "#F1FA8C",
+      "comment": "#ADB6D0",
+      "number": "#FFB86C",
+      "function": "#50FA7B",
+      "type": "#8BE9FD"
+    },
+    "diagram": {
+      "node": "#3B3350",
+      "nodeBorder": "#BD93F9",
+      "text": "#F8F8F2",
+      "line": "#6272A4",
+      "secondary": "#2E3B34",
+      "tertiary": "#3A2B35",
+      "note": "#3A3720"
+    }
+  },
+  "style": {
+    "h1": {
+      "decoration": {
+        "type": "shortRule",
+        "color": "accent"
+      }
+    },
+    "h2": {
+      "decoration": {
+        "type": "none"
+      }
+    },
+    "hr": {
+      "style": {
+        "type": "line",
+        "color": "accent",
+        "thickness": 2
+      }
+    },
+    "table": {
+      "header": {
+        "type": "accentRule",
+        "color": "accent"
+      }
+    },
+    "blockquote": {
+      "style": {
+        "type": "bar",
+        "width": 3
+      }
+    },
+    "listMarker": "accent",
+    "inlineCode": "keyword"
+  }
+}
