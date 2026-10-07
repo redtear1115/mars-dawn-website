@@ -45,7 +45,7 @@ def tree_hash(path: Path) -> str:
 def make_scratch(tmp: Path) -> Path:
     scratch = tmp / "site"
     ignore = shutil.ignore_patterns("__pycache__", ".build", ".git", ".claude")
-    for name in ("scripts", "content", "public"):
+    for name in ("scripts", "content", "public", "vendor", "themes"):
         shutil.copytree(REPO / name, scratch / name, ignore=ignore)
     (scratch / "tools" / "hero-render").mkdir(parents=True)
     shutil.copy(REPO / "tools" / "hero-render" / "Package.swift", scratch / "tools" / "hero-render" / "Package.swift")
@@ -89,6 +89,7 @@ sys.dont_write_bytecode = True
 import build_pages as b, copy_ja
 t = copy_ja.build(b._make_k("ja"))
 t["ui"] = {key: v for key, v in t["ui"].items() if key not in b.templates_pages.UI_LABELS["en"]}
+t["pages"].setdefault("themes/gallery", b.GALLERY_PAGES[("ja", "themes/gallery")])
 t["tables"] = b.locale_tables("ja")
 t["tables"]["hero_window_markdown"] = {"template": "Fixture {looks} / {themes} / {layouts}", "sep": ", "}
 for slug in ("privacy", "support"):
@@ -173,7 +174,7 @@ def run() -> int:
         built = tree_hash(pub)
         en_pages = sorted(p.parent.relative_to(pub) for p in pub.rglob("index.html")
                           if p.relative_to(pub).parts[0] not in ("zh-hant", "zh-hans", "ja", "de", "assets"))
-        r.expect(all((pub / "de" / p / "index.html").is_file() for p in en_pages) and len(en_pages) == 29,
+        r.expect(all((pub / "de" / p / "index.html").is_file() for p in en_pages) and len(en_pages) == 38,
                  f"all {len(en_pages)} en pages exist under /de/ with the same slugs")
         sh(scratch, "scripts/build_pages.py")
         r.expect(tree_hash(pub) == built, "a second build changes nothing")
@@ -181,9 +182,9 @@ def run() -> int:
         r.expect('<html lang="de"' in home and all(f'hreflang="{l}"' in home for l in ("en", "zh-Hant", "zh-Hans", "ja", "de", "x-default")),
                  "<html lang=de>, and hreflang names all five locales and x-default")
         sitemap = (pub / "sitemap.xml").read_text(encoding="utf-8")
-        r.expect(sitemap.count("<loc>https://marsdawn.southern-light.dev/de/") == 29, "the sitemap lists 29 /de/ URLs")
+        r.expect(sitemap.count("<loc>https://marsdawn.southern-light.dev/de/") == 38, "the sitemap lists 38 /de/ URLs")
         urls = sh(scratch, "scripts/indexnow_urls.py", "--sitemap").stdout
-        r.expect(urls.count("/de/") == 29, "indexnow_urls.py --sitemap lists them")
+        r.expect(urls.count("/de/") == 38, "indexnow_urls.py --sitemap lists them")
         r.expect("/de/" in (pub / "llms.txt").read_text(encoding="utf-8"), "llms.txt links /de/")
         checks = [("check_hreflang.py",), ("check_links.py",), ("check_invariants.py",), ("check_locales.py",), ("check_offers.py",),
                   ("check_hero.py",), ("check_legal_render.py", "--self-test"), ("check_legal_render.py",)]
