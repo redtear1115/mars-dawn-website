@@ -34,7 +34,7 @@ MarsDawn 没办法帮你判断计划里哪一步是 read-only、哪一步是 wri
 
 ## 试试看
 
-MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
+MarsDawn 已在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn

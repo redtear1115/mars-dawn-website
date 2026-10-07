@@ -36,7 +36,7 @@ MarsDawn 不知道一份檔案是哪種 workflow 模式做出來的，裡面也�
 
 ## 試試看
 
-MarsDawn 即將在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
+MarsDawn 已在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn

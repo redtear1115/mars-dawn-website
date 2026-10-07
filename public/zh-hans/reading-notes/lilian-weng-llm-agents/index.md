@@ -36,7 +36,7 @@ MarsDawn 里没有 AI 模型，没办法告诉你一份计划是不是已经悄�
 
 ## 试试看
 
-MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
+MarsDawn 已在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn

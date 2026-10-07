@@ -1205,7 +1205,7 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
 <p>MarsDawn 不知道一份文件是哪种 workflow 模式做出来的，里面也没有 AI 模型&#8212;&#8212;它不会自己跑一次 evaluator 步骤，也没办法告诉你 Anthropic 描述的那个评估到底做得好不好。它做的是：侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页列出一份 orchestrator 拼出来的长文件的所有标题，点一下就跳过去；源代码和排好的页面并排（&#8984;2），一起滚动，Mermaid 图表和 KaTeX 数学式都直接画出来。agent 读到一半改写文件的话，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未保存的修改。“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）把你的位置拷贝成 <code>docs/plan.md:42</code>，直接贴回 agent 的对话里就好。</p>
 
 <h2>试试看</h2>
-<p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 导出成 PDF。</p>
 <p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
@@ -1252,7 +1252,7 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
 <p>MarsDawn 没办法帮你判断计划里哪一步是 read-only、哪一步是 write&#8212;&#8212;这是文字没标出来的判断，app 里的任何东西都不会替你读出语义。它里面也没有 AI 模型：不会帮你标出风险高的那一行，不会替你跑“规划到底有多难”的检查，也不会给计划打分数。它做的是让文件在你自己做判断的时候保持好读：侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页让你先看过计划的架构，再逐行读；源代码和排好的页面并排（&#8984;2），步骤图就不会卡在 Mermaid 源代码那个阶段；“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）把你的位置拷贝成 <code>plan.md:10</code>，你一发现顺序不对的 write 动作，马上就能贴出去当反馈。</p>
 
 <h2>试试看</h2>
-<p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 导出成 PDF。</p>
 <p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
@@ -1300,7 +1300,7 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
 <p>MarsDawn 里没有 AI 模型，没办法告诉你一份计划是不是已经悄悄偏离了实际发生的事，也不会替你分辨一份文件是规划文件、记忆文件还是工具使用报告&#8212;&#8212;这是读懂内容之后才能做的判断，要你自己来。它做的是：侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页一眼看出长计划的架构；源代码和排好的预览并排（&#8984;2），Mermaid 和 KaTeX 都直接画出来；agent 读到一半改写文件的话，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未保存的修改&#8212;&#8212;这一点特别有用，因为一份被悄悄改过的计划，正是她“Challenges”那段从模型那一侧描述的失败模式。</p>
 
 <h2>试试看</h2>
-<p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 导出成 PDF。</p>
 <p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
@@ -1344,7 +1344,7 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
 <p>MarsDawn 不会去观察一个正在运作的 agent 的内部&#8212;&#8212;它里面没有 AI 模型，也没有连到产生这份文件的任何框架，所以没办法告诉你某个 agent 在 Chase 的光谱上落在哪里。它处理的是事后落到你手上的那份文件：侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页让你看清楚一份长报告的架构；源代码和排好的预览并排（&#8984;2），处理图表和数学式；agent 改写文件时会重新加载，停在你原本读到的位置，前提是你自己没有未保存的修改&#8212;&#8212;这就是“盯着还在动的东西”的文件版本。“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）和“拷贝给 AI”（&#8963;&#8997;&#8984;C）让你精准指出哪一步走偏了，等于是文件版的“把跑偏的 agent 拉回正轨”。</p>
 
 <h2>试试看</h2>
-<p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 导出成 PDF。</p>
 <p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
@@ -1388,7 +1388,7 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
 <p>MarsDawn 不是评测流程，里面也没有 AI 模型&#8212;&#8212;它不会替一次执行记录打分数，不会跑 LLM-as-a-judge，也不会替你决定哪些动作敏感到要先暂停。它做的，正是她这套流程还留给人的那个时刻：直接把东西读过一遍。侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页列出一份长报告的所有标题；源代码和排好的预览并排（&#8984;2），Mermaid 和 KaTeX 都直接画出来；“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）搭配“拷贝给 AI”（&#8963;&#8997;&#8984;C），让你把一次抽查变成 agent 看得懂、改得动的反馈。</p>
 
 <h2>试试看</h2>
-<p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 导出成 PDF。</p>
 <p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
@@ -1432,7 +1432,7 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
 <p>MarsDawn 不知道一份文件是 Ng 四种模式里哪一种做出来的，也不会替任何东西按可预测程度排序，里面也没有 AI 模型&#8212;&#8212;他排序背后暗示值得做的那些检查，它不会替你做。它做的是让文件在你自己检查的时候保持好读：侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页看得出一份长计划的架构；源代码和排好的预览并排（&#8984;2）；multi-agent 交接的情况下，用“文件 &#9656; 打开文件夹&#8230;”（&#8679;&#8984;O）打开共用的文件夹，不同 agent 写出新文件时，大约一秒内就会出现在“文件”标签页，清单上方也会标出 git 分支或工作树，两份不同 agent 写的同名文件就不会搞混。</p>
 
 <h2>试试看</h2>
-<p>MarsDawn 即将在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
 <pre><code>{k.INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 导出成 PDF。</p>
 <p><a href="/zh-hans/cli/">命令行工具</a> &#183; 买之前先看：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>

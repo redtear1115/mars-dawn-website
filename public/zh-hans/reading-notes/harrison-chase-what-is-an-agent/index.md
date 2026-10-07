@@ -28,7 +28,7 @@ MarsDawn 不会去观察一个正在运作的 agent 的内部——它里面没�
 
 ## 试试看
 
-MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
+MarsDawn 已在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn

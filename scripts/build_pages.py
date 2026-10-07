@@ -3034,7 +3034,7 @@ READING_NOTES_PAGES = {
 <p>MarsDawn doesn't know which workflow pattern produced a file, and it has no AI model inside &#8212; it won't run an evaluator step of its own, and it won't tell you whether the one Anthropic describes did its job. What it does: the Outline tab in the sidebar (View &#9656; Show Sidebar, &#8963;&#8984;S) lists the headings of a long, orchestrator-assembled file, and clicking one jumps there. The source and the rendered page sit side by side (&#8984;2) and scroll together, with Mermaid diagrams and KaTeX math drawn out rather than left as source. If the agent revises the file while you're reading, MarsDawn reloads it and keeps your place, as long as you have no unsaved edits of your own. Edit &#9656; Copy Reference (&#8997;&#8984;C) copies your place as <code>docs/plan.md:42</code>, ready to paste back into the agent's chat.</p>
 
 <h2>Try it</h2>
-<p>MarsDawn is coming soon to the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
+<p>MarsDawn is on the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>It exports Markdown to PDF without the app.</p>
 <p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
@@ -3076,7 +3076,7 @@ READING_NOTES_PAGES = {
 <p>MarsDawn can't tell a read-only step from a write step in a plan &#8212; that's a judgment call the text doesn't label, and nothing in the app reads for meaning. It has no AI model inside: it won't flag the risky line for you, run the planning-hardness check, or grade the plan. What it does is keep the file legible while you make that call yourself: the Outline tab (View &#9656; Show Sidebar, &#8963;&#8984;S) lets you scan a plan's shape before reading it line by line, the source and the rendered page sit side by side (&#8984;2) so a diagram of the steps doesn't stay stuck as raw Mermaid text, and Edit &#9656; Copy Reference (&#8997;&#8984;C) turns your place in the file into <code>plan.md:10</code>, ready to paste as feedback the moment you spot a write action in the wrong order.</p>
 
 <h2>Try it</h2>
-<p>MarsDawn is coming soon to the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
+<p>MarsDawn is on the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>It exports Markdown to PDF without the app.</p>
 <p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
@@ -3121,7 +3121,7 @@ READING_NOTES_PAGES = {
 <p>MarsDawn has no AI model inside, so it can't tell you whether a plan has quietly drifted from what actually happened, and it doesn't distinguish a planning file from a memory file from a tool-use report &#8212; that's a read on the content, which is yours to make. What it does: the Outline tab (View &#9656; Show Sidebar, &#8963;&#8984;S) shows a long plan's shape at a glance, the source and rendered preview sit side by side (&#8984;2) with Mermaid and KaTeX drawn out, and if the agent rewrites the file mid-read, MarsDawn reloads it and keeps your place, as long as you have no unsaved edits of your own &#8212; useful specifically because a plan that's been silently revised is exactly the failure mode her &#8220;Challenges&#8221; section describes from the model's side.</p>
 
 <h2>Try it</h2>
-<p>MarsDawn is coming soon to the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
+<p>MarsDawn is on the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>It exports Markdown to PDF without the app.</p>
 <p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
@@ -3165,7 +3165,7 @@ His &#8220;observe what is going on inside&#8221; is about a running system's in
 <p>MarsDawn doesn't observe a running agent's internals &#8212; it has no AI model inside and no connection to whatever framework produced the file, so it can't tell you where on Chase's spectrum a given agent sat. It works on the document that lands afterward: the Outline tab (View &#9656; Show Sidebar, &#8963;&#8984;S) for a long report's shape, the source and rendered preview side by side (&#8984;2) for diagrams and math, and live reload that keeps your place when the agent rewrites the file, as long as you have no unsaved edits of your own &#8212; the file-level version of watching something that's still moving. Edit &#9656; Copy Reference (&#8997;&#8984;C) and Copy for AI (&#8963;&#8997;&#8984;C) let you point at exactly where a step went off track, which is the document equivalent of nudging a running agent back on course.</p>
 
 <h2>Try it</h2>
-<p>MarsDawn is coming soon to the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
+<p>MarsDawn is on the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>It exports Markdown to PDF without the app.</p>
 <p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
@@ -3208,7 +3208,7 @@ That's not a criticism of the piece &#8212; it's her stated goal, and a reasonab
 <p>MarsDawn isn't an evals pipeline and has no AI model inside &#8212; it won't score a trace, run an LLM-as-a-judge pass, or decide which actions are sensitive enough to pause. It's built for the moment her pipeline still hands to a person: reading the thing directly. The Outline tab (View &#9656; Show Sidebar, &#8963;&#8984;S) lists a long report's headings, the source and rendered preview sit side by side (&#8984;2) with Mermaid and KaTeX drawn out, and Edit &#9656; Copy Reference (&#8997;&#8984;C) with Copy for AI (&#8963;&#8997;&#8984;C) let you turn a spot check into precise feedback the agent can act on.</p>
 
 <h2>Try it</h2>
-<p>MarsDawn is coming soon to the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
+<p>MarsDawn is on the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>It exports Markdown to PDF without the app.</p>
 <p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
@@ -3251,7 +3251,7 @@ a plan waiting for a go-ahead, or a handoff between agents that hasn't been test
 <p>MarsDawn doesn't know which of Ng's four patterns produced a given file, doesn't rank anything by predictability, and has no AI model inside &#8212; it won't do the checking his ranking implies is worth doing. It keeps the file readable while you do that yourself: the Outline tab (View &#9656; Show Sidebar, &#8963;&#8984;S) shows a long plan's shape, the source and rendered preview sit side by side (&#8984;2), and for a multi-agent handoff, opening the shared folder with File &#9656; Open Folder&#8230; (&#8679;&#8984;O) shows new files in the Files tab within about a second as different agents write them, with the header naming the git branch or worktree so two files with the same name from different agents don't get confused for each other.</p>
 
 <h2>Try it</h2>
-<p>MarsDawn is coming soon to the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
+<p>MarsDawn is on the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>It exports Markdown to PDF without the app.</p>
 <p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
@@ -3325,7 +3325,7 @@ a plan waiting for a go-ahead, or a handoff between agents that hasn't been test
 <p>MarsDawn 不知道一份檔案是哪種 workflow 模式做出來的，裡面也沒有 AI 模型&#8212;&#8212;它不會自己跑一次 evaluator 步驟，也沒辦法告訴你 Anthropic 描述的那個評估到底做得好不好。它做的是：側邊欄（「顯示方式 &#9656; 顯示側邊欄」，&#8963;&#8984;S）的「大綱」分頁列出一份 orchestrator 拼出來的長檔案的所有標題，點一下就跳過去；原始碼和排好的頁面並排（&#8984;2），一起捲動，Mermaid 圖表和 KaTeX 數學式都直接畫出來。agent 讀到一半改寫檔案的話，MarsDawn 會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改。「編輯 &#9656; 拷貝引用」（&#8997;&#8984;C）把你的位置拷貝成 <code>docs/plan.md:42</code>，直接貼回 agent 的對話裡就好。</p>
 
 <h2>試試看</h2>
-<p>MarsDawn 即將在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 輸出成 PDF。</p>
 <p><a href="/zh-hant/cli/">命令列工具</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
@@ -3372,7 +3372,7 @@ a plan waiting for a go-ahead, or a handoff between agents that hasn't been test
 <p>MarsDawn 沒辦法幫你判斷計畫裡哪一步是 read-only、哪一步是 write&#8212;&#8212;這是文字沒標出來的判斷，app 裡的任何東西都不會替你讀出語意。它裡面也沒有 AI 模型：不會幫你標出風險高的那一行，不會替你跑「規劃到底有多難」的檢查，也不會給計畫打分數。它做的是讓檔案在你自己做判斷的時候保持好讀：側邊欄（「顯示方式 &#9656; 顯示側邊欄」，&#8963;&#8984;S）的「大綱」分頁讓你先看過計畫的架構，再逐行讀；原始碼和排好的頁面並排（&#8984;2），步驟圖就不會卡在 Mermaid 原始碼那個階段；「編輯 &#9656; 拷貝引用」（&#8997;&#8984;C）把你的位置拷貝成 <code>plan.md:10</code>，你一發現順序不對的 write 動作，馬上就能貼出去當回饋。</p>
 
 <h2>試試看</h2>
-<p>MarsDawn 即將在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 輸出成 PDF。</p>
 <p><a href="/zh-hant/cli/">命令列工具</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
@@ -3420,7 +3420,7 @@ a plan waiting for a go-ahead, or a handoff between agents that hasn't been test
 <p>MarsDawn 裡沒有 AI 模型，沒辦法告訴你一份計畫是不是已經悄悄偏離了實際發生的事，也不會替你分辨一份檔案是規劃檔、記憶檔還是工具使用報告&#8212;&#8212;這是讀懂內容之後才能做的判斷，要你自己來。它做的是：側邊欄（「顯示方式 &#9656; 顯示側邊欄」，&#8963;&#8984;S）的「大綱」分頁一眼看出長計畫的架構；原始碼和排好的預覽並排（&#8984;2），Mermaid 和 KaTeX 都直接畫出來；agent 讀到一半改寫檔案的話，MarsDawn 會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改&#8212;&#8212;這一點特別有用，因為一份被悄悄改過的計畫，正是她「Challenges」那段從模型那一側描述的失敗模式。</p>
 
 <h2>試試看</h2>
-<p>MarsDawn 即將在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 輸出成 PDF。</p>
 <p><a href="/zh-hant/cli/">命令列工具</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
@@ -3466,7 +3466,7 @@ Chase 自己的回應是：「I really agree with this viewpoint and I think And
 <p>MarsDawn 不會去觀察一個正在運作的 agent 的內部&#8212;&#8212;它裡面沒有 AI 模型，也沒有連到產生這份檔案的任何框架，所以沒辦法告訴你某個 agent 在 Chase 的光譜上落在哪裡。它處理的是事後落到你手上的那份文件：側邊欄（「顯示方式 &#9656; 顯示側邊欄」，&#8963;&#8984;S）的「大綱」分頁讓你看清楚一份長報告的架構；原始碼和排好的預覽並排（&#8984;2），處理圖表和數學式；agent 改寫檔案時會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改&#8212;&#8212;這就是「盯著還在動的東西」的檔案版本。「編輯 &#9656; 拷貝引用」（&#8997;&#8984;C）和「拷貝給 AI」（&#8963;&#8997;&#8984;C）讓你精準指出哪一步走偏了，等於是文件版的「把跑偏的 agent 拉回正軌」。</p>
 
 <h2>試試看</h2>
-<p>MarsDawn 即將在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 輸出成 PDF。</p>
 <p><a href="/zh-hant/cli/">命令列工具</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
@@ -3511,7 +3511,7 @@ Chase 自己的回應是：「I really agree with this viewpoint and I think And
 <p>MarsDawn 不是評測流程，裡面也沒有 AI 模型&#8212;&#8212;它不會替一次執行紀錄打分數，不會跑 LLM-as-a-judge，也不會替你決定哪些動作敏感到要先暫停。它做的，正是她這套流程還留給人的那個時刻：直接把東西讀過一遍。側邊欄（「顯示方式 &#9656; 顯示側邊欄」，&#8963;&#8984;S）的「大綱」分頁列出一份長報告的所有標題；原始碼和排好的預覽並排（&#8984;2），Mermaid 和 KaTeX 都直接畫出來；「編輯 &#9656; 拷貝引用」（&#8997;&#8984;C）搭配「拷貝給 AI」（&#8963;&#8997;&#8984;C），讓你把一次抽查變成 agent 看得懂、改得動的回饋。</p>
 
 <h2>試試看</h2>
-<p>MarsDawn 即將在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 輸出成 PDF。</p>
 <p><a href="/zh-hant/cli/">命令列工具</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
@@ -3557,7 +3557,7 @@ Chase 自己的回應是：「I really agree with this viewpoint and I think And
 <p>MarsDawn 不知道一份檔案是 Ng 四種模式裡哪一種做出來的，也不會替任何東西按可預測程度排序，裡面也沒有 AI 模型&#8212;&#8212;他排序背後暗示值得做的那些檢查，它不會替你做。它做的是讓檔案在你自己檢查的時候保持好讀：側邊欄（「顯示方式 &#9656; 顯示側邊欄」，&#8963;&#8984;S）的「大綱」分頁看得出一份長計畫的架構；原始碼和排好的預覽並排（&#8984;2）；multi-agent 交接的情況下，用「檔案 &#9656; 打開資料夾⋯」（&#8679;&#8984;O）打開共用的資料夾，不同 agent 寫出新檔案時，大約一秒內就會出現在「檔案」分頁，清單上方也會標出 git 分支或工作樹，兩份不同 agent 寫的同名檔案就不會搞混。</p>
 
 <h2>試試看</h2>
-<p>MarsDawn 即將在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
+<p>MarsDawn 已在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
 <pre><code>{_INSTALL}</code></pre>
 <p>它不需要 app 就能把 Markdown 輸出成 PDF。</p>
 <p><a href="/zh-hant/cli/">命令列工具</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>

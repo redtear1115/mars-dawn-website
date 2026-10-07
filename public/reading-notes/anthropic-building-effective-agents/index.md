@@ -30,7 +30,7 @@ MarsDawn doesn't know which workflow pattern produced a file, and it has no AI m
 
 ## Try it
 
-MarsDawn is coming soon to the Mac App Store. The free `marsdawn` command-line tool works today:
+MarsDawn is on the Mac App Store. The free `marsdawn` command-line tool works today:
 
 ```
 brew install redtear1115/tap/marsdawn

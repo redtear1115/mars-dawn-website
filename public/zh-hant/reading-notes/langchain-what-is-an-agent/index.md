@@ -28,7 +28,7 @@ MarsDawn 不是評測流程，裡面也沒有 AI 模型——它不會替一次�
 
 ## 試試看
 
-MarsDawn 即將在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
+MarsDawn 已在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn

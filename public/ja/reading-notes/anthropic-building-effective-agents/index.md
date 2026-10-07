@@ -36,7 +36,7 @@ MarsDawn は、あるファイルがどの workflow パターンから生まれ�
 
 ## 試してみる
 
-MarsDawn は近日 Mac App Store に登場予定です。無料の `marsdawn` コマンドラインツールは今日から使えます：
+MarsDawn は Mac App Store で配信中です。無料の `marsdawn` コマンドラインツールは今日から使えます：
 
 ```
 brew install redtear1115/tap/marsdawn

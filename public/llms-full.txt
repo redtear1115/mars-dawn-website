@@ -1639,7 +1639,7 @@ MarsDawn doesn't know which workflow pattern produced a file, and it has no AI m
 
 ## Try it
 
-MarsDawn is coming soon to the Mac App Store. The free `marsdawn` command-line tool works today:
+MarsDawn is on the Mac App Store. The free `marsdawn` command-line tool works today:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -1691,7 +1691,7 @@ MarsDawn can't tell a read-only step from a write step in a plan — that's a ju
 
 ## Try it
 
-MarsDawn is coming soon to the Mac App Store. The free `marsdawn` command-line tool works today:
+MarsDawn is on the Mac App Store. The free `marsdawn` command-line tool works today:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -1749,7 +1749,7 @@ MarsDawn has no AI model inside, so it can't tell you whether a plan has quietly
 
 ## Try it
 
-MarsDawn is coming soon to the Mac App Store. The free `marsdawn` command-line tool works today:
+MarsDawn is on the Mac App Store. The free `marsdawn` command-line tool works today:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -1801,7 +1801,7 @@ MarsDawn doesn't observe a running agent's internals — it has no AI model insi
 
 ## Try it
 
-MarsDawn is coming soon to the Mac App Store. The free `marsdawn` command-line tool works today:
+MarsDawn is on the Mac App Store. The free `marsdawn` command-line tool works today:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -1853,7 +1853,7 @@ MarsDawn isn't an evals pipeline and has no AI model inside — it won't score a
 
 ## Try it
 
-MarsDawn is coming soon to the Mac App Store. The free `marsdawn` command-line tool works today:
+MarsDawn is on the Mac App Store. The free `marsdawn` command-line tool works today:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -1905,7 +1905,7 @@ MarsDawn doesn't know which of Ng's four patterns produced a given file, doesn't
 
 ## Try it
 
-MarsDawn is coming soon to the Mac App Store. The free `marsdawn` command-line tool works today:
+MarsDawn is on the Mac App Store. The free `marsdawn` command-line tool works today:
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -3825,7 +3825,7 @@ MarsDawn 不知道一份檔案是哪種 workflow 模式做出來的，裡面也�
 
 ## 試試看
 
-MarsDawn 即將在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
+MarsDawn 已在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -3887,7 +3887,7 @@ MarsDawn 沒辦法幫你判斷計畫裡哪一步是 read-only、哪一步是 wri
 
 ## 試試看
 
-MarsDawn 即將在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
+MarsDawn 已在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -3951,7 +3951,7 @@ MarsDawn 裡沒有 AI 模型，沒辦法告訴你一份計畫是不是已經悄�
 
 ## 試試看
 
-MarsDawn 即將在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
+MarsDawn 已在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -4007,7 +4007,7 @@ MarsDawn 不會去觀察一個正在運作的 agent 的內部——它裡面沒�
 
 ## 試試看
 
-MarsDawn 即將在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
+MarsDawn 已在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -4063,7 +4063,7 @@ MarsDawn 不是評測流程，裡面也沒有 AI 模型——它不會替一次�
 
 ## 試試看
 
-MarsDawn 即將在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
+MarsDawn 已在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -4119,7 +4119,7 @@ MarsDawn 不知道一份檔案是 Ng 四種模式裡哪一種做出來的，也�
 
 ## 試試看
 
-MarsDawn 即將在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
+MarsDawn 已在 Mac App Store 上架。免費的 `marsdawn` 命令列工具現在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -6029,7 +6029,7 @@ MarsDawn 不知道一份文件是哪种 workflow 模式做出来的，里面也�
 
 ## 试试看
 
-MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
+MarsDawn 已在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -6091,7 +6091,7 @@ MarsDawn 没办法帮你判断计划里哪一步是 read-only、哪一步是 wri
 
 ## 试试看
 
-MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
+MarsDawn 已在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -6155,7 +6155,7 @@ MarsDawn 里没有 AI 模型，没办法告诉你一份计划是不是已经悄�
 
 ## 试试看
 
-MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
+MarsDawn 已在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -6211,7 +6211,7 @@ MarsDawn 不会去观察一个正在运作的 agent 的内部——它里面没�
 
 ## 试试看
 
-MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
+MarsDawn 已在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -6267,7 +6267,7 @@ MarsDawn 不是评测流程，里面也没有 AI 模型——它不会替一次�
 
 ## 试试看
 
-MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
+MarsDawn 已在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -6323,7 +6323,7 @@ MarsDawn 不知道一份文件是 Ng 四种模式里哪一种做出来的，也�
 
 ## 试试看
 
-MarsDawn 即将在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
+MarsDawn 已在 Mac App Store 上架。免费的 `marsdawn` 命令行工具现在就能用：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -8233,7 +8233,7 @@ MarsDawn は、あるファイルがどの workflow パターンから生まれ�
 
 ## 試してみる
 
-MarsDawn は近日 Mac App Store に登場予定です。無料の `marsdawn` コマンドラインツールは今日から使えます：
+MarsDawn は Mac App Store で配信中です。無料の `marsdawn` コマンドラインツールは今日から使えます：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -8295,7 +8295,7 @@ MarsDawn は、計画のどのステップが read-only でどれが write な�
 
 ## 試してみる
 
-MarsDawn は近日 Mac App Store に登場予定です。無料の `marsdawn` コマンドラインツールは今日から使えます：
+MarsDawn は Mac App Store で配信中です。無料の `marsdawn` コマンドラインツールは今日から使えます：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -8359,7 +8359,7 @@ MarsDawn の中に AI モデルはなく、ある計画が実際に起きたこ�
 
 ## 試してみる
 
-MarsDawn は近日 Mac App Store に登場予定です。無料の `marsdawn` コマンドラインツールは今日から使えます：
+MarsDawn は Mac App Store で配信中です。無料の `marsdawn` コマンドラインツールは今日から使えます：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -8415,7 +8415,7 @@ MarsDawn は、動いているエージェントの内部を観察したりは�
 
 ## 試してみる
 
-MarsDawn は近日 Mac App Store に登場予定です。無料の `marsdawn` コマンドラインツールは今日から使えます：
+MarsDawn は Mac App Store で配信中です。無料の `marsdawn` コマンドラインツールは今日から使えます：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -8471,7 +8471,7 @@ MarsDawn は評価パイプラインではなく、中に AI モデルもない�
 
 ## 試してみる
 
-MarsDawn は近日 Mac App Store に登場予定です。無料の `marsdawn` コマンドラインツールは今日から使えます：
+MarsDawn は Mac App Store で配信中です。無料の `marsdawn` コマンドラインツールは今日から使えます：
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -8527,7 +8527,7 @@ MarsDawn は、あるファイルが Ng の 4 つのパターンのどれから�
 
 ## 試してみる
 
-MarsDawn は近日 Mac App Store に登場予定です。無料の `marsdawn` コマンドラインツールは今日から使えます：
+MarsDawn は Mac App Store で配信中です。無料の `marsdawn` コマンドラインツールは今日から使えます：
 
 ```
 brew install redtear1115/tap/marsdawn

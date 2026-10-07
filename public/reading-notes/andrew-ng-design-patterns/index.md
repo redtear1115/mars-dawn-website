@@ -24,7 +24,7 @@ MarsDawn doesn't know which of Ng's four patterns produced a given file, doesn't
 
 ## Try it
 
-MarsDawn is coming soon to the Mac App Store. The free `marsdawn` command-line tool works today:
+MarsDawn is on the Mac App Store. The free `marsdawn` command-line tool works today:
 
 ```
 brew install redtear1115/tap/marsdawn
