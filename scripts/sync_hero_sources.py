@@ -41,6 +41,9 @@ KIT_TAG = "0.5.2"
 # The parts of the snapshot the site shows. The rest (which commits were read) is provenance.
 SHOWN = ("themes", "labels", "editor", "highlighter", "sample")
 LOCALES = {"en": "en", "zh-hant": "zh-Hant", "zh-hans": "zh-Hans", "ja": "ja"}
+# de, fr, es and ko (#162) are read only when asked for (--with) or already in the snapshot: until
+# the app's and the kit's strings for them exist at the pinned tags, reading them would fail.
+PLANNED_LOCALES = ("de", "fr", "es", "ko")
 THEME_ORDER = ["dawn", "classic", "modern", "vivid"]
 PALETTE_KEYS = ["background", "surface", "text", "muted", "border", "heading", "accent", "link", "quote"]
 # The syntax colours the site uses: code in the preview (keyword), and the editor's (EDITOR).
@@ -240,7 +243,13 @@ def main() -> int:
     parser.add_argument("--app-ref", default="origin/main")
     parser.add_argument("--check", action="store_true", help="compare with the snapshot instead of writing it")
     parser.add_argument("--snapshot", type=Path, default=SNAPSHOT)
+    parser.add_argument("--with", dest="with_locales", nargs="*", default=[], choices=PLANNED_LOCALES,
+                        help="also read these planned locales into the snapshot (those already in it are always read)")
     args = parser.parse_args()
+    known = json.loads(args.snapshot.read_text(encoding="utf-8")).get("labels", {}) if args.snapshot.is_file() else {}
+    for locale in PLANNED_LOCALES:
+        if locale in args.with_locales or locale in known:
+            LOCALES[locale] = locale
     new = collect(args.kit, args.app, args.app_ref)
     if args.check:
         old = json.loads(args.snapshot.read_text(encoding="utf-8"))

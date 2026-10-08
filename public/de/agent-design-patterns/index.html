@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vier Agenten-Entwurfsmuster und die Dokumente, die sie dir übergeben · MarsDawn</title>
+<meta name="description" content="Reflexion, Werkzeugnutzung, Planung und Zusammenarbeit mehrerer Agenten, wie Andrew Ng sie beschrieben hat, und was jedes Muster dir typischerweise zum Lesen zurückgibt.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/agent-design-patterns/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/agent-design-patterns/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/agent-design-patterns/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/agent-design-patterns/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/agent-design-patterns/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/agent-design-patterns/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/agent-design-patterns/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/agent-design-patterns/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/de/agent-design-patterns/">
+<link rel="alternate" type="text/markdown" href="/de/agent-design-patterns/index.md">
+<meta property="og:title" content="Vier Agenten-Entwurfsmuster und die Dokumente, die sie dir übergeben · MarsDawn">
+<meta property="og:description" content="Reflexion, Werkzeugnutzung, Planung und Zusammenarbeit mehrerer Agenten, wie Andrew Ng sie beschrieben hat, und was jedes Muster dir typischerweise zum Lesen zurückgibt.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/de/agent-design-patterns/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>
+  <p>Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Ablehnen</button>
+    <button type="button" id="consent-accept" class="consent-btn">Akzeptieren</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/de/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Im Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/agent-design-patterns/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/agent-design-patterns/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/agent-design-patterns/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/agent-design-patterns/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/agent-design-patterns/" hreflang="de" aria-current="true" lang="de">Deutsch</a> · <a href="/fr/agent-design-patterns/" hreflang="fr" lang="fr">Français</a> · <a href="/es/agent-design-patterns/" hreflang="es" lang="es">Español</a> · <a href="/ko/agent-design-patterns/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Vier Agenten-Entwurfsmuster und die Dokumente, die jedes dir übergibt</h1>
+  <p>Im März 2024 beschrieb Andrew Ng in seinem Newsletter The Batch vier Entwurfsmuster für KI-Agenten: Reflexion, Werkzeugnutzung, Planung und Zusammenarbeit mehrerer Agenten. Meist werden sie aus Sicht der Entwickler besprochen, als Wege, bessere Ergebnisse aus einem Modell zu holen. Dieser Beitrag schaut von der anderen Seite. Wenn du einen Agenten nutzt, der auf einem dieser Muster aufbaut: Was landet in deinem Ordner, und was solltest du zuerst lesen?</p>
+</section>
+
+<div class="summary"><p><strong>Die vier Muster stammen von Andrew Ng. Welche Dokumente jedes typischerweise übergibt und was du darin prüfen solltest, ist unsere eigene Schlussfolgerung. Er schreibt über beides nicht und plädiert in dieser Reihe nicht für menschliche Prüfung.</strong></p></div>
+
+<h2 id="the-four-patterns-briefly">Die vier Muster in Kürze</h2>
+<p>Ng beschreibt sie in „Agentic Design Patterns Part 1“. Kurz gesagt: Bei <strong>Reflexion</strong> sieht das Modell seine eigene Arbeit durch und verbessert sie. Bei <strong>Werkzeugnutzung</strong> kann es Werkzeuge wie Websuche oder Codeausführung aufrufen. Bei <strong>Planung</strong> entwirft es einen Plan aus mehreren Schritten und führt ihn aus. Bei der <strong>Zusammenarbeit mehrerer Agenten</strong> teilen sich mehrere Agenten die Arbeit auf und besprechen sie.</p>
+<p>In Teil 1 zeigt er den Nutzen anhand eines Coding-Benchmarks, HumanEval, mit Ergebnissen, die sein Team von mehreren Forschungsgruppen zusammengetragen hat: „GPT-3.5 (Zero-Shot) lag zu 48,1 % richtig. GPT-4 (Zero-Shot) schneidet mit 67,0 % besser ab. Die Verbesserung von GPT-3.5 zu GPT-4 verblasst jedoch neben der Einbindung in einen iterativen Agenten-Workflow. In eine Agentenschleife eingebettet erreicht GPT-3.5 sogar bis zu 95,1 %.“ Diese Zahlen beziehen sich auf einen einzigen Coding-Benchmark, und 95,1 % ist der beste Fall („bis zu“). Sie zeigen, dass Agenten-Workflows die Ausgabe verbessern können. Darüber, wer sie prüft, sagen sie nichts.</p>
+<p><strong>Ab hier sind die Dokumente und die Prüfungen unsere Lesart, nicht die von Ng.</strong> Echte Agenten mischen die Muster außerdem. Ein Coding-Agent kann in einer Sitzung planen, Werkzeuge ausführen und seine eigene Arbeit prüfen, du bekommst also oft alle vier Arten von Dateien.</p>
+
+<h2 id="1-reflection-a-draft-that-has-already-reviewed-itself">1. Reflexion: ein Entwurf, der sich schon selbst geprüft hat</h2>
+<p>Ngs Beitrag über Reflexion stellt sie als Automatisierung des Feedbacks dar, das sonst ein Mensch geben würde: „Was, wenn man den Schritt automatisiert, kritisches Feedback zu geben, sodass das Modell seine eigene Ausgabe automatisch kritisiert und seine Antwort verbessert?“</p>
+<p><strong>Was es typischerweise übergibt:</strong> ein überarbeitetes Dokument, manchmal mit einem Abschnitt zur Selbstprüfung oder Zeilen wie „Randfälle doppelt geprüft“.</p>
+<p><strong>Was du prüfen solltest:</strong> das Ergebnis gegen <em>deine</em> Anfrage, nicht gegen die Selbstkritik des Agenten. Selbstprüfung kann auf ihre eigene Art schiefgehen. Chip Huyen: „Eine interessante Art von Planungsfehler entsteht durch Fehler in der Reflexion. Der Agent ist überzeugt, eine Aufgabe erledigt zu haben, obwohl er es nicht hat.“ Lilian Weng schrieb im Juni 2023 in ihrem Blog Lil’Log, damals bei OpenAI, über die Modelle jener Zeit: „Mangelnde Fachkenntnis kann dazu führen, dass LLMs ihre Schwächen nicht kennen und daher die Richtigkeit von Aufgabenergebnissen nicht gut beurteilen können.“ (In der Studie, die sie beschrieb, stimmten die Bewertung der Ergebnisse durch ein LLM und die durch menschliche Fachleute nicht überein.) Wenn dort „geprüft“ steht, prüfe selbst eine Sache.</p>
+
+<h2 id="2-tool-use-a-report-of-what-ran">2. Werkzeugnutzung: ein Bericht darüber, was lief</h2>
+<p><strong>Was es typischerweise übergibt:</strong> eine Zusammenfassung dessen, was der Agent ausgeführt oder gesucht hat und was zurückkam. „Testsuite ausgeführt: alles grün.“ Eine Ergebnistabelle. Gefundene Links.</p>
+<p>Anthropics Leitfaden beschreibt Werkzeugergebnisse als die Selbstkontrolle des Agenten: „Während der Ausführung ist es entscheidend, dass die Agenten bei jedem Schritt ‚Ground Truth‘ aus der Umgebung erhalten (etwa Ergebnisse von Werkzeugaufrufen oder Codeausführung), um ihren Fortschritt zu beurteilen.“ Diese Kontrolle findet im Agenten statt. Was bei dir ankommt, ist die Nacherzählung des Agenten davon.</p>
+<p><strong>Was du prüfen solltest:</strong> dass sich jede Behauptung auf eine Ausgabe zurückführen lässt, die du sehen kannst. Gleiche eine Zahl in der Zusammenfassung mit der echten Ausgabe ab. Öffne einen der Links.</p>
+
+<h2 id="3-planning-plan-md">3. Planung: <code>plan.md</code></h2>
+<p><strong>Was es typischerweise übergibt:</strong> einen Plan, eine Spezifikation, eine Aufgabenliste mit Kontrollkästchen, die der Agent unterwegs abhakt.</p>
+<p>Ng äußert sich in Teil 4 offen über dieses Muster:</p>
+<blockquote><p>„Einerseits ist Planung eine sehr mächtige Fähigkeit; andererseits führt sie zu weniger vorhersehbaren Ergebnissen. Meiner Erfahrung nach kann ich die agentischen Entwurfsmuster Reflexion und Werkzeugnutzung zuverlässig zum Laufen bringen und damit die Leistung meiner Anwendungen verbessern, doch Planung ist eine weniger ausgereifte Technik, und es fällt mir schwer, vorab vorherzusagen, was sie tun wird.“</p></blockquote>
+<p>Er ist aber auch zuversichtlich: „Doch das Gebiet entwickelt sich weiterhin rasant, und ich bin zuversichtlich, dass die Planungsfähigkeiten sich schnell verbessern werden.“</p>
+<p><strong>Was du prüfen solltest:</strong> den Plan, bevor er läuft, mit <a href="/de/reviewing-agent-plans/">der Fünf-Minuten-Prüfung</a>: Form, eine Behauptung, Schritte, die sich nicht rückgängig machen lassen, Diagramme, Umfang. Wenn der Agent den Plan mittendrin umschreibt, vergleiche ihn mit der Fassung, die du freigegeben hast; liegt er in Git, zeigt <code>git diff plan.md</code>, was sich geändert hat. In MarsDawn zeigt der Tab Gliederung die Form eines langen Plans, und ein umgeschriebener Plan wird neu geladen, ohne dass du deine Stelle verlierst, solange du keine eigenen ungesicherten Änderungen hast.</p>
+
+<h2 id="4-multi-agent-collaboration-several-files-several-authors">4. Zusammenarbeit mehrerer Agenten: mehrere Dateien, mehrere Autoren</h2>
+<p><strong>Was es typischerweise übergibt:</strong> eine Spezifikation von einem Agenten, Umsetzungsnotizen von einem zweiten, eine Prüfung von einem dritten und Zusammenfassungen, die zwischen ihnen weitergereicht werden. Manchmal arbeitet jeder in einem eigenen Branch oder Worktree.</p>
+<p><strong>Was du prüfen solltest:</strong> die Übergaben. Wo ein Agent die Arbeit eines anderen zusammenfasst, such nach einer Anforderung, die nicht mit hinübergekommen ist. Such nach zwei Dateien, die sich widersprechen, und entscheide, welche die maßgebliche ist, bevor jemand auf der anderen aufbaut. Öffne in MarsDawn den gemeinsamen Ordner mit Ablage &#9656; Ordner öffnen&#160;&#8230; (&#8679;&#8984;O): Neue Dateien erscheinen innerhalb etwa einer Sekunde im Tab Dateien, während die Agenten sie schreiben, und bei einem Git-Checkout nennt die Kopfzeile den Branch oder Worktree, damit zwei Fenster mit demselben Dateinamen aus verschiedenen Branches nicht gleich aussehen. Wenn das Ergebnis an Leute gehen muss, die kein Markdown lesen, zeigt <a href="/de/sharing-exported-pdfs/">Exportierte PDFs teilen</a> diesen Schritt.</p>
+
+<h2 id="at-a-glance">Auf einen Blick</h2>
+<table>
+<thead><tr><th>Muster (Ng)</th><th>Was es typischerweise übergibt (unsere Schlussfolgerung)</th><th>Zuerst lesen (unser Vorschlag)</th></tr></thead>
+<tbody>
+<tr><td>Reflexion</td><td>Ein überarbeiteter Entwurf, vielleicht mit Selbstprüfung</td><td>Das Ergebnis gegen deine eigene Anfrage; ein „geprüft“ selbst prüfen</td></tr>
+<tr><td>Werkzeugnutzung</td><td>Ein Bericht darüber, was lief und was zurückkam</td><td>Eine Behauptung bis zur echten Ausgabe zurückverfolgen</td></tr>
+<tr><td>Planung</td><td><code>plan.md</code>, eine Spezifikation, eine Aufgabenliste</td><td>Die Fünf-Minuten-Prüfung, bevor er läuft</td></tr>
+<tr><td>Zusammenarbeit mehrerer Agenten</td><td>Mehrere Dateien von mehreren Agenten, vielleicht auf mehreren Branches</td><td>Die Übergaben und welche Datei die maßgebliche ist</td></tr>
+</tbody>
+</table>
+<p>Keiner der hier zitierten Autoren erwähnt MarsDawn, und keiner empfiehlt es oder ein anderes Markdown-Werkzeug. In MarsDawn steckt kein KI-Modell: Es weiß nicht, welches Muster eine Datei erzeugt hat, und es übernimmt diese Prüfungen nicht für dich. Es hält die Dateien lesbar, während du sie machst.</p>
+
+<h2 id="try-it">Ausprobieren</h2>
+<p>MarsDawn gibt es im <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>. Dazu kommt das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code>:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Es exportiert Markdown ohne die App als PDF: siehe <a href="/de/markdown-to-pdf/">Markdown in PDF</a>.</p>
+<p><a href="/de/cli/">Befehlszeile</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
+
+<h2 id="next">Weiter</h2>
+<ul>
+  <li>Warum Agentenausgaben schwer zu lesen sind, mit einer Checkliste: <a href="/de/reading-agent-output/">Lesen, was dein Agent zurückgibt</a>.</li>
+  <li>Die Planungsprüfung vollständig: <a href="/de/reviewing-agent-plans/">Einen Agentenplan in fünf Minuten prüfen</a>.</li>
+  <li>Was Transparenz von dir verlangt und was nicht: <a href="/de/agent-transparency/">Anthropic sagt, Agenten sollen transparent sein. Wer liest, was sie offenlegen?</a></li>
+</ul>
+
+<h2 id="sources">Quellen</h2>
+<ul>
+  <li>Andrew Ng, „Agentic Design Patterns Part 1“, The Batch, 20. März 2024: <a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/">https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/</a></li>
+  <li>Andrew Ng, „Agentic Design Patterns Part 2, Reflection“, The Batch, 27. März 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-2-reflection/</a></li>
+  <li>Andrew Ng, „Agentic Design Patterns Part 4, Planning“, The Batch, 10. April 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a></li>
+  <li>Chip Huyen, „Agents“, 7. Januar 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Lilian Weng, „LLM Powered Autonomous Agents“, Lil’Log, 23. Juni 2023: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a></li>
+  <li>Erik S. und Barry Zhang, „Building Effective Agents“, Anthropic, 19. Dezember 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (zitiert nach der am 26.09.2026 online verfügbaren Fassung).</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Website">
+    <a href="/de/support/">Support</a>
+    <a href="/de/privacy/">Datenschutzrichtlinie</a>
+    <a href="/de/cli/">Befehlszeile</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie-Einstellungen</button>
+  </nav>
+  <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

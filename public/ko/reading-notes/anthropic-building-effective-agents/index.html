@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic은 workflow와 agent를 나눕니다. 당신의 읽기는 어디에 가깝나요? · MarsDawn</title>
+<meta name="description" content="2024년 12월 Anthropic이 에이전트를 만드는 사람을 위해 낸 가이드는 workflow와 agent를 나누고, 그중 하나가 두 번째 LLM 호출로 첫 번째를 검토하는 다섯 가지 workflow 패턴을 설명합니다. 그게 폴더에 떨어지는 파일에 무엇을 뜻하는지.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/anthropic-building-effective-agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" type="text/markdown" href="/ko/reading-notes/anthropic-building-effective-agents/index.md">
+<meta property="og:title" content="Anthropic은 workflow와 agent를 나눕니다. 당신의 읽기는 어디에 가깝나요? · MarsDawn">
+<meta property="og:description" content="2024년 12월 Anthropic이 에이전트를 만드는 사람을 위해 낸 가이드는 workflow와 agent를 나누고, 그중 하나가 두 번째 LLM 호출로 첫 번째를 검토하는 다섯 가지 workflow 패턴을 설명합니다. 그게 폴더에 떨어지는 파일에 무엇을 뜻하는지.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/reading-notes/anthropic-building-effective-agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store에서 판매 중</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/anthropic-building-effective-agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/anthropic-building-effective-agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/anthropic-building-effective-agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/anthropic-building-effective-agents/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/reading-notes/anthropic-building-effective-agents/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/reading-notes/anthropic-building-effective-agents/" hreflang="fr" lang="fr">Français</a> · <a href="/es/reading-notes/anthropic-building-effective-agents/" hreflang="es" lang="es">Español</a> · <a href="/ko/reading-notes/anthropic-building-effective-agents/" hreflang="ko" aria-current="true" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Anthropic은 workflow와 agent를 나눕니다. 당신의 읽기는 어디에 가깝나요?</h1>
+</section>
+
+<div class="summary"><p><strong>2024년 12월 Anthropic이 AI 에이전트를 만드는 사람을 위해 낸 가이드는 맨 앞에서 «workflow»와 «agent»라는 두 가지를 나눈 뒤, 되는 것 중 가장 단순한 것부터 시작하라고 &#8212; 어쩌면 agentic 시스템을 아예 만들지 않는 것까지 포함해 &#8212; 권하고, 그것으로 부족할 때만 정리된 다섯 workflow 패턴 중 하나에 손을 뻗으라고 합니다. 그중 하나는 두 번째 LLM 호출을 검토자 자리에 앉힙니다. 이 노트는 그 패턴, 그리고 나머지 넷이 당신에게 무엇을 읽히게 남기는지에 관한 것입니다.</strong></p></div>
+
+<h2 id="what-the-guide-argues">가이드가 주장하는 것</h2>
+<p>Erik S.와 Barry Zhang이 «Building Effective Agents»를 쓴 대상은 LLM으로 어떻게 시스템을 만들지 정하려는 엔지니어입니다. 정의부터 시작합니다.</p>
+<blockquote><p>&#8220;Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.&#8221;</p></blockquote>
+<p>이어지는 조언은 절제에서 시작합니다.</p>
+<blockquote><p>&#8220;When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed. This might mean not building agentic systems at all.&#8221;</p></blockquote>
+<p>더 많은 구조가 필요할 때를 위해 다섯 workflow 패턴을 설명합니다. prompt chaining(작업을 일련의 호출로 나누고 단계 사이에 선택적으로 검사를 넣는 것), routing, parallelization, orchestrator-workers(하나의 LLM이 작업을 쪼개 worker LLM에 넘긴 뒤 결과를 합침), evaluator-optimizer. 마지막 것은 이렇게 말합니다.</p>
+<blockquote><p>&#8220;In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.&#8221;</p></blockquote>
+<p>Anthropic은 이 가이드 어디에서도 MarsDawn을 언급하지 않고, Markdown 도구도 추천하지 않습니다. <code>/agent-transparency/</code>가 이미 이 가이드의 투명성 원칙과 «checkpoints» 표현을 자세히 다루므로 &#8212; 이 노트는 그 땅을 다시 밟지 않습니다. 사람 코드 리뷰에 관한 가이드의 문장도, 코딩 에이전트에 한정된 부록이라는 맥락에서, 그 페이지에 있습니다.</p>
+
+<h2 id="our-reading-not-anthropic-s">우리의 읽기이지 Anthropic의 것이 아님</h2>
+<p>Anthropic은 workflow가 끝난 뒤 최종 출력을 누가 확인하는지는 말하지 않고, 이 중 어느 것도 문서를 묘사하지 않습니다 &#8212; 시스템을 만드는 사람을 위한 아키텍처 결정입니다. 하지만 다섯 패턴이 남기는 읽을 파일의 종류는 같지 않습니다. Prompt chaining과 routing은 대개 보이지 않는 배관이고, 당신에게 닿는 것이 있다면 체인의 마지막 출력으로, 다른 단일 응답과 같습니다. Orchestrator-workers는 다릅니다. 코딩 에이전트가 내부에서 이 패턴을 쓰면, 폴더에 떨어지는 것은 여러 worker 호출을 오케스트레이터가 이어 붙인 문서일 수 있고, 처음부터 끝까지 매끄럽게 읽히는 요약 안에서 한 worker 조각의 실수는 놓치기 쉽습니다.</p>
+<p>Evaluator-optimizer는 특히 멈출 가치가 있습니다. 가이드가 사람 검토자가 앉았을 자리에 두 번째 LLM 호출을 두기 때문입니다. 어떤 종류의 실수를 값싸게 잡는 타당한 방법이지만, 결국 모델이 주어진 기준으로 다른 모델을 검사하는 것일 뿐입니다 &#8212; 이 시리즈의 다른 저자들도 모델이 자신이나 다른 모델의 결과를 판정하는 일에 같은 주의를 겁니다. 가이드는 사람이 evaluator의 판정을 다시 확인해야 한다고 어디에도 쓰지 않으며, 그 점에 대해 입장을 취하지도 않습니다. 이 일련의 과정이 돌려준 것을 마지막으로 읽는 사람이 당신이라면, «루프가 통과시켰다»와 «내가 확인했다»는 같은 문장이 아닙니다. 앞의 파일이 두 경우 모두 똑같이 보여도 말입니다.</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn이 돕는 곳, 돕지 않는 곳</h2>
+<p>MarsDawn은 어떤 workflow 패턴이 파일을 만들었는지 모르고, 안에 AI 모델도 없습니다 &#8212; 스스로 evaluator 단계를 돌리지도 않고, Anthropic이 그린 그 평가가 제 일을 했는지 알려 주지도 않습니다. 하는 일은 이렇습니다. 사이드바(보기 &#9656; 사이드바 보기, &#8963;&#8984;S)의 개요 탭이 오케스트레이터가 이어 붙인 긴 파일의 제목을 나열하고, 클릭하면 그곳으로 이동합니다. 소스와 렌더링된 페이지는 나란히(⌘2) 함께 스크롤되며, Mermaid 다이어그램과 KaTeX 수식도 소스로 두지 않고 그립니다. 읽는 도중에 에이전트가 파일을 고치면, 저장하지 않은 변경이 없는 한 MarsDawn이 다시 불러오면서 읽던 위치를 유지합니다. 편집 &#9656; 참조 복사 (&#8997;&#8984;C)는 지금 자리를 <code>docs/plan.md:42</code> 형식으로 복사해, 에이전트와의 채팅에 바로 붙여 넣을 수 있게 합니다.</p>
+
+<h2 id="try-it">사용해 보기</h2>
+<p>MarsDawn은 Mac App Store에 있습니다. 무료 <code>marsdawn</code> 명령줄 도구는 오늘부터 쓸 수 있습니다:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>앱 없이 Markdown을 PDF로 내보냅니다.</p>
+<p><a href="/ko/cli/">명령줄</a> &#183; 구입 전에: <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+
+<h2 id="next">다음</h2>
+<ul>
+  <li>이 가이드의 투명성 원칙과 체크포인트 표현의 나머지: <a href="/ko/agent-transparency/">Anthropic은 에이전트가 투명해야 한다고 말합니다. 그럼 펼쳐 놓은 것은 누가 읽을까요?</a></li>
+  <li>에이전트 출력이 일반적으로 왜 읽기 어려운지: <a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a></li>
+  <li>시리즈로 돌아가기: <a href="/ko/reading-notes/">편집자의 독서 노트</a></li>
+</ul>
+
+<h2 id="sources">출처</h2>
+<ul>
+  <li>Erik S. and Barry Zhang, &#8220;Building Effective Agents,&#8221; Anthropic, December 19, 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (2026-09-26에 가져와 인용).</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트">
+    <a href="/ko/support/">지원</a>
+    <a href="/ko/privacy/">개인정보 처리방침</a>
+    <a href="/ko/cli/">명령줄</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

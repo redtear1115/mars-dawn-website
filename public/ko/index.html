@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarsDawn: 실시간 미리보기가 있는 Mac용 Markdown 편집기</title>
+<meta name="description" content="에이전트의 작업을 이끄는 사람을 위한 Markdown. 실시간 미리보기, Mermaid 다이어그램, PDF 내보내기를 갖춘 Mac 네이티브 편집기입니다. Mac App Store에서 구입할 수 있습니다.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/hero.css">
+<link rel="stylesheet" href="/assets/annotations.css">
+<link rel="stylesheet" href="/assets/loop.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/">
+<link rel="alternate" type="text/markdown" href="/ko/index.md">
+<meta property="og:title" content="MarsDawn: 실시간 미리보기가 있는 Mac용 Markdown 편집기">
+<meta property="og:description" content="에이전트의 작업을 이끄는 사람을 위한 Markdown. 실시간 미리보기, Mermaid 다이어그램, PDF 내보내기를 갖춘 Mac 네이티브 편집기입니다. Mac App Store에서 구입할 수 있습니다.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "에이전트의 작업을 이끄는 사람을 위한 Markdown. 실시간 미리보기, Mermaid 다이어그램, PDF 내보내기를 갖춘 Mac 네이티브 편집기입니다. Mac App Store에서 구입할 수 있습니다.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/ko/"}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="lang" aria-label="Language"><a href="/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/" hreflang="fr" lang="fr">Français</a> · <a href="/es/" hreflang="es" lang="es">Español</a> · <a href="/ko/" hreflang="ko" aria-current="true" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="hero-scene">
+<div class="dawn-wrap" aria-hidden="true">
+  <svg class="dawn-layer" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-sky-1" offset="0%"></stop>
+        <stop class="stop-sky-2" offset="42%"></stop>
+        <stop class="stop-sky-3" offset="76%"></stop>
+        <stop class="stop-sky-4" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="900" fill="url(#skyGrad)"></rect>
+  </svg>
+  <svg class="dawn-layer dawn-glow" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <radialGradient id="glowGrad" cx="50%" cy="63%" r="75%">
+        <stop class="stop-glow" offset="0%"></stop>
+        <stop class="stop-glow-mid" offset="42%"></stop>
+        <stop class="stop-glow-fade" offset="100%"></stop>
+      </radialGradient>
+    </defs>
+    <ellipse cx="600" cy="560" rx="1000" ry="430" fill="url(#glowGrad)"></ellipse>
+  </svg>
+  <svg class="dawn-layer" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="planetGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop class="stop-planet-rim" offset="0%"></stop>
+        <stop class="stop-planet-deep" offset="26%"></stop>
+      </linearGradient>
+    </defs>
+    <path d="M -40 560 Q 600 428 1240 560 L 1240 920 L -40 920 Z" fill="url(#planetGrad)"></path>
+  </svg>
+  <div class="dawn-layer night-veil"></div>
+  <svg class="dawn-layer dawn-stars stars-a" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="955" cy="42" r="1.1"></circle><circle cx="982" cy="181" r="1.1"></circle><circle cx="979" cy="34" r="1.1"></circle><circle cx="720" cy="63" r="1.1"></circle><circle cx="122" cy="125" r="1.1"></circle><circle cx="956" cy="127" r="1.1"></circle><circle cx="1110" cy="43" r="1.1"></circle><circle cx="242" cy="237" r="1.1"></circle><circle cx="972" cy="257" r="1.1"></circle><circle cx="1150" cy="291" r="1.1"></circle><circle cx="4" cy="15" r="1.1"></circle><circle cx="286" cy="275" r="1.1"></circle><circle cx="1032" cy="163" r="1.1"></circle><circle cx="1095" cy="158" r="1.1"></circle><circle cx="198" cy="287" r="1.1"></circle></svg>
+  <svg class="dawn-layer dawn-stars stars-b" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="1151" cy="256" r="1.4"></circle><circle cx="1019" cy="144" r="1.4"></circle><circle cx="269" cy="166" r="1.4"></circle><circle cx="222" cy="197" r="1.4"></circle><circle cx="1131" cy="300" r="1.4"></circle><circle cx="1049" cy="26" r="1.4"></circle><circle cx="955" cy="332" r="1.4"></circle><circle cx="134" cy="293" r="1.4"></circle><circle cx="193" cy="84" r="1.4"></circle><circle cx="949" cy="252" r="1.4"></circle><circle cx="187" cy="334" r="1.4"></circle><circle cx="1187" cy="238" r="1.4"></circle></svg>
+  <svg class="dawn-layer dawn-stars stars-c" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false"><circle cx="92" cy="93" r="1.8"></circle><circle cx="10" cy="149" r="1.8"></circle><circle cx="961" cy="188" r="1.8"></circle><circle cx="81" cy="16" r="1.8"></circle><circle cx="1028" cy="231" r="1.8"></circle><circle cx="1075" cy="52" r="1.8"></circle><circle cx="35" cy="264" r="1.8"></circle><circle cx="979" cy="96" r="1.8"></circle><circle cx="194" cy="295" r="1.8"></circle></svg>
+  <svg class="dawn-layer dawn-limb" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <defs>
+      <linearGradient id="limbGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop class="stop-limb-fade" offset="0%"></stop>
+        <stop class="stop-limb" offset="50%"></stop>
+        <stop class="stop-limb-fade" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <path class="limb-line" d="M -40 560 Q 600 428 1240 560" fill="none" stroke="url(#limbGrad)" stroke-width="5"></path>
+  </svg>
+</div>
+<div class="hero-inner">
+<div class="hero-copy">
+<section class="intro hero">
+  <p class="kicker">만드는 사람을 위한 개척자의 도구</p>
+  <h1><span>지도를 손에 쥐세요.</span> <span>새벽을 읽으세요.</span></h1>
+  <p>에이전트의 작업을 이끄는 사람을 위한 Markdown.</p>
+</section>
+<p class="hero-cta"><a class="cta cta-primary" href="https://apps.apple.com/app/id6812925073">Mac App Store에서 보기</a> <a class="cta cta-secondary" href="#install">무료 CLI 설치하기</a></p>
+</div>
+<div class="hero-shot">
+<div class="mdw" role="group" aria-label="직접 조작할 수 있는 MarsDawn 창: 테마와 레이아웃을 고르세요">
+  <div class="mdw-bar">
+    <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="mdw-title">MarsDawn에 오신 것을 환영합니다</span>
+    <details class="mdw-themes">
+      <summary title="화면 모드 및 미리보기 테마"><span class="mdw-sr">테마</span><svg viewBox="0 0 20 18" aria-hidden="true" focusable="false"><path d="M10 2C5.3 2 1.8 5.2 1.8 9.2c0 3.6 2.9 6.6 6.6 6.6 1.3 0 1.9-.8 1.9-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5h2c2.8 0 5-1.9 5-4.5C18.2 4.6 14.6 2 10 2Z"/><circle cx="6" cy="8.6" r="1.1"/><circle cx="8.6" cy="5.6" r="1.1"/><circle cx="12.4" cy="5.6" r="1.1"/><circle cx="14.6" cy="8.4" r="1.1"/></svg><svg class="chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M2.5 3.8 5 6.3l2.5-2.5"/></svg></summary>
+      <div class="mdw-menu">
+      <fieldset>
+        <legend>화면 모드</legend>
+        <input type="radio" name="mdw-appearance" id="mdw-system" value="system" checked><label for="mdw-system"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>시스템</label>
+        <input type="radio" name="mdw-appearance" id="mdw-light" value="light"><label for="mdw-light"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>라이트</label>
+        <input type="radio" name="mdw-appearance" id="mdw-dark" value="dark"><label for="mdw-dark"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>다크</label>
+      </fieldset>
+      <hr>
+      <fieldset>
+        <legend>미리보기 테마</legend>
+        <fieldset class="mdw-pick-light">
+          <legend>라이트</legend>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-dawn" value="dawn" checked><label for="mdw-light-dawn" title="따뜻한 화성의 일출"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>새벽</label>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-classic" value="classic"><label for="mdw-light-classic" title="종이 위의 우아한 세리프"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>클래식</label>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-modern" value="modern"><label for="mdw-light-modern" title="깔끔하고 친숙한"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>모던</label>
+          <input type="radio" name="mdw-light-theme" id="mdw-light-vivid" value="vivid"><label for="mdw-light-vivid" title="경쾌하고 밝고 둥근"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>비비드</label>
+        </fieldset>
+        <hr>
+        <fieldset class="mdw-pick-dark">
+          <legend>다크</legend>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-dawn" value="dawn" checked><label for="mdw-dark-dawn" title="따뜻한 화성의 일출"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>새벽</label>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-classic" value="classic"><label for="mdw-dark-classic" title="종이 위의 우아한 세리프"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>클래식</label>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-modern" value="modern"><label for="mdw-dark-modern" title="깔끔하고 친숙한"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>모던</label>
+          <input type="radio" name="mdw-dark-theme" id="mdw-dark-vivid" value="vivid"><label for="mdw-dark-vivid" title="경쾌하고 밝고 둥근"><svg class="tick" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.4 5 8.8l4.6-5.6"/></svg>비비드</label>
+        </fieldset>
+      </fieldset>
+      <hr>
+      <span class="mdw-settings" aria-hidden="true">설정…</span>
+      </div>
+    </details>
+    <fieldset class="mdw-layouts">
+      <legend>레이아웃</legend>
+      <input type="radio" name="mdw-layout" id="mdw-source" value="source"><label for="mdw-source" title="소스만 (⌘1)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M6.5 3.5 2 8l4.5 4.5M13.5 3.5 18 8l-4.5 4.5M11.4 2.5 8.6 13.5"/></svg><span class="mdw-sr">소스</span></label>
+      <input type="radio" name="mdw-layout" id="mdw-split" value="split" checked><label for="mdw-split" title="소스 및 미리보기 (⌘2)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><rect x="2" y="2.5" width="16" height="11" rx="2.5"/><path d="M10 2.5v11"/></svg><span class="mdw-sr">분할</span></label>
+      <input type="radio" name="mdw-layout" id="mdw-preview" value="preview"><label for="mdw-preview" title="미리보기만 (⌘3)"><svg viewBox="0 0 20 16" aria-hidden="true" focusable="false"><path d="M1.8 8C4 4.4 6.8 2.8 10 2.8S16 4.4 18.2 8C16 11.6 13.2 13.2 10 13.2S4 11.6 1.8 8Z"/><circle cx="10" cy="8" r="3.1"/><circle class="pupil" cx="10" cy="8" r="1.3"/></svg><span class="mdw-sr">미리보기</span></label>
+    </fieldset>
+  </div>
+  <div class="mdw-panes">
+    <pre class="mdw-source" aria-label="소스"><span class="ed-heading ed-bold"># MarsDawn에 오신 것을 환영합니다</span>
+
+<span class="ed-heading ed-bold">## 레이아웃</span>
+
+| 단축키 | 레이아웃 |
+|:--------:|:-------|
+| ⌘1 | 소스만 |
+| ⌘2 | 소스와 미리보기를 나란히 |
+| ⌘3 | 미리보기만 |
+
+<span class="ed-heading ed-bold">## 쓰기</span>
+
+<span class="ed-bold">**굵게**</span>, <span class="ed-emphasis ed-italic">*기울임*</span>, <span class="ed-muted ed-strike">~~취소선~~</span>, <span class="ed-code">`인라인 코드`</span>, <span class="ed-link">[링크]</span><span class="ed-muted">(</span><span class="ed-link">https://marsdawn.southern-light.dev/support/</span><span class="ed-muted">)</span> 모두 예상대로 작동합니다.
+
+<span class="ed-quote">&gt; 인용문은 따뜻한 색의 선으로 눈에 띕니다.</span>
+
+<span class="ed-marker ed-bold">-</span> <span class="ed-marker ed-bold">[x]</span> 체크박스가 있는 할 일 목록
+<span class="ed-marker ed-bold">-</span> <span class="ed-marker ed-bold">[ ]</span> 중첩 목록
+<span class="ed-marker ed-bold">  -</span> 이렇게</pre>
+    <div class="mdw-preview" aria-label="미리보기" role="region">
+<p class="md-h1">MarsDawn에 오신 것을 환영합니다</p>
+<p class="md-h2">레이아웃</p>
+<table>
+<thead>
+<tr><th class="align-center">단축키</th><th class="align-left">레이아웃</th></tr>
+</thead>
+<tbody>
+<tr><td class="align-center">⌘1</td><td class="align-left">소스만</td></tr>
+<tr><td class="align-center">⌘2</td><td class="align-left">소스와 미리보기를 나란히</td></tr>
+<tr><td class="align-center">⌘3</td><td class="align-left">미리보기만</td></tr>
+</tbody>
+</table>
+<p class="md-h2">쓰기</p>
+<p><strong>굵게</strong>, <em>기울임</em>, <del>취소선</del>, <code>인라인 코드</code>, <span class="md-a">링크</span> 모두 예상대로 작동합니다.</p>
+<blockquote>
+<p>인용문은 따뜻한 색의 선으로 눈에 띕니다.</p>
+</blockquote>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled checked> 체크박스가 있는 할 일 목록
+</li>
+<li class="task-list-item"><input type="checkbox" disabled> 중첩 목록
+<ul>
+<li>이렇게
+</li>
+</ul>
+</li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+<h2 class="loop-title">에이전트가 쓴 글을 읽으세요.</h2>
+<ol class="loop-steps">
+  <li><strong>에이전트가 씁니다.</strong> 코딩 에이전트나 글쓰기 도우미가 README, 명세서, 메모 같은 Markdown 초안을 작성합니다.</li>
+  <li><strong>MarsDawn에서 검토합니다.</strong> 파일을 열고, Mermaid 다이어그램과 하이라이트된 코드까지 렌더링된 페이지를 소스 옆에 두고 읽으세요.</li>
+  <li><strong>에이전트가 고칩니다.</strong> 수정을 요청하세요. 고친 파일을 열어 같은 방식으로 읽으면 됩니다.</li>
+</ol>
+<p><a href="/ko/reading-agent-output/">에이전트가 돌려준 결과를 검토하는 방법</a>.</p>
+<div class="loop-anim loop-ko">
+<div class="loop-frame" role="img" aria-label="터미널에서 MarsDawn으로 launch-note.md를 엽니다. 읽는 사람이 출시일을 10월 7일에서 10월 9일로 바꾸면, 에이전트가 나머지 두 섹션을 맞추고, 루프가 처음부터 다시 시작됩니다.">
+<div class="loop-stage" aria-hidden="true">
+<div class="loop-win a">
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">launch-note.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-body">
+<div class="loop-side"><div class="loop-tabs"><span class="on">개요</span><span>파일</span></div><div class="loop-rows"><div class="loop-h1row">출시 노트</div><div class="loop-sub">바뀌는 점</div><div class="loop-sub loop-row-u a">출시 일정</div><div class="loop-sub">담당</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> 출시 노트</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> 바뀌는 점</span>
+로그인 화면이 이메일부터 묻습니다. <span class="loop-day loop-d-a a"><span class="loop-old a">10월 7일</span><span class="loop-new loop-n6 a">10월 9일</span></span>에 출시합니다.
+
+<span class="loop-h"><span class="loop-mk">##</span> 출시 일정</span>
+<span class="loop-day loop-d-u a"><span class="loop-old a">10월 7일</span><span class="loop-new loop-n6 a">10월 9일</span><span class="loop-ecaret loop-n6 a"></span></span> 정오.
+
+<span class="loop-h"><span class="loop-mk">##</span> 담당</span>
+<span class="loop-day loop-d-b a"><span class="loop-old a">10월 7일</span><span class="loop-new loop-n6 a">10월 9일</span></span>에 엔지니어링이 플래그를 켭니다.
+</div>
+<div class="loop-pre"><h3>출시 노트</h3><h4>바뀌는 점</h4><p>로그인 화면이 이메일부터 묻습니다. <span class="loop-day loop-d-a a"><span class="loop-old a">10월 7일</span><span class="loop-new loop-n6 a">10월 9일</span></span>에 출시합니다.</p><h4>출시 일정</h4><p><span class="loop-day loop-d-u a"><span class="loop-old a">10월 7일</span><span class="loop-new loop-n6 a">10월 9일</span></span> 정오.</p><h4>담당</h4><p><span class="loop-day loop-d-b a"><span class="loop-old a">10월 7일</span><span class="loop-new loop-n6 a">10월 9일</span></span>에 엔지니어링이 플래그를 켭니다.</p></div>
+</div>
+</div>
+<div class="loop-term a">
+<div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
+<div class="loop-tbody">
+<div><span class="loop-p">›</span> <span class="loop-cmd a">marsdawn open launch-note.md</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> 출시일을 옮겼어요. 다른 섹션도 맞춰 주세요.</div>
+<div class="loop-l3 a">완료했어요. 두 섹션 모두 10월 9일로 바꿨어요.</div>
+</div>
+</div>
+<svg class="loop-ptr a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="애니메이션 일시 정지"><span aria-hidden="true">일시 정지</span></label>
+</div>
+<section class="install" id="install">
+<h2>지금 바로 해 보세요</h2>
+<p>무료 <code>marsdawn</code> 명령줄 도구는 지금 바로 쓸 수 있습니다. Homebrew로 설치하세요.</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<ul>
+  <li><code>marsdawn export</code>는 Markdown 파일을 MarsDawn의 미리보기처럼 렌더링된 PDF로 만듭니다. 앱은 필요 없습니다.</li>
+  <li><code>marsdawn open</code>은 검토할 수 있도록 MarsDawn 앱에서 파일을 엽니다.</li>
+  <li><code>--json</code>은 스크립트와 에이전트가 파싱할 수 있는 결과를 돌려줍니다.</li>
+</ul>
+<p class="install-links"><a href="/ko/cli/">명령줄</a> · <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a> · <a href="/ko/cli/skill/">에이전트 스킬</a> · <a href="/ko/cli/mcp/">MCP 서버</a></p>
+</section>
+<nav class="traits" aria-label="MarsDawn에서 기대할 수 있는 것">
+<h2>MarsDawn에서 기대할 수 있는 것</h2>
+<ul>
+  <li><a href="/ko/native/">Mac 앱</a><span>네이티브 윈도우와 탭, 자동 저장, 훑어보기.</span></li>
+  <li><a href="/ko/yours/">내 글은 내 Mac에</a><span>계정도, 동기화도, 클라우드도 없습니다.</span></li>
+  <li><a href="/ko/pay-once/">무료로 체험하고, 한 번만 구입</a><span>14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.</span></li>
+</ul>
+</nav>
+<p class="know">구입 전에 알아 둘 점. <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+<section class="proof">
+<h2>앱의 실제 모습</h2>
+<h3><a href="/ko/native/">Mac 앱</a></h3>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="1180" height="844" alt="분할 보기의 MarsDawn: 왼쪽은 Markdown 소스, 오른쪽은 렌더링된 페이지.">
+    <span class="marker l tb co-native-1" aria-hidden="true">1</span><span class="marker l co-native-2" aria-hidden="true">2</span><span class="marker r tb co-native-3" aria-hidden="true">3</span><span class="marker r co-native-4" aria-hidden="true">4</span>
+    <span class="leader l up co-native-1" aria-hidden="true"><span>네이티브 Mac 윈도우.</span></span><span class="leader l down co-native-2" aria-hidden="true"><span>Markdown 하이라이트가 더해진 Mac의 텍스트 편집기.</span></span><span class="leader r up co-native-3" aria-hidden="true"><span>⌘1 소스, ⌘2 분할, ⌘3 미리보기.</span></span><span class="leader r down co-native-4" aria-hidden="true"><span>입력하는 대로 페이지가 바뀝니다.</span></span>
+  </div></div>
+  <figcaption>
+    <span class="figure-label">이 스크린샷의 내용</span>
+    <ol><li>네이티브 Mac 윈도우.</li><li>Markdown 하이라이트가 더해진 Mac의 텍스트 편집기.</li><li>⌘1 소스, ⌘2 분할, ⌘3 미리보기.</li><li>입력하는 대로 페이지가 바뀝니다.</li></ol>
+  </figcaption>
+</figure>
+<h3><a href="/ko/pdf/">PDF 내보내기</a></h3>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="MarsDawn에서 내보낸 PDF를 페이지 축소판과 함께 PDF 뷰어로 연 모습.">
+    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
+    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid 다이어그램이 PDF 안에 그려집니다.</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>코드는 하이라이트를 유지합니다.</span></span>
+  </div></div>
+  <figcaption>
+    <span class="figure-label">이 스크린샷의 내용</span>
+    <ol><li>Mermaid 다이어그램이 PDF 안에 그려집니다.</li><li>코드는 하이라이트를 유지합니다.</li></ol>
+  </figcaption>
+</figure>
+</section>
+<section class="dawn-close">
+<p><strong>Markdown의 새로운 새벽.</strong> MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에서 구입할 수 있습니다.</p>
+<p class="close-next"><a href="https://apps.apple.com/app/id6812925073">지금 다운로드하고 체험하기</a></p>
+</section>
+</main>
+<footer class="footer footer-home">
+  <nav class="footer-nav" aria-label="사이트">
+    <a href="/ko/support/">지원</a>
+    <a href="/ko/privacy/">개인정보 처리방침</a>
+    <a href="/ko/cli/">명령줄</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button>
+  </nav>
+  <p class="footer-meta"><span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

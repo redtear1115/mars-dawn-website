@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Die Ausgabe von MarsDawn prüfen, ohne die Tokens deines Agenten zu verbrauchen · MarsDawn</title>
+<meta name="description" content="Ein Mensch prüft die gerenderte Seite in MarsDawn, sie wird nie in den Kontext des Agenten zurückgelesen. Der Werkzeugaufruf selbst liefert ein kompaktes JSON-Ergebnis statt des gerenderten Inhalts, auch der Aufruf ist also günstig.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/token-efficient-review/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/token-efficient-review/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/token-efficient-review/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/token-efficient-review/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/token-efficient-review/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/token-efficient-review/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/token-efficient-review/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/token-efficient-review/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/token-efficient-review/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/de/token-efficient-review/">
+<link rel="alternate" type="text/markdown" href="/de/token-efficient-review/index.md">
+<meta property="og:title" content="Die Ausgabe von MarsDawn prüfen, ohne die Tokens deines Agenten zu verbrauchen · MarsDawn">
+<meta property="og:description" content="Ein Mensch prüft die gerenderte Seite in MarsDawn, sie wird nie in den Kontext des Agenten zurückgelesen. Der Werkzeugaufruf selbst liefert ein kompaktes JSON-Ergebnis statt des gerenderten Inhalts, auch der Aufruf ist also günstig.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/de/token-efficient-review/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>
+  <p>Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Ablehnen</button>
+    <button type="button" id="consent-accept" class="consent-btn">Akzeptieren</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/de/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Im Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/token-efficient-review/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/token-efficient-review/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/token-efficient-review/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/token-efficient-review/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/token-efficient-review/" hreflang="de" aria-current="true" lang="de">Deutsch</a> · <a href="/fr/token-efficient-review/" hreflang="fr" lang="fr">Français</a> · <a href="/es/token-efficient-review/" hreflang="es" lang="es">Español</a> · <a href="/ko/token-efficient-review/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Prüfen, ohne die Tokens deines Agenten zu verbrauchen.</h1>
+  <p>Zwei verschiedene Dinge bleiben in diesem Ablauf günstig: was der Agent vom Werkzeugaufruf zurückbekommt und was es braucht, um zu bestätigen, dass das Ergebnis stimmt.</p>
+</section>
+
+<div class="summary"><p><strong>Der Werkzeugaufruf liefert ein kleines JSON-Objekt, nicht die gerenderte Seite, und die gerenderte Seite selbst prüft ein Mensch in MarsDawn. Sie wird nie in den Kontext des Agenten zurückgelesen.</strong></p></div>
+
+<h2 id="the-tool-call-itself-is-cheap">Der Werkzeugaufruf selbst ist günstig</h2>
+<p>Ruf <code>marsdawn export</code> auf, über die CLI, den Skill oder <a href="/de/cli/mcp/">den MCP-Server</a>, und zurück kommt <a href="/de/cli/agents/">ein kompaktes JSON-Objekt</a>: <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> und <code>diagramErrors</code>. Das vollständige Schema ist <a href="/schemas/cli/export.v1.json">export.v1.json</a>. Nichts davon ist das gerenderte Dokument. Ein PDF mit 50 Seiten und einem Dutzend Mermaid-Diagrammen liefert dieselben paar Felder wie eine Notiz mit einer Seite.</p>
+
+<h2 id="review-happens-off-to-the-side">Geprüft wird nebenan</h2>
+<p>Sobald das PDF existiert, öffnet es ein Mensch, in MarsDawn oder einem beliebigen PDF-Programm, und liest Diagramme, Formeln und Layout gerendert. Der Agent muss diese gerenderte Ausgabe nie in sein eigenes Kontextfenster zurücklesen, um zu bestätigen, dass sie stimmt: Geprüft wird in einem eigenen Fenster, auf einem eigenen Bildschirm, nicht in einer weiteren Runde von Tokens, die beschreiben, wie ein Diagramm aussieht.</p>
+
+<h2 id="what-this-avoids">Was das vermeidet</h2>
+<ul>
+  <li>Gerendertes Markdown, einen Screenshot oder die Beschreibung davon in die Unterhaltung zurückzukopieren, nur damit der Agent bestätigen kann, dass der Export geklappt hat.</li>
+  <li>Einen Agenten, der rekonstruieren muss, wie ein Mermaid-Diagramm oder eine KaTeX-Formel gerendert aussieht, statt dass ein Mensch einfach hinschaut.</li>
+  <li>Einen zweiten Werkzeugaufruf, um den Inhalt des PDFs zu holen, nachdem der erste schon Erfolg gemeldet hat.</li>
+</ul>
+
+<h2 id="next">Weiter</h2>
+<ul>
+  <li>Die drei Wege, marsdawn aufzurufen, CLI, Skill-Datei, MCP-Server: <a href="/de/cli/mcp/">drei Zugänge</a>.</li>
+  <li>Jedes Feld im JSON-Ergebnis: <a href="/de/cli/agents/">marsdawn für Agenten</a>.</li>
+  <li>Warum ein Mensch trotzdem lesen muss, was ein Agent geschrieben hat: <a href="/de/reviewing-ai-output/">Warum Prüfen nötig ist</a>.</li>
+  <li>Die ausführlichere Begründung, Agentenausgaben zu lesen, mit einer Checkliste: <a href="/de/reading-agent-output/">Lesen, was dein Agent zurückgibt</a>.</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Website">
+    <a href="/de/support/">Support</a>
+    <a href="/de/privacy/">Datenschutzrichtlinie</a>
+    <a href="/de/cli/">Befehlszeile</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie-Einstellungen</button>
+  </nav>
+  <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

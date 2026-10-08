@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesen, was dein Agent zurückgibt · MarsDawn</title>
+<meta name="description" content="KI-Agenten geben ihre Arbeit als Markdown zurück: Pläne, Spezifikationen, Fortschrittsberichte. Was Leute, die Agenten bauen, über Checkpoints und Fehler sagen, warum diese Ausgabe schwer zu lesen ist, und eine Checkliste, um einen Plan in fünf Minuten zu prüfen.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-agent-output/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-agent-output/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-agent-output/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/reading-agent-output/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/reading-agent-output/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/reading-agent-output/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/reading-agent-output/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-agent-output/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/de/reading-agent-output/">
+<link rel="alternate" type="text/markdown" href="/de/reading-agent-output/index.md">
+<meta property="og:title" content="Lesen, was dein Agent zurückgibt · MarsDawn">
+<meta property="og:description" content="KI-Agenten geben ihre Arbeit als Markdown zurück: Pläne, Spezifikationen, Fortschrittsberichte. Was Leute, die Agenten bauen, über Checkpoints und Fehler sagen, warum diese Ausgabe schwer zu lesen ist, und eine Checkliste, um einen Plan in fünf Minuten zu prüfen.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/de/reading-agent-output/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>
+  <p>Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Ablehnen</button>
+    <button type="button" id="consent-accept" class="consent-btn">Akzeptieren</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/de/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Im Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-agent-output/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-agent-output/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-agent-output/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-agent-output/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/reading-agent-output/" hreflang="de" aria-current="true" lang="de">Deutsch</a> · <a href="/fr/reading-agent-output/" hreflang="fr" lang="fr">Français</a> · <a href="/es/reading-agent-output/" hreflang="es" lang="es">Español</a> · <a href="/ko/reading-agent-output/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Die Arbeit deines Agenten kommt als Markdown-Datei zurück.</h1>
+  <p>Du bittest einen Coding-Agenten, eine Migration zu planen, eine Spezifikation zu schreiben oder einem Bug nachzugehen. Er arbeitet eine Weile allein und gibt dir dann eine Datei: <code>plan.md</code>, <code>SPEC.md</code>, einen Fortschrittsbericht, eine Recherchezusammenfassung. Soweit du die Arbeit prüfen kannst, ist diese Datei die Arbeit.</p>
+</section>
+
+<div class="summary"><p><strong>Ob der Agent es richtig gemacht hat, erfährst du, indem du liest, was er zurückgibt. MarsDawn ist eine Mac-App für dieses Lesen.</strong></p></div>
+
+<h2 id="what-people-who-build-agents-say">Was Leute sagen, die Agenten bauen</h2>
+<p>Zitiert wie geschrieben; unsere Lesart folgt danach.</p>
+<ul>
+  <li>Anthropics „Building Effective Agents“ (Erik S. und Barry Zhang, Dezember 2024) nennt drei Grundprinzipien für den Bau von Agenten. Eines lautet: „Setze auf Transparenz, indem du die Planungsschritte des Agenten ausdrücklich zeigst.“ Es richtet sich an Leute, die Agenten bauen. Von deiner Seite aus ist diese Transparenz der Plan, den du am Ende liest.</li>
+  <li>Derselbe Beitrag: „Agenten können dann an Checkpoints oder bei Hindernissen für menschliches Feedback pausieren.“ Achte auf das Verb: <em>können</em>.</li>
+  <li>Chip Huyen in „Agents“ (Januar 2025) darüber, warum Planung von Ausführung getrennt sein sollte: „Ohne Aufsicht kann ein Agent diese Schritte stundenlang ausführen und Zeit und Geld für API-Aufrufe verschwenden, bevor du merkst, dass er nicht vorankommt.“ Sie beschreibt auch einen Fehler, bei dem „der Agent überzeugt ist, eine Aufgabe erledigt zu haben, obwohl er es nicht hat“. Soll er 50 Personen auf 30 Hotelzimmer verteilen, bringt er 40 unter und besteht darauf, fertig zu sein.</li>
+  <li>Andrew Ng über das Entwurfsmuster Planung in The Batch (April 2024): „Einerseits ist Planung eine sehr mächtige Fähigkeit; andererseits führt sie zu weniger vorhersehbaren Ergebnissen.“ Das ist eine Aussage über Vorhersehbarkeit, kein Aufruf zu menschlicher Prüfung, und er erwartet, dass Planung schnell besser wird.</li>
+</ul>
+<p><strong>Unsere Schlussfolgerung, nicht ihre:</strong> Wenn ein Agent seinen Plan offenlegt und an Checkpoints anhält, liest jemand diesen Plan am Checkpoint, und meistens bist das du. Wenn ein Agent glauben kann, fertig zu sein, obwohl er es nicht ist, braucht auch sein Fertig-Bericht einen Leser. Keiner dieser Autoren erwähnt MarsDawn oder empfiehlt es oder ein anderes Markdown-Werkzeug.</p>
+
+<h2 id="why-it-s-a-harder-read-than-it-looks">Warum das Lesen schwerer ist, als es aussieht</h2>
+<p>Die Datei ist lang, und der wichtige Teil steht selten oben. Sie enthält Mermaid-Diagramme und Formeln, die als Quelltext schwer zu verfolgen sind. Der Agent schreibt sie vielleicht noch um, während du bei der Hälfte bist. Oft ist sie eine von mehreren Dateien, manchmal über Branches oder Worktrees verteilt. Und wenn du ein Problem findest, lässt „der Cache-Teil sieht komisch aus“ den Agenten raten; „<code>docs/plan.md:42</code> löscht die alte Tabelle, bevor das Backfill fertig ist“ nicht.</p>
+
+<h2 id="where-marsdawn-helps">Wo MarsDawn hilft</h2>
+<ul>
+  <li><strong>Lange Dateien:</strong> Der Tab Gliederung in der Seitenleiste (&#8963;&#8984;S) listet die Überschriften. Klick auf eine, und beide Bereiche springen dorthin.</li>
+  <li><strong>Diagramme und Formeln:</strong> Mermaid und KaTeX werden in der Vorschau neben dem Quelltext gezeichnet (&#8984;2), und beide Bereiche scrollen gemeinsam.</li>
+  <li><strong>Umgeschrieben, während du liest:</strong> Wenn der Agent die Datei umschreibt, lädt MarsDawn sie neu und behält deine Stelle, solange du keine eigenen ungesicherten Änderungen hast.</li>
+  <li><strong>Mehrere Dateien:</strong> Öffne den Ordner des Agenten mit Ablage &#9656; Ordner öffnen &#8230; (&#8679;&#8984;O). Neue Dateien erscheinen innerhalb etwa einer Sekunde im Tab Dateien, und bei einem Git-Checkout nennt die Kopfzeile den Branch oder Worktree.</li>
+  <li><strong>Genaues Feedback:</strong> Bearbeiten &#9656; Verweis kopieren (&#8997;&#8984;C) kopiert deine Stelle als <code>docs/plan.md:42</code>. Für KI kopieren (&#8963;&#8997;&#8984;C) fügt den ausgewählten Text darunter ein. Füge beides in den Chat mit dem Agenten ein.</li>
+</ul>
+<p>Zwei weitere für den Ablauf: Ein Agent kann <code>marsdawn open plan.md:42</code> ausführen, um die Datei in MarsDawn bei Zeile 42 zu öffnen, der Zeile, die du zuerst sehen sollst, und eine geprüfte Datei lässt sich aus der App oder mit dem kostenlosen Befehl <code>marsdawn export</code> als PDF exportieren.</p>
+<p>In MarsDawn steckt kein KI-Modell. Es fasst den Plan nicht zusammen, bewertet ihn nicht und sagt dir nicht, was falsch ist. Du liest; es hält eine lange, sich ändernde Datei lesbar und lässt dich auf die genaue Zeile zeigen.</p>
+
+<h2 id="review-an-agent-s-plan-in-five-minutes">Einen Agentenplan in fünf Minuten prüfen</h2>
+<p>Das funktioniert in jedem Editor.</p>
+<ol>
+  <li>Lies nur die Überschriften. Passt die Gliederung zu dem, worum du gebeten hast? Ein fehlender Abschnitt bedeutet meist fehlende Arbeit.</li>
+  <li>Finde jede Stelle, die sagt, dass etwas erledigt, bestanden oder geprüft ist, und prüfe eine selbst: Öffne die Datei, führe den Test aus, zähle die Zeilen.</li>
+  <li>Achte auf Schritte, die sich nicht rückgängig machen lassen: Daten löschen, Migrationen, Force-Pushes, alles, was sendet, bezahlt oder veröffentlicht. Die warten auf dein ausdrückliches Ja.</li>
+  <li>Lies die Diagramme gerendert und prüfe jeden Pfeil gegen den Text.</li>
+  <li>Liste die Dateien und Systeme auf, die der Plan berührt. Frag nach allem, worum du nicht gebeten hast, bevor es läuft.</li>
+  <li>Schreib Feedback als Stelle, Problem, Lösung: „<code>plan.md:88</code>: Das Backfill läuft nach dem Löschen. Tausche die Schritte 4 und 5.“ Ein Problem pro Zeile.</li>
+</ol>
+<p>Wenig Zeit? Mach Schritt 2. Dort fliegt ein Agent auf, der glaubt, fertig zu sein. Die ausführliche Version mit einem durchgespielten Beispiel: <a href="/de/reviewing-agent-plans/">Einen Agentenplan in fünf Minuten prüfen</a>.</p>
+
+<h2 id="try-it">Ausprobieren</h2>
+<p>MarsDawn gibt es im <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>. Dazu kommt das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code>:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Es exportiert Markdown ohne die App als PDF, und mit <code>marsdawn open</code> kann dein Agent Dateien für dich in MarsDawn öffnen.</p>
+<p><a href="/de/cli/">Befehlszeile</a> &#183; <a href="/de/cli/agents/">marsdawn für Agenten</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
+
+<h2 id="next">Weiter</h2>
+<ul>
+  <li>Die kurze Begründung, KI-Ausgaben überhaupt zu lesen: <a href="/de/reviewing-ai-output/">Warum KI-Ausgaben immer noch menschliche Leser brauchen</a>.</li>
+  <li>Den Kontext des Agenten klein halten, während du prüfst: <a href="/de/token-efficient-review/">Token-sparsames Prüfen</a>.</li>
+  <li>Warum Agenten ihre Pläne überhaupt offenlegen: <a href="/de/agent-transparency/">Anthropic sagt, Agenten sollen transparent sein. Wer liest, was sie offenlegen?</a></li>
+  <li>Die Checkliste oben, Schritt für Schritt mit einem Beispiel: <a href="/de/reviewing-agent-plans/">Einen Agentenplan in fünf Minuten prüfen</a>.</li>
+  <li>Welche Dokumente verschiedene Arten von Agenten dir übergeben: <a href="/de/agent-design-patterns/">Vier Agenten-Entwurfsmuster und die Dokumente, die jedes dir übergibt</a>.</li>
+</ul>
+
+<h2 id="sources">Quellen</h2>
+<ul>
+  <li>Erik S. und Barry Zhang, „Building Effective Agents“, Anthropic, 19. Dezember 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (zitiert nach der am 26.09.2026 online verfügbaren Fassung; der Beitrag weist inzwischen darauf hin, dass sich vieles an den beschriebenen Werkzeugen seit Dezember 2024 geändert hat).</li>
+  <li>Chip Huyen, „Agents“, 7. Januar 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
+  <li>Andrew Ng, „Agentic Design Patterns Part 4, Planning“, The Batch, 10. April 2024: <a href="https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/">https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Website">
+    <a href="/de/support/">Support</a>
+    <a href="/de/privacy/">Datenschutzrichtlinie</a>
+    <a href="/de/cli/">Befehlszeile</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie-Einstellungen</button>
+  </nav>
+  <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

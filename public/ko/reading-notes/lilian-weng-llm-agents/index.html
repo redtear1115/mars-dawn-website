@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lilian Weng이 2023년에 그린 에이전트 설계도, 각 부분이 남기는 파일 · MarsDawn</title>
+<meta name="description" content="Lilian Weng의 널리 인용되는 2023년 서베이는 LLM 에이전트를 뇌와 계획·기억·도구 사용으로 그립니다. 각 부분이 당신에게 남기기 쉬운 파일, 그리고 예상치 못한 일에 조정되지 않는 계획에서 그녀가 짚는 한계.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/lilian-weng-llm-agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" type="text/markdown" href="/ko/reading-notes/lilian-weng-llm-agents/index.md">
+<meta property="og:title" content="Lilian Weng이 2023년에 그린 에이전트 설계도, 각 부분이 남기는 파일 · MarsDawn">
+<meta property="og:description" content="Lilian Weng의 널리 인용되는 2023년 서베이는 LLM 에이전트를 뇌와 계획·기억·도구 사용으로 그립니다. 각 부분이 당신에게 남기기 쉬운 파일, 그리고 예상치 못한 일에 조정되지 않는 계획에서 그녀가 짚는 한계.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/reading-notes/lilian-weng-llm-agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store에서 판매 중</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/lilian-weng-llm-agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/lilian-weng-llm-agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/lilian-weng-llm-agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/lilian-weng-llm-agents/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/reading-notes/lilian-weng-llm-agents/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/reading-notes/lilian-weng-llm-agents/" hreflang="fr" lang="fr">Français</a> · <a href="/es/reading-notes/lilian-weng-llm-agents/" hreflang="es" lang="es">Español</a> · <a href="/ko/reading-notes/lilian-weng-llm-agents/" hreflang="ko" aria-current="true" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Lilian Weng이 2023년에 그린 에이전트 설계도, 각 부분이 남기는 파일</h1>
+</section>
+
+<div class="summary"><p><strong>2023년 6월, 당시 OpenAI에 있던 Lilian Weng은 블로그 Lil’Log에 긴 서베이를 올렸습니다. LLM 기반 에이전트를 뇌(모델)와 세 구성요소 &#8212; 계획, 기억, 도구 사용 &#8212; 로 그립니다. 에이전트가 무엇으로 되어 있는지에 대한 초기이자 널리 인용되는 틀이며, 그 틀이 아직 어디서 깨지는지도 솔직합니다.</strong></p></div>
+
+<h2 id="what-the-post-argues">글이 주장하는 것</h2>
+<p>Weng의 개요는 글 전체의 틀을 잡습니다.</p>
+<blockquote><p>&#8220;In a LLM-powered autonomous agent system, LLM functions as the agent&#8217;s brain, complemented by several key components: Planning ... Memory ... Tool use&#8221;.</p></blockquote>
+<p>계획에는 작업을 하위 목표로 나누는 일과, 지난 행동을 돌아보며 다음을 낫게 하는 일이 모두 들어갑니다. 기억은 단기(모델이 지금 보는 맥락, in-context)와 장기(대개 모델 밖, 검색 가능한 벡터 저장소)로 나뉩니다. 도구 사용은 고정된 가중치만으로는 못 주는 것 &#8212; 최신 정보, 코드 실행, 다른 API &#8212; 을 모델이 밖으로 부르게 합니다. 끝부분 «Challenges»에서 한계를 분명히 짚습니다.</p>
+<blockquote><p>&#8220;LLMs struggle to adjust plans when faced with unexpected errors, making them less robust compared to humans who learn from trial and error.&#8221;</p></blockquote>
+<p>화학 에이전트 ChemCrow 사례에서는 더 좁은 문제도 짚습니다. LLM 기반 평가는 GPT-4와 거의 같다고 매겼지만, 사람 전문가는 정확성에서 ChemCrow가 훨씬 낫다고 봤습니다. 결론은 «reflection» 구성요소만이 아니라 자기 평가에 관한 것입니다.</p>
+<blockquote><p>&#8220;The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.&#8221;</p></blockquote>
+<p>Weng은 이 글 어디에서도 MarsDawn을 언급하지 않고 Markdown 도구도 추천하지 않습니다.</p>
+
+<h2 id="our-reading-not-weng-s">우리의 읽기이지 Weng의 것이 아님</h2>
+<p>Weng은 2023년의 에이전트 아키텍처를 설명할 뿐, 에이전트 출력을 읽는 사람을 쓰지 않습니다 &#8212; 파일을 확인하는 사람도 언급하지 않습니다. 하지만 세 구성요소는 당신이 읽게 될 수 있는 서로 다른 세 가지에 대응합니다. 계획은 대개 실행 전에 읽을 문서를 남깁니다 &#8212; 계획 자체, 때로는 이미 접혀 든 «reflection»이나 자기 검토와 함께. 기억은 대개 보이지 않지만, 에이전트가 장기 저장으로 스크래치 파일을 유지하면 그 파일만 따로 열어 볼 가치가 있습니다. 옛 잘못된 가정이 이후 여러 단계에 말없이 실릴 수 있기 때문입니다. 도구 사용은 무엇이 돌았고 무엇이 돌아왔는지에 대한 보고서를 남기기 쉽습니다 &#8212; 계획보다 전사에 가깝습니다.</p>
+<p>예상치 못한 오류에 계획이 조정되지 않는다는 지적은, 당신 쪽에서 보면 어제 승인한 계획이 오늘은 이미 낡았을 수 있는 이유입니다. 계획이 예상하지 못한 일이 중간에 생겨도 에이전트는 다시 계획하지 않고 그대로 갈 수 있고, 마지막 보고는 우회를 말하지 않은 채 원래 계획의 성공만 그릴 수 있습니다. 이는 우리의 추론이지 그녀의 주장이 아닙니다 &#8212; 그녀는 모델 자체의 견고함을 쓰고, 읽는 사람이 무엇을 봐야 하는지는 쓰지 않습니다.</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn이 돕는 곳, 돕지 않는 곳</h2>
+<p>MarsDawn 안에는 AI 모델이 없어 계획이 실제로 일어난 일에서 조용히 벗어났는지 말해 주지 못하고, 계획 파일·기억 파일·도구 사용 보고서도 구분하지 않습니다 &#8212; 내용에 대한 읽기이고, 그 판단은 당신 몫입니다. 하는 일은 이렇습니다. 개요 탭(보기 &#9656; 사이드바 보기, &#8963;&#8984;S)이 긴 계획의 형태를 한눈에 보여 주고, 소스와 렌더링된 미리보기가 나란히(⌘2) Mermaid와 KaTeX를 그리며, 읽는 도중에 에이전트가 파일을 다시 쓰면 저장하지 않은 변경이 없는 한 위치를 유지한 채 다시 불러옵니다 &#8212; 말없이 고쳐진 계획이 바로 그녀가 «Challenges»에서 모델 쪽에서 묘사한 실패 모드이기 때문에 특히 쓸모 있습니다.</p>
+
+<h2 id="try-it">사용해 보기</h2>
+<p>MarsDawn은 Mac App Store에 있습니다. 무료 <code>marsdawn</code> 명령줄 도구는 오늘부터 쓸 수 있습니다:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>앱 없이 Markdown을 PDF로 내보냅니다.</p>
+<p><a href="/ko/cli/">명령줄</a> &#183; 구입 전에: <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+
+<h2 id="next">다음</h2>
+<ul>
+  <li>서로 다른 에이전트 설계 패턴이 남기기 쉬운 문서: <a href="/ko/agent-design-patterns/">에이전트 설계 패턴 네 가지와 각각이 건네는 문서</a></li>
+  <li>계획이 돌기 전 5분 검토법: <a href="/ko/reviewing-agent-plans/">에이전트의 계획을 5분 만에 검토하기</a></li>
+  <li>시리즈로 돌아가기: <a href="/ko/reading-notes/">편집자의 독서 노트</a></li>
+</ul>
+
+<h2 id="sources">출처</h2>
+<ul>
+  <li>Lilian Weng, &#8220;LLM Powered Autonomous Agents,&#8221; Lil’Log, June 23, 2023: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a> (2026-09-26에 가져와 인용; 쓸 당시 OpenAI에 있었으며, 여기서는 그때의 소속만 적습니다).</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트">
+    <a href="/ko/support/">지원</a>
+    <a href="/ko/privacy/">개인정보 처리방침</a>
+    <a href="/ko/cli/">명령줄</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

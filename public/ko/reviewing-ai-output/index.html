@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI의 결과물에 여전히 사람 독자가 필요한 이유 · MarsDawn</title>
+<meta name="description" content="AI가 쓴 Markdown은 보자마자 믿을 것이 아니라 사람이 이해해야 합니다. MarsDawn은 렌더링된 페이지를 원본 옆에 두고 Mermaid 다이어그램과 KaTeX 수식을 그려 주어, 구조를 한눈에 읽을 수 있게 합니다.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-ai-output/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reviewing-ai-output/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reviewing-ai-output/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/reviewing-ai-output/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/reviewing-ai-output/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/reviewing-ai-output/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/reviewing-ai-output/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-ai-output/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/reviewing-ai-output/">
+<link rel="alternate" type="text/markdown" href="/ko/reviewing-ai-output/index.md">
+<meta property="og:title" content="AI의 결과물에 여전히 사람 독자가 필요한 이유 · MarsDawn">
+<meta property="og:description" content="AI가 쓴 Markdown은 보자마자 믿을 것이 아니라 사람이 이해해야 합니다. MarsDawn은 렌더링된 페이지를 원본 옆에 두고 Mermaid 다이어그램과 KaTeX 수식을 그려 주어, 구조를 한눈에 읽을 수 있게 합니다.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/reviewing-ai-output/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store에서 판매 중</span>
+  <nav class="lang" aria-label="Language"><a href="/reviewing-ai-output/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reviewing-ai-output/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reviewing-ai-output/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reviewing-ai-output/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/reviewing-ai-output/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/reviewing-ai-output/" hreflang="fr" lang="fr">Français</a> · <a href="/es/reviewing-ai-output/" hreflang="es" lang="es">Español</a> · <a href="/ko/reviewing-ai-output/" hreflang="ko" aria-current="true" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>에이전트가 씁니다. 이해하는 것은 여전히 여러분의 몫입니다.</h1>
+  <p>AI 에이전트는 계획, 사양서, 메모를 빠르게 써 냅니다. 하지만 그 결과물은 매끄럽게 읽힌다는 이유로 믿을 것이 아니라, 그것을 바탕으로 행동할 사람이 이해해야 합니다.</p>
+</section>
+
+<div class="summary"><p><strong>MarsDawn은 바로 그 읽기를 위해 만들어졌습니다. 렌더링된 페이지를 원본 옆에 두고, Mermaid 다이어그램과 KaTeX 수식을 기호로 남기지 않고 그려 주어, 문서의 구조를 한눈에 읽을 수 있게 합니다.</strong></p></div>
+
+<h2 id="fluent-isn-t-the-same-as-correct">매끄럽다고 맞는 것은 아닙니다</h2>
+<p>AI의 도움을 받는 코딩에 관해 쓰면서, Simon Willison은 버리지 않고 계속 손볼 코드에 대해 이렇게 말했습니다. “바탕이 되는 코드의 품질과 이해 가능성이 결정적이다”(<a href="https://simonwillison.net/2025/Mar/6/vibe-coding/">Vibe coding</a>, 2025). 문서도 마찬가지입니다. 매끄럽게 읽히는 에이전트의 초안도 구조, 숫자, 논리를 틀릴 수 있으며, 유창한 문장은 어느 부분을 확인해야 하는지 알려 주지 않습니다.</p>
+
+<h2 id="inference-not-compilation">컴파일이 아니라 추론</h2>
+<p>Thoughtworks에 글을 쓴 Birgitta Böckeler는 그 차이를 분명히 짚습니다. “LLM은 자연어의 컴파일러, 인터프리터, 트랜스파일러, 어셈블러가 아니다. 추론기다”(<a href="https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html">I still care about the code</a>). 컴파일러는 입력을 받아들이거나 오류를 보고하지만, 에이전트는 맞지 않으면서도 실행되거나 읽히는 무언가를 돌려줄 수 있습니다. 누군가는 여전히 확인해야 합니다.</p>
+
+<h2 id="what-marsdawn-gives-that-reader">MarsDawn이 그 독자에게 주는 것</h2>
+<ul>
+  <li>렌더링된 페이지를 원본 옆에 두고 어느 쪽이 바뀌든 함께 업데이트해, 본문의 주장과 그 구조를 동시에 볼 수 있습니다.</li>
+  <li>Mermaid 다이어그램을 그려 줍니다. 에이전트가 글로 설명한 순서도가 실제로 따라갈 수 있는 모양이 됩니다.</li>
+  <li>KaTeX 수식을 백슬래시 문자열로 남기지 않고 렌더링합니다. 수식이 수식으로 읽힙니다.</li>
+  <li>저절로 실행되는 것은 없습니다. MarsDawn은 문서를 대신 평가하거나 요약하거나 표시하지 않습니다. 여러분이 할 수 있도록 구조를 눈앞에 보여 줄 뿐입니다.</li>
+</ul>
+
+<h2 id="next">다음</h2>
+<ul>
+  <li>그 검토가 에이전트 자신의 컨텍스트에 부담을 주지 않는 방법: <a href="/ko/token-efficient-review/">토큰을 아끼는 검토</a>.</li>
+  <li>검토한 문서를 다른 사람에게 전달하기: <a href="/ko/sharing-exported-pdfs/">PDF 공유하기</a>.</li>
+  <li>왜 읽기 어려운지, 어떻게 읽으면 되는지: <a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a>.</li>
+  <li>에이전트가 애초에 계획을 펼쳐 보이는 이유: <a href="/ko/agent-transparency/">Anthropic은 에이전트가 투명해야 한다고 말합니다. 그럼 펼쳐 놓은 것은 누가 읽을까요?</a></li>
+  <li>MarsDawn이 무엇인지 한 페이지로: <a href="/ko/">홈페이지</a>.</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트">
+    <a href="/ko/support/">지원</a>
+    <a href="/ko/privacy/">개인정보 처리방침</a>
+    <a href="/ko/cli/">명령줄</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

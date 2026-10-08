@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pourquoi ce que produit l’IA a toujours besoin d’un lecteur humain · MarsDawn</title>
+<meta name="description" content="Le Markdown écrit par une IA doit être compris par une personne, pas cru sur parole. MarsDawn place la page rendue à côté de la source et dessine les diagrammes Mermaid et les formules KaTeX, pour que la structure se lise d’un coup d’œil.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reviewing-ai-output/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reviewing-ai-output/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reviewing-ai-output/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/reviewing-ai-output/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/reviewing-ai-output/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/reviewing-ai-output/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/reviewing-ai-output/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reviewing-ai-output/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/fr/reviewing-ai-output/">
+<link rel="alternate" type="text/markdown" href="/fr/reviewing-ai-output/index.md">
+<meta property="og:title" content="Pourquoi ce que produit l’IA a toujours besoin d’un lecteur humain · MarsDawn">
+<meta property="og:description" content="Le Markdown écrit par une IA doit être compris par une personne, pas cru sur parole. MarsDawn place la page rendue à côté de la source et dessine les diagrammes Mermaid et les formules KaTeX, pour que la structure se lise d’un coup d’œil.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/fr/reviewing-ai-output/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentement aux cookies" hidden>
+  <p>Ce site utilise des cookies de mesure d’audience pour voir comment les visiteurs l’utilisent. Ils restent désactivés tant que vous n’acceptez pas.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Refuser</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accepter</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/fr/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Sur le Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/reviewing-ai-output/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reviewing-ai-output/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reviewing-ai-output/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reviewing-ai-output/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/reviewing-ai-output/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/reviewing-ai-output/" hreflang="fr" aria-current="true" lang="fr">Français</a> · <a href="/es/reviewing-ai-output/" hreflang="es" lang="es">Español</a> · <a href="/ko/reviewing-ai-output/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Un agent l’écrit. Vous devez quand même le comprendre.</h1>
+  <p>Un agent IA peut rédiger vite un plan, une spécification ou des notes. Ce qu’il produit doit pourtant être compris par la personne qui va agir en conséquence, et non cru parce que le texte est fluide.</p>
+</section>
+
+<div class="summary"><p><strong>MarsDawn est conçu pour cette lecture : la page rendue à côté de la source, avec les diagrammes Mermaid et les formules KaTeX dessinés au lieu de rester des marques, pour que la structure d’un document se lise d’un coup d’œil.</strong></p></div>
+
+<h2 id="fluent-isn-t-the-same-as-correct">Fluide ne veut pas dire juste</h2>
+<p>À propos du code écrit avec l’aide de l’IA et destiné à être retravaillé plutôt que jeté, Simon Willison l’a formulé ainsi : « la qualité et la compréhensibilité du code sous-jacent sont essentielles » (<a href="https://simonwillison.net/2025/Mar/6/vibe-coding/">Vibe coding</a>, 2025). C’est vrai aussi d’un document : le brouillon d’un agent qui se lit sans accroc peut se tromper de structure, de chiffres ou de logique, et une prose fluide n’indique pas quelles parties vérifier.</p>
+
+<h2 id="inference-not-compilation">De l’inférence, pas de la compilation</h2>
+<p>Birgitta Böckeler, pour Thoughtworks, pose la distinction sans détour : « les LLM ne sont PAS des compilateurs, interpréteurs, transpileurs ou assembleurs du langage naturel, ce sont des moteurs d’inférence » (<a href="https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html">I still care about the code</a>). Un compilateur accepte votre entrée ou signale une erreur ; un agent peut rendre quelque chose qui s’exécute, ou se lit, sans être juste. Quelqu’un doit encore vérifier.</p>
+
+<h2 id="what-marsdawn-gives-that-reader">Ce que MarsDawn apporte à ce lecteur</h2>
+<ul>
+  <li>La page rendue à côté de la source, mise à jour quand l’un ou l’autre côté change, pour avoir sous les yeux à la fois une affirmation et la façon dont elle est structurée.</li>
+  <li>Les diagrammes Mermaid dessinés : un organigramme qu’un agent a décrit en texte devient une forme que vous pouvez réellement suivre.</li>
+  <li>Les formules KaTeX rendues, pas laissées sous forme de suite de barres obliques inverses : une formule se lit comme une formule.</li>
+  <li>Rien ne se lance tout seul. MarsDawn ne note pas, ne résume pas et ne signale rien dans le document à votre place ; il met la structure sous vos yeux pour que vous le fassiez.</li>
+</ul>
+
+<h2 id="next">Pour aller plus loin</h2>
+<ul>
+  <li>Comment cette relecture reste économique pour le contexte de l’agent : <a href="/fr/token-efficient-review/">une relecture économe en tokens</a>.</li>
+  <li>Remettre le document relu à quelqu’un d’autre : <a href="/fr/sharing-exported-pdfs/">partager un PDF</a>.</li>
+  <li>Pourquoi c’est difficile à lire, et comment s’y prendre : <a href="/fr/reading-agent-output/">Lire ce que votre agent vous rend</a>.</li>
+  <li>Pourquoi les agents exposent leurs plans : <a href="/fr/agent-transparency/">Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?</a></li>
+  <li>Ce qu’est MarsDawn, en une page : <a href="/fr/">la page d’accueil</a>.</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/fr/support/">Assistance</a>
+    <a href="/fr/privacy/">Politique de confidentialité</a>
+    <a href="/fr/cli/">Ligne de commande</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Réglages des cookies</button>
+  </nav>
+  <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

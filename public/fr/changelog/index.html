@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Historique des versions · MarsDawn</title>
+<meta name="description" content="Ce qui a changé dans l’outil en ligne de commande gratuit marsdawn.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/changelog/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/changelog/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/changelog/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/changelog/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/changelog/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/changelog/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/changelog/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/changelog/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/changelog/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/fr/changelog/">
+<link rel="alternate" type="text/markdown" href="/fr/changelog/index.md">
+<meta property="og:title" content="Historique des versions · MarsDawn">
+<meta property="og:description" content="Ce qui a changé dans l’outil en ligne de commande gratuit marsdawn.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/fr/changelog/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentement aux cookies" hidden>
+  <p>Ce site utilise des cookies de mesure d’audience pour voir comment les visiteurs l’utilisent. Ils restent désactivés tant que vous n’acceptez pas.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Refuser</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accepter</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/fr/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Sur le Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/changelog/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/changelog/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/changelog/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/changelog/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/changelog/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/changelog/" hreflang="fr" aria-current="true" lang="fr">Français</a> · <a href="/es/changelog/" hreflang="es" lang="es">Español</a> · <a href="/ko/changelog/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Historique des versions</h1>
+  <p>Ce qui a changé dans l’outil en ligne de commande gratuit marsdawn. Une version de MarsDawn du Mac App Store n’est mentionnée ici que lorsqu’elle a sa propre ligne. Les versions antérieures à 0.5.1 ne sont pas listées.</p>
+</section>
+
+<h2 id="marsdawn-0-6-3">marsdawn 0.6.3</h2>
+<p>6 octobre 2026. MarsDawn est sur le Mac App Store.</p>
+<ul>
+  <li>Quand l’app n’est pas installée, <code>marsdawn open</code> renvoie vers MarsDawn sur le Mac App Store.</li>
+  <li>Le README et la skill pour agents expliquent <code>marsdawn open .</code> et <code>--folder</code> : MarsDawn 1.0.0 affiche le dossier dans la barre latérale de la fenêtre.</li>
+</ul>
+
+<h2 id="marsdawn-0-5-4">marsdawn 0.5.4</h2>
+<p>26 septembre 2026. Corrections Mermaid, lignes des erreurs de diagramme et installation de la skill.</p>
+<ul>
+  <li>Dans un diagramme de séquence, le libellé d’un message qui croise les lignes de vie d’autres participants reste lisible, dans l’aperçu comme dans les PDF exportés.</li>
+  <li><code>marsdawn export</code> gère les documents remplis de diagrammes Mermaid. Un document de 50 diagrammes, qui échouait auparavant avec le code 5, s’exporte désormais.</li>
+  <li><code>marsdawn export --json</code> ajoute <code>diagramErrorDetails</code>, avec les numéros de ligne de chaque erreur de diagramme : où le diagramme commence dans votre document et, quand Mermaid en indique une, la ligne de l’erreur elle-même.</li>
+  <li><code>marsdawn skill --install</code> installe la skill pour Claude Code dans <code>~/.claude/skills/marsdawn/SKILL.md</code>, ou dans un autre dossier avec <code>--dir</code>. Il laisse intact un fichier identique et ne remplace un fichier différent qu’avec <code>--force</code>. Sinon, il se termine avec le code 64 (<code>skill_differs</code>) sans rien modifier.</li>
+</ul>
+
+<h2 id="marsdawn-0-5-3">marsdawn 0.5.3</h2>
+<p>25 septembre 2026. État du dossier, erreurs Mermaid complètes et petites corrections.</p>
+<ul>
+  <li><code>marsdawn open --folder</code> peut indiquer ce qu’il est advenu du dossier. Avec une app qui répond, il attend jusqu’à <code>--wait</code> secondes (2 par défaut), et <code>--json</code> donne un état comme <code>attached</code> ou <code>needsUser</code>.</li>
+  <li>Un diagramme Mermaid qui ne s’analyse pas affiche le message d’erreur complet de Mermaid au lieu de sa seule première ligne, avec le numéro de ligne compté depuis le début de votre document.</li>
+  <li>La recherche de la fin d’un bloc front matter s’arrête après 1 000 lignes : un bloc non fermé n’entraîne plus le parcours du reste d’un long document.</li>
+  <li>Une app peut donner au lien de retour d’une note de bas de page un libellé traduit pour l’export PDF et l’impression. Le libellé n’est pas imprimé sur la page, et <code>marsdawn export</code> garde le libellé anglais.</li>
+  <li>La copie intégrée de highlight.js est désormais épinglée par version, source et SHA-256, comme KaTeX et Mermaid.</li>
+</ul>
+
+<h2 id="marsdawn-0-5-2">marsdawn 0.5.2</h2>
+<p>24 septembre 2026. Notes de bas de page, contraste et dossiers.</p>
+<ul>
+  <li>Les notes de bas de page s’affichent dans les PDF exportés : appels numérotés, avec les notes après le corps du texte.</li>
+  <li>Chaque thème respecte le contraste WCAG AA, en clair comme en sombre. Classique est désormais en noir et blanc.</li>
+  <li><code>marsdawn skill</code> affiche la skill pour agents qui correspond au marsdawn installé.</li>
+  <li><code>marsdawn open</code> se termine avec le code 6 (<code>app_cannot_open_folders</code>) quand le MarsDawn trouvé ne peut pas afficher de dossier, au lieu d’annoncer un succès.</li>
+  <li>Les espaces réservés dessinés dans les pages exportées existent aussi en allemand, français, espagnol et coréen.</li>
+  <li>Un espace réservé d’image n’affiche plus le chemin absolu caché derrière un très long chemin relatif.</li>
+  <li><code>MARSDAWN_APP_PATH</code> n’est utilisé que s’il pointe vers une app MarsDawn.</li>
+</ul>
+
+<h2 id="marsdawn-0-5-1">marsdawn 0.5.1</h2>
+<p>19 septembre 2026. Export PDF, et ouverture d’un fichier depuis la ligne de commande.</p>
+<ul>
+  <li>La couche de texte d’un PDF exporté est réparée pour le chinois, le japonais et le coréen.</li>
+  <li><code>marsdawn open --background</code> ouvre un fichier sans faire passer MarsDawn au premier plan.</li>
+  <li><code>marsdawn open</code> accepte un dossier, et MarsDawn l’affiche dans la barre latérale de la fenêtre (MarsDawn 1.0.0 et versions ultérieures).</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/fr/support/">Assistance</a>
+    <a href="/fr/privacy/">Politique de confidentialité</a>
+    <a href="/fr/cli/">Ligne de commande</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Réglages des cookies</button>
+  </nav>
+  <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

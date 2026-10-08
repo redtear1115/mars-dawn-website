@@ -27,7 +27,10 @@ from pathlib import Path
 BASE_URL = "https://marsdawn.southern-light.dev"
 # hreflang value -> path prefix. Mirrors LOCALES in build_pages.py, written out again on purpose:
 # a check that imports the thing it checks can't catch a mistake in it.
-LOCALES = {"en": "/", "zh-Hant": "/zh-hant/", "zh-Hans": "/zh-hans/", "ja": "/ja/"}
+# de, fr, es and ko are listed here though the site may not serve them: a locale counts only when it has
+# pages on disk, and check_locales.py is what fails a half-built or unfinished one.
+LOCALES = {"en": "/", "zh-Hant": "/zh-hant/", "zh-Hans": "/zh-hans/", "ja": "/ja/",
+           "de": "/de/", "fr": "/fr/", "es": "/es/", "ko": "/ko/"}
 
 
 class Head(HTMLParser):
