@@ -294,6 +294,15 @@ def author_of(doc: dict) -> dict:
     return out
 
 
+def expected_min_app_version(doc: dict) -> str:
+    """max(MIN_APP_VERSION, the theme's own declared minimum, if it declares one): never lower than
+    the gallery's first app version, and never copied from the index entry being checked (#175)."""
+    declared = doc.get("minAppVersion")
+    if is_version(declared) and version_key(declared) > version_key(MIN_APP_VERSION):
+        return declared
+    return MIN_APP_VERSION
+
+
 def index_entry(doc: dict, theme_sha: str) -> dict:
     """The index entry build_themes.py writes for a validated theme.json, and the one this check
     requires each entry to equal (§5.1, minus theme.css, plus scenarios)."""
@@ -306,7 +315,7 @@ def index_entry(doc: dict, theme_sha: str) -> dict:
         "summary": localized(doc["summary"]),
         "scenarios": list(doc["scenarios"]),
         "author": author_of(doc),
-        "minAppVersion": MIN_APP_VERSION,
+        "minAppVersion": expected_min_app_version(doc),
         "files": {"theme.json": {"path": base + "theme.json", "sha256": theme_sha}},
         "previews": {"light": base + "preview-light.png", "dark": base + "preview-dark.png"},
     }
@@ -822,7 +831,11 @@ def check_cross(problems, snap, index, sources, published, revoked):
             continue
         data, doc = source
         expected = index_entry(doc, sha256(data))
-        expected["minAppVersion"] = entry["minAppVersion"]
+        if entry.get("minAppVersion") != expected["minAppVersion"]:
+            problems.append(f"{where}: minAppVersion is {entry.get('minAppVersion')!r}; it must be "
+                            f"{expected['minAppVersion']!r} (max of {MIN_APP_VERSION}, the gallery's first app version, "
+                            f"and any minimum themes/{tid}/theme.json declares)")
+            continue
         differing = [key for key in expected if entry.get(key) != expected[key] and key not in ("files", "previews")]
         extra = sorted(set(entry) - set(expected))
         if differing or extra:
@@ -1429,6 +1442,10 @@ RULES = [
     ("theme.id missing", edit_entry(lambda t: t.pop("id")), ["id must be a non-empty string"]),
     ("theme.version wrong type", edit_entry(lambda t: t.__setitem__("version", 1)), ["version must be a non-empty string"]),
     ("theme.minAppVersion missing", edit_entry(lambda t: t.pop("minAppVersion")), ["minAppVersion must be a non-empty string"]),
+    ("theme.minAppVersion above the gallery's first app version", edit_entry(lambda t: t.__setitem__("minAppVersion", "1.1.1")),
+     ["minAppVersion is '1.1.1'", "it must be '1.1.0'"]),
+    ("theme.minAppVersion below the gallery's first app version", edit_entry(lambda t: t.__setitem__("minAppVersion", "1.0.9")),
+     ["minAppVersion is '1.0.9'", "it must be '1.1.0'"]),
     ("theme.name wrong type", edit_entry(lambda t: t.__setitem__("name", "Olympus Dusk")), ["name must be an object"]),
     ("theme.summary missing 'en'", edit_entry(lambda t: t.__setitem__("summary", {})), ["summary must be an object"]),
     ("theme.author wrong type", edit_entry(lambda t: t.__setitem__("author", "Jane Doe")), ["author must be an object"]),
