@@ -73,6 +73,13 @@ COPY = {
 
 LANG_CLASS = {"en": "", "zh-hant": " loop-hant", "zh-hans": " loop-hans", "ja": " loop-ja"}
 
+
+def register_locale(locale: str, copy: dict) -> None:
+    """Adds a locale's loop copy (the same keys as COPY["ja"]); its class is loop-<locale>.
+    The two days that trade places must be the same width in the language (see the docstring)."""
+    COPY[locale] = copy
+    LANG_CLASS[locale] = f" loop-{locale}"
+
 _esc = html.escape
 
 # A scene is data: the file, its source lines, its preview blocks, and what changes. Two kinds of
@@ -474,9 +481,9 @@ def _scene_css() -> str:
 .loop-d-c { animation-name: loop-a-glow; }
 /* Scene colours, light and night, from the kit's Dawn theme (hero_sources.json): code is the
    theme's string colour, a flow node sits on its surface. The rest reuse the --lw-* palette. */
-.loop-stage { --lw-code: #2F6F5E; --lw-node: #FFF7F4; --lw-node-edge: #E39A86; --lw-muted: #6F6660; }
+.loop-stage { --lw-code: #2F6F5E; --lw-node: #FFF7F4; --lw-node-edge: #D66A4D; --lw-muted: #6F6660; }
 @media (prefers-color-scheme: dark) {
-  .loop-stage { --lw-code: #7FD1B9; --lw-node: #262229; --lw-node-edge: #8E5238; --lw-muted: #A39992; }
+  .loop-stage { --lw-code: #7FD1B9; --lw-node: #262229; --lw-node-edge: #A15D3F; --lw-muted: #A39992; }
 }
 .loop-code { color: var(--lw-code); }
 

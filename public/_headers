@@ -178,6 +178,18 @@
 /ja/themes/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300
+/themes/gallery/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hant/themes/gallery/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/zh-hans/themes/gallery/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
+/ja/themes/gallery/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=300
 /sharing-exported-pdfs/index.md
   Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=300

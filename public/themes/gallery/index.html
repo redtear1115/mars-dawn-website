@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theme gallery: community MarsDawn themes · MarsDawn</title>
+<meta name="description" content="Browse preview themes the community submitted for MarsDawn, filter them by scenario, and report a problem with one. Build your own in the browser, no install, no git.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/theme-gallery.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/themes/gallery/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/themes/gallery/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/themes/gallery/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/themes/gallery/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/themes/gallery/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/themes/gallery/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/themes/gallery/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/themes/gallery/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/themes/gallery/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/themes/gallery/">
+<link rel="alternate" type="text/markdown" href="/themes/gallery/index.md">
+<meta property="og:title" content="Theme gallery: community MarsDawn themes · MarsDawn">
+<meta property="og:description" content="Browse preview themes the community submitted for MarsDawn, filter them by scenario, and report a problem with one. Build your own in the browser, no install, no git.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/themes/gallery/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+<script type="module" src="/assets/theme-gallery.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">On the Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/themes/gallery/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/themes/gallery/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/themes/gallery/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/themes/gallery/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/themes/gallery/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/themes/gallery/" hreflang="fr" lang="fr">Français</a> · <a href="/es/themes/gallery/" hreflang="es" lang="es">Español</a> · <a href="/ko/themes/gallery/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Theme gallery</h1>
+  <p>Preview themes the community submitted, each reviewed and merged by the developer before it appears here. Filter by scenario, or <a href="/themes/new/">build your own</a> in the browser &#8212; no install, no git.</p>
+</section>
+<div class="theme-gallery-filter" id="theme-gallery-filter" role="group" aria-label="Filter by scenario">
+  <button type="button" class="theme-filter-btn" data-scenario="all" aria-pressed="true">All</button>
+  <button type="button" class="theme-filter-btn" data-scenario="agent-review" aria-pressed="false">Agent review</button>
+  <button type="button" class="theme-filter-btn" data-scenario="technical-docs" aria-pressed="false">Technical docs</button>
+  <button type="button" class="theme-filter-btn" data-scenario="formal-output" aria-pressed="false">Formal output</button>
+  <button type="button" class="theme-filter-btn" data-scenario="notes-sharing" aria-pressed="false">Notes & sharing</button>
+</div>
+<ul class="theme-gallery-cards" id="theme-gallery-cards">
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <img src="/themes/v1/dracula/1.0.1/preview-light.png" alt="Dracula — light preview" loading="lazy">
+    <img src="/themes/v1/dracula/1.0.1/preview-dark.png" alt="Dracula — dark preview" loading="lazy">
+    <strong class="theme-name">Dracula</strong> <span class="theme-version">v1.0.1</span>
+    <span class="theme-summary">The classic dark vampire palette, with Alucard by day — adapted from Dracula Theme, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Technical docs</span> <span class="theme-scenario">Agent review</span></span>
+    <span class="theme-author">by Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#dracula">Credits &amp; licence</a></span>
+    <button type="button" class="theme-report" data-theme-id="dracula" data-theme-version="1.0.1">Report</button>
+    <button type="button" class="theme-report-mail" data-theme-id="dracula" data-theme-version="1.0.1">Report by email</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs notes-sharing">
+    <img src="/themes/v1/gruvbox/1.0.1/preview-light.png" alt="Gruvbox — light preview" loading="lazy">
+    <img src="/themes/v1/gruvbox/1.0.1/preview-dark.png" alt="Gruvbox — dark preview" loading="lazy">
+    <strong class="theme-name">Gruvbox</strong> <span class="theme-version">v1.0.1</span>
+    <span class="theme-summary">A warm retro palette of cream, brown and orange — adapted from Gruvbox, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Technical docs</span> <span class="theme-scenario">Notes & sharing</span></span>
+    <span class="theme-author">by Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#gruvbox">Credits &amp; licence</a></span>
+    <button type="button" class="theme-report" data-theme-id="gruvbox" data-theme-version="1.0.1">Report</button>
+    <button type="button" class="theme-report-mail" data-theme-id="gruvbox" data-theme-version="1.0.1">Report by email</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs">
+    <img src="/themes/v1/guide/1.0.1/preview-light.png" alt="Guide — light preview" loading="lazy">
+    <img src="/themes/v1/guide/1.0.1/preview-dark.png" alt="Guide — dark preview" loading="lazy">
+    <strong class="theme-name">Guide</strong> <span class="theme-version">v1.0.1</span>
+    <span class="theme-summary">A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Technical docs</span></span>
+    <span class="theme-author">by Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="guide" data-theme-version="1.0.1">Report</button>
+    <button type="button" class="theme-report-mail" data-theme-id="guide" data-theme-version="1.0.1">Report by email</button>
+  </li>
+  <li class="theme-card" data-scenarios="formal-output">
+    <img src="/themes/v1/ledger/1.0.1/preview-light.png" alt="Ledger — light preview" loading="lazy">
+    <img src="/themes/v1/ledger/1.0.1/preview-dark.png" alt="Ledger — dark preview" loading="lazy">
+    <strong class="theme-name">Ledger</strong> <span class="theme-version">v1.0.1</span>
+    <span class="theme-summary">Off-white paper, deep-green rules and a filled table header, for budgets, statements and estimates</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Formal output</span></span>
+    <span class="theme-author">by Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="ledger" data-theme-version="1.0.1">Report</button>
+    <button type="button" class="theme-report-mail" data-theme-id="ledger" data-theme-version="1.0.1">Report by email</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <img src="/themes/v1/nord/1.0.1/preview-light.png" alt="Nord — light preview" loading="lazy">
+    <img src="/themes/v1/nord/1.0.1/preview-dark.png" alt="Nord — dark preview" loading="lazy">
+    <strong class="theme-name">Nord</strong> <span class="theme-version">v1.0.1</span>
+    <span class="theme-summary">An arctic, north-bluish palette, with an original light companion — adapted from Nord, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Technical docs</span> <span class="theme-scenario">Agent review</span></span>
+    <span class="theme-author">by Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#nord">Credits &amp; licence</a></span>
+    <button type="button" class="theme-report" data-theme-id="nord" data-theme-version="1.0.1">Report</button>
+    <button type="button" class="theme-report-mail" data-theme-id="nord" data-theme-version="1.0.1">Report by email</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <img src="/themes/v1/solarized/1.0.1/preview-light.png" alt="Solarized — light preview" loading="lazy">
+    <img src="/themes/v1/solarized/1.0.1/preview-dark.png" alt="Solarized — dark preview" loading="lazy">
+    <strong class="theme-name">Solarized</strong> <span class="theme-version">v1.0.1</span>
+    <span class="theme-summary">Ethan Schoonover&#x27;s teal-and-gold precision palette — adapted from Solarized, adjusted for readability</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Technical docs</span> <span class="theme-scenario">Agent review</span></span>
+    <span class="theme-author">by Southern Light</span>
+    <span class="theme-credit"><a href="/themes/third-party-notices.html#solarized">Credits &amp; licence</a></span>
+    <button type="button" class="theme-report" data-theme-id="solarized" data-theme-version="1.0.1">Report</button>
+    <button type="button" class="theme-report-mail" data-theme-id="solarized" data-theme-version="1.0.1">Report by email</button>
+  </li>
+  <li class="theme-card" data-scenarios="agent-review formal-output">
+    <img src="/themes/v1/spec/1.0.1/preview-light.png" alt="Spec — light preview" loading="lazy">
+    <img src="/themes/v1/spec/1.0.1/preview-dark.png" alt="Spec — dark preview" loading="lazy">
+    <strong class="theme-name">Spec</strong> <span class="theme-version">v1.0.1</span>
+    <span class="theme-summary">Ink on white with a single brick-red accent, decisions and risks in a terracotta-tinted panel, for PRDs and RFCs</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Agent review</span> <span class="theme-scenario">Formal output</span></span>
+    <span class="theme-author">by Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="spec" data-theme-version="1.0.1">Report</button>
+    <button type="button" class="theme-report-mail" data-theme-id="spec" data-theme-version="1.0.1">Report by email</button>
+  </li>
+  <li class="theme-card" data-scenarios="notes-sharing agent-review">
+    <img src="/themes/v1/story/1.0.1/preview-light.png" alt="Story — light preview" loading="lazy">
+    <img src="/themes/v1/story/1.0.1/preview-dark.png" alt="Story — dark preview" loading="lazy">
+    <strong class="theme-name">Story</strong> <span class="theme-version">v1.0.1</span>
+    <span class="theme-summary">Bright sticky-note colours with rounded corners and vivid task checkboxes, for user stories and sprint notes</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Notes & sharing</span> <span class="theme-scenario">Agent review</span></span>
+    <span class="theme-author">by Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="story" data-theme-version="1.0.1">Report</button>
+    <button type="button" class="theme-report-mail" data-theme-id="story" data-theme-version="1.0.1">Report by email</button>
+  </li>
+</ul>
+<h2 id="credits">Credits</h2>
+<p>Dracula, Nord, Gruvbox and Solarized are adapted from open-source colour schemes; see <a href="/themes/third-party-notices.html">third-party notices</a> for each project’s copyright and full licence text.</p>
+<h2 id="something-wrong-with-a-theme">Something wrong with a theme?</h2>
+<p>Use the "Report" button on its card (it needs JavaScript), or write directly to <a href="mailto:support@southern-light.dev">support@southern-light.dev</a> with its name and version, JavaScript or not. Reports are reviewed by hand; a theme that's confirmed to be a problem is delisted within a day.</p>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/support/">Support</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
+  </nav>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

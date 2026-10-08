@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plantilla de diagrama de flujo en Markdown (Mermaid) · MarsDawn</title>
+<meta name="description" content="Una plantilla de diagrama de flujo Mermaid en Markdown, con los pasos escritos debajo. Previsualízala en la Mac y expórtala a PDF.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/loop.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/flowchart/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/flowchart/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/templates/flowchart/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/templates/flowchart/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/templates/flowchart/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/templates/flowchart/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/flowchart/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/es/templates/flowchart/">
+<link rel="alternate" type="text/markdown" href="/es/templates/flowchart/index.md">
+<meta property="og:title" content="Plantilla de diagrama de flujo en Markdown (Mermaid) · MarsDawn">
+<meta property="og:description" content="Una plantilla de diagrama de flujo Mermaid en Markdown, con los pasos escritos debajo. Previsualízala en la Mac y expórtala a PDF.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/es/templates/flowchart/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>
+  <p>Este sitio usa cookies de analítica para ver cómo lo usan los visitantes. Permanecen desactivadas a menos que las aceptes.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Rechazar</button>
+    <button type="button" id="consent-accept" class="consent-btn">Aceptar</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/es/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">En el Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/templates/flowchart/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/templates/flowchart/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/templates/flowchart/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/templates/flowchart/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/templates/flowchart/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/templates/flowchart/" hreflang="fr" lang="fr">Français</a> · <a href="/es/templates/flowchart/" hreflang="es" aria-current="true" lang="es">Español</a> · <a href="/ko/templates/flowchart/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Plantilla de diagrama de flujo en Markdown</h1>
+  <p>Un diagrama de flujo Mermaid con los pasos detallados debajo, para que el diagrama y el texto se puedan contrastar entre sí. Quita un paso y pídele al agente que corrija el resto.</p>
+</section>
+
+<div class="loop-anim loop-es loop-long">
+<div class="loop-frame" role="img" aria-label="Una terminal abre flowchart.md en MarsDawn. Quien lee quita el paso Legal del diagrama Mermaid, y el agente vuelve a conectar el diagrama y renumera los pasos de abajo.">
+<div class="loop-stage" aria-hidden="true">
+<div class="loop-win a">
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">flowchart.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-body">
+<div class="loop-side"><div class="loop-tabs"><span class="on">Esquema</span><span>Archivos</span></div><div class="loop-rows"><div class="loop-h1row">Flujo de publicación</div><div class="loop-sub loop-row-u a">Diagrama</div><div class="loop-sub">Pasos</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> Flujo de publicación</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> Diagrama</span>
+<span class="loop-code">```mermaid</span>
+<span class="loop-code">flowchart LR</span>
+<span class="loop-code">  A[Borrador] --&gt; B[Revisión]</span>
+<span class="loop-rl loop-r-u a"><span class="loop-code">  B --&gt; C[Legal]</span></span><span class="loop-code">  <span class="loop-day loop-d-a a"><span class="loop-old a">C</span><span class="loop-new loop-n1 a">B</span></span> --&gt; D[Publicar]</span>
+<span class="loop-code">```</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> Pasos</span>
+1. Borrador: la primera versión.
+2. Revisión: lo lee un editor.
+<span class="loop-rl loop-r-b a">3. Legal: revisa lo que se afirma.</span><span class="loop-day loop-d-c a"><span class="loop-old a">4</span><span class="loop-new loop-n1 a">3</span></span>. Publicar: queda en línea.
+</div>
+<div class="loop-pre"><h3>Flujo de publicación</h3><h4>Diagrama</h4><div class="loop-flow"><span class="loop-node">Borrador</span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">Revisión</span></span><span class="loop-fseg loop-rn loop-r-u a"><span class="loop-arrow">→</span><span class="loop-node">Legal</span></span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">Publicar</span></span></div><h4>Pasos</h4><p>1. Borrador: la primera versión.</p><p>2. Revisión: lo lee un editor.</p><p class="loop-rl loop-r-b a">3. Legal: revisa lo que se afirma.</p><p><span class="loop-day loop-d-c a"><span class="loop-old a">4</span><span class="loop-new loop-n1 a">3</span></span>. Publicar: queda en línea.</p></div>
+</div>
+</div>
+<div class="loop-term a">
+<div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
+<div class="loop-tbody">
+<div><span class="loop-p">›</span> <span class="loop-cmd loop-cmd-26 a">marsdawn open flowchart.md</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> Quité Legal del diagrama. Corrige la conexión y los pasos.</div>
+<div class="loop-l3 a">Listo. Revisión va directo a Publicar, y los pasos están renumerados.</div>
+</div>
+</div>
+<svg class="loop-ptr loop-ptr-r1 a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="Pausar la animación"><span aria-hidden="true">Pausa</span></label>
+</div>
+
+<h2 id="the-template">La plantilla</h2>
+<p><a href="/es/templates/flowchart/flowchart.md" download>Descargar flowchart.md</a></p>
+<pre><code># Nombre del flujo
+
+_Una frase: qué entra y qué sale._
+
+## Diagrama
+
+```mermaid
+flowchart LR
+  A[Primer paso] --&gt; B[Segundo paso]
+  B --&gt; C[Tercer paso]
+  C --&gt; D[Listo]
+```
+
+## Pasos
+
+1. **Primer paso:** _quién lo hace y qué entrega al siguiente._
+2. **Segundo paso:** _…_
+3. **Tercer paso:** _…_
+4. **Listo:** _qué significa «listo» aquí._
+</code></pre>
+
+<h2 id="how-it-looks">Cómo se ve</h2>
+<p class="tpl-shot"><img src="/assets/templates/flowchart-es.png" width="1000" height="1415" loading="lazy" alt="La primera página de flowchart.md, exportada a PDF con marsdawn export."></p>
+<p>Exportada con <code>marsdawn export flowchart.md</code>. La herramienta de línea de comandos gratuita renderiza igual que la vista previa de MarsDawn, diagrama incluido.</p>
+
+<h2 id="ask-your-agent">Pídeselo a tu agente</h2>
+<pre class="tpl-prompt"><code>Dibuja el flujo de [el proceso] en flowchart.md, usando la plantilla de https://marsdawn.southern-light.dev/es/templates/flowchart/flowchart.md. Un paso numerado por nodo, en el mismo orden. Cuando esté escrito, ejecuta marsdawn open flowchart.md.</code></pre>
+
+<h2 id="share-it-as-a-pdf">Compártela en PDF</h2>
+<p><code>marsdawn export flowchart.md</code>: el diagrama se dibuja dentro del PDF.</p>
+
+<h2 id="what-it-doesn-t-do">Lo que no hace</h2>
+<p>MarsDawn dibuja lo que dice el Mermaid. No permite acomodar el diagrama a mano ni mantiene los pasos numerados sincronizados con los nodos. Si el Mermaid tiene un error, la vista previa muestra el error en lugar del diagrama.</p>
+
+<h2 id="questions">Preguntas</h2>
+<h3>¿Qué diagramas funcionan?</h3>
+<p>Todo lo que dibuja Mermaid: diagramas de flujo, de secuencia, de estados y más.</p>
+<h3>¿Por qué escribir también los pasos?</h3>
+<p>Quien lee por encima ve el diagrama; quien comprueba necesita el texto. El agente puede mantener ambos al día.</p>
+
+<h2 id="more-templates">Más plantillas</h2>
+<ul>
+  <li><a href="/es/templates/spec/">Especificación (PRD)</a>: problema, objetivos, requisitos, un diagrama del flujo y criterios de aceptación.</li>
+  <li><a href="/es/templates/meeting-notes/">Minuta de reunión</a>: decisiones y tareas, cada una con un responsable.</li>
+  <li><a href="/es/templates/">Plantillas de Markdown</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Sitio">
+    <a href="/es/support/">Soporte</a>
+    <a href="/es/privacy/">Política de privacidad</a>
+    <a href="/es/cli/">Línea de comandos</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Ajustes de cookies</button>
+  </nav>
+  <p class="footer-meta"><span>Un nuevo amanecer para Markdown.</span> <span>MarsDawn está en el <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

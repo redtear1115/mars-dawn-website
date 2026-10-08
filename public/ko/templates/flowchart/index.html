@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markdown 순서도 템플릿(Mermaid) · MarsDawn</title>
+<meta name="description" content="Markdown으로 쓰는 Mermaid 순서도 템플릿으로, 다이어그램 아래에 단계를 풀어 씁니다. Mac에서 미리 보고 PDF로 내보내세요.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/loop.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/templates/flowchart/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/templates/flowchart/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/templates/flowchart/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/templates/flowchart/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/templates/flowchart/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/templates/flowchart/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/templates/flowchart/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/templates/flowchart/">
+<link rel="alternate" type="text/markdown" href="/ko/templates/flowchart/index.md">
+<meta property="og:title" content="Markdown 순서도 템플릿(Mermaid) · MarsDawn">
+<meta property="og:description" content="Markdown으로 쓰는 Mermaid 순서도 템플릿으로, 다이어그램 아래에 단계를 풀어 씁니다. Mac에서 미리 보고 PDF로 내보내세요.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/templates/flowchart/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store에서 판매 중</span>
+  <nav class="lang" aria-label="Language"><a href="/templates/flowchart/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/templates/flowchart/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/templates/flowchart/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/templates/flowchart/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/templates/flowchart/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/templates/flowchart/" hreflang="fr" lang="fr">Français</a> · <a href="/es/templates/flowchart/" hreflang="es" lang="es">Español</a> · <a href="/ko/templates/flowchart/" hreflang="ko" aria-current="true" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Markdown 순서도 템플릿</h1>
+  <p>Mermaid 순서도 아래에 단계를 하나하나 적어 두어, 다이어그램과 글을 서로 대조할 수 있습니다. 단계를 하나 빼고, 나머지를 고쳐 달라고 에이전트에게 요청하세요.</p>
+</section>
+
+<div class="loop-anim loop-ko loop-long">
+<div class="loop-frame" role="img" aria-label="터미널에서 MarsDawn으로 flowchart.md를 엽니다. 읽는 사람이 Mermaid 다이어그램에서 법무 단계를 빼면, 에이전트가 다이어그램을 다시 연결하고 아래 단계의 번호를 다시 매깁니다.">
+<div class="loop-stage" aria-hidden="true">
+<div class="loop-win a">
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">flowchart.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-body">
+<div class="loop-side"><div class="loop-tabs"><span class="on">개요</span><span>파일</span></div><div class="loop-rows"><div class="loop-h1row">게시 흐름</div><div class="loop-sub loop-row-u a">다이어그램</div><div class="loop-sub">단계</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> 게시 흐름</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> 다이어그램</span>
+<span class="loop-code">```mermaid</span>
+<span class="loop-code">flowchart LR</span>
+<span class="loop-code">  A[초안] --&gt; B[검토]</span>
+<span class="loop-rl loop-r-u a"><span class="loop-code">  B --&gt; C[법무]</span></span><span class="loop-code">  <span class="loop-day loop-d-a a"><span class="loop-old a">C</span><span class="loop-new loop-n1 a">B</span></span> --&gt; D[게시]</span>
+<span class="loop-code">```</span>
+
+<span class="loop-h"><span class="loop-mk">##</span> 단계</span>
+1. 초안: 작성자의 첫 버전.
+2. 검토: 편집자가 읽는다.
+<span class="loop-rl loop-r-b a">3. 법무: 표현을 확인한다.</span><span class="loop-day loop-d-c a"><span class="loop-old a">4</span><span class="loop-new loop-n1 a">3</span></span>. 게시: 공개된다.
+</div>
+<div class="loop-pre"><h3>게시 흐름</h3><h4>다이어그램</h4><div class="loop-flow"><span class="loop-node">초안</span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">검토</span></span><span class="loop-fseg loop-rn loop-r-u a"><span class="loop-arrow">→</span><span class="loop-node">법무</span></span><span class="loop-fseg"><span class="loop-arrow">→</span><span class="loop-node">게시</span></span></div><h4>단계</h4><p>1. 초안: 작성자의 첫 버전.</p><p>2. 검토: 편집자가 읽는다.</p><p class="loop-rl loop-r-b a">3. 법무: 표현을 확인한다.</p><p><span class="loop-day loop-d-c a"><span class="loop-old a">4</span><span class="loop-new loop-n1 a">3</span></span>. 게시: 공개된다.</p></div>
+</div>
+</div>
+<div class="loop-term a">
+<div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
+<div class="loop-tbody">
+<div><span class="loop-p">›</span> <span class="loop-cmd loop-cmd-26 a">marsdawn open flowchart.md</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> 다이어그램에서 법무를 뺐어요. 연결과 단계를 고쳐 주세요.</div>
+<div class="loop-l3 a">완료했어요. 검토에서 바로 게시로 이어지고, 단계 번호도 다시 매겼어요.</div>
+</div>
+</div>
+<svg class="loop-ptr loop-ptr-r1 a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+</div>
+</div>
+<label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="애니메이션 일시 정지"><span aria-hidden="true">일시 정지</span></label>
+</div>
+
+<h2 id="the-template">템플릿</h2>
+<p><a href="/ko/templates/flowchart/flowchart.md" download>flowchart.md 다운로드</a></p>
+<pre><code># 흐름 이름
+
+_한 문장으로: 무엇이 들어가고 무엇이 나오는지._
+
+## 다이어그램
+
+```mermaid
+flowchart LR
+  A[첫 번째 단계] --&gt; B[두 번째 단계]
+  B --&gt; C[세 번째 단계]
+  C --&gt; D[완료]
+```
+
+## 단계
+
+1. **첫 번째 단계:** _누가 맡고, 다음 단계에 무엇을 넘기는지._
+2. **두 번째 단계:** _…_
+3. **세 번째 단계:** _…_
+4. **완료:** _여기서 ‘완료’가 무슨 뜻인지._
+</code></pre>
+
+<h2 id="how-it-looks">보이는 모습</h2>
+<p class="tpl-shot"><img src="/assets/templates/flowchart-ko.png" width="1000" height="1415" loading="lazy" alt="flowchart.md를 marsdawn export로 내보낸 PDF의 첫 페이지."></p>
+<p><code>marsdawn export flowchart.md</code>로 내보냈습니다. 무료 명령줄 도구는 다이어그램을 포함해 MarsDawn의 미리 보기와 똑같이 렌더링합니다.</p>
+
+<h2 id="ask-your-agent">에이전트에게 맡기기</h2>
+<pre class="tpl-prompt"><code>https://marsdawn.southern-light.dev/ko/templates/flowchart/flowchart.md 템플릿을 사용해 [프로세스]의 흐름을 flowchart.md에 그려 주세요. 노드마다 번호 붙은 단계를 하나씩, 같은 순서로 적어 주세요. 다 쓰면 marsdawn open flowchart.md를 실행해 주세요.</code></pre>
+
+<h2 id="share-it-as-a-pdf">PDF로 공유하기</h2>
+<p><code>marsdawn export flowchart.md</code>: 다이어그램이 PDF 안에 그려집니다.</p>
+
+<h2 id="what-it-doesn-t-do">하지 않는 일</h2>
+<p>MarsDawn은 Mermaid에 적힌 대로 그립니다. 다이어그램을 손으로 배치할 수는 없고, 번호 붙은 단계와 노드를 맞춰 주지도 않습니다. Mermaid에 오류가 있으면 미리 보기에 다이어그램 대신 오류가 표시됩니다.</p>
+
+<h2 id="questions">자주 묻는 질문</h2>
+<h3>어떤 다이어그램을 쓸 수 있나요?</h3>
+<p>Mermaid가 그리는 것이라면 무엇이든 됩니다. 순서도, 시퀀스 다이어그램, 상태 다이어그램 등입니다.</p>
+<h3>왜 단계도 따로 적나요?</h3>
+<p>훑어보는 사람은 다이어그램을 보고, 확인하는 사람은 글이 필요합니다. 에이전트가 둘을 맞춰 둘 수 있습니다.</p>
+
+<h2 id="more-templates">다른 템플릿</h2>
+<ul>
+  <li><a href="/ko/templates/spec/">명세서(PRD)</a>: 문제, 목표, 요구 사항, 흐름도, 인수 기준.</li>
+  <li><a href="/ko/templates/meeting-notes/">회의록</a>: 결정 사항과 실행 항목, 항목마다 담당자 한 명.</li>
+  <li><a href="/ko/templates/">Markdown 템플릿</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트">
+    <a href="/ko/support/">지원</a>
+    <a href="/ko/privacy/">개인정보 처리방침</a>
+    <a href="/ko/cli/">명령줄</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

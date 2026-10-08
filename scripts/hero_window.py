@@ -35,6 +35,18 @@ WINDOW_LABEL = {
     "ja": "操作できる MarsDawn のウインドウ：テーマとレイアウトを選べます",
 }
 
+# The page's Markdown twin describes the window in one sentence. zh-Hans and ja spell theirs out in
+# window_markdown below; every other locale (de, fr, es, ko) supplies a template with {looks},
+# {themes} and {layouts} in it and the separator its list uses, through register_locale.
+MARKDOWN_TEMPLATE = {}
+
+
+def register_locale(locale: str, label: str, markdown: dict) -> None:
+    """Adds a locale's window label and twin sentence: {"template": "...{looks}...{themes}...{layouts}", "sep": ", "}."""
+    WINDOW_LABEL[locale] = label
+    MARKDOWN_TEMPLATE[locale] = markdown
+
+
 # The kit's palette fields, as the custom properties site.css reads inside the window.
 PALETTE_VARS = {"background": "bg", "surface": "surface", "text": "fg", "muted": "muted", "border": "border",
                 "heading": "heading", "accent": "accent", "link": "link", "quote": "quote", "keyword": "keyword",
@@ -295,6 +307,9 @@ def window_markdown(locale: str) -> str:
     names = [t["names"][locale] for t in THEMES]
     modes = [labels[mode] for mode, _ in LAYOUTS]
     looks = [labels[mode] for mode in APPEARANCES]
+    if locale in MARKDOWN_TEMPLATE:
+        sep, template = MARKDOWN_TEMPLATE[locale]["sep"], MARKDOWN_TEMPLATE[locale]["template"]
+        return template.format(looks=sep.join(looks), themes=sep.join(names), layouts=sep.join(modes))
     return {
         "en": f"The page shows a working MarsDawn window over part of the app's Welcome guide. Its palette menu picks an appearance ({', '.join(looks)}) and a preview theme for light and for dark from four ({', '.join(names)}), and its toolbar one of three layouts ({', '.join(modes)}).",
         "zh-hant": f"頁面上有一個可以操作的 MarsDawn 視窗，內容是 App 內建歡迎指南的一段。調色盤選單可以選外觀（{'、'.join(looks)}），並分別替淺色和深色從四個預覽主題（{'、'.join(names)}）裡選一個；工具列可以選三種版面（{'、'.join(modes)}）。",

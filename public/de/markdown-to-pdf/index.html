@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markdown in PDF auf dem Mac, über die Befehlszeile · MarsDawn</title>
+<meta name="description" content="Wandle Markdown auf dem Mac mit dem kostenlosen Befehlszeilenwerkzeug marsdawn in ein PDF um. Mit Homebrew installieren, einen Befehl ausführen: Tabellen, Mathematik, Mermaid und Code.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/markdown-to-pdf/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/markdown-to-pdf/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/markdown-to-pdf/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/markdown-to-pdf/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/markdown-to-pdf/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/markdown-to-pdf/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/markdown-to-pdf/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/de/markdown-to-pdf/">
+<link rel="alternate" type="text/markdown" href="/de/markdown-to-pdf/index.md">
+<meta property="og:title" content="Markdown in PDF auf dem Mac, über die Befehlszeile · MarsDawn">
+<meta property="og:description" content="Wandle Markdown auf dem Mac mit dem kostenlosen Befehlszeilenwerkzeug marsdawn in ein PDF um. Mit Homebrew installieren, einen Befehl ausführen: Tabellen, Mathematik, Mermaid und Code.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/de/markdown-to-pdf/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>
+  <p>Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Ablehnen</button>
+    <button type="button" id="consent-accept" class="consent-btn">Akzeptieren</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/de/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Im Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/markdown-to-pdf/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/markdown-to-pdf/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/markdown-to-pdf/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/markdown-to-pdf/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/markdown-to-pdf/" hreflang="de" aria-current="true" lang="de">Deutsch</a> · <a href="/fr/markdown-to-pdf/" hreflang="fr" lang="fr">Français</a> · <a href="/es/markdown-to-pdf/" hreflang="es" lang="es">Español</a> · <a href="/ko/markdown-to-pdf/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Markdown in PDF auf dem Mac, über die Befehlszeile.</h1>
+  <p>Das kostenlose Werkzeug <code>marsdawn</code> macht mit einem einzigen Befehl aus einer Markdown-Datei ein PDF. Tabellen, Formeln, Mermaid-Diagramme und hervorgehobener Code sehen so aus, wie sie im Quelltext gemeint sind, und es braucht sonst nichts, nicht einmal die MarsDawn-App.</p>
+</section>
+<h2 id="install-it">Installieren</h2>
+<pre><code>brew install redtear1115/tap/marsdawn
+marsdawn --version</code></pre>
+<p>Auf einem Mac mit Apple Chip installiert Homebrew in Sekunden eine fertig gebaute Kopie. Auf einem Intel-Mac wird stattdessen aus dem Quellcode gebaut. Das dauert ein paar Minuten und erfordert Xcode 26 oder neuer. Das Werkzeug läuft unter macOS 15 oder neuer, und <code>marsdawn --version</code> zeigt die installierte Version an.</p>
+<h2 id="save-a-document">Ein Dokument sichern</h2>
+<p>Füge Folgendes in eine Datei namens <code>plan.md</code> ein:</p>
+<pre><code># Plan: schnellere Exporte
+
+Diesen Plan hat ein Agent geschrieben. Du prüfst ihn und machst daraus ein PDF.
+
+## Schritte
+
+| Schritt | Zuständig | Status |
+|---------|-----------|--------|
+| Langsame Seiten messen | Agent | Erledigt |
+| Gerenderte Diagramme cachen | Agent | In Prüfung |
+
+Ziel sind $t &lt; 2\,\text{s}$ für ein Dokument mit 50 Seiten:
+
+$$
+t_{\text{total}} = \sum_{i=1}^{n} t_i
+$$
+
+```mermaid
+graph LR
+  Entwurf --&gt; Prüfung --&gt; Veröffentlichung
+```
+
+```swift
+let pdf = try export("plan.md")
+```
+</code></pre>
+<h2 id="export-it">Exportieren</h2>
+<pre><code>marsdawn export plan.md</code></pre>
+<p>Es schreibt <code>plan.pdf</code> neben die Quelldatei und gibt aus, wo die Datei gelandet ist:</p>
+<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<p>Das ist diese Seite, aufgenommen aus einem echten Lauf von <code>marsdawn</code> 0.5.0:</p>
+<p><img class="pdf-page" src="/assets/cli/plan-de.png" alt="Das exportierte PDF: die Überschrift, eine Tabelle mit Schritten, eine Formel im Text und eine abgesetzte Formel, ein Diagramm Entwurf, Prüfung, Veröffentlichung und eine hervorgehobene Zeile Swift." width="989" height="930"></p>
+<h2 id="choose-a-theme-paper-size-and-file-name">Thema, Papierformat und Dateiname wählen</h2>
+<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<ul>
+  <li><code>--theme</code>: dawn, classic, modern oder vivid, jeweils in den hellen Farben des Themas. Ohne diese Option verwendet <code>export</code> <code>$MARSDAWN_THEME</code> und sonst dawn.</li>
+  <li><code>--paper</code>: a4 oder letter. Standard ist a4.</li>
+  <li><code>-o</code>: wohin das PDF geschrieben wird, statt neben die Quelldatei.</li>
+  <li><code>--allow-remote-images</code>: lädt beim Rendern Bilder aus dem Web. Ohne diese Option bleiben sie aus.</li>
+</ul>
+<h2 id="if-it-doesn-t-work">Wenn es nicht klappt</h2>
+<ul>
+  <li><code>A full installation of Xcode.app 26.0 is required to compile this software.</code> Homebrew baut <code>marsdawn</code> aus dem Quellcode, wie auf einem Intel-Mac. Installiere Xcode 26 oder neuer aus dem App Store und starte die Installation erneut.</li>
+  <li><code>marsdawn: No such file: …</code> Der Pfad zeigt auf keine Datei. Prüfe den Namen oder führe den Befehl in dem Ordner aus, in dem die Datei liegt.</li>
+  <li><code>… already exists. Pass --force to replace it.</code> Ein PDF mit diesem Namen gibt es schon. Füge <code>--force</code> hinzu, um es zu ersetzen, oder <code>-o</code>, um woanders hinzuschreiben.</li>
+  <li><code>Error: The value '…' is invalid for '--theme &lt;theme&gt;'.</code> Das Thema oder Papierformat ist unbekannt. Die Themen sind dawn, classic, modern und vivid, das Papier ist a4 oder letter.</li>
+</ul>
+<h2 id="next">Weiter</h2>
+<ul>
+  <li>Alle Optionen und das JSON, das ausgegeben wird: <a href="/de/cli/">Befehlszeile</a>.</li>
+  <li>Wenn ein Coding-Agent das für dich erledigen soll: <a href="/de/cli/skill/">der marsdawn-Agent-Skill</a>.</li>
+  <li>Alle vier Vorschauthemen und wohin sich der PDF-Export entwickelt: <a href="/de/themes/">Vorschauthemen und PDF-Export</a>.</li>
+  <li>Das PDF an jemanden weitergeben, der kein Markdown nutzt: <a href="/de/sharing-exported-pdfs/">ein PDF teilen</a>.</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Website">
+    <a href="/de/support/">Support</a>
+    <a href="/de/privacy/">Datenschutzrichtlinie</a>
+    <a href="/de/cli/">Befehlszeile</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie-Einstellungen</button>
+  </nav>
+  <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

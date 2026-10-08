@@ -39,7 +39,9 @@ MANIFEST = CONTENT / "manifest.json"
 
 # Every legal page this site has a Markdown source for. (terms.md doesn't exist yet: issue #33's
 # plan mentions it, but there is no terms page on the site today, so there is nothing to convert.)
-LOCALES = ["en", "zh-hant", "zh-hans", "ja"]
+# de, fr, es and ko (#162) are rendered once their Markdown sources exist; until then there is nothing to render.
+LOCALES = ["en", "zh-hant", "zh-hans", "ja"] + [l for l in ("de", "fr", "es", "ko")
+                                                  if (CONTENT / f"privacy.{l}.md").is_file() or (CONTENT / f"support.{l}.md").is_file()]
 SLUGS = ["privacy", "support"]
 
 GENERATED_NOTE = (

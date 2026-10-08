@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>marsdawn을 호출하는 세 가지 방법: CLI, 스킬 파일, MCP 서버 · MarsDawn</title>
+<meta name="description" content="marsdawn에는 자체 AI 모델이 없으므로 어떤 에이전트가 Markdown을 썼는지는 상관없습니다. CLI, 스킬 파일, MCP 서버 marsdawn-mcp 중 어디서 호출하든 세 가지 모두 같은 내보내기를 실행합니다.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/cli/mcp/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/cli/mcp/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/cli/mcp/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/cli/mcp/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/cli/mcp/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/cli/mcp/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/cli/mcp/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/cli/mcp/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/mcp/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/cli/mcp/">
+<link rel="alternate" type="text/markdown" href="/ko/cli/mcp/index.md">
+<meta property="og:title" content="marsdawn을 호출하는 세 가지 방법: CLI, 스킬 파일, MCP 서버 · MarsDawn">
+<meta property="og:description" content="marsdawn에는 자체 AI 모델이 없으므로 어떤 에이전트가 Markdown을 썼는지는 상관없습니다. CLI, 스킬 파일, MCP 서버 marsdawn-mcp 중 어디서 호출하든 세 가지 모두 같은 내보내기를 실행합니다.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/cli/mcp/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store에서 판매 중</span>
+  <nav class="lang" aria-label="Language"><a href="/cli/mcp/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/cli/mcp/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/cli/mcp/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/cli/mcp/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/cli/mcp/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/cli/mcp/" hreflang="fr" lang="fr">Français</a> · <a href="/es/cli/mcp/" hreflang="es" lang="es">Español</a> · <a href="/ko/cli/mcp/" hreflang="ko" aria-current="true" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>marsdawn을 호출하는 세 가지 방법.</h1>
+  <p>MarsDawn에는 자체 AI 모델이 없습니다. Markdown을 쓰는 것이 아니라 검토하려고 만든 앱이므로, 어떤 에이전트나 모델이 파일을 만들었는지는 상관없습니다. 에이전트나 스크립트가 <code>marsdawn</code>을 호출하는 방법은 세 가지이며, 세 가지 모두 결국 같은 <code>export</code>를 실행합니다.</p>
+</section>
+
+<div class="summary"><p><strong>쓰는 도구가 지원하는 것을 고르세요. 무료 <code>marsdawn</code> CLI, 일반 Markdown으로 된 스킬 파일, MCP 서버 <a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a>.</strong> 세 가지 모두 같은 <code>marsdawn export</code>를 호출하고 같은 JSON 결과를 돌려줍니다.</p></div>
+
+<h2 id="which-one-to-use">무엇을 쓸까</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">에이전트가</th><th scope="col">쓸 것</th><th scope="col">필요한 것</th></tr></thead>
+<tbody>
+  <tr><th scope="row">셸 명령을 실행할 수 있다면</th><td data-label="쓸 것"><a href="/ko/cli/agents/">CLI</a></td><td data-label="필요한 것">macOS 15 이상</td></tr>
+  <tr><th scope="row">Claude Code처럼 지침 파일을 불러온다면</th><td data-label="쓸 것"><a href="/ko/cli/skill/">스킬 파일</a></td><td data-label="필요한 것">CLI(스킬이 설치해 줌)</td></tr>
+  <tr><th scope="row">MCP로 도구를 호출한다면</th><td data-label="쓸 것"><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a></td><td data-label="필요한 것">marsdawn-mcp 0.2.1 이상, marsdawn 0.5.0 이상, Node.js 20 이상</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="the-cli">CLI</h2>
+<p><code>marsdawn export notes.md --json</code>은 셸 명령을 실행할 수 있는 에이전트나 스크립트라면 무엇이든 호출할 수 있으므로, 구조상 특정 모델에 묶이지 않습니다. 반환하는 모든 필드는 <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a>에 문서화되어 있으며, 아래의 다른 두 방법도 JSON 스키마는 이 문서를 기준으로 삼습니다.</p>
+
+<h2 id="the-skill-file">스킬 파일</h2>
+<p>셸을 직접 호출하지 않고 일반 Markdown 지침을 읽는 에이전트(현재는 Claude Code)를 위해, <a href="/ko/cli/skill/">marsdawn 스킬</a>은 marsdawn을 설치하고 <code>export</code>를 실행하고 결과를 읽는 법을 가르치는 파일 하나입니다. 일반 Markdown이므로 지침 파일을 불러오는 다른 에이전트도 같은 파일을 쓸 수 있습니다.</p>
+
+<h2 id="the-mcp-server">MCP 서버</h2>
+<p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a>는 Apache-2.0 라이선스의 별도 공개 저장소입니다. <code>export_markdown_to_pdf</code>와 <code>open_in_marsdawn</code> 두 도구를 가진 MCP 서버로, 각각 <code>marsdawn export --json</code>과 <code>marsdawn open --json</code>을 감쌉니다. MCP 클라이언트가 이 서버를 가리키게 하면 도구 호출이 CLI와 같은 JSON을 돌려줍니다.</p>
+<ul>
+  <li><strong>받는 곳:</strong> MCP Bundle인 <code>marsdawn.mcpb</code>를 <a href="https://github.com/redtear1115/marsdawn-mcp/releases">GitHub 릴리스</a>에서 받거나, 소스에서 stdio로 서버를 실행합니다.</li>
+  <li><strong>레지스트리:</strong> 아직 MCP Registry에 등록되지 않았습니다(현재 릴리스: 0.2.1). 레지스트리 검색에 의존하기 전에 저장소에서 현재 상태를 확인하세요.</li>
+  <li><strong>호스팅:</strong> 직접 호스팅만 가능합니다. 호스팅된 marsdawn-mcp 서비스는 없으며, 서버는 marsdawn과 함께 여러분의 컴퓨터에서 실행됩니다.</li>
+  <li><strong>요구 사항:</strong> macOS, marsdawn 0.5.0 이상, 그리고 서버를 실행할 Node.js 20 이상.</li>
+</ul>
+
+<h2 id="confined-to-folders-you-allow">허용한 폴더 안에서만</h2>
+<p>두 도구 모두 여러분이 허용한 폴더 안에만 접근합니다. 확장 프로그램의 <strong>Allowed folders</strong> 설정(처음에는 비어 있고 기본값도 없음)이나, 그 대신 MCP 클라이언트가 제공하는 루트가 기준입니다. 둘 다 설정되어 있지 않으면 모든 호출이 거부되며, 거부 메시지에 해결 방법이 나옵니다. 모든 경로는 절대 경로여야 하고, <code>export_markdown_to_pdf</code>는 <code>.pdf</code> 파일만 쓰며 심볼릭 링크를 통해서는 절대 쓰지 않습니다.</p>
+<p><strong>보안:</strong> <a href="https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1">0.2.1</a>로 업데이트하세요. 0.1.0과 0.2.0에서는 호출 한 번으로 여러분의 계정이 쓸 수 있는 어떤 경로에든 PDF를 쓸 수 있었으며, <a href="https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc">GHSA-fqgj-hcxc-34qc</a>로 수정되었습니다.</p>
+
+<h2 id="same-export-three-doors">같은 내보내기, 세 개의 문</h2>
+<p>어느 쪽에서 호출하든 그 아래의 동작은 바뀌지 않습니다. 같은 내보내기 엔진, 같은 테마와 용지 크기, Mermaid 다이어그램 렌더링이 실패했을 때의 같은 <code>diagramErrors</code>. 이 페이지에서는 그 규약을 반복하지 않습니다. 전체 내용은 <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a>에 있습니다.</p>
+
+<h2 id="next">다음</h2>
+<ul>
+  <li>전체 JSON 스키마와 모든 종료 코드: <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a>.</li>
+  <li>Claude Code와 비슷한 에이전트를 위한 파일 하나짜리 스킬: <a href="/ko/cli/skill/">marsdawn 스킬</a>.</li>
+  <li>간결한 JSON 결과가 에이전트 자신의 컨텍스트에 중요한 이유: <a href="/ko/token-efficient-review/">토큰을 아끼는 검토</a>.</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트">
+    <a href="/ko/support/">지원</a>
+    <a href="/ko/privacy/">개인정보 처리방침</a>
+    <a href="/ko/cli/">명령줄</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic traza una línea entre workflows y agentes. ¿Dónde encaja tu lectura? · MarsDawn</title>
+<meta name="description" content="La guía de Anthropic de diciembre de 2024 para quien construye agentes separa workflows de agentes y describe cinco patrones de workflow, incluido uno en el que una segunda llamada a un LLM revisa la primera. Qué significa eso para lo que aterriza en tu carpeta.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/anthropic-building-effective-agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/es/reading-notes/anthropic-building-effective-agents/">
+<link rel="alternate" type="text/markdown" href="/es/reading-notes/anthropic-building-effective-agents/index.md">
+<meta property="og:title" content="Anthropic traza una línea entre workflows y agentes. ¿Dónde encaja tu lectura? · MarsDawn">
+<meta property="og:description" content="La guía de Anthropic de diciembre de 2024 para quien construye agentes separa workflows de agentes y describe cinco patrones de workflow, incluido uno en el que una segunda llamada a un LLM revisa la primera. Qué significa eso para lo que aterriza en tu carpeta.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/es/reading-notes/anthropic-building-effective-agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>
+  <p>Este sitio usa cookies de analítica para ver cómo lo usan los visitantes. Permanecen desactivadas a menos que las aceptes.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Rechazar</button>
+    <button type="button" id="consent-accept" class="consent-btn">Aceptar</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/es/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">En el Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/anthropic-building-effective-agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/anthropic-building-effective-agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/anthropic-building-effective-agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/anthropic-building-effective-agents/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/reading-notes/anthropic-building-effective-agents/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/reading-notes/anthropic-building-effective-agents/" hreflang="fr" lang="fr">Français</a> · <a href="/es/reading-notes/anthropic-building-effective-agents/" hreflang="es" aria-current="true" lang="es">Español</a> · <a href="/ko/reading-notes/anthropic-building-effective-agents/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Anthropic traza una línea entre workflows y agentes. ¿Dónde encaja tu lectura?</h1>
+</section>
+
+<div class="summary"><p><strong>La guía de Anthropic de diciembre de 2024 para quien construye agentes de IA empieza separando dos cosas que llama «workflows» y «agents», recomienda empezar por lo más simple que funcione &#8212; quizá ningún sistema agentic &#8212; y solo alcanzar uno de sus cinco patrones de workflow cuando eso no baste. Uno de esos patrones pone una segunda llamada a un LLM en el asiento del revisor. Esta nota trata de ese patrón, y de lo que los otros cuatro te dejan para leer.</strong></p></div>
+
+<h2 id="what-the-guide-argues">Lo que sostiene la guía</h2>
+<p>Erik S. y Barry Zhang escribieron «Building Effective Agents» para ingenieros que deciden cómo construir con LLMs. Empieza con una definición:</p>
+<blockquote><p>&#8220;Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.&#8221;</p></blockquote>
+<p>Luego el consejo empieza con contención:</p>
+<blockquote><p>&#8220;When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed. This might mean not building agentic systems at all.&#8221;</p></blockquote>
+<p>Cuando hace falta más estructura, describen cinco patrones de workflow: prompt chaining (una tarea partida en una secuencia de llamadas, con comprobaciones opcionales entre pasos), routing, parallelization, orchestrator-workers (un LLM parte una tarea, se la pasa a LLM workers y combina los resultados) y evaluator-optimizer. Este último:</p>
+<blockquote><p>&#8220;In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.&#8221;</p></blockquote>
+<p>Anthropic no menciona MarsDawn en ningún sitio de esta guía y no recomienda ninguna herramienta Markdown. <code>/agent-transparency/</code> ya cubre con detalle el principio de transparencia de esta guía y su lenguaje de «checkpoints» &#8212; esta nota no lo repite. Ahí también vive la línea de la guía sobre la revisión humana de código, en su contexto propio (un apéndice sobre agentes de codificación).</p>
+
+<h2 id="our-reading-not-anthropic-s">Nuestra lectura, no la de Anthropic</h2>
+<p>Anthropic no dice quién comprueba la salida final de un workflow cuando termina, y nada de esto describe un documento &#8212; es una decisión de arquitectura para quien construye el sistema. Pero los cinco patrones no producen el mismo tipo de archivo para leer. Prompt chaining y routing suelen ser fontanería invisible; si algo te llega, es la última salida de la cadena, igual que cualquier otra respuesta suelta. Orchestrator-workers es distinto: si tu agente de código usa este patrón por dentro, lo que aterriza en tu carpeta puede ser un documento ensamblado a partir de varias llamadas a workers cosidas por el orquestador, y un error en el trozo de un worker es fácil de pasar por alto dentro de un resumen que se lee fluido de punta a punta.</p>
+<p>Evaluator-optimizer merece una pausa, porque la guía pone una segunda llamada a un LLM donde podría sentarse un revisor humano. Es una forma legítima de pillar barato una clase de errores, pero sigue siendo un modelo comprobando a otro modelo según los criterios que le dieron &#8212; la misma salvedad que otros autores aquí plantean cuando un modelo juzga su propio trabajo o el de otro. Nada en la guía dice que una persona deba volver a comprobar el veredicto del evaluador; no toma postura. Si tú lees lo que cualquiera de esto te devuelve, «el bucle lo aprobó» y «yo lo comprobé» no son la misma frase, aunque el archivo delante tuyo se vea idéntico en ambos casos.</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">Dónde ayuda MarsDawn y dónde no</h2>
+<p>MarsDawn no sabe qué patrón de workflow produjo un archivo, y no tiene ningún modelo de IA dentro &#8212; no ejecutará su propio paso de evaluador, ni te dirá si el que describe Anthropic hizo su trabajo. Lo que hace: la pestaña Esquema de la barra lateral (Visualización &#9656; Mostrar barra lateral, &#8963;&#8984;S) lista los encabezados de un archivo largo ensamblado por un orquestador, y un clic salta ahí. El código y la página renderizada van lado a lado (&#8984;2) y se desplazan juntos, con diagramas Mermaid y matemáticas KaTeX dibujados en lugar de dejados como fuente. Si el agente revisa el archivo mientras lees, MarsDawn lo vuelve a cargar y mantiene tu sitio, siempre que no tengas cambios sin guardar. Edición &#9656; Copiar referencia (&#8997;&#8984;C) copia tu sitio como <code>docs/plan.md:42</code>, listo para pegar en el chat con el agente.</p>
+
+<h2 id="try-it">Probarlo</h2>
+<p>MarsDawn está en el Mac App Store. La herramienta de línea de comandos gratuita <code>marsdawn</code> ya funciona hoy:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Exporta Markdown a PDF sin la app.</p>
+<p><a href="/es/cli/">Línea de comandos</a> &#183; Antes de comprar: <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
+
+<h2 id="next">Siguiente</h2>
+<ul>
+  <li>El resto del principio de transparencia y el lenguaje de checkpoints de esta guía: <a href="/es/agent-transparency/">Anthropic dice que los agentes deben ser transparentes. ¿Quién lee lo que exponen?</a></li>
+  <li>Por qué en general cuesta leer la salida de un agente: <a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a></li>
+  <li>Volver a la serie: <a href="/es/reading-notes/">Notas de lectura de la redacción</a></li>
+</ul>
+
+<h2 id="sources">Fuentes</h2>
+<ul>
+  <li>Erik S. and Barry Zhang, &#8220;Building Effective Agents,&#8221; Anthropic, December 19, 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> (obtenido y citado el 2026-09-26).</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Sitio">
+    <a href="/es/support/">Soporte</a>
+    <a href="/es/privacy/">Política de privacidad</a>
+    <a href="/es/cli/">Línea de comandos</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Ajustes de cookies</button>
+  </nav>
+  <p class="footer-meta"><span>Un nuevo amanecer para Markdown.</span> <span>MarsDawn está en el <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le plan d’agent de Lilian Weng en 2023, et le fichier que chaque partie laisse · MarsDawn</title>
+<meta name="description" content="L’enquête très citée de Lilian Weng en 2023 décrit un agent LLM comme un cerveau plus planification, mémoire et usage d’outils. Ce que chaque partie tend à vous laisser à lire, et la limite qu’elle nomme dans les plans qui ne s’ajustent pas aux surprises.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/lilian-weng-llm-agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/fr/reading-notes/lilian-weng-llm-agents/">
+<link rel="alternate" type="text/markdown" href="/fr/reading-notes/lilian-weng-llm-agents/index.md">
+<meta property="og:title" content="Le plan d’agent de Lilian Weng en 2023, et le fichier que chaque partie laisse · MarsDawn">
+<meta property="og:description" content="L’enquête très citée de Lilian Weng en 2023 décrit un agent LLM comme un cerveau plus planification, mémoire et usage d’outils. Ce que chaque partie tend à vous laisser à lire, et la limite qu’elle nomme dans les plans qui ne s’ajustent pas aux surprises.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/fr/reading-notes/lilian-weng-llm-agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentement aux cookies" hidden>
+  <p>Ce site utilise des cookies de mesure d’audience pour voir comment les visiteurs l’utilisent. Ils restent désactivés tant que vous n’acceptez pas.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Refuser</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accepter</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/fr/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Sur le Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/reading-notes/lilian-weng-llm-agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reading-notes/lilian-weng-llm-agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reading-notes/lilian-weng-llm-agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reading-notes/lilian-weng-llm-agents/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/reading-notes/lilian-weng-llm-agents/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/reading-notes/lilian-weng-llm-agents/" hreflang="fr" aria-current="true" lang="fr">Français</a> · <a href="/es/reading-notes/lilian-weng-llm-agents/" hreflang="es" lang="es">Español</a> · <a href="/ko/reading-notes/lilian-weng-llm-agents/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Le plan d’agent de Lilian Weng en 2023, et le fichier que chaque partie laisse</h1>
+</section>
+
+<div class="summary"><p><strong>En juin 2023, alors chez OpenAI, Lilian Weng a publié sur son blog Lil’Log une longue enquête décrivant un agent piloté par LLM comme un cerveau (le modèle) plus trois composants : planification, mémoire et usage d’outils. C’est un cadre précoce et largement cité de ce dont un agent est fait, et candid sur les endroits où ce cadre casse encore.</strong></p></div>
+
+<h2 id="what-the-post-argues">Ce que le billet avance</h2>
+<p>L’aperçu de Weng pose le cadre de tout le texte :</p>
+<blockquote><p>&#8220;In a LLM-powered autonomous agent system, LLM functions as the agent&#8217;s brain, complemented by several key components: Planning ... Memory ... Tool use&#8221;.</p></blockquote>
+<p>La planification, chez elle, couvre à la fois le découpage d’une tâche en sous-objectifs et la réflexion sur les actions passées pour améliorer les suivantes. La mémoire se partage entre court terme (le contexte que le modèle voit actuellement, qu’elle appelle in-context) et long terme (en général stocké hors du modèle, dans une base vectorielle interrogeable). L’usage d’outils laisse le modèle appeler tout ce qu’un jeu de poids figé ne peut fournir seul &#8212; informations actuelles, exécution de code, autres API. Vers la fin, dans une section « Challenges », elle nomme une limite clairement :</p>
+<blockquote><p>&#8220;LLMs struggle to adjust plans when faced with unexpected errors, making them less robust compared to humans who learn from trial and error.&#8221;</p></blockquote>
+<p>Ailleurs, dans une étude de cas sur l’agent de chimie ChemCrow, elle signale un problème plus étroit : une évaluation basée sur un LLM le notait à peu près égal à GPT-4, tandis que des experts humains jugeaient ChemCrow bien meilleur en exactitude. Sa conclusion porte sur l’auto-évaluation, pas spécifiquement sur son composant « reflection » :</p>
+<blockquote><p>&#8220;The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.&#8221;</p></blockquote>
+<p>Weng ne mentionne MarsDawn nulle part dans ce billet et ne recommande aucun outil Markdown.</p>
+
+<h2 id="our-reading-not-weng-s">Notre lecture, pas celle de Weng</h2>
+<p>Weng décrit l’architecture d’agent en 2023, pas la lecture de la sortie d’un agent &#8212; elle ne mentionne aucune personne qui vérifierait un fichier. Mais ses trois composants se projettent sur trois choses différentes que vous pouvez vous retrouver à lire. La planification tend à vous laisser un document avant l’exécution &#8212; le plan lui-même, parfois avec une « reflection » ou une auto-revue déjà pliée dedans. La mémoire est en général invisible, sauf si l’agent tient un fichier brouillon courant comme stockage long terme ; alors ce fichier mérite d’être ouvert pour lui-même, car il peut traîner une vieille hypothèse fausse à travers bien des étapes suivantes sans le dire. L’usage d’outils tend à vous laisser un rapport de ce qui a tourné et de ce qui est revenu &#8212; plus près d’un transcript que d’un plan.</p>
+<p>Son point sur les plans qui ne s’ajustent pas aux erreurs inattendues est, lu de votre côté, une raison pour qu’un plan approuvé hier soit périmé aujourd’hui : si quelque chose que le plan n’avait pas prévu est arrivé entre-temps, l’agent peut continuer plutôt que de replanifier, et le rapport final peut décrire le succès du plan d’origine sans décrire le détour. C’est notre inférence, pas une affirmation d’elle &#8212; elle écrit sur la robustesse du modèle, pas sur ce qu’un lecteur devrait surveiller.</p>
+
+<h2 id="where-marsdawn-helps-and-where-it-doesn-t">Où MarsDawn aide, et où non</h2>
+<p>MarsDawn n’a aucun modèle d’IA à l’intérieur, donc il ne peut pas vous dire si un plan a discrètement dérivé de ce qui s’est vraiment passé, et il ne distingue pas un fichier de planification d’un fichier de mémoire ou d’un rapport d’usage d’outils &#8212; c’est une lecture du contenu, qui vous appartient. Ce qu’il fait : l’onglet Plan (Présentation &#9656; Afficher la barre latérale, &#8963;&#8984;S) montre d’un coup d’œil la forme d’un long plan, la source et l’aperçu rendu côte à côte (&#8984;2) avec Mermaid et KaTeX dessinés, et si l’agent réécrit le fichier en cours de lecture, MarsDawn le recharge et garde votre place, tant que vous n’avez pas de modifications non enregistrées &#8212; utile précisément parce qu’un plan silencieusement révisé est exactement le mode de défaillance que sa section « Challenges » décrit du côté du modèle.</p>
+
+<h2 id="try-it">Essayer</h2>
+<p>MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit <code>marsdawn</code> fonctionne déjà :</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Il exporte le Markdown en PDF sans l’app.</p>
+<p><a href="/fr/cli/">Ligne de commande</a> &#183; Avant d’acheter : <a href="/fr/limits/">Ce que MarsDawn ne fait pas</a></p>
+
+<h2 id="next">Ensuite</h2>
+<ul>
+  <li>Quels documents les différents patrons de conception d’agents tendent à vous rendre : <a href="/fr/agent-design-patterns/">Quatre patrons de conception d’agents et les documents que chacun vous tend</a></li>
+  <li>La relecture en cinq minutes d’un plan avant qu’il ne tourne : <a href="/fr/reviewing-agent-plans/">Relire le plan d’un agent en cinq minutes</a></li>
+  <li>Retour à la série : <a href="/fr/reading-notes/">Notes de lecture de la rédaction</a></li>
+</ul>
+
+<h2 id="sources">Sources</h2>
+<ul>
+  <li>Lilian Weng, &#8220;LLM Powered Autonomous Agents,&#8221; Lil’Log, June 23, 2023: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a> (récupéré et cité le 2026-09-26 ; elle était alors chez OpenAI, décrite ici seulement telle qu’elle était alors).</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/fr/support/">Assistance</a>
+    <a href="/fr/privacy/">Politique de confidentialité</a>
+    <a href="/fr/cli/">Ligne de commande</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Réglages des cookies</button>
+  </nav>
+  <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

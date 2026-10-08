@@ -291,6 +291,13 @@ def main() -> int:
     parser.add_argument("--self-test", action="store_true", help="plant drift and require every plant to be caught")
     args = parser.parse_args()
     src = json.loads((ROOT / "scripts" / "hero_sources.json").read_text(encoding="utf-8"))
+    # A planned locale (de, fr, es, ko) is in the snapshot once sync_hero_sources.py --with has read it;
+    # from then on its home page, theme list and kit strings are checked like the others'.
+    for locale in src["labels"]:
+        if locale not in PAGES:
+            PAGES[locale] = f"{locale}/index.html"
+            THEME_LISTS[locale] = f"{locale}/themes/index.html"
+            sync.LOCALES[locale] = locale
     css = (ROOT / "public" / "assets" / "hero.css").read_text(encoding="utf-8")
     pages = {locale: (ROOT / "public" / path).read_text(encoding="utf-8") for locale, path in PAGES.items()}
     lists = {locale: (ROOT / "public" / path).read_text(encoding="utf-8") for locale, path in THEME_LISTS.items()}
