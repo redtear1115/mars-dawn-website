@@ -9,7 +9,7 @@ new page from quietly shipping an offer with no availability at all.
 It also holds each home page's SoftwareApplication to the price the product actually has: an
 AggregateOffer from 0 to 4.99 USD (a free download with a 14-day trial, then a one-time unlock),
 two Offers inside it with exactly those prices, and the rest of the block that makes it citable:
-a version number, operating system, category, screenshot, publisher and sameAs list. A JSON-LD
+a version number, operating system, category, screenshot, publisher (the App Store seller, a Person) and sameAs list. A JSON-LD
 block that doesn't parse fails on any page.
 """
 import json
@@ -36,6 +36,8 @@ def offers(node):
             yield from offers(value)
 
 
+# The App Store's sellerName and artistName for MarsDawn.
+PUBLISHER = {"@type": "Person", "name": "Nan-Kuang Lee"}
 HOMES = ["index.html", "zh-hant/index.html", "zh-hans/index.html", "ja/index.html",
          "de/index.html", "fr/index.html", "es/index.html", "ko/index.html"]
 REQUIRED = ("name", "description", "applicationCategory", "operatingSystem", "softwareVersion",
@@ -56,8 +58,8 @@ def check_home(where, data, problems):
         problems.append(f"{where}: softwareVersion {app.get('softwareVersion')!r} isn't major.minor.patch")
     if str(app.get("screenshot", "")).startswith("https://") is False:
         problems.append(f"{where}: screenshot isn't an absolute https URL")
-    if not isinstance(app.get("publisher"), dict) or not app["publisher"].get("name"):
-        problems.append(f"{where}: publisher isn't a named Organization")
+    if app.get("publisher") != PUBLISHER:
+        problems.append(f"{where}: publisher is {app.get('publisher')!r}, want {PUBLISHER!r}")
     if not isinstance(app.get("sameAs"), list) or not all(str(u).startswith("https://") for u in app["sameAs"]):
         problems.append(f"{where}: sameAs isn't a list of https URLs")
     agg = app.get("offers")

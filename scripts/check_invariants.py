@@ -179,6 +179,8 @@ def check_structured_data(relative, text, articles, problems):
             else:
                 if modified < published or modified > datetime.date.today():
                     problems.append(f"{relative}: TechArticle dates {published}..{modified} are out of order or in the future")
+            if tech[0].get("publisher") != {"@type": "Person", "name": "Nan-Kuang Lee"}:
+                problems.append(f"{relative}: TechArticle publisher isn't the App Store seller")
             if not tech[0].get("headline"):
                 problems.append(f"{relative}: TechArticle has no headline")
     elif tech:

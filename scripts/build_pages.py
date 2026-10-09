@@ -5030,7 +5030,8 @@ def add_h2_ids(locale: str, slug: str, page: dict, html: str) -> str:
 # What the home page says about the app. APP_VERSION is the Mac app's current release (1.1.0 went on
 # sale 2026-10-09): raise it with each release, together with the app's own version.
 APP_VERSION = "1.1.0"
-PUBLISHER = {"@type": "Organization", "name": "Southern Light", "url": "https://southern-light.dev"}
+# The App Store's sellerName and artistName for MarsDawn (owner decision, 2026-10-09).
+PUBLISHER = {"@type": "Person", "name": "Nan-Kuang Lee"}
 # Other pages that are about this same app. Each URL was fetched and answered 200 on 2026-10-09.
 SAME_AS = [
     LISTING_URL,
