@@ -42,9 +42,8 @@ Lorsqu’un contenu web se charge, votre Mac le demande directement aux serveurs
 
 Les liens sur lesquels vous cliquez dans l’aperçu s’ouvrent dans votre navigateur web par défaut, selon les pratiques de confidentialité de ce navigateur. L’audio et la vidéo ne se lancent jamais d’eux-mêmes.
 
-<!-- MACHINE DRAFT (needs-i18n): translated from the English paragraph by Claude; native review required before this ships. -->
 
-Si vous ouvrez *Réglages › Apparence › Obtenir plus de thèmes…*, choisissez *Rechercher des mises à jour de thèmes* ou installez ou mettez à jour un thème, MarsDawn télécharge la liste des thèmes, les aperçus et les fichiers de thème depuis marsdawn.southern-light.dev. Les thèmes ne se mettent à jour automatiquement que pendant ces téléchargements, jamais en arrière-plan. La requête ne contient ni compte, ni identifiant, ni cookie, ni donnée de document ; comme pour toute requête web, notre hébergeur Cloudflare voit votre adresse IP et les fichiers demandés. *Signaler le thème…* n’envoie aucune requête depuis l’app : cette action ouvre seulement un lien GitHub ou e-mail dans votre navigateur ou votre app de messagerie.
+Si vous ouvrez *Réglages › Apparence › Obtenir plus de thèmes…*, choisissez *Rechercher des mises à jour de thèmes* ou installez ou mettez à jour un thème, MarsDawn télécharge la liste des thèmes, les aperçus et les fichiers de thème depuis marsdawn.southern-light.dev. Les thèmes ne se mettent à jour automatiquement que pendant ces téléchargements, jamais en arrière-plan. La requête ne contient ni compte, ni identifiant, ni cookie, ni donnée de document ; comme pour toute requête web, notre hébergeur Cloudflare voit votre adresse IP et les fichiers demandés. *Signaler le thème…* n’envoie aucune requête depuis l’app : cette action ouvre seulement un lien GitHub ou e-mail dans votre navigateur ou votre app de messagerie.
 
 ## Siri, Raccourcis et Spotlight
 
