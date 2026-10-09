@@ -97,6 +97,7 @@ def build_redirects() -> str:
 
 # The MCP server, a separate public repo. Re-verified 2026-09-20 against
 # github.com/redtear1115/marsdawn-mcp: still 0.1.0, still not in the MCP Registry.
+# 2026-10-10: listed in the MCP Registry as dev.southern-light.mcp/marsdawn, 0.2.4.
 MCP_URL = "https://github.com/redtear1115/marsdawn-mcp"
 MCP_LICENSE = "Apache-2.0"
 
@@ -1883,7 +1884,7 @@ BRAINSTORM_PAGES = {
 <p><a href="{MCP_URL}">marsdawn-mcp</a> is a separate, public, {MCP_LICENSE} repository. It's an MCP server with two tools, <code>export_markdown_to_pdf</code> and <code>open_in_marsdawn</code>, that wrap <code>marsdawn export --json</code> and <code>marsdawn open --json</code>: point an MCP client at it and a tool call returns the same JSON as the CLI.</p>
 <ul>
   <li><strong>Get it:</strong> as an MCP Bundle, <code>marsdawn.mcpb</code>, attached to <a href="{MCP_URL}/releases">its GitHub release</a>, or by running the server from source over stdio.</li>
-  <li><strong>Registry:</strong> not yet listed in the MCP Registry (current release: 0.2.1). Check the repository for the current status before relying on registry discovery.</li>
+  <li><strong>Registry:</strong> listed in the <a href="https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest">MCP Registry</a> as <code>dev.southern-light.mcp/marsdawn</code> (current release: 0.2.4).</li>
   <li><strong>Hosting:</strong> self-hosted only. There is no hosted marsdawn-mcp service; the server runs on your own machine, next to marsdawn itself.</li>
   <li><strong>Requirements:</strong> macOS, marsdawn 0.5.0 or later, and Node.js 20 or later to run the server.</li>
 </ul>
@@ -1927,7 +1928,7 @@ BRAINSTORM_PAGES = {
 <p><a href="{MCP_URL}">marsdawn-mcp</a> 是另一個獨立、公開、{MCP_LICENSE} 授權的 repository。它是一個有兩個工具的 MCP 伺服器，<code>export_markdown_to_pdf</code> 和 <code>open_in_marsdawn</code>，分別包住 <code>marsdawn export --json</code> 和 <code>marsdawn open --json</code>：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。</p>
 <ul>
   <li><strong>取得方式：</strong>以 MCP Bundle（<code>marsdawn.mcpb</code>）的形式附在<a href="{MCP_URL}/releases">GitHub release</a> 上，或從原始碼以 stdio 執行伺服器。</li>
-  <li><strong>Registry：</strong>還沒上架 MCP Registry（目前版本：0.2.1）。要靠 registry 搜尋找到它之前，請先到 repository 確認目前狀態。</li>
+  <li><strong>Registry：</strong>已上架 <a href="https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest">MCP Registry</a>，名稱為 <code>dev.southern-light.mcp/marsdawn</code>（目前版本：0.2.4）。</li>
   <li><strong>託管：</strong>只能自架，沒有代管服務。伺服器跑在你自己的機器上，就在 marsdawn 旁邊。</li>
   <li><strong>系統需求：</strong>macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。</li>
 </ul>

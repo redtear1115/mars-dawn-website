@@ -725,7 +725,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 <p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a>는 Apache-2.0 라이선스의 별도 공개 저장소입니다. <code>export_markdown_to_pdf</code>와 <code>open_in_marsdawn</code> 두 도구를 가진 MCP 서버로, 각각 <code>marsdawn export --json</code>과 <code>marsdawn open --json</code>을 감쌉니다. MCP 클라이언트가 이 서버를 가리키게 하면 도구 호출이 CLI와 같은 JSON을 돌려줍니다.</p>
 <ul>
   <li><strong>받는 곳:</strong> MCP Bundle인 <code>marsdawn.mcpb</code>를 <a href="https://github.com/redtear1115/marsdawn-mcp/releases">GitHub 릴리스</a>에서 받거나, 소스에서 stdio로 서버를 실행합니다.</li>
-  <li><strong>레지스트리:</strong> 아직 MCP Registry에 등록되지 않았습니다(현재 릴리스: 0.2.1). 레지스트리 검색에 의존하기 전에 저장소에서 현재 상태를 확인하세요.</li>
+  <li><strong>레지스트리:</strong> <a href="https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest">MCP Registry</a>에 <code>dev.southern-light.mcp/marsdawn</code>로 등록되어 있습니다(현재 릴리스: 0.2.4).</li>
   <li><strong>호스팅:</strong> 직접 호스팅만 가능합니다. 호스팅된 marsdawn-mcp 서비스는 없으며, 서버는 marsdawn과 함께 여러분의 컴퓨터에서 실행됩니다.</li>
   <li><strong>요구 사항:</strong> macOS, marsdawn 0.5.0 이상, 그리고 서버를 실행할 Node.js 20 이상.</li>
 </ul>
