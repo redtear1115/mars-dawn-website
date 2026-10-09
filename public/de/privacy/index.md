@@ -31,7 +31,7 @@ Sobald du zustimmst, setzt Google Analytics eigene Cookies (`_ga` und `_ga_<meas
 
 ## Wann MarsDawn das Internet nutzt
 
-MarsDawn funktioniert vollständig offline. Es verbindet sich nur dann mit dem Internet, **wenn du dich dafür entscheidest**, und zwar für ein Dokument, das auf das Web verweist:
+MarsDawn funktioniert vollständig offline. Es verbindet sich nur dann mit dem Internet, **wenn du dich dafür entscheidest**, und zwar für ein Dokument, das auf das Web verweist, oder für die Theme-Galerie. Für Dokumente gilt:
 
 - **Markdown-Dokumente.** Bilder aus dem Web sind standardmäßig blockiert. Sie werden erst geladen, wenn du in der Vorschau auf *Bilder laden* klickst oder in den Einstellungen *Bilder aus dem Web automatisch laden* aktivierst. Sonst wird nichts, worauf ein Markdown-Dokument verweist, aus dem Web geladen.
 - **HTML-Dokumente.** Ein HTML-Dokument öffnet sich statisch: Sein Code läuft nicht, und nichts wird aus dem Web geladen. Enthält ein Dokument Code, der laufen könnte, kannst du für dieses Dokument *Darstellung › Dieses Dokument ausführen* wählen. Sein eigener Code läuft dann, bis du ihn stoppst, das Dokument neu geladen wird oder du das Fenster schließt. Diese Wahl wird nie gespeichert, und sie ist keine Einstellung. Während der Code läuft, kann das Dokument Daten über das Netzwerk senden sowie Bilder, Stylesheets, Schriften und Medien in seinem Ordner und den darin enthaltenen Ordnern lesen. Code, der aus dem Web geladen wird, läuft nie.
@@ -41,6 +41,8 @@ MarsDawn lädt Webinhalte nur über https. Eine einfache http-Adresse wird nie g
 Wenn Webinhalte geladen werden, fordert dein Mac sie direkt bei den Servern an, die sie bereitstellen. Wie bei jeder Webanfrage sehen diese Server dadurch deine IP-Adresse und was angefordert wurde. Der Entwickler von MarsDawn erhält keine dieser Informationen.
 
 Links, auf die du in der Vorschau klickst, öffnen sich in deinem Standard-Webbrowser, nach dessen eigenen Datenschutzpraktiken. Audio und Video spielen nie von selbst ab.
+
+Wenn du *Einstellungen › Erscheinungsbild › Weitere Themes laden …* öffnest, *Nach Theme-Updates suchen* wählst oder ein Theme installierst oder aktualisierst, lädt MarsDawn die Theme-Liste, Vorschauen und Theme-Dateien von marsdawn.southern-light.dev herunter. Themes werden nur bei diesen Downloads automatisch aktualisiert, nie im Hintergrund. Die Anfrage enthält weder Konto noch Kennung, Cookie oder Dokumentdaten; wie bei jeder Webanfrage sieht unser Host Cloudflare deine IP-Adresse und welche Dateien angefordert wurden. *Theme melden…* sendet keine Anfrage aus der App: Es öffnet nur einen GitHub- oder E-Mail-Link in deinem Browser oder deiner Mail-App.
 
 ## Siri, Kurzbefehle und Spotlight
 

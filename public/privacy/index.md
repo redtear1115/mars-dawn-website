@@ -31,7 +31,7 @@ Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<measurem
 
 ## When MarsDawn uses the internet
 
-MarsDawn works fully offline. It connects to the internet only **when you choose to**, for a document that refers to the web:
+MarsDawn works fully offline. It connects to the internet only **when you choose to**: for a document that refers to the web, or for the theme gallery. For documents:
 
 - **Markdown documents.** Web images are blocked by default. They load only after you click *Load Images* in the preview, or if you turn on *Load remote images automatically* in Settings. Nothing else a Markdown document refers to is loaded from the web.
 - **HTML documents.** An HTML document opens static: its code doesn't run and nothing is loaded from the web. If a document contains code that could run, you can choose *View › Run This Document* for that document. Its own code then runs until you stop it, the document reloads or you close the window. That choice is never remembered, and it isn't a setting. While it runs, the document can send data over the network, and read images, style sheets, fonts and media in its folder and the folders inside it. Code downloaded from the web never runs.
@@ -41,6 +41,8 @@ MarsDawn loads web content over https only. A plain http address is never loaded
 When web content loads, your Mac requests it directly from the servers that host it. Like any web request, this lets those servers see your IP address and what was requested. MarsDawn's developer receives none of this information.
 
 Links you click in the preview open in your default web browser, under that browser's own privacy practices. Audio and video never play by themselves.
+
+If you open *Settings › Appearance › Get More Themes…*, choose *Check for Theme Updates*, or install or update a theme, MarsDawn downloads the theme list, previews and theme files from marsdawn.southern-light.dev. Themes update automatically only during these downloads, never in the background. The request carries no account, identifier, cookie or document data; like any web request, our host Cloudflare sees your IP address and which files were requested. *Report Theme…* makes no request from the app: it only opens a GitHub or email link in your browser or mail app.
 
 ## Siri, Shortcuts and Spotlight
 

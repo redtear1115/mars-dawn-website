@@ -31,7 +31,7 @@ Une fois que vous avez accepté, Google Analytics dépose ses propres cookies (`
 
 ## Quand MarsDawn utilise Internet
 
-MarsDawn fonctionne entièrement hors ligne. L’app ne se connecte à Internet **que si vous le choisissez**, pour un document qui fait référence au web :
+MarsDawn fonctionne entièrement hors ligne. L’app ne se connecte à Internet **que si vous le choisissez**, pour un document qui fait référence au web ou pour la galerie de thèmes. Pour les documents :
 
 - **Documents Markdown.** Les images web sont bloquées par défaut. Elles ne se chargent qu’après un clic sur *Charger les images* dans l’aperçu, ou si vous activez *Charger automatiquement les images distantes* dans les Réglages. Rien d’autre de ce à quoi un document Markdown fait référence n’est chargé depuis le web.
 - **Documents HTML.** Un document HTML s’ouvre de façon statique : son code ne s’exécute pas et rien n’est chargé depuis le web. Si un document contient du code exécutable, vous pouvez choisir *Présentation › Exécuter ce document* pour ce document. Son propre code s’exécute alors jusqu’à ce que vous l’arrêtiez, que le document se recharge ou que vous fermiez la fenêtre. Ce choix n’est jamais mémorisé, et ce n’est pas un réglage. Pendant l’exécution, le document peut envoyer des données sur le réseau, et lire les images, feuilles de style, polices et médias de son dossier et des dossiers qu’il contient. Le code téléchargé depuis le web ne s’exécute jamais.
@@ -41,6 +41,8 @@ MarsDawn charge le contenu web uniquement en https. Une adresse en http simple n
 Lorsqu’un contenu web se charge, votre Mac le demande directement aux serveurs qui l’hébergent. Comme pour toute requête web, ces serveurs voient alors votre adresse IP et ce qui a été demandé. Le développeur de MarsDawn ne reçoit aucune de ces informations.
 
 Les liens sur lesquels vous cliquez dans l’aperçu s’ouvrent dans votre navigateur web par défaut, selon les pratiques de confidentialité de ce navigateur. L’audio et la vidéo ne se lancent jamais d’eux-mêmes.
+
+Si vous ouvrez *Réglages › Apparence › Obtenir plus de thèmes…*, choisissez *Rechercher des mises à jour de thèmes* ou installez ou mettez à jour un thème, MarsDawn télécharge la liste des thèmes, les aperçus et les fichiers de thème depuis marsdawn.southern-light.dev. Les thèmes ne se mettent à jour automatiquement que pendant ces téléchargements, jamais en arrière-plan. La requête ne contient ni compte, ni identifiant, ni cookie, ni donnée de document ; comme pour toute requête web, notre hébergeur Cloudflare voit votre adresse IP et les fichiers demandés. *Signaler le thème…* n’envoie aucune requête depuis l’app : cette action ouvre seulement un lien GitHub ou e-mail dans votre navigateur ou votre app de messagerie.
 
 ## Siri, Raccourcis et Spotlight
 

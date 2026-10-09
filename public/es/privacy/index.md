@@ -31,7 +31,7 @@ Una vez que aceptas, Google Analytics instala sus propias cookies (`_ga` y `_ga_
 
 ## Cuándo usa MarsDawn internet
 
-MarsDawn funciona totalmente sin conexión. Solo se conecta a internet **cuando tú lo eliges**, para un documento que hace referencia a la web:
+MarsDawn funciona totalmente sin conexión. Solo se conecta a internet **cuando tú lo eliges**, para un documento que hace referencia a la web o para la galería de temas. Para los documentos:
 
 - **Documentos Markdown.** Las imágenes web están bloqueadas por omisión. Solo se cargan después de que hagas clic en *Cargar imágenes* en la vista previa, o si activas *Cargar imágenes remotas automáticamente* en Ajustes. Nada más de lo que menciona un documento Markdown se carga desde la web.
 - **Documentos HTML.** Un documento HTML se abre de forma estática: su código no se ejecuta y no se carga nada desde la web. Si un documento contiene código que podría ejecutarse, puedes elegir *Visualización › Ejecutar este documento* para ese documento. Su propio código se ejecuta entonces hasta que lo detengas, el documento se vuelva a cargar o cierres la ventana. Esa elección nunca se recuerda y no es un ajuste. Mientras se ejecuta, el documento puede enviar datos por la red y leer imágenes, hojas de estilo, tipos de letra y archivos multimedia de su carpeta y de las carpetas que contiene. El código descargado de la web nunca se ejecuta.
@@ -41,6 +41,8 @@ MarsDawn carga contenido web solo por https. Una dirección http simple nunca se
 Cuando se carga contenido web, tu Mac lo solicita directamente a los servidores que lo alojan. Como en cualquier solicitud web, esos servidores pueden ver así tu dirección IP y lo que se solicitó. El desarrollador de MarsDawn no recibe nada de esta información.
 
 Los enlaces en los que haces clic en la vista previa se abren en tu navegador web predeterminado, según las prácticas de privacidad de ese navegador. El audio y el video nunca se reproducen solos.
+
+Si abres *Ajustes › Aspecto › Obtener más temas…*, eliges *Buscar actualizaciones de temas* o instalas o actualizas un tema, MarsDawn descarga la lista de temas, las vistas previas y los archivos de los temas desde marsdawn.southern-light.dev. Los temas se actualizan automáticamente solo durante estas descargas, nunca en segundo plano. La solicitud no incluye cuenta, identificador, cookie ni datos de documentos; como en cualquier solicitud web, nuestro host Cloudflare ve tu dirección IP y qué archivos se solicitaron. *Denunciar tema…* no envía ninguna solicitud desde la app: solo abre un enlace de GitHub o de correo electrónico en tu navegador o en tu app de correo.
 
 ## Siri, Atajos y Spotlight
 
