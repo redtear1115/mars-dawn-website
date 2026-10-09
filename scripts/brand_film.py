@@ -8,7 +8,7 @@ poster (a downsized JPEG) is part of first load.
 
 Files, under public/assets/film/ (hand-placed, not generated):
   marsdawn-film-en-1080p30.mp4   the film, from the brand-films repo (out/mars-dawn/web/)
-  marsdawn-film-en-poster.jpg    its poster, scaled to 1280 px wide
+  marsdawn-film-en-poster.jpg    its poster: the frame at 20.0 s ("Read what your agent wrote."), 1280 px wide
   marsdawn-film-<zh-hant|zh-hans|ja>.vtt   the translation tracks, copied from #159's comment
 
 The section moves nothing of its own: no transition, no animation, so reduced motion needs no
