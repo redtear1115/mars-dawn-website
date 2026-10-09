@@ -18,7 +18,7 @@ import re
 import shutil
 import sys
 from types import SimpleNamespace
-from html import escape as html_escape
+from html import escape as html_escape, unescape as html_unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
@@ -5025,6 +5025,122 @@ def add_h2_ids(locale: str, slug: str, page: dict, html: str) -> str:
     return html
 
 
+# --- Structured data (schema.org JSON-LD) ------------------------------------------------------
+# What the home page says about the app. APP_VERSION is the Mac app's current release (1.1.0 went on
+# sale 2026-10-09): raise it with each release, together with the app's own version.
+APP_VERSION = "1.1.0"
+PUBLISHER = {"@type": "Organization", "name": "Southern Light", "url": "https://southern-light.dev"}
+# Other pages that are about this same app. Each URL was fetched and answered 200 on 2026-10-09.
+SAME_AS = [
+    LISTING_URL,
+    KIT_URL,
+    "https://github.com/redtear1115/homebrew-tap",
+    MCP_URL,
+    "https://registry.modelcontextprotocol.io/v0.1/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest",
+]
+HOME_SCREENSHOT = "/assets/screens/01-split-1180.png"
+# The price facts (app repo PRODUCT.md, docs/free-trial-plan.md): a free download with a 14-day
+# trial, then a one-time $4.99 unlock. Machine-read text, so English in every locale.
+PRICE_UNLOCK = "4.99"
+# The essays and notes: (datePublished, dateModified), taken from the date each page's English
+# file first landed on `main`, and the date it last changed there. The build has no other record
+# of a page's dates, so a page whose text changes materially needs its dateModified raised here.
+ARTICLE_DATES = {
+    "token-efficient-review": ("2026-10-06", "2026-10-07"),
+    "sharing-exported-pdfs": ("2026-10-06", "2026-10-07"),
+    "reviewing-ai-output": ("2026-10-06", "2026-10-07"),
+    "reading-agent-output": ("2026-09-28", "2026-10-07"),
+    "agent-transparency": ("2026-09-28", "2026-10-07"),
+    "reviewing-agent-plans": ("2026-09-28", "2026-10-07"),
+    "agent-design-patterns": ("2026-09-28", "2026-10-07"),
+    "reading-notes": ("2026-09-28", "2026-10-07"),
+    "reading-notes/anthropic-building-effective-agents": ("2026-09-28", "2026-10-07"),
+    "reading-notes/chip-huyen-agents": ("2026-09-28", "2026-10-07"),
+    "reading-notes/lilian-weng-llm-agents": ("2026-09-28", "2026-10-07"),
+    "reading-notes/harrison-chase-what-is-an-agent": ("2026-09-28", "2026-10-07"),
+    "reading-notes/langchain-what-is-an-agent": ("2026-09-28", "2026-10-07"),
+    "reading-notes/andrew-ng-design-patterns": ("2026-09-28", "2026-10-07"),
+}
+
+
+def ld_json(data: dict) -> str:
+    """JSON for a <script type="application/ld+json">: `<` is escaped so no text can close the tag."""
+    return json.dumps(data, ensure_ascii=False).replace("<", "\\u003c")
+
+
+def _plain(text: str) -> str:
+    return html_unescape(re.sub(r"<[^>]+>", "", text))
+
+
+def breadcrumb_data(locale: str, slug: str, page: dict) -> dict:
+    """Home, then the parent page where the parent exists (cli/agents -> cli), then this page."""
+    ui = UI[locale]
+    trail = [(ui["home"], home_path(locale))]
+    parts = slug.split("/")
+    for depth in range(1, len(parts)):
+        parent = "/".join(parts[:depth])
+        if has_page(locale, parent) and parent in SLUG_TO_UI_KEY:
+            trail.append((ui[SLUG_TO_UI_KEY[parent]], page_path(locale, parent)))
+    label = ui[SLUG_TO_UI_KEY[slug]] if slug in SLUG_TO_UI_KEY else _plain(page["title"]).removesuffix(" · MarsDawn")
+    trail.append((label, page_path(locale, slug)))
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": i, "name": _plain(name), "item": abs_url(path)}
+            for i, (name, path) in enumerate(trail, 1)
+        ],
+    }
+
+
+def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> list:
+    if slug == "index":
+        return [{
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "MarsDawn",
+            "description": page["description"],
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "macOS 26 or later",
+            "softwareVersion": APP_VERSION,
+            "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "USD",
+                "lowPrice": "0",
+                "highPrice": PRICE_UNLOCK,
+                "offerCount": 2,
+                "offers": [
+                    {"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0",
+                     "priceCurrency": "USD", "availability": AVAILABILITY},
+                    {"@type": "Offer", "name": "One-time unlock after the trial, no subscription",
+                     "price": PRICE_UNLOCK, "priceCurrency": "USD", "availability": AVAILABILITY},
+                ],
+            },
+            "screenshot": abs_url(HOME_SCREENSHOT),
+            "publisher": PUBLISHER,
+            "sameAs": SAME_AS,
+            "downloadUrl": LISTING_URL,
+            "url": canonical_url,
+        }]
+    data = [breadcrumb_data(locale, slug, page)]
+    if slug in ARTICLE_DATES:
+        published, modified = ARTICLE_DATES[slug]
+        data.append({
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": _plain(page["title"]).removesuffix(" · MarsDawn"),
+            "description": _plain(page["description"]),
+            "datePublished": published,
+            "dateModified": modified,
+            "inLanguage": LOCALES[locale]["html_lang"],
+            "mainEntityOfPage": canonical_url,
+            "image": abs_url("/assets/og-en.png"),
+            "publisher": PUBLISHER,
+        })
+    return data
+
+
+
 def render(locale: str, slug: str, page: dict) -> str:
     ui = UI[locale]
     lang = LOCALES[locale]["html_lang"]
@@ -5052,25 +5168,10 @@ def render(locale: str, slug: str, page: dict) -> str:
 <meta property="og:image:alt" content="{OG_IMAGE_ALT}">
 <meta property="og:locale" content="{OG_LOCALE[locale]}">
 <meta name="twitter:card" content="summary_large_image">"""
-    jsonld = ""
-    if slug == "index":
-        data = {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "MarsDawn",
-            "description": page["description"],
-            "applicationCategory": "DeveloperApplication",
-            "operatingSystem": "macOS 26 or later",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD",
-                "availability": AVAILABILITY,
-            },
-            "downloadUrl": LISTING_URL,
-            "url": canonical_url,
-        }
-        jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
+    jsonld = "".join(
+        f'<script type="application/ld+json">{ld_json(data)}</script>\n'
+        for data in structured_data(locale, slug, page, canonical_url)
+    )
     has_intro = "intro" in page
     is_trait_page = slug in TRAIT_ORDER
     # The trait pages' chip is `chip` below. Every other page's masthead says the same, as a

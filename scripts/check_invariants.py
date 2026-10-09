@@ -27,6 +27,12 @@ button installs the free CLI (it jumps to the `#install` block) and nothing stor
 button; after launch the primary goes to the Mac App Store listing and the CLI is second. In
 neither phase is the hero's call to action an image, so it can't pass for a store badge.
 
+Structured data on inner pages (every locale): each page except a home page carries a
+BreadcrumbList whose first item is that locale's home, whose last is the page itself, with
+consecutive positions and named items; each essay and reading note (`ARTICLE_DATES` in
+build_pages.py) carries a TechArticle with ISO datePublished and dateModified, in order and not in
+the future; and nothing else claims to be a TechArticle.
+
 Two things this deliberately does not catch, so nobody reads a green run as more than it is:
 
 - **A placeholder listing URL passes.** `https://apps.apple.com/app/idPLACEHOLDER` is a link to
@@ -43,6 +49,8 @@ To see it catch one:
     python3 scripts/check_invariants.py --root /tmp/site
 """
 import argparse
+import datetime
+import json
 import re
 import sys
 from pathlib import Path
@@ -116,6 +124,67 @@ def phase():
     sys.exit(f"check_invariants: AVAILABILITY is {value!r}, which is neither PreOrder nor InStock")
 
 
+LD_BLOCK = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
+HOME_SLUGS = {"index.html"} | {f"{l}/index.html" for l in ("zh-hant", "zh-hans", "ja", *NEW_LOCALES)}
+
+
+def article_slugs():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_pages
+    return set(build_pages.ARTICLE_DATES)
+
+
+def check_structured_data(relative, text, articles, problems):
+    """Breadcrumbs on every inner page; TechArticle with dates exactly on the essays and notes."""
+    locale = locale_of(relative)
+    slug = relative[:-len("index.html")].strip("/")
+    if locale != "en":
+        slug = slug[len(locale) + 1:] if slug != locale else ""
+    blocks = []
+    for raw in LD_BLOCK.findall(text):
+        try:
+            blocks.append(json.loads(raw))
+        except json.JSONDecodeError as exc:
+            problems.append(f"{relative}: JSON-LD doesn't parse: {exc}")
+    if relative in HOME_SLUGS:
+        return
+    crumbs = [b for b in blocks if b.get("@type") == "BreadcrumbList"]
+    canonical = re.search(r'<link rel="canonical" href="([^"]+)"', text)
+    home = f"https://marsdawn.southern-light.dev/{'' if locale == 'en' else locale + '/'}"
+    if len(crumbs) != 1:
+        problems.append(f"{relative}: {len(crumbs)} BreadcrumbList blocks, want 1")
+    else:
+        items = crumbs[0].get("itemListElement")
+        if not isinstance(items, list) or len(items) < 2:
+            problems.append(f"{relative}: BreadcrumbList has fewer than two items")
+        else:
+            if [i.get("position") for i in items] != list(range(1, len(items) + 1)):
+                problems.append(f"{relative}: BreadcrumbList positions aren't 1..{len(items)}")
+            if not all(i.get("name") and i.get("item") for i in items):
+                problems.append(f"{relative}: a BreadcrumbList item has no name or no URL")
+            if items[0].get("item") != home:
+                problems.append(f"{relative}: breadcrumb starts at {items[0].get('item')!r}, want {home!r}")
+            if canonical and items[-1].get("item") != canonical.group(1):
+                problems.append(f"{relative}: breadcrumb ends at {items[-1].get('item')!r}, not the page's canonical URL")
+    tech = [b for b in blocks if b.get("@type") == "TechArticle"]
+    if slug in articles:
+        if len(tech) != 1:
+            problems.append(f"{relative}: {len(tech)} TechArticle blocks, want 1")
+        else:
+            try:
+                published = datetime.date.fromisoformat(tech[0].get("datePublished", ""))
+                modified = datetime.date.fromisoformat(tech[0].get("dateModified", ""))
+            except ValueError:
+                problems.append(f"{relative}: TechArticle dates aren't ISO dates")
+            else:
+                if modified < published or modified > datetime.date.today():
+                    problems.append(f"{relative}: TechArticle dates {published}..{modified} are out of order or in the future")
+            if not tech[0].get("headline"):
+                problems.append(f"{relative}: TechArticle has no headline")
+    elif tech:
+        problems.append(f"{relative}: a TechArticle on a page that isn't an essay or note")
+
+
 def locale_of(relative):
     for prefix, locale in PREFIX.items():
         if relative.startswith(prefix):
@@ -137,6 +206,7 @@ def main():
         sys.exit(f"check_invariants: no pages under {site}")
 
     problems = []
+    articles = article_slugs()
 
     # Same page set in every locale.
     by_locale = {"en": set(), "zh-hant": set(), "zh-hans": set(), "ja": set(), **{l: set() for l in NEW_LOCALES}}
@@ -155,6 +225,7 @@ def main():
     for relative, page in pages.items():
         locale = locale_of(relative)
         text = page.read_text()
+        check_structured_data(relative, text, articles, problems)
         if locale in NEW_LOCALES:
             if where != "launched":
                 problems.append(f"{relative}: {locale} is served before launch; it ships with 1.1.0, after launch")
