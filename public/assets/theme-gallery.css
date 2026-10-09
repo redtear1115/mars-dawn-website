@@ -3,12 +3,16 @@
    scripts/theme-gallery.js only toggles the [hidden] attribute and aria-pressed -- no inline
    style anywhere, since the site's CSP has no 'unsafe-inline' for style-src. */
 
+/* Both the filter and the cards are --w-media wide and centred on the page the way the hero window
+   and the loop drawing are: an auto margin would leave a block wider than the 44rem text column
+   against its left edge. */
 .theme-gallery-filter {
+  --gallery-width: var(--w-media);
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  width: var(--w-media);
-  margin: 20px auto 0;
+  width: var(--gallery-width);
+  margin: 20px calc((100% - var(--gallery-width)) / 2) 0;
 }
 
 .theme-filter-btn {
@@ -30,15 +34,11 @@
 .theme-gallery-cards {
   --gallery-width: var(--w-media);
   width: var(--gallery-width);
-  margin: 20px auto 28px;
+  margin: 20px calc((100% - var(--gallery-width)) / 2) 28px;
   padding: 0;
   list-style: none;
   display: grid;
   gap: 20px;
-}
-
-@media (min-width: 760px) {
-  .theme-gallery-cards { grid-template-columns: repeat(2, 1fr); }
 }
 
 .theme-card {
@@ -56,14 +56,36 @@
    (mars-dawn-website#147 round 2, on a different property). */
 .theme-card[hidden] { display: none; }
 
-.theme-card img {
-  display: inline-block;
-  width: calc(50% - 4px);
-  height: auto;
+/* The light and dark previews: side by side from 760px, where each is about 450px wide on a full
+   card (they used to stack, each at half the card's width, about 215px), stacked below that. A
+   preview is a link to the full-size file; theme-gallery.js opens it in a dialog instead. */
+.theme-previews {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+@media (min-width: 760px) {
+  .theme-previews { grid-template-columns: 1fr 1fr; }
+}
+
+.theme-preview {
+  display: block;
   border-radius: 8px;
   box-shadow: 0 1px 2px color-mix(in srgb, #000 12%, transparent),
               0 8px 20px -12px color-mix(in srgb, #000 30%, transparent);
 }
+
+[data-lightbox] .theme-preview { cursor: zoom-in; }
+
+.theme-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.theme-preview:focus-visible { border-radius: 8px; }
 
 .theme-card .theme-name { font-size: 1rem; }
 
@@ -122,4 +144,74 @@
   max-width: calc(100vw - 32px);
   margin: 20px auto;
   color: var(--dust);
+}
+
+/* The enlarged preview: a modal <dialog> over the whole viewport (see theme-gallery.js). The image
+   is shown at its natural size, so one wider or taller than the window scrolls inside the dialog;
+   the browser supplies Esc, the focus trap and the dimmed top layer. No display is set on the
+   dialog itself, so it stays hidden until showModal(). */
+.theme-lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: color-mix(in srgb, #000 86%, transparent);
+  color: #fff;
+}
+
+.theme-lightbox-scroll {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+/* margin:auto centres a small image and, unlike place-items, never makes the top-left of a
+   larger one unreachable. */
+.theme-lightbox-scroll:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -3px;
+}
+
+.theme-lightbox-img {
+  display: block;
+  flex: none;
+  max-width: none;
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+
+.theme-lightbox-close {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 24px;
+  min-height: 44px;
+  padding: 0 18px;
+  font: inherit;
+  color: #fff;
+  background: #1d1b1a;
+  border: 1px solid color-mix(in srgb, #fff 70%, transparent);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.theme-lightbox-close:hover { background: #3a3735; }
+
+.theme-lightbox-close:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .theme-lightbox[open] { animation: theme-lightbox-in 140ms ease-out; }
+  @keyframes theme-lightbox-in { from { opacity: 0; } to { opacity: 1; } }
 }

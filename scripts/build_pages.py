@@ -16,15 +16,17 @@ Static output, no build step at deploy time. Edit the copy here and rerun:
 import json
 import re
 import shutil
+import struct
 import sys
 from types import SimpleNamespace
-from html import escape as html_escape
+from html import escape as html_escape, unescape as html_unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untracked file after a build
+import article_dates  # noqa: E402
 import locales  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -487,6 +489,10 @@ GALLERY_REPORT_MAIL_LABEL = {
     "en": "Report by email", "zh-hant": "用電子郵件檢舉", "zh-hans": "用电子邮件举报", "ja": "メールで通報",
     "de": "Per E-Mail melden", "fr": "Signaler par e-mail", "es": "Denunciar por correo", "ko": "이메일로 신고",
 }
+GALLERY_LIGHTBOX_CLOSE = {
+    "en": "Close", "zh-hant": "關閉", "zh-hans": "关闭", "ja": "閉じる",
+    "de": "Schließen", "fr": "Fermer", "es": "Cerrar", "ko": "닫기",
+}
 GALLERY_EMPTY = {
     "en": "No themes are published yet. Be the first: build one in the browser and submit it.",
     "zh-hant": "目前還沒有任何投稿的主題。第一個做一個吧：在瀏覽器裡打造一個主題，然後送出投稿。",
@@ -576,6 +582,28 @@ def _localized(value, locale: str) -> str:
     return value.get("en") or ""
 
 
+def _png_size(rel_path: str):
+    """(width, height) of a published preview, read from its PNG header, or None if the file isn't
+    on disk or isn't a PNG (the check's fixtures name previews that don't exist). The card puts
+    them on the <img> so the browser reserves each preview's box before it loads."""
+    try:
+        head = (SITE / "themes" / "v1" / rel_path).read_bytes()[:24]
+    except OSError:
+        return None
+    if head[:8] != b"\x89PNG\r\n\x1a\n" or head[12:16] != b"IHDR":
+        return None
+    return struct.unpack(">II", head[16:24])
+
+
+def _theme_preview_html(href: str, alt: str, rel_path: str) -> str:
+    """One preview: a link to the full-size file (what a visitor with no JavaScript gets) around
+    the image. public/assets/theme-gallery.js opens it in a dialog instead."""
+    size = _png_size(rel_path)
+    dims = f' width="{size[0]}" height="{size[1]}"' if size else ""
+    return (f'<a class="theme-preview" href="{href}">'
+            f'<img src="{href}" alt="{alt}"{dims} loading="lazy"></a>')
+
+
 def _theme_card_html(locale: str, entry: dict) -> str:
     theme_id = str(entry.get("id", ""))
     version = str(entry.get("version", ""))
@@ -584,8 +612,10 @@ def _theme_card_html(locale: str, entry: dict) -> str:
     author = html_escape(str((entry.get("author") or {}).get("name", "")), quote=True)
     scenarios = [s for s in entry.get("scenarios", []) if s in SCENARIOS]
     previews = entry.get("previews") or {}
-    light = html_escape("/themes/v1/" + str(previews.get("light", "")), quote=True)
-    dark = html_escape("/themes/v1/" + str(previews.get("dark", "")), quote=True)
+    light_rel = str(previews.get("light", ""))
+    dark_rel = str(previews.get("dark", ""))
+    light = html_escape("/themes/v1/" + light_rel, quote=True)
+    dark = html_escape("/themes/v1/" + dark_rel, quote=True)
     badges = "".join(f' <span class="theme-scenario">{SCENARIO_LABELS[s][locale]}</span>' for s in scenarios)
     data_scenarios = html_escape(" ".join(scenarios), quote=True)
     version_text = html_escape(version, quote=True)
@@ -600,8 +630,9 @@ def _theme_card_html(locale: str, entry: dict) -> str:
         credit_html = f'    <span class="theme-credit"><a href="{credit_href}">{credit_label}</a></span>\n'
     return (
         f'  <li class="theme-card" data-scenarios="{data_scenarios}">\n'
-        f'    <img src="{light}" alt="{name} — light preview" loading="lazy">\n'
-        f'    <img src="{dark}" alt="{name} — dark preview" loading="lazy">\n'
+        f'    <span class="theme-previews">'
+        f'{_theme_preview_html(light, f"{name} — light preview", light_rel)}'
+        f'{_theme_preview_html(dark, f"{name} — dark preview", dark_rel)}</span>\n'
         f'    <strong class="theme-name">{name}</strong> <span class="theme-version">v{version_text}</span>\n'
         f'    <span class="theme-summary">{summary}</span>\n'
         f'    <span class="theme-scenarios">{badges.strip()}</span>\n'
@@ -634,7 +665,9 @@ def community_gallery_html(locale: str) -> str:
     present = [s for s in SCENARIOS if any(s in (t.get("scenarios") or []) for t in themes)]
     cards = "\n".join(_theme_card_html(locale, t) for t in themes)
     filter_html = (_theme_gallery_filter_html(locale, present) + "\n") if present else ""
-    return f'{filter_html}<ul class="theme-gallery-cards" id="theme-gallery-cards">\n{cards}\n</ul>'
+    close = html_escape(GALLERY_LIGHTBOX_CLOSE[locale], quote=True)
+    return (f'{filter_html}<ul class="theme-gallery-cards" id="theme-gallery-cards" '
+            f'data-close-label="{close}">\n{cards}\n</ul>')
 
 
 # public/themes/third-party-notices.html (#153, verify290 round 2): the MIT copyright notice and
@@ -4085,6 +4118,7 @@ import copy_ja  # noqa: E402
 import copy_zh_hans  # noqa: E402
 import importlib  # noqa: E402
 import hero_window  # noqa: E402
+import brand_film  # noqa: E402
 import loop_anim  # noqa: E402
 import templates_pages  # noqa: E402
 
@@ -5025,6 +5059,108 @@ def add_h2_ids(locale: str, slug: str, page: dict, html: str) -> str:
     return html
 
 
+# --- Structured data (schema.org JSON-LD) ------------------------------------------------------
+# What the home page says about the app. APP_VERSION is the Mac app's current release (1.1.0 went on
+# sale 2026-10-09): raise it with each release, together with the app's own version.
+APP_VERSION = "1.1.0"
+# The App Store's sellerName and artistName for MarsDawn (owner decision, 2026-10-09).
+PUBLISHER = {"@type": "Person", "name": "Nan-Kuang Lee"}
+# Other pages that are about this same app. Each URL was fetched and answered 200 on 2026-10-09.
+SAME_AS = [
+    LISTING_URL,
+    KIT_URL,
+    "https://github.com/redtear1115/homebrew-tap",
+    MCP_URL,
+]
+HOME_SCREENSHOT = "/assets/screens/01-split-1180.png"
+# The price facts (app repo PRODUCT.md, docs/free-trial-plan.md): a free download with a 14-day
+# trial, then a one-time $4.99 unlock. Machine-read text, so English in every locale.
+PRICE_UNLOCK = "4.99"
+# The essays and notes: (datePublished, dateModified), read from scripts/article_dates.json, which
+# scripts/article_dates.py computes from origin/main's first-parent history (never typed here).
+ARTICLE_DATES = {slug: (page["published"], page["modified"])
+                 for slug, page in json.loads((ROOT / "scripts" / "article_dates.json").read_text())["pages"].items()}
+assert set(ARTICLE_DATES) == set(article_dates.ARTICLE_SLUGS), "scripts/article_dates.json is out of step with article_dates.py"
+
+
+def ld_json(data: dict) -> str:
+    """JSON for a <script type="application/ld+json">: `<` is escaped so no text can close the tag."""
+    return json.dumps(data, ensure_ascii=False).replace("<", "\\u003c")
+
+
+def _plain(text: str) -> str:
+    return html_unescape(re.sub(r"<[^>]+>", "", text))
+
+
+def breadcrumb_data(locale: str, slug: str, page: dict) -> dict:
+    """Home, then the parent page where the parent exists (cli/agents -> cli), then this page."""
+    ui = UI[locale]
+    trail = [(ui["home"], home_path(locale))]
+    parts = slug.split("/")
+    for depth in range(1, len(parts)):
+        parent = "/".join(parts[:depth])
+        if has_page(locale, parent) and parent in SLUG_TO_UI_KEY:
+            trail.append((ui[SLUG_TO_UI_KEY[parent]], page_path(locale, parent)))
+    label = ui[SLUG_TO_UI_KEY[slug]] if slug in SLUG_TO_UI_KEY else _plain(page["title"]).removesuffix(" · MarsDawn")
+    trail.append((label, page_path(locale, slug)))
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": i, "name": _plain(name), "item": abs_url(path)}
+            for i, (name, path) in enumerate(trail, 1)
+        ],
+    }
+
+
+def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> list:
+    if slug == "index":
+        return [{
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "MarsDawn",
+            "description": page["description"],
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "macOS 26 or later",
+            "softwareVersion": APP_VERSION,
+            "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "USD",
+                "lowPrice": "0",
+                "highPrice": PRICE_UNLOCK,
+                "offerCount": 2,
+                "offers": [
+                    {"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0",
+                     "priceCurrency": "USD", "availability": AVAILABILITY},
+                    {"@type": "Offer", "name": "One-time unlock after the trial, no subscription",
+                     "price": PRICE_UNLOCK, "priceCurrency": "USD", "availability": AVAILABILITY},
+                ],
+            },
+            "screenshot": abs_url(HOME_SCREENSHOT),
+            "publisher": PUBLISHER,
+            "sameAs": SAME_AS,
+            "downloadUrl": LISTING_URL,
+            "url": canonical_url,
+        }]
+    data = [breadcrumb_data(locale, slug, page)]
+    if slug in ARTICLE_DATES:
+        published, modified = ARTICLE_DATES[slug]
+        data.append({
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": _plain(page["title"]).removesuffix(" · MarsDawn"),
+            "description": _plain(page["description"]),
+            "datePublished": published,
+            "dateModified": modified,
+            "inLanguage": LOCALES[locale]["html_lang"],
+            "mainEntityOfPage": canonical_url,
+            "image": abs_url("/assets/og-en.png"),
+            "publisher": PUBLISHER,
+        })
+    return data
+
+
+
 def render(locale: str, slug: str, page: dict) -> str:
     ui = UI[locale]
     lang = LOCALES[locale]["html_lang"]
@@ -5052,25 +5188,10 @@ def render(locale: str, slug: str, page: dict) -> str:
 <meta property="og:image:alt" content="{OG_IMAGE_ALT}">
 <meta property="og:locale" content="{OG_LOCALE[locale]}">
 <meta name="twitter:card" content="summary_large_image">"""
-    jsonld = ""
-    if slug == "index":
-        data = {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "MarsDawn",
-            "description": page["description"],
-            "applicationCategory": "DeveloperApplication",
-            "operatingSystem": "macOS 26 or later",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD",
-                "availability": AVAILABILITY,
-            },
-            "downloadUrl": LISTING_URL,
-            "url": canonical_url,
-        }
-        jsonld = f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
+    jsonld = "".join(
+        f'<script type="application/ld+json">{ld_json(data)}</script>\n'
+        for data in structured_data(locale, slug, page, canonical_url)
+    )
     has_intro = "intro" in page
     is_trait_page = slug in TRAIT_ORDER
     # The trait pages' chip is `chip` below. Every other page's masthead says the same, as a
@@ -5125,7 +5246,7 @@ def render(locale: str, slug: str, page: dict) -> str:
             "</section>"
         )
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
-        main_html = "\n".join([hero_html, page["body"].strip(), loop_anim.loop_html(locale),
+        main_html = "\n".join([hero_html, brand_film.film_html(locale), page["body"].strip(), loop_anim.loop_html(locale),
                                home_sections_html(locale), proof_html, closing_html])
     elif has_intro:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
@@ -5737,7 +5858,7 @@ def main() -> None:
     print(notices_path)
     (SITE / "assets" / "annotations.css").write_text(annotations_css(), encoding="utf-8")
     (SITE / "assets" / "hero.css").write_text(hero_window.window_css(), encoding="utf-8")
-    (SITE / "assets" / "loop.css").write_text(loop_anim.loop_css(), encoding="utf-8")
+    (SITE / "assets" / "loop.css").write_text(loop_anim.loop_css() + "\n" + brand_film.CSS, encoding="utf-8")
     for path, text in templates_pages.downloads().items():
         target = SITE / path
         target.parent.mkdir(parents=True, exist_ok=True)
