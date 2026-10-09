@@ -5036,7 +5036,6 @@ SAME_AS = [
     KIT_URL,
     "https://github.com/redtear1115/homebrew-tap",
     MCP_URL,
-    "https://registry.modelcontextprotocol.io/v0.1/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest",
 ]
 HOME_SCREENSHOT = "/assets/screens/01-split-1180.png"
 # The price facts (app repo PRODUCT.md, docs/free-trial-plan.md): a free download with a 14-day
