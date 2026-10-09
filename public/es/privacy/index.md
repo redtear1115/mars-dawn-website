@@ -42,7 +42,7 @@ Cuando se carga contenido web, tu Mac lo solicita directamente a los servidores 
 
 Los enlaces en los que haces clic en la vista previa se abren en tu navegador web predeterminado, según las prácticas de privacidad de ese navegador. El audio y el video nunca se reproducen solos.
 
-Si abres *Ajustes › Aspecto › Obtener más temas…*, eliges *Buscar actualizaciones de temas* o instalas o actualizas un tema, MarsDawn descarga la lista de temas, las vistas previas y los archivos de los temas desde marsdawn.southern-light.dev. Los temas se actualizan automáticamente solo durante estas descargas, nunca en segundo plano. La solicitud no incluye cuenta, identificador, cookie ni datos de documentos; como en cualquier solicitud web, nuestro host Cloudflare ve tu dirección IP y qué archivos se solicitaron. *Denunciar tema…* no envía ninguna solicitud desde la app: solo abre un enlace de GitHub o de correo electrónico en tu navegador o en tu app de correo.
+Si abres *Ajustes › Aspecto › Obtener más temas…*, eliges *Buscar actualizaciones de temas* o instalas o actualizas un tema, MarsDawn descarga la lista de temas, las vistas previas y los archivos de los temas desde marsdawn.southern-light.dev. Los temas se actualizan automáticamente solo durante estas descargas, nunca en segundo plano. La solicitud no incluye cuenta, identificador, cookie ni datos de documentos; como en cualquier solicitud web, nuestro proveedor de alojamiento, Cloudflare, ve tu dirección IP y qué archivos se solicitaron. *Denunciar tema…* no envía ninguna solicitud desde la app: solo abre un enlace de GitHub o de correo electrónico en tu navegador o en tu app de correo.
 
 ## Siri, Atajos y Spotlight
 

@@ -4725,7 +4725,7 @@ App 和这个网站是两件事。App 不收集数据。会记下访问的，只
 
 ## MarsDawn 什么时候会连上网络
 
-MarsDawn 可以完全离线使用，只有在**你自己选择时**，才会为引用网络内容的文稿或主题库连网。文稿方面：
+MarsDawn 可以完全离线使用，只有在**你自己选择时**，才会为引用网络内容的文稿或主题图库连网。文稿方面：
 
 - **Markdown 文稿**。网络图片默认不加载，只有在你按下预览中的“载入图像”，或在设置中打开“自动载入网络图像”后才会加载。Markdown 文稿引用的其他网络内容一律不加载。
 - **HTML 文稿**。HTML 文稿打开时是静态的：它的代码不会运行，也不会从网络加载任何东西。如果文稿含有可以运行的代码，你可以针对这份文稿选择“显示 › 运行这份文稿”。之后它自己的代码会一直运行，直到你停止它、文稿重新加载，或关闭窗口为止。这个选择不会被记住，也不是一项设置。运行期间，这份文稿可以通过网络发送数据，并读取它所在文件夹及其子文件夹中的图片、样式表、字体与媒体文件。从网络下载的代码一律不会运行。
@@ -6942,7 +6942,7 @@ MarsDawn は https 経由でのみウェブコンテンツを読み込みます�
 
 プレビュー内でクリックしたリンクは、デフォルトのウェブブラウザで、そのブラウザ自体のプライバシー方針に従って開きます。音声と動画が自動的に再生されることはありません。
 
-*設定 › 外観モード › テーマを追加…*を開く、*テーマのアップデートを確認*を選ぶ、またはテーマをインストール・アップデートすると、MarsDawn は marsdawn.southern-light.dev からテーマの一覧、プレビュー、テーマファイルをダウンロードします。テーマが自動的にアップデートされるのは、これらのダウンロード中だけで、バックグラウンドで行われることはありません。このリクエストには、アカウント、識別子、Cookie、文書のデータは含まれません。他のウェブリクエストと同様に、ホストである Cloudflare はあなたの IP アドレスと、どのファイルがリクエストされたかを知ることができます。*テーマを報告…*は App からリクエストを送らず、ブラウザまたはメール App で GitHub またはメールのリンクを開くだけです。
+「設定 › 外観モード › テーマを追加…」を開く、「テーマのアップデートを確認」を選ぶ、またはテーマをインストール・アップデートすると、MarsDawn は marsdawn.southern-light.dev からテーマの一覧、プレビュー、テーマファイルをダウンロードします。テーマが自動的にアップデートされるのは、これらのダウンロード中だけで、バックグラウンドで行われることはありません。このリクエストには、アカウント、識別子、クッキー、文書のデータは含まれません。他のウェブリクエストと同様に、このサイトのホスティングを担う Cloudflare はあなたの IP アドレスと、どのファイルがリクエストされたかを知ることができます。「テーマを報告…」はアプリからリクエストを送らず、ブラウザまたはメール App で GitHub またはメールのリンクを開くだけです。
 
 ## Siri、ショートカット、Spotlight
 
@@ -9137,7 +9137,7 @@ Sobald du zustimmst, setzt Google Analytics eigene Cookies (`_ga` und `_ga_<meas
 
 ## Wann MarsDawn das Internet nutzt
 
-MarsDawn funktioniert vollständig offline. Es verbindet sich nur dann mit dem Internet, **wenn du dich dafür entscheidest**, und zwar für ein Dokument, das auf das Web verweist, oder für die Theme-Galerie. Für Dokumente gilt:
+MarsDawn funktioniert vollständig offline. Es verbindet sich nur dann mit dem Internet, **wenn du dich dafür entscheidest**, und zwar für ein Dokument, das auf das Web verweist, oder für die Themengalerie. Für Dokumente gilt:
 
 - **Markdown-Dokumente.** Bilder aus dem Web sind standardmäßig blockiert. Sie werden erst geladen, wenn du in der Vorschau auf *Bilder laden* klickst oder in den Einstellungen *Bilder aus dem Web automatisch laden* aktivierst. Sonst wird nichts, worauf ein Markdown-Dokument verweist, aus dem Web geladen.
 - **HTML-Dokumente.** Ein HTML-Dokument öffnet sich statisch: Sein Code läuft nicht, und nichts wird aus dem Web geladen. Enthält ein Dokument Code, der laufen könnte, kannst du für dieses Dokument *Darstellung › Dieses Dokument ausführen* wählen. Sein eigener Code läuft dann, bis du ihn stoppst, das Dokument neu geladen wird oder du das Fenster schließt. Diese Wahl wird nie gespeichert, und sie ist keine Einstellung. Während der Code läuft, kann das Dokument Daten über das Netzwerk senden sowie Bilder, Stylesheets, Schriften und Medien in seinem Ordner und den darin enthaltenen Ordnern lesen. Code, der aus dem Web geladen wird, läuft nie.
@@ -9148,7 +9148,7 @@ Wenn Webinhalte geladen werden, fordert dein Mac sie direkt bei den Servern an, 
 
 Links, auf die du in der Vorschau klickst, öffnen sich in deinem Standard-Webbrowser, nach dessen eigenen Datenschutzpraktiken. Audio und Video spielen nie von selbst ab.
 
-Wenn du *Einstellungen › Erscheinungsbild › Weitere Themes laden …* öffnest, *Nach Theme-Updates suchen* wählst oder ein Theme installierst oder aktualisierst, lädt MarsDawn die Theme-Liste, Vorschauen und Theme-Dateien von marsdawn.southern-light.dev herunter. Themes werden nur bei diesen Downloads automatisch aktualisiert, nie im Hintergrund. Die Anfrage enthält weder Konto noch Kennung, Cookie oder Dokumentdaten; wie bei jeder Webanfrage sieht unser Host Cloudflare deine IP-Adresse und welche Dateien angefordert wurden. *Theme melden…* sendet keine Anfrage aus der App: Es öffnet nur einen GitHub- oder E-Mail-Link in deinem Browser oder deiner Mail-App.
+Wenn du *Einstellungen › Erscheinungsbild › Weitere Themes laden …* öffnest, *Nach Theme-Updates suchen* wählst oder ein Theme installierst oder aktualisierst, lädt MarsDawn die Theme-Liste, Vorschauen und Theme-Dateien von marsdawn.southern-light.dev herunter. Themes werden nur bei diesen Downloads automatisch aktualisiert, nie im Hintergrund. Die Anfrage enthält kein Konto, keine Kennung, kein Cookie und keine Dokumentdaten; wie bei jeder Webanfrage sieht unser Hoster Cloudflare deine IP-Adresse und welche Dateien angefordert wurden. *Theme melden…* sendet keine Anfrage aus der App: Der Befehl öffnet nur einen GitHub- oder E-Mail-Link in deinem Browser oder deiner Mail-App.
 
 ## Siri, Kurzbefehle und Spotlight
 
@@ -13490,7 +13490,7 @@ Cuando se carga contenido web, tu Mac lo solicita directamente a los servidores 
 
 Los enlaces en los que haces clic en la vista previa se abren en tu navegador web predeterminado, según las prácticas de privacidad de ese navegador. El audio y el video nunca se reproducen solos.
 
-Si abres *Ajustes › Aspecto › Obtener más temas…*, eliges *Buscar actualizaciones de temas* o instalas o actualizas un tema, MarsDawn descarga la lista de temas, las vistas previas y los archivos de los temas desde marsdawn.southern-light.dev. Los temas se actualizan automáticamente solo durante estas descargas, nunca en segundo plano. La solicitud no incluye cuenta, identificador, cookie ni datos de documentos; como en cualquier solicitud web, nuestro host Cloudflare ve tu dirección IP y qué archivos se solicitaron. *Denunciar tema…* no envía ninguna solicitud desde la app: solo abre un enlace de GitHub o de correo electrónico en tu navegador o en tu app de correo.
+Si abres *Ajustes › Aspecto › Obtener más temas…*, eliges *Buscar actualizaciones de temas* o instalas o actualizas un tema, MarsDawn descarga la lista de temas, las vistas previas y los archivos de los temas desde marsdawn.southern-light.dev. Los temas se actualizan automáticamente solo durante estas descargas, nunca en segundo plano. La solicitud no incluye cuenta, identificador, cookie ni datos de documentos; como en cualquier solicitud web, nuestro proveedor de alojamiento, Cloudflare, ve tu dirección IP y qué archivos se solicitaron. *Denunciar tema…* no envía ninguna solicitud desde la app: solo abre un enlace de GitHub o de correo electrónico en tu navegador o en tu app de correo.
 
 ## Siri, Atajos y Spotlight
 
@@ -15661,7 +15661,7 @@ MarsDawn은 https로만 웹 콘텐츠를 불러옵니다. 일반 http 주소는 
 
 미리보기에서 클릭한 링크는 기본 웹 브라우저에서 열리며, 해당 브라우저의 개인정보 처리 관행을 따릅니다. 오디오와 비디오는 절대 저절로 재생되지 않습니다.
 
-*설정 › 화면 모드 › 테마 더 받기…*를 열거나 *테마 업데이트 확인*을 선택하거나 테마를 설치 또는 업데이트하면, MarsDawn은 marsdawn.southern-light.dev에서 테마 목록, 미리보기 및 테마 파일을 내려받습니다. 테마는 이러한 다운로드 중에만 자동으로 업데이트되며, 백그라운드에서는 업데이트되지 않습니다. 이 요청에는 계정, 식별자, 쿠키, 문서 데이터가 포함되지 않습니다. 다른 웹 요청과 마찬가지로, 호스트인 Cloudflare는 사용자의 IP 주소와 요청된 파일을 볼 수 있습니다. *테마 신고…*는 앱에서 어떤 요청도 보내지 않으며, 브라우저나 메일 앱에서 GitHub 또는 이메일 링크만 엽니다.
+*설정 › 화면 모드 › 테마 더 받기…* 버튼을 클릭하거나 *테마 업데이트 확인*을 선택하거나 테마를 설치 또는 업데이트하면, MarsDawn은 marsdawn.southern-light.dev에서 테마 목록, 미리보기 및 테마 파일을 내려받습니다. 테마는 이러한 다운로드 중에만 자동으로 업데이트되며, 백그라운드에서는 업데이트되지 않습니다. 이 요청에는 계정, 식별자, 쿠키, 문서 데이터가 포함되지 않습니다. 다른 웹 요청과 마찬가지로, 호스팅 업체인 Cloudflare는 사용자의 IP 주소와 요청된 파일을 볼 수 있습니다. *테마 신고…* 메뉴는 앱에서 어떤 요청도 보내지 않으며, 브라우저나 메일 앱에서 GitHub 또는 이메일 링크만 엽니다.
 
 ## Siri, 단축어 및 Spotlight
 
