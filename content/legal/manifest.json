@@ -3,43 +3,43 @@
   "pages": {
     "privacy.de.md": {
       "rendered": "privacy.de.rendered.html",
-      "rendered_sha256": "d5656a0e50d9abff3becd91dc68abef1a7886e4d490162644dfd494ec98cdaa3",
-      "source_sha256": "1ef45ca5baeae655912392483edfe41154a727f4f2c436e2ecda290f112f6152"
+      "rendered_sha256": "eacfc1da729ae29a94e030da0e5e2c1aa523753f4705e880905935bf891300d4",
+      "source_sha256": "f6fe6d5ee42603e77be42e26227e157af1b59a4df2be02ac545697e57d5d9072"
     },
     "privacy.en.md": {
       "rendered": "privacy.en.rendered.html",
-      "rendered_sha256": "abf6dd7b44ba4f420627dafc5c97bb15a16d185fac9eb29451fa4c8602e95086",
-      "source_sha256": "690fbeef378e8c683a9201c10fca01d27c3f7386d030c7bb8f0ec2e003b35421"
+      "rendered_sha256": "f481ac63fe6192f76f00cfb2d6c163691f4b2a7fe8c5885aa641f56176dc8d89",
+      "source_sha256": "22d2eecda07118473a8209a0978d9611822e36b703fd39b6720534fbb18c4caf"
     },
     "privacy.es.md": {
       "rendered": "privacy.es.rendered.html",
-      "rendered_sha256": "145ff841900a018e2ed20c2c0e5eddd71e68c5a3da50600adf45b077f14a3f96",
-      "source_sha256": "13cde7e840917048b59598e1473f63957010b5d65694479bd7c7d6e69f4ab00c"
+      "rendered_sha256": "261e7a3ed0b66656fea64811032711656523bf4171e86360560cbbd2d52cee2d",
+      "source_sha256": "28418f7c7023a6f1149ef2e42315e5934a576db62f84f9312d2f4a38f9d788ff"
     },
     "privacy.fr.md": {
       "rendered": "privacy.fr.rendered.html",
-      "rendered_sha256": "0b7a36ad68167c1aff58388ca1c8460536ea30685fb7847506c821fcc58ff7c8",
-      "source_sha256": "5a40278de6228195fb6903df1acc72dcd61b9f2429cf36708263760f137a2ec9"
+      "rendered_sha256": "e2f9b3983f0154a7beb9453ddf42df3b850ac74fe84c10cfc79845d594a8d72a",
+      "source_sha256": "b1a2c78a8b00dd917b791b98a70545836ff776161cf8a5fb5d9234adb10bd0d0"
     },
     "privacy.ja.md": {
       "rendered": "privacy.ja.rendered.html",
-      "rendered_sha256": "c998e4f458314b40e4ab0637e7b96127857877869997b1bfee2062f28241e073",
-      "source_sha256": "2649dc6d001cb081863a41fd4aee4cfe8f949b36a1d91932e29b69c822035119"
+      "rendered_sha256": "7a2b7494304e715b39c2b9b962d516b6b31a97c25615567c5aa151085abe9c3b",
+      "source_sha256": "8a42fad51119d19b05cb9cba32b2865828c610c579ee121e02a99ecc7ecbdf3a"
     },
     "privacy.ko.md": {
       "rendered": "privacy.ko.rendered.html",
-      "rendered_sha256": "d65cd17d48ee35ad0b5e506cd049f8e659b4a98bab6b2d54edb29d60a5fb81dc",
-      "source_sha256": "323f0d4ecc425a2c4ee00adc7def5a815be986eedf39c8bd1198b9e921285c9a"
+      "rendered_sha256": "a68dbd20738374158f23d038991e935d82356a33d8a0699865ef7b986de8b23c",
+      "source_sha256": "73725cfd2198b0facd90e4aaa72ce6b9480b00c002a652b3198a059aef45b31c"
     },
     "privacy.zh-hans.md": {
       "rendered": "privacy.zh-hans.rendered.html",
-      "rendered_sha256": "9539d085bab572428c3db30dccb1c5d23b491f2b7f1360b4edfd8de0e8dcc4dc",
-      "source_sha256": "8a64ad0f5707fd37176711949bf610d5a6bd99b192fde1b0abd3f47fbb8c6e3a"
+      "rendered_sha256": "54fe64fed48dc0843fea55e2a4f03f83b70ebda1cc6190bb6fd46c6757493535",
+      "source_sha256": "1b1bdcb1d6df7bb7ad299cfb853960c06cc45dec0495620473e9c4aa4d5f1782"
     },
     "privacy.zh-hant.md": {
       "rendered": "privacy.zh-hant.rendered.html",
-      "rendered_sha256": "abe07869a652b349638caffd3aded21cbbc135bd968a3c6adc50e89251eb40d7",
-      "source_sha256": "721471c6563a7a1a45543c29fad421743c188104f4bcee1b0056270e9ea9d276"
+      "rendered_sha256": "2071b2e0541635f07a175c30f9258f3895ca179803d18b2868b3d24c59b38d25",
+      "source_sha256": "4baa3086acf05c503d4ed6dc7b86588c656d9d6071ccd8d50be5909262259aa1"
     },
     "support.de.md": {
       "rendered": "support.de.rendered.html",

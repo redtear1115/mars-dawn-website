@@ -302,7 +302,7 @@ Source: https://marsdawn.southern-light.dev/privacy/
 
 How MarsDawn, the Markdown editor for macOS, handles your information.
 
-Last updated 2026-09-28
+Last updated 2026-10-10
 
 > **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
 
@@ -2480,7 +2480,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/privacy/
 
 macOS 的 Markdown 編輯器 MarsDawn 如何處理你的資訊。
 
-最後更新：2026-09-28
+最後更新：2026-10-10
 
 > **MarsDawn app 不收集任何關於你的資料**。沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。
 
@@ -4696,7 +4696,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/privacy/
 
 macOS 的 Markdown 编辑器 MarsDawn 如何处理你的信息。
 
-最后更新：2026-09-28
+最后更新：2026-10-10
 
 > **MarsDawn app 不收集任何关于你的数据**。没有账户、没有广告，也不追踪。你的文稿与设置都留在你的 Mac 上。
 
@@ -6902,7 +6902,7 @@ Source: https://marsdawn.southern-light.dev/ja/privacy/
 
 macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情報を扱うか。
 
-最終更新日：2026-09-28
+最終更新日：2026-10-10
 
 > **MarsDawn アプリは、あなたに関するデータを一切収集しません**。アカウントも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。
 
@@ -9108,7 +9108,7 @@ Source: https://marsdawn.southern-light.dev/de/privacy/
 
 Wie MarsDawn, der Markdown-Editor für macOS, mit deinen Daten umgeht.
 
-Zuletzt aktualisiert am 2026-09-28
+Zuletzt aktualisiert am 2026-10-10
 
 > **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
 
@@ -11279,7 +11279,7 @@ Source: https://marsdawn.southern-light.dev/fr/privacy/
 
 Comment MarsDawn, l’éditeur Markdown pour macOS, traite vos informations.
 
-Dernière mise à jour : 2026-09-28
+Dernière mise à jour : 2026-10-10
 
 > **L’app MarsDawn ne collecte aucune donnée vous concernant.** Il n’y a ni compte, ni publicité, ni suivi. Vos documents et vos réglages restent sur votre Mac.
 
@@ -13450,7 +13450,7 @@ Source: https://marsdawn.southern-light.dev/es/privacy/
 
 Cómo trata tu información MarsDawn, el editor de Markdown para macOS.
 
-Última actualización: 2026-09-28
+Última actualización: 2026-10-10
 
 > **La app MarsDawn no recopila ningún dato sobre ti.** No hay cuenta, ni publicidad, ni seguimiento. Tus documentos y tus ajustes se quedan en tu Mac.
 
@@ -15621,7 +15621,7 @@ Source: https://marsdawn.southern-light.dev/ko/privacy/
 
 macOS용 Markdown 편집기 MarsDawn이 사용자의 정보를 어떻게 다루는지 설명합니다.
 
-최종 업데이트: 2026-09-28
+최종 업데이트: 2026-10-10
 
 > **MarsDawn 앱은 사용자에 관한 데이터를 일절 수집하지 않습니다.** 계정도, 광고도, 추적도 없습니다. 문서와 설정은 사용자의 Mac에 남습니다.
 
