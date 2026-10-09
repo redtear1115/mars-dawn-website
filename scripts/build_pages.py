@@ -25,6 +25,7 @@ from xml.sax.saxutils import escape as xml_escape
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untracked file after a build
+import article_dates  # noqa: E402
 import locales  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -5041,25 +5042,11 @@ HOME_SCREENSHOT = "/assets/screens/01-split-1180.png"
 # The price facts (app repo PRODUCT.md, docs/free-trial-plan.md): a free download with a 14-day
 # trial, then a one-time $4.99 unlock. Machine-read text, so English in every locale.
 PRICE_UNLOCK = "4.99"
-# The essays and notes: (datePublished, dateModified), taken from the date each page's English
-# file first landed on `main`, and the date it last changed there. The build has no other record
-# of a page's dates, so a page whose text changes materially needs its dateModified raised here.
-ARTICLE_DATES = {
-    "token-efficient-review": ("2026-10-06", "2026-10-07"),
-    "sharing-exported-pdfs": ("2026-10-06", "2026-10-07"),
-    "reviewing-ai-output": ("2026-10-06", "2026-10-07"),
-    "reading-agent-output": ("2026-09-28", "2026-10-07"),
-    "agent-transparency": ("2026-09-28", "2026-10-07"),
-    "reviewing-agent-plans": ("2026-09-28", "2026-10-07"),
-    "agent-design-patterns": ("2026-09-28", "2026-10-07"),
-    "reading-notes": ("2026-09-28", "2026-10-07"),
-    "reading-notes/anthropic-building-effective-agents": ("2026-09-28", "2026-10-07"),
-    "reading-notes/chip-huyen-agents": ("2026-09-28", "2026-10-07"),
-    "reading-notes/lilian-weng-llm-agents": ("2026-09-28", "2026-10-07"),
-    "reading-notes/harrison-chase-what-is-an-agent": ("2026-09-28", "2026-10-07"),
-    "reading-notes/langchain-what-is-an-agent": ("2026-09-28", "2026-10-07"),
-    "reading-notes/andrew-ng-design-patterns": ("2026-09-28", "2026-10-07"),
-}
+# The essays and notes: (datePublished, dateModified), read from scripts/article_dates.json, which
+# scripts/article_dates.py computes from origin/main's first-parent history (never typed here).
+ARTICLE_DATES = {slug: (page["published"], page["modified"])
+                 for slug, page in json.loads((ROOT / "scripts" / "article_dates.json").read_text())["pages"].items()}
+assert set(ARTICLE_DATES) == set(article_dates.ARTICLE_SLUGS), "scripts/article_dates.json is out of step with article_dates.py"
 
 
 def ld_json(data: dict) -> str:
