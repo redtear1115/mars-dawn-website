@@ -1,5 +1,7 @@
 # 用 Mac 原生的元件做的。
 
+MarsDawn 是 macOS 原生的 Markdown 編輯器，有即時分割預覽、Mermaid 圖表、KaTeX 數學式、快速查看與 PDF 輸出，可免費試用 14 天，之後只要一次 USD 4.99 解鎖。
+
 視窗、分頁、選單和文字編輯器都是 Mac 原生的。排版後的頁面由 Safari 使用的 WebKit 引擎繪製。
 
 ![MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
@@ -22,13 +24,13 @@
 ### 和 Mac 的其他部分
 
 - 原生視窗、分頁、自動儲存和版本記錄。
-- 快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。
+- 快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。[快速查看怎麼用](/zh-hant/quicklook/)
 - Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。
 - 支援英文、繁體中文、簡體中文、日文、德文、法文、西班牙文和韓文。
 
 ## 其他頁面
 
-- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。已在 Mac App Store 上架。
+- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): Mac 原生 Markdown 編輯器：即時分割預覽、Mermaid、KaTeX、快速查看、PDF 輸出。免費試用，只需買一次 USD 4.99。
 - [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hant/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。
@@ -36,6 +38,7 @@
 - [支援](https://marsdawn.southern-light.dev/zh-hant/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。
 - [隱私權政策](https://marsdawn.southern-light.dev/zh-hant/privacy/index.md): MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。
 - [在 Mac 上看 Markdown](https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/index.md): md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：現在可以用免費的 marsdawn 命令列工具轉成 PDF，也可以用 Mac App Store 上的 MarsDawn app。
+- [Markdown 快速查看](https://marsdawn.southern-light.dev/zh-hant/quicklook/index.md): 在 Finder 選取 Markdown 檔案後按空白鍵，就能看到排版後的頁面，Mermaid 圖表、KaTeX 數學式和程式碼上色都在。MarsDawn 的快速查看不受試用期限制。
 - [Markdown 轉 PDF](https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/index.md): 免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。
 - [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀檢視器，直接購買 USD 19.99。MarsDawn 邊編輯邊預覽，免費試用後在 Mac App Store 一次解鎖 USD 4.99。逐項比較功能、價格和購買方式。
 - [命令列工具](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。

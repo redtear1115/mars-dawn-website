@@ -44,9 +44,31 @@ Los archivos PDF que abres en MarsDawn se bloquean de la misma manera cuando ter
 - La [herramienta de línea de comandos `marsdawn`](/es/cli/), que es gratis, los sigue exportando a PDF, con prueba o sin ella.
 - Si hay un documento abierto en MarsDawn cuando termina la prueba, el texto que escribiste no se pierde: usa Archivo ▸ Guardar como… para conservarlo.
 
+## Preguntas y respuestas
+
+### ¿Cuánto cuesta MarsDawn?
+
+MarsDawn se descarga gratis desde el Mac App Store. Puedes usar todas las funciones durante 14 días y después una compra única dentro de la app por 4,99 USD lo desbloquea.
+
+### ¿Hay suscripción?
+
+No. El desbloqueo es una sola compra: nada se renueva y no se te cobra más adelante. Empezar la prueba tampoco cuesta nada.
+
+### ¿Qué pasa cuando termina la prueba de 14 días?
+
+Hasta que desbloquees MarsDawn, no puedes leer, editar, exportar ni imprimir documentos en la app: se abren con el contenido cubierto. Tus archivos quedan exactamente como los guardaste.
+
+### ¿Vista rápida sigue funcionando después de la prueba?
+
+Sí. Vista rápida (Quick Look) en el Finder funciona con o sin la prueba. La herramienta de línea de comandos gratuita marsdawn también sigue exportando Markdown a PDF.
+
+### ¿Necesito una cuenta?
+
+No. MarsDawn nunca te pide que crees una cuenta.
+
 ## Más
 
-- [MarsDawn](https://marsdawn.southern-light.dev/es/index.md): Markdown para las personas que dirigen el trabajo de los agentes: un editor nativo para Mac con vista previa en vivo, diagramas Mermaid y exportación a PDF. En el Mac App Store.
+- [MarsDawn](https://marsdawn.southern-light.dev/es/index.md): Editor de Markdown nativo para Mac: vista previa en vivo junto al código, Mermaid, KaTeX, Vista rápida, exportación a PDF. Pruébalo gratis, 4,99 USD una vez.
 - [Lo que escribes se queda en tu Mac](https://marsdawn.southern-light.dev/es/yours/index.md): MarsDawn no tiene cuenta, ni sincronización, ni nube. Tus documentos Markdown se quedan en tu Mac, en los archivos y carpetas que elijas.
 - [Exportación a PDF](https://marsdawn.southern-light.dev/es/pdf/index.md): Exporta Markdown como PDF o imprímelo en tu Mac, con diagramas Mermaid y código resaltado. Los saltos de página evitan partir bloques de código cortos y tablas.
 - [Una app para Mac](https://marsdawn.southern-light.dev/es/native/index.md): Un editor de Markdown que es una app de Mac de verdad: ventanas y pestañas nativas, guardado automático, historial de versiones, Vista rápida en el Finder y un editor de texto que se comporta como en la Mac.
@@ -54,6 +76,7 @@ Los archivos PDF que abres en MarsDawn se bloquean de la misma manera cuando ter
 - [Soporte](https://marsdawn.southern-light.dev/es/support/index.md): Ayuda con MarsDawn, el editor de Markdown para macOS.
 - [Política de privacidad](https://marsdawn.southern-light.dev/es/privacy/index.md): MarsDawn no recopila datos personales. Tus documentos y tus ajustes se quedan en tu Mac.
 - [Ver Markdown en una Mac](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Un archivo .md es texto plano con marcas de formato. Así puedes leerlo renderizado en Mac: como PDF con la herramienta de línea de comandos gratuita marsdawn desde hoy, y en la app MarsDawn, en el Mac App Store.
+- [Quick Look para Markdown](https://marsdawn.southern-light.dev/es/quicklook/index.md): Presiona la barra espaciadora sobre un archivo Markdown en el Finder para leerlo renderizado, con diagramas Mermaid, fórmulas KaTeX y código resaltado. Vista rápida de MarsDawn no queda bloqueada por la prueba.
 - [De Markdown a PDF](https://marsdawn.southern-light.dev/es/markdown-to-pdf/index.md): Convierte Markdown a PDF en Mac con la herramienta de línea de comandos gratuita marsdawn. Instálala con Homebrew y ejecuta un solo comando: tablas, matemáticas, Mermaid y código.
 - [MacMD Viewer frente a MarsDawn](https://marsdawn.southern-light.dev/es/vs/macmd-viewer/index.md): MacMD Viewer muestra Markdown solo para lectura por 19,99 USD. MarsDawn edita y muestra la vista previa lado a lado: pruébalo gratis y luego paga 4,99 USD una sola vez en el Mac App Store.
 - [Línea de comandos](https://marsdawn.southern-light.dev/es/cli/index.md): La herramienta de línea de comandos gratuita marsdawn para Mac: exporta Markdown a PDF desde una shell, un script o un agente LLM, con salida JSON. Se instala con Homebrew.

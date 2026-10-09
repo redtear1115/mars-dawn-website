@@ -44,9 +44,31 @@ MarsDawn에서 연 PDF 파일도 체험이 끝나면 같은 방식으로 잠깁�
 - 무료 [`marsdawn` 명령줄 도구](/ko/cli/)는 체험 여부와 관계없이 계속 PDF로 내보낼 수 있습니다.
 - 체험이 끝날 때 MarsDawn에 문서가 열려 있었다면 입력한 텍스트는 사라지지 않습니다. 파일 ▸ 별도 저장…으로 저장하세요.
 
+## 자주 묻는 질문
+
+### MarsDawn은 얼마인가요?
+
+MarsDawn은 Mac App Store에서 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 쓸 수 있고, 그 뒤에는 USD 4.99의 일회성 앱 내 구입으로 잠금을 해제합니다.
+
+### 구독이 있나요?
+
+아니요. 잠금 해제는 한 번의 구입이라 갱신되는 것이 없고, 나중에 결제되는 일도 없습니다. 체험을 시작하는 데도 비용이 들지 않습니다.
+
+### 14일 체험이 끝나면 어떻게 되나요?
+
+MarsDawn의 잠금을 해제하기 전까지는 그 안에서 문서를 읽거나 편집하거나 내보내거나 프린트할 수 없습니다. 문서는 열리지만 내용이 가려집니다. 파일은 저장한 그대로 남아 있습니다.
+
+### 체험이 끝나도 훑어보기를 쓸 수 있나요?
+
+네. Finder의 훑어보기는 체험 여부와 관계없이 작동합니다. 무료 marsdawn 명령줄 도구도 Markdown을 계속 PDF로 내보냅니다.
+
+### 계정이 필요한가요?
+
+아니요. MarsDawn은 계정을 만들라고 요구하지 않습니다.
+
 ## 더 보기
 
-- [MarsDawn](https://marsdawn.southern-light.dev/ko/index.md): 에이전트의 작업을 이끄는 사람을 위한 Markdown. 실시간 미리보기, Mermaid 다이어그램, PDF 내보내기를 갖춘 Mac 네이티브 편집기입니다. Mac App Store에서 구입할 수 있습니다.
+- [MarsDawn](https://marsdawn.southern-light.dev/ko/index.md): Mac용 네이티브 Markdown 편집기: 소스 옆 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료로 체험, 한 번만 USD 4.99.
 - [내 글은 내 Mac에](https://marsdawn.southern-light.dev/ko/yours/index.md): MarsDawn에는 계정도, 동기화도, 클라우드도 없습니다. Markdown 문서는 직접 고른 파일과 폴더에 담겨 Mac에 남습니다.
 - [PDF 내보내기](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록과 표를 가르지 않도록 합니다.
 - [Mac 앱](https://marsdawn.southern-light.dev/ko/native/index.md): 진짜 Mac 앱인 Markdown 편집기. 네이티브 윈도우와 탭, 자동 저장, 버전 기록, Finder의 훑어보기, 그리고 Mac답게 동작하는 텍스트 편집기를 갖췄습니다.
@@ -54,6 +76,7 @@ MarsDawn에서 연 PDF 파일도 체험이 끝나면 같은 방식으로 잠깁�
 - [지원](https://marsdawn.southern-light.dev/ko/support/index.md): macOS용 Markdown 편집기 MarsDawn에 관한 도움말입니다.
 - [개인정보 처리방침](https://marsdawn.southern-light.dev/ko/privacy/index.md): MarsDawn은 개인정보를 수집하지 않습니다. 문서와 설정은 사용자의 Mac에 남습니다.
 - [Mac에서 Markdown 보기](https://marsdawn.southern-light.dev/ko/view-markdown-on-mac/index.md): .md 파일은 서식 기호가 들어 있는 일반 텍스트입니다. Mac에서 렌더링된 상태로 읽는 방법을 소개합니다. 지금 바로 무료 marsdawn 명령줄 도구로 PDF를 만들 수 있고, Mac App Store의 MarsDawn 앱에서 읽을 수도 있습니다.
+- [Markdown 훑어보기](https://marsdawn.southern-light.dev/ko/quicklook/index.md): Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 Mermaid 다이어그램, KaTeX 수식, 강조된 코드까지 렌더링된 모습으로 읽을 수 있습니다. MarsDawn의 훑어보기는 체험 기간의 제한을 받지 않습니다.
 - [Markdown을 PDF로](https://marsdawn.southern-light.dev/ko/markdown-to-pdf/index.md): 무료 marsdawn 명령줄 도구로 Mac에서 Markdown을 PDF로 변환하세요. Homebrew로 설치하고 명령 하나만 실행하면 됩니다. 표, 수식, Mermaid, 코드까지 지원합니다.
 - [MacMD Viewer와 MarsDawn 비교](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 Markdown을 읽기 전용으로 렌더링하며 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 무료로 체험한 뒤 Mac App Store에서 USD 4.99에 한 번만 구입하면 됩니다.
 - [명령줄](https://marsdawn.southern-light.dev/ko/cli/index.md): Mac용 무료 marsdawn 명령줄 도구. 셸, 스크립트, LLM 에이전트에서 Markdown을 PDF로 내보내고 JSON으로 결과를 받으세요. Homebrew로 설치합니다.

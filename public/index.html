@@ -26,7 +26,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MarsDawn: a Markdown editor for Mac, with live preview</title>
-<meta name="description" content="Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. On the Mac App Store.">
+<meta name="description" content="Native Markdown editor for Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, $4.99 once.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -45,7 +45,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/">
 <link rel="alternate" type="text/markdown" href="/index.md">
 <meta property="og:title" content="MarsDawn: a Markdown editor for Mac, with live preview">
-<meta property="og:description" content="Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. On the Mac App Store.">
+<meta property="og:description" content="Native Markdown editor for Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, $4.99 once.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -54,7 +54,8 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. On the Mac App Store.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "softwareVersion": "1.1.0", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "0", "highPrice": "4.99", "offerCount": 2, "offers": [{"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "One-time unlock after the trial, no subscription", "price": "4.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}]}, "screenshot": "https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}, "sameAs": ["https://apps.apple.com/app/id6812925073", "https://github.com/redtear1115/mars-dawn-kit", "https://github.com/redtear1115/homebrew-tap", "https://github.com/redtear1115/marsdawn-mcp"], "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "Native Markdown editor for Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, $4.99 once.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "softwareVersion": "1.1.0", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "0", "highPrice": "4.99", "offerCount": 2, "offers": [{"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "One-time unlock after the trial, no subscription", "price": "4.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}]}, "screenshot": "https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png", "publisher": {"@type": "Organization", "name": "Southern Light", "url": "https://southern-light.dev"}, "sameAs": ["https://apps.apple.com/app/id6812925073", "https://github.com/redtear1115/mars-dawn-kit", "https://github.com/redtear1115/homebrew-tap", "https://github.com/redtear1115/marsdawn-mcp", "https://registry.modelcontextprotocol.io/v0.1/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest"], "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is MarsDawn?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn is a native Markdown editor for the Mac. It shows a live preview next to the source, draws Mermaid diagrams and KaTeX math, previews Markdown files in Finder with Quick Look, and exports PDF."}}, {"@type": "Question", "name": "Is MarsDawn a subscription?", "acceptedAnswer": {"@type": "Answer", "text": "No. MarsDawn is a free download with a 14-day trial of every feature. After that, a single in-app purchase of USD 4.99 unlocks it for good. Nothing renews, and there is no account."}}, {"@type": "Question", "name": "Does MarsDawn work on iPhone or iPad?", "acceptedAnswer": {"@type": "Answer", "text": "No. MarsDawn is a Mac app and needs macOS 26 or later. There is no iPhone or iPad app."}}, {"@type": "Question", "name": "Can Claude Code open files in MarsDawn?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The free marsdawn command-line tool has an open command that opens a Markdown file in MarsDawn, so Claude Code, or any agent that can run a shell command, can call it. An opt-in Claude Code hook can open each Markdown file Claude writes or edits."}}, {"@type": "Question", "name": "Does Quick Look still work after the trial ends?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Quick Look in Finder keeps showing your Markdown files whether or not the trial is running. After the trial ends and until you unlock, documents open in MarsDawn with their content covered."}}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -128,6 +129,7 @@ try {
   <p class="kicker">Frontier tools for builders</p>
   <h1><span>Claim the map.</span> <span>Read the dawn.</span></h1>
   <p>Markdown for humans who steer agentic work.</p>
+  <p class="definition">MarsDawn is a native macOS Markdown editor with live split preview, Mermaid diagrams, KaTeX math, Quick Look and PDF export, free to try for 14 days and USD 4.99 once to unlock.</p>
 </section>
 <p class="hero-cta"><a class="cta cta-primary" href="https://apps.apple.com/app/id6812925073">View on the Mac App Store</a> <a class="cta cta-secondary" href="#install">Install the free CLI</a></p>
 </div>
@@ -290,6 +292,19 @@ Engineering turns on the flag on <span class="loop-day loop-d-b a"><span class="
 </ul>
 </nav>
 <p class="know">Know before you buy. <a href="/limits/">What MarsDawn doesn't do</a></p>
+<section class="faq">
+<h2>Questions and answers</h2>
+<h3>What is MarsDawn?</h3>
+<p>MarsDawn is a native Markdown editor for the Mac. It shows a live preview next to the source, draws Mermaid diagrams and KaTeX math, previews Markdown files in Finder with Quick Look, and exports PDF.</p>
+<h3>Is MarsDawn a subscription?</h3>
+<p>No. MarsDawn is a free download with a 14-day trial of every feature. After that, a single in-app purchase of USD 4.99 unlocks it for good. Nothing renews, and there is no account.</p>
+<h3>Does MarsDawn work on iPhone or iPad?</h3>
+<p>No. MarsDawn is a Mac app and needs macOS 26 or later. There is no iPhone or iPad app.</p>
+<h3>Can Claude Code open files in MarsDawn?</h3>
+<p>Yes. The free marsdawn command-line tool has an open command that opens a Markdown file in MarsDawn, so Claude Code, or any agent that can run a shell command, can call it. An opt-in Claude Code hook can open each Markdown file Claude writes or edits.</p>
+<h3>Does Quick Look still work after the trial ends?</h3>
+<p>Yes. Quick Look in Finder keeps showing your Markdown files whether or not the trial is running. After the trial ends and until you unlock, documents open in MarsDawn with their content covered.</p>
+</section>
 <section class="proof">
 <h2>The app, as it is</h2>
 <h3><a href="/native/">A Mac app</a></h3>
