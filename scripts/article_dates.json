@@ -1,0 +1,104 @@
+{
+  "ref": "origin/main",
+  "ref_commit": "6dc7e91df84d5802a93419c190363a6462fde42c",
+  "pages": {
+    "token-efficient-review": {
+      "source": "public/token-efficient-review/index.html",
+      "published": "2026-09-20",
+      "published_commit": "1929cad3",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "sharing-exported-pdfs": {
+      "source": "public/sharing-exported-pdfs/index.html",
+      "published": "2026-09-20",
+      "published_commit": "1929cad3",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "reviewing-ai-output": {
+      "source": "public/reviewing-ai-output/index.html",
+      "published": "2026-09-20",
+      "published_commit": "1929cad3",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "reading-agent-output": {
+      "source": "public/reading-agent-output/index.html",
+      "published": "2026-10-06",
+      "published_commit": "6fe8435e",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "agent-transparency": {
+      "source": "public/agent-transparency/index.html",
+      "published": "2026-10-06",
+      "published_commit": "6fe8435e",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "reviewing-agent-plans": {
+      "source": "public/reviewing-agent-plans/index.html",
+      "published": "2026-10-06",
+      "published_commit": "6fe8435e",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "agent-design-patterns": {
+      "source": "public/agent-design-patterns/index.html",
+      "published": "2026-10-06",
+      "published_commit": "6fe8435e",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "reading-notes": {
+      "source": "public/reading-notes/index.html",
+      "published": "2026-10-08",
+      "published_commit": "454c8328",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "reading-notes/anthropic-building-effective-agents": {
+      "source": "public/reading-notes/anthropic-building-effective-agents/index.html",
+      "published": "2026-10-08",
+      "published_commit": "454c8328",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "reading-notes/chip-huyen-agents": {
+      "source": "public/reading-notes/chip-huyen-agents/index.html",
+      "published": "2026-10-08",
+      "published_commit": "454c8328",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "reading-notes/lilian-weng-llm-agents": {
+      "source": "public/reading-notes/lilian-weng-llm-agents/index.html",
+      "published": "2026-10-08",
+      "published_commit": "454c8328",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "reading-notes/harrison-chase-what-is-an-agent": {
+      "source": "public/reading-notes/harrison-chase-what-is-an-agent/index.html",
+      "published": "2026-10-08",
+      "published_commit": "454c8328",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "reading-notes/langchain-what-is-an-agent": {
+      "source": "public/reading-notes/langchain-what-is-an-agent/index.html",
+      "published": "2026-10-08",
+      "published_commit": "454c8328",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    },
+    "reading-notes/andrew-ng-design-patterns": {
+      "source": "public/reading-notes/andrew-ng-design-patterns/index.html",
+      "published": "2026-10-08",
+      "published_commit": "454c8328",
+      "modified": "2026-10-08",
+      "modified_commit": "454c8328"
+    }
+  }
+}
