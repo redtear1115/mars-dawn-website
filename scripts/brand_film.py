@@ -34,10 +34,10 @@ COPY = {
     "zh-hant": ("觀看影片", "MarsDawn 影片，54 秒", "你的瀏覽器無法播放這支影片。"),
     "zh-hans": ("观看影片", "MarsDawn 影片，54 秒", "你的浏览器无法播放这支影片。"),
     "ja": ("動画を見る", "MarsDawn の動画（54 秒）", "お使いのブラウザではこの動画を再生できません。"),
-    "de": ("Den Film ansehen", "MarsDawn-Film, 54 Sekunden", "Dein Browser kann dieses Video nicht abspielen."),
-    "fr": ("Voir le film", "Film MarsDawn, 54 secondes", "Votre navigateur ne peut pas lire cette vidéo."),
-    "es": ("Ver el vídeo", "Vídeo de MarsDawn, 54 segundos", "Tu navegador no puede reproducir este vídeo."),
-    "ko": ("영상 보기", "MarsDawn 영상, 54초", "이 브라우저에서는 영상을 재생할 수 없습니다."),
+    "de": ("Den Film ansehen", "MarsDawn-Film (Englisch), 54 Sekunden", "Dein Browser kann dieses Video nicht abspielen."),
+    "fr": ("Voir le film", "Film MarsDawn (en anglais), 54 secondes", "Votre navigateur ne peut pas lire cette vidéo."),
+    "es": ("Ver el video", "Video de MarsDawn (en inglés), 54 segundos", "Tu navegador no puede reproducir este video."),
+    "ko": ("영상 보기", "MarsDawn 영상(영어), 54초", "이 브라우저에서는 영상을 재생할 수 없습니다."),
 }
 
 
