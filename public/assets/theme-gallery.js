@@ -46,6 +46,83 @@ export function mailUrl(themeId, version) {
   return `mailto:${SUPPORT_EMAIL}?subject=${subject}`;
 }
 
+// The preview lightbox (owner request, 2026-10-10). Each preview is a server-rendered
+// <a class="theme-preview" href="...preview-light.png"> around its <img>, so with no JavaScript
+// (or no <dialog>) a click simply opens the full-size file. With both, the click opens it here
+// instead, at the image's natural size, in a modal <dialog>: the browser itself gives us Esc to
+// close, a focus trap (everything behind a modal dialog is inert), and the top layer, so none of
+// that is re-implemented. What this adds: a visible, localised Close button (the label comes from
+// the list's data-close-label, server-rendered per locale), a click on the dark area around the
+// image closes it, and focus goes back to the preview that opened it. The dialog's image is the
+// same URL as the card's own, so opening it costs no second download. The dialog is created on
+// first use, not in the page's HTML, so a page without JavaScript carries nothing extra. All
+// styling is in theme-gallery.css (classes only: the CSP has no 'unsafe-inline' for styles).
+function createLightbox(closeLabel) {
+  const dialog = document.createElement("dialog");
+  dialog.className = "theme-lightbox";
+
+  const scroller = document.createElement("div");
+  scroller.className = "theme-lightbox-scroll";
+  const image = document.createElement("img");
+  image.className = "theme-lightbox-img";
+  scroller.append(image);
+
+  const close = document.createElement("button");
+  close.type = "button";
+  close.className = "theme-lightbox-close";
+  close.textContent = closeLabel;
+
+  // Close comes first in the DOM so showModal() puts focus on it (browsers that make a scroller
+  // keyboard-focusable would otherwise pick the scroller); the scroller is still a tab stop
+  // (tabindex), so the arrow keys, Space and PageUp/Down scroll an image taller than the window.
+  scroller.tabIndex = 0;
+  close.autofocus = true;
+  dialog.append(close, scroller);
+  document.body.append(dialog);
+
+  close.addEventListener("click", () => dialog.close());
+  // The area around (or, for a small image, beside) the picture is the scroller itself.
+  scroller.addEventListener("click", (event) => {
+    if (event.target === scroller) dialog.close();
+  });
+  return { dialog, scroller, image };
+}
+
+function setUpLightbox(list) {
+  if (typeof HTMLDialogElement === "undefined" || typeof HTMLDialogElement.prototype.showModal !== "function") {
+    return;
+  }
+  let box = null;
+  let opener = null;
+  list.dataset.lightbox = "";
+
+  list.addEventListener("click", (event) => {
+    const link = event.target.closest("a.theme-preview");
+    if (!link) return;
+    // Leave "open in a new tab/window" and "save as" gestures to the browser.
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+    event.preventDefault();
+    if (!box) {
+      box = createLightbox(list.dataset.closeLabel || "Close");
+      box.dialog.addEventListener("close", () => {
+        box.image.removeAttribute("src");
+        if (opener && opener.isConnected) opener.focus();
+        opener = null;
+      });
+    }
+    const thumb = link.querySelector("img");
+    opener = link;
+    box.image.alt = thumb ? thumb.alt : "";
+    box.image.src = link.href;
+    box.dialog.setAttribute("aria-label", box.image.alt);
+    box.scroller.scrollTop = 0;
+    box.scroller.scrollLeft = 0;
+    box.dialog.showModal();
+  });
+}
+
 // Split out from module-load time (rather than run directly below) so this file can be imported
 // under plain `node`, with no DOM at all, to test reportUrl()/mailUrl() in isolation -- the same
 // pattern scripts/check_theme_sim.mjs already uses for the simulator's own pure-logic modules.
@@ -74,6 +151,7 @@ function boot() {
   }
 
   if (list) {
+    setUpLightbox(list);
     list.addEventListener("click", (event) => {
       const reportButton = event.target.closest(".theme-report");
       const mailButton = event.target.closest(".theme-report-mail");
