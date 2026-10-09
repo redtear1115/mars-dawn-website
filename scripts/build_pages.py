@@ -4086,6 +4086,7 @@ import copy_ja  # noqa: E402
 import copy_zh_hans  # noqa: E402
 import importlib  # noqa: E402
 import hero_window  # noqa: E402
+import brand_film  # noqa: E402
 import loop_anim  # noqa: E402
 import templates_pages  # noqa: E402
 
@@ -5213,7 +5214,7 @@ def render(locale: str, slug: str, page: dict) -> str:
             "</section>"
         )
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
-        main_html = "\n".join([hero_html, page["body"].strip(), loop_anim.loop_html(locale),
+        main_html = "\n".join([hero_html, brand_film.film_html(locale), page["body"].strip(), loop_anim.loop_html(locale),
                                home_sections_html(locale), proof_html, closing_html])
     elif has_intro:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
@@ -5825,7 +5826,7 @@ def main() -> None:
     print(notices_path)
     (SITE / "assets" / "annotations.css").write_text(annotations_css(), encoding="utf-8")
     (SITE / "assets" / "hero.css").write_text(hero_window.window_css(), encoding="utf-8")
-    (SITE / "assets" / "loop.css").write_text(loop_anim.loop_css(), encoding="utf-8")
+    (SITE / "assets" / "loop.css").write_text(loop_anim.loop_css() + "\n" + brand_film.CSS, encoding="utf-8")
     for path, text in templates_pages.downloads().items():
         target = SITE / path
         target.parent.mkdir(parents=True, exist_ok=True)
