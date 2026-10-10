@@ -203,3 +203,15 @@
   display: block;
   margin: 0.5em 0;
 }
+
+/* Inline messages under the import controls and the Submit buttons (theme-sim/app.js): what an
+   import, Copy JSON, Download or Submit did, never an alert(). */
+.sim-import-message,
+.sim-submit-message {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+
+.sim-import-message.sim-import-refused {
+  font-weight: 600;
+}
