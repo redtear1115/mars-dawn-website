@@ -2409,7 +2409,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 - **編輯：**你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。
 - **格式：**MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。
 - **其他檔案：**純文字檔和 PDF 以唯讀方式開啟。
-- **主題：**內建 Dawn、Classic、Modern、Vivid 四種，各有淺色和深色。更多主題在[主題庫](/zh-hant/themes/gallery/)：在「設定 › 外觀 › 取得更多主題⋯」安裝，或在瀏覽器裡[自己做一套](/zh-hant/themes/new/)。主題只是配色和樣式設定，不是外掛。
+- **主題：**內建黎明、典雅、流行、活潑四種，各有淺色和深色。更多主題在[主題庫](/zh-hant/themes/gallery/)：在「設定 › 外觀 › 取得更多主題⋯」安裝，或在瀏覽器裡[自己做一套](/zh-hant/themes/new/)。主題只是配色和樣式設定，不是外掛。
 - **外掛：**MarsDawn 沒有外掛或擴充功能。
 
 ## 試用結束之後
