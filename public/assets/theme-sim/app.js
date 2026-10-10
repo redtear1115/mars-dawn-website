@@ -8,14 +8,12 @@
 // straight, with no separate "form data" translation step to drift from the schema.
 
 import * as Validator from "./validator.js";
-import * as Generator from "./generator.js";
 import { PALETTE_ROLES } from "./palette.js";
-import { rescopeCSS } from "./rescope.js";
 import { BUILT_IN_THEME_JSON, BUILT_IN_ORDER, loadBuiltIns } from "./built-ins.js";
 import { loadThemeStyles } from "./styles-data.js";
 import { sampleDocumentHTML } from "./sample-document.js";
 import { THEME_NUMBERS } from "./numbers.js";
-import { previewThemeIdFor } from "./preview-theme.js";
+import { PREVIEW_ID, previewReport, previewOutcome, submitDecision, panelIssues } from "./preview-report.js";
 
 const SCENARIOS = [
   { id: "agent-review", label: "Agent review" },
@@ -24,6 +22,8 @@ const SCENARIOS = [
   { id: "notes-sharing", label: "Notes sharing" },
 ];
 const ALL_ROLES = PALETTE_ROLES;
+const STALE_PREVIEW_TEXT = "Preview shows the last version that could be drawn";
+const GENERATOR_REFUSED_TEXT = "The preview can't draw this theme, so it can't be submitted.";
 
 /** Loads a built-in as the starting state (only the fields a designer would edit; `id`/`version`
  * are reset to a fresh draft, since a submission can't reuse a built-in's id). */
@@ -61,8 +61,11 @@ function unset(obj, path) {
 }
 
 class ThemeSimApp {
-  constructor(root) {
+  constructor(root, dawnFallback) {
     this.root = root;
+    // Dawn's resolved palettes, the same ones mount() gave validator.js's setDawnFallback: the
+    // preview fills a palette's missing syntax/diagram colours from them, as validate() does.
+    this.dawnFallback = dawnFallback;
     // Passed from the page as plain text via #theme-sim-app's own data-locale attribute (never
     // inline JS -- see boot.js), for whichever future control needs to know the page's locale.
     // Not otherwise read yet: the page copy above the control panel is what varies per locale
@@ -72,10 +75,11 @@ class ThemeSimApp {
     this.state = stateFromBuiltIn("dawn");
     this.lightSheet = new CSSStyleSheet();
     this.baseSheet = null; // adopted once, from the kit's own preview-sim.css
-    // The id the preview wrapper's data-theme currently shows (see preview-theme.js). "sim" is
-    // just the initial placeholder from the template below; it matches no real theme's generated
-    // CSS, which is exactly the point until the first recompute() sets a real one.
-    this.previewThemeId = "sim";
+    // The theme text the adopted sheet was drawn from (null until one is drawn). The preview keeps
+    // the last sheet that could be drawn; when this differs from the current state, the stale
+    // marker says so.
+    this.drawnText = null;
+    this.lastOutcome = { css: null, generatorRefused: false };
     this.render();
   }
 
@@ -95,56 +99,47 @@ class ThemeSimApp {
     await this.adoptBaseSheetOnce();
     const text = JSON.stringify(this.state);
     const report = Validator.validate(text, { requireComplete: false });
+    // The preview draws any draft whose structure is sound (preview-report.js), scoped to the
+    // constant PREVIEW_ID; validate() above stays the only gate for Submit.
+    const preview = previewReport(text, { fallback: this.dawnFallback });
+    const outcome = previewOutcome(report, preview);
     this.lastReport = report;
-    this.renderMessages(report);
+    this.lastOutcome = outcome;
 
-    // The generator scopes its CSS to the theme's own id ([data-theme="<id>"]), so the preview
-    // wrapper's own data-theme has to carry that same id -- see preview-theme.js. An invalid or
-    // empty id keeps showing the last id that did validate, rather than snapping to a scope
-    // nothing is generated for.
-    const nextThemeId = previewThemeIdFor(report, this.previewThemeId);
-    if (nextThemeId !== this.previewThemeId) {
-      this.previewThemeId = nextThemeId;
-      for (const box of this.root.querySelectorAll(".sim-preview")) box.dataset.theme = nextThemeId;
-    }
-
-    // Replace the previous generated sheet, never leaving two adopted at once.
-    document.adoptedStyleSheets = document.adoptedStyleSheets.filter((s) => s !== this.lightSheet);
-    if (report.theme) {
-      try {
-        const { variables, rules } = Generator.stylesheetFor(report.theme);
-        const rescoped = rescopeCSS(variables, ".sim-preview") + rescopeCSS(rules, ".sim-preview");
-        // Security property (W1 Done-when): every selector in the adopted sheet must live under
-        // .sim-preview, so a generator bug can't restyle Submit, the messages panel or anything
-        // else on the page.
-        for (const line of rescoped.split("\n")) {
-          const brace = line.indexOf("{");
-          if (brace <= 0) continue;
-          const selectors = line.slice(0, brace).split(",");
-          if (selectors.some((s) => !s.trim().startsWith(".sim-preview"))) {
-            throw new Error("generated CSS escaped .sim-preview -- refusing to adopt it");
-          }
-        }
-        this.lightSheet.replaceSync(rescoped);
+    if (outcome.css !== null) {
+      // Replace the previous generated sheet, never leaving two adopted at once. A draft that
+      // can't be drawn leaves the last good sheet in place instead of blanking the preview.
+      this.lightSheet.replaceSync(outcome.css);
+      if (!document.adoptedStyleSheets.includes(this.lightSheet)) {
         document.adoptedStyleSheets = [...document.adoptedStyleSheets, this.lightSheet];
-      } catch (e) {
-        console.error(e);
       }
+      this.drawnText = text;
     }
+    this.renderMessages(report, preview, outcome);
+    const stale = this.root.querySelector("#sim-stale");
+    if (stale) stale.hidden = this.drawnText === null || this.drawnText === text;
   }
 
-  renderMessages(report) {
+  renderMessages(report, preview, outcome) {
     const box = this.root.querySelector("#sim-messages");
     box.textContent = "";
-    if (report.issues.length === 0) {
+    if (report.issues.length === 0 && !outcome.generatorRefused) {
       const p = document.createElement("p");
       p.className = "sim-ok";
       p.textContent = "Every check passes. Ready to submit.";
       box.appendChild(p);
       return;
     }
+    if (outcome.generatorRefused) {
+      const p = document.createElement("p");
+      p.className = "sim-refused";
+      p.textContent = GENERATOR_REFUSED_TEXT;
+      box.appendChild(p);
+    }
+    const issues = panelIssues(report, preview);
+    if (issues.length === 0) return;
     const list = document.createElement("ul");
-    for (const issue of report.issues) {
+    for (const issue of issues) {
       const li = document.createElement("li");
       li.textContent = issue.path ? `${issue.path}: ${issue.message}` : issue.message;
       list.appendChild(li);
@@ -190,14 +185,15 @@ class ThemeSimApp {
     preview.className = "sim-preview-column";
     preview.innerHTML = `
       <div id="sim-messages" class="sim-messages" aria-live="polite"></div>
+      <p id="sim-stale" class="sim-stale" role="status" hidden>${STALE_PREVIEW_TEXT}</p>
       <div class="sim-preview-boxes">
         <section aria-label="Light preview">
           <h3 class="sim-preview-label">Light</h3>
-          <div class="sim-preview" data-theme="sim" data-appearance="light">${sampleDocumentHTML()}</div>
+          <div class="sim-preview" data-theme="${PREVIEW_ID}" data-appearance="light">${sampleDocumentHTML()}</div>
         </section>
         <section aria-label="Dark preview">
           <h3 class="sim-preview-label">Dark</h3>
-          <div class="sim-preview" data-theme="sim" data-appearance="dark">${sampleDocumentHTML()}</div>
+          <div class="sim-preview" data-theme="${PREVIEW_ID}" data-appearance="dark">${sampleDocumentHTML()}</div>
         </section>
       </div>
     `;
@@ -639,7 +635,7 @@ class ThemeSimApp {
   }
 
   submit() {
-    if (!this.lastReport || this.lastReport.issues.length > 0) {
+    if (!this.lastReport || !submitDecision(this.lastReport, this.lastOutcome)) {
       alert("Fix every check above before submitting.");
       return;
     }
@@ -670,5 +666,10 @@ export async function mount(root) {
     loadThemeStyles(new URL("ThemeStyles.json", kitBase)),
     loadBuiltIns(new URL("themes/", kitBase)),
   ]);
-  return new ThemeSimApp(root);
+  // Dawn's validated palettes as the fallback for a palette without syntax/diagram colours,
+  // exactly as scripts/check_theme_sim.mjs sets it, so validate() here resolves like CI.
+  const dawn = Validator.validate(BUILT_IN_THEME_JSON.dawn, { requireComplete: true });
+  if (!dawn.theme) throw new Error("mount: the built-in Dawn theme did not validate");
+  Validator.setDawnFallback(dawn.theme.light, dawn.theme.dark);
+  return new ThemeSimApp(root, { light: dawn.theme.light, dark: dawn.theme.dark });
 }

@@ -24,6 +24,13 @@
 //   3. Three permanent controls, each reverted immediately after: a lineHeight formatting change,
 //      an uppercase-only hex grammar, and a dropped CSS fragment each turn exactly the comparison
 //      they touch red, and nothing else.
+//   4. The live preview (preview-report.js, website#150): for every invalid/ and publish/ fixture,
+//      whether the preview may draw it, against a literal table written below (never read from
+//      the module's own constant); that a drawn fixture's CSS carries none of its offending
+//      values; that every valid/ fixture previews with exactly its expected CSS, only the scope id
+//      differing; that the preview CSS is scoped to PREVIEW_ID; that the generator refuses closed
+//      values it never decoded; the scope guard; and the Submit decision under a refusing
+//      generator.
 //
 // Without vendor/kit-themes/<tag>/, none of this can run for real, so this script fails loudly and
 // immediately with its own message rather than silently reporting success it didn't earn.
@@ -42,7 +49,8 @@ const Generator = await import(path.join(assetsDir, "generator.js"));
 const StylesData = await import(path.join(assetsDir, "styles-data.js"));
 const BuiltIns = await import(path.join(assetsDir, "built-ins.js"));
 const Grammar = await import(path.join(assetsDir, "grammar.js"));
-const { previewThemeIdFor } = await import(path.join(assetsDir, "preview-theme.js"));
+const Preview = await import(path.join(assetsDir, "preview-report.js"));
+const TextModule = await import(path.join(assetsDir, "text.js"));
 
 let failures = 0;
 function ok(label) {
@@ -325,38 +333,355 @@ function checkDroppedFragmentIsRefused() {
   else bad("fragment table restored after the control", "tableHeader.filled still missing");
 }
 
-function checkPreviewThemeIdMatchesGenerator() {
-  // Round-2 #147 regression (verifier item (c)): the generator scopes its CSS to the theme's own
-  // id ([data-theme="<id>"]), so the preview wrapper's data-theme has to carry that same id, not a
-  // fixed placeholder -- otherwise no real theme's CSS ever matches it. previewThemeIdFor is the
-  // DOM-free function app.js calls to decide that id; this exercises it end to end against a real
-  // built-in and a real generated stylesheet, plus the "keep the last valid id" behaviour for an
-  // invalid/empty one.
-  console.log("\nPreview theme id (round 2 of #147, item (c))");
-  const report = Validator.validate(BuiltIns.BUILT_IN_THEME_JSON.classic, { requireComplete: true });
-  if (!report.theme) {
-    bad("preview theme id: setup", `classic didn't validate: ${JSON.stringify(report.issues)}`);
+// --- 5. The live preview (preview-report.js, website#150) ---------------------------------------
+
+// Whether the preview may draw each invalid/ and publish/ fixture. Written out by hand, on purpose:
+// a table derived from preview-report.js's PREVIEW_BLOCKING_RULES would agree with any change to
+// it, so it could never catch one. A rule that blocks the preview means the document doesn't decode
+// or a value that reaches the CSS isn't one the generator may write; everything else is listed but
+// drawn.
+const EXPECTED_PREVIEWABLE = {
+  "invalid/author.github--hyphen-edges.json": true,
+  "invalid/color.hex--arabic-indic.json": false,
+  "invalid/color.hex--css-injection.json": false,
+  "invalid/color.hex--full-width.json": false,
+  "invalid/color.hex--named.json": false,
+  "invalid/color.hex--nul.json": false,
+  "invalid/color.hex--short.json": false,
+  "invalid/color.hex--trailing-newline.json": false,
+  "invalid/color.hex--url.json": false,
+  "invalid/color.hex--var.json": false,
+  "invalid/contrast.baseline--dark-text.json": true,
+  "invalid/contrast.pair--mm-text-equals-mm-node.json": true,
+  "invalid/contrast.pair--muted-equals-surface.json": true,
+  "invalid/contrast.scenario--formal-output-accent.json": true,
+  "invalid/id.pattern--33-chars.json": true,
+  "invalid/id.pattern--carriage-return.json": true,
+  "invalid/id.pattern--combining-mark.json": true,
+  "invalid/id.pattern--double-hyphen.json": true,
+  "invalid/id.pattern--full-width.json": true,
+  "invalid/id.pattern--leading-hyphen.json": true,
+  "invalid/id.pattern--newline.json": true,
+  "invalid/id.pattern--nul.json": true,
+  "invalid/id.pattern--quote-injection.json": true,
+  "invalid/id.pattern--trailing-hyphen.json": true,
+  "invalid/id.pattern--uppercase.json": true,
+  "invalid/json.duplicateKey--accent.json": false,
+  "invalid/json.duplicateKey--escaped-spelling.json": false,
+  "invalid/json.malformed--truncated.json": false,
+  "invalid/json.tooDeep--nested.json": false,
+  "invalid/license.pattern--spaces.json": true,
+  "invalid/locale.key--underscore.json": true,
+  "invalid/number.range--body-size.json": false,
+  "invalid/number.range--huge.json": false,
+  "invalid/number.range--line-height-snaps-outside.json": false,
+  "invalid/number.range--negative-huge.json": false,
+  "invalid/option.gradientStops--one.json": false,
+  "invalid/option.role--inline-code-accent.json": true,
+  "invalid/scenarios.count--none.json": true,
+  "invalid/scenarios.count--three.json": true,
+  "invalid/scenarios.duplicate--twice.json": true,
+  "invalid/schema.missing--english-name.json": false,
+  "invalid/schema.missing--light.json": false,
+  "invalid/schema.type--schema-version-string.json": false,
+  "invalid/schema.unknownKey--nested-option.json": false,
+  "invalid/schema.unknownKey--palette.json": false,
+  "invalid/schema.unknownKey--style.json": false,
+  "invalid/schema.unknownKey--top-level.json": false,
+  "invalid/schema.value--font-design.json": false,
+  "invalid/schema.value--palette-role.json": false,
+  "invalid/schema.version--two.json": false,
+  "invalid/text.bidi--override.json": true,
+  "invalid/text.combining--zalgo.json": true,
+  "invalid/text.control--line-separator.json": true,
+  "invalid/text.control--tab.json": true,
+  "invalid/text.empty--summary.json": true,
+  "invalid/text.invisible--bom.json": true,
+  "invalid/text.length--name.json": true,
+  "invalid/text.url--author.json": true,
+  "invalid/text.url--summary.json": true,
+  "invalid/version.pattern--two-parts.json": true,
+  "publish/palette.incomplete--no-diagram.json": true,
+  "publish/palette.incomplete--no-syntax.json": true,
+};
+
+// Rules whose named field is, by design, a value the preview draws: a validated #RRGGBB colour
+// (contrast.*) or a closed palette-role name (option.role), or a group that is absent
+// (palette.incomplete). Their "offending value" is not foreign text, so the substring check below
+// doesn't apply to them; it covers every rule whose field never reaches the CSS.
+function drawnByDesign(rule) {
+  return rule.startsWith("contrast.") || rule === "option.role" || rule === "palette.incomplete";
+}
+
+/** The raw value at a validator issue path (`a.b`, `a.b[2]`, keys as text.js's quote() shows
+ * them), or undefined. */
+function valueAtPath(raw, issuePath) {
+  let node = raw;
+  for (const segment of issuePath.split(".")) {
+    const m = segment.match(/^(.*?)((?:\[\d+\])*)$/);
+    const key = m[1];
+    if (key !== "") {
+      if (node === null || typeof node !== "object") return undefined;
+      const match = Object.keys(node).find((k) => TextModule.quote(k) === key);
+      if (match === undefined) return undefined;
+      node = node[match];
+    }
+    for (const idx of m[2].match(/\d+/g) ?? []) {
+      if (!Array.isArray(node)) return undefined;
+      node = node[Number(idx)];
+    }
+  }
+  return node;
+}
+function stringLeaves(value) {
+  if (typeof value === "string") return [value];
+  if (Array.isArray(value)) return value.flatMap(stringLeaves);
+  if (value && typeof value === "object") return Object.values(value).flatMap(stringLeaves);
+  return [];
+}
+
+function dawnFallback() {
+  const dawn = Validator.validate(BuiltIns.BUILT_IN_THEME_JSON.dawn, { requireComplete: true });
+  return { light: dawn.theme.light, dark: dawn.theme.dark };
+}
+
+function checkPreviewFixtures() {
+  console.log("\nPreview: which fixtures the preview draws (expected from the literal table)");
+  const fallback = dawnFallback();
+  const seen = new Set();
+  for (const { category, name, text } of loadFixtures(vendorDir)) {
+    if (category !== "invalid" && category !== "publish") continue;
+    const key = `${category}/${name}`;
+    seen.add(key);
+    const expected = EXPECTED_PREVIEWABLE[key];
+    const report = Preview.previewReport(text, { fallback });
+    const line = `${key}: previewable expected ${expected} actual ${report.previewable} (rule ${report.rule})`;
+    if (expected === undefined) {
+      bad(line, "no entry in EXPECTED_PREVIEWABLE");
+      continue;
+    }
+    if (report.previewable === expected) ok(line);
+    else bad(line);
+    if (!report.previewable) continue;
+
+    // Drawn: none of the fixture's offending values may reach the CSS.
+    let css;
+    try {
+      css = Preview.previewSheetText(report);
+    } catch (e) {
+      bad(`${key}: previewable but the preview path refused it`, String(e));
+      continue;
+    }
+    const validated = Validator.validate(text, { requireComplete: category === "publish" });
+    const raw = JSON.parse(text);
+    for (const issue of validated.issues) {
+      if (drawnByDesign(issue.rule)) {
+        ok(`${key}: ${issue.rule} at ${issue.path} names a value drawn by design (substring check n/a)`);
+        continue;
+      }
+      const value = valueAtPath(raw, issue.path);
+      if (value === undefined) {
+        bad(`${key}: offending value at ${issue.path}`, "the issue path resolves to nothing in the fixture");
+        continue;
+      }
+      const leaves = stringLeaves(value).filter((v) => v !== "");
+      if (leaves.length === 0) {
+        ok(`${key}: ${issue.rule} at ${issue.path} holds no text (${JSON.stringify(value)}), nothing to leak`);
+        continue;
+      }
+      const leaked = leaves.filter((v) => css.includes(v));
+      if (leaked.length === 0) ok(`${key}: CSS carries none of ${JSON.stringify(leaves)} (${issue.rule} at ${issue.path})`);
+      else bad(`${key}: CSS carries the offending value`, JSON.stringify(leaked));
+    }
+  }
+  for (const key of Object.keys(EXPECTED_PREVIEWABLE)) {
+    if (!seen.has(key)) bad(`EXPECTED_PREVIEWABLE names ${key}`, "no such fixture");
+  }
+}
+
+function checkPreviewValidFixtures() {
+  console.log("\nPreview: every valid/ fixture previews with its expected CSS, only the scope id differing");
+  const fallback = dawnFallback();
+  const expectedCSSDir = path.join(vendorDir, "expected-css");
+  for (const { category, name, text } of loadFixtures(vendorDir)) {
+    if (category !== "valid") continue;
+    const report = Preview.previewReport(text, { fallback });
+    if (!report.previewable) {
+      bad(`valid/${name}: previewable`, `rule ${report.rule}`);
+      continue;
+    }
+    const id = JSON.parse(text).id;
+    const want = JSON.parse(readFileSync(path.join(expectedCSSDir, `valid__${name}`), "utf8"));
+    const swap = (css) => css.split(`[data-theme="${id}"]`).join(`[data-theme="${Preview.PREVIEW_ID}"]`);
+    let got;
+    try {
+      got = Preview.previewThemeCSS(report);
+    } catch (e) {
+      bad(`valid/${name}: preview css`, `generator refused: ${e}`);
+      continue;
+    }
+    if (got.variables === swap(want.variables) && got.rules === swap(want.rules)) ok(`valid/${name}: preview css equals expected-css with the scope id swapped`);
+    else bad(`valid/${name}: preview css`, "differs from expected-css beyond the scope id");
+    try {
+      Preview.previewSheetText(report);
+      ok(`valid/${name}: rescoped preview sheet passes the scope guard`);
+    } catch (e) {
+      bad(`valid/${name}: rescoped preview sheet passes the scope guard`, String(e));
+    }
+  }
+}
+
+function checkPreviewScope() {
+  // Replaces the retired preview-theme.js check: the preview boxes' data-theme is the constant
+  // PREVIEW_ID, so every drawn sheet must be scoped to exactly that id, whatever id the draft has.
+  console.log("\nPreview: CSS is scoped to PREVIEW_ID");
+  const fallback = dawnFallback();
+  if (Grammar.isThemeID(Preview.PREVIEW_ID)) ok(`PREVIEW_ID ${JSON.stringify(Preview.PREVIEW_ID)} matches the id grammar`);
+  else bad("PREVIEW_ID matches the id grammar", JSON.stringify(Preview.PREVIEW_ID));
+  for (const id of BUILT_IN_ORDER) {
+    const draft = JSON.parse(BuiltIns.BUILT_IN_THEME_JSON[id]);
+    draft.id = "Not A Valid Id\"]";
+    const report = Preview.previewReport(JSON.stringify(draft), { fallback });
+    if (!report.previewable) {
+      bad(`${id} with a broken id: previewable`, `rule ${report.rule}`);
+      continue;
+    }
+    const css = Preview.previewSheetText(report);
+    const scopes = new Set([...css.matchAll(/\[data-theme="([^"]*)"\]/g)].map((m) => m[1]));
+    if (scopes.size === 1 && scopes.has(Preview.PREVIEW_ID)) ok(`${id} with a broken id: every [data-theme] in the sheet is ${JSON.stringify(Preview.PREVIEW_ID)}`);
+    else bad(`${id} with a broken id: scope`, JSON.stringify([...scopes]));
+  }
+}
+
+function checkPreviewAdvisories() {
+  // F2: contrast is reported even while identity fields are empty (the page's starting state).
+  console.log("\nPreview: contrast advisories while identity is empty");
+  const fallback = dawnFallback();
+  const draft = JSON.parse(BuiltIns.BUILT_IN_THEME_JSON.dawn);
+  draft.name = { en: "" };
+  draft.summary = { en: "" };
+  draft.author = { name: "" };
+  draft.light.background = "#FFF4E0";
+  const text = JSON.stringify(draft);
+  const validated = Validator.validate(text);
+  const report = Preview.previewReport(text, { fallback });
+  const panel = Preview.panelIssues(validated, report).map((i) => `${i.path}: ${i.message}`);
+  const hidden = validated.issues.some((i) => i.rule.startsWith("contrast."));
+  if (!hidden) ok("validate() alone lists no contrast issue while identity is empty (F2)");
+  else bad("validate() alone lists no contrast issue while identity is empty", JSON.stringify(validated.issues));
+  for (const want of ["4.40:1", "2.81:1"]) {
+    if (panel.some((m) => m.includes(want))) ok(`the panel lists the ${want} contrast message`);
+    else bad(`the panel lists the ${want} contrast message`, JSON.stringify(panel));
+  }
+  const keys = Preview.panelIssues(validated, report).map((i) => `${i.path}|${i.rule}`);
+  if (new Set(keys).size === keys.length) ok("the panel lists each (path, rule) once");
+  else bad("the panel lists each (path, rule) once", JSON.stringify(keys));
+  // Once identity is filled, validate() itself reports contrast: the advisories add nothing.
+  draft.name = { en: "N" };
+  draft.summary = { en: "S" };
+  draft.author = { name: "A" };
+  const t2 = JSON.stringify(draft);
+  const v2 = Validator.validate(t2);
+  const p2 = Preview.panelIssues(v2, Preview.previewReport(t2, { fallback }));
+  if (p2.length === v2.issues.length && v2.issues.length > 0) ok(`identity filled: the panel shows validate()'s ${v2.issues.length} issue(s), no duplicate advisory`);
+  else bad("identity filled: no duplicate advisory", `${p2.length} vs ${v2.issues.length}`);
+}
+
+function checkGeneratorRefusesClosedValues() {
+  // Defence in depth (SR W1-2): decodeThemeDocument enforces these closed values; a document that
+  // bypasses decode must still be refused by the generator, never written raw or omitted.
+  console.log("\nGenerator: closed values outside their list are refused");
+  const dawn = Validator.validate(BuiltIns.BUILT_IN_THEME_JSON.dawn, { requireComplete: true }).theme;
+  const cases = [
+    ["fontDesign \"constructor\"", { ...dawn, document: { ...dawn.document, fontDesign: "constructor" } }, "unknownFontDesign"],
+    ["fontDesign \"toString\"", { ...dawn, document: { ...dawn.document, fontDesign: "toString" } }, "unknownFontDesign"],
+    ["listMarker role \"constructor\"", { ...dawn, document: { ...dawn.document, style: { listMarker: "constructor" } } }, "unknownRole"],
+    ["hr gradient role \"nope\"", { ...dawn, document: { ...dawn.document, style: { hr: { style: { type: "gradient", colors: ["accent", "nope"] } } } } }, "unknownRole"],
+    ["h1.align \"x;}\"", { ...dawn, document: { ...dawn.document, style: { h1: { align: "x;}" } } } }, "invalidAlign"],
+  ];
+  for (const [label, theme, kind] of cases) {
+    try {
+      const out = Generator.stylesheetFor(theme);
+      bad(`${label} is refused (${kind})`, `generated ${JSON.stringify((out.variables + out.rules).slice(0, 120))}…`);
+    } catch (e) {
+      if (e instanceof Generator.GeneratorRefusal && e.kind === kind) ok(`${label} is refused (${kind})`);
+      else bad(`${label} is refused (${kind})`, `wrong error: ${e}`);
+    }
+  }
+}
+
+function checkScopeGuard() {
+  console.log("\nScope guard");
+  for (const sel of [".sim-previewX h1", ".sim-preview ~ *", ".sim-preview + *", ".sim-preview[data-theme=\"preview\"] ~ button", ".sim-preview.foo", ""]) {
+    if (!Preview.selectorStaysInside(sel)) ok(`refuses ${JSON.stringify(sel)}`);
+    else bad(`refuses ${JSON.stringify(sel)}`);
+  }
+  for (const sheet of [".sim-previewX { color: red; }\n", ".sim-preview ~ * { color: red; }\n", ".sim-preview + * { color: red; }\n"]) {
+    try {
+      Preview.assertScopedToPreview(sheet);
+      bad(`assertScopedToPreview refuses ${JSON.stringify(sheet.trim())}`);
+    } catch (e) {
+      if (e instanceof Generator.GeneratorRefusal && e.kind === "escapedScope") ok(`assertScopedToPreview refuses ${JSON.stringify(sheet.trim())}`);
+      else bad(`assertScopedToPreview refuses ${JSON.stringify(sheet.trim())}`, String(e));
+    }
+  }
+  // Every selector the built-ins, the valid fixtures and the option sweep produce is accepted.
+  const fallback = dawnFallback();
+  const texts = BUILT_IN_ORDER.map((id) => [`built-in ${id}`, BuiltIns.BUILT_IN_THEME_JSON[id]]);
+  for (const { category, name, text } of loadFixtures(vendorDir)) if (category === "valid") texts.push([`valid/${name}`, text]);
+  const sweepDir = path.join(vendorDir, "sweep");
+  if (existsSync(sweepDir)) for (const name of readdirSync(sweepDir)) if (name.endsWith(".json")) texts.push([`sweep/${name}`, readFileSync(path.join(sweepDir, name), "utf8")]);
+  let selectors = 0;
+  let refused = [];
+  for (const [label, text] of texts) {
+    const report = Preview.previewReport(text, { fallback });
+    if (!report.previewable) {
+      refused.push(`${label} (not previewable: ${report.rule})`);
+      continue;
+    }
+    const { variables, rules } = Preview.previewThemeCSS(report);
+    const css = rescopeCSS(variables) + rescopeCSS(rules);
+    for (const line of css.split("\n")) {
+      const brace = line.indexOf("{");
+      if (brace === -1) continue;
+      for (const sel of line.slice(0, brace).split(",")) {
+        selectors += 1;
+        if (!Preview.selectorStaysInside(sel)) refused.push(`${label}: ${sel.trim()}`);
+      }
+    }
+  }
+  if (refused.length === 0) ok(`accepts all ${selectors} selectors from ${texts.length} built-in, valid and sweep themes`);
+  else bad("accepts every built-in, valid and sweep selector", JSON.stringify(refused.slice(0, 10)));
+}
+
+function checkSubmitDecision() {
+  console.log("\nSubmit decision");
+  const fallback = dawnFallback();
+  const text = BuiltIns.BUILT_IN_THEME_JSON.classic;
+  const validated = Validator.validate(text);
+  if (validated.issues.length !== 0) {
+    bad("submit decision: setup", JSON.stringify(validated.issues));
     return;
   }
-  const id = previewThemeIdFor(report, "sim");
-  if (id === report.theme.document.id) ok(`previewThemeIdFor returns the validated theme's own id (${JSON.stringify(id)})`);
-  else bad("previewThemeIdFor returns the validated theme's own id", `got ${JSON.stringify(id)}, expected ${JSON.stringify(report.theme.document.id)}`);
-
-  const { rules } = Generator.stylesheetFor(report.theme);
-  const scopedSelector = `[data-theme="${id}"]`;
-  if (rules.includes(scopedSelector)) ok(`the generator's own CSS is scoped to the same id (${JSON.stringify(scopedSelector)})`);
-  else bad("the generator's own CSS is scoped to the same id", `${JSON.stringify(scopedSelector)} not found in generated rules`);
-
-  // An invalid theme (or one with no id yet) must never invent a new, unstyled scope: the
-  // previously-shown id sticks until something validates again.
-  const invalidReport = { issues: [{ rule: "id.pattern", path: "id", message: "bad id" }], theme: null };
-  const stuck = previewThemeIdFor(invalidReport, id);
-  if (stuck === id) ok("an invalid report keeps the last valid preview theme id");
-  else bad("an invalid report keeps the last valid preview theme id", `got ${JSON.stringify(stuck)}, expected ${JSON.stringify(id)}`);
-
-  const stuckEmpty = previewThemeIdFor({ issues: [], theme: null }, "");
-  if (stuckEmpty === "") ok("an empty starting id stays empty (never invents a scope) when the report doesn't validate");
-  else bad("an empty starting id stays empty", `got ${JSON.stringify(stuckEmpty)}`);
+  const report = Preview.previewReport(text, { fallback });
+  const refusing = () => {
+    throw new Generator.GeneratorRefusal("planted");
+  };
+  const planted = Preview.previewOutcome(validated, report, refusing);
+  if (planted.generatorRefused && planted.css === null && Preview.submitDecision(validated, planted) === false) ok("a refusing generator on a validate-clean theme: generatorRefused, submitDecision false");
+  else bad("a refusing generator on a validate-clean theme", JSON.stringify({ generatorRefused: planted.generatorRefused, submit: Preview.submitDecision(validated, planted) }));
+  const real = Preview.previewOutcome(validated, report);
+  if (!real.generatorRefused && real.css && Preview.submitDecision(validated, real) === true) ok("the real generator on the same theme: submitDecision true");
+  else bad("the real generator on the same theme: submitDecision true", JSON.stringify({ generatorRefused: real.generatorRefused }));
+  // A guard refusal counts too: a generator whose CSS escapes the wrapper.
+  const escaping = () => ({ variables: ":root[data-theme=\"preview\"] { --bg: #000000; }", rules: "[data-theme=\"preview\"] ~ * { color: red; }\n" });
+  const escaped = Preview.previewOutcome(validated, report, escaping);
+  if (escaped.generatorRefused && Preview.submitDecision(validated, escaped) === false) ok("CSS that escapes .sim-preview on a validate-clean theme: generatorRefused, submitDecision false");
+  else bad("CSS that escapes .sim-preview counts as a refusal", JSON.stringify(escaped));
+  // An issue in validate() alone blocks Submit, whatever the preview does.
+  const withIssue = { issues: [{ rule: "text.empty", path: "name.en", message: "is empty" }], theme: null };
+  if (Preview.submitDecision(withIssue, real) === false) ok("a validate() issue blocks Submit even when the preview draws");
+  else bad("a validate() issue blocks Submit even when the preview draws");
 }
 
 checkRescope();
@@ -365,7 +690,13 @@ checkVendorParity();
 checkLowercaseHexControl();
 checkLineHeightFormattingChangeIsRed();
 checkDroppedFragmentIsRefused();
-checkPreviewThemeIdMatchesGenerator();
+checkPreviewFixtures();
+checkPreviewValidFixtures();
+checkPreviewScope();
+checkPreviewAdvisories();
+checkGeneratorRefusesClosedValues();
+checkScopeGuard();
+checkSubmitDecision();
 
 console.log(failures === 0 ? "\nAll checks passed." : `\n${failures} check(s) failed.`);
 process.exit(failures === 0 ? 0 : 1);
