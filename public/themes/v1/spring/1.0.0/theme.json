@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "spring",
+  "version": "1.0.0",
+  "name": {
+    "en": "Spring"
+  },
+  "summary": {
+    "en": "Cherry-blossom pink and fountain teal on a pale spring green, with soft rounded corners and a rule like falling water",
+    "zh-Hant": "淡淡的春綠底色，配上櫻花粉與噴泉的青綠，邊角圓潤，分隔線像層層落下的水流",
+    "zh-Hans": "淡淡的春绿底色，配上樱花粉与喷泉的青绿，边角圆润，分隔线像层层落下的水流",
+    "ja": "淡い春の緑に桜色と噴水のティール。角はやわらかく丸く、区切り線は流れ落ちる水のよう",
+    "de": "Kirschblütenrosa und Brunnentürkis auf zartem Frühlingsgrün, runde Ecken und eine Linie wie fallendes Wasser",
+    "fr": "Rose cerisier et turquoise de fontaine sur un vert printanier pâle, coins arrondis et filet comme une eau qui tombe",
+    "es": "Rosa cerezo y turquesa de fuente sobre verde primaveral, esquinas redondeadas y una línea como agua que cae",
+    "ko": "연한 봄빛 초록 위에 벚꽃 분홍과 분수의 청록, 둥근 모서리와 흘러내리는 물줄기 같은 구분선"
+  },
+  "fontDesign": "rounded",
+  "scenarios": [
+    "notes-sharing",
+    "agent-review"
+  ],
+  "author": {
+    "name": "Southern Light",
+    "github": "redtear1115"
+  },
+  "license": "Apache-2.0",
+  "light": {
+    "background": "#F5FAF4",
+    "surface": "#E6F2EC",
+    "text": "#1E2D29",
+    "muted": "#52635D",
+    "border": "#CDE2D6",
+    "heading": "#0B6670",
+    "accent": "#B8355F",
+    "link": "#1A5F8F",
+    "quote": "#5A8A3A",
+    "syntax": {
+      "keyword": "#B8355F",
+      "string": "#3E6E22",
+      "comment": "#5C6B65",
+      "number": "#9A4E12",
+      "function": "#0B6670",
+      "type": "#1A5F8F"
+    },
+    "diagram": {
+      "node": "#E6F2EC",
+      "nodeBorder": "#0B6670",
+      "text": "#1E2D29",
+      "line": "#52635D",
+      "secondary": "#EAF4DD",
+      "tertiary": "#FBE9EF",
+      "note": "#FFF6DC"
+    }
+  },
+  "dark": {
+    "background": "#13232A",
+    "surface": "#1B3139",
+    "text": "#E4F1EC",
+    "muted": "#9DB7B0",
+    "border": "#2C4851",
+    "heading": "#7ED6CC",
+    "accent": "#F59BBA",
+    "link": "#8DC6EE",
+    "quote": "#A3CC7C",
+    "syntax": {
+      "keyword": "#F59BBA",
+      "string": "#A3CC7C",
+      "comment": "#9DB7B0",
+      "number": "#F2C17A",
+      "function": "#7ED6CC",
+      "type": "#8DC6EE"
+    },
+    "diagram": {
+      "node": "#1F3840",
+      "nodeBorder": "#7ED6CC",
+      "text": "#E4F1EC",
+      "line": "#9DB7B0",
+      "secondary": "#22362A",
+      "tertiary": "#3A2631",
+      "note": "#3A3524"
+    }
+  },
+  "style": {
+    "headingWeight": 700,
+    "radius": 12,
+    "h1": {
+      "decoration": {
+        "type": "gradientBar",
+        "from": "accent",
+        "to": "heading"
+      }
+    },
+    "h2": {
+      "decoration": {
+        "type": "dot",
+        "color": "accent"
+      }
+    },
+    "blockquote": {
+      "style": {
+        "type": "panel"
+      }
+    },
+    "table": {
+      "header": {
+        "type": "surface"
+      },
+      "rounded": true
+    },
+    "hr": {
+      "style": {
+        "type": "gradient",
+        "colors": [
+          "quote",
+          "heading",
+          "link"
+        ]
+      }
+    },
+    "listMarker": "heading"
+  }
+}

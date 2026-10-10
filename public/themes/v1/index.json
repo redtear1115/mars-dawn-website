@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-06T16:22:00Z",
+  "generatedAt": "2026-10-09T23:44:47Z",
   "themes": [
     {
       "id": "dracula",
@@ -250,6 +250,42 @@
       "previews": {
         "light": "spec/1.0.1/preview-light.png",
         "dark": "spec/1.0.1/preview-dark.png"
+      }
+    },
+    {
+      "id": "spring",
+      "version": "1.0.0",
+      "name": {
+        "en": "Spring"
+      },
+      "summary": {
+        "de": "Kirschblütenrosa und Brunnentürkis auf zartem Frühlingsgrün, runde Ecken und eine Linie wie fallendes Wasser",
+        "en": "Cherry-blossom pink and fountain teal on a pale spring green, with soft rounded corners and a rule like falling water",
+        "es": "Rosa cerezo y turquesa de fuente sobre verde primaveral, esquinas redondeadas y una línea como agua que cae",
+        "fr": "Rose cerisier et turquoise de fontaine sur un vert printanier pâle, coins arrondis et filet comme une eau qui tombe",
+        "ja": "淡い春の緑に桜色と噴水のティール。角はやわらかく丸く、区切り線は流れ落ちる水のよう",
+        "ko": "연한 봄빛 초록 위에 벚꽃 분홍과 분수의 청록, 둥근 모서리와 흘러내리는 물줄기 같은 구분선",
+        "zh-Hans": "淡淡的春绿底色，配上樱花粉与喷泉的青绿，边角圆润，分隔线像层层落下的水流",
+        "zh-Hant": "淡淡的春綠底色，配上櫻花粉與噴泉的青綠，邊角圓潤，分隔線像層層落下的水流"
+      },
+      "scenarios": [
+        "notes-sharing",
+        "agent-review"
+      ],
+      "author": {
+        "name": "Southern Light",
+        "github": "redtear1115"
+      },
+      "minAppVersion": "1.1.0",
+      "files": {
+        "theme.json": {
+          "path": "spring/1.0.0/theme.json",
+          "sha256": "16b738c06686f58132d7bd83ef756e093bf5239eb794123fa675a4b7d3c9ddc8"
+        }
+      },
+      "previews": {
+        "light": "spring/1.0.0/preview-light.png",
+        "dark": "spring/1.0.0/preview-dark.png"
       }
     },
     {
