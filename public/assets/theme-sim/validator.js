@@ -319,7 +319,9 @@ function snap(value, name, path, issues) {
 
 const INLINE_CODE_ROLES = new Set(["text", "keyword", "string", "comment", "number", "function", "type"]);
 
-function checkStyle(style, issues) {
+/** Snaps every bounded number in `style` (pushing `number.range`, `option.gradientStops` and
+ * `option.role` issues as it goes) and returns the normalised copy. Exported for preview-report.js. */
+export function checkStyle(style, issues) {
   const s = { ...style };
   s.bodySize = snap(style.bodySize, "bodySize", "style.bodySize", issues);
   s.lineHeight = snap(style.lineHeight, "lineHeight", "style.lineHeight", issues);
@@ -510,7 +512,9 @@ export function setDawnFallback(light, dark) {
   dawnFallbackCache = { light, dark };
 }
 
-function colorFields(colors) {
+/** Every colour field of one palette as `[field, value]`, in report order. Exported for
+ * preview-report.js. */
+export function colorFields(colors) {
   const fields = [
     ["background", colors.background], ["surface", colors.surface], ["text", colors.text], ["muted", colors.muted],
     ["border", colors.border], ["heading", colors.heading], ["accent", colors.accent], ["link", colors.link], ["quote", colors.quote],
@@ -614,12 +618,13 @@ function displayIssue(problem, path, limit) {
   return { rule: problem, path, message: PROBLEM_SUMMARY[problem] + suffix };
 }
 
-/** Validates the raw text of a theme.json: size cap, duplicate-key/depth pre-pass, strict decode,
- * then every business rule. */
-export function validate(text, { requireComplete = false } = {}) {
+/** The stages of `validate` before any business rule: size cap, duplicate-key/depth pre-pass and
+ * strict decode. Returns `{ issue }` (the single issue `validate` reports for that stage) or
+ * `{ document }`. Shared with preview-report.js so the two can't disagree about decoding. */
+export function decodeThemeText(text) {
   const byteLength = new TextEncoder().encode(text).length;
   if (byteLength > MAX_FILE_BYTES) {
-    return { issues: [{ rule: "file.tooLarge", path: "", message: `the file is larger than ${MAX_FILE_BYTES} bytes` }], theme: null };
+    return { issue: { rule: "file.tooLarge", path: "", message: `the file is larger than ${MAX_FILE_BYTES} bytes` } };
   }
   try {
     scanJSONStructure(text);
@@ -627,12 +632,12 @@ export function validate(text, { requireComplete = false } = {}) {
     if (e instanceof JSONScanError) {
       if (e.kind === "duplicateKey") {
         const location = e.path.map(quoteText).join(".");
-        return { issues: [{ rule: "json.duplicateKey", path: location, message: `the key \`${quoteText(e.key)}\` appears more than once in the same object` }], theme: null };
+        return { issue: { rule: "json.duplicateKey", path: location, message: `the key \`${quoteText(e.key)}\` appears more than once in the same object` } };
       }
       if (e.kind === "tooDeep") {
-        return { issues: [{ rule: "json.tooDeep", path: "", message: "the JSON nests deeper than 16 levels" }], theme: null };
+        return { issue: { rule: "json.tooDeep", path: "", message: "the JSON nests deeper than 16 levels" } };
       }
-      return { issues: [{ rule: "json.malformed", path: "", message: "the file is not valid JSON" }], theme: null };
+      return { issue: { rule: "json.malformed", path: "", message: "the file is not valid JSON" } };
     }
     throw e;
   }
@@ -640,16 +645,22 @@ export function validate(text, { requireComplete = false } = {}) {
   try {
     raw = JSON.parse(text);
   } catch {
-    return { issues: [{ rule: "json.malformed", path: "", message: "the file is not valid JSON" }], theme: null };
+    return { issue: { rule: "json.malformed", path: "", message: "the file is not valid JSON" } };
   }
-  let document;
   try {
-    document = decodeThemeDocument(raw);
+    return { document: decodeThemeDocument(raw) };
   } catch (e) {
-    if (e instanceof DecodeFailure) return { issues: [{ rule: e.rule, path: e.path, message: e.message }], theme: null };
+    if (e instanceof DecodeFailure) return { issue: { rule: e.rule, path: e.path, message: e.message } };
     throw e;
   }
-  return validateDocument(document, { requireComplete });
+}
+
+/** Validates the raw text of a theme.json: size cap, duplicate-key/depth pre-pass, strict decode,
+ * then every business rule. */
+export function validate(text, { requireComplete = false } = {}) {
+  const decoded = decodeThemeText(text);
+  if (decoded.issue) return { issues: [decoded.issue], theme: null };
+  return validateDocument(decoded.document, { requireComplete });
 }
 
 export { fontStackFor };

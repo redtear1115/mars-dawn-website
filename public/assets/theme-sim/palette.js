@@ -70,8 +70,11 @@ const PALETTE_ROLE_CSS_VAR = {
   comment: "hl-comment", number: "hl-number", function: "hl-function", type: "hl-type",
 };
 
-/** var(--…) for a palette role name, as PaletteRole.cssValue does. */
+/** var(--…) for a palette role name, as PaletteRole.cssValue does, or undefined for anything that
+ * isn't one of the table's own keys (never an inherited name such as "constructor"). The generator
+ * refuses on undefined (generator.js roleValue). */
 export function roleCSSValue(role) {
+  if (typeof role !== "string" || !Object.hasOwn(PALETTE_ROLE_CSS_VAR, role)) return undefined;
   return `var(--${PALETTE_ROLE_CSS_VAR[role]})`;
 }
 
