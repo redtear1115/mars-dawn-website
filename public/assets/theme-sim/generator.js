@@ -11,6 +11,8 @@ export class GeneratorRefusal extends Error {
   constructor(kind, field) {
     super(kind);
     this.kind = kind; // "invalidID" | "invalidColor" | "invalidNumber" | "unresolvedPlaceholder" | "duplicateID"
+    //                   | "unknownFontDesign" | "unknownRole" | "invalidAlign" (closed values the
+    //                   validator's decode already enforces; refused again here, never omitted)
     this.field = field;
   }
 }
@@ -21,8 +23,20 @@ const FONT_STACKS = {
   rounded: 'ui-rounded, "SF Pro Rounded", -apple-system, "PingFang TC", "PingFang SC", sans-serif',
 };
 
+/** The font stack for a fontDesign, or undefined for anything that isn't one of FONT_STACKS' own
+ * keys (an inherited name such as "constructor" never resolves). */
 export function fontStackFor(fontDesign) {
+  if (typeof fontDesign !== "string" || !Object.hasOwn(FONT_STACKS, fontDesign)) return undefined;
   return FONT_STACKS[fontDesign];
+}
+
+const H1_ALIGNS = ["left", "center"];
+
+/** var(--…) for a palette role; refuses anything that isn't a palette role. */
+function roleValue(role) {
+  const value = roleCSSValue(role);
+  if (value === undefined) throw new GeneratorRefusal("unknownRole", String(role));
+  return value;
 }
 
 /** The palette block for one theme: `:root[data-theme="id"] { … } @media (dark) { … }`. */
@@ -89,10 +103,10 @@ function applyH1Decoration(decoration, rules) {
   switch (decoration.type) {
     case "rule": return; // default: the base h1 rule already draws it
     case "none": return rules.addFragments("h1Decoration", "none", {});
-    case "shortRule": return rules.addFragments("h1Decoration", "shortRule", { color: roleCSSValue(decoration.color) });
+    case "shortRule": return rules.addFragments("h1Decoration", "shortRule", { color: roleValue(decoration.color) });
     case "gradientBar":
       return rules.addFragments("h1Decoration", "gradientBar", {
-        from: roleCSSValue(decoration.from), to: roleCSSValue(decoration.to),
+        from: roleValue(decoration.from), to: roleValue(decoration.to),
       });
     default: throw new GeneratorRefusal("unresolvedPlaceholder");
   }
@@ -101,7 +115,7 @@ function applyH2Decoration(decoration, rules) {
   switch (decoration.type) {
     case "rule": return;
     case "none": return rules.addFragments("h2Decoration", "none", {});
-    case "dot": return rules.addFragments("h2Decoration", "dot", { color: roleCSSValue(decoration.color) });
+    case "dot": return rules.addFragments("h2Decoration", "dot", { color: roleValue(decoration.color) });
     default: throw new GeneratorRefusal("unresolvedPlaceholder");
   }
 }
@@ -121,7 +135,10 @@ export function checkedRules(id, style) {
 
   if (style.h1) {
     const h1 = style.h1;
-    if (h1.align != null) rules.add("h1", "text-align", h1.align);
+    if (h1.align != null) {
+      if (!H1_ALIGNS.includes(h1.align)) throw new GeneratorRefusal("invalidAlign", "h1.align");
+      rules.add("h1", "text-align", h1.align);
+    }
     if (h1.size != null) rules.add("h1", "font-size", `${number(rules, "h1.size", h1.size)}em`);
     if (h1.letterSpacing != null) rules.add("h1", "letter-spacing", `${number(rules, "h1.letterSpacing", h1.letterSpacing)}em`);
     if (h1.decoration) applyH1Decoration(h1.decoration, rules);
@@ -148,12 +165,12 @@ export function checkedRules(id, style) {
     const value = style.hr.style;
     if (value.type === "line") {
       if (value.thickness != null) rules.add("hr", "height", `${number(rules, "hr.style.thickness", value.thickness)}px`);
-      rules.add("hr", "background", roleCSSValue(value.color ?? "border"));
+      rules.add("hr", "background", roleValue(value.color ?? "border"));
     } else if (value.type === "shortCentered") {
-      rules.addFragments("hrStyle", "shortCentered", { color: roleCSSValue(value.color) });
+      rules.addFragments("hrStyle", "shortCentered", { color: roleValue(value.color) });
     } else if (value.type === "gradient") {
       if (value.colors.length < 2 || value.colors.length > 3) throw new GeneratorRefusal("unresolvedPlaceholder");
-      rules.addFragments("hrStyle", "gradient", { colors: value.colors.map(roleCSSValue).join(", ") });
+      rules.addFragments("hrStyle", "gradient", { colors: value.colors.map((role) => roleValue(role)).join(", ") });
     }
   }
   if (style.table) {
@@ -161,10 +178,10 @@ export function checkedRules(id, style) {
     if (table.header) {
       const h = table.header;
       if (h.type === "surface") rules.addFragments("tableHeader", "surface", {});
-      else if (h.type === "accentRule") rules.addFragments("tableHeader", "accentRule", { color: roleCSSValue(h.color) });
+      else if (h.type === "accentRule") rules.addFragments("tableHeader", "accentRule", { color: roleValue(h.color) });
       else if (h.type === "filled") {
         rules.addFragments("tableHeader", "filled", {
-          background: roleCSSValue(h.background), text: roleCSSValue(h.text), border: roleCSSValue(h.border ?? h.background),
+          background: roleValue(h.background), text: roleValue(h.text), border: roleValue(h.border ?? h.background),
         });
       }
     }
@@ -174,8 +191,8 @@ export function checkedRules(id, style) {
     }
     if (table.rounded) rules.add("table", "border-radius", "var(--radius)");
   }
-  if (style.listMarker) rules.add("li::marker", "color", roleCSSValue(style.listMarker));
-  if (style.inlineCode) rules.add("code:not(pre code)", "color", roleCSSValue(style.inlineCode));
+  if (style.listMarker) rules.add("li::marker", "color", roleValue(style.listMarker));
+  if (style.inlineCode) rules.add("code:not(pre code)", "color", roleValue(style.inlineCode));
   if (style.link?.underline) {
     rules.add("a", "text-decoration", "underline");
     rules.add("a", "text-underline-offset", "0.15em");
@@ -206,7 +223,9 @@ export function generate(id, style) {
 /** The whole theme CSS for one validated theme: `{ variables, rules }`. */
 export function stylesheetFor(validated) {
   const id = validated.document.id;
-  const variables = variableBlock(id, validated.light, validated.dark, fontStackFor(validated.document.fontDesign));
+  const fontStack = fontStackFor(validated.document.fontDesign);
+  if (fontStack === undefined) throw new GeneratorRefusal("unknownFontDesign", "fontDesign");
+  const variables = variableBlock(id, validated.light, validated.dark, fontStack);
   const rules = checkedRules(id, validated.document.style).css;
   return { variables, rules };
 }

@@ -128,9 +128,21 @@
   padding-left: 1.25em;
 }
 
-.sim-messages .sim-ok {
+.sim-messages .sim-ok,
+.sim-messages .sim-refused {
   margin: 0;
   font-weight: 600;
+}
+
+.sim-messages .sim-refused + ul {
+  margin-top: 0.5rem;
+}
+
+/* Shown while the preview keeps the last draft that could be drawn (theme-sim/app.js). */
+.sim-stale {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 .sim-preview-boxes {
