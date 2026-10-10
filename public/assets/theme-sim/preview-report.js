@@ -11,7 +11,7 @@
 // `validate()` (validator.js) is untouched and stays the only gate for Submit; this module only
 // decides what the preview may show.
 
-import { decodeThemeText, checkStyle, colorFields, checkContrast } from "./validator.js";
+import { decodeThemeText, validateDocument, checkStyle, colorFields, checkContrast } from "./validator.js";
 import { isHexColor } from "./grammar.js";
 import { resolvePalette, MissingFallback } from "./palette.js";
 import { stylesheetFor, GeneratorRefusal } from "./generator.js";
@@ -49,49 +49,53 @@ function blocks(rule) {
  *
  * `fallback` is Dawn's resolved `{ light, dark }` palettes (the same ones given to
  * validator.js's setDawnFallback), used for a palette that leaves out syntax/diagram.
+ * `requireComplete` is passed to validateDocument as-is (the page uses false).
+ *
+ * Every issue validate() would report is classified by its rule id against
+ * PREVIEW_BLOCKING_RULES; the first blocking one, if any, is `rule`, and the draft isn't drawn.
  *
  * Returns `{ rule, previewable, document, light, dark, advisories }`: `rule` is the first blocking
  * rule id or null; `document` is the normalised document (numbers snapped as validate() snaps
  * them); `advisories` are the contrast issues, computed whatever the identity or completeness
  * issues are (empty when the colours themselves aren't valid). */
-export function previewReport(text, { fallback } = {}) {
+export function previewReport(text, { fallback, requireComplete = false } = {}) {
   const none = { previewable: false, document: null, light: null, dark: null, advisories: [] };
   const decoded = decodeThemeText(text);
+  // A decode-stage issue (every one of them is in the table) leaves no document to draw.
   if (decoded.issue) return { rule: decoded.issue.rule, ...none };
   const doc = decoded.document;
-  if (doc.schemaVersion !== 1) return { rule: "schema.version", ...none };
-
-  const issues = [];
-  let colorsValid = true;
-  for (const [mode, colors] of [["light", doc.light], ["dark", doc.dark]]) {
-    for (const [field, value] of colorFields(colors)) {
-      if (!isHexColor(value)) {
-        colorsValid = false;
-        issues.push({ rule: "color.hex", path: `${mode}.${field}` });
-      }
-    }
-  }
-  const normalized = { ...doc };
-  if (doc.style) normalized.style = checkStyle(doc.style, issues);
+  // validate()'s own business rules, unchanged: the classification below decides what they mean
+  // for the preview, so a rule the table calls blocking really does stop the drawing.
+  const { issues } = validateDocument(doc, { requireComplete });
 
   let light = null;
   let dark = null;
   let advisories = [];
-  if (colorsValid) {
-    try {
-      light = resolvePalette(doc.light, fallback?.light);
-      dark = resolvePalette(doc.dark, fallback?.dark);
-      advisories = checkContrast(normalized.style, doc.scenarios, light, dark);
-    } catch (e) {
-      if (!(e instanceof MissingFallback)) throw e;
-      issues.push({ rule: "schema.missing", path: "light" });
-      light = null;
-      dark = null;
+  let normalized = null;
+  if (doc.schemaVersion === 1) {
+    normalized = { ...doc };
+    if (doc.style) normalized.style = checkStyle(doc.style, []);
+    let colorsValid = true;
+    for (const colors of [doc.light, doc.dark]) {
+      for (const [, value] of colorFields(colors)) if (!isHexColor(value)) colorsValid = false;
+    }
+    if (colorsValid) {
+      try {
+        light = resolvePalette(doc.light, fallback?.light);
+        dark = resolvePalette(doc.dark, fallback?.dark);
+        advisories = checkContrast(normalized.style, doc.scenarios, light, dark);
+      } catch (e) {
+        if (!(e instanceof MissingFallback)) throw e;
+        light = null;
+        dark = null;
+      }
     }
   }
 
   const first = issues.find((i) => blocks(i.rule));
-  const rule = first ? first.rule : null;
+  let rule = first ? first.rule : null;
+  // Nothing to draw without both resolved palettes (no fallback given and a group missing).
+  if (rule === null && (light === null || dark === null)) rule = doc.schemaVersion === 1 ? "schema.missing" : "schema.version";
   const previewable = rule === null;
   return {
     rule,

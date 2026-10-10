@@ -454,7 +454,7 @@ function checkPreviewFixtures() {
     const key = `${category}/${name}`;
     seen.add(key);
     const expected = EXPECTED_PREVIEWABLE[key];
-    const report = Preview.previewReport(text, { fallback });
+    const report = Preview.previewReport(text, { fallback, requireComplete: category === "publish" });
     const line = `${key}: previewable expected ${expected} actual ${report.previewable} (rule ${report.rule})`;
     if (expected === undefined) {
       bad(line, "no entry in EXPECTED_PREVIEWABLE");
