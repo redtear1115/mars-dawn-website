@@ -14,11 +14,11 @@ Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace. Avec Mar
 1. **Installez MarsDawn.** Téléchargez MarsDawn depuis le Mac App Store. L’extension Coup d’œil fait partie de l’app.
 2. **Sélectionnez un fichier Markdown.** Dans le Finder, cliquez une fois sur un fichier .md.
 3. **Appuyez sur Espace.** L’aperçu mis en forme s’ouvre. Appuyez de nouveau sur Espace pour le fermer.
-4. **Si vous voyez du texte brut, activez l’extension.** Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, ouvrez « Coup d’œil » sous Extensions et vérifiez que MarsDawn est coché.
+4. **Si vous voyez du texte brut, activez l’extension.** Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
 
 ## Non verrouillé par l’essai
 
-Coup d’œil ne fait pas partie de l’essai de 14 jours. Il affiche le même aperçu mis en forme pendant l’essai, après sa fin et après le déverrouillage. Une fois l’essai terminé et tant que vous n’avez pas déverrouillé, seules les fenêtres de MarsDawn s’ouvrent avec leur contenu masqué ; les aperçus du Finder ne changent pas. La [page sur l’essai et le déverrouillage](/fr/pay-once/) présente les trois phases côte à côte.
+Coup d’œil continue de fonctionner après la fin de l’essai. Il affiche le même aperçu mis en forme pendant l’essai, après sa fin et après le déverrouillage. Une fois l’essai terminé et tant que vous n’avez pas déverrouillé, seules les fenêtres de MarsDawn s’ouvrent avec leur contenu masqué ; les aperçus du Finder ne changent pas. La [page sur l’essai et le déverrouillage](/fr/pay-once/) présente les trois phases côte à côte.
 
 ## Questions et réponses
 
@@ -32,7 +32,7 @@ Oui. Coup d’œil n’est pas verrouillé par l’essai. Il continue d’affich
 
 ### Pourquoi Coup d’œil affiche-t-il du texte brut ?
 
-L’extension Coup d’œil est peut-être désactivée. Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, ouvrez « Coup d’œil » sous Extensions et vérifiez que MarsDawn est coché.
+L’extension Coup d’œil est peut-être désactivée. Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
 
 ### Coup d’œil est-il payant en plus ?
 
@@ -50,7 +50,7 @@ MarsDawn demande macOS 26 ou une version ultérieure.
 
 ## Plus
 
-- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Éditeur Markdown natif pour Mac : aperçu en direct à côté de la source, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, 4,99 USD une fois.
+- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): MarsDawn est un éditeur Markdown natif pour Mac : aperçu en direct côte à côte, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.
 - [Vos textes restent sur votre Mac](https://marsdawn.southern-light.dev/fr/yours/index.md): MarsDawn n’a ni compte, ni synchronisation, ni cloud. Vos documents Markdown restent sur votre Mac, dans les fichiers et dossiers que vous choisissez.
 - [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
 - [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts et les tableaux.
@@ -88,10 +88,10 @@ MarsDawn demande macOS 26 ou une version ultérieure.
 - [Modèle de spécification](https://marsdawn.southern-light.dev/fr/templates/spec/index.md): Un modèle de spécification en Markdown avec exigences, diagramme de flux Mermaid et critères d’acceptation. Votre agent le remplit ; vous le relisez dans MarsDawn.
 - [Modèle d’organigramme](https://marsdawn.southern-light.dev/fr/templates/flowchart/index.md): Un modèle d’organigramme Mermaid en Markdown, avec les étapes écrites en dessous. Prévisualisez-le sur Mac et exportez-le en PDF.
 - [Modèle de compte rendu](https://marsdawn.southern-light.dev/fr/templates/meeting-notes/index.md): Un modèle de compte rendu de réunion en Markdown, avec les décisions et les actions, chacune avec un responsable. Votre agent le rédige ; vous le vérifiez dans MarsDawn.
-- [English](https://marsdawn.southern-light.dev/quicklook/index.md): Press Space on a Markdown file in Finder to read it rendered, with Mermaid diagrams, KaTeX math and highlighted code. MarsDawn's Quick Look is not locked by the trial.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/quicklook/index.md): 在 Finder 選取 Markdown 檔案後按空白鍵，就能看到排版後的頁面，Mermaid 圖表、KaTeX 數學式和程式碼上色都在。MarsDawn 的快速查看不受試用期限制。
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/quicklook/index.md): 在访达选取 Markdown 文件后按空格键，就能看到排版后的页面，Mermaid 图表、KaTeX 数学公式和代码高亮都在。MarsDawn 的快速查看不受试用期限制。
-- [日本語](https://marsdawn.southern-light.dev/ja/quicklook/index.md): Finder で Markdown ファイルを選んでスペースキーを押すと、Mermaid 図、KaTeX 数式、ハイライトされたコードまで表示された状態で読めます。MarsDawn のクイックルックはトライアル期間の制限を受けません。
-- [Deutsch](https://marsdawn.southern-light.dev/de/quicklook/index.md): Drücke im Finder die Leertaste auf einer Markdown-Datei und lies sie gerendert, mit Mermaid-Diagrammen, KaTeX-Formeln und hervorgehobenem Code. Die Übersicht von MarsDawn ist durch den Test nicht gesperrt.
-- [Español](https://marsdawn.southern-light.dev/es/quicklook/index.md): Presiona la barra espaciadora sobre un archivo Markdown en el Finder para leerlo renderizado, con diagramas Mermaid, fórmulas KaTeX y código resaltado. Vista rápida de MarsDawn no queda bloqueada por la prueba.
-- [한국어](https://marsdawn.southern-light.dev/ko/quicklook/index.md): Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 Mermaid 다이어그램, KaTeX 수식, 강조된 코드까지 렌더링된 모습으로 읽을 수 있습니다. MarsDawn의 훑어보기는 체험 기간의 제한을 받지 않습니다.
+- [English](https://marsdawn.southern-light.dev/quicklook/index.md): MarsDawn's Quick Look renders Markdown in Finder when you press Space, with Mermaid, KaTeX and highlighted code. It keeps working after the trial ends.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/quicklook/index.md): MarsDawn 的快速查看讓你在 Finder 按空白鍵就看到排版後的 Markdown，Mermaid 圖表、KaTeX 數學式和程式碼上色都在。試用期結束後，快速查看照常可用。
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/quicklook/index.md): MarsDawn 的快速查看让你在访达按空格键就能看到排版后的 Markdown，Mermaid 图表、KaTeX 数学公式和代码高亮都在。试用期结束后，快速查看照常可用。
+- [日本語](https://marsdawn.southern-light.dev/ja/quicklook/index.md): MarsDawn のクイックルックなら、Finder でスペースキーを押すだけで Markdown を描画して表示します。Mermaid 図、KaTeX 数式、ハイライトされたコードにも対応。トライアル終了後も使えます。
+- [Deutsch](https://marsdawn.southern-light.dev/de/quicklook/index.md): Mit MarsDawn zeigt die Übersicht Markdown im Finder per Leertaste gerendert: Mermaid, KaTeX, hervorgehobener Code. Sie funktioniert auch nach dem Test weiter.
+- [Español](https://marsdawn.southern-light.dev/es/quicklook/index.md): Con MarsDawn, Vista rápida renderiza Markdown en el Finder con la barra espaciadora: Mermaid, KaTeX y código resaltado. Sigue funcionando tras la prueba.
+- [한국어](https://marsdawn.southern-light.dev/ko/quicklook/index.md): MarsDawn의 훑어보기로 Finder에서 스페이스 바를 누르면 Markdown이 렌더링되어 보입니다. Mermaid, KaTeX, 강조된 코드도 표시됩니다. 체험이 끝난 뒤에도 계속 작동합니다.

@@ -481,11 +481,11 @@ Select a Markdown file in Finder and press Space. With MarsDawn installed, Quick
 1. **Install MarsDawn.** Download MarsDawn from the Mac App Store. The Quick Look extension is part of the app.
 2. **Select a Markdown file.** In Finder, click a .md file once.
 3. **Press Space.** The rendered preview opens. Press Space again to close it.
-4. **If you see plain text, switch the extension on.** Open System Settings, go to General ▸ Login Items & Extensions, open Quick Look under Extensions, and make sure MarsDawn is ticked.
+4. **If you see plain text, switch the extension on.** Open System Settings, go to General ▸ Login Items & Extensions, click the Info button next to Quick Look under Extensions, turn on MarsDawn Preview, then click Done.
 
 ## Not locked by the trial
 
-Quick Look is not part of the 14-day trial. It shows the same rendered preview while the trial runs, after it ends and after you unlock. After the trial ends and until you unlock, MarsDawn's own windows open with their content covered; Finder previews are unchanged. The [trial and unlock page](/pay-once/) sets all three stages side by side.
+Quick Look keeps working after the trial ends. It shows the same rendered preview while the trial runs, after it ends and after you unlock. After the trial ends and until you unlock, MarsDawn's own windows open with their content covered; Finder previews are unchanged. The [trial and unlock page](/pay-once/) sets all three stages side by side.
 
 ## Questions and answers
 
@@ -499,7 +499,7 @@ Yes. Quick Look is not locked by the trial. It keeps rendering Markdown files wh
 
 ### Why does Quick Look show plain text?
 
-The Quick Look extension may be switched off. Open System Settings, go to General ▸ Login Items & Extensions, open Quick Look under Extensions, and make sure MarsDawn is ticked.
+The Quick Look extension may be switched off. Open System Settings, go to General ▸ Login Items & Extensions, click the Info button next to Quick Look under Extensions, turn on MarsDawn Preview, then click Done.
 
 ### Does Quick Look cost extra?
 
@@ -2763,11 +2763,11 @@ Source: https://marsdawn.southern-light.dev/zh-hant/quicklook/
 1. **安裝 MarsDawn。** 從 Mac App Store 下載 MarsDawn。快速查看擴充功能是 app 的一部分。
 2. **選取 Markdown 檔案。** 在 Finder 點一下 .md 檔案。
 3. **按空白鍵。** 排版後的預覽會打開，再按一次空白鍵就會關閉。
-4. **看到純文字的話，把擴充功能打開。** 打開「系統設定」，前往「一般」▸「登入項目與延伸功能」，在「延伸功能」下打開「快速查看」，確認勾選了 MarsDawn。
+4. **看到純文字的話，把擴充功能打開。** 打開「系統設定」，前往「一般」▸「登入項目與延伸功能」，按一下「延伸功能」下「快速查看」旁的資訊按鈕，打開「MarsDawn Preview」，再按一下「完成」。
 
 ## 不受試用期限制
 
-快速查看不屬於 14 天試用的範圍。試用中、試用結束後、解鎖之後，它顯示的都是同一份排版預覽。試用結束、尚未解鎖時，只有 MarsDawn 自己的視窗會遮住內容；Finder 裡的預覽不變。[試用與解鎖頁面](/zh-hant/pay-once/)把三個階段並排列了出來。
+試用期結束後，快速查看照常可用。試用中、試用結束後、解鎖之後，它顯示的都是同一份排版預覽。試用結束、尚未解鎖時，只有 MarsDawn 自己的視窗會遮住內容；Finder 裡的預覽不變。[試用與解鎖頁面](/zh-hant/pay-once/)把三個階段並排列了出來。
 
 ## 常見問題
 
@@ -2781,7 +2781,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/quicklook/
 
 ### 為什麼快速查看只顯示純文字？
 
-可能是快速查看擴充功能沒有打開。打開「系統設定」，前往「一般」▸「登入項目與延伸功能」，在「延伸功能」下打開「快速查看」，確認勾選了 MarsDawn。
+可能是快速查看擴充功能沒有打開。打開「系統設定」，前往「一般」▸「登入項目與延伸功能」，按一下「延伸功能」下「快速查看」旁的資訊按鈕，打開「MarsDawn Preview」，再按一下「完成」。
 
 ### 快速查看要另外付費嗎？
 
@@ -5082,11 +5082,11 @@ Source: https://marsdawn.southern-light.dev/zh-hans/quicklook/
 1. **安装 MarsDawn。** 从 Mac App Store 下载 MarsDawn。快速查看扩展是 app 的一部分。
 2. **选取 Markdown 文件。** 在访达点一下 .md 文件。
 3. **按空格键。** 排版后的预览会打开，再按一次空格键就会关闭。
-4. **看到纯文本的话，把扩展打开。** 打开“系统设置”，前往“通用”▸“登录项与扩展”，在“扩展”下打开“快速查看”，确认勾选了 MarsDawn。
+4. **看到纯文本的话，把扩展打开。** 打开“系统设置”，前往“通用”▸“登录项与扩展”，点按“扩展”下“快速查看”旁边的信息按钮，打开“MarsDawn Preview”，然后点按“完成”。
 
 ## 不受试用期限制
 
-快速查看不属于 14 天试用的范围。试用中、试用结束后、解锁之后，它显示的都是同一份排版预览。试用结束、尚未解锁时，只有 MarsDawn 自己的窗口会遮住内容；访达里的预览不变。[试用与解锁页面](/zh-hans/pay-once/)把三个阶段并排列了出来。
+试用期结束后，快速查看照常可用。试用中、试用结束后、解锁之后，它显示的都是同一份排版预览。试用结束、尚未解锁时，只有 MarsDawn 自己的窗口会遮住内容；访达里的预览不变。[试用与解锁页面](/zh-hans/pay-once/)把三个阶段并排列了出来。
 
 ## 常见问题
 
@@ -5100,7 +5100,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/quicklook/
 
 ### 为什么快速查看只显示纯文本？
 
-可能是快速查看扩展没有打开。打开“系统设置”，前往“通用”▸“登录项与扩展”，在“扩展”下打开“快速查看”，确认勾选了 MarsDawn。
+可能是快速查看扩展没有打开。打开“系统设置”，前往“通用”▸“登录项与扩展”，点按“扩展”下“快速查看”旁边的信息按钮，打开“MarsDawn Preview”，然后点按“完成”。
 
 ### 快速查看要另外付费吗？
 
@@ -7392,11 +7392,11 @@ Finder で Markdown ファイルを選んでスペースキーを押します。
 1. **MarsDawn をインストールします。** Mac App Store から MarsDawn をダウンロードします。クイックルックの機能拡張はアプリの一部です。
 2. **Markdown ファイルを選びます。** Finder で .md ファイルを一度クリックします。
 3. **スペースキーを押します。** 描画されたプレビューが開きます。もう一度スペースキーを押すと閉じます。
-4. **プレーンテキストが表示されたら、機能拡張をオンにします。** 「システム設定」を開き、「一般」▸「ログイン項目と機能拡張」に進んで、「機能拡張」の「クイックルック」を開き、MarsDawn にチェックが入っていることを確認します。
+4. **プレーンテキストが表示されたら、機能拡張をオンにします。** 「システム設定」を開き、「一般」▸「ログイン項目と機能拡張」に進んで、「機能拡張」の「クイックルック」の横にある情報ボタンをクリックし、「MarsDawn Preview」をオンにして「完了」をクリックします。
 
 ## トライアル期間の制限を受けません
 
-クイックルックは14日間のトライアルの対象ではありません。トライアル期間中も、終了後も、ロック解除後も、同じ描画済みのプレビューを表示します。トライアル期間が終わってロックを解除するまでは、MarsDawn 自身のウインドウだけが内容を覆い、Finder のプレビューは変わりません。[トライアルとロック解除のページ](/ja/pay-once/)では、3つの段階を並べて確認できます。
+トライアル終了後も、クイックルックはそのまま使えます。トライアル期間中も、終了後も、ロック解除後も、同じ描画済みのプレビューを表示します。トライアル期間が終わってロックを解除するまでは、MarsDawn 自身のウインドウだけが内容を覆い、Finder のプレビューは変わりません。[トライアルとロック解除のページ](/ja/pay-once/)では、3つの段階を並べて確認できます。
 
 ## よくある質問
 
@@ -7410,7 +7410,7 @@ Finder で Markdown ファイルを選んでスペースキーを押します。
 
 ### クイックルックがプレーンテキストを表示するのはなぜですか？
 
-クイックルックの機能拡張がオフになっている可能性があります。「システム設定」を開き、「一般」▸「ログイン項目と機能拡張」に進んで、「機能拡張」の「クイックルック」を開き、MarsDawn にチェックが入っていることを確認してください。
+クイックルックの機能拡張がオフになっている可能性があります。「システム設定」を開き、「一般」▸「ログイン項目と機能拡張」に進んで、「機能拡張」の「クイックルック」の横にある情報ボタンをクリックし、「MarsDawn Preview」をオンにして「完了」をクリックしてください。
 
 ### クイックルックは別料金ですか？
 
@@ -9703,11 +9703,11 @@ Wähle im Finder eine Markdown-Datei aus und drücke die Leertaste. Mit installi
 1. **Installiere MarsDawn.** Lade MarsDawn aus dem Mac App Store. Die Erweiterung für die Übersicht gehört zur App.
 2. **Wähle eine Markdown-Datei aus.** Klicke im Finder einmal auf eine .md-Datei.
 3. **Drücke die Leertaste.** Die gerenderte Vorschau öffnet sich. Mit der Leertaste schließt du sie wieder.
-4. **Wenn du Klartext siehst, schalte die Erweiterung ein.** Öffne die Systemeinstellungen, gehe zu Allgemein ▸ Anmeldeobjekte & Erweiterungen, öffne unter Erweiterungen „Übersicht“ und stelle sicher, dass MarsDawn angehakt ist.
+4. **Wenn du Klartext siehst, schalte die Erweiterung ein.** Öffne die Systemeinstellungen, gehe zu Allgemein ▸ Anmeldeobjekte & Erweiterungen, klicke unter Erweiterungen neben „Übersicht“ auf die Taste „Info“, aktiviere „MarsDawn Preview“ und klicke auf „Fertig“.
 
 ## Vom Test nicht gesperrt
 
-Die Übersicht gehört nicht zum 14-tägigen Test. Sie zeigt dieselbe gerenderte Vorschau, solange der Test läuft, nach seinem Ende und nach der Freischaltung. Nach dem Ende des Tests und bis zur Freischaltung öffnen nur die eigenen Fenster von MarsDawn mit verdecktem Inhalt; die Vorschau im Finder bleibt unverändert. Die [Seite zu Test und Freischaltung](/de/pay-once/) stellt alle drei Phasen nebeneinander.
+Die Übersicht funktioniert auch nach dem Ende des Tests weiter. Sie zeigt dieselbe gerenderte Vorschau, solange der Test läuft, nach seinem Ende und nach der Freischaltung. Nach dem Ende des Tests und bis zur Freischaltung öffnen nur die eigenen Fenster von MarsDawn mit verdecktem Inhalt; die Vorschau im Finder bleibt unverändert. Die [Seite zu Test und Freischaltung](/de/pay-once/) stellt alle drei Phasen nebeneinander.
 
 ## Fragen und Antworten
 
@@ -9721,7 +9721,7 @@ Ja. Die Übersicht ist durch den Test nicht gesperrt. Sie rendert Markdown-Datei
 
 ### Warum zeigt die Übersicht nur Klartext?
 
-Möglicherweise ist die Erweiterung für die Übersicht ausgeschaltet. Öffne die Systemeinstellungen, gehe zu Allgemein ▸ Anmeldeobjekte & Erweiterungen, öffne unter Erweiterungen „Übersicht“ und stelle sicher, dass MarsDawn angehakt ist.
+Möglicherweise ist die Erweiterung für die Übersicht ausgeschaltet. Öffne die Systemeinstellungen, gehe zu Allgemein ▸ Anmeldeobjekte & Erweiterungen, klicke unter Erweiterungen neben „Übersicht“ auf die Taste „Info“, aktiviere „MarsDawn Preview“ und klicke auf „Fertig“.
 
 ### Kostet die Übersicht extra?
 
@@ -11978,11 +11978,11 @@ Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace. Avec Mar
 1. **Installez MarsDawn.** Téléchargez MarsDawn depuis le Mac App Store. L’extension Coup d’œil fait partie de l’app.
 2. **Sélectionnez un fichier Markdown.** Dans le Finder, cliquez une fois sur un fichier .md.
 3. **Appuyez sur Espace.** L’aperçu mis en forme s’ouvre. Appuyez de nouveau sur Espace pour le fermer.
-4. **Si vous voyez du texte brut, activez l’extension.** Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, ouvrez « Coup d’œil » sous Extensions et vérifiez que MarsDawn est coché.
+4. **Si vous voyez du texte brut, activez l’extension.** Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
 
 ## Non verrouillé par l’essai
 
-Coup d’œil ne fait pas partie de l’essai de 14 jours. Il affiche le même aperçu mis en forme pendant l’essai, après sa fin et après le déverrouillage. Une fois l’essai terminé et tant que vous n’avez pas déverrouillé, seules les fenêtres de MarsDawn s’ouvrent avec leur contenu masqué ; les aperçus du Finder ne changent pas. La [page sur l’essai et le déverrouillage](/fr/pay-once/) présente les trois phases côte à côte.
+Coup d’œil continue de fonctionner après la fin de l’essai. Il affiche le même aperçu mis en forme pendant l’essai, après sa fin et après le déverrouillage. Une fois l’essai terminé et tant que vous n’avez pas déverrouillé, seules les fenêtres de MarsDawn s’ouvrent avec leur contenu masqué ; les aperçus du Finder ne changent pas. La [page sur l’essai et le déverrouillage](/fr/pay-once/) présente les trois phases côte à côte.
 
 ## Questions et réponses
 
@@ -11996,7 +11996,7 @@ Oui. Coup d’œil n’est pas verrouillé par l’essai. Il continue d’affich
 
 ### Pourquoi Coup d’œil affiche-t-il du texte brut ?
 
-L’extension Coup d’œil est peut-être désactivée. Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, ouvrez « Coup d’œil » sous Extensions et vérifiez que MarsDawn est coché.
+L’extension Coup d’œil est peut-être désactivée. Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
 
 ### Coup d’œil est-il payant en plus ?
 
@@ -14253,11 +14253,11 @@ Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora. Con
 1. **Instala MarsDawn.** Descarga MarsDawn desde el Mac App Store. La extensión de Vista rápida forma parte de la app.
 2. **Selecciona un archivo Markdown.** En el Finder, haz clic una vez en un archivo .md.
 3. **Presiona la barra espaciadora.** Se abre la vista previa renderizada. Vuelve a presionar la barra espaciadora para cerrarla.
-4. **Si ves texto sin formato, activa la extensión.** Abre Ajustes del Sistema, ve a General ▸ Ítems de inicio y extensiones, abre «Vista rápida» en Extensiones y comprueba que MarsDawn esté marcado.
+4. **Si ves texto sin formato, activa la extensión.** Abre Ajustes del Sistema, ve a General ▸ Ítems de inicio y extensiones, haz clic en el botón de información junto a «Vista rápida» en Extensiones, activa «MarsDawn Preview» y haz clic en Aceptar.
 
 ## No queda bloqueada por la prueba
 
-Vista rápida no forma parte de la prueba de 14 días. Muestra la misma vista previa renderizada mientras la prueba está en marcha, después de que termine y tras desbloquear. Cuando la prueba termina y hasta que desbloquees, solo las ventanas de MarsDawn se abren con el contenido cubierto; las vistas previas del Finder no cambian. La [página sobre la prueba y el desbloqueo](/es/pay-once/) presenta las tres fases una al lado de otra.
+Vista rápida sigue funcionando cuando termina la prueba. Muestra la misma vista previa renderizada mientras la prueba está en marcha, después de que termine y tras desbloquear. Cuando la prueba termina y hasta que desbloquees, solo las ventanas de MarsDawn se abren con el contenido cubierto; las vistas previas del Finder no cambian. La [página sobre la prueba y el desbloqueo](/es/pay-once/) presenta las tres fases una al lado de otra.
 
 ## Preguntas y respuestas
 
@@ -14271,7 +14271,7 @@ Sí. Vista rápida no queda bloqueada por la prueba. Sigue renderizando archivos
 
 ### ¿Por qué Vista rápida muestra texto sin formato?
 
-Puede que la extensión de Vista rápida esté desactivada. Abre Ajustes del Sistema, ve a General ▸ Ítems de inicio y extensiones, abre «Vista rápida» en Extensiones y comprueba que MarsDawn esté marcado.
+Puede que la extensión de Vista rápida esté desactivada. Abre Ajustes del Sistema, ve a General ▸ Ítems de inicio y extensiones, haz clic en el botón de información junto a «Vista rápida» en Extensiones, activa «MarsDawn Preview» y haz clic en Aceptar.
 
 ### ¿Vista rápida cuesta algo aparte?
 
@@ -16528,11 +16528,11 @@ Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르세요. M
 1. **MarsDawn을 설치하세요.** Mac App Store에서 MarsDawn을 다운로드하세요. 훑어보기 확장 프로그램은 앱의 일부입니다.
 2. **Markdown 파일을 선택하세요.** Finder에서 .md 파일을 한 번 클릭하세요.
 3. **스페이스 바를 누르세요.** 렌더링된 미리보기가 열립니다. 스페이스 바를 다시 누르면 닫힙니다.
-4. **일반 텍스트가 보이면 확장 프로그램을 켜세요.** 시스템 설정을 열고 일반 ▸ 로그인 항목 및 확장 프로그램으로 이동한 다음, 확장 프로그램 아래의 ‘훑어보기’를 열어 MarsDawn이 체크되어 있는지 확인하세요.
+4. **일반 텍스트가 보이면 확장 프로그램을 켜세요.** 시스템 설정을 열고 일반 ▸ 로그인 항목 및 확장 프로그램으로 이동한 다음, 확장 프로그램 아래 ‘훑어보기’ 옆의 정보 버튼을 클릭하고 ‘MarsDawn Preview’를 켠 뒤 완료를 클릭하세요.
 
 ## 체험 기간의 제한을 받지 않습니다
 
-훑어보기는 14일 체험의 대상이 아닙니다. 체험 중에도, 체험이 끝난 뒤에도, 잠금을 해제한 뒤에도 같은 렌더링된 미리보기를 보여 줍니다. 체험이 끝나고 잠금을 해제하기 전까지는 MarsDawn 자체의 윈도우만 내용이 가려지고, Finder의 미리보기는 그대로입니다. [체험과 잠금 해제 페이지](/ko/pay-once/)에서 세 단계를 나란히 볼 수 있습니다.
+훑어보기는 체험이 끝난 뒤에도 계속 작동합니다. 체험 중에도, 체험이 끝난 뒤에도, 잠금을 해제한 뒤에도 같은 렌더링된 미리보기를 보여 줍니다. 체험이 끝나고 잠금을 해제하기 전까지는 MarsDawn 자체의 윈도우만 내용이 가려지고, Finder의 미리보기는 그대로입니다. [체험과 잠금 해제 페이지](/ko/pay-once/)에서 세 단계를 나란히 볼 수 있습니다.
 
 ## 자주 묻는 질문
 
@@ -16546,7 +16546,7 @@ Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르세요. M
 
 ### 훑어보기에 일반 텍스트만 보이는 이유는 무엇인가요?
 
-훑어보기 확장 프로그램이 꺼져 있을 수 있습니다. 시스템 설정을 열고 일반 ▸ 로그인 항목 및 확장 프로그램으로 이동한 다음, 확장 프로그램 아래의 ‘훑어보기’를 열어 MarsDawn이 체크되어 있는지 확인하세요.
+훑어보기 확장 프로그램이 꺼져 있을 수 있습니다. 시스템 설정을 열고 일반 ▸ 로그인 항목 및 확장 프로그램으로 이동한 다음, 확장 프로그램 아래 ‘훑어보기’ 옆의 정보 버튼을 클릭하고 ‘MarsDawn Preview’를 켠 뒤 완료를 클릭하세요.
 
 ### 훑어보기는 따로 비용이 드나요?
 

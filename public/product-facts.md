@@ -5,7 +5,7 @@ Source: https://marsdawn.southern-light.dev/product-facts.md
 
 ## What MarsDawn is
 
-Native Markdown editor for Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, $4.99 once.
+MarsDawn is a native Markdown editor for Mac with live split preview, Mermaid, KaTeX, Quick Look and PDF export. Free to try, then USD 4.99 once.
 
 ## Requirements
 
