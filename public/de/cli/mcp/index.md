@@ -25,7 +25,7 @@ Für einen Agenten, der Anweisungen in reinem Markdown liest, statt direkt eine 
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) ist ein eigenes, öffentliches Repository unter Apache-2.0. Es ist ein MCP-Server mit zwei Werkzeugen, `export_markdown_to_pdf` und `open_in_marsdawn`, die `marsdawn export --json` und `marsdawn open --json` umschließen: Richte einen MCP-Client darauf, und ein Werkzeugaufruf liefert dasselbe JSON wie die CLI.
 
 - **Bezugsquelle:** als MCP Bundle, `marsdawn.mcpb`, angehängt an [sein GitHub-Release](https://github.com/redtear1115/marsdawn-mcp/releases), oder indem du den Server aus dem Quellcode über stdio startest.
-- **Registry:** noch nicht in der MCP Registry gelistet (aktuelles Release: 0.2.1). Prüfe den aktuellen Stand im Repository, bevor du dich auf die Suche über die Registry verlässt.
+- **Registry:** in der [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) als `dev.southern-light.mcp/marsdawn` gelistet (aktuelles Release: 0.2.4).
 - **Hosting:** nur selbst gehostet. Es gibt keinen gehosteten marsdawn-mcp-Dienst; der Server läuft auf deinem eigenen Rechner, neben marsdawn selbst.
 - **Voraussetzungen:** macOS, marsdawn 0.5.0 oder neuer und Node.js 20 oder neuer, um den Server auszuführen.
 

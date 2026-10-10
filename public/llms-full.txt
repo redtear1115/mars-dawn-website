@@ -350,7 +350,7 @@ Source: https://marsdawn.southern-light.dev/privacy/
 
 How MarsDawn, the Markdown editor for macOS, handles your information.
 
-Last updated 2026-09-28
+Last updated 2026-10-10
 
 > **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
 
@@ -379,7 +379,7 @@ Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<measurem
 
 ## When MarsDawn uses the internet
 
-MarsDawn works fully offline. It connects to the internet only **when you choose to**, for a document that refers to the web:
+MarsDawn works fully offline. It connects to the internet only **when you choose to**: for a document that refers to the web, or for the theme gallery. For documents:
 
 - **Markdown documents.** Web images are blocked by default. They load only after you click *Load Images* in the preview, or if you turn on *Load remote images automatically* in Settings. Nothing else a Markdown document refers to is loaded from the web.
 - **HTML documents.** An HTML document opens static: its code doesn't run and nothing is loaded from the web. If a document contains code that could run, you can choose *View › Run This Document* for that document. Its own code then runs until you stop it, the document reloads or you close the window. That choice is never remembered, and it isn't a setting. While it runs, the document can send data over the network, and read images, style sheets, fonts and media in its folder and the folders inside it. Code downloaded from the web never runs.
@@ -389,6 +389,8 @@ MarsDawn loads web content over https only. A plain http address is never loaded
 When web content loads, your Mac requests it directly from the servers that host it. Like any web request, this lets those servers see your IP address and what was requested. MarsDawn's developer receives none of this information.
 
 Links you click in the preview open in your default web browser, under that browser's own privacy practices. Audio and video never play by themselves.
+
+If you open *Settings › Appearance › Get More Themes…*, choose *Check for Theme Updates*, or install or update a theme, MarsDawn downloads the theme list, previews and theme files from marsdawn.southern-light.dev. Themes update automatically only during these downloads, never in the background. The request carries no account, identifier, cookie or document data; like any web request, our host Cloudflare sees your IP address and which files were requested. *Report Theme…* makes no request from the app: it only opens a GitHub or email link in your browser or mail app.
 
 ## Siri, Shortcuts and Spotlight
 
@@ -1044,7 +1046,7 @@ For an agent that reads plain-Markdown instructions instead of calling a shell d
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) is a separate, public, Apache-2.0 repository. It's an MCP server with two tools, `export_markdown_to_pdf` and `open_in_marsdawn`, that wrap `marsdawn export --json` and `marsdawn open --json`: point an MCP client at it and a tool call returns the same JSON as the CLI.
 
 - **Get it:** as an MCP Bundle, `marsdawn.mcpb`, attached to [its GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases), or by running the server from source over stdio.
-- **Registry:** not yet listed in the MCP Registry (current release: 0.2.1). Check the repository for the current status before relying on registry discovery.
+- **Registry:** listed in the [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) as `dev.southern-light.mcp/marsdawn` (current release: 0.2.4).
 - **Hosting:** self-hosted only. There is no hosted marsdawn-mcp service; the server runs on your own machine, next to marsdawn itself.
 - **Requirements:** macOS, marsdawn 0.5.0 or later, and Node.js 20 or later to run the server.
 
@@ -2630,7 +2632,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/privacy/
 
 macOS 的 Markdown 編輯器 MarsDawn 如何處理你的資訊。
 
-最後更新：2026-09-28
+最後更新：2026-10-10
 
 > **MarsDawn app 不收集任何關於你的資料**。沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。
 
@@ -2659,7 +2661,7 @@ App 和這個網站是兩件事。App 不收集資料。會記下造訪的，只
 
 ## MarsDawn 什麼時候會連上網路
 
-MarsDawn 可以完全離線使用，只有在**你自己選擇時**，才會為引用網路內容的文件連網：
+MarsDawn 可以完全離線使用，只有在**你自己選擇時**，才會為引用網路內容的文件或主題庫連網。文件方面：
 
 - **Markdown 文件**。網路圖片預設不載入，只有在你按下預覽中的「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入。Markdown 文件引用的其他網路內容一律不載入。
 - **HTML 文件**。HTML 文件開啟時是靜態的：它的程式碼不會執行，也不會從網路載入任何東西。如果文件含有可以執行的程式碼，你可以針對這份文件選擇「顯示方式 › 執行這份文件」。之後它自己的程式碼會一直執行，直到你停止它、文件重新載入，或關閉視窗為止。這個選擇不會被記住，也不是一項設定。執行期間，這份文件可以透過網路傳送資料，並讀取它所在資料夾及其子資料夾中的圖片、樣式表、字型與媒體檔案。從網路下載的程式碼一律不會執行。
@@ -2669,6 +2671,8 @@ MarsDawn 只透過 https 載入網路內容。http 位址一律不會載入，�
 載入網路內容時，你的 Mac 會直接向存放內容的伺服器發出請求。和所有網路請求一樣，這些伺服器會看到你的 IP 位址與請求的內容。MarsDawn 的開發者不會收到任何這類資訊。
 
 在預覽中點選的連結會用你的預設瀏覽器打開，適用該瀏覽器的隱私做法。音訊與影片不會自動播放。
+
+如果你打開「設定 › 外觀 › 取得更多主題⋯」、選擇「檢查主題更新」，或安裝、更新主題，MarsDawn 會從 marsdawn.southern-light.dev 下載主題清單、預覽圖與主題檔案。主題只會在這些下載時自動更新，不會在背景更新。這些請求不帶帳號、識別碼、cookie 或文件資料；和所有網路請求一樣，我們的主機 Cloudflare 會看到你的 IP 位址與被請求的檔案。「回報主題⋯」不會從 App 發出任何請求，只會在你的瀏覽器或郵件 App 中開啟 GitHub 或電子郵件連結。
 
 ## Siri、捷徑和 Spotlight
 
@@ -3324,7 +3328,7 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一個獨立、公開、Apache-2.0 授權的 repository。它是一個有兩個工具的 MCP 伺服器，`export_markdown_to_pdf` 和 `open_in_marsdawn`，分別包住 `marsdawn export --json` 和 `marsdawn open --json`：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。
 
 - **取得方式：**以 MCP Bundle（`marsdawn.mcpb`）的形式附在[GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases) 上，或從原始碼以 stdio 執行伺服器。
-- **Registry：**還沒上架 MCP Registry（目前版本：0.2.1）。要靠 registry 搜尋找到它之前，請先到 repository 確認目前狀態。
+- **Registry：**已上架 [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest)，名稱為 `dev.southern-light.mcp/marsdawn`（目前版本：0.2.4）。
 - **託管：**只能自架，沒有代管服務。伺服器跑在你自己的機器上，就在 marsdawn 旁邊。
 - **系統需求：**macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。
 
@@ -4948,7 +4952,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/privacy/
 
 macOS 的 Markdown 编辑器 MarsDawn 如何处理你的信息。
 
-最后更新：2026-09-28
+最后更新：2026-10-10
 
 > **MarsDawn app 不收集任何关于你的数据**。没有账户、没有广告，也不追踪。你的文稿与设置都留在你的 Mac 上。
 
@@ -4977,7 +4981,7 @@ App 和这个网站是两件事。App 不收集数据。会记下访问的，只
 
 ## MarsDawn 什么时候会连上网络
 
-MarsDawn 可以完全离线使用，只有在**你自己选择时**，才会为引用网络内容的文稿连网：
+MarsDawn 可以完全离线使用，只有在**你自己选择时**，才会为引用网络内容的文稿或主题图库连网。文稿方面：
 
 - **Markdown 文稿**。网络图片默认不加载，只有在你按下预览中的“载入图像”，或在设置中打开“自动载入网络图像”后才会加载。Markdown 文稿引用的其他网络内容一律不加载。
 - **HTML 文稿**。HTML 文稿打开时是静态的：它的代码不会运行，也不会从网络加载任何东西。如果文稿含有可以运行的代码，你可以针对这份文稿选择“显示 › 运行这份文稿”。之后它自己的代码会一直运行，直到你停止它、文稿重新加载，或关闭窗口为止。这个选择不会被记住，也不是一项设置。运行期间，这份文稿可以通过网络发送数据，并读取它所在文件夹及其子文件夹中的图片、样式表、字体与媒体文件。从网络下载的代码一律不会运行。
@@ -4987,6 +4991,8 @@ MarsDawn 只通过 https 加载网络内容。http 地址一律不会加载，�
 加载网络内容时，你的 Mac 会直接向存放内容的服务器发出请求。和所有网络请求一样，这些服务器会看到你的 IP 地址与请求的内容。MarsDawn 的开发者不会收到任何这类信息。
 
 在预览中点击的链接会用你的默认浏览器打开，适用该浏览器的隐私做法。音频与视频不会自动播放。
+
+如果你打开“设置 › 外观 › 获取更多主题…”、选择“检查主题更新”，或安装、更新主题，MarsDawn 会从 marsdawn.southern-light.dev 下载主题列表、预览图与主题文件。主题只会在这些下载时自动更新，不会在后台更新。这些请求不带账号、标识符、cookie 或文稿数据；和所有网络请求一样，我们的主机 Cloudflare 会看到你的 IP 地址与被请求的文件。“举报主题…”不会从 App 发出任何请求，只会在你的浏览器或邮件 App 中打开 GitHub 或电子邮件链接。
 
 ## Siri、快捷指令和 Spotlight
 
@@ -5632,7 +5638,7 @@ MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一个独立、公开、Apache-2.0 授权的 repository。它是一个有两个工具的 MCP 服务器，`export_markdown_to_pdf` 和 `open_in_marsdawn`，分别包住 `marsdawn export --json` 和 `marsdawn open --json`：把 MCP 客户端指向它，工具调用返回的 JSON 和 CLI 一样。
 
 - **获取方式：**以 MCP Bundle（`marsdawn.mcpb`）的形式附在[GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases) 上，或从源代码以 stdio 运行服务器。
-- **Registry：**还没上架 MCP Registry（目前版本：0.2.1）。要靠 registry 搜索找到它之前，请先到 repository 确认目前状态。
+- **Registry：**已上架 [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest)，名称为 `dev.southern-light.mcp/marsdawn`（目前版本：0.2.4）。
 - **托管：**只能自架，没有代管服务。服务器跑在你自己的机器上，就在 marsdawn 旁边。
 - **系统要求：**macOS、marsdawn 0.5.0 以上，以及运行服务器需要的 Node.js 20 以上。
 
@@ -7256,7 +7262,7 @@ Source: https://marsdawn.southern-light.dev/ja/privacy/
 
 macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情報を扱うか。
 
-最終更新日：2026-09-28
+最終更新日：2026-10-10
 
 > **MarsDawn アプリは、あなたに関するデータを一切収集しません**。アカウントも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。
 
@@ -7285,7 +7291,7 @@ macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情�
 
 ## MarsDawn がインターネットを使うとき
 
-MarsDawn は完全にオフラインで動作します。インターネットに接続するのは**あなたが選んだときだけ**、ウェブを参照する文書に対してです。
+MarsDawn は完全にオフラインで動作します。インターネットに接続するのは**あなたが選んだときだけ**、ウェブを参照する文書、またはテーマギャラリーに対してです。文書については次のとおりです。
 
 - **Markdown 文書**。ウェブ画像はデフォルトでブロックされています。プレビューで*イメージを読み込む*をクリックするか、設定で*リモートイメージを自動的に読み込む*をオンにしたときだけ読み込まれます。Markdown 文書が参照するそれ以外のものは、ウェブから読み込まれません。
 - **HTML 文書**。HTML 文書は静的な状態で開きます。コードは実行されず、ウェブから何も読み込まれません。文書に実行され得るコードが含まれる場合、その文書について*表示 › この書類を実行*を選ぶことができます。すると、その文書自身のコードは、あなたが停止するか、文書が再読み込みされるか、ウインドウを閉じるまで実行され続けます。この選択が記憶されることはなく、設定項目でもありません。実行中、文書はネットワーク経由でデータを送信でき、自身のフォルダとその中のフォルダにある画像、スタイルシート、フォント、メディアを読み取れます。ウェブからダウンロードされたコードが実行されることはありません。
@@ -7295,6 +7301,8 @@ MarsDawn は https 経由でのみウェブコンテンツを読み込みます�
 ウェブコンテンツを読み込むとき、あなたの Mac はそれを配信するサーバーへ直接リクエストを送ります。他のウェブリクエストと同様に、これによってそれらのサーバーはあなたの IP アドレスとリクエストされた内容を知ることができます。MarsDawn の開発者はこれらの情報を一切受け取りません。
 
 プレビュー内でクリックしたリンクは、デフォルトのウェブブラウザで、そのブラウザ自体のプライバシー方針に従って開きます。音声と動画が自動的に再生されることはありません。
+
+「設定 › 外観モード › テーマを追加…」を開く、「テーマのアップデートを確認」を選ぶ、またはテーマをインストール・アップデートすると、MarsDawn は marsdawn.southern-light.dev からテーマの一覧、プレビュー、テーマファイルをダウンロードします。テーマが自動的にアップデートされるのは、これらのダウンロード中だけで、バックグラウンドで行われることはありません。このリクエストには、アカウント、識別子、クッキー、文書のデータは含まれません。他のウェブリクエストと同様に、このサイトのホスティングを担う Cloudflare はあなたの IP アドレスと、どのファイルがリクエストされたかを知ることができます。「テーマを報告…」はアプリからリクエストを送らず、ブラウザまたはメール App で GitHub またはメールのリンクを開くだけです。
 
 ## Siri、ショートカット、Spotlight
 
@@ -7940,7 +7948,7 @@ MarsDawn には自前の AI モデルがありません。Markdown を書くた�
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) は、別の、公開された、Apache-2.0 ライセンスの独立した repository です。`export_markdown_to_pdf` と `open_in_marsdawn` という2つのツールを持つ MCP サーバーで、それぞれ `marsdawn export --json` と `marsdawn open --json` をラップしています。MCP クライアントをそれに向ければ、ツール呼び出しは CLI と同じ JSON を返します。
 
 - **入手方法：**[GitHub のリリース](https://github.com/redtear1115/marsdawn-mcp/releases)に添付された MCP Bundle（`marsdawn.mcpb`）として、またはソースから stdio でサーバーを実行することで入手できます。
-- **Registry：**まだ MCP Registry には登録されていません（現在のリリース：0.2.1）。registry 経由で見つかる前に、repository で現在の状況を確認してください。
+- **Registry：**[MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) に `dev.southern-light.mcp/marsdawn` として登録されています（現在のリリース：0.2.4）。
 - **ホスティング：**自分でホストするしかありません。marsdawn-mcp のホスティングサービスは存在せず、サーバーは marsdawn 自身の隣、あなた自身のマシン上で動きます。
 - **動作要件：**macOS、marsdawn 0.5.0 以降、そしてサーバーを実行するための Node.js 20 以降。
 
@@ -9564,7 +9572,7 @@ Source: https://marsdawn.southern-light.dev/de/privacy/
 
 Wie MarsDawn, der Markdown-Editor für macOS, mit deinen Daten umgeht.
 
-Zuletzt aktualisiert am 2026-09-28
+Zuletzt aktualisiert am 2026-10-10
 
 > **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
 
@@ -9593,7 +9601,7 @@ Sobald du zustimmst, setzt Google Analytics eigene Cookies (`_ga` und `_ga_<meas
 
 ## Wann MarsDawn das Internet nutzt
 
-MarsDawn funktioniert vollständig offline. Es verbindet sich nur dann mit dem Internet, **wenn du dich dafür entscheidest**, und zwar für ein Dokument, das auf das Web verweist:
+MarsDawn funktioniert vollständig offline. Es verbindet sich nur dann mit dem Internet, **wenn du dich dafür entscheidest**, und zwar für ein Dokument, das auf das Web verweist, oder für die Themengalerie. Für Dokumente gilt:
 
 - **Markdown-Dokumente.** Bilder aus dem Web sind standardmäßig blockiert. Sie werden erst geladen, wenn du in der Vorschau auf *Bilder laden* klickst oder in den Einstellungen *Bilder aus dem Web automatisch laden* aktivierst. Sonst wird nichts, worauf ein Markdown-Dokument verweist, aus dem Web geladen.
 - **HTML-Dokumente.** Ein HTML-Dokument öffnet sich statisch: Sein Code läuft nicht, und nichts wird aus dem Web geladen. Enthält ein Dokument Code, der laufen könnte, kannst du für dieses Dokument *Darstellung › Dieses Dokument ausführen* wählen. Sein eigener Code läuft dann, bis du ihn stoppst, das Dokument neu geladen wird oder du das Fenster schließt. Diese Wahl wird nie gespeichert, und sie ist keine Einstellung. Während der Code läuft, kann das Dokument Daten über das Netzwerk senden sowie Bilder, Stylesheets, Schriften und Medien in seinem Ordner und den darin enthaltenen Ordnern lesen. Code, der aus dem Web geladen wird, läuft nie.
@@ -9603,6 +9611,8 @@ MarsDawn lädt Webinhalte nur über https. Eine einfache http-Adresse wird nie g
 Wenn Webinhalte geladen werden, fordert dein Mac sie direkt bei den Servern an, die sie bereitstellen. Wie bei jeder Webanfrage sehen diese Server dadurch deine IP-Adresse und was angefordert wurde. Der Entwickler von MarsDawn erhält keine dieser Informationen.
 
 Links, auf die du in der Vorschau klickst, öffnen sich in deinem Standard-Webbrowser, nach dessen eigenen Datenschutzpraktiken. Audio und Video spielen nie von selbst ab.
+
+Wenn du *Einstellungen › Erscheinungsbild › Weitere Themes laden …* öffnest, *Nach Theme-Updates suchen* wählst oder ein Theme installierst oder aktualisierst, lädt MarsDawn die Theme-Liste, Vorschauen und Theme-Dateien von marsdawn.southern-light.dev herunter. Themes werden nur bei diesen Downloads automatisch aktualisiert, nie im Hintergrund. Die Anfrage enthält kein Konto, keine Kennung, kein Cookie und keine Dokumentdaten; wie bei jeder Webanfrage sieht unser Hoster Cloudflare deine IP-Adresse und welche Dateien angefordert wurden. *Theme melden…* sendet keine Anfrage aus der App: Der Befehl öffnet nur einen GitHub- oder E-Mail-Link in deinem Browser oder deiner Mail-App.
 
 ## Siri, Kurzbefehle und Spotlight
 
@@ -10258,7 +10268,7 @@ Für einen Agenten, der Anweisungen in reinem Markdown liest, statt direkt eine 
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) ist ein eigenes, öffentliches Repository unter Apache-2.0. Es ist ein MCP-Server mit zwei Werkzeugen, `export_markdown_to_pdf` und `open_in_marsdawn`, die `marsdawn export --json` und `marsdawn open --json` umschließen: Richte einen MCP-Client darauf, und ein Werkzeugaufruf liefert dasselbe JSON wie die CLI.
 
 - **Bezugsquelle:** als MCP Bundle, `marsdawn.mcpb`, angehängt an [sein GitHub-Release](https://github.com/redtear1115/marsdawn-mcp/releases), oder indem du den Server aus dem Quellcode über stdio startest.
-- **Registry:** noch nicht in der MCP Registry gelistet (aktuelles Release: 0.2.1). Prüfe den aktuellen Stand im Repository, bevor du dich auf die Suche über die Registry verlässt.
+- **Registry:** in der [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) als `dev.southern-light.mcp/marsdawn` gelistet (aktuelles Release: 0.2.4).
 - **Hosting:** nur selbst gehostet. Es gibt keinen gehosteten marsdawn-mcp-Dienst; der Server läuft auf deinem eigenen Rechner, neben marsdawn selbst.
 - **Voraussetzungen:** macOS, marsdawn 0.5.0 oder neuer und Node.js 20 oder neuer, um den Server auszuführen.
 
@@ -11837,7 +11847,7 @@ Source: https://marsdawn.southern-light.dev/fr/privacy/
 
 Comment MarsDawn, l’éditeur Markdown pour macOS, traite vos informations.
 
-Dernière mise à jour : 2026-09-28
+Dernière mise à jour : 2026-10-10
 
 > **L’app MarsDawn ne collecte aucune donnée vous concernant.** Il n’y a ni compte, ni publicité, ni suivi. Vos documents et vos réglages restent sur votre Mac.
 
@@ -11866,7 +11876,7 @@ Une fois que vous avez accepté, Google Analytics dépose ses propres cookies (`
 
 ## Quand MarsDawn utilise Internet
 
-MarsDawn fonctionne entièrement hors ligne. L’app ne se connecte à Internet **que si vous le choisissez**, pour un document qui fait référence au web :
+MarsDawn fonctionne entièrement hors ligne. L’app ne se connecte à Internet **que si vous le choisissez**, pour un document qui fait référence au web ou pour la galerie de thèmes. Pour les documents :
 
 - **Documents Markdown.** Les images web sont bloquées par défaut. Elles ne se chargent qu’après un clic sur *Charger les images* dans l’aperçu, ou si vous activez *Charger automatiquement les images distantes* dans les Réglages. Rien d’autre de ce à quoi un document Markdown fait référence n’est chargé depuis le web.
 - **Documents HTML.** Un document HTML s’ouvre de façon statique : son code ne s’exécute pas et rien n’est chargé depuis le web. Si un document contient du code exécutable, vous pouvez choisir *Présentation › Exécuter ce document* pour ce document. Son propre code s’exécute alors jusqu’à ce que vous l’arrêtiez, que le document se recharge ou que vous fermiez la fenêtre. Ce choix n’est jamais mémorisé, et ce n’est pas un réglage. Pendant l’exécution, le document peut envoyer des données sur le réseau, et lire les images, feuilles de style, polices et médias de son dossier et des dossiers qu’il contient. Le code téléchargé depuis le web ne s’exécute jamais.
@@ -11876,6 +11886,8 @@ MarsDawn charge le contenu web uniquement en https. Une adresse en http simple n
 Lorsqu’un contenu web se charge, votre Mac le demande directement aux serveurs qui l’hébergent. Comme pour toute requête web, ces serveurs voient alors votre adresse IP et ce qui a été demandé. Le développeur de MarsDawn ne reçoit aucune de ces informations.
 
 Les liens sur lesquels vous cliquez dans l’aperçu s’ouvrent dans votre navigateur web par défaut, selon les pratiques de confidentialité de ce navigateur. L’audio et la vidéo ne se lancent jamais d’eux-mêmes.
+
+Si vous ouvrez *Réglages › Apparence › Obtenir plus de thèmes…*, choisissez *Rechercher des mises à jour de thèmes* ou installez ou mettez à jour un thème, MarsDawn télécharge la liste des thèmes, les aperçus et les fichiers de thème depuis marsdawn.southern-light.dev. Les thèmes ne se mettent à jour automatiquement que pendant ces téléchargements, jamais en arrière-plan. La requête ne contient ni compte, ni identifiant, ni cookie, ni donnée de document ; comme pour toute requête web, notre hébergeur Cloudflare voit votre adresse IP et les fichiers demandés. *Signaler le thème…* n’envoie aucune requête depuis l’app : cette action ouvre seulement un lien GitHub ou e-mail dans votre navigateur ou votre app de messagerie.
 
 ## Siri, Raccourcis et Spotlight
 
@@ -12531,7 +12543,7 @@ Pour un agent qui lit des instructions en Markdown brut au lieu d’appeler dire
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) est un dépôt séparé, public, sous licence Apache-2.0. C’est un serveur MCP doté de deux outils, `export_markdown_to_pdf` et `open_in_marsdawn`, qui enveloppent `marsdawn export --json` et `marsdawn open --json` : pointez un client MCP vers lui, et un appel d’outil renvoie le même JSON que la CLI.
 
 - **Où l’obtenir :** sous forme de MCP Bundle, `marsdawn.mcpb`, joint à [sa release GitHub](https://github.com/redtear1115/marsdawn-mcp/releases), ou en lançant le serveur depuis les sources via stdio.
-- **Registre :** pas encore référencé dans le MCP Registry (version actuelle : 0.2.1). Vérifiez l’état actuel dans le dépôt avant de compter sur la découverte via le registre.
+- **Registre :** référencé dans le [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) sous le nom `dev.southern-light.mcp/marsdawn` (version actuelle : 0.2.4).
 - **Hébergement :** auto-hébergé uniquement. Il n’existe pas de service marsdawn-mcp hébergé ; le serveur tourne sur votre propre machine, à côté de marsdawn.
 - **Configuration requise :** macOS, marsdawn 0.5.0 ou version ultérieure, et Node.js 20 ou version ultérieure pour lancer le serveur.
 
@@ -14110,7 +14122,7 @@ Source: https://marsdawn.southern-light.dev/es/privacy/
 
 Cómo trata tu información MarsDawn, el editor de Markdown para macOS.
 
-Última actualización: 2026-09-28
+Última actualización: 2026-10-10
 
 > **La app MarsDawn no recopila ningún dato sobre ti.** No hay cuenta, ni publicidad, ni seguimiento. Tus documentos y tus ajustes se quedan en tu Mac.
 
@@ -14139,7 +14151,7 @@ Una vez que aceptas, Google Analytics instala sus propias cookies (`_ga` y `_ga_
 
 ## Cuándo usa MarsDawn internet
 
-MarsDawn funciona totalmente sin conexión. Solo se conecta a internet **cuando tú lo eliges**, para un documento que hace referencia a la web:
+MarsDawn funciona totalmente sin conexión. Solo se conecta a internet **cuando tú lo eliges**, para un documento que hace referencia a la web o para la galería de temas. Para los documentos:
 
 - **Documentos Markdown.** Las imágenes web están bloqueadas por omisión. Solo se cargan después de que hagas clic en *Cargar imágenes* en la vista previa, o si activas *Cargar imágenes remotas automáticamente* en Ajustes. Nada más de lo que menciona un documento Markdown se carga desde la web.
 - **Documentos HTML.** Un documento HTML se abre de forma estática: su código no se ejecuta y no se carga nada desde la web. Si un documento contiene código que podría ejecutarse, puedes elegir *Visualización › Ejecutar este documento* para ese documento. Su propio código se ejecuta entonces hasta que lo detengas, el documento se vuelva a cargar o cierres la ventana. Esa elección nunca se recuerda y no es un ajuste. Mientras se ejecuta, el documento puede enviar datos por la red y leer imágenes, hojas de estilo, tipos de letra y archivos multimedia de su carpeta y de las carpetas que contiene. El código descargado de la web nunca se ejecuta.
@@ -14149,6 +14161,8 @@ MarsDawn carga contenido web solo por https. Una dirección http simple nunca se
 Cuando se carga contenido web, tu Mac lo solicita directamente a los servidores que lo alojan. Como en cualquier solicitud web, esos servidores pueden ver así tu dirección IP y lo que se solicitó. El desarrollador de MarsDawn no recibe nada de esta información.
 
 Los enlaces en los que haces clic en la vista previa se abren en tu navegador web predeterminado, según las prácticas de privacidad de ese navegador. El audio y el video nunca se reproducen solos.
+
+Si abres *Ajustes › Aspecto › Obtener más temas…*, eliges *Buscar actualizaciones de temas* o instalas o actualizas un tema, MarsDawn descarga la lista de temas, las vistas previas y los archivos de los temas desde marsdawn.southern-light.dev. Los temas se actualizan automáticamente solo durante estas descargas, nunca en segundo plano. La solicitud no incluye cuenta, identificador, cookie ni datos de documentos; como en cualquier solicitud web, nuestro proveedor de alojamiento, Cloudflare, ve tu dirección IP y qué archivos se solicitaron. *Denunciar tema…* no envía ninguna solicitud desde la app: solo abre un enlace de GitHub o de correo electrónico en tu navegador o en tu app de correo.
 
 ## Siri, Atajos y Spotlight
 
@@ -14804,7 +14818,7 @@ Para un agente que lee instrucciones en Markdown simple en lugar de llamar direc
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) es un repositorio aparte, público y con licencia Apache-2.0. Es un servidor MCP con dos herramientas, `export_markdown_to_pdf` y `open_in_marsdawn`, que envuelven `marsdawn export --json` y `marsdawn open --json`: apunta un cliente MCP hacia él y una llamada a una herramienta devuelve el mismo JSON que la CLI.
 
 - **Dónde obtenerlo:** como MCP Bundle, `marsdawn.mcpb`, adjunto a [su release de GitHub](https://github.com/redtear1115/marsdawn-mcp/releases), o ejecutando el servidor desde el código fuente por stdio.
-- **Registro:** todavía no aparece en el MCP Registry (versión actual: 0.2.1). Revisa el estado actual en el repositorio antes de depender del descubrimiento por el registro.
+- **Registro:** aparece en el [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) como `dev.southern-light.mcp/marsdawn` (versión actual: 0.2.4).
 - **Alojamiento:** solo autoalojado. No existe un servicio de marsdawn-mcp alojado; el servidor se ejecuta en tu propia máquina, junto a marsdawn.
 - **Requisitos:** macOS, marsdawn 0.5.0 o posterior y Node.js 20 o posterior para ejecutar el servidor.
 
@@ -16383,7 +16397,7 @@ Source: https://marsdawn.southern-light.dev/ko/privacy/
 
 macOS용 Markdown 편집기 MarsDawn이 사용자의 정보를 어떻게 다루는지 설명합니다.
 
-최종 업데이트: 2026-09-28
+최종 업데이트: 2026-10-10
 
 > **MarsDawn 앱은 사용자에 관한 데이터를 일절 수집하지 않습니다.** 계정도, 광고도, 추적도 없습니다. 문서와 설정은 사용자의 Mac에 남습니다.
 
@@ -16412,7 +16426,7 @@ macOS용 Markdown 편집기 MarsDawn이 사용자의 정보를 어떻게 다루�
 
 ## MarsDawn이 인터넷을 사용하는 경우
 
-MarsDawn은 완전히 오프라인으로 작동합니다. 웹을 참조하는 문서에 대해 **사용자가 선택한 경우에만** 인터넷에 연결합니다.
+MarsDawn은 완전히 오프라인으로 작동합니다. 웹을 참조하는 문서 또는 테마 갤러리에 대해 **사용자가 선택한 경우에만** 인터넷에 연결합니다. 문서의 경우는 다음과 같습니다.
 
 - **Markdown 문서.** 웹 이미지는 기본적으로 차단됩니다. 미리보기에서 *이미지 불러오기*를 클릭하거나 설정에서 *원격 이미지 자동으로 불러오기*를 켠 경우에만 불러옵니다. 그 외에 Markdown 문서가 참조하는 어떤 것도 웹에서 불러오지 않습니다.
 - **HTML 문서.** HTML 문서는 정적인 상태로 열립니다. 코드가 실행되지 않으며 웹에서 아무것도 불러오지 않습니다. 실행될 수 있는 코드가 문서에 포함되어 있으면, 해당 문서에 대해 *보기 › 이 문서 실행*을 선택할 수 있습니다. 그러면 사용자가 중단하거나, 문서가 다시 로드되거나, 윈도우를 닫을 때까지 문서 자체의 코드가 실행됩니다. 이 선택은 기억되지 않으며, 설정 항목도 아닙니다. 실행되는 동안 문서는 네트워크로 데이터를 보낼 수 있고, 문서가 있는 폴더와 그 하위 폴더의 이미지, 스타일시트, 서체 및 미디어를 읽을 수 있습니다. 웹에서 다운로드한 코드는 절대 실행되지 않습니다.
@@ -16422,6 +16436,8 @@ MarsDawn은 https로만 웹 콘텐츠를 불러옵니다. 일반 http 주소는 
 웹 콘텐츠를 불러올 때는 Mac이 해당 콘텐츠를 호스팅하는 서버에 직접 요청합니다. 다른 웹 요청과 마찬가지로, 이 서버들은 사용자의 IP 주소와 요청한 내용을 볼 수 있습니다. MarsDawn 개발자는 이 정보를 전혀 받지 않습니다.
 
 미리보기에서 클릭한 링크는 기본 웹 브라우저에서 열리며, 해당 브라우저의 개인정보 처리 관행을 따릅니다. 오디오와 비디오는 절대 저절로 재생되지 않습니다.
+
+*설정 › 화면 모드 › 테마 더 받기…* 버튼을 클릭하거나 *테마 업데이트 확인*을 선택하거나 테마를 설치 또는 업데이트하면, MarsDawn은 marsdawn.southern-light.dev에서 테마 목록, 미리보기 및 테마 파일을 내려받습니다. 테마는 이러한 다운로드 중에만 자동으로 업데이트되며, 백그라운드에서는 업데이트되지 않습니다. 이 요청에는 계정, 식별자, 쿠키, 문서 데이터가 포함되지 않습니다. 다른 웹 요청과 마찬가지로, 호스팅 업체인 Cloudflare는 사용자의 IP 주소와 요청된 파일을 볼 수 있습니다. *테마 신고…* 메뉴는 앱에서 어떤 요청도 보내지 않으며, 브라우저나 메일 앱에서 GitHub 또는 이메일 링크만 엽니다.
 
 ## Siri, 단축어 및 Spotlight
 
@@ -17077,7 +17093,7 @@ MarsDawn에는 자체 AI 모델이 없습니다. Markdown을 쓰는 것이 아�
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp)는 Apache-2.0 라이선스의 별도 공개 저장소입니다. `export_markdown_to_pdf`와 `open_in_marsdawn` 두 도구를 가진 MCP 서버로, 각각 `marsdawn export --json`과 `marsdawn open --json`을 감쌉니다. MCP 클라이언트가 이 서버를 가리키게 하면 도구 호출이 CLI와 같은 JSON을 돌려줍니다.
 
 - **받는 곳:** MCP Bundle인 `marsdawn.mcpb`를 [GitHub 릴리스](https://github.com/redtear1115/marsdawn-mcp/releases)에서 받거나, 소스에서 stdio로 서버를 실행합니다.
-- **레지스트리:** 아직 MCP Registry에 등록되지 않았습니다(현재 릴리스: 0.2.1). 레지스트리 검색에 의존하기 전에 저장소에서 현재 상태를 확인하세요.
+- **레지스트리:** [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest)에 `dev.southern-light.mcp/marsdawn`으로 등록되어 있습니다(현재 릴리스: 0.2.4).
 - **호스팅:** 직접 호스팅만 가능합니다. 호스팅된 marsdawn-mcp 서비스는 없으며, 서버는 marsdawn과 함께 여러분의 컴퓨터에서 실행됩니다.
 - **요구 사항:** macOS, marsdawn 0.5.0 이상, 그리고 서버를 실행할 Node.js 20 이상.
 

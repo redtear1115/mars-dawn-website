@@ -76,6 +76,14 @@ HREF_RE = re.compile(r'href="([^"]*)"')
 # Any of these inside a decoded href means a theme's report data reached a real link.
 FORBIDDEN_HREF_SUBSTRINGS = ("issues/new", "theme_id=", "theme_version=")
 
+# A preview is a plain same-origin link to its own full-size PNG (the no-JavaScript fallback for the
+# lightbox, owner request 2026-10-10). Its path necessarily names the theme's id and version, which
+# the <img> beside it already requests; GA4's enhanced measurement records a click's href only for
+# outbound links and for a fixed list of document extensions (png is not one), so unlike the report
+# link this one tells analytics nothing the page load doesn't. Only that exact path shape is
+# exempt: any query string, any other file, or any other place an id appears still fails.
+PREVIEW_HREF_RE = re.compile(r"/themes/v1/[A-Za-z0-9._-]+/[A-Za-z0-9._-]+/preview-(?:light|dark)\.png")
+
 THEME_GALLERY_JS = REPO_ROOT / "public" / "assets" / "theme-gallery.js"
 
 
@@ -110,6 +118,8 @@ def _href_leak_problems(fragment: str, where: str, extra_substrings=()) -> list:
         for pattern in FORBIDDEN_HREF_SUBSTRINGS:
             if pattern in decoded:
                 problems.append(f"{where}: href leaks {pattern!r}: {href!r}")
+        if PREVIEW_HREF_RE.fullmatch(decoded):
+            continue
         for extra in extra_substrings:
             if extra and extra in decoded:
                 problems.append(f"{where}: href leaks {extra!r}: {href!r}")
@@ -157,6 +167,35 @@ def check_href_leak_scanner_catches_a_plant() -> list:
     found = _href_leak_problems(planted, "plant", extra_substrings=("hostile-theme",))
     if not found:
         problems.append("href-leak scanner: a planted <a href=\"...issues/new?theme_id=...\"> went uncaught")
+    return problems
+
+
+def check_preview_links() -> list:
+    """Each card has two preview links to exactly its own light and dark PNG, each around its
+    <img>, and the list carries the localised Close label the lightbox reads. The scanner exempts
+    that shape and nothing near it: a preview-looking href with a query string, or the id in any
+    other href, is still caught."""
+    problems = []
+    original = bp.read_theme_index
+    bp.read_theme_index = lambda: {"schemaVersion": 1, "generatedAt": "x", "themes": [_fixture_theme()], "revoked": []}
+    try:
+        page = bp.community_gallery_html("zh-hant")
+    finally:
+        bp.read_theme_index = original
+    for kind in ("light", "dark"):
+        href = f"/themes/v1/hostile-theme/1.0.0/preview-{kind}.png"
+        if f'<a class="theme-preview" href="{href}"><img src="{href}"' not in page:
+            problems.append(f"preview links: no link around the {kind} preview <img>")
+    if f'data-close-label="{bp.GALLERY_LIGHTBOX_CLOSE["zh-hant"]}"' not in page:
+        problems.append("preview links: the list does not carry the localised Close label")
+    problems += _href_leak_problems(page, "preview card", extra_substrings=("hostile-theme",))
+    for bad in (
+        '<a href="/themes/v1/hostile-theme/1.0.0/preview-light.png?theme_id=hostile-theme">x</a>',
+        '<a href="/themes/v1/hostile-theme/1.0.0/theme.json">x</a>',
+        '<a href="/report/hostile-theme">x</a>',
+    ):
+        if not _href_leak_problems(bad, "plant", extra_substrings=("hostile-theme",)):
+            problems.append(f"preview links: the scanner let a leaking href through: {bad}")
     return problems
 
 
@@ -358,6 +397,7 @@ def self_test() -> int:
     checks = [
         ("escaping and hrefs", check_escaping_and_hrefs),
         ("href-leak scanner catches a plant", check_href_leak_scanner_catches_a_plant),
+        ("preview links (lightbox fallback) pass; lookalikes fail", check_preview_links),
         ("built gallery pages have no leaking hrefs", check_built_gallery_pages_have_no_leaking_hrefs),
         ("mailto RFC 6068 plant is caught", check_mailto_subject_plant_is_caught),
         ("report link / mailto round-trip (theme-gallery.js under node)", check_report_link_roundtrip),

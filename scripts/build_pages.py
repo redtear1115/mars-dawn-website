@@ -16,6 +16,7 @@ Static output, no build step at deploy time. Edit the copy here and rerun:
 import json
 import re
 import shutil
+import struct
 import sys
 from types import SimpleNamespace
 from html import escape as html_escape, unescape as html_unescape
@@ -98,6 +99,7 @@ def build_redirects() -> str:
 
 # The MCP server, a separate public repo. Re-verified 2026-09-20 against
 # github.com/redtear1115/marsdawn-mcp: still 0.1.0, still not in the MCP Registry.
+# 2026-10-10: listed in the MCP Registry as dev.southern-light.mcp/marsdawn, 0.2.4.
 MCP_URL = "https://github.com/redtear1115/marsdawn-mcp"
 MCP_LICENSE = "Apache-2.0"
 
@@ -489,6 +491,10 @@ GALLERY_REPORT_MAIL_LABEL = {
     "en": "Report by email", "zh-hant": "用電子郵件檢舉", "zh-hans": "用电子邮件举报", "ja": "メールで通報",
     "de": "Per E-Mail melden", "fr": "Signaler par e-mail", "es": "Denunciar por correo", "ko": "이메일로 신고",
 }
+GALLERY_LIGHTBOX_CLOSE = {
+    "en": "Close", "zh-hant": "關閉", "zh-hans": "关闭", "ja": "閉じる",
+    "de": "Schließen", "fr": "Fermer", "es": "Cerrar", "ko": "닫기",
+}
 GALLERY_EMPTY = {
     "en": "No themes are published yet. Be the first: build one in the browser and submit it.",
     "zh-hant": "目前還沒有任何投稿的主題。第一個做一個吧：在瀏覽器裡打造一個主題，然後送出投稿。",
@@ -578,6 +584,28 @@ def _localized(value, locale: str) -> str:
     return value.get("en") or ""
 
 
+def _png_size(rel_path: str):
+    """(width, height) of a published preview, read from its PNG header, or None if the file isn't
+    on disk or isn't a PNG (the check's fixtures name previews that don't exist). The card puts
+    them on the <img> so the browser reserves each preview's box before it loads."""
+    try:
+        head = (SITE / "themes" / "v1" / rel_path).read_bytes()[:24]
+    except OSError:
+        return None
+    if head[:8] != b"\x89PNG\r\n\x1a\n" or head[12:16] != b"IHDR":
+        return None
+    return struct.unpack(">II", head[16:24])
+
+
+def _theme_preview_html(href: str, alt: str, rel_path: str) -> str:
+    """One preview: a link to the full-size file (what a visitor with no JavaScript gets) around
+    the image. public/assets/theme-gallery.js opens it in a dialog instead."""
+    size = _png_size(rel_path)
+    dims = f' width="{size[0]}" height="{size[1]}"' if size else ""
+    return (f'<a class="theme-preview" href="{href}">'
+            f'<img src="{href}" alt="{alt}"{dims} loading="lazy"></a>')
+
+
 def _theme_card_html(locale: str, entry: dict) -> str:
     theme_id = str(entry.get("id", ""))
     version = str(entry.get("version", ""))
@@ -586,8 +614,10 @@ def _theme_card_html(locale: str, entry: dict) -> str:
     author = html_escape(str((entry.get("author") or {}).get("name", "")), quote=True)
     scenarios = [s for s in entry.get("scenarios", []) if s in SCENARIOS]
     previews = entry.get("previews") or {}
-    light = html_escape("/themes/v1/" + str(previews.get("light", "")), quote=True)
-    dark = html_escape("/themes/v1/" + str(previews.get("dark", "")), quote=True)
+    light_rel = str(previews.get("light", ""))
+    dark_rel = str(previews.get("dark", ""))
+    light = html_escape("/themes/v1/" + light_rel, quote=True)
+    dark = html_escape("/themes/v1/" + dark_rel, quote=True)
     badges = "".join(f' <span class="theme-scenario">{SCENARIO_LABELS[s][locale]}</span>' for s in scenarios)
     data_scenarios = html_escape(" ".join(scenarios), quote=True)
     version_text = html_escape(version, quote=True)
@@ -602,8 +632,9 @@ def _theme_card_html(locale: str, entry: dict) -> str:
         credit_html = f'    <span class="theme-credit"><a href="{credit_href}">{credit_label}</a></span>\n'
     return (
         f'  <li class="theme-card" data-scenarios="{data_scenarios}">\n'
-        f'    <img src="{light}" alt="{name} — light preview" loading="lazy">\n'
-        f'    <img src="{dark}" alt="{name} — dark preview" loading="lazy">\n'
+        f'    <span class="theme-previews">'
+        f'{_theme_preview_html(light, f"{name} — light preview", light_rel)}'
+        f'{_theme_preview_html(dark, f"{name} — dark preview", dark_rel)}</span>\n'
         f'    <strong class="theme-name">{name}</strong> <span class="theme-version">v{version_text}</span>\n'
         f'    <span class="theme-summary">{summary}</span>\n'
         f'    <span class="theme-scenarios">{badges.strip()}</span>\n'
@@ -636,7 +667,9 @@ def community_gallery_html(locale: str) -> str:
     present = [s for s in SCENARIOS if any(s in (t.get("scenarios") or []) for t in themes)]
     cards = "\n".join(_theme_card_html(locale, t) for t in themes)
     filter_html = (_theme_gallery_filter_html(locale, present) + "\n") if present else ""
-    return f'{filter_html}<ul class="theme-gallery-cards" id="theme-gallery-cards">\n{cards}\n</ul>'
+    close = html_escape(GALLERY_LIGHTBOX_CLOSE[locale], quote=True)
+    return (f'{filter_html}<ul class="theme-gallery-cards" id="theme-gallery-cards" '
+            f'data-close-label="{close}">\n{cards}\n</ul>')
 
 
 # public/themes/third-party-notices.html (#153, verify290 round 2): the MIT copyright notice and
@@ -1884,7 +1917,7 @@ BRAINSTORM_PAGES = {
 <p><a href="{MCP_URL}">marsdawn-mcp</a> is a separate, public, {MCP_LICENSE} repository. It's an MCP server with two tools, <code>export_markdown_to_pdf</code> and <code>open_in_marsdawn</code>, that wrap <code>marsdawn export --json</code> and <code>marsdawn open --json</code>: point an MCP client at it and a tool call returns the same JSON as the CLI.</p>
 <ul>
   <li><strong>Get it:</strong> as an MCP Bundle, <code>marsdawn.mcpb</code>, attached to <a href="{MCP_URL}/releases">its GitHub release</a>, or by running the server from source over stdio.</li>
-  <li><strong>Registry:</strong> not yet listed in the MCP Registry (current release: 0.2.1). Check the repository for the current status before relying on registry discovery.</li>
+  <li><strong>Registry:</strong> listed in the <a href="https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest">MCP Registry</a> as <code>dev.southern-light.mcp/marsdawn</code> (current release: 0.2.4).</li>
   <li><strong>Hosting:</strong> self-hosted only. There is no hosted marsdawn-mcp service; the server runs on your own machine, next to marsdawn itself.</li>
   <li><strong>Requirements:</strong> macOS, marsdawn 0.5.0 or later, and Node.js 20 or later to run the server.</li>
 </ul>
@@ -1928,7 +1961,7 @@ BRAINSTORM_PAGES = {
 <p><a href="{MCP_URL}">marsdawn-mcp</a> 是另一個獨立、公開、{MCP_LICENSE} 授權的 repository。它是一個有兩個工具的 MCP 伺服器，<code>export_markdown_to_pdf</code> 和 <code>open_in_marsdawn</code>，分別包住 <code>marsdawn export --json</code> 和 <code>marsdawn open --json</code>：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。</p>
 <ul>
   <li><strong>取得方式：</strong>以 MCP Bundle（<code>marsdawn.mcpb</code>）的形式附在<a href="{MCP_URL}/releases">GitHub release</a> 上，或從原始碼以 stdio 執行伺服器。</li>
-  <li><strong>Registry：</strong>還沒上架 MCP Registry（目前版本：0.2.1）。要靠 registry 搜尋找到它之前，請先到 repository 確認目前狀態。</li>
+  <li><strong>Registry：</strong>已上架 <a href="https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest">MCP Registry</a>，名稱為 <code>dev.southern-light.mcp/marsdawn</code>（目前版本：0.2.4）。</li>
   <li><strong>託管：</strong>只能自架，沒有代管服務。伺服器跑在你自己的機器上，就在 marsdawn 旁邊。</li>
   <li><strong>系統需求：</strong>macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。</li>
 </ul>
@@ -4087,6 +4120,7 @@ import copy_ja  # noqa: E402
 import copy_zh_hans  # noqa: E402
 import importlib  # noqa: E402
 import hero_window  # noqa: E402
+import brand_film  # noqa: E402
 import loop_anim  # noqa: E402
 import templates_pages  # noqa: E402
 
@@ -5352,7 +5386,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
         # The FAQ is written with the page's body but belongs after the install block and the traits.
         home_body, home_faq = split_faq(page["body"])
-        main_html = "\n".join([hero_html, home_body.strip(), loop_anim.loop_html(locale),
+        main_html = "\n".join([hero_html, brand_film.film_html(locale), home_body.strip(), loop_anim.loop_html(locale),
                                home_sections_html(locale), home_faq, proof_html, closing_html])
     elif has_intro:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
@@ -5964,7 +5998,7 @@ def main() -> None:
     print(notices_path)
     (SITE / "assets" / "annotations.css").write_text(annotations_css(), encoding="utf-8")
     (SITE / "assets" / "hero.css").write_text(hero_window.window_css(), encoding="utf-8")
-    (SITE / "assets" / "loop.css").write_text(loop_anim.loop_css(), encoding="utf-8")
+    (SITE / "assets" / "loop.css").write_text(loop_anim.loop_css() + "\n" + brand_film.CSS, encoding="utf-8")
     for path, text in templates_pages.downloads().items():
         target = SITE / path
         target.parent.mkdir(parents=True, exist_ok=True)
