@@ -6958,7 +6958,7 @@ MarsDawn は Mac 向けのネイティブな Markdown エディタです。ソ�
 
 ### MarsDawn はサブスクリプションですか？
 
-いいえ。MarsDawn は無料でダウンロードでき、14日間はすべての機能を試せます。そのあとは USD 4.99 のアプリ内課金を一度行うだけで、ずっとロック解除されます。更新はなく、アカウントも不要です。
+いいえ。MarsDawn は無料でダウンロードでき、14日間はすべての機能を試せます。そのあとは USD 4.99 のApp 内課金を一度行うだけで、ずっとロック解除されます。更新はなく、アカウントも不要です。
 
 ### MarsDawn は iPhone や iPad で使えますか？
 
@@ -6968,9 +6968,9 @@ MarsDawn は Mac 向けのネイティブな Markdown エディタです。ソ�
 
 はい。無料の marsdawn コマンドラインツールには open コマンドがあり、Markdown ファイルを MarsDawn で開けるので、Claude Code やシェルコマンドを実行できるエージェントから呼び出せます。Claude が Markdown ファイルを書いたり編集したりするたびに開く、任意で有効にする Claude Code フックもあります。
 
-### 体験期間が終わっても、クイックルックは使えますか？
+### トライアル期間が終わっても、クイックルックは使えますか？
 
-はい。体験期間中かどうかにかかわらず、Finder のクイックルックは Markdown ファイルを表示し続けます。体験期間が終わってロックを解除するまでは、MarsDawn で開いた書類の内容は覆われます。
+はい。トライアル期間中かどうかにかかわらず、Finder のクイックルックは Markdown ファイルを表示し続けます。トライアル期間が終わってロックを解除するまでは、MarsDawn で開いた書類の内容は覆われます。
 
 ## 実際のアプリ画面
 
@@ -7075,19 +7075,19 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 
 ### MarsDawn の料金はいくらですか？
 
-MarsDawn は Mac App Store から無料でダウンロードできます。14日間はすべての機能を使え、そのあとは USD 4.99 の一度きりのアプリ内課金でロックを解除できます。
+MarsDawn は Mac App Store から無料でダウンロードできます。14日間はすべての機能を使え、そのあとは USD 4.99 の一度きりのApp 内課金でロックを解除できます。
 
 ### サブスクリプションはありますか？
 
-いいえ。ロック解除は一度きりの購入なので、更新も、あとからの請求もありません。体験を始めるのにも費用はかかりません。
+いいえ。ロック解除は一度きりの購入なので、更新も、あとからの請求もありません。トライアルを始めるのにも費用はかかりません。
 
-### 14日間の体験が終わるとどうなりますか？
+### 14日間のトライアルが終わるとどうなりますか？
 
 ロックを解除するまでは、MarsDawn で書類を読む、編集する、書き出す、プリントすることはできません。書類は開きますが、内容は覆われます。ファイルは保存したときのままです。
 
-### 体験期間が終わっても、クイックルックは使えますか？
+### トライアル期間が終わっても、クイックルックは使えますか？
 
-はい。Finder のクイックルックは体験の有無にかかわらず使えます。無料の marsdawn コマンドラインツールも、Markdown を PDF に書き出し続けます。
+はい。Finder のクイックルックはトライアルの有無にかかわらず使えます。無料の marsdawn コマンドラインツールも、Markdown を PDF に書き出し続けます。
 
 ### アカウントは必要ですか？
 
@@ -7386,9 +7386,9 @@ Finder で Markdown ファイルを選んでスペースキーを押します。
 3. **スペースキーを押します。** 描画されたプレビューが開きます。もう一度スペースキーを押すと閉じます。
 4. **プレーンテキストが表示されたら、機能拡張をオンにします。** 「システム設定」を開き、「一般」▸「ログイン項目と機能拡張」に進んで、「機能拡張」の「クイックルック」を開き、MarsDawn にチェックが入っていることを確認します。
 
-## 体験期間の制限を受けません
+## トライアル期間の制限を受けません
 
-クイックルックは14日間の体験の対象ではありません。体験期間中も、終了後も、ロック解除後も、同じ描画済みのプレビューを表示します。体験期間が終わってロックを解除するまでは、MarsDawn 自身のウインドウだけが内容を覆い、Finder のプレビューは変わりません。[体験とロック解除のページ](/ja/pay-once/)では、3つの段階を並べて確認できます。
+クイックルックは14日間のトライアルの対象ではありません。トライアル期間中も、終了後も、ロック解除後も、同じ描画済みのプレビューを表示します。トライアル期間が終わってロックを解除するまでは、MarsDawn 自身のウインドウだけが内容を覆い、Finder のプレビューは変わりません。[トライアルとロック解除のページ](/ja/pay-once/)では、3つの段階を並べて確認できます。
 
 ## よくある質問
 
@@ -7396,9 +7396,9 @@ Finder で Markdown ファイルを選んでスペースキーを押します。
 
 ファイルを選んでスペースキーを押します。MarsDawn をインストールしていれば、クイックルックは Mermaid 図、KaTeX 数式、ハイライトされたコードを含む、描画されたページを表示します。
 
-### 14日間の体験が終わっても、クイックルックは使えますか？
+### 14日間のトライアルが終わっても、クイックルックは使えますか？
 
-はい。クイックルックは体験期間の制限を受けません。体験期間中も、終了後も、ロック解除後も、Markdown ファイルを描画し続けます。
+はい。クイックルックはトライアル期間の制限を受けません。トライアル期間中も、終了後も、ロック解除後も、Markdown ファイルを描画し続けます。
 
 ### クイックルックがプレーンテキストを表示するのはなぜですか？
 
@@ -7406,7 +7406,7 @@ Finder で Markdown ファイルを選んでスペースキーを押します。
 
 ### クイックルックは別料金ですか？
 
-いいえ。クイックルックの機能拡張は MarsDawn の一部で、別の購入は不要です。MarsDawn は無料でダウンロードでき、14日間試せて、ロック解除は USD 4.99 の一度きりです。クイックルックは体験の有無にかかわらず使えます。
+いいえ。クイックルックの機能拡張は MarsDawn の一部で、別の購入は不要です。MarsDawn は無料でダウンロードでき、14日間試せて、ロック解除は USD 4.99 の一度きりです。クイックルックはトライアルの有無にかかわらず使えます。
 
 ### 必要な macOS のバージョンは？
 
@@ -11966,7 +11966,7 @@ Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace. Avec Mar
 1. **Installez MarsDawn.** Téléchargez MarsDawn depuis le Mac App Store. L’extension Coup d’œil fait partie de l’app.
 2. **Sélectionnez un fichier Markdown.** Dans le Finder, cliquez une fois sur un fichier .md.
 3. **Appuyez sur Espace.** L’aperçu mis en forme s’ouvre. Appuyez de nouveau sur Espace pour le fermer.
-4. **Si vous voyez du texte brut, activez l’extension.** Ouvrez Réglages Système, allez dans Général ▸ Éléments de connexion et extensions, ouvrez « Coup d’œil » sous Extensions et vérifiez que MarsDawn est coché.
+4. **Si vous voyez du texte brut, activez l’extension.** Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, ouvrez « Coup d’œil » sous Extensions et vérifiez que MarsDawn est coché.
 
 ## Non verrouillé par l’essai
 
@@ -11984,7 +11984,7 @@ Oui. Coup d’œil n’est pas verrouillé par l’essai. Il continue d’affich
 
 ### Pourquoi Coup d’œil affiche-t-il du texte brut ?
 
-L’extension Coup d’œil est peut-être désactivée. Ouvrez Réglages Système, allez dans Général ▸ Éléments de connexion et extensions, ouvrez « Coup d’œil » sous Extensions et vérifiez que MarsDawn est coché.
+L’extension Coup d’œil est peut-être désactivée. Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, ouvrez « Coup d’œil » sous Extensions et vérifiez que MarsDawn est coché.
 
 ### Coup d’œil est-il payant en plus ?
 
@@ -16516,7 +16516,7 @@ Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르세요. M
 
 ## 체험 기간의 제한을 받지 않습니다
 
-훑어보기는 14일 체험의 대상이 아닙니다. 체험 중에도, 체험이 끝난 뒤에도, 잠금을 해제한 뒤에도 같은 렌더링된 미리보기를 보여 줍니다. 체험이 끝나고 잠금을 해제하기 전까지는 MarsDawn 자체의 창만 내용이 가려지고, Finder의 미리보기는 그대로입니다. [체험과 잠금 해제 페이지](/ko/pay-once/)에서 세 단계를 나란히 볼 수 있습니다.
+훑어보기는 14일 체험의 대상이 아닙니다. 체험 중에도, 체험이 끝난 뒤에도, 잠금을 해제한 뒤에도 같은 렌더링된 미리보기를 보여 줍니다. 체험이 끝나고 잠금을 해제하기 전까지는 MarsDawn 자체의 윈도우만 내용이 가려지고, Finder의 미리보기는 그대로입니다. [체험과 잠금 해제 페이지](/ko/pay-once/)에서 세 단계를 나란히 볼 수 있습니다.
 
 ## 자주 묻는 질문
 

@@ -18,7 +18,7 @@ Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르세요. M
 
 ## 체험 기간의 제한을 받지 않습니다
 
-훑어보기는 14일 체험의 대상이 아닙니다. 체험 중에도, 체험이 끝난 뒤에도, 잠금을 해제한 뒤에도 같은 렌더링된 미리보기를 보여 줍니다. 체험이 끝나고 잠금을 해제하기 전까지는 MarsDawn 자체의 창만 내용이 가려지고, Finder의 미리보기는 그대로입니다. [체험과 잠금 해제 페이지](/ko/pay-once/)에서 세 단계를 나란히 볼 수 있습니다.
+훑어보기는 14일 체험의 대상이 아닙니다. 체험 중에도, 체험이 끝난 뒤에도, 잠금을 해제한 뒤에도 같은 렌더링된 미리보기를 보여 줍니다. 체험이 끝나고 잠금을 해제하기 전까지는 MarsDawn 자체의 윈도우만 내용이 가려지고, Finder의 미리보기는 그대로입니다. [체험과 잠금 해제 페이지](/ko/pay-once/)에서 세 단계를 나란히 볼 수 있습니다.
 
 ## 자주 묻는 질문
 
@@ -91,7 +91,7 @@ MarsDawn에는 macOS 26 이상이 필요합니다.
 - [English](https://marsdawn.southern-light.dev/quicklook/index.md): Press Space on a Markdown file in Finder to read it rendered, with Mermaid diagrams, KaTeX math and highlighted code. MarsDawn's Quick Look is not locked by the trial.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/quicklook/index.md): 在 Finder 選取 Markdown 檔案後按空白鍵，就能看到排版後的頁面，Mermaid 圖表、KaTeX 數學式和程式碼上色都在。MarsDawn 的快速查看不受試用期限制。
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/quicklook/index.md): 在访达选取 Markdown 文件后按空格键，就能看到排版后的页面，Mermaid 图表、KaTeX 数学公式和代码高亮都在。MarsDawn 的快速查看不受试用期限制。
-- [日本語](https://marsdawn.southern-light.dev/ja/quicklook/index.md): Finder で Markdown ファイルを選んでスペースキーを押すと、Mermaid 図、KaTeX 数式、ハイライトされたコードまで表示された状態で読めます。MarsDawn のクイックルックは体験期間の制限を受けません。
+- [日本語](https://marsdawn.southern-light.dev/ja/quicklook/index.md): Finder で Markdown ファイルを選んでスペースキーを押すと、Mermaid 図、KaTeX 数式、ハイライトされたコードまで表示された状態で読めます。MarsDawn のクイックルックはトライアル期間の制限を受けません。
 - [Deutsch](https://marsdawn.southern-light.dev/de/quicklook/index.md): Drücke im Finder die Leertaste auf einer Markdown-Datei und lies sie gerendert, mit Mermaid-Diagrammen, KaTeX-Formeln und hervorgehobenem Code. Die Übersicht von MarsDawn ist durch den Test nicht gesperrt.
 - [Français](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Appuyez sur Espace sur un fichier Markdown dans le Finder pour le lire mis en forme, avec diagrammes Mermaid, formules KaTeX et code coloré. Coup d’œil de MarsDawn n’est pas verrouillé par l’essai.
 - [Español](https://marsdawn.southern-light.dev/es/quicklook/index.md): Presiona la barra espaciadora sobre un archivo Markdown en el Finder para leerlo renderizado, con diagramas Mermaid, fórmulas KaTeX y código resaltado. Vista rápida de MarsDawn no queda bloqueada por la prueba.

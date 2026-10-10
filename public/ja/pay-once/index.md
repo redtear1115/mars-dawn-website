@@ -48,19 +48,19 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 
 ### MarsDawn の料金はいくらですか？
 
-MarsDawn は Mac App Store から無料でダウンロードできます。14日間はすべての機能を使え、そのあとは USD 4.99 の一度きりのアプリ内課金でロックを解除できます。
+MarsDawn は Mac App Store から無料でダウンロードできます。14日間はすべての機能を使え、そのあとは USD 4.99 の一度きりのApp 内課金でロックを解除できます。
 
 ### サブスクリプションはありますか？
 
-いいえ。ロック解除は一度きりの購入なので、更新も、あとからの請求もありません。体験を始めるのにも費用はかかりません。
+いいえ。ロック解除は一度きりの購入なので、更新も、あとからの請求もありません。トライアルを始めるのにも費用はかかりません。
 
-### 14日間の体験が終わるとどうなりますか？
+### 14日間のトライアルが終わるとどうなりますか？
 
 ロックを解除するまでは、MarsDawn で書類を読む、編集する、書き出す、プリントすることはできません。書類は開きますが、内容は覆われます。ファイルは保存したときのままです。
 
-### 体験期間が終わっても、クイックルックは使えますか？
+### トライアル期間が終わっても、クイックルックは使えますか？
 
-はい。Finder のクイックルックは体験の有無にかかわらず使えます。無料の marsdawn コマンドラインツールも、Markdown を PDF に書き出し続けます。
+はい。Finder のクイックルックはトライアルの有無にかかわらず使えます。無料の marsdawn コマンドラインツールも、Markdown を PDF に書き出し続けます。
 
 ### アカウントは必要ですか？
 
@@ -76,7 +76,7 @@ MarsDawn は Mac App Store から無料でダウンロードできます。14日
 - [サポート](https://marsdawn.southern-light.dev/ja/support/index.md): macOS 向け Markdown エディタ MarsDawn のヘルプ。
 - [プライバシーポリシー](https://marsdawn.southern-light.dev/ja/privacy/index.md): MarsDawn は個人データを収集しません。文書と設定はあなたの Mac 上に残ります。
 - [Mac で Markdown を見る](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): .md ファイルは書式記号が入ったプレーンテキストです。Mac でレンダリングして読む方法を紹介します。今すぐ使える無料の marsdawn コマンドラインツールで PDF にする方法と、Mac App Store で配信中の MarsDawn アプリで読む方法です。
-- [Markdown のクイックルック](https://marsdawn.southern-light.dev/ja/quicklook/index.md): Finder で Markdown ファイルを選んでスペースキーを押すと、Mermaid 図、KaTeX 数式、ハイライトされたコードまで表示された状態で読めます。MarsDawn のクイックルックは体験期間の制限を受けません。
+- [Markdown のクイックルック](https://marsdawn.southern-light.dev/ja/quicklook/index.md): Finder で Markdown ファイルを選んでスペースキーを押すと、Mermaid 図、KaTeX 数式、ハイライトされたコードまで表示された状態で読めます。MarsDawn のクイックルックはトライアル期間の制限を受けません。
 - [Markdown から PDF へ](https://marsdawn.southern-light.dev/ja/markdown-to-pdf/index.md): 無料の marsdawn コマンドラインツールで、Mac 上の Markdown を PDF に変換します。Homebrew でインストールしてコマンド1つで実行：表、数式、Mermaid、コードに対応。
 - [MacMD Viewer と MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用で Markdown をレンダリングし、USD 19.99。MarsDawn は編集とプレビューを並べて表示し、無料で試したあと Mac App Store で USD 4.99 の一度きりの購入です。
 - [コマンドライン](https://marsdawn.southern-light.dev/ja/cli/index.md): 無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。
