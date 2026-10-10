@@ -25,7 +25,7 @@
 - **편집:** 왼쪽에서 Markdown을 쓰고 오른쪽에서 페이지를 읽습니다. 페이지 자체는 편집할 수 없습니다.
 - **형식:** MarsDawn은 PDF로 내보내고 프린트할 수 있지만, Word 파일로는 내보내지 않습니다.
 - **기타 파일:** 일반 텍스트 파일과 PDF는 읽기 전용으로 열립니다.
-- **테마:** 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있으며, 아직 다른 테마는 설치할 수 없습니다. 계획은 [미리보기 테마와 PDF 내보내기](/ko/themes/)에서 확인하세요.
+- **테마:** 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있습니다. 더 많은 테마는 [테마 갤러리](/ko/themes/gallery/)에 있습니다. 설정 › 화면 모드 › 테마 더 받기…에서 설치하거나, 브라우저에서 [직접 만들](/ko/themes/new/) 수 있습니다. 테마는 색과 스타일 설정일 뿐, 플러그인이 아닙니다.
 - **플러그인:** MarsDawn에는 플러그인이나 확장 기능이 없습니다.
 
 ## 체험이 끝난 뒤
@@ -73,8 +73,8 @@
 - [회의록 템플릿](https://marsdawn.southern-light.dev/ko/templates/meeting-notes/index.md): 결정 사항과 담당자가 정해진 실행 항목을 정리하는 Markdown 회의록 템플릿입니다. 에이전트가 쓰고, 여러분은 MarsDawn에서 확인하세요.
 - [English](https://marsdawn.southern-light.dev/limits/index.md): No sync, no iPhone or iPad app, no plugins, no accounts. Four built-in themes, more in the gallery. Know before you buy.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號。內建四種主題，主題庫還有更多。購買前先知道。
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户，内置四种主题。购买前先知道。
-- [日本語](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類。購入前に知っておいてください。
-- [Deutsch](https://marsdawn.southern-light.dev/de/limits/index.md): Keine Synchronisierung, keine App für iPhone oder iPad, keine Plug-ins, keine Konten. Vier integrierte Themen. Gut zu wissen, bevor du kaufst.
-- [Français](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Quatre thèmes intégrés. À savoir avant d’acheter.
-- [Español](https://marsdawn.southern-light.dev/es/limits/index.md): Sin sincronización, sin app para iPhone o iPad, sin plugins, sin cuentas. Cuatro temas integrados. Lo que conviene saber antes de comprar.
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户。内置四种主题，主题图库还有更多。购买前先知道。
+- [日本語](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類で、テーマギャラリーにはさらに多くあります。購入前に知っておいてください。
+- [Deutsch](https://marsdawn.southern-light.dev/de/limits/index.md): Keine Synchronisierung, keine iPhone- oder iPad-App, keine Plug-ins, keine Konten. Vier integrierte Themen, mehr in der Galerie. Gut zu wissen, bevor du kaufst.
+- [Français](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Quatre thèmes intégrés, d’autres dans la galerie. À savoir avant d’acheter.
+- [Español](https://marsdawn.southern-light.dev/es/limits/index.md): Sin sincronización, sin app para iPhone o iPad, sin plugins, sin cuentas. Cuatro temas integrados y más en la galería. Lo que conviene saber antes de comprar.

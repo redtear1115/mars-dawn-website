@@ -26,7 +26,7 @@ PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레�
 
 ## 직접 만들고, 다른 사람이 만든 것도 둘러보세요
 
-[브라우저에서 테마를 만드세요](/ko/themes/new/). 색과 몇 가지 스타일 옵션을 고르고, 실시간으로 적용된 모습을 본 뒤, 검토용 GitHub 이슈로 제출하면 됩니다. 설치도 git도 필요 없습니다. [갤러리](/ko/themes/gallery/)에는 유지 관리자가 검토하고 병합한 제출 테마가 나열됩니다. 검토 창구가 막 열렸기 때문에 오늘은 비어 있지만, 통과한 테마는 여기에 나타나며 용도로 걸러 볼 수 있습니다.
+[브라우저에서 테마를 만드세요](/ko/themes/new/). 색과 몇 가지 스타일 옵션을 고르고, 실시간으로 적용된 모습을 본 뒤, 검토용 GitHub 이슈로 제출하면 됩니다. 설치도 git도 필요 없습니다. [갤러리](/ko/themes/gallery/)에는 유지 관리자가 검토하고 병합한 제출 테마가 나열되며, 용도로 걸러 볼 수 있습니다. 앱의 설정 › 화면 모드 › 테마 더 받기…에서 설치할 수 있고, Finder의 훑어보기에도 적용됩니다.
 
 ## 다음
 
@@ -41,7 +41,7 @@ PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레�
 - [무료로 체험하고, 한 번만 구입](https://marsdawn.southern-light.dev/ko/pay-once/index.md): MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다.
 - [PDF 내보내기](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록과 표를 가르지 않도록 합니다.
 - [Mac 앱](https://marsdawn.southern-light.dev/ko/native/index.md): 진짜 Mac 앱인 Markdown 편집기. 네이티브 윈도우와 탭, 자동 저장, 버전 기록, Finder의 훑어보기, 그리고 Mac답게 동작하는 텍스트 편집기를 갖췄습니다.
-- [MarsDawn이 하지 않는 일](https://marsdawn.southern-light.dev/ko/limits/index.md): 동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 기본 테마는 네 가지입니다. 구입 전에 알아 두세요.
+- [MarsDawn이 하지 않는 일](https://marsdawn.southern-light.dev/ko/limits/index.md): 동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 기본 테마는 네 가지이고, 갤러리에 더 있습니다. 구입 전에 알아 두세요.
 - [지원](https://marsdawn.southern-light.dev/ko/support/index.md): macOS용 Markdown 편집기 MarsDawn에 관한 도움말입니다.
 - [개인정보 처리방침](https://marsdawn.southern-light.dev/ko/privacy/index.md): MarsDawn은 개인정보를 수집하지 않습니다. 문서와 설정은 사용자의 Mac에 남습니다.
 - [Mac에서 Markdown 보기](https://marsdawn.southern-light.dev/ko/view-markdown-on-mac/index.md): .md 파일은 서식 기호가 들어 있는 일반 텍스트입니다. Mac에서 렌더링된 상태로 읽는 방법을 소개합니다. 지금 바로 무료 marsdawn 명령줄 도구로 PDF를 만들 수 있고, Mac App Store의 MarsDawn 앱에서 읽을 수도 있습니다.

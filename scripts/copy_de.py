@@ -135,7 +135,7 @@ def build(k) -> dict:
     }
     pages['limits'] = {
         "title": 'Was MarsDawn nicht kann · MarsDawn',
-        "description": 'Keine Synchronisierung, keine App für iPhone oder iPad, keine Plug-ins, keine Konten. Vier integrierte Themen. Gut zu wissen, bevor du kaufst.',
+        "description": 'Keine Synchronisierung, keine iPhone- oder iPad-App, keine Plug-ins, keine Konten. Vier integrierte Themen, mehr in der Galerie. Gut zu wissen, bevor du kaufst.',
         "intro": """
 <section class="intro">
   <h1>Was MarsDawn nicht kann.</h1>
@@ -156,7 +156,7 @@ def build(k) -> dict:
   <li><strong>Bearbeiten:</strong> Du schreibst links Markdown und liest rechts die Seite; die Seite selbst lässt sich nicht bearbeiten.</li>
   <li><strong>Formate:</strong> MarsDawn exportiert PDF und druckt, exportiert aber keine Word-Dateien.</li>
   <li><strong>Andere Dateien:</strong> Reine Textdateien und PDFs werden schreibgeschützt geöffnet.</li>
-  <li><strong>Themen:</strong> Enthalten sind Morgenrot, Klassisch, Modern und Lebhaft, jeweils hell und dunkel, und andere lassen sich noch nicht installieren; was geplant ist, steht unter <a href="/de/themes/">Vorschau-Themen und PDF-Export</a>.</li>
+  <li><strong>Themen:</strong> Enthalten sind Morgenrot, Klassisch, Modern und Lebhaft, jeweils hell und dunkel. Weitere findest du in der <a href="/de/themes/gallery/">Themengalerie</a>: Installiere eines über Einstellungen › Erscheinungsbild › Weitere Themes laden …, oder <a href="/de/themes/new/">bau dein eigenes</a> im Browser. Ein Thema besteht aus Farben und Stileinstellungen, es ist kein Plug-in.</li>
   <li><strong>Plug-ins:</strong> MarsDawn hat keine Plug-ins oder Erweiterungen.</li>
 </ul>
 <h2>Nach dem Test</h2>
@@ -804,7 +804,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 <p>Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themas: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden keine Tabelle und kein Diagramm in der Mitte durch. Das kostenlose <a href="/de/cli/">Befehlszeilenwerkzeug marsdawn</a> verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit <code>--theme</code> das identische PDF, in jedem der vier Themen.</p>
 
 <h2>Bau dein eigenes, und sieh dir an, was andere gemacht haben</h2>
-<p><a href="/de/themes/new/">Bau ein Thema in deinem Browser</a>: wähle Farben und ein paar Stiloptionen, sieh sie live angewendet und reiche es als GitHub-Issue zur Prüfung ein &#8212; keine Installation, kein git. <a href="/de/themes/gallery/">Die Galerie</a> zeigt jedes eingereichte Thema, das ein Maintainer geprüft und gemerged hat; heute ist sie noch leer, weil der Prüfungsweg gerade erst geöffnet wurde, aber jedes Thema, das dort landet, erscheint dort und lässt sich nach Verwendungszweck filtern.</p>
+<p><a href="/de/themes/new/">Bau ein Thema in deinem Browser</a>: wähle Farben und ein paar Stiloptionen, sieh sie live angewendet und reiche es als GitHub-Issue zur Prüfung ein &#8212; keine Installation, kein git. <a href="/de/themes/gallery/">Die Galerie</a> zeigt jedes eingereichte Thema, das ein Maintainer geprüft und gemerged hat, filterbar nach Verwendungszweck. Installiere eines in der App über Einstellungen › Erscheinungsbild › Weitere Themes laden …, dann verwendet es auch die Übersicht im Finder.</p>
 
 <h2>Weiter</h2>
 <ul>

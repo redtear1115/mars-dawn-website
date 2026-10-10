@@ -395,7 +395,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
     }
     pages['limits'] = {
         "title": 'MarsDawn 做不到的事 · MarsDawn',
-        "description": '没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户，内置四种主题。购买前先知道。',
+        "description": '没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户。内置四种主题，主题图库还有更多。购买前先知道。',
         "intro": f"""
 <section class="intro">
   <h1>MarsDawn 做不到的事。</h1>
@@ -416,7 +416,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
   <li><strong>格式：</strong>MarsDawn 能导出 PDF 和打印，不能导出 Word 文件。</li>
   <li><strong>其他文件：</strong>纯文本文件和 PDF 以只读方式打开。</li>
-  <li><strong>主题：</strong>内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。</li>
+  <li><strong>主题：</strong>内置黎明、典雅、流行、活泼四种，各有浅色和深色。更多主题在<a href="/zh-hans/themes/gallery/">主题图库</a>：在“设置 › 外观 › 获取更多主题…”安装，或在浏览器里<a href="/zh-hans/themes/new/">自己做一套</a>。主题只是配色和样式设置，不是插件。</li>
   <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
 </ul>
 <h2>试用结束之后</h2>
@@ -651,7 +651,7 @@ marsdawn --version</code></pre>
 <p>导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 <a href="/zh-hans/cli/">marsdawn 命令行工具</a>使用同一套导出程序，所以脚本或 agent 也能用 <code>--theme</code> 生成一模一样的 PDF，四种主题都可以。</p>
 
 <h2>打造自己的主题，也看看别人做的</h2>
-<p><a href="/zh-hans/themes/new/">在浏览器里打造一个主题</a>：挑选颜色和几个样式选项，实时看效果，再送出成一个 GitHub issue 让人审核——不用安装，也不用 git。<a href="/zh-hans/themes/gallery/">主题库</a>会列出每一个经过审核、合并的投稿主题；因为审核渠道才刚开放，现在还是空的，但之后每个通过的主题都会出现在那里，还能按用途筛选。</p>
+<p><a href="/zh-hans/themes/new/">在浏览器里打造一个主题</a>：挑选颜色和几个样式选项，实时看效果，再送出成一个 GitHub issue 让人审核——不用安装，也不用 git。<a href="/zh-hans/themes/gallery/">主题图库</a>收录每一套经过维护者审核并合并的投稿主题，可以按用途筛选。在 App 的“设置 › 外观 › 获取更多主题…”就能安装，访达的快速查看也会跟着套用。</p>
 
 <h2>接下来</h2>
 <ul>

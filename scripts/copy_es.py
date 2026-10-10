@@ -135,7 +135,7 @@ def build(k) -> dict:
     }
     pages['limits'] = {
         "title": 'Lo que MarsDawn no hace · MarsDawn',
-        "description": 'Sin sincronización, sin app para iPhone o iPad, sin plugins, sin cuentas. Cuatro temas integrados. Lo que conviene saber antes de comprar.',
+        "description": 'Sin sincronización, sin app para iPhone o iPad, sin plugins, sin cuentas. Cuatro temas integrados y más en la galería. Lo que conviene saber antes de comprar.',
         "intro": """
 <section class="intro">
   <h1>Lo que MarsDawn no hace.</h1>
@@ -156,7 +156,7 @@ def build(k) -> dict:
   <li><strong>Edición:</strong> escribes Markdown a la izquierda y lees la página a la derecha; la página en sí no se puede editar.</li>
   <li><strong>Formatos:</strong> MarsDawn exporta a PDF e imprime, pero no exporta archivos de Word.</li>
   <li><strong>Otros archivos:</strong> los archivos de texto simple y los PDF se abren en modo de solo lectura.</li>
-  <li><strong>Temas:</strong> incluye Amanecer, Clásico, Moderno y Vívido, cada uno en claro y oscuro, y todavía no puedes instalar otros; consulta <a href="/es/themes/">temas de la vista previa y exportación a PDF</a> para ver lo que está planeado.</li>
+  <li><strong>Temas:</strong> incluye Amanecer, Clásico, Moderno y Vívido, cada uno en claro y oscuro. Hay más en la <a href="/es/themes/gallery/">galería de temas</a>: instala uno desde Ajustes › Aspecto › Obtener más temas…, o <a href="/es/themes/new/">crea el tuyo</a> en el navegador. Un tema son colores y ajustes de estilo, no un plugin.</li>
   <li><strong>Plugins:</strong> MarsDawn no tiene plugins ni extensiones.</li>
 </ul>
 <h2>Después de la prueba</h2>
@@ -804,7 +804,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 <p>Exporta a PDF o imprime, y la página usa la paleta clara de tu tema: los diagramas Mermaid se dibujan en ella, los bloques de código conservan el resaltado de sintaxis, y los saltos de página evitan separar un título de su sección o partir una tabla o un diagrama por la mitad. La <a href="/es/cli/">herramienta de línea de comandos marsdawn</a>, gratuita, usa el mismo exportador, así que un script o un agente genera el mismo PDF, en cualquiera de los cuatro temas, con <code>--theme</code>.</p>
 
 <h2>Crea el tuyo y explora lo que hicieron otros</h2>
-<p><a href="/es/themes/new/">Crea un tema en tu navegador</a>: elige colores y unas pocas opciones de estilo, míralos aplicados en vivo y envíalo como un issue de GitHub para revisión &#8212; sin instalación, sin git. <a href="/es/themes/gallery/">La galería</a> muestra cada tema enviado que un mantenedor haya revisado y fusionado; hoy está vacía, porque la vía de revisión acaba de abrirse, pero cada tema que llegue allí aparecerá allí, filtrable por para qué sirve.</p>
+<p><a href="/es/themes/new/">Crea un tema en tu navegador</a>: elige colores y unas pocas opciones de estilo, míralos aplicados en vivo y envíalo como un issue de GitHub para revisión &#8212; sin instalación, sin git. <a href="/es/themes/gallery/">La galería</a> muestra cada tema enviado que un mantenedor haya revisado y fusionado, filtrable por para qué sirve. Instala cualquiera en la app desde Ajustes › Aspecto › Obtener más temas…, y Vista rápida en el Finder también lo usa.</p>
 
 <h2>Siguiente</h2>
 <ul>

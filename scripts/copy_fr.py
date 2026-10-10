@@ -135,7 +135,7 @@ def build(k) -> dict:
     }
     pages['limits'] = {
         "title": 'Ce que MarsDawn ne fait pas · MarsDawn',
-        "description": 'Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Quatre thèmes intégrés. À savoir avant d’acheter.',
+        "description": 'Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Quatre thèmes intégrés, d’autres dans la galerie. À savoir avant d’acheter.',
         "intro": """
 <section class="intro">
   <h1>Ce que MarsDawn ne fait pas.</h1>
@@ -156,7 +156,7 @@ def build(k) -> dict:
   <li><strong>Édition :</strong> vous écrivez le Markdown à gauche et lisez la page à droite ; la page elle-même n’est pas modifiable.</li>
   <li><strong>Formats :</strong> MarsDawn exporte en PDF et imprime, mais n’exporte pas de fichiers Word.</li>
   <li><strong>Autres fichiers :</strong> les fichiers texte brut et les PDF s’ouvrent en lecture seule.</li>
-  <li><strong>Thèmes :</strong> l’app est livrée avec Aube, Classique, Moderne et Vif, chacun en clair et en sombre, et vous ne pouvez pas encore en installer d’autres ; consultez <a href="/fr/themes/">thèmes de l’aperçu et export PDF</a> pour ce qui est prévu.</li>
+  <li><strong>Thèmes :</strong> l’app est livrée avec Aube, Classique, Moderne et Vif, chacun en clair et en sombre. D’autres se trouvent dans la <a href="/fr/themes/gallery/">galerie de thèmes</a> : installez-en un depuis Réglages › Apparence › Obtenir plus de thèmes…, ou <a href="/fr/themes/new/">créez le vôtre</a> dans le navigateur. Un thème, ce sont des couleurs et des réglages de style, pas un plug-in.</li>
   <li><strong>Plug-ins :</strong> MarsDawn n’a ni plug-ins ni extensions.</li>
 </ul>
 <h2>Après l’essai</h2>
@@ -804,7 +804,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 <p>Exportez en PDF ou imprimez, et la page utilise la palette claire de votre thème : les diagrammes Mermaid y sont dessinés, les blocs de code gardent leur coloration syntaxique, et les sauts de page évitent de séparer un titre de sa section ou de couper un tableau ou un diagramme en deux. L’<a href="/fr/cli/">outil en ligne de commande marsdawn</a>, gratuit, utilise le même moteur d’export : un script ou un agent produit donc le même PDF, dans n’importe lequel des quatre thèmes, avec <code>--theme</code>.</p>
 
 <h2>Créez le vôtre, et parcourez ce que d’autres ont fait</h2>
-<p><a href="/fr/themes/new/">Créez un thème dans votre navigateur</a> : choisissez des couleurs et quelques options de style, voyez-les appliquées en direct, et envoyez-le en issue GitHub pour relecture &#8212; pas d’installation, pas de git. <a href="/fr/themes/gallery/">La galerie</a> montre chaque thème soumis qu’un mainteneur a relu et fusionné ; elle est vide aujourd’hui, car la voie de relecture vient tout juste d’ouvrir, mais chaque thème qui y aboutit y apparaîtra, filtrable selon son usage.</p>
+<p><a href="/fr/themes/new/">Créez un thème dans votre navigateur</a> : choisissez des couleurs et quelques options de style, voyez-les appliquées en direct, et envoyez-le en issue GitHub pour relecture &#8212; pas d’installation, pas de git. <a href="/fr/themes/gallery/">La galerie</a> montre chaque thème soumis qu’un mainteneur a relu et fusionné, filtrable selon son usage. Installez-en un dans l’app depuis Réglages › Apparence › Obtenir plus de thèmes…, et Coup d’œil l’utilise aussi dans le Finder.</p>
 
 <h2>Pour aller plus loin</h2>
 <ul>
