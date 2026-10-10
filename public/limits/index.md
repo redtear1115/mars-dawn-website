@@ -25,7 +25,7 @@ In this screenshot:
 - **Editing:** you write Markdown on the left and read the page on the right; the page itself can't be edited.
 - **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
 - **Other files:** plain text files and PDFs open read-only.
-- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet; see [preview themes and PDF export](/themes/) for what's planned.
+- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark. More are in the [theme gallery](/themes/gallery/): install one from Settings › Appearance › Get More Themes…, or [build your own](/themes/new/) in the browser. A theme is colours and style settings, not a plugin.
 - **Plugins:** MarsDawn has no plugins or extensions.
 
 ## After the trial
@@ -71,7 +71,7 @@ If you don't unlock MarsDawn once the 14-day trial ends, you can't read, edit, e
 - [Spec template](https://marsdawn.southern-light.dev/templates/spec/index.md): A Markdown spec template with requirements, a Mermaid flow diagram and acceptance criteria. Your agent fills it in; you review it in MarsDawn.
 - [Flowchart template](https://marsdawn.southern-light.dev/templates/flowchart/index.md): A Mermaid flowchart template in Markdown, with the steps written out below it. Preview it on a Mac and export it to PDF.
 - [Meeting notes template](https://marsdawn.southern-light.dev/templates/meeting-notes/index.md): A Markdown meeting notes template with decisions and action items, each with an owner. Your agent writes it up; you check it in MarsDawn.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號，內建四種主題。購買前先知道。
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號。內建四種主題，主題庫還有更多。購買前先知道。
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户，内置四种主题。购买前先知道。
 - [日本語](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類。購入前に知っておいてください。
 - [Deutsch](https://marsdawn.southern-light.dev/de/limits/index.md): Keine Synchronisierung, keine App für iPhone oder iPad, keine Plug-ins, keine Konten. Vier integrierte Themen. Gut zu wissen, bevor du kaufst.

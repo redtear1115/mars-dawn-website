@@ -26,7 +26,7 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 
 ## 打造自己的主題，也看看別人做的
 
-[在瀏覽器裡打造一個主題](/zh-hant/themes/new/)：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。[主題庫](/zh-hant/themes/gallery/)會列出每一個經過審核、合併的投稿主題；因為審核管道才剛開放，現在還是空的，但之後每個通過的主題都會出現在那裡，還能依用途篩選。
+[在瀏覽器裡打造一個主題](/zh-hant/themes/new/)：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。[主題庫](/zh-hant/themes/gallery/)收錄每一套經過維護者審核並合併的投稿主題，可以依用途篩選。在 App 的「設定 › 外觀 › 取得更多主題⋯」就能安裝，Finder 的快速查看也會跟著套用。
 
 ## 接下來
 
@@ -41,7 +41,7 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。
 - [為 Mac 而做](https://marsdawn.southern-light.dev/zh-hant/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
-- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號，內建四種主題。購買前先知道。
+- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號。內建四種主題，主題庫還有更多。購買前先知道。
 - [支援](https://marsdawn.southern-light.dev/zh-hant/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。
 - [隱私權政策](https://marsdawn.southern-light.dev/zh-hant/privacy/index.md): MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。
 - [在 Mac 上看 Markdown](https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/index.md): md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：現在可以用免費的 marsdawn 命令列工具轉成 PDF，也可以用 Mac App Store 上的 MarsDawn app。

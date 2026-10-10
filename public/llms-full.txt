@@ -231,7 +231,7 @@ In this screenshot:
 - **Editing:** you write Markdown on the left and read the page on the right; the page itself can't be edited.
 - **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
 - **Other files:** plain text files and PDFs open read-only.
-- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet; see [preview themes and PDF export](/themes/) for what's planned.
+- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark. More are in the [theme gallery](/themes/gallery/): install one from Settings › Appearance › Get More Themes…, or [build your own](/themes/new/) in the browser. A theme is colours and style settings, not a plugin.
 - **Plugins:** MarsDawn has no plugins or extensions.
 
 ## After the trial
@@ -1070,7 +1070,7 @@ Export to PDF or print, and the page uses your theme's light palette: Mermaid di
 
 ## Build your own, and browse what others made
 
-[Build a theme in your browser](/themes/new/): pick colours and a few style options, see them applied live, and submit it as a GitHub issue for review — no install, no git. [The gallery](/themes/gallery/) shows every submitted theme a maintainer has reviewed and merged; it's empty today, since the review path only just opened, but every theme that lands there will show up there, filterable by what it's good for.
+[Build a theme in your browser](/themes/new/): pick colours and a few style options, see them applied live, and submit it as a GitHub issue for review — no install, no git. [The gallery](/themes/gallery/) shows every submitted theme a maintainer has reviewed and merged, filterable by what it's good for. Install any of them in the app from Settings › Appearance › Get More Themes…, and Quick Look in Finder uses it too.
 
 ## Next
 
@@ -2409,7 +2409,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 - **編輯：**你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。
 - **格式：**MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。
 - **其他檔案：**純文字檔和 PDF 以唯讀方式開啟。
-- **主題：**內建 黎明、典雅、流行和活潑，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看[預覽主題與 PDF 輸出](/zh-hant/themes/)。
+- **主題：**內建 Dawn、Classic、Modern、Vivid 四種，各有淺色和深色。更多主題在[主題庫](/zh-hant/themes/gallery/)：在「設定 › 外觀 › 取得更多主題⋯」安裝，或在瀏覽器裡[自己做一套](/zh-hant/themes/new/)。主題只是配色和樣式設定，不是外掛。
 - **外掛：**MarsDawn 沒有外掛或擴充功能。
 
 ## 試用結束之後
@@ -3248,7 +3248,7 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 
 ## 打造自己的主題，也看看別人做的
 
-[在瀏覽器裡打造一個主題](/zh-hant/themes/new/)：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。[主題庫](/zh-hant/themes/gallery/)會列出每一個經過審核、合併的投稿主題；因為審核管道才剛開放，現在還是空的，但之後每個通過的主題都會出現在那裡，還能依用途篩選。
+[在瀏覽器裡打造一個主題](/zh-hant/themes/new/)：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。[主題庫](/zh-hant/themes/gallery/)收錄每一套經過維護者審核並合併的投稿主題，可以依用途篩選。在 App 的「設定 › 外觀 › 取得更多主題⋯」就能安裝，Finder 的快速查看也會跟著套用。
 
 ## 接下來
 
