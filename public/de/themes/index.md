@@ -26,7 +26,7 @@ Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deine
 
 ## Bau dein eigenes, und sieh dir an, was andere gemacht haben
 
-[Bau ein Thema in deinem Browser](/de/themes/new/): wähle Farben und ein paar Stiloptionen, sieh sie live angewendet und reiche es als GitHub-Issue zur Prüfung ein — keine Installation, kein git. [Die Galerie](/de/themes/gallery/) zeigt jedes eingereichte Thema, das ein Maintainer geprüft und gemerged hat; heute ist sie noch leer, weil der Prüfungsweg gerade erst geöffnet wurde, aber jedes Thema, das dort landet, erscheint dort und lässt sich nach Verwendungszweck filtern.
+[Bau ein Thema in deinem Browser](/de/themes/new/): wähle Farben und ein paar Stiloptionen, sieh sie live angewendet und reiche es als GitHub-Issue zur Prüfung ein — keine Installation, kein git. [Die Galerie](/de/themes/gallery/) zeigt jedes eingereichte Thema, das ein Maintainer geprüft und gemerged hat, filterbar nach Verwendungszweck. Installiere eines in der App über Einstellungen › Erscheinungsbild › Weitere Themes laden …, dann verwendet es auch die Übersicht im Finder.
 
 ## Weiter
 
@@ -41,7 +41,7 @@ Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deine
 - [Kostenlos testen, einmal bezahlen](https://marsdawn.southern-light.dev/de/pay-once/index.md): MarsDawn ist kostenlos zum Herunterladen. Teste alles 14 Tage lang und schalte es dann einmalig für 4,99 USD frei. Kein Abo, kein Konto.
 - [PDF-Export](https://marsdawn.southern-light.dev/de/pdf/index.md): Exportiere Markdown auf deinem Mac als PDF oder drucke es, mit Mermaid-Diagrammen und hervorgehobenem Code. Seitenumbrüche vermeiden es, kurze Codeblöcke und Tabellen zu teilen.
 - [Eine Mac-App](https://marsdawn.southern-light.dev/de/native/index.md): Ein Markdown-Editor, der eine echte Mac-App ist: native Fenster und Tabs, automatisches Sichern, Versionsverlauf, Übersicht im Finder und ein Texteditor, der sich wie ein Mac verhält.
-- [Was MarsDawn nicht kann](https://marsdawn.southern-light.dev/de/limits/index.md): Keine Synchronisierung, keine App für iPhone oder iPad, keine Plug-ins, keine Konten. Vier integrierte Themen. Gut zu wissen, bevor du kaufst.
+- [Was MarsDawn nicht kann](https://marsdawn.southern-light.dev/de/limits/index.md): Keine Synchronisierung, keine iPhone- oder iPad-App, keine Plug-ins, keine Konten. Vier integrierte Themen, mehr in der Galerie. Gut zu wissen, bevor du kaufst.
 - [Support](https://marsdawn.southern-light.dev/de/support/index.md): Hilfe zu MarsDawn, dem Markdown-Editor für macOS.
 - [Datenschutzrichtlinie](https://marsdawn.southern-light.dev/de/privacy/index.md): MarsDawn erhebt keine personenbezogenen Daten. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
 - [Markdown auf dem Mac ansehen](https://marsdawn.southern-light.dev/de/view-markdown-on-mac/index.md): Eine .md-Datei ist reiner Text mit Formatierungszeichen. So liest du sie auf dem Mac gerendert: heute als PDF mit dem kostenlosen Befehlszeilenwerkzeug marsdawn und in der MarsDawn-App aus dem Mac App Store.

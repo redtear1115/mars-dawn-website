@@ -231,7 +231,7 @@ In this screenshot:
 - **Editing:** you write Markdown on the left and read the page on the right; the page itself can't be edited.
 - **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
 - **Other files:** plain text files and PDFs open read-only.
-- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can't install others yet; see [preview themes and PDF export](/themes/) for what's planned.
+- **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark. More are in the [theme gallery](/themes/gallery/): install one from Settings › Appearance › Get More Themes…, or [build your own](/themes/new/) in the browser. A theme is colours and style settings, not a plugin.
 - **Plugins:** MarsDawn has no plugins or extensions.
 
 ## After the trial
@@ -1070,7 +1070,7 @@ Export to PDF or print, and the page uses your theme's light palette: Mermaid di
 
 ## Build your own, and browse what others made
 
-[Build a theme in your browser](/themes/new/): pick colours and a few style options, see them applied live, and submit it as a GitHub issue for review — no install, no git. [The gallery](/themes/gallery/) shows every submitted theme a maintainer has reviewed and merged; it's empty today, since the review path only just opened, but every theme that lands there will show up there, filterable by what it's good for.
+[Build a theme in your browser](/themes/new/): pick colours and a few style options, see them applied live, and submit it as a GitHub issue for review — no install, no git. [The gallery](/themes/gallery/) shows every submitted theme a maintainer has reviewed and merged, filterable by what it's good for. Install any of them in the app from Settings › Appearance › Get More Themes…, and Quick Look in Finder uses it too.
 
 ## Next
 
@@ -2409,7 +2409,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 - **編輯：**你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。
 - **格式：**MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。
 - **其他檔案：**純文字檔和 PDF 以唯讀方式開啟。
-- **主題：**內建 黎明、典雅、流行和活潑，每種都有淺色與深色，目前還無法安裝其他主題——規劃中的內容請看[預覽主題與 PDF 輸出](/zh-hant/themes/)。
+- **主題：**內建黎明、典雅、流行、活潑四種，各有淺色和深色。更多主題在[主題庫](/zh-hant/themes/gallery/)：在「設定 › 外觀 › 取得更多主題⋯」安裝，或在瀏覽器裡[自己做一套](/zh-hant/themes/new/)。主題只是配色和樣式設定，不是外掛。
 - **外掛：**MarsDawn 沒有外掛或擴充功能。
 
 ## 試用結束之後
@@ -3248,7 +3248,7 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 
 ## 打造自己的主題，也看看別人做的
 
-[在瀏覽器裡打造一個主題](/zh-hant/themes/new/)：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。[主題庫](/zh-hant/themes/gallery/)會列出每一個經過審核、合併的投稿主題；因為審核管道才剛開放，現在還是空的，但之後每個通過的主題都會出現在那裡，還能依用途篩選。
+[在瀏覽器裡打造一個主題](/zh-hant/themes/new/)：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。[主題庫](/zh-hant/themes/gallery/)收錄每一套經過維護者審核並合併的投稿主題，可以依用途篩選。在 App 的「設定 › 外觀 › 取得更多主題⋯」就能安裝，Finder 的快速查看也會跟著套用。
 
 ## 接下來
 
@@ -4625,7 +4625,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 - **编辑：**你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。
 - **格式：**MarsDawn 能导出 PDF 和打印，不能导出 Word 文件。
 - **其他文件：**纯文本文件和 PDF 以只读方式打开。
-- **主题：**内置 黎明、典雅、流行和活泼，每种都有浅色与深色，无法安装其他主题。
+- **主题：**内置黎明、典雅、流行、活泼四种，各有浅色和深色。更多主题在[主题图库](/zh-hans/themes/gallery/)：在“设置 › 外观 › 获取更多主题…”安装，或在浏览器里[自己做一套](/zh-hans/themes/new/)。主题只是配色和样式设置，不是插件。
 - **插件：**MarsDawn 没有插件或扩展功能。
 
 ## 试用结束之后
@@ -5454,7 +5454,7 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 ## 打造自己的主题，也看看别人做的
 
-[在浏览器里打造一个主题](/zh-hans/themes/new/)：挑选颜色和几个样式选项，实时看效果，再送出成一个 GitHub issue 让人审核——不用安装，也不用 git。[主题库](/zh-hans/themes/gallery/)会列出每一个经过审核、合并的投稿主题；因为审核渠道才刚开放，现在还是空的，但之后每个通过的主题都会出现在那里，还能按用途筛选。
+[在浏览器里打造一个主题](/zh-hans/themes/new/)：挑选颜色和几个样式选项，实时看效果，再送出成一个 GitHub issue 让人审核——不用安装，也不用 git。[主题图库](/zh-hans/themes/gallery/)收录每一套经过维护者审核并合并的投稿主题，可以按用途筛选。在 App 的“设置 › 外观 › 获取更多主题…”就能安装，访达的快速查看也会跟着套用。
 
 ## 接下来
 
@@ -6831,7 +6831,7 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 - **編集：**左に Markdown を書き、右でページを読みます。ページ自体は編集できません。
 - **形式：**MarsDawn は PDF の書き出しとプリントに対応していますが、Word ファイルへの書き出しはできません。
 - **その他のファイル：**プレーンテキストファイルと PDF は読み取り専用で開きます。
-- **テーマ：**夜明け、クラシック、モダン、ビビッド の4種類が組み込まれており、それぞれライトとダークがあります。他のテーマを追加することはできません。
+- **テーマ：**夜明け、クラシック、モダン、ビビッドの4種類が組み込まれており、それぞれライトとダークがあります。ほかのテーマは[テーマギャラリー](/ja/themes/gallery/)にあり、「設定 › 外観モード › テーマを追加…」からインストールするか、ブラウザで[自分で作る](/ja/themes/new/)こともできます。テーマは配色とスタイルの設定で、プラグインではありません。
 - **プラグイン：**MarsDawn にプラグインや拡張機能はありません。
 
 ## 試用期間が終わったら
@@ -7660,7 +7660,7 @@ PDF に書き出す、またはプリントすると、テーマのライトカ�
 
 ## 自分のテーマを作り、他の人が作ったものも見る
 
-[ブラウザでテーマを作れます](/ja/themes/new/)：色といくつかのスタイルオプションを選び、その場で確認し、レビュー用に GitHub の issue として送信します — インストールも git も不要です。[ギャラリー](/ja/themes/gallery/)には、メンテナがレビューしてマージしたテーマが並びます。レビューの窓口が開いたばかりなので今日はまだ空ですが、通過したテーマは順次ここに表示され、用途で絞り込めます。
+[ブラウザでテーマを作れます](/ja/themes/new/)：色といくつかのスタイルオプションを選び、その場で確認し、レビュー用に GitHub の issue として送信します — インストールも git も不要です。[ギャラリー](/ja/themes/gallery/)には、メンテナがレビューしてマージした投稿テーマが並び、用途で絞り込めます。アプリの「設定 › 外観モード › テーマを追加…」からインストールでき、Finder のクイックルックにも反映されます。
 
 ## 次に
 
@@ -9037,7 +9037,7 @@ Auf diesem Bildschirmfoto:
 - **Bearbeiten:** Du schreibst links Markdown und liest rechts die Seite; die Seite selbst lässt sich nicht bearbeiten.
 - **Formate:** MarsDawn exportiert PDF und druckt, exportiert aber keine Word-Dateien.
 - **Andere Dateien:** Reine Textdateien und PDFs werden schreibgeschützt geöffnet.
-- **Themen:** Enthalten sind Morgenrot, Klassisch, Modern und Lebhaft, jeweils hell und dunkel, und andere lassen sich noch nicht installieren; was geplant ist, steht unter [Vorschau-Themen und PDF-Export](/de/themes/).
+- **Themen:** Enthalten sind Morgenrot, Klassisch, Modern und Lebhaft, jeweils hell und dunkel. Weitere findest du in der [Themengalerie](/de/themes/gallery/): Installiere eines über Einstellungen › Erscheinungsbild › Weitere Themes laden …, oder [bau dein eigenes](/de/themes/new/) im Browser. Ein Thema besteht aus Farben und Stileinstellungen, es ist kein Plug-in.
 - **Plug-ins:** MarsDawn hat keine Plug-ins oder Erweiterungen.
 
 ## Nach dem Test
@@ -9876,7 +9876,7 @@ Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deine
 
 ## Bau dein eigenes, und sieh dir an, was andere gemacht haben
 
-[Bau ein Thema in deinem Browser](/de/themes/new/): wähle Farben und ein paar Stiloptionen, sieh sie live angewendet und reiche es als GitHub-Issue zur Prüfung ein — keine Installation, kein git. [Die Galerie](/de/themes/gallery/) zeigt jedes eingereichte Thema, das ein Maintainer geprüft und gemerged hat; heute ist sie noch leer, weil der Prüfungsweg gerade erst geöffnet wurde, aber jedes Thema, das dort landet, erscheint dort und lässt sich nach Verwendungszweck filtern.
+[Bau ein Thema in deinem Browser](/de/themes/new/): wähle Farben und ein paar Stiloptionen, sieh sie live angewendet und reiche es als GitHub-Issue zur Prüfung ein — keine Installation, kein git. [Die Galerie](/de/themes/gallery/) zeigt jedes eingereichte Thema, das ein Maintainer geprüft und gemerged hat, filterbar nach Verwendungszweck. Installiere eines in der App über Einstellungen › Erscheinungsbild › Weitere Themes laden …, dann verwendet es auch die Übersicht im Finder.
 
 ## Weiter
 
@@ -11208,7 +11208,7 @@ Sur cette capture d’écran :
 - **Édition :** vous écrivez le Markdown à gauche et lisez la page à droite ; la page elle-même n’est pas modifiable.
 - **Formats :** MarsDawn exporte en PDF et imprime, mais n’exporte pas de fichiers Word.
 - **Autres fichiers :** les fichiers texte brut et les PDF s’ouvrent en lecture seule.
-- **Thèmes :** l’app est livrée avec Aube, Classique, Moderne et Vif, chacun en clair et en sombre, et vous ne pouvez pas encore en installer d’autres ; consultez [thèmes de l’aperçu et export PDF](/fr/themes/) pour ce qui est prévu.
+- **Thèmes :** l’app est livrée avec Aube, Classique, Moderne et Vif, chacun en clair et en sombre. D’autres se trouvent dans la [galerie de thèmes](/fr/themes/gallery/) : installez-en un depuis Réglages › Apparence › Obtenir plus de thèmes…, ou [créez le vôtre](/fr/themes/new/) dans le navigateur. Un thème, ce sont des couleurs et des réglages de style, pas un plug-in.
 - **Plug-ins :** MarsDawn n’a ni plug-ins ni extensions.
 
 ## Après l’essai
@@ -12047,7 +12047,7 @@ Exportez en PDF ou imprimez, et la page utilise la palette claire de votre thèm
 
 ## Créez le vôtre, et parcourez ce que d’autres ont fait
 
-[Créez un thème dans votre navigateur](/fr/themes/new/) : choisissez des couleurs et quelques options de style, voyez-les appliquées en direct, et envoyez-le en issue GitHub pour relecture — pas d’installation, pas de git. [La galerie](/fr/themes/gallery/) montre chaque thème soumis qu’un mainteneur a relu et fusionné ; elle est vide aujourd’hui, car la voie de relecture vient tout juste d’ouvrir, mais chaque thème qui y aboutit y apparaîtra, filtrable selon son usage.
+[Créez un thème dans votre navigateur](/fr/themes/new/) : choisissez des couleurs et quelques options de style, voyez-les appliquées en direct, et envoyez-le en issue GitHub pour relecture — pas d’installation, pas de git. [La galerie](/fr/themes/gallery/) montre chaque thème soumis qu’un mainteneur a relu et fusionné, filtrable selon son usage. Installez-en un dans l’app depuis Réglages › Apparence › Obtenir plus de thèmes…, et Coup d’œil l’utilise aussi dans le Finder.
 
 ## Pour aller plus loin
 
@@ -13379,7 +13379,7 @@ En esta captura de pantalla:
 - **Edición:** escribes Markdown a la izquierda y lees la página a la derecha; la página en sí no se puede editar.
 - **Formatos:** MarsDawn exporta a PDF e imprime, pero no exporta archivos de Word.
 - **Otros archivos:** los archivos de texto simple y los PDF se abren en modo de solo lectura.
-- **Temas:** incluye Amanecer, Clásico, Moderno y Vívido, cada uno en claro y oscuro, y todavía no puedes instalar otros; consulta [temas de la vista previa y exportación a PDF](/es/themes/) para ver lo que está planeado.
+- **Temas:** incluye Amanecer, Clásico, Moderno y Vívido, cada uno en claro y oscuro. Hay más en la [galería de temas](/es/themes/gallery/): instala uno desde Ajustes › Aspecto › Obtener más temas…, o [crea el tuyo](/es/themes/new/) en el navegador. Un tema son colores y ajustes de estilo, no un plugin.
 - **Plugins:** MarsDawn no tiene plugins ni extensiones.
 
 ## Después de la prueba
@@ -14218,7 +14218,7 @@ Exporta a PDF o imprime, y la página usa la paleta clara de tu tema: los diagra
 
 ## Crea el tuyo y explora lo que hicieron otros
 
-[Crea un tema en tu navegador](/es/themes/new/): elige colores y unas pocas opciones de estilo, míralos aplicados en vivo y envíalo como un issue de GitHub para revisión — sin instalación, sin git. [La galería](/es/themes/gallery/) muestra cada tema enviado que un mantenedor haya revisado y fusionado; hoy está vacía, porque la vía de revisión acaba de abrirse, pero cada tema que llegue allí aparecerá allí, filtrable por para qué sirve.
+[Crea un tema en tu navegador](/es/themes/new/): elige colores y unas pocas opciones de estilo, míralos aplicados en vivo y envíalo como un issue de GitHub para revisión — sin instalación, sin git. [La galería](/es/themes/gallery/) muestra cada tema enviado que un mantenedor haya revisado y fusionado, filtrable por para qué sirve. Instala cualquiera en la app desde Ajustes › Aspecto › Obtener más temas…, y Vista rápida en el Finder también lo usa.
 
 ## Siguiente
 
@@ -15550,7 +15550,7 @@ Source: https://marsdawn.southern-light.dev/ko/limits/
 - **편집:** 왼쪽에서 Markdown을 쓰고 오른쪽에서 페이지를 읽습니다. 페이지 자체는 편집할 수 없습니다.
 - **형식:** MarsDawn은 PDF로 내보내고 프린트할 수 있지만, Word 파일로는 내보내지 않습니다.
 - **기타 파일:** 일반 텍스트 파일과 PDF는 읽기 전용으로 열립니다.
-- **테마:** 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있으며, 아직 다른 테마는 설치할 수 없습니다. 계획은 [미리보기 테마와 PDF 내보내기](/ko/themes/)에서 확인하세요.
+- **테마:** 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있습니다. 더 많은 테마는 [테마 갤러리](/ko/themes/gallery/)에 있습니다. 설정 › 화면 모드 › 테마 더 받기…에서 설치하거나, 브라우저에서 [직접 만들](/ko/themes/new/) 수 있습니다. 테마는 색과 스타일 설정일 뿐, 플러그인이 아닙니다.
 - **플러그인:** MarsDawn에는 플러그인이나 확장 기능이 없습니다.
 
 ## 체험이 끝난 뒤
@@ -16389,7 +16389,7 @@ PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레�
 
 ## 직접 만들고, 다른 사람이 만든 것도 둘러보세요
 
-[브라우저에서 테마를 만드세요](/ko/themes/new/). 색과 몇 가지 스타일 옵션을 고르고, 실시간으로 적용된 모습을 본 뒤, 검토용 GitHub 이슈로 제출하면 됩니다. 설치도 git도 필요 없습니다. [갤러리](/ko/themes/gallery/)에는 유지 관리자가 검토하고 병합한 제출 테마가 나열됩니다. 검토 창구가 막 열렸기 때문에 오늘은 비어 있지만, 통과한 테마는 여기에 나타나며 용도로 걸러 볼 수 있습니다.
+[브라우저에서 테마를 만드세요](/ko/themes/new/). 색과 몇 가지 스타일 옵션을 고르고, 실시간으로 적용된 모습을 본 뒤, 검토용 GitHub 이슈로 제출하면 됩니다. 설치도 git도 필요 없습니다. [갤러리](/ko/themes/gallery/)에는 유지 관리자가 검토하고 병합한 제출 테마가 나열되며, 용도로 걸러 볼 수 있습니다. 앱의 설정 › 화면 모드 › 테마 더 받기…에서 설치할 수 있고, Finder의 훑어보기에도 적용됩니다.
 
 ## 다음
 
