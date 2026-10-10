@@ -25,7 +25,7 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一個獨立、公開、Apache-2.0 授權的 repository。它是一個有兩個工具的 MCP 伺服器，`export_markdown_to_pdf` 和 `open_in_marsdawn`，分別包住 `marsdawn export --json` 和 `marsdawn open --json`：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。
 
 - **取得方式：**以 MCP Bundle（`marsdawn.mcpb`）的形式附在[GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases) 上，或從原始碼以 stdio 執行伺服器。
-- **Registry：**已上架 [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest)，名稱為 `dev.southern-light.mcp/marsdawn`（目前版本：0.2.4）。
+- **Registry：**已上架 [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest)，名稱為 `dev.southern-light.mcp/marsdawn`。
 - **託管：**只能自架，沒有代管服務。伺服器跑在你自己的機器上，就在 marsdawn 旁邊。
 - **系統需求：**macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。
 

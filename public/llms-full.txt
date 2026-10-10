@@ -942,7 +942,7 @@ For an agent that reads plain-Markdown instructions instead of calling a shell d
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) is a separate, public, Apache-2.0 repository. It's an MCP server with two tools, `export_markdown_to_pdf` and `open_in_marsdawn`, that wrap `marsdawn export --json` and `marsdawn open --json`: point an MCP client at it and a tool call returns the same JSON as the CLI.
 
 - **Get it:** as an MCP Bundle, `marsdawn.mcpb`, attached to [its GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases), or by running the server from source over stdio.
-- **Registry:** listed in the [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) as `dev.southern-light.mcp/marsdawn` (current release: 0.2.4).
+- **Registry:** listed in the [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) as `dev.southern-light.mcp/marsdawn`.
 - **Hosting:** self-hosted only. There is no hosted marsdawn-mcp service; the server runs on your own machine, next to marsdawn itself.
 - **Requirements:** macOS, marsdawn 0.5.0 or later, and Node.js 20 or later to run the server.
 
@@ -3120,7 +3120,7 @@ MarsDawn 沒有自己的 AI 模型：它是為了審閱 Markdown 而做的，不
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一個獨立、公開、Apache-2.0 授權的 repository。它是一個有兩個工具的 MCP 伺服器，`export_markdown_to_pdf` 和 `open_in_marsdawn`，分別包住 `marsdawn export --json` 和 `marsdawn open --json`：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。
 
 - **取得方式：**以 MCP Bundle（`marsdawn.mcpb`）的形式附在[GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases) 上，或從原始碼以 stdio 執行伺服器。
-- **Registry：**已上架 [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest)，名稱為 `dev.southern-light.mcp/marsdawn`（目前版本：0.2.4）。
+- **Registry：**已上架 [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest)，名稱為 `dev.southern-light.mcp/marsdawn`。
 - **託管：**只能自架，沒有代管服務。伺服器跑在你自己的機器上，就在 marsdawn 旁邊。
 - **系統需求：**macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。
 
@@ -5326,7 +5326,7 @@ MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) 是另一个独立、公开、Apache-2.0 授权的 repository。它是一个有两个工具的 MCP 服务器，`export_markdown_to_pdf` 和 `open_in_marsdawn`，分别包住 `marsdawn export --json` 和 `marsdawn open --json`：把 MCP 客户端指向它，工具调用返回的 JSON 和 CLI 一样。
 
 - **获取方式：**以 MCP Bundle（`marsdawn.mcpb`）的形式附在[GitHub release](https://github.com/redtear1115/marsdawn-mcp/releases) 上，或从源代码以 stdio 运行服务器。
-- **Registry：**已上架 [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest)，名称为 `dev.southern-light.mcp/marsdawn`（目前版本：0.2.4）。
+- **Registry：**已上架 [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest)，名称为 `dev.southern-light.mcp/marsdawn`。
 - **托管：**只能自架，没有代管服务。服务器跑在你自己的机器上，就在 marsdawn 旁边。
 - **系统要求：**macOS、marsdawn 0.5.0 以上，以及运行服务器需要的 Node.js 20 以上。
 
@@ -7532,7 +7532,7 @@ MarsDawn には自前の AI モデルがありません。Markdown を書くた�
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) は、別の、公開された、Apache-2.0 ライセンスの独立した repository です。`export_markdown_to_pdf` と `open_in_marsdawn` という2つのツールを持つ MCP サーバーで、それぞれ `marsdawn export --json` と `marsdawn open --json` をラップしています。MCP クライアントをそれに向ければ、ツール呼び出しは CLI と同じ JSON を返します。
 
 - **入手方法：**[GitHub のリリース](https://github.com/redtear1115/marsdawn-mcp/releases)に添付された MCP Bundle（`marsdawn.mcpb`）として、またはソースから stdio でサーバーを実行することで入手できます。
-- **Registry：**[MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) に `dev.southern-light.mcp/marsdawn` として登録されています（現在のリリース：0.2.4）。
+- **Registry：**[MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) に `dev.southern-light.mcp/marsdawn` として登録されています。
 - **ホスティング：**自分でホストするしかありません。marsdawn-mcp のホスティングサービスは存在せず、サーバーは marsdawn 自身の隣、あなた自身のマシン上で動きます。
 - **動作要件：**macOS、marsdawn 0.5.0 以降、そしてサーバーを実行するための Node.js 20 以降。
 
@@ -9748,7 +9748,7 @@ Für einen Agenten, der Anweisungen in reinem Markdown liest, statt direkt eine 
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) ist ein eigenes, öffentliches Repository unter Apache-2.0. Es ist ein MCP-Server mit zwei Werkzeugen, `export_markdown_to_pdf` und `open_in_marsdawn`, die `marsdawn export --json` und `marsdawn open --json` umschließen: Richte einen MCP-Client darauf, und ein Werkzeugaufruf liefert dasselbe JSON wie die CLI.
 
 - **Bezugsquelle:** als MCP Bundle, `marsdawn.mcpb`, angehängt an [sein GitHub-Release](https://github.com/redtear1115/marsdawn-mcp/releases), oder indem du den Server aus dem Quellcode über stdio startest.
-- **Registry:** in der [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) als `dev.southern-light.mcp/marsdawn` gelistet (aktuelles Release: 0.2.4).
+- **Registry:** in der [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) als `dev.southern-light.mcp/marsdawn` gelistet.
 - **Hosting:** nur selbst gehostet. Es gibt keinen gehosteten marsdawn-mcp-Dienst; der Server läuft auf deinem eigenen Rechner, neben marsdawn selbst.
 - **Voraussetzungen:** macOS, marsdawn 0.5.0 oder neuer und Node.js 20 oder neuer, um den Server auszuführen.
 
@@ -11919,7 +11919,7 @@ Pour un agent qui lit des instructions en Markdown brut au lieu d’appeler dire
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) est un dépôt séparé, public, sous licence Apache-2.0. C’est un serveur MCP doté de deux outils, `export_markdown_to_pdf` et `open_in_marsdawn`, qui enveloppent `marsdawn export --json` et `marsdawn open --json` : pointez un client MCP vers lui, et un appel d’outil renvoie le même JSON que la CLI.
 
 - **Où l’obtenir :** sous forme de MCP Bundle, `marsdawn.mcpb`, joint à [sa release GitHub](https://github.com/redtear1115/marsdawn-mcp/releases), ou en lançant le serveur depuis les sources via stdio.
-- **Registre :** référencé dans le [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) sous le nom `dev.southern-light.mcp/marsdawn` (version actuelle : 0.2.4).
+- **Registre :** référencé dans le [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) sous le nom `dev.southern-light.mcp/marsdawn`.
 - **Hébergement :** auto-hébergé uniquement. Il n’existe pas de service marsdawn-mcp hébergé ; le serveur tourne sur votre propre machine, à côté de marsdawn.
 - **Configuration requise :** macOS, marsdawn 0.5.0 ou version ultérieure, et Node.js 20 ou version ultérieure pour lancer le serveur.
 
@@ -14090,7 +14090,7 @@ Para un agente que lee instrucciones en Markdown simple en lugar de llamar direc
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) es un repositorio aparte, público y con licencia Apache-2.0. Es un servidor MCP con dos herramientas, `export_markdown_to_pdf` y `open_in_marsdawn`, que envuelven `marsdawn export --json` y `marsdawn open --json`: apunta un cliente MCP hacia él y una llamada a una herramienta devuelve el mismo JSON que la CLI.
 
 - **Dónde obtenerlo:** como MCP Bundle, `marsdawn.mcpb`, adjunto a [su release de GitHub](https://github.com/redtear1115/marsdawn-mcp/releases), o ejecutando el servidor desde el código fuente por stdio.
-- **Registro:** aparece en el [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) como `dev.southern-light.mcp/marsdawn` (versión actual: 0.2.4).
+- **Registro:** aparece en el [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) como `dev.southern-light.mcp/marsdawn`.
 - **Alojamiento:** solo autoalojado. No existe un servicio de marsdawn-mcp alojado; el servidor se ejecuta en tu propia máquina, junto a marsdawn.
 - **Requisitos:** macOS, marsdawn 0.5.0 o posterior y Node.js 20 o posterior para ejecutar el servidor.
 
@@ -16261,7 +16261,7 @@ MarsDawn에는 자체 AI 모델이 없습니다. Markdown을 쓰는 것이 아�
 [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp)는 Apache-2.0 라이선스의 별도 공개 저장소입니다. `export_markdown_to_pdf`와 `open_in_marsdawn` 두 도구를 가진 MCP 서버로, 각각 `marsdawn export --json`과 `marsdawn open --json`을 감쌉니다. MCP 클라이언트가 이 서버를 가리키게 하면 도구 호출이 CLI와 같은 JSON을 돌려줍니다.
 
 - **받는 곳:** MCP Bundle인 `marsdawn.mcpb`를 [GitHub 릴리스](https://github.com/redtear1115/marsdawn-mcp/releases)에서 받거나, 소스에서 stdio로 서버를 실행합니다.
-- **레지스트리:** [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest)에 `dev.southern-light.mcp/marsdawn`으로 등록되어 있습니다(현재 릴리스: 0.2.4).
+- **레지스트리:** [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest)에 `dev.southern-light.mcp/marsdawn`으로 등록되어 있습니다.
 - **호스팅:** 직접 호스팅만 가능합니다. 호스팅된 marsdawn-mcp 서비스는 없으며, 서버는 marsdawn과 함께 여러분의 컴퓨터에서 실행됩니다.
 - **요구 사항:** macOS, marsdawn 0.5.0 이상, 그리고 서버를 실행할 Node.js 20 이상.
 
