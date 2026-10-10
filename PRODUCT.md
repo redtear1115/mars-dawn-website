@@ -28,7 +28,7 @@ AI assistants and crawlers read the site too, through `llms.txt`, `llms-full.txt
 
 ## Product Purpose
 
-The site is the public home of MarsDawn, a native Mac Markdown editor with live preview, Mermaid diagrams, KaTeX math and PDF export, built for reading what AI agents write. The app will be sold only through the Mac App Store and is coming soon. The free `marsdawn` CLI can be installed today.
+The site is the public home of MarsDawn, a native Mac Markdown editor with live preview, Mermaid diagrams, KaTeX math and PDF export, built for reading what AI agents write. The app is sold only through the Mac App Store, where it is available now. The free `marsdawn` CLI can be installed today.
 
 While the app is still unreleased, the site succeeds on two things:
 
@@ -62,7 +62,7 @@ The site leads with one angle on top of them. MarsDawn is the careful-read step 
 - **Themes**: four preview themes, Dawn (the default), Classic (典雅), Modern (流行) and Vivid (活潑).
 - **Limits**: no sync, no iPhone or iPad app (a read-only iPhone viewer is a future plan), no plugins and no accounts.
 
-**Pricing copy ahead of launch:** the site describes the decided model (free download, 14-day trial, USD 4.99 one-time unlock) before the app or its purchase ships. That is intentional: every page says the app is coming soon, so this copy previews the model rather than claiming it is live. Keep it in step with the parent if the model changes again.
+**Pricing copy:** the site describes the model (free download, 14-day trial, USD 4.99 one-time unlock) as live, because the app is on the Mac App Store. Keep it in step with the parent if the model changes again.
 
 **Site constraints**
 - The site ships in four languages: English, Traditional Chinese (`/zh-hant/`), Simplified Chinese (`/zh-hans/`) and Japanese (`/ja/`). English and Traditional Chinese are the primary editions. From 1.0.0 the app's interface ships in eight languages (these four plus German, French, Spanish and Korean); the site publishes in four, and states the app's languages only through `APP_UI_LANGUAGES` (see the UI-labels rule below).

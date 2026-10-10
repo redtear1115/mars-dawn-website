@@ -135,7 +135,7 @@ def build(k) -> dict:
     }
     pages['limits'] = {
         "title": 'MarsDawn이 하지 않는 일 · MarsDawn',
-        "description": '동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 기본 테마는 네 가지입니다. 구입 전에 알아 두세요.',
+        "description": '동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 기본 테마는 네 가지이고, 갤러리에 더 있습니다. 구입 전에 알아 두세요.',
         "intro": """
 <section class="intro">
   <h1>MarsDawn이 하지 않는 일.</h1>
@@ -156,7 +156,7 @@ def build(k) -> dict:
   <li><strong>편집:</strong> 왼쪽에서 Markdown을 쓰고 오른쪽에서 페이지를 읽습니다. 페이지 자체는 편집할 수 없습니다.</li>
   <li><strong>형식:</strong> MarsDawn은 PDF로 내보내고 프린트할 수 있지만, Word 파일로는 내보내지 않습니다.</li>
   <li><strong>기타 파일:</strong> 일반 텍스트 파일과 PDF는 읽기 전용으로 열립니다.</li>
-  <li><strong>테마:</strong> 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있으며, 아직 다른 테마는 설치할 수 없습니다. 계획은 <a href="/ko/themes/">미리보기 테마와 PDF 내보내기</a>에서 확인하세요.</li>
+  <li><strong>테마:</strong> 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있습니다. 더 많은 테마는 <a href="/ko/themes/gallery/">테마 갤러리</a>에 있습니다. 설정 › 화면 모드 › 테마 더 받기…에서 설치하거나, 브라우저에서 <a href="/ko/themes/new/">직접 만들</a> 수 있습니다. 테마는 색과 스타일 설정일 뿐, 플러그인이 아닙니다.</li>
   <li><strong>플러그인:</strong> MarsDawn에는 플러그인이나 확장 기능이 없습니다.</li>
 </ul>
 <h2>체험이 끝난 뒤</h2>
@@ -804,7 +804,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 <p>PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레트를 씁니다. Mermaid 다이어그램이 그대로 그려지고, 코드 블록은 구문 강조를 유지하며, 페이지 나눔은 제목과 본문을 떼어 놓거나 표나 다이어그램을 반으로 자르지 않습니다. 무료 <a href="/ko/cli/">marsdawn 명령줄 도구</a>도 같은 내보내기 엔진을 쓰므로, 스크립트나 에이전트도 <code>--theme</code>으로 네 가지 테마 중 어느 것이든 똑같은 PDF를 만듭니다.</p>
 
 <h2>직접 만들고, 다른 사람이 만든 것도 둘러보세요</h2>
-<p><a href="/ko/themes/new/">브라우저에서 테마를 만드세요</a>. 색과 몇 가지 스타일 옵션을 고르고, 실시간으로 적용된 모습을 본 뒤, 검토용 GitHub 이슈로 제출하면 됩니다. 설치도 git도 필요 없습니다. <a href="/ko/themes/gallery/">갤러리</a>에는 유지 관리자가 검토하고 병합한 제출 테마가 나열됩니다. 검토 창구가 막 열렸기 때문에 오늘은 비어 있지만, 통과한 테마는 여기에 나타나며 용도로 걸러 볼 수 있습니다.</p>
+<p><a href="/ko/themes/new/">브라우저에서 테마를 만드세요</a>. 색과 몇 가지 스타일 옵션을 고르고, 실시간으로 적용된 모습을 본 뒤, 검토용 GitHub 이슈로 제출하면 됩니다. 설치도 git도 필요 없습니다. <a href="/ko/themes/gallery/">갤러리</a>에는 유지 관리자가 검토하고 병합한 제출 테마가 나열되며, 용도로 걸러 볼 수 있습니다. 앱의 설정 › 화면 모드 › 테마 더 받기…에서 설치할 수 있고, Finder의 훑어보기에도 적용됩니다.</p>
 
 <h2>다음</h2>
 <ul>
