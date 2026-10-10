@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finder에서 Markdown 미리보기: Mac의 .md 파일 훑어보기(Quick Look) · MarsDawn</title>
+<meta name="description" content="MarsDawn의 훑어보기로 Finder에서 스페이스 바를 누르면 Markdown이 렌더링되어 보입니다. Mermaid, KaTeX, 강조된 코드도 표시됩니다. 체험이 끝난 뒤에도 계속 작동합니다.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/quicklook/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/quicklook/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/quicklook/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/quicklook/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/quicklook/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/quicklook/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/quicklook/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/quicklook/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/quicklook/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/quicklook/">
+<link rel="alternate" type="text/markdown" href="/ko/quicklook/index.md">
+<meta property="og:title" content="Finder에서 Markdown 미리보기: Mac의 .md 파일 훑어보기(Quick Look) · MarsDawn">
+<meta property="og:description" content="MarsDawn의 훑어보기로 Finder에서 스페이스 바를 누르면 Markdown이 렌더링되어 보입니다. Mermaid, KaTeX, 강조된 코드도 표시됩니다. 체험이 끝난 뒤에도 계속 작동합니다.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/quicklook/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/ko/"}, {"@type": "ListItem", "position": 2, "name": "Markdown 훑어보기", "item": "https://marsdawn.southern-light.dev/ko/quicklook/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Finder에서 Markdown 파일을 미리 보려면 어떻게 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "파일을 선택하고 스페이스 바를 누르세요. MarsDawn이 설치되어 있으면 훑어보기가 Mermaid 다이어그램, KaTeX 수식, 강조된 코드를 포함한 렌더링된 페이지를 보여 줍니다."}}, {"@type": "Question", "name": "14일 체험이 끝나도 훑어보기를 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네. 훑어보기는 체험 기간의 제한을 받지 않습니다. 체험 중에도, 체험이 끝난 뒤에도, 잠금을 해제한 뒤에도 Markdown 파일을 계속 렌더링합니다."}}, {"@type": "Question", "name": "훑어보기에 일반 텍스트만 보이는 이유는 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "훑어보기 확장 프로그램이 꺼져 있을 수 있습니다. 시스템 설정을 열고 일반 ▸ 로그인 항목 및 확장 프로그램으로 이동한 다음, 확장 프로그램 아래 ‘훑어보기’ 옆의 정보 버튼을 클릭하고 ‘MarsDawn Preview’를 켠 뒤 완료를 클릭하세요."}}, {"@type": "Question", "name": "훑어보기는 따로 비용이 드나요?", "acceptedAnswer": {"@type": "Answer", "text": "아니요. 훑어보기 확장 프로그램은 MarsDawn의 일부이며 별도 구입이 필요 없습니다. MarsDawn은 무료로 다운로드할 수 있고, 14일 체험 뒤 잠금 해제는 한 번만 USD 4.99이며, 훑어보기는 체험 여부와 관계없이 작동합니다."}}, {"@type": "Question", "name": "어떤 버전의 macOS가 필요한가요?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn에는 macOS 26 이상이 필요합니다."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "훑어보기로 Markdown 파일을 미리 보는 방법", "step": [{"@type": "HowToStep", "position": 1, "name": "MarsDawn을 설치하세요.", "text": "Mac App Store에서 MarsDawn을 다운로드하세요. 훑어보기 확장 프로그램은 앱의 일부입니다."}, {"@type": "HowToStep", "position": 2, "name": "Markdown 파일을 선택하세요.", "text": "Finder에서 .md 파일을 한 번 클릭하세요."}, {"@type": "HowToStep", "position": 3, "name": "스페이스 바를 누르세요.", "text": "렌더링된 미리보기가 열립니다. 스페이스 바를 다시 누르면 닫힙니다."}, {"@type": "HowToStep", "position": 4, "name": "일반 텍스트가 보이면 확장 프로그램을 켜세요.", "text": "시스템 설정을 열고 일반 ▸ 로그인 항목 및 확장 프로그램으로 이동한 다음, 확장 프로그램 아래 ‘훑어보기’ 옆의 정보 버튼을 클릭하고 ‘MarsDawn Preview’를 켠 뒤 완료를 클릭하세요."}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store에서 판매 중</span>
+  <nav class="lang" aria-label="Language"><a href="/quicklook/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/quicklook/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/quicklook/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/quicklook/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/quicklook/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/quicklook/" hreflang="fr" lang="fr">Français</a> · <a href="/es/quicklook/" hreflang="es" lang="es">Español</a> · <a href="/ko/quicklook/" hreflang="ko" aria-current="true" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Finder의 훑어보기로 Markdown 미리보기.</h1>
+  <p>Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르세요. MarsDawn이 설치되어 있으면 훑어보기(Quick Look)가 일반 텍스트 대신 렌더링된 페이지를 보여 줍니다.</p>
+</section>
+<h2 id="what-the-preview-shows">미리보기에 보이는 것</h2>
+<ul>
+  <li>MarsDawn의 미리보기 패널과 같은 렌더러로 그린 렌더링된 페이지.</li>
+  <li>Mermaid 다이어그램, KaTeX 수식, 강조된 코드 블록.</li>
+  <li>MarsDawn에서 고른 미리보기 테마(라이트 또는 다크).</li>
+  <li>웹 이미지는 계속 차단되며, 파일 옆에 있는 이미지는 자리 표시자로 나타날 수 있습니다.</li>
+</ul>
+<section class="howto">
+<h2 id="how-to-preview-a-markdown-file-with-quick-look">훑어보기로 Markdown 파일을 미리 보는 방법</h2>
+<ol>
+  <li><strong>MarsDawn을 설치하세요.</strong> Mac App Store에서 MarsDawn을 다운로드하세요. 훑어보기 확장 프로그램은 앱의 일부입니다.</li>
+  <li><strong>Markdown 파일을 선택하세요.</strong> Finder에서 .md 파일을 한 번 클릭하세요.</li>
+  <li><strong>스페이스 바를 누르세요.</strong> 렌더링된 미리보기가 열립니다. 스페이스 바를 다시 누르면 닫힙니다.</li>
+  <li><strong>일반 텍스트가 보이면 확장 프로그램을 켜세요.</strong> 시스템 설정을 열고 일반 ▸ 로그인 항목 및 확장 프로그램으로 이동한 다음, 확장 프로그램 아래 ‘훑어보기’ 옆의 정보 버튼을 클릭하고 ‘MarsDawn Preview’를 켠 뒤 완료를 클릭하세요.</li>
+</ol>
+</section>
+<h2 id="not-locked-by-the-trial">체험 기간의 제한을 받지 않습니다</h2>
+<p>훑어보기는 체험이 끝난 뒤에도 계속 작동합니다. 체험 중에도, 체험이 끝난 뒤에도, 잠금을 해제한 뒤에도 같은 렌더링된 미리보기를 보여 줍니다. 체험이 끝나고 잠금을 해제하기 전까지는 MarsDawn 자체의 윈도우만 내용이 가려지고, Finder의 미리보기는 그대로입니다. <a href="/ko/pay-once/">체험과 잠금 해제 페이지</a>에서 세 단계를 나란히 볼 수 있습니다.</p>
+<section class="faq">
+<h2 id="questions-and-answers">자주 묻는 질문</h2>
+<h3>Finder에서 Markdown 파일을 미리 보려면 어떻게 하나요?</h3>
+<p>파일을 선택하고 스페이스 바를 누르세요. MarsDawn이 설치되어 있으면 훑어보기가 Mermaid 다이어그램, KaTeX 수식, 강조된 코드를 포함한 렌더링된 페이지를 보여 줍니다.</p>
+<h3>14일 체험이 끝나도 훑어보기를 쓸 수 있나요?</h3>
+<p>네. 훑어보기는 체험 기간의 제한을 받지 않습니다. 체험 중에도, 체험이 끝난 뒤에도, 잠금을 해제한 뒤에도 Markdown 파일을 계속 렌더링합니다.</p>
+<h3>훑어보기에 일반 텍스트만 보이는 이유는 무엇인가요?</h3>
+<p>훑어보기 확장 프로그램이 꺼져 있을 수 있습니다. 시스템 설정을 열고 일반 ▸ 로그인 항목 및 확장 프로그램으로 이동한 다음, 확장 프로그램 아래 ‘훑어보기’ 옆의 정보 버튼을 클릭하고 ‘MarsDawn Preview’를 켠 뒤 완료를 클릭하세요.</p>
+<h3>훑어보기는 따로 비용이 드나요?</h3>
+<p>아니요. 훑어보기 확장 프로그램은 MarsDawn의 일부이며 별도 구입이 필요 없습니다. MarsDawn은 무료로 다운로드할 수 있고, 14일 체험 뒤 잠금 해제는 한 번만 USD 4.99이며, 훑어보기는 체험 여부와 관계없이 작동합니다.</p>
+<h3>어떤 버전의 macOS가 필요한가요?</h3>
+<p>MarsDawn에는 macOS 26 이상이 필요합니다.</p>
+</section>
+<h2 id="next">다음으로</h2>
+<ul>
+  <li><a href="/ko/native/">Mac 앱</a></li>
+  <li><a href="/ko/pay-once/">무료로 체험하고, 한 번만 구입</a></li>
+  <li><a href="/ko/view-markdown-on-mac/">Mac에서 Markdown 보기</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트">
+    <a href="/ko/support/">지원</a>
+    <a href="/ko/privacy/">개인정보 처리방침</a>
+    <a href="/ko/cli/">명령줄</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

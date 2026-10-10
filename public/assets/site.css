@@ -121,6 +121,8 @@ a:focus-visible {
   text-wrap: pretty;
 }
 .updated { margin-top: 16px !important; font-size: 0.9rem !important; }
+/* The plain one-sentence definition under a page's headline (home, /native/). */
+.intro .definition { margin-top: 0.75rem; }
 
 /* The one-line answer people came for. */
 .summary {

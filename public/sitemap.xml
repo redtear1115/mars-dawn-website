@@ -865,6 +865,102 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/view-markdown-on-mac/"/>
   </url>
   <url>
+    <loc>https://marsdawn.southern-light.dev/quicklook/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/quicklook/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/quicklook/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/quicklook/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hans/quicklook/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/quicklook/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ja/quicklook/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/quicklook/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/de/quicklook/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/quicklook/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/fr/quicklook/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/quicklook/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/es/quicklook/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/quicklook/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ko/quicklook/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/quicklook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/quicklook/"/>
+  </url>
+  <url>
     <loc>https://marsdawn.southern-light.dev/markdown-to-pdf/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/markdown-to-pdf/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/"/>

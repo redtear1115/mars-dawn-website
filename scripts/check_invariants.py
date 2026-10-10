@@ -33,6 +33,12 @@ consecutive positions and named items; each essay and reading note (`ARTICLE_DAT
 build_pages.py) carries a TechArticle with ISO datePublished and dateModified, in order and not in
 the future; and nothing else claims to be a TechArticle.
 
+Answer-engine copy (every locale): the home page, /pay-once/ and /quicklook/ each carry a visible FAQ
+(`<section class="faq">`) and a FAQPage block whose questions and answers are, word for word, the
+visible ones, in the same order, and no other page has either; /quicklook/ carries a HowTo whose
+steps are its visible numbered steps; the home page and /native/ open with a definition sentence
+(`<p class="definition">`), and `llms-full.txt` repeats each of them.
+
 Two things this deliberately does not catch, so nobody reads a green run as more than it is:
 
 - **A placeholder listing URL passes.** `https://apps.apple.com/app/idPLACEHOLDER` is a link to
@@ -50,6 +56,7 @@ To see it catch one:
 """
 import argparse
 import datetime
+import html
 import json
 import re
 import sys
@@ -134,7 +141,7 @@ def article_slugs():
     return set(build_pages.ARTICLE_DATES)
 
 
-def check_structured_data(relative, text, articles, problems):
+def check_structured_data(relative, text, articles, llms_full, problems):
     """Breadcrumbs on every inner page; TechArticle with dates exactly on the essays and notes."""
     locale = locale_of(relative)
     slug = relative[:-len("index.html")].strip("/")
@@ -146,6 +153,8 @@ def check_structured_data(relative, text, articles, problems):
             blocks.append(json.loads(raw))
         except json.JSONDecodeError as exc:
             problems.append(f"{relative}: JSON-LD doesn't parse: {exc}")
+    check_answer_copy(relative, slug, text, blocks, problems)
+    check_definition(relative, slug, text, llms_full, problems)
     if relative in HOME_SLUGS:
         return
     crumbs = [b for b in blocks if b.get("@type") == "BreadcrumbList"]
@@ -187,6 +196,55 @@ def check_structured_data(relative, text, articles, problems):
         problems.append(f"{relative}: a TechArticle on a page that isn't an essay or note")
 
 
+FAQ_SLUGS = {"", "pay-once", "quicklook"}  # the home page's slug is empty
+FAQ_SECTION = re.compile(r'<section class="faq">\n.*?\n</section>', re.S)
+HOWTO_SECTION = re.compile(r'<section class="howto">\n.*?\n</section>', re.S)
+DEFINITION = re.compile(r'<p class="definition">(.*?)</p>', re.S)
+
+
+def plain(fragment):
+    return html.unescape(re.sub(r"<[^>]+>", "", fragment))
+
+
+def check_answer_copy(relative, slug, text, blocks, problems):
+    """Visible FAQ == FAQPage markup, HowTo == its visible steps, and where each may appear."""
+    section = FAQ_SECTION.search(text)
+    faq_blocks = [b for b in blocks if b.get("@type") == "FAQPage"]
+    if slug in FAQ_SLUGS and not section:
+        problems.append(f"{relative}: no visible FAQ")
+    if slug not in FAQ_SLUGS and (section or faq_blocks):
+        problems.append(f"{relative}: a FAQ on a page that shouldn't have one")
+    if section:
+        visible = [(plain(q), plain(a)) for q, a in re.findall(r"<h3>(.*?)</h3>\n<p>(.*?)</p>", section.group(0), re.S)]
+        if len(faq_blocks) != 1:
+            problems.append(f"{relative}: {len(faq_blocks)} FAQPage blocks, want 1")
+        else:
+            marked = [(e.get("name"), e.get("acceptedAnswer", {}).get("text")) for e in faq_blocks[0].get("mainEntity", [])]
+            if not visible:
+                problems.append(f"{relative}: the visible FAQ has no questions")
+            elif marked != visible:
+                problems.append(f"{relative}: the FAQPage markup differs from the visible FAQ")
+    howto_blocks = [b for b in blocks if b.get("@type") == "HowTo"]
+    howto = HOWTO_SECTION.search(text)
+    if (slug == "quicklook") != bool(howto and howto_blocks):
+        problems.append(f"{relative}: HowTo markup and steps should be on /quicklook/ and nowhere else")
+    elif howto:
+        visible = [(plain(n), plain(t)) for n, t in re.findall(r"<li><strong>(.*?)</strong> (.*?)</li>", howto.group(0), re.S)]
+        marked = [(s.get("name"), s.get("text")) for s in howto_blocks[0].get("step", [])]
+        if not visible or marked != visible:
+            problems.append(f"{relative}: the HowTo markup differs from the visible steps")
+
+
+def check_definition(relative, slug, text, llms_full, problems):
+    if slug not in ("", "native"):
+        return
+    found = DEFINITION.search(text)
+    if not found or not plain(found.group(1)).strip():
+        problems.append(f"{relative}: no definition sentence under the h1")
+    elif plain(found.group(1)) not in llms_full:
+        problems.append(f"{relative}: the definition sentence isn't in llms-full.txt")
+
+
 def locale_of(relative):
     for prefix, locale in PREFIX.items():
         if relative.startswith(prefix):
@@ -209,6 +267,7 @@ def main():
 
     problems = []
     articles = article_slugs()
+    llms_full = (site / "llms-full.txt").read_text() if (site / "llms-full.txt").is_file() else ""
 
     # Same page set in every locale.
     by_locale = {"en": set(), "zh-hant": set(), "zh-hans": set(), "ja": set(), **{l: set() for l in NEW_LOCALES}}
@@ -227,7 +286,7 @@ def main():
     for relative, page in pages.items():
         locale = locale_of(relative)
         text = page.read_text()
-        check_structured_data(relative, text, articles, problems)
+        check_structured_data(relative, text, articles, llms_full, problems)
         if locale in NEW_LOCALES:
             if where != "launched":
                 problems.append(f"{relative}: {locale} is served before launch; it ships with 1.1.0, after launch")
