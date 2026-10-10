@@ -725,7 +725,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 <p><a href="https://github.com/redtear1115/marsdawn-mcp">marsdawn-mcp</a> es un repositorio aparte, público y con licencia Apache-2.0. Es un servidor MCP con dos herramientas, <code>export_markdown_to_pdf</code> y <code>open_in_marsdawn</code>, que envuelven <code>marsdawn export --json</code> y <code>marsdawn open --json</code>: apunta un cliente MCP hacia él y una llamada a una herramienta devuelve el mismo JSON que la CLI.</p>
 <ul>
   <li><strong>Dónde obtenerlo:</strong> como MCP Bundle, <code>marsdawn.mcpb</code>, adjunto a <a href="https://github.com/redtear1115/marsdawn-mcp/releases">su release de GitHub</a>, o ejecutando el servidor desde el código fuente por stdio.</li>
-  <li><strong>Registro:</strong> aparece en el <a href="https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest">MCP Registry</a> como <code>dev.southern-light.mcp/marsdawn</code> (versión actual: 0.2.4).</li>
+  <li><strong>Registro:</strong> aparece en el <a href="https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest">MCP Registry</a> como <code>dev.southern-light.mcp/marsdawn</code>.</li>
   <li><strong>Alojamiento:</strong> solo autoalojado. No existe un servicio de marsdawn-mcp alojado; el servidor se ejecuta en tu propia máquina, junto a marsdawn.</li>
   <li><strong>Requisitos:</strong> macOS, marsdawn 0.5.0 o posterior y Node.js 20 o posterior para ejecutar el servidor.</li>
 </ul>
