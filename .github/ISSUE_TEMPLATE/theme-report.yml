@@ -2,6 +2,9 @@ name: Report a theme
 description: Report a problem with a theme published in the MarsDawn gallery (/themes/gallery/).
 title: "[theme-report] "
 labels: ["theme-report"]
+# The maintainer is assigned so that GitHub emails them on every report, whatever their
+# watch settings (#294: delist within 24 hours of a report).
+assignees: ["redtear1115"]
 body:
   - type: markdown
     attributes:
