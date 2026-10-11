@@ -131,7 +131,9 @@ function decodeAuthor(v, path) {
 function decodeDiscriminated(v, path, allowedByType, build) {
   const obj = asObject(v, path);
   const type = reqString(obj, "type", path);
-  const allowed = allowedByType[type];
+  // Own keys only: an inherited name ("constructor", "toString", "__proto__", ...) is an unknown
+  // type like any other, never Object.prototype's member (which made validate() throw).
+  const allowed = Object.hasOwn(allowedByType, type) ? allowedByType[type] : undefined;
   if (!allowed) fail("schema.value", joinPath(path, "type"), "is not one of the allowed values");
   requireKeys(obj, ["type", ...allowed], path);
   return build(type, obj, path);
@@ -512,6 +514,17 @@ export function setDawnFallback(light, dark) {
   dawnFallbackCache = { light, dark };
 }
 
+/** The `schema.version` issue validate() reports for a decoded document whose schemaVersion
+ * isn't 1, or null. Decode alone accepts any number; shared with theme-import.js so an import
+ * refuses exactly what validate() would. */
+export function schemaVersionIssue(document) {
+  if (document.schemaVersion === 1) return null;
+  const message = document.schemaVersion > 1
+    ? `schemaVersion ${document.schemaVersion} needs a newer MarsDawn; this one understands 1`
+    : "schemaVersion must be 1";
+  return { rule: "schema.version", path: "schemaVersion", message };
+}
+
 /** Every colour field of one palette as `[field, value]`, in report order. Exported for
  * preview-report.js. */
 export function colorFields(colors) {
@@ -527,12 +540,8 @@ export function colorFields(colors) {
 /** Validates an already-decoded document. Returns `{ issues, theme }`; `theme` is non-null exactly
  * when `issues` is empty. */
 export function validateDocument(document, { requireComplete = false } = {}) {
-  if (document.schemaVersion !== 1) {
-    const message = document.schemaVersion > 1
-      ? `schemaVersion ${document.schemaVersion} needs a newer MarsDawn; this one understands 1`
-      : "schemaVersion must be 1";
-    return { issues: [{ rule: "schema.version", path: "schemaVersion", message }], theme: null };
-  }
+  const versionIssue = schemaVersionIssue(document);
+  if (versionIssue) return { issues: [versionIssue], theme: null };
   const issues = [];
   const normalized = { ...document };
 

@@ -31,6 +31,11 @@
 //      differing; that the preview CSS is scoped to PREVIEW_ID; that the generator refuses closed
 //      values it never decoded; the scope guard; and the Submit decision under a refusing
 //      generator.
+//   5. The guarded import (theme-import.js, plan W2a): every refused input names the rule that
+//      actually catches it (decode's own, the `__proto__` guard's, the schemaVersion check's, or
+//      the UTF-8 decode's); every valid/ fixture and built-in comes back deep-equal; an inherited
+//      name as a discriminated `type` gives validate() the same report as an unknown one, never a
+//      throw; and the generator refuses an unknown discriminated type instead of omitting it.
 //
 // Without vendor/kit-themes/<tag>/, none of this can run for real, so this script fails loudly and
 // immediately with its own message rather than silently reporting success it didn't earn.
@@ -51,6 +56,7 @@ const BuiltIns = await import(path.join(assetsDir, "built-ins.js"));
 const Grammar = await import(path.join(assetsDir, "grammar.js"));
 const Preview = await import(path.join(assetsDir, "preview-report.js"));
 const TextModule = await import(path.join(assetsDir, "text.js"));
+const Import = await import(path.join(assetsDir, "theme-import.js"));
 
 let failures = 0;
 function ok(label) {
@@ -684,6 +690,163 @@ function checkSubmitDecision() {
   else bad("a validate() issue blocks Submit even when the preview draws");
 }
 
+// --- 6. The guarded import (theme-import.js, plan W2a) -------------------------------------------
+
+/** Deep equality on parsed JSON: same keys, same array lengths, numbers compared with === (so -0
+ * equals 0). */
+function deepEqualJSON(a, b) {
+  if (a === b) return true;
+  if (typeof a !== typeof b || a === null || b === null || typeof a !== "object") return false;
+  if (Array.isArray(a) !== Array.isArray(b)) return false;
+  if (Array.isArray(a)) return a.length === b.length && a.every((v, i) => deepEqualJSON(v, b[i]));
+  const ka = Object.keys(a).sort();
+  const kb = Object.keys(b).sort();
+  return ka.length === kb.length && ka.every((k, i) => k === kb[i] && deepEqualJSON(a[k], b[k]));
+}
+
+/** Replaces exactly one occurrence of `find` in `text`, or throws (a scripted edit that matched
+ * nothing would turn a case into a copy of the valid input). */
+function replaceOnce(text, find, replacement) {
+  const n = text.split(find).length - 1;
+  if (n !== 1) throw new Error(`replaceOnce: ${JSON.stringify(find)} matched ${n} times`);
+  return text.replace(find, () => replacement);
+}
+
+/** `text` (a compact JSON object) with `members` inserted first in its top-level object. */
+function insertTop(text, members) {
+  if (!text.startsWith("{")) throw new Error("insertTop: not an object");
+  return "{" + members + text.slice(1);
+}
+
+function checkGuardedImport() {
+  console.log("\nGuarded import: each refused input names the rule that catches it");
+  const dawnText = BuiltIns.BUILT_IN_THEME_JSON.dawn;
+  const dawn = JSON.parse(dawnText);
+  const compact = JSON.stringify(dawn);
+  // Built as text: an object literal's `__proto__` sets the prototype instead of making a key.
+  const nameJSON = JSON.stringify(dawn.name);
+  const summaryJSON = JSON.stringify(dawn.summary);
+  const cases = [
+    ["larger than 16 KiB (16,385 bytes)", compact + " ".repeat(16385 - Buffer.byteLength(compact)), { rule: "file.tooLarge" }],
+    ["duplicate key", insertTop(compact, "\"id\":\"dup\","), { rule: "json.duplicateKey" }],
+    ["depth 17", "[".repeat(17) + "]".repeat(17), { rule: "json.tooDeep" }],
+    ["__proto__ at the top level", insertTop(compact, "\"__proto__\":{},"), { rule: "schema.unknownKey", path: "" }],
+    ["name.__proto__", replaceOnce(compact, `"name":${nameJSON}`, `"name":${nameJSON.slice(0, -1)},"__proto__":"x"}`),
+      { rule: Import.PROTO_KEY_RULE, path: "name.__proto__", message: Import.PROTO_KEY_MESSAGE }],
+    ["summary.__proto__", replaceOnce(compact, `"summary":${summaryJSON}`, `"summary":${summaryJSON.slice(0, -1)},"__proto__":"x"}`),
+      { rule: Import.PROTO_KEY_RULE, path: "summary.__proto__", message: Import.PROTO_KEY_MESSAGE }],
+    ["style.h1.__proto__", JSON.stringify({ ...dawn, style: { h1: "H1SLOT" } }).replace("\"H1SLOT\"", "{\"__proto__\":{}}"), { rule: "schema.unknownKey", path: "style.h1" }],
+  ];
+  for (const { category, name, text } of loadFixtures(vendorDir)) {
+    if (category !== "invalid") continue;
+    if (!name.startsWith("json.") && !name.startsWith("schema.")) continue;
+    cases.push([`invalid/${name}`, text, { rule: ruleOf(name) }]);
+  }
+  if (cases.length < 7 + 13) bad("guarded import: the fixture cases were found", `${cases.length - 7} json./schema. fixtures`);
+  for (const [label, text, want] of cases) {
+    let got;
+    try {
+      got = Import.importThemeText(text);
+    } catch (e) {
+      bad(`import ${label}: expected ${want.rule}`, `THREW ${e.name}: ${e.message}`);
+      continue;
+    }
+    if (got.document) {
+      const keys = (doc, k) => JSON.stringify(Object.keys(doc[k] ?? {}));
+      bad(`import ${label}: expected ${want.rule}${want.path !== undefined ? ` at ${JSON.stringify(want.path)}` : ""}`,
+        `imported instead (name keys ${keys(got.document, "name")}, summary keys ${keys(got.document, "summary")}: any __proto__ key is gone)`);
+      continue;
+    }
+    const line = `import ${label}: expected ${want.rule}${want.path !== undefined ? ` at ${JSON.stringify(want.path)}` : ""} actual ${got.issue.rule} at ${JSON.stringify(got.issue.path)}`;
+    const match = got.issue.rule === want.rule && (want.path === undefined || got.issue.path === want.path) && (want.message === undefined || got.issue.message === want.message);
+    if (match) ok(`${line} (${got.issue.message})`);
+    else bad(line, got.issue.message);
+  }
+
+  // Bytes: invalid UTF-8 is refused before anything else; the same theme's valid bytes load.
+  const good = new TextEncoder().encode(dawnText);
+  const at = dawnText.indexOf("\"Dawn\"") + 2;
+  const broken = new Uint8Array(good.length + 1);
+  broken.set(good.subarray(0, at), 0);
+  broken[at] = 0xff;
+  broken.set(good.subarray(at), at + 1);
+  const refusedBytes = Import.importThemeBytes(broken);
+  if (refusedBytes.issue?.rule === "file.encoding") ok(`import invalid UTF-8 bytes: expected file.encoding actual ${refusedBytes.issue.rule} (${refusedBytes.issue.message})`);
+  else bad("import invalid UTF-8 bytes: expected file.encoding", JSON.stringify(refusedBytes.issue ?? "imported"));
+  const goodBytes = Import.importThemeBytes(good.buffer);
+  if (goodBytes.document && deepEqualJSON(goodBytes.document, dawn)) ok("import Dawn's bytes: loads, deep-equal to the file");
+  else bad("import Dawn's bytes: loads, deep-equal to the file", JSON.stringify(goodBytes.issue));
+
+  console.log("\nGuarded import: every valid/ fixture and built-in comes back deep-equal");
+  const inputs = BUILT_IN_ORDER.map((id) => [`built-in ${id}`, BuiltIns.BUILT_IN_THEME_JSON[id]]);
+  for (const { category, name, text } of loadFixtures(vendorDir)) if (category === "valid") inputs.push([`valid/${name}`, text]);
+  for (const [label, text] of inputs) {
+    const got = Import.importThemeText(text);
+    if (got.document && deepEqualJSON(JSON.parse(JSON.stringify(got.document, null, 2)), JSON.parse(text))) ok(`${label}: import then export is deep-equal to the input`);
+    else bad(`${label}: import then export is deep-equal to the input`, JSON.stringify(got.issue ?? "differs"));
+  }
+}
+
+// Every discriminated-union path, and the inherited names that once made validate() throw there
+// (decodeDiscriminated read its type table as a plain object).
+const DISCRIMINATED_PATHS = ["style.h1.decoration", "style.h2.decoration", "style.blockquote.style", "style.hr.style", "style.table.header"];
+const INHERITED_NAMES = ["constructor", "toString", "__proto__", "hasOwnProperty", "valueOf"];
+
+/** Dawn with `style` holding only `{ type }` at one discriminated path, as theme.json text. */
+function withDiscriminatedType(dawn, dotted, type) {
+  const parts = dotted.split(".").slice(1); // drop "style"
+  const style = {};
+  let node = style;
+  for (let i = 0; i < parts.length - 1; i++) node = node[parts[i]] = {};
+  node[parts[parts.length - 1]] = { type };
+  return JSON.stringify({ ...dawn, style });
+}
+
+function checkInheritedTypeNames() {
+  console.log("\nvalidate(): an inherited name as a discriminated type is reported like any unknown type");
+  const dawn = JSON.parse(BuiltIns.BUILT_IN_THEME_JSON.dawn);
+  for (const dotted of DISCRIMINATED_PATHS) {
+    const nope = Validator.validate(withDiscriminatedType(dawn, dotted, "nope"));
+    const want = JSON.stringify(nope);
+    const head = nope.issues[0];
+    if (!(nope.issues.length === 1 && head.rule === "schema.value" && head.path === `${dotted}.type`)) {
+      bad(`${dotted}: "nope" setup`, want);
+      continue;
+    }
+    for (const name of INHERITED_NAMES) {
+      const label = `${dotted}.type ${JSON.stringify(name)}`;
+      let got;
+      try {
+        got = Validator.validate(withDiscriminatedType(dawn, dotted, name));
+      } catch (e) {
+        bad(`${label}: same report as "nope"`, `THREW ${e.name}: ${e.message}`);
+        continue;
+      }
+      if (JSON.stringify(got) === want) ok(`${label}: same report as "nope" (${head.rule} at ${head.path})`);
+      else bad(`${label}: same report as "nope"`, JSON.stringify(got));
+    }
+  }
+}
+
+function checkGeneratorRefusesUnknownTypes() {
+  console.log("\nGenerator: an unknown discriminated type is refused, never omitted");
+  const dawn = Validator.validate(BuiltIns.BUILT_IN_THEME_JSON.dawn, { requireComplete: true }).theme;
+  const cases = [
+    ["blockquote.style", { blockquote: { style: { type: "nope" } } }],
+    ["hr.style", { hr: { style: { type: "nope" } } }],
+    ["table.header", { table: { header: { type: "nope" } } }],
+  ];
+  for (const [label, style] of cases) {
+    try {
+      const out = Generator.stylesheetFor({ ...dawn, document: { ...dawn.document, style } });
+      bad(`${label} type "nope" is refused (GeneratorRefusal)`, `generated ${JSON.stringify(out.rules.slice(0, 120))}`);
+    } catch (e) {
+      if (e instanceof Generator.GeneratorRefusal) ok(`${label} type "nope" is refused (GeneratorRefusal ${e.kind})`);
+      else bad(`${label} type "nope" is refused (GeneratorRefusal)`, `wrong error: ${e}`);
+    }
+  }
+}
+
 checkRescope();
 checkBuiltIns();
 checkVendorParity();
@@ -697,6 +860,9 @@ checkPreviewAdvisories();
 checkGeneratorRefusesClosedValues();
 checkScopeGuard();
 checkSubmitDecision();
+checkGuardedImport();
+checkInheritedTypeNames();
+checkGeneratorRefusesUnknownTypes();
 
 console.log(failures === 0 ? "\nAll checks passed." : `\n${failures} check(s) failed.`);
 process.exit(failures === 0 ? 0 : 1);
