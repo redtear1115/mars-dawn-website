@@ -139,6 +139,11 @@ GTM_HEAD_SCRIPT = f"""(function(w,d,s,l,i){{
 }})(window, document, 'script', 'dataLayer', '{GTM_CONTAINER_ID}');"""
 
 
+# The simulator's hand-off link intake (see render()'s head_js). scripts/check_theme_link_head.py
+# looks for exactly this tag.
+THEME_LINK_HEAD_SCRIPT = '<script src="/assets/theme-sim/theme-link-head.js"></script>'
+
+
 def consent_head_html() -> str:
     """Consent Mode default (with the stored-choice check) then the GTM loader, as two
     separate inline <script> elements: CSP hashes each script element's own content."""
@@ -5217,9 +5222,18 @@ def render(locale: str, slug: str, page: dict) -> str:
     # #theme-sim-app's own data-* attributes (data-locale), read as text via .dataset, never
     # inline JS. scripts/check_no_inline_scripts.py holds every generated page to this.
     extra_js = ""
+    # A per-page head hook that runs BEFORE the Consent Mode default and the GTM loader: it goes
+    # between <meta charset> and consent_head_html() below. Only the simulator uses it, for its
+    # hand-off link (plan PLAN-web-theme-tuning W2b): theme-link-head.js is a classic, synchronous,
+    # external script that takes a `#theme=` fragment out of the address bar before GTM loads or
+    # can wrap History. External, so script-src 'self' allows it with no new hash; never async,
+    # defer or a module, or GTM could run first. scripts/check_theme_link_head.py holds every
+    # locale's /themes/new/ to that order, and every other page to not having it.
+    head_js = ""
     if slug == "themes/new":
         extra_css = '<link rel="stylesheet" href="/assets/theme-sim.css">\n'
         extra_js = '<script type="module" src="/assets/theme-sim/boot.js"></script>\n'
+        head_js = f'{THEME_LINK_HEAD_SCRIPT}\n'
     # The community gallery (#145): same reasoning as the simulator above -- an external
     # stylesheet needs no CSP change, and the filter's bootstrap must be an external module
     # script, never inline, or it's silently blocked and the filter buttons never do anything.
@@ -5294,7 +5308,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 <html lang="{lang}"{html_theme_attr}>
 <head>
 <meta charset="utf-8">
-{consent_head_html()}
+{head_js}{consent_head_html()}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{page["title"]}</title>
 <meta name="description" content="{page["description"]}">
