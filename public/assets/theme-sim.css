@@ -215,3 +215,19 @@
 .sim-import-message.sim-import-refused {
   font-weight: 600;
 }
+
+/* After a hand-off link import (theme-sim/app.js): the theme came from someone else's link. */
+.sim-link-banner {
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #888;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* The one-line note beside Copy link: where the link goes, and where it doesn't. */
+.sim-link-note {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+}

@@ -21,6 +21,7 @@ import { sampleDocumentHTML } from "./sample-document.js";
 import { THEME_NUMBERS } from "./numbers.js";
 import { PREVIEW_ID, previewReport, previewOutcome, submitDecision, panelIssues } from "./preview-report.js";
 import { importThemeText, importThemeBytes, tooLargeIssue, MAX_FILE_BYTES } from "./theme-import.js";
+import { themeLink } from "./theme-link.js";
 
 const SCENARIOS = [
   { id: "agent-review", label: "Agent review" },
@@ -35,6 +36,18 @@ const IMPORT_REFUSED_PREFIX = "Can't load this theme: ";
 const IMPORT_ONE_FILE_TEXT = "drop or choose exactly one file";
 const IMPORT_LOADED_TEXT = "Theme loaded.";
 const COPIED_TEXT = "Copied the JSON.";
+// The hand-off link (plan W2b): theme-link-head.js reads it before analytics loads; Copy link
+// writes it. The note is the disclosure the owner chose instead of a privacy-policy change (D4).
+const LINK_REFUSED_PREFIX = "Can't load the theme from this link: ";
+const LINK_BANNER_TEXT = "This theme came from a link. Check its name, author and licence before you submit it.";
+const COPY_LINK_TEXT = "Copy link";
+const COPY_LINK_NOTE_TEXT = "The link holds the whole theme. It stays in your browser's history (and anything that syncs it) and in your shell history; this page never sends it to the site or to analytics.";
+const COPIED_LINK_TEXT = "Copied the link.";
+/** The head script's own refusals (theme-link-head.js), worded as the panel words an issue. */
+const LINK_ISSUES = {
+  "link.tooLarge": { rule: "link.tooLarge", path: "", message: `the theme is larger than ${MAX_FILE_BYTES} bytes` },
+  "link.malformed": { rule: "link.malformed", path: "", message: "the theme data is not valid base64url" },
+};
 const COPY_FAILED_TEXT = "Couldn't copy to the clipboard.";
 const SUBMIT_FIX_TEXT = "Fix every check above before submitting.";
 const SUBMIT_TOO_LARGE_TEXT = "This theme is too large to submit through a prefilled issue (over 8,000 characters). Simplify it, or open a pull request instead (see the repo's CONTRIBUTING.md).";
@@ -61,8 +74,8 @@ const DECORATION_REQUIRED = {
 };
 
 /** The text a refused import shows inline: the issue as the panel lists issues. */
-function importRefusalText(issue) {
-  return IMPORT_REFUSED_PREFIX + (issue.path ? `${issue.path}: ${issue.message}` : issue.message);
+function importRefusalText(issue, prefix = IMPORT_REFUSED_PREFIX) {
+  return prefix + (issue.path ? `${issue.path}: ${issue.message}` : issue.message);
 }
 
 /** Loads a built-in as the starting state (only the fields a designer would edit; `id`/`version`
@@ -122,6 +135,8 @@ class ThemeSimApp {
     this.lastOutcome = { css: null, generatorRefused: false };
     // The last import's inline message, kept across the render() a successful import triggers.
     this.importNotice = null;
+    // True while the state is a theme that came in through a hand-off link (the banner shows).
+    this.fromLink = false;
     this.render();
   }
 
@@ -286,6 +301,7 @@ class ThemeSimApp {
       this.state.id = keepId;
       this.state.version = keepVersion;
       this.importNotice = null;
+      this.fromLink = false;
       this.render();
     });
     section.appendChild(select);
@@ -362,7 +378,13 @@ class ThemeSimApp {
     buttons.append(loadBtn, openBtn, fileInput);
     this.importNoticeEl = notice;
     if (this.importNotice) this.showImportNotice(this.importNotice);
-    return [wrap, buttons, notice];
+    const banner = document.createElement("p");
+    banner.id = "sim-link-banner";
+    banner.className = "sim-link-banner";
+    banner.setAttribute("role", "status");
+    banner.textContent = LINK_BANNER_TEXT;
+    banner.hidden = !this.fromLink;
+    return [wrap, buttons, notice, banner];
   }
 
   showImportNotice(notice) {
@@ -402,6 +424,26 @@ class ThemeSimApp {
     }
     this.state = result.document;
     this.importNotice = { ok: true, text: IMPORT_LOADED_TEXT };
+    this.fromLink = false;
+    this.render();
+  }
+
+  /** One hand-off link, as theme-link-head.js hands it over: `{ bytes }` go through the same
+   * guarded path a dropped file takes (importThemeBytes), so invalid UTF-8 is file.encoding and a
+   * BOM is treated as drop treats it; `{ error }` is the head script's own refusal (oversize or
+   * not base64url). A refusal leaves the state alone. Either way the head script has already
+   * stripped the fragment, and nothing here writes theme data into location. */
+  importLink(link) {
+    const result = link && link.bytes instanceof Uint8Array
+      ? importThemeBytes(link.bytes)
+      : { issue: LINK_ISSUES[link && link.error] ?? LINK_ISSUES["link.malformed"] };
+    if (!result.document) {
+      this.showImportNotice({ ok: false, text: importRefusalText(result.issue, LINK_REFUSED_PREFIX) });
+      return;
+    }
+    this.state = result.document;
+    this.importNotice = null;
+    this.fromLink = true;
     this.render();
   }
 
@@ -789,6 +831,13 @@ class ThemeSimApp {
     downloadBtn.type = "button";
     downloadBtn.textContent = "Download theme.json";
     downloadBtn.addEventListener("click", () => this.downloadJSON());
+    const linkBtn = document.createElement("button");
+    linkBtn.type = "button";
+    linkBtn.textContent = COPY_LINK_TEXT;
+    linkBtn.addEventListener("click", () => this.copyLink());
+    const linkNote = document.createElement("p");
+    linkNote.className = "sim-link-note";
+    linkNote.textContent = COPY_LINK_NOTE_TEXT;
     const notice = document.createElement("p");
     notice.id = "sim-submit-message";
     notice.className = "sim-submit-message";
@@ -796,8 +845,8 @@ class ThemeSimApp {
     notice.hidden = true;
     this.submitNoticeEl = notice;
     const buttons = document.createElement("div");
-    buttons.append(button, copyBtn, downloadBtn);
-    section.append(p, buttons, notice);
+    buttons.append(button, copyBtn, downloadBtn, linkBtn);
+    section.append(p, buttons, linkNote, notice);
     return section;
   }
 
@@ -817,6 +866,18 @@ class ThemeSimApp {
     try {
       await navigator.clipboard.writeText(this.exportText());
       this.showSubmitNotice(COPIED_TEXT);
+    } catch {
+      this.showSubmitNotice(COPY_FAILED_TEXT);
+    }
+  }
+
+  /** The hand-off link for the current state, built on click: this page's own origin and path
+   * (so its locale) + `#theme=` + the minified JSON in base64url. Written to the clipboard only;
+   * never to location, never anywhere else. */
+  async copyLink() {
+    try {
+      await navigator.clipboard.writeText(themeLink(location.origin, location.pathname, this.state));
+      this.showSubmitNotice(COPIED_LINK_TEXT);
     } catch {
       this.showSubmitNotice(COPY_FAILED_TEXT);
     }
@@ -874,5 +935,14 @@ export async function mount(root) {
   const dawn = Validator.validate(BUILT_IN_THEME_JSON.dawn, { requireComplete: true });
   if (!dawn.theme) throw new Error("mount: the built-in Dawn theme did not validate");
   Validator.setDawnFallback(dawn.theme.light, dawn.theme.dark);
-  return new ThemeSimApp(root, { light: dawn.theme.light, dark: dawn.theme.dark });
+  const app = new ThemeSimApp(root, { light: dawn.theme.light, dark: dawn.theme.dark });
+  // A hand-off link the head script (theme-link-head.js) took before this module loaded is
+  // queued there; one that arrives later (a second link pasted into this tab) comes through the
+  // callback. Without the head script there is simply no link to take.
+  const take = window.takeThemeLinkPayload;
+  if (typeof take === "function") {
+    const queued = take((later) => app.importLink(later));
+    if (queued) app.importLink(queued);
+  }
+  return app;
 }

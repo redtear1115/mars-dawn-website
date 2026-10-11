@@ -45,6 +45,13 @@ jobs:
       # plants an inline <script> first and fails unless it's caught.
       - name: No inline <script> outside the CSP's hashed pair
         run: python3 scripts/check_no_inline_scripts.py --self-test && python3 scripts/check_no_inline_scripts.py
+      # The simulator's hand-off link (/themes/new/#theme=...) is taken out of the address bar by
+      # theme-link-head.js before GTM loads. That holds only while the script is synchronous and
+      # precedes the consent scripts on every locale's /themes/new/ (and no other page loads it).
+      # --self-test plants each break (moved, removed, async/defer/module, on another page) and
+      # fails unless each is caught by its own rule.
+      - name: The theme link intake runs before the consent scripts
+        run: python3 scripts/check_theme_link_head.py --self-test && python3 scripts/check_theme_link_head.py
       - name: Every page's hreflang set is complete and reciprocal
         run: python3 scripts/check_hreflang.py
       # de, fr, es and ko are served only when their copy_<l>.py says COMPLETE = True (scripts/locales.py).
