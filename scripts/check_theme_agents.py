@@ -157,8 +157,8 @@ def check_fields(loc: str, tables: dict, model: dict) -> list:
                               f"{'required' if w['required'] else 'optional'}"))
             if first_code(r[1]) != w["type"]:
                 found.append(("fields.type", loc, f"{t['label']}.{f}: listed {first_code(r[1])}, the kit has {w['type']}"))
-            if w["enum"] and r[3]["codes"][:len(w["enum"])] != w["enum"]:
-                found.append(("fields.values", loc, f"{t['label']}.{f}: lists {r[3]['codes'][:len(w['enum'])]}, "
+            if w["enum"] and r[3]["codes"] != w["enum"]:
+                found.append(("fields.values", loc, f"{t['label']}.{f}: lists {r[3]['codes']}, "
                               f"the kit has {w['enum']}"))
             marked = ta.PUBLISH_MARK in " ".join(r[2]["codes"])
             if marked != bool(w["publish"]):
@@ -221,7 +221,10 @@ def check_numbers(loc: str, tables: dict, model: dict) -> list:
 
 def check_roles(loc: str, page_html: str, model: dict) -> list:
     m = re.search(r'<p data-theme-values="role">(.*?)</p>', page_html, re.S)
-    got = re.findall(r"<code>(.*?)</code>", m.group(1)) if m else None
+    return roles_found(loc, re.findall(r"<code>(.*?)</code>", m.group(1)) if m else None, model)
+
+
+def roles_found(loc: str, got, model: dict) -> list:
     if got != model["roles"]:
         return [("roles.set", loc, f"lists {got}, PaletteRole has {model['roles']}")]
     return []
@@ -270,12 +273,57 @@ def check_example_and_recipe(loc: str, root: str, page_html: str) -> list:
     return found
 
 
+MD_LABEL = "en/index.md"
+
+
+def _md_cells(line: str) -> list:
+    parts = [c.strip() for c in re.split(r"(?<!\\)\|", line.strip())[1:-1]]
+    return [{"text": c, "codes": re.findall(r"`([^`]*)`", c)} for c in parts]
+
+
+def read_md_tables(md: str) -> list:
+    """Every pipe table of the Markdown twin, in order, as a list of rows of cells shaped like the
+    HTML reader's ({"text", "codes"}); header and separator rows are left out."""
+    tables, cur = [], None
+    for line in md.splitlines():
+        if line.startswith("|"):
+            if cur is None:
+                cur = []
+                tables.append(cur)
+            cur.append(line)
+        else:
+            cur = None
+    out = []
+    for lines in tables:
+        out.append([_md_cells(l) for l in lines[2:]])  # [0] header, [1] |---|
+    return out
+
+
+def md_tables_by_id(md: str, model: dict) -> dict:
+    """The twin's tables carry no ids; they are in the page's order: the model's field tables, then
+    the options table, then the numbers table."""
+    ids = [t["id"] for t in model["tables"]] + ["kinds", "numbers"]
+    tables = read_md_tables(md)
+    if len(tables) != len(ids):
+        return {"__count__": len(tables)}
+    return dict(zip(ids, tables))
+
+
 def check_md(md: str, root: str = "/") -> list:
     found = []
     if ta.recipe(root) not in md:
         found.append(("md.twin", "en", "index.md does not carry the hand-off command"))
     if ta.dawn_text() not in md:
         found.append(("md.twin", "en", "index.md does not carry the Dawn example"))
+    model = ta.model()
+    tables = md_tables_by_id(md, model)
+    if "__count__" in tables:
+        return found + [("fields.missing", MD_LABEL, f"{tables['__count__']} tables, expected {len(model['tables']) + 2}")]
+    found += check_fields(MD_LABEL, tables, model)
+    found += check_kinds(MD_LABEL, tables, model)
+    found += check_numbers(MD_LABEL, tables, model)
+    m = re.search(r"A palette role is one of these names:\n\n(.*?)\n\n", md, re.S)
+    found += roles_found(MD_LABEL, re.findall(r"`([^`]*)`", m.group(1)) if m else None, model)
     return found
 
 
@@ -357,7 +405,7 @@ def self_test(root: Path) -> int:
 
     plants = []
 
-    def plant(name, rule, needle, mutate, in_md=False):
+    def plant(name, rule, needle, mutate, in_md=False):  # in_md: `mutate` takes the Markdown, not the en HTML
         plants.append((name, rule, needle, mutate, in_md))
 
     h2_row = _row_html(en, "style-h2", "letterSpacing")
@@ -411,19 +459,46 @@ def self_test(root: Path) -> int:
           lambda h: _sub(h, "tr -d '\\n='", "tr -d '\\n'"))
     plant("the hand-off command pointing at another page", "recipe.drift", "generator defines",
           lambda h: _sub(h, "themes/new/#theme=", "themes/gallery/#theme="))
-    plant("the Markdown twin without the command", "md.twin", "hand-off command", lambda h: h, in_md=True)
+    plant("the Markdown twin without the command", "md.twin", "hand-off command",
+          lambda m: _sub(m, ta.recipe("/"), "printf nothing"), in_md=True)
+
+    def md_row(m, first):
+        return next(l for l in m.splitlines() if l.startswith(f"| `{first}` |"))
+    # F1: the Markdown twin's tables are held to the Swift too (reported under en/index.md)
+    plant("md: the license row dropped", "fields.missing", "license",
+          lambda m: m.replace(md_row(m, "license") + "\n", "", 1), in_md=True)
+    plant("md: fontDesign flipped to optional", "fields.presence", "fontDesign",
+          lambda m: m.replace(md_row(m, "fontDesign"), md_row(m, "fontDesign").replace("`required`", "`optional`"), 1), in_md=True)
+    plant("md: an extra row", "fields.extra", "bogusKey",
+          lambda m: m.replace(md_row(m, "license"), md_row(m, "license") + "\n" + md_row(m, "license").replace("license", "bogusKey"), 1), in_md=True)
+    plant("md: a wrong type token", "fields.type", "fontDesign",
+          lambda m: m.replace(md_row(m, "fontDesign"), md_row(m, "fontDesign").replace("`enum`", "`string`", 1), 1), in_md=True)
+    plant("md: a role dropped", "roles.set", "quote", lambda m: _sub(m, "`quote`, `keyword`", "`keyword`"), in_md=True)
+    plant("md: a number range changed", "numbers.range", "style.bodySize",
+          lambda m: m.replace(md_row(m, "style.bodySize"), md_row(m, "style.bodySize").replace("`14`", "`13`", 1), 1), in_md=True)
+    # F2: an extra enum value is as wrong as a missing one
+    plant("an extra font design listed", "fields.values", "fontDesign",
+          lambda h: _replace_row(h, "root", "fontDesign",
+                                 _row_html(h, "root", "fontDesign").replace("<code>rounded</code>", "<code>rounded</code>, <code>mono</code>")))
+    plant("an extra scenario listed", "fields.values", "scenarios",
+          lambda h: _replace_row(h, "root", "scenarios",
+                                 _row_html(h, "root", "scenarios").replace("<code>notes-sharing</code>", "<code>notes-sharing</code>, <code>poetry</code>")))
+    plant("an extra align value listed", "fields.values", "align",
+          lambda h: _replace_row(h, "style-h1", "align",
+                                 re.sub(r"(<code>center</code>)", r"\1, <code>right</code>", _row_html(h, "style-h1", "align"), 1)))
 
     for name, rule, needle, mutate, in_md in plants:
         planted = dict(pages)
         planted_md = md
         if in_md:
-            planted_md = md.replace(ta.recipe("/"), "printf nothing")
-            assert planted_md != md
+            planted_md = mutate(md)
+            assert planted_md != md, f"plant {name!r} changed nothing"
         else:
             planted["en"] = mutate(en)
             assert planted["en"] != en, f"plant {name!r} changed nothing"
         found = problems(planted, planted_md, served)
-        hit = [f for f in found if f[0] == rule and needle in f[2]]
+        want_loc = MD_LABEL if name.startswith("md:") else None  # an md plant must be reported under the md's label
+        hit = [f for f in found if f[0] == rule and needle in f[2] and (want_loc is None or f[1] == want_loc)]
         if not hit:
             failures.append(f"plant {name!r}: expected {rule} naming {needle!r}, got {[(f[0], f[2][:70]) for f in found] or 'nothing'}")
         else:
