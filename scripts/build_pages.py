@@ -712,11 +712,7 @@ def third_party_notices_html() -> str:
         "project's copyright notice and full licence text. MarsDawn's own themes, by Southern Light, are original and are licensed Apache-2.0 like the rest of this site's code.</p>\n"
         "</section>\n" + "\n".join(sections)
     )
-    footer_links = "".join(
-        f'    <a href="{page_path("en", target)}">{ui[target]}</a>\n'
-        for target in ("support", "privacy", "cli")
-        if has_page("en", target)
-    )
+    footer_links = footer_site_links("en", ui)
     footer_links += f'    <button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button>\n'
     footer_html = (
         '<footer class="footer">\n'
@@ -4811,6 +4807,22 @@ def has_page(locale: str, slug: str) -> bool:
     return (locale, slug) in all_pages()
 
 
+# The footer's site links, the same row on every page, the 404 pages and the licence notices (one
+# tuple, not three). The first three are the long-standing links; the next three are the pages
+# crawlers must reach from every page (PLAN-web-search-sprint S1). Each label is the page's own
+# existing ui[...] string in that locale; a page a locale doesn't have is left out.
+FOOTER_SLUGS = ("support", "privacy", "cli", "view-markdown-on-mac", "vs/markdown-preview-tools", "vs/macmd-viewer")
+
+
+def footer_site_links(locale: str, ui: dict, current: dict = None) -> str:
+    current = current or {}
+    return "".join(
+        f'    <a href="{page_path(locale, slug)}"{current.get(slug, "")}>{ui[SLUG_TO_UI_KEY[slug]]}</a>\n'
+        for slug in FOOTER_SLUGS
+        if has_page(locale, slug)
+    )
+
+
 def locales_with(slug: str) -> list:
     return [locale for locale in LOCALES if has_page(locale, slug)]
 
@@ -5281,11 +5293,7 @@ def render(locale: str, slug: str, page: dict) -> str:
     # line is the origin mark alone, because the closing band just above already says the tagline and
     # the store line. The origin mark is deliberately untranslated, as on Futari's site.
     current = {slug: ' aria-current="page"'}
-    footer_links = "".join(
-        f'    <a href="{page_path(locale, target)}"{current.get(target, "")}>{ui[target]}</a>\n'
-        for target in ("support", "privacy", "cli")
-        if has_page(locale, target)
-    )
+    footer_links = footer_site_links(locale, ui, current)
     # Reopens the consent banner (consent.js). No cookie/analytics page of its own to link to,
     # so it's a button styled as a link, not an <a>: nothing to navigate to without JS, and
     # without JS there is no banner to reopen either (see consent_banner_html).
@@ -5599,11 +5607,7 @@ def render_404(locale: str) -> str:
         + f' lang="{LOCALES[other]["html_lang"]}">{LOCALES[other]["label"]}</a>'
         for other in LOCALES
     )
-    footer_links = "".join(
-        f'    <a href="{page_path(locale, target)}">{ui[target]}</a>\n'
-        for target in ("support", "privacy", "cli")
-        if has_page(locale, target)
-    )
+    footer_links = footer_site_links(locale, ui)
     footer_links += f'    <button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button>\n'
     footer_meta = f'<span>{ui["slogan"]}</span> <span>{ui["footer_store"]}</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span>'
     footer_html = (
