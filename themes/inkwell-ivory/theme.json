@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "inkwell-ivory",
+  "version": "1.0.0",
+  "name": {
+    "en": "Inkwell Ivory"
+  },
+  "summary": {
+    "en": "A pale ivory page with serif type, ink-blue headings and an italic quote panel, for essays and reports",
+    "zh-Hant": "淡象牙色書頁搭配襯線字、墨藍色標題與斜體引言面板，適合文章與報告",
+    "zh-Hans": "淡象牙色书页搭配衬线字、墨蓝色标题与斜体引言面板，适合文章与报告",
+    "ja": "淡いアイボリーのページに明朝系の書体、インクブルーの見出し、斜体の引用パネル。エッセイやレポート向け",
+    "de": "Helle Elfenbeinseite mit Serifenschrift, tintenblauen Überschriften und kursivem Zitatfeld, für Essays und Berichte",
+    "fr": "Page ivoire pâle, police à empattements, titres bleu encre et panneau de citation en italique, pour essais et rapports",
+    "es": "Página marfil claro con tipografía serif, encabezados azul tinta y un panel de citas en cursiva, para ensayos e informes",
+    "ko": "옅은 아이보리색 페이지에 세리프 글꼴, 잉크 블루 제목, 이탤릭 인용 패널 — 에세이와 보고서에 적합"
+  },
+  "fontDesign": "serif",
+  "scenarios": [
+    "agent-review",
+    "formal-output"
+  ],
+  "author": {
+    "name": "Southern Light",
+    "github": "redtear1115"
+  },
+  "license": "Apache-2.0",
+  "light": {
+    "background": "#F5F1E6",
+    "surface": "#ECE7D9",
+    "text": "#262A33",
+    "muted": "#5C6070",
+    "border": "#D3CDBB",
+    "heading": "#1E2F4F",
+    "accent": "#2F5A94",
+    "link": "#24508C",
+    "quote": "#7B8090",
+    "syntax": {
+      "keyword": "#24508C",
+      "string": "#3F6B45",
+      "comment": "#5E6370",
+      "number": "#8A5524",
+      "function": "#6A3F8A",
+      "type": "#2A6070"
+    },
+    "diagram": {
+      "node": "#E3EAF4",
+      "nodeBorder": "#2F5A94",
+      "text": "#262A33",
+      "line": "#5C6070",
+      "secondary": "#EDE8F4",
+      "tertiary": "#F8F5EC",
+      "note": "#F6EED6"
+    }
+  },
+  "dark": {
+    "background": "#1D1C1A",
+    "surface": "#26241F",
+    "text": "#E8E3D6",
+    "muted": "#ADA690",
+    "border": "#3A372F",
+    "heading": "#BCCDEA",
+    "accent": "#7FA3D6",
+    "link": "#92B4E4",
+    "quote": "#9D9A8C",
+    "syntax": {
+      "keyword": "#92B4E4",
+      "string": "#A3C48A",
+      "comment": "#A29E8E",
+      "number": "#E0B070",
+      "function": "#C3A6E6",
+      "type": "#7FC0CF"
+    },
+    "diagram": {
+      "node": "#232C3B",
+      "nodeBorder": "#7FA3D6",
+      "text": "#E8E3D6",
+      "line": "#A29E8E",
+      "secondary": "#2B2538",
+      "tertiary": "#201F1C",
+      "note": "#352E1C"
+    }
+  },
+  "style": {
+    "bodySize": 17,
+    "lineHeight": 1.75,
+    "headingWeight": 650,
+    "radius": 6,
+    "maxWidth": 700,
+    "h1": {
+      "size": 2.2,
+      "align": "center",
+      "decoration": {
+        "type": "rule"
+      }
+    },
+    "h2": {
+      "italic": true
+    },
+    "blockquote": {
+      "style": {
+        "type": "panel"
+      },
+      "italic": true
+    },
+    "hr": {
+      "style": {
+        "type": "line",
+        "color": "border",
+        "thickness": 1
+      }
+    },
+    "table": {
+      "header": {
+        "type": "surface"
+      },
+      "verticalRules": false
+    },
+    "link": {
+      "underline": true
+    }
+  }
+}
