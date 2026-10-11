@@ -11,6 +11,92 @@ content/legal/<slug>.ko.md.
 COMPLETE = True
 
 
+# /themes/agents/ prose (machine draft of the en text, needs-i18n; plan PLAN-web-theme-tuning W3).
+# The tables come from scripts/theme_agents.py, not from here.
+THEME_AGENTS = {
+    "title": "에이전트와 함께 MarsDawn 테마 만들기 · MarsDawn",
+    "description": "MarsDawn 테마를 만드는 AI 에이전트를 위한 참고 자료입니다. theme.json의 모든 필드와 타입, 범위, 검사하고 렌더링하는 CLI 절차, 사람에게 넘기는 링크, 제출 방법을 담았습니다.",
+    "label": "에이전트와 함께 테마 만들기",
+    "h1": "에이전트와 함께 테마 만들기",
+    "lede": "MarsDawn 미리보기 테마를 만드는 AI 에이전트를 위한 참고 자료입니다. 에이전트는 <code>theme.json</code> 하나를 쓰고 명령줄 도구 <code>marsdawn</code>으로 검사하고 렌더링한 뒤 링크를 건넵니다. 사람은 <a href=\"/themes/new/\">테마 빌더</a>에서 눈으로 다듬어 제출합니다. 아래 필드 표는 kit의 소스 코드에서 직접 읽은 것이며, 검사가 둘이 같음을 보장합니다.",
+    "summary": "<strong><code>theme.json</code>을 쓰고, 종료 코드가 0이 될 때까지 <code>marsdawn theme validate theme.json --require-complete --json</code>을 실행하고, <code>marsdawn theme preview</code>로 라이트와 다크를 렌더링한 뒤 사람에게 링크를 건네세요.</strong> 테마는 매개변수일 뿐이며 CSS를 담지 않습니다.",
+    "what_h": "테마란 무엇인가",
+    "what_items": [
+        "라이트와 다크 각각의 <strong>색</strong>: 기본 팔레트와 선택 사항인 구문 색, 다이어그램 색. 모두 <code>#RRGGBB</code> 형식입니다.",
+        "<strong>글꼴 디자인</strong>: <code>sans</code>, <code>serif</code>, <code>rounded</code> 중 하나.",
+        "<strong>닫힌 스타일 옵션 집합</strong>: 고정된 범위의 숫자와 고정된 목록에서 고르는 값. 스타일 옵션의 색은 항상 <code>accent</code> 같은 팔레트 역할이며 색 값을 직접 쓰지 않습니다.",
+        "<strong>표시 문자열</strong>: 이름과 요약, 그리고 선택 사항인 작성자와 라이선스."
+    ],
+    "what_note": "아래 표에 없는 키는 오류이며, 같은 키를 두 번 쓰는 것도 오류입니다. 파일은 최대 16,384바이트입니다.",
+    "loop_h": "검사하고 렌더링하기",
+    "loop_intro": "<code>theme.json</code>이 있는 폴더에서 실행하세요. <code>marsdawn</code> 도구가 필요합니다. <a href=\"/cli/agents/\">에이전트를 위한 marsdawn</a>을 보세요.",
+    "loop_items": [
+        "종료 코드: 0은 유효, 1은 규칙 ID와 함께 무효, 2는 파일 없음, 64는 사용법 오류입니다. <code>preview</code>에는 PNG가 이미 있을 때의 4(<code>--force</code>를 주거나 다른 이름을 고르세요)와 렌더링 실패의 5가 더해집니다.",
+        "<code>--json</code>을 주면 무효한 테마는 <code>issues</code> 아래에 문제를 나열하며, 각각 <code>rule</code> ID, <code>path</code>, <code>message</code>가 있습니다. 고친 뒤 다시 실행하세요.",
+        "<code>--require-complete</code>는 게시할 테마를 위한 검사입니다. 두 팔레트 모두에 <code>syntax</code>와 <code>diagram</code> 색도 요구합니다.",
+        "<code>css</code>는 미리보기가 쓰는 CSS를 출력하고, <code>preview</code>는 예시 문서를 PNG로 렌더링합니다. 둘 다 먼저 검증하므로 무효한 테마는 렌더링되지 않습니다.",
+        "테마를 건네기 전에 라이트와 다크 PNG를 둘 다 확인하세요."
+    ],
+    "start_h": "기본 제공 테마에서 시작하기",
+    "start_intro": "기본 제공 테마 네 가지 중 하나를 복사해 고치세요. 모두 완전하고 유효한 파일입니다.",
+    "start_dawn": "기본값이며 아래 예시",
+    "start_classic": "더 차분한 문서 같은 팔레트",
+    "start_modern": "더 차갑고 현대적인 팔레트",
+    "start_vivid": "더 밝고 대비가 큰 팔레트",
+    "ex_h": "예시: Dawn",
+    "ex_intro": "<code>dawn.json</code>을 한 바이트도 바꾸지 않고 옮긴 것입니다. 스타일 옵션은 <code>hr</code>의 얇은 강조색 선 하나뿐입니다.",
+    "fields_h": "필드",
+    "fields_intro": "아래의 모든 객체는 같은 방식으로 읽힙니다. <code>required</code>는 키가 반드시 있어야 한다는 뜻이며, 나열되지 않은 키는 오류입니다.",
+    "types_note": "타입: <code>string</code>, <code>integer</code>, <code>number</code>, <code>boolean</code>, <code>map</code>(언어 태그에서 텍스트로), <code>enum</code>(나열된 값 중 하나), <code>role</code>(팔레트 역할), <code>object</code>(연결된 표). 타입 뒤의 <code>[]</code>는 목록을 뜻합니다.",
+    "c_field": "필드",
+    "c_type": "타입",
+    "c_presence": "필수 여부",
+    "c_values": "값과 참고",
+    "c_option": "옵션",
+    "c_kind": "type",
+    "c_min": "최소",
+    "c_max": "최대",
+    "c_step": "간격",
+    "see_roles": "팔레트 역할",
+    "see_ranges": "범위",
+    "publish_note": "(게시하려면 필수, <code>--require-complete</code>로 검사)",
+    "h_kinds": "type이 있는 옵션",
+    "kinds_intro": "이 스타일 옵션은 <code>type</code>이 있는 객체입니다. 각 <code>type</code>은 그것에 나열된 필드만 받고 다른 필드는 받지 않습니다.",
+    "h_roles": "팔레트 역할",
+    "roles_intro": "팔레트 역할은 다음 이름 중 하나입니다.",
+    "h_numbers": "숫자",
+    "numbers_intro": "숫자는 가장 가까운 간격의 배수로 맞춰진 뒤 최소와 최대 사이에 있어야 합니다. 그렇지 않으면 규칙은 <code>number.range</code>입니다.",
+    "n_schemaVersion": "항상 <code>1</code>.",
+    "n_id": "1자에서 32자: 소문자와 숫자가 하이픈 하나로 이어진 덩어리, 예: <code>calm-green</code>.",
+    "n_version": "<code>MAJOR.MINOR.PATCH</code>, 예: <code>1.0.0</code>.",
+    "n_name": "언어 태그에서 텍스트로. <code>en</code>은 필수이며, 다른 키는 <code>zh-Hant</code> 같은 언어 태그입니다. 각 텍스트는 최대 48자이며 링크와 줄바꿈을 넣을 수 없습니다.",
+    "n_summary": "<code>name</code>과 같은 형식이며 텍스트당 최대 120자.",
+    "n_scenarios": "하나 또는 둘, 중복 불가. 테마가 달성해야 하는 대비 수준을 정합니다.",
+    "n_license": "SPDX 식별자, 예: <code>Apache-2.0</code>. 제출된 테마는 Apache-2.0으로 게시됩니다.",
+    "n_author_name": "최대 64자, 링크 불가.",
+    "n_author_github": "GitHub 로그인. 제출할 때는 제출하는 사람의 것을 넣으세요.",
+    "n_hex": "<code>#</code>과 16진수 여섯 자리, 예: <code>#1C1C1C</code>.",
+    "n_inline_code": "<code>text</code> 또는 구문 역할만 가능: <code>keyword</code>, <code>string</code>, <code>comment</code>, <code>number</code>, <code>function</code>, <code>type</code>.",
+    "n_gradient": "역할 둘 또는 셋.",
+    "rules_h": "그 밖에 검사하는 것",
+    "rules_items": [
+        "<strong>대비.</strong> <code>background</code> 위의 <code>text</code>처럼 미리보기가 그리는 모든 색 쌍은 텍스트는 4.5:1, 선과 그 밖의 비텍스트는 3:1을 만족해야 합니다. 지정한 시나리오는 일부 색을 4.5:1로 올립니다. 메시지에는 해당 쌍과 그 비율, 필요한 비율이 나옵니다.",
+        "<strong>문자열.</strong> 이름, 요약, 작성자 이름이 비어 있거나 너무 길거나, 링크, 제어 문자, 보이지 않는 문자 또는 양방향 서식 문자를 포함하면 거부됩니다.",
+        "<strong>규칙 ID.</strong> 모든 문제에는 <code>contrast.pair</code>, <code>color.hex</code>, <code>number.range</code>, <code>id.pattern</code>, <code>schema.unknownKey</code>, <code>palette.incomplete</code> 같은 ID가 붙습니다. ID와 <code>path</code>가 가리키는 대로 파일을 고치세요."
+    ],
+    "link_h": "링크로 건네기",
+    "link_intro": "<a href=\"/themes/new/\">테마 빌더</a>는 링크로 테마를 열어 사람이 눈으로 다듬을 수 있게 합니다. 링크는 빌더의 주소, <code>#theme=</code>, 그리고 패딩 없는 base64url로 인코딩한 파일 바이트로 이루어집니다. 파일은 최대 16,384바이트입니다. 이 한 줄이 macOS와 Linux의 zsh와 bash에서 링크를 만들어 줍니다.",
+    "link_note": "테마는 브라우저가 사이트로 보내지 않는 <code>#</code> 뒤에 담기며, 사이트는 이를 어디에도 보내지 않습니다. 다만 링크는 셸과 브라우저의 기록에 남고, 링크를 붙여 넣은 상대는 테마를 읽을 수 있습니다.",
+    "submit_h": "제출하기",
+    "submit_intro": "에이전트는 파일과 링크를 준비하고, 제출은 사람이 합니다. 두 방법 모두 Developer Certificate of Origin과 Apache-2.0 게시에 대한 확인이 필요하며, 이 확인은 사람이 직접 합니다. 에이전트가 상자에 체크하거나 대신 서명하지 않습니다.",
+    "submit_issue": "<strong>이슈.</strong> 사람이 링크를 열어 테마 빌더에서 <strong>Submit</strong>을 누르거나, <a href=\"{issue_url}\">이슈 양식</a>을 열어 JSON을 <em>Theme</em>에 붙여 넣습니다. 워크플로가 테마를 검사하고 답합니다.",
+    "submit_pr": "<strong>풀 리퀘스트.</strong> <code>themes/&lt;id&gt;/theme.json</code>만 바꾸고, <code>author.github</code>를 풀 리퀘스트 작성자의 로그인으로 설정하고, 모든 커밋을 <code>git commit -s</code>로 서명하세요. 규칙은 <a href=\"{contributing_url}\">CONTRIBUTING.md</a>에 있습니다.",
+    "submit_note": "제출된 테마의 작성자 이름, 이름, 요약, GitHub 로그인은 영구적으로 공개됩니다. <code>author.name</code>에는 그 사람이 공개해도 좋다고 한 이름을 넣으세요.",
+    "gallery_h": "게시된 테마",
+    "gallery_p": "게시된 테마가 어떻게 생겼는지는 <a href=\"/themes/gallery/\">테마 갤러리</a>에서 볼 수 있습니다."
+}
+
+
 def build(k) -> dict:
     pages = {}
     pages['index'] = {
@@ -665,6 +751,7 @@ swift build -c release --product marsdawn
   <li>셸 대신 지침 파일을 읽는 에이전트를 위한 파일 하나짜리 스킬: <a href="/ko/cli/skill/">marsdawn 스킬</a>.</li>
   <li>이 <code>export</code>를 그대로 감싼 MCP 서버: <a href="/ko/cli/mcp/">marsdawn-mcp</a>.</li>
   <li>이 JSON 결과가 에이전트 자신의 컨텍스트에 부담이 적은 이유: <a href="/ko/token-efficient-review/">토큰을 아끼는 검토</a>.</li>
+  <li>에이전트로 MarsDawn 테마 만들기: <a href="/ko/themes/agents/">에이전트와 함께 테마 만들기</a>.</li>
 </ul>
 """,
     }
@@ -805,6 +892,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 
 <h2>직접 만들고, 다른 사람이 만든 것도 둘러보세요</h2>
 <p><a href="/ko/themes/new/">브라우저에서 테마를 만드세요</a>. 색과 몇 가지 스타일 옵션을 고르고, 실시간으로 적용된 모습을 본 뒤, 검토용 GitHub 이슈로 제출하면 됩니다. 설치도 git도 필요 없습니다. <a href="/ko/themes/gallery/">갤러리</a>에는 유지 관리자가 검토하고 병합한 제출 테마가 나열되며, 용도로 걸러 볼 수 있습니다. 앱의 설정 › 화면 모드 › 테마 더 받기…에서 설치할 수 있고, Finder의 훑어보기에도 적용됩니다.</p>
+<p>에이전트와 작업하고 있나요? <a href="/ko/themes/agents/">에이전트에게 테마를 만들게 하고</a> 브라우저에서 다듬으세요.</p>
 
 <h2>다음</h2>
 <ul>
@@ -816,6 +904,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
     }
 
 
+    pages['themes/agents'] = k.theme_agents_page(THEME_AGENTS)
     pages['themes/new'] = {
         "title": "브라우저에서 MarsDawn 테마 만들기 · MarsDawn",
         "description": "색과 몇 가지 스타일 옵션을 고르면 샘플 문서에 바로 반영됩니다. 만든 테마는 GitHub 이슈로 제출할 수 있습니다. 설치도 git도 필요 없습니다.",
@@ -824,6 +913,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
   <h1>테마 만들기</h1>
   <p>아래에서 팔레트와 몇 가지 스타일 옵션을 고르세요. 오른쪽 샘플 문서가 라이트와 다크 모두에서 바로바로 바뀌고, 테마 갤러리 CI가 돌리는 검사도 여기에 표시됩니다. 제출용 이슈에 도착할 즈음에는 대개 이미 통과한 상태입니다.</p>
   <p>제출하려면 GitHub 계정이 필요합니다. 이 페이지 자체는 설치도 git도 필요 없습니다.</p>
+  <p>AI 에이전트가 테마 파일을 대신 써 줄 수 있습니다. <a href="/ko/themes/agents/">에이전트와 함께 테마 만들기</a>를 보고, 건네받은 링크를 여기서 열어 다듬으세요.</p>
 </section>
 <div id="theme-sim-app" data-locale="ko"><p>이 페이지에서 테마를 만들고 미리 보려면 JavaScript가 필요합니다.</p></div>
 """,
@@ -1434,7 +1524,7 @@ flowchart LR
     }
 
     app_ui_languages = '영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어'
-    ui = {'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 Markdown 보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': 'PDF 내보내기', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '미리보기 테마와 PDF 내보내기', 'themes-new': '테마 만들기', 'themes-gallery': '테마 갤러리', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'changelog': '변경 내역', 'reading-notes': '편집자의 독서 노트', 'reading-notes-anthropic': '독서 노트: Anthropic', 'reading-notes-chip-huyen': '독서 노트: Chip Huyen', 'reading-notes-lilian-weng': '독서 노트: Lilian Weng', 'reading-notes-harrison-chase': '독서 노트: Harrison Chase', 'reading-notes-langchain': '독서 노트: LangChain(Jess Ou)', 'reading-notes-andrew-ng': '독서 노트: Andrew Ng', 'consent_text': '이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
+    ui = {'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 Markdown 보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': 'PDF 내보내기', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '미리보기 테마와 PDF 내보내기', 'themes-new': '테마 만들기', 'themes-agents': '에이전트와 함께 테마 만들기', 'themes-gallery': '테마 갤러리', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'changelog': '변경 내역', 'reading-notes': '편집자의 독서 노트', 'reading-notes-anthropic': '독서 노트: Anthropic', 'reading-notes-chip-huyen': '독서 노트: Chip Huyen', 'reading-notes-lilian-weng': '독서 노트: Lilian Weng', 'reading-notes-harrison-chase': '독서 노트: Harrison Chase', 'reading-notes-langchain': '독서 노트: LangChain(Jess Ou)', 'reading-notes-andrew-ng': '독서 노트: Andrew Ng', 'consent_text': '이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
     store_chip = 'Mac App Store에서 판매 중'
     trait_link = {'yours': ('내 글은 내 Mac에', '계정도, 동기화도, 클라우드도 없습니다.'), 'pay-once': ('무료로 체험하고, 한 번만 구입', '14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.'), 'pdf': ('PDF 내보내기', '다이어그램, 코드 하이라이트, 세심한 페이지 나눔.'), 'native': ('Mac 앱', '네이티브 윈도우와 탭, 자동 저장, 훑어보기.'), 'limits': ('MarsDawn이 하지 않는 일', '구입 전에 알아 둘 점.')}
     trait_nav_heading = 'MarsDawn에서 기대할 수 있는 것'

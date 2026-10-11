@@ -5,7 +5,8 @@ Swift package).
 
 Three things this holds vendor/kit-themes/<sha12>/ to:
 
-1. Every file the sync script copies verbatim from the kit (ThemeStyles.json, the four built-ins'
+1. Every file the sync script copies verbatim from the kit (ThemeStyles.json, the Swift files
+   ThemeNumbers/ThemeStyle/ThemeDocument/PaletteRole, the four built-ins'
    theme.json, the ThemeFixtures tree, preview.css) byte-matches GitHub's raw copy of the pinned
    commit -- so a hand-edit, or a sync from the wrong commit, is caught even though this script
    can't regenerate the tree itself to compare against.
@@ -51,6 +52,9 @@ KIT_RAW = "https://raw.githubusercontent.com/redtear1115/mars-dawn-kit/{sha}/{pa
 KIT_SOURCE_PATHS = {
     "ThemeStyles.json": "Sources/MarsDawnThemes/Resources/ThemeStyles.json",
     "ThemeNumbers.swift": "Sources/MarsDawnThemes/ThemeNumbers.swift",
+    "ThemeStyle.swift": "Sources/MarsDawnThemes/ThemeStyle.swift",
+    "ThemeDocument.swift": "Sources/MarsDawnThemes/ThemeDocument.swift",
+    "PaletteRole.swift": "Sources/MarsDawnThemes/PaletteRole.swift",
     "preview.css": "Sources/MarsDawnKit/Resources/Preview/preview.css",
 }
 for _id in sync.BUILT_IN_IDS:

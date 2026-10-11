@@ -6,8 +6,94 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 """
 
 
+# /themes/agents/ prose (machine draft of the en text, needs-i18n; plan PLAN-web-theme-tuning W3).
+# The tables come from scripts/theme_agents.py, not from here.
+THEME_AGENTS = {
+    "title": "エージェントと MarsDawn のテーマを作る · MarsDawn",
+    "description": "MarsDawn のテーマを作る AI エージェント向けの参考資料です。theme.json の全フィールドと型・範囲、検証してレンダリングする CLI の手順、人に渡すリンク、投稿の方法をまとめています。",
+    "label": "エージェントとテーマを作る",
+    "h1": "エージェントとテーマを作る",
+    "lede": "MarsDawn のプレビューテーマを作る AI エージェント向けの参考資料です。エージェントは <code>theme.json</code> を1つ書き、コマンドラインツール <code>marsdawn</code> で検証してレンダリングし、リンクを渡します。人は<a href=\"/themes/new/\">テーマビルダー</a>で見た目を整えて投稿します。下のフィールド表は kit のソースコードから直接読み取ったもので、チェックによって一致が保たれています。",
+    "summary": "<strong><code>theme.json</code> を書き、終了コードが 0 になるまで <code>marsdawn theme validate theme.json --require-complete --json</code> を実行し、<code>marsdawn theme preview</code> でライトとダークをレンダリングしてから、人にリンクを渡します。</strong>テーマはパラメーターだけで、CSS は含みません。",
+    "what_h": "テーマとは",
+    "what_items": [
+        "ライトとダークそれぞれの<strong>色</strong>：基本パレットと、任意の構文色・ダイアグラム色。どれも <code>#RRGGBB</code> です。",
+        "<strong>フォントデザイン</strong>：<code>sans</code>、<code>serif</code>、<code>rounded</code> のいずれか。",
+        "<strong>閉じたスタイルオプションの集合</strong>：決まった範囲の数値と、決まったリストから選ぶ値。スタイルオプションの色は常に <code>accent</code> のようなパレットのロールで、色の値を直接書くことはありません。",
+        "<strong>表示用の文字列</strong>：名前と概要、任意で作者とライセンス。"
+    ],
+    "what_note": "下の表にないキーはエラーで、同じキーを2回書くこともエラーです。ファイルは最大 16,384 バイトです。",
+    "loop_h": "検証とレンダリング",
+    "loop_intro": "<code>theme.json</code> のあるフォルダーで実行します。<code>marsdawn</code> ツールが必要です。<a href=\"/cli/agents/\">AI エージェント向け marsdawn</a>を参照してください。",
+    "loop_items": [
+        "終了コード：0 は有効、1 は無効（ルール ID 付き）、2 はファイルが見つからない、64 は使い方の誤りです。<code>preview</code> にはさらに、PNG がすでにある場合の 4（<code>--force</code> を付けるか別の名前にします）と、レンダリング失敗の 5 があります。",
+        "<code>--json</code> を付けると、無効なテーマは問題を <code>issues</code> の下に並べ、それぞれに <code>rule</code> ID、<code>path</code>、<code>message</code> が付きます。直して再実行してください。",
+        "<code>--require-complete</code> は公開するテーマ向けのチェックで、両方のパレットに <code>syntax</code> と <code>diagram</code> の色も求めます。",
+        "<code>css</code> はプレビューが使う CSS を出力し、<code>preview</code> はサンプル文書を PNG にレンダリングします。どちらも先に検証するので、無効なテーマはレンダリングされません。",
+        "テーマを渡す前に、ライトとダークの PNG を両方確認してください。"
+    ],
+    "start_h": "組み込みテーマから始める",
+    "start_intro": "4つの組み込みテーマのどれかをコピーして変更します。どれも完全で有効なファイルです。",
+    "start_dawn": "既定のテーマで、下の例",
+    "start_classic": "より落ち着いた、文書らしいパレット",
+    "start_modern": "より涼しげで現代的なパレット",
+    "start_vivid": "より明るくコントラストの強いパレット",
+    "ex_h": "例：Dawn",
+    "ex_intro": "<code>dawn.json</code> を1バイトも変えずに載せています。スタイルオプションは <code>hr</code> の細いアクセントカラーの線だけです。",
+    "fields_h": "フィールド",
+    "fields_intro": "下のオブジェクトはどれも同じように読まれます。<code>required</code> はキーが必須という意味で、載っていないキーはエラーです。",
+    "types_note": "型：<code>string</code>、<code>integer</code>、<code>number</code>、<code>boolean</code>、<code>map</code>（言語タグからテキストへ）、<code>enum</code>（挙げた値のいずれか）、<code>role</code>（パレットのロール）、<code>object</code>（リンク先の表）。型の後ろの <code>[]</code> はリストを表します。",
+    "c_field": "フィールド",
+    "c_type": "型",
+    "c_presence": "必須か",
+    "c_values": "値と備考",
+    "c_option": "オプション",
+    "c_kind": "type",
+    "c_min": "最小",
+    "c_max": "最大",
+    "c_step": "刻み",
+    "see_roles": "パレットのロール",
+    "see_ranges": "範囲",
+    "publish_note": "（公開には必須。<code>--require-complete</code> で検証）",
+    "h_kinds": "type を持つオプション",
+    "kinds_intro": "これらのスタイルオプションは <code>type</code> を持つオブジェクトです。それぞれの <code>type</code> は、そこに挙げたフィールドだけを受け付けます。",
+    "h_roles": "パレットのロール",
+    "roles_intro": "パレットのロールは次の名前のいずれかです。",
+    "h_numbers": "数値",
+    "numbers_intro": "数値は最も近い刻みの倍数に丸められ、最小と最大の間に収まる必要があります。収まらない場合のルールは <code>number.range</code> です。",
+    "n_schemaVersion": "常に <code>1</code>。",
+    "n_id": "1〜32文字：小文字と数字を、単独のハイフンでつないだ区切り。例：<code>calm-green</code>。",
+    "n_version": "<code>MAJOR.MINOR.PATCH</code>。例：<code>1.0.0</code>。",
+    "n_name": "言語タグからテキストへ。<code>en</code> は必須で、ほかのキーは <code>zh-Hant</code> のような言語タグです。各テキストは最大48文字で、リンクや改行は使えません。",
+    "n_summary": "<code>name</code> と同じ形式で、テキストごとに最大120文字。",
+    "n_scenarios": "1つまたは2つ、重複不可。テーマが満たすべきコントラストの水準を決めます。",
+    "n_license": "SPDX 識別子。例：<code>Apache-2.0</code>。投稿されたテーマは Apache-2.0 で公開されます。",
+    "n_author_name": "最大64文字、リンク不可。",
+    "n_author_github": "GitHub のログイン名。投稿の場合は、投稿する人のものを入れます。",
+    "n_hex": "<code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。",
+    "n_inline_code": "<code>text</code> か構文ロールのみ：<code>keyword</code>、<code>string</code>、<code>comment</code>、<code>number</code>、<code>function</code>、<code>type</code>。",
+    "n_gradient": "ロールを2つまたは3つ。",
+    "rules_h": "ほかに検証されること",
+    "rules_items": [
+        "<strong>コントラスト。</strong><code>background</code> 上の <code>text</code> のように、プレビューが描く色の組はすべて、テキストは 4.5:1、線やそのほかの非テキストは 3:1 に達する必要があります。指定したシナリオによって、一部の色は 4.5:1 に引き上げられます。メッセージには、その組と比率、必要な比率が示されます。",
+        "<strong>文字列。</strong>名前、概要、作者名が空、長すぎる、またはリンク・制御文字・不可視文字・双方向書式文字を含む場合は拒否されます。",
+        "<strong>ルール ID。</strong>すべての問題には <code>contrast.pair</code>、<code>color.hex</code>、<code>number.range</code>、<code>id.pattern</code>、<code>schema.unknownKey</code>、<code>palette.incomplete</code> などの ID が付きます。ID と <code>path</code> が示すとおりにファイルを直してください。"
+    ],
+    "link_h": "リンクとして渡す",
+    "link_intro": "<a href=\"/themes/new/\">テーマビルダー</a>は、リンクからテーマを開けるので、人が見た目を整えられます。リンクは、ビルダーのアドレス、<code>#theme=</code>、パディングなしの base64url にしたファイルのバイト列でできています。ファイルは最大 16,384 バイトです。次の1行で、macOS と Linux の zsh と bash でリンクを作れます。",
+    "link_note": "テーマはブラウザーがサイトに送らない <code>#</code> の後ろに入り、サイトもそれをどこにも送りません。ただしリンクはシェルとブラウザーの履歴に残り、リンクを貼った相手はテーマを読めます。",
+    "submit_h": "投稿する",
+    "submit_intro": "エージェントがファイルとリンクを用意し、投稿は人が行います。どちらの方法でも Developer Certificate of Origin と Apache-2.0 での公開への確認が必要で、この確認は人が自分で行います。エージェントがチェックボックスにチェックしたり、代わりに署名したりすることはありません。",
+    "submit_issue": "<strong>Issue。</strong>人がリンクを開いてテーマビルダーの <strong>Submit</strong> を押すか、<a href=\"{issue_url}\">Issue フォーム</a>を開いて JSON を <em>Theme</em> に貼り付けます。ワークフローがテーマを検証して返信します。",
+    "submit_pr": "<strong>Pull request。</strong><code>themes/&lt;id&gt;/theme.json</code> だけを変更し、<code>author.github</code> を pull request の作者のログイン名にして、すべてのコミットに <code>git commit -s</code> で署名します。ルールは <a href=\"{contributing_url}\">CONTRIBUTING.md</a> にあります。",
+    "submit_note": "投稿されたテーマの作者名、名前、概要、GitHub のログイン名は永久に公開されます。<code>author.name</code> には、その人が公開してよいと考える名前を入れてください。",
+    "gallery_h": "公開されているテーマ",
+    "gallery_p": "公開されているテーマの見た目は、<a href=\"/themes/gallery/\">テーマギャラリー</a>で確認できます。"
+}
+
+
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'themes-new': 'テーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
+    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'themes-new': 'テーマを作る', 'themes-agents': 'エージェントとテーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
     store_chip = 'Mac App Store で配信中'
     schema_notes = {'export': 'export 成功時', 'open': 'open 成功時、marsdawn 0.5.1 以降、サイドバーに表示するフォルダを含む', 'open_v2': 'open 成功時、marsdawn 0.3.0〜0.5.0', 'error': '失敗時、両方のコマンド共通、marsdawn 0.5.2 以降', 'open_v1': 'open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）', 'error_v1': '失敗時、両方のコマンド共通、marsdawn 0.5.1 以前'}
     example_plan = '# 計画：書き出しを高速化\n\nこの計画はエージェントが書きました。内容を確認してから、PDF にします。\n\n## ステップ\n\n| ステップ | 担当 | 状況 |\n|------|-------|--------|\n| 遅いページを計測する | エージェント | 完了 |\n| レンダリング済み図をキャッシュする | エージェント | レビュー中 |\n\n50 ページの文書で目標とするのは $t < 2\\,\\text{s}$：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  ドラフト --> レビュー --> 公開\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -547,6 +633,11 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
 <p><code>marsdawn --version</code> は <code>0.3.0</code> のようなバージョン番号を表示し、コード 0 で終了します。</p>
+
+<h2>次に</h2>
+<ul>
+  <li>エージェントで MarsDawn のテーマを作る：<a href="/ja/themes/agents/">エージェントとテーマを作る</a>。</li>
+</ul>
 """,
     }
     pages['cli/skill'] = {
@@ -691,6 +782,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 </ul>
 """,
     }
+    pages['themes/agents'] = k.theme_agents_page(THEME_AGENTS)
     pages['themes/new'] = {
         "title": "ブラウザで MarsDawn のテーマを作る · MarsDawn",
         "description": "配色といくつかのスタイルオプションを選ぶと、サンプル文書にその場で反映されます。できあがったテーマは GitHub の issue として送信できます。インストールも git も不要です。",
@@ -699,6 +791,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <h1>テーマを作る</h1>
   <p>下で配色といくつかのスタイルオプションを選んでください。右側のサンプル文書がライトとダークの両方でその場で更新され、テーマギャラリーの CI が行うチェックもここに表示されます。投稿用の issue に届く頃には、たいてい先にすべて通っています。</p>
   <p>投稿には GitHub アカウントが必要です。このページ自体はインストールも git も不要です。</p>
+  <p>AI エージェントがテーマのファイルを代わりに書けます。<a href="/ja/themes/agents/">エージェントとテーマを作る</a>を見て、渡されたリンクをここで開いて整えてください。</p>
 </section>
 <div id="theme-sim-app" data-locale="ja"><p>このページの作成とプレビューには JavaScript が必要です。</p></div>
 """,
@@ -729,6 +822,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 
 <h2>自分のテーマを作り、他の人が作ったものも見る</h2>
 <p><a href="/ja/themes/new/">ブラウザでテーマを作れます</a>：色といくつかのスタイルオプションを選び、その場で確認し、レビュー用に GitHub の issue として送信します — インストールも git も不要です。<a href="/ja/themes/gallery/">ギャラリー</a>には、メンテナがレビューしてマージした投稿テーマが並び、用途で絞り込めます。アプリの「設定 › 外観モード › テーマを追加…」からインストールでき、Finder のクイックルックにも反映されます。</p>
+<p>エージェントと作業していますか？<a href="/ja/themes/agents/">エージェントにテーマを作らせて</a>、ブラウザーで整えましょう。</p>
 
 <h2>次に</h2>
 <ul>

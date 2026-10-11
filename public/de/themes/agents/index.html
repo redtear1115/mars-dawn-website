@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mit deinem Agenten ein MarsDawn-Thema erstellen · MarsDawn</title>
+<meta name="description" content="Eine Referenz für KI-Agenten, die ein MarsDawn-Thema erstellen: jedes Feld der theme.json mit Typ und Wertebereich, die CLI-Schleife zum Prüfen und Rendern, ein Übergabe-Link und die Einreichung.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/themes/agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/themes/agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/themes/agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/themes/agents/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/themes/agents/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/themes/agents/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/themes/agents/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/themes/agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/themes/agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/de/themes/agents/">
+<link rel="alternate" type="text/markdown" href="/de/themes/agents/index.md">
+<meta property="og:title" content="Mit deinem Agenten ein MarsDawn-Thema erstellen · MarsDawn">
+<meta property="og:description" content="Eine Referenz für KI-Agenten, die ein MarsDawn-Thema erstellen: jedes Feld der theme.json mit Typ und Wertebereich, die CLI-Schleife zum Prüfen und Rendern, ein Übergabe-Link und die Einreichung.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/de/themes/agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/de/"}, {"@type": "ListItem", "position": 2, "name": "Vorschau-Themen und PDF-Export", "item": "https://marsdawn.southern-light.dev/de/themes/"}, {"@type": "ListItem", "position": 3, "name": "Mit deinem Agenten ein Thema erstellen", "item": "https://marsdawn.southern-light.dev/de/themes/agents/"}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>
+  <p>Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Ablehnen</button>
+    <button type="button" id="consent-accept" class="consent-btn">Akzeptieren</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/de/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Im Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/themes/agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/themes/agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/themes/agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/themes/agents/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/themes/agents/" hreflang="de" aria-current="true" lang="de">Deutsch</a> · <a href="/fr/themes/agents/" hreflang="fr" lang="fr">Français</a> · <a href="/es/themes/agents/" hreflang="es" lang="es">Español</a> · <a href="/ko/themes/agents/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Mit deinem Agenten ein Thema erstellen</h1>
+  <p>Eine Referenz für einen KI-Agenten, der ein MarsDawn-Vorschau-Thema erstellt. Der Agent schreibt eine <code>theme.json</code>, prüft und rendert sie mit dem Befehlszeilenwerkzeug <code>marsdawn</code> und gibt dir einen Link. Du stimmst sie im <a href="/de/themes/new/">Themen-Editor</a> nach Augenmaß ab und reichst sie ein. Die Feldtabellen unten sind direkt aus dem Quelltext des Kits gelesen, und eine Prüfung hält sie damit gleich.</p>
+</section>
+
+<div class="summary"><p><strong>Schreibe eine <code>theme.json</code>, führe <code>marsdawn theme validate theme.json --require-complete --json</code> aus, bis der Exit-Code 0 ist, rendere sie mit <code>marsdawn theme preview</code> in hell und dunkel und gib der Person dann einen Link.</strong> Ein Thema besteht nur aus Parametern. Es enthält nie CSS.</p></div>
+
+<h2 id="what-a-theme-is">Was ein Thema ist</h2>
+<ul>
+  <li><strong>Farben</strong> für hell und für dunkel: eine Basispalette sowie optionale Syntax- und Diagrammfarben. Jede ist <code>#RRGGBB</code>.</li>
+  <li><strong>Ein Schriftdesign</strong>: <code>sans</code>, <code>serif</code> oder <code>rounded</code>.</li>
+  <li><strong>Ein geschlossener Satz von Stiloptionen</strong>: Zahlen in festen Bereichen und Auswahlen aus festen Listen. Eine Farbe in einer Stiloption ist immer eine Palettenrolle wie <code>accent</code>, nie eine feste Farbe.</li>
+  <li><strong>Anzeigetexte</strong>: ein Name und eine Zusammenfassung, optional ein Autor und eine Lizenz.</li>
+</ul>
+<p>Ein Schlüssel, der nicht in den Tabellen unten steht, ist ein Fehler, ebenso ein doppelt geschriebener Schlüssel. Die Datei darf höchstens 16.384 Bytes groß sein.</p>
+
+<h2 id="check-and-render">Prüfen und rendern</h2>
+<p>Führe diese Befehle in dem Ordner aus, der <code>theme.json</code> enthält. Sie brauchen das Werkzeug <code>marsdawn</code>: siehe <a href="/de/cli/agents/">marsdawn für Agenten</a>.</p>
+<pre><code>marsdawn theme validate theme.json --require-complete --json
+marsdawn theme css theme.json --json
+marsdawn theme preview theme.json --appearance light -o light.png
+marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
+<ul>
+  <li>Exit-Codes: 0 gültig, 1 ungültig mit Regel-IDs, 2 Datei nicht gefunden, 64 falsche Verwendung. <code>preview</code> kennt zusätzlich 4, wenn die PNG-Datei schon existiert (<code>--force</code> übergeben oder einen anderen Namen wählen), und 5, wenn das Rendern fehlschlägt.</li>
+  <li>Mit <code>--json</code> listet ein ungültiges Thema seine Probleme unter <code>issues</code> auf, jedes mit einer <code>rule</code>-ID, einem <code>path</code> und einer <code>message</code>. Behebe sie und führe den Befehl erneut aus.</li>
+  <li><code>--require-complete</code> ist die Prüfung für ein Thema, das veröffentlicht werden soll: Es verlangt zusätzlich die Farben <code>syntax</code> und <code>diagram</code> in beiden Paletten.</li>
+  <li><code>css</code> gibt das CSS aus, das die Vorschau verwendet. <code>preview</code> rendert ein Beispieldokument als PNG. Beide prüfen zuerst, ein ungültiges Thema wird also nicht gerendert.</li>
+  <li>Sieh dir das helle und das dunkle PNG an, bevor du das Thema übergibst.</li>
+</ul>
+
+<h2 id="start-from-a-built-in">Mit einem eingebauten Thema beginnen</h2>
+<p>Kopiere eines der vier eingebauten Themen und ändere es. Jedes ist eine vollständige, gültige Datei:</p>
+<ul>
+  <li><a href="/assets/theme-sim/kit/themes/dawn.json"><code>/assets/theme-sim/kit/themes/dawn.json</code></a>: der Standard und das Beispiel unten</li>
+  <li><a href="/assets/theme-sim/kit/themes/classic.json"><code>/assets/theme-sim/kit/themes/classic.json</code></a>: eine schlichtere, dokumentartige Palette</li>
+  <li><a href="/assets/theme-sim/kit/themes/modern.json"><code>/assets/theme-sim/kit/themes/modern.json</code></a>: eine kühlere, zeitgemäßere Palette</li>
+  <li><a href="/assets/theme-sim/kit/themes/vivid.json"><code>/assets/theme-sim/kit/themes/vivid.json</code></a>: eine hellere Palette mit mehr Kontrast</li>
+</ul>
+<h3 id="example-dawn">Beispiel: Dawn</h3>
+<p>Das ist <code>dawn.json</code>, Byte für Byte. Ihre einzige Stiloption ist eine dünne Linie in der Akzentfarbe für <code>hr</code>.</p>
+<pre><code>{
+  "schemaVersion": 1,
+  "id": "dawn",
+  "version": "1.0.0",
+  "name": { "en": "Dawn" },
+  "summary": { "en": "Warm Martian sunrise" },
+  "fontDesign": "sans",
+  "scenarios": ["agent-review"],
+  "light": {
+    "background": "#FFFDFB", "surface": "#F6F0EC", "text": "#26211F", "muted": "#6F6660",
+    "border": "#EADFD8", "heading": "#26211F", "accent": "#C8471B", "link": "#B03C0C", "quote": "#D97A4A",
+    "syntax": { "keyword": "#B03C0C", "string": "#2F6F5E", "comment": "#746B66", "number": "#9A5B00", "function": "#5B3E8C", "type": "#1F6FB2" },
+    "diagram": { "node": "#FBE9E0", "nodeBorder": "#CA6C3C", "text": "#26211F", "line": "#8A6A5C", "secondary": "#E6F1EE", "tertiary": "#FFF6F1", "note": "#FFF1D6" }
+  },
+  "dark": {
+    "background": "#1C1A1F", "surface": "#262229", "text": "#EBE4DF", "muted": "#A39992",
+    "border": "#3A343A", "heading": "#F4EEEA", "accent": "#FF8A50", "link": "#FF9E6B", "quote": "#E08A5C",
+    "syntax": { "keyword": "#FF9E6B", "string": "#7FD1B9", "comment": "#938A84", "number": "#F2C572", "function": "#C7A6F5", "type": "#6CB6FF" },
+    "diagram": { "node": "#3A2A26", "nodeBorder": "#E08A5C", "text": "#EBE4DF", "line": "#B8A69C", "secondary": "#23332F", "tertiary": "#2B2427", "note": "#3D3322" }
+  },
+  "style": {
+    "hr": { "style": { "type": "line", "color": "accent", "thickness": 1 } }
+  }
+}</code></pre>
+
+<h2 id="fields">Felder</h2>
+<p>Jedes Objekt unten wird auf dieselbe Weise gelesen. <code>required</code> heißt, der Schlüssel muss vorhanden sein, und ein Schlüssel, der nicht aufgeführt ist, ist ein Fehler.</p>
+<p>Typen: <code>string</code>, <code>integer</code>, <code>number</code>, <code>boolean</code>, <code>map</code> (Sprach-Tag auf Text), <code>enum</code> (einer der aufgeführten Werte), <code>role</code> (eine Palettenrolle) und <code>object</code> (die Tabelle, auf die verlinkt wird). Ein <code>[]</code> hinter einem Typ bedeutet eine Liste.</p>
+<h3 id="t-root"><code>theme.json</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="root">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>schemaVersion</code></th><td data-label="Typ"><code>integer</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise">Immer <code>1</code>.</td></tr>
+  <tr><th scope="row"><code>id</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise">1 bis 32 Zeichen: Kleinbuchstaben und Ziffern, in Abschnitten, die durch einzelne Bindestriche verbunden sind, etwa <code>calm-green</code>.</td></tr>
+  <tr><th scope="row"><code>version</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>MAJOR.MINOR.PATCH</code>, etwa <code>1.0.0</code>.</td></tr>
+  <tr><th scope="row"><code>name</code></th><td data-label="Typ"><code>map</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise">Sprach-Tag auf Text. <code>en</code> ist erforderlich; andere Schlüssel sind Sprach-Tags wie <code>zh-Hant</code>. Jeder Text hat höchstens 48 Zeichen, ohne Links und Zeilenumbrüche.</td></tr>
+  <tr><th scope="row"><code>summary</code></th><td data-label="Typ"><code>map</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise">Dieselbe Form wie <code>name</code>, höchstens 120 Zeichen pro Text.</td></tr>
+  <tr><th scope="row"><code>fontDesign</code></th><td data-label="Typ"><code>enum</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>sans</code>, <code>serif</code>, <code>rounded</code></td></tr>
+  <tr><th scope="row"><code>scenarios</code></th><td data-label="Typ"><code>enum[]</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>agent-review</code>, <code>technical-docs</code>, <code>formal-output</code>, <code>notes-sharing</code> &#8212; Eins oder zwei, ohne Wiederholung. Sie legen fest, wie viel Kontrast das Thema erreichen muss.</td></tr>
+  <tr><th scope="row"><code>author</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-author"><code>author</code></a></td></tr>
+  <tr><th scope="row"><code>license</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise">Eine SPDX-Kennung, etwa <code>Apache-2.0</code>. Eingereichte Themen werden unter Apache-2.0 veröffentlicht.</td></tr>
+  <tr><th scope="row"><code>light</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><a href="#t-palette"><code>light, dark</code></a></td></tr>
+  <tr><th scope="row"><code>dark</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><a href="#t-palette"><code>light, dark</code></a></td></tr>
+  <tr><th scope="row"><code>style</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-style"><code>style</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-author"><code>author</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="author">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>name</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise">Höchstens 64 Zeichen, ohne Links.</td></tr>
+  <tr><th scope="row"><code>github</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise">Ein GitHub-Login. Bei einer Einreichung trägst du den der einreichenden Person ein.</td></tr>
+</tbody>
+</table></div>
+<h3 id="t-palette"><code>light, dark</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="palette">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>background</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>surface</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>text</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>muted</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>border</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>heading</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>accent</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>link</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>quote</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>syntax</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code> (zum Veröffentlichen erforderlich, mit <code>--require-complete</code>)</td><td data-label="Werte und Hinweise"><a href="#t-syntax-colors"><code>syntax</code></a></td></tr>
+  <tr><th scope="row"><code>diagram</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code> (zum Veröffentlichen erforderlich, mit <code>--require-complete</code>)</td><td data-label="Werte und Hinweise"><a href="#t-diagram-colors"><code>diagram</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-syntax-colors"><code>syntax</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="syntax-colors">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>keyword</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>string</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>comment</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>number</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>function</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>type</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+</tbody>
+</table></div>
+<h3 id="t-diagram-colors"><code>diagram</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="diagram-colors">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>node</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>nodeBorder</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>text</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>line</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>secondary</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>tertiary</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>note</code></th><td data-label="Typ"><code>string</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Werte und Hinweise"><code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.</td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style"><code>style</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>bodySize</code></th><td data-label="Typ"><code>number</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-numbers">Bereich</a></td></tr>
+  <tr><th scope="row"><code>lineHeight</code></th><td data-label="Typ"><code>number</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-numbers">Bereich</a></td></tr>
+  <tr><th scope="row"><code>headingWeight</code></th><td data-label="Typ"><code>number</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-numbers">Bereich</a></td></tr>
+  <tr><th scope="row"><code>radius</code></th><td data-label="Typ"><code>number</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-numbers">Bereich</a></td></tr>
+  <tr><th scope="row"><code>maxWidth</code></th><td data-label="Typ"><code>number</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-numbers">Bereich</a></td></tr>
+  <tr><th scope="row"><code>h1</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-style-h1"><code>style.h1</code></a></td></tr>
+  <tr><th scope="row"><code>h2</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-style-h2"><code>style.h2</code></a></td></tr>
+  <tr><th scope="row"><code>blockquote</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-style-blockquote"><code>style.blockquote</code></a></td></tr>
+  <tr><th scope="row"><code>hr</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-style-hr"><code>style.hr</code></a></td></tr>
+  <tr><th scope="row"><code>table</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-style-table"><code>style.table</code></a></td></tr>
+  <tr><th scope="row"><code>listMarker</code></th><td data-label="Typ"><code>role</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#roles">eine Palettenrolle</a></td></tr>
+  <tr><th scope="row"><code>inlineCode</code></th><td data-label="Typ"><code>role</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#roles">eine Palettenrolle</a> &#8212; Nur <code>text</code> oder eine Syntaxrolle: <code>keyword</code>, <code>string</code>, <code>comment</code>, <code>number</code>, <code>function</code> oder <code>type</code>.</td></tr>
+  <tr><th scope="row"><code>link</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-style-link"><code>style.link</code></a></td></tr>
+  <tr><th scope="row"><code>syntax</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-style-syntax"><code>style.syntax</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-h1"><code>style.h1</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-h1">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>size</code></th><td data-label="Typ"><code>number</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-numbers">Bereich</a></td></tr>
+  <tr><th scope="row"><code>letterSpacing</code></th><td data-label="Typ"><code>number</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-numbers">Bereich</a></td></tr>
+  <tr><th scope="row"><code>align</code></th><td data-label="Typ"><code>enum</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><code>left</code>, <code>center</code></td></tr>
+  <tr><th scope="row"><code>decoration</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-kinds"><code>type</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-h2"><code>style.h2</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-h2">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>letterSpacing</code></th><td data-label="Typ"><code>number</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-numbers">Bereich</a></td></tr>
+  <tr><th scope="row"><code>decoration</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-kinds"><code>type</code></a></td></tr>
+  <tr><th scope="row"><code>italic</code></th><td data-label="Typ"><code>boolean</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-blockquote"><code>style.blockquote</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-blockquote">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-kinds"><code>type</code></a></td></tr>
+  <tr><th scope="row"><code>italic</code></th><td data-label="Typ"><code>boolean</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-hr"><code>style.hr</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-hr">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-kinds"><code>type</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-table"><code>style.table</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-table">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>header</code></th><td data-label="Typ"><code>object</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><a href="#t-kinds"><code>type</code></a></td></tr>
+  <tr><th scope="row"><code>verticalRules</code></th><td data-label="Typ"><code>boolean</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><code>true</code>, <code>false</code></td></tr>
+  <tr><th scope="row"><code>rounded</code></th><td data-label="Typ"><code>boolean</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-link"><code>style.link</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-link">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>underline</code></th><td data-label="Typ"><code>boolean</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-syntax"><code>style.syntax</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-syntax">
+<thead><tr><th scope="col">Feld</th><th scope="col">Typ</th><th scope="col">Pflicht</th><th scope="col">Werte und Hinweise</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>boldKeywords</code></th><td data-label="Typ"><code>boolean</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Werte und Hinweise"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-kinds">Optionen mit einem Typ</h3>
+<p>Diese Stiloptionen sind Objekte mit einem <code>type</code>. Jeder <code>type</code> nimmt genau die für ihn aufgeführten Felder und keine anderen.</p>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="kinds">
+<thead><tr><th scope="col">Option</th><th scope="col">type</th><th scope="col">Feld</th><th scope="col">Pflicht</th><th scope="col">Typ</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>rule</code></td><td data-label="Feld">—</td><td data-label="Pflicht">—</td><td data-label="Typ">—</td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>none</code></td><td data-label="Feld">—</td><td data-label="Pflicht">—</td><td data-label="Typ">—</td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>shortRule</code></td><td data-label="Feld"><code>color</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Typ"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>gradientBar</code></td><td data-label="Feld"><code>from</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Typ"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>gradientBar</code></td><td data-label="Feld"><code>to</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Typ"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.h2.decoration</code></th><td data-label="type"><code>rule</code></td><td data-label="Feld">—</td><td data-label="Pflicht">—</td><td data-label="Typ">—</td></tr>
+  <tr><th scope="row"><code>style.h2.decoration</code></th><td data-label="type"><code>none</code></td><td data-label="Feld">—</td><td data-label="Pflicht">—</td><td data-label="Typ">—</td></tr>
+  <tr><th scope="row"><code>style.h2.decoration</code></th><td data-label="type"><code>dot</code></td><td data-label="Feld"><code>color</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Typ"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.blockquote.style</code></th><td data-label="type"><code>bar</code></td><td data-label="Feld"><code>width</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Typ"><code>number</code> <a href="#t-numbers">Bereich</a></td></tr>
+  <tr><th scope="row"><code>style.blockquote.style</code></th><td data-label="type"><code>panel</code></td><td data-label="Feld">—</td><td data-label="Pflicht">—</td><td data-label="Typ">—</td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>line</code></td><td data-label="Feld"><code>color</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Typ"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>line</code></td><td data-label="Feld"><code>thickness</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Typ"><code>number</code> <a href="#t-numbers">Bereich</a></td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>shortCentered</code></td><td data-label="Feld"><code>color</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Typ"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>gradient</code></td><td data-label="Feld"><code>colors</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Typ"><code>role[]</code> Zwei oder drei Rollen.</td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>surface</code></td><td data-label="Feld">—</td><td data-label="Pflicht">—</td><td data-label="Typ">—</td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>accentRule</code></td><td data-label="Feld"><code>color</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Typ"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>filled</code></td><td data-label="Feld"><code>background</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Typ"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>filled</code></td><td data-label="Feld"><code>text</code></td><td data-label="Pflicht"><code>required</code></td><td data-label="Typ"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>filled</code></td><td data-label="Feld"><code>border</code></td><td data-label="Pflicht"><code>optional</code></td><td data-label="Typ"><code>role</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="roles">Palettenrollen</h3>
+<p>Eine Palettenrolle ist einer dieser Namen:</p>
+<p data-theme-values="role"><code>background</code>, <code>surface</code>, <code>text</code>, <code>muted</code>, <code>border</code>, <code>heading</code>, <code>accent</code>, <code>link</code>, <code>quote</code>, <code>keyword</code>, <code>string</code>, <code>comment</code>, <code>number</code>, <code>function</code>, <code>type</code></p>
+<h3 id="t-numbers">Zahlen</h3>
+<p>Eine Zahl wird auf das nächste Vielfache ihres Schritts gerundet und muss dann zwischen Min und Max liegen. Sonst lautet die Regel <code>number.range</code>.</p>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="numbers">
+<thead><tr><th scope="col">Feld</th><th scope="col">Min</th><th scope="col">Max</th><th scope="col">Schritt</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style.bodySize</code></th><td data-label="Min"><code>14</code></td><td data-label="Max"><code>18</code></td><td data-label="Schritt"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.lineHeight</code></th><td data-label="Min"><code>1.4</code></td><td data-label="Max"><code>1.9</code></td><td data-label="Schritt"><code>0.05</code></td></tr>
+  <tr><th scope="row"><code>style.headingWeight</code></th><td data-label="Min"><code>400</code></td><td data-label="Max"><code>900</code></td><td data-label="Schritt"><code>50</code></td></tr>
+  <tr><th scope="row"><code>style.radius</code></th><td data-label="Min"><code>0</code></td><td data-label="Max"><code>16</code></td><td data-label="Schritt"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.maxWidth</code></th><td data-label="Min"><code>600</code></td><td data-label="Max"><code>1000</code></td><td data-label="Schritt"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.h1.size</code></th><td data-label="Min"><code>1.8</code></td><td data-label="Max"><code>2.4</code></td><td data-label="Schritt"><code>0.1</code></td></tr>
+  <tr><th scope="row"><code>style.h1.letterSpacing</code></th><td data-label="Min"><code>-0.03</code></td><td data-label="Max"><code>0.03</code></td><td data-label="Schritt"><code>0.005</code></td></tr>
+  <tr><th scope="row"><code>style.h2.letterSpacing</code></th><td data-label="Min"><code>-0.03</code></td><td data-label="Max"><code>0.03</code></td><td data-label="Schritt"><code>0.005</code></td></tr>
+  <tr><th scope="row"><code>style.blockquote.style.width</code></th><td data-label="Min"><code>2</code></td><td data-label="Max"><code>4</code></td><td data-label="Schritt"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.hr.style.thickness</code></th><td data-label="Min"><code>1</code></td><td data-label="Max"><code>4</code></td><td data-label="Schritt"><code>1</code></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="what-else-is-checked">Was sonst noch geprüft wird</h2>
+<ul>
+  <li><strong>Kontrast.</strong> Jedes Farbpaar, das die Vorschau zeichnet, etwa <code>text</code> auf <code>background</code>, muss für Text 4,5:1 und für Linien und anderes Nicht-Text 3:1 erreichen. Die Szenarien, die du angibst, heben manche Farben auf 4,5:1. Die Meldung nennt das Paar, sein Verhältnis und das geforderte.</li>
+  <li><strong>Texte.</strong> Ein Name, eine Zusammenfassung oder ein Autorenname, der leer oder zu lang ist oder einen Link, ein Steuerzeichen oder ein unsichtbares oder bidirektionales Formatzeichen enthält, wird abgelehnt.</li>
+  <li><strong>Regel-IDs.</strong> Jedes Problem trägt eine, etwa <code>contrast.pair</code>, <code>color.hex</code>, <code>number.range</code>, <code>id.pattern</code>, <code>schema.unknownKey</code> oder <code>palette.incomplete</code>. Korrigiere die Datei nach dem, was die ID und der <code>path</code> sagen.</li>
+</ul>
+
+<h2 id="hand-it-over-as-a-link">Als Link übergeben</h2>
+<p>Der <a href="/de/themes/new/">Themen-Editor</a> öffnet ein Thema aus einem Link, damit die Person es nach Augenmaß abstimmen kann. Der Link besteht aus der Adresse des Editors, dann <code>#theme=</code>, dann den Bytes der Datei als base64url ohne Auffüllzeichen. Die Datei darf höchstens 16.384 Bytes groß sein. Diese eine Zeile baut den Link in zsh und in bash, auf macOS und Linux:</p>
+<pre><code>printf 'https://marsdawn.southern-light.dev/de/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<p>Das Thema steht hinter einem <code>#</code>, das ein Browser nicht an die Website sendet, und die Website leitet es nirgendwohin weiter. Der Link bleibt aber im Verlauf deiner Shell und des Browsers, und jede Person, der du ihn schickst, kann das Thema lesen.</p>
+
+<h2 id="submit-it">Einreichen</h2>
+<p>Der Agent bereitet die Datei und den Link vor. Die Person reicht ein. Beide Wege verlangen das Developer Certificate of Origin und die Veröffentlichung unter Apache-2.0, und diese Bestätigung gibt die Person ab: Der Agent setzt das Häkchen nicht und unterschreibt nicht für sie.</p>
+<ul>
+  <li><strong>Issue.</strong> Die Person öffnet den Link und klickt im Themen-Editor auf <strong>Submit</strong> oder öffnet das <a href="https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml">Issue-Formular</a> und fügt das JSON in <em>Theme</em> ein. Ein Workflow prüft das Thema und antwortet.</li>
+  <li><strong>Pull Request.</strong> Ändere nur <code>themes/&lt;id&gt;/theme.json</code>, setze <code>author.github</code> auf den Login des Pull-Request-Autors und signiere jeden Commit mit <code>git commit -s</code> (Sign-off). Die Regeln stehen in <a href="https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</li>
+</ul>
+<p>Autorenname, Name, Zusammenfassung und GitHub-Login eines eingereichten Themas werden dauerhaft öffentlich. Setze <code>author.name</code> daher auf einen Namen, den die Person gern veröffentlicht.</p>
+
+<h2 id="published-themes">Veröffentlichte Themen</h2>
+<p>Wie veröffentlichte Themen aussehen, siehst du in der <a href="/de/themes/gallery/">Themen-Galerie</a>.</p>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Website">
+    <a href="/de/support/">Support</a>
+    <a href="/de/privacy/">Datenschutzrichtlinie</a>
+    <a href="/de/cli/">Befehlszeile</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie-Einstellungen</button>
+  </nav>
+  <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

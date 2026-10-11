@@ -6,8 +6,94 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 """
 
 
+# /themes/agents/ prose (machine draft of the en text, needs-i18n; plan PLAN-web-theme-tuning W3).
+# The tables come from scripts/theme_agents.py, not from here.
+THEME_AGENTS = {
+    "title": "和你的 agent 一起做一个 MarsDawn 主题 · MarsDawn",
+    "description": "给 AI agent 的参考：做一个 MarsDawn 主题所需的 theme.json 每个字段与类型、范围，检查并渲染它的 CLI 流程、交给人的链接，以及怎么投稿。",
+    "label": "和 agent 一起做主题",
+    "h1": "和你的 agent 一起做主题",
+    "lede": "给制作 MarsDawn 预览主题的 AI agent 的参考。agent 写出一个 <code>theme.json</code>，用 <code>marsdawn</code> 命令行工具检查并渲染，再把链接交给你。你在<a href=\"/themes/new/\">主题创建器</a>里用眼睛调整，然后投稿。下面的字段表直接读自 kit 的源代码，并有检查确保两者一致。",
+    "summary": "<strong>写出一个 <code>theme.json</code>，反复运行 <code>marsdawn theme validate theme.json --require-complete --json</code> 直到退出代码为 0，用 <code>marsdawn theme preview</code> 分别渲染浅色与深色，再把链接交给用户。</strong>主题只有参数，不含任何 CSS。",
+    "what_h": "主题是什么",
+    "what_items": [
+        "<strong>颜色</strong>，浅色与深色各一组：基本色板，以及可选的语法与图表颜色。每个颜色都是 <code>#RRGGBB</code>。",
+        "<strong>字体设计</strong>：<code>sans</code>、<code>serif</code> 或 <code>rounded</code>。",
+        "<strong>一组封闭的样式选项</strong>：数字落在固定范围内，选择来自固定列表。样式选项里的颜色一律是像 <code>accent</code> 这样的色板角色，不能是颜色字面值。",
+        "<strong>显示字符串</strong>：名称与摘要，以及可选的作者与许可证。"
+    ],
+    "what_note": "不在下面表格里的键是错误，同一个键写两次也是。文件最大 16,384 字节。",
+    "loop_h": "检查与渲染",
+    "loop_intro": "在放有 <code>theme.json</code> 的文件夹里运行这些命令。需要 <code>marsdawn</code> 工具：见<a href=\"/cli/agents/\">给 AI agent 的 marsdawn 参考</a>。",
+    "loop_items": [
+        "退出代码：0 表示有效，1 表示无效并列出规则 id，2 表示找不到文件，64 表示用法错误。<code>preview</code> 另外有 4（PNG 已存在，传入 <code>--force</code> 或换个文件名）和 5（渲染失败）。",
+        "加上 <code>--json</code> 时，无效的主题会把问题列在 <code>issues</code> 下，每一项都有 <code>rule</code> id、<code>path</code> 和 <code>message</code>。修正后再运行一次。",
+        "<code>--require-complete</code> 是要发布的主题用的检查：它还要求两组色板都有 <code>syntax</code> 与 <code>diagram</code> 颜色。",
+        "<code>css</code> 打印预览使用的 CSS，<code>preview</code> 把范例文档渲染成 PNG。两者都会先验证，所以无效的主题什么都不会渲染。",
+        "交出主题之前，先看过浅色与深色两张 PNG。"
+    ],
+    "start_h": "从内置主题开始",
+    "start_intro": "复制四个内置主题之一再修改。每一个都是完整且有效的文件：",
+    "start_dawn": "默认主题，也是下面的范例",
+    "start_classic": "较素雅、像文档的色板",
+    "start_modern": "较冷调、较现代的色板",
+    "start_vivid": "较明亮、对比较高的色板",
+    "ex_h": "范例：Dawn",
+    "ex_intro": "这是 <code>dawn.json</code>，一个字节都没改。它唯一的样式选项是 <code>hr</code> 的一条细的强调色分隔线。",
+    "fields_h": "字段",
+    "fields_intro": "下面每个对象都用同样的方式读取。<code>required</code> 表示这个键必须存在，没有列出的键都是错误。",
+    "types_note": "类型：<code>string</code>、<code>integer</code>、<code>number</code>、<code>boolean</code>、<code>map</code>（语言标签对应文字）、<code>enum</code>（列出的值之一）、<code>role</code>（色板角色）和 <code>object</code>（连到它的表格）。类型后面的 <code>[]</code> 表示列表。",
+    "c_field": "字段",
+    "c_type": "类型",
+    "c_presence": "必填与否",
+    "c_values": "值与备注",
+    "c_option": "选项",
+    "c_kind": "type",
+    "c_min": "最小值",
+    "c_max": "最大值",
+    "c_step": "间隔",
+    "see_roles": "色板角色",
+    "see_ranges": "范围",
+    "publish_note": "（发布时必填，用 <code>--require-complete</code> 检查）",
+    "h_kinds": "带 type 的选项",
+    "kinds_intro": "这些样式选项是带有 <code>type</code> 的对象。每个 <code>type</code> 只接受为它列出的字段，其他都不行。",
+    "h_roles": "色板角色",
+    "roles_intro": "色板角色是下列名称之一：",
+    "h_numbers": "数字",
+    "numbers_intro": "数字会先对齐到最接近的间隔倍数，再检查是否落在最小值与最大值之间，否则规则是 <code>number.range</code>。",
+    "n_schemaVersion": "固定是 <code>1</code>。",
+    "n_id": "1 到 32 个字符：小写字母与数字，以单一连字符连接成段，例如 <code>calm-green</code>。",
+    "n_version": "<code>MAJOR.MINOR.PATCH</code>，例如 <code>1.0.0</code>。",
+    "n_name": "语言标签对应文字。<code>en</code> 必填，其他键是像 <code>zh-Hant</code> 的语言标签。每段文字最多 48 个字符，不可含链接或换行。",
+    "n_summary": "和 <code>name</code> 的形式相同，每段文字最多 120 个字符。",
+    "n_scenarios": "一个或两个，不可重复。它们决定主题必须达到多高的对比。",
+    "n_license": "SPDX 标识符，例如 <code>Apache-2.0</code>。投稿的主题以 Apache-2.0 发布。",
+    "n_author_name": "最多 64 个字符，不可含链接。",
+    "n_author_github": "GitHub 账号。投稿时请填投稿者自己的账号。",
+    "n_hex": "<code>#</code> 加六个十六进制数字，例如 <code>#1C1C1C</code>。",
+    "n_inline_code": "只能是 <code>text</code> 或语法角色：<code>keyword</code>、<code>string</code>、<code>comment</code>、<code>number</code>、<code>function</code> 或 <code>type</code>。",
+    "n_gradient": "两个或三个角色。",
+    "rules_h": "还会检查什么",
+    "rules_items": [
+        "<strong>对比。</strong>预览画出的每一组颜色配对，例如 <code>background</code> 上的 <code>text</code>，文字要达到 4.5:1，线条与其他非文字要达到 3:1。你列出的场景会把部分颜色提高到 4.5:1。消息会指出是哪一组配对、它的比值和需要的比值。",
+        "<strong>字符串。</strong>名称、摘要或作者名称若是空的、太长，或含有链接、控制字符、不可见或双向格式字符，都会被拒绝。",
+        "<strong>规则 id。</strong>每个问题都带一个，例如 <code>contrast.pair</code>、<code>color.hex</code>、<code>number.range</code>、<code>id.pattern</code>、<code>schema.unknownKey</code> 或 <code>palette.incomplete</code>。按 id 与 <code>path</code> 的说明修正文件。"
+    ],
+    "link_h": "用链接交给人",
+    "link_intro": "<a href=\"/themes/new/\">主题创建器</a>可以从链接打开主题，让人用眼睛调整。链接是创建器的网址，接着 <code>#theme=</code>，再接文件字节的 base64url（不含补位）。文件最大 16,384 字节。下面这一行命令在 macOS 与 Linux 的 zsh 和 bash 都能生成链接：",
+    "link_note": "主题跟在 <code>#</code> 后面，浏览器不会把它发送给网站，网站也不会把它发送到任何地方。链接确实会留在你的 shell 历史与浏览器历史里，你贴给谁，谁就能读到这个主题。",
+    "submit_h": "投稿",
+    "submit_intro": "agent 准备文件与链接，由人来投稿。两条路都会要求 Developer Certificate of Origin 与 Apache-2.0 许可声明，这个声明由人本人做出：agent 不会替他勾选方框或签署。",
+    "submit_issue": "<strong>Issue。</strong>人打开链接，在主题创建器里点按 <strong>Submit</strong>，或是打开 <a href=\"{issue_url}\">issue 表单</a>，把 JSON 贴进 <em>Theme</em>。接着有工作流检查主题并回复。",
+    "submit_pr": "<strong>Pull request。</strong>只改 <code>themes/&lt;id&gt;/theme.json</code>，把 <code>author.github</code> 设为 pull request 作者的账号，每个 commit 都用 <code>git commit -s</code> 签署。规则在 <a href=\"{contributing_url}\">CONTRIBUTING.md</a>。",
+    "submit_note": "投稿主题的作者名称、名称、摘要与 GitHub 账号会永久公开，所以请把 <code>author.name</code> 设成人愿意公开的名字。",
+    "gallery_h": "已发布的主题",
+    "gallery_p": "想看已发布的主题长什么样子，可以逛逛<a href=\"/themes/gallery/\">主题库</a>。"
+}
+
+
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'themes-new': '打造一个主题', 'themes-gallery': '主题库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
+    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'themes-new': '打造一个主题', 'themes-agents': '和 agent 一起做主题', 'themes-gallery': '主题库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
     store_chip = '已在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.5.1 以后，包括在侧边栏显示的文件夹', 'open_v2': 'open 成功，marsdawn 0.3.0 到 0.5.0', 'error': '两个命令的失败结果，marsdawn 0.5.2 以后', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单', 'error_v1': '两个命令的失败结果，marsdawn 0.5.1 以前'}
     example_plan = '# 计划：让导出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -316,6 +402,11 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
 <p><code>marsdawn --version</code> 会输出版本号，例如 <code>0.3.0</code>，并以代码 0 结束。</p>
+
+<h2>接下来</h2>
+<ul>
+  <li>用 agent 做一个 MarsDawn 主题：<a href="/zh-hans/themes/agents/">和 agent 一起做主题</a>。</li>
+</ul>
 """,
     }
     pages['cli/mcp'] = {
@@ -614,6 +705,7 @@ marsdawn --version</code></pre>
 </ul>
 """,
     }
+    pages['themes/agents'] = k.theme_agents_page(THEME_AGENTS)
     pages['themes/new'] = {
         "title": "在浏览器里打造一个 MarsDawn 主题 · MarsDawn",
         "description": "挑选颜色和几个样式选项，实时看它们套用在范例文档上，再把主题送出成一个 GitHub issue。不用安装，也不用 git。",
@@ -622,6 +714,7 @@ marsdawn --version</code></pre>
   <h1>打造一个主题</h1>
   <p>在下面挑一组色板和几个样式选项。右边的范例文档会实时更新，同时有浅色和深色两种，主题库 CI 会做的每一项检查也会显示在这里——所以送出投稿 issue 的主题，通常已经先过关了。</p>
   <p>投稿需要一个 GitHub 账号。这个页面本身不用安装，也不用 git。</p>
+  <p>AI agent 可以替你写主题文件：看看<a href="/zh-hans/themes/agents/">和 agent 一起做主题</a>，再把它给你的链接在这里打开来调整。</p>
 </section>
 <div id="theme-sim-app" data-locale="zh-hans"><p>这个页面需要 JavaScript 才能建立与预览主题。</p></div>
 """,
@@ -652,6 +745,7 @@ marsdawn --version</code></pre>
 
 <h2>打造自己的主题，也看看别人做的</h2>
 <p><a href="/zh-hans/themes/new/">在浏览器里打造一个主题</a>：挑选颜色和几个样式选项，实时看效果，再送出成一个 GitHub issue 让人审核——不用安装，也不用 git。<a href="/zh-hans/themes/gallery/">主题图库</a>收录每一套经过维护者审核并合并的投稿主题，可以按用途筛选。在 App 的“设置 › 外观 › 获取更多主题…”就能安装，访达的快速查看也会跟着套用。</p>
+<p>正在和 agent 一起工作？<a href="/zh-hans/themes/agents/">让它先做出主题</a>，再在浏览器里调整。</p>
 
 <h2>接下来</h2>
 <ul>

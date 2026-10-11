@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make a MarsDawn theme with your agent · MarsDawn</title>
+<meta name="description" content="A reference for AI agents that make a MarsDawn theme: every theme.json field with its type and range, the CLI loop that checks and renders it, a hand-off link, and how to submit it.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/themes/agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/themes/agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/themes/agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/themes/agents/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/themes/agents/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/themes/agents/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/themes/agents/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/themes/agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/themes/agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/themes/agents/">
+<link rel="alternate" type="text/markdown" href="/themes/agents/index.md">
+<meta property="og:title" content="Make a MarsDawn theme with your agent · MarsDawn">
+<meta property="og:description" content="A reference for AI agents that make a MarsDawn theme: every theme.json field with its type and range, the CLI loop that checks and renders it, a hand-off link, and how to submit it.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/themes/agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/"}, {"@type": "ListItem", "position": 2, "name": "Preview themes and PDF export", "item": "https://marsdawn.southern-light.dev/themes/"}, {"@type": "ListItem", "position": 3, "name": "Make a theme with your agent", "item": "https://marsdawn.southern-light.dev/themes/agents/"}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">On the Mac App Store</span>
+  <nav class="lang" aria-label="Language"><a href="/themes/agents/" hreflang="en" aria-current="true" lang="en">English</a> · <a href="/zh-hant/themes/agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/themes/agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/themes/agents/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/themes/agents/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/themes/agents/" hreflang="fr" lang="fr">Français</a> · <a href="/es/themes/agents/" hreflang="es" lang="es">Español</a> · <a href="/ko/themes/agents/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Make a theme with your agent</h1>
+  <p>A reference for an AI agent that makes a MarsDawn preview theme. The agent writes one <code>theme.json</code>, checks and renders it with the <code>marsdawn</code> command-line tool, and hands you a link. You tune it by eye in the <a href="/themes/new/">theme builder</a> and submit it. The field tables below are read from the kit's own source, and a check keeps them equal to it.</p>
+</section>
+
+<div class="summary"><p><strong>Write one <code>theme.json</code>, run <code>marsdawn theme validate theme.json --require-complete --json</code> until it exits 0, render it with <code>marsdawn theme preview</code> in light and dark, then give the person a link.</strong> A theme is parameters only. It never contains CSS.</p></div>
+
+<h2 id="what-a-theme-is">What a theme is</h2>
+<ul>
+  <li><strong>Colours</strong> for light and for dark: a base palette, and optional syntax and diagram colours. Each is <code>#RRGGBB</code>.</li>
+  <li><strong>A font design</strong>: <code>sans</code>, <code>serif</code> or <code>rounded</code>.</li>
+  <li><strong>A closed set of style options</strong>: numbers inside fixed ranges, and choices from fixed lists. A colour in a style option is always a palette role such as <code>accent</code>, never a literal colour.</li>
+  <li><strong>Display strings</strong>: a name and a summary, and optionally an author and a licence.</li>
+</ul>
+<p>A key that is not in the tables below is an error, and so is a key written twice. The file is at most 16,384 bytes.</p>
+
+<h2 id="check-and-render">Check and render</h2>
+<p>Run these in the folder that holds <code>theme.json</code>. They need the <code>marsdawn</code> tool: see <a href="/cli/agents/">marsdawn for agents</a>.</p>
+<pre><code>marsdawn theme validate theme.json --require-complete --json
+marsdawn theme css theme.json --json
+marsdawn theme preview theme.json --appearance light -o light.png
+marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
+<ul>
+  <li>Exit codes: 0 valid, 1 invalid with rule ids, 2 file not found, 64 usage error. <code>preview</code> adds 4 when the PNG already exists (pass <code>--force</code> or choose another name) and 5 when rendering fails.</li>
+  <li>With <code>--json</code>, an invalid theme lists its problems under <code>issues</code>, each with a <code>rule</code> id, a <code>path</code> and a <code>message</code>. Fix them and run it again.</li>
+  <li><code>--require-complete</code> is the check for a theme that will be published: it also requires the <code>syntax</code> and <code>diagram</code> colours in both palettes.</li>
+  <li><code>css</code> prints the CSS the preview serves. <code>preview</code> renders a sample document to a PNG. Both validate first, so an invalid theme renders nothing.</li>
+  <li>Look at the light and the dark PNG before handing the theme over.</li>
+</ul>
+
+<h2 id="start-from-a-built-in">Start from a built-in</h2>
+<p>Copy one of the four built-in themes and change it. Each is a complete, valid file:</p>
+<ul>
+  <li><a href="/assets/theme-sim/kit/themes/dawn.json"><code>/assets/theme-sim/kit/themes/dawn.json</code></a>: the default, and the example below</li>
+  <li><a href="/assets/theme-sim/kit/themes/classic.json"><code>/assets/theme-sim/kit/themes/classic.json</code></a>: a plainer, document-like palette</li>
+  <li><a href="/assets/theme-sim/kit/themes/modern.json"><code>/assets/theme-sim/kit/themes/modern.json</code></a>: a cooler, more contemporary palette</li>
+  <li><a href="/assets/theme-sim/kit/themes/vivid.json"><code>/assets/theme-sim/kit/themes/vivid.json</code></a>: a brighter, higher-contrast palette</li>
+</ul>
+<h3 id="example-dawn">Example: Dawn</h3>
+<p>This is <code>dawn.json</code>, byte for byte. Its only style option is a thin accent rule for <code>hr</code>.</p>
+<pre><code>{
+  "schemaVersion": 1,
+  "id": "dawn",
+  "version": "1.0.0",
+  "name": { "en": "Dawn" },
+  "summary": { "en": "Warm Martian sunrise" },
+  "fontDesign": "sans",
+  "scenarios": ["agent-review"],
+  "light": {
+    "background": "#FFFDFB", "surface": "#F6F0EC", "text": "#26211F", "muted": "#6F6660",
+    "border": "#EADFD8", "heading": "#26211F", "accent": "#C8471B", "link": "#B03C0C", "quote": "#D97A4A",
+    "syntax": { "keyword": "#B03C0C", "string": "#2F6F5E", "comment": "#746B66", "number": "#9A5B00", "function": "#5B3E8C", "type": "#1F6FB2" },
+    "diagram": { "node": "#FBE9E0", "nodeBorder": "#CA6C3C", "text": "#26211F", "line": "#8A6A5C", "secondary": "#E6F1EE", "tertiary": "#FFF6F1", "note": "#FFF1D6" }
+  },
+  "dark": {
+    "background": "#1C1A1F", "surface": "#262229", "text": "#EBE4DF", "muted": "#A39992",
+    "border": "#3A343A", "heading": "#F4EEEA", "accent": "#FF8A50", "link": "#FF9E6B", "quote": "#E08A5C",
+    "syntax": { "keyword": "#FF9E6B", "string": "#7FD1B9", "comment": "#938A84", "number": "#F2C572", "function": "#C7A6F5", "type": "#6CB6FF" },
+    "diagram": { "node": "#3A2A26", "nodeBorder": "#E08A5C", "text": "#EBE4DF", "line": "#B8A69C", "secondary": "#23332F", "tertiary": "#2B2427", "note": "#3D3322" }
+  },
+  "style": {
+    "hr": { "style": { "type": "line", "color": "accent", "thickness": 1 } }
+  }
+}</code></pre>
+
+<h2 id="fields">Fields</h2>
+<p>Every object below is read the same way. <code>required</code> means the key must be present, and a key that is not listed is an error.</p>
+<p>Types: <code>string</code>, <code>integer</code>, <code>number</code>, <code>boolean</code>, <code>map</code> (language tag to text), <code>enum</code> (one of the listed values), <code>role</code> (a palette role) and <code>object</code> (the table it links to). A <code>[]</code> after a type means a list.</p>
+<h3 id="t-root"><code>theme.json</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="root">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>schemaVersion</code></th><td data-label="Type"><code>integer</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes">Always <code>1</code>.</td></tr>
+  <tr><th scope="row"><code>id</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes">1 to 32 characters: lowercase letters and digits, in runs joined by single hyphens, such as <code>calm-green</code>.</td></tr>
+  <tr><th scope="row"><code>version</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>MAJOR.MINOR.PATCH</code>, such as <code>1.0.0</code>.</td></tr>
+  <tr><th scope="row"><code>name</code></th><td data-label="Type"><code>map</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes">Language tag to text. <code>en</code> is required; other keys are language tags such as <code>zh-Hant</code>. Each text is at most 48 characters, with no links or line breaks.</td></tr>
+  <tr><th scope="row"><code>summary</code></th><td data-label="Type"><code>map</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes">The same shape as <code>name</code>, at most 120 characters per text.</td></tr>
+  <tr><th scope="row"><code>fontDesign</code></th><td data-label="Type"><code>enum</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>sans</code>, <code>serif</code>, <code>rounded</code></td></tr>
+  <tr><th scope="row"><code>scenarios</code></th><td data-label="Type"><code>enum[]</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>agent-review</code>, <code>technical-docs</code>, <code>formal-output</code>, <code>notes-sharing</code> &#8212; One or two, no repeats. They set how much contrast the theme must reach.</td></tr>
+  <tr><th scope="row"><code>author</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-author"><code>author</code></a></td></tr>
+  <tr><th scope="row"><code>license</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes">An SPDX identifier, such as <code>Apache-2.0</code>. Submitted themes are released under Apache-2.0.</td></tr>
+  <tr><th scope="row"><code>light</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><a href="#t-palette"><code>light, dark</code></a></td></tr>
+  <tr><th scope="row"><code>dark</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><a href="#t-palette"><code>light, dark</code></a></td></tr>
+  <tr><th scope="row"><code>style</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-style"><code>style</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-author"><code>author</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="author">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>name</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes">At most 64 characters, with no links.</td></tr>
+  <tr><th scope="row"><code>github</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes">A GitHub login. For a submission, set it to the submitter's own.</td></tr>
+</tbody>
+</table></div>
+<h3 id="t-palette"><code>light, dark</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="palette">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>background</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>surface</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>text</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>muted</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>border</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>heading</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>accent</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>link</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>quote</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>syntax</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code> (required to publish, with <code>--require-complete</code>)</td><td data-label="Values and notes"><a href="#t-syntax-colors"><code>syntax</code></a></td></tr>
+  <tr><th scope="row"><code>diagram</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code> (required to publish, with <code>--require-complete</code>)</td><td data-label="Values and notes"><a href="#t-diagram-colors"><code>diagram</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-syntax-colors"><code>syntax</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="syntax-colors">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>keyword</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>string</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>comment</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>number</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>function</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>type</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+</tbody>
+</table></div>
+<h3 id="t-diagram-colors"><code>diagram</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="diagram-colors">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>node</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>nodeBorder</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>text</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>line</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>secondary</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>tertiary</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+  <tr><th scope="row"><code>note</code></th><td data-label="Type"><code>string</code></td><td data-label="Presence"><code>required</code></td><td data-label="Values and notes"><code>#</code> and six hex digits, such as <code>#1C1C1C</code>.</td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style"><code>style</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>bodySize</code></th><td data-label="Type"><code>number</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-numbers">range</a></td></tr>
+  <tr><th scope="row"><code>lineHeight</code></th><td data-label="Type"><code>number</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-numbers">range</a></td></tr>
+  <tr><th scope="row"><code>headingWeight</code></th><td data-label="Type"><code>number</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-numbers">range</a></td></tr>
+  <tr><th scope="row"><code>radius</code></th><td data-label="Type"><code>number</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-numbers">range</a></td></tr>
+  <tr><th scope="row"><code>maxWidth</code></th><td data-label="Type"><code>number</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-numbers">range</a></td></tr>
+  <tr><th scope="row"><code>h1</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-style-h1"><code>style.h1</code></a></td></tr>
+  <tr><th scope="row"><code>h2</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-style-h2"><code>style.h2</code></a></td></tr>
+  <tr><th scope="row"><code>blockquote</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-style-blockquote"><code>style.blockquote</code></a></td></tr>
+  <tr><th scope="row"><code>hr</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-style-hr"><code>style.hr</code></a></td></tr>
+  <tr><th scope="row"><code>table</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-style-table"><code>style.table</code></a></td></tr>
+  <tr><th scope="row"><code>listMarker</code></th><td data-label="Type"><code>role</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#roles">a palette role</a></td></tr>
+  <tr><th scope="row"><code>inlineCode</code></th><td data-label="Type"><code>role</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#roles">a palette role</a> &#8212; Only <code>text</code> or a syntax role: <code>keyword</code>, <code>string</code>, <code>comment</code>, <code>number</code>, <code>function</code> or <code>type</code>.</td></tr>
+  <tr><th scope="row"><code>link</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-style-link"><code>style.link</code></a></td></tr>
+  <tr><th scope="row"><code>syntax</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-style-syntax"><code>style.syntax</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-h1"><code>style.h1</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-h1">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>size</code></th><td data-label="Type"><code>number</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-numbers">range</a></td></tr>
+  <tr><th scope="row"><code>letterSpacing</code></th><td data-label="Type"><code>number</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-numbers">range</a></td></tr>
+  <tr><th scope="row"><code>align</code></th><td data-label="Type"><code>enum</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><code>left</code>, <code>center</code></td></tr>
+  <tr><th scope="row"><code>decoration</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-kinds"><code>type</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-h2"><code>style.h2</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-h2">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>letterSpacing</code></th><td data-label="Type"><code>number</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-numbers">range</a></td></tr>
+  <tr><th scope="row"><code>decoration</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-kinds"><code>type</code></a></td></tr>
+  <tr><th scope="row"><code>italic</code></th><td data-label="Type"><code>boolean</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-blockquote"><code>style.blockquote</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-blockquote">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-kinds"><code>type</code></a></td></tr>
+  <tr><th scope="row"><code>italic</code></th><td data-label="Type"><code>boolean</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-hr"><code>style.hr</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-hr">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-kinds"><code>type</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-table"><code>style.table</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-table">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>header</code></th><td data-label="Type"><code>object</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><a href="#t-kinds"><code>type</code></a></td></tr>
+  <tr><th scope="row"><code>verticalRules</code></th><td data-label="Type"><code>boolean</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><code>true</code>, <code>false</code></td></tr>
+  <tr><th scope="row"><code>rounded</code></th><td data-label="Type"><code>boolean</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-link"><code>style.link</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-link">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>underline</code></th><td data-label="Type"><code>boolean</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-syntax"><code>style.syntax</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-syntax">
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Presence</th><th scope="col">Values and notes</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>boldKeywords</code></th><td data-label="Type"><code>boolean</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Values and notes"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-kinds">Options with a type</h3>
+<p>These style options are objects with a <code>type</code>. Each <code>type</code> takes the fields listed for it and no others.</p>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="kinds">
+<thead><tr><th scope="col">Option</th><th scope="col">type</th><th scope="col">Field</th><th scope="col">Presence</th><th scope="col">Type</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>rule</code></td><td data-label="Field">—</td><td data-label="Presence">—</td><td data-label="Type">—</td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>none</code></td><td data-label="Field">—</td><td data-label="Presence">—</td><td data-label="Type">—</td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>shortRule</code></td><td data-label="Field"><code>color</code></td><td data-label="Presence"><code>required</code></td><td data-label="Type"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>gradientBar</code></td><td data-label="Field"><code>from</code></td><td data-label="Presence"><code>required</code></td><td data-label="Type"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>gradientBar</code></td><td data-label="Field"><code>to</code></td><td data-label="Presence"><code>required</code></td><td data-label="Type"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.h2.decoration</code></th><td data-label="type"><code>rule</code></td><td data-label="Field">—</td><td data-label="Presence">—</td><td data-label="Type">—</td></tr>
+  <tr><th scope="row"><code>style.h2.decoration</code></th><td data-label="type"><code>none</code></td><td data-label="Field">—</td><td data-label="Presence">—</td><td data-label="Type">—</td></tr>
+  <tr><th scope="row"><code>style.h2.decoration</code></th><td data-label="type"><code>dot</code></td><td data-label="Field"><code>color</code></td><td data-label="Presence"><code>required</code></td><td data-label="Type"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.blockquote.style</code></th><td data-label="type"><code>bar</code></td><td data-label="Field"><code>width</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Type"><code>number</code> <a href="#t-numbers">range</a></td></tr>
+  <tr><th scope="row"><code>style.blockquote.style</code></th><td data-label="type"><code>panel</code></td><td data-label="Field">—</td><td data-label="Presence">—</td><td data-label="Type">—</td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>line</code></td><td data-label="Field"><code>color</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Type"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>line</code></td><td data-label="Field"><code>thickness</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Type"><code>number</code> <a href="#t-numbers">range</a></td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>shortCentered</code></td><td data-label="Field"><code>color</code></td><td data-label="Presence"><code>required</code></td><td data-label="Type"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>gradient</code></td><td data-label="Field"><code>colors</code></td><td data-label="Presence"><code>required</code></td><td data-label="Type"><code>role[]</code> Two or three roles.</td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>surface</code></td><td data-label="Field">—</td><td data-label="Presence">—</td><td data-label="Type">—</td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>accentRule</code></td><td data-label="Field"><code>color</code></td><td data-label="Presence"><code>required</code></td><td data-label="Type"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>filled</code></td><td data-label="Field"><code>background</code></td><td data-label="Presence"><code>required</code></td><td data-label="Type"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>filled</code></td><td data-label="Field"><code>text</code></td><td data-label="Presence"><code>required</code></td><td data-label="Type"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>filled</code></td><td data-label="Field"><code>border</code></td><td data-label="Presence"><code>optional</code></td><td data-label="Type"><code>role</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="roles">Palette roles</h3>
+<p>A palette role is one of these names:</p>
+<p data-theme-values="role"><code>background</code>, <code>surface</code>, <code>text</code>, <code>muted</code>, <code>border</code>, <code>heading</code>, <code>accent</code>, <code>link</code>, <code>quote</code>, <code>keyword</code>, <code>string</code>, <code>comment</code>, <code>number</code>, <code>function</code>, <code>type</code></p>
+<h3 id="t-numbers">Numbers</h3>
+<p>A number is snapped to the nearest multiple of its step, and must then lie between min and max. Otherwise the rule is <code>number.range</code>.</p>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="numbers">
+<thead><tr><th scope="col">Field</th><th scope="col">Min</th><th scope="col">Max</th><th scope="col">Step</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style.bodySize</code></th><td data-label="Min"><code>14</code></td><td data-label="Max"><code>18</code></td><td data-label="Step"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.lineHeight</code></th><td data-label="Min"><code>1.4</code></td><td data-label="Max"><code>1.9</code></td><td data-label="Step"><code>0.05</code></td></tr>
+  <tr><th scope="row"><code>style.headingWeight</code></th><td data-label="Min"><code>400</code></td><td data-label="Max"><code>900</code></td><td data-label="Step"><code>50</code></td></tr>
+  <tr><th scope="row"><code>style.radius</code></th><td data-label="Min"><code>0</code></td><td data-label="Max"><code>16</code></td><td data-label="Step"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.maxWidth</code></th><td data-label="Min"><code>600</code></td><td data-label="Max"><code>1000</code></td><td data-label="Step"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.h1.size</code></th><td data-label="Min"><code>1.8</code></td><td data-label="Max"><code>2.4</code></td><td data-label="Step"><code>0.1</code></td></tr>
+  <tr><th scope="row"><code>style.h1.letterSpacing</code></th><td data-label="Min"><code>-0.03</code></td><td data-label="Max"><code>0.03</code></td><td data-label="Step"><code>0.005</code></td></tr>
+  <tr><th scope="row"><code>style.h2.letterSpacing</code></th><td data-label="Min"><code>-0.03</code></td><td data-label="Max"><code>0.03</code></td><td data-label="Step"><code>0.005</code></td></tr>
+  <tr><th scope="row"><code>style.blockquote.style.width</code></th><td data-label="Min"><code>2</code></td><td data-label="Max"><code>4</code></td><td data-label="Step"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.hr.style.thickness</code></th><td data-label="Min"><code>1</code></td><td data-label="Max"><code>4</code></td><td data-label="Step"><code>1</code></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="what-else-is-checked">What else is checked</h2>
+<ul>
+  <li><strong>Contrast.</strong> Each pair of colours the preview draws, such as <code>text</code> on <code>background</code>, must reach 4.5:1 for text and 3:1 for lines and other non-text. The scenarios you list raise some colours to 4.5:1. The message names the pair, its ratio and what it needs.</li>
+  <li><strong>Strings.</strong> A name, summary or author name that is empty, too long, or holds a link, a control character or an invisible or bidirectional format character is refused.</li>
+  <li><strong>Rule ids.</strong> Each problem carries one, such as <code>contrast.pair</code>, <code>color.hex</code>, <code>number.range</code>, <code>id.pattern</code>, <code>schema.unknownKey</code> or <code>palette.incomplete</code>. Fix the file by what the id and the <code>path</code> say.</li>
+</ul>
+
+<h2 id="hand-it-over-as-a-link">Hand it over as a link</h2>
+<p>The <a href="/themes/new/">theme builder</a> opens a theme from a link, so the person can tune it by eye. The link is the builder's address, then <code>#theme=</code>, then the file's bytes in base64url without padding. The file can be at most 16,384 bytes. This one line builds the link in zsh and in bash, on macOS and Linux:</p>
+<pre><code>printf 'https://marsdawn.southern-light.dev/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<p>The theme travels after a <code>#</code>, which a browser does not send to the site, and the site does not send it anywhere. The link does stay in your shell history and in the browser's history, and anyone you paste it to can read the theme.</p>
+
+<h2 id="submit-it">Submit it</h2>
+<p>The agent prepares the file and the link. The person submits. Both routes ask for the Developer Certificate of Origin and the Apache-2.0 release, and the person makes that certification: the agent does not tick the box or sign off for them.</p>
+<ul>
+  <li><strong>Issue.</strong> The person opens the link and presses <strong>Submit</strong> in the theme builder, or opens the <a href="https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml">issue form</a> and pastes the JSON into <em>Theme</em>. A workflow checks the theme and replies.</li>
+  <li><strong>Pull request.</strong> Change only <code>themes/&lt;id&gt;/theme.json</code>, set <code>author.github</code> to the pull request author's login, and sign off every commit with <code>git commit -s</code>. The rules are in <a href="https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</li>
+</ul>
+<p>A submitted theme's author name, name, summary and GitHub login become public permanently, so set <code>author.name</code> to a name the person is happy to publish.</p>
+
+<h2 id="published-themes">Published themes</h2>
+<p>To see what published themes look like, browse <a href="/themes/gallery/">the theme gallery</a>.</p>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Site">
+    <a href="/support/">Support</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/cli/">Command Line</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
+  </nav>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
