@@ -11,8 +11,9 @@ export class GeneratorRefusal extends Error {
   constructor(kind, field) {
     super(kind);
     this.kind = kind; // "invalidID" | "invalidColor" | "invalidNumber" | "unresolvedPlaceholder" | "duplicateID"
-    //                   | "unknownFontDesign" | "unknownRole" | "invalidAlign" (closed values the
-    //                   validator's decode already enforces; refused again here, never omitted)
+    //                   | "unknownFontDesign" | "unknownRole" | "invalidAlign" | "unknownType" (closed
+    //                   values the validator's decode already enforces; refused again here, never
+    //                   omitted)
     this.field = field;
   }
 }
@@ -158,6 +159,8 @@ export function checkedRules(id, style) {
         rules.addFragments("blockquoteStyle", "bar", { width });
       } else if (bq.style.type === "panel") {
         rules.addFragments("blockquoteStyle", "panel", {});
+      } else {
+        throw new GeneratorRefusal("unknownType", "blockquote.style");
       }
     }
   }
@@ -171,6 +174,8 @@ export function checkedRules(id, style) {
     } else if (value.type === "gradient") {
       if (value.colors.length < 2 || value.colors.length > 3) throw new GeneratorRefusal("unresolvedPlaceholder");
       rules.addFragments("hrStyle", "gradient", { colors: value.colors.map((role) => roleValue(role)).join(", ") });
+    } else {
+      throw new GeneratorRefusal("unknownType", "hr.style");
     }
   }
   if (style.table) {
@@ -183,6 +188,8 @@ export function checkedRules(id, style) {
         rules.addFragments("tableHeader", "filled", {
           background: roleValue(h.background), text: roleValue(h.text), border: roleValue(h.border ?? h.background),
         });
+      } else {
+        throw new GeneratorRefusal("unknownType", "table.header");
       }
     }
     if (table.verticalRules === false) {

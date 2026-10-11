@@ -6,14 +6,21 @@
 // and range/number inputs clamped to each option's own bounds. Every control writes into one
 // `state` object shaped exactly like a theme.json body; validating and generating both read it
 // straight, with no separate "form data" translation step to drift from the schema.
+//
+// Only user input writes the state (plan PLAN-web-theme-tuning W2a): render() never fills in a
+// default, so a theme that comes in by paste, drop, file or "Load this JSON" (all through
+// theme-import.js's guarded path) goes out of Copy JSON and Download exactly as it came in. A
+// control whose value is absent shows the effective one (the resolved palette, the kit default)
+// without storing it.
 
 import * as Validator from "./validator.js";
-import { PALETTE_ROLES } from "./palette.js";
+import { PALETTE_ROLES, resolvePalette } from "./palette.js";
 import { BUILT_IN_THEME_JSON, BUILT_IN_ORDER, loadBuiltIns } from "./built-ins.js";
 import { loadThemeStyles } from "./styles-data.js";
 import { sampleDocumentHTML } from "./sample-document.js";
 import { THEME_NUMBERS } from "./numbers.js";
 import { PREVIEW_ID, previewReport, previewOutcome, submitDecision, panelIssues } from "./preview-report.js";
+import { importThemeText, importThemeBytes, tooLargeIssue, MAX_FILE_BYTES } from "./theme-import.js";
 
 const SCENARIOS = [
   { id: "agent-review", label: "Agent review" },
@@ -24,6 +31,39 @@ const SCENARIOS = [
 const ALL_ROLES = PALETTE_ROLES;
 const STALE_PREVIEW_TEXT = "Preview shows the last version that could be drawn";
 const GENERATOR_REFUSED_TEXT = "The preview can't draw this theme, so it can't be submitted.";
+const IMPORT_REFUSED_PREFIX = "Can't load this theme: ";
+const IMPORT_ONE_FILE_TEXT = "drop or choose exactly one file";
+const IMPORT_LOADED_TEXT = "Theme loaded.";
+const COPIED_TEXT = "Copied the JSON.";
+const COPY_FAILED_TEXT = "Couldn't copy to the clipboard.";
+const SUBMIT_FIX_TEXT = "Fix every check above before submitting.";
+const SUBMIT_TOO_LARGE_TEXT = "This theme is too large to submit through a prefilled issue (over 8,000 characters). Simplify it, or open a pull request instead (see the repo's CONTRIBUTING.md).";
+const SYNTAX_ROLES = ["keyword", "string", "comment", "number", "function", "type"];
+const DIAGRAM_ROLES = ["node", "nodeBorder", "text", "line", "secondary", "tertiary", "note"];
+
+/** What selecting each decoration type writes, in one step: the type and its required fields,
+ * with the defaults its controls display. Optional fields (hr `line.color`, table `filled.border`,
+ * blockquote `bar.width`, hr `line.thickness`) stay unwritten until the user sets them. */
+const DECORATION_REQUIRED = {
+  rule: {},
+  none: {},
+  shortRule: { color: "accent" },
+  gradientBar: { from: "accent", to: "heading" },
+  dot: { color: "accent" },
+  bar: {},
+  panel: {},
+  line: {},
+  shortCentered: { color: "accent" },
+  gradient: { colors: ["accent", "heading"] },
+  surface: {},
+  accentRule: { color: "accent" },
+  filled: { background: "heading", text: "background" },
+};
+
+/** The text a refused import shows inline: the issue as the panel lists issues. */
+function importRefusalText(issue) {
+  return IMPORT_REFUSED_PREFIX + (issue.path ? `${issue.path}: ${issue.message}` : issue.message);
+}
 
 /** Loads a built-in as the starting state (only the fields a designer would edit; `id`/`version`
  * are reset to a fresh draft, since a submission can't reuse a built-in's id). */
@@ -80,6 +120,8 @@ class ThemeSimApp {
     // marker says so.
     this.drawnText = null;
     this.lastOutcome = { css: null, generatorRefused: false };
+    // The last import's inline message, kept across the render() a successful import triggers.
+    this.importNotice = null;
     this.render();
   }
 
@@ -98,7 +140,9 @@ class ThemeSimApp {
   async recompute() {
     await this.adoptBaseSheetOnce();
     const text = JSON.stringify(this.state);
-    const report = Validator.validate(text, { requireComplete: false });
+    // One report for the panel and the Submit gate, matching the issue workflow's
+    // --require-complete: a theme without its syntax/diagram colours lists palette.incomplete.
+    const report = Validator.validate(text, { requireComplete: true });
     // The preview draws any draft whose structure is sound (preview-report.js), scoped to the
     // constant PREVIEW_ID; validate() above stays the only gate for Submit.
     const preview = previewReport(text, { fallback: this.dawnFallback });
@@ -147,15 +191,38 @@ class ThemeSimApp {
     box.appendChild(list);
   }
 
-  colorControl(labelText, path) {
+  /** The colours a palette mode draws with: its own, with Dawn's syntax/diagram groups where it
+   * has none (what the preview shows). Null if the mode can't be resolved. */
+  effectivePalette(mode) {
+    const colors = this.state?.[mode];
+    if (!colors || typeof colors !== "object") return null;
+    try {
+      return resolvePalette(colors, this.dawnFallback?.[mode]);
+    } catch {
+      return null;
+    }
+  }
+
+  /** A colour control. `group` ("syntax"/"diagram") marks a role inside an optional group: while the
+   * group is absent the control shows the effective (Dawn) colour without storing it, and the first
+   * edit writes the whole group from those effective colours before applying itself, so the state
+   * always decodes. */
+  colorControl(labelText, path, group) {
     const label = document.createElement("label");
     label.className = "sim-color-field";
     const span = document.createElement("span");
     span.textContent = labelText;
     const input = document.createElement("input");
     input.type = "color";
-    input.value = get(this.state, path) || "#000000";
+    const [mode, , role] = path.split(".");
+    const effective = group ? this.effectivePalette(mode)?.[group]?.[role] : undefined;
+    input.value = get(this.state, path) || effective || "#000000";
     input.addEventListener("input", () => {
+      if (group && (this.state[mode][group] == null || typeof this.state[mode][group] !== "object")) {
+        const values = this.effectivePalette(mode)?.[group];
+        const roles = group === "syntax" ? SYNTAX_ROLES : DIAGRAM_ROLES;
+        if (values) this.state[mode][group] = Object.fromEntries(roles.map((r) => [r, values[r]]));
+      }
       set(this.state, path, input.value.toUpperCase());
       this.recompute();
     });
@@ -177,7 +244,6 @@ class ThemeSimApp {
       this.buildPaletteSection("light", "Light palette"),
       this.buildPaletteSection("dark", "Dark palette"),
       this.buildStyleSection(),
-      this.buildJSONSection(),
       this.buildSubmitSection()
     );
 
@@ -219,10 +285,124 @@ class ThemeSimApp {
       this.state = stateFromBuiltIn(select.value);
       this.state.id = keepId;
       this.state.version = keepVersion;
+      this.importNotice = null;
       this.render();
     });
     section.appendChild(select);
+    section.append(...this.buildImportControls());
     return section;
+  }
+
+  /** Paste or drop theme.json, the "Load this JSON" button and Open file: every one goes through
+   * theme-import.js's guarded path. The paste and drop handlers live on the import area only. */
+  buildImportControls() {
+    const wrap = document.createElement("label");
+    wrap.className = "sim-field";
+    const span = document.createElement("span");
+    span.textContent = "Paste or drop theme.json";
+    const area = document.createElement("textarea");
+    area.id = "sim-import";
+    area.rows = 4;
+    area.spellcheck = false;
+    wrap.append(span, area);
+
+    area.addEventListener("paste", (event) => {
+      // Plain text only, never text/html.
+      const text = event.clipboardData ? event.clipboardData.getData("text/plain") : "";
+      if (!text) return;
+      event.preventDefault();
+      area.value = text;
+      this.importText(text);
+    });
+    area.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      if (event.dataTransfer) event.dataTransfer.dropEffect = "copy";
+    });
+    area.addEventListener("drop", (event) => {
+      event.preventDefault();
+      // Files only: a dragged text/html (or any other) payload is never read.
+      const files = event.dataTransfer ? event.dataTransfer.files : null;
+      if (!files || files.length !== 1) {
+        this.showImportNotice({ ok: false, text: IMPORT_REFUSED_PREFIX + IMPORT_ONE_FILE_TEXT });
+        return;
+      }
+      this.importFile(files[0]);
+    });
+
+    const loadBtn = document.createElement("button");
+    loadBtn.type = "button";
+    loadBtn.textContent = "Load this JSON";
+    loadBtn.addEventListener("click", () => this.importText(area.value));
+
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.id = "sim-import-file";
+    fileInput.accept = ".json,application/json";
+    fileInput.hidden = true;
+    fileInput.addEventListener("change", () => {
+      const files = fileInput.files;
+      if (!files || files.length !== 1) {
+        this.showImportNotice({ ok: false, text: IMPORT_REFUSED_PREFIX + IMPORT_ONE_FILE_TEXT });
+      } else {
+        this.importFile(files[0]);
+      }
+      fileInput.value = "";
+    });
+    const openBtn = document.createElement("button");
+    openBtn.type = "button";
+    openBtn.textContent = "Open file";
+    openBtn.addEventListener("click", () => fileInput.click());
+
+    const notice = document.createElement("p");
+    notice.id = "sim-import-message";
+    notice.className = "sim-import-message";
+    notice.setAttribute("role", "status");
+    notice.hidden = true;
+    const buttons = document.createElement("div");
+    buttons.append(loadBtn, openBtn, fileInput);
+    this.importNoticeEl = notice;
+    if (this.importNotice) this.showImportNotice(this.importNotice);
+    return [wrap, buttons, notice];
+  }
+
+  showImportNotice(notice) {
+    this.importNotice = notice;
+    const el = this.importNoticeEl;
+    if (!el) return;
+    el.textContent = notice.text;
+    el.classList.toggle("sim-import-refused", !notice.ok);
+    el.hidden = false;
+  }
+
+  /** One file from a drop or the picker: its size is checked before a single byte is read. */
+  async importFile(file) {
+    if (typeof file.size !== "number" || file.size > MAX_FILE_BYTES) {
+      this.showImportNotice({ ok: false, text: importRefusalText(tooLargeIssue()) });
+      return;
+    }
+    let bytes;
+    try {
+      bytes = await file.arrayBuffer();
+    } catch {
+      this.showImportNotice({ ok: false, text: importRefusalText({ path: "", message: "the file could not be read" }) });
+      return;
+    }
+    this.applyImport(importThemeBytes(bytes));
+  }
+
+  importText(text) {
+    this.applyImport(importThemeText(text));
+  }
+
+  /** Replaces the state with an import's decoded document, or leaves it untouched and says why. */
+  applyImport(result) {
+    if (!result.document) {
+      this.showImportNotice({ ok: false, text: importRefusalText(result.issue) });
+      return;
+    }
+    this.state = result.document;
+    this.importNotice = { ok: true, text: IMPORT_LOADED_TEXT };
+    this.render();
   }
 
   buildIdentitySection() {
@@ -308,23 +488,21 @@ class ThemeSimApp {
     section.appendChild(base);
 
     const details = document.createElement("details");
-    details.innerHTML = "<summary>Syntax colours (recommended for publishing)</summary>";
+    details.innerHTML = "<summary>Syntax colours (needed to publish)</summary>";
     const syntaxGrid = document.createElement("div");
     syntaxGrid.className = "sim-color-grid";
-    for (const role of ["keyword", "string", "comment", "number", "function", "type"]) {
-      if (get(this.state, `${mode}.syntax.${role}`) === undefined) set(this.state, `${mode}.syntax.${role}`, get(this.state, `${mode}.text`));
-      syntaxGrid.appendChild(this.colorControl(role, `${mode}.syntax.${role}`));
+    for (const role of SYNTAX_ROLES) {
+      syntaxGrid.appendChild(this.colorControl(role, `${mode}.syntax.${role}`, "syntax"));
     }
     details.appendChild(syntaxGrid);
     section.appendChild(details);
 
     const diagramDetails = document.createElement("details");
-    diagramDetails.innerHTML = "<summary>Diagram colours (recommended for publishing)</summary>";
+    diagramDetails.innerHTML = "<summary>Diagram colours (needed to publish)</summary>";
     const diagramGrid = document.createElement("div");
     diagramGrid.className = "sim-color-grid";
-    for (const role of ["node", "nodeBorder", "text", "line", "secondary", "tertiary", "note"]) {
-      if (get(this.state, `${mode}.diagram.${role}`) === undefined) set(this.state, `${mode}.diagram.${role}`, get(this.state, `${mode}.text`));
-      diagramGrid.appendChild(this.colorControl(role, `${mode}.diagram.${role}`));
+    for (const role of DIAGRAM_ROLES) {
+      diagramGrid.appendChild(this.colorControl(role, `${mode}.diagram.${role}`, "diagram"));
     }
     diagramDetails.appendChild(diagramGrid);
     section.appendChild(diagramDetails);
@@ -402,7 +580,6 @@ class ThemeSimApp {
   buildStyleSection() {
     const section = document.createElement("fieldset");
     section.innerHTML = "<legend>Style</legend>";
-    if (!this.state.style) this.state.style = {};
 
     section.append(
       this.numberField("Body size (px)", "style.bodySize", "bodySize"),
@@ -549,34 +726,33 @@ class ThemeSimApp {
       extra.textContent = "";
       const type = typeSelect.value;
       if (!type) return;
+      // Required roles: always in the state (decode requires them; selecting the type writes them).
       const roleFields = {
-        shortRule: [["color", "accent"]],
-        dot: [["color", "accent"]],
-        accentRule: [["color", "accent"]],
-        shortCentered: [["color", "accent"]],
-        line: [["color", "border"]],
-        gradientBar: [["from", "accent"], ["to", "heading"]],
-        filled: [["background", "heading"], ["text", "background"]],
-        gradient: null, // colours[]: a fixed 2-role picker below
+        shortRule: ["color"],
+        dot: ["color"],
+        accentRule: ["color"],
+        shortCentered: ["color"],
+        gradientBar: ["from", "to"],
+        filled: ["background", "text"],
       };
       if (type === "bar") {
         extra.appendChild(this.miniNumber(`${path}.width`, "blockquote.style.width", "Width (px)"));
       } else if (type === "line") {
-        extra.appendChild(this.miniRole(`${path}.color`, "border"));
+        // Optional: "(default)" until the user picks one (the kit then draws `border`).
+        extra.appendChild(this.optionalRoleSelect(`${path}.color`));
         extra.appendChild(this.miniNumber(`${path}.thickness`, "hr.style.thickness", "Thickness (px)"));
-      } else if (roleFields[type]) {
-        for (const [key, fallback] of roleFields[type]) extra.appendChild(this.miniRole(`${path}.${key}`, fallback));
+      } else if (Object.hasOwn(roleFields, type)) {
+        for (const key of roleFields[type]) extra.appendChild(this.miniRole(`${path}.${key}`, DECORATION_REQUIRED[type][key]));
       } else if (type === "gradient") {
-        const p = get(this.state, path) ?? {};
-        if (!Array.isArray(p.colors) || p.colors.length < 2) set(this.state, `${path}.colors`, ["accent", "heading"]);
         extra.appendChild(this.miniRole(`${path}.colors.0`, "accent"));
         extra.appendChild(this.miniRole(`${path}.colors.1`, "heading"));
       }
     };
 
     typeSelect.addEventListener("change", () => {
-      if (typeSelect.value === "") unset(this.state, path);
-      else set(this.state, path, { type: typeSelect.value });
+      const type = typeSelect.value;
+      if (type === "") unset(this.state, path);
+      else set(this.state, path, { type, ...structuredClone(Object.hasOwn(DECORATION_REQUIRED, type) ? DECORATION_REQUIRED[type] : {}) });
       rebuildExtra();
       this.recompute();
     });
@@ -585,40 +761,15 @@ class ThemeSimApp {
     return container;
   }
 
+  /** A required role's select. Shows `fallback` when the state has no value (it always has one
+   * after decode or a type change); never writes it. */
   miniRole(path, fallback) {
-    if (get(this.state, path) === undefined) set(this.state, path, fallback);
-    return this.roleSelect(path);
+    const select = this.roleSelect(path);
+    if (get(this.state, path) === undefined) select.value = fallback;
+    return select;
   }
   miniNumber(path, numberName, label) {
     return this.numberField(label, path, numberName);
-  }
-
-  buildJSONSection() {
-    const section = document.createElement("fieldset");
-    section.innerHTML = "<legend>Export / import JSON</legend>";
-    const textarea = document.createElement("textarea");
-    textarea.rows = 6;
-    textarea.value = JSON.stringify(this.state, null, 2);
-    const exportBtn = document.createElement("button");
-    exportBtn.type = "button";
-    exportBtn.textContent = "Refresh from current theme";
-    exportBtn.addEventListener("click", () => {
-      textarea.value = JSON.stringify(this.state, null, 2);
-    });
-    const importBtn = document.createElement("button");
-    importBtn.type = "button";
-    importBtn.textContent = "Load this JSON";
-    importBtn.addEventListener("click", () => {
-      try {
-        const parsed = JSON.parse(textarea.value);
-        this.state = parsed;
-        this.render();
-      } catch (e) {
-        alert(`Not valid JSON: ${e.message}`);
-      }
-    });
-    section.append(textarea, exportBtn, importBtn);
-    return section;
   }
 
   buildSubmitSection() {
@@ -630,18 +781,70 @@ class ThemeSimApp {
     button.type = "button";
     button.textContent = "Submit this theme";
     button.addEventListener("click", () => this.submit());
-    section.append(p, button);
+    const copyBtn = document.createElement("button");
+    copyBtn.type = "button";
+    copyBtn.textContent = "Copy JSON";
+    copyBtn.addEventListener("click", () => this.copyJSON());
+    const downloadBtn = document.createElement("button");
+    downloadBtn.type = "button";
+    downloadBtn.textContent = "Download theme.json";
+    downloadBtn.addEventListener("click", () => this.downloadJSON());
+    const notice = document.createElement("p");
+    notice.id = "sim-submit-message";
+    notice.className = "sim-submit-message";
+    notice.setAttribute("role", "status");
+    notice.hidden = true;
+    this.submitNoticeEl = notice;
+    const buttons = document.createElement("div");
+    buttons.append(button, copyBtn, downloadBtn);
+    section.append(p, buttons, notice);
     return section;
+  }
+
+  showSubmitNotice(text) {
+    const el = this.submitNoticeEl;
+    if (!el) return;
+    el.textContent = text;
+    el.hidden = false;
+  }
+
+  /** The theme as Copy JSON and Download give it: the state, exactly, as indented JSON. */
+  exportText() {
+    return JSON.stringify(this.state, null, 2);
+  }
+
+  async copyJSON() {
+    try {
+      await navigator.clipboard.writeText(this.exportText());
+      this.showSubmitNotice(COPIED_TEXT);
+    } catch {
+      this.showSubmitNotice(COPY_FAILED_TEXT);
+    }
+  }
+
+  /** A same-page download of the state: an application/json blob behind <a download>, never
+   * navigated to, its URL revoked once the click has been dispatched. */
+  downloadJSON() {
+    const blob = new Blob([this.exportText()], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "theme.json";
+    a.hidden = true;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 0);
   }
 
   submit() {
     if (!this.lastReport || !submitDecision(this.lastReport, this.lastOutcome)) {
-      alert("Fix every check above before submitting.");
+      this.showSubmitNotice(SUBMIT_FIX_TEXT);
       return;
     }
     const json = JSON.stringify(this.state, null, 2);
     if (json.length > 8000) {
-      alert("This theme is too large to submit through a prefilled issue (over 8,000 characters). Simplify it, or open a pull request instead (see the repo's CONTRIBUTING.md).");
+      this.showSubmitNotice(SUBMIT_TOO_LARGE_TEXT);
       return;
     }
     // Constant base URL + URLSearchParams; `theme` last (design W1). No theme data reaches
