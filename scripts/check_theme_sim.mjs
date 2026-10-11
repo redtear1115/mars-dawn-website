@@ -36,6 +36,15 @@
 //      the UTF-8 decode's); every valid/ fixture and built-in comes back deep-equal; an inherited
 //      name as a discriminated `type` gives validate() the same report as an unknown one, never a
 //      throw; and the generator refuses an unknown discriminated type instead of omitting it.
+//   6. The hand-off link (plan W2b): theme-link-head.js, the classic <head> script, loaded with
+//      node:vm against stubbed window/history/location. Its two cap literals equal
+//      validator.js's MAX_FILE_BYTES; the link grammar's boundaries (16,384/16,385 decoded bytes,
+//      21,846/21,847 encoded characters, padding, `+` and `/`, 4n+1), each oversize case refused
+//      before a single byte is decoded; invalid UTF-8 refused as file.encoding by the same guarded
+//      path a drop takes; and the address bar: a `#theme=` fragment is taken, stripped through the
+//      pristine replaceState and never left global, any other fragment is untouched, and a later
+//      link arrives through the callback. theme-link.js (Copy link's encoder) round-trips through
+//      the head script's decoder and never emits `+`, `/` or `=`.
 //
 // Without vendor/kit-themes/<tag>/, none of this can run for real, so this script fails loudly and
 // immediately with its own message rather than silently reporting success it didn't earn.
@@ -57,6 +66,8 @@ const Grammar = await import(path.join(assetsDir, "grammar.js"));
 const Preview = await import(path.join(assetsDir, "preview-report.js"));
 const TextModule = await import(path.join(assetsDir, "text.js"));
 const Import = await import(path.join(assetsDir, "theme-import.js"));
+const Link = await import(path.join(assetsDir, "theme-link.js"));
+const vm = await import("node:vm");
 
 let failures = 0;
 function ok(label) {
@@ -847,6 +858,257 @@ function checkGeneratorRefusesUnknownTypes() {
   }
 }
 
+// --- 7. The hand-off link (theme-link-head.js + theme-link.js, plan W2b) --------------------------
+
+const HEAD_SCRIPT = readFileSync(path.join(assetsDir, "theme-link-head.js"), "utf8");
+
+/** Runs theme-link-head.js in a fresh vm context whose window/history/location are stubs, with the
+ * address bar at `hash`. Uint8Array is a counting subclass, so a test can see whether anything was
+ * decoded. Returns the stubs, the recorded replaceState calls and the context's new globals. */
+function loadHeadScript(hash = "") {
+  const counts = { decoded: 0 };
+  class CountingUint8Array extends Uint8Array {
+    constructor(...args) {
+      super(...args);
+      counts.decoded += 1;
+    }
+  }
+  const replaced = [];
+  const listeners = {};
+  const location = { pathname: "/zh-hant/themes/new/", search: "?q=1", hash };
+  class History {}
+  // The pristine method: it records, and moves the stub's address bar the way a browser does.
+  History.prototype.replaceState = function (state, unused, url) {
+    replaced.push({ via: "pristine", state, url });
+    const i = url.indexOf("#");
+    location.hash = i < 0 ? "" : url.slice(i);
+  };
+  const history = new History();
+  history.state = { kept: true };
+  const sandbox = {
+    History,
+    history,
+    location,
+    Uint8Array: CountingUint8Array,
+    addEventListener(type, fn, capture) {
+      (listeners[type] ??= []).push({ fn, capture });
+    },
+  };
+  sandbox.window = sandbox;
+  const before = new Set(Object.keys(sandbox));
+  vm.createContext(sandbox);
+  vm.runInContext(HEAD_SCRIPT, sandbox, { filename: "theme-link-head.js" });
+  const added = Object.keys(sandbox).filter((k) => !before.has(k));
+  /** Fires one navigation event at the stub window; returns whether it was stopped. */
+  function fire(type, newURL) {
+    let stopped = false;
+    const event = { type, newURL, stopImmediatePropagation() { stopped = true; } };
+    for (const { fn } of listeners[type] ?? []) fn(event);
+    return stopped;
+  }
+  return { sandbox, location, history, History, replaced, listeners, added, counts, fire, take: sandbox.takeThemeLinkPayload };
+}
+
+/** Standard base64 of UTF-8 text, and the same as base64url without padding. */
+function b64(text) {
+  return Buffer.from(text, "utf8").toString("base64");
+}
+function b64url(text) {
+  return b64(text).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+
+/** Dawn's compact JSON padded with trailing spaces to exactly `bytes` UTF-8 bytes. */
+function dawnOfBytes(bytes) {
+  const compact = JSON.stringify(JSON.parse(BuiltIns.BUILT_IN_THEME_JSON.dawn));
+  return compact + " ".repeat(bytes - Buffer.byteLength(compact));
+}
+
+function checkLinkCaps() {
+  console.log("\nHand-off link: the head script's caps are validator.js's MAX_FILE_BYTES");
+  const { take } = loadHeadScript();
+  const wantEncoded = Math.ceil((Validator.MAX_FILE_BYTES * 4) / 3);
+  const limits = take && take.limits;
+  if (limits && limits.encodedLength === wantEncoded) ok(`encoded-length literal ${limits.encodedLength} == ceil(MAX_FILE_BYTES * 4 / 3) = ${wantEncoded}`);
+  else bad(`encoded-length literal == ceil(MAX_FILE_BYTES * 4 / 3) = ${wantEncoded}`, JSON.stringify(limits));
+  if (limits && limits.decodedBytes === Validator.MAX_FILE_BYTES) ok(`decoded-byte literal ${limits.decodedBytes} == MAX_FILE_BYTES = ${Validator.MAX_FILE_BYTES}`);
+  else bad(`decoded-byte literal == MAX_FILE_BYTES = ${Validator.MAX_FILE_BYTES}`, JSON.stringify(limits));
+}
+
+function checkLinkGrammar() {
+  console.log("\nHand-off link: grammar and size boundaries (theme-link-head.js's decoder)");
+  const dawn = JSON.parse(BuiltIns.BUILT_IN_THEME_JSON.dawn);
+  /** Decodes one payload in a fresh context; `before` = refused with nothing decoded. */
+  function decode(payload) {
+    const h = loadHeadScript();
+    const got = h.take.decode(payload);
+    return { got, decoded: h.counts.decoded };
+  }
+  function expectRefused(label, payload, rule) {
+    const { got, decoded } = decode(payload);
+    const line = `${label}: refused as ${rule} before decoding`;
+    if (got.error === rule && decoded === 0) ok(`${line} (length ${payload.length})`);
+    else bad(line, `got ${JSON.stringify(got.error ?? `${got.bytes?.length} bytes`)}, ${decoded} decode allocation(s)`);
+  }
+  function expectLoads(label, payload, wantDoc) {
+    const { got } = decode(payload);
+    const imported = got.bytes ? Import.importThemeBytes(got.bytes) : { issue: { rule: got.error } };
+    if (imported.document && deepEqualJSON(imported.document, wantDoc)) ok(`${label}: accepted, imports deep-equal (${got.bytes.length} bytes, length ${payload.length})`);
+    else bad(`${label}: accepted, imports deep-equal`, JSON.stringify(imported.issue ?? "differs"));
+    return got;
+  }
+
+  const at16384 = dawnOfBytes(16384);
+  const at16385 = dawnOfBytes(16385);
+  const p16384 = b64url(at16384);
+  const p16385 = b64url(at16385);
+  if (p16384.length !== 21846 || p16385.length !== 21847) bad("boundary setup", `${p16384.length}, ${p16385.length}`);
+  const g = expectLoads("16,384 decoded bytes (encoded 21,846 characters)", p16384, dawn);
+  if (g.bytes && g.bytes.length === 16384) ok("16,384 decoded bytes: decoder yields exactly 16,384 bytes");
+  else bad("16,384 decoded bytes: decoder yields exactly 16,384 bytes", String(g.bytes?.length));
+  expectRefused("16,385 decoded bytes (encoded 21,847 characters, unpadded)", p16385, "link.tooLarge");
+  const padded21848 = p16385 + "=";
+  if (padded21848.length !== 21848) bad("padded setup", String(padded21848.length));
+  expectRefused("21,848-character payload, 21,847 + one `=`", padded21848, "link.tooLarge");
+  expectRefused("21,849-character payload, 21,847 + `==`", p16385 + "==", "link.tooLarge");
+
+  // Padded and unpadded encodings of the same JSON load identically (one and two `=`).
+  const compact = JSON.stringify(dawn);
+  for (const extra of [1, 2]) {
+    let text = compact;
+    while (b64(text).replace(/[^=]/g, "").length !== extra) text += " ";
+    const padded = b64(text).replace(/\+/g, "-").replace(/\//g, "_");
+    const unpadded = padded.replace(/=+$/, "");
+    const a = decode(padded).got;
+    const b = decode(unpadded).got;
+    const same = a.bytes && b.bytes && Buffer.from(a.bytes).equals(Buffer.from(b.bytes)) && Buffer.from(a.bytes).toString("utf8") === text;
+    const ia = a.bytes && Import.importThemeBytes(a.bytes);
+    const ib = b.bytes && Import.importThemeBytes(b.bytes);
+    if (same && ia.document && ib.document && JSON.stringify(ia.document) === JSON.stringify(ib.document)) ok(`padded (${extra} \`=\`) and unpadded encodings load identically`);
+    else bad(`padded (${extra} \`=\`) and unpadded encodings load identically`, JSON.stringify({ a: a.error, b: b.error }));
+  }
+
+  // Characters outside the base64url alphabet, wherever they sit.
+  const good = b64url(compact);
+  for (const [label, ch] of [["`+`", "+"], ["`/`", "/"], ["`%`", "%"], ["space", " "], ["`.`", "."], ["`=` inside", "="], ["non-ASCII", "é"]]) {
+    expectRefused(`${label} in the payload`, good.slice(0, 40) + ch + good.slice(41), "link.malformed");
+  }
+  expectRefused("three trailing `=`", good.slice(0, good.length - (good.length % 4)) + "AA===", "link.malformed");
+  // A stripped length of 4n+1 can't be base64 of anything.
+  let body = good.slice(0, good.length - (good.length % 4));
+  expectRefused("stripped length 4n+1", body + "A", "link.malformed");
+  expectRefused("stripped length 4n+1 after padding", body + "A==", "link.malformed");
+  const { got: empty } = decode("");
+  const emptyImport = empty.bytes ? Import.importThemeBytes(empty.bytes) : null;
+  if (empty.bytes && empty.bytes.length === 0 && emptyImport.issue) ok(`empty payload: decodes to 0 bytes, refused by the guarded import (${emptyImport.issue.rule})`);
+  else bad("empty payload: refused by the guarded import", JSON.stringify(empty));
+
+  // Invalid UTF-8 in a link is refused by the same guarded path a drop takes.
+  const dawnText = BuiltIns.BUILT_IN_THEME_JSON.dawn;
+  const goodBytes = Buffer.from(dawnText, "utf8");
+  const cut = dawnText.indexOf("\"Dawn\"") + 2;
+  const broken = Buffer.concat([goodBytes.subarray(0, cut), Buffer.from([0xff]), goodBytes.subarray(cut)]);
+  const brokenPayload = broken.toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  const { got: bg } = decode(brokenPayload);
+  const bi = bg.bytes ? Import.importThemeBytes(bg.bytes) : { issue: { rule: bg.error } };
+  if (bi.issue?.rule === "file.encoding") ok(`invalid UTF-8 in a link: refused as file.encoding (${bi.issue.message})`);
+  else bad("invalid UTF-8 in a link: refused as file.encoding", JSON.stringify(bi.issue ?? "imported"));
+}
+
+function checkLinkAddressBar() {
+  console.log("\nHand-off link: the address bar (stubbed window/history/location)");
+  const dawn = JSON.parse(BuiltIns.BUILT_IN_THEME_JSON.dawn);
+  const payload = b64url(JSON.stringify(dawn));
+
+  // A link on load: taken, stripped, queued once; nothing global but the one function.
+  {
+    const h = loadHeadScript(`#theme=${payload}`);
+    const stripped = h.replaced.length === 1 && h.replaced[0].url === "/zh-hant/themes/new/?q=1" && h.location.hash === "" && h.replaced[0].state === h.history.state;
+    if (stripped) ok("a #theme= link on load: stripped through replaceState to path + query, history.state kept");
+    else bad("a #theme= link on load: stripped to path + query", JSON.stringify(h.replaced));
+    if (JSON.stringify(h.added) === JSON.stringify(["takeThemeLinkPayload"]) && typeof h.take === "function") ok("one global, the function takeThemeLinkPayload; no payload on window");
+    else bad("one global, the function takeThemeLinkPayload", JSON.stringify(h.added));
+    const leaked = Object.keys(h.sandbox).filter((k) => { try { return JSON.stringify(h.sandbox[k])?.includes(payload.slice(0, 24)); } catch { return false; } });
+    if (leaked.length === 0) ok("the payload is in no global");
+    else bad("the payload is in no global", JSON.stringify(leaked));
+    const first = h.take();
+    const imported = first?.bytes ? Import.importThemeBytes(first.bytes) : null;
+    if (imported?.document && deepEqualJSON(imported.document, dawn)) ok("takeThemeLinkPayload() returns the queued link, which imports deep-equal");
+    else bad("takeThemeLinkPayload() returns the queued link", JSON.stringify(first));
+    if (h.take() === null) ok("takeThemeLinkPayload() clears the queue (a second call returns null)");
+    else bad("takeThemeLinkPayload() clears the queue");
+    const capture = ["popstate", "hashchange"].every((t) => h.listeners[t]?.length === 1 && h.listeners[t][0].capture === true);
+    if (capture) ok("listens for popstate and hashchange, in the capture phase");
+    else bad("listens for popstate and hashchange, in the capture phase", JSON.stringify(Object.keys(h.listeners)));
+  }
+
+  // A refused link is stripped too, and queues its refusal.
+  {
+    const h = loadHeadScript("#theme=ab+cd");
+    const r = h.take();
+    if (h.replaced.length === 1 && h.location.hash === "" && r?.error === "link.malformed") ok("a refused #theme= link: still stripped, queues link.malformed");
+    else bad("a refused #theme= link: still stripped", JSON.stringify({ replaced: h.replaced, r }));
+  }
+
+  // Any other fragment is left alone.
+  for (const hash of ["#main", "#theme", "#themes=abc", "#Theme=abc", "#x#theme=abc", ""]) {
+    const h = loadHeadScript(hash);
+    const stoppedPop = h.fire("popstate");
+    const stoppedHash = h.fire("hashchange", `https://example.test/themes/new/${hash}`);
+    if (h.replaced.length === 0 && h.location.hash === hash && h.take() === null && !stoppedPop && !stoppedHash) ok(`fragment ${JSON.stringify(hash)}: untouched, nothing queued, events not stopped`);
+    else bad(`fragment ${JSON.stringify(hash)}: untouched`, JSON.stringify({ replaced: h.replaced, hash: h.location.hash, stoppedPop, stoppedHash }));
+  }
+
+  // A later link (same-tab paste): popstate takes it, the hashchange after it is stopped too, and
+  // the callback gets it. A wrapper installed on History later (as GTM's history listener does)
+  // is never called: the strip goes through the pristine method.
+  {
+    const h = loadHeadScript("");
+    const later = [];
+    if (h.take((r) => later.push(r)) !== null) bad("no link on load: nothing queued");
+    const wrapperCalls = [];
+    const pristine = h.History.prototype.replaceState;
+    h.History.prototype.replaceState = function (...a) { wrapperCalls.push(a[2]); return pristine.apply(this, a); };
+    h.location.hash = `#theme=${payload}`;
+    const stoppedPop = h.fire("popstate");
+    const stoppedHash = h.fire("hashchange", `https://example.test/zh-hant/themes/new/?q=1#theme=${payload}`);
+    const imported = later[0]?.bytes ? Import.importThemeBytes(later[0].bytes) : null;
+    if (later.length === 1 && imported?.document && deepEqualJSON(imported.document, dawn)) ok("a later link: delivered once to the registered callback, imports deep-equal");
+    else bad("a later link: delivered once to the registered callback", JSON.stringify(later));
+    if (h.location.hash === "" && h.replaced.length === 1 && wrapperCalls.length === 0) ok("a later link: stripped through the pristine replaceState, never a later wrapper");
+    else bad("a later link: stripped through the pristine replaceState", JSON.stringify({ hash: h.location.hash, replaced: h.replaced.length, wrapperCalls }));
+    if (stoppedPop && stoppedHash) ok("a later link: its popstate and the hashchange naming it are kept from later listeners");
+    else bad("a later link: its popstate and hashchange are stopped", JSON.stringify({ stoppedPop, stoppedHash }));
+    if (h.take() === null) ok("a later link delivered to the callback is not also queued");
+    else bad("a later link delivered to the callback is not also queued");
+  }
+}
+
+function checkCopyLinkEncoder() {
+  console.log("\nHand-off link: Copy link's encoder (theme-link.js) round-trips through the head script");
+  const inputs = BUILT_IN_ORDER.map((id) => [`built-in ${id}`, BuiltIns.BUILT_IN_THEME_JSON[id]]);
+  for (const { category, name, text } of loadFixtures(vendorDir)) if (category === "valid") inputs.push([`valid/${name}`, text]);
+  // Non-ASCII, and a text whose standard base64 has both `+` and `/`.
+  const accented = JSON.parse(BuiltIns.BUILT_IN_THEME_JSON.dawn);
+  accented.name = { en: "Dawn ~~~ ??? >>> é 黎明" };
+  inputs.push(["non-ASCII name", JSON.stringify(accented)]);
+  let sawPlusSlash = false;
+  for (const [label, text] of inputs) {
+    const state = Import.importThemeText(text).document;
+    const minified = JSON.stringify(state);
+    if (/\+/.test(b64(minified)) && /\//.test(b64(minified))) sawPlusSlash = true;
+    const link = Link.themeLink("https://example.test", "/ko/themes/new/", state);
+    const prefix = "https://example.test/ko/themes/new/#theme=";
+    const payload = link.startsWith(prefix) ? link.slice(prefix.length) : null;
+    const h = loadHeadScript();
+    const got = payload !== null ? h.take.decode(payload) : { error: "no prefix" };
+    const exact = got.bytes && Buffer.from(got.bytes).toString("utf8") === minified;
+    if (payload !== null && /^[A-Za-z0-9_-]+$/.test(payload) && exact) ok(`${label}: link is path + #theme= + base64url (no + / =), decodes to JSON.stringify(state) exactly`);
+    else bad(`${label}: Copy link round trip`, JSON.stringify({ link: link.slice(0, 80), error: got.error }));
+  }
+  if (sawPlusSlash) ok("at least one input's standard base64 has both + and / (the alphabet mapping is exercised)");
+  else bad("at least one input's standard base64 has both + and /");
+}
+
 checkRescope();
 checkBuiltIns();
 checkVendorParity();
@@ -863,6 +1125,10 @@ checkSubmitDecision();
 checkGuardedImport();
 checkInheritedTypeNames();
 checkGeneratorRefusesUnknownTypes();
+checkLinkCaps();
+checkLinkGrammar();
+checkLinkAddressBar();
+checkCopyLinkEncoder();
 
 console.log(failures === 0 ? "\nAll checks passed." : `\n${failures} check(s) failed.`);
 process.exit(failures === 0 ? 0 : 1);
