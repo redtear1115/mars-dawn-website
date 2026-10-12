@@ -15,10 +15,10 @@ COMPLETE = True
 # The tables come from scripts/theme_agents.py, not from here.
 THEME_AGENTS = {
     "title": "에이전트와 함께 MarsDawn 테마 만들기 · MarsDawn",
-    "description": "MarsDawn 테마를 만드는 AI 에이전트를 위한 참고 자료입니다. theme.json의 모든 필드와 타입, 범위, 검사하고 렌더링하는 CLI 절차, 사람에게 넘기는 링크, 제출 방법을 담았습니다.",
+    "description": "MarsDawn 테마를 만드는 AI 에이전트를 위한 참고 자료입니다. theme.json의 모든 필드와 타입, 범위, CLI 검사·렌더링 절차, 넘겨줄 링크, 제출 방법을 담았습니다.",
     "label": "에이전트와 함께 테마 만들기",
     "h1": "에이전트와 함께 테마 만들기",
-    "lede": "MarsDawn 미리보기 테마를 만드는 AI 에이전트를 위한 참고 자료입니다. 에이전트는 <code>theme.json</code> 하나를 쓰고 명령줄 도구 <code>marsdawn</code>으로 검사하고 렌더링한 뒤 링크를 건넵니다. 사람은 <a href=\"/themes/new/\">테마 빌더</a>에서 눈으로 다듬어 제출합니다. 아래 필드 표는 kit의 소스 코드에서 직접 읽은 것이며, 검사가 둘이 같음을 보장합니다.",
+    "lede": "MarsDawn 미리보기 테마를 만드는 AI 에이전트를 위한 참고 자료입니다. 에이전트는 <code>theme.json</code> 하나를 쓰고 명령줄 도구 <code>marsdawn</code>으로 검사하고 렌더링한 뒤 링크를 건넵니다. 사람은 <a href=\"/themes/new/\">테마 만들기</a> 페이지에서 눈으로 다듬어 제출합니다. 아래 필드 표는 kit의 소스 코드에서 직접 읽은 것이며, 검사가 둘이 같음을 보장합니다.",
     "summary": "<strong><code>theme.json</code>을 쓰고, 종료 코드가 0이 될 때까지 <code>marsdawn theme validate theme.json --require-complete --json</code>을 실행하고, <code>marsdawn theme preview</code>로 라이트와 다크를 렌더링한 뒤 사람에게 링크를 건네세요.</strong> 테마는 매개변수일 뿐이며 CSS를 담지 않습니다.",
     "what_h": "테마란 무엇인가",
     "what_items": [
@@ -85,11 +85,11 @@ THEME_AGENTS = {
         "<strong>규칙 ID.</strong> 모든 문제에는 <code>contrast.pair</code>, <code>color.hex</code>, <code>number.range</code>, <code>id.pattern</code>, <code>schema.unknownKey</code>, <code>palette.incomplete</code> 같은 ID가 붙습니다. ID와 <code>path</code>가 가리키는 대로 파일을 고치세요."
     ],
     "link_h": "링크로 건네기",
-    "link_intro": "<a href=\"/themes/new/\">테마 빌더</a>는 링크로 테마를 열어 사람이 눈으로 다듬을 수 있게 합니다. 링크는 빌더의 주소, <code>#theme=</code>, 그리고 패딩 없는 base64url로 인코딩한 파일 바이트로 이루어집니다. 파일은 최대 16,384바이트입니다. 이 한 줄이 macOS와 Linux의 zsh와 bash에서 링크를 만들어 줍니다.",
-    "link_note": "테마는 브라우저가 사이트로 보내지 않는 <code>#</code> 뒤에 담기며, 사이트는 이를 어디에도 보내지 않습니다. 다만 링크는 셸과 브라우저의 기록에 남고, 링크를 붙여 넣은 상대는 테마를 읽을 수 있습니다.",
+    "link_intro": "<a href=\"/themes/new/\">테마 만들기</a> 페이지는 링크로 테마를 열어 사람이 눈으로 다듬을 수 있게 합니다. 링크는 그 페이지의 주소, <code>#theme=</code>, 그리고 패딩 없는 base64url로 인코딩한 파일 바이트로 이루어집니다. 파일은 최대 16,384바이트입니다. 이 한 줄이 macOS와 Linux의 zsh와 bash에서 링크를 만들어 줍니다.",
+    "link_note": "테마는 브라우저가 사이트로 보내지 않는 <code>#</code> 뒤에 담기며, 사이트는 이를 어디에도 보내지 않습니다. 다만 링크는 셸과 브라우저의 기록에 남고, 링크를 받은 사람은 누구나 테마를 읽을 수 있습니다.",
     "submit_h": "제출하기",
     "submit_intro": "에이전트는 파일과 링크를 준비하고, 제출은 사람이 합니다. 두 방법 모두 Developer Certificate of Origin과 Apache-2.0 게시에 대한 확인이 필요하며, 이 확인은 사람이 직접 합니다. 에이전트가 상자에 체크하거나 대신 서명하지 않습니다.",
-    "submit_issue": "<strong>이슈.</strong> 사람이 링크를 열어 테마 빌더에서 <strong>Submit</strong>을 누르거나, <a href=\"{issue_url}\">이슈 양식</a>을 열어 JSON을 <em>Theme</em>에 붙여 넣습니다. 워크플로가 테마를 검사하고 답합니다.",
+    "submit_issue": "<strong>이슈.</strong> 사람이 링크를 열어 “테마 만들기” 페이지에서 <strong>Submit</strong>을 누르거나, <a href=\"{issue_url}\">이슈 양식</a>을 열어 JSON을 <em>Theme</em>에 붙여 넣습니다. 워크플로가 테마를 검사하고 답합니다.",
     "submit_pr": "<strong>풀 리퀘스트.</strong> <code>themes/&lt;id&gt;/theme.json</code>만 바꾸고, <code>author.github</code>를 풀 리퀘스트 작성자의 로그인으로 설정하고, 모든 커밋을 <code>git commit -s</code>로 서명하세요. 규칙은 <a href=\"{contributing_url}\">CONTRIBUTING.md</a>에 있습니다.",
     "submit_note": "제출된 테마의 작성자 이름, 이름, 요약, GitHub 로그인은 영구적으로 공개됩니다. <code>author.name</code>에는 그 사람이 공개해도 좋다고 한 이름을 넣으세요.",
     "gallery_h": "게시된 테마",

@@ -26,7 +26,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Créer un thème MarsDawn avec votre agent · MarsDawn</title>
-<meta name="description" content="Une référence pour les agents IA qui créent un thème MarsDawn : chaque champ de theme.json avec son type et sa plage, la boucle CLI qui le vérifie et le rend, un lien de transmission et la façon de le soumettre.">
+<meta name="description" content="Référence des thèmes MarsDawn pour agents IA : chaque champ de theme.json avec type et plage, vérification et rendu en CLI, lien à transmettre, soumission.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -42,7 +42,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/fr/themes/agents/">
 <link rel="alternate" type="text/markdown" href="/fr/themes/agents/index.md">
 <meta property="og:title" content="Créer un thème MarsDawn avec votre agent · MarsDawn">
-<meta property="og:description" content="Une référence pour les agents IA qui créent un thème MarsDawn : chaque champ de theme.json avec son type et sa plage, la boucle CLI qui le vérifie et le rend, un lien de transmission et la façon de le soumettre.">
+<meta property="og:description" content="Référence des thèmes MarsDawn pour agents IA : chaque champ de theme.json avec type et plage, vérification et rendu en CLI, lien à transmettre, soumission.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/fr/themes/agents/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -75,43 +75,43 @@ try {
 <main id="main">
 <section class="intro">
   <h1>Créer un thème avec votre agent</h1>
-  <p>Une référence pour un agent IA qui crée un thème d’aperçu MarsDawn. L’agent écrit un seul <code>theme.json</code>, le vérifie et le rend avec l’outil en ligne de commande <code>marsdawn</code>, puis vous remet un lien. Vous l’ajustez à l’œil dans <a href="/fr/themes/new/">l’éditeur de thèmes</a> et vous le soumettez. Les tableaux de champs ci-dessous sont lus dans le code source du kit, et une vérification les maintient identiques.</p>
+  <p>Une référence pour un agent IA qui crée un thème d’aperçu MarsDawn. L’agent écrit un seul <code>theme.json</code>, le vérifie et le rend avec l’outil en ligne de commande <code>marsdawn</code>, puis vous remet un lien. Vous l’ajustez à l’œil sur la page <a href="/fr/themes/new/">Créer un thème</a> et vous le soumettez. Les tableaux de champs ci-dessous sont lus dans le code source du kit, et une vérification les maintient identiques.</p>
 </section>
 
 <div class="summary"><p><strong>Écrivez un <code>theme.json</code>, lancez <code>marsdawn theme validate theme.json --require-complete --json</code> jusqu’à obtenir le code de sortie 0, rendez-le avec <code>marsdawn theme preview</code> en clair et en sombre, puis donnez un lien à la personne.</strong> Un thème n’est fait que de paramètres. Il ne contient jamais de CSS.</p></div>
 
 <h2 id="what-a-theme-is">Ce qu’est un thème</h2>
 <ul>
-  <li><strong>Des couleurs</strong> pour le clair et pour le sombre : une palette de base, et des couleurs de syntaxe et de diagramme facultatives. Chacune est de la forme <code>#RRGGBB</code>.</li>
-  <li><strong>Un style de police</strong> : <code>sans</code>, <code>serif</code> ou <code>rounded</code>.</li>
-  <li><strong>Un ensemble fermé d’options de style</strong> : des nombres dans des plages fixes et des choix dans des listes fixes. Une couleur dans une option de style est toujours un rôle de palette comme <code>accent</code>, jamais une couleur littérale.</li>
-  <li><strong>Des textes affichés</strong> : un nom et un résumé, et éventuellement un auteur et une licence.</li>
+  <li><strong>Des couleurs</strong> pour le clair et pour le sombre : une palette de base, et des couleurs de syntaxe et de diagramme facultatives. Chacune est de la forme <code>#RRGGBB</code>.</li>
+  <li><strong>Un style de police</strong> : <code>sans</code>, <code>serif</code> ou <code>rounded</code>.</li>
+  <li><strong>Un ensemble fermé d’options de style</strong> : des nombres dans des plages fixes et des choix dans des listes fixes. Une couleur dans une option de style est toujours un rôle de palette comme <code>accent</code>, jamais une couleur littérale.</li>
+  <li><strong>Des textes affichés</strong> : un nom et un résumé, et éventuellement un auteur et une licence.</li>
 </ul>
 <p>Une clé absente des tableaux ci-dessous est une erreur, tout comme une clé écrite deux fois. Le fichier fait au plus 16 384 octets.</p>
 
 <h2 id="check-and-render">Vérifier et rendre</h2>
-<p>Lancez ces commandes dans le dossier qui contient <code>theme.json</code>. Elles demandent l’outil <code>marsdawn</code> : voir <a href="/fr/cli/agents/">marsdawn pour les agents</a>.</p>
+<p>Lancez ces commandes dans le dossier qui contient <code>theme.json</code>. Elles demandent l’outil <code>marsdawn</code> : voir <a href="/fr/cli/agents/">marsdawn pour les agents</a>.</p>
 <pre><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 <ul>
-  <li>Codes de sortie : 0 valide, 1 invalide avec des identifiants de règle, 2 fichier introuvable, 64 erreur d’usage. <code>preview</code> ajoute 4 quand le PNG existe déjà (passez <code>--force</code> ou choisissez un autre nom) et 5 quand le rendu échoue.</li>
+  <li>Codes de sortie : 0 valide, 1 invalide avec des identifiants de règle, 2 fichier introuvable, 64 erreur d’usage. <code>preview</code> ajoute 4 quand le PNG existe déjà (passez <code>--force</code> ou choisissez un autre nom) et 5 quand le rendu échoue.</li>
   <li>Avec <code>--json</code>, un thème invalide énumère ses problèmes sous <code>issues</code>, chacun avec un identifiant <code>rule</code>, un <code>path</code> et un <code>message</code>. Corrigez-les et relancez la commande.</li>
-  <li><code>--require-complete</code> est la vérification d’un thème destiné à être publié : elle exige aussi les couleurs <code>syntax</code> et <code>diagram</code> dans les deux palettes.</li>
-  <li><code>css</code> affiche le CSS que sert l’aperçu. <code>preview</code> rend un document d’exemple en PNG. Les deux valident d’abord : un thème invalide ne produit aucun rendu.</li>
+  <li><code>--require-complete</code> est la vérification d’un thème destiné à être publié : elle exige aussi les couleurs <code>syntax</code> et <code>diagram</code> dans les deux palettes.</li>
+  <li><code>css</code> affiche le CSS que sert l’aperçu. <code>preview</code> rend un document d’exemple en PNG. Les deux valident d’abord : un thème invalide ne produit aucun rendu.</li>
   <li>Regardez le PNG clair et le PNG sombre avant de remettre le thème.</li>
 </ul>
 
 <h2 id="start-from-a-built-in">Partir d’un thème intégré</h2>
-<p>Copiez l’un des quatre thèmes intégrés et modifiez-le. Chacun est un fichier complet et valide :</p>
+<p>Copiez l’un des quatre thèmes intégrés et modifiez-le. Chacun est un fichier complet et valide :</p>
 <ul>
   <li><a href="/assets/theme-sim/kit/themes/dawn.json"><code>/assets/theme-sim/kit/themes/dawn.json</code></a>: le thème par défaut, et l’exemple ci-dessous</li>
   <li><a href="/assets/theme-sim/kit/themes/classic.json"><code>/assets/theme-sim/kit/themes/classic.json</code></a>: une palette plus sobre, proche d’un document</li>
   <li><a href="/assets/theme-sim/kit/themes/modern.json"><code>/assets/theme-sim/kit/themes/modern.json</code></a>: une palette plus froide et plus contemporaine</li>
   <li><a href="/assets/theme-sim/kit/themes/vivid.json"><code>/assets/theme-sim/kit/themes/vivid.json</code></a>: une palette plus vive et plus contrastée</li>
 </ul>
-<h3 id="example-dawn">Exemple : Dawn</h3>
+<h3 id="example-dawn">Exemple : Dawn</h3>
 <p>Voici <code>dawn.json</code>, octet pour octet. Sa seule option de style est un fin filet de couleur d’accent pour <code>hr</code>.</p>
 <pre><code>{
   "schemaVersion": 1,
@@ -140,15 +140,15 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 
 <h2 id="fields">Champs</h2>
 <p>Chaque objet ci-dessous est lu de la même façon. <code>required</code> signifie que la clé doit être présente, et une clé qui n’est pas listée est une erreur.</p>
-<p>Types : <code>string</code>, <code>integer</code>, <code>number</code>, <code>boolean</code>, <code>map</code> (balise de langue vers texte), <code>enum</code> (l’une des valeurs listées), <code>role</code> (un rôle de palette) et <code>object</code> (le tableau vers lequel il renvoie). Un <code>[]</code> après un type signifie une liste.</p>
+<p>Types : <code>string</code>, <code>integer</code>, <code>number</code>, <code>boolean</code>, <code>map</code> (balise de langue vers texte), <code>enum</code> (l’une des valeurs listées), <code>role</code> (un rôle de palette) et <code>object</code> (le tableau vers lequel il renvoie). Un <code>[]</code> après un type signifie une liste.</p>
 <h3 id="t-root"><code>theme.json</code></h3>
 <div class="table-scroll"><table class="compare compare-wide" data-theme-table="root">
 <thead><tr><th scope="col">Champ</th><th scope="col">Type</th><th scope="col">Présence</th><th scope="col">Valeurs et remarques</th></tr></thead>
 <tbody>
   <tr><th scope="row"><code>schemaVersion</code></th><td data-label="Type"><code>integer</code></td><td data-label="Présence"><code>required</code></td><td data-label="Valeurs et remarques">Toujours <code>1</code>.</td></tr>
-  <tr><th scope="row"><code>id</code></th><td data-label="Type"><code>string</code></td><td data-label="Présence"><code>required</code></td><td data-label="Valeurs et remarques">De 1 à 32 caractères : lettres minuscules et chiffres, en blocs reliés par des tirets simples, par exemple <code>calm-green</code>.</td></tr>
+  <tr><th scope="row"><code>id</code></th><td data-label="Type"><code>string</code></td><td data-label="Présence"><code>required</code></td><td data-label="Valeurs et remarques">De 1 à 32 caractères : lettres minuscules et chiffres, en blocs reliés par des tirets simples, par exemple <code>calm-green</code>.</td></tr>
   <tr><th scope="row"><code>version</code></th><td data-label="Type"><code>string</code></td><td data-label="Présence"><code>required</code></td><td data-label="Valeurs et remarques"><code>MAJOR.MINOR.PATCH</code>, par exemple <code>1.0.0</code>.</td></tr>
-  <tr><th scope="row"><code>name</code></th><td data-label="Type"><code>map</code></td><td data-label="Présence"><code>required</code></td><td data-label="Valeurs et remarques">Balise de langue vers texte. <code>en</code> est obligatoire ; les autres clés sont des balises de langue comme <code>zh-Hant</code>. Chaque texte compte au plus 48 caractères, sans lien ni saut de ligne.</td></tr>
+  <tr><th scope="row"><code>name</code></th><td data-label="Type"><code>map</code></td><td data-label="Présence"><code>required</code></td><td data-label="Valeurs et remarques">Balise de langue vers texte. <code>en</code> est obligatoire ; les autres clés sont des balises de langue comme <code>zh-Hant</code>. Chaque texte compte au plus 48 caractères, sans lien ni saut de ligne.</td></tr>
   <tr><th scope="row"><code>summary</code></th><td data-label="Type"><code>map</code></td><td data-label="Présence"><code>required</code></td><td data-label="Valeurs et remarques">Même forme que <code>name</code>, au plus 120 caractères par texte.</td></tr>
   <tr><th scope="row"><code>fontDesign</code></th><td data-label="Type"><code>enum</code></td><td data-label="Présence"><code>required</code></td><td data-label="Valeurs et remarques"><code>sans</code>, <code>serif</code>, <code>rounded</code></td></tr>
   <tr><th scope="row"><code>scenarios</code></th><td data-label="Type"><code>enum[]</code></td><td data-label="Présence"><code>required</code></td><td data-label="Valeurs et remarques"><code>agent-review</code>, <code>technical-docs</code>, <code>formal-output</code>, <code>notes-sharing</code> &#8212; Un ou deux, sans répétition. Ils fixent le contraste que le thème doit atteindre.</td></tr>
@@ -224,7 +224,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
   <tr><th scope="row"><code>hr</code></th><td data-label="Type"><code>object</code></td><td data-label="Présence"><code>optional</code></td><td data-label="Valeurs et remarques"><a href="#t-style-hr"><code>style.hr</code></a></td></tr>
   <tr><th scope="row"><code>table</code></th><td data-label="Type"><code>object</code></td><td data-label="Présence"><code>optional</code></td><td data-label="Valeurs et remarques"><a href="#t-style-table"><code>style.table</code></a></td></tr>
   <tr><th scope="row"><code>listMarker</code></th><td data-label="Type"><code>role</code></td><td data-label="Présence"><code>optional</code></td><td data-label="Valeurs et remarques"><a href="#roles">un rôle de palette</a></td></tr>
-  <tr><th scope="row"><code>inlineCode</code></th><td data-label="Type"><code>role</code></td><td data-label="Présence"><code>optional</code></td><td data-label="Valeurs et remarques"><a href="#roles">un rôle de palette</a> &#8212; Seulement <code>text</code> ou un rôle de syntaxe : <code>keyword</code>, <code>string</code>, <code>comment</code>, <code>number</code>, <code>function</code> ou <code>type</code>.</td></tr>
+  <tr><th scope="row"><code>inlineCode</code></th><td data-label="Type"><code>role</code></td><td data-label="Présence"><code>optional</code></td><td data-label="Valeurs et remarques"><a href="#roles">un rôle de palette</a> &#8212; Seulement <code>text</code> ou un rôle de syntaxe : <code>keyword</code>, <code>string</code>, <code>comment</code>, <code>number</code>, <code>function</code> ou <code>type</code>.</td></tr>
   <tr><th scope="row"><code>link</code></th><td data-label="Type"><code>object</code></td><td data-label="Présence"><code>optional</code></td><td data-label="Valeurs et remarques"><a href="#t-style-link"><code>style.link</code></a></td></tr>
   <tr><th scope="row"><code>syntax</code></th><td data-label="Type"><code>object</code></td><td data-label="Présence"><code>optional</code></td><td data-label="Valeurs et remarques"><a href="#t-style-syntax"><code>style.syntax</code></a></td></tr>
 </tbody>
@@ -313,7 +313,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </tbody>
 </table></div>
 <h3 id="roles">Rôles de palette</h3>
-<p>Un rôle de palette est l’un de ces noms :</p>
+<p>Un rôle de palette est l’un de ces noms :</p>
 <p data-theme-values="role"><code>background</code>, <code>surface</code>, <code>text</code>, <code>muted</code>, <code>border</code>, <code>heading</code>, <code>accent</code>, <code>link</code>, <code>quote</code>, <code>keyword</code>, <code>string</code>, <code>comment</code>, <code>number</code>, <code>function</code>, <code>type</code></p>
 <h3 id="t-numbers">Nombres</h3>
 <p>Un nombre est arrondi au multiple le plus proche de son pas, puis doit se trouver entre le min et le max. Sinon la règle est <code>number.range</code>.</p>
@@ -341,17 +341,17 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 
 <h2 id="hand-it-over-as-a-link">Le remettre sous forme de lien</h2>
-<p><a href="/fr/themes/new/">L’éditeur de thèmes</a> ouvre un thème à partir d’un lien, pour que la personne puisse l’ajuster à l’œil. Le lien est l’adresse de l’éditeur, puis <code>#theme=</code>, puis les octets du fichier en base64url sans remplissage. Le fichier fait au plus 16 384 octets. Cette seule ligne construit le lien sous zsh et sous bash, sur macOS et sur Linux :</p>
+<p>La page <a href="/fr/themes/new/">Créer un thème</a> ouvre un thème à partir d’un lien, pour que la personne puisse l’ajuster à l’œil. Le lien est l’adresse de la page, puis <code>#theme=</code>, puis les octets du fichier en base64url sans remplissage. Le fichier fait au plus 16 384 octets. Cette seule ligne construit le lien sous zsh et sous bash, sur macOS et sur Linux :</p>
 <pre><code>printf 'https://marsdawn.southern-light.dev/fr/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>Le thème voyage après un <code>#</code>, que le navigateur n’envoie pas au site, et le site ne le transmet nulle part. Le lien reste toutefois dans l’historique de votre shell et du navigateur, et toute personne à qui vous le collez peut lire le thème.</p>
 
 <h2 id="submit-it">Le soumettre</h2>
-<p>L’agent prépare le fichier et le lien. La personne soumet. Les deux voies demandent le Developer Certificate of Origin et la publication sous Apache-2.0, et c’est la personne qui fait cette attestation : l’agent ne coche pas la case et ne signe pas à sa place.</p>
+<p>L’agent prépare le fichier et le lien. La personne soumet. Les deux voies demandent le Developer Certificate of Origin et la publication sous Apache-2.0, et c’est la personne qui fait cette attestation : l’agent ne coche pas la case et ne signe pas à sa place.</p>
 <ul>
-  <li><strong>Issue.</strong> La personne ouvre le lien et appuie sur <strong>Submit</strong> dans l’éditeur de thèmes, ou ouvre le <a href="https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml">formulaire d’issue</a> et colle le JSON dans <em>Theme</em>. Un workflow vérifie le thème et répond.</li>
+  <li><strong>Issue.</strong> La personne ouvre le lien et appuie sur <strong>Submit</strong> dans la page « Créer un thème », ou ouvre le <a href="https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml">formulaire d’issue</a> et colle le JSON dans <em>Theme</em>. Un workflow vérifie le thème et répond.</li>
   <li><strong>Pull request.</strong> Ne modifiez que <code>themes/&lt;id&gt;/theme.json</code>, mettez dans <code>author.github</code> l’identifiant de l’auteur de la pull request et signez chaque commit avec <code>git commit -s</code>. Les règles sont dans <a href="https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</li>
 </ul>
-<p>Le nom d’auteur, le nom, le résumé et l’identifiant GitHub d’un thème soumis deviennent publics de façon permanente : mettez dans <code>author.name</code> un nom que la personne accepte de publier.</p>
+<p>Le nom d’auteur, le nom, le résumé et l’identifiant GitHub d’un thème soumis deviennent publics de façon permanente : mettez dans <code>author.name</code> un nom que la personne accepte de publier.</p>
 
 <h2 id="published-themes">Thèmes publiés</h2>
 <p>Pour voir à quoi ressemblent les thèmes publiés, parcourez la <a href="/fr/themes/gallery/">galerie de thèmes</a>.</p>
@@ -361,9 +361,12 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
     <a href="/fr/support/">Assistance</a>
     <a href="/fr/privacy/">Politique de confidentialité</a>
     <a href="/fr/cli/">Ligne de commande</a>
+    <a href="/fr/view-markdown-on-mac/">Afficher du Markdown sur Mac</a>
+    <a href="/fr/vs/markdown-preview-tools/">Afficher du Markdown ailleurs vs MarsDawn</a>
+    <a href="/fr/vs/macmd-viewer/">MacMD Viewer vs MarsDawn</a>
     <button type="button" id="consent-settings-link" class="footer-link-btn">Réglages des cookies</button>
   </nav>
-  <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-themes&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

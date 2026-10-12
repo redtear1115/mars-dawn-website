@@ -26,7 +26,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crea un tema de MarsDawn con tu agente · MarsDawn</title>
-<meta name="description" content="Una referencia para agentes de IA que crean un tema de MarsDawn: cada campo de theme.json con su tipo y su rango, el ciclo de la CLI que lo comprueba y lo renderiza, un enlace de entrega y cómo enviarlo.">
+<meta name="description" content="Referencia de temas de MarsDawn para agentes de IA: cada campo de theme.json con tipo y rango, comprobación y renderizado por CLI, enlace de entrega y envío.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -42,7 +42,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/es/themes/agents/">
 <link rel="alternate" type="text/markdown" href="/es/themes/agents/index.md">
 <meta property="og:title" content="Crea un tema de MarsDawn con tu agente · MarsDawn">
-<meta property="og:description" content="Una referencia para agentes de IA que crean un tema de MarsDawn: cada campo de theme.json con su tipo y su rango, el ciclo de la CLI que lo comprueba y lo renderiza, un enlace de entrega y cómo enviarlo.">
+<meta property="og:description" content="Referencia de temas de MarsDawn para agentes de IA: cada campo de theme.json con tipo y rango, comprobación y renderizado por CLI, enlace de entrega y envío.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/es/themes/agents/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -75,7 +75,7 @@ try {
 <main id="main">
 <section class="intro">
   <h1>Crea un tema con tu agente</h1>
-  <p>Una referencia para un agente de IA que crea un tema de vista previa de MarsDawn. El agente escribe un único <code>theme.json</code>, lo comprueba y lo renderiza con la herramienta de línea de comandos <code>marsdawn</code> y te da un enlace. Tú lo afinas a ojo en el <a href="/es/themes/new/">creador de temas</a> y lo envías. Las tablas de campos de abajo se leen del código fuente del kit, y una comprobación las mantiene iguales.</p>
+  <p>Una referencia para un agente de IA que crea un tema de vista previa de MarsDawn. El agente escribe un único <code>theme.json</code>, lo comprueba y lo renderiza con la herramienta de línea de comandos <code>marsdawn</code> y te da un enlace. Tú lo afinas a ojo en la página <a href="/es/themes/new/">Crear un tema</a> y lo envías. Las tablas de campos de abajo se leen del código fuente del kit, y una comprobación las mantiene iguales.</p>
 </section>
 
 <div class="summary"><p><strong>Escribe un <code>theme.json</code>, ejecuta <code>marsdawn theme validate theme.json --require-complete --json</code> hasta que termine con código 0, renderízalo con <code>marsdawn theme preview</code> en claro y en oscuro y después dale un enlace a la persona.</strong> Un tema son solo parámetros. Nunca contiene CSS.</p></div>
@@ -90,7 +90,7 @@ try {
 <p>Una clave que no está en las tablas de abajo es un error, y también lo es una clave escrita dos veces. El archivo pesa como máximo 16 384 bytes.</p>
 
 <h2 id="check-and-render">Comprobar y renderizar</h2>
-<p>Ejecuta esto en la carpeta que contiene <code>theme.json</code>. Necesitan la herramienta <code>marsdawn</code>: consulta <a href="/es/cli/agents/">marsdawn para agentes</a>.</p>
+<p>Ejecuta estos comandos en la carpeta que contiene <code>theme.json</code>. Necesitan la herramienta <code>marsdawn</code>: consulta <a href="/es/cli/agents/">marsdawn para agentes</a>.</p>
 <pre><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
@@ -341,14 +341,14 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 
 <h2 id="hand-it-over-as-a-link">Entrégalo como un enlace</h2>
-<p>El <a href="/es/themes/new/">creador de temas</a> abre un tema desde un enlace, para que la persona pueda afinarlo a ojo. El enlace es la dirección del creador, luego <code>#theme=</code> y luego los bytes del archivo en base64url sin relleno. El archivo puede pesar como máximo 16 384 bytes. Esta única línea construye el enlace en zsh y en bash, en macOS y en Linux:</p>
+<p>La página <a href="/es/themes/new/">Crear un tema</a> abre un tema desde un enlace, para que la persona pueda afinarlo a ojo. El enlace es la dirección de esa página, luego <code>#theme=</code> y luego los bytes del archivo en base64url sin relleno. El archivo puede pesar como máximo 16 384 bytes. Esta única línea construye el enlace en zsh y en bash, en macOS y en Linux:</p>
 <pre><code>printf 'https://marsdawn.southern-light.dev/es/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>El tema viaja detrás de un <code>#</code>, que el navegador no envía al sitio, y el sitio no lo envía a ninguna parte. Eso sí, el enlace queda en el historial de tu shell y en el del navegador, y cualquiera a quien se lo pegues puede leer el tema.</p>
 
 <h2 id="submit-it">Envíalo</h2>
 <p>El agente prepara el archivo y el enlace. La persona lo envía. Las dos vías piden el Developer Certificate of Origin y la publicación bajo Apache-2.0, y esa certificación la hace la persona: el agente no marca la casilla ni firma por ella.</p>
 <ul>
-  <li><strong>Issue.</strong> La persona abre el enlace y pulsa <strong>Submit</strong> en el creador de temas, o abre el <a href="https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml">formulario de issue</a> y pega el JSON en <em>Theme</em>. Un workflow comprueba el tema y responde.</li>
+  <li><strong>Issue.</strong> La persona abre el enlace y pulsa <strong>Submit</strong> en la página «Crear un tema», o abre el <a href="https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml">formulario de issue</a> y pega el JSON en <em>Theme</em>. Un workflow comprueba el tema y responde.</li>
   <li><strong>Pull request.</strong> Cambia solo <code>themes/&lt;id&gt;/theme.json</code>, pon en <code>author.github</code> el usuario del autor de la pull request y firma cada commit con <code>git commit -s</code>. Las reglas están en <a href="https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</li>
 </ul>
 <p>El nombre del autor, el nombre, el resumen y el usuario de GitHub de un tema enviado pasan a ser públicos de forma permanente, así que pon en <code>author.name</code> un nombre que la persona esté contenta de publicar.</p>
@@ -361,9 +361,12 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
     <a href="/es/support/">Soporte</a>
     <a href="/es/privacy/">Política de privacidad</a>
     <a href="/es/cli/">Línea de comandos</a>
+    <a href="/es/view-markdown-on-mac/">Ver Markdown en una Mac</a>
+    <a href="/es/vs/markdown-preview-tools/">Ver Markdown en otras herramientas frente a MarsDawn</a>
+    <a href="/es/vs/macmd-viewer/">MacMD Viewer frente a MarsDawn</a>
     <button type="button" id="consent-settings-link" class="footer-link-btn">Ajustes de cookies</button>
   </nav>
-  <p class="footer-meta"><span>Un nuevo amanecer para Markdown.</span> <span>MarsDawn está en el <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>Un nuevo amanecer para Markdown.</span> <span>MarsDawn está en el <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-themes&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

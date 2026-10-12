@@ -1,6 +1,6 @@
 # Make a theme with your agent
 
-A reference for an AI agent that makes a MarsDawn preview theme. The agent writes one `theme.json`, checks and renders it with the `marsdawn` command-line tool, and hands you a link. You tune it by eye in the [theme builder](/themes/new/) and submit it. The field tables below are read from the kit's own source, and a check keeps them equal to it.
+A reference for an AI agent that makes a MarsDawn preview theme. The agent writes one `theme.json`, checks and renders it with the `marsdawn` command-line tool, and hands you a link. You tune it by eye on the [Build a theme](/themes/new/) page and submit it. The field tables below are read from the kit's own source, and a check keeps them equal to it.
 
 **Write one `theme.json`, run `marsdawn theme validate theme.json --require-complete --json` until it exits 0, render it with `marsdawn theme preview` in light and dark, then give the person a link.** A theme is parameters only. It never contains CSS.
 
@@ -265,7 +265,7 @@ A number is snapped to the nearest multiple of its step, and must then lie betwe
 
 ## Hand it over as a link
 
-The [theme builder](/themes/new/) opens a theme from a link, so the person can tune it by eye. The link is the builder's address, then `#theme=`, then the file's bytes in base64url without padding. The file can be at most 16,384 bytes. This one line builds the link in zsh and in bash, on macOS and Linux:
+The [Build a theme](/themes/new/) page opens a theme from a link, so the person can tune it by eye. The link is that page's address, then `#theme=`, then the file's bytes in base64url without padding. The file can be at most 16,384 bytes. This one line builds the link in zsh and in bash, on macOS and Linux:
 
 ```
 printf 'https://marsdawn.southern-light.dev/themes/new/#theme=%s\n' "$(base64 < theme.json | tr -d '\n=' | tr '+/' '-_')"
@@ -277,7 +277,7 @@ The theme travels after a `#`, which a browser does not send to the site, and th
 
 The agent prepares the file and the link. The person submits. Both routes ask for the Developer Certificate of Origin and the Apache-2.0 release, and the person makes that certification: the agent does not tick the box or sign off for them.
 
-- **Issue.** The person opens the link and presses **Submit** in the theme builder, or opens the [issue form](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml) and pastes the JSON into *Theme*. A workflow checks the theme and replies.
+- **Issue.** The person opens the link and presses **Submit** on the Build a theme page, or opens the [issue form](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml) and pastes the JSON into *Theme*. A workflow checks the theme and replies.
 - **Pull request.** Change only `themes/<id>/theme.json`, set `author.github` to the pull request author's login, and sign off every commit with `git commit -s`. The rules are in [CONTRIBUTING.md](https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md).
 
 A submitted theme's author name, name, summary and GitHub login become public permanently, so set `author.name` to a name the person is happy to publish.
@@ -326,10 +326,10 @@ To see what published themes look like, browse [the theme gallery](/themes/galle
 - [Spec template](https://marsdawn.southern-light.dev/templates/spec/index.md): A Markdown spec template with requirements, a Mermaid flow diagram and acceptance criteria. Your agent fills it in; you review it in MarsDawn.
 - [Flowchart template](https://marsdawn.southern-light.dev/templates/flowchart/index.md): A Mermaid flowchart template in Markdown, with the steps written out below it. Preview it on a Mac and export it to PDF.
 - [Meeting notes template](https://marsdawn.southern-light.dev/templates/meeting-notes/index.md): A Markdown meeting notes template with decisions and action items, each with an owner. Your agent writes it up; you check it in MarsDawn.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/themes/agents/index.md): 給 AI agent 的參考：做一個 MarsDawn 主題所需的 theme.json 每個欄位與型別、範圍，檢查並渲染它的 CLI 流程、交給人的連結，以及怎麼投稿。
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/themes/agents/index.md): 给 AI agent 的参考：做一个 MarsDawn 主题所需的 theme.json 每个字段与类型、范围，检查并渲染它的 CLI 流程、交给人的链接，以及怎么投稿。
-- [日本語](https://marsdawn.southern-light.dev/ja/themes/agents/index.md): MarsDawn のテーマを作る AI エージェント向けの参考資料です。theme.json の全フィールドと型・範囲、検証してレンダリングする CLI の手順、人に渡すリンク、投稿の方法をまとめています。
-- [Deutsch](https://marsdawn.southern-light.dev/de/themes/agents/index.md): Eine Referenz für KI-Agenten, die ein MarsDawn-Thema erstellen: jedes Feld der theme.json mit Typ und Wertebereich, die CLI-Schleife zum Prüfen und Rendern, ein Übergabe-Link und die Einreichung.
-- [Français](https://marsdawn.southern-light.dev/fr/themes/agents/index.md): Une référence pour les agents IA qui créent un thème MarsDawn : chaque champ de theme.json avec son type et sa plage, la boucle CLI qui le vérifie et le rend, un lien de transmission et la façon de le soumettre.
-- [Español](https://marsdawn.southern-light.dev/es/themes/agents/index.md): Una referencia para agentes de IA que crean un tema de MarsDawn: cada campo de theme.json con su tipo y su rango, el ciclo de la CLI que lo comprueba y lo renderiza, un enlace de entrega y cómo enviarlo.
-- [한국어](https://marsdawn.southern-light.dev/ko/themes/agents/index.md): MarsDawn 테마를 만드는 AI 에이전트를 위한 참고 자료입니다. theme.json의 모든 필드와 타입, 범위, 검사하고 렌더링하는 CLI 절차, 사람에게 넘기는 링크, 제출 방법을 담았습니다.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/themes/agents/index.md): 給 AI agent 的 MarsDawn 主題製作參考：theme.json 每個欄位的型別與範圍、檢查並渲染的 CLI 流程、交給人的連結，以及怎麼投稿。
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/themes/agents/index.md): 给 AI agent 的 MarsDawn 主题制作参考：theme.json 每个字段的类型与范围、检查并渲染的 CLI 流程、交给人的链接，以及怎么投稿。
+- [日本語](https://marsdawn.southern-light.dev/ja/themes/agents/index.md): MarsDawn のテーマを作る AI エージェント向けの参考資料。theme.json の全フィールドの型と範囲、検証とレンダリングの CLI 手順、人に渡すリンク、投稿の方法。
+- [Deutsch](https://marsdawn.southern-light.dev/de/themes/agents/index.md): MarsDawn-Themen-Referenz für KI-Agenten: jedes Feld der theme.json mit Typ und Bereich, Prüfen und Rendern per CLI, ein Übergabe-Link und die Einreichung.
+- [Français](https://marsdawn.southern-light.dev/fr/themes/agents/index.md): Référence des thèmes MarsDawn pour agents IA : chaque champ de theme.json avec type et plage, vérification et rendu en CLI, lien à transmettre, soumission.
+- [Español](https://marsdawn.southern-light.dev/es/themes/agents/index.md): Referencia de temas de MarsDawn para agentes de IA: cada campo de theme.json con tipo y rango, comprobación y renderizado por CLI, enlace de entrega y envío.
+- [한국어](https://marsdawn.southern-light.dev/ko/themes/agents/index.md): MarsDawn 테마를 만드는 AI 에이전트를 위한 참고 자료입니다. theme.json의 모든 필드와 타입, 범위, CLI 검사·렌더링 절차, 넘겨줄 링크, 제출 방법을 담았습니다.

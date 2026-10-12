@@ -15,10 +15,10 @@ COMPLETE = True
 # The tables come from scripts/theme_agents.py, not from here.
 THEME_AGENTS = {
     "title": "Crea un tema de MarsDawn con tu agente · MarsDawn",
-    "description": "Una referencia para agentes de IA que crean un tema de MarsDawn: cada campo de theme.json con su tipo y su rango, el ciclo de la CLI que lo comprueba y lo renderiza, un enlace de entrega y cómo enviarlo.",
+    "description": "Referencia de temas de MarsDawn para agentes de IA: cada campo de theme.json con tipo y rango, comprobación y renderizado por CLI, enlace de entrega y envío.",
     "label": "Crea un tema con tu agente",
     "h1": "Crea un tema con tu agente",
-    "lede": "Una referencia para un agente de IA que crea un tema de vista previa de MarsDawn. El agente escribe un único <code>theme.json</code>, lo comprueba y lo renderiza con la herramienta de línea de comandos <code>marsdawn</code> y te da un enlace. Tú lo afinas a ojo en el <a href=\"/themes/new/\">creador de temas</a> y lo envías. Las tablas de campos de abajo se leen del código fuente del kit, y una comprobación las mantiene iguales.",
+    "lede": "Una referencia para un agente de IA que crea un tema de vista previa de MarsDawn. El agente escribe un único <code>theme.json</code>, lo comprueba y lo renderiza con la herramienta de línea de comandos <code>marsdawn</code> y te da un enlace. Tú lo afinas a ojo en la página <a href=\"/themes/new/\">Crear un tema</a> y lo envías. Las tablas de campos de abajo se leen del código fuente del kit, y una comprobación las mantiene iguales.",
     "summary": "<strong>Escribe un <code>theme.json</code>, ejecuta <code>marsdawn theme validate theme.json --require-complete --json</code> hasta que termine con código 0, renderízalo con <code>marsdawn theme preview</code> en claro y en oscuro y después dale un enlace a la persona.</strong> Un tema son solo parámetros. Nunca contiene CSS.",
     "what_h": "Qué es un tema",
     "what_items": [
@@ -29,7 +29,7 @@ THEME_AGENTS = {
     ],
     "what_note": "Una clave que no está en las tablas de abajo es un error, y también lo es una clave escrita dos veces. El archivo pesa como máximo 16 384 bytes.",
     "loop_h": "Comprobar y renderizar",
-    "loop_intro": "Ejecuta esto en la carpeta que contiene <code>theme.json</code>. Necesitan la herramienta <code>marsdawn</code>: consulta <a href=\"/cli/agents/\">marsdawn para agentes</a>.",
+    "loop_intro": "Ejecuta estos comandos en la carpeta que contiene <code>theme.json</code>. Necesitan la herramienta <code>marsdawn</code>: consulta <a href=\"/cli/agents/\">marsdawn para agentes</a>.",
     "loop_items": [
         "Códigos de salida: 0 válido, 1 inválido con identificadores de regla, 2 archivo no encontrado, 64 error de uso. <code>preview</code> añade 4 cuando el PNG ya existe (pasa <code>--force</code> o elige otro nombre) y 5 cuando falla el renderizado.",
         "Con <code>--json</code>, un tema inválido lista sus problemas en <code>issues</code>, cada uno con un identificador <code>rule</code>, un <code>path</code> y un <code>message</code>. Corrígelos y vuelve a ejecutarlo.",
@@ -85,11 +85,11 @@ THEME_AGENTS = {
         "<strong>Identificadores de regla.</strong> Cada problema lleva uno, como <code>contrast.pair</code>, <code>color.hex</code>, <code>number.range</code>, <code>id.pattern</code>, <code>schema.unknownKey</code> o <code>palette.incomplete</code>. Corrige el archivo según lo que dicen el identificador y el <code>path</code>."
     ],
     "link_h": "Entrégalo como un enlace",
-    "link_intro": "El <a href=\"/themes/new/\">creador de temas</a> abre un tema desde un enlace, para que la persona pueda afinarlo a ojo. El enlace es la dirección del creador, luego <code>#theme=</code> y luego los bytes del archivo en base64url sin relleno. El archivo puede pesar como máximo 16 384 bytes. Esta única línea construye el enlace en zsh y en bash, en macOS y en Linux:",
+    "link_intro": "La página <a href=\"/themes/new/\">Crear un tema</a> abre un tema desde un enlace, para que la persona pueda afinarlo a ojo. El enlace es la dirección de esa página, luego <code>#theme=</code> y luego los bytes del archivo en base64url sin relleno. El archivo puede pesar como máximo 16 384 bytes. Esta única línea construye el enlace en zsh y en bash, en macOS y en Linux:",
     "link_note": "El tema viaja detrás de un <code>#</code>, que el navegador no envía al sitio, y el sitio no lo envía a ninguna parte. Eso sí, el enlace queda en el historial de tu shell y en el del navegador, y cualquiera a quien se lo pegues puede leer el tema.",
     "submit_h": "Envíalo",
     "submit_intro": "El agente prepara el archivo y el enlace. La persona lo envía. Las dos vías piden el Developer Certificate of Origin y la publicación bajo Apache-2.0, y esa certificación la hace la persona: el agente no marca la casilla ni firma por ella.",
-    "submit_issue": "<strong>Issue.</strong> La persona abre el enlace y pulsa <strong>Submit</strong> en el creador de temas, o abre el <a href=\"{issue_url}\">formulario de issue</a> y pega el JSON en <em>Theme</em>. Un workflow comprueba el tema y responde.",
+    "submit_issue": "<strong>Issue.</strong> La persona abre el enlace y pulsa <strong>Submit</strong> en la página «Crear un tema», o abre el <a href=\"{issue_url}\">formulario de issue</a> y pega el JSON en <em>Theme</em>. Un workflow comprueba el tema y responde.",
     "submit_pr": "<strong>Pull request.</strong> Cambia solo <code>themes/&lt;id&gt;/theme.json</code>, pon en <code>author.github</code> el usuario del autor de la pull request y firma cada commit con <code>git commit -s</code>. Las reglas están en <a href=\"{contributing_url}\">CONTRIBUTING.md</a>.",
     "submit_note": "El nombre del autor, el nombre, el resumen y el usuario de GitHub de un tema enviado pasan a ser públicos de forma permanente, así que pon en <code>author.name</code> un nombre que la persona esté contenta de publicar.",
     "gallery_h": "Temas publicados",

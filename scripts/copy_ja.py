@@ -10,21 +10,21 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 # The tables come from scripts/theme_agents.py, not from here.
 THEME_AGENTS = {
     "title": "エージェントと MarsDawn のテーマを作る · MarsDawn",
-    "description": "MarsDawn のテーマを作る AI エージェント向けの参考資料です。theme.json の全フィールドと型・範囲、検証してレンダリングする CLI の手順、人に渡すリンク、投稿の方法をまとめています。",
+    "description": "MarsDawn のテーマを作る AI エージェント向けの参考資料。theme.json の全フィールドの型と範囲、検証とレンダリングの CLI 手順、人に渡すリンク、投稿の方法。",
     "label": "エージェントとテーマを作る",
     "h1": "エージェントとテーマを作る",
-    "lede": "MarsDawn のプレビューテーマを作る AI エージェント向けの参考資料です。エージェントは <code>theme.json</code> を1つ書き、コマンドラインツール <code>marsdawn</code> で検証してレンダリングし、リンクを渡します。人は<a href=\"/themes/new/\">テーマビルダー</a>で見た目を整えて投稿します。下のフィールド表は kit のソースコードから直接読み取ったもので、チェックによって一致が保たれています。",
+    "lede": "MarsDawn のプレビューテーマを作る AI エージェント向けの参考資料です。エージェントは <code>theme.json</code> を1つ書き、コマンドラインツール <code>marsdawn</code> で検証してレンダリングし、リンクを渡します。人は<a href=\"/themes/new/\">「テーマを作る」</a>ページで見た目を整えて投稿します。下のフィールド表は kit のソースコードから直接読み取ったもので、チェックによって一致が保たれています。",
     "summary": "<strong><code>theme.json</code> を書き、終了コードが 0 になるまで <code>marsdawn theme validate theme.json --require-complete --json</code> を実行し、<code>marsdawn theme preview</code> でライトとダークをレンダリングしてから、人にリンクを渡します。</strong>テーマはパラメーターだけで、CSS は含みません。",
     "what_h": "テーマとは",
     "what_items": [
-        "ライトとダークそれぞれの<strong>色</strong>：基本パレットと、任意の構文色・ダイアグラム色。どれも <code>#RRGGBB</code> です。",
+        "ライトとダークそれぞれの<strong>色</strong>：基本パレットと、任意の構文色・図の色。どれも <code>#RRGGBB</code> です。",
         "<strong>フォントデザイン</strong>：<code>sans</code>、<code>serif</code>、<code>rounded</code> のいずれか。",
         "<strong>閉じたスタイルオプションの集合</strong>：決まった範囲の数値と、決まったリストから選ぶ値。スタイルオプションの色は常に <code>accent</code> のようなパレットのロールで、色の値を直接書くことはありません。",
         "<strong>表示用の文字列</strong>：名前と概要、任意で作者とライセンス。"
     ],
     "what_note": "下の表にないキーはエラーで、同じキーを2回書くこともエラーです。ファイルは最大 16,384 バイトです。",
     "loop_h": "検証とレンダリング",
-    "loop_intro": "<code>theme.json</code> のあるフォルダーで実行します。<code>marsdawn</code> ツールが必要です。<a href=\"/cli/agents/\">AI エージェント向け marsdawn</a>を参照してください。",
+    "loop_intro": "<code>theme.json</code> のあるフォルダで実行します。<code>marsdawn</code> ツールが必要です。<a href=\"/cli/agents/\">AI エージェント向け marsdawn</a>を参照してください。",
     "loop_items": [
         "終了コード：0 は有効、1 は無効（ルール ID 付き）、2 はファイルが見つからない、64 は使い方の誤りです。<code>preview</code> にはさらに、PNG がすでにある場合の 4（<code>--force</code> を付けるか別の名前にします）と、レンダリング失敗の 5 があります。",
         "<code>--json</code> を付けると、無効なテーマは問題を <code>issues</code> の下に並べ、それぞれに <code>rule</code> ID、<code>path</code>、<code>message</code> が付きます。直して再実行してください。",
@@ -80,11 +80,11 @@ THEME_AGENTS = {
         "<strong>ルール ID。</strong>すべての問題には <code>contrast.pair</code>、<code>color.hex</code>、<code>number.range</code>、<code>id.pattern</code>、<code>schema.unknownKey</code>、<code>palette.incomplete</code> などの ID が付きます。ID と <code>path</code> が示すとおりにファイルを直してください。"
     ],
     "link_h": "リンクとして渡す",
-    "link_intro": "<a href=\"/themes/new/\">テーマビルダー</a>は、リンクからテーマを開けるので、人が見た目を整えられます。リンクは、ビルダーのアドレス、<code>#theme=</code>、パディングなしの base64url にしたファイルのバイト列でできています。ファイルは最大 16,384 バイトです。次の1行で、macOS と Linux の zsh と bash でリンクを作れます。",
-    "link_note": "テーマはブラウザーがサイトに送らない <code>#</code> の後ろに入り、サイトもそれをどこにも送りません。ただしリンクはシェルとブラウザーの履歴に残り、リンクを貼った相手はテーマを読めます。",
+    "link_intro": "<a href=\"/themes/new/\">「テーマを作る」</a>ページは、リンクからテーマを開けるので、人が見た目を整えられます。リンクは、そのページのアドレス、<code>#theme=</code>、パディングなしの base64url にしたファイルのバイト列でできています。ファイルは最大 16,384 バイトです。次の1行で、macOS と Linux の zsh と bash でリンクを作れます。",
+    "link_note": "テーマはブラウザがサイトに送らない <code>#</code> の後ろに入り、サイトもそれをどこにも送りません。ただしリンクはシェルとブラウザの履歴に残り、リンクを貼った相手はテーマを読めます。",
     "submit_h": "投稿する",
     "submit_intro": "エージェントがファイルとリンクを用意し、投稿は人が行います。どちらの方法でも Developer Certificate of Origin と Apache-2.0 での公開への確認が必要で、この確認は人が自分で行います。エージェントがチェックボックスにチェックしたり、代わりに署名したりすることはありません。",
-    "submit_issue": "<strong>Issue。</strong>人がリンクを開いてテーマビルダーの <strong>Submit</strong> を押すか、<a href=\"{issue_url}\">Issue フォーム</a>を開いて JSON を <em>Theme</em> に貼り付けます。ワークフローがテーマを検証して返信します。",
+    "submit_issue": "<strong>Issue。</strong>人がリンクを開いて「テーマを作る」ページの <strong>Submit</strong> を押すか、<a href=\"{issue_url}\">Issue フォーム</a>を開いて JSON を <em>Theme</em> に貼り付けます。ワークフローがテーマを検証して返信します。",
     "submit_pr": "<strong>Pull request。</strong><code>themes/&lt;id&gt;/theme.json</code> だけを変更し、<code>author.github</code> を pull request の作者のログイン名にして、すべてのコミットに <code>git commit -s</code> で署名します。ルールは <a href=\"{contributing_url}\">CONTRIBUTING.md</a> にあります。",
     "submit_note": "投稿されたテーマの作者名、名前、概要、GitHub のログイン名は永久に公開されます。<code>author.name</code> には、その人が公開してよいと考える名前を入れてください。",
     "gallery_h": "公開されているテーマ",
@@ -822,7 +822,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 
 <h2>自分のテーマを作り、他の人が作ったものも見る</h2>
 <p><a href="/ja/themes/new/">ブラウザでテーマを作れます</a>：色といくつかのスタイルオプションを選び、その場で確認し、レビュー用に GitHub の issue として送信します — インストールも git も不要です。<a href="/ja/themes/gallery/">ギャラリー</a>には、メンテナがレビューしてマージした投稿テーマが並び、用途で絞り込めます。アプリの「設定 › 外観モード › テーマを追加…」からインストールでき、Finder のクイックルックにも反映されます。</p>
-<p>エージェントと作業していますか？<a href="/ja/themes/agents/">エージェントにテーマを作らせて</a>、ブラウザーで整えましょう。</p>
+<p>エージェントと作業していますか？<a href="/ja/themes/agents/">エージェントにテーマを作らせて</a>、ブラウザで整えましょう。</p>
 
 <h2>次に</h2>
 <ul>

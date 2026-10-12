@@ -26,7 +26,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Make a MarsDawn theme with your agent · MarsDawn</title>
-<meta name="description" content="A reference for AI agents that make a MarsDawn theme: every theme.json field with its type and range, the CLI loop that checks and renders it, a hand-off link, and how to submit it.">
+<meta name="description" content="MarsDawn theme reference for AI agents: each theme.json field with type and range, the CLI loop that checks and renders it, a hand-off link, and how to submit.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -42,7 +42,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/themes/agents/">
 <link rel="alternate" type="text/markdown" href="/themes/agents/index.md">
 <meta property="og:title" content="Make a MarsDawn theme with your agent · MarsDawn">
-<meta property="og:description" content="A reference for AI agents that make a MarsDawn theme: every theme.json field with its type and range, the CLI loop that checks and renders it, a hand-off link, and how to submit it.">
+<meta property="og:description" content="MarsDawn theme reference for AI agents: each theme.json field with type and range, the CLI loop that checks and renders it, a hand-off link, and how to submit.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/themes/agents/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -75,7 +75,7 @@ try {
 <main id="main">
 <section class="intro">
   <h1>Make a theme with your agent</h1>
-  <p>A reference for an AI agent that makes a MarsDawn preview theme. The agent writes one <code>theme.json</code>, checks and renders it with the <code>marsdawn</code> command-line tool, and hands you a link. You tune it by eye in the <a href="/themes/new/">theme builder</a> and submit it. The field tables below are read from the kit's own source, and a check keeps them equal to it.</p>
+  <p>A reference for an AI agent that makes a MarsDawn preview theme. The agent writes one <code>theme.json</code>, checks and renders it with the <code>marsdawn</code> command-line tool, and hands you a link. You tune it by eye on the <a href="/themes/new/">Build a theme</a> page and submit it. The field tables below are read from the kit's own source, and a check keeps them equal to it.</p>
 </section>
 
 <div class="summary"><p><strong>Write one <code>theme.json</code>, run <code>marsdawn theme validate theme.json --require-complete --json</code> until it exits 0, render it with <code>marsdawn theme preview</code> in light and dark, then give the person a link.</strong> A theme is parameters only. It never contains CSS.</p></div>
@@ -341,14 +341,14 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 
 <h2 id="hand-it-over-as-a-link">Hand it over as a link</h2>
-<p>The <a href="/themes/new/">theme builder</a> opens a theme from a link, so the person can tune it by eye. The link is the builder's address, then <code>#theme=</code>, then the file's bytes in base64url without padding. The file can be at most 16,384 bytes. This one line builds the link in zsh and in bash, on macOS and Linux:</p>
+<p>The <a href="/themes/new/">Build a theme</a> page opens a theme from a link, so the person can tune it by eye. The link is that page's address, then <code>#theme=</code>, then the file's bytes in base64url without padding. The file can be at most 16,384 bytes. This one line builds the link in zsh and in bash, on macOS and Linux:</p>
 <pre><code>printf 'https://marsdawn.southern-light.dev/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>The theme travels after a <code>#</code>, which a browser does not send to the site, and the site does not send it anywhere. The link does stay in your shell history and in the browser's history, and anyone you paste it to can read the theme.</p>
 
 <h2 id="submit-it">Submit it</h2>
 <p>The agent prepares the file and the link. The person submits. Both routes ask for the Developer Certificate of Origin and the Apache-2.0 release, and the person makes that certification: the agent does not tick the box or sign off for them.</p>
 <ul>
-  <li><strong>Issue.</strong> The person opens the link and presses <strong>Submit</strong> in the theme builder, or opens the <a href="https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml">issue form</a> and pastes the JSON into <em>Theme</em>. A workflow checks the theme and replies.</li>
+  <li><strong>Issue.</strong> The person opens the link and presses <strong>Submit</strong> on the Build a theme page, or opens the <a href="https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml">issue form</a> and pastes the JSON into <em>Theme</em>. A workflow checks the theme and replies.</li>
   <li><strong>Pull request.</strong> Change only <code>themes/&lt;id&gt;/theme.json</code>, set <code>author.github</code> to the pull request author's login, and sign off every commit with <code>git commit -s</code>. The rules are in <a href="https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</li>
 </ul>
 <p>A submitted theme's author name, name, summary and GitHub login become public permanently, so set <code>author.name</code> to a name the person is happy to publish.</p>
@@ -361,9 +361,12 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
     <a href="/support/">Support</a>
     <a href="/privacy/">Privacy Policy</a>
     <a href="/cli/">Command Line</a>
+    <a href="/view-markdown-on-mac/">View Markdown on a Mac</a>
+    <a href="/vs/markdown-preview-tools/">Viewing Markdown elsewhere vs. MarsDawn</a>
+    <a href="/vs/macmd-viewer/">MacMD Viewer vs. MarsDawn</a>
     <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>
   </nav>
-  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/id6812925073">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-themes&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
 </div>
 </body>

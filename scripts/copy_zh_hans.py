@@ -10,10 +10,10 @@ k carries the shared constants (EMAIL, KIT_URL, BREW_TAP_INSTALL, ...), so they 
 # The tables come from scripts/theme_agents.py, not from here.
 THEME_AGENTS = {
     "title": "和你的 agent 一起做一个 MarsDawn 主题 · MarsDawn",
-    "description": "给 AI agent 的参考：做一个 MarsDawn 主题所需的 theme.json 每个字段与类型、范围，检查并渲染它的 CLI 流程、交给人的链接，以及怎么投稿。",
+    "description": "给 AI agent 的 MarsDawn 主题制作参考：theme.json 每个字段的类型与范围、检查并渲染的 CLI 流程、交给人的链接，以及怎么投稿。",
     "label": "和 agent 一起做主题",
     "h1": "和你的 agent 一起做主题",
-    "lede": "给制作 MarsDawn 预览主题的 AI agent 的参考。agent 写出一个 <code>theme.json</code>，用 <code>marsdawn</code> 命令行工具检查并渲染，再把链接交给你。你在<a href=\"/themes/new/\">主题创建器</a>里用眼睛调整，然后投稿。下面的字段表直接读自 kit 的源代码，并有检查确保两者一致。",
+    "lede": "给制作 MarsDawn 预览主题的 AI agent 的参考。agent 写出一个 <code>theme.json</code>，用 <code>marsdawn</code> 命令行工具检查并渲染，再把链接交给你。你在<a href=\"/themes/new/\">打造一个主题</a>页面用眼睛调整，然后投稿。下面的字段表直接读自 kit 的源代码，并有检查确保两者一致。",
     "summary": "<strong>写出一个 <code>theme.json</code>，反复运行 <code>marsdawn theme validate theme.json --require-complete --json</code> 直到退出代码为 0，用 <code>marsdawn theme preview</code> 分别渲染浅色与深色，再把链接交给用户。</strong>主题只有参数，不含任何 CSS。",
     "what_h": "主题是什么",
     "what_items": [
@@ -80,15 +80,15 @@ THEME_AGENTS = {
         "<strong>规则 id。</strong>每个问题都带一个，例如 <code>contrast.pair</code>、<code>color.hex</code>、<code>number.range</code>、<code>id.pattern</code>、<code>schema.unknownKey</code> 或 <code>palette.incomplete</code>。按 id 与 <code>path</code> 的说明修正文件。"
     ],
     "link_h": "用链接交给人",
-    "link_intro": "<a href=\"/themes/new/\">主题创建器</a>可以从链接打开主题，让人用眼睛调整。链接是创建器的网址，接着 <code>#theme=</code>，再接文件字节的 base64url（不含补位）。文件最大 16,384 字节。下面这一行命令在 macOS 与 Linux 的 zsh 和 bash 都能生成链接：",
+    "link_intro": "<a href=\"/themes/new/\">打造一个主题</a>页面可以从链接打开主题，让人用眼睛调整。链接是该页的网址，接着 <code>#theme=</code>，再接文件字节的 base64url（不含补位）。文件最大 16,384 字节。下面这一行命令在 macOS 与 Linux 的 zsh 和 bash 都能生成链接：",
     "link_note": "主题跟在 <code>#</code> 后面，浏览器不会把它发送给网站，网站也不会把它发送到任何地方。链接确实会留在你的 shell 历史与浏览器历史里，你贴给谁，谁就能读到这个主题。",
     "submit_h": "投稿",
     "submit_intro": "agent 准备文件与链接，由人来投稿。两条路都会要求 Developer Certificate of Origin 与 Apache-2.0 许可声明，这个声明由人本人做出：agent 不会替他勾选方框或签署。",
-    "submit_issue": "<strong>Issue。</strong>人打开链接，在主题创建器里点按 <strong>Submit</strong>，或是打开 <a href=\"{issue_url}\">issue 表单</a>，把 JSON 贴进 <em>Theme</em>。接着有工作流检查主题并回复。",
+    "submit_issue": "<strong>Issue。</strong>人打开链接，在“打造一个主题”页面点按 <strong>Submit</strong>，或是打开 <a href=\"{issue_url}\">issue 表单</a>，把 JSON 贴进 <em>Theme</em>。接着有工作流检查主题并回复。",
     "submit_pr": "<strong>Pull request。</strong>只改 <code>themes/&lt;id&gt;/theme.json</code>，把 <code>author.github</code> 设为 pull request 作者的账号，每个 commit 都用 <code>git commit -s</code> 签署。规则在 <a href=\"{contributing_url}\">CONTRIBUTING.md</a>。",
     "submit_note": "投稿主题的作者名称、名称、摘要与 GitHub 账号会永久公开，所以请把 <code>author.name</code> 设成人愿意公开的名字。",
     "gallery_h": "已发布的主题",
-    "gallery_p": "想看已发布的主题长什么样子，可以逛逛<a href=\"/themes/gallery/\">主题库</a>。"
+    "gallery_p": "想看已发布的主题长什么样子，可以逛逛<a href=\"/themes/gallery/\">主题图库</a>。"
 }
 
 

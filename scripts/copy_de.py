@@ -15,10 +15,10 @@ COMPLETE = True
 # The tables come from scripts/theme_agents.py, not from here.
 THEME_AGENTS = {
     "title": "Mit deinem Agenten ein MarsDawn-Thema erstellen · MarsDawn",
-    "description": "Eine Referenz für KI-Agenten, die ein MarsDawn-Thema erstellen: jedes Feld der theme.json mit Typ und Wertebereich, die CLI-Schleife zum Prüfen und Rendern, ein Übergabe-Link und die Einreichung.",
+    "description": "MarsDawn-Themen-Referenz für KI-Agenten: jedes Feld der theme.json mit Typ und Bereich, Prüfen und Rendern per CLI, ein Übergabe-Link und die Einreichung.",
     "label": "Mit deinem Agenten ein Thema erstellen",
     "h1": "Mit deinem Agenten ein Thema erstellen",
-    "lede": "Eine Referenz für einen KI-Agenten, der ein MarsDawn-Vorschau-Thema erstellt. Der Agent schreibt eine <code>theme.json</code>, prüft und rendert sie mit dem Befehlszeilenwerkzeug <code>marsdawn</code> und gibt dir einen Link. Du stimmst sie im <a href=\"/themes/new/\">Themen-Editor</a> nach Augenmaß ab und reichst sie ein. Die Feldtabellen unten sind direkt aus dem Quelltext des Kits gelesen, und eine Prüfung hält sie damit gleich.",
+    "lede": "Eine Referenz für einen KI-Agenten, der ein MarsDawn-Vorschau-Thema erstellt. Der Agent schreibt eine <code>theme.json</code>, prüft und rendert sie mit dem Befehlszeilenwerkzeug <code>marsdawn</code> und gibt dir einen Link. Du stimmst sie auf der Seite <a href=\"/themes/new/\">Ein Thema erstellen</a> nach Augenmaß ab und reichst sie ein. Die Feldtabellen unten sind direkt aus dem Quelltext des Kits gelesen, und eine Prüfung hält sie damit gleich.",
     "summary": "<strong>Schreibe eine <code>theme.json</code>, führe <code>marsdawn theme validate theme.json --require-complete --json</code> aus, bis der Exit-Code 0 ist, rendere sie mit <code>marsdawn theme preview</code> in hell und dunkel und gib der Person dann einen Link.</strong> Ein Thema besteht nur aus Parametern. Es enthält nie CSS.",
     "what_h": "Was ein Thema ist",
     "what_items": [
@@ -85,15 +85,15 @@ THEME_AGENTS = {
         "<strong>Regel-IDs.</strong> Jedes Problem trägt eine, etwa <code>contrast.pair</code>, <code>color.hex</code>, <code>number.range</code>, <code>id.pattern</code>, <code>schema.unknownKey</code> oder <code>palette.incomplete</code>. Korrigiere die Datei nach dem, was die ID und der <code>path</code> sagen."
     ],
     "link_h": "Als Link übergeben",
-    "link_intro": "Der <a href=\"/themes/new/\">Themen-Editor</a> öffnet ein Thema aus einem Link, damit die Person es nach Augenmaß abstimmen kann. Der Link besteht aus der Adresse des Editors, dann <code>#theme=</code>, dann den Bytes der Datei als base64url ohne Auffüllzeichen. Die Datei darf höchstens 16.384 Bytes groß sein. Diese eine Zeile baut den Link in zsh und in bash, auf macOS und Linux:",
+    "link_intro": "Die Seite <a href=\"/themes/new/\">Ein Thema erstellen</a> öffnet ein Thema aus einem Link, damit die Person es nach Augenmaß abstimmen kann. Der Link besteht aus der Adresse der Seite, dann <code>#theme=</code>, dann den Bytes der Datei als base64url ohne Auffüllzeichen. Die Datei darf höchstens 16.384 Bytes groß sein. Diese eine Zeile baut den Link in zsh und in bash, auf macOS und Linux:",
     "link_note": "Das Thema steht hinter einem <code>#</code>, das ein Browser nicht an die Website sendet, und die Website leitet es nirgendwohin weiter. Der Link bleibt aber im Verlauf deiner Shell und des Browsers, und jede Person, der du ihn schickst, kann das Thema lesen.",
     "submit_h": "Einreichen",
     "submit_intro": "Der Agent bereitet die Datei und den Link vor. Die Person reicht ein. Beide Wege verlangen das Developer Certificate of Origin und die Veröffentlichung unter Apache-2.0, und diese Bestätigung gibt die Person ab: Der Agent setzt das Häkchen nicht und unterschreibt nicht für sie.",
-    "submit_issue": "<strong>Issue.</strong> Die Person öffnet den Link und klickt im Themen-Editor auf <strong>Submit</strong> oder öffnet das <a href=\"{issue_url}\">Issue-Formular</a> und fügt das JSON in <em>Theme</em> ein. Ein Workflow prüft das Thema und antwortet.",
+    "submit_issue": "<strong>Issue.</strong> Die Person öffnet den Link und klickt auf der Seite „Ein Thema erstellen“ auf <strong>Submit</strong> oder öffnet das <a href=\"{issue_url}\">Issue-Formular</a> und fügt das JSON in <em>Theme</em> ein. Ein Workflow prüft das Thema und antwortet.",
     "submit_pr": "<strong>Pull Request.</strong> Ändere nur <code>themes/&lt;id&gt;/theme.json</code>, setze <code>author.github</code> auf den Login des Pull-Request-Autors und signiere jeden Commit mit <code>git commit -s</code> (Sign-off). Die Regeln stehen in <a href=\"{contributing_url}\">CONTRIBUTING.md</a>.",
     "submit_note": "Autorenname, Name, Zusammenfassung und GitHub-Login eines eingereichten Themas werden dauerhaft öffentlich. Setze <code>author.name</code> daher auf einen Namen, den die Person gern veröffentlicht.",
     "gallery_h": "Veröffentlichte Themen",
-    "gallery_p": "Wie veröffentlichte Themen aussehen, siehst du in der <a href=\"/themes/gallery/\">Themen-Galerie</a>."
+    "gallery_p": "Wie veröffentlichte Themen aussehen, siehst du in der <a href=\"/themes/gallery/\">Themengalerie</a>."
 }
 
 
