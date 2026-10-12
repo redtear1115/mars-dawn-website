@@ -26,7 +26,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>在 Mac 上怎麼看 Markdown 檔案 · MarsDawn</title>
-<meta name="description" content="md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：現在可以用免費的 marsdawn 命令列工具轉成 PDF，也可以用 Mac App Store 上的 MarsDawn app。">
+<meta name="description" content="md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：用 Mac App Store 上可以免費下載的 MarsDawn，或用免費的 marsdawn 命令列工具轉成 PDF。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -42,7 +42,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/">
 <link rel="alternate" type="text/markdown" href="/zh-hant/view-markdown-on-mac/index.md">
 <meta property="og:title" content="在 Mac 上怎麼看 Markdown 檔案 · MarsDawn">
-<meta property="og:description" content="md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：現在可以用免費的 marsdawn 命令列工具轉成 PDF，也可以用 Mac App Store 上的 MarsDawn app。">
+<meta property="og:description" content="md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：用 Mac App Store 上可以免費下載的 MarsDawn，或用免費的 marsdawn 命令列工具轉成 PDF。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -77,14 +77,10 @@ try {
   <h1>在 Mac 上，怎麼看 Markdown 檔案。</h1>
   <p><code>.md</code> 檔案是純文字。標題、粗體、表格和圖表，都是用記號寫成的：<code>#</code> 代表標題，<code>**</code> 包住粗體，直線符號畫出表格，<code>mermaid</code> 程式碼區塊則是一張圖。用純文字編輯器打開，看到的就是這些記號。想照作者的意思讀到排好的頁面，就需要有東西把它排版出來。</p>
 </section>
-<h2 id="today-for-free-turn-it-into-a-pdf">現在就能用，而且免費：轉成 PDF</h2>
-<p>免費的 <code>marsdawn</code> 命令列工具，能把 Markdown 檔案排版成 PDF，任何一台 Mac 都打得開。表格、數學式、Mermaid 圖表和程式碼上色都會排好，而且不需要安裝其他東西，連 MarsDawn app 都不用。</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
-marsdawn export notes.md
-open notes.pdf</code></pre>
-<p><code>export</code> 會在 Markdown 檔案旁邊寫出 <code>notes.pdf</code>，<code>open</code> 會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</p>
 <h2 id="read-it-in-marsdawn">在 MarsDawn 裡讀</h2>
-<p>MarsDawn 是為 Mac 做的 Markdown 編輯器，已在 Mac App Store 上架。打開 <code>.md</code> 檔案，排好的頁面就在原始碼旁邊：</p>
+<p>MarsDawn 是為 Mac 做的 Markdown 編輯器，可以在 Mac App Store 免費下載：先免費試用全部功能 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。</p>
+<p><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-view-markdown-on-mac&amp;mt=8">到 Mac App Store 免費下載 MarsDawn</a></p>
+<p>打開 <code>.md</code> 檔案，排好的頁面就在原始碼旁邊：</p>
 <ul>
   <li>預覽會隨著你打字即時更新，兩邊的窗格一起捲動。</li>
   <li>Mermaid 流程圖和循序圖直接畫在預覽裡，程式碼區塊也會上色。</li>
@@ -92,6 +88,12 @@ open notes.pdf</code></pre>
   <li>想改的時候，原始碼就在旁邊。MarsDawn 是編輯器，不只是檢視器。</li>
 </ul>
 <p>如果這份檔案是 AI agent 寫的，這正是 MarsDawn 要支援的循環：agent 寫，你讀排好的頁面，agent 再修改。請看<a href="/zh-hant/">首頁</a>，想讓 agent 幫你開檔案，請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。為什麼這樣的閱讀重要、怎麼審一份計畫，請看<a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a>和<a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>。</p>
+<h2 id="without-the-app-turn-it-into-a-pdf">不裝 app 也行：轉成 PDF</h2>
+<p>免費的 <code>marsdawn</code> 命令列工具，能把 Markdown 檔案排版成 PDF，任何一台 Mac 都打得開。表格、數學式、Mermaid 圖表和程式碼上色都會排好，而且不需要安裝其他東西，連 MarsDawn app 都不用。</p>
+<pre><code>brew tap redtear1115/tap && brew install marsdawn
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<p><code>export</code> 會在 Markdown 檔案旁邊寫出 <code>notes.pdf</code>，<code>open</code> 會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</p>
 <h2 id="next">接下來</h2>
 <ul>
   <li>命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。</li>

@@ -2,7 +2,22 @@
 
 `.md` 文件是纯文本。标题、粗体、表格和图表，都是用记号写成的：`#` 代表标题，`**` 包住粗体，直线符号画出表格，`mermaid` 代码块则是一张图。用纯文本编辑器打开，看到的就是这些记号。想照作者的意思读到排好的页面，就需要有东西把它排版出来。
 
-## 现在就能用，而且免费：转成 PDF
+## 在 MarsDawn 里读
+
+MarsDawn 是为 Mac 做的 Markdown 编辑器，可以在 Mac App Store 免费下载：先免费试用全部功能 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。
+
+[到 Mac App Store 免费下载 MarsDawn](https://apps.apple.com/app/id6812925073)
+
+打开 `.md` 文件，排好的页面就在源代码旁边：
+
+- 预览会随着你打字实时更新，两边的窗格一起滚动。
+- Mermaid 流程图和时序图直接画在预览里，代码块也会高亮。
+- 在访达里对 Markdown 文件按空格键，就有“快速查看”预览，图表也在。
+- 想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。
+
+如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看[首页](/zh-hans/)，想让 agent 帮你开文件，请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。为什么这样的阅读重要、怎么审一份计划，请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)和[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
+
+## 不装 app 也行：转成 PDF
 
 免费的 `marsdawn` 命令行工具，能把 Markdown 文件排版成 PDF，任何一台 Mac 都打得开。表格、数学公式、Mermaid 图表和代码高亮都会排好，而且不需要安装其他东西，连 MarsDawn app 都不用。
 
@@ -13,17 +28,6 @@ open notes.pdf
 ```
 
 `export` 会在 Markdown 文件旁边写出 `notes.pdf`，`open` 会用你的 PDF 查看器打开它。这个工具需要 macOS 15 以上。完整步骤和一页实际导出的结果，请看[Markdown 转 PDF](/zh-hans/markdown-to-pdf/)。
-
-## 在 MarsDawn 里读
-
-MarsDawn 是为 Mac 做的 Markdown 编辑器，已在 Mac App Store 上架。打开 `.md` 文件，排好的页面就在源代码旁边：
-
-- 预览会随着你打字实时更新，两边的窗格一起滚动。
-- Mermaid 流程图和时序图直接画在预览里，代码块也会高亮。
-- 在访达里对 Markdown 文件按空格键，就有“快速查看”预览，图表也在。
-- 想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。
-
-如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看[首页](/zh-hans/)，想让 agent 帮你开文件，请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。为什么这样的阅读重要、怎么审一份计划，请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)和[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
 
 ## 接下来
 
@@ -70,10 +74,10 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器，已在 Mac App Store 上架。�
 - [规格文档模板](https://marsdawn.southern-light.dev/zh-hans/templates/spec/index.md): Markdown 规格文档模板，包含需求、Mermaid 流程图和验收标准。agent 来填，你在 MarsDawn 里审阅。
 - [流程图模板](https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/index.md): Markdown 的 Mermaid 流程图模板，图的下方把步骤写出来。在 Mac 上预览，也能导出成 PDF。
 - [会议记录模板](https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/index.md): Markdown 会议记录模板，列出决议和行动项，每项都有负责人。agent 来写，你在 MarsDawn 里确认。
-- [English](https://marsdawn.southern-light.dev/view-markdown-on-mac/index.md): A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: as a PDF with the free marsdawn command-line tool today, and in the MarsDawn app, on the Mac App Store.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/index.md): md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：現在可以用免費的 marsdawn 命令列工具轉成 PDF，也可以用 Mac App Store 上的 MarsDawn app。
-- [日本語](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): .md ファイルは書式記号が入ったプレーンテキストです。Mac でレンダリングして読む方法を紹介します。今すぐ使える無料の marsdawn コマンドラインツールで PDF にする方法と、Mac App Store で配信中の MarsDawn アプリで読む方法です。
-- [Deutsch](https://marsdawn.southern-light.dev/de/view-markdown-on-mac/index.md): Eine .md-Datei ist reiner Text mit Formatierungszeichen. So liest du sie auf dem Mac gerendert: heute als PDF mit dem kostenlosen Befehlszeilenwerkzeug marsdawn und in der MarsDawn-App aus dem Mac App Store.
-- [Français](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Un fichier .md est du texte brut avec des marques de mise en forme. Voici comment le lire rendu sur Mac : en PDF avec l’outil en ligne de commande gratuit marsdawn dès aujourd’hui, et dans l’app MarsDawn, sur le Mac App Store.
-- [Español](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Un archivo .md es texto plano con marcas de formato. Así puedes leerlo renderizado en Mac: como PDF con la herramienta de línea de comandos gratuita marsdawn desde hoy, y en la app MarsDawn, en el Mac App Store.
-- [한국어](https://marsdawn.southern-light.dev/ko/view-markdown-on-mac/index.md): .md 파일은 서식 기호가 들어 있는 일반 텍스트입니다. Mac에서 렌더링된 상태로 읽는 방법을 소개합니다. 지금 바로 무료 marsdawn 명령줄 도구로 PDF를 만들 수 있고, Mac App Store의 MarsDawn 앱에서 읽을 수도 있습니다.
+- [English](https://marsdawn.southern-light.dev/view-markdown-on-mac/index.md): A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: in MarsDawn, free to download from the Mac App Store, or as a PDF with the free marsdawn command-line tool.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/index.md): md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：用 Mac App Store 上可以免費下載的 MarsDawn，或用免費的 marsdawn 命令列工具轉成 PDF。
+- [日本語](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): .md ファイルは書式記号が入ったプレーンテキストです。Mac でレンダリングして読む方法を紹介します。Mac App Store から無料でダウンロードできる MarsDawn で読む方法と、無料の marsdawn コマンドラインツールで PDF にする方法です。
+- [Deutsch](https://marsdawn.southern-light.dev/de/view-markdown-on-mac/index.md): Eine .md-Datei ist reiner Text mit Formatierungszeichen. So liest du sie auf dem Mac gerendert: in MarsDawn, kostenlos aus dem Mac App Store, oder als PDF mit dem kostenlosen Befehlszeilenwerkzeug marsdawn.
+- [Français](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Un fichier .md est du texte brut avec des marques de mise en forme. Voici comment le lire rendu sur Mac : dans MarsDawn, à télécharger gratuitement sur le Mac App Store, ou en PDF avec l’outil en ligne de commande gratuit marsdawn.
+- [Español](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Un archivo .md es texto plano con marcas de formato. Así puedes leerlo renderizado en Mac: en MarsDawn, que se descarga gratis desde el Mac App Store, o como PDF con la herramienta de línea de comandos gratuita marsdawn.
+- [한국어](https://marsdawn.southern-light.dev/ko/view-markdown-on-mac/index.md): .md 파일은 서식 기호가 들어 있는 일반 텍스트입니다. Mac에서 렌더링된 상태로 읽는 방법을 소개합니다. Mac App Store에서 무료로 다운로드할 수 있는 MarsDawn으로 읽거나, 무료 marsdawn 명령줄 도구로 PDF를 만들 수 있습니다.

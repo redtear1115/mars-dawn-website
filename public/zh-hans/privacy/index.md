@@ -2,7 +2,7 @@
 
 macOS 的 Markdown 编辑器 MarsDawn 如何处理你的信息。
 
-最后更新：2026-10-10
+最后更新：2026-10-12
 
 > **MarsDawn app 不收集任何关于你的数据**。没有账户、没有广告，也不追踪。你的文稿与设置都留在你的 Mac 上。
 
@@ -22,6 +22,17 @@ App 和这个网站是两件事。App 不收集数据。会记下访问的，只
 - **保留期限**。Google 会保留这些数据 14 个月，之后删除。
 - **数据处理地点**。Google Tag Manager 与 Google Analytics 由 Google 运营；你的数据可能会在美国及 Google 运营所在的其他国家处理。
 - **主机**。网站放在 Cloudflare 上。和任何主机一样，它在响应请求时会看到你的 IP 地址。那是主机自己的日志，不是上面的分析。
+
+## 上市问卷
+
+2026 年 10 月 20 日到 11 月 2 日，MarsDawn 在 Google 表单上进行一份简短问卷。是否填写由你决定，App 本身依然不收集任何数据。
+
+- **收集什么。** 你的回答和你填写的电子邮件地址，其他都不收集。
+- **电子邮件。** 用来在你中奖时发送兑换码。如果没有勾选新版本通知，会在兑换码发出后 30 天内删除；如果勾选了，只会用来发送 MarsDawn 的新版本通知，每封邮件都可以一键退订，保留到你退订为止。
+- **回答。** 抽奖后会与电子邮件分开保存，可能以匿名、汇总的方式出现在公开的结果摘要里。
+- **不分享、不出售**，也不会用于其他用途。
+- **存储在哪里。** 回复由 Google 表单存储在 Google，适用 Google 的隐私政策。
+- **删除。** 想提前删除你的回复或电子邮件地址，请写信到 support@southern-light.dev。
 
 ## 留在你 Mac 上的东西
 
@@ -81,7 +92,7 @@ MarsDawn 通过 Mac App Store 销售，付款由 Apple 依其条款处理，开�
 - [为 Mac 而做](https://marsdawn.southern-light.dev/zh-hans/native/index.md): 真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在访达用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。
 - [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户。内置四种主题，主题图库还有更多。购买前先知道。
 - [支持](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 编辑器）的使用说明与联系方式。
-- [在 Mac 上看 Markdown](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): md 文件是加上格式记号的纯文本。这页说明怎么在 Mac 上看到排版后的样子：现在可以用免费的 marsdawn 命令行工具转成 PDF，也可以用 Mac App Store 上的 MarsDawn app。
+- [在 Mac 上看 Markdown](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): md 文件是加上格式记号的纯文本。这页说明怎么在 Mac 上看到排版后的样子：用 Mac App Store 上可以免费下载的 MarsDawn，或用免费的 marsdawn 命令行工具转成 PDF。
 - [Markdown 转 PDF](https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/index.md): 免费的 Markdown 转 PDF 工具：在 Mac 上用 marsdawn 命令行，一个命令就把 Markdown 转成 PDF，表格、数学公式、Mermaid 图表和代码高亮都在。
 - [MacMD Viewer 对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读查看器，直接购买 USD 19.99。MarsDawn 边编辑边预览，免费试用后在 Mac App Store 一次解锁 USD 4.99。逐项比较功能、价格和购买方式。
 - [命令行工具](https://marsdawn.southern-light.dev/zh-hans/cli/index.md): 免费的 marsdawn 命令行工具：在 Mac 上从终端、脚本或 LLM agent 把 Markdown 导出成 PDF，并提供 JSON 输出。用 Homebrew 安装。

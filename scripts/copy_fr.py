@@ -487,20 +487,16 @@ marsdawn --version</code></pre>
 
     pages['view-markdown-on-mac'] = {
         "title": 'Comment afficher un fichier Markdown sur Mac · MarsDawn',
-        "description": 'Un fichier .md est du texte brut avec des marques de mise en forme. Voici comment le lire rendu sur Mac : en PDF avec l’outil en ligne de commande gratuit marsdawn dès aujourd’hui, et dans l’app MarsDawn, sur le Mac App Store.',
+        "description": 'Un fichier .md est du texte brut avec des marques de mise en forme. Voici comment le lire rendu sur Mac : dans MarsDawn, à télécharger gratuitement sur le Mac App Store, ou en PDF avec l’outil en ligne de commande gratuit marsdawn.',
         "body": f"""
 <section class="intro">
   <h1>Comment afficher un fichier Markdown sur Mac.</h1>
   <p>Un fichier <code>.md</code> est du texte brut. Les titres, les mots en gras, les tableaux et les diagrammes y sont écrits sous forme de marques : <code>#</code> pour un titre, <code>**</code> autour du gras, des barres verticales pour un tableau, un bloc de code <code>mermaid</code> pour un diagramme. Ouvrez-le dans un éditeur de texte brut et vous lisez les marques. Pour lire la page telle que l’auteur l’a voulue, il faut qu’un outil en fasse le rendu.</p>
 </section>
-<h2>Dès aujourd’hui, gratuitement : en faire un PDF</h2>
-<p>L’outil en ligne de commande gratuit <code>marsdawn</code> fait le rendu d’un fichier Markdown en PDF, que n’importe quel Mac peut ouvrir. Les tableaux, les formules, les diagrammes Mermaid et le code coloré sont rendus, et rien d’autre n’est nécessaire, pas même l’app MarsDawn.</p>
-<pre><code>{k.BREW_TAP_INSTALL}
-marsdawn export notes.md
-open notes.pdf</code></pre>
-<p><code>export</code> écrit <code>notes.pdf</code> à côté du fichier Markdown, et <code>open</code> l’affiche dans votre lecteur PDF. macOS 15 ou version ultérieure est requis. Le pas-à-pas, avec une vraie page exportée, se trouve sur <a href="/fr/markdown-to-pdf/">Markdown en PDF</a>.</p>
 <h2>Le lire dans MarsDawn</h2>
-<p>MarsDawn est un éditeur Markdown pour Mac, sur le Mac App Store. Ouvrez un fichier <code>.md</code> et lisez la page rendue à côté de la source :</p>
+<p>MarsDawn est un éditeur Markdown pour Mac. Il se télécharge gratuitement sur le Mac App Store : essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte. macOS 26 ou version ultérieure est requis.</p>
+<p><a href="{k.LISTING_URL}">Télécharger MarsDawn gratuitement sur le Mac App Store</a></p>
+<p>Ouvrez un fichier <code>.md</code> et lisez la page rendue à côté de la source :</p>
 <ul>
   <li>L’aperçu se met à jour pendant la saisie, et les deux volets défilent ensemble.</li>
   <li>Les organigrammes et diagrammes de séquence Mermaid sont dessinés dans l’aperçu, et les blocs de code sont colorés.</li>
@@ -508,6 +504,12 @@ open notes.pdf</code></pre>
   <li>Quand vous voulez modifier quelque chose, la source est juste là. MarsDawn est un éditeur, pas seulement une visionneuse.</li>
 </ul>
 <p>Si un agent IA a rédigé le fichier, c’est la boucle pour laquelle MarsDawn est conçu : l’agent écrit, vous lisez le rendu, et il révise. Consultez <a href="/fr/">la page d’accueil</a>, ainsi que <a href="/fr/cli/agents/">marsdawn pour les agents</a> pour laisser un agent ouvrir des fichiers à votre place. Pour comprendre pourquoi cette lecture compte et comment relire un plan, consultez <a href="/fr/reading-agent-output/">Lire ce que votre agent vous rend</a> et <a href="/fr/reviewing-agent-plans/">Relire le plan d’un agent en cinq minutes</a>.</p>
+<h2>Sans l’app : en faire un PDF</h2>
+<p>L’outil en ligne de commande gratuit <code>marsdawn</code> fait le rendu d’un fichier Markdown en PDF, que n’importe quel Mac peut ouvrir. Les tableaux, les formules, les diagrammes Mermaid et le code coloré sont rendus, et rien d’autre n’est nécessaire, pas même l’app MarsDawn.</p>
+<pre><code>{k.BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<p><code>export</code> écrit <code>notes.pdf</code> à côté du fichier Markdown, et <code>open</code> l’affiche dans votre lecteur PDF. macOS 15 ou version ultérieure est requis. Le pas-à-pas, avec une vraie page exportée, se trouve sur <a href="/fr/markdown-to-pdf/">Markdown en PDF</a>.</p>
 <h2>Pour aller plus loin</h2>
 <ul>
   <li>Toutes les options de l’outil en ligne de commande : <a href="/fr/cli/">Ligne de commande</a>.</li>

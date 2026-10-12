@@ -2,7 +2,7 @@
 
 How MarsDawn, the Markdown editor for macOS, handles your information.
 
-Last updated 2026-10-10
+Last updated 2026-10-12
 
 > **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
 
@@ -22,6 +22,17 @@ Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<measurem
 - **Retention.** Google keeps this data for 14 months, then deletes it.
 - **Where it's processed.** Google Tag Manager and Google Analytics are operated by Google; your data may be processed in the United States as well as other countries where Google operates.
 - **The host.** Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.
+
+## Launch survey
+
+From 20 October to 2 November 2026, MarsDawn runs a short survey on Google Forms. Filling it in is up to you, and the app itself still collects nothing.
+
+- **What it collects.** Your answers and the email address you type. Nothing else.
+- **The email.** It's used to send you a code if you're drawn. If you don't tick the update box, it's deleted within 30 days after the codes are sent. If you tick it, it's kept only to send MarsDawn version-update emails, each with a one-click unsubscribe, until you unsubscribe.
+- **The answers.** After the draw they're kept without the email, and they may appear anonymised and aggregated in a published summary.
+- **Never shared or sold,** and never used for anything else.
+- **Where it's stored.** Google Forms stores the responses with Google, under Google's privacy policy.
+- **Deletion.** To have your response or email deleted sooner, write to support@southern-light.dev.
 
 ## What stays on your Mac
 
@@ -81,7 +92,7 @@ Questions about privacy: [support@southern-light.dev](mailto:support@southern-li
 - [A Mac app](https://marsdawn.southern-light.dev/native/index.md): A Markdown editor that is a real Mac app: native windows and tabs, autosave, version history, Quick Look in Finder and a text editor that behaves like a Mac.
 - [What MarsDawn doesn't do](https://marsdawn.southern-light.dev/limits/index.md): No sync, no iPhone or iPad app, no plugins, no accounts. Four built-in themes, more in the gallery. Know before you buy.
 - [Support](https://marsdawn.southern-light.dev/support/index.md): Get help with MarsDawn, the Markdown editor for macOS.
-- [View Markdown on a Mac](https://marsdawn.southern-light.dev/view-markdown-on-mac/index.md): A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: as a PDF with the free marsdawn command-line tool today, and in the MarsDawn app, on the Mac App Store.
+- [View Markdown on a Mac](https://marsdawn.southern-light.dev/view-markdown-on-mac/index.md): A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: in MarsDawn, free to download from the Mac App Store, or as a PDF with the free marsdawn command-line tool.
 - [Markdown to PDF](https://marsdawn.southern-light.dev/markdown-to-pdf/index.md): Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.
 - [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer renders Markdown read-only for USD 19.99. MarsDawn edits and previews side by side, free to try then USD 4.99 once on the Mac App Store.
 - [Command Line](https://marsdawn.southern-light.dev/cli/index.md): The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.

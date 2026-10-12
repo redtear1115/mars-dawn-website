@@ -2,7 +2,7 @@
 
 macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情報を扱うか。
 
-最終更新日：2026-10-10
+最終更新日：2026-10-12
 
 > **MarsDawn アプリは、あなたに関するデータを一切収集しません**。アカウントも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。
 
@@ -22,6 +22,17 @@ macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情�
 - **保持期間**。Google はこのデータを14か月保持したあと、削除します。
 - **データの処理場所**。Google タグマネージャーと Google アナリティクスは Google が運営しており、データは米国および Google が事業を行うその他の国で処理される場合があります。
 - **ホスティング**。サイトは Cloudflare 上にあります。どのホストとも同じく、リクエストに応答する間は IP アドレスを見ます。それはホスト自身のログであり、上のアナリティクスではありません。
+
+## ローンチアンケート
+
+2026年10月20日から11月2日まで、MarsDawn は Google フォームで短いアンケートを実施します。回答するかどうかはあなた次第で、アプリ自体は引き続き何も収集しません。
+
+- **収集する内容。** あなたの回答と、入力したメールアドレスだけです。それ以外は収集しません。
+- **メールアドレス。** 当選した場合にコードをお送りするために使います。アップデート通知にチェックを入れなかった場合は、コードの送信後30日以内に削除します。チェックを入れた場合は、MarsDawn のバージョンアップのお知らせを送るためだけに保管し、メールにはワンクリックで配信を停止できるリンクが付きます。配信を停止するまで保管します。
+- **回答。** 抽選のあとは、メールアドレスとは別に保管します。匿名化して集計したうえで、公開するまとめに載ることがあります。
+- **共有も販売もしません**。ほかの目的にも使いません。
+- **保存場所。** 回答は Google フォームを通じて Google に保存され、Google のプライバシーポリシーが適用されます。
+- **削除。** 回答やメールアドレスを早めに削除したい場合は、support@southern-light.dev までご連絡ください。
 
 ## あなたの Mac に残るもの
 
@@ -81,7 +92,7 @@ MarsDawn がデータの扱い方を変える場合、そのバージョンが�
 - [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
 - [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類で、テーマギャラリーにはさらに多くあります。購入前に知っておいてください。
 - [サポート](https://marsdawn.southern-light.dev/ja/support/index.md): macOS 向け Markdown エディタ MarsDawn のヘルプ。
-- [Mac で Markdown を見る](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): .md ファイルは書式記号が入ったプレーンテキストです。Mac でレンダリングして読む方法を紹介します。今すぐ使える無料の marsdawn コマンドラインツールで PDF にする方法と、Mac App Store で配信中の MarsDawn アプリで読む方法です。
+- [Mac で Markdown を見る](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): .md ファイルは書式記号が入ったプレーンテキストです。Mac でレンダリングして読む方法を紹介します。Mac App Store から無料でダウンロードできる MarsDawn で読む方法と、無料の marsdawn コマンドラインツールで PDF にする方法です。
 - [Markdown から PDF へ](https://marsdawn.southern-light.dev/ja/markdown-to-pdf/index.md): 無料の marsdawn コマンドラインツールで、Mac 上の Markdown を PDF に変換します。Homebrew でインストールしてコマンド1つで実行：表、数式、Mermaid、コードに対応。
 - [MacMD Viewer と MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用で Markdown をレンダリングし、USD 19.99。MarsDawn は編集とプレビューを並べて表示し、無料で試したあと Mac App Store で USD 4.99 の一度きりの購入です。
 - [コマンドライン](https://marsdawn.southern-light.dev/ja/cli/index.md): 無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。

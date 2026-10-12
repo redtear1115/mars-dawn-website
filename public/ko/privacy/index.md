@@ -2,7 +2,7 @@
 
 macOS용 Markdown 편집기 MarsDawn이 사용자의 정보를 어떻게 다루는지 설명합니다.
 
-최종 업데이트: 2026-10-10
+최종 업데이트: 2026-10-12
 
 > **MarsDawn 앱은 사용자에 관한 데이터를 일절 수집하지 않습니다.** 계정도, 광고도, 추적도 없습니다. 문서와 설정은 사용자의 Mac에 남습니다.
 
@@ -22,6 +22,17 @@ macOS용 Markdown 편집기 MarsDawn이 사용자의 정보를 어떻게 다루�
 - **보관 기간.** Google은 이 데이터를 14개월 동안 보관한 뒤 삭제합니다.
 - **처리 위치.** Google Tag Manager와 Google Analytics는 Google이 운영합니다. 데이터는 미국을 비롯해 Google이 사업을 운영하는 다른 국가에서 처리될 수 있습니다.
 - **호스팅 업체.** 이 사이트는 Cloudflare가 호스팅하며, 여느 호스팅 업체와 마찬가지로 요청에 응답하는 동안 IP 주소를 보게 됩니다. 그 로그는 호스팅 업체의 것이며, 위에서 설명한 분석과는 별개입니다.
+
+## 출시 설문
+
+2026년 10월 20일부터 11월 2일까지 MarsDawn은 Google 설문지로 짧은 설문을 진행합니다. 참여 여부는 사용자가 정하며, 앱 자체는 여전히 아무것도 수집하지 않습니다.
+
+- **수집하는 정보.** 사용자의 응답과 입력한 이메일 주소만 수집하며, 그 밖의 정보는 수집하지 않습니다.
+- **이메일 주소.** 추첨에 당첨되면 코드를 보내는 데 사용합니다. 업데이트 알림 체크란을 선택하지 않으면 코드 발송 후 30일 이내에 삭제합니다. 선택하면 MarsDawn 새 버전 안내 메일을 보내는 용도로만 보관하며, 모든 메일에는 클릭 한 번으로 수신을 거부할 수 있는 링크가 들어 있습니다. 수신을 거부할 때까지 보관합니다.
+- **응답.** 추첨 후에는 이메일 주소와 분리하여 보관하며, 익명으로 집계한 형태로 공개 결과 요약에 실릴 수 있습니다.
+- **공유하거나 판매하지 않으며,** 다른 목적으로도 사용하지 않습니다.
+- **저장 위치.** 응답은 Google 설문지를 통해 Google에 저장되며, Google의 개인정보처리방침이 적용됩니다.
+- **삭제.** 응답이나 이메일 주소를 더 일찍 삭제하려면 support@southern-light.dev로 문의해 주세요.
 
 ## Mac에 남는 것
 
@@ -81,7 +92,7 @@ MarsDawn이 데이터를 다르게 처리하게 되는 경우, 해당 버전이 
 - [Mac 앱](https://marsdawn.southern-light.dev/ko/native/index.md): 진짜 Mac 앱인 Markdown 편집기. 네이티브 윈도우와 탭, 자동 저장, 버전 기록, Finder의 훑어보기, 그리고 Mac답게 동작하는 텍스트 편집기를 갖췄습니다.
 - [MarsDawn이 하지 않는 일](https://marsdawn.southern-light.dev/ko/limits/index.md): 동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 기본 테마는 네 가지이고, 갤러리에 더 있습니다. 구입 전에 알아 두세요.
 - [지원](https://marsdawn.southern-light.dev/ko/support/index.md): macOS용 Markdown 편집기 MarsDawn에 관한 도움말입니다.
-- [Mac에서 Markdown 보기](https://marsdawn.southern-light.dev/ko/view-markdown-on-mac/index.md): .md 파일은 서식 기호가 들어 있는 일반 텍스트입니다. Mac에서 렌더링된 상태로 읽는 방법을 소개합니다. 지금 바로 무료 marsdawn 명령줄 도구로 PDF를 만들 수 있고, Mac App Store의 MarsDawn 앱에서 읽을 수도 있습니다.
+- [Mac에서 Markdown 보기](https://marsdawn.southern-light.dev/ko/view-markdown-on-mac/index.md): .md 파일은 서식 기호가 들어 있는 일반 텍스트입니다. Mac에서 렌더링된 상태로 읽는 방법을 소개합니다. Mac App Store에서 무료로 다운로드할 수 있는 MarsDawn으로 읽거나, 무료 marsdawn 명령줄 도구로 PDF를 만들 수 있습니다.
 - [Markdown을 PDF로](https://marsdawn.southern-light.dev/ko/markdown-to-pdf/index.md): 무료 marsdawn 명령줄 도구로 Mac에서 Markdown을 PDF로 변환하세요. Homebrew로 설치하고 명령 하나만 실행하면 됩니다. 표, 수식, Mermaid, 코드까지 지원합니다.
 - [MacMD Viewer와 MarsDawn 비교](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 Markdown을 읽기 전용으로 렌더링하며 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 무료로 체험한 뒤 Mac App Store에서 USD 4.99에 한 번만 구입하면 됩니다.
 - [명령줄](https://marsdawn.southern-light.dev/ko/cli/index.md): Mac용 무료 marsdawn 명령줄 도구. 셸, 스크립트, LLM 에이전트에서 Markdown을 PDF로 내보내고 JSON으로 결과를 받으세요. Homebrew로 설치합니다.

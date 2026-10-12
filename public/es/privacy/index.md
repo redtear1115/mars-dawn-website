@@ -2,7 +2,7 @@
 
 Cómo trata tu información MarsDawn, el editor de Markdown para macOS.
 
-Última actualización: 2026-10-10
+Última actualización: 2026-10-12
 
 > **La app MarsDawn no recopila ningún dato sobre ti.** No hay cuenta, ni publicidad, ni seguimiento. Tus documentos y tus ajustes se quedan en tu Mac.
 
@@ -22,6 +22,17 @@ Una vez que aceptas, Google Analytics instala sus propias cookies (`_ga` y `_ga_
 - **Conservación.** Google conserva estos datos durante 14 meses y después los elimina.
 - **Dónde se tratan.** Google Tag Manager y Google Analytics los opera Google; tus datos pueden tratarse en Estados Unidos y en otros países donde Google opera.
 - **El proveedor de alojamiento.** Cloudflare aloja el sitio y, como cualquier proveedor de alojamiento, ve tu dirección IP mientras responde a la solicitud. Ese registro pertenece al proveedor. No es la analítica descrita arriba.
+
+## Encuesta de lanzamiento
+
+Del 20 de octubre al 2 de noviembre de 2026, MarsDawn realiza una breve encuesta en Formularios de Google. Rellenarla depende de ti, y la propia app sigue sin recopilar nada.
+
+- **Qué se recopila.** Tus respuestas y la dirección de correo electrónico que escribas. Nada más.
+- **El correo electrónico.** Se usa para enviarte un código si resultas elegido en el sorteo. Si no marcas la casilla de avisos de novedades, se elimina en los 30 días siguientes al envío de los códigos. Si la marcas, se conserva solo para enviarte correos sobre nuevas versiones de MarsDawn, cada uno con un enlace para darte de baja con un clic, hasta que te des de baja.
+- **Las respuestas.** Tras el sorteo se conservan sin el correo electrónico y pueden aparecer de forma anónima y agregada en un resumen publicado.
+- **Nunca se comparten ni se venden,** y nunca se usan para nada más.
+- **Dónde se almacenan.** Formularios de Google guarda las respuestas en Google, conforme a la política de privacidad de Google.
+- **Eliminación.** Para que eliminemos antes tu respuesta o tu correo electrónico, escribe a support@southern-light.dev.
 
 ## Lo que se queda en tu Mac
 
@@ -81,7 +92,7 @@ Preguntas sobre privacidad: [support@southern-light.dev](mailto:support@southern
 - [Una app para Mac](https://marsdawn.southern-light.dev/es/native/index.md): Un editor de Markdown que es una app de Mac de verdad: ventanas y pestañas nativas, guardado automático, historial de versiones, Vista rápida en el Finder y un editor de texto que se comporta como en la Mac.
 - [Lo que MarsDawn no hace](https://marsdawn.southern-light.dev/es/limits/index.md): Sin sincronización, sin app para iPhone o iPad, sin plugins, sin cuentas. Cuatro temas integrados y más en la galería. Lo que conviene saber antes de comprar.
 - [Soporte](https://marsdawn.southern-light.dev/es/support/index.md): Ayuda con MarsDawn, el editor de Markdown para macOS.
-- [Ver Markdown en una Mac](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Un archivo .md es texto plano con marcas de formato. Así puedes leerlo renderizado en Mac: como PDF con la herramienta de línea de comandos gratuita marsdawn desde hoy, y en la app MarsDawn, en el Mac App Store.
+- [Ver Markdown en una Mac](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Un archivo .md es texto plano con marcas de formato. Así puedes leerlo renderizado en Mac: en MarsDawn, que se descarga gratis desde el Mac App Store, o como PDF con la herramienta de línea de comandos gratuita marsdawn.
 - [De Markdown a PDF](https://marsdawn.southern-light.dev/es/markdown-to-pdf/index.md): Convierte Markdown a PDF en Mac con la herramienta de línea de comandos gratuita marsdawn. Instálala con Homebrew y ejecuta un solo comando: tablas, matemáticas, Mermaid y código.
 - [MacMD Viewer frente a MarsDawn](https://marsdawn.southern-light.dev/es/vs/macmd-viewer/index.md): MacMD Viewer muestra Markdown solo para lectura por 19,99 USD. MarsDawn edita y muestra la vista previa lado a lado: pruébalo gratis y luego paga 4,99 USD una sola vez en el Mac App Store.
 - [Línea de comandos](https://marsdawn.southern-light.dev/es/cli/index.md): La herramienta de línea de comandos gratuita marsdawn para Mac: exporta Markdown a PDF desde una shell, un script o un agente LLM, con salida JSON. Se instala con Homebrew.
