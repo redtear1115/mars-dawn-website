@@ -231,6 +231,10 @@ kbd {
 .footer-nav,
 .footer-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0; }
 .footer a { color: var(--dust); white-space: nowrap; }
+/* The nav row's links may wrap inside themselves: a long label (es "Ver Markdown en otras
+   herramientas frente a MarsDawn") is wider than a 320-375px screen on its own line.
+   flex-wrap still moves whole links to the next row first. */
+.footer-nav a { white-space: normal; }
 .footer a[aria-current="page"] { color: var(--ink); }
 /* The origin mark, set as Futari's site sets it: tracked caps, the same in every language. */
 .footer-origin { font-size: 0.78rem; letter-spacing: 2px; white-space: nowrap; }
