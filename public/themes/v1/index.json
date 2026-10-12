@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-09T23:44:47Z",
+  "generatedAt": "2026-10-11T15:08:03Z",
   "themes": [
     {
       "id": "dracula",
@@ -107,6 +107,42 @@
       "previews": {
         "light": "guide/1.0.1/preview-light.png",
         "dark": "guide/1.0.1/preview-dark.png"
+      }
+    },
+    {
+      "id": "inkwell-ivory",
+      "version": "1.0.0",
+      "name": {
+        "en": "Inkwell Ivory"
+      },
+      "summary": {
+        "de": "Helle Elfenbeinseite mit Serifenschrift, tintenblauen Überschriften und kursivem Zitatkasten, für Essays und Berichte",
+        "en": "A pale ivory page with serif type, ink-blue headings and an italic quote panel, for essays and reports",
+        "es": "Página marfil claro con tipografía serif, encabezados azul tinta y un panel de citas en cursiva, para ensayos e informes",
+        "fr": "Page ivoire pâle, police à empattements, titres bleu encre et encadré de citation en italique, pour essais et rapports",
+        "ja": "淡いアイボリーのページに明朝系の書体、インクブルーの見出し、斜体の引用パネル。エッセイやレポート向け",
+        "ko": "옅은 아이보리색 페이지에 세리프 글꼴, 잉크 블루 제목, 이탤릭 인용 패널 — 에세이와 보고서에 적합",
+        "zh-Hans": "淡象牙色书页搭配衬线字、墨蓝色标题与斜体引言面板，适合文章与报告",
+        "zh-Hant": "淡象牙色書頁搭配襯線字、墨藍色標題與斜體引言面板，適合文章與報告"
+      },
+      "scenarios": [
+        "agent-review",
+        "formal-output"
+      ],
+      "author": {
+        "name": "Southern Light",
+        "github": "redtear1115"
+      },
+      "minAppVersion": "1.1.0",
+      "files": {
+        "theme.json": {
+          "path": "inkwell-ivory/1.0.0/theme.json",
+          "sha256": "3a29c7e0f6d904c6e368e667f57a8f77a82bc2c9a700aadc82b4d5107bd5b22a"
+        }
+      },
+      "previews": {
+        "light": "inkwell-ivory/1.0.0/preview-light.png",
+        "dark": "inkwell-ivory/1.0.0/preview-dark.png"
       }
     },
     {
