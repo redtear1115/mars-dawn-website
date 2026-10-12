@@ -884,6 +884,7 @@ swift build -c release --product marsdawn
 - A one-file skill for agents that read instructions instead of a shell: [the marsdawn skill](/cli/skill/).
 - An MCP server that wraps this same `export`: [marsdawn-mcp](/cli/mcp/).
 - Why this JSON result stays cheap for an agent's own context: [token-efficient review](/token-efficient-review/).
+- Making a MarsDawn theme with an agent: [make a theme with your agent](/themes/agents/).
 
 ---
 
@@ -1087,6 +1088,8 @@ Export to PDF or print, and the page uses your theme's light palette: Mermaid di
 
 [Build a theme in your browser](/themes/new/): pick colours and a few style options, see them applied live, and submit it as a GitHub issue for review — no install, no git. [The gallery](/themes/gallery/) shows every submitted theme a maintainer has reviewed and merged, filterable by what it's good for. Install any of them in the app from Settings › Appearance › Get More Themes…, and Quick Look in Finder uses it too.
 
+Working with an agent? [Have it make the theme](/themes/agents/), then tune it in your browser.
+
 ## Next
 
 - The full PDF export walk-through, from the command line: [Markdown to PDF](/markdown-to-pdf/).
@@ -1105,7 +1108,303 @@ Pick a palette and a few style options below. The sample document on the right u
 
 You'll need a GitHub account to submit. No install, no git required for this page itself.
 
+An AI agent can write the theme file for you: see [make a theme with your agent](/themes/agents/), then open the link it gives you here to tune it.
+
 This page needs JavaScript to build and preview a theme.
+
+---
+
+## Make a theme with your agent
+
+Source: https://marsdawn.southern-light.dev/themes/agents/
+
+# Make a theme with your agent
+
+A reference for an AI agent that makes a MarsDawn preview theme. The agent writes one `theme.json`, checks and renders it with the `marsdawn` command-line tool, and hands you a link. You tune it by eye on the [Build a theme](/themes/new/) page and submit it. The field tables below are read from the kit's own source, and a check keeps them equal to it.
+
+**Write one `theme.json`, run `marsdawn theme validate theme.json --require-complete --json` until it exits 0, render it with `marsdawn theme preview` in light and dark, then give the person a link.** A theme is parameters only. It never contains CSS.
+
+## What a theme is
+
+- **Colours** for light and for dark: a base palette, and optional syntax and diagram colours. Each is `#RRGGBB`.
+- **A font design**: `sans`, `serif` or `rounded`.
+- **A closed set of style options**: numbers inside fixed ranges, and choices from fixed lists. A colour in a style option is always a palette role such as `accent`, never a literal colour.
+- **Display strings**: a name and a summary, and optionally an author and a licence.
+
+A key that is not in the tables below is an error, and so is a key written twice. The file is at most 16,384 bytes.
+
+## Check and render
+
+Run these in the folder that holds `theme.json`. They need the `marsdawn` tool: see [marsdawn for agents](/cli/agents/).
+
+```
+marsdawn theme validate theme.json --require-complete --json
+marsdawn theme css theme.json --json
+marsdawn theme preview theme.json --appearance light -o light.png
+marsdawn theme preview theme.json --appearance dark -o dark.png
+```
+
+- Exit codes: 0 valid, 1 invalid with rule ids, 2 file not found, 64 usage error. `preview` adds 4 when the PNG already exists (pass `--force` or choose another name) and 5 when rendering fails.
+- With `--json`, an invalid theme lists its problems under `issues`, each with a `rule` id, a `path` and a `message`. Fix them and run it again.
+- `--require-complete` is the check for a theme that will be published: it also requires the `syntax` and `diagram` colours in both palettes.
+- `css` prints the CSS the preview serves. `preview` renders a sample document to a PNG. Both validate first, so an invalid theme renders nothing.
+- Look at the light and the dark PNG before handing the theme over.
+
+## Start from a built-in
+
+Copy one of the four built-in themes and change it. Each is a complete, valid file:
+
+- [`/assets/theme-sim/kit/themes/dawn.json`](/assets/theme-sim/kit/themes/dawn.json): the default, and the example below
+- [`/assets/theme-sim/kit/themes/classic.json`](/assets/theme-sim/kit/themes/classic.json): a plainer, document-like palette
+- [`/assets/theme-sim/kit/themes/modern.json`](/assets/theme-sim/kit/themes/modern.json): a cooler, more contemporary palette
+- [`/assets/theme-sim/kit/themes/vivid.json`](/assets/theme-sim/kit/themes/vivid.json): a brighter, higher-contrast palette
+
+### Example: Dawn
+
+This is `dawn.json`, byte for byte. Its only style option is a thin accent rule for `hr`.
+
+```
+{
+  "schemaVersion": 1,
+  "id": "dawn",
+  "version": "1.0.0",
+  "name": { "en": "Dawn" },
+  "summary": { "en": "Warm Martian sunrise" },
+  "fontDesign": "sans",
+  "scenarios": ["agent-review"],
+  "light": {
+    "background": "#FFFDFB", "surface": "#F6F0EC", "text": "#26211F", "muted": "#6F6660",
+    "border": "#EADFD8", "heading": "#26211F", "accent": "#C8471B", "link": "#B03C0C", "quote": "#D97A4A",
+    "syntax": { "keyword": "#B03C0C", "string": "#2F6F5E", "comment": "#746B66", "number": "#9A5B00", "function": "#5B3E8C", "type": "#1F6FB2" },
+    "diagram": { "node": "#FBE9E0", "nodeBorder": "#CA6C3C", "text": "#26211F", "line": "#8A6A5C", "secondary": "#E6F1EE", "tertiary": "#FFF6F1", "note": "#FFF1D6" }
+  },
+  "dark": {
+    "background": "#1C1A1F", "surface": "#262229", "text": "#EBE4DF", "muted": "#A39992",
+    "border": "#3A343A", "heading": "#F4EEEA", "accent": "#FF8A50", "link": "#FF9E6B", "quote": "#E08A5C",
+    "syntax": { "keyword": "#FF9E6B", "string": "#7FD1B9", "comment": "#938A84", "number": "#F2C572", "function": "#C7A6F5", "type": "#6CB6FF" },
+    "diagram": { "node": "#3A2A26", "nodeBorder": "#E08A5C", "text": "#EBE4DF", "line": "#B8A69C", "secondary": "#23332F", "tertiary": "#2B2427", "note": "#3D3322" }
+  },
+  "style": {
+    "hr": { "style": { "type": "line", "color": "accent", "thickness": 1 } }
+  }
+}
+```
+
+## Fields
+
+Every object below is read the same way. `required` means the key must be present, and a key that is not listed is an error.
+
+Types: `string`, `integer`, `number`, `boolean`, `map` (language tag to text), `enum` (one of the listed values), `role` (a palette role) and `object` (the table it links to). A `[]` after a type means a list.
+
+### `theme.json`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `schemaVersion` | `integer` | `required` | Always `1`. |
+| `id` | `string` | `required` | 1 to 32 characters: lowercase letters and digits, in runs joined by single hyphens, such as `calm-green`. |
+| `version` | `string` | `required` | `MAJOR.MINOR.PATCH`, such as `1.0.0`. |
+| `name` | `map` | `required` | Language tag to text. `en` is required; other keys are language tags such as `zh-Hant`. Each text is at most 48 characters, with no links or line breaks. |
+| `summary` | `map` | `required` | The same shape as `name`, at most 120 characters per text. |
+| `fontDesign` | `enum` | `required` | `sans`, `serif`, `rounded` |
+| `scenarios` | `enum[]` | `required` | `agent-review`, `technical-docs`, `formal-output`, `notes-sharing` — One or two, no repeats. They set how much contrast the theme must reach. |
+| `author` | `object` | `optional` | [`author`](#t-author) |
+| `license` | `string` | `optional` | An SPDX identifier, such as `Apache-2.0`. Submitted themes are released under Apache-2.0. |
+| `light` | `object` | `required` | [`light, dark`](#t-palette) |
+| `dark` | `object` | `required` | [`light, dark`](#t-palette) |
+| `style` | `object` | `optional` | [`style`](#t-style) |
+
+### `author`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `name` | `string` | `required` | At most 64 characters, with no links. |
+| `github` | `string` | `optional` | A GitHub login. For a submission, set it to the submitter's own. |
+
+### `light, dark`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `background` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `surface` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `text` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `muted` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `border` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `heading` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `accent` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `link` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `quote` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `syntax` | `object` | `optional` (required to publish, with `--require-complete`) | [`syntax`](#t-syntax-colors) |
+| `diagram` | `object` | `optional` (required to publish, with `--require-complete`) | [`diagram`](#t-diagram-colors) |
+
+### `syntax`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `keyword` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `string` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `comment` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `number` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `function` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `type` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+
+### `diagram`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `node` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `nodeBorder` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `text` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `line` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `secondary` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `tertiary` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+| `note` | `string` | `required` | `#` and six hex digits, such as `#1C1C1C`. |
+
+### `style`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `bodySize` | `number` | `optional` | [range](#t-numbers) |
+| `lineHeight` | `number` | `optional` | [range](#t-numbers) |
+| `headingWeight` | `number` | `optional` | [range](#t-numbers) |
+| `radius` | `number` | `optional` | [range](#t-numbers) |
+| `maxWidth` | `number` | `optional` | [range](#t-numbers) |
+| `h1` | `object` | `optional` | [`style.h1`](#t-style-h1) |
+| `h2` | `object` | `optional` | [`style.h2`](#t-style-h2) |
+| `blockquote` | `object` | `optional` | [`style.blockquote`](#t-style-blockquote) |
+| `hr` | `object` | `optional` | [`style.hr`](#t-style-hr) |
+| `table` | `object` | `optional` | [`style.table`](#t-style-table) |
+| `listMarker` | `role` | `optional` | [a palette role](#roles) |
+| `inlineCode` | `role` | `optional` | [a palette role](#roles) — Only `text` or a syntax role: `keyword`, `string`, `comment`, `number`, `function` or `type`. |
+| `link` | `object` | `optional` | [`style.link`](#t-style-link) |
+| `syntax` | `object` | `optional` | [`style.syntax`](#t-style-syntax) |
+
+### `style.h1`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `size` | `number` | `optional` | [range](#t-numbers) |
+| `letterSpacing` | `number` | `optional` | [range](#t-numbers) |
+| `align` | `enum` | `optional` | `left`, `center` |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.h2`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `letterSpacing` | `number` | `optional` | [range](#t-numbers) |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.blockquote`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.hr`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.table`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `header` | `object` | `optional` | [`type`](#t-kinds) |
+| `verticalRules` | `boolean` | `optional` | `true`, `false` |
+| `rounded` | `boolean` | `optional` | `true`, `false` |
+
+### `style.link`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `underline` | `boolean` | `optional` | `true`, `false` |
+
+### `style.syntax`
+
+| Field | Type | Presence | Values and notes |
+|---|---|---|---|
+| `boldKeywords` | `boolean` | `optional` | `true`, `false` |
+
+### Options with a type
+
+These style options are objects with a `type`. Each `type` takes the fields listed for it and no others.
+
+| Option | type | Field | Presence | Type |
+|---|---|---|---|---|
+| `style.h1.decoration` | `rule` | — | — | — |
+| `style.h1.decoration` | `none` | — | — | — |
+| `style.h1.decoration` | `shortRule` | `color` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `from` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `to` | `required` | `role` |
+| `style.h2.decoration` | `rule` | — | — | — |
+| `style.h2.decoration` | `none` | — | — | — |
+| `style.h2.decoration` | `dot` | `color` | `required` | `role` |
+| `style.blockquote.style` | `bar` | `width` | `optional` | `number` [range](#t-numbers) |
+| `style.blockquote.style` | `panel` | — | — | — |
+| `style.hr.style` | `line` | `color` | `optional` | `role` |
+| `style.hr.style` | `line` | `thickness` | `optional` | `number` [range](#t-numbers) |
+| `style.hr.style` | `shortCentered` | `color` | `required` | `role` |
+| `style.hr.style` | `gradient` | `colors` | `required` | `role[]` Two or three roles. |
+| `style.table.header` | `surface` | — | — | — |
+| `style.table.header` | `accentRule` | `color` | `required` | `role` |
+| `style.table.header` | `filled` | `background` | `required` | `role` |
+| `style.table.header` | `filled` | `text` | `required` | `role` |
+| `style.table.header` | `filled` | `border` | `optional` | `role` |
+
+### Palette roles
+
+A palette role is one of these names:
+
+`background`, `surface`, `text`, `muted`, `border`, `heading`, `accent`, `link`, `quote`, `keyword`, `string`, `comment`, `number`, `function`, `type`
+
+### Numbers
+
+A number is snapped to the nearest multiple of its step, and must then lie between min and max. Otherwise the rule is `number.range`.
+
+| Field | Min | Max | Step |
+|---|---|---|---|
+| `style.bodySize` | `14` | `18` | `1` |
+| `style.lineHeight` | `1.4` | `1.9` | `0.05` |
+| `style.headingWeight` | `400` | `900` | `50` |
+| `style.radius` | `0` | `16` | `1` |
+| `style.maxWidth` | `600` | `1000` | `1` |
+| `style.h1.size` | `1.8` | `2.4` | `0.1` |
+| `style.h1.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.h2.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.blockquote.style.width` | `2` | `4` | `1` |
+| `style.hr.style.thickness` | `1` | `4` | `1` |
+
+## What else is checked
+
+- **Contrast.** Each pair of colours the preview draws, such as `text` on `background`, must reach 4.5:1 for text and 3:1 for lines and other non-text. The scenarios you list raise some colours to 4.5:1. The message names the pair, its ratio and what it needs.
+- **Strings.** A name, summary or author name that is empty, too long, or holds a link, a control character or an invisible or bidirectional format character is refused.
+- **Rule ids.** Each problem carries one, such as `contrast.pair`, `color.hex`, `number.range`, `id.pattern`, `schema.unknownKey` or `palette.incomplete`. Fix the file by what the id and the `path` say.
+
+## Hand it over as a link
+
+The [Build a theme](/themes/new/) page opens a theme from a link, so the person can tune it by eye. The link is that page's address, then `#theme=`, then the file's bytes in base64url without padding. The file can be at most 16,384 bytes. This one line builds the link in zsh and in bash, on macOS and Linux:
+
+```
+printf 'https://marsdawn.southern-light.dev/themes/new/#theme=%s\n' "$(base64 < theme.json | tr -d '\n=' | tr '+/' '-_')"
+```
+
+The theme travels after a `#`, which a browser does not send to the site, and the site does not send it anywhere. The link does stay in your shell history and in the browser's history, and anyone you paste it to can read the theme.
+
+## Submit it
+
+The agent prepares the file and the link. The person submits. Both routes ask for the Developer Certificate of Origin and the Apache-2.0 release, and the person makes that certification: the agent does not tick the box or sign off for them.
+
+- **Issue.** The person opens the link and presses **Submit** on the Build a theme page, or opens the [issue form](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml) and pastes the JSON into *Theme*. A workflow checks the theme and replies.
+- **Pull request.** Change only `themes/<id>/theme.json`, set `author.github` to the pull request author's login, and sign off every commit with `git commit -s`. The rules are in [CONTRIBUTING.md](https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md).
+
+A submitted theme's author name, name, summary and GitHub login become public permanently, so set `author.name` to a name the person is happy to publish.
+
+## Published themes
+
+To see what published themes look like, browse [the theme gallery](/themes/gallery/).
 
 ---
 
@@ -3077,6 +3376,7 @@ swift build -c release --product marsdawn
 - 給讀指令檔而不是執行 shell 的 agent 用的一個檔案：[marsdawn skill](/zh-hant/cli/skill/)。
 - 包住同一個 `export` 的 MCP 伺服器：[marsdawn-mcp](/zh-hant/cli/mcp/)。
 - 這份 JSON 結果為什麼不花 agent 自己的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
+- 和 agent 一起做 MarsDawn 主題：[和 agent 一起做主題](/zh-hant/themes/agents/)。
 
 ---
 
@@ -3280,6 +3580,8 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 
 [在瀏覽器裡打造一個主題](/zh-hant/themes/new/)：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。[主題庫](/zh-hant/themes/gallery/)收錄每一套經過維護者審核並合併的投稿主題，可以依用途篩選。在 App 的「設定 › 外觀 › 取得更多主題⋯」就能安裝，Finder 的快速查看也會跟著套用。
 
+正在和 agent 一起工作？[讓它先做出主題](/zh-hant/themes/agents/)，再在瀏覽器裡調整。
+
 ## 接下來
 
 - 完整的 PDF 輸出步驟，從命令列開始：[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
@@ -3298,7 +3600,303 @@ Source: https://marsdawn.southern-light.dev/zh-hant/themes/new/
 
 投稿需要一個 GitHub 帳號。這個頁面本身不用安裝，也不用 git。
 
+agent 可以替你寫主題檔：看看[和 agent 一起做主題](/zh-hant/themes/agents/)，再把它給你的連結在這裡開啟來調整。
+
 這個頁面需要 JavaScript 才能建立與預覽主題。
+
+---
+
+## 和 agent 一起做主題
+
+Source: https://marsdawn.southern-light.dev/zh-hant/themes/agents/
+
+# 和你的 agent 一起做主題
+
+給製作 MarsDawn 預覽主題的 AI agent 的參考。agent 寫出一個 `theme.json`，用 `marsdawn` 命令列工具檢查並渲染，再把連結交給你。你在[打造一個主題](/zh-hant/themes/new/)頁面用眼睛調整，然後投稿。下面的欄位表直接讀自 kit 的原始碼，並有檢查確保兩者一致。
+
+**寫出一個 `theme.json`，反覆執行 `marsdawn theme validate theme.json --require-complete --json` 直到結束代碼為 0，用 `marsdawn theme preview` 分別渲染淺色與深色，再把連結交給使用者。**主題只有參數，不含任何 CSS。
+
+## 主題是什麼
+
+- **顏色**，淺色與深色各一組：基本色盤，以及選填的語法與圖表顏色。每個顏色都是 `#RRGGBB`。
+- **字型設計**：`sans`、`serif` 或 `rounded`。
+- **一組封閉的樣式選項**：數字落在固定範圍內，選擇來自固定清單。樣式選項裡的顏色一律是像 `accent` 這樣的色盤角色，不能是顏色字面值。
+- **顯示字串**：名稱與摘要，以及選填的作者與授權。
+
+不在下面表格裡的鍵是錯誤，同一個鍵寫兩次也是。檔案最大 16,384 位元組。
+
+## 檢查與渲染
+
+在放有 `theme.json` 的資料夾裡執行這些指令。需要 `marsdawn` 工具：見[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+
+```
+marsdawn theme validate theme.json --require-complete --json
+marsdawn theme css theme.json --json
+marsdawn theme preview theme.json --appearance light -o light.png
+marsdawn theme preview theme.json --appearance dark -o dark.png
+```
+
+- 離開代碼：0 表示有效，1 表示無效並列出規則 id，2 表示找不到檔案，64 表示用法錯誤。`preview` 另外有 4（PNG 已存在，傳入 `--force` 或換個檔名）和 5（渲染失敗）。
+- 加上 `--json` 時，無效的主題會把問題列在 `issues` 下，每一項都有 `rule` id、`path` 和 `message`。修正後再跑一次。
+- `--require-complete` 是要發布的主題用的檢查：它還要求兩組色盤都有 `syntax` 與 `diagram` 顏色。
+- `css` 印出預覽使用的 CSS，`preview` 把範例文件渲染成 PNG。兩者都會先驗證，所以無效的主題什麼都不會渲染。
+- 交出主題之前，先看過淺色與深色兩張 PNG。
+
+## 從內建主題開始
+
+複製四個內建主題之一再修改。每一個都是完整且有效的檔案：
+
+- [`/assets/theme-sim/kit/themes/dawn.json`](/assets/theme-sim/kit/themes/dawn.json): 預設主題，也是下面的範例
+- [`/assets/theme-sim/kit/themes/classic.json`](/assets/theme-sim/kit/themes/classic.json): 較素雅、像文件的色盤
+- [`/assets/theme-sim/kit/themes/modern.json`](/assets/theme-sim/kit/themes/modern.json): 較冷調、較現代的色盤
+- [`/assets/theme-sim/kit/themes/vivid.json`](/assets/theme-sim/kit/themes/vivid.json): 較明亮、對比較高的色盤
+
+### 範例：Dawn
+
+這是 `dawn.json`，一個位元組都沒改。它唯一的樣式選項是 `hr` 的一條細的強調色分隔線。
+
+```
+{
+  "schemaVersion": 1,
+  "id": "dawn",
+  "version": "1.0.0",
+  "name": { "en": "Dawn" },
+  "summary": { "en": "Warm Martian sunrise" },
+  "fontDesign": "sans",
+  "scenarios": ["agent-review"],
+  "light": {
+    "background": "#FFFDFB", "surface": "#F6F0EC", "text": "#26211F", "muted": "#6F6660",
+    "border": "#EADFD8", "heading": "#26211F", "accent": "#C8471B", "link": "#B03C0C", "quote": "#D97A4A",
+    "syntax": { "keyword": "#B03C0C", "string": "#2F6F5E", "comment": "#746B66", "number": "#9A5B00", "function": "#5B3E8C", "type": "#1F6FB2" },
+    "diagram": { "node": "#FBE9E0", "nodeBorder": "#CA6C3C", "text": "#26211F", "line": "#8A6A5C", "secondary": "#E6F1EE", "tertiary": "#FFF6F1", "note": "#FFF1D6" }
+  },
+  "dark": {
+    "background": "#1C1A1F", "surface": "#262229", "text": "#EBE4DF", "muted": "#A39992",
+    "border": "#3A343A", "heading": "#F4EEEA", "accent": "#FF8A50", "link": "#FF9E6B", "quote": "#E08A5C",
+    "syntax": { "keyword": "#FF9E6B", "string": "#7FD1B9", "comment": "#938A84", "number": "#F2C572", "function": "#C7A6F5", "type": "#6CB6FF" },
+    "diagram": { "node": "#3A2A26", "nodeBorder": "#E08A5C", "text": "#EBE4DF", "line": "#B8A69C", "secondary": "#23332F", "tertiary": "#2B2427", "note": "#3D3322" }
+  },
+  "style": {
+    "hr": { "style": { "type": "line", "color": "accent", "thickness": 1 } }
+  }
+}
+```
+
+## 欄位
+
+下面每個物件都用同樣的方式讀取。`required` 表示這個鍵必須存在，沒有列出的鍵都是錯誤。
+
+型別：`string`、`integer`、`number`、`boolean`、`map`（語言標籤對應文字）、`enum`（列出的值之一）、`role`（色盤角色）和 `object`（連到它的表格）。型別後面的 `[]` 表示清單。
+
+### `theme.json`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `schemaVersion` | `integer` | `required` | 固定是 `1`。 |
+| `id` | `string` | `required` | 1 到 32 個字元：小寫字母與數字，以單一連字號連接成段，例如 `calm-green`。 |
+| `version` | `string` | `required` | `MAJOR.MINOR.PATCH`，例如 `1.0.0`。 |
+| `name` | `map` | `required` | 語言標籤對應文字。`en` 必填，其他鍵是像 `zh-Hant` 的語言標籤。每段文字最多 48 個字元，不可含連結或換行。 |
+| `summary` | `map` | `required` | 和 `name` 的形式相同，每段文字最多 120 個字元。 |
+| `fontDesign` | `enum` | `required` | `sans`, `serif`, `rounded` |
+| `scenarios` | `enum[]` | `required` | `agent-review`, `technical-docs`, `formal-output`, `notes-sharing` — 一個或兩個，不可重複。它們決定主題必須達到多高的對比。 |
+| `author` | `object` | `optional` | [`author`](#t-author) |
+| `license` | `string` | `optional` | SPDX 識別碼，例如 `Apache-2.0`。投稿的主題以 Apache-2.0 釋出。 |
+| `light` | `object` | `required` | [`light, dark`](#t-palette) |
+| `dark` | `object` | `required` | [`light, dark`](#t-palette) |
+| `style` | `object` | `optional` | [`style`](#t-style) |
+
+### `author`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `name` | `string` | `required` | 最多 64 個字元，不可含連結。 |
+| `github` | `string` | `optional` | GitHub 帳號。投稿時請填投稿者自己的帳號。 |
+
+### `light, dark`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `background` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `surface` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `text` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `muted` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `border` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `heading` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `accent` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `link` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `quote` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `syntax` | `object` | `optional` （發布時必填，用 `--require-complete` 檢查） | [`syntax`](#t-syntax-colors) |
+| `diagram` | `object` | `optional` （發布時必填，用 `--require-complete` 檢查） | [`diagram`](#t-diagram-colors) |
+
+### `syntax`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `keyword` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `string` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `comment` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `number` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `function` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `type` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+
+### `diagram`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `node` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `nodeBorder` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `text` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `line` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `secondary` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `tertiary` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+| `note` | `string` | `required` | `#` 加六個十六進位數字，例如 `#1C1C1C`。 |
+
+### `style`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `bodySize` | `number` | `optional` | [範圍](#t-numbers) |
+| `lineHeight` | `number` | `optional` | [範圍](#t-numbers) |
+| `headingWeight` | `number` | `optional` | [範圍](#t-numbers) |
+| `radius` | `number` | `optional` | [範圍](#t-numbers) |
+| `maxWidth` | `number` | `optional` | [範圍](#t-numbers) |
+| `h1` | `object` | `optional` | [`style.h1`](#t-style-h1) |
+| `h2` | `object` | `optional` | [`style.h2`](#t-style-h2) |
+| `blockquote` | `object` | `optional` | [`style.blockquote`](#t-style-blockquote) |
+| `hr` | `object` | `optional` | [`style.hr`](#t-style-hr) |
+| `table` | `object` | `optional` | [`style.table`](#t-style-table) |
+| `listMarker` | `role` | `optional` | [色盤角色](#roles) |
+| `inlineCode` | `role` | `optional` | [色盤角色](#roles) — 只能是 `text` 或語法角色：`keyword`、`string`、`comment`、`number`、`function` 或 `type`。 |
+| `link` | `object` | `optional` | [`style.link`](#t-style-link) |
+| `syntax` | `object` | `optional` | [`style.syntax`](#t-style-syntax) |
+
+### `style.h1`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `size` | `number` | `optional` | [範圍](#t-numbers) |
+| `letterSpacing` | `number` | `optional` | [範圍](#t-numbers) |
+| `align` | `enum` | `optional` | `left`, `center` |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.h2`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `letterSpacing` | `number` | `optional` | [範圍](#t-numbers) |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.blockquote`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.hr`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.table`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `header` | `object` | `optional` | [`type`](#t-kinds) |
+| `verticalRules` | `boolean` | `optional` | `true`, `false` |
+| `rounded` | `boolean` | `optional` | `true`, `false` |
+
+### `style.link`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `underline` | `boolean` | `optional` | `true`, `false` |
+
+### `style.syntax`
+
+| 欄位 | 型別 | 必填與否 | 值與備註 |
+|---|---|---|---|
+| `boldKeywords` | `boolean` | `optional` | `true`, `false` |
+
+### 帶 type 的選項
+
+這些樣式選項是帶有 `type` 的物件。每個 `type` 只接受為它列出的欄位，其他都不行。
+
+| 選項 | type | 欄位 | 必填與否 | 型別 |
+|---|---|---|---|---|
+| `style.h1.decoration` | `rule` | — | — | — |
+| `style.h1.decoration` | `none` | — | — | — |
+| `style.h1.decoration` | `shortRule` | `color` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `from` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `to` | `required` | `role` |
+| `style.h2.decoration` | `rule` | — | — | — |
+| `style.h2.decoration` | `none` | — | — | — |
+| `style.h2.decoration` | `dot` | `color` | `required` | `role` |
+| `style.blockquote.style` | `bar` | `width` | `optional` | `number` [範圍](#t-numbers) |
+| `style.blockquote.style` | `panel` | — | — | — |
+| `style.hr.style` | `line` | `color` | `optional` | `role` |
+| `style.hr.style` | `line` | `thickness` | `optional` | `number` [範圍](#t-numbers) |
+| `style.hr.style` | `shortCentered` | `color` | `required` | `role` |
+| `style.hr.style` | `gradient` | `colors` | `required` | `role[]` 兩個或三個角色。 |
+| `style.table.header` | `surface` | — | — | — |
+| `style.table.header` | `accentRule` | `color` | `required` | `role` |
+| `style.table.header` | `filled` | `background` | `required` | `role` |
+| `style.table.header` | `filled` | `text` | `required` | `role` |
+| `style.table.header` | `filled` | `border` | `optional` | `role` |
+
+### 色盤角色
+
+色盤角色是下列名稱之一：
+
+`background`, `surface`, `text`, `muted`, `border`, `heading`, `accent`, `link`, `quote`, `keyword`, `string`, `comment`, `number`, `function`, `type`
+
+### 數字
+
+數字會先對齊到最接近的間隔倍數，再檢查是否落在最小值與最大值之間，否則規則是 `number.range`。
+
+| 欄位 | 最小值 | 最大值 | 間隔 |
+|---|---|---|---|
+| `style.bodySize` | `14` | `18` | `1` |
+| `style.lineHeight` | `1.4` | `1.9` | `0.05` |
+| `style.headingWeight` | `400` | `900` | `50` |
+| `style.radius` | `0` | `16` | `1` |
+| `style.maxWidth` | `600` | `1000` | `1` |
+| `style.h1.size` | `1.8` | `2.4` | `0.1` |
+| `style.h1.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.h2.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.blockquote.style.width` | `2` | `4` | `1` |
+| `style.hr.style.thickness` | `1` | `4` | `1` |
+
+## 還會檢查什麼
+
+- **對比。**預覽畫出的每一組顏色配對，例如 `background` 上的 `text`，文字要達到 4.5:1，線條與其他非文字要達到 3:1。你列出的情境會把部分顏色提高到 4.5:1。訊息會指出是哪一組配對、它的比值和需要的比值。
+- **字串。**名稱、摘要或作者名稱若是空的、太長，或含有連結、控制字元、不可見或雙向格式字元，都會被拒絕。
+- **規則 id。**每個問題都帶一個，例如 `contrast.pair`、`color.hex`、`number.range`、`id.pattern`、`schema.unknownKey` 或 `palette.incomplete`。依 id 與 `path` 的說明修正檔案。
+
+## 用連結交給人
+
+[打造一個主題](/zh-hant/themes/new/)頁面可以從連結開啟主題，讓人用眼睛調整。連結是該頁的網址，接著 `#theme=`，再接檔案位元組的 base64url（不含補位）。檔案最大 16,384 位元組。下面這一行指令在 macOS 與 Linux 的 zsh 和 bash 都能產生連結：
+
+```
+printf 'https://marsdawn.southern-light.dev/zh-hant/themes/new/#theme=%s\n' "$(base64 < theme.json | tr -d '\n=' | tr '+/' '-_')"
+```
+
+主題跟在 `#` 後面，瀏覽器不會把它送給網站，網站也不會把它送到任何地方。連結確實會留在你的 shell 歷史與瀏覽器歷史裡，你貼給誰，誰就能讀到這個主題。
+
+## 投稿
+
+agent 準備檔案與連結，由人來投稿。兩條路都會要求 Developer Certificate of Origin 與 Apache-2.0 授權聲明，這個聲明由人本人做出：agent 不會替他勾選方框或簽署。
+
+- **Issue。**人開啟連結，在「打造一個主題」頁面按下 **Submit**，或是開啟 [issue 表單](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml)，把 JSON 貼進 *Theme*。接著有工作流程檢查主題並回覆。
+- **Pull request。**只改 `themes/<id>/theme.json`，把 `author.github` 設為 pull request 作者的帳號，每個 commit 都用 `git commit -s` 簽署。規則在 [CONTRIBUTING.md](https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md)。
+
+投稿主題的作者名稱、名稱、摘要與 GitHub 帳號會永久公開，所以請把 `author.name` 設成人願意公開的名字。
+
+## 已發布的主題
+
+想看已發布的主題長什麼樣子，可以逛逛[主題庫](/zh-hant/themes/gallery/)。
 
 ---
 
@@ -5299,6 +5897,10 @@ swift build -c release --product marsdawn
 
 `marsdawn --version` 会输出版本号，例如 `0.3.0`，并以代码 0 结束。
 
+## 接下来
+
+- 用 agent 做一个 MarsDawn 主题：[和 agent 一起做主题](/zh-hans/themes/agents/)。
+
 ---
 
 ## 给 agent 的 skill
@@ -5501,6 +6103,8 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 [在浏览器里打造一个主题](/zh-hans/themes/new/)：挑选颜色和几个样式选项，实时看效果，再送出成一个 GitHub issue 让人审核——不用安装，也不用 git。[主题图库](/zh-hans/themes/gallery/)收录每一套经过维护者审核并合并的投稿主题，可以按用途筛选。在 App 的“设置 › 外观 › 获取更多主题…”就能安装，访达的快速查看也会跟着套用。
 
+正在和 agent 一起工作？[让它先做出主题](/zh-hans/themes/agents/)，再在浏览器里调整。
+
 ## 接下来
 
 - 完整的 PDF 导出步骤，从命令行开始：[Markdown 转 PDF](/zh-hans/markdown-to-pdf/)。
@@ -5519,7 +6123,303 @@ Source: https://marsdawn.southern-light.dev/zh-hans/themes/new/
 
 投稿需要一个 GitHub 账号。这个页面本身不用安装，也不用 git。
 
+AI agent 可以替你写主题文件：看看[和 agent 一起做主题](/zh-hans/themes/agents/)，再把它给你的链接在这里打开来调整。
+
 这个页面需要 JavaScript 才能建立与预览主题。
+
+---
+
+## 和 agent 一起做主题
+
+Source: https://marsdawn.southern-light.dev/zh-hans/themes/agents/
+
+# 和你的 agent 一起做主题
+
+给制作 MarsDawn 预览主题的 AI agent 的参考。agent 写出一个 `theme.json`，用 `marsdawn` 命令行工具检查并渲染，再把链接交给你。你在[打造一个主题](/zh-hans/themes/new/)页面用眼睛调整，然后投稿。下面的字段表直接读自 kit 的源代码，并有检查确保两者一致。
+
+**写出一个 `theme.json`，反复运行 `marsdawn theme validate theme.json --require-complete --json` 直到退出代码为 0，用 `marsdawn theme preview` 分别渲染浅色与深色，再把链接交给用户。**主题只有参数，不含任何 CSS。
+
+## 主题是什么
+
+- **颜色**，浅色与深色各一组：基本色板，以及可选的语法与图表颜色。每个颜色都是 `#RRGGBB`。
+- **字体设计**：`sans`、`serif` 或 `rounded`。
+- **一组封闭的样式选项**：数字落在固定范围内，选择来自固定列表。样式选项里的颜色一律是像 `accent` 这样的色板角色，不能是颜色字面值。
+- **显示字符串**：名称与摘要，以及可选的作者与许可证。
+
+不在下面表格里的键是错误，同一个键写两次也是。文件最大 16,384 字节。
+
+## 检查与渲染
+
+在放有 `theme.json` 的文件夹里运行这些命令。需要 `marsdawn` 工具：见[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。
+
+```
+marsdawn theme validate theme.json --require-complete --json
+marsdawn theme css theme.json --json
+marsdawn theme preview theme.json --appearance light -o light.png
+marsdawn theme preview theme.json --appearance dark -o dark.png
+```
+
+- 退出代码：0 表示有效，1 表示无效并列出规则 id，2 表示找不到文件，64 表示用法错误。`preview` 另外有 4（PNG 已存在，传入 `--force` 或换个文件名）和 5（渲染失败）。
+- 加上 `--json` 时，无效的主题会把问题列在 `issues` 下，每一项都有 `rule` id、`path` 和 `message`。修正后再运行一次。
+- `--require-complete` 是要发布的主题用的检查：它还要求两组色板都有 `syntax` 与 `diagram` 颜色。
+- `css` 打印预览使用的 CSS，`preview` 把范例文档渲染成 PNG。两者都会先验证，所以无效的主题什么都不会渲染。
+- 交出主题之前，先看过浅色与深色两张 PNG。
+
+## 从内置主题开始
+
+复制四个内置主题之一再修改。每一个都是完整且有效的文件：
+
+- [`/assets/theme-sim/kit/themes/dawn.json`](/assets/theme-sim/kit/themes/dawn.json): 默认主题，也是下面的范例
+- [`/assets/theme-sim/kit/themes/classic.json`](/assets/theme-sim/kit/themes/classic.json): 较素雅、像文档的色板
+- [`/assets/theme-sim/kit/themes/modern.json`](/assets/theme-sim/kit/themes/modern.json): 较冷调、较现代的色板
+- [`/assets/theme-sim/kit/themes/vivid.json`](/assets/theme-sim/kit/themes/vivid.json): 较明亮、对比较高的色板
+
+### 范例：Dawn
+
+这是 `dawn.json`，一个字节都没改。它唯一的样式选项是 `hr` 的一条细的强调色分隔线。
+
+```
+{
+  "schemaVersion": 1,
+  "id": "dawn",
+  "version": "1.0.0",
+  "name": { "en": "Dawn" },
+  "summary": { "en": "Warm Martian sunrise" },
+  "fontDesign": "sans",
+  "scenarios": ["agent-review"],
+  "light": {
+    "background": "#FFFDFB", "surface": "#F6F0EC", "text": "#26211F", "muted": "#6F6660",
+    "border": "#EADFD8", "heading": "#26211F", "accent": "#C8471B", "link": "#B03C0C", "quote": "#D97A4A",
+    "syntax": { "keyword": "#B03C0C", "string": "#2F6F5E", "comment": "#746B66", "number": "#9A5B00", "function": "#5B3E8C", "type": "#1F6FB2" },
+    "diagram": { "node": "#FBE9E0", "nodeBorder": "#CA6C3C", "text": "#26211F", "line": "#8A6A5C", "secondary": "#E6F1EE", "tertiary": "#FFF6F1", "note": "#FFF1D6" }
+  },
+  "dark": {
+    "background": "#1C1A1F", "surface": "#262229", "text": "#EBE4DF", "muted": "#A39992",
+    "border": "#3A343A", "heading": "#F4EEEA", "accent": "#FF8A50", "link": "#FF9E6B", "quote": "#E08A5C",
+    "syntax": { "keyword": "#FF9E6B", "string": "#7FD1B9", "comment": "#938A84", "number": "#F2C572", "function": "#C7A6F5", "type": "#6CB6FF" },
+    "diagram": { "node": "#3A2A26", "nodeBorder": "#E08A5C", "text": "#EBE4DF", "line": "#B8A69C", "secondary": "#23332F", "tertiary": "#2B2427", "note": "#3D3322" }
+  },
+  "style": {
+    "hr": { "style": { "type": "line", "color": "accent", "thickness": 1 } }
+  }
+}
+```
+
+## 字段
+
+下面每个对象都用同样的方式读取。`required` 表示这个键必须存在，没有列出的键都是错误。
+
+类型：`string`、`integer`、`number`、`boolean`、`map`（语言标签对应文字）、`enum`（列出的值之一）、`role`（色板角色）和 `object`（连到它的表格）。类型后面的 `[]` 表示列表。
+
+### `theme.json`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `schemaVersion` | `integer` | `required` | 固定是 `1`。 |
+| `id` | `string` | `required` | 1 到 32 个字符：小写字母与数字，以单一连字符连接成段，例如 `calm-green`。 |
+| `version` | `string` | `required` | `MAJOR.MINOR.PATCH`，例如 `1.0.0`。 |
+| `name` | `map` | `required` | 语言标签对应文字。`en` 必填，其他键是像 `zh-Hant` 的语言标签。每段文字最多 48 个字符，不可含链接或换行。 |
+| `summary` | `map` | `required` | 和 `name` 的形式相同，每段文字最多 120 个字符。 |
+| `fontDesign` | `enum` | `required` | `sans`, `serif`, `rounded` |
+| `scenarios` | `enum[]` | `required` | `agent-review`, `technical-docs`, `formal-output`, `notes-sharing` — 一个或两个，不可重复。它们决定主题必须达到多高的对比。 |
+| `author` | `object` | `optional` | [`author`](#t-author) |
+| `license` | `string` | `optional` | SPDX 标识符，例如 `Apache-2.0`。投稿的主题以 Apache-2.0 发布。 |
+| `light` | `object` | `required` | [`light, dark`](#t-palette) |
+| `dark` | `object` | `required` | [`light, dark`](#t-palette) |
+| `style` | `object` | `optional` | [`style`](#t-style) |
+
+### `author`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `name` | `string` | `required` | 最多 64 个字符，不可含链接。 |
+| `github` | `string` | `optional` | GitHub 账号。投稿时请填投稿者自己的账号。 |
+
+### `light, dark`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `background` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `surface` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `text` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `muted` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `border` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `heading` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `accent` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `link` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `quote` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `syntax` | `object` | `optional` （发布时必填，用 `--require-complete` 检查） | [`syntax`](#t-syntax-colors) |
+| `diagram` | `object` | `optional` （发布时必填，用 `--require-complete` 检查） | [`diagram`](#t-diagram-colors) |
+
+### `syntax`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `keyword` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `string` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `comment` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `number` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `function` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `type` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+
+### `diagram`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `node` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `nodeBorder` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `text` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `line` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `secondary` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `tertiary` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+| `note` | `string` | `required` | `#` 加六个十六进制数字，例如 `#1C1C1C`。 |
+
+### `style`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `bodySize` | `number` | `optional` | [范围](#t-numbers) |
+| `lineHeight` | `number` | `optional` | [范围](#t-numbers) |
+| `headingWeight` | `number` | `optional` | [范围](#t-numbers) |
+| `radius` | `number` | `optional` | [范围](#t-numbers) |
+| `maxWidth` | `number` | `optional` | [范围](#t-numbers) |
+| `h1` | `object` | `optional` | [`style.h1`](#t-style-h1) |
+| `h2` | `object` | `optional` | [`style.h2`](#t-style-h2) |
+| `blockquote` | `object` | `optional` | [`style.blockquote`](#t-style-blockquote) |
+| `hr` | `object` | `optional` | [`style.hr`](#t-style-hr) |
+| `table` | `object` | `optional` | [`style.table`](#t-style-table) |
+| `listMarker` | `role` | `optional` | [色板角色](#roles) |
+| `inlineCode` | `role` | `optional` | [色板角色](#roles) — 只能是 `text` 或语法角色：`keyword`、`string`、`comment`、`number`、`function` 或 `type`。 |
+| `link` | `object` | `optional` | [`style.link`](#t-style-link) |
+| `syntax` | `object` | `optional` | [`style.syntax`](#t-style-syntax) |
+
+### `style.h1`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `size` | `number` | `optional` | [范围](#t-numbers) |
+| `letterSpacing` | `number` | `optional` | [范围](#t-numbers) |
+| `align` | `enum` | `optional` | `left`, `center` |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.h2`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `letterSpacing` | `number` | `optional` | [范围](#t-numbers) |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.blockquote`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.hr`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.table`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `header` | `object` | `optional` | [`type`](#t-kinds) |
+| `verticalRules` | `boolean` | `optional` | `true`, `false` |
+| `rounded` | `boolean` | `optional` | `true`, `false` |
+
+### `style.link`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `underline` | `boolean` | `optional` | `true`, `false` |
+
+### `style.syntax`
+
+| 字段 | 类型 | 必填与否 | 值与备注 |
+|---|---|---|---|
+| `boldKeywords` | `boolean` | `optional` | `true`, `false` |
+
+### 带 type 的选项
+
+这些样式选项是带有 `type` 的对象。每个 `type` 只接受为它列出的字段，其他都不行。
+
+| 选项 | type | 字段 | 必填与否 | 类型 |
+|---|---|---|---|---|
+| `style.h1.decoration` | `rule` | — | — | — |
+| `style.h1.decoration` | `none` | — | — | — |
+| `style.h1.decoration` | `shortRule` | `color` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `from` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `to` | `required` | `role` |
+| `style.h2.decoration` | `rule` | — | — | — |
+| `style.h2.decoration` | `none` | — | — | — |
+| `style.h2.decoration` | `dot` | `color` | `required` | `role` |
+| `style.blockquote.style` | `bar` | `width` | `optional` | `number` [范围](#t-numbers) |
+| `style.blockquote.style` | `panel` | — | — | — |
+| `style.hr.style` | `line` | `color` | `optional` | `role` |
+| `style.hr.style` | `line` | `thickness` | `optional` | `number` [范围](#t-numbers) |
+| `style.hr.style` | `shortCentered` | `color` | `required` | `role` |
+| `style.hr.style` | `gradient` | `colors` | `required` | `role[]` 两个或三个角色。 |
+| `style.table.header` | `surface` | — | — | — |
+| `style.table.header` | `accentRule` | `color` | `required` | `role` |
+| `style.table.header` | `filled` | `background` | `required` | `role` |
+| `style.table.header` | `filled` | `text` | `required` | `role` |
+| `style.table.header` | `filled` | `border` | `optional` | `role` |
+
+### 色板角色
+
+色板角色是下列名称之一：
+
+`background`, `surface`, `text`, `muted`, `border`, `heading`, `accent`, `link`, `quote`, `keyword`, `string`, `comment`, `number`, `function`, `type`
+
+### 数字
+
+数字会先对齐到最接近的间隔倍数，再检查是否落在最小值与最大值之间，否则规则是 `number.range`。
+
+| 字段 | 最小值 | 最大值 | 间隔 |
+|---|---|---|---|
+| `style.bodySize` | `14` | `18` | `1` |
+| `style.lineHeight` | `1.4` | `1.9` | `0.05` |
+| `style.headingWeight` | `400` | `900` | `50` |
+| `style.radius` | `0` | `16` | `1` |
+| `style.maxWidth` | `600` | `1000` | `1` |
+| `style.h1.size` | `1.8` | `2.4` | `0.1` |
+| `style.h1.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.h2.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.blockquote.style.width` | `2` | `4` | `1` |
+| `style.hr.style.thickness` | `1` | `4` | `1` |
+
+## 还会检查什么
+
+- **对比。**预览画出的每一组颜色配对，例如 `background` 上的 `text`，文字要达到 4.5:1，线条与其他非文字要达到 3:1。你列出的场景会把部分颜色提高到 4.5:1。消息会指出是哪一组配对、它的比值和需要的比值。
+- **字符串。**名称、摘要或作者名称若是空的、太长，或含有链接、控制字符、不可见或双向格式字符，都会被拒绝。
+- **规则 id。**每个问题都带一个，例如 `contrast.pair`、`color.hex`、`number.range`、`id.pattern`、`schema.unknownKey` 或 `palette.incomplete`。按 id 与 `path` 的说明修正文件。
+
+## 用链接交给人
+
+[打造一个主题](/zh-hans/themes/new/)页面可以从链接打开主题，让人用眼睛调整。链接是该页的网址，接着 `#theme=`，再接文件字节的 base64url（不含补位）。文件最大 16,384 字节。下面这一行命令在 macOS 与 Linux 的 zsh 和 bash 都能生成链接：
+
+```
+printf 'https://marsdawn.southern-light.dev/zh-hans/themes/new/#theme=%s\n' "$(base64 < theme.json | tr -d '\n=' | tr '+/' '-_')"
+```
+
+主题跟在 `#` 后面，浏览器不会把它发送给网站，网站也不会把它发送到任何地方。链接确实会留在你的 shell 历史与浏览器历史里，你贴给谁，谁就能读到这个主题。
+
+## 投稿
+
+agent 准备文件与链接，由人来投稿。两条路都会要求 Developer Certificate of Origin 与 Apache-2.0 许可声明，这个声明由人本人做出：agent 不会替他勾选方框或签署。
+
+- **Issue。**人打开链接，在“打造一个主题”页面点按 **Submit**，或是打开 [issue 表单](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml)，把 JSON 贴进 *Theme*。接着有工作流检查主题并回复。
+- **Pull request。**只改 `themes/<id>/theme.json`，把 `author.github` 设为 pull request 作者的账号，每个 commit 都用 `git commit -s` 签署。规则在 [CONTRIBUTING.md](https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md)。
+
+投稿主题的作者名称、名称、摘要与 GitHub 账号会永久公开，所以请把 `author.name` 设成人愿意公开的名字。
+
+## 已发布的主题
+
+想看已发布的主题长什么样子，可以逛逛[主题图库](/zh-hans/themes/gallery/)。
 
 ---
 
@@ -7520,6 +8420,10 @@ swift build -c release --product marsdawn
 
 `marsdawn --version` は `0.3.0` のようなバージョン番号を表示し、コード 0 で終了します。
 
+## 次に
+
+- エージェントで MarsDawn のテーマを作る：[エージェントとテーマを作る](/ja/themes/agents/)。
+
 ---
 
 ## エージェント用スキル
@@ -7722,6 +8626,8 @@ PDF に書き出す、またはプリントすると、テーマのライトカ�
 
 [ブラウザでテーマを作れます](/ja/themes/new/)：色といくつかのスタイルオプションを選び、その場で確認し、レビュー用に GitHub の issue として送信します — インストールも git も不要です。[ギャラリー](/ja/themes/gallery/)には、メンテナがレビューしてマージした投稿テーマが並び、用途で絞り込めます。アプリの「設定 › 外観モード › テーマを追加…」からインストールでき、Finder のクイックルックにも反映されます。
 
+エージェントと作業していますか？[エージェントにテーマを作らせて](/ja/themes/agents/)、ブラウザで整えましょう。
+
 ## 次に
 
 - コマンドラインからの、完全な PDF 書き出しの手順：[Markdown から PDF へ](/ja/markdown-to-pdf/)。
@@ -7740,7 +8646,303 @@ Source: https://marsdawn.southern-light.dev/ja/themes/new/
 
 投稿には GitHub アカウントが必要です。このページ自体はインストールも git も不要です。
 
+AI エージェントがテーマのファイルを代わりに書けます。[エージェントとテーマを作る](/ja/themes/agents/)を見て、渡されたリンクをここで開いて整えてください。
+
 このページの作成とプレビューには JavaScript が必要です。
+
+---
+
+## エージェントとテーマを作る
+
+Source: https://marsdawn.southern-light.dev/ja/themes/agents/
+
+# エージェントとテーマを作る
+
+MarsDawn のプレビューテーマを作る AI エージェント向けの参考資料です。エージェントは `theme.json` を1つ書き、コマンドラインツール `marsdawn` で検証してレンダリングし、リンクを渡します。人は[「テーマを作る」](/ja/themes/new/)ページで見た目を整えて投稿します。下のフィールド表は kit のソースコードから直接読み取ったもので、チェックによって一致が保たれています。
+
+**`theme.json` を書き、終了コードが 0 になるまで `marsdawn theme validate theme.json --require-complete --json` を実行し、`marsdawn theme preview` でライトとダークをレンダリングしてから、人にリンクを渡します。**テーマはパラメーターだけで、CSS は含みません。
+
+## テーマとは
+
+- ライトとダークそれぞれの**色**：基本パレットと、任意の構文色・図の色。どれも `#RRGGBB` です。
+- **フォントデザイン**：`sans`、`serif`、`rounded` のいずれか。
+- **閉じたスタイルオプションの集合**：決まった範囲の数値と、決まったリストから選ぶ値。スタイルオプションの色は常に `accent` のようなパレットのロールで、色の値を直接書くことはありません。
+- **表示用の文字列**：名前と概要、任意で作者とライセンス。
+
+下の表にないキーはエラーで、同じキーを2回書くこともエラーです。ファイルは最大 16,384 バイトです。
+
+## 検証とレンダリング
+
+`theme.json` のあるフォルダで実行します。`marsdawn` ツールが必要です。[AI エージェント向け marsdawn](/ja/cli/agents/)を参照してください。
+
+```
+marsdawn theme validate theme.json --require-complete --json
+marsdawn theme css theme.json --json
+marsdawn theme preview theme.json --appearance light -o light.png
+marsdawn theme preview theme.json --appearance dark -o dark.png
+```
+
+- 終了コード：0 は有効、1 は無効（ルール ID 付き）、2 はファイルが見つからない、64 は使い方の誤りです。`preview` にはさらに、PNG がすでにある場合の 4（`--force` を付けるか別の名前にします）と、レンダリング失敗の 5 があります。
+- `--json` を付けると、無効なテーマは問題を `issues` の下に並べ、それぞれに `rule` ID、`path`、`message` が付きます。直して再実行してください。
+- `--require-complete` は公開するテーマ向けのチェックで、両方のパレットに `syntax` と `diagram` の色も求めます。
+- `css` はプレビューが使う CSS を出力し、`preview` はサンプル文書を PNG にレンダリングします。どちらも先に検証するので、無効なテーマはレンダリングされません。
+- テーマを渡す前に、ライトとダークの PNG を両方確認してください。
+
+## 組み込みテーマから始める
+
+4つの組み込みテーマのどれかをコピーして変更します。どれも完全で有効なファイルです。
+
+- [`/assets/theme-sim/kit/themes/dawn.json`](/assets/theme-sim/kit/themes/dawn.json): 既定のテーマで、下の例
+- [`/assets/theme-sim/kit/themes/classic.json`](/assets/theme-sim/kit/themes/classic.json): より落ち着いた、文書らしいパレット
+- [`/assets/theme-sim/kit/themes/modern.json`](/assets/theme-sim/kit/themes/modern.json): より涼しげで現代的なパレット
+- [`/assets/theme-sim/kit/themes/vivid.json`](/assets/theme-sim/kit/themes/vivid.json): より明るくコントラストの強いパレット
+
+### 例：Dawn
+
+`dawn.json` を1バイトも変えずに載せています。スタイルオプションは `hr` の細いアクセントカラーの線だけです。
+
+```
+{
+  "schemaVersion": 1,
+  "id": "dawn",
+  "version": "1.0.0",
+  "name": { "en": "Dawn" },
+  "summary": { "en": "Warm Martian sunrise" },
+  "fontDesign": "sans",
+  "scenarios": ["agent-review"],
+  "light": {
+    "background": "#FFFDFB", "surface": "#F6F0EC", "text": "#26211F", "muted": "#6F6660",
+    "border": "#EADFD8", "heading": "#26211F", "accent": "#C8471B", "link": "#B03C0C", "quote": "#D97A4A",
+    "syntax": { "keyword": "#B03C0C", "string": "#2F6F5E", "comment": "#746B66", "number": "#9A5B00", "function": "#5B3E8C", "type": "#1F6FB2" },
+    "diagram": { "node": "#FBE9E0", "nodeBorder": "#CA6C3C", "text": "#26211F", "line": "#8A6A5C", "secondary": "#E6F1EE", "tertiary": "#FFF6F1", "note": "#FFF1D6" }
+  },
+  "dark": {
+    "background": "#1C1A1F", "surface": "#262229", "text": "#EBE4DF", "muted": "#A39992",
+    "border": "#3A343A", "heading": "#F4EEEA", "accent": "#FF8A50", "link": "#FF9E6B", "quote": "#E08A5C",
+    "syntax": { "keyword": "#FF9E6B", "string": "#7FD1B9", "comment": "#938A84", "number": "#F2C572", "function": "#C7A6F5", "type": "#6CB6FF" },
+    "diagram": { "node": "#3A2A26", "nodeBorder": "#E08A5C", "text": "#EBE4DF", "line": "#B8A69C", "secondary": "#23332F", "tertiary": "#2B2427", "note": "#3D3322" }
+  },
+  "style": {
+    "hr": { "style": { "type": "line", "color": "accent", "thickness": 1 } }
+  }
+}
+```
+
+## フィールド
+
+下のオブジェクトはどれも同じように読まれます。`required` はキーが必須という意味で、載っていないキーはエラーです。
+
+型：`string`、`integer`、`number`、`boolean`、`map`（言語タグからテキストへ）、`enum`（挙げた値のいずれか）、`role`（パレットのロール）、`object`（リンク先の表）。型の後ろの `[]` はリストを表します。
+
+### `theme.json`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `schemaVersion` | `integer` | `required` | 常に `1`。 |
+| `id` | `string` | `required` | 1〜32文字：小文字と数字を、単独のハイフンでつないだ区切り。例：`calm-green`。 |
+| `version` | `string` | `required` | `MAJOR.MINOR.PATCH`。例：`1.0.0`。 |
+| `name` | `map` | `required` | 言語タグからテキストへ。`en` は必須で、ほかのキーは `zh-Hant` のような言語タグです。各テキストは最大48文字で、リンクや改行は使えません。 |
+| `summary` | `map` | `required` | `name` と同じ形式で、テキストごとに最大120文字。 |
+| `fontDesign` | `enum` | `required` | `sans`, `serif`, `rounded` |
+| `scenarios` | `enum[]` | `required` | `agent-review`, `technical-docs`, `formal-output`, `notes-sharing` — 1つまたは2つ、重複不可。テーマが満たすべきコントラストの水準を決めます。 |
+| `author` | `object` | `optional` | [`author`](#t-author) |
+| `license` | `string` | `optional` | SPDX 識別子。例：`Apache-2.0`。投稿されたテーマは Apache-2.0 で公開されます。 |
+| `light` | `object` | `required` | [`light, dark`](#t-palette) |
+| `dark` | `object` | `required` | [`light, dark`](#t-palette) |
+| `style` | `object` | `optional` | [`style`](#t-style) |
+
+### `author`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `name` | `string` | `required` | 最大64文字、リンク不可。 |
+| `github` | `string` | `optional` | GitHub のログイン名。投稿の場合は、投稿する人のものを入れます。 |
+
+### `light, dark`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `background` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `surface` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `text` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `muted` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `border` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `heading` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `accent` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `link` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `quote` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `syntax` | `object` | `optional` （公開には必須。`--require-complete` で検証） | [`syntax`](#t-syntax-colors) |
+| `diagram` | `object` | `optional` （公開には必須。`--require-complete` で検証） | [`diagram`](#t-diagram-colors) |
+
+### `syntax`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `keyword` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `string` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `comment` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `number` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `function` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `type` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+
+### `diagram`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `node` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `nodeBorder` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `text` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `line` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `secondary` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `tertiary` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+| `note` | `string` | `required` | `#` と16進数6桁。例：`#1C1C1C`。 |
+
+### `style`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `bodySize` | `number` | `optional` | [範囲](#t-numbers) |
+| `lineHeight` | `number` | `optional` | [範囲](#t-numbers) |
+| `headingWeight` | `number` | `optional` | [範囲](#t-numbers) |
+| `radius` | `number` | `optional` | [範囲](#t-numbers) |
+| `maxWidth` | `number` | `optional` | [範囲](#t-numbers) |
+| `h1` | `object` | `optional` | [`style.h1`](#t-style-h1) |
+| `h2` | `object` | `optional` | [`style.h2`](#t-style-h2) |
+| `blockquote` | `object` | `optional` | [`style.blockquote`](#t-style-blockquote) |
+| `hr` | `object` | `optional` | [`style.hr`](#t-style-hr) |
+| `table` | `object` | `optional` | [`style.table`](#t-style-table) |
+| `listMarker` | `role` | `optional` | [パレットのロール](#roles) |
+| `inlineCode` | `role` | `optional` | [パレットのロール](#roles) — `text` か構文ロールのみ：`keyword`、`string`、`comment`、`number`、`function`、`type`。 |
+| `link` | `object` | `optional` | [`style.link`](#t-style-link) |
+| `syntax` | `object` | `optional` | [`style.syntax`](#t-style-syntax) |
+
+### `style.h1`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `size` | `number` | `optional` | [範囲](#t-numbers) |
+| `letterSpacing` | `number` | `optional` | [範囲](#t-numbers) |
+| `align` | `enum` | `optional` | `left`, `center` |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.h2`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `letterSpacing` | `number` | `optional` | [範囲](#t-numbers) |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.blockquote`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.hr`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.table`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `header` | `object` | `optional` | [`type`](#t-kinds) |
+| `verticalRules` | `boolean` | `optional` | `true`, `false` |
+| `rounded` | `boolean` | `optional` | `true`, `false` |
+
+### `style.link`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `underline` | `boolean` | `optional` | `true`, `false` |
+
+### `style.syntax`
+
+| フィールド | 型 | 必須か | 値と備考 |
+|---|---|---|---|
+| `boldKeywords` | `boolean` | `optional` | `true`, `false` |
+
+### type を持つオプション
+
+これらのスタイルオプションは `type` を持つオブジェクトです。それぞれの `type` は、そこに挙げたフィールドだけを受け付けます。
+
+| オプション | type | フィールド | 必須か | 型 |
+|---|---|---|---|---|
+| `style.h1.decoration` | `rule` | — | — | — |
+| `style.h1.decoration` | `none` | — | — | — |
+| `style.h1.decoration` | `shortRule` | `color` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `from` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `to` | `required` | `role` |
+| `style.h2.decoration` | `rule` | — | — | — |
+| `style.h2.decoration` | `none` | — | — | — |
+| `style.h2.decoration` | `dot` | `color` | `required` | `role` |
+| `style.blockquote.style` | `bar` | `width` | `optional` | `number` [範囲](#t-numbers) |
+| `style.blockquote.style` | `panel` | — | — | — |
+| `style.hr.style` | `line` | `color` | `optional` | `role` |
+| `style.hr.style` | `line` | `thickness` | `optional` | `number` [範囲](#t-numbers) |
+| `style.hr.style` | `shortCentered` | `color` | `required` | `role` |
+| `style.hr.style` | `gradient` | `colors` | `required` | `role[]` ロールを2つまたは3つ。 |
+| `style.table.header` | `surface` | — | — | — |
+| `style.table.header` | `accentRule` | `color` | `required` | `role` |
+| `style.table.header` | `filled` | `background` | `required` | `role` |
+| `style.table.header` | `filled` | `text` | `required` | `role` |
+| `style.table.header` | `filled` | `border` | `optional` | `role` |
+
+### パレットのロール
+
+パレットのロールは次の名前のいずれかです。
+
+`background`, `surface`, `text`, `muted`, `border`, `heading`, `accent`, `link`, `quote`, `keyword`, `string`, `comment`, `number`, `function`, `type`
+
+### 数値
+
+数値は最も近い刻みの倍数に丸められ、最小と最大の間に収まる必要があります。収まらない場合のルールは `number.range` です。
+
+| フィールド | 最小 | 最大 | 刻み |
+|---|---|---|---|
+| `style.bodySize` | `14` | `18` | `1` |
+| `style.lineHeight` | `1.4` | `1.9` | `0.05` |
+| `style.headingWeight` | `400` | `900` | `50` |
+| `style.radius` | `0` | `16` | `1` |
+| `style.maxWidth` | `600` | `1000` | `1` |
+| `style.h1.size` | `1.8` | `2.4` | `0.1` |
+| `style.h1.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.h2.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.blockquote.style.width` | `2` | `4` | `1` |
+| `style.hr.style.thickness` | `1` | `4` | `1` |
+
+## ほかに検証されること
+
+- **コントラスト。**`background` 上の `text` のように、プレビューが描く色の組はすべて、テキストは 4.5:1、線やそのほかの非テキストは 3:1 に達する必要があります。指定したシナリオによって、一部の色は 4.5:1 に引き上げられます。メッセージには、その組と比率、必要な比率が示されます。
+- **文字列。**名前、概要、作者名が空、長すぎる、またはリンク・制御文字・不可視文字・双方向書式文字を含む場合は拒否されます。
+- **ルール ID。**すべての問題には `contrast.pair`、`color.hex`、`number.range`、`id.pattern`、`schema.unknownKey`、`palette.incomplete` などの ID が付きます。ID と `path` が示すとおりにファイルを直してください。
+
+## リンクとして渡す
+
+[「テーマを作る」](/ja/themes/new/)ページは、リンクからテーマを開けるので、人が見た目を整えられます。リンクは、そのページのアドレス、`#theme=`、パディングなしの base64url にしたファイルのバイト列でできています。ファイルは最大 16,384 バイトです。次の1行で、macOS と Linux の zsh と bash でリンクを作れます。
+
+```
+printf 'https://marsdawn.southern-light.dev/ja/themes/new/#theme=%s\n' "$(base64 < theme.json | tr -d '\n=' | tr '+/' '-_')"
+```
+
+テーマはブラウザがサイトに送らない `#` の後ろに入り、サイトもそれをどこにも送りません。ただしリンクはシェルとブラウザの履歴に残り、リンクを貼った相手はテーマを読めます。
+
+## 投稿する
+
+エージェントがファイルとリンクを用意し、投稿は人が行います。どちらの方法でも Developer Certificate of Origin と Apache-2.0 での公開への確認が必要で、この確認は人が自分で行います。エージェントがチェックボックスにチェックしたり、代わりに署名したりすることはありません。
+
+- **Issue。**人がリンクを開いて「テーマを作る」ページの **Submit** を押すか、[Issue フォーム](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml)を開いて JSON を *Theme* に貼り付けます。ワークフローがテーマを検証して返信します。
+- **Pull request。**`themes/<id>/theme.json` だけを変更し、`author.github` を pull request の作者のログイン名にして、すべてのコミットに `git commit -s` で署名します。ルールは [CONTRIBUTING.md](https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md) にあります。
+
+投稿されたテーマの作者名、名前、概要、GitHub のログイン名は永久に公開されます。`author.name` には、その人が公開してよいと考える名前を入れてください。
+
+## 公開されているテーマ
+
+公開されているテーマの見た目は、[テーマギャラリー](/ja/themes/gallery/)で確認できます。
 
 ---
 
@@ -9750,6 +10952,7 @@ swift build -c release --product marsdawn
 - Ein Skill in einer Datei für Agenten, die Anweisungen lesen statt eine Shell zu benutzen: [der marsdawn-Skill](/de/cli/skill/).
 - Ein MCP-Server, der genau dieses `export` umschließt: [marsdawn-mcp](/de/cli/mcp/).
 - Warum dieses JSON-Ergebnis für den eigenen Kontext eines Agenten günstig bleibt: [Token-sparsames Prüfen](/de/token-efficient-review/).
+- Ein MarsDawn-Thema mit einem Agenten erstellen: [Mit deinem Agenten ein Thema erstellen](/de/themes/agents/).
 
 ---
 
@@ -9953,6 +11156,8 @@ Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deine
 
 [Bau ein Thema in deinem Browser](/de/themes/new/): wähle Farben und ein paar Stiloptionen, sieh sie live angewendet und reiche es als GitHub-Issue zur Prüfung ein — keine Installation, kein git. [Die Galerie](/de/themes/gallery/) zeigt jedes eingereichte Thema, das ein Maintainer geprüft und gemerged hat, filterbar nach Verwendungszweck. Installiere eines in der App über Einstellungen › Erscheinungsbild › Weitere Themes laden …, dann verwendet es auch die Übersicht im Finder.
 
+Du arbeitest mit einem Agenten? [Lass ihn das Thema erstellen](/de/themes/agents/), und stimme es dann im Browser ab.
+
 ## Weiter
 
 - Die vollständige Anleitung zum PDF-Export über die Befehlszeile: [Markdown in PDF](/de/markdown-to-pdf/).
@@ -9971,7 +11176,303 @@ Wähle unten eine Palette und ein paar Stiloptionen. Das Beispieldokument rechts
 
 Zum Einreichen brauchst du ein GitHub-Konto. Für diese Seite selbst sind weder Installation noch git nötig.
 
+Ein KI-Agent kann die Themendatei für dich schreiben: [Mit deinem Agenten ein Thema erstellen](/de/themes/agents/), und öffne dann seinen Link hier, um es abzustimmen.
+
 Diese Seite braucht JavaScript, um ein Thema zu erstellen und in der Vorschau zu zeigen.
+
+---
+
+## Mit deinem Agenten ein Thema erstellen
+
+Source: https://marsdawn.southern-light.dev/de/themes/agents/
+
+# Mit deinem Agenten ein Thema erstellen
+
+Eine Referenz für einen KI-Agenten, der ein MarsDawn-Vorschau-Thema erstellt. Der Agent schreibt eine `theme.json`, prüft und rendert sie mit dem Befehlszeilenwerkzeug `marsdawn` und gibt dir einen Link. Du stimmst sie auf der Seite [Ein Thema erstellen](/de/themes/new/) nach Augenmaß ab und reichst sie ein. Die Feldtabellen unten sind direkt aus dem Quelltext des Kits gelesen, und eine Prüfung hält sie damit gleich.
+
+**Schreibe eine `theme.json`, führe `marsdawn theme validate theme.json --require-complete --json` aus, bis der Exit-Code 0 ist, rendere sie mit `marsdawn theme preview` in hell und dunkel und gib der Person dann einen Link.** Ein Thema besteht nur aus Parametern. Es enthält nie CSS.
+
+## Was ein Thema ist
+
+- **Farben** für hell und für dunkel: eine Basispalette sowie optionale Syntax- und Diagrammfarben. Jede ist `#RRGGBB`.
+- **Ein Schriftdesign**: `sans`, `serif` oder `rounded`.
+- **Ein geschlossener Satz von Stiloptionen**: Zahlen in festen Bereichen und Auswahlen aus festen Listen. Eine Farbe in einer Stiloption ist immer eine Palettenrolle wie `accent`, nie eine feste Farbe.
+- **Anzeigetexte**: ein Name und eine Zusammenfassung, optional ein Autor und eine Lizenz.
+
+Ein Schlüssel, der nicht in den Tabellen unten steht, ist ein Fehler, ebenso ein doppelt geschriebener Schlüssel. Die Datei darf höchstens 16.384 Bytes groß sein.
+
+## Prüfen und rendern
+
+Führe diese Befehle in dem Ordner aus, der `theme.json` enthält. Sie brauchen das Werkzeug `marsdawn`: siehe [marsdawn für Agenten](/de/cli/agents/).
+
+```
+marsdawn theme validate theme.json --require-complete --json
+marsdawn theme css theme.json --json
+marsdawn theme preview theme.json --appearance light -o light.png
+marsdawn theme preview theme.json --appearance dark -o dark.png
+```
+
+- Exit-Codes: 0 gültig, 1 ungültig mit Regel-IDs, 2 Datei nicht gefunden, 64 falsche Verwendung. `preview` kennt zusätzlich 4, wenn die PNG-Datei schon existiert (`--force` übergeben oder einen anderen Namen wählen), und 5, wenn das Rendern fehlschlägt.
+- Mit `--json` listet ein ungültiges Thema seine Probleme unter `issues` auf, jedes mit einer `rule`-ID, einem `path` und einer `message`. Behebe sie und führe den Befehl erneut aus.
+- `--require-complete` ist die Prüfung für ein Thema, das veröffentlicht werden soll: Es verlangt zusätzlich die Farben `syntax` und `diagram` in beiden Paletten.
+- `css` gibt das CSS aus, das die Vorschau verwendet. `preview` rendert ein Beispieldokument als PNG. Beide prüfen zuerst, ein ungültiges Thema wird also nicht gerendert.
+- Sieh dir das helle und das dunkle PNG an, bevor du das Thema übergibst.
+
+## Mit einem eingebauten Thema beginnen
+
+Kopiere eines der vier eingebauten Themen und ändere es. Jedes ist eine vollständige, gültige Datei:
+
+- [`/assets/theme-sim/kit/themes/dawn.json`](/assets/theme-sim/kit/themes/dawn.json): der Standard und das Beispiel unten
+- [`/assets/theme-sim/kit/themes/classic.json`](/assets/theme-sim/kit/themes/classic.json): eine schlichtere, dokumentartige Palette
+- [`/assets/theme-sim/kit/themes/modern.json`](/assets/theme-sim/kit/themes/modern.json): eine kühlere, zeitgemäßere Palette
+- [`/assets/theme-sim/kit/themes/vivid.json`](/assets/theme-sim/kit/themes/vivid.json): eine hellere Palette mit mehr Kontrast
+
+### Beispiel: Dawn
+
+Das ist `dawn.json`, Byte für Byte. Ihre einzige Stiloption ist eine dünne Linie in der Akzentfarbe für `hr`.
+
+```
+{
+  "schemaVersion": 1,
+  "id": "dawn",
+  "version": "1.0.0",
+  "name": { "en": "Dawn" },
+  "summary": { "en": "Warm Martian sunrise" },
+  "fontDesign": "sans",
+  "scenarios": ["agent-review"],
+  "light": {
+    "background": "#FFFDFB", "surface": "#F6F0EC", "text": "#26211F", "muted": "#6F6660",
+    "border": "#EADFD8", "heading": "#26211F", "accent": "#C8471B", "link": "#B03C0C", "quote": "#D97A4A",
+    "syntax": { "keyword": "#B03C0C", "string": "#2F6F5E", "comment": "#746B66", "number": "#9A5B00", "function": "#5B3E8C", "type": "#1F6FB2" },
+    "diagram": { "node": "#FBE9E0", "nodeBorder": "#CA6C3C", "text": "#26211F", "line": "#8A6A5C", "secondary": "#E6F1EE", "tertiary": "#FFF6F1", "note": "#FFF1D6" }
+  },
+  "dark": {
+    "background": "#1C1A1F", "surface": "#262229", "text": "#EBE4DF", "muted": "#A39992",
+    "border": "#3A343A", "heading": "#F4EEEA", "accent": "#FF8A50", "link": "#FF9E6B", "quote": "#E08A5C",
+    "syntax": { "keyword": "#FF9E6B", "string": "#7FD1B9", "comment": "#938A84", "number": "#F2C572", "function": "#C7A6F5", "type": "#6CB6FF" },
+    "diagram": { "node": "#3A2A26", "nodeBorder": "#E08A5C", "text": "#EBE4DF", "line": "#B8A69C", "secondary": "#23332F", "tertiary": "#2B2427", "note": "#3D3322" }
+  },
+  "style": {
+    "hr": { "style": { "type": "line", "color": "accent", "thickness": 1 } }
+  }
+}
+```
+
+## Felder
+
+Jedes Objekt unten wird auf dieselbe Weise gelesen. `required` heißt, der Schlüssel muss vorhanden sein, und ein Schlüssel, der nicht aufgeführt ist, ist ein Fehler.
+
+Typen: `string`, `integer`, `number`, `boolean`, `map` (Sprach-Tag auf Text), `enum` (einer der aufgeführten Werte), `role` (eine Palettenrolle) und `object` (die Tabelle, auf die verlinkt wird). Ein `[]` hinter einem Typ bedeutet eine Liste.
+
+### `theme.json`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `schemaVersion` | `integer` | `required` | Immer `1`. |
+| `id` | `string` | `required` | 1 bis 32 Zeichen: Kleinbuchstaben und Ziffern, in Abschnitten, die durch einzelne Bindestriche verbunden sind, etwa `calm-green`. |
+| `version` | `string` | `required` | `MAJOR.MINOR.PATCH`, etwa `1.0.0`. |
+| `name` | `map` | `required` | Sprach-Tag auf Text. `en` ist erforderlich; andere Schlüssel sind Sprach-Tags wie `zh-Hant`. Jeder Text hat höchstens 48 Zeichen, ohne Links und Zeilenumbrüche. |
+| `summary` | `map` | `required` | Dieselbe Form wie `name`, höchstens 120 Zeichen pro Text. |
+| `fontDesign` | `enum` | `required` | `sans`, `serif`, `rounded` |
+| `scenarios` | `enum[]` | `required` | `agent-review`, `technical-docs`, `formal-output`, `notes-sharing` — Eins oder zwei, ohne Wiederholung. Sie legen fest, wie viel Kontrast das Thema erreichen muss. |
+| `author` | `object` | `optional` | [`author`](#t-author) |
+| `license` | `string` | `optional` | Eine SPDX-Kennung, etwa `Apache-2.0`. Eingereichte Themen werden unter Apache-2.0 veröffentlicht. |
+| `light` | `object` | `required` | [`light, dark`](#t-palette) |
+| `dark` | `object` | `required` | [`light, dark`](#t-palette) |
+| `style` | `object` | `optional` | [`style`](#t-style) |
+
+### `author`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `name` | `string` | `required` | Höchstens 64 Zeichen, ohne Links. |
+| `github` | `string` | `optional` | Ein GitHub-Login. Bei einer Einreichung trägst du den der einreichenden Person ein. |
+
+### `light, dark`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `background` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `surface` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `text` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `muted` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `border` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `heading` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `accent` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `link` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `quote` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `syntax` | `object` | `optional` (zum Veröffentlichen erforderlich, mit `--require-complete`) | [`syntax`](#t-syntax-colors) |
+| `diagram` | `object` | `optional` (zum Veröffentlichen erforderlich, mit `--require-complete`) | [`diagram`](#t-diagram-colors) |
+
+### `syntax`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `keyword` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `string` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `comment` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `number` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `function` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `type` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+
+### `diagram`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `node` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `nodeBorder` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `text` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `line` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `secondary` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `tertiary` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+| `note` | `string` | `required` | `#` und sechs Hexziffern, etwa `#1C1C1C`. |
+
+### `style`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `bodySize` | `number` | `optional` | [Bereich](#t-numbers) |
+| `lineHeight` | `number` | `optional` | [Bereich](#t-numbers) |
+| `headingWeight` | `number` | `optional` | [Bereich](#t-numbers) |
+| `radius` | `number` | `optional` | [Bereich](#t-numbers) |
+| `maxWidth` | `number` | `optional` | [Bereich](#t-numbers) |
+| `h1` | `object` | `optional` | [`style.h1`](#t-style-h1) |
+| `h2` | `object` | `optional` | [`style.h2`](#t-style-h2) |
+| `blockquote` | `object` | `optional` | [`style.blockquote`](#t-style-blockquote) |
+| `hr` | `object` | `optional` | [`style.hr`](#t-style-hr) |
+| `table` | `object` | `optional` | [`style.table`](#t-style-table) |
+| `listMarker` | `role` | `optional` | [eine Palettenrolle](#roles) |
+| `inlineCode` | `role` | `optional` | [eine Palettenrolle](#roles) — Nur `text` oder eine Syntaxrolle: `keyword`, `string`, `comment`, `number`, `function` oder `type`. |
+| `link` | `object` | `optional` | [`style.link`](#t-style-link) |
+| `syntax` | `object` | `optional` | [`style.syntax`](#t-style-syntax) |
+
+### `style.h1`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `size` | `number` | `optional` | [Bereich](#t-numbers) |
+| `letterSpacing` | `number` | `optional` | [Bereich](#t-numbers) |
+| `align` | `enum` | `optional` | `left`, `center` |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.h2`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `letterSpacing` | `number` | `optional` | [Bereich](#t-numbers) |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.blockquote`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.hr`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.table`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `header` | `object` | `optional` | [`type`](#t-kinds) |
+| `verticalRules` | `boolean` | `optional` | `true`, `false` |
+| `rounded` | `boolean` | `optional` | `true`, `false` |
+
+### `style.link`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `underline` | `boolean` | `optional` | `true`, `false` |
+
+### `style.syntax`
+
+| Feld | Typ | Pflicht | Werte und Hinweise |
+|---|---|---|---|
+| `boldKeywords` | `boolean` | `optional` | `true`, `false` |
+
+### Optionen mit einem Typ
+
+Diese Stiloptionen sind Objekte mit einem `type`. Jeder `type` nimmt genau die für ihn aufgeführten Felder und keine anderen.
+
+| Option | type | Feld | Pflicht | Typ |
+|---|---|---|---|---|
+| `style.h1.decoration` | `rule` | — | — | — |
+| `style.h1.decoration` | `none` | — | — | — |
+| `style.h1.decoration` | `shortRule` | `color` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `from` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `to` | `required` | `role` |
+| `style.h2.decoration` | `rule` | — | — | — |
+| `style.h2.decoration` | `none` | — | — | — |
+| `style.h2.decoration` | `dot` | `color` | `required` | `role` |
+| `style.blockquote.style` | `bar` | `width` | `optional` | `number` [Bereich](#t-numbers) |
+| `style.blockquote.style` | `panel` | — | — | — |
+| `style.hr.style` | `line` | `color` | `optional` | `role` |
+| `style.hr.style` | `line` | `thickness` | `optional` | `number` [Bereich](#t-numbers) |
+| `style.hr.style` | `shortCentered` | `color` | `required` | `role` |
+| `style.hr.style` | `gradient` | `colors` | `required` | `role[]` Zwei oder drei Rollen. |
+| `style.table.header` | `surface` | — | — | — |
+| `style.table.header` | `accentRule` | `color` | `required` | `role` |
+| `style.table.header` | `filled` | `background` | `required` | `role` |
+| `style.table.header` | `filled` | `text` | `required` | `role` |
+| `style.table.header` | `filled` | `border` | `optional` | `role` |
+
+### Palettenrollen
+
+Eine Palettenrolle ist einer dieser Namen:
+
+`background`, `surface`, `text`, `muted`, `border`, `heading`, `accent`, `link`, `quote`, `keyword`, `string`, `comment`, `number`, `function`, `type`
+
+### Zahlen
+
+Eine Zahl wird auf das nächste Vielfache ihres Schritts gerundet und muss dann zwischen Min und Max liegen. Sonst lautet die Regel `number.range`.
+
+| Feld | Min | Max | Schritt |
+|---|---|---|---|
+| `style.bodySize` | `14` | `18` | `1` |
+| `style.lineHeight` | `1.4` | `1.9` | `0.05` |
+| `style.headingWeight` | `400` | `900` | `50` |
+| `style.radius` | `0` | `16` | `1` |
+| `style.maxWidth` | `600` | `1000` | `1` |
+| `style.h1.size` | `1.8` | `2.4` | `0.1` |
+| `style.h1.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.h2.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.blockquote.style.width` | `2` | `4` | `1` |
+| `style.hr.style.thickness` | `1` | `4` | `1` |
+
+## Was sonst noch geprüft wird
+
+- **Kontrast.** Jedes Farbpaar, das die Vorschau zeichnet, etwa `text` auf `background`, muss für Text 4,5:1 und für Linien und anderes Nicht-Text 3:1 erreichen. Die Szenarien, die du angibst, heben manche Farben auf 4,5:1. Die Meldung nennt das Paar, sein Verhältnis und das geforderte.
+- **Texte.** Ein Name, eine Zusammenfassung oder ein Autorenname, der leer oder zu lang ist oder einen Link, ein Steuerzeichen oder ein unsichtbares oder bidirektionales Formatzeichen enthält, wird abgelehnt.
+- **Regel-IDs.** Jedes Problem trägt eine, etwa `contrast.pair`, `color.hex`, `number.range`, `id.pattern`, `schema.unknownKey` oder `palette.incomplete`. Korrigiere die Datei nach dem, was die ID und der `path` sagen.
+
+## Als Link übergeben
+
+Die Seite [Ein Thema erstellen](/de/themes/new/) öffnet ein Thema aus einem Link, damit die Person es nach Augenmaß abstimmen kann. Der Link besteht aus der Adresse der Seite, dann `#theme=`, dann den Bytes der Datei als base64url ohne Auffüllzeichen. Die Datei darf höchstens 16.384 Bytes groß sein. Diese eine Zeile baut den Link in zsh und in bash, auf macOS und Linux:
+
+```
+printf 'https://marsdawn.southern-light.dev/de/themes/new/#theme=%s\n' "$(base64 < theme.json | tr -d '\n=' | tr '+/' '-_')"
+```
+
+Das Thema steht hinter einem `#`, das ein Browser nicht an die Website sendet, und die Website leitet es nirgendwohin weiter. Der Link bleibt aber im Verlauf deiner Shell und des Browsers, und jede Person, der du ihn schickst, kann das Thema lesen.
+
+## Einreichen
+
+Der Agent bereitet die Datei und den Link vor. Die Person reicht ein. Beide Wege verlangen das Developer Certificate of Origin und die Veröffentlichung unter Apache-2.0, und diese Bestätigung gibt die Person ab: Der Agent setzt das Häkchen nicht und unterschreibt nicht für sie.
+
+- **Issue.** Die Person öffnet den Link und klickt auf der Seite „Ein Thema erstellen“ auf **Submit** oder öffnet das [Issue-Formular](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml) und fügt das JSON in *Theme* ein. Ein Workflow prüft das Thema und antwortet.
+- **Pull Request.** Ändere nur `themes/<id>/theme.json`, setze `author.github` auf den Login des Pull-Request-Autors und signiere jeden Commit mit `git commit -s` (Sign-off). Die Regeln stehen in [CONTRIBUTING.md](https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md).
+
+Autorenname, Name, Zusammenfassung und GitHub-Login eines eingereichten Themas werden dauerhaft öffentlich. Setze `author.name` daher auf einen Namen, den die Person gern veröffentlicht.
+
+## Veröffentlichte Themen
+
+Wie veröffentlichte Themen aussehen, siehst du in der [Themengalerie](/de/themes/gallery/).
 
 ---
 
@@ -11936,6 +13437,7 @@ swift build -c release --product marsdawn
 - Une compétence en un seul fichier pour les agents qui lisent des instructions plutôt qu’un shell : [la compétence marsdawn](/fr/cli/skill/).
 - Un serveur MCP qui enveloppe ce même `export` : [marsdawn-mcp](/fr/cli/mcp/).
 - Pourquoi ce résultat JSON reste économique pour le contexte de l’agent : [une relecture économe en tokens](/fr/token-efficient-review/).
+- Créer un thème MarsDawn avec un agent : [Créer un thème avec votre agent](/fr/themes/agents/).
 
 ---
 
@@ -12139,6 +13641,8 @@ Exportez en PDF ou imprimez, et la page utilise la palette claire de votre thèm
 
 [Créez un thème dans votre navigateur](/fr/themes/new/) : choisissez des couleurs et quelques options de style, voyez-les appliquées en direct, et envoyez-le en issue GitHub pour relecture — pas d’installation, pas de git. [La galerie](/fr/themes/gallery/) montre chaque thème soumis qu’un mainteneur a relu et fusionné, filtrable selon son usage. Installez-en un dans l’app depuis Réglages › Apparence › Obtenir plus de thèmes…, et Coup d’œil l’utilise aussi dans le Finder.
 
+Vous travaillez avec un agent ? [Faites-lui créer le thème](/fr/themes/agents/), puis ajustez-le dans votre navigateur.
+
 ## Pour aller plus loin
 
 - Le pas-à-pas complet de l’export PDF, en ligne de commande : [Markdown en PDF](/fr/markdown-to-pdf/).
@@ -12157,7 +13661,303 @@ Choisissez ci-dessous une palette et quelques options de style. Le document d’
 
 Il vous faut un compte GitHub pour envoyer. Cette page elle-même n’exige ni installation ni git.
 
+Un agent IA peut écrire le fichier du thème à votre place : [Créer un thème avec votre agent](/fr/themes/agents/), puis ouvrez ici le lien qu’il vous donne pour l’ajuster.
+
 Cette page a besoin de JavaScript pour créer et prévisualiser un thème.
+
+---
+
+## Créer un thème avec votre agent
+
+Source: https://marsdawn.southern-light.dev/fr/themes/agents/
+
+# Créer un thème avec votre agent
+
+Une référence pour un agent IA qui crée un thème d’aperçu MarsDawn. L’agent écrit un seul `theme.json`, le vérifie et le rend avec l’outil en ligne de commande `marsdawn`, puis vous remet un lien. Vous l’ajustez à l’œil sur la page [Créer un thème](/fr/themes/new/) et vous le soumettez. Les tableaux de champs ci-dessous sont lus dans le code source du kit, et une vérification les maintient identiques.
+
+**Écrivez un `theme.json`, lancez `marsdawn theme validate theme.json --require-complete --json` jusqu’à obtenir le code de sortie 0, rendez-le avec `marsdawn theme preview` en clair et en sombre, puis donnez un lien à la personne.** Un thème n’est fait que de paramètres. Il ne contient jamais de CSS.
+
+## Ce qu’est un thème
+
+- **Des couleurs** pour le clair et pour le sombre : une palette de base, et des couleurs de syntaxe et de diagramme facultatives. Chacune est de la forme `#RRGGBB`.
+- **Un style de police** : `sans`, `serif` ou `rounded`.
+- **Un ensemble fermé d’options de style** : des nombres dans des plages fixes et des choix dans des listes fixes. Une couleur dans une option de style est toujours un rôle de palette comme `accent`, jamais une couleur littérale.
+- **Des textes affichés** : un nom et un résumé, et éventuellement un auteur et une licence.
+
+Une clé absente des tableaux ci-dessous est une erreur, tout comme une clé écrite deux fois. Le fichier fait au plus 16 384 octets.
+
+## Vérifier et rendre
+
+Lancez ces commandes dans le dossier qui contient `theme.json`. Elles demandent l’outil `marsdawn` : voir [marsdawn pour les agents](/fr/cli/agents/).
+
+```
+marsdawn theme validate theme.json --require-complete --json
+marsdawn theme css theme.json --json
+marsdawn theme preview theme.json --appearance light -o light.png
+marsdawn theme preview theme.json --appearance dark -o dark.png
+```
+
+- Codes de sortie : 0 valide, 1 invalide avec des identifiants de règle, 2 fichier introuvable, 64 erreur d’usage. `preview` ajoute 4 quand le PNG existe déjà (passez `--force` ou choisissez un autre nom) et 5 quand le rendu échoue.
+- Avec `--json`, un thème invalide énumère ses problèmes sous `issues`, chacun avec un identifiant `rule`, un `path` et un `message`. Corrigez-les et relancez la commande.
+- `--require-complete` est la vérification d’un thème destiné à être publié : elle exige aussi les couleurs `syntax` et `diagram` dans les deux palettes.
+- `css` affiche le CSS que sert l’aperçu. `preview` rend un document d’exemple en PNG. Les deux valident d’abord : un thème invalide ne produit aucun rendu.
+- Regardez le PNG clair et le PNG sombre avant de remettre le thème.
+
+## Partir d’un thème intégré
+
+Copiez l’un des quatre thèmes intégrés et modifiez-le. Chacun est un fichier complet et valide :
+
+- [`/assets/theme-sim/kit/themes/dawn.json`](/assets/theme-sim/kit/themes/dawn.json): le thème par défaut, et l’exemple ci-dessous
+- [`/assets/theme-sim/kit/themes/classic.json`](/assets/theme-sim/kit/themes/classic.json): une palette plus sobre, proche d’un document
+- [`/assets/theme-sim/kit/themes/modern.json`](/assets/theme-sim/kit/themes/modern.json): une palette plus froide et plus contemporaine
+- [`/assets/theme-sim/kit/themes/vivid.json`](/assets/theme-sim/kit/themes/vivid.json): une palette plus vive et plus contrastée
+
+### Exemple : Dawn
+
+Voici `dawn.json`, octet pour octet. Sa seule option de style est un fin filet de couleur d’accent pour `hr`.
+
+```
+{
+  "schemaVersion": 1,
+  "id": "dawn",
+  "version": "1.0.0",
+  "name": { "en": "Dawn" },
+  "summary": { "en": "Warm Martian sunrise" },
+  "fontDesign": "sans",
+  "scenarios": ["agent-review"],
+  "light": {
+    "background": "#FFFDFB", "surface": "#F6F0EC", "text": "#26211F", "muted": "#6F6660",
+    "border": "#EADFD8", "heading": "#26211F", "accent": "#C8471B", "link": "#B03C0C", "quote": "#D97A4A",
+    "syntax": { "keyword": "#B03C0C", "string": "#2F6F5E", "comment": "#746B66", "number": "#9A5B00", "function": "#5B3E8C", "type": "#1F6FB2" },
+    "diagram": { "node": "#FBE9E0", "nodeBorder": "#CA6C3C", "text": "#26211F", "line": "#8A6A5C", "secondary": "#E6F1EE", "tertiary": "#FFF6F1", "note": "#FFF1D6" }
+  },
+  "dark": {
+    "background": "#1C1A1F", "surface": "#262229", "text": "#EBE4DF", "muted": "#A39992",
+    "border": "#3A343A", "heading": "#F4EEEA", "accent": "#FF8A50", "link": "#FF9E6B", "quote": "#E08A5C",
+    "syntax": { "keyword": "#FF9E6B", "string": "#7FD1B9", "comment": "#938A84", "number": "#F2C572", "function": "#C7A6F5", "type": "#6CB6FF" },
+    "diagram": { "node": "#3A2A26", "nodeBorder": "#E08A5C", "text": "#EBE4DF", "line": "#B8A69C", "secondary": "#23332F", "tertiary": "#2B2427", "note": "#3D3322" }
+  },
+  "style": {
+    "hr": { "style": { "type": "line", "color": "accent", "thickness": 1 } }
+  }
+}
+```
+
+## Champs
+
+Chaque objet ci-dessous est lu de la même façon. `required` signifie que la clé doit être présente, et une clé qui n’est pas listée est une erreur.
+
+Types : `string`, `integer`, `number`, `boolean`, `map` (balise de langue vers texte), `enum` (l’une des valeurs listées), `role` (un rôle de palette) et `object` (le tableau vers lequel il renvoie). Un `[]` après un type signifie une liste.
+
+### `theme.json`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `schemaVersion` | `integer` | `required` | Toujours `1`. |
+| `id` | `string` | `required` | De 1 à 32 caractères : lettres minuscules et chiffres, en blocs reliés par des tirets simples, par exemple `calm-green`. |
+| `version` | `string` | `required` | `MAJOR.MINOR.PATCH`, par exemple `1.0.0`. |
+| `name` | `map` | `required` | Balise de langue vers texte. `en` est obligatoire ; les autres clés sont des balises de langue comme `zh-Hant`. Chaque texte compte au plus 48 caractères, sans lien ni saut de ligne. |
+| `summary` | `map` | `required` | Même forme que `name`, au plus 120 caractères par texte. |
+| `fontDesign` | `enum` | `required` | `sans`, `serif`, `rounded` |
+| `scenarios` | `enum[]` | `required` | `agent-review`, `technical-docs`, `formal-output`, `notes-sharing` — Un ou deux, sans répétition. Ils fixent le contraste que le thème doit atteindre. |
+| `author` | `object` | `optional` | [`author`](#t-author) |
+| `license` | `string` | `optional` | Un identifiant SPDX, par exemple `Apache-2.0`. Les thèmes soumis sont publiés sous Apache-2.0. |
+| `light` | `object` | `required` | [`light, dark`](#t-palette) |
+| `dark` | `object` | `required` | [`light, dark`](#t-palette) |
+| `style` | `object` | `optional` | [`style`](#t-style) |
+
+### `author`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `name` | `string` | `required` | Au plus 64 caractères, sans lien. |
+| `github` | `string` | `optional` | Un identifiant GitHub. Pour une soumission, indiquez celui de la personne qui soumet. |
+
+### `light, dark`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `background` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `surface` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `text` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `muted` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `border` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `heading` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `accent` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `link` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `quote` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `syntax` | `object` | `optional` (requis pour publier, avec `--require-complete`) | [`syntax`](#t-syntax-colors) |
+| `diagram` | `object` | `optional` (requis pour publier, avec `--require-complete`) | [`diagram`](#t-diagram-colors) |
+
+### `syntax`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `keyword` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `string` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `comment` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `number` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `function` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `type` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+
+### `diagram`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `node` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `nodeBorder` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `text` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `line` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `secondary` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `tertiary` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+| `note` | `string` | `required` | `#` suivi de six chiffres hexadécimaux, par exemple `#1C1C1C`. |
+
+### `style`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `bodySize` | `number` | `optional` | [plage](#t-numbers) |
+| `lineHeight` | `number` | `optional` | [plage](#t-numbers) |
+| `headingWeight` | `number` | `optional` | [plage](#t-numbers) |
+| `radius` | `number` | `optional` | [plage](#t-numbers) |
+| `maxWidth` | `number` | `optional` | [plage](#t-numbers) |
+| `h1` | `object` | `optional` | [`style.h1`](#t-style-h1) |
+| `h2` | `object` | `optional` | [`style.h2`](#t-style-h2) |
+| `blockquote` | `object` | `optional` | [`style.blockquote`](#t-style-blockquote) |
+| `hr` | `object` | `optional` | [`style.hr`](#t-style-hr) |
+| `table` | `object` | `optional` | [`style.table`](#t-style-table) |
+| `listMarker` | `role` | `optional` | [un rôle de palette](#roles) |
+| `inlineCode` | `role` | `optional` | [un rôle de palette](#roles) — Seulement `text` ou un rôle de syntaxe : `keyword`, `string`, `comment`, `number`, `function` ou `type`. |
+| `link` | `object` | `optional` | [`style.link`](#t-style-link) |
+| `syntax` | `object` | `optional` | [`style.syntax`](#t-style-syntax) |
+
+### `style.h1`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `size` | `number` | `optional` | [plage](#t-numbers) |
+| `letterSpacing` | `number` | `optional` | [plage](#t-numbers) |
+| `align` | `enum` | `optional` | `left`, `center` |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.h2`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `letterSpacing` | `number` | `optional` | [plage](#t-numbers) |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.blockquote`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.hr`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.table`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `header` | `object` | `optional` | [`type`](#t-kinds) |
+| `verticalRules` | `boolean` | `optional` | `true`, `false` |
+| `rounded` | `boolean` | `optional` | `true`, `false` |
+
+### `style.link`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `underline` | `boolean` | `optional` | `true`, `false` |
+
+### `style.syntax`
+
+| Champ | Type | Présence | Valeurs et remarques |
+|---|---|---|---|
+| `boldKeywords` | `boolean` | `optional` | `true`, `false` |
+
+### Options à type
+
+Ces options de style sont des objets avec un `type`. Chaque `type` accepte les champs listés pour lui, et aucun autre.
+
+| Option | type | Champ | Présence | Type |
+|---|---|---|---|---|
+| `style.h1.decoration` | `rule` | — | — | — |
+| `style.h1.decoration` | `none` | — | — | — |
+| `style.h1.decoration` | `shortRule` | `color` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `from` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `to` | `required` | `role` |
+| `style.h2.decoration` | `rule` | — | — | — |
+| `style.h2.decoration` | `none` | — | — | — |
+| `style.h2.decoration` | `dot` | `color` | `required` | `role` |
+| `style.blockquote.style` | `bar` | `width` | `optional` | `number` [plage](#t-numbers) |
+| `style.blockquote.style` | `panel` | — | — | — |
+| `style.hr.style` | `line` | `color` | `optional` | `role` |
+| `style.hr.style` | `line` | `thickness` | `optional` | `number` [plage](#t-numbers) |
+| `style.hr.style` | `shortCentered` | `color` | `required` | `role` |
+| `style.hr.style` | `gradient` | `colors` | `required` | `role[]` Deux ou trois rôles. |
+| `style.table.header` | `surface` | — | — | — |
+| `style.table.header` | `accentRule` | `color` | `required` | `role` |
+| `style.table.header` | `filled` | `background` | `required` | `role` |
+| `style.table.header` | `filled` | `text` | `required` | `role` |
+| `style.table.header` | `filled` | `border` | `optional` | `role` |
+
+### Rôles de palette
+
+Un rôle de palette est l’un de ces noms :
+
+`background`, `surface`, `text`, `muted`, `border`, `heading`, `accent`, `link`, `quote`, `keyword`, `string`, `comment`, `number`, `function`, `type`
+
+### Nombres
+
+Un nombre est arrondi au multiple le plus proche de son pas, puis doit se trouver entre le min et le max. Sinon la règle est `number.range`.
+
+| Champ | Min | Max | Pas |
+|---|---|---|---|
+| `style.bodySize` | `14` | `18` | `1` |
+| `style.lineHeight` | `1.4` | `1.9` | `0.05` |
+| `style.headingWeight` | `400` | `900` | `50` |
+| `style.radius` | `0` | `16` | `1` |
+| `style.maxWidth` | `600` | `1000` | `1` |
+| `style.h1.size` | `1.8` | `2.4` | `0.1` |
+| `style.h1.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.h2.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.blockquote.style.width` | `2` | `4` | `1` |
+| `style.hr.style.thickness` | `1` | `4` | `1` |
+
+## Ce qui est vérifié d’autre
+
+- **Contraste.** Chaque paire de couleurs que dessine l’aperçu, comme `text` sur `background`, doit atteindre 4,5:1 pour le texte et 3:1 pour les traits et le reste du non-texte. Les scénarios que vous indiquez portent certaines couleurs à 4,5:1. Le message nomme la paire, son rapport et celui qu’il faut.
+- **Textes.** Un nom, un résumé ou un nom d’auteur vide, trop long, ou contenant un lien, un caractère de contrôle ou un caractère de format invisible ou bidirectionnel est refusé.
+- **Identifiants de règle.** Chaque problème en porte un, par exemple `contrast.pair`, `color.hex`, `number.range`, `id.pattern`, `schema.unknownKey` ou `palette.incomplete`. Corrigez le fichier d’après ce que disent l’identifiant et le `path`.
+
+## Le remettre sous forme de lien
+
+La page [Créer un thème](/fr/themes/new/) ouvre un thème à partir d’un lien, pour que la personne puisse l’ajuster à l’œil. Le lien est l’adresse de la page, puis `#theme=`, puis les octets du fichier en base64url sans remplissage. Le fichier fait au plus 16 384 octets. Cette seule ligne construit le lien sous zsh et sous bash, sur macOS et sur Linux :
+
+```
+printf 'https://marsdawn.southern-light.dev/fr/themes/new/#theme=%s\n' "$(base64 < theme.json | tr -d '\n=' | tr '+/' '-_')"
+```
+
+Le thème voyage après un `#`, que le navigateur n’envoie pas au site, et le site ne le transmet nulle part. Le lien reste toutefois dans l’historique de votre shell et du navigateur, et toute personne à qui vous le collez peut lire le thème.
+
+## Le soumettre
+
+L’agent prépare le fichier et le lien. La personne soumet. Les deux voies demandent le Developer Certificate of Origin et la publication sous Apache-2.0, et c’est la personne qui fait cette attestation : l’agent ne coche pas la case et ne signe pas à sa place.
+
+- **Issue.** La personne ouvre le lien et appuie sur **Submit** dans la page « Créer un thème », ou ouvre le [formulaire d’issue](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml) et colle le JSON dans *Theme*. Un workflow vérifie le thème et répond.
+- **Pull request.** Ne modifiez que `themes/<id>/theme.json`, mettez dans `author.github` l’identifiant de l’auteur de la pull request et signez chaque commit avec `git commit -s`. Les règles sont dans [CONTRIBUTING.md](https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md).
+
+Le nom d’auteur, le nom, le résumé et l’identifiant GitHub d’un thème soumis deviennent publics de façon permanente : mettez dans `author.name` un nom que la personne accepte de publier.
+
+## Thèmes publiés
+
+Pour voir à quoi ressemblent les thèmes publiés, parcourez la [galerie de thèmes](/fr/themes/gallery/).
 
 ---
 
@@ -14122,6 +15922,7 @@ swift build -c release --product marsdawn
 - Una skill de un solo archivo para agentes que leen instrucciones en lugar de usar una shell: [la skill de marsdawn](/es/cli/skill/).
 - Un servidor MCP que envuelve este mismo `export`: [marsdawn-mcp](/es/cli/mcp/).
 - Por qué este resultado JSON sale barato para el contexto del propio agente: [revisión con pocos tokens](/es/token-efficient-review/).
+- Crear un tema de MarsDawn con un agente: [Crea un tema con tu agente](/es/themes/agents/).
 
 ---
 
@@ -14325,6 +16126,8 @@ Exporta a PDF o imprime, y la página usa la paleta clara de tu tema: los diagra
 
 [Crea un tema en tu navegador](/es/themes/new/): elige colores y unas pocas opciones de estilo, míralos aplicados en vivo y envíalo como un issue de GitHub para revisión — sin instalación, sin git. [La galería](/es/themes/gallery/) muestra cada tema enviado que un mantenedor haya revisado y fusionado, filtrable por para qué sirve. Instala cualquiera en la app desde Ajustes › Aspecto › Obtener más temas…, y Vista rápida en el Finder también lo usa.
 
+¿Trabajas con un agente? [Haz que cree el tema](/es/themes/agents/) y luego afínalo en el navegador.
+
 ## Siguiente
 
 - La guía completa de exportación a PDF, desde la línea de comandos: [Markdown a PDF](/es/markdown-to-pdf/).
@@ -14343,7 +16146,303 @@ Elige abajo una paleta y unas pocas opciones de estilo. El documento de ejemplo 
 
 Para enviar necesitas una cuenta de GitHub. Esta página en sí no requiere instalación ni git.
 
+Un agente de IA puede escribir el archivo del tema por ti: [Crea un tema con tu agente](/es/themes/agents/), y abre aquí el enlace que te dé para afinarlo.
+
 Esta página necesita JavaScript para crear y previsualizar un tema.
+
+---
+
+## Crea un tema con tu agente
+
+Source: https://marsdawn.southern-light.dev/es/themes/agents/
+
+# Crea un tema con tu agente
+
+Una referencia para un agente de IA que crea un tema de vista previa de MarsDawn. El agente escribe un único `theme.json`, lo comprueba y lo renderiza con la herramienta de línea de comandos `marsdawn` y te da un enlace. Tú lo afinas a ojo en la página [Crear un tema](/es/themes/new/) y lo envías. Las tablas de campos de abajo se leen del código fuente del kit, y una comprobación las mantiene iguales.
+
+**Escribe un `theme.json`, ejecuta `marsdawn theme validate theme.json --require-complete --json` hasta que termine con código 0, renderízalo con `marsdawn theme preview` en claro y en oscuro y después dale un enlace a la persona.** Un tema son solo parámetros. Nunca contiene CSS.
+
+## Qué es un tema
+
+- **Colores** para claro y para oscuro: una paleta base y, opcionalmente, colores de sintaxis y de diagramas. Cada uno es `#RRGGBB`.
+- **Un diseño de fuente**: `sans`, `serif` o `rounded`.
+- **Un conjunto cerrado de opciones de estilo**: números dentro de rangos fijos y elecciones de listas fijas. Un color en una opción de estilo es siempre un rol de la paleta, como `accent`, nunca un color literal.
+- **Textos visibles**: un nombre y un resumen y, opcionalmente, un autor y una licencia.
+
+Una clave que no está en las tablas de abajo es un error, y también lo es una clave escrita dos veces. El archivo pesa como máximo 16 384 bytes.
+
+## Comprobar y renderizar
+
+Ejecuta estos comandos en la carpeta que contiene `theme.json`. Necesitan la herramienta `marsdawn`: consulta [marsdawn para agentes](/es/cli/agents/).
+
+```
+marsdawn theme validate theme.json --require-complete --json
+marsdawn theme css theme.json --json
+marsdawn theme preview theme.json --appearance light -o light.png
+marsdawn theme preview theme.json --appearance dark -o dark.png
+```
+
+- Códigos de salida: 0 válido, 1 inválido con identificadores de regla, 2 archivo no encontrado, 64 error de uso. `preview` añade 4 cuando el PNG ya existe (pasa `--force` o elige otro nombre) y 5 cuando falla el renderizado.
+- Con `--json`, un tema inválido lista sus problemas en `issues`, cada uno con un identificador `rule`, un `path` y un `message`. Corrígelos y vuelve a ejecutarlo.
+- `--require-complete` es la comprobación para un tema que se va a publicar: exige además los colores `syntax` y `diagram` en las dos paletas.
+- `css` imprime el CSS que sirve la vista previa. `preview` renderiza un documento de ejemplo en un PNG. Ambos validan primero, así que un tema inválido no se renderiza.
+- Mira el PNG claro y el oscuro antes de entregar el tema.
+
+## Partir de un tema integrado
+
+Copia uno de los cuatro temas integrados y cámbialo. Cada uno es un archivo completo y válido:
+
+- [`/assets/theme-sim/kit/themes/dawn.json`](/assets/theme-sim/kit/themes/dawn.json): el predeterminado y el ejemplo de abajo
+- [`/assets/theme-sim/kit/themes/classic.json`](/assets/theme-sim/kit/themes/classic.json): una paleta más sobria, parecida a la de un documento
+- [`/assets/theme-sim/kit/themes/modern.json`](/assets/theme-sim/kit/themes/modern.json): una paleta más fría y más actual
+- [`/assets/theme-sim/kit/themes/vivid.json`](/assets/theme-sim/kit/themes/vivid.json): una paleta más viva y de más contraste
+
+### Ejemplo: Dawn
+
+Este es `dawn.json`, byte por byte. Su única opción de estilo es una línea fina del color de acento para `hr`.
+
+```
+{
+  "schemaVersion": 1,
+  "id": "dawn",
+  "version": "1.0.0",
+  "name": { "en": "Dawn" },
+  "summary": { "en": "Warm Martian sunrise" },
+  "fontDesign": "sans",
+  "scenarios": ["agent-review"],
+  "light": {
+    "background": "#FFFDFB", "surface": "#F6F0EC", "text": "#26211F", "muted": "#6F6660",
+    "border": "#EADFD8", "heading": "#26211F", "accent": "#C8471B", "link": "#B03C0C", "quote": "#D97A4A",
+    "syntax": { "keyword": "#B03C0C", "string": "#2F6F5E", "comment": "#746B66", "number": "#9A5B00", "function": "#5B3E8C", "type": "#1F6FB2" },
+    "diagram": { "node": "#FBE9E0", "nodeBorder": "#CA6C3C", "text": "#26211F", "line": "#8A6A5C", "secondary": "#E6F1EE", "tertiary": "#FFF6F1", "note": "#FFF1D6" }
+  },
+  "dark": {
+    "background": "#1C1A1F", "surface": "#262229", "text": "#EBE4DF", "muted": "#A39992",
+    "border": "#3A343A", "heading": "#F4EEEA", "accent": "#FF8A50", "link": "#FF9E6B", "quote": "#E08A5C",
+    "syntax": { "keyword": "#FF9E6B", "string": "#7FD1B9", "comment": "#938A84", "number": "#F2C572", "function": "#C7A6F5", "type": "#6CB6FF" },
+    "diagram": { "node": "#3A2A26", "nodeBorder": "#E08A5C", "text": "#EBE4DF", "line": "#B8A69C", "secondary": "#23332F", "tertiary": "#2B2427", "note": "#3D3322" }
+  },
+  "style": {
+    "hr": { "style": { "type": "line", "color": "accent", "thickness": 1 } }
+  }
+}
+```
+
+## Campos
+
+Cada objeto de abajo se lee de la misma manera. `required` significa que la clave debe estar presente, y una clave que no figura en la lista es un error.
+
+Tipos: `string`, `integer`, `number`, `boolean`, `map` (etiqueta de idioma a texto), `enum` (uno de los valores listados), `role` (un rol de la paleta) y `object` (la tabla a la que enlaza). Un `[]` después de un tipo significa una lista.
+
+### `theme.json`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `schemaVersion` | `integer` | `required` | Siempre `1`. |
+| `id` | `string` | `required` | De 1 a 32 caracteres: letras minúsculas y dígitos, en tramos unidos por guiones simples, como `calm-green`. |
+| `version` | `string` | `required` | `MAJOR.MINOR.PATCH`, como `1.0.0`. |
+| `name` | `map` | `required` | Etiqueta de idioma a texto. `en` es obligatoria; las demás claves son etiquetas de idioma como `zh-Hant`. Cada texto tiene como máximo 48 caracteres, sin enlaces ni saltos de línea. |
+| `summary` | `map` | `required` | La misma forma que `name`, con un máximo de 120 caracteres por texto. |
+| `fontDesign` | `enum` | `required` | `sans`, `serif`, `rounded` |
+| `scenarios` | `enum[]` | `required` | `agent-review`, `technical-docs`, `formal-output`, `notes-sharing` — Uno o dos, sin repetir. Fijan cuánto contraste debe alcanzar el tema. |
+| `author` | `object` | `optional` | [`author`](#t-author) |
+| `license` | `string` | `optional` | Un identificador SPDX, como `Apache-2.0`. Los temas enviados se publican bajo Apache-2.0. |
+| `light` | `object` | `required` | [`light, dark`](#t-palette) |
+| `dark` | `object` | `required` | [`light, dark`](#t-palette) |
+| `style` | `object` | `optional` | [`style`](#t-style) |
+
+### `author`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `name` | `string` | `required` | Como máximo 64 caracteres, sin enlaces. |
+| `github` | `string` | `optional` | Un usuario de GitHub. En un envío, pon el de quien lo envía. |
+
+### `light, dark`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `background` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `surface` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `text` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `muted` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `border` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `heading` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `accent` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `link` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `quote` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `syntax` | `object` | `optional` (obligatorio para publicar, con `--require-complete`) | [`syntax`](#t-syntax-colors) |
+| `diagram` | `object` | `optional` (obligatorio para publicar, con `--require-complete`) | [`diagram`](#t-diagram-colors) |
+
+### `syntax`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `keyword` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `string` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `comment` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `number` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `function` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `type` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+
+### `diagram`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `node` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `nodeBorder` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `text` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `line` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `secondary` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `tertiary` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+| `note` | `string` | `required` | `#` y seis dígitos hexadecimales, como `#1C1C1C`. |
+
+### `style`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `bodySize` | `number` | `optional` | [rango](#t-numbers) |
+| `lineHeight` | `number` | `optional` | [rango](#t-numbers) |
+| `headingWeight` | `number` | `optional` | [rango](#t-numbers) |
+| `radius` | `number` | `optional` | [rango](#t-numbers) |
+| `maxWidth` | `number` | `optional` | [rango](#t-numbers) |
+| `h1` | `object` | `optional` | [`style.h1`](#t-style-h1) |
+| `h2` | `object` | `optional` | [`style.h2`](#t-style-h2) |
+| `blockquote` | `object` | `optional` | [`style.blockquote`](#t-style-blockquote) |
+| `hr` | `object` | `optional` | [`style.hr`](#t-style-hr) |
+| `table` | `object` | `optional` | [`style.table`](#t-style-table) |
+| `listMarker` | `role` | `optional` | [un rol de la paleta](#roles) |
+| `inlineCode` | `role` | `optional` | [un rol de la paleta](#roles) — Solo `text` o un rol de sintaxis: `keyword`, `string`, `comment`, `number`, `function` o `type`. |
+| `link` | `object` | `optional` | [`style.link`](#t-style-link) |
+| `syntax` | `object` | `optional` | [`style.syntax`](#t-style-syntax) |
+
+### `style.h1`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `size` | `number` | `optional` | [rango](#t-numbers) |
+| `letterSpacing` | `number` | `optional` | [rango](#t-numbers) |
+| `align` | `enum` | `optional` | `left`, `center` |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.h2`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `letterSpacing` | `number` | `optional` | [rango](#t-numbers) |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.blockquote`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.hr`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.table`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `header` | `object` | `optional` | [`type`](#t-kinds) |
+| `verticalRules` | `boolean` | `optional` | `true`, `false` |
+| `rounded` | `boolean` | `optional` | `true`, `false` |
+
+### `style.link`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `underline` | `boolean` | `optional` | `true`, `false` |
+
+### `style.syntax`
+
+| Campo | Tipo | Presencia | Valores y notas |
+|---|---|---|---|
+| `boldKeywords` | `boolean` | `optional` | `true`, `false` |
+
+### Opciones con un tipo
+
+Estas opciones de estilo son objetos con un `type`. Cada `type` admite los campos listados para él y ningún otro.
+
+| Opción | type | Campo | Presencia | Tipo |
+|---|---|---|---|---|
+| `style.h1.decoration` | `rule` | — | — | — |
+| `style.h1.decoration` | `none` | — | — | — |
+| `style.h1.decoration` | `shortRule` | `color` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `from` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `to` | `required` | `role` |
+| `style.h2.decoration` | `rule` | — | — | — |
+| `style.h2.decoration` | `none` | — | — | — |
+| `style.h2.decoration` | `dot` | `color` | `required` | `role` |
+| `style.blockquote.style` | `bar` | `width` | `optional` | `number` [rango](#t-numbers) |
+| `style.blockquote.style` | `panel` | — | — | — |
+| `style.hr.style` | `line` | `color` | `optional` | `role` |
+| `style.hr.style` | `line` | `thickness` | `optional` | `number` [rango](#t-numbers) |
+| `style.hr.style` | `shortCentered` | `color` | `required` | `role` |
+| `style.hr.style` | `gradient` | `colors` | `required` | `role[]` Dos o tres roles. |
+| `style.table.header` | `surface` | — | — | — |
+| `style.table.header` | `accentRule` | `color` | `required` | `role` |
+| `style.table.header` | `filled` | `background` | `required` | `role` |
+| `style.table.header` | `filled` | `text` | `required` | `role` |
+| `style.table.header` | `filled` | `border` | `optional` | `role` |
+
+### Roles de la paleta
+
+Un rol de la paleta es uno de estos nombres:
+
+`background`, `surface`, `text`, `muted`, `border`, `heading`, `accent`, `link`, `quote`, `keyword`, `string`, `comment`, `number`, `function`, `type`
+
+### Números
+
+Un número se ajusta al múltiplo más cercano de su paso y después debe estar entre el mínimo y el máximo. Si no, la regla es `number.range`.
+
+| Campo | Mín. | Máx. | Paso |
+|---|---|---|---|
+| `style.bodySize` | `14` | `18` | `1` |
+| `style.lineHeight` | `1.4` | `1.9` | `0.05` |
+| `style.headingWeight` | `400` | `900` | `50` |
+| `style.radius` | `0` | `16` | `1` |
+| `style.maxWidth` | `600` | `1000` | `1` |
+| `style.h1.size` | `1.8` | `2.4` | `0.1` |
+| `style.h1.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.h2.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.blockquote.style.width` | `2` | `4` | `1` |
+| `style.hr.style.thickness` | `1` | `4` | `1` |
+
+## Qué más se comprueba
+
+- **Contraste.** Cada par de colores que dibuja la vista previa, como `text` sobre `background`, debe alcanzar 4,5:1 para el texto y 3:1 para las líneas y lo demás que no es texto. Los escenarios que indicas suben algunos colores a 4,5:1. El mensaje nombra el par, su proporción y la que necesita.
+- **Textos.** Se rechaza un nombre, un resumen o un nombre de autor que esté vacío, sea demasiado largo o contenga un enlace, un carácter de control o un carácter de formato invisible o bidireccional.
+- **Identificadores de regla.** Cada problema lleva uno, como `contrast.pair`, `color.hex`, `number.range`, `id.pattern`, `schema.unknownKey` o `palette.incomplete`. Corrige el archivo según lo que dicen el identificador y el `path`.
+
+## Entrégalo como un enlace
+
+La página [Crear un tema](/es/themes/new/) abre un tema desde un enlace, para que la persona pueda afinarlo a ojo. El enlace es la dirección de esa página, luego `#theme=` y luego los bytes del archivo en base64url sin relleno. El archivo puede pesar como máximo 16 384 bytes. Esta única línea construye el enlace en zsh y en bash, en macOS y en Linux:
+
+```
+printf 'https://marsdawn.southern-light.dev/es/themes/new/#theme=%s\n' "$(base64 < theme.json | tr -d '\n=' | tr '+/' '-_')"
+```
+
+El tema viaja detrás de un `#`, que el navegador no envía al sitio, y el sitio no lo envía a ninguna parte. Eso sí, el enlace queda en el historial de tu shell y en el del navegador, y cualquiera a quien se lo pegues puede leer el tema.
+
+## Envíalo
+
+El agente prepara el archivo y el enlace. La persona lo envía. Las dos vías piden el Developer Certificate of Origin y la publicación bajo Apache-2.0, y esa certificación la hace la persona: el agente no marca la casilla ni firma por ella.
+
+- **Issue.** La persona abre el enlace y pulsa **Submit** en la página «Crear un tema», o abre el [formulario de issue](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml) y pega el JSON en *Theme*. Un workflow comprueba el tema y responde.
+- **Pull request.** Cambia solo `themes/<id>/theme.json`, pon en `author.github` el usuario del autor de la pull request y firma cada commit con `git commit -s`. Las reglas están en [CONTRIBUTING.md](https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md).
+
+El nombre del autor, el nombre, el resumen y el usuario de GitHub de un tema enviado pasan a ser públicos de forma permanente, así que pon en `author.name` un nombre que la persona esté contenta de publicar.
+
+## Temas publicados
+
+Para ver cómo son los temas publicados, explora la [galería de temas](/es/themes/gallery/).
 
 ---
 
@@ -16308,6 +18407,7 @@ swift build -c release --product marsdawn
 - 셸 대신 지침 파일을 읽는 에이전트를 위한 파일 하나짜리 스킬: [marsdawn 스킬](/ko/cli/skill/).
 - 이 `export`를 그대로 감싼 MCP 서버: [marsdawn-mcp](/ko/cli/mcp/).
 - 이 JSON 결과가 에이전트 자신의 컨텍스트에 부담이 적은 이유: [토큰을 아끼는 검토](/ko/token-efficient-review/).
+- 에이전트로 MarsDawn 테마 만들기: [에이전트와 함께 테마 만들기](/ko/themes/agents/).
 
 ---
 
@@ -16511,6 +18611,8 @@ PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레�
 
 [브라우저에서 테마를 만드세요](/ko/themes/new/). 색과 몇 가지 스타일 옵션을 고르고, 실시간으로 적용된 모습을 본 뒤, 검토용 GitHub 이슈로 제출하면 됩니다. 설치도 git도 필요 없습니다. [갤러리](/ko/themes/gallery/)에는 유지 관리자가 검토하고 병합한 제출 테마가 나열되며, 용도로 걸러 볼 수 있습니다. 앱의 설정 › 화면 모드 › 테마 더 받기…에서 설치할 수 있고, Finder의 훑어보기에도 적용됩니다.
 
+에이전트와 작업하고 있나요? [에이전트에게 테마를 만들게 하고](/ko/themes/agents/) 브라우저에서 다듬으세요.
+
 ## 다음
 
 - 명령줄에서 PDF로 내보내는 전체 안내: [Markdown을 PDF로](/ko/markdown-to-pdf/).
@@ -16529,7 +18631,303 @@ Source: https://marsdawn.southern-light.dev/ko/themes/new/
 
 제출하려면 GitHub 계정이 필요합니다. 이 페이지 자체는 설치도 git도 필요 없습니다.
 
+AI 에이전트가 테마 파일을 대신 써 줄 수 있습니다. [에이전트와 함께 테마 만들기](/ko/themes/agents/)를 보고, 건네받은 링크를 여기서 열어 다듬으세요.
+
 이 페이지에서 테마를 만들고 미리 보려면 JavaScript가 필요합니다.
+
+---
+
+## 에이전트와 함께 테마 만들기
+
+Source: https://marsdawn.southern-light.dev/ko/themes/agents/
+
+# 에이전트와 함께 테마 만들기
+
+MarsDawn 미리보기 테마를 만드는 AI 에이전트를 위한 참고 자료입니다. 에이전트는 `theme.json` 하나를 쓰고 명령줄 도구 `marsdawn`으로 검사하고 렌더링한 뒤 링크를 건넵니다. 사람은 [테마 만들기](/ko/themes/new/) 페이지에서 눈으로 다듬어 제출합니다. 아래 필드 표는 kit의 소스 코드에서 직접 읽은 것이며, 검사가 둘이 같음을 보장합니다.
+
+**`theme.json`을 쓰고, 종료 코드가 0이 될 때까지 `marsdawn theme validate theme.json --require-complete --json`을 실행하고, `marsdawn theme preview`로 라이트와 다크를 렌더링한 뒤 사람에게 링크를 건네세요.** 테마는 매개변수일 뿐이며 CSS를 담지 않습니다.
+
+## 테마란 무엇인가
+
+- 라이트와 다크 각각의 **색**: 기본 팔레트와 선택 사항인 구문 색, 다이어그램 색. 모두 `#RRGGBB` 형식입니다.
+- **글꼴 디자인**: `sans`, `serif`, `rounded` 중 하나.
+- **닫힌 스타일 옵션 집합**: 고정된 범위의 숫자와 고정된 목록에서 고르는 값. 스타일 옵션의 색은 항상 `accent` 같은 팔레트 역할이며 색 값을 직접 쓰지 않습니다.
+- **표시 문자열**: 이름과 요약, 그리고 선택 사항인 작성자와 라이선스.
+
+아래 표에 없는 키는 오류이며, 같은 키를 두 번 쓰는 것도 오류입니다. 파일은 최대 16,384바이트입니다.
+
+## 검사하고 렌더링하기
+
+`theme.json`이 있는 폴더에서 실행하세요. `marsdawn` 도구가 필요합니다. [에이전트를 위한 marsdawn](/ko/cli/agents/)을 보세요.
+
+```
+marsdawn theme validate theme.json --require-complete --json
+marsdawn theme css theme.json --json
+marsdawn theme preview theme.json --appearance light -o light.png
+marsdawn theme preview theme.json --appearance dark -o dark.png
+```
+
+- 종료 코드: 0은 유효, 1은 규칙 ID와 함께 무효, 2는 파일 없음, 64는 사용법 오류입니다. `preview`에는 PNG가 이미 있을 때의 4(`--force`를 주거나 다른 이름을 고르세요)와 렌더링 실패의 5가 더해집니다.
+- `--json`을 주면 무효한 테마는 `issues` 아래에 문제를 나열하며, 각각 `rule` ID, `path`, `message`가 있습니다. 고친 뒤 다시 실행하세요.
+- `--require-complete`는 게시할 테마를 위한 검사입니다. 두 팔레트 모두에 `syntax`와 `diagram` 색도 요구합니다.
+- `css`는 미리보기가 쓰는 CSS를 출력하고, `preview`는 예시 문서를 PNG로 렌더링합니다. 둘 다 먼저 검증하므로 무효한 테마는 렌더링되지 않습니다.
+- 테마를 건네기 전에 라이트와 다크 PNG를 둘 다 확인하세요.
+
+## 기본 제공 테마에서 시작하기
+
+기본 제공 테마 네 가지 중 하나를 복사해 고치세요. 모두 완전하고 유효한 파일입니다.
+
+- [`/assets/theme-sim/kit/themes/dawn.json`](/assets/theme-sim/kit/themes/dawn.json): 기본값이며 아래 예시
+- [`/assets/theme-sim/kit/themes/classic.json`](/assets/theme-sim/kit/themes/classic.json): 더 차분한 문서 같은 팔레트
+- [`/assets/theme-sim/kit/themes/modern.json`](/assets/theme-sim/kit/themes/modern.json): 더 차갑고 현대적인 팔레트
+- [`/assets/theme-sim/kit/themes/vivid.json`](/assets/theme-sim/kit/themes/vivid.json): 더 밝고 대비가 큰 팔레트
+
+### 예시: Dawn
+
+`dawn.json`을 한 바이트도 바꾸지 않고 옮긴 것입니다. 스타일 옵션은 `hr`의 얇은 강조색 선 하나뿐입니다.
+
+```
+{
+  "schemaVersion": 1,
+  "id": "dawn",
+  "version": "1.0.0",
+  "name": { "en": "Dawn" },
+  "summary": { "en": "Warm Martian sunrise" },
+  "fontDesign": "sans",
+  "scenarios": ["agent-review"],
+  "light": {
+    "background": "#FFFDFB", "surface": "#F6F0EC", "text": "#26211F", "muted": "#6F6660",
+    "border": "#EADFD8", "heading": "#26211F", "accent": "#C8471B", "link": "#B03C0C", "quote": "#D97A4A",
+    "syntax": { "keyword": "#B03C0C", "string": "#2F6F5E", "comment": "#746B66", "number": "#9A5B00", "function": "#5B3E8C", "type": "#1F6FB2" },
+    "diagram": { "node": "#FBE9E0", "nodeBorder": "#CA6C3C", "text": "#26211F", "line": "#8A6A5C", "secondary": "#E6F1EE", "tertiary": "#FFF6F1", "note": "#FFF1D6" }
+  },
+  "dark": {
+    "background": "#1C1A1F", "surface": "#262229", "text": "#EBE4DF", "muted": "#A39992",
+    "border": "#3A343A", "heading": "#F4EEEA", "accent": "#FF8A50", "link": "#FF9E6B", "quote": "#E08A5C",
+    "syntax": { "keyword": "#FF9E6B", "string": "#7FD1B9", "comment": "#938A84", "number": "#F2C572", "function": "#C7A6F5", "type": "#6CB6FF" },
+    "diagram": { "node": "#3A2A26", "nodeBorder": "#E08A5C", "text": "#EBE4DF", "line": "#B8A69C", "secondary": "#23332F", "tertiary": "#2B2427", "note": "#3D3322" }
+  },
+  "style": {
+    "hr": { "style": { "type": "line", "color": "accent", "thickness": 1 } }
+  }
+}
+```
+
+## 필드
+
+아래의 모든 객체는 같은 방식으로 읽힙니다. `required`는 키가 반드시 있어야 한다는 뜻이며, 나열되지 않은 키는 오류입니다.
+
+타입: `string`, `integer`, `number`, `boolean`, `map`(언어 태그에서 텍스트로), `enum`(나열된 값 중 하나), `role`(팔레트 역할), `object`(연결된 표). 타입 뒤의 `[]`는 목록을 뜻합니다.
+
+### `theme.json`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `schemaVersion` | `integer` | `required` | 항상 `1`. |
+| `id` | `string` | `required` | 1자에서 32자: 소문자와 숫자가 하이픈 하나로 이어진 덩어리, 예: `calm-green`. |
+| `version` | `string` | `required` | `MAJOR.MINOR.PATCH`, 예: `1.0.0`. |
+| `name` | `map` | `required` | 언어 태그에서 텍스트로. `en`은 필수이며, 다른 키는 `zh-Hant` 같은 언어 태그입니다. 각 텍스트는 최대 48자이며 링크와 줄바꿈을 넣을 수 없습니다. |
+| `summary` | `map` | `required` | `name`과 같은 형식이며 텍스트당 최대 120자. |
+| `fontDesign` | `enum` | `required` | `sans`, `serif`, `rounded` |
+| `scenarios` | `enum[]` | `required` | `agent-review`, `technical-docs`, `formal-output`, `notes-sharing` — 하나 또는 둘, 중복 불가. 테마가 달성해야 하는 대비 수준을 정합니다. |
+| `author` | `object` | `optional` | [`author`](#t-author) |
+| `license` | `string` | `optional` | SPDX 식별자, 예: `Apache-2.0`. 제출된 테마는 Apache-2.0으로 게시됩니다. |
+| `light` | `object` | `required` | [`light, dark`](#t-palette) |
+| `dark` | `object` | `required` | [`light, dark`](#t-palette) |
+| `style` | `object` | `optional` | [`style`](#t-style) |
+
+### `author`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `name` | `string` | `required` | 최대 64자, 링크 불가. |
+| `github` | `string` | `optional` | GitHub 로그인. 제출할 때는 제출하는 사람의 것을 넣으세요. |
+
+### `light, dark`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `background` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `surface` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `text` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `muted` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `border` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `heading` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `accent` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `link` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `quote` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `syntax` | `object` | `optional` (게시하려면 필수, `--require-complete`로 검사) | [`syntax`](#t-syntax-colors) |
+| `diagram` | `object` | `optional` (게시하려면 필수, `--require-complete`로 검사) | [`diagram`](#t-diagram-colors) |
+
+### `syntax`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `keyword` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `string` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `comment` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `number` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `function` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `type` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+
+### `diagram`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `node` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `nodeBorder` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `text` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `line` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `secondary` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `tertiary` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+| `note` | `string` | `required` | `#`과 16진수 여섯 자리, 예: `#1C1C1C`. |
+
+### `style`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `bodySize` | `number` | `optional` | [범위](#t-numbers) |
+| `lineHeight` | `number` | `optional` | [범위](#t-numbers) |
+| `headingWeight` | `number` | `optional` | [범위](#t-numbers) |
+| `radius` | `number` | `optional` | [범위](#t-numbers) |
+| `maxWidth` | `number` | `optional` | [범위](#t-numbers) |
+| `h1` | `object` | `optional` | [`style.h1`](#t-style-h1) |
+| `h2` | `object` | `optional` | [`style.h2`](#t-style-h2) |
+| `blockquote` | `object` | `optional` | [`style.blockquote`](#t-style-blockquote) |
+| `hr` | `object` | `optional` | [`style.hr`](#t-style-hr) |
+| `table` | `object` | `optional` | [`style.table`](#t-style-table) |
+| `listMarker` | `role` | `optional` | [팔레트 역할](#roles) |
+| `inlineCode` | `role` | `optional` | [팔레트 역할](#roles) — `text` 또는 구문 역할만 가능: `keyword`, `string`, `comment`, `number`, `function`, `type`. |
+| `link` | `object` | `optional` | [`style.link`](#t-style-link) |
+| `syntax` | `object` | `optional` | [`style.syntax`](#t-style-syntax) |
+
+### `style.h1`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `size` | `number` | `optional` | [범위](#t-numbers) |
+| `letterSpacing` | `number` | `optional` | [범위](#t-numbers) |
+| `align` | `enum` | `optional` | `left`, `center` |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.h2`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `letterSpacing` | `number` | `optional` | [범위](#t-numbers) |
+| `decoration` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.blockquote`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+| `italic` | `boolean` | `optional` | `true`, `false` |
+
+### `style.hr`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `style` | `object` | `optional` | [`type`](#t-kinds) |
+
+### `style.table`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `header` | `object` | `optional` | [`type`](#t-kinds) |
+| `verticalRules` | `boolean` | `optional` | `true`, `false` |
+| `rounded` | `boolean` | `optional` | `true`, `false` |
+
+### `style.link`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `underline` | `boolean` | `optional` | `true`, `false` |
+
+### `style.syntax`
+
+| 필드 | 타입 | 필수 여부 | 값과 참고 |
+|---|---|---|---|
+| `boldKeywords` | `boolean` | `optional` | `true`, `false` |
+
+### type이 있는 옵션
+
+이 스타일 옵션은 `type`이 있는 객체입니다. 각 `type`은 그것에 나열된 필드만 받고 다른 필드는 받지 않습니다.
+
+| 옵션 | type | 필드 | 필수 여부 | 타입 |
+|---|---|---|---|---|
+| `style.h1.decoration` | `rule` | — | — | — |
+| `style.h1.decoration` | `none` | — | — | — |
+| `style.h1.decoration` | `shortRule` | `color` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `from` | `required` | `role` |
+| `style.h1.decoration` | `gradientBar` | `to` | `required` | `role` |
+| `style.h2.decoration` | `rule` | — | — | — |
+| `style.h2.decoration` | `none` | — | — | — |
+| `style.h2.decoration` | `dot` | `color` | `required` | `role` |
+| `style.blockquote.style` | `bar` | `width` | `optional` | `number` [범위](#t-numbers) |
+| `style.blockquote.style` | `panel` | — | — | — |
+| `style.hr.style` | `line` | `color` | `optional` | `role` |
+| `style.hr.style` | `line` | `thickness` | `optional` | `number` [범위](#t-numbers) |
+| `style.hr.style` | `shortCentered` | `color` | `required` | `role` |
+| `style.hr.style` | `gradient` | `colors` | `required` | `role[]` 역할 둘 또는 셋. |
+| `style.table.header` | `surface` | — | — | — |
+| `style.table.header` | `accentRule` | `color` | `required` | `role` |
+| `style.table.header` | `filled` | `background` | `required` | `role` |
+| `style.table.header` | `filled` | `text` | `required` | `role` |
+| `style.table.header` | `filled` | `border` | `optional` | `role` |
+
+### 팔레트 역할
+
+팔레트 역할은 다음 이름 중 하나입니다.
+
+`background`, `surface`, `text`, `muted`, `border`, `heading`, `accent`, `link`, `quote`, `keyword`, `string`, `comment`, `number`, `function`, `type`
+
+### 숫자
+
+숫자는 가장 가까운 간격의 배수로 맞춰진 뒤 최소와 최대 사이에 있어야 합니다. 그렇지 않으면 규칙은 `number.range`입니다.
+
+| 필드 | 최소 | 최대 | 간격 |
+|---|---|---|---|
+| `style.bodySize` | `14` | `18` | `1` |
+| `style.lineHeight` | `1.4` | `1.9` | `0.05` |
+| `style.headingWeight` | `400` | `900` | `50` |
+| `style.radius` | `0` | `16` | `1` |
+| `style.maxWidth` | `600` | `1000` | `1` |
+| `style.h1.size` | `1.8` | `2.4` | `0.1` |
+| `style.h1.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.h2.letterSpacing` | `-0.03` | `0.03` | `0.005` |
+| `style.blockquote.style.width` | `2` | `4` | `1` |
+| `style.hr.style.thickness` | `1` | `4` | `1` |
+
+## 그 밖에 검사하는 것
+
+- **대비.** `background` 위의 `text`처럼 미리보기가 그리는 모든 색 쌍은 텍스트는 4.5:1, 선과 그 밖의 비텍스트는 3:1을 만족해야 합니다. 지정한 시나리오는 일부 색을 4.5:1로 올립니다. 메시지에는 해당 쌍과 그 비율, 필요한 비율이 나옵니다.
+- **문자열.** 이름, 요약, 작성자 이름이 비어 있거나 너무 길거나, 링크, 제어 문자, 보이지 않는 문자 또는 양방향 서식 문자를 포함하면 거부됩니다.
+- **규칙 ID.** 모든 문제에는 `contrast.pair`, `color.hex`, `number.range`, `id.pattern`, `schema.unknownKey`, `palette.incomplete` 같은 ID가 붙습니다. ID와 `path`가 가리키는 대로 파일을 고치세요.
+
+## 링크로 건네기
+
+[테마 만들기](/ko/themes/new/) 페이지는 링크로 테마를 열어 사람이 눈으로 다듬을 수 있게 합니다. 링크는 그 페이지의 주소, `#theme=`, 그리고 패딩 없는 base64url로 인코딩한 파일 바이트로 이루어집니다. 파일은 최대 16,384바이트입니다. 이 한 줄이 macOS와 Linux의 zsh와 bash에서 링크를 만들어 줍니다.
+
+```
+printf 'https://marsdawn.southern-light.dev/ko/themes/new/#theme=%s\n' "$(base64 < theme.json | tr -d '\n=' | tr '+/' '-_')"
+```
+
+테마는 브라우저가 사이트로 보내지 않는 `#` 뒤에 담기며, 사이트는 이를 어디에도 보내지 않습니다. 다만 링크는 셸과 브라우저의 기록에 남고, 링크를 받은 사람은 누구나 테마를 읽을 수 있습니다.
+
+## 제출하기
+
+에이전트는 파일과 링크를 준비하고, 제출은 사람이 합니다. 두 방법 모두 Developer Certificate of Origin과 Apache-2.0 게시에 대한 확인이 필요하며, 이 확인은 사람이 직접 합니다. 에이전트가 상자에 체크하거나 대신 서명하지 않습니다.
+
+- **이슈.** 사람이 링크를 열어 “테마 만들기” 페이지에서 **Submit**을 누르거나, [이슈 양식](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml)을 열어 JSON을 *Theme*에 붙여 넣습니다. 워크플로가 테마를 검사하고 답합니다.
+- **풀 리퀘스트.** `themes/<id>/theme.json`만 바꾸고, `author.github`를 풀 리퀘스트 작성자의 로그인으로 설정하고, 모든 커밋을 `git commit -s`로 서명하세요. 규칙은 [CONTRIBUTING.md](https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md)에 있습니다.
+
+제출된 테마의 작성자 이름, 이름, 요약, GitHub 로그인은 영구적으로 공개됩니다. `author.name`에는 그 사람이 공개해도 좋다고 한 이름을 넣으세요.
+
+## 게시된 테마
+
+게시된 테마가 어떻게 생겼는지는 [테마 갤러리](/ko/themes/gallery/)에서 볼 수 있습니다.
 
 ---
 

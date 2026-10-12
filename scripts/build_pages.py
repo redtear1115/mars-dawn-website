@@ -28,6 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untracked file after a build
 import article_dates  # noqa: E402
 import locales  # noqa: E402
+import theme_agents  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
@@ -252,7 +253,7 @@ UI = {
         "native": "A Mac app", "limits": "What MarsDawn doesn't do",
         "mcp": "MCP server", "token-efficient-review": "Token-efficient review",
         "vs-markdown-preview-tools": "Viewing Markdown elsewhere vs. MarsDawn", "themes": "Preview themes and PDF export",
-        "themes-new": "Build a theme", "themes-gallery": "Theme gallery",
+        "themes-new": "Build a theme", "themes-agents": "Make a theme with your agent", "themes-gallery": "Theme gallery",
         "sharing-exported-pdfs": "Sharing exported PDFs", "reviewing-ai-output": "Why AI output still needs a human reader",
         "reading-agent-output": "Reading what your agent hands back", "agent-transparency": "Agent transparency",
         "reviewing-agent-plans": "Reviewing an agent plan", "agent-design-patterns": "Agent design patterns",
@@ -280,7 +281,7 @@ UI = {
         "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
         "mcp": "MCP 伺服器", "token-efficient-review": "節省 token 的審閱方式",
         "vs-markdown-preview-tools": "在別處看 Markdown，對比 MarsDawn", "themes": "預覽主題與 PDF 輸出",
-        "themes-new": "打造一個主題", "themes-gallery": "主題庫",
+        "themes-new": "打造一個主題", "themes-agents": "和 agent 一起做主題", "themes-gallery": "主題庫",
         "sharing-exported-pdfs": "分享輸出的 PDF", "reviewing-ai-output": "為什麼 AI 寫的東西還是需要人讀過",
         "reading-agent-output": "讀懂 agent 交回來的 Markdown", "agent-transparency": "agent 的透明",
         "reviewing-agent-plans": "審 agent 計畫", "agent-design-patterns": "agent 設計模式",
@@ -467,6 +468,7 @@ THEME_SIM_PAGES = {
   <h1>Build a theme</h1>
   <p>Pick a palette and a few style options below. The sample document on the right updates as you go, in light and dark, and every check the gallery's CI runs shows up here too &#8212; so a theme that reaches the submission issue has usually already passed.</p>
   <p>You'll need a GitHub account to submit. No install, no git required for this page itself.</p>
+  <p>An AI agent can write the theme file for you: see <a href="/themes/agents/">make a theme with your agent</a>, then open the link it gives you here to tune it.</p>
 </section>
 <div id="theme-sim-app" data-locale="en"><p>This page needs JavaScript to build and preview a theme.</p></div>
 """,
@@ -479,10 +481,188 @@ THEME_SIM_PAGES = {
   <h1>打造一個主題</h1>
   <p>在下面挑一組色盤和幾個樣式選項。右邊的範例文件會即時更新，同時有淺色和深色兩種，主題庫 CI 會做的每一項檢查也會顯示在這裡——所以送出投稿 issue 的主題，通常已經先過關了。</p>
   <p>投稿需要一個 GitHub 帳號。這個頁面本身不用安裝，也不用 git。</p>
+  <p>agent 可以替你寫主題檔：看看<a href="/zh-hant/themes/agents/">和 agent 一起做主題</a>，再把它給你的連結在這裡開啟來調整。</p>
 </section>
 <div id="theme-sim-app" data-locale="zh-hant"><p>這個頁面需要 JavaScript 才能建立與預覽主題。</p></div>
 """,
     },
+}
+
+
+# /themes/agents/ (plan PLAN-web-theme-tuning W3): the reference an agent reads to make a theme. The
+# tables are laid out by scripts/theme_agents.py from the kit's own Swift (vendored by
+# scripts/sync_theme_kit.py, read by scripts/theme_kit_swift.py); what is written here is the prose
+# around them, for en and zh-hant. Field names, rule ids, types and commands stay English in every
+# locale. The other six locales' prose is in copy_<l>.py (machine drafts, needs-i18n).
+THEME_AGENTS_COPY = {
+    "en": {
+        "title": "Make a MarsDawn theme with your agent · MarsDawn",
+        "description": "MarsDawn theme reference for AI agents: each theme.json field with type and range, the CLI loop that checks and renders it, a hand-off link, and how to submit.",
+        "label": "Make a theme with your agent",
+        "h1": "Make a theme with your agent",
+        "lede": "A reference for an AI agent that makes a MarsDawn preview theme. The agent writes one <code>theme.json</code>, checks and renders it with the <code>marsdawn</code> command-line tool, and hands you a link. You tune it by eye on the <a href=\"/themes/new/\">Build a theme</a> page and submit it. The field tables below are read from the kit's own source, and a check keeps them equal to it.",
+        "summary": "<strong>Write one <code>theme.json</code>, run <code>marsdawn theme validate theme.json --require-complete --json</code> until it exits 0, render it with <code>marsdawn theme preview</code> in light and dark, then give the person a link.</strong> A theme is parameters only. It never contains CSS.",
+        "what_h": "What a theme is",
+        "what_items": [
+            "<strong>Colours</strong> for light and for dark: a base palette, and optional syntax and diagram colours. Each is <code>#RRGGBB</code>.",
+            "<strong>A font design</strong>: <code>sans</code>, <code>serif</code> or <code>rounded</code>.",
+            "<strong>A closed set of style options</strong>: numbers inside fixed ranges, and choices from fixed lists. A colour in a style option is always a palette role such as <code>accent</code>, never a literal colour.",
+            "<strong>Display strings</strong>: a name and a summary, and optionally an author and a licence.",
+        ],
+        "what_note": "A key that is not in the tables below is an error, and so is a key written twice. The file is at most 16,384 bytes.",
+        "loop_h": "Check and render",
+        "loop_intro": "Run these in the folder that holds <code>theme.json</code>. They need the <code>marsdawn</code> tool: see <a href=\"/cli/agents/\">marsdawn for agents</a>.",
+        "loop_items": [
+            "Exit codes: 0 valid, 1 invalid with rule ids, 2 file not found, 64 usage error. <code>preview</code> adds 4 when the PNG already exists (pass <code>--force</code> or choose another name) and 5 when rendering fails.",
+            "With <code>--json</code>, an invalid theme lists its problems under <code>issues</code>, each with a <code>rule</code> id, a <code>path</code> and a <code>message</code>. Fix them and run it again.",
+            "<code>--require-complete</code> is the check for a theme that will be published: it also requires the <code>syntax</code> and <code>diagram</code> colours in both palettes.",
+            "<code>css</code> prints the CSS the preview serves. <code>preview</code> renders a sample document to a PNG. Both validate first, so an invalid theme renders nothing.",
+            "Look at the light and the dark PNG before handing the theme over.",
+        ],
+        "start_h": "Start from a built-in",
+        "start_intro": "Copy one of the four built-in themes and change it. Each is a complete, valid file:",
+        "start_dawn": "the default, and the example below",
+        "start_classic": "a plainer, document-like palette",
+        "start_modern": "a cooler, more contemporary palette",
+        "start_vivid": "a brighter, higher-contrast palette",
+        "ex_h": "Example: Dawn",
+        "ex_intro": "This is <code>dawn.json</code>, byte for byte. Its only style option is a thin accent rule for <code>hr</code>.",
+        "fields_h": "Fields",
+        "fields_intro": "Every object below is read the same way. <code>required</code> means the key must be present, and a key that is not listed is an error.",
+        "types_note": "Types: <code>string</code>, <code>integer</code>, <code>number</code>, <code>boolean</code>, <code>map</code> (language tag to text), <code>enum</code> (one of the listed values), <code>role</code> (a palette role) and <code>object</code> (the table it links to). A <code>[]</code> after a type means a list.",
+        "c_field": "Field",
+        "c_type": "Type",
+        "c_presence": "Presence",
+        "c_values": "Values and notes",
+        "c_option": "Option",
+        "c_kind": "type",
+        "c_min": "Min",
+        "c_max": "Max",
+        "c_step": "Step",
+        "see_roles": "a palette role",
+        "see_ranges": "range",
+        "publish_note": "(required to publish, with <code>--require-complete</code>)",
+        "h_kinds": "Options with a type",
+        "kinds_intro": "These style options are objects with a <code>type</code>. Each <code>type</code> takes the fields listed for it and no others.",
+        "h_roles": "Palette roles",
+        "roles_intro": "A palette role is one of these names:",
+        "h_numbers": "Numbers",
+        "numbers_intro": "A number is snapped to the nearest multiple of its step, and must then lie between min and max. Otherwise the rule is <code>number.range</code>.",
+        "n_schemaVersion": "Always <code>1</code>.",
+        "n_id": "1 to 32 characters: lowercase letters and digits, in runs joined by single hyphens, such as <code>calm-green</code>.",
+        "n_version": "<code>MAJOR.MINOR.PATCH</code>, such as <code>1.0.0</code>.",
+        "n_name": "Language tag to text. <code>en</code> is required; other keys are language tags such as <code>zh-Hant</code>. Each text is at most 48 characters, with no links or line breaks.",
+        "n_summary": "The same shape as <code>name</code>, at most 120 characters per text.",
+        "n_scenarios": "One or two, no repeats. They set how much contrast the theme must reach.",
+        "n_license": "An SPDX identifier, such as <code>Apache-2.0</code>. Submitted themes are released under Apache-2.0.",
+        "n_author_name": "At most 64 characters, with no links.",
+        "n_author_github": "A GitHub login. For a submission, set it to the submitter's own.",
+        "n_hex": "<code>#</code> and six hex digits, such as <code>#1C1C1C</code>.",
+        "n_inline_code": "Only <code>text</code> or a syntax role: <code>keyword</code>, <code>string</code>, <code>comment</code>, <code>number</code>, <code>function</code> or <code>type</code>.",
+        "n_gradient": "Two or three roles.",
+        "rules_h": "What else is checked",
+        "rules_items": [
+            "<strong>Contrast.</strong> Each pair of colours the preview draws, such as <code>text</code> on <code>background</code>, must reach 4.5:1 for text and 3:1 for lines and other non-text. The scenarios you list raise some colours to 4.5:1. The message names the pair, its ratio and what it needs.",
+            "<strong>Strings.</strong> A name, summary or author name that is empty, too long, or holds a link, a control character or an invisible or bidirectional format character is refused.",
+            "<strong>Rule ids.</strong> Each problem carries one, such as <code>contrast.pair</code>, <code>color.hex</code>, <code>number.range</code>, <code>id.pattern</code>, <code>schema.unknownKey</code> or <code>palette.incomplete</code>. Fix the file by what the id and the <code>path</code> say.",
+        ],
+        "link_h": "Hand it over as a link",
+        "link_intro": "The <a href=\"/themes/new/\">Build a theme</a> page opens a theme from a link, so the person can tune it by eye. The link is that page's address, then <code>#theme=</code>, then the file's bytes in base64url without padding. The file can be at most 16,384 bytes. This one line builds the link in zsh and in bash, on macOS and Linux:",
+        "link_note": "The theme travels after a <code>#</code>, which a browser does not send to the site, and the site does not send it anywhere. The link does stay in your shell history and in the browser's history, and anyone you paste it to can read the theme.",
+        "submit_h": "Submit it",
+        "submit_intro": "The agent prepares the file and the link. The person submits. Both routes ask for the Developer Certificate of Origin and the Apache-2.0 release, and the person makes that certification: the agent does not tick the box or sign off for them.",
+        "submit_issue": "<strong>Issue.</strong> The person opens the link and presses <strong>Submit</strong> on the Build a theme page, or opens the <a href=\"{issue_url}\">issue form</a> and pastes the JSON into <em>Theme</em>. A workflow checks the theme and replies.",
+        "submit_pr": "<strong>Pull request.</strong> Change only <code>themes/&lt;id&gt;/theme.json</code>, set <code>author.github</code> to the pull request author's login, and sign off every commit with <code>git commit -s</code>. The rules are in <a href=\"{contributing_url}\">CONTRIBUTING.md</a>.",
+        "submit_note": "A submitted theme's author name, name, summary and GitHub login become public permanently, so set <code>author.name</code> to a name the person is happy to publish.",
+        "gallery_h": "Published themes",
+        "gallery_p": "To see what published themes look like, browse <a href=\"/themes/gallery/\">the theme gallery</a>.",
+    },
+    "zh-hant": {
+        "title": "和你的 agent 一起做一個 MarsDawn 主題 · MarsDawn",
+        "description": "給 AI agent 的 MarsDawn 主題製作參考：theme.json 每個欄位的型別與範圍、檢查並渲染的 CLI 流程、交給人的連結，以及怎麼投稿。",
+        "label": "和 agent 一起做主題",
+        "h1": "和你的 agent 一起做主題",
+        "lede": "給製作 MarsDawn 預覽主題的 AI agent 的參考。agent 寫出一個 <code>theme.json</code>，用 <code>marsdawn</code> 命令列工具檢查並渲染，再把連結交給你。你在<a href=\"/zh-hant/themes/new/\">打造一個主題</a>頁面用眼睛調整，然後投稿。下面的欄位表直接讀自 kit 的原始碼，並有檢查確保兩者一致。",
+        "summary": "<strong>寫出一個 <code>theme.json</code>，反覆執行 <code>marsdawn theme validate theme.json --require-complete --json</code> 直到結束代碼為 0，用 <code>marsdawn theme preview</code> 分別渲染淺色與深色，再把連結交給使用者。</strong>主題只有參數，不含任何 CSS。",
+        "what_h": "主題是什麼",
+        "what_items": [
+            "<strong>顏色</strong>，淺色與深色各一組：基本色盤，以及選填的語法與圖表顏色。每個顏色都是 <code>#RRGGBB</code>。",
+            "<strong>字型設計</strong>：<code>sans</code>、<code>serif</code> 或 <code>rounded</code>。",
+            "<strong>一組封閉的樣式選項</strong>：數字落在固定範圍內，選擇來自固定清單。樣式選項裡的顏色一律是像 <code>accent</code> 這樣的色盤角色，不能是顏色字面值。",
+            "<strong>顯示字串</strong>：名稱與摘要，以及選填的作者與授權。",
+        ],
+        "what_note": "不在下面表格裡的鍵是錯誤，同一個鍵寫兩次也是。檔案最大 16,384 位元組。",
+        "loop_h": "檢查與渲染",
+        "loop_intro": "在放有 <code>theme.json</code> 的資料夾裡執行這些指令。需要 <code>marsdawn</code> 工具：見<a href=\"/zh-hant/cli/agents/\">給 AI agent 的 marsdawn 參考</a>。",
+        "loop_items": [
+            "離開代碼：0 表示有效，1 表示無效並列出規則 id，2 表示找不到檔案，64 表示用法錯誤。<code>preview</code> 另外有 4（PNG 已存在，傳入 <code>--force</code> 或換個檔名）和 5（渲染失敗）。",
+            "加上 <code>--json</code> 時，無效的主題會把問題列在 <code>issues</code> 下，每一項都有 <code>rule</code> id、<code>path</code> 和 <code>message</code>。修正後再跑一次。",
+            "<code>--require-complete</code> 是要發布的主題用的檢查：它還要求兩組色盤都有 <code>syntax</code> 與 <code>diagram</code> 顏色。",
+            "<code>css</code> 印出預覽使用的 CSS，<code>preview</code> 把範例文件渲染成 PNG。兩者都會先驗證，所以無效的主題什麼都不會渲染。",
+            "交出主題之前，先看過淺色與深色兩張 PNG。",
+        ],
+        "start_h": "從內建主題開始",
+        "start_intro": "複製四個內建主題之一再修改。每一個都是完整且有效的檔案：",
+        "start_dawn": "預設主題，也是下面的範例",
+        "start_classic": "較素雅、像文件的色盤",
+        "start_modern": "較冷調、較現代的色盤",
+        "start_vivid": "較明亮、對比較高的色盤",
+        "ex_h": "範例：Dawn",
+        "ex_intro": "這是 <code>dawn.json</code>，一個位元組都沒改。它唯一的樣式選項是 <code>hr</code> 的一條細的強調色分隔線。",
+        "fields_h": "欄位",
+        "fields_intro": "下面每個物件都用同樣的方式讀取。<code>required</code> 表示這個鍵必須存在，沒有列出的鍵都是錯誤。",
+        "types_note": "型別：<code>string</code>、<code>integer</code>、<code>number</code>、<code>boolean</code>、<code>map</code>（語言標籤對應文字）、<code>enum</code>（列出的值之一）、<code>role</code>（色盤角色）和 <code>object</code>（連到它的表格）。型別後面的 <code>[]</code> 表示清單。",
+        "c_field": "欄位",
+        "c_type": "型別",
+        "c_presence": "必填與否",
+        "c_values": "值與備註",
+        "c_option": "選項",
+        "c_kind": "type",
+        "c_min": "最小值",
+        "c_max": "最大值",
+        "c_step": "間隔",
+        "see_roles": "色盤角色",
+        "see_ranges": "範圍",
+        "publish_note": "（發布時必填，用 <code>--require-complete</code> 檢查）",
+        "h_kinds": "帶 type 的選項",
+        "kinds_intro": "這些樣式選項是帶有 <code>type</code> 的物件。每個 <code>type</code> 只接受為它列出的欄位，其他都不行。",
+        "h_roles": "色盤角色",
+        "roles_intro": "色盤角色是下列名稱之一：",
+        "h_numbers": "數字",
+        "numbers_intro": "數字會先對齊到最接近的間隔倍數，再檢查是否落在最小值與最大值之間，否則規則是 <code>number.range</code>。",
+        "n_schemaVersion": "固定是 <code>1</code>。",
+        "n_id": "1 到 32 個字元：小寫字母與數字，以單一連字號連接成段，例如 <code>calm-green</code>。",
+        "n_version": "<code>MAJOR.MINOR.PATCH</code>，例如 <code>1.0.0</code>。",
+        "n_name": "語言標籤對應文字。<code>en</code> 必填，其他鍵是像 <code>zh-Hant</code> 的語言標籤。每段文字最多 48 個字元，不可含連結或換行。",
+        "n_summary": "和 <code>name</code> 的形式相同，每段文字最多 120 個字元。",
+        "n_scenarios": "一個或兩個，不可重複。它們決定主題必須達到多高的對比。",
+        "n_license": "SPDX 識別碼，例如 <code>Apache-2.0</code>。投稿的主題以 Apache-2.0 釋出。",
+        "n_author_name": "最多 64 個字元，不可含連結。",
+        "n_author_github": "GitHub 帳號。投稿時請填投稿者自己的帳號。",
+        "n_hex": "<code>#</code> 加六個十六進位數字，例如 <code>#1C1C1C</code>。",
+        "n_inline_code": "只能是 <code>text</code> 或語法角色：<code>keyword</code>、<code>string</code>、<code>comment</code>、<code>number</code>、<code>function</code> 或 <code>type</code>。",
+        "n_gradient": "兩個或三個角色。",
+        "rules_h": "還會檢查什麼",
+        "rules_items": [
+            "<strong>對比。</strong>預覽畫出的每一組顏色配對，例如 <code>background</code> 上的 <code>text</code>，文字要達到 4.5:1，線條與其他非文字要達到 3:1。你列出的情境會把部分顏色提高到 4.5:1。訊息會指出是哪一組配對、它的比值和需要的比值。",
+            "<strong>字串。</strong>名稱、摘要或作者名稱若是空的、太長，或含有連結、控制字元、不可見或雙向格式字元，都會被拒絕。",
+            "<strong>規則 id。</strong>每個問題都帶一個，例如 <code>contrast.pair</code>、<code>color.hex</code>、<code>number.range</code>、<code>id.pattern</code>、<code>schema.unknownKey</code> 或 <code>palette.incomplete</code>。依 id 與 <code>path</code> 的說明修正檔案。",
+        ],
+        "link_h": "用連結交給人",
+        "link_intro": "<a href=\"/zh-hant/themes/new/\">打造一個主題</a>頁面可以從連結開啟主題，讓人用眼睛調整。連結是該頁的網址，接著 <code>#theme=</code>，再接檔案位元組的 base64url（不含補位）。檔案最大 16,384 位元組。下面這一行指令在 macOS 與 Linux 的 zsh 和 bash 都能產生連結：",
+        "link_note": "主題跟在 <code>#</code> 後面，瀏覽器不會把它送給網站，網站也不會把它送到任何地方。連結確實會留在你的 shell 歷史與瀏覽器歷史裡，你貼給誰，誰就能讀到這個主題。",
+        "submit_h": "投稿",
+        "submit_intro": "agent 準備檔案與連結，由人來投稿。兩條路都會要求 Developer Certificate of Origin 與 Apache-2.0 授權聲明，這個聲明由人本人做出：agent 不會替他勾選方框或簽署。",
+        "submit_issue": "<strong>Issue。</strong>人開啟連結，在「打造一個主題」頁面按下 <strong>Submit</strong>，或是開啟 <a href=\"{issue_url}\">issue 表單</a>，把 JSON 貼進 <em>Theme</em>。接著有工作流程檢查主題並回覆。",
+        "submit_pr": "<strong>Pull request。</strong>只改 <code>themes/&lt;id&gt;/theme.json</code>，把 <code>author.github</code> 設為 pull request 作者的帳號，每個 commit 都用 <code>git commit -s</code> 簽署。規則在 <a href=\"{contributing_url}\">CONTRIBUTING.md</a>。",
+        "submit_note": "投稿主題的作者名稱、名稱、摘要與 GitHub 帳號會永久公開，所以請把 <code>author.name</code> 設成人願意公開的名字。",
+        "gallery_h": "已發布的主題",
+        "gallery_p": "想看已發布的主題長什麼樣子，可以逛逛<a href=\"/zh-hant/themes/gallery/\">主題庫</a>。",
+    },
+}
+THEME_AGENTS_PAGES = {
+    (locale, "themes/agents"): theme_agents.page(LOCALES[locale]["root"], copy)
+    for locale, copy in THEME_AGENTS_COPY.items()
 }
 
 
@@ -1436,6 +1616,7 @@ swift build -c release --product marsdawn
   <li>A one-file skill for agents that read instructions instead of a shell: <a href="/cli/skill/">the marsdawn skill</a>.</li>
   <li>An MCP server that wraps this same <code>export</code>: <a href="/cli/mcp/">marsdawn-mcp</a>.</li>
   <li>Why this JSON result stays cheap for an agent's own context: <a href="/token-efficient-review/">token-efficient review</a>.</li>
+  <li>Making a MarsDawn theme with an agent: <a href="/themes/agents/">make a theme with your agent</a>.</li>
 </ul>
 """,
     },
@@ -1612,6 +1793,7 @@ swift build -c release --product marsdawn
   <li>給讀指令檔而不是執行 shell 的 agent 用的一個檔案：<a href="/zh-hant/cli/skill/">marsdawn skill</a>。</li>
   <li>包住同一個 <code>export</code> 的 MCP 伺服器：<a href="/zh-hant/cli/mcp/">marsdawn-mcp</a>。</li>
   <li>這份 JSON 結果為什麼不花 agent 自己的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
+  <li>和 agent 一起做 MarsDawn 主題：<a href="/zh-hant/themes/agents/">和 agent 一起做主題</a>。</li>
 </ul>
 """,
     },
@@ -2180,6 +2362,7 @@ BRAINSTORM_PAGES = {
 
 <h2>Build your own, and browse what others made</h2>
 <p><a href="/themes/new/">Build a theme in your browser</a>: pick colours and a few style options, see them applied live, and submit it as a GitHub issue for review &#8212; no install, no git. <a href="/themes/gallery/">The gallery</a> shows every submitted theme a maintainer has reviewed and merged, filterable by what it's good for. Install any of them in the app from Settings › Appearance › Get More Themes…, and Quick Look in Finder uses it too.</p>
+<p>Working with an agent? <a href="/themes/agents/">Have it make the theme</a>, then tune it in your browser.</p>
 
 <h2>Next</h2>
 <ul>
@@ -2215,6 +2398,7 @@ BRAINSTORM_PAGES = {
 
 <h2>打造自己的主題，也看看別人做的</h2>
 <p><a href="/zh-hant/themes/new/">在瀏覽器裡打造一個主題</a>：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。<a href="/zh-hant/themes/gallery/">主題庫</a>收錄每一套經過維護者審核並合併的投稿主題，可以依用途篩選。在 App 的「設定 › 外觀 › 取得更多主題⋯」就能安裝，Finder 的快速查看也會跟著套用。</p>
+<p>正在和 agent 一起工作？<a href="/zh-hant/themes/agents/">讓它先做出主題</a>，再在瀏覽器裡調整。</p>
 
 <h2>接下來</h2>
 <ul>
@@ -4181,6 +4365,7 @@ def _make_k(locale: str) -> SimpleNamespace:
         KIT_URL=KIT_URL, BREW_TAP_INSTALL=BREW_TAP_INSTALL, LISTING_URL=LISTING_URL, INSTALL=_INSTALL, SKILL_URL=_SKILL_URL,
         APP_UI_LANGUAGES=APP_UI_LANGUAGES.get(locale, ""), schema_links_from=schema_links_from, xml_escape=xml_escape,
         render_legal_body=render_legal_body,
+        theme_agents_page=lambda copy: theme_agents.page(LOCALES[locale]["root"], copy),
     )
 
 
@@ -4787,7 +4972,7 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
     ])
 
 PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
-              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
+              "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/agents", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
@@ -4796,7 +4981,7 @@ SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
                   "vs/macmd-viewer": "vs-macmd-viewer",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
-                  "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes", "themes/new": "themes-new",
+                  "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes", "themes/new": "themes-new", "themes/agents": "themes-agents",
                   "themes/gallery": "themes-gallery",
                   "sharing-exported-pdfs": "sharing-exported-pdfs", "reviewing-ai-output": "reviewing-ai-output",
                   "reading-agent-output": "reading-agent-output", "agent-transparency": "agent-transparency",
@@ -4810,6 +4995,7 @@ SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "
 def _base_pages() -> dict:
     merged = dict(PAGES)
     merged.update(THEME_SIM_PAGES)
+    merged.update(THEME_AGENTS_PAGES)
     merged.update(GALLERY_PAGES)
     merged.update(CLI_PAGES)
     merged.update(AGENT_PAGES)
@@ -5555,6 +5741,10 @@ def build_llms_txt(pages: dict) -> str:
     lines.append(
         f"- [{UI['en']['agents']}]({abs_url(md_path('en', 'cli/agents'))}): commands, JSON output, "
         "exit codes and requirements, with examples that were run before publishing"
+    )
+    lines.append(
+        f"- [{UI['en']['themes-agents']}]({abs_url(md_path('en', 'themes/agents'))}): every field of a "
+        "theme.json, the check-and-render loop, the hand-off link and how to submit, for an agent making a theme"
     )
     for kind in SCHEMA_ORDER:
         note = SCHEMA_NOTES["en"][kind].replace("<code>", "`").replace("</code>", "`")

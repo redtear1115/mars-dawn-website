@@ -121,6 +121,13 @@ jobs:
       # both, plus the .sim-preview rescoping transform's own fixture. Plain `node`, no npm.
       - name: The theme simulator's JS ports match the kit
         run: node scripts/check_theme_sim.mjs
+      # /themes/agents/ is the reference an agent reads to write a theme.json. Its field, type, range
+      # and required/optional tables are generated from the vendored Swift (ThemeDocument, ThemeStyle,
+      # PaletteRole, ThemeNumbers); this reads the generated pages in every locale back and holds them
+      # to that Swift, the Dawn example to the vendored file, and the hand-off command (run in bash)
+      # to the bytes it encodes. --self-test plants a break of each rule and requires its own message.
+      - name: The agents' theme reference matches the kit
+        run: python3 scripts/check_theme_agents.py --self-test && python3 scripts/check_theme_agents.py
       # Every workflow (#143, plan F15): no ${{ github.event.* }} inside `run:`, no
       # pull_request_target, every `uses:` pinned to a full commit SHA, and no write permission in a
       # job that runs brew/swift/the kit. --self-test plants a break of each rule first (in a

@@ -80,13 +80,13 @@ try {
 
 <div class="summary"><p><strong>Markdown ファイルを PDF に変換するには、<code>marsdawn export notes.md --json</code> を実行し、stdout から1つの JSON オブジェクトを読み取ってください。</strong>Mermaid 図とハイライトされたコードは、MarsDawn アプリと同じ方法でレンダリングされます。<code>export</code> にアプリは不要ですが、<code>open</code> には必要です。</p></div>
 
-<h2>できること</h2>
+<h2 id="what-it-does">できること</h2>
 <ul>
   <li><code>export</code>：MarsDawn アプリと同じ書き出しエンジンで、1つの Markdown ファイルをページ分割された PDF にレンダリングします。ウインドウは開きません。</li>
   <li><code>open</code>：1つ以上の Markdown ファイルを MarsDawn アプリで開き、人が確認できるようにします。各ファイルが移動すべき行を指定したり、ウインドウのサイドバーにフォルダを表示したりすることもできます。</li>
 </ul>
 
-<h2>できないこと</h2>
+<h2 id="what-it-does-not-do">できないこと</h2>
 <ul>
   <li>stdin から Markdown を読み込みません。ファイルパスを渡してください。</li>
   <li>PDF を stdout に書き出しません。PDF は常にファイルとして書き出され、stdout には結果だけが出力されます。</li>
@@ -97,7 +97,7 @@ try {
   <li>macOS でのみ動作します。</li>
 </ul>
 
-<h2>export</h2>
+<h2 id="export">export</h2>
 <pre><code>marsdawn export notes.md --json</code></pre>
 <p><code>notes.pdf</code> を <code>notes.md</code> の隣に書き出します。オプション：</p>
 <ul>
@@ -118,7 +118,7 @@ try {
   <li><code>diagramErrors</code>：レンダリングに失敗した Mermaid 図につき1件のメッセージ。PDF はそれでも書き出されます。</li>
 </ul>
 
-<h2>open</h2>
+<h2 id="open">open</h2>
 <pre><code>marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json
@@ -147,7 +147,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
 </ul>
 <p>marsdawn 0.2.x では <code>opened</code> はパス文字列のリストでした。両方を扱う必要がある場合は <code>marsdawn --version</code> を確認してください。</p>
 
-<h2>Claude Code が編集したファイルを開く</h2>
+<h2 id="open-files-as-claude-code-edits-them">Claude Code が編集したファイルを開く</h2>
 <p>オプトインの <a href="https://code.claude.com/docs/en/hooks">Claude Code フック</a>です。Claude が Markdown ファイルを書き込んだり編集したりすると、そのファイルを MarsDawn でバックグラウンドで開きます。開くのはセッションごと、ファイルごとに一度だけです。頼んでいないウインドウは注意をそらすので、追加しない限り有効にならず、プロジェクトごとに追加します。シェルコマンドを実行するだけなので、モデルのトークンは使いません。</p>
 <p><code>--background</code> のために marsdawn 0.5.1 以降と、MarsDawn アプリが必要です。</p>
 <p>次の内容をプロジェクトの <code>.claude/hooks/marsdawn-open.sh</code> として保存し、<code>chmod +x</code> で実行可能にします。</p>
@@ -197,7 +197,7 @@ exit 0</code></pre>
   <li>無効にするには、設定ファイルからこの項目を削除します。</li>
 </ul>
 
-<h2>失敗時</h2>
+<h2 id="failures">失敗時</h2>
 <p><code>--json</code> を指定すると、失敗時は stdout に1つの JSON オブジェクトを出力し、対応するコードで終了します。</p>
 <pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
 <ul>
@@ -209,7 +209,7 @@ exit 0</code></pre>
   <li><code>64</code>：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルやフォルダに対する <code>--line</code> の指定、複数のフォルダの指定、<code>-a</code> の指定など。この場合は、<code>--json</code> を指定していても stderr にテキストとして出力されます。</li>
 </ul>
 
-<h2>JSON Schema</h2>
+<h2 id="json-schemas">JSON Schema</h2>
 <p>各 <code>--json</code> 結果に対応する JSON Schema（draft 2020-12）：</p>
 <ul>
   <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功時</li>
@@ -220,18 +220,18 @@ exit 0</code></pre>
   <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: 失敗時、両方のコマンド共通、marsdawn 0.5.1 以前</li>
 </ul>
 
-<h2>環境変数</h2>
+<h2 id="environment-variables">環境変数</h2>
 <ul>
   <li><code>MARSDAWN_THEME</code>：<code>export</code> が、<code>--theme</code> が指定されないときに使うテーマ。未知の値はエラーにならず <code>dawn</code> にフォールバックします。</li>
 </ul>
 
-<h2>必要環境</h2>
+<h2 id="requirements">必要環境</h2>
 <ul>
   <li>このツールは macOS 15 以降で動作します。Apple シリコンでは、Homebrew がビルド済みのボトルをインストールし、他に何も必要ありません。Intel Mac やソースから自分でビルドする場合は、Swift 6.2 以降が必要で、これは Xcode 26 以降に付属しています。</li>
   <li>MarsDawn アプリには macOS 26 以降が必要です。</li>
 </ul>
 
-<h2>インストール</h2>
+<h2 id="install">インストール</h2>
 <p>Homebrew を使う場合。Apple シリコンでは、Xcode 不要でビルド済みのボトルを数秒でインストールします。Intel Mac では marsdawn をソースからコンパイルするため数分かかり、Xcode 26 以降が必要です。</p>
 <pre><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn --version</code></pre>
@@ -241,6 +241,11 @@ cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>
 <p><code>marsdawn --version</code> は <code>0.3.0</code> のようなバージョン番号を表示し、コード 0 で終了します。</p>
+
+<h2 id="next">次に</h2>
+<ul>
+  <li>エージェントで MarsDawn のテーマを作る：<a href="/ja/themes/agents/">エージェントとテーマを作る</a>。</li>
+</ul>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="サイト">

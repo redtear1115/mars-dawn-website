@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>エージェントと MarsDawn のテーマを作る · MarsDawn</title>
+<meta name="description" content="MarsDawn のテーマを作る AI エージェント向けの参考資料。theme.json の全フィールドの型と範囲、検証とレンダリングの CLI 手順、人に渡すリンク、投稿の方法。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/themes/agents/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/themes/agents/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/themes/agents/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/themes/agents/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/themes/agents/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/themes/agents/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/themes/agents/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/themes/agents/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/themes/agents/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/themes/agents/">
+<link rel="alternate" type="text/markdown" href="/ja/themes/agents/index.md">
+<meta property="og:title" content="エージェントと MarsDawn のテーマを作る · MarsDawn">
+<meta property="og:description" content="MarsDawn のテーマを作る AI エージェント向けの参考資料。theme.json の全フィールドの型と範囲、検証とレンダリングの CLI 手順、人に渡すリンク、投稿の方法。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/themes/agents/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/ja/"}, {"@type": "ListItem", "position": 2, "name": "プレビューテーマと PDF 書き出し", "item": "https://marsdawn.southern-light.dev/ja/themes/"}, {"@type": "ListItem", "position": 3, "name": "エージェントとテーマを作る", "item": "https://marsdawn.southern-light.dev/ja/themes/agents/"}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">Mac App Store で配信中</span>
+  <nav class="lang" aria-label="Language"><a href="/themes/agents/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/themes/agents/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/themes/agents/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/themes/agents/" hreflang="ja" aria-current="true" lang="ja">日本語</a> · <a href="/de/themes/agents/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/themes/agents/" hreflang="fr" lang="fr">Français</a> · <a href="/es/themes/agents/" hreflang="es" lang="es">Español</a> · <a href="/ko/themes/agents/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>エージェントとテーマを作る</h1>
+  <p>MarsDawn のプレビューテーマを作る AI エージェント向けの参考資料です。エージェントは <code>theme.json</code> を1つ書き、コマンドラインツール <code>marsdawn</code> で検証してレンダリングし、リンクを渡します。人は<a href="/ja/themes/new/">「テーマを作る」</a>ページで見た目を整えて投稿します。下のフィールド表は kit のソースコードから直接読み取ったもので、チェックによって一致が保たれています。</p>
+</section>
+
+<div class="summary"><p><strong><code>theme.json</code> を書き、終了コードが 0 になるまで <code>marsdawn theme validate theme.json --require-complete --json</code> を実行し、<code>marsdawn theme preview</code> でライトとダークをレンダリングしてから、人にリンクを渡します。</strong>テーマはパラメーターだけで、CSS は含みません。</p></div>
+
+<h2 id="what-a-theme-is">テーマとは</h2>
+<ul>
+  <li>ライトとダークそれぞれの<strong>色</strong>：基本パレットと、任意の構文色・図の色。どれも <code>#RRGGBB</code> です。</li>
+  <li><strong>フォントデザイン</strong>：<code>sans</code>、<code>serif</code>、<code>rounded</code> のいずれか。</li>
+  <li><strong>閉じたスタイルオプションの集合</strong>：決まった範囲の数値と、決まったリストから選ぶ値。スタイルオプションの色は常に <code>accent</code> のようなパレットのロールで、色の値を直接書くことはありません。</li>
+  <li><strong>表示用の文字列</strong>：名前と概要、任意で作者とライセンス。</li>
+</ul>
+<p>下の表にないキーはエラーで、同じキーを2回書くこともエラーです。ファイルは最大 16,384 バイトです。</p>
+
+<h2 id="check-and-render">検証とレンダリング</h2>
+<p><code>theme.json</code> のあるフォルダで実行します。<code>marsdawn</code> ツールが必要です。<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>を参照してください。</p>
+<pre><code>marsdawn theme validate theme.json --require-complete --json
+marsdawn theme css theme.json --json
+marsdawn theme preview theme.json --appearance light -o light.png
+marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
+<ul>
+  <li>終了コード：0 は有効、1 は無効（ルール ID 付き）、2 はファイルが見つからない、64 は使い方の誤りです。<code>preview</code> にはさらに、PNG がすでにある場合の 4（<code>--force</code> を付けるか別の名前にします）と、レンダリング失敗の 5 があります。</li>
+  <li><code>--json</code> を付けると、無効なテーマは問題を <code>issues</code> の下に並べ、それぞれに <code>rule</code> ID、<code>path</code>、<code>message</code> が付きます。直して再実行してください。</li>
+  <li><code>--require-complete</code> は公開するテーマ向けのチェックで、両方のパレットに <code>syntax</code> と <code>diagram</code> の色も求めます。</li>
+  <li><code>css</code> はプレビューが使う CSS を出力し、<code>preview</code> はサンプル文書を PNG にレンダリングします。どちらも先に検証するので、無効なテーマはレンダリングされません。</li>
+  <li>テーマを渡す前に、ライトとダークの PNG を両方確認してください。</li>
+</ul>
+
+<h2 id="start-from-a-built-in">組み込みテーマから始める</h2>
+<p>4つの組み込みテーマのどれかをコピーして変更します。どれも完全で有効なファイルです。</p>
+<ul>
+  <li><a href="/assets/theme-sim/kit/themes/dawn.json"><code>/assets/theme-sim/kit/themes/dawn.json</code></a>: 既定のテーマで、下の例</li>
+  <li><a href="/assets/theme-sim/kit/themes/classic.json"><code>/assets/theme-sim/kit/themes/classic.json</code></a>: より落ち着いた、文書らしいパレット</li>
+  <li><a href="/assets/theme-sim/kit/themes/modern.json"><code>/assets/theme-sim/kit/themes/modern.json</code></a>: より涼しげで現代的なパレット</li>
+  <li><a href="/assets/theme-sim/kit/themes/vivid.json"><code>/assets/theme-sim/kit/themes/vivid.json</code></a>: より明るくコントラストの強いパレット</li>
+</ul>
+<h3 id="example-dawn">例：Dawn</h3>
+<p><code>dawn.json</code> を1バイトも変えずに載せています。スタイルオプションは <code>hr</code> の細いアクセントカラーの線だけです。</p>
+<pre><code>{
+  "schemaVersion": 1,
+  "id": "dawn",
+  "version": "1.0.0",
+  "name": { "en": "Dawn" },
+  "summary": { "en": "Warm Martian sunrise" },
+  "fontDesign": "sans",
+  "scenarios": ["agent-review"],
+  "light": {
+    "background": "#FFFDFB", "surface": "#F6F0EC", "text": "#26211F", "muted": "#6F6660",
+    "border": "#EADFD8", "heading": "#26211F", "accent": "#C8471B", "link": "#B03C0C", "quote": "#D97A4A",
+    "syntax": { "keyword": "#B03C0C", "string": "#2F6F5E", "comment": "#746B66", "number": "#9A5B00", "function": "#5B3E8C", "type": "#1F6FB2" },
+    "diagram": { "node": "#FBE9E0", "nodeBorder": "#CA6C3C", "text": "#26211F", "line": "#8A6A5C", "secondary": "#E6F1EE", "tertiary": "#FFF6F1", "note": "#FFF1D6" }
+  },
+  "dark": {
+    "background": "#1C1A1F", "surface": "#262229", "text": "#EBE4DF", "muted": "#A39992",
+    "border": "#3A343A", "heading": "#F4EEEA", "accent": "#FF8A50", "link": "#FF9E6B", "quote": "#E08A5C",
+    "syntax": { "keyword": "#FF9E6B", "string": "#7FD1B9", "comment": "#938A84", "number": "#F2C572", "function": "#C7A6F5", "type": "#6CB6FF" },
+    "diagram": { "node": "#3A2A26", "nodeBorder": "#E08A5C", "text": "#EBE4DF", "line": "#B8A69C", "secondary": "#23332F", "tertiary": "#2B2427", "note": "#3D3322" }
+  },
+  "style": {
+    "hr": { "style": { "type": "line", "color": "accent", "thickness": 1 } }
+  }
+}</code></pre>
+
+<h2 id="fields">フィールド</h2>
+<p>下のオブジェクトはどれも同じように読まれます。<code>required</code> はキーが必須という意味で、載っていないキーはエラーです。</p>
+<p>型：<code>string</code>、<code>integer</code>、<code>number</code>、<code>boolean</code>、<code>map</code>（言語タグからテキストへ）、<code>enum</code>（挙げた値のいずれか）、<code>role</code>（パレットのロール）、<code>object</code>（リンク先の表）。型の後ろの <code>[]</code> はリストを表します。</p>
+<h3 id="t-root"><code>theme.json</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="root">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>schemaVersion</code></th><td data-label="型"><code>integer</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考">常に <code>1</code>。</td></tr>
+  <tr><th scope="row"><code>id</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考">1〜32文字：小文字と数字を、単独のハイフンでつないだ区切り。例：<code>calm-green</code>。</td></tr>
+  <tr><th scope="row"><code>version</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>MAJOR.MINOR.PATCH</code>。例：<code>1.0.0</code>。</td></tr>
+  <tr><th scope="row"><code>name</code></th><td data-label="型"><code>map</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考">言語タグからテキストへ。<code>en</code> は必須で、ほかのキーは <code>zh-Hant</code> のような言語タグです。各テキストは最大48文字で、リンクや改行は使えません。</td></tr>
+  <tr><th scope="row"><code>summary</code></th><td data-label="型"><code>map</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>name</code> と同じ形式で、テキストごとに最大120文字。</td></tr>
+  <tr><th scope="row"><code>fontDesign</code></th><td data-label="型"><code>enum</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>sans</code>, <code>serif</code>, <code>rounded</code></td></tr>
+  <tr><th scope="row"><code>scenarios</code></th><td data-label="型"><code>enum[]</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>agent-review</code>, <code>technical-docs</code>, <code>formal-output</code>, <code>notes-sharing</code> &#8212; 1つまたは2つ、重複不可。テーマが満たすべきコントラストの水準を決めます。</td></tr>
+  <tr><th scope="row"><code>author</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-author"><code>author</code></a></td></tr>
+  <tr><th scope="row"><code>license</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考">SPDX 識別子。例：<code>Apache-2.0</code>。投稿されたテーマは Apache-2.0 で公開されます。</td></tr>
+  <tr><th scope="row"><code>light</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><a href="#t-palette"><code>light, dark</code></a></td></tr>
+  <tr><th scope="row"><code>dark</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><a href="#t-palette"><code>light, dark</code></a></td></tr>
+  <tr><th scope="row"><code>style</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-style"><code>style</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-author"><code>author</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="author">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>name</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考">最大64文字、リンク不可。</td></tr>
+  <tr><th scope="row"><code>github</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考">GitHub のログイン名。投稿の場合は、投稿する人のものを入れます。</td></tr>
+</tbody>
+</table></div>
+<h3 id="t-palette"><code>light, dark</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="palette">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>background</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>surface</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>text</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>muted</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>border</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>heading</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>accent</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>link</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>quote</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>syntax</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code> （公開には必須。<code>--require-complete</code> で検証）</td><td data-label="値と備考"><a href="#t-syntax-colors"><code>syntax</code></a></td></tr>
+  <tr><th scope="row"><code>diagram</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code> （公開には必須。<code>--require-complete</code> で検証）</td><td data-label="値と備考"><a href="#t-diagram-colors"><code>diagram</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-syntax-colors"><code>syntax</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="syntax-colors">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>keyword</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>string</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>comment</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>number</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>function</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>type</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+</tbody>
+</table></div>
+<h3 id="t-diagram-colors"><code>diagram</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="diagram-colors">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>node</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>nodeBorder</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>text</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>line</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>secondary</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>tertiary</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+  <tr><th scope="row"><code>note</code></th><td data-label="型"><code>string</code></td><td data-label="必須か"><code>required</code></td><td data-label="値と備考"><code>#</code> と16進数6桁。例：<code>#1C1C1C</code>。</td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style"><code>style</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>bodySize</code></th><td data-label="型"><code>number</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-numbers">範囲</a></td></tr>
+  <tr><th scope="row"><code>lineHeight</code></th><td data-label="型"><code>number</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-numbers">範囲</a></td></tr>
+  <tr><th scope="row"><code>headingWeight</code></th><td data-label="型"><code>number</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-numbers">範囲</a></td></tr>
+  <tr><th scope="row"><code>radius</code></th><td data-label="型"><code>number</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-numbers">範囲</a></td></tr>
+  <tr><th scope="row"><code>maxWidth</code></th><td data-label="型"><code>number</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-numbers">範囲</a></td></tr>
+  <tr><th scope="row"><code>h1</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-style-h1"><code>style.h1</code></a></td></tr>
+  <tr><th scope="row"><code>h2</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-style-h2"><code>style.h2</code></a></td></tr>
+  <tr><th scope="row"><code>blockquote</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-style-blockquote"><code>style.blockquote</code></a></td></tr>
+  <tr><th scope="row"><code>hr</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-style-hr"><code>style.hr</code></a></td></tr>
+  <tr><th scope="row"><code>table</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-style-table"><code>style.table</code></a></td></tr>
+  <tr><th scope="row"><code>listMarker</code></th><td data-label="型"><code>role</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#roles">パレットのロール</a></td></tr>
+  <tr><th scope="row"><code>inlineCode</code></th><td data-label="型"><code>role</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#roles">パレットのロール</a> &#8212; <code>text</code> か構文ロールのみ：<code>keyword</code>、<code>string</code>、<code>comment</code>、<code>number</code>、<code>function</code>、<code>type</code>。</td></tr>
+  <tr><th scope="row"><code>link</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-style-link"><code>style.link</code></a></td></tr>
+  <tr><th scope="row"><code>syntax</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-style-syntax"><code>style.syntax</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-h1"><code>style.h1</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-h1">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>size</code></th><td data-label="型"><code>number</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-numbers">範囲</a></td></tr>
+  <tr><th scope="row"><code>letterSpacing</code></th><td data-label="型"><code>number</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-numbers">範囲</a></td></tr>
+  <tr><th scope="row"><code>align</code></th><td data-label="型"><code>enum</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><code>left</code>, <code>center</code></td></tr>
+  <tr><th scope="row"><code>decoration</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-kinds"><code>type</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-h2"><code>style.h2</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-h2">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>letterSpacing</code></th><td data-label="型"><code>number</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-numbers">範囲</a></td></tr>
+  <tr><th scope="row"><code>decoration</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-kinds"><code>type</code></a></td></tr>
+  <tr><th scope="row"><code>italic</code></th><td data-label="型"><code>boolean</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-blockquote"><code>style.blockquote</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-blockquote">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-kinds"><code>type</code></a></td></tr>
+  <tr><th scope="row"><code>italic</code></th><td data-label="型"><code>boolean</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-hr"><code>style.hr</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-hr">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-kinds"><code>type</code></a></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-table"><code>style.table</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-table">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>header</code></th><td data-label="型"><code>object</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><a href="#t-kinds"><code>type</code></a></td></tr>
+  <tr><th scope="row"><code>verticalRules</code></th><td data-label="型"><code>boolean</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><code>true</code>, <code>false</code></td></tr>
+  <tr><th scope="row"><code>rounded</code></th><td data-label="型"><code>boolean</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-link"><code>style.link</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-link">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>underline</code></th><td data-label="型"><code>boolean</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-style-syntax"><code>style.syntax</code></h3>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="style-syntax">
+<thead><tr><th scope="col">フィールド</th><th scope="col">型</th><th scope="col">必須か</th><th scope="col">値と備考</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>boldKeywords</code></th><td data-label="型"><code>boolean</code></td><td data-label="必須か"><code>optional</code></td><td data-label="値と備考"><code>true</code>, <code>false</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="t-kinds">type を持つオプション</h3>
+<p>これらのスタイルオプションは <code>type</code> を持つオブジェクトです。それぞれの <code>type</code> は、そこに挙げたフィールドだけを受け付けます。</p>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="kinds">
+<thead><tr><th scope="col">オプション</th><th scope="col">type</th><th scope="col">フィールド</th><th scope="col">必須か</th><th scope="col">型</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>rule</code></td><td data-label="フィールド">—</td><td data-label="必須か">—</td><td data-label="型">—</td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>none</code></td><td data-label="フィールド">—</td><td data-label="必須か">—</td><td data-label="型">—</td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>shortRule</code></td><td data-label="フィールド"><code>color</code></td><td data-label="必須か"><code>required</code></td><td data-label="型"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>gradientBar</code></td><td data-label="フィールド"><code>from</code></td><td data-label="必須か"><code>required</code></td><td data-label="型"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.h1.decoration</code></th><td data-label="type"><code>gradientBar</code></td><td data-label="フィールド"><code>to</code></td><td data-label="必須か"><code>required</code></td><td data-label="型"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.h2.decoration</code></th><td data-label="type"><code>rule</code></td><td data-label="フィールド">—</td><td data-label="必須か">—</td><td data-label="型">—</td></tr>
+  <tr><th scope="row"><code>style.h2.decoration</code></th><td data-label="type"><code>none</code></td><td data-label="フィールド">—</td><td data-label="必須か">—</td><td data-label="型">—</td></tr>
+  <tr><th scope="row"><code>style.h2.decoration</code></th><td data-label="type"><code>dot</code></td><td data-label="フィールド"><code>color</code></td><td data-label="必須か"><code>required</code></td><td data-label="型"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.blockquote.style</code></th><td data-label="type"><code>bar</code></td><td data-label="フィールド"><code>width</code></td><td data-label="必須か"><code>optional</code></td><td data-label="型"><code>number</code> <a href="#t-numbers">範囲</a></td></tr>
+  <tr><th scope="row"><code>style.blockquote.style</code></th><td data-label="type"><code>panel</code></td><td data-label="フィールド">—</td><td data-label="必須か">—</td><td data-label="型">—</td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>line</code></td><td data-label="フィールド"><code>color</code></td><td data-label="必須か"><code>optional</code></td><td data-label="型"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>line</code></td><td data-label="フィールド"><code>thickness</code></td><td data-label="必須か"><code>optional</code></td><td data-label="型"><code>number</code> <a href="#t-numbers">範囲</a></td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>shortCentered</code></td><td data-label="フィールド"><code>color</code></td><td data-label="必須か"><code>required</code></td><td data-label="型"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.hr.style</code></th><td data-label="type"><code>gradient</code></td><td data-label="フィールド"><code>colors</code></td><td data-label="必須か"><code>required</code></td><td data-label="型"><code>role[]</code> ロールを2つまたは3つ。</td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>surface</code></td><td data-label="フィールド">—</td><td data-label="必須か">—</td><td data-label="型">—</td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>accentRule</code></td><td data-label="フィールド"><code>color</code></td><td data-label="必須か"><code>required</code></td><td data-label="型"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>filled</code></td><td data-label="フィールド"><code>background</code></td><td data-label="必須か"><code>required</code></td><td data-label="型"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>filled</code></td><td data-label="フィールド"><code>text</code></td><td data-label="必須か"><code>required</code></td><td data-label="型"><code>role</code></td></tr>
+  <tr><th scope="row"><code>style.table.header</code></th><td data-label="type"><code>filled</code></td><td data-label="フィールド"><code>border</code></td><td data-label="必須か"><code>optional</code></td><td data-label="型"><code>role</code></td></tr>
+</tbody>
+</table></div>
+<h3 id="roles">パレットのロール</h3>
+<p>パレットのロールは次の名前のいずれかです。</p>
+<p data-theme-values="role"><code>background</code>, <code>surface</code>, <code>text</code>, <code>muted</code>, <code>border</code>, <code>heading</code>, <code>accent</code>, <code>link</code>, <code>quote</code>, <code>keyword</code>, <code>string</code>, <code>comment</code>, <code>number</code>, <code>function</code>, <code>type</code></p>
+<h3 id="t-numbers">数値</h3>
+<p>数値は最も近い刻みの倍数に丸められ、最小と最大の間に収まる必要があります。収まらない場合のルールは <code>number.range</code> です。</p>
+<div class="table-scroll"><table class="compare compare-wide" data-theme-table="numbers">
+<thead><tr><th scope="col">フィールド</th><th scope="col">最小</th><th scope="col">最大</th><th scope="col">刻み</th></tr></thead>
+<tbody>
+  <tr><th scope="row"><code>style.bodySize</code></th><td data-label="最小"><code>14</code></td><td data-label="最大"><code>18</code></td><td data-label="刻み"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.lineHeight</code></th><td data-label="最小"><code>1.4</code></td><td data-label="最大"><code>1.9</code></td><td data-label="刻み"><code>0.05</code></td></tr>
+  <tr><th scope="row"><code>style.headingWeight</code></th><td data-label="最小"><code>400</code></td><td data-label="最大"><code>900</code></td><td data-label="刻み"><code>50</code></td></tr>
+  <tr><th scope="row"><code>style.radius</code></th><td data-label="最小"><code>0</code></td><td data-label="最大"><code>16</code></td><td data-label="刻み"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.maxWidth</code></th><td data-label="最小"><code>600</code></td><td data-label="最大"><code>1000</code></td><td data-label="刻み"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.h1.size</code></th><td data-label="最小"><code>1.8</code></td><td data-label="最大"><code>2.4</code></td><td data-label="刻み"><code>0.1</code></td></tr>
+  <tr><th scope="row"><code>style.h1.letterSpacing</code></th><td data-label="最小"><code>-0.03</code></td><td data-label="最大"><code>0.03</code></td><td data-label="刻み"><code>0.005</code></td></tr>
+  <tr><th scope="row"><code>style.h2.letterSpacing</code></th><td data-label="最小"><code>-0.03</code></td><td data-label="最大"><code>0.03</code></td><td data-label="刻み"><code>0.005</code></td></tr>
+  <tr><th scope="row"><code>style.blockquote.style.width</code></th><td data-label="最小"><code>2</code></td><td data-label="最大"><code>4</code></td><td data-label="刻み"><code>1</code></td></tr>
+  <tr><th scope="row"><code>style.hr.style.thickness</code></th><td data-label="最小"><code>1</code></td><td data-label="最大"><code>4</code></td><td data-label="刻み"><code>1</code></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="what-else-is-checked">ほかに検証されること</h2>
+<ul>
+  <li><strong>コントラスト。</strong><code>background</code> 上の <code>text</code> のように、プレビューが描く色の組はすべて、テキストは 4.5:1、線やそのほかの非テキストは 3:1 に達する必要があります。指定したシナリオによって、一部の色は 4.5:1 に引き上げられます。メッセージには、その組と比率、必要な比率が示されます。</li>
+  <li><strong>文字列。</strong>名前、概要、作者名が空、長すぎる、またはリンク・制御文字・不可視文字・双方向書式文字を含む場合は拒否されます。</li>
+  <li><strong>ルール ID。</strong>すべての問題には <code>contrast.pair</code>、<code>color.hex</code>、<code>number.range</code>、<code>id.pattern</code>、<code>schema.unknownKey</code>、<code>palette.incomplete</code> などの ID が付きます。ID と <code>path</code> が示すとおりにファイルを直してください。</li>
+</ul>
+
+<h2 id="hand-it-over-as-a-link">リンクとして渡す</h2>
+<p><a href="/ja/themes/new/">「テーマを作る」</a>ページは、リンクからテーマを開けるので、人が見た目を整えられます。リンクは、そのページのアドレス、<code>#theme=</code>、パディングなしの base64url にしたファイルのバイト列でできています。ファイルは最大 16,384 バイトです。次の1行で、macOS と Linux の zsh と bash でリンクを作れます。</p>
+<pre><code>printf 'https://marsdawn.southern-light.dev/ja/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<p>テーマはブラウザがサイトに送らない <code>#</code> の後ろに入り、サイトもそれをどこにも送りません。ただしリンクはシェルとブラウザの履歴に残り、リンクを貼った相手はテーマを読めます。</p>
+
+<h2 id="submit-it">投稿する</h2>
+<p>エージェントがファイルとリンクを用意し、投稿は人が行います。どちらの方法でも Developer Certificate of Origin と Apache-2.0 での公開への確認が必要で、この確認は人が自分で行います。エージェントがチェックボックスにチェックしたり、代わりに署名したりすることはありません。</p>
+<ul>
+  <li><strong>Issue。</strong>人がリンクを開いて「テーマを作る」ページの <strong>Submit</strong> を押すか、<a href="https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml">Issue フォーム</a>を開いて JSON を <em>Theme</em> に貼り付けます。ワークフローがテーマを検証して返信します。</li>
+  <li><strong>Pull request。</strong><code>themes/&lt;id&gt;/theme.json</code> だけを変更し、<code>author.github</code> を pull request の作者のログイン名にして、すべてのコミットに <code>git commit -s</code> で署名します。ルールは <a href="https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> にあります。</li>
+</ul>
+<p>投稿されたテーマの作者名、名前、概要、GitHub のログイン名は永久に公開されます。<code>author.name</code> には、その人が公開してよいと考える名前を入れてください。</p>
+
+<h2 id="published-themes">公開されているテーマ</h2>
+<p>公開されているテーマの見た目は、<a href="/ja/themes/gallery/">テーマギャラリー</a>で確認できます。</p>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイト">
+    <a href="/ja/support/">サポート</a>
+    <a href="/ja/privacy/">プライバシーポリシー</a>
+    <a href="/ja/cli/">コマンドライン</a>
+    <a href="/ja/view-markdown-on-mac/">Mac で Markdown を見る</a>
+    <a href="/ja/vs/markdown-preview-tools/">他のツールで Markdown を見る場合との比較</a>
+    <a href="/ja/vs/macmd-viewer/">MacMD Viewer と MarsDawn</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-themes&amp;mt=8">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
