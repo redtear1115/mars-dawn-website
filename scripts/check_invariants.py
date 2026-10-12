@@ -85,7 +85,9 @@ FOOTER = {
 # pre-launch line to compare: after launch the footer must link the listing, in any wording.
 # Before launch such a locale must not be served at all (see below). The line sits in the footer, or
 # in the home page's closing section, so the pattern is the link itself.
-LAUNCHED_FOOTER_ANY = r"<a href=\"https://apps\.apple\.com/app/id\d+\">Mac App Store</a>"
+# The link is the plain listing URL or exactly the campaign form (check_store_links.py is the strict one).
+LAUNCHED_FOOTER_ANY = (r"<a href=\"https://apps\.apple\.com/app/(?:id\d+"
+                       r"|apple-store/id\d+\?pt=\d+&amp;ct=[a-z0-9-]{1,40}&amp;mt=8)\">Mac App Store</a>")
 
 # Wording that may not survive launch day, per locale.
 PRE_LAUNCH_WORDING = {
