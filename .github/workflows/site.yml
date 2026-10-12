@@ -70,6 +70,10 @@ jobs:
       # /go/app-store. --self-test plants a break of each kind first and fails if one is missed.
       - name: Every redirect goes where the phase allows, and nowhere else
         run: python3 scripts/check_redirects.py --self-test
+      # Every on-page App Store link is the campaign form with its page's ct; JSON-LD, the Markdown
+      # twins and the text files stay plain. --self-test plants a break of each rule first.
+      - name: Every App Store link is in the form its file allows
+        run: python3 scripts/check_store_links.py --self-test
       - name: Every schema.org Offer states its availability
         run: python3 scripts/check_offers.py
       - name: The site's launch-phase invariants hold
