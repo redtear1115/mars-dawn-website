@@ -20,7 +20,8 @@ to a `/go/` path that isn't listed there is broken like any other:
 
 It also checks the form of every Mac App Store listing link. The listing URL has to be
 `https://apps.apple.com/app/id<digits>` with no country segment: Apple then sends each visitor to
-their own storefront. App Store Connect and the iTunes lookup API hand you a `trackViewUrl` instead,
+their own storefront. The one other form is the on-page campaign link,
+`https://apps.apple.com/app/apple-store/id<digits>?pt=<digits>&ct=<token>&mt=8`. App Store Connect and the iTunes lookup API hand you a `trackViewUrl` instead,
 which looks like `https://apps.apple.com/us/app/some-slug/id123456789?uo=4` — pasting that whole
 string works in a browser, so nothing else here would notice, and every page of a four-locale site
 would point at one country's storefront.
@@ -44,7 +45,12 @@ BASE_URL = "https://marsdawn.southern-light.dev"
 # visitor to their own storefront. `PLACEHOLDER` is the held state before the owner reads the Apple
 # ID (website #44 fails the check on it separately), so it isn't reported as a malformed URL here.
 LISTING_LINK = re.compile(r"https?://apps\.apple\.com/[^\s\"'<>)]*")
-LISTING_FORM = re.compile(r"^https://apps\.apple\.com/app/id\d+$")
+# Two forms are allowed, nothing else: the plain listing URL (Markdown and text files, JSON-LD,
+# /go/app-store) and App Store Connect's campaign form (the on-page links, `&` or HTML's `&amp;`).
+# check_store_links.py holds each file to the one form that is right for it.
+LISTING_FORM = re.compile(
+    r"^https://apps\.apple\.com/app/(?:id\d+"
+    r"|apple-store/id\d+\?pt=\d+&(?:amp;)?ct=[a-z0-9-]{1,40}&(?:amp;)?mt=8)$")
 
 PATTERNS = [
     re.compile(r'(?:href|src)="([^"]+)"'),
@@ -122,8 +128,9 @@ def main(argv) -> int:
         print(" -", line)
     print(f"{listings} Mac App Store links checked: {len(malformed)} not the listing form")
     for line in malformed:
-        print(f" - {line}\n   wanted https://apps.apple.com/app/id<digits>, with no country segment,"
-              f" no slug and no query (a trackViewUrl has all three)")
+        print(f" - {line}\n   wanted https://apps.apple.com/app/id<digits> or the campaign form"
+              f" https://apps.apple.com/app/apple-store/id<digits>?pt=<digits>&ct=<token>&mt=8,"
+              f" with no country segment (a trackViewUrl has a country, a slug and a query)")
     if placeholders:
         files = len({p.split(": ", 1)[0] for p in placeholders})
         print(f"{len(placeholders)} placeholder URLs in {files} files, e.g. {placeholders[0]}")
