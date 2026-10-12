@@ -2,7 +2,7 @@
 
 Cómo trata tu información MarsDawn, el editor de Markdown para macOS.
 
-Última actualización: 2026-10-10
+Última actualización: 2026-10-12
 
 > **La app MarsDawn no recopila ningún dato sobre ti.** No hay cuenta, ni publicidad, ni seguimiento. Tus documentos y tus ajustes se quedan en tu Mac.
 
@@ -22,6 +22,17 @@ Una vez que aceptas, Google Analytics instala sus propias cookies (`_ga` y `_ga_
 - **Conservación.** Google conserva estos datos durante 14 meses y después los elimina.
 - **Dónde se tratan.** Google Tag Manager y Google Analytics los opera Google; tus datos pueden tratarse en Estados Unidos y en otros países donde Google opera.
 - **El proveedor de alojamiento.** Cloudflare aloja el sitio y, como cualquier proveedor de alojamiento, ve tu dirección IP mientras responde a la solicitud. Ese registro pertenece al proveedor. No es la analítica descrita arriba.
+
+## Encuesta de lanzamiento
+
+Del 20 de octubre al 2 de noviembre de 2026, MarsDawn realiza una breve encuesta en Formularios de Google. Rellenarla depende de ti, y la propia app sigue sin recopilar nada.
+
+- **Qué se recopila.** Tus respuestas y la dirección de correo electrónico que escribas. Nada más.
+- **El correo electrónico.** Se usa para enviarte un código si resultas elegido en el sorteo. Si no marcas la casilla de avisos de novedades, se elimina en los 30 días siguientes al envío de los códigos. Si la marcas, se conserva solo para enviarte correos sobre nuevas versiones de MarsDawn, cada uno con un enlace para darte de baja con un clic, hasta que te des de baja.
+- **Las respuestas.** Tras el sorteo se conservan sin el correo electrónico y pueden aparecer de forma anónima y agregada en un resumen publicado.
+- **Nunca se comparten ni se venden,** y nunca se usan para nada más.
+- **Dónde se almacenan.** Formularios de Google guarda las respuestas en Google, conforme a la política de privacidad de Google.
+- **Eliminación.** Para que eliminemos antes tu respuesta o tu correo electrónico, escribe a support@southern-light.dev.
 
 ## Lo que se queda en tu Mac
 
