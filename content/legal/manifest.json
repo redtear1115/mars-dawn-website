@@ -23,13 +23,13 @@
     },
     "privacy.ja.md": {
       "rendered": "privacy.ja.rendered.html",
-      "rendered_sha256": "5009be0f756061f1002d791c7914f9c9c87cfa627217694d9d39e4b63376f73f",
-      "source_sha256": "d3f390846f44648603ac320deccdc6c5b2ab4aac391b01a4de7d60f91fee42f2"
+      "rendered_sha256": "ad667dce7ae378c14f6cdf441e03d3cd702839df818b6f551be5caceb439d789",
+      "source_sha256": "8a504010e876a5a73e0d7408cf8ff483cfb0c80ec1ad2e1e3c1a5fac5ced9cbe"
     },
     "privacy.ko.md": {
       "rendered": "privacy.ko.rendered.html",
-      "rendered_sha256": "ae34e3905bf75f3d58dfce62cbcf7d0ec31e9b5f9c8e0c33a750b326bbe19da5",
-      "source_sha256": "754298fc1bbf7ee2bbb5a6b07db96a86e6152a49737273b55579fd75f1d7dd88"
+      "rendered_sha256": "ad2d6f7f6f7b8269ba1e1abc882094d86b410d9a035320b1b8fddcaeb5d5ccd2",
+      "source_sha256": "c55d627b103df0babc23b8ac1a746f6a7604e914ecf38e6116c629ec308f0470"
     },
     "privacy.zh-hans.md": {
       "rendered": "privacy.zh-hans.rendered.html",
