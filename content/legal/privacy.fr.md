@@ -2,7 +2,7 @@
 
 Comment MarsDawn, l’éditeur Markdown pour macOS, traite vos informations.
 
-Dernière mise à jour : 2026-10-10
+Dernière mise à jour : 2026-10-12
 
 > **L’app MarsDawn ne collecte aucune donnée vous concernant.** Il n’y a ni compte, ni publicité, ni suivi. Vos documents et vos réglages restent sur votre Mac.
 
@@ -22,6 +22,17 @@ Une fois que vous avez accepté, Google Analytics dépose ses propres cookies (`
 - **Conservation.** Google conserve ces données pendant 14 mois, puis les supprime.
 - **Lieu de traitement.** Google Tag Manager et Google Analytics sont exploités par Google ; vos données peuvent être traitées aux États-Unis ainsi que dans d’autres pays où Google exerce ses activités.
 - **L’hébergeur.** Cloudflare héberge le site et, comme tout hébergeur, voit votre adresse IP pendant qu’il répond à la requête. Ce journal appartient à l’hébergeur. Il ne s’agit pas de la mesure d’audience décrite ci-dessus.
+
+## Sondage de lancement
+
+Du 20 octobre au 2 novembre 2026, MarsDawn mène un court sondage sur Google Forms. Vous êtes libre d’y répondre, et l’app elle-même ne collecte toujours rien.
+
+- **Ce qui est collecté.** Vos réponses et l’adresse e-mail que vous saisissez. Rien d’autre.
+- **L’adresse e-mail.** Elle sert à vous envoyer un code si vous êtes tiré au sort. Si vous ne cochez pas la case des mises à jour, elle est supprimée dans les 30 jours qui suivent l’envoi des codes. Si vous la cochez, elle n’est conservée que pour vous envoyer les e-mails de nouvelles versions de MarsDawn, chacun avec un lien de désabonnement en un clic, jusqu’à ce que vous vous désabonniez.
+- **Les réponses.** Après le tirage au sort, elles sont conservées sans l’adresse e-mail et peuvent apparaître sous forme anonymisée et agrégée dans une synthèse publiée.
+- **Jamais partagées ni vendues,** et jamais utilisées à d’autres fins.
+- **Où elles sont stockées.** Google Forms stocke les réponses chez Google, selon la politique de confidentialité de Google.
+- **Suppression.** Pour faire supprimer plus tôt votre réponse ou votre adresse e-mail, écrivez à support@southern-light.dev.
 
 ## Ce qui reste sur votre Mac
 

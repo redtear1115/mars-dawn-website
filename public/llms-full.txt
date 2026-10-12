@@ -302,7 +302,7 @@ Source: https://marsdawn.southern-light.dev/privacy/
 
 How MarsDawn, the Markdown editor for macOS, handles your information.
 
-Last updated 2026-10-10
+Last updated 2026-10-12
 
 > **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
 
@@ -322,6 +322,17 @@ Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<measurem
 - **Retention.** Google keeps this data for 14 months, then deletes it.
 - **Where it's processed.** Google Tag Manager and Google Analytics are operated by Google; your data may be processed in the United States as well as other countries where Google operates.
 - **The host.** Cloudflare hosts the site and, like any host, sees your IP address while it answers the request. That log belongs to the host. It is not the analytics above.
+
+## Launch survey
+
+From 20 October to 2 November 2026, MarsDawn runs a short survey on Google Forms. Filling it in is up to you, and the app itself still collects nothing.
+
+- **What it collects.** Your answers and the email address you type. Nothing else.
+- **The email.** It's used to send you a code if you're drawn. If you don't tick the update box, it's deleted within 30 days after the codes are sent. If you tick it, it's kept only to send MarsDawn version-update emails, each with a one-click unsubscribe, until you unsubscribe.
+- **The answers.** After the draw they're kept without the email, and they may appear anonymised and aggregated in a published summary.
+- **Never shared or sold,** and never used for anything else.
+- **Where it's stored.** Google Forms stores the responses with Google, under Google's privacy policy.
+- **Deletion.** To have your response or email deleted sooner, write to support@southern-light.dev.
 
 ## What stays on your Mac
 
@@ -2480,7 +2491,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/privacy/
 
 macOS 的 Markdown 編輯器 MarsDawn 如何處理你的資訊。
 
-最後更新：2026-10-10
+最後更新：2026-10-12
 
 > **MarsDawn app 不收集任何關於你的資料**。沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。
 
@@ -2500,6 +2511,17 @@ App 和這個網站是兩件事。App 不收集資料。會記下造訪的，只
 - **保留期限**。Google 會保留這些資料 14 個月，之後刪除。
 - **資料處理地點**。Google Tag Manager 與 Google Analytics 由 Google 營運；你的資料可能會在美國及 Google 營運所在的其他國家處理。
 - **主機**。網站放在 Cloudflare。和任何主機一樣，它在回應請求時會看到你的 IP 位址。那是主機自己的日誌，不是上面的分析。
+
+## 上市問卷
+
+2026 年 10 月 20 日到 11 月 2 日，MarsDawn 在 Google 表單上進行一份簡短問卷。要不要填由你決定，App 本身仍然不收集任何資料。
+
+- **收集什麼。** 你的回答和你填寫的 Email，其他都不收集。
+- **Email。** 用來在你抽中時寄送兌換碼。如果沒有勾選新版通知，會在兌換碼寄出後 30 天內刪除；如果有勾選，只會用來寄 MarsDawn 的新版通知，每封都能一鍵退訂，保留到你退訂為止。
+- **回答。** 抽獎後會和 Email 分開保存，可能以匿名、彙整的方式出現在公開的結果摘要裡。
+- **不分享、不出售**，也不會用在其他用途。
+- **儲存在哪裡。** 回覆由 Google 表單儲存在 Google，適用 Google 的隱私權政策。
+- **刪除。** 想提早刪除你的回覆或 Email，請寫信到 support@southern-light.dev。
 
 ## 留在你 Mac 上的東西
 
@@ -4696,7 +4718,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/privacy/
 
 macOS 的 Markdown 编辑器 MarsDawn 如何处理你的信息。
 
-最后更新：2026-10-10
+最后更新：2026-10-12
 
 > **MarsDawn app 不收集任何关于你的数据**。没有账户、没有广告，也不追踪。你的文稿与设置都留在你的 Mac 上。
 
@@ -4716,6 +4738,17 @@ App 和这个网站是两件事。App 不收集数据。会记下访问的，只
 - **保留期限**。Google 会保留这些数据 14 个月，之后删除。
 - **数据处理地点**。Google Tag Manager 与 Google Analytics 由 Google 运营；你的数据可能会在美国及 Google 运营所在的其他国家处理。
 - **主机**。网站放在 Cloudflare 上。和任何主机一样，它在响应请求时会看到你的 IP 地址。那是主机自己的日志，不是上面的分析。
+
+## 上市问卷
+
+2026 年 10 月 20 日到 11 月 2 日，MarsDawn 在 Google 表单上进行一份简短问卷。是否填写由你决定，App 本身依然不收集任何数据。
+
+- **收集什么。** 你的回答和你填写的电子邮件地址，其他都不收集。
+- **电子邮件。** 用来在你中奖时发送兑换码。如果没有勾选新版本通知，会在兑换码发出后 30 天内删除；如果勾选了，只会用来发送 MarsDawn 的新版本通知，每封邮件都可以一键退订，保留到你退订为止。
+- **回答。** 抽奖后会与电子邮件分开保存，可能以匿名、汇总的方式出现在公开的结果摘要里。
+- **不分享、不出售**，也不会用于其他用途。
+- **存储在哪里。** 回复由 Google 表单存储在 Google，适用 Google 的隐私政策。
+- **删除。** 想提前删除你的回复或电子邮件地址，请写信到 support@southern-light.dev。
 
 ## 留在你 Mac 上的东西
 
@@ -6902,7 +6935,7 @@ Source: https://marsdawn.southern-light.dev/ja/privacy/
 
 macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情報を扱うか。
 
-最終更新日：2026-10-10
+最終更新日：2026-10-12
 
 > **MarsDawn アプリは、あなたに関するデータを一切収集しません**。アカウントも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。
 
@@ -6922,6 +6955,17 @@ macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情�
 - **保持期間**。Google はこのデータを14か月保持したあと、削除します。
 - **データの処理場所**。Google タグマネージャーと Google アナリティクスは Google が運営しており、データは米国および Google が事業を行うその他の国で処理される場合があります。
 - **ホスティング**。サイトは Cloudflare 上にあります。どのホストとも同じく、リクエストに応答する間は IP アドレスを見ます。それはホスト自身のログであり、上のアナリティクスではありません。
+
+## ローンチアンケート
+
+2026年10月20日から11月2日まで、MarsDawn は Google フォームで短いアンケートを実施します。回答するかどうかはあなた次第で、アプリ自体は引き続き何も収集しません。
+
+- **収集する内容。** あなたの回答と、入力したメールアドレスだけです。それ以外は収集しません。
+- **メールアドレス。** 当選した場合にコードをお送りするために使います。アップデート通知にチェックを入れなかった場合は、コードの送信後30日以内に削除します。チェックを入れた場合は、MarsDawn のバージョンアップのお知らせを送るためだけに保管し、メールにはワンクリックで配信を停止できるリンクが付きます。配信を停止するまで保管します。
+- **回答。** 抽選のあとは、メールアドレスとは別に保管します。匿名化して集計したうえで、公開するまとめに載ることがあります。
+- **共有も販売もしません**。ほかの目的にも使いません。
+- **保存場所。** 回答は Google フォームを通じて Google に保存され、Google のプライバシーポリシーが適用されます。
+- **削除。** 回答やメールアドレスを早めに削除したい場合は、support@southern-light.dev までご連絡ください。
 
 ## あなたの Mac に残るもの
 
@@ -9108,7 +9152,7 @@ Source: https://marsdawn.southern-light.dev/de/privacy/
 
 Wie MarsDawn, der Markdown-Editor für macOS, mit deinen Daten umgeht.
 
-Zuletzt aktualisiert am 2026-10-10
+Zuletzt aktualisiert am 2026-10-12
 
 > **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
 
@@ -9128,6 +9172,17 @@ Sobald du zustimmst, setzt Google Analytics eigene Cookies (`_ga` und `_ga_<meas
 - **Aufbewahrung.** Google bewahrt diese Daten 14 Monate lang auf und löscht sie dann.
 - **Wo die Daten verarbeitet werden.** Google Tag Manager und Google Analytics werden von Google betrieben. Deine Daten können in den Vereinigten Staaten sowie in anderen Ländern verarbeitet werden, in denen Google tätig ist.
 - **Der Hoster.** Cloudflare hostet die Website und sieht, wie jeder Hoster, deine IP-Adresse, während die Anfrage beantwortet wird. Dieses Protokoll gehört dem Hoster. Es ist nicht die oben beschriebene Analyse.
+
+## Umfrage zum Launch
+
+Vom 20. Oktober bis zum 2. November 2026 führt MarsDawn eine kurze Umfrage über Google Formulare durch. Ob du mitmachst, entscheidest du selbst, und die App selbst erhebt weiterhin nichts.
+
+- **Was erhoben wird.** Deine Antworten und die E-Mail-Adresse, die du eingibst. Sonst nichts.
+- **Die E-Mail-Adresse.** Sie wird verwendet, um dir einen Code zu schicken, falls du gezogen wirst. Wenn du das Kästchen für Update-Hinweise nicht anklickst, wird sie innerhalb von 30 Tagen nach dem Versand der Codes gelöscht. Wenn du es anklickst, wird sie nur aufbewahrt, um dir E-Mails zu neuen MarsDawn-Versionen zu schicken, jeweils mit Abmeldung per Klick, bis du dich abmeldest.
+- **Die Antworten.** Nach der Ziehung werden sie ohne die E-Mail-Adresse aufbewahrt und können anonymisiert und zusammengefasst in einer veröffentlichten Auswertung erscheinen.
+- **Nie weitergegeben oder verkauft,** und nie für etwas anderes verwendet.
+- **Wo sie gespeichert werden.** Google Formulare speichert die Antworten bei Google, nach der Datenschutzerklärung von Google.
+- **Löschung.** Wenn du deine Antwort oder E-Mail-Adresse früher löschen lassen möchtest, schreibe an support@southern-light.dev.
 
 ## Was auf deinem Mac bleibt
 
@@ -11279,7 +11334,7 @@ Source: https://marsdawn.southern-light.dev/fr/privacy/
 
 Comment MarsDawn, l’éditeur Markdown pour macOS, traite vos informations.
 
-Dernière mise à jour : 2026-10-10
+Dernière mise à jour : 2026-10-12
 
 > **L’app MarsDawn ne collecte aucune donnée vous concernant.** Il n’y a ni compte, ni publicité, ni suivi. Vos documents et vos réglages restent sur votre Mac.
 
@@ -11299,6 +11354,17 @@ Une fois que vous avez accepté, Google Analytics dépose ses propres cookies (`
 - **Conservation.** Google conserve ces données pendant 14 mois, puis les supprime.
 - **Lieu de traitement.** Google Tag Manager et Google Analytics sont exploités par Google ; vos données peuvent être traitées aux États-Unis ainsi que dans d’autres pays où Google exerce ses activités.
 - **L’hébergeur.** Cloudflare héberge le site et, comme tout hébergeur, voit votre adresse IP pendant qu’il répond à la requête. Ce journal appartient à l’hébergeur. Il ne s’agit pas de la mesure d’audience décrite ci-dessus.
+
+## Sondage de lancement
+
+Du 20 octobre au 2 novembre 2026, MarsDawn mène un court sondage sur Google Forms. Vous êtes libre d’y répondre, et l’app elle-même ne collecte toujours rien.
+
+- **Ce qui est collecté.** Vos réponses et l’adresse e-mail que vous saisissez. Rien d’autre.
+- **L’adresse e-mail.** Elle sert à vous envoyer un code si vous êtes tiré au sort. Si vous ne cochez pas la case des mises à jour, elle est supprimée dans les 30 jours qui suivent l’envoi des codes. Si vous la cochez, elle n’est conservée que pour vous envoyer les e-mails de nouvelles versions de MarsDawn, chacun avec un lien de désabonnement en un clic, jusqu’à ce que vous vous désabonniez.
+- **Les réponses.** Après le tirage au sort, elles sont conservées sans l’adresse e-mail et peuvent apparaître sous forme anonymisée et agrégée dans une synthèse publiée.
+- **Jamais partagées ni vendues,** et jamais utilisées à d’autres fins.
+- **Où elles sont stockées.** Google Forms stocke les réponses chez Google, selon la politique de confidentialité de Google.
+- **Suppression.** Pour faire supprimer plus tôt votre réponse ou votre adresse e-mail, écrivez à support@southern-light.dev.
 
 ## Ce qui reste sur votre Mac
 
@@ -13450,7 +13516,7 @@ Source: https://marsdawn.southern-light.dev/es/privacy/
 
 Cómo trata tu información MarsDawn, el editor de Markdown para macOS.
 
-Última actualización: 2026-10-10
+Última actualización: 2026-10-12
 
 > **La app MarsDawn no recopila ningún dato sobre ti.** No hay cuenta, ni publicidad, ni seguimiento. Tus documentos y tus ajustes se quedan en tu Mac.
 
@@ -13470,6 +13536,17 @@ Una vez que aceptas, Google Analytics instala sus propias cookies (`_ga` y `_ga_
 - **Conservación.** Google conserva estos datos durante 14 meses y después los elimina.
 - **Dónde se tratan.** Google Tag Manager y Google Analytics los opera Google; tus datos pueden tratarse en Estados Unidos y en otros países donde Google opera.
 - **El proveedor de alojamiento.** Cloudflare aloja el sitio y, como cualquier proveedor de alojamiento, ve tu dirección IP mientras responde a la solicitud. Ese registro pertenece al proveedor. No es la analítica descrita arriba.
+
+## Encuesta de lanzamiento
+
+Del 20 de octubre al 2 de noviembre de 2026, MarsDawn realiza una breve encuesta en Formularios de Google. Rellenarla depende de ti, y la propia app sigue sin recopilar nada.
+
+- **Qué se recopila.** Tus respuestas y la dirección de correo electrónico que escribas. Nada más.
+- **El correo electrónico.** Se usa para enviarte un código si resultas elegido en el sorteo. Si no marcas la casilla de avisos de novedades, se elimina en los 30 días siguientes al envío de los códigos. Si la marcas, se conserva solo para enviarte correos sobre nuevas versiones de MarsDawn, cada uno con un enlace para darte de baja con un clic, hasta que te des de baja.
+- **Las respuestas.** Tras el sorteo se conservan sin el correo electrónico y pueden aparecer de forma anónima y agregada en un resumen publicado.
+- **Nunca se comparten ni se venden,** y nunca se usan para nada más.
+- **Dónde se almacenan.** Formularios de Google guarda las respuestas en Google, conforme a la política de privacidad de Google.
+- **Eliminación.** Para que eliminemos antes tu respuesta o tu correo electrónico, escribe a support@southern-light.dev.
 
 ## Lo que se queda en tu Mac
 
@@ -15621,7 +15698,7 @@ Source: https://marsdawn.southern-light.dev/ko/privacy/
 
 macOS용 Markdown 편집기 MarsDawn이 사용자의 정보를 어떻게 다루는지 설명합니다.
 
-최종 업데이트: 2026-10-10
+최종 업데이트: 2026-10-12
 
 > **MarsDawn 앱은 사용자에 관한 데이터를 일절 수집하지 않습니다.** 계정도, 광고도, 추적도 없습니다. 문서와 설정은 사용자의 Mac에 남습니다.
 
@@ -15641,6 +15718,17 @@ macOS용 Markdown 편집기 MarsDawn이 사용자의 정보를 어떻게 다루�
 - **보관 기간.** Google은 이 데이터를 14개월 동안 보관한 뒤 삭제합니다.
 - **처리 위치.** Google Tag Manager와 Google Analytics는 Google이 운영합니다. 데이터는 미국을 비롯해 Google이 사업을 운영하는 다른 국가에서 처리될 수 있습니다.
 - **호스팅 업체.** 이 사이트는 Cloudflare가 호스팅하며, 여느 호스팅 업체와 마찬가지로 요청에 응답하는 동안 IP 주소를 보게 됩니다. 그 로그는 호스팅 업체의 것이며, 위에서 설명한 분석과는 별개입니다.
+
+## 출시 설문
+
+2026년 10월 20일부터 11월 2일까지 MarsDawn은 Google 설문지로 짧은 설문을 진행합니다. 참여 여부는 사용자가 정하며, 앱 자체는 여전히 아무것도 수집하지 않습니다.
+
+- **수집하는 정보.** 사용자의 응답과 입력한 이메일 주소만 수집하며, 그 밖의 정보는 수집하지 않습니다.
+- **이메일 주소.** 추첨에 당첨되면 코드를 보내는 데 사용합니다. 업데이트 알림 체크란을 선택하지 않으면 코드 발송 후 30일 이내에 삭제합니다. 선택하면 MarsDawn 새 버전 안내 메일을 보내는 용도로만 보관하며, 모든 메일에는 클릭 한 번으로 수신을 거부할 수 있는 링크가 들어 있습니다. 수신을 거부할 때까지 보관합니다.
+- **응답.** 추첨 후에는 이메일 주소와 분리하여 보관하며, 익명으로 집계한 형태로 공개 결과 요약에 실릴 수 있습니다.
+- **공유하거나 판매하지 않으며,** 다른 목적으로도 사용하지 않습니다.
+- **저장 위치.** 응답은 Google 설문지를 통해 Google에 저장되며, Google의 개인정보처리방침이 적용됩니다.
+- **삭제.** 응답이나 이메일 주소를 더 일찍 삭제하려면 support@southern-light.dev로 문의해 주세요.
 
 ## Mac에 남는 것
 
