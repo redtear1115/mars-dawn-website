@@ -75,6 +75,46 @@ def render_legal_body(slug: str, locale: str) -> str:
 # in the app repo, B4/B5) — knowing the ID doesn't mean the app is on sale.
 LISTING_URL = "https://apps.apple.com/app/id6812925073"
 
+# App Store Connect campaign link (owner decision 2026-10-12, website #36): every <a href> to the
+# listing in the generated HTML carries the provider token and a campaign token naming the page that
+# sent the download. ASC's own form; the path differs from LISTING_URL's on purpose. LISTING_URL
+# itself stays plain: it is /go/app-store's destination, the JSON-LD's downloadUrl and sameAs, and
+# what the .md twins, llms.txt, llms-full.txt and product-facts.md say (agents read those, nobody
+# clicks them). scripts/check_store_links.py holds all of this.
+CAMPAIGN_BASE = "https://apps.apple.com/app/apple-store/id6812925073"
+CAMPAIGN_PROVIDER = "128976951"
+
+
+def campaign_token(path: str) -> str:
+    """The `ct` for a generated HTML file, from its path under public/: `web-` + the first path
+    segment of the slug (`index` -> `web-home`), the 404 pages `web-404`. No locale in it, so each
+    campaign stays large enough for ASC's 5-install display threshold."""
+    parts = [part for part in path.split("/") if part]
+    if parts[-1] == "404.html":
+        return "web-404"
+    if parts[-1] == "third-party-notices.html":
+        return "web-themes"
+    raise ValueError(path)
+
+
+def slug_campaign_token(slug: str) -> str:
+    token = "web-home" if slug == "index" else "web-" + slug.split("/")[0]
+    assert len(token) <= 40, token
+    return token
+
+
+def campaign_url(token: str) -> str:
+    return f"{CAMPAIGN_BASE}?pt={CAMPAIGN_PROVIDER}&ct={token}&mt=8"
+
+
+def with_campaign_links(html: str, token: str) -> str:
+    """The page's HTML with each `<a href>` to the listing swapped for the campaign form (`&` as
+    `&amp;`). JSON-LD uses "downloadUrl"/"sameAs" strings, not hrefs, so it is never touched."""
+    plain = f'href="{LISTING_URL}"'
+    out = html.replace(plain, 'href="' + campaign_url(token).replace("&", "&amp;") + '"')
+    assert plain not in out
+    return out
+
 # The site's same-site redirects, written to public/_redirects. Cloudflare Workers static assets
 # read that file (source, destination, status) and never serve it. Every destination is fixed here:
 # no open redirect, and no tracking parameters on the destination (app repo docs/website-plan.md
@@ -712,11 +752,7 @@ def third_party_notices_html() -> str:
         "project's copyright notice and full licence text. MarsDawn's own themes, by Southern Light, are original and are licensed Apache-2.0 like the rest of this site's code.</p>\n"
         "</section>\n" + "\n".join(sections)
     )
-    footer_links = "".join(
-        f'    <a href="{page_path("en", target)}">{ui[target]}</a>\n'
-        for target in ("support", "privacy", "cli")
-        if has_page("en", target)
-    )
+    footer_links = footer_site_links("en", ui)
     footer_links += f'    <button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button>\n'
     footer_html = (
         '<footer class="footer">\n'
@@ -4811,6 +4847,22 @@ def has_page(locale: str, slug: str) -> bool:
     return (locale, slug) in all_pages()
 
 
+# The footer's site links, the same row on every page, the 404 pages and the licence notices (one
+# tuple, not three). The first three are the long-standing links; the next three are the pages
+# crawlers must reach from every page (PLAN-web-search-sprint S1). Each label is the page's own
+# existing ui[...] string in that locale; a page a locale doesn't have is left out.
+FOOTER_SLUGS = ("support", "privacy", "cli", "view-markdown-on-mac", "vs/markdown-preview-tools", "vs/macmd-viewer")
+
+
+def footer_site_links(locale: str, ui: dict, current: dict = None) -> str:
+    current = current or {}
+    return "".join(
+        f'    <a href="{page_path(locale, slug)}"{current.get(slug, "")}>{ui[SLUG_TO_UI_KEY[slug]]}</a>\n'
+        for slug in FOOTER_SLUGS
+        if has_page(locale, slug)
+    )
+
+
 def locales_with(slug: str) -> list:
     return [locale for locale in LOCALES if has_page(locale, slug)]
 
@@ -5281,11 +5333,7 @@ def render(locale: str, slug: str, page: dict) -> str:
     # line is the origin mark alone, because the closing band just above already says the tagline and
     # the store line. The origin mark is deliberately untranslated, as on Futari's site.
     current = {slug: ' aria-current="page"'}
-    footer_links = "".join(
-        f'    <a href="{page_path(locale, target)}"{current.get(target, "")}>{ui[target]}</a>\n'
-        for target in ("support", "privacy", "cli")
-        if has_page(locale, target)
-    )
+    footer_links = footer_site_links(locale, ui, current)
     # Reopens the consent banner (consent.js). No cookie/analytics page of its own to link to,
     # so it's a button styled as a link, not an <a>: nothing to navigate to without JS, and
     # without JS there is no banner to reopen either (see consent_banner_html).
@@ -5599,11 +5647,7 @@ def render_404(locale: str) -> str:
         + f' lang="{LOCALES[other]["html_lang"]}">{LOCALES[other]["label"]}</a>'
         for other in LOCALES
     )
-    footer_links = "".join(
-        f'    <a href="{page_path(locale, target)}">{ui[target]}</a>\n'
-        for target in ("support", "privacy", "cli")
-        if has_page(locale, target)
-    )
+    footer_links = footer_site_links(locale, ui)
     footer_links += f'    <button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button>\n'
     footer_meta = f'<span>{ui["slogan"]}</span> <span>{ui["footer_store"]}</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span>'
     footer_html = (
@@ -5857,7 +5901,8 @@ def main() -> None:
     for (locale, slug), page in pages.items():
         folder = SITE / LOCALES[locale]["prefix"] / ("" if slug == "index" else slug)
         folder.mkdir(parents=True, exist_ok=True)
-        (folder / "index.html").write_text(render(locale, slug, page), encoding="utf-8")
+        (folder / "index.html").write_text(
+            with_campaign_links(render(locale, slug, page), slug_campaign_token(slug)), encoding="utf-8")
         print(folder / "index.html")
         (folder / "index.md").write_text(build_twin(pages, locale, slug), encoding="utf-8")
         print(folder / "index.md")
@@ -5868,7 +5913,8 @@ def main() -> None:
     print(SITE / "llms-full.txt")
     notices_path = SITE / "themes" / "third-party-notices.html"
     notices_path.parent.mkdir(parents=True, exist_ok=True)
-    notices_path.write_text(third_party_notices_html(), encoding="utf-8")
+    notices_path.write_text(
+        with_campaign_links(third_party_notices_html(), campaign_token("themes/third-party-notices.html")), encoding="utf-8")
     print(notices_path)
     (SITE / "assets" / "annotations.css").write_text(annotations_css(), encoding="utf-8")
     (SITE / "assets" / "hero.css").write_text(hero_window.window_css(), encoding="utf-8")
@@ -5893,7 +5939,7 @@ def main() -> None:
     for locale in LOCALES:
         target = SITE / LOCALES[locale]["prefix"] / "404.html" if LOCALES[locale]["prefix"] else SITE / "404.html"
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(render_404(locale), encoding="utf-8")
+        target.write_text(with_campaign_links(render_404(locale), campaign_token("404.html")), encoding="utf-8")
         print(target)
     skill = SITE / "cli" / "skill" / "SKILL.md"
     skill.parent.mkdir(parents=True, exist_ok=True)
