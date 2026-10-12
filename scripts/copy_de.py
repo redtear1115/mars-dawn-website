@@ -401,20 +401,16 @@ marsdawn --version</code></pre>
 
     pages['view-markdown-on-mac'] = {
         "title": 'Eine Markdown-Datei auf dem Mac ansehen · MarsDawn',
-        "description": 'Eine .md-Datei ist reiner Text mit Formatierungszeichen. So liest du sie auf dem Mac gerendert: heute als PDF mit dem kostenlosen Befehlszeilenwerkzeug marsdawn und in der MarsDawn-App aus dem Mac App Store.',
+        "description": 'Eine .md-Datei ist reiner Text mit Formatierungszeichen. So liest du sie auf dem Mac gerendert: in MarsDawn, kostenlos aus dem Mac App Store, oder als PDF mit dem kostenlosen Befehlszeilenwerkzeug marsdawn.',
         "body": f"""
 <section class="intro">
   <h1>Eine Markdown-Datei auf dem Mac ansehen.</h1>
   <p>Eine <code>.md</code>-Datei ist reiner Text. Überschriften, fette Wörter, Tabellen und Diagramme stehen darin als Zeichen: <code>#</code> für eine Überschrift, <code>**</code> um fetten Text, senkrechte Striche für eine Tabelle, ein <code>mermaid</code>-Codeblock für ein Diagramm. In einem einfachen Texteditor liest du die Zeichen. Um die Seite so zu lesen, wie sie gemeint ist, muss sie jemand rendern.</p>
 </section>
-<h2>Heute und kostenlos: als PDF</h2>
-<p>Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> rendert eine Markdown-Datei als PDF, das jeder Mac öffnen kann. Tabellen, Formeln, Mermaid-Diagramme und hervorgehobener Code kommen gerendert heraus, und es braucht sonst nichts, nicht einmal die MarsDawn-App.</p>
-<pre><code>{k.BREW_TAP_INSTALL}
-marsdawn export notes.md
-open notes.pdf</code></pre>
-<p><code>export</code> schreibt <code>notes.pdf</code> neben die Markdown-Datei, und <code>open</code> zeigt sie in deinem PDF-Programm an. Erforderlich ist macOS 15 oder neuer. Die Schritt-für-Schritt-Anleitung mit einer echten exportierten Seite findest du unter <a href="/de/markdown-to-pdf/">Markdown in PDF</a>.</p>
 <h2>In MarsDawn lesen</h2>
-<p>MarsDawn ist ein Markdown-Editor für den Mac, im Mac App Store. Öffne eine <code>.md</code>-Datei und lies die gerenderte Seite neben dem Quelltext:</p>
+<p>MarsDawn ist ein Markdown-Editor für den Mac. Du kannst es kostenlos aus dem Mac App Store laden: Teste alles 14 Tage lang und schalte es dann einmalig für 4,99 USD frei. Kein Abo, kein Konto. Es braucht macOS 26 oder neuer.</p>
+<p><a href="{k.LISTING_URL}">MarsDawn kostenlos im Mac App Store laden</a></p>
+<p>Öffne eine <code>.md</code>-Datei und lies die gerenderte Seite neben dem Quelltext:</p>
 <ul>
   <li>Die Vorschau aktualisiert sich beim Tippen, und beide Bereiche scrollen gemeinsam.</li>
   <li>Mermaid-Flussdiagramme und Sequenzdiagramme werden in der Vorschau gezeichnet, Codeblöcke werden hervorgehoben.</li>
@@ -422,6 +418,12 @@ open notes.pdf</code></pre>
   <li>Wenn du etwas ändern willst, ist der Quelltext direkt da. MarsDawn ist ein Editor, nicht nur ein Viewer.</li>
 </ul>
 <p>Wenn ein KI-Agent die Datei geschrieben hat, ist das genau der Ablauf, für den MarsDawn gebaut ist: Der Agent schreibt, du liest es gerendert, und er überarbeitet. Siehe <a href="/de/">die Startseite</a> und <a href="/de/cli/agents/">marsdawn für Agenten</a>, wenn ein Agent Dateien für dich öffnen soll. Warum dieses Lesen wichtig ist und wie du einen Plan prüfst, steht unter <a href="/de/reading-agent-output/">Lesen, was dein Agent zurückgibt</a> und <a href="/de/reviewing-agent-plans/">Einen Agentenplan in fünf Minuten prüfen</a>.</p>
+<h2>Ohne die App: als PDF</h2>
+<p>Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> rendert eine Markdown-Datei als PDF, das jeder Mac öffnen kann. Tabellen, Formeln, Mermaid-Diagramme und hervorgehobener Code kommen gerendert heraus, und es braucht sonst nichts, nicht einmal die MarsDawn-App.</p>
+<pre><code>{k.BREW_TAP_INSTALL}
+marsdawn export notes.md
+open notes.pdf</code></pre>
+<p><code>export</code> schreibt <code>notes.pdf</code> neben die Markdown-Datei, und <code>open</code> zeigt sie in deinem PDF-Programm an. Erforderlich ist macOS 15 oder neuer. Die Schritt-für-Schritt-Anleitung mit einer echten exportierten Seite findest du unter <a href="/de/markdown-to-pdf/">Markdown in PDF</a>.</p>
 <h2>Weiter</h2>
 <ul>
   <li>Alle Optionen des Befehlszeilenwerkzeugs: <a href="/de/cli/">Befehlszeile</a>.</li>
