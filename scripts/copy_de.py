@@ -11,6 +11,92 @@ content/legal/<slug>.de.md.
 COMPLETE = True
 
 
+# /themes/agents/ prose (machine draft of the en text, needs-i18n; plan PLAN-web-theme-tuning W3).
+# The tables come from scripts/theme_agents.py, not from here.
+THEME_AGENTS = {
+    "title": "Mit deinem Agenten ein MarsDawn-Thema erstellen · MarsDawn",
+    "description": "MarsDawn-Themen-Referenz für KI-Agenten: jedes Feld der theme.json mit Typ und Bereich, Prüfen und Rendern per CLI, ein Übergabe-Link und die Einreichung.",
+    "label": "Mit deinem Agenten ein Thema erstellen",
+    "h1": "Mit deinem Agenten ein Thema erstellen",
+    "lede": "Eine Referenz für einen KI-Agenten, der ein MarsDawn-Vorschau-Thema erstellt. Der Agent schreibt eine <code>theme.json</code>, prüft und rendert sie mit dem Befehlszeilenwerkzeug <code>marsdawn</code> und gibt dir einen Link. Du stimmst sie auf der Seite <a href=\"/themes/new/\">Ein Thema erstellen</a> nach Augenmaß ab und reichst sie ein. Die Feldtabellen unten sind direkt aus dem Quelltext des Kits gelesen, und eine Prüfung hält sie damit gleich.",
+    "summary": "<strong>Schreibe eine <code>theme.json</code>, führe <code>marsdawn theme validate theme.json --require-complete --json</code> aus, bis der Exit-Code 0 ist, rendere sie mit <code>marsdawn theme preview</code> in hell und dunkel und gib der Person dann einen Link.</strong> Ein Thema besteht nur aus Parametern. Es enthält nie CSS.",
+    "what_h": "Was ein Thema ist",
+    "what_items": [
+        "<strong>Farben</strong> für hell und für dunkel: eine Basispalette sowie optionale Syntax- und Diagrammfarben. Jede ist <code>#RRGGBB</code>.",
+        "<strong>Ein Schriftdesign</strong>: <code>sans</code>, <code>serif</code> oder <code>rounded</code>.",
+        "<strong>Ein geschlossener Satz von Stiloptionen</strong>: Zahlen in festen Bereichen und Auswahlen aus festen Listen. Eine Farbe in einer Stiloption ist immer eine Palettenrolle wie <code>accent</code>, nie eine feste Farbe.",
+        "<strong>Anzeigetexte</strong>: ein Name und eine Zusammenfassung, optional ein Autor und eine Lizenz."
+    ],
+    "what_note": "Ein Schlüssel, der nicht in den Tabellen unten steht, ist ein Fehler, ebenso ein doppelt geschriebener Schlüssel. Die Datei darf höchstens 16.384 Bytes groß sein.",
+    "loop_h": "Prüfen und rendern",
+    "loop_intro": "Führe diese Befehle in dem Ordner aus, der <code>theme.json</code> enthält. Sie brauchen das Werkzeug <code>marsdawn</code>: siehe <a href=\"/cli/agents/\">marsdawn für Agenten</a>.",
+    "loop_items": [
+        "Exit-Codes: 0 gültig, 1 ungültig mit Regel-IDs, 2 Datei nicht gefunden, 64 falsche Verwendung. <code>preview</code> kennt zusätzlich 4, wenn die PNG-Datei schon existiert (<code>--force</code> übergeben oder einen anderen Namen wählen), und 5, wenn das Rendern fehlschlägt.",
+        "Mit <code>--json</code> listet ein ungültiges Thema seine Probleme unter <code>issues</code> auf, jedes mit einer <code>rule</code>-ID, einem <code>path</code> und einer <code>message</code>. Behebe sie und führe den Befehl erneut aus.",
+        "<code>--require-complete</code> ist die Prüfung für ein Thema, das veröffentlicht werden soll: Es verlangt zusätzlich die Farben <code>syntax</code> und <code>diagram</code> in beiden Paletten.",
+        "<code>css</code> gibt das CSS aus, das die Vorschau verwendet. <code>preview</code> rendert ein Beispieldokument als PNG. Beide prüfen zuerst, ein ungültiges Thema wird also nicht gerendert.",
+        "Sieh dir das helle und das dunkle PNG an, bevor du das Thema übergibst."
+    ],
+    "start_h": "Mit einem eingebauten Thema beginnen",
+    "start_intro": "Kopiere eines der vier eingebauten Themen und ändere es. Jedes ist eine vollständige, gültige Datei:",
+    "start_dawn": "der Standard und das Beispiel unten",
+    "start_classic": "eine schlichtere, dokumentartige Palette",
+    "start_modern": "eine kühlere, zeitgemäßere Palette",
+    "start_vivid": "eine hellere Palette mit mehr Kontrast",
+    "ex_h": "Beispiel: Dawn",
+    "ex_intro": "Das ist <code>dawn.json</code>, Byte für Byte. Ihre einzige Stiloption ist eine dünne Linie in der Akzentfarbe für <code>hr</code>.",
+    "fields_h": "Felder",
+    "fields_intro": "Jedes Objekt unten wird auf dieselbe Weise gelesen. <code>required</code> heißt, der Schlüssel muss vorhanden sein, und ein Schlüssel, der nicht aufgeführt ist, ist ein Fehler.",
+    "types_note": "Typen: <code>string</code>, <code>integer</code>, <code>number</code>, <code>boolean</code>, <code>map</code> (Sprach-Tag auf Text), <code>enum</code> (einer der aufgeführten Werte), <code>role</code> (eine Palettenrolle) und <code>object</code> (die Tabelle, auf die verlinkt wird). Ein <code>[]</code> hinter einem Typ bedeutet eine Liste.",
+    "c_field": "Feld",
+    "c_type": "Typ",
+    "c_presence": "Pflicht",
+    "c_values": "Werte und Hinweise",
+    "c_option": "Option",
+    "c_kind": "type",
+    "c_min": "Min",
+    "c_max": "Max",
+    "c_step": "Schritt",
+    "see_roles": "eine Palettenrolle",
+    "see_ranges": "Bereich",
+    "publish_note": "(zum Veröffentlichen erforderlich, mit <code>--require-complete</code>)",
+    "h_kinds": "Optionen mit einem Typ",
+    "kinds_intro": "Diese Stiloptionen sind Objekte mit einem <code>type</code>. Jeder <code>type</code> nimmt genau die für ihn aufgeführten Felder und keine anderen.",
+    "h_roles": "Palettenrollen",
+    "roles_intro": "Eine Palettenrolle ist einer dieser Namen:",
+    "h_numbers": "Zahlen",
+    "numbers_intro": "Eine Zahl wird auf das nächste Vielfache ihres Schritts gerundet und muss dann zwischen Min und Max liegen. Sonst lautet die Regel <code>number.range</code>.",
+    "n_schemaVersion": "Immer <code>1</code>.",
+    "n_id": "1 bis 32 Zeichen: Kleinbuchstaben und Ziffern, in Abschnitten, die durch einzelne Bindestriche verbunden sind, etwa <code>calm-green</code>.",
+    "n_version": "<code>MAJOR.MINOR.PATCH</code>, etwa <code>1.0.0</code>.",
+    "n_name": "Sprach-Tag auf Text. <code>en</code> ist erforderlich; andere Schlüssel sind Sprach-Tags wie <code>zh-Hant</code>. Jeder Text hat höchstens 48 Zeichen, ohne Links und Zeilenumbrüche.",
+    "n_summary": "Dieselbe Form wie <code>name</code>, höchstens 120 Zeichen pro Text.",
+    "n_scenarios": "Eins oder zwei, ohne Wiederholung. Sie legen fest, wie viel Kontrast das Thema erreichen muss.",
+    "n_license": "Eine SPDX-Kennung, etwa <code>Apache-2.0</code>. Eingereichte Themen werden unter Apache-2.0 veröffentlicht.",
+    "n_author_name": "Höchstens 64 Zeichen, ohne Links.",
+    "n_author_github": "Ein GitHub-Login. Bei einer Einreichung trägst du den der einreichenden Person ein.",
+    "n_hex": "<code>#</code> und sechs Hexziffern, etwa <code>#1C1C1C</code>.",
+    "n_inline_code": "Nur <code>text</code> oder eine Syntaxrolle: <code>keyword</code>, <code>string</code>, <code>comment</code>, <code>number</code>, <code>function</code> oder <code>type</code>.",
+    "n_gradient": "Zwei oder drei Rollen.",
+    "rules_h": "Was sonst noch geprüft wird",
+    "rules_items": [
+        "<strong>Kontrast.</strong> Jedes Farbpaar, das die Vorschau zeichnet, etwa <code>text</code> auf <code>background</code>, muss für Text 4,5:1 und für Linien und anderes Nicht-Text 3:1 erreichen. Die Szenarien, die du angibst, heben manche Farben auf 4,5:1. Die Meldung nennt das Paar, sein Verhältnis und das geforderte.",
+        "<strong>Texte.</strong> Ein Name, eine Zusammenfassung oder ein Autorenname, der leer oder zu lang ist oder einen Link, ein Steuerzeichen oder ein unsichtbares oder bidirektionales Formatzeichen enthält, wird abgelehnt.",
+        "<strong>Regel-IDs.</strong> Jedes Problem trägt eine, etwa <code>contrast.pair</code>, <code>color.hex</code>, <code>number.range</code>, <code>id.pattern</code>, <code>schema.unknownKey</code> oder <code>palette.incomplete</code>. Korrigiere die Datei nach dem, was die ID und der <code>path</code> sagen."
+    ],
+    "link_h": "Als Link übergeben",
+    "link_intro": "Die Seite <a href=\"/themes/new/\">Ein Thema erstellen</a> öffnet ein Thema aus einem Link, damit die Person es nach Augenmaß abstimmen kann. Der Link besteht aus der Adresse der Seite, dann <code>#theme=</code>, dann den Bytes der Datei als base64url ohne Auffüllzeichen. Die Datei darf höchstens 16.384 Bytes groß sein. Diese eine Zeile baut den Link in zsh und in bash, auf macOS und Linux:",
+    "link_note": "Das Thema steht hinter einem <code>#</code>, das ein Browser nicht an die Website sendet, und die Website leitet es nirgendwohin weiter. Der Link bleibt aber im Verlauf deiner Shell und des Browsers, und jede Person, der du ihn schickst, kann das Thema lesen.",
+    "submit_h": "Einreichen",
+    "submit_intro": "Der Agent bereitet die Datei und den Link vor. Die Person reicht ein. Beide Wege verlangen das Developer Certificate of Origin und die Veröffentlichung unter Apache-2.0, und diese Bestätigung gibt die Person ab: Der Agent setzt das Häkchen nicht und unterschreibt nicht für sie.",
+    "submit_issue": "<strong>Issue.</strong> Die Person öffnet den Link und klickt auf der Seite „Ein Thema erstellen“ auf <strong>Submit</strong> oder öffnet das <a href=\"{issue_url}\">Issue-Formular</a> und fügt das JSON in <em>Theme</em> ein. Ein Workflow prüft das Thema und antwortet.",
+    "submit_pr": "<strong>Pull Request.</strong> Ändere nur <code>themes/&lt;id&gt;/theme.json</code>, setze <code>author.github</code> auf den Login des Pull-Request-Autors und signiere jeden Commit mit <code>git commit -s</code> (Sign-off). Die Regeln stehen in <a href=\"{contributing_url}\">CONTRIBUTING.md</a>.",
+    "submit_note": "Autorenname, Name, Zusammenfassung und GitHub-Login eines eingereichten Themas werden dauerhaft öffentlich. Setze <code>author.name</code> daher auf einen Namen, den die Person gern veröffentlicht.",
+    "gallery_h": "Veröffentlichte Themen",
+    "gallery_p": "Wie veröffentlichte Themen aussehen, siehst du in der <a href=\"/themes/gallery/\">Themengalerie</a>."
+}
+
+
 def build(k) -> dict:
     pages = {}
     pages['index'] = {
@@ -667,6 +753,7 @@ swift build -c release --product marsdawn
   <li>Ein Skill in einer Datei für Agenten, die Anweisungen lesen statt eine Shell zu benutzen: <a href="/de/cli/skill/">der marsdawn-Skill</a>.</li>
   <li>Ein MCP-Server, der genau dieses <code>export</code> umschließt: <a href="/de/cli/mcp/">marsdawn-mcp</a>.</li>
   <li>Warum dieses JSON-Ergebnis für den eigenen Kontext eines Agenten günstig bleibt: <a href="/de/token-efficient-review/">Token-sparsames Prüfen</a>.</li>
+  <li>Ein MarsDawn-Thema mit einem Agenten erstellen: <a href="/de/themes/agents/">Mit deinem Agenten ein Thema erstellen</a>.</li>
 </ul>
 """,
     }
@@ -807,6 +894,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 
 <h2>Bau dein eigenes, und sieh dir an, was andere gemacht haben</h2>
 <p><a href="/de/themes/new/">Bau ein Thema in deinem Browser</a>: wähle Farben und ein paar Stiloptionen, sieh sie live angewendet und reiche es als GitHub-Issue zur Prüfung ein &#8212; keine Installation, kein git. <a href="/de/themes/gallery/">Die Galerie</a> zeigt jedes eingereichte Thema, das ein Maintainer geprüft und gemerged hat, filterbar nach Verwendungszweck. Installiere eines in der App über Einstellungen › Erscheinungsbild › Weitere Themes laden …, dann verwendet es auch die Übersicht im Finder.</p>
+<p>Du arbeitest mit einem Agenten? <a href="/de/themes/agents/">Lass ihn das Thema erstellen</a>, und stimme es dann im Browser ab.</p>
 
 <h2>Weiter</h2>
 <ul>
@@ -818,6 +906,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
     }
 
 
+    pages['themes/agents'] = k.theme_agents_page(THEME_AGENTS)
     pages['themes/new'] = {
         "title": "Im Browser ein MarsDawn-Thema erstellen · MarsDawn",
         "description": "Wähle Farben und ein paar Stiloptionen, sieh sie live auf einem Beispieldokument und reiche dein Thema als GitHub-Issue ein. Keine Installation, kein git.",
@@ -826,6 +915,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
   <h1>Ein Thema erstellen</h1>
   <p>Wähle unten eine Palette und ein paar Stiloptionen. Das Beispieldokument rechts aktualisiert sich laufend, hell und dunkel, und jede Prüfung, die die CI der Galerie ausführt, erscheint auch hier &#8212; ein Thema, das das Einreichungs-Issue erreicht, hat die Checks also meist schon bestanden.</p>
   <p>Zum Einreichen brauchst du ein GitHub-Konto. Für diese Seite selbst sind weder Installation noch git nötig.</p>
+  <p>Ein KI-Agent kann die Themendatei für dich schreiben: <a href="/de/themes/agents/">Mit deinem Agenten ein Thema erstellen</a>, und öffne dann seinen Link hier, um es abzustimmen.</p>
 </section>
 <div id="theme-sim-app" data-locale="de"><p>Diese Seite braucht JavaScript, um ein Thema zu erstellen und in der Vorschau zu zeigen.</p></div>
 """,
@@ -1437,7 +1527,7 @@ Teilnehmende: _Namen_
     }
 
     app_ui_languages = 'Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch'
-    ui = {'home': 'MarsDawn', 'privacy': 'Datenschutzrichtlinie', 'support': 'Support', 'cli': 'Befehlszeile', 'agents': 'marsdawn für Agenten', 'using_cli': 'Die CLI verwenden', 'markdown-to-pdf': 'Markdown zu PDF', 'skill': 'Agent-Skill', 'view-markdown-on-mac': 'Markdown auf dem Mac ansehen', 'vs-macmd-viewer': 'MacMD Viewer vs. MarsDawn', 'updated': f'Zuletzt aktualisiert am {k.UPDATED}', 'tagline': 'Lies, was dein Agent geschrieben hat.', 'slogan': 'Ein neuer Morgen für Markdown.', 'footer_store': f'MarsDawn gibt es im <a href="{k.LISTING_URL}">Mac App Store</a>.', 'footer_nav': 'Website', 'more': 'Mehr', 'yours': 'Deine Texte bleiben auf deinem Mac', 'pay-once': 'Kostenlos testen, einmal bezahlen', 'pdf': 'PDF-Export', 'native': 'Eine Mac-App', 'limits': 'Was MarsDawn nicht kann', 'mcp': 'MCP-Server', 'token-efficient-review': 'Review mit wenigen Tokens', 'vs-markdown-preview-tools': 'Markdown anderswo ansehen vs. MarsDawn', 'themes': 'Vorschau-Themen und PDF-Export', 'themes-new': 'Ein Thema erstellen', 'themes-gallery': 'Themen-Galerie', 'sharing-exported-pdfs': 'Exportierte PDFs teilen', 'reviewing-ai-output': 'Warum KI-Ergebnisse weiterhin einen menschlichen Leser brauchen', 'reading-agent-output': 'Lesen, was dein Agent zurückgibt', 'agent-transparency': 'Transparenz von Agenten', 'reviewing-agent-plans': 'Den Plan eines Agenten prüfen', 'agent-design-patterns': 'Entwurfsmuster für Agenten', 'changelog': 'Änderungsprotokoll', 'reading-notes': 'Lektürenotizen der Redaktion', 'reading-notes-anthropic': 'Lektürenotizen: Anthropic', 'reading-notes-chip-huyen': 'Lektürenotizen: Chip Huyen', 'reading-notes-lilian-weng': 'Lektürenotizen: Lilian Weng', 'reading-notes-harrison-chase': 'Lektürenotizen: Harrison Chase', 'reading-notes-langchain': 'Lektürenotizen: LangChain (Jess Ou)', 'reading-notes-andrew-ng': 'Lektürenotizen: Andrew Ng', 'consent_text': 'Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.', 'consent_accept': 'Akzeptieren', 'consent_decline': 'Ablehnen', 'consent_aria': 'Cookie-Einwilligung', 'cookie_settings': 'Cookie-Einstellungen', 'view_markdown_source': 'Markdown-Quelltext ansehen'}
+    ui = {'home': 'MarsDawn', 'privacy': 'Datenschutzrichtlinie', 'support': 'Support', 'cli': 'Befehlszeile', 'agents': 'marsdawn für Agenten', 'using_cli': 'Die CLI verwenden', 'markdown-to-pdf': 'Markdown zu PDF', 'skill': 'Agent-Skill', 'view-markdown-on-mac': 'Markdown auf dem Mac ansehen', 'vs-macmd-viewer': 'MacMD Viewer vs. MarsDawn', 'updated': f'Zuletzt aktualisiert am {k.UPDATED}', 'tagline': 'Lies, was dein Agent geschrieben hat.', 'slogan': 'Ein neuer Morgen für Markdown.', 'footer_store': f'MarsDawn gibt es im <a href="{k.LISTING_URL}">Mac App Store</a>.', 'footer_nav': 'Website', 'more': 'Mehr', 'yours': 'Deine Texte bleiben auf deinem Mac', 'pay-once': 'Kostenlos testen, einmal bezahlen', 'pdf': 'PDF-Export', 'native': 'Eine Mac-App', 'limits': 'Was MarsDawn nicht kann', 'mcp': 'MCP-Server', 'token-efficient-review': 'Review mit wenigen Tokens', 'vs-markdown-preview-tools': 'Markdown anderswo ansehen vs. MarsDawn', 'themes': 'Vorschau-Themen und PDF-Export', 'themes-new': 'Ein Thema erstellen', 'themes-agents': 'Mit deinem Agenten ein Thema erstellen', 'themes-gallery': 'Themen-Galerie', 'sharing-exported-pdfs': 'Exportierte PDFs teilen', 'reviewing-ai-output': 'Warum KI-Ergebnisse weiterhin einen menschlichen Leser brauchen', 'reading-agent-output': 'Lesen, was dein Agent zurückgibt', 'agent-transparency': 'Transparenz von Agenten', 'reviewing-agent-plans': 'Den Plan eines Agenten prüfen', 'agent-design-patterns': 'Entwurfsmuster für Agenten', 'changelog': 'Änderungsprotokoll', 'reading-notes': 'Lektürenotizen der Redaktion', 'reading-notes-anthropic': 'Lektürenotizen: Anthropic', 'reading-notes-chip-huyen': 'Lektürenotizen: Chip Huyen', 'reading-notes-lilian-weng': 'Lektürenotizen: Lilian Weng', 'reading-notes-harrison-chase': 'Lektürenotizen: Harrison Chase', 'reading-notes-langchain': 'Lektürenotizen: LangChain (Jess Ou)', 'reading-notes-andrew-ng': 'Lektürenotizen: Andrew Ng', 'consent_text': 'Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.', 'consent_accept': 'Akzeptieren', 'consent_decline': 'Ablehnen', 'consent_aria': 'Cookie-Einwilligung', 'cookie_settings': 'Cookie-Einstellungen', 'view_markdown_source': 'Markdown-Quelltext ansehen'}
     store_chip = 'Im Mac App Store'
     trait_link = {'yours': ('Deine Texte bleiben auf deinem Mac', 'Kein Konto, keine Synchronisierung, keine Cloud.'), 'pay-once': ('Kostenlos testen, einmal bezahlen', '14 Tage kostenlos, danach einmalig 4,99 USD. Kein Abo.'), 'pdf': ('PDF-Export', 'Diagramme, hervorgehobener Code, saubere Seitenumbrüche.'), 'native': ('Eine Mac-App', 'Native Fenster und Tabs, automatisches Sichern, Übersicht.'), 'limits': ('Was MarsDawn nicht kann', 'Gut zu wissen, bevor du kaufst.')}
     trait_nav_heading = 'Was du von MarsDawn erwarten kannst'

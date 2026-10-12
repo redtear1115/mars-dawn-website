@@ -174,7 +174,7 @@ def run() -> int:
         built = tree_hash(pub)
         en_pages = sorted(p.parent.relative_to(pub) for p in pub.rglob("index.html")
                           if p.relative_to(pub).parts[0] not in ("zh-hant", "zh-hans", "ja", "de", "assets"))
-        r.expect(all((pub / "de" / p / "index.html").is_file() for p in en_pages) and len(en_pages) == 38,
+        r.expect(all((pub / "de" / p / "index.html").is_file() for p in en_pages) and len(en_pages) == 39,
                  f"all {len(en_pages)} en pages exist under /de/ with the same slugs")
         sh(scratch, "scripts/build_pages.py")
         r.expect(tree_hash(pub) == built, "a second build changes nothing")
@@ -182,9 +182,9 @@ def run() -> int:
         r.expect('<html lang="de"' in home and all(f'hreflang="{l}"' in home for l in ("en", "zh-Hant", "zh-Hans", "ja", "de", "x-default")),
                  "<html lang=de>, and hreflang names all five locales and x-default")
         sitemap = (pub / "sitemap.xml").read_text(encoding="utf-8")
-        r.expect(sitemap.count("<loc>https://marsdawn.southern-light.dev/de/") == 38, "the sitemap lists 38 /de/ URLs")
+        r.expect(sitemap.count("<loc>https://marsdawn.southern-light.dev/de/") == 39, "the sitemap lists 39 /de/ URLs")
         urls = sh(scratch, "scripts/indexnow_urls.py", "--sitemap").stdout
-        r.expect(urls.count("/de/") == 38, "indexnow_urls.py --sitemap lists them")
+        r.expect(urls.count("/de/") == 39, "indexnow_urls.py --sitemap lists them")
         r.expect("/de/" in (pub / "llms.txt").read_text(encoding="utf-8"), "llms.txt links /de/")
         checks = [("check_hreflang.py",), ("check_links.py",), ("check_invariants.py",), ("check_locales.py",), ("check_offers.py",),
                   ("check_hero.py",), ("check_legal_render.py", "--self-test"), ("check_legal_render.py",)]

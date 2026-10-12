@@ -7,7 +7,8 @@ ThemeStyles.json. A port can drift from what it copies. This script vendors, fro
 **commit** (not yet a tag -- see KIT_SHA below), everything a drift check needs to hold the port
 to:
 
-- ThemeStyles.json, ThemeNumbers.swift and the four built-in themes' theme.json, byte for byte;
+- ThemeStyles.json, ThemeNumbers.swift, ThemeStyle.swift, ThemeDocument.swift, PaletteRole.swift and
+  the four built-in themes' theme.json, byte for byte;
 - the validator's own fixtures (valid/invalid/hostile/publish) and expected-messages.json;
 - the kit's preview.css, and preview-sim.css, its .sim-preview-scoped twin (scripts/rescope_css.py,
   which shares scripts/theme_sim/rescope_fixture.json with the JS port's own test);
@@ -64,6 +65,9 @@ VENDOR_ROOT = ROOT / "vendor" / "kit-themes"
 VENDOR = VENDOR_ROOT / KIT_SHA[:12]
 BUILT_IN_IDS = ["dawn", "classic", "modern", "vivid"]
 FIXTURE_CATEGORIES = ["valid", "invalid", "hostile", "publish"]
+# Sources/MarsDawnThemes/<name>, copied byte for byte beside ThemeNumbers.swift (plan
+# PLAN-web-theme-tuning W3, Rev 3.8): scripts/theme_kit_swift.py reads them for /themes/agents/.
+AGENT_REFERENCE_SWIFT = ["ThemeStyle.swift", "ThemeDocument.swift", "PaletteRole.swift"]
 
 
 class SyncError(RuntimeError):
@@ -333,6 +337,10 @@ def sync(kit_checkout: Path, binary: Path, dest: Path) -> None:
     # ThemeStyles.json and ThemeNumbers.swift, verbatim.
     shutil.copy2(themes_src / "Resources" / "ThemeStyles.json", dest / "ThemeStyles.json")
     shutil.copy2(themes_src / "ThemeNumbers.swift", dest / "ThemeNumbers.swift")
+    # The three Swift files that define which fields theme.json has (the /themes/agents/ page's
+    # tables are parsed from them, scripts/theme_kit_swift.py), verbatim like ThemeNumbers.swift.
+    for swift_name in AGENT_REFERENCE_SWIFT:
+        shutil.copy2(themes_src / swift_name, dest / swift_name)
     scalar_options = parse_scalar_options((dest / "ThemeNumbers.swift").read_text(encoding="utf-8"))
 
     # The four built-ins' theme.json, verbatim.
