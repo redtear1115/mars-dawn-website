@@ -173,7 +173,7 @@ FEATURES = {'title': '機能一覧：Mac 用 Markdown エディタを1ページ�
                'items': [{'h': 'Mermaid の図',
                           'p': 'mermaid '
                                'と指定したコードブロックは図として描画されます。図に誤りがあると、プレビューにはそのソースとエラーが下に表示され、メッセージをクリックするとその行に移動します。',
-                          'links': ['templates/flowchart']},
+                          'links': ['mermaid-preview-mac']},
                          {'h': 'ハイライトされたコード',
                           'p': 'コードブロックは、一般的なほとんどの言語でハイライトされます。先頭の ``` の後ろに言語名を書くだけです。',
                           'links': []},
@@ -255,8 +255,121 @@ FEATURES = {'title': '機能一覧：Mac 用 Markdown エディタを1ページ�
          'tail': '。'}}
 
 
+# Machine drafts (needs-i18n; Grok reviews them): the /view-markdown-on-mac/ revision and the new
+# /mermaid-preview-mac/ page (website #227), the same shape as build_pages.OPEN_MD and .MERMAID. The
+# Mermaid example is the app's own Welcome guide at tag 1.1.0; menu names are the app's strings at 1.1.0
+# and Apple's own Finder strings for this language.
+OPEN_MD = {'title': 'Mac で .md ファイルを開く方法：ダブルクリック、標準アプリ、クイックルック · MarsDawn',
+ 'description': 'Mac で .md ファイルを開く方法：ダブルクリック、標準のアプリの設定、Finder のクイックルック。AI エージェントが書いた .md は、MarsDawn '
+                'でレンダリングして読めます。',
+ 'h1': 'Mac で .md ファイルを開く方法。',
+ 'short': 'ダブルクリックすれば開きます。テキストエディタで開いて、見出しや太字ではなく `#` や `**` が見えても、ファイルは壊れていません。`.md` '
+          'ファイルはプレーンテキストで、そのエディタは文字をそのまま表示しているだけです。Markdown をレンダリングするアプリ（たとえば '
+          'MarsDawn）で開き、そのアプリを標準に設定すれば、以後すべての `.md` ファイルがそこで開きます。',
+ 'steps_h2': 'Mac で .md ファイルを開く',
+ 'steps': '1. **ファイルをダブルクリックする。** Mac が `.md` に設定しているアプリで開きます。Markdown '
+          'のアプリがなければ、たいていプレーンテキストエディタで、整ったページではなく記号が見えます。\n'
+          '2. **アプリを自分で選ぶ。** Control キーを押しながらファイルをクリックし、「このアプリケーションで開く」からアプリを選びます。または「ファイル ▸ '
+          '情報を見る」（⌘I）を選び、「このアプリケーションで開く:」でアプリを選んで「すべてを変更…」をクリックすると、同じ種類のファイルがすべてそのアプリで開きます。MarsDawn は '
+          '`.md`、`.markdown`、`.mdown`、`.mkd`、`.mkdn` のファイルを開けます。\n'
+          '3. **開かずにプレビューする。** Finder でファイルを選んでスペースキーを押します。MarsDawn '
+          'をインストールしていれば、クイックルックにレンダリングされたページが表示され、図も含まれます。',
+ 'read_mermaid': '- [Mermaid](/ja/mermaid-preview-mac/) のフローチャートとシーケンス図がプレビューに描画され、コードブロックはハイライトされます。',
+ 'faq_h2': 'よくある質問',
+ 'faq': [['.md ファイルとは？',
+          '`.md` ファイルは、Markdown で書かれたプレーンテキストのファイルです。Markdown は簡単な文字でテキストに印を付ける書き方で、`#` は見出し、`**` '
+          'で囲むと太字、縦線は表のセルになります。拡張子 `.markdown`、`.mdown`、`.mkd`、`.mkdn` も同じものです。開発者は README やドキュメントに使い、AI '
+          'エージェントも計画やレポートを `.md` ファイルで返してくることがよくあります。'],
+         ['.md ファイルがプレーンテキストで開き、# や ** だらけなのはなぜ？',
+          'もともとプレーンテキストで、プレーンテキストエディタはそのまま表示するからです。ファイルに問題はありません。見出し、太字、表、図を見るには、Markdown '
+          'をレンダリングするアプリで開いてください。MarsDawn では、レンダリングされたページがソースの隣に表示されます。'],
+         ['開くと文字化けするのはなぜ？',
+          '文字化けは、たいていファイルが UTF-8 以外の文字エンコーディングで保存されていて、開いたアプリが推測を誤ったために起こります。対処は、UTF-8 '
+          'のコピーを保存することです。MarsDawn は UTF-8 '
+          'ではないプレーンテキストファイルを読み取り専用で開き、ウインドウ上部のバーに読み込んだエンコーディングを表示します。そこにある「UTF-8 で別名保存…」、または「ファイル ▸ '
+          '別名で保存…」（⌥⇧⌘S）で、編集できる UTF-8 のコピーを書き出せます。'],
+         ['.md ファイルを PDF にできる？',
+          'できます。MarsDawn で「ファイル ▸ PDF として書き出す…」（⌥⌘E）または「ファイル ▸ '
+          'プリント…」を選ぶと、ページ分けされ、図が描画され、コードはハイライトされたまま、テーマのライトの配色で出力されます。アプリがなくても、無料の `marsdawn export` '
+          'コマンドラインツールで同じ PDF を作れます：`marsdawn export notes.md`。[PDF 書き出し](/ja/pdf/)と[Markdown から PDF '
+          'へ](/ja/markdown-to-pdf/)をご覧ください。'],
+         ['AI エージェントが書いた .md ファイルも開ける？',
+          'はい、MarsDawn はそのために作られています。ファイルを開いて、レンダリングされたページをソースの隣で読みます。エージェントが修正したら、もう一度開きます。エージェントが '
+          '`marsdawn open plan.md` を実行して、MarsDawn '
+          'でファイルを開いてくれることもできます。[エージェントが返してくるものを読む](/ja/reading-agent-output/)をご覧ください。']],
+ 'next_new': '- Markdown ファイルの中の図：[Mac で Mermaid をプレビューする](/ja/mermaid-preview-mac/)。',
+ 'opening_html': '<code>.md</code> ファイルはプレーンテキストです。見出し、太字、表、図は記号で書かれています。見出しには <code>#</code>、太字は '
+                 '<code>**</code> で囲む、表はパイプで区切る、図は <code>mermaid</code> '
+                 'コードブロックといった具合です。プレーンテキストエディタで開くと、これらの記号がそのまま見えます。作者の意図どおりにページを読むには、何かがそれをレンダリングする必要があります。',
+ 'read_h2': 'MarsDawn で読む',
+ 'read_p1_html': 'MarsDawn は Mac 向けの Markdown エディタです。Mac App Store から無料でダウンロードでき、14日間すべての機能を試したあと、USD 4.99 '
+                 'の一度きりの購入でロックを解除できます。サブスクリプションもアカウントもありません。macOS 26 以降が必要です。',
+ 'download': 'Mac App Store で MarsDawn を無料でダウンロード',
+ 'read_p2_html': '<code>.md</code> ファイルを開くと、ソースの隣でレンダリングされたページを読めます。',
+ 'read_b1_html': '入力すると同時にプレビューが更新され、2つのペインは一緒にスクロールします。',
+ 'read_b4_html': '何かを変更したいときは、ソースがすぐそこにあります。MarsDawn はビューアだけでなくエディタでもあります。',
+ 'agents_html': 'もしそのファイルを AI エージェントが書いたなら、これはまさに MarsDawn '
+                'が想定しているループです。エージェントが書き、あなたがレンダリングされたページを読み、エージェントが修正します。<a '
+                'href="/ja/">ホームページ</a>と、エージェントにファイルを開かせる方法については<a href="/ja/cli/agents/">AI エージェント向け '
+                'marsdawn</a>をご覧ください。その読み方がなぜ重要か、計画をどうレビューするかは、<a '
+                'href="/ja/reading-agent-output/">「エージェントが返してくるものを読む」</a>と<a '
+                'href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a>にあります。',
+ 'pdf_h2': 'アプリなしで：PDF に変換する',
+ 'pdf_p1_html': '無料の <code>marsdawn</code> コマンドラインツールは、Markdown ファイルをどの Mac でも開ける PDF '
+                'にレンダリングします。表、数式、Mermaid 図、ハイライトされたコードはすべてレンダリングされ、MarsDawn アプリすら含め、他に何もインストールする必要はありません。',
+ 'pdf_p2_html': '<code>export</code> は Markdown ファイルの隣に <code>notes.pdf</code> を書き出し、<code>open</code> '
+                'はそれをあなたの PDF ビューアで表示します。macOS 15 以降が必要です。実際に書き出したページを使った解説は、<a '
+                'href="/ja/markdown-to-pdf/">Markdown から PDF へ</a>にあります。',
+ 'next_h2': '次に',
+ 'next_items_html': ['コマンドラインツールのすべてのオプション：<a href="/ja/cli/">コマンドライン</a>。',
+                     'MarsDawn ができないこと：<a href="/ja/limits/">一覧はこちら</a>。']}
+
+MERMAID = {'title': 'Mac で Mermaid をプレビュー、Markdown の隣で · MarsDawn',
+ 'description': 'Mac で Mermaid の図を Markdown の隣に描画：リアルタイムプレビュー、クイックルック、PDF 書き出し。図に誤りがあると、エラーとその行が表示されます。',
+ 'h1': 'Mac で Mermaid をプレビューする。',
+ 'intro': 'Mermaid を使うと、Markdown ファイルの中に図をテキストで書けます。多くのエディタは、そのテキストを見せるだけです。MarsDawn '
+          'は図を描画します。ソースの隣のプレビューで、Finder のクイックルックで、書き出した PDF の中で。',
+ 'example_h2': '図をテキストで書く',
+ 'example': '図を、`mermaid` と指定したコードブロックに入れます：',
+ 'code': '```mermaid\n'
+         'flowchart LR\n'
+         '    Write[Markdown を書く] --> Preview[リアルタイムプレビュー]\n'
+         '    Preview --> Export{共有しますか？}\n'
+         '    Export -- PDF --> PDF[ファイル ▸ PDF として書き出す…]\n'
+         '    Export -- プリント --> Print[ファイル ▸ プリント…]\n'
+         '```',
+ 'after': 'MarsDawn では、このブロックがフローチャートになります。「Markdown を書く」から「リアルタイムプレビュー」へ、そして「共有しますか？」の分岐から PDF とプリントの 2 '
+          'つの道に分かれます。',
+ 'where_h2': '図が描画される場所',
+ 'where': '- **プレビューで。** ファイルを開くと、図がソースの隣に表示されます（⌘2）。入力するたびにページが更新され、2 つのペインは一緒にスクロールします。\n'
+          '- **クイックルックで。** Finder でファイルを選んでスペースキーを押すと、そこでも図が描画されます。\n'
+          '- **PDF で。** 「ファイル ▸ PDF として書き出す…」と「ファイル ▸ プリント…」は、図をページに描き込みます。ページの区切りは、図を途中で分断しないようにします。PDF '
+          'はテーマのライトの配色です。\n'
+          '- **コマンドラインで。** 無料の `marsdawn export` ツールは、アプリなしで同じ図を PDF に描画します。[コマンドライン](/ja/cli/)をご覧ください。\n'
+          '- **外観に合わせて。** プレビューの外観モードの設定は図にも適用されるので、図はライトかダークに従います。',
+ 'error_h2': '図に誤りがあるとき',
+ 'error': 'Mermaid '
+          'が図を描画できないとき、プレビューにはその図のソースが表示され、その下にエラーメッセージ全文が出ます。エラーが行を示している場合は、メッセージをクリックするとエディタがその行へ移動します。`marsdawn '
+          'export --json` は描画に失敗した図を `diagramErrors` で報告するので、スクリプトやエージェントは図が描画されなかったことを知ることができます。',
+ 'know_h2': '知っておくこと',
+ 'know': '- 編集するのは Mermaid のテキストです。図のビジュアルエディタはなく、プレビューで四角形をドラッグすることもできません。\n'
+         '- どの種類の図が描画できるかは、アプリに入っている Mermaid のバージョンによります。MarsDawn 1.1.0 には Mermaid 12.0.0 が入っています。kit '
+         'の書き出しテストは、フローチャート、シーケンス図、クラス図、状態遷移図、ER 図、ガントチャート、円グラフ、マインドマップ、ジャーニー図、タイムライン、git グラフなどの文書を描画します。\n'
+         '- MarsDawn には AI '
+         'モデルがないので、図を書いてはくれません。[フローチャートテンプレート](/ja/templates/flowchart/)には、自分のエージェントに渡せるプロンプトがあります。',
+ 'next_h2': '次に',
+ 'next': '- すでに描画できる図から始める：[フローチャートテンプレート](/ja/templates/flowchart/)。\n'
+         '- 書き出す：[PDF 書き出し](/ja/pdf/)。スクリプトから書き出すなら[コマンドライン](/ja/cli/)。\n'
+         '- ファイルの開き方がわからない？[Mac で .md ファイルを開く方法](/ja/view-markdown-on-mac/)をご覧ください。',
+ 'try_h2': 'Mac で試す',
+ 'try': 'MarsDawn は無料でダウンロードできます。14 日間すべての機能を試したあと、USD 4.99 の一度きりの購入でロックを解除できます。サブスクリプションもアカウントもありません。macOS '
+        '26 以降が必要です。\n'
+        '\n'
+        '[今すぐダウンロードして試す]({App Store 連結})'}
+
+
 def build(k) -> dict:
-    ui = {'features': '機能一覧', 'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'themes-new': 'テーマを作る', 'themes-agents': 'エージェントとテーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
+    ui = {'features': '機能一覧', 'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で .md ファイルを開く方法', 'mermaid-preview-mac': 'Mac で Mermaid をプレビューする', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'themes-new': 'テーマを作る', 'themes-agents': 'エージェントとテーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
     store_chip = 'Mac App Store で配信中'
     schema_notes = {'export': 'export 成功時', 'open': 'open 成功時、marsdawn 0.5.1 以降、サイドバーに表示するフォルダを含む', 'open_v2': 'open 成功時、marsdawn 0.3.0〜0.5.0', 'error': '失敗時、両方のコマンド共通、marsdawn 0.5.2 以降', 'open_v1': 'open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）', 'error_v1': '失敗時、両方のコマンド共通、marsdawn 0.5.1 以前'}
     example_plan = '# 計画：書き出しを高速化\n\nこの計画はエージェントが書きました。内容を確認してから、PDF にします。\n\n## ステップ\n\n| ステップ | 担当 | 状況 |\n|------|-------|--------|\n| 遅いページを計測する | エージェント | 完了 |\n| レンダリング済み図をキャッシュする | エージェント | レビュー中 |\n\n50 ページの文書で目標とするのは $t < 2\\,\\text{s}$：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  ドラフト --> レビュー --> 公開\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -314,10 +427,10 @@ def build(k) -> dict:
 <h2 class="loop-title">エージェントが書いた Markdown を読む。</h2>
 <ol class="loop-steps">
   <li><strong>エージェントが書く。</strong>あなたのコーディングエージェントやライティングアシスタントが Markdown の下書きを作ります。README、仕様書、メモなど。</li>
-  <li><strong>MarsDawn で確認する。</strong>ファイルを開き、Mermaid 図やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。</li>
+  <li><strong>MarsDawn で確認する。</strong>ファイルを開き、<a href="/ja/mermaid-preview-mac/">Mermaid 図</a>やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。</li>
   <li><strong>エージェントが修正する。</strong>変更を依頼します。修正されたファイルを開き、同じように読みます。</li>
 </ol>
-<p><a href="/ja/reading-agent-output/">エージェントが返してくるものをどう確認するか</a>。</p>
+<p><a href="/ja/reading-agent-output/">エージェントが返してくるものをどう確認するか</a> · <a href="/ja/view-markdown-on-mac/">Mac で .md ファイルを開く方法</a></p>
 """,
     }
     pages['yours'] = {
@@ -450,38 +563,8 @@ def build(k) -> dict:
 <p>14日間のトライアルが終わってロックを解除しなければ、MarsDawn で文書を読んだり編集したり書き出したりプリントしたりできません。文書は開きますが、内容は覆われます。ファイルはそのまま残り、クイックルックでも引き続き表示され、無料のコマンドラインツールで PDF に書き出すこともできます。<a href="/ja/pay-once/">トライアルとロック解除のページ</a>に、3つの段階を並べた表があります。</p>
 """,
     }
-    pages['view-markdown-on-mac'] = {
-        "title": 'Mac で Markdown ファイルを見る方法 · MarsDawn',
-        "description": '.md ファイルは書式記号が入ったプレーンテキストです。Mac でレンダリングして読む方法を紹介します。Mac App Store から無料でダウンロードできる MarsDawn で読む方法と、無料の marsdawn コマンドラインツールで PDF にする方法です。',
-        "body": f"""
-<section class="intro">
-  <h1>Mac で Markdown ファイルを見る方法。</h1>
-  <p><code>.md</code> ファイルはプレーンテキストです。見出し、太字、表、図は記号で書かれています。見出しには <code>#</code>、太字は <code>**</code> で囲む、表はパイプで区切る、図は <code>mermaid</code> コードブロックといった具合です。プレーンテキストエディタで開くと、これらの記号がそのまま見えます。作者の意図どおりにページを読むには、何かがそれをレンダリングする必要があります。</p>
-</section>
-<h2>MarsDawn で読む</h2>
-<p>MarsDawn は Mac 向けの Markdown エディタです。Mac App Store から無料でダウンロードでき、14日間すべての機能を試したあと、USD 4.99 の一度きりの購入でロックを解除できます。サブスクリプションもアカウントもありません。macOS 26 以降が必要です。</p>
-<p><a href="{k.LISTING_URL}">Mac App Store で MarsDawn を無料でダウンロード</a></p>
-<p><code>.md</code> ファイルを開くと、ソースの隣でレンダリングされたページを読めます。</p>
-<ul>
-  <li>入力すると同時にプレビューが更新され、2つのペインは一緒にスクロールします。</li>
-  <li>Mermaid のフローチャートとシーケンス図がプレビューに描画され、コードブロックはハイライトされます。</li>
-  <li>Finder で Markdown ファイルを選んでスペースキーを押せば、図も含めてクイックルックでプレビューできます。</li>
-  <li>何かを変更したいときは、ソースがすぐそこにあります。MarsDawn はビューアだけでなくエディタでもあります。</li>
-</ul>
-<p>もしそのファイルを AI エージェントが書いたなら、これはまさに MarsDawn が想定しているループです。エージェントが書き、あなたがレンダリングされたページを読み、エージェントが修正します。<a href="/ja/">ホームページ</a>と、エージェントにファイルを開かせる方法については<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>をご覧ください。その読み方がなぜ重要か、計画をどうレビューするかは、<a href="/ja/reading-agent-output/">「エージェントが返してくるものを読む」</a>と<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a>にあります。</p>
-<h2>アプリなしで：PDF に変換する</h2>
-<p>無料の <code>marsdawn</code> コマンドラインツールは、Markdown ファイルをどの Mac でも開ける PDF にレンダリングします。表、数式、Mermaid 図、ハイライトされたコードはすべてレンダリングされ、MarsDawn アプリすら含め、他に何もインストールする必要はありません。</p>
-<pre><code>{k.BREW_TAP_INSTALL}
-marsdawn export notes.md
-open notes.pdf</code></pre>
-<p><code>export</code> は Markdown ファイルの隣に <code>notes.pdf</code> を書き出し、<code>open</code> はそれをあなたの PDF ビューアで表示します。macOS 15 以降が必要です。実際に書き出したページを使った解説は、<a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a>にあります。</p>
-<h2>次に</h2>
-<ul>
-  <li>コマンドラインツールのすべてのオプション：<a href="/ja/cli/">コマンドライン</a>。</li>
-  <li>MarsDawn ができないこと：<a href="/ja/limits/">一覧はこちら</a>。</li>
-</ul>
-""",
-    }
+    pages['view-markdown-on-mac'] = k.open_md_page(OPEN_MD)
+    pages['mermaid-preview-mac'] = k.mermaid_page(MERMAID)
     _plan_en = '# Plan: faster exports\n\nAn agent wrote this plan. You review it, then turn it into a PDF.\n\n## Steps\n\n| Step | Owner | Status |\n|------|-------|--------|\n| Measure the slow pages | Agent | Done |\n| Cache rendered diagrams | Agent | In review |\n\nThe target is $t < 2\\,\\text{s}$ for a 50-page document:\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  Draft --> Review --> Ship\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
     pages['markdown-to-pdf'] = {
         "title": 'Mac のコマンドラインで Markdown を PDF に · MarsDawn',

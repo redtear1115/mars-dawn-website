@@ -167,7 +167,7 @@ FEATURES = {'title': '功能一览：Mac 上的 Markdown 编辑器 · MarsDawn',
                'lead_links': [],
                'items': [{'h': 'Mermaid 图表',
                           'p': '标记为 mermaid 的代码块会画成图表。图表写错时，预览会显示它的源代码，下方附上错误信息；点按信息，就跳到编辑器里那一行。',
-                          'links': ['templates/flowchart']},
+                          'links': ['mermaid-preview-mac']},
                          {'h': '代码着色', 'p': '常见的编程语言都会语法着色，在开头的 ``` 后面写上语言名称就好。', 'links': []},
                          {'h': '数学公式',
                           'p': '用 KaTeX 语法写的数学公式，会在预览和快速查看里画出来，导出的 PDF 里也有。',
@@ -241,8 +241,103 @@ FEATURES = {'title': '功能一览：Mac 上的 Markdown 编辑器 · MarsDawn',
          'tail': '。'}}
 
 
+# Machine drafts (needs-i18n; Grok reviews them): the /view-markdown-on-mac/ revision and the new
+# /mermaid-preview-mac/ page (website #227), the same shape as build_pages.OPEN_MD and .MERMAID. The
+# Mermaid example is the app's own Welcome guide at tag 1.1.0; menu names are the app's strings at 1.1.0
+# and Apple's own Finder strings for this language.
+OPEN_MD = {'title': 'Mac 上怎么打开 md 文件：双击、默认 App、快速查看 · MarsDawn',
+ 'description': 'Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI agent 写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。',
+ 'h1': 'Mac 上怎么打开 md 文件。',
+ 'short': '双击就能打开。如果你的 Mac 用文本编辑器打开，看到的是 `#` 和 `**`，而不是标题和粗体，文件没有坏：`.md` 文件本来就是纯文本，编辑器只是照原样显示。改用会排版 Markdown '
+          '的 app（例如 MarsDawn）打开，再把它设为默认 app，之后每个 `.md` 文件都会在那里打开。',
+ 'steps_h2': '在 Mac 上打开 md 文件',
+ 'steps': '1. **双击文件。** 文件会用你的 Mac 为 `.md` 设定的 app 打开。如果没有任何 Markdown app，常常就是纯文本编辑器，看到的是记号，不是排好的页面。\n'
+          '2. **自己选 app。** 按住 Control 键点按文件，选取“打开方式”，再选 app。或者选取“文件 ▸ 显示简介”（⌘I），在“打开方式：”下选一个 '
+          'app，再点按“全部更改…”，以后所有这种类型的文件都会用它打开。MarsDawn 能打开 `.md`、`.markdown`、`.mdown`、`.mkd` 和 `.mkdn` 文件。\n'
+          '3. **不打开，直接预览。** 在访达中选中文件，按空格键。装了 MarsDawn 的话，“快速查看”会显示排版后的页面，图表也在。',
+ 'read_mermaid': '- [Mermaid](/zh-hans/mermaid-preview-mac/) 流程图和时序图直接画在预览里，代码块也会高亮。',
+ 'faq_h2': '常见问题',
+ 'faq': [['md 文件是什么？',
+          '`.md` 文件是用 Markdown 写成的纯文本文件。Markdown 用简单的字符标记文本：`#` 是标题，`**` '
+          '包住的是粗体，竖线画出表格。`.markdown`、`.mdown`、`.mkd`、`.mkdn` 是同样的东西。开发者拿它写 README 和文档，AI agent 也常把计划和报告写成 '
+          '`.md` 文件交回来。'],
+         ['为什么 md 文件打开是纯文本，满是 # 和 ** ？',
+          '因为它本来就是纯文本，纯文本编辑器只会照原样显示，文件没有坏。想看到标题、粗体、表格和图表，要用会排版 Markdown 的 app 打开。在 MarsDawn 里，排好的页面就在源代码旁边。'],
+         ['为什么打开是乱码？',
+          '乱码通常是因为文件存成 UTF-8 以外的文本编码，而打开它的 app 猜错了。解法是另存一份 UTF-8 的副本。MarsDawn 打开不是 UTF-8 '
+          '的纯文本文件时会以只读方式打开，并在窗口上方的提示栏写出它当成哪种编码来读；那里的“保存为 UTF-8…”，或“文件 ▸ 保存为…”（⌥⇧⌘S），可以存出一份能编辑的 UTF-8 副本。'],
+         ['md 文件可以转成 PDF 吗？',
+          '可以。在 MarsDawn 选“文件 ▸ 导出为 PDF…”（⌥⌘E）或“文件 ▸ 打印…”，页面会自动分页，图表画进去，代码保留高亮，使用主题的浅色配色。不装 app 的话，免费的 '
+          '`marsdawn export` 命令行工具能导出同样的 PDF：`marsdawn export notes.md`。请看[导出 PDF](/zh-hans/pdf/)和[Markdown '
+          '转 PDF](/zh-hans/markdown-to-pdf/)。'],
+         ['AI agent 写的 md 文件也能这样打开吗？',
+          '可以，MarsDawn 就是为这个做的。打开文件，排好的页面就在源代码旁边；agent 改好之后，再打开来读一次。agent 也可以运行 `marsdawn open plan.md`，在 '
+          'MarsDawn 里把文件打开给你。请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。']],
+ 'next_new': '- Markdown 文件里的图表：[在 Mac 上预览 Mermaid](/zh-hans/mermaid-preview-mac/)。',
+ 'opening_html': '<code>.md</code> 文件是纯文本。标题、粗体、表格和图表，都是用记号写成的：<code>#</code> 代表标题，<code>**</code> '
+                 '包住粗体，直线符号画出表格，<code>mermaid</code> '
+                 '代码块则是一张图。用纯文本编辑器打开，看到的就是这些记号。想照作者的意思读到排好的页面，就需要有东西把它排版出来。',
+ 'read_h2': '在 MarsDawn 里读',
+ 'read_p1_html': 'MarsDawn 是为 Mac 做的 Markdown 编辑器，可以在 Mac App Store 免费下载：先免费试用全部功能 14 天，之后花 USD 4.99 '
+                 '解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。',
+ 'download': '到 Mac App Store 免费下载 MarsDawn',
+ 'read_p2_html': '打开 <code>.md</code> 文件，排好的页面就在源代码旁边：',
+ 'read_b1_html': '预览会随着你打字实时更新，两边的窗格一起滚动。',
+ 'read_b4_html': '想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。',
+ 'agents_html': '如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看<a '
+                'href="/zh-hans/">首页</a>，想让 agent 帮你开文件，请看<a href="/zh-hans/cli/agents/">给 AI agent 的 '
+                'marsdawn 参考</a>。为什么这样的阅读重要、怎么审一份计划，请看<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 '
+                'Markdown</a>和<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>。',
+ 'pdf_h2': '不装 app 也行：转成 PDF',
+ 'pdf_p1_html': '免费的 <code>marsdawn</code> 命令行工具，能把 Markdown 文件排版成 PDF，任何一台 Mac 都打得开。表格、数学公式、Mermaid '
+                '图表和代码高亮都会排好，而且不需要安装其他东西，连 MarsDawn app 都不用。',
+ 'pdf_p2_html': '<code>export</code> 会在 Markdown 文件旁边写出 <code>notes.pdf</code>，<code>open</code> 会用你的 PDF '
+                '查看器打开它。这个工具需要 macOS 15 以上。完整步骤和一页实际导出的结果，请看<a href="/zh-hans/markdown-to-pdf/">Markdown 转 '
+                'PDF</a>。',
+ 'next_h2': '接下来',
+ 'next_items_html': ['命令行工具的所有选项：<a href="/zh-hans/cli/">命令行工具</a>。',
+                     'MarsDawn 做不到的事：<a href="/zh-hans/limits/">这份清单</a>。']}
+
+MERMAID = {'title': '在 Mac 上预览 Mermaid 图表，就在 Markdown 旁边 · MarsDawn',
+ 'description': '在 Mac 上预览 Mermaid 图表：源代码旁边实时画出来，快速查看和导出 PDF 也看得到。图表写错时，会显示错误信息和出错的那一行。',
+ 'h1': '在 Mac 上预览 Mermaid。',
+ 'intro': 'Mermaid 让你用文本在 Markdown 文件里写一张图。多数编辑器只给你看那段文本。MarsDawn 会把图画出来：在源代码旁边的预览、在访达的快速查看，也在你导出的 PDF 里。',
+ 'example_h2': '用文本写出图',
+ 'example': '把图放进标记为 `mermaid` 的代码块：',
+ 'code': '```mermaid\n'
+         'flowchart LR\n'
+         '    Write[写 Markdown] --> Preview[实时预览]\n'
+         '    Preview --> Export{要分享吗？}\n'
+         '    Export -- PDF --> PDF[文件 ▸ 导出为 PDF…]\n'
+         '    Export -- 打印 --> Print[文件 ▸ 打印…]\n'
+         '```',
+ 'after': '在 MarsDawn 里，这个代码块会画成一张流程图：写 Markdown，接着实时预览，再到“要分享吗？”这个选择，分成导出 PDF 和打印两条路。',
+ 'where_h2': '图会画在哪里',
+ 'where': '- **预览里。** 打开文件，图就在源代码旁边（⌘2）。页面随着打字更新，两边的窗格一起滚动。\n'
+          '- **快速查看里。** 在访达中选中文件按空格键，图也会画出来。\n'
+          '- **PDF 里。** “文件 ▸ 导出为 PDF…”和“文件 ▸ 打印…”都会把图画进页面，分页时尽量不把一张图切成两半。PDF 使用主题的浅色配色。\n'
+          '- **命令行。** 免费的 `marsdawn export` 工具会把同样的图画进 PDF，而且不需要 app。请看[命令行工具](/zh-hans/cli/)。\n'
+          '- **跟着外观。** 预览的外观设置也会应用到图表，所以图会跟着浅色或深色。',
+ 'error_h2': '图写错的时候',
+ 'error': 'Mermaid 画不出一张图时，预览会显示那张图的源代码，下方附上完整的错误信息。如果错误信息指出是哪一行，点按一下信息，编辑器就会跳到那一行。`marsdawn export --json` '
+          '会在 `diagramErrors` 里报告画不出来的图，所以脚本或 agent 知道有图没画成。',
+ 'know_h2': '先知道的事',
+ 'know': '- 你编辑的是 Mermaid 文本。没有可视化的图表编辑器，也不能在预览里拖动方块。\n'
+         '- 哪些图表类型画得出来，取决于 app 里内置的 Mermaid 版本。MarsDawn 1.1.0 内置 Mermaid 12.0.0。kit '
+         '的导出测试会对流程图、时序图、类图、状态图、实体关系图、甘特图、饼图、思维导图、用户旅程、时间线、git 图等类型各画一份文档。\n'
+         '- MarsDawn 没有 AI 模型，不会帮你写图。[流程图模板](/zh-hans/templates/flowchart/)附有一段提示词，可以交给你自己的 agent。',
+ 'next_h2': '接下来',
+ 'next': '- 从一张已经能画出来的图开始：[流程图模板](/zh-hans/templates/flowchart/)。\n'
+         '- 导出：[导出 PDF](/zh-hans/pdf/)；从脚本导出，请看[命令行工具](/zh-hans/cli/)。\n'
+         '- 不确定怎么打开文件？请看[Mac 上怎么打开 md 文件](/zh-hans/view-markdown-on-mac/)。',
+ 'try_h2': '在你的 Mac 上试试',
+ 'try': 'MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。\n'
+        '\n'
+        '[立即下载试用]({App Store 連結})'}
+
+
 def build(k) -> dict:
-    ui = {'features': '功能一览', 'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'themes-new': '打造一个主题', 'themes-agents': '和 agent 一起做主题', 'themes-gallery': '主题库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
+    ui = {'features': '功能一览', 'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': 'Mac 上怎么打开 md 文件', 'mermaid-preview-mac': '在 Mac 上预览 Mermaid', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'themes-new': '打造一个主题', 'themes-agents': '和 agent 一起做主题', 'themes-gallery': '主题库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
     store_chip = '已在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.5.1 以后，包括在侧边栏显示的文件夹', 'open_v2': 'open 成功，marsdawn 0.3.0 到 0.5.0', 'error': '两个命令的失败结果，marsdawn 0.5.2 以后', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单', 'error_v1': '两个命令的失败结果，marsdawn 0.5.1 以前'}
     example_plan = '# 计划：让导出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -300,10 +395,10 @@ def build(k) -> dict:
 <h2 class="loop-title">读 agent 写的 Markdown。</h2>
 <ol class="loop-steps">
   <li><strong>Agent 动笔。</strong>你的代码助手或写作 agent 先写出 Markdown：README、规格文档，或一份笔记。</li>
-  <li><strong>你在 MarsDawn 里读。</strong>打开文件，看排版后的页面，Mermaid 图表和代码高亮都在，旁边就是源代码。</li>
+  <li><strong>你在 MarsDawn 里读。</strong>打开文件，看排版后的页面，<a href="/zh-hans/mermaid-preview-mac/">Mermaid 图表</a>和代码高亮都在，旁边就是源代码。</li>
   <li><strong>Agent 修改。</strong>提出修改意见，agent 改好之后，再打开来读一次。</li>
 </ol>
-<p><a href="/zh-hans/reading-agent-output/">如何审阅 agent 交回来的东西</a>。</p>
+<p><a href="/zh-hans/reading-agent-output/">如何审阅 agent 交回来的东西</a> · <a href="/zh-hans/view-markdown-on-mac/">Mac 上怎么打开 md 文件</a></p>
 """,
     }
     pages['cli'] = {
@@ -938,38 +1033,8 @@ marsdawn --version</code></pre>
 </ul>
 """,
     }
-    pages['view-markdown-on-mac'] = {
-        "title": '在 Mac 上怎么看 Markdown 文件 · MarsDawn',
-        "description": 'md 文件是加上格式记号的纯文本。这页说明怎么在 Mac 上看到排版后的样子：用 Mac App Store 上可以免费下载的 MarsDawn，或用免费的 marsdawn 命令行工具转成 PDF。',
-        "body": f"""
-<section class="intro">
-  <h1>在 Mac 上，怎么看 Markdown 文件。</h1>
-  <p><code>.md</code> 文件是纯文本。标题、粗体、表格和图表，都是用记号写成的：<code>#</code> 代表标题，<code>**</code> 包住粗体，直线符号画出表格，<code>mermaid</code> 代码块则是一张图。用纯文本编辑器打开，看到的就是这些记号。想照作者的意思读到排好的页面，就需要有东西把它排版出来。</p>
-</section>
-<h2>在 MarsDawn 里读</h2>
-<p>MarsDawn 是为 Mac 做的 Markdown 编辑器，可以在 Mac App Store 免费下载：先免费试用全部功能 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。</p>
-<p><a href="{k.LISTING_URL}">到 Mac App Store 免费下载 MarsDawn</a></p>
-<p>打开 <code>.md</code> 文件，排好的页面就在源代码旁边：</p>
-<ul>
-  <li>预览会随着你打字实时更新，两边的窗格一起滚动。</li>
-  <li>Mermaid 流程图和时序图直接画在预览里，代码块也会高亮。</li>
-  <li>在访达里对 Markdown 文件按空格键，就有“快速查看”预览，图表也在。</li>
-  <li>想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。</li>
-</ul>
-<p>如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看<a href="/zh-hans/">首页</a>，想让 agent 帮你开文件，请看<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。为什么这样的阅读重要、怎么审一份计划，请看<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>和<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>。</p>
-<h2>不装 app 也行：转成 PDF</h2>
-<p>免费的 <code>marsdawn</code> 命令行工具，能把 Markdown 文件排版成 PDF，任何一台 Mac 都打得开。表格、数学公式、Mermaid 图表和代码高亮都会排好，而且不需要安装其他东西，连 MarsDawn app 都不用。</p>
-<pre><code>{k.BREW_TAP_INSTALL}
-marsdawn export notes.md
-open notes.pdf</code></pre>
-<p><code>export</code> 会在 Markdown 文件旁边写出 <code>notes.pdf</code>，<code>open</code> 会用你的 PDF 查看器打开它。这个工具需要 macOS 15 以上。完整步骤和一页实际导出的结果，请看<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。</p>
-<h2>接下来</h2>
-<ul>
-  <li>命令行工具的所有选项：<a href="/zh-hans/cli/">命令行工具</a>。</li>
-  <li>MarsDawn 做不到的事：<a href="/zh-hans/limits/">这份清单</a>。</li>
-</ul>
-""",
-    }
+    pages['view-markdown-on-mac'] = k.open_md_page(OPEN_MD)
+    pages['mermaid-preview-mac'] = k.mermaid_page(MERMAID)
     pages['vs/macmd-viewer'] = {
         "title": 'MacMD Viewer 对比 MarsDawn：查看器与编辑器 · MarsDawn',
         "description": 'MacMD Viewer 是只读查看器，直接购买 USD 19.99。MarsDawn 边编辑边预览，免费试用后在 Mac App Store 一次解锁 USD 4.99。逐项比较功能、价格和购买方式。',

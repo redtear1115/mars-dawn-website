@@ -243,7 +243,8 @@ UI = {
         "home": "MarsDawn", "privacy": "Privacy Policy", "support": "Support", "cli": "Command Line",
         "agents": "marsdawn for agents", "using_cli": "Using the CLI",
         "markdown-to-pdf": "Markdown to PDF", "skill": "Agent skill",
-        "view-markdown-on-mac": "View Markdown on a Mac",
+        "view-markdown-on-mac": "How to open .md files on Mac",
+        "mermaid-preview-mac": "Mermaid preview on Mac",
         "vs-macmd-viewer": "MacMD Viewer vs. MarsDawn",
         "updated": f"Last updated {UPDATED}", "tagline": "Read what your agent wrote.", "slogan": "A new dawn for Markdown.",
         "footer_store": f'MarsDawn is on the <a href="{LISTING_URL}">Mac App Store</a>.',
@@ -272,7 +273,8 @@ UI = {
         "home": "MarsDawn", "privacy": "隱私權政策", "support": "支援", "cli": "命令列工具",
         "agents": "給 AI agent 的 marsdawn 參考", "using_cli": "使用 CLI",
         "markdown-to-pdf": "Markdown 轉 PDF", "skill": "給 agent 的 skill",
-        "view-markdown-on-mac": "在 Mac 上看 Markdown",
+        "view-markdown-on-mac": "Mac 怎麼開 md 檔",
+        "mermaid-preview-mac": "在 Mac 上預覽 Mermaid",
         "vs-macmd-viewer": "MacMD Viewer 對比 MarsDawn",
         "updated": f"最後更新：{UPDATED}", "tagline": "讀 agent 寫的 Markdown。", "slogan": "Markdown 的新黎明。",
         "footer_store": f'MarsDawn 已在 <a href="{LISTING_URL}">Mac App Store</a> 上架。',
@@ -400,10 +402,10 @@ PAGES = {
 <h2 class="loop-title">Read what your agent wrote.</h2>
 <ol class="loop-steps">
   <li><strong>The agent writes.</strong> Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.</li>
-  <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.</li>
+  <li><strong>You review in MarsDawn.</strong> Open the file and read it rendered, with <a href="/mermaid-preview-mac/">Mermaid diagrams</a> and highlighted code, next to the source.</li>
   <li><strong>The agent revises.</strong> Ask for changes. Open the revised file and read it the same way.</li>
 </ol>
-<p><a href="/reading-agent-output/">How to review what your agent hands back</a>.</p>
+<p><a href="/reading-agent-output/">How to review what your agent hands back</a> · <a href="/view-markdown-on-mac/">How to open a .md file on a Mac</a></p>
 """,
     },
     ("zh-hant", "index"): {
@@ -420,10 +422,10 @@ PAGES = {
 <h2 class="loop-title">讀 agent 寫的 Markdown。</h2>
 <ol class="loop-steps">
   <li><strong>Agent 動筆。</strong>你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。</li>
-  <li><strong>你在 MarsDawn 裡讀。</strong>打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。</li>
+  <li><strong>你在 MarsDawn 裡讀。</strong>打開檔案，看排版後的頁面，<a href="/zh-hant/mermaid-preview-mac/">Mermaid 圖表</a>和程式碼上色都在，旁邊就是原始碼。</li>
   <li><strong>Agent 修改。</strong>提出修改意見，agent 改好之後，再打開來讀一次。</li>
 </ol>
-<p><a href="/zh-hant/reading-agent-output/">如何審閱 agent 交回來的東西</a>。</p>
+<p><a href="/zh-hant/reading-agent-output/">如何審閱 agent 交回來的東西</a> · <a href="/zh-hant/view-markdown-on-mac/">Mac 怎麼開 md 檔</a></p>
 """,
     },
     # The Purchases paragraph is in the present tense ("MarsDawn is sold through the Mac App
@@ -1879,72 +1881,6 @@ marsdawn --version</code></pre>
   <li>To have a coding agent do this for you: <a href="/cli/skill/">the marsdawn agent skill</a>.</li>
   <li>All four preview themes, and where PDF export is headed: <a href="/themes/">preview themes and PDF export</a>.</li>
   <li>Handing the PDF to someone who doesn't use Markdown: <a href="/sharing-exported-pdfs/">sharing a PDF</a>.</li>
-</ul>
-""",
-    },
-    ("en", "view-markdown-on-mac"): {
-        "title": "How to view a Markdown file on a Mac · MarsDawn",
-        "description": "A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: in MarsDawn, free to download from the Mac App Store, or as a PDF with the free marsdawn command-line tool.",
-        "body": f"""
-<section class="intro">
-  <h1>How to view a Markdown file on a Mac.</h1>
-  <p>A <code>.md</code> file is plain text. The headings, bold words, tables and diagrams are written as marks: <code>#</code> for a heading, <code>**</code> around bold, pipes for a table, a <code>mermaid</code> code block for a diagram. Open it in a plain text editor and you read the marks. To read the page the way its author meant, something has to render it.</p>
-</section>
-<h2>Read it in MarsDawn</h2>
-<p>MarsDawn is a Markdown editor for the Mac. It is free to download from the Mac App Store: try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account. It needs macOS 26 or later.</p>
-<p><a href="{LISTING_URL}">Download MarsDawn free on the Mac App Store</a></p>
-<p>Open a <code>.md</code> file and read the rendered page next to the source:</p>
-<ul>
-  <li>The preview updates as you type, and the two panes scroll together.</li>
-  <li>Mermaid flowcharts and sequence diagrams are drawn in the preview, and code blocks are highlighted.</li>
-  <li>In Finder, press Space on a Markdown file for a Quick Look preview, diagrams included.</li>
-  <li>When you want to change something, the source is right there. MarsDawn is an editor, not only a viewer.</li>
-</ul>
-<p>If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent writes, you read it rendered, and it revises. See <a href="/">the home page</a>, and <a href="/cli/agents/">marsdawn for agents</a> for letting an agent open files for you. For why that reading matters and how to review a plan, see <a href="/reading-agent-output/">Reading what your agent hands back</a> and <a href="/reviewing-agent-plans/">Reviewing an agent plan in five minutes</a>.</p>
-<h2>Without the app: turn it into a PDF</h2>
-<p>The free <code>marsdawn</code> command-line tool renders a Markdown file to a PDF, which any Mac can open. Tables, math, Mermaid diagrams and highlighted code come out rendered, and it needs nothing else installed, not even the MarsDawn app.</p>
-<pre><code>{BREW_TAP_INSTALL}
-marsdawn export notes.md
-open notes.pdf</code></pre>
-<p><code>export</code> writes <code>notes.pdf</code> next to the Markdown file, and <code>open</code> shows it in your PDF viewer. It needs macOS 15 or later. The walk-through, with a real exported page, is on <a href="/markdown-to-pdf/">Markdown to PDF</a>.</p>
-<h2>Next</h2>
-<ul>
-  <li>Every option of the command-line tool: <a href="/cli/">Command Line</a>.</li>
-  <li>What MarsDawn doesn't do: <a href="/limits/">the list</a>.</li>
-  <li>Reading Markdown in VS Code, a browser or Claude Desktop instead: <a href="/vs/markdown-preview-tools/">how they compare</a>.</li>
-</ul>
-""",
-    },
-    ("zh-hant", "view-markdown-on-mac"): {
-        "title": "在 Mac 上怎麼看 Markdown 檔案 · MarsDawn",
-        "description": "md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：用 Mac App Store 上可以免費下載的 MarsDawn，或用免費的 marsdawn 命令列工具轉成 PDF。",
-        "body": f"""
-<section class="intro">
-  <h1>在 Mac 上，怎麼看 Markdown 檔案。</h1>
-  <p><code>.md</code> 檔案是純文字。標題、粗體、表格和圖表，都是用記號寫成的：<code>#</code> 代表標題，<code>**</code> 包住粗體，直線符號畫出表格，<code>mermaid</code> 程式碼區塊則是一張圖。用純文字編輯器打開，看到的就是這些記號。想照作者的意思讀到排好的頁面，就需要有東西把它排版出來。</p>
-</section>
-<h2>在 MarsDawn 裡讀</h2>
-<p>MarsDawn 是為 Mac 做的 Markdown 編輯器，可以在 Mac App Store 免費下載：先免費試用全部功能 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。</p>
-<p><a href="{LISTING_URL}">到 Mac App Store 免費下載 MarsDawn</a></p>
-<p>打開 <code>.md</code> 檔案，排好的頁面就在原始碼旁邊：</p>
-<ul>
-  <li>預覽會隨著你打字即時更新，兩邊的窗格一起捲動。</li>
-  <li>Mermaid 流程圖和循序圖直接畫在預覽裡，程式碼區塊也會上色。</li>
-  <li>在 Finder 裡對 Markdown 檔案按空白鍵，就有「快速查看」預覽，圖表也在。</li>
-  <li>想改的時候，原始碼就在旁邊。MarsDawn 是編輯器，不只是檢視器。</li>
-</ul>
-<p>如果這份檔案是 AI agent 寫的，這正是 MarsDawn 要支援的循環：agent 寫，你讀排好的頁面，agent 再修改。請看<a href="/zh-hant/">首頁</a>，想讓 agent 幫你開檔案，請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。為什麼這樣的閱讀重要、怎麼審一份計畫，請看<a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a>和<a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>。</p>
-<h2>不裝 app 也行：轉成 PDF</h2>
-<p>免費的 <code>marsdawn</code> 命令列工具，能把 Markdown 檔案排版成 PDF，任何一台 Mac 都打得開。表格、數學式、Mermaid 圖表和程式碼上色都會排好，而且不需要安裝其他東西，連 MarsDawn app 都不用。</p>
-<pre><code>{BREW_TAP_INSTALL}
-marsdawn export notes.md
-open notes.pdf</code></pre>
-<p><code>export</code> 會在 Markdown 檔案旁邊寫出 <code>notes.pdf</code>，<code>open</code> 會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</p>
-<h2>接下來</h2>
-<ul>
-  <li>命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。</li>
-  <li>MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
-  <li>改用 VS Code、瀏覽器或 Claude Desktop 看 Markdown：<a href="/zh-hant/vs/markdown-preview-tools/">比較一下</a>。</li>
 </ul>
 """,
     },
@@ -4352,6 +4288,8 @@ import copy_zh_hans  # noqa: E402
 import importlib  # noqa: E402
 import hero_window  # noqa: E402
 import brand_film  # noqa: E402
+import approved_copy  # noqa: E402
+import rich_pages  # noqa: E402
 import loop_anim  # noqa: E402
 import templates_pages  # noqa: E402
 
@@ -4385,6 +4323,110 @@ def shape_problems(ref, got, path: str = "", allow_empty: bool = False) -> list:
     if isinstance(ref, (int, float)):
         return [] if isinstance(got, (int, float)) else [f"{where}: expected a number, got {type(got).__name__}"]
     return []
+
+
+# --- /view-markdown-on-mac/ and /mermaid-preview-mac/ (website #227) ------------------------------
+# The revised and the new page are made from structured copy by rich_pages.py. en and zh-Hant: the
+# owner-approved text of 2026-10-15 (approved_copy.OPEN_MD and .MERMAID, loaded from the vault draft by
+# a script, not retyped) plus the sections of the old page that stay as they were (OPEN_MD_KEPT, the
+# old page's own HTML). The other six locales' machine drafts (needs-i18n) are OPEN_MD and MERMAID in
+# copy_<l>.py, the same shape, handed over as k.open_md_page and k.mermaid_page.
+OPEN_MD_KEPT = {'en': {'opening_html': 'A <code>.md</code> file is plain text. The headings, bold words, tables and '
+                        'diagrams are written as marks: <code>#</code> for a heading, <code>**</code> around '
+                        'bold, pipes for a table, a <code>mermaid</code> code block for a diagram. Open it '
+                        'in a plain text editor and you read the marks. To read the page the way its author '
+                        'meant, something has to render it.',
+        'read_h2': 'Read it in MarsDawn',
+        'read_p1_html': 'MarsDawn is a Markdown editor for the Mac. It is free to download from the Mac App '
+                        'Store: try everything for 14 days, then unlock it once for USD 4.99. No '
+                        'subscription, no account. It needs macOS 26 or later.',
+        'download': 'Download MarsDawn free on the Mac App Store',
+        'read_p2_html': 'Open a <code>.md</code> file and read the rendered page next to the source:',
+        'read_b1_html': 'The preview updates as you type, and the two panes scroll together.',
+        'read_b4_html': 'When you want to change something, the source is right there. MarsDawn is an '
+                        'editor, not only a viewer.',
+        'agents_html': 'If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent '
+                       'writes, you read it rendered, and it revises. See <a href="/">the home page</a>, and '
+                       '<a href="/cli/agents/">marsdawn for agents</a> for letting an agent open files for '
+                       'you. For why that reading matters and how to review a plan, see <a '
+                       'href="/reading-agent-output/">Reading what your agent hands back</a> and <a '
+                       'href="/reviewing-agent-plans/">Reviewing an agent plan in five minutes</a>.',
+        'pdf_h2': 'Without the app: turn it into a PDF',
+        'pdf_p1_html': 'The free <code>marsdawn</code> command-line tool renders a Markdown file to a PDF, '
+                       'which any Mac can open. Tables, math, Mermaid diagrams and highlighted code come out '
+                       'rendered, and it needs nothing else installed, not even the MarsDawn app.',
+        'pdf_p2_html': '<code>export</code> writes <code>notes.pdf</code> next to the Markdown file, and '
+                       '<code>open</code> shows it in your PDF viewer. It needs macOS 15 or later. The '
+                       'walk-through, with a real exported page, is on <a href="/markdown-to-pdf/">Markdown '
+                       'to PDF</a>.',
+        'next_h2': 'Next',
+        'next_items_html': ['Every option of the command-line tool: <a href="/cli/">Command Line</a>.',
+                            'What MarsDawn doesn\'t do: <a href="/limits/">the list</a>.',
+                            'Reading Markdown in VS Code, a browser or Claude Desktop instead: <a '
+                            'href="/vs/markdown-preview-tools/">how they compare</a>.']},
+ 'zh-hant': {'opening_html': '<code>.md</code> 檔案是純文字。標題、粗體、表格和圖表，都是用記號寫成的：<code>#</code> '
+                             '代表標題，<code>**</code> 包住粗體，直線符號畫出表格，<code>mermaid</code> '
+                             '程式碼區塊則是一張圖。用純文字編輯器打開，看到的就是這些記號。想照作者的意思讀到排好的頁面，就需要有東西把它排版出來。',
+             'read_h2': '在 MarsDawn 裡讀',
+             'read_p1_html': 'MarsDawn 是為 Mac 做的 Markdown 編輯器，可以在 Mac App Store 免費下載：先免費試用全部功能 14 天，之後花 USD '
+                             '4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。',
+             'download': '到 Mac App Store 免費下載 MarsDawn',
+             'read_p2_html': '打開 <code>.md</code> 檔案，排好的頁面就在原始碼旁邊：',
+             'read_b1_html': '預覽會隨著你打字即時更新，兩邊的窗格一起捲動。',
+             'read_b4_html': '想改的時候，原始碼就在旁邊。MarsDawn 是編輯器，不只是檢視器。',
+             'agents_html': '如果這份檔案是 AI agent 寫的，這正是 MarsDawn 要支援的循環：agent 寫，你讀排好的頁面，agent 再修改。請看<a '
+                            'href="/zh-hant/">首頁</a>，想讓 agent 幫你開檔案，請看<a href="/zh-hant/cli/agents/">給 AI '
+                            'agent 的 marsdawn 參考</a>。為什麼這樣的閱讀重要、怎麼審一份計畫，請看<a '
+                            'href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a>和<a '
+                            'href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a>。',
+             'pdf_h2': '不裝 app 也行：轉成 PDF',
+             'pdf_p1_html': '免費的 <code>marsdawn</code> 命令列工具，能把 Markdown 檔案排版成 PDF，任何一台 Mac '
+                            '都打得開。表格、數學式、Mermaid 圖表和程式碼上色都會排好，而且不需要安裝其他東西，連 MarsDawn app 都不用。',
+             'pdf_p2_html': '<code>export</code> 會在 Markdown 檔案旁邊寫出 <code>notes.pdf</code>，<code>open</code> '
+                            '會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看<a '
+                            'href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。',
+             'next_h2': '接下來',
+             'next_items_html': ['命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。',
+                                 'MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。',
+                                 '改用 VS Code、瀏覽器或 Claude Desktop 看 Markdown：<a '
+                                 'href="/zh-hant/vs/markdown-preview-tools/">比較一下</a>。']}}
+OPEN_MD = {loc: {**approved_copy.OPEN_MD[loc], **OPEN_MD_KEPT[loc]} for loc in OPEN_MD_KEPT}
+MERMAID = approved_copy.MERMAID
+# The kept list of "Next" links is as long as a locale's old page had it; it is not part of the shape.
+_OPEN_MD_NOT_SHAPE = ("next_items_html",)
+
+
+def _without(copy: dict, keys: tuple) -> dict:
+    return {key: value for key, value in copy.items() if key not in keys}
+
+
+def open_md_page(copy: dict) -> dict:
+    problems = shape_problems(_without(OPEN_MD["en"], _OPEN_MD_NOT_SHAPE), _without(copy, _OPEN_MD_NOT_SHAPE))
+    assert not problems, "/view-markdown-on-mac/ copy differs in shape from en: " + "; ".join(problems)
+    return rich_pages.open_md_page(copy, LISTING_URL, BREW_TAP_INSTALL)
+
+
+def mermaid_page(copy: dict) -> dict:
+    problems = shape_problems(MERMAID["en"], copy)
+    assert not problems, "/mermaid-preview-mac/ copy differs in shape from en: " + "; ".join(problems)
+    return rich_pages.mermaid_page(copy, LISTING_URL)
+
+
+def rich_en_zh_hant_pages() -> dict:
+    out = {}
+    for locale in ("en", "zh-hant"):
+        out[(locale, "view-markdown-on-mac")] = open_md_page(OPEN_MD[locale])
+        out[(locale, "mermaid-preview-mac")] = mermaid_page(MERMAID[locale])
+    return out
+
+
+def split_shot_html(locale: str) -> str:
+    """The split-view screenshot (Markdown source left, the drawn diagram right) on the Mermaid page."""
+    image, _, alt = THEME_SHOTS[0]
+    _, _, width, height = CROPS[image]
+    return (f'<p class="tpl-shot"><img src="/assets/screens/{image}-{SMALL_WIDTH}.png" srcset="/assets/screens/{image}-{SMALL_WIDTH}.png {SMALL_WIDTH}w, '
+            f'/assets/screens/{image}-{width}.png {width}w" sizes="(min-width: 760px) 44rem, calc(100vw - 32px)" '
+            f'width="{width}" height="{height}" alt="{alt[locale]}" loading="lazy"></p>')
 
 
 # --- /features/ -------------------------------------------------------------------------------
@@ -4505,7 +4547,7 @@ FEATURES_COPY = {
                               'p': 'A fenced code block marked mermaid is drawn as a diagram. If the '
                                    'diagram has a mistake, the preview shows its source with the error '
                                    'underneath, and clicking the message jumps to that line.',
-                              'links': ['templates/flowchart']},
+                              'links': ['mermaid-preview-mac']},
                              {'h': 'Highlighted code',
                               'p': 'Code blocks are highlighted for most common languages. Name the '
                                    'language after the opening fence.',
@@ -4674,7 +4716,7 @@ FEATURES_COPY = {
                    'items': [{'h': 'Mermaid 圖表',
                               'p': '標記為 mermaid '
                                    '的程式碼區塊會畫成圖表。圖表寫錯時，預覽會顯示它的原始碼，下方附上錯誤訊息；點一下訊息，就跳到編輯器裡那一行。',
-                              'links': ['templates/flowchart']},
+                              'links': ['mermaid-preview-mac']},
                              {'h': '程式碼上色', 'p': '常見的程式語言都會語法上色，在開頭的 ``` 後面寫上語言名稱就好。', 'links': []},
                              {'h': '數學式',
                               'p': '用 KaTeX 語法寫的數學式，會在預覽和快速查看裡畫出來，輸出的 PDF 裡也有。',
@@ -4838,6 +4880,7 @@ def _make_k(locale: str) -> SimpleNamespace:
         render_legal_body=render_legal_body,
         theme_agents_page=lambda copy: theme_agents.page(LOCALES[locale]["root"], copy),
         features_page=features_page,
+        open_md_page=open_md_page, mermaid_page=mermaid_page,
     )
 
 
@@ -5449,13 +5492,13 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
+PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
               "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/agents", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
 SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
-                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "cli/skill": "skill",
+                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "mermaid-preview-mac": "mermaid-preview-mac", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
                   "vs/macmd-viewer": "vs-macmd-viewer",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
@@ -5481,6 +5524,7 @@ def _base_pages() -> dict:
     merged.update(SKILL_PAGES)
     merged.update(TRAIT_PAGES)
     merged.update(features_pages())
+    merged.update(rich_en_zh_hant_pages())
     merged.update(BRAINSTORM_PAGES)
     merged.update(READING_NOTES_PAGES)
     merged.update(templates_pages.pages())
@@ -5500,6 +5544,7 @@ def all_pages() -> dict:
             body = exit_table_html(locale, body)
         for key in COMPARE_TABLES:
             body = body.replace(f"<!--compare:{key}-->", compare_table_html(locale, key))
+        body = body.replace(rich_pages.SPLIT_SHOT_MARK, split_shot_html(locale))
         if slug == "features":
             body = features_marks(locale, body)
         if body != page["body"]:
@@ -5841,6 +5886,26 @@ def breadcrumb_data(locale: str, slug: str, page: dict) -> dict:
     }
 
 
+# Pages whose questions (an h3 and the paragraph after it) are also published as schema.org FAQPage
+# (owner, 2026-10-15, #227: kept although it will not produce a rich result for this site). The marked
+# up text is the visible text: the same strings, with the tags taken out.
+FAQ_PAGES = {"view-markdown-on-mac"}
+
+
+def faq_data(page: dict) -> dict:
+    pairs = re.findall(r"<h3>(.*?)</h3>\s*<p>(.*?)</p>", page["body"], re.S)
+    assert pairs, "a FAQ page without questions"
+    return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": _plain(question),
+             "acceptedAnswer": {"@type": "Answer", "text": _plain(answer)}}
+            for question, answer in pairs
+        ],
+    }
+
+
 def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> list:
     if slug == "index":
         return [{
@@ -5871,6 +5936,8 @@ def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> l
             "url": canonical_url,
         }]
     data = [breadcrumb_data(locale, slug, page)]
+    if slug in FAQ_PAGES:
+        data.append(faq_data(page))
     if slug in ARTICLE_DATES:
         published, modified = ARTICLE_DATES[slug]
         data.append({
