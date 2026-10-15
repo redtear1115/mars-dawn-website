@@ -4232,6 +4232,7 @@ import copy_zh_hans  # noqa: E402
 import importlib  # noqa: E402
 import hero_window  # noqa: E402
 import brand_film  # noqa: E402
+import brand_film_themes  # noqa: E402
 import approved_copy  # noqa: E402
 import rich_pages  # noqa: E402
 import loop_anim  # noqa: E402
@@ -4770,6 +4771,7 @@ def features_page(copy: dict) -> dict:
             parts += [f"<h3>{_features_text(item['h'])}</h3>", f"<p>{_features_text(item['p'])}</p>", _features_more(item["links"])]
         if section["id"] in FEATURES_SHOTS:
             parts.append(f"<!--shot:{FEATURES_SHOTS[section['id']]}-->")
+    parts.append(brand_film_themes.MARK)
     cta = copy["cta"]
     (trial, trial_slug), (left, left_slug) = cta["trial"], cta["left"]
     parts += [f"<h2>{_features_text(cta['h2'])}</h2>", f"<p>{_features_text(cta['p1'])}</p>", "<p><!--cta--></p>",
@@ -5419,11 +5421,13 @@ def annotations_css() -> str:
         for index, (x, y, _, _) in enumerate(FIGURES[slug]["callouts"], start=1):
             cx, cy = cropped_position(image, x, y)
             rules.append(f".co-{slug}-{index} {{ --x: {cx}%; --y: {cy}%; }}")
-    return "\n".join(rules) + "\n"
+    return "\n".join(rules) + "\n\n" + brand_film_themes.CSS
 
 
 def page_markdown(pages: dict, locale: str, slug: str) -> str:
     page = pages[(locale, slug)]
+    if brand_film_themes.MARK in page["body"]:
+        page = {**page, "body": page["body"].replace(brand_film_themes.MARK, brand_film_themes.section_markdown_html(locale, BASE_URL))}
     if "intro" not in page:
         return html_to_markdown(page["body"])
     if slug == "index":
@@ -5503,6 +5507,12 @@ def all_pages() -> dict:
         body = body.replace(rich_pages.SPLIT_SHOT_MARK, split_shot_html(locale))
         if slug == "features":
             body = features_marks(locale, body)
+        if slug == "themes":
+            # After the section on PDF export and print: before the third heading (the four themes, PDF and
+            # print, build your own, next). Every locale's page has the same four.
+            pieces = re.split(r"(?=<h2>)", body)
+            assert len(pieces) == 5, f"{locale}/themes: {len(pieces) - 1} headings, expected 4"
+            body = "".join(pieces[:3]) + brand_film_themes.MARK + "\n" + "".join(pieces[3:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
     return merged
@@ -5894,6 +5904,8 @@ def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> l
     data = [breadcrumb_data(locale, slug, page)]
     if slug in FAQ_PAGES:
         data.append(faq_data(page))
+    if brand_film_themes.MARK in page["body"]:
+        data.append(brand_film_themes.video_object(locale, BASE_URL))
     if slug in ARTICLE_DATES:
         published, modified = ARTICLE_DATES[slug]
         data.append({
@@ -5949,7 +5961,7 @@ def render(locale: str, slug: str, page: dict) -> str:
     # statement; the home page says it in the hero instead.
     statement_chip = (f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  '
                       if not is_trait_page and slug != "index" else "")
-    extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page or slug == "features" else ""
+    extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page or slug in ("features", "themes") else ""
     if slug.startswith("templates/"):
         extra_css = '<link rel="stylesheet" href="/assets/loop.css">\n'
     if slug in LEGAL_PAGES:
@@ -6017,6 +6029,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
         main_html = templates_pages.expand_loops(locale, page["body"].strip())
+    main_html = main_html.replace(brand_film_themes.MARK, brand_film_themes.section_html(locale))
     if slug in TOC_PAGES:
         main_html = add_toc(locale, slug, main_html)
     elif slug != "index":

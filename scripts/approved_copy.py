@@ -13,6 +13,8 @@ VS_MACMD (and VS_SOURCES): /vs/macmd-viewer/, source
   (owner-approved 2026-10-15; item 4 as orchi's option C and item 8 as option A). Tables, intro, "which one" and the FAQ
   are the source's; the source list is its source table (S1 to S10). Rows and headings the drafts do not have are
   added in build_pages.py (VS_MACMD_EXTRA).
+FILM_THEMES: the second brand film's section on /features/ and /themes/ (heading and one-line caption), source
+  <vault>/MarsDawn/協作/給擁有者/features-page-copy-2026-10-15.md, section 3.
 """
 
 OPEN_MD = {'en': {'title': 'How to open .md files on Mac · MarsDawn',
@@ -400,3 +402,7 @@ VS_SOURCES = [['S1', 'https://macmdviewer.com/'],
  ['S8', 'https://macmdviewer.com/press'],
  ['S9', 'https://macmdviewer.com/product-facts.md'],
  ['S10', 'https://github.com/macmdviewer/MacMDViewer/releases']]
+
+FILM_THEMES = {'en': {'heading': 'After the page is printed',
+        'caption': 'A meeting around printed pages, a pen in the margin, a paper record on file.'},
+ 'zh-hant': {'heading': '頁面印出來之後', 'caption': '大家圍著印出來的頁面開會，有人拿筆在頁邊寫字，紙本紀錄收進檔案。'}}
