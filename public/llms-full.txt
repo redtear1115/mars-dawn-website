@@ -15,10 +15,10 @@ The page shows a working MarsDawn window over part of the app's Welcome guide. I
 ## Read what your agent wrote.
 
 1. **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
-2. **You review in MarsDawn.** Open the file and read it rendered, with Mermaid diagrams and highlighted code, next to the source.
+2. **You review in MarsDawn.** Open the file and read it rendered, with [Mermaid diagrams](/mermaid-preview-mac/) and highlighted code, next to the source.
 3. **The agent revises.** Ask for changes. Open the revised file and read it the same way.
 
-[How to review what your agent hands back](/reading-agent-output/).
+[How to review what your agent hands back](/reading-agent-output/) · [How to open a .md file on a Mac](/view-markdown-on-mac/)
 
 ## Do this now
 
@@ -171,7 +171,7 @@ The app is in English, Traditional Chinese, Simplified Chinese, Japanese, German
 
 A fenced code block marked `mermaid` is drawn as a diagram. If the diagram has a mistake, the preview shows its source with the error underneath, and clicking the message jumps to that line.
 
-[Flowchart template](/templates/flowchart/)
+[Mermaid preview on Mac](/mermaid-preview-mac/)
 
 ### Highlighted code
 
@@ -595,13 +595,21 @@ Questions about privacy: [support@southern-light.dev](mailto:support@southern-li
 
 ---
 
-## View Markdown on a Mac
+## How to open .md files on Mac
 
 Source: https://marsdawn.southern-light.dev/view-markdown-on-mac/
 
-# How to view a Markdown file on a Mac.
+# How to open .md files on Mac.
+
+Double-click it. If your Mac opens it in a text editor and you see `#` and `**` instead of headings and bold, the file is fine: a `.md` file is plain text, and that editor is showing the text as it is. Open it in an app that renders Markdown, such as MarsDawn, and make that app the default so every `.md` file opens there.
 
 A `.md` file is plain text. The headings, bold words, tables and diagrams are written as marks: `#` for a heading, `**` around bold, pipes for a table, a `mermaid` code block for a diagram. Open it in a plain text editor and you read the marks. To read the page the way its author meant, something has to render it.
+
+## Open a .md file on your Mac
+
+1. **Double-click the file.** It opens in the app your Mac has set for `.md` files. With no Markdown app, that is often a plain text editor, which shows the marks instead of the page.
+2. **Pick the app yourself.** Control-click the file and choose Open With, then the app. Or choose File ▸ Get Info (⌘I), pick an app under "Open with:", and click "Change All…" so every file of this type opens there. MarsDawn opens `.md`, `.markdown`, `.mdown`, `.mkd` and `.mkdn` files.
+3. **Preview without opening it.** Select the file in Finder and press Space. With MarsDawn installed, Quick Look shows the rendered page, diagrams included.
 
 ## Read it in MarsDawn
 
@@ -612,8 +620,7 @@ MarsDawn is a Markdown editor for the Mac. It is free to download from the Mac A
 Open a `.md` file and read the rendered page next to the source:
 
 - The preview updates as you type, and the two panes scroll together.
-- Mermaid flowcharts and sequence diagrams are drawn in the preview, and code blocks are highlighted.
-- In Finder, press Space on a Markdown file for a Quick Look preview, diagrams included.
+- [Mermaid](/mermaid-preview-mac/) flowcharts and sequence diagrams are drawn in the preview, and code blocks are highlighted.
 - When you want to change something, the source is right there. MarsDawn is an editor, not only a viewer.
 
 If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent writes, you read it rendered, and it revises. See [the home page](/), and [marsdawn for agents](/cli/agents/) for letting an agent open files for you. For why that reading matters and how to review a plan, see [Reading what your agent hands back](/reading-agent-output/) and [Reviewing an agent plan in five minutes](/reviewing-agent-plans/).
@@ -630,11 +637,92 @@ open notes.pdf
 
 `export` writes `notes.pdf` next to the Markdown file, and `open` shows it in your PDF viewer. It needs macOS 15 or later. The walk-through, with a real exported page, is on [Markdown to PDF](/markdown-to-pdf/).
 
+## Questions
+
+### What is a .md file?
+
+A `.md` file is a plain text file written in Markdown, a way of marking up text with simple characters: `#` for a heading, `**` around bold, a pipe for a table cell. The extensions `.markdown`, `.mdown`, `.mkd` and `.mkdn` mean the same thing. Developers use it for READMEs and docs, and AI agents often hand back their plans and reports as `.md` files.
+
+### Why does my .md file open as plain text, with # and ** marks in it?
+
+Because it is plain text, and a plain text editor shows it as it is. Nothing is wrong with the file. To see headings, bold, tables and diagrams, open it in an app that renders Markdown. In MarsDawn the rendered page sits next to the source.
+
+### Why does it open with garbled characters?
+
+Garbled characters usually mean the file was saved in a text encoding other than UTF-8, and the app that opened it guessed wrong. The fix is to save a UTF-8 copy. MarsDawn opens a plain text file that isn't UTF-8 read-only, names the encoding it read it as in a bar at the top of the window, and offers Save As UTF-8… there, or File ▸ Save As… (⌥⇧⌘S), to write a UTF-8 copy you can edit.
+
+### Can I turn a .md file into a PDF?
+
+Yes. In MarsDawn, choose File ▸ Export as PDF… (⌥⌘E) or File ▸ Print…; the pages are paginated, with diagrams drawn in and code highlighted, in the theme's light colors. Without the app, the free `marsdawn export` command-line tool makes the same PDF: `marsdawn export notes.md`. See [PDF export](/pdf/) and [Markdown to PDF](/markdown-to-pdf/).
+
+### Can I open the .md files my AI agent wrote?
+
+Yes, that is what MarsDawn is built for. Open the file and read the rendered page next to its source; when the agent revises it, open it again. An agent can also run `marsdawn open plan.md` to open the file in MarsDawn for you. See [Reading what your agent hands back](/reading-agent-output/).
+
 ## Next
 
 - Every option of the command-line tool: [Command Line](/cli/).
 - What MarsDawn doesn't do: [the list](/limits/).
 - Reading Markdown in VS Code, a browser or Claude Desktop instead: [how they compare](/vs/markdown-preview-tools/).
+- Diagrams in a Markdown file: [Mermaid preview on Mac](/mermaid-preview-mac/).
+
+---
+
+## Mermaid preview on Mac
+
+Source: https://marsdawn.southern-light.dev/mermaid-preview-mac/
+
+# Mermaid preview on Mac.
+
+Mermaid lets you write a diagram as text inside a Markdown file. Most editors show you the text. MarsDawn draws the diagram: in the preview next to the source, in Quick Look in Finder, and in the PDF you export.
+
+## Write the diagram as text
+
+Put the diagram in a code block marked `mermaid`:
+
+````
+```mermaid
+flowchart LR
+    Write[Write Markdown] --> Preview[Live preview]
+    Preview --> Export{Share it?}
+    Export -- PDF --> PDF[File ▸ Export as PDF…]
+    Export -- Print --> Print[File ▸ Print…]
+```
+````
+
+In MarsDawn that block becomes a flowchart: Write Markdown, then Live preview, then a Share it? choice that leads to PDF or Print.
+
+![The Dawn theme in split view: Markdown source on the left, the rendered page on the right.](/assets/screens/01-split-800.png)
+
+## Where the diagram is drawn
+
+- **In the preview.** Open the file and the diagram sits next to its source (⌘2). The page updates as you type, and the two panes scroll together.
+- **In Quick Look.** Select the file in Finder and press Space; diagrams are drawn there too.
+- **In the PDF.** File ▸ Export as PDF… and File ▸ Print… draw the diagram into the page. Page breaks avoid cutting a diagram in half. The PDF uses the theme's light colors.
+- **From the command line.** The free `marsdawn export` tool draws the same diagrams into a PDF, and does not need the app. See [Command Line](/cli/).
+- **In your theme.** The preview's Appearance setting applies to diagrams too, so a diagram follows light or dark.
+
+## When the diagram has a mistake
+
+If Mermaid can't draw a diagram, the preview shows the diagram's source with the full error message underneath. When the error names a line, click the message and the editor jumps to that line. `marsdawn export --json` reports failed diagrams in `diagramErrors`, so a script or an agent can tell that a diagram didn't draw.
+
+## What to know
+
+- You edit the Mermaid text. There is no visual diagram editor, and you can't drag boxes in the preview.
+- Which diagram types draw depends on the Mermaid version inside the app. MarsDawn 1.1.0 includes Mermaid 12.0.0. The kit's export tests render documents for flowcharts, sequence, class, state, entity-relationship, Gantt, pie, mindmap, journey, timeline and git graphs, among others.
+- MarsDawn has no AI model, so it doesn't write a diagram for you. The [flowchart template](/templates/flowchart/) has a prompt you can hand to your own agent.
+
+## Next
+
+- Start from a diagram that already works: the [flowchart template](/templates/flowchart/).
+- Export it: [PDF export](/pdf/), or from a script, [Command Line](/cli/).
+- Not sure how to open the file? [How to open .md files on Mac](/view-markdown-on-mac/).
+
+## Try it on your Mac
+
+MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account. It needs macOS 26 or later.
+
+[Download and try it free](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -2567,7 +2655,7 @@ Source: https://marsdawn.southern-light.dev/templates/flowchart/
 
 # Markdown flowchart template
 
-A Mermaid flowchart with the steps spelled out underneath, so the diagram and the words can be checked against each other. Take a step out, and ask the agent to fix the rest.
+A Mermaid flowchart with the steps spelled out underneath, so the diagram and the words can be checked against each other. Take a step out, and ask the agent to fix the rest. How the diagram gets drawn on a Mac: [Mermaid preview on Mac](/mermaid-preview-mac/).
 
 ## The template
 
@@ -2717,10 +2805,10 @@ Source: https://marsdawn.southern-light.dev/zh-hant/
 ## 讀 agent 寫的 Markdown。
 
 1. **Agent 動筆。**你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。
-2. **你在 MarsDawn 裡讀。**打開檔案，看排版後的頁面，Mermaid 圖表和程式碼上色都在，旁邊就是原始碼。
+2. **你在 MarsDawn 裡讀。**打開檔案，看排版後的頁面，[Mermaid 圖表](/zh-hant/mermaid-preview-mac/)和程式碼上色都在，旁邊就是原始碼。
 3. **Agent 修改。**提出修改意見，agent 改好之後，再打開來讀一次。
 
-[如何審閱 agent 交回來的東西](/zh-hant/reading-agent-output/)。
+[如何審閱 agent 交回來的東西](/zh-hant/reading-agent-output/) · [Mac 怎麼開 md 檔](/zh-hant/view-markdown-on-mac/)
 
 ## 現在就能做的事
 
@@ -2873,7 +2961,7 @@ App 介面有英文、繁體中文、簡體中文、日文、德文、法文、�
 
 標記為 `mermaid` 的程式碼區塊會畫成圖表。圖表寫錯時，預覽會顯示它的原始碼，下方附上錯誤訊息；點一下訊息，就跳到編輯器裡那一行。
 
-[流程圖範本](/zh-hant/templates/flowchart/)
+[在 Mac 上預覽 Mermaid](/zh-hant/mermaid-preview-mac/)
 
 ### 程式碼上色
 
@@ -3297,13 +3385,21 @@ MarsDawn 透過 Mac App Store 販售，付款由 Apple 依其條款處理，開�
 
 ---
 
-## 在 Mac 上看 Markdown
+## Mac 怎麼開 md 檔
 
 Source: https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/
 
-# 在 Mac 上，怎麼看 Markdown 檔案。
+# Mac 怎麼開 md 檔。
+
+雙擊就能打開。如果你的 Mac 用文字編輯器打開，看到的是 `#` 和 `**`，而不是標題和粗體，檔案沒有壞：`.md` 檔本來就是純文字，編輯器只是照原樣顯示。改用會排版 Markdown 的 app（例如 MarsDawn）打開，再把它設成預設 app，之後每個 `.md` 檔都會在那裡打開。
 
 `.md` 檔案是純文字。標題、粗體、表格和圖表，都是用記號寫成的：`#` 代表標題，`**` 包住粗體，直線符號畫出表格，`mermaid` 程式碼區塊則是一張圖。用純文字編輯器打開，看到的就是這些記號。想照作者的意思讀到排好的頁面，就需要有東西把它排版出來。
+
+## 在 Mac 上打開 md 檔
+
+1. **雙擊檔案。** 檔案會用你的 Mac 為 `.md` 設定的 app 打開。如果沒有任何 Markdown app，常常就是純文字編輯器，看到的是記號，不是排好的頁面。
+2. **自己選 app。** 按住 Control 點檔案，選「打開檔案的應用程式」，再選 app。或者選「檔案 ▸ 取得資訊」（⌘I），在「打開檔案的應用程式：」選一個 app，再按「全部更改⋯」，以後這類檔案都會用它打開。MarsDawn 能打開 `.md`、`.markdown`、`.mdown`、`.mkd` 和 `.mkdn`。
+3. **不打開，直接預覽。** 在 Finder 選取檔案，按空白鍵。裝了 MarsDawn 的話，「快速查看」會顯示排版後的頁面，圖表也在。
 
 ## 在 MarsDawn 裡讀
 
@@ -3314,8 +3410,7 @@ MarsDawn 是為 Mac 做的 Markdown 編輯器，可以在 Mac App Store 免費�
 打開 `.md` 檔案，排好的頁面就在原始碼旁邊：
 
 - 預覽會隨著你打字即時更新，兩邊的窗格一起捲動。
-- Mermaid 流程圖和循序圖直接畫在預覽裡，程式碼區塊也會上色。
-- 在 Finder 裡對 Markdown 檔案按空白鍵，就有「快速查看」預覽，圖表也在。
+- [Mermaid](/zh-hant/mermaid-preview-mac/) 流程圖和循序圖直接畫在預覽裡，程式碼區塊也會上色。
 - 想改的時候，原始碼就在旁邊。MarsDawn 是編輯器，不只是檢視器。
 
 如果這份檔案是 AI agent 寫的，這正是 MarsDawn 要支援的循環：agent 寫，你讀排好的頁面，agent 再修改。請看[首頁](/zh-hant/)，想讓 agent 幫你開檔案，請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。為什麼這樣的閱讀重要、怎麼審一份計畫，請看[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)和[五分鐘審完一份 agent 計畫](/zh-hant/reviewing-agent-plans/)。
@@ -3332,11 +3427,92 @@ open notes.pdf
 
 `export` 會在 Markdown 檔案旁邊寫出 `notes.pdf`，`open` 會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
 
+## 常見問題
+
+### md 檔是什麼？
+
+`.md` 檔是用 Markdown 寫成的純文字檔。Markdown 用簡單的字元標記文字：`#` 是標題，`**` 包住的是粗體，直線符號畫出表格。`.markdown`、`.mdown`、`.mkd`、`.mkdn` 是同樣的東西。開發者拿它寫 README 和文件，AI agent 也常把計畫和報告寫成 `.md` 檔交回來。
+
+### 為什麼 md 檔打開是純文字，滿是 # 和 ** ？
+
+因為它本來就是純文字，純文字編輯器只會照原樣顯示，檔案沒有壞。想看到標題、粗體、表格和圖表，要用會排版 Markdown 的 app 打開。在 MarsDawn 裡，排好的頁面就在原始碼旁邊。
+
+### 為什麼打開是亂碼？
+
+亂碼通常是因為檔案存成 UTF-8 以外的文字編碼，而打開它的 app 猜錯了。解法是另存一份 UTF-8 的副本。MarsDawn 打開不是 UTF-8 的純文字檔時會以唯讀開啟，並在視窗上方的提示列寫出它當成哪種編碼來讀；那裡的「儲存為 UTF-8⋯」，或「檔案 ▸ 儲存為⋯」（⌥⇧⌘S），可以存出一份能編輯的 UTF-8 副本。
+
+### md 檔可以轉成 PDF 嗎？
+
+可以。在 MarsDawn 選「檔案 ▸ 輸出為 PDF⋯」（⌥⌘E）或「檔案 ▸ 列印⋯」，頁面會自動分頁，圖表畫進去，程式碼保留上色，使用主題的淺色配色。不裝 app 的話，免費的 `marsdawn export` 命令列工具能輸出同樣的 PDF：`marsdawn export notes.md`。請看[輸出 PDF](/zh-hant/pdf/)和[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
+
+### AI agent 寫的 md 檔也能這樣打開嗎？
+
+可以，MarsDawn 就是為這個做的。打開檔案，排好的頁面就在原始碼旁邊；agent 改好之後，再打開來讀一次。agent 也可以執行 `marsdawn open plan.md`，在 MarsDawn 裡把檔案打開給你。請看[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)。
+
 ## 接下來
 
 - 命令列工具的所有選項：[命令列工具](/zh-hant/cli/)。
 - MarsDawn 做不到的事：[這份清單](/zh-hant/limits/)。
 - 改用 VS Code、瀏覽器或 Claude Desktop 看 Markdown：[比較一下](/zh-hant/vs/markdown-preview-tools/)。
+- Markdown 檔裡的圖表：[在 Mac 上預覽 Mermaid](/zh-hant/mermaid-preview-mac/)。
+
+---
+
+## 在 Mac 上預覽 Mermaid
+
+Source: https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/
+
+# 在 Mac 上預覽 Mermaid。
+
+Mermaid 讓你用文字在 Markdown 檔案裡寫一張圖。多數編輯器只給你看那段文字。MarsDawn 會把圖畫出來：在原始碼旁邊的預覽、在 Finder 的快速查看，也在你輸出的 PDF 裡。
+
+## 用文字寫出圖
+
+把圖放進標記為 `mermaid` 的程式碼區塊：
+
+````
+```mermaid
+flowchart LR
+    Write[寫 Markdown] --> Preview[即時預覽]
+    Preview --> Export{要分享嗎？}
+    Export -- PDF --> PDF[檔案 ▸ 輸出為 PDF⋯]
+    Export -- 列印 --> Print[檔案 ▸ 列印⋯]
+```
+````
+
+在 MarsDawn 裡，這個區塊會畫成一張流程圖：寫 Markdown，接著即時預覽，再到「要分享嗎？」這個選擇，分成輸出 PDF 和列印兩條路。
+
+![黎明主題的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。](/assets/screens/01-split-800.png)
+
+## 圖會畫在哪裡
+
+- **預覽裡。** 打開檔案，圖就在原始碼旁邊（⌘2）。頁面隨著打字更新，兩邊的窗格一起捲動。
+- **快速查看裡。** 在 Finder 選取檔案按空白鍵，圖也會畫出來。
+- **PDF 裡。** 「檔案 ▸ 輸出為 PDF⋯」和「檔案 ▸ 列印⋯」都會把圖畫進頁面，分頁時盡量不把一張圖切成兩半。PDF 使用主題的淺色配色。
+- **命令列。** 免費的 `marsdawn export` 工具會把同樣的圖畫進 PDF，而且不需要 app。請看[命令列工具](/zh-hant/cli/)。
+- **跟著外觀。** 預覽的外觀設定也會套用到圖表，所以圖會跟著淺色或深色。
+
+## 圖寫錯的時候
+
+Mermaid 畫不出一張圖時，預覽會顯示那張圖的原始碼，下方附上完整的錯誤訊息。如果錯誤訊息指出是哪一行，點一下訊息，編輯器就會跳到那一行。`marsdawn export --json` 會在 `diagramErrors` 裡回報畫不出來的圖，所以腳本或 agent 知道有圖沒畫成。
+
+## 先知道的事
+
+- 你編輯的是 Mermaid 文字。沒有視覺化的圖表編輯器，也不能在預覽裡拖動方塊。
+- 哪些圖表類型畫得出來，取決於 app 裡內建的 Mermaid 版本。MarsDawn 1.1.0 內建 Mermaid 12.0.0。kit 的輸出測試會對流程圖、循序圖、類別圖、狀態圖、實體關聯圖、甘特圖、圓餅圖、心智圖、使用者旅程、時間軸、git 圖等類型各畫一份文件。
+- MarsDawn 沒有 AI 模型，不會幫你寫圖。[流程圖範本](/zh-hant/templates/flowchart/)附有一段提示詞，可以交給你自己的 agent。
+
+## 接下來
+
+- 從一張已經能畫出來的圖開始：[流程圖範本](/zh-hant/templates/flowchart/)。
+- 輸出：[輸出 PDF](/zh-hant/pdf/)；從腳本輸出，請看[命令列工具](/zh-hant/cli/)。
+- 不確定怎麼打開檔案？請看[Mac 怎麼開 md 檔](/zh-hant/view-markdown-on-mac/)。
+
+## 在你的 Mac 上試試
+
+MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。
+
+[立刻下載試用](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -5307,7 +5483,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/
 
 # Markdown 流程圖範本
 
-一張 Mermaid 流程圖，下方把每個步驟寫清楚，圖和文字可以互相對照。拿掉一個步驟，再請 agent 把其他部分改好。
+一張 Mermaid 流程圖，下方把每個步驟寫清楚，圖和文字可以互相對照。拿掉一個步驟，再請 agent 把其他部分改好。圖在 Mac 上怎麼畫出來：[在 Mac 上預覽 Mermaid](/zh-hant/mermaid-preview-mac/)。
 
 ## 範本
 
@@ -5457,10 +5633,10 @@ Source: https://marsdawn.southern-light.dev/zh-hans/
 ## 读 agent 写的 Markdown。
 
 1. **Agent 动笔。**你的代码助手或写作 agent 先写出 Markdown：README、规格文档，或一份笔记。
-2. **你在 MarsDawn 里读。**打开文件，看排版后的页面，Mermaid 图表和代码高亮都在，旁边就是源代码。
+2. **你在 MarsDawn 里读。**打开文件，看排版后的页面，[Mermaid 图表](/zh-hans/mermaid-preview-mac/)和代码高亮都在，旁边就是源代码。
 3. **Agent 修改。**提出修改意见，agent 改好之后，再打开来读一次。
 
-[如何审阅 agent 交回来的东西](/zh-hans/reading-agent-output/)。
+[如何审阅 agent 交回来的东西](/zh-hans/reading-agent-output/) · [Mac 上怎么打开 md 文件](/zh-hans/view-markdown-on-mac/)
 
 ## 现在就能做的事
 
@@ -5613,7 +5789,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 标记为 `mermaid` 的代码块会画成图表。图表写错时，预览会显示它的源代码，下方附上错误信息；点按信息，就跳到编辑器里那一行。
 
-[流程图模板](/zh-hans/templates/flowchart/)
+[在 Mac 上预览 Mermaid](/zh-hans/mermaid-preview-mac/)
 
 ### 代码着色
 
@@ -6037,13 +6213,21 @@ MarsDawn 通过 Mac App Store 销售，付款由 Apple 依其条款处理，开�
 
 ---
 
-## 在 Mac 上看 Markdown
+## Mac 上怎么打开 md 文件
 
 Source: https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/
 
-# 在 Mac 上，怎么看 Markdown 文件。
+# Mac 上怎么打开 md 文件。
+
+双击就能打开。如果你的 Mac 用文本编辑器打开，看到的是 `#` 和 `**`，而不是标题和粗体，文件没有坏：`.md` 文件本来就是纯文本，编辑器只是照原样显示。改用会排版 Markdown 的 app（例如 MarsDawn）打开，再把它设为默认 app，之后每个 `.md` 文件都会在那里打开。
 
 `.md` 文件是纯文本。标题、粗体、表格和图表，都是用记号写成的：`#` 代表标题，`**` 包住粗体，直线符号画出表格，`mermaid` 代码块则是一张图。用纯文本编辑器打开，看到的就是这些记号。想照作者的意思读到排好的页面，就需要有东西把它排版出来。
+
+## 在 Mac 上打开 md 文件
+
+1. **双击文件。** 文件会用你的 Mac 为 `.md` 设定的 app 打开。如果没有任何 Markdown app，常常就是纯文本编辑器，看到的是记号，不是排好的页面。
+2. **自己选 app。** 按住 Control 键点按文件，选取“打开方式”，再选 app。或者选取“文件 ▸ 显示简介”（⌘I），在“打开方式：”下选一个 app，再点按“全部更改…”，以后所有这种类型的文件都会用它打开。MarsDawn 能打开 `.md`、`.markdown`、`.mdown`、`.mkd` 和 `.mkdn` 文件。
+3. **不打开，直接预览。** 在访达中选中文件，按空格键。装了 MarsDawn 的话，“快速查看”会显示排版后的页面，图表也在。
 
 ## 在 MarsDawn 里读
 
@@ -6054,8 +6238,7 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器，可以在 Mac App Store 免费�
 打开 `.md` 文件，排好的页面就在源代码旁边：
 
 - 预览会随着你打字实时更新，两边的窗格一起滚动。
-- Mermaid 流程图和时序图直接画在预览里，代码块也会高亮。
-- 在访达里对 Markdown 文件按空格键，就有“快速查看”预览，图表也在。
+- [Mermaid](/zh-hans/mermaid-preview-mac/) 流程图和时序图直接画在预览里，代码块也会高亮。
 - 想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。
 
 如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看[首页](/zh-hans/)，想让 agent 帮你开文件，请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。为什么这样的阅读重要、怎么审一份计划，请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)和[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
@@ -6072,10 +6255,91 @@ open notes.pdf
 
 `export` 会在 Markdown 文件旁边写出 `notes.pdf`，`open` 会用你的 PDF 查看器打开它。这个工具需要 macOS 15 以上。完整步骤和一页实际导出的结果，请看[Markdown 转 PDF](/zh-hans/markdown-to-pdf/)。
 
+## 常见问题
+
+### md 文件是什么？
+
+`.md` 文件是用 Markdown 写成的纯文本文件。Markdown 用简单的字符标记文本：`#` 是标题，`**` 包住的是粗体，竖线画出表格。`.markdown`、`.mdown`、`.mkd`、`.mkdn` 是同样的东西。开发者拿它写 README 和文档，AI agent 也常把计划和报告写成 `.md` 文件交回来。
+
+### 为什么 md 文件打开是纯文本，满是 # 和 ** ？
+
+因为它本来就是纯文本，纯文本编辑器只会照原样显示，文件没有坏。想看到标题、粗体、表格和图表，要用会排版 Markdown 的 app 打开。在 MarsDawn 里，排好的页面就在源代码旁边。
+
+### 为什么打开是乱码？
+
+乱码通常是因为文件存成 UTF-8 以外的文本编码，而打开它的 app 猜错了。解法是另存一份 UTF-8 的副本。MarsDawn 打开不是 UTF-8 的纯文本文件时会以只读方式打开，并在窗口上方的提示栏写出它当成哪种编码来读；那里的“保存为 UTF-8…”，或“文件 ▸ 保存为…”（⌥⇧⌘S），可以存出一份能编辑的 UTF-8 副本。
+
+### md 文件可以转成 PDF 吗？
+
+可以。在 MarsDawn 选“文件 ▸ 导出为 PDF…”（⌥⌘E）或“文件 ▸ 打印…”，页面会自动分页，图表画进去，代码保留高亮，使用主题的浅色配色。不装 app 的话，免费的 `marsdawn export` 命令行工具能导出同样的 PDF：`marsdawn export notes.md`。请看[导出 PDF](/zh-hans/pdf/)和[Markdown 转 PDF](/zh-hans/markdown-to-pdf/)。
+
+### AI agent 写的 md 文件也能这样打开吗？
+
+可以，MarsDawn 就是为这个做的。打开文件，排好的页面就在源代码旁边；agent 改好之后，再打开来读一次。agent 也可以运行 `marsdawn open plan.md`，在 MarsDawn 里把文件打开给你。请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
+
 ## 接下来
 
 - 命令行工具的所有选项：[命令行工具](/zh-hans/cli/)。
 - MarsDawn 做不到的事：[这份清单](/zh-hans/limits/)。
+- Markdown 文件里的图表：[在 Mac 上预览 Mermaid](/zh-hans/mermaid-preview-mac/)。
+
+---
+
+## 在 Mac 上预览 Mermaid
+
+Source: https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/
+
+# 在 Mac 上预览 Mermaid。
+
+Mermaid 让你用文本在 Markdown 文件里写一张图。多数编辑器只给你看那段文本。MarsDawn 会把图画出来：在源代码旁边的预览、在访达的快速查看，也在你导出的 PDF 里。
+
+## 用文本写出图
+
+把图放进标记为 `mermaid` 的代码块：
+
+````
+```mermaid
+flowchart LR
+    Write[写 Markdown] --> Preview[实时预览]
+    Preview --> Export{要分享吗？}
+    Export -- PDF --> PDF[文件 ▸ 导出为 PDF…]
+    Export -- 打印 --> Print[文件 ▸ 打印…]
+```
+````
+
+在 MarsDawn 里，这个代码块会画成一张流程图：写 Markdown，接着实时预览，再到“要分享吗？”这个选择，分成导出 PDF 和打印两条路。
+
+![黎明主题的并排版面：左边是 Markdown 源代码，右边是排版后的页面。](/assets/screens/01-split-800.png)
+
+## 图会画在哪里
+
+- **预览里。** 打开文件，图就在源代码旁边（⌘2）。页面随着打字更新，两边的窗格一起滚动。
+- **快速查看里。** 在访达中选中文件按空格键，图也会画出来。
+- **PDF 里。** “文件 ▸ 导出为 PDF…”和“文件 ▸ 打印…”都会把图画进页面，分页时尽量不把一张图切成两半。PDF 使用主题的浅色配色。
+- **命令行。** 免费的 `marsdawn export` 工具会把同样的图画进 PDF，而且不需要 app。请看[命令行工具](/zh-hans/cli/)。
+- **跟着外观。** 预览的外观设置也会应用到图表，所以图会跟着浅色或深色。
+
+## 图写错的时候
+
+Mermaid 画不出一张图时，预览会显示那张图的源代码，下方附上完整的错误信息。如果错误信息指出是哪一行，点按一下信息，编辑器就会跳到那一行。`marsdawn export --json` 会在 `diagramErrors` 里报告画不出来的图，所以脚本或 agent 知道有图没画成。
+
+## 先知道的事
+
+- 你编辑的是 Mermaid 文本。没有可视化的图表编辑器，也不能在预览里拖动方块。
+- 哪些图表类型画得出来，取决于 app 里内置的 Mermaid 版本。MarsDawn 1.1.0 内置 Mermaid 12.0.0。kit 的导出测试会对流程图、时序图、类图、状态图、实体关系图、甘特图、饼图、思维导图、用户旅程、时间线、git 图等类型各画一份文档。
+- MarsDawn 没有 AI 模型，不会帮你写图。[流程图模板](/zh-hans/templates/flowchart/)附有一段提示词，可以交给你自己的 agent。
+
+## 接下来
+
+- 从一张已经能画出来的图开始：[流程图模板](/zh-hans/templates/flowchart/)。
+- 导出：[导出 PDF](/zh-hans/pdf/)；从脚本导出，请看[命令行工具](/zh-hans/cli/)。
+- 不确定怎么打开文件？请看[Mac 上怎么打开 md 文件](/zh-hans/view-markdown-on-mac/)。
+
+## 在你的 Mac 上试试
+
+MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。
+
+[立即下载试用](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -8040,7 +8304,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/
 
 # Markdown 流程图模板
 
-一张 Mermaid 流程图，下方把每个步骤写清楚，图和文字可以互相对照。去掉一个步骤，再请 agent 把其他部分改好。
+一张 Mermaid 流程图，下方把每个步骤写清楚，图和文字可以互相对照。去掉一个步骤，再请 agent 把其他部分改好。图在 Mac 上怎么画出来：[在 Mac 上预览 Mermaid](/zh-hans/mermaid-preview-mac/)。
 
 ## 模板
 
@@ -8190,10 +8454,10 @@ Source: https://marsdawn.southern-light.dev/ja/
 ## エージェントが書いた Markdown を読む。
 
 1. **エージェントが書く。**あなたのコーディングエージェントやライティングアシスタントが Markdown の下書きを作ります。README、仕様書、メモなど。
-2. **MarsDawn で確認する。**ファイルを開き、Mermaid 図やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。
+2. **MarsDawn で確認する。**ファイルを開き、[Mermaid 図](/ja/mermaid-preview-mac/)やハイライトされたコードとともにレンダリングされたページを、ソースの隣で読みます。
 3. **エージェントが修正する。**変更を依頼します。修正されたファイルを開き、同じように読みます。
 
-[エージェントが返してくるものをどう確認するか](/ja/reading-agent-output/)。
+[エージェントが返してくるものをどう確認するか](/ja/reading-agent-output/) · [Mac で .md ファイルを開く方法](/ja/view-markdown-on-mac/)
 
 ## 今すぐできること
 
@@ -8346,7 +8610,7 @@ PDF はどんなアプリでも開け、Markdown の知識も要らないので�
 
 `mermaid` と指定したコードブロックは図として描画されます。図に誤りがあると、プレビューにはそのソースとエラーが下に表示され、メッセージをクリックするとその行に移動します。
 
-[フローチャートテンプレート](/ja/templates/flowchart/)
+[Mac で Mermaid をプレビューする](/ja/mermaid-preview-mac/)
 
 ### ハイライトされたコード
 
@@ -8770,13 +9034,21 @@ MarsDawn がデータの扱い方を変える場合、そのバージョンが�
 
 ---
 
-## Mac で Markdown を見る
+## Mac で .md ファイルを開く方法
 
 Source: https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/
 
-# Mac で Markdown ファイルを見る方法。
+# Mac で .md ファイルを開く方法。
+
+ダブルクリックすれば開きます。テキストエディタで開いて、見出しや太字ではなく `#` や `**` が見えても、ファイルは壊れていません。`.md` ファイルはプレーンテキストで、そのエディタは文字をそのまま表示しているだけです。Markdown をレンダリングするアプリ（たとえば MarsDawn）で開き、そのアプリを標準に設定すれば、以後すべての `.md` ファイルがそこで開きます。
 
 `.md` ファイルはプレーンテキストです。見出し、太字、表、図は記号で書かれています。見出しには `#`、太字は `**` で囲む、表はパイプで区切る、図は `mermaid` コードブロックといった具合です。プレーンテキストエディタで開くと、これらの記号がそのまま見えます。作者の意図どおりにページを読むには、何かがそれをレンダリングする必要があります。
+
+## Mac で .md ファイルを開く
+
+1. **ファイルをダブルクリックする。** Mac が `.md` に設定しているアプリで開きます。Markdown のアプリがなければ、たいていプレーンテキストエディタで、整ったページではなく記号が見えます。
+2. **アプリを自分で選ぶ。** Control キーを押しながらファイルをクリックし、「このアプリケーションで開く」からアプリを選びます。または「ファイル ▸ 情報を見る」（⌘I）を選び、「このアプリケーションで開く:」でアプリを選んで「すべてを変更…」をクリックすると、同じ種類のファイルがすべてそのアプリで開きます。MarsDawn は `.md`、`.markdown`、`.mdown`、`.mkd`、`.mkdn` のファイルを開けます。
+3. **開かずにプレビューする。** Finder でファイルを選んでスペースキーを押します。MarsDawn をインストールしていれば、クイックルックにレンダリングされたページが表示され、図も含まれます。
 
 ## MarsDawn で読む
 
@@ -8787,8 +9059,7 @@ MarsDawn は Mac 向けの Markdown エディタです。Mac App Store から無
 `.md` ファイルを開くと、ソースの隣でレンダリングされたページを読めます。
 
 - 入力すると同時にプレビューが更新され、2つのペインは一緒にスクロールします。
-- Mermaid のフローチャートとシーケンス図がプレビューに描画され、コードブロックはハイライトされます。
-- Finder で Markdown ファイルを選んでスペースキーを押せば、図も含めてクイックルックでプレビューできます。
+- [Mermaid](/ja/mermaid-preview-mac/) のフローチャートとシーケンス図がプレビューに描画され、コードブロックはハイライトされます。
 - 何かを変更したいときは、ソースがすぐそこにあります。MarsDawn はビューアだけでなくエディタでもあります。
 
 もしそのファイルを AI エージェントが書いたなら、これはまさに MarsDawn が想定しているループです。エージェントが書き、あなたがレンダリングされたページを読み、エージェントが修正します。[ホームページ](/ja/)と、エージェントにファイルを開かせる方法については[AI エージェント向け marsdawn](/ja/cli/agents/)をご覧ください。その読み方がなぜ重要か、計画をどうレビューするかは、[「エージェントが返してくるものを読む」](/ja/reading-agent-output/)と[「エージェントの計画を 5 分でレビューする」](/ja/reviewing-agent-plans/)にあります。
@@ -8805,10 +9076,91 @@ open notes.pdf
 
 `export` は Markdown ファイルの隣に `notes.pdf` を書き出し、`open` はそれをあなたの PDF ビューアで表示します。macOS 15 以降が必要です。実際に書き出したページを使った解説は、[Markdown から PDF へ](/ja/markdown-to-pdf/)にあります。
 
+## よくある質問
+
+### .md ファイルとは？
+
+`.md` ファイルは、Markdown で書かれたプレーンテキストのファイルです。Markdown は簡単な文字でテキストに印を付ける書き方で、`#` は見出し、`**` で囲むと太字、縦線は表のセルになります。拡張子 `.markdown`、`.mdown`、`.mkd`、`.mkdn` も同じものです。開発者は README やドキュメントに使い、AI エージェントも計画やレポートを `.md` ファイルで返してくることがよくあります。
+
+### .md ファイルがプレーンテキストで開き、# や ** だらけなのはなぜ？
+
+もともとプレーンテキストで、プレーンテキストエディタはそのまま表示するからです。ファイルに問題はありません。見出し、太字、表、図を見るには、Markdown をレンダリングするアプリで開いてください。MarsDawn では、レンダリングされたページがソースの隣に表示されます。
+
+### 開くと文字化けするのはなぜ？
+
+文字化けは、たいていファイルが UTF-8 以外の文字エンコーディングで保存されていて、開いたアプリが推測を誤ったために起こります。対処は、UTF-8 のコピーを保存することです。MarsDawn は UTF-8 ではないプレーンテキストファイルを読み取り専用で開き、ウインドウ上部のバーに読み込んだエンコーディングを表示します。そこにある「UTF-8 で別名保存…」、または「ファイル ▸ 別名で保存…」（⌥⇧⌘S）で、編集できる UTF-8 のコピーを書き出せます。
+
+### .md ファイルを PDF にできる？
+
+できます。MarsDawn で「ファイル ▸ PDF として書き出す…」（⌥⌘E）または「ファイル ▸ プリント…」を選ぶと、ページ分けされ、図が描画され、コードはハイライトされたまま、テーマのライトの配色で出力されます。アプリがなくても、無料の `marsdawn export` コマンドラインツールで同じ PDF を作れます：`marsdawn export notes.md`。[PDF 書き出し](/ja/pdf/)と[Markdown から PDF へ](/ja/markdown-to-pdf/)をご覧ください。
+
+### AI エージェントが書いた .md ファイルも開ける？
+
+はい、MarsDawn はそのために作られています。ファイルを開いて、レンダリングされたページをソースの隣で読みます。エージェントが修正したら、もう一度開きます。エージェントが `marsdawn open plan.md` を実行して、MarsDawn でファイルを開いてくれることもできます。[エージェントが返してくるものを読む](/ja/reading-agent-output/)をご覧ください。
+
 ## 次に
 
 - コマンドラインツールのすべてのオプション：[コマンドライン](/ja/cli/)。
 - MarsDawn ができないこと：[一覧はこちら](/ja/limits/)。
+- Markdown ファイルの中の図：[Mac で Mermaid をプレビューする](/ja/mermaid-preview-mac/)。
+
+---
+
+## Mac で Mermaid をプレビューする
+
+Source: https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/
+
+# Mac で Mermaid をプレビューする。
+
+Mermaid を使うと、Markdown ファイルの中に図をテキストで書けます。多くのエディタは、そのテキストを見せるだけです。MarsDawn は図を描画します。ソースの隣のプレビューで、Finder のクイックルックで、書き出した PDF の中で。
+
+## 図をテキストで書く
+
+図を、`mermaid` と指定したコードブロックに入れます：
+
+````
+```mermaid
+flowchart LR
+    Write[Markdown を書く] --> Preview[リアルタイムプレビュー]
+    Preview --> Export{共有しますか？}
+    Export -- PDF --> PDF[ファイル ▸ PDF として書き出す…]
+    Export -- プリント --> Print[ファイル ▸ プリント…]
+```
+````
+
+MarsDawn では、このブロックがフローチャートになります。「Markdown を書く」から「リアルタイムプレビュー」へ、そして「共有しますか？」の分岐から PDF とプリントの 2 つの道に分かれます。
+
+![夜明けテーマの分割表示：左に Markdown のソース、右にレンダリングされたページ。](/assets/screens/01-split-800.png)
+
+## 図が描画される場所
+
+- **プレビューで。** ファイルを開くと、図がソースの隣に表示されます（⌘2）。入力するたびにページが更新され、2 つのペインは一緒にスクロールします。
+- **クイックルックで。** Finder でファイルを選んでスペースキーを押すと、そこでも図が描画されます。
+- **PDF で。** 「ファイル ▸ PDF として書き出す…」と「ファイル ▸ プリント…」は、図をページに描き込みます。ページの区切りは、図を途中で分断しないようにします。PDF はテーマのライトの配色です。
+- **コマンドラインで。** 無料の `marsdawn export` ツールは、アプリなしで同じ図を PDF に描画します。[コマンドライン](/ja/cli/)をご覧ください。
+- **外観に合わせて。** プレビューの外観モードの設定は図にも適用されるので、図はライトかダークに従います。
+
+## 図に誤りがあるとき
+
+Mermaid が図を描画できないとき、プレビューにはその図のソースが表示され、その下にエラーメッセージ全文が出ます。エラーが行を示している場合は、メッセージをクリックするとエディタがその行へ移動します。`marsdawn export --json` は描画に失敗した図を `diagramErrors` で報告するので、スクリプトやエージェントは図が描画されなかったことを知ることができます。
+
+## 知っておくこと
+
+- 編集するのは Mermaid のテキストです。図のビジュアルエディタはなく、プレビューで四角形をドラッグすることもできません。
+- どの種類の図が描画できるかは、アプリに入っている Mermaid のバージョンによります。MarsDawn 1.1.0 には Mermaid 12.0.0 が入っています。kit の書き出しテストは、フローチャート、シーケンス図、クラス図、状態遷移図、ER 図、ガントチャート、円グラフ、マインドマップ、ジャーニー図、タイムライン、git グラフなどの文書を描画します。
+- MarsDawn には AI モデルがないので、図を書いてはくれません。[フローチャートテンプレート](/ja/templates/flowchart/)には、自分のエージェントに渡せるプロンプトがあります。
+
+## 次に
+
+- すでに描画できる図から始める：[フローチャートテンプレート](/ja/templates/flowchart/)。
+- 書き出す：[PDF 書き出し](/ja/pdf/)。スクリプトから書き出すなら[コマンドライン](/ja/cli/)。
+- ファイルの開き方がわからない？[Mac で .md ファイルを開く方法](/ja/view-markdown-on-mac/)をご覧ください。
+
+## Mac で試す
+
+MarsDawn は無料でダウンロードできます。14 日間すべての機能を試したあと、USD 4.99 の一度きりの購入でロックを解除できます。サブスクリプションもアカウントもありません。macOS 26 以降が必要です。
+
+[今すぐダウンロードして試す](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -10773,7 +11125,7 @@ Source: https://marsdawn.southern-light.dev/ja/templates/flowchart/
 
 # Markdown フローチャートテンプレート
 
-Mermaid のフローチャートと、その下に書き出した各ステップ。図と文章を突き合わせて確かめられます。ステップをひとつ外したら、残りの修正をエージェントに頼みます。
+Mermaid のフローチャートと、その下に書き出した各ステップ。図と文章を突き合わせて確かめられます。ステップをひとつ外したら、残りの修正をエージェントに頼みます。図が Mac でどう描画されるか：[Mac で Mermaid をプレビューする](/ja/mermaid-preview-mac/)。
 
 ## テンプレート
 
@@ -10923,10 +11275,10 @@ Die Seite zeigt ein bedienbares MarsDawn-Fenster mit einem Ausschnitt aus der Ei
 ## Lies, was dein Agent geschrieben hat.
 
 1. **Der Agent schreibt.** Dein Coding-Agent oder Schreibassistent entwirft das Markdown: ein README, eine Spezifikation, ein paar Notizen.
-2. **Du prüfst in MarsDawn.** Öffne die Datei und lies sie gerendert, mit Mermaid-Diagrammen und hervorgehobenem Code, neben dem Quelltext.
+2. **Du prüfst in MarsDawn.** Öffne die Datei und lies sie gerendert, mit [Mermaid-Diagrammen](/de/mermaid-preview-mac/) und hervorgehobenem Code, neben dem Quelltext.
 3. **Der Agent überarbeitet.** Bitte um Änderungen. Öffne die überarbeitete Datei und lies sie auf dieselbe Weise.
 
-[So prüfst du, was dein Agent zurückgibt](/de/reading-agent-output/).
+[So prüfst du, was dein Agent zurückgibt](/de/reading-agent-output/) · [So öffnest du .md-Dateien auf dem Mac](/de/view-markdown-on-mac/)
 
 ## Gleich loslegen
 
@@ -11079,7 +11431,7 @@ Die App gibt es auf Englisch, traditionellem Chinesisch, vereinfachtem Chinesisc
 
 Ein mit `mermaid` markierter Codeblock wird als Diagramm gezeichnet. Enthält das Diagramm einen Fehler, zeigt die Vorschau seinen Quelltext mit dem Fehler darunter, und ein Klick auf die Meldung springt zu dieser Zeile.
 
-[Flussdiagramm-Vorlage](/de/templates/flowchart/)
+[Mermaid-Vorschau auf dem Mac](/de/mermaid-preview-mac/)
 
 ### Hervorgehobener Code
 
@@ -11503,13 +11855,21 @@ Fragen zum Datenschutz: [support@southern-light.dev](mailto:support@southern-lig
 
 ---
 
-## Markdown auf dem Mac ansehen
+## So öffnest du .md-Dateien auf dem Mac
 
 Source: https://marsdawn.southern-light.dev/de/view-markdown-on-mac/
 
-# Eine Markdown-Datei auf dem Mac ansehen.
+# So öffnest du .md-Dateien auf dem Mac.
+
+Doppelklick genügt. Wenn dein Mac die Datei in einem Texteditor öffnet und du `#` und `**` statt Überschriften und Fettdruck siehst, ist die Datei in Ordnung: Eine `.md`-Datei ist reiner Text, und der Editor zeigt den Text so, wie er ist. Öffne sie in einer App, die Markdown rendert, zum Beispiel MarsDawn, und mache diese App zum Standard, damit jede `.md`-Datei dort aufgeht.
 
 Eine `.md`-Datei ist reiner Text. Überschriften, fette Wörter, Tabellen und Diagramme stehen darin als Zeichen: `#` für eine Überschrift, `**` um fetten Text, senkrechte Striche für eine Tabelle, ein `mermaid`-Codeblock für ein Diagramm. In einem einfachen Texteditor liest du die Zeichen. Um die Seite so zu lesen, wie sie gemeint ist, muss sie jemand rendern.
+
+## Eine .md-Datei auf dem Mac öffnen
+
+1. **Doppelklicke die Datei.** Sie öffnet sich in der App, die dein Mac für `.md`-Dateien eingestellt hat. Ohne Markdown-App ist das oft ein einfacher Texteditor, der die Zeichen statt der Seite zeigt.
+2. **Wähle die App selbst.** Klicke die Datei bei gedrückter Control-Taste an und wähle „Öffnen mit“, dann die App. Oder wähle „Ablage ▸ Informationen“ (⌘I), wähle unter „Öffnen mit:“ eine App und klicke auf „Alle ändern …“, damit jede Datei dieser Art dort aufgeht. MarsDawn öffnet `.md`-, `.markdown`-, `.mdown`-, `.mkd`- und `.mkdn`-Dateien.
+3. **Ansehen, ohne zu öffnen.** Wähle die Datei im Finder aus und drücke die Leertaste. Mit installiertem MarsDawn zeigt die Übersicht die gerenderte Seite, Diagramme inklusive.
 
 ## In MarsDawn lesen
 
@@ -11520,8 +11880,7 @@ MarsDawn ist ein Markdown-Editor für den Mac. Du kannst es kostenlos aus dem Ma
 Öffne eine `.md`-Datei und lies die gerenderte Seite neben dem Quelltext:
 
 - Die Vorschau aktualisiert sich beim Tippen, und beide Bereiche scrollen gemeinsam.
-- Mermaid-Flussdiagramme und Sequenzdiagramme werden in der Vorschau gezeichnet, Codeblöcke werden hervorgehoben.
-- Drücke im Finder die Leertaste auf einer Markdown-Datei, um eine Übersicht zu sehen, Diagramme inklusive.
+- [Mermaid](/de/mermaid-preview-mac/)-Flussdiagramme und Sequenzdiagramme werden in der Vorschau gezeichnet, Codeblöcke werden hervorgehoben.
 - Wenn du etwas ändern willst, ist der Quelltext direkt da. MarsDawn ist ein Editor, nicht nur ein Viewer.
 
 Wenn ein KI-Agent die Datei geschrieben hat, ist das genau der Ablauf, für den MarsDawn gebaut ist: Der Agent schreibt, du liest es gerendert, und er überarbeitet. Siehe [die Startseite](/de/) und [marsdawn für Agenten](/de/cli/agents/), wenn ein Agent Dateien für dich öffnen soll. Warum dieses Lesen wichtig ist und wie du einen Plan prüfst, steht unter [Lesen, was dein Agent zurückgibt](/de/reading-agent-output/) und [Einen Agentenplan in fünf Minuten prüfen](/de/reviewing-agent-plans/).
@@ -11538,11 +11897,92 @@ open notes.pdf
 
 `export` schreibt `notes.pdf` neben die Markdown-Datei, und `open` zeigt sie in deinem PDF-Programm an. Erforderlich ist macOS 15 oder neuer. Die Schritt-für-Schritt-Anleitung mit einer echten exportierten Seite findest du unter [Markdown in PDF](/de/markdown-to-pdf/).
 
+## Fragen
+
+### Was ist eine .md-Datei?
+
+Eine `.md`-Datei ist eine Nur-Text-Datei, die in Markdown geschrieben ist, einer Art, Text mit einfachen Zeichen auszuzeichnen: `#` für eine Überschrift, `**` um Fettdruck, ein senkrechter Strich für eine Tabellenzelle. Die Endungen `.markdown`, `.mdown`, `.mkd` und `.mkdn` bedeuten dasselbe. Entwickler nutzen es für READMEs und Dokumentation, und KI-Agenten liefern ihre Pläne und Berichte oft als `.md`-Dateien zurück.
+
+### Warum öffnet sich meine .md-Datei als reiner Text mit # und **?
+
+Weil sie reiner Text ist und ein Texteditor sie so zeigt, wie sie ist. An der Datei ist nichts kaputt. Um Überschriften, Fettdruck, Tabellen und Diagramme zu sehen, öffne sie in einer App, die Markdown rendert. In MarsDawn steht die gerenderte Seite neben dem Quelltext.
+
+### Warum öffnet sie sich mit unlesbaren Zeichen?
+
+Unlesbare Zeichen bedeuten meist, dass die Datei in einer anderen Textkodierung als UTF-8 gesichert wurde und die App, die sie geöffnet hat, falsch geraten hat. Die Lösung ist, eine UTF-8-Kopie zu sichern. MarsDawn öffnet eine Nur-Text-Datei, die nicht UTF-8 ist, schreibgeschützt, nennt in einer Leiste oben im Fenster die Kodierung, als die es sie gelesen hat, und bietet dort „Als UTF-8 sichern …“ oder „Ablage ▸ Sichern unter …“ (⌥⇧⌘S) an, um eine UTF-8-Kopie zu schreiben, die du bearbeiten kannst.
+
+### Kann ich eine .md-Datei in ein PDF umwandeln?
+
+Ja. Wähle in MarsDawn „Ablage ▸ Als PDF exportieren …“ (⌥⌘E) oder „Ablage ▸ Drucken …“; die Seiten werden umbrochen, Diagramme sind eingezeichnet und Code ist hervorgehoben, in den hellen Farben des Themas. Ohne die App erzeugt das kostenlose Befehlszeilenwerkzeug `marsdawn export` dasselbe PDF: `marsdawn export notes.md`. Siehe [PDF-Export](/de/pdf/) und [Markdown zu PDF](/de/markdown-to-pdf/).
+
+### Kann ich die .md-Dateien öffnen, die mein KI-Agent geschrieben hat?
+
+Ja, dafür ist MarsDawn gebaut. Öffne die Datei und lies die gerenderte Seite neben ihrem Quelltext; wenn der Agent sie überarbeitet, öffne sie noch einmal. Ein Agent kann auch `marsdawn open plan.md` ausführen, um die Datei für dich in MarsDawn zu öffnen. Siehe [Lesen, was dein Agent zurückgibt](/de/reading-agent-output/).
+
 ## Weiter
 
 - Alle Optionen des Befehlszeilenwerkzeugs: [Befehlszeile](/de/cli/).
 - Was MarsDawn nicht kann: [die Liste](/de/limits/).
 - Markdown stattdessen in VS Code, im Browser oder in Claude Desktop lesen: [der Vergleich](/de/vs/markdown-preview-tools/).
+- Diagramme in einer Markdown-Datei: [Mermaid-Vorschau auf dem Mac](/de/mermaid-preview-mac/).
+
+---
+
+## Mermaid-Vorschau auf dem Mac
+
+Source: https://marsdawn.southern-light.dev/de/mermaid-preview-mac/
+
+# Mermaid-Vorschau auf dem Mac.
+
+Mit Mermaid schreibst du ein Diagramm als Text in eine Markdown-Datei. Die meisten Editoren zeigen dir den Text. MarsDawn zeichnet das Diagramm: in der Vorschau neben dem Quelltext, in der Übersicht im Finder und im PDF, das du exportierst.
+
+## Das Diagramm als Text schreiben
+
+Lege das Diagramm in einen Codeblock, der mit `mermaid` markiert ist:
+
+````
+```mermaid
+flowchart LR
+    Write[Markdown schreiben] --> Preview[Live-Vorschau]
+    Preview --> Export{Teilen?}
+    Export -- PDF --> PDF[Ablage ▸ Als PDF exportieren …]
+    Export -- Drucken --> Print[Ablage ▸ Drucken …]
+```
+````
+
+In MarsDawn wird dieser Block zu einem Flussdiagramm: Markdown schreiben, dann Live-Vorschau, dann die Frage „Teilen?“, die zu PDF oder Drucken führt.
+
+![Das Thema Morgenrot in geteilter Ansicht: links der Markdown-Quelltext, rechts die gerenderte Seite.](/assets/screens/01-split-800.png)
+
+## Wo das Diagramm gezeichnet wird
+
+- **In der Vorschau.** Öffne die Datei, und das Diagramm steht neben seinem Quelltext (⌘2). Die Seite aktualisiert sich beim Tippen, und beide Bereiche scrollen gemeinsam.
+- **In der Übersicht.** Wähle die Datei im Finder aus und drücke die Leertaste; auch dort werden Diagramme gezeichnet.
+- **Im PDF.** „Ablage ▸ Als PDF exportieren …“ und „Ablage ▸ Drucken …“ zeichnen das Diagramm in die Seite. Seitenumbrüche vermeiden es, ein Diagramm in der Mitte zu teilen. Das PDF verwendet die hellen Farben des Themas.
+- **Von der Befehlszeile.** Das kostenlose Werkzeug `marsdawn export` zeichnet dieselben Diagramme in ein PDF und braucht die App nicht. Siehe [Befehlszeile](/de/cli/).
+- **In deinem Thema.** Die Einstellung „Erscheinungsbild“ der Vorschau gilt auch für Diagramme, ein Diagramm folgt also hell oder dunkel.
+
+## Wenn das Diagramm einen Fehler hat
+
+Wenn Mermaid ein Diagramm nicht zeichnen kann, zeigt die Vorschau den Quelltext des Diagramms mit der vollständigen Fehlermeldung darunter. Nennt die Fehlermeldung eine Zeile, springt der Editor beim Klick auf die Meldung zu dieser Zeile. `marsdawn export --json` meldet fehlgeschlagene Diagramme in `diagramErrors`, sodass ein Skript oder ein Agent erkennt, dass ein Diagramm nicht gezeichnet wurde.
+
+## Was du wissen solltest
+
+- Du bearbeitest den Mermaid-Text. Es gibt keinen visuellen Diagrammeditor, und du kannst in der Vorschau keine Kästchen ziehen.
+- Welche Diagrammtypen gezeichnet werden, hängt von der Mermaid-Version in der App ab. MarsDawn 1.1.0 enthält Mermaid 12.0.0. Die Export-Tests des Kits rendern Dokumente unter anderem für Flussdiagramme, Sequenz-, Klassen-, Zustands- und Entity-Relationship-Diagramme, Gantt-Diagramme, Kreisdiagramme, Mindmaps, User Journeys, Zeitleisten und Git-Graphen.
+- MarsDawn hat kein KI-Modell und schreibt dir daher kein Diagramm. Die [Flussdiagramm-Vorlage](/de/templates/flowchart/) enthält einen Prompt, den du deinem eigenen Agenten geben kannst.
+
+## Weiter
+
+- Beginne mit einem Diagramm, das schon funktioniert: die [Flussdiagramm-Vorlage](/de/templates/flowchart/).
+- Exportiere es: [PDF-Export](/de/pdf/), oder aus einem Skript, [Befehlszeile](/de/cli/).
+- Unsicher, wie du die Datei öffnest? [So öffnest du .md-Dateien auf dem Mac](/de/view-markdown-on-mac/).
+
+## Probiere es auf deinem Mac aus
+
+MarsDawn ist kostenlos erhältlich. Teste alles 14 Tage lang und schalte es dann einmalig für 4,99 USD frei. Kein Abo, kein Konto. Es braucht macOS 26 oder neuer.
+
+[Jetzt laden und testen](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -13468,7 +13908,7 @@ Source: https://marsdawn.southern-light.dev/de/templates/flowchart/
 
 # Markdown-Vorlage für Flussdiagramme
 
-Ein Mermaid-Flussdiagramm, darunter die Schritte ausformuliert, damit sich Diagramm und Text gegenseitig prüfen lassen. Nimm einen Schritt heraus und bitte den Agenten, den Rest zu korrigieren.
+Ein Mermaid-Flussdiagramm, darunter die Schritte ausformuliert, damit sich Diagramm und Text gegenseitig prüfen lassen. Nimm einen Schritt heraus und bitte den Agenten, den Rest zu korrigieren. Wie das Diagramm auf dem Mac gezeichnet wird: [Mermaid-Vorschau auf dem Mac](/de/mermaid-preview-mac/).
 
 ## Die Vorlage
 
@@ -13618,10 +14058,10 @@ La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide
 ## Lisez ce que votre agent a écrit.
 
 1. **L’agent écrit.** Votre agent de code ou votre assistant d’écriture rédige le Markdown : un README, une spécification, des notes.
-2. **Vous relisez dans MarsDawn.** Ouvrez le fichier et lisez-le mis en forme, avec les diagrammes Mermaid et le code en couleur, à côté de la source.
+2. **Vous relisez dans MarsDawn.** Ouvrez le fichier et lisez-le mis en forme, avec les [diagrammes Mermaid](/fr/mermaid-preview-mac/) et le code en couleur, à côté de la source.
 3. **L’agent corrige.** Demandez des modifications. Ouvrez le fichier révisé et lisez-le de la même façon.
 
-[Comment relire ce que votre agent vous rend](/fr/reading-agent-output/).
+[Comment relire ce que votre agent vous rend](/fr/reading-agent-output/) · [Ouvrir un fichier .md sur Mac](/fr/view-markdown-on-mac/)
 
 ## À faire dès maintenant
 
@@ -13774,7 +14214,7 @@ L’app existe en anglais, chinois traditionnel, chinois simplifié, japonais, a
 
 Un bloc de code marqué `mermaid` est dessiné comme un diagramme. Si le diagramme contient une erreur, l’aperçu affiche sa source avec l’erreur en dessous, et un clic sur le message mène à cette ligne.
 
-[Modèle d’organigramme](/fr/templates/flowchart/)
+[Aperçu Mermaid sur Mac](/fr/mermaid-preview-mac/)
 
 ### Code coloré
 
@@ -14198,13 +14638,21 @@ Questions relatives à la confidentialité : [support@southern-light.dev](mailto
 
 ---
 
-## Afficher du Markdown sur Mac
+## Ouvrir un fichier .md sur Mac
 
 Source: https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/
 
-# Comment afficher un fichier Markdown sur Mac.
+# Comment ouvrir un fichier .md sur Mac.
+
+Double-cliquez dessus. Si votre Mac l’ouvre dans un éditeur de texte et que vous voyez `#` et `**` au lieu de titres et de gras, le fichier n’a rien : un fichier `.md` est du texte brut, et cet éditeur affiche le texte tel quel. Ouvrez-le dans une app qui fait le rendu du Markdown, comme MarsDawn, et faites-en l’app par défaut pour que tous les fichiers `.md` s’y ouvrent.
 
 Un fichier `.md` est du texte brut. Les titres, les mots en gras, les tableaux et les diagrammes y sont écrits sous forme de marques : `#` pour un titre, `**` autour du gras, des barres verticales pour un tableau, un bloc de code `mermaid` pour un diagramme. Ouvrez-le dans un éditeur de texte brut et vous lisez les marques. Pour lire la page telle que l’auteur l’a voulue, il faut qu’un outil en fasse le rendu.
+
+## Ouvrir un fichier .md sur votre Mac
+
+1. **Double-cliquez sur le fichier.** Il s’ouvre dans l’app que votre Mac a définie pour les fichiers `.md`. Sans app Markdown, c’est souvent un éditeur de texte brut, qui affiche les marques au lieu de la page.
+2. **Choisissez l’app vous-même.** Faites un clic en maintenant la touche Contrôle enfoncée sur le fichier et choisissez « Ouvrir avec », puis l’app. Ou choisissez « Fichier ▸ Lire les informations » (⌘I), choisissez une app sous « Ouvrir avec : », puis cliquez sur « Tout modifier… » pour que tous les fichiers de ce type s’y ouvrent. MarsDawn ouvre les fichiers `.md`, `.markdown`, `.mdown`, `.mkd` et `.mkdn`.
+3. **Afficher sans ouvrir.** Sélectionnez le fichier dans le Finder et appuyez sur la barre d’espace. Avec MarsDawn installé, Coup d’œil affiche la page rendue, diagrammes compris.
 
 ## Le lire dans MarsDawn
 
@@ -14215,8 +14663,7 @@ MarsDawn est un éditeur Markdown pour Mac. Il se télécharge gratuitement sur 
 Ouvrez un fichier `.md` et lisez la page rendue à côté de la source :
 
 - L’aperçu se met à jour pendant la saisie, et les deux volets défilent ensemble.
-- Les organigrammes et diagrammes de séquence Mermaid sont dessinés dans l’aperçu, et les blocs de code sont colorés.
-- Dans le Finder, appuyez sur Espace sur un fichier Markdown pour un aperçu Coup d’œil, diagrammes compris.
+- Les organigrammes et les diagrammes de séquence [Mermaid](/fr/mermaid-preview-mac/) sont dessinés dans l’aperçu, et les blocs de code sont colorés.
 - Quand vous voulez modifier quelque chose, la source est juste là. MarsDawn est un éditeur, pas seulement une visionneuse.
 
 Si un agent IA a rédigé le fichier, c’est la boucle pour laquelle MarsDawn est conçu : l’agent écrit, vous lisez le rendu, et il révise. Consultez [la page d’accueil](/fr/), ainsi que [marsdawn pour les agents](/fr/cli/agents/) pour laisser un agent ouvrir des fichiers à votre place. Pour comprendre pourquoi cette lecture compte et comment relire un plan, consultez [Lire ce que votre agent vous rend](/fr/reading-agent-output/) et [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/).
@@ -14233,11 +14680,92 @@ open notes.pdf
 
 `export` écrit `notes.pdf` à côté du fichier Markdown, et `open` l’affiche dans votre lecteur PDF. macOS 15 ou version ultérieure est requis. Le pas-à-pas, avec une vraie page exportée, se trouve sur [Markdown en PDF](/fr/markdown-to-pdf/).
 
+## Questions
+
+### Qu’est-ce qu’un fichier .md ?
+
+Un fichier `.md` est un fichier de texte brut écrit en Markdown, une façon de mettre en forme du texte avec des caractères simples : `#` pour un titre, `**` autour du gras, une barre verticale pour une cellule de tableau. Les extensions `.markdown`, `.mdown`, `.mkd` et `.mkdn` veulent dire la même chose. Les développeurs s’en servent pour les README et la documentation, et les agents IA rendent souvent leurs plans et leurs rapports sous forme de fichiers `.md`.
+
+### Pourquoi mon fichier .md s’ouvre-t-il en texte brut, avec des # et des ** ?
+
+Parce que c’est du texte brut, et qu’un éditeur de texte brut l’affiche tel quel. Le fichier n’a aucun problème. Pour voir les titres, le gras, les tableaux et les diagrammes, ouvrez-le dans une app qui fait le rendu du Markdown. Dans MarsDawn, la page rendue se trouve à côté de la source.
+
+### Pourquoi s’ouvre-t-il avec des caractères illisibles ?
+
+Des caractères illisibles signifient généralement que le fichier a été enregistré dans un encodage autre que l’UTF-8 et que l’app qui l’a ouvert s’est trompée. La solution est d’enregistrer une copie en UTF-8. MarsDawn ouvre en lecture seule un fichier de texte brut qui n’est pas en UTF-8, indique dans une barre en haut de la fenêtre l’encodage dans lequel il l’a lu, et propose là « Enregistrer en UTF-8… » ou « Fichier ▸ Enregistrer sous… » (⌥⇧⌘S) pour écrire une copie en UTF-8 que vous pouvez modifier.
+
+### Puis-je transformer un fichier .md en PDF ?
+
+Oui. Dans MarsDawn, choisissez « Fichier ▸ Exporter au format PDF… » (⌥⌘E) ou « Fichier ▸ Imprimer… » ; les pages sont paginées, les diagrammes sont dessinés et le code est coloré, dans les couleurs claires du thème. Sans l’app, l’outil en ligne de commande gratuit `marsdawn export` produit le même PDF : `marsdawn export notes.md`. Voir [Export PDF](/fr/pdf/) et [Markdown vers PDF](/fr/markdown-to-pdf/).
+
+### Puis-je ouvrir les fichiers .md que mon agent IA a écrits ?
+
+Oui, c’est pour cela que MarsDawn est conçu. Ouvrez le fichier et lisez la page rendue à côté de sa source ; quand l’agent le révise, ouvrez-le de nouveau. Un agent peut aussi exécuter `marsdawn open plan.md` pour ouvrir le fichier dans MarsDawn à votre place. Voir [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
+
 ## Pour aller plus loin
 
 - Toutes les options de l’outil en ligne de commande : [Ligne de commande](/fr/cli/).
 - Ce que MarsDawn ne fait pas : [la liste](/fr/limits/).
 - Lire du Markdown plutôt dans VS Code, un navigateur ou Claude Desktop : [la comparaison](/fr/vs/markdown-preview-tools/).
+- Les diagrammes dans un fichier Markdown : [Aperçu Mermaid sur Mac](/fr/mermaid-preview-mac/).
+
+---
+
+## Aperçu Mermaid sur Mac
+
+Source: https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/
+
+# Aperçu Mermaid sur Mac.
+
+Mermaid permet d’écrire un diagramme sous forme de texte dans un fichier Markdown. La plupart des éditeurs vous montrent le texte. MarsDawn dessine le diagramme : dans l’aperçu à côté de la source, dans Coup d’œil dans le Finder, et dans le PDF que vous exportez.
+
+## Écrire le diagramme sous forme de texte
+
+Placez le diagramme dans un bloc de code marqué `mermaid` :
+
+````
+```mermaid
+flowchart LR
+    Write[Écrire en Markdown] --> Preview[Aperçu en direct]
+    Preview --> Export{Partager ?}
+    Export -- PDF --> PDF[Fichier ▸ Exporter au format PDF…]
+    Export -- Imprimer --> Print[Fichier ▸ Imprimer…]
+```
+````
+
+Dans MarsDawn, ce bloc devient un organigramme : Écrire en Markdown, puis Aperçu en direct, puis un choix Partager ? qui mène à PDF ou à Imprimer.
+
+![Le thème Aube en vue partagée : la source Markdown à gauche, la page rendue à droite.](/assets/screens/01-split-800.png)
+
+## Où le diagramme est dessiné
+
+- **Dans l’aperçu.** Ouvrez le fichier et le diagramme se trouve à côté de sa source (⌘2). La page se met à jour pendant la saisie, et les deux volets défilent ensemble.
+- **Dans Coup d’œil.** Sélectionnez le fichier dans le Finder et appuyez sur la barre d’espace ; les diagrammes y sont dessinés aussi.
+- **Dans le PDF.** « Fichier ▸ Exporter au format PDF… » et « Fichier ▸ Imprimer… » dessinent le diagramme dans la page. Les sauts de page évitent de couper un diagramme en deux. Le PDF utilise les couleurs claires du thème.
+- **En ligne de commande.** L’outil gratuit `marsdawn export` dessine les mêmes diagrammes dans un PDF, sans avoir besoin de l’app. Voir [Ligne de commande](/fr/cli/).
+- **Dans votre thème.** Le réglage Apparence de l’aperçu s’applique aussi aux diagrammes, un diagramme suit donc le clair ou le sombre.
+
+## Quand le diagramme contient une erreur
+
+Si Mermaid ne peut pas dessiner un diagramme, l’aperçu affiche la source du diagramme avec le message d’erreur complet en dessous. Quand l’erreur indique une ligne, cliquez sur le message et l’éditeur saute à cette ligne. `marsdawn export --json` signale les diagrammes en échec dans `diagramErrors`, ce qui permet à un script ou à un agent de savoir qu’un diagramme n’a pas été dessiné.
+
+## À savoir
+
+- Vous modifiez le texte Mermaid. Il n’y a pas d’éditeur visuel de diagrammes, et vous ne pouvez pas déplacer de cases dans l’aperçu.
+- Les types de diagrammes qui s’affichent dépendent de la version de Mermaid intégrée à l’app. MarsDawn 1.1.0 inclut Mermaid 12.0.0. Les tests d’export du kit rendent des documents pour les organigrammes, les diagrammes de séquence, de classes, d’états, entité-relation, de Gantt, les camemberts, les cartes mentales, les parcours utilisateur, les frises chronologiques et les graphes git, entre autres.
+- MarsDawn n’a pas de modèle d’IA, il n’écrit donc pas de diagramme à votre place. Le [modèle d’organigramme](/fr/templates/flowchart/) contient un prompt que vous pouvez donner à votre propre agent.
+
+## Pour aller plus loin
+
+- Partez d’un diagramme qui fonctionne déjà : le [modèle d’organigramme](/fr/templates/flowchart/).
+- Exportez-le : [Export PDF](/fr/pdf/), ou depuis un script, [Ligne de commande](/fr/cli/).
+- Vous ne savez pas comment ouvrir le fichier ? [Ouvrir un fichier .md sur Mac](/fr/view-markdown-on-mac/).
+
+## Essayez-le sur votre Mac
+
+MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte. macOS 26 ou version ultérieure est requis.
+
+[Télécharger et essayer](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -16163,7 +16691,7 @@ Source: https://marsdawn.southern-light.dev/fr/templates/flowchart/
 
 # Modèle d’organigramme en Markdown
 
-Un organigramme Mermaid avec les étapes détaillées en dessous, pour que le diagramme et le texte puissent se vérifier l’un l’autre. Retirez une étape, et demandez à l’agent de corriger le reste.
+Un organigramme Mermaid avec les étapes détaillées en dessous, pour que le diagramme et le texte puissent se vérifier l’un l’autre. Retirez une étape, et demandez à l’agent de corriger le reste. Comment le diagramme est dessiné sur Mac : [Aperçu Mermaid sur Mac](/fr/mermaid-preview-mac/).
 
 ## Le modèle
 
@@ -16313,10 +16841,10 @@ La página muestra una ventana de MarsDawn interactiva que presenta un fragmento
 ## Lee lo que escribió tu agente.
 
 1. **El agente escribe.** Tu agente de programación o tu asistente de escritura redacta el Markdown: un README, una especificación, unas notas.
-2. **Tú lo revisas en MarsDawn.** Abre el archivo y léelo ya renderizado, con diagramas Mermaid y código resaltado, junto al código fuente.
+2. **Tú lo revisas en MarsDawn.** Abre el archivo y léelo ya renderizado, con [diagramas Mermaid](/es/mermaid-preview-mac/) y código resaltado, junto al código fuente.
 3. **El agente corrige.** Pide cambios. Abre el archivo corregido y léelo de la misma manera.
 
-[Cómo revisar lo que te devuelve tu agente](/es/reading-agent-output/).
+[Cómo revisar lo que te devuelve tu agente](/es/reading-agent-output/) · [Cómo abrir archivos .md en Mac](/es/view-markdown-on-mac/)
 
 ## Hazlo ahora
 
@@ -16469,7 +16997,7 @@ La app está en inglés, chino tradicional, chino simplificado, japonés, alemá
 
 Un bloque de código marcado como `mermaid` se dibuja como un diagrama. Si el diagrama tiene un error, la vista previa muestra su código con el error debajo, y al hacer clic en el mensaje se salta a esa línea.
 
-[Plantilla de diagrama de flujo](/es/templates/flowchart/)
+[Vista previa de Mermaid en Mac](/es/mermaid-preview-mac/)
 
 ### Código resaltado
 
@@ -16893,13 +17421,21 @@ Preguntas sobre privacidad: [support@southern-light.dev](mailto:support@southern
 
 ---
 
-## Ver Markdown en una Mac
+## Cómo abrir archivos .md en Mac
 
 Source: https://marsdawn.southern-light.dev/es/view-markdown-on-mac/
 
-# Cómo ver un archivo Markdown en Mac.
+# Cómo abrir archivos .md en Mac.
+
+Haz doble clic en él. Si tu Mac lo abre en un editor de texto y ves `#` y `**` en lugar de títulos y negrita, el archivo está bien: un archivo `.md` es texto plano, y ese editor muestra el texto tal cual. Ábrelo en una app que renderice Markdown, como MarsDawn, y haz de esa app la predeterminada para que todos los archivos `.md` se abran allí.
 
 Un archivo `.md` es texto plano. Los títulos, las palabras en negrita, las tablas y los diagramas están escritos como marcas: `#` para un título, `**` alrededor de la negrita, barras verticales para una tabla, un bloque de código `mermaid` para un diagrama. Si lo abres en un editor de texto plano, lees las marcas. Para leer la página como la pensó su autor, algo tiene que renderizarla.
+
+## Abrir un archivo .md en tu Mac
+
+1. **Haz doble clic en el archivo.** Se abre en la app que tu Mac tiene asignada a los archivos `.md`. Sin una app de Markdown, suele ser un editor de texto plano, que muestra las marcas en lugar de la página.
+2. **Elige tú la app.** Haz clic en el archivo mientras mantienes pulsada la tecla Control y elige “Abrir con”, y luego la app. O elige “Archivo ▸ Obtener información” (⌘I), elige una app en “Abrir con:” y haz clic en “Cambiar todo…” para que todos los archivos de este tipo se abran allí. MarsDawn abre archivos `.md`, `.markdown`, `.mdown`, `.mkd` y `.mkdn`.
+3. **Ver sin abrir.** Selecciona el archivo en el Finder y pulsa la barra espaciadora. Con MarsDawn instalado, Vista rápida muestra la página renderizada, con los diagramas incluidos.
 
 ## Léelo en MarsDawn
 
@@ -16910,8 +17446,7 @@ MarsDawn es un editor de Markdown para Mac. Se descarga gratis desde el Mac App 
 Abre un archivo `.md` y lee la página renderizada junto al código fuente:
 
 - La vista previa se actualiza mientras escribes, y los dos paneles se desplazan juntos.
-- Los diagramas de flujo y de secuencia de Mermaid se dibujan en la vista previa, y los bloques de código se resaltan.
-- En el Finder, presiona la barra espaciadora sobre un archivo Markdown para verlo con Vista rápida, diagramas incluidos.
+- Los diagramas de flujo y de secuencia de [Mermaid](/es/mermaid-preview-mac/) se dibujan en la vista previa, y los bloques de código se resaltan.
 - Cuando quieras cambiar algo, el código fuente está ahí mismo. MarsDawn es un editor, no solo un visor.
 
 Si un agente de IA escribió el archivo, este es el ciclo para el que está hecho MarsDawn: el agente escribe, tú lo lees renderizado y el agente lo corrige. Consulta [la página de inicio](/es/) y [marsdawn para agentes](/es/cli/agents/) si quieres que un agente abra archivos por ti. Para saber por qué importa esa lectura y cómo revisar un plan, consulta [Leer lo que te devuelve tu agente](/es/reading-agent-output/) y [Revisar el plan de un agente en cinco minutos](/es/reviewing-agent-plans/).
@@ -16928,11 +17463,92 @@ open notes.pdf
 
 `export` escribe `notes.pdf` junto al archivo Markdown, y `open` lo muestra en tu visor de PDF. Requiere macOS 15 o posterior. La guía paso a paso, con una página exportada real, está en [Markdown a PDF](/es/markdown-to-pdf/).
 
+## Preguntas
+
+### ¿Qué es un archivo .md?
+
+Un archivo `.md` es un archivo de texto plano escrito en Markdown, una forma de marcar el texto con caracteres sencillos: `#` para un título, `**` alrededor de la negrita, una barra vertical para una celda de tabla. Las extensiones `.markdown`, `.mdown`, `.mkd` y `.mkdn` significan lo mismo. Los desarrolladores lo usan para los README y la documentación, y los agentes de IA suelen devolver sus planes e informes como archivos `.md`.
+
+### ¿Por qué mi archivo .md se abre como texto plano, con marcas # y **?
+
+Porque es texto plano, y un editor de texto plano lo muestra tal cual. El archivo no tiene ningún problema. Para ver títulos, negrita, tablas y diagramas, ábrelo en una app que renderice Markdown. En MarsDawn, la página renderizada está junto al código fuente.
+
+### ¿Por qué se abre con caracteres ilegibles?
+
+Los caracteres ilegibles suelen significar que el archivo se guardó con una codificación de texto distinta de UTF-8 y que la app que lo abrió acertó mal. La solución es guardar una copia en UTF-8. MarsDawn abre en solo lectura un archivo de texto plano que no está en UTF-8, indica en una barra en la parte superior de la ventana la codificación con la que lo leyó y ofrece allí “Guardar como UTF-8…”, o “Archivo ▸ Guardar como…” (⌥⇧⌘S), para escribir una copia en UTF-8 que puedes editar.
+
+### ¿Puedo convertir un archivo .md en PDF?
+
+Sí. En MarsDawn, elige “Archivo ▸ Exportar como PDF…” (⌥⌘E) o “Archivo ▸ Imprimir…”; las páginas se paginan, los diagramas se dibujan y el código se resalta, con los colores claros del tema. Sin la app, la herramienta de línea de comandos gratuita `marsdawn export` genera el mismo PDF: `marsdawn export notes.md`. Consulta [Exportación a PDF](/es/pdf/) y [De Markdown a PDF](/es/markdown-to-pdf/).
+
+### ¿Puedo abrir los archivos .md que escribió mi agente de IA?
+
+Sí, para eso está hecho MarsDawn. Abre el archivo y lee la página renderizada junto a su código fuente; cuando el agente lo revise, ábrelo de nuevo. Un agente también puede ejecutar `marsdawn open plan.md` para abrir el archivo en MarsDawn por ti. Consulta [Leer lo que te devuelve tu agente](/es/reading-agent-output/).
+
 ## Siguiente
 
 - Todas las opciones de la herramienta de línea de comandos: [Línea de comandos](/es/cli/).
 - Lo que MarsDawn no hace: [la lista](/es/limits/).
 - Leer Markdown en VS Code, un navegador o Claude Desktop: [cómo se comparan](/es/vs/markdown-preview-tools/).
+- Diagramas en un archivo Markdown: [Vista previa de Mermaid en Mac](/es/mermaid-preview-mac/).
+
+---
+
+## Vista previa de Mermaid en Mac
+
+Source: https://marsdawn.southern-light.dev/es/mermaid-preview-mac/
+
+# Vista previa de Mermaid en Mac.
+
+Mermaid te permite escribir un diagrama como texto dentro de un archivo Markdown. La mayoría de los editores te muestran el texto. MarsDawn dibuja el diagrama: en la vista previa junto al código fuente, en Vista rápida en el Finder y en el PDF que exportas.
+
+## Escribe el diagrama como texto
+
+Pon el diagrama en un bloque de código marcado como `mermaid`:
+
+````
+```mermaid
+flowchart LR
+    Write[Escribir Markdown] --> Preview[Vista previa en vivo]
+    Preview --> Export{¿Compartir?}
+    Export -- PDF --> PDF[Archivo ▸ Exportar como PDF…]
+    Export -- Imprimir --> Print[Archivo ▸ Imprimir…]
+```
+````
+
+En MarsDawn, ese bloque se convierte en un diagrama de flujo: Escribir Markdown, luego Vista previa en vivo, luego una elección ¿Compartir? que lleva a PDF o a Imprimir.
+
+![El tema Amanecer en vista dividida: el código Markdown a la izquierda y la página renderizada a la derecha.](/assets/screens/01-split-800.png)
+
+## Dónde se dibuja el diagrama
+
+- **En la vista previa.** Abre el archivo y el diagrama aparece junto a su código fuente (⌘2). La página se actualiza mientras escribes, y los dos paneles se desplazan juntos.
+- **En Vista rápida.** Selecciona el archivo en el Finder y pulsa la barra espaciadora; allí también se dibujan los diagramas.
+- **En el PDF.** “Archivo ▸ Exportar como PDF…” y “Archivo ▸ Imprimir…” dibujan el diagrama en la página. Los saltos de página evitan partir un diagrama por la mitad. El PDF usa los colores claros del tema.
+- **Desde la línea de comandos.** La herramienta gratuita `marsdawn export` dibuja los mismos diagramas en un PDF y no necesita la app. Consulta [Línea de comandos](/es/cli/).
+- **En tu tema.** El ajuste Aspecto de la vista previa también se aplica a los diagramas, así que un diagrama sigue el modo claro u oscuro.
+
+## Cuando el diagrama tiene un error
+
+Si Mermaid no puede dibujar un diagrama, la vista previa muestra el código del diagrama con el mensaje de error completo debajo. Cuando el error indica una línea, haz clic en el mensaje y el editor salta a esa línea. `marsdawn export --json` informa de los diagramas fallidos en `diagramErrors`, de modo que un script o un agente sepa que un diagrama no se dibujó.
+
+## Qué conviene saber
+
+- Tú editas el texto de Mermaid. No hay un editor visual de diagramas, y no puedes arrastrar cajas en la vista previa.
+- Qué tipos de diagrama se dibujan depende de la versión de Mermaid que lleva la app. MarsDawn 1.1.0 incluye Mermaid 12.0.0. Las pruebas de exportación del kit renderizan documentos para diagramas de flujo, de secuencia, de clases, de estados, entidad-relación, de Gantt, gráficos circulares, mapas mentales, recorridos de usuario, líneas de tiempo y gráficos de git, entre otros.
+- MarsDawn no tiene un modelo de IA, así que no te escribe un diagrama. La [plantilla de diagrama de flujo](/es/templates/flowchart/) tiene un prompt que puedes darle a tu propio agente.
+
+## Siguiente
+
+- Empieza con un diagrama que ya funciona: la [plantilla de diagrama de flujo](/es/templates/flowchart/).
+- Expórtalo: [Exportación a PDF](/es/pdf/), o desde un script, [Línea de comandos](/es/cli/).
+- ¿No sabes cómo abrir el archivo? [Cómo abrir archivos .md en Mac](/es/view-markdown-on-mac/).
+
+## Pruébalo en tu Mac
+
+MarsDawn se descarga gratis. Prueba todo durante 14 días y desbloquéalo una sola vez por 4,99 USD. Sin suscripción y sin cuenta. Requiere macOS 26 o posterior.
+
+[Descárgala y pruébala](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -18858,7 +19474,7 @@ Source: https://marsdawn.southern-light.dev/es/templates/flowchart/
 
 # Plantilla de diagrama de flujo en Markdown
 
-Un diagrama de flujo Mermaid con los pasos detallados debajo, para que el diagrama y el texto se puedan contrastar entre sí. Quita un paso y pídele al agente que corrija el resto.
+Un diagrama de flujo Mermaid con los pasos detallados debajo, para que el diagrama y el texto se puedan contrastar entre sí. Quita un paso y pídele al agente que corrija el resto. Cómo se dibuja el diagrama en una Mac: [Vista previa de Mermaid en Mac](/es/mermaid-preview-mac/).
 
 ## La plantilla
 
@@ -19008,10 +19624,10 @@ Source: https://marsdawn.southern-light.dev/ko/
 ## 에이전트가 쓴 글을 읽으세요.
 
 1. **에이전트가 씁니다.** 코딩 에이전트나 글쓰기 도우미가 README, 명세서, 메모 같은 Markdown 초안을 작성합니다.
-2. **MarsDawn에서 검토합니다.** 파일을 열고, Mermaid 다이어그램과 하이라이트된 코드까지 렌더링된 페이지를 소스 옆에 두고 읽으세요.
+2. **MarsDawn에서 검토합니다.** 파일을 열고, [Mermaid 다이어그램](/ko/mermaid-preview-mac/)과 하이라이트된 코드까지 렌더링된 페이지를 소스 옆에 두고 읽으세요.
 3. **에이전트가 고칩니다.** 수정을 요청하세요. 고친 파일을 열어 같은 방식으로 읽으면 됩니다.
 
-[에이전트가 돌려준 결과를 검토하는 방법](/ko/reading-agent-output/).
+[에이전트가 돌려준 결과를 검토하는 방법](/ko/reading-agent-output/) · [Mac에서 .md 파일 여는 방법](/ko/view-markdown-on-mac/)
 
 ## 지금 바로 해 보세요
 
@@ -19164,7 +19780,7 @@ PDF는 어디서나 열리고 Markdown을 몰라도 되므로, 상사나 고객�
 
 `mermaid`로 표시한 코드 블록은 다이어그램으로 그려집니다. 다이어그램에 오류가 있으면 미리보기에 소스와 그 아래 오류가 표시되고, 메시지를 클릭하면 해당 줄로 이동합니다.
 
-[순서도 템플릿](/ko/templates/flowchart/)
+[Mac에서 Mermaid 미리보기](/ko/mermaid-preview-mac/)
 
 ### 구문 강조된 코드
 
@@ -19588,13 +20204,21 @@ MarsDawn이 데이터를 다르게 처리하게 되는 경우, 해당 버전이 
 
 ---
 
-## Mac에서 Markdown 보기
+## Mac에서 .md 파일 여는 방법
 
 Source: https://marsdawn.southern-light.dev/ko/view-markdown-on-mac/
 
-# Mac에서 Markdown 파일을 보는 방법.
+# Mac에서 .md 파일을 여는 방법.
+
+더블 클릭하면 열립니다. Mac이 텍스트 편집기로 파일을 열어 제목과 굵은 글씨 대신 `#`와 `**`가 보여도 파일에는 문제가 없습니다. `.md` 파일은 일반 텍스트이고, 그 편집기는 텍스트를 있는 그대로 보여 주는 것입니다. MarsDawn처럼 Markdown을 렌더링하는 앱으로 열고, 그 앱을 기본 앱으로 지정하면 모든 `.md` 파일이 그곳에서 열립니다.
 
 `.md` 파일은 일반 텍스트입니다. 제목, 굵은 글씨, 표, 다이어그램은 기호로 적혀 있습니다. 제목은 `#`, 굵은 글씨는 `**`로 감싸고, 표는 세로 막대로, 다이어그램은 `mermaid` 코드 블록으로 씁니다. 일반 텍스트 편집기로 열면 이 기호들이 그대로 보입니다. 작성자가 의도한 대로 페이지를 읽으려면 무언가가 렌더링해 줘야 합니다.
+
+## Mac에서 .md 파일 열기
+
+1. **파일을 더블 클릭합니다.** Mac이 `.md` 파일에 지정한 앱에서 열립니다. Markdown 앱이 없으면 대개 일반 텍스트 편집기가 열려, 완성된 페이지 대신 기호가 보입니다.
+2. **앱을 직접 고릅니다.** Control 키를 누른 채 파일을 클릭하고 “다음으로 열기”를 선택한 다음 앱을 고릅니다. 또는 “파일 ▸ 정보 가져오기”(⌘I)를 선택하고, “다음으로 열기:”에서 앱을 고른 뒤 “모두 변경…”을 클릭하면 같은 종류의 모든 파일이 그 앱에서 열립니다. MarsDawn은 `.md`, `.markdown`, `.mdown`, `.mkd`, `.mkdn` 파일을 열 수 있습니다.
+3. **열지 않고 미리 봅니다.** Finder에서 파일을 선택하고 스페이스 바를 누릅니다. MarsDawn이 설치되어 있으면 훑어보기에 렌더링된 페이지가 표시되고, 다이어그램도 포함됩니다.
 
 ## MarsDawn에서 읽기
 
@@ -19605,8 +20229,7 @@ MarsDawn은 Mac용 Markdown 편집기입니다. Mac App Store에서 무료로 �
 `.md` 파일을 열고 원본 옆에서 렌더링된 페이지를 읽으세요.
 
 - 입력하는 동안 미리보기가 업데이트되고, 두 패널이 함께 스크롤됩니다.
-- Mermaid 순서도와 시퀀스 다이어그램이 미리보기에 그려지고, 코드 블록은 강조 표시됩니다.
-- Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램까지 포함된 훑어보기 미리보기가 나타납니다.
+- [Mermaid](/ko/mermaid-preview-mac/) 순서도와 시퀀스 다이어그램이 미리보기에 그려지고, 코드 블록은 강조 표시됩니다.
 - 무언가를 고치고 싶을 때 원본이 바로 옆에 있습니다. MarsDawn은 뷰어만이 아니라 편집기입니다.
 
 AI 에이전트가 쓴 파일이라면, 이것이 바로 MarsDawn이 만들어진 이유인 반복 과정입니다. 에이전트가 쓰고, 여러분이 렌더링된 결과를 읽고, 에이전트가 고칩니다. [홈페이지](/ko/)를 참고하고, 에이전트가 대신 파일을 열게 하려면 [에이전트를 위한 marsdawn](/ko/cli/agents/)을 참고하세요. 이렇게 읽는 일이 왜 중요한지, 계획은 어떻게 검토하는지는 [에이전트가 돌려준 결과 읽기](/ko/reading-agent-output/)와 [에이전트의 계획을 5분 만에 검토하기](/ko/reviewing-agent-plans/)에서 확인하세요.
@@ -19623,11 +20246,92 @@ open notes.pdf
 
 `export`는 Markdown 파일 옆에 `notes.pdf`를 쓰고, `open`은 그 파일을 PDF 뷰어에서 보여 줍니다. macOS 15 이상이 필요합니다. 실제로 내보낸 페이지와 함께 보는 단계별 안내는 [Markdown을 PDF로](/ko/markdown-to-pdf/)에 있습니다.
 
+## 자주 묻는 질문
+
+### .md 파일이란?
+
+`.md` 파일은 Markdown으로 쓴 일반 텍스트 파일입니다. Markdown은 간단한 문자로 텍스트에 표시를 하는 방법으로, `#`은 제목, `**`로 감싸면 굵은 글씨, 세로 막대는 표의 칸이 됩니다. `.markdown`, `.mdown`, `.mkd`, `.mkdn` 확장자도 같은 것을 뜻합니다. 개발자는 README와 문서에 쓰고, AI 에이전트도 계획과 보고서를 `.md` 파일로 돌려주는 경우가 많습니다.
+
+### .md 파일이 # 와 ** 가 가득한 일반 텍스트로 열리는 이유는?
+
+원래 일반 텍스트이고, 일반 텍스트 편집기는 그대로 보여 주기 때문입니다. 파일에는 아무 문제가 없습니다. 제목, 굵은 글씨, 표, 다이어그램을 보려면 Markdown을 렌더링하는 앱으로 여세요. MarsDawn에서는 렌더링된 페이지가 소스 옆에 있습니다.
+
+### 열면 글자가 깨져 보이는 이유는?
+
+글자가 깨지는 것은 대개 파일이 UTF-8이 아닌 다른 텍스트 인코딩으로 저장되어 있고, 파일을 연 앱이 인코딩을 잘못 추측했기 때문입니다. 해결책은 UTF-8 사본을 저장하는 것입니다. MarsDawn은 UTF-8이 아닌 일반 텍스트 파일을 읽기 전용으로 열고, 창 위쪽의 막대에 어떤 인코딩으로 읽었는지 표시하며, 그곳의 “UTF-8로 별도 저장…” 또는 “파일 ▸ 별도 저장…”(⌥⇧⌘S)으로 편집할 수 있는 UTF-8 사본을 만들 수 있게 합니다.
+
+### .md 파일을 PDF로 바꿀 수 있나요?
+
+네. MarsDawn에서 “파일 ▸ PDF로 내보내기…”(⌥⌘E) 또는 “파일 ▸ 프린트…”를 선택하면, 페이지가 나뉘고 다이어그램이 그려지며 코드는 강조 표시된 채로, 테마의 라이트 색상으로 출력됩니다. 앱이 없어도 무료 `marsdawn export` 명령줄 도구가 같은 PDF를 만듭니다: `marsdawn export notes.md`. [PDF 내보내기](/ko/pdf/)와 [Markdown을 PDF로](/ko/markdown-to-pdf/)를 참고하세요.
+
+### AI 에이전트가 쓴 .md 파일도 열 수 있나요?
+
+네, MarsDawn은 바로 그것을 위해 만들어졌습니다. 파일을 열고 렌더링된 페이지를 소스 옆에서 읽으세요. 에이전트가 고치면 다시 여세요. 에이전트가 `marsdawn open plan.md`를 실행해 MarsDawn에서 파일을 대신 열어 줄 수도 있습니다. [에이전트가 돌려준 결과 읽기](/ko/reading-agent-output/)를 참고하세요.
+
 ## 다음
 
 - 명령줄 도구의 모든 옵션: [명령줄](/ko/cli/).
 - MarsDawn이 하지 않는 일: [목록](/ko/limits/).
 - VS Code, 브라우저, Claude Desktop에서 Markdown을 읽는 경우: [비교해 보기](/ko/vs/markdown-preview-tools/).
+- Markdown 파일 속 다이어그램: [Mac에서 Mermaid 미리보기](/ko/mermaid-preview-mac/).
+
+---
+
+## Mac에서 Mermaid 미리보기
+
+Source: https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/
+
+# Mac에서 Mermaid 미리보기.
+
+Mermaid를 쓰면 Markdown 파일 안에 다이어그램을 텍스트로 쓸 수 있습니다. 대부분의 편집기는 그 텍스트만 보여 줍니다. MarsDawn은 다이어그램을 그려 줍니다. 소스 옆의 미리보기에서, Finder의 훑어보기에서, 내보낸 PDF에서요.
+
+## 다이어그램을 텍스트로 쓰기
+
+다이어그램을 `mermaid`로 표시한 코드 블록에 넣으세요:
+
+````
+```mermaid
+flowchart LR
+    Write[Markdown 쓰기] --> Preview[실시간 미리보기]
+    Preview --> Export{공유할까요?}
+    Export -- PDF --> PDF[파일 ▸ PDF로 내보내기…]
+    Export -- 프린트 --> Print[파일 ▸ 프린트…]
+```
+````
+
+MarsDawn에서는 이 블록이 순서도가 됩니다. Markdown 쓰기에서 실시간 미리보기로, 그다음 “공유할까요?”라는 선택에서 PDF 또는 프린트로 이어집니다.
+
+![분할 화면의 새벽 테마: 왼쪽은 Markdown 소스, 오른쪽은 렌더링된 페이지.](/assets/screens/01-split-800.png)
+
+## 다이어그램이 그려지는 곳
+
+- **미리보기에서.** 파일을 열면 다이어그램이 소스 옆에 나타납니다(⌘2). 입력할 때마다 페이지가 업데이트되고, 두 패널이 함께 스크롤됩니다.
+- **훑어보기에서.** Finder에서 파일을 선택하고 스페이스 바를 누르면 그곳에서도 다이어그램이 그려집니다.
+- **PDF에서.** “파일 ▸ PDF로 내보내기…”와 “파일 ▸ 프린트…”는 다이어그램을 페이지에 그려 넣습니다. 쪽 나누기는 다이어그램이 반으로 잘리지 않도록 피합니다. PDF는 테마의 라이트 색상을 사용합니다.
+- **명령줄에서.** 무료 `marsdawn export` 도구는 앱 없이도 같은 다이어그램을 PDF에 그립니다. [명령줄](/ko/cli/)을 참고하세요.
+- **테마에 맞춰서.** 미리보기의 화면 모드 설정은 다이어그램에도 적용되므로, 다이어그램도 라이트 또는 다크를 따릅니다.
+
+## 다이어그램에 오류가 있을 때
+
+Mermaid가 다이어그램을 그리지 못하면, 미리보기에 그 다이어그램의 소스가 표시되고 그 아래에 전체 오류 메시지가 나옵니다. 오류가 특정 줄을 가리키면 메시지를 클릭했을 때 편집기가 그 줄로 이동합니다. `marsdawn export --json`은 그려지지 않은 다이어그램을 `diagramErrors`에 보고하므로, 스크립트나 에이전트가 다이어그램이 그려지지 않았음을 알 수 있습니다.
+
+## 알아 둘 점
+
+- 편집하는 것은 Mermaid 텍스트입니다. 시각적인 다이어그램 편집기는 없고, 미리보기에서 상자를 끌 수도 없습니다.
+- 어떤 종류의 다이어그램이 그려지는지는 앱에 들어 있는 Mermaid 버전에 따라 다릅니다. MarsDawn 1.1.0에는 Mermaid 12.0.0이 들어 있습니다. kit의 내보내기 테스트는 순서도, 시퀀스, 클래스, 상태, 개체 관계, 간트, 파이 차트, 마인드맵, 사용자 여정, 타임라인, git 그래프 등의 문서를 렌더링합니다.
+- MarsDawn에는 AI 모델이 없으므로 다이어그램을 대신 써 주지 않습니다. [순서도 템플릿](/ko/templates/flowchart/)에는 직접 쓰는 에이전트에게 건넬 수 있는 프롬프트가 있습니다.
+
+## 다음
+
+- 이미 잘 그려지는 다이어그램에서 시작하기: [순서도 템플릿](/ko/templates/flowchart/).
+- 내보내기: [PDF 내보내기](/ko/pdf/). 스크립트에서 내보내려면 [명령줄](/ko/cli/).
+- 파일을 어떻게 여는지 모르겠다면? [Mac에서 .md 파일 여는 방법](/ko/view-markdown-on-mac/).
+
+## Mac에서 사용해 보세요
+
+MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다. macOS 26 이상이 필요합니다.
+
+[지금 다운로드하고 체험하기](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -21553,7 +22257,7 @@ Source: https://marsdawn.southern-light.dev/ko/templates/flowchart/
 
 # Markdown 순서도 템플릿
 
-Mermaid 순서도 아래에 단계를 하나하나 적어 두어, 다이어그램과 글을 서로 대조할 수 있습니다. 단계를 하나 빼고, 나머지를 고쳐 달라고 에이전트에게 요청하세요.
+Mermaid 순서도 아래에 단계를 하나하나 적어 두어, 다이어그램과 글을 서로 대조할 수 있습니다. 단계를 하나 빼고, 나머지를 고쳐 달라고 에이전트에게 요청하세요. Mac에서 다이어그램이 그려지는 방식: [Mac에서 Mermaid 미리보기](/ko/mermaid-preview-mac/).
 
 ## 템플릿
 

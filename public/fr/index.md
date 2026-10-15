@@ -9,10 +9,10 @@ La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide
 ## Lisez ce que votre agent a écrit.
 
 1. **L’agent écrit.** Votre agent de code ou votre assistant d’écriture rédige le Markdown : un README, une spécification, des notes.
-2. **Vous relisez dans MarsDawn.** Ouvrez le fichier et lisez-le mis en forme, avec les diagrammes Mermaid et le code en couleur, à côté de la source.
+2. **Vous relisez dans MarsDawn.** Ouvrez le fichier et lisez-le mis en forme, avec les [diagrammes Mermaid](/fr/mermaid-preview-mac/) et le code en couleur, à côté de la source.
 3. **L’agent corrige.** Demandez des modifications. Ouvrez le fichier révisé et lisez-le de la même façon.
 
-[Comment relire ce que votre agent vous rend](/fr/reading-agent-output/).
+[Comment relire ce que votre agent vous rend](/fr/reading-agent-output/) · [Ouvrir un fichier .md sur Mac](/fr/view-markdown-on-mac/)
 
 ## À faire dès maintenant
 
@@ -69,7 +69,8 @@ Sur cette capture d’écran :
 - [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Quatre thèmes intégrés, d’autres dans la galerie. À savoir avant d’acheter.
 - [Assistance](https://marsdawn.southern-light.dev/fr/support/index.md): De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
 - [Politique de confidentialité](https://marsdawn.southern-light.dev/fr/privacy/index.md): MarsDawn ne collecte aucune donnée personnelle. Vos documents et vos réglages restent sur votre Mac.
-- [Afficher du Markdown sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Un fichier .md est du texte brut avec des marques de mise en forme. Voici comment le lire rendu sur Mac : dans MarsDawn, à télécharger gratuitement sur le Mac App Store, ou en PDF avec l’outil en ligne de commande gratuit marsdawn.
+- [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Comment ouvrir un fichier .md sur Mac : double-clic, app par défaut, coup d’œil dans le Finder. Pour les .md écrits par un agent IA, lisez-les rendus dans MarsDawn.
+- [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Voyez les diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer affiche le Markdown en lecture seule pour 19,99 USD. MarsDawn modifie et affiche l’aperçu côte à côte, gratuit à l’essai puis 4,99 USD une seule fois sur le Mac App Store.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.

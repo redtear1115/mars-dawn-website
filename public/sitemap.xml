@@ -961,6 +961,102 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/view-markdown-on-mac/"/>
   </url>
   <url>
+    <loc>https://marsdawn.southern-light.dev/mermaid-preview-mac/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/de/mermaid-preview-mac/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/es/mermaid-preview-mac/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/mermaid-preview-mac/"/>
+  </url>
+  <url>
     <loc>https://marsdawn.southern-light.dev/markdown-to-pdf/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/markdown-to-pdf/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/"/>
