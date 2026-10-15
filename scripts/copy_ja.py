@@ -480,7 +480,13 @@ VS_MACMD = {'title': 'MacMD Viewer と MarsDawn：Markdown のビューアか、
  'features_item': '- MarsDawn の機能をすべて 1 ページで：[機能一覧](/ja/features/)。'}
 
 
+# Machine draft (needs-i18n; Grok reviews it): the install section of /cli/skill/ (website #231). Commands, flags and
+# paths stay in <code>, untranslated. {_SKILL_URL} is the skill's address, filled in by the builder.
+SKILL_INSTALL = '<h2>Claude Code にインストールする</h2>\n<p>コマンドラインツール <code>marsdawn</code> がスキルを書き出します。書き出されるファイルは、インストール済みの <code>marsdawn</code> のバージョンに合ったものです。まだ <code>marsdawn</code> がない場合は、<a href="https://brew.sh">Homebrew</a> でインストールしてください。</p>\n<pre><code>brew install redtear1115/tap/marsdawn</code></pre>\n<p>そのあと、スキルをインストールします。</p>\n<pre><code>marsdawn skill --install</code></pre>\n<p>これで <code>~/.claude/skills/marsdawn/SKILL.md</code> が書き出されます。フォルダがなければ作成されます。ファイルは手元の <code>marsdawn</code> から作られるので、そのバージョンにないオプションが書かれることはありません。</p>\n<p>Claude Code は、PDF が必要なタスクのとき、またはあなたが読む Markdown 文書を書いたり修正したりしたときに、これを自動的に読み込みます。<code>/marsdawn</code> として自分で実行することもできます。先に中身を読みたい場合は、<a href="/cli/skill/SKILL.md">短いファイル1つ</a>です。</p>\n<h2>marsdawn をアップグレードしたあと</h2>\n<p>Homebrew は <code>marsdawn</code> をアップグレードしますが、スキルには手を触れないので、更新するまで古いバージョンのままです。</p>\n<pre><code>marsdawn skill --install --force</code></pre>\n<p><code>--force</code> は、既存の <code>SKILL.md</code> を、あなたが加えた変更も含めて置き換えます。<code>--force</code> を付けない場合、内容の異なる <code>SKILL.md</code> がすでにあると、<code>marsdawn</code> はそのファイルに触れず、内容が違うことを知らせて、終了コード 64（<code>skill_differs</code>）で終了します。ファイルがすでに最新なら、何も変わりません。</p>\n<h2>ほかのエージェントの場合</h2>\n<p><code>--dir</code> に、お使いのエージェントがスキルを置くフォルダを指定すると、<code>marsdawn</code> はそこに <code>SKILL.md</code> を書き出します。</p>\n<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>\n<p>このファイルはただの Markdown で、説明とコマンドだけなので、指示ファイルを読むエージェントならそのまま使えます。</p>\n<h2>Homebrew やコマンドラインツールがない場合</h2>\n<p>先に <code>marsdawn</code> をインストールできない場合は、ファイルを直接ダウンロードします。</p>\n<pre><code>mkdir -p ~/.claude/skills/marsdawn\ncurl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>\n<p>これはこのサイトにある最新のスキルを取得するので、古い <code>marsdawn</code> より新しいことがあります。ツールをインストールしたら、<code>marsdawn skill --install --force</code> で、それに合ったものに置き換えられます。エージェントにこの URL を指定するか、ファイルをそのまま貼り付けることもできます。このファイルは英語です。</p>'
+
+
 def build(k) -> dict:
+    k.set_skill_install(SKILL_INSTALL)
     ui = {'features': '機能一覧', 'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で .md ファイルを開く方法', 'mermaid-preview-mac': 'Mac で Mermaid をプレビューする', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'themes-new': 'テーマを作る', 'themes-agents': 'エージェントとテーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
     store_chip = 'Mac App Store で配信中'
     schema_notes = {'export': 'export 成功時', 'open': 'open 成功時、marsdawn 0.5.1 以降、サイドバーに表示するフォルダを含む', 'open_v2': 'open 成功時、marsdawn 0.3.0〜0.5.0', 'error': '失敗時、両方のコマンド共通、marsdawn 0.5.2 以降', 'open_v1': 'open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）', 'error_v1': '失敗時、両方のコマンド共通、marsdawn 0.5.1 以前'}
@@ -738,7 +744,7 @@ marsdawn --version</code></pre>
 <h2>インストール</h2>
 <p><a href="https://brew.sh">Homebrew</a> を使う場合：</p>
 <pre><code>{k.BREW_TAP_INSTALL}</code></pre>
-<p>コーディングエージェントを使っていますか？<a href="/ja/cli/skill/">marsdawn スキルを追加</a>してください。自分が書いたものを MarsDawn で開いてあなたに確認してもらう方法と、PDF の書き出しを教える、1つのファイルです。</p>
+<p>コーディングエージェントを使っていますか？<code>marsdawn skill --install</code> を実行して<a href="/ja/cli/skill/">marsdawn スキル</a>を追加してください。自分が書いたものを MarsDawn で開いてあなたに確認してもらう方法と、PDF の書き出しを教える、1つのファイルです。</p>
 <p>Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールし、他に何もインストールする必要はありません。Intel Mac では代わりにソースから marsdawn をビルドするため数分かかり、Xcode 26 以降（Swift 6.2）が必要です。このツールは macOS 15 以降で動作します。</p>
 <p>または、Swift Package Manager で<a href="{k.KIT_URL}">ソース</a>からビルドします。</p>
 <pre><code>git clone {k.KIT_URL}.git
@@ -983,11 +989,7 @@ swift build -c release --product marsdawn
   <p>このスキルは1つの Markdown ファイルです。コーディングエージェントに、自分が書いた文書を MarsDawn で開いてあなたに確認してもらう方法と、<code>marsdawn</code> のインストール方法、動作確認の方法、文書を PDF に書き出す方法、結果の読み方を教えます。</p>
 </section>
 <div class="summary"><p><strong>1つの Markdown ファイルを <code>~/.claude/skills/marsdawn/SKILL.md</code> に置くだけ。</strong>これでエージェントが <code>marsdawn</code> をインストールし、PDF に書き出し、JSON の結果を読みます。何かを実行する前には、これまでどおり確認を求めます。</p></div>
-<h2>Claude Code にインストールする</h2>
-<pre><code>mkdir -p ~/.claude/skills/marsdawn
-curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
-<p>Claude Code は、PDF が必要なタスクのとき、またはあなたが読む Markdown 文書を書いたり修正したりしたときに、これを自動的に読み込みます。<code>/marsdawn</code> として自分で実行することもできます。<a href="/cli/skill/SKILL.md">短いファイル1つ</a>なので、インストールする前に読んでみてください。</p>
-<p>他のエージェントでも同じファイルを使えます。ただの Markdown で、説明とコマンドが書いてあるだけなので、あなたのエージェントにこの URL を指定するか、そのまま貼り付けてください。このファイルは英語です。</p>
+<!--skill-install-->
 <h2>教えること</h2>
 <ul>
   <li><code>marsdawn</code> がなければ Homebrew でインストールし、バージョンを決め打ちせず <code>marsdawn --version</code> で確認する。</li>

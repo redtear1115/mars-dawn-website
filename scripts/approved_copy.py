@@ -15,6 +15,10 @@ VS_MACMD (and VS_SOURCES): /vs/macmd-viewer/, source
   added in build_pages.py (VS_MACMD_EXTRA).
 FILM_THEMES: the second brand film's section on /features/ and /themes/ (heading and one-line caption), source
   <vault>/MarsDawn/協作/給擁有者/features-page-copy-2026-10-15.md, section 3.
+SKILL_INSTALL, CLI_SKILL_LINE, AGENTS_SKILL_ITEM: website #231 (marsdawn skill --install on /cli/skill/, one line each on /cli/
+  and /cli/agents/), source
+  <vault>/MarsDawn/協作/給擁有者/cli-skill-install-copy-2026-10-15.md
+  (owner-approved 2026-10-15, every 待你決定 item as recommended). HTML, as the source has it; {_SKILL_URL} is the skill's address.
 """
 
 OPEN_MD = {'en': {'title': 'How to open .md files on Mac · MarsDawn',
@@ -406,3 +410,77 @@ VS_SOURCES = [['S1', 'https://macmdviewer.com/'],
 FILM_THEMES = {'en': {'heading': 'After the page is printed',
         'caption': 'A meeting around printed pages, a pen in the margin, a paper record on file.'},
  'zh-hant': {'heading': '頁面印出來之後', 'caption': '大家圍著印出來的頁面開會，有人拿筆在頁邊寫字，紙本紀錄收進檔案。'}}
+
+SKILL_INSTALL = {'en': '<h2>Install it in Claude Code</h2>\n'
+       '<p>The <code>marsdawn</code> command-line tool writes the skill for you, and the file it writes '
+       "matches the version of <code>marsdawn</code> you have installed. If you don't have "
+       '<code>marsdawn</code> yet, install it with <a href="https://brew.sh">Homebrew</a>:</p>\n'
+       '<pre><code>brew install redtear1115/tap/marsdawn</code></pre>\n'
+       '<p>Then install the skill:</p>\n'
+       '<pre><code>marsdawn skill --install</code></pre>\n'
+       "<p>That writes <code>~/.claude/skills/marsdawn/SKILL.md</code>, creating the folder if it isn't "
+       'there. Because the file comes from your copy of <code>marsdawn</code>, it never describes an option '
+       "your copy doesn't have.</p>\n"
+       '<p>Claude Code loads it when a task calls for a PDF, or when it has written or revised a Markdown '
+       "document for you to read, and you can run it yourself as <code>/marsdawn</code>. It's <a "
+       'href="/cli/skill/SKILL.md">one short file</a> if you\'d like to read it first.</p>\n'
+       '<h2>After you upgrade marsdawn</h2>\n'
+       '<p>Homebrew upgrades <code>marsdawn</code> but leaves the skill where it was, so it stays at the old '
+       'version until you refresh it:</p>\n'
+       '<pre><code>marsdawn skill --install --force</code></pre>\n'
+       '<p><code>--force</code> replaces the existing <code>SKILL.md</code>, including any changes you made '
+       'to it. Without <code>--force</code>, if a different <code>SKILL.md</code> is already there, '
+       '<code>marsdawn</code> leaves it alone, tells you it differs and exits with code 64 '
+       '(<code>skill_differs</code>). If the file is already the current one, nothing changes.</p>\n'
+       '<h2>For other agents</h2>\n'
+       '<p>Add <code>--dir</code> with the folder where your agent keeps its skills, and '
+       '<code>marsdawn</code> writes <code>SKILL.md</code> there instead:</p>\n'
+       '<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>\n'
+       '<p>The file is plain Markdown, instructions and commands, so an agent that loads instruction files '
+       'can use it as it is.</p>\n'
+       '<h2>Without Homebrew or the command-line tool</h2>\n'
+       "<p>If you can't install <code>marsdawn</code> first, download the file instead:</p>\n"
+       '<pre><code>mkdir -p ~/.claude/skills/marsdawn\n'
+       'curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>\n'
+       '<p>This fetches the latest skill from this site, which may be ahead of an older '
+       '<code>marsdawn</code>. Once you have the tool, <code>marsdawn skill --install --force</code> '
+       'replaces it with the one that matches. You can also point an agent at the URL, or paste the file '
+       'in.</p>',
+ 'zh-hant': '<h2>在 Claude Code 中安裝</h2>\n'
+            '<p>命令列工具 <code>marsdawn</code> 會幫你寫好這個 skill，寫進去的內容和你已安裝的 <code>marsdawn</code> 版本相符。如果還沒有 '
+            '<code>marsdawn</code>，先用 <a href="https://brew.sh">Homebrew</a> 安裝：</p>\n'
+            '<pre><code>brew install redtear1115/tap/marsdawn</code></pre>\n'
+            '<p>然後安裝 skill：</p>\n'
+            '<pre><code>marsdawn skill --install</code></pre>\n'
+            '<p>這會把 skill 寫到 <code>~/.claude/skills/marsdawn/SKILL.md</code>，資料夾不存在時會一併建立。因為檔案是由你手上的 '
+            '<code>marsdawn</code> 產生的，裡面不會出現你這個版本沒有的選項。</p>\n'
+            '<p>需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 <code>/marsdawn</code> '
+            '自己執行。想先看內容的話，它只是<a href="/cli/skill/SKILL.md">一個簡短的檔案</a>。</p>\n'
+            '<h2>升級 marsdawn 之後</h2>\n'
+            '<p>Homebrew 會升級 <code>marsdawn</code>，但不會動 skill，所以它會停在舊版本，要自己更新：</p>\n'
+            '<pre><code>marsdawn skill --install --force</code></pre>\n'
+            '<p><code>--force</code> 會取代現有的 <code>SKILL.md</code>，包括你自己改過的地方。不加 <code>--force</code> '
+            '的話，如果那裡已經有內容不同的 <code>SKILL.md</code>，<code>marsdawn</code> 不會動它，會告訴你內容不同，並以代碼 '
+            '64（<code>skill_differs</code>）結束。檔案已經是最新的，就什麼都不改。</p>\n'
+            '<h2>給其他 agent</h2>\n'
+            '<p>加上 <code>--dir</code>，指到你的 agent 放 skill 的資料夾，<code>marsdawn</code> 就會把 '
+            '<code>SKILL.md</code> 寫到那裡：</p>\n'
+            '<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>\n'
+            '<p>這個檔案是純 Markdown，只有說明和指令，會讀指令檔的 agent 可以直接用。</p>\n'
+            '<h2>沒有 Homebrew，或沒有命令列工具</h2>\n'
+            '<p>如果沒辦法先安裝 <code>marsdawn</code>，就直接下載這個檔案：</p>\n'
+            '<pre><code>mkdir -p ~/.claude/skills/marsdawn\n'
+            'curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>\n'
+            '<p>這會從本站抓最新的 skill，可能比較舊的 <code>marsdawn</code> 還新。等你裝好命令列工具，再執行 <code>marsdawn skill --install '
+            '--force</code>，就會換成和它相符的版本。你也可以讓 agent 讀這個網址，或直接貼給它。這個檔案是英文的。</p>'}
+
+CLI_SKILL_LINE = {'en': '<p>Using a coding agent? Run <code>marsdawn skill --install</code> to add <a href="/cli/skill/">the '
+       'marsdawn skill</a>: one file that teaches it to open what it wrote in MarsDawn for your review, and '
+       'to export PDFs.</p>',
+ 'zh-hant': '<p>在用寫程式的 agent 嗎？執行 <code>marsdawn skill --install</code> 來加上 <a '
+            'href="/zh-hant/cli/skill/">marsdawn skill</a>：一個檔案，教它把自己寫的文件在 MarsDawn 裡打開給你審閱，也能輸出 PDF。</p>'}
+
+AGENTS_SKILL_ITEM = {'en': '<li>To have a coding agent do this for you, run <code>marsdawn skill --install</code> to add <a '
+       'href="/cli/skill/">the marsdawn agent skill</a>.</li>',
+ 'zh-hant': '<li>讓寫程式的 agent 幫你做這件事：執行 <code>marsdawn skill --install</code> 來加上 <a '
+            'href="/zh-hant/cli/skill/">marsdawn 的 agent skill</a>。</li>'}

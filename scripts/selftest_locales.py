@@ -96,7 +96,7 @@ for slug in ("privacy", "support"):
     t["pages"][slug]["body"] = "@@LEGAL:" + slug
 src = repr(t).replace("'@@LEGAL:privacy'", "k.render_legal_body('privacy', 'de')").replace("'@@LEGAL:support'", "k.render_legal_body('support', 'de')")
 open("scripts/copy_de.py", "w", encoding="utf-8").write(
-    '"""Self-test fixture: ja copy under a de label. Never committed."""\nCOMPLETE = True\n\n\ndef build(k):\n    return ' + src + "\n")
+    '"""Self-test fixture: ja copy under a de label. Never committed."""\nCOMPLETE = True\n\n\ndef build(k):\n    k.set_skill_install(' + repr(b.SKILL_INSTALL_HTML["ja"]) + ')\n    return ' + src + "\n")
 '''
 
 

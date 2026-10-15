@@ -426,7 +426,13 @@ VS_MACMD = {'title': 'MacMD Viewer 对比 MarsDawn：Markdown 查看器还是编
  'features_item': '- MarsDawn 的全部功能，一页看完：[功能一览](/zh-hans/features/)。'}
 
 
+# Machine draft (needs-i18n; Grok reviews it): the install section of /cli/skill/ (website #231). Commands, flags and
+# paths stay in <code>, untranslated. {_SKILL_URL} is the skill's address, filled in by the builder.
+SKILL_INSTALL = '<h2>在 Claude Code 中安装</h2>\n<p>命令行工具 <code>marsdawn</code> 会帮你写好这个 skill，写进去的内容和你已安装的 <code>marsdawn</code> 版本相符。如果还没有 <code>marsdawn</code>，先用 <a href="https://brew.sh">Homebrew</a> 安装：</p>\n<pre><code>brew install redtear1115/tap/marsdawn</code></pre>\n<p>然后安装 skill：</p>\n<pre><code>marsdawn skill --install</code></pre>\n<p>这会把 skill 写到 <code>~/.claude/skills/marsdawn/SKILL.md</code>，文件夹不存在时会一并创建。因为文件是由你手上的 <code>marsdawn</code> 生成的，里面不会出现你这个版本没有的选项。</p>\n<p>需要做出 PDF，或写好、改好一份要给你读的 Markdown 文稿时，Claude Code 会自动加载它，你也可以用 <code>/marsdawn</code> 自己运行。想先看内容的话，它只是<a href="/cli/skill/SKILL.md">一个简短的文件</a>。</p>\n<h2>升级 marsdawn 之后</h2>\n<p>Homebrew 会升级 <code>marsdawn</code>，但不会动 skill，所以它会停在旧版本，要自己更新：</p>\n<pre><code>marsdawn skill --install --force</code></pre>\n<p><code>--force</code> 会替换现有的 <code>SKILL.md</code>，包括你自己改过的地方。不加 <code>--force</code> 的话，如果那里已经有内容不同的 <code>SKILL.md</code>，<code>marsdawn</code> 不会动它，会告诉你内容不同，并以代码 64（<code>skill_differs</code>）退出。文件已经是最新的，就什么都不改。</p>\n<h2>给其他 agent</h2>\n<p>加上 <code>--dir</code>，指到你的 agent 放 skill 的文件夹，<code>marsdawn</code> 就会把 <code>SKILL.md</code> 写到那里：</p>\n<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>\n<p>这个文件是纯 Markdown，只有说明和命令，会读指令文件的 agent 可以直接用。</p>\n<h2>没有 Homebrew，或没有命令行工具</h2>\n<p>如果没办法先安装 <code>marsdawn</code>，就直接下载这个文件：</p>\n<pre><code>mkdir -p ~/.claude/skills/marsdawn\ncurl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>\n<p>这会从本站抓最新的 skill，可能比较旧的 <code>marsdawn</code> 还新。等你装好命令行工具，再执行 <code>marsdawn skill --install --force</code>，就会换成和它相符的版本。你也可以让 agent 读这个网址，或直接贴给它。这个文件是英文的。</p>'
+
+
 def build(k) -> dict:
+    k.set_skill_install(SKILL_INSTALL)
     ui = {'features': '功能一览', 'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': 'Mac 上怎么打开 md 文件', 'mermaid-preview-mac': '在 Mac 上预览 Mermaid', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'themes-new': '打造一个主题', 'themes-agents': '和 agent 一起做主题', 'themes-gallery': '主题库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
     store_chip = '已在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.5.1 以后，包括在侧边栏显示的文件夹', 'open_v2': 'open 成功，marsdawn 0.3.0 到 0.5.0', 'error': '两个命令的失败结果，marsdawn 0.5.2 以后', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单', 'error_v1': '两个命令的失败结果，marsdawn 0.5.1 以前'}
@@ -507,7 +513,7 @@ def build(k) -> dict:
 <h2>安装</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
 <pre><code>{k.BREW_TAP_INSTALL}</code></pre>
-<p>在用写程序的 agent 吗？<a href="/zh-hans/cli/skill/">加上 marsdawn skill</a>：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。</p>
+<p>在用写程序的 agent 吗？执行 <code>marsdawn skill --install</code> 来加上 <a href="/zh-hans/cli/skill/">marsdawn skill</a>：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。</p>
 <p>在 Apple 芯片的 Mac 上，Homebrew 会直接安装预先构建好的版本，几秒就完成，不需要另外安装任何东西。在 Intel Mac 上则会从源代码构建，需要几分钟，也需要 Xcode 26 以上（Swift 6.2）。这个工具需要 macOS 15 以上。</p>
 <p>也可以从<a href="{k.KIT_URL}">源代码</a>用 Swift Package Manager 构建：</p>
 <pre><code>git clone {k.KIT_URL}.git
@@ -796,11 +802,7 @@ swift build -c release --product marsdawn
   <p>这个 skill 是一个 Markdown 文件。它教写程序的 agent 把自己写的文稿在 MarsDawn 里打开给你审阅，也教它安装 <code>marsdawn</code>、确认它能用、把文稿导出成 PDF 并读懂结果。</p>
 </section>
 <div class="summary"><p><strong>一个 Markdown 文件，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 会安装 <code>marsdawn</code>、导出 PDF 并读懂 JSON 结果；运行任何命令之前，它还是会先问你。</p></div>
-<h2>在 Claude Code 中安装</h2>
-<pre><code>mkdir -p ~/.claude/skills/marsdawn
-curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
-<p>需要做出 PDF，或写好、改好一份要给你读的 Markdown 文稿时，Claude Code 会自动加载它，你也可以用 <code>/marsdawn</code> 自己运行。它只是<a href="/cli/skill/SKILL.md">一个简短的文件</a>，安装前先读一遍。</p>
-<p>其他 agent 也能用同一个文件。它是纯 Markdown，只有说明和命令，让你的 agent 读这个网址，或直接贴给它就好。这个文件是英文的。</p>
+<!--skill-install-->
 <h2>它教什么</h2>
 <ul>
   <li>如果没有 <code>marsdawn</code>，就用 Homebrew 安装，再用 <code>marsdawn --version</code> 确认版本，而不是假设某个版本。</li>

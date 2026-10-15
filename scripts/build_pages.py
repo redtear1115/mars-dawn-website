@@ -1064,7 +1064,7 @@ CLI_PAGES = {
 <h2>Install</h2>
 <p>With <a href="https://brew.sh">Homebrew</a>:</p>
 <pre><code>{BREW_TAP_INSTALL}</code></pre>
-<p>Using a coding agent? <a href="/cli/skill/">Add the marsdawn skill</a>: one file that teaches it to open what it wrote in MarsDawn for your review, and to export PDFs.</p>
+<!--skill-line:cli-->
 <p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.</p>
 <p>Or build it from <a href="{KIT_URL}">the source</a> with Swift Package Manager:</p>
 <pre><code>git clone {KIT_URL}.git
@@ -1142,7 +1142,7 @@ marsdawn open notes.md --folder .</code></pre>
 <h2>安裝</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
 <pre><code>{BREW_TAP_INSTALL}</code></pre>
-<p>在用寫程式的 agent 嗎？<a href="/zh-hant/cli/skill/">加上 marsdawn skill</a>：一個檔案，教它把自己寫的文件在 MarsDawn 裡打開給你審閱，也能匯出 PDF。</p>
+<!--skill-line:cli-->
 <p>在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成，不需要另外安裝任何東西。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上（Swift 6.2）。這個工具需要 macOS 15 以上。</p>
 <p>也可以從<a href="{KIT_URL}">原始碼</a>用 Swift Package Manager 建置：</p>
 <pre><code>git clone {KIT_URL}.git
@@ -1617,7 +1617,7 @@ swift build -c release --product marsdawn
 
 <h2>Next</h2>
 <ul>
-  <li>A one-file skill for agents that read instructions instead of a shell: <a href="/cli/skill/">the marsdawn skill</a>.</li>
+  <!--skill-line:agents-->
   <li>An MCP server that wraps this same <code>export</code>: <a href="/cli/mcp/">marsdawn-mcp</a>.</li>
   <li>Why this JSON result stays cheap for an agent's own context: <a href="/token-efficient-review/">token-efficient review</a>.</li>
   <li>Making a MarsDawn theme with an agent: <a href="/themes/agents/">make a theme with your agent</a>.</li>
@@ -1794,7 +1794,7 @@ swift build -c release --product marsdawn
 
 <h2>接下來</h2>
 <ul>
-  <li>給讀指令檔而不是執行 shell 的 agent 用的一個檔案：<a href="/zh-hant/cli/skill/">marsdawn skill</a>。</li>
+  <!--skill-line:agents-->
   <li>包住同一個 <code>export</code> 的 MCP 伺服器：<a href="/zh-hant/cli/mcp/">marsdawn-mcp</a>。</li>
   <li>這份 JSON 結果為什麼不花 agent 自己的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
   <li>和 agent 一起做 MarsDawn 主題：<a href="/zh-hant/themes/agents/">和 agent 一起做主題</a>。</li>
@@ -1941,11 +1941,7 @@ SKILL_PAGES = {
   <p>This skill is one Markdown file. It teaches a coding agent to open a document it wrote in MarsDawn for you to review, and to install <code>marsdawn</code>, check that it works, export a document to PDF and read the result.</p>
 </section>
 <div class="summary"><p><strong>One Markdown file, at <code>~/.claude/skills/marsdawn/SKILL.md</code>.</strong> With it your agent installs <code>marsdawn</code>, exports to PDF and reads the JSON result, and it still asks before it runs anything.</p></div>
-<h2>Install it in Claude Code</h2>
-<pre><code>mkdir -p ~/.claude/skills/marsdawn
-curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
-<p>Claude Code loads it when a task calls for a PDF, or when it has written or revised a Markdown document for you to read, and you can run it yourself as <code>/marsdawn</code>. It's <a href="/cli/skill/SKILL.md">one short file</a>, so read it before you install it.</p>
-<p>Other agents can use the same file. It's plain Markdown, instructions and commands, so point yours at the URL or paste it in.</p>
+<!--skill-install-->
 <h2>What it teaches</h2>
 <ul>
   <li>Install <code>marsdawn</code> with Homebrew if it's missing, then check it with <code>marsdawn --version</code> instead of assuming a version.</li>
@@ -1972,11 +1968,7 @@ curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
   <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 把自己寫的文件在 MarsDawn 裡打開給你審閱，也教它安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果。</p>
 </section>
 <div class="summary"><p><strong>一個 Markdown 檔案，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 會安裝 <code>marsdawn</code>、輸出 PDF 並讀懂 JSON 結果；執行任何指令之前，它還是會先問你。</p></div>
-<h2>在 Claude Code 中安裝</h2>
-<pre><code>mkdir -p ~/.claude/skills/marsdawn
-curl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
-<p>需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 <code>/marsdawn</code> 自己執行。它只是<a href="/cli/skill/SKILL.md">一個簡短的檔案</a>，安裝前先讀一遍。</p>
-<p>其他 agent 也能用同一個檔案。它是純 Markdown，只有說明和指令，讓你的 agent 讀這個網址，或直接貼給它就好。這個檔案是英文的。</p>
+<!--skill-install-->
 <h2>它教什麼</h2>
 <ul>
   <li>如果沒有 <code>marsdawn</code>，就用 Homebrew 安裝，再用 <code>marsdawn --version</code> 確認版本，而不是假設某個版本。</li>
@@ -4375,6 +4367,15 @@ def split_shot_html(locale: str) -> str:
             f'width="{width}" height="{height}" alt="{alt[locale]}" loading="lazy"></p>')
 
 
+# --- marsdawn skill --install on /cli/skill/, /cli/ and /cli/agents/ (website #231) -----------------------
+# The install section of /cli/skill/ and one line each on /cli/ and /cli/agents/. en and zh-Hant: the approved
+# HTML (approved_copy.SKILL_INSTALL, CLI_SKILL_LINE, AGENTS_SKILL_ITEM, loaded from the vault draft). The other
+# locales hand over their section through k.set_skill_install and write their two lines in their own pages.
+SKILL_INSTALL_MARK = "<!--skill-install-->"
+SKILL_INSTALL_HTML = dict(approved_copy.SKILL_INSTALL)
+SKILL_LINE_MARKS = {"<!--skill-line:cli-->": approved_copy.CLI_SKILL_LINE, "<!--skill-line:agents-->": approved_copy.AGENTS_SKILL_ITEM}
+
+
 # --- /features/ -------------------------------------------------------------------------------
 # One page that says what the app does and links to the page that goes deeper (owner, 2026-10-15:
 # copy approved in en and zh-Hant; vault 協作/給擁有者/features-page-copy-2026-10-15.md). The two
@@ -4829,6 +4830,7 @@ def _make_k(locale: str) -> SimpleNamespace:
         features_page=features_page,
         open_md_page=open_md_page, mermaid_page=mermaid_page,
         vs_macmd_page=vs_macmd_page, vs_compare=vs_compare,
+        set_skill_install=lambda html: SKILL_INSTALL_HTML.__setitem__(locale, html),
     )
 
 
@@ -5505,6 +5507,10 @@ def all_pages() -> dict:
         for key in COMPARE_TABLES:
             body = body.replace(f"<!--compare:{key}-->", compare_table_html(locale, key))
         body = body.replace(rich_pages.SPLIT_SHOT_MARK, split_shot_html(locale))
+        if SKILL_INSTALL_MARK in body:
+            body = body.replace(SKILL_INSTALL_MARK, SKILL_INSTALL_HTML[locale].replace("{_SKILL_URL}", _SKILL_URL))
+        for mark, lines in SKILL_LINE_MARKS.items():
+            body = body.replace(mark, lines.get(locale, mark)) if mark in body else body
         if slug == "features":
             body = features_marks(locale, body)
         if slug == "themes":
