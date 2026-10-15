@@ -14,7 +14,7 @@ Mit [Homebrew](https://brew.sh):
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-Du nutzt einen Coding-Agenten? [Füge den marsdawn-Skill hinzu](/de/cli/skill/): eine Datei, die ihm beibringt, das Geschriebene zur Prüfung in MarsDawn zu öffnen und PDFs zu exportieren.
+Du nutzt einen Coding-Agenten? Führe `marsdawn skill --install` aus, um [den marsdawn-Skill](/de/cli/skill/) hinzuzufügen: eine Datei, die ihm beibringt, das Geschriebene zur Prüfung in MarsDawn zu öffnen und PDFs zu exportieren.
 
 Auf einem Mac mit Apple Chip installiert Homebrew in Sekunden eine vorkompilierte Version, ohne dass sonst etwas installiert werden muss. Auf einem Intel-Mac kompiliert es marsdawn stattdessen aus dem Quellcode. Das dauert ein paar Minuten und erfordert Xcode 26 oder neuer (Swift 6.2). Das Programm läuft unter macOS 15 oder neuer.
 

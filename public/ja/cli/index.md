@@ -14,7 +14,7 @@ AI エージェントやスクリプトから marsdawn を呼び出しますか�
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-コーディングエージェントを使っていますか？[marsdawn スキルを追加](/ja/cli/skill/)してください。自分が書いたものを MarsDawn で開いてあなたに確認してもらう方法と、PDF の書き出しを教える、1つのファイルです。
+コーディングエージェントを使っていますか？`marsdawn skill --install` を実行して[marsdawn スキル](/ja/cli/skill/)を追加してください。自分が書いたものを MarsDawn で開いてあなたに確認してもらう方法と、PDF の書き出しを教える、1つのファイルです。
 
 Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールし、他に何もインストールする必要はありません。Intel Mac では代わりにソースから marsdawn をビルドするため数分かかり、Xcode 26 以降（Swift 6.2）が必要です。このツールは macOS 15 以降で動作します。
 

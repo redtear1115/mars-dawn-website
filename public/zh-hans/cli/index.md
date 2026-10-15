@@ -14,7 +14,7 @@
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-在用写程序的 agent 吗？[加上 marsdawn skill](/zh-hans/cli/skill/)：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。
+在用写程序的 agent 吗？执行 `marsdawn skill --install` 来加上 [marsdawn skill](/zh-hans/cli/skill/)：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。
 
 在 Apple 芯片的 Mac 上，Homebrew 会直接安装预先构建好的版本，几秒就完成，不需要另外安装任何东西。在 Intel Mac 上则会从源代码构建，需要几分钟，也需要 Xcode 26 以上（Swift 6.2）。这个工具需要 macOS 15 以上。
 

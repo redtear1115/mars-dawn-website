@@ -6,14 +6,52 @@
 
 ## Claude Code にインストールする
 
+コマンドラインツール `marsdawn` がスキルを書き出します。書き出されるファイルは、インストール済みの `marsdawn` のバージョンに合ったものです。まだ `marsdawn` がない場合は、[Homebrew](https://brew.sh) でインストールしてください。
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+そのあと、スキルをインストールします。
+
+```
+marsdawn skill --install
+```
+
+これで `~/.claude/skills/marsdawn/SKILL.md` が書き出されます。フォルダがなければ作成されます。ファイルは手元の `marsdawn` から作られるので、そのバージョンにないオプションが書かれることはありません。
+
+Claude Code は、PDF が必要なタスクのとき、またはあなたが読む Markdown 文書を書いたり修正したりしたときに、これを自動的に読み込みます。`/marsdawn` として自分で実行することもできます。先に中身を読みたい場合は、[短いファイル1つ](/cli/skill/SKILL.md)です。
+
+## marsdawn をアップグレードしたあと
+
+Homebrew は `marsdawn` をアップグレードしますが、スキルには手を触れないので、更新するまで古いバージョンのままです。
+
+```
+marsdawn skill --install --force
+```
+
+`--force` は、既存の `SKILL.md` を、あなたが加えた変更も含めて置き換えます。`--force` を付けない場合、内容の異なる `SKILL.md` がすでにあると、`marsdawn` はそのファイルに触れず、内容が違うことを知らせて、終了コード 64（`skill_differs`）で終了します。ファイルがすでに最新なら、何も変わりません。
+
+## ほかのエージェントの場合
+
+`--dir` に、お使いのエージェントがスキルを置くフォルダを指定すると、`marsdawn` はそこに `SKILL.md` を書き出します。
+
+```
+marsdawn skill --install --dir <path>
+```
+
+このファイルはただの Markdown で、説明とコマンドだけなので、指示ファイルを読むエージェントならそのまま使えます。
+
+## Homebrew やコマンドラインツールがない場合
+
+先に `marsdawn` をインストールできない場合は、ファイルを直接ダウンロードします。
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code は、PDF が必要なタスクのとき、またはあなたが読む Markdown 文書を書いたり修正したりしたときに、これを自動的に読み込みます。`/marsdawn` として自分で実行することもできます。[短いファイル1つ](/cli/skill/SKILL.md)なので、インストールする前に読んでみてください。
-
-他のエージェントでも同じファイルを使えます。ただの Markdown で、説明とコマンドが書いてあるだけなので、あなたのエージェントにこの URL を指定するか、そのまま貼り付けてください。このファイルは英語です。
+これはこのサイトにある最新のスキルを取得するので、古い `marsdawn` より新しいことがあります。ツールをインストールしたら、`marsdawn skill --install --force` で、それに合ったものに置き換えられます。エージェントにこの URL を指定するか、ファイルをそのまま貼り付けることもできます。このファイルは英語です。
 
 ## 教えること
 

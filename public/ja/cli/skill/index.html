@@ -79,10 +79,25 @@ try {
 </section>
 <div class="summary"><p><strong>1つの Markdown ファイルを <code>~/.claude/skills/marsdawn/SKILL.md</code> に置くだけ。</strong>これでエージェントが <code>marsdawn</code> をインストールし、PDF に書き出し、JSON の結果を読みます。何かを実行する前には、これまでどおり確認を求めます。</p></div>
 <h2 id="install-it-in-claude-code">Claude Code にインストールする</h2>
+<p>コマンドラインツール <code>marsdawn</code> がスキルを書き出します。書き出されるファイルは、インストール済みの <code>marsdawn</code> のバージョンに合ったものです。まだ <code>marsdawn</code> がない場合は、<a href="https://brew.sh">Homebrew</a> でインストールしてください。</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>そのあと、スキルをインストールします。</p>
+<pre><code>marsdawn skill --install</code></pre>
+<p>これで <code>~/.claude/skills/marsdawn/SKILL.md</code> が書き出されます。フォルダがなければ作成されます。ファイルは手元の <code>marsdawn</code> から作られるので、そのバージョンにないオプションが書かれることはありません。</p>
+<p>Claude Code は、PDF が必要なタスクのとき、またはあなたが読む Markdown 文書を書いたり修正したりしたときに、これを自動的に読み込みます。<code>/marsdawn</code> として自分で実行することもできます。先に中身を読みたい場合は、<a href="/cli/skill/SKILL.md">短いファイル1つ</a>です。</p>
+<h2 id="after-you-upgrade-marsdawn">marsdawn をアップグレードしたあと</h2>
+<p>Homebrew は <code>marsdawn</code> をアップグレードしますが、スキルには手を触れないので、更新するまで古いバージョンのままです。</p>
+<pre><code>marsdawn skill --install --force</code></pre>
+<p><code>--force</code> は、既存の <code>SKILL.md</code> を、あなたが加えた変更も含めて置き換えます。<code>--force</code> を付けない場合、内容の異なる <code>SKILL.md</code> がすでにあると、<code>marsdawn</code> はそのファイルに触れず、内容が違うことを知らせて、終了コード 64（<code>skill_differs</code>）で終了します。ファイルがすでに最新なら、何も変わりません。</p>
+<h2 id="for-other-agents">ほかのエージェントの場合</h2>
+<p><code>--dir</code> に、お使いのエージェントがスキルを置くフォルダを指定すると、<code>marsdawn</code> はそこに <code>SKILL.md</code> を書き出します。</p>
+<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
+<p>このファイルはただの Markdown で、説明とコマンドだけなので、指示ファイルを読むエージェントならそのまま使えます。</p>
+<h2 id="without-homebrew-or-the-command-line-tool">Homebrew やコマンドラインツールがない場合</h2>
+<p>先に <code>marsdawn</code> をインストールできない場合は、ファイルを直接ダウンロードします。</p>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
-<p>Claude Code は、PDF が必要なタスクのとき、またはあなたが読む Markdown 文書を書いたり修正したりしたときに、これを自動的に読み込みます。<code>/marsdawn</code> として自分で実行することもできます。<a href="/cli/skill/SKILL.md">短いファイル1つ</a>なので、インストールする前に読んでみてください。</p>
-<p>他のエージェントでも同じファイルを使えます。ただの Markdown で、説明とコマンドが書いてあるだけなので、あなたのエージェントにこの URL を指定するか、そのまま貼り付けてください。このファイルは英語です。</p>
+<p>これはこのサイトにある最新のスキルを取得するので、古い <code>marsdawn</code> より新しいことがあります。ツールをインストールしたら、<code>marsdawn skill --install --force</code> で、それに合ったものに置き換えられます。エージェントにこの URL を指定するか、ファイルをそのまま貼り付けることもできます。このファイルは英語です。</p>
 <h2 id="what-it-teaches">教えること</h2>
 <ul>
   <li><code>marsdawn</code> がなければ Homebrew でインストールし、バージョンを決め打ちせず <code>marsdawn --version</code> で確認する。</li>

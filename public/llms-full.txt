@@ -958,7 +958,7 @@ With [Homebrew](https://brew.sh):
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-Using a coding agent? [Add the marsdawn skill](/cli/skill/): one file that teaches it to open what it wrote in MarsDawn for your review, and to export PDFs.
+Using a coding agent? Run `marsdawn skill --install` to add [the marsdawn skill](/cli/skill/): one file that teaches it to open what it wrote in MarsDawn for your review, and to export PDFs.
 
 On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.
 
@@ -1246,7 +1246,7 @@ swift build -c release --product marsdawn
 
 ## Next
 
-- A one-file skill for agents that read instructions instead of a shell: [the marsdawn skill](/cli/skill/).
+- To have a coding agent do this for you, run `marsdawn skill --install` to add [the marsdawn agent skill](/cli/skill/).
 - An MCP server that wraps this same `export`: [marsdawn-mcp](/cli/mcp/).
 - Why this JSON result stays cheap for an agent's own context: [token-efficient review](/token-efficient-review/).
 - Making a MarsDawn theme with an agent: [make a theme with your agent](/themes/agents/).
@@ -1265,14 +1265,52 @@ This skill is one Markdown file. It teaches a coding agent to open a document it
 
 ## Install it in Claude Code
 
+The `marsdawn` command-line tool writes the skill for you, and the file it writes matches the version of `marsdawn` you have installed. If you don't have `marsdawn` yet, install it with [Homebrew](https://brew.sh):
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+Then install the skill:
+
+```
+marsdawn skill --install
+```
+
+That writes `~/.claude/skills/marsdawn/SKILL.md`, creating the folder if it isn't there. Because the file comes from your copy of `marsdawn`, it never describes an option your copy doesn't have.
+
+Claude Code loads it when a task calls for a PDF, or when it has written or revised a Markdown document for you to read, and you can run it yourself as `/marsdawn`. It's [one short file](/cli/skill/SKILL.md) if you'd like to read it first.
+
+## After you upgrade marsdawn
+
+Homebrew upgrades `marsdawn` but leaves the skill where it was, so it stays at the old version until you refresh it:
+
+```
+marsdawn skill --install --force
+```
+
+`--force` replaces the existing `SKILL.md`, including any changes you made to it. Without `--force`, if a different `SKILL.md` is already there, `marsdawn` leaves it alone, tells you it differs and exits with code 64 (`skill_differs`). If the file is already the current one, nothing changes.
+
+## For other agents
+
+Add `--dir` with the folder where your agent keeps its skills, and `marsdawn` writes `SKILL.md` there instead:
+
+```
+marsdawn skill --install --dir <path>
+```
+
+The file is plain Markdown, instructions and commands, so an agent that loads instruction files can use it as it is.
+
+## Without Homebrew or the command-line tool
+
+If you can't install `marsdawn` first, download the file instead:
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code loads it when a task calls for a PDF, or when it has written or revised a Markdown document for you to read, and you can run it yourself as `/marsdawn`. It's [one short file](/cli/skill/SKILL.md), so read it before you install it.
-
-Other agents can use the same file. It's plain Markdown, instructions and commands, so point yours at the URL or paste it in.
+This fetches the latest skill from this site, which may be ahead of an older `marsdawn`. Once you have the tool, `marsdawn skill --install --force` replaces it with the one that matches. You can also point an agent at the URL, or paste the file in.
 
 ## What it teaches
 
@@ -3821,7 +3859,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-在用寫程式的 agent 嗎？[加上 marsdawn skill](/zh-hant/cli/skill/)：一個檔案，教它把自己寫的文件在 MarsDawn 裡打開給你審閱，也能匯出 PDF。
+在用寫程式的 agent 嗎？執行 `marsdawn skill --install` 來加上 [marsdawn skill](/zh-hant/cli/skill/)：一個檔案，教它把自己寫的文件在 MarsDawn 裡打開給你審閱，也能輸出 PDF。
 
 在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成，不需要另外安裝任何東西。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上（Swift 6.2）。這個工具需要 macOS 15 以上。
 
@@ -4109,7 +4147,7 @@ swift build -c release --product marsdawn
 
 ## 接下來
 
-- 給讀指令檔而不是執行 shell 的 agent 用的一個檔案：[marsdawn skill](/zh-hant/cli/skill/)。
+- 讓寫程式的 agent 幫你做這件事：執行 `marsdawn skill --install` 來加上 [marsdawn 的 agent skill](/zh-hant/cli/skill/)。
 - 包住同一個 `export` 的 MCP 伺服器：[marsdawn-mcp](/zh-hant/cli/mcp/)。
 - 這份 JSON 結果為什麼不花 agent 自己的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
 - 和 agent 一起做 MarsDawn 主題：[和 agent 一起做主題](/zh-hant/themes/agents/)。
@@ -4128,14 +4166,52 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/skill/
 
 ## 在 Claude Code 中安裝
 
+命令列工具 `marsdawn` 會幫你寫好這個 skill，寫進去的內容和你已安裝的 `marsdawn` 版本相符。如果還沒有 `marsdawn`，先用 [Homebrew](https://brew.sh) 安裝：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+然後安裝 skill：
+
+```
+marsdawn skill --install
+```
+
+這會把 skill 寫到 `~/.claude/skills/marsdawn/SKILL.md`，資料夾不存在時會一併建立。因為檔案是由你手上的 `marsdawn` 產生的，裡面不會出現你這個版本沒有的選項。
+
+需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 `/marsdawn` 自己執行。想先看內容的話，它只是[一個簡短的檔案](/cli/skill/SKILL.md)。
+
+## 升級 marsdawn 之後
+
+Homebrew 會升級 `marsdawn`，但不會動 skill，所以它會停在舊版本，要自己更新：
+
+```
+marsdawn skill --install --force
+```
+
+`--force` 會取代現有的 `SKILL.md`，包括你自己改過的地方。不加 `--force` 的話，如果那裡已經有內容不同的 `SKILL.md`，`marsdawn` 不會動它，會告訴你內容不同，並以代碼 64（`skill_differs`）結束。檔案已經是最新的，就什麼都不改。
+
+## 給其他 agent
+
+加上 `--dir`，指到你的 agent 放 skill 的資料夾，`marsdawn` 就會把 `SKILL.md` 寫到那裡：
+
+```
+marsdawn skill --install --dir <path>
+```
+
+這個檔案是純 Markdown，只有說明和指令，會讀指令檔的 agent 可以直接用。
+
+## 沒有 Homebrew，或沒有命令列工具
+
+如果沒辦法先安裝 `marsdawn`，就直接下載這個檔案：
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 `/marsdawn` 自己執行。它只是[一個簡短的檔案](/cli/skill/SKILL.md)，安裝前先讀一遍。
-
-其他 agent 也能用同一個檔案。它是純 Markdown，只有說明和指令，讓你的 agent 讀這個網址，或直接貼給它就好。這個檔案是英文的。
+這會從本站抓最新的 skill，可能比較舊的 `marsdawn` 還新。等你裝好命令列工具，再執行 `marsdawn skill --install --force`，就會換成和它相符的版本。你也可以讓 agent 讀這個網址，或直接貼給它。這個檔案是英文的。
 
 ## 它教什麼
 
@@ -6718,7 +6794,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-在用写程序的 agent 吗？[加上 marsdawn skill](/zh-hans/cli/skill/)：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。
+在用写程序的 agent 吗？执行 `marsdawn skill --install` 来加上 [marsdawn skill](/zh-hans/cli/skill/)：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。
 
 在 Apple 芯片的 Mac 上，Homebrew 会直接安装预先构建好的版本，几秒就完成，不需要另外安装任何东西。在 Intel Mac 上则会从源代码构建，需要几分钟，也需要 Xcode 26 以上（Swift 6.2）。这个工具需要 macOS 15 以上。
 
@@ -7022,14 +7098,52 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/skill/
 
 ## 在 Claude Code 中安装
 
+命令行工具 `marsdawn` 会帮你写好这个 skill，写进去的内容和你已安装的 `marsdawn` 版本相符。如果还没有 `marsdawn`，先用 [Homebrew](https://brew.sh) 安装：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+然后安装 skill：
+
+```
+marsdawn skill --install
+```
+
+这会把 skill 写到 `~/.claude/skills/marsdawn/SKILL.md`，文件夹不存在时会一并创建。因为文件是由你手上的 `marsdawn` 生成的，里面不会出现你这个版本没有的选项。
+
+需要做出 PDF，或写好、改好一份要给你读的 Markdown 文稿时，Claude Code 会自动加载它，你也可以用 `/marsdawn` 自己运行。想先看内容的话，它只是[一个简短的文件](/cli/skill/SKILL.md)。
+
+## 升级 marsdawn 之后
+
+Homebrew 会升级 `marsdawn`，但不会动 skill，所以它会停在旧版本，要自己更新：
+
+```
+marsdawn skill --install --force
+```
+
+`--force` 会替换现有的 `SKILL.md`，包括你自己改过的地方。不加 `--force` 的话，如果那里已经有内容不同的 `SKILL.md`，`marsdawn` 不会动它，会告诉你内容不同，并以代码 64（`skill_differs`）退出。文件已经是最新的，就什么都不改。
+
+## 给其他 agent
+
+加上 `--dir`，指到你的 agent 放 skill 的文件夹，`marsdawn` 就会把 `SKILL.md` 写到那里：
+
+```
+marsdawn skill --install --dir <path>
+```
+
+这个文件是纯 Markdown，只有说明和命令，会读指令文件的 agent 可以直接用。
+
+## 没有 Homebrew，或没有命令行工具
+
+如果没办法先安装 `marsdawn`，就直接下载这个文件：
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-需要做出 PDF，或写好、改好一份要给你读的 Markdown 文稿时，Claude Code 会自动加载它，你也可以用 `/marsdawn` 自己运行。它只是[一个简短的文件](/cli/skill/SKILL.md)，安装前先读一遍。
-
-其他 agent 也能用同一个文件。它是纯 Markdown，只有说明和命令，让你的 agent 读这个网址，或直接贴给它就好。这个文件是英文的。
+这会从本站抓最新的 skill，可能比较旧的 `marsdawn` 还新。等你装好命令行工具，再执行 `marsdawn skill --install --force`，就会换成和它相符的版本。你也可以让 agent 读这个网址，或直接贴给它。这个文件是英文的。
 
 ## 它教什么
 
@@ -9612,7 +9726,7 @@ AI エージェントやスクリプトから marsdawn を呼び出しますか�
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-コーディングエージェントを使っていますか？[marsdawn スキルを追加](/ja/cli/skill/)してください。自分が書いたものを MarsDawn で開いてあなたに確認してもらう方法と、PDF の書き出しを教える、1つのファイルです。
+コーディングエージェントを使っていますか？`marsdawn skill --install` を実行して[marsdawn スキル](/ja/cli/skill/)を追加してください。自分が書いたものを MarsDawn で開いてあなたに確認してもらう方法と、PDF の書き出しを教える、1つのファイルです。
 
 Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールし、他に何もインストールする必要はありません。Intel Mac では代わりにソースから marsdawn をビルドするため数分かかり、Xcode 26 以降（Swift 6.2）が必要です。このツールは macOS 15 以降で動作します。
 
@@ -9916,14 +10030,52 @@ Source: https://marsdawn.southern-light.dev/ja/cli/skill/
 
 ## Claude Code にインストールする
 
+コマンドラインツール `marsdawn` がスキルを書き出します。書き出されるファイルは、インストール済みの `marsdawn` のバージョンに合ったものです。まだ `marsdawn` がない場合は、[Homebrew](https://brew.sh) でインストールしてください。
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+そのあと、スキルをインストールします。
+
+```
+marsdawn skill --install
+```
+
+これで `~/.claude/skills/marsdawn/SKILL.md` が書き出されます。フォルダがなければ作成されます。ファイルは手元の `marsdawn` から作られるので、そのバージョンにないオプションが書かれることはありません。
+
+Claude Code は、PDF が必要なタスクのとき、またはあなたが読む Markdown 文書を書いたり修正したりしたときに、これを自動的に読み込みます。`/marsdawn` として自分で実行することもできます。先に中身を読みたい場合は、[短いファイル1つ](/cli/skill/SKILL.md)です。
+
+## marsdawn をアップグレードしたあと
+
+Homebrew は `marsdawn` をアップグレードしますが、スキルには手を触れないので、更新するまで古いバージョンのままです。
+
+```
+marsdawn skill --install --force
+```
+
+`--force` は、既存の `SKILL.md` を、あなたが加えた変更も含めて置き換えます。`--force` を付けない場合、内容の異なる `SKILL.md` がすでにあると、`marsdawn` はそのファイルに触れず、内容が違うことを知らせて、終了コード 64（`skill_differs`）で終了します。ファイルがすでに最新なら、何も変わりません。
+
+## ほかのエージェントの場合
+
+`--dir` に、お使いのエージェントがスキルを置くフォルダを指定すると、`marsdawn` はそこに `SKILL.md` を書き出します。
+
+```
+marsdawn skill --install --dir <path>
+```
+
+このファイルはただの Markdown で、説明とコマンドだけなので、指示ファイルを読むエージェントならそのまま使えます。
+
+## Homebrew やコマンドラインツールがない場合
+
+先に `marsdawn` をインストールできない場合は、ファイルを直接ダウンロードします。
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code は、PDF が必要なタスクのとき、またはあなたが読む Markdown 文書を書いたり修正したりしたときに、これを自動的に読み込みます。`/marsdawn` として自分で実行することもできます。[短いファイル1つ](/cli/skill/SKILL.md)なので、インストールする前に読んでみてください。
-
-他のエージェントでも同じファイルを使えます。ただの Markdown で、説明とコマンドが書いてあるだけなので、あなたのエージェントにこの URL を指定するか、そのまま貼り付けてください。このファイルは英語です。
+これはこのサイトにある最新のスキルを取得するので、古い `marsdawn` より新しいことがあります。ツールをインストールしたら、`marsdawn skill --install --force` で、それに合ったものに置き換えられます。エージェントにこの URL を指定するか、ファイルをそのまま貼り付けることもできます。このファイルは英語です。
 
 ## 教えること
 
@@ -12510,7 +12662,7 @@ Mit [Homebrew](https://brew.sh):
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-Du nutzt einen Coding-Agenten? [Füge den marsdawn-Skill hinzu](/de/cli/skill/): eine Datei, die ihm beibringt, das Geschriebene zur Prüfung in MarsDawn zu öffnen und PDFs zu exportieren.
+Du nutzt einen Coding-Agenten? Führe `marsdawn skill --install` aus, um [den marsdawn-Skill](/de/cli/skill/) hinzuzufügen: eine Datei, die ihm beibringt, das Geschriebene zur Prüfung in MarsDawn zu öffnen und PDFs zu exportieren.
 
 Auf einem Mac mit Apple Chip installiert Homebrew in Sekunden eine vorkompilierte Version, ohne dass sonst etwas installiert werden muss. Auf einem Intel-Mac kompiliert es marsdawn stattdessen aus dem Quellcode. Das dauert ein paar Minuten und erfordert Xcode 26 oder neuer (Swift 6.2). Das Programm läuft unter macOS 15 oder neuer.
 
@@ -12798,7 +12950,7 @@ swift build -c release --product marsdawn
 
 ## Weiter
 
-- Ein Skill in einer Datei für Agenten, die Anweisungen lesen statt eine Shell zu benutzen: [der marsdawn-Skill](/de/cli/skill/).
+- Damit ein Coding-Agent das für dich erledigt, führe `marsdawn skill --install` aus, um [den marsdawn-Agent-Skill](/de/cli/skill/) hinzuzufügen.
 - Ein MCP-Server, der genau dieses `export` umschließt: [marsdawn-mcp](/de/cli/mcp/).
 - Warum dieses JSON-Ergebnis für den eigenen Kontext eines Agenten günstig bleibt: [Token-sparsames Prüfen](/de/token-efficient-review/).
 - Ein MarsDawn-Thema mit einem Agenten erstellen: [Mit deinem Agenten ein Thema erstellen](/de/themes/agents/).
@@ -12817,14 +12969,52 @@ Dieser Skill ist eine Markdown-Datei. Er bringt einem Coding-Agenten bei, ein Do
 
 ## In Claude Code installieren
 
+Das Befehlszeilenwerkzeug `marsdawn` schreibt den Skill für dich, und die Datei, die es schreibt, passt zur Version von `marsdawn`, die du installiert hast. Wenn du `marsdawn` noch nicht hast, installiere es mit [Homebrew](https://brew.sh):
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+Installiere dann den Skill:
+
+```
+marsdawn skill --install
+```
+
+Das schreibt `~/.claude/skills/marsdawn/SKILL.md` und legt den Ordner an, falls er fehlt. Weil die Datei von deiner Kopie von `marsdawn` stammt, beschreibt sie nie eine Option, die deine Kopie nicht hat.
+
+Claude Code lädt ihn, wenn eine Aufgabe ein PDF verlangt oder wenn es ein Markdown-Dokument zum Lesen für dich geschrieben oder überarbeitet hat, und du kannst ihn selbst als `/marsdawn` aufrufen. Wenn du ihn zuerst lesen möchtest: Es ist [eine kurze Datei](/cli/skill/SKILL.md).
+
+## Nach einem Upgrade von marsdawn
+
+Homebrew aktualisiert `marsdawn`, lässt den Skill aber, wo er war, er bleibt also auf der alten Version, bis du ihn auffrischst:
+
+```
+marsdawn skill --install --force
+```
+
+`--force` ersetzt die vorhandene `SKILL.md`, auch mit Änderungen, die du daran vorgenommen hast. Ohne `--force` lässt `marsdawn` eine bereits vorhandene, abweichende `SKILL.md` unangetastet, teilt dir mit, dass sie abweicht, und beendet sich mit Code 64 (`skill_differs`). Ist die Datei schon die aktuelle, ändert sich nichts.
+
+## Für andere Agenten
+
+Füge `--dir` mit dem Ordner hinzu, in dem dein Agent seine Skills ablegt, und `marsdawn` schreibt `SKILL.md` stattdessen dorthin:
+
+```
+marsdawn skill --install --dir <path>
+```
+
+Die Datei ist reines Markdown, Anweisungen und Befehle, ein Agent, der Anweisungsdateien lädt, kann sie also unverändert nutzen.
+
+## Ohne Homebrew oder das Befehlszeilenwerkzeug
+
+Wenn du `marsdawn` nicht zuerst installieren kannst, lade stattdessen die Datei herunter:
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code lädt ihn, wenn eine Aufgabe ein PDF verlangt oder wenn es ein Markdown-Dokument zum Lesen für dich geschrieben oder überarbeitet hat, und du kannst ihn selbst als `/marsdawn` aufrufen. Es ist [eine kurze Datei](/cli/skill/SKILL.md), lies sie also, bevor du sie installierst.
-
-Andere Agenten können dieselbe Datei verwenden. Sie ist reines Markdown, Anweisungen und Befehle, also verweise deinen Agenten auf die URL oder füge sie ein.
+Das holt den neuesten Skill von dieser Website, der einem älteren `marsdawn` voraus sein kann. Sobald du das Werkzeug hast, ersetzt `marsdawn skill --install --force` ihn durch den passenden. Du kannst auch einen Agenten auf die URL verweisen oder die Datei einfügen.
 
 ## Was er beibringt
 
@@ -15366,7 +15556,7 @@ Avec [Homebrew](https://brew.sh) :
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-Vous utilisez un agent de code ? [Ajoutez la skill marsdawn](/fr/cli/skill/) : un seul fichier qui lui apprend à ouvrir ce qu’il a écrit dans MarsDawn pour que vous le relisiez, et à exporter des PDF.
+Vous utilisez un agent de code ? Exécutez `marsdawn skill --install` pour ajouter [la skill marsdawn](/fr/cli/skill/) : un seul fichier qui lui apprend à ouvrir ce qu’il a écrit dans MarsDawn pour que vous le relisiez, et à exporter des PDF.
 
 Sur un Mac avec puce Apple, Homebrew installe une copie précompilée en quelques secondes, sans rien d’autre à installer. Sur un Mac Intel, il compile marsdawn à partir des sources, ce qui prend quelques minutes et nécessite Xcode 26 ou version ultérieure (Swift 6.2). L’outil fonctionne sous macOS 15 ou version ultérieure.
 
@@ -15654,7 +15844,7 @@ swift build -c release --product marsdawn
 
 ## Pour aller plus loin
 
-- Une compétence en un seul fichier pour les agents qui lisent des instructions plutôt qu’un shell : [la compétence marsdawn](/fr/cli/skill/).
+- Pour qu’un agent de code le fasse à votre place, exécutez `marsdawn skill --install` pour ajouter [la skill d’agent marsdawn](/fr/cli/skill/).
 - Un serveur MCP qui enveloppe ce même `export` : [marsdawn-mcp](/fr/cli/mcp/).
 - Pourquoi ce résultat JSON reste économique pour le contexte de l’agent : [une relecture économe en tokens](/fr/token-efficient-review/).
 - Créer un thème MarsDawn avec un agent : [Créer un thème avec votre agent](/fr/themes/agents/).
@@ -15673,14 +15863,52 @@ Cette compétence tient en un fichier Markdown. Elle apprend à un agent de code
 
 ## L’installer dans Claude Code
 
+L’outil en ligne de commande `marsdawn` écrit la skill pour vous, et le fichier qu’il écrit correspond à la version de `marsdawn` que vous avez installée. Si vous n’avez pas encore `marsdawn`, installez-le avec [Homebrew](https://brew.sh) :
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+Installez ensuite la skill :
+
+```
+marsdawn skill --install
+```
+
+Cela écrit `~/.claude/skills/marsdawn/SKILL.md`, en créant le dossier s’il n’existe pas. Comme le fichier vient de votre copie de `marsdawn`, il ne décrit jamais une option que votre copie n’a pas.
+
+Claude Code la charge quand une tâche demande un PDF, ou quand il a écrit ou révisé un document Markdown que vous allez lire, et vous pouvez la lancer vous-même avec `/marsdawn`. Si vous voulez la lire d’abord, c’est [un fichier court](/cli/skill/SKILL.md).
+
+## Après une mise à jour de marsdawn
+
+Homebrew met à jour `marsdawn` mais laisse la skill où elle était, elle reste donc à l’ancienne version tant que vous ne la rafraîchissez pas :
+
+```
+marsdawn skill --install --force
+```
+
+`--force` remplace le `SKILL.md` existant, y compris les modifications que vous y avez faites. Sans `--force`, si un `SKILL.md` différent est déjà là, `marsdawn` n’y touche pas, vous dit qu’il diffère et se termine avec le code 64 (`skill_differs`). Si le fichier est déjà le bon, rien ne change.
+
+## Pour d’autres agents
+
+Ajoutez `--dir` avec le dossier où votre agent range ses skills, et `marsdawn` y écrit `SKILL.md` à la place :
+
+```
+marsdawn skill --install --dir <path>
+```
+
+Le fichier est du Markdown brut, des instructions et des commandes : un agent qui charge des fichiers d’instructions peut l’utiliser tel quel.
+
+## Sans Homebrew ni l’outil en ligne de commande
+
+Si vous ne pouvez pas installer `marsdawn` d’abord, téléchargez plutôt le fichier :
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code la charge quand une tâche demande un PDF, ou quand il a écrit ou révisé un document Markdown que vous allez lire, et vous pouvez la lancer vous-même avec `/marsdawn`. C’est [un fichier court](/cli/skill/SKILL.md) : lisez-le avant de l’installer.
-
-D’autres agents peuvent utiliser le même fichier. C’est du Markdown brut, des instructions et des commandes : indiquez l’URL à votre agent ou collez le contenu.
+Cela récupère la dernière skill de ce site, qui peut être en avance sur un `marsdawn` plus ancien. Une fois l’outil installé, `marsdawn skill --install --force` la remplace par celle qui correspond. Vous pouvez aussi indiquer l’URL à un agent, ou coller le fichier.
 
 ## Ce qu’elle enseigne
 
@@ -18222,7 +18450,7 @@ Con [Homebrew](https://brew.sh):
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-¿Usas un agente de programación? [Agrega la skill de marsdawn](/es/cli/skill/): un solo archivo que le enseña a abrir lo que escribió en MarsDawn para que lo revises, y a exportar PDF.
+¿Usas un agente de programación? Ejecuta `marsdawn skill --install` para agregar [la skill de marsdawn](/es/cli/skill/): un solo archivo que le enseña a abrir lo que escribió en MarsDawn para que lo revises, y a exportar PDF.
 
 En una Mac con chip de Apple, Homebrew instala una copia precompilada en segundos, sin nada más que instalar. En una Mac con Intel, compila marsdawn desde el código fuente, lo que toma unos minutos y requiere Xcode 26 o posterior (Swift 6.2). La herramienta funciona en macOS 15 o posterior.
 
@@ -18510,7 +18738,7 @@ swift build -c release --product marsdawn
 
 ## Siguiente
 
-- Una skill de un solo archivo para agentes que leen instrucciones en lugar de usar una shell: [la skill de marsdawn](/es/cli/skill/).
+- Para que un agente de programación lo haga por ti, ejecuta `marsdawn skill --install` para agregar [la skill de agente de marsdawn](/es/cli/skill/).
 - Un servidor MCP que envuelve este mismo `export`: [marsdawn-mcp](/es/cli/mcp/).
 - Por qué este resultado JSON sale barato para el contexto del propio agente: [revisión con pocos tokens](/es/token-efficient-review/).
 - Crear un tema de MarsDawn con un agente: [Crea un tema con tu agente](/es/themes/agents/).
@@ -18529,14 +18757,52 @@ Esta skill es un archivo Markdown. Le enseña a un agente de programación a abr
 
 ## Instálala en Claude Code
 
+La herramienta de línea de comandos `marsdawn` escribe la skill por ti, y el archivo que escribe corresponde a la versión de `marsdawn` que tienes instalada. Si aún no tienes `marsdawn`, instálalo con [Homebrew](https://brew.sh):
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+Después instala la skill:
+
+```
+marsdawn skill --install
+```
+
+Esto escribe `~/.claude/skills/marsdawn/SKILL.md` y crea la carpeta si no existe. Como el archivo sale de tu copia de `marsdawn`, nunca describe una opción que tu copia no tenga.
+
+Claude Code la carga cuando una tarea pide un PDF, o cuando escribió o revisó un documento Markdown para que lo leas, y tú puedes ejecutarla con `/marsdawn`. Si prefieres leerla antes, es [un archivo corto](/cli/skill/SKILL.md).
+
+## Después de actualizar marsdawn
+
+Homebrew actualiza `marsdawn` pero deja la skill donde estaba, así que se queda en la versión antigua hasta que la renueves:
+
+```
+marsdawn skill --install --force
+```
+
+`--force` reemplaza el `SKILL.md` existente, incluidos los cambios que hayas hecho en él. Sin `--force`, si ya hay un `SKILL.md` distinto, `marsdawn` no lo toca, te avisa de que es distinto y termina con el código 64 (`skill_differs`). Si el archivo ya es el actual, no cambia nada.
+
+## Para otros agentes
+
+Añade `--dir` con la carpeta donde tu agente guarda sus skills, y `marsdawn` escribe `SKILL.md` allí:
+
+```
+marsdawn skill --install --dir <path>
+```
+
+El archivo es Markdown simple, instrucciones y comandos, así que un agente que carga archivos de instrucciones puede usarlo tal cual.
+
+## Sin Homebrew ni la herramienta de línea de comandos
+
+Si no puedes instalar `marsdawn` primero, descarga el archivo:
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code la carga cuando una tarea pide un PDF, o cuando escribió o revisó un documento Markdown para que lo leas, y tú puedes ejecutarla con `/marsdawn`. Es [un archivo corto](/cli/skill/SKILL.md), así que léelo antes de instalarlo.
-
-Otros agentes pueden usar el mismo archivo. Es Markdown simple, instrucciones y comandos, así que indícale la URL a tu agente o pega el contenido.
+Esto descarga la última skill de este sitio, que puede ir por delante de un `marsdawn` más antiguo. Cuando tengas la herramienta, `marsdawn skill --install --force` la reemplaza por la que corresponde. También puedes indicarle la URL a un agente o pegar el archivo.
 
 ## Qué enseña
 
@@ -21078,7 +21344,7 @@ AI 에이전트나 스크립트에서 marsdawn을 호출하나요? JSON 출력�
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-코딩 에이전트를 쓰고 있나요? [marsdawn 스킬을 추가하세요](/ko/cli/skill/). 파일 하나로, 에이전트가 자기가 쓴 것을 MarsDawn에서 열어 검토를 받고 PDF로 내보내는 법을 익힙니다.
+코딩 에이전트를 쓰고 있나요? `marsdawn skill --install`을 실행해 [marsdawn 스킬](/ko/cli/skill/)을 추가하세요. 파일 하나로, 에이전트가 자기가 쓴 것을 MarsDawn에서 열어 검토를 받고 PDF로 내보내는 법을 익힙니다.
 
 Apple 실리콘 Mac에서는 Homebrew가 미리 빌드된 버전을 몇 초 만에 설치하며, 따로 설치할 것이 없습니다. Intel Mac에서는 대신 소스에서 marsdawn을 빌드하므로 몇 분이 걸리고 Xcode 26 이상(Swift 6.2)이 필요합니다. 이 도구는 macOS 15 이상에서 실행됩니다.
 
@@ -21366,7 +21632,7 @@ swift build -c release --product marsdawn
 
 ## 다음
 
-- 셸 대신 지침 파일을 읽는 에이전트를 위한 파일 하나짜리 스킬: [marsdawn 스킬](/ko/cli/skill/).
+- 코딩 에이전트가 이 일을 대신하게 하려면 `marsdawn skill --install`을 실행해 [marsdawn 에이전트 스킬](/ko/cli/skill/)을 추가하세요.
 - 이 `export`를 그대로 감싼 MCP 서버: [marsdawn-mcp](/ko/cli/mcp/).
 - 이 JSON 결과가 에이전트 자신의 컨텍스트에 부담이 적은 이유: [토큰을 아끼는 검토](/ko/token-efficient-review/).
 - 에이전트로 MarsDawn 테마 만들기: [에이전트와 함께 테마 만들기](/ko/themes/agents/).
@@ -21385,14 +21651,52 @@ Source: https://marsdawn.southern-light.dev/ko/cli/skill/
 
 ## Claude Code에 설치하기
 
+명령줄 도구 `marsdawn`가 스킬을 대신 써 주며, 써 주는 파일은 설치된 `marsdawn` 버전과 일치합니다. 아직 `marsdawn`가 없다면 [Homebrew](https://brew.sh)로 설치하세요.
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+그런 다음 스킬을 설치합니다.
+
+```
+marsdawn skill --install
+```
+
+이 명령은 `~/.claude/skills/marsdawn/SKILL.md`를 쓰고, 폴더가 없으면 만듭니다. 파일은 설치된 `marsdawn`에서 나오므로, 그 버전에 없는 옵션이 적히는 일은 없습니다.
+
+Claude Code는 PDF가 필요한 작업일 때, 또는 여러분이 읽을 Markdown 문서를 쓰거나 고쳤을 때 이 스킬을 불러옵니다. `/marsdawn`으로 직접 실행할 수도 있습니다. 먼저 내용을 읽어 보고 싶다면 [짧은 파일 하나](/cli/skill/SKILL.md)입니다.
+
+## marsdawn을 업그레이드한 뒤
+
+Homebrew는 `marsdawn`를 업그레이드하지만 스킬은 그대로 두므로, 새로 고치기 전까지 예전 버전으로 남아 있습니다.
+
+```
+marsdawn skill --install --force
+```
+
+`--force`는 기존 `SKILL.md`를, 직접 고친 부분까지 포함해 교체합니다. `--force` 없이 실행하면, 내용이 다른 `SKILL.md`가 이미 있을 때 `marsdawn`는 그 파일을 건드리지 않고 내용이 다르다고 알려 준 뒤 코드 64(`skill_differs`)로 종료합니다. 파일이 이미 최신이면 아무것도 바뀌지 않습니다.
+
+## 다른 에이전트의 경우
+
+`--dir`에 에이전트가 스킬을 두는 폴더를 지정하면 `marsdawn`가 `SKILL.md`를 그곳에 씁니다.
+
+```
+marsdawn skill --install --dir <path>
+```
+
+이 파일은 지침과 명령으로 된 일반 Markdown이므로, 지침 파일을 불러오는 에이전트라면 그대로 쓸 수 있습니다.
+
+## Homebrew나 명령줄 도구가 없는 경우
+
+먼저 `marsdawn`를 설치할 수 없다면 파일을 직접 내려받으세요.
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code는 PDF가 필요한 작업일 때, 또는 여러분이 읽을 Markdown 문서를 쓰거나 고쳤을 때 이 스킬을 불러옵니다. `/marsdawn`으로 직접 실행할 수도 있습니다. [짧은 파일 하나](/cli/skill/SKILL.md)이니 설치하기 전에 읽어 보세요.
-
-다른 에이전트도 같은 파일을 쓸 수 있습니다. 지침과 명령으로 된 일반 Markdown이므로, 에이전트에게 URL을 알려 주거나 내용을 붙여 넣으세요.
+이 방법은 이 사이트의 최신 스킬을 가져오므로, 오래된 `marsdawn`보다 앞서 있을 수 있습니다. 도구를 설치한 뒤에는 `marsdawn skill --install --force`로 거기에 맞는 것으로 교체할 수 있습니다. 에이전트에게 이 URL을 알려 주거나 파일을 붙여 넣어도 됩니다.
 
 ## 가르치는 내용
 

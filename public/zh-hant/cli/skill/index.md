@@ -6,14 +6,52 @@
 
 ## 在 Claude Code 中安裝
 
+命令列工具 `marsdawn` 會幫你寫好這個 skill，寫進去的內容和你已安裝的 `marsdawn` 版本相符。如果還沒有 `marsdawn`，先用 [Homebrew](https://brew.sh) 安裝：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+然後安裝 skill：
+
+```
+marsdawn skill --install
+```
+
+這會把 skill 寫到 `~/.claude/skills/marsdawn/SKILL.md`，資料夾不存在時會一併建立。因為檔案是由你手上的 `marsdawn` 產生的，裡面不會出現你這個版本沒有的選項。
+
+需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 `/marsdawn` 自己執行。想先看內容的話，它只是[一個簡短的檔案](/cli/skill/SKILL.md)。
+
+## 升級 marsdawn 之後
+
+Homebrew 會升級 `marsdawn`，但不會動 skill，所以它會停在舊版本，要自己更新：
+
+```
+marsdawn skill --install --force
+```
+
+`--force` 會取代現有的 `SKILL.md`，包括你自己改過的地方。不加 `--force` 的話，如果那裡已經有內容不同的 `SKILL.md`，`marsdawn` 不會動它，會告訴你內容不同，並以代碼 64（`skill_differs`）結束。檔案已經是最新的，就什麼都不改。
+
+## 給其他 agent
+
+加上 `--dir`，指到你的 agent 放 skill 的資料夾，`marsdawn` 就會把 `SKILL.md` 寫到那裡：
+
+```
+marsdawn skill --install --dir <path>
+```
+
+這個檔案是純 Markdown，只有說明和指令，會讀指令檔的 agent 可以直接用。
+
+## 沒有 Homebrew，或沒有命令列工具
+
+如果沒辦法先安裝 `marsdawn`，就直接下載這個檔案：
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 `/marsdawn` 自己執行。它只是[一個簡短的檔案](/cli/skill/SKILL.md)，安裝前先讀一遍。
-
-其他 agent 也能用同一個檔案。它是純 Markdown，只有說明和指令，讓你的 agent 讀這個網址，或直接貼給它就好。這個檔案是英文的。
+這會從本站抓最新的 skill，可能比較舊的 `marsdawn` 還新。等你裝好命令列工具，再執行 `marsdawn skill --install --force`，就會換成和它相符的版本。你也可以讓 agent 讀這個網址，或直接貼給它。這個檔案是英文的。
 
 ## 它教什麼
 

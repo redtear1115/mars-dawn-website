@@ -6,14 +6,52 @@
 
 ## Claude Code에 설치하기
 
+명령줄 도구 `marsdawn`가 스킬을 대신 써 주며, 써 주는 파일은 설치된 `marsdawn` 버전과 일치합니다. 아직 `marsdawn`가 없다면 [Homebrew](https://brew.sh)로 설치하세요.
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+그런 다음 스킬을 설치합니다.
+
+```
+marsdawn skill --install
+```
+
+이 명령은 `~/.claude/skills/marsdawn/SKILL.md`를 쓰고, 폴더가 없으면 만듭니다. 파일은 설치된 `marsdawn`에서 나오므로, 그 버전에 없는 옵션이 적히는 일은 없습니다.
+
+Claude Code는 PDF가 필요한 작업일 때, 또는 여러분이 읽을 Markdown 문서를 쓰거나 고쳤을 때 이 스킬을 불러옵니다. `/marsdawn`으로 직접 실행할 수도 있습니다. 먼저 내용을 읽어 보고 싶다면 [짧은 파일 하나](/cli/skill/SKILL.md)입니다.
+
+## marsdawn을 업그레이드한 뒤
+
+Homebrew는 `marsdawn`를 업그레이드하지만 스킬은 그대로 두므로, 새로 고치기 전까지 예전 버전으로 남아 있습니다.
+
+```
+marsdawn skill --install --force
+```
+
+`--force`는 기존 `SKILL.md`를, 직접 고친 부분까지 포함해 교체합니다. `--force` 없이 실행하면, 내용이 다른 `SKILL.md`가 이미 있을 때 `marsdawn`는 그 파일을 건드리지 않고 내용이 다르다고 알려 준 뒤 코드 64(`skill_differs`)로 종료합니다. 파일이 이미 최신이면 아무것도 바뀌지 않습니다.
+
+## 다른 에이전트의 경우
+
+`--dir`에 에이전트가 스킬을 두는 폴더를 지정하면 `marsdawn`가 `SKILL.md`를 그곳에 씁니다.
+
+```
+marsdawn skill --install --dir <path>
+```
+
+이 파일은 지침과 명령으로 된 일반 Markdown이므로, 지침 파일을 불러오는 에이전트라면 그대로 쓸 수 있습니다.
+
+## Homebrew나 명령줄 도구가 없는 경우
+
+먼저 `marsdawn`를 설치할 수 없다면 파일을 직접 내려받으세요.
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code는 PDF가 필요한 작업일 때, 또는 여러분이 읽을 Markdown 문서를 쓰거나 고쳤을 때 이 스킬을 불러옵니다. `/marsdawn`으로 직접 실행할 수도 있습니다. [짧은 파일 하나](/cli/skill/SKILL.md)이니 설치하기 전에 읽어 보세요.
-
-다른 에이전트도 같은 파일을 쓸 수 있습니다. 지침과 명령으로 된 일반 Markdown이므로, 에이전트에게 URL을 알려 주거나 내용을 붙여 넣으세요.
+이 방법은 이 사이트의 최신 스킬을 가져오므로, 오래된 `marsdawn`보다 앞서 있을 수 있습니다. 도구를 설치한 뒤에는 `marsdawn skill --install --force`로 거기에 맞는 것으로 교체할 수 있습니다. 에이전트에게 이 URL을 알려 주거나 파일을 붙여 넣어도 됩니다.
 
 ## 가르치는 내용
 

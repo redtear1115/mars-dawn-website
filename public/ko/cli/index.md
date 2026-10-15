@@ -14,7 +14,7 @@ AI 에이전트나 스크립트에서 marsdawn을 호출하나요? JSON 출력�
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-코딩 에이전트를 쓰고 있나요? [marsdawn 스킬을 추가하세요](/ko/cli/skill/). 파일 하나로, 에이전트가 자기가 쓴 것을 MarsDawn에서 열어 검토를 받고 PDF로 내보내는 법을 익힙니다.
+코딩 에이전트를 쓰고 있나요? `marsdawn skill --install`을 실행해 [marsdawn 스킬](/ko/cli/skill/)을 추가하세요. 파일 하나로, 에이전트가 자기가 쓴 것을 MarsDawn에서 열어 검토를 받고 PDF로 내보내는 법을 익힙니다.
 
 Apple 실리콘 Mac에서는 Homebrew가 미리 빌드된 버전을 몇 초 만에 설치하며, 따로 설치할 것이 없습니다. Intel Mac에서는 대신 소스에서 marsdawn을 빌드하므로 몇 분이 걸리고 Xcode 26 이상(Swift 6.2)이 필요합니다. 이 도구는 macOS 15 이상에서 실행됩니다.
 

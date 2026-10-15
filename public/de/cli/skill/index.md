@@ -6,14 +6,52 @@ Dieser Skill ist eine Markdown-Datei. Er bringt einem Coding-Agenten bei, ein Do
 
 ## In Claude Code installieren
 
+Das Befehlszeilenwerkzeug `marsdawn` schreibt den Skill für dich, und die Datei, die es schreibt, passt zur Version von `marsdawn`, die du installiert hast. Wenn du `marsdawn` noch nicht hast, installiere es mit [Homebrew](https://brew.sh):
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+Installiere dann den Skill:
+
+```
+marsdawn skill --install
+```
+
+Das schreibt `~/.claude/skills/marsdawn/SKILL.md` und legt den Ordner an, falls er fehlt. Weil die Datei von deiner Kopie von `marsdawn` stammt, beschreibt sie nie eine Option, die deine Kopie nicht hat.
+
+Claude Code lädt ihn, wenn eine Aufgabe ein PDF verlangt oder wenn es ein Markdown-Dokument zum Lesen für dich geschrieben oder überarbeitet hat, und du kannst ihn selbst als `/marsdawn` aufrufen. Wenn du ihn zuerst lesen möchtest: Es ist [eine kurze Datei](/cli/skill/SKILL.md).
+
+## Nach einem Upgrade von marsdawn
+
+Homebrew aktualisiert `marsdawn`, lässt den Skill aber, wo er war, er bleibt also auf der alten Version, bis du ihn auffrischst:
+
+```
+marsdawn skill --install --force
+```
+
+`--force` ersetzt die vorhandene `SKILL.md`, auch mit Änderungen, die du daran vorgenommen hast. Ohne `--force` lässt `marsdawn` eine bereits vorhandene, abweichende `SKILL.md` unangetastet, teilt dir mit, dass sie abweicht, und beendet sich mit Code 64 (`skill_differs`). Ist die Datei schon die aktuelle, ändert sich nichts.
+
+## Für andere Agenten
+
+Füge `--dir` mit dem Ordner hinzu, in dem dein Agent seine Skills ablegt, und `marsdawn` schreibt `SKILL.md` stattdessen dorthin:
+
+```
+marsdawn skill --install --dir <path>
+```
+
+Die Datei ist reines Markdown, Anweisungen und Befehle, ein Agent, der Anweisungsdateien lädt, kann sie also unverändert nutzen.
+
+## Ohne Homebrew oder das Befehlszeilenwerkzeug
+
+Wenn du `marsdawn` nicht zuerst installieren kannst, lade stattdessen die Datei herunter:
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code lädt ihn, wenn eine Aufgabe ein PDF verlangt oder wenn es ein Markdown-Dokument zum Lesen für dich geschrieben oder überarbeitet hat, und du kannst ihn selbst als `/marsdawn` aufrufen. Es ist [eine kurze Datei](/cli/skill/SKILL.md), lies sie also, bevor du sie installierst.
-
-Andere Agenten können dieselbe Datei verwenden. Sie ist reines Markdown, Anweisungen und Befehle, also verweise deinen Agenten auf die URL oder füge sie ein.
+Das holt den neuesten Skill von dieser Website, der einem älteren `marsdawn` voraus sein kann. Sobald du das Werkzeug hast, ersetzt `marsdawn skill --install --force` ihn durch den passenden. Du kannst auch einen Agenten auf die URL verweisen oder die Datei einfügen.
 
 ## Was er beibringt
 

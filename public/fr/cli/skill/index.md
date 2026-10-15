@@ -6,14 +6,52 @@ Cette compétence tient en un fichier Markdown. Elle apprend à un agent de code
 
 ## L’installer dans Claude Code
 
+L’outil en ligne de commande `marsdawn` écrit la skill pour vous, et le fichier qu’il écrit correspond à la version de `marsdawn` que vous avez installée. Si vous n’avez pas encore `marsdawn`, installez-le avec [Homebrew](https://brew.sh) :
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+Installez ensuite la skill :
+
+```
+marsdawn skill --install
+```
+
+Cela écrit `~/.claude/skills/marsdawn/SKILL.md`, en créant le dossier s’il n’existe pas. Comme le fichier vient de votre copie de `marsdawn`, il ne décrit jamais une option que votre copie n’a pas.
+
+Claude Code la charge quand une tâche demande un PDF, ou quand il a écrit ou révisé un document Markdown que vous allez lire, et vous pouvez la lancer vous-même avec `/marsdawn`. Si vous voulez la lire d’abord, c’est [un fichier court](/cli/skill/SKILL.md).
+
+## Après une mise à jour de marsdawn
+
+Homebrew met à jour `marsdawn` mais laisse la skill où elle était, elle reste donc à l’ancienne version tant que vous ne la rafraîchissez pas :
+
+```
+marsdawn skill --install --force
+```
+
+`--force` remplace le `SKILL.md` existant, y compris les modifications que vous y avez faites. Sans `--force`, si un `SKILL.md` différent est déjà là, `marsdawn` n’y touche pas, vous dit qu’il diffère et se termine avec le code 64 (`skill_differs`). Si le fichier est déjà le bon, rien ne change.
+
+## Pour d’autres agents
+
+Ajoutez `--dir` avec le dossier où votre agent range ses skills, et `marsdawn` y écrit `SKILL.md` à la place :
+
+```
+marsdawn skill --install --dir <path>
+```
+
+Le fichier est du Markdown brut, des instructions et des commandes : un agent qui charge des fichiers d’instructions peut l’utiliser tel quel.
+
+## Sans Homebrew ni l’outil en ligne de commande
+
+Si vous ne pouvez pas installer `marsdawn` d’abord, téléchargez plutôt le fichier :
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code la charge quand une tâche demande un PDF, ou quand il a écrit ou révisé un document Markdown que vous allez lire, et vous pouvez la lancer vous-même avec `/marsdawn`. C’est [un fichier court](/cli/skill/SKILL.md) : lisez-le avant de l’installer.
-
-D’autres agents peuvent utiliser le même fichier. C’est du Markdown brut, des instructions et des commandes : indiquez l’URL à votre agent ou collez le contenu.
+Cela récupère la dernière skill de ce site, qui peut être en avance sur un `marsdawn` plus ancien. Une fois l’outil installé, `marsdawn skill --install --force` la remplace par celle qui correspond. Vous pouvez aussi indiquer l’URL à un agent, ou coller le fichier.
 
 ## Ce qu’elle enseigne
 

@@ -6,14 +6,52 @@ This skill is one Markdown file. It teaches a coding agent to open a document it
 
 ## Install it in Claude Code
 
+The `marsdawn` command-line tool writes the skill for you, and the file it writes matches the version of `marsdawn` you have installed. If you don't have `marsdawn` yet, install it with [Homebrew](https://brew.sh):
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+Then install the skill:
+
+```
+marsdawn skill --install
+```
+
+That writes `~/.claude/skills/marsdawn/SKILL.md`, creating the folder if it isn't there. Because the file comes from your copy of `marsdawn`, it never describes an option your copy doesn't have.
+
+Claude Code loads it when a task calls for a PDF, or when it has written or revised a Markdown document for you to read, and you can run it yourself as `/marsdawn`. It's [one short file](/cli/skill/SKILL.md) if you'd like to read it first.
+
+## After you upgrade marsdawn
+
+Homebrew upgrades `marsdawn` but leaves the skill where it was, so it stays at the old version until you refresh it:
+
+```
+marsdawn skill --install --force
+```
+
+`--force` replaces the existing `SKILL.md`, including any changes you made to it. Without `--force`, if a different `SKILL.md` is already there, `marsdawn` leaves it alone, tells you it differs and exits with code 64 (`skill_differs`). If the file is already the current one, nothing changes.
+
+## For other agents
+
+Add `--dir` with the folder where your agent keeps its skills, and `marsdawn` writes `SKILL.md` there instead:
+
+```
+marsdawn skill --install --dir <path>
+```
+
+The file is plain Markdown, instructions and commands, so an agent that loads instruction files can use it as it is.
+
+## Without Homebrew or the command-line tool
+
+If you can't install `marsdawn` first, download the file instead:
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-Claude Code loads it when a task calls for a PDF, or when it has written or revised a Markdown document for you to read, and you can run it yourself as `/marsdawn`. It's [one short file](/cli/skill/SKILL.md), so read it before you install it.
-
-Other agents can use the same file. It's plain Markdown, instructions and commands, so point yours at the URL or paste it in.
+This fetches the latest skill from this site, which may be ahead of an older `marsdawn`. Once you have the tool, `marsdawn skill --install --force` replaces it with the one that matches. You can also point an agent at the URL, or paste the file in.
 
 ## What it teaches
 
