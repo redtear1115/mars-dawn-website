@@ -24,6 +24,12 @@ Chacun a sa propre variante claire et sombre : changer l’apparence de votre Ma
 
 Exportez en PDF ou imprimez, et la page utilise la palette claire de votre thème : les diagrammes Mermaid y sont dessinés, les blocs de code gardent leur coloration syntaxique, et les sauts de page évitent de séparer un titre de sa section ou de couper un tableau ou un diagramme en deux. L’[outil en ligne de commande marsdawn](/fr/cli/), gratuit, utilise le même moteur d’export : un script ou un agent produit donc le même PDF, dans n’importe lequel des quatre thèmes, avec `--theme`.
 
+## Une fois la page imprimée
+
+Une réunion autour de pages imprimées, un stylo dans la marge, un dossier papier classé.
+
+[Film MarsDawn (en anglais), 88 secondes](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Créez le vôtre, et parcourez ce que d’autres ont fait
 
 [Créez un thème dans votre navigateur](/fr/themes/new/) : choisissez des couleurs et quelques options de style, voyez-les appliquées en direct, et envoyez-le en issue GitHub pour relecture — pas d’installation, pas de git. [La galerie](/fr/themes/gallery/) montre chaque thème soumis qu’un mainteneur a relu et fusionné, filtrable selon son usage. Installez-en un dans l’app depuis Réglages › Apparence › Obtenir plus de thèmes…, et Coup d’œil l’utilise aussi dans le Finder.

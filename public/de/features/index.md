@@ -194,6 +194,12 @@ Suche in der App „Kurzbefehle“ nach MarsDawn, um drei Aktionen zu finden: Ne
 
 [Eine Mac-App](/de/native/)
 
+## Nachdem die Seite gedruckt ist
+
+Eine Besprechung rund um gedruckte Seiten, ein Stift am Rand, eine Papierakte im Ordner.
+
+[MarsDawn-Film (Englisch), 88 Sekunden](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Probier es auf deinem Mac aus
 
 MarsDawn ist kostenlos erhältlich. Teste alles 14 Tage lang und schalte es danach einmalig für 4,99 USD frei. Kein Abo, kein Konto. Es braucht macOS 26 oder neuer.

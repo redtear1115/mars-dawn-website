@@ -194,6 +194,12 @@ MarsDawn에는 자체 AI 모델이 없습니다. 에이전트가 쓴 글을 요�
 
 [Mac 앱](/ko/native/)
 
+## 페이지를 인쇄한 뒤
+
+인쇄한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.
+
+[MarsDawn 영상(영어), 88초](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Mac에서 사용해 보세요
 
 MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하면 됩니다. 구독도, 계정도 필요 없습니다. macOS 26 이상이 필요합니다.

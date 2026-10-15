@@ -194,6 +194,12 @@ Busca MarsDawn en la app Atajos para encontrar tres acciones: Nuevo documento Ma
 
 [Una app para Mac](/es/native/)
 
+## Después de imprimir la página
+
+Una reunión alrededor de páginas impresas, un bolígrafo en el margen, un registro en papel archivado.
+
+[Video de MarsDawn (en inglés), 88 segundos](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Pruébalo en tu Mac
 
 MarsDawn se descarga gratis. Prueba todo durante 14 días y después desbloquéalo una sola vez por 4,99 USD. Sin suscripción ni cuenta. Requiere macOS 26 o posterior.

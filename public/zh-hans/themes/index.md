@@ -24,6 +24,12 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 agent 也能用 `--theme` 生成一模一样的 PDF，四种主题都可以。
 
+## 页面印出来之后
+
+大家围着印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。
+
+[MarsDawn 影片，88 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## 打造自己的主题，也看看别人做的
 
 [在浏览器里打造一个主题](/zh-hans/themes/new/)：挑选颜色和几个样式选项，实时看效果，再送出成一个 GitHub issue 让人审核——不用安装，也不用 git。[主题图库](/zh-hans/themes/gallery/)收录每一套经过维护者审核并合并的投稿主题，可以按用途筛选。在 App 的“设置 › 外观 › 获取更多主题…”就能安装，访达的快速查看也会跟着套用。

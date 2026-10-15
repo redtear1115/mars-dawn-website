@@ -24,6 +24,12 @@ Cada uno tiene su propia variante clara y oscura, así que al cambiar el aspecto
 
 Exporta a PDF o imprime, y la página usa la paleta clara de tu tema: los diagramas Mermaid se dibujan en ella, los bloques de código conservan el resaltado de sintaxis, y los saltos de página evitan separar un título de su sección o partir una tabla o un diagrama por la mitad. La [herramienta de línea de comandos marsdawn](/es/cli/), gratuita, usa el mismo exportador, así que un script o un agente genera el mismo PDF, en cualquiera de los cuatro temas, con `--theme`.
 
+## Después de imprimir la página
+
+Una reunión alrededor de páginas impresas, un bolígrafo en el margen, un registro en papel archivado.
+
+[Video de MarsDawn (en inglés), 88 segundos](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Crea el tuyo y explora lo que hicieron otros
 
 [Crea un tema en tu navegador](/es/themes/new/): elige colores y unas pocas opciones de estilo, míralos aplicados en vivo y envíalo como un issue de GitHub para revisión — sin instalación, sin git. [La galería](/es/themes/gallery/) muestra cada tema enviado que un mantenedor haya revisado y fusionado, filtrable por para qué sirve. Instala cualquiera en la app desde Ajustes › Aspecto › Obtener más temas…, y Vista rápida en el Finder también lo usa.

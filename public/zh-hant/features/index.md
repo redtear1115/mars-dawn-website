@@ -194,6 +194,12 @@ MarsDawn 沒有自己的 AI 模型。它不會幫你摘要或評分 agent 寫的
 
 [為 Mac 而做](/zh-hant/native/)
 
+## 頁面印出來之後
+
+大家圍著印出來的頁面開會，有人拿筆在頁邊寫字，紙本紀錄收進檔案。
+
+[MarsDawn 影片，88 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## 在你的 Mac 上試試
 
 MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。

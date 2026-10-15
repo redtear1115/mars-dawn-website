@@ -194,6 +194,12 @@ Search for MarsDawn in the Shortcuts app to find three actions: New Markdown Doc
 
 [A Mac app](/native/)
 
+## After the page is printed
+
+A meeting around printed pages, a pen in the margin, a paper record on file.
+
+[MarsDawn film, 88 seconds](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Try it on your Mac
 
 MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account. It needs macOS 26 or later.

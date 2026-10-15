@@ -194,6 +194,12 @@ Recherchez MarsDawn dans l’app Raccourcis pour trouver trois actions : Nouveau
 
 [Une app Mac](/fr/native/)
 
+## Une fois la page imprimée
+
+Une réunion autour de pages imprimées, un stylo dans la marge, un dossier papier classé.
+
+[Film MarsDawn (en anglais), 88 secondes](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Essayez-le sur votre Mac
 
 MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis débloquez-le une seule fois pour 4,99 USD. Sans abonnement ni compte. macOS 26 ou version ultérieure est requis.

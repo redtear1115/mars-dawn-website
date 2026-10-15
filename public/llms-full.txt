@@ -266,6 +266,12 @@ Search for MarsDawn in the Shortcuts app to find three actions: New Markdown Doc
 
 [A Mac app](/native/)
 
+## After the page is printed
+
+A meeting around printed pages, a pen in the margin, a paper record on file.
+
+[MarsDawn film, 88 seconds](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Try it on your Mac
 
 MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account. It needs macOS 26 or later.
@@ -1442,6 +1448,12 @@ Each one has its own light and dark variant, so switching your Mac's appearance 
 ## PDF export and print use the same theme
 
 Export to PDF or print, and the page uses your theme's light palette: Mermaid diagrams are drawn into it, code blocks keep their syntax highlighting, and page breaks avoid splitting a heading from its section or cutting a table or diagram in half. The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script or an agent produces the identical PDF, in any of the four themes, with `--theme`.
+
+## After the page is printed
+
+A meeting around printed pages, a pen in the margin, a paper record on file.
+
+[MarsDawn film, 88 seconds](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
 ## Build your own, and browse what others made
 
@@ -3117,6 +3129,12 @@ MarsDawn 沒有自己的 AI 模型。它不會幫你摘要或評分 agent 寫的
 
 [為 Mac 而做](/zh-hant/native/)
 
+## 頁面印出來之後
+
+大家圍著印出來的頁面開會，有人拿筆在頁邊寫字，紙本紀錄收進檔案。
+
+[MarsDawn 影片，88 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## 在你的 Mac 上試試
 
 MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。
@@ -4293,6 +4311,12 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 ## PDF 輸出和列印用同一個主題
 
 輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開表格與圖表。免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，所以腳本或 agent 也能用 `--theme` 產生一模一樣的 PDF，四種主題都可以。
+
+## 頁面印出來之後
+
+大家圍著印出來的頁面開會，有人拿筆在頁邊寫字，紙本紀錄收進檔案。
+
+[MarsDawn 影片，88 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
 ## 打造自己的主題，也看看別人做的
 
@@ -6006,6 +6030,12 @@ MarsDawn 没有自己的 AI 模型。它不会帮你摘要或评分 agent 写的
 
 [为 Mac 而做](/zh-hans/native/)
 
+## 页面印出来之后
+
+大家围着印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。
+
+[MarsDawn 影片，88 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## 在你的 Mac 上试试
 
 MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。
@@ -7175,6 +7205,12 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 ## PDF 导出和打印用同一个主题
 
 导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 agent 也能用 `--theme` 生成一模一样的 PDF，四种主题都可以。
+
+## 页面印出来之后
+
+大家围着印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。
+
+[MarsDawn 影片，88 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
 ## 打造自己的主题，也看看别人做的
 
@@ -8888,6 +8924,12 @@ MarsDawn は独自の AI モデルを持っていません。エージェント�
 
 [Mac アプリ](/ja/native/)
 
+## ページを印刷したあと
+
+印刷したページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。
+
+[MarsDawn の動画（88 秒）](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Mac で試してみる
 
 MarsDawn は無料でダウンロードできます。14日間はすべての機能を試せて、その後は USD 4.99 で一度だけ購入します。サブスクリプションもアカウントも不要です。macOS 26 以降が必要です。
@@ -10057,6 +10099,12 @@ MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種�
 ## PDF 書き出しとプリントは同じテーマを使う
 
 PDF に書き出す、またはプリントすると、テーマのライトカラーが使われます。Mermaid 図はそこに描き込まれ、コードブロックは構文のハイライトを保ち、改ページは見出しをそのセクションから切り離したり、表や図を途中で切ったりしないよう配慮されます。無料の[marsdawn コマンドラインツール](/ja/cli/)も同じ書き出しエンジンを使うので、スクリプトやエージェントも `--theme` で、4種類のどのテーマでも同一の PDF を作れます。
+
+## ページを印刷したあと
+
+印刷したページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。
+
+[MarsDawn の動画（88 秒）](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
 ## 自分のテーマを作り、他の人が作ったものも見る
 
@@ -11770,6 +11818,12 @@ Suche in der App „Kurzbefehle“ nach MarsDawn, um drei Aktionen zu finden: Ne
 
 [Eine Mac-App](/de/native/)
 
+## Nachdem die Seite gedruckt ist
+
+Eine Besprechung rund um gedruckte Seiten, ein Stift am Rand, eine Papierakte im Ordner.
+
+[MarsDawn-Film (Englisch), 88 Sekunden](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Probier es auf deinem Mac aus
 
 MarsDawn ist kostenlos erhältlich. Teste alles 14 Tage lang und schalte es danach einmalig für 4,99 USD frei. Kein Abo, kein Konto. Es braucht macOS 26 oder neuer.
@@ -12946,6 +13000,12 @@ Jedes hat seine eigene helle und dunkle Variante: Wechselst du das Erscheinungsb
 ## PDF-Export und Drucken verwenden dasselbe Thema
 
 Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themas: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden keine Tabelle und kein Diagramm in der Mitte durch. Das kostenlose [Befehlszeilenwerkzeug marsdawn](/de/cli/) verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit `--theme` das identische PDF, in jedem der vier Themen.
+
+## Nachdem die Seite gedruckt ist
+
+Eine Besprechung rund um gedruckte Seiten, ein Stift am Rand, eine Papierakte im Ordner.
+
+[MarsDawn-Film (Englisch), 88 Sekunden](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
 ## Bau dein eigenes, und sieh dir an, was andere gemacht haben
 
@@ -14614,6 +14674,12 @@ Recherchez MarsDawn dans l’app Raccourcis pour trouver trois actions : Nouveau
 
 [Une app Mac](/fr/native/)
 
+## Une fois la page imprimée
+
+Une réunion autour de pages imprimées, un stylo dans la marge, un dossier papier classé.
+
+[Film MarsDawn (en anglais), 88 secondes](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Essayez-le sur votre Mac
 
 MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis débloquez-le une seule fois pour 4,99 USD. Sans abonnement ni compte. macOS 26 ou version ultérieure est requis.
@@ -15790,6 +15856,12 @@ Chacun a sa propre variante claire et sombre : changer l’apparence de votre Ma
 ## L’export PDF et l’impression utilisent le même thème
 
 Exportez en PDF ou imprimez, et la page utilise la palette claire de votre thème : les diagrammes Mermaid y sont dessinés, les blocs de code gardent leur coloration syntaxique, et les sauts de page évitent de séparer un titre de sa section ou de couper un tableau ou un diagramme en deux. L’[outil en ligne de commande marsdawn](/fr/cli/), gratuit, utilise le même moteur d’export : un script ou un agent produit donc le même PDF, dans n’importe lequel des quatre thèmes, avec `--theme`.
+
+## Une fois la page imprimée
+
+Une réunion autour de pages imprimées, un stylo dans la marge, un dossier papier classé.
+
+[Film MarsDawn (en anglais), 88 secondes](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
 ## Créez le vôtre, et parcourez ce que d’autres ont fait
 
@@ -17458,6 +17530,12 @@ Busca MarsDawn en la app Atajos para encontrar tres acciones: Nuevo documento Ma
 
 [Una app para Mac](/es/native/)
 
+## Después de imprimir la página
+
+Una reunión alrededor de páginas impresas, un bolígrafo en el margen, un registro en papel archivado.
+
+[Video de MarsDawn (en inglés), 88 segundos](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Pruébalo en tu Mac
 
 MarsDawn se descarga gratis. Prueba todo durante 14 días y después desbloquéalo una sola vez por 4,99 USD. Sin suscripción ni cuenta. Requiere macOS 26 o posterior.
@@ -18634,6 +18712,12 @@ Cada uno tiene su propia variante clara y oscura, así que al cambiar el aspecto
 ## La exportación a PDF y la impresión usan el mismo tema
 
 Exporta a PDF o imprime, y la página usa la paleta clara de tu tema: los diagramas Mermaid se dibujan en ella, los bloques de código conservan el resaltado de sintaxis, y los saltos de página evitan separar un título de su sección o partir una tabla o un diagrama por la mitad. La [herramienta de línea de comandos marsdawn](/es/cli/), gratuita, usa el mismo exportador, así que un script o un agente genera el mismo PDF, en cualquiera de los cuatro temas, con `--theme`.
+
+## Después de imprimir la página
+
+Una reunión alrededor de páginas impresas, un bolígrafo en el margen, un registro en papel archivado.
+
+[Video de MarsDawn (en inglés), 88 segundos](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
 ## Crea el tuyo y explora lo que hicieron otros
 
@@ -20302,6 +20386,12 @@ MarsDawn에는 자체 AI 모델이 없습니다. 에이전트가 쓴 글을 요�
 
 [Mac 앱](/ko/native/)
 
+## 페이지를 인쇄한 뒤
+
+인쇄한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.
+
+[MarsDawn 영상(영어), 88초](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## Mac에서 사용해 보세요
 
 MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하면 됩니다. 구독도, 계정도 필요 없습니다. macOS 26 이상이 필요합니다.
@@ -21478,6 +21568,12 @@ MarsDawn에는 새벽, 클래식, 모던, 비비드 네 가지 미리보기 테�
 ## PDF 내보내기와 프린트도 같은 테마로
 
 PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레트를 씁니다. Mermaid 다이어그램이 그대로 그려지고, 코드 블록은 구문 강조를 유지하며, 페이지 나눔은 제목과 본문을 떼어 놓거나 표나 다이어그램을 반으로 자르지 않습니다. 무료 [marsdawn 명령줄 도구](/ko/cli/)도 같은 내보내기 엔진을 쓰므로, 스크립트나 에이전트도 `--theme`으로 네 가지 테마 중 어느 것이든 똑같은 PDF를 만듭니다.
+
+## 페이지를 인쇄한 뒤
+
+인쇄한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.
+
+[MarsDawn 영상(영어), 88초](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
 ## 직접 만들고, 다른 사람이 만든 것도 둘러보세요
 

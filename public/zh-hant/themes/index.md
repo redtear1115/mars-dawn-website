@@ -24,6 +24,12 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 
 輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開表格與圖表。免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，所以腳本或 agent 也能用 `--theme` 產生一模一樣的 PDF，四種主題都可以。
 
+## 頁面印出來之後
+
+大家圍著印出來的頁面開會，有人拿筆在頁邊寫字，紙本紀錄收進檔案。
+
+[MarsDawn 影片，88 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+
 ## 打造自己的主題，也看看別人做的
 
 [在瀏覽器裡打造一個主題](/zh-hant/themes/new/)：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。[主題庫](/zh-hant/themes/gallery/)收錄每一套經過維護者審核並合併的投稿主題，可以依用途篩選。在 App 的「設定 › 外觀 › 取得更多主題⋯」就能安裝，Finder 的快速查看也會跟著套用。
