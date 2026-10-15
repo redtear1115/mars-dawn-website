@@ -1,32 +1,92 @@
-# MacMD Viewer 対 MarsDawn。
+# MacMD Viewer と MarsDawn。
 
-どちらも Markdown をレンダリングして読むための Mac アプリです。MacMD Viewer は `.md` ファイルを開いて完成したページを表示しますが、編集はできません。MarsDawn は同じようにレンダリングされたプレビューの隣にエディタを置き、1つのウインドウで書きながら確認できます。ここでは機能ごとに両者の違いを見ていきます。
+どちらも、Markdown を整ったページとして読むための Mac アプリです。MacMD Viewer は `.md` ファイルを開いて表示します。設計上、読み取り専用で、ファイルへの変更は一切保存しません。MarsDawn は同じようなレンダリングされたプレビューの隣にエディタを置くので、ひとつのウインドウで書いて読めます。このページでは両者を項目ごとに並べ、MacMD Viewer についての事実にはすべて出典を付け、MacMD Viewer のほうが向いている場合も述べます。
 
-## 読むだけでよく、編集の必要がない場合
+MacMD Viewer 自身のサイトとリポジトリで 2026 年 10 月 15 日に確認しました（バージョン 1.7.0、2026 年 10 月 10 日公開）。古くなっている点があれば、[サポートページ](/ja/support/)の連絡先までお知らせください。
 
-他の人が書いた Markdown を読むことだけが仕事で、ソースに触れる必要が一切ないなら、MacMD Viewer は妥当な選択です。まさにそのために作られており、今すぐ入手でき、より古い macOS でも動作します。読むことだけが仕事ではなくなったときに MarsDawn が価値を持ちます。エージェントの Markdown はたいてい、もう一度手直しが入るからです。
-
-## それぞれのアプリでできること
+## どんなもので、何ができるか
 
 |  | MacMD Viewer | MarsDawn |
 |---|---|---|
-| 編集 | 設計上、読み取り専用 | ソースを編集し、その隣にレンダリングされたページ |
-| プレビューテーマ | 12 種類のドキュメントテーマ | 4 種類、それぞれにライトとダーク |
-| 図と数式 | Mermaid とコードのハイライト。数式の表示は紹介ページに記載なし | Mermaid、コードのハイライト、KaTeX の数式 |
-| Finder のクイックルック | あり | あり |
-| PDF とプリント | あり | あり |
-| 動作環境 | macOS 14（Sonoma）以降 | macOS 26（Tahoe）以降 |
-| インターフェイスの言語 | 公式の資料に記載なし | 英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語 |
+| 種類 | ビューア：「読み取り専用で、ソースファイルへの変更は保存しない」[[S1](#s1), [S9](#s9)] | ライブプレビューつきのエディタ：左に Markdown、右にレンダリングされたページ。3 つのレイアウト（ソース、分割、プレビュー） |
+| 編集 | できない [[S1](#s1), [S7](#s7), [S9](#s9)] | できる。レンダリングされたページ自体は編集できず、隣のソースを編集する |
+| ライブプレビュー | ファイルを表示する。ほかのエディタが保存すると自動で再読み込みする [[S9](#s9)] | 入力するたびに更新される。ほかのアプリがファイルを変更すると、MarsDawn は再読み込みして位置を保つ（自分の未保存の編集がない場合）。 |
+| Mermaid | あり：フローチャート、シーケンス図、状態遷移図、ガントチャート、円グラフなど。オフラインで動作 [[S1](#s1), [S3](#s3), [S7](#s7)] | あり |
+| 数式 | なし：README に「数式（LaTeX/KaTeX）は表示しない」と明記 [[S7](#s7)] | あり、KaTeX |
+| コードのハイライト | あり [[S1](#s1), [S9](#s9)] | あり |
+| テーマ | 12 種類のドキュメントテーマ [[S1](#s1), [S7](#s7)] | 標準で 4 種類（夜明け、クラシック、モダン、ビビッド）、それぞれにライトとダーク。テーマギャラリーにはさらに多数 |
+| タブ | あり。任意で、初期設定はオフ（1.6.0 から）[[S5](#s5), [S8](#s8)] | あり |
+| PDF 書き出し | あり。1 枚の連続したページで、現在のテーマ、透かしなし [[S3](#s3), [S9](#s9)] | あり。ページ分けされ、テーマのライトの配色。ページの区切りは短いコードや表を分断しないようにする |
+| プリント | あり。macOS のプリントダイアログを使う [[S3](#s3), [S9](#s9)] | あり |
+| Finder のクイックルック | あり。付属。システム設定で有効にする。選んだテーマを使う [[S4](#s4)] | あり。トライアル中でも期間後でも使える。選んだテーマを使う |
+| クイックルックでの Mermaid と数式 | Mermaid：あり [[S4](#s4)]。数式：なし。数式は表示しない [[S7](#s7)] | あり。どちらも描画される |
+| コマンドライン | 独立したコマンドラインツールの記載なし。`markdownviewer://` の URL スキームと、ファイルを開くための Claude Code のプラグインとフックがある [[S6](#s6)] | 無料の `marsdawn` ツール：`marsdawn export` はアプリなしで PDF を書き出し、`marsdawn open` は行を指定してファイルを開く |
+| インターフェイスの言語 | 公式の資料に記載なし [[S1](#s1), [S3](#s3), [S7](#s7)] | 英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語 |
+| 動作環境 | macOS 14（Sonoma）以降。Apple シリコンと Intel [[S1](#s1), [S7](#s7)] | macOS 26（Tahoe）以降 |
+| ほかのプラットフォーム | Mac のみ [[S1](#s1)] | Mac のみ。iPhone や iPad のアプリはない |
 
 ## 価格と購入方法
 
 |  | MacMD Viewer | MarsDawn |
 |---|---|---|
-| 購入場所 | 公式サイト、Homebrew、Setapp。Mac App Store にはない | Mac App Store のみ |
-| 価格 | Mac 1 台につき USD 19.99 を一度。複数台のパックはより高額 | 無料ダウンロード、その後 USD 4.99 を一度 |
-| 購入前に試す | 試用なし。直接購入には 14 日間の返金保証 | 14 日間の無料試用 |
-| 返金とアップデート | 公式サイト経由 | Apple 経由 |
-| アカウント | 不要 | 不要 |
+| 購入場所 | 公式サイト、Homebrew、Setapp。Mac App Store には掲載なし [[S2](#s2), [S7](#s7)] | Mac App Store のみ |
+| 価格 | 使用中の Mac 1 台につき USD 19.99 を一度（別の Mac に移せる）。Family Pack は 3 キーで USD 39.99。10 キーは USD 129 [[S2](#s2)] | 無料ダウンロード、その後 USD 4.99 を一度 |
+| 購入前に試す | トライアルも無料版もなし。直接購入は 14 日以内なら全額返金 [[S2](#s2)] | 14 日間の無料トライアル。すべての機能が使える |
+| 返金 | 14 日以内に、自社のサポート窓口を通じて [[S2](#s2)] | Apple 経由 |
+| アップデート | 同じメジャーバージョン内のアップデートは無料 [[S2](#s2)]。直接ダウンロード版は Sparkle で自動更新 [[S7](#s7)] | Mac App Store 経由 |
+| アカウント | 不要 [[S2](#s2)] | 不要 |
+| サブスクリプション | なし [[S1](#s1), [S2](#s2)] | なし |
+
+## トライアルや購入のあと
+
+|  | MacMD Viewer | MarsDawn |
+|---|---|---|
+| 状態 | トライアルなし。買えばずっと使える | 14 日後にロックを解除しないと、書類は開くが内容は覆われる。ファイルには一切変更が加わらず、クイックルックと無料の `marsdawn` の書き出しはそのまま使える |
+
+## 出典
+
+- S1 · [https://macmdviewer.com/](https://macmdviewer.com/)
+- S2 · [https://macmdviewer.com/pricing](https://macmdviewer.com/pricing)
+- S3 · [https://macmdviewer.com/features](https://macmdviewer.com/features)
+- S4 · [https://macmdviewer.com/quicklook](https://macmdviewer.com/quicklook)
+- S5 · [https://macmdviewer.com/changelog](https://macmdviewer.com/changelog)
+- S6 · [https://macmdviewer.com/docs/integrations](https://macmdviewer.com/docs/integrations)
+- S7 · [https://github.com/macmdviewer/MacMDViewer](https://github.com/macmdviewer/MacMDViewer)
+- S8 · [https://macmdviewer.com/press](https://macmdviewer.com/press)
+- S9 · [https://macmdviewer.com/product-facts.md](https://macmdviewer.com/product-facts.md)
+- S10 · [https://github.com/macmdviewer/MacMDViewer/releases](https://github.com/macmdviewer/MacMDViewer/releases)
+
+## どちらを選ぶか
+
+**MacMD Viewer を選ぶのは、**Markdown を読むだけで、ファイルを変更しないことが保証されていてほしい場合です。ファイルへの変更は一切保存されません [[S1](#s1)]。次の場合にも向いています。Mac が macOS 14 または 15 である（MarsDawn は macOS 26 が必要）[[S1](#s1), [S7](#s7)]。Mac App Store より、開発者の公式サイト、Homebrew、Setapp から買いたい [[S2](#s2), [S7](#s7)]。エージェントが編集したファイルを自動でビューアに開かせたい（Claude Code、Cursor、Windsurf のフックで実現） [[S6](#s6)]。ページ分けされた PDF より、1 枚の連続したページの PDF がよい [[S9](#s9)]。トライアルはありませんが、14 日間の返金があります [[S2](#s2)]。
+
+**MarsDawn を選ぶのは、**Markdown を読んだあとにもう一度手を入れる場合です。エージェントが書いた計画、README、仕様書は、たいてい 1 か所直す、1 文を言い換える、1 節を足す必要があり、MarsDawn なら読んでいるそのウインドウで直せます。数式（KaTeX）にも対応しており、MacMD Viewer は表示しないと述べています [[S7](#s7)]。インターフェイスは 8 言語。無料の `marsdawn` コマンドラインでアプリなしに PDF を書き出せます。価格は、すべて使える 14 日間のトライアルのあと USD 4.99 です。
+
+**どちらでもよいのは、**新しめの Mac で Markdown を読み、Mermaid の図をきちんと描画したく、Finder のクイックルックも使いたい場合です。どちらも対応しています。
+
+**両方使うこともできます。**両者は排他的ではありません。読むだけのファイルには読み取り専用のビューア、書くファイルにはエディタ、という使い分けも問題ありません。
+
+## よくある質問
+
+### MacMD Viewer はファイルを編集できますか？
+
+いいえ。読み取り専用で、本人の言葉によれば、ソースファイルへの変更は保存しません [[S1](#s1), [S9](#s9)]。「テキストエディタで開く」（1.7.0 から）はありますが、これはファイルをほかのアプリに渡すものです [[S5](#s5)]。
+
+### MacMD Viewer は Mac App Store にありますか？
+
+自身のページに挙がっているのは公式サイト、Homebrew、Setapp で、Mac App Store への言及はありません [[S2](#s2), [S7](#s7)]。MarsDawn は Mac App Store のみです。
+
+### MarsDawn は同じファイルを開けますか？
+
+はい。`.md` ファイルのほか、プレーンテキストと PDF も開けます。UTF-8 のテキストはそのまま編集でき、PDF はビューアで開きます。
+
+### macOS 14 や 15 の場合は？
+
+MacMD Viewer は macOS 14 以降で動きます [[S1](#s1)]。MarsDawn は macOS 26 以降が必要ですが、無料の `marsdawn` コマンドラインツールなら PDF の書き出しはできます。
+
+### なぜ片方は USD 19.99 で、もう片方は USD 4.99 なのですか？
+
+得られるものと支払い方が違います。MacMD Viewer は一度きりの購入で、14 日間の返金があり、トライアルはありません [[S2](#s2)]。MarsDawn は無料でダウンロードでき、14 日間のトライアルのあと、一度きりのロック解除です。どちらもサブスクリプションではありません。
 
 ## 今すぐ無料で試す
 
@@ -43,6 +103,7 @@ open notes.pdf
 - 完全な解説：[Markdown から PDF へ](/ja/markdown-to-pdf/)。
 - MarsDawn ができないこと：[一覧はこちら](/ja/limits/)。
 - コマンドラインツールのすべてのオプション：[コマンドライン](/ja/cli/)。
+- MarsDawn の機能をすべて 1 ページで：[機能一覧](/ja/features/)。
 
 ## その他
 
@@ -86,10 +147,10 @@ open notes.pdf
 - [仕様書テンプレート](https://marsdawn.southern-light.dev/ja/templates/spec/index.md): 要件、Mermaid のフロー図、受け入れ基準を含む Markdown の仕様書テンプレート。エージェントが埋め、あなたが MarsDawn で確認します。
 - [フローチャートテンプレート](https://marsdawn.southern-light.dev/ja/templates/flowchart/index.md): Markdown で書く Mermaid フローチャートのテンプレート。図の下に各ステップを書き出します。Mac でプレビューし、PDF に書き出せます。
 - [議事録テンプレート](https://marsdawn.southern-light.dev/ja/templates/meeting-notes/index.md): 決定事項と、担当者付きのアクションアイテムをまとめる Markdown の議事録テンプレート。エージェントが書き、あなたが MarsDawn で確かめます。
-- [English](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer renders Markdown read-only for USD 19.99. MarsDawn edits and previews side by side, free to try then USD 4.99 once on the Mac App Store.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀檢視器，直接購買 USD 19.99。MarsDawn 邊編輯邊預覽，免費試用後在 Mac App Store 一次解鎖 USD 4.99。逐項比較功能、價格和購買方式。
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读查看器，直接购买 USD 19.99。MarsDawn 边编辑边预览，免费试用后在 Mac App Store 一次解锁 USD 4.99。逐项比较功能、价格和购买方式。
-- [Deutsch](https://marsdawn.southern-light.dev/de/vs/macmd-viewer/index.md): MacMD Viewer zeigt Markdown nur zum Lesen an, für 19,99 USD. MarsDawn bearbeitet und zeigt die Vorschau daneben, kostenlos testen, dann einmalig 4,99 USD im Mac App Store.
-- [Français](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer affiche le Markdown en lecture seule pour 19,99 USD. MarsDawn modifie et affiche l’aperçu côte à côte, gratuit à l’essai puis 4,99 USD une seule fois sur le Mac App Store.
-- [Español](https://marsdawn.southern-light.dev/es/vs/macmd-viewer/index.md): MacMD Viewer muestra Markdown solo para lectura por 19,99 USD. MarsDawn edita y muestra la vista previa lado a lado: pruébalo gratis y luego paga 4,99 USD una sola vez en el Mac App Store.
-- [한국어](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 Markdown을 읽기 전용으로 렌더링하며 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 무료로 체험한 뒤 Mac App Store에서 USD 4.99에 한 번만 구입하면 됩니다.
+- [English](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer is a read-only Markdown viewer for USD 19.99. MarsDawn edits and previews side by side: free for 14 days, then USD 4.99 once.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 4.99 解鎖一次。逐項比較，附來源。
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读的 Markdown 查看器，USD 19.99。MarsDawn 边编辑边预览，免费试用 14 天，之后 USD 4.99 解锁一次。逐项比较，附来源。
+- [Deutsch](https://marsdawn.southern-light.dev/de/vs/macmd-viewer/index.md): MacMD Viewer ist ein Markdown-Viewer nur zum Lesen für 19,99 USD. MarsDawn bearbeitet und zeigt die Vorschau daneben: 14 Tage kostenlos, dann einmalig 4,99 USD. Zeile für Zeile verglichen, mit Quellen.
+- [Français](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie et affiche l’aperçu côte à côte : 14 jours gratuits, puis 4,99 USD une seule fois. Comparaison ligne par ligne, avec sources.
+- [Español](https://marsdawn.southern-light.dev/es/vs/macmd-viewer/index.md): MacMD Viewer es un visor de Markdown de solo lectura por 19,99 USD. MarsDawn edita y muestra la vista previa al lado: 14 días gratis y luego 4,99 USD una sola vez. Comparación fila por fila, con fuentes.
+- [한국어](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 읽기 전용 Markdown 뷰어로 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 14일 무료 체험 후 USD 4.99를 한 번만 내면 됩니다. 항목별 비교, 출처 포함.
