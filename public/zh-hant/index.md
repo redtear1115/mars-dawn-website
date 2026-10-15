@@ -33,6 +33,7 @@ brew install redtear1115/tap/marsdawn
 - [為 Mac 而做](/zh-hant/native/)：原生視窗、分頁、自動儲存、快速查看。
 - [你寫的內容留在你的 Mac 上](/zh-hant/yours/)：不需要帳號，沒有同步，也沒有雲端。
 - [免費試用，買一次就好](/zh-hant/pay-once/)：免費試用 14 天，之後 USD 4.99 買一次，沒有訂閱。
+- [功能一覽](/zh-hant/features/)：MarsDawn 能做的事，一頁看完。
 
 購買前先知道。 [MarsDawn 做不到的事](/zh-hant/limits/)
 
@@ -60,6 +61,7 @@ brew install redtear1115/tap/marsdawn
 
 ## 其他頁面
 
+- [功能一覽](https://marsdawn.southern-light.dev/zh-hant/features/index.md): Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。
 - [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hant/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。

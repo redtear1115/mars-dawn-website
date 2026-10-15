@@ -33,6 +33,7 @@ brew install redtear1115/tap/marsdawn
 - [Mac アプリ](/ja/native/)：ネイティブのウインドウとタブ、自動保存、クイックルック。
 - [あなたの文章は Mac に残ります](/ja/yours/)：アカウント不要、同期なし、クラウドなし。
 - [無料で試して、一度だけ購入](/ja/pay-once/)：14日間無料、その後は一度だけ USD 4.99。サブスクリプションはありません。
+- [機能一覧](/ja/features/)：MarsDawn でできることを、1ページで。
 
 購入前に知っておくこと。 [MarsDawn ができないこと](/ja/limits/)
 
@@ -60,6 +61,7 @@ brew install redtear1115/tap/marsdawn
 
 ## その他
 
+- [機能一覧](https://marsdawn.southern-light.dev/ja/features/index.md): Mac ネイティブの Markdown エディタ：リアルタイムプレビュー、Mermaid と数式、テーマに加え、会議や書き込み、紙での保管に使える PDF とプリントのページ。
 - [あなたの文章は Mac に残ります](https://marsdawn.southern-light.dev/ja/yours/index.md): MarsDawn にはアカウントも同期もクラウドもありません。Markdown 文書はあなたの Mac 上に、選んだファイルとフォルダの中に残ります。
 - [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
 - [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックや表を分断しないよう配慮されます。

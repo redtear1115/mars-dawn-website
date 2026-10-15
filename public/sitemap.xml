@@ -97,6 +97,102 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/"/>
   </url>
   <url>
+    <loc>https://marsdawn.southern-light.dev/features/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/features/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/features/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/features/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/features/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/features/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/features/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/features/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hant/features/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/features/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/features/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/features/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/features/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/features/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/features/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/features/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/zh-hans/features/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/features/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/features/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/features/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/features/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/features/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/features/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/features/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ja/features/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/features/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/features/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/features/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/features/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/features/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/features/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/features/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/de/features/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/features/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/features/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/features/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/features/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/features/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/features/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/features/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/fr/features/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/features/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/features/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/features/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/features/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/features/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/features/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/features/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/es/features/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/features/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/features/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/features/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/features/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/features/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/features/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/features/"/>
+  </url>
+  <url>
+    <loc>https://marsdawn.southern-light.dev/ko/features/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/features/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/features/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/features/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/features/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/features/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/features/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/features/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/features/"/>
+  </url>
+  <url>
     <loc>https://marsdawn.southern-light.dev/yours/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/yours/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/yours/"/>

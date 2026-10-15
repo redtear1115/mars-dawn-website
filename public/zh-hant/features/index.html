@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>功能一覽：Mac 上的 Markdown 編輯器 · MarsDawn</title>
+<meta name="description" content="Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/annotations.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/features/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/features/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/features/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/features/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/features/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/features/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/features/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/features/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/features/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/features/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/features/index.md">
+<meta property="og:title" content="功能一覽：Mac 上的 Markdown 編輯器 · MarsDawn">
+<meta property="og:description" content="Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/features/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hant/"}, {"@type": "ListItem", "position": 2, "name": "功能一覽", "item": "https://marsdawn.southern-light.dev/zh-hant/features/"}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">已在 Mac App Store 上架</span>
+  <nav class="lang" aria-label="Language"><a href="/features/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/features/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/features/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/features/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/features/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/features/" hreflang="fr" lang="fr">Français</a> · <a href="/es/features/" hreflang="es" lang="es">Español</a> · <a href="/ko/features/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>MarsDawn 能做的事，一頁看完。</h1>
+  <p>MarsDawn 是為 Mac 做的 Markdown 編輯器。一邊寫，一邊讀排版後的頁面，圖表、數學式和程式碼都畫在裡面。它沒有自己的 AI 模型：做它是為了讀 agent 寫的東西，也讓你寫自己的。工作換到會議桌或檔案櫃上時，它也能印出、輸出乾淨的頁面。</p>
+  <p>下面每一節說明 app 做了什麼，並連到講得更細的頁面。</p>
+</section>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="1180" height="844" alt="MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。">
+    <span class="marker l tb co-native-1" aria-hidden="true">1</span><span class="marker l co-native-2" aria-hidden="true">2</span><span class="marker r tb co-native-3" aria-hidden="true">3</span><span class="marker r co-native-4" aria-hidden="true">4</span>
+    <span class="leader l up co-native-1" aria-hidden="true"><span>原生的 Mac 視窗。</span></span><span class="leader l down co-native-2" aria-hidden="true"><span>Mac 原生的文字編輯器，附 Markdown 語法上色。</span></span><span class="leader r up co-native-3" aria-hidden="true"><span>⌘1 原始碼、⌘2 並排、⌘3 預覽。</span></span><span class="leader r down co-native-4" aria-hidden="true"><span>頁面會隨著打字更新。</span></span>
+  </div></div>
+  <figcaption>
+    <span class="figure-label">這張截圖裡</span>
+    <ol><li>原生的 Mac 視窗。</li><li>Mac 原生的文字編輯器，附 Markdown 語法上色。</li><li>⌘1 原始碼、⌘2 並排、⌘3 預覽。</li><li>頁面會隨著打字更新。</li></ol>
+  </figcaption>
+</figure>
+<h2 id="read-what-your-agent-wrote">讀 agent 寫的 Markdown</h2>
+<h3>原始碼和預覽並排</h3>
+<p>打開 Markdown 檔，排版後的頁面就在原始碼旁邊（⌘2）；也可以只看原始碼（⌘1）或只看預覽（⌘3）。兩邊一起捲動，頁面會隨著打字更新。</p>
+<p class="more"><a href="/zh-hant/native/">為 Mac 而做</a></p>
+<h3>大綱和檔案側邊欄</h3>
+<p>側邊欄的「大綱」列出文件的標題，點一下就跳到該處。打開資料夾後，「檔案」分頁列出裡面的檔案；agent 正在寫入時，新檔案會自動出現。如果資料夾是 git 檢出，上方標題會寫出是哪個分支或工作樹。</p>
+<p class="more"><a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a></p>
+<h3>指出確切的那一行</h3>
+<p>「編輯 ▸ 拷貝引用」會把你的位置拷貝成路徑加行號，例如 <code>docs/plan.md:42</code>。「拷貝給 AI」再附上所選的文字。貼到 agent 的對話裡就行。</p>
+<p class="more"><a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a></p>
+<h3>跟著連結跳到另一個檔案</h3>
+<p>在預覽裡點一個指向另一個 Markdown 檔的連結，MarsDawn 會打開那個檔案（已經開著就帶到前面），並捲到那個標題。</p>
+<h2 id="on-paper-among-people">紙本在人與人之間的用處</h2>
+<p>不是所有的工作都在螢幕上做。MarsDawn 印出和輸出的頁面，就是你在螢幕上讀的那幾頁，所以人們聚在一起、讀東西、留紀錄的地方都用得上。</p>
+<h3>開會討論</h3>
+<p>把頁面印出來，或把同一份 PDF 傳給每個人，大家就是看同一份文件，不用擠在一個螢幕前。拿到同一個檔案的人，分頁位置都一樣，所以「第 3 頁那張表」指的是同一個東西。接著由人把決議寫下來，寫在印出來的紙上，或寫成筆記。會議記錄範本把決議放在最前面，每個行動項目都有負責人。</p>
+<p class="more"><a href="/zh-hant/pdf/">輸出 PDF</a> &#183; <a href="/zh-hant/templates/meeting-notes/">會議記錄範本</a></p>
+<h3>拿筆邊讀邊寫</h3>
+<p>有些人習慣用筆讀東西：畫線、在頁邊寫幾個字，才記得住。把文件印出來，就可以在紙上這樣做。MarsDawn 本身沒有加註功能；想直接在 PDF 上標記的話，用你原本就有的 PDF app 就好。</p>
+<p class="more"><a href="/zh-hant/pdf/">輸出 PDF</a></p>
+<h3>紙本保存</h3>
+<p>有些行業還是要把紙本存起來，會計就是一個例子。MarsDawn 沒有任何歸檔或合規的聲明。它做的是印出和輸出乾淨、分好頁的頁面：圖表畫進去，短的程式碼區塊和表格不被切開，用主題的淺色配色。紙本還是正式紀錄的地方，就可以用這些頁面。</p>
+<p class="more"><a href="/zh-hant/pdf/">輸出 PDF</a></p>
+<h3>交給不寫 Markdown 的人</h3>
+<p>PDF 在任何地方都能打開，也不需要懂 Markdown，所以也適合寄給主管或客戶。</p>
+<p class="more"><a href="/zh-hant/sharing-exported-pdfs/">分享輸出的 PDF</a></p>
+<h2 id="write-and-lay-out">寫作和版面</h2>
+<h3>純 Markdown，附語法上色</h3>
+<p>粗體、斜體、刪除線、行內程式碼、連結、引言和待辦清單都照常使用。編輯器會幫 Markdown 語法上色，顏色和預覽主題一致。</p>
+<p class="more"><a href="/zh-hant/native/">為 Mac 而做</a></p>
+<h3>縮放、行號和狀態列</h3>
+<p>原始碼和預覽可以一起縮放，範圍 75% 到 200%。原始碼旁有行號欄；狀態列顯示游標所在的行與欄，以及整份文件或所選文字的字數、字元數和閱讀時間。</p>
+<h3>圖片</h3>
+<p>先儲存文件，再把圖片拖進或貼到編輯器。MarsDawn 會把圖片複製到文件旁的 assets 資料夾，並寫好連結。網路圖片在你按下「載入圖片」之前都不會載入，所以打開文件不會讓任何伺服器知道你讀了它。</p>
+<p class="more"><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a></p>
+<h3>Front matter 不礙事</h3>
+<p>檔案開頭的 front matter 區塊，在預覽和快速查看裡會收成可展開的「文件資訊」，輸出 PDF 時則不會印出。</p>
+<h3>八種語言</h3>
+<p>App 介面有英文、繁體中文、簡體中文、日文、德文、法文、西班牙文和韓文。</p>
+<p class="more"><a href="/zh-hant/native/">為 Mac 而做</a></p>
+<h2 id="diagrams-code-and-math">圖表、程式碼和數學式</h2>
+<h3>Mermaid 圖表</h3>
+<p>標記為 <code>mermaid</code> 的程式碼區塊會畫成圖表。圖表寫錯時，預覽會顯示它的原始碼，下方附上錯誤訊息；點一下訊息，就跳到編輯器裡那一行。</p>
+<p class="more"><a href="/zh-hant/templates/flowchart/">流程圖範本</a></p>
+<h3>程式碼上色</h3>
+<p>常見的程式語言都會語法上色，在開頭的 <code>```</code> 後面寫上語言名稱就好。</p>
+<h3>數學式</h3>
+<p>用 KaTeX 語法寫的數學式，會在預覽和快速查看裡畫出來，輸出的 PDF 裡也有。</p>
+<p class="more"><a href="/zh-hant/reviewing-ai-output/">為什麼 AI 寫的東西還是需要人讀過</a></p>
+<h2 id="themes-pdf-and-print">主題、PDF 和列印</h2>
+<h3>四種主題，各有淺色和深色</h3>
+<p>黎明、典雅、流行、活潑各有淺色和深色版本。MarsDawn 會跟著 Mac 的外觀切換，也可以在設定中固定一種。從「顯示方式 ▸ 預覽主題」或工具列的調色盤按鈕選擇。</p>
+<p class="more"><a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a></p>
+<h3>更多主題</h3>
+<p>「設定 ▸ 外觀 ▸ 取得更多主題⋯」會打開額外預覽主題的主題庫。裝上一個，它就出現在「顯示方式 ▸ 預覽主題」裡；按「移除」就拿掉。主題庫只在打開的時候連上網路。</p>
+<p class="more"><a href="/zh-hant/themes/gallery/">主題庫</a> &#183; <a href="/zh-hant/themes/new/">打造一個主題</a></p>
+<h3>輸出 PDF，或列印</h3>
+<p>「檔案 ▸ 輸出為 PDF⋯」會存成自動分頁的 PDF，「檔案 ▸ 列印⋯」印出相同的頁面。Mermaid 圖表直接畫進去，程式碼保留語法上色，分頁時會盡量不讓標題落在頁尾，也不切開短的程式碼、表格和圖表。PDF 一律用主題的淺色配色，就算你是在深色下讀的也一樣。</p>
+<p class="more"><a href="/zh-hant/pdf/">輸出 PDF</a></p>
+<figure class="shot">
+  <div class="shot-frame"><div class="shot-canvas">
+    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="用 MarsDawn 輸出的 PDF，在內建的 PDF 檢視器中開啟，旁邊有頁面縮圖。">
+    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
+    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid 圖表直接畫進 PDF。</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>程式碼保留語法上色。</span></span>
+  </div></div>
+  <figcaption>
+    <span class="figure-label">這張截圖裡</span>
+    <ol><li>Mermaid 圖表直接畫進 PDF。</li><li>程式碼保留語法上色。</li></ol>
+  </figcaption>
+</figure>
+<h2 id="files-tabs-and-quick-look">檔案、分頁和快速查看</h2>
+<h3>視窗和分頁</h3>
+<p>每份文件預設在自己的視窗打開。用「視窗 ▸ 合併所有視窗」，可以把開著的視窗收成同一個視窗裡的分頁。打字時會自動儲存。</p>
+<p class="more"><a href="/zh-hant/native/">為 Mac 而做</a></p>
+<h3>在 Finder 用快速查看</h3>
+<p>在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。快速查看會用你在 MarsDawn 選的主題，也跟著 MarsDawn 的外觀設定。</p>
+<p class="more"><a href="/zh-hant/native/">為 Mac 而做</a></p>
+<h3>其他檔案</h3>
+<p>MarsDawn 也能打開純文字檔（<code>.txt</code>、<code>.log</code>、程式碼檔）和 PDF。UTF-8 純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。</p>
+<h3>你的檔案留在你手上</h3>
+<p>不需要帳號，沒有同步，也沒有雲端。文件留在你儲存的位置，MarsDawn 不收集任何關於你的資料。</p>
+<p class="more"><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a></p>
+<h2 id="for-agents-and-scripts">給 agent 和腳本</h2>
+<h3>免費的命令列工具</h3>
+<p>免費的 <code>marsdawn</code> 工具另外用 Homebrew 安裝。<code>marsdawn export</code> 把 Markdown 檔輸出成 PDF，排版和 MarsDawn 的預覽一樣，不需要 app；可以用 <code>--theme</code> 選主題，紙張選 A4 或 Letter。<code>marsdawn open</code> 在 app 裡打開檔案讓你審閱，還可以指定行號，這個需要先裝 app。</p>
+<p class="more"><a href="/zh-hant/cli/">命令列工具</a></p>
+<h3>腳本讀得懂的輸出</h3>
+<p>加上 <code>--json</code>，兩個指令都會回傳 agent 或腳本能解析的結果。</p>
+<p class="more"><a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a></p>
+<h3>Skill 和 MCP 伺服器</h3>
+<p>一個 agent skill 檔案，教寫程式的 agent 把自己寫的東西在 MarsDawn 裡打開給你審閱。沒有 shell 的用戶端，則可以用另外的 MCP 伺服器執行同一個 export。</p>
+<p class="more"><a href="/zh-hant/cli/skill/">給 agent 的 skill</a> &#183; <a href="/zh-hant/cli/mcp/">MCP 伺服器</a></p>
+<h3>裡面沒有 AI</h3>
+<p>MarsDawn 沒有自己的 AI 模型。它不會幫你摘要或評分 agent 寫的東西，只是讓一份又長又一直在改的檔案保持好讀，讀的人是你。</p>
+<p class="more"><a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
+<h2 id="siri-and-shortcuts">Siri 和捷徑</h2>
+<p>在「捷徑」App 搜尋 MarsDawn，可以找到三個動作：「新增 Markdown 文件」（可選範本）、「新增筆記到收件匣」和「打開最近的文件」。筆記會加到你在「MarsDawn ▸ 設定⋯ ▸ 筆記資料夾」選的資料夾中的 <code>Inbox.md</code>。</p>
+<p class="more"><a href="/zh-hant/native/">為 Mac 而做</a></p>
+<h2 id="try-it-on-your-mac">在你的 Mac 上試試</h2>
+<p>MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。</p>
+<p><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8">立刻下載試用</a></p>
+<p>試用怎麼運作：<a href="/zh-hant/pay-once/">免費試用，買一次就好</a>。刻意不做的事：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a>。</p>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="網站">
+    <a href="/zh-hant/support/">支援</a>
+    <a href="/zh-hant/privacy/">隱私權政策</a>
+    <a href="/zh-hant/cli/">命令列工具</a>
+    <a href="/zh-hant/features/" aria-current="page">功能一覽</a>
+    <a href="/zh-hant/view-markdown-on-mac/">在 Mac 上看 Markdown</a>
+    <a href="/zh-hant/vs/markdown-preview-tools/">在別處看 Markdown，對比 MarsDawn</a>
+    <a href="/zh-hant/vs/macmd-viewer/">MacMD Viewer 對比 MarsDawn</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>

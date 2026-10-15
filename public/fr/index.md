@@ -33,6 +33,7 @@ brew install redtear1115/tap/marsdawn
 - [Une app Mac](/fr/native/) : Fenêtres et onglets natifs, enregistrement automatique, Coup d’œil.
 - [Vos textes restent sur votre Mac](/fr/yours/) : Pas de compte, pas de synchronisation, pas de cloud.
 - [Essai gratuit, achat unique](/fr/pay-once/) : Gratuit pendant 14 jours, puis 4,99 USD une seule fois. Sans abonnement.
+- [Fonctionnalités](/fr/features/) : Tout ce que fait MarsDawn, sur une seule page.
 
 À savoir avant d’acheter. [Ce que MarsDawn ne fait pas](/fr/limits/)
 
@@ -60,6 +61,7 @@ Sur cette capture d’écran :
 
 ## Plus
 
+- [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Un éditeur Markdown natif pour Mac : aperçu en direct, Mermaid et formules, thèmes, plus des pages PDF et d’impression propres pour les réunions, les notes en marge et les dossiers papier.
 - [Vos textes restent sur votre Mac](https://marsdawn.southern-light.dev/fr/yours/index.md): MarsDawn n’a ni compte, ni synchronisation, ni cloud. Vos documents Markdown restent sur votre Mac, dans les fichiers et dossiers que vous choisissez.
 - [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
 - [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts et les tableaux.

@@ -33,6 +33,7 @@ brew install redtear1115/tap/marsdawn
 - [Mac 앱](/ko/native/): 네이티브 윈도우와 탭, 자동 저장, 훑어보기.
 - [내 글은 내 Mac에](/ko/yours/): 계정도, 동기화도, 클라우드도 없습니다.
 - [무료로 체험하고, 한 번만 구입](/ko/pay-once/): 14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.
+- [기능 한눈에 보기](/ko/features/): MarsDawn이 하는 모든 일을 한 페이지에.
 
 구입 전에 알아 둘 점. [MarsDawn이 하지 않는 일](/ko/limits/)
 
@@ -60,6 +61,7 @@ brew install redtear1115/tap/marsdawn
 
 ## 더 보기
 
+- [기능 한눈에 보기](https://marsdawn.southern-light.dev/ko/features/index.md): Mac 네이티브 Markdown 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 그리고 회의와 여백 메모, 종이 기록에 쓸 수 있는 깔끔한 PDF와 프린트 페이지.
 - [내 글은 내 Mac에](https://marsdawn.southern-light.dev/ko/yours/index.md): MarsDawn에는 계정도, 동기화도, 클라우드도 없습니다. Markdown 문서는 직접 고른 파일과 폴더에 담겨 Mac에 남습니다.
 - [무료로 체험하고, 한 번만 구입](https://marsdawn.southern-light.dev/ko/pay-once/index.md): MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다.
 - [PDF 내보내기](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록과 표를 가르지 않도록 합니다.
