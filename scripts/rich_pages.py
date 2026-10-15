@@ -144,3 +144,32 @@ def mermaid_page(copy: dict, listing_url: str) -> dict:
 {md_blocks(copy["try"], listing_url)}
 """
     return {"title": attr(copy["title"]), "description": attr(copy["description"]), "body": body}
+
+
+# --- /vs/macmd-viewer/ (the 2026-10-15 revision) ---------------------------------------------
+VS_KEYS = ("macmd-features", "macmd-buying", "macmd-after")
+
+
+def vs_compare(copy: dict) -> dict:
+    """The page's three comparison tables, in the shape of build_pages.COMPARE_TABLES for one locale:
+    the cells are HTML, and a [S#] source mark in a cell links to the list under the tables."""
+    return {key: {"head": table["head"], "rows": [[md_inline(cell) for cell in row] for row in table["rows"]]}
+            for key, table in zip(VS_KEYS, copy["tables"])}
+
+
+def vs_macmd_page(copy: dict, brew: str) -> dict:
+    """/vs/macmd-viewer/. The tables are marks (<!--compare:...-->) that all_pages() fills; the
+    "Try it today" section and the "Next" list are the ones the page had before, kept as HTML."""
+    parts = ['<section class="intro">', f'  <h1>{escape(copy["h1"])}</h1>']
+    parts += [f"  <p>{md_inline(p)}</p>" for p in copy["intro"]] + ["</section>"]
+    for key, table in zip(VS_KEYS, copy["tables"]):
+        parts += [f'<h2>{escape(table["h2"])}</h2>', f"<!--compare:{key}-->"]
+    sources = "\n".join(f'  <li id="{sid.lower()}">{sid} · <a href="{url}">{escape(url)}</a></li>' for sid, url in copy["sources"])
+    parts += [f'<h2>{escape(copy["sources_h2"])}</h2>', f'<ul class="sources">\n{sources}\n</ul>',
+              f'<h2>{escape(copy["pick_h2"])}</h2>'] + [f"<p>{md_inline(p)}</p>" for p in copy["pick"]]
+    parts += [f'<h2>{escape(copy["faq_h2"])}</h2>', _faq(copy["faq"])]
+    parts += [f'<h2>{copy["try_h2"]}</h2>', f'<p>{copy["try_p_html"]}</p>',
+              f"<pre><code>{brew}\nmarsdawn export notes.md\nopen notes.pdf</code></pre>", f'<h2>{copy["next_h2"]}</h2>']
+    items = [f"  <li>{item}</li>" for item in copy["next_items_html"]] + [f"  <li>{md_inline(copy['features_item'][2:])}</li>"]
+    parts += ["<ul>", *items, "</ul>"]
+    return {"title": attr(copy["title"]), "description": attr(copy["description"]), "body": "\n".join(parts) + "\n"}

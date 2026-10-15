@@ -368,6 +368,118 @@ MERMAID = {'title': 'Mac で Mermaid をプレビュー、Markdown の隣で · 
         '[今すぐダウンロードして試す]({App Store 連結})'}
 
 
+# Machine draft (needs-i18n; Grok reviews it): the revised /vs/macmd-viewer/, the same shape as
+# build_pages.VS_MACMD. [S#] marks in a cell or sentence link to the sources list on the page.
+VS_MACMD = {'title': 'MacMD Viewer と MarsDawn：Markdown のビューアか、エディタか · MarsDawn',
+ 'description': 'MacMD Viewer は読み取り専用の Markdown ビューアで USD 19.99。MarsDawn は編集とプレビューを並べて表示し、14 日間無料、その後 USD '
+                '4.99 を一度だけ。項目ごとの比較、出典つき。',
+ 'h1': 'MacMD Viewer と MarsDawn。',
+ 'intro': ['どちらも、Markdown を整ったページとして読むための Mac アプリです。MacMD Viewer は `.md` '
+           'ファイルを開いて表示します。設計上、読み取り専用で、ファイルへの変更は一切保存しません。MarsDawn '
+           'は同じようなレンダリングされたプレビューの隣にエディタを置くので、ひとつのウインドウで書いて読めます。このページでは両者を項目ごとに並べ、MacMD Viewer '
+           'についての事実にはすべて出典を付け、MacMD Viewer のほうが向いている場合も述べます。',
+           'MacMD Viewer 自身のサイトとリポジトリで 2026 年 10 月 15 日に確認しました（バージョン 1.7.0、2026 年 10 月 10 '
+           '日公開）。古くなっている点があれば、[サポートページ](/ja/support/)の連絡先までお知らせください。'],
+ 'tables': [{'h2': 'どんなもので、何ができるか',
+             'head': ['', 'MacMD Viewer', 'MarsDawn'],
+             'rows': [['種類',
+                       'ビューア：「読み取り専用で、ソースファイルへの変更は保存しない」[S1, S9]',
+                       'ライブプレビューつきのエディタ：左に Markdown、右にレンダリングされたページ。3 つのレイアウト（ソース、分割、プレビュー）'],
+                      ['編集', 'できない [S1, S7, S9]', 'できる。レンダリングされたページ自体は編集できず、隣のソースを編集する'],
+                      ['ライブプレビュー',
+                       'ファイルを表示する。ほかのエディタが保存すると自動で再読み込みする [S9]',
+                       '入力するたびに更新される。ほかのアプリがファイルを変更すると、MarsDawn は再読み込みして位置を保つ（自分の未保存の編集がない場合）。'],
+                      ['Mermaid', 'あり：フローチャート、シーケンス図、状態遷移図、ガントチャート、円グラフなど。オフラインで動作 [S1, S3, S7]', 'あり'],
+                      ['数式', 'なし：README に「数式（LaTeX/KaTeX）は表示しない」と明記 [S7]', 'あり、KaTeX'],
+                      ['コードのハイライト', 'あり [S1, S9]', 'あり'],
+                      ['テーマ',
+                       '12 種類のドキュメントテーマ [S1, S7]',
+                       '標準で 4 種類（夜明け、クラシック、モダン、ビビッド）、それぞれにライトとダーク。テーマギャラリーにはさらに多数'],
+                      ['タブ', 'あり。任意で、初期設定はオフ（1.6.0 から）[S5, S8]', 'あり'],
+                      ['PDF 書き出し',
+                       'あり。1 枚の連続したページで、現在のテーマ、透かしなし [S3, S9]',
+                       'あり。ページ分けされ、テーマのライトの配色。ページの区切りは短いコードや表を分断しないようにする'],
+                      ['プリント', 'あり。macOS のプリントダイアログを使う [S3, S9]', 'あり'],
+                      ['Finder のクイックルック',
+                       'あり。付属。システム設定で有効にする。選んだテーマを使う [S4]',
+                       'あり。トライアル中でも期間後でも使える。選んだテーマを使う'],
+                      ['クイックルックでの Mermaid と数式', 'Mermaid：あり [S4]。数式：なし。数式は表示しない [S7]', 'あり。どちらも描画される'],
+                      ['コマンドライン',
+                       '独立したコマンドラインツールの記載なし。`markdownviewer://` の URL スキームと、ファイルを開くための Claude Code '
+                       'のプラグインとフックがある [S6]',
+                       '無料の `marsdawn` ツール：`marsdawn export` はアプリなしで PDF を書き出し、`marsdawn open` '
+                       'は行を指定してファイルを開く'],
+                      ['インターフェイスの言語', '公式の資料に記載なし [S1, S3, S7]', '{langs}'],
+                      ['動作環境', 'macOS 14（Sonoma）以降。Apple シリコンと Intel [S1, S7]', 'macOS 26（Tahoe）以降'],
+                      ['ほかのプラットフォーム', 'Mac のみ [S1]', 'Mac のみ。iPhone や iPad のアプリはない']]},
+            {'h2': '価格と購入方法',
+             'head': ['', 'MacMD Viewer', 'MarsDawn'],
+             'rows': [['購入場所', '公式サイト、Homebrew、Setapp。Mac App Store には掲載なし [S2, S7]', 'Mac App Store のみ'],
+                      ['価格',
+                       '使用中の Mac 1 台につき USD 19.99 を一度（別の Mac に移せる）。Family Pack は 3 キーで USD 39.99。10 キーは USD '
+                       '129 [S2]',
+                       '無料ダウンロード、その後 USD 4.99 を一度'],
+                      ['購入前に試す', 'トライアルも無料版もなし。直接購入は 14 日以内なら全額返金 [S2]', '14 日間の無料トライアル。すべての機能が使える'],
+                      ['返金', '14 日以内に、自社のサポート窓口を通じて [S2]', 'Apple 経由'],
+                      ['アップデート',
+                       '同じメジャーバージョン内のアップデートは無料 [S2]。直接ダウンロード版は Sparkle で自動更新 [S7]',
+                       'Mac App Store 経由'],
+                      ['アカウント', '不要 [S2]', '不要'],
+                      ['サブスクリプション', 'なし [S1, S2]', 'なし']]},
+            {'h2': 'トライアルや購入のあと',
+             'head': ['', 'MacMD Viewer', 'MarsDawn'],
+             'rows': [['状態',
+                       'トライアルなし。買えばずっと使える',
+                       '14 日後にロックを解除しないと、書類は開くが内容は覆われる。ファイルには一切変更が加わらず、クイックルックと無料の `marsdawn` '
+                       'の書き出しはそのまま使える']]}],
+ 'sources_h2': '出典',
+ 'sources': [['S1', 'https://macmdviewer.com/'],
+             ['S2', 'https://macmdviewer.com/pricing'],
+             ['S3', 'https://macmdviewer.com/features'],
+             ['S4', 'https://macmdviewer.com/quicklook'],
+             ['S5', 'https://macmdviewer.com/changelog'],
+             ['S6', 'https://macmdviewer.com/docs/integrations'],
+             ['S7', 'https://github.com/macmdviewer/MacMDViewer'],
+             ['S8', 'https://macmdviewer.com/press'],
+             ['S9', 'https://macmdviewer.com/product-facts.md'],
+             ['S10', 'https://github.com/macmdviewer/MacMDViewer/releases']],
+ 'pick_h2': 'どちらを選ぶか',
+ 'pick': ['**MacMD Viewer を選ぶのは、**Markdown を読むだけで、ファイルを変更しないことが保証されていてほしい場合です。ファイルへの変更は一切保存されません '
+          '[S1]。次の場合にも向いています。Mac が macOS 14 または 15 である（MarsDawn は macOS 26 が必要）[S1, S7]。Mac App Store '
+          'より、開発者の公式サイト、Homebrew、Setapp から買いたい [S2, S7]。エージェントが編集したファイルを自動でビューアに開かせたい（Claude '
+          'Code、Cursor、Windsurf のフックで実現） [S6]。ページ分けされた PDF より、1 枚の連続したページの PDF がよい [S9]。トライアルはありませんが、14 '
+          '日間の返金があります [S2]。',
+          '**MarsDawn を選ぶのは、**Markdown を読んだあとにもう一度手を入れる場合です。エージェントが書いた計画、README、仕様書は、たいてい 1 か所直す、1 文を言い換える、1 '
+          '節を足す必要があり、MarsDawn なら読んでいるそのウインドウで直せます。数式（KaTeX）にも対応しており、MacMD Viewer は表示しないと述べています '
+          '[S7]。インターフェイスは 8 言語。無料の `marsdawn` コマンドラインでアプリなしに PDF を書き出せます。価格は、すべて使える 14 日間のトライアルのあと USD 4.99 '
+          'です。',
+          '**どちらでもよいのは、**新しめの Mac で Markdown を読み、Mermaid の図をきちんと描画したく、Finder のクイックルックも使いたい場合です。どちらも対応しています。',
+          '**両方使うこともできます。**両者は排他的ではありません。読むだけのファイルには読み取り専用のビューア、書くファイルにはエディタ、という使い分けも問題ありません。'],
+ 'faq_h2': 'よくある質問',
+ 'faq': [['MacMD Viewer はファイルを編集できますか？',
+          'いいえ。読み取り専用で、本人の言葉によれば、ソースファイルへの変更は保存しません [S1, S9]。「テキストエディタで開く」（1.7.0 '
+          'から）はありますが、これはファイルをほかのアプリに渡すものです [S5]。'],
+         ['MacMD Viewer は Mac App Store にありますか？',
+          '自身のページに挙がっているのは公式サイト、Homebrew、Setapp で、Mac App Store への言及はありません [S2, S7]。MarsDawn は Mac App Store '
+          'のみです。'],
+         ['MarsDawn は同じファイルを開けますか？',
+          'はい。`.md` ファイルのほか、プレーンテキストと PDF も開けます。UTF-8 のテキストはそのまま編集でき、PDF はビューアで開きます。'],
+         ['macOS 14 や 15 の場合は？',
+          'MacMD Viewer は macOS 14 以降で動きます [S1]。MarsDawn は macOS 26 以降が必要ですが、無料の `marsdawn` コマンドラインツールなら PDF '
+          'の書き出しはできます。'],
+         ['なぜ片方は USD 19.99 で、もう片方は USD 4.99 なのですか？',
+          '得られるものと支払い方が違います。MacMD Viewer は一度きりの購入で、14 日間の返金があり、トライアルはありません [S2]。MarsDawn は無料でダウンロードでき、14 '
+          '日間のトライアルのあと、一度きりのロック解除です。どちらもサブスクリプションではありません。']],
+ 'try_h2': '今すぐ無料で試す',
+ 'try_p_html': 'MarsDawn は Mac App Store で配信中です。無料の <code>marsdawn</code> コマンドラインツールも、どんな Markdown ファイルも '
+               'Mermaid 図とハイライトされたコード付きの PDF にレンダリングでき、他に何もインストールする必要はありません。',
+ 'next_h2': '次に',
+ 'next_items_html': ['完全な解説：<a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a>。',
+                     'MarsDawn ができないこと：<a href="/ja/limits/">一覧はこちら</a>。',
+                     'コマンドラインツールのすべてのオプション：<a href="/ja/cli/">コマンドライン</a>。'],
+ 'features_item': '- MarsDawn の機能をすべて 1 ページで：[機能一覧](/ja/features/)。'}
+
+
 def build(k) -> dict:
     ui = {'features': '機能一覧', 'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で .md ファイルを開く方法', 'mermaid-preview-mac': 'Mac で Mermaid をプレビューする', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'themes-new': 'テーマを作る', 'themes-agents': 'エージェントとテーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
     store_chip = 'Mac App Store で配信中'
@@ -609,33 +721,7 @@ marsdawn --version</code></pre>
 </ul>
 """,
     }
-    pages['vs/macmd-viewer'] = {
-        "title": 'MacMD Viewer 対 MarsDawn：ビューアかエディタか · MarsDawn',
-        "description": 'MacMD Viewer は読み取り専用で Markdown をレンダリングし、USD 19.99。MarsDawn は編集とプレビューを並べて表示し、無料で試したあと Mac App Store で USD 4.99 の一度きりの購入です。',
-        "body": f"""
-<section class="intro">
-  <h1>MacMD Viewer 対 MarsDawn。</h1>
-  <p>どちらも Markdown をレンダリングして読むための Mac アプリです。MacMD Viewer は <code>.md</code> ファイルを開いて完成したページを表示しますが、編集はできません。MarsDawn は同じようにレンダリングされたプレビューの隣にエディタを置き、1つのウインドウで書きながら確認できます。ここでは機能ごとに両者の違いを見ていきます。</p>
-</section>
-<h2>読むだけでよく、編集の必要がない場合</h2>
-<p>他の人が書いた Markdown を読むことだけが仕事で、ソースに触れる必要が一切ないなら、MacMD Viewer は妥当な選択です。まさにそのために作られており、今すぐ入手でき、より古い macOS でも動作します。読むことだけが仕事ではなくなったときに MarsDawn が価値を持ちます。エージェントの Markdown はたいてい、もう一度手直しが入るからです。</p>
-<h2>それぞれのアプリでできること</h2>
-<!--compare:macmd-features-->
-<h2>価格と購入方法</h2>
-<!--compare:macmd-buying-->
-<h2>今すぐ無料で試す</h2>
-<p>MarsDawn は Mac App Store で配信中です。無料の <code>marsdawn</code> コマンドラインツールも、どんな Markdown ファイルも Mermaid 図とハイライトされたコード付きの PDF にレンダリングでき、他に何もインストールする必要はありません。</p>
-<pre><code>{k.BREW_TAP_INSTALL}
-marsdawn export notes.md
-open notes.pdf</code></pre>
-<h2>次に</h2>
-<ul>
-  <li>完全な解説：<a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a>。</li>
-  <li>MarsDawn ができないこと：<a href="/ja/limits/">一覧はこちら</a>。</li>
-  <li>コマンドラインツールのすべてのオプション：<a href="/ja/cli/">コマンドライン</a>。</li>
-</ul>
-""",
-    }
+    pages['vs/macmd-viewer'] = k.vs_macmd_page(VS_MACMD)
     pages['cli'] = {
         "title": 'marsdawn：無料の Markdown から PDF へのコマンドラインツール · MarsDawn',
         "description": '無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。',

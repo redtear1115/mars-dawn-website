@@ -1929,62 +1929,6 @@ marsdawn --version</code></pre>
 </ul>
 """,
     },
-    ("en", "vs/macmd-viewer"): {
-        "title": "MacMD Viewer vs. MarsDawn: a viewer or an editor · MarsDawn",
-        "description": "MacMD Viewer renders Markdown read-only for USD 19.99. MarsDawn edits and previews side by side, free to try then USD 4.99 once on the Mac App Store.",
-        "body": """
-<section class="intro">
-  <h1>MacMD Viewer vs. MarsDawn.</h1>
-  <p>Both are Mac apps for reading Markdown rendered. MacMD Viewer opens a <code>.md</code> file and shows the finished page; it doesn't edit it. MarsDawn puts an editor next to the same kind of rendered preview, so you write and review in one window. Here's how they differ, feature by feature.</p>
-</section>
-<h2>If you only need to read, not edit</h2>
-<p>If your job is strictly reading Markdown someone else wrote, and you never need to touch the source, MacMD Viewer is a reasonable fit: it's built for exactly that, is available now and works down to an older macOS. MarsDawn is worth it once reading isn't the whole job, because an agent's Markdown usually comes back for another pass.</p>
-<h2>What each app does</h2>
-<!--compare:macmd-features-->
-<h2>Pricing and how you buy it</h2>
-<!--compare:macmd-buying-->
-<h2>Try it today, free</h2>
-<p>MarsDawn is on the Mac App Store. The free <code>marsdawn</code> command-line tool also renders any Markdown file to a PDF, with Mermaid diagrams and highlighted code, and needs nothing else installed:</p>
-<pre><code>{brew}
-marsdawn export notes.md
-open notes.pdf</code></pre>
-<h2>Next</h2>
-<ul>
-  <li>The full walk-through: <a href="/markdown-to-pdf/">Markdown to PDF</a>.</li>
-  <li>What MarsDawn doesn't do: <a href="/limits/">the list</a>.</li>
-  <li>Every option of the command-line tool: <a href="/cli/">Command Line</a>.</li>
-  <li>Compared with reading Markdown in VS Code, a browser or Claude Desktop instead: <a href="/vs/markdown-preview-tools/">how they compare</a>.</li>
-</ul>
-""".format(brew=BREW_TAP_INSTALL, langs=APP_UI_LANGUAGES["en"]),
-    },
-    ("zh-hant", "vs/macmd-viewer"): {
-        "title": "MacMD Viewer 對比 MarsDawn：檢視器與編輯器 · MarsDawn",
-        "description": "MacMD Viewer 是唯讀檢視器，直接購買 USD 19.99。MarsDawn 邊編輯邊預覽，免費試用後在 Mac App Store 一次解鎖 USD 4.99。逐項比較功能、價格和購買方式。",
-        "body": """
-<section class="intro">
-  <h1>MacMD Viewer 對比 MarsDawn。</h1>
-  <p>兩者都是給 Mac 用的 app，都能把 Markdown 排版出來讀。MacMD Viewer 打開 <code>.md</code> 檔案，顯示排好版的頁面，但不能編輯它。MarsDawn 則是在同樣的預覽旁邊放了編輯器，讓你在同一個視窗裡寫和讀。以下逐項比較兩者的差異。</p>
-</section>
-<h2>如果你只需要讀，不需要編輯</h2>
-<p>如果你的工作就是讀別人寫好的 Markdown，完全不用碰原始碼，MacMD Viewer 是合理的選擇：它就是為這件事做的，現在就能買，也能在比較舊的 macOS 上跑。當閱讀不是全部的工作時，MarsDawn 才值得，因為 agent 寫的 Markdown 通常還要再改一輪。</p>
-<h2>各自能做什麼</h2>
-<!--compare:macmd-features-->
-<h2>價格與購買方式</h2>
-<!--compare:macmd-buying-->
-<h2>現在就能免費試試看</h2>
-<p>MarsDawn 已在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具也能把任何 Markdown 檔案轉成 PDF，Mermaid 圖表和程式碼上色都在，而且不需要安裝其他東西：</p>
-<pre><code>{brew}
-marsdawn export notes.md
-open notes.pdf</code></pre>
-<h2>接下來</h2>
-<ul>
-  <li>完整步驟：<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</li>
-  <li>MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。</li>
-  <li>命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。</li>
-  <li>和在 VS Code、瀏覽器或 Claude Desktop 看 Markdown 比較：<a href="/zh-hant/vs/markdown-preview-tools/">比較一下</a>。</li>
-</ul>
-""".format(brew=BREW_TAP_INSTALL, langs=APP_UI_LANGUAGES["zh-hant"]),
-    },
 }
 
 SKILL_PAGES = {
@@ -4417,6 +4361,7 @@ def rich_en_zh_hant_pages() -> dict:
     for locale in ("en", "zh-hant"):
         out[(locale, "view-markdown-on-mac")] = open_md_page(OPEN_MD[locale])
         out[(locale, "mermaid-preview-mac")] = mermaid_page(MERMAID[locale])
+        out[(locale, "vs/macmd-viewer")] = vs_macmd_page(VS_MACMD[locale])
     return out
 
 
@@ -4881,6 +4826,7 @@ def _make_k(locale: str) -> SimpleNamespace:
         theme_agents_page=lambda copy: theme_agents.page(LOCALES[locale]["root"], copy),
         features_page=features_page,
         open_md_page=open_md_page, mermaid_page=mermaid_page,
+        vs_macmd_page=vs_macmd_page, vs_compare=vs_compare,
     )
 
 
@@ -5051,82 +4997,6 @@ def home_proof(locale: str, figure) -> list:
 # lists, so a reader can scan a row. Every cell restates a fact the page's own prose or the parent
 # PRODUCT.md already carries; nothing here is new. {langs} is the app's interface languages.
 COMPARE_TABLES = {
-    "macmd-features": {
-        "head": {"en": ["", "MacMD Viewer", "MarsDawn"], "zh-hant": ["", "MacMD Viewer", "MarsDawn"],
-                 "zh-hans": ["", "MacMD Viewer", "MarsDawn"], "ja": ["", "MacMD Viewer", "MarsDawn"]},
-        "rows": {
-            "en": [
-                ["Editing", "Read-only by design", "Edits the source, with the rendered page beside it"],
-                ["Preview themes", "12 document themes", "4 themes, each with a light and a dark palette"],
-                ["Diagrams and math", "Mermaid and code highlighting; its listing doesn't mention math", "Mermaid, code highlighting and KaTeX math"],
-                ["Quick Look in Finder", "Yes", "Yes"],
-                ["PDF and print", "Yes", "Yes"],
-                ["Requires", "macOS 14 (Sonoma) or later", "macOS 26 (Tahoe) or later"],
-                ["Interface languages", "Not stated in its own materials", "{langs}"],
-            ],
-            "zh-hant": [
-                ["編輯", "設計上就是唯讀", "編輯原始碼，排版後的頁面就在旁邊"],
-                ["預覽主題", "12 種文件主題", "4 種，各有淺色與深色"],
-                ["圖表與數學式", "Mermaid 與程式碼上色；介紹頁沒有提到數學式", "Mermaid、程式碼上色與 KaTeX 數學式"],
-                ["Finder 快速查看", "有", "有"],
-                ["PDF 與列印", "有", "有"],
-                ["系統需求", "macOS 14（Sonoma）以上", "macOS 26（Tahoe）以上"],
-                ["介面語言", "自己的資料沒有寫出", "{langs}"],
-            ],
-            "zh-hans": [
-                ["编辑", "设计上就是只读", "编辑源代码，排版后的页面就在旁边"],
-                ["预览主题", "12 种文档主题", "4 种，各有浅色与深色"],
-                ["图表与数学公式", "Mermaid 与代码高亮；介绍页没有提到数学公式", "Mermaid、代码高亮与 KaTeX 数学公式"],
-                ["访达快速查看", "有", "有"],
-                ["PDF 与打印", "有", "有"],
-                ["系统要求", "macOS 14（Sonoma）或更高版本", "macOS 26（Tahoe）或更高版本"],
-                ["界面语言", "自己的资料没有写明", "{langs}"],
-            ],
-            "ja": [
-                ["編集", "設計上、読み取り専用", "ソースを編集し、その隣にレンダリングされたページ"],
-                ["プレビューテーマ", "12 種類のドキュメントテーマ", "4 種類、それぞれにライトとダーク"],
-                ["図と数式", "Mermaid とコードのハイライト。数式の表示は紹介ページに記載なし", "Mermaid、コードのハイライト、KaTeX の数式"],
-                ["Finder のクイックルック", "あり", "あり"],
-                ["PDF とプリント", "あり", "あり"],
-                ["動作環境", "macOS 14（Sonoma）以降", "macOS 26（Tahoe）以降"],
-                ["インターフェイスの言語", "公式の資料に記載なし", "{langs}"],
-            ],
-        },
-    },
-    "macmd-buying": {
-        "head": {"en": ["", "MacMD Viewer", "MarsDawn"], "zh-hant": ["", "MacMD Viewer", "MarsDawn"],
-                 "zh-hans": ["", "MacMD Viewer", "MarsDawn"], "ja": ["", "MacMD Viewer", "MarsDawn"]},
-        "rows": {
-            "en": [
-                ["Where you buy it", "Its own site, Homebrew or Setapp; not the Mac App Store", "The Mac App Store only"],
-                ["Price", "USD 19.99 once, for one Mac; multi-Mac packs cost more", "Free download, then USD 4.99 once"],
-                ["Trying it first", "No trial; a 14-day money-back guarantee on direct purchases", "A 14-day free trial"],
-                ["Refunds and updates", "Through its own site", "Through Apple"],
-                ["Account needed", "No", "No"],
-            ],
-            "zh-hant": [
-                ["從哪裡買", "自己的網站、Homebrew 或 Setapp；不在 Mac App Store", "只在 Mac App Store"],
-                ["價格", "一台 Mac 一次 USD 19.99；多台的組合包更貴", "免費下載，之後一次 USD 4.99"],
-                ["先試用", "沒有試用；直接購買 14 天內可退款", "14 天免費試用"],
-                ["退款與更新", "透過它自己的網站", "透過 Apple"],
-                ["需要帳號", "不用", "不用"],
-            ],
-            "zh-hans": [
-                ["从哪里买", "官网、Homebrew 或 Setapp；不在 Mac App Store", "只在 Mac App Store"],
-                ["价格", "一台 Mac 一次 USD 19.99；多台的组合包更贵", "免费下载，之后一次 USD 4.99"],
-                ["先试用", "没有试用；直接购买 14 天内可退款", "14 天免费试用"],
-                ["退款与更新", "通过它自己的网站", "通过 Apple"],
-                ["需要账号", "不需要", "不需要"],
-            ],
-            "ja": [
-                ["購入場所", "公式サイト、Homebrew、Setapp。Mac App Store にはない", "Mac App Store のみ"],
-                ["価格", "Mac 1 台につき USD 19.99 を一度。複数台のパックはより高額", "無料ダウンロード、その後 USD 4.99 を一度"],
-                ["購入前に試す", "試用なし。直接購入には 14 日間の返金保証", "14 日間の無料試用"],
-                ["返金とアップデート", "公式サイト経由", "Apple 経由"],
-                ["アカウント", "不要", "不要"],
-            ],
-        },
-    },
     "preview-tools": {
         "head": {
             "en": ["", "VS Code preview", "Browser extension", "Claude Desktop", "MarsDawn"],
@@ -5162,6 +5032,92 @@ COMPARE_TABLES = {
         },
     },
 }
+
+
+# --- /vs/macmd-viewer/ (the 2026-10-15 revision) ----------------------------------------------------
+# Three comparison tables, a sources list, "which one to pick", questions. en and zh-Hant: the approved
+# text (approved_copy.VS_MACMD, from the vault draft) plus what the draft leaves to the build: the page's
+# own headings, the live-preview cell written now (orchi's option C: the reload is documented on
+# /reading-agent-output/), the Quick Look row for Mermaid and math (owner item 6; confirmed on the real app
+# during verification), the link to /features/ (item 8, option A), and the sections that were already there
+# ("Try it today" and "Next", VS_MACMD_KEPT). The other six locales: VS_MACMD in copy_<l>.py, the same shape.
+VS_MACMD_KEPT = {'en': {'try_h2': 'Try it today, free',
+        'try_p_html': 'MarsDawn is on the Mac App Store. The free <code>marsdawn</code> command-line tool '
+                      'also renders any Markdown file to a PDF, with Mermaid diagrams and highlighted code, '
+                      'and needs nothing else installed:',
+        'next_h2': 'Next',
+        'next_items_html': ['The full walk-through: <a href="/markdown-to-pdf/">Markdown to PDF</a>.',
+                            'What MarsDawn doesn\'t do: <a href="/limits/">the list</a>.',
+                            'Every option of the command-line tool: <a href="/cli/">Command Line</a>.',
+                            'Compared with reading Markdown in VS Code, a browser or Claude Desktop instead: '
+                            '<a href="/vs/markdown-preview-tools/">how they compare</a>.']},
+ 'zh-hant': {'try_h2': '現在就能免費試試看',
+             'try_p_html': 'MarsDawn 已在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具也能把任何 Markdown 檔案轉成 '
+                           'PDF，Mermaid 圖表和程式碼上色都在，而且不需要安裝其他東西：',
+             'next_h2': '接下來',
+             'next_items_html': ['完整步驟：<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。',
+                                 'MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。',
+                                 '命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。',
+                                 '和在 VS Code、瀏覽器或 Claude Desktop 看 Markdown 比較：<a '
+                                 'href="/zh-hant/vs/markdown-preview-tools/">比較一下</a>。']}}
+VS_MACMD_EXTRA = {
+    "en": dict(sources_h2="Sources", pick_h2="Which one to pick", faq_h2="Questions",
+               features_item="- All of MarsDawn's features on one page: [Features](/features/).",
+               live=("Live preview", "Updates as you type. When another app changes the file, MarsDawn reloads it and keeps your place, as long as you have no unsaved edits of your own."),
+               ql_after="Quick Look in Finder",
+               ql_row=["Mermaid and math in Quick Look", "Mermaid: yes [S4]. Math: no, it doesn't render math [S7]", "Yes, both are drawn"]),
+    "zh-hant": dict(sources_h2="來源", pick_h2="該選哪一個", faq_h2="常見問題",
+                    features_item="- MarsDawn 的全部功能，一頁看完：[功能一覽](/zh-hant/features/)。",
+                    live=("即時預覽", "打字時就更新。別的 app 改了檔案，MarsDawn 會重新載入並保留你的位置，前提是你自己沒有未儲存的修改。"),
+                    ql_after="Finder 的快速查看",
+                    ql_row=["快速查看裡的 Mermaid 與數學式", "Mermaid：有 [S4]。數學式：沒有，它不顯示數學式 [S7]", "有，兩者都會畫出來"]),
+}
+
+
+def _vs_macmd_copy(locale: str) -> dict:
+    import copy as _copy
+    c = _copy.deepcopy(approved_copy.VS_MACMD[locale])
+    x = VS_MACMD_EXTRA[locale]
+    rows = c["tables"][0]["rows"]
+    live = [row for row in rows if row[0] == x["live"][0]]
+    assert len(live) == 1, "the live preview row"
+    live[0][2] = x["live"][1]
+    at = [i for i, row in enumerate(rows) if row[0] == x["ql_after"]]
+    assert len(at) == 1, "the Quick Look row"
+    rows.insert(at[0] + 1, x["ql_row"])
+    c.update(sources_h2=x["sources_h2"], pick_h2=x["pick_h2"], faq_h2=x["faq_h2"], features_item=x["features_item"],
+             sources=approved_copy.VS_SOURCES, **VS_MACMD_KEPT[locale])
+    return c
+
+
+VS_MACMD = {locale: _vs_macmd_copy(locale) for locale in ("en", "zh-hant")}
+
+
+def vs_macmd_page(copy: dict) -> dict:
+    problems = shape_problems(_without(VS_MACMD["en"], _OPEN_MD_NOT_SHAPE), _without(copy, _OPEN_MD_NOT_SHAPE))
+    assert not problems, "/vs/macmd-viewer/ copy differs in shape from en: " + "; ".join(problems)
+    return rich_pages.vs_macmd_page(copy, BREW_TAP_INSTALL)
+
+
+def vs_compare(copy: dict) -> dict:
+    """The three tables of a locale's VS_MACMD, for COMPARE_TABLES (cells as HTML)."""
+    return rich_pages.vs_compare(copy)
+
+
+for _key in rich_pages.VS_KEYS:
+    COMPARE_TABLES[_key] = {"head": {}, "rows": {}}
+# Their cells are long, so on a phone each row stacks (site.css .compare-stack) instead of three squeezed columns.
+STACKED_TABLES = set(rich_pages.VS_KEYS)
+
+
+def set_vs_tables(locale: str, copy: dict) -> None:
+    for key, table in vs_compare(copy).items():
+        COMPARE_TABLES[key]["head"][locale] = table["head"]
+        COMPARE_TABLES[key]["rows"][locale] = table["rows"]
+
+
+for _locale, _module in (("en", None), ("zh-hant", None), ("zh-hans", copy_zh_hans), ("ja", copy_ja)):
+    set_vs_tables(_locale, VS_MACMD[_locale] if _module is None else _module.VS_MACMD)
 
 
 COMPARE_TABLES["pay-once-states"] = {
@@ -5318,7 +5274,7 @@ def compare_table_html(locale: str, key: str) -> str:
         + "</tr>"
         for row in table["rows"][locale]
     )
-    cls = "compare compare-wide" if len(table["head"][locale]) > 3 else "compare"
+    cls = "compare compare-wide" if len(table["head"][locale]) > 3 else "compare compare-stack" if key in STACKED_TABLES else "compare"
     return f'<div class="table-scroll"><table class="{cls}">\n<thead><tr>{head}</tr></thead>\n<tbody>\n{rows}\n</tbody>\n</table></div>'
 
 

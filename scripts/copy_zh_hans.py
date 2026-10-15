@@ -336,6 +336,96 @@ MERMAID = {'title': '在 Mac 上预览 Mermaid 图表，就在 Markdown 旁边 �
         '[立即下载试用]({App Store 連結})'}
 
 
+# Machine draft (needs-i18n; Grok reviews it): the revised /vs/macmd-viewer/, the same shape as
+# build_pages.VS_MACMD. [S#] marks in a cell or sentence link to the sources list on the page.
+VS_MACMD = {'title': 'MacMD Viewer 对比 MarsDawn：Markdown 查看器还是编辑器 · MarsDawn',
+ 'description': 'MacMD Viewer 是只读的 Markdown 查看器，USD 19.99。MarsDawn 边编辑边预览，免费试用 14 天，之后 USD 4.99 '
+                '解锁一次。逐项比较，附来源。',
+ 'h1': 'MacMD Viewer 对比 MarsDawn。',
+ 'intro': ['两者都是给 Mac 用的 app，都能把 Markdown 排版成完整的页面来读。MacMD Viewer 打开 `.md` '
+           '文件并显示出来；它设计上就是只读，不会保存对文件的任何改动。MarsDawn 则是在同样的预览旁边放了编辑器，让你在同一个窗口里写和读。这一页把两者逐项并排，MacMD Viewer '
+           '的每一项事实都附上来源，也会说明什么情况下 MacMD Viewer 是比较好的选择。',
+           '以上依 2026 年 10 月 15 日 MacMD Viewer 自己的网站和 repo 核对（版本 1.7.0，2026 年 10 月 10 '
+           '日发布）。如果有哪里过时了，请照[支持页](/zh-hans/support/)上的联系方式告诉我们。'],
+ 'tables': [{'h2': '它是什么、能做什么',
+             'head': ['', 'MacMD Viewer', 'MarsDawn'],
+             'rows': [['是什么',
+                       '查看器：“只读，不会保存对源文件的改动”[S1, S9]',
+                       '有实时预览的编辑器：左边写 Markdown，右边看排版后的页面，三种版面（源代码、并排、预览）'],
+                      ['编辑', '不能 [S1, S7, S9]', '可以。排版后的页面本身不能直接编辑，要编辑旁边的源代码'],
+                      ['实时预览',
+                       '显示文件；别的编辑器保存文件后会自动重新载入 [S9]',
+                       '打字时就更新。别的 app 改了文件，MarsDawn 会重新载入并保留你的位置，前提是你自己没有未保存的修改。'],
+                      ['Mermaid', '有：流程图、时序图、状态图、甘特图、饼图等，离线可用 [S1, S3, S7]', '有'],
+                      ['数学公式', '没有：它的 README 写明“不显示数学公式（LaTeX／KaTeX）”[S7]', '有，KaTeX'],
+                      ['代码高亮', '有 [S1, S9]', '有'],
+                      ['主题', '12 种文档主题 [S1, S7]', '内置 4 种（黎明、典雅、流行、活泼），各有浅色与深色，主题库还有更多'],
+                      ['标签页', '有，可选，默认关闭（1.6.0 起）[S5, S8]', '有'],
+                      ['PDF 导出', '有，单一连续页面，用当前的主题，无水印 [S3, S9]', '有，分页输出，用主题的浅色配色；分页时尽量不切开短的代码和表格'],
+                      ['打印', '有，走 macOS 的打印对话框 [S3, S9]', '有'],
+                      ['访达的快速查看', '有，已包含；要在系统设置里启用；使用你选的主题 [S4]', '有，不论有没有试用都能用；使用你选的主题'],
+                      ['快速查看里的 Mermaid 与数学公式', 'Mermaid：有 [S4]。数学公式：没有，它不显示数学公式 [S7]', '有，两者都会画出来'],
+                      ['命令行',
+                       '没有描述独立的命令行工具。它有 `markdownviewer://` URL scheme，以及用来打开文件的 Claude Code 插件和 hook [S6]',
+                       '免费的 `marsdawn` 工具：`marsdawn export` 不需要 app 就能导出 PDF，`marsdawn open` 能在指定行打开文件'],
+                      ['界面语言', '自己的资料没有写明 [S1, S3, S7]', '{langs}'],
+                      ['系统要求', 'macOS 14（Sonoma）或更高版本；Apple 芯片与 Intel [S1, S7]', 'macOS 26（Tahoe）或更高版本'],
+                      ['其他平台', '只有 Mac [S1]', '只有 Mac，没有 iPhone 或 iPad 版']]},
+            {'h2': '价格与购买方式',
+             'head': ['', 'MacMD Viewer', 'MarsDawn'],
+             'rows': [['从哪里买', '自己的网站、Homebrew 或 Setapp；没有在 Mac App Store 上架 [S2, S7]', '只在 Mac App Store'],
+                      ['价格',
+                       '一台正在使用的 Mac 一次 USD 19.99（可以移到另一台 Mac）；Family Pack 3 把 USD 39.99；10 把 USD 129 [S2]',
+                       '免费下载，之后一次 USD 4.99'],
+                      ['先试用', '没有试用，也没有免费版；直接购买 14 天内全额退款 [S2]', '14 天免费试用，所有功能都能用'],
+                      ['退款', '14 天内，通过它自己的支持邮箱 [S2]', '通过 Apple'],
+                      ['更新', '同一主版本内的更新免费 [S2]；直接下载的版本用 Sparkle 自动更新 [S7]', '通过 Mac App Store'],
+                      ['需要账号', '不需要 [S2]', '不需要'],
+                      ['订阅', '没有 [S1, S2]', '没有']]},
+            {'h2': '试用或购买之后',
+             'head': ['', 'MacMD Viewer', 'MarsDawn'],
+             'rows': [['状态', '没有试用；买了就一直能用', '14 天后没有解锁，文稿仍会打开但内容被遮住；文件不会有任何改变，快速查看和免费的 `marsdawn` 导出都照常']]}],
+ 'sources_h2': '来源',
+ 'sources': [['S1', 'https://macmdviewer.com/'],
+             ['S2', 'https://macmdviewer.com/pricing'],
+             ['S3', 'https://macmdviewer.com/features'],
+             ['S4', 'https://macmdviewer.com/quicklook'],
+             ['S5', 'https://macmdviewer.com/changelog'],
+             ['S6', 'https://macmdviewer.com/docs/integrations'],
+             ['S7', 'https://github.com/macmdviewer/MacMDViewer'],
+             ['S8', 'https://macmdviewer.com/press'],
+             ['S9', 'https://macmdviewer.com/product-facts.md'],
+             ['S10', 'https://github.com/macmdviewer/MacMDViewer/releases']],
+ 'pick_h2': '该选哪一个',
+ 'pick': ['**选 MacMD Viewer，如果**你只读 Markdown，而且希望“不会改到文件”这件事是保证的：它不会保存对文件的任何改动 [S1]。这些情况它也比较合适：你的 Mac 跑的是 '
+          'macOS 14 或 15（MarsDawn 需要 macOS 26）[S1, S7]；你比较想从开发者自己的网站、Homebrew 或 Setapp 买，而不是 Mac App Store '
+          '[S2, S7]；你想让 agent 改过的文件自动在查看器里打开，它用 Claude Code、Cursor 和 Windsurf 的 hook 做到 [S6]；或者你想要单一连续页面的 '
+          'PDF，而不是分页的 PDF [S9]。它没有试用，但有 14 天退款 [S2]。',
+          '**选 MarsDawn，如果** Markdown 读完还要再改一轮。agent 写的计划、README 或规格，通常要修一个地方、改一句话或加一段，在 MarsDawn '
+          '里就在你正在读的那个窗口里改。它也支持数学公式（KaTeX），MacMD Viewer 自己说不显示 [S7]；界面有八种语言；有免费的 `marsdawn` 命令行工具，不需要 app '
+          '就能导出 PDF；价格是 14 天全功能试用后 USD 4.99。',
+          '**两个都可以，如果**你在较新的 Mac 上读 Markdown，想把 Mermaid 图表画好，也想在访达用快速查看。两者都做得到。',
+          '**也可以两个都用。**两者不互斥：只读的文件用只读查看器，要写的文件用编辑器，并不冲突。'],
+ 'faq_h2': '常见问题',
+ 'faq': [['MacMD Viewer 能编辑文件吗？',
+          '不能。它是只读的，照它自己的说法，不会保存对源文件的改动 [S1, S9]。它有“在文本编辑器中打开”（1.7.0 起），是把文件交给别的 app [S5]。'],
+         ['MacMD Viewer 在 Mac App Store 上吗？',
+          '它自己的页面列出的是官网、Homebrew 和 Setapp，没有提到 Mac App Store [S2, S7]。MarsDawn 只在 Mac App Store。'],
+         ['MarsDawn 能打开同样的文件吗？', '可以。它打开 `.md` 文件，也能打开纯文本文件和 PDF：UTF-8 的文本文件可直接编辑，PDF 以查看器打开。'],
+         ['我的 Mac 是 macOS 14 或 15 呢？',
+          'MacMD Viewer 在 macOS 14 以上都能跑 [S1]。MarsDawn 需要 macOS 26 以上，不过免费的 `marsdawn` 命令行工具仍然可以导出 PDF。'],
+         ['为什么一个是 USD 19.99，一个是 USD 4.99？',
+          '两者拿到的东西和付费方式不同。MacMD Viewer 是一次买断，有 14 天退款，没有试用 [S2]。MarsDawn 免费下载，有 14 天试用，之后一次解锁。两者都不是订阅。']],
+ 'try_h2': '现在就能免费试试看',
+ 'try_p_html': 'MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具也能把任何 Markdown 文件转成 PDF，Mermaid '
+               '图表和代码高亮都在，而且不需要安装其他东西：',
+ 'next_h2': '接下来',
+ 'next_items_html': ['完整步骤：<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。',
+                     'MarsDawn 做不到的事：<a href="/zh-hans/limits/">这份清单</a>。',
+                     '命令行工具的所有选项：<a href="/zh-hans/cli/">命令行工具</a>。'],
+ 'features_item': '- MarsDawn 的全部功能，一页看完：[功能一览](/zh-hans/features/)。'}
+
+
 def build(k) -> dict:
     ui = {'features': '功能一览', 'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': 'Mac 上怎么打开 md 文件', 'mermaid-preview-mac': '在 Mac 上预览 Mermaid', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'themes-new': '打造一个主题', 'themes-agents': '和 agent 一起做主题', 'themes-gallery': '主题库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
     store_chip = '已在 Mac App Store 上架'
@@ -1035,33 +1125,7 @@ marsdawn --version</code></pre>
     }
     pages['view-markdown-on-mac'] = k.open_md_page(OPEN_MD)
     pages['mermaid-preview-mac'] = k.mermaid_page(MERMAID)
-    pages['vs/macmd-viewer'] = {
-        "title": 'MacMD Viewer 对比 MarsDawn：查看器与编辑器 · MarsDawn',
-        "description": 'MacMD Viewer 是只读查看器，直接购买 USD 19.99。MarsDawn 边编辑边预览，免费试用后在 Mac App Store 一次解锁 USD 4.99。逐项比较功能、价格和购买方式。',
-        "body": f"""
-<section class="intro">
-  <h1>MacMD Viewer 对比 MarsDawn。</h1>
-  <p>两者都是给 Mac 用的 app，都能把 Markdown 排版出来读。MacMD Viewer 打开 <code>.md</code> 文件，显示排好版的页面，但不能编辑它。MarsDawn 则是在同样的预览旁边放了编辑器，让你在同一个窗口里写和读。以下逐项比较两者的差异。</p>
-</section>
-<h2>如果你只需要读，不需要编辑</h2>
-<p>如果你的工作就是读别人写好的 Markdown，完全不用碰源代码，MacMD Viewer 是合理的选择：它就是为这件事做的，现在就能买，也能在比较旧的 macOS 上跑。当阅读不是全部的工作时，MarsDawn 才值得，因为 agent 写的 Markdown 通常还要再改一轮。</p>
-<h2>各自能做什么</h2>
-<!--compare:macmd-features-->
-<h2>价格与购买方式</h2>
-<!--compare:macmd-buying-->
-<h2>现在就能免费试试看</h2>
-<p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具也能把任何 Markdown 文件转成 PDF，Mermaid 图表和代码高亮都在，而且不需要安装其他东西：</p>
-<pre><code>{k.BREW_TAP_INSTALL}
-marsdawn export notes.md
-open notes.pdf</code></pre>
-<h2>接下来</h2>
-<ul>
-  <li>完整步骤：<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。</li>
-  <li>MarsDawn 做不到的事：<a href="/zh-hans/limits/">这份清单</a>。</li>
-  <li>命令行工具的所有选项：<a href="/zh-hans/cli/">命令行工具</a>。</li>
-</ul>
-""",
-    }
+    pages['vs/macmd-viewer'] = k.vs_macmd_page(VS_MACMD)
     pages['vs/markdown-preview-tools'] = {
         "title": "在别处看 Markdown，对比 MarsDawn · MarsDawn",
         "description": "MarsDawn 对比在 VS Code 内置预览、浏览器扩展，或 Claude Desktop 文件预览里看 Markdown：各自能排版出什么，打开一个文件要花多少功夫。",
