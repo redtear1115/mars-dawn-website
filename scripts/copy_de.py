@@ -97,6 +97,234 @@ THEME_AGENTS = {
 }
 
 
+# /features/ prose (machine draft of the en text, needs-i18n; owner-approved en/zh-Hant copy of 2026-10-15).
+# UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
+# Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
+FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Seite · MarsDawn',
+ 'description': 'Ein nativer Markdown-Editor für den Mac: Live-Vorschau, Mermaid und Formeln, '
+                'Themes sowie saubere PDF- und Druckseiten für Besprechungen, Randnotizen und '
+                'Papierakten.',
+ 'h1': 'Alles, was MarsDawn kann, auf einer Seite.',
+ 'intro': ['MarsDawn ist ein Markdown-Editor für den Mac. Auf der einen Seite schreibst du, auf '
+           'der anderen liest du die gerenderte Seite, mit eingezeichneten Diagrammen, Formeln und '
+           'Code. Er hat kein eigenes KI-Modell: Er ist dafür gemacht, zu lesen, was ein Agent '
+           'geschrieben hat, und eigene Texte zu schreiben. Und wenn die Arbeit an einen Tisch, in '
+           'eine Besprechung oder in einen Aktenschrank wandert, druckt und exportiert er saubere '
+           'Seiten.',
+           'Jeder Abschnitt unten sagt, was die App kann, und verlinkt auf die Seite, die mehr '
+           'dazu erklärt.'],
+ 'sections': [{'id': 'read',
+               'h2': 'Lesen, was dein Agent geschrieben hat',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'Quelltext und Vorschau nebeneinander',
+                          'p': 'Öffne eine Markdown-Datei und lies die gerenderte Seite neben '
+                               'ihrem Quelltext (⌘2) oder wechsle zu „Nur Quelltext“ (⌘1) oder '
+                               '„Nur Vorschau“ (⌘3). Beide Bereiche scrollen gemeinsam, und die '
+                               'Seite aktualisiert sich beim Tippen.',
+                          'links': ['native']},
+                         {'h': 'Gliederung und Dateien in der Seitenleiste',
+                          'p': 'Der Tab „Gliederung“ der Seitenleiste listet die Überschriften '
+                               'eines Dokuments auf; mit einem Klick springst du dorthin. Öffne '
+                               'einen Ordner, dann listet der Tab „Dateien“ auf, was darin liegt, '
+                               'und neue Dateien erscheinen von selbst, während ein Agent '
+                               'hineinschreibt. Ist der Ordner ein Git-Checkout, nennt die '
+                               'Kopfzeile den Branch oder Worktree.',
+                          'links': ['reading-agent-output']},
+                         {'h': 'Auf die genaue Zeile zeigen',
+                          'p': 'Bearbeiten ▸ Verweis kopieren kopiert deine Position als Pfad und '
+                               'Zeile, etwa docs/plan.md:42. Für KI kopieren fügt darunter den '
+                               'ausgewählten Text hinzu. Setze beides in den Chat des Agenten ein.',
+                          'links': ['reading-agent-output']},
+                         {'h': 'Links zwischen Dateien folgen',
+                          'p': 'Klicke in der Vorschau auf einen Link zu einer anderen '
+                               'Markdown-Datei, und MarsDawn öffnet sie oder holt sie nach vorn, '
+                               'falls sie schon geöffnet ist, und scrollt zur Überschrift.',
+                          'links': []}]},
+              {'id': 'paper',
+               'h2': 'Auf Papier, unter Menschen',
+               'lead': 'Nicht alle Arbeit passiert auf einem Bildschirm. Die Seiten, die MarsDawn '
+                       'druckt und exportiert, sind dieselben, die du am Bildschirm liest. Sie '
+                       'funktionieren daher dort, wo Menschen sich treffen, lesen und '
+                       'Aufzeichnungen aufbewahren.',
+               'lead_links': [],
+               'items': [{'h': 'In der Besprechung',
+                          'p': 'Drucke die Seiten aus oder schicke allen dasselbe PDF, dann '
+                               'arbeitet die ganze Runde mit demselben Dokument statt an einem '
+                               'gemeinsamen Bildschirm. Wer dieselbe Datei hat, hat dieselben '
+                               'Seitenumbrüche, sodass „die Tabelle auf Seite 3“ für alle dasselbe '
+                               'meint. Dann halten die Leute die Beschlüsse fest, auf dem Ausdruck '
+                               'oder in Notizen. Die Vorlage für Besprechungsnotizen beginnt mit '
+                               'den Beschlüssen und gibt jedem Aktionspunkt eine verantwortliche '
+                               'Person.',
+                          'links': ['pdf', 'templates/meeting-notes']},
+                         {'h': 'Mit dem Stift lesen',
+                          'p': 'Manche nehmen Dinge besser mit einem Stift auf: unterstreichen, an '
+                               'den Rand schreiben, damit es hängen bleibt. Drucke das Dokument '
+                               'aus und tu das auf Papier. MarsDawn hat kein eigenes Werkzeug für '
+                               'Anmerkungen. Wenn du das PDF lieber digital markieren möchtest, '
+                               'nimm die PDF-App, die du ohnehin hast.',
+                          'links': ['pdf']},
+                         {'h': 'Papierakten',
+                          'p': 'In manchen Bereichen wird weiterhin Papier abgelegt, etwa in der '
+                               'Buchhaltung. MarsDawn erhebt keinen Anspruch auf Archivierung oder '
+                               'Compliance. Es druckt und exportiert saubere Seiten mit '
+                               'Seitenumbrüchen: Diagramme eingezeichnet, kurze Codeblöcke und '
+                               'Tabellen am Stück, in den hellen Farben des Themes. Nutze sie '
+                               'überall dort, wo Papier noch die Akte ist.',
+                          'links': ['pdf']},
+                         {'h': 'Für Menschen, die kein Markdown nutzen',
+                          'p': 'Ein PDF lässt sich überall öffnen und setzt keine '
+                               'Markdown-Kenntnisse voraus, daher eignet es sich auch zum Versand '
+                               'an Vorgesetzte oder Kundschaft.',
+                          'links': ['sharing-exported-pdfs']}]},
+              {'id': 'write',
+               'h2': 'Schreiben und gestalten',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'Reines Markdown, hervorgehoben',
+                          'p': 'Fett, kursiv, durchgestrichen, Inline-Code, Links, Zitate und '
+                               'Aufgabenlisten funktionieren alle. Der Editor färbt die '
+                               'Markdown-Syntax ein, und die Farben passen zum Theme deiner '
+                               'Vorschau.',
+                          'links': ['native']},
+                         {'h': 'Zoom, Zeilennummern und eine Statusleiste',
+                          'p': 'Zoome Quelltext und Vorschau gemeinsam von 75 % bis 200 %. Neben '
+                               'dem Quelltext läuft eine Spalte mit Zeilennummern, und die '
+                               'Statusleiste zeigt Zeile und Spalte sowie Wort- und Zeichenzahl '
+                               'und die Lesezeit für das Dokument oder deine Auswahl.',
+                          'links': []},
+                         {'h': 'Bilder',
+                          'p': 'Sichere das Dokument und ziehe dann ein Bild in den Editor oder '
+                               'setze es ein. MarsDawn kopiert es in einen Ordner assets neben dem '
+                               'Dokument und schreibt den Link. Bilder aus dem Web bleiben '
+                               'ausgeblendet, bis du auf „Bilder laden“ klickst, sodass das Öffnen '
+                               'eines Dokuments keinem Server verrät, dass du es liest.',
+                          'links': ['yours']},
+                         {'h': 'Front Matter bleibt aus dem Weg',
+                          'p': 'Ein Front-Matter-Block am Dateianfang erscheint in der Vorschau '
+                               'und in der Übersicht als eingeklappter Abschnitt „Dokumentinfo“ '
+                               'und wird im PDF weggelassen.',
+                          'links': []},
+                         {'h': 'Acht Sprachen',
+                          'p': 'Die App gibt es auf Englisch, traditionellem Chinesisch, '
+                               'vereinfachtem Chinesisch, Japanisch, Deutsch, Französisch, '
+                               'Spanisch und Koreanisch.',
+                          'links': ['native']}]},
+              {'id': 'diagrams',
+               'h2': 'Diagramme, Code und Formeln',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'Mermaid-Diagramme',
+                          'p': 'Ein mit mermaid markierter Codeblock wird als Diagramm gezeichnet. '
+                               'Enthält das Diagramm einen Fehler, zeigt die Vorschau seinen '
+                               'Quelltext mit dem Fehler darunter, und ein Klick auf die Meldung '
+                               'springt zu dieser Zeile.',
+                          'links': ['templates/flowchart']},
+                         {'h': 'Hervorgehobener Code',
+                          'p': 'Codeblöcke werden für die meisten gängigen Sprachen hervorgehoben. '
+                               'Nenne die Sprache nach dem öffnenden ```.',
+                          'links': []},
+                         {'h': 'Formeln',
+                          'p': 'In KaTeX-Syntax geschriebene Formeln werden in der Vorschau und in '
+                               'der Übersicht gezeichnet und kommen im exportierten PDF an.',
+                          'links': ['reviewing-ai-output']}]},
+              {'id': 'themes',
+               'h2': 'Themes, PDF und Druck',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'Vier Themes, hell und dunkel',
+                          'p': 'Morgenrot, Klassisch, Modern und Lebhaft gibt es jeweils in einer '
+                               'hellen und einer dunklen Version, und MarsDawn folgt dem '
+                               'Erscheinungsbild deines Mac, sofern du in den Einstellungen keines '
+                               'wählst. Wähle über Darstellung ▸ Vorschau-Thema oder mit der '
+                               'Palettentaste in der Symbolleiste.',
+                          'links': ['themes']},
+                         {'h': 'Weitere Themes',
+                          'p': 'Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden … öffnet '
+                               'eine Galerie mit zusätzlichen Vorschau-Themes. Installiere eines, '
+                               'dann erscheint es unter Darstellung ▸ Vorschau-Thema; mit '
+                               'Entfernen nimmst du es wieder heraus. Die Galerie geht nur online, '
+                               'solange sie geöffnet ist.',
+                          'links': ['themes/gallery', 'themes/new']},
+                         {'h': 'Als PDF exportieren oder drucken',
+                          'p': 'Ablage ▸ Als PDF exportieren … sichert ein PDF mit '
+                               'Seitenumbrüchen, und Ablage ▸ Drucken … druckt dieselben Seiten. '
+                               'Mermaid-Diagramme werden eingezeichnet, Code behält seine '
+                               'Hervorhebung, und Seitenumbrüche trennen keine Überschrift von '
+                               'ihrem Abschnitt und zerschneiden keinen kurzen Codeblock, keine '
+                               'Tabelle und kein Diagramm. Das PDF verwendet immer die hellen '
+                               'Farben des Themes, auch wenn du im Dunkeln gelesen hast.',
+                          'links': ['pdf']}]},
+              {'id': 'files',
+               'h2': 'Dateien, Tabs und Übersicht',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'Fenster und Tabs',
+                          'p': 'Jedes Dokument öffnet in einem eigenen Fenster. Wähle Fenster ▸ '
+                               'Alle Fenster zusammenführen, um geöffnete Fenster als Tabs eines '
+                               'Fensters zu sammeln. Das Sichern läuft automatisch beim Tippen.',
+                          'links': ['native']},
+                         {'h': 'Übersicht im Finder',
+                          'p': 'Wähle im Finder eine Markdown-Datei aus und drücke die Leertaste, '
+                               'um sie gerendert zu lesen, samt Diagrammen. Die Übersicht '
+                               'verwendet das Theme, das du in MarsDawn gewählt hast, und folgt '
+                               'dessen Einstellung für das Erscheinungsbild.',
+                          'links': ['native']},
+                         {'h': 'Andere Dateien',
+                          'p': 'MarsDawn öffnet auch reine Textdateien (.txt, .log, Quellcode) und '
+                               'PDFs. UTF-8-Text öffnet sich bearbeitbar, nur als Quelltext. PDFs '
+                               'öffnen sich in einem Viewer mit Seitenminiaturen, Zoom und Suche.',
+                          'links': []},
+                         {'h': 'Deine Dateien bleiben deine',
+                          'p': 'Es gibt kein Konto, keine Synchronisierung und keine Cloud. '
+                               'Dokumente bleiben dort, wo du sie sicherst, und MarsDawn erhebt '
+                               'keine Daten über dich.',
+                          'links': ['yours']}]},
+              {'id': 'agents',
+               'h2': 'Für Agenten und Skripte',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'Ein kostenloses Kommandozeilenwerkzeug',
+                          'p': 'Das kostenlose Werkzeug marsdawn wird separat mit Homebrew '
+                               'installiert. marsdawn export macht aus einer Markdown-Datei ein '
+                               'PDF, gerendert wie die Vorschau von MarsDawn; die App braucht es '
+                               'dafür nicht. Mit --theme wählst du ein Theme, als Papierformat A4 '
+                               'oder Letter. marsdawn open öffnet Dateien in der App, damit du sie '
+                               'prüfen kannst, auf Wunsch an einer bestimmten Zeile, und braucht '
+                               'die installierte App.',
+                          'links': ['cli']},
+                         {'h': 'Ausgabe, die ein Skript lesen kann',
+                          'p': 'Mit --json liefern beide Befehle ein Ergebnis, das ein Agent oder '
+                               'ein Skript auswerten kann.',
+                          'links': ['cli/agents']},
+                         {'h': 'Skill und MCP-Server',
+                          'p': 'Eine Agent-Skill-Datei bringt einem Coding-Agenten bei, das von '
+                               'ihm Geschriebene in MarsDawn zu öffnen, damit du es prüfst. Für '
+                               'Clients ohne Shell führt ein separater MCP-Server denselben Export '
+                               'aus.',
+                          'links': ['cli/skill', 'cli/mcp']},
+                         {'h': 'Keine KI drin',
+                          'p': 'MarsDawn hat kein eigenes KI-Modell. Es fasst nicht zusammen und '
+                               'bewertet nicht, was ein Agent geschrieben hat; es hält eine lange, '
+                               'sich ändernde Datei lesbar, damit du lesen kannst.',
+                          'links': ['limits']}]},
+              {'id': 'siri',
+               'h2': 'Siri und Kurzbefehle',
+               'lead': 'Suche in der App „Kurzbefehle“ nach MarsDawn, um drei Aktionen zu finden: '
+                       'Neues Markdown-Dokument (aus einer Vorlage), Notiz zum Eingang hinzufügen '
+                       'und Zuletzt benutztes Dokument öffnen. Notizen landen in Inbox.md in dem '
+                       'Ordner, den du unter MarsDawn ▸ Einstellungen … ▸ Notizordner wählst.',
+               'lead_links': ['native'],
+               'items': []}],
+ 'cta': {'h2': 'Probier es auf deinem Mac aus',
+         'p1': 'MarsDawn ist kostenlos erhältlich. Teste alles 14 Tage lang und schalte es danach '
+               'einmalig für 4,99 USD frei. Kein Abo, kein Konto. Es braucht macOS 26 oder neuer.',
+         'trial': ['So funktioniert die Testphase: ', 'pay-once'],
+         'left': ['. Was bewusst fehlt: ', 'limits'],
+         'tail': '.'}}
+
+
 def build(k) -> dict:
     pages = {}
     pages['index'] = {
@@ -907,6 +1135,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 
 
     pages['themes/agents'] = k.theme_agents_page(THEME_AGENTS)
+    pages['features'] = k.features_page(FEATURES)
     pages['themes/new'] = {
         "title": "Im Browser ein MarsDawn-Thema erstellen · MarsDawn",
         "description": "Wähle Farben und ein paar Stiloptionen, sieh sie live auf einem Beispieldokument und reiche dein Thema als GitHub-Issue ein. Keine Installation, kein git.",
@@ -1527,9 +1756,9 @@ Teilnehmende: _Namen_
     }
 
     app_ui_languages = 'Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch'
-    ui = {'home': 'MarsDawn', 'privacy': 'Datenschutzrichtlinie', 'support': 'Support', 'cli': 'Befehlszeile', 'agents': 'marsdawn für Agenten', 'using_cli': 'Die CLI verwenden', 'markdown-to-pdf': 'Markdown zu PDF', 'skill': 'Agent-Skill', 'view-markdown-on-mac': 'Markdown auf dem Mac ansehen', 'vs-macmd-viewer': 'MacMD Viewer vs. MarsDawn', 'updated': f'Zuletzt aktualisiert am {k.UPDATED}', 'tagline': 'Lies, was dein Agent geschrieben hat.', 'slogan': 'Ein neuer Morgen für Markdown.', 'footer_store': f'MarsDawn gibt es im <a href="{k.LISTING_URL}">Mac App Store</a>.', 'footer_nav': 'Website', 'more': 'Mehr', 'yours': 'Deine Texte bleiben auf deinem Mac', 'pay-once': 'Kostenlos testen, einmal bezahlen', 'pdf': 'PDF-Export', 'native': 'Eine Mac-App', 'limits': 'Was MarsDawn nicht kann', 'mcp': 'MCP-Server', 'token-efficient-review': 'Review mit wenigen Tokens', 'vs-markdown-preview-tools': 'Markdown anderswo ansehen vs. MarsDawn', 'themes': 'Vorschau-Themen und PDF-Export', 'themes-new': 'Ein Thema erstellen', 'themes-agents': 'Mit deinem Agenten ein Thema erstellen', 'themes-gallery': 'Themen-Galerie', 'sharing-exported-pdfs': 'Exportierte PDFs teilen', 'reviewing-ai-output': 'Warum KI-Ergebnisse weiterhin einen menschlichen Leser brauchen', 'reading-agent-output': 'Lesen, was dein Agent zurückgibt', 'agent-transparency': 'Transparenz von Agenten', 'reviewing-agent-plans': 'Den Plan eines Agenten prüfen', 'agent-design-patterns': 'Entwurfsmuster für Agenten', 'changelog': 'Änderungsprotokoll', 'reading-notes': 'Lektürenotizen der Redaktion', 'reading-notes-anthropic': 'Lektürenotizen: Anthropic', 'reading-notes-chip-huyen': 'Lektürenotizen: Chip Huyen', 'reading-notes-lilian-weng': 'Lektürenotizen: Lilian Weng', 'reading-notes-harrison-chase': 'Lektürenotizen: Harrison Chase', 'reading-notes-langchain': 'Lektürenotizen: LangChain (Jess Ou)', 'reading-notes-andrew-ng': 'Lektürenotizen: Andrew Ng', 'consent_text': 'Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.', 'consent_accept': 'Akzeptieren', 'consent_decline': 'Ablehnen', 'consent_aria': 'Cookie-Einwilligung', 'cookie_settings': 'Cookie-Einstellungen', 'view_markdown_source': 'Markdown-Quelltext ansehen'}
+    ui = {'features': 'Funktionen', 'home': 'MarsDawn', 'privacy': 'Datenschutzrichtlinie', 'support': 'Support', 'cli': 'Befehlszeile', 'agents': 'marsdawn für Agenten', 'using_cli': 'Die CLI verwenden', 'markdown-to-pdf': 'Markdown zu PDF', 'skill': 'Agent-Skill', 'view-markdown-on-mac': 'Markdown auf dem Mac ansehen', 'vs-macmd-viewer': 'MacMD Viewer vs. MarsDawn', 'updated': f'Zuletzt aktualisiert am {k.UPDATED}', 'tagline': 'Lies, was dein Agent geschrieben hat.', 'slogan': 'Ein neuer Morgen für Markdown.', 'footer_store': f'MarsDawn gibt es im <a href="{k.LISTING_URL}">Mac App Store</a>.', 'footer_nav': 'Website', 'more': 'Mehr', 'yours': 'Deine Texte bleiben auf deinem Mac', 'pay-once': 'Kostenlos testen, einmal bezahlen', 'pdf': 'PDF-Export', 'native': 'Eine Mac-App', 'limits': 'Was MarsDawn nicht kann', 'mcp': 'MCP-Server', 'token-efficient-review': 'Review mit wenigen Tokens', 'vs-markdown-preview-tools': 'Markdown anderswo ansehen vs. MarsDawn', 'themes': 'Vorschau-Themen und PDF-Export', 'themes-new': 'Ein Thema erstellen', 'themes-agents': 'Mit deinem Agenten ein Thema erstellen', 'themes-gallery': 'Themen-Galerie', 'sharing-exported-pdfs': 'Exportierte PDFs teilen', 'reviewing-ai-output': 'Warum KI-Ergebnisse weiterhin einen menschlichen Leser brauchen', 'reading-agent-output': 'Lesen, was dein Agent zurückgibt', 'agent-transparency': 'Transparenz von Agenten', 'reviewing-agent-plans': 'Den Plan eines Agenten prüfen', 'agent-design-patterns': 'Entwurfsmuster für Agenten', 'changelog': 'Änderungsprotokoll', 'reading-notes': 'Lektürenotizen der Redaktion', 'reading-notes-anthropic': 'Lektürenotizen: Anthropic', 'reading-notes-chip-huyen': 'Lektürenotizen: Chip Huyen', 'reading-notes-lilian-weng': 'Lektürenotizen: Lilian Weng', 'reading-notes-harrison-chase': 'Lektürenotizen: Harrison Chase', 'reading-notes-langchain': 'Lektürenotizen: LangChain (Jess Ou)', 'reading-notes-andrew-ng': 'Lektürenotizen: Andrew Ng', 'consent_text': 'Diese Website verwendet Analyse-Cookies, um zu sehen, wie Besucher sie nutzen. Sie bleiben aus, solange du nicht zustimmst.', 'consent_accept': 'Akzeptieren', 'consent_decline': 'Ablehnen', 'consent_aria': 'Cookie-Einwilligung', 'cookie_settings': 'Cookie-Einstellungen', 'view_markdown_source': 'Markdown-Quelltext ansehen'}
     store_chip = 'Im Mac App Store'
-    trait_link = {'yours': ('Deine Texte bleiben auf deinem Mac', 'Kein Konto, keine Synchronisierung, keine Cloud.'), 'pay-once': ('Kostenlos testen, einmal bezahlen', '14 Tage kostenlos, danach einmalig 4,99 USD. Kein Abo.'), 'pdf': ('PDF-Export', 'Diagramme, hervorgehobener Code, saubere Seitenumbrüche.'), 'native': ('Eine Mac-App', 'Native Fenster und Tabs, automatisches Sichern, Übersicht.'), 'limits': ('Was MarsDawn nicht kann', 'Gut zu wissen, bevor du kaufst.')}
+    trait_link = {'features': ('Funktionen', 'Alles, was MarsDawn kann, auf einer Seite.'), 'yours': ('Deine Texte bleiben auf deinem Mac', 'Kein Konto, keine Synchronisierung, keine Cloud.'), 'pay-once': ('Kostenlos testen, einmal bezahlen', '14 Tage kostenlos, danach einmalig 4,99 USD. Kein Abo.'), 'pdf': ('PDF-Export', 'Diagramme, hervorgehobener Code, saubere Seitenumbrüche.'), 'native': ('Eine Mac-App', 'Native Fenster und Tabs, automatisches Sichern, Übersicht.'), 'limits': ('Was MarsDawn nicht kann', 'Gut zu wissen, bevor du kaufst.')}
     trait_nav_heading = 'Was du von MarsDawn erwarten kannst'
     figure_list_label = 'Auf diesem Bildschirmfoto'
 

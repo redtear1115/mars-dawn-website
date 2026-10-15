@@ -254,6 +254,7 @@ UI = {
         "mcp": "MCP server", "token-efficient-review": "Token-efficient review",
         "vs-markdown-preview-tools": "Viewing Markdown elsewhere vs. MarsDawn", "themes": "Preview themes and PDF export",
         "themes-new": "Build a theme", "themes-agents": "Make a theme with your agent", "themes-gallery": "Theme gallery",
+        "features": "Features",
         "sharing-exported-pdfs": "Sharing exported PDFs", "reviewing-ai-output": "Why AI output still needs a human reader",
         "reading-agent-output": "Reading what your agent hands back", "agent-transparency": "Agent transparency",
         "reviewing-agent-plans": "Reviewing an agent plan", "agent-design-patterns": "Agent design patterns",
@@ -282,6 +283,7 @@ UI = {
         "mcp": "MCP 伺服器", "token-efficient-review": "節省 token 的審閱方式",
         "vs-markdown-preview-tools": "在別處看 Markdown，對比 MarsDawn", "themes": "預覽主題與 PDF 輸出",
         "themes-new": "打造一個主題", "themes-agents": "和 agent 一起做主題", "themes-gallery": "主題庫",
+        "features": "功能一覽",
         "sharing-exported-pdfs": "分享輸出的 PDF", "reviewing-ai-output": "為什麼 AI 寫的東西還是需要人讀過",
         "reading-agent-output": "讀懂 agent 交回來的 Markdown", "agent-transparency": "agent 的透明",
         "reviewing-agent-plans": "審 agent 計畫", "agent-design-patterns": "agent 設計模式",
@@ -4324,6 +4326,7 @@ TRAIT_LINK = {
         "pdf": ("PDF export", "Diagrams, highlighted code, careful page breaks."),
         "native": ("A Mac app", "Native windows, tabs, autosave, Quick Look."),
         "limits": ("What MarsDawn doesn't do", "Know before you buy."),
+        "features": ("Features", "Everything MarsDawn does, on one page."),
     },
     "zh-hant": {
         "yours": ("你寫的內容留在你的 Mac 上", "不需要帳號，沒有同步，也沒有雲端。"),
@@ -4331,6 +4334,7 @@ TRAIT_LINK = {
         "pdf": ("輸出 PDF", "圖表、程式碼上色、經過安排的分頁。"),
         "native": ("為 Mac 而做", "原生視窗、分頁、自動儲存、快速查看。"),
         "limits": ("MarsDawn 做不到的事", "購買前先知道。"),
+        "features": ("功能一覽", "MarsDawn 能做的事，一頁看完。"),
     },
 }
 TRAIT_NAV_HEADING = {"en": "What to expect from MarsDawn", "zh-hant": "MarsDawn 是什麼樣的 app"}
@@ -4355,6 +4359,473 @@ import templates_pages  # noqa: E402
 for _locale in ("en", "zh-hant"):
     UI[_locale].update(templates_pages.UI_LABELS[_locale])
 
+def shape_problems(ref, got, path: str = "", allow_empty: bool = False) -> list:
+    """Where got differs in shape from ref (same keys, same list lengths, same types) or, unless
+    allow_empty (a skeleton, which is keys only), has an empty string where ref has words."""
+    where = path or "(top level)"
+    if isinstance(ref, dict):
+        if not isinstance(got, dict):
+            return [f"{where}: expected a table, got {type(got).__name__}"]
+        out = [f"{where}: missing key {key!r}" for key in ref if key not in got]
+        out += [f"{where}: unexpected key {key!r}" for key in got if key not in ref]
+        for key in ref:
+            if key in got:
+                out += shape_problems(ref[key], got[key], f"{path}.{key}" if path else str(key), allow_empty)
+        return out
+    if isinstance(ref, (list, tuple)):
+        if not isinstance(got, (list, tuple)):
+            return [f"{where}: expected a list, got {type(got).__name__}"]
+        if len(ref) != len(got):
+            return [f"{where}: {len(got)} items, en has {len(ref)}"]
+        return [problem for i, (r, g) in enumerate(zip(ref, got)) for problem in shape_problems(r, g, f"{path}[{i}]", allow_empty)]
+    if isinstance(ref, str):
+        if not isinstance(got, str):
+            return [f"{where}: expected text, got {type(got).__name__}"]
+        return [f"{where}: empty, en has text"] if ref.strip() and not got.strip() and not allow_empty else []
+    if isinstance(ref, (int, float)):
+        return [] if isinstance(got, (int, float)) else [f"{where}: expected a number, got {type(got).__name__}"]
+    return []
+
+
+# --- /features/ -------------------------------------------------------------------------------
+# One page that says what the app does and links to the page that goes deeper (owner, 2026-10-15:
+# copy approved in en and zh-Hant; vault 協作/給擁有者/features-page-copy-2026-10-15.md). The two
+# approved locales' copy is data here, loaded from that file by a script and not retyped; the other
+# six locales' (machine drafts, needs-i18n) are FEATURES in copy_<l>.py, the same shape. Everything
+# after a section's text is made at build time from what the site already says: each "more" link is
+# the linked page's own name in the page's language (UI), the Download button is HOME's cta_try, and
+# the two screenshots are the Mac app's split view (FIGURES["native"]) at the top and the PDF
+# viewer (FIGURES["pdf"]) in Themes, PDF and print, with their existing alt text and caption lists.
+# Not on the top navigation: the footer and the home page's "What to expect" list link here.
+FEATURES_COPY = {
+    "en": {'title': 'Features: a Markdown editor for Mac, on one page · MarsDawn',
+     'description': 'A native Mac Markdown editor: live preview, Mermaid and math, themes, plus clean '
+                    'PDF and print pages for meetings, margin notes and paper records.',
+     'h1': 'Everything MarsDawn does, on one page.',
+     'intro': ['MarsDawn is a Markdown editor for the Mac. You write on one side and read the rendered '
+               'page on the other, with diagrams, math and code drawn in. It has no AI model of its '
+               'own: it is built for reading what an agent wrote, and for writing your own. And when '
+               'the work moves to a table, a meeting or a filing cabinet, it prints and exports clean '
+               'pages.',
+               'Each section below says what the app does and links to the page that goes deeper.'],
+     'sections': [{'id': 'read',
+                   'h2': 'Read what your agent wrote',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': 'Source and preview, side by side',
+                              'p': 'Open a Markdown file and read the rendered page next to its source '
+                                   '(⌘2), or switch to source only (⌘1) or preview only (⌘3). The two '
+                                   'panes scroll together, and the page updates as you type.',
+                              'links': ['native']},
+                             {'h': 'Outline and Files sidebar',
+                              'p': "The sidebar's Outline tab lists a document's headings; click one "
+                                   'to jump there. Open a folder and the Files tab lists what is in '
+                                   'it, and new files appear on their own while an agent is writing '
+                                   'into it. If the folder is a git checkout, the header names the '
+                                   'branch or worktree.',
+                              'links': ['reading-agent-output']},
+                             {'h': 'Point at the exact line',
+                              'p': 'Edit ▸ Copy Reference copies your place as a path and line, like '
+                                   'docs/plan.md:42. Copy for AI adds the selected text under it. '
+                                   "Paste either into the agent's chat.",
+                              'links': ['reading-agent-output']},
+                             {'h': 'Follow links between files',
+                              'p': 'Click a link to another Markdown file in the preview and MarsDawn '
+                                   'opens it, or brings it forward if it is already open, and scrolls '
+                                   'to the heading.',
+                              'links': []}]},
+                  {'id': 'paper',
+                   'h2': 'On paper, among people',
+                   'lead': 'Not all of the work happens on a screen. The pages MarsDawn prints and '
+                           'exports are the ones you read on screen, so they work where people meet, '
+                           'read and keep records.',
+                   'lead_links': [],
+                   'items': [{'h': 'In the meeting',
+                              'p': 'Print the pages, or send everyone the same PDF, and the whole '
+                                   'table works from the same document instead of one shared screen. '
+                                   'Everyone holding the same file has the same page breaks, so "the '
+                                   'table on page 3" points at one thing. Then the people write the '
+                                   'decisions down, on the printout or in notes. The meeting-notes '
+                                   'template starts with decisions and gives each action item an '
+                                   'owner.',
+                              'links': ['pdf', 'templates/meeting-notes']},
+                             {'h': 'Reading with a pen',
+                              'p': 'Some people take things in better with a pen: underlining, writing '
+                                   'in the margin, so it sticks. Print the document and do that on '
+                                   'paper. MarsDawn has no annotation tool of its own, so if you would '
+                                   'rather mark up the PDF, use the PDF app you already have.',
+                              'links': ['pdf']},
+                             {'h': 'Paper records',
+                              'p': 'Some fields still file paper, accounting among them. MarsDawn '
+                                   'makes no archival or compliance claim. What it does is print and '
+                                   'export clean, paginated pages: diagrams drawn in, short code '
+                                   "blocks and tables kept whole, the theme's light colors. Use them "
+                                   'wherever paper is still the record.',
+                              'links': ['pdf']},
+                             {'h': "Handing it to someone who doesn't use Markdown",
+                              'p': 'A PDF opens in anything and needs no Markdown knowledge, so it is '
+                                   'also the one to send a manager or a client.',
+                              'links': ['sharing-exported-pdfs']}]},
+                  {'id': 'write',
+                   'h2': 'Write and lay out',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': 'Plain Markdown, highlighted',
+                              'p': 'Bold, italic, strikethrough, inline code, links, block quotes and '
+                                   'task lists all work. The editor colors Markdown syntax, and the '
+                                   'colors match your preview theme.',
+                              'links': ['native']},
+                             {'h': 'Zoom, line numbers and a status bar',
+                              'p': 'Zoom the source and preview together from 75% to 200%. A '
+                                   'line-number gutter runs beside the source, and the status bar '
+                                   'shows your line and column, plus word and character counts and '
+                                   'reading time for the document or your selection.',
+                              'links': []},
+                             {'h': 'Images',
+                              'p': 'Save the document, then drop or paste an image into the editor. '
+                                   'MarsDawn copies it into an assets folder next to the document and '
+                                   'writes the link. Images from the web stay hidden until you click '
+                                   'Load Images, so opening a document never tells a server you read '
+                                   'it.',
+                              'links': ['yours']},
+                             {'h': 'Front matter stays out of the way',
+                              'p': 'A front matter block at the top of a file shows as a collapsed '
+                                   'Document info section in the preview and Quick Look, and is left '
+                                   'out of the PDF.',
+                              'links': []},
+                             {'h': 'Eight languages',
+                              'p': 'The app is in English, Traditional Chinese, Simplified Chinese, '
+                                   'Japanese, German, French, Spanish and Korean.',
+                              'links': ['native']}]},
+                  {'id': 'diagrams',
+                   'h2': 'Diagrams, code and math',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': 'Mermaid diagrams',
+                              'p': 'A fenced code block marked mermaid is drawn as a diagram. If the '
+                                   'diagram has a mistake, the preview shows its source with the error '
+                                   'underneath, and clicking the message jumps to that line.',
+                              'links': ['templates/flowchart']},
+                             {'h': 'Highlighted code',
+                              'p': 'Code blocks are highlighted for most common languages. Name the '
+                                   'language after the opening fence.',
+                              'links': []},
+                             {'h': 'Math',
+                              'p': 'Math written in KaTeX syntax is drawn in the preview and in Quick '
+                                   'Look, and comes through in the exported PDF.',
+                              'links': ['reviewing-ai-output']}]},
+                  {'id': 'themes',
+                   'h2': 'Themes, PDF and print',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': 'Four themes, light and dark',
+                              'p': 'Dawn, Classic, Modern and Vivid each come in a light and a dark '
+                                   "version, and MarsDawn follows your Mac's appearance unless you "
+                                   'pick one in Settings. Choose from View ▸ Preview Theme or the '
+                                   'palette button in the toolbar.',
+                              'links': ['themes']},
+                             {'h': 'More themes',
+                              'p': 'Settings ▸ Appearance ▸ Get More Themes… opens a gallery of extra '
+                                   'preview themes. Install one and it shows up under View ▸ Preview '
+                                   'Theme; Remove takes it away again. The gallery only goes online '
+                                   'while it is open.',
+                              'links': ['themes/gallery', 'themes/new']},
+                             {'h': 'Export as PDF, or print',
+                              'p': 'File ▸ Export as PDF… saves a paginated PDF, and File ▸ Print… '
+                                   'prints the same pages. Mermaid diagrams are drawn in, code keeps '
+                                   'its highlighting, and page breaks avoid splitting a heading from '
+                                   'its section or cutting a short code block, table or diagram in '
+                                   "half. The PDF always uses the theme's light colors, even if you "
+                                   'were reading in dark.',
+                              'links': ['pdf']}]},
+                  {'id': 'files',
+                   'h2': 'Files, tabs and Quick Look',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': 'Windows and tabs',
+                              'p': 'Each document opens in its own window. Choose Window ▸ Merge All '
+                                   'Windows to gather open windows as tabs of one. Autosave runs as '
+                                   'you type.',
+                              'links': ['native']},
+                             {'h': 'Quick Look in Finder',
+                              'p': 'Select a Markdown file in Finder and press Space to read it '
+                                   'rendered, diagrams included. Quick Look uses the theme you picked '
+                                   'in MarsDawn and follows its Appearance setting.',
+                              'links': ['native']},
+                             {'h': 'Other files',
+                              'p': 'MarsDawn also opens plain text files (.txt, .log, source code) and '
+                                   'PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in '
+                                   'a viewer with page thumbnails, zoom and search.',
+                              'links': []},
+                             {'h': 'Your files stay yours',
+                              'p': 'There is no account, no sync and no cloud. Documents stay where '
+                                   'you save them, and MarsDawn collects no data about you.',
+                              'links': ['yours']}]},
+                  {'id': 'agents',
+                   'h2': 'For agents and scripts',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': 'A free command-line tool',
+                              'p': 'The free marsdawn tool is installed separately with Homebrew. '
+                                   'marsdawn export turns a Markdown file into a PDF, rendered like '
+                                   "MarsDawn's preview; it does not need the app. Choose a theme with "
+                                   '--theme and paper size A4 or Letter. marsdawn open opens files in '
+                                   'the app for you to review, optionally at a line, and does need the '
+                                   'app installed.',
+                              'links': ['cli']},
+                             {'h': 'Output a script can read',
+                              'p': 'Add --json and both commands return a result an agent or script '
+                                   'can parse.',
+                              'links': ['cli/agents']},
+                             {'h': 'Skill and MCP server',
+                              'p': 'An agent skill file teaches a coding agent to open what it wrote '
+                                   'in MarsDawn for your review. For clients without a shell, a '
+                                   'separate MCP server runs the same export.',
+                              'links': ['cli/skill', 'cli/mcp']},
+                             {'h': 'No AI inside',
+                              'p': "MarsDawn has no AI model of its own. It won't summarize or grade "
+                                   'what an agent wrote; it keeps a long, changing file readable so '
+                                   'you can do the reading.',
+                              'links': ['limits']}]},
+                  {'id': 'siri',
+                   'h2': 'Siri and Shortcuts',
+                   'lead': 'Search for MarsDawn in the Shortcuts app to find three actions: New '
+                           'Markdown Document (from a template), Add Note to Inbox and Open Recent '
+                           'Document. Notes go to Inbox.md in the folder you choose in MarsDawn ▸ '
+                           'Settings… ▸ Notes Folder.',
+                   'lead_links': ['native'],
+                   'items': []}],
+     'cta': {'h2': 'Try it on your Mac',
+             'p1': 'MarsDawn is free to download. Try everything for 14 days, then unlock it once for '
+                   'USD 4.99. No subscription, no account. It needs macOS 26 or later.',
+             'trial': ['How the trial works: ', 'pay-once'],
+             'left': ['. What is left out on purpose: ', 'limits'],
+             'tail': '.'}},
+    "zh-hant": {'title': '功能一覽：Mac 上的 Markdown 編輯器 · MarsDawn',
+     'description': 'Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。',
+     'h1': 'MarsDawn 能做的事，一頁看完。',
+     'intro': ['MarsDawn 是為 Mac 做的 Markdown 編輯器。一邊寫，一邊讀排版後的頁面，圖表、數學式和程式碼都畫在裡面。它沒有自己的 AI 模型：做它是為了讀 '
+               'agent 寫的東西，也讓你寫自己的。工作換到會議桌或檔案櫃上時，它也能印出、輸出乾淨的頁面。',
+               '下面每一節說明 app 做了什麼，並連到講得更細的頁面。'],
+     'sections': [{'id': 'read',
+                   'h2': '讀 agent 寫的 Markdown',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': '原始碼和預覽並排',
+                              'p': '打開 Markdown '
+                                   '檔，排版後的頁面就在原始碼旁邊（⌘2）；也可以只看原始碼（⌘1）或只看預覽（⌘3）。兩邊一起捲動，頁面會隨著打字更新。',
+                              'links': ['native']},
+                             {'h': '大綱和檔案側邊欄',
+                              'p': '側邊欄的「大綱」列出文件的標題，點一下就跳到該處。打開資料夾後，「檔案」分頁列出裡面的檔案；agent '
+                                   '正在寫入時，新檔案會自動出現。如果資料夾是 git 檢出，上方標題會寫出是哪個分支或工作樹。',
+                              'links': ['reading-agent-output']},
+                             {'h': '指出確切的那一行',
+                              'p': '「編輯 ▸ 拷貝引用」會把你的位置拷貝成路徑加行號，例如 docs/plan.md:42。「拷貝給 AI」再附上所選的文字。貼到 '
+                                   'agent 的對話裡就行。',
+                              'links': ['reading-agent-output']},
+                             {'h': '跟著連結跳到另一個檔案',
+                              'p': '在預覽裡點一個指向另一個 Markdown 檔的連結，MarsDawn 會打開那個檔案（已經開著就帶到前面），並捲到那個標題。',
+                              'links': []}]},
+                  {'id': 'paper',
+                   'h2': '紙本在人與人之間的用處',
+                   'lead': '不是所有的工作都在螢幕上做。MarsDawn 印出和輸出的頁面，就是你在螢幕上讀的那幾頁，所以人們聚在一起、讀東西、留紀錄的地方都用得上。',
+                   'lead_links': [],
+                   'items': [{'h': '開會討論',
+                              'p': '把頁面印出來，或把同一份 PDF 傳給每個人，大家就是看同一份文件，不用擠在一個螢幕前。拿到同一個檔案的人，分頁位置都一樣，所以「第 '
+                                   '3 '
+                                   '頁那張表」指的是同一個東西。接著由人把決議寫下來，寫在印出來的紙上，或寫成筆記。會議記錄範本把決議放在最前面，每個行動項目都有負責人。',
+                              'links': ['pdf', 'templates/meeting-notes']},
+                             {'h': '拿筆邊讀邊寫',
+                              'p': '有些人習慣用筆讀東西：畫線、在頁邊寫幾個字，才記得住。把文件印出來，就可以在紙上這樣做。MarsDawn 本身沒有加註功能；想直接在 '
+                                   'PDF 上標記的話，用你原本就有的 PDF app 就好。',
+                              'links': ['pdf']},
+                             {'h': '紙本保存',
+                              'p': '有些行業還是要把紙本存起來，會計就是一個例子。MarsDawn '
+                                   '沒有任何歸檔或合規的聲明。它做的是印出和輸出乾淨、分好頁的頁面：圖表畫進去，短的程式碼區塊和表格不被切開，用主題的淺色配色。紙本還是正式紀錄的地方，就可以用這些頁面。',
+                              'links': ['pdf']},
+                             {'h': '交給不寫 Markdown 的人',
+                              'p': 'PDF 在任何地方都能打開，也不需要懂 Markdown，所以也適合寄給主管或客戶。',
+                              'links': ['sharing-exported-pdfs']}]},
+                  {'id': 'write',
+                   'h2': '寫作和版面',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': '純 Markdown，附語法上色',
+                              'p': '粗體、斜體、刪除線、行內程式碼、連結、引言和待辦清單都照常使用。編輯器會幫 Markdown 語法上色，顏色和預覽主題一致。',
+                              'links': ['native']},
+                             {'h': '縮放、行號和狀態列',
+                              'p': '原始碼和預覽可以一起縮放，範圍 75% 到 '
+                                   '200%。原始碼旁有行號欄；狀態列顯示游標所在的行與欄，以及整份文件或所選文字的字數、字元數和閱讀時間。',
+                              'links': []},
+                             {'h': '圖片',
+                              'p': '先儲存文件，再把圖片拖進或貼到編輯器。MarsDawn 會把圖片複製到文件旁的 assets '
+                                   '資料夾，並寫好連結。網路圖片在你按下「載入圖片」之前都不會載入，所以打開文件不會讓任何伺服器知道你讀了它。',
+                              'links': ['yours']},
+                             {'h': 'Front matter 不礙事',
+                              'p': '檔案開頭的 front matter 區塊，在預覽和快速查看裡會收成可展開的「文件資訊」，輸出 PDF 時則不會印出。',
+                              'links': []},
+                             {'h': '八種語言',
+                              'p': 'App 介面有英文、繁體中文、簡體中文、日文、德文、法文、西班牙文和韓文。',
+                              'links': ['native']}]},
+                  {'id': 'diagrams',
+                   'h2': '圖表、程式碼和數學式',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': 'Mermaid 圖表',
+                              'p': '標記為 mermaid '
+                                   '的程式碼區塊會畫成圖表。圖表寫錯時，預覽會顯示它的原始碼，下方附上錯誤訊息；點一下訊息，就跳到編輯器裡那一行。',
+                              'links': ['templates/flowchart']},
+                             {'h': '程式碼上色', 'p': '常見的程式語言都會語法上色，在開頭的 ``` 後面寫上語言名稱就好。', 'links': []},
+                             {'h': '數學式',
+                              'p': '用 KaTeX 語法寫的數學式，會在預覽和快速查看裡畫出來，輸出的 PDF 裡也有。',
+                              'links': ['reviewing-ai-output']}]},
+                  {'id': 'themes',
+                   'h2': '主題、PDF 和列印',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': '四種主題，各有淺色和深色',
+                              'p': '黎明、典雅、流行、活潑各有淺色和深色版本。MarsDawn 會跟著 Mac 的外觀切換，也可以在設定中固定一種。從「顯示方式 ▸ '
+                                   '預覽主題」或工具列的調色盤按鈕選擇。',
+                              'links': ['themes']},
+                             {'h': '更多主題',
+                              'p': '「設定 ▸ 外觀 ▸ 取得更多主題⋯」會打開額外預覽主題的主題庫。裝上一個，它就出現在「顯示方式 ▸ '
+                                   '預覽主題」裡；按「移除」就拿掉。主題庫只在打開的時候連上網路。',
+                              'links': ['themes/gallery', 'themes/new']},
+                             {'h': '輸出 PDF，或列印',
+                              'p': '「檔案 ▸ 輸出為 PDF⋯」會存成自動分頁的 PDF，「檔案 ▸ 列印⋯」印出相同的頁面。Mermaid '
+                                   '圖表直接畫進去，程式碼保留語法上色，分頁時會盡量不讓標題落在頁尾，也不切開短的程式碼、表格和圖表。PDF '
+                                   '一律用主題的淺色配色，就算你是在深色下讀的也一樣。',
+                              'links': ['pdf']}]},
+                  {'id': 'files',
+                   'h2': '檔案、分頁和快速查看',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': '視窗和分頁',
+                              'p': '每份文件預設在自己的視窗打開。用「視窗 ▸ 合併所有視窗」，可以把開著的視窗收成同一個視窗裡的分頁。打字時會自動儲存。',
+                              'links': ['native']},
+                             {'h': '在 Finder 用快速查看',
+                              'p': '在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。快速查看會用你在 MarsDawn '
+                                   '選的主題，也跟著 MarsDawn 的外觀設定。',
+                              'links': ['native']},
+                             {'h': '其他檔案',
+                              'p': 'MarsDawn 也能打開純文字檔（.txt、.log、程式碼檔）和 PDF。UTF-8 '
+                                   '純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。',
+                              'links': []},
+                             {'h': '你的檔案留在你手上',
+                              'p': '不需要帳號，沒有同步，也沒有雲端。文件留在你儲存的位置，MarsDawn 不收集任何關於你的資料。',
+                              'links': ['yours']}]},
+                  {'id': 'agents',
+                   'h2': '給 agent 和腳本',
+                   'lead': '',
+                   'lead_links': [],
+                   'items': [{'h': '免費的命令列工具',
+                              'p': '免費的 marsdawn 工具另外用 Homebrew 安裝。marsdawn export 把 Markdown 檔輸出成 '
+                                   'PDF，排版和 MarsDawn 的預覽一樣，不需要 app；可以用 --theme 選主題，紙張選 A4 或 '
+                                   'Letter。marsdawn open 在 app 裡打開檔案讓你審閱，還可以指定行號，這個需要先裝 app。',
+                              'links': ['cli']},
+                             {'h': '腳本讀得懂的輸出',
+                              'p': '加上 --json，兩個指令都會回傳 agent 或腳本能解析的結果。',
+                              'links': ['cli/agents']},
+                             {'h': 'Skill 和 MCP 伺服器',
+                              'p': '一個 agent skill 檔案，教寫程式的 agent 把自己寫的東西在 MarsDawn 裡打開給你審閱。沒有 shell '
+                                   '的用戶端，則可以用另外的 MCP 伺服器執行同一個 export。',
+                              'links': ['cli/skill', 'cli/mcp']},
+                             {'h': '裡面沒有 AI',
+                              'p': 'MarsDawn 沒有自己的 AI 模型。它不會幫你摘要或評分 agent '
+                                   '寫的東西，只是讓一份又長又一直在改的檔案保持好讀，讀的人是你。',
+                              'links': ['limits']}]},
+                  {'id': 'siri',
+                   'h2': 'Siri 和捷徑',
+                   'lead': '在「捷徑」App 搜尋 MarsDawn，可以找到三個動作：「新增 Markdown '
+                           '文件」（可選範本）、「新增筆記到收件匣」和「打開最近的文件」。筆記會加到你在「MarsDawn ▸ 設定⋯ ▸ 筆記資料夾」選的資料夾中的 '
+                           'Inbox.md。',
+                   'lead_links': ['native'],
+                   'items': []}],
+     'cta': {'h2': '在你的 Mac 上試試',
+             'p1': 'MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。',
+             'trial': ['試用怎麼運作：', 'pay-once'],
+             'left': ['。刻意不做的事：', 'limits'],
+             'tail': '。'}},
+}
+
+FEATURES_TOP_FIGURE = "native"
+FEATURES_SHOTS = {"themes": "pdf"}
+# Command names, flags and file names in the copy are set in <code>, the way the site sets them
+# elsewhere. Longest first. The words are the same in every language.
+FEATURES_CODE_TOKENS = ("marsdawn export", "marsdawn open", "marsdawn", "--theme", "--json", "docs/plan.md:42",
+                        "Inbox.md", ".txt", ".log", "mermaid", "```")
+_FEATURES_CODE = re.compile("|".join(re.escape(token) for token in FEATURES_CODE_TOKENS))
+
+
+def _features_text(text: str) -> str:
+    return _FEATURES_CODE.sub(lambda m: f"<code>{m.group(0)}</code>", xml_escape(text))
+
+
+def _features_more(slugs: list) -> str:
+    links = " &#183; ".join(f"<!--link:{slug}-->" for slug in slugs)
+    return f'<p class="more">{links}</p>' if slugs else ""
+
+
+def features_page(copy: dict) -> dict:
+    """A locale's /features/ page, from its copy (FEATURES_COPY's shape). Its link, button and
+    screenshot marks are filled in by all_pages() and render(), once every locale's labels exist."""
+    problems = shape_problems(FEATURES_COPY["en"], copy)
+    assert not problems, "features copy differs in shape from en: " + "; ".join(problems)
+    intro = "\n".join(['<section class="intro">', f"  <h1>{_features_text(copy['h1'])}</h1>"]
+                       + [f"  <p>{_features_text(p)}</p>" for p in copy["intro"]] + ["</section>"])
+    parts = []
+    for section in copy["sections"]:
+        parts.append(f"<h2>{_features_text(section['h2'])}</h2>")
+        if section["lead"]:
+            parts.append(f"<p>{_features_text(section['lead'])}</p>")
+        parts.append(_features_more(section["lead_links"]))
+        for item in section["items"]:
+            parts += [f"<h3>{_features_text(item['h'])}</h3>", f"<p>{_features_text(item['p'])}</p>", _features_more(item["links"])]
+        if section["id"] in FEATURES_SHOTS:
+            parts.append(f"<!--shot:{FEATURES_SHOTS[section['id']]}-->")
+    cta = copy["cta"]
+    (trial, trial_slug), (left, left_slug) = cta["trial"], cta["left"]
+    parts += [f"<h2>{_features_text(cta['h2'])}</h2>", f"<p>{_features_text(cta['p1'])}</p>", "<p><!--cta--></p>",
+              f"<p>{_features_text(trial)}<!--link:{trial_slug}-->{_features_text(left)}<!--link:{left_slug}-->{_features_text(cta['tail'])}</p>"]
+    return {
+        "title": xml_escape(copy["title"], {'"': "&quot;"}),
+        "description": xml_escape(copy["description"], {'"': "&quot;"}),
+        "intro": intro,
+        "body": "\n".join(part for part in parts if part),
+    }
+
+
+def features_pages() -> dict:
+    return {(locale, "features"): features_page(copy) for locale, copy in FEATURES_COPY.items()}
+
+_FEATURES_MARK = re.compile(r"<!--(link:[a-z/-]+|cta|shot:[a-z]+)-->")
+
+
+def features_marks(locale: str, body: str) -> str:
+    """The links and the Download button, in a /features/ body. Screenshot marks stay for render()."""
+    def fill(match):
+        mark = match.group(1)
+        if mark == "cta":
+            return f'<a href="{LISTING_URL}">{HOME[locale]["cta_try"]}</a>'
+        if mark.startswith("link:"):
+            slug = mark[5:]
+            return f'<a href="{page_path(locale, slug)}">{UI[locale][SLUG_TO_UI_KEY[slug]]}</a>'
+        return match.group(0)
+    return _FEATURES_MARK.sub(fill, body)
+
+
+def features_body_html(locale: str, body: str) -> str:
+    return re.sub(r"<!--shot:([a-z]+)-->", lambda m: figure_html(locale, m.group(1)), body)
+
+
+def features_body_markdown(locale: str, body: str) -> str:
+    chunks = re.split(r"<!--shot:([a-z]+)-->", body)
+    out = []
+    for i, chunk in enumerate(chunks):
+        out.append(figure_markdown(locale, chunk) if i % 2 else html_to_markdown(chunk).rstrip())
+    return "\n\n".join(out)
+
+
 EXTRA_PAGES = {}
 
 
@@ -4366,6 +4837,7 @@ def _make_k(locale: str) -> SimpleNamespace:
         APP_UI_LANGUAGES=APP_UI_LANGUAGES.get(locale, ""), schema_links_from=schema_links_from, xml_escape=xml_escape,
         render_legal_body=render_legal_body,
         theme_agents_page=lambda copy: theme_agents.page(LOCALES[locale]["root"], copy),
+        features_page=features_page,
     )
 
 
@@ -4379,7 +4851,7 @@ def _merge_locale(locale: str, module) -> None:
     SCHEMA_NOTES[locale] = t["schema_notes"]
     EXAMPLE_PLAN[locale] = t["example_plan"]
     _PLAN_HTML[locale] = xml_escape(t["example_plan"])
-    assert set(t["trait_link"]) == set(TRAIT_ORDER), f"{locale}: trait links differ from TRAIT_ORDER"
+    assert set(t["trait_link"]) == set(TRAIT_ORDER) | {"features"}, f"{locale}: trait links differ from TRAIT_ORDER and features"
     TRAIT_LINK[locale] = t["trait_link"]
     TRAIT_NAV_HEADING[locale] = t["trait_nav_heading"]
     FIGURE_LIST_LABEL[locale] = t["figure_list_label"]
@@ -4402,7 +4874,7 @@ def all_pages_en() -> dict:
 
 # The home page after the hero (owner's IA, 2026-09-21): the loop, then one thing to do today
 # (the free CLI), three reasons for the app, one line on its limits, and the app as it is.
-HOME_TRAITS = ["native", "yours", "pay-once"]
+HOME_TRAITS = ["native", "yours", "pay-once", "features"]
 HOME_PROOF = ["native", "pdf"]
 HOME = {
     "en": {
@@ -4965,18 +5437,24 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
             html_to_markdown(_home_sections_for_twin(locale)).rstrip(),
             *proof,
         ])
+    if slug == "features":
+        return "\n\n".join([
+            html_to_markdown(page["intro"]).rstrip(),
+            figure_markdown(locale, FEATURES_TOP_FIGURE),
+            features_body_markdown(locale, page["body"]),
+        ])
     return "\n\n".join([
         html_to_markdown(page["intro"]).rstrip(),
         figure_markdown(locale, slug),
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
+PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
               "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/agents", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
-SLUG_TO_UI_KEY = {"index": "home", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
+SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
                   "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
                   "vs/macmd-viewer": "vs-macmd-viewer",
@@ -5002,6 +5480,7 @@ def _base_pages() -> dict:
     merged.update(START_PAGES)
     merged.update(SKILL_PAGES)
     merged.update(TRAIT_PAGES)
+    merged.update(features_pages())
     merged.update(BRAINSTORM_PAGES)
     merged.update(READING_NOTES_PAGES)
     merged.update(templates_pages.pages())
@@ -5021,6 +5500,8 @@ def all_pages() -> dict:
             body = exit_table_html(locale, body)
         for key in COMPARE_TABLES:
             body = body.replace(f"<!--compare:{key}-->", compare_table_html(locale, key))
+        if slug == "features":
+            body = features_marks(locale, body)
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
     return merged
@@ -5041,7 +5522,7 @@ def has_page(locale: str, slug: str) -> bool:
 # tuple, not three). The first three are the long-standing links; the next three are the pages
 # crawlers must reach from every page (PLAN-web-search-sprint S1). Each label is the page's own
 # existing ui[...] string in that locale; a page a locale doesn't have is left out.
-FOOTER_SLUGS = ("support", "privacy", "cli", "view-markdown-on-mac", "vs/markdown-preview-tools", "vs/macmd-viewer")
+FOOTER_SLUGS = ("support", "privacy", "cli", "features", "view-markdown-on-mac", "vs/markdown-preview-tools", "vs/macmd-viewer")
 
 
 def footer_site_links(locale: str, ui: dict, current: dict = None) -> str:
@@ -5445,7 +5926,7 @@ def render(locale: str, slug: str, page: dict) -> str:
     # statement; the home page says it in the hero instead.
     statement_chip = (f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  '
                       if not is_trait_page and slug != "index" else "")
-    extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page else ""
+    extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page or slug == "features" else ""
     if slug.startswith("templates/"):
         extra_css = '<link rel="stylesheet" href="/assets/loop.css">\n'
     if slug in LEGAL_PAGES:
@@ -5504,6 +5985,11 @@ def render(locale: str, slug: str, page: dict) -> str:
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
         main_html = "\n".join([hero_html, brand_film.film_html(locale), page["body"].strip(), loop_anim.loop_html(locale),
                                home_sections_html(locale), proof_html, closing_html])
+    elif slug == "features":
+        # The overview page: its two screenshots are the native and PDF pages', and it is the hub, so
+        # no trait list under it.
+        main_html = "\n".join([page["intro"].strip(), figure_html(locale, FEATURES_TOP_FIGURE),
+                               features_body_html(locale, page["body"].strip())])
     elif has_intro:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
@@ -5965,34 +6451,6 @@ def en_reference() -> dict:
                   for slug, page in en_pages.items()},
         "tables": locale_tables("en"),
     }
-
-
-def shape_problems(ref, got, path: str = "", allow_empty: bool = False) -> list:
-    """Where got differs in shape from ref (same keys, same list lengths, same types) or, unless
-    allow_empty (a skeleton, which is keys only), has an empty string where ref has words."""
-    where = path or "(top level)"
-    if isinstance(ref, dict):
-        if not isinstance(got, dict):
-            return [f"{where}: expected a table, got {type(got).__name__}"]
-        out = [f"{where}: missing key {key!r}" for key in ref if key not in got]
-        out += [f"{where}: unexpected key {key!r}" for key in got if key not in ref]
-        for key in ref:
-            if key in got:
-                out += shape_problems(ref[key], got[key], f"{path}.{key}" if path else str(key), allow_empty)
-        return out
-    if isinstance(ref, (list, tuple)):
-        if not isinstance(got, (list, tuple)):
-            return [f"{where}: expected a list, got {type(got).__name__}"]
-        if len(ref) != len(got):
-            return [f"{where}: {len(got)} items, en has {len(ref)}"]
-        return [problem for i, (r, g) in enumerate(zip(ref, got)) for problem in shape_problems(r, g, f"{path}[{i}]", allow_empty)]
-    if isinstance(ref, str):
-        if not isinstance(got, str):
-            return [f"{where}: expected text, got {type(got).__name__}"]
-        return [f"{where}: empty, en has text"] if ref.strip() and not got.strip() and not allow_empty else []
-    if isinstance(ref, (int, float)):
-        return [] if isinstance(got, (int, float)) else [f"{where}: expected a number, got {type(got).__name__}"]
-    return []
 
 
 def preflight_problems(locale: str) -> list:

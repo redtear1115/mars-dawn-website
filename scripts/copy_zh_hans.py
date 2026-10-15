@@ -92,12 +92,161 @@ THEME_AGENTS = {
 }
 
 
+# /features/ prose (machine draft of the en text, needs-i18n; owner-approved en/zh-Hant copy of 2026-10-15).
+# UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
+# Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
+FEATURES = {'title': '功能一览：Mac 上的 Markdown 编辑器 · MarsDawn',
+ 'description': 'Mac 原生的 Markdown 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可以拿去开会、用笔批注，或当纸质存档。',
+ 'h1': 'MarsDawn 能做的事，一页看完。',
+ 'intro': ['MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后的页面，图表、数学公式和代码都画在里面。它没有自己的 AI 模型：做它是为了读 '
+           'agent 写的东西，也让你写自己的。工作换到会议桌或档案柜上时，它也能打印、导出干净的页面。',
+           '下面每一节说明 app 做了什么，并链接到讲得更细的页面。'],
+ 'sections': [{'id': 'read',
+               'h2': '读 agent 写的 Markdown',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '源代码和预览并排',
+                          'p': '打开 Markdown '
+                               '文件，排版后的页面就在源代码旁边（⌘2）；也可以只看源代码（⌘1）或只看预览（⌘3）。两边一起滚动，页面会随着输入更新。',
+                          'links': ['native']},
+                         {'h': '大纲和文件边栏',
+                          'p': '边栏的“大纲”列出文稿的标题，点按一下就跳到该处。打开文件夹后，“文件”标签列出里面的文件；agent '
+                               '正在写入时，新文件会自动出现。如果文件夹是 git 检出，上方标题会写出是哪个分支或工作树。',
+                          'links': ['reading-agent-output']},
+                         {'h': '指出确切的那一行',
+                          'p': '“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 docs/plan.md:42。“拷贝给 AI”再附上所选的文字。粘贴到 '
+                               'agent 的对话里就行。',
+                          'links': ['reading-agent-output']},
+                         {'h': '跟着链接跳到另一个文件',
+                          'p': '在预览里点按一个指向另一个 Markdown 文件的链接，MarsDawn 会打开那个文件（已经开着就带到前面），并滚动到那个标题。',
+                          'links': []}]},
+              {'id': 'paper',
+               'h2': '纸质文件在人与人之间的用处',
+               'lead': '不是所有的工作都在屏幕上做。MarsDawn 打印和导出的页面，就是你在屏幕上读的那几页，所以人们聚在一起、读东西、留记录的地方都用得上。',
+               'lead_links': [],
+               'items': [{'h': '开会讨论',
+                          'p': '把页面打印出来，或把同一份 PDF '
+                               '发给每个人，大家就是看同一份文稿，不用挤在一个屏幕前。拿到同一个文件的人，分页位置都一样，所以“第 3 '
+                               '页那张表”指的是同一个东西。接着由人把决议写下来，写在打印出来的纸上，或写成笔记。会议记录模板把决议放在最前面，每个行动项都有负责人。',
+                          'links': ['pdf', 'templates/meeting-notes']},
+                         {'h': '拿笔边读边写',
+                          'p': '有些人习惯用笔读东西：画线、在页边写几个字，才记得住。把文稿打印出来，就可以在纸上这样做。MarsDawn '
+                               '本身没有批注功能；想直接在 PDF 上标记的话，用你原本就有的 PDF app 就好。',
+                          'links': ['pdf']},
+                         {'h': '纸质存档',
+                          'p': '有些行业还是要把纸质文件存起来，会计就是一个例子。MarsDawn '
+                               '没有任何归档或合规的声明。它做的是打印和导出干净、分好页的页面：图表画进去，短的代码块和表格不被切开，用主题的浅色配色。纸质文件还是正式记录的地方，就可以用这些页面。',
+                          'links': ['pdf']},
+                         {'h': '交给不写 Markdown 的人',
+                          'p': 'PDF 在任何地方都能打开，也不需要懂 Markdown，所以也适合发给主管或客户。',
+                          'links': ['sharing-exported-pdfs']}]},
+              {'id': 'write',
+               'h2': '写作和版面',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '纯 Markdown，附语法着色',
+                          'p': '粗体、斜体、删除线、行内代码、链接、引文和待办清单都照常使用。编辑器会给 Markdown 语法着色，颜色和预览主题一致。',
+                          'links': ['native']},
+                         {'h': '缩放、行号和状态栏',
+                          'p': '源代码和预览可以一起缩放，范围 75% 到 '
+                               '200%。源代码旁有行号栏；状态栏显示光标所在的行与列，以及整份文稿或所选文字的字数、字符数和阅读时间。',
+                          'links': []},
+                         {'h': '图像',
+                          'p': '先存储文稿，再把图像拖入或粘贴到编辑器。MarsDawn 会把图像拷贝到文稿旁的 assets '
+                               '文件夹，并写好链接。网络图像在你点按“载入图像”之前都不会载入，所以打开文稿不会让任何服务器知道你读了它。',
+                          'links': ['yours']},
+                         {'h': 'Front matter 不碍事',
+                          'p': '文件开头的 front matter 区块，在预览和快速查看里会收成可展开的“文稿信息”，导出 PDF 时则不会印出。',
+                          'links': []},
+                         {'h': '八种语言',
+                          'p': 'App 界面有英文、繁体中文、简体中文、日文、德文、法文、西班牙文和韩文。',
+                          'links': ['native']}]},
+              {'id': 'diagrams',
+               'h2': '图表、代码和数学公式',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'Mermaid 图表',
+                          'p': '标记为 mermaid 的代码块会画成图表。图表写错时，预览会显示它的源代码，下方附上错误信息；点按信息，就跳到编辑器里那一行。',
+                          'links': ['templates/flowchart']},
+                         {'h': '代码着色', 'p': '常见的编程语言都会语法着色，在开头的 ``` 后面写上语言名称就好。', 'links': []},
+                         {'h': '数学公式',
+                          'p': '用 KaTeX 语法写的数学公式，会在预览和快速查看里画出来，导出的 PDF 里也有。',
+                          'links': ['reviewing-ai-output']}]},
+              {'id': 'themes',
+               'h2': '主题、PDF 和打印',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '四种主题，各有浅色和深色',
+                          'p': '黎明、典雅、流行、活泼各有浅色和深色版本。MarsDawn 会跟着 Mac 的外观切换，也可以在设置中固定一种。从“显示 ▸ '
+                               '预览主题”或工具栏的调色板按钮选择。',
+                          'links': ['themes']},
+                         {'h': '更多主题',
+                          'p': '“设置 ▸ 外观 ▸ 获取更多主题…”会打开额外预览主题的主题库。装上一个，它就出现在“显示 ▸ '
+                               '预览主题”里；点按“移除”就拿掉。主题库只在打开的时候连上网络。',
+                          'links': ['themes/gallery', 'themes/new']},
+                         {'h': '导出 PDF，或打印',
+                          'p': '“文件 ▸ 导出为 PDF…”会存成自动分页的 PDF，“文件 ▸ 打印…”打印相同的页面。Mermaid '
+                               '图表直接画进去，代码保留语法着色，分页时会尽量不让标题落在页尾，也不切开短的代码块、表格和图表。PDF '
+                               '一律用主题的浅色配色，就算你是在深色下读的也一样。',
+                          'links': ['pdf']}]},
+              {'id': 'files',
+               'h2': '文件、标签页和快速查看',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '窗口和标签页',
+                          'p': '每份文稿默认在自己的窗口打开。用“窗口 ▸ 合并所有窗口”，可以把开着的窗口收成同一个窗口里的标签页。输入时会自动存储。',
+                          'links': ['native']},
+                         {'h': '在访达用快速查看',
+                          'p': '在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。快速查看会用你在 MarsDawn '
+                               '选的主题，也跟着 MarsDawn 的外观设置。',
+                          'links': ['native']},
+                         {'h': '其他文件',
+                          'p': 'MarsDawn 也能打开纯文本文件（.txt、.log、代码文件）和 PDF。UTF-8 '
+                               '纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。',
+                          'links': []},
+                         {'h': '你的文件留在你手上',
+                          'p': '不需要账户，没有同步，也没有云端。文稿留在你存储的位置，MarsDawn 不收集任何关于你的数据。',
+                          'links': ['yours']}]},
+              {'id': 'agents',
+               'h2': '给 agent 和脚本',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '免费的命令行工具',
+                          'p': '免费的 marsdawn 工具另外用 Homebrew 安装。marsdawn export 把 Markdown 文件导出成 '
+                               'PDF，排版和 MarsDawn 的预览一样，不需要 app；可以用 --theme 选主题，纸张选 A4 或 '
+                               'Letter。marsdawn open 在 app 里打开文件让你审阅，还可以指定行号，这个需要先装 app。',
+                          'links': ['cli']},
+                         {'h': '脚本读得懂的输出',
+                          'p': '加上 --json，两个命令都会返回 agent 或脚本能解析的结果。',
+                          'links': ['cli/agents']},
+                         {'h': 'Skill 和 MCP 服务器',
+                          'p': '一个 agent skill 文件，教写代码的 agent 把自己写的东西在 MarsDawn 里打开给你审阅。没有 shell '
+                               '的客户端，则可以用另外的 MCP 服务器执行同一个 export。',
+                          'links': ['cli/skill', 'cli/mcp']},
+                         {'h': '里面没有 AI',
+                          'p': 'MarsDawn 没有自己的 AI 模型。它不会帮你摘要或评分 agent '
+                               '写的东西，只是让一份又长又一直在改的文件保持好读，读的人是你。',
+                          'links': ['limits']}]},
+              {'id': 'siri',
+               'h2': 'Siri 和快捷指令',
+               'lead': '在“快捷指令”App 中搜索 MarsDawn，可以找到三个操作：“新建 Markdown '
+                       '文稿”（可选模板）、“添加笔记到收件箱”和“打开最近使用的文稿”。笔记会添加到你在“MarsDawn ▸ 设置… ▸ 笔记文件夹”选的文件夹中的 '
+                       'Inbox.md。',
+               'lead_links': ['native'],
+               'items': []}],
+ 'cta': {'h2': '在你的 Mac 上试试',
+         'p1': 'MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。',
+         'trial': ['试用怎么运作：', 'pay-once'],
+         'left': ['。刻意不做的事：', 'limits'],
+         'tail': '。'}}
+
+
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'themes-new': '打造一个主题', 'themes-agents': '和 agent 一起做主题', 'themes-gallery': '主题库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
+    ui = {'features': '功能一览', 'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI agent 的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给 agent 的 skill', 'view-markdown-on-mac': '在 Mac 上看 Markdown', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读 agent 写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'themes-new': '打造一个主题', 'themes-agents': '和 agent 一起做主题', 'themes-gallery': '主题库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂 agent 交回来的 Markdown', 'agent-transparency': 'agent 的透明', 'reviewing-agent-plans': '审 agent 计划', 'agent-design-patterns': 'agent 设计模式', 'changelog': '更新记录', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
     store_chip = '已在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.5.1 以后，包括在侧边栏显示的文件夹', 'open_v2': 'open 成功，marsdawn 0.3.0 到 0.5.0', 'error': '两个命令的失败结果，marsdawn 0.5.2 以后', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单', 'error_v1': '两个命令的失败结果，marsdawn 0.5.1 以前'}
     example_plan = '# 计划：让导出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
-    trait_link = {'yours': ('你写的内容留在你的 Mac 上', '不需要账户，没有同步，也没有云端。'), 'pay-once': ('免费试用，买一次就好', '免费试用 14 天，之后 USD 4.99 买一次，没有订阅。'), 'pdf': ('导出 PDF', '图表、代码高亮、经过安排的分页。'), 'native': ('为 Mac 而做', '原生窗口、标签页、自动保存、快速查看。'), 'limits': ('MarsDawn 做不到的事', '购买前先知道。')}
+    trait_link = {'features': ('功能一览', 'MarsDawn 能做的事，一页看完。'), 'yours': ('你写的内容留在你的 Mac 上', '不需要账户，没有同步，也没有云端。'), 'pay-once': ('免费试用，买一次就好', '免费试用 14 天，之后 USD 4.99 买一次，没有订阅。'), 'pdf': ('导出 PDF', '图表、代码高亮、经过安排的分页。'), 'native': ('为 Mac 而做', '原生窗口、标签页、自动保存、快速查看。'), 'limits': ('MarsDawn 做不到的事', '购买前先知道。')}
     trait_nav_heading = 'MarsDawn 是什么样的 app'
     figure_list_label = '这张截图里'
     figures = {
@@ -706,6 +855,7 @@ marsdawn --version</code></pre>
 """,
     }
     pages['themes/agents'] = k.theme_agents_page(THEME_AGENTS)
+    pages['features'] = k.features_page(FEATURES)
     pages['themes/new'] = {
         "title": "在浏览器里打造一个 MarsDawn 主题 · MarsDawn",
         "description": "挑选颜色和几个样式选项，实时看它们套用在范例文档上，再把主题送出成一个 GitHub issue。不用安装，也不用 git。",

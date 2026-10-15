@@ -92,12 +92,175 @@ THEME_AGENTS = {
 }
 
 
+# /features/ prose (machine draft of the en text, needs-i18n; owner-approved en/zh-Hant copy of 2026-10-15).
+# UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
+# Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
+FEATURES = {'title': '機能一覧：Mac 用 Markdown エディタを1ページで · MarsDawn',
+ 'description': 'Mac ネイティブの Markdown エディタ：リアルタイムプレビュー、Mermaid と数式、テーマに加え、会議や書き込み、紙での保管に使える PDF '
+                'とプリントのページ。',
+ 'h1': 'MarsDawn でできることを、1ページで。',
+ 'intro': ['MarsDawn は Mac 用の Markdown エディタです。片側で書き、もう片側で整形されたページを読めて、図や数式、コードもそのまま描画されます。独自の AI '
+           'モデルは持っていません。エージェントが書いたものを読むために、そして自分の文章を書くために作られています。作業の場が会議の席やファイル棚に移るときは、きれいなページをプリントしたり書き出したりできます。',
+           '以下の各セクションで、アプリにできることを説明し、さらに詳しいページへのリンクを付けています。'],
+ 'sections': [{'id': 'read',
+               'h2': 'エージェントが書いたものを読む',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'ソースとプレビューを並べて表示',
+                          'p': 'Markdown '
+                               'ファイルを開くと、整形されたページがソースの隣に表示されます（⌘2）。ソースのみ（⌘1）、プレビューのみ（⌘3）にも切り替えられます。両側は一緒にスクロールし、ページは入力に合わせて更新されます。',
+                          'links': ['native']},
+                         {'h': 'アウトラインとファイルのサイドバー',
+                          'p': 'サイドバーの「アウトライン」には書類の見出しが並び、クリックするとその位置に移動します。フォルダを開くと「ファイル」タブに中身が一覧表示され、エージェントが書き込んでいるあいだも新しいファイルが自動的に現れます。フォルダが '
+                               'git のチェックアウトなら、見出しにブランチまたはワークツリーの名前が表示されます。',
+                          'links': ['reading-agent-output']},
+                         {'h': '正確な行を示す',
+                          'p': '「編集 ▸ 参照をコピー」は、現在の位置を docs/plan.md:42 のようにパスと行番号でコピーします。「AI '
+                               '用にコピー」は、その下に選択したテキストも付けます。どちらもエージェントのチャットにそのままペーストできます。',
+                          'links': ['reading-agent-output']},
+                         {'h': 'ファイル間のリンクをたどる',
+                          'p': 'プレビューで別の Markdown ファイルへのリンクをクリックすると、MarsDawn '
+                               'がそのファイルを開き（すでに開いていれば前面に出し）、見出しの位置までスクロールします。',
+                          'links': []}]},
+              {'id': 'paper',
+               'h2': '紙の上で、人と人のあいだで',
+               'lead': 'すべての作業が画面の上で行われるわけではありません。MarsDawn '
+                       'がプリントして書き出すページは画面で読むページそのものなので、人が集まり、読み、記録を残す場面で使えます。',
+               'lead_links': [],
+               'items': [{'h': '会議で',
+                          'p': 'ページをプリントするか、同じ PDF '
+                               'を全員に送れば、1つの画面を囲むのではなく、全員が同じ書類で作業できます。同じファイルを持っていれば改ページ位置も同じなので、「3ページの表」は誰にとっても同じものを指します。そのあと、人が決定事項を、プリントした紙の上やメモに書き留めます。会議メモのテンプレートは決定事項から始まり、各アクションアイテムに担当者を置きます。',
+                          'links': ['pdf', 'templates/meeting-notes']},
+                         {'h': 'ペンで読む',
+                          'p': 'ペンを使うほうが頭に入る人もいます。線を引き、余白に書き込み、記憶に残すためです。書類をプリントして、紙の上でそうしてください。MarsDawn '
+                               '自体には注釈ツールがないので、PDF に書き込みたい場合は、お使いの PDF アプリを使ってください。',
+                          'links': ['pdf']},
+                         {'h': '紙での記録',
+                          'p': '分野によっては、いまも紙で保管します。会計はその一例です。MarsDawn '
+                               'は保管やコンプライアンスについて何も謳っていません。できるのは、きれいに改ページされたページをプリントして書き出すことです。図は描画され、短いコードブロックや表は途中で切れず、テーマのライトの配色で出力されます。紙がいまも正式な記録である場面で使ってください。',
+                          'links': ['pdf']},
+                         {'h': 'Markdown を使わない人に渡す',
+                          'p': 'PDF はどんなアプリでも開け、Markdown の知識も要らないので、上司やクライアントに送るのにも向いています。',
+                          'links': ['sharing-exported-pdfs']}]},
+              {'id': 'write',
+               'h2': '書く、レイアウトする',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'プレーンな Markdown、ハイライト付き',
+                          'p': '太字、斜体、取り消し線、インラインコード、リンク、引用、ToDo リストがすべて使えます。エディタは Markdown '
+                               'の構文に色を付け、その色はプレビューのテーマと揃います。',
+                          'links': ['native']},
+                         {'h': '拡大・縮小、行番号、ステータスバー',
+                          'p': 'ソースとプレビューを一緒に 75% から 200% '
+                               'まで拡大・縮小できます。ソースの横には行番号の欄があり、ステータスバーにはカーソルの行と列、そして書類または選択範囲の文字数、単語数、読む時間が表示されます。',
+                          'links': []},
+                         {'h': 'イメージ',
+                          'p': '書類を保存してから、イメージをエディタにドラッグまたはペーストします。MarsDawn は書類の横の assets '
+                               'フォルダにコピーし、リンクを書き込みます。Web '
+                               '上のイメージは「イメージを読み込む」を押すまで表示されないので、書類を開いても、読んだことがサーバに知られることはありません。',
+                          'links': ['yours']},
+                         {'h': 'フロントマターは邪魔になりません',
+                          'p': 'ファイル先頭のフロントマター（front '
+                               'matter）のブロックは、プレビューとクイックルックでは折りたたまれた「書類の情報」として表示され、PDF には出力されません。',
+                          'links': []},
+                         {'h': '8つの言語',
+                          'p': 'アプリは、英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語に対応しています。',
+                          'links': ['native']}]},
+              {'id': 'diagrams',
+               'h2': '図、コード、数式',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'Mermaid の図',
+                          'p': 'mermaid '
+                               'と指定したコードブロックは図として描画されます。図に誤りがあると、プレビューにはそのソースとエラーが下に表示され、メッセージをクリックするとその行に移動します。',
+                          'links': ['templates/flowchart']},
+                         {'h': 'ハイライトされたコード',
+                          'p': 'コードブロックは、一般的なほとんどの言語でハイライトされます。先頭の ``` の後ろに言語名を書くだけです。',
+                          'links': []},
+                         {'h': '数式',
+                          'p': 'KaTeX の構文で書いた数式は、プレビューとクイックルックで描画され、書き出した PDF にも反映されます。',
+                          'links': ['reviewing-ai-output']}]},
+              {'id': 'themes',
+               'h2': 'テーマ、PDF、プリント',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '4つのテーマ、ライトとダーク',
+                          'p': '夜明け、クラシック、モダン、ビビッドには、それぞれライトとダークがあります。設定で選ばない限り、MarsDawn は Mac '
+                               'の外観モードに合わせます。「表示 ▸ プレビューのテーマ」またはツールバーのパレットボタンから選べます。',
+                          'links': ['themes']},
+                         {'h': 'そのほかのテーマ',
+                          'p': '「設定 ▸ 外観モード ▸ テーマを追加…」で、追加のプレビューテーマのギャラリーが開きます。インストールしたものは「表示 ▸ '
+                               'プレビューのテーマ」に並び、「取り除く」で削除できます。ギャラリーは開いているあいだだけオンラインになります。',
+                          'links': ['themes/gallery', 'themes/new']},
+                         {'h': 'PDF として書き出す、またはプリント',
+                          'p': '「ファイル ▸ PDF として書き出す…」は改ページ済みの PDF を保存し、「ファイル ▸ '
+                               'プリント…」は同じページをプリントします。Mermaid '
+                               'の図は描画され、コードはハイライトを保ち、改ページでは見出しが節から離れたり、短いコードブロックや表、図が途中で切れたりしないようにします。ダークで読んでいても、PDF '
+                               'は常にテーマのライトの配色です。',
+                          'links': ['pdf']}]},
+              {'id': 'files',
+               'h2': 'ファイル、タブ、クイックルック',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'ウインドウとタブ',
+                          'p': '書類はそれぞれ別のウインドウで開きます。「ウインドウ ▸ '
+                               'すべてのウインドウを結合」を選ぶと、開いているウインドウを1つのウインドウのタブにまとめられます。自動保存は入力中に働きます。',
+                          'links': ['native']},
+                         {'h': 'Finder のクイックルック',
+                          'p': 'Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。クイックルックは '
+                               'MarsDawn で選んだテーマを使い、その外観モードの設定に従います。',
+                          'links': ['native']},
+                         {'h': 'そのほかのファイル',
+                          'p': 'MarsDawn では、テキストファイル（.txt、.log、ソースコード）と PDF も開けます。UTF-8 '
+                               'のテキストはそのまま編集でき、ソースのみの表示になります。PDF '
+                               'は、ページのサムネール、拡大・縮小、検索を備えたビューアで開きます。',
+                          'links': []},
+                         {'h': 'ファイルはあなたのもの',
+                          'p': 'アカウントも、同期も、クラウドもありません。書類は保存した場所に残り、MarsDawn '
+                               'があなたに関するデータを収集することはありません。',
+                          'links': ['yours']}]},
+              {'id': 'agents',
+               'h2': 'エージェントとスクリプト向け',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '無料のコマンドラインツール',
+                          'p': '無料の marsdawn ツールは、Homebrew で別途インストールします。marsdawn export は Markdown '
+                               'ファイルを、MarsDawn のプレビューと同じ見た目の PDF にします。アプリは要りません。--theme '
+                               'でテーマを、用紙サイズは A4 か Letter を選べます。marsdawn open '
+                               'はファイルをアプリで開いて確認できるようにし、行を指定することもできます。こちらはアプリのインストールが必要です。',
+                          'links': ['cli']},
+                         {'h': 'スクリプトが読める出力',
+                          'p': '--json を付けると、どちらのコマンドも、エージェントやスクリプトが解析できる結果を返します。',
+                          'links': ['cli/agents']},
+                         {'h': 'スキルと MCP サーバ',
+                          'p': 'エージェント用のスキルファイルは、コーディングエージェントに、書いたものを MarsDawn '
+                               'で開いてあなたの確認に回すことを教えます。シェルのないクライアント向けには、別の MCP サーバが同じ export を実行します。',
+                          'links': ['cli/skill', 'cli/mcp']},
+                         {'h': 'AI は入っていません',
+                          'p': 'MarsDawn は独自の AI '
+                               'モデルを持っていません。エージェントが書いたものを要約したり採点したりせず、長くて変わり続けるファイルを読みやすく保つだけで、読むのはあなたです。',
+                          'links': ['limits']}]},
+              {'id': 'siri',
+               'h2': 'Siri とショートカット',
+               'lead': '「ショートカット」App で MarsDawn を検索すると、3つのアクションが見つかります：「新規 Markdown '
+                       '書類」（テンプレートから）、「受信トレイにメモを追加」、「最近使った書類を開く」。メモは、「MarsDawn ▸ 設定… ▸ '
+                       'メモフォルダ」で選んだフォルダの Inbox.md に追加されます。',
+               'lead_links': ['native'],
+               'items': []}],
+ 'cta': {'h2': 'Mac で試してみる',
+         'p1': 'MarsDawn は無料でダウンロードできます。14日間はすべての機能を試せて、その後は USD 4.99 '
+               'で一度だけ購入します。サブスクリプションもアカウントも不要です。macOS 26 以降が必要です。',
+         'trial': ['試用のしくみ：', 'pay-once'],
+         'left': ['。あえて入れていないこと：', 'limits'],
+         'tail': '。'}}
+
+
 def build(k) -> dict:
-    ui = {'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'themes-new': 'テーマを作る', 'themes-agents': 'エージェントとテーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
+    ui = {'features': '機能一覧', 'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で Markdown を見る', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'themes-new': 'テーマを作る', 'themes-agents': 'エージェントとテーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': 'このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
     store_chip = 'Mac App Store で配信中'
     schema_notes = {'export': 'export 成功時', 'open': 'open 成功時、marsdawn 0.5.1 以降、サイドバーに表示するフォルダを含む', 'open_v2': 'open 成功時、marsdawn 0.3.0〜0.5.0', 'error': '失敗時、両方のコマンド共通、marsdawn 0.5.2 以降', 'open_v1': 'open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）', 'error_v1': '失敗時、両方のコマンド共通、marsdawn 0.5.1 以前'}
     example_plan = '# 計画：書き出しを高速化\n\nこの計画はエージェントが書きました。内容を確認してから、PDF にします。\n\n## ステップ\n\n| ステップ | 担当 | 状況 |\n|------|-------|--------|\n| 遅いページを計測する | エージェント | 完了 |\n| レンダリング済み図をキャッシュする | エージェント | レビュー中 |\n\n50 ページの文書で目標とするのは $t < 2\\,\\text{s}$：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  ドラフト --> レビュー --> 公開\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
-    trait_link = {'yours': ('あなたの文章は Mac に残ります', 'アカウント不要、同期なし、クラウドなし。'), 'pay-once': ('無料で試して、一度だけ購入', '14日間無料、その後は一度だけ USD 4.99。サブスクリプションはありません。'), 'pdf': ('PDF 書き出し', '図表、コードのハイライト、配慮された改ページ。'), 'native': ('Mac アプリ', 'ネイティブのウインドウとタブ、自動保存、クイックルック。'), 'limits': ('MarsDawn ができないこと', '購入前に知っておくこと。')}
+    trait_link = {'features': ('機能一覧', 'MarsDawn でできることを、1ページで。'), 'yours': ('あなたの文章は Mac に残ります', 'アカウント不要、同期なし、クラウドなし。'), 'pay-once': ('無料で試して、一度だけ購入', '14日間無料、その後は一度だけ USD 4.99。サブスクリプションはありません。'), 'pdf': ('PDF 書き出し', '図表、コードのハイライト、配慮された改ページ。'), 'native': ('Mac アプリ', 'ネイティブのウインドウとタブ、自動保存、クイックルック。'), 'limits': ('MarsDawn ができないこと', '購入前に知っておくこと。')}
     trait_nav_heading = 'MarsDawn に期待できること'
     figure_list_label = 'このスクリーンショットの内容'
     figures = {
@@ -785,6 +948,7 @@ curl -fsSL {k.SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 """,
     }
     pages['themes/agents'] = k.theme_agents_page(THEME_AGENTS)
+    pages['features'] = k.features_page(FEATURES)
     pages['themes/new'] = {
         "title": "ブラウザで MarsDawn のテーマを作る · MarsDawn",
         "description": "配色といくつかのスタイルオプションを選ぶと、サンプル文書にその場で反映されます。できあがったテーマは GitHub の issue として送信できます。インストールも git も不要です。",

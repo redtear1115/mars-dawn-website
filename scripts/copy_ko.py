@@ -97,6 +97,173 @@ THEME_AGENTS = {
 }
 
 
+# /features/ prose (machine draft of the en text, needs-i18n; owner-approved en/zh-Hant copy of 2026-10-15).
+# UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
+# Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
+FEATURES = {'title': '기능 한눈에 보기: 한 페이지로 보는 Mac용 Markdown 편집기 · MarsDawn',
+ 'description': 'Mac 네이티브 Markdown 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 그리고 회의와 여백 메모, 종이 기록에 쓸 수 있는 '
+                '깔끔한 PDF와 프린트 페이지.',
+ 'h1': 'MarsDawn이 하는 모든 일을 한 페이지에.',
+ 'intro': ['MarsDawn은 Mac용 Markdown 편집기입니다. 한쪽에서 쓰고 다른 쪽에서 렌더링된 페이지를 읽으며, 다이어그램과 수식, 코드가 그대로 '
+           '그려집니다. 자체 AI 모델은 없습니다. 에이전트가 쓴 글을 읽고 내 글을 쓰기 위해 만든 앱입니다. 그리고 작업이 책상이나 회의, 서류 보관함으로 옮겨 '
+           '가면 깔끔한 페이지를 프린트하고 내보냅니다.',
+           '아래 각 절은 앱이 하는 일을 설명하고, 더 자세히 다루는 페이지로 연결합니다.'],
+ 'sections': [{'id': 'read',
+               'h2': '에이전트가 쓴 글 읽기',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '소스와 미리보기를 나란히',
+                          'p': 'Markdown 파일을 열면 렌더링된 페이지가 소스 옆에 나타납니다(⌘2). 소스만(⌘1) 또는 미리보기만(⌘3) 볼 '
+                               '수도 있습니다. 두 패널은 함께 스크롤되고, 페이지는 입력하는 대로 업데이트됩니다.',
+                          'links': ['native']},
+                         {'h': '개요와 파일 사이드바',
+                          'p': '사이드바의 개요 탭에는 문서의 제목이 나열되며, 하나를 클릭하면 그 위치로 이동합니다. 폴더를 열면 파일 탭에 안에 든 '
+                               '파일이 나열되고, 에이전트가 쓰는 동안 새 파일이 저절로 나타납니다. 폴더가 git 체크아웃이면 머리말에 브랜치나 '
+                               'worktree 이름이 표시됩니다.',
+                          'links': ['reading-agent-output']},
+                         {'h': '정확한 줄 가리키기',
+                          'p': '편집 ▸ 참조 복사는 현재 위치를 docs/plan.md:42처럼 경로와 줄 번호로 복사합니다. AI용으로 복사는 그 '
+                               '아래에 선택한 텍스트를 덧붙입니다. 어느 쪽이든 에이전트의 채팅에 붙여넣으면 됩니다.',
+                          'links': ['reading-agent-output']},
+                         {'h': '파일 사이의 링크 따라가기',
+                          'p': '미리보기에서 다른 Markdown 파일로 가는 링크를 클릭하면 MarsDawn이 그 파일을 열고(이미 열려 있으면 '
+                               '앞으로 가져오고) 해당 제목까지 스크롤합니다.',
+                          'links': []}]},
+              {'id': 'paper',
+               'h2': '종이 위에서, 사람들 사이에서',
+               'lead': '모든 작업이 화면에서만 이루어지지는 않습니다. MarsDawn이 프린트하고 내보내는 페이지는 화면에서 읽는 바로 그 페이지이므로, '
+                       '사람들이 모이고, 읽고, 기록을 보관하는 곳에서도 쓸 수 있습니다.',
+               'lead_links': [],
+               'items': [{'h': '회의에서',
+                          'p': '페이지를 프린트하거나 모두에게 같은 PDF를 보내면, 한 화면을 함께 보는 대신 테이블 전체가 같은 문서로 작업할 수 '
+                               '있습니다. 같은 파일을 가진 사람은 페이지 나눔도 같으므로 ‘3쪽의 표’가 모두에게 같은 것을 가리킵니다. 그다음 '
+                               '사람들이 결정 사항을 프린트한 종이나 메모에 적습니다. 회의 메모 템플릿은 결정 사항으로 시작하고 각 실행 항목에 '
+                               '담당자를 둡니다.',
+                          'links': ['pdf', 'templates/meeting-notes']},
+                         {'h': '펜으로 읽기',
+                          'p': '펜으로 밑줄을 긋고 여백에 적어 가며 읽어야 머리에 잘 남는 사람도 있습니다. 문서를 프린트해서 종이 위에서 그렇게 '
+                               '하세요. MarsDawn에는 자체 주석 도구가 없으니, PDF에 표시하고 싶다면 이미 쓰고 있는 PDF 앱을 '
+                               '사용하세요.',
+                          'links': ['pdf']},
+                         {'h': '종이 기록',
+                          'p': '아직도 종이로 보관하는 분야가 있으며, 회계가 그 예입니다. MarsDawn은 보관이나 규정 준수에 대해 아무것도 '
+                               '주장하지 않습니다. 하는 일은 깔끔하게 페이지가 나뉜 페이지를 프린트하고 내보내는 것입니다. 다이어그램이 그려지고, '
+                               '짧은 코드 블록과 표는 잘리지 않으며, 테마의 라이트 색상이 쓰입니다. 종이가 여전히 기록인 곳에서 사용하세요.',
+                          'links': ['pdf']},
+                         {'h': 'Markdown을 쓰지 않는 사람에게 전달하기',
+                          'p': 'PDF는 어디서나 열리고 Markdown을 몰라도 되므로, 상사나 고객에게 보내기에도 알맞습니다.',
+                          'links': ['sharing-exported-pdfs']}]},
+              {'id': 'write',
+               'h2': '쓰기와 레이아웃',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '일반 Markdown, 구문 강조',
+                          'p': '굵게, 기울임, 취소선, 인라인 코드, 링크, 인용문, 할 일 목록이 모두 작동합니다. 편집기가 Markdown 구문에 '
+                               '색을 입히며, 그 색은 미리보기 테마와 어울립니다.',
+                          'links': ['native']},
+                         {'h': '확대/축소, 행 번호, 상태 막대',
+                          'p': '소스와 미리보기를 함께 75%에서 200%까지 확대/축소할 수 있습니다. 소스 옆에는 행 번호 여백이 있고, 상태 '
+                               '막대에는 현재 행과 열, 그리고 문서 또는 선택 영역의 단어 수와 글자 수, 읽는 시간이 표시됩니다.',
+                          'links': []},
+                         {'h': '이미지',
+                          'p': '문서를 저장한 다음 편집기에 이미지를 끌어다 놓거나 붙여넣으세요. MarsDawn이 문서 옆의 assets 폴더에 '
+                               '이미지를 복사하고 링크를 작성합니다. 웹 이미지는 이미지 불러오기를 클릭할 때까지 숨겨져 있으므로, 문서를 열어도 '
+                               '읽었다는 사실이 어떤 서버에도 전달되지 않습니다.',
+                          'links': ['yours']},
+                         {'h': 'Front matter는 방해되지 않습니다',
+                          'p': '파일 맨 위의 front matter 블록은 미리보기와 훑어보기에서 접힌 문서 정보 섹션으로 표시되고, PDF에서는 '
+                               '빠집니다.',
+                          'links': []},
+                         {'h': '여덟 가지 언어',
+                          'p': '앱은 영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어로 제공됩니다.',
+                          'links': ['native']}]},
+              {'id': 'diagrams',
+               'h2': '다이어그램, 코드, 수식',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': 'Mermaid 다이어그램',
+                          'p': 'mermaid로 표시한 코드 블록은 다이어그램으로 그려집니다. 다이어그램에 오류가 있으면 미리보기에 소스와 그 아래 '
+                               '오류가 표시되고, 메시지를 클릭하면 해당 줄로 이동합니다.',
+                          'links': ['templates/flowchart']},
+                         {'h': '구문 강조된 코드',
+                          'p': '코드 블록은 대부분의 주요 언어에서 구문이 강조됩니다. 여는 ``` 뒤에 언어 이름을 적으세요.',
+                          'links': []},
+                         {'h': '수식',
+                          'p': 'KaTeX 구문으로 쓴 수식은 미리보기와 훑어보기에 그려지고, 내보낸 PDF에도 반영됩니다.',
+                          'links': ['reviewing-ai-output']}]},
+              {'id': 'themes',
+               'h2': '테마, PDF, 프린트',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '네 가지 테마, 라이트와 다크',
+                          'p': '새벽, 클래식, 모던, 비비드에는 각각 라이트와 다크 버전이 있으며, 설정에서 따로 고르지 않으면 MarsDawn은 '
+                               'Mac의 화면 모드를 따릅니다. 보기 ▸ 미리보기 테마 또는 도구 막대의 팔레트 버튼에서 선택하세요.',
+                          'links': ['themes']},
+                         {'h': '더 많은 테마',
+                          'p': '설정 ▸ 화면 모드 ▸ 테마 더 받기…를 선택하면 추가 미리보기 테마 갤러리가 열립니다. 하나를 설치하면 보기 ▸ '
+                               '미리보기 테마에 나타나고, 제거를 누르면 다시 없어집니다. 갤러리는 열려 있는 동안에만 온라인에 연결됩니다.',
+                          'links': ['themes/gallery', 'themes/new']},
+                         {'h': 'PDF로 내보내기, 또는 프린트',
+                          'p': '파일 ▸ PDF로 내보내기…는 페이지가 나뉜 PDF를 저장하고, 파일 ▸ 프린트…는 같은 페이지를 프린트합니다. '
+                               'Mermaid 다이어그램이 그려지고, 코드는 구문 강조를 유지하며, 페이지 나눔은 제목을 해당 절에서 떼어 놓거나 짧은 '
+                               '코드 블록, 표, 다이어그램을 반으로 자르지 않도록 피합니다. 다크 모드로 읽고 있었더라도 PDF에는 항상 테마의 '
+                               '라이트 색상이 쓰입니다.',
+                          'links': ['pdf']}]},
+              {'id': 'files',
+               'h2': '파일, 탭, 훑어보기',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '윈도우와 탭',
+                          'p': '각 문서는 별도의 윈도우에서 열립니다. 윈도우 ▸ 모든 윈도우 통합을 선택하면 열려 있는 윈도우가 한 윈도우의 탭으로 '
+                               '모입니다. 자동 저장은 입력하는 동안 작동합니다.',
+                          'links': ['native']},
+                         {'h': 'Finder의 훑어보기',
+                          'p': 'Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 '
+                               '있습니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.',
+                          'links': ['native']},
+                         {'h': '기타 파일',
+                          'p': 'MarsDawn은 일반 텍스트 파일(.txt, .log, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 '
+                               '바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다.',
+                          'links': []},
+                         {'h': '내 파일은 내 것',
+                          'p': '계정도, 동기화도, 클라우드도 없습니다. 문서는 저장한 곳에 그대로 있고, MarsDawn은 나에 대한 어떤 데이터도 '
+                               '수집하지 않습니다.',
+                          'links': ['yours']}]},
+              {'id': 'agents',
+               'h2': '에이전트와 스크립트용',
+               'lead': '',
+               'lead_links': [],
+               'items': [{'h': '무료 명령줄 도구',
+                          'p': '무료 marsdawn 도구는 Homebrew로 따로 설치합니다. marsdawn export는 Markdown 파일을 '
+                               'MarsDawn의 미리보기와 같은 모습의 PDF로 만들며, 앱이 필요 없습니다. --theme로 테마를, 용지는 A4 '
+                               '또는 Letter를 고를 수 있습니다. marsdawn open은 파일을 앱에서 열어 검토할 수 있게 해 주고, 원하면 '
+                               '특정 줄에서 열 수도 있으며, 앱이 설치되어 있어야 합니다.',
+                          'links': ['cli']},
+                         {'h': '스크립트가 읽을 수 있는 출력',
+                          'p': '--json을 붙이면 두 명령 모두 에이전트나 스크립트가 파싱할 수 있는 결과를 돌려줍니다.',
+                          'links': ['cli/agents']},
+                         {'h': '스킬과 MCP 서버',
+                          'p': '에이전트 스킬 파일은 코딩 에이전트에게 자신이 쓴 것을 MarsDawn에서 열어 검토받도록 가르칩니다. 셸이 없는 '
+                               '클라이언트를 위해서는 별도의 MCP 서버가 같은 export를 실행합니다.',
+                          'links': ['cli/skill', 'cli/mcp']},
+                         {'h': '내부에 AI는 없습니다',
+                          'p': 'MarsDawn에는 자체 AI 모델이 없습니다. 에이전트가 쓴 글을 요약하거나 평가하지 않고, 길고 계속 바뀌는 파일을 '
+                               '읽기 좋게 유지해 읽는 일은 내가 하게 합니다.',
+                          'links': ['limits']}]},
+              {'id': 'siri',
+               'h2': 'Siri 및 단축어',
+               'lead': '단축어 앱에서 MarsDawn을 검색하면 세 가지 동작이 있습니다. 새로운 Markdown 문서(템플릿으로 시작), 수신함에 메모 '
+                       '추가, 최근 사용한 문서 열기입니다. 메모는 MarsDawn ▸ 설정… ▸ 메모 폴더에서 선택한 폴더의 Inbox.md에 추가됩니다.',
+               'lead_links': ['native'],
+               'items': []}],
+ 'cta': {'h2': 'Mac에서 사용해 보세요',
+         'p1': 'MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하면 됩니다. 구독도, '
+               '계정도 필요 없습니다. macOS 26 이상이 필요합니다.',
+         'trial': ['체험 방식: ', 'pay-once'],
+         'left': ['. 일부러 넣지 않은 것: ', 'limits'],
+         'tail': '.'}}
+
+
 def build(k) -> dict:
     pages = {}
     pages['index'] = {
@@ -907,6 +1074,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 
 
     pages['themes/agents'] = k.theme_agents_page(THEME_AGENTS)
+    pages['features'] = k.features_page(FEATURES)
     pages['themes/new'] = {
         "title": "브라우저에서 MarsDawn 테마 만들기 · MarsDawn",
         "description": "색과 몇 가지 스타일 옵션을 고르면 샘플 문서에 바로 반영됩니다. 만든 테마는 GitHub 이슈로 제출할 수 있습니다. 설치도 git도 필요 없습니다.",
@@ -1526,9 +1694,9 @@ flowchart LR
     }
 
     app_ui_languages = '영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어'
-    ui = {'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 Markdown 보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': 'PDF 내보내기', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '미리보기 테마와 PDF 내보내기', 'themes-new': '테마 만들기', 'themes-agents': '에이전트와 함께 테마 만들기', 'themes-gallery': '테마 갤러리', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'changelog': '변경 내역', 'reading-notes': '편집자의 독서 노트', 'reading-notes-anthropic': '독서 노트: Anthropic', 'reading-notes-chip-huyen': '독서 노트: Chip Huyen', 'reading-notes-lilian-weng': '독서 노트: Lilian Weng', 'reading-notes-harrison-chase': '독서 노트: Harrison Chase', 'reading-notes-langchain': '독서 노트: LangChain(Jess Ou)', 'reading-notes-andrew-ng': '독서 노트: Andrew Ng', 'consent_text': '이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
+    ui = {'features': '기능 한눈에 보기', 'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 Markdown 보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': 'PDF 내보내기', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '미리보기 테마와 PDF 내보내기', 'themes-new': '테마 만들기', 'themes-agents': '에이전트와 함께 테마 만들기', 'themes-gallery': '테마 갤러리', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'changelog': '변경 내역', 'reading-notes': '편집자의 독서 노트', 'reading-notes-anthropic': '독서 노트: Anthropic', 'reading-notes-chip-huyen': '독서 노트: Chip Huyen', 'reading-notes-lilian-weng': '독서 노트: Lilian Weng', 'reading-notes-harrison-chase': '독서 노트: Harrison Chase', 'reading-notes-langchain': '독서 노트: LangChain(Jess Ou)', 'reading-notes-andrew-ng': '독서 노트: Andrew Ng', 'consent_text': '이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
     store_chip = 'Mac App Store에서 판매 중'
-    trait_link = {'yours': ('내 글은 내 Mac에', '계정도, 동기화도, 클라우드도 없습니다.'), 'pay-once': ('무료로 체험하고, 한 번만 구입', '14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.'), 'pdf': ('PDF 내보내기', '다이어그램, 코드 하이라이트, 세심한 페이지 나눔.'), 'native': ('Mac 앱', '네이티브 윈도우와 탭, 자동 저장, 훑어보기.'), 'limits': ('MarsDawn이 하지 않는 일', '구입 전에 알아 둘 점.')}
+    trait_link = {'features': ('기능 한눈에 보기', 'MarsDawn이 하는 모든 일을 한 페이지에.'), 'yours': ('내 글은 내 Mac에', '계정도, 동기화도, 클라우드도 없습니다.'), 'pay-once': ('무료로 체험하고, 한 번만 구입', '14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.'), 'pdf': ('PDF 내보내기', '다이어그램, 코드 하이라이트, 세심한 페이지 나눔.'), 'native': ('Mac 앱', '네이티브 윈도우와 탭, 자동 저장, 훑어보기.'), 'limits': ('MarsDawn이 하지 않는 일', '구입 전에 알아 둘 점.')}
     trait_nav_heading = 'MarsDawn에서 기대할 수 있는 것'
     figure_list_label = '이 스크린샷의 내용'
 
