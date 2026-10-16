@@ -4,16 +4,42 @@ Mac で Markdown を、多くはエージェントが書いたものを読んで
 
 |  | MarsDawn | VS Code プレビュー | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
-| ローカルの .md を開く | 可。元のファイルを直接編集 [app 1.1.1] | 可。⇧⌘V でプレビュー [V8] | 記載なし [V21] | プレビューのみ："for viewing Markdown files" [V22] | "Markdown opens rendered and saves back verbatim." [V3] |
-| Mermaid | 内蔵 [V1] | 内蔵 [V8] | 内蔵、ノートの記法 [V16] | 内蔵、`mermaid` ブロック [V22] | "diagram blocks are not rendered" [V3] |
-| 数式 | KaTeX、`$…$` と `$$…$$` [kit] | KaTeX [V8] | MathJax [V16] | MathJax [V22] | "Footnotes, math, and diagram blocks are not rendered." [V3] |
-| エージェントの計画を確認／行へ移動 | `marsdawn open file:line`、ディスクから更新、参照をコピー [/cli/、/features/] | Markdown の差分プレビュー、変更行を強調 [V8]、`code -g file:line` [V14] | `obsidian://open` に行番号の指定なし [V20] | 記載なし | CLI と MCP サーバーあり、行へ移動は記載なし [V4、V5] |
-| PDF：改ページ・ページ番号 | 短いコードブロックを分けない改ページ [/pdf/]、ページ番号なし [実測] | 記載なし [V8] | 用紙サイズ・余白、改ページと番号は記載なし [V17] | 記載なし [V22] | PDF "including tables"、改ページと番号は記載なし [V3] |
-| 価格 | 無料ダウンロード、解除は一度だけ USD 4.99、14 日間の試用 [V1] | 記載なし [V12、V13] | 個人："Free without limits"、商用ライセンスは任意 [V15] | 無料、GPL-3.0 [V22] | "Free while in early release." [V2] |
-| 動作環境 | macOS 26.0 以降 [V1] | "the latest release and the two previous versions" [V9] | 記載なし [V18] | macOS 12.0 以降 [V23] | macOS 13 以降 [V2] |
-| アカウント | 不要 [/privacy/] | 記載なし | "No sign-up required" [V15] | 記載なし | 不要 [V2] |
+| ローカルの .md を開く | 可。元のファイルを直接編集 [app 1.1.1] | 可。⇧⌘V でプレビュー [[V8](#v8)] | 記載なし [[V21](#v21)] | プレビューのみ："for viewing Markdown files" [[V22](#v22)] | "Markdown opens rendered and saves back verbatim." [[V3](#v3)] |
+| Mermaid | 内蔵 [[V1](#v1)] | 内蔵 [[V8](#v8)] | 内蔵、ノートの記法 [[V16](#v16)] | 内蔵、`mermaid` ブロック [[V22](#v22)] | "diagram blocks are not rendered" [[V3](#v3)] |
+| 数式 | KaTeX、`$…$` と `$$…$$` [[kit](#kit)] | KaTeX [[V8](#v8)] | MathJax [[V16](#v16)] | MathJax [[V22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[V3](#v3)] |
+| エージェントの計画を確認／行へ移動 | `marsdawn open file:line`、ディスクから更新、参照をコピー [/cli/、/features/] | Markdown の差分プレビュー、変更行を強調 [[V8](#v8)]、`code -g file:line` [[V14](#v14)] | `obsidian://open` に行番号の指定なし [[V20](#v20)] | 記載なし | CLI と MCP サーバーあり、行へ移動は記載なし [[V4](#v4)、[V5](#v5)] |
+| PDF：改ページ・ページ番号 | 短いコードブロックを分けない改ページ [/pdf/]、ページ番号なし [実測] | 記載なし [[V8](#v8)] | 用紙サイズ・余白、改ページと番号は記載なし [[V17](#v17)] | 記載なし [[V22](#v22)] | PDF "including tables"、改ページと番号は記載なし [[V3](#v3)] |
+| 価格 | 無料ダウンロード、解除は一度だけ USD 4.99、14 日間の試用 [[V1](#v1)] | 記載なし [[V12](#v12)、[V13](#v13)] | 個人："Free without limits"、商用ライセンスは任意 [[V15](#v15)] | 無料、GPL-3.0 [[V22](#v22)] | "Free while in early release." [[V2](#v2)] |
+| 動作環境 | macOS 26.0 以降 [[V1](#v1)] | "the latest release and the two previous versions" [[V9](#v9)] | 記載なし [[V18](#v18)] | macOS 12.0 以降 [[V23](#v23)] | macOS 13 以降 [[V2](#v2)] |
+| アカウント | 不要 [/privacy/] | 記載なし | "No sign-up required" [[V15](#v15)] | 記載なし | 不要 [[V2](#v2)] |
 
 各セルは 2026 年 10 月 16 日に、角かっこ内の出典で確認しました（V の番号は下に一覧、[実測] は marsdawn 0.6.4 で書き出した私たちの確認）。各社の原文はそのまま引用しています。「記載なし」は、読んだページに書かれていなかったという意味で、機能がないという意味ではありません。製品の順位付けはしていません。
+
+## 出典
+
+- V1 · [Mac App Store](https://apps.apple.com/app/id6812925073)
+- V2 · [https://lynxoffice.com/](https://lynxoffice.com/)
+- V3 · [https://lynxoffice.com/markdown/](https://lynxoffice.com/markdown/)
+- V4 · [https://lynxoffice.com/cli/](https://lynxoffice.com/cli/)
+- V5 · [https://lynxoffice.com/mcp/](https://lynxoffice.com/mcp/)
+- V6 · [https://lynxoffice.com/release-notes/](https://lynxoffice.com/release-notes/)
+- V8 · [https://code.visualstudio.com/docs/languages/markdown](https://code.visualstudio.com/docs/languages/markdown)
+- V9 · [https://code.visualstudio.com/docs/supporting/requirements](https://code.visualstudio.com/docs/supporting/requirements)
+- V11 · [https://code.visualstudio.com/updates/v1_142](https://code.visualstudio.com/updates/v1_142)
+- V12 · [https://code.visualstudio.com/license](https://code.visualstudio.com/license)
+- V13 · [https://code.visualstudio.com/](https://code.visualstudio.com/)
+- V14 · [https://code.visualstudio.com/docs/configure/command-line](https://code.visualstudio.com/docs/configure/command-line)
+- V15 · [https://obsidian.md/pricing](https://obsidian.md/pricing)
+- V16 · [https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax](https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax)
+- V17 · [https://obsidian.md/help/pdf](https://obsidian.md/help/pdf)
+- V18 · [https://obsidian.md/download](https://obsidian.md/download)
+- V19 · [https://obsidian.md/changelog/](https://obsidian.md/changelog/)
+- V20 · [https://obsidian.md/help/uri](https://obsidian.md/help/uri)
+- V21 · [https://obsidian.md/help/Getting+started/Create+a+vault](https://obsidian.md/help/Getting+started/Create+a+vault)
+- V22 · [https://github.com/sbarex/QLMarkdown](https://github.com/sbarex/QLMarkdown)
+- V23 · [https://github.com/sbarex/QLMarkdown/releases](https://github.com/sbarex/QLMarkdown/releases)
+- V24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
+- kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
 MarsDawn にないもの。macOS 26 以降が必要です。iPhone や iPad のアプリはなく、MarsDawn は Mac 専用です。共同編集も同期もアカウントもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号は入りません。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
 

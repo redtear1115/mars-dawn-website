@@ -40,7 +40,7 @@ LOCALES = ["en", "zh-hant", "zh-hans", "ja", "de", "fr", "es", "ko"]
 FIRST = ["en", "zh-hant", "ja"]            # the first-round languages
 MACHINE = ["zh-hans", "ko", "de", "fr", "es"]   # Grok's needs-i18n round
 
-ORDER = [189, 244, 246, 242, 240, 241, 245, 243]
+ORDER = [189, 244, 246, 242, 240, 241, 245, 243, 2421]
 
 
 class Stop(SystemExit):
@@ -867,9 +867,32 @@ def ingest_243() -> None:
                           "path": ["plan", loc, "steps", i]})
 
 
+
+# ---- /vs/ source list: the V-ids of the fact table on #242 (comment 6216590080, the line "V1 https://... · V2 ...") -----
+
+KIT_URL = "https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7"   # README.md line 7 at tag 0.6.4 (the kit row: KaTeX math)
+
+
+def ingest_vsources() -> None:
+    cid, body = comment("242f", 1)
+    line = next(l for l in body.split("\n") if l.startswith("V1 https://"))
+    entries = [(f"V{n}", url) for n, url in re.findall(r"V(\d+) (https?://[^\s·]+)", line)]
+    assert len(entries) == 22 and "V7" not in dict(entries) and "V10" not in dict(entries), entries
+    entries.append(("kit", KIT_URL))
+    DATA["vsources"] = [list(e) for e in entries]
+    for loc in LOCALES:
+        for i, (sid, url) in enumerate(entries):
+            SLOTS.append({"locale": loc, "page": "vs", "field": "source-entry",
+                          "source": comment_source(cid, 1, "the line starting V1 https://") if sid != "kit" else {"file": "kit README.md@0.6.4 line 7", "url": KIT_URL},
+                          "item": f"/vs/ source list {sid}", "version": "fact table", "path": ["vsources", i, 1]})
+        SLOTS.append({"locale": loc, "page": "vs", "field": "source-heading",
+                      "source": {"derived": "the h2 before ul.sources on this locale's /vs/macmd-viewer/ (main)"}, "item": "/vs/ source list heading",
+                      "version": "reused", "path": None})
+
+
 # ---- main -------------------------------------------------------------------------------------
 
-INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240, 241: ingest_241, 245: ingest_245, 243: ingest_243}
+INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240, 241: ingest_241, 245: ingest_245, 243: ingest_243, 2421: ingest_vsources}
 
 
 def write() -> None:

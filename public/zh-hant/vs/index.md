@@ -4,16 +4,42 @@
 
 |  | MarsDawn | VS Code 預覽 | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
-| 打開本機 .md | 可以，直接改原檔 [app 1.1.1] | 可以，⇧⌘V 開預覽 [V8] | 廠商未說明 [V21] | 只能預覽："for viewing Markdown files" [V22] | "Markdown opens rendered and saves back verbatim." [V3] |
-| Mermaid | 內建 [V1] | 內建 [V8] | 內建，筆記語法 [V16] | 內建，`mermaid` 區塊 [V22] | "diagram blocks are not rendered" [V3] |
-| 數學式 | KaTeX，`$…$`、`$$…$$` [kit] | KaTeX [V8] | MathJax [V16] | MathJax [V22] | "Footnotes, math, and diagram blocks are not rendered." [V3] |
-| 檢查 agent 的計畫／跳到某一行 | `marsdawn open file:line`；從磁碟更新；拷貝引用 [/cli/、/features/] | Markdown diff 預覽，標示改動的行 [V8]；`code -g file:line` [V14] | `obsidian://open` 沒有行號參數 [V20] | 廠商未說明 | 有 CLI 和 MCP 伺服器；未說明跳行 [V4、V5] |
-| PDF：分頁、頁碼 | 分頁不切開短程式碼區塊 [/pdf/]；沒有頁碼 [實測] | 廠商未說明 [V8] | 紙張大小、邊界；分頁與頁碼未說明 [V17] | 廠商未說明 [V22] | PDF "including tables"；分頁與頁碼未說明 [V3] |
-| 價格 | 免費下載；解鎖一次 USD 4.99；試用 14 天 [V1] | 廠商未說明 [V12、V13] | 個人："Free without limits"；商用授權非必要 [V15] | 免費，GPL-3.0 [V22] | "Free while in early release." [V2] |
-| 系統需求 | macOS 26.0 以上 [V1] | "the latest release and the two previous versions" [V9] | 廠商未說明 [V18] | macOS 12.0 以上 [V23] | macOS 13 以上 [V2] |
-| 需要帳號 | 不用 [/privacy/] | 廠商未說明 | "No sign-up required" [V15] | 廠商未說明 | 不用 [V2] |
+| 打開本機 .md | 可以，直接改原檔 [app 1.1.1] | 可以，⇧⌘V 開預覽 [[V8](#v8)] | 廠商未說明 [[V21](#v21)] | 只能預覽："for viewing Markdown files" [[V22](#v22)] | "Markdown opens rendered and saves back verbatim." [[V3](#v3)] |
+| Mermaid | 內建 [[V1](#v1)] | 內建 [[V8](#v8)] | 內建，筆記語法 [[V16](#v16)] | 內建，`mermaid` 區塊 [[V22](#v22)] | "diagram blocks are not rendered" [[V3](#v3)] |
+| 數學式 | KaTeX，`$…$`、`$$…$$` [[kit](#kit)] | KaTeX [[V8](#v8)] | MathJax [[V16](#v16)] | MathJax [[V22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[V3](#v3)] |
+| 檢查 agent 的計畫／跳到某一行 | `marsdawn open file:line`；從磁碟更新；拷貝引用 [/cli/、/features/] | Markdown diff 預覽，標示改動的行 [[V8](#v8)]；`code -g file:line` [[V14](#v14)] | `obsidian://open` 沒有行號參數 [[V20](#v20)] | 廠商未說明 | 有 CLI 和 MCP 伺服器；未說明跳行 [[V4](#v4)、[V5](#v5)] |
+| PDF：分頁、頁碼 | 分頁不切開短程式碼區塊 [/pdf/]；沒有頁碼 [實測] | 廠商未說明 [[V8](#v8)] | 紙張大小、邊界；分頁與頁碼未說明 [[V17](#v17)] | 廠商未說明 [[V22](#v22)] | PDF "including tables"；分頁與頁碼未說明 [[V3](#v3)] |
+| 價格 | 免費下載；解鎖一次 USD 4.99；試用 14 天 [[V1](#v1)] | 廠商未說明 [[V12](#v12)、[V13](#v13)] | 個人："Free without limits"；商用授權非必要 [[V15](#v15)] | 免費，GPL-3.0 [[V22](#v22)] | "Free while in early release." [[V2](#v2)] |
+| 系統需求 | macOS 26.0 以上 [[V1](#v1)] | "the latest release and the two previous versions" [[V9](#v9)] | 廠商未說明 [[V18](#v18)] | macOS 12.0 以上 [[V23](#v23)] | macOS 13 以上 [[V2](#v2)] |
+| 需要帳號 | 不用 [/privacy/] | 廠商未說明 | "No sign-up required" [[V15](#v15)] | 廠商未說明 | 不用 [[V2](#v2)] |
 
 每一格都在 2026 年 10 月 16 日對照括號裡的來源查證（V 編號列在下方；[實測] 是我們用 marsdawn 0.6.4 實際輸出的結果）。廠商原文照錄。「廠商未說明」表示我們讀到的頁面沒有提到，不代表沒有這個功能。表格不替產品排名。
+
+## 來源
+
+- V1 · [Mac App Store](https://apps.apple.com/app/id6812925073)
+- V2 · [https://lynxoffice.com/](https://lynxoffice.com/)
+- V3 · [https://lynxoffice.com/markdown/](https://lynxoffice.com/markdown/)
+- V4 · [https://lynxoffice.com/cli/](https://lynxoffice.com/cli/)
+- V5 · [https://lynxoffice.com/mcp/](https://lynxoffice.com/mcp/)
+- V6 · [https://lynxoffice.com/release-notes/](https://lynxoffice.com/release-notes/)
+- V8 · [https://code.visualstudio.com/docs/languages/markdown](https://code.visualstudio.com/docs/languages/markdown)
+- V9 · [https://code.visualstudio.com/docs/supporting/requirements](https://code.visualstudio.com/docs/supporting/requirements)
+- V11 · [https://code.visualstudio.com/updates/v1_142](https://code.visualstudio.com/updates/v1_142)
+- V12 · [https://code.visualstudio.com/license](https://code.visualstudio.com/license)
+- V13 · [https://code.visualstudio.com/](https://code.visualstudio.com/)
+- V14 · [https://code.visualstudio.com/docs/configure/command-line](https://code.visualstudio.com/docs/configure/command-line)
+- V15 · [https://obsidian.md/pricing](https://obsidian.md/pricing)
+- V16 · [https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax](https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax)
+- V17 · [https://obsidian.md/help/pdf](https://obsidian.md/help/pdf)
+- V18 · [https://obsidian.md/download](https://obsidian.md/download)
+- V19 · [https://obsidian.md/changelog/](https://obsidian.md/changelog/)
+- V20 · [https://obsidian.md/help/uri](https://obsidian.md/help/uri)
+- V21 · [https://obsidian.md/help/Getting+started/Create+a+vault](https://obsidian.md/help/Getting+started/Create+a+vault)
+- V22 · [https://github.com/sbarex/QLMarkdown](https://github.com/sbarex/QLMarkdown)
+- V23 · [https://github.com/sbarex/QLMarkdown/releases](https://github.com/sbarex/QLMarkdown/releases)
+- V24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
+- kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
 MarsDawn 沒有的東西。需要 macOS 26 以上。沒有 iPhone 或 iPad app，MarsDawn 只做 Mac。不能共同編輯，不同步，也沒有帳號。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。輸出的 PDF 沒有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。
 

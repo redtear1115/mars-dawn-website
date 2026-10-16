@@ -5657,16 +5657,25 @@ def promo_table_html(head: list, rows: list, classes: str) -> str:
     return f'<div class="table-scroll"><table class="{classes}">\n<thead><tr>{cols}</tr></thead>\n<tbody>\n{body}\n</tbody>\n</table></div>'
 
 
-def vs_page(copy: dict) -> dict:
+def vs_page(copy: dict, sources_h2: str) -> dict:
     """/vs/: how MarsDawn compares with the other ways to read Markdown on a Mac (#242)."""
     dont = "\n".join(f"  <li>{item}</li>" for item in copy["dont"])
     more = "\n".join(f"  <li>{item}</li>" for item in copy["links"])
+    cite = lambda h: re.sub(r"\[((?:V\d+|kit)(?:[,、] ?(?:V\d+|kit))*)\]",
+                           lambda m: "[" + re.sub(r"V\d+|kit", lambda t: f'<a href="#{t.group(0).lower()}">{t.group(0)}</a>', m.group(1)) + "]", h)
+    rows = [[cite(cell) for cell in row] for row in copy["rows"]]
+    sources = "\n".join(f'  <li id="{sid.lower()}">{sid} · <a href="{url}">{"Mac App Store" if url == LISTING_URL else url}</a></li>'
+                         for sid, url in promo_data.DATA["vsources"])   # the store checker allows the listing URL only inside an href: its text is the site's own link label
     body = f"""<section class="intro">
   <h1>{copy["h1"]}</h1>
   <p>{copy["intro"]}</p>
 </section>
-{promo_table_html(copy["head"], copy["rows"], "compare compare-wide compare-vs")}
+{promo_table_html(copy["head"], rows, "compare compare-wide compare-vs")}
 <p>{copy["note"]}</p>
+<h2>{sources_h2}</h2>
+<ul class="sources">
+{sources}
+</ul>
 <p>{copy["lacks"]}</p>
 <h2>{copy["dont_h"]}</h2>
 <ul>
@@ -5725,7 +5734,8 @@ def apply_promo130(merged: dict) -> dict:
         apply_plan_loop(locale)
         vs = promo_data.DATA["vs"][locale]
         UI[locale].setdefault("vs", _plain(vs["title"]))
-        out[(locale, "vs")] = vs_page(vs)
+        macmd = out[(locale, "vs/macmd-viewer")]["body"]   # the list's heading is the one /vs/macmd-viewer/ already has
+        out[(locale, "vs")] = vs_page(vs, re.search(r'<h2>([^<]*)</h2>\s*<ul class="sources">', macmd).group(1))
         after = []
         pieces = promo_data.DATA.get("pieces", {}).get(locale)
         if pieces:
