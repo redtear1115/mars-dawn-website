@@ -874,7 +874,7 @@ marsdawn --version</code></pre>
 <h2>다음</h2>
 <ul>
   <li>모든 옵션과 출력되는 JSON: <a href="/ko/cli/">명령줄</a>.</li>
-  <li>코딩 에이전트에게 이 작업을 맡기려면: <a href="/ko/cli/skill/">marsdawn 에이전트 스킬</a>.</li>
+  <li>코딩 에이전트가 이 일을 대신하게 하려면 <code>marsdawn skill --install</code>을 실행해 <a href="/ko/cli/skill/">marsdawn 에이전트 스킬</a>을 추가하세요.</li>
   <li>네 가지 미리보기 테마와 PDF 내보내기의 방향: <a href="/ko/themes/">미리보기 테마와 PDF 내보내기</a>.</li>
   <li>Markdown을 쓰지 않는 사람에게 PDF 전달하기: <a href="/ko/sharing-exported-pdfs/">PDF 공유하기</a>.</li>
 </ul>
@@ -1068,7 +1068,7 @@ swift build -c release --product marsdawn
 
 <h2>다음</h2>
 <ul>
-  <li>코딩 에이전트가 이 일을 대신하게 하려면 <code>marsdawn skill --install</code>을 실행해 <a href="/ko/cli/skill/">marsdawn 에이전트 스킬</a>을 추가하세요.</li>
+  <li>셸 대신 지침 파일을 읽는 에이전트를 위한 파일 하나짜리 스킬: <a href="/ko/cli/skill/">marsdawn 스킬</a>.</li>
   <li>이 <code>export</code>를 그대로 감싼 MCP 서버: <a href="/ko/cli/mcp/">marsdawn-mcp</a>.</li>
   <li>이 JSON 결과가 에이전트 자신의 컨텍스트에 부담이 적은 이유: <a href="/ko/token-efficient-review/">토큰을 아끼는 검토</a>.</li>
   <li>에이전트로 MarsDawn 테마 만들기: <a href="/ko/themes/agents/">에이전트와 함께 테마 만들기</a>.</li>

@@ -723,7 +723,7 @@ marsdawn --version</code></pre>
 <h2>次に</h2>
 <ul>
   <li>すべてのオプションと出力される JSON：<a href="/ja/cli/">コマンドライン</a>。</li>
-  <li>コーディングエージェントにこれをやらせるには：<a href="/ja/cli/skill/">marsdawn のエージェントスキル</a>。</li>
+  <li>コーディングエージェントにこれをやらせるには、<code>marsdawn skill --install</code> を実行して<a href="/ja/cli/skill/">marsdawn のエージェントスキル</a>を追加してください。</li>
 </ul>
 """,
     }

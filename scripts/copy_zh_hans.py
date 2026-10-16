@@ -889,7 +889,7 @@ marsdawn --version</code></pre>
 <h2>接下来</h2>
 <ul>
   <li>所有选项和它输出的 JSON：<a href="/zh-hans/cli/">命令行工具</a>。</li>
-  <li>让写程序的 agent 帮你做这件事：<a href="/zh-hans/cli/skill/">marsdawn 的 agent skill</a>。</li>
+  <li>让写程序的 agent 帮你做这件事：运行 <code>marsdawn skill --install</code> 来加上 <a href="/zh-hans/cli/skill/">marsdawn 的 agent skill</a>。</li>
 </ul>
 """,
     }

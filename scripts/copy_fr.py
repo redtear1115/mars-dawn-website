@@ -1030,7 +1030,7 @@ marsdawn --version</code></pre>
 <h2>Pour aller plus loin</h2>
 <ul>
   <li>Toutes les options et le JSON produit : <a href="/fr/cli/">Ligne de commande</a>.</li>
-  <li>Pour qu’un agent de code le fasse à votre place : <a href="/fr/cli/skill/">la compétence d’agent marsdawn</a>.</li>
+  <li>Pour qu’un agent de code le fasse à votre place, exécutez <code>marsdawn skill --install</code> pour ajouter <a href="/fr/cli/skill/">la skill d’agent marsdawn</a>.</li>
   <li>Les quatre thèmes d’aperçu, et la direction que prend l’export PDF : <a href="/fr/themes/">thèmes d’aperçu et export PDF</a>.</li>
   <li>Remettre le PDF à quelqu’un qui n’utilise pas Markdown : <a href="/fr/sharing-exported-pdfs/">partager un PDF</a>.</li>
 </ul>
@@ -1224,7 +1224,7 @@ swift build -c release --product marsdawn
 
 <h2>Pour aller plus loin</h2>
 <ul>
-  <li>Pour qu’un agent de code le fasse à votre place, exécutez <code>marsdawn skill --install</code> pour ajouter <a href="/fr/cli/skill/">la skill d’agent marsdawn</a>.</li>
+  <li>Une compétence en un seul fichier pour les agents qui lisent des instructions plutôt qu’un shell : <a href="/fr/cli/skill/">la compétence marsdawn</a>.</li>
   <li>Un serveur MCP qui enveloppe ce même <code>export</code> : <a href="/fr/cli/mcp/">marsdawn-mcp</a>.</li>
   <li>Pourquoi ce résultat JSON reste économique pour le contexte de l’agent : <a href="/fr/token-efficient-review/">une relecture économe en tokens</a>.</li>
   <li>Créer un thème MarsDawn avec un agent : <a href="/fr/themes/agents/">Créer un thème avec votre agent</a>.</li>

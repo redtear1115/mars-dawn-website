@@ -1009,7 +1009,7 @@ marsdawn --version</code></pre>
 <h2>Siguiente</h2>
 <ul>
   <li>Todas las opciones y el JSON que imprime: <a href="/es/cli/">Línea de comandos</a>.</li>
-  <li>Para que un agente de programación lo haga por ti: <a href="/es/cli/skill/">la skill de agente de marsdawn</a>.</li>
+  <li>Para que un agente de programación lo haga por ti, ejecuta <code>marsdawn skill --install</code> para agregar <a href="/es/cli/skill/">la skill de agente de marsdawn</a>.</li>
   <li>Los cuatro temas de vista previa y hacia dónde va la exportación a PDF: <a href="/es/themes/">temas de vista previa y exportación a PDF</a>.</li>
   <li>Entregar el PDF a alguien que no usa Markdown: <a href="/es/sharing-exported-pdfs/">compartir un PDF</a>.</li>
 </ul>
@@ -1203,7 +1203,7 @@ swift build -c release --product marsdawn
 
 <h2>Siguiente</h2>
 <ul>
-  <li>Para que un agente de programación lo haga por ti, ejecuta <code>marsdawn skill --install</code> para agregar <a href="/es/cli/skill/">la skill de agente de marsdawn</a>.</li>
+  <li>Una skill de un solo archivo para agentes que leen instrucciones en lugar de usar una shell: <a href="/es/cli/skill/">la skill de marsdawn</a>.</li>
   <li>Un servidor MCP que envuelve este mismo <code>export</code>: <a href="/es/cli/mcp/">marsdawn-mcp</a>.</li>
   <li>Por qué este resultado JSON sale barato para el contexto del propio agente: <a href="/es/token-efficient-review/">revisión con pocos tokens</a>.</li>
   <li>Crear un tema de MarsDawn con un agente: <a href="/es/themes/agents/">Crea un tema con tu agente</a>.</li>

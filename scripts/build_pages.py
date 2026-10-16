@@ -1617,7 +1617,7 @@ swift build -c release --product marsdawn
 
 <h2>Next</h2>
 <ul>
-  <!--skill-line:agents-->
+  <li>A one-file skill for agents that read instructions instead of a shell: <a href="/cli/skill/">the marsdawn skill</a>.</li>
   <li>An MCP server that wraps this same <code>export</code>: <a href="/cli/mcp/">marsdawn-mcp</a>.</li>
   <li>Why this JSON result stays cheap for an agent's own context: <a href="/token-efficient-review/">token-efficient review</a>.</li>
   <li>Making a MarsDawn theme with an agent: <a href="/themes/agents/">make a theme with your agent</a>.</li>
@@ -1794,7 +1794,7 @@ swift build -c release --product marsdawn
 
 <h2>接下來</h2>
 <ul>
-  <!--skill-line:agents-->
+  <li>給讀指令檔而不是執行 shell 的 agent 用的一個檔案：<a href="/zh-hant/cli/skill/">marsdawn skill</a>。</li>
   <li>包住同一個 <code>export</code> 的 MCP 伺服器：<a href="/zh-hant/cli/mcp/">marsdawn-mcp</a>。</li>
   <li>這份 JSON 結果為什麼不花 agent 自己的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
   <li>和 agent 一起做 MarsDawn 主題：<a href="/zh-hant/themes/agents/">和 agent 一起做主題</a>。</li>
@@ -1878,7 +1878,7 @@ marsdawn --version</code></pre>
 <h2>Next</h2>
 <ul>
   <li>Every option and the JSON it prints: <a href="/cli/">Command Line</a>.</li>
-  <li>To have a coding agent do this for you: <a href="/cli/skill/">the marsdawn agent skill</a>.</li>
+  <!--skill-line:markdown-to-pdf-->
   <li>All four preview themes, and where PDF export is headed: <a href="/themes/">preview themes and PDF export</a>.</li>
   <li>Handing the PDF to someone who doesn't use Markdown: <a href="/sharing-exported-pdfs/">sharing a PDF</a>.</li>
 </ul>
@@ -1923,7 +1923,7 @@ marsdawn --version</code></pre>
 <h2>接下來</h2>
 <ul>
   <li>所有選項和它印出的 JSON：<a href="/zh-hant/cli/">命令列工具</a>。</li>
-  <li>讓寫程式的 agent 幫你做這件事：<a href="/zh-hant/cli/skill/">marsdawn 的 agent skill</a>。</li>
+  <!--skill-line:markdown-to-pdf-->
   <li>四種預覽主題，以及 PDF 輸出接下來的規劃：<a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a>。</li>
   <li>把 PDF 交給不寫 Markdown 的人：<a href="/zh-hant/sharing-exported-pdfs/">分享 PDF</a>。</li>
 </ul>
@@ -4367,13 +4367,15 @@ def split_shot_html(locale: str) -> str:
             f'width="{width}" height="{height}" alt="{alt[locale]}" loading="lazy"></p>')
 
 
-# --- marsdawn skill --install on /cli/skill/, /cli/ and /cli/agents/ (website #231) -----------------------
-# The install section of /cli/skill/ and one line each on /cli/ and /cli/agents/. en and zh-Hant: the approved
-# HTML (approved_copy.SKILL_INSTALL, CLI_SKILL_LINE, AGENTS_SKILL_ITEM, loaded from the vault draft). The other
+# --- marsdawn skill --install on /cli/skill/, /cli/ and /markdown-to-pdf/ (website #231) ------------------
+# The install section of /cli/skill/ and one line each on /cli/ and /markdown-to-pdf/. en and zh-Hant: the
+# approved HTML (approved_copy.SKILL_INSTALL, CLI_SKILL_LINE, PDF_SKILL_ITEM, loaded from the vault draft). The
+# draft placed the last line on /cli/agents/, but wrote it from /markdown-to-pdf/'s sentence; the owner moved it
+# there (2026-10-16) and /cli/agents/ keeps its own Next item. The other
 # locales hand over their section through k.set_skill_install and write their two lines in their own pages.
 SKILL_INSTALL_MARK = "<!--skill-install-->"
 SKILL_INSTALL_HTML = dict(approved_copy.SKILL_INSTALL)
-SKILL_LINE_MARKS = {"<!--skill-line:cli-->": approved_copy.CLI_SKILL_LINE, "<!--skill-line:agents-->": approved_copy.AGENTS_SKILL_ITEM}
+SKILL_LINE_MARKS = {"<!--skill-line:cli-->": approved_copy.CLI_SKILL_LINE, "<!--skill-line:markdown-to-pdf-->": approved_copy.PDF_SKILL_ITEM}
 
 
 # --- /features/ -------------------------------------------------------------------------------

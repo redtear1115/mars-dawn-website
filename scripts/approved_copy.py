@@ -15,10 +15,12 @@ VS_MACMD (and VS_SOURCES): /vs/macmd-viewer/, source
   added in build_pages.py (VS_MACMD_EXTRA).
 FILM_THEMES: the second brand film's section on /features/ and /themes/ (heading and one-line caption), source
   <vault>/MarsDawn/協作/給擁有者/features-page-copy-2026-10-15.md, section 3.
-SKILL_INSTALL, CLI_SKILL_LINE, AGENTS_SKILL_ITEM: website #231 (marsdawn skill --install on /cli/skill/, one line each on /cli/
-  and /cli/agents/), source
+SKILL_INSTALL, CLI_SKILL_LINE, PDF_SKILL_ITEM: website #231 (marsdawn skill --install on /cli/skill/, one line each on /cli/
+  and /markdown-to-pdf/), source
   <vault>/MarsDawn/協作/給擁有者/cli-skill-install-copy-2026-10-15.md
   (owner-approved 2026-10-15, every 待你決定 item as recommended). HTML, as the source has it; {_SKILL_URL} is the skill's address.
+  PDF_SKILL_ITEM is the source's section 2.2. The source names /cli/agents/, but the sentence it rewrites is
+  /markdown-to-pdf/'s; the owner put it there (2026-10-16).
 """
 
 OPEN_MD = {'en': {'title': 'How to open .md files on Mac · MarsDawn',
@@ -480,7 +482,7 @@ CLI_SKILL_LINE = {'en': '<p>Using a coding agent? Run <code>marsdawn skill --ins
  'zh-hant': '<p>在用寫程式的 agent 嗎？執行 <code>marsdawn skill --install</code> 來加上 <a '
             'href="/zh-hant/cli/skill/">marsdawn skill</a>：一個檔案，教它把自己寫的文件在 MarsDawn 裡打開給你審閱，也能輸出 PDF。</p>'}
 
-AGENTS_SKILL_ITEM = {'en': '<li>To have a coding agent do this for you, run <code>marsdawn skill --install</code> to add <a '
+PDF_SKILL_ITEM = {'en': '<li>To have a coding agent do this for you, run <code>marsdawn skill --install</code> to add <a '
        'href="/cli/skill/">the marsdawn agent skill</a>.</li>',
  'zh-hant': '<li>讓寫程式的 agent 幫你做這件事：執行 <code>marsdawn skill --install</code> 來加上 <a '
             'href="/zh-hant/cli/skill/">marsdawn 的 agent skill</a>。</li>'}
