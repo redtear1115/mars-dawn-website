@@ -4959,8 +4959,8 @@ def home_sections_html(locale: str) -> str:
     def trait_line(slug):
         line = TRAIT_LINK[locale][slug][1]
         if slug == "native" and has_page(locale, "quicklook"):   # the Quick Look in "A Mac app" opens the Quick Look page
-            term = QUICKLOOK_PREFIX[locale]
-            assert term in line, f"{locale}: no {term} in the A Mac app line"
+            term = next((t for t in [QUICKLOOK_PREFIX[locale], *QUICKLOOK_PREFIX.values()] if t in line), None)   # a copy module may still hold en's words
+            assert term, f"{locale}: no Quick Look term in the A Mac app line"
             line = line.replace(term, f'<a href="{page_path(locale, "quicklook")}">{term}</a>', 1)
         return line
     traits = "\n".join(
@@ -5639,8 +5639,7 @@ def apply_seo_copy(merged: dict) -> dict:
         out[(locale, "quicklook")] = quicklook_page(locale, copy)
         # /features/ points to it from its Quick Look item, after the link that item already has
         features = out[(locale, "features")]
-        term = QUICKLOOK_PREFIX[locale]
-        fbody, n = re.subn(rf'(<h3>[^<]*{re.escape(term)}[^<]*</h3>\n<p>[^\n]*</p>\n<p class="more"><a href="[^"]*/native/">[^<]*</a>)(</p>)',
+        fbody, n = re.subn(rf'(<h3>[^<]*{prefix}[^<]*</h3>\n<p>[^\n]*</p>\n<p class="more"><a href="[^"]*/native/">[^<]*</a>)(</p>)',
                            lambda m: f'{m.group(1)} &#183; <a href="{page_path(locale, "quicklook")}">{copy["ui"]}</a>{m.group(2)}', features["body"], count=1)
         assert n == 1, f"{locale}/features: no Quick Look item with a /native/ link"
         out[(locale, "features")] = {**features, "body": fbody}
