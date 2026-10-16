@@ -24,9 +24,9 @@ In MarsDawn wird dieser Block zu einem Flussdiagramm: Markdown schreiben, dann L
 
 - **In der Vorschau.** Öffne die Datei, und das Diagramm steht neben seinem Quelltext (⌘2). Die Seite aktualisiert sich beim Tippen, und beide Bereiche scrollen gemeinsam.
 - **In der Übersicht.** Wähle die Datei im Finder aus und drücke die Leertaste; auch dort werden Diagramme gezeichnet.
-- **Im PDF.** „Ablage ▸ Als PDF exportieren …“ und „Ablage ▸ Drucken …“ zeichnen das Diagramm in die Seite. Seitenumbrüche vermeiden es, ein Diagramm in der Mitte zu teilen. Das PDF verwendet die hellen Farben des Themas.
+- **Im PDF.** „Ablage ▸ Als PDF exportieren …“ und „Ablage ▸ Drucken …“ zeichnen das Diagramm in die Seite. Seitenumbrüche vermeiden es, ein Diagramm in der Mitte zu teilen. Das PDF verwendet die hellen Farben des Themes.
 - **Von der Befehlszeile.** Das kostenlose Werkzeug `marsdawn export` zeichnet dieselben Diagramme in ein PDF und braucht die App nicht. Siehe [Befehlszeile](/de/cli/).
-- **In deinem Thema.** Die Einstellung „Erscheinungsbild“ der Vorschau gilt auch für Diagramme, ein Diagramm folgt also hell oder dunkel.
+- **In deinem Theme.** Die Einstellung „Erscheinungsbild“ der Vorschau gilt auch für Diagramme, ein Diagramm folgt also hell oder dunkel.
 
 ## Wenn das Diagramm einen Fehler hat
 
@@ -61,9 +61,9 @@ MarsDawn ist kostenlos erhältlich. Teste alles 14 Tage lang und schalte es dann
 - [Was MarsDawn nicht kann](https://marsdawn.southern-light.dev/de/limits/index.md): Keine Synchronisierung, keine iPhone- oder iPad-App, keine Plug-ins, keine Konten. Vier integrierte Themen, mehr in der Galerie. Gut zu wissen, bevor du kaufst.
 - [Support](https://marsdawn.southern-light.dev/de/support/index.md): Hilfe zu MarsDawn, dem Markdown-Editor für macOS.
 - [Datenschutzrichtlinie](https://marsdawn.southern-light.dev/de/privacy/index.md): MarsDawn erhebt keine personenbezogenen Daten. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
-- [So öffnest du .md-Dateien auf dem Mac](https://marsdawn.southern-light.dev/de/view-markdown-on-mac/index.md): So öffnest du eine .md-Datei auf dem Mac: Doppelklick, Standard-App festlegen, Übersicht im Finder. Von einem KI-Agenten geschriebene .md-Dateien liest du gerendert in MarsDawn.
+- [So öffnest du .md-Dateien auf dem Mac](https://marsdawn.southern-light.dev/de/view-markdown-on-mac/index.md): So öffnest du eine .md-Datei auf dem Mac: Doppelklick, Standard-App, Übersicht im Finder. Von einem KI-Agenten geschriebene .md liest du gerendert in MarsDawn.
 - [Markdown zu PDF](https://marsdawn.southern-light.dev/de/markdown-to-pdf/index.md): Wandle Markdown auf dem Mac mit dem kostenlosen Befehlszeilenwerkzeug marsdawn in ein PDF um. Mit Homebrew installieren, einen Befehl ausführen: Tabellen, Mathematik, Mermaid und Code.
-- [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/de/vs/macmd-viewer/index.md): MacMD Viewer ist ein Markdown-Viewer nur zum Lesen für 19,99 USD. MarsDawn bearbeitet und zeigt die Vorschau daneben: 14 Tage kostenlos, dann einmalig 4,99 USD. Zeile für Zeile verglichen, mit Quellen.
+- [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/de/vs/macmd-viewer/index.md): MacMD Viewer ist ein Markdown-Viewer nur zum Lesen für 19,99 USD. MarsDawn bearbeitet und zeigt die Vorschau daneben: 14 Tage kostenlos, dann einmalig 4,99 USD.
 - [Befehlszeile](https://marsdawn.southern-light.dev/de/cli/index.md): Das kostenlose Befehlszeilenprogramm marsdawn für den Mac: Markdown aus einer Shell, einem Skript oder einem LLM-Agenten als PDF exportieren, mit JSON-Ausgabe. Installation mit Homebrew.
 - [marsdawn für Agenten](https://marsdawn.southern-light.dev/de/cli/agents/index.md): Eine Referenz für KI-Agenten und Skripte, die marsdawn aufrufen, um Markdown in PDF umzuwandeln: Befehle, JSON-Ausgabe, Schemas, Exit-Codes und Voraussetzungen.
 - [Agent-Skill](https://marsdawn.southern-light.dev/de/cli/skill/index.md): Eine Datei, die dein Coding-Agent lädt, um geschriebenes Markdown zur Prüfung in MarsDawn zu öffnen, marsdawn zu installieren, Markdown als PDF zu exportieren und das JSON-Ergebnis zu lesen.
@@ -96,6 +96,6 @@ MarsDawn ist kostenlos erhältlich. Teste alles 14 Tage lang und schalte es dann
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/index.md): 在 Mac 上預覽 Mermaid 圖表：原始碼旁邊即時畫出來，快速查看和輸出 PDF 也看得到。圖表寫錯時，會顯示錯誤訊息和出錯的那一行。
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/index.md): 在 Mac 上预览 Mermaid 图表：源代码旁边实时画出来，快速查看和导出 PDF 也看得到。图表写错时，会显示错误信息和出错的那一行。
 - [日本語](https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/index.md): Mac で Mermaid の図を Markdown の隣に描画：リアルタイムプレビュー、クイックルック、PDF 書き出し。図に誤りがあると、エラーとその行が表示されます。
-- [Français](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Voyez les diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
-- [Español](https://marsdawn.southern-light.dev/es/mermaid-preview-mac/index.md): Ve los diagramas de Mermaid dibujados junto a tu Markdown en una Mac: vista previa en vivo, Vista rápida y exportación a PDF. Un diagrama con errores muestra el error y la línea.
+- [Français](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
+- [Español](https://marsdawn.southern-light.dev/es/mermaid-preview-mac/index.md): Diagramas Mermaid junto a tu Markdown en una Mac: vista previa en vivo, Vista rápida y exportación a PDF. Un diagrama con errores muestra el error y la línea.
 - [한국어](https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/index.md): Mac에서 Mermaid 다이어그램을 Markdown 옆에 그려서 보세요: 실시간 미리보기, 훑어보기, PDF 내보내기. 다이어그램에 오류가 있으면 오류와 해당 줄이 표시됩니다.

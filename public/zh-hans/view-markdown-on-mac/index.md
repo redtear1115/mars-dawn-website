@@ -22,7 +22,7 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器，可以在 Mac App Store 免费�
 - [Mermaid](/zh-hans/mermaid-preview-mac/) 流程图和时序图直接画在预览里，代码块也会高亮。
 - 想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。
 
-如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看[首页](/zh-hans/)，想让 agent 帮你开文件，请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。为什么这样的阅读重要、怎么审一份计划，请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)和[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
+如果这份文件是 AI 代理写的，这正是 MarsDawn 要支持的循环：代理写，你读排好的页面，代理再修改。请看[首页](/zh-hans/)，想让代理帮你开文件，请看[给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/)。为什么这样的阅读重要、怎么审一份计划，请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)和[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
 
 ## 不装 app 也行：转成 PDF
 
@@ -40,7 +40,7 @@ open notes.pdf
 
 ### md 文件是什么？
 
-`.md` 文件是用 Markdown 写成的纯文本文件。Markdown 用简单的字符标记文本：`#` 是标题，`**` 包住的是粗体，竖线画出表格。`.markdown`、`.mdown`、`.mkd`、`.mkdn` 是同样的东西。开发者拿它写 README 和文档，AI agent 也常把计划和报告写成 `.md` 文件交回来。
+`.md` 文件是用 Markdown 写成的纯文本文件。Markdown 用简单的字符标记文本：`#` 是标题，`**` 包住的是粗体，竖线画出表格。`.markdown`、`.mdown`、`.mkd`、`.mkdn` 是同样的东西。开发者拿它写 README 和文档，AI 代理也常把计划和报告写成 `.md` 文件交回来。
 
 ### 为什么 md 文件打开是纯文本，满是 # 和 ** ？
 
@@ -54,9 +54,9 @@ open notes.pdf
 
 可以。在 MarsDawn 选“文件 ▸ 导出为 PDF…”（⌥⌘E）或“文件 ▸ 打印…”，页面会自动分页，图表画进去，代码保留高亮，使用主题的浅色配色。不装 app 的话，免费的 `marsdawn export` 命令行工具能导出同样的 PDF：`marsdawn export notes.md`。请看[导出 PDF](/zh-hans/pdf/)和[Markdown 转 PDF](/zh-hans/markdown-to-pdf/)。
 
-### AI agent 写的 md 文件也能这样打开吗？
+### AI 代理写的 md 文件也能这样打开吗？
 
-可以，MarsDawn 就是为这个做的。打开文件，排好的页面就在源代码旁边；agent 改好之后，再打开来读一次。agent 也可以运行 `marsdawn open plan.md`，在 MarsDawn 里把文件打开给你。请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
+可以，MarsDawn 就是为这个做的。打开文件，排好的页面就在源代码旁边；代理改好之后，再打开来读一次。代理也可以运行 `marsdawn open plan.md`，在 MarsDawn 里把文件打开给你。请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
 
 ## 接下来
 
@@ -109,7 +109,7 @@ open notes.pdf
 - [English](https://marsdawn.southern-light.dev/view-markdown-on-mac/index.md): How to open a .md file on a Mac: double-click, set a default app, preview in Finder. For .md files an AI agent wrote, read them rendered in MarsDawn.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/index.md): Mac 怎麼開 md 檔：雙擊、設成預設 App、在 Finder 用快速查看。AI agent 寫出來的 .md，也可以用 MarsDawn 打開，讀排好版的頁面。
 - [日本語](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): Mac で .md ファイルを開く方法：ダブルクリック、標準のアプリの設定、Finder のクイックルック。AI エージェントが書いた .md は、MarsDawn でレンダリングして読めます。
-- [Deutsch](https://marsdawn.southern-light.dev/de/view-markdown-on-mac/index.md): So öffnest du eine .md-Datei auf dem Mac: Doppelklick, Standard-App festlegen, Übersicht im Finder. Von einem KI-Agenten geschriebene .md-Dateien liest du gerendert in MarsDawn.
-- [Français](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Comment ouvrir un fichier .md sur Mac : double-clic, app par défaut, coup d’œil dans le Finder. Pour les .md écrits par un agent IA, lisez-les rendus dans MarsDawn.
-- [Español](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Cómo abrir un archivo .md en una Mac: doble clic, app predeterminada, Vista rápida en el Finder. Los .md que escribió un agente de IA, léelos renderizados en MarsDawn.
+- [Deutsch](https://marsdawn.southern-light.dev/de/view-markdown-on-mac/index.md): So öffnest du eine .md-Datei auf dem Mac: Doppelklick, Standard-App, Übersicht im Finder. Von einem KI-Agenten geschriebene .md liest du gerendert in MarsDawn.
+- [Français](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
+- [Español](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Cómo abrir un archivo .md en una Mac: doble clic, app predeterminada, Vista rápida en el Finder. Lee en MarsDawn, ya renderizados, los .md de un agente de IA.
 - [한국어](https://marsdawn.southern-light.dev/ko/view-markdown-on-mac/index.md): Mac에서 .md 파일을 여는 방법: 더블 클릭, 기본 앱 지정, Finder 훑어보기. AI 에이전트가 쓴 .md 파일은 MarsDawn에서 렌더링된 모습으로 읽으세요.

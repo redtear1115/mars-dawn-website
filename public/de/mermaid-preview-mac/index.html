@@ -26,7 +26,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mermaid-Vorschau auf dem Mac, neben deinem Markdown · MarsDawn</title>
-<meta name="description" content="Mermaid-Diagramme auf dem Mac neben deinem Markdown gezeichnet sehen: Live-Vorschau, Übersicht im Finder und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die Zeile.">
+<meta name="description" content="Mermaid-Diagramme auf dem Mac neben deinem Markdown: Live-Vorschau, Übersicht und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die Zeile.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -42,7 +42,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/de/mermaid-preview-mac/">
 <link rel="alternate" type="text/markdown" href="/de/mermaid-preview-mac/index.md">
 <meta property="og:title" content="Mermaid-Vorschau auf dem Mac, neben deinem Markdown · MarsDawn">
-<meta property="og:description" content="Mermaid-Diagramme auf dem Mac neben deinem Markdown gezeichnet sehen: Live-Vorschau, Übersicht im Finder und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die Zeile.">
+<meta property="og:description" content="Mermaid-Diagramme auf dem Mac neben deinem Markdown: Live-Vorschau, Übersicht und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die Zeile.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/de/mermaid-preview-mac/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -92,9 +92,9 @@ flowchart LR
 <ul>
   <li><strong>In der Vorschau.</strong> Öffne die Datei, und das Diagramm steht neben seinem Quelltext (⌘2). Die Seite aktualisiert sich beim Tippen, und beide Bereiche scrollen gemeinsam.</li>
   <li><strong>In der Übersicht.</strong> Wähle die Datei im Finder aus und drücke die Leertaste; auch dort werden Diagramme gezeichnet.</li>
-  <li><strong>Im PDF.</strong> „Ablage ▸ Als PDF exportieren …“ und „Ablage ▸ Drucken …“ zeichnen das Diagramm in die Seite. Seitenumbrüche vermeiden es, ein Diagramm in der Mitte zu teilen. Das PDF verwendet die hellen Farben des Themas.</li>
+  <li><strong>Im PDF.</strong> „Ablage ▸ Als PDF exportieren …“ und „Ablage ▸ Drucken …“ zeichnen das Diagramm in die Seite. Seitenumbrüche vermeiden es, ein Diagramm in der Mitte zu teilen. Das PDF verwendet die hellen Farben des Themes.</li>
   <li><strong>Von der Befehlszeile.</strong> Das kostenlose Werkzeug <code>marsdawn export</code> zeichnet dieselben Diagramme in ein PDF und braucht die App nicht. Siehe <a href="/de/cli/">Befehlszeile</a>.</li>
-  <li><strong>In deinem Thema.</strong> Die Einstellung „Erscheinungsbild“ der Vorschau gilt auch für Diagramme, ein Diagramm folgt also hell oder dunkel.</li>
+  <li><strong>In deinem Theme.</strong> Die Einstellung „Erscheinungsbild“ der Vorschau gilt auch für Diagramme, ein Diagramm folgt also hell oder dunkel.</li>
 </ul>
 <h2 id="when-the-diagram-has-a-mistake">Wenn das Diagramm einen Fehler hat</h2>
 <p>Wenn Mermaid ein Diagramm nicht zeichnen kann, zeigt die Vorschau den Quelltext des Diagramms mit der vollständigen Fehlermeldung darunter. Nennt die Fehlermeldung eine Zeile, springt der Editor beim Klick auf die Meldung zu dieser Zeile. <code>marsdawn export --json</code> meldet fehlgeschlagene Diagramme in <code>diagramErrors</code>, sodass ein Skript oder ein Agent erkennt, dass ein Diagramm nicht gezeichnet wurde.</p>

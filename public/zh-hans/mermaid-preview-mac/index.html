@@ -97,12 +97,12 @@ flowchart LR
   <li><strong>跟着外观。</strong> 预览的外观设置也会应用到图表，所以图会跟着浅色或深色。</li>
 </ul>
 <h2 id="when-the-diagram-has-a-mistake">图写错的时候</h2>
-<p>Mermaid 画不出一张图时，预览会显示那张图的源代码，下方附上完整的错误信息。如果错误信息指出是哪一行，点按一下信息，编辑器就会跳到那一行。<code>marsdawn export --json</code> 会在 <code>diagramErrors</code> 里报告画不出来的图，所以脚本或 agent 知道有图没画成。</p>
+<p>Mermaid 画不出一张图时，预览会显示那张图的源代码，下方附上完整的错误信息。如果错误信息指出是哪一行，点按一下信息，编辑器就会跳到那一行。<code>marsdawn export --json</code> 会在 <code>diagramErrors</code> 里报告画不出来的图，所以脚本或代理知道有图没画成。</p>
 <h2 id="what-to-know">先知道的事</h2>
 <ul>
   <li>你编辑的是 Mermaid 文本。没有可视化的图表编辑器，也不能在预览里拖动方块。</li>
   <li>哪些图表类型画得出来，取决于 app 里内置的 Mermaid 版本。MarsDawn 1.1.0 内置 Mermaid 12.0.0。kit 的导出测试会对流程图、时序图、类图、状态图、实体关系图、甘特图、饼图、思维导图、用户旅程、时间线、git 图等类型各画一份文档。</li>
-  <li>MarsDawn 没有 AI 模型，不会帮你写图。<a href="/zh-hans/templates/flowchart/">流程图模板</a>附有一段提示词，可以交给你自己的 agent。</li>
+  <li>MarsDawn 没有 AI 模型，不会帮你写图。<a href="/zh-hans/templates/flowchart/">流程图模板</a>附有一段提示词，可以交给你自己的代理。</li>
 </ul>
 <h2 id="next">接下来</h2>
 <ul>

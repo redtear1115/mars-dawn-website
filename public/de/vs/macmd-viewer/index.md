@@ -14,11 +14,11 @@ Geprüft gegen die eigene Website und das Repository von MacMD Viewer am 15. Okt
 | Mermaid | Ja: Flussdiagramme, Sequenz- und Zustandsdiagramme, Gantt-Diagramme, Kreisdiagramme und mehr, offline [[S1](#s1), [S3](#s3), [S7](#s7)] | Ja |
 | Mathematik | Nein: Die README sagt, die App „rendert keine Mathematik (LaTeX/KaTeX)“ [[S7](#s7)] | Ja, KaTeX |
 | Code-Hervorhebung | Ja [[S1](#s1), [S9](#s9)] | Ja |
-| Themen | 12 Dokumentthemen [[S1](#s1), [S7](#s7)] | 4 eingebaute (Morgenrot, Klassisch, Modern, Lebhaft), jeweils mit heller und dunkler Palette, dazu weitere in der Themen-Galerie |
+| Themes | 12 Dokumentthemen [[S1](#s1), [S7](#s7)] | 4 eingebaute (Morgenrot, Klassisch, Modern, Lebhaft), jeweils mit heller und dunkler Palette, dazu weitere in der Themengalerie |
 | Tabs | Ja, optional und standardmäßig aus (seit 1.6.0) [[S5](#s5), [S8](#s8)] | Ja |
-| PDF-Export | Ja, eine durchgehende Seite, im aktuellen Thema, ohne Wasserzeichen [[S3](#s3), [S9](#s9)] | Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche vermeiden es, kurze Codeblöcke und Tabellen zu teilen |
+| PDF-Export | Ja, eine durchgehende Seite, im aktuellen Theme, ohne Wasserzeichen [[S3](#s3), [S9](#s9)] | Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche vermeiden es, kurze Codeblöcke und Tabellen zu teilen |
 | Drucken | Ja, über den macOS-Drucken-Dialog [[S3](#s3), [S9](#s9)] | Ja |
-| Übersicht im Finder | Ja, enthalten; du aktivierst sie in den Systemeinstellungen; nutzt dein Thema [[S4](#s4)] | Ja, funktioniert mit und ohne Testphase; nutzt dein Thema |
+| Übersicht im Finder | Ja, enthalten; du aktivierst sie in den Systemeinstellungen; nutzt dein Theme [[S4](#s4)] | Ja, funktioniert mit und ohne Testphase; nutzt dein Theme |
 | Mermaid und Mathematik in der Übersicht | Mermaid: ja [[S4](#s4)]. Mathematik: nein, sie wird nicht gerendert [[S7](#s7)] | Ja, beides wird gezeichnet |
 | Befehlszeile | Es wird kein eigenständiges Befehlszeilenwerkzeug beschrieben. Es gibt ein URL-Schema `markdownviewer://` und ein Claude-Code-Plug-in samt Hooks, die Dateien im Viewer öffnen [[S6](#s6)] | Das kostenlose Werkzeug `marsdawn`: `marsdawn export` erzeugt ein PDF ohne die App, `marsdawn open` öffnet eine Datei bei einer Zeile |
 | Sprachen der Oberfläche | In den eigenen Unterlagen nicht angegeben [[S1](#s1), [S3](#s3), [S7](#s7)] | Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch |
@@ -117,8 +117,8 @@ open notes.pdf
 - [Was MarsDawn nicht kann](https://marsdawn.southern-light.dev/de/limits/index.md): Keine Synchronisierung, keine iPhone- oder iPad-App, keine Plug-ins, keine Konten. Vier integrierte Themen, mehr in der Galerie. Gut zu wissen, bevor du kaufst.
 - [Support](https://marsdawn.southern-light.dev/de/support/index.md): Hilfe zu MarsDawn, dem Markdown-Editor für macOS.
 - [Datenschutzrichtlinie](https://marsdawn.southern-light.dev/de/privacy/index.md): MarsDawn erhebt keine personenbezogenen Daten. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
-- [So öffnest du .md-Dateien auf dem Mac](https://marsdawn.southern-light.dev/de/view-markdown-on-mac/index.md): So öffnest du eine .md-Datei auf dem Mac: Doppelklick, Standard-App festlegen, Übersicht im Finder. Von einem KI-Agenten geschriebene .md-Dateien liest du gerendert in MarsDawn.
-- [Mermaid-Vorschau auf dem Mac](https://marsdawn.southern-light.dev/de/mermaid-preview-mac/index.md): Mermaid-Diagramme auf dem Mac neben deinem Markdown gezeichnet sehen: Live-Vorschau, Übersicht im Finder und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die Zeile.
+- [So öffnest du .md-Dateien auf dem Mac](https://marsdawn.southern-light.dev/de/view-markdown-on-mac/index.md): So öffnest du eine .md-Datei auf dem Mac: Doppelklick, Standard-App, Übersicht im Finder. Von einem KI-Agenten geschriebene .md liest du gerendert in MarsDawn.
+- [Mermaid-Vorschau auf dem Mac](https://marsdawn.southern-light.dev/de/mermaid-preview-mac/index.md): Mermaid-Diagramme auf dem Mac neben deinem Markdown: Live-Vorschau, Übersicht und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die Zeile.
 - [Markdown zu PDF](https://marsdawn.southern-light.dev/de/markdown-to-pdf/index.md): Wandle Markdown auf dem Mac mit dem kostenlosen Befehlszeilenwerkzeug marsdawn in ein PDF um. Mit Homebrew installieren, einen Befehl ausführen: Tabellen, Mathematik, Mermaid und Code.
 - [Befehlszeile](https://marsdawn.southern-light.dev/de/cli/index.md): Das kostenlose Befehlszeilenprogramm marsdawn für den Mac: Markdown aus einer Shell, einem Skript oder einem LLM-Agenten als PDF exportieren, mit JSON-Ausgabe. Installation mit Homebrew.
 - [marsdawn für Agenten](https://marsdawn.southern-light.dev/de/cli/agents/index.md): Eine Referenz für KI-Agenten und Skripte, die marsdawn aufrufen, um Markdown in PDF umzuwandeln: Befehle, JSON-Ausgabe, Schemas, Exit-Codes und Voraussetzungen.
@@ -152,6 +152,6 @@ open notes.pdf
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 4.99 解鎖一次。逐項比較，附來源。
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读的 Markdown 查看器，USD 19.99。MarsDawn 边编辑边预览，免费试用 14 天，之后 USD 4.99 解锁一次。逐项比较，附来源。
 - [日本語](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用の Markdown ビューアで USD 19.99。MarsDawn は編集とプレビューを並べて表示し、14 日間無料、その後 USD 4.99 を一度だけ。項目ごとの比較、出典つき。
-- [Français](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie et affiche l’aperçu côte à côte : 14 jours gratuits, puis 4,99 USD une seule fois. Comparaison ligne par ligne, avec sources.
-- [Español](https://marsdawn.southern-light.dev/es/vs/macmd-viewer/index.md): MacMD Viewer es un visor de Markdown de solo lectura por 19,99 USD. MarsDawn edita y muestra la vista previa al lado: 14 días gratis y luego 4,99 USD una sola vez. Comparación fila por fila, con fuentes.
+- [Français](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
+- [Español](https://marsdawn.southern-light.dev/es/vs/macmd-viewer/index.md): MacMD Viewer es un visor de Markdown de solo lectura por 19,99 USD. MarsDawn edita con la vista previa al lado: 14 días gratis y luego 4,99 USD una sola vez.
 - [한국어](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 읽기 전용 Markdown 뷰어로 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 14일 무료 체험 후 USD 4.99를 한 번만 내면 됩니다. 항목별 비교, 출처 포함.

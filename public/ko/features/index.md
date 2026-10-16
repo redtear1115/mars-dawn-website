@@ -194,9 +194,9 @@ MarsDawn에는 자체 AI 모델이 없습니다. 에이전트가 쓴 글을 요�
 
 [Mac 앱](/ko/native/)
 
-## 페이지를 인쇄한 뒤
+## 페이지를 프린트한 뒤
 
-인쇄한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.
+프린트한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.
 
 [MarsDawn 영상(영어), 88초](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 

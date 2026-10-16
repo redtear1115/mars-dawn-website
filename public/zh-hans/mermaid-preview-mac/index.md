@@ -30,13 +30,13 @@ flowchart LR
 
 ## 图写错的时候
 
-Mermaid 画不出一张图时，预览会显示那张图的源代码，下方附上完整的错误信息。如果错误信息指出是哪一行，点按一下信息，编辑器就会跳到那一行。`marsdawn export --json` 会在 `diagramErrors` 里报告画不出来的图，所以脚本或 agent 知道有图没画成。
+Mermaid 画不出一张图时，预览会显示那张图的源代码，下方附上完整的错误信息。如果错误信息指出是哪一行，点按一下信息，编辑器就会跳到那一行。`marsdawn export --json` 会在 `diagramErrors` 里报告画不出来的图，所以脚本或代理知道有图没画成。
 
 ## 先知道的事
 
 - 你编辑的是 Mermaid 文本。没有可视化的图表编辑器，也不能在预览里拖动方块。
 - 哪些图表类型画得出来，取决于 app 里内置的 Mermaid 版本。MarsDawn 1.1.0 内置 Mermaid 12.0.0。kit 的导出测试会对流程图、时序图、类图、状态图、实体关系图、甘特图、饼图、思维导图、用户旅程、时间线、git 图等类型各画一份文档。
-- MarsDawn 没有 AI 模型，不会帮你写图。[流程图模板](/zh-hans/templates/flowchart/)附有一段提示词，可以交给你自己的 agent。
+- MarsDawn 没有 AI 模型，不会帮你写图。[流程图模板](/zh-hans/templates/flowchart/)附有一段提示词，可以交给你自己的代理。
 
 ## 接下来
 
@@ -61,7 +61,7 @@ MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁
 - [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户。内置四种主题，主题图库还有更多。购买前先知道。
 - [支持](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 编辑器）的使用说明与联系方式。
 - [隐私政策](https://marsdawn.southern-light.dev/zh-hans/privacy/index.md): MarsDawn 不收集任何个人数据，你的文稿与设置都留在你的 Mac 上。
-- [Mac 上怎么打开 md 文件](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI agent 写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。
+- [Mac 上怎么打开 md 文件](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI 代理写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。
 - [Markdown 转 PDF](https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/index.md): 免费的 Markdown 转 PDF 工具：在 Mac 上用 marsdawn 命令行，一个命令就把 Markdown 转成 PDF，表格、数学公式、Mermaid 图表和代码高亮都在。
 - [MacMD Viewer 对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读的 Markdown 查看器，USD 19.99。MarsDawn 边编辑边预览，免费试用 14 天，之后 USD 4.99 解锁一次。逐项比较，附来源。
 - [命令行工具](https://marsdawn.southern-light.dev/zh-hans/cli/index.md): 免费的 marsdawn 命令行工具：在 Mac 上从终端、脚本或 LLM agent 把 Markdown 导出成 PDF，并提供 JSON 输出。用 Homebrew 安装。
@@ -95,7 +95,7 @@ MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁
 - [English](https://marsdawn.southern-light.dev/mermaid-preview-mac/index.md): See Mermaid diagrams drawn next to your Markdown on a Mac: live preview, Quick Look and PDF export. A broken diagram shows its error and the line.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/index.md): 在 Mac 上預覽 Mermaid 圖表：原始碼旁邊即時畫出來，快速查看和輸出 PDF 也看得到。圖表寫錯時，會顯示錯誤訊息和出錯的那一行。
 - [日本語](https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/index.md): Mac で Mermaid の図を Markdown の隣に描画：リアルタイムプレビュー、クイックルック、PDF 書き出し。図に誤りがあると、エラーとその行が表示されます。
-- [Deutsch](https://marsdawn.southern-light.dev/de/mermaid-preview-mac/index.md): Mermaid-Diagramme auf dem Mac neben deinem Markdown gezeichnet sehen: Live-Vorschau, Übersicht im Finder und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die Zeile.
-- [Français](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Voyez les diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
-- [Español](https://marsdawn.southern-light.dev/es/mermaid-preview-mac/index.md): Ve los diagramas de Mermaid dibujados junto a tu Markdown en una Mac: vista previa en vivo, Vista rápida y exportación a PDF. Un diagrama con errores muestra el error y la línea.
+- [Deutsch](https://marsdawn.southern-light.dev/de/mermaid-preview-mac/index.md): Mermaid-Diagramme auf dem Mac neben deinem Markdown: Live-Vorschau, Übersicht und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die Zeile.
+- [Français](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
+- [Español](https://marsdawn.southern-light.dev/es/mermaid-preview-mac/index.md): Diagramas Mermaid junto a tu Markdown en una Mac: vista previa en vivo, Vista rápida y exportación a PDF. Un diagrama con errores muestra el error y la línea.
 - [한국어](https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/index.md): Mac에서 Mermaid 다이어그램을 Markdown 옆에 그려서 보세요: 실시간 미리보기, 훑어보기, PDF 내보내기. 다이어그램에 오류가 있으면 오류와 해당 줄이 표시됩니다.

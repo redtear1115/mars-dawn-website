@@ -6106,9 +6106,9 @@ MarsDawn 没有自己的 AI 模型。它不会帮你摘要或评分代理写的�
 
 [为 Mac 而做](/zh-hans/native/)
 
-## 页面印出来之后
+## 页面打印出来之后
 
-大家围着印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。
+大家围着打印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。
 
 [MarsDawn 影片，88 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
@@ -6469,7 +6469,7 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器，可以在 Mac App Store 免费�
 - [Mermaid](/zh-hans/mermaid-preview-mac/) 流程图和时序图直接画在预览里，代码块也会高亮。
 - 想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。
 
-如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看[首页](/zh-hans/)，想让 agent 帮你开文件，请看[给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)。为什么这样的阅读重要、怎么审一份计划，请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)和[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
+如果这份文件是 AI 代理写的，这正是 MarsDawn 要支持的循环：代理写，你读排好的页面，代理再修改。请看[首页](/zh-hans/)，想让代理帮你开文件，请看[给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/)。为什么这样的阅读重要、怎么审一份计划，请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)和[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
 
 ## 不装 app 也行：转成 PDF
 
@@ -6487,7 +6487,7 @@ open notes.pdf
 
 ### md 文件是什么？
 
-`.md` 文件是用 Markdown 写成的纯文本文件。Markdown 用简单的字符标记文本：`#` 是标题，`**` 包住的是粗体，竖线画出表格。`.markdown`、`.mdown`、`.mkd`、`.mkdn` 是同样的东西。开发者拿它写 README 和文档，AI agent 也常把计划和报告写成 `.md` 文件交回来。
+`.md` 文件是用 Markdown 写成的纯文本文件。Markdown 用简单的字符标记文本：`#` 是标题，`**` 包住的是粗体，竖线画出表格。`.markdown`、`.mdown`、`.mkd`、`.mkdn` 是同样的东西。开发者拿它写 README 和文档，AI 代理也常把计划和报告写成 `.md` 文件交回来。
 
 ### 为什么 md 文件打开是纯文本，满是 # 和 ** ？
 
@@ -6501,9 +6501,9 @@ open notes.pdf
 
 可以。在 MarsDawn 选“文件 ▸ 导出为 PDF…”（⌥⌘E）或“文件 ▸ 打印…”，页面会自动分页，图表画进去，代码保留高亮，使用主题的浅色配色。不装 app 的话，免费的 `marsdawn export` 命令行工具能导出同样的 PDF：`marsdawn export notes.md`。请看[导出 PDF](/zh-hans/pdf/)和[Markdown 转 PDF](/zh-hans/markdown-to-pdf/)。
 
-### AI agent 写的 md 文件也能这样打开吗？
+### AI 代理写的 md 文件也能这样打开吗？
 
-可以，MarsDawn 就是为这个做的。打开文件，排好的页面就在源代码旁边；agent 改好之后，再打开来读一次。agent 也可以运行 `marsdawn open plan.md`，在 MarsDawn 里把文件打开给你。请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
+可以，MarsDawn 就是为这个做的。打开文件，排好的页面就在源代码旁边；代理改好之后，再打开来读一次。代理也可以运行 `marsdawn open plan.md`，在 MarsDawn 里把文件打开给你。请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。
 
 ## 接下来
 
@@ -6549,13 +6549,13 @@ flowchart LR
 
 ## 图写错的时候
 
-Mermaid 画不出一张图时，预览会显示那张图的源代码，下方附上完整的错误信息。如果错误信息指出是哪一行，点按一下信息，编辑器就会跳到那一行。`marsdawn export --json` 会在 `diagramErrors` 里报告画不出来的图，所以脚本或 agent 知道有图没画成。
+Mermaid 画不出一张图时，预览会显示那张图的源代码，下方附上完整的错误信息。如果错误信息指出是哪一行，点按一下信息，编辑器就会跳到那一行。`marsdawn export --json` 会在 `diagramErrors` 里报告画不出来的图，所以脚本或代理知道有图没画成。
 
 ## 先知道的事
 
 - 你编辑的是 Mermaid 文本。没有可视化的图表编辑器，也不能在预览里拖动方块。
 - 哪些图表类型画得出来，取决于 app 里内置的 Mermaid 版本。MarsDawn 1.1.0 内置 Mermaid 12.0.0。kit 的导出测试会对流程图、时序图、类图、状态图、实体关系图、甘特图、饼图、思维导图、用户旅程、时间线、git 图等类型各画一份文档。
-- MarsDawn 没有 AI 模型，不会帮你写图。[流程图模板](/zh-hans/templates/flowchart/)附有一段提示词，可以交给你自己的 agent。
+- MarsDawn 没有 AI 模型，不会帮你写图。[流程图模板](/zh-hans/templates/flowchart/)附有一段提示词，可以交给你自己的代理。
 
 ## 接下来
 
@@ -6657,7 +6657,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## 接下来
 
 - 所有选项和它输出的 JSON：[命令行工具](/zh-hans/cli/)。
-- 让写程序的 agent 帮你做这件事：运行 `marsdawn skill --install` 来加上 [marsdawn 的 agent skill](/zh-hans/cli/skill/)。
+- 让写程序的代理帮你做这件事：运行 `marsdawn skill --install` 来加上 [marsdawn 的代理技能](/zh-hans/cli/skill/)。
 
 ---
 
@@ -6681,7 +6681,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 | Mermaid | 有：流程图、时序图、状态图、甘特图、饼图等，离线可用 [[S1](#s1), [S3](#s3), [S7](#s7)] | 有 |
 | 数学公式 | 没有：它的 README 写明“不显示数学公式（LaTeX／KaTeX）”[[S7](#s7)] | 有，KaTeX |
 | 代码高亮 | 有 [[S1](#s1), [S9](#s9)] | 有 |
-| 主题 | 12 种文档主题 [[S1](#s1), [S7](#s7)] | 内置 4 种（黎明、典雅、流行、活泼），各有浅色与深色，主题库还有更多 |
+| 主题 | 12 种文档主题 [[S1](#s1), [S7](#s7)] | 内置 4 种（黎明、典雅、流行、活泼），各有浅色与深色，主题图库还有更多 |
 | 标签页 | 有，可选，默认关闭（1.6.0 起）[[S5](#s5), [S8](#s8)] | 有 |
 | PDF 导出 | 有，单一连续页面，用当前的主题，无水印 [[S3](#s3), [S9](#s9)] | 有，分页输出，用主题的浅色配色；分页时尽量不切开短的代码和表格 |
 | 打印 | 有，走 macOS 的打印对话框 [[S3](#s3), [S9](#s9)] | 有 |
@@ -6725,9 +6725,9 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 
 ## 该选哪一个
 
-**选 MacMD Viewer，如果**你只读 Markdown，而且希望“不会改到文件”这件事是保证的：它不会保存对文件的任何改动 [[S1](#s1)]。这些情况它也比较合适：你的 Mac 跑的是 macOS 14 或 15（MarsDawn 需要 macOS 26）[[S1](#s1), [S7](#s7)]；你比较想从开发者自己的网站、Homebrew 或 Setapp 买，而不是 Mac App Store [[S2](#s2), [S7](#s7)]；你想让 agent 改过的文件自动在查看器里打开，它用 Claude Code、Cursor 和 Windsurf 的 hook 做到 [[S6](#s6)]；或者你想要单一连续页面的 PDF，而不是分页的 PDF [[S9](#s9)]。它没有试用，但有 14 天退款 [[S2](#s2)]。
+**选 MacMD Viewer，如果**你只读 Markdown，而且希望“不会改到文件”这件事是保证的：它不会保存对文件的任何改动 [[S1](#s1)]。这些情况它也比较合适：你的 Mac 跑的是 macOS 14 或 15（MarsDawn 需要 macOS 26）[[S1](#s1), [S7](#s7)]；你比较想从开发者自己的网站、Homebrew 或 Setapp 买，而不是 Mac App Store [[S2](#s2), [S7](#s7)]；你想让代理改过的文件自动在查看器里打开，它用 Claude Code、Cursor 和 Windsurf 的 hook 做到 [[S6](#s6)]；或者你想要单一连续页面的 PDF，而不是分页的 PDF [[S9](#s9)]。它没有试用，但有 14 天退款 [[S2](#s2)]。
 
-**选 MarsDawn，如果** Markdown 读完还要再改一轮。agent 写的计划、README 或规格，通常要修一个地方、改一句话或加一段，在 MarsDawn 里就在你正在读的那个窗口里改。它也支持数学公式（KaTeX），MacMD Viewer 自己说不显示 [[S7](#s7)]；界面有八种语言；有免费的 `marsdawn` 命令行工具，不需要 app 就能导出 PDF；价格是 14 天全功能试用后 USD 4.99。
+**选 MarsDawn，如果** Markdown 读完还要再改一轮。代理写的计划、README 或规格，通常要修一个地方、改一句话或加一段，在 MarsDawn 里就在你正在读的那个窗口里改。它也支持数学公式（KaTeX），MacMD Viewer 自己说不显示 [[S7](#s7)]；界面有八种语言；有免费的 `marsdawn` 命令行工具，不需要 app 就能导出 PDF；价格是 14 天全功能试用后 USD 4.99。
 
 **两个都可以，如果**你在较新的 Mac 上读 Markdown，想把 Mermaid 图表画好，也想在访达用快速查看。两者都做得到。
 
@@ -6794,7 +6794,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-在用写程序的 agent 吗？执行 `marsdawn skill --install` 来加上 [marsdawn skill](/zh-hans/cli/skill/)：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。
+在用写程序的代理吗？执行 `marsdawn skill --install` 来加上 [marsdawn skill](/zh-hans/cli/skill/)：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。
 
 在 Apple 芯片的 Mac 上，Homebrew 会直接安装预先构建好的版本，几秒就完成，不需要另外安装任何东西。在 Intel Mac 上则会从源代码构建，需要几分钟，也需要 Xcode 26 以上（Swift 6.2）。这个工具需要 macOS 15 以上。
 
@@ -7124,15 +7124,15 @@ marsdawn skill --install --force
 
 `--force` 会替换现有的 `SKILL.md`，包括你自己改过的地方。不加 `--force` 的话，如果那里已经有内容不同的 `SKILL.md`，`marsdawn` 不会动它，会告诉你内容不同，并以代码 64（`skill_differs`）退出。文件已经是最新的，就什么都不改。
 
-## 给其他 agent
+## 给其他代理
 
-加上 `--dir`，指到你的 agent 放 skill 的文件夹，`marsdawn` 就会把 `SKILL.md` 写到那里：
+加上 `--dir`，指到你的代理放 skill 的文件夹，`marsdawn` 就会把 `SKILL.md` 写到那里：
 
 ```
 marsdawn skill --install --dir <path>
 ```
 
-这个文件是纯 Markdown，只有说明和命令，会读指令文件的 agent 可以直接用。
+这个文件是纯 Markdown，只有说明和命令，会读指令文件的代理可以直接用。
 
 ## 没有 Homebrew，或没有命令行工具
 
@@ -7143,7 +7143,7 @@ mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-这会从本站抓最新的 skill，可能比较旧的 `marsdawn` 还新。等你装好命令行工具，再执行 `marsdawn skill --install --force`，就会换成和它相符的版本。你也可以让 agent 读这个网址，或直接贴给它。这个文件是英文的。
+这会从本站抓最新的 skill，可能比较旧的 `marsdawn` 还新。等你装好命令行工具，再执行 `marsdawn skill --install --force`，就会换成和它相符的版本。你也可以让代理读这个网址，或直接贴给它。这个文件是英文的。
 
 ## 它教什么
 
@@ -7320,9 +7320,9 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 agent 也能用 `--theme` 生成一模一样的 PDF，四种主题都可以。
 
-## 页面印出来之后
+## 页面打印出来之后
 
-大家围着印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。
+大家围着打印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。
 
 [MarsDawn 影片，88 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
@@ -9038,9 +9038,9 @@ MarsDawn は独自の AI モデルを持っていません。エージェント�
 
 [Mac アプリ](/ja/native/)
 
-## ページを印刷したあと
+## ページをプリントしたあと
 
-印刷したページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。
+プリントしたページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。
 
 [MarsDawn の動画（88 秒）](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
@@ -10252,9 +10252,9 @@ MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種�
 
 PDF に書き出す、またはプリントすると、テーマのライトカラーが使われます。Mermaid 図はそこに描き込まれ、コードブロックは構文のハイライトを保ち、改ページは見出しをそのセクションから切り離したり、表や図を途中で切ったりしないよう配慮されます。無料の[marsdawn コマンドラインツール](/ja/cli/)も同じ書き出しエンジンを使うので、スクリプトやエージェントも `--theme` で、4種類のどのテーマでも同一の PDF を作れます。
 
-## ページを印刷したあと
+## ページをプリントしたあと
 
-印刷したページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。
+プリントしたページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。
 
 [MarsDawn の動画（88 秒）](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
@@ -12408,9 +12408,9 @@ In MarsDawn wird dieser Block zu einem Flussdiagramm: Markdown schreiben, dann L
 
 - **In der Vorschau.** Öffne die Datei, und das Diagramm steht neben seinem Quelltext (⌘2). Die Seite aktualisiert sich beim Tippen, und beide Bereiche scrollen gemeinsam.
 - **In der Übersicht.** Wähle die Datei im Finder aus und drücke die Leertaste; auch dort werden Diagramme gezeichnet.
-- **Im PDF.** „Ablage ▸ Als PDF exportieren …“ und „Ablage ▸ Drucken …“ zeichnen das Diagramm in die Seite. Seitenumbrüche vermeiden es, ein Diagramm in der Mitte zu teilen. Das PDF verwendet die hellen Farben des Themas.
+- **Im PDF.** „Ablage ▸ Als PDF exportieren …“ und „Ablage ▸ Drucken …“ zeichnen das Diagramm in die Seite. Seitenumbrüche vermeiden es, ein Diagramm in der Mitte zu teilen. Das PDF verwendet die hellen Farben des Themes.
 - **Von der Befehlszeile.** Das kostenlose Werkzeug `marsdawn export` zeichnet dieselben Diagramme in ein PDF und braucht die App nicht. Siehe [Befehlszeile](/de/cli/).
-- **In deinem Thema.** Die Einstellung „Erscheinungsbild“ der Vorschau gilt auch für Diagramme, ein Diagramm folgt also hell oder dunkel.
+- **In deinem Theme.** Die Einstellung „Erscheinungsbild“ der Vorschau gilt auch für Diagramme, ein Diagramm folgt also hell oder dunkel.
 
 ## Wenn das Diagramm einen Fehler hat
 
@@ -12548,11 +12548,11 @@ Geprüft gegen die eigene Website und das Repository von MacMD Viewer am 15. Okt
 | Mermaid | Ja: Flussdiagramme, Sequenz- und Zustandsdiagramme, Gantt-Diagramme, Kreisdiagramme und mehr, offline [[S1](#s1), [S3](#s3), [S7](#s7)] | Ja |
 | Mathematik | Nein: Die README sagt, die App „rendert keine Mathematik (LaTeX/KaTeX)“ [[S7](#s7)] | Ja, KaTeX |
 | Code-Hervorhebung | Ja [[S1](#s1), [S9](#s9)] | Ja |
-| Themen | 12 Dokumentthemen [[S1](#s1), [S7](#s7)] | 4 eingebaute (Morgenrot, Klassisch, Modern, Lebhaft), jeweils mit heller und dunkler Palette, dazu weitere in der Themen-Galerie |
+| Themes | 12 Dokumentthemen [[S1](#s1), [S7](#s7)] | 4 eingebaute (Morgenrot, Klassisch, Modern, Lebhaft), jeweils mit heller und dunkler Palette, dazu weitere in der Themengalerie |
 | Tabs | Ja, optional und standardmäßig aus (seit 1.6.0) [[S5](#s5), [S8](#s8)] | Ja |
-| PDF-Export | Ja, eine durchgehende Seite, im aktuellen Thema, ohne Wasserzeichen [[S3](#s3), [S9](#s9)] | Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche vermeiden es, kurze Codeblöcke und Tabellen zu teilen |
+| PDF-Export | Ja, eine durchgehende Seite, im aktuellen Theme, ohne Wasserzeichen [[S3](#s3), [S9](#s9)] | Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche vermeiden es, kurze Codeblöcke und Tabellen zu teilen |
 | Drucken | Ja, über den macOS-Drucken-Dialog [[S3](#s3), [S9](#s9)] | Ja |
-| Übersicht im Finder | Ja, enthalten; du aktivierst sie in den Systemeinstellungen; nutzt dein Thema [[S4](#s4)] | Ja, funktioniert mit und ohne Testphase; nutzt dein Thema |
+| Übersicht im Finder | Ja, enthalten; du aktivierst sie in den Systemeinstellungen; nutzt dein Theme [[S4](#s4)] | Ja, funktioniert mit und ohne Testphase; nutzt dein Theme |
 | Mermaid und Mathematik in der Übersicht | Mermaid: ja [[S4](#s4)]. Mathematik: nein, sie wird nicht gerendert [[S7](#s7)] | Ja, beides wird gezeichnet |
 | Befehlszeile | Es wird kein eigenständiges Befehlszeilenwerkzeug beschrieben. Es gibt ein URL-Schema `markdownviewer://` und ein Claude-Code-Plug-in samt Hooks, die Dateien im Viewer öffnen [[S6](#s6)] | Das kostenlose Werkzeug `marsdawn`: `marsdawn export` erzeugt ein PDF ohne die App, `marsdawn open` öffnet eine Datei bei einer Zeile |
 | Sprachen der Oberfläche | In den eigenen Unterlagen nicht angegeben [[S1](#s1), [S3](#s3), [S7](#s7)] | Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch |
@@ -18106,7 +18106,7 @@ Un archivo `.md` es texto plano. Los títulos, las palabras en negrita, las tabl
 ## Abrir un archivo .md en tu Mac
 
 1. **Haz doble clic en el archivo.** Se abre en la app que tu Mac tiene asignada a los archivos `.md`. Sin una app de Markdown, suele ser un editor de texto plano, que muestra las marcas en lugar de la página.
-2. **Elige tú la app.** Haz clic en el archivo mientras mantienes pulsada la tecla Control y elige “Abrir con”, y luego la app. O elige “Archivo ▸ Obtener información” (⌘I), elige una app en “Abrir con:” y haz clic en “Cambiar todo…” para que todos los archivos de este tipo se abran allí. MarsDawn abre archivos `.md`, `.markdown`, `.mdown`, `.mkd` y `.mkdn`.
+2. **Elige tú la app.** Haz clic en el archivo mientras mantienes pulsada la tecla Control y elige «Abrir con», y luego la app. O elige «Archivo ▸ Obtener información» (⌘I), elige una app en «Abrir con:» y haz clic en «Cambiar todo…» para que todos los archivos de este tipo se abran allí. MarsDawn abre archivos `.md`, `.markdown`, `.mdown`, `.mkd` y `.mkdn`.
 3. **Ver sin abrir.** Selecciona el archivo en el Finder y pulsa la barra espaciadora. Con MarsDawn instalado, Vista rápida muestra la página renderizada, con los diagramas incluidos.
 
 ## Léelo en MarsDawn
@@ -18147,11 +18147,11 @@ Porque es texto plano, y un editor de texto plano lo muestra tal cual. El archiv
 
 ### ¿Por qué se abre con caracteres ilegibles?
 
-Los caracteres ilegibles suelen significar que el archivo se guardó con una codificación de texto distinta de UTF-8 y que la app que lo abrió acertó mal. La solución es guardar una copia en UTF-8. MarsDawn abre en solo lectura un archivo de texto plano que no está en UTF-8, indica en una barra en la parte superior de la ventana la codificación con la que lo leyó y ofrece allí “Guardar como UTF-8…”, o “Archivo ▸ Guardar como…” (⌥⇧⌘S), para escribir una copia en UTF-8 que puedes editar.
+Los caracteres ilegibles suelen significar que el archivo se guardó con una codificación de texto distinta de UTF-8 y que la app que lo abrió acertó mal. La solución es guardar una copia en UTF-8. MarsDawn abre en solo lectura un archivo de texto plano que no está en UTF-8, indica en una barra en la parte superior de la ventana la codificación con la que lo leyó y ofrece allí «Guardar como UTF-8…», o «Archivo ▸ Guardar como…» (⌥⇧⌘S), para escribir una copia en UTF-8 que puedes editar.
 
 ### ¿Puedo convertir un archivo .md en PDF?
 
-Sí. En MarsDawn, elige “Archivo ▸ Exportar como PDF…” (⌥⌘E) o “Archivo ▸ Imprimir…”; las páginas se paginan, los diagramas se dibujan y el código se resalta, con los colores claros del tema. Sin la app, la herramienta de línea de comandos gratuita `marsdawn export` genera el mismo PDF: `marsdawn export notes.md`. Consulta [Exportación a PDF](/es/pdf/) y [De Markdown a PDF](/es/markdown-to-pdf/).
+Sí. En MarsDawn, elige «Archivo ▸ Exportar como PDF…» (⌥⌘E) o «Archivo ▸ Imprimir…»; las páginas se paginan, los diagramas se dibujan y el código se resalta, con los colores claros del tema. Sin la app, la herramienta de línea de comandos gratuita `marsdawn export` genera el mismo PDF: `marsdawn export notes.md`. Consulta [Exportación a PDF](/es/pdf/) y [De Markdown a PDF](/es/markdown-to-pdf/).
 
 ### ¿Puedo abrir los archivos .md que escribió mi agente de IA?
 
@@ -18196,7 +18196,7 @@ En MarsDawn, ese bloque se convierte en un diagrama de flujo: Escribir Markdown,
 
 - **En la vista previa.** Abre el archivo y el diagrama aparece junto a su código fuente (⌘2). La página se actualiza mientras escribes, y los dos paneles se desplazan juntos.
 - **En Vista rápida.** Selecciona el archivo en el Finder y pulsa la barra espaciadora; allí también se dibujan los diagramas.
-- **En el PDF.** “Archivo ▸ Exportar como PDF…” y “Archivo ▸ Imprimir…” dibujan el diagrama en la página. Los saltos de página evitan partir un diagrama por la mitad. El PDF usa los colores claros del tema.
+- **En el PDF.** «Archivo ▸ Exportar como PDF…» y «Archivo ▸ Imprimir…» dibujan el diagrama en la página. Los saltos de página evitan partir un diagrama por la mitad. El PDF usa los colores claros del tema.
 - **Desde la línea de comandos.** La herramienta gratuita `marsdawn export` dibuja los mismos diagramas en un PDF y no necesita la app. Consulta [Línea de comandos](/es/cli/).
 - **En tu tema.** El ajuste Aspecto de la vista previa también se aplica a los diagramas, así que un diagrama sigue el modo claro u oscuro.
 
@@ -20652,9 +20652,9 @@ MarsDawn에는 자체 AI 모델이 없습니다. 에이전트가 쓴 글을 요�
 
 [Mac 앱](/ko/native/)
 
-## 페이지를 인쇄한 뒤
+## 페이지를 프린트한 뒤
 
-인쇄한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.
+프린트한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.
 
 [MarsDawn 영상(영어), 88초](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
@@ -21873,9 +21873,9 @@ MarsDawn에는 새벽, 클래식, 모던, 비비드 네 가지 미리보기 테�
 
 PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레트를 씁니다. Mermaid 다이어그램이 그대로 그려지고, 코드 블록은 구문 강조를 유지하며, 페이지 나눔은 제목과 본문을 떼어 놓거나 표나 다이어그램을 반으로 자르지 않습니다. 무료 [marsdawn 명령줄 도구](/ko/cli/)도 같은 내보내기 엔진을 쓰므로, 스크립트나 에이전트도 `--theme`으로 네 가지 테마 중 어느 것이든 똑같은 PDF를 만듭니다.
 
-## 페이지를 인쇄한 뒤
+## 페이지를 프린트한 뒤
 
-인쇄한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.
+프린트한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.
 
 [MarsDawn 영상(영어), 88초](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 

@@ -194,9 +194,9 @@ MarsDawn は独自の AI モデルを持っていません。エージェント�
 
 [Mac アプリ](/ja/native/)
 
-## ページを印刷したあと
+## ページをプリントしたあと
 
-印刷したページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。
+プリントしたページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。
 
 [MarsDawn の動画（88 秒）](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
