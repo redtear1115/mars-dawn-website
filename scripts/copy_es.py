@@ -162,11 +162,10 @@ FEATURES = {'title': 'Funciones: un editor de Markdown para Mac, en una sola pá
                                'prefieres marcar el PDF, usa la app de PDF que ya tienes.',
                           'links': ['pdf']},
                          {'h': 'Registros en papel',
-                          'p': 'En algunos sectores todavía se archiva en papel, como la '
-                               'contabilidad. MarsDawn no afirma nada sobre archivo ni '
-                               'cumplimiento normativo. Lo que hace es imprimir y exportar páginas '
-                               'limpias y paginadas: diagramas dibujados, bloques de código cortos '
-                               'y tablas sin partir, los colores claros del tema. Úsalas '
+                          'p': 'En algunos sectores todavía se archiva en papel, como la contabilidad. '
+                               'MarsDawn no afirma nada sobre archivo ni cumplimiento normativo. Lo que '
+                               'hace es imprimir y exportar páginas limpias y paginadas: diagramas dibujados, '
+                               'bloques de código cortos sin partir, los colores claros del tema. Úsalas '
                                'dondequiera que el papel siga siendo el registro.',
                           'links': ['pdf']},
                          {'h': 'Pasárselo a alguien que no usa Markdown',
@@ -185,7 +184,7 @@ FEATURES = {'title': 'Funciones: un editor de Markdown para Mac, en una sola pá
                                'tema de tu vista previa.',
                           'links': ['native']},
                          {'h': 'Zoom, números de línea y barra de estado',
-                          'p': 'Acerca y aleja el código y la vista previa a la vez, del 50 % al 300 %. '
+                          'p': 'Acerca y aleja el código y la vista previa a la vez, del 50\xa0% al 300\xa0%. '
                                'Junto al código hay un margen con números de línea, y la barra de estado '
                                'muestra tu línea y columna, además del recuento de palabras y caracteres '
                                'y el tiempo de lectura del documento o de tu selección.',
@@ -245,7 +244,7 @@ FEATURES = {'title': 'Funciones: un editor de Markdown para Mac, en una sola pá
                                'Imprimir… imprime las mismas páginas. Los diagramas Mermaid se '
                                'dibujan, el código conserva su resaltado, y los saltos de página '
                                'evitan separar un encabezado de su sección o partir por la mitad '
-                               'un bloque de código corto, una tabla o un diagrama. El PDF usa '
+                               'un bloque de código corto o un diagrama. El PDF usa '
                                'siempre los colores claros del tema, aunque estuvieras leyendo en '
                                'oscuro.',
                           'links': ['pdf']}]},
@@ -520,8 +519,8 @@ VS_MACMD = {'title': 'MacMD Viewer o MarsDawn: visor o editor de Markdown · Mar
                       ['Pestañas', 'Sí, opcionales y desactivadas por defecto (desde 1.6.0) [S5, S8]', 'Sí'],
                       ['Exportación a PDF',
                        'Sí, una sola página continua, con el tema actual, sin marca de agua [S3, S9]',
-                       'Sí, páginas paginadas con la paleta clara del tema; los saltos de página evitan '
-                       'partir bloques de código cortos y tablas'],
+                       'Sí, páginas paginadas con la paleta clara del tema; los saltos de página '
+                       'evitan partir bloques de código cortos'],
                       ['Impresión', 'Sí, mediante el diálogo de impresión de macOS [S3, S9]', 'Sí'],
                       ['Vista rápida en el Finder',
                        'Sí, incluida; la activas en Ajustes del Sistema; usa tu tema [S4]',
@@ -600,7 +599,7 @@ VS_MACMD = {'title': 'MacMD Viewer o MarsDawn: visor o editor de Markdown · Mar
  'faq_h2': 'Preguntas',
  'faq': [['¿MacMD Viewer edita archivos?',
           'No. Es de solo lectura y, en sus propias palabras, nunca guarda cambios en tu archivo fuente [S1, '
-          'S9]. Tiene «Abrir en el editor de texto» (desde 1.7.0), que entrega el archivo a otra app [S5].'],
+          'S9]. Puede abrir el archivo en tu editor de texto (menú Archivo, ⇧⌘E, desde 1.7.0), lo que entrega el archivo a otra app [S5].'],
          ['¿MacMD Viewer está en el Mac App Store?',
           'Sus propias páginas citan su sitio, Homebrew y Setapp, y no mencionan el Mac App Store [S2, S7]. '
           'MarsDawn está solo en el Mac App Store.'],
@@ -712,7 +711,7 @@ def build(k) -> dict:
     }
     pages['pdf'] = {
         "title": 'Exporta Markdown a PDF en tu Mac, con diagramas · MarsDawn',
-        "description": 'Exporta Markdown como PDF o imprímelo en tu Mac, con diagramas Mermaid y código resaltado. Los saltos de página evitan partir bloques de código cortos y tablas.',
+        "description": 'Exporta Markdown como PDF o imprímelo en tu Mac, con diagramas Mermaid y código resaltado. Los saltos de página evitan partir bloques de código cortos.',
         "intro": """
 <section class="intro">
   <h1>El PDF se ve como la página que escribiste.</h1>
@@ -724,7 +723,7 @@ def build(k) -> dict:
 <ul>
   <li>Los diagramas Mermaid se dibujan dentro del PDF.</li>
   <li>Los bloques de código conservan su resaltado de sintaxis.</li>
-  <li>Los saltos de página evitan dejar un encabezado al final de una página o partir código, tablas y diagramas.</li>
+  <li>Los saltos de página evitan dejar un encabezado al final de una página o partir código y diagramas.</li>
   <li>Con cualquier disposición. La exportación funciona incluso cuando solo se muestra el código.</li>
 </ul>
 <p>La <a href="/es/cli/">herramienta de línea de comandos marsdawn</a>, que es gratis, usa el mismo exportador, así que un script o un agente de IA obtiene el mismo PDF.</p>
@@ -1345,7 +1344,7 @@ swift build -c release --product marsdawn
 <p>Cada uno tiene su propia variante clara y oscura, así que al cambiar el aspecto de tu Mac cambia también la paleta del tema, no solo la interfaz que la rodea.</p>
 
 <h2>La exportación a PDF y la impresión usan el mismo tema</h2>
-<p>Exporta a PDF o imprime, y la página usa la paleta clara de tu tema: los diagramas Mermaid se dibujan en ella, los bloques de código conservan el resaltado de sintaxis, y los saltos de página evitan separar un título de su sección o partir una tabla o un diagrama por la mitad. La <a href="/es/cli/">herramienta de línea de comandos marsdawn</a>, gratuita, usa el mismo exportador, así que un script o un agente genera el mismo PDF, en cualquiera de los cuatro temas, con <code>--theme</code>.</p>
+<p>Exporta a PDF o imprime, y la página usa la paleta clara de tu tema: los diagramas Mermaid se dibujan en ella, los bloques de código conservan el resaltado de sintaxis, y los saltos de página evitan separar un título de su sección o partir un diagrama por la mitad. La <a href="/es/cli/">herramienta de línea de comandos marsdawn</a>, gratuita, usa el mismo exportador, así que un script o un agente genera el mismo PDF, en cualquiera de los cuatro temas, con <code>--theme</code>.</p>
 
 <h2>Crea el tuyo y explora lo que hicieron otros</h2>
 <p><a href="/es/themes/new/">Crea un tema en tu navegador</a>: elige colores y unas pocas opciones de estilo, míralos aplicados en vivo y envíalo como un issue de GitHub para revisión &#8212; sin instalación, sin git. <a href="/es/themes/gallery/">La galería</a> muestra cada tema enviado que un mantenedor haya revisado y fusionado, filtrable por para qué sirve. Instala cualquiera en la app desde Ajustes › Aspecto › Obtener más temas…, y Vista rápida en el Finder también lo usa.</p>
@@ -1472,7 +1471,7 @@ swift build -c release --product marsdawn
 <ul>
   <li>Se abre con lo que la otra persona ya tiene, Vista Previa, un navegador, Acrobat, su teléfono, sin necesidad de una herramienta de Markdown.</li>
   <li>Los diagramas Mermaid aparecen dibujados, no como código; los bloques de código conservan el resaltado.</li>
-  <li>Los saltos de página se eligen para que un título no quede solo al pie de una página y para que una tabla o un diagrama no se parta en dos.</li>
+  <li>Los saltos de página se eligen para que un título no quede solo al pie de una página y para que un diagrama no se parta en dos.</li>
   <li>El mismo archivo, venga de la app MarsDawn o de la línea de comandos gratuita; la guía paso a paso está en <a href="/es/markdown-to-pdf/">Markdown a PDF</a>.</li>
 </ul>
 

@@ -166,11 +166,10 @@ FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Se
                                'nimm die PDF-App, die du ohnehin hast.',
                           'links': ['pdf']},
                          {'h': 'Papierakten',
-                          'p': 'In manchen Bereichen wird weiterhin Papier abgelegt, etwa in der '
-                               'Buchhaltung. MarsDawn erhebt keinen Anspruch auf Archivierung oder '
-                               'Compliance. Es druckt und exportiert saubere Seiten mit '
-                               'Seitenumbrüchen: Diagramme eingezeichnet, kurze Codeblöcke und '
-                               'Tabellen am Stück, in den hellen Farben des Themes. Nutze sie '
+                          'p': 'In manchen Bereichen wird weiterhin Papier abgelegt, etwa in der Buchhaltung. '
+                               'MarsDawn erhebt keinen Anspruch auf Archivierung oder Compliance. Es druckt '
+                               'und exportiert saubere Seiten mit Seitenumbrüchen: Diagramme eingezeichnet, '
+                               'kurze Codeblöcke am Stück, in den hellen Farben des Themes. Nutze sie '
                                'überall dort, wo Papier noch die Akte ist.',
                           'links': ['pdf']},
                          {'h': 'Für Menschen, die kein Markdown nutzen',
@@ -189,7 +188,7 @@ FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Se
                                'Vorschau.',
                           'links': ['native']},
                          {'h': 'Zoom, Zeilennummern und eine Statusleiste',
-                          'p': 'Zoome Quelltext und Vorschau gemeinsam von 50 % bis 300 %. Neben dem Quelltext '
+                          'p': 'Zoome Quelltext und Vorschau gemeinsam von 50\xa0% bis 300\xa0%. Neben dem Quelltext '
                                'läuft eine Spalte mit Zeilennummern, und die Statusleiste zeigt Zeile '
                                'und Spalte sowie Wort- und Zeichenzahl und die Lesezeit für das Dokument '
                                'oder deine Auswahl.',
@@ -248,13 +247,12 @@ FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Se
                                'solange sie geöffnet ist.',
                           'links': ['themes/gallery', 'themes/new']},
                          {'h': 'Als PDF exportieren oder drucken',
-                          'p': 'Ablage ▸ Als PDF exportieren … sichert ein PDF mit '
-                               'Seitenumbrüchen, und Ablage ▸ Drucken … druckt dieselben Seiten. '
-                               'Mermaid-Diagramme werden eingezeichnet, Code behält seine '
-                               'Hervorhebung, und Seitenumbrüche trennen keine Überschrift von '
-                               'ihrem Abschnitt und zerschneiden keinen kurzen Codeblock, keine '
-                               'Tabelle und kein Diagramm. Das PDF verwendet immer die hellen '
-                               'Farben des Themes, auch wenn du im Dunkeln gelesen hast.',
+                          'p': 'Ablage ▸ Als PDF exportieren … sichert ein PDF mit Seitenumbrüchen, und '
+                               'Ablage ▸ Drucken … druckt dieselben Seiten. Mermaid-Diagramme werden eingezeichnet, '
+                               'Code behält seine Hervorhebung, und Seitenumbrüche trennen keine Überschrift '
+                               'von ihrem Abschnitt und zerschneiden keinen kurzen Codeblock und kein '
+                               'Diagramm. Das PDF verwendet immer die hellen Farben des Themes, auch wenn '
+                               'du im Dunkeln gelesen hast.',
                           'links': ['pdf']}]},
               {'id': 'files',
                'h2': 'Dateien, Tabs und Übersicht',
@@ -520,8 +518,8 @@ VS_MACMD = {'title': 'MacMD Viewer oder MarsDawn: Markdown-Viewer oder Editor ·
                       ['PDF-Export',
                        'Ja, eine durchgehende Seite, im aktuellen Theme, ohne Wasserzeichen [S3, '
                        'S9]',
-                       'Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche vermeiden es, '
-                       'kurze Codeblöcke und Tabellen zu teilen'],
+                       'Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche '
+                       'vermeiden es, kurze Codeblöcke zu teilen'],
                       ['Drucken', 'Ja, über den macOS-Drucken-Dialog [S3, S9]', 'Ja'],
                       ['Übersicht im Finder',
                        'Ja, enthalten; du aktivierst sie in den Systemeinstellungen; nutzt dein '
@@ -604,8 +602,9 @@ VS_MACMD = {'title': 'MacMD Viewer oder MarsDawn: Markdown-Viewer oder Editor ·
           'reinen Viewer für das zu behalten, was du nur liest, und einen Editor für das, was du schreibst.'],
  'faq_h2': 'Fragen',
  'faq': [['Bearbeitet MacMD Viewer Dateien?',
-          'Nein. Die App ist nur zum Lesen da und speichert, in ihren eigenen Worten, nie Änderungen an '
-          'deiner Quelldatei [S1, S9]. Sie hat „In Texteditor öffnen“ (seit 1.7.0), das die Datei an eine '
+          'Nein. Die App ist nur zum Lesen da und speichert, in ihren eigenen Worten, '
+          'nie Änderungen an deiner Quelldatei [S1, S9]. Sie kann die Datei in deinem '
+          'Texteditor öffnen (Datei-Menü, ⇧⌘E, seit 1.7.0), was die Datei an eine '
           'andere App übergibt [S5].'],
          ['Ist MacMD Viewer im Mac App Store?',
           'Die eigenen Seiten nennen die Website, Homebrew und Setapp und erwähnen den Mac App Store nicht '
@@ -717,7 +716,7 @@ def build(k) -> dict:
     }
     pages['pdf'] = {
         "title": 'Markdown auf dem Mac als PDF exportieren, mit Diagrammen · MarsDawn',
-        "description": 'Exportiere Markdown auf deinem Mac als PDF oder drucke es, mit Mermaid-Diagrammen und hervorgehobenem Code. Seitenumbrüche vermeiden es, kurze Codeblöcke und Tabellen zu teilen.',
+        "description": 'Exportiere Markdown auf deinem Mac als PDF oder drucke es, mit Mermaid-Diagrammen und hervorgehobenem Code. Seitenumbrüche vermeiden es, kurze Codeblöcke zu teilen.',
         "intro": """
 <section class="intro">
   <h1>Das PDF sieht aus wie die Seite, die du geschrieben hast.</h1>
@@ -729,7 +728,7 @@ def build(k) -> dict:
 <ul>
   <li>Mermaid-Diagramme werden ins PDF gezeichnet.</li>
   <li>Codeblöcke behalten ihre Syntaxhervorhebung.</li>
-  <li>Seitenumbrüche vermeiden es, eine Überschrift unten auf einer Seite stehen zu lassen oder Code, Tabellen und Diagramme zu teilen.</li>
+  <li>Seitenumbrüche vermeiden es, eine Überschrift unten auf einer Seite stehen zu lassen oder Code und Diagramme zu teilen.</li>
   <li>In jedem Layout. Der Export funktioniert auch, wenn nur der Quelltext angezeigt wird.</li>
 </ul>
 <p>Das kostenlose <a href="/de/cli/">Befehlszeilenprogramm marsdawn</a> verwendet denselben Exporter, sodass ein Skript oder ein KI-Agent dasselbe PDF erhält.</p>
@@ -1350,7 +1349,7 @@ swift build -c release --product marsdawn
 <p>Jedes hat seine eigene helle und dunkle Variante: Wechselst du das Erscheinungsbild deines Macs, wechselt die Palette des Themas mit, nicht nur die Oberfläche drumherum.</p>
 
 <h2>PDF-Export und Drucken verwenden dasselbe Thema</h2>
-<p>Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themas: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden keine Tabelle und kein Diagramm in der Mitte durch. Das kostenlose <a href="/de/cli/">Befehlszeilenwerkzeug marsdawn</a> verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit <code>--theme</code> das identische PDF, in jedem der vier Themen.</p>
+<p>Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themas: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden kein Diagramm in der Mitte durch. Das kostenlose <a href="/de/cli/">Befehlszeilenwerkzeug marsdawn</a> verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit <code>--theme</code> das identische PDF, in jedem der vier Themen.</p>
 
 <h2>Bau dein eigenes, und sieh dir an, was andere gemacht haben</h2>
 <p><a href="/de/themes/new/">Bau ein Thema in deinem Browser</a>: wähle Farben und ein paar Stiloptionen, sieh sie live angewendet und reiche es als GitHub-Issue zur Prüfung ein &#8212; keine Installation, kein git. <a href="/de/themes/gallery/">Die Galerie</a> zeigt jedes eingereichte Thema, das ein Maintainer geprüft und gemerged hat, filterbar nach Verwendungszweck. Installiere eines in der App über Einstellungen › Erscheinungsbild › Weitere Themes laden …, dann verwendet es auch die Übersicht im Finder.</p>
@@ -1477,7 +1476,7 @@ swift build -c release --product marsdawn
 <ul>
   <li>Es öffnet sich in dem, was die Empfänger schon haben, Vorschau, ein Browser, Acrobat, ihr Telefon, ganz ohne Markdown-Werkzeug.</li>
   <li>Mermaid-Diagramme sind gezeichnet, nicht als Code stehen gelassen; Codeblöcke behalten ihre Hervorhebung.</li>
-  <li>Seitenumbrüche sind so gewählt, dass keine Überschrift allein unten auf einer Seite landet und keine Tabelle und kein Diagramm auf zwei Seiten verteilt wird.</li>
+  <li>Seitenumbrüche sind so gewählt, dass keine Überschrift allein unten auf einer Seite landet und kein Diagramm auf zwei Seiten verteilt wird.</li>
   <li>Dieselbe Datei, ob sie aus der MarsDawn-App kommt oder aus der kostenlosen Befehlszeile; die Anleitung dazu steht unter <a href="/de/markdown-to-pdf/">Markdown in PDF</a>.</li>
 </ul>
 

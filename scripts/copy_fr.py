@@ -164,12 +164,11 @@ FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur u
                                'vous avez déjà.',
                           'links': ['pdf']},
                          {'h': 'Dossiers papier',
-                          'p': 'Dans certains métiers, on classe encore du papier, la comptabilité '
-                               'par exemple. MarsDawn ne revendique ni archivage ni conformité. Ce '
-                               'qu’il fait, c’est imprimer et exporter des pages propres et '
-                               'paginées\xa0: diagrammes dessinés, blocs de code courts et '
-                               'tableaux gardés d’un seul tenant, couleurs claires du thème. '
-                               'Servez-vous-en partout où le papier reste le dossier de référence.',
+                          'p': 'Dans certains métiers, on classe encore du papier, la comptabilité par '
+                               'exemple. MarsDawn ne revendique ni archivage ni conformité. Ce qu’il fait, '
+                               'c’est imprimer et exporter des pages propres et paginées\xa0: diagrammes '
+                               'dessinés, blocs de code courts gardés d’un seul tenant, couleurs claires '
+                               'du thème. Servez-vous-en partout où le papier reste le dossier de référence.',
                           'links': ['pdf']},
                          {'h': 'Transmettre à quelqu’un qui n’utilise pas Markdown',
                           'p': 'Un PDF s’ouvre n’importe où et ne demande aucune connaissance de '
@@ -248,7 +247,7 @@ FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur u
                                'Fichier ▸ Imprimer… imprime les mêmes pages. Les diagrammes '
                                'Mermaid sont dessinés, le code garde sa coloration, et les sauts '
                                'de page évitent de séparer un titre de sa section ou de couper en '
-                               'deux un bloc de code court, un tableau ou un diagramme. Le PDF '
+                               'deux un bloc de code court ou un diagramme. Le PDF '
                                'utilise toujours les couleurs claires du thème, même si vous '
                                'lisiez en mode sombre.',
                           'links': ['pdf']}]},
@@ -529,8 +528,8 @@ VS_MACMD = {'title': 'MacMD Viewer ou MarsDawn\xa0: visionneuse ou éditeur Mark
                       ['Onglets', 'Oui, facultatifs et désactivés par défaut (depuis 1.6.0) [S5, S8]', 'Oui'],
                       ['Export PDF',
                        'Oui, une seule page continue, dans le thème actuel, sans filigrane [S3, S9]',
-                       'Oui, pages paginées dans la palette claire du thème\xa0; les sauts de page évitent '
-                       'de couper les blocs de code courts et les tableaux'],
+                       'Oui, pages paginées dans la palette claire du thème\xa0; les sauts de page '
+                       'évitent de couper les blocs de code courts'],
                       ['Impression', 'Oui, via la fenêtre d’impression de macOS [S3, S9]', 'Oui'],
                       ['Coup d’œil dans le Finder',
                        'Oui, inclus\xa0; vous l’activez dans Réglages Système\xa0; utilise votre thème [S4]',
@@ -613,9 +612,10 @@ VS_MACMD = {'title': 'MacMD Viewer ou MarsDawn\xa0: visionneuse ou éditeur Mark
           'vous écrivez.'],
  'faq_h2': 'Questions',
  'faq': [['MacMD Viewer modifie-t-il les fichiers\xa0?',
-          'Non. Il est en lecture seule et, selon ses propres termes, n’enregistre jamais de modifications '
-          'dans votre fichier source [S1, S9]. Il propose «\xa0Ouvrir dans l’éditeur de texte\xa0» (depuis '
-          '1.7.0), qui confie le fichier à une autre app [S5].'],
+          'Non. Il est en lecture seule et, selon ses propres termes, n’enregistre '
+          'jamais de modifications dans votre fichier source [S1, S9]. Il peut ouvrir '
+          'le fichier dans votre éditeur de texte (menu Fichier, ⇧⌘E, depuis 1.7.0), '
+          'ce qui confie le fichier à une autre app [S5].'],
          ['MacMD Viewer est-il sur le Mac App Store\xa0?',
           'Ses propres pages citent son site, Homebrew et Setapp, et ne mentionnent pas le Mac App Store '
           '[S2, S7]. MarsDawn est uniquement sur le Mac App Store.'],
@@ -728,7 +728,7 @@ def build(k) -> dict:
     }
     pages['pdf'] = {
         "title": 'Exporter du Markdown en PDF sur Mac, diagrammes compris · MarsDawn',
-        "description": 'Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts et les tableaux.',
+        "description": 'Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.',
         "intro": """
 <section class="intro">
   <h1>Le PDF ressemble à la page que vous avez écrite.</h1>
@@ -740,7 +740,7 @@ def build(k) -> dict:
 <ul>
   <li>Les diagrammes Mermaid sont dessinés dans le PDF.</li>
   <li>Les blocs de code gardent leur coloration syntaxique.</li>
-  <li>Les sauts de page évitent de laisser un titre en bas de page ou de couper du code, des tableaux et des diagrammes.</li>
+  <li>Les sauts de page évitent de laisser un titre en bas de page ou de couper du code et des diagrammes.</li>
   <li>Quelle que soit la disposition. L’export fonctionne même quand seule la source est affichée.</li>
 </ul>
 <p>L’<a href="/fr/cli/">outil en ligne de commande marsdawn</a>, gratuit, utilise le même moteur d’export : un script ou un agent IA obtient le même PDF.</p>
@@ -1361,7 +1361,7 @@ swift build -c release --product marsdawn
 <p>Chacun a sa propre variante claire et sombre : changer l’apparence de votre Mac change aussi la palette du thème, pas seulement l’interface autour.</p>
 
 <h2>L’export PDF et l’impression utilisent le même thème</h2>
-<p>Exportez en PDF ou imprimez, et la page utilise la palette claire de votre thème : les diagrammes Mermaid y sont dessinés, les blocs de code gardent leur coloration syntaxique, et les sauts de page évitent de séparer un titre de sa section ou de couper un tableau ou un diagramme en deux. L’<a href="/fr/cli/">outil en ligne de commande marsdawn</a>, gratuit, utilise le même moteur d’export : un script ou un agent produit donc le même PDF, dans n’importe lequel des quatre thèmes, avec <code>--theme</code>.</p>
+<p>Exportez en PDF ou imprimez, et la page utilise la palette claire de votre thème : les diagrammes Mermaid y sont dessinés, les blocs de code gardent leur coloration syntaxique, et les sauts de page évitent de séparer un titre de sa section ou de couper un diagramme en deux. L’<a href="/fr/cli/">outil en ligne de commande marsdawn</a>, gratuit, utilise le même moteur d’export : un script ou un agent produit donc le même PDF, dans n’importe lequel des quatre thèmes, avec <code>--theme</code>.</p>
 
 <h2>Créez le vôtre, et parcourez ce que d’autres ont fait</h2>
 <p><a href="/fr/themes/new/">Créez un thème dans votre navigateur</a> : choisissez des couleurs et quelques options de style, voyez-les appliquées en direct, et envoyez-le en issue GitHub pour relecture &#8212; pas d’installation, pas de git. <a href="/fr/themes/gallery/">La galerie</a> montre chaque thème soumis qu’un mainteneur a relu et fusionné, filtrable selon son usage. Installez-en un dans l’app depuis Réglages › Apparence › Obtenir plus de thèmes…, et Coup d’œil l’utilise aussi dans le Finder.</p>
@@ -1488,7 +1488,7 @@ swift build -c release --product marsdawn
 <ul>
   <li>Il s’ouvre avec ce que le destinataire a déjà, Aperçu, un navigateur, Acrobat, son téléphone, sans outil Markdown.</li>
   <li>Les diagrammes Mermaid sont dessinés, pas laissés sous forme de code ; les blocs de code gardent leur coloration.</li>
-  <li>Les sauts de page sont choisis pour qu’un titre ne se retrouve pas seul en bas d’une page, et qu’un tableau ou un diagramme ne soit pas coupé sur deux pages.</li>
+  <li>Les sauts de page sont choisis pour qu’un titre ne se retrouve pas seul en bas d’une page, et qu’un diagramme ne soit pas coupé sur deux pages.</li>
   <li>Le même fichier, qu’il vienne de l’app MarsDawn ou de la ligne de commande gratuite ; le pas-à-pas se trouve sur <a href="/fr/markdown-to-pdf/">Markdown en PDF</a>.</li>
 </ul>
 

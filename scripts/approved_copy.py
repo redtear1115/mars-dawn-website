@@ -239,8 +239,8 @@ VS_MACMD = {'en': {'title': 'MacMD Viewer vs. MarsDawn: a Markdown viewer or an 
                              ['Tabs', 'Yes, optional and off by default (since 1.6.0) [S5, S8]', 'Yes'],
                              ['PDF export',
                               'Yes, one continuous page, in the current theme, no watermark [S3, S9]',
-                              "Yes, paginated pages in the theme's light palette; page breaks avoid "
-                              'splitting short code blocks and tables'],
+                              "Yes, paginated pages in the theme's light palette; page breaks avoid splitting "
+                              'short code blocks'],
                              ['Print', 'Yes, through the macOS print dialog [S3, S9]', 'Yes'],
                              ['Quick Look in Finder',
                               'Yes, included; you enable it in System Settings; uses your theme [S4]',
@@ -304,9 +304,9 @@ VS_MACMD = {'en': {'title': 'MacMD Viewer vs. MarsDawn: a Markdown viewer or an 
                  "**And you can use both.** They aren't exclusive: nothing stops you from keeping a "
                  'read-only viewer for what you only read and an editor for what you write.'],
         'faq': [['Does MacMD Viewer edit files?',
-                 'No. It is read-only and, in its own words, never saves changes to your source file [S1, '
-                 'S9]. It does have "Open in Text Editor" (since 1.7.0), which hands the file to another app '
-                 '[S5].'],
+                 'No. It is read-only and, in its own words, never saves changes to your '
+                 'source file [S1, S9]. It can open the file in your text editor (File menu, '
+                 '⇧⌘E, since 1.7.0), which hands the file to another app [S5].'],
                 ['Is MacMD Viewer on the Mac App Store?',
                  "Its own pages list its site, Homebrew and Setapp, and don't mention the Mac App Store [S2, "
                  'S7]. MarsDawn is on the Mac App Store only.'],
@@ -342,7 +342,7 @@ VS_MACMD = {'en': {'title': 'MacMD Viewer vs. MarsDawn: a Markdown viewer or an 
                                   ['分頁', '有，選用，預設關閉（1.6.0 起）[S5, S8]', '有'],
                                   ['PDF 輸出',
                                    '有，單一連續頁面，用目前的主題，無浮水印 [S3, S9]',
-                                   '有，分頁輸出，用主題的淺色配色；分頁時盡量不切開短的程式碼和表格'],
+                                   '有，分頁輸出，用主題的淺色配色；分頁時盡量不切開短的程式碼'],
                                   ['列印', '有，走 macOS 的列印對話框 [S3, S9]', '有'],
                                   ['Finder 的快速查看', '有，已包含；要在系統設定裡啟用；使用你選的主題 [S4]', '有，不論有沒有試用都能用；使用你選的主題'],
                                   ['命令列',
@@ -386,7 +386,7 @@ VS_MACMD = {'en': {'title': 'MacMD Viewer vs. MarsDawn: a Markdown viewer or an 
                       '**兩個都可以，如果**你在較新的 Mac 上讀 Markdown，想把 Mermaid 圖表畫好，也想在 Finder 用快速查看。兩者都做得到。',
                       '**也可以兩個都用。**兩者不互斥：只讀的檔案用唯讀檢視器，要寫的檔案用編輯器，並不衝突。'],
              'faq': [['MacMD Viewer 能編輯檔案嗎？',
-                      '不能。它是唯讀的，照它自己的說法，不會儲存對原始檔的更動 [S1, S9]。它有「在文字編輯器中開啟」（1.7.0 起），是把檔案交給別的 app [S5]。'],
+                      '不能。它是唯讀的，照它自己的說法，不會儲存對原始檔的更動 [S1, S9]。它可以把檔案交給你的文字編輯器開啟（「檔案」選單，⇧⌘E，1.7.0 起）[S5]。'],
                      ['MacMD Viewer 在 Mac App Store 上嗎？',
                       '它自己的頁面列出的是官網、Homebrew 和 Setapp，沒有提到 Mac App Store [S2, S7]。MarsDawn 只在 Mac App '
                       'Store。'],

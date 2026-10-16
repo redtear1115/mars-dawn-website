@@ -2232,7 +2232,7 @@ BRAINSTORM_PAGES = {
 <p>Each one has its own light and dark variant, so switching your Mac's appearance switches the theme's palette with it, not just the interface chrome.</p>
 
 <h2>PDF export and print use the same theme</h2>
-<p>Export to PDF or print, and the page uses your theme's light palette: Mermaid diagrams are drawn into it, code blocks keep their syntax highlighting, and page breaks avoid splitting a heading from its section or cutting a table or diagram in half. The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so a script or an agent produces the identical PDF, in any of the four themes, with <code>--theme</code>.</p>
+<p>Export to PDF or print, and the page uses your theme's light palette: Mermaid diagrams are drawn into it, code blocks keep their syntax highlighting, and page breaks avoid splitting a heading from its section or cutting a diagram in half. The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so a script or an agent produces the identical PDF, in any of the four themes, with <code>--theme</code>.</p>
 
 <h2>Build your own, and browse what others made</h2>
 <p><a href="/themes/new/">Build a theme in your browser</a>: pick colours and a few style options, see them applied live, and submit it as a GitHub issue for review &#8212; no install, no git. <a href="/themes/gallery/">The gallery</a> shows every submitted theme a maintainer has reviewed and merged, filterable by what it's good for. Install any of them in the app from Settings › Appearance › Get More Themes…, and Quick Look in Finder uses it too.</p>
@@ -2268,7 +2268,7 @@ BRAINSTORM_PAGES = {
 <p>每種主題都有各自的淺色和深色版本，所以切換 Mac 的外觀，連帶切換的是主題本身的配色，不只是介面的顏色。</p>
 
 <h2>PDF 輸出和列印用同一個主題</h2>
-<p>輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開表格與圖表。免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>使用同一套輸出程式，所以腳本或 agent 也能用 <code>--theme</code> 產生一模一樣的 PDF，四種主題都可以。</p>
+<p>輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開圖表。免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>使用同一套輸出程式，所以腳本或 agent 也能用 <code>--theme</code> 產生一模一樣的 PDF，四種主題都可以。</p>
 
 <h2>打造自己的主題，也看看別人做的</h2>
 <p><a href="/zh-hant/themes/new/">在瀏覽器裡打造一個主題</a>：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。<a href="/zh-hant/themes/gallery/">主題庫</a>收錄每一套經過維護者審核並合併的投稿主題，可以依用途篩選。在 App 的「設定 › 外觀 › 取得更多主題⋯」就能安裝，Finder 的快速查看也會跟著套用。</p>
@@ -2303,7 +2303,7 @@ BRAINSTORM_PAGES = {
 <ul>
   <li>Opens in whatever the recipient already has &#8212; Preview, a browser, Acrobat, their phone &#8212; no Markdown tool required.</li>
   <li>Mermaid diagrams are drawn in, not left as code; code blocks keep their highlighting.</li>
-  <li>Page breaks are chosen so a heading doesn't land alone at the bottom of a page, and a table or diagram isn't split across two.</li>
+  <li>Page breaks are chosen so a heading doesn't land alone at the bottom of a page, and a diagram isn't split across two.</li>
   <li>The same file whether it came from the MarsDawn app or the free command line &#8212; see <a href="/markdown-to-pdf/">Markdown to PDF</a> for that walk-through.</li>
 </ul>
 
@@ -2337,7 +2337,7 @@ BRAINSTORM_PAGES = {
 <ul>
   <li>對方已經有的東西就能打開&#8212;&#8212;Preview、瀏覽器、Acrobat、手機都行，不需要任何 Markdown 工具。</li>
   <li>Mermaid 圖表會畫出來，不會留著程式碼原樣；程式碼區塊保留語法上色。</li>
-  <li>分頁位置經過安排，標題不會孤零零留在頁尾，表格或圖表也不會被切成兩半。</li>
+  <li>分頁位置經過安排，標題不會孤零零留在頁尾，圖表也不會被切成兩半。</li>
   <li>不管是從 MarsDawn app 還是免費的命令列輸出，得到的都是同一份檔案&#8212;&#8212;完整步驟請看<a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。</li>
 </ul>
 
@@ -4039,7 +4039,7 @@ TRAIT_PAGES = {
     ),
     ("en", "pdf"): _trait_page(
         "Export Markdown to PDF on a Mac, diagrams included · MarsDawn",
-        "Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks and tables.",
+        "Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks.",
         """
 <section class="intro">
   <h1>The PDF looks like the page you wrote.</h1>
@@ -4051,7 +4051,7 @@ TRAIT_PAGES = {
 <ul>
   <li>Mermaid diagrams are drawn into the PDF.</li>
   <li>Code blocks keep their syntax highlighting.</li>
-  <li>Page breaks avoid leaving a heading at the bottom of a page or splitting code, tables and diagrams.</li>
+  <li>Page breaks avoid leaving a heading at the bottom of a page or splitting code and diagrams.</li>
   <li>Any layout. Export works even while only the source is showing.</li>
 </ul>
 <p>The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so a script or an AI agent gets the same PDF.</p>
@@ -4059,7 +4059,7 @@ TRAIT_PAGES = {
     ),
     ("zh-hant", "pdf"): _trait_page(
         "在 Mac 把 Markdown 輸出成 PDF，圖表也在 · MarsDawn",
-        "在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。",
+        "在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。",
         """
 <section class="intro">
   <h1>PDF 看起來就是你寫的那一頁。</h1>
@@ -4071,7 +4071,7 @@ TRAIT_PAGES = {
 <ul>
   <li>Mermaid 圖表直接畫進 PDF。</li>
   <li>程式碼區塊保留語法上色。</li>
-  <li>分頁時會盡量不讓標題落在頁尾，也不切開程式碼、表格和圖表。</li>
+  <li>分頁時會盡量不讓標題落在頁尾，也不切開程式碼和圖表。</li>
   <li>任何版面都能輸出，只顯示原始碼時也可以。</li>
 </ul>
 <p>免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>使用同一套輸出程式，所以腳本或 AI agent 也能得到一樣的 PDF。</p>
@@ -4447,11 +4447,10 @@ FEATURES_COPY = {
                                    'rather mark up the PDF, use the PDF app you already have.',
                               'links': ['pdf']},
                              {'h': 'Paper records',
-                              'p': 'Some fields still file paper, accounting among them. MarsDawn '
-                                   'makes no archival or compliance claim. What it does is print and '
-                                   'export clean, paginated pages: diagrams drawn in, short code '
-                                   "blocks and tables kept whole, the theme's light colors. Use them "
-                                   'wherever paper is still the record.',
+                              'p': 'Some fields still file paper, accounting among them. MarsDawn makes no '
+                                   'archival or compliance claim. What it does is print and export clean, '
+                                   'paginated pages: diagrams drawn in, short code blocks kept whole, the '
+                                   "theme's light colors. Use them wherever paper is still the record.",
                               'links': ['pdf']},
                              {'h': "Handing it to someone who doesn't use Markdown",
                               'p': 'A PDF opens in anything and needs no Markdown knowledge, so it is '
@@ -4522,12 +4521,11 @@ FEATURES_COPY = {
                                    'while it is open.',
                               'links': ['themes/gallery', 'themes/new']},
                              {'h': 'Export as PDF, or print',
-                              'p': 'File ▸ Export as PDF… saves a paginated PDF, and File ▸ Print… '
-                                   'prints the same pages. Mermaid diagrams are drawn in, code keeps '
-                                   'its highlighting, and page breaks avoid splitting a heading from '
-                                   'its section or cutting a short code block, table or diagram in '
-                                   "half. The PDF always uses the theme's light colors, even if you "
-                                   'were reading in dark.',
+                              'p': 'File ▸ Export as PDF… saves a paginated PDF, and File ▸ Print… prints '
+                                   'the same pages. Mermaid diagrams are drawn in, code keeps its highlighting, '
+                                   'and page breaks avoid splitting a heading from its section or cutting '
+                                   "a short code block or diagram in half. The PDF always uses the theme's "
+                                   'light colors, even if you were reading in dark.',
                               'links': ['pdf']}]},
                   {'id': 'files',
                    'h2': 'Files, tabs and Quick Look',
@@ -4632,7 +4630,7 @@ FEATURES_COPY = {
                               'links': ['pdf']},
                              {'h': '紙本保存',
                               'p': '有些行業還是要把紙本存起來，會計就是一個例子。MarsDawn '
-                                   '沒有任何歸檔或合規的聲明。它做的是印出和輸出乾淨、分好頁的頁面：圖表畫進去，短的程式碼區塊和表格不被切開，用主題的淺色配色。紙本還是正式紀錄的地方，就可以用這些頁面。',
+                                   '沒有任何歸檔或合規的聲明。它做的是印出和輸出乾淨、分好頁的頁面：圖表畫進去，短的程式碼區塊不被切開，用主題的淺色配色。紙本還是正式紀錄的地方，就可以用這些頁面。',
                               'links': ['pdf']},
                              {'h': '交給不寫 Markdown 的人',
                               'p': 'PDF 在任何地方都能打開，也不需要懂 Markdown，所以也適合寄給主管或客戶。',
@@ -4683,7 +4681,7 @@ FEATURES_COPY = {
                               'links': ['themes/gallery', 'themes/new']},
                              {'h': '輸出 PDF，或列印',
                               'p': '「檔案 ▸ 輸出為 PDF⋯」會存成自動分頁的 PDF，「檔案 ▸ 列印⋯」印出相同的頁面。Mermaid '
-                                   '圖表直接畫進去，程式碼保留語法上色，分頁時會盡量不讓標題落在頁尾，也不切開短的程式碼、表格和圖表。PDF '
+                                   '圖表直接畫進去，程式碼保留語法上色，分頁時會盡量不讓標題落在頁尾，也不切開短的程式碼和圖表。PDF '
                                    '一律用主題的淺色配色，就算你是在深色下讀的也一樣。',
                               'links': ['pdf']}]},
                   {'id': 'files',
