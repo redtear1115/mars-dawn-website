@@ -5447,6 +5447,7 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
             html_to_markdown(page["intro"]).rstrip(),
             hero_window.window_markdown(locale),
             html_to_markdown(home_body).rstrip(),
+            html_to_markdown("\n".join(plan_loop_parts(locale))).rstrip(),
             html_to_markdown(_home_sections_for_twin(locale)).rstrip(),
             *([html_to_markdown(page["after"]).rstrip()] if page.get("after") else []),
             html_to_markdown(home_faq).rstrip(),
@@ -5679,6 +5680,31 @@ def vs_page(copy: dict) -> dict:
     return {"title": copy["title"], "description": _plain(copy["intro"]), "body": body}
 
 
+def plan_loop_parts_with(locale: str) -> tuple:
+    head, tail = plan_loop_parts(locale)
+    return head, loop_anim.loop_html(locale), tail
+
+
+def apply_plan_loop(locale: str) -> None:
+    """The home page's loop is #243's scene: the plan, the reader's edit and the agent's. Its strings replace the
+    launch-note ones in loop_anim.COPY (same keys), keeping each language's pause labels (and its tab labels where
+    #243 has none)."""
+    plan = promo_data.DATA["plan"][locale]
+    old, new = plan["swap"]
+    copy = {"title": plan["title"], "sections": [tuple(section) for section in plan["sections"]], "old": old, "new": new,
+            "ask": plan["ask"], "reply": plan["reply"], "alt": plan["alt"]}
+    if "tabs" in plan:
+        copy["outline"], copy["files"] = plan["tabs"]
+    loop_anim.COPY[locale].update(copy)
+
+
+def plan_loop_parts(locale: str) -> tuple:
+    """(head, tail) of the home page's loop section: its heading and introduction, and the three steps."""
+    plan = promo_data.DATA["plan"][locale]
+    steps = "\n".join(f"  <li>{step}</li>" for step in plan["steps"])
+    return f'<section class="plan">\n<h2>{plan["h"]}</h2>\n<p>{plan["intro"]}</p>', f"<ol>\n{steps}\n</ol>\n</section>"
+
+
 def apply_promo130(merged: dict) -> dict:
     """merged with the rest of the promo-130 bundle applied: titles (#244), the home description and the
     definition sentence (#244), and the later issues' sections. Every string is scripts/promo130/data.py's."""
@@ -5697,6 +5723,7 @@ def apply_promo130(merged: dict) -> dict:
         intro, n = re.subn(r"(</h1>)", lambda m: m.group(1) + f'\n  <p class="definition">{copy["definition"]}</p>', native["intro"], count=1)
         assert n == 1, f"{locale}/native: no h1 in the intro"
         out[(locale, "native")] = {**native, "intro": intro}
+        apply_plan_loop(locale)
         vs = promo_data.DATA["vs"][locale]
         UI[locale].setdefault("vs", _plain(vs["title"]))
         out[(locale, "vs")] = vs_page(vs)
@@ -6244,7 +6271,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
         # The FAQ is written with the page's body but belongs after the install block and the traits.
         home_body, home_faq = split_faq(page["body"])
-        main_html = "\n".join(part for part in (hero_html, brand_film.film_html(locale), home_body.strip(), loop_anim.loop_html(locale),
+        main_html = "\n".join(part for part in (hero_html, brand_film.film_html(locale), home_body.strip(), *plan_loop_parts_with(locale),
                                                  home_sections_html(locale), page.get("after", "").strip(), home_faq, proof_html, closing_html)
                               if part)
     elif slug == "features":

@@ -16,6 +16,14 @@ The page shows a working MarsDawn window over part of the app's Welcome guide. I
 
 [How to review what your agent hands back](/reading-agent-output/) · [How to open a .md file on a Mac](/view-markdown-on-mac/)
 
+## Review an agent's plan before it runs.
+
+Catch the step that's out of order, point at its line, and hand it back.
+
+1. See what changed: when the agent saves the plan, the open window updates from disk in one step you can undo.
+2. Jump to the line: marsdawn open plan-checkout-v2.md:10 lands the window on line 10 and flashes the matching block.
+3. Send it back: Copy Reference (⌥⌘C) copies plan-checkout-v2.md:10; paste it into the agent's chat with your note.
+
 ## Do this now
 
 The free `marsdawn` command-line tool is ready today. Install it with Homebrew:

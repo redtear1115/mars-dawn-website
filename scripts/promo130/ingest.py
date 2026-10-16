@@ -211,7 +211,7 @@ def r1_items(text: str) -> list:
     '- en（56）：`...`' (a version listed without a box). Returns [(locale, tag, value)] in order; the tag is
     the word after the language ('A', 'description', ...) or ''."""
     out = []
-    pat = re.compile(r"^\s*-\s*(?:\[[ x]\]\s*)?(?:\*\*)?(en|zh-Hant|ja)(?:\s+([A-Za-z]+))?\s*(?:（\d+）)?(?:\*\*)?[：:]\s*(.+?)\s*$", re.M)
+    pat = re.compile(r"^\s*-\s*(?:\[[ x]\]\s*)?(?:\*\*)?(en|zh-Hant|ja)(?:\s+([A-Za-z]+))?\s*(?:\*\*)?\s*(?:（\d+）)?(?:\*\*)?[：:]\s*(.+?)\s*$", re.M)
     for m in pat.finditer(text):
         out.append((LOC_LABEL[m.group(1)], m.group(2) or "", unwrap(m.group(3))))
     return out
@@ -255,6 +255,14 @@ def fenced_by_locale(text: str) -> dict:
     for m in re.finditer(r"^- \[[ x]\] \*\*(en|zh-Hant|ja)\*\*\s*\n```\n(.*?)\n```", text, re.M | re.S):
         out[LOC_LABEL[m.group(1)]] = m.group(2).split("\n")
     return out
+
+
+def bullet_chunk(text: str, name: str) -> str:
+    """The lines after a '- [ ] **name**' bullet, up to the next bullet at the same level."""
+    m = re.search(r"^- \[[ x]\] \*\*" + re.escape(name) + r"\*\*\s*\n((?:(?!- \[).*\n?)*)", text, re.M)
+    if not m:
+        raise Stop(f"no bullet {name!r}")
+    return m.group(1)
 
 
 def locale_chunk(text: str, name: str) -> str:
@@ -755,9 +763,113 @@ def ingest_245() -> None:
                               "item": f"#245(c) row {r + 1} col {c + 1}", "version": ver, "path": ["indie", loc, "rows", r, c]})
 
 
+
+# ---- #243: the home page's loop: reviewing an agent's plan before it runs -----------------------
+
+PLAN_FILE = "plan-checkout-v2.md"
+
+
+def plan_lines(block: list) -> list:
+    """A demo file as printed in a reply (' 4  text', ' 2' for an empty line) -> its ten lines."""
+    lines = []
+    for raw in block:
+        m = re.match(r"^\s*(\d+)(?:  (.*))?$", raw)
+        assert m, raw
+        assert int(m.group(1)) == len(lines) + 1, raw
+        lines.append((m.group(2) or "").rstrip())
+    return lines
+
+
+def plan_scene(lines: list, old: str, new: str) -> dict:
+    """The ten lines as the loop draws them: the title, three sections, and the changing day marked: the reader's
+    own edit on line 10 ({u}) and the agent's on line 4 ({a})."""
+    assert len(lines) == 10 and lines[0].startswith("# ") and lines[2].startswith("## ") and lines[5].startswith("## ") \
+        and lines[8].startswith("## ") and not lines[1] and not lines[4] and not lines[7], lines
+    sections = []
+    for head_at, text_at, mark in ((2, 3, "a"), (5, 6, None), (8, 9, "u")):
+        text = lines[text_at]
+        if mark:
+            assert text.count(old) == 1, (text, old)
+            text = text.replace(old, "{" + mark + "}")
+        else:
+            assert old not in text, (text, old)
+        sections.append([lines[head_at][3:], text])
+    return {"title": lines[0][2:], "sections": sections}
+
+
+def ingest_243() -> None:
+    c1, b1 = comment(243, 1)
+    c2, b2 = comment(243, 2)
+    files = fenced_by_locale(section(b1, "### (a)"))
+    terminal = nested(section(b1, "### (b)"))
+    alt = by_loc(r1_items(section(b1, "### (d)")))
+    head = nested(section(b1, "### (e)"))
+    sec_a = section(b1, "### (a)")
+    swap_en = {"en": ("Oct 14", "Oct 16"), "zh-hant": ("10/14", "10/16"), "ja": ("10/14", "10/16")}
+    steps_sec = section(b1, "### (c)")
+    for loc in LOCALES:
+        if loc in FIRST:
+            ln = {"en": "en", "zh-hant": "zh-Hant", "ja": "ja"}[loc]
+            lines = plan_lines(files[loc])
+            old, new = swap_en[loc]
+            ask, reply = terminal[loc]["讀者"], terminal[loc]["agent"]
+            steps = [unwrap(m.group(1)) for m in re.finditer(r"^\s+\d+\.\s+(`.+`)\s*$", bullet_chunk(steps_sec, ln), re.M)]
+            h, intro, altt = head[loc]["標題"], head[loc]["引言"], alt[loc]
+            outline = None
+            src = lambda what: comment_source(c1, 1, f"{what}, {loc}")
+            where = {"file": src("### (a) demo file"), "ask": src("### (b) 讀者"), "reply": src("### (b) agent"),
+                     "step": lambda i: src(f"### (c) step {i + 1}"), "alt": src("### (d)"), "h": src("### (e) 標題"), "intro": src("### (e) 引言")}
+            ver = "R1 (B: replaces the home loop)"
+        else:
+            hd = {"zh-hans": "zh-Hans"}.get(loc, loc)
+            sec = section(b2, "### " + hd)
+            t = table_rows(sec)
+            block = re.search(r"```\n(.*?)\n```", sec, re.S).group(1).split("\n")
+            lines = plan_lines(block)
+            pair = re.match(r"^(.+?) → (.+)$", t["替換的一組字"])
+            old, new = pair.group(1), pair.group(2)
+            ask, reply = t["讀者那行"], t["agent 回覆"]
+            steps = [t[f"步驟說明 {i}"] for i in (1, 2, 3)]
+            h, intro, altt = t["標題"], t["引言"], t["alt"]
+            outline = t["側欄標籤"].split("／")
+            assert len(outline) == 2
+            src = lambda what: comment_source(c2, 2, f"### {loc} {what}")
+            where = {"file": src("demo file"), "ask": src("table, 讀者那行"), "reply": src("table, agent 回覆"),
+                     "step": lambda i: src(f"table, 步驟說明 {i + 1}"), "alt": src("table, alt"), "h": src("table, 標題"), "intro": src("table, 引言"),
+                     "outline": src("table, 側欄標籤"), "swap": src("table, 替換的一組字")}
+            ver = "R2"
+        scene = plan_scene(lines, old, new)
+        assert len(old) == len(new)
+        put(("plan", loc, "title"), esc(scene["title"]), slot={"locale": loc, "page": "index", "field": "loop-title", "source": where["file"],
+                                                              "item": "#243(a) demo file, line 1", "version": ver})
+        DATA["plan"][loc]["sections"] = []
+        for i, (hh, tt) in enumerate(scene["sections"]):
+            DATA["plan"][loc]["sections"].append([esc(hh), esc(tt)])
+            for j, field in enumerate(("loop-heading", "loop-line")):
+                SLOTS.append({"locale": loc, "page": "index", "field": field, "source": where["file"],
+                              "item": f"#243(a) demo file, section {i + 1} {'heading' if j == 0 else 'text'}", "version": ver,
+                              "path": ["plan", loc, "sections", i, j]})
+        put(("plan", loc, "swap"), [esc(old), esc(new)], slot={"locale": loc, "page": "index", "field": "loop-swap", "source": where.get("swap", where["file"]),
+                                                              "item": "#243(a) the replaced day", "version": ver})
+        if outline:
+            put(("plan", loc, "tabs"), [esc(outline[0]), esc(outline[1])], slot={"locale": loc, "page": "index", "field": "loop-tabs", "source": where["outline"],
+                                                                                "item": "#243 sidebar labels", "version": ver})
+        put(("plan", loc, "ask"), esc(ask), slot={"locale": loc, "page": "index", "field": "loop-ask", "source": where["ask"], "item": "#243(b) reader line", "version": ver})
+        put(("plan", loc, "reply"), esc(reply), slot={"locale": loc, "page": "index", "field": "loop-reply", "source": where["reply"], "item": "#243(b) agent line", "version": ver})
+        put(("plan", loc, "alt"), esc(altt), slot={"locale": loc, "page": "index", "field": "alt", "source": where["alt"], "item": "#243(d) alt", "version": ver})
+        put(("plan", loc, "h"), inline(h), slot={"locale": loc, "page": "index", "field": "h2", "source": where["h"], "item": "#243(e) title", "version": ver})
+        put(("plan", loc, "intro"), inline(intro), slot={"locale": loc, "page": "index", "field": "p", "source": where["intro"], "item": "#243(e) introduction", "version": ver})
+        assert len(steps) == 3
+        DATA["plan"][loc]["steps"] = []
+        for i, step in enumerate(steps):
+            DATA["plan"][loc]["steps"].append(inline(step))
+            SLOTS.append({"locale": loc, "page": "index", "field": "li", "source": where["step"](i), "item": f"#243(c) step {i + 1}", "version": ver,
+                          "path": ["plan", loc, "steps", i]})
+
+
 # ---- main -------------------------------------------------------------------------------------
 
-INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240, 241: ingest_241, 245: ingest_245}
+INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240, 241: ingest_241, 245: ingest_245, 243: ingest_243}
 
 
 def write() -> None:

@@ -16,6 +16,14 @@ Die Seite zeigt ein bedienbares MarsDawn-Fenster mit einem Ausschnitt aus der Ei
 
 [So prüfst du, was dein Agent zurückgibt](/de/reading-agent-output/) · [So öffnest du .md-Dateien auf dem Mac](/de/view-markdown-on-mac/)
 
+## Prüfe den Plan deines Agenten, bevor er läuft.
+
+Finde den Schritt in der falschen Reihenfolge, zeig auf seine Zeile und gib ihn zurück.
+
+1. Sehen, was sich geändert hat: Sichert der Agent den Plan, aktualisiert sich das offene Fenster von der Festplatte, in einem Schritt, den du widerrufen kannst.
+2. Zur Zeile springen: marsdawn open plan-checkout-v2.md:10 bringt das Fenster zu Zeile 10 und lässt den passenden Block aufblinken.
+3. Zurückgeben: „Verweis kopieren“ (⌥⌘C) kopiert plan-checkout-v2.md:10; füge es mit deiner Notiz in den Chat des Agenten ein.
+
 ## Gleich loslegen
 
 Das kostenlose Befehlszeilenprogramm `marsdawn` ist schon heute verfügbar. Installiere es mit Homebrew:

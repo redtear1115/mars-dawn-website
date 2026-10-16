@@ -245,40 +245,49 @@ Le <span class="ed-bold">**gras**</span>, l’<span class="ed-emphasis ed-italic
   <li><strong>L’agent corrige.</strong> Demandez des modifications. Ouvrez le fichier révisé et lisez-le de la même façon.</li>
 </ol>
 <p><a href="/fr/reading-agent-output/">Comment relire ce que votre agent vous rend</a> · <a href="/fr/view-markdown-on-mac/">Ouvrir un fichier .md sur Mac</a></p>
+<section class="plan">
+<h2>Relisez le plan de votre agent avant qu’il ne s’exécute.</h2>
+<p>Repérez l’étape mal placée, désignez sa ligne et renvoyez-la.</p>
 <div class="loop-anim loop-fr">
-<div class="loop-frame" role="img" aria-label="Un terminal ouvre launch-note.md dans MarsDawn. Le lecteur déplace la date de lancement du 7 au 9 octobre, l’agent met à jour les deux autres sections en conséquence, et la boucle recommence.">
+<div class="loop-frame" role="img" aria-label="Un terminal lance marsdawn open plan-checkout-v2.md:10 et MarsDawn ouvre le plan à la ligne 10. Le lecteur repousse le lancement au 16 oct., après la migration ; l’agent met l’objectif à jour.">
 <div class="loop-stage" aria-hidden="true">
 <div class="loop-win a">
-<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">launch-note.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">plan-checkout-v2.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
 <div class="loop-body">
-<div class="loop-side"><div class="loop-tabs"><span class="on">Plan</span><span>Fichiers</span></div><div class="loop-rows"><div class="loop-h1row">Note de lancement</div><div class="loop-sub">Ce qui change</div><div class="loop-sub loop-row-u a">Date de sortie</div><div class="loop-sub">Qui fait quoi</div></div></div>
-<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> Note de lancement</span>
+<div class="loop-side"><div class="loop-tabs"><span class="on">Plan</span><span>Fichiers</span></div><div class="loop-rows"><div class="loop-h1row">Checkout v2</div><div class="loop-sub">Objectif</div><div class="loop-sub">Migration</div><div class="loop-sub loop-row-u a">Lancement</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> Checkout v2</span>
 
-<span class="loop-h"><span class="loop-mk">##</span> Ce qui change</span>
-La page de connexion commence par l’e-mail. Sortie le <span class="loop-day loop-d-a a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span></span>.
+<span class="loop-h"><span class="loop-mk">##</span> Objectif</span>
+Paiement sur une page, cartes enregistrées, le <span class="loop-day loop-d-a a"><span class="loop-old a">14 oct.</span><span class="loop-new loop-n7 a">16 oct.</span></span>
 
-<span class="loop-h"><span class="loop-mk">##</span> Date de sortie</span>
-Le <span class="loop-day loop-d-u a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span><span class="loop-ecaret loop-n6 a"></span></span>, à midi.
+<span class="loop-h"><span class="loop-mk">##</span> Migration</span>
+Copie des jetons de carte : du 13 au 15 oct.
 
-<span class="loop-h"><span class="loop-mk">##</span> Qui fait quoi</span>
-L’équipe technique active le flag le <span class="loop-day loop-d-b a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span></span>.
+<span class="loop-h"><span class="loop-mk">##</span> Lancement</span>
+Activer checkout_v2 pour tous le <span class="loop-day loop-d-u a"><span class="loop-old a">14 oct.</span><span class="loop-new loop-n7 a">16 oct.</span><span class="loop-ecaret loop-n7 a"></span></span>
 </div>
-<div class="loop-pre"><h3>Note de lancement</h3><h4>Ce qui change</h4><p>La page de connexion commence par l’e-mail. Sortie le <span class="loop-day loop-d-a a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span></span>.</p><h4>Date de sortie</h4><p>Le <span class="loop-day loop-d-u a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span></span>, à midi.</p><h4>Qui fait quoi</h4><p>L’équipe technique active le flag le <span class="loop-day loop-d-b a"><span class="loop-old a">7 oct.</span><span class="loop-new loop-n6 a">9 oct.</span></span>.</p></div>
+<div class="loop-pre"><h3>Checkout v2</h3><h4>Objectif</h4><p>Paiement sur une page, cartes enregistrées, le <span class="loop-day loop-d-a a"><span class="loop-old a">14 oct.</span><span class="loop-new loop-n7 a">16 oct.</span></span></p><h4>Migration</h4><p>Copie des jetons de carte : du 13 au 15 oct.</p><h4>Lancement</h4><p>Activer checkout_v2 pour tous le <span class="loop-day loop-d-u a"><span class="loop-old a">14 oct.</span><span class="loop-new loop-n7 a">16 oct.</span></span></p></div>
 </div>
 </div>
 <div class="loop-term a">
 <div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
 <div class="loop-tbody">
-<div><span class="loop-p">›</span> <span class="loop-cmd a">marsdawn open launch-note.md</span><span class="loop-caret a"></span></div>
-<div class="loop-l2 a"><span class="loop-p">›</span> J’ai déplacé le lancement. Mets les autres sections d’accord.</div>
-<div class="loop-l3 a">C’est fait. Les deux sections disent maintenant 9 oct.</div>
+<div><span class="loop-p">›</span> <span class="loop-cmd loop-cmd-36 a">marsdawn open plan-checkout-v2.md:10</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> plan-checkout-v2.md:10 : lancement avant la migration ; 16 oct.</div>
+<div class="loop-l3 a">C’est fait. L’objectif dit aussi 16 oct., après la migration.</div>
 </div>
 </div>
-<svg class="loop-ptr a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+<svg class="loop-ptr loop-ptr-r3 a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
 </div>
 </div>
 <label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="Mettre l’animation en pause"><span aria-hidden="true">Pause</span></label>
 </div>
+<ol>
+  <li>Voir ce qui a changé : quand l’agent enregistre le plan, la fenêtre ouverte se met à jour depuis le disque, en une étape que vous pouvez annuler.</li>
+  <li>Aller à la ligne : marsdawn open plan-checkout-v2.md:10 amène la fenêtre à la ligne 10 et fait clignoter le bloc correspondant.</li>
+  <li>Renvoyer : « Copier la référence » (⌥⌘C) copie plan-checkout-v2.md:10 ; collez-le avec votre remarque dans le chat de l’agent.</li>
+</ol>
+</section>
 <section class="install" id="install">
 <h2>À faire dès maintenant</h2>
 <p>L’outil en ligne de commande gratuit <code>marsdawn</code> est disponible dès aujourd’hui. Installez-le avec Homebrew :</p>

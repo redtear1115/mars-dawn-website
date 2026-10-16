@@ -16,6 +16,14 @@ MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、M
 
 [如何审阅代理交回来的东西](/zh-hans/reading-agent-output/) · [Mac 上怎么打开 md 文件](/zh-hans/view-markdown-on-mac/)
 
+## 代理的计划，运行前先看过。
+
+找出顺序不对的那一步，指出是哪一行，再交回给代理。
+
+1. 看改了什么：代理一保存，打开的窗口就从磁盘更新，一步完成，也能撤销。
+2. 跳到那一行：marsdawn open plan-checkout-v2.md:10 让窗口停在第 10 行，预览里对应的区块会闪一下。
+3. 交回给代理：“拷贝引用”（⌥⌘C）拷贝 plan-checkout-v2.md:10，连同你的意见粘贴进代理的对话。
+
 ## 现在就能做的事
 
 免费的 `marsdawn` 命令行工具现在就能用。用 Homebrew 安装：

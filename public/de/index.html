@@ -245,40 +245,49 @@ try {
   <li><strong>Der Agent überarbeitet.</strong> Bitte um Änderungen. Öffne die überarbeitete Datei und lies sie auf dieselbe Weise.</li>
 </ol>
 <p><a href="/de/reading-agent-output/">So prüfst du, was dein Agent zurückgibt</a> · <a href="/de/view-markdown-on-mac/">So öffnest du .md-Dateien auf dem Mac</a></p>
+<section class="plan">
+<h2>Prüfe den Plan deines Agenten, bevor er läuft.</h2>
+<p>Finde den Schritt in der falschen Reihenfolge, zeig auf seine Zeile und gib ihn zurück.</p>
 <div class="loop-anim loop-de">
-<div class="loop-frame" role="img" aria-label="Ein Terminal öffnet launch-note.md in MarsDawn. Die lesende Person verschiebt den Launch vom 7. auf den 9. Oktober, der Agent passt die beiden anderen Abschnitte an, und die Schleife beginnt von vorn.">
+<div class="loop-frame" role="img" aria-label="Ein Terminal führt marsdawn open plan-checkout-v2.md:10 aus, und MarsDawn öffnet den Plan in Zeile 10. Der Leser verschiebt den Launch auf den 16. Okt., nach dem Backfill; der Agent passt das Ziel an.">
 <div class="loop-stage" aria-hidden="true">
 <div class="loop-win a">
-<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">launch-note.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">plan-checkout-v2.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
 <div class="loop-body">
-<div class="loop-side"><div class="loop-tabs"><span class="on">Gliederung</span><span>Dateien</span></div><div class="loop-rows"><div class="loop-h1row">Launch-Notiz</div><div class="loop-sub">Was sich ändert</div><div class="loop-sub loop-row-u a">Wann es live geht</div><div class="loop-sub">Wer was macht</div></div></div>
-<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> Launch-Notiz</span>
+<div class="loop-side"><div class="loop-tabs"><span class="on">Gliederung</span><span>Dateien</span></div><div class="loop-rows"><div class="loop-h1row">Checkout v2</div><div class="loop-sub">Ziel</div><div class="loop-sub">Backfill</div><div class="loop-sub loop-row-u a">Launch</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> Checkout v2</span>
 
-<span class="loop-h"><span class="loop-mk">##</span> Was sich ändert</span>
-Die Anmeldeseite beginnt mit der E-Mail. Sie kommt am <span class="loop-day loop-d-a a"><span class="loop-old a">7. Okt.</span><span class="loop-new loop-n7 a">9. Okt.</span></span>.
+<span class="loop-h"><span class="loop-mk">##</span> Ziel</span>
+Checkout auf einer Seite mit Karten, live am <span class="loop-day loop-d-a a"><span class="loop-old a">14. Okt.</span><span class="loop-new loop-n8 a">16. Okt.</span></span>
 
-<span class="loop-h"><span class="loop-mk">##</span> Wann es live geht</span>
-<span class="loop-day loop-d-u a"><span class="loop-old a">7. Okt.</span><span class="loop-new loop-n7 a">9. Okt.</span><span class="loop-ecaret loop-n7 a"></span></span>, mittags.
+<span class="loop-h"><span class="loop-mk">##</span> Backfill</span>
+Gespeicherte Karten-Tokens kopieren: 13. bis 15. Okt.
 
-<span class="loop-h"><span class="loop-mk">##</span> Wer was macht</span>
-Engineering schaltet das Flag am <span class="loop-day loop-d-b a"><span class="loop-old a">7. Okt.</span><span class="loop-new loop-n7 a">9. Okt.</span></span> ein.
+<span class="loop-h"><span class="loop-mk">##</span> Launch</span>
+checkout_v2 am <span class="loop-day loop-d-u a"><span class="loop-old a">14. Okt.</span><span class="loop-new loop-n8 a">16. Okt.</span><span class="loop-ecaret loop-n8 a"></span></span> für alle Nutzer einschalten.
 </div>
-<div class="loop-pre"><h3>Launch-Notiz</h3><h4>Was sich ändert</h4><p>Die Anmeldeseite beginnt mit der E-Mail. Sie kommt am <span class="loop-day loop-d-a a"><span class="loop-old a">7. Okt.</span><span class="loop-new loop-n7 a">9. Okt.</span></span>.</p><h4>Wann es live geht</h4><p><span class="loop-day loop-d-u a"><span class="loop-old a">7. Okt.</span><span class="loop-new loop-n7 a">9. Okt.</span></span>, mittags.</p><h4>Wer was macht</h4><p>Engineering schaltet das Flag am <span class="loop-day loop-d-b a"><span class="loop-old a">7. Okt.</span><span class="loop-new loop-n7 a">9. Okt.</span></span> ein.</p></div>
+<div class="loop-pre"><h3>Checkout v2</h3><h4>Ziel</h4><p>Checkout auf einer Seite mit Karten, live am <span class="loop-day loop-d-a a"><span class="loop-old a">14. Okt.</span><span class="loop-new loop-n8 a">16. Okt.</span></span></p><h4>Backfill</h4><p>Gespeicherte Karten-Tokens kopieren: 13. bis 15. Okt.</p><h4>Launch</h4><p>checkout_v2 am <span class="loop-day loop-d-u a"><span class="loop-old a">14. Okt.</span><span class="loop-new loop-n8 a">16. Okt.</span></span> für alle Nutzer einschalten.</p></div>
 </div>
 </div>
 <div class="loop-term a">
 <div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
 <div class="loop-tbody">
-<div><span class="loop-p">›</span> <span class="loop-cmd a">marsdawn open launch-note.md</span><span class="loop-caret a"></span></div>
-<div class="loop-l2 a"><span class="loop-p">›</span> Ich habe den Launch verschoben. Gleiche die anderen Abschnitte an.</div>
-<div class="loop-l3 a">Erledigt. Beide Abschnitte sagen jetzt 9. Okt.</div>
+<div><span class="loop-p">›</span> <span class="loop-cmd loop-cmd-36 a">marsdawn open plan-checkout-v2.md:10</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> plan-checkout-v2.md:10: Launch vor Backfill-Ende; jetzt 16. Okt.</div>
+<div class="loop-l3 a">Erledigt. Das Ziel sagt jetzt auch 16. Okt., nach dem Backfill.</div>
 </div>
 </div>
-<svg class="loop-ptr a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+<svg class="loop-ptr loop-ptr-r3 a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
 </div>
 </div>
 <label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="Animation anhalten"><span aria-hidden="true">Pause</span></label>
 </div>
+<ol>
+  <li>Sehen, was sich geändert hat: Sichert der Agent den Plan, aktualisiert sich das offene Fenster von der Festplatte, in einem Schritt, den du widerrufen kannst.</li>
+  <li>Zur Zeile springen: marsdawn open plan-checkout-v2.md:10 bringt das Fenster zu Zeile 10 und lässt den passenden Block aufblinken.</li>
+  <li>Zurückgeben: „Verweis kopieren“ (⌥⌘C) kopiert plan-checkout-v2.md:10; füge es mit deiner Notiz in den Chat des Agenten ein.</li>
+</ol>
+</section>
 <section class="install" id="install">
 <h2>Gleich loslegen</h2>
 <p>Das kostenlose Befehlszeilenprogramm <code>marsdawn</code> ist schon heute verfügbar. Installiere es mit Homebrew:</p>

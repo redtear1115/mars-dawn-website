@@ -16,6 +16,14 @@ La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide
 
 [Comment relire ce que votre agent vous rend](/fr/reading-agent-output/) · [Ouvrir un fichier .md sur Mac](/fr/view-markdown-on-mac/)
 
+## Relisez le plan de votre agent avant qu’il ne s’exécute.
+
+Repérez l’étape mal placée, désignez sa ligne et renvoyez-la.
+
+1. Voir ce qui a changé : quand l’agent enregistre le plan, la fenêtre ouverte se met à jour depuis le disque, en une étape que vous pouvez annuler.
+2. Aller à la ligne : marsdawn open plan-checkout-v2.md:10 amène la fenêtre à la ligne 10 et fait clignoter le bloc correspondant.
+3. Renvoyer : « Copier la référence » (⌥⌘C) copie plan-checkout-v2.md:10 ; collez-le avec votre remarque dans le chat de l’agent.
+
 ## À faire dès maintenant
 
 L’outil en ligne de commande gratuit `marsdawn` est disponible dès aujourd’hui. Installez-le avec Homebrew :

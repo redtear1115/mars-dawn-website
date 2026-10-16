@@ -246,40 +246,49 @@ try {
   <li><strong>Agent 修改。</strong>提出修改意見，agent 改好之後，再打開來讀一次。</li>
 </ol>
 <p><a href="/zh-hant/reading-agent-output/">如何審閱 agent 交回來的東西</a> · <a href="/zh-hant/view-markdown-on-mac/">Mac 怎麼開 md 檔</a></p>
+<section class="plan">
+<h2>agent 的計畫，執行前先看過。</h2>
+<p>找出順序不對的那一步，指出是哪一行，再交回給 agent。</p>
 <div class="loop-anim loop-hant">
-<div class="loop-frame" role="img" aria-label="終端機用 MarsDawn 打開 launch-note.md。讀者把上線日從週三改成週五，agent 把另外兩段也改成一致，接著重頭再來一次。">
+<div class="loop-frame" role="img" aria-label="終端機用 MarsDawn 在第 10 行打開 plan-checkout-v2.md。讀者把上線日改到回填之後的 10/16，agent 把目標也改成一致，接著重頭再來一次。">
 <div class="loop-stage" aria-hidden="true">
 <div class="loop-win a">
-<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">launch-note.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">plan-checkout-v2.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
 <div class="loop-body">
-<div class="loop-side"><div class="loop-tabs"><span class="on">大綱</span><span>檔案</span></div><div class="loop-rows"><div class="loop-h1row">上線說明</div><div class="loop-sub">改了什麼</div><div class="loop-sub loop-row-u a">什麼時候上線</div><div class="loop-sub">誰做什麼</div></div></div>
-<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> 上線說明</span>
+<div class="loop-side"><div class="loop-tabs"><span class="on">大綱</span><span>檔案</span></div><div class="loop-rows"><div class="loop-h1row">結帳 v2</div><div class="loop-sub">目標</div><div class="loop-sub">資料回填</div><div class="loop-sub loop-row-u a">上線</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> 結帳 v2</span>
 
-<span class="loop-h"><span class="loop-mk">##</span> 改了什麼</span>
-登入頁先問 email，<span class="loop-day loop-d-a a"><span class="loop-old a">週三</span><span class="loop-new loop-n2 a">週五</span></span>上線。
+<span class="loop-h"><span class="loop-mk">##</span> 目標</span>
+單頁結帳加上已存卡片，<span class="loop-day loop-d-a a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span></span> 上線。
 
-<span class="loop-h"><span class="loop-mk">##</span> 什麼時候上線</span>
-<span class="loop-day loop-d-u a"><span class="loop-old a">週三</span><span class="loop-new loop-n2 a">週五</span><span class="loop-ecaret loop-n2 a"></span></span>中午。
+<span class="loop-h"><span class="loop-mk">##</span> 資料回填</span>
+搬移既有卡片 token：10/13 跑到 10/15。
 
-<span class="loop-h"><span class="loop-mk">##</span> 誰做什麼</span>
-工程在<span class="loop-day loop-d-b a"><span class="loop-old a">週三</span><span class="loop-new loop-n2 a">週五</span></span>打開開關。
+<span class="loop-h"><span class="loop-mk">##</span> 上線</span>
+<span class="loop-day loop-d-u a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span><span class="loop-ecaret loop-n5 a"></span></span> 為所有使用者打開 checkout_v2。
 </div>
-<div class="loop-pre"><h3>上線說明</h3><h4>改了什麼</h4><p>登入頁先問 email，<span class="loop-day loop-d-a a"><span class="loop-old a">週三</span><span class="loop-new loop-n2 a">週五</span></span>上線。</p><h4>什麼時候上線</h4><p><span class="loop-day loop-d-u a"><span class="loop-old a">週三</span><span class="loop-new loop-n2 a">週五</span></span>中午。</p><h4>誰做什麼</h4><p>工程在<span class="loop-day loop-d-b a"><span class="loop-old a">週三</span><span class="loop-new loop-n2 a">週五</span></span>打開開關。</p></div>
+<div class="loop-pre"><h3>結帳 v2</h3><h4>目標</h4><p>單頁結帳加上已存卡片，<span class="loop-day loop-d-a a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span></span> 上線。</p><h4>資料回填</h4><p>搬移既有卡片 token：10/13 跑到 10/15。</p><h4>上線</h4><p><span class="loop-day loop-d-u a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span></span> 為所有使用者打開 checkout_v2。</p></div>
 </div>
 </div>
 <div class="loop-term a">
 <div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
 <div class="loop-tbody">
-<div><span class="loop-p">›</span> <span class="loop-cmd a">marsdawn open launch-note.md</span><span class="loop-caret a"></span></div>
-<div class="loop-l2 a"><span class="loop-p">›</span> 我改了上線日，其他段落也改成一致。</div>
-<div class="loop-l3 a">好了，另外兩段也改成週五。</div>
+<div><span class="loop-p">›</span> <span class="loop-cmd loop-cmd-36 a">marsdawn open plan-checkout-v2.md:10</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> 第 10 行：上線早於回填完成，已改 10/16，其他段落請跟上。</div>
+<div class="loop-l3 a">好了，目標也改成 10/16，排在回填之後。</div>
 </div>
 </div>
-<svg class="loop-ptr a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+<svg class="loop-ptr loop-ptr-r3 a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
 </div>
 </div>
 <label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="暫停動畫"><span aria-hidden="true">暫停</span></label>
 </div>
+<ol>
+  <li>看改了什麼：agent 一存檔，開著的視窗就從磁碟更新，一步完成，也能撤銷。</li>
+  <li>跳到那一行：marsdawn open plan-checkout-v2.md:10 讓視窗停在第 10 行，預覽裡對應的區塊會閃一下。</li>
+  <li>回給 agent：「拷貝引用」（⌥⌘C）拷貝 plan-checkout-v2.md:10，連同你的意見貼進 agent 的對話。</li>
+</ol>
+</section>
 <section class="install" id="install">
 <h2>現在就能做的事</h2>
 <p>免費的 <code>marsdawn</code> 命令列工具現在就能用。用 Homebrew 安裝：</p>

@@ -245,40 +245,49 @@ try {
   <li><strong>The agent revises.</strong> Ask for changes. Open the revised file and read it the same way.</li>
 </ol>
 <p><a href="/reading-agent-output/">How to review what your agent hands back</a> · <a href="/view-markdown-on-mac/">How to open a .md file on a Mac</a></p>
+<section class="plan">
+<h2>Review an agent's plan before it runs.</h2>
+<p>Catch the step that's out of order, point at its line, and hand it back.</p>
 <div class="loop-anim">
-<div class="loop-frame" role="img" aria-label="A terminal opens launch-note.md in MarsDawn. The reader changes the launch day from October 7 to October 9, the agent updates the other two sections to match, and the loop starts again.">
+<div class="loop-frame" role="img" aria-label="A terminal runs marsdawn open plan-checkout-v2.md:10 and MarsDawn opens the plan at line 10. The reader moves the launch to Oct 16, after the backfill; the agent updates the goal to match.">
 <div class="loop-stage" aria-hidden="true">
 <div class="loop-win a">
-<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">launch-note.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
+<div class="loop-bar"><div class="loop-lights"><i></i><i></i><i></i></div><div class="loop-wtitle">plan-checkout-v2.md</div><div class="loop-tools"><i></i><i class="on"></i><i></i></div></div>
 <div class="loop-body">
-<div class="loop-side"><div class="loop-tabs"><span class="on">Outline</span><span>Files</span></div><div class="loop-rows"><div class="loop-h1row">Launch note</div><div class="loop-sub">What changed</div><div class="loop-sub loop-row-u a">When it ships</div><div class="loop-sub">Who does what</div></div></div>
-<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> Launch note</span>
+<div class="loop-side"><div class="loop-tabs"><span class="on">Outline</span><span>Files</span></div><div class="loop-rows"><div class="loop-h1row">Checkout v2</div><div class="loop-sub">Goal</div><div class="loop-sub">Backfill</div><div class="loop-sub loop-row-u a">Launch</div></div></div>
+<div class="loop-src"><span class="loop-h"><span class="loop-mk">#</span> Checkout v2</span>
 
-<span class="loop-h"><span class="loop-mk">##</span> What changed</span>
-The sign-in page leads with the email. It ships on <span class="loop-day loop-d-a a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span></span>.
+<span class="loop-h"><span class="loop-mk">##</span> Goal</span>
+One-page checkout with saved cards, live by <span class="loop-day loop-d-a a"><span class="loop-old a">Oct 14</span><span class="loop-new loop-n6 a">Oct 16</span></span>.
 
-<span class="loop-h"><span class="loop-mk">##</span> When it ships</span>
-<span class="loop-day loop-d-u a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span><span class="loop-ecaret loop-n5 a"></span></span> at noon.
+<span class="loop-h"><span class="loop-mk">##</span> Backfill</span>
+Copy saved card tokens over: runs Oct 13 to Oct 15.
 
-<span class="loop-h"><span class="loop-mk">##</span> Who does what</span>
-Engineering turns on the flag on <span class="loop-day loop-d-b a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span></span>.
+<span class="loop-h"><span class="loop-mk">##</span> Launch</span>
+Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span class="loop-old a">Oct 14</span><span class="loop-new loop-n6 a">Oct 16</span><span class="loop-ecaret loop-n6 a"></span></span>.
 </div>
-<div class="loop-pre"><h3>Launch note</h3><h4>What changed</h4><p>The sign-in page leads with the email. It ships on <span class="loop-day loop-d-a a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span></span>.</p><h4>When it ships</h4><p><span class="loop-day loop-d-u a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span></span> at noon.</p><h4>Who does what</h4><p>Engineering turns on the flag on <span class="loop-day loop-d-b a"><span class="loop-old a">Oct 7</span><span class="loop-new loop-n5 a">Oct 9</span></span>.</p></div>
+<div class="loop-pre"><h3>Checkout v2</h3><h4>Goal</h4><p>One-page checkout with saved cards, live by <span class="loop-day loop-d-a a"><span class="loop-old a">Oct 14</span><span class="loop-new loop-n6 a">Oct 16</span></span>.</p><h4>Backfill</h4><p>Copy saved card tokens over: runs Oct 13 to Oct 15.</p><h4>Launch</h4><p>Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span class="loop-old a">Oct 14</span><span class="loop-new loop-n6 a">Oct 16</span></span>.</p></div>
 </div>
 </div>
 <div class="loop-term a">
 <div class="loop-tbar"><div class="loop-lights"><i></i><i></i><i></i></div></div>
 <div class="loop-tbody">
-<div><span class="loop-p">›</span> <span class="loop-cmd a">marsdawn open launch-note.md</span><span class="loop-caret a"></span></div>
-<div class="loop-l2 a"><span class="loop-p">›</span> I moved the launch. Make the other sections agree.</div>
-<div class="loop-l3 a">Done. Both sections now say Oct 9.</div>
+<div><span class="loop-p">›</span> <span class="loop-cmd loop-cmd-36 a">marsdawn open plan-checkout-v2.md:10</span><span class="loop-caret a"></span></div>
+<div class="loop-l2 a"><span class="loop-p">›</span> plan-checkout-v2.md:10: launch beat the backfill; now Oct 16.</div>
+<div class="loop-l3 a">Done. The goal says Oct 16 too, after the backfill.</div>
 </div>
 </div>
-<svg class="loop-ptr a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
+<svg class="loop-ptr loop-ptr-r3 a" viewBox="0 0 30 40" aria-hidden="true"><path d="M3 2v30l8-7.5 5.2 11.8 5.6-2.4-5.2-11.6H28Z" fill="#fff" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>
 </div>
 </div>
 <label class="loop-pause"><input type="checkbox" id="loop-pause" aria-label="Pause the animation"><span aria-hidden="true">Pause</span></label>
 </div>
+<ol>
+  <li>See what changed: when the agent saves the plan, the open window updates from disk in one step you can undo.</li>
+  <li>Jump to the line: marsdawn open plan-checkout-v2.md:10 lands the window on line 10 and flashes the matching block.</li>
+  <li>Send it back: Copy Reference (⌥⌘C) copies plan-checkout-v2.md:10; paste it into the agent's chat with your note.</li>
+</ol>
+</section>
 <section class="install" id="install">
 <h2>Do this now</h2>
 <p>The free <code>marsdawn</code> command-line tool is ready today. Install it with Homebrew:</p>

@@ -22,6 +22,14 @@ The page shows a working MarsDawn window over part of the app's Welcome guide. I
 
 [How to review what your agent hands back](/reading-agent-output/) · [How to open a .md file on a Mac](/view-markdown-on-mac/)
 
+## Review an agent's plan before it runs.
+
+Catch the step that's out of order, point at its line, and hand it back.
+
+1. See what changed: when the agent saves the plan, the open window updates from disk in one step you can undo.
+2. Jump to the line: marsdawn open plan-checkout-v2.md:10 lands the window on line 10 and flashes the matching block.
+3. Send it back: Copy Reference (⌥⌘C) copies plan-checkout-v2.md:10; paste it into the agent's chat with your note.
+
 ## Do this now
 
 The free `marsdawn` command-line tool is ready today. Install it with Homebrew:
@@ -3127,6 +3135,14 @@ MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、M
 3. **Agent 修改。**提出修改意見，agent 改好之後，再打開來讀一次。
 
 [如何審閱 agent 交回來的東西](/zh-hant/reading-agent-output/) · [Mac 怎麼開 md 檔](/zh-hant/view-markdown-on-mac/)
+
+## agent 的計畫，執行前先看過。
+
+找出順序不對的那一步，指出是哪一行，再交回給 agent。
+
+1. 看改了什麼：agent 一存檔，開著的視窗就從磁碟更新，一步完成，也能撤銷。
+2. 跳到那一行：marsdawn open plan-checkout-v2.md:10 讓視窗停在第 10 行，預覽裡對應的區塊會閃一下。
+3. 回給 agent：「拷貝引用」（⌥⌘C）拷貝 plan-checkout-v2.md:10，連同你的意見貼進 agent 的對話。
 
 ## 現在就能做的事
 
@@ -6249,6 +6265,14 @@ MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、M
 3. **代理修改。**提出修改意见，代理改好之后，再打开来读一次。
 
 [如何审阅代理交回来的东西](/zh-hans/reading-agent-output/) · [Mac 上怎么打开 md 文件](/zh-hans/view-markdown-on-mac/)
+
+## 代理的计划，运行前先看过。
+
+找出顺序不对的那一步，指出是哪一行，再交回给代理。
+
+1. 看改了什么：代理一保存，打开的窗口就从磁盘更新，一步完成，也能撤销。
+2. 跳到那一行：marsdawn open plan-checkout-v2.md:10 让窗口停在第 10 行，预览里对应的区块会闪一下。
+3. 交回给代理：“拷贝引用”（⌥⌘C）拷贝 plan-checkout-v2.md:10，连同你的意见粘贴进代理的对话。
 
 ## 现在就能做的事
 
@@ -9389,6 +9413,14 @@ MarsDawn は、Markdown を読んで確かめるための Mac ネイティブア
 
 [エージェントが返してくるものをどう確認するか](/ja/reading-agent-output/) · [Mac で .md ファイルを開く方法](/ja/view-markdown-on-mac/)
 
+## エージェントの計画を、実行する前に読む。
+
+順番のおかしい手順を見つけ、その行を示して、エージェントに戻します。
+
+1. 変更を見る：エージェントが保存すると、開いているウインドウがディスクから更新されます。一度の操作で取り消せます。
+2. その行へ：marsdawn open plan-checkout-v2.md:10 でウインドウが 10 行目に移り、プレビューの該当ブロックが光ります。
+3. 返す：「参照をコピー」（⌥⌘C）で plan-checkout-v2.md:10 をコピーし、コメントを添えてエージェントとのチャットに貼ります。
+
 ## 今すぐできること
 
 無料の `marsdawn` コマンドラインツールは今すぐ使えます。Homebrew でインストール：
@@ -12504,6 +12536,14 @@ Die Seite zeigt ein bedienbares MarsDawn-Fenster mit einem Ausschnitt aus der Ei
 
 [So prüfst du, was dein Agent zurückgibt](/de/reading-agent-output/) · [So öffnest du .md-Dateien auf dem Mac](/de/view-markdown-on-mac/)
 
+## Prüfe den Plan deines Agenten, bevor er läuft.
+
+Finde den Schritt in der falschen Reihenfolge, zeig auf seine Zeile und gib ihn zurück.
+
+1. Sehen, was sich geändert hat: Sichert der Agent den Plan, aktualisiert sich das offene Fenster von der Festplatte, in einem Schritt, den du widerrufen kannst.
+2. Zur Zeile springen: marsdawn open plan-checkout-v2.md:10 bringt das Fenster zu Zeile 10 und lässt den passenden Block aufblinken.
+3. Zurückgeben: „Verweis kopieren“ (⌥⌘C) kopiert plan-checkout-v2.md:10; füge es mit deiner Notiz in den Chat des Agenten ein.
+
 ## Gleich loslegen
 
 Das kostenlose Befehlszeilenprogramm `marsdawn` ist schon heute verfügbar. Installiere es mit Homebrew:
@@ -15604,6 +15644,14 @@ La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide
 3. **L’agent corrige.** Demandez des modifications. Ouvrez le fichier révisé et lisez-le de la même façon.
 
 [Comment relire ce que votre agent vous rend](/fr/reading-agent-output/) · [Ouvrir un fichier .md sur Mac](/fr/view-markdown-on-mac/)
+
+## Relisez le plan de votre agent avant qu’il ne s’exécute.
+
+Repérez l’étape mal placée, désignez sa ligne et renvoyez-la.
+
+1. Voir ce qui a changé : quand l’agent enregistre le plan, la fenêtre ouverte se met à jour depuis le disque, en une étape que vous pouvez annuler.
+2. Aller à la ligne : marsdawn open plan-checkout-v2.md:10 amène la fenêtre à la ligne 10 et fait clignoter le bloc correspondant.
+3. Renvoyer : « Copier la référence » (⌥⌘C) copie plan-checkout-v2.md:10 ; collez-le avec votre remarque dans le chat de l’agent.
 
 ## À faire dès maintenant
 
@@ -18706,6 +18754,14 @@ La página muestra una ventana de MarsDawn interactiva que presenta un fragmento
 
 [Cómo revisar lo que te devuelve tu agente](/es/reading-agent-output/) · [Cómo abrir archivos .md en Mac](/es/view-markdown-on-mac/)
 
+## Revisa el plan de tu agente antes de que se ejecute.
+
+Encuentra el paso fuera de orden, señala su línea y devuélveselo.
+
+1. Mira qué cambió: cuando el agente guarda el plan, la ventana abierta se actualiza desde el disco en un solo paso que puedes deshacer.
+2. Salta a la línea: marsdawn open plan-checkout-v2.md:10 lleva la ventana a la línea 10 y hace parpadear el bloque correspondiente.
+3. Devuélvelo: «Copiar referencia» (⌥⌘C) copia plan-checkout-v2.md:10; pégalo con tu comentario en el chat del agente.
+
 ## Hazlo ahora
 
 La herramienta de línea de comandos gratuita `marsdawn` ya está lista. Instálala con Homebrew:
@@ -21806,6 +21862,14 @@ MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 �
 3. **에이전트가 고칩니다.** 수정을 요청하세요. 고친 파일을 열어 같은 방식으로 읽으면 됩니다.
 
 [에이전트가 돌려준 결과를 검토하는 방법](/ko/reading-agent-output/) · [Mac에서 .md 파일 여는 방법](/ko/view-markdown-on-mac/)
+
+## 에이전트의 계획, 실행 전에 검토하세요.
+
+순서가 틀린 단계를 찾아 그 줄을 짚고, 에이전트에게 돌려보냅니다.
+
+1. 변경 사항 보기: 에이전트가 저장하면 열려 있는 윈도우가 디스크에서 업데이트되며, 한 번에 실행 취소할 수 있습니다.
+2. 그 줄로 이동: marsdawn open plan-checkout-v2.md:10으로 윈도우가 10행으로 이동하고 미리보기의 해당 블록이 깜박입니다.
+3. 돌려보내기: ‘참조 복사’(⌥⌘C)로 plan-checkout-v2.md:10을 복사해, 의견과 함께 에이전트 채팅에 붙여 넣습니다.
 
 ## 지금 바로 해 보세요
 

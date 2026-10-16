@@ -30238,6 +30238,2387 @@
     1,
     2
    ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "loop-title",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, en"
+   },
+   "item": "#243(a) demo file, line 1",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "title"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, en"
+   },
+   "item": "#243(a) demo file, section 1 heading",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "sections",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, en"
+   },
+   "item": "#243(a) demo file, section 1 text",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "sections",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, en"
+   },
+   "item": "#243(a) demo file, section 2 heading",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "sections",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, en"
+   },
+   "item": "#243(a) demo file, section 2 text",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "sections",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, en"
+   },
+   "item": "#243(a) demo file, section 3 heading",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "sections",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, en"
+   },
+   "item": "#243(a) demo file, section 3 text",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "sections",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "loop-swap",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, en"
+   },
+   "item": "#243(a) the replaced day",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "swap"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "loop-ask",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (b) 讀者, en"
+   },
+   "item": "#243(b) reader line",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "ask"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "loop-reply",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (b) agent, en"
+   },
+   "item": "#243(b) agent line",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "reply"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "alt",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (d), en"
+   },
+   "item": "#243(d) alt",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "alt"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (e) 標題, en"
+   },
+   "item": "#243(e) title",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "h"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (e) 引言, en"
+   },
+   "item": "#243(e) introduction",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "intro"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (c) step 1, en"
+   },
+   "item": "#243(c) step 1",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "steps",
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (c) step 2, en"
+   },
+   "item": "#243(c) step 2",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "steps",
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (c) step 3, en"
+   },
+   "item": "#243(c) step 3",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "en",
+    "steps",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "loop-title",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, zh-hant"
+   },
+   "item": "#243(a) demo file, line 1",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "title"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, zh-hant"
+   },
+   "item": "#243(a) demo file, section 1 heading",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "sections",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, zh-hant"
+   },
+   "item": "#243(a) demo file, section 1 text",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "sections",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, zh-hant"
+   },
+   "item": "#243(a) demo file, section 2 heading",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "sections",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, zh-hant"
+   },
+   "item": "#243(a) demo file, section 2 text",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "sections",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, zh-hant"
+   },
+   "item": "#243(a) demo file, section 3 heading",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "sections",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, zh-hant"
+   },
+   "item": "#243(a) demo file, section 3 text",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "sections",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "loop-swap",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, zh-hant"
+   },
+   "item": "#243(a) the replaced day",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "swap"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "loop-ask",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (b) 讀者, zh-hant"
+   },
+   "item": "#243(b) reader line",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "ask"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "loop-reply",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (b) agent, zh-hant"
+   },
+   "item": "#243(b) agent line",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "reply"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "alt",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (d), zh-hant"
+   },
+   "item": "#243(d) alt",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "alt"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (e) 標題, zh-hant"
+   },
+   "item": "#243(e) title",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "h"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (e) 引言, zh-hant"
+   },
+   "item": "#243(e) introduction",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "intro"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (c) step 1, zh-hant"
+   },
+   "item": "#243(c) step 1",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "steps",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (c) step 2, zh-hant"
+   },
+   "item": "#243(c) step 2",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "steps",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (c) step 3, zh-hant"
+   },
+   "item": "#243(c) step 3",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "zh-hant",
+    "steps",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "loop-title",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans demo file"
+   },
+   "item": "#243(a) demo file, line 1",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "title"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans demo file"
+   },
+   "item": "#243(a) demo file, section 1 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "sections",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans demo file"
+   },
+   "item": "#243(a) demo file, section 1 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "sections",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans demo file"
+   },
+   "item": "#243(a) demo file, section 2 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "sections",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans demo file"
+   },
+   "item": "#243(a) demo file, section 2 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "sections",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans demo file"
+   },
+   "item": "#243(a) demo file, section 3 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "sections",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans demo file"
+   },
+   "item": "#243(a) demo file, section 3 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "sections",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "loop-swap",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans table, 替換的一組字"
+   },
+   "item": "#243(a) the replaced day",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "swap"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "loop-tabs",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans table, 側欄標籤"
+   },
+   "item": "#243 sidebar labels",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "tabs"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "loop-ask",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans table, 讀者那行"
+   },
+   "item": "#243(b) reader line",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "ask"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "loop-reply",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans table, agent 回覆"
+   },
+   "item": "#243(b) agent line",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "reply"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "alt",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans table, alt"
+   },
+   "item": "#243(d) alt",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "alt"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans table, 標題"
+   },
+   "item": "#243(e) title",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "h"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans table, 引言"
+   },
+   "item": "#243(e) introduction",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "intro"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans table, 步驟說明 1"
+   },
+   "item": "#243(c) step 1",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "steps",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans table, 步驟說明 2"
+   },
+   "item": "#243(c) step 2",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "steps",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### zh-hans table, 步驟說明 3"
+   },
+   "item": "#243(c) step 3",
+   "version": "R2",
+   "path": [
+    "plan",
+    "zh-hans",
+    "steps",
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "loop-title",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, ja"
+   },
+   "item": "#243(a) demo file, line 1",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "title"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, ja"
+   },
+   "item": "#243(a) demo file, section 1 heading",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "sections",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, ja"
+   },
+   "item": "#243(a) demo file, section 1 text",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "sections",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, ja"
+   },
+   "item": "#243(a) demo file, section 2 heading",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "sections",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, ja"
+   },
+   "item": "#243(a) demo file, section 2 text",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "sections",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, ja"
+   },
+   "item": "#243(a) demo file, section 3 heading",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "sections",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, ja"
+   },
+   "item": "#243(a) demo file, section 3 text",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "sections",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "loop-swap",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (a) demo file, ja"
+   },
+   "item": "#243(a) the replaced day",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "swap"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "loop-ask",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (b) 讀者, ja"
+   },
+   "item": "#243(b) reader line",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "ask"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "loop-reply",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (b) agent, ja"
+   },
+   "item": "#243(b) agent line",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "reply"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "alt",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (d), ja"
+   },
+   "item": "#243(d) alt",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "alt"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (e) 標題, ja"
+   },
+   "item": "#243(e) title",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "h"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (e) 引言, ja"
+   },
+   "item": "#243(e) introduction",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "intro"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (c) step 1, ja"
+   },
+   "item": "#243(c) step 1",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "steps",
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (c) step 2, ja"
+   },
+   "item": "#243(c) step 2",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "steps",
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6217619323,
+    "round": "R1",
+    "locator": "### (c) step 3, ja"
+   },
+   "item": "#243(c) step 3",
+   "version": "R1 (B: replaces the home loop)",
+   "path": [
+    "plan",
+    "ja",
+    "steps",
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "loop-title",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de demo file"
+   },
+   "item": "#243(a) demo file, line 1",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "title"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de demo file"
+   },
+   "item": "#243(a) demo file, section 1 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "sections",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de demo file"
+   },
+   "item": "#243(a) demo file, section 1 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "sections",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de demo file"
+   },
+   "item": "#243(a) demo file, section 2 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "sections",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de demo file"
+   },
+   "item": "#243(a) demo file, section 2 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "sections",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de demo file"
+   },
+   "item": "#243(a) demo file, section 3 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "sections",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de demo file"
+   },
+   "item": "#243(a) demo file, section 3 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "sections",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "loop-swap",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de table, 替換的一組字"
+   },
+   "item": "#243(a) the replaced day",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "swap"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "loop-tabs",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de table, 側欄標籤"
+   },
+   "item": "#243 sidebar labels",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "tabs"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "loop-ask",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de table, 讀者那行"
+   },
+   "item": "#243(b) reader line",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "ask"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "loop-reply",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de table, agent 回覆"
+   },
+   "item": "#243(b) agent line",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "reply"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "alt",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de table, alt"
+   },
+   "item": "#243(d) alt",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "alt"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de table, 標題"
+   },
+   "item": "#243(e) title",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "h"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de table, 引言"
+   },
+   "item": "#243(e) introduction",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "intro"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de table, 步驟說明 1"
+   },
+   "item": "#243(c) step 1",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "steps",
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de table, 步驟說明 2"
+   },
+   "item": "#243(c) step 2",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "steps",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### de table, 步驟說明 3"
+   },
+   "item": "#243(c) step 3",
+   "version": "R2",
+   "path": [
+    "plan",
+    "de",
+    "steps",
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "loop-title",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr demo file"
+   },
+   "item": "#243(a) demo file, line 1",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "title"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr demo file"
+   },
+   "item": "#243(a) demo file, section 1 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "sections",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr demo file"
+   },
+   "item": "#243(a) demo file, section 1 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "sections",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr demo file"
+   },
+   "item": "#243(a) demo file, section 2 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "sections",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr demo file"
+   },
+   "item": "#243(a) demo file, section 2 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "sections",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr demo file"
+   },
+   "item": "#243(a) demo file, section 3 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "sections",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr demo file"
+   },
+   "item": "#243(a) demo file, section 3 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "sections",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "loop-swap",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr table, 替換的一組字"
+   },
+   "item": "#243(a) the replaced day",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "swap"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "loop-tabs",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr table, 側欄標籤"
+   },
+   "item": "#243 sidebar labels",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "tabs"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "loop-ask",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr table, 讀者那行"
+   },
+   "item": "#243(b) reader line",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "ask"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "loop-reply",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr table, agent 回覆"
+   },
+   "item": "#243(b) agent line",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "reply"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "alt",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr table, alt"
+   },
+   "item": "#243(d) alt",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "alt"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr table, 標題"
+   },
+   "item": "#243(e) title",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "h"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr table, 引言"
+   },
+   "item": "#243(e) introduction",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "intro"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr table, 步驟說明 1"
+   },
+   "item": "#243(c) step 1",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "steps",
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr table, 步驟說明 2"
+   },
+   "item": "#243(c) step 2",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "steps",
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### fr table, 步驟說明 3"
+   },
+   "item": "#243(c) step 3",
+   "version": "R2",
+   "path": [
+    "plan",
+    "fr",
+    "steps",
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "loop-title",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es demo file"
+   },
+   "item": "#243(a) demo file, line 1",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "title"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es demo file"
+   },
+   "item": "#243(a) demo file, section 1 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "sections",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es demo file"
+   },
+   "item": "#243(a) demo file, section 1 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "sections",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es demo file"
+   },
+   "item": "#243(a) demo file, section 2 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "sections",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es demo file"
+   },
+   "item": "#243(a) demo file, section 2 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "sections",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es demo file"
+   },
+   "item": "#243(a) demo file, section 3 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "sections",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es demo file"
+   },
+   "item": "#243(a) demo file, section 3 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "sections",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "loop-swap",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es table, 替換的一組字"
+   },
+   "item": "#243(a) the replaced day",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "swap"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "loop-tabs",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es table, 側欄標籤"
+   },
+   "item": "#243 sidebar labels",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "tabs"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "loop-ask",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es table, 讀者那行"
+   },
+   "item": "#243(b) reader line",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "ask"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "loop-reply",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es table, agent 回覆"
+   },
+   "item": "#243(b) agent line",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "reply"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "alt",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es table, alt"
+   },
+   "item": "#243(d) alt",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "alt"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es table, 標題"
+   },
+   "item": "#243(e) title",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "h"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es table, 引言"
+   },
+   "item": "#243(e) introduction",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "intro"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es table, 步驟說明 1"
+   },
+   "item": "#243(c) step 1",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "steps",
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es table, 步驟說明 2"
+   },
+   "item": "#243(c) step 2",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "steps",
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### es table, 步驟說明 3"
+   },
+   "item": "#243(c) step 3",
+   "version": "R2",
+   "path": [
+    "plan",
+    "es",
+    "steps",
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "loop-title",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko demo file"
+   },
+   "item": "#243(a) demo file, line 1",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "title"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko demo file"
+   },
+   "item": "#243(a) demo file, section 1 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "sections",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko demo file"
+   },
+   "item": "#243(a) demo file, section 1 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "sections",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko demo file"
+   },
+   "item": "#243(a) demo file, section 2 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "sections",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko demo file"
+   },
+   "item": "#243(a) demo file, section 2 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "sections",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "loop-heading",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko demo file"
+   },
+   "item": "#243(a) demo file, section 3 heading",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "sections",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "loop-line",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko demo file"
+   },
+   "item": "#243(a) demo file, section 3 text",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "sections",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "loop-swap",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko table, 替換的一組字"
+   },
+   "item": "#243(a) the replaced day",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "swap"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "loop-tabs",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko table, 側欄標籤"
+   },
+   "item": "#243 sidebar labels",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "tabs"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "loop-ask",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko table, 讀者那行"
+   },
+   "item": "#243(b) reader line",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "ask"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "loop-reply",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko table, agent 回覆"
+   },
+   "item": "#243(b) agent line",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "reply"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "alt",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko table, alt"
+   },
+   "item": "#243(d) alt",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "alt"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko table, 標題"
+   },
+   "item": "#243(e) title",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "h"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko table, 引言"
+   },
+   "item": "#243(e) introduction",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "intro"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko table, 步驟說明 1"
+   },
+   "item": "#243(c) step 1",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "steps",
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko table, 步驟說明 2"
+   },
+   "item": "#243(c) step 2",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "steps",
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "li",
+   "source": {
+    "comment": 6218636494,
+    "round": "R2",
+    "locator": "### ko table, 步驟說明 3"
+   },
+   "item": "#243(c) step 3",
+   "version": "R2",
+   "path": [
+    "plan",
+    "ko",
+    "steps",
+    2
+   ]
   }
  ]
 }
