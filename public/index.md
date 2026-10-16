@@ -41,7 +41,25 @@ Know before you buy. [What MarsDawn doesn't do](/limits/)
 
 Choosing between MarsDawn, VS Code's preview, Obsidian, QLMarkdown and LynxOffice? The comparison lists what each vendor states, what MarsDawn lacks, and when you don't need it. [Compare](/vs/)
 
+## Your documents stay on your Mac
+
+On your Mac. Reading, editing, rendering, PDF export and the marsdawn command line all run here, offline; the app never uploads your documents.
+
+More: [Privacy Policy](/privacy/#what-stays-on-your-mac)
+
+Off the network by default. Web images load only when you click Load Images or turn on Load remote images automatically in Settings, and an HTML document opens static, with its code not run.
+
+More: [Privacy Policy](/privacy/#when-marsdawn-uses-the-internet)
+
+Leaves only when you choose. Copy for AI puts text on your clipboard for you to paste; a theme download, a document you run with View › Run This Document, and the agent you let read a file go out only on your say.
+
+More: [Privacy Policy](/privacy/#when-marsdawn-uses-the-internet)
+
 ## Questions and answers
+
+### What is MarsDawn?
+
+MarsDawn is a native Mac app for reading and reviewing the Markdown your agent wrote, with the source beside a live preview. It draws Mermaid and KaTeX, previews .md files in Quick Look and exports PDF, and you can edit the source too.
 
 ### Is MarsDawn a subscription?
 
@@ -54,6 +72,28 @@ No. MarsDawn is a Mac app and needs macOS 26 or later. There is no iPhone or iPa
 ### Can Claude Code open files in MarsDawn?
 
 Yes. The free marsdawn command-line tool has an open command that opens a Markdown file in MarsDawn, so Claude Code, or any agent that can run a shell command, can call it. An opt-in Claude Code hook can open each Markdown file Claude writes or edits.
+
+### Does MarsDawn upload my documents?
+
+No. The app never uploads your documents, collects no data about you and has no account; your documents and settings stay on your Mac. If a document refers to the web and you load that content, your Mac fetches it from the servers that host it, and MarsDawn's developer receives none of it.
+
+More: [Privacy Policy](/privacy/#when-marsdawn-uses-the-internet)
+
+### With MCP or the skill, who can see my files?
+
+MarsDawn itself sends nothing. The skill is a text file of instructions, and the marsdawn CLI and the MCP server run on your Mac; the MCP server works only in folders you allow. The one reading your files is your agent, and what it and its model provider do with them is that agent's policy, which MarsDawn neither controls nor describes.
+
+### Is it safe to open HTML someone sent me?
+
+By default it opens static: its code doesn't run and nothing loads from the web. If you choose View › Run This Document, that document runs, and it can send data over the network and read images, stylesheets, fonts and media in its folder. The choice is never remembered, so it opens static again next time.
+
+More: [Privacy Policy](/privacy/#when-marsdawn-uses-the-internet)
+
+### Is the site's analytics cookie related to the app?
+
+No. The app and this website are separate: the app collects nothing, and a visit can be recorded only on marsdawn.southern-light.dev. The site's Google Analytics starts denied and sets cookies only after you choose Accept; Cookie settings in the footer changes that. The app's requests for theme files under /themes/ are skipped.
+
+More: [Privacy Policy](/privacy/#the-website)
 
 ## The app, as it is
 

@@ -41,7 +41,25 @@ Lo que conviene saber antes de comprar. [Lo que MarsDawn no hace](/es/limits/)
 
 ¿Dudas entre MarsDawn, la vista previa de VS Code, Obsidian, QLMarkdown y LynxOffice? La comparación recoge lo que indica cada fabricante, lo que le falta a MarsDawn y cuándo no lo necesitas. [Ver la comparación](/es/vs/)
 
+## Tus documentos se quedan en tu Mac
+
+En tu Mac. Leer, editar, renderizar, exportar a PDF y la herramienta de línea de comandos marsdawn funcionan aquí, incluso sin conexión; la app nunca sube tus documentos.
+
+Más información: [Política de privacidad](/es/privacy/#what-stays-on-your-mac)
+
+Sin red por omisión. Las imágenes web solo se cargan si haces clic en «Cargar imágenes» o activas «Cargar imágenes remotas automáticamente» en Ajustes; un documento HTML se abre de forma estática, sin ejecutar su código.
+
+Más información: [Política de privacidad](/es/privacy/#when-marsdawn-uses-the-internet)
+
+Solo sale lo que tú eliges. «Copiar para IA» deja el texto en el portapapeles y lo pegas tú; una descarga de tema, un documento que ejecutas con «Visualización › Ejecutar este documento» y el archivo que dejas leer a tu agente solo salen si tú lo decides.
+
+Más información: [Política de privacidad](/es/privacy/#when-marsdawn-uses-the-internet)
+
 ## Preguntas y respuestas
+
+### ¿Qué es MarsDawn?
+
+MarsDawn es una app nativa para Mac para leer y revisar el Markdown que escribió tu agente, con el código fuente junto a una vista previa en vivo. Dibuja Mermaid y KaTeX, muestra archivos .md en Vista rápida y exporta a PDF; también puedes editar el código fuente.
 
 ### ¿MarsDawn es una suscripción?
 
@@ -54,6 +72,30 @@ No. MarsDawn es una app para Mac y necesita macOS 26 o posterior. No existe una 
 ### ¿Puede Claude Code abrir archivos en MarsDawn?
 
 Sí. La herramienta de línea de comandos gratuita marsdawn tiene un comando open que abre un archivo Markdown en MarsDawn, así que Claude Code, o cualquier agente que pueda ejecutar un comando de shell, puede llamarlo. Un hook opcional de Claude Code puede abrir cada archivo Markdown que Claude escribe o edita.
+
+### ¿MarsDawn sube mis documentos?
+
+No. La app nunca sube tus documentos, no recopila datos sobre ti y no tiene cuentas; tus documentos y ajustes se quedan en tu Mac. Si un documento hace referencia a la web y cargas ese contenido, tu Mac lo obtiene directamente de los servidores que lo alojan, y el desarrollador de MarsDawn no recibe nada de ello.
+
+Más información: [Política de privacidad](/es/privacy/#what-stays-on-your-mac)
+
+### Con MCP o la skill, ¿quién puede ver mis archivos?
+
+MarsDawn no envía nada por sí mismo. La skill es un archivo de texto con instrucciones, la herramienta marsdawn y el servidor MCP se ejecutan en tu Mac, y el servidor MCP solo trabaja en las carpetas que permites. Quien lee tus archivos es tu agente; lo que él y su proveedor de modelos hagan con ellos depende de la política de ese agente, que MarsDawn ni controla ni describe.
+
+Más información: [MCP](/es/cli/mcp/)
+
+### ¿Es seguro abrir un HTML que me enviaron?
+
+Por omisión se abre de forma estática: su código no se ejecuta y no se carga nada desde la web. Si eliges «Visualización › Ejecutar este documento», ese documento se ejecuta y puede enviar datos por la red y leer imágenes, hojas de estilo, fuentes y archivos multimedia de su carpeta. Esa elección nunca se recuerda, así que la próxima vez vuelve a abrirse estático.
+
+Más información: [Política de privacidad](/es/privacy/#when-marsdawn-uses-the-internet)
+
+### ¿La cookie de analítica del sitio tiene que ver con la app?
+
+No. La app y este sitio son cosas distintas: la app no recopila nada y una visita solo puede registrarse en marsdawn.southern-light.dev. En el sitio, Google Analytics empieza denegado y solo pone cookies después de que elijas «Aceptar» en el banner; puedes cambiarlo en «Ajustes de cookies», en el pie de página. Las solicitudes de la app de archivos de tema en /themes/ no se registran.
+
+Más información: [Política de privacidad](/es/privacy/#the-website)
 
 ## La app, tal como es
 

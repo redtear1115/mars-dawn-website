@@ -5542,7 +5542,8 @@ QUICKLOOK_PREFIX = {  # how each locale's /native/ Quick Look list item starts (
 
 def faq_html(heading: str, pairs) -> str:
     """The FAQ section; heading, questions and answers are HTML-ready text (promo_data)."""
-    items = "\n".join(f"<h3>{q}</h3>\n<p>{a}</p>" for q, a in pairs)
+    items = "\n".join(f"<h3>{q}</h3>\n<p>{a}</p>" + (f'\n<p class="more">{more[0]}</p>' if more and more[0] else "")
+                      for q, a, *more in pairs)
     return f'<section class="faq">\n<h2>{heading}</h2>\n{items}\n</section>'
 
 
@@ -5613,7 +5614,10 @@ def apply_seo_copy(merged: dict) -> dict:
             continue
         UI[locale].setdefault("quicklook", copy["ui"])
         home = out[(locale, "index")]
-        out[(locale, "index")] = {**home, "body": home["body"].rstrip() + "\n" + faq_html(copy["faq_h"], copy["home_faq"]) + "\n"}
+        stays = promo_data.DATA.get("stays", {}).get(locale)   # #240: the rewritten first question, then the privacy questions
+        home_items = ([stays["faq"]["Q1"]] if stays else []) + copy["home_faq"] \
+            + ([stays["faq"][k] for k in ("P1", "P2", "P3", "P4") if k in stays["faq"]] if stays else [])
+        out[(locale, "index")] = {**home, "body": home["body"].rstrip() + "\n" + faq_html(copy["faq_h"], home_items) + "\n"}
         pay = out[(locale, "pay-once")]
         out[(locale, "pay-once")] = {**pay, "body": pay["body"].rstrip() + "\n" + faq_html(copy["faq_h"], copy["pay_faq"]) + "\n"}
         native = out[(locale, "native")]
@@ -5683,6 +5687,10 @@ def apply_promo130(merged: dict) -> dict:
         UI[locale].setdefault("vs", _plain(vs["title"]))
         out[(locale, "vs")] = vs_page(vs)
         after = [f'<p>{copy["vs_short"]}</p>']
+        stays = promo_data.DATA.get("stays", {}).get(locale)
+        if stays:
+            layers = "\n".join(f'<p>{text}</p>\n<p class="more">{more}</p>' for text, more in zip(stays["layers"], stays["more"]))
+            after.append(f'<section class="stays">\n<h2>{stays["h"]}</h2>\n{layers}\n</section>')
         out[(locale, "index")] = {**out[(locale, "index")], "after": "\n".join(after)}
     return out
 

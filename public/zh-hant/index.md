@@ -41,7 +41,25 @@ brew install redtear1115/tap/marsdawn
 
 在 MarsDawn、VS Code 預覽、Obsidian、QLMarkdown、LynxOffice 之間猶豫？比較頁列出各家自己的說法、MarsDawn 沒有的東西，以及什麼時候用不到它。[看比較](/zh-hant/vs/)
 
+## 文件留在你的 Mac 上
+
+在你的 Mac 上。閱讀、編輯、算繪、輸出 PDF 和 marsdawn 命令列都在本機完成，可以完全離線；App 不會上傳你的文件。
+
+詳見：[隱私權政策](/zh-hant/privacy/#what-stays-on-your-mac)
+
+預設不連網。網路圖片只有在你按「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入；HTML 文件開啟時是靜態的，程式碼不會執行。
+
+詳見：[隱私權政策](/zh-hant/privacy/#when-marsdawn-uses-the-internet)
+
+只在你選擇時離開。「拷貝給 AI」只把文字放進剪貼板，由你自己貼上；下載主題、用「顯示方式 › 執行這份文件」執行的文件，以及你讓 agent 讀的檔案，都要你決定才會往外送。
+
+詳見：[隱私權政策](/zh-hant/privacy/#when-marsdawn-uses-the-internet)
+
 ## 常見問題
+
+### MarsDawn 是什麼？
+
+MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原始碼和即時預覽並排，能畫 Mermaid、排 KaTeX，在快速查看裡預覽 .md，也能輸出 PDF。原始碼也可以直接改。
 
 ### MarsDawn 要訂閱嗎？
 

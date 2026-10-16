@@ -41,7 +41,25 @@ brew install redtear1115/tap/marsdawn
 
 在 MarsDawn、VS Code 预览、Obsidian、QLMarkdown、LynxOffice 之间犹豫？对比页列出各家自己的说法、MarsDawn 没有的东西，以及什么时候用不到它。[看对比](/zh-hans/vs/)
 
+## 文稿留在你的 Mac 上
+
+在你的 Mac 上。阅读、编辑、渲染、导出 PDF 和 marsdawn 命令行都在本机完成，可以完全离线；App 不会上传你的文稿。
+
+详见：[隐私政策](/zh-hans/privacy/#what-stays-on-your-mac)
+
+默认不联网。网络图像只有在你按“载入图像”，或在设置中打开“自动载入网络图像”后才会加载；HTML 文稿打开时是静态的，代码不会运行。
+
+详见：[隐私政策](/zh-hans/privacy/#when-marsdawn-uses-the-internet)
+
+只在你选择时离开。“拷贝给 AI”只把文字放进剪贴板，由你自己粘贴；下载主题、用“显示 › 运行这份文稿”运行的文稿，以及你让代理读取的文件，都要你决定才会往外送。
+
+详见：[隐私政策](/zh-hans/privacy/#when-marsdawn-uses-the-internet)
+
 ## 常见问题
+
+### MarsDawn 是什么？
+
+MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源文本和实时预览并排，能画 Mermaid、排 KaTeX，在快速查看里预览 .md，也能导出 PDF。源文本也可以直接改。
 
 ### MarsDawn 要订阅吗？
 
@@ -54,6 +72,30 @@ brew install redtear1115/tap/marsdawn
 ### Claude Code 可以用 MarsDawn 打开文件吗？
 
 可以。免费的 marsdawn 命令行工具有 open 命令，能用 MarsDawn 打开 Markdown 文件，所以 Claude Code，或任何能执行 shell 命令的代理，都能调用它。另有一个需要自行启用的 Claude Code hook，可以在 Claude 写入或编辑 Markdown 文件时自动打开。
+
+### MarsDawn 会上传我的文稿吗？
+
+不会。App 不会上传你的文稿，不收集任何关于你的数据，也没有账户；文稿和设置都留在你的 Mac 上。只有文稿引用网络内容、而你选择加载时，你的 Mac 才会向托管这些内容的服务器获取，MarsDawn 的开发者收不到这些信息。
+
+详见：[隐私政策](/zh-hans/privacy/#what-stays-on-your-mac)
+
+### 用 MCP 或 skill 时，谁能看到我的文件？
+
+MarsDawn 本身不发送任何东西。skill 只是一份文字说明，marsdawn 命令行和 MCP 服务器都在你的 Mac 上运行，MCP 服务器也只在你允许的文件夹里操作。真正读取文件的是你的代理，它和它的模型提供方如何处理这些文件，取决于那个代理的政策；MarsDawn 无法控制，也不代为说明。
+
+详见：[MCP](/zh-hans/cli/mcp/)
+
+### 打开别人发来的 HTML 安全吗？
+
+默认打开时是静态的：代码不会运行，也不会从网络加载任何东西。如果你选择“显示 › 运行这份文稿”，这份文稿就会运行，可以通过网络发送数据，并读取它所在文件夹里的图片、样式表、字体与媒体文件。这个选择不会被记住，下次打开又是静态的。
+
+详见：[隐私政策](/zh-hans/privacy/#when-marsdawn-uses-the-internet)
+
+### 网站的分析 cookie 和 App 有关吗？
+
+没有关系。App 和这个网站是两回事：App 不收集数据，会记录访问的只有 marsdawn.southern-light.dev。网站的 Google Analytics 一开始是拒绝状态，你在横幅中选择“接受”后才会设置 cookie，页脚的“Cookie 设置”可以随时更改。App 请求 /themes/ 下主题文件的请求不会被记录。
+
+详见：[隐私政策](/zh-hans/privacy/#the-website)
 
 ## App 实际的样子
 

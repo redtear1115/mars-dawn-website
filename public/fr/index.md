@@ -41,7 +41,25 @@ brew install redtear1115/tap/marsdawn
 
 Vous hésitez entre MarsDawn, l’aperçu de VS Code, Obsidian, QLMarkdown et LynxOffice ? La comparaison indique ce que chaque fournisseur précise, ce qui manque à MarsDawn et quand vous n’en avez pas besoin. [Comparer](/fr/vs/)
 
+## Vos documents restent sur votre Mac
+
+Sur votre Mac. Lecture, édition, rendu, export PDF et l’outil en ligne de commande marsdawn tournent ici, même hors ligne ; l’app n’envoie jamais vos documents en ligne.
+
+En savoir plus : [Politique de confidentialité](/fr/privacy/#what-stays-on-your-mac)
+
+Hors réseau par défaut. Les images du web ne se chargent qu’après un clic sur « Charger les images » ou si vous activez « Charger automatiquement les images distantes » dans les Réglages ; un document HTML s’ouvre de façon statique, sans exécuter son code.
+
+En savoir plus : [Politique de confidentialité](/fr/privacy/#when-marsdawn-uses-the-internet)
+
+Rien ne sort sans votre choix. « Copier pour l’IA » place le texte dans le presse-papiers, c’est vous qui le collez ; un téléchargement de thème, un document lancé avec « Présentation › Exécuter ce document » et le fichier que vous laissez lire à votre agent ne sortent que si vous le décidez.
+
+En savoir plus : [Politique de confidentialité](/fr/privacy/#when-marsdawn-uses-the-internet)
+
 ## Questions et réponses
+
+### Qu’est-ce que MarsDawn ?
+
+MarsDawn est une app Mac native pour lire et relire le Markdown écrit par votre agent, avec la source à côté d’un aperçu en direct. Elle dessine Mermaid et KaTeX, affiche les fichiers .md dans Coup d’œil et exporte en PDF ; vous pouvez aussi modifier la source.
 
 ### MarsDawn est-il un abonnement ?
 
@@ -54,6 +72,30 @@ Non. MarsDawn est une app Mac et demande macOS 26 ou une version ultérieure. Il
 ### Claude Code peut-il ouvrir des fichiers dans MarsDawn ?
 
 Oui. L’outil en ligne de commande gratuit marsdawn a une commande open qui ouvre un fichier Markdown dans MarsDawn, donc Claude Code, ou tout agent capable d’exécuter une commande shell, peut l’appeler. Un hook Claude Code facultatif peut ouvrir chaque fichier Markdown que Claude écrit ou modifie.
+
+### MarsDawn envoie-t-il mes documents en ligne ?
+
+Non. L’app n’envoie jamais vos documents, ne collecte aucune donnée sur vous et n’a pas de compte ; vos documents et réglages restent sur votre Mac. Si un document fait référence au web et que vous chargez ce contenu, votre Mac le récupère directement auprès des serveurs qui l’hébergent, et le développeur de MarsDawn n’en reçoit rien.
+
+En savoir plus : [Politique de confidentialité](/fr/privacy/#what-stays-on-your-mac)
+
+### Avec MCP ou le skill, qui peut voir mes fichiers ?
+
+MarsDawn lui-même n’envoie rien. Le skill est un fichier texte d’instructions, l’outil en ligne de commande marsdawn et le serveur MCP tournent sur votre Mac, et le serveur MCP n’agit que dans les dossiers que vous autorisez. Celui qui lit vos fichiers, c’est votre agent ; ce que lui et son fournisseur de modèle en font relève de la politique de cet agent, que MarsDawn ne contrôle ni ne décrit.
+
+En savoir plus : [MCP](/fr/cli/mcp/)
+
+### Est-il sûr d’ouvrir un HTML qu’on m’a envoyé ?
+
+Par défaut, il s’ouvre de façon statique : son code ne s’exécute pas et rien n’est chargé depuis le web. Si vous choisissez « Présentation › Exécuter ce document », ce document s’exécute et peut envoyer des données sur le réseau et lire les images, feuilles de style, polices et médias de son dossier. Ce choix n’est jamais mémorisé : à la prochaine ouverture, il est de nouveau statique.
+
+En savoir plus : [Politique de confidentialité](/fr/privacy/#when-marsdawn-uses-the-internet)
+
+### Le cookie de mesure d’audience du site a-t-il un lien avec l’app ?
+
+Non. L’app et ce site sont distincts : l’app ne collecte rien, et une visite ne peut être enregistrée que sur marsdawn.southern-light.dev. Sur le site, Google Analytics démarre refusé et ne pose de cookies qu’après « Accepter » dans le bandeau ; « Réglages des cookies » en pied de page permet de changer ce choix. Les requêtes de l’app pour les fichiers de thème sous /themes/ ne sont pas enregistrées.
+
+En savoir plus : [Politique de confidentialité](/fr/privacy/#the-website)
 
 ## L’app, telle qu’elle est
 

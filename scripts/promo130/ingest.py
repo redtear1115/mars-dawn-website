@@ -542,9 +542,97 @@ def ingest_242() -> None:
                                                                       "item": "#242(f)", "version": ver})
 
 
+
+# ---- #240: "Your documents stay on your Mac": three layers, and the privacy questions ----------
+
+def ingest_240() -> None:
+    c1, b1 = comment(240, 1)
+    c2, b2 = comment(240, 2)
+    title = by_loc(r1_items(section(b1, "### (a)")), "A")
+    sec_b = section(b1, "### (b)")
+    parts = re.split(r"\*\*第[一二三]層\*\*", sec_b)[1:]
+    assert len(parts) == 3
+    layer = {i: by_loc(r1_items(parts[i])) for i in range(3)}
+    layer2_r2 = by_loc(r1_items(section(b2, "## 結論")))                # the corrected second layer: round 2 text under 結論
+    faq_r1 = section(b1, "### (c)")
+    heads = {m.group(1): m.group(2).strip() for m in re.finditer(r"^\*\*([QP]\d)\s+(.+?)\*\*", faq_r1, re.M)}
+    chunks = re.split(r"^\*\*[QP]\d\b.*$", faq_r1, flags=re.M)[1:]
+    keys = [m.group(1) for m in re.finditer(r"^\*\*([QP]\d)\b", faq_r1, re.M)]
+    answers_r1 = {k: by_loc(r1_items(c)) for k, c in zip(keys, chunks) if k in ("Q1", "P1", "P2", "P3", "P4")}
+    q1_heading = heads["Q1"]
+    q1_heading = re.sub(r"（.*$", "", q1_heading).strip()
+    # round 1's link row: one sentence per language, with the anchor of each place from its anchor table
+    sec_d = section(b1, "### (d)")
+    bar = by_loc(r1_items(sec_d.split("錨點對應")[0]))
+    anchors = {"t1": "what-stays-on-your-mac", "t2": "when-marsdawn-uses-the-internet", "t3": "when-marsdawn-uses-the-internet",
+               "P1": "when-marsdawn-uses-the-internet", "P3": "when-marsdawn-uses-the-internet", "P4": "the-website"}
+    seo = ns_seo()
+    for loc in LOCALES:
+        if loc in FIRST:
+            ttl = title[loc]
+            layers = [layer[0][loc], layer2_r2[loc], layer[2][loc]]
+            lsrc = [comment_source(c1, 1, f"### (b) 第一層, {loc}"), comment_source(c2, 2, f"## 結論 (corrected second layer), {loc}"),
+                    comment_source(c1, 1, f"### (b) 第三層, {loc}")]
+            tsrc = comment_source(c1, 1, f"### (a) A, {loc}")
+            ver = "R1+R2"
+
+            def link(anchor, loc=loc):
+                return re.sub(r"#what-stays-on-your-mac", "#" + anchor, bar[loc])
+            more = [link(anchors["t1"]), link(anchors["t2"]), link(anchors["t3"])]
+            msrc = [comment_source(c1, 1, f"### (d) link row + anchor table, {loc}, {k}") for k in ("tier 1", "tier 2", "tier 3")]
+            items = {}
+            q1_q = seo[loc]["home_faq"][0][0] if loc != "en" else q1_heading
+            items["Q1"] = (q1_q, answers_r1["Q1"][loc], None, comment_source(c1, 1, f"### (c) Q1, {loc}"), None)
+            if loc == "en":
+                for k in ("P1", "P2", "P3", "P4"):
+                    q = re.sub(r"（.*$", "", heads[k]).strip()
+                    mk = None if k == "P2" else link(anchors[k])
+                    items[k] = (q, answers_r1[k][loc], mk, comment_source(c1, 1, f"### (c) {k}, en"),
+                                comment_source(c1, 1, f"### (d) link row + anchor table, en, {k}") if mk else None)
+        else:
+            t = r2_table(b2, loc)
+            ttl = t["標題"]
+            layers = [t["第一層"], t["第二層"], t["第三層"]]
+            lsrc = [comment_source(c2, 2, f"### {loc} table, {k}") for k in ("第一層", "第二層", "第三層")]
+            tsrc = comment_source(c2, 2, f"### {loc} table, 標題")
+            ver = "R2"
+            more = [t["連結列（第一層）"], t["連結列（第二層）"], t["連結列（第三層）"]]
+            msrc = [comment_source(c2, 2, f"### {loc} table, 連結列（{k}）") for k in ("第一層", "第二層", "第三層")]
+            items = {"Q1": (t["Q1 問"], t["Q1 答"], None, comment_source(c2, 2, f"### {loc} table, Q1 問/答"), None)}
+            for k in ("P1", "P2", "P3", "P4"):
+                items[k] = (t[f"{k} 問"], t[f"{k} 答"], t[f"連結列（{k}）"], comment_source(c2, 2, f"### {loc} table, {k} 問/答"),
+                            comment_source(c2, 2, f"### {loc} table, 連結列（{k}）"))
+        put(("stays", loc, "h"), esc(ttl), slot={"locale": loc, "page": "index", "field": "h2", "source": tsrc, "item": "#240(a)", "version": "A" if loc in FIRST else "R2"})
+        DATA["stays"][loc]["layers"] = []
+        DATA["stays"][loc]["more"] = []
+        for i in range(3):
+            DATA["stays"][loc]["layers"].append(inline(layers[i]))
+            SLOTS.append({"locale": loc, "page": "index", "field": "p", "source": lsrc[i], "item": f"#240(b) layer {i + 1}",
+                          "version": ver, "path": ["stays", loc, "layers", i]})
+            DATA["stays"][loc]["more"].append(inline(more[i]))
+            SLOTS.append({"locale": loc, "page": "index", "field": "p", "source": msrc[i], "item": f"#240(d) link row, layer {i + 1}",
+                          "version": ver, "path": ["stays", loc, "more", i]})
+        DATA["stays"][loc]["faq"] = {}
+        for k, (q, a, mk, asrc, msrc_) in items.items():
+            DATA["stays"][loc]["faq"][k] = [esc(q), esc(a), inline(mk) if mk else None]
+            SLOTS.append({"locale": loc, "page": "index", "field": "faq_q", "source": asrc, "item": f"#240(c) {k} question", "version": ver,
+                          "path": ["stays", loc, "faq", k, 0]})
+            SLOTS.append({"locale": loc, "page": "index", "field": "faq_a", "source": asrc, "item": f"#240(c) {k} answer", "version": ver,
+                          "path": ["stays", loc, "faq", k, 1]})
+            if mk:
+                SLOTS.append({"locale": loc, "page": "index", "field": "p", "source": msrc_, "item": f"#240(d) link row, {k}", "version": ver,
+                              "path": ["stays", loc, "faq", k, 2]})
+
+
+def ns_seo() -> dict:
+    ns = {}
+    exec(compile(seo_source(), "seo_copy.py", "exec"), ns)
+    return ns["COPY"]
+
+
 # ---- main -------------------------------------------------------------------------------------
 
-INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242}
+INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240}
 
 
 def write() -> None:

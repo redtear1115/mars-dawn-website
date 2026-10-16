@@ -41,7 +41,25 @@ Gut zu wissen, bevor du kaufst. [Was MarsDawn nicht kann](/de/limits/)
 
 Du schwankst zwischen MarsDawn, der VS-Code-Vorschau, Obsidian, QLMarkdown und LynxOffice? Der Vergleich zeigt, was jeder Hersteller angibt, was MarsDawn fehlt und wann du es nicht brauchst. [Zum Vergleich](/de/vs/)
 
+## Deine Dokumente bleiben auf deinem Mac
+
+Auf deinem Mac. Lesen, Bearbeiten, Rendern, PDF-Export und das Befehlszeilenprogramm marsdawn laufen hier, auch offline; die App lädt deine Dokumente nie hoch.
+
+Mehr dazu: [Datenschutzrichtlinie](/de/privacy/#what-stays-on-your-mac)
+
+Standardmäßig ohne Netz. Bilder aus dem Web laden nur, wenn du auf „Bilder laden“ klickst oder in den Einstellungen „Bilder aus dem Web automatisch laden“ aktivierst; ein HTML-Dokument öffnet sich statisch, sein Code läuft nicht.
+
+Mehr dazu: [Datenschutzrichtlinie](/de/privacy/#when-marsdawn-uses-the-internet)
+
+Nach außen nur, wenn du es wählst. „Für KI kopieren“ legt Text nur in die Zwischenablage, einfügen tust du; ein Theme-Download, ein Dokument, das du mit „Darstellung › Dieses Dokument ausführen“ startest, und die Datei, die du deinen Agenten lesen lässt, gehen nur auf deine Entscheidung hinaus.
+
+Mehr dazu: [Datenschutzrichtlinie](/de/privacy/#when-marsdawn-uses-the-internet)
+
 ## Fragen und Antworten
+
+### Was ist MarsDawn?
+
+MarsDawn ist eine native Mac-App, mit der du das Markdown liest und prüfst, das dein Agent geschrieben hat, mit dem Quelltext neben einer Live-Vorschau. Sie zeichnet Mermaid und KaTeX, zeigt .md-Dateien in der Übersicht und exportiert PDF; den Quelltext kannst du auch bearbeiten.
 
 ### Ist MarsDawn ein Abo?
 
@@ -54,6 +72,30 @@ Nein. MarsDawn ist eine Mac-App und braucht macOS 26 oder neuer. Es gibt keine A
 ### Kann Claude Code Dateien in MarsDawn öffnen?
 
 Ja. Das kostenlose Befehlszeilenprogramm marsdawn hat einen Befehl open, der eine Markdown-Datei in MarsDawn öffnet. Claude Code oder jeder Agent, der einen Shell-Befehl ausführen kann, kann ihn aufrufen. Ein optionaler Claude-Code-Hook kann jede Markdown-Datei öffnen, die Claude schreibt oder bearbeitet.
+
+### Lädt MarsDawn meine Dokumente hoch?
+
+Nein. Die App lädt deine Dokumente nie hoch, erfasst keine Daten über dich und hat kein Konto; Dokumente und Einstellungen bleiben auf deinem Mac. Verweist ein Dokument auf das Web und du lädst diese Inhalte, holt dein Mac sie direkt von den Servern, auf denen sie liegen; der Entwickler von MarsDawn erhält davon nichts.
+
+Mehr dazu: [Datenschutzrichtlinie](/de/privacy/#what-stays-on-your-mac)
+
+### Wer sieht meine Dateien bei MCP oder dem Skill?
+
+MarsDawn selbst sendet nichts. Der Skill ist eine Textdatei mit Anweisungen, das Befehlszeilenprogramm marsdawn und der MCP-Server laufen auf deinem Mac, und der MCP-Server arbeitet nur in Ordnern, die du erlaubst. Wer deine Dateien liest, ist dein Agent; was er und sein Modellanbieter damit tun, regelt die Richtlinie dieses Agenten, die MarsDawn weder steuert noch beschreibt.
+
+Mehr dazu: [MCP](/de/cli/mcp/)
+
+### Ist es sicher, HTML zu öffnen, das mir jemand geschickt hat?
+
+Standardmäßig öffnet es sich statisch: Sein Code läuft nicht, und nichts wird aus dem Web geladen. Wählst du „Darstellung › Dieses Dokument ausführen“, läuft dieses Dokument und kann Daten über das Netzwerk senden sowie Bilder, Stylesheets, Schriften und Medien in seinem Ordner lesen. Die Wahl wird nie gespeichert, beim nächsten Öffnen ist es wieder statisch.
+
+Mehr dazu: [Datenschutzrichtlinie](/de/privacy/#when-marsdawn-uses-the-internet)
+
+### Hat das Analyse-Cookie der Website mit der App zu tun?
+
+Nein. App und Website sind getrennt: Die App erfasst nichts, und ein Besuch kann nur auf marsdawn.southern-light.dev erfasst werden. Google Analytics startet auf der Website abgelehnt und setzt Cookies erst, wenn du im Banner „Akzeptieren“ wählst; über „Cookie-Einstellungen“ in der Fußzeile änderst du das. Anfragen der App nach Theme-Dateien unter /themes/ werden nicht erfasst.
+
+Mehr dazu: [Datenschutzrichtlinie](/de/privacy/#the-website)
 
 ## Die App, wie sie ist
 

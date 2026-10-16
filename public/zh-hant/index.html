@@ -55,7 +55,7 @@ try {
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "讀懂、檢查 agent 寫的 Markdown 的 Mac 原生 app：分割即時預覽、Mermaid、KaTeX、快速查看、PDF 輸出。可免費試用，之後一次 USD 4.99。", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "softwareVersion": "1.1.0", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "0", "highPrice": "4.99", "offerCount": 2, "offers": [{"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "One-time unlock after the trial, no subscription", "price": "4.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}]}, "screenshot": "https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}, "sameAs": ["https://apps.apple.com/app/id6812925073", "https://github.com/redtear1115/mars-dawn-kit", "https://github.com/redtear1115/homebrew-tap", "https://github.com/redtear1115/marsdawn-mcp"], "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/zh-hant/"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "MarsDawn 要訂閱嗎？", "acceptedAnswer": {"@type": "Answer", "text": "不用。MarsDawn 免費下載，14 天內所有功能都能試用；之後一次 USD 4.99 的 App 內購買就能永久解鎖。沒有任何續訂，也不需要帳號。"}}, {"@type": "Question", "name": "MarsDawn 有 iPhone 或 iPad 版嗎？", "acceptedAnswer": {"@type": "Answer", "text": "沒有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本，沒有 iPhone 或 iPad 版。"}}, {"@type": "Question", "name": "Claude Code 可以用 MarsDawn 開檔案嗎？", "acceptedAnswer": {"@type": "Answer", "text": "可以。免費的 marsdawn 命令列工具有 open 指令，能用 MarsDawn 開啟 Markdown 檔案，所以 Claude Code，或任何能執行 shell 指令的 agent，都能呼叫它。另有一個需要自行啟用的 Claude Code hook，可以在 Claude 寫入或編輯 Markdown 檔案時自動開啟。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "MarsDawn 是什麼？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原始碼和即時預覽並排，能畫 Mermaid、排 KaTeX，在快速查看裡預覽 .md，也能輸出 PDF。原始碼也可以直接改。"}}, {"@type": "Question", "name": "MarsDawn 要訂閱嗎？", "acceptedAnswer": {"@type": "Answer", "text": "不用。MarsDawn 免費下載，14 天內所有功能都能試用；之後一次 USD 4.99 的 App 內購買就能永久解鎖。沒有任何續訂，也不需要帳號。"}}, {"@type": "Question", "name": "MarsDawn 有 iPhone 或 iPad 版嗎？", "acceptedAnswer": {"@type": "Answer", "text": "沒有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本，沒有 iPhone 或 iPad 版。"}}, {"@type": "Question", "name": "Claude Code 可以用 MarsDawn 開檔案嗎？", "acceptedAnswer": {"@type": "Answer", "text": "可以。免費的 marsdawn 命令列工具有 open 指令，能用 MarsDawn 開啟 Markdown 檔案，所以 Claude Code，或任何能執行 shell 指令的 agent，都能呼叫它。另有一個需要自行啟用的 Claude Code hook，可以在 Claude 寫入或編輯 Markdown 檔案時自動開啟。"}}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -302,8 +302,19 @@ try {
 </nav>
 <p class="know">購買前先知道。 <a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
 <p>在 MarsDawn、VS Code 預覽、Obsidian、QLMarkdown、LynxOffice 之間猶豫？比較頁列出各家自己的說法、MarsDawn 沒有的東西，以及什麼時候用不到它。<a href="/zh-hant/vs/">看比較</a></p>
+<section class="stays">
+<h2>文件留在你的 Mac 上</h2>
+<p>在你的 Mac 上。閱讀、編輯、算繪、輸出 PDF 和 marsdawn 命令列都在本機完成，可以完全離線；App 不會上傳你的文件。</p>
+<p class="more">詳見：<a href="/zh-hant/privacy/#what-stays-on-your-mac">隱私權政策</a></p>
+<p>預設不連網。網路圖片只有在你按「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入；HTML 文件開啟時是靜態的，程式碼不會執行。</p>
+<p class="more">詳見：<a href="/zh-hant/privacy/#when-marsdawn-uses-the-internet">隱私權政策</a></p>
+<p>只在你選擇時離開。「拷貝給 AI」只把文字放進剪貼板，由你自己貼上；下載主題、用「顯示方式 › 執行這份文件」執行的文件，以及你讓 agent 讀的檔案，都要你決定才會往外送。</p>
+<p class="more">詳見：<a href="/zh-hant/privacy/#when-marsdawn-uses-the-internet">隱私權政策</a></p>
+</section>
 <section class="faq">
 <h2>常見問題</h2>
+<h3>MarsDawn 是什麼？</h3>
+<p>MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原始碼和即時預覽並排，能畫 Mermaid、排 KaTeX，在快速查看裡預覽 .md，也能輸出 PDF。原始碼也可以直接改。</p>
 <h3>MarsDawn 要訂閱嗎？</h3>
 <p>不用。MarsDawn 免費下載，14 天內所有功能都能試用；之後一次 USD 4.99 的 App 內購買就能永久解鎖。沒有任何續訂，也不需要帳號。</p>
 <h3>MarsDawn 有 iPhone 或 iPad 版嗎？</h3>

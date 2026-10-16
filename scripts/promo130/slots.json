@@ -18625,6 +18625,2659 @@
     "ko",
     "vs_short"
    ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (a) A, en"
+   },
+   "item": "#240(a)",
+   "version": "A",
+   "path": [
+    "stays",
+    "en",
+    "h"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (b) 第一層, en"
+   },
+   "item": "#240(b) layer 1",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "layers",
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, en, tier 1"
+   },
+   "item": "#240(d) link row, layer 1",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "more",
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "## 結論 (corrected second layer), en"
+   },
+   "item": "#240(b) layer 2",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "layers",
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, en, tier 2"
+   },
+   "item": "#240(d) link row, layer 2",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "more",
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (b) 第三層, en"
+   },
+   "item": "#240(b) layer 3",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "layers",
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, en, tier 3"
+   },
+   "item": "#240(d) link row, layer 3",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "more",
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) Q1, en"
+   },
+   "item": "#240(c) Q1 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "Q1",
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) Q1, en"
+   },
+   "item": "#240(c) Q1 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "Q1",
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) P1, en"
+   },
+   "item": "#240(c) P1 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P1",
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) P1, en"
+   },
+   "item": "#240(c) P1 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P1",
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, en, P1"
+   },
+   "item": "#240(d) link row, P1",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P1",
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) P2, en"
+   },
+   "item": "#240(c) P2 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P2",
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) P2, en"
+   },
+   "item": "#240(c) P2 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P2",
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) P3, en"
+   },
+   "item": "#240(c) P3 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P3",
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) P3, en"
+   },
+   "item": "#240(c) P3 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P3",
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, en, P3"
+   },
+   "item": "#240(d) link row, P3",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P3",
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) P4, en"
+   },
+   "item": "#240(c) P4 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P4",
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) P4, en"
+   },
+   "item": "#240(c) P4 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P4",
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, en, P4"
+   },
+   "item": "#240(d) link row, P4",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P4",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (a) A, zh-hant"
+   },
+   "item": "#240(a)",
+   "version": "A",
+   "path": [
+    "stays",
+    "zh-hant",
+    "h"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (b) 第一層, zh-hant"
+   },
+   "item": "#240(b) layer 1",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "layers",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, zh-hant, tier 1"
+   },
+   "item": "#240(d) link row, layer 1",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "more",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "## 結論 (corrected second layer), zh-hant"
+   },
+   "item": "#240(b) layer 2",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "layers",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, zh-hant, tier 2"
+   },
+   "item": "#240(d) link row, layer 2",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "more",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (b) 第三層, zh-hant"
+   },
+   "item": "#240(b) layer 3",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "layers",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, zh-hant, tier 3"
+   },
+   "item": "#240(d) link row, layer 3",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "more",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) Q1, zh-hant"
+   },
+   "item": "#240(c) Q1 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "Q1",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) Q1, zh-hant"
+   },
+   "item": "#240(c) Q1 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "Q1",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, 標題"
+   },
+   "item": "#240(a)",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "h"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, 第一層"
+   },
+   "item": "#240(b) layer 1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "layers",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, 連結列（第一層）"
+   },
+   "item": "#240(d) link row, layer 1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "more",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, 第二層"
+   },
+   "item": "#240(b) layer 2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "layers",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, 連結列（第二層）"
+   },
+   "item": "#240(d) link row, layer 2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "more",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, 第三層"
+   },
+   "item": "#240(b) layer 3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "layers",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, 連結列（第三層）"
+   },
+   "item": "#240(d) link row, layer 3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "more",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, Q1 問/答"
+   },
+   "item": "#240(c) Q1 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "Q1",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, Q1 問/答"
+   },
+   "item": "#240(c) Q1 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "Q1",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, P1 問/答"
+   },
+   "item": "#240(c) P1 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P1",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, P1 問/答"
+   },
+   "item": "#240(c) P1 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P1",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, 連結列（P1）"
+   },
+   "item": "#240(d) link row, P1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P1",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, P2 問/答"
+   },
+   "item": "#240(c) P2 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P2",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, P2 問/答"
+   },
+   "item": "#240(c) P2 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P2",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, 連結列（P2）"
+   },
+   "item": "#240(d) link row, P2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P2",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, P3 問/答"
+   },
+   "item": "#240(c) P3 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P3",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, P3 問/答"
+   },
+   "item": "#240(c) P3 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P3",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, 連結列（P3）"
+   },
+   "item": "#240(d) link row, P3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P3",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, P4 問/答"
+   },
+   "item": "#240(c) P4 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P4",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, P4 問/答"
+   },
+   "item": "#240(c) P4 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P4",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### zh-hans table, 連結列（P4）"
+   },
+   "item": "#240(d) link row, P4",
+   "version": "R2",
+   "path": [
+    "stays",
+    "zh-hans",
+    "faq",
+    "P4",
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (a) A, ja"
+   },
+   "item": "#240(a)",
+   "version": "A",
+   "path": [
+    "stays",
+    "ja",
+    "h"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (b) 第一層, ja"
+   },
+   "item": "#240(b) layer 1",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "layers",
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, ja, tier 1"
+   },
+   "item": "#240(d) link row, layer 1",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "more",
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "## 結論 (corrected second layer), ja"
+   },
+   "item": "#240(b) layer 2",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "layers",
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, ja, tier 2"
+   },
+   "item": "#240(d) link row, layer 2",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "more",
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (b) 第三層, ja"
+   },
+   "item": "#240(b) layer 3",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "layers",
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, ja, tier 3"
+   },
+   "item": "#240(d) link row, layer 3",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "more",
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) Q1, ja"
+   },
+   "item": "#240(c) Q1 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "Q1",
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (c) Q1, ja"
+   },
+   "item": "#240(c) Q1 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "Q1",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, 標題"
+   },
+   "item": "#240(a)",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "h"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, 第一層"
+   },
+   "item": "#240(b) layer 1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "layers",
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, 連結列（第一層）"
+   },
+   "item": "#240(d) link row, layer 1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "more",
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, 第二層"
+   },
+   "item": "#240(b) layer 2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "layers",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, 連結列（第二層）"
+   },
+   "item": "#240(d) link row, layer 2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "more",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, 第三層"
+   },
+   "item": "#240(b) layer 3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "layers",
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, 連結列（第三層）"
+   },
+   "item": "#240(d) link row, layer 3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "more",
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, Q1 問/答"
+   },
+   "item": "#240(c) Q1 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "Q1",
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, Q1 問/答"
+   },
+   "item": "#240(c) Q1 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "Q1",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, P1 問/答"
+   },
+   "item": "#240(c) P1 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P1",
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, P1 問/答"
+   },
+   "item": "#240(c) P1 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P1",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, 連結列（P1）"
+   },
+   "item": "#240(d) link row, P1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P1",
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, P2 問/答"
+   },
+   "item": "#240(c) P2 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P2",
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, P2 問/答"
+   },
+   "item": "#240(c) P2 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P2",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, 連結列（P2）"
+   },
+   "item": "#240(d) link row, P2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P2",
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, P3 問/答"
+   },
+   "item": "#240(c) P3 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P3",
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, P3 問/答"
+   },
+   "item": "#240(c) P3 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P3",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, 連結列（P3）"
+   },
+   "item": "#240(d) link row, P3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P3",
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, P4 問/答"
+   },
+   "item": "#240(c) P4 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P4",
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, P4 問/答"
+   },
+   "item": "#240(c) P4 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P4",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### de table, 連結列（P4）"
+   },
+   "item": "#240(d) link row, P4",
+   "version": "R2",
+   "path": [
+    "stays",
+    "de",
+    "faq",
+    "P4",
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, 標題"
+   },
+   "item": "#240(a)",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "h"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, 第一層"
+   },
+   "item": "#240(b) layer 1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "layers",
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, 連結列（第一層）"
+   },
+   "item": "#240(d) link row, layer 1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "more",
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, 第二層"
+   },
+   "item": "#240(b) layer 2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "layers",
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, 連結列（第二層）"
+   },
+   "item": "#240(d) link row, layer 2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "more",
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, 第三層"
+   },
+   "item": "#240(b) layer 3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "layers",
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, 連結列（第三層）"
+   },
+   "item": "#240(d) link row, layer 3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "more",
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, Q1 問/答"
+   },
+   "item": "#240(c) Q1 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "Q1",
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, Q1 問/答"
+   },
+   "item": "#240(c) Q1 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "Q1",
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, P1 問/答"
+   },
+   "item": "#240(c) P1 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P1",
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, P1 問/答"
+   },
+   "item": "#240(c) P1 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P1",
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, 連結列（P1）"
+   },
+   "item": "#240(d) link row, P1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P1",
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, P2 問/答"
+   },
+   "item": "#240(c) P2 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P2",
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, P2 問/答"
+   },
+   "item": "#240(c) P2 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P2",
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, 連結列（P2）"
+   },
+   "item": "#240(d) link row, P2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P2",
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, P3 問/答"
+   },
+   "item": "#240(c) P3 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P3",
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, P3 問/答"
+   },
+   "item": "#240(c) P3 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P3",
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, 連結列（P3）"
+   },
+   "item": "#240(d) link row, P3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P3",
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, P4 問/答"
+   },
+   "item": "#240(c) P4 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P4",
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, P4 問/答"
+   },
+   "item": "#240(c) P4 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P4",
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### fr table, 連結列（P4）"
+   },
+   "item": "#240(d) link row, P4",
+   "version": "R2",
+   "path": [
+    "stays",
+    "fr",
+    "faq",
+    "P4",
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, 標題"
+   },
+   "item": "#240(a)",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "h"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, 第一層"
+   },
+   "item": "#240(b) layer 1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "layers",
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, 連結列（第一層）"
+   },
+   "item": "#240(d) link row, layer 1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "more",
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, 第二層"
+   },
+   "item": "#240(b) layer 2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "layers",
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, 連結列（第二層）"
+   },
+   "item": "#240(d) link row, layer 2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "more",
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, 第三層"
+   },
+   "item": "#240(b) layer 3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "layers",
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, 連結列（第三層）"
+   },
+   "item": "#240(d) link row, layer 3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "more",
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, Q1 問/答"
+   },
+   "item": "#240(c) Q1 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "Q1",
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, Q1 問/答"
+   },
+   "item": "#240(c) Q1 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "Q1",
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, P1 問/答"
+   },
+   "item": "#240(c) P1 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P1",
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, P1 問/答"
+   },
+   "item": "#240(c) P1 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P1",
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, 連結列（P1）"
+   },
+   "item": "#240(d) link row, P1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P1",
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, P2 問/答"
+   },
+   "item": "#240(c) P2 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P2",
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, P2 問/答"
+   },
+   "item": "#240(c) P2 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P2",
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, 連結列（P2）"
+   },
+   "item": "#240(d) link row, P2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P2",
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, P3 問/答"
+   },
+   "item": "#240(c) P3 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P3",
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, P3 問/答"
+   },
+   "item": "#240(c) P3 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P3",
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, 連結列（P3）"
+   },
+   "item": "#240(d) link row, P3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P3",
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, P4 問/答"
+   },
+   "item": "#240(c) P4 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P4",
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, P4 問/答"
+   },
+   "item": "#240(c) P4 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P4",
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### es table, 連結列（P4）"
+   },
+   "item": "#240(d) link row, P4",
+   "version": "R2",
+   "path": [
+    "stays",
+    "es",
+    "faq",
+    "P4",
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, 標題"
+   },
+   "item": "#240(a)",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "h"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, 第一層"
+   },
+   "item": "#240(b) layer 1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "layers",
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, 連結列（第一層）"
+   },
+   "item": "#240(d) link row, layer 1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "more",
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, 第二層"
+   },
+   "item": "#240(b) layer 2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "layers",
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, 連結列（第二層）"
+   },
+   "item": "#240(d) link row, layer 2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "more",
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, 第三層"
+   },
+   "item": "#240(b) layer 3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "layers",
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, 連結列（第三層）"
+   },
+   "item": "#240(d) link row, layer 3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "more",
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, Q1 問/答"
+   },
+   "item": "#240(c) Q1 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "Q1",
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, Q1 問/答"
+   },
+   "item": "#240(c) Q1 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "Q1",
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, P1 問/答"
+   },
+   "item": "#240(c) P1 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P1",
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, P1 問/答"
+   },
+   "item": "#240(c) P1 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P1",
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, 連結列（P1）"
+   },
+   "item": "#240(d) link row, P1",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P1",
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, P2 問/答"
+   },
+   "item": "#240(c) P2 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P2",
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, P2 問/答"
+   },
+   "item": "#240(c) P2 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P2",
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, 連結列（P2）"
+   },
+   "item": "#240(d) link row, P2",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P2",
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, P3 問/答"
+   },
+   "item": "#240(c) P3 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P3",
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, P3 問/答"
+   },
+   "item": "#240(c) P3 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P3",
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, 連結列（P3）"
+   },
+   "item": "#240(d) link row, P3",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P3",
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, P4 問/答"
+   },
+   "item": "#240(c) P4 question",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P4",
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, P4 問/答"
+   },
+   "item": "#240(c) P4 answer",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P4",
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218624502,
+    "round": "R2",
+    "locator": "### ko table, 連結列（P4）"
+   },
+   "item": "#240(d) link row, P4",
+   "version": "R2",
+   "path": [
+    "stays",
+    "ko",
+    "faq",
+    "P4",
+    2
+   ]
   }
  ]
 }
