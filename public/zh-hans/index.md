@@ -24,7 +24,7 @@ brew install redtear1115/tap/marsdawn
 
 - `marsdawn export` 把 Markdown 文件导出成 PDF，排版和 MarsDawn 的预览一样，不需要 app。
 - `marsdawn open` 在 MarsDawn app 里打开文件，让你审阅。
-- `--json` 返回脚本和 agent 能解析的结果。
+- `--json` 返回脚本和代理能解析的结果。
 
 [命令行工具](/zh-hans/cli/) · [给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/) · [给代理的 skill](/zh-hans/cli/skill/) · [MCP 服务器](/zh-hans/cli/mcp/)
 

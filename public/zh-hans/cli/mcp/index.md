@@ -6,7 +6,7 @@ MarsDawn 没有自己的 AI 模型：它是为了审阅 Markdown 而做的，不
 
 ## 该用哪一个
 
-| 如果你的 agent | 就用 | 需要 |
+| 如果你的代理 | 就用 | 需要 |
 |---|---|---|
 | 能运行 shell 命令 | [命令行工具](/zh-hans/cli/agents/) | macOS 15 或更高版本 |
 | 会加载指令文件，例如 Claude Code | [skill 文件](/zh-hans/cli/skill/) | 命令行工具（skill 会帮你安装） |

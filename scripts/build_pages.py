@@ -4904,7 +4904,7 @@ HOME = {
         "install_caps": [
             "<code>marsdawn export</code> 把 Markdown 文件导出成 PDF，排版和 MarsDawn 的预览一样，不需要 app。",
             "<code>marsdawn open</code> 在 MarsDawn app 里打开文件，让你审阅。",
-            "<code>--json</code> 返回脚本和 agent 能解析的结果。",
+            "<code>--json</code> 返回脚本和代理能解析的结果。",
         ],
         "proof_h": "App 实际的样子",
     },
@@ -5177,7 +5177,7 @@ COMPARE_TABLES["pay-once-states"] = {
 
 COMPARE_TABLES["mcp-choice"] = {
     "head": {"en": ["If your agent", "Use", "Needs"], "zh-hant": ["如果你的 agent", "就用", "需要"],
-             "zh-hans": ["如果你的 agent", "就用", "需要"], "ja": ["エージェントが", "使うもの", "必要なもの"]},
+             "zh-hans": ["如果你的代理", "就用", "需要"], "ja": ["エージェントが", "使うもの", "必要なもの"]},
     "rows": {
         "en": [
             ["Can run a shell command", '<a href="{root}cli/agents/">The CLI</a>', "macOS 15 or later"],
