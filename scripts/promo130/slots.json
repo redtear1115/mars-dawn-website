@@ -21278,6 +21278,7214 @@
     "P4",
     2
    ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (a) A, en"
+   },
+   "item": "#241(a)",
+   "version": "A",
+   "path": [
+    "pieces",
+    "en",
+    "h"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (b), en"
+   },
+   "item": "#241(b)",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "intro"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "註腳 en"
+   },
+   "item": "#241(e) footnote",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "foot"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), en"
+   },
+   "item": "#241(c) column 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "head",
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), en"
+   },
+   "item": "#241(c) column 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "head",
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), en"
+   },
+   "item": "#241(c) column 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "head",
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), en"
+   },
+   "item": "#241(c) column 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "head",
+    3
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), en"
+   },
+   "item": "#241(c) column 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "head",
+    4
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R1, col 1"
+   },
+   "item": "#241(d) row 1 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R1, col 2"
+   },
+   "item": "#241(d) row 1 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R1, col 3"
+   },
+   "item": "#241(d) row 1 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    0,
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R1, col 4"
+   },
+   "item": "#241(d) row 1 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    0,
+    3
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R1, col 5"
+   },
+   "item": "#241(d) row 1 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    0,
+    4
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R2, col 1"
+   },
+   "item": "#241(d) row 2 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R2, col 2"
+   },
+   "item": "#241(d) row 2 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R2, col 3"
+   },
+   "item": "#241(d) row 2 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    1,
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R2, col 4"
+   },
+   "item": "#241(d) row 2 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    1,
+    3
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R2, col 5"
+   },
+   "item": "#241(d) row 2 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    1,
+    4
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R3, col 1"
+   },
+   "item": "#241(d) row 3 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R3, col 2"
+   },
+   "item": "#241(d) row 3 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R3, col 3"
+   },
+   "item": "#241(d) row 3 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    2,
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R3, col 4"
+   },
+   "item": "#241(d) row 3 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    2,
+    3
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R3, col 5"
+   },
+   "item": "#241(d) row 3 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    2,
+    4
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R4, col 1"
+   },
+   "item": "#241(d) row 4 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    3,
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R4, col 2"
+   },
+   "item": "#241(d) row 4 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    3,
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R4, col 3"
+   },
+   "item": "#241(d) row 4 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    3,
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R4, col 4"
+   },
+   "item": "#241(d) row 4 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    3,
+    3
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R4, col 5"
+   },
+   "item": "#241(d) row 4 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    3,
+    4
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R5, col 1"
+   },
+   "item": "#241(d) row 5 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    4,
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R5, col 2"
+   },
+   "item": "#241(d) row 5 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    4,
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R5, col 3"
+   },
+   "item": "#241(d) row 5 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    4,
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R5, col 4"
+   },
+   "item": "#241(d) row 5 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    4,
+    3
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R5, col 5"
+   },
+   "item": "#241(d) row 5 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    4,
+    4
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R6, col 1"
+   },
+   "item": "#241(d) row 6 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    5,
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R6, col 2"
+   },
+   "item": "#241(d) row 6 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    5,
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R6, col 3"
+   },
+   "item": "#241(d) row 6 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    5,
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R6, col 4"
+   },
+   "item": "#241(d) row 6 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    5,
+    3
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R6, col 5"
+   },
+   "item": "#241(d) row 6 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    5,
+    4
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R10, col 1"
+   },
+   "item": "#241(d) row 7 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    6,
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R10, col 2"
+   },
+   "item": "#241(d) row 7 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    6,
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R10, col 3"
+   },
+   "item": "#241(d) row 7 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    6,
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R10, col 4"
+   },
+   "item": "#241(d) row 7 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    6,
+    3
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R10, col 5"
+   },
+   "item": "#241(d) row 7 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    6,
+    4
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R11, col 1"
+   },
+   "item": "#241(d) row 8 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    7,
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R11, col 2"
+   },
+   "item": "#241(d) row 8 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    7,
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "R11 的 CLI 欄, en"
+   },
+   "item": "#241(d) row 8 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    7,
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R11, col 4"
+   },
+   "item": "#241(d) row 8 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    7,
+    3
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) en, R11, col 5"
+   },
+   "item": "#241(d) row 8 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "en",
+    "rows",
+    7,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (a) A, zh-hant"
+   },
+   "item": "#241(a)",
+   "version": "A",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "h"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (b), zh-hant"
+   },
+   "item": "#241(b)",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "intro"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "註腳 zh-Hant"
+   },
+   "item": "#241(e) footnote",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "foot"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), zh-hant"
+   },
+   "item": "#241(c) column 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "head",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), zh-hant"
+   },
+   "item": "#241(c) column 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "head",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), zh-hant"
+   },
+   "item": "#241(c) column 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "head",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), zh-hant"
+   },
+   "item": "#241(c) column 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "head",
+    3
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), zh-hant"
+   },
+   "item": "#241(c) column 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "head",
+    4
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R1, col 1"
+   },
+   "item": "#241(d) row 1 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R1, col 2"
+   },
+   "item": "#241(d) row 1 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R1, col 3"
+   },
+   "item": "#241(d) row 1 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    0,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R1, col 4"
+   },
+   "item": "#241(d) row 1 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    0,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R1, col 5"
+   },
+   "item": "#241(d) row 1 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    0,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R2, col 1"
+   },
+   "item": "#241(d) row 2 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R2, col 2"
+   },
+   "item": "#241(d) row 2 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R2, col 3"
+   },
+   "item": "#241(d) row 2 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    1,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R2, col 4"
+   },
+   "item": "#241(d) row 2 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    1,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R2, col 5"
+   },
+   "item": "#241(d) row 2 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    1,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R3, col 1"
+   },
+   "item": "#241(d) row 3 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R3, col 2"
+   },
+   "item": "#241(d) row 3 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R3, col 3"
+   },
+   "item": "#241(d) row 3 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    2,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R3, col 4"
+   },
+   "item": "#241(d) row 3 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    2,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R3, col 5"
+   },
+   "item": "#241(d) row 3 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    2,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R4, col 1"
+   },
+   "item": "#241(d) row 4 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    3,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R4, col 2"
+   },
+   "item": "#241(d) row 4 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    3,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R4, col 3"
+   },
+   "item": "#241(d) row 4 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    3,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R4, col 4"
+   },
+   "item": "#241(d) row 4 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    3,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R4, col 5"
+   },
+   "item": "#241(d) row 4 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    3,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R5, col 1"
+   },
+   "item": "#241(d) row 5 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    4,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R5, col 2"
+   },
+   "item": "#241(d) row 5 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    4,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R5, col 3"
+   },
+   "item": "#241(d) row 5 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    4,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R5, col 4"
+   },
+   "item": "#241(d) row 5 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    4,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R5, col 5"
+   },
+   "item": "#241(d) row 5 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    4,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R6, col 1"
+   },
+   "item": "#241(d) row 6 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    5,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R6, col 2"
+   },
+   "item": "#241(d) row 6 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    5,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R6, col 3"
+   },
+   "item": "#241(d) row 6 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    5,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R6, col 4"
+   },
+   "item": "#241(d) row 6 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    5,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R6, col 5"
+   },
+   "item": "#241(d) row 6 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    5,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R10, col 1"
+   },
+   "item": "#241(d) row 7 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    6,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R10, col 2"
+   },
+   "item": "#241(d) row 7 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    6,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R10, col 3"
+   },
+   "item": "#241(d) row 7 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    6,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R10, col 4"
+   },
+   "item": "#241(d) row 7 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    6,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R10, col 5"
+   },
+   "item": "#241(d) row 7 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    6,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R11, col 1"
+   },
+   "item": "#241(d) row 8 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    7,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R11, col 2"
+   },
+   "item": "#241(d) row 8 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    7,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "R11 的 CLI 欄, zh-Hant"
+   },
+   "item": "#241(d) row 8 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    7,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R11, col 4"
+   },
+   "item": "#241(d) row 8 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    7,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) zh-Hant, R11, col 5"
+   },
+   "item": "#241(d) row 8 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "zh-hant",
+    "rows",
+    7,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans table, 標題"
+   },
+   "item": "#241(a)",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "h"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans table, 引言"
+   },
+   "item": "#241(b)",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "intro"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans table, 註腳"
+   },
+   "item": "#241(e) footnote",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "foot"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, header"
+   },
+   "item": "#241(c) column 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "head",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, header"
+   },
+   "item": "#241(c) column 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "head",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, header"
+   },
+   "item": "#241(c) column 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "head",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, header"
+   },
+   "item": "#241(c) column 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "head",
+    3
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, header"
+   },
+   "item": "#241(c) column 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "head",
+    4
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 1 col 1"
+   },
+   "item": "#241(d) row 1 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 1 col 2"
+   },
+   "item": "#241(d) row 1 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 1 col 3"
+   },
+   "item": "#241(d) row 1 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    0,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 1 col 4"
+   },
+   "item": "#241(d) row 1 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    0,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 1 col 5"
+   },
+   "item": "#241(d) row 1 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    0,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 2 col 1"
+   },
+   "item": "#241(d) row 2 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 2 col 2"
+   },
+   "item": "#241(d) row 2 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 2 col 3"
+   },
+   "item": "#241(d) row 2 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    1,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 2 col 4"
+   },
+   "item": "#241(d) row 2 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    1,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 2 col 5"
+   },
+   "item": "#241(d) row 2 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    1,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 3 col 1"
+   },
+   "item": "#241(d) row 3 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 3 col 2"
+   },
+   "item": "#241(d) row 3 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 3 col 3"
+   },
+   "item": "#241(d) row 3 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    2,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 3 col 4"
+   },
+   "item": "#241(d) row 3 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    2,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 3 col 5"
+   },
+   "item": "#241(d) row 3 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    2,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 4 col 1"
+   },
+   "item": "#241(d) row 4 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    3,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 4 col 2"
+   },
+   "item": "#241(d) row 4 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    3,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 4 col 3"
+   },
+   "item": "#241(d) row 4 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    3,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 4 col 4"
+   },
+   "item": "#241(d) row 4 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    3,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 4 col 5"
+   },
+   "item": "#241(d) row 4 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    3,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 5 col 1"
+   },
+   "item": "#241(d) row 5 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    4,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 5 col 2"
+   },
+   "item": "#241(d) row 5 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    4,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 5 col 3"
+   },
+   "item": "#241(d) row 5 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    4,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 5 col 4"
+   },
+   "item": "#241(d) row 5 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    4,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 5 col 5"
+   },
+   "item": "#241(d) row 5 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    4,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 6 col 1"
+   },
+   "item": "#241(d) row 6 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    5,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 6 col 2"
+   },
+   "item": "#241(d) row 6 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    5,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 6 col 3"
+   },
+   "item": "#241(d) row 6 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    5,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 6 col 4"
+   },
+   "item": "#241(d) row 6 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    5,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 6 col 5"
+   },
+   "item": "#241(d) row 6 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    5,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 7 col 1"
+   },
+   "item": "#241(d) row 7 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    6,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 7 col 2"
+   },
+   "item": "#241(d) row 7 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    6,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 7 col 3"
+   },
+   "item": "#241(d) row 7 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    6,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 7 col 4"
+   },
+   "item": "#241(d) row 7 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    6,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 7 col 5"
+   },
+   "item": "#241(d) row 7 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    6,
+    4
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 8 col 1"
+   },
+   "item": "#241(d) row 8 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    7,
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 8 col 2"
+   },
+   "item": "#241(d) row 8 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    7,
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 8 col 3"
+   },
+   "item": "#241(d) row 8 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    7,
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 8 col 4"
+   },
+   "item": "#241(d) row 8 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    7,
+    3
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### zh-hans data table, row 8 col 5"
+   },
+   "item": "#241(d) row 8 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "zh-hans",
+    "rows",
+    7,
+    4
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (a) A, ja"
+   },
+   "item": "#241(a)",
+   "version": "A",
+   "path": [
+    "pieces",
+    "ja",
+    "h"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (b), ja"
+   },
+   "item": "#241(b)",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "intro"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "註腳 ja"
+   },
+   "item": "#241(e) footnote",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "foot"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), ja"
+   },
+   "item": "#241(c) column 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "head",
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), ja"
+   },
+   "item": "#241(c) column 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "head",
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), ja"
+   },
+   "item": "#241(c) column 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "head",
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), ja"
+   },
+   "item": "#241(c) column 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "head",
+    3
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (c), ja"
+   },
+   "item": "#241(c) column 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "head",
+    4
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R1, col 1"
+   },
+   "item": "#241(d) row 1 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R1, col 2"
+   },
+   "item": "#241(d) row 1 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R1, col 3"
+   },
+   "item": "#241(d) row 1 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    0,
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R1, col 4"
+   },
+   "item": "#241(d) row 1 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    0,
+    3
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R1, col 5"
+   },
+   "item": "#241(d) row 1 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    0,
+    4
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R2, col 1"
+   },
+   "item": "#241(d) row 2 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R2, col 2"
+   },
+   "item": "#241(d) row 2 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R2, col 3"
+   },
+   "item": "#241(d) row 2 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    1,
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R2, col 4"
+   },
+   "item": "#241(d) row 2 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    1,
+    3
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R2, col 5"
+   },
+   "item": "#241(d) row 2 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    1,
+    4
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R3, col 1"
+   },
+   "item": "#241(d) row 3 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R3, col 2"
+   },
+   "item": "#241(d) row 3 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R3, col 3"
+   },
+   "item": "#241(d) row 3 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    2,
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R3, col 4"
+   },
+   "item": "#241(d) row 3 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    2,
+    3
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R3, col 5"
+   },
+   "item": "#241(d) row 3 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    2,
+    4
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R4, col 1"
+   },
+   "item": "#241(d) row 4 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    3,
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R4, col 2"
+   },
+   "item": "#241(d) row 4 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    3,
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R4, col 3"
+   },
+   "item": "#241(d) row 4 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    3,
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R4, col 4"
+   },
+   "item": "#241(d) row 4 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    3,
+    3
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R4, col 5"
+   },
+   "item": "#241(d) row 4 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    3,
+    4
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R5, col 1"
+   },
+   "item": "#241(d) row 5 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    4,
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R5, col 2"
+   },
+   "item": "#241(d) row 5 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    4,
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R5, col 3"
+   },
+   "item": "#241(d) row 5 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    4,
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R5, col 4"
+   },
+   "item": "#241(d) row 5 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    4,
+    3
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R5, col 5"
+   },
+   "item": "#241(d) row 5 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    4,
+    4
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R6, col 1"
+   },
+   "item": "#241(d) row 6 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    5,
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R6, col 2"
+   },
+   "item": "#241(d) row 6 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    5,
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R6, col 3"
+   },
+   "item": "#241(d) row 6 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    5,
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R6, col 4"
+   },
+   "item": "#241(d) row 6 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    5,
+    3
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R6, col 5"
+   },
+   "item": "#241(d) row 6 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    5,
+    4
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R10, col 1"
+   },
+   "item": "#241(d) row 7 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    6,
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R10, col 2"
+   },
+   "item": "#241(d) row 7 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    6,
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R10, col 3"
+   },
+   "item": "#241(d) row 7 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    6,
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R10, col 4"
+   },
+   "item": "#241(d) row 7 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    6,
+    3
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R10, col 5"
+   },
+   "item": "#241(d) row 7 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    6,
+    4
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R11, col 1"
+   },
+   "item": "#241(d) row 8 col 1",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    7,
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R11, col 2"
+   },
+   "item": "#241(d) row 8 col 2",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    7,
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "R11 的 CLI 欄, ja"
+   },
+   "item": "#241(d) row 8 col 3",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    7,
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R11, col 4"
+   },
+   "item": "#241(d) row 8 col 4",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    7,
+    3
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6217612944,
+    "round": "R1",
+    "locator": "### (d) ja, R11, col 5"
+   },
+   "item": "#241(d) row 8 col 5",
+   "version": "R1+R2",
+   "path": [
+    "pieces",
+    "ja",
+    "rows",
+    7,
+    4
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de table, 標題"
+   },
+   "item": "#241(a)",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "h"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de table, 引言"
+   },
+   "item": "#241(b)",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "intro"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de table, 註腳"
+   },
+   "item": "#241(e) footnote",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "foot"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, header"
+   },
+   "item": "#241(c) column 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "head",
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, header"
+   },
+   "item": "#241(c) column 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "head",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, header"
+   },
+   "item": "#241(c) column 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "head",
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, header"
+   },
+   "item": "#241(c) column 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "head",
+    3
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, header"
+   },
+   "item": "#241(c) column 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "head",
+    4
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 1 col 1"
+   },
+   "item": "#241(d) row 1 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 1 col 2"
+   },
+   "item": "#241(d) row 1 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 1 col 3"
+   },
+   "item": "#241(d) row 1 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    0,
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 1 col 4"
+   },
+   "item": "#241(d) row 1 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    0,
+    3
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 1 col 5"
+   },
+   "item": "#241(d) row 1 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    0,
+    4
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 2 col 1"
+   },
+   "item": "#241(d) row 2 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 2 col 2"
+   },
+   "item": "#241(d) row 2 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 2 col 3"
+   },
+   "item": "#241(d) row 2 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    1,
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 2 col 4"
+   },
+   "item": "#241(d) row 2 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    1,
+    3
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 2 col 5"
+   },
+   "item": "#241(d) row 2 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    1,
+    4
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 3 col 1"
+   },
+   "item": "#241(d) row 3 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 3 col 2"
+   },
+   "item": "#241(d) row 3 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 3 col 3"
+   },
+   "item": "#241(d) row 3 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    2,
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 3 col 4"
+   },
+   "item": "#241(d) row 3 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    2,
+    3
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 3 col 5"
+   },
+   "item": "#241(d) row 3 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    2,
+    4
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 4 col 1"
+   },
+   "item": "#241(d) row 4 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    3,
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 4 col 2"
+   },
+   "item": "#241(d) row 4 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    3,
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 4 col 3"
+   },
+   "item": "#241(d) row 4 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    3,
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 4 col 4"
+   },
+   "item": "#241(d) row 4 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    3,
+    3
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 4 col 5"
+   },
+   "item": "#241(d) row 4 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    3,
+    4
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 5 col 1"
+   },
+   "item": "#241(d) row 5 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    4,
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 5 col 2"
+   },
+   "item": "#241(d) row 5 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    4,
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 5 col 3"
+   },
+   "item": "#241(d) row 5 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    4,
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 5 col 4"
+   },
+   "item": "#241(d) row 5 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    4,
+    3
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 5 col 5"
+   },
+   "item": "#241(d) row 5 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    4,
+    4
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 6 col 1"
+   },
+   "item": "#241(d) row 6 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    5,
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 6 col 2"
+   },
+   "item": "#241(d) row 6 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    5,
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 6 col 3"
+   },
+   "item": "#241(d) row 6 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    5,
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 6 col 4"
+   },
+   "item": "#241(d) row 6 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    5,
+    3
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 6 col 5"
+   },
+   "item": "#241(d) row 6 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    5,
+    4
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 7 col 1"
+   },
+   "item": "#241(d) row 7 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    6,
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 7 col 2"
+   },
+   "item": "#241(d) row 7 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    6,
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 7 col 3"
+   },
+   "item": "#241(d) row 7 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    6,
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 7 col 4"
+   },
+   "item": "#241(d) row 7 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    6,
+    3
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 7 col 5"
+   },
+   "item": "#241(d) row 7 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    6,
+    4
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 8 col 1"
+   },
+   "item": "#241(d) row 8 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    7,
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 8 col 2"
+   },
+   "item": "#241(d) row 8 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    7,
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 8 col 3"
+   },
+   "item": "#241(d) row 8 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    7,
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 8 col 4"
+   },
+   "item": "#241(d) row 8 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    7,
+    3
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### de data table, row 8 col 5"
+   },
+   "item": "#241(d) row 8 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "de",
+    "rows",
+    7,
+    4
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr table, 標題"
+   },
+   "item": "#241(a)",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "h"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr table, 引言"
+   },
+   "item": "#241(b)",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "intro"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr table, 註腳"
+   },
+   "item": "#241(e) footnote",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "foot"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, header"
+   },
+   "item": "#241(c) column 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "head",
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, header"
+   },
+   "item": "#241(c) column 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "head",
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, header"
+   },
+   "item": "#241(c) column 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "head",
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, header"
+   },
+   "item": "#241(c) column 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "head",
+    3
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, header"
+   },
+   "item": "#241(c) column 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "head",
+    4
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 1 col 1"
+   },
+   "item": "#241(d) row 1 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 1 col 2"
+   },
+   "item": "#241(d) row 1 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 1 col 3"
+   },
+   "item": "#241(d) row 1 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    0,
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 1 col 4"
+   },
+   "item": "#241(d) row 1 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    0,
+    3
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 1 col 5"
+   },
+   "item": "#241(d) row 1 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    0,
+    4
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 2 col 1"
+   },
+   "item": "#241(d) row 2 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 2 col 2"
+   },
+   "item": "#241(d) row 2 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 2 col 3"
+   },
+   "item": "#241(d) row 2 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    1,
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 2 col 4"
+   },
+   "item": "#241(d) row 2 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    1,
+    3
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 2 col 5"
+   },
+   "item": "#241(d) row 2 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    1,
+    4
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 3 col 1"
+   },
+   "item": "#241(d) row 3 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 3 col 2"
+   },
+   "item": "#241(d) row 3 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 3 col 3"
+   },
+   "item": "#241(d) row 3 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    2,
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 3 col 4"
+   },
+   "item": "#241(d) row 3 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    2,
+    3
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 3 col 5"
+   },
+   "item": "#241(d) row 3 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    2,
+    4
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 4 col 1"
+   },
+   "item": "#241(d) row 4 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    3,
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 4 col 2"
+   },
+   "item": "#241(d) row 4 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    3,
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 4 col 3"
+   },
+   "item": "#241(d) row 4 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    3,
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 4 col 4"
+   },
+   "item": "#241(d) row 4 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    3,
+    3
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 4 col 5"
+   },
+   "item": "#241(d) row 4 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    3,
+    4
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 5 col 1"
+   },
+   "item": "#241(d) row 5 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    4,
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 5 col 2"
+   },
+   "item": "#241(d) row 5 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    4,
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 5 col 3"
+   },
+   "item": "#241(d) row 5 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    4,
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 5 col 4"
+   },
+   "item": "#241(d) row 5 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    4,
+    3
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 5 col 5"
+   },
+   "item": "#241(d) row 5 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    4,
+    4
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 6 col 1"
+   },
+   "item": "#241(d) row 6 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    5,
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 6 col 2"
+   },
+   "item": "#241(d) row 6 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    5,
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 6 col 3"
+   },
+   "item": "#241(d) row 6 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    5,
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 6 col 4"
+   },
+   "item": "#241(d) row 6 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    5,
+    3
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 6 col 5"
+   },
+   "item": "#241(d) row 6 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    5,
+    4
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 7 col 1"
+   },
+   "item": "#241(d) row 7 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    6,
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 7 col 2"
+   },
+   "item": "#241(d) row 7 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    6,
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 7 col 3"
+   },
+   "item": "#241(d) row 7 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    6,
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 7 col 4"
+   },
+   "item": "#241(d) row 7 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    6,
+    3
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 7 col 5"
+   },
+   "item": "#241(d) row 7 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    6,
+    4
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 8 col 1"
+   },
+   "item": "#241(d) row 8 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    7,
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 8 col 2"
+   },
+   "item": "#241(d) row 8 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    7,
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 8 col 3"
+   },
+   "item": "#241(d) row 8 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    7,
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 8 col 4"
+   },
+   "item": "#241(d) row 8 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    7,
+    3
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### fr data table, row 8 col 5"
+   },
+   "item": "#241(d) row 8 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "fr",
+    "rows",
+    7,
+    4
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es table, 標題"
+   },
+   "item": "#241(a)",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "h"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es table, 引言"
+   },
+   "item": "#241(b)",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "intro"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es table, 註腳"
+   },
+   "item": "#241(e) footnote",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "foot"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, header"
+   },
+   "item": "#241(c) column 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "head",
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, header"
+   },
+   "item": "#241(c) column 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "head",
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, header"
+   },
+   "item": "#241(c) column 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "head",
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, header"
+   },
+   "item": "#241(c) column 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "head",
+    3
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, header"
+   },
+   "item": "#241(c) column 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "head",
+    4
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 1 col 1"
+   },
+   "item": "#241(d) row 1 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 1 col 2"
+   },
+   "item": "#241(d) row 1 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 1 col 3"
+   },
+   "item": "#241(d) row 1 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    0,
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 1 col 4"
+   },
+   "item": "#241(d) row 1 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    0,
+    3
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 1 col 5"
+   },
+   "item": "#241(d) row 1 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    0,
+    4
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 2 col 1"
+   },
+   "item": "#241(d) row 2 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 2 col 2"
+   },
+   "item": "#241(d) row 2 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 2 col 3"
+   },
+   "item": "#241(d) row 2 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    1,
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 2 col 4"
+   },
+   "item": "#241(d) row 2 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    1,
+    3
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 2 col 5"
+   },
+   "item": "#241(d) row 2 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    1,
+    4
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 3 col 1"
+   },
+   "item": "#241(d) row 3 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 3 col 2"
+   },
+   "item": "#241(d) row 3 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 3 col 3"
+   },
+   "item": "#241(d) row 3 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    2,
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 3 col 4"
+   },
+   "item": "#241(d) row 3 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    2,
+    3
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 3 col 5"
+   },
+   "item": "#241(d) row 3 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    2,
+    4
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 4 col 1"
+   },
+   "item": "#241(d) row 4 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    3,
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 4 col 2"
+   },
+   "item": "#241(d) row 4 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    3,
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 4 col 3"
+   },
+   "item": "#241(d) row 4 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    3,
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 4 col 4"
+   },
+   "item": "#241(d) row 4 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    3,
+    3
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 4 col 5"
+   },
+   "item": "#241(d) row 4 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    3,
+    4
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 5 col 1"
+   },
+   "item": "#241(d) row 5 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    4,
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 5 col 2"
+   },
+   "item": "#241(d) row 5 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    4,
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 5 col 3"
+   },
+   "item": "#241(d) row 5 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    4,
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 5 col 4"
+   },
+   "item": "#241(d) row 5 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    4,
+    3
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 5 col 5"
+   },
+   "item": "#241(d) row 5 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    4,
+    4
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 6 col 1"
+   },
+   "item": "#241(d) row 6 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    5,
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 6 col 2"
+   },
+   "item": "#241(d) row 6 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    5,
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 6 col 3"
+   },
+   "item": "#241(d) row 6 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    5,
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 6 col 4"
+   },
+   "item": "#241(d) row 6 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    5,
+    3
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 6 col 5"
+   },
+   "item": "#241(d) row 6 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    5,
+    4
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 7 col 1"
+   },
+   "item": "#241(d) row 7 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    6,
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 7 col 2"
+   },
+   "item": "#241(d) row 7 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    6,
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 7 col 3"
+   },
+   "item": "#241(d) row 7 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    6,
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 7 col 4"
+   },
+   "item": "#241(d) row 7 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    6,
+    3
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 7 col 5"
+   },
+   "item": "#241(d) row 7 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    6,
+    4
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 8 col 1"
+   },
+   "item": "#241(d) row 8 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    7,
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 8 col 2"
+   },
+   "item": "#241(d) row 8 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    7,
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 8 col 3"
+   },
+   "item": "#241(d) row 8 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    7,
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 8 col 4"
+   },
+   "item": "#241(d) row 8 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    7,
+    3
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### es data table, row 8 col 5"
+   },
+   "item": "#241(d) row 8 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "es",
+    "rows",
+    7,
+    4
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "h2",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko table, 標題"
+   },
+   "item": "#241(a)",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "h"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko table, 引言"
+   },
+   "item": "#241(b)",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "intro"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko table, 註腳"
+   },
+   "item": "#241(e) footnote",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "foot"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, header"
+   },
+   "item": "#241(c) column 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "head",
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, header"
+   },
+   "item": "#241(c) column 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "head",
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, header"
+   },
+   "item": "#241(c) column 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "head",
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, header"
+   },
+   "item": "#241(c) column 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "head",
+    3
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, header"
+   },
+   "item": "#241(c) column 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "head",
+    4
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 1 col 1"
+   },
+   "item": "#241(d) row 1 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    0,
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 1 col 2"
+   },
+   "item": "#241(d) row 1 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    0,
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 1 col 3"
+   },
+   "item": "#241(d) row 1 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    0,
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 1 col 4"
+   },
+   "item": "#241(d) row 1 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    0,
+    3
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 1 col 5"
+   },
+   "item": "#241(d) row 1 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    0,
+    4
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 2 col 1"
+   },
+   "item": "#241(d) row 2 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    1,
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 2 col 2"
+   },
+   "item": "#241(d) row 2 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    1,
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 2 col 3"
+   },
+   "item": "#241(d) row 2 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    1,
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 2 col 4"
+   },
+   "item": "#241(d) row 2 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    1,
+    3
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 2 col 5"
+   },
+   "item": "#241(d) row 2 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    1,
+    4
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 3 col 1"
+   },
+   "item": "#241(d) row 3 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    2,
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 3 col 2"
+   },
+   "item": "#241(d) row 3 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    2,
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 3 col 3"
+   },
+   "item": "#241(d) row 3 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    2,
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 3 col 4"
+   },
+   "item": "#241(d) row 3 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    2,
+    3
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 3 col 5"
+   },
+   "item": "#241(d) row 3 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    2,
+    4
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 4 col 1"
+   },
+   "item": "#241(d) row 4 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    3,
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 4 col 2"
+   },
+   "item": "#241(d) row 4 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    3,
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 4 col 3"
+   },
+   "item": "#241(d) row 4 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    3,
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 4 col 4"
+   },
+   "item": "#241(d) row 4 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    3,
+    3
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 4 col 5"
+   },
+   "item": "#241(d) row 4 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    3,
+    4
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 5 col 1"
+   },
+   "item": "#241(d) row 5 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    4,
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 5 col 2"
+   },
+   "item": "#241(d) row 5 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    4,
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 5 col 3"
+   },
+   "item": "#241(d) row 5 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    4,
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 5 col 4"
+   },
+   "item": "#241(d) row 5 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    4,
+    3
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 5 col 5"
+   },
+   "item": "#241(d) row 5 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    4,
+    4
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 6 col 1"
+   },
+   "item": "#241(d) row 6 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    5,
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 6 col 2"
+   },
+   "item": "#241(d) row 6 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    5,
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 6 col 3"
+   },
+   "item": "#241(d) row 6 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    5,
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 6 col 4"
+   },
+   "item": "#241(d) row 6 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    5,
+    3
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 6 col 5"
+   },
+   "item": "#241(d) row 6 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    5,
+    4
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 7 col 1"
+   },
+   "item": "#241(d) row 7 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    6,
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 7 col 2"
+   },
+   "item": "#241(d) row 7 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    6,
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 7 col 3"
+   },
+   "item": "#241(d) row 7 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    6,
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 7 col 4"
+   },
+   "item": "#241(d) row 7 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    6,
+    3
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 7 col 5"
+   },
+   "item": "#241(d) row 7 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    6,
+    4
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "th",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 8 col 1"
+   },
+   "item": "#241(d) row 8 col 1",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    7,
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 8 col 2"
+   },
+   "item": "#241(d) row 8 col 2",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    7,
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 8 col 3"
+   },
+   "item": "#241(d) row 8 col 3",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    7,
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 8 col 4"
+   },
+   "item": "#241(d) row 8 col 4",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    7,
+    3
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "td",
+   "source": {
+    "comment": 6218628850,
+    "round": "R2",
+    "locator": "### ko data table, row 8 col 5"
+   },
+   "item": "#241(d) row 8 col 5",
+   "version": "R2",
+   "path": [
+    "pieces",
+    "ko",
+    "rows",
+    7,
+    4
+   ]
   }
  ]
 }

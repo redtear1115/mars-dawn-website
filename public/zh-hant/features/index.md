@@ -150,7 +150,7 @@ App 介面有英文、繁體中文、簡體中文、日文、德文、法文、�
 
 在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。快速查看會用你在 MarsDawn 選的主題，也跟著 MarsDawn 的外觀設定。
 
-[為 Mac 而做](/zh-hant/native/)
+[為 Mac 而做](/zh-hant/native/) · [Markdown 快速查看](/zh-hant/quicklook/)
 
 ### 其他檔案
 

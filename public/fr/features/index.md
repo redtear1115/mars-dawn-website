@@ -150,7 +150,7 @@ Chaque document s’ouvre dans sa propre fenêtre. Choisissez Fenêtre ▸ Fusio
 
 Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le lire mis en forme, diagrammes compris. Coup d’œil utilise le thème que vous avez choisi dans MarsDawn et suit son réglage d’apparence.
 
-[Une app Mac](/fr/native/)
+[Une app Mac](/fr/native/) · [Quick Look pour Markdown](/fr/quicklook/)
 
 ### Autres fichiers
 

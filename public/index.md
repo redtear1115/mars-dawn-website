@@ -32,12 +32,29 @@ brew install redtear1115/tap/marsdawn
 
 ## What to expect from MarsDawn
 
-- [A Mac app](/native/): Native windows, tabs, autosave, Quick Look.
+- [A Mac app](/native/): Native windows, tabs, autosave, [Quick Look](/quicklook/).
 - [Your writing stays on your Mac](/yours/): No account, no sync, no cloud.
 - [Try free, pay once](/pay-once/): Free for 14 days, then USD 4.99 once. No subscription.
 - [Features](/features/): Everything MarsDawn does, on one page.
 
 Know before you buy. [What MarsDawn doesn't do](/limits/)
+
+## How the pieces fit
+
+What each part does today, as of MarsDawn 1.1.1, marsdawn 0.6.4 and marsdawn-mcp v0.2.4.
+
+| Capability | In the app | CLI | MCP / skill | Status |
+|---|---|---|---|---|
+| Open at a line | Lands on the line, flashes the preview block | marsdawn open notes.md:120 (--background keeps focus) | open_in_marsdawn; the skill opens once | Shipped |
+| PDF export | File ▸ Export as PDF… (⌥⌘E) | marsdawn export, no app needed | export_markdown_to_pdf; skill | Shipped |
+| JSON result | — | --json on open and export | MCP returns the same JSON | Shipped |
+| Agent skill | — | marsdawn skill --install | Teaches open once and export | Shipped |
+| MCP server | — | Runs underneath | marsdawn-mcp: two tools, allowed folders only | Shipped |
+| Copy for AI, Copy Reference | Edit ▸ Copy for AI (⌃⌥⌘C), Copy Reference (⌥⌘C) | — | — (paste into any agent) | Shipped |
+| Live reload | Takes the saved change, one Undo | — | Skill: don't open again | Shipped |
+| Claude Code hook | — | Uses open --background | Hook script from /cli/agents/ | Documented, opt-in |
+
+Shipped: in the released version named above. Documented, opt-in: instructions on this site that you add yourself; not inside the tool. Planned: not built yet; no date. Planned: a folder option in the MCP open_in_marsdawn tool. More options, such as --folder, are on [Command Line](/cli/).
 
 Choosing between MarsDawn, VS Code's preview, Obsidian, QLMarkdown and LynxOffice? The comparison lists what each vendor states, what MarsDawn lacks, and when you don't need it. [Compare](/vs/)
 

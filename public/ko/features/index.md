@@ -150,7 +150,7 @@ KaTeX 구문으로 쓴 수식은 미리보기와 훑어보기에 그려지고, �
 
 Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 있습니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.
 
-[Mac 앱](/ko/native/)
+[Mac 앱](/ko/native/) · [Markdown 훑어보기](/ko/quicklook/)
 
 ### 기타 파일
 

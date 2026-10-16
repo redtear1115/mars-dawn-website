@@ -150,7 +150,7 @@ Cada documento se abre en su propia ventana. Elige Ventana ▸ Unir todas las ve
 
 Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora para leerlo renderizado, con los diagramas incluidos. Vista rápida usa el tema que elegiste en MarsDawn y sigue su ajuste de aspecto.
 
-[Una app para Mac](/es/native/)
+[Una app para Mac](/es/native/) · [Quick Look para Markdown](/es/quicklook/)
 
 ### Otros archivos
 

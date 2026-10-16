@@ -150,7 +150,7 @@ Jedes Dokument öffnet in einem eigenen Fenster. Wähle Fenster ▸ Alle Fenster
 
 Wähle im Finder eine Markdown-Datei aus und drücke die Leertaste, um sie gerendert zu lesen, samt Diagrammen. Die Übersicht verwendet das Theme, das du in MarsDawn gewählt hast, und folgt dessen Einstellung für das Erscheinungsbild.
 
-[Eine Mac-App](/de/native/)
+[Eine Mac-App](/de/native/) · [Quick Look für Markdown](/de/quicklook/)
 
 ### Andere Dateien
 

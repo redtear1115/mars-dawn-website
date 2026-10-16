@@ -294,13 +294,31 @@ try {
 <nav class="traits" aria-label="MarsDawn 是什麼樣的 app">
 <h2>MarsDawn 是什麼樣的 app</h2>
 <ul>
-  <li><a href="/zh-hant/native/">為 Mac 而做</a><span>原生視窗、分頁、自動儲存、快速查看。</span></li>
+  <li><a href="/zh-hant/native/">為 Mac 而做</a><span>原生視窗、分頁、自動儲存、<a href="/zh-hant/quicklook/">快速查看</a>。</span></li>
   <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a><span>不需要帳號，沒有同步，也沒有雲端。</span></li>
   <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a><span>免費試用 14 天，之後 USD 4.99 買一次，沒有訂閱。</span></li>
   <li><a href="/zh-hant/features/">功能一覽</a><span>MarsDawn 能做的事，一頁看完。</span></li>
 </ul>
 </nav>
 <p class="know">購買前先知道。 <a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
+<section class="pieces">
+<h2>各部分怎麼搭在一起</h2>
+<p>以 MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 為準，各部分目前能做的事。</p>
+<div class="table-scroll"><table class="compare compare-wide compare-pieces">
+<thead><tr><th scope="col">功能</th><th scope="col">App 內</th><th scope="col">CLI</th><th scope="col">MCP／skill</th><th scope="col">狀態</th></tr></thead>
+<tbody>
+  <tr><th scope="row">打開到某一行</th><td data-label="App 內">停在那一行，預覽區塊閃一下</td><td data-label="CLI">marsdawn open notes.md:120（--background 不搶焦點）</td><td data-label="MCP／skill">open_in_marsdawn；skill 只開一次</td><td data-label="狀態">已推出</td></tr>
+  <tr><th scope="row">輸出 PDF</th><td data-label="App 內">檔案 ▸ 輸出為 PDF⋯（⌥⌘E）</td><td data-label="CLI">marsdawn export，不需要 app</td><td data-label="MCP／skill">export_markdown_to_pdf；skill</td><td data-label="狀態">已推出</td></tr>
+  <tr><th scope="row">JSON 結果</th><td data-label="App 內">—</td><td data-label="CLI">open、export 加 --json</td><td data-label="MCP／skill">MCP 回傳同一份 JSON</td><td data-label="狀態">已推出</td></tr>
+  <tr><th scope="row">Agent skill</th><td data-label="App 內">—</td><td data-label="CLI">marsdawn skill --install</td><td data-label="MCP／skill">教 agent 開一次、輸出 PDF</td><td data-label="狀態">已推出</td></tr>
+  <tr><th scope="row">MCP 伺服器</th><td data-label="App 內">—</td><td data-label="CLI">在底下執行</td><td data-label="MCP／skill">marsdawn-mcp：兩個工具，只碰允許的資料夾</td><td data-label="狀態">已推出</td></tr>
+  <tr><th scope="row">拷貝給 AI、拷貝引用</th><td data-label="App 內">編輯 ▸ 拷貝給 AI（⌃⌥⌘C）、拷貝引用（⌥⌘C）</td><td data-label="CLI">—</td><td data-label="MCP／skill">—（貼給任何 agent）</td><td data-label="狀態">已推出</td></tr>
+  <tr><th scope="row">存檔後自動更新</th><td data-label="App 內">接收存檔的變更，可撤銷一次</td><td data-label="CLI">—</td><td data-label="MCP／skill">skill：不用再開一次</td><td data-label="狀態">已推出</td></tr>
+  <tr><th scope="row">Claude Code hook</th><td data-label="App 內">—</td><td data-label="CLI">用 open --background</td><td data-label="MCP／skill">/cli/agents/ 的 hook 腳本</td><td data-label="狀態">有文件，選用</td></tr>
+</tbody>
+</table></div>
+<p>已推出：在上面寫的發行版本裡。有文件，選用：本站上的說明，要你自己加，不在工具裡。規劃中：還沒做，沒有日期。規劃中：MCP 的 open_in_marsdawn 加上資料夾選項。--folder 等其他選項見<a href="/zh-hant/cli/">命令列工具</a>。</p>
+</section>
 <p>在 MarsDawn、VS Code 預覽、Obsidian、QLMarkdown、LynxOffice 之間猶豫？比較頁列出各家自己的說法、MarsDawn 沒有的東西，以及什麼時候用不到它。<a href="/zh-hant/vs/">看比較</a></p>
 <section class="stays">
 <h2>文件留在你的 Mac 上</h2>

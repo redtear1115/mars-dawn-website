@@ -4956,8 +4956,15 @@ def home_sections_html(locale: str) -> str:
     caps = "\n".join(f"  <li>{cap}</li>" for cap in home["install_caps"])
     links = " · ".join(f'<a href="{page_path(locale, slug)}">{ui[SLUG_TO_UI_KEY[slug]]}</a>'
                        for slug in ("cli", "cli/agents", "cli/skill", "cli/mcp") if has_page(locale, slug))
+    def trait_line(slug):
+        line = TRAIT_LINK[locale][slug][1]
+        if slug == "native" and has_page(locale, "quicklook"):   # the Quick Look in "A Mac app" opens the Quick Look page
+            term = QUICKLOOK_PREFIX[locale]
+            assert term in line, f"{locale}: no {term} in the A Mac app line"
+            line = line.replace(term, f'<a href="{page_path(locale, "quicklook")}">{term}</a>', 1)
+        return line
     traits = "\n".join(
-        f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a><span>{TRAIT_LINK[locale][slug][1]}</span></li>'
+        f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a><span>{trait_line(slug)}</span></li>'
         for slug in HOME_TRAITS
     )
     limits_title, limits_line = TRAIT_LINK[locale]["limits"]
@@ -5629,6 +5636,13 @@ def apply_seo_copy(merged: dict) -> dict:
         assert n == 1, f"{locale}/native: no Quick Look list item"
         out[(locale, "native")] = {**native, "body": body}
         out[(locale, "quicklook")] = quicklook_page(locale, copy)
+        # /features/ points to it from its Quick Look item, after the link that item already has
+        features = out[(locale, "features")]
+        term = QUICKLOOK_PREFIX[locale]
+        fbody, n = re.subn(rf'(<h3>[^<]*{re.escape(term)}[^<]*</h3>\n<p>[^\n]*</p>\n<p class="more"><a href="[^"]*/native/">[^<]*</a>)(</p>)',
+                           lambda m: f'{m.group(1)} &#183; <a href="{page_path(locale, "quicklook")}">{copy["ui"]}</a>{m.group(2)}', features["body"], count=1)
+        assert n == 1, f"{locale}/features: no Quick Look item with a /native/ link"
+        out[(locale, "features")] = {**features, "body": fbody}
     return out
 
 
@@ -5686,7 +5700,12 @@ def apply_promo130(merged: dict) -> dict:
         vs = promo_data.DATA["vs"][locale]
         UI[locale].setdefault("vs", _plain(vs["title"]))
         out[(locale, "vs")] = vs_page(vs)
-        after = [f'<p>{copy["vs_short"]}</p>']
+        after = []
+        pieces = promo_data.DATA.get("pieces", {}).get(locale)
+        if pieces:
+            after.append(f'<section class="pieces">\n<h2>{pieces["h"]}</h2>\n<p>{pieces["intro"]}</p>\n'
+                         f'{promo_table_html(pieces["head"], pieces["rows"], "compare compare-wide compare-pieces")}\n<p>{pieces["foot"]}</p>\n</section>')
+        after.append(f'<p>{copy["vs_short"]}</p>')
         stays = promo_data.DATA.get("stays", {}).get(locale)
         if stays:
             layers = "\n".join(f'<p>{text}</p>\n<p class="more">{more}</p>' for text, more in zip(stays["layers"], stays["more"]))

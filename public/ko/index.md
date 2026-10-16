@@ -32,12 +32,29 @@ brew install redtear1115/tap/marsdawn
 
 ## MarsDawn에서 기대할 수 있는 것
 
-- [Mac 앱](/ko/native/): 네이티브 윈도우와 탭, 자동 저장, 훑어보기.
+- [Mac 앱](/ko/native/): 네이티브 윈도우와 탭, 자동 저장, [훑어보기](/ko/quicklook/).
 - [내 글은 내 Mac에](/ko/yours/): 계정도, 동기화도, 클라우드도 없습니다.
 - [무료로 체험하고, 한 번만 구입](/ko/pay-once/): 14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.
 - [기능 한눈에 보기](/ko/features/): MarsDawn이 하는 모든 일을 한 페이지에.
 
 구입 전에 알아 둘 점. [MarsDawn이 하지 않는 일](/ko/limits/)
+
+## 각 부분의 역할
+
+MarsDawn 1.1.1, marsdawn 0.6.4, marsdawn-mcp v0.2.4 기준으로 각 부분이 지금 하는 일.
+
+| 기능 | 앱 | CLI | MCP / 스킬 | 상태 |
+|---|---|---|---|---|
+| 특정 줄에서 열기 | 그 줄로 이동, 미리보기 블록이 깜박임 | `marsdawn open notes.md:120` (`--background`는 포커스 유지) | `open_in_marsdawn`, 스킬은 한 번만 열기 | 제공 중 |
+| PDF 내보내기 | 파일 ▸ PDF로 내보내기… (⌥⌘E) | `marsdawn export`, 앱 없이 | `export_markdown_to_pdf`, 스킬 | 제공 중 |
+| JSON 결과 | — | open과 export에 `--json` | MCP가 같은 JSON 반환 | 제공 중 |
+| 에이전트 스킬 | — | `marsdawn skill --install` | 한 번 열기와 내보내기를 안내 | 제공 중 |
+| MCP 서버 | — | 내부에서 실행 | marsdawn-mcp: 도구 두 개, 허용한 폴더만 | 제공 중 |
+| AI용으로 복사, 참조 복사 | 편집 ▸ AI용으로 복사 (⌃⌥⌘C), 참조 복사 (⌥⌘C) | — | — (어떤 에이전트에든 붙여 넣기) | 제공 중 |
+| 저장 시 자동 반영 | 저장된 변경을 반영, 한 번에 실행 취소 | — | 스킬: 다시 열지 않음 | 제공 중 |
+| Claude Code 훅 | — | `open --background` 사용 | /cli/agents/의 훅 스크립트 | 문서 제공, 선택 사항 |
+
+제공 중: 위에 적은 출시 버전에 포함. 문서 제공, 선택 사항: 이 사이트의 안내에 따라 직접 추가하며 도구에는 포함되지 않음. 예정: 아직 없으며 날짜 미정. 예정: MCP `open_in_marsdawn`의 폴더 옵션. `--folder` 등 다른 옵션은 [명령줄](/ko/cli/)에 있습니다.
 
 MarsDawn, VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice 사이에서 고민 중인가요? 비교 페이지에 각 회사의 설명, MarsDawn에 없는 것, MarsDawn이 필요 없는 경우를 정리했습니다. [비교 보기](/ko/vs/)
 

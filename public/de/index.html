@@ -293,13 +293,31 @@ Engineering schaltet das Flag am <span class="loop-day loop-d-b a"><span class="
 <nav class="traits" aria-label="Was du von MarsDawn erwarten kannst">
 <h2>Was du von MarsDawn erwarten kannst</h2>
 <ul>
-  <li><a href="/de/native/">Eine Mac-App</a><span>Native Fenster und Tabs, automatisches Sichern, Übersicht.</span></li>
+  <li><a href="/de/native/">Eine Mac-App</a><span>Native Fenster und Tabs, automatisches Sichern, <a href="/de/quicklook/">Übersicht</a>.</span></li>
   <li><a href="/de/yours/">Deine Texte bleiben auf deinem Mac</a><span>Kein Konto, keine Synchronisierung, keine Cloud.</span></li>
   <li><a href="/de/pay-once/">Kostenlos testen, einmal bezahlen</a><span>14 Tage kostenlos, danach einmalig 4,99 USD. Kein Abo.</span></li>
   <li><a href="/de/features/">Funktionen</a><span>Alles, was MarsDawn kann, auf einer Seite.</span></li>
 </ul>
 </nav>
 <p class="know">Gut zu wissen, bevor du kaufst. <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
+<section class="pieces">
+<h2>Wie die Teile zusammenpassen</h2>
+<p>Was jeder Teil heute kann, Stand MarsDawn 1.1.1, marsdawn 0.6.4 und marsdawn-mcp v0.2.4.</p>
+<div class="table-scroll"><table class="compare compare-wide compare-pieces">
+<thead><tr><th scope="col">Funktion</th><th scope="col">In der App</th><th scope="col">CLI</th><th scope="col">MCP / Skill</th><th scope="col">Status</th></tr></thead>
+<tbody>
+  <tr><th scope="row">An einer Zeile öffnen</th><td data-label="In der App">Springt zur Zeile, Vorschaublock blinkt</td><td data-label="CLI"><code>marsdawn open notes.md:120</code> (<code>--background</code> lässt den Fokus)</td><td data-label="MCP / Skill"><code>open_in_marsdawn</code>; der Skill öffnet einmal</td><td data-label="Status">Verfügbar</td></tr>
+  <tr><th scope="row">PDF-Export</th><td data-label="In der App">Ablage ▸ Als PDF exportieren … (⌥⌘E)</td><td data-label="CLI"><code>marsdawn export</code>, ohne App</td><td data-label="MCP / Skill"><code>export_markdown_to_pdf</code>; Skill</td><td data-label="Status">Verfügbar</td></tr>
+  <tr><th scope="row">JSON-Ergebnis</th><td data-label="In der App">—</td><td data-label="CLI"><code>--json</code> bei open und export</td><td data-label="MCP / Skill">MCP liefert dasselbe JSON</td><td data-label="Status">Verfügbar</td></tr>
+  <tr><th scope="row">Agent-Skill</th><td data-label="In der App">—</td><td data-label="CLI"><code>marsdawn skill --install</code></td><td data-label="MCP / Skill">Lehrt: einmal öffnen, exportieren</td><td data-label="Status">Verfügbar</td></tr>
+  <tr><th scope="row">MCP-Server</th><td data-label="In der App">—</td><td data-label="CLI">Läuft darunter</td><td data-label="MCP / Skill">marsdawn-mcp: zwei Tools, nur erlaubte Ordner</td><td data-label="Status">Verfügbar</td></tr>
+  <tr><th scope="row">Für KI kopieren, Verweis kopieren</th><td data-label="In der App">Bearbeiten ▸ Für KI kopieren (⌃⌥⌘C), Verweis kopieren (⌥⌘C)</td><td data-label="CLI">—</td><td data-label="MCP / Skill">— (in jeden Agenten einfügen)</td><td data-label="Status">Verfügbar</td></tr>
+  <tr><th scope="row">Neu laden beim Sichern</th><td data-label="In der App">Übernimmt die gesicherte Änderung, einmal widerrufbar</td><td data-label="CLI">—</td><td data-label="MCP / Skill">Skill: nicht erneut öffnen</td><td data-label="Status">Verfügbar</td></tr>
+  <tr><th scope="row">Claude-Code-Hook</th><td data-label="In der App">—</td><td data-label="CLI">Nutzt <code>open --background</code></td><td data-label="MCP / Skill">Hook-Skript von /cli/agents/</td><td data-label="Status">Dokumentiert, optional</td></tr>
+</tbody>
+</table></div>
+<p>Verfügbar: in der oben genannten Version enthalten. Dokumentiert, optional: Anleitung auf dieser Website, die du selbst einrichtest; nicht im Tool enthalten. Geplant: noch nicht gebaut, ohne Datum. Geplant: eine Ordner-Option im MCP-Tool <code>open_in_marsdawn</code>. Weitere Optionen wie <code>--folder</code> stehen unter <a href="/de/cli/">Befehlszeile</a>.</p>
+</section>
 <p>Du schwankst zwischen MarsDawn, der VS-Code-Vorschau, Obsidian, QLMarkdown und LynxOffice? Der Vergleich zeigt, was jeder Hersteller angibt, was MarsDawn fehlt und wann du es nicht brauchst. <a href="/de/vs/">Zum Vergleich</a></p>
 <section class="stays">
 <h2>Deine Dokumente bleiben auf deinem Mac</h2>

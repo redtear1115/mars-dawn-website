@@ -32,12 +32,29 @@ brew install redtear1115/tap/marsdawn
 
 ## MarsDawn 是什麼樣的 app
 
-- [為 Mac 而做](/zh-hant/native/)：原生視窗、分頁、自動儲存、快速查看。
+- [為 Mac 而做](/zh-hant/native/)：原生視窗、分頁、自動儲存、[快速查看](/zh-hant/quicklook/)。
 - [你寫的內容留在你的 Mac 上](/zh-hant/yours/)：不需要帳號，沒有同步，也沒有雲端。
 - [免費試用，買一次就好](/zh-hant/pay-once/)：免費試用 14 天，之後 USD 4.99 買一次，沒有訂閱。
 - [功能一覽](/zh-hant/features/)：MarsDawn 能做的事，一頁看完。
 
 購買前先知道。 [MarsDawn 做不到的事](/zh-hant/limits/)
+
+## 各部分怎麼搭在一起
+
+以 MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 為準，各部分目前能做的事。
+
+| 功能 | App 內 | CLI | MCP／skill | 狀態 |
+|---|---|---|---|---|
+| 打開到某一行 | 停在那一行，預覽區塊閃一下 | marsdawn open notes.md:120（--background 不搶焦點） | open_in_marsdawn；skill 只開一次 | 已推出 |
+| 輸出 PDF | 檔案 ▸ 輸出為 PDF⋯（⌥⌘E） | marsdawn export，不需要 app | export_markdown_to_pdf；skill | 已推出 |
+| JSON 結果 | — | open、export 加 --json | MCP 回傳同一份 JSON | 已推出 |
+| Agent skill | — | marsdawn skill --install | 教 agent 開一次、輸出 PDF | 已推出 |
+| MCP 伺服器 | — | 在底下執行 | marsdawn-mcp：兩個工具，只碰允許的資料夾 | 已推出 |
+| 拷貝給 AI、拷貝引用 | 編輯 ▸ 拷貝給 AI（⌃⌥⌘C）、拷貝引用（⌥⌘C） | — | —（貼給任何 agent） | 已推出 |
+| 存檔後自動更新 | 接收存檔的變更，可撤銷一次 | — | skill：不用再開一次 | 已推出 |
+| Claude Code hook | — | 用 open --background | /cli/agents/ 的 hook 腳本 | 有文件，選用 |
+
+已推出：在上面寫的發行版本裡。有文件，選用：本站上的說明，要你自己加，不在工具裡。規劃中：還沒做，沒有日期。規劃中：MCP 的 open_in_marsdawn 加上資料夾選項。--folder 等其他選項見[命令列工具](/zh-hant/cli/)。
 
 在 MarsDawn、VS Code 預覽、Obsidian、QLMarkdown、LynxOffice 之間猶豫？比較頁列出各家自己的說法、MarsDawn 沒有的東西，以及什麼時候用不到它。[看比較](/zh-hant/vs/)
 

@@ -630,9 +630,75 @@ def ns_seo() -> dict:
     return ns["COPY"]
 
 
+
+# ---- #241: "How the pieces fit": the app, the CLI, MCP and the skill, side by side --------------
+
+def ingest_241() -> None:
+    c1, b1 = comment(241, 1)
+    c2, b2 = comment(241, 2)
+    title = by_loc(r1_items(section(b1, "### (a)")), "A")
+    intro = by_loc(r1_items(section(b1, "### (b)")))
+    names = by_loc(r1_items(section(b1, "### (c)")))
+    sec_d = section(b1, "### (d)")
+    r11_cli = {k: v for k, v in {  # round 2: the CLI cell of R11
+        "en": None}.items()}
+    def r2_nested(label):
+        m = re.search(r"^- \[[ x]\] \*\*" + re.escape(label) + r"\*\*[^\n]*\n((?:  - .*\n?)+)", b2, re.M)
+        assert m, label
+        return {LOC_LABEL[k]: unwrap(v.strip()) for k, v in re.findall(r"^\s+- (en|zh-Hant|ja)[：:]\s*(.+)$", m.group(1), re.M)}
+    r11 = r2_nested("R11 的 CLI 欄")
+    foot = {LOC_LABEL[k]: unwrap(v) for k, v in re.findall(r"^- \[[ x]\] \*\*註腳 (en|zh-Hant|ja)\*\*[：:]\s*(.+)$", b2, re.M)}
+    assert set(foot) == set(FIRST) and set(r11) == set(FIRST)
+    for loc in LOCALES:
+        if loc in FIRST:
+            ln = {"en": "en", "zh-hant": "zh-Hant", "ja": "ja"}[loc]
+            chunk = locale_chunk(sec_d, ln)
+            rows = []
+            for m in re.finditer(r"^- \[[ x]\] (R\d+)[：:]\s*(.+)$", chunk, re.M):
+                cells = unwrap(m.group(2).strip()).split(" | ")
+                assert len(cells) == 5, (loc, m.group(1), cells)
+                rows.append((m.group(1), cells))
+            assert [r for r, _ in rows] == ["R1", "R2", "R3", "R4", "R5", "R6", "R10", "R11"], rows
+            rows = [cells for _, cells in rows]
+            rows[7][2] = r11[loc]
+            h, i, nm, ft = title[loc], intro[loc], names[loc].split(" | "), foot[loc]
+            hsrc = comment_source(c1, 1, f"### (a) A, {loc}")
+            isrc = comment_source(c1, 1, f"### (b), {loc}")
+            nsrc = comment_source(c1, 1, f"### (c), {loc}")
+            fsrc = comment_source(c2, 2, f"註腳 {ln}")
+            rsrc = lambda r, c: comment_source(c2, 2, f"R11 的 CLI 欄, {ln}") if (r, c) == (7, 2) else comment_source(c1, 1, f"### (d) {ln}, {rows_label[r]}, col {c + 1}")
+            rows_label = ["R1", "R2", "R3", "R4", "R5", "R6", "R10", "R11"]
+            ver = "R1+R2"
+        else:
+            t = r2_table(b2, loc)
+            tables = data_tables(section(b2, "### " + {"zh-hans": "zh-Hans"}.get(loc, loc)))
+            nm, rows = tables[1][0], [list(r) for r in tables[1][1:]]
+            assert len(nm) == 5 and len(rows) == 8 and all(len(r) == 5 for r in rows), loc
+            h, i, ft = t["標題"], t["引言"], t["註腳"]
+            hsrc = comment_source(c2, 2, f"### {loc} table, 標題")
+            isrc = comment_source(c2, 2, f"### {loc} table, 引言")
+            nsrc = comment_source(c2, 2, f"### {loc} data table, header")
+            fsrc = comment_source(c2, 2, f"### {loc} table, 註腳")
+            rsrc = lambda r, c: comment_source(c2, 2, f"### {loc} data table, row {r + 1} col {c + 1}")
+            ver = "R2"
+        put(("pieces", loc, "h"), inline(h), slot={"locale": loc, "page": "index", "field": "h2", "source": hsrc, "item": "#241(a)", "version": "A" if loc in FIRST else "R2"})
+        put(("pieces", loc, "intro"), inline(i), slot={"locale": loc, "page": "index", "field": "p", "source": isrc, "item": "#241(b)", "version": ver})
+        put(("pieces", loc, "foot"), inline(ft), slot={"locale": loc, "page": "index", "field": "p", "source": fsrc, "item": "#241(e) footnote", "version": ver})
+        DATA["pieces"][loc]["head"] = [inline(c) for c in nm]
+        for c in range(5):
+            SLOTS.append({"locale": loc, "page": "index", "field": "th", "source": nsrc, "item": f"#241(c) column {c + 1}", "version": ver,
+                          "path": ["pieces", loc, "head", c]})
+        DATA["pieces"][loc]["rows"] = []
+        for r, row in enumerate(rows):
+            DATA["pieces"][loc]["rows"].append([inline(c) for c in row])
+            for c in range(5):
+                SLOTS.append({"locale": loc, "page": "index", "field": "th" if c == 0 else "td", "source": rsrc(r, c),
+                              "item": f"#241(d) row {r + 1} col {c + 1}", "version": ver, "path": ["pieces", loc, "rows", r, c]})
+
+
 # ---- main -------------------------------------------------------------------------------------
 
-INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240}
+INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240, 241: ingest_241}
 
 
 def write() -> None:

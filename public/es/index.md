@@ -32,12 +32,29 @@ brew install redtear1115/tap/marsdawn
 
 ## Qué esperar de MarsDawn
 
-- [Una app para Mac](/es/native/): Ventanas y pestañas nativas, guardado automático, Vista rápida.
+- [Una app para Mac](/es/native/): Ventanas y pestañas nativas, guardado automático, [Vista rápida](/es/quicklook/).
 - [Lo que escribes se queda en tu Mac](/es/yours/): Sin cuenta, sin sincronización, sin nube.
 - [Pruébalo gratis, paga una vez](/es/pay-once/): Gratis durante 14 días; después, 4,99 USD una sola vez. Sin suscripción.
 - [Funciones](/es/features/): Todo lo que hace MarsDawn, en una sola página.
 
 Lo que conviene saber antes de comprar. [Lo que MarsDawn no hace](/es/limits/)
+
+## Cómo encajan las piezas
+
+Lo que hace cada parte hoy, con MarsDawn 1.1.1, marsdawn 0.6.4 y marsdawn-mcp v0.2.4.
+
+| Función | En la app | CLI | MCP / skill | Estado |
+|---|---|---|---|---|
+| Abrir en una línea | Va a la línea y el bloque de la vista previa parpadea | `marsdawn open notes.md:120` (`--background` no roba el foco) | `open_in_marsdawn`; la skill abre una vez | Disponible |
+| Exportar a PDF | Archivo ▸ Exportar como PDF… (⌥⌘E) | `marsdawn export`, sin la app | `export_markdown_to_pdf`; skill | Disponible |
+| Resultado JSON | — | `--json` en open y export | MCP devuelve el mismo JSON | Disponible |
+| Skill para agentes | — | `marsdawn skill --install` | Enseña a abrir una vez y a exportar | Disponible |
+| Servidor MCP | — | Funciona por debajo | marsdawn-mcp: dos herramientas, solo carpetas permitidas | Disponible |
+| Copiar para IA, Copiar referencia | Edición ▸ Copiar para IA (⌃⌥⌘C), Copiar referencia (⌥⌘C) | — | — (pégalo en cualquier agente) | Disponible |
+| Recarga al guardar | Toma el cambio guardado, se deshace en un paso | — | Skill: no volver a abrir | Disponible |
+| Hook de Claude Code | — | Usa `open --background` | Script del hook en /cli/agents/ | Documentado, opcional |
+
+Disponible: en la versión indicada arriba. Documentado, opcional: instrucciones de este sitio que añades tú; no viene en la herramienta. Previsto: aún no existe, sin fecha. Previsto: una opción de carpeta en la herramienta MCP `open_in_marsdawn`. Otras opciones, como `--folder`, están en [Línea de comandos](/es/cli/).
 
 ¿Dudas entre MarsDawn, la vista previa de VS Code, Obsidian, QLMarkdown y LynxOffice? La comparación recoge lo que indica cada fabricante, lo que le falta a MarsDawn y cuándo no lo necesitas. [Ver la comparación](/es/vs/)
 

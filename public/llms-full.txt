@@ -38,12 +38,29 @@ brew install redtear1115/tap/marsdawn
 
 ## What to expect from MarsDawn
 
-- [A Mac app](/native/): Native windows, tabs, autosave, Quick Look.
+- [A Mac app](/native/): Native windows, tabs, autosave, [Quick Look](/quicklook/).
 - [Your writing stays on your Mac](/yours/): No account, no sync, no cloud.
 - [Try free, pay once](/pay-once/): Free for 14 days, then USD 4.99 once. No subscription.
 - [Features](/features/): Everything MarsDawn does, on one page.
 
 Know before you buy. [What MarsDawn doesn't do](/limits/)
+
+## How the pieces fit
+
+What each part does today, as of MarsDawn 1.1.1, marsdawn 0.6.4 and marsdawn-mcp v0.2.4.
+
+| Capability | In the app | CLI | MCP / skill | Status |
+|---|---|---|---|---|
+| Open at a line | Lands on the line, flashes the preview block | marsdawn open notes.md:120 (--background keeps focus) | open_in_marsdawn; the skill opens once | Shipped |
+| PDF export | File ▸ Export as PDF… (⌥⌘E) | marsdawn export, no app needed | export_markdown_to_pdf; skill | Shipped |
+| JSON result | — | --json on open and export | MCP returns the same JSON | Shipped |
+| Agent skill | — | marsdawn skill --install | Teaches open once and export | Shipped |
+| MCP server | — | Runs underneath | marsdawn-mcp: two tools, allowed folders only | Shipped |
+| Copy for AI, Copy Reference | Edit ▸ Copy for AI (⌃⌥⌘C), Copy Reference (⌥⌘C) | — | — (paste into any agent) | Shipped |
+| Live reload | Takes the saved change, one Undo | — | Skill: don't open again | Shipped |
+| Claude Code hook | — | Uses open --background | Hook script from /cli/agents/ | Documented, opt-in |
+
+Shipped: in the released version named above. Documented, opt-in: instructions on this site that you add yourself; not inside the tool. Planned: not built yet; no date. Planned: a folder option in the MCP open_in_marsdawn tool. More options, such as --folder, are on [Command Line](/cli/).
 
 Choosing between MarsDawn, VS Code's preview, Obsidian, QLMarkdown and LynxOffice? The comparison lists what each vendor states, what MarsDawn lacks, and when you don't need it. [Compare](/vs/)
 
@@ -280,7 +297,7 @@ Each document opens in its own window. Choose Window ▸ Merge All Windows to ga
 
 Select a Markdown file in Finder and press Space to read it rendered, diagrams included. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.
 
-[A Mac app](/native/)
+[A Mac app](/native/) · [Quick Look for Markdown](/quicklook/)
 
 ### Other files
 
@@ -3116,12 +3133,29 @@ brew install redtear1115/tap/marsdawn
 
 ## MarsDawn 是什麼樣的 app
 
-- [為 Mac 而做](/zh-hant/native/)：原生視窗、分頁、自動儲存、快速查看。
+- [為 Mac 而做](/zh-hant/native/)：原生視窗、分頁、自動儲存、[快速查看](/zh-hant/quicklook/)。
 - [你寫的內容留在你的 Mac 上](/zh-hant/yours/)：不需要帳號，沒有同步，也沒有雲端。
 - [免費試用，買一次就好](/zh-hant/pay-once/)：免費試用 14 天，之後 USD 4.99 買一次，沒有訂閱。
 - [功能一覽](/zh-hant/features/)：MarsDawn 能做的事，一頁看完。
 
 購買前先知道。 [MarsDawn 做不到的事](/zh-hant/limits/)
+
+## 各部分怎麼搭在一起
+
+以 MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 為準，各部分目前能做的事。
+
+| 功能 | App 內 | CLI | MCP／skill | 狀態 |
+|---|---|---|---|---|
+| 打開到某一行 | 停在那一行，預覽區塊閃一下 | marsdawn open notes.md:120（--background 不搶焦點） | open_in_marsdawn；skill 只開一次 | 已推出 |
+| 輸出 PDF | 檔案 ▸ 輸出為 PDF⋯（⌥⌘E） | marsdawn export，不需要 app | export_markdown_to_pdf；skill | 已推出 |
+| JSON 結果 | — | open、export 加 --json | MCP 回傳同一份 JSON | 已推出 |
+| Agent skill | — | marsdawn skill --install | 教 agent 開一次、輸出 PDF | 已推出 |
+| MCP 伺服器 | — | 在底下執行 | marsdawn-mcp：兩個工具，只碰允許的資料夾 | 已推出 |
+| 拷貝給 AI、拷貝引用 | 編輯 ▸ 拷貝給 AI（⌃⌥⌘C）、拷貝引用（⌥⌘C） | — | —（貼給任何 agent） | 已推出 |
+| 存檔後自動更新 | 接收存檔的變更，可撤銷一次 | — | skill：不用再開一次 | 已推出 |
+| Claude Code hook | — | 用 open --background | /cli/agents/ 的 hook 腳本 | 有文件，選用 |
+
+已推出：在上面寫的發行版本裡。有文件，選用：本站上的說明，要你自己加，不在工具裡。規劃中：還沒做，沒有日期。規劃中：MCP 的 open_in_marsdawn 加上資料夾選項。--folder 等其他選項見[命令列工具](/zh-hant/cli/)。
 
 在 MarsDawn、VS Code 預覽、Obsidian、QLMarkdown、LynxOffice 之間猶豫？比較頁列出各家自己的說法、MarsDawn 沒有的東西，以及什麼時候用不到它。[看比較](/zh-hant/vs/)
 
@@ -3336,7 +3370,7 @@ App 介面有英文、繁體中文、簡體中文、日文、德文、法文、�
 
 在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。快速查看會用你在 MarsDawn 選的主題，也跟著 MarsDawn 的外觀設定。
 
-[為 Mac 而做](/zh-hant/native/)
+[為 Mac 而做](/zh-hant/native/) · [Markdown 快速查看](/zh-hant/quicklook/)
 
 ### 其他檔案
 
@@ -6210,12 +6244,29 @@ brew install redtear1115/tap/marsdawn
 
 ## MarsDawn 是什么样的 app
 
-- [为 Mac 而做](/zh-hans/native/)：原生窗口、标签页、自动保存、快速查看。
+- [为 Mac 而做](/zh-hans/native/)：原生窗口、标签页、自动保存、[快速查看](/zh-hans/quicklook/)。
 - [你写的内容留在你的 Mac 上](/zh-hans/yours/)：不需要账户，没有同步，也没有云端。
 - [免费试用，买一次就好](/zh-hans/pay-once/)：免费试用 14 天，之后 USD 4.99 买一次，没有订阅。
 - [功能一览](/zh-hans/features/)：MarsDawn 能做的事，一页看完。
 
 购买前先知道。 [MarsDawn 做不到的事](/zh-hans/limits/)
+
+## 各部分怎么搭在一起
+
+以 MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 为准，各部分目前能做的事。
+
+| 功能 | App 内 | CLI | MCP／skill | 状态 |
+|---|---|---|---|---|
+| 打开到某一行 | 停在那一行，预览区块闪一下 | `marsdawn open notes.md:120`（`--background` 不抢焦点） | `open_in_marsdawn`；skill 只打开一次 | 已推出 |
+| 导出 PDF | 文件 ▸ 导出为 PDF…（⌥⌘E） | `marsdawn export`，无需 app | `export_markdown_to_pdf`；skill | 已推出 |
+| JSON 结果 | — | open、export 加 `--json` | MCP 返回同一份 JSON | 已推出 |
+| 代理技能 | — | `marsdawn skill --install` | 教代理打开一次、导出 PDF | 已推出 |
+| MCP 服务器 | — | 在底层运行 | marsdawn-mcp：两个工具，只碰允许的文件夹 | 已推出 |
+| 拷贝给 AI、拷贝引用 | 编辑 ▸ 拷贝给 AI（⌃⌥⌘C）、拷贝引用（⌥⌘C） | — | —（粘贴给任何代理） | 已推出 |
+| 保存后自动更新 | 接收保存的更改，可一次撤销 | — | skill：不用再打开一次 | 已推出 |
+| Claude Code hook | — | 用 `open --background` | /cli/agents/ 的 hook 脚本 | 有文档，可选 |
+
+已推出：在上面写的发行版本里。有文档，可选：本站上的说明，需要你自己添加，不在工具里。计划中：还没做，没有日期。计划中：MCP 的 `open_in_marsdawn` 加上文件夹选项。`--folder` 等其他选项见[命令行工具](/zh-hans/cli/)。
 
 在 MarsDawn、VS Code 预览、Obsidian、QLMarkdown、LynxOffice 之间犹豫？对比页列出各家自己的说法、MarsDawn 没有的东西，以及什么时候用不到它。[看对比](/zh-hans/vs/)
 
@@ -6454,7 +6505,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。快速查看会用你在 MarsDawn 选的主题，也跟着 MarsDawn 的外观设置。
 
-[为 Mac 而做](/zh-hans/native/)
+[为 Mac 而做](/zh-hans/native/) · [Markdown 快速查看](/zh-hans/quicklook/)
 
 ### 其他文件
 
@@ -9321,12 +9372,29 @@ brew install redtear1115/tap/marsdawn
 
 ## MarsDawn に期待できること
 
-- [Mac アプリ](/ja/native/)：ネイティブのウインドウとタブ、自動保存、クイックルック。
+- [Mac アプリ](/ja/native/)：ネイティブのウインドウとタブ、自動保存、[クイックルック](/ja/quicklook/)。
 - [あなたの文章は Mac に残ります](/ja/yours/)：アカウント不要、同期なし、クラウドなし。
 - [無料で試して、一度だけ購入](/ja/pay-once/)：14日間無料、その後は一度だけ USD 4.99。サブスクリプションはありません。
 - [機能一覧](/ja/features/)：MarsDawn でできることを、1ページで。
 
 購入前に知っておくこと。 [MarsDawn ができないこと](/ja/limits/)
+
+## それぞれの役割
+
+MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 の時点で、それぞれができること。
+
+| 機能 | アプリ | CLI | MCP／skill | 状態 |
+|---|---|---|---|---|
+| 行を指定して開く | その行へ移り、プレビューのブロックが光る | marsdawn open notes.md:120（--background で前面に出ない） | open_in_marsdawn、skill は一度だけ開く | 提供中 |
+| PDF 書き出し | ファイル ▸ PDF として書き出す…（⌥⌘E） | marsdawn export、アプリ不要 | export_markdown_to_pdf、skill | 提供中 |
+| JSON の結果 | — | open と export に --json | MCP は同じ JSON を返す | 提供中 |
+| エージェント用スキル | — | marsdawn skill --install | 一度開く・書き出すを教える | 提供中 |
+| MCP サーバー | — | 内部で実行 | marsdawn-mcp：ツール 2 つ、許可したフォルダだけ | 提供中 |
+| AI 用にコピー、参照をコピー | 編集 ▸ AI 用にコピー（⌃⌥⌘C）、参照をコピー（⌥⌘C） | — | —（どのエージェントにも貼れる） | 提供中 |
+| 保存を自動で反映 | 保存された変更を反映、取り消しは一度で | — | skill：もう一度開かない | 提供中 |
+| Claude Code の hook | — | open --background を使用 | /cli/agents/ の hook スクリプト | ドキュメントあり・任意 |
+
+提供中：上に書いたリリース版に含まれています。ドキュメントあり・任意：このサイトの手順で自分で追加するもので、ツールには含まれません。予定：まだなく、日付は未定です。予定：MCP の open_in_marsdawn にフォルダのオプション。--folder などほかのオプションは[コマンドライン](/ja/cli/)へ。
 
 MarsDawn、VS Code のプレビュー、Obsidian、QLMarkdown、LynxOffice で迷っていますか。比較ページに、各社の記載、MarsDawn にないもの、MarsDawn がいらない場面をまとめました。[比較を見る](/ja/vs/)
 
@@ -9541,7 +9609,7 @@ KaTeX の構文で書いた数式は、プレビューとクイックルック�
 
 Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。クイックルックは MarsDawn で選んだテーマを使い、その外観モードの設定に従います。
 
-[Mac アプリ](/ja/native/)
+[Mac アプリ](/ja/native/) · [Markdown のクイックルック](/ja/quicklook/)
 
 ### そのほかのファイル
 
@@ -12408,12 +12476,29 @@ brew install redtear1115/tap/marsdawn
 
 ## Was du von MarsDawn erwarten kannst
 
-- [Eine Mac-App](/de/native/): Native Fenster und Tabs, automatisches Sichern, Übersicht.
+- [Eine Mac-App](/de/native/): Native Fenster und Tabs, automatisches Sichern, [Übersicht](/de/quicklook/).
 - [Deine Texte bleiben auf deinem Mac](/de/yours/): Kein Konto, keine Synchronisierung, keine Cloud.
 - [Kostenlos testen, einmal bezahlen](/de/pay-once/): 14 Tage kostenlos, danach einmalig 4,99 USD. Kein Abo.
 - [Funktionen](/de/features/): Alles, was MarsDawn kann, auf einer Seite.
 
 Gut zu wissen, bevor du kaufst. [Was MarsDawn nicht kann](/de/limits/)
+
+## Wie die Teile zusammenpassen
+
+Was jeder Teil heute kann, Stand MarsDawn 1.1.1, marsdawn 0.6.4 und marsdawn-mcp v0.2.4.
+
+| Funktion | In der App | CLI | MCP / Skill | Status |
+|---|---|---|---|---|
+| An einer Zeile öffnen | Springt zur Zeile, Vorschaublock blinkt | `marsdawn open notes.md:120` (`--background` lässt den Fokus) | `open_in_marsdawn`; der Skill öffnet einmal | Verfügbar |
+| PDF-Export | Ablage ▸ Als PDF exportieren … (⌥⌘E) | `marsdawn export`, ohne App | `export_markdown_to_pdf`; Skill | Verfügbar |
+| JSON-Ergebnis | — | `--json` bei open und export | MCP liefert dasselbe JSON | Verfügbar |
+| Agent-Skill | — | `marsdawn skill --install` | Lehrt: einmal öffnen, exportieren | Verfügbar |
+| MCP-Server | — | Läuft darunter | marsdawn-mcp: zwei Tools, nur erlaubte Ordner | Verfügbar |
+| Für KI kopieren, Verweis kopieren | Bearbeiten ▸ Für KI kopieren (⌃⌥⌘C), Verweis kopieren (⌥⌘C) | — | — (in jeden Agenten einfügen) | Verfügbar |
+| Neu laden beim Sichern | Übernimmt die gesicherte Änderung, einmal widerrufbar | — | Skill: nicht erneut öffnen | Verfügbar |
+| Claude-Code-Hook | — | Nutzt `open --background` | Hook-Skript von /cli/agents/ | Dokumentiert, optional |
+
+Verfügbar: in der oben genannten Version enthalten. Dokumentiert, optional: Anleitung auf dieser Website, die du selbst einrichtest; nicht im Tool enthalten. Geplant: noch nicht gebaut, ohne Datum. Geplant: eine Ordner-Option im MCP-Tool `open_in_marsdawn`. Weitere Optionen wie `--folder` stehen unter [Befehlszeile](/de/cli/).
 
 Du schwankst zwischen MarsDawn, der VS-Code-Vorschau, Obsidian, QLMarkdown und LynxOffice? Der Vergleich zeigt, was jeder Hersteller angibt, was MarsDawn fehlt und wann du es nicht brauchst. [Zum Vergleich](/de/vs/)
 
@@ -12652,7 +12737,7 @@ Jedes Dokument öffnet in einem eigenen Fenster. Wähle Fenster ▸ Alle Fenster
 
 Wähle im Finder eine Markdown-Datei aus und drücke die Leertaste, um sie gerendert zu lesen, samt Diagrammen. Die Übersicht verwendet das Theme, das du in MarsDawn gewählt hast, und folgt dessen Einstellung für das Erscheinungsbild.
 
-[Eine Mac-App](/de/native/)
+[Eine Mac-App](/de/native/) · [Quick Look für Markdown](/de/quicklook/)
 
 ### Andere Dateien
 
@@ -15481,12 +15566,29 @@ brew install redtear1115/tap/marsdawn
 
 ## Ce que vous pouvez attendre de MarsDawn
 
-- [Une app Mac](/fr/native/) : Fenêtres et onglets natifs, enregistrement automatique, Coup d’œil.
+- [Une app Mac](/fr/native/) : Fenêtres et onglets natifs, enregistrement automatique, [Coup d’œil](/fr/quicklook/).
 - [Vos textes restent sur votre Mac](/fr/yours/) : Pas de compte, pas de synchronisation, pas de cloud.
 - [Essai gratuit, achat unique](/fr/pay-once/) : Gratuit pendant 14 jours, puis 4,99 USD une seule fois. Sans abonnement.
 - [Fonctionnalités](/fr/features/) : Tout ce que fait MarsDawn, sur une seule page.
 
 À savoir avant d’acheter. [Ce que MarsDawn ne fait pas](/fr/limits/)
+
+## Comment les éléments s’assemblent
+
+Ce que fait chaque élément aujourd’hui, avec MarsDawn 1.1.1, marsdawn 0.6.4 et marsdawn-mcp v0.2.4.
+
+| Fonction | Dans l’app | CLI | MCP / skill | Statut |
+|---|---|---|---|---|
+| Ouvrir à une ligne | Va à la ligne, le bloc de l’aperçu clignote | `marsdawn open notes.md:120` (`--background` garde le focus) | `open_in_marsdawn` ; le skill ouvre une fois | Disponible |
+| Export PDF | Fichier ▸ Exporter au format PDF… (⌥⌘E) | `marsdawn export`, sans l’app | `export_markdown_to_pdf` ; skill | Disponible |
+| Résultat JSON | — | `--json` sur open et export | MCP renvoie le même JSON | Disponible |
+| Skill pour agents | — | `marsdawn skill --install` | Apprend à ouvrir une fois et à exporter | Disponible |
+| Serveur MCP | — | Tourne en dessous | marsdawn-mcp : deux outils, dossiers autorisés seulement | Disponible |
+| Copier pour l’IA, Copier la référence | Édition ▸ Copier pour l’IA (⌃⌥⌘C), Copier la référence (⌥⌘C) | — | — (à coller dans n’importe quel agent) | Disponible |
+| Rechargement à l’enregistrement | Reprend la modification enregistrée, annulable en une fois | — | Skill : ne pas rouvrir | Disponible |
+| Hook Claude Code | — | Utilise `open --background` | Script de hook de /cli/agents/ | Documenté, facultatif |
+
+Disponible : dans la version indiquée ci-dessus. Documenté, facultatif : instructions de ce site que vous ajoutez vous-même ; pas inclus dans l’outil. Prévu : pas encore fait, sans date. Prévu : une option de dossier dans l’outil MCP `open_in_marsdawn`. D’autres options, comme `--folder`, sont sur [Ligne de commande](/fr/cli/).
 
 Vous hésitez entre MarsDawn, l’aperçu de VS Code, Obsidian, QLMarkdown et LynxOffice ? La comparaison indique ce que chaque fournisseur précise, ce qui manque à MarsDawn et quand vous n’en avez pas besoin. [Comparer](/fr/vs/)
 
@@ -15725,7 +15827,7 @@ Chaque document s’ouvre dans sa propre fenêtre. Choisissez Fenêtre ▸ Fusio
 
 Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le lire mis en forme, diagrammes compris. Coup d’œil utilise le thème que vous avez choisi dans MarsDawn et suit son réglage d’apparence.
 
-[Une app Mac](/fr/native/)
+[Une app Mac](/fr/native/) · [Quick Look pour Markdown](/fr/quicklook/)
 
 ### Autres fichiers
 
@@ -18554,12 +18656,29 @@ brew install redtear1115/tap/marsdawn
 
 ## Qué esperar de MarsDawn
 
-- [Una app para Mac](/es/native/): Ventanas y pestañas nativas, guardado automático, Vista rápida.
+- [Una app para Mac](/es/native/): Ventanas y pestañas nativas, guardado automático, [Vista rápida](/es/quicklook/).
 - [Lo que escribes se queda en tu Mac](/es/yours/): Sin cuenta, sin sincronización, sin nube.
 - [Pruébalo gratis, paga una vez](/es/pay-once/): Gratis durante 14 días; después, 4,99 USD una sola vez. Sin suscripción.
 - [Funciones](/es/features/): Todo lo que hace MarsDawn, en una sola página.
 
 Lo que conviene saber antes de comprar. [Lo que MarsDawn no hace](/es/limits/)
+
+## Cómo encajan las piezas
+
+Lo que hace cada parte hoy, con MarsDawn 1.1.1, marsdawn 0.6.4 y marsdawn-mcp v0.2.4.
+
+| Función | En la app | CLI | MCP / skill | Estado |
+|---|---|---|---|---|
+| Abrir en una línea | Va a la línea y el bloque de la vista previa parpadea | `marsdawn open notes.md:120` (`--background` no roba el foco) | `open_in_marsdawn`; la skill abre una vez | Disponible |
+| Exportar a PDF | Archivo ▸ Exportar como PDF… (⌥⌘E) | `marsdawn export`, sin la app | `export_markdown_to_pdf`; skill | Disponible |
+| Resultado JSON | — | `--json` en open y export | MCP devuelve el mismo JSON | Disponible |
+| Skill para agentes | — | `marsdawn skill --install` | Enseña a abrir una vez y a exportar | Disponible |
+| Servidor MCP | — | Funciona por debajo | marsdawn-mcp: dos herramientas, solo carpetas permitidas | Disponible |
+| Copiar para IA, Copiar referencia | Edición ▸ Copiar para IA (⌃⌥⌘C), Copiar referencia (⌥⌘C) | — | — (pégalo en cualquier agente) | Disponible |
+| Recarga al guardar | Toma el cambio guardado, se deshace en un paso | — | Skill: no volver a abrir | Disponible |
+| Hook de Claude Code | — | Usa `open --background` | Script del hook en /cli/agents/ | Documentado, opcional |
+
+Disponible: en la versión indicada arriba. Documentado, opcional: instrucciones de este sitio que añades tú; no viene en la herramienta. Previsto: aún no existe, sin fecha. Previsto: una opción de carpeta en la herramienta MCP `open_in_marsdawn`. Otras opciones, como `--folder`, están en [Línea de comandos](/es/cli/).
 
 ¿Dudas entre MarsDawn, la vista previa de VS Code, Obsidian, QLMarkdown y LynxOffice? La comparación recoge lo que indica cada fabricante, lo que le falta a MarsDawn y cuándo no lo necesitas. [Ver la comparación](/es/vs/)
 
@@ -18798,7 +18917,7 @@ Cada documento se abre en su propia ventana. Elige Ventana ▸ Unir todas las ve
 
 Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora para leerlo renderizado, con los diagramas incluidos. Vista rápida usa el tema que elegiste en MarsDawn y sigue su ajuste de aspecto.
 
-[Una app para Mac](/es/native/)
+[Una app para Mac](/es/native/) · [Quick Look para Markdown](/es/quicklook/)
 
 ### Otros archivos
 
@@ -21627,12 +21746,29 @@ brew install redtear1115/tap/marsdawn
 
 ## MarsDawn에서 기대할 수 있는 것
 
-- [Mac 앱](/ko/native/): 네이티브 윈도우와 탭, 자동 저장, 훑어보기.
+- [Mac 앱](/ko/native/): 네이티브 윈도우와 탭, 자동 저장, [훑어보기](/ko/quicklook/).
 - [내 글은 내 Mac에](/ko/yours/): 계정도, 동기화도, 클라우드도 없습니다.
 - [무료로 체험하고, 한 번만 구입](/ko/pay-once/): 14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.
 - [기능 한눈에 보기](/ko/features/): MarsDawn이 하는 모든 일을 한 페이지에.
 
 구입 전에 알아 둘 점. [MarsDawn이 하지 않는 일](/ko/limits/)
+
+## 각 부분의 역할
+
+MarsDawn 1.1.1, marsdawn 0.6.4, marsdawn-mcp v0.2.4 기준으로 각 부분이 지금 하는 일.
+
+| 기능 | 앱 | CLI | MCP / 스킬 | 상태 |
+|---|---|---|---|---|
+| 특정 줄에서 열기 | 그 줄로 이동, 미리보기 블록이 깜박임 | `marsdawn open notes.md:120` (`--background`는 포커스 유지) | `open_in_marsdawn`, 스킬은 한 번만 열기 | 제공 중 |
+| PDF 내보내기 | 파일 ▸ PDF로 내보내기… (⌥⌘E) | `marsdawn export`, 앱 없이 | `export_markdown_to_pdf`, 스킬 | 제공 중 |
+| JSON 결과 | — | open과 export에 `--json` | MCP가 같은 JSON 반환 | 제공 중 |
+| 에이전트 스킬 | — | `marsdawn skill --install` | 한 번 열기와 내보내기를 안내 | 제공 중 |
+| MCP 서버 | — | 내부에서 실행 | marsdawn-mcp: 도구 두 개, 허용한 폴더만 | 제공 중 |
+| AI용으로 복사, 참조 복사 | 편집 ▸ AI용으로 복사 (⌃⌥⌘C), 참조 복사 (⌥⌘C) | — | — (어떤 에이전트에든 붙여 넣기) | 제공 중 |
+| 저장 시 자동 반영 | 저장된 변경을 반영, 한 번에 실행 취소 | — | 스킬: 다시 열지 않음 | 제공 중 |
+| Claude Code 훅 | — | `open --background` 사용 | /cli/agents/의 훅 스크립트 | 문서 제공, 선택 사항 |
+
+제공 중: 위에 적은 출시 버전에 포함. 문서 제공, 선택 사항: 이 사이트의 안내에 따라 직접 추가하며 도구에는 포함되지 않음. 예정: 아직 없으며 날짜 미정. 예정: MCP `open_in_marsdawn`의 폴더 옵션. `--folder` 등 다른 옵션은 [명령줄](/ko/cli/)에 있습니다.
 
 MarsDawn, VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice 사이에서 고민 중인가요? 비교 페이지에 각 회사의 설명, MarsDawn에 없는 것, MarsDawn이 필요 없는 경우를 정리했습니다. [비교 보기](/ko/vs/)
 
@@ -21871,7 +22007,7 @@ KaTeX 구문으로 쓴 수식은 미리보기와 훑어보기에 그려지고, �
 
 Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 있습니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.
 
-[Mac 앱](/ko/native/)
+[Mac 앱](/ko/native/) · [Markdown 훑어보기](/ko/quicklook/)
 
 ### 기타 파일
 

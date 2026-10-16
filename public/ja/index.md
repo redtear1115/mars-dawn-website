@@ -32,12 +32,29 @@ brew install redtear1115/tap/marsdawn
 
 ## MarsDawn に期待できること
 
-- [Mac アプリ](/ja/native/)：ネイティブのウインドウとタブ、自動保存、クイックルック。
+- [Mac アプリ](/ja/native/)：ネイティブのウインドウとタブ、自動保存、[クイックルック](/ja/quicklook/)。
 - [あなたの文章は Mac に残ります](/ja/yours/)：アカウント不要、同期なし、クラウドなし。
 - [無料で試して、一度だけ購入](/ja/pay-once/)：14日間無料、その後は一度だけ USD 4.99。サブスクリプションはありません。
 - [機能一覧](/ja/features/)：MarsDawn でできることを、1ページで。
 
 購入前に知っておくこと。 [MarsDawn ができないこと](/ja/limits/)
+
+## それぞれの役割
+
+MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 の時点で、それぞれができること。
+
+| 機能 | アプリ | CLI | MCP／skill | 状態 |
+|---|---|---|---|---|
+| 行を指定して開く | その行へ移り、プレビューのブロックが光る | marsdawn open notes.md:120（--background で前面に出ない） | open_in_marsdawn、skill は一度だけ開く | 提供中 |
+| PDF 書き出し | ファイル ▸ PDF として書き出す…（⌥⌘E） | marsdawn export、アプリ不要 | export_markdown_to_pdf、skill | 提供中 |
+| JSON の結果 | — | open と export に --json | MCP は同じ JSON を返す | 提供中 |
+| エージェント用スキル | — | marsdawn skill --install | 一度開く・書き出すを教える | 提供中 |
+| MCP サーバー | — | 内部で実行 | marsdawn-mcp：ツール 2 つ、許可したフォルダだけ | 提供中 |
+| AI 用にコピー、参照をコピー | 編集 ▸ AI 用にコピー（⌃⌥⌘C）、参照をコピー（⌥⌘C） | — | —（どのエージェントにも貼れる） | 提供中 |
+| 保存を自動で反映 | 保存された変更を反映、取り消しは一度で | — | skill：もう一度開かない | 提供中 |
+| Claude Code の hook | — | open --background を使用 | /cli/agents/ の hook スクリプト | ドキュメントあり・任意 |
+
+提供中：上に書いたリリース版に含まれています。ドキュメントあり・任意：このサイトの手順で自分で追加するもので、ツールには含まれません。予定：まだなく、日付は未定です。予定：MCP の open_in_marsdawn にフォルダのオプション。--folder などほかのオプションは[コマンドライン](/ja/cli/)へ。
 
 MarsDawn、VS Code のプレビュー、Obsidian、QLMarkdown、LynxOffice で迷っていますか。比較ページに、各社の記載、MarsDawn にないもの、MarsDawn がいらない場面をまとめました。[比較を見る](/ja/vs/)
 

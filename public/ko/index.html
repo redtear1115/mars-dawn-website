@@ -293,13 +293,31 @@ try {
 <nav class="traits" aria-label="MarsDawn에서 기대할 수 있는 것">
 <h2>MarsDawn에서 기대할 수 있는 것</h2>
 <ul>
-  <li><a href="/ko/native/">Mac 앱</a><span>네이티브 윈도우와 탭, 자동 저장, 훑어보기.</span></li>
+  <li><a href="/ko/native/">Mac 앱</a><span>네이티브 윈도우와 탭, 자동 저장, <a href="/ko/quicklook/">훑어보기</a>.</span></li>
   <li><a href="/ko/yours/">내 글은 내 Mac에</a><span>계정도, 동기화도, 클라우드도 없습니다.</span></li>
   <li><a href="/ko/pay-once/">무료로 체험하고, 한 번만 구입</a><span>14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.</span></li>
   <li><a href="/ko/features/">기능 한눈에 보기</a><span>MarsDawn이 하는 모든 일을 한 페이지에.</span></li>
 </ul>
 </nav>
 <p class="know">구입 전에 알아 둘 점. <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+<section class="pieces">
+<h2>각 부분의 역할</h2>
+<p>MarsDawn 1.1.1, marsdawn 0.6.4, marsdawn-mcp v0.2.4 기준으로 각 부분이 지금 하는 일.</p>
+<div class="table-scroll"><table class="compare compare-wide compare-pieces">
+<thead><tr><th scope="col">기능</th><th scope="col">앱</th><th scope="col">CLI</th><th scope="col">MCP / 스킬</th><th scope="col">상태</th></tr></thead>
+<tbody>
+  <tr><th scope="row">특정 줄에서 열기</th><td data-label="앱">그 줄로 이동, 미리보기 블록이 깜박임</td><td data-label="CLI"><code>marsdawn open notes.md:120</code> (<code>--background</code>는 포커스 유지)</td><td data-label="MCP / 스킬"><code>open_in_marsdawn</code>, 스킬은 한 번만 열기</td><td data-label="상태">제공 중</td></tr>
+  <tr><th scope="row">PDF 내보내기</th><td data-label="앱">파일 ▸ PDF로 내보내기… (⌥⌘E)</td><td data-label="CLI"><code>marsdawn export</code>, 앱 없이</td><td data-label="MCP / 스킬"><code>export_markdown_to_pdf</code>, 스킬</td><td data-label="상태">제공 중</td></tr>
+  <tr><th scope="row">JSON 결과</th><td data-label="앱">—</td><td data-label="CLI">open과 export에 <code>--json</code></td><td data-label="MCP / 스킬">MCP가 같은 JSON 반환</td><td data-label="상태">제공 중</td></tr>
+  <tr><th scope="row">에이전트 스킬</th><td data-label="앱">—</td><td data-label="CLI"><code>marsdawn skill --install</code></td><td data-label="MCP / 스킬">한 번 열기와 내보내기를 안내</td><td data-label="상태">제공 중</td></tr>
+  <tr><th scope="row">MCP 서버</th><td data-label="앱">—</td><td data-label="CLI">내부에서 실행</td><td data-label="MCP / 스킬">marsdawn-mcp: 도구 두 개, 허용한 폴더만</td><td data-label="상태">제공 중</td></tr>
+  <tr><th scope="row">AI용으로 복사, 참조 복사</th><td data-label="앱">편집 ▸ AI용으로 복사 (⌃⌥⌘C), 참조 복사 (⌥⌘C)</td><td data-label="CLI">—</td><td data-label="MCP / 스킬">— (어떤 에이전트에든 붙여 넣기)</td><td data-label="상태">제공 중</td></tr>
+  <tr><th scope="row">저장 시 자동 반영</th><td data-label="앱">저장된 변경을 반영, 한 번에 실행 취소</td><td data-label="CLI">—</td><td data-label="MCP / 스킬">스킬: 다시 열지 않음</td><td data-label="상태">제공 중</td></tr>
+  <tr><th scope="row">Claude Code 훅</th><td data-label="앱">—</td><td data-label="CLI"><code>open --background</code> 사용</td><td data-label="MCP / 스킬">/cli/agents/의 훅 스크립트</td><td data-label="상태">문서 제공, 선택 사항</td></tr>
+</tbody>
+</table></div>
+<p>제공 중: 위에 적은 출시 버전에 포함. 문서 제공, 선택 사항: 이 사이트의 안내에 따라 직접 추가하며 도구에는 포함되지 않음. 예정: 아직 없으며 날짜 미정. 예정: MCP <code>open_in_marsdawn</code>의 폴더 옵션. <code>--folder</code> 등 다른 옵션은 <a href="/ko/cli/">명령줄</a>에 있습니다.</p>
+</section>
 <p>MarsDawn, VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice 사이에서 고민 중인가요? 비교 페이지에 각 회사의 설명, MarsDawn에 없는 것, MarsDawn이 필요 없는 경우를 정리했습니다. <a href="/ko/vs/">비교 보기</a></p>
 <section class="stays">
 <h2>문서는 Mac에 남습니다</h2>
