@@ -227,6 +227,50 @@ def by_loc(items: list, tag: str = "") -> dict:
     return {loc: value for loc, t, value in items if t == tag}
 
 
+
+def nested(text: str) -> dict:
+    """'- [ ] **en**' lines followed by indented '- key：`value`' lines -> {locale: {key: value}}."""
+    out, cur = {}, None
+    for line in text.split("\n"):
+        head = re.match(r"^- \[[ x]\] \*\*(en|zh-Hant|ja)\*\*\s*$", line)
+        if head:
+            cur = LOC_LABEL[head.group(1)]
+            out[cur] = {}
+            continue
+        item = re.match(r"^\s+- ([^：:`]+)[：:]\s*(.+?)\s*$", line)
+        if item and cur:
+            out[cur][item.group(1).strip()] = unwrap(item.group(2))
+            continue
+        bare = re.match(r"^\s+- (`.+`)\s*$", line)
+        if bare and cur:
+            out[cur].setdefault("_list", []).append(unwrap(bare.group(1)))
+        elif re.match(r"^- \[[ x]\]", line) or re.match(r"^#", line):
+            cur = None
+    return out
+
+
+def fenced_by_locale(text: str) -> dict:
+    """'- [ ] **en**' followed by a fenced block -> {locale: [lines]}."""
+    out = {}
+    for m in re.finditer(r"^- \[[ x]\] \*\*(en|zh-Hant|ja)\*\*\s*\n```\n(.*?)\n```", text, re.M | re.S):
+        out[LOC_LABEL[m.group(1)]] = m.group(2).split("\n")
+    return out
+
+
+def locale_chunk(text: str, name: str) -> str:
+    """The text after a bold '**name**' line, up to the next bold line."""
+    lines = text.split("\n")
+    for i, line in enumerate(lines):
+        if line.strip() == f"**{name}**":
+            end = len(lines)
+            for j in range(i + 1, len(lines)):
+                if re.match(r"^\*\*[^*]+\*\*\s*$", lines[j].strip()):
+                    end = j
+                    break
+            return "\n".join(lines[i + 1:end])
+    raise Stop(f"no bold line {name!r}")
+
+
 # ---- collecting data and slots ----------------------------------------------------------------
 
 DATA = {}
@@ -389,9 +433,118 @@ def ingest_246() -> None:
                                                         "item": "#246(b)", "version": ver})
 
 
+
+# ---- #242: the /vs/ page, and its short version on the home page --------------------------------
+
+def ingest_242() -> None:
+    c1, b1 = comment(242, 1)
+    c2, b2 = comment(242, 2)
+    a = nested(section(b1, "### (a)"))
+    notes = bullets(section(b1, "### (b)(c)"))
+    lacks_a = by_loc(r1_items(section(b1, "### (d)")), "A")
+    dont = fenced_by_locale(section(b1, "### (e)"))
+    short = by_loc(r1_items(section(b1, "### (f)")))
+    links = nested(section(b1, "### (g)"))
+
+    def r2_nested(label: str) -> dict:
+        """The round-2 correction '- [ ] **label**' with indented '- en：`...`' lines -> {locale: value}."""
+        m = re.search(r"^- \[[ x]\] \*\*" + re.escape(label) + r"\*\*[^\n]*\n((?:  - .*\n?)+)", b2, re.M)
+        assert m, label
+        return {LOC_LABEL[k]: unwrap(v.strip()) for k, v in re.findall(r"^\s+- (en|zh-Hant|ja)[：:]\s*(.+)$", m.group(1), re.M)}
+    vscode_cell = r2_nested("VS Code 格")
+    lacks_extra = r2_nested("lacks 加的句子")
+    dont_vscode = r2_nested("When you don't need 的 VS Code 那條")
+    # the bracketed command in the VS Code cell is code, as in the round-1 table and in the other languages' cells
+    for loc in vscode_cell:
+        vscode_cell[loc] = vscode_cell[loc].replace("code -g file:line", "`code -g file:line`")
+    anchor = {"en": "Its PDFs have no page numbers.", "zh-hant": "輸出的 PDF 沒有頁碼。", "ja": "PDF にページ番号は入りません。"}
+    joiner = {"en": " ", "zh-hant": "", "ja": ""}
+
+    def src1(where):
+        return comment_source(c1, 1, where)
+
+    def src2(where):
+        return comment_source(c2, 2, where)
+
+    for loc in LOCALES:
+        if loc in FIRST:
+            ln = {"en": "en", "zh-hant": "zh-Hant", "ja": "ja"}[loc]
+            table = data_tables(locale_chunk(section(b1, "### (b)(c)"), ln))[0]
+            fields = {"title": a[loc]["title"], "h1": a[loc]["h1"], "intro": a[loc]["引言"],
+                      "note": notes[f"表下註記（{ln}）"], "short": short[loc]}
+            where = {"title": src1(f"### (a), {loc} title"), "h1": src1(f"### (a), {loc} h1"), "intro": src1(f"### (a), {loc} 引言"),
+                     "note": src1(f"### (b)(c), 表下註記（{ln}）"), "short": src1(f"### (f), {loc}")}
+            lacks = lacks_a[loc]
+            assert lacks.count(anchor[loc]) == 1, loc
+            lacks_full = lacks.replace(anchor[loc], anchor[loc] + joiner[loc] + lacks_extra[loc])
+            lacks_src = [src1(f"### (d) version A, {loc}"), src2(f"lacks 加的句子, {loc}, spliced after {anchor[loc]!r}")]
+            ver = "R1+R2"
+            items = list(dont[loc])
+            heading, bullets_ = items[0], [i[2:] if i.startswith("- ") else i for i in items[1:]]
+            assert len(bullets_) == 6
+            assert "VS Code" in bullets_[0] and "VS Code" in dont_vscode[loc]
+            bullets_[0] = dont_vscode[loc]
+            dont_src = [src1(f"### (e), {loc} heading")] + [src1(f"### (e), {loc} bullet {i + 1}") for i in range(6)]
+            dont_src[1] = src2(f"When you don't need 的 VS Code 那條, {loc}")
+            head_row, rows = table[0], [list(r) for r in table[1:]]
+            assert len(rows) == 8 and "VS Code" in head_row[2]
+            rows[3][2] = vscode_cell[loc]
+            cell_src = lambda r, c: src2(f"VS Code 格, {loc}") if (r, c) == (3, 2) else src1(f"### (b)(c) table {ln}, row {r + 1} col {c + 1}")
+            l1 = links[loc]["_list"]
+        else:
+            t2 = r2_table(b2, loc)
+            tables = data_tables(section(b2, "### " + {"zh-hans": "zh-Hans"}.get(loc, loc)))
+            head_row, rows = tables[1][0], [list(r) for r in tables[1][1:]]
+            assert len(rows) == 8
+            fields = {"title": t2["title"], "h1": t2["h1"], "intro": t2["引言"], "note": t2["表下註記"], "short": t2["首頁短版"]}
+            where = {k: src2(f"### {loc} table, {v}") for k, v in (("title", "title"), ("h1", "h1"), ("intro", "引言"), ("note", "表下註記"), ("short", "首頁短版"))}
+            lacks_full = t2["What MarsDawn lacks"]
+            lacks_src = [src2(f"### {loc} table, What MarsDawn lacks")]
+            ver = "R2"
+            heading = t2["When you don't need：標題"]
+            bullets_ = [t2[f"When you don't need：第 {i} 條"] for i in range(1, 7)]
+            dont_src = [src2(f"### {loc} table, When you don't need：標題")] + [src2(f"### {loc} table, When you don't need：第 {i} 條") for i in range(1, 7)]
+            cell_src = lambda r, c: src2(f"### {loc} data table, row {r + 1} col {c + 1}")
+            l1 = [t2["比較頁介紹 1"], t2["比較頁介紹 2"]]
+        assert len(head_row) == 6 and all(len(r) == 6 for r in rows)
+        for key, field, item in (("title", "title", "(a) title"), ("h1", "h1", "(a) h1"), ("intro", "p", "(a) 引言")):
+            put(("vs", loc, key), esc(fields[key]) if key == "title" else inline(fields[key]),
+                slot={"locale": loc, "page": "vs", "field": field, "source": where[key], "item": f"#242{item}", "version": ver})
+        put(("vs", loc, "note"), inline(fields["note"]), slot={"locale": loc, "page": "vs", "field": "p", "source": where["note"],
+                                                                "item": "#242(b)(c) 表下註記", "version": ver})
+        put(("vs", loc, "lacks"), inline(lacks_full), slot={"locale": loc, "page": "vs", "field": "p", "source": lacks_src,
+                                                             "item": "#242(d) What MarsDawn lacks (A)", "version": ver})
+        put(("vs", loc, "dont_h"), inline(heading), slot={"locale": loc, "page": "vs", "field": "h2", "source": dont_src[0],
+                                                           "item": "#242(e) heading", "version": ver})
+        DATA["vs"][loc]["dont"] = []
+        for i, b in enumerate(bullets_):
+            DATA["vs"][loc]["dont"].append(inline(b))
+            SLOTS.append({"locale": loc, "page": "vs", "field": "li", "source": dont_src[i + 1], "item": f"#242(e) bullet {i + 1}",
+                          "version": ver, "path": ["vs", loc, "dont", i]})
+        DATA["vs"][loc]["links"] = []
+        for i, l in enumerate(l1):
+            DATA["vs"][loc]["links"].append(inline(l))
+            SLOTS.append({"locale": loc, "page": "vs", "field": "li", "source": src1(f"### (g), {loc} item {i + 1}") if loc in FIRST else src2(f"### {loc} table, 比較頁介紹 {i + 1}"),
+                          "item": f"#242(g) item {i + 1}", "version": ver, "path": ["vs", loc, "links", i]})
+        DATA["vs"][loc]["head"] = [inline(c) for c in head_row]
+        for c, cell in enumerate(head_row):
+            if cell:
+                SLOTS.append({"locale": loc, "page": "vs", "field": "th", "source": src1(f"### (b)(c) table, header col {c + 1}") if loc in FIRST else src2(f"### {loc} data table, header col {c + 1}"),
+                              "item": f"#242(b)(c) header {c + 1}", "version": ver, "path": ["vs", loc, "head", c]})
+        DATA["vs"][loc]["rows"] = []
+        for r, row in enumerate(rows):
+            DATA["vs"][loc]["rows"].append([inline(c) for c in row])
+            for c, cell in enumerate(row):
+                SLOTS.append({"locale": loc, "page": "vs", "field": "th" if c == 0 else "td", "source": cell_src(r, c),
+                              "item": f"#242(b)(c) row {r + 1} col {c + 1}", "version": ver, "path": ["vs", loc, "rows", r, c]})
+        # the home page's short version
+        put(("home", loc, "vs_short"), inline(fields["short"]), slot={"locale": loc, "page": "index", "field": "p", "source": where["short"],
+                                                                      "item": "#242(f)", "version": ver})
+
+
 # ---- main -------------------------------------------------------------------------------------
 
-INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246}
+INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242}
 
 
 def write() -> None:

@@ -1311,6 +1311,7 @@ html { overflow-x: hidden; }
 .compare-ours td { color: var(--dust); }
 .compare-ours td:last-child { color: var(--ink); }
 .compare-wide { min-width: 40rem; }
+.compare-vs { min-width: 64rem; }
 .compare-wide tbody th[scope="row"] { width: 18%; }
 /* On a phone the row labels stay put while the columns scroll under them. */
 .compare-wide th:first-child {

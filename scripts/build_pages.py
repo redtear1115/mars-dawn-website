@@ -5441,6 +5441,7 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
             hero_window.window_markdown(locale),
             html_to_markdown(home_body).rstrip(),
             html_to_markdown(_home_sections_for_twin(locale)).rstrip(),
+            *([html_to_markdown(page["after"]).rstrip()] if page.get("after") else []),
             html_to_markdown(home_faq).rstrip(),
             *proof,
         ])
@@ -5456,7 +5457,7 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
+PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "markdown-to-pdf", "vs", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
               "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/agents", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
@@ -5464,7 +5465,7 @@ PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits
 SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
                   "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "mermaid-preview-mac": "mermaid-preview-mac", "quicklook": "quicklook", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
-                  "vs/macmd-viewer": "vs-macmd-viewer",
+                  "vs": "vs", "vs/macmd-viewer": "vs-macmd-viewer",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
                   "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes", "themes/new": "themes-new", "themes/agents": "themes-agents",
                   "themes/gallery": "themes-gallery",
@@ -5627,6 +5628,39 @@ def apply_seo_copy(merged: dict) -> dict:
     return out
 
 
+def promo_table_html(head: list, rows: list, classes: str) -> str:
+    """A comparison table from promo-130 data: the head's cells and every cell are HTML-ready text; the first
+    cell of a row is its row header, and each other cell names its column (the stacked layout on narrow screens)."""
+    cols = "".join(f'<th scope="col">{cell}</th>' for cell in head)
+    body = "\n".join(
+        f'  <tr><th scope="row">{row[0]}</th>'
+        + "".join(f'<td data-label="{_plain(label)}">{cell}</td>' for label, cell in zip(head[1:], row[1:])) + "</tr>"
+        for row in rows)
+    return f'<div class="table-scroll"><table class="{classes}">\n<thead><tr>{cols}</tr></thead>\n<tbody>\n{body}\n</tbody>\n</table></div>'
+
+
+def vs_page(copy: dict) -> dict:
+    """/vs/: how MarsDawn compares with the other ways to read Markdown on a Mac (#242)."""
+    dont = "\n".join(f"  <li>{item}</li>" for item in copy["dont"])
+    more = "\n".join(f"  <li>{item}</li>" for item in copy["links"])
+    body = f"""<section class="intro">
+  <h1>{copy["h1"]}</h1>
+  <p>{copy["intro"]}</p>
+</section>
+{promo_table_html(copy["head"], copy["rows"], "compare compare-wide compare-vs")}
+<p>{copy["note"]}</p>
+<p>{copy["lacks"]}</p>
+<h2>{copy["dont_h"]}</h2>
+<ul>
+{dont}
+</ul>
+<ul>
+{more}
+</ul>
+"""
+    return {"title": copy["title"], "description": _plain(copy["intro"]), "body": body}
+
+
 def apply_promo130(merged: dict) -> dict:
     """merged with the rest of the promo-130 bundle applied: titles (#244), the home description and the
     definition sentence (#244), and the later issues' sections. Every string is scripts/promo130/data.py's."""
@@ -5645,6 +5679,11 @@ def apply_promo130(merged: dict) -> dict:
         intro, n = re.subn(r"(</h1>)", lambda m: m.group(1) + f'\n  <p class="definition">{copy["definition"]}</p>', native["intro"], count=1)
         assert n == 1, f"{locale}/native: no h1 in the intro"
         out[(locale, "native")] = {**native, "intro": intro}
+        vs = promo_data.DATA["vs"][locale]
+        UI[locale].setdefault("vs", _plain(vs["title"]))
+        out[(locale, "vs")] = vs_page(vs)
+        after = [f'<p>{copy["vs_short"]}</p>']
+        out[(locale, "index")] = {**out[(locale, "index")], "after": "\n".join(after)}
     return out
 
 
@@ -6174,8 +6213,9 @@ def render(locale: str, slug: str, page: dict) -> str:
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
         # The FAQ is written with the page's body but belongs after the install block and the traits.
         home_body, home_faq = split_faq(page["body"])
-        main_html = "\n".join([hero_html, brand_film.film_html(locale), home_body.strip(), loop_anim.loop_html(locale),
-                               home_sections_html(locale), home_faq, proof_html, closing_html])
+        main_html = "\n".join(part for part in (hero_html, brand_film.film_html(locale), home_body.strip(), loop_anim.loop_html(locale),
+                                                 home_sections_html(locale), page.get("after", "").strip(), home_faq, proof_html, closing_html)
+                              if part)
     elif slug == "features":
         # The overview page: its two screenshots are the native and PDF pages', and it is the hub, so
         # no trait list under it.
@@ -6633,7 +6673,7 @@ def en_reference() -> dict:
     en_pages = {slug: page for slug, page in all_pages_en().items() if slug not in templates_pages.SLUGS}
     return {
         # The templates' outline labels travel in tables["templates"]["ui_labels"], not in ui.
-        "ui": {key: value for key, value in UI["en"].items() if key not in templates_pages.UI_LABELS["en"] and key != "quicklook"},
+        "ui": {key: value for key, value in UI["en"].items() if key not in templates_pages.UI_LABELS["en"] and key not in ("quicklook", "vs")},
         "store_chip": STORE_CHIP["en"], "schema_notes": SCHEMA_NOTES["en"], "example_plan": EXAMPLE_PLAN["en"],
         "trait_link": TRAIT_LINK["en"], "trait_nav_heading": TRAIT_NAV_HEADING["en"],
         "figure_list_label": FIGURE_LIST_LABEL["en"],
