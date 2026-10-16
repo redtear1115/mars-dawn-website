@@ -101,9 +101,9 @@ THEME_AGENTS = {
 # UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
 # Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
 FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur une seule page · MarsDawn',
- 'description': 'Un éditeur Markdown natif pour Mac\xa0: aperçu en direct, Mermaid et formules, '
-                'thèmes, plus des pages PDF et d’impression propres pour les réunions, les notes '
-                'en marge et les dossiers papier.',
+ 'description': 'Éditeur Markdown natif pour Mac\xa0: aperçu en direct, Mermaid, formules, '
+                'thèmes et pages PDF ou imprimées pour réunions, notes en marge et dossiers '
+                'papier.',
  'h1': 'Tout ce que fait MarsDawn, sur une seule page.',
  'intro': ['MarsDawn est un éditeur Markdown pour Mac. Vous écrivez d’un côté et vous lisez la '
            'page mise en forme de l’autre, avec les diagrammes, les formules et le code dessinés. '
@@ -187,11 +187,10 @@ FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur u
                                'de votre aperçu.',
                           'links': ['native']},
                          {'h': 'Zoom, numéros de ligne et barre d’état',
-                          'p': 'Zoomez ensemble sur la source et l’aperçu, de 75\xa0% à 200\xa0%. '
-                               'Une marge de numéros de ligne longe la source, et la barre d’état '
-                               'indique votre ligne et votre colonne, ainsi que le nombre de mots '
-                               'et de caractères et le temps de lecture du document ou de votre '
-                               'sélection.',
+                          'p': 'Zoomez ensemble sur la source et l’aperçu, de 50\xa0% à 300\xa0%. Une marge '
+                               'de numéros de ligne longe la source, et la barre d’état indique votre '
+                               'ligne et votre colonne, ainsi que le nombre de mots et de caractères et '
+                               'le temps de lecture du document ou de votre sélection.',
                           'links': []},
                          {'h': 'Images',
                           'p': 'Enregistrez le document, puis déposez ou collez une image dans '

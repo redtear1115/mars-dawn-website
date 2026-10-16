@@ -4467,10 +4467,10 @@ FEATURES_COPY = {
                                    'colors match your preview theme.',
                               'links': ['native']},
                              {'h': 'Zoom, line numbers and a status bar',
-                              'p': 'Zoom the source and preview together from 75% to 200%. A '
-                                   'line-number gutter runs beside the source, and the status bar '
-                                   'shows your line and column, plus word and character counts and '
-                                   'reading time for the document or your selection.',
+                              'p': 'Zoom the source and preview together from 50% to 300%. A line-number gutter '
+                                   'runs beside the source, and the status bar shows your line and column, '
+                                   'plus word and character counts and reading time for the document or your '
+                                   'selection.',
                               'links': []},
                              {'h': 'Images',
                               'p': 'Save the document, then drop or paste an image into the editor. '
@@ -4645,8 +4645,7 @@ FEATURES_COPY = {
                               'p': '粗體、斜體、刪除線、行內程式碼、連結、引言和待辦清單都照常使用。編輯器會幫 Markdown 語法上色，顏色和預覽主題一致。',
                               'links': ['native']},
                              {'h': '縮放、行號和狀態列',
-                              'p': '原始碼和預覽可以一起縮放，範圍 75% 到 '
-                                   '200%。原始碼旁有行號欄；狀態列顯示游標所在的行與欄，以及整份文件或所選文字的字數、字元數和閱讀時間。',
+                              'p': '原始碼和預覽可以一起縮放，範圍 50% 到 300%。原始碼旁有行號欄；狀態列顯示游標所在的行與欄，以及整份文件或所選文字的字數、字元數和閱讀時間。',
                               'links': []},
                              {'h': '圖片',
                               'p': '先儲存文件，再把圖片拖進或貼到編輯器。MarsDawn 會把圖片複製到文件旁的 assets '

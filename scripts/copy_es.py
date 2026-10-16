@@ -101,9 +101,9 @@ THEME_AGENTS = {
 # UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
 # Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
 FEATURES = {'title': 'Funciones: un editor de Markdown para Mac, en una sola página · MarsDawn',
- 'description': 'Un editor de Markdown nativo para Mac: vista previa en vivo, Mermaid y fórmulas, '
-                'temas, además de páginas limpias en PDF y para imprimir en reuniones, notas al '
-                'margen y archivos en papel.',
+ 'description': 'Editor de Markdown nativo para Mac: vista previa, Mermaid, fórmulas, temas '
+                'y páginas en PDF o impresas para reuniones, notas al margen y registros '
+                'en papel.',
  'h1': 'Todo lo que hace MarsDawn, en una sola página.',
  'intro': ['MarsDawn es un editor de Markdown para Mac. Escribes en un lado y lees la página '
            'renderizada en el otro, con los diagramas, las fórmulas y el código ya dibujados. No '
@@ -185,11 +185,10 @@ FEATURES = {'title': 'Funciones: un editor de Markdown para Mac, en una sola pá
                                'tema de tu vista previa.',
                           'links': ['native']},
                          {'h': 'Zoom, números de línea y barra de estado',
-                          'p': 'Acerca y aleja el código y la vista previa a la vez, del 75 % al '
-                               '200 %. Junto al código hay un margen con números de línea, y la '
-                               'barra de estado muestra tu línea y columna, además del recuento de '
-                               'palabras y caracteres y el tiempo de lectura del documento o de tu '
-                               'selección.',
+                          'p': 'Acerca y aleja el código y la vista previa a la vez, del 50 % al 300 %. '
+                               'Junto al código hay un margen con números de línea, y la barra de estado '
+                               'muestra tu línea y columna, además del recuento de palabras y caracteres '
+                               'y el tiempo de lectura del documento o de tu selección.',
                           'links': []},
                          {'h': 'Imágenes',
                           'p': 'Guarda el documento y después arrastra o pega una imagen en el '

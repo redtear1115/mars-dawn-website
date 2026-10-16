@@ -101,9 +101,9 @@ THEME_AGENTS = {
 # UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
 # Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
 FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Seite · MarsDawn',
- 'description': 'Ein nativer Markdown-Editor für den Mac: Live-Vorschau, Mermaid und Formeln, '
-                'Themes sowie saubere PDF- und Druckseiten für Besprechungen, Randnotizen und '
-                'Papierakten.',
+ 'description': 'Nativer Markdown-Editor für den Mac: Live-Vorschau, Mermaid, Formeln, '
+                'Themes und saubere PDF- und Druckseiten für Besprechungen, Randnotizen '
+                'und Papierakten.',
  'h1': 'Alles, was MarsDawn kann, auf einer Seite.',
  'intro': ['MarsDawn ist ein Markdown-Editor für den Mac. Auf der einen Seite schreibst du, auf '
            'der anderen liest du die gerenderte Seite, mit eingezeichneten Diagrammen, Formeln und '
@@ -189,10 +189,10 @@ FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Se
                                'Vorschau.',
                           'links': ['native']},
                          {'h': 'Zoom, Zeilennummern und eine Statusleiste',
-                          'p': 'Zoome Quelltext und Vorschau gemeinsam von 75 % bis 200 %. Neben '
-                               'dem Quelltext läuft eine Spalte mit Zeilennummern, und die '
-                               'Statusleiste zeigt Zeile und Spalte sowie Wort- und Zeichenzahl '
-                               'und die Lesezeit für das Dokument oder deine Auswahl.',
+                          'p': 'Zoome Quelltext und Vorschau gemeinsam von 50 % bis 300 %. Neben dem Quelltext '
+                               'läuft eine Spalte mit Zeilennummern, und die Statusleiste zeigt Zeile '
+                               'und Spalte sowie Wort- und Zeichenzahl und die Lesezeit für das Dokument '
+                               'oder deine Auswahl.',
                           'links': []},
                          {'h': 'Bilder',
                           'p': 'Sichere das Dokument und ziehe dann ein Bild in den Editor oder '
@@ -285,7 +285,7 @@ FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Se
                'h2': 'Für Agenten und Skripte',
                'lead': '',
                'lead_links': [],
-               'items': [{'h': 'Ein kostenloses Kommandozeilenwerkzeug',
+               'items': [{'h': 'Ein kostenloses Befehlszeilenwerkzeug',
                           'p': 'Das kostenlose Werkzeug marsdawn wird separat mit Homebrew '
                                'installiert. marsdawn export macht aus einer Markdown-Datei ein '
                                'PDF, gerendert wie die Vorschau von MarsDawn; die App braucht es '
