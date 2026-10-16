@@ -6,14 +6,52 @@
 
 ## 在 Claude Code 中安裝
 
+命令列工具 `marsdawn` 會幫你寫好這個 skill，寫進去的內容和你已安裝的 `marsdawn` 版本相符。如果還沒有 `marsdawn`，先用 [Homebrew](https://brew.sh) 安裝：
+
+```
+brew install redtear1115/tap/marsdawn
+```
+
+然後安裝 skill：
+
+```
+marsdawn skill --install
+```
+
+這會把 skill 寫到 `~/.claude/skills/marsdawn/SKILL.md`，資料夾不存在時會一併建立。因為檔案是由你手上的 `marsdawn` 產生的，裡面不會出現你這個版本沒有的選項。
+
+需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 `/marsdawn` 自己執行。想先看內容的話，它只是[一個簡短的檔案](/cli/skill/SKILL.md)。
+
+## 升級 marsdawn 之後
+
+Homebrew 會升級 `marsdawn`，但不會動 skill，所以它會停在舊版本，要自己更新：
+
+```
+marsdawn skill --install --force
+```
+
+`--force` 會取代現有的 `SKILL.md`，包括你自己改過的地方。不加 `--force` 的話，如果那裡已經有內容不同的 `SKILL.md`，`marsdawn` 不會動它，會告訴你內容不同，並以代碼 64（`skill_differs`）結束。檔案已經是最新的，就什麼都不改。
+
+## 給其他 agent
+
+加上 `--dir`，指到你的 agent 放 skill 的資料夾，`marsdawn` 就會把 `SKILL.md` 寫到那裡：
+
+```
+marsdawn skill --install --dir <path>
+```
+
+這個檔案是純 Markdown，只有說明和指令，會讀指令檔的 agent 可以直接用。
+
+## 沒有 Homebrew，或沒有命令列工具
+
+如果沒辦法先安裝 `marsdawn`，就直接下載這個檔案：
+
 ```
 mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md
 ```
 
-需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 `/marsdawn` 自己執行。它只是[一個簡短的檔案](/cli/skill/SKILL.md)，安裝前先讀一遍。
-
-其他 agent 也能用同一個檔案。它是純 Markdown，只有說明和指令，讓你的 agent 讀這個網址，或直接貼給它就好。這個檔案是英文的。
+這會從本站抓最新的 skill，可能比較舊的 `marsdawn` 還新。等你裝好命令列工具，再執行 `marsdawn skill --install --force`，就會換成和它相符的版本。你也可以讓 agent 讀這個網址，或直接貼給它。這個檔案是英文的。
 
 ## 它教什麼
 
@@ -34,16 +72,18 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 ## 其他頁面
 
 - [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。已在 Mac App Store 上架。
+- [功能一覽](https://marsdawn.southern-light.dev/zh-hant/features/index.md): Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。
 - [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hant/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
-- [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。
+- [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。
 - [為 Mac 而做](https://marsdawn.southern-light.dev/zh-hant/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
 - [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號。內建四種主題，主題庫還有更多。購買前先知道。
 - [支援](https://marsdawn.southern-light.dev/zh-hant/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。
 - [隱私權政策](https://marsdawn.southern-light.dev/zh-hant/privacy/index.md): MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。
-- [在 Mac 上看 Markdown](https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/index.md): md 檔案是加上格式記號的純文字。這頁說明怎麼在 Mac 上看到排版後的樣子：用 Mac App Store 上可以免費下載的 MarsDawn，或用免費的 marsdawn 命令列工具轉成 PDF。
+- [Mac 怎麼開 md 檔](https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/index.md): Mac 怎麼開 md 檔：雙擊、設成預設 App、在 Finder 用快速查看。AI agent 寫出來的 .md，也可以用 MarsDawn 打開，讀排好版的頁面。
+- [在 Mac 上預覽 Mermaid](https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/index.md): 在 Mac 上預覽 Mermaid 圖表：原始碼旁邊即時畫出來，快速查看和輸出 PDF 也看得到。圖表寫錯時，會顯示錯誤訊息和出錯的那一行。
 - [Markdown 轉 PDF](https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/index.md): 免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。
-- [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀檢視器，直接購買 USD 19.99。MarsDawn 邊編輯邊預覽，免費試用後在 Mac App Store 一次解鎖 USD 4.99。逐項比較功能、價格和購買方式。
+- [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 4.99 解鎖一次。逐項比較，附來源。
 - [命令列工具](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。
 - [給 AI agent 的 marsdawn 參考](https://marsdawn.southern-light.dev/zh-hant/cli/agents/index.md): 給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。
 - [MCP 伺服器](https://marsdawn.southern-light.dev/zh-hant/cli/mcp/index.md): marsdawn 沒有自己的 AI 模型，是哪個 agent 寫出 Markdown 都無所謂。可以從 CLI、skill 檔案，或 marsdawn-mcp 這個 MCP 伺服器呼叫，三者最後都執行同一個 export。
