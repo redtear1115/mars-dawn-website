@@ -1012,11 +1012,11 @@ GALLERY_PAGES = {
 """,
     },
     ("zh-hans", "themes/gallery"): {
-        "title": "主题库：MarsDawn 的社区主题 · MarsDawn",
+        "title": "主题图库：MarsDawn 的社区主题 · MarsDawn",
         "description": "浏览社区投稿的 MarsDawn 预览主题，按场景筛选，也可以举报有问题的主题。在浏览器里打造一个自己的主题，不用安装，也不用 git。",
         "body": f"""
 <section class="intro">
-  <h1>主题库</h1>
+  <h1>主题图库</h1>
   <p>社区投稿的预览主题，每一个都经过开发者审核、合并后才会出现在这里。按场景筛选，或是<a href="/zh-hans/themes/new/">在浏览器里打造一个自己的主题</a>——不用安装，也不用 git。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
@@ -4904,7 +4904,7 @@ HOME = {
         "install_caps": [
             "<code>marsdawn export</code> 把 Markdown 文件导出成 PDF，排版和 MarsDawn 的预览一样，不需要 app。",
             "<code>marsdawn open</code> 在 MarsDawn app 里打开文件，让你审阅。",
-            "<code>--json</code> 返回脚本和 agent 能解析的结果。",
+            "<code>--json</code> 返回脚本和代理能解析的结果。",
         ],
         "proof_h": "App 实际的样子",
     },
@@ -5177,7 +5177,7 @@ COMPARE_TABLES["pay-once-states"] = {
 
 COMPARE_TABLES["mcp-choice"] = {
     "head": {"en": ["If your agent", "Use", "Needs"], "zh-hant": ["如果你的 agent", "就用", "需要"],
-             "zh-hans": ["如果你的 agent", "就用", "需要"], "ja": ["エージェントが", "使うもの", "必要なもの"]},
+             "zh-hans": ["如果你的代理", "就用", "需要"], "ja": ["エージェントが", "使うもの", "必要なもの"]},
     "rows": {
         "en": [
             ["Can run a shell command", '<a href="{root}cli/agents/">The CLI</a>', "macOS 15 or later"],
