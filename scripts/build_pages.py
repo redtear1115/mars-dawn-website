@@ -1008,11 +1008,11 @@ GALLERY_PAGES = {
 """,
     },
     ("zh-hans", "themes/gallery"): {
-        "title": "主题库：MarsDawn 的社区主题 · MarsDawn",
+        "title": "主题图库：MarsDawn 的社区主题 · MarsDawn",
         "description": "浏览社区投稿的 MarsDawn 预览主题，按场景筛选，也可以举报有问题的主题。在浏览器里打造一个自己的主题，不用安装，也不用 git。",
         "body": f"""
 <section class="intro">
-  <h1>主题库</h1>
+  <h1>主题图库</h1>
   <p>社区投稿的预览主题，每一个都经过开发者审核、合并后才会出现在这里。按场景筛选，或是<a href="/zh-hans/themes/new/">在浏览器里打造一个自己的主题</a>——不用安装，也不用 git。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}

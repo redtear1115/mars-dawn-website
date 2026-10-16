@@ -25,8 +25,8 @@ try {
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lilian Weng 2023 年画的 agent 蓝图，每个部件会留下什么文件 · MarsDawn</title>
-<meta name="description" content="Lilian Weng 2023 年被广泛引用的整理，把 LLM agent 描述成大脑加上规划、记忆、工具使用。每个部件通常会留给你读什么，以及她点名的一个限制：计划遇到意外不太会调整。">
+<title>Lilian Weng 2023 年画的代理蓝图，每个部件会留下什么文件 · MarsDawn</title>
+<meta name="description" content="Lilian Weng 2023 年被广泛引用的整理，把 LLM 代理描述成大脑加上规划、记忆、工具使用。每个部件通常会留给你读什么，以及她点名的一个限制：计划遇到意外不太会调整。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -41,8 +41,8 @@ try {
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/lilian-weng-llm-agents/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/lilian-weng-llm-agents/">
 <link rel="alternate" type="text/markdown" href="/zh-hans/reading-notes/lilian-weng-llm-agents/index.md">
-<meta property="og:title" content="Lilian Weng 2023 年画的 agent 蓝图，每个部件会留下什么文件 · MarsDawn">
-<meta property="og:description" content="Lilian Weng 2023 年被广泛引用的整理，把 LLM agent 描述成大脑加上规划、记忆、工具使用。每个部件通常会留给你读什么，以及她点名的一个限制：计划遇到意外不太会调整。">
+<meta property="og:title" content="Lilian Weng 2023 年画的代理蓝图，每个部件会留下什么文件 · MarsDawn">
+<meta property="og:description" content="Lilian Weng 2023 年被广泛引用的整理，把 LLM 代理描述成大脑加上规划、记忆、工具使用。每个部件通常会留给你读什么，以及她点名的一个限制：计划遇到意外不太会调整。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/reading-notes/lilian-weng-llm-agents/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -52,7 +52,7 @@ try {
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hans/"}, {"@type": "ListItem", "position": 2, "name": "编者的阅读笔记", "item": "https://marsdawn.southern-light.dev/zh-hans/reading-notes/"}, {"@type": "ListItem", "position": 3, "name": "阅读笔记：Lilian Weng", "item": "https://marsdawn.southern-light.dev/zh-hans/reading-notes/lilian-weng-llm-agents/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Lilian Weng 2023 年画的 agent 蓝图，每个部件会留下什么文件", "description": "Lilian Weng 2023 年被广泛引用的整理，把 LLM agent 描述成大脑加上规划、记忆、工具使用。每个部件通常会留给你读什么，以及她点名的一个限制：计划遇到意外不太会调整。", "datePublished": "2026-10-08", "dateModified": "2026-10-08", "inLanguage": "zh-Hans", "mainEntityOfPage": "https://marsdawn.southern-light.dev/zh-hans/reading-notes/lilian-weng-llm-agents/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Lilian Weng 2023 年画的代理蓝图，每个部件会留下什么文件", "description": "Lilian Weng 2023 年被广泛引用的整理，把 LLM 代理描述成大脑加上规划、记忆、工具使用。每个部件通常会留给你读什么，以及她点名的一个限制：计划遇到意外不太会调整。", "datePublished": "2026-10-08", "dateModified": "2026-10-08", "inLanguage": "zh-Hans", "mainEntityOfPage": "https://marsdawn.southern-light.dev/zh-hans/reading-notes/lilian-weng-llm-agents/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -75,29 +75,29 @@ try {
 </header>
 <main id="main">
 <section class="intro">
-  <h1>Lilian Weng 2023 年画的 agent 蓝图，每个部件会留下什么文件</h1>
+  <h1>Lilian Weng 2023 年画的代理蓝图，每个部件会留下什么文件</h1>
 </section>
 
-<div class="summary"><p><strong>2023 年 6 月，当时任职 OpenAI 的 Lilian Weng 在她的博客 Lil'Log 发表了一篇长篇整理，把 LLM-powered agent 描述成一个大脑（模型）加上三个部件：规划、记忆、工具使用。这是一个被广泛引用的早期 agent 架构，而她对这套架构哪里还会出问题，讲得也很坦白。</strong></p></div>
+<div class="summary"><p><strong>2023 年 6 月，当时任职 OpenAI 的 Lilian Weng 在她的博客 Lil'Log 发表了一篇长篇整理，把 由 LLM 驱动的代理描述成一个大脑（模型）加上三个部件：规划、记忆、工具使用。这是一个被广泛引用的早期代理架构，而她对这套架构哪里还会出问题，讲得也很坦白。</strong></p></div>
 
 <h2 id="what-the-post-argues">这篇文章主张什么</h2>
 <p>Weng 一开头就定了整篇的架构：</p>
 <blockquote><p>&#8220;In a LLM-powered autonomous agent system, LLM functions as the agent&#8217;s brain, complemented by several key components: Planning ... Memory ... Tool use&#8221;.</p></blockquote>
-<p>（在一个 LLM-powered 自主 agent 系统里，LLM 扮演 agent 的大脑，再搭配几个关键部件：规划&#8230;&#8230;记忆&#8230;&#8230;工具使用。）</p>
+<p>（在一个 由 LLM 驱动的自主代理系统里，LLM 扮演代理的大脑，再搭配几个关键部件：规划&#8230;&#8230;记忆&#8230;&#8230;工具使用。）</p>
 <p>在她的说法里，规划同时包含把任务拆成子目标，以及回头反思过去的行动来改进未来的步骤。记忆分成短期（模型目前看得到的内容，她称为 in-context）和长期（通常存在模型之外、一个可以搜索的数据库里，她称为 vector store）。工具使用则让模型能对外求助，取得模型权重里没有的东西&#8212;&#8212;最新信息、代码执行能力、其他 API。文章接近尾声，在她自己标题为“Challenges”的段落里，她直接点出一个限制：</p>
 <blockquote><p>&#8220;LLMs struggle to adjust plans when faced with unexpected errors, making them less robust compared to humans who learn from trial and error.&#8221;</p></blockquote>
 <p>（LLM 在遇到意外错误时，不太擅长调整计划，这让它们比起会从试错中学习的人类，更缺乏韧性。）</p>
-<p>另外，在一个属于“工具使用”案例研究、谈化学 agent“ChemCrow”的段落里，她点出一个较窄的问题：用 LLM 评分的结果认为它和 GPT-4 差不多，但人类专家评估后认为 ChemCrow 在正确性上好得多。她的结论谈的是“自我评估”，不是她的“反思”部件本身：</p>
+<p>另外，在一个属于“工具使用”案例研究、谈化学代理“ChemCrow”的段落里，她点出一个较窄的问题：用 LLM 评分的结果认为它和 GPT-4 差不多，但人类专家评估后认为 ChemCrow 在正确性上好得多。她的结论谈的是“自我评估”，不是她的“反思”部件本身：</p>
 <blockquote><p>&#8220;The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.&#8221;</p></blockquote>
 <p>（缺乏专业知识可能使 LLM 不知道自己的缺陷，因而无法妥善判断任务结果的正确性。）</p>
 <p>Weng 在这篇文章里完全没有提到 MarsDawn，也没有推荐任何 Markdown 工具。</p>
 
 <h2 id="our-reading-not-weng-s">以下是我们的解读，不是 Weng 的</h2>
-<p>Weng 描述的是 2023 年的 agent 架构，完全没有谈到“有人在读 agent 的产出”这件事&#8212;&#8212;她根本没提到有人在检查文件。但她自己讲的三个部件，刚好对应到三种你可能会读到的东西。规划通常会留给你一份要在执行前读的文件&#8212;&#8212;计划本身，有时候里面已经先自己做过一轮“反思”或自我检查。记忆通常是看不到的，除非 agent 把长期记忆存成一个持续在写的草稿文件，这种情况下那份文件本身就值得单独打开看，因为它可能悄悄把一个旧的、错的假设，一路带进后面好几个步骤里，却完全没说。工具使用通常会留给你一份“跑了什么、拿到什么结果”的报告&#8212;&#8212;比较像逐字稿，不像计划。</p>
-<p>她说计划遇到意外不太会调整，从你的角度来看，这代表你昨天核准的计划，今天可能已经不新鲜了：如果计划没预料到的事在中途发生了，agent 可能还是照原本的计划走下去，而不是重新规划，最后那份报告可能只描述了原本计划“成功了”，却没提到中间绕了路。这是我们的推论，不是她的主张&#8212;&#8212;她讲的是模型本身的韧性，不是读者该注意什么。</p>
+<p>Weng 描述的是 2023 年的代理架构，完全没有谈到“有人在读代理的产出”这件事&#8212;&#8212;她根本没提到有人在检查文件。但她自己讲的三个部件，刚好对应到三种你可能会读到的东西。规划通常会留给你一份要在执行前读的文件&#8212;&#8212;计划本身，有时候里面已经先自己做过一轮“反思”或自我检查。记忆通常是看不到的，除非代理把长期记忆存成一个持续在写的草稿文件，这种情况下那份文件本身就值得单独打开看，因为它可能悄悄把一个旧的、错的假设，一路带进后面好几个步骤里，却完全没说。工具使用通常会留给你一份“跑了什么、拿到什么结果”的报告&#8212;&#8212;比较像逐字稿，不像计划。</p>
+<p>她说计划遇到意外不太会调整，从你的角度来看，这代表你昨天核准的计划，今天可能已经不新鲜了：如果计划没预料到的事在中途发生了，代理可能还是照原本的计划走下去，而不是重新规划，最后那份报告可能只描述了原本计划“成功了”，却没提到中间绕了路。这是我们的推论，不是她的主张&#8212;&#8212;她讲的是模型本身的韧性，不是读者该注意什么。</p>
 
 <h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn 帮得上、帮不上的地方</h2>
-<p>MarsDawn 里没有 AI 模型，没办法告诉你一份计划是不是已经悄悄偏离了实际发生的事，也不会替你分辨一份文件是规划文件、记忆文件还是工具使用报告&#8212;&#8212;这是读懂内容之后才能做的判断，要你自己来。它做的是：侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页一眼看出长计划的架构；源代码和排好的预览并排（&#8984;2），Mermaid 和 KaTeX 都直接画出来；agent 读到一半改写文件的话，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未保存的修改&#8212;&#8212;这一点特别有用，因为一份被悄悄改过的计划，正是她“Challenges”那段从模型那一侧描述的失败模式。</p>
+<p>MarsDawn 里没有 AI 模型，没办法告诉你一份计划是不是已经悄悄偏离了实际发生的事，也不会替你分辨一份文件是规划文件、记忆文件还是工具使用报告&#8212;&#8212;这是读懂内容之后才能做的判断，要你自己来。它做的是：侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页一眼看出长计划的架构；源代码和排好的预览并排（&#8984;2），Mermaid 和 KaTeX 都直接画出来；代理读到一半改写文件的话，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未保存的修改&#8212;&#8212;这一点特别有用，因为一份被悄悄改过的计划，正是她“Challenges”那段从模型那一侧描述的失败模式。</p>
 
 <h2 id="try-it">试试看</h2>
 <p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
@@ -107,8 +107,8 @@ try {
 
 <h2 id="next">接下来</h2>
 <ul>
-  <li>不同 agent 设计模式各自会交给你什么文件：《<a href="/zh-hans/agent-design-patterns/">四种 agent 设计模式，各自会交给你什么文件</a>》</li>
-  <li>执行前五分钟审完一份计划的方法：《<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>》</li>
+  <li>不同代理设计模式各自会交给你什么文件：《<a href="/zh-hans/agent-design-patterns/">四种代理设计模式，各自会交给你什么文件</a>》</li>
+  <li>执行前五分钟审完一份计划的方法：《<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份代理计划</a>》</li>
   <li>回到系列索引：《<a href="/zh-hans/reading-notes/">编者的阅读笔记</a>》</li>
 </ul>
 

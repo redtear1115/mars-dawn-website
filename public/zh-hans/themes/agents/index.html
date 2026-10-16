@@ -25,8 +25,8 @@ try {
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>和你的 agent 一起做一个 MarsDawn 主题 · MarsDawn</title>
-<meta name="description" content="给 AI agent 的 MarsDawn 主题制作参考：theme.json 每个字段的类型与范围、检查并渲染的 CLI 流程、交给人的链接，以及怎么投稿。">
+<title>和你的代理一起做一个 MarsDawn 主题 · MarsDawn</title>
+<meta name="description" content="给 AI 代理的 MarsDawn 主题制作参考：theme.json 每个字段的类型与范围、检查并渲染的 CLI 流程、交给人的链接，以及怎么投稿。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -41,8 +41,8 @@ try {
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/themes/agents/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/themes/agents/">
 <link rel="alternate" type="text/markdown" href="/zh-hans/themes/agents/index.md">
-<meta property="og:title" content="和你的 agent 一起做一个 MarsDawn 主题 · MarsDawn">
-<meta property="og:description" content="给 AI agent 的 MarsDawn 主题制作参考：theme.json 每个字段的类型与范围、检查并渲染的 CLI 流程、交给人的链接，以及怎么投稿。">
+<meta property="og:title" content="和你的代理一起做一个 MarsDawn 主题 · MarsDawn">
+<meta property="og:description" content="给 AI 代理的 MarsDawn 主题制作参考：theme.json 每个字段的类型与范围、检查并渲染的 CLI 流程、交给人的链接，以及怎么投稿。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/themes/agents/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -51,7 +51,7 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hans/"}, {"@type": "ListItem", "position": 2, "name": "预览主题与 PDF 导出", "item": "https://marsdawn.southern-light.dev/zh-hans/themes/"}, {"@type": "ListItem", "position": 3, "name": "和 agent 一起做主题", "item": "https://marsdawn.southern-light.dev/zh-hans/themes/agents/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hans/"}, {"@type": "ListItem", "position": 2, "name": "预览主题与 PDF 导出", "item": "https://marsdawn.southern-light.dev/zh-hans/themes/"}, {"@type": "ListItem", "position": 3, "name": "和代理一起做主题", "item": "https://marsdawn.southern-light.dev/zh-hans/themes/agents/"}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -74,8 +74,8 @@ try {
 </header>
 <main id="main">
 <section class="intro">
-  <h1>和你的 agent 一起做主题</h1>
-  <p>给制作 MarsDawn 预览主题的 AI agent 的参考。agent 写出一个 <code>theme.json</code>，用 <code>marsdawn</code> 命令行工具检查并渲染，再把链接交给你。你在<a href="/zh-hans/themes/new/">打造一个主题</a>页面用眼睛调整，然后投稿。下面的字段表直接读自 kit 的源代码，并有检查确保两者一致。</p>
+  <h1>和你的代理一起做主题</h1>
+  <p>给制作 MarsDawn 预览主题的 AI 代理的参考。代理写出一个 <code>theme.json</code>，用 <code>marsdawn</code> 命令行工具检查并渲染，再把链接交给你。你在<a href="/zh-hans/themes/new/">打造一个主题</a>页面用眼睛调整，然后投稿。下面的字段表直接读自 kit 的源代码，并有检查确保两者一致。</p>
 </section>
 
 <div class="summary"><p><strong>写出一个 <code>theme.json</code>，反复运行 <code>marsdawn theme validate theme.json --require-complete --json</code> 直到退出代码为 0，用 <code>marsdawn theme preview</code> 分别渲染浅色与深色，再把链接交给用户。</strong>主题只有参数，不含任何 CSS。</p></div>
@@ -90,7 +90,7 @@ try {
 <p>不在下面表格里的键是错误，同一个键写两次也是。文件最大 16,384 字节。</p>
 
 <h2 id="check-and-render">检查与渲染</h2>
-<p>在放有 <code>theme.json</code> 的文件夹里运行这些命令。需要 <code>marsdawn</code> 工具：见<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>。</p>
+<p>在放有 <code>theme.json</code> 的文件夹里运行这些命令。需要 <code>marsdawn</code> 工具：见<a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a>。</p>
 <pre><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
@@ -346,7 +346,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 <p>主题跟在 <code>#</code> 后面，浏览器不会把它发送给网站，网站也不会把它发送到任何地方。链接确实会留在你的 shell 历史与浏览器历史里，你贴给谁，谁就能读到这个主题。</p>
 
 <h2 id="submit-it">投稿</h2>
-<p>agent 准备文件与链接，由人来投稿。两条路都会要求 Developer Certificate of Origin 与 Apache-2.0 许可声明，这个声明由人本人做出：agent 不会替他勾选方框或签署。</p>
+<p>代理准备文件与链接，由人来投稿。两条路都会要求 Developer Certificate of Origin 与 Apache-2.0 许可声明，这个声明由人本人做出：代理不会替他勾选方框或签署。</p>
 <ul>
   <li><strong>Issue。</strong>人打开链接，在“打造一个主题”页面点按 <strong>Submit</strong>，或是打开 <a href="https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml">issue 表单</a>，把 JSON 贴进 <em>Theme</em>。接着有工作流检查主题并回复。</li>
   <li><strong>Pull request。</strong>只改 <code>themes/&lt;id&gt;/theme.json</code>，把 <code>author.github</code> 设为 pull request 作者的账号，每个 commit 都用 <code>git commit -s</code> 签署。规则在 <a href="https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>。</li>

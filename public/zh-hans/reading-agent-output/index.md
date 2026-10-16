@@ -1,37 +1,37 @@
-# agent 做完的工作，最后都变成一份你要读的 Markdown。
+# 代理做完的工作，最后都变成一份你要读的 Markdown。
 
-你请 coding agent 规划一次数据库迁移、写一份规格，或追一个 bug。它自己跑了一阵子，交回来的是一个文件：`plan.md`、`SPEC.md`、一份进度报告，或一份研究摘要。你能检查的工作，全在这份文件里。
+你请 编程代理规划一次数据库迁移、写一份规格，或追一个 bug。它自己跑了一阵子，交回来的是一个文件：`plan.md`、`SPEC.md`、一份进度报告，或一份研究摘要。你能检查的工作，全在这份文件里。
 
-**agent 有没有做对，要读过它交回来的东西才知道。MarsDawn 就是为这种阅读做的 Mac app。**
+**代理有没有做对，要读过它交回来的东西才知道。MarsDawn 就是为这种阅读做的 Mac app。**
 
-## 做 agent 的人怎么说
+## 做代理的人怎么说
 
 以下引文照原文，我们的解读放在最后。
 
-- Anthropic 的〈Building Effective Agents〉（Erik S. 与 Barry Zhang，2024 年 12 月）列出打造 agent 的三个核心原则，其中一条是“Prioritize transparency by explicitly showing the agent’s planning steps.”（优先重视透明度：明确展示 agent 的规划步骤。）这是写给开发 agent 的人的原则；站在你这边，这份透明就是你手上那份要读的计划。
-- 同一篇也写到：“Agents can then pause for human feedback at checkpoints or when encountering blockers.”（Agent 可以在检查点或遇到阻碍时暂停，等待人类反馈。）注意原文用的是 *can*，可以，没有说必须。
-- Chip Huyen 在〈Agents〉（2025 年 1 月）解释为什么规划要和执行分开：“Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it’s not going anywhere.”（没有监督的话，agent 可能执行那些步骤好几个小时，在 API 呼叫上浪费时间和金钱，你才发现它根本没有进展。）她也描述了一种失败：“The agent is convinced that it’s accomplished a task when it hasn’t.”（Agent 深信自己已完成任务，但其实并没有。）请它把 50 个人分到 30 间饭店房间，它只排了 40 人，还坚称做完了。
+- Anthropic 的〈Building Effective Agents〉（Erik S. 与 Barry Zhang，2024 年 12 月）列出打造代理的三个核心原则，其中一条是“Prioritize transparency by explicitly showing the agent’s planning steps.”（优先重视透明度：明确展示代理的规划步骤。）这是写给开发代理的人的原则；站在你这边，这份透明就是你手上那份要读的计划。
+- 同一篇也写到：“Agents can then pause for human feedback at checkpoints or when encountering blockers.”（代理可以在检查点或遇到阻碍时暂停，等待人类反馈。）注意原文用的是 *can*，可以，没有说必须。
+- Chip Huyen 在〈Agents〉（2025 年 1 月）解释为什么规划要和执行分开：“Without oversight, an agent can run those steps for hours, wasting time and money on API calls, before you realize that it’s not going anywhere.”（没有监督的话，代理可能执行那些步骤好几个小时，在 API 呼叫上浪费时间和金钱，你才发现它根本没有进展。）她也描述了一种失败：“The agent is convinced that it’s accomplished a task when it hasn’t.”（代理深信自己已完成任务，但其实并没有。）请它把 50 个人分到 30 间饭店房间，它只排了 40 人，还坚称做完了。
 - Andrew Ng 在 The Batch（2024 年 4 月）谈 planning 这个设计模式：“On one hand, Planning is a very powerful capability; on the other, it leads to less predictable results.”（一方面，规划是非常强大的能力；另一方面，它会导致较难预测的结果。）他讲的是可预测性，并没有呼吁要人工审阅，而且他相信规划能力很快会进步。
 
-**以下是我们的推论，不是作者的主张：**agent 把计划摊开、在检查点停下来，那在检查点读计划的通常就是你。agent 可能以为自己做完了，那它的“完成报告”也得有人读过。上面这几位作者都没有提到 MarsDawn，也没有推荐 MarsDawn 或任何 Markdown 工具。
+**以下是我们的推论，不是作者的主张：**代理把计划摊开、在检查点停下来，那在检查点读计划的通常就是你。代理可能以为自己做完了，那它的“完成报告”也得有人读过。上面这几位作者都没有提到 MarsDawn，也没有推荐 MarsDawn 或任何 Markdown 工具。
 
 ## 比看起来难读
 
-文件很长，重要的地方很少在最上面。里面有 Mermaid 图表和数学式，看原始码很难跟上。你读到一半，agent 可能还在改写同一个文件。它通常不只交一个文件，有时还分散在不同的分支或 worktree。等你找到问题，说“缓存那段怪怪的”，agent 只能用猜的；说“`docs/plan.md:42` 在回填跑完前就把旧表删了”，它就知道要改哪里。
+文件很长，重要的地方很少在最上面。里面有 Mermaid 图表和数学式，看原始码很难跟上。你读到一半，代理可能还在改写同一个文件。它通常不只交一个文件，有时还分散在不同的分支或 worktree。等你找到问题，说“缓存那段怪怪的”，代理只能用猜的；说“`docs/plan.md:42` 在回填跑完前就把旧表删了”，它就知道要改哪里。
 
 ## MarsDawn 帮得上忙的地方
 
 - **文件很长：**侧边栏（⌃⌘S）的“大纲”标签页列出所有标题，点一下，两边窗格都会跳过去。
 - **图表和数学式：**Mermaid 和 KaTeX 直接画在预览里，和原始码并排（⌘2），两边一起卷动。
-- **读到一半被改写：**agent 改写文件时，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。
-- **好几个文件：**用“文件 ▸ 打开文件夹⋯”（⇧⌘O）打开 agent 工作的文件夹，新文件大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树。
-- **反馈要准：**“编辑 ▸ 拷贝引用”（⌥⌘C）把目前位置拷贝成 `docs/plan.md:42`，“拷贝给 AI”（⌃⌥⌘C）会在下面附上你选取的文字，直接贴给 agent 就好。
+- **读到一半被改写：**代理改写文件时，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。
+- **好几个文件：**用“文件 ▸ 打开文件夹⋯”（⇧⌘O）打开代理工作的文件夹，新文件大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树。
+- **反馈要准：**“编辑 ▸ 拷贝引用”（⌥⌘C）把目前位置拷贝成 `docs/plan.md:42`，“拷贝给 AI”（⌃⌥⌘C）会在下面附上你选取的文字，直接贴给代理就好。
 
-另外两件事也和这个循环有关：agent 可以执行 `marsdawn open plan.md:42`，在 MarsDawn 里帮你打开文件，直接停在第 42 行，也就是它想先让你看的那一行；审完的文件可以从 app 导出 PDF，也可以用免费的 `marsdawn export` 指令。
+另外两件事也和这个循环有关：代理可以执行 `marsdawn open plan.md:42`，在 MarsDawn 里帮你打开文件，直接停在第 42 行，也就是它想先让你看的那一行；审完的文件可以从 app 导出 PDF，也可以用免费的 `marsdawn export` 指令。
 
 MarsDawn 里没有 AI 模型。它不会帮你摘要计划、打分数，也不会告诉你哪里错了。读的人是你，它负责让又长又会变的文件保持好读，让你能准确指出是哪一行。
 
-## 五分钟审完一份 agent 计划
+## 五分钟审完一份代理计划
 
 用什么编辑器都适用。
 
@@ -42,7 +42,7 @@ MarsDawn 里没有 AI 模型。它不会帮你摘要计划、打分数，也不�
 5. 列出计划会动到的文件和系统。你没要求的部分，执行前先问清楚。
 6. 反馈写成“位置、问题、改法”：“`plan.md:88`：回填排在删表之后，第 4、5 步对调。”一行只讲一个问题。
 
-时间只够做一步的话，就做第 2 步吧。以为自己已经做完的 agent，多半是在这一步被抓到的。完整版本、附实际例子：[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
+时间只够做一步的话，就做第 2 步吧。以为自己已经做完的代理，多半是在这一步被抓到的。完整版本、附实际例子：[五分钟审完一份代理计划](/zh-hans/reviewing-agent-plans/)。
 
 ## 试试看
 
@@ -52,18 +52,18 @@ MarsDawn 已在 [Mac App Store](https://apps.apple.com/app/id6812925073) 上架�
 brew install redtear1115/tap/marsdawn
 ```
 
-它不需要 app 就能把 Markdown 导出成 PDF；agent 也能用 `marsdawn open` 在 MarsDawn 里帮你打开文件。
+它不需要 app 就能把 Markdown 导出成 PDF；代理也能用 `marsdawn open` 在 MarsDawn 里帮你打开文件。
 
-[命令行工具](/zh-hans/cli/) · [给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/) · 买之前先看：[MarsDawn 做不到的事](/zh-hans/limits/)
+[命令行工具](/zh-hans/cli/) · [给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/) · 买之前先看：[MarsDawn 做不到的事](/zh-hans/limits/)
 
 ## 接下来
 
 - 为什么 AI 写的东西需要人读，短一点的版本：[为什么 AI 写的东西还是需要人读过](/zh-hans/reviewing-ai-output/)。
-- 审阅时不占用 agent 的 context：[节省 token 的审阅方式](/zh-hans/token-efficient-review/)。
-- agent 为什么要把计划摊开：[Anthropic 说 agent 要透明，那摊开的东西谁来读？](/zh-hans/agent-transparency/)
-- 上面那份清单一步一步来，附实际例子：[五分钟审完一份 agent 计划](/zh-hans/reviewing-agent-plans/)。
-- 不同类型的 agent 会交给你什么文件：[四种 agent 设计模式，各自会交给你什么文件](/zh-hans/agent-design-patterns/)。
-- 六篇更深入的笔记，谈打造 agent 的人实际说了什么：[编者的阅读笔记](/zh-hans/reading-notes/)。
+- 审阅时不占用代理的 context：[节省 token 的审阅方式](/zh-hans/token-efficient-review/)。
+- 代理为什么要把计划摊开：[Anthropic 说代理要透明，那摊开的东西谁来读？](/zh-hans/agent-transparency/)
+- 上面那份清单一步一步来，附实际例子：[五分钟审完一份代理计划](/zh-hans/reviewing-agent-plans/)。
+- 不同类型的代理会交给你什么文件：[四种代理设计模式，各自会交给你什么文件](/zh-hans/agent-design-patterns/)。
+- 六篇更深入的笔记，谈打造代理的人实际说了什么：[编者的阅读笔记](/zh-hans/reading-notes/)。
 
 ## 资料来源
 
@@ -84,33 +84,33 @@ brew install redtear1115/tap/marsdawn
 - [在 Mac 上看 Markdown](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): md 文件是加上格式记号的纯文本。这页说明怎么在 Mac 上看到排版后的样子：用 Mac App Store 上可以免费下载的 MarsDawn，或用免费的 marsdawn 命令行工具转成 PDF。
 - [Markdown 转 PDF](https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/index.md): 免费的 Markdown 转 PDF 工具：在 Mac 上用 marsdawn 命令行，一个命令就把 Markdown 转成 PDF，表格、数学公式、Mermaid 图表和代码高亮都在。
 - [MacMD Viewer 对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读查看器，直接购买 USD 19.99。MarsDawn 边编辑边预览，免费试用后在 Mac App Store 一次解锁 USD 4.99。逐项比较功能、价格和购买方式。
-- [命令行工具](https://marsdawn.southern-light.dev/zh-hans/cli/index.md): 免费的 marsdawn 命令行工具：在 Mac 上从终端、脚本或 LLM agent 把 Markdown 导出成 PDF，并提供 JSON 输出。用 Homebrew 安装。
-- [给 AI agent 的 marsdawn 参考](https://marsdawn.southern-light.dev/zh-hans/cli/agents/index.md): 给调用 marsdawn 把 Markdown 转成 PDF 的 AI agent 与脚本的参考：命令、JSON 输出、Schema、退出代码与系统需求。
-- [给 agent 的 skill](https://marsdawn.southern-light.dev/zh-hans/cli/skill/index.md): 一个文件，让写程序的 agent 把自己写的 Markdown 在 MarsDawn 里打开给你审阅，也学会安装 marsdawn、把 Markdown 导出成 PDF，并读懂 JSON 结果。
-- [MCP 服务器](https://marsdawn.southern-light.dev/zh-hans/cli/mcp/index.md): marsdawn 没有自己的 AI 模型，是哪个 agent 写出 Markdown 都无所谓。可以从 CLI、skill 文件，或 marsdawn-mcp 这个 MCP 服务器调用，三者最后都运行同一个 export。
-- [节省 token 的审阅方式](https://marsdawn.southern-light.dev/zh-hans/token-efficient-review/index.md): 人在 MarsDawn 里读排版后的页面，不会被读回 agent 的 context。工具调用本身返回的也只是精简的 JSON，不是排版内容，调用本身就很便宜。
+- [命令行工具](https://marsdawn.southern-light.dev/zh-hans/cli/index.md): 免费的 marsdawn 命令行工具：在 Mac 上从终端、脚本或 LLM 代理把 Markdown 导出成 PDF，并提供 JSON 输出。用 Homebrew 安装。
+- [给 AI 代理的 marsdawn 参考](https://marsdawn.southern-light.dev/zh-hans/cli/agents/index.md): 给调用 marsdawn 把 Markdown 转成 PDF 的 AI 代理与脚本的参考：命令、JSON 输出、Schema、退出代码与系统需求。
+- [给代理的 skill](https://marsdawn.southern-light.dev/zh-hans/cli/skill/index.md): 一个文件，让写程序的代理把自己写的 Markdown 在 MarsDawn 里打开给你审阅，也学会安装 marsdawn、把 Markdown 导出成 PDF，并读懂 JSON 结果。
+- [MCP 服务器](https://marsdawn.southern-light.dev/zh-hans/cli/mcp/index.md): marsdawn 没有自己的 AI 模型，是哪个代理写出 Markdown 都无所谓。可以从 CLI、skill 文件，或 marsdawn-mcp 这个 MCP 服务器调用，三者最后都运行同一个 export。
+- [节省 token 的审阅方式](https://marsdawn.southern-light.dev/zh-hans/token-efficient-review/index.md): 人在 MarsDawn 里读排版后的页面，不会被读回代理的 context。工具调用本身返回的也只是精简的 JSON，不是排版内容，调用本身就很便宜。
 - [在别处看 Markdown，对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/markdown-preview-tools/index.md): MarsDawn 对比在 VS Code 内置预览、浏览器扩展，或 Claude Desktop 文件预览里看 Markdown：各自能排版出什么，打开一个文件要花多少功夫。
-- [预览主题与 PDF 导出](https://marsdawn.southern-light.dev/zh-hans/themes/index.md): 四种主题，各有浅色与深色，一套导出对应你正在看的主题。在浏览器里打造自己的主题，也可以逛逛社区主题库。
+- [预览主题与 PDF 导出](https://marsdawn.southern-light.dev/zh-hans/themes/index.md): 四种主题，各有浅色与深色，一套导出对应你正在看的主题。在浏览器里打造自己的主题，也可以逛逛社区主题图库。
 - [打造一个主题](https://marsdawn.southern-light.dev/zh-hans/themes/new/index.md): 挑选颜色和几个样式选项，实时看它们套用在范例文档上，再把主题送出成一个 GitHub issue。不用安装，也不用 git。
-- [和 agent 一起做主题](https://marsdawn.southern-light.dev/zh-hans/themes/agents/index.md): 给 AI agent 的 MarsDawn 主题制作参考：theme.json 每个字段的类型与范围、检查并渲染的 CLI 流程、交给人的链接，以及怎么投稿。
-- [主题库](https://marsdawn.southern-light.dev/zh-hans/themes/gallery/index.md): 浏览社区投稿的 MarsDawn 预览主题，按场景筛选，也可以举报有问题的主题。在浏览器里打造一个自己的主题，不用安装，也不用 git。
-- [分享导出的 PDF](https://marsdawn.southern-light.dev/zh-hans/sharing-exported-pdfs/index.md): 把 agent 写的 Markdown 导出成 PDF，交给不写 Markdown、也不会安装任何东西的同事。不用懂语法，不用装 app，也不需要账号就能打开。
+- [和代理一起做主题](https://marsdawn.southern-light.dev/zh-hans/themes/agents/index.md): 给 AI 代理的 MarsDawn 主题制作参考：theme.json 每个字段的类型与范围、检查并渲染的 CLI 流程、交给人的链接，以及怎么投稿。
+- [主题图库](https://marsdawn.southern-light.dev/zh-hans/themes/gallery/index.md): 浏览社区投稿的 MarsDawn 预览主题，按场景筛选，也可以举报有问题的主题。在浏览器里打造一个自己的主题，不用安装，也不用 git。
+- [分享导出的 PDF](https://marsdawn.southern-light.dev/zh-hans/sharing-exported-pdfs/index.md): 把代理写的 Markdown 导出成 PDF，交给不写 Markdown、也不会安装任何东西的同事。不用懂语法，不用装 app，也不需要账号就能打开。
 - [为什么 AI 写的东西还是需要人读过](https://marsdawn.southern-light.dev/zh-hans/reviewing-ai-output/index.md): AI 写的 Markdown 还是得由人来理解，不能因为读起来通顺就直接相信。MarsDawn 把排版后的页面和源代码并排，也把 Mermaid 图表与 KaTeX 数学式画出来，让结构一眼就看得懂。
-- [agent 的透明](https://marsdawn.southern-light.dev/zh-hans/agent-transparency/index.md): Anthropic 谈打造 agent 的指南要求透明：把规划步骤摊开来。它说了什么、没说什么，以及为什么这些步骤最后多半变成一份要有人读的 Markdown。
-- [审 agent 计划](https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/index.md): agent 交出计划、还没开始执行之前，用六个步骤、大约五分钟把它审完。什么编辑器都能用，附一份实际的例子。
-- [agent 设计模式](https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/index.md): Andrew Ng 提出的四种 agent 设计模式：reflection、tool use、planning、multi-agent collaboration，以及每一种通常会交回什么要你读的文件。
+- [代理的透明](https://marsdawn.southern-light.dev/zh-hans/agent-transparency/index.md): Anthropic 谈打造代理的指南要求透明：把规划步骤摊开来。它说了什么、没说什么，以及为什么这些步骤最后多半变成一份要有人读的 Markdown。
+- [审代理计划](https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/index.md): 代理交出计划、还没开始执行之前，用六个步骤、大约五分钟把它审完。什么编辑器都能用，附一份实际的例子。
+- [代理设计模式](https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/index.md): Andrew Ng 提出的四种代理设计模式：reflection、tool use、planning、multi-agent collaboration，以及每一种通常会交回什么要你读的文件。
 - [更新记录](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): 免费的 marsdawn 命令行工具改了什么。
-- [编者的阅读笔记](https://marsdawn.southern-light.dev/zh-hans/reading-notes/index.md): 六篇短笔记，谈打造 AI agent 的人实际主张了什么——Anthropic、Chip Huyen、Lilian Weng、Harrison Chase、LangChain 与 Andrew Ng——以及这些主张对“要读 agent 交回来的东西”的人分别意味着什么。
-- [阅读笔记：Anthropic](https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/index.md): Anthropic 在 2024 年 12 月发表的指南把 workflow 和 agent 分开来看，并描述了五种 workflow 模式，其中一种让另一次 LLM 调用来审查。这对落进你文件夹的东西来说，意味着什么。
-- [阅读笔记：Chip Huyen](https://marsdawn.southern-light.dev/zh-hans/reading-notes/chip-huyen-agents/index.md): Chip Huyen 在 2025 年 1 月的文章里，把 agent 的动作分成 read-only 和 write action 两种。这个分法为什么是核准计划前，快速抓出该多看一眼的那一行的好方法。
-- [阅读笔记：Lilian Weng](https://marsdawn.southern-light.dev/zh-hans/reading-notes/lilian-weng-llm-agents/index.md): Lilian Weng 2023 年被广泛引用的整理，把 LLM agent 描述成大脑加上规划、记忆、工具使用。每个部件通常会留给你读什么，以及她点名的一个限制：计划遇到意外不太会调整。
-- [阅读笔记：Harrison Chase](https://marsdawn.southern-light.dev/zh-hans/reading-notes/harrison-chase-what-is-an-agent/index.md): Harrison Chase 2024 年对 agent 的定义，以及他自己的 agentic 光谱；他主张系统愈往自主那端走，就愈需要可观测性——从读那份文件的人的角度重新看一遍。
-- [阅读笔记：LangChain（Jess Ou）](https://marsdawn.southern-light.dev/zh-hans/reading-notes/langchain-what-is-an-agent/index.md): LangChain 2026 年由 Jess Ou 撰写的《What is an AI agent?》，定义几乎和 Harrison Chase 2024 年那篇一样，并描述了一套自动评测 agent 的流程。这套流程哪里还留给人，哪里不留。
+- [编者的阅读笔记](https://marsdawn.southern-light.dev/zh-hans/reading-notes/index.md): 六篇短笔记，谈打造 AI 代理的人实际主张了什么——Anthropic、Chip Huyen、Lilian Weng、Harrison Chase、LangChain 与 Andrew Ng——以及这些主张对“要读代理交回来的东西”的人分别意味着什么。
+- [阅读笔记：Anthropic](https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/index.md): Anthropic 在 2024 年 12 月发表的指南把 workflow 和代理分开来看，并描述了五种 workflow 模式，其中一种让另一次 LLM 调用来审查。这对落进你文件夹的东西来说，意味着什么。
+- [阅读笔记：Chip Huyen](https://marsdawn.southern-light.dev/zh-hans/reading-notes/chip-huyen-agents/index.md): Chip Huyen 在 2025 年 1 月的文章里，把代理的动作分成 read-only 和 write action 两种。这个分法为什么是核准计划前，快速抓出该多看一眼的那一行的好方法。
+- [阅读笔记：Lilian Weng](https://marsdawn.southern-light.dev/zh-hans/reading-notes/lilian-weng-llm-agents/index.md): Lilian Weng 2023 年被广泛引用的整理，把 LLM 代理描述成大脑加上规划、记忆、工具使用。每个部件通常会留给你读什么，以及她点名的一个限制：计划遇到意外不太会调整。
+- [阅读笔记：Harrison Chase](https://marsdawn.southern-light.dev/zh-hans/reading-notes/harrison-chase-what-is-an-agent/index.md): Harrison Chase 2024 年对代理的定义，以及他自己的 agentic 光谱；他主张系统愈往自主那端走，就愈需要可观测性——从读那份文件的人的角度重新看一遍。
+- [阅读笔记：LangChain（Jess Ou）](https://marsdawn.southern-light.dev/zh-hans/reading-notes/langchain-what-is-an-agent/index.md): LangChain 2026 年由 Jess Ou 撰写的《What is an AI agent?》，定义几乎和 Harrison Chase 2024 年那篇一样，并描述了一套自动评测代理的流程。这套流程哪里还留给人，哪里不留。
 - [阅读笔记：Andrew Ng](https://marsdawn.southern-light.dev/zh-hans/reading-notes/andrew-ng-design-patterns/index.md): 在 The Batch 的五篇文章里，Andrew Ng 依可靠与可预测的程度，帮 reflection、tool use、planning 和 multi-agent collaboration 排序——这个排序，对你该多仔细检查哪一种的产出，有什么提示。
-- [模板](https://marsdawn.southern-light.dev/zh-hans/templates/index.md): 给 agent 写、你来读的文档用的 Markdown 模板：规格文档、流程图和会议记录，每份都附一段给 agent 的提示词。
-- [规格文档模板](https://marsdawn.southern-light.dev/zh-hans/templates/spec/index.md): Markdown 规格文档模板，包含需求、Mermaid 流程图和验收标准。agent 来填，你在 MarsDawn 里审阅。
+- [模板](https://marsdawn.southern-light.dev/zh-hans/templates/index.md): 给代理写、你来读的文档用的 Markdown 模板：规格文档、流程图和会议记录，每份都附一段给代理的提示词。
+- [规格文档模板](https://marsdawn.southern-light.dev/zh-hans/templates/spec/index.md): Markdown 规格文档模板，包含需求、Mermaid 流程图和验收标准。代理来填，你在 MarsDawn 里审阅。
 - [流程图模板](https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/index.md): Markdown 的 Mermaid 流程图模板，图的下方把步骤写出来。在 Mac 上预览，也能导出成 PDF。
-- [会议记录模板](https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/index.md): Markdown 会议记录模板，列出决议和行动项，每项都有负责人。agent 来写，你在 MarsDawn 里确认。
+- [会议记录模板](https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/index.md): Markdown 会议记录模板，列出决议和行动项，每项都有负责人。代理来写，你在 MarsDawn 里确认。
 - [English](https://marsdawn.southern-light.dev/reading-agent-output/index.md): AI agents hand back their work as Markdown: plans, specs, progress reports. What people who build agents say about checkpoints and failures, why that output is hard to read, and a five-minute checklist for reviewing a plan.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/index.md): AI agent 把工作成果交成 Markdown：計畫、規格、進度報告。做 agent 的人怎麼談檢查點和失敗、這些產出為什麼難讀，以及五分鐘審完一份計畫的檢查清單。
 - [日本語](https://marsdawn.southern-light.dev/ja/reading-agent-output/index.md): AI エージェントは仕事の成果を Markdown で返します：計画、仕様書、進捗報告。エージェントを作る人たちがチェックポイントや失敗について何を言うか、その出力がなぜ読みづらいのか、そして計画を 5 分でレビューするチェックリスト。

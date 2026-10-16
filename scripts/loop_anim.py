@@ -54,7 +54,7 @@ COPY = {
         "old": "周三", "new": "周五",
         "ask": "我改了上线日，其他段落也改成一致。",
         "reply": "好了，另外两段也改成周五。",
-        "alt": "终端用 MarsDawn 打开 launch-note.md。读者把上线日从周三改成周五，agent 把另外两段也改成一致，然后从头再来一次。",
+        "alt": "终端用 MarsDawn 打开 launch-note.md。读者把上线日从周三改成周五，代理把另外两段也改成一致，然后从头再来一次。",
         "pause": "暂停动画", "pause_short": "暂停",
     },
     "ja": {

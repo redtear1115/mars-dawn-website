@@ -25,8 +25,8 @@ try {
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>给 AI agent 的 marsdawn 参考：用脚本转 PDF · MarsDawn</title>
-<meta name="description" content="给调用 marsdawn 把 Markdown 转成 PDF 的 AI agent 与脚本的参考：命令、JSON 输出、Schema、退出代码与系统需求。">
+<title>给 AI 代理的 marsdawn 参考：用脚本转 PDF · MarsDawn</title>
+<meta name="description" content="给调用 marsdawn 把 Markdown 转成 PDF 的 AI 代理与脚本的参考：命令、JSON 输出、Schema、退出代码与系统需求。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -41,8 +41,8 @@ try {
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/agents/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/cli/agents/">
 <link rel="alternate" type="text/markdown" href="/zh-hans/cli/agents/index.md">
-<meta property="og:title" content="给 AI agent 的 marsdawn 参考：用脚本转 PDF · MarsDawn">
-<meta property="og:description" content="给调用 marsdawn 把 Markdown 转成 PDF 的 AI agent 与脚本的参考：命令、JSON 输出、Schema、退出代码与系统需求。">
+<meta property="og:title" content="给 AI 代理的 marsdawn 参考：用脚本转 PDF · MarsDawn">
+<meta property="og:description" content="给调用 marsdawn 把 Markdown 转成 PDF 的 AI 代理与脚本的参考：命令、JSON 输出、Schema、退出代码与系统需求。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/cli/agents/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -51,7 +51,7 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hans/"}, {"@type": "ListItem", "position": 2, "name": "命令行工具", "item": "https://marsdawn.southern-light.dev/zh-hans/cli/"}, {"@type": "ListItem", "position": 3, "name": "给 AI agent 的 marsdawn 参考", "item": "https://marsdawn.southern-light.dev/zh-hans/cli/agents/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hans/"}, {"@type": "ListItem", "position": 2, "name": "命令行工具", "item": "https://marsdawn.southern-light.dev/zh-hans/cli/"}, {"@type": "ListItem", "position": 3, "name": "给 AI 代理的 marsdawn 参考", "item": "https://marsdawn.southern-light.dev/zh-hans/cli/agents/"}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -74,8 +74,8 @@ try {
 </header>
 <main id="main">
 <section class="intro">
-  <h1>给 AI agent 的 marsdawn 参考</h1>
-  <p>给调用 <code>marsdawn</code> 命令行工具的 AI agent 与脚本参考。本页每个范例都用目前源代码构建的工具实际运行过。</p>
+  <h1>给 AI 代理的 marsdawn 参考</h1>
+  <p>给调用 <code>marsdawn</code> 命令行工具的 AI 代理与脚本参考。本页每个范例都用目前源代码构建的工具实际运行过。</p>
 </section>
 
 <div class="summary"><p><strong>要把 Markdown 文件转成 PDF，运行 <code>marsdawn export notes.md --json</code>，再从 stdout 读取一个 JSON 对象。</strong>Mermaid 图表与代码高亮的呈现方式和 MarsDawn app 相同。<code>export</code> 不需要 app，<code>open</code> 需要。</p></div>
@@ -130,7 +130,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li>行号范围是 1 到 999999999，超出范围是用法错误。</li>
   <li>行号从 marsdawn 0.3.0 开始提供。MarsDawn 1.0 会打开文件，并跳到指定的行。</li>
   <li>文件夹参数会在窗口的侧边栏打开，而不是当成文稿，所以 <code>marsdawn open .</code> 会显示当前的文件夹；<code>--folder &lt;path&gt;</code> 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹：指定两个是用法错误，<code>--folder</code> 用两次也是（即使是同一个文件夹）；同一个文件夹以参数再指定一次则算一个。文件夹没有行号，所以 <code>--line</code> 搭配文件夹是用法错误。没有 <code>-a</code>：传入它是用法错误，错误消息会指向 <code>--folder</code>。</li>
-  <li><code>--background</code> 打开时不把 MarsDawn 带到最前面，适合在用户做别的事时打开文件的 agent。两种情况的 JSON 都一样。</li>
+  <li><code>--background</code> 打开时不把 MarsDawn 带到最前面，适合在用户做别的事时打开文件的代理。两种情况的 JSON 都一样。</li>
   <li>文件夹与 <code>--background</code> 从 marsdawn 0.5.1 开始提供。</li>
 </ul>
 <p>成功，退出代码 0：</p>
@@ -244,7 +244,7 @@ swift build -c release --product marsdawn
 
 <h2 id="next">接下来</h2>
 <ul>
-  <li>用 agent 做一个 MarsDawn 主题：<a href="/zh-hans/themes/agents/">和 agent 一起做主题</a>。</li>
+  <li>用代理做一个 MarsDawn 主题：<a href="/zh-hans/themes/agents/">和代理一起做主题</a>。</li>
 </ul>
 </main>
 <footer class="footer">

@@ -25,8 +25,8 @@ try {
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Anthropic 把 workflow 和 agent 分开来看，你的阅读落在哪一边？ · MarsDawn</title>
-<meta name="description" content="Anthropic 在 2024 年 12 月发表的指南把 workflow 和 agent 分开来看，并描述了五种 workflow 模式，其中一种让另一次 LLM 调用来审查。这对落进你文件夹的东西来说，意味着什么。">
+<title>Anthropic 把 workflow 和代理分开来看，你的阅读落在哪一边？ · MarsDawn</title>
+<meta name="description" content="Anthropic 在 2024 年 12 月发表的指南把 workflow 和代理分开来看，并描述了五种 workflow 模式，其中一种让另一次 LLM 调用来审查。这对落进你文件夹的东西来说，意味着什么。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -41,8 +41,8 @@ try {
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/reading-notes/anthropic-building-effective-agents/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/">
 <link rel="alternate" type="text/markdown" href="/zh-hans/reading-notes/anthropic-building-effective-agents/index.md">
-<meta property="og:title" content="Anthropic 把 workflow 和 agent 分开来看，你的阅读落在哪一边？ · MarsDawn">
-<meta property="og:description" content="Anthropic 在 2024 年 12 月发表的指南把 workflow 和 agent 分开来看，并描述了五种 workflow 模式，其中一种让另一次 LLM 调用来审查。这对落进你文件夹的东西来说，意味着什么。">
+<meta property="og:title" content="Anthropic 把 workflow 和代理分开来看，你的阅读落在哪一边？ · MarsDawn">
+<meta property="og:description" content="Anthropic 在 2024 年 12 月发表的指南把 workflow 和代理分开来看，并描述了五种 workflow 模式，其中一种让另一次 LLM 调用来审查。这对落进你文件夹的东西来说，意味着什么。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -52,7 +52,7 @@ try {
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hans/"}, {"@type": "ListItem", "position": 2, "name": "编者的阅读笔记", "item": "https://marsdawn.southern-light.dev/zh-hans/reading-notes/"}, {"@type": "ListItem", "position": 3, "name": "阅读笔记：Anthropic", "item": "https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Anthropic 把 workflow 和 agent 分开来看，你的阅读落在哪一边？", "description": "Anthropic 在 2024 年 12 月发表的指南把 workflow 和 agent 分开来看，并描述了五种 workflow 模式，其中一种让另一次 LLM 调用来审查。这对落进你文件夹的东西来说，意味着什么。", "datePublished": "2026-10-08", "dateModified": "2026-10-08", "inLanguage": "zh-Hans", "mainEntityOfPage": "https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Anthropic 把 workflow 和代理分开来看，你的阅读落在哪一边？", "description": "Anthropic 在 2024 年 12 月发表的指南把 workflow 和代理分开来看，并描述了五种 workflow 模式，其中一种让另一次 LLM 调用来审查。这对落进你文件夹的东西来说，意味着什么。", "datePublished": "2026-10-08", "dateModified": "2026-10-08", "inLanguage": "zh-Hans", "mainEntityOfPage": "https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -75,29 +75,29 @@ try {
 </header>
 <main id="main">
 <section class="intro">
-  <h1>Anthropic 把 workflow 和 agent 分开来看，你的阅读落在哪一边？</h1>
+  <h1>Anthropic 把 workflow 和代理分开来看，你的阅读落在哪一边？</h1>
 </section>
 
-<div class="summary"><p><strong>Anthropic 在 2024 年 12 月发表的《Building Effective Agents》，是写给打造 AI agent 的人看的指南。一开头就把“workflow”和“agent”分开，接着建议先从能用的最简单做法开始&#8212;&#8212;也可能完全不需要 agentic 系统&#8212;&#8212;只有在这样还不够的时候，才用得上它整理出的五种 workflow 模式。其中一种模式，是让另一次 LLM 调用坐上审查者的位置。这篇要谈的就是这种模式，以及另外四种模式各自会留下什么给你读。</strong></p></div>
+<div class="summary"><p><strong>Anthropic 在 2024 年 12 月发表的《Building Effective Agents》，是写给打造 AI 代理的人看的指南。一开头就把“workflow”和“agent”分开，接着建议先从能用的最简单做法开始&#8212;&#8212;也可能完全不需要 agentic 系统&#8212;&#8212;只有在这样还不够的时候，才用得上它整理出的五种 workflow 模式。其中一种模式，是让另一次 LLM 调用坐上审查者的位置。这篇要谈的就是这种模式，以及另外四种模式各自会留下什么给你读。</strong></p></div>
 
 <h2 id="what-the-guide-argues">指南主张什么</h2>
 <p>Erik S. 与 Barry Zhang 写这篇文章，是给正在决定怎么用 LLM 打造系统的工程师看的。文章一开头先下了一个定义：</p>
 <blockquote><p>&#8220;Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.&#8221;</p></blockquote>
-<p>（Workflow 是 LLM 和工具通过事先写好的程序路径被安排执行的系统；相对地，agent 则是 LLM 自己动态决定流程、自己决定怎么使用工具、掌控自己怎么完成任务的系统。）</p>
+<p>（Workflow 是 LLM 和工具通过事先写好的程序路径被安排执行的系统；相对地，代理则是 LLM 自己动态决定流程、自己决定怎么使用工具、掌控自己怎么完成任务的系统。）</p>
 <p>接着，他们的建议很克制：</p>
 <blockquote><p>&#8220;When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed. This might mean not building agentic systems at all.&#8221;</p></blockquote>
 <p>（用 LLM 打造应用程序时，我们建议先找出最简单可行的做法，只有在真的需要时才增加复杂度。这可能代表根本不需要打造 agentic 系统。）</p>
 <p>需要更多结构的时候，他们描述了五种 workflow 模式：prompt chaining（把任务拆成一连串调用，步骤之间可以加检查）、routing（路由）、parallelization（并行化）、orchestrator-workers（一个 LLM 把任务拆给多个 worker LLM 执行，再把结果合起来），还有 evaluator-optimizer。最后这一种，原文是这样写的：</p>
 <blockquote><p>&#8220;In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.&#8221;</p></blockquote>
 <p>（在 evaluator-optimizer workflow 里，一次 LLM 调用产生答案，另一次调用则在循环里负责评估、给反馈。）</p>
-<p>Anthropic 在这份指南里完全没有提到 MarsDawn，也没有推荐任何 Markdown 工具。这份指南谈透明和“检查点”的部分，《<a href="/zh-hans/agent-transparency/">Anthropic 说 agent 要透明，那摊开的东西谁来读？</a>》已经完整谈过，这篇不再重复；那篇谈人工审阅 code 的那句话，来自附录里专门讲 coding agent 的段落，脉络也在那篇文章里。</p>
+<p>Anthropic 在这份指南里完全没有提到 MarsDawn，也没有推荐任何 Markdown 工具。这份指南谈透明和“检查点”的部分，《<a href="/zh-hans/agent-transparency/">Anthropic 说代理要透明，那摊开的东西谁来读？</a>》已经完整谈过，这篇不再重复；那篇谈人工审阅 code 的那句话，来自附录里专门讲 编程代理的段落，脉络也在那篇文章里。</p>
 
 <h2 id="our-reading-not-anthropic-s">以下是我们的解读，不是 Anthropic 的</h2>
-<p>Anthropic 没有说 workflow 跑完之后谁来检查最终结果，这整篇也不是在谈文件，而是给打造 agent 的人的架构决定。但这五种模式，会留下给你读的东西并不一样。Prompt chaining 和 routing 通常是看不见的管线；就算有东西送到你手上，也只是这条链最后一次调用的输出，跟其他单次回答没两样。Orchestrator-workers 就不同了：如果你的 coding agent 内部用的是这种模式，落进你文件夹的可能是一份由好几个 worker 调用拼起来、再由 orchestrator 组合成的文件，其中一个 worker 那一段出了错，很容易被整体读起来很顺的摘要盖过去。</p>
+<p>Anthropic 没有说 workflow 跑完之后谁来检查最终结果，这整篇也不是在谈文件，而是给打造代理的人的架构决定。但这五种模式，会留下给你读的东西并不一样。Prompt chaining 和 routing 通常是看不见的管线；就算有东西送到你手上，也只是这条链最后一次调用的输出，跟其他单次回答没两样。Orchestrator-workers 就不同了：如果你的 编程代理内部用的是这种模式，落进你文件夹的可能是一份由好几个 worker 调用拼起来、再由 orchestrator 组合成的文件，其中一个 worker 那一段出了错，很容易被整体读起来很顺的摘要盖过去。</p>
 <p>Evaluator-optimizer 特别值得停下来想一下，因为指南把原本可能由人来坐的审查者位置，换成了另一次 LLM 调用。这确实能便宜地抓到一类错误，但终究还是模型照着某组标准去检查模型，这个系列里也有作者提过这个顾虑：模型评判自己或另一个模型的成果。指南完全没有说要有人再复核 evaluator 的判断，它根本没表态。如果你才是最后要读这一切的人，“循环通过了”和“我自己查过了”不是同一句话&#8212;&#8212;就算你手上的文件两种情况看起来一模一样。</p>
 
 <h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn 帮得上、帮不上的地方</h2>
-<p>MarsDawn 不知道一份文件是哪种 workflow 模式做出来的，里面也没有 AI 模型&#8212;&#8212;它不会自己跑一次 evaluator 步骤，也没办法告诉你 Anthropic 描述的那个评估到底做得好不好。它做的是：侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页列出一份 orchestrator 拼出来的长文件的所有标题，点一下就跳过去；源代码和排好的页面并排（&#8984;2），一起滚动，Mermaid 图表和 KaTeX 数学式都直接画出来。agent 读到一半改写文件的话，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未保存的修改。“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）把你的位置拷贝成 <code>docs/plan.md:42</code>，直接贴回 agent 的对话里就好。</p>
+<p>MarsDawn 不知道一份文件是哪种 workflow 模式做出来的，里面也没有 AI 模型&#8212;&#8212;它不会自己跑一次 evaluator 步骤，也没办法告诉你 Anthropic 描述的那个评估到底做得好不好。它做的是：侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页列出一份 orchestrator 拼出来的长文件的所有标题，点一下就跳过去；源代码和排好的页面并排（&#8984;2），一起滚动，Mermaid 图表和 KaTeX 数学式都直接画出来。代理读到一半改写文件的话，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未保存的修改。“编辑 &#9656; 拷贝引用”（&#8997;&#8984;C）把你的位置拷贝成 <code>docs/plan.md:42</code>，直接贴回代理的对话里就好。</p>
 
 <h2 id="try-it">试试看</h2>
 <p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
@@ -107,8 +107,8 @@ try {
 
 <h2 id="next">接下来</h2>
 <ul>
-  <li>这份指南谈透明和检查点的完整讨论：《<a href="/zh-hans/agent-transparency/">Anthropic 说 agent 要透明，那摊开的东西谁来读？</a>》</li>
-  <li>agent 的产出为什么普遍难读：《<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>》</li>
+  <li>这份指南谈透明和检查点的完整讨论：《<a href="/zh-hans/agent-transparency/">Anthropic 说代理要透明，那摊开的东西谁来读？</a>》</li>
+  <li>代理的产出为什么普遍难读：《<a href="/zh-hans/reading-agent-output/">读懂代理交回来的 Markdown</a>》</li>
   <li>回到系列索引：《<a href="/zh-hans/reading-notes/">编者的阅读笔记</a>》</li>
 </ul>
 
