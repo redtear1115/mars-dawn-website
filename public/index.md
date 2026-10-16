@@ -79,7 +79,7 @@ Choosing between MarsDawn, VS Code's preview, Obsidian, QLMarkdown and LynxOffic
 
 ## Your documents stay on your Mac
 
-On your Mac. Reading, editing, rendering, PDF export and the marsdawn command line all run here, offline; the app never uploads your documents.
+On your Mac. Reading, editing, rendering, [PDF export](/privacy/#exporting-and-printing) and [the marsdawn command line](/privacy/#the-marsdawn-command-line-tool) all run here, offline; the app never uploads your documents.
 
 More: [Privacy Policy](/privacy/#what-stays-on-your-mac)
 
@@ -113,11 +113,13 @@ Yes. The free marsdawn command-line tool has an open command that opens a Markdo
 
 No. The app never uploads your documents, collects no data about you and has no account; your documents and settings stay on your Mac. If a document refers to the web and you load that content, your Mac fetches it from the servers that host it, and MarsDawn's developer receives none of it.
 
-More: [Privacy Policy](/privacy/#when-marsdawn-uses-the-internet)
+More: [Privacy Policy](/privacy/#what-stays-on-your-mac)
 
 ### With MCP or the skill, who can see my files?
 
 MarsDawn itself sends nothing. The skill is a text file of instructions, and the marsdawn CLI and the MCP server run on your Mac; the MCP server works only in folders you allow. The one reading your files is your agent, and what it and its model provider do with them is that agent's policy, which MarsDawn neither controls nor describes.
+
+More: [MCP](/cli/mcp/)
 
 ### Is it safe to open HTML someone sent me?
 

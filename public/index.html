@@ -340,7 +340,7 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
 <p>Choosing between MarsDawn, VS Code's preview, Obsidian, QLMarkdown and LynxOffice? The comparison lists what each vendor states, what MarsDawn lacks, and when you don't need it. <a href="/vs/">Compare</a></p>
 <section class="stays">
 <h2>Your documents stay on your Mac</h2>
-<p>On your Mac. Reading, editing, rendering, PDF export and the marsdawn command line all run here, offline; the app never uploads your documents.</p>
+<p>On your Mac. Reading, editing, rendering, <a href="/privacy/#exporting-and-printing">PDF export</a> and <a href="/privacy/#the-marsdawn-command-line-tool">the marsdawn command line</a> all run here, offline; the app never uploads your documents.</p>
 <p class="more">More: <a href="/privacy/#what-stays-on-your-mac">Privacy Policy</a></p>
 <p>Off the network by default. Web images load only when you click Load Images or turn on Load remote images automatically in Settings, and an HTML document opens static, with its code not run.</p>
 <p class="more">More: <a href="/privacy/#when-marsdawn-uses-the-internet">Privacy Policy</a></p>
@@ -359,9 +359,10 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
 <p>Yes. The free marsdawn command-line tool has an open command that opens a Markdown file in MarsDawn, so Claude Code, or any agent that can run a shell command, can call it. An opt-in Claude Code hook can open each Markdown file Claude writes or edits.</p>
 <h3>Does MarsDawn upload my documents?</h3>
 <p>No. The app never uploads your documents, collects no data about you and has no account; your documents and settings stay on your Mac. If a document refers to the web and you load that content, your Mac fetches it from the servers that host it, and MarsDawn's developer receives none of it.</p>
-<p class="more">More: <a href="/privacy/#when-marsdawn-uses-the-internet">Privacy Policy</a></p>
+<p class="more">More: <a href="/privacy/#what-stays-on-your-mac">Privacy Policy</a></p>
 <h3>With MCP or the skill, who can see my files?</h3>
 <p>MarsDawn itself sends nothing. The skill is a text file of instructions, and the marsdawn CLI and the MCP server run on your Mac; the MCP server works only in folders you allow. The one reading your files is your agent, and what it and its model provider do with them is that agent's policy, which MarsDawn neither controls nor describes.</p>
+<p class="more">More: <a href="/cli/mcp/">MCP</a></p>
 <h3>Is it safe to open HTML someone sent me?</h3>
 <p>By default it opens static: its code doesn't run and nothing loads from the web. If you choose View › Run This Document, that document runs, and it can send data over the network and read images, stylesheets, fonts and media in its folder. The choice is never remembered, so it opens static again next time.</p>
 <p class="more">More: <a href="/privacy/#when-marsdawn-uses-the-internet">Privacy Policy</a></p>

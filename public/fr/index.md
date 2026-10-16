@@ -79,7 +79,7 @@ Vous hésitez entre MarsDawn, l’aperçu de VS Code, Obsidian, QLMarkdown et Ly
 
 ## Vos documents restent sur votre Mac
 
-Sur votre Mac. Lecture, édition, rendu, export PDF et l’outil en ligne de commande marsdawn tournent ici, même hors ligne ; l’app n’envoie jamais vos documents en ligne.
+Sur votre Mac. Lecture, édition, rendu, [export PDF](/fr/privacy/#exporting-and-printing) et [l’outil en ligne de commande marsdawn](/fr/privacy/#the-marsdawn-command-line-tool) tournent ici, même hors ligne ; l’app n’envoie jamais vos documents en ligne.
 
 En savoir plus : [Politique de confidentialité](/fr/privacy/#what-stays-on-your-mac)
 

@@ -79,7 +79,7 @@ MarsDawn, VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice 사이에서 �
 
 ## 문서는 Mac에 남습니다
 
-Mac 안에서. 읽기, 편집, 렌더링, PDF 내보내기, marsdawn 명령줄 도구가 모두 이곳에서 오프라인으로도 실행되며, 앱은 문서를 업로드하지 않습니다.
+Mac 안에서. 읽기, 편집, 렌더링, [PDF 내보내기](/ko/privacy/#exporting-and-printing), [marsdawn 명령줄 도구](/ko/privacy/#the-marsdawn-command-line-tool)가 모두 이곳에서 오프라인으로도 실행되며, 앱은 문서를 업로드하지 않습니다.
 
 자세히: [개인정보 처리방침](/ko/privacy/#what-stays-on-your-mac)
 

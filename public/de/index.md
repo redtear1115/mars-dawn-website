@@ -79,7 +79,7 @@ Du schwankst zwischen MarsDawn, der VS-Code-Vorschau, Obsidian, QLMarkdown und L
 
 ## Deine Dokumente bleiben auf deinem Mac
 
-Auf deinem Mac. Lesen, Bearbeiten, Rendern, PDF-Export und das Befehlszeilenprogramm marsdawn laufen hier, auch offline; die App lädt deine Dokumente nie hoch.
+Auf deinem Mac. Lesen, Bearbeiten, Rendern, [PDF-Export](/de/privacy/#exporting-and-printing) und [das Befehlszeilenprogramm marsdawn](/de/privacy/#the-marsdawn-command-line-tool) laufen hier, auch offline; die App lädt deine Dokumente nie hoch.
 
 Mehr dazu: [Datenschutzrichtlinie](/de/privacy/#what-stays-on-your-mac)
 

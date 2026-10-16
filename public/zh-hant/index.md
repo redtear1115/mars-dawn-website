@@ -79,7 +79,7 @@ hook 與指令：[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/) · [�
 
 ## 文件留在你的 Mac 上
 
-在你的 Mac 上。閱讀、編輯、算繪、輸出 PDF 和 marsdawn 命令列都在本機完成，可以完全離線；App 不會上傳你的文件。
+在你的 Mac 上。閱讀、編輯、算繪、[輸出 PDF](/zh-hant/privacy/#exporting-and-printing) 和 [marsdawn 命令列](/zh-hant/privacy/#the-marsdawn-command-line-tool)都在本機完成，可以完全離線；App 不會上傳你的文件。
 
 詳見：[隱私權政策](/zh-hant/privacy/#what-stays-on-your-mac)
 
@@ -108,6 +108,30 @@ MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原�
 ### Claude Code 可以用 MarsDawn 開檔案嗎？
 
 可以。免費的 marsdawn 命令列工具有 open 指令，能用 MarsDawn 開啟 Markdown 檔案，所以 Claude Code，或任何能執行 shell 指令的 agent，都能呼叫它。另有一個需要自行啟用的 Claude Code hook，可以在 Claude 寫入或編輯 Markdown 檔案時自動開啟。
+
+### MarsDawn 會上傳我的文件嗎？
+
+不會。App 不會上傳你的文件，不收集任何關於你的資料，也沒有帳號；文件和設定都留在你的 Mac 上。只有文件引用網路內容、而你選擇載入時，你的 Mac 才會向放置那些內容的伺服器取用，MarsDawn 的開發者收不到這些資訊。
+
+詳見：[隱私權政策](/zh-hant/privacy/#what-stays-on-your-mac)
+
+### 用 MCP 或 skill 時，誰能看到我的檔案？
+
+MarsDawn 本身不傳送任何東西。skill 只是一份文字說明，marsdawn 命令列和 MCP 伺服器都在你的 Mac 上執行，MCP 伺服器也只在你允許的資料夾裡動作。真正讀檔的是你的 agent，它和它的模型供應商怎麼處理這些檔案，依照那個 agent 的政策；MarsDawn 無法控制，也不代為說明。
+
+詳見：[MCP](/zh-hant/cli/mcp/)
+
+### 打開別人傳給我的 HTML 安全嗎？
+
+預設開啟時是靜態的：程式碼不會執行，也不會從網路載入任何東西。若你選擇「顯示方式 › 執行這份文件」，這份文件就會執行，可以透過網路傳送資料，並讀取它所在資料夾裡的圖片、樣式表、字型與媒體檔案。這個選擇不會被記住，下次打開又是靜態的。
+
+詳見：[隱私權政策](/zh-hant/privacy/#when-marsdawn-uses-the-internet)
+
+### 網站的分析 cookie 和 App 有關嗎？
+
+沒有關係。App 和這個網站是兩件事：App 不收集資料，會記下造訪的只有 marsdawn.southern-light.dev。網站的 Google Analytics 一開始是拒絕狀態，你在橫幅中選擇「接受」之後才會設定 cookie，頁尾的「Cookie 設定」可以隨時改。App 下載 /themes/ 底下主題檔的請求不會被記錄。
+
+詳見：[隱私權政策](/zh-hant/privacy/#the-website)
 
 ## App 實際的樣子
 

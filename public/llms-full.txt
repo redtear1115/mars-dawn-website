@@ -85,7 +85,7 @@ Choosing between MarsDawn, VS Code's preview, Obsidian, QLMarkdown and LynxOffic
 
 ## Your documents stay on your Mac
 
-On your Mac. Reading, editing, rendering, PDF export and the marsdawn command line all run here, offline; the app never uploads your documents.
+On your Mac. Reading, editing, rendering, [PDF export](/privacy/#exporting-and-printing) and [the marsdawn command line](/privacy/#the-marsdawn-command-line-tool) all run here, offline; the app never uploads your documents.
 
 More: [Privacy Policy](/privacy/#what-stays-on-your-mac)
 
@@ -119,11 +119,13 @@ Yes. The free marsdawn command-line tool has an open command that opens a Markdo
 
 No. The app never uploads your documents, collects no data about you and has no account; your documents and settings stay on your Mac. If a document refers to the web and you load that content, your Mac fetches it from the servers that host it, and MarsDawn's developer receives none of it.
 
-More: [Privacy Policy](/privacy/#when-marsdawn-uses-the-internet)
+More: [Privacy Policy](/privacy/#what-stays-on-your-mac)
 
 ### With MCP or the skill, who can see my files?
 
 MarsDawn itself sends nothing. The skill is a text file of instructions, and the marsdawn CLI and the MCP server run on your Mac; the MCP server works only in folders you allow. The one reading your files is your agent, and what it and its model provider do with them is that agent's policy, which MarsDawn neither controls nor describes.
+
+More: [MCP](/cli/mcp/)
 
 ### Is it safe to open HTML someone sent me?
 
@@ -3225,7 +3227,7 @@ hook 與指令：[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/) · [�
 
 ## 文件留在你的 Mac 上
 
-在你的 Mac 上。閱讀、編輯、算繪、輸出 PDF 和 marsdawn 命令列都在本機完成，可以完全離線；App 不會上傳你的文件。
+在你的 Mac 上。閱讀、編輯、算繪、[輸出 PDF](/zh-hant/privacy/#exporting-and-printing) 和 [marsdawn 命令列](/zh-hant/privacy/#the-marsdawn-command-line-tool)都在本機完成，可以完全離線；App 不會上傳你的文件。
 
 詳見：[隱私權政策](/zh-hant/privacy/#what-stays-on-your-mac)
 
@@ -3254,6 +3256,30 @@ MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原�
 ### Claude Code 可以用 MarsDawn 開檔案嗎？
 
 可以。免費的 marsdawn 命令列工具有 open 指令，能用 MarsDawn 開啟 Markdown 檔案，所以 Claude Code，或任何能執行 shell 指令的 agent，都能呼叫它。另有一個需要自行啟用的 Claude Code hook，可以在 Claude 寫入或編輯 Markdown 檔案時自動開啟。
+
+### MarsDawn 會上傳我的文件嗎？
+
+不會。App 不會上傳你的文件，不收集任何關於你的資料，也沒有帳號；文件和設定都留在你的 Mac 上。只有文件引用網路內容、而你選擇載入時，你的 Mac 才會向放置那些內容的伺服器取用，MarsDawn 的開發者收不到這些資訊。
+
+詳見：[隱私權政策](/zh-hant/privacy/#what-stays-on-your-mac)
+
+### 用 MCP 或 skill 時，誰能看到我的檔案？
+
+MarsDawn 本身不傳送任何東西。skill 只是一份文字說明，marsdawn 命令列和 MCP 伺服器都在你的 Mac 上執行，MCP 伺服器也只在你允許的資料夾裡動作。真正讀檔的是你的 agent，它和它的模型供應商怎麼處理這些檔案，依照那個 agent 的政策；MarsDawn 無法控制，也不代為說明。
+
+詳見：[MCP](/zh-hant/cli/mcp/)
+
+### 打開別人傳給我的 HTML 安全嗎？
+
+預設開啟時是靜態的：程式碼不會執行，也不會從網路載入任何東西。若你選擇「顯示方式 › 執行這份文件」，這份文件就會執行，可以透過網路傳送資料，並讀取它所在資料夾裡的圖片、樣式表、字型與媒體檔案。這個選擇不會被記住，下次打開又是靜態的。
+
+詳見：[隱私權政策](/zh-hant/privacy/#when-marsdawn-uses-the-internet)
+
+### 網站的分析 cookie 和 App 有關嗎？
+
+沒有關係。App 和這個網站是兩件事：App 不收集資料，會記下造訪的只有 marsdawn.southern-light.dev。網站的 Google Analytics 一開始是拒絕狀態，你在橫幅中選擇「接受」之後才會設定 cookie，頁尾的「Cookie 設定」可以隨時改。App 下載 /themes/ 底下主題檔的請求不會被記錄。
+
+詳見：[隱私權政策](/zh-hant/privacy/#the-website)
 
 ## App 實際的樣子
 
@@ -6381,7 +6407,7 @@ hook 与命令：[给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/) · [�
 
 ## 文稿留在你的 Mac 上
 
-在你的 Mac 上。阅读、编辑、渲染、导出 PDF 和 marsdawn 命令行都在本机完成，可以完全离线；App 不会上传你的文稿。
+在你的 Mac 上。阅读、编辑、渲染、[导出 PDF](/zh-hans/privacy/#exporting-and-printing) 和 [marsdawn 命令行](/zh-hans/privacy/#the-marsdawn-command-line-tool)都在本机完成，可以完全离线；App 不会上传你的文稿。
 
 详见：[隐私政策](/zh-hans/privacy/#what-stays-on-your-mac)
 
@@ -9554,7 +9580,7 @@ MarsDawn、VS Code のプレビュー、Obsidian、QLMarkdown、LynxOffice で�
 
 ## 文書はあなたの Mac に残ります
 
-Mac の中で。閲覧、編集、レンダリング、PDF 書き出し、marsdawn コマンドラインはすべて手元で動き、オフラインでも使えます。アプリが文書をアップロードすることはありません。
+Mac の中で。閲覧、編集、レンダリング、[PDF 書き出し](/ja/privacy/#exporting-and-printing)、[marsdawn コマンドライン](/ja/privacy/#the-marsdawn-command-line-tool)はすべて手元で動き、オフラインでも使えます。アプリが文書をアップロードすることはありません。
 
 詳しくは：[プライバシーポリシー](/ja/privacy/#what-stays-on-your-mac)
 
@@ -9583,6 +9609,30 @@ MarsDawn は、エージェントが書いた Markdown を読んで確かめる�
 ### Claude Code から MarsDawn でファイルを開けますか？
 
 はい。無料の marsdawn コマンドラインツールには open コマンドがあり、Markdown ファイルを MarsDawn で開けるので、Claude Code やシェルコマンドを実行できるエージェントから呼び出せます。Claude が Markdown ファイルを書いたり編集したりするたびに開く、任意で有効にする Claude Code フックもあります。
+
+### MarsDawn は文書をアップロードしますか？
+
+いいえ。アプリが文書をアップロードすることはなく、あなたに関するデータも集めず、アカウントもありません。文書と設定は Mac に残ります。文書が Web を参照していて、それを読み込むと選んだときだけ、Mac がその内容をホストしているサーバから直接取得します。MarsDawn の開発者はその情報を一切受け取りません。
+
+詳しくは：[プライバシーポリシー](/ja/privacy/#what-stays-on-your-mac)
+
+### MCP または skill を使うと、ファイルを見られるのは誰ですか？
+
+MarsDawn 自体は何も送りません。skill は指示を書いたテキストファイルで、marsdawn CLI と MCP サーバーは Mac の上で動き、MCP サーバーはあなたが許可したフォルダの中だけで動作します。ファイルを読むのはあなたのエージェントで、そのエージェントとモデル提供元がファイルをどう扱うかは、そのエージェントのポリシーによります。MarsDawn はそれを管理せず、説明もしません。
+
+詳しくは：[MCP](/ja/cli/mcp/)
+
+### 送られてきた HTML を開いても安全ですか？
+
+初期状態では静的に開き、コードは実行されず、Web からも何も読み込まれません。「表示 › この書類を実行」を選ぶと、その文書が実行され、ネットワーク経由でデータを送ったり、同じフォルダの画像、スタイルシート、フォント、メディアを読んだりできるようになります。この選択は記憶されないので、次に開くときはまた静的です。
+
+詳しくは：[プライバシーポリシー](/ja/privacy/#when-marsdawn-uses-the-internet)
+
+### サイトの分析用クッキーはアプリと関係がありますか？
+
+関係ありません。アプリとこのウェブサイトは別のものです。アプリはデータを収集せず、訪問が記録され得るのは marsdawn.southern-light.dev だけです。サイトの Google Analytics は最初は拒否の状態で、バナーで「同意する」を選んだあとにだけクッキーを設定し、フッターの「Cookie 設定」でいつでも変えられます。アプリが /themes/ のテーマファイルを取りに行くリクエストは記録されません。
+
+詳しくは：[プライバシーポリシー](/ja/privacy/#the-website)
 
 ## 実際のアプリ画面
 
@@ -12703,7 +12753,7 @@ Du schwankst zwischen MarsDawn, der VS-Code-Vorschau, Obsidian, QLMarkdown und L
 
 ## Deine Dokumente bleiben auf deinem Mac
 
-Auf deinem Mac. Lesen, Bearbeiten, Rendern, PDF-Export und das Befehlszeilenprogramm marsdawn laufen hier, auch offline; die App lädt deine Dokumente nie hoch.
+Auf deinem Mac. Lesen, Bearbeiten, Rendern, [PDF-Export](/de/privacy/#exporting-and-printing) und [das Befehlszeilenprogramm marsdawn](/de/privacy/#the-marsdawn-command-line-tool) laufen hier, auch offline; die App lädt deine Dokumente nie hoch.
 
 Mehr dazu: [Datenschutzrichtlinie](/de/privacy/#what-stays-on-your-mac)
 
@@ -15838,7 +15888,7 @@ Vous hésitez entre MarsDawn, l’aperçu de VS Code, Obsidian, QLMarkdown et Ly
 
 ## Vos documents restent sur votre Mac
 
-Sur votre Mac. Lecture, édition, rendu, export PDF et l’outil en ligne de commande marsdawn tournent ici, même hors ligne ; l’app n’envoie jamais vos documents en ligne.
+Sur votre Mac. Lecture, édition, rendu, [export PDF](/fr/privacy/#exporting-and-printing) et [l’outil en ligne de commande marsdawn](/fr/privacy/#the-marsdawn-command-line-tool) tournent ici, même hors ligne ; l’app n’envoie jamais vos documents en ligne.
 
 En savoir plus : [Politique de confidentialité](/fr/privacy/#what-stays-on-your-mac)
 
@@ -18973,7 +19023,7 @@ El hook y los comandos: [marsdawn para agentes](/es/cli/agents/) · [Skill para 
 
 ## Tus documentos se quedan en tu Mac
 
-En tu Mac. Leer, editar, renderizar, exportar a PDF y la herramienta de línea de comandos marsdawn funcionan aquí, incluso sin conexión; la app nunca sube tus documentos.
+En tu Mac. Leer, editar, renderizar, [exportar a PDF](/es/privacy/#exporting-and-printing) y [la herramienta de línea de comandos marsdawn](/es/privacy/#the-marsdawn-command-line-tool) funcionan aquí, incluso sin conexión; la app nunca sube tus documentos.
 
 Más información: [Política de privacidad](/es/privacy/#what-stays-on-your-mac)
 
@@ -22108,7 +22158,7 @@ MarsDawn, VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice 사이에서 �
 
 ## 문서는 Mac에 남습니다
 
-Mac 안에서. 읽기, 편집, 렌더링, PDF 내보내기, marsdawn 명령줄 도구가 모두 이곳에서 오프라인으로도 실행되며, 앱은 문서를 업로드하지 않습니다.
+Mac 안에서. 읽기, 편집, 렌더링, [PDF 내보내기](/ko/privacy/#exporting-and-printing), [marsdawn 명령줄 도구](/ko/privacy/#the-marsdawn-command-line-tool)가 모두 이곳에서 오프라인으로도 실행되며, 앱은 문서를 업로드하지 않습니다.
 
 자세히: [개인정보 처리방침](/ko/privacy/#what-stays-on-your-mac)
 

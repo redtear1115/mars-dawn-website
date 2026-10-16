@@ -556,6 +556,10 @@ def ingest_242() -> None:
 def ingest_240() -> None:
     c1, b1 = comment(240, 1)
     c2, b2 = comment(240, 2)
+    c3, b3 = comment(240, 3)          # round 3: the P1 to P4 questions, the P2 link row, the P1 anchor, the layer-1 inline links
+    r3_q = {row[0]: row[1:] for row in data_tables(section(b3, "## 1. 題目"))[0][1:]}      # P1.. -> [en, zh-Hant, ja]
+    r3_p2 = by_loc(r1_items(section(b3, "## 2. P2 連結列")))
+    r3_phrases = {row[0]: row[1:] for row in data_tables(section(b3, "## 4. 第一層額外連結：選 A"))[0][1:]}
     title = by_loc(r1_items(section(b1, "### (a)")), "A")
     sec_b = section(b1, "### (b)")
     parts = re.split(r"\*\*第[一二三]層\*\*", sec_b)[1:]
@@ -573,7 +577,7 @@ def ingest_240() -> None:
     sec_d = section(b1, "### (d)")
     bar = by_loc(r1_items(sec_d.split("錨點對應")[0]))
     anchors = {"t1": "what-stays-on-your-mac", "t2": "when-marsdawn-uses-the-internet", "t3": "when-marsdawn-uses-the-internet",
-               "P1": "when-marsdawn-uses-the-internet", "P3": "when-marsdawn-uses-the-internet", "P4": "the-website"}
+               "P1": "what-stays-on-your-mac", "P3": "when-marsdawn-uses-the-internet", "P4": "the-website"}
     seo = ns_seo()
     for loc in LOCALES:
         if loc in FIRST:
@@ -591,12 +595,19 @@ def ingest_240() -> None:
             items = {}
             q1_q = seo[loc]["home_faq"][0][0] if loc != "en" else q1_heading
             items["Q1"] = (q1_q, answers_r1["Q1"][loc], None, comment_source(c1, 1, f"### (c) Q1, {loc}"), None)
-            if loc == "en":
-                for k in ("P1", "P2", "P3", "P4"):
-                    q = re.sub(r"（.*$", "", heads[k]).strip()
-                    mk = None if k == "P2" else link(anchors[k])
-                    items[k] = (q, answers_r1[k][loc], mk, comment_source(c1, 1, f"### (c) {k}, en"),
-                                comment_source(c1, 1, f"### (d) link row + anchor table, en, {k}") if mk else None)
+            col = {"en": 0, "zh-hant": 1, "ja": 2}[loc]
+            for k in ("P1", "P2", "P3", "P4"):
+                if loc == "en":
+                    q, qsrc = re.sub(r"（.*$", "", heads[k]).strip(), comment_source(c1, 1, f"### (c) {k}, en")
+                else:
+                    q, qsrc = r3_q[k][col], comment_source(c3, 3, f"## 1. 題目, {k}, {loc}")
+                if k == "P2":
+                    mk, msrc_ = r3_p2[loc], comment_source(c3, 3, f"## 2. P2 連結列, {loc}")
+                else:
+                    mk, msrc_ = link(anchors[k]), comment_source(c1, 1, f"### (d) link row + anchor table, {loc}, {k}")
+                    if k == "P1":
+                        msrc_ = [msrc_, comment_source(c3, 3, f"## 3. P1 錨點 (all eight languages), {loc}")]
+                items[k] = (q, answers_r1[k][loc], mk, [comment_source(c1, 1, f"### (c) {k}, {loc}")] + ([qsrc] if loc != "en" else []), msrc_)
         else:
             t = r2_table(b2, loc)
             ttl = t["標題"]
@@ -620,6 +631,16 @@ def ingest_240() -> None:
             DATA["stays"][loc]["more"].append(inline(more[i]))
             SLOTS.append({"locale": loc, "page": "index", "field": "p", "source": msrc[i], "item": f"#240(d) link row, layer {i + 1}",
                           "version": ver, "path": ["stays", loc, "more", i]})
+        # round 3, option A: the PDF words and the command-line words of layer 1 link to their privacy sections
+        pdf_phrase, cmd_phrase = r3_phrases[{"zh-hant": "zh-Hant", "zh-hans": "zh-Hans"}.get(loc, loc)]
+        privacy = "/privacy/" if loc == "en" else f"/{loc}/privacy/"
+        html1 = DATA["stays"][loc]["layers"][0]
+        for phrase, anchor, what in ((pdf_phrase, "exporting-and-printing", "PDF"), (cmd_phrase, "the-marsdawn-command-line-tool", "command line")):
+            assert layers[0].count(phrase) == 1, f"{loc}: layer 1 has {layers[0].count(phrase)} of {phrase!r}, want exactly 1"
+            html1 = html1.replace(esc(phrase), f'<a href="{privacy}#{anchor}">{esc(phrase)}</a>', 1)
+            SLOTS.append({"locale": loc, "page": "index", "field": "inline-link", "source": comment_source(c3, 3, f"## 4 table, {what}, {loc}"),
+                          "item": f"#240(b) layer 1 link: {what}", "version": "R3 option A", "path": None, "phrase": esc(phrase), "href": f"{privacy}#{anchor}"})
+        DATA["stays"][loc]["layers"][0] = html1
         DATA["stays"][loc]["faq"] = {}
         for k, (q, a, mk, asrc, msrc_) in items.items():
             DATA["stays"][loc]["faq"][k] = [esc(q), esc(a), inline(mk) if mk else None]

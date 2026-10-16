@@ -16,6 +16,13 @@
      "updated_at": "2026-10-16T15:17:46Z",
      "sha256": "940530d08f657ec6612049e186f94c08cc1af9cf9b918a2b9c6fc9ef2b2568e9",
      "chars": 15602
+    },
+    {
+     "id": 6220924219,
+     "created_at": "2026-10-16T17:21:50Z",
+     "updated_at": "2026-10-16T17:21:50Z",
+     "sha256": "f0f1d32dfba6767efb6449607e685b38b23a00a28daf11847bd5e33d1dc944e0",
+     "chars": 1658
     }
    ],
    "241": [
@@ -18763,6 +18770,36 @@
   {
    "locale": "en",
    "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, PDF, en"
+   },
+   "item": "#240(b) layer 1 link: PDF",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "PDF export",
+   "href": "/privacy/#exporting-and-printing"
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, command line, en"
+   },
+   "item": "#240(b) layer 1 link: command line",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "the marsdawn command line",
+   "href": "/privacy/#the-marsdawn-command-line-tool"
+  },
+  {
+   "locale": "en",
+   "page": "index",
    "field": "faq_q",
    "source": {
     "comment": 6217610007,
@@ -18802,11 +18839,13 @@
    "locale": "en",
    "page": "index",
    "field": "faq_q",
-   "source": {
-    "comment": 6217610007,
-    "round": "R1",
-    "locator": "### (c) P1, en"
-   },
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P1, en"
+    }
+   ],
    "item": "#240(c) P1 question",
    "version": "R1+R2",
    "path": [
@@ -18821,11 +18860,13 @@
    "locale": "en",
    "page": "index",
    "field": "faq_a",
-   "source": {
-    "comment": 6217610007,
-    "round": "R1",
-    "locator": "### (c) P1, en"
-   },
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P1, en"
+    }
+   ],
    "item": "#240(c) P1 answer",
    "version": "R1+R2",
    "path": [
@@ -18840,11 +18881,18 @@
    "locale": "en",
    "page": "index",
    "field": "p",
-   "source": {
-    "comment": 6217610007,
-    "round": "R1",
-    "locator": "### (d) link row + anchor table, en, P1"
-   },
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (d) link row + anchor table, en, P1"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 3. P1 錨點 (all eight languages), en"
+    }
+   ],
    "item": "#240(d) link row, P1",
    "version": "R1+R2",
    "path": [
@@ -18859,11 +18907,13 @@
    "locale": "en",
    "page": "index",
    "field": "faq_q",
-   "source": {
-    "comment": 6217610007,
-    "round": "R1",
-    "locator": "### (c) P2, en"
-   },
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P2, en"
+    }
+   ],
    "item": "#240(c) P2 question",
    "version": "R1+R2",
    "path": [
@@ -18878,11 +18928,13 @@
    "locale": "en",
    "page": "index",
    "field": "faq_a",
-   "source": {
-    "comment": 6217610007,
-    "round": "R1",
-    "locator": "### (c) P2, en"
-   },
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P2, en"
+    }
+   ],
    "item": "#240(c) P2 answer",
    "version": "R1+R2",
    "path": [
@@ -18896,12 +18948,33 @@
   {
    "locale": "en",
    "page": "index",
-   "field": "faq_q",
+   "field": "p",
    "source": {
-    "comment": 6217610007,
-    "round": "R1",
-    "locator": "### (c) P3, en"
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 2. P2 連結列, en"
    },
+   "item": "#240(d) link row, P2",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "en",
+    "faq",
+    "P2",
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_q",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P3, en"
+    }
+   ],
    "item": "#240(c) P3 question",
    "version": "R1+R2",
    "path": [
@@ -18916,11 +18989,13 @@
    "locale": "en",
    "page": "index",
    "field": "faq_a",
-   "source": {
-    "comment": 6217610007,
-    "round": "R1",
-    "locator": "### (c) P3, en"
-   },
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P3, en"
+    }
+   ],
    "item": "#240(c) P3 answer",
    "version": "R1+R2",
    "path": [
@@ -18954,11 +19029,13 @@
    "locale": "en",
    "page": "index",
    "field": "faq_q",
-   "source": {
-    "comment": 6217610007,
-    "round": "R1",
-    "locator": "### (c) P4, en"
-   },
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P4, en"
+    }
+   ],
    "item": "#240(c) P4 question",
    "version": "R1+R2",
    "path": [
@@ -18973,11 +19050,13 @@
    "locale": "en",
    "page": "index",
    "field": "faq_a",
-   "source": {
-    "comment": 6217610007,
-    "round": "R1",
-    "locator": "### (c) P4, en"
-   },
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P4, en"
+    }
+   ],
    "item": "#240(c) P4 answer",
    "version": "R1+R2",
    "path": [
@@ -19135,6 +19214,36 @@
   {
    "locale": "zh-hant",
    "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, PDF, zh-hant"
+   },
+   "item": "#240(b) layer 1 link: PDF",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "輸出 PDF",
+   "href": "/zh-hant/privacy/#exporting-and-printing"
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, command line, zh-hant"
+   },
+   "item": "#240(b) layer 1 link: command line",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "marsdawn 命令列",
+   "href": "/zh-hant/privacy/#the-marsdawn-command-line-tool"
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
    "field": "faq_q",
    "source": {
     "comment": 6217610007,
@@ -19168,6 +19277,297 @@
     "faq",
     "Q1",
     1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_q",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P1, zh-hant"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P1, zh-hant"
+    }
+   ],
+   "item": "#240(c) P1 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P1",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P1, zh-hant"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P1, zh-hant"
+    }
+   ],
+   "item": "#240(c) P1 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P1",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (d) link row + anchor table, zh-hant, P1"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 3. P1 錨點 (all eight languages), zh-hant"
+    }
+   ],
+   "item": "#240(d) link row, P1",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P1",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_q",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P2, zh-hant"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P2, zh-hant"
+    }
+   ],
+   "item": "#240(c) P2 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P2",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P2, zh-hant"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P2, zh-hant"
+    }
+   ],
+   "item": "#240(c) P2 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P2",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 2. P2 連結列, zh-hant"
+   },
+   "item": "#240(d) link row, P2",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P2",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_q",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P3, zh-hant"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P3, zh-hant"
+    }
+   ],
+   "item": "#240(c) P3 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P3",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P3, zh-hant"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P3, zh-hant"
+    }
+   ],
+   "item": "#240(c) P3 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P3",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, zh-hant, P3"
+   },
+   "item": "#240(d) link row, P3",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P3",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_q",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P4, zh-hant"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P4, zh-hant"
+    }
+   ],
+   "item": "#240(c) P4 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P4",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P4, zh-hant"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P4, zh-hant"
+    }
+   ],
+   "item": "#240(c) P4 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P4",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, zh-hant, P4"
+   },
+   "item": "#240(d) link row, P4",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "zh-hant",
+    "faq",
+    "P4",
+    2
    ]
   },
   {
@@ -19294,6 +19694,36 @@
     "more",
     2
    ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, PDF, zh-hans"
+   },
+   "item": "#240(b) layer 1 link: PDF",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "导出 PDF",
+   "href": "/zh-hans/privacy/#exporting-and-printing"
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, command line, zh-hans"
+   },
+   "item": "#240(b) layer 1 link: command line",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "marsdawn 命令行",
+   "href": "/zh-hans/privacy/#the-marsdawn-command-line-tool"
   },
   {
    "locale": "zh-hans",
@@ -19689,6 +20119,36 @@
   {
    "locale": "ja",
    "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, PDF, ja"
+   },
+   "item": "#240(b) layer 1 link: PDF",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "PDF 書き出し",
+   "href": "/ja/privacy/#exporting-and-printing"
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, command line, ja"
+   },
+   "item": "#240(b) layer 1 link: command line",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "marsdawn コマンドライン",
+   "href": "/ja/privacy/#the-marsdawn-command-line-tool"
+  },
+  {
+   "locale": "ja",
+   "page": "index",
    "field": "faq_q",
    "source": {
     "comment": 6217610007,
@@ -19722,6 +20182,297 @@
     "faq",
     "Q1",
     1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_q",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P1, ja"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P1, ja"
+    }
+   ],
+   "item": "#240(c) P1 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P1",
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P1, ja"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P1, ja"
+    }
+   ],
+   "item": "#240(c) P1 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P1",
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (d) link row + anchor table, ja, P1"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 3. P1 錨點 (all eight languages), ja"
+    }
+   ],
+   "item": "#240(d) link row, P1",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P1",
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_q",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P2, ja"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P2, ja"
+    }
+   ],
+   "item": "#240(c) P2 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P2",
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P2, ja"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P2, ja"
+    }
+   ],
+   "item": "#240(c) P2 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P2",
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 2. P2 連結列, ja"
+   },
+   "item": "#240(d) link row, P2",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P2",
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_q",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P3, ja"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P3, ja"
+    }
+   ],
+   "item": "#240(c) P3 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P3",
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P3, ja"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P3, ja"
+    }
+   ],
+   "item": "#240(c) P3 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P3",
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, ja, P3"
+   },
+   "item": "#240(d) link row, P3",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P3",
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_q",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P4, ja"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P4, ja"
+    }
+   ],
+   "item": "#240(c) P4 question",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P4",
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6217610007,
+     "round": "R1",
+     "locator": "### (c) P4, ja"
+    },
+    {
+     "comment": 6220924219,
+     "round": "R3",
+     "locator": "## 1. 題目, P4, ja"
+    }
+   ],
+   "item": "#240(c) P4 answer",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P4",
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6217610007,
+    "round": "R1",
+    "locator": "### (d) link row + anchor table, ja, P4"
+   },
+   "item": "#240(d) link row, P4",
+   "version": "R1+R2",
+   "path": [
+    "stays",
+    "ja",
+    "faq",
+    "P4",
+    2
    ]
   },
   {
@@ -19848,6 +20599,36 @@
     "more",
     2
    ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, PDF, de"
+   },
+   "item": "#240(b) layer 1 link: PDF",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "PDF-Export",
+   "href": "/de/privacy/#exporting-and-printing"
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, command line, de"
+   },
+   "item": "#240(b) layer 1 link: command line",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "das Befehlszeilenprogramm marsdawn",
+   "href": "/de/privacy/#the-marsdawn-command-line-tool"
   },
   {
    "locale": "de",
@@ -20243,6 +21024,36 @@
   {
    "locale": "fr",
    "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, PDF, fr"
+   },
+   "item": "#240(b) layer 1 link: PDF",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "export PDF",
+   "href": "/fr/privacy/#exporting-and-printing"
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, command line, fr"
+   },
+   "item": "#240(b) layer 1 link: command line",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "l’outil en ligne de commande marsdawn",
+   "href": "/fr/privacy/#the-marsdawn-command-line-tool"
+  },
+  {
+   "locale": "fr",
+   "page": "index",
    "field": "faq_q",
    "source": {
     "comment": 6218624502,
@@ -20634,6 +21445,36 @@
   {
    "locale": "es",
    "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, PDF, es"
+   },
+   "item": "#240(b) layer 1 link: PDF",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "exportar a PDF",
+   "href": "/es/privacy/#exporting-and-printing"
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, command line, es"
+   },
+   "item": "#240(b) layer 1 link: command line",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "la herramienta de línea de comandos marsdawn",
+   "href": "/es/privacy/#the-marsdawn-command-line-tool"
+  },
+  {
+   "locale": "es",
+   "page": "index",
    "field": "faq_q",
    "source": {
     "comment": 6218624502,
@@ -21021,6 +21862,36 @@
     "more",
     2
    ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, PDF, ko"
+   },
+   "item": "#240(b) layer 1 link: PDF",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "PDF 내보내기",
+   "href": "/ko/privacy/#exporting-and-printing"
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "inline-link",
+   "source": {
+    "comment": 6220924219,
+    "round": "R3",
+    "locator": "## 4 table, command line, ko"
+   },
+   "item": "#240(b) layer 1 link: command line",
+   "version": "R3 option A",
+   "path": null,
+   "phrase": "marsdawn 명령줄 도구",
+   "href": "/ko/privacy/#the-marsdawn-command-line-tool"
   },
   {
    "locale": "ko",

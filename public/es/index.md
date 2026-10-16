@@ -79,7 +79,7 @@ El hook y los comandos: [marsdawn para agentes](/es/cli/agents/) · [Skill para 
 
 ## Tus documentos se quedan en tu Mac
 
-En tu Mac. Leer, editar, renderizar, exportar a PDF y la herramienta de línea de comandos marsdawn funcionan aquí, incluso sin conexión; la app nunca sube tus documentos.
+En tu Mac. Leer, editar, renderizar, [exportar a PDF](/es/privacy/#exporting-and-printing) y [la herramienta de línea de comandos marsdawn](/es/privacy/#the-marsdawn-command-line-tool) funcionan aquí, incluso sin conexión; la app nunca sube tus documentos.
 
 Más información: [Política de privacidad](/es/privacy/#what-stays-on-your-mac)
 

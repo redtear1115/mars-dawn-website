@@ -1088,8 +1088,9 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                          'macOS 13 이상 [V2]'],
                         ['계정 필요', '필요 없음 [/privacy/]', '공식 설명 없음', '"No sign-up required" [V15]', '공식 설명 없음', '필요 없음 [V2]']]}},
  'stays': {'en': {'h': 'Your documents stay on your Mac',
-                  'layers': ['On your Mac. Reading, editing, rendering, PDF export and the marsdawn command line all run here, offline; the app '
-                             'never uploads your documents.',
+                  'layers': ['On your Mac. Reading, editing, rendering, <a href="/privacy/#exporting-and-printing">PDF export</a> and <a '
+                             'href="/privacy/#the-marsdawn-command-line-tool">the marsdawn command line</a> all run here, offline; the app never '
+                             'uploads your documents.',
                              'Off the network by default. Web images load only when you click Load Images or turn on Load remote images '
                              'automatically in Settings, and an HTML document opens static, with its code not run.',
                              'Leaves only when you choose. Copy for AI puts text on your clipboard for you to paste; a theme download, a document '
@@ -1106,12 +1107,12 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                  'No. The app never uploads your documents, collects no data about you and has no account; your documents and '
                                  'settings stay on your Mac. If a document refers to the web and you load that content, your Mac fetches it from the '
                                  "servers that host it, and MarsDawn's developer receives none of it.",
-                                 'More: <a href="/privacy/#when-marsdawn-uses-the-internet">Privacy Policy</a>'],
+                                 'More: <a href="/privacy/#what-stays-on-your-mac">Privacy Policy</a>'],
                           'P2': ['With MCP or the skill, who can see my files?',
                                  'MarsDawn itself sends nothing. The skill is a text file of instructions, and the marsdawn CLI and the MCP server '
                                  'run on your Mac; the MCP server works only in folders you allow. The one reading your files is your agent, and '
                                  "what it and its model provider do with them is that agent's policy, which MarsDawn neither controls nor describes.",
-                                 None],
+                                 'More: <a href="/cli/mcp/">MCP</a>'],
                           'P3': ['Is it safe to open HTML someone sent me?',
                                  "By default it opens static: its code doesn't run and nothing loads from the web. If you choose View › Run This "
                                  'Document, that document runs, and it can send data over the network and read images, stylesheets, fonts and media '
@@ -1123,7 +1124,8 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                  "Accept; Cookie settings in the footer changes that. The app's requests for theme files under /themes/ are skipped.",
                                  'More: <a href="/privacy/#the-website">Privacy Policy</a>']}},
            'zh-hant': {'h': '文件留在你的 Mac 上',
-                       'layers': ['在你的 Mac 上。閱讀、編輯、算繪、輸出 PDF 和 marsdawn 命令列都在本機完成，可以完全離線；App 不會上傳你的文件。',
+                       'layers': ['在你的 Mac 上。閱讀、編輯、算繪、<a href="/zh-hant/privacy/#exporting-and-printing">輸出 PDF</a> 和 <a '
+                                  'href="/zh-hant/privacy/#the-marsdawn-command-line-tool">marsdawn 命令列</a>都在本機完成，可以完全離線；App 不會上傳你的文件。',
                                   '預設不連網。網路圖片只有在你按「載入圖片」，或在設定中開啟「自動載入網路圖片」後才會載入；HTML 文件開啟時是靜態的，程式碼不會執行。',
                                   '只在你選擇時離開。「拷貝給 AI」只把文字放進剪貼板，由你自己貼上；下載主題、用「顯示方式 › 執行這份文件」執行的文件，以及你讓 agent 讀的檔案，都要你決定才會往外送。'],
                        'more': ['詳見：<a href="/zh-hant/privacy/#what-stays-on-your-mac">隱私權政策</a>',
@@ -1132,9 +1134,26 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                        'faq': {'Q1': ['MarsDawn 是什麼？',
                                       'MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原始碼和即時預覽並排，能畫 Mermaid、排 KaTeX，在快速查看裡預覽 .md，也能輸出 '
                                       'PDF。原始碼也可以直接改。',
-                                      None]}},
+                                      None],
+                               'P1': ['MarsDawn 會上傳我的文件嗎？',
+                                      '不會。App 不會上傳你的文件，不收集任何關於你的資料，也沒有帳號；文件和設定都留在你的 Mac 上。只有文件引用網路內容、而你選擇載入時，你的 Mac 才會向放置那些內容的伺服器取用，MarsDawn '
+                                      '的開發者收不到這些資訊。',
+                                      '詳見：<a href="/zh-hant/privacy/#what-stays-on-your-mac">隱私權政策</a>'],
+                               'P2': ['用 MCP 或 skill 時，誰能看到我的檔案？',
+                                      'MarsDawn 本身不傳送任何東西。skill 只是一份文字說明，marsdawn 命令列和 MCP 伺服器都在你的 Mac 上執行，MCP 伺服器也只在你允許的資料夾裡動作。真正讀檔的是你的 '
+                                      'agent，它和它的模型供應商怎麼處理這些檔案，依照那個 agent 的政策；MarsDawn 無法控制，也不代為說明。',
+                                      '詳見：<a href="/zh-hant/cli/mcp/">MCP</a>'],
+                               'P3': ['打開別人傳給我的 HTML 安全嗎？',
+                                      '預設開啟時是靜態的：程式碼不會執行，也不會從網路載入任何東西。若你選擇「顯示方式 › '
+                                      '執行這份文件」，這份文件就會執行，可以透過網路傳送資料，並讀取它所在資料夾裡的圖片、樣式表、字型與媒體檔案。這個選擇不會被記住，下次打開又是靜態的。',
+                                      '詳見：<a href="/zh-hant/privacy/#when-marsdawn-uses-the-internet">隱私權政策</a>'],
+                               'P4': ['網站的分析 cookie 和 App 有關嗎？',
+                                      '沒有關係。App 和這個網站是兩件事：App 不收集資料，會記下造訪的只有 marsdawn.southern-light.dev。網站的 Google Analytics '
+                                      '一開始是拒絕狀態，你在橫幅中選擇「接受」之後才會設定 cookie，頁尾的「Cookie 設定」可以隨時改。App 下載 /themes/ 底下主題檔的請求不會被記錄。',
+                                      '詳見：<a href="/zh-hant/privacy/#the-website">隱私權政策</a>']}},
            'zh-hans': {'h': '文稿留在你的 Mac 上',
-                       'layers': ['在你的 Mac 上。阅读、编辑、渲染、导出 PDF 和 marsdawn 命令行都在本机完成，可以完全离线；App 不会上传你的文稿。',
+                       'layers': ['在你的 Mac 上。阅读、编辑、渲染、<a href="/zh-hans/privacy/#exporting-and-printing">导出 PDF</a> 和 <a '
+                                  'href="/zh-hans/privacy/#the-marsdawn-command-line-tool">marsdawn 命令行</a>都在本机完成，可以完全离线；App 不会上传你的文稿。',
                                   '默认不联网。网络图像只有在你按“载入图像”，或在设置中打开“自动载入网络图像”后才会加载；HTML 文稿打开时是静态的，代码不会运行。',
                                   '只在你选择时离开。“拷贝给 AI”只把文字放进剪贴板，由你自己粘贴；下载主题、用“显示 › 运行这份文稿”运行的文稿，以及你让代理读取的文件，都要你决定才会往外送。'],
                        'more': ['详见：<a href="/zh-hans/privacy/#what-stays-on-your-mac">隐私政策</a>',
@@ -1160,7 +1179,8 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                       '一开始是拒绝状态，你在横幅中选择“接受”后才会设置 cookie，页脚的“Cookie 设置”可以随时更改。App 请求 /themes/ 下主题文件的请求不会被记录。',
                                       '详见：<a href="/zh-hans/privacy/#the-website">隐私政策</a>']}},
            'ja': {'h': '文書はあなたの Mac に残ります',
-                  'layers': ['Mac の中で。閲覧、編集、レンダリング、PDF 書き出し、marsdawn コマンドラインはすべて手元で動き、オフラインでも使えます。アプリが文書をアップロードすることはありません。',
+                  'layers': ['Mac の中で。閲覧、編集、レンダリング、<a href="/ja/privacy/#exporting-and-printing">PDF 書き出し</a>、<a '
+                             'href="/ja/privacy/#the-marsdawn-command-line-tool">marsdawn コマンドライン</a>はすべて手元で動き、オフラインでも使えます。アプリが文書をアップロードすることはありません。',
                              '初期設定ではネットにつながりません。Web のイメージは「イメージを読み込む」をクリックするか、設定で「リモートイメージを自動的に読み込む」をオンにしたときだけ読み込まれ、HTML 文書は静的に開き、コードは実行されません。',
                              '外に出るのは、あなたが選んだときだけ。「AI 用にコピー」はテキストをクリップボードに置くだけで、貼るのはあなたです。テーマのダウンロード、「表示 › '
                              'この書類を実行」で実行した文書、エージェントに読ませたファイルも、あなたが選んだときだけ外に出ます。'],
@@ -1170,10 +1190,28 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                   'faq': {'Q1': ['MarsDawn とは何ですか？',
                                  'MarsDawn は、エージェントが書いた Markdown を読んで確かめるための Mac ネイティブアプリです。ソースの横にライブプレビューを並べ、Mermaid と KaTeX を描画し、クイックルックで .md '
                                  'をプレビューし、PDF に書き出せます。ソースの編集もできます。',
-                                 None]}},
+                                 None],
+                          'P1': ['MarsDawn は文書をアップロードしますか？',
+                                 'いいえ。アプリが文書をアップロードすることはなく、あなたに関するデータも集めず、アカウントもありません。文書と設定は Mac に残ります。文書が Web を参照していて、それを読み込むと選んだときだけ、Mac '
+                                 'がその内容をホストしているサーバから直接取得します。MarsDawn の開発者はその情報を一切受け取りません。',
+                                 '詳しくは：<a href="/ja/privacy/#what-stays-on-your-mac">プライバシーポリシー</a>'],
+                          'P2': ['MCP または skill を使うと、ファイルを見られるのは誰ですか？',
+                                 'MarsDawn 自体は何も送りません。skill は指示を書いたテキストファイルで、marsdawn CLI と MCP サーバーは Mac の上で動き、MCP '
+                                 'サーバーはあなたが許可したフォルダの中だけで動作します。ファイルを読むのはあなたのエージェントで、そのエージェントとモデル提供元がファイルをどう扱うかは、そのエージェントのポリシーによります。MarsDawn '
+                                 'はそれを管理せず、説明もしません。',
+                                 '詳しくは：<a href="/ja/cli/mcp/">MCP</a>'],
+                          'P3': ['送られてきた HTML を開いても安全ですか？',
+                                 '初期状態では静的に開き、コードは実行されず、Web からも何も読み込まれません。「表示 › '
+                                 'この書類を実行」を選ぶと、その文書が実行され、ネットワーク経由でデータを送ったり、同じフォルダの画像、スタイルシート、フォント、メディアを読んだりできるようになります。この選択は記憶されないので、次に開くときはまた静的です。',
+                                 '詳しくは：<a href="/ja/privacy/#when-marsdawn-uses-the-internet">プライバシーポリシー</a>'],
+                          'P4': ['サイトの分析用クッキーはアプリと関係がありますか？',
+                                 '関係ありません。アプリとこのウェブサイトは別のものです。アプリはデータを収集せず、訪問が記録され得るのは marsdawn.southern-light.dev だけです。サイトの Google Analytics '
+                                 'は最初は拒否の状態で、バナーで「同意する」を選んだあとにだけクッキーを設定し、フッターの「Cookie 設定」でいつでも変えられます。アプリが /themes/ のテーマファイルを取りに行くリクエストは記録されません。',
+                                 '詳しくは：<a href="/ja/privacy/#the-website">プライバシーポリシー</a>']}},
            'de': {'h': 'Deine Dokumente bleiben auf deinem Mac',
-                  'layers': ['Auf deinem Mac. Lesen, Bearbeiten, Rendern, PDF-Export und das Befehlszeilenprogramm marsdawn laufen hier, auch '
-                             'offline; die App lädt deine Dokumente nie hoch.',
+                  'layers': ['Auf deinem Mac. Lesen, Bearbeiten, Rendern, <a href="/de/privacy/#exporting-and-printing">PDF-Export</a> und <a '
+                             'href="/de/privacy/#the-marsdawn-command-line-tool">das Befehlszeilenprogramm marsdawn</a> laufen hier, auch offline; '
+                             'die App lädt deine Dokumente nie hoch.',
                              'Standardmäßig ohne Netz. Bilder aus dem Web laden nur, wenn du auf „Bilder laden“ klickst oder in den Einstellungen '
                              '„Bilder aus dem Web automatisch laden“ aktivierst; ein HTML-Dokument öffnet sich statisch, sein Code läuft nicht.',
                              'Nach außen nur, wenn du es wählst. „Für KI kopieren“ legt Text nur in die Zwischenablage, einfügen tust du; ein '
@@ -1211,7 +1249,8 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                  'der App nach Theme-Dateien unter /themes/ werden nicht erfasst.',
                                  'Mehr dazu: <a href="/de/privacy/#the-website">Datenschutzrichtlinie</a>']}},
            'fr': {'h': 'Vos documents restent sur votre Mac',
-                  'layers': ['Sur votre Mac. Lecture, édition, rendu, export PDF et l’outil en ligne de commande marsdawn tournent ici, même hors '
+                  'layers': ['Sur votre Mac. Lecture, édition, rendu, <a href="/fr/privacy/#exporting-and-printing">export PDF</a> et <a '
+                             'href="/fr/privacy/#the-marsdawn-command-line-tool">l’outil en ligne de commande marsdawn</a> tournent ici, même hors '
                              'ligne\xa0; l’app n’envoie jamais vos documents en ligne.',
                              'Hors réseau par défaut. Les images du web ne se chargent qu’après un clic sur «\xa0Charger les images\xa0» ou si vous '
                              'activez «\xa0Charger automatiquement les images distantes\xa0» dans les Réglages\xa0; un document HTML s’ouvre de '
@@ -1252,7 +1291,8 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                  'requêtes de l’app pour les fichiers de thème sous /themes/ ne sont pas enregistrées.',
                                  'En savoir plus\xa0: <a href="/fr/privacy/#the-website">Politique de confidentialité</a>']}},
            'es': {'h': 'Tus documentos se quedan en tu Mac',
-                  'layers': ['En tu Mac. Leer, editar, renderizar, exportar a PDF y la herramienta de línea de comandos marsdawn funcionan aquí, '
+                  'layers': ['En tu Mac. Leer, editar, renderizar, <a href="/es/privacy/#exporting-and-printing">exportar a PDF</a> y <a '
+                             'href="/es/privacy/#the-marsdawn-command-line-tool">la herramienta de línea de comandos marsdawn</a> funcionan aquí, '
                              'incluso sin conexión; la app nunca sube tus documentos.',
                              'Sin red por omisión. Las imágenes web solo se cargan si haces clic en «Cargar imágenes» o activas «Cargar imágenes '
                              'remotas automáticamente» en Ajustes; un documento HTML se abre de forma estática, sin ejecutar su código.',
@@ -1291,7 +1331,8 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                  'la app de archivos de tema en /themes/ no se registran.',
                                  'Más información: <a href="/es/privacy/#the-website">Política de privacidad</a>']}},
            'ko': {'h': '문서는 Mac에 남습니다',
-                  'layers': ['Mac 안에서. 읽기, 편집, 렌더링, PDF 내보내기, marsdawn 명령줄 도구가 모두 이곳에서 오프라인으로도 실행되며, 앱은 문서를 업로드하지 않습니다.',
+                  'layers': ['Mac 안에서. 읽기, 편집, 렌더링, <a href="/ko/privacy/#exporting-and-printing">PDF 내보내기</a>, <a '
+                             'href="/ko/privacy/#the-marsdawn-command-line-tool">marsdawn 명령줄 도구</a>가 모두 이곳에서 오프라인으로도 실행되며, 앱은 문서를 업로드하지 않습니다.',
                              '기본적으로 네트워크에 연결하지 않습니다. 웹 이미지는 ‘이미지 불러오기’를 클릭하거나 설정에서 ‘원격 이미지 자동으로 불러오기’를 켰을 때만 불러오고, HTML 문서는 코드가 실행되지 않는 정적인 상태로 '
                              '열립니다.',
                              '밖으로 나가는 것은 선택했을 때만. ‘AI용으로 복사’는 텍스트를 클립보드에 넣을 뿐이고 붙여 넣는 것은 사용자입니다. 테마 다운로드, ‘보기 › 이 문서 실행’으로 실행한 문서, 에이전트에게 읽게 한 파일도 '

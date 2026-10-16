@@ -79,7 +79,7 @@ hook 与命令：[给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/) · [�
 
 ## 文稿留在你的 Mac 上
 
-在你的 Mac 上。阅读、编辑、渲染、导出 PDF 和 marsdawn 命令行都在本机完成，可以完全离线；App 不会上传你的文稿。
+在你的 Mac 上。阅读、编辑、渲染、[导出 PDF](/zh-hans/privacy/#exporting-and-printing) 和 [marsdawn 命令行](/zh-hans/privacy/#the-marsdawn-command-line-tool)都在本机完成，可以完全离线；App 不会上传你的文稿。
 
 详见：[隐私政策](/zh-hans/privacy/#what-stays-on-your-mac)
 
