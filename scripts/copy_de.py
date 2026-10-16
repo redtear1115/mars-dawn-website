@@ -330,8 +330,9 @@ FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Se
 # Mermaid example is the app's own Welcome guide at tag 1.1.0; menu names are the app's strings at 1.1.0
 # and Apple's own Finder strings for this language.
 OPEN_MD = {'title': 'So öffnest du .md-Dateien auf dem Mac · MarsDawn',
- 'description': 'So öffnest du eine .md-Datei auf dem Mac: Doppelklick, Standard-App festlegen, Übersicht im '
-                'Finder. Von einem KI-Agenten geschriebene .md-Dateien liest du gerendert in MarsDawn.',
+ 'description': 'So öffnest du eine .md-Datei auf dem Mac: Doppelklick, Standard-App, Übersicht '
+                'im Finder. Von einem KI-Agenten geschriebene .md liest du gerendert in '
+                'MarsDawn.',
  'h1': 'So öffnest du .md-Dateien auf dem Mac.',
  'short': 'Doppelklick genügt. Wenn dein Mac die Datei in einem Texteditor öffnet und du `#` und `**` statt '
           'Überschriften und Fettdruck siehst, ist die Datei in Ordnung: Eine `.md`-Datei ist reiner Text, '
@@ -415,9 +416,8 @@ OPEN_MD = {'title': 'So öffnest du .md-Dateien auf dem Mac · MarsDawn',
                      'href="/de/vs/markdown-preview-tools/">der Vergleich</a>.']}
 
 MERMAID = {'title': 'Mermaid-Vorschau auf dem Mac, neben deinem Markdown · MarsDawn',
- 'description': 'Mermaid-Diagramme auf dem Mac neben deinem Markdown gezeichnet sehen: Live-Vorschau, '
-                'Übersicht im Finder und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die '
-                'Zeile.',
+ 'description': 'Mermaid-Diagramme auf dem Mac neben deinem Markdown: Live-Vorschau, Übersicht '
+                'und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die Zeile.',
  'h1': 'Mermaid-Vorschau auf dem Mac.',
  'intro': 'Mit Mermaid schreibst du ein Diagramm als Text in eine Markdown-Datei. Die meisten Editoren '
           'zeigen dir den Text. MarsDawn zeichnet das Diagramm: in der Vorschau neben dem Quelltext, in der '
@@ -434,17 +434,17 @@ MERMAID = {'title': 'Mermaid-Vorschau auf dem Mac, neben deinem Markdown · Mars
  'after': 'In MarsDawn wird dieser Block zu einem Flussdiagramm: Markdown schreiben, dann Live-Vorschau, '
           'dann die Frage „Teilen?“, die zu PDF oder Drucken führt.',
  'where_h2': 'Wo das Diagramm gezeichnet wird',
- 'where': '- **In der Vorschau.** Öffne die Datei, und das Diagramm steht neben seinem Quelltext (⌘2). Die '
-          'Seite aktualisiert sich beim Tippen, und beide Bereiche scrollen gemeinsam.\n'
-          '- **In der Übersicht.** Wähle die Datei im Finder aus und drücke die Leertaste; auch dort werden '
-          'Diagramme gezeichnet.\n'
-          '- **Im PDF.** „Ablage ▸ Als PDF exportieren\xa0…“ und „Ablage ▸ Drucken\xa0…“ zeichnen das '
-          'Diagramm in die Seite. Seitenumbrüche vermeiden es, ein Diagramm in der Mitte zu teilen. Das PDF '
-          'verwendet die hellen Farben des Themas.\n'
-          '- **Von der Befehlszeile.** Das kostenlose Werkzeug `marsdawn export` zeichnet dieselben '
-          'Diagramme in ein PDF und braucht die App nicht. Siehe [Befehlszeile](/de/cli/).\n'
-          '- **In deinem Thema.** Die Einstellung „Erscheinungsbild“ der Vorschau gilt auch für Diagramme, '
-          'ein Diagramm folgt also hell oder dunkel.',
+ 'where': '- **In der Vorschau.** Öffne die Datei, und das Diagramm steht neben seinem '
+          'Quelltext (⌘2). Die Seite aktualisiert sich beim Tippen, und beide Bereiche '
+          'scrollen gemeinsam.\n- **In der Übersicht.** Wähle die Datei im Finder '
+          'aus und drücke die Leertaste; auch dort werden Diagramme gezeichnet.\n- '
+          '**Im PDF.** „Ablage ▸ Als PDF exportieren\xa0…“ und „Ablage ▸ Drucken\xa0…“ '
+          'zeichnen das Diagramm in die Seite. Seitenumbrüche vermeiden es, ein Diagramm '
+          'in der Mitte zu teilen. Das PDF verwendet die hellen Farben des Themes.\n- '
+          '**Von der Befehlszeile.** Das kostenlose Werkzeug `marsdawn export` zeichnet '
+          'dieselben Diagramme in ein PDF und braucht die App nicht. Siehe [Befehlszeile](/de/cli/).\n- '
+          '**In deinem Theme.** Die Einstellung „Erscheinungsbild“ der Vorschau gilt '
+          'auch für Diagramme, ein Diagramm folgt also hell oder dunkel.',
  'error_h2': 'Wenn das Diagramm einen Fehler hat',
  'error': 'Wenn Mermaid ein Diagramm nicht zeichnen kann, zeigt die Vorschau den Quelltext des Diagramms mit '
           'der vollständigen Fehlermeldung darunter. Nennt die Fehlermeldung eine Zeile, springt der Editor '
@@ -477,9 +477,9 @@ MERMAID = {'title': 'Mermaid-Vorschau auf dem Mac, neben deinem Markdown · Mars
 # Machine draft (needs-i18n; Grok reviews it): the revised /vs/macmd-viewer/, the same shape as
 # build_pages.VS_MACMD. [S#] marks in a cell or sentence link to the sources list on the page.
 VS_MACMD = {'title': 'MacMD Viewer oder MarsDawn: Markdown-Viewer oder Editor · MarsDawn',
- 'description': 'MacMD Viewer ist ein Markdown-Viewer nur zum Lesen für 19,99 USD. MarsDawn bearbeitet und '
-                'zeigt die Vorschau daneben: 14 Tage kostenlos, dann einmalig 4,99 USD. Zeile für Zeile '
-                'verglichen, mit Quellen.',
+ 'description': 'MacMD Viewer ist ein Markdown-Viewer nur zum Lesen für 19,99 USD. MarsDawn '
+                'bearbeitet und zeigt die Vorschau daneben: 14 Tage kostenlos, dann einmalig '
+                '4,99 USD.',
  'h1': 'MacMD Viewer oder MarsDawn.',
  'intro': ['Beides sind Mac-Apps, um Markdown als fertige Seite zu lesen. MacMD Viewer öffnet eine '
            '`.md`-Datei und zeigt sie an; die App ist bewusst nur zum Lesen gedacht und speichert nie '
@@ -512,19 +512,21 @@ VS_MACMD = {'title': 'MacMD Viewer oder MarsDawn: Markdown-Viewer oder Editor ·
                        'Nein: Die README sagt, die App „rendert keine Mathematik (LaTeX/KaTeX)“ [S7]',
                        'Ja, KaTeX'],
                       ['Code-Hervorhebung', 'Ja [S1, S9]', 'Ja'],
-                      ['Themen',
+                      ['Themes',
                        '12 Dokumentthemen [S1, S7]',
-                       '4 eingebaute (Morgenrot, Klassisch, Modern, Lebhaft), jeweils mit heller und dunkler '
-                       'Palette, dazu weitere in der Themen-Galerie'],
+                       '4 eingebaute (Morgenrot, Klassisch, Modern, Lebhaft), jeweils mit heller '
+                       'und dunkler Palette, dazu weitere in der Themengalerie'],
                       ['Tabs', 'Ja, optional und standardmäßig aus (seit 1.6.0) [S5, S8]', 'Ja'],
                       ['PDF-Export',
-                       'Ja, eine durchgehende Seite, im aktuellen Thema, ohne Wasserzeichen [S3, S9]',
+                       'Ja, eine durchgehende Seite, im aktuellen Theme, ohne Wasserzeichen [S3, '
+                       'S9]',
                        'Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche vermeiden es, '
                        'kurze Codeblöcke und Tabellen zu teilen'],
                       ['Drucken', 'Ja, über den macOS-Drucken-Dialog [S3, S9]', 'Ja'],
                       ['Übersicht im Finder',
-                       'Ja, enthalten; du aktivierst sie in den Systemeinstellungen; nutzt dein Thema [S4]',
-                       'Ja, funktioniert mit und ohne Testphase; nutzt dein Thema'],
+                       'Ja, enthalten; du aktivierst sie in den Systemeinstellungen; nutzt dein '
+                       'Theme [S4]',
+                       'Ja, funktioniert mit und ohne Testphase; nutzt dein Theme'],
                       ['Mermaid und Mathematik in der Übersicht',
                        'Mermaid: ja [S4]. Mathematik: nein, sie wird nicht gerendert [S7]',
                        'Ja, beides wird gezeichnet'],

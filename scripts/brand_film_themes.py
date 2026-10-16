@@ -24,7 +24,7 @@ DURATION_SECONDS = 88
 DURATION_ISO = "PT1M28S"
 # VideoObject.uploadDate. MUST be set to the deploy date when the film goes live (it is 2026-10-15, the day the
 # film was finished, until then).
-UPLOAD_DATE = "2026-10-15"
+UPLOAD_DATE = "2026-10-16"
 MARK = "<!--film-themes-->"
 
 TRACKS = {
@@ -49,12 +49,12 @@ LABELS = {
 TEXT = {
     "en": (approved_copy.FILM_THEMES["en"]["heading"], approved_copy.FILM_THEMES["en"]["caption"]),
     "zh-hant": (approved_copy.FILM_THEMES["zh-hant"]["heading"], approved_copy.FILM_THEMES["zh-hant"]["caption"]),
-    "zh-hans": ("页面印出来之后", "大家围着印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。"),
-    "ja": ("ページを印刷したあと", "印刷したページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。"),
+    "zh-hans": ("页面打印出来之后", "大家围着打印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。"),
+    "ja": ("ページをプリントしたあと", "プリントしたページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。"),
     "de": ("Nachdem die Seite gedruckt ist", "Eine Besprechung rund um gedruckte Seiten, ein Stift am Rand, eine Papierakte im Ordner."),
     "fr": ("Une fois la page imprimée", "Une réunion autour de pages imprimées, un stylo dans la marge, un dossier papier classé."),
     "es": ("Después de imprimir la página", "Una reunión alrededor de páginas impresas, un bolígrafo en el margen, un registro en papel archivado."),
-    "ko": ("페이지를 인쇄한 뒤", "인쇄한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록."),
+    "ko": ("페이지를 프린트한 뒤", "프린트한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록."),
 }
 
 

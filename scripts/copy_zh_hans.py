@@ -242,7 +242,7 @@ FEATURES = {'title': '功能一览：Mac 上的 Markdown 编辑器 · MarsDawn',
 # Mermaid example is the app's own Welcome guide at tag 1.1.0; menu names are the app's strings at 1.1.0
 # and Apple's own Finder strings for this language.
 OPEN_MD = {'title': 'Mac 上怎么打开 md 文件：双击、默认 App、快速查看 · MarsDawn',
- 'description': 'Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI agent 写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。',
+ 'description': 'Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI 代理写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。',
  'h1': 'Mac 上怎么打开 md 文件。',
  'short': '双击就能打开。如果你的 Mac 用文本编辑器打开，看到的是 `#` 和 `**`，而不是标题和粗体，文件没有坏：`.md` 文件本来就是纯文本，编辑器只是照原样显示。改用会排版 Markdown '
           '的 app（例如 MarsDawn）打开，再把它设为默认 app，之后每个 `.md` 文件都会在那里打开。',
@@ -254,8 +254,8 @@ OPEN_MD = {'title': 'Mac 上怎么打开 md 文件：双击、默认 App、快�
  'read_mermaid': '- [Mermaid](/zh-hans/mermaid-preview-mac/) 流程图和时序图直接画在预览里，代码块也会高亮。',
  'faq_h2': '常见问题',
  'faq': [['md 文件是什么？',
-          '`.md` 文件是用 Markdown 写成的纯文本文件。Markdown 用简单的字符标记文本：`#` 是标题，`**` '
-          '包住的是粗体，竖线画出表格。`.markdown`、`.mdown`、`.mkd`、`.mkdn` 是同样的东西。开发者拿它写 README 和文档，AI agent 也常把计划和报告写成 '
+          '`.md` 文件是用 Markdown 写成的纯文本文件。Markdown 用简单的字符标记文本：`#` 是标题，`**` 包住的是粗体，竖线画出表格。'
+          '`.markdown`、`.mdown`、`.mkd`、`.mkdn` 是同样的东西。开发者拿它写 README 和文档，AI 代理也常把计划和报告写成 '
           '`.md` 文件交回来。'],
          ['为什么 md 文件打开是纯文本，满是 # 和 ** ？',
           '因为它本来就是纯文本，纯文本编辑器只会照原样显示，文件没有坏。想看到标题、粗体、表格和图表，要用会排版 Markdown 的 app 打开。在 MarsDawn 里，排好的页面就在源代码旁边。'],
@@ -266,9 +266,9 @@ OPEN_MD = {'title': 'Mac 上怎么打开 md 文件：双击、默认 App、快�
           '可以。在 MarsDawn 选“文件 ▸ 导出为 PDF…”（⌥⌘E）或“文件 ▸ 打印…”，页面会自动分页，图表画进去，代码保留高亮，使用主题的浅色配色。不装 app 的话，免费的 '
           '`marsdawn export` 命令行工具能导出同样的 PDF：`marsdawn export notes.md`。请看[导出 PDF](/zh-hans/pdf/)和[Markdown '
           '转 PDF](/zh-hans/markdown-to-pdf/)。'],
-         ['AI agent 写的 md 文件也能这样打开吗？',
-          '可以，MarsDawn 就是为这个做的。打开文件，排好的页面就在源代码旁边；agent 改好之后，再打开来读一次。agent 也可以运行 `marsdawn open plan.md`，在 '
-          'MarsDawn 里把文件打开给你。请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。']],
+         ['AI 代理写的 md 文件也能这样打开吗？',
+          '可以，MarsDawn 就是为这个做的。打开文件，排好的页面就在源代码旁边；代理改好之后，再打开来读一次。代理也可以运行 `marsdawn '
+          'open plan.md`，在 MarsDawn 里把文件打开给你。请看[读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)。']],
  'next_new': '- Markdown 文件里的图表：[在 Mac 上预览 Mermaid](/zh-hans/mermaid-preview-mac/)。',
  'opening_html': '<code>.md</code> 文件是纯文本。标题、粗体、表格和图表，都是用记号写成的：<code>#</code> 代表标题，<code>**</code> '
                  '包住粗体，直线符号画出表格，<code>mermaid</code> '
@@ -280,10 +280,10 @@ OPEN_MD = {'title': 'Mac 上怎么打开 md 文件：双击、默认 App、快�
  'read_p2_html': '打开 <code>.md</code> 文件，排好的页面就在源代码旁边：',
  'read_b1_html': '预览会随着你打字实时更新，两边的窗格一起滚动。',
  'read_b4_html': '想改的时候，源代码就在旁边。MarsDawn 是编辑器，不只是查看器。',
- 'agents_html': '如果这份文件是 AI agent 写的，这正是 MarsDawn 要支持的循环：agent 写，你读排好的页面，agent 再修改。请看<a '
-                'href="/zh-hans/">首页</a>，想让 agent 帮你开文件，请看<a href="/zh-hans/cli/agents/">给 AI agent 的 '
-                'marsdawn 参考</a>。为什么这样的阅读重要、怎么审一份计划，请看<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 '
-                'Markdown</a>和<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>。',
+ 'agents_html': '如果这份文件是 AI 代理写的，这正是 MarsDawn 要支持的循环：代理写，你读排好的页面，代理再修改。请看<a href="/zh-hans/">首页</a>，'
+                '想让代理帮你开文件，请看<a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a>。为什么这样的阅读重要、'
+                '怎么审一份计划，请看<a href="/zh-hans/reading-agent-output/">读懂 agent 交回来的 Markdown</a>和<a '
+                'href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>。',
  'pdf_h2': '不装 app 也行：转成 PDF',
  'pdf_p1_html': '免费的 <code>marsdawn</code> 命令行工具，能把 Markdown 文件排版成 PDF，任何一台 Mac 都打得开。表格、数学公式、Mermaid '
                 '图表和代码高亮都会排好，而且不需要安装其他东西，连 MarsDawn app 都不用。',
@@ -315,13 +315,13 @@ MERMAID = {'title': '在 Mac 上预览 Mermaid 图表，就在 Markdown 旁边 �
           '- **命令行。** 免费的 `marsdawn export` 工具会把同样的图画进 PDF，而且不需要 app。请看[命令行工具](/zh-hans/cli/)。\n'
           '- **跟着外观。** 预览的外观设置也会应用到图表，所以图会跟着浅色或深色。',
  'error_h2': '图写错的时候',
- 'error': 'Mermaid 画不出一张图时，预览会显示那张图的源代码，下方附上完整的错误信息。如果错误信息指出是哪一行，点按一下信息，编辑器就会跳到那一行。`marsdawn export --json` '
-          '会在 `diagramErrors` 里报告画不出来的图，所以脚本或 agent 知道有图没画成。',
+ 'error': 'Mermaid 画不出一张图时，预览会显示那张图的源代码，下方附上完整的错误信息。如果错误信息指出是哪一行，点按一下信息，编辑器就会跳到那一行。'
+          '`marsdawn export --json` 会在 `diagramErrors` 里报告画不出来的图，所以脚本或代理知道有图没画成。',
  'know_h2': '先知道的事',
- 'know': '- 你编辑的是 Mermaid 文本。没有可视化的图表编辑器，也不能在预览里拖动方块。\n'
-         '- 哪些图表类型画得出来，取决于 app 里内置的 Mermaid 版本。MarsDawn 1.1.0 内置 Mermaid 12.0.0。kit '
-         '的导出测试会对流程图、时序图、类图、状态图、实体关系图、甘特图、饼图、思维导图、用户旅程、时间线、git 图等类型各画一份文档。\n'
-         '- MarsDawn 没有 AI 模型，不会帮你写图。[流程图模板](/zh-hans/templates/flowchart/)附有一段提示词，可以交给你自己的 agent。',
+ 'know': '- 你编辑的是 Mermaid 文本。没有可视化的图表编辑器，也不能在预览里拖动方块。\n- 哪些图表类型画得出来，取决于 app 里内置的 '
+         'Mermaid 版本。MarsDawn 1.1.0 内置 Mermaid 12.0.0。kit 的导出测试会对流程图、时序图、类图、状态图、'
+         '实体关系图、甘特图、饼图、思维导图、用户旅程、时间线、git 图等类型各画一份文档。\n- MarsDawn 没有 AI 模型，不会帮你写图。'
+         '[流程图模板](/zh-hans/templates/flowchart/)附有一段提示词，可以交给你自己的代理。',
  'next_h2': '接下来',
  'next': '- 从一张已经能画出来的图开始：[流程图模板](/zh-hans/templates/flowchart/)。\n'
          '- 导出：[导出 PDF](/zh-hans/pdf/)；从脚本导出，请看[命令行工具](/zh-hans/cli/)。\n'
@@ -355,7 +355,7 @@ VS_MACMD = {'title': 'MacMD Viewer 对比 MarsDawn：Markdown 查看器还是编
                       ['Mermaid', '有：流程图、时序图、状态图、甘特图、饼图等，离线可用 [S1, S3, S7]', '有'],
                       ['数学公式', '没有：它的 README 写明“不显示数学公式（LaTeX／KaTeX）”[S7]', '有，KaTeX'],
                       ['代码高亮', '有 [S1, S9]', '有'],
-                      ['主题', '12 种文档主题 [S1, S7]', '内置 4 种（黎明、典雅、流行、活泼），各有浅色与深色，主题库还有更多'],
+                      ['主题', '12 种文档主题 [S1, S7]', '内置 4 种（黎明、典雅、流行、活泼），各有浅色与深色，主题图库还有更多'],
                       ['标签页', '有，可选，默认关闭（1.6.0 起）[S5, S8]', '有'],
                       ['PDF 导出', '有，单一连续页面，用当前的主题，无水印 [S3, S9]', '有，分页输出，用主题的浅色配色；分页时尽量不切开短的代码和表格'],
                       ['打印', '有，走 macOS 的打印对话框 [S3, S9]', '有'],
@@ -393,13 +393,14 @@ VS_MACMD = {'title': 'MacMD Viewer 对比 MarsDawn：Markdown 查看器还是编
              ['S9', 'https://macmdviewer.com/product-facts.md'],
              ['S10', 'https://github.com/macmdviewer/MacMDViewer/releases']],
  'pick_h2': '该选哪一个',
- 'pick': ['**选 MacMD Viewer，如果**你只读 Markdown，而且希望“不会改到文件”这件事是保证的：它不会保存对文件的任何改动 [S1]。这些情况它也比较合适：你的 Mac 跑的是 '
-          'macOS 14 或 15（MarsDawn 需要 macOS 26）[S1, S7]；你比较想从开发者自己的网站、Homebrew 或 Setapp 买，而不是 Mac App Store '
-          '[S2, S7]；你想让 agent 改过的文件自动在查看器里打开，它用 Claude Code、Cursor 和 Windsurf 的 hook 做到 [S6]；或者你想要单一连续页面的 '
-          'PDF，而不是分页的 PDF [S9]。它没有试用，但有 14 天退款 [S2]。',
-          '**选 MarsDawn，如果** Markdown 读完还要再改一轮。agent 写的计划、README 或规格，通常要修一个地方、改一句话或加一段，在 MarsDawn '
-          '里就在你正在读的那个窗口里改。它也支持数学公式（KaTeX），MacMD Viewer 自己说不显示 [S7]；界面有八种语言；有免费的 `marsdawn` 命令行工具，不需要 app '
-          '就能导出 PDF；价格是 14 天全功能试用后 USD 4.99。',
+ 'pick': ['**选 MacMD Viewer，如果**你只读 Markdown，而且希望“不会改到文件”这件事是保证的：它不会保存对文件的任何改动 [S1]。'
+          '这些情况它也比较合适：你的 Mac 跑的是 macOS 14 或 15（MarsDawn 需要 macOS 26）[S1, S7]；你比较想从开发者自己的网站、'
+          'Homebrew 或 Setapp 买，而不是 Mac App Store [S2, S7]；你想让代理改过的文件自动在查看器里打开，它用 '
+          'Claude Code、Cursor 和 Windsurf 的 hook 做到 [S6]；或者你想要单一连续页面的 PDF，而不是分页的 PDF '
+          '[S9]。它没有试用，但有 14 天退款 [S2]。',
+          '**选 MarsDawn，如果** Markdown 读完还要再改一轮。代理写的计划、README 或规格，通常要修一个地方、改一句话或加一段，'
+          '在 MarsDawn 里就在你正在读的那个窗口里改。它也支持数学公式（KaTeX），MacMD Viewer 自己说不显示 [S7]；界面有八种语言；'
+          '有免费的 `marsdawn` 命令行工具，不需要 app 就能导出 PDF；价格是 14 天全功能试用后 USD 4.99。',
           '**两个都可以，如果**你在较新的 Mac 上读 Markdown，想把 Mermaid 图表画好，也想在访达用快速查看。两者都做得到。',
           '**也可以两个都用。**两者不互斥：只读的文件用只读查看器，要写的文件用编辑器，并不冲突。'],
  'faq_h2': '常见问题',
@@ -424,7 +425,7 @@ VS_MACMD = {'title': 'MacMD Viewer 对比 MarsDawn：Markdown 查看器还是编
 
 # Machine draft (needs-i18n; Grok reviews it): the install section of /cli/skill/ (website #231). Commands, flags and
 # paths stay in <code>, untranslated. {_SKILL_URL} is the skill's address, filled in by the builder.
-SKILL_INSTALL = '<h2>在 Claude Code 中安装</h2>\n<p>命令行工具 <code>marsdawn</code> 会帮你写好这个 skill，写进去的内容和你已安装的 <code>marsdawn</code> 版本相符。如果还没有 <code>marsdawn</code>，先用 <a href="https://brew.sh">Homebrew</a> 安装：</p>\n<pre><code>brew install redtear1115/tap/marsdawn</code></pre>\n<p>然后安装 skill：</p>\n<pre><code>marsdawn skill --install</code></pre>\n<p>这会把 skill 写到 <code>~/.claude/skills/marsdawn/SKILL.md</code>，文件夹不存在时会一并创建。因为文件是由你手上的 <code>marsdawn</code> 生成的，里面不会出现你这个版本没有的选项。</p>\n<p>需要做出 PDF，或写好、改好一份要给你读的 Markdown 文稿时，Claude Code 会自动加载它，你也可以用 <code>/marsdawn</code> 自己运行。想先看内容的话，它只是<a href="/cli/skill/SKILL.md">一个简短的文件</a>。</p>\n<h2>升级 marsdawn 之后</h2>\n<p>Homebrew 会升级 <code>marsdawn</code>，但不会动 skill，所以它会停在旧版本，要自己更新：</p>\n<pre><code>marsdawn skill --install --force</code></pre>\n<p><code>--force</code> 会替换现有的 <code>SKILL.md</code>，包括你自己改过的地方。不加 <code>--force</code> 的话，如果那里已经有内容不同的 <code>SKILL.md</code>，<code>marsdawn</code> 不会动它，会告诉你内容不同，并以代码 64（<code>skill_differs</code>）退出。文件已经是最新的，就什么都不改。</p>\n<h2>给其他 agent</h2>\n<p>加上 <code>--dir</code>，指到你的 agent 放 skill 的文件夹，<code>marsdawn</code> 就会把 <code>SKILL.md</code> 写到那里：</p>\n<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>\n<p>这个文件是纯 Markdown，只有说明和命令，会读指令文件的 agent 可以直接用。</p>\n<h2>没有 Homebrew，或没有命令行工具</h2>\n<p>如果没办法先安装 <code>marsdawn</code>，就直接下载这个文件：</p>\n<pre><code>mkdir -p ~/.claude/skills/marsdawn\ncurl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>\n<p>这会从本站抓最新的 skill，可能比较旧的 <code>marsdawn</code> 还新。等你装好命令行工具，再执行 <code>marsdawn skill --install --force</code>，就会换成和它相符的版本。你也可以让 agent 读这个网址，或直接贴给它。这个文件是英文的。</p>'
+SKILL_INSTALL = '<h2>在 Claude Code 中安装</h2>\n<p>命令行工具 <code>marsdawn</code> 会帮你写好这个 skill，写进去的内容和你已安装的 <code>marsdawn</code> 版本相符。如果还没有 <code>marsdawn</code>，先用 <a href="https://brew.sh">Homebrew</a> 安装：</p>\n<pre><code>brew install redtear1115/tap/marsdawn</code></pre>\n<p>然后安装 skill：</p>\n<pre><code>marsdawn skill --install</code></pre>\n<p>这会把 skill 写到 <code>~/.claude/skills/marsdawn/SKILL.md</code>，文件夹不存在时会一并创建。因为文件是由你手上的 <code>marsdawn</code> 生成的，里面不会出现你这个版本没有的选项。</p>\n<p>需要做出 PDF，或写好、改好一份要给你读的 Markdown 文稿时，Claude Code 会自动加载它，你也可以用 <code>/marsdawn</code> 自己运行。想先看内容的话，它只是<a href="/cli/skill/SKILL.md">一个简短的文件</a>。</p>\n<h2>升级 marsdawn 之后</h2>\n<p>Homebrew 会升级 <code>marsdawn</code>，但不会动 skill，所以它会停在旧版本，要自己更新：</p>\n<pre><code>marsdawn skill --install --force</code></pre>\n<p><code>--force</code> 会替换现有的 <code>SKILL.md</code>，包括你自己改过的地方。不加 <code>--force</code> 的话，如果那里已经有内容不同的 <code>SKILL.md</code>，<code>marsdawn</code> 不会动它，会告诉你内容不同，并以代码 64（<code>skill_differs</code>）退出。文件已经是最新的，就什么都不改。</p>\n<h2>给其他代理</h2>\n<p>加上 <code>--dir</code>，指到你的代理放 skill 的文件夹，<code>marsdawn</code> 就会把 <code>SKILL.md</code> 写到那里：</p>\n<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>\n<p>这个文件是纯 Markdown，只有说明和命令，会读指令文件的代理可以直接用。</p>\n<h2>没有 Homebrew，或没有命令行工具</h2>\n<p>如果没办法先安装 <code>marsdawn</code>，就直接下载这个文件：</p>\n<pre><code>mkdir -p ~/.claude/skills/marsdawn\ncurl -fsSL {_SKILL_URL} -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>\n<p>这会从本站抓最新的 skill，可能比较旧的 <code>marsdawn</code> 还新。等你装好命令行工具，再执行 <code>marsdawn skill --install --force</code>，就会换成和它相符的版本。你也可以让代理读这个网址，或直接贴给它。这个文件是英文的。</p>'
 
 
 def build(k) -> dict:
@@ -509,7 +510,7 @@ def build(k) -> dict:
 <h2>安装</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
 <pre><code>{k.BREW_TAP_INSTALL}</code></pre>
-<p>在用写程序的 agent 吗？执行 <code>marsdawn skill --install</code> 来加上 <a href="/zh-hans/cli/skill/">marsdawn skill</a>：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。</p>
+<p>在用写程序的代理吗？执行 <code>marsdawn skill --install</code> 来加上 <a href="/zh-hans/cli/skill/">marsdawn skill</a>：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。</p>
 <p>在 Apple 芯片的 Mac 上，Homebrew 会直接安装预先构建好的版本，几秒就完成，不需要另外安装任何东西。在 Intel Mac 上则会从源代码构建，需要几分钟，也需要 Xcode 26 以上（Swift 6.2）。这个工具需要 macOS 15 以上。</p>
 <p>也可以从<a href="{k.KIT_URL}">源代码</a>用 Swift Package Manager 构建：</p>
 <pre><code>git clone {k.KIT_URL}.git
@@ -885,7 +886,7 @@ marsdawn --version</code></pre>
 <h2>接下来</h2>
 <ul>
   <li>所有选项和它输出的 JSON：<a href="/zh-hans/cli/">命令行工具</a>。</li>
-  <li>让写程序的 agent 帮你做这件事：运行 <code>marsdawn skill --install</code> 来加上 <a href="/zh-hans/cli/skill/">marsdawn 的 agent skill</a>。</li>
+  <li>让写程序的代理帮你做这件事：运行 <code>marsdawn skill --install</code> 来加上 <a href="/zh-hans/cli/skill/">marsdawn 的代理技能</a>。</li>
 </ul>
 """,
     }

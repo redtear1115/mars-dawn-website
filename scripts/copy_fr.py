@@ -330,8 +330,9 @@ FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur u
 # Mermaid example is the app's own Welcome guide at tag 1.1.0; menu names are the app's strings at 1.1.0
 # and Apple's own Finder strings for this language.
 OPEN_MD = {'title': 'Ouvrir un fichier .md sur Mac · MarsDawn',
- 'description': 'Comment ouvrir un fichier .md sur Mac\xa0: double-clic, app par défaut, coup d’œil dans le '
-                'Finder. Pour les .md écrits par un agent IA, lisez-les rendus dans MarsDawn.',
+ 'description': 'Ouvrir un fichier .md sur Mac\xa0: double-clic, app par défaut, Coup d’œil '
+                'dans le Finder. Les .md écrits par un agent IA se lisent mis en forme '
+                'dans MarsDawn.',
  'h1': 'Comment ouvrir un fichier .md sur Mac.',
  'short': 'Double-cliquez dessus. Si votre Mac l’ouvre dans un éditeur de texte et que vous voyez `#` et '
           '`**` au lieu de titres et de gras, le fichier n’a rien\xa0: un fichier `.md` est du texte brut, '
@@ -420,8 +421,9 @@ OPEN_MD = {'title': 'Ouvrir un fichier .md sur Mac · MarsDawn',
                      'href="/fr/vs/markdown-preview-tools/">la comparaison</a>.']}
 
 MERMAID = {'title': 'Aperçu Mermaid sur Mac, à côté de votre Markdown · MarsDawn',
- 'description': 'Voyez les diagrammes Mermaid dessinés à côté de votre Markdown sur Mac\xa0: aperçu en '
-                'direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.',
+ 'description': 'Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac\xa0: aperçu '
+                'en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur '
+                'et la ligne.',
  'h1': 'Aperçu Mermaid sur Mac.',
  'intro': 'Mermaid permet d’écrire un diagramme sous forme de texte dans un fichier Markdown. La plupart des '
           'éditeurs vous montrent le texte. MarsDawn dessine le diagramme\xa0: dans l’aperçu à côté de la '
@@ -482,9 +484,9 @@ MERMAID = {'title': 'Aperçu Mermaid sur Mac, à côté de votre Markdown · Mar
 # Machine draft (needs-i18n; Grok reviews it): the revised /vs/macmd-viewer/, the same shape as
 # build_pages.VS_MACMD. [S#] marks in a cell or sentence link to the sources list on the page.
 VS_MACMD = {'title': 'MacMD Viewer ou MarsDawn\xa0: visionneuse ou éditeur Markdown · MarsDawn',
- 'description': 'MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie et '
-                'affiche l’aperçu côte à côte\xa0: 14 jours gratuits, puis 4,99 USD une seule fois. '
-                'Comparaison ligne par ligne, avec sources.',
+ 'description': 'MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. '
+                'MarsDawn modifie avec l’aperçu à côté\xa0: 14 jours gratuits, puis 4,99 USD '
+                'une seule fois.',
  'h1': 'MacMD Viewer ou MarsDawn.',
  'intro': ['Ce sont deux apps Mac pour lire du Markdown sous forme de page terminée. MacMD Viewer ouvre un '
            'fichier `.md` et l’affiche\xa0; il est en lecture seule par conception et n’enregistre jamais de '
