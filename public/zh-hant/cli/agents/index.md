@@ -203,7 +203,7 @@ swift build -c release --product marsdawn
 
 ## 接下來
 
-- 讓寫程式的 agent 幫你做這件事：執行 `marsdawn skill --install` 來加上 [marsdawn 的 agent skill](/zh-hant/cli/skill/)。
+- 給讀指令檔而不是執行 shell 的 agent 用的一個檔案：[marsdawn skill](/zh-hant/cli/skill/)。
 - 包住同一個 `export` 的 MCP 伺服器：[marsdawn-mcp](/zh-hant/cli/mcp/)。
 - 這份 JSON 結果為什麼不花 agent 自己的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
 - 和 agent 一起做 MarsDawn 主題：[和 agent 一起做主題](/zh-hant/themes/agents/)。

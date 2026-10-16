@@ -80,7 +80,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## 다음
 
 - 모든 옵션과 출력되는 JSON: [명령줄](/ko/cli/).
-- 코딩 에이전트에게 이 작업을 맡기려면: [marsdawn 에이전트 스킬](/ko/cli/skill/).
+- 코딩 에이전트가 이 일을 대신하게 하려면 `marsdawn skill --install`을 실행해 [marsdawn 에이전트 스킬](/ko/cli/skill/)을 추가하세요.
 - 네 가지 미리보기 테마와 PDF 내보내기의 방향: [미리보기 테마와 PDF 내보내기](/ko/themes/).
 - Markdown을 쓰지 않는 사람에게 PDF 전달하기: [PDF 공유하기](/ko/sharing-exported-pdfs/).
 

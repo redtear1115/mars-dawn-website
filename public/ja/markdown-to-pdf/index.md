@@ -80,7 +80,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## 次に
 
 - すべてのオプションと出力される JSON：[コマンドライン](/ja/cli/)。
-- コーディングエージェントにこれをやらせるには：[marsdawn のエージェントスキル](/ja/cli/skill/)。
+- コーディングエージェントにこれをやらせるには、`marsdawn skill --install` を実行して[marsdawn のエージェントスキル](/ja/cli/skill/)を追加してください。
 
 ## その他
 

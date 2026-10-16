@@ -818,7 +818,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## Next
 
 - Every option and the JSON it prints: [Command Line](/cli/).
-- To have a coding agent do this for you: [the marsdawn agent skill](/cli/skill/).
+- To have a coding agent do this for you, run `marsdawn skill --install` to add [the marsdawn agent skill](/cli/skill/).
 - All four preview themes, and where PDF export is headed: [preview themes and PDF export](/themes/).
 - Handing the PDF to someone who doesn't use Markdown: [sharing a PDF](/sharing-exported-pdfs/).
 
@@ -1246,7 +1246,7 @@ swift build -c release --product marsdawn
 
 ## Next
 
-- To have a coding agent do this for you, run `marsdawn skill --install` to add [the marsdawn agent skill](/cli/skill/).
+- A one-file skill for agents that read instructions instead of a shell: [the marsdawn skill](/cli/skill/).
 - An MCP server that wraps this same `export`: [marsdawn-mcp](/cli/mcp/).
 - Why this JSON result stays cheap for an agent's own context: [token-efficient review](/token-efficient-review/).
 - Making a MarsDawn theme with an agent: [make a theme with your agent](/themes/agents/).
@@ -3719,7 +3719,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## 接下來
 
 - 所有選項和它印出的 JSON：[命令列工具](/zh-hant/cli/)。
-- 讓寫程式的 agent 幫你做這件事：[marsdawn 的 agent skill](/zh-hant/cli/skill/)。
+- 讓寫程式的 agent 幫你做這件事：執行 `marsdawn skill --install` 來加上 [marsdawn 的 agent skill](/zh-hant/cli/skill/)。
 - 四種預覽主題，以及 PDF 輸出接下來的規劃：[預覽主題與 PDF 輸出](/zh-hant/themes/)。
 - 把 PDF 交給不寫 Markdown 的人：[分享 PDF](/zh-hant/sharing-exported-pdfs/)。
 
@@ -4147,7 +4147,7 @@ swift build -c release --product marsdawn
 
 ## 接下來
 
-- 讓寫程式的 agent 幫你做這件事：執行 `marsdawn skill --install` 來加上 [marsdawn 的 agent skill](/zh-hant/cli/skill/)。
+- 給讀指令檔而不是執行 shell 的 agent 用的一個檔案：[marsdawn skill](/zh-hant/cli/skill/)。
 - 包住同一個 `export` 的 MCP 伺服器：[marsdawn-mcp](/zh-hant/cli/mcp/)。
 - 這份 JSON 結果為什麼不花 agent 自己的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
 - 和 agent 一起做 MarsDawn 主題：[和 agent 一起做主題](/zh-hant/themes/agents/)。
@@ -6657,7 +6657,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## 接下来
 
 - 所有选项和它输出的 JSON：[命令行工具](/zh-hans/cli/)。
-- 让写程序的 agent 帮你做这件事：[marsdawn 的 agent skill](/zh-hans/cli/skill/)。
+- 让写程序的 agent 帮你做这件事：运行 `marsdawn skill --install` 来加上 [marsdawn 的 agent skill](/zh-hans/cli/skill/)。
 
 ---
 
@@ -9589,7 +9589,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## 次に
 
 - すべてのオプションと出力される JSON：[コマンドライン](/ja/cli/)。
-- コーディングエージェントにこれをやらせるには：[marsdawn のエージェントスキル](/ja/cli/skill/)。
+- コーディングエージェントにこれをやらせるには、`marsdawn skill --install` を実行して[marsdawn のエージェントスキル](/ja/cli/skill/)を追加してください。
 
 ---
 
@@ -12522,7 +12522,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## Weiter
 
 - Alle Optionen und das JSON, das ausgegeben wird: [Befehlszeile](/de/cli/).
-- Wenn ein Coding-Agent das für dich erledigen soll: [der marsdawn-Agent-Skill](/de/cli/skill/).
+- Damit ein Coding-Agent das für dich erledigt, führe `marsdawn skill --install` aus, um [den marsdawn-Agent-Skill](/de/cli/skill/) hinzuzufügen.
 - Alle vier Vorschauthemen und wohin sich der PDF-Export entwickelt: [Vorschauthemen und PDF-Export](/de/themes/).
 - Das PDF an jemanden weitergeben, der kein Markdown nutzt: [ein PDF teilen](/de/sharing-exported-pdfs/).
 
@@ -12950,7 +12950,7 @@ swift build -c release --product marsdawn
 
 ## Weiter
 
-- Damit ein Coding-Agent das für dich erledigt, führe `marsdawn skill --install` aus, um [den marsdawn-Agent-Skill](/de/cli/skill/) hinzuzufügen.
+- Ein Skill in einer Datei für Agenten, die Anweisungen lesen statt eine Shell zu benutzen: [der marsdawn-Skill](/de/cli/skill/).
 - Ein MCP-Server, der genau dieses `export` umschließt: [marsdawn-mcp](/de/cli/mcp/).
 - Warum dieses JSON-Ergebnis für den eigenen Kontext eines Agenten günstig bleibt: [Token-sparsames Prüfen](/de/token-efficient-review/).
 - Ein MarsDawn-Thema mit einem Agenten erstellen: [Mit deinem Agenten ein Thema erstellen](/de/themes/agents/).
@@ -15416,7 +15416,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## Pour aller plus loin
 
 - Toutes les options et le JSON produit : [Ligne de commande](/fr/cli/).
-- Pour qu’un agent de code le fasse à votre place : [la compétence d’agent marsdawn](/fr/cli/skill/).
+- Pour qu’un agent de code le fasse à votre place, exécutez `marsdawn skill --install` pour ajouter [la skill d’agent marsdawn](/fr/cli/skill/).
 - Les quatre thèmes d’aperçu, et la direction que prend l’export PDF : [thèmes d’aperçu et export PDF](/fr/themes/).
 - Remettre le PDF à quelqu’un qui n’utilise pas Markdown : [partager un PDF](/fr/sharing-exported-pdfs/).
 
@@ -15844,7 +15844,7 @@ swift build -c release --product marsdawn
 
 ## Pour aller plus loin
 
-- Pour qu’un agent de code le fasse à votre place, exécutez `marsdawn skill --install` pour ajouter [la skill d’agent marsdawn](/fr/cli/skill/).
+- Une compétence en un seul fichier pour les agents qui lisent des instructions plutôt qu’un shell : [la compétence marsdawn](/fr/cli/skill/).
 - Un serveur MCP qui enveloppe ce même `export` : [marsdawn-mcp](/fr/cli/mcp/).
 - Pourquoi ce résultat JSON reste économique pour le contexte de l’agent : [une relecture économe en tokens](/fr/token-efficient-review/).
 - Créer un thème MarsDawn avec un agent : [Créer un thème avec votre agent](/fr/themes/agents/).
@@ -18310,7 +18310,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## Siguiente
 
 - Todas las opciones y el JSON que imprime: [Línea de comandos](/es/cli/).
-- Para que un agente de programación lo haga por ti: [la skill de agente de marsdawn](/es/cli/skill/).
+- Para que un agente de programación lo haga por ti, ejecuta `marsdawn skill --install` para agregar [la skill de agente de marsdawn](/es/cli/skill/).
 - Los cuatro temas de vista previa y hacia dónde va la exportación a PDF: [temas de vista previa y exportación a PDF](/es/themes/).
 - Entregar el PDF a alguien que no usa Markdown: [compartir un PDF](/es/sharing-exported-pdfs/).
 
@@ -18738,7 +18738,7 @@ swift build -c release --product marsdawn
 
 ## Siguiente
 
-- Para que un agente de programación lo haga por ti, ejecuta `marsdawn skill --install` para agregar [la skill de agente de marsdawn](/es/cli/skill/).
+- Una skill de un solo archivo para agentes que leen instrucciones en lugar de usar una shell: [la skill de marsdawn](/es/cli/skill/).
 - Un servidor MCP que envuelve este mismo `export`: [marsdawn-mcp](/es/cli/mcp/).
 - Por qué este resultado JSON sale barato para el contexto del propio agente: [revisión con pocos tokens](/es/token-efficient-review/).
 - Crear un tema de MarsDawn con un agente: [Crea un tema con tu agente](/es/themes/agents/).
@@ -21204,7 +21204,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## 다음
 
 - 모든 옵션과 출력되는 JSON: [명령줄](/ko/cli/).
-- 코딩 에이전트에게 이 작업을 맡기려면: [marsdawn 에이전트 스킬](/ko/cli/skill/).
+- 코딩 에이전트가 이 일을 대신하게 하려면 `marsdawn skill --install`을 실행해 [marsdawn 에이전트 스킬](/ko/cli/skill/)을 추가하세요.
 - 네 가지 미리보기 테마와 PDF 내보내기의 방향: [미리보기 테마와 PDF 내보내기](/ko/themes/).
 - Markdown을 쓰지 않는 사람에게 PDF 전달하기: [PDF 공유하기](/ko/sharing-exported-pdfs/).
 
@@ -21632,7 +21632,7 @@ swift build -c release --product marsdawn
 
 ## 다음
 
-- 코딩 에이전트가 이 일을 대신하게 하려면 `marsdawn skill --install`을 실행해 [marsdawn 에이전트 스킬](/ko/cli/skill/)을 추가하세요.
+- 셸 대신 지침 파일을 읽는 에이전트를 위한 파일 하나짜리 스킬: [marsdawn 스킬](/ko/cli/skill/).
 - 이 `export`를 그대로 감싼 MCP 서버: [marsdawn-mcp](/ko/cli/mcp/).
 - 이 JSON 결과가 에이전트 자신의 컨텍스트에 부담이 적은 이유: [토큰을 아끼는 검토](/ko/token-efficient-review/).
 - 에이전트로 MarsDawn 테마 만들기: [에이전트와 함께 테마 만들기](/ko/themes/agents/).

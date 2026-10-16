@@ -203,7 +203,7 @@ swift build -c release --product marsdawn
 
 ## 다음
 
-- 코딩 에이전트가 이 일을 대신하게 하려면 `marsdawn skill --install`을 실행해 [marsdawn 에이전트 스킬](/ko/cli/skill/)을 추가하세요.
+- 셸 대신 지침 파일을 읽는 에이전트를 위한 파일 하나짜리 스킬: [marsdawn 스킬](/ko/cli/skill/).
 - 이 `export`를 그대로 감싼 MCP 서버: [marsdawn-mcp](/ko/cli/mcp/).
 - 이 JSON 결과가 에이전트 자신의 컨텍스트에 부담이 적은 이유: [토큰을 아끼는 검토](/ko/token-efficient-review/).
 - 에이전트로 MarsDawn 테마 만들기: [에이전트와 함께 테마 만들기](/ko/themes/agents/).

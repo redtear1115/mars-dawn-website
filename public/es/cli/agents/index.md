@@ -203,7 +203,7 @@ swift build -c release --product marsdawn
 
 ## Siguiente
 
-- Para que un agente de programación lo haga por ti, ejecuta `marsdawn skill --install` para agregar [la skill de agente de marsdawn](/es/cli/skill/).
+- Una skill de un solo archivo para agentes que leen instrucciones en lugar de usar una shell: [la skill de marsdawn](/es/cli/skill/).
 - Un servidor MCP que envuelve este mismo `export`: [marsdawn-mcp](/es/cli/mcp/).
 - Por qué este resultado JSON sale barato para el contexto del propio agente: [revisión con pocos tokens](/es/token-efficient-review/).
 - Crear un tema de MarsDawn con un agente: [Crea un tema con tu agente](/es/themes/agents/).

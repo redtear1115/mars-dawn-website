@@ -80,7 +80,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## 接下來
 
 - 所有選項和它印出的 JSON：[命令列工具](/zh-hant/cli/)。
-- 讓寫程式的 agent 幫你做這件事：[marsdawn 的 agent skill](/zh-hant/cli/skill/)。
+- 讓寫程式的 agent 幫你做這件事：執行 `marsdawn skill --install` 來加上 [marsdawn 的 agent skill](/zh-hant/cli/skill/)。
 - 四種預覽主題，以及 PDF 輸出接下來的規劃：[預覽主題與 PDF 輸出](/zh-hant/themes/)。
 - 把 PDF 交給不寫 Markdown 的人：[分享 PDF](/zh-hant/sharing-exported-pdfs/)。
 

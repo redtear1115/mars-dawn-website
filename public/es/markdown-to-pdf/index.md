@@ -80,7 +80,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## Siguiente
 
 - Todas las opciones y el JSON que imprime: [Línea de comandos](/es/cli/).
-- Para que un agente de programación lo haga por ti: [la skill de agente de marsdawn](/es/cli/skill/).
+- Para que un agente de programación lo haga por ti, ejecuta `marsdawn skill --install` para agregar [la skill de agente de marsdawn](/es/cli/skill/).
 - Los cuatro temas de vista previa y hacia dónde va la exportación a PDF: [temas de vista previa y exportación a PDF](/es/themes/).
 - Entregar el PDF a alguien que no usa Markdown: [compartir un PDF](/es/sharing-exported-pdfs/).
 

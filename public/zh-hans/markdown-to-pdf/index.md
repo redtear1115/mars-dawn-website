@@ -80,7 +80,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ## 接下来
 
 - 所有选项和它输出的 JSON：[命令行工具](/zh-hans/cli/)。
-- 让写程序的 agent 帮你做这件事：[marsdawn 的 agent skill](/zh-hans/cli/skill/)。
+- 让写程序的 agent 帮你做这件事：运行 `marsdawn skill --install` 来加上 [marsdawn 的 agent skill](/zh-hans/cli/skill/)。
 
 ## 其他页面
 
