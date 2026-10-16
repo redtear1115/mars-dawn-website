@@ -55,7 +55,7 @@ Some people take things in better with a pen: underlining, writing in the margin
 
 ### Paper records
 
-Some fields still file paper, accounting among them. MarsDawn makes no archival or compliance claim. What it does is print and export clean, paginated pages: diagrams drawn in, short code blocks and tables kept whole, the theme's light colors. Use them wherever paper is still the record.
+Some fields still file paper, accounting among them. MarsDawn makes no archival or compliance claim. What it does is print and export clean, paginated pages: diagrams drawn in, short code blocks kept whole, the theme's light colors. Use them wherever paper is still the record.
 
 [PDF export](/pdf/)
 
@@ -127,7 +127,7 @@ Settings ▸ Appearance ▸ Get More Themes… opens a gallery of extra preview 
 
 ### Export as PDF, or print
 
-File ▸ Export as PDF… saves a paginated PDF, and File ▸ Print… prints the same pages. Mermaid diagrams are drawn in, code keeps its highlighting, and page breaks avoid splitting a heading from its section or cutting a short code block, table or diagram in half. The PDF always uses the theme's light colors, even if you were reading in dark.
+File ▸ Export as PDF… saves a paginated PDF, and File ▸ Print… prints the same pages. Mermaid diagrams are drawn in, code keeps its highlighting, and page breaks avoid splitting a heading from its section or cutting a short code block or diagram in half. The PDF always uses the theme's light colors, even if you were reading in dark.
 
 [PDF export](/pdf/)
 
@@ -213,7 +213,7 @@ How the trial works: [Try free, pay once](/pay-once/). What is left out on purpo
 - [MarsDawn](https://marsdawn.southern-light.dev/index.md): Markdown for humans who steer agentic work: a native Mac editor with live preview, Mermaid diagrams and PDF export. On the Mac App Store.
 - [Your writing stays on your Mac](https://marsdawn.southern-light.dev/yours/index.md): MarsDawn has no account, no sync and no cloud. Your Markdown documents stay on your Mac, in the files and folders you choose.
 - [Try free, pay once](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.
-- [PDF export](https://marsdawn.southern-light.dev/pdf/index.md): Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks and tables.
+- [PDF export](https://marsdawn.southern-light.dev/pdf/index.md): Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks.
 - [A Mac app](https://marsdawn.southern-light.dev/native/index.md): A Markdown editor that is a real Mac app: native windows and tabs, autosave, version history, Quick Look in Finder and a text editor that behaves like a Mac.
 - [What MarsDawn doesn't do](https://marsdawn.southern-light.dev/limits/index.md): No sync, no iPhone or iPad app, no plugins, no accounts. Four built-in themes, more in the gallery. Know before you buy.
 - [Support](https://marsdawn.southern-light.dev/support/index.md): Get help with MarsDawn, the Markdown editor for macOS.

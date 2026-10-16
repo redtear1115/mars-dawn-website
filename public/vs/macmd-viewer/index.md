@@ -16,7 +16,7 @@ Checked against MacMD Viewer's own site and repository on 15 October 2026 (versi
 | Code highlighting | Yes [[S1](#s1), [S9](#s9)] | Yes |
 | Themes | 12 document themes [[S1](#s1), [S7](#s7)] | 4 built in (Dawn, Classic, Modern, Vivid), each with a light and a dark palette, plus more in the theme gallery |
 | Tabs | Yes, optional and off by default (since 1.6.0) [[S5](#s5), [S8](#s8)] | Yes |
-| PDF export | Yes, one continuous page, in the current theme, no watermark [[S3](#s3), [S9](#s9)] | Yes, paginated pages in the theme's light palette; page breaks avoid splitting short code blocks and tables |
+| PDF export | Yes, one continuous page, in the current theme, no watermark [[S3](#s3), [S9](#s9)] | Yes, paginated pages in the theme's light palette; page breaks avoid splitting short code blocks |
 | Print | Yes, through the macOS print dialog [[S3](#s3), [S9](#s9)] | Yes |
 | Quick Look in Finder | Yes, included; you enable it in System Settings; uses your theme [[S4](#s4)] | Yes, works with or without the trial; uses your theme |
 | Mermaid and math in Quick Look | Mermaid: yes [[S4](#s4)]. Math: no, it doesn't render math [[S7](#s7)] | Yes, both are drawn |
@@ -70,7 +70,7 @@ Checked against MacMD Viewer's own site and repository on 15 October 2026 (versi
 
 ### Does MacMD Viewer edit files?
 
-No. It is read-only and, in its own words, never saves changes to your source file [[S1](#s1), [S9](#s9)]. It does have "Open in Text Editor" (since 1.7.0), which hands the file to another app [[S5](#s5)].
+No. It is read-only and, in its own words, never saves changes to your source file [[S1](#s1), [S9](#s9)]. It can open the file in your text editor (File menu, ⇧⌘E, since 1.7.0), which hands the file to another app [[S5](#s5)].
 
 ### Is MacMD Viewer on the Mac App Store?
 
@@ -112,7 +112,7 @@ open notes.pdf
 - [Features](https://marsdawn.southern-light.dev/features/index.md): A native Mac Markdown editor: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings, margin notes and paper records.
 - [Your writing stays on your Mac](https://marsdawn.southern-light.dev/yours/index.md): MarsDawn has no account, no sync and no cloud. Your Markdown documents stay on your Mac, in the files and folders you choose.
 - [Try free, pay once](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.
-- [PDF export](https://marsdawn.southern-light.dev/pdf/index.md): Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks and tables.
+- [PDF export](https://marsdawn.southern-light.dev/pdf/index.md): Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks.
 - [A Mac app](https://marsdawn.southern-light.dev/native/index.md): A Markdown editor that is a real Mac app: native windows and tabs, autosave, version history, Quick Look in Finder and a text editor that behaves like a Mac.
 - [What MarsDawn doesn't do](https://marsdawn.southern-light.dev/limits/index.md): No sync, no iPhone or iPad app, no plugins, no accounts. Four built-in themes, more in the gallery. Know before you buy.
 - [Support](https://marsdawn.southern-light.dev/support/index.md): Get help with MarsDawn, the Markdown editor for macOS.

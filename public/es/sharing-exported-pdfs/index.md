@@ -16,7 +16,7 @@ Una captura congela una pantalla de un documento que puede tener varias páginas
 
 - Se abre con lo que la otra persona ya tiene, Vista Previa, un navegador, Acrobat, su teléfono, sin necesidad de una herramienta de Markdown.
 - Los diagramas Mermaid aparecen dibujados, no como código; los bloques de código conservan el resaltado.
-- Los saltos de página se eligen para que un título no quede solo al pie de una página y para que una tabla o un diagrama no se parta en dos.
+- Los saltos de página se eligen para que un título no quede solo al pie de una página y para que un diagrama no se parta en dos.
 - El mismo archivo, venga de la app MarsDawn o de la línea de comandos gratuita; la guía paso a paso está en [Markdown a PDF](/es/markdown-to-pdf/).
 
 ## Siguiente
@@ -32,7 +32,7 @@ Una captura congela una pantalla de un documento que puede tener varias páginas
 - [Funciones](https://marsdawn.southern-light.dev/es/features/index.md): Editor de Markdown nativo para Mac: vista previa, Mermaid, fórmulas, temas y páginas en PDF o impresas para reuniones, notas al margen y registros en papel.
 - [Lo que escribes se queda en tu Mac](https://marsdawn.southern-light.dev/es/yours/index.md): MarsDawn no tiene cuenta, ni sincronización, ni nube. Tus documentos Markdown se quedan en tu Mac, en los archivos y carpetas que elijas.
 - [Pruébalo gratis, paga una vez](https://marsdawn.southern-light.dev/es/pay-once/index.md): MarsDawn se descarga gratis. Prueba todo durante 14 días y desbloquéalo una sola vez por 4,99 USD. Sin suscripción y sin cuenta.
-- [Exportación a PDF](https://marsdawn.southern-light.dev/es/pdf/index.md): Exporta Markdown como PDF o imprímelo en tu Mac, con diagramas Mermaid y código resaltado. Los saltos de página evitan partir bloques de código cortos y tablas.
+- [Exportación a PDF](https://marsdawn.southern-light.dev/es/pdf/index.md): Exporta Markdown como PDF o imprímelo en tu Mac, con diagramas Mermaid y código resaltado. Los saltos de página evitan partir bloques de código cortos.
 - [Una app para Mac](https://marsdawn.southern-light.dev/es/native/index.md): Un editor de Markdown que es una app de Mac de verdad: ventanas y pestañas nativas, guardado automático, historial de versiones, Vista rápida en el Finder y un editor de texto que se comporta como en la Mac.
 - [Lo que MarsDawn no hace](https://marsdawn.southern-light.dev/es/limits/index.md): Sin sincronización, sin app para iPhone o iPad, sin plugins, sin cuentas. Cuatro temas integrados y más en la galería. Lo que conviene saber antes de comprar.
 - [Soporte](https://marsdawn.southern-light.dev/es/support/index.md): Ayuda con MarsDawn, el editor de Markdown para macOS.

@@ -16,7 +16,7 @@
 | 程式碼上色 | 有 [[S1](#s1), [S9](#s9)] | 有 |
 | 主題 | 12 種文件主題 [[S1](#s1), [S7](#s7)] | 內建 4 種（黎明、典雅、流行、活潑），各有淺色與深色，主題庫還有更多 |
 | 分頁 | 有，選用，預設關閉（1.6.0 起）[[S5](#s5), [S8](#s8)] | 有 |
-| PDF 輸出 | 有，單一連續頁面，用目前的主題，無浮水印 [[S3](#s3), [S9](#s9)] | 有，分頁輸出，用主題的淺色配色；分頁時盡量不切開短的程式碼和表格 |
+| PDF 輸出 | 有，單一連續頁面，用目前的主題，無浮水印 [[S3](#s3), [S9](#s9)] | 有，分頁輸出，用主題的淺色配色；分頁時盡量不切開短的程式碼 |
 | 列印 | 有，走 macOS 的列印對話框 [[S3](#s3), [S9](#s9)] | 有 |
 | Finder 的快速查看 | 有，已包含；要在系統設定裡啟用；使用你選的主題 [[S4](#s4)] | 有，不論有沒有試用都能用；使用你選的主題 |
 | 快速查看裡的 Mermaid 與數學式 | Mermaid：有 [[S4](#s4)]。數學式：沒有，它不顯示數學式 [[S7](#s7)] | 有，兩者都會畫出來 |
@@ -70,7 +70,7 @@
 
 ### MacMD Viewer 能編輯檔案嗎？
 
-不能。它是唯讀的，照它自己的說法，不會儲存對原始檔的更動 [[S1](#s1), [S9](#s9)]。它有「在文字編輯器中開啟」（1.7.0 起），是把檔案交給別的 app [[S5](#s5)]。
+不能。它是唯讀的，照它自己的說法，不會儲存對原始檔的更動 [[S1](#s1), [S9](#s9)]。它可以把檔案交給你的文字編輯器開啟（「檔案」選單，⇧⌘E，1.7.0 起）[[S5](#s5)]。
 
 ### MacMD Viewer 在 Mac App Store 上嗎？
 
@@ -112,7 +112,7 @@ open notes.pdf
 - [功能一覽](https://marsdawn.southern-light.dev/zh-hant/features/index.md): Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。
 - [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hant/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
-- [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。
+- [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。
 - [為 Mac 而做](https://marsdawn.southern-light.dev/zh-hant/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
 - [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號。內建四種主題，主題庫還有更多。購買前先知道。
 - [支援](https://marsdawn.southern-light.dev/zh-hant/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。

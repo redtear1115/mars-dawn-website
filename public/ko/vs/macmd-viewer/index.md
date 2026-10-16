@@ -16,7 +16,7 @@ MacMD Viewer 자체 사이트와 저장소를 기준으로 2026년 10월 15일�
 | 코드 강조 | 지원 [[S1](#s1), [S9](#s9)] | 지원 |
 | 테마 | 문서 테마 12종 [[S1](#s1), [S7](#s7)] | 기본 4종(새벽, 클래식, 모던, 비비드), 각각 라이트와 다크 팔레트, 테마 갤러리에 더 많음 |
 | 탭 | 지원, 선택 사항이며 기본값은 꺼짐(1.6.0부터) [[S5](#s5), [S8](#s8)] | 지원 |
-| PDF 내보내기 | 지원, 연속된 한 페이지, 현재 테마, 워터마크 없음 [[S3](#s3), [S9](#s9)] | 지원, 쪽이 나뉜 페이지, 테마의 라이트 팔레트. 쪽 나누기는 짧은 코드 블록과 표가 잘리지 않게 함 |
+| PDF 내보내기 | 지원, 연속된 한 페이지, 현재 테마, 워터마크 없음 [[S3](#s3), [S9](#s9)] | 지원, 쪽이 나뉜 페이지, 테마의 라이트 팔레트. 쪽 나누기는 짧은 코드 블록이 잘리지 않게 함 |
 | 프린트 | 지원, macOS 프린트 대화상자 사용 [[S3](#s3), [S9](#s9)] | 지원 |
 | Finder 훑어보기 | 지원, 포함되어 있음. 시스템 설정에서 켬. 선택한 테마 사용 [[S4](#s4)] | 지원, 체험 중이든 아니든 작동. 선택한 테마 사용 |
 | 훑어보기의 Mermaid와 수식 | Mermaid: 지원 [[S4](#s4)]. 수식: 미지원, 렌더링하지 않음 [[S7](#s7)] | 지원, 둘 다 그려짐 |
@@ -70,7 +70,7 @@ MacMD Viewer 자체 사이트와 저장소를 기준으로 2026년 10월 15일�
 
 ### MacMD Viewer는 파일을 편집하나요?
 
-아니요. 읽기 전용이며, 자체 설명대로 원본 파일에 대한 변경 사항을 저장하지 않습니다 [[S1](#s1), [S9](#s9)]. “텍스트 편집기에서 열기”(1.7.0부터)가 있지만, 이는 파일을 다른 앱에 넘기는 기능입니다 [[S5](#s5)].
+아니요. 읽기 전용이며, 자체 설명대로 원본 파일에 대한 변경 사항을 저장하지 않습니다 [[S1](#s1), [S9](#s9)]. 파일을 사용자의 텍스트 편집기에서 열 수 있지만(파일 메뉴, ⇧⌘E, 1.7.0부터), 이는 파일을 다른 앱에 넘기는 기능입니다 [[S5](#s5)].
 
 ### MacMD Viewer는 Mac App Store에 있나요?
 
@@ -112,7 +112,7 @@ open notes.pdf
 - [기능 한눈에 보기](https://marsdawn.southern-light.dev/ko/features/index.md): Mac 네이티브 Markdown 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 그리고 회의와 여백 메모, 종이 기록에 쓸 수 있는 깔끔한 PDF와 프린트 페이지.
 - [내 글은 내 Mac에](https://marsdawn.southern-light.dev/ko/yours/index.md): MarsDawn에는 계정도, 동기화도, 클라우드도 없습니다. Markdown 문서는 직접 고른 파일과 폴더에 담겨 Mac에 남습니다.
 - [무료로 체험하고, 한 번만 구입](https://marsdawn.southern-light.dev/ko/pay-once/index.md): MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다.
-- [PDF 내보내기](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록과 표를 가르지 않도록 합니다.
+- [PDF 내보내기](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록을 가르지 않도록 합니다.
 - [Mac 앱](https://marsdawn.southern-light.dev/ko/native/index.md): 진짜 Mac 앱인 Markdown 편집기. 네이티브 윈도우와 탭, 자동 저장, 버전 기록, Finder의 훑어보기, 그리고 Mac답게 동작하는 텍스트 편집기를 갖췄습니다.
 - [MarsDawn이 하지 않는 일](https://marsdawn.southern-light.dev/ko/limits/index.md): 동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 기본 테마는 네 가지이고, 갤러리에 더 있습니다. 구입 전에 알아 두세요.
 - [지원](https://marsdawn.southern-light.dev/ko/support/index.md): macOS용 Markdown 편집기 MarsDawn에 관한 도움말입니다.

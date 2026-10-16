@@ -16,7 +16,7 @@
 | 代码高亮 | 有 [[S1](#s1), [S9](#s9)] | 有 |
 | 主题 | 12 种文档主题 [[S1](#s1), [S7](#s7)] | 内置 4 种（黎明、典雅、流行、活泼），各有浅色与深色，主题图库还有更多 |
 | 标签页 | 有，可选，默认关闭（1.6.0 起）[[S5](#s5), [S8](#s8)] | 有 |
-| PDF 导出 | 有，单一连续页面，用当前的主题，无水印 [[S3](#s3), [S9](#s9)] | 有，分页输出，用主题的浅色配色；分页时尽量不切开短的代码和表格 |
+| PDF 导出 | 有，单一连续页面，用当前的主题，无水印 [[S3](#s3), [S9](#s9)] | 有，分页输出，用主题的浅色配色；分页时尽量不切开短的代码 |
 | 打印 | 有，走 macOS 的打印对话框 [[S3](#s3), [S9](#s9)] | 有 |
 | 访达的快速查看 | 有，已包含；要在系统设置里启用；使用你选的主题 [[S4](#s4)] | 有，不论有没有试用都能用；使用你选的主题 |
 | 快速查看里的 Mermaid 与数学公式 | Mermaid：有 [[S4](#s4)]。数学公式：没有，它不显示数学公式 [[S7](#s7)] | 有，两者都会画出来 |
@@ -70,7 +70,7 @@
 
 ### MacMD Viewer 能编辑文件吗？
 
-不能。它是只读的，照它自己的说法，不会保存对源文件的改动 [[S1](#s1), [S9](#s9)]。它有“在文本编辑器中打开”（1.7.0 起），是把文件交给别的 app [[S5](#s5)]。
+不能。它是只读的，照它自己的说法，不会保存对源文件的改动 [[S1](#s1), [S9](#s9)]。它可以把文件交给你的文本编辑器打开（“文件”菜单，⇧⌘E，1.7.0 起）[[S5](#s5)]。
 
 ### MacMD Viewer 在 Mac App Store 上吗？
 
@@ -111,7 +111,7 @@ open notes.pdf
 - [功能一览](https://marsdawn.southern-light.dev/zh-hans/features/index.md): Mac 原生的 Markdown 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可以拿去开会、用笔批注，或当纸质存档。
 - [你写的内容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hans/yours/index.md): MarsDawn 不需要账户，没有同步，也没有云端。你的 Markdown 文稿留在你的 Mac 上，就在你选的文件和文件夹里。
 - [免费试用，买一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
-- [导出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 导出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码和表格，超过一页的会接到下一页。
+- [导出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 导出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码，超过一页的会接到下一页。
 - [为 Mac 而做](https://marsdawn.southern-light.dev/zh-hans/native/index.md): 真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在访达用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。
 - [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户。内置四种主题，主题图库还有更多。购买前先知道。
 - [支持](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 编辑器）的使用说明与联系方式。

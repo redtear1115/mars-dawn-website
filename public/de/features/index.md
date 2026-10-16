@@ -55,7 +55,7 @@ Manche nehmen Dinge besser mit einem Stift auf: unterstreichen, an den Rand schr
 
 ### Papierakten
 
-In manchen Bereichen wird weiterhin Papier abgelegt, etwa in der Buchhaltung. MarsDawn erhebt keinen Anspruch auf Archivierung oder Compliance. Es druckt und exportiert saubere Seiten mit Seitenumbrüchen: Diagramme eingezeichnet, kurze Codeblöcke und Tabellen am Stück, in den hellen Farben des Themes. Nutze sie überall dort, wo Papier noch die Akte ist.
+In manchen Bereichen wird weiterhin Papier abgelegt, etwa in der Buchhaltung. MarsDawn erhebt keinen Anspruch auf Archivierung oder Compliance. Es druckt und exportiert saubere Seiten mit Seitenumbrüchen: Diagramme eingezeichnet, kurze Codeblöcke am Stück, in den hellen Farben des Themes. Nutze sie überall dort, wo Papier noch die Akte ist.
 
 [PDF-Export](/de/pdf/)
 
@@ -127,7 +127,7 @@ Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden … öffnet eine Gal
 
 ### Als PDF exportieren oder drucken
 
-Ablage ▸ Als PDF exportieren … sichert ein PDF mit Seitenumbrüchen, und Ablage ▸ Drucken … druckt dieselben Seiten. Mermaid-Diagramme werden eingezeichnet, Code behält seine Hervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und zerschneiden keinen kurzen Codeblock, keine Tabelle und kein Diagramm. Das PDF verwendet immer die hellen Farben des Themes, auch wenn du im Dunkeln gelesen hast.
+Ablage ▸ Als PDF exportieren … sichert ein PDF mit Seitenumbrüchen, und Ablage ▸ Drucken … druckt dieselben Seiten. Mermaid-Diagramme werden eingezeichnet, Code behält seine Hervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und zerschneiden keinen kurzen Codeblock und kein Diagramm. Das PDF verwendet immer die hellen Farben des Themes, auch wenn du im Dunkeln gelesen hast.
 
 [PDF-Export](/de/pdf/)
 
@@ -213,7 +213,7 @@ So funktioniert die Testphase: [Kostenlos testen, einmal bezahlen](/de/pay-once/
 - [MarsDawn](https://marsdawn.southern-light.dev/de/index.md): Markdown für Menschen, die agentische Arbeit steuern: ein nativer Mac-Editor mit Live-Vorschau, Mermaid-Diagrammen und PDF-Export. Im Mac App Store.
 - [Deine Texte bleiben auf deinem Mac](https://marsdawn.southern-light.dev/de/yours/index.md): MarsDawn hat kein Konto, keine Synchronisierung und keine Cloud. Deine Markdown-Dokumente bleiben auf deinem Mac, in den Dateien und Ordnern, die du wählst.
 - [Kostenlos testen, einmal bezahlen](https://marsdawn.southern-light.dev/de/pay-once/index.md): MarsDawn ist kostenlos zum Herunterladen. Teste alles 14 Tage lang und schalte es dann einmalig für 4,99 USD frei. Kein Abo, kein Konto.
-- [PDF-Export](https://marsdawn.southern-light.dev/de/pdf/index.md): Exportiere Markdown auf deinem Mac als PDF oder drucke es, mit Mermaid-Diagrammen und hervorgehobenem Code. Seitenumbrüche vermeiden es, kurze Codeblöcke und Tabellen zu teilen.
+- [PDF-Export](https://marsdawn.southern-light.dev/de/pdf/index.md): Exportiere Markdown auf deinem Mac als PDF oder drucke es, mit Mermaid-Diagrammen und hervorgehobenem Code. Seitenumbrüche vermeiden es, kurze Codeblöcke zu teilen.
 - [Eine Mac-App](https://marsdawn.southern-light.dev/de/native/index.md): Ein Markdown-Editor, der eine echte Mac-App ist: native Fenster und Tabs, automatisches Sichern, Versionsverlauf, Übersicht im Finder und ein Texteditor, der sich wie ein Mac verhält.
 - [Was MarsDawn nicht kann](https://marsdawn.southern-light.dev/de/limits/index.md): Keine Synchronisierung, keine iPhone- oder iPad-App, keine Plug-ins, keine Konten. Vier integrierte Themen, mehr in der Galerie. Gut zu wissen, bevor du kaufst.
 - [Support](https://marsdawn.southern-light.dev/de/support/index.md): Hilfe zu MarsDawn, dem Markdown-Editor für macOS.

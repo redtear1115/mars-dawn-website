@@ -16,7 +16,7 @@ A screenshot freezes one screen's worth of a document that may run to several pa
 
 - Opens in whatever the recipient already has — Preview, a browser, Acrobat, their phone — no Markdown tool required.
 - Mermaid diagrams are drawn in, not left as code; code blocks keep their highlighting.
-- Page breaks are chosen so a heading doesn't land alone at the bottom of a page, and a table or diagram isn't split across two.
+- Page breaks are chosen so a heading doesn't land alone at the bottom of a page, and a diagram isn't split across two.
 - The same file whether it came from the MarsDawn app or the free command line — see [Markdown to PDF](/markdown-to-pdf/) for that walk-through.
 
 ## Next
@@ -32,7 +32,7 @@ A screenshot freezes one screen's worth of a document that may run to several pa
 - [Features](https://marsdawn.southern-light.dev/features/index.md): A native Mac Markdown editor: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings, margin notes and paper records.
 - [Your writing stays on your Mac](https://marsdawn.southern-light.dev/yours/index.md): MarsDawn has no account, no sync and no cloud. Your Markdown documents stay on your Mac, in the files and folders you choose.
 - [Try free, pay once](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.
-- [PDF export](https://marsdawn.southern-light.dev/pdf/index.md): Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks and tables.
+- [PDF export](https://marsdawn.southern-light.dev/pdf/index.md): Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks.
 - [A Mac app](https://marsdawn.southern-light.dev/native/index.md): A Markdown editor that is a real Mac app: native windows and tabs, autosave, version history, Quick Look in Finder and a text editor that behaves like a Mac.
 - [What MarsDawn doesn't do](https://marsdawn.southern-light.dev/limits/index.md): No sync, no iPhone or iPad app, no plugins, no accounts. Four built-in themes, more in the gallery. Know before you buy.
 - [Support](https://marsdawn.southern-light.dev/support/index.md): Get help with MarsDawn, the Markdown editor for macOS.

@@ -55,7 +55,7 @@ MarsDawn 是為 Mac 做的 Markdown 編輯器。一邊寫，一邊讀排版後�
 
 ### 紙本保存
 
-有些行業還是要把紙本存起來，會計就是一個例子。MarsDawn 沒有任何歸檔或合規的聲明。它做的是印出和輸出乾淨、分好頁的頁面：圖表畫進去，短的程式碼區塊和表格不被切開，用主題的淺色配色。紙本還是正式紀錄的地方，就可以用這些頁面。
+有些行業還是要把紙本存起來，會計就是一個例子。MarsDawn 沒有任何歸檔或合規的聲明。它做的是印出和輸出乾淨、分好頁的頁面：圖表畫進去，短的程式碼區塊不被切開，用主題的淺色配色。紙本還是正式紀錄的地方，就可以用這些頁面。
 
 [輸出 PDF](/zh-hant/pdf/)
 
@@ -127,7 +127,7 @@ App 介面有英文、繁體中文、簡體中文、日文、德文、法文、�
 
 ### 輸出 PDF，或列印
 
-「檔案 ▸ 輸出為 PDF⋯」會存成自動分頁的 PDF，「檔案 ▸ 列印⋯」印出相同的頁面。Mermaid 圖表直接畫進去，程式碼保留語法上色，分頁時會盡量不讓標題落在頁尾，也不切開短的程式碼、表格和圖表。PDF 一律用主題的淺色配色，就算你是在深色下讀的也一樣。
+「檔案 ▸ 輸出為 PDF⋯」會存成自動分頁的 PDF，「檔案 ▸ 列印⋯」印出相同的頁面。Mermaid 圖表直接畫進去，程式碼保留語法上色，分頁時會盡量不讓標題落在頁尾，也不切開短的程式碼和圖表。PDF 一律用主題的淺色配色，就算你是在深色下讀的也一樣。
 
 [輸出 PDF](/zh-hant/pdf/)
 
@@ -213,7 +213,7 @@ MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖
 - [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。已在 Mac App Store 上架。
 - [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hant/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
-- [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼和表格，超過一頁的會接到下一頁。
+- [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。
 - [為 Mac 而做](https://marsdawn.southern-light.dev/zh-hant/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
 - [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號。內建四種主題，主題庫還有更多。購買前先知道。
 - [支援](https://marsdawn.southern-light.dev/zh-hant/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。

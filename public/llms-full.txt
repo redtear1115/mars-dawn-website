@@ -127,7 +127,7 @@ Some people take things in better with a pen: underlining, writing in the margin
 
 ### Paper records
 
-Some fields still file paper, accounting among them. MarsDawn makes no archival or compliance claim. What it does is print and export clean, paginated pages: diagrams drawn in, short code blocks and tables kept whole, the theme's light colors. Use them wherever paper is still the record.
+Some fields still file paper, accounting among them. MarsDawn makes no archival or compliance claim. What it does is print and export clean, paginated pages: diagrams drawn in, short code blocks kept whole, the theme's light colors. Use them wherever paper is still the record.
 
 [PDF export](/pdf/)
 
@@ -199,7 +199,7 @@ Settings ▸ Appearance ▸ Get More Themes… opens a gallery of extra preview 
 
 ### Export as PDF, or print
 
-File ▸ Export as PDF… saves a paginated PDF, and File ▸ Print… prints the same pages. Mermaid diagrams are drawn in, code keeps its highlighting, and page breaks avoid splitting a heading from its section or cutting a short code block, table or diagram in half. The PDF always uses the theme's light colors, even if you were reading in dark.
+File ▸ Export as PDF… saves a paginated PDF, and File ▸ Print… prints the same pages. Mermaid diagrams are drawn in, code keeps its highlighting, and page breaks avoid splitting a heading from its section or cutting a short code block or diagram in half. The PDF always uses the theme's light colors, even if you were reading in dark.
 
 [PDF export](/pdf/)
 
@@ -377,7 +377,7 @@ In this screenshot:
 
 - Mermaid diagrams are drawn into the PDF.
 - Code blocks keep their syntax highlighting.
-- Page breaks avoid leaving a heading at the bottom of a page or splitting code, tables and diagrams.
+- Page breaks avoid leaving a heading at the bottom of a page or splitting code and diagrams.
 - Any layout. Export works even while only the source is showing.
 
 The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script or an AI agent gets the same PDF.
@@ -846,7 +846,7 @@ Checked against MacMD Viewer's own site and repository on 15 October 2026 (versi
 | Code highlighting | Yes [[S1](#s1), [S9](#s9)] | Yes |
 | Themes | 12 document themes [[S1](#s1), [S7](#s7)] | 4 built in (Dawn, Classic, Modern, Vivid), each with a light and a dark palette, plus more in the theme gallery |
 | Tabs | Yes, optional and off by default (since 1.6.0) [[S5](#s5), [S8](#s8)] | Yes |
-| PDF export | Yes, one continuous page, in the current theme, no watermark [[S3](#s3), [S9](#s9)] | Yes, paginated pages in the theme's light palette; page breaks avoid splitting short code blocks and tables |
+| PDF export | Yes, one continuous page, in the current theme, no watermark [[S3](#s3), [S9](#s9)] | Yes, paginated pages in the theme's light palette; page breaks avoid splitting short code blocks |
 | Print | Yes, through the macOS print dialog [[S3](#s3), [S9](#s9)] | Yes |
 | Quick Look in Finder | Yes, included; you enable it in System Settings; uses your theme [[S4](#s4)] | Yes, works with or without the trial; uses your theme |
 | Mermaid and math in Quick Look | Mermaid: yes [[S4](#s4)]. Math: no, it doesn't render math [[S7](#s7)] | Yes, both are drawn |
@@ -900,7 +900,7 @@ Checked against MacMD Viewer's own site and repository on 15 October 2026 (versi
 
 ### Does MacMD Viewer edit files?
 
-No. It is read-only and, in its own words, never saves changes to your source file [[S1](#s1), [S9](#s9)]. It does have "Open in Text Editor" (since 1.7.0), which hands the file to another app [[S5](#s5)].
+No. It is read-only and, in its own words, never saves changes to your source file [[S1](#s1), [S9](#s9)]. It can open the file in your text editor (File menu, ⇧⌘E, since 1.7.0), which hands the file to another app [[S5](#s5)].
 
 ### Is MacMD Viewer on the Mac App Store?
 
@@ -1485,7 +1485,7 @@ Each one has its own light and dark variant, so switching your Mac's appearance 
 
 ## PDF export and print use the same theme
 
-Export to PDF or print, and the page uses your theme's light palette: Mermaid diagrams are drawn into it, code blocks keep their syntax highlighting, and page breaks avoid splitting a heading from its section or cutting a table or diagram in half. The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script or an agent produces the identical PDF, in any of the four themes, with `--theme`.
+Export to PDF or print, and the page uses your theme's light palette: Mermaid diagrams are drawn into it, code blocks keep their syntax highlighting, and page breaks avoid splitting a heading from its section or cutting a diagram in half. The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script or an agent produces the identical PDF, in any of the four themes, with `--theme`.
 
 ## After the page is printed
 
@@ -1839,7 +1839,7 @@ A screenshot freezes one screen's worth of a document that may run to several pa
 
 - Opens in whatever the recipient already has — Preview, a browser, Acrobat, their phone — no Markdown tool required.
 - Mermaid diagrams are drawn in, not left as code; code blocks keep their highlighting.
-- Page breaks are chosen so a heading doesn't land alone at the bottom of a page, and a table or diagram isn't split across two.
+- Page breaks are chosen so a heading doesn't land alone at the bottom of a page, and a diagram isn't split across two.
 - The same file whether it came from the MarsDawn app or the free command line — see [Markdown to PDF](/markdown-to-pdf/) for that walk-through.
 
 ## Next
@@ -3028,7 +3028,7 @@ MarsDawn 是為 Mac 做的 Markdown 編輯器。一邊寫，一邊讀排版後�
 
 ### 紙本保存
 
-有些行業還是要把紙本存起來，會計就是一個例子。MarsDawn 沒有任何歸檔或合規的聲明。它做的是印出和輸出乾淨、分好頁的頁面：圖表畫進去，短的程式碼區塊和表格不被切開，用主題的淺色配色。紙本還是正式紀錄的地方，就可以用這些頁面。
+有些行業還是要把紙本存起來，會計就是一個例子。MarsDawn 沒有任何歸檔或合規的聲明。它做的是印出和輸出乾淨、分好頁的頁面：圖表畫進去，短的程式碼區塊不被切開，用主題的淺色配色。紙本還是正式紀錄的地方，就可以用這些頁面。
 
 [輸出 PDF](/zh-hant/pdf/)
 
@@ -3100,7 +3100,7 @@ App 介面有英文、繁體中文、簡體中文、日文、德文、法文、�
 
 ### 輸出 PDF，或列印
 
-「檔案 ▸ 輸出為 PDF⋯」會存成自動分頁的 PDF，「檔案 ▸ 列印⋯」印出相同的頁面。Mermaid 圖表直接畫進去，程式碼保留語法上色，分頁時會盡量不讓標題落在頁尾，也不切開短的程式碼、表格和圖表。PDF 一律用主題的淺色配色，就算你是在深色下讀的也一樣。
+「檔案 ▸ 輸出為 PDF⋯」會存成自動分頁的 PDF，「檔案 ▸ 列印⋯」印出相同的頁面。Mermaid 圖表直接畫進去，程式碼保留語法上色，分頁時會盡量不讓標題落在頁尾，也不切開短的程式碼和圖表。PDF 一律用主題的淺色配色，就算你是在深色下讀的也一樣。
 
 [輸出 PDF](/zh-hant/pdf/)
 
@@ -3278,7 +3278,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/pdf/
 
 - Mermaid 圖表直接畫進 PDF。
 - 程式碼區塊保留語法上色。
-- 分頁時會盡量不讓標題落在頁尾，也不切開程式碼、表格和圖表。
+- 分頁時會盡量不讓標題落在頁尾，也不切開程式碼和圖表。
 - 任何版面都能輸出，只顯示原始碼時也可以。
 
 免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，所以腳本或 AI agent 也能得到一樣的 PDF。
@@ -3747,7 +3747,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/
 | 程式碼上色 | 有 [[S1](#s1), [S9](#s9)] | 有 |
 | 主題 | 12 種文件主題 [[S1](#s1), [S7](#s7)] | 內建 4 種（黎明、典雅、流行、活潑），各有淺色與深色，主題庫還有更多 |
 | 分頁 | 有，選用，預設關閉（1.6.0 起）[[S5](#s5), [S8](#s8)] | 有 |
-| PDF 輸出 | 有，單一連續頁面，用目前的主題，無浮水印 [[S3](#s3), [S9](#s9)] | 有，分頁輸出，用主題的淺色配色；分頁時盡量不切開短的程式碼和表格 |
+| PDF 輸出 | 有，單一連續頁面，用目前的主題，無浮水印 [[S3](#s3), [S9](#s9)] | 有，分頁輸出，用主題的淺色配色；分頁時盡量不切開短的程式碼 |
 | 列印 | 有，走 macOS 的列印對話框 [[S3](#s3), [S9](#s9)] | 有 |
 | Finder 的快速查看 | 有，已包含；要在系統設定裡啟用；使用你選的主題 [[S4](#s4)] | 有，不論有沒有試用都能用；使用你選的主題 |
 | 快速查看裡的 Mermaid 與數學式 | Mermaid：有 [[S4](#s4)]。數學式：沒有，它不顯示數學式 [[S7](#s7)] | 有，兩者都會畫出來 |
@@ -3801,7 +3801,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/
 
 ### MacMD Viewer 能編輯檔案嗎？
 
-不能。它是唯讀的，照它自己的說法，不會儲存對原始檔的更動 [[S1](#s1), [S9](#s9)]。它有「在文字編輯器中開啟」（1.7.0 起），是把檔案交給別的 app [[S5](#s5)]。
+不能。它是唯讀的，照它自己的說法，不會儲存對原始檔的更動 [[S1](#s1), [S9](#s9)]。它可以把檔案交給你的文字編輯器開啟（「檔案」選單，⇧⌘E，1.7.0 起）[[S5](#s5)]。
 
 ### MacMD Viewer 在 Mac App Store 上嗎？
 
@@ -4386,7 +4386,7 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 
 ## PDF 輸出和列印用同一個主題
 
-輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開表格與圖表。免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，所以腳本或 agent 也能用 `--theme` 產生一模一樣的 PDF，四種主題都可以。
+輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開圖表。免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，所以腳本或 agent 也能用 `--theme` 產生一模一樣的 PDF，四種主題都可以。
 
 ## 頁面印出來之後
 
@@ -4740,7 +4740,7 @@ agent 寫完一份文件，你審閱、修改過後，公司裡不寫程式的�
 
 - 對方已經有的東西就能打開——Preview、瀏覽器、Acrobat、手機都行，不需要任何 Markdown 工具。
 - Mermaid 圖表會畫出來，不會留著程式碼原樣；程式碼區塊保留語法上色。
-- 分頁位置經過安排，標題不會孤零零留在頁尾，表格或圖表也不會被切成兩半。
+- 分頁位置經過安排，標題不會孤零零留在頁尾，圖表也不會被切成兩半。
 - 不管是從 MarsDawn app 還是免費的命令列輸出，得到的都是同一份檔案——完整步驟請看[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
 
 ## 接下來
@@ -5967,7 +5967,7 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后�
 
 ### 纸质存档
 
-有些行业还是要把纸质文件存起来，会计就是一个例子。MarsDawn 没有任何归档或合规的声明。它做的是打印和导出干净、分好页的页面：图表画进去，短的代码块和表格不被切开，用主题的浅色配色。纸质文件还是正式记录的地方，就可以用这些页面。
+有些行业还是要把纸质文件存起来，会计就是一个例子。MarsDawn 没有任何归档或合规的声明。它做的是打印和导出干净、分好页的页面：图表画进去，短的代码块不被切开，用主题的浅色配色。纸质文件还是正式记录的地方，就可以用这些页面。
 
 [导出 PDF](/zh-hans/pdf/)
 
@@ -6039,7 +6039,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 ### 导出 PDF，或打印
 
-“文件 ▸ 导出为 PDF…”会存成自动分页的 PDF，“文件 ▸ 打印…”打印相同的页面。Mermaid 图表直接画进去，代码保留语法着色，分页时会尽量不让标题落在页尾，也不切开短的代码块、表格和图表。PDF 一律用主题的浅色配色，就算你是在深色下读的也一样。
+“文件 ▸ 导出为 PDF…”会存成自动分页的 PDF，“文件 ▸ 打印…”打印相同的页面。Mermaid 图表直接画进去，代码保留语法着色，分页时会尽量不让标题落在页尾，也不切开短的代码块和图表。PDF 一律用主题的浅色配色，就算你是在深色下读的也一样。
 
 [导出 PDF](/zh-hans/pdf/)
 
@@ -6217,7 +6217,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/pdf/
 
 - Mermaid 图表直接画进 PDF。
 - 代码块保留语法高亮。
-- 分页时会尽量不让标题落在页面底部，也不切开代码、表格和图表。
+- 分页时会尽量不让标题落在页面底部，也不切开代码和图表。
 - 任何布局都能导出，只显示源代码时也可以。
 
 免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 AI agent 也能得到一样的 PDF。
@@ -6683,7 +6683,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 | 代码高亮 | 有 [[S1](#s1), [S9](#s9)] | 有 |
 | 主题 | 12 种文档主题 [[S1](#s1), [S7](#s7)] | 内置 4 种（黎明、典雅、流行、活泼），各有浅色与深色，主题图库还有更多 |
 | 标签页 | 有，可选，默认关闭（1.6.0 起）[[S5](#s5), [S8](#s8)] | 有 |
-| PDF 导出 | 有，单一连续页面，用当前的主题，无水印 [[S3](#s3), [S9](#s9)] | 有，分页输出，用主题的浅色配色；分页时尽量不切开短的代码和表格 |
+| PDF 导出 | 有，单一连续页面，用当前的主题，无水印 [[S3](#s3), [S9](#s9)] | 有，分页输出，用主题的浅色配色；分页时尽量不切开短的代码 |
 | 打印 | 有，走 macOS 的打印对话框 [[S3](#s3), [S9](#s9)] | 有 |
 | 访达的快速查看 | 有，已包含；要在系统设置里启用；使用你选的主题 [[S4](#s4)] | 有，不论有没有试用都能用；使用你选的主题 |
 | 快速查看里的 Mermaid 与数学公式 | Mermaid：有 [[S4](#s4)]。数学公式：没有，它不显示数学公式 [[S7](#s7)] | 有，两者都会画出来 |
@@ -6737,7 +6737,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 
 ### MacMD Viewer 能编辑文件吗？
 
-不能。它是只读的，照它自己的说法，不会保存对源文件的改动 [[S1](#s1), [S9](#s9)]。它有“在文本编辑器中打开”（1.7.0 起），是把文件交给别的 app [[S5](#s5)]。
+不能。它是只读的，照它自己的说法，不会保存对源文件的改动 [[S1](#s1), [S9](#s9)]。它可以把文件交给你的文本编辑器打开（“文件”菜单，⇧⌘E，1.7.0 起）[[S5](#s5)]。
 
 ### MacMD Viewer 在 Mac App Store 上吗？
 
@@ -7318,7 +7318,7 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 ## PDF 导出和打印用同一个主题
 
-导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 agent 也能用 `--theme` 生成一模一样的 PDF，四种主题都可以。
+导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开图表。免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 agent 也能用 `--theme` 生成一模一样的 PDF，四种主题都可以。
 
 ## 页面打印出来之后
 
@@ -7672,7 +7672,7 @@ agent 写完一份文稿，你审阅、修改过后，公司里不写程序的�
 
 - 对方已经有的东西就能打开——Preview、浏览器、Acrobat、手机都行，不需要任何 Markdown 工具。
 - Mermaid 图表会画出来，不会留着代码原样；代码块保留语法上色。
-- 分页位置经过安排，标题不会孤零零留在页尾，表格或图表也不会被切成两半。
+- 分页位置经过安排，标题不会孤零零留在页尾，图表也不会被切成两半。
 - 不管是从 MarsDawn app 还是免费的命令行导出，得到的都是同一份文件——完整步骤请看[Markdown 转 PDF](/zh-hans/markdown-to-pdf/)。
 
 ## 接下来
@@ -8899,7 +8899,7 @@ Markdown ファイルを開くと、整形されたページがソースの隣�
 
 ### 紙での記録
 
-分野によっては、いまも紙で保管します。会計はその一例です。MarsDawn は保管やコンプライアンスについて何も謳っていません。できるのは、きれいに改ページされたページをプリントして書き出すことです。図は描画され、短いコードブロックや表は途中で切れず、テーマのライトの配色で出力されます。紙がいまも正式な記録である場面で使ってください。
+分野によっては、いまも紙で保管します。会計はその一例です。MarsDawn は保管やコンプライアンスについて何も謳っていません。できるのは、きれいに改ページされたページをプリントして書き出すことです。図は描画され、短いコードブロックは途中で切れず、テーマのライトの配色で出力されます。紙がいまも正式な記録である場面で使ってください。
 
 [PDF 書き出し](/ja/pdf/)
 
@@ -8971,7 +8971,7 @@ KaTeX の構文で書いた数式は、プレビューとクイックルック�
 
 ### PDF として書き出す、またはプリント
 
-「ファイル ▸ PDF として書き出す…」は改ページ済みの PDF を保存し、「ファイル ▸ プリント…」は同じページをプリントします。Mermaid の図は描画され、コードはハイライトを保ち、改ページでは見出しが節から離れたり、短いコードブロックや表、図が途中で切れたりしないようにします。ダークで読んでいても、PDF は常にテーマのライトの配色です。
+「ファイル ▸ PDF として書き出す…」は改ページ済みの PDF を保存し、「ファイル ▸ プリント…」は同じページをプリントします。Mermaid の図は描画され、コードはハイライトを保ち、改ページでは見出しが節から離れたり、短いコードブロックや図が途中で切れたりしないようにします。ダークで読んでいても、PDF は常にテーマのライトの配色です。
 
 [PDF 書き出し](/ja/pdf/)
 
@@ -9149,7 +9149,7 @@ Source: https://marsdawn.southern-light.dev/ja/pdf/
 
 - Mermaid 図は PDF に描き込まれます。
 - コードブロックはシンタックスハイライトを保ちます。
-- 改ページは、見出しがページの下端に残ったり、コード・表・図が分断されたりしないよう配慮されます。
+- 改ページは、見出しがページの下端に残ったり、コードや図が分断されたりしないよう配慮されます。
 - どのレイアウトでも書き出せます。ソースだけを表示していても書き出しは機能します。
 
 無料の[marsdawn コマンドラインツール](/ja/cli/)は同じ書き出しエンジンを使っているので、スクリプトや AI エージェントも同じ PDF を得られます。
@@ -9615,7 +9615,7 @@ MacMD Viewer 自身のサイトとリポジトリで 2026 年 10 月 15 日に�
 | コードのハイライト | あり [[S1](#s1), [S9](#s9)] | あり |
 | テーマ | 12 種類のドキュメントテーマ [[S1](#s1), [S7](#s7)] | 標準で 4 種類（夜明け、クラシック、モダン、ビビッド）、それぞれにライトとダーク。テーマギャラリーにはさらに多数 |
 | タブ | あり。任意で、初期設定はオフ（1.6.0 から）[[S5](#s5), [S8](#s8)] | あり |
-| PDF 書き出し | あり。1 枚の連続したページで、現在のテーマ、透かしなし [[S3](#s3), [S9](#s9)] | あり。ページ分けされ、テーマのライトの配色。ページの区切りは短いコードや表を分断しないようにする |
+| PDF 書き出し | あり。1 枚の連続したページで、現在のテーマ、透かしなし [[S3](#s3), [S9](#s9)] | あり。ページ分けされ、テーマのライトの配色。ページの区切りは短いコードを分断しないようにする |
 | プリント | あり。macOS のプリントダイアログを使う [[S3](#s3), [S9](#s9)] | あり |
 | Finder のクイックルック | あり。付属。システム設定で有効にする。選んだテーマを使う [[S4](#s4)] | あり。トライアル中でも期間後でも使える。選んだテーマを使う |
 | クイックルックでの Mermaid と数式 | Mermaid：あり [[S4](#s4)]。数式：なし。数式は表示しない [[S7](#s7)] | あり。どちらも描画される |
@@ -9669,7 +9669,7 @@ MacMD Viewer 自身のサイトとリポジトリで 2026 年 10 月 15 日に�
 
 ### MacMD Viewer はファイルを編集できますか？
 
-いいえ。読み取り専用で、本人の言葉によれば、ソースファイルへの変更は保存しません [[S1](#s1), [S9](#s9)]。「テキストエディタで開く」（1.7.0 から）はありますが、これはファイルをほかのアプリに渡すものです [[S5](#s5)]。
+いいえ。読み取り専用で、本人の言葉によれば、ソースファイルへの変更は保存しません [[S1](#s1), [S9](#s9)]。お使いのテキストエディタでファイルを開けます（ファイルメニュー、⇧⌘E、1.7.0 から）が、これはファイルをほかのアプリに渡すものです [[S5](#s5)]。
 
 ### MacMD Viewer は Mac App Store にありますか？
 
@@ -10250,7 +10250,7 @@ MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種�
 
 ## PDF 書き出しとプリントは同じテーマを使う
 
-PDF に書き出す、またはプリントすると、テーマのライトカラーが使われます。Mermaid 図はそこに描き込まれ、コードブロックは構文のハイライトを保ち、改ページは見出しをそのセクションから切り離したり、表や図を途中で切ったりしないよう配慮されます。無料の[marsdawn コマンドラインツール](/ja/cli/)も同じ書き出しエンジンを使うので、スクリプトやエージェントも `--theme` で、4種類のどのテーマでも同一の PDF を作れます。
+PDF に書き出す、またはプリントすると、テーマのライトカラーが使われます。Mermaid 図はそこに描き込まれ、コードブロックは構文のハイライトを保ち、改ページは見出しをそのセクションから切り離したり、図を途中で切ったりしないよう配慮されます。無料の[marsdawn コマンドラインツール](/ja/cli/)も同じ書き出しエンジンを使うので、スクリプトやエージェントも `--theme` で、4種類のどのテーマでも同一の PDF を作れます。
 
 ## ページをプリントしたあと
 
@@ -10604,7 +10604,7 @@ Source: https://marsdawn.southern-light.dev/ja/sharing-exported-pdfs/
 
 - 受け取る側がすでに持っているもので開けます。プレビュー、ブラウザ、Acrobat、スマートフォンなど、Markdown のツールは一切不要です。
 - Mermaid 図はコードのままではなく描き込まれ、コードブロックはハイライトを保ちます。
-- 改ページは、見出しがページの下端に一人取り残されたり、表や図が2ページにまたがって切れたりしないよう選ばれます。
+- 改ページは、見出しがページの下端に一人取り残されたり、図が2ページにまたがって切れたりしないよう選ばれます。
 - MarsDawn アプリから来たものでも、無料のコマンドラインから来たものでも、同じファイルになります。その手順は[Markdown から PDF へ](/ja/markdown-to-pdf/)をご覧ください。
 
 ## 次に
@@ -11831,7 +11831,7 @@ Manche nehmen Dinge besser mit einem Stift auf: unterstreichen, an den Rand schr
 
 ### Papierakten
 
-In manchen Bereichen wird weiterhin Papier abgelegt, etwa in der Buchhaltung. MarsDawn erhebt keinen Anspruch auf Archivierung oder Compliance. Es druckt und exportiert saubere Seiten mit Seitenumbrüchen: Diagramme eingezeichnet, kurze Codeblöcke und Tabellen am Stück, in den hellen Farben des Themes. Nutze sie überall dort, wo Papier noch die Akte ist.
+In manchen Bereichen wird weiterhin Papier abgelegt, etwa in der Buchhaltung. MarsDawn erhebt keinen Anspruch auf Archivierung oder Compliance. Es druckt und exportiert saubere Seiten mit Seitenumbrüchen: Diagramme eingezeichnet, kurze Codeblöcke am Stück, in den hellen Farben des Themes. Nutze sie überall dort, wo Papier noch die Akte ist.
 
 [PDF-Export](/de/pdf/)
 
@@ -11903,7 +11903,7 @@ Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden … öffnet eine Gal
 
 ### Als PDF exportieren oder drucken
 
-Ablage ▸ Als PDF exportieren … sichert ein PDF mit Seitenumbrüchen, und Ablage ▸ Drucken … druckt dieselben Seiten. Mermaid-Diagramme werden eingezeichnet, Code behält seine Hervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und zerschneiden keinen kurzen Codeblock, keine Tabelle und kein Diagramm. Das PDF verwendet immer die hellen Farben des Themes, auch wenn du im Dunkeln gelesen hast.
+Ablage ▸ Als PDF exportieren … sichert ein PDF mit Seitenumbrüchen, und Ablage ▸ Drucken … druckt dieselben Seiten. Mermaid-Diagramme werden eingezeichnet, Code behält seine Hervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und zerschneiden keinen kurzen Codeblock und kein Diagramm. Das PDF verwendet immer die hellen Farben des Themes, auch wenn du im Dunkeln gelesen hast.
 
 [PDF-Export](/de/pdf/)
 
@@ -12081,7 +12081,7 @@ Auf diesem Bildschirmfoto:
 
 - Mermaid-Diagramme werden ins PDF gezeichnet.
 - Codeblöcke behalten ihre Syntaxhervorhebung.
-- Seitenumbrüche vermeiden es, eine Überschrift unten auf einer Seite stehen zu lassen oder Code, Tabellen und Diagramme zu teilen.
+- Seitenumbrüche vermeiden es, eine Überschrift unten auf einer Seite stehen zu lassen oder Code und Diagramme zu teilen.
 - In jedem Layout. Der Export funktioniert auch, wenn nur der Quelltext angezeigt wird.
 
 Das kostenlose [Befehlszeilenprogramm marsdawn](/de/cli/) verwendet denselben Exporter, sodass ein Skript oder ein KI-Agent dasselbe PDF erhält.
@@ -12550,7 +12550,7 @@ Geprüft gegen die eigene Website und das Repository von MacMD Viewer am 15. Okt
 | Code-Hervorhebung | Ja [[S1](#s1), [S9](#s9)] | Ja |
 | Themes | 12 Dokumentthemen [[S1](#s1), [S7](#s7)] | 4 eingebaute (Morgenrot, Klassisch, Modern, Lebhaft), jeweils mit heller und dunkler Palette, dazu weitere in der Themengalerie |
 | Tabs | Ja, optional und standardmäßig aus (seit 1.6.0) [[S5](#s5), [S8](#s8)] | Ja |
-| PDF-Export | Ja, eine durchgehende Seite, im aktuellen Theme, ohne Wasserzeichen [[S3](#s3), [S9](#s9)] | Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche vermeiden es, kurze Codeblöcke und Tabellen zu teilen |
+| PDF-Export | Ja, eine durchgehende Seite, im aktuellen Theme, ohne Wasserzeichen [[S3](#s3), [S9](#s9)] | Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche vermeiden es, kurze Codeblöcke zu teilen |
 | Drucken | Ja, über den macOS-Drucken-Dialog [[S3](#s3), [S9](#s9)] | Ja |
 | Übersicht im Finder | Ja, enthalten; du aktivierst sie in den Systemeinstellungen; nutzt dein Theme [[S4](#s4)] | Ja, funktioniert mit und ohne Testphase; nutzt dein Theme |
 | Mermaid und Mathematik in der Übersicht | Mermaid: ja [[S4](#s4)]. Mathematik: nein, sie wird nicht gerendert [[S7](#s7)] | Ja, beides wird gezeichnet |
@@ -12604,7 +12604,7 @@ Geprüft gegen die eigene Website und das Repository von MacMD Viewer am 15. Okt
 
 ### Bearbeitet MacMD Viewer Dateien?
 
-Nein. Die App ist nur zum Lesen da und speichert, in ihren eigenen Worten, nie Änderungen an deiner Quelldatei [[S1](#s1), [S9](#s9)]. Sie hat „In Texteditor öffnen“ (seit 1.7.0), das die Datei an eine andere App übergibt [[S5](#s5)].
+Nein. Die App ist nur zum Lesen da und speichert, in ihren eigenen Worten, nie Änderungen an deiner Quelldatei [[S1](#s1), [S9](#s9)]. Sie kann die Datei in deinem Texteditor öffnen (Datei-Menü, ⇧⌘E, seit 1.7.0), was die Datei an eine andere App übergibt [[S5](#s5)].
 
 ### Ist MacMD Viewer im Mac App Store?
 
@@ -13189,7 +13189,7 @@ Jedes hat seine eigene helle und dunkle Variante: Wechselst du das Erscheinungsb
 
 ## PDF-Export und Drucken verwenden dasselbe Thema
 
-Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themas: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden keine Tabelle und kein Diagramm in der Mitte durch. Das kostenlose [Befehlszeilenwerkzeug marsdawn](/de/cli/) verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit `--theme` das identische PDF, in jedem der vier Themen.
+Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themas: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden kein Diagramm in der Mitte durch. Das kostenlose [Befehlszeilenwerkzeug marsdawn](/de/cli/) verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit `--theme` das identische PDF, in jedem der vier Themen.
 
 ## Nachdem die Seite gedruckt ist
 
@@ -13543,7 +13543,7 @@ Ein Screenshot friert einen Bildschirm voll eines Dokuments ein, das mehrere Sei
 
 - Es öffnet sich in dem, was die Empfänger schon haben, Vorschau, ein Browser, Acrobat, ihr Telefon, ganz ohne Markdown-Werkzeug.
 - Mermaid-Diagramme sind gezeichnet, nicht als Code stehen gelassen; Codeblöcke behalten ihre Hervorhebung.
-- Seitenumbrüche sind so gewählt, dass keine Überschrift allein unten auf einer Seite landet und keine Tabelle und kein Diagramm auf zwei Seiten verteilt wird.
+- Seitenumbrüche sind so gewählt, dass keine Überschrift allein unten auf einer Seite landet und kein Diagramm auf zwei Seiten verteilt wird.
 - Dieselbe Datei, ob sie aus der MarsDawn-App kommt oder aus der kostenlosen Befehlszeile; die Anleitung dazu steht unter [Markdown in PDF](/de/markdown-to-pdf/).
 
 ## Weiter
@@ -14725,7 +14725,7 @@ Certaines personnes retiennent mieux avec un stylo : souligner, écrire dans la 
 
 ### Dossiers papier
 
-Dans certains métiers, on classe encore du papier, la comptabilité par exemple. MarsDawn ne revendique ni archivage ni conformité. Ce qu’il fait, c’est imprimer et exporter des pages propres et paginées : diagrammes dessinés, blocs de code courts et tableaux gardés d’un seul tenant, couleurs claires du thème. Servez-vous-en partout où le papier reste le dossier de référence.
+Dans certains métiers, on classe encore du papier, la comptabilité par exemple. MarsDawn ne revendique ni archivage ni conformité. Ce qu’il fait, c’est imprimer et exporter des pages propres et paginées : diagrammes dessinés, blocs de code courts gardés d’un seul tenant, couleurs claires du thème. Servez-vous-en partout où le papier reste le dossier de référence.
 
 [Export PDF](/fr/pdf/)
 
@@ -14797,7 +14797,7 @@ Réglages ▸ Apparence ▸ Obtenir plus de thèmes… ouvre une galerie de thè
 
 ### Exporter en PDF, ou imprimer
 
-Fichier ▸ Exporter au format PDF… enregistre un PDF paginé, et Fichier ▸ Imprimer… imprime les mêmes pages. Les diagrammes Mermaid sont dessinés, le code garde sa coloration, et les sauts de page évitent de séparer un titre de sa section ou de couper en deux un bloc de code court, un tableau ou un diagramme. Le PDF utilise toujours les couleurs claires du thème, même si vous lisiez en mode sombre.
+Fichier ▸ Exporter au format PDF… enregistre un PDF paginé, et Fichier ▸ Imprimer… imprime les mêmes pages. Les diagrammes Mermaid sont dessinés, le code garde sa coloration, et les sauts de page évitent de séparer un titre de sa section ou de couper en deux un bloc de code court ou un diagramme. Le PDF utilise toujours les couleurs claires du thème, même si vous lisiez en mode sombre.
 
 [Export PDF](/fr/pdf/)
 
@@ -14975,7 +14975,7 @@ Sur cette capture d’écran :
 
 - Les diagrammes Mermaid sont dessinés dans le PDF.
 - Les blocs de code gardent leur coloration syntaxique.
-- Les sauts de page évitent de laisser un titre en bas de page ou de couper du code, des tableaux et des diagrammes.
+- Les sauts de page évitent de laisser un titre en bas de page ou de couper du code et des diagrammes.
 - Quelle que soit la disposition. L’export fonctionne même quand seule la source est affichée.
 
 L’[outil en ligne de commande marsdawn](/fr/cli/), gratuit, utilise le même moteur d’export : un script ou un agent IA obtient le même PDF.
@@ -15444,7 +15444,7 @@ Vérifié sur le site et le dépôt de MacMD Viewer le 15 octobre 2026 (version 
 | Coloration du code | Oui [[S1](#s1), [S9](#s9)] | Oui |
 | Thèmes | 12 thèmes de document [[S1](#s1), [S7](#s7)] | 4 intégrés (Aube, Classique, Moderne, Vif), chacun avec une palette claire et une sombre, plus d’autres dans la galerie de thèmes |
 | Onglets | Oui, facultatifs et désactivés par défaut (depuis 1.6.0) [[S5](#s5), [S8](#s8)] | Oui |
-| Export PDF | Oui, une seule page continue, dans le thème actuel, sans filigrane [[S3](#s3), [S9](#s9)] | Oui, pages paginées dans la palette claire du thème ; les sauts de page évitent de couper les blocs de code courts et les tableaux |
+| Export PDF | Oui, une seule page continue, dans le thème actuel, sans filigrane [[S3](#s3), [S9](#s9)] | Oui, pages paginées dans la palette claire du thème ; les sauts de page évitent de couper les blocs de code courts |
 | Impression | Oui, via la fenêtre d’impression de macOS [[S3](#s3), [S9](#s9)] | Oui |
 | Coup d’œil dans le Finder | Oui, inclus ; vous l’activez dans Réglages Système ; utilise votre thème [[S4](#s4)] | Oui, fonctionne avec ou sans l’essai ; utilise votre thème |
 | Mermaid et mathématiques dans Coup d’œil | Mermaid : oui [[S4](#s4)]. Mathématiques : non, il ne les affiche pas [[S7](#s7)] | Oui, les deux sont dessinés |
@@ -15498,7 +15498,7 @@ Vérifié sur le site et le dépôt de MacMD Viewer le 15 octobre 2026 (version 
 
 ### MacMD Viewer modifie-t-il les fichiers ?
 
-Non. Il est en lecture seule et, selon ses propres termes, n’enregistre jamais de modifications dans votre fichier source [[S1](#s1), [S9](#s9)]. Il propose « Ouvrir dans l’éditeur de texte » (depuis 1.7.0), qui confie le fichier à une autre app [[S5](#s5)].
+Non. Il est en lecture seule et, selon ses propres termes, n’enregistre jamais de modifications dans votre fichier source [[S1](#s1), [S9](#s9)]. Il peut ouvrir le fichier dans votre éditeur de texte (menu Fichier, ⇧⌘E, depuis 1.7.0), ce qui confie le fichier à une autre app [[S5](#s5)].
 
 ### MacMD Viewer est-il sur le Mac App Store ?
 
@@ -16083,7 +16083,7 @@ Chacun a sa propre variante claire et sombre : changer l’apparence de votre Ma
 
 ## L’export PDF et l’impression utilisent le même thème
 
-Exportez en PDF ou imprimez, et la page utilise la palette claire de votre thème : les diagrammes Mermaid y sont dessinés, les blocs de code gardent leur coloration syntaxique, et les sauts de page évitent de séparer un titre de sa section ou de couper un tableau ou un diagramme en deux. L’[outil en ligne de commande marsdawn](/fr/cli/), gratuit, utilise le même moteur d’export : un script ou un agent produit donc le même PDF, dans n’importe lequel des quatre thèmes, avec `--theme`.
+Exportez en PDF ou imprimez, et la page utilise la palette claire de votre thème : les diagrammes Mermaid y sont dessinés, les blocs de code gardent leur coloration syntaxique, et les sauts de page évitent de séparer un titre de sa section ou de couper un diagramme en deux. L’[outil en ligne de commande marsdawn](/fr/cli/), gratuit, utilise le même moteur d’export : un script ou un agent produit donc le même PDF, dans n’importe lequel des quatre thèmes, avec `--theme`.
 
 ## Une fois la page imprimée
 
@@ -16437,7 +16437,7 @@ Une capture d’écran fige un écran d’un document qui peut faire plusieurs p
 
 - Il s’ouvre avec ce que le destinataire a déjà, Aperçu, un navigateur, Acrobat, son téléphone, sans outil Markdown.
 - Les diagrammes Mermaid sont dessinés, pas laissés sous forme de code ; les blocs de code gardent leur coloration.
-- Les sauts de page sont choisis pour qu’un titre ne se retrouve pas seul en bas d’une page, et qu’un tableau ou un diagramme ne soit pas coupé sur deux pages.
+- Les sauts de page sont choisis pour qu’un titre ne se retrouve pas seul en bas d’une page, et qu’un diagramme ne soit pas coupé sur deux pages.
 - Le même fichier, qu’il vienne de l’app MarsDawn ou de la ligne de commande gratuite ; le pas-à-pas se trouve sur [Markdown en PDF](/fr/markdown-to-pdf/).
 
 ## Pour aller plus loin
@@ -17619,7 +17619,7 @@ Hay quien asimila mejor con un bolígrafo: subrayar, escribir en el margen, para
 
 ### Registros en papel
 
-En algunos sectores todavía se archiva en papel, como la contabilidad. MarsDawn no afirma nada sobre archivo ni cumplimiento normativo. Lo que hace es imprimir y exportar páginas limpias y paginadas: diagramas dibujados, bloques de código cortos y tablas sin partir, los colores claros del tema. Úsalas dondequiera que el papel siga siendo el registro.
+En algunos sectores todavía se archiva en papel, como la contabilidad. MarsDawn no afirma nada sobre archivo ni cumplimiento normativo. Lo que hace es imprimir y exportar páginas limpias y paginadas: diagramas dibujados, bloques de código cortos sin partir, los colores claros del tema. Úsalas dondequiera que el papel siga siendo el registro.
 
 [Exportación a PDF](/es/pdf/)
 
@@ -17691,7 +17691,7 @@ Ajustes ▸ Aspecto ▸ Obtener más temas… abre una galería de temas de vist
 
 ### Exportar como PDF, o imprimir
 
-Archivo ▸ Exportar como PDF… guarda un PDF paginado, y Archivo ▸ Imprimir… imprime las mismas páginas. Los diagramas Mermaid se dibujan, el código conserva su resaltado, y los saltos de página evitan separar un encabezado de su sección o partir por la mitad un bloque de código corto, una tabla o un diagrama. El PDF usa siempre los colores claros del tema, aunque estuvieras leyendo en oscuro.
+Archivo ▸ Exportar como PDF… guarda un PDF paginado, y Archivo ▸ Imprimir… imprime las mismas páginas. Los diagramas Mermaid se dibujan, el código conserva su resaltado, y los saltos de página evitan separar un encabezado de su sección o partir por la mitad un bloque de código corto o un diagrama. El PDF usa siempre los colores claros del tema, aunque estuvieras leyendo en oscuro.
 
 [Exportación a PDF](/es/pdf/)
 
@@ -17869,7 +17869,7 @@ En esta captura de pantalla:
 
 - Los diagramas Mermaid se dibujan dentro del PDF.
 - Los bloques de código conservan su resaltado de sintaxis.
-- Los saltos de página evitan dejar un encabezado al final de una página o partir código, tablas y diagramas.
+- Los saltos de página evitan dejar un encabezado al final de una página o partir código y diagramas.
 - Con cualquier disposición. La exportación funciona incluso cuando solo se muestra el código.
 
 La [herramienta de línea de comandos marsdawn](/es/cli/), que es gratis, usa el mismo exportador, así que un script o un agente de IA obtiene el mismo PDF.
@@ -18338,7 +18338,7 @@ Comprobado con el sitio y el repositorio propios de MacMD Viewer el 15 de octubr
 | Resaltado de código | Sí [[S1](#s1), [S9](#s9)] | Sí |
 | Temas | 12 temas de documento [[S1](#s1), [S7](#s7)] | 4 integrados (Amanecer, Clásico, Moderno, Vívido), cada uno con paleta clara y oscura, y más en la galería de temas |
 | Pestañas | Sí, opcionales y desactivadas por defecto (desde 1.6.0) [[S5](#s5), [S8](#s8)] | Sí |
-| Exportación a PDF | Sí, una sola página continua, con el tema actual, sin marca de agua [[S3](#s3), [S9](#s9)] | Sí, páginas paginadas con la paleta clara del tema; los saltos de página evitan partir bloques de código cortos y tablas |
+| Exportación a PDF | Sí, una sola página continua, con el tema actual, sin marca de agua [[S3](#s3), [S9](#s9)] | Sí, páginas paginadas con la paleta clara del tema; los saltos de página evitan partir bloques de código cortos |
 | Impresión | Sí, mediante el diálogo de impresión de macOS [[S3](#s3), [S9](#s9)] | Sí |
 | Vista rápida en el Finder | Sí, incluida; la activas en Ajustes del Sistema; usa tu tema [[S4](#s4)] | Sí, funciona con o sin la prueba; usa tu tema |
 | Mermaid y matemáticas en Vista rápida | Mermaid: sí [[S4](#s4)]. Matemáticas: no, no las renderiza [[S7](#s7)] | Sí, se dibujan las dos cosas |
@@ -18392,7 +18392,7 @@ Comprobado con el sitio y el repositorio propios de MacMD Viewer el 15 de octubr
 
 ### ¿MacMD Viewer edita archivos?
 
-No. Es de solo lectura y, en sus propias palabras, nunca guarda cambios en tu archivo fuente [[S1](#s1), [S9](#s9)]. Tiene «Abrir en el editor de texto» (desde 1.7.0), que entrega el archivo a otra app [[S5](#s5)].
+No. Es de solo lectura y, en sus propias palabras, nunca guarda cambios en tu archivo fuente [[S1](#s1), [S9](#s9)]. Puede abrir el archivo en tu editor de texto (menú Archivo, ⇧⌘E, desde 1.7.0), lo que entrega el archivo a otra app [[S5](#s5)].
 
 ### ¿MacMD Viewer está en el Mac App Store?
 
@@ -18977,7 +18977,7 @@ Cada uno tiene su propia variante clara y oscura, así que al cambiar el aspecto
 
 ## La exportación a PDF y la impresión usan el mismo tema
 
-Exporta a PDF o imprime, y la página usa la paleta clara de tu tema: los diagramas Mermaid se dibujan en ella, los bloques de código conservan el resaltado de sintaxis, y los saltos de página evitan separar un título de su sección o partir una tabla o un diagrama por la mitad. La [herramienta de línea de comandos marsdawn](/es/cli/), gratuita, usa el mismo exportador, así que un script o un agente genera el mismo PDF, en cualquiera de los cuatro temas, con `--theme`.
+Exporta a PDF o imprime, y la página usa la paleta clara de tu tema: los diagramas Mermaid se dibujan en ella, los bloques de código conservan el resaltado de sintaxis, y los saltos de página evitan separar un título de su sección o partir un diagrama por la mitad. La [herramienta de línea de comandos marsdawn](/es/cli/), gratuita, usa el mismo exportador, así que un script o un agente genera el mismo PDF, en cualquiera de los cuatro temas, con `--theme`.
 
 ## Después de imprimir la página
 
@@ -19331,7 +19331,7 @@ Una captura congela una pantalla de un documento que puede tener varias páginas
 
 - Se abre con lo que la otra persona ya tiene, Vista Previa, un navegador, Acrobat, su teléfono, sin necesidad de una herramienta de Markdown.
 - Los diagramas Mermaid aparecen dibujados, no como código; los bloques de código conservan el resaltado.
-- Los saltos de página se eligen para que un título no quede solo al pie de una página y para que una tabla o un diagrama no se parta en dos.
+- Los saltos de página se eligen para que un título no quede solo al pie de una página y para que un diagrama no se parta en dos.
 - El mismo archivo, venga de la app MarsDawn o de la línea de comandos gratuita; la guía paso a paso está en [Markdown a PDF](/es/markdown-to-pdf/).
 
 ## Siguiente
@@ -20513,7 +20513,7 @@ Markdown 파일을 열면 렌더링된 페이지가 소스 옆에 나타납니�
 
 ### 종이 기록
 
-아직도 종이로 보관하는 분야가 있으며, 회계가 그 예입니다. MarsDawn은 보관이나 규정 준수에 대해 아무것도 주장하지 않습니다. 하는 일은 깔끔하게 페이지가 나뉜 페이지를 프린트하고 내보내는 것입니다. 다이어그램이 그려지고, 짧은 코드 블록과 표는 잘리지 않으며, 테마의 라이트 색상이 쓰입니다. 종이가 여전히 기록인 곳에서 사용하세요.
+아직도 종이로 보관하는 분야가 있으며, 회계가 그 예입니다. MarsDawn은 보관이나 규정 준수에 대해 아무것도 주장하지 않습니다. 하는 일은 깔끔하게 페이지가 나뉜 페이지를 프린트하고 내보내는 것입니다. 다이어그램이 그려지고, 짧은 코드 블록은 잘리지 않으며, 테마의 라이트 색상이 쓰입니다. 종이가 여전히 기록인 곳에서 사용하세요.
 
 [PDF 내보내기](/ko/pdf/)
 
@@ -20585,7 +20585,7 @@ KaTeX 구문으로 쓴 수식은 미리보기와 훑어보기에 그려지고, �
 
 ### PDF로 내보내기, 또는 프린트
 
-파일 ▸ PDF로 내보내기…는 페이지가 나뉜 PDF를 저장하고, 파일 ▸ 프린트…는 같은 페이지를 프린트합니다. Mermaid 다이어그램이 그려지고, 코드는 구문 강조를 유지하며, 페이지 나눔은 제목을 해당 절에서 떼어 놓거나 짧은 코드 블록, 표, 다이어그램을 반으로 자르지 않도록 피합니다. 다크 모드로 읽고 있었더라도 PDF에는 항상 테마의 라이트 색상이 쓰입니다.
+파일 ▸ PDF로 내보내기…는 페이지가 나뉜 PDF를 저장하고, 파일 ▸ 프린트…는 같은 페이지를 프린트합니다. Mermaid 다이어그램이 그려지고, 코드는 구문 강조를 유지하며, 페이지 나눔은 제목을 해당 절에서 떼어 놓거나 짧은 코드 블록이나 다이어그램을 반으로 자르지 않도록 피합니다. 다크 모드로 읽고 있었더라도 PDF에는 항상 테마의 라이트 색상이 쓰입니다.
 
 [PDF 내보내기](/ko/pdf/)
 
@@ -20763,7 +20763,7 @@ Source: https://marsdawn.southern-light.dev/ko/pdf/
 
 - Mermaid 다이어그램이 PDF 안에 그려집니다.
 - 코드 블록은 구문 하이라이트를 유지합니다.
-- 페이지 나눔은 제목이 페이지 맨 아래에 홀로 남거나 코드, 표, 다이어그램이 갈라지지 않도록 합니다.
+- 페이지 나눔은 제목이 페이지 맨 아래에 홀로 남거나 코드와 다이어그램이 갈라지지 않도록 합니다.
 - 어떤 레이아웃에서든 됩니다. 소스만 보이는 상태에서도 내보낼 수 있습니다.
 
 무료 [marsdawn 명령줄 도구](/ko/cli/)도 같은 내보내기 엔진을 쓰므로, 스크립트나 AI 에이전트도 같은 PDF를 얻습니다.
@@ -21232,7 +21232,7 @@ MacMD Viewer 자체 사이트와 저장소를 기준으로 2026년 10월 15일�
 | 코드 강조 | 지원 [[S1](#s1), [S9](#s9)] | 지원 |
 | 테마 | 문서 테마 12종 [[S1](#s1), [S7](#s7)] | 기본 4종(새벽, 클래식, 모던, 비비드), 각각 라이트와 다크 팔레트, 테마 갤러리에 더 많음 |
 | 탭 | 지원, 선택 사항이며 기본값은 꺼짐(1.6.0부터) [[S5](#s5), [S8](#s8)] | 지원 |
-| PDF 내보내기 | 지원, 연속된 한 페이지, 현재 테마, 워터마크 없음 [[S3](#s3), [S9](#s9)] | 지원, 쪽이 나뉜 페이지, 테마의 라이트 팔레트. 쪽 나누기는 짧은 코드 블록과 표가 잘리지 않게 함 |
+| PDF 내보내기 | 지원, 연속된 한 페이지, 현재 테마, 워터마크 없음 [[S3](#s3), [S9](#s9)] | 지원, 쪽이 나뉜 페이지, 테마의 라이트 팔레트. 쪽 나누기는 짧은 코드 블록이 잘리지 않게 함 |
 | 프린트 | 지원, macOS 프린트 대화상자 사용 [[S3](#s3), [S9](#s9)] | 지원 |
 | Finder 훑어보기 | 지원, 포함되어 있음. 시스템 설정에서 켬. 선택한 테마 사용 [[S4](#s4)] | 지원, 체험 중이든 아니든 작동. 선택한 테마 사용 |
 | 훑어보기의 Mermaid와 수식 | Mermaid: 지원 [[S4](#s4)]. 수식: 미지원, 렌더링하지 않음 [[S7](#s7)] | 지원, 둘 다 그려짐 |
@@ -21286,7 +21286,7 @@ MacMD Viewer 자체 사이트와 저장소를 기준으로 2026년 10월 15일�
 
 ### MacMD Viewer는 파일을 편집하나요?
 
-아니요. 읽기 전용이며, 자체 설명대로 원본 파일에 대한 변경 사항을 저장하지 않습니다 [[S1](#s1), [S9](#s9)]. “텍스트 편집기에서 열기”(1.7.0부터)가 있지만, 이는 파일을 다른 앱에 넘기는 기능입니다 [[S5](#s5)].
+아니요. 읽기 전용이며, 자체 설명대로 원본 파일에 대한 변경 사항을 저장하지 않습니다 [[S1](#s1), [S9](#s9)]. 파일을 사용자의 텍스트 편집기에서 열 수 있지만(파일 메뉴, ⇧⌘E, 1.7.0부터), 이는 파일을 다른 앱에 넘기는 기능입니다 [[S5](#s5)].
 
 ### MacMD Viewer는 Mac App Store에 있나요?
 
@@ -21871,7 +21871,7 @@ MarsDawn에는 새벽, 클래식, 모던, 비비드 네 가지 미리보기 테�
 
 ## PDF 내보내기와 프린트도 같은 테마로
 
-PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레트를 씁니다. Mermaid 다이어그램이 그대로 그려지고, 코드 블록은 구문 강조를 유지하며, 페이지 나눔은 제목과 본문을 떼어 놓거나 표나 다이어그램을 반으로 자르지 않습니다. 무료 [marsdawn 명령줄 도구](/ko/cli/)도 같은 내보내기 엔진을 쓰므로, 스크립트나 에이전트도 `--theme`으로 네 가지 테마 중 어느 것이든 똑같은 PDF를 만듭니다.
+PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레트를 씁니다. Mermaid 다이어그램이 그대로 그려지고, 코드 블록은 구문 강조를 유지하며, 페이지 나눔은 제목과 본문을 떼어 놓거나 다이어그램을 반으로 자르지 않습니다. 무료 [marsdawn 명령줄 도구](/ko/cli/)도 같은 내보내기 엔진을 쓰므로, 스크립트나 에이전트도 `--theme`으로 네 가지 테마 중 어느 것이든 똑같은 PDF를 만듭니다.
 
 ## 페이지를 프린트한 뒤
 
@@ -22225,7 +22225,7 @@ Source: https://marsdawn.southern-light.dev/ko/sharing-exported-pdfs/
 
 - 받는 사람이 이미 가진 것, 미리보기, 브라우저, Acrobat, 휴대폰에서 열립니다. Markdown 도구는 필요 없습니다.
 - Mermaid 다이어그램은 코드로 남지 않고 그려져 있으며, 코드 블록은 강조 표시를 유지합니다.
-- 페이지 나눔은 제목이 페이지 맨 아래에 홀로 남지 않도록, 표나 다이어그램이 두 페이지로 갈라지지 않도록 정해집니다.
+- 페이지 나눔은 제목이 페이지 맨 아래에 홀로 남지 않도록, 다이어그램이 두 페이지로 갈라지지 않도록 정해집니다.
 - MarsDawn 앱에서 만들든 무료 명령줄에서 만들든 같은 파일입니다. 단계별 안내는 [Markdown을 PDF로](/ko/markdown-to-pdf/)를 참고하세요.
 
 ## 다음
