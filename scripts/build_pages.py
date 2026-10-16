@@ -29,6 +29,7 @@ sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untrac
 import article_dates  # noqa: E402
 import locales  # noqa: E402
 import theme_agents  # noqa: E402
+from promo130 import data as promo_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
@@ -5434,11 +5435,13 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
     if slug == "index":
         proof = [html_to_markdown(part).rstrip() if part.startswith("<h") else part
                  for part in home_proof(locale, figure_markdown)]
+        home_body, home_faq = split_faq(page["body"])
         return "\n\n".join([
             html_to_markdown(page["intro"]).rstrip(),
             hero_window.window_markdown(locale),
-            html_to_markdown(page["body"]).rstrip(),
+            html_to_markdown(home_body).rstrip(),
             html_to_markdown(_home_sections_for_twin(locale)).rstrip(),
+            html_to_markdown(home_faq).rstrip(),
             *proof,
         ])
     if slug == "features":
@@ -5453,13 +5456,13 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
+PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "markdown-to-pdf", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
               "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/agents", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
 SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
-                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "mermaid-preview-mac": "mermaid-preview-mac", "cli/skill": "skill",
+                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "mermaid-preview-mac": "mermaid-preview-mac", "quicklook": "quicklook", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
                   "vs/macmd-viewer": "vs-macmd-viewer",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
@@ -5520,7 +5523,108 @@ def all_pages() -> dict:
             body = "".join(pieces[:3]) + brand_film_themes.MARK + "\n" + "".join(pieces[3:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return merged
+    return apply_seo_copy(merged)
+
+
+# --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
+# The visible FAQs on the home and pay-once pages and the /quicklook/ page (#189), and the rest of
+# the promo-130 bundle, live in scripts/promo130/data.py, one entry per locale, as HTML-ready text
+# that scripts/promo130/ingest.py carried over from its pinned sources. They are applied here, on top
+# of the locale copy modules, so those modules (and the shape check that holds them to en's) stay as
+# they are. The FAQPage and HowTo JSON-LD are read back out of the page's own HTML (faq_pairs,
+# howto_steps), so the markup and the visible text cannot differ.
+QUICKLOOK_PREFIX = {  # how each locale's /native/ Quick Look list item starts (the macOS feature's name)
+    "en": "Quick Look", "zh-hant": "快速查看", "zh-hans": "快速查看", "ja": "クイックルック",
+    "de": "Übersicht", "fr": "Coup d’œil", "es": "Vista rápida", "ko": "훑어보기",
+}
+
+
+def faq_html(heading: str, pairs) -> str:
+    """The FAQ section; heading, questions and answers are HTML-ready text (promo_data)."""
+    items = "\n".join(f"<h3>{q}</h3>\n<p>{a}</p>" for q, a in pairs)
+    return f'<section class="faq">\n<h2>{heading}</h2>\n{items}\n</section>'
+
+
+FAQ_SECTION = re.compile(r'<section class="faq">\n.*?\n</section>', re.S)
+
+
+def split_faq(body: str) -> tuple:
+    """(body without its FAQ section, the FAQ section or "")."""
+    match = FAQ_SECTION.search(body)
+    if not match:
+        return body, ""
+    return body[:match.start()].rstrip() + "\n" + body[match.end():].lstrip("\n"), match.group(0)
+
+
+def faq_pairs(body: str) -> list:
+    match = FAQ_SECTION.search(body)
+    if not match:
+        return []
+    return [(_plain(q), _plain(a)) for q, a in re.findall(r"<h3>(.*?)</h3>\n<p>(.*?)</p>", match.group(0), re.S)]
+
+
+def howto_steps(body: str) -> list:
+    match = re.search(r'<section class="howto">\n.*?\n</section>', body, re.S)
+    if not match:
+        return []
+    return [(_plain(name), _plain(text)) for name, text in re.findall(r"<li><strong>(.*?)</strong> (.*?)</li>", match.group(0), re.S)]
+
+
+def quicklook_page(locale: str, copy: dict) -> dict:
+    link = lambda slug: f'<a href="{page_path(locale, slug)}">{UI[locale][SLUG_TO_UI_KEY[slug]]}</a>'
+    shows = "\n".join(f"  <li>{item}</li>" for item in copy["ql_shows"])
+    steps = "\n".join(f"  <li><strong>{name}</strong> {text}</li>" for name, text in copy["ql_steps"])
+    pay_link = f'<a href="{page_path(locale, "pay-once")}">{copy["ql_pay_link_text"]}</a>'
+    trial = copy["ql_trial_p"].replace("{pay_link}", pay_link)
+    nxt = "\n".join(f"  <li>{link(slug)}</li>" for slug in ("native", "pay-once", "view-markdown-on-mac"))
+    body = f"""<section class="intro">
+  <h1>{copy["ql_h1"]}</h1>
+  <p>{copy["ql_lead"]}</p>
+</section>
+<h2>{copy["ql_shows_h"]}</h2>
+<ul>
+{shows}
+</ul>
+<section class="howto">
+<h2>{copy["ql_how_name"]}</h2>
+<ol>
+{steps}
+</ol>
+</section>
+<h2>{copy["ql_trial_h"]}</h2>
+<p>{trial}</p>
+{faq_html(copy["faq_h"], copy["ql_faq"])}
+<h2>{copy["ql_next_h"]}</h2>
+<ul>
+{nxt}
+</ul>
+"""
+    return {"title": copy["ql_title"], "description": copy["ql_desc"], "body": body}
+
+
+def apply_seo_copy(merged: dict) -> dict:
+    """merged with the #189 copy applied (see the comment above). Returns a new dict; the pages it
+    changes are copies, so the tables the locale modules were checked against stay as they were."""
+    out = dict(merged)
+    for locale in LOCALES:
+        copy = promo_data.DATA["seo"].get(locale)
+        if copy is None or (locale, "index") not in out:
+            continue
+        UI[locale].setdefault("quicklook", copy["ui"])
+        home = out[(locale, "index")]
+        out[(locale, "index")] = {**home, "body": home["body"].rstrip() + "\n" + faq_html(copy["faq_h"], copy["home_faq"]) + "\n"}
+        pay = out[(locale, "pay-once")]
+        out[(locale, "pay-once")] = {**pay, "body": pay["body"].rstrip() + "\n" + faq_html(copy["faq_h"], copy["pay_faq"]) + "\n"}
+        native = out[(locale, "native")]
+        joiner = "" if locale in ("zh-hant", "zh-hans", "ja") else " "
+        prefix = "(?:" + "|".join(re.escape(term) for term in QUICKLOOK_PREFIX.values()) + ")"  # any locale's: a copy module may still hold en's words
+        body, n = re.subn(rf"(<li>{prefix}[\s\u00a0\u202f]*[:：][^\n]*?)</li>",
+                          lambda m: f'{m.group(1)}{joiner}<a href="{page_path(locale, "quicklook")}">{copy["ql_link"]}</a></li>',
+                          native["body"], count=1)
+        assert n == 1, f"{locale}/native: no Quick Look list item"
+        out[(locale, "native")] = {**native, "body": body}
+        out[(locale, "quicklook")] = quicklook_page(locale, copy)
+    return out
 
 
 # A locale can have only some of the pages (zh-Hans and ja start with the privacy policy and support,
@@ -5863,7 +5967,7 @@ def breadcrumb_data(locale: str, slug: str, page: dict) -> dict:
 FAQ_PAGES = {"view-markdown-on-mac"}
 
 
-def faq_data(page: dict) -> dict:
+def faq_data_plain(page: dict) -> dict:
     pairs = re.findall(r"<h3>(.*?)</h3>\s*<p>(.*?)</p>", page["body"], re.S)
     assert pairs, "a FAQ page without questions"
     return {
@@ -5875,6 +5979,30 @@ def faq_data(page: dict) -> dict:
             for question, answer in pairs
         ],
     }
+
+
+def faq_data(page: dict) -> list:
+    pairs = faq_pairs(page["body"])
+    if not pairs:
+        return []
+    return [{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in pairs],
+    }]
+
+
+def howto_data(page: dict) -> list:
+    steps = howto_steps(page["body"])
+    if not steps:
+        return []
+    name = _plain(re.search(r'<section class="howto">\n<h2>(.*?)</h2>', page["body"], re.S).group(1))
+    return [{
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": name,
+        "step": [{"@type": "HowToStep", "position": i, "name": step, "text": text} for i, (step, text) in enumerate(steps, 1)],
+    }]
 
 
 def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> list:
@@ -5905,10 +6033,10 @@ def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> l
             "sameAs": SAME_AS,
             "downloadUrl": LISTING_URL,
             "url": canonical_url,
-        }]
-    data = [breadcrumb_data(locale, slug, page)]
+        }] + faq_data(page)
+    data = [breadcrumb_data(locale, slug, page)] + faq_data(page) + howto_data(page)
     if slug in FAQ_PAGES:
-        data.append(faq_data(page))
+        data.append(faq_data_plain(page))
     if brand_film_themes.MARK in page["body"]:
         data.append(brand_film_themes.video_object(locale, BASE_URL))
     if slug in ARTICLE_DATES:
@@ -6023,8 +6151,10 @@ def render(locale: str, slug: str, page: dict) -> str:
             "</section>"
         )
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
-        main_html = "\n".join([hero_html, brand_film.film_html(locale), page["body"].strip(), loop_anim.loop_html(locale),
-                               home_sections_html(locale), proof_html, closing_html])
+        # The FAQ is written with the page's body but belongs after the install block and the traits.
+        home_body, home_faq = split_faq(page["body"])
+        main_html = "\n".join([hero_html, brand_film.film_html(locale), home_body.strip(), loop_anim.loop_html(locale),
+                               home_sections_html(locale), home_faq, proof_html, closing_html])
     elif slug == "features":
         # The overview page: its two screenshots are the native and PDF pages', and it is the hub, so
         # no trait list under it.
@@ -6482,7 +6612,7 @@ def en_reference() -> dict:
     en_pages = {slug: page for slug, page in all_pages_en().items() if slug not in templates_pages.SLUGS}
     return {
         # The templates' outline labels travel in tables["templates"]["ui_labels"], not in ui.
-        "ui": {key: value for key, value in UI["en"].items() if key not in templates_pages.UI_LABELS["en"]},
+        "ui": {key: value for key, value in UI["en"].items() if key not in templates_pages.UI_LABELS["en"] and key != "quicklook"},
         "store_chip": STORE_CHIP["en"], "schema_notes": SCHEMA_NOTES["en"], "example_plan": EXAMPLE_PLAN["en"],
         "trait_link": TRAIT_LINK["en"], "trait_nav_heading": TRAIT_NAV_HEADING["en"],
         "figure_list_label": FIGURE_LIST_LABEL["en"],

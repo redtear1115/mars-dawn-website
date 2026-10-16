@@ -44,6 +44,28 @@ PDF-Dateien, die du in MarsDawn öffnest, werden nach dem Ende des Tests auf die
 - Das kostenlose [Befehlszeilenprogramm `marsdawn`](/de/cli/) exportiert sie weiterhin als PDF, mit oder ohne Test.
 - Ist beim Ende des Tests ein Dokument in MarsDawn geöffnet, geht der eingegebene Text nicht verloren: Sichere ihn mit „Ablage“ ▸ „Sichern unter …“.
 
+## Fragen und Antworten
+
+### Was kostet MarsDawn?
+
+MarsDawn ist ein kostenloser Download aus dem Mac App Store. 14 Tage lang kannst du alle Funktionen nutzen, danach schaltet ein einmaliger In-App-Kauf für 4,99 USD die App frei.
+
+### Gibt es ein Abo?
+
+Nein. Die Freischaltung ist ein einzelner Kauf, nichts verlängert sich, und später wird nichts abgebucht. Auch der Start des Tests kostet nichts.
+
+### Was passiert, wenn der 14-tägige Test endet?
+
+Bis du MarsDawn freischaltest, kannst du darin keine Dokumente mehr lesen, bearbeiten, exportieren oder drucken: Sie öffnen sich mit verdecktem Inhalt. Deine Dateien bleiben genau so, wie du sie gesichert hast.
+
+### Funktioniert die Übersicht nach dem Test noch?
+
+Ja. Die Übersicht (Quick Look) im Finder funktioniert mit und ohne Test. Auch das kostenlose Befehlszeilenprogramm marsdawn exportiert Markdown weiterhin als PDF.
+
+### Brauche ich ein Konto?
+
+Nein. MarsDawn verlangt nie, dass du ein Konto erstellst.
+
 ## Mehr
 
 - [MarsDawn](https://marsdawn.southern-light.dev/de/index.md): Markdown für Menschen, die agentische Arbeit steuern: ein nativer Mac-Editor mit Live-Vorschau, Mermaid-Diagrammen und PDF-Export. Im Mac App Store.
@@ -56,6 +78,7 @@ PDF-Dateien, die du in MarsDawn öffnest, werden nach dem Ende des Tests auf die
 - [Datenschutzrichtlinie](https://marsdawn.southern-light.dev/de/privacy/index.md): MarsDawn erhebt keine personenbezogenen Daten. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
 - [So öffnest du .md-Dateien auf dem Mac](https://marsdawn.southern-light.dev/de/view-markdown-on-mac/index.md): So öffnest du eine .md-Datei auf dem Mac: Doppelklick, Standard-App, Übersicht im Finder. Von einem KI-Agenten geschriebene .md liest du gerendert in MarsDawn.
 - [Mermaid-Vorschau auf dem Mac](https://marsdawn.southern-light.dev/de/mermaid-preview-mac/index.md): Mermaid-Diagramme auf dem Mac neben deinem Markdown: Live-Vorschau, Übersicht und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die Zeile.
+- [Quick Look für Markdown](https://marsdawn.southern-light.dev/de/quicklook/index.md): Mit MarsDawn zeigt die Übersicht Markdown im Finder per Leertaste gerendert: Mermaid, KaTeX, hervorgehobener Code. Sie funktioniert auch nach dem Test weiter.
 - [Markdown zu PDF](https://marsdawn.southern-light.dev/de/markdown-to-pdf/index.md): Wandle Markdown auf dem Mac mit dem kostenlosen Befehlszeilenwerkzeug marsdawn in ein PDF um. Mit Homebrew installieren, einen Befehl ausführen: Tabellen, Mathematik, Mermaid und Code.
 - [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/de/vs/macmd-viewer/index.md): MacMD Viewer ist ein Markdown-Viewer nur zum Lesen für 19,99 USD. MarsDawn bearbeitet und zeigt die Vorschau daneben: 14 Tage kostenlos, dann einmalig 4,99 USD.
 - [Befehlszeile](https://marsdawn.southern-light.dev/de/cli/index.md): Das kostenlose Befehlszeilenprogramm marsdawn für den Mac: Markdown aus einer Shell, einem Skript oder einem LLM-Agenten als PDF exportieren, mit JSON-Ausgabe. Installation mit Homebrew.

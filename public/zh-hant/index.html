@@ -55,6 +55,7 @@ try {
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "給要掌舵 agentic 開發的人用的 Markdown：原生的 Mac 編輯器，有即時預覽、Mermaid 圖表和 PDF 輸出。已在 Mac App Store 上架。", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "softwareVersion": "1.1.0", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "0", "highPrice": "4.99", "offerCount": 2, "offers": [{"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "One-time unlock after the trial, no subscription", "price": "4.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}]}, "screenshot": "https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}, "sameAs": ["https://apps.apple.com/app/id6812925073", "https://github.com/redtear1115/mars-dawn-kit", "https://github.com/redtear1115/homebrew-tap", "https://github.com/redtear1115/marsdawn-mcp"], "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/zh-hant/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "MarsDawn 要訂閱嗎？", "acceptedAnswer": {"@type": "Answer", "text": "不用。MarsDawn 免費下載，14 天內所有功能都能試用；之後一次 USD 4.99 的 App 內購買就能永久解鎖。沒有任何續訂，也不需要帳號。"}}, {"@type": "Question", "name": "MarsDawn 有 iPhone 或 iPad 版嗎？", "acceptedAnswer": {"@type": "Answer", "text": "沒有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本，沒有 iPhone 或 iPad 版。"}}, {"@type": "Question", "name": "Claude Code 可以用 MarsDawn 開檔案嗎？", "acceptedAnswer": {"@type": "Answer", "text": "可以。免費的 marsdawn 命令列工具有 open 指令，能用 MarsDawn 開啟 Markdown 檔案，所以 Claude Code，或任何能執行 shell 指令的 agent，都能呼叫它。另有一個需要自行啟用的 Claude Code hook，可以在 Claude 寫入或編輯 Markdown 檔案時自動開啟。"}}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -299,6 +300,15 @@ try {
 </ul>
 </nav>
 <p class="know">購買前先知道。 <a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
+<section class="faq">
+<h2>常見問題</h2>
+<h3>MarsDawn 要訂閱嗎？</h3>
+<p>不用。MarsDawn 免費下載，14 天內所有功能都能試用；之後一次 USD 4.99 的 App 內購買就能永久解鎖。沒有任何續訂，也不需要帳號。</p>
+<h3>MarsDawn 有 iPhone 或 iPad 版嗎？</h3>
+<p>沒有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本，沒有 iPhone 或 iPad 版。</p>
+<h3>Claude Code 可以用 MarsDawn 開檔案嗎？</h3>
+<p>可以。免費的 marsdawn 命令列工具有 open 指令，能用 MarsDawn 開啟 Markdown 檔案，所以 Claude Code，或任何能執行 shell 指令的 agent，都能呼叫它。另有一個需要自行啟用的 Claude Code hook，可以在 Claude 寫入或編輯 Markdown 檔案時自動開啟。</p>
+</section>
 <section class="proof">
 <h2>App 實際的樣子</h2>
 <h3><a href="/zh-hant/native/">為 Mac 而做</a></h3>

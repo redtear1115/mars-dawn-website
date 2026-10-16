@@ -33,6 +33,12 @@ consecutive positions and named items; each essay and reading note (`ARTICLE_DAT
 build_pages.py) carries a TechArticle with ISO datePublished and dateModified, in order and not in
 the future; and nothing else claims to be a TechArticle.
 
+Answer-engine copy (every locale): the home page, /pay-once/ and /quicklook/ each carry a visible FAQ
+(`<section class="faq">`) and a FAQPage block whose questions and answers are, word for word, the
+visible ones, in the same order, and no other page has either; /quicklook/ carries a HowTo whose
+steps are its visible numbered steps. /view-markdown-on-mac/ keeps its older FAQPage block (no
+`<section class="faq">`) and is left to its own page.
+
 Two things this deliberately does not catch, so nobody reads a green run as more than it is:
 
 - **A placeholder listing URL passes.** `https://apps.apple.com/app/idPLACEHOLDER` is a link to
@@ -50,6 +56,7 @@ To see it catch one:
 """
 import argparse
 import datetime
+import html
 import json
 import re
 import sys
@@ -148,6 +155,7 @@ def check_structured_data(relative, text, articles, problems):
             blocks.append(json.loads(raw))
         except json.JSONDecodeError as exc:
             problems.append(f"{relative}: JSON-LD doesn't parse: {exc}")
+    check_answer_copy(relative, slug, text, blocks, problems)
     if relative in HOME_SLUGS:
         return
     crumbs = [b for b in blocks if b.get("@type") == "BreadcrumbList"]
@@ -187,6 +195,47 @@ def check_structured_data(relative, text, articles, problems):
                 problems.append(f"{relative}: TechArticle has no headline")
     elif tech:
         problems.append(f"{relative}: a TechArticle on a page that isn't an essay or note")
+
+
+FAQ_SLUGS = {"", "pay-once", "quicklook"}  # the home page's slug is empty
+LEGACY_FAQ_SLUGS = {"view-markdown-on-mac"}  # a FAQPage block written before the faq section; no section to compare
+FAQ_SECTION = re.compile(r'<section class="faq">\n.*?\n</section>', re.S)
+HOWTO_SECTION = re.compile(r'<section class="howto">\n.*?\n</section>', re.S)
+
+
+def plain(fragment):
+    return html.unescape(re.sub(r"<[^>]+>", "", fragment))
+
+
+def check_answer_copy(relative, slug, text, blocks, problems):
+    """Visible FAQ == FAQPage markup, HowTo == its visible steps, and where each may appear."""
+    section = FAQ_SECTION.search(text)
+    faq_blocks = [b for b in blocks if b.get("@type") == "FAQPage"]
+    if slug in FAQ_SLUGS and not section:
+        problems.append(f"{relative}: no visible FAQ")
+    if slug in LEGACY_FAQ_SLUGS:
+        return
+    if slug not in FAQ_SLUGS and (section or faq_blocks):
+        problems.append(f"{relative}: a FAQ on a page that shouldn't have one")
+    if section:
+        visible = [(plain(q), plain(a)) for q, a in re.findall(r"<h3>(.*?)</h3>\n<p>(.*?)</p>", section.group(0), re.S)]
+        if len(faq_blocks) != 1:
+            problems.append(f"{relative}: {len(faq_blocks)} FAQPage blocks, want 1")
+        else:
+            marked = [(e.get("name"), e.get("acceptedAnswer", {}).get("text")) for e in faq_blocks[0].get("mainEntity", [])]
+            if not visible:
+                problems.append(f"{relative}: the visible FAQ has no questions")
+            elif marked != visible:
+                problems.append(f"{relative}: the FAQPage markup differs from the visible FAQ")
+    howto_blocks = [b for b in blocks if b.get("@type") == "HowTo"]
+    howto = HOWTO_SECTION.search(text)
+    if (slug == "quicklook") != bool(howto and howto_blocks):
+        problems.append(f"{relative}: HowTo markup and steps should be on /quicklook/ and nowhere else")
+    elif howto:
+        visible = [(plain(n), plain(t)) for n, t in re.findall(r"<li><strong>(.*?)</strong> (.*?)</li>", howto.group(0), re.S)]
+        marked = [(s.get("name"), s.get("text")) for s in howto_blocks[0].get("step", [])]
+        if not visible or marked != visible:
+            problems.append(f"{relative}: the HowTo markup differs from the visible steps")
 
 
 def locale_of(relative):
