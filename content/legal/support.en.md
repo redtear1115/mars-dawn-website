@@ -6,6 +6,8 @@ Help with MarsDawn, the Markdown editor for macOS.
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
 
+Invitations to interview or to speak are welcome too. Write to [support@southern-light.dev](mailto:support@southern-light.dev?subject=Interview%20or%20talk%20invitation).
+
 Please include your macOS version and your MarsDawn version (MarsDawn › About MarsDawn). If something looks wrong, a screenshot or a small sample document helps a lot.
 
 ## Common questions

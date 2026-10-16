@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice</title>
+<meta name="description" content="寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/vs/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/vs/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/vs/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/vs/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/vs/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/vs/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/vs/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/vs/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/vs/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/vs/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/vs/index.md">
+<meta property="og:title" content="MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice">
+<meta property="og:description" content="寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/vs/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hant/"}, {"@type": "ListItem", "position": 2, "name": "MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice", "item": "https://marsdawn.southern-light.dev/zh-hant/vs/"}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <span class="store-chip">已在 Mac App Store 上架</span>
+  <nav class="lang" aria-label="Language"><a href="/vs/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/vs/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/vs/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/vs/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/vs/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/vs/" hreflang="fr" lang="fr">Français</a> · <a href="/es/vs/" hreflang="es" lang="es">Español</a> · <a href="/ko/vs/" hreflang="ko" lang="ko">한국어</a></nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>在 Mac 上讀 Markdown：MarsDawn 和其他做法</h1>
+  <p>寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日；產品會變，格子也可能過時。發現錯誤，請寫信到<a href="/zh-hant/support/">支援</a>頁上的地址。</p>
+</section>
+<div class="table-scroll"><table class="compare compare-wide compare-vs">
+<thead><tr><th scope="col"></th><th scope="col">MarsDawn</th><th scope="col">VS Code 預覽</th><th scope="col">Obsidian</th><th scope="col">QLMarkdown</th><th scope="col">LynxOffice</th></tr></thead>
+<tbody>
+  <tr><th scope="row">打開本機 .md</th><td data-label="MarsDawn">可以，直接改原檔 [app 1.1.1]</td><td data-label="VS Code 預覽">可以，⇧⌘V 開預覽 [<a href="#v8">V8</a>]</td><td data-label="Obsidian">廠商未說明 [<a href="#v21">V21</a>]</td><td data-label="QLMarkdown">只能預覽："for viewing Markdown files" [<a href="#v22">V22</a>]</td><td data-label="LynxOffice">"Markdown opens rendered and saves back verbatim." [<a href="#v3">V3</a>]</td></tr>
+  <tr><th scope="row">Mermaid</th><td data-label="MarsDawn">內建 [<a href="#v1">V1</a>]</td><td data-label="VS Code 預覽">內建 [<a href="#v8">V8</a>]</td><td data-label="Obsidian">內建，筆記語法 [<a href="#v16">V16</a>]</td><td data-label="QLMarkdown">內建，<code>mermaid</code> 區塊 [<a href="#v22">V22</a>]</td><td data-label="LynxOffice">"diagram blocks are not rendered" [<a href="#v3">V3</a>]</td></tr>
+  <tr><th scope="row">數學式</th><td data-label="MarsDawn">KaTeX，<code>$…$</code>、<code>$$…$$</code> [<a href="#kit">kit</a>]</td><td data-label="VS Code 預覽">KaTeX [<a href="#v8">V8</a>]</td><td data-label="Obsidian">MathJax [<a href="#v16">V16</a>]</td><td data-label="QLMarkdown">MathJax [<a href="#v22">V22</a>]</td><td data-label="LynxOffice">"Footnotes, math, and diagram blocks are not rendered." [<a href="#v3">V3</a>]</td></tr>
+  <tr><th scope="row">檢查 agent 的計畫／跳到某一行</th><td data-label="MarsDawn"><code>marsdawn open file:line</code>；從磁碟更新；拷貝引用 [/cli/、/features/]</td><td data-label="VS Code 預覽">Markdown diff 預覽，標示改動的行 [<a href="#v8">V8</a>]；<code>code -g file:line</code> [<a href="#v14">V14</a>]</td><td data-label="Obsidian"><code>obsidian://open</code> 沒有行號參數 [<a href="#v20">V20</a>]</td><td data-label="QLMarkdown">廠商未說明</td><td data-label="LynxOffice">有 CLI 和 MCP 伺服器；未說明跳行 [<a href="#v4">V4</a>、<a href="#v5">V5</a>]</td></tr>
+  <tr><th scope="row">PDF：分頁、頁碼</th><td data-label="MarsDawn">分頁不切開短程式碼區塊 [/pdf/]；沒有頁碼 [實測]</td><td data-label="VS Code 預覽">廠商未說明 [<a href="#v8">V8</a>]</td><td data-label="Obsidian">紙張大小、邊界；分頁與頁碼未說明 [<a href="#v17">V17</a>]</td><td data-label="QLMarkdown">廠商未說明 [<a href="#v22">V22</a>]</td><td data-label="LynxOffice">PDF "including tables"；分頁與頁碼未說明 [<a href="#v3">V3</a>]</td></tr>
+  <tr><th scope="row">價格</th><td data-label="MarsDawn">免費下載；解鎖一次 USD 4.99；試用 14 天 [<a href="#v1">V1</a>]</td><td data-label="VS Code 預覽">廠商未說明 [<a href="#v12">V12</a>、<a href="#v13">V13</a>]</td><td data-label="Obsidian">個人："Free without limits"；商用授權非必要 [<a href="#v15">V15</a>]</td><td data-label="QLMarkdown">免費，GPL-3.0 [<a href="#v22">V22</a>]</td><td data-label="LynxOffice">"Free while in early release." [<a href="#v2">V2</a>]</td></tr>
+  <tr><th scope="row">系統需求</th><td data-label="MarsDawn">macOS 26.0 以上 [<a href="#v1">V1</a>]</td><td data-label="VS Code 預覽">"the latest release and the two previous versions" [<a href="#v9">V9</a>]</td><td data-label="Obsidian">廠商未說明 [<a href="#v18">V18</a>]</td><td data-label="QLMarkdown">macOS 12.0 以上 [<a href="#v23">V23</a>]</td><td data-label="LynxOffice">macOS 13 以上 [<a href="#v2">V2</a>]</td></tr>
+  <tr><th scope="row">需要帳號</th><td data-label="MarsDawn">不用 [/privacy/]</td><td data-label="VS Code 預覽">廠商未說明</td><td data-label="Obsidian">"No sign-up required" [<a href="#v15">V15</a>]</td><td data-label="QLMarkdown">廠商未說明</td><td data-label="LynxOffice">不用 [<a href="#v2">V2</a>]</td></tr>
+</tbody>
+</table></div>
+<p>每一格都在 2026 年 10 月 16 日對照括號裡的來源查證（V 編號列在下方；[實測] 是我們用 marsdawn 0.6.4 實際輸出的結果）。廠商原文照錄。「廠商未說明」表示我們讀到的頁面沒有提到，不代表沒有這個功能。表格不替產品排名。</p>
+<h2 id="sources">來源</h2>
+<ul class="sources">
+  <li id="v1">V1 · <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-vs&amp;mt=8">Mac App Store</a></li>
+  <li id="v2">V2 · <a href="https://lynxoffice.com/">https://lynxoffice.com/</a></li>
+  <li id="v3">V3 · <a href="https://lynxoffice.com/markdown/">https://lynxoffice.com/markdown/</a></li>
+  <li id="v4">V4 · <a href="https://lynxoffice.com/cli/">https://lynxoffice.com/cli/</a></li>
+  <li id="v5">V5 · <a href="https://lynxoffice.com/mcp/">https://lynxoffice.com/mcp/</a></li>
+  <li id="v6">V6 · <a href="https://lynxoffice.com/release-notes/">https://lynxoffice.com/release-notes/</a></li>
+  <li id="v8">V8 · <a href="https://code.visualstudio.com/docs/languages/markdown">https://code.visualstudio.com/docs/languages/markdown</a></li>
+  <li id="v9">V9 · <a href="https://code.visualstudio.com/docs/supporting/requirements">https://code.visualstudio.com/docs/supporting/requirements</a></li>
+  <li id="v11">V11 · <a href="https://code.visualstudio.com/updates/v1_142">https://code.visualstudio.com/updates/v1_142</a></li>
+  <li id="v12">V12 · <a href="https://code.visualstudio.com/license">https://code.visualstudio.com/license</a></li>
+  <li id="v13">V13 · <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
+  <li id="v14">V14 · <a href="https://code.visualstudio.com/docs/configure/command-line">https://code.visualstudio.com/docs/configure/command-line</a></li>
+  <li id="v15">V15 · <a href="https://obsidian.md/pricing">https://obsidian.md/pricing</a></li>
+  <li id="v16">V16 · <a href="https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax">https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax</a></li>
+  <li id="v17">V17 · <a href="https://obsidian.md/help/pdf">https://obsidian.md/help/pdf</a></li>
+  <li id="v18">V18 · <a href="https://obsidian.md/download">https://obsidian.md/download</a></li>
+  <li id="v19">V19 · <a href="https://obsidian.md/changelog/">https://obsidian.md/changelog/</a></li>
+  <li id="v20">V20 · <a href="https://obsidian.md/help/uri">https://obsidian.md/help/uri</a></li>
+  <li id="v21">V21 · <a href="https://obsidian.md/help/Getting+started/Create+a+vault">https://obsidian.md/help/Getting+started/Create+a+vault</a></li>
+  <li id="v22">V22 · <a href="https://github.com/sbarex/QLMarkdown">https://github.com/sbarex/QLMarkdown</a></li>
+  <li id="v23">V23 · <a href="https://github.com/sbarex/QLMarkdown/releases">https://github.com/sbarex/QLMarkdown/releases</a></li>
+  <li id="v24">V24 · <a href="https://api.github.com/repos/sbarex/QLMarkdown/releases">https://api.github.com/repos/sbarex/QLMarkdown/releases</a></li>
+  <li id="kit">kit · <a href="https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7">https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7</a></li>
+</ul>
+<p>MarsDawn 沒有的東西。需要 macOS 26 以上。沒有 iPhone 或 iPad app，MarsDawn 只做 Mac。不能共同編輯，不同步，也沒有帳號。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。輸出的 PDF 沒有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。</p>
+<h2 id="when-you-don-t-need-marsdawn">什麼時候用不到 MarsDawn</h2>
+<ul>
+  <li>你整天待在 VS Code，預覽窗格就夠：它能畫 Mermaid、排 KaTeX，有 Markdown diff 預覽，也能用 code -g 跳到某一行。</li>
+  <li>你只想在 Finder 按空白鍵預覽：QLMarkdown 是免費的 Markdown 快速查看延伸功能。</li>
+  <li>你的 Mac 系統比較舊：QLMarkdown 需要 12.0 以上，LynxOffice 需要 13 以上。免費的 marsdawn 工具只要 macOS 15，不開 app 也能輸出 PDF。</li>
+  <li>你用 vault 管理互相連結的筆記：Obsidian 就是為此而做。</li>
+  <li>你需要 iPhone 或 iPad app、共同編輯，或輸出 Word。</li>
+  <li>你想讓 agent 處理試算表、Word 和 PDF：LynxOffice 有為它們寫好的 MCP 伺服器說明。</li>
+</ul>
+<ul>
+  <li><a href="/zh-hant/vs/macmd-viewer/">MacMD Viewer 對比 MarsDawn</a>：唯讀檢視器和 MarsDawn 逐格對照，並說明各自適合什麼情況。</li>
+  <li><a href="/zh-hant/vs/markdown-preview-tools/">Markdown 預覽工具</a>：VS Code 預覽、瀏覽器延伸功能和 Claude Desktop 的檔案預覽。</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="網站">
+    <a href="/zh-hant/support/">支援</a>
+    <a href="/zh-hant/privacy/">隱私權政策</a>
+    <a href="/zh-hant/cli/">命令列工具</a>
+    <a href="/zh-hant/features/">功能一覽</a>
+    <a href="/zh-hant/view-markdown-on-mac/">Mac 怎麼開 md 檔</a>
+    <a href="/zh-hant/vs/markdown-preview-tools/">在別處看 Markdown，對比 MarsDawn</a>
+    <a href="/zh-hant/vs/macmd-viewer/">MacMD Viewer 對比 MarsDawn</a>
+    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-vs&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+</body>
+</html>
