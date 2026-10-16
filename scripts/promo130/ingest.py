@@ -202,6 +202,31 @@ def data_tables(text: str) -> list:
     return tables
 
 
+
+LOC_LABEL = {"en": "en", "zh-Hant": "zh-hant", "ja": "ja"}
+
+
+def r1_items(text: str) -> list:
+    """Round-1 item lines for en, zh-Hant and ja: '- [ ] **en A（49）**：`...`' (a checked item) or
+    '- en（56）：`...`' (a version listed without a box). Returns [(locale, tag, value)] in order; the tag is
+    the word after the language ('A', 'description', ...) or ''."""
+    out = []
+    pat = re.compile(r"^\s*-\s*(?:\[[ x]\]\s*)?(?:\*\*)?(en|zh-Hant|ja)(?:\s+([A-Za-z]+))?\s*(?:（\d+）)?(?:\*\*)?[：:]\s*(.+?)\s*$", re.M)
+    for m in pat.finditer(text):
+        out.append((LOC_LABEL[m.group(1)], m.group(2) or "", unwrap(m.group(3))))
+    return out
+
+
+def r2_table(body: str, locale: str) -> dict:
+    """Round 2's two-column table for a language: {item label without its count: cell text}."""
+    heading = {"zh-hans": "zh-Hans", "ko": "ko", "de": "de", "fr": "fr", "es": "es"}[locale]
+    return table_rows(section(body, f"### {heading}"))
+
+
+def by_loc(items: list, tag: str = "") -> dict:
+    return {loc: value for loc, t, value in items if t == tag}
+
+
 # ---- collecting data and slots ----------------------------------------------------------------
 
 DATA = {}
@@ -285,9 +310,57 @@ def ingest_189() -> None:
     assert not re.search("agent", zh, re.I), "zh-Hans seo strings still say agent"
 
 
+
+# ---- #244: titles without "editor", the home description and definition ------------------------
+
+def ingest_244() -> None:
+    c1, b1 = comment(244, 1)
+    c2, b2 = comment(244, 2)
+    # (a) the home page: version B; (b) /features/, (c) /yours/, (d) /vs/macmd-viewer/: version A.
+    spec = [("index", "(a)", "### (a)", "B", "title"), ("features", "(b)", "### (b)", "A", "title"),
+            ("yours", "(c)", "### (c)", "A", "title"), ("vs/macmd-viewer", "(d)", "### (d)", "A", "title")]
+    r2_key = {"index": "(a) 首頁 `/` title／og:title", "features": "(b) `/features/`", "yours": "(c) `/yours/`",
+              "vs/macmd-viewer": "(d) `/vs/macmd-viewer/`"}
+    for slug, label, heading, version, _ in spec:
+        sec = section(b1, heading)
+        if version == "B":
+            sec = sec[sec.index("版本 B"):]
+            got = by_loc(r1_items(sec))
+        else:
+            got = by_loc(r1_items(sec), "A")
+        assert set(got) == set(FIRST), (slug, got)
+        for loc in FIRST:
+            put(("titles", loc, slug), esc(got[loc]), slot={
+                "locale": loc, "page": slug, "field": "title", "source": comment_source(c1, 1, f"{heading} version {version}, {loc}"),
+                "item": f"#244{label}", "version": version})
+        for loc in MACHINE:
+            cell = r2_table(b2, loc)[r2_key[slug]]
+            put(("titles", loc, slug), esc(cell), slot={
+                "locale": loc, "page": slug, "field": "title", "source": comment_source(c2, 2, f"### {loc} table, {r2_key[slug]}"),
+                "item": f"#244{label}", "version": "R2"})
+    sec = section(b1, "### (f)")
+    items = r1_items(sec)
+    for loc in FIRST:
+        for tag, key, label in (("description", "description", "(f) description"), ("definition", "definition", "(f) definition")):
+            value = by_loc(items, tag)[loc]
+            put(("home", loc, key), esc(value), slot={
+                "locale": loc, "page": "index", "field": key, "source": comment_source(c1, 1, f"### (f), {loc} {tag}"),
+                "item": f"#244{label}", "version": "R1"})
+    for loc in MACHINE:
+        table = r2_table(b2, loc)
+        for key, row, label in (("description", "(f) 首頁 meta description（og:description、llms.txt）", "(f) description"),
+                                ("definition", "(f) headline 下的定義句", "(f) definition")):
+            put(("home", loc, key), esc(table[row]), slot={
+                "locale": loc, "page": "index", "field": key, "source": comment_source(c2, 2, f"### {loc} table, {row}"),
+                "item": f"#244{label}", "version": "R2"})
+    # the definition sentence is also /native/'s (plan: "/native/ takes #244(f)'s definition")
+    for loc in LOCALES:
+        SLOTS.append(dict([s for s in SLOTS if s["path"] == ["home", loc, "definition"]][0], page="native", path=["home", loc, "definition"]))
+
+
 # ---- main -------------------------------------------------------------------------------------
 
-INGESTERS = {189: ingest_189}
+INGESTERS = {189: ingest_189, 244: ingest_244}
 
 
 def write() -> None:

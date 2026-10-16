@@ -5523,7 +5523,7 @@ def all_pages() -> dict:
             body = "".join(pieces[:3]) + brand_film_themes.MARK + "\n" + "".join(pieces[3:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return apply_seo_copy(merged)
+    return apply_promo130(apply_seo_copy(merged))
 
 
 # --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
@@ -5624,6 +5624,27 @@ def apply_seo_copy(merged: dict) -> dict:
         assert n == 1, f"{locale}/native: no Quick Look list item"
         out[(locale, "native")] = {**native, "body": body}
         out[(locale, "quicklook")] = quicklook_page(locale, copy)
+    return out
+
+
+def apply_promo130(merged: dict) -> dict:
+    """merged with the rest of the promo-130 bundle applied: titles (#244), the home description and the
+    definition sentence (#244), and the later issues' sections. Every string is scripts/promo130/data.py's."""
+    out = dict(merged)
+    for locale in LOCALES:
+        if (locale, "index") not in out:
+            continue
+        for slug, title in promo_data.DATA["titles"][locale].items():
+            out[(locale, slug)] = {**out[(locale, slug)], "title": title}
+        home = out[(locale, "index")]
+        copy = promo_data.DATA["home"][locale]
+        intro, n = re.subn(r"(</h1>\s*<p>[^<]*</p>)", lambda m: m.group(1) + f'\n  <p class="definition">{copy["definition"]}</p>', home["intro"], count=1)
+        assert n == 1, f"{locale}/index: no tagline paragraph after the h1"
+        out[(locale, "index")] = {**home, "description": copy["description"], "intro": intro}
+        native = out[(locale, "native")]
+        intro, n = re.subn(r"(</h1>)", lambda m: m.group(1) + f'\n  <p class="definition">{copy["definition"]}</p>', native["intro"], count=1)
+        assert n == 1, f"{locale}/native: no h1 in the intro"
+        out[(locale, "native")] = {**native, "intro": intro}
     return out
 
 

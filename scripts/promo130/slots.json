@@ -7250,6 +7250,958 @@
     2,
     1
    ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (a) version B, en"
+   },
+   "item": "#244(a)",
+   "version": "B",
+   "path": [
+    "titles",
+    "en",
+    "index"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (a) version B, zh-hant"
+   },
+   "item": "#244(a)",
+   "version": "B",
+   "path": [
+    "titles",
+    "zh-hant",
+    "index"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (a) version B, ja"
+   },
+   "item": "#244(a)",
+   "version": "B",
+   "path": [
+    "titles",
+    "ja",
+    "index"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### zh-hans table, (a) 首頁 `/` title／og:title"
+   },
+   "item": "#244(a)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "zh-hans",
+    "index"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### ko table, (a) 首頁 `/` title／og:title"
+   },
+   "item": "#244(a)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "ko",
+    "index"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### de table, (a) 首頁 `/` title／og:title"
+   },
+   "item": "#244(a)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "de",
+    "index"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### fr table, (a) 首頁 `/` title／og:title"
+   },
+   "item": "#244(a)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "fr",
+    "index"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### es table, (a) 首頁 `/` title／og:title"
+   },
+   "item": "#244(a)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "es",
+    "index"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "features",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (b) version A, en"
+   },
+   "item": "#244(b)",
+   "version": "A",
+   "path": [
+    "titles",
+    "en",
+    "features"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "features",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (b) version A, zh-hant"
+   },
+   "item": "#244(b)",
+   "version": "A",
+   "path": [
+    "titles",
+    "zh-hant",
+    "features"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "features",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (b) version A, ja"
+   },
+   "item": "#244(b)",
+   "version": "A",
+   "path": [
+    "titles",
+    "ja",
+    "features"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "features",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### zh-hans table, (b) `/features/`"
+   },
+   "item": "#244(b)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "zh-hans",
+    "features"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "features",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### ko table, (b) `/features/`"
+   },
+   "item": "#244(b)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "ko",
+    "features"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "features",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### de table, (b) `/features/`"
+   },
+   "item": "#244(b)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "de",
+    "features"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "features",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### fr table, (b) `/features/`"
+   },
+   "item": "#244(b)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "fr",
+    "features"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "features",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### es table, (b) `/features/`"
+   },
+   "item": "#244(b)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "es",
+    "features"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "yours",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (c) version A, en"
+   },
+   "item": "#244(c)",
+   "version": "A",
+   "path": [
+    "titles",
+    "en",
+    "yours"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "yours",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (c) version A, zh-hant"
+   },
+   "item": "#244(c)",
+   "version": "A",
+   "path": [
+    "titles",
+    "zh-hant",
+    "yours"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "yours",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (c) version A, ja"
+   },
+   "item": "#244(c)",
+   "version": "A",
+   "path": [
+    "titles",
+    "ja",
+    "yours"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "yours",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### zh-hans table, (c) `/yours/`"
+   },
+   "item": "#244(c)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "zh-hans",
+    "yours"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "yours",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### ko table, (c) `/yours/`"
+   },
+   "item": "#244(c)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "ko",
+    "yours"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "yours",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### de table, (c) `/yours/`"
+   },
+   "item": "#244(c)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "de",
+    "yours"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "yours",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### fr table, (c) `/yours/`"
+   },
+   "item": "#244(c)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "fr",
+    "yours"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "yours",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### es table, (c) `/yours/`"
+   },
+   "item": "#244(c)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "es",
+    "yours"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "vs/macmd-viewer",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (d) version A, en"
+   },
+   "item": "#244(d)",
+   "version": "A",
+   "path": [
+    "titles",
+    "en",
+    "vs/macmd-viewer"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "vs/macmd-viewer",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (d) version A, zh-hant"
+   },
+   "item": "#244(d)",
+   "version": "A",
+   "path": [
+    "titles",
+    "zh-hant",
+    "vs/macmd-viewer"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "vs/macmd-viewer",
+   "field": "title",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (d) version A, ja"
+   },
+   "item": "#244(d)",
+   "version": "A",
+   "path": [
+    "titles",
+    "ja",
+    "vs/macmd-viewer"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "vs/macmd-viewer",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### zh-hans table, (d) `/vs/macmd-viewer/`"
+   },
+   "item": "#244(d)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "zh-hans",
+    "vs/macmd-viewer"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "vs/macmd-viewer",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### ko table, (d) `/vs/macmd-viewer/`"
+   },
+   "item": "#244(d)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "ko",
+    "vs/macmd-viewer"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "vs/macmd-viewer",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### de table, (d) `/vs/macmd-viewer/`"
+   },
+   "item": "#244(d)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "de",
+    "vs/macmd-viewer"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "vs/macmd-viewer",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### fr table, (d) `/vs/macmd-viewer/`"
+   },
+   "item": "#244(d)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "fr",
+    "vs/macmd-viewer"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "vs/macmd-viewer",
+   "field": "title",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### es table, (d) `/vs/macmd-viewer/`"
+   },
+   "item": "#244(d)",
+   "version": "R2",
+   "path": [
+    "titles",
+    "es",
+    "vs/macmd-viewer"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "description",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (f), en description"
+   },
+   "item": "#244(f) description",
+   "version": "R1",
+   "path": [
+    "home",
+    "en",
+    "description"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "definition",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (f), en definition"
+   },
+   "item": "#244(f) definition",
+   "version": "R1",
+   "path": [
+    "home",
+    "en",
+    "definition"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "description",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (f), zh-hant description"
+   },
+   "item": "#244(f) description",
+   "version": "R1",
+   "path": [
+    "home",
+    "zh-hant",
+    "description"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "definition",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (f), zh-hant definition"
+   },
+   "item": "#244(f) definition",
+   "version": "R1",
+   "path": [
+    "home",
+    "zh-hant",
+    "definition"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "description",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (f), ja description"
+   },
+   "item": "#244(f) description",
+   "version": "R1",
+   "path": [
+    "home",
+    "ja",
+    "description"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "definition",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (f), ja definition"
+   },
+   "item": "#244(f) definition",
+   "version": "R1",
+   "path": [
+    "home",
+    "ja",
+    "definition"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "description",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### zh-hans table, (f) 首頁 meta description（og:description、llms.txt）"
+   },
+   "item": "#244(f) description",
+   "version": "R2",
+   "path": [
+    "home",
+    "zh-hans",
+    "description"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "definition",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### zh-hans table, (f) headline 下的定義句"
+   },
+   "item": "#244(f) definition",
+   "version": "R2",
+   "path": [
+    "home",
+    "zh-hans",
+    "definition"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "description",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### ko table, (f) 首頁 meta description（og:description、llms.txt）"
+   },
+   "item": "#244(f) description",
+   "version": "R2",
+   "path": [
+    "home",
+    "ko",
+    "description"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "definition",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### ko table, (f) headline 下的定義句"
+   },
+   "item": "#244(f) definition",
+   "version": "R2",
+   "path": [
+    "home",
+    "ko",
+    "definition"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "description",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### de table, (f) 首頁 meta description（og:description、llms.txt）"
+   },
+   "item": "#244(f) description",
+   "version": "R2",
+   "path": [
+    "home",
+    "de",
+    "description"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "definition",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### de table, (f) headline 下的定義句"
+   },
+   "item": "#244(f) definition",
+   "version": "R2",
+   "path": [
+    "home",
+    "de",
+    "definition"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "description",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### fr table, (f) 首頁 meta description（og:description、llms.txt）"
+   },
+   "item": "#244(f) description",
+   "version": "R2",
+   "path": [
+    "home",
+    "fr",
+    "description"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "definition",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### fr table, (f) headline 下的定義句"
+   },
+   "item": "#244(f) definition",
+   "version": "R2",
+   "path": [
+    "home",
+    "fr",
+    "definition"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "description",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### es table, (f) 首頁 meta description（og:description、llms.txt）"
+   },
+   "item": "#244(f) description",
+   "version": "R2",
+   "path": [
+    "home",
+    "es",
+    "description"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "definition",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### es table, (f) headline 下的定義句"
+   },
+   "item": "#244(f) definition",
+   "version": "R2",
+   "path": [
+    "home",
+    "es",
+    "definition"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "native",
+   "field": "definition",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (f), en definition"
+   },
+   "item": "#244(f) definition",
+   "version": "R1",
+   "path": [
+    "home",
+    "en",
+    "definition"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "native",
+   "field": "definition",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (f), zh-hant definition"
+   },
+   "item": "#244(f) definition",
+   "version": "R1",
+   "path": [
+    "home",
+    "zh-hant",
+    "definition"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "native",
+   "field": "definition",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### zh-hans table, (f) headline 下的定義句"
+   },
+   "item": "#244(f) definition",
+   "version": "R2",
+   "path": [
+    "home",
+    "zh-hans",
+    "definition"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "native",
+   "field": "definition",
+   "source": {
+    "comment": 6217622281,
+    "round": "R1",
+    "locator": "### (f), ja definition"
+   },
+   "item": "#244(f) definition",
+   "version": "R1",
+   "path": [
+    "home",
+    "ja",
+    "definition"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "native",
+   "field": "definition",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### de table, (f) headline 下的定義句"
+   },
+   "item": "#244(f) definition",
+   "version": "R2",
+   "path": [
+    "home",
+    "de",
+    "definition"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "native",
+   "field": "definition",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### fr table, (f) headline 下的定義句"
+   },
+   "item": "#244(f) definition",
+   "version": "R2",
+   "path": [
+    "home",
+    "fr",
+    "definition"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "native",
+   "field": "definition",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### es table, (f) headline 下的定義句"
+   },
+   "item": "#244(f) definition",
+   "version": "R2",
+   "path": [
+    "home",
+    "es",
+    "definition"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "native",
+   "field": "definition",
+   "source": {
+    "comment": 6218640970,
+    "round": "R2",
+    "locator": "### ko table, (f) headline 下的定義句"
+   },
+   "item": "#244(f) definition",
+   "version": "R2",
+   "path": [
+    "home",
+    "ko",
+    "definition"
+   ]
   }
  ]
 }

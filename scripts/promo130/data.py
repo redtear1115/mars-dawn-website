@@ -427,4 +427,65 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                              ['MarsDawn은 iPhone이나 iPad에서 쓸 수 있나요?', '아니요. MarsDawn은 Mac 앱이며 macOS 26 이상이 필요합니다. iPhone용이나 iPad용 앱은 없습니다.'],
                              ['Claude Code가 MarsDawn에서 파일을 열 수 있나요?',
                               '네. 무료 marsdawn 명령줄 도구에는 Markdown 파일을 MarsDawn에서 여는 open 명령이 있어서, Claude Code나 셸 명령을 실행할 수 있는 모든 에이전트가 호출할 수 있습니다. '
-                              '선택적으로 켜는 Claude Code 훅은 Claude가 쓰거나 편집한 Markdown 파일을 열어 줍니다.']]}}}
+                              '선택적으로 켜는 Claude Code 훅은 Claude가 쓰거나 편집한 Markdown 파일을 열어 줍니다.']]}},
+ 'titles': {'en': {'index': "MarsDawn: review your agent's Markdown with live preview",
+                   'features': "Features: review your agent's Markdown on Mac · MarsDawn",
+                   'yours': "Read your agent's Markdown, no account, no cloud · MarsDawn",
+                   'vs/macmd-viewer': 'MacMD Viewer vs. MarsDawn: view, or read and edit · MarsDawn'},
+            'zh-hant': {'index': 'MarsDawn：檢查 agent 的 Markdown，即時預覽',
+                        'features': '功能一覽：在 Mac 上檢查 agent 的 Markdown · MarsDawn',
+                        'yours': '讀 agent 寫的 Markdown，不用帳號、不上雲端 · MarsDawn',
+                        'vs/macmd-viewer': 'MacMD Viewer 對比 MarsDawn：只看，還是邊讀邊改 · MarsDawn'},
+            'ja': {'index': 'MarsDawn：エージェントの Markdown をライブプレビューで確認',
+                   'features': '機能一覧：エージェントの Markdown を Mac で確かめる · MarsDawn',
+                   'yours': 'アカウントもクラウドも不要、Mac で Markdown を読む · MarsDawn',
+                   'vs/macmd-viewer': 'MacMD Viewer と MarsDawn：見るだけか、読んで直すか · MarsDawn'},
+            'zh-hans': {'index': 'MarsDawn：检查代理的 Markdown，实时预览',
+                        'features': '功能一览：在 Mac 上检查代理的 Markdown · MarsDawn',
+                        'yours': '读代理写的 Markdown，不用账户、不上云端 · MarsDawn',
+                        'vs/macmd-viewer': 'MacMD Viewer 对比 MarsDawn：只看，还是边读边改 · MarsDawn'},
+            'ko': {'index': 'MarsDawn: 에이전트의 Markdown을 실시간 미리보기로 검토',
+                   'features': '기능 한눈에 보기: Mac에서 에이전트의 Markdown 검토 · MarsDawn',
+                   'yours': '에이전트가 쓴 Markdown 읽기, 계정도 클라우드도 없이 · MarsDawn',
+                   'vs/macmd-viewer': 'MacMD Viewer와 MarsDawn: 보기만 할까, 읽고 고칠까 · MarsDawn'},
+            'de': {'index': 'MarsDawn: das Markdown deines Agenten prüfen, mit Live-Vorschau',
+                   'features': 'Funktionen: Markdown deines Agenten auf dem Mac prüfen · MarsDawn',
+                   'yours': 'Markdown deines Agenten lesen, ohne Konto und Cloud · MarsDawn',
+                   'vs/macmd-viewer': 'MacMD Viewer oder MarsDawn: nur ansehen oder lesen und ändern · MarsDawn'},
+            'fr': {'index': 'MarsDawn\xa0: relire le Markdown de votre agent, avec aperçu en direct',
+                   'features': 'Fonctionnalités\xa0: relire le Markdown de votre agent sur Mac · MarsDawn',
+                   'yours': 'Lire le Markdown de votre agent, sans compte ni cloud · MarsDawn',
+                   'vs/macmd-viewer': 'MacMD Viewer ou MarsDawn\xa0: afficher, ou lire et modifier · MarsDawn'},
+            'es': {'index': 'MarsDawn: revisa el Markdown de tu agente con vista previa en vivo',
+                   'features': 'Funciones: revisa el Markdown de tu agente en Mac · MarsDawn',
+                   'yours': 'Lee el Markdown de tu agente, sin cuenta y sin nube · MarsDawn',
+                   'vs/macmd-viewer': 'MacMD Viewer o MarsDawn: solo ver, o leer y editar · MarsDawn'}},
+ 'home': {'en': {'description': 'Read and review the Markdown your agent wrote, natively on Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF '
+                                'export. Free to try, USD 4.99 once.',
+                 'definition': 'MarsDawn is a native Mac app for reading and reviewing Markdown, with live split preview, Mermaid diagrams, KaTeX '
+                               'math, Quick Look and PDF export, free to try for 14 days and USD 4.99 once to unlock.'},
+          'zh-hant': {'description': '讀懂、檢查 agent 寫的 Markdown 的 Mac 原生 app：分割即時預覽、Mermaid、KaTeX、快速查看、PDF 輸出。可免費試用，之後一次 USD 4.99。',
+                      'definition': 'MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、Mermaid 圖表、KaTeX 數學式、快速查看與 PDF 輸出；可免費試用 14 天，一次付 USD 4.99 解鎖。'},
+          'ja': {'description': 'エージェントが書いた Markdown を読んで確かめる Mac ネイティブアプリ。分割ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF 書き出し。無料で試せて、解除は一度だけ USD 4.99。',
+                 'definition': 'MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ '
+                               'USD 4.99 で解除できます。'},
+          'zh-hans': {'description': '读懂、检查代理写的 Markdown 的 Mac 原生 app：分栏实时预览、Mermaid、KaTeX、快速查看、PDF 导出。可免费试用，之后一次 USD 4.99。',
+                      'definition': 'MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、Mermaid 图表、KaTeX 数学公式、快速查看与 PDF 导出；可免费试用 14 天，一次付 USD 4.99 解锁。'},
+          'ko': {'description': '에이전트가 쓴 Markdown을 읽고 검토하는 Mac 네이티브 앱. 분할 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료로 체험하고, 잠금 해제는 한 번 USD 4.99.',
+                 'definition': 'MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 실시간 미리보기, Mermaid 다이어그램, KaTeX 수식, 훑어보기, PDF 내보내기를 갖추고 있으며, 14일 동안 무료로 '
+                               '체험한 뒤 USD 4.99 한 번으로 잠금 해제할 수 있습니다.'},
+          'de': {'description': 'Lies und prüfe das Markdown deines Agenten nativ auf dem Mac: geteilte Vorschau, Mermaid, KaTeX, Übersicht, '
+                                'PDF-Export. Kostenlos testen, dann einmal 4,99 USD.',
+                 'definition': 'MarsDawn ist eine native macOS-App zum Lesen und Prüfen von Markdown, mit geteilter Live-Vorschau, '
+                               'Mermaid-Diagrammen, KaTeX-Formeln, Übersicht und PDF-Export, 14 Tage kostenlos testbar und einmalig für 4,99 USD '
+                               'freigeschaltet.'},
+          'fr': {'description': 'Lisez et relisez le Markdown de votre agent sur Mac\xa0: aperçu partagé en direct, Mermaid, KaTeX, Coup d’œil, '
+                                'export PDF. Essai gratuit, puis 4,99 USD une fois.',
+                 'definition': 'MarsDawn est une app macOS native pour lire et relire du Markdown, avec aperçu partagé en direct, diagrammes '
+                               'Mermaid, formules KaTeX, Coup d’œil et export PDF, gratuite à l’essai pendant 14 jours et déverrouillée pour 4,99 '
+                               'USD une seule fois.'},
+          'es': {'description': 'Lee y revisa el Markdown de tu agente en tu Mac: vista previa dividida en vivo, Mermaid, KaTeX, Vista rápida y PDF. '
+                                'Pruébalo gratis y luego 4,99 USD una vez.',
+                 'definition': 'MarsDawn es una app nativa de macOS para leer y revisar Markdown, con vista previa dividida en vivo, diagramas '
+                               'Mermaid, fórmulas KaTeX, Vista rápida y exportación a PDF; pruébala gratis 14 días y desbloquéala por 4,99 USD una '
+                               'sola vez.'}}}

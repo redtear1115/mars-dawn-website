@@ -37,7 +37,8 @@ Answer-engine copy (every locale): the home page, /pay-once/ and /quicklook/ eac
 (`<section class="faq">`) and a FAQPage block whose questions and answers are, word for word, the
 visible ones, in the same order, and no other page has either; /quicklook/ carries a HowTo whose
 steps are its visible numbered steps. /view-markdown-on-mac/ keeps its older FAQPage block (no
-`<section class="faq">`) and is left to its own page.
+`<section class="faq">`) and is left to its own page. The home page and /native/ open with a
+definition sentence (`<p class="definition">`), and `llms-full.txt` repeats each of them.
 
 Two things this deliberately does not catch, so nobody reads a green run as more than it is:
 
@@ -143,7 +144,7 @@ def article_slugs():
     return set(build_pages.ARTICLE_DATES)
 
 
-def check_structured_data(relative, text, articles, problems):
+def check_structured_data(relative, text, articles, llms_full, problems):
     """Breadcrumbs on every inner page; TechArticle with dates exactly on the essays and notes."""
     locale = locale_of(relative)
     slug = relative[:-len("index.html")].strip("/")
@@ -156,6 +157,7 @@ def check_structured_data(relative, text, articles, problems):
         except json.JSONDecodeError as exc:
             problems.append(f"{relative}: JSON-LD doesn't parse: {exc}")
     check_answer_copy(relative, slug, text, blocks, problems)
+    check_definition(relative, slug, text, llms_full, problems)
     if relative in HOME_SLUGS:
         return
     crumbs = [b for b in blocks if b.get("@type") == "BreadcrumbList"]
@@ -238,6 +240,19 @@ def check_answer_copy(relative, slug, text, blocks, problems):
             problems.append(f"{relative}: the HowTo markup differs from the visible steps")
 
 
+DEFINITION = re.compile(r'<p class="definition">(.*?)</p>', re.S)
+
+
+def check_definition(relative, slug, text, llms_full, problems):
+    if slug not in ("", "native"):
+        return
+    found = DEFINITION.search(text)
+    if not found or not plain(found.group(1)).strip():
+        problems.append(f"{relative}: no definition sentence under the h1")
+    elif plain(found.group(1)) not in llms_full:
+        problems.append(f"{relative}: the definition sentence isn't in llms-full.txt")
+
+
 def locale_of(relative):
     for prefix, locale in PREFIX.items():
         if relative.startswith(prefix):
@@ -260,6 +275,7 @@ def main():
 
     problems = []
     articles = article_slugs()
+    llms_full = (site / "llms-full.txt").read_text() if (site / "llms-full.txt").is_file() else ""
 
     # Same page set in every locale.
     by_locale = {"en": set(), "zh-hant": set(), "zh-hans": set(), "ja": set(), **{l: set() for l in NEW_LOCALES}}
@@ -278,7 +294,7 @@ def main():
     for relative, page in pages.items():
         locale = locale_of(relative)
         text = page.read_text()
-        check_structured_data(relative, text, articles, problems)
+        check_structured_data(relative, text, articles, llms_full, problems)
         if locale in NEW_LOCALES:
             if where != "launched":
                 problems.append(f"{relative}: {locale} is served before launch; it ships with 1.1.0, after launch")
