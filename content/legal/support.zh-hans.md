@@ -6,6 +6,8 @@ macOS Markdown 编辑器 MarsDawn 的使用说明。
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
 
+也欢迎采访或演讲邀约，请写信到 [support@southern-light.dev](mailto:support@southern-light.dev?subject=%E9%87%87%E8%AE%BF%EF%BC%8F%E6%BC%94%E8%AE%B2%E9%82%80%E7%BA%A6)。
+
 请附上你的 macOS 版本与 MarsDawn 版本（MarsDawn › 关于 MarsDawn）。如果画面看起来不对，附上截图或一份小的范例文稿会很有帮助。
 
 ## 常见问题

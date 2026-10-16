@@ -358,9 +358,40 @@ def ingest_244() -> None:
         SLOTS.append(dict([s for s in SLOTS if s["path"] == ["home", loc, "definition"]][0], page="native", path=["home", loc, "definition"]))
 
 
+
+# ---- #246: an invitation line under "Write to us" on /support/ ----------------------------------
+
+def ingest_246() -> None:
+    from urllib.parse import unquote, urlsplit, parse_qs
+    c1, b1 = comment(246, 1)
+    c2, b2 = comment(246, 2)
+    sec_a = section(b1, "### (a)")
+    sec_a = sec_a[:sec_a.index("**版本 B**")]            # version A only
+    para = by_loc(r1_items(sec_a))
+    subj = by_loc(r1_items(section(b1, "### (b)")))
+    for loc in LOCALES:
+        if loc in FIRST:
+            text, subject = para[loc], subj[loc]
+            src_p, src_s, ver = (comment_source(c1, 1, f"### (a) version A, {loc}"), comment_source(c1, 1, f"### (b), {loc}"), "A")
+        else:
+            table = r2_table(b2, loc)
+            text, subject = table["文案（接在地址段落之後）"], table["mailto 主旨"]
+            src_p, src_s, ver = (comment_source(c2, 2, f"### {loc} table, 文案（接在地址段落之後）"),
+                                 comment_source(c2, 2, f"### {loc} table, mailto 主旨"), "R2")
+        # the paragraph is Markdown; the kit's renderer turns it into HTML. Its mailto subject must be the item's.
+        link = re.search(r"\]\((mailto:[^)]+)\)", text)
+        assert link, (loc, text)
+        decoded = parse_qs(urlsplit(link.group(1)).query)["subject"][0]
+        assert decoded == subject, (loc, decoded, subject)
+        put(("support", loc, "p_md"), text, slot={"locale": loc, "page": "support", "field": "p", "source": src_p,
+                                                  "item": "#246(a)", "version": ver})
+        put(("support", loc, "subject"), subject, slot={"locale": loc, "page": "support", "field": "mailto_subject", "source": src_s,
+                                                        "item": "#246(b)", "version": ver})
+
+
 # ---- main -------------------------------------------------------------------------------------
 
-INGESTERS = {189: ingest_189, 244: ingest_244}
+INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246}
 
 
 def write() -> None:

@@ -488,4 +488,29 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                 'Pruébalo gratis y luego 4,99 USD una vez.',
                  'definition': 'MarsDawn es una app nativa de macOS para leer y revisar Markdown, con vista previa dividida en vivo, diagramas '
                                'Mermaid, fórmulas KaTeX, Vista rápida y exportación a PDF; pruébala gratis 14 días y desbloquéala por 4,99 USD una '
-                               'sola vez.'}}}
+                               'sola vez.'}},
+ 'support': {'en': {'p_md': 'Invitations to interview or to speak are welcome too. Write to '
+                            '[support@southern-light.dev](mailto:support@southern-light.dev?subject=Interview%20or%20talk%20invitation).',
+                    'subject': 'Interview or talk invitation'},
+             'zh-hant': {'p_md': '也歡迎採訪或演講邀約，請寫信到 '
+                                 '[support@southern-light.dev](mailto:support@southern-light.dev?subject=%E6%8E%A1%E8%A8%AA%EF%BC%8F%E6%BC%94%E8%AC%9B%E9%82%80%E7%B4%84)。',
+                         'subject': '採訪／演講邀約'},
+             'zh-hans': {'p_md': '也欢迎采访或演讲邀约，请写信到 '
+                                 '[support@southern-light.dev](mailto:support@southern-light.dev?subject=%E9%87%87%E8%AE%BF%EF%BC%8F%E6%BC%94%E8%AE%B2%E9%82%80%E7%BA%A6)。',
+                         'subject': '采访／演讲邀约'},
+             'ja': {'p_md': '取材や登壇のご依頼も歓迎します。[support@southern-light.dev](mailto:support@southern-light.dev?subject=%E5%8F%96%E6%9D%90%E3%83%BB%E7%99%BB%E5%A3%87%E3%81%AE%E3%81%94%E4%BE%9D%E9%A0%BC) '
+                            'までご連絡ください。',
+                    'subject': '取材・登壇のご依頼'},
+             'de': {'p_md': 'Einladungen zu Interviews oder Vorträgen sind ebenfalls willkommen. Schreib an '
+                            '[support@southern-light.dev](mailto:support@southern-light.dev?subject=Einladung%20zu%20Interview%20oder%20Vortrag).',
+                    'subject': 'Einladung zu Interview oder Vortrag'},
+             'fr': {'p_md': 'Les invitations à une interview ou à une conférence sont aussi les bienvenues. Écrivez à '
+                            '[support@southern-light.dev](mailto:support@southern-light.dev?subject=Invitation%20interview%20ou%20conf%C3%A9rence).',
+                    'subject': 'Invitation interview ou conférence'},
+             'es': {'p_md': 'También son bienvenidas las invitaciones a entrevistas o charlas. Escribe a '
+                            '[support@southern-light.dev](mailto:support@southern-light.dev?subject=Invitaci%C3%B3n%20a%20entrevista%20o%20charla).',
+                    'subject': 'Invitación a entrevista o charla'},
+             'ko': {'p_md': '인터뷰나 강연 요청도 환영합니다. '
+                            '[support@southern-light.dev](mailto:support@southern-light.dev?subject=%EC%9D%B8%ED%84%B0%EB%B7%B0%C2%B7%EA%B0%95%EC%97%B0%20%EC%9A%94%EC%B2%AD)로 '
+                            '보내 주세요.',
+                    'subject': '인터뷰·강연 요청'}}}

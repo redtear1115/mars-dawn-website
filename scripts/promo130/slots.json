@@ -8202,6 +8202,278 @@
     "ko",
     "definition"
    ]
+  },
+  {
+   "locale": "en",
+   "page": "support",
+   "field": "p",
+   "source": {
+    "comment": 6217628658,
+    "round": "R1",
+    "locator": "### (a) version A, en"
+   },
+   "item": "#246(a)",
+   "version": "A",
+   "path": [
+    "support",
+    "en",
+    "p_md"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "support",
+   "field": "mailto_subject",
+   "source": {
+    "comment": 6217628658,
+    "round": "R1",
+    "locator": "### (b), en"
+   },
+   "item": "#246(b)",
+   "version": "A",
+   "path": [
+    "support",
+    "en",
+    "subject"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "support",
+   "field": "p",
+   "source": {
+    "comment": 6217628658,
+    "round": "R1",
+    "locator": "### (a) version A, zh-hant"
+   },
+   "item": "#246(a)",
+   "version": "A",
+   "path": [
+    "support",
+    "zh-hant",
+    "p_md"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "support",
+   "field": "mailto_subject",
+   "source": {
+    "comment": 6217628658,
+    "round": "R1",
+    "locator": "### (b), zh-hant"
+   },
+   "item": "#246(b)",
+   "version": "A",
+   "path": [
+    "support",
+    "zh-hant",
+    "subject"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "support",
+   "field": "p",
+   "source": {
+    "comment": 6218649130,
+    "round": "R2",
+    "locator": "### zh-hans table, 文案（接在地址段落之後）"
+   },
+   "item": "#246(a)",
+   "version": "R2",
+   "path": [
+    "support",
+    "zh-hans",
+    "p_md"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "support",
+   "field": "mailto_subject",
+   "source": {
+    "comment": 6218649130,
+    "round": "R2",
+    "locator": "### zh-hans table, mailto 主旨"
+   },
+   "item": "#246(b)",
+   "version": "R2",
+   "path": [
+    "support",
+    "zh-hans",
+    "subject"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "support",
+   "field": "p",
+   "source": {
+    "comment": 6217628658,
+    "round": "R1",
+    "locator": "### (a) version A, ja"
+   },
+   "item": "#246(a)",
+   "version": "A",
+   "path": [
+    "support",
+    "ja",
+    "p_md"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "support",
+   "field": "mailto_subject",
+   "source": {
+    "comment": 6217628658,
+    "round": "R1",
+    "locator": "### (b), ja"
+   },
+   "item": "#246(b)",
+   "version": "A",
+   "path": [
+    "support",
+    "ja",
+    "subject"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "support",
+   "field": "p",
+   "source": {
+    "comment": 6218649130,
+    "round": "R2",
+    "locator": "### de table, 文案（接在地址段落之後）"
+   },
+   "item": "#246(a)",
+   "version": "R2",
+   "path": [
+    "support",
+    "de",
+    "p_md"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "support",
+   "field": "mailto_subject",
+   "source": {
+    "comment": 6218649130,
+    "round": "R2",
+    "locator": "### de table, mailto 主旨"
+   },
+   "item": "#246(b)",
+   "version": "R2",
+   "path": [
+    "support",
+    "de",
+    "subject"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "support",
+   "field": "p",
+   "source": {
+    "comment": 6218649130,
+    "round": "R2",
+    "locator": "### fr table, 文案（接在地址段落之後）"
+   },
+   "item": "#246(a)",
+   "version": "R2",
+   "path": [
+    "support",
+    "fr",
+    "p_md"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "support",
+   "field": "mailto_subject",
+   "source": {
+    "comment": 6218649130,
+    "round": "R2",
+    "locator": "### fr table, mailto 主旨"
+   },
+   "item": "#246(b)",
+   "version": "R2",
+   "path": [
+    "support",
+    "fr",
+    "subject"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "support",
+   "field": "p",
+   "source": {
+    "comment": 6218649130,
+    "round": "R2",
+    "locator": "### es table, 文案（接在地址段落之後）"
+   },
+   "item": "#246(a)",
+   "version": "R2",
+   "path": [
+    "support",
+    "es",
+    "p_md"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "support",
+   "field": "mailto_subject",
+   "source": {
+    "comment": 6218649130,
+    "round": "R2",
+    "locator": "### es table, mailto 主旨"
+   },
+   "item": "#246(b)",
+   "version": "R2",
+   "path": [
+    "support",
+    "es",
+    "subject"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "support",
+   "field": "p",
+   "source": {
+    "comment": 6218649130,
+    "round": "R2",
+    "locator": "### ko table, 文案（接在地址段落之後）"
+   },
+   "item": "#246(a)",
+   "version": "R2",
+   "path": [
+    "support",
+    "ko",
+    "p_md"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "support",
+   "field": "mailto_subject",
+   "source": {
+    "comment": 6218649130,
+    "round": "R2",
+    "locator": "### ko table, mailto 主旨"
+   },
+   "item": "#246(b)",
+   "version": "R2",
+   "path": [
+    "support",
+    "ko",
+    "subject"
+   ]
   }
  ]
 }

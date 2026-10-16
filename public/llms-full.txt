@@ -507,6 +507,8 @@ Help with MarsDawn, the Markdown editor for macOS.
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
 
+Invitations to interview or to speak are welcome too. Write to [support@southern-light.dev](mailto:support@southern-light.dev?subject=Interview%20or%20talk%20invitation).
+
 Please include your macOS version and your MarsDawn version (MarsDawn › About MarsDawn). If something looks wrong, a screenshot or a small sample document helps a lot.
 
 ## Common questions
@@ -3503,6 +3505,8 @@ macOS Markdown 編輯器 MarsDawn 的使用說明。
 ## 寫信給我們
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
+
+也歡迎採訪或演講邀約，請寫信到 [support@southern-light.dev](mailto:support@southern-light.dev?subject=%E6%8E%A1%E8%A8%AA%EF%BC%8F%E6%BC%94%E8%AC%9B%E9%82%80%E7%B4%84)。
 
 請附上你的 macOS 版本與 MarsDawn 版本（MarsDawn › 關於 MarsDawn）。如果畫面看起來不對，附上截圖或一份小的範例文件會很有幫助。
 
@@ -6539,6 +6543,8 @@ macOS Markdown 编辑器 MarsDawn 的使用说明。
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
 
+也欢迎采访或演讲邀约，请写信到 [support@southern-light.dev](mailto:support@southern-light.dev?subject=%E9%87%87%E8%AE%BF%EF%BC%8F%E6%BC%94%E8%AE%B2%E9%82%80%E7%BA%A6)。
+
 请附上你的 macOS 版本与 MarsDawn 版本（MarsDawn › 关于 MarsDawn）。如果画面看起来不对，附上截图或一份小的范例文稿会很有帮助。
 
 ## 常见问题
@@ -9566,6 +9572,8 @@ macOS 向け Markdown エディタ、MarsDawn のヘルプです。
 ## お問い合わせ
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
+
+取材や登壇のご依頼も歓迎します。[support@southern-light.dev](mailto:support@southern-light.dev?subject=%E5%8F%96%E6%9D%90%E3%83%BB%E7%99%BB%E5%A3%87%E3%81%AE%E3%81%94%E4%BE%9D%E9%A0%BC) までご連絡ください。
 
 macOS のバージョンと MarsDawn のバージョン（MarsDawn › MarsDawnについて）を書き添えてください。何かおかしく見える場合は、スクリーンショットや小さなサンプル文書がとても役立ちます。
 
@@ -12595,6 +12603,8 @@ Hilfe zu MarsDawn, dem Markdown-Editor für macOS.
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
 
+Einladungen zu Interviews oder Vorträgen sind ebenfalls willkommen. Schreib an [support@southern-light.dev](mailto:support@southern-light.dev?subject=Einladung%20zu%20Interview%20oder%20Vortrag).
+
 Gib bitte deine macOS-Version und deine MarsDawn-Version an („MarsDawn“ › „Über MarsDawn“). Wenn etwas falsch aussieht, helfen ein Bildschirmfoto oder ein kleines Beispieldokument sehr.
 
 ## Häufige Fragen
@@ -15584,6 +15594,8 @@ De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
 ## Écrivez-nous
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
+
+Les invitations à une interview ou à une conférence sont aussi les bienvenues. Écrivez à [support@southern-light.dev](mailto:support@southern-light.dev?subject=Invitation%20interview%20ou%20conf%C3%A9rence).
 
 Merci d’indiquer votre version de macOS et votre version de MarsDawn (MarsDawn › À propos de MarsDawn). Si quelque chose semble anormal, une capture d’écran ou un petit document d’exemple aide beaucoup.
 
@@ -18575,6 +18587,8 @@ Ayuda con MarsDawn, el editor de Markdown para macOS.
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
 
+También son bienvenidas las invitaciones a entrevistas o charlas. Escribe a [support@southern-light.dev](mailto:support@southern-light.dev?subject=Invitaci%C3%B3n%20a%20entrevista%20o%20charla).
+
 Indica tu versión de macOS y tu versión de MarsDawn (MarsDawn › Acerca de MarsDawn). Si algo se ve mal, una captura de pantalla o un documento de ejemplo pequeño ayuda mucho.
 
 ## Preguntas frecuentes
@@ -21564,6 +21578,8 @@ macOS용 Markdown 편집기 MarsDawn에 관한 도움말입니다.
 ## 문의하기
 
 [support@southern-light.dev](mailto:support@southern-light.dev?subject=MarsDawn%20support)
+
+인터뷰나 강연 요청도 환영합니다. [support@southern-light.dev](mailto:support@southern-light.dev?subject=%EC%9D%B8%ED%84%B0%EB%B7%B0%C2%B7%EA%B0%95%EC%97%B0%20%EC%9A%94%EC%B2%AD)로 보내 주세요.
 
 macOS 버전과 MarsDawn 버전(MarsDawn › MarsDawn에 관하여)을 함께 알려 주십시오. 무언가 이상하게 보인다면 스크린샷이나 작은 샘플 문서가 큰 도움이 됩니다.
 
