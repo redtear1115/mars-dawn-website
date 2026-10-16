@@ -5702,7 +5702,7 @@ def plan_loop_parts(locale: str) -> tuple:
     """(head, tail) of the home page's loop section: its heading and introduction, and the three steps."""
     plan = promo_data.DATA["plan"][locale]
     steps = "\n".join(f"  <li>{step}</li>" for step in plan["steps"])
-    return f'<section class="plan">\n<h2>{plan["h"]}</h2>\n<p>{plan["intro"]}</p>', f"<ol>\n{steps}\n</ol>\n</section>"
+    return f'<h2>{plan["h"]}</h2>\n<p>{plan["intro"]}</p>', f"<ol>\n{steps}\n</ol>"
 
 
 def apply_promo130(merged: dict) -> dict:
