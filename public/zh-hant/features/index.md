@@ -75,7 +75,7 @@ PDF 在任何地方都能打開，也不需要懂 Markdown，所以也適合寄�
 
 ### 縮放、行號和狀態列
 
-原始碼和預覽可以一起縮放，範圍 75% 到 200%。原始碼旁有行號欄；狀態列顯示游標所在的行與欄，以及整份文件或所選文字的字數、字元數和閱讀時間。
+原始碼和預覽可以一起縮放，範圍 50% 到 300%。原始碼旁有行號欄；狀態列顯示游標所在的行與欄，以及整份文件或所選文字的字數、字元數和閱讀時間。
 
 ### 圖片
 
@@ -253,7 +253,7 @@ MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖
 - [English](https://marsdawn.southern-light.dev/features/index.md): A native Mac Markdown editor: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings, margin notes and paper records.
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/features/index.md): Mac 原生的 Markdown 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可以拿去开会、用笔批注，或当纸质存档。
 - [日本語](https://marsdawn.southern-light.dev/ja/features/index.md): Mac ネイティブの Markdown エディタ：リアルタイムプレビュー、Mermaid と数式、テーマに加え、会議や書き込み、紙での保管に使える PDF とプリントのページ。
-- [Deutsch](https://marsdawn.southern-light.dev/de/features/index.md): Ein nativer Markdown-Editor für den Mac: Live-Vorschau, Mermaid und Formeln, Themes sowie saubere PDF- und Druckseiten für Besprechungen, Randnotizen und Papierakten.
-- [Français](https://marsdawn.southern-light.dev/fr/features/index.md): Un éditeur Markdown natif pour Mac : aperçu en direct, Mermaid et formules, thèmes, plus des pages PDF et d’impression propres pour les réunions, les notes en marge et les dossiers papier.
-- [Español](https://marsdawn.southern-light.dev/es/features/index.md): Un editor de Markdown nativo para Mac: vista previa en vivo, Mermaid y fórmulas, temas, además de páginas limpias en PDF y para imprimir en reuniones, notas al margen y archivos en papel.
+- [Deutsch](https://marsdawn.southern-light.dev/de/features/index.md): Nativer Markdown-Editor für den Mac: Live-Vorschau, Mermaid, Formeln, Themes und saubere PDF- und Druckseiten für Besprechungen, Randnotizen und Papierakten.
+- [Français](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Markdown natif pour Mac : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions, notes en marge et dossiers papier.
+- [Español](https://marsdawn.southern-light.dev/es/features/index.md): Editor de Markdown nativo para Mac: vista previa, Mermaid, fórmulas, temas y páginas en PDF o impresas para reuniones, notas al margen y registros en papel.
 - [한국어](https://marsdawn.southern-light.dev/ko/features/index.md): Mac 네이티브 Markdown 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 그리고 회의와 여백 메모, 종이 기록에 쓸 수 있는 깔끔한 PDF와 프린트 페이지.

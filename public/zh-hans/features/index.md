@@ -1,6 +1,6 @@
 # MarsDawn 能做的事，一页看完。
 
-MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后的页面，图表、数学公式和代码都画在里面。它没有自己的 AI 模型：做它是为了读 agent 写的东西，也让你写自己的。工作换到会议桌或档案柜上时，它也能打印、导出干净的页面。
+MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后的页面，图表、数学公式和代码都画在里面。它没有自己的 AI 模型：做它是为了读代理写的东西，也让你写自己的。工作换到会议桌或档案柜上时，它也能打印、导出干净的页面。
 
 下面每一节说明 app 做了什么，并链接到讲得更细的页面。
 
@@ -13,7 +13,7 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后�
 3. ⌘1 源代码、⌘2 并排、⌘3 预览。
 4. 页面会随着打字更新。
 
-## 读 agent 写的 Markdown
+## 读代理写的 Markdown
 
 ### 源代码和预览并排
 
@@ -23,13 +23,13 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后�
 
 ### 大纲和文件边栏
 
-边栏的“大纲”列出文稿的标题，点按一下就跳到该处。打开文件夹后，“文件”标签列出里面的文件；agent 正在写入时，新文件会自动出现。如果文件夹是 git 检出，上方标题会写出是哪个分支或工作树。
+边栏的“大纲”列出文稿的标题，点按一下就跳到该处。打开文件夹后，“文件”标签列出里面的文件；代理正在写入时，新文件会自动出现。如果文件夹是 git 检出，上方标题会写出是哪个分支或工作树。
 
 [读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)
 
 ### 指出确切的那一行
 
-“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 `docs/plan.md:42`。“拷贝给 AI”再附上所选的文字。粘贴到 agent 的对话里就行。
+“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 `docs/plan.md:42`。“拷贝给 AI”再附上所选的文字。粘贴到代理的对话里就行。
 
 [读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)
 
@@ -75,7 +75,7 @@ PDF 在任何地方都能打开，也不需要懂 Markdown，所以也适合发�
 
 ### 缩放、行号和状态栏
 
-源代码和预览可以一起缩放，范围 75% 到 200%。源代码旁有行号栏；状态栏显示光标所在的行与列，以及整份文稿或所选文字的字数、字符数和阅读时间。
+源代码和预览可以一起缩放，范围 50% 到 300%。源代码旁有行号栏；状态栏显示光标所在的行与列，以及整份文稿或所选文字的字数、字符数和阅读时间。
 
 ### 图像
 
@@ -121,7 +121,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 ### 更多主题
 
-“设置 ▸ 外观 ▸ 获取更多主题…”会打开额外预览主题的主题库。装上一个，它就出现在“显示 ▸ 预览主题”里；点按“移除”就拿掉。主题库只在打开的时候连上网络。
+“设置 ▸ 外观 ▸ 获取更多主题…”会打开额外预览主题的主题图库。装上一个，它就出现在“显示 ▸ 预览主题”里；点按“移除”就拿掉。主题图库只在打开的时候连上网络。
 
 [主题库](/zh-hans/themes/gallery/) · [打造一个主题](/zh-hans/themes/new/)
 
@@ -162,7 +162,7 @@ MarsDawn 也能打开纯文本文件（`.txt`、`.log`、代码文件）和 PDF�
 
 [你写的内容留在你的 Mac 上](/zh-hans/yours/)
 
-## 给 agent 和脚本
+## 给代理和脚本
 
 ### 免费的命令行工具
 
@@ -172,19 +172,19 @@ MarsDawn 也能打开纯文本文件（`.txt`、`.log`、代码文件）和 PDF�
 
 ### 脚本读得懂的输出
 
-加上 `--json`，两个命令都会返回 agent 或脚本能解析的结果。
+加上 `--json`，两个命令都会返回代理或脚本能解析的结果。
 
 [给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)
 
 ### Skill 和 MCP 服务器
 
-一个 agent skill 文件，教写代码的 agent 把自己写的东西在 MarsDawn 里打开给你审阅。没有 shell 的客户端，则可以用另外的 MCP 服务器执行同一个 export。
+一个代理技能文件，教写代码的代理把自己写的东西在 MarsDawn 里打开给你审阅。没有 shell 的客户端，则可以用另外的 MCP 服务器执行同一个 export。
 
 [给 agent 的 skill](/zh-hans/cli/skill/) · [MCP 服务器](/zh-hans/cli/mcp/)
 
 ### 里面没有 AI
 
-MarsDawn 没有自己的 AI 模型。它不会帮你摘要或评分 agent 写的东西，只是让一份又长又一直在改的文件保持好读，读的人是你。
+MarsDawn 没有自己的 AI 模型。它不会帮你摘要或评分代理写的东西，只是让一份又长又一直在改的文件保持好读，读的人是你。
 
 [MarsDawn 做不到的事](/zh-hans/limits/)
 
@@ -253,7 +253,7 @@ MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁
 - [English](https://marsdawn.southern-light.dev/features/index.md): A native Mac Markdown editor: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings, margin notes and paper records.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/features/index.md): Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。
 - [日本語](https://marsdawn.southern-light.dev/ja/features/index.md): Mac ネイティブの Markdown エディタ：リアルタイムプレビュー、Mermaid と数式、テーマに加え、会議や書き込み、紙での保管に使える PDF とプリントのページ。
-- [Deutsch](https://marsdawn.southern-light.dev/de/features/index.md): Ein nativer Markdown-Editor für den Mac: Live-Vorschau, Mermaid und Formeln, Themes sowie saubere PDF- und Druckseiten für Besprechungen, Randnotizen und Papierakten.
-- [Français](https://marsdawn.southern-light.dev/fr/features/index.md): Un éditeur Markdown natif pour Mac : aperçu en direct, Mermaid et formules, thèmes, plus des pages PDF et d’impression propres pour les réunions, les notes en marge et les dossiers papier.
-- [Español](https://marsdawn.southern-light.dev/es/features/index.md): Un editor de Markdown nativo para Mac: vista previa en vivo, Mermaid y fórmulas, temas, además de páginas limpias en PDF y para imprimir en reuniones, notas al margen y archivos en papel.
+- [Deutsch](https://marsdawn.southern-light.dev/de/features/index.md): Nativer Markdown-Editor für den Mac: Live-Vorschau, Mermaid, Formeln, Themes und saubere PDF- und Druckseiten für Besprechungen, Randnotizen und Papierakten.
+- [Français](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Markdown natif pour Mac : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions, notes en marge et dossiers papier.
+- [Español](https://marsdawn.southern-light.dev/es/features/index.md): Editor de Markdown nativo para Mac: vista previa, Mermaid, fórmulas, temas y páginas en PDF o impresas para reuniones, notas al margen y registros en papel.
 - [한국어](https://marsdawn.southern-light.dev/ko/features/index.md): Mac 네이티브 Markdown 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 그리고 회의와 여백 메모, 종이 기록에 쓸 수 있는 깔끔한 PDF와 프린트 페이지.

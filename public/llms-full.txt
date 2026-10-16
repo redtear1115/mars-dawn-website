@@ -147,7 +147,7 @@ Bold, italic, strikethrough, inline code, links, block quotes and task lists all
 
 ### Zoom, line numbers and a status bar
 
-Zoom the source and preview together from 75% to 200%. A line-number gutter runs beside the source, and the status bar shows your line and column, plus word and character counts and reading time for the document or your selection.
+Zoom the source and preview together from 50% to 300%. A line-number gutter runs beside the source, and the status bar shows your line and column, plus word and character counts and reading time for the document or your selection.
 
 ### Images
 
@@ -3048,7 +3048,7 @@ PDF 在任何地方都能打開，也不需要懂 Markdown，所以也適合寄�
 
 ### 縮放、行號和狀態列
 
-原始碼和預覽可以一起縮放，範圍 75% 到 200%。原始碼旁有行號欄；狀態列顯示游標所在的行與欄，以及整份文件或所選文字的字數、字元數和閱讀時間。
+原始碼和預覽可以一起縮放，範圍 50% 到 300%。原始碼旁有行號欄；狀態列顯示游標所在的行與欄，以及整份文件或所選文字的字數、字元數和閱讀時間。
 
 ### 圖片
 
@@ -5912,7 +5912,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/features/
 
 # MarsDawn 能做的事，一页看完。
 
-MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后的页面，图表、数学公式和代码都画在里面。它没有自己的 AI 模型：做它是为了读 agent 写的东西，也让你写自己的。工作换到会议桌或档案柜上时，它也能打印、导出干净的页面。
+MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后的页面，图表、数学公式和代码都画在里面。它没有自己的 AI 模型：做它是为了读代理写的东西，也让你写自己的。工作换到会议桌或档案柜上时，它也能打印、导出干净的页面。
 
 下面每一节说明 app 做了什么，并链接到讲得更细的页面。
 
@@ -5925,7 +5925,7 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后�
 3. ⌘1 源代码、⌘2 并排、⌘3 预览。
 4. 页面会随着打字更新。
 
-## 读 agent 写的 Markdown
+## 读代理写的 Markdown
 
 ### 源代码和预览并排
 
@@ -5935,13 +5935,13 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后�
 
 ### 大纲和文件边栏
 
-边栏的“大纲”列出文稿的标题，点按一下就跳到该处。打开文件夹后，“文件”标签列出里面的文件；agent 正在写入时，新文件会自动出现。如果文件夹是 git 检出，上方标题会写出是哪个分支或工作树。
+边栏的“大纲”列出文稿的标题，点按一下就跳到该处。打开文件夹后，“文件”标签列出里面的文件；代理正在写入时，新文件会自动出现。如果文件夹是 git 检出，上方标题会写出是哪个分支或工作树。
 
 [读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)
 
 ### 指出确切的那一行
 
-“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 `docs/plan.md:42`。“拷贝给 AI”再附上所选的文字。粘贴到 agent 的对话里就行。
+“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 `docs/plan.md:42`。“拷贝给 AI”再附上所选的文字。粘贴到代理的对话里就行。
 
 [读懂 agent 交回来的 Markdown](/zh-hans/reading-agent-output/)
 
@@ -5987,7 +5987,7 @@ PDF 在任何地方都能打开，也不需要懂 Markdown，所以也适合发�
 
 ### 缩放、行号和状态栏
 
-源代码和预览可以一起缩放，范围 75% 到 200%。源代码旁有行号栏；状态栏显示光标所在的行与列，以及整份文稿或所选文字的字数、字符数和阅读时间。
+源代码和预览可以一起缩放，范围 50% 到 300%。源代码旁有行号栏；状态栏显示光标所在的行与列，以及整份文稿或所选文字的字数、字符数和阅读时间。
 
 ### 图像
 
@@ -6033,7 +6033,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 ### 更多主题
 
-“设置 ▸ 外观 ▸ 获取更多主题…”会打开额外预览主题的主题库。装上一个，它就出现在“显示 ▸ 预览主题”里；点按“移除”就拿掉。主题库只在打开的时候连上网络。
+“设置 ▸ 外观 ▸ 获取更多主题…”会打开额外预览主题的主题图库。装上一个，它就出现在“显示 ▸ 预览主题”里；点按“移除”就拿掉。主题图库只在打开的时候连上网络。
 
 [主题库](/zh-hans/themes/gallery/) · [打造一个主题](/zh-hans/themes/new/)
 
@@ -6074,7 +6074,7 @@ MarsDawn 也能打开纯文本文件（`.txt`、`.log`、代码文件）和 PDF�
 
 [你写的内容留在你的 Mac 上](/zh-hans/yours/)
 
-## 给 agent 和脚本
+## 给代理和脚本
 
 ### 免费的命令行工具
 
@@ -6084,19 +6084,19 @@ MarsDawn 也能打开纯文本文件（`.txt`、`.log`、代码文件）和 PDF�
 
 ### 脚本读得懂的输出
 
-加上 `--json`，两个命令都会返回 agent 或脚本能解析的结果。
+加上 `--json`，两个命令都会返回代理或脚本能解析的结果。
 
 [给 AI agent 的 marsdawn 参考](/zh-hans/cli/agents/)
 
 ### Skill 和 MCP 服务器
 
-一个 agent skill 文件，教写代码的 agent 把自己写的东西在 MarsDawn 里打开给你审阅。没有 shell 的客户端，则可以用另外的 MCP 服务器执行同一个 export。
+一个代理技能文件，教写代码的代理把自己写的东西在 MarsDawn 里打开给你审阅。没有 shell 的客户端，则可以用另外的 MCP 服务器执行同一个 export。
 
 [给 agent 的 skill](/zh-hans/cli/skill/) · [MCP 服务器](/zh-hans/cli/mcp/)
 
 ### 里面没有 AI
 
-MarsDawn 没有自己的 AI 模型。它不会帮你摘要或评分 agent 写的东西，只是让一份又长又一直在改的文件保持好读，读的人是你。
+MarsDawn 没有自己的 AI 模型。它不会帮你摘要或评分代理写的东西，只是让一份又长又一直在改的文件保持好读，读的人是你。
 
 [MarsDawn 做不到的事](/zh-hans/limits/)
 
@@ -8919,7 +8919,7 @@ PDF はどんなアプリでも開け、Markdown の知識も要らないので�
 
 ### 拡大・縮小、行番号、ステータスバー
 
-ソースとプレビューを一緒に 75% から 200% まで拡大・縮小できます。ソースの横には行番号の欄があり、ステータスバーにはカーソルの行と列、そして書類または選択範囲の文字数、単語数、読む時間が表示されます。
+ソースとプレビューを一緒に 50% から 300% まで拡大・縮小できます。ソースの横には行番号の欄があり、ステータスバーにはカーソルの行と列、そして書類または選択範囲の文字数、単語数、読む時間が表示されます。
 
 ### イメージ
 
@@ -11851,7 +11851,7 @@ Fett, kursiv, durchgestrichen, Inline-Code, Links, Zitate und Aufgabenlisten fun
 
 ### Zoom, Zeilennummern und eine Statusleiste
 
-Zoome Quelltext und Vorschau gemeinsam von 75 % bis 200 %. Neben dem Quelltext läuft eine Spalte mit Zeilennummern, und die Statusleiste zeigt Zeile und Spalte sowie Wort- und Zeichenzahl und die Lesezeit für das Dokument oder deine Auswahl.
+Zoome Quelltext und Vorschau gemeinsam von 50 % bis 300 %. Neben dem Quelltext läuft eine Spalte mit Zeilennummern, und die Statusleiste zeigt Zeile und Spalte sowie Wort- und Zeichenzahl und die Lesezeit für das Dokument oder deine Auswahl.
 
 ### Bilder
 
@@ -11940,7 +11940,7 @@ Es gibt kein Konto, keine Synchronisierung und keine Cloud. Dokumente bleiben do
 
 ## Für Agenten und Skripte
 
-### Ein kostenloses Kommandozeilenwerkzeug
+### Ein kostenloses Befehlszeilenwerkzeug
 
 Das kostenlose Werkzeug `marsdawn` wird separat mit Homebrew installiert. `marsdawn export` macht aus einer Markdown-Datei ein PDF, gerendert wie die Vorschau von MarsDawn; die App braucht es dafür nicht. Mit `--theme` wählst du ein Theme, als Papierformat A4 oder Letter. `marsdawn open` öffnet Dateien in der App, damit du sie prüfen kannst, auf Wunsch an einer bestimmten Zeile, und braucht die installierte App.
 
@@ -14745,7 +14745,7 @@ Le gras, l’italique, le barré, le code en ligne, les liens, les citations et 
 
 ### Zoom, numéros de ligne et barre d’état
 
-Zoomez ensemble sur la source et l’aperçu, de 75 % à 200 %. Une marge de numéros de ligne longe la source, et la barre d’état indique votre ligne et votre colonne, ainsi que le nombre de mots et de caractères et le temps de lecture du document ou de votre sélection.
+Zoomez ensemble sur la source et l’aperçu, de 50 % à 300 %. Une marge de numéros de ligne longe la source, et la barre d’état indique votre ligne et votre colonne, ainsi que le nombre de mots et de caractères et le temps de lecture du document ou de votre sélection.
 
 ### Images
 
@@ -17639,7 +17639,7 @@ La negrita, la cursiva, el tachado, el código en línea, los enlaces, las citas
 
 ### Zoom, números de línea y barra de estado
 
-Acerca y aleja el código y la vista previa a la vez, del 75 % al 200 %. Junto al código hay un margen con números de línea, y la barra de estado muestra tu línea y columna, además del recuento de palabras y caracteres y el tiempo de lectura del documento o de tu selección.
+Acerca y aleja el código y la vista previa a la vez, del 50 % al 300 %. Junto al código hay un margen con números de línea, y la barra de estado muestra tu línea y columna, además del recuento de palabras y caracteres y el tiempo de lectura del documento o de tu selección.
 
 ### Imágenes
 
@@ -20533,7 +20533,7 @@ PDF는 어디서나 열리고 Markdown을 몰라도 되므로, 상사나 고객�
 
 ### 확대/축소, 행 번호, 상태 막대
 
-소스와 미리보기를 함께 75%에서 200%까지 확대/축소할 수 있습니다. 소스 옆에는 행 번호 여백이 있고, 상태 막대에는 현재 행과 열, 그리고 문서 또는 선택 영역의 단어 수와 글자 수, 읽는 시간이 표시됩니다.
+소스와 미리보기를 함께 50%에서 300%까지 확대/축소할 수 있습니다. 소스 옆에는 행 번호 여백이 있고, 상태 막대에는 현재 행과 열, 그리고 문서 또는 선택 영역의 단어 수와 글자 수, 읽는 시간이 표시됩니다.
 
 ### 이미지
 
