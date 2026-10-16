@@ -25,8 +25,8 @@ try {
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>让写程序的 agent 把 Markdown 转 PDF 的 skill · MarsDawn</title>
-<meta name="description" content="一个文件，让写程序的 agent 把自己写的 Markdown 在 MarsDawn 里打开给你审阅，也学会安装 marsdawn、把 Markdown 导出成 PDF，并读懂 JSON 结果。">
+<title>让写程序的代理把 Markdown 转 PDF 的 skill · MarsDawn</title>
+<meta name="description" content="一个文件，让写程序的代理把自己写的 Markdown 在 MarsDawn 里打开给你审阅，也学会安装 marsdawn、把 Markdown 导出成 PDF，并读懂 JSON 结果。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -41,8 +41,8 @@ try {
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/cli/skill/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/cli/skill/">
 <link rel="alternate" type="text/markdown" href="/zh-hans/cli/skill/index.md">
-<meta property="og:title" content="让写程序的 agent 把 Markdown 转 PDF 的 skill · MarsDawn">
-<meta property="og:description" content="一个文件，让写程序的 agent 把自己写的 Markdown 在 MarsDawn 里打开给你审阅，也学会安装 marsdawn、把 Markdown 导出成 PDF，并读懂 JSON 结果。">
+<meta property="og:title" content="让写程序的代理把 Markdown 转 PDF 的 skill · MarsDawn">
+<meta property="og:description" content="一个文件，让写程序的代理把自己写的 Markdown 在 MarsDawn 里打开给你审阅，也学会安装 marsdawn、把 Markdown 导出成 PDF，并读懂 JSON 结果。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/cli/skill/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -51,7 +51,7 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hans/"}, {"@type": "ListItem", "position": 2, "name": "命令行工具", "item": "https://marsdawn.southern-light.dev/zh-hans/cli/"}, {"@type": "ListItem", "position": 3, "name": "给 agent 的 skill", "item": "https://marsdawn.southern-light.dev/zh-hans/cli/skill/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hans/"}, {"@type": "ListItem", "position": 2, "name": "命令行工具", "item": "https://marsdawn.southern-light.dev/zh-hans/cli/"}, {"@type": "ListItem", "position": 3, "name": "给代理的 skill", "item": "https://marsdawn.southern-light.dev/zh-hans/cli/skill/"}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -74,10 +74,10 @@ try {
 </header>
 <main id="main">
 <section class="intro">
-  <h1>让 agent 把写好的文稿拿给你看，也帮你做出 PDF。</h1>
-  <p>这个 skill 是一个 Markdown 文件。它教写程序的 agent 把自己写的文稿在 MarsDawn 里打开给你审阅，也教它安装 <code>marsdawn</code>、确认它能用、把文稿导出成 PDF 并读懂结果。</p>
+  <h1>让代理把写好的文稿拿给你看，也帮你做出 PDF。</h1>
+  <p>这个 skill 是一个 Markdown 文件。它教写程序的代理把自己写的文稿在 MarsDawn 里打开给你审阅，也教它安装 <code>marsdawn</code>、确认它能用、把文稿导出成 PDF 并读懂结果。</p>
 </section>
-<div class="summary"><p><strong>一个 Markdown 文件，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 会安装 <code>marsdawn</code>、导出 PDF 并读懂 JSON 结果；运行任何命令之前，它还是会先问你。</p></div>
+<div class="summary"><p><strong>一个 Markdown 文件，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的代理会安装 <code>marsdawn</code>、导出 PDF 并读懂 JSON 结果；运行任何命令之前，它还是会先问你。</p></div>
 <h2 id="install-it-in-claude-code">在 Claude Code 中安装</h2>
 <p>命令行工具 <code>marsdawn</code> 会帮你写好这个 skill，写进去的内容和你已安装的 <code>marsdawn</code> 版本相符。如果还没有 <code>marsdawn</code>，先用 <a href="https://brew.sh">Homebrew</a> 安装：</p>
 <pre><code>brew install redtear1115/tap/marsdawn</code></pre>
@@ -109,10 +109,10 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 </ul>
 <h2 id="what-it-doesn-t-do">它不会做的事</h2>
 <ul>
-  <li>它不会自己取得运行任何东西的权限。你的 agent 在安装或运行 <code>marsdawn</code> 之前，仍然会先问你，就像运行其他命令一样。</li>
+  <li>它不会自己取得运行任何东西的权限。你的代理在安装或运行 <code>marsdawn</code> 之前，仍然会先问你，就像运行其他命令一样。</li>
   <li>它不会把你的文稿传到任何地方。<code>marsdawn</code> 在你的 Mac 上产生 PDF，除非你加上 <code>--allow-remote-images</code>，否则不会加载网络上的图片。</li>
 </ul>
-<p>完整的规格，每个字段和每个代码，都在<a href="/zh-hans/cli/agents/">给 AI agent 的 marsdawn 参考</a>里。</p>
+<p>完整的规格，每个字段和每个代码，都在<a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a>里。</p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="网站">

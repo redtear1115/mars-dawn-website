@@ -78,22 +78,22 @@ try {
   <h1>Andrew Ng 自己帮四种设计模式的可预测程度排序</h1>
 </section>
 
-<div class="summary"><p><strong>2024 年初，Andrew Ng 在 The Batch 用五篇文章介绍了四种 agentic 设计模式&#8212;&#8212;reflection（反思）、tool use（使用工具）、planning（规划）、multi-agent collaboration（多 agent 协作）&#8212;&#8212;而且很少见地直接告诉读者，这四种里他觉得哪两种比较可靠、哪两种难以预测。</strong></p></div>
+<div class="summary"><p><strong>2024 年初，Andrew Ng 在 The Batch 用五篇文章介绍了四种 agentic 设计模式&#8212;&#8212;reflection（反思）、tool use（使用工具）、planning（规划）、multi-agent collaboration（多代理协作）&#8212;&#8212;而且很少见地直接告诉读者，这四种里他觉得哪两种比较可靠、哪两种难以预测。</strong></p></div>
 
 <h2 id="what-the-letters-argue">这几篇文章主张什么</h2>
-<p>《<a href="/zh-hans/agent-design-patterns/">四种 agent 设计模式，各自会交给你什么文件</a>》已经完整谈过这四种模式各自是什么、当成我们自己的推论各自通常会交给你什么文件，还有 Ng 自己对 planning 的评语，引自 Part 4：“while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications&#8217; performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do”（Reflection 和 Tool Use 这两种设计模式我都能让它们稳定运作、提升应用程序的表现，但 Planning 还是比较不成熟的技术，我很难事先预测它会怎么做）。这篇要补的，是那篇没用到的另外两封信里同一个排序：Part 3，写在 Part 4 之前一周，先讲出了这个排序；Part 5，把排序延伸到 Part 4 没提到的那一种模式&#8212;&#8212;multi-agent collaboration。在介绍 tool use 的 Part 3 里，他写道：</p>
+<p>《<a href="/zh-hans/agent-design-patterns/">四种代理设计模式，各自会交给你什么文件</a>》已经完整谈过这四种模式各自是什么、当成我们自己的推论各自通常会交给你什么文件，还有 Ng 自己对 planning 的评语，引自 Part 4：“while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications&#8217; performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do”（Reflection 和 Tool Use 这两种设计模式我都能让它们稳定运作、提升应用程序的表现，但 Planning 还是比较不成熟的技术，我很难事先预测它会怎么做）。这篇要补的，是那篇没用到的另外两封信里同一个排序：Part 3，写在 Part 4 之前一周，先讲出了这个排序；Part 5，把排序延伸到 Part 4 没提到的那一种模式&#8212;&#8212;multi-agent collaboration。在介绍 tool use 的 Part 3 里，他写道：</p>
 <blockquote><p>&#8220;In future letters, I&#8217;ll describe the Planning and Multi-agent collaboration design patterns. They allow AI agents to do much more but are less mature, less predictable &#8212; albeit very exciting &#8212; technologies.&#8221;</p></blockquote>
-<p>（在接下来的信里，我会介绍 Planning 和 Multi-agent collaboration 这两种设计模式。它们能让 AI agent 做到更多事，但也是比较不成熟、比较难预测的技术&#8212;&#8212;虽然非常令人兴奋。）</p>
+<p>（在接下来的信里，我会介绍 Planning 和 Multi-agent collaboration 这两种设计模式。它们能让 AI 代理做到更多事，但也是比较不成熟、比较难预测的技术&#8212;&#8212;虽然非常令人兴奋。）</p>
 <p>两周后，他在系列最后一篇谈 multi-agent collaboration 时，从另一个角度确认了同样的排序：</p>
 <blockquote><p>&#8220;Like the design pattern of Planning, I find the output quality of multi-agent collaboration hard to predict, especially when allowing agents to interact freely and providing them with multiple tools. The more mature patterns of Reflection and Tool Use are more reliable.&#8221;</p></blockquote>
-<p>（就像 Planning 这个设计模式一样，我发现 multi-agent collaboration 的输出质量很难预测，尤其是让 agent 之间自由互动、又给它们多种工具的时候。比较成熟的 Reflection 和 Tool Use 模式则可靠得多。）</p>
+<p>（就像 Planning 这个设计模式一样，我发现 multi-agent collaboration 的输出质量很难预测，尤其是让代理之间自由互动、又给它们多种工具的时候。比较成熟的 Reflection 和 Tool Use 模式则可靠得多。）</p>
 <p>他讲的是这几种模式对他自己应用程序表现的提升效果，不是在谈应该多仔细审阅它们的产出&#8212;&#8212;这个系列完全没有主张要人工审阅，也没有提到 MarsDawn 或推荐任何 Markdown 工具。</p>
 
 <h2 id="our-reading-not-ng-s">以下是我们的解读，不是 Ng 的</h2>
-<p>Ng 的排序谈的是开发者视角下的输出质量和可预测性，但大致对应到每种模式留下的记录，从你的角度该花多少心力去查。他觉得比较可靠的 reflection 和 tool use，通常会交给你描述“已经做完的事”的东西&#8212;&#8212;一份改过的草稿、一份跑了什么的报告&#8212;&#8212;所以拿里面一个宣称去对照真正的输出，通常就能覆盖大部分风险。他觉得难以预测的 planning 和 multi-agent collaboration，通常会交给你“事情发生之前”写好的东西，或是分散在好几个 agent 手上的好几份文件：一份还在等你点头的计划，或是还没被实际执行验证过的 agent 交接。照他自己的说法，这两种正是“写下来的东西”和“实际会发生的事”落差最大的地方&#8212;&#8212;这也正是《五分钟审完一份 agent 计划》从 Chip Huyen 那篇文章里引出的道理，在“为什么要在执行前审”那一段：在事情跑之前抓到问题，是最便宜的时机。</p>
+<p>Ng 的排序谈的是开发者视角下的输出质量和可预测性，但大致对应到每种模式留下的记录，从你的角度该花多少心力去查。他觉得比较可靠的 reflection 和 tool use，通常会交给你描述“已经做完的事”的东西&#8212;&#8212;一份改过的草稿、一份跑了什么的报告&#8212;&#8212;所以拿里面一个宣称去对照真正的输出，通常就能覆盖大部分风险。他觉得难以预测的 planning 和 multi-agent collaboration，通常会交给你“事情发生之前”写好的东西，或是分散在好几个代理手上的好几份文件：一份还在等你点头的计划，或是还没被实际执行验证过的代理交接。照他自己的说法，这两种正是“写下来的东西”和“实际会发生的事”落差最大的地方&#8212;&#8212;这也正是《五分钟审完一份代理计划》从 Chip Huyen 那篇文章里引出的道理，在“为什么要在执行前审”那一段：在事情跑之前抓到问题，是最便宜的时机。</p>
 
 <h2 id="where-marsdawn-helps-and-where-it-doesn-t">MarsDawn 帮得上、帮不上的地方</h2>
-<p>MarsDawn 不知道一份文件是 Ng 四种模式里哪一种做出来的，也不会替任何东西按可预测程度排序，里面也没有 AI 模型&#8212;&#8212;他排序背后暗示值得做的那些检查，它不会替你做。它做的是让文件在你自己检查的时候保持好读：侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页看得出一份长计划的架构；源代码和排好的预览并排（&#8984;2）；multi-agent 交接的情况下，用“文件 &#9656; 打开文件夹&#8230;”（&#8679;&#8984;O）打开共用的文件夹，不同 agent 写出新文件时，大约一秒内就会出现在“文件”标签页，清单上方也会标出 git 分支或工作树，两份不同 agent 写的同名文件就不会搞混。</p>
+<p>MarsDawn 不知道一份文件是 Ng 四种模式里哪一种做出来的，也不会替任何东西按可预测程度排序，里面也没有 AI 模型&#8212;&#8212;他排序背后暗示值得做的那些检查，它不会替你做。它做的是让文件在你自己检查的时候保持好读：侧边栏（“显示 &#9656; 显示边栏”，&#8963;&#8984;S）的“大纲”标签页看得出一份长计划的架构；源代码和排好的预览并排（&#8984;2）；多代理交接的情况下，用“文件 &#9656; 打开文件夹&#8230;”（&#8679;&#8984;O）打开共用的文件夹，不同代理写出新文件时，大约一秒内就会出现在“文件”标签页，清单上方也会标出 git 分支或工作树，两份不同代理写的同名文件就不会搞混。</p>
 
 <h2 id="try-it">试试看</h2>
 <p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具现在就能用：</p>
@@ -103,8 +103,8 @@ try {
 
 <h2 id="next">接下来</h2>
 <ul>
-  <li>每种模式完整会交给你什么文件：《<a href="/zh-hans/agent-design-patterns/">四种 agent 设计模式，各自会交给你什么文件</a>》</li>
-  <li>执行前五分钟审完一份计划的方法：《<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份 agent 计划</a>》</li>
+  <li>每种模式完整会交给你什么文件：《<a href="/zh-hans/agent-design-patterns/">四种代理设计模式，各自会交给你什么文件</a>》</li>
+  <li>执行前五分钟审完一份计划的方法：《<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份代理计划</a>》</li>
   <li>回到系列索引：《<a href="/zh-hans/reading-notes/">编者的阅读笔记</a>》</li>
 </ul>
 
