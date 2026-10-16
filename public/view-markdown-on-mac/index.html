@@ -25,8 +25,8 @@ try {
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How to view a Markdown file on a Mac · MarsDawn</title>
-<meta name="description" content="A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: in MarsDawn, free to download from the Mac App Store, or as a PDF with the free marsdawn command-line tool.">
+<title>How to open .md files on Mac · MarsDawn</title>
+<meta name="description" content="How to open a .md file on a Mac: double-click, set a default app, preview in Finder. For .md files an AI agent wrote, read them rendered in MarsDawn.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -41,8 +41,8 @@ try {
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/view-markdown-on-mac/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/view-markdown-on-mac/">
 <link rel="alternate" type="text/markdown" href="/view-markdown-on-mac/index.md">
-<meta property="og:title" content="How to view a Markdown file on a Mac · MarsDawn">
-<meta property="og:description" content="A .md file is plain text with formatting marks in it. Here is how to read it rendered on a Mac: in MarsDawn, free to download from the Mac App Store, or as a PDF with the free marsdawn command-line tool.">
+<meta property="og:title" content="How to open .md files on Mac · MarsDawn">
+<meta property="og:description" content="How to open a .md file on a Mac: double-click, set a default app, preview in Finder. For .md files an AI agent wrote, read them rendered in MarsDawn.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/view-markdown-on-mac/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -51,7 +51,8 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/"}, {"@type": "ListItem", "position": 2, "name": "View Markdown on a Mac", "item": "https://marsdawn.southern-light.dev/view-markdown-on-mac/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/"}, {"@type": "ListItem", "position": 2, "name": "How to open .md files on Mac", "item": "https://marsdawn.southern-light.dev/view-markdown-on-mac/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a .md file?", "acceptedAnswer": {"@type": "Answer", "text": "A .md file is a plain text file written in Markdown, a way of marking up text with simple characters: # for a heading, ** around bold, a pipe for a table cell. The extensions .markdown, .mdown, .mkd and .mkdn mean the same thing. Developers use it for READMEs and docs, and AI agents often hand back their plans and reports as .md files."}}, {"@type": "Question", "name": "Why does my .md file open as plain text, with # and ** marks in it?", "acceptedAnswer": {"@type": "Answer", "text": "Because it is plain text, and a plain text editor shows it as it is. Nothing is wrong with the file. To see headings, bold, tables and diagrams, open it in an app that renders Markdown. In MarsDawn the rendered page sits next to the source."}}, {"@type": "Question", "name": "Why does it open with garbled characters?", "acceptedAnswer": {"@type": "Answer", "text": "Garbled characters usually mean the file was saved in a text encoding other than UTF-8, and the app that opened it guessed wrong. The fix is to save a UTF-8 copy. MarsDawn opens a plain text file that isn't UTF-8 read-only, names the encoding it read it as in a bar at the top of the window, and offers Save As UTF-8… there, or File ▸ Save As… (⌥⇧⌘S), to write a UTF-8 copy you can edit."}}, {"@type": "Question", "name": "Can I turn a .md file into a PDF?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. In MarsDawn, choose File ▸ Export as PDF… (⌥⌘E) or File ▸ Print…; the pages are paginated, with diagrams drawn in and code highlighted, in the theme's light colors. Without the app, the free marsdawn export command-line tool makes the same PDF: marsdawn export notes.md. See PDF export and Markdown to PDF."}}, {"@type": "Question", "name": "Can I open the .md files my AI agent wrote?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, that is what MarsDawn is built for. Open the file and read the rendered page next to its source; when the agent revises it, open it again. An agent can also run marsdawn open plan.md to open the file in MarsDawn for you. See Reading what your agent hands back."}}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -74,17 +75,23 @@ try {
 </header>
 <main id="main">
 <section class="intro">
-  <h1>How to view a Markdown file on a Mac.</h1>
-  <p>A <code>.md</code> file is plain text. The headings, bold words, tables and diagrams are written as marks: <code>#</code> for a heading, <code>**</code> around bold, pipes for a table, a <code>mermaid</code> code block for a diagram. Open it in a plain text editor and you read the marks. To read the page the way its author meant, something has to render it.</p>
+  <h1>How to open .md files on Mac.</h1>
+  <p>Double-click it. If your Mac opens it in a text editor and you see <code>#</code> and <code>**</code> instead of headings and bold, the file is fine: a <code>.md</code> file is plain text, and that editor is showing the text as it is. Open it in an app that renders Markdown, such as MarsDawn, and make that app the default so every <code>.md</code> file opens there.</p>
 </section>
+<p>A <code>.md</code> file is plain text. The headings, bold words, tables and diagrams are written as marks: <code>#</code> for a heading, <code>**</code> around bold, pipes for a table, a <code>mermaid</code> code block for a diagram. Open it in a plain text editor and you read the marks. To read the page the way its author meant, something has to render it.</p>
+<h2 id="open-a-md-file-on-your-mac">Open a .md file on your Mac</h2>
+<ol>
+  <li><strong>Double-click the file.</strong> It opens in the app your Mac has set for <code>.md</code> files. With no Markdown app, that is often a plain text editor, which shows the marks instead of the page.</li>
+  <li><strong>Pick the app yourself.</strong> Control-click the file and choose Open With, then the app. Or choose File ▸ Get Info (⌘I), pick an app under "Open with:", and click "Change All…" so every file of this type opens there. MarsDawn opens <code>.md</code>, <code>.markdown</code>, <code>.mdown</code>, <code>.mkd</code> and <code>.mkdn</code> files.</li>
+  <li><strong>Preview without opening it.</strong> Select the file in Finder and press Space. With MarsDawn installed, Quick Look shows the rendered page, diagrams included.</li>
+</ol>
 <h2 id="read-it-in-marsdawn">Read it in MarsDawn</h2>
 <p>MarsDawn is a Markdown editor for the Mac. It is free to download from the Mac App Store: try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account. It needs macOS 26 or later.</p>
 <p><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-view-markdown-on-mac&amp;mt=8">Download MarsDawn free on the Mac App Store</a></p>
 <p>Open a <code>.md</code> file and read the rendered page next to the source:</p>
 <ul>
   <li>The preview updates as you type, and the two panes scroll together.</li>
-  <li>Mermaid flowcharts and sequence diagrams are drawn in the preview, and code blocks are highlighted.</li>
-  <li>In Finder, press Space on a Markdown file for a Quick Look preview, diagrams included.</li>
+  <li><a href="/mermaid-preview-mac/">Mermaid</a> flowcharts and sequence diagrams are drawn in the preview, and code blocks are highlighted.</li>
   <li>When you want to change something, the source is right there. MarsDawn is an editor, not only a viewer.</li>
 </ul>
 <p>If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent writes, you read it rendered, and it revises. See <a href="/">the home page</a>, and <a href="/cli/agents/">marsdawn for agents</a> for letting an agent open files for you. For why that reading matters and how to review a plan, see <a href="/reading-agent-output/">Reading what your agent hands back</a> and <a href="/reviewing-agent-plans/">Reviewing an agent plan in five minutes</a>.</p>
@@ -94,11 +101,23 @@ try {
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <p><code>export</code> writes <code>notes.pdf</code> next to the Markdown file, and <code>open</code> shows it in your PDF viewer. It needs macOS 15 or later. The walk-through, with a real exported page, is on <a href="/markdown-to-pdf/">Markdown to PDF</a>.</p>
+<h2 id="questions">Questions</h2>
+<h3>What is a .md file?</h3>
+<p>A <code>.md</code> file is a plain text file written in Markdown, a way of marking up text with simple characters: <code>#</code> for a heading, <code>**</code> around bold, a pipe for a table cell. The extensions <code>.markdown</code>, <code>.mdown</code>, <code>.mkd</code> and <code>.mkdn</code> mean the same thing. Developers use it for READMEs and docs, and AI agents often hand back their plans and reports as <code>.md</code> files.</p>
+<h3>Why does my .md file open as plain text, with # and ** marks in it?</h3>
+<p>Because it is plain text, and a plain text editor shows it as it is. Nothing is wrong with the file. To see headings, bold, tables and diagrams, open it in an app that renders Markdown. In MarsDawn the rendered page sits next to the source.</p>
+<h3>Why does it open with garbled characters?</h3>
+<p>Garbled characters usually mean the file was saved in a text encoding other than UTF-8, and the app that opened it guessed wrong. The fix is to save a UTF-8 copy. MarsDawn opens a plain text file that isn't UTF-8 read-only, names the encoding it read it as in a bar at the top of the window, and offers Save As UTF-8… there, or File ▸ Save As… (⌥⇧⌘S), to write a UTF-8 copy you can edit.</p>
+<h3>Can I turn a .md file into a PDF?</h3>
+<p>Yes. In MarsDawn, choose File ▸ Export as PDF… (⌥⌘E) or File ▸ Print…; the pages are paginated, with diagrams drawn in and code highlighted, in the theme's light colors. Without the app, the free <code>marsdawn export</code> command-line tool makes the same PDF: <code>marsdawn export notes.md</code>. See <a href="/pdf/">PDF export</a> and <a href="/markdown-to-pdf/">Markdown to PDF</a>.</p>
+<h3>Can I open the .md files my AI agent wrote?</h3>
+<p>Yes, that is what MarsDawn is built for. Open the file and read the rendered page next to its source; when the agent revises it, open it again. An agent can also run <code>marsdawn open plan.md</code> to open the file in MarsDawn for you. See <a href="/reading-agent-output/">Reading what your agent hands back</a>.</p>
 <h2 id="next">Next</h2>
 <ul>
   <li>Every option of the command-line tool: <a href="/cli/">Command Line</a>.</li>
   <li>What MarsDawn doesn't do: <a href="/limits/">the list</a>.</li>
   <li>Reading Markdown in VS Code, a browser or Claude Desktop instead: <a href="/vs/markdown-preview-tools/">how they compare</a>.</li>
+  <li>Diagrams in a Markdown file: <a href="/mermaid-preview-mac/">Mermaid preview on Mac</a>.</li>
 </ul>
 </main>
 <footer class="footer">
@@ -106,7 +125,8 @@ open notes.pdf</code></pre>
     <a href="/support/">Support</a>
     <a href="/privacy/">Privacy Policy</a>
     <a href="/cli/">Command Line</a>
-    <a href="/view-markdown-on-mac/" aria-current="page">View Markdown on a Mac</a>
+    <a href="/features/">Features</a>
+    <a href="/view-markdown-on-mac/" aria-current="page">How to open .md files on Mac</a>
     <a href="/vs/markdown-preview-tools/">Viewing Markdown elsewhere vs. MarsDawn</a>
     <a href="/vs/macmd-viewer/">MacMD Viewer vs. MarsDawn</a>
     <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie settings</button>

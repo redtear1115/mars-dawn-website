@@ -79,10 +79,25 @@ try {
 </section>
 <div class="summary"><p><strong>Eine Markdown-Datei unter <code>~/.claude/skills/marsdawn/SKILL.md</code>.</strong> Damit installiert dein Agent <code>marsdawn</code>, exportiert als PDF und liest das JSON-Ergebnis, und er fragt trotzdem, bevor er etwas ausführt.</p></div>
 <h2 id="install-it-in-claude-code">In Claude Code installieren</h2>
+<p>Das Befehlszeilenwerkzeug <code>marsdawn</code> schreibt den Skill für dich, und die Datei, die es schreibt, passt zur Version von <code>marsdawn</code>, die du installiert hast. Wenn du <code>marsdawn</code> noch nicht hast, installiere es mit <a href="https://brew.sh">Homebrew</a>:</p>
+<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<p>Installiere dann den Skill:</p>
+<pre><code>marsdawn skill --install</code></pre>
+<p>Das schreibt <code>~/.claude/skills/marsdawn/SKILL.md</code> und legt den Ordner an, falls er fehlt. Weil die Datei von deiner Kopie von <code>marsdawn</code> stammt, beschreibt sie nie eine Option, die deine Kopie nicht hat.</p>
+<p>Claude Code lädt ihn, wenn eine Aufgabe ein PDF verlangt oder wenn es ein Markdown-Dokument zum Lesen für dich geschrieben oder überarbeitet hat, und du kannst ihn selbst als <code>/marsdawn</code> aufrufen. Wenn du ihn zuerst lesen möchtest: Es ist <a href="/cli/skill/SKILL.md">eine kurze Datei</a>.</p>
+<h2 id="after-you-upgrade-marsdawn">Nach einem Upgrade von marsdawn</h2>
+<p>Homebrew aktualisiert <code>marsdawn</code>, lässt den Skill aber, wo er war, er bleibt also auf der alten Version, bis du ihn auffrischst:</p>
+<pre><code>marsdawn skill --install --force</code></pre>
+<p><code>--force</code> ersetzt die vorhandene <code>SKILL.md</code>, auch mit Änderungen, die du daran vorgenommen hast. Ohne <code>--force</code> lässt <code>marsdawn</code> eine bereits vorhandene, abweichende <code>SKILL.md</code> unangetastet, teilt dir mit, dass sie abweicht, und beendet sich mit Code 64 (<code>skill_differs</code>). Ist die Datei schon die aktuelle, ändert sich nichts.</p>
+<h2 id="for-other-agents">Für andere Agenten</h2>
+<p>Füge <code>--dir</code> mit dem Ordner hinzu, in dem dein Agent seine Skills ablegt, und <code>marsdawn</code> schreibt <code>SKILL.md</code> stattdessen dorthin:</p>
+<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
+<p>Die Datei ist reines Markdown, Anweisungen und Befehle, ein Agent, der Anweisungsdateien lädt, kann sie also unverändert nutzen.</p>
+<h2 id="without-homebrew-or-the-command-line-tool">Ohne Homebrew oder das Befehlszeilenwerkzeug</h2>
+<p>Wenn du <code>marsdawn</code> nicht zuerst installieren kannst, lade stattdessen die Datei herunter:</p>
 <pre><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
-<p>Claude Code lädt ihn, wenn eine Aufgabe ein PDF verlangt oder wenn es ein Markdown-Dokument zum Lesen für dich geschrieben oder überarbeitet hat, und du kannst ihn selbst als <code>/marsdawn</code> aufrufen. Es ist <a href="/cli/skill/SKILL.md">eine kurze Datei</a>, lies sie also, bevor du sie installierst.</p>
-<p>Andere Agenten können dieselbe Datei verwenden. Sie ist reines Markdown, Anweisungen und Befehle, also verweise deinen Agenten auf die URL oder füge sie ein.</p>
+<p>Das holt den neuesten Skill von dieser Website, der einem älteren <code>marsdawn</code> voraus sein kann. Sobald du das Werkzeug hast, ersetzt <code>marsdawn skill --install --force</code> ihn durch den passenden. Du kannst auch einen Agenten auf die URL verweisen oder die Datei einfügen.</p>
 <h2 id="what-it-teaches">Was er beibringt</h2>
 <ul>
   <li><code>marsdawn</code> mit Homebrew installieren, falls es fehlt, und es dann mit <code>marsdawn --version</code> prüfen, statt eine Version anzunehmen.</li>
@@ -104,7 +119,8 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
     <a href="/de/support/">Support</a>
     <a href="/de/privacy/">Datenschutzrichtlinie</a>
     <a href="/de/cli/">Befehlszeile</a>
-    <a href="/de/view-markdown-on-mac/">Markdown auf dem Mac ansehen</a>
+    <a href="/de/features/">Funktionen</a>
+    <a href="/de/view-markdown-on-mac/">So öffnest du .md-Dateien auf dem Mac</a>
     <a href="/de/vs/markdown-preview-tools/">Markdown anderswo ansehen vs. MarsDawn</a>
     <a href="/de/vs/macmd-viewer/">MacMD Viewer vs. MarsDawn</a>
     <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie-Einstellungen</button>

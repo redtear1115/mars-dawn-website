@@ -1404,6 +1404,33 @@ html { overflow-x: hidden; }
   .compare-ours.compare-wide td:last-child::before { color: var(--ember); }
 }
 
+/* The /vs/macmd-viewer/ tables (three columns of long cells) stack on a phone too, but with each
+   column's name above its answer, not beside it: a 140px answer column would be a thin strip. */
+@media (max-width: 719px) {
+  .compare-stack thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .compare-stack tr { display: block; padding: 14px 0 10px; border-bottom: 1px solid var(--hairline); }
+  .compare-stack th,
+  .compare-stack td { display: block; padding: 0; border: 0; }
+  .compare-stack tbody th[scope="row"] { width: auto; margin-bottom: 6px; }
+  .compare-stack td { padding: 3px 0; overflow-wrap: anywhere; }
+  .compare-stack td::before {
+    content: attr(data-label);
+    display: block;
+    color: var(--dust);
+    font-size: 0.85rem;
+  }
+}
+
+/* The numbered list of where each fact about MacMD Viewer was read: addresses are long, one unbroken
+   token each, so they wrap anywhere rather than widening the page. */
+.sources li { overflow-wrap: anywhere; }
+
 /* /templates/ (#95): the rendered first page of a template, cropped to its top and framed, and
    the agent prompt, wrapped so the template's URL stays on screen. */
 .tpl-shot { margin: 18px 0 8px; }
