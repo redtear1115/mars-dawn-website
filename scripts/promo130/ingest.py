@@ -696,9 +696,68 @@ def ingest_241() -> None:
                               "item": f"#241(d) row {r + 1} col {c + 1}", "version": ver, "path": ["pieces", loc, "rows", r, c]})
 
 
+
+# ---- #245: "If you build Mac apps with a coding agent" ----------------------------------------
+
+CODE_SPANS = ["marsdawn open file:line --json", "marsdawn open plan.md:42", "marsdawn skill --install",
+              "brew install redtear1115/tap/marsdawn", "--dir"]
+
+
+def code_spans(text: str) -> str:
+    """Round 1 asks for the commands and flags in <code> (a flag by itself, a command with its flags)."""
+    pat = re.compile("|".join(re.escape(c) for c in CODE_SPANS))
+    return pat.sub(lambda m: "`" + m.group(0) + "`", text)
+
+
+def ingest_245() -> None:
+    c1, b1 = comment(245, 1)
+    c2, b2 = comment(245, 2)
+    a = nested(section(b1, "### (a)"))
+    names = by_loc(r1_items(section(b1, "### (b)")))
+    sec_c = section(b1, "### (c)")
+    bars = by_loc(r1_items(section(b1, "### (d)")))
+    intro2 = by_loc(r1_items(section(b2, "## 結論")))               # round 2: the introduction without version numbers
+    for loc in LOCALES:
+        if loc in FIRST:
+            ln = {"en": "en", "zh-hant": "zh-Hant", "ja": "ja"}[loc]
+            chunk = locale_chunk(sec_c, ln)
+            rows = [unwrap(m.group(1)).split(" | ") for m in re.finditer(r"^- \[[ x]\] (`.+`)\s*$", chunk, re.M)]
+            assert len(rows) == 2 and all(len(r) == 3 for r in rows), (loc, rows)
+            rows = [[code_spans(c) for c in r] for r in rows]
+            h, i, nm, links = a[loc]["標題"], intro2[loc], names[loc].split(" | "), bars[loc]
+            hsrc, isrc = comment_source(c1, 1, f"### (a) 標題, {loc}"), comment_source(c2, 2, f"## 結論 (introduction without versions), {loc}")
+            nsrc = comment_source(c1, 1, f"### (b), {loc}")
+            rsrc = lambda r, c: comment_source(c1, 1, f"### (c) version A {ln}, row {r + 1} col {c + 1}")
+            lsrc = comment_source(c1, 1, f"### (d), {loc}")
+            ver = "A+R2"
+        else:
+            t = r2_table(b2, loc)
+            tables = data_tables(section(b2, "### " + {"zh-hans": "zh-Hans"}.get(loc, loc)))
+            nm, rows = tables[1][0], [list(r) for r in tables[1][1:]]
+            assert len(nm) == 3 and len(rows) == 2, loc
+            h, i, links = t["標題"], t["引言"], t["連結列"]
+            hsrc, isrc, lsrc = (comment_source(c2, 2, f"### {loc} table, {k}") for k in ("標題", "引言", "連結列"))
+            nsrc = comment_source(c2, 2, f"### {loc} data table, header")
+            rsrc = lambda r, c: comment_source(c2, 2, f"### {loc} data table, row {r + 1} col {c + 1}")
+            ver = "R2"
+        put(("indie", loc, "h"), inline(h), slot={"locale": loc, "page": "index", "field": "h2", "source": hsrc, "item": "#245(a) title", "version": "A" if loc in FIRST else "R2"})
+        put(("indie", loc, "intro"), inline(i), slot={"locale": loc, "page": "index", "field": "p", "source": isrc, "item": "#245(a) introduction", "version": "R2"})
+        put(("indie", loc, "links"), inline(links), slot={"locale": loc, "page": "index", "field": "p", "source": lsrc, "item": "#245(d) link row", "version": ver})
+        DATA["indie"][loc]["head"] = [inline(c) for c in nm]
+        for c in range(3):
+            SLOTS.append({"locale": loc, "page": "index", "field": "th", "source": nsrc, "item": f"#245(b) column {c + 1}", "version": ver,
+                          "path": ["indie", loc, "head", c]})
+        DATA["indie"][loc]["rows"] = []
+        for r, row in enumerate(rows):
+            DATA["indie"][loc]["rows"].append([inline(c) for c in row])
+            for c in range(3):
+                SLOTS.append({"locale": loc, "page": "index", "field": "th" if c == 0 else "td", "source": rsrc(r, c),
+                              "item": f"#245(c) row {r + 1} col {c + 1}", "version": ver, "path": ["indie", loc, "rows", r, c]})
+
+
 # ---- main -------------------------------------------------------------------------------------
 
-INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240, 241: ingest_241}
+INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240, 241: ingest_241, 245: ingest_245}
 
 
 def write() -> None:

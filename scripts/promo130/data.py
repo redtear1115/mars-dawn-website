@@ -1521,4 +1521,107 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                             ['MCP 서버', '—', '내부에서 실행', 'marsdawn-mcp: 도구 두 개, 허용한 폴더만', '제공 중'],
                             ['AI용으로 복사, 참조 복사', '편집 ▸ AI용으로 복사 (⌃⌥⌘C), 참조 복사 (⌥⌘C)', '—', '— (어떤 에이전트에든 붙여 넣기)', '제공 중'],
                             ['저장 시 자동 반영', '저장된 변경을 반영, 한 번에 실행 취소', '—', '스킬: 다시 열지 않음', '제공 중'],
-                            ['Claude Code 훅', '—', '<code>open --background</code> 사용', '/cli/agents/의 훅 스크립트', '문서 제공, 선택 사항']]}}}
+                            ['Claude Code 훅', '—', '<code>open --background</code> 사용', '/cli/agents/의 훅 스크립트', '문서 제공, 선택 사항']]}},
+ 'indie': {'en': {'h': 'If you build Mac apps with a coding agent',
+                  'intro': 'For indie Mac developers: how your agent can open what it wrote in MarsDawn today.',
+                  'links': 'The hook and the commands: <a href="/cli/agents/">marsdawn for agents</a> · <a href="/cli/skill/">Agent skill</a> · <a '
+                           'href="/limits/">What MarsDawn doesn\'t do</a>',
+                  'head': ['Tool', 'How it pairs', 'Set up'],
+                  'rows': [['Claude Code',
+                            'The skill has it open what it wrote, once, at the line: <code>marsdawn open plan.md:42</code>. An opt-in hook opens '
+                            'each .md it writes, in the background',
+                            '<code>marsdawn skill --install</code>; the hook script from /cli/agents/'],
+                           ['Codex, Cursor, Xcode',
+                            'No setup guide yet. Anything that runs a shell command can call <code>marsdawn open file:line --json</code>; an agent '
+                            'that loads instruction files can use SKILL.md (<code>--dir</code>), and an MCP-only client can use marsdawn-mcp',
+                            '<code>brew install redtear1115/tap/marsdawn</code>']]},
+           'zh-hant': {'h': '用 coding agent 做 Mac app 的你',
+                       'intro': '寫給獨立 Mac 開發者：你的 agent 現在怎麼把它寫的檔案打開在 MarsDawn 裡。',
+                       'links': 'hook 與指令：<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a> · <a href="/zh-hant/cli/skill/">給 agent 的 '
+                                'skill</a> · <a href="/zh-hant/limits/">MarsDawn 做不到的事</a>',
+                       'head': ['工具', '怎麼搭配', '設定'],
+                       'rows': [['Claude Code',
+                                 'skill 會讓它寫完後打開一次，直接停在那一行：<code>marsdawn open plan.md:42</code>。另有選用的 hook，它寫的每個 .md 都會在背景打開',
+                                 '<code>marsdawn skill --install</code>；hook 腳本見 /cli/agents/'],
+                                ['Codex、Cursor、Xcode',
+                                 '還沒有專屬的設定說明。能跑 shell 指令的工具都能呼叫 <code>marsdawn open file:line --json</code>；會讀指令檔的 agent 可以用 '
+                                 'SKILL.md（<code>--dir</code>），只走 MCP 的工具可以用 marsdawn-mcp',
+                                 '<code>brew install redtear1115/tap/marsdawn</code>']]},
+           'zh-hans': {'h': '用 coding 代理做 Mac app 的你',
+                       'intro': '写给独立 Mac 开发者：你的代理现在怎么把它写的文件在 MarsDawn 里打开。',
+                       'links': 'hook 与命令：<a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a> · <a href="/zh-hans/cli/skill/">给代理的 skill</a> · '
+                                '<a href="/zh-hans/limits/">MarsDawn 做不到的事</a>',
+                       'head': ['工具', '怎么搭配', '设置'],
+                       'rows': [['Claude Code',
+                                 'skill 会让它写完后打开一次，直接停在那一行：<code>marsdawn open plan.md:42</code>。另有可选的 hook，它写的每个 .md 都会在后台打开',
+                                 '<code>marsdawn skill --install</code>；hook 脚本见 /cli/agents/'],
+                                ['Codex、Cursor、Xcode',
+                                 '还没有专门的设置说明。能运行 shell 命令的工具都能调用 <code>marsdawn open file:line --json</code>；会读取指令文件的代理可以用 '
+                                 'SKILL.md（<code>--dir</code>），只走 MCP 的工具可以用 marsdawn-mcp',
+                                 '<code>brew install redtear1115/tap/marsdawn</code>']]},
+           'ja': {'h': 'コーディングエージェントと Mac アプリを作るなら',
+                  'intro': '個人で Mac アプリを作る開発者へ。エージェントが書いたファイルを MarsDawn で開く、いまの方法です。',
+                  'links': 'hook とコマンド：<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a> · <a href="/ja/cli/skill/">エージェント用スキル</a> · <a '
+                           'href="/ja/limits/">MarsDawn ができないこと</a>',
+                  'head': ['ツール', '組み合わせ方', '設定'],
+                  'rows': [['Claude Code',
+                            'skill に従い、書いたファイルを一度だけ、その行で開きます：<code>marsdawn open plan.md:42</code>。オプトインの hook を入れると、書いた .md をそのつどバックグラウンドで開きます',
+                            '<code>marsdawn skill --install</code>、hook スクリプトは /cli/agents/ に'],
+                           ['Codex、Cursor、Xcode',
+                            '専用の設定ガイドはまだありません。シェルコマンドを実行できるツールなら <code>marsdawn open file:line --json</code> を呼べます。指示ファイルを読むエージェントは '
+                            'SKILL.md（<code>--dir</code>）、MCP だけのクライアントは marsdawn-mcp を使えます',
+                            '<code>brew install redtear1115/tap/marsdawn</code>']]},
+           'de': {'h': 'Wenn du Mac-Apps mit einem Coding-Agenten baust',
+                  'intro': 'Für Indie-Mac-Entwickler: wie dein Agent das, was er geschrieben hat, heute in MarsDawn öffnet.',
+                  'links': 'Hook und Befehle: <a href="/de/cli/agents/">marsdawn für Agenten</a> · <a href="/de/cli/skill/">Agent-Skill</a> · <a '
+                           'href="/de/limits/">Was MarsDawn nicht kann</a>',
+                  'head': ['Tool', 'So arbeiten sie zusammen', 'Einrichtung'],
+                  'rows': [['Claude Code',
+                            'Der Skill lässt ihn das Geschriebene einmal öffnen, an der Zeile: <code>marsdawn open plan.md:42</code>. Ein optionaler '
+                            'Hook öffnet jede .md, die er schreibt, im Hintergrund',
+                            '<code>marsdawn skill --install</code>; das Hook-Skript von /cli/agents/'],
+                           ['Codex, Cursor, Xcode',
+                            'Noch keine Anleitung. Alles, was einen Shell-Befehl ausführen kann, kann <code>marsdawn open file:line --json</code> '
+                            'aufrufen; ein Agent, der Anweisungsdateien lädt, kann SKILL.md (<code>--dir</code>) nutzen, ein reiner MCP-Client '
+                            'marsdawn-mcp',
+                            '<code>brew install redtear1115/tap/marsdawn</code>']]},
+           'fr': {'h': 'Si vous créez des apps Mac avec un agent de code',
+                  'intro': 'Pour les développeurs Mac indépendants\xa0: comment votre agent ouvre aujourd’hui dans MarsDawn ce qu’il a écrit.',
+                  'links': 'Le hook et les commandes\xa0: <a href="/fr/cli/agents/">marsdawn pour les agents</a> · <a href="/fr/cli/skill/">Skill '
+                           'pour agents</a> · <a href="/fr/limits/">Ce que MarsDawn ne fait pas</a>',
+                  'head': ['Outil', 'Comment ils s’associent', 'Mise en place'],
+                  'rows': [['Claude Code',
+                            'Le skill lui fait ouvrir une fois ce qu’il a écrit, à la ligne\xa0: <code>marsdawn open plan.md:42</code>. Un hook '
+                            'facultatif ouvre chaque .md qu’il écrit, en arrière-plan',
+                            '<code>marsdawn skill --install</code>\xa0; le script de hook de /cli/agents/'],
+                           ['Codex, Cursor, Xcode',
+                            'Pas encore de guide de configuration. Tout ce qui exécute une commande shell peut appeler <code>marsdawn open file:line '
+                            '--json</code>\xa0; un agent qui charge des fichiers d’instructions peut utiliser SKILL.md (<code>--dir</code>), et un '
+                            'client uniquement MCP, marsdawn-mcp',
+                            '<code>brew install redtear1115/tap/marsdawn</code>']]},
+           'es': {'h': 'Si creas apps para Mac con un agente de código',
+                  'intro': 'Para desarrolladores independientes de Mac: cómo tu agente abre hoy en MarsDawn lo que escribió.',
+                  'links': 'El hook y los comandos: <a href="/es/cli/agents/">marsdawn para agentes</a> · <a href="/es/cli/skill/">Skill para '
+                           'agentes</a> · <a href="/es/limits/">Lo que MarsDawn no hace</a>',
+                  'head': ['Herramienta', 'Cómo se combinan', 'Configuración'],
+                  'rows': [['Claude Code',
+                            'La skill hace que abra una vez lo que escribió, en la línea: <code>marsdawn open plan.md:42</code>. Un hook opcional '
+                            'abre cada .md que escribe, en segundo plano',
+                            '<code>marsdawn skill --install</code>; el script del hook en /cli/agents/'],
+                           ['Codex, Cursor, Xcode',
+                            'Aún no hay guía de configuración. Cualquier cosa que ejecute un comando de shell puede llamar a <code>marsdawn open '
+                            'file:line --json</code>; un agente que carga archivos de instrucciones puede usar SKILL.md (<code>--dir</code>), y un '
+                            'cliente solo MCP, marsdawn-mcp',
+                            '<code>brew install redtear1115/tap/marsdawn</code>']]},
+           'ko': {'h': '코딩 에이전트로 Mac 앱을 만든다면',
+                  'intro': '개인 Mac 개발자를 위해: 에이전트가 쓴 파일을 지금 MarsDawn에서 여는 방법입니다.',
+                  'links': '훅과 명령: <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a> · <a href="/ko/cli/skill/">에이전트 스킬</a> · <a '
+                           'href="/ko/limits/">MarsDawn이 하지 않는 일</a>',
+                  'head': ['도구', '연결 방식', '설정'],
+                  'rows': [['Claude Code',
+                            '스킬에 따라 쓴 파일을 한 번, 그 줄에서 엽니다: <code>marsdawn open plan.md:42</code>. 선택 사항인 훅을 켜면 쓴 .md를 매번 백그라운드에서 엽니다',
+                            '<code>marsdawn skill --install</code>, 훅 스크립트는 /cli/agents/에'],
+                           ['Codex, Cursor, Xcode',
+                            '아직 전용 설정 안내가 없습니다. 셸 명령을 실행할 수 있는 도구라면 <code>marsdawn open file:line --json</code>을 호출할 수 있고, 지침 파일을 읽는 에이전트는 '
+                            'SKILL.md(<code>--dir</code>)를, MCP만 쓰는 클라이언트는 marsdawn-mcp를 쓸 수 있습니다',
+                            '<code>brew install redtear1115/tap/marsdawn</code>']]}}}

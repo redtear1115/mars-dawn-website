@@ -62,6 +62,17 @@ What each part does today, as of MarsDawn 1.1.1, marsdawn 0.6.4 and marsdawn-mcp
 
 Shipped: in the released version named above. Documented, opt-in: instructions on this site that you add yourself; not inside the tool. Planned: not built yet; no date. Planned: a folder option in the MCP open_in_marsdawn tool. More options, such as --folder, are on [Command Line](/cli/).
 
+## If you build Mac apps with a coding agent
+
+For indie Mac developers: how your agent can open what it wrote in MarsDawn today.
+
+| Tool | How it pairs | Set up |
+|---|---|---|
+| Claude Code | The skill has it open what it wrote, once, at the line: `marsdawn open plan.md:42`. An opt-in hook opens each .md it writes, in the background | `marsdawn skill --install`; the hook script from /cli/agents/ |
+| Codex, Cursor, Xcode | No setup guide yet. Anything that runs a shell command can call `marsdawn open file:line --json`; an agent that loads instruction files can use SKILL.md (`--dir`), and an MCP-only client can use marsdawn-mcp | `brew install redtear1115/tap/marsdawn` |
+
+The hook and the commands: [marsdawn for agents](/cli/agents/) · [Agent skill](/cli/skill/) · [What MarsDawn doesn't do](/limits/)
+
 Choosing between MarsDawn, VS Code's preview, Obsidian, QLMarkdown and LynxOffice? The comparison lists what each vendor states, what MarsDawn lacks, and when you don't need it. [Compare](/vs/)
 
 ## Your documents stay on your Mac
@@ -3156,6 +3167,17 @@ brew install redtear1115/tap/marsdawn
 | Claude Code hook | — | 用 open --background | /cli/agents/ 的 hook 腳本 | 有文件，選用 |
 
 已推出：在上面寫的發行版本裡。有文件，選用：本站上的說明，要你自己加，不在工具裡。規劃中：還沒做，沒有日期。規劃中：MCP 的 open_in_marsdawn 加上資料夾選項。--folder 等其他選項見[命令列工具](/zh-hant/cli/)。
+
+## 用 coding agent 做 Mac app 的你
+
+寫給獨立 Mac 開發者：你的 agent 現在怎麼把它寫的檔案打開在 MarsDawn 裡。
+
+| 工具 | 怎麼搭配 | 設定 |
+|---|---|---|
+| Claude Code | skill 會讓它寫完後打開一次，直接停在那一行：`marsdawn open plan.md:42`。另有選用的 hook，它寫的每個 .md 都會在背景打開 | `marsdawn skill --install`；hook 腳本見 /cli/agents/ |
+| Codex、Cursor、Xcode | 還沒有專屬的設定說明。能跑 shell 指令的工具都能呼叫 `marsdawn open file:line --json`；會讀指令檔的 agent 可以用 SKILL.md（`--dir`），只走 MCP 的工具可以用 marsdawn-mcp | `brew install redtear1115/tap/marsdawn` |
+
+hook 與指令：[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/) · [給 agent 的 skill](/zh-hant/cli/skill/) · [MarsDawn 做不到的事](/zh-hant/limits/)
 
 在 MarsDawn、VS Code 預覽、Obsidian、QLMarkdown、LynxOffice 之間猶豫？比較頁列出各家自己的說法、MarsDawn 沒有的東西，以及什麼時候用不到它。[看比較](/zh-hant/vs/)
 
@@ -6267,6 +6289,17 @@ brew install redtear1115/tap/marsdawn
 | Claude Code hook | — | 用 `open --background` | /cli/agents/ 的 hook 脚本 | 有文档，可选 |
 
 已推出：在上面写的发行版本里。有文档，可选：本站上的说明，需要你自己添加，不在工具里。计划中：还没做，没有日期。计划中：MCP 的 `open_in_marsdawn` 加上文件夹选项。`--folder` 等其他选项见[命令行工具](/zh-hans/cli/)。
+
+## 用 coding 代理做 Mac app 的你
+
+写给独立 Mac 开发者：你的代理现在怎么把它写的文件在 MarsDawn 里打开。
+
+| 工具 | 怎么搭配 | 设置 |
+|---|---|---|
+| Claude Code | skill 会让它写完后打开一次，直接停在那一行：`marsdawn open plan.md:42`。另有可选的 hook，它写的每个 .md 都会在后台打开 | `marsdawn skill --install`；hook 脚本见 /cli/agents/ |
+| Codex、Cursor、Xcode | 还没有专门的设置说明。能运行 shell 命令的工具都能调用 `marsdawn open file:line --json`；会读取指令文件的代理可以用 SKILL.md（`--dir`），只走 MCP 的工具可以用 marsdawn-mcp | `brew install redtear1115/tap/marsdawn` |
+
+hook 与命令：[给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/) · [给代理的 skill](/zh-hans/cli/skill/) · [MarsDawn 做不到的事](/zh-hans/limits/)
 
 在 MarsDawn、VS Code 预览、Obsidian、QLMarkdown、LynxOffice 之间犹豫？对比页列出各家自己的说法、MarsDawn 没有的东西，以及什么时候用不到它。[看对比](/zh-hans/vs/)
 
@@ -9396,6 +9429,17 @@ MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 の時点で、それぞ�
 
 提供中：上に書いたリリース版に含まれています。ドキュメントあり・任意：このサイトの手順で自分で追加するもので、ツールには含まれません。予定：まだなく、日付は未定です。予定：MCP の open_in_marsdawn にフォルダのオプション。--folder などほかのオプションは[コマンドライン](/ja/cli/)へ。
 
+## コーディングエージェントと Mac アプリを作るなら
+
+個人で Mac アプリを作る開発者へ。エージェントが書いたファイルを MarsDawn で開く、いまの方法です。
+
+| ツール | 組み合わせ方 | 設定 |
+|---|---|---|
+| Claude Code | skill に従い、書いたファイルを一度だけ、その行で開きます：`marsdawn open plan.md:42`。オプトインの hook を入れると、書いた .md をそのつどバックグラウンドで開きます | `marsdawn skill --install`、hook スクリプトは /cli/agents/ に |
+| Codex、Cursor、Xcode | 専用の設定ガイドはまだありません。シェルコマンドを実行できるツールなら `marsdawn open file:line --json` を呼べます。指示ファイルを読むエージェントは SKILL.md（`--dir`）、MCP だけのクライアントは marsdawn-mcp を使えます | `brew install redtear1115/tap/marsdawn` |
+
+hook とコマンド：[AI エージェント向け marsdawn](/ja/cli/agents/) · [エージェント用スキル](/ja/cli/skill/) · [MarsDawn ができないこと](/ja/limits/)
+
 MarsDawn、VS Code のプレビュー、Obsidian、QLMarkdown、LynxOffice で迷っていますか。比較ページに、各社の記載、MarsDawn にないもの、MarsDawn がいらない場面をまとめました。[比較を見る](/ja/vs/)
 
 ## 文書はあなたの Mac に残ります
@@ -12500,6 +12544,17 @@ Was jeder Teil heute kann, Stand MarsDawn 1.1.1, marsdawn 0.6.4 und marsdawn-mcp
 
 Verfügbar: in der oben genannten Version enthalten. Dokumentiert, optional: Anleitung auf dieser Website, die du selbst einrichtest; nicht im Tool enthalten. Geplant: noch nicht gebaut, ohne Datum. Geplant: eine Ordner-Option im MCP-Tool `open_in_marsdawn`. Weitere Optionen wie `--folder` stehen unter [Befehlszeile](/de/cli/).
 
+## Wenn du Mac-Apps mit einem Coding-Agenten baust
+
+Für Indie-Mac-Entwickler: wie dein Agent das, was er geschrieben hat, heute in MarsDawn öffnet.
+
+| Tool | So arbeiten sie zusammen | Einrichtung |
+|---|---|---|
+| Claude Code | Der Skill lässt ihn das Geschriebene einmal öffnen, an der Zeile: `marsdawn open plan.md:42`. Ein optionaler Hook öffnet jede .md, die er schreibt, im Hintergrund | `marsdawn skill --install`; das Hook-Skript von /cli/agents/ |
+| Codex, Cursor, Xcode | Noch keine Anleitung. Alles, was einen Shell-Befehl ausführen kann, kann `marsdawn open file:line --json` aufrufen; ein Agent, der Anweisungsdateien lädt, kann SKILL.md (`--dir`) nutzen, ein reiner MCP-Client marsdawn-mcp | `brew install redtear1115/tap/marsdawn` |
+
+Hook und Befehle: [marsdawn für Agenten](/de/cli/agents/) · [Agent-Skill](/de/cli/skill/) · [Was MarsDawn nicht kann](/de/limits/)
+
 Du schwankst zwischen MarsDawn, der VS-Code-Vorschau, Obsidian, QLMarkdown und LynxOffice? Der Vergleich zeigt, was jeder Hersteller angibt, was MarsDawn fehlt und wann du es nicht brauchst. [Zum Vergleich](/de/vs/)
 
 ## Deine Dokumente bleiben auf deinem Mac
@@ -15589,6 +15644,17 @@ Ce que fait chaque élément aujourd’hui, avec MarsDawn 1.1.1, marsdawn 0.6.4 
 | Hook Claude Code | — | Utilise `open --background` | Script de hook de /cli/agents/ | Documenté, facultatif |
 
 Disponible : dans la version indiquée ci-dessus. Documenté, facultatif : instructions de ce site que vous ajoutez vous-même ; pas inclus dans l’outil. Prévu : pas encore fait, sans date. Prévu : une option de dossier dans l’outil MCP `open_in_marsdawn`. D’autres options, comme `--folder`, sont sur [Ligne de commande](/fr/cli/).
+
+## Si vous créez des apps Mac avec un agent de code
+
+Pour les développeurs Mac indépendants : comment votre agent ouvre aujourd’hui dans MarsDawn ce qu’il a écrit.
+
+| Outil | Comment ils s’associent | Mise en place |
+|---|---|---|
+| Claude Code | Le skill lui fait ouvrir une fois ce qu’il a écrit, à la ligne : `marsdawn open plan.md:42`. Un hook facultatif ouvre chaque .md qu’il écrit, en arrière-plan | `marsdawn skill --install` ; le script de hook de /cli/agents/ |
+| Codex, Cursor, Xcode | Pas encore de guide de configuration. Tout ce qui exécute une commande shell peut appeler `marsdawn open file:line --json` ; un agent qui charge des fichiers d’instructions peut utiliser SKILL.md (`--dir`), et un client uniquement MCP, marsdawn-mcp | `brew install redtear1115/tap/marsdawn` |
+
+Le hook et les commandes : [marsdawn pour les agents](/fr/cli/agents/) · [Skill pour agents](/fr/cli/skill/) · [Ce que MarsDawn ne fait pas](/fr/limits/)
 
 Vous hésitez entre MarsDawn, l’aperçu de VS Code, Obsidian, QLMarkdown et LynxOffice ? La comparaison indique ce que chaque fournisseur précise, ce qui manque à MarsDawn et quand vous n’en avez pas besoin. [Comparer](/fr/vs/)
 
@@ -18680,6 +18746,17 @@ Lo que hace cada parte hoy, con MarsDawn 1.1.1, marsdawn 0.6.4 y marsdawn-mcp v0
 
 Disponible: en la versión indicada arriba. Documentado, opcional: instrucciones de este sitio que añades tú; no viene en la herramienta. Previsto: aún no existe, sin fecha. Previsto: una opción de carpeta en la herramienta MCP `open_in_marsdawn`. Otras opciones, como `--folder`, están en [Línea de comandos](/es/cli/).
 
+## Si creas apps para Mac con un agente de código
+
+Para desarrolladores independientes de Mac: cómo tu agente abre hoy en MarsDawn lo que escribió.
+
+| Herramienta | Cómo se combinan | Configuración |
+|---|---|---|
+| Claude Code | La skill hace que abra una vez lo que escribió, en la línea: `marsdawn open plan.md:42`. Un hook opcional abre cada .md que escribe, en segundo plano | `marsdawn skill --install`; el script del hook en /cli/agents/ |
+| Codex, Cursor, Xcode | Aún no hay guía de configuración. Cualquier cosa que ejecute un comando de shell puede llamar a `marsdawn open file:line --json`; un agente que carga archivos de instrucciones puede usar SKILL.md (`--dir`), y un cliente solo MCP, marsdawn-mcp | `brew install redtear1115/tap/marsdawn` |
+
+El hook y los comandos: [marsdawn para agentes](/es/cli/agents/) · [Skill para agentes](/es/cli/skill/) · [Lo que MarsDawn no hace](/es/limits/)
+
 ¿Dudas entre MarsDawn, la vista previa de VS Code, Obsidian, QLMarkdown y LynxOffice? La comparación recoge lo que indica cada fabricante, lo que le falta a MarsDawn y cuándo no lo necesitas. [Ver la comparación](/es/vs/)
 
 ## Tus documentos se quedan en tu Mac
@@ -21769,6 +21846,17 @@ MarsDawn 1.1.1, marsdawn 0.6.4, marsdawn-mcp v0.2.4 기준으로 각 부분이 �
 | Claude Code 훅 | — | `open --background` 사용 | /cli/agents/의 훅 스크립트 | 문서 제공, 선택 사항 |
 
 제공 중: 위에 적은 출시 버전에 포함. 문서 제공, 선택 사항: 이 사이트의 안내에 따라 직접 추가하며 도구에는 포함되지 않음. 예정: 아직 없으며 날짜 미정. 예정: MCP `open_in_marsdawn`의 폴더 옵션. `--folder` 등 다른 옵션은 [명령줄](/ko/cli/)에 있습니다.
+
+## 코딩 에이전트로 Mac 앱을 만든다면
+
+개인 Mac 개발자를 위해: 에이전트가 쓴 파일을 지금 MarsDawn에서 여는 방법입니다.
+
+| 도구 | 연결 방식 | 설정 |
+|---|---|---|
+| Claude Code | 스킬에 따라 쓴 파일을 한 번, 그 줄에서 엽니다: `marsdawn open plan.md:42`. 선택 사항인 훅을 켜면 쓴 .md를 매번 백그라운드에서 엽니다 | `marsdawn skill --install`, 훅 스크립트는 /cli/agents/에 |
+| Codex, Cursor, Xcode | 아직 전용 설정 안내가 없습니다. 셸 명령을 실행할 수 있는 도구라면 `marsdawn open file:line --json`을 호출할 수 있고, 지침 파일을 읽는 에이전트는 SKILL.md(`--dir`)를, MCP만 쓰는 클라이언트는 marsdawn-mcp를 쓸 수 있습니다 | `brew install redtear1115/tap/marsdawn` |
+
+훅과 명령: [에이전트를 위한 marsdawn](/ko/cli/agents/) · [에이전트 스킬](/ko/cli/skill/) · [MarsDawn이 하지 않는 일](/ko/limits/)
 
 MarsDawn, VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice 사이에서 고민 중인가요? 비교 페이지에 각 회사의 설명, MarsDawn에 없는 것, MarsDawn이 필요 없는 경우를 정리했습니다. [비교 보기](/ko/vs/)
 

@@ -318,6 +318,18 @@ L’équipe technique active le flag le <span class="loop-day loop-d-b a"><span 
 </table></div>
 <p>Disponible : dans la version indiquée ci-dessus. Documenté, facultatif : instructions de ce site que vous ajoutez vous-même ; pas inclus dans l’outil. Prévu : pas encore fait, sans date. Prévu : une option de dossier dans l’outil MCP <code>open_in_marsdawn</code>. D’autres options, comme <code>--folder</code>, sont sur <a href="/fr/cli/">Ligne de commande</a>.</p>
 </section>
+<section class="indie">
+<h2>Si vous créez des apps Mac avec un agent de code</h2>
+<p>Pour les développeurs Mac indépendants : comment votre agent ouvre aujourd’hui dans MarsDawn ce qu’il a écrit.</p>
+<div class="table-scroll"><table class="compare compare-wide">
+<thead><tr><th scope="col">Outil</th><th scope="col">Comment ils s’associent</th><th scope="col">Mise en place</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Claude Code</th><td data-label="Comment ils s’associent">Le skill lui fait ouvrir une fois ce qu’il a écrit, à la ligne : <code>marsdawn open plan.md:42</code>. Un hook facultatif ouvre chaque .md qu’il écrit, en arrière-plan</td><td data-label="Mise en place"><code>marsdawn skill --install</code> ; le script de hook de /cli/agents/</td></tr>
+  <tr><th scope="row">Codex, Cursor, Xcode</th><td data-label="Comment ils s’associent">Pas encore de guide de configuration. Tout ce qui exécute une commande shell peut appeler <code>marsdawn open file:line --json</code> ; un agent qui charge des fichiers d’instructions peut utiliser SKILL.md (<code>--dir</code>), et un client uniquement MCP, marsdawn-mcp</td><td data-label="Mise en place"><code>brew install redtear1115/tap/marsdawn</code></td></tr>
+</tbody>
+</table></div>
+<p>Le hook et les commandes : <a href="/fr/cli/agents/">marsdawn pour les agents</a> · <a href="/fr/cli/skill/">Skill pour agents</a> · <a href="/fr/limits/">Ce que MarsDawn ne fait pas</a></p>
+</section>
 <p>Vous hésitez entre MarsDawn, l’aperçu de VS Code, Obsidian, QLMarkdown et LynxOffice ? La comparaison indique ce que chaque fournisseur précise, ce qui manque à MarsDawn et quand vous n’en avez pas besoin. <a href="/fr/vs/">Comparer</a></p>
 <section class="stays">
 <h2>Vos documents restent sur votre Mac</h2>

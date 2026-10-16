@@ -56,6 +56,17 @@ MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 の時点で、それぞ�
 
 提供中：上に書いたリリース版に含まれています。ドキュメントあり・任意：このサイトの手順で自分で追加するもので、ツールには含まれません。予定：まだなく、日付は未定です。予定：MCP の open_in_marsdawn にフォルダのオプション。--folder などほかのオプションは[コマンドライン](/ja/cli/)へ。
 
+## コーディングエージェントと Mac アプリを作るなら
+
+個人で Mac アプリを作る開発者へ。エージェントが書いたファイルを MarsDawn で開く、いまの方法です。
+
+| ツール | 組み合わせ方 | 設定 |
+|---|---|---|
+| Claude Code | skill に従い、書いたファイルを一度だけ、その行で開きます：`marsdawn open plan.md:42`。オプトインの hook を入れると、書いた .md をそのつどバックグラウンドで開きます | `marsdawn skill --install`、hook スクリプトは /cli/agents/ に |
+| Codex、Cursor、Xcode | 専用の設定ガイドはまだありません。シェルコマンドを実行できるツールなら `marsdawn open file:line --json` を呼べます。指示ファイルを読むエージェントは SKILL.md（`--dir`）、MCP だけのクライアントは marsdawn-mcp を使えます | `brew install redtear1115/tap/marsdawn` |
+
+hook とコマンド：[AI エージェント向け marsdawn](/ja/cli/agents/) · [エージェント用スキル](/ja/cli/skill/) · [MarsDawn ができないこと](/ja/limits/)
+
 MarsDawn、VS Code のプレビュー、Obsidian、QLMarkdown、LynxOffice で迷っていますか。比較ページに、各社の記載、MarsDawn にないもの、MarsDawn がいらない場面をまとめました。[比較を見る](/ja/vs/)
 
 ## 文書はあなたの Mac に残ります

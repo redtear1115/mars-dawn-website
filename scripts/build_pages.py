@@ -5705,6 +5705,10 @@ def apply_promo130(merged: dict) -> dict:
         if pieces:
             after.append(f'<section class="pieces">\n<h2>{pieces["h"]}</h2>\n<p>{pieces["intro"]}</p>\n'
                          f'{promo_table_html(pieces["head"], pieces["rows"], "compare compare-wide compare-pieces")}\n<p>{pieces["foot"]}</p>\n</section>')
+        indie = promo_data.DATA.get("indie", {}).get(locale)
+        if indie:
+            after.append(f'<section class="indie">\n<h2>{indie["h"]}</h2>\n<p>{indie["intro"]}</p>\n'
+                         f'{promo_table_html(indie["head"], indie["rows"], "compare compare-wide")}\n<p>{indie["links"]}</p>\n</section>')
         after.append(f'<p>{copy["vs_short"]}</p>')
         stays = promo_data.DATA.get("stays", {}).get(locale)
         if stays:

@@ -318,6 +318,18 @@ try {
 </table></div>
 <p>제공 중: 위에 적은 출시 버전에 포함. 문서 제공, 선택 사항: 이 사이트의 안내에 따라 직접 추가하며 도구에는 포함되지 않음. 예정: 아직 없으며 날짜 미정. 예정: MCP <code>open_in_marsdawn</code>의 폴더 옵션. <code>--folder</code> 등 다른 옵션은 <a href="/ko/cli/">명령줄</a>에 있습니다.</p>
 </section>
+<section class="indie">
+<h2>코딩 에이전트로 Mac 앱을 만든다면</h2>
+<p>개인 Mac 개발자를 위해: 에이전트가 쓴 파일을 지금 MarsDawn에서 여는 방법입니다.</p>
+<div class="table-scroll"><table class="compare compare-wide">
+<thead><tr><th scope="col">도구</th><th scope="col">연결 방식</th><th scope="col">설정</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Claude Code</th><td data-label="연결 방식">스킬에 따라 쓴 파일을 한 번, 그 줄에서 엽니다: <code>marsdawn open plan.md:42</code>. 선택 사항인 훅을 켜면 쓴 .md를 매번 백그라운드에서 엽니다</td><td data-label="설정"><code>marsdawn skill --install</code>, 훅 스크립트는 /cli/agents/에</td></tr>
+  <tr><th scope="row">Codex, Cursor, Xcode</th><td data-label="연결 방식">아직 전용 설정 안내가 없습니다. 셸 명령을 실행할 수 있는 도구라면 <code>marsdawn open file:line --json</code>을 호출할 수 있고, 지침 파일을 읽는 에이전트는 SKILL.md(<code>--dir</code>)를, MCP만 쓰는 클라이언트는 marsdawn-mcp를 쓸 수 있습니다</td><td data-label="설정"><code>brew install redtear1115/tap/marsdawn</code></td></tr>
+</tbody>
+</table></div>
+<p>훅과 명령: <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a> · <a href="/ko/cli/skill/">에이전트 스킬</a> · <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
+</section>
 <p>MarsDawn, VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice 사이에서 고민 중인가요? 비교 페이지에 각 회사의 설명, MarsDawn에 없는 것, MarsDawn이 필요 없는 경우를 정리했습니다. <a href="/ko/vs/">비교 보기</a></p>
 <section class="stays">
 <h2>문서는 Mac에 남습니다</h2>

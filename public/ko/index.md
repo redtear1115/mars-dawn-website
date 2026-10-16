@@ -56,6 +56,17 @@ MarsDawn 1.1.1, marsdawn 0.6.4, marsdawn-mcp v0.2.4 기준으로 각 부분이 �
 
 제공 중: 위에 적은 출시 버전에 포함. 문서 제공, 선택 사항: 이 사이트의 안내에 따라 직접 추가하며 도구에는 포함되지 않음. 예정: 아직 없으며 날짜 미정. 예정: MCP `open_in_marsdawn`의 폴더 옵션. `--folder` 등 다른 옵션은 [명령줄](/ko/cli/)에 있습니다.
 
+## 코딩 에이전트로 Mac 앱을 만든다면
+
+개인 Mac 개발자를 위해: 에이전트가 쓴 파일을 지금 MarsDawn에서 여는 방법입니다.
+
+| 도구 | 연결 방식 | 설정 |
+|---|---|---|
+| Claude Code | 스킬에 따라 쓴 파일을 한 번, 그 줄에서 엽니다: `marsdawn open plan.md:42`. 선택 사항인 훅을 켜면 쓴 .md를 매번 백그라운드에서 엽니다 | `marsdawn skill --install`, 훅 스크립트는 /cli/agents/에 |
+| Codex, Cursor, Xcode | 아직 전용 설정 안내가 없습니다. 셸 명령을 실행할 수 있는 도구라면 `marsdawn open file:line --json`을 호출할 수 있고, 지침 파일을 읽는 에이전트는 SKILL.md(`--dir`)를, MCP만 쓰는 클라이언트는 marsdawn-mcp를 쓸 수 있습니다 | `brew install redtear1115/tap/marsdawn` |
+
+훅과 명령: [에이전트를 위한 marsdawn](/ko/cli/agents/) · [에이전트 스킬](/ko/cli/skill/) · [MarsDawn이 하지 않는 일](/ko/limits/)
+
 MarsDawn, VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice 사이에서 고민 중인가요? 비교 페이지에 각 회사의 설명, MarsDawn에 없는 것, MarsDawn이 필요 없는 경우를 정리했습니다. [비교 보기](/ko/vs/)
 
 ## 문서는 Mac에 남습니다

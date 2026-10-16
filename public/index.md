@@ -56,6 +56,17 @@ What each part does today, as of MarsDawn 1.1.1, marsdawn 0.6.4 and marsdawn-mcp
 
 Shipped: in the released version named above. Documented, opt-in: instructions on this site that you add yourself; not inside the tool. Planned: not built yet; no date. Planned: a folder option in the MCP open_in_marsdawn tool. More options, such as --folder, are on [Command Line](/cli/).
 
+## If you build Mac apps with a coding agent
+
+For indie Mac developers: how your agent can open what it wrote in MarsDawn today.
+
+| Tool | How it pairs | Set up |
+|---|---|---|
+| Claude Code | The skill has it open what it wrote, once, at the line: `marsdawn open plan.md:42`. An opt-in hook opens each .md it writes, in the background | `marsdawn skill --install`; the hook script from /cli/agents/ |
+| Codex, Cursor, Xcode | No setup guide yet. Anything that runs a shell command can call `marsdawn open file:line --json`; an agent that loads instruction files can use SKILL.md (`--dir`), and an MCP-only client can use marsdawn-mcp | `brew install redtear1115/tap/marsdawn` |
+
+The hook and the commands: [marsdawn for agents](/cli/agents/) · [Agent skill](/cli/skill/) · [What MarsDawn doesn't do](/limits/)
+
 Choosing between MarsDawn, VS Code's preview, Obsidian, QLMarkdown and LynxOffice? The comparison lists what each vendor states, what MarsDawn lacks, and when you don't need it. [Compare](/vs/)
 
 ## Your documents stay on your Mac

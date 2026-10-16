@@ -56,6 +56,17 @@ brew install redtear1115/tap/marsdawn
 
 已推出：在上面写的发行版本里。有文档，可选：本站上的说明，需要你自己添加，不在工具里。计划中：还没做，没有日期。计划中：MCP 的 `open_in_marsdawn` 加上文件夹选项。`--folder` 等其他选项见[命令行工具](/zh-hans/cli/)。
 
+## 用 coding 代理做 Mac app 的你
+
+写给独立 Mac 开发者：你的代理现在怎么把它写的文件在 MarsDawn 里打开。
+
+| 工具 | 怎么搭配 | 设置 |
+|---|---|---|
+| Claude Code | skill 会让它写完后打开一次，直接停在那一行：`marsdawn open plan.md:42`。另有可选的 hook，它写的每个 .md 都会在后台打开 | `marsdawn skill --install`；hook 脚本见 /cli/agents/ |
+| Codex、Cursor、Xcode | 还没有专门的设置说明。能运行 shell 命令的工具都能调用 `marsdawn open file:line --json`；会读取指令文件的代理可以用 SKILL.md（`--dir`），只走 MCP 的工具可以用 marsdawn-mcp | `brew install redtear1115/tap/marsdawn` |
+
+hook 与命令：[给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/) · [给代理的 skill](/zh-hans/cli/skill/) · [MarsDawn 做不到的事](/zh-hans/limits/)
+
 在 MarsDawn、VS Code 预览、Obsidian、QLMarkdown、LynxOffice 之间犹豫？对比页列出各家自己的说法、MarsDawn 没有的东西，以及什么时候用不到它。[看对比](/zh-hans/vs/)
 
 ## 文稿留在你的 Mac 上

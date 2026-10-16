@@ -318,6 +318,18 @@ Engineering schaltet das Flag am <span class="loop-day loop-d-b a"><span class="
 </table></div>
 <p>Verfügbar: in der oben genannten Version enthalten. Dokumentiert, optional: Anleitung auf dieser Website, die du selbst einrichtest; nicht im Tool enthalten. Geplant: noch nicht gebaut, ohne Datum. Geplant: eine Ordner-Option im MCP-Tool <code>open_in_marsdawn</code>. Weitere Optionen wie <code>--folder</code> stehen unter <a href="/de/cli/">Befehlszeile</a>.</p>
 </section>
+<section class="indie">
+<h2>Wenn du Mac-Apps mit einem Coding-Agenten baust</h2>
+<p>Für Indie-Mac-Entwickler: wie dein Agent das, was er geschrieben hat, heute in MarsDawn öffnet.</p>
+<div class="table-scroll"><table class="compare compare-wide">
+<thead><tr><th scope="col">Tool</th><th scope="col">So arbeiten sie zusammen</th><th scope="col">Einrichtung</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Claude Code</th><td data-label="So arbeiten sie zusammen">Der Skill lässt ihn das Geschriebene einmal öffnen, an der Zeile: <code>marsdawn open plan.md:42</code>. Ein optionaler Hook öffnet jede .md, die er schreibt, im Hintergrund</td><td data-label="Einrichtung"><code>marsdawn skill --install</code>; das Hook-Skript von /cli/agents/</td></tr>
+  <tr><th scope="row">Codex, Cursor, Xcode</th><td data-label="So arbeiten sie zusammen">Noch keine Anleitung. Alles, was einen Shell-Befehl ausführen kann, kann <code>marsdawn open file:line --json</code> aufrufen; ein Agent, der Anweisungsdateien lädt, kann SKILL.md (<code>--dir</code>) nutzen, ein reiner MCP-Client marsdawn-mcp</td><td data-label="Einrichtung"><code>brew install redtear1115/tap/marsdawn</code></td></tr>
+</tbody>
+</table></div>
+<p>Hook und Befehle: <a href="/de/cli/agents/">marsdawn für Agenten</a> · <a href="/de/cli/skill/">Agent-Skill</a> · <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
+</section>
 <p>Du schwankst zwischen MarsDawn, der VS-Code-Vorschau, Obsidian, QLMarkdown und LynxOffice? Der Vergleich zeigt, was jeder Hersteller angibt, was MarsDawn fehlt und wann du es nicht brauchst. <a href="/de/vs/">Zum Vergleich</a></p>
 <section class="stays">
 <h2>Deine Dokumente bleiben auf deinem Mac</h2>

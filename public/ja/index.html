@@ -319,6 +319,18 @@ try {
 </table></div>
 <p>提供中：上に書いたリリース版に含まれています。ドキュメントあり・任意：このサイトの手順で自分で追加するもので、ツールには含まれません。予定：まだなく、日付は未定です。予定：MCP の open_in_marsdawn にフォルダのオプション。--folder などほかのオプションは<a href="/ja/cli/">コマンドライン</a>へ。</p>
 </section>
+<section class="indie">
+<h2>コーディングエージェントと Mac アプリを作るなら</h2>
+<p>個人で Mac アプリを作る開発者へ。エージェントが書いたファイルを MarsDawn で開く、いまの方法です。</p>
+<div class="table-scroll"><table class="compare compare-wide">
+<thead><tr><th scope="col">ツール</th><th scope="col">組み合わせ方</th><th scope="col">設定</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Claude Code</th><td data-label="組み合わせ方">skill に従い、書いたファイルを一度だけ、その行で開きます：<code>marsdawn open plan.md:42</code>。オプトインの hook を入れると、書いた .md をそのつどバックグラウンドで開きます</td><td data-label="設定"><code>marsdawn skill --install</code>、hook スクリプトは /cli/agents/ に</td></tr>
+  <tr><th scope="row">Codex、Cursor、Xcode</th><td data-label="組み合わせ方">専用の設定ガイドはまだありません。シェルコマンドを実行できるツールなら <code>marsdawn open file:line --json</code> を呼べます。指示ファイルを読むエージェントは SKILL.md（<code>--dir</code>）、MCP だけのクライアントは marsdawn-mcp を使えます</td><td data-label="設定"><code>brew install redtear1115/tap/marsdawn</code></td></tr>
+</tbody>
+</table></div>
+<p>hook とコマンド：<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a> · <a href="/ja/cli/skill/">エージェント用スキル</a> · <a href="/ja/limits/">MarsDawn ができないこと</a></p>
+</section>
 <p>MarsDawn、VS Code のプレビュー、Obsidian、QLMarkdown、LynxOffice で迷っていますか。比較ページに、各社の記載、MarsDawn にないもの、MarsDawn がいらない場面をまとめました。<a href="/ja/vs/">比較を見る</a></p>
 <section class="stays">
 <h2>文書はあなたの Mac に残ります</h2>
