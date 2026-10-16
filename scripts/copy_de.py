@@ -247,8 +247,8 @@ FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Se
                                'solange sie geöffnet ist.',
                           'links': ['themes/gallery', 'themes/new']},
                          {'h': 'Als PDF exportieren oder drucken',
-                          'p': 'Ablage ▸ Als PDF exportieren … sichert ein PDF mit Seitenumbrüchen, und '
-                               'Ablage ▸ Drucken … druckt dieselben Seiten. Mermaid-Diagramme werden eingezeichnet, '
+                          'p': 'Ablage ▸ Als PDF exportieren\xa0… sichert ein PDF mit Seitenumbrüchen, und '
+                               'Ablage ▸ Drucken\xa0… druckt dieselben Seiten. Mermaid-Diagramme werden eingezeichnet, '
                                'Code behält seine Hervorhebung, und Seitenumbrüche trennen keine Überschrift '
                                'von ihrem Abschnitt und zerschneiden keinen kurzen Codeblock und kein '
                                'Diagramm. Das PDF verwendet immer die hellen Farben des Themes, auch wenn '
@@ -518,7 +518,7 @@ VS_MACMD = {'title': 'MacMD Viewer oder MarsDawn: Markdown-Viewer oder Editor ·
                       ['PDF-Export',
                        'Ja, eine durchgehende Seite, im aktuellen Theme, ohne Wasserzeichen [S3, '
                        'S9]',
-                       'Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche '
+                       'Ja, umbrochene Seiten in der hellen Palette des Themes; Seitenumbrüche '
                        'vermeiden es, kurze Codeblöcke zu teilen'],
                       ['Drucken', 'Ja, über den macOS-Drucken-Dialog [S3, S9]', 'Ja'],
                       ['Übersicht im Finder',
@@ -604,7 +604,7 @@ VS_MACMD = {'title': 'MacMD Viewer oder MarsDawn: Markdown-Viewer oder Editor ·
  'faq': [['Bearbeitet MacMD Viewer Dateien?',
           'Nein. Die App ist nur zum Lesen da und speichert, in ihren eigenen Worten, '
           'nie Änderungen an deiner Quelldatei [S1, S9]. Sie kann die Datei in deinem '
-          'Texteditor öffnen (Datei-Menü, ⇧⌘E, seit 1.7.0), was die Datei an eine '
+          'Texteditor öffnen (Menü „Ablage“, ⇧⌘E, seit 1.7.0), was die Datei an eine '
           'andere App übergibt [S5].'],
          ['Ist MacMD Viewer im Mac App Store?',
           'Die eigenen Seiten nennen die Website, Homebrew und Setapp und erwähnen den Mac App Store nicht '
@@ -1349,7 +1349,7 @@ swift build -c release --product marsdawn
 <p>Jedes hat seine eigene helle und dunkle Variante: Wechselst du das Erscheinungsbild deines Macs, wechselt die Palette des Themas mit, nicht nur die Oberfläche drumherum.</p>
 
 <h2>PDF-Export und Drucken verwenden dasselbe Thema</h2>
-<p>Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themas: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden kein Diagramm in der Mitte durch. Das kostenlose <a href="/de/cli/">Befehlszeilenwerkzeug marsdawn</a> verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit <code>--theme</code> das identische PDF, in jedem der vier Themen.</p>
+<p>Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themes: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden kein Diagramm in der Mitte durch. Das kostenlose <a href="/de/cli/">Befehlszeilenwerkzeug marsdawn</a> verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit <code>--theme</code> das identische PDF, in jedem der vier Themes.</p>
 
 <h2>Bau dein eigenes, und sieh dir an, was andere gemacht haben</h2>
 <p><a href="/de/themes/new/">Bau ein Thema in deinem Browser</a>: wähle Farben und ein paar Stiloptionen, sieh sie live angewendet und reiche es als GitHub-Issue zur Prüfung ein &#8212; keine Installation, kein git. <a href="/de/themes/gallery/">Die Galerie</a> zeigt jedes eingereichte Thema, das ein Maintainer geprüft und gemerged hat, filterbar nach Verwendungszweck. Installiere eines in der App über Einstellungen › Erscheinungsbild › Weitere Themes laden …, dann verwendet es auch die Übersicht im Finder.</p>
