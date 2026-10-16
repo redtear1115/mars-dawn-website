@@ -14,9 +14,10 @@ motion get the edited note, still, and no control.
 import html
 import re
 
-# The command and the file name stay English in every locale, as they are in the app.
-COMMAND = "marsdawn open launch-note.md"
-FILE_NAME = "launch-note.md"
+# The command and the file name stay English in every locale, as they are in the app. The command lands
+# the window on line 10 (#243): the reader's edit is the launch day on that line.
+FILE_NAME = "plan-checkout-v2.md"
+COMMAND = f"marsdawn open {FILE_NAME}:10"
 
 COPY = {
     "en": {
@@ -176,10 +177,10 @@ def scene_html(scene: dict, locale: str) -> str:
         f'<div class="loop-h1row">{_esc(t)}</div>' if k == "h1" else
         f'<div class="loop-sub{" loop-row-u a" if i == active else ""}">{_esc(t)}</div>'
         for i, (k, t) in enumerate(headings))
-    command = f"marsdawn open {scene['file']}"
+    command = scene.get("command", f"marsdawn open {scene['file']}")
     cmd_cls = "loop-cmd a" if len(command) == 28 else f"loop-cmd loop-cmd-{len(command)} a"
     ptr_cls = "loop-ptr a" if active == 2 else f"loop-ptr loop-ptr-r{active} a"
-    long_cls = " loop-long" if scene.get("long") else ""
+    long_cls = (" loop-long" if scene.get("long") else "") + (" loop-plan" if scene.get("plan") else "")
     return f"""<div class="loop-anim{LANG_CLASS[locale]}{long_cls}">
 <div class="loop-frame" role="img" aria-label="{_esc(scene["alt"])}">
 <div class="loop-stage" aria-hidden="true">
@@ -213,8 +214,9 @@ def home_scene(locale: str) -> dict:
     for h, p in copy["sections"]:
         source += [("h2", h), ("text", p)]
         preview += [("h4", h), ("p", p)]
-    return {"file": FILE_NAME, "source": source, "preview": preview, "active": copy["sections"][1][0],
-            "swaps": {k: (copy["old"], copy["new"]) for k in "aub"},
+    # The third section is the one the reader edits (u, line 10); the first holds the agent's change (a, line 4).
+    return {"file": FILE_NAME, "command": COMMAND, "plan": True, "source": source, "preview": preview, "active": copy["sections"][2][0],
+            "swaps": {k: (copy["old"], copy["new"]) for k in "au"},
             "ask": copy["ask"], "reply": copy["reply"], "alt": copy["alt"]}
 
 
@@ -546,6 +548,15 @@ def _scene_css() -> str:
 .loop-task::before { content: ""; display: inline-block; width: 0.75em; height: 0.75em; margin-right: 0.45em;
   border: 1.5u solid var(--lw-muted); border-radius: 3u; vertical-align: -0.05em; }
 """]
+    # The home page's plan scene has a longer terminal exchange (a reader line and a reply that each wrap): on a phone the
+    # frame is a little taller and the terminal starts lower and is taller, so neither line is cut off.
+    parts.append(r"""
+@media (max-width: 560px) {
+  .loop-plan .loop-frame { aspect-ratio: 460 / 790; }
+  .loop-plan .loop-term { top: 565u; height: 265u; }
+  .loop-plan .loop-tbody { font-size: 17u; padding: 14u 22u; gap: 4u; }
+}
+""")
     # The typed-in new text, and the caret after it, step one character at a time.
     for n in range(1, 13):
         if n in (2, 5):

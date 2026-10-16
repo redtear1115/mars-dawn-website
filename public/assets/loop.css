@@ -314,6 +314,12 @@
 .loop-pre li.loop-task { list-style: none; margin-left: calc(-26 * var(--u)); }
 .loop-task::before { content: ""; display: inline-block; width: 0.75em; height: 0.75em; margin-right: 0.45em;
   border: calc(1.5 * var(--u)) solid var(--lw-muted); border-radius: calc(3 * var(--u)); vertical-align: -0.05em; }
+
+@media (max-width: 560px) {
+  .loop-plan .loop-frame { aspect-ratio: 460 / 790; }
+  .loop-plan .loop-term { top: calc(565 * var(--u)); height: calc(265 * var(--u)); }
+  .loop-plan .loop-tbody { font-size: calc(17 * var(--u)); padding: calc(14 * var(--u)) calc(22 * var(--u)); gap: calc(4 * var(--u)); }
+}
 .loop-src .loop-d-u .loop-new.loop-n1 { animation-timing-function: steps(1, end); }
 .loop-ecaret.loop-n1 { animation-timing-function: linear, steps(1, end); }
 .loop-src .loop-d-u .loop-new.loop-n3 { animation-timing-function: steps(3, end); }

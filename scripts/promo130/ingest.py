@@ -1,0 +1,939 @@
+#!/usr/bin/env python3
+"""Ingestion for the promo-130 content bundle (website milestone 1.3.0).
+
+Every string the bundle puts on the site comes from a pinned source and is carried here by program,
+never typed:
+
+- a Grok comment on a website issue (#240 to #246, and #189's two review comments), fetched by id
+  with `gh api` and held to the sha256 and `updated_at` recorded in sources.json, or
+- scripts/seo_copy.py at commit 8de3664934e02a5bd2e1e4d6de8a7f0907b95fe6 (#189), read from the git
+  object and held to its recorded sha256.
+
+A source whose hash or `updated_at` differs from the pinned one stops the run (exit 2). The only
+transformations applied are the allowed ones: Markdown inline syntax to HTML ([text](url) -> <a>,
+`x` -> <code>, **x** -> <strong>, *x* -> <em>, \\| -> |), the reply's own framing removed (check boxes,
+language labels, the code span wrapped around a whole item, character counts), commands and file
+names in <code>, and, for #189's zh-Hans strings only, the owner's zh-Hans word map (agent -> 代理).
+
+Outputs: scripts/promo130/data.py (the strings the build reads) and scripts/promo130/slots.json (one
+row per shipped string: page x field x locale -> source, item label, version label).
+
+    python3 -B scripts/promo130/ingest.py            # fetch, verify, write
+    python3 -B scripts/promo130/ingest.py --through 189   # only the issues up to this one
+"""
+import hashlib
+import html
+import json
+import pprint
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent.parent
+SOURCES = json.loads((HERE / "sources.json").read_text(encoding="utf-8"))
+REPO = "redtear1115/mars-dawn-website"
+SEO_COMMIT = "8de3664934e02a5bd2e1e4d6de8a7f0907b95fe6"
+SEO_SHA256 = "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6"
+LOCALES = ["en", "zh-hant", "zh-hans", "ja", "de", "fr", "es", "ko"]
+FIRST = ["en", "zh-hant", "ja"]            # the first-round languages
+MACHINE = ["zh-hans", "ko", "de", "fr", "es"]   # Grok's needs-i18n round
+
+ORDER = [189, 244, 246, 242, 240, 241, 245, 243, 2421]
+
+
+class Stop(SystemExit):
+    pass
+
+
+def sha256(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+_cache = {}
+
+
+def comment(issue: int, round_: int) -> tuple:
+    """(id, body) of the issue's pinned comment: round 1 or 2 (189: the two review comments)."""
+    pinned = SOURCES["issues"][str(issue)][round_ - 1]
+    cid = pinned["id"]
+    if cid not in _cache:
+        out = subprocess.run(["gh", "api", f"repos/{REPO}/issues/comments/{cid}"], capture_output=True, text=True)
+        if out.returncode:
+            raise Stop(f"gh api failed for comment {cid}: {out.stderr.strip()}")
+        got = json.loads(out.stdout)
+        digest = sha256(got["body"])
+        if digest != pinned["sha256"] or got["updated_at"] != pinned["updated_at"]:
+            raise Stop(f"comment {cid} (#{issue}) differs from the pinned source: sha256 {digest} vs {pinned['sha256']}, "
+                       f"updated_at {got['updated_at']} vs {pinned['updated_at']}")
+        _cache[cid] = got["body"]
+        print(f"verified comment {cid} (#{issue} round {round_}): sha256 {digest[:12]} updated_at {got['updated_at']}")
+    return cid, _cache[cid]
+
+
+def seo_source() -> str:
+    out = subprocess.run(["git", "-C", str(ROOT), "show", f"{SEO_COMMIT}:scripts/seo_copy.py"], capture_output=True)
+    if out.returncode:
+        raise Stop(f"git show {SEO_COMMIT}:scripts/seo_copy.py failed: {out.stderr.decode()[:200]}")
+    text = out.stdout.decode("utf-8")
+    if sha256(text) != SEO_SHA256:
+        raise Stop(f"seo_copy.py@{SEO_COMMIT[:7]} sha256 {sha256(text)} differs from the pinned {SEO_SHA256}")
+    print(f"verified scripts/seo_copy.py@{SEO_COMMIT[:7]}: sha256 {SEO_SHA256[:12]}")
+    return text
+
+
+# ---- the allowed transformations --------------------------------------------------------------
+
+def esc(text: str) -> str:
+    return html.escape(text, quote=False)
+
+
+def inline(text: str) -> str:
+    """Markdown inline syntax to HTML; everything else is HTML-escaped and otherwise untouched."""
+    text = text.replace("\\|", "|")
+    out, pos = [], 0
+    token = re.compile(r"\[([^\]]+)\]\(([^)]+)\)|`([^`]+)`|\*\*([^*]+)\*\*|(?<![\w*])\*([^*\n]+)\*(?![\w*])")
+    for m in token.finditer(text):
+        out.append(esc(text[pos:m.start()]))
+        if m.group(1) is not None:
+            out.append(f'<a href="{html.escape(m.group(2), quote=True)}">{esc(m.group(1))}</a>')
+        elif m.group(3) is not None:
+            out.append(f"<code>{esc(m.group(3))}</code>")
+        elif m.group(4) is not None:
+            out.append(f"<strong>{esc(m.group(4))}</strong>")
+        else:
+            out.append(f"<em>{esc(m.group(5))}</em>")
+        pos = m.end()
+    out.append(esc(text[pos:]))
+    return "".join(out)
+
+
+def strip_count(text: str) -> str:
+    """Grok's trailing character count in a label: 'en A（49）' -> 'en A'."""
+    return re.sub(r"[（(]\d+[）)]\s*$", "", text).strip()
+
+
+# ---- readers for Grok's reply formats ---------------------------------------------------------
+
+def section(body: str, heading: str) -> str:
+    """The text under a heading line that starts with `heading`, up to the next heading of the same or
+    a higher level."""
+    lines = body.split("\n")
+    for i, line in enumerate(lines):
+        if line.startswith(heading):
+            level = len(line) - len(line.lstrip("#"))
+            end = len(lines)
+            for j in range(i + 1, len(lines)):
+                m = re.match(r"(#+) ", lines[j])
+                if m and len(m.group(1)) <= level:
+                    end = j
+                    break
+            return "\n".join(lines[i + 1:end])
+    raise Stop(f"no heading starting with {heading!r}")
+
+
+def bullets(text: str) -> dict:
+    """'- [ ] **label**：`value`' lines -> {label: value}. The label loses its count; the value loses
+    the code span wrapped around the whole item."""
+    out = {}
+    for m in re.finditer(r"^\s*- \[[ x]\] \*\*(.+?)\*\*[：:]\s*(.+)$", text, re.M):
+        label, value = strip_count(m.group(1)), m.group(2).strip()
+        value = unwrap(value)
+        out[label] = value
+    return out
+
+
+def unwrap(value: str) -> str:
+    """Remove the one pair of backticks Grok wraps around a whole item, and the versions note after it."""
+    m = re.match(r"^`((?:[^`]|`(?!$))*?)`(?:（[^）]*）)?$", value)
+    if m:
+        return m.group(1)
+    return value
+
+
+def table_rows(text: str) -> dict:
+    """The first two-column table in the text: {first cell: second cell}."""
+    out = {}
+    for line in text.split("\n"):
+        if not line.startswith("|"):
+            if out:
+                break
+            continue
+        cells = split_row(line)
+        if len(cells) < 2 or set(cells[0]) <= set("-: ") or cells[0] in ("項目",):
+            continue
+        out[strip_count(cells[0])] = cells[1]
+    return out
+
+
+def split_row(line: str) -> list:
+    line = line.strip()
+    assert line.startswith("|") and line.endswith("|"), line
+    cells, cur, i = [], "", 1
+    body = line[1:-1]
+    while i <= len(body):
+        ch = body[i - 1] if i - 1 < len(body) else ""
+        if ch == "\\" and i < len(body) and body[i] == "|":
+            cur += "\\|"
+            i += 2
+            continue
+        if ch == "|":
+            cells.append(cur.strip())
+            cur = ""
+        else:
+            cur += ch
+        i += 1
+    cells.append(cur.strip())
+    return cells
+
+
+def data_tables(text: str) -> list:
+    """Every pipe table in the text as a list of rows (cells), separator rows dropped."""
+    tables, cur = [], []
+    for line in text.split("\n") + [""]:
+        if line.startswith("|"):
+            cells = split_row(line)
+            if not all(set(c) <= set("-: ") for c in cells):
+                cur.append(cells)
+        elif cur:
+            tables.append(cur)
+            cur = []
+    return tables
+
+
+
+LOC_LABEL = {"en": "en", "zh-Hant": "zh-hant", "ja": "ja"}
+
+
+def r1_items(text: str) -> list:
+    """Round-1 item lines for en, zh-Hant and ja: '- [ ] **en A（49）**：`...`' (a checked item) or
+    '- en（56）：`...`' (a version listed without a box). Returns [(locale, tag, value)] in order; the tag is
+    the word after the language ('A', 'description', ...) or ''."""
+    out = []
+    pat = re.compile(r"^\s*-\s*(?:\[[ x]\]\s*)?(?:\*\*)?(en|zh-Hant|ja)(?:\s+([A-Za-z]+))?\s*(?:\*\*)?\s*(?:（\d+）)?(?:\*\*)?[：:]\s*(.+?)\s*$", re.M)
+    for m in pat.finditer(text):
+        out.append((LOC_LABEL[m.group(1)], m.group(2) or "", unwrap(m.group(3))))
+    return out
+
+
+def r2_table(body: str, locale: str) -> dict:
+    """Round 2's two-column table for a language: {item label without its count: cell text}."""
+    heading = {"zh-hans": "zh-Hans", "ko": "ko", "de": "de", "fr": "fr", "es": "es"}[locale]
+    return table_rows(section(body, f"### {heading}"))
+
+
+def by_loc(items: list, tag: str = "") -> dict:
+    return {loc: value for loc, t, value in items if t == tag}
+
+
+
+def nested(text: str) -> dict:
+    """'- [ ] **en**' lines followed by indented '- key：`value`' lines -> {locale: {key: value}}."""
+    out, cur = {}, None
+    for line in text.split("\n"):
+        head = re.match(r"^- \[[ x]\] \*\*(en|zh-Hant|ja)\*\*\s*$", line)
+        if head:
+            cur = LOC_LABEL[head.group(1)]
+            out[cur] = {}
+            continue
+        item = re.match(r"^\s+- ([^：:`]+)[：:]\s*(.+?)\s*$", line)
+        if item and cur:
+            out[cur][item.group(1).strip()] = unwrap(item.group(2))
+            continue
+        bare = re.match(r"^\s+- (`.+`)\s*$", line)
+        if bare and cur:
+            out[cur].setdefault("_list", []).append(unwrap(bare.group(1)))
+        elif re.match(r"^- \[[ x]\]", line) or re.match(r"^#", line):
+            cur = None
+    return out
+
+
+def fenced_by_locale(text: str) -> dict:
+    """'- [ ] **en**' followed by a fenced block -> {locale: [lines]}."""
+    out = {}
+    for m in re.finditer(r"^- \[[ x]\] \*\*(en|zh-Hant|ja)\*\*\s*\n```\n(.*?)\n```", text, re.M | re.S):
+        out[LOC_LABEL[m.group(1)]] = m.group(2).split("\n")
+    return out
+
+
+def bullet_chunk(text: str, name: str) -> str:
+    """The lines after a '- [ ] **name**' bullet, up to the next bullet at the same level."""
+    m = re.search(r"^- \[[ x]\] \*\*" + re.escape(name) + r"\*\*\s*\n((?:(?!- \[).*\n?)*)", text, re.M)
+    if not m:
+        raise Stop(f"no bullet {name!r}")
+    return m.group(1)
+
+
+def locale_chunk(text: str, name: str) -> str:
+    """The text after a bold '**name**' line, up to the next bold line."""
+    lines = text.split("\n")
+    for i, line in enumerate(lines):
+        if line.strip() == f"**{name}**":
+            end = len(lines)
+            for j in range(i + 1, len(lines)):
+                if re.match(r"^\*\*[^*]+\*\*\s*$", lines[j].strip()):
+                    end = j
+                    break
+            return "\n".join(lines[i + 1:end])
+    raise Stop(f"no bold line {name!r}")
+
+
+# ---- collecting data and slots ----------------------------------------------------------------
+
+DATA = {}
+SLOTS = []
+
+
+def put(path: tuple, value, *, slot: dict) -> None:
+    """DATA[path...] = value; the slot row records where it ships and where it came from. A slot with
+    `path` None only records a row (for a value kept under a parent path)."""
+    node = DATA
+    for part in path[:-1]:
+        node = node.setdefault(part, {})
+    node[path[-1]] = value
+    SLOTS.append(dict(slot, path=list(path)))
+
+
+def comment_source(cid: int, round_: int, locator: str) -> dict:
+    return {"comment": cid, "round": f"R{round_}", "locator": locator}
+
+
+# ---- #189: scripts/seo_copy.py@8de3664 --------------------------------------------------------
+
+def ingest_189() -> None:
+    cid2 = SOURCES["issues"]["240"][1]["id"]
+    text = seo_source()
+    ns = {}
+    exec(compile(text, "seo_copy.py", "exec"), ns)
+    copy = ns["COPY"]
+    # #240 round 2 corrects one zh-Hans word in Q4; the owner's zh-Hans map is agent -> 代理.
+    comment(240, 2)
+    zh_q4_old, zh_q4_new = "或任何能执行 shell 命令的 agent", "或任何能执行 shell 命令的代理"
+    for loc in LOCALES:
+        c = copy[loc]
+        src = {"file": f"scripts/seo_copy.py@{SEO_COMMIT[:7]}", "sha256": SEO_SHA256}
+
+        def plain(key, value, page, field, item, subst=None):
+            put(("seo", loc, key) if not isinstance(key, tuple) else ("seo", loc) + key, esc(value),
+                slot={"locale": loc, "page": page, "field": field, "source": dict(src, **({"subst": subst} if subst else {})),
+                      "item": item, "version": "#189"})
+        plain("ql_title", c["ql_title"], "quicklook", "title", "ql_title")
+        plain("ql_desc", c["ql_desc"], "quicklook", "description", "ql_desc")
+        plain("ql_h1", c["ql_h1"], "quicklook", "h1", "ql_h1")
+        plain("ql_lead", c["ql_lead"], "quicklook", "p", "ql_lead")
+        plain("ql_shows_h", c["ql_shows_h"], "quicklook", "h2", "ql_shows_h")
+        DATA["seo"][loc]["ql_shows"] = []
+        for i, item in enumerate(c["ql_shows"]):
+            DATA["seo"][loc]["ql_shows"].append(esc(item))
+            SLOTS.append({"locale": loc, "page": "quicklook", "field": "li", "source": src, "item": f"ql_shows[{i}]",
+                          "version": "#189", "path": ["seo", loc, "ql_shows", i]})
+        plain("ql_how_name", c["ql_how_name"], "quicklook", "h2", "ql_how_name")
+        DATA["seo"][loc]["ql_steps"] = []
+        for i, (name, step) in enumerate(c["ql_steps"]):
+            DATA["seo"][loc]["ql_steps"].append([esc(name), esc(step)])
+            for j, (field, kind) in enumerate((("strong", "name"), ("li-text", "text"))):
+                SLOTS.append({"locale": loc, "page": "quicklook", "field": field, "source": src, "item": f"ql_steps[{i}].{kind}",
+                              "version": "#189", "path": ["seo", loc, "ql_steps", i, j]})
+        plain("ql_trial_h", c["ql_trial_h"], "quicklook", "h2", "ql_trial_h")
+        plain("ql_pay_link_text", c["ql_pay_link_text"], "quicklook", "a", "ql_pay_link_text")
+        plain("ql_trial_p", c["ql_trial_p"], "quicklook", "p", "ql_trial_p")
+        plain("ql_next_h", c["ql_next_h"], "quicklook", "h2", "ql_next_h")
+        plain("ql_link", c["ql_link"], "native", "a", "ql_link")
+        plain("ui", c["ui"], "quicklook", "breadcrumb", "ui")
+        plain("faq_h", c["faq_h"], "quicklook", "h2", "faq_h")
+        for key, page, items in (("ql_faq", "quicklook", c["ql_faq"]), ("pay_faq", "pay-once", c["pay_faq"]),
+                                 ("home_faq", "index", c["home_faq"][1:4])):
+            DATA["seo"][loc][key] = []
+            base = 1 if key == "home_faq" else 0   # the home FAQ keeps #189's Q2 to Q4; Q1 and Q5 are superseded
+            for i, (q, a) in enumerate(items):
+                subst = None
+                if loc == "zh-hans" and key == "home_faq" and i + base == 3:
+                    assert a.count(zh_q4_old) == 1, "zh-Hans Q4 no longer holds the string #240 round 2 corrects"
+                    a = a.replace(zh_q4_old, zh_q4_new)
+                    subst = {"old": zh_q4_old, "new": zh_q4_new, "by": f"comment {cid2} (R2) and the owner's zh-Hans map"}
+                DATA["seo"][loc][key].append([esc(q), esc(a)])
+                for j, (field, kind) in enumerate((("faq_q", "q"), ("faq_a", "a"))):
+                    row = {"locale": loc, "page": page, "field": field, "source": dict(src, **({"subst": subst} if subst and j == 1 else {})),
+                           "item": f"{key}[{i + base}].{kind}", "version": "#189", "path": ["seo", loc, key, i, j]}
+                    SLOTS.append(row)
+    # the zh-Hans map is the only change #189's strings take: nothing else says 'agent'
+    zh = json.dumps(DATA["seo"]["zh-hans"], ensure_ascii=False)
+    assert not re.search("agent", zh, re.I), "zh-Hans seo strings still say agent"
+
+
+
+# ---- #244: titles without "editor", the home description and definition ------------------------
+
+def ingest_244() -> None:
+    c1, b1 = comment(244, 1)
+    c2, b2 = comment(244, 2)
+    # (a) the home page: version B; (b) /features/, (c) /yours/, (d) /vs/macmd-viewer/: version A.
+    spec = [("index", "(a)", "### (a)", "B", "title"), ("features", "(b)", "### (b)", "A", "title"),
+            ("yours", "(c)", "### (c)", "A", "title"), ("vs/macmd-viewer", "(d)", "### (d)", "A", "title")]
+    r2_key = {"index": "(a) 首頁 `/` title／og:title", "features": "(b) `/features/`", "yours": "(c) `/yours/`",
+              "vs/macmd-viewer": "(d) `/vs/macmd-viewer/`"}
+    for slug, label, heading, version, _ in spec:
+        sec = section(b1, heading)
+        if version == "B":
+            sec = sec[sec.index("版本 B"):]
+            got = by_loc(r1_items(sec))
+        else:
+            got = by_loc(r1_items(sec), "A")
+        assert set(got) == set(FIRST), (slug, got)
+        for loc in FIRST:
+            put(("titles", loc, slug), esc(got[loc]), slot={
+                "locale": loc, "page": slug, "field": "title", "source": comment_source(c1, 1, f"{heading} version {version}, {loc}"),
+                "item": f"#244{label}", "version": version})
+        for loc in MACHINE:
+            cell = r2_table(b2, loc)[r2_key[slug]]
+            put(("titles", loc, slug), esc(cell), slot={
+                "locale": loc, "page": slug, "field": "title", "source": comment_source(c2, 2, f"### {loc} table, {r2_key[slug]}"),
+                "item": f"#244{label}", "version": "R2"})
+    sec = section(b1, "### (f)")
+    items = r1_items(sec)
+    for loc in FIRST:
+        for tag, key, label in (("description", "description", "(f) description"), ("definition", "definition", "(f) definition")):
+            value = by_loc(items, tag)[loc]
+            put(("home", loc, key), esc(value), slot={
+                "locale": loc, "page": "index", "field": key, "source": comment_source(c1, 1, f"### (f), {loc} {tag}"),
+                "item": f"#244{label}", "version": "R1"})
+    for loc in MACHINE:
+        table = r2_table(b2, loc)
+        for key, row, label in (("description", "(f) 首頁 meta description（og:description、llms.txt）", "(f) description"),
+                                ("definition", "(f) headline 下的定義句", "(f) definition")):
+            put(("home", loc, key), esc(table[row]), slot={
+                "locale": loc, "page": "index", "field": key, "source": comment_source(c2, 2, f"### {loc} table, {row}"),
+                "item": f"#244{label}", "version": "R2"})
+    # the definition sentence is also /native/'s (plan: "/native/ takes #244(f)'s definition")
+    for loc in LOCALES:
+        SLOTS.append(dict([s for s in SLOTS if s["path"] == ["home", loc, "definition"]][0], page="native", path=["home", loc, "definition"]))
+
+
+
+# ---- #246: an invitation line under "Write to us" on /support/ ----------------------------------
+
+def ingest_246() -> None:
+    from urllib.parse import unquote, urlsplit, parse_qs
+    c1, b1 = comment(246, 1)
+    c2, b2 = comment(246, 2)
+    sec_a = section(b1, "### (a)")
+    sec_a = sec_a[:sec_a.index("**版本 B**")]            # version A only
+    para = by_loc(r1_items(sec_a))
+    subj = by_loc(r1_items(section(b1, "### (b)")))
+    for loc in LOCALES:
+        if loc in FIRST:
+            text, subject = para[loc], subj[loc]
+            src_p, src_s, ver = (comment_source(c1, 1, f"### (a) version A, {loc}"), comment_source(c1, 1, f"### (b), {loc}"), "A")
+        else:
+            table = r2_table(b2, loc)
+            text, subject = table["文案（接在地址段落之後）"], table["mailto 主旨"]
+            src_p, src_s, ver = (comment_source(c2, 2, f"### {loc} table, 文案（接在地址段落之後）"),
+                                 comment_source(c2, 2, f"### {loc} table, mailto 主旨"), "R2")
+        # the paragraph is Markdown; the kit's renderer turns it into HTML. Its mailto subject must be the item's.
+        link = re.search(r"\]\((mailto:[^)]+)\)", text)
+        assert link, (loc, text)
+        decoded = parse_qs(urlsplit(link.group(1)).query)["subject"][0]
+        assert decoded == subject, (loc, decoded, subject)
+        put(("support", loc, "p_md"), text, slot={"locale": loc, "page": "support", "field": "p", "source": src_p,
+                                                  "item": "#246(a)", "version": ver})
+        put(("support", loc, "subject"), subject, slot={"locale": loc, "page": "support", "field": "mailto_subject", "source": src_s,
+                                                        "item": "#246(b)", "version": ver})
+
+
+
+# ---- #242: the /vs/ page, and its short version on the home page --------------------------------
+
+def ingest_242() -> None:
+    c1, b1 = comment(242, 1)
+    c2, b2 = comment(242, 2)
+    a = nested(section(b1, "### (a)"))
+    notes = bullets(section(b1, "### (b)(c)"))
+    lacks_a = by_loc(r1_items(section(b1, "### (d)")), "A")
+    dont = fenced_by_locale(section(b1, "### (e)"))
+    short = by_loc(r1_items(section(b1, "### (f)")))
+    links = nested(section(b1, "### (g)"))
+
+    def r2_nested(label: str) -> dict:
+        """The round-2 correction '- [ ] **label**' with indented '- en：`...`' lines -> {locale: value}."""
+        m = re.search(r"^- \[[ x]\] \*\*" + re.escape(label) + r"\*\*[^\n]*\n((?:  - .*\n?)+)", b2, re.M)
+        assert m, label
+        return {LOC_LABEL[k]: unwrap(v.strip()) for k, v in re.findall(r"^\s+- (en|zh-Hant|ja)[：:]\s*(.+)$", m.group(1), re.M)}
+    vscode_cell = r2_nested("VS Code 格")
+    lacks_extra = r2_nested("lacks 加的句子")
+    dont_vscode = r2_nested("When you don't need 的 VS Code 那條")
+    # the bracketed command in the VS Code cell is code, as in the round-1 table and in the other languages' cells
+    for loc in vscode_cell:
+        vscode_cell[loc] = vscode_cell[loc].replace("code -g file:line", "`code -g file:line`")
+    anchor = {"en": "Its PDFs have no page numbers.", "zh-hant": "輸出的 PDF 沒有頁碼。", "ja": "PDF にページ番号は入りません。"}
+    joiner = {"en": " ", "zh-hant": "", "ja": ""}
+
+    def src1(where):
+        return comment_source(c1, 1, where)
+
+    def src2(where):
+        return comment_source(c2, 2, where)
+
+    for loc in LOCALES:
+        if loc in FIRST:
+            ln = {"en": "en", "zh-hant": "zh-Hant", "ja": "ja"}[loc]
+            table = data_tables(locale_chunk(section(b1, "### (b)(c)"), ln))[0]
+            fields = {"title": a[loc]["title"], "h1": a[loc]["h1"], "intro": a[loc]["引言"],
+                      "note": notes[f"表下註記（{ln}）"], "short": short[loc]}
+            where = {"title": src1(f"### (a), {loc} title"), "h1": src1(f"### (a), {loc} h1"), "intro": src1(f"### (a), {loc} 引言"),
+                     "note": src1(f"### (b)(c), 表下註記（{ln}）"), "short": src1(f"### (f), {loc}")}
+            lacks = lacks_a[loc]
+            assert lacks.count(anchor[loc]) == 1, loc
+            lacks_full = lacks.replace(anchor[loc], anchor[loc] + joiner[loc] + lacks_extra[loc])
+            lacks_src = [src1(f"### (d) version A, {loc}"), src2(f"lacks 加的句子, {loc}, spliced after {anchor[loc]!r}")]
+            ver = "R1+R2"
+            items = list(dont[loc])
+            heading, bullets_ = items[0], [i[2:] if i.startswith("- ") else i for i in items[1:]]
+            assert len(bullets_) == 6
+            assert "VS Code" in bullets_[0] and "VS Code" in dont_vscode[loc]
+            bullets_[0] = dont_vscode[loc]
+            dont_src = [src1(f"### (e), {loc} heading")] + [src1(f"### (e), {loc} bullet {i + 1}") for i in range(6)]
+            dont_src[1] = src2(f"When you don't need 的 VS Code 那條, {loc}")
+            head_row, rows = table[0], [list(r) for r in table[1:]]
+            assert len(rows) == 8 and "VS Code" in head_row[2]
+            rows[3][2] = vscode_cell[loc]
+            cell_src = lambda r, c: src2(f"VS Code 格, {loc}") if (r, c) == (3, 2) else src1(f"### (b)(c) table {ln}, row {r + 1} col {c + 1}")
+            l1 = links[loc]["_list"]
+        else:
+            t2 = r2_table(b2, loc)
+            tables = data_tables(section(b2, "### " + {"zh-hans": "zh-Hans"}.get(loc, loc)))
+            head_row, rows = tables[1][0], [list(r) for r in tables[1][1:]]
+            assert len(rows) == 8
+            fields = {"title": t2["title"], "h1": t2["h1"], "intro": t2["引言"], "note": t2["表下註記"], "short": t2["首頁短版"]}
+            where = {k: src2(f"### {loc} table, {v}") for k, v in (("title", "title"), ("h1", "h1"), ("intro", "引言"), ("note", "表下註記"), ("short", "首頁短版"))}
+            lacks_full = t2["What MarsDawn lacks"]
+            lacks_src = [src2(f"### {loc} table, What MarsDawn lacks")]
+            ver = "R2"
+            heading = t2["When you don't need：標題"]
+            bullets_ = [t2[f"When you don't need：第 {i} 條"] for i in range(1, 7)]
+            dont_src = [src2(f"### {loc} table, When you don't need：標題")] + [src2(f"### {loc} table, When you don't need：第 {i} 條") for i in range(1, 7)]
+            cell_src = lambda r, c: src2(f"### {loc} data table, row {r + 1} col {c + 1}")
+            l1 = [t2["比較頁介紹 1"], t2["比較頁介紹 2"]]
+        assert len(head_row) == 6 and all(len(r) == 6 for r in rows)
+        for key, field, item in (("title", "title", "(a) title"), ("h1", "h1", "(a) h1"), ("intro", "p", "(a) 引言")):
+            put(("vs", loc, key), esc(fields[key]) if key == "title" else inline(fields[key]),
+                slot={"locale": loc, "page": "vs", "field": field, "source": where[key], "item": f"#242{item}", "version": ver})
+        put(("vs", loc, "note"), inline(fields["note"]), slot={"locale": loc, "page": "vs", "field": "p", "source": where["note"],
+                                                                "item": "#242(b)(c) 表下註記", "version": ver})
+        put(("vs", loc, "lacks"), inline(lacks_full), slot={"locale": loc, "page": "vs", "field": "p", "source": lacks_src,
+                                                             "item": "#242(d) What MarsDawn lacks (A)", "version": ver})
+        put(("vs", loc, "dont_h"), inline(heading), slot={"locale": loc, "page": "vs", "field": "h2", "source": dont_src[0],
+                                                           "item": "#242(e) heading", "version": ver})
+        DATA["vs"][loc]["dont"] = []
+        for i, b in enumerate(bullets_):
+            DATA["vs"][loc]["dont"].append(inline(b))
+            SLOTS.append({"locale": loc, "page": "vs", "field": "li", "source": dont_src[i + 1], "item": f"#242(e) bullet {i + 1}",
+                          "version": ver, "path": ["vs", loc, "dont", i]})
+        DATA["vs"][loc]["links"] = []
+        for i, l in enumerate(l1):
+            DATA["vs"][loc]["links"].append(inline(l))
+            SLOTS.append({"locale": loc, "page": "vs", "field": "li", "source": src1(f"### (g), {loc} item {i + 1}") if loc in FIRST else src2(f"### {loc} table, 比較頁介紹 {i + 1}"),
+                          "item": f"#242(g) item {i + 1}", "version": ver, "path": ["vs", loc, "links", i]})
+        DATA["vs"][loc]["head"] = [inline(c) for c in head_row]
+        for c, cell in enumerate(head_row):
+            if cell:
+                SLOTS.append({"locale": loc, "page": "vs", "field": "th", "source": src1(f"### (b)(c) table, header col {c + 1}") if loc in FIRST else src2(f"### {loc} data table, header col {c + 1}"),
+                              "item": f"#242(b)(c) header {c + 1}", "version": ver, "path": ["vs", loc, "head", c]})
+        DATA["vs"][loc]["rows"] = []
+        for r, row in enumerate(rows):
+            DATA["vs"][loc]["rows"].append([inline(c) for c in row])
+            for c, cell in enumerate(row):
+                SLOTS.append({"locale": loc, "page": "vs", "field": "th" if c == 0 else "td", "source": cell_src(r, c),
+                              "item": f"#242(b)(c) row {r + 1} col {c + 1}", "version": ver, "path": ["vs", loc, "rows", r, c]})
+        # the home page's short version
+        put(("home", loc, "vs_short"), inline(fields["short"]), slot={"locale": loc, "page": "index", "field": "p", "source": where["short"],
+                                                                      "item": "#242(f)", "version": ver})
+
+
+
+# ---- #240: "Your documents stay on your Mac": three layers, and the privacy questions ----------
+
+def ingest_240() -> None:
+    c1, b1 = comment(240, 1)
+    c2, b2 = comment(240, 2)
+    c3, b3 = comment(240, 3)          # round 3: the P1 to P4 questions, the P2 link row, the P1 anchor, the layer-1 inline links
+    r3_q = {row[0]: row[1:] for row in data_tables(section(b3, "## 1. 題目"))[0][1:]}      # P1.. -> [en, zh-Hant, ja]
+    r3_p2 = by_loc(r1_items(section(b3, "## 2. P2 連結列")))
+    r3_phrases = {row[0]: row[1:] for row in data_tables(section(b3, "## 4. 第一層額外連結：選 A"))[0][1:]}
+    title = by_loc(r1_items(section(b1, "### (a)")), "A")
+    sec_b = section(b1, "### (b)")
+    parts = re.split(r"\*\*第[一二三]層\*\*", sec_b)[1:]
+    assert len(parts) == 3
+    layer = {i: by_loc(r1_items(parts[i])) for i in range(3)}
+    layer2_r2 = by_loc(r1_items(section(b2, "## 結論")))                # the corrected second layer: round 2 text under 結論
+    faq_r1 = section(b1, "### (c)")
+    heads = {m.group(1): m.group(2).strip() for m in re.finditer(r"^\*\*([QP]\d)\s+(.+?)\*\*", faq_r1, re.M)}
+    chunks = re.split(r"^\*\*[QP]\d\b.*$", faq_r1, flags=re.M)[1:]
+    keys = [m.group(1) for m in re.finditer(r"^\*\*([QP]\d)\b", faq_r1, re.M)]
+    answers_r1 = {k: by_loc(r1_items(c)) for k, c in zip(keys, chunks) if k in ("Q1", "P1", "P2", "P3", "P4")}
+    q1_heading = heads["Q1"]
+    q1_heading = re.sub(r"（.*$", "", q1_heading).strip()
+    # round 1's link row: one sentence per language, with the anchor of each place from its anchor table
+    sec_d = section(b1, "### (d)")
+    bar = by_loc(r1_items(sec_d.split("錨點對應")[0]))
+    anchors = {"t1": "what-stays-on-your-mac", "t2": "when-marsdawn-uses-the-internet", "t3": "when-marsdawn-uses-the-internet",
+               "P1": "what-stays-on-your-mac", "P3": "when-marsdawn-uses-the-internet", "P4": "the-website"}
+    seo = ns_seo()
+    for loc in LOCALES:
+        if loc in FIRST:
+            ttl = title[loc]
+            layers = [layer[0][loc], layer2_r2[loc], layer[2][loc]]
+            lsrc = [comment_source(c1, 1, f"### (b) 第一層, {loc}"), comment_source(c2, 2, f"## 結論 (corrected second layer), {loc}"),
+                    comment_source(c1, 1, f"### (b) 第三層, {loc}")]
+            tsrc = comment_source(c1, 1, f"### (a) A, {loc}")
+            ver = "R1+R2"
+
+            def link(anchor, loc=loc):
+                return re.sub(r"#what-stays-on-your-mac", "#" + anchor, bar[loc])
+            more = [link(anchors["t1"]), link(anchors["t2"]), link(anchors["t3"])]
+            msrc = [comment_source(c1, 1, f"### (d) link row + anchor table, {loc}, {k}") for k in ("tier 1", "tier 2", "tier 3")]
+            items = {}
+            q1_q = seo[loc]["home_faq"][0][0] if loc != "en" else q1_heading
+            items["Q1"] = (q1_q, answers_r1["Q1"][loc], None, comment_source(c1, 1, f"### (c) Q1, {loc}"), None)
+            col = {"en": 0, "zh-hant": 1, "ja": 2}[loc]
+            for k in ("P1", "P2", "P3", "P4"):
+                if loc == "en":
+                    q, qsrc = re.sub(r"（.*$", "", heads[k]).strip(), comment_source(c1, 1, f"### (c) {k}, en")
+                else:
+                    q, qsrc = r3_q[k][col], comment_source(c3, 3, f"## 1. 題目, {k}, {loc}")
+                if k == "P2":
+                    mk, msrc_ = r3_p2[loc], comment_source(c3, 3, f"## 2. P2 連結列, {loc}")
+                else:
+                    mk, msrc_ = link(anchors[k]), comment_source(c1, 1, f"### (d) link row + anchor table, {loc}, {k}")
+                    if k == "P1":
+                        msrc_ = [msrc_, comment_source(c3, 3, f"## 3. P1 錨點 (all eight languages), {loc}")]
+                items[k] = (q, answers_r1[k][loc], mk, [comment_source(c1, 1, f"### (c) {k}, {loc}")] + ([qsrc] if loc != "en" else []), msrc_)
+        else:
+            t = r2_table(b2, loc)
+            ttl = t["標題"]
+            layers = [t["第一層"], t["第二層"], t["第三層"]]
+            lsrc = [comment_source(c2, 2, f"### {loc} table, {k}") for k in ("第一層", "第二層", "第三層")]
+            tsrc = comment_source(c2, 2, f"### {loc} table, 標題")
+            ver = "R2"
+            more = [t["連結列（第一層）"], t["連結列（第二層）"], t["連結列（第三層）"]]
+            msrc = [comment_source(c2, 2, f"### {loc} table, 連結列（{k}）") for k in ("第一層", "第二層", "第三層")]
+            items = {"Q1": (t["Q1 問"], t["Q1 答"], None, comment_source(c2, 2, f"### {loc} table, Q1 問/答"), None)}
+            for k in ("P1", "P2", "P3", "P4"):
+                items[k] = (t[f"{k} 問"], t[f"{k} 答"], t[f"連結列（{k}）"], comment_source(c2, 2, f"### {loc} table, {k} 問/答"),
+                            comment_source(c2, 2, f"### {loc} table, 連結列（{k}）"))
+        put(("stays", loc, "h"), esc(ttl), slot={"locale": loc, "page": "index", "field": "h2", "source": tsrc, "item": "#240(a)", "version": "A" if loc in FIRST else "R2"})
+        DATA["stays"][loc]["layers"] = []
+        DATA["stays"][loc]["more"] = []
+        for i in range(3):
+            DATA["stays"][loc]["layers"].append(inline(layers[i]))
+            SLOTS.append({"locale": loc, "page": "index", "field": "p", "source": lsrc[i], "item": f"#240(b) layer {i + 1}",
+                          "version": ver, "path": ["stays", loc, "layers", i]})
+            DATA["stays"][loc]["more"].append(inline(more[i]))
+            SLOTS.append({"locale": loc, "page": "index", "field": "p", "source": msrc[i], "item": f"#240(d) link row, layer {i + 1}",
+                          "version": ver, "path": ["stays", loc, "more", i]})
+        # round 3, option A: the PDF words and the command-line words of layer 1 link to their privacy sections
+        pdf_phrase, cmd_phrase = r3_phrases[{"zh-hant": "zh-Hant", "zh-hans": "zh-Hans"}.get(loc, loc)]
+        privacy = "/privacy/" if loc == "en" else f"/{loc}/privacy/"
+        html1 = DATA["stays"][loc]["layers"][0]
+        for phrase, anchor, what in ((pdf_phrase, "exporting-and-printing", "PDF"), (cmd_phrase, "the-marsdawn-command-line-tool", "command line")):
+            assert layers[0].count(phrase) == 1, f"{loc}: layer 1 has {layers[0].count(phrase)} of {phrase!r}, want exactly 1"
+            html1 = html1.replace(esc(phrase), f'<a href="{privacy}#{anchor}">{esc(phrase)}</a>', 1)
+            SLOTS.append({"locale": loc, "page": "index", "field": "inline-link", "source": comment_source(c3, 3, f"## 4 table, {what}, {loc}"),
+                          "item": f"#240(b) layer 1 link: {what}", "version": "R3 option A", "path": None, "phrase": esc(phrase), "href": f"{privacy}#{anchor}"})
+        DATA["stays"][loc]["layers"][0] = html1
+        DATA["stays"][loc]["faq"] = {}
+        for k, (q, a, mk, asrc, msrc_) in items.items():
+            DATA["stays"][loc]["faq"][k] = [esc(q), esc(a), inline(mk) if mk else None]
+            SLOTS.append({"locale": loc, "page": "index", "field": "faq_q", "source": asrc, "item": f"#240(c) {k} question", "version": ver,
+                          "path": ["stays", loc, "faq", k, 0]})
+            SLOTS.append({"locale": loc, "page": "index", "field": "faq_a", "source": asrc, "item": f"#240(c) {k} answer", "version": ver,
+                          "path": ["stays", loc, "faq", k, 1]})
+            if mk:
+                SLOTS.append({"locale": loc, "page": "index", "field": "p", "source": msrc_, "item": f"#240(d) link row, {k}", "version": ver,
+                              "path": ["stays", loc, "faq", k, 2]})
+
+
+def ns_seo() -> dict:
+    ns = {}
+    exec(compile(seo_source(), "seo_copy.py", "exec"), ns)
+    return ns["COPY"]
+
+
+
+# ---- #241: "How the pieces fit": the app, the CLI, MCP and the skill, side by side --------------
+
+def ingest_241() -> None:
+    c1, b1 = comment(241, 1)
+    c2, b2 = comment(241, 2)
+    title = by_loc(r1_items(section(b1, "### (a)")), "A")
+    intro = by_loc(r1_items(section(b1, "### (b)")))
+    names = by_loc(r1_items(section(b1, "### (c)")))
+    sec_d = section(b1, "### (d)")
+    r11_cli = {k: v for k, v in {  # round 2: the CLI cell of R11
+        "en": None}.items()}
+    def r2_nested(label):
+        m = re.search(r"^- \[[ x]\] \*\*" + re.escape(label) + r"\*\*[^\n]*\n((?:  - .*\n?)+)", b2, re.M)
+        assert m, label
+        return {LOC_LABEL[k]: unwrap(v.strip()) for k, v in re.findall(r"^\s+- (en|zh-Hant|ja)[：:]\s*(.+)$", m.group(1), re.M)}
+    r11 = r2_nested("R11 的 CLI 欄")
+    foot = {LOC_LABEL[k]: unwrap(v) for k, v in re.findall(r"^- \[[ x]\] \*\*註腳 (en|zh-Hant|ja)\*\*[：:]\s*(.+)$", b2, re.M)}
+    assert set(foot) == set(FIRST) and set(r11) == set(FIRST)
+    for loc in LOCALES:
+        if loc in FIRST:
+            ln = {"en": "en", "zh-hant": "zh-Hant", "ja": "ja"}[loc]
+            chunk = locale_chunk(sec_d, ln)
+            rows = []
+            for m in re.finditer(r"^- \[[ x]\] (R\d+)[：:]\s*(.+)$", chunk, re.M):
+                cells = unwrap(m.group(2).strip()).split(" | ")
+                assert len(cells) == 5, (loc, m.group(1), cells)
+                rows.append((m.group(1), cells))
+            assert [r for r, _ in rows] == ["R1", "R2", "R3", "R4", "R5", "R6", "R10", "R11"], rows
+            rows = [cells for _, cells in rows]
+            rows[7][2] = r11[loc]
+            h, i, nm, ft = title[loc], intro[loc], names[loc].split(" | "), foot[loc]
+            hsrc = comment_source(c1, 1, f"### (a) A, {loc}")
+            isrc = comment_source(c1, 1, f"### (b), {loc}")
+            nsrc = comment_source(c1, 1, f"### (c), {loc}")
+            fsrc = comment_source(c2, 2, f"註腳 {ln}")
+            rsrc = lambda r, c: comment_source(c2, 2, f"R11 的 CLI 欄, {ln}") if (r, c) == (7, 2) else comment_source(c1, 1, f"### (d) {ln}, {rows_label[r]}, col {c + 1}")
+            rows_label = ["R1", "R2", "R3", "R4", "R5", "R6", "R10", "R11"]
+            ver = "R1+R2"
+        else:
+            t = r2_table(b2, loc)
+            tables = data_tables(section(b2, "### " + {"zh-hans": "zh-Hans"}.get(loc, loc)))
+            nm, rows = tables[1][0], [list(r) for r in tables[1][1:]]
+            assert len(nm) == 5 and len(rows) == 8 and all(len(r) == 5 for r in rows), loc
+            h, i, ft = t["標題"], t["引言"], t["註腳"]
+            hsrc = comment_source(c2, 2, f"### {loc} table, 標題")
+            isrc = comment_source(c2, 2, f"### {loc} table, 引言")
+            nsrc = comment_source(c2, 2, f"### {loc} data table, header")
+            fsrc = comment_source(c2, 2, f"### {loc} table, 註腳")
+            rsrc = lambda r, c: comment_source(c2, 2, f"### {loc} data table, row {r + 1} col {c + 1}")
+            ver = "R2"
+        put(("pieces", loc, "h"), inline(h), slot={"locale": loc, "page": "index", "field": "h2", "source": hsrc, "item": "#241(a)", "version": "A" if loc in FIRST else "R2"})
+        put(("pieces", loc, "intro"), inline(i), slot={"locale": loc, "page": "index", "field": "p", "source": isrc, "item": "#241(b)", "version": ver})
+        put(("pieces", loc, "foot"), inline(ft), slot={"locale": loc, "page": "index", "field": "p", "source": fsrc, "item": "#241(e) footnote", "version": ver})
+        DATA["pieces"][loc]["head"] = [inline(c) for c in nm]
+        for c in range(5):
+            SLOTS.append({"locale": loc, "page": "index", "field": "th", "source": nsrc, "item": f"#241(c) column {c + 1}", "version": ver,
+                          "path": ["pieces", loc, "head", c]})
+        DATA["pieces"][loc]["rows"] = []
+        for r, row in enumerate(rows):
+            DATA["pieces"][loc]["rows"].append([inline(c) for c in row])
+            for c in range(5):
+                SLOTS.append({"locale": loc, "page": "index", "field": "th" if c == 0 else "td", "source": rsrc(r, c),
+                              "item": f"#241(d) row {r + 1} col {c + 1}", "version": ver, "path": ["pieces", loc, "rows", r, c]})
+
+
+
+# ---- #245: "If you build Mac apps with a coding agent" ----------------------------------------
+
+CODE_SPANS = ["marsdawn open file:line --json", "marsdawn open plan.md:42", "marsdawn skill --install",
+              "brew install redtear1115/tap/marsdawn", "--dir"]
+
+
+def code_spans(text: str) -> str:
+    """Round 1 asks for the commands and flags in <code> (a flag by itself, a command with its flags)."""
+    pat = re.compile("|".join(re.escape(c) for c in CODE_SPANS))
+    return pat.sub(lambda m: "`" + m.group(0) + "`", text)
+
+
+def ingest_245() -> None:
+    c1, b1 = comment(245, 1)
+    c2, b2 = comment(245, 2)
+    a = nested(section(b1, "### (a)"))
+    names = by_loc(r1_items(section(b1, "### (b)")))
+    sec_c = section(b1, "### (c)")
+    bars = by_loc(r1_items(section(b1, "### (d)")))
+    intro2 = by_loc(r1_items(section(b2, "## 結論")))               # round 2: the introduction without version numbers
+    for loc in LOCALES:
+        if loc in FIRST:
+            ln = {"en": "en", "zh-hant": "zh-Hant", "ja": "ja"}[loc]
+            chunk = locale_chunk(sec_c, ln)
+            rows = [unwrap(m.group(1)).split(" | ") for m in re.finditer(r"^- \[[ x]\] (`.+`)\s*$", chunk, re.M)]
+            assert len(rows) == 2 and all(len(r) == 3 for r in rows), (loc, rows)
+            rows = [[code_spans(c) for c in r] for r in rows]
+            h, i, nm, links = a[loc]["標題"], intro2[loc], names[loc].split(" | "), bars[loc]
+            hsrc, isrc = comment_source(c1, 1, f"### (a) 標題, {loc}"), comment_source(c2, 2, f"## 結論 (introduction without versions), {loc}")
+            nsrc = comment_source(c1, 1, f"### (b), {loc}")
+            rsrc = lambda r, c: comment_source(c1, 1, f"### (c) version A {ln}, row {r + 1} col {c + 1}")
+            lsrc = comment_source(c1, 1, f"### (d), {loc}")
+            ver = "A+R2"
+        else:
+            t = r2_table(b2, loc)
+            tables = data_tables(section(b2, "### " + {"zh-hans": "zh-Hans"}.get(loc, loc)))
+            nm, rows = tables[1][0], [list(r) for r in tables[1][1:]]
+            assert len(nm) == 3 and len(rows) == 2, loc
+            h, i, links = t["標題"], t["引言"], t["連結列"]
+            hsrc, isrc, lsrc = (comment_source(c2, 2, f"### {loc} table, {k}") for k in ("標題", "引言", "連結列"))
+            nsrc = comment_source(c2, 2, f"### {loc} data table, header")
+            rsrc = lambda r, c: comment_source(c2, 2, f"### {loc} data table, row {r + 1} col {c + 1}")
+            ver = "R2"
+        put(("indie", loc, "h"), inline(h), slot={"locale": loc, "page": "index", "field": "h2", "source": hsrc, "item": "#245(a) title", "version": "A" if loc in FIRST else "R2"})
+        put(("indie", loc, "intro"), inline(i), slot={"locale": loc, "page": "index", "field": "p", "source": isrc, "item": "#245(a) introduction", "version": "R2"})
+        put(("indie", loc, "links"), inline(links), slot={"locale": loc, "page": "index", "field": "p", "source": lsrc, "item": "#245(d) link row", "version": ver})
+        DATA["indie"][loc]["head"] = [inline(c) for c in nm]
+        for c in range(3):
+            SLOTS.append({"locale": loc, "page": "index", "field": "th", "source": nsrc, "item": f"#245(b) column {c + 1}", "version": ver,
+                          "path": ["indie", loc, "head", c]})
+        DATA["indie"][loc]["rows"] = []
+        for r, row in enumerate(rows):
+            DATA["indie"][loc]["rows"].append([inline(c) for c in row])
+            for c in range(3):
+                SLOTS.append({"locale": loc, "page": "index", "field": "th" if c == 0 else "td", "source": rsrc(r, c),
+                              "item": f"#245(c) row {r + 1} col {c + 1}", "version": ver, "path": ["indie", loc, "rows", r, c]})
+
+
+
+# ---- #243: the home page's loop: reviewing an agent's plan before it runs -----------------------
+
+PLAN_FILE = "plan-checkout-v2.md"
+
+
+def plan_lines(block: list) -> list:
+    """A demo file as printed in a reply (' 4  text', ' 2' for an empty line) -> its ten lines."""
+    lines = []
+    for raw in block:
+        m = re.match(r"^\s*(\d+)(?:  (.*))?$", raw)
+        assert m, raw
+        assert int(m.group(1)) == len(lines) + 1, raw
+        lines.append((m.group(2) or "").rstrip())
+    return lines
+
+
+def plan_scene(lines: list, old: str, new: str) -> dict:
+    """The ten lines as the loop draws them: the title, three sections, and the changing day marked: the reader's
+    own edit on line 10 ({u}) and the agent's on line 4 ({a})."""
+    assert len(lines) == 10 and lines[0].startswith("# ") and lines[2].startswith("## ") and lines[5].startswith("## ") \
+        and lines[8].startswith("## ") and not lines[1] and not lines[4] and not lines[7], lines
+    sections = []
+    for head_at, text_at, mark in ((2, 3, "a"), (5, 6, None), (8, 9, "u")):
+        text = lines[text_at]
+        if mark:
+            assert text.count(old) == 1, (text, old)
+            text = text.replace(old, "{" + mark + "}")
+        else:
+            assert old not in text, (text, old)
+        sections.append([lines[head_at][3:], text])
+    return {"title": lines[0][2:], "sections": sections}
+
+
+def ingest_243() -> None:
+    c1, b1 = comment(243, 1)
+    c2, b2 = comment(243, 2)
+    files = fenced_by_locale(section(b1, "### (a)"))
+    terminal = nested(section(b1, "### (b)"))
+    alt = by_loc(r1_items(section(b1, "### (d)")))
+    head = nested(section(b1, "### (e)"))
+    sec_a = section(b1, "### (a)")
+    swap_en = {"en": ("Oct 14", "Oct 16"), "zh-hant": ("10/14", "10/16"), "ja": ("10/14", "10/16")}
+    steps_sec = section(b1, "### (c)")
+    for loc in LOCALES:
+        if loc in FIRST:
+            ln = {"en": "en", "zh-hant": "zh-Hant", "ja": "ja"}[loc]
+            lines = plan_lines(files[loc])
+            old, new = swap_en[loc]
+            ask, reply = terminal[loc]["讀者"], terminal[loc]["agent"]
+            steps = [unwrap(m.group(1)) for m in re.finditer(r"^\s+\d+\.\s+(`.+`)\s*$", bullet_chunk(steps_sec, ln), re.M)]
+            h, intro, altt = head[loc]["標題"], head[loc]["引言"], alt[loc]
+            outline = None
+            src = lambda what: comment_source(c1, 1, f"{what}, {loc}")
+            where = {"file": src("### (a) demo file"), "ask": src("### (b) 讀者"), "reply": src("### (b) agent"),
+                     "step": lambda i: src(f"### (c) step {i + 1}"), "alt": src("### (d)"), "h": src("### (e) 標題"), "intro": src("### (e) 引言")}
+            ver = "R1 (B: replaces the home loop)"
+        else:
+            hd = {"zh-hans": "zh-Hans"}.get(loc, loc)
+            sec = section(b2, "### " + hd)
+            t = table_rows(sec)
+            block = re.search(r"```\n(.*?)\n```", sec, re.S).group(1).split("\n")
+            lines = plan_lines(block)
+            pair = re.match(r"^(.+?) → (.+)$", t["替換的一組字"])
+            old, new = pair.group(1), pair.group(2)
+            ask, reply = t["讀者那行"], t["agent 回覆"]
+            steps = [t[f"步驟說明 {i}"] for i in (1, 2, 3)]
+            h, intro, altt = t["標題"], t["引言"], t["alt"]
+            outline = t["側欄標籤"].split("／")
+            assert len(outline) == 2
+            src = lambda what: comment_source(c2, 2, f"### {loc} {what}")
+            where = {"file": src("demo file"), "ask": src("table, 讀者那行"), "reply": src("table, agent 回覆"),
+                     "step": lambda i: src(f"table, 步驟說明 {i + 1}"), "alt": src("table, alt"), "h": src("table, 標題"), "intro": src("table, 引言"),
+                     "outline": src("table, 側欄標籤"), "swap": src("table, 替換的一組字")}
+            ver = "R2"
+        scene = plan_scene(lines, old, new)
+        assert len(old) == len(new)
+        put(("plan", loc, "title"), esc(scene["title"]), slot={"locale": loc, "page": "index", "field": "loop-title", "source": where["file"],
+                                                              "item": "#243(a) demo file, line 1", "version": ver})
+        DATA["plan"][loc]["sections"] = []
+        for i, (hh, tt) in enumerate(scene["sections"]):
+            DATA["plan"][loc]["sections"].append([esc(hh), esc(tt)])
+            for j, field in enumerate(("loop-heading", "loop-line")):
+                SLOTS.append({"locale": loc, "page": "index", "field": field, "source": where["file"],
+                              "item": f"#243(a) demo file, section {i + 1} {'heading' if j == 0 else 'text'}", "version": ver,
+                              "path": ["plan", loc, "sections", i, j]})
+        put(("plan", loc, "swap"), [esc(old), esc(new)], slot={"locale": loc, "page": "index", "field": "loop-swap", "source": where.get("swap", where["file"]),
+                                                              "item": "#243(a) the replaced day", "version": ver})
+        if outline:
+            put(("plan", loc, "tabs"), [esc(outline[0]), esc(outline[1])], slot={"locale": loc, "page": "index", "field": "loop-tabs", "source": where["outline"],
+                                                                                "item": "#243 sidebar labels", "version": ver})
+        put(("plan", loc, "ask"), esc(ask), slot={"locale": loc, "page": "index", "field": "loop-ask", "source": where["ask"], "item": "#243(b) reader line", "version": ver})
+        put(("plan", loc, "reply"), esc(reply), slot={"locale": loc, "page": "index", "field": "loop-reply", "source": where["reply"], "item": "#243(b) agent line", "version": ver})
+        put(("plan", loc, "alt"), esc(altt), slot={"locale": loc, "page": "index", "field": "alt", "source": where["alt"], "item": "#243(d) alt", "version": ver})
+        put(("plan", loc, "h"), inline(h), slot={"locale": loc, "page": "index", "field": "h2", "source": where["h"], "item": "#243(e) title", "version": ver})
+        put(("plan", loc, "intro"), inline(intro), slot={"locale": loc, "page": "index", "field": "p", "source": where["intro"], "item": "#243(e) introduction", "version": ver})
+        assert len(steps) == 3
+        DATA["plan"][loc]["steps"] = []
+        for i, step in enumerate(steps):
+            DATA["plan"][loc]["steps"].append(inline(step))
+            SLOTS.append({"locale": loc, "page": "index", "field": "li", "source": where["step"](i), "item": f"#243(c) step {i + 1}", "version": ver,
+                          "path": ["plan", loc, "steps", i]})
+
+
+
+# ---- /vs/ source list: the V-ids of the fact table on #242 (comment 6216590080, the line "V1 https://... · V2 ...") -----
+
+KIT_URL = "https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7"   # README.md line 7 at tag 0.6.4 (the kit row: KaTeX math)
+
+
+def ingest_vsources() -> None:
+    cid, body = comment("242f", 1)
+    line = next(l for l in body.split("\n") if l.startswith("V1 https://"))
+    entries = [(f"V{n}", url) for n, url in re.findall(r"V(\d+) (https?://[^\s·]+)", line)]
+    assert len(entries) == 22 and "V7" not in dict(entries) and "V10" not in dict(entries), entries
+    entries.append(("kit", KIT_URL))
+    DATA["vsources"] = [list(e) for e in entries]
+    for loc in LOCALES:
+        for i, (sid, url) in enumerate(entries):
+            SLOTS.append({"locale": loc, "page": "vs", "field": "source-entry",
+                          "source": comment_source(cid, 1, "the line starting V1 https://") if sid != "kit" else {"file": "kit README.md@0.6.4 line 7", "url": KIT_URL},
+                          "item": f"/vs/ source list {sid}", "version": "fact table", "path": ["vsources", i, 1]})
+        SLOTS.append({"locale": loc, "page": "vs", "field": "source-heading",
+                      "source": {"derived": "the h2 before ul.sources on this locale's /vs/macmd-viewer/ (main)"}, "item": "/vs/ source list heading",
+                      "version": "reused", "path": None})
+
+
+# ---- main -------------------------------------------------------------------------------------
+
+INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240, 241: ingest_241, 245: ingest_245, 243: ingest_243, 2421: ingest_vsources}
+
+
+def write() -> None:
+    body = pprint.pformat(DATA, width=150, sort_dicts=False)
+    (HERE / "data.py").write_text(
+        '"""The strings the promo-130 bundle puts on the site. Generated by scripts/promo130/ingest.py from the\n'
+        'pinned sources in sources.json; do not edit by hand (a hand edit is caught by the A2 comparison)."""\n\n'
+        f"DATA = {body}\n", encoding="utf-8")
+    (HERE / "slots.json").write_text(json.dumps({"sources": SOURCES, "slots": SLOTS}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+
+def main() -> None:
+    through = ORDER[-1]
+    if "--through" in sys.argv:
+        through = int(sys.argv[sys.argv.index("--through") + 1])
+    for issue in ORDER[:ORDER.index(through) + 1]:
+        INGESTERS[issue]()
+    write()
+    print(f"wrote {len(SLOTS)} slots")
+
+
+if __name__ == "__main__":
+    main()

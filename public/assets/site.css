@@ -121,6 +121,8 @@ a:focus-visible {
   text-wrap: pretty;
 }
 .updated { margin-top: 16px !important; font-size: 0.9rem !important; }
+/* The plain one-sentence definition under a page's headline (home, /native/). */
+.intro .definition { margin-top: 0.75rem; }
 
 /* The one-line answer people came for. */
 .summary {
@@ -1309,6 +1311,8 @@ html { overflow-x: hidden; }
 .compare-ours td { color: var(--dust); }
 .compare-ours td:last-child { color: var(--ink); }
 .compare-wide { min-width: 40rem; }
+.compare-vs { min-width: 64rem; }
+.compare-pieces { min-width: 52rem; }
 .compare-wide tbody th[scope="row"] { width: 18%; }
 /* On a phone the row labels stay put while the columns scroll under them. */
 .compare-wide th:first-child {
