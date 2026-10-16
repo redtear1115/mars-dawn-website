@@ -98,6 +98,9 @@ t["tables"]["hero_window_markdown"] = {"template": "Fixture {looks} / {themes} /
 for slug in ("privacy", "support"):
     t["pages"][slug]["body"] = "@@LEGAL:" + slug
 src = repr(t).replace("'@@LEGAL:privacy'", "k.render_legal_body('privacy', 'de')").replace("'@@LEGAL:support'", "k.render_legal_body('support', 'de')")
+# The fixture's pages link to each other by their /ja/ addresses; under a de label they must link within /de/
+# (check_invariants wants every page the footer leaves out linked from another page of its own locale, #247).
+src = src.replace('href="/ja/', 'href="/de/').replace('](/ja/', '](/de/')
 open("scripts/copy_de.py", "w", encoding="utf-8").write(
     '"""Self-test fixture: ja copy under a de label. Never committed."""\nCOMPLETE = True\n\n\ndef build(k):\n    k.set_skill_install(' + repr(b.SKILL_INSTALL_HTML["ja"]) + ')\n    return ' + src + "\n")
 '''
