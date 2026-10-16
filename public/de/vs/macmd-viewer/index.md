@@ -16,7 +16,7 @@ Geprüft gegen die eigene Website und das Repository von MacMD Viewer am 15. Okt
 | Code-Hervorhebung | Ja [[S1](#s1), [S9](#s9)] | Ja |
 | Themes | 12 Dokumentthemen [[S1](#s1), [S7](#s7)] | 4 eingebaute (Morgenrot, Klassisch, Modern, Lebhaft), jeweils mit heller und dunkler Palette, dazu weitere in der Themengalerie |
 | Tabs | Ja, optional und standardmäßig aus (seit 1.6.0) [[S5](#s5), [S8](#s8)] | Ja |
-| PDF-Export | Ja, eine durchgehende Seite, im aktuellen Theme, ohne Wasserzeichen [[S3](#s3), [S9](#s9)] | Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche vermeiden es, kurze Codeblöcke zu teilen |
+| PDF-Export | Ja, eine durchgehende Seite, im aktuellen Theme, ohne Wasserzeichen [[S3](#s3), [S9](#s9)] | Ja, umbrochene Seiten in der hellen Palette des Themes; Seitenumbrüche vermeiden es, kurze Codeblöcke zu teilen |
 | Drucken | Ja, über den macOS-Drucken-Dialog [[S3](#s3), [S9](#s9)] | Ja |
 | Übersicht im Finder | Ja, enthalten; du aktivierst sie in den Systemeinstellungen; nutzt dein Theme [[S4](#s4)] | Ja, funktioniert mit und ohne Testphase; nutzt dein Theme |
 | Mermaid und Mathematik in der Übersicht | Mermaid: ja [[S4](#s4)]. Mathematik: nein, sie wird nicht gerendert [[S7](#s7)] | Ja, beides wird gezeichnet |
@@ -70,7 +70,7 @@ Geprüft gegen die eigene Website und das Repository von MacMD Viewer am 15. Okt
 
 ### Bearbeitet MacMD Viewer Dateien?
 
-Nein. Die App ist nur zum Lesen da und speichert, in ihren eigenen Worten, nie Änderungen an deiner Quelldatei [[S1](#s1), [S9](#s9)]. Sie kann die Datei in deinem Texteditor öffnen (Datei-Menü, ⇧⌘E, seit 1.7.0), was die Datei an eine andere App übergibt [[S5](#s5)].
+Nein. Die App ist nur zum Lesen da und speichert, in ihren eigenen Worten, nie Änderungen an deiner Quelldatei [[S1](#s1), [S9](#s9)]. Sie kann die Datei in deinem Texteditor öffnen (Menü „Ablage“, ⇧⌘E, seit 1.7.0), was die Datei an eine andere App übergibt [[S5](#s5)].
 
 ### Ist MacMD Viewer im Mac App Store?
 

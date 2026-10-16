@@ -7318,7 +7318,7 @@ MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有�
 
 ## PDF 导出和打印用同一个主题
 
-导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开图表。免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 agent 也能用 `--theme` 生成一模一样的 PDF，四种主题都可以。
+导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开图表。免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或代理也能用 `--theme` 生成一模一样的 PDF，四种主题都可以。
 
 ## 页面打印出来之后
 
@@ -9669,7 +9669,7 @@ MacMD Viewer 自身のサイトとリポジトリで 2026 年 10 月 15 日に�
 
 ### MacMD Viewer はファイルを編集できますか？
 
-いいえ。読み取り専用で、本人の言葉によれば、ソースファイルへの変更は保存しません [[S1](#s1), [S9](#s9)]。お使いのテキストエディタでファイルを開けます（ファイルメニュー、⇧⌘E、1.7.0 から）が、これはファイルをほかのアプリに渡すものです [[S5](#s5)]。
+いいえ。読み取り専用で、本人の言葉によれば、ソースファイルへの変更は保存しません [[S1](#s1), [S9](#s9)]。お使いのテキストエディタでファイルを開くことはできますが（「ファイル」メニュー、⇧⌘E、1.7.0 から）、これはファイルをほかのアプリに渡す機能です [[S5](#s5)]。
 
 ### MacMD Viewer は Mac App Store にありますか？
 
@@ -12550,7 +12550,7 @@ Geprüft gegen die eigene Website und das Repository von MacMD Viewer am 15. Okt
 | Code-Hervorhebung | Ja [[S1](#s1), [S9](#s9)] | Ja |
 | Themes | 12 Dokumentthemen [[S1](#s1), [S7](#s7)] | 4 eingebaute (Morgenrot, Klassisch, Modern, Lebhaft), jeweils mit heller und dunkler Palette, dazu weitere in der Themengalerie |
 | Tabs | Ja, optional und standardmäßig aus (seit 1.6.0) [[S5](#s5), [S8](#s8)] | Ja |
-| PDF-Export | Ja, eine durchgehende Seite, im aktuellen Theme, ohne Wasserzeichen [[S3](#s3), [S9](#s9)] | Ja, umbrochene Seiten in der hellen Palette des Themas; Seitenumbrüche vermeiden es, kurze Codeblöcke zu teilen |
+| PDF-Export | Ja, eine durchgehende Seite, im aktuellen Theme, ohne Wasserzeichen [[S3](#s3), [S9](#s9)] | Ja, umbrochene Seiten in der hellen Palette des Themes; Seitenumbrüche vermeiden es, kurze Codeblöcke zu teilen |
 | Drucken | Ja, über den macOS-Drucken-Dialog [[S3](#s3), [S9](#s9)] | Ja |
 | Übersicht im Finder | Ja, enthalten; du aktivierst sie in den Systemeinstellungen; nutzt dein Theme [[S4](#s4)] | Ja, funktioniert mit und ohne Testphase; nutzt dein Theme |
 | Mermaid und Mathematik in der Übersicht | Mermaid: ja [[S4](#s4)]. Mathematik: nein, sie wird nicht gerendert [[S7](#s7)] | Ja, beides wird gezeichnet |
@@ -12604,7 +12604,7 @@ Geprüft gegen die eigene Website und das Repository von MacMD Viewer am 15. Okt
 
 ### Bearbeitet MacMD Viewer Dateien?
 
-Nein. Die App ist nur zum Lesen da und speichert, in ihren eigenen Worten, nie Änderungen an deiner Quelldatei [[S1](#s1), [S9](#s9)]. Sie kann die Datei in deinem Texteditor öffnen (Datei-Menü, ⇧⌘E, seit 1.7.0), was die Datei an eine andere App übergibt [[S5](#s5)].
+Nein. Die App ist nur zum Lesen da und speichert, in ihren eigenen Worten, nie Änderungen an deiner Quelldatei [[S1](#s1), [S9](#s9)]. Sie kann die Datei in deinem Texteditor öffnen (Menü „Ablage“, ⇧⌘E, seit 1.7.0), was die Datei an eine andere App übergibt [[S5](#s5)].
 
 ### Ist MacMD Viewer im Mac App Store?
 
@@ -13189,7 +13189,7 @@ Jedes hat seine eigene helle und dunkle Variante: Wechselst du das Erscheinungsb
 
 ## PDF-Export und Drucken verwenden dasselbe Thema
 
-Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themas: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden kein Diagramm in der Mitte durch. Das kostenlose [Befehlszeilenwerkzeug marsdawn](/de/cli/) verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit `--theme` das identische PDF, in jedem der vier Themen.
+Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themes: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden kein Diagramm in der Mitte durch. Das kostenlose [Befehlszeilenwerkzeug marsdawn](/de/cli/) verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit `--theme` das identische PDF, in jedem der vier Themes.
 
 ## Nachdem die Seite gedruckt ist
 

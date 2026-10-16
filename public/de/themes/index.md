@@ -22,7 +22,7 @@ Jedes hat seine eigene helle und dunkle Variante: Wechselst du das Erscheinungsb
 
 ## PDF-Export und Drucken verwenden dasselbe Thema
 
-Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themas: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden kein Diagramm in der Mitte durch. Das kostenlose [Befehlszeilenwerkzeug marsdawn](/de/cli/) verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit `--theme` das identische PDF, in jedem der vier Themen.
+Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themes: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden kein Diagramm in der Mitte durch. Das kostenlose [Befehlszeilenwerkzeug marsdawn](/de/cli/) verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit `--theme` das identische PDF, in jedem der vier Themes.
 
 ## Nachdem die Seite gedruckt ist
 
