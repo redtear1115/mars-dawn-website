@@ -8,13 +8,16 @@ flag) and real enough to go through every table, page and link. It is a fixture,
 
 Steps, each printed:
   1. the scratch site (de, fr, es and ko put back to COMPLETE = False, nothing of theirs served: see
-     unship_planned) builds without any of them, and a second build changes nothing;
+     unship_planned) builds without any of them, and a second build changes nothing; check_hreflang,
+     check_links and check_invariants pass on it, and its More group (the header's menu of de, fr, es
+     and ko) is empty on every page, so none has details.lang-more or a narrow separator (#247);
   2. with the fixture's COMPLETE = True it builds again, every en page exists under /de/, a second
      build changes nothing, and check_hreflang, check_links, check_invariants, check_locales,
      check_offers, check_hero and check_legal_render pass on it;
   3. the build refuses a COMPLETE = True locale with a string empty, a key missing, a legal page,
      the hero snapshot or an image absent, and says which;
-  4. a planted break of each rule is caught, by that rule's own message and no other rule.
+  4. a planted break of each rule is caught, by that rule's own message and no other rule, including
+     the header and footer rules of check_hreflang and check_invariants (#247).
 """
 import hashlib
 import json
@@ -147,6 +150,26 @@ def remove(path: Path):
     return lambda: path.write_bytes(original)
 
 
+def plants_only(root: Path) -> int:
+    """`selftest_locales.py --plants-only <built public/>`: just the header and footer plants of step 4, on a
+    scratch copy of a built site that has de (the real one), for trying a rule or a sabotage without the builds."""
+    r = Run()
+    with tempfile.TemporaryDirectory(prefix="locales-plants-") as tmpdir:
+        scratch = Path(tmpdir) / "site"
+        ignore = shutil.ignore_patterns("__pycache__", ".build", ".git", ".claude")
+        for name in ("scripts", "content", "vendor", "themes"):
+            shutil.copytree(REPO / name, scratch / name, ignore=ignore)
+        shutil.copytree(root, scratch / "public", ignore=ignore)
+        (scratch / "tools" / "hero-render").mkdir(parents=True)
+        shutil.copy(REPO / "tools" / "hero-render" / "Package.swift", scratch / "tools" / "hero-render" / "Package.swift")
+        for check in ("check_hreflang.py", "check_invariants.py"):
+            out = sh(scratch, "scripts/" + check)
+            r.expect(out.returncode == 0, f"{check} passes on the site before any plant", out.stdout[-500:] + out.stderr[-500:])
+        chrome_plants(r, scratch, more_empty=False)
+    print(f"plants: {'FAILED, ' + str(r.failures) + ' step(s)' if r.failures else 'every plant caught by its own rule'}")
+    return 1 if r.failures else 0
+
+
 def run() -> int:
     r = Run()
     with tempfile.TemporaryDirectory(prefix="locales-selftest-") as tmpdir:
@@ -164,6 +187,17 @@ def run() -> int:
         r.expect(out.returncode == 0 and "0 problems" in out.stdout, "check_locales is clean", out.stdout + out.stderr)
         out = sh(REPO, "scripts/new_locale.py", "--check")  # the checkout's own modules: the scratch copy has their legal pages removed
         r.expect(out.returncode == 0, "the four modules have en's structure", out.stdout + out.stderr)
+        for check in ("check_hreflang.py", "check_links.py", "check_invariants.py"):
+            out = sh(scratch, "scripts/" + check)
+            counted = re.search(r"^(\d+) ", out.stdout, re.M)
+            checked = int(counted.group(1)) if counted else 0
+            r.expect(out.returncode == 0 and checked > 0, f"{check} passes on the four-locale site, over {checked} pages/links", out.stdout[-600:] + out.stderr[-400:])
+        pages = sorted(pub.rglob("index.html"))
+        empty = [q for q in pages if all(t not in q.read_text(encoding="utf-8") for t in ("lang-more", "lang-sep"))]
+        r.expect(pages and len(empty) == len(pages),
+                 f"the More group is empty on {len(empty)} of {len(pages)} pages, and none has a details.lang-more or a narrow separator")
+        print("  four-locale More-empty plants")
+        chrome_plants(r, scratch, more_empty=True)
 
         print("2. With a complete locale (throwaway fixture under /de/)")
         make_fixture(scratch)
@@ -191,6 +225,14 @@ def run() -> int:
         for check in checks:
             out = sh(scratch, "scripts/" + check[0], *check[1:])
             r.expect(out.returncode == 0, "passes on it: " + " ".join(check), out.stdout[-800:] + out.stderr[-800:])
+        pages = sorted(pub.rglob("index.html"))
+        only_de = 0
+        for q in pages:
+            text = q.read_text(encoding="utf-8")
+            block = re.search(r'<details class="lang-more">(.*?)</details>', text, re.S)
+            links = re.findall(r"<li><a [^>]*>([^<]*)</a></li>", block.group(1)) if block else []
+            only_de += links == ["Deutsch"] and text.count('class="lang-sep"') == 1
+        r.expect(pages and only_de == len(pages), f"the More group has only Deutsch, with one narrow separator, on {only_de} of {len(pages)} pages")
         copy_path = scratch / "scripts" / "copy_de.py"
 
         print("3. The build refuses an incomplete locale that says COMPLETE = True")
@@ -259,11 +301,123 @@ def run() -> int:
             out = sh(scratch, f"scripts/{script}.py")
             undo()
             r.expect(out.returncode == 1 and message in out.stdout + out.stderr, f"{script}: {label} -> {message!r}", (out.stdout + out.stderr)[-700:])
+        print("  header and footer rules (#247)")
+        chrome_plants(r, scratch, more_empty=False)
         for check in checks:
             out = sh(scratch, "scripts/" + check[0], *check[1:])
             r.expect(out.returncode == 0, "clean again: " + " ".join(check), out.stdout[-500:] + out.stderr[-500:])
     print(f"self-test: {'FAILED, ' + str(r.failures) + ' step(s)' if r.failures else 'every step passed'}")
     return 1 if r.failures else 0
+
+
+# The header and footer rules (#247). Each rule has a regex for its own message; a plant names the rule
+# it must trip, and the run must print that rule's message and no line that belongs to another rule.
+HREFLANG_RULES = {
+    "one-switch": r"language switches \(nav\.lang\), want exactly 1",
+    "wide-switch": r"wide language switch \[.*doesn't match the alternates",
+    "narrow-switch": r"narrow language switch \[.*doesn't match the alternates",
+    "current": r"language switch marks",
+    "more-empty": r"the More group is empty",
+    "more-present": r"the More group has",
+    "more-button": r"the More button shows",
+}
+INVARIANT_RULES = {
+    "nav-wide": r"wide main navigation links",
+    "nav-narrow": r"narrow main navigation links",
+    "consent-id": r"elements with id consent-settings-link",
+    "footer-count": r"the footer has \d+ groups",
+    "footer-last": r"Cookie settings button isn't the last",
+    "footer-differs": r"the footer's links differ from the en page's",
+    "orphan": r"is in no footer and no other page's main links to it",
+    "store-chip": r"store-chip element",
+}
+
+
+def _nth(text: str, old: str, new: str, n: int = 1) -> str:
+    """Replaces the n-th occurrence of old (1-based); a plant that matches nothing is a bug in the test."""
+    at = -1
+    for _ in range(n):
+        at = text.find(old, at + 1)
+        assert at >= 0, f"plant target {old!r} (occurrence {n}) not found"
+    return text[:at] + new + text[at + len(old):]
+
+
+def _in_narrow(text: str, fn) -> str:
+    """Applies fn to the narrow language switch's markup only (what follows its opening tag)."""
+    head, sep, tail = text.partition('<details class="lang-narrow">')
+    assert sep, "no narrow language switch"
+    return head + sep + fn(tail)
+
+
+def _tripped(out_text: str, rules: dict) -> set:
+    return {name for name, rx in rules.items() if re.search(rx, out_text)}
+
+
+def chrome_plants(r, scratch: Path, more_empty: bool) -> None:
+    """Plants one break of each header and footer rule in a built scratch site and expects exactly that rule's
+    message. `more_empty` is the four-locale site (no More group anywhere); otherwise the site has de."""
+    pub = scratch / "public"
+
+    def go(script, rules, expected, label, plant):
+        undo = plant()
+        out = sh(scratch, "scripts/" + script)
+        undo()
+        text = out.stdout + out.stderr
+        tripped = _tripped(text, rules)
+        problem_lines = [ln for ln in text.splitlines() if ln.startswith((" - ", "check_invariants: ")) and "problems" not in ln]
+        stray = [ln for ln in problem_lines if not re.search(rules[expected], ln)]
+        r.expect(out.returncode == 1 and tripped == {expected} and not stray,
+                 f"{script}: {label} -> only the {expected!r} rule fires (fired {sorted(tripped)})", text[-900:])
+
+    en = pub / "pdf" / "index.html"
+    if more_empty:
+        go("check_hreflang.py", HREFLANG_RULES, "more-empty", "an empty details.lang-more",
+           lambda: edit(en, lambda t: _nth(t, "  </div>\n  <details class=\"lang-narrow\">", '    <details class="lang-more"></details>\n  </div>\n  <details class="lang-narrow">')))
+        go("check_hreflang.py", HREFLANG_RULES, "more-empty", "a separator in the narrow switch",
+           lambda: edit(en, lambda t: _nth(t, "    </div>\n  </details>\n  </nav>", '      <hr class="lang-sep">\n    </div>\n  </details>\n  </nav>')))
+        return
+    de = pub / "de" / "pdf" / "index.html"
+    go("check_hreflang.py", HREFLANG_RULES, "one-switch", "a second nav.lang",
+       lambda: edit(de, lambda t: _nth(t, "</header>", '<nav class="lang" aria-label="x"></nav></header>')))
+    ja_li = r'<li><a href="/ja/pdf/"[^\n]*</li>\n'
+    go("check_hreflang.py", HREFLANG_RULES, "wide-switch", "Japanese missing from the wide copy only",
+       lambda: edit(de, lambda t: re.sub(ja_li, "", t, count=1)))
+    go("check_hreflang.py", HREFLANG_RULES, "narrow-switch", "Japanese missing from the narrow copy only",
+       lambda: edit(de, lambda t: _in_narrow(t, lambda part: re.sub(ja_li, "", part, count=1))))
+    go("check_hreflang.py", HREFLANG_RULES, "current", "a second aria-current in the narrow copy",
+       lambda: edit(de, lambda t: _in_narrow(t, lambda part: _nth(part, '<li><a href="/pdf/" hreflang="en"', '<li><a href="/pdf/" aria-current="true" hreflang="en"'))))
+    go("check_hreflang.py", HREFLANG_RULES, "more-button", "the More button not naming the page's own language",
+       lambda: edit(de, lambda t: _nth(t, '<summary lang="de">Deutsch</summary>', '<summary lang="de">More</summary>')))
+    go("check_hreflang.py", HREFLANG_RULES, "more-present", "the separator missing from a page that has a More group",
+       lambda: edit(de, lambda t: _nth(t, '      <hr class="lang-sep">\n', "")))
+    go("check_invariants.py", INVARIANT_RULES, "nav-wide", "a wrong link in the wide navigation only",
+       lambda: edit(de, lambda t: _nth(t, '<li><a href="/de/themes/"', '<li><a href="/de/themez/"')))
+    go("check_invariants.py", INVARIANT_RULES, "nav-narrow", "a wrong link in the narrow navigation only",
+       lambda: edit(de, lambda t: _nth(t, '<li><a href="/de/themes/"', '<li><a href="/de/themez/"', 2)))
+    go("check_invariants.py", INVARIANT_RULES, "consent-id", "a second consent-settings-link id",
+       lambda: edit(de, lambda t: _nth(t, "</footer>", '<span id="consent-settings-link"></span></footer>')))
+    yours = r'\n\s*<li><a href="/de/yours/"[^\n]*</li>'
+    go("check_invariants.py", INVARIANT_RULES, "footer-count", "one footer link missing",
+       lambda: edit(de, lambda t: t.split("<footer")[0] + "<footer" + re.sub(yours, "", t.split("<footer")[1], count=1)))
+    cookie = r'(\n\s*<li><button type="button" id="consent-settings-link"[^\n]*</li>)'
+    go("check_invariants.py", INVARIANT_RULES, "footer-last", "the Cookie settings button first in its group",
+       lambda: edit(de, lambda t: re.sub(r'(<ul>)(\n\s*<li><a href="/de/support/")', lambda m: m.group(1) + re.search(cookie, t).group(1) + m.group(2), re.sub(cookie, "", t, count=1), count=1)))
+    go("check_invariants.py", INVARIANT_RULES, "footer-differs", "a footer link pointing elsewhere",
+       lambda: edit(de, lambda t: t.split("<footer")[0] + "<footer" + _nth(t.split("<footer")[1], 'href="/de/limits/"', 'href="/de/limit/"')))
+    go("check_invariants.py", INVARIANT_RULES, "store-chip", "a store chip in the header",
+       lambda: edit(de, lambda t: _nth(t, "  </a>\n  <nav class=\"site-nav\"", '  </a>\n  <span class="store-chip">x</span>\n  <nav class="site-nav"')))
+
+    def orphan():
+        undos = []
+        for q in (pub / "de").rglob("index.html"):
+            if q.parent.name == "spec" and q.parent.parent.name == "templates":
+                continue
+            text = q.read_text(encoding="utf-8")
+            if "/de/templates/spec/" in text:
+                undos.append(edit(q, lambda t: t.replace("/de/templates/spec/", "/de/templates/spek/")))
+        assert undos, "no page links to /de/templates/spec/"
+        return lambda: [u() for u in undos]
+    go("check_invariants.py", INVARIANT_RULES, "orphan", "a page nothing links to any more", orphan)
 
 
 def _move(src: Path, dst: Path):
@@ -275,3 +429,9 @@ def _write(path: Path, text: str):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
     return lambda: shutil.rmtree(path.parent)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 3 and sys.argv[1] == "--plants-only":
+        raise SystemExit(plants_only(Path(sys.argv[2]).resolve()))
+    raise SystemExit(run())

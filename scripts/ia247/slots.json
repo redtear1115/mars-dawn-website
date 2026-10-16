@@ -1,0 +1,1042 @@
+{
+ "sources": [
+  {
+   "id": 6218899916,
+   "created_at": "2026-10-16T15:31:45Z",
+   "updated_at": "2026-10-16T15:31:45Z",
+   "sha256": "2cb06fcc71c1930c64aa4a4468f263bb3d92a9a494b865fbe61ff6da06a1cf55",
+   "chars": 9004
+  },
+  {
+   "id": 6220575437,
+   "created_at": "2026-10-16T17:01:39Z",
+   "updated_at": "2026-10-16T17:01:39Z",
+   "sha256": "7498adc5360471d724c4479284b1c8c17baa5098373479a11abed0fed49c4cab",
+   "chars": 3194
+  },
+  {
+   "id": 6221114188,
+   "created_at": "2026-10-16T17:32:56Z",
+   "updated_at": "2026-10-16T17:32:56Z",
+   "sha256": "48ff28799a6fd319510b94a4f0731dbb63f6f4a516015390a1d3967ad51b8931",
+   "chars": 1377
+  },
+  {
+   "id": 6221155465,
+   "created_at": "2026-10-16T17:35:23Z",
+   "updated_at": "2026-10-16T17:35:23Z",
+   "sha256": "ff82762b30bcd14c820640514b37e75b4c5c4b8c3180a6d63f41fef9f172b171",
+   "chars": 436
+  }
+ ],
+ "slots": [
+  {
+   "slot": "nav.1",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(a) 1 en",
+   "value": "Features"
+  },
+  {
+   "slot": "nav.1",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(a) 1 zh-Hant",
+   "value": "功能"
+  },
+  {
+   "slot": "nav.1",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(a) 1 ja",
+   "value": "機能"
+  },
+  {
+   "slot": "nav.3",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(a) 3 en",
+   "value": "Themes"
+  },
+  {
+   "slot": "nav.3",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(a) 3 zh-Hant",
+   "value": "主題"
+  },
+  {
+   "slot": "nav.3",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(a) 3 ja",
+   "value": "テーマ"
+  },
+  {
+   "slot": "nav.4",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(a) 4 en",
+   "value": "Compare"
+  },
+  {
+   "slot": "nav.4",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(a) 4 zh-Hant",
+   "value": "比較"
+  },
+  {
+   "slot": "nav.4",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(a) 4 ja",
+   "value": "比較"
+  },
+  {
+   "slot": "nav.5",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(a) 5 en",
+   "value": "Support"
+  },
+  {
+   "slot": "nav.5",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(a) 5 zh-Hant",
+   "value": "支援"
+  },
+  {
+   "slot": "nav.5",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(a) 5 ja",
+   "value": "サポート"
+  },
+  {
+   "slot": "more",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(b) More en",
+   "value": "More"
+  },
+  {
+   "slot": "more",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(b) More zh-Hant",
+   "value": "更多"
+  },
+  {
+   "slot": "more",
+   "locale": "zh-hans",
+   "source": 6218899916,
+   "item": "(b) More zh-Hans",
+   "value": "更多"
+  },
+  {
+   "slot": "more",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(b) More ja",
+   "value": "その他"
+  },
+  {
+   "slot": "more",
+   "locale": "de",
+   "source": 6218899916,
+   "item": "(b) More de",
+   "value": "Mehr"
+  },
+  {
+   "slot": "more",
+   "locale": "fr",
+   "source": 6218899916,
+   "item": "(b) More fr",
+   "value": "Plus"
+  },
+  {
+   "slot": "more",
+   "locale": "es",
+   "source": 6218899916,
+   "item": "(b) More es",
+   "value": "Más"
+  },
+  {
+   "slot": "more",
+   "locale": "ko",
+   "source": 6218899916,
+   "item": "(b) More ko",
+   "value": "더보기"
+  },
+  {
+   "slot": "abbr",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(b) 320 px short name",
+   "value": "EN"
+  },
+  {
+   "slot": "abbr",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(b) 320 px short name",
+   "value": "繁中"
+  },
+  {
+   "slot": "abbr",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(b) 320 px short name",
+   "value": "日本語"
+  },
+  {
+   "slot": "abbr",
+   "locale": "zh-hans",
+   "source": 6218899916,
+   "item": "(b) 320 px short name",
+   "value": "简中"
+  },
+  {
+   "slot": "abbr",
+   "locale": "de",
+   "source": 6218899916,
+   "item": "(b) 320 px short name",
+   "value": "DE"
+  },
+  {
+   "slot": "abbr",
+   "locale": "fr",
+   "source": 6218899916,
+   "item": "(b) 320 px short name",
+   "value": "FR"
+  },
+  {
+   "slot": "abbr",
+   "locale": "es",
+   "source": 6218899916,
+   "item": "(b) 320 px short name",
+   "value": "ES"
+  },
+  {
+   "slot": "abbr",
+   "locale": "ko",
+   "source": 6218899916,
+   "item": "(b) 320 px short name",
+   "value": "KO"
+  },
+  {
+   "slot": "footer.1",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(c) group 1 en",
+   "value": "Product"
+  },
+  {
+   "slot": "footer.1",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(c) group 1 zh-Hant",
+   "value": "產品"
+  },
+  {
+   "slot": "footer.1",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(c) group 1 ja",
+   "value": "製品"
+  },
+  {
+   "slot": "footer.2",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(c) group 2 en",
+   "value": "For agents & CLI"
+  },
+  {
+   "slot": "footer.2",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(c) group 2 zh-Hant",
+   "value": "Agent 與命令列"
+  },
+  {
+   "slot": "footer.2",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(c) group 2 ja",
+   "value": "エージェントと CLI"
+  },
+  {
+   "slot": "footer.3",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(c) group 3 en",
+   "value": "Guides"
+  },
+  {
+   "slot": "footer.3",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(c) group 3 zh-Hant",
+   "value": "教學"
+  },
+  {
+   "slot": "footer.3",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(c) group 3 ja",
+   "value": "ガイド"
+  },
+  {
+   "slot": "footer.4",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(c) group 4 en",
+   "value": "Compare"
+  },
+  {
+   "slot": "footer.4",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(c) group 4 zh-Hant",
+   "value": "比較"
+  },
+  {
+   "slot": "footer.4",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(c) group 4 ja",
+   "value": "比較"
+  },
+  {
+   "slot": "footer.5",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(c) group 5 en",
+   "value": "Themes"
+  },
+  {
+   "slot": "footer.5",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(c) group 5 zh-Hant",
+   "value": "主題"
+  },
+  {
+   "slot": "footer.5",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(c) group 5 ja",
+   "value": "テーマ"
+  },
+  {
+   "slot": "footer.6",
+   "locale": "en",
+   "source": 6218899916,
+   "item": "(c) group 6 en",
+   "value": "Support & legal"
+  },
+  {
+   "slot": "footer.6",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "(c) group 6 zh-Hant",
+   "value": "支援與法律"
+  },
+  {
+   "slot": "footer.6",
+   "locale": "ja",
+   "source": 6218899916,
+   "item": "(c) group 6 ja",
+   "value": "サポートと法的情報"
+  },
+  {
+   "slot": "wordmark",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "header markup sketch: wordmark aria-label",
+   "value": "MarsDawn 首頁"
+  },
+  {
+   "slot": "nav_label",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "header markup sketch: main nav aria-label",
+   "value": "主要導覽"
+  },
+  {
+   "slot": "lang_label",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "header markup sketch: language nav aria-label",
+   "value": "語言"
+  },
+  {
+   "slot": "menu",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "header markup sketch: menu summary",
+   "value": "選單"
+  },
+  {
+   "slot": "site_label",
+   "locale": "zh-hant",
+   "source": 6218899916,
+   "item": "footer markup sketch: nav aria-label",
+   "value": "網站導覽"
+  },
+  {
+   "slot": "nav.1",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "Header 1 功能",
+   "value": "功能"
+  },
+  {
+   "slot": "nav.3",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "Header 3 主題",
+   "value": "主题"
+  },
+  {
+   "slot": "nav.4",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "Header 4 比較",
+   "value": "比较"
+  },
+  {
+   "slot": "nav.5",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "Header 5 支援",
+   "value": "支持"
+  },
+  {
+   "slot": "footer.1",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "Footer 產品",
+   "value": "产品"
+  },
+  {
+   "slot": "footer.2",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "Footer Agent 與命令列",
+   "value": "代理与命令行"
+  },
+  {
+   "slot": "footer.3",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "Footer 教學",
+   "value": "教学"
+  },
+  {
+   "slot": "footer.4",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "Footer 比較",
+   "value": "比较"
+  },
+  {
+   "slot": "footer.5",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "Footer 主題",
+   "value": "主题"
+  },
+  {
+   "slot": "footer.6",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "Footer 支援與法律",
+   "value": "支持与法律"
+  },
+  {
+   "slot": "menu",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "320 px 選單",
+   "value": "菜单"
+  },
+  {
+   "slot": "wordmark",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "字標 aria-label",
+   "value": "MarsDawn 首页"
+  },
+  {
+   "slot": "nav_label",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "主要導覽 aria-label",
+   "value": "主导航"
+  },
+  {
+   "slot": "lang_label",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "語言 aria-label",
+   "value": "语言"
+  },
+  {
+   "slot": "site_label",
+   "locale": "zh-hans",
+   "source": 6220575437,
+   "item": "網站導覽 aria-label",
+   "value": "网站导航"
+  },
+  {
+   "slot": "nav.1",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "Header 1 Features",
+   "value": "Funktionen"
+  },
+  {
+   "slot": "nav.3",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "Header 3 Themes",
+   "value": "Themen"
+  },
+  {
+   "slot": "nav.4",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "Header 4 Compare",
+   "value": "Vergleich"
+  },
+  {
+   "slot": "nav.5",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "Header 5 Support",
+   "value": "Support"
+  },
+  {
+   "slot": "footer.1",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "Footer Product",
+   "value": "Produkt"
+  },
+  {
+   "slot": "footer.2",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "Footer For agents & CLI",
+   "value": "Für Agenten und CLI"
+  },
+  {
+   "slot": "footer.3",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "Footer Guides",
+   "value": "Anleitungen"
+  },
+  {
+   "slot": "footer.4",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "Footer Compare",
+   "value": "Vergleich"
+  },
+  {
+   "slot": "footer.5",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "Footer Themes",
+   "value": "Themen"
+  },
+  {
+   "slot": "footer.6",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "Footer Support & legal",
+   "value": "Support und Rechtliches"
+  },
+  {
+   "slot": "menu",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "320 px 選單",
+   "value": "Menü"
+  },
+  {
+   "slot": "wordmark",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "字標 aria-label",
+   "value": "MarsDawn-Startseite"
+  },
+  {
+   "slot": "nav_label",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "主要導覽 aria-label",
+   "value": "Hauptnavigation"
+  },
+  {
+   "slot": "lang_label",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "語言 aria-label",
+   "value": "Sprache"
+  },
+  {
+   "slot": "site_label",
+   "locale": "de",
+   "source": 6220575437,
+   "item": "網站導覽 aria-label",
+   "value": "Website-Navigation"
+  },
+  {
+   "slot": "nav.1",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "Header 1 Features",
+   "value": "Fonctionnalités"
+  },
+  {
+   "slot": "nav.3",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "Header 3 Themes",
+   "value": "Thèmes"
+  },
+  {
+   "slot": "nav.4",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "Header 4 Compare",
+   "value": "Comparer"
+  },
+  {
+   "slot": "nav.5",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "Header 5 Support",
+   "value": "Assistance"
+  },
+  {
+   "slot": "footer.1",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "Footer Product",
+   "value": "Produit"
+  },
+  {
+   "slot": "footer.2",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "Footer For agents & CLI",
+   "value": "Pour les agents et la CLI"
+  },
+  {
+   "slot": "footer.3",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "Footer Guides",
+   "value": "Guides"
+  },
+  {
+   "slot": "footer.4",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "Footer Compare",
+   "value": "Comparer"
+  },
+  {
+   "slot": "footer.5",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "Footer Themes",
+   "value": "Thèmes"
+  },
+  {
+   "slot": "footer.6",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "Footer Support & legal",
+   "value": "Assistance et mentions légales"
+  },
+  {
+   "slot": "menu",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "320 px 選單",
+   "value": "Menu"
+  },
+  {
+   "slot": "wordmark",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "字標 aria-label",
+   "value": "Accueil de MarsDawn"
+  },
+  {
+   "slot": "nav_label",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "主要導覽 aria-label",
+   "value": "Navigation principale"
+  },
+  {
+   "slot": "lang_label",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "語言 aria-label",
+   "value": "Langue"
+  },
+  {
+   "slot": "site_label",
+   "locale": "fr",
+   "source": 6220575437,
+   "item": "網站導覽 aria-label",
+   "value": "Navigation du site"
+  },
+  {
+   "slot": "nav.1",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "Header 1 Features",
+   "value": "Funciones"
+  },
+  {
+   "slot": "nav.3",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "Header 3 Themes",
+   "value": "Temas"
+  },
+  {
+   "slot": "nav.4",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "Header 4 Compare",
+   "value": "Comparar"
+  },
+  {
+   "slot": "nav.5",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "Header 5 Support",
+   "value": "Soporte"
+  },
+  {
+   "slot": "footer.1",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "Footer Product",
+   "value": "Producto"
+  },
+  {
+   "slot": "footer.2",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "Footer For agents & CLI",
+   "value": "Para agentes y la CLI"
+  },
+  {
+   "slot": "footer.3",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "Footer Guides",
+   "value": "Guías"
+  },
+  {
+   "slot": "footer.4",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "Footer Compare",
+   "value": "Comparar"
+  },
+  {
+   "slot": "footer.5",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "Footer Themes",
+   "value": "Temas"
+  },
+  {
+   "slot": "footer.6",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "Footer Support & legal",
+   "value": "Soporte e información legal"
+  },
+  {
+   "slot": "menu",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "320 px 選單",
+   "value": "Menú"
+  },
+  {
+   "slot": "wordmark",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "字標 aria-label",
+   "value": "Inicio de MarsDawn"
+  },
+  {
+   "slot": "nav_label",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "主要導覽 aria-label",
+   "value": "Navegación principal"
+  },
+  {
+   "slot": "lang_label",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "語言 aria-label",
+   "value": "Idioma"
+  },
+  {
+   "slot": "site_label",
+   "locale": "es",
+   "source": 6220575437,
+   "item": "網站導覽 aria-label",
+   "value": "Navegación del sitio"
+  },
+  {
+   "slot": "nav.1",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "Header 1 Features",
+   "value": "기능"
+  },
+  {
+   "slot": "nav.3",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "Header 3 Themes",
+   "value": "테마"
+  },
+  {
+   "slot": "nav.4",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "Header 4 Compare",
+   "value": "비교"
+  },
+  {
+   "slot": "nav.5",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "Header 5 Support",
+   "value": "지원"
+  },
+  {
+   "slot": "footer.1",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "Footer Product",
+   "value": "제품"
+  },
+  {
+   "slot": "footer.2",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "Footer For agents & CLI",
+   "value": "에이전트와 CLI"
+  },
+  {
+   "slot": "footer.3",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "Footer Guides",
+   "value": "가이드"
+  },
+  {
+   "slot": "footer.4",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "Footer Compare",
+   "value": "비교"
+  },
+  {
+   "slot": "footer.5",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "Footer Themes",
+   "value": "테마"
+  },
+  {
+   "slot": "footer.6",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "Footer Support & legal",
+   "value": "지원 및 법적 정보"
+  },
+  {
+   "slot": "menu",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "320 px 選單",
+   "value": "메뉴"
+  },
+  {
+   "slot": "wordmark",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "字標 aria-label",
+   "value": "MarsDawn 홈"
+  },
+  {
+   "slot": "nav_label",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "主要導覽 aria-label",
+   "value": "주요 탐색"
+  },
+  {
+   "slot": "lang_label",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "語言 aria-label",
+   "value": "언어"
+  },
+  {
+   "slot": "site_label",
+   "locale": "ko",
+   "source": 6220575437,
+   "item": "網站導覽 aria-label",
+   "value": "사이트 탐색"
+  },
+  {
+   "slot": "nav.2",
+   "locale": "en",
+   "source": 6221114188,
+   "item": "header item 2 en",
+   "value": "For agents"
+  },
+  {
+   "slot": "nav.2",
+   "locale": "zh-hant",
+   "source": 6221114188,
+   "item": "header item 2 zh-Hant",
+   "value": "Agent"
+  },
+  {
+   "slot": "nav.2",
+   "locale": "zh-hans",
+   "source": 6221114188,
+   "item": "header item 2 zh-Hans",
+   "value": "代理"
+  },
+  {
+   "slot": "nav.2",
+   "locale": "ja",
+   "source": 6221114188,
+   "item": "header item 2 ja",
+   "value": "エージェント"
+  },
+  {
+   "slot": "nav.2",
+   "locale": "de",
+   "source": 6221114188,
+   "item": "header item 2 de",
+   "value": "Für Agenten"
+  },
+  {
+   "slot": "nav.2",
+   "locale": "fr",
+   "source": 6221114188,
+   "item": "header item 2 fr",
+   "value": "Agents"
+  },
+  {
+   "slot": "nav.2",
+   "locale": "es",
+   "source": 6221114188,
+   "item": "header item 2 es",
+   "value": "Agentes"
+  },
+  {
+   "slot": "nav.2",
+   "locale": "ko",
+   "source": 6221114188,
+   "item": "header item 2 ko",
+   "value": "에이전트"
+  },
+  {
+   "slot": "menu",
+   "locale": "en",
+   "source": 6221155465,
+   "item": "320 px 選單 en",
+   "value": "Menu"
+  },
+  {
+   "slot": "menu",
+   "locale": "ja",
+   "source": 6221155465,
+   "item": "320 px 選單 ja",
+   "value": "メニュー"
+  },
+  {
+   "slot": "wordmark",
+   "locale": "en",
+   "source": 6221155465,
+   "item": "字標 aria-label en",
+   "value": "MarsDawn home"
+  },
+  {
+   "slot": "wordmark",
+   "locale": "ja",
+   "source": 6221155465,
+   "item": "字標 aria-label ja",
+   "value": "MarsDawn ホーム"
+  },
+  {
+   "slot": "nav_label",
+   "locale": "en",
+   "source": 6221155465,
+   "item": "主要導覽 aria-label en",
+   "value": "Main navigation"
+  },
+  {
+   "slot": "nav_label",
+   "locale": "ja",
+   "source": 6221155465,
+   "item": "主要導覽 aria-label ja",
+   "value": "メインナビゲーション"
+  },
+  {
+   "slot": "lang_label",
+   "locale": "en",
+   "source": 6221155465,
+   "item": "語言 aria-label en",
+   "value": "Language"
+  },
+  {
+   "slot": "lang_label",
+   "locale": "ja",
+   "source": 6221155465,
+   "item": "語言 aria-label ja",
+   "value": "言語"
+  },
+  {
+   "slot": "site_label",
+   "locale": "en",
+   "source": 6221155465,
+   "item": "網站導覽 aria-label en",
+   "value": "Site navigation"
+  },
+  {
+   "slot": "site_label",
+   "locale": "ja",
+   "source": 6221155465,
+   "item": "網站導覽 aria-label ja",
+   "value": "サイトナビゲーション"
+  }
+ ]
+}

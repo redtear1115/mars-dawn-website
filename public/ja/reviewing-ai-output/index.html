@@ -66,12 +66,66 @@ try {
 </div>
 <div class="page">
 <header class="masthead">
-  <a class="brand" href="/ja/">
+  <a class="brand" href="/ja/" aria-label="MarsDawn ホーム">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <span class="store-chip">Mac App Store で配信中</span>
-  <nav class="lang" aria-label="Language"><a href="/reviewing-ai-output/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/reviewing-ai-output/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/reviewing-ai-output/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/reviewing-ai-output/" hreflang="ja" aria-current="true" lang="ja">日本語</a> · <a href="/de/reviewing-ai-output/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/reviewing-ai-output/" hreflang="fr" lang="fr">Français</a> · <a href="/es/reviewing-ai-output/" hreflang="es" lang="es">Español</a> · <a href="/ko/reviewing-ai-output/" hreflang="ko" lang="ko">한국어</a></nav>
+  <nav class="site-nav" aria-label="メインナビゲーション">
+    <ul class="site-nav-wide">
+      <li><a href="/ja/features/">機能</a></li>
+      <li><a href="/ja/cli/">エージェント</a></li>
+      <li><a href="/ja/themes/">テーマ</a></li>
+      <li><a href="/ja/vs/">比較</a></li>
+      <li><a href="/ja/support/">サポート</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>メニュー</summary>
+      <ul>
+        <li><a href="/ja/features/">機能</a></li>
+        <li><a href="/ja/cli/">エージェント</a></li>
+        <li><a href="/ja/themes/">テーマ</a></li>
+        <li><a href="/ja/vs/">比較</a></li>
+        <li><a href="/ja/support/">サポート</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="言語">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/reviewing-ai-output/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/reviewing-ai-output/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/reviewing-ai-output/" hreflang="ja" aria-current="true" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/reviewing-ai-output/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary>その他</summary>
+      <ul>
+        <li><a href="/de/reviewing-ai-output/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/reviewing-ai-output/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/reviewing-ai-output/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/reviewing-ai-output/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>日本語</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/reviewing-ai-output/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/reviewing-ai-output/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/reviewing-ai-output/" hreflang="ja" aria-current="true" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/reviewing-ai-output/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/reviewing-ai-output/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/reviewing-ai-output/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/reviewing-ai-output/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/reviewing-ai-output/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
 </header>
 <main id="main">
 <section class="intro">
@@ -105,15 +159,69 @@ try {
 </ul>
 </main>
 <footer class="footer">
-  <nav class="footer-nav" aria-label="サイト">
-    <a href="/ja/support/">サポート</a>
-    <a href="/ja/privacy/">プライバシーポリシー</a>
-    <a href="/ja/cli/">コマンドライン</a>
-    <a href="/ja/features/">機能一覧</a>
-    <a href="/ja/view-markdown-on-mac/">Mac で .md ファイルを開く方法</a>
-    <a href="/ja/vs/markdown-preview-tools/">他のツールで Markdown を見る場合との比較</a>
-    <a href="/ja/vs/macmd-viewer/">MacMD Viewer と MarsDawn</a>
-    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  <nav class="footer-nav" aria-label="サイトナビゲーション">
+    <section aria-labelledby="footer-product">
+      <h2 id="footer-product">製品</h2>
+      <ul>
+        <li><a href="/ja/features/">機能一覧</a></li>
+        <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
+        <li><a href="/ja/native/">Mac アプリ</a></li>
+        <li><a href="/ja/pdf/">PDF 書き出し</a></li>
+        <li><a href="/ja/limits/">MarsDawn ができないこと</a></li>
+        <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
+        <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>
+        <li><a href="/ja/changelog/">更新履歴</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h2 id="footer-agents">エージェントと CLI</h2>
+      <ul>
+        <li><a href="/ja/cli/">コマンドライン</a></li>
+        <li><a href="/ja/cli/agents/">AI エージェント向け marsdawn</a></li>
+        <li><a href="/ja/cli/mcp/">MCP サーバー</a></li>
+        <li><a href="/ja/cli/skill/">エージェント用スキル</a></li>
+        <li><a href="/ja/agent-transparency/">エージェントの透明性</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h2 id="footer-guides">ガイド</h2>
+      <ul>
+        <li><a href="/ja/view-markdown-on-mac/">Mac で .md ファイルを開く方法</a></li>
+        <li><a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a></li>
+        <li><a href="/ja/mermaid-preview-mac/">Mac で Mermaid をプレビューする</a></li>
+        <li><a href="/ja/reading-agent-output/">エージェントが返してくるものを読む</a></li>
+        <li><a href="/ja/reviewing-ai-output/" aria-current="page">AI の出力を人が確認する理由</a></li>
+        <li><a href="/ja/reviewing-agent-plans/">エージェントの計画をレビューする</a></li>
+        <li><a href="/ja/token-efficient-review/">トークンを抑えたレビュー</a></li>
+        <li><a href="/ja/sharing-exported-pdfs/">書き出した PDF を共有する</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h2 id="footer-compare">比較</h2>
+      <ul>
+        <li><a href="/ja/vs/">MarsDawn と比較：VS Code プレビュー、Obsidian、QLMarkdown、LynxOffice</a></li>
+        <li><a href="/ja/vs/macmd-viewer/">MacMD Viewer と MarsDawn</a></li>
+        <li><a href="/ja/vs/markdown-preview-tools/">他のツールで Markdown を見る場合との比較</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h2 id="footer-themes">テーマ</h2>
+      <ul>
+        <li><a href="/ja/themes/">プレビューテーマと PDF 書き出し</a></li>
+        <li><a href="/ja/themes/gallery/">テーマギャラリー</a></li>
+        <li><a href="/ja/themes/new/">テーマを作る</a></li>
+        <li><a href="/ja/themes/agents/">エージェントとテーマを作る</a></li>
+        <li><a href="/ja/templates/">テンプレート</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h2 id="footer-support">サポートと法的情報</h2>
+      <ul>
+        <li><a href="/ja/support/">サポート</a></li>
+        <li><a href="/ja/privacy/">プライバシーポリシー</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button></li>
+      </ul>
+    </section>
   </nav>
   <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reviewing-ai-output&amp;mt=8">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
