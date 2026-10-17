@@ -66,12 +66,66 @@ try {
 </div>
 <div class="page">
 <header class="masthead">
-  <a class="brand" href="/fr/">
+  <a class="brand" href="/fr/" aria-label="Accueil de MarsDawn">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <span class="store-chip">Sur le Mac App Store</span>
-  <nav class="lang" aria-label="Language"><a href="/view-markdown-on-mac/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/view-markdown-on-mac/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/view-markdown-on-mac/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/view-markdown-on-mac/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/view-markdown-on-mac/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/view-markdown-on-mac/" hreflang="fr" aria-current="true" lang="fr">Français</a> · <a href="/es/view-markdown-on-mac/" hreflang="es" lang="es">Español</a> · <a href="/ko/view-markdown-on-mac/" hreflang="ko" lang="ko">한국어</a></nav>
+  <nav class="site-nav" aria-label="Navigation principale">
+    <ul class="site-nav-wide">
+      <li><a href="/fr/features/">Fonctionnalités</a></li>
+      <li><a href="/fr/cli/">Agents</a></li>
+      <li><a href="/fr/themes/">Thèmes</a></li>
+      <li><a href="/fr/vs/">Comparer</a></li>
+      <li><a href="/fr/support/">Assistance</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>Menu</summary>
+      <ul>
+        <li><a href="/fr/features/">Fonctionnalités</a></li>
+        <li><a href="/fr/cli/">Agents</a></li>
+        <li><a href="/fr/themes/">Thèmes</a></li>
+        <li><a href="/fr/vs/">Comparer</a></li>
+        <li><a href="/fr/support/">Assistance</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="Langue">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/view-markdown-on-mac/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/view-markdown-on-mac/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/view-markdown-on-mac/" hreflang="ja" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/view-markdown-on-mac/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary lang="fr">Français</summary>
+      <ul>
+        <li><a href="/de/view-markdown-on-mac/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/view-markdown-on-mac/" hreflang="fr" aria-current="true" lang="fr">Français</a></li>
+        <li><a href="/es/view-markdown-on-mac/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/view-markdown-on-mac/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>FR</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/view-markdown-on-mac/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/view-markdown-on-mac/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/view-markdown-on-mac/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/view-markdown-on-mac/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/view-markdown-on-mac/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/view-markdown-on-mac/" hreflang="fr" aria-current="true" lang="fr">Français</a></li>
+        <li><a href="/es/view-markdown-on-mac/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/view-markdown-on-mac/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
 </header>
 <main id="main">
 <section class="intro">
@@ -121,15 +175,69 @@ open notes.pdf</code></pre>
 </ul>
 </main>
 <footer class="footer">
-  <nav class="footer-nav" aria-label="Site">
-    <a href="/fr/support/">Assistance</a>
-    <a href="/fr/privacy/">Politique de confidentialité</a>
-    <a href="/fr/cli/">Ligne de commande</a>
-    <a href="/fr/features/">Fonctionnalités</a>
-    <a href="/fr/view-markdown-on-mac/" aria-current="page">Ouvrir un fichier .md sur Mac</a>
-    <a href="/fr/vs/markdown-preview-tools/">Afficher du Markdown ailleurs vs MarsDawn</a>
-    <a href="/fr/vs/macmd-viewer/">MacMD Viewer vs MarsDawn</a>
-    <button type="button" id="consent-settings-link" class="footer-link-btn">Réglages des cookies</button>
+  <nav class="footer-nav" aria-label="Navigation du site">
+    <section aria-labelledby="footer-product">
+      <h2 id="footer-product">Produit</h2>
+      <ul>
+        <li><a href="/fr/features/">Fonctionnalités</a></li>
+        <li><a href="/fr/quicklook/">Quick Look pour Markdown</a></li>
+        <li><a href="/fr/native/">Une app Mac</a></li>
+        <li><a href="/fr/pdf/">Export PDF</a></li>
+        <li><a href="/fr/limits/">Ce que MarsDawn ne fait pas</a></li>
+        <li><a href="/fr/pay-once/">Essai gratuit, achat unique</a></li>
+        <li><a href="/fr/yours/">Vos textes restent sur votre Mac</a></li>
+        <li><a href="/fr/changelog/">Historique des versions</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h2 id="footer-agents">Pour les agents et la CLI</h2>
+      <ul>
+        <li><a href="/fr/cli/">Ligne de commande</a></li>
+        <li><a href="/fr/cli/agents/">marsdawn pour les agents</a></li>
+        <li><a href="/fr/cli/mcp/">Serveur MCP</a></li>
+        <li><a href="/fr/cli/skill/">Skill pour agents</a></li>
+        <li><a href="/fr/agent-transparency/">Transparence des agents</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h2 id="footer-guides">Guides</h2>
+      <ul>
+        <li><a href="/fr/view-markdown-on-mac/" aria-current="page">Ouvrir un fichier .md sur Mac</a></li>
+        <li><a href="/fr/markdown-to-pdf/">Markdown vers PDF</a></li>
+        <li><a href="/fr/mermaid-preview-mac/">Aperçu Mermaid sur Mac</a></li>
+        <li><a href="/fr/reading-agent-output/">Lire ce que votre agent vous rend</a></li>
+        <li><a href="/fr/reviewing-ai-output/">Pourquoi ce que produit l’IA a encore besoin d’un lecteur humain</a></li>
+        <li><a href="/fr/reviewing-agent-plans/">Relire le plan d’un agent</a></li>
+        <li><a href="/fr/token-efficient-review/">Relire en économisant les tokens</a></li>
+        <li><a href="/fr/sharing-exported-pdfs/">Partager les PDF exportés</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h2 id="footer-compare">Comparer</h2>
+      <ul>
+        <li><a href="/fr/vs/">MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice</a></li>
+        <li><a href="/fr/vs/macmd-viewer/">MacMD Viewer vs MarsDawn</a></li>
+        <li><a href="/fr/vs/markdown-preview-tools/">Afficher du Markdown ailleurs vs MarsDawn</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h2 id="footer-themes">Thèmes</h2>
+      <ul>
+        <li><a href="/fr/themes/">Thèmes de l’aperçu et export PDF</a></li>
+        <li><a href="/fr/themes/gallery/">Galerie de thèmes</a></li>
+        <li><a href="/fr/themes/new/">Créer un thème</a></li>
+        <li><a href="/fr/themes/agents/">Créer un thème avec votre agent</a></li>
+        <li><a href="/fr/templates/">Modèles</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h2 id="footer-support">Assistance et mentions légales</h2>
+      <ul>
+        <li><a href="/fr/support/">Assistance</a></li>
+        <li><a href="/fr/privacy/">Politique de confidentialité</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">Réglages des cookies</button></li>
+      </ul>
+    </section>
   </nav>
   <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-view-markdown-on-mac&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>

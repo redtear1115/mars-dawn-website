@@ -30,6 +30,7 @@ import article_dates  # noqa: E402
 import locales  # noqa: E402
 import theme_agents  # noqa: E402
 from promo130 import data as promo_data  # noqa: E402
+from ia247 import data as ia_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
@@ -937,11 +938,10 @@ def third_party_notices_html() -> str:
         "project's copyright notice and full licence text. MarsDawn's own themes, by Southern Light, are original and are licensed Apache-2.0 like the rest of this site's code.</p>\n"
         "</section>\n" + "\n".join(sections)
     )
-    footer_links = footer_site_links("en", ui)
-    footer_links += f'    <button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button>\n'
+    header_html = site_header_html("en", switch=False, back='<a class="masthead-back" href="/themes/gallery/">&#8592; Theme gallery</a>')
     footer_html = (
         '<footer class="footer">\n'
-        f'  <nav class="footer-nav" aria-label="{ui["footer_nav"]}">\n{footer_links}  </nav>\n'
+        f'{site_footer_nav_html("en")}'
         f'  <p class="footer-meta"><span>{ui["slogan"]}</span> <span>{ui["footer_store"]}</span> '
         '<span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>\n</footer>'
     )
@@ -964,13 +964,7 @@ def third_party_notices_html() -> str:
 <a class="skip" href="#main">{SKIP_LABEL["en"]}</a>
 {consent_banner_html("en")}
 <div class="page">
-<header class="masthead">
-  <a class="brand" href="{home_path("en")}">
-    <img src="/assets/icon-192.png" alt="" width="40" height="40">
-    <strong>MarsDawn</strong>
-  </a>
-  <a href="/themes/gallery/">&#8592; Theme gallery</a>
-</header>
+{header_html}
 <main id="main">
 {main_html}
 </main>
@@ -2017,7 +2011,7 @@ BRAINSTORM_PAGES = {
 <p><a href="{MCP_URL}">marsdawn-mcp</a> is a separate, public, {MCP_LICENSE} repository. It's an MCP server with two tools, <code>export_markdown_to_pdf</code> and <code>open_in_marsdawn</code>, that wrap <code>marsdawn export --json</code> and <code>marsdawn open --json</code>: point an MCP client at it and a tool call returns the same JSON as the CLI.</p>
 <ul>
   <li><strong>Get it:</strong> as an MCP Bundle, <code>marsdawn.mcpb</code>, attached to <a href="{MCP_URL}/releases">its GitHub release</a>, or by running the server from source over stdio.</li>
-  <li><strong>Registry:</strong> listed in the <a href="https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest">MCP Registry</a> as <code>dev.southern-light.mcp/marsdawn</code> (current release: 0.2.4).</li>
+  <li><strong>Registry:</strong> listed in the <a href="https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest">MCP Registry</a> as <code>dev.southern-light.mcp/marsdawn</code>.</li>
   <li><strong>Hosting:</strong> self-hosted only. There is no hosted marsdawn-mcp service; the server runs on your own machine, next to marsdawn itself.</li>
   <li><strong>Requirements:</strong> macOS, marsdawn 0.5.0 or later, and Node.js 20 or later to run the server.</li>
 </ul>
@@ -2061,7 +2055,7 @@ BRAINSTORM_PAGES = {
 <p><a href="{MCP_URL}">marsdawn-mcp</a> 是另一個獨立、公開、{MCP_LICENSE} 授權的 repository。它是一個有兩個工具的 MCP 伺服器，<code>export_markdown_to_pdf</code> 和 <code>open_in_marsdawn</code>，分別包住 <code>marsdawn export --json</code> 和 <code>marsdawn open --json</code>：把 MCP 用戶端指向它，工具呼叫回傳的 JSON 和 CLI 一樣。</p>
 <ul>
   <li><strong>取得方式：</strong>以 MCP Bundle（<code>marsdawn.mcpb</code>）的形式附在<a href="{MCP_URL}/releases">GitHub release</a> 上，或從原始碼以 stdio 執行伺服器。</li>
-  <li><strong>Registry：</strong>已上架 <a href="https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest">MCP Registry</a>，名稱為 <code>dev.southern-light.mcp/marsdawn</code>（目前版本：0.2.4）。</li>
+  <li><strong>Registry：</strong>已上架 <a href="https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest">MCP Registry</a>，名稱為 <code>dev.southern-light.mcp/marsdawn</code>。</li>
   <li><strong>託管：</strong>只能自架，沒有代管服務。伺服器跑在你自己的機器上，就在 marsdawn 旁邊。</li>
   <li><strong>系統需求：</strong>macOS、marsdawn 0.5.0 以上，以及執行伺服器需要的 Node.js 20 以上。</li>
 </ul>
@@ -5765,20 +5759,111 @@ def has_page(locale: str, slug: str) -> bool:
     return (locale, slug) in all_pages()
 
 
-# The footer's site links, the same row on every page, the 404 pages and the licence notices (one
-# tuple, not three). The first three are the long-standing links; the next three are the pages
-# crawlers must reach from every page (PLAN-web-search-sprint S1). Each label is the page's own
-# existing ui[...] string in that locale; a page a locale doesn't have is left out.
-FOOTER_SLUGS = ("support", "privacy", "cli", "features", "view-markdown-on-mac", "vs/markdown-preview-tools", "vs/macmd-viewer")
+# --- The header and the footer (website #247) -------------------------------------------------------
+# Three places build them (render, render_404, third_party_notices_html) and all three call the
+# functions below, so no page can carry a different one. Every string is scripts/ia247/data.py's, which
+# scripts/ia247/ingest.py carried over from the pinned Grok comments; a page's name in the footer is the
+# page's own ui[...] label, a language's name is locales.py's (its own), and the rest is the wordmark.
+LANG_PRIMARY = ("en", "zh-hant", "ja", "zh-hans")   # shown in the header; the rest sit under "More"
+LANG_MORE = ("de", "fr", "es", "ko")
+NAV_SLUGS = tuple(href.strip("/") for href in ia_data.DATA["nav_hrefs"])
+NAV_PARENTS = ("cli", "themes", "vs")               # pages under these belong to the item (templates/* does not)
+FOOTER_KEYS = ("product", "agents", "guides", "compare", "themes", "support")
 
 
-def footer_site_links(locale: str, ui: dict, current: dict = None) -> str:
-    current = current or {}
-    return "".join(
-        f'    <a href="{page_path(locale, slug)}"{current.get(slug, "")}>{ui[SLUG_TO_UI_KEY[slug]]}</a>\n'
-        for slug in FOOTER_SLUGS
-        if has_page(locale, slug)
+def _attr(text: str) -> str:
+    return html_escape(text, quote=True)
+
+
+def nav_current(slug):
+    """(index of the header item, aria-current value) for a page, or None: the item itself is the page,
+    a page under cli/, themes/ or vs/ is inside its item."""
+    for i, item in enumerate(NAV_SLUGS):
+        if slug == item:
+            return i, "page"
+        if item in NAV_PARENTS and slug is not None and slug.startswith(item + "/"):
+            return i, "true"
+    return None
+
+
+def _lang_link(other: str, target: str, current: str) -> str:
+    return (f'<a href="{target}" hreflang="{LOCALES[other]["html_lang"]}"'
+            + (' aria-current="true"' if other == current else "")
+            + f' lang="{LOCALES[other]["html_lang"]}">{LOCALES[other]["label"]}</a>')
+
+
+def language_switch_html(locale: str, slug) -> str:
+    """The language switch, in two copies: the wide one (the four main languages, then a "More" menu of
+    the rest) and the narrow one (one menu, the current language's short name, a rule between the two
+    groups). CSS shows one and hides the other. A page links to its own translations; the 404 pages
+    (slug None) link to each language's home. Only the locales this build serves are listed, and a
+    group with none of them is left out whole."""
+    t = ia_data.DATA["locales"][locale]
+    have = list(LOCALES) if slug is None else locales_with(slug)
+    target = (lambda other: home_path(other)) if slug is None else (lambda other: page_path(other, slug))
+    main = [o for o in LANG_PRIMARY if o in have]
+    more = [o for o in LANG_MORE if o in have]
+    items = lambda group, indent: "".join(f'{indent}<li>{_lang_link(o, target(o), locale)}</li>\n' for o in group)
+    wide = f'    <ul>\n{items(main, "      ")}    </ul>\n'
+    if more:
+        summary = (f'<summary lang="{LOCALES[locale]["html_lang"]}">{LOCALES[locale]["label"]}</summary>' if locale in more
+                   else f'<summary>{_attr(t["more"])}</summary>')
+        wide += f'    <details class="lang-more">\n      {summary}\n      <ul>\n{items(more, "        ")}      </ul>\n    </details>\n'
+    panel = f'      <ul>\n{items(main, "        ")}      </ul>\n'
+    if more:
+        panel += f'      <hr class="lang-sep">\n      <ul>\n{items(more, "        ")}      </ul>\n'
+    narrow = f'    <summary>{_attr(t["abbr"])}</summary>\n    <div class="lang-panel">\n{panel}    </div>\n'
+    return (f'  <nav class="lang" aria-label="{_attr(t["lang_label"])}">\n'
+            f'  <div class="lang-wide">\n{wide}  </div>\n'
+            f'  <details class="lang-narrow">\n{narrow}  </details>\n  </nav>\n')
+
+
+def site_header_html(locale: str, slug=None, *, switch: bool = True, back: str = "") -> str:
+    """The masthead: the wordmark, the five main pages (two copies, wide and narrow) and the language
+    switch. `slug` is the page this is on (None on a 404 and the licence notices: nothing is current);
+    `switch` False and `back` (a ready link) are the licence notices page, which has no translations."""
+    t = ia_data.DATA["locales"][locale]
+    current = nav_current(slug)
+    links = []
+    for i, (href, label) in enumerate(zip(ia_data.DATA["nav_hrefs"], t["nav"])):
+        mark = f' aria-current="{current[1]}"' if current and current[0] == i else ""
+        links.append(f'<li><a href="{page_path(locale, href.strip("/"))}"{mark}>{_attr(label)}</a></li>')
+    wide = "".join(f"      {link}\n" for link in links)
+    narrow = "".join(f"        {link}\n" for link in links)
+    home = ' aria-current="page"' if slug == "index" else ""
+    return (
+        f'<header class="masthead{" masthead-plain" if not switch else ""}">\n'
+        f'  <a class="brand" href="{home_path(locale)}" aria-label="{_attr(t["wordmark"])}"{home}>\n'
+        '    <img src="/assets/icon-192.png" alt="" width="40" height="40">\n'
+        '    <strong>MarsDawn</strong>\n  </a>\n'
+        f'  <nav class="site-nav" aria-label="{_attr(t["nav_label"])}">\n'
+        f'    <ul class="site-nav-wide">\n{wide}    </ul>\n'
+        f'    <details class="site-nav-narrow">\n      <summary>{_attr(t["menu"])}</summary>\n      <ul>\n{narrow}      </ul>\n    </details>\n'
+        '  </nav>\n'
+        + (language_switch_html(locale, slug) if switch else "")
+        + (f'  {back}\n' if back else "")
+        + "</header>"
     )
+
+
+def site_footer_nav_html(locale: str, current=None) -> str:
+    """The footer's navigation: six groups, each a heading and its pages, 31 pages in all, then the
+    Cookie settings button last in the last group (consent.js binds it by id). A page this locale
+    doesn't have is left out. `current` is the page's slug, marked aria-current="page" when it is here."""
+    ui, t = UI[locale], ia_data.DATA["locales"][locale]
+    sections = []
+    for key, name, pages in zip(FOOTER_KEYS, t["footer"], ia_data.DATA["footer_pages"]):
+        rows = []
+        for href in pages:
+            slug = href.strip("/")
+            if has_page(locale, slug):
+                mark = ' aria-current="page"' if slug == current else ""
+                rows.append(f'        <li><a href="{page_path(locale, slug)}"{mark}>{ui[SLUG_TO_UI_KEY[slug]]}</a></li>\n')
+        if key == "support":
+            rows.append(f'        <li><button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button></li>\n')
+        sections.append(f'    <section aria-labelledby="footer-{key}">\n      <h2 id="footer-{key}">{_attr(name)}</h2>\n'
+                        f'      <ul>\n{"".join(rows)}      </ul>\n    </section>\n')
+    return f'  <nav class="footer-nav" aria-label="{_attr(t["site_label"])}">\n{"".join(sections)}  </nav>\n'
 
 
 def locales_with(slug: str) -> list:
@@ -6187,12 +6272,6 @@ def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> l
 def render(locale: str, slug: str, page: dict) -> str:
     ui = UI[locale]
     lang = LOCALES[locale]["html_lang"]
-    switch = " · ".join(
-        f'<a href="{page_path(other, slug)}" hreflang="{LOCALES[other]["html_lang"]}"'
-        + (' aria-current="true"' if other == locale else "")
-        + f' lang="{LOCALES[other]["html_lang"]}">{LOCALES[other]["label"]}</a>'
-        for other in locales_with(slug)
-    )
     alternates = "\n".join(
         f'<link rel="alternate" hreflang="{LOCALES[other]["html_lang"]}" href="{abs_url(page_path(other, slug))}">'
         for other in locales_with(slug)
@@ -6217,10 +6296,6 @@ def render(locale: str, slug: str, page: dict) -> str:
     )
     has_intro = "intro" in page
     is_trait_page = slug in TRAIT_ORDER
-    # The trait pages' chip is `chip` below. Every other page's masthead says the same, as a
-    # statement; the home page says it in the hero instead.
-    statement_chip = (f'<span class="store-chip">{STORE_CHIP[locale]}</span>\n  '
-                      if not is_trait_page and slug != "index" else "")
     extra_css = '<link rel="stylesheet" href="/assets/annotations.css">\n' if is_trait_page or slug in ("features", "themes") else ""
     if slug.startswith("templates/"):
         extra_css = '<link rel="stylesheet" href="/assets/loop.css">\n'
@@ -6258,9 +6333,6 @@ def render(locale: str, slug: str, page: dict) -> str:
     elif slug == "themes/gallery":
         extra_css = '<link rel="stylesheet" href="/assets/theme-gallery.css">\n'
         extra_js = '<script type="module" src="/assets/theme-gallery.js"></script>\n'
-    # The chip links to the listing from launch: the owner decided that on 2026-09-20, over
-    # DESIGN.md's "a statement, not a button". See the Store Chip rule there.
-    chip = f'<a class="store-chip" href="{LISTING_URL}">{STORE_CHIP[locale]}</a>\n  ' if is_trait_page else ""
     if slug == "index":
         hero_html = (
             '<section class="hero-scene">\n'
@@ -6307,19 +6379,18 @@ def render(locale: str, slug: str, page: dict) -> str:
     # Two rows, the same on every page (#65): the site's links, then a meta line. The home page's meta
     # line is the origin mark alone, because the closing band just above already says the tagline and
     # the store line. The origin mark is deliberately untranslated, as on Futari's site.
-    current = {slug: ' aria-current="page"'}
-    footer_links = footer_site_links(locale, ui, current)
-    # Reopens the consent banner (consent.js). No cookie/analytics page of its own to link to,
-    # so it's a button styled as a link, not an <a>: nothing to navigate to without JS, and
-    # without JS there is no banner to reopen either (see consent_banner_html).
-    footer_links += f'    <button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button>\n'
+    # The Cookie settings button, last in the footer's last group, reopens the consent banner
+    # (consent.js). No cookie/analytics page of its own to link to, so it's a button styled as a link,
+    # not an <a>: nothing to navigate to without JS, and without JS there is no banner to reopen either
+    # (see consent_banner_html).
+    footer_links = site_footer_nav_html(locale, slug)
     # The home page's closing band just above already carries the slogan as its headline.
     footer_meta = '<span class="footer-origin">© 2026 · MADE IN TAIWAN</span>'
     if slug != "index":
         footer_meta = f'<span>{ui["slogan"]}</span> <span>{ui["footer_store"]}</span> {footer_meta}'
     footer_html = (
         f'<footer class="footer{" footer-home" if slug == "index" else ""}">\n'
-        f'  <nav class="footer-nav" aria-label="{ui["footer_nav"]}">\n{footer_links}  </nav>\n'
+        f'{footer_links}'
         f'  <p class="footer-meta">{footer_meta}</p>\n</footer>'
     )
     # A page in LEGAL_PAGES carries its markdown-body content in the kit's own Dawn palette
@@ -6346,13 +6417,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 <a class="skip" href="#main">{SKIP_LABEL[locale]}</a>
 {consent_banner_html(locale)}
 <div class="page">
-<header class="masthead">
-  <a class="brand" href="{home_path(locale)}">
-    <img src="/assets/icon-192.png" alt="" width="40" height="40">
-    <strong>MarsDawn</strong>
-  </a>
-  {chip}{statement_chip}<nav class="lang" aria-label="Language">{switch}</nav>
-</header>
+{site_header_html(locale, slug)}
 <main id="main">
 {main_html}
 </main>
@@ -6619,19 +6684,12 @@ def render_404(locale: str) -> str:
     lang = LOCALES[locale]["html_lang"]
     copy = NOT_FOUND_COPY[locale]
     canonical_url = abs_url(not_found_path(locale))
-    # Links to each locale's home, never to a nonexistent /xx/404/.
-    switch = " · ".join(
-        f'<a href="{home_path(other)}" hreflang="{LOCALES[other]["html_lang"]}"'
-        + (' aria-current="true"' if other == locale else "")
-        + f' lang="{LOCALES[other]["html_lang"]}">{LOCALES[other]["label"]}</a>'
-        for other in LOCALES
-    )
-    footer_links = footer_site_links(locale, ui)
-    footer_links += f'    <button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button>\n'
+    # The language switch links to each locale's home, never to a nonexistent /xx/404/ (slug None).
+    footer_links = site_footer_nav_html(locale)
     footer_meta = f'<span>{ui["slogan"]}</span> <span>{ui["footer_store"]}</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span>'
     footer_html = (
         '<footer class="footer">\n'
-        f'  <nav class="footer-nav" aria-label="{ui["footer_nav"]}">\n{footer_links}  </nav>\n'
+        f'{footer_links}'
         f'  <p class="footer-meta">{footer_meta}</p>\n</footer>'
     )
     return f"""<!doctype html>
@@ -6653,13 +6711,7 @@ def render_404(locale: str) -> str:
 <a class="skip" href="#main">{SKIP_LABEL[locale]}</a>
 {consent_banner_html(locale)}
 <div class="page">
-<header class="masthead">
-  <a class="brand" href="{home_path(locale)}">
-    <img src="/assets/icon-192.png" alt="" width="40" height="40">
-    <strong>MarsDawn</strong>
-  </a>
-  <nav class="lang" aria-label="Language">{switch}</nav>
-</header>
+{site_header_html(locale)}
 <main id="main">
 <section class="intro">
   <h1>{copy["headline"]}</h1>

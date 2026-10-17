@@ -67,12 +67,66 @@ try {
 </div>
 <div class="page">
 <header class="masthead">
-  <a class="brand" href="/zh-hant/">
+  <a class="brand" href="/zh-hant/" aria-label="MarsDawn 首頁">
     <img src="/assets/icon-192.png" alt="" width="40" height="40">
     <strong>MarsDawn</strong>
   </a>
-  <span class="store-chip">已在 Mac App Store 上架</span>
-  <nav class="lang" aria-label="Language"><a href="/privacy/" hreflang="en" lang="en">English</a> · <a href="/zh-hant/privacy/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a> · <a href="/zh-hans/privacy/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="/ja/privacy/" hreflang="ja" lang="ja">日本語</a> · <a href="/de/privacy/" hreflang="de" lang="de">Deutsch</a> · <a href="/fr/privacy/" hreflang="fr" lang="fr">Français</a> · <a href="/es/privacy/" hreflang="es" lang="es">Español</a> · <a href="/ko/privacy/" hreflang="ko" lang="ko">한국어</a></nav>
+  <nav class="site-nav" aria-label="主要導覽">
+    <ul class="site-nav-wide">
+      <li><a href="/zh-hant/features/">功能</a></li>
+      <li><a href="/zh-hant/cli/">Agent</a></li>
+      <li><a href="/zh-hant/themes/">主題</a></li>
+      <li><a href="/zh-hant/vs/">比較</a></li>
+      <li><a href="/zh-hant/support/">支援</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>選單</summary>
+      <ul>
+        <li><a href="/zh-hant/features/">功能</a></li>
+        <li><a href="/zh-hant/cli/">Agent</a></li>
+        <li><a href="/zh-hant/themes/">主題</a></li>
+        <li><a href="/zh-hant/vs/">比較</a></li>
+        <li><a href="/zh-hant/support/">支援</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="語言">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/privacy/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/privacy/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/privacy/" hreflang="ja" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/privacy/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary>更多</summary>
+      <ul>
+        <li><a href="/de/privacy/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/privacy/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/privacy/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/privacy/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>繁中</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/privacy/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/privacy/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/privacy/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/privacy/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/privacy/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/privacy/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/privacy/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/privacy/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
 </header>
 <main id="main">
 <div class="markdown-body">
@@ -176,15 +230,69 @@ try {
 
 </main>
 <footer class="footer">
-  <nav class="footer-nav" aria-label="網站">
-    <a href="/zh-hant/support/">支援</a>
-    <a href="/zh-hant/privacy/" aria-current="page">隱私權政策</a>
-    <a href="/zh-hant/cli/">命令列工具</a>
-    <a href="/zh-hant/features/">功能一覽</a>
-    <a href="/zh-hant/view-markdown-on-mac/">Mac 怎麼開 md 檔</a>
-    <a href="/zh-hant/vs/markdown-preview-tools/">在別處看 Markdown，對比 MarsDawn</a>
-    <a href="/zh-hant/vs/macmd-viewer/">MacMD Viewer 對比 MarsDawn</a>
-    <button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button>
+  <nav class="footer-nav" aria-label="網站導覽">
+    <section aria-labelledby="footer-product">
+      <h2 id="footer-product">產品</h2>
+      <ul>
+        <li><a href="/zh-hant/features/">功能一覽</a></li>
+        <li><a href="/zh-hant/quicklook/">Markdown 快速查看</a></li>
+        <li><a href="/zh-hant/native/">為 Mac 而做</a></li>
+        <li><a href="/zh-hant/pdf/">輸出 PDF</a></li>
+        <li><a href="/zh-hant/limits/">MarsDawn 做不到的事</a></li>
+        <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a></li>
+        <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a></li>
+        <li><a href="/zh-hant/changelog/">更新紀錄</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h2 id="footer-agents">Agent 與命令列</h2>
+      <ul>
+        <li><a href="/zh-hant/cli/">命令列工具</a></li>
+        <li><a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a></li>
+        <li><a href="/zh-hant/cli/mcp/">MCP 伺服器</a></li>
+        <li><a href="/zh-hant/cli/skill/">給 agent 的 skill</a></li>
+        <li><a href="/zh-hant/agent-transparency/">agent 的透明</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h2 id="footer-guides">教學</h2>
+      <ul>
+        <li><a href="/zh-hant/view-markdown-on-mac/">Mac 怎麼開 md 檔</a></li>
+        <li><a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a></li>
+        <li><a href="/zh-hant/mermaid-preview-mac/">在 Mac 上預覽 Mermaid</a></li>
+        <li><a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a></li>
+        <li><a href="/zh-hant/reviewing-ai-output/">為什麼 AI 寫的東西還是需要人讀過</a></li>
+        <li><a href="/zh-hant/reviewing-agent-plans/">審 agent 計畫</a></li>
+        <li><a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a></li>
+        <li><a href="/zh-hant/sharing-exported-pdfs/">分享輸出的 PDF</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h2 id="footer-compare">比較</h2>
+      <ul>
+        <li><a href="/zh-hant/vs/">MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice</a></li>
+        <li><a href="/zh-hant/vs/macmd-viewer/">MacMD Viewer 對比 MarsDawn</a></li>
+        <li><a href="/zh-hant/vs/markdown-preview-tools/">在別處看 Markdown，對比 MarsDawn</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h2 id="footer-themes">主題</h2>
+      <ul>
+        <li><a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a></li>
+        <li><a href="/zh-hant/themes/gallery/">主題庫</a></li>
+        <li><a href="/zh-hant/themes/new/">打造一個主題</a></li>
+        <li><a href="/zh-hant/themes/agents/">和 agent 一起做主題</a></li>
+        <li><a href="/zh-hant/templates/">範本</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h2 id="footer-support">支援與法律</h2>
+      <ul>
+        <li><a href="/zh-hant/support/">支援</a></li>
+        <li><a href="/zh-hant/privacy/" aria-current="page">隱私權政策</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button></li>
+      </ul>
+    </section>
   </nav>
   <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-privacy&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
