@@ -1556,3 +1556,8 @@ html { overflow-x: hidden; }
 /* auto-phrase keeps a Japanese phrase whole; a heading whose phrase is wider than a phone
    (フローチャートテンプレート) may still break inside it rather than widen the page. */
 :lang(ja) :is(h1, h2, h3) { overflow-wrap: anywhere; }
+/* German, French and Spanish headings carry long compounds (Besprechungsprotokolle); on a
+   320px phone one may be wider than the line. overflow-wrap: break-word changes nothing for a
+   heading that fits, and breaks inside the word rather than widen the page for one that
+   doesn't. */
+:is(:lang(de), :lang(fr), :lang(es)) :is(h1, h2, h3) { overflow-wrap: break-word; }
