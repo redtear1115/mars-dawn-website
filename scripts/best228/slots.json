@@ -1,0 +1,7878 @@
+{
+ "sources": {
+  "C1": {
+   "id": 6235379596,
+   "issue": 228,
+   "created_at": "2026-10-17T14:56:18Z",
+   "updated_at": "2026-10-17T14:56:18Z",
+   "sha256": "206c0938041954d1f57150af9c0993fdbeef075dd1fa657f565bb6d2422d181d",
+   "chars": 13485
+  },
+  "C2": {
+   "id": 6235458623,
+   "issue": 228,
+   "created_at": "2026-10-17T15:03:57Z",
+   "updated_at": "2026-10-17T15:03:57Z",
+   "sha256": "8f808bbd392364d310f1a49fed175367a8c9d7b8e359f8c0fd753ad2315ef762",
+   "chars": 2593
+  },
+  "C3": {
+   "id": 6235638140,
+   "issue": 228,
+   "created_at": "2026-10-17T15:19:52Z",
+   "updated_at": "2026-10-17T15:19:52Z",
+   "sha256": "374ed4130729d393d38635e6a1bf9161eb5f20d54c7e4472e428b7a241ca2875",
+   "chars": 1541
+  },
+  "C4": {
+   "id": 6237326931,
+   "issue": 228,
+   "created_at": "2026-10-17T17:11:47Z",
+   "updated_at": "2026-10-17T17:11:47Z",
+   "sha256": "e69d51d89e5fcf7af26fca929e89e202943e0707bead2806c3d786f4c62dccc0",
+   "chars": 27606
+  }
+ },
+ "slots": [
+  {
+   "locale": "en",
+   "field": "title",
+   "source": "C1",
+   "text": "Best Markdown viewer for Mac (2026)",
+   "html": false
+  },
+  {
+   "locale": "en",
+   "field": "description",
+   "source": "C1",
+   "text": "Eight Markdown viewers for Mac compared by price, Mermaid, math, PDF, live reload, Quick Look and native vs Electron, with who each one suits.",
+   "html": false
+  },
+  {
+   "locale": "en",
+   "field": "h1",
+   "source": "C1",
+   "text": "Best Markdown viewer for Mac (2026)",
+   "html": false
+  },
+  {
+   "locale": "en",
+   "field": "intro",
+   "source": "C1",
+   "text": "The best Markdown viewer depends on what you read. If it is notes you write yourself, an all-in-one editor is enough. If it is long documents with diagrams and math, or files an AI agent keeps rewriting, check how each app handles live reload, Mermaid and PDF. The apps below are in alphabetical order, and each one gets who it suits, one honest drawback and its price.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.macdown-3000.name",
+   "source": "C1",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.macdown-3000.para",
+   "source": "C1",
+   "text": "The original MacDown is no longer maintained. MacDown 3000 is the community continuation: free and open source (MIT), native, with Mermaid, MathJax, PDF export, live reload and Quick Look.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.macdown-3000.bullet1",
+   "source": "C1",
+   "text": "Suits: people who want a free native split view.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.macdown-3000.bullet2",
+   "source": "C1",
+   "text": "Drawback: no documented way to open a file at a line from the command line.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.macdown-3000.bullet3",
+   "source": "C1",
+   "text": "Price: free.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.marked.name",
+   "source": "C1",
+   "text": "Marked",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.marked.para",
+   "source": "C1",
+   "text": "Marked 3 is a previewer for Markdown you write in another app. It reloads whenever the file changes, has MathJax and KaTeX, and prints paginated PDFs with page numbers. Marked 2 is still sold.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.marked.bullet1",
+   "source": "C1",
+   "text": "Suits: writers who keep their own editor and want a polished preview and print.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.marked.bullet2",
+   "source": "C1",
+   "text": "Drawback: Quick Look is a separate app, Marked QL (USD 9.99).",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.marked.bullet3",
+   "source": "C1",
+   "text": "Price: Marked 3 is a free download, then USD 2.99/month, USD 29.99/year or USD 69.99 lifetime. Marked 2 is USD 14.99 direct or USD 13.99 on the Mac App Store.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.markedit.name",
+   "source": "C1",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.markedit.para",
+   "source": "C1",
+   "text": "A light, free native editor (CodeMirror in a web view) with Quick Look.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.markedit.bullet1",
+   "source": "C1",
+   "text": "Suits: people who want a fast plain-text editor that feels at home on the Mac.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.markedit.bullet2",
+   "source": "C1",
+   "text": "Drawback: Mermaid and math need the official extensions, and PDF export needs Pandoc.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.markedit.bullet3",
+   "source": "C1",
+   "text": "Price: free.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.marsdawn.name",
+   "source": "C1",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.marsdawn.para",
+   "source": "C1",
+   "text": "A native Mac app that shows the source and a live preview side by side, with Mermaid and KaTeX built in. When an agent saves the file, the open window takes the change as one undoable \"Update from Disk\". <code>marsdawn open notes.md:120</code> opens a file at a line, and there is a skill and an MCP server for agents. Quick Look works with or without the trial. Copy for AI and Copy Reference hand text to an agent. Nothing leaves your Mac unless you choose.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.marsdawn.bullet1",
+   "source": "C1",
+   "text": "Suits: people reviewing Markdown that AI agents write.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.marsdawn.bullet2",
+   "source": "C1",
+   "text": "Drawback: the PDF export has no page numbers.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.marsdawn.bullet3",
+   "source": "C1",
+   "text": "Price: free download with a 14-day trial, then USD 4.99 once. No account. Mac App Store only.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.obsidian.name",
+   "source": "C1",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.obsidian.para",
+   "source": "C1",
+   "text": "A notes app built around a vault of linked Markdown files, with Mermaid, MathJax, PDF export and live reload.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.obsidian.bullet1",
+   "source": "C1",
+   "text": "Suits: people building a knowledge base of their own notes.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.obsidian.bullet2",
+   "source": "C1",
+   "text": "Drawback: it is an Electron app, and it works best with files inside a vault.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.obsidian.bullet3",
+   "source": "C1",
+   "text": "Price: free. Sync and Publish are paid.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.qlmarkdown.name",
+   "source": "C1",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.qlmarkdown.para",
+   "source": "C1",
+   "text": "A Quick Look extension: select a .md file in Finder and press Space. Mermaid and MathJax are opt-in.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.qlmarkdown.bullet1",
+   "source": "C1",
+   "text": "Suits: people who only want to glance at files in Finder.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.qlmarkdown.bullet2",
+   "source": "C1",
+   "text": "Drawback: it is not an app for reading or editing, and has no documented PDF export.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.qlmarkdown.bullet3",
+   "source": "C1",
+   "text": "Price: free (GPL-3.0).",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.typora.name",
+   "source": "C1",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.typora.para",
+   "source": "C1",
+   "text": "A seamless editor where the preview is the document, with Mermaid, MathJax and PDF export with page numbers in the header or footer.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.typora.bullet1",
+   "source": "C1",
+   "text": "Suits: people who prefer to write in a WYSIWYG-style view.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.typora.bullet2",
+   "source": "C1",
+   "text": "Drawback: no separate source and preview side by side.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.typora.bullet3",
+   "source": "C1",
+   "text": "Price: USD 14.99 once, for up to 3 devices.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.vs-code.name",
+   "source": "C1",
+   "text": "VS Code preview",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.vs-code.para",
+   "source": "C1",
+   "text": "The built-in Markdown preview, with Mermaid built in since 1.121 and KaTeX. <code>code -g file:line</code> opens a file at a line.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.vs-code.bullet1",
+   "source": "C1",
+   "text": "Suits: developers who already live in VS Code.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.vs-code.bullet2",
+   "source": "C1",
+   "text": "Drawback: it is an Electron app, and has no built-in PDF export.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "app.vs-code.bullet3",
+   "source": "C1",
+   "text": "Price: free.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.h",
+   "source": "C1",
+   "text": "Comparison",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.head0",
+   "source": "C1",
+   "text": "App",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.head1",
+   "source": "C1",
+   "text": "Price",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.head2",
+   "source": "C1",
+   "text": "Mermaid",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.head3",
+   "source": "C1",
+   "text": "Math",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.head4",
+   "source": "C1",
+   "text": "PDF",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.head5",
+   "source": "C1",
+   "text": "Live reload",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.head6",
+   "source": "C1",
+   "text": "CLI at line",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.head7",
+   "source": "C1",
+   "text": "Quick Look",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.head8",
+   "source": "C1",
+   "text": "Build",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.macdown-3000.c0",
+   "source": "C1",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.macdown-3000.c1",
+   "source": "C1",
+   "text": "Free",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.macdown-3000.c2",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.macdown-3000.c3",
+   "source": "C1",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.macdown-3000.c4",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.macdown-3000.c5",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.macdown-3000.c6",
+   "source": "C1",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.macdown-3000.c7",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.macdown-3000.c8",
+   "source": "C1",
+   "text": "Native",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marked.c0",
+   "source": "C1",
+   "text": "Marked 3",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marked.c1",
+   "source": "C1",
+   "text": "From USD 2.99/mo",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marked.c2",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marked.c3",
+   "source": "C1",
+   "text": "MathJax, KaTeX",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marked.c4",
+   "source": "C1",
+   "text": "Yes, page numbers",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marked.c5",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marked.c6",
+   "source": "C1",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marked.c7",
+   "source": "C1",
+   "text": "Marked QL, USD 9.99",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marked.c8",
+   "source": "C1",
+   "text": "Native",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.markedit.c0",
+   "source": "C1",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.markedit.c1",
+   "source": "C1",
+   "text": "Free",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.markedit.c2",
+   "source": "C1",
+   "text": "Extension",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.markedit.c3",
+   "source": "C1",
+   "text": "KaTeX (extension)",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.markedit.c4",
+   "source": "C1",
+   "text": "Pandoc",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.markedit.c5",
+   "source": "C1",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.markedit.c6",
+   "source": "C1",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.markedit.c7",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.markedit.c8",
+   "source": "C1",
+   "text": "Native (web view)",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marsdawn.c0",
+   "source": "C1",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marsdawn.c1",
+   "source": "C1",
+   "text": "USD 4.99 once",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marsdawn.c2",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marsdawn.c3",
+   "source": "C1",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marsdawn.c4",
+   "source": "C1",
+   "text": "Yes, no page numbers",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marsdawn.c5",
+   "source": "C1",
+   "text": "Yes, undoable",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marsdawn.c6",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marsdawn.c7",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.marsdawn.c8",
+   "source": "C1",
+   "text": "Native",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.obsidian.c0",
+   "source": "C1",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.obsidian.c1",
+   "source": "C1",
+   "text": "Free",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.obsidian.c2",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.obsidian.c3",
+   "source": "C1",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.obsidian.c4",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.obsidian.c5",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.obsidian.c6",
+   "source": "C1",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.obsidian.c7",
+   "source": "C1",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.obsidian.c8",
+   "source": "C1",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.qlmarkdown.c0",
+   "source": "C1",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.qlmarkdown.c1",
+   "source": "C1",
+   "text": "Free",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.qlmarkdown.c2",
+   "source": "C1",
+   "text": "Opt-in",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.qlmarkdown.c3",
+   "source": "C1",
+   "text": "MathJax (opt-in)",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.qlmarkdown.c4",
+   "source": "C1",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.qlmarkdown.c5",
+   "source": "C1",
+   "text": "n/a",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.qlmarkdown.c6",
+   "source": "C1",
+   "text": "n/a",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.qlmarkdown.c7",
+   "source": "C1",
+   "text": "It is one",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.qlmarkdown.c8",
+   "source": "C1",
+   "text": "Native",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.typora.c0",
+   "source": "C1",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.typora.c1",
+   "source": "C1",
+   "text": "USD 14.99 once",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.typora.c2",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.typora.c3",
+   "source": "C1",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.typora.c4",
+   "source": "C1",
+   "text": "Yes, page numbers",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.typora.c5",
+   "source": "C2",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.typora.c6",
+   "source": "C1",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.typora.c7",
+   "source": "C1",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.typora.c8",
+   "source": "C1",
+   "text": "Native",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.vs-code.c0",
+   "source": "C1",
+   "text": "VS Code",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.vs-code.c1",
+   "source": "C1",
+   "text": "Free",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.vs-code.c2",
+   "source": "C1",
+   "text": "Yes (1.121+)",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.vs-code.c3",
+   "source": "C1",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.vs-code.c4",
+   "source": "C1",
+   "text": "No",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.vs-code.c5",
+   "source": "C1",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.vs-code.c6",
+   "source": "C1",
+   "text": "Yes",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.vs-code.c7",
+   "source": "C1",
+   "text": "Not documented",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "comparison.vs-code.c8",
+   "source": "C1",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "notfor.h",
+   "source": "C1",
+   "text": "Who MarsDawn is not for",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "notfor.1",
+   "source": "C1",
+   "text": "You need page numbers in your PDFs. Typora and Marked 3 add them, MarsDawn does not.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "notfor.2",
+   "source": "C1",
+   "text": "You keep a linked knowledge base of your own notes. Obsidian is built for that.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "notfor.3",
+   "source": "C1",
+   "text": "You never leave VS Code. Its built-in preview is free, and VS Code is adding an experimental Markdown view to its Agents window.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "notfor.4",
+   "source": "C1",
+   "text": "You only want a preview in Finder. QLMarkdown is free.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "faq.h",
+   "source": "C1",
+   "text": "FAQ",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "faq.q1",
+   "source": "C1",
+   "text": "Which free Markdown viewers for Mac have Mermaid?",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "faq.a1",
+   "source": "C1",
+   "text": "MacDown 3000, Obsidian and VS Code (1.121 and later) have it built in. QLMarkdown has it as an option, and MarkEdit through an extension.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "faq.q2",
+   "source": "C1",
+   "text": "Which ones export PDF with page numbers?",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "faq.a2",
+   "source": "C1",
+   "text": "Typora and Marked 3. MarsDawn exports PDF without page numbers.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "faq.q3",
+   "source": "C1",
+   "text": "Which ones open a file at a specific line from the command line?",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "faq.a3",
+   "source": "C1",
+   "text": "MarsDawn (<code>marsdawn open notes.md:120</code>) and VS Code (<code>code -g file:line</code>). For the others it is not documented.",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "faq.q4",
+   "source": "C1",
+   "text": "Which ones are native Mac apps rather than Electron?",
+   "html": true
+  },
+  {
+   "locale": "en",
+   "field": "faq.a4",
+   "source": "C1",
+   "text": "All of them except Obsidian and VS Code. MarkEdit is native with its editor in a web view.",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "title",
+   "source": "C1",
+   "text": "2026 Mac Markdown 檢視器推薦",
+   "html": false
+  },
+  {
+   "locale": "zh-hant",
+   "field": "description",
+   "source": "C1",
+   "text": "比較 8 款 Mac Markdown 檢視器的價格、Mermaid、數學式、PDF、自動重新載入、快速查看與原生／Electron，並說明各自適合誰。",
+   "html": false
+  },
+  {
+   "locale": "zh-hant",
+   "field": "h1",
+   "source": "C1",
+   "text": "2026 Mac Markdown 檢視器推薦",
+   "html": false
+  },
+  {
+   "locale": "zh-hant",
+   "field": "intro",
+   "source": "C1",
+   "text": "哪款 Markdown 檢視器最好，要看你讀的是什麼。如果是自己寫的筆記，一款全能的筆記 App 就夠了。如果是有圖表和數學式的長文件，或是 AI 代理不斷改寫的檔案，就要看各款怎麼處理自動重新載入、Mermaid 和 PDF。以下依字母排序，每款都寫出適合誰、一個老實的缺點和價格。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.macdown-3000.name",
+   "source": "C1",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.macdown-3000.para",
+   "source": "C1",
+   "text": "原版 MacDown 已停止維護。MacDown 3000 是社群接手的版本：免費開源（MIT）、原生，具備 Mermaid、MathJax、PDF 輸出、自動重新載入與快速查看。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.macdown-3000.bullet1",
+   "source": "C1",
+   "text": "適合：想要免費原生左右分欄的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.macdown-3000.bullet2",
+   "source": "C1",
+   "text": "缺點：沒有記載可從命令列開到指定行的方法。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.macdown-3000.bullet3",
+   "source": "C1",
+   "text": "價格：免費。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.marked.name",
+   "source": "C1",
+   "text": "Marked",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.marked.para",
+   "source": "C1",
+   "text": "Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變就重新載入，支援 MathJax 與 KaTeX，能列印分頁並加頁碼的 PDF。Marked 2 仍在販售。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.marked.bullet1",
+   "source": "C1",
+   "text": "適合：保留自己編輯工具、想要精緻預覽與列印的寫作者。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.marked.bullet2",
+   "source": "C1",
+   "text": "缺點：快速查看要另買 Marked QL（USD 9.99）。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.marked.bullet3",
+   "source": "C1",
+   "text": "價格：Marked 3 免費下載，之後每月 USD 2.99、每年 USD 29.99 或終身 USD 69.99。Marked 2 官網 USD 14.99，Mac App Store USD 13.99。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.markedit.name",
+   "source": "C1",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.markedit.para",
+   "source": "C1",
+   "text": "輕巧免費的原生 App（在 web view 中使用 CodeMirror），支援快速查看。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.markedit.bullet1",
+   "source": "C1",
+   "text": "適合：想要快速、有 Mac 手感的純文字工具的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.markedit.bullet2",
+   "source": "C1",
+   "text": "缺點：Mermaid 與數學式要裝官方擴充功能，PDF 要靠 Pandoc。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.markedit.bullet3",
+   "source": "C1",
+   "text": "價格：免費。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.marsdawn.name",
+   "source": "C1",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.marsdawn.para",
+   "source": "C1",
+   "text": "原生 Mac App，原始碼與即時預覽左右並排，內建 Mermaid 與 KaTeX。AI 代理存檔時，開著的視窗會把變更收成一步可撤銷的「從磁碟更新」。<code>marsdawn open notes.md:120</code> 可開到指定行，另有給代理用的技能與 MCP 伺服器。快速查看不論試用與否都能用。「拷貝給 AI」與「拷貝引用」能把文字交給代理。除非你選擇，資料不會離開你的 Mac。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.marsdawn.bullet1",
+   "source": "C1",
+   "text": "適合：審閱 AI 代理所寫 Markdown 的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.marsdawn.bullet2",
+   "source": "C1",
+   "text": "缺點：輸出的 PDF 沒有頁碼。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.marsdawn.bullet3",
+   "source": "C1",
+   "text": "價格：免費下載，試用 14 天，之後一次 USD 4.99。不需帳號。僅在 Mac App Store 提供。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.obsidian.name",
+   "source": "C1",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.obsidian.para",
+   "source": "C1",
+   "text": "以連結 Markdown 檔的 vault 為核心的筆記 App，具備 Mermaid、MathJax、PDF 輸出與自動重新載入。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.obsidian.bullet1",
+   "source": "C1",
+   "text": "適合：建立個人知識庫的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.obsidian.bullet2",
+   "source": "C1",
+   "text": "缺點：是 Electron App，檔案放在 vault 裡才最順手。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.obsidian.bullet3",
+   "source": "C1",
+   "text": "價格：免費，Sync 與 Publish 另外付費。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.qlmarkdown.name",
+   "source": "C1",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.qlmarkdown.para",
+   "source": "C1",
+   "text": "快速查看擴充功能：在 Finder 選取 .md 檔按空白鍵即可。Mermaid 與 MathJax 需自行開啟。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.qlmarkdown.bullet1",
+   "source": "C1",
+   "text": "適合：只想在 Finder 裡瞄一眼檔案的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.qlmarkdown.bullet2",
+   "source": "C1",
+   "text": "缺點：不是用來閱讀或編輯的 App，也沒有記載 PDF 輸出。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.qlmarkdown.bullet3",
+   "source": "C1",
+   "text": "價格：免費（GPL-3.0）。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.typora.name",
+   "source": "C1",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.typora.para",
+   "source": "C1",
+   "text": "預覽即文件的所見即所得式寫作工具，具備 Mermaid、MathJax，PDF 輸出可在頁首或頁尾加頁碼。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.typora.bullet1",
+   "source": "C1",
+   "text": "適合：偏好在排版畫面中直接寫的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.typora.bullet2",
+   "source": "C1",
+   "text": "缺點：沒有原始碼與預覽左右並排。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.typora.bullet3",
+   "source": "C1",
+   "text": "價格：一次 USD 14.99，最多 3 台裝置。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.vs-code.name",
+   "source": "C1",
+   "text": "VS Code 預覽",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.vs-code.para",
+   "source": "C1",
+   "text": "內建 Markdown 預覽，1.121 起內建 Mermaid，支援 KaTeX。<code>code -g file:line</code> 可開到指定行。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.vs-code.bullet1",
+   "source": "C1",
+   "text": "適合：本來就整天用 VS Code 的開發者。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.vs-code.bullet2",
+   "source": "C1",
+   "text": "缺點：是 Electron App，沒有內建 PDF 輸出。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "app.vs-code.bullet3",
+   "source": "C1",
+   "text": "價格：免費。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.h",
+   "source": "C1",
+   "text": "比較表",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.head0",
+   "source": "C1",
+   "text": "App",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.head1",
+   "source": "C1",
+   "text": "價格",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.head2",
+   "source": "C1",
+   "text": "Mermaid",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.head3",
+   "source": "C1",
+   "text": "數學式",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.head4",
+   "source": "C1",
+   "text": "PDF",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.head5",
+   "source": "C1",
+   "text": "自動重新載入",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.head6",
+   "source": "C1",
+   "text": "命令列開到指定行",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.head7",
+   "source": "C1",
+   "text": "快速查看",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.head8",
+   "source": "C1",
+   "text": "架構",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.macdown-3000.c0",
+   "source": "C1",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.macdown-3000.c1",
+   "source": "C1",
+   "text": "免費",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.macdown-3000.c2",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.macdown-3000.c3",
+   "source": "C1",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.macdown-3000.c4",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.macdown-3000.c5",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.macdown-3000.c6",
+   "source": "C1",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.macdown-3000.c7",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.macdown-3000.c8",
+   "source": "C1",
+   "text": "原生",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marked.c0",
+   "source": "C1",
+   "text": "Marked 3",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marked.c1",
+   "source": "C1",
+   "text": "每月 USD 2.99 起",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marked.c2",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marked.c3",
+   "source": "C1",
+   "text": "MathJax、KaTeX",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marked.c4",
+   "source": "C1",
+   "text": "有，含頁碼",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marked.c5",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marked.c6",
+   "source": "C1",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marked.c7",
+   "source": "C1",
+   "text": "Marked QL，USD 9.99",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marked.c8",
+   "source": "C1",
+   "text": "原生",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.markedit.c0",
+   "source": "C1",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.markedit.c1",
+   "source": "C1",
+   "text": "免費",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.markedit.c2",
+   "source": "C1",
+   "text": "擴充功能",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.markedit.c3",
+   "source": "C1",
+   "text": "KaTeX（擴充功能）",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.markedit.c4",
+   "source": "C1",
+   "text": "Pandoc",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.markedit.c5",
+   "source": "C1",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.markedit.c6",
+   "source": "C1",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.markedit.c7",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.markedit.c8",
+   "source": "C1",
+   "text": "原生（web view）",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marsdawn.c0",
+   "source": "C1",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marsdawn.c1",
+   "source": "C1",
+   "text": "一次 USD 4.99",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marsdawn.c2",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marsdawn.c3",
+   "source": "C1",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marsdawn.c4",
+   "source": "C1",
+   "text": "有，無頁碼",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marsdawn.c5",
+   "source": "C1",
+   "text": "有，可撤銷",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marsdawn.c6",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marsdawn.c7",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.marsdawn.c8",
+   "source": "C1",
+   "text": "原生",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.obsidian.c0",
+   "source": "C1",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.obsidian.c1",
+   "source": "C1",
+   "text": "免費",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.obsidian.c2",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.obsidian.c3",
+   "source": "C1",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.obsidian.c4",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.obsidian.c5",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.obsidian.c6",
+   "source": "C1",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.obsidian.c7",
+   "source": "C1",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.obsidian.c8",
+   "source": "C1",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.qlmarkdown.c0",
+   "source": "C1",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.qlmarkdown.c1",
+   "source": "C1",
+   "text": "免費",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.qlmarkdown.c2",
+   "source": "C1",
+   "text": "需開啟",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.qlmarkdown.c3",
+   "source": "C1",
+   "text": "MathJax（需開啟）",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.qlmarkdown.c4",
+   "source": "C1",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.qlmarkdown.c5",
+   "source": "C1",
+   "text": "不適用",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.qlmarkdown.c6",
+   "source": "C1",
+   "text": "不適用",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.qlmarkdown.c7",
+   "source": "C1",
+   "text": "本身即是",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.qlmarkdown.c8",
+   "source": "C1",
+   "text": "原生",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.typora.c0",
+   "source": "C1",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.typora.c1",
+   "source": "C1",
+   "text": "一次 USD 14.99",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.typora.c2",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.typora.c3",
+   "source": "C1",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.typora.c4",
+   "source": "C1",
+   "text": "有，含頁碼",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.typora.c5",
+   "source": "C2",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.typora.c6",
+   "source": "C1",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.typora.c7",
+   "source": "C1",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.typora.c8",
+   "source": "C1",
+   "text": "原生",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.vs-code.c0",
+   "source": "C1",
+   "text": "VS Code",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.vs-code.c1",
+   "source": "C1",
+   "text": "免費",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.vs-code.c2",
+   "source": "C1",
+   "text": "有（1.121 起）",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.vs-code.c3",
+   "source": "C1",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.vs-code.c4",
+   "source": "C1",
+   "text": "無",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.vs-code.c5",
+   "source": "C1",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.vs-code.c6",
+   "source": "C1",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.vs-code.c7",
+   "source": "C1",
+   "text": "未記載",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "comparison.vs-code.c8",
+   "source": "C1",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "notfor.h",
+   "source": "C1",
+   "text": "MarsDawn 不適合誰",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "notfor.1",
+   "source": "C1",
+   "text": "PDF 一定要有頁碼。Typora 與 Marked 3 能加，MarsDawn 不能。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "notfor.2",
+   "source": "C1",
+   "text": "你在經營互相連結的個人筆記庫。Obsidian 就是為此打造的。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "notfor.3",
+   "source": "C1",
+   "text": "你從不離開 VS Code。內建預覽免費，VS Code 也正在 Agents 視窗加入實驗性的 Markdown 檢視。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "notfor.4",
+   "source": "C1",
+   "text": "你只想在 Finder 預覽。QLMarkdown 免費。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "faq.h",
+   "source": "C1",
+   "text": "常見問題",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "faq.q1",
+   "source": "C1",
+   "text": "哪些免費的 Mac Markdown 檢視器支援 Mermaid？",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "faq.a1",
+   "source": "C1",
+   "text": "MacDown 3000、Obsidian 與 VS Code（1.121 起）內建。QLMarkdown 可選擇開啟，MarkEdit 要透過擴充功能。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "faq.q2",
+   "source": "C1",
+   "text": "哪些能輸出含頁碼的 PDF？",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "faq.a2",
+   "source": "C1",
+   "text": "Typora 與 Marked 3。MarsDawn 輸出的 PDF 沒有頁碼。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "faq.q3",
+   "source": "C1",
+   "text": "哪些能從命令列開到指定行？",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "faq.a3",
+   "source": "C1",
+   "text": "MarsDawn（<code>marsdawn open notes.md:120</code>）與 VS Code（<code>code -g file:line</code>）。其他幾款未記載。",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "faq.q4",
+   "source": "C1",
+   "text": "哪些是原生 Mac App，不是 Electron？",
+   "html": true
+  },
+  {
+   "locale": "zh-hant",
+   "field": "faq.a4",
+   "source": "C1",
+   "text": "除了 Obsidian 與 VS Code 都是。MarkEdit 是原生 App，編輯區用 web view。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "title",
+   "source": "C4",
+   "text": "2026 Mac Markdown 查看器推荐",
+   "html": false
+  },
+  {
+   "locale": "zh-hans",
+   "field": "description",
+   "source": "C4",
+   "text": "比较 8 款 Mac Markdown 查看器的价格、Mermaid、数学公式、PDF、自动重新载入、快速查看与原生／Electron，并说明各自适合谁。",
+   "html": false
+  },
+  {
+   "locale": "zh-hans",
+   "field": "h1",
+   "source": "C4",
+   "text": "2026 Mac Markdown 查看器推荐",
+   "html": false
+  },
+  {
+   "locale": "zh-hans",
+   "field": "intro",
+   "source": "C4",
+   "text": "哪款 Markdown 查看器最好，要看你读的是什么。如果是自己写的笔记，一款全能的笔记 App 就够了。如果是带图表和数学公式的长文稿，或是 AI 代理不断改写的文件，就要看各款怎么处理自动重新载入、Mermaid 和 PDF。以下按字母排序，每款都写出适合谁、一个坦白的缺点和价格。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.macdown-3000.name",
+   "source": "C4",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.macdown-3000.para",
+   "source": "C4",
+   "text": "原版 MacDown 已停止维护。MacDown 3000 是社区接手的版本：免费开源（MIT）、原生，支持 Mermaid、MathJax、PDF 导出、自动重新载入与快速查看。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.macdown-3000.bullet1",
+   "source": "C4",
+   "text": "适合：想要免费原生左右分栏的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.macdown-3000.bullet2",
+   "source": "C4",
+   "text": "缺点：没有文档说明能从命令行打开到指定行。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.macdown-3000.bullet3",
+   "source": "C4",
+   "text": "价格：免费。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.marked.name",
+   "source": "C4",
+   "text": "Marked",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.marked.para",
+   "source": "C4",
+   "text": "Marked 3 是预览器，用来看你在其他 App 里写的 Markdown。文件一变就重新载入，支持 MathJax 与 KaTeX，能打印分页并带页码的 PDF。Marked 2 仍在销售。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.marked.bullet1",
+   "source": "C4",
+   "text": "适合：保留自己的写作工具、想要精致预览与打印的写作者。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.marked.bullet2",
+   "source": "C4",
+   "text": "缺点：快速查看要另买 Marked QL（USD 9.99）。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.marked.bullet3",
+   "source": "C4",
+   "text": "价格：Marked 3 免费下载，之后每月 USD 2.99、每年 USD 29.99 或终身 USD 69.99。Marked 2 官网 USD 14.99，Mac App Store USD 13.99。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.markedit.name",
+   "source": "C4",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.markedit.para",
+   "source": "C4",
+   "text": "轻巧免费的原生 App（在 web view 中使用 CodeMirror），支持快速查看。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.markedit.bullet1",
+   "source": "C4",
+   "text": "适合：想要快速、有 Mac 手感的纯文本工具的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.markedit.bullet2",
+   "source": "C4",
+   "text": "缺点：Mermaid 与数学公式要装官方扩展，PDF 要靠 Pandoc。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.markedit.bullet3",
+   "source": "C4",
+   "text": "价格：免费。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.marsdawn.name",
+   "source": "C4",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.marsdawn.para",
+   "source": "C4",
+   "text": "原生 Mac App，源文本与实时预览左右并排，内置 Mermaid 与 KaTeX。AI 代理保存文件时，打开的窗口会把更改收成一步可撤销的“从磁盘更新”。<code>marsdawn open notes.md:120</code> 可打开到指定行，另有给代理用的代理技能与 MCP 服务器。无论是否在试用期，快速查看都能用。“拷贝给 AI”与“拷贝引用”能把文字交给代理。除非你选择，数据不会离开你的 Mac。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.marsdawn.bullet1",
+   "source": "C4",
+   "text": "适合：审阅 AI 代理所写 Markdown 的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.marsdawn.bullet2",
+   "source": "C4",
+   "text": "缺点：导出的 PDF 没有页码。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.marsdawn.bullet3",
+   "source": "C4",
+   "text": "价格：免费下载，试用 14 天，之后一次性 USD 4.99。无需账户。仅在 Mac App Store 提供。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.obsidian.name",
+   "source": "C4",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.obsidian.para",
+   "source": "C4",
+   "text": "以链接 Markdown 文件的 vault 为核心的笔记 App，支持 Mermaid、MathJax、PDF 导出与自动重新载入。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.obsidian.bullet1",
+   "source": "C4",
+   "text": "适合：搭建个人知识库的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.obsidian.bullet2",
+   "source": "C4",
+   "text": "缺点：是 Electron App，文件放在 vault 里才最顺手。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.obsidian.bullet3",
+   "source": "C4",
+   "text": "价格：免费，Sync 与 Publish 另行付费。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.qlmarkdown.name",
+   "source": "C4",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.qlmarkdown.para",
+   "source": "C4",
+   "text": "快速查看扩展：在访达中选中 .md 文件按空格键即可。Mermaid 与 MathJax 需手动开启。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.qlmarkdown.bullet1",
+   "source": "C4",
+   "text": "适合：只想在访达里瞄一眼文件的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.qlmarkdown.bullet2",
+   "source": "C4",
+   "text": "缺点：不是用来阅读或编辑的 App，也没有文档说明 PDF 导出。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.qlmarkdown.bullet3",
+   "source": "C4",
+   "text": "价格：免费（GPL-3.0）。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.typora.name",
+   "source": "C4",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.typora.para",
+   "source": "C4",
+   "text": "预览即文稿的所见即所得式写作工具，支持 Mermaid、MathJax，PDF 导出可在页眉或页脚加页码。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.typora.bullet1",
+   "source": "C4",
+   "text": "适合：喜欢直接在排版画面中写作的人。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.typora.bullet2",
+   "source": "C4",
+   "text": "缺点：没有源文本与预览左右并排。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.typora.bullet3",
+   "source": "C4",
+   "text": "价格：一次性 USD 14.99，最多 3 台设备。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.vs-code.name",
+   "source": "C4",
+   "text": "VS Code 预览",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.vs-code.para",
+   "source": "C4",
+   "text": "内置 Markdown 预览，1.121 起内置 Mermaid，支持 KaTeX。<code>code -g file:line</code> 可打开到指定行。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.vs-code.bullet1",
+   "source": "C4",
+   "text": "适合：本来就整天用 VS Code 的开发者。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.vs-code.bullet2",
+   "source": "C4",
+   "text": "缺点：是 Electron App，没有内置 PDF 导出。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "app.vs-code.bullet3",
+   "source": "C4",
+   "text": "价格：免费。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.h",
+   "source": "C4",
+   "text": "比较表",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.head0",
+   "source": "C4",
+   "text": "App",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.head1",
+   "source": "C4",
+   "text": "价格",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.head2",
+   "source": "C4",
+   "text": "Mermaid",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.head3",
+   "source": "C4",
+   "text": "数学公式",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.head4",
+   "source": "C4",
+   "text": "PDF",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.head5",
+   "source": "C4",
+   "text": "自动重新载入",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.head6",
+   "source": "C4",
+   "text": "命令行打开到指定行",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.head7",
+   "source": "C4",
+   "text": "快速查看",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.head8",
+   "source": "C4",
+   "text": "架构",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.macdown-3000.c0",
+   "source": "C4",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.macdown-3000.c1",
+   "source": "C4",
+   "text": "免费",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.macdown-3000.c2",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.macdown-3000.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.macdown-3000.c4",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.macdown-3000.c5",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.macdown-3000.c6",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.macdown-3000.c7",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.macdown-3000.c8",
+   "source": "C4",
+   "text": "原生",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marked.c0",
+   "source": "C4",
+   "text": "Marked 3",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marked.c1",
+   "source": "C4",
+   "text": "每月 USD 2.99 起",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marked.c2",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marked.c3",
+   "source": "C4",
+   "text": "MathJax、KaTeX",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marked.c4",
+   "source": "C4",
+   "text": "有，带页码",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marked.c5",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marked.c6",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marked.c7",
+   "source": "C4",
+   "text": "Marked QL，USD 9.99",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marked.c8",
+   "source": "C4",
+   "text": "原生",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.markedit.c0",
+   "source": "C4",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.markedit.c1",
+   "source": "C4",
+   "text": "免费",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.markedit.c2",
+   "source": "C4",
+   "text": "扩展",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.markedit.c3",
+   "source": "C4",
+   "text": "KaTeX（扩展）",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.markedit.c4",
+   "source": "C4",
+   "text": "Pandoc",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.markedit.c5",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.markedit.c6",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.markedit.c7",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.markedit.c8",
+   "source": "C4",
+   "text": "原生（web view）",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marsdawn.c0",
+   "source": "C4",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marsdawn.c1",
+   "source": "C4",
+   "text": "一次性 USD 4.99",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marsdawn.c2",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marsdawn.c3",
+   "source": "C4",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marsdawn.c4",
+   "source": "C4",
+   "text": "有，无页码",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marsdawn.c5",
+   "source": "C4",
+   "text": "有，可撤销",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marsdawn.c6",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marsdawn.c7",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.marsdawn.c8",
+   "source": "C4",
+   "text": "原生",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.obsidian.c0",
+   "source": "C4",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.obsidian.c1",
+   "source": "C4",
+   "text": "免费",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.obsidian.c2",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.obsidian.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.obsidian.c4",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.obsidian.c5",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.obsidian.c6",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.obsidian.c7",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.obsidian.c8",
+   "source": "C4",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.qlmarkdown.c0",
+   "source": "C4",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.qlmarkdown.c1",
+   "source": "C4",
+   "text": "免费",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.qlmarkdown.c2",
+   "source": "C4",
+   "text": "需开启",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.qlmarkdown.c3",
+   "source": "C4",
+   "text": "MathJax（需开启）",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.qlmarkdown.c4",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.qlmarkdown.c5",
+   "source": "C4",
+   "text": "不适用",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.qlmarkdown.c6",
+   "source": "C4",
+   "text": "不适用",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.qlmarkdown.c7",
+   "source": "C4",
+   "text": "本身就是",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.qlmarkdown.c8",
+   "source": "C4",
+   "text": "原生",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.typora.c0",
+   "source": "C4",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.typora.c1",
+   "source": "C4",
+   "text": "一次性 USD 14.99",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.typora.c2",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.typora.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.typora.c4",
+   "source": "C4",
+   "text": "有，带页码",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.typora.c5",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.typora.c6",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.typora.c7",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.typora.c8",
+   "source": "C4",
+   "text": "原生",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.vs-code.c0",
+   "source": "C4",
+   "text": "VS Code",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.vs-code.c1",
+   "source": "C4",
+   "text": "免费",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.vs-code.c2",
+   "source": "C4",
+   "text": "有（1.121 起）",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.vs-code.c3",
+   "source": "C4",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.vs-code.c4",
+   "source": "C4",
+   "text": "无",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.vs-code.c5",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.vs-code.c6",
+   "source": "C4",
+   "text": "有",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.vs-code.c7",
+   "source": "C4",
+   "text": "无文档",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "comparison.vs-code.c8",
+   "source": "C4",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "notfor.h",
+   "source": "C4",
+   "text": "MarsDawn 不适合谁",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "notfor.1",
+   "source": "C4",
+   "text": "PDF 一定要有页码。Typora 与 Marked 3 能加，MarsDawn 不能。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "notfor.2",
+   "source": "C4",
+   "text": "你在维护互相链接的个人笔记库。Obsidian 就是为此打造的。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "notfor.3",
+   "source": "C4",
+   "text": "你从不离开 VS Code。内置预览免费，VS Code 也正在 Agents 窗口加入实验性的 Markdown 查看。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "notfor.4",
+   "source": "C4",
+   "text": "你只想在访达里预览。QLMarkdown 免费。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "faq.h",
+   "source": "C4",
+   "text": "常见问题",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "faq.q1",
+   "source": "C4",
+   "text": "哪些免费的 Mac Markdown 查看器支持 Mermaid？",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "faq.a1",
+   "source": "C4",
+   "text": "MacDown 3000、Obsidian 与 VS Code（1.121 起）内置。QLMarkdown 可选择开启，MarkEdit 要通过扩展。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "faq.q2",
+   "source": "C4",
+   "text": "哪些能导出带页码的 PDF？",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "faq.a2",
+   "source": "C4",
+   "text": "Typora 与 Marked 3。MarsDawn 导出的 PDF 没有页码。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "faq.q3",
+   "source": "C4",
+   "text": "哪些能从命令行打开到指定行？",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "faq.a3",
+   "source": "C4",
+   "text": "MarsDawn（<code>marsdawn open notes.md:120</code>）与 VS Code（<code>code -g file:line</code>）。其他几款无文档说明。",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "faq.q4",
+   "source": "C4",
+   "text": "哪些是原生 Mac App，而不是 Electron？",
+   "html": true
+  },
+  {
+   "locale": "zh-hans",
+   "field": "faq.a4",
+   "source": "C4",
+   "text": "除了 Obsidian 与 VS Code 都是。MarkEdit 是原生 App，编辑区使用 web view。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "title",
+   "source": "C1",
+   "text": "Mac向けMarkdownビューアのおすすめ8選（2026年）",
+   "html": false
+  },
+  {
+   "locale": "ja",
+   "field": "description",
+   "source": "C1",
+   "text": "Mac向けMarkdownビューア8本を、価格、Mermaid、数式、PDF、自動再読み込み、クイックルック、ネイティブかElectronかで比較し、それぞれ誰に向くかをまとめました。",
+   "html": false
+  },
+  {
+   "locale": "ja",
+   "field": "h1",
+   "source": "C1",
+   "text": "Mac向けMarkdownビューアのおすすめ8選（2026年）",
+   "html": false
+  },
+  {
+   "locale": "ja",
+   "field": "intro",
+   "source": "C1",
+   "text": "どのMarkdownビューアがよいかは、何を読むかで決まります。自分で書くメモなら、オールインワンのノートアプリで十分です。図や数式の入った長い文書や、AIエージェントが何度も書き換えるファイルなら、自動再読み込み、Mermaid、PDFの扱いを確かめてください。以下はアルファベット順で、それぞれ向いている人、正直な欠点、価格を載せています。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.macdown-3000.name",
+   "source": "C1",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.macdown-3000.para",
+   "source": "C1",
+   "text": "元のMacDownは開発が止まっています。MacDown 3000はコミュニティによる後継版で、無料のオープンソース（MIT）、ネイティブで、Mermaid、MathJax、PDF書き出し、自動再読み込み、クイックルックに対応しています。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.macdown-3000.bullet1",
+   "source": "C1",
+   "text": "向いている人：無料のネイティブな左右分割が欲しい人。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.macdown-3000.bullet2",
+   "source": "C1",
+   "text": "欠点：コマンドラインから指定行で開く方法は記載されていません。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.macdown-3000.bullet3",
+   "source": "C1",
+   "text": "価格：無料。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.marked.name",
+   "source": "C1",
+   "text": "Marked",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.marked.para",
+   "source": "C1",
+   "text": "Marked 3は、ほかのアプリで書いたMarkdownを見るためのプレビューアです。ファイルが変わるたびに再読み込みし、MathJaxとKaTeXに対応し、ページ番号付きのPDFを印刷できます。Marked 2も引き続き販売されています。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.marked.bullet1",
+   "source": "C1",
+   "text": "向いている人：自分のエディタを使い続け、きれいなプレビューと印刷が欲しい書き手。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.marked.bullet2",
+   "source": "C1",
+   "text": "欠点：クイックルックは別アプリのMarked QL（USD 9.99）です。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.marked.bullet3",
+   "source": "C1",
+   "text": "価格：Marked 3は無料ダウンロード、その後は月額USD 2.99、年額USD 29.99、または買い切りUSD 69.99。Marked 2は公式サイトでUSD 14.99、Mac App StoreでUSD 13.99。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.markedit.name",
+   "source": "C1",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.markedit.para",
+   "source": "C1",
+   "text": "軽くて無料のネイティブアプリ（Webビュー内でCodeMirrorを使用）で、クイックルックに対応しています。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.markedit.bullet1",
+   "source": "C1",
+   "text": "向いている人：Macらしく速いプレーンテキストのツールが欲しい人。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.markedit.bullet2",
+   "source": "C1",
+   "text": "欠点：Mermaidと数式は公式の拡張機能が必要で、PDFにはPandocが必要です。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.markedit.bullet3",
+   "source": "C1",
+   "text": "価格：無料。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.marsdawn.name",
+   "source": "C1",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.marsdawn.para",
+   "source": "C1",
+   "text": "ソースとライブプレビューを左右に並べるネイティブMacアプリで、MermaidとKaTeXを内蔵しています。エージェントがファイルを保存すると、開いているウインドウはその変更を取り消せる1回の「ディスクから更新」として取り込みます。<code>marsdawn open notes.md:120</code>で指定行を開け、エージェント向けのスキルとMCPサーバもあります。クイックルックは試用中かどうかに関係なく使えます。「AI 用にコピー」と「参照をコピー」でテキストをエージェントに渡せます。自分で選ばない限り、データがMacの外に出ることはありません。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.marsdawn.bullet1",
+   "source": "C1",
+   "text": "向いている人：AIエージェントが書いたMarkdownをレビューする人。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.marsdawn.bullet2",
+   "source": "C1",
+   "text": "欠点：書き出したPDFにページ番号は付きません。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.marsdawn.bullet3",
+   "source": "C1",
+   "text": "価格：無料ダウンロードで14日間試用でき、その後はUSD 4.99の買い切り。アカウント不要。Mac App Storeのみ。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.obsidian.name",
+   "source": "C1",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.obsidian.para",
+   "source": "C1",
+   "text": "リンクし合うMarkdownファイルのVaultを中心にしたノートアプリで、Mermaid、MathJax、PDF書き出し、自動再読み込みに対応しています。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.obsidian.bullet1",
+   "source": "C1",
+   "text": "向いている人：自分のメモで知識ベースを作る人。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.obsidian.bullet2",
+   "source": "C1",
+   "text": "欠点：Electronアプリで、ファイルはVaultの中にあるときに最も使いやすくなります。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.obsidian.bullet3",
+   "source": "C1",
+   "text": "価格：無料。SyncとPublishは有料。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.qlmarkdown.name",
+   "source": "C1",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.qlmarkdown.para",
+   "source": "C1",
+   "text": "クイックルックの拡張機能です。Finderで.mdファイルを選んでスペースキーを押します。MermaidとMathJaxはオプションです。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.qlmarkdown.bullet1",
+   "source": "C1",
+   "text": "向いている人：Finderでファイルをさっと見たいだけの人。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.qlmarkdown.bullet2",
+   "source": "C1",
+   "text": "欠点：読んだり編集したりするアプリではなく、PDF書き出しの記載もありません。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.qlmarkdown.bullet3",
+   "source": "C1",
+   "text": "価格：無料（GPL-3.0）。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.typora.name",
+   "source": "C1",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.typora.para",
+   "source": "C1",
+   "text": "プレビューがそのまま文書になる書き味のツールで、Mermaid、MathJax、ヘッダやフッタにページ番号を入れられるPDF書き出しに対応しています。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.typora.bullet1",
+   "source": "C1",
+   "text": "向いている人：仕上がりに近い画面で書きたい人。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.typora.bullet2",
+   "source": "C1",
+   "text": "欠点：ソースとプレビューを左右に並べる表示はありません。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.typora.bullet3",
+   "source": "C1",
+   "text": "価格：USD 14.99の買い切りで、3台まで。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.vs-code.name",
+   "source": "C1",
+   "text": "VS Codeのプレビュー",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.vs-code.para",
+   "source": "C1",
+   "text": "標準のMarkdownプレビューで、1.121からMermaidを内蔵し、KaTeXに対応しています。<code>code -g file:line</code>で指定行を開けます。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.vs-code.bullet1",
+   "source": "C1",
+   "text": "向いている人：普段からVS Codeで作業している開発者。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.vs-code.bullet2",
+   "source": "C1",
+   "text": "欠点：Electronアプリで、PDF書き出しは標準ではありません。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "app.vs-code.bullet3",
+   "source": "C1",
+   "text": "価格：無料。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.h",
+   "source": "C1",
+   "text": "比較表",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.head0",
+   "source": "C1",
+   "text": "アプリ",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.head1",
+   "source": "C1",
+   "text": "価格",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.head2",
+   "source": "C1",
+   "text": "Mermaid",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.head3",
+   "source": "C1",
+   "text": "数式",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.head4",
+   "source": "C1",
+   "text": "PDF",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.head5",
+   "source": "C1",
+   "text": "自動再読み込み",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.head6",
+   "source": "C1",
+   "text": "CLIで指定行",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.head7",
+   "source": "C1",
+   "text": "クイックルック",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.head8",
+   "source": "C1",
+   "text": "構成",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.macdown-3000.c0",
+   "source": "C1",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.macdown-3000.c1",
+   "source": "C1",
+   "text": "無料",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.macdown-3000.c2",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.macdown-3000.c3",
+   "source": "C1",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.macdown-3000.c4",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.macdown-3000.c5",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.macdown-3000.c6",
+   "source": "C1",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.macdown-3000.c7",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.macdown-3000.c8",
+   "source": "C1",
+   "text": "ネイティブ",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marked.c0",
+   "source": "C1",
+   "text": "Marked 3",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marked.c1",
+   "source": "C1",
+   "text": "月額USD 2.99から",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marked.c2",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marked.c3",
+   "source": "C1",
+   "text": "MathJax、KaTeX",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marked.c4",
+   "source": "C1",
+   "text": "あり、ページ番号付き",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marked.c5",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marked.c6",
+   "source": "C1",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marked.c7",
+   "source": "C1",
+   "text": "Marked QL、USD 9.99",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marked.c8",
+   "source": "C1",
+   "text": "ネイティブ",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.markedit.c0",
+   "source": "C1",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.markedit.c1",
+   "source": "C1",
+   "text": "無料",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.markedit.c2",
+   "source": "C1",
+   "text": "拡張機能",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.markedit.c3",
+   "source": "C1",
+   "text": "KaTeX（拡張機能）",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.markedit.c4",
+   "source": "C1",
+   "text": "Pandoc",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.markedit.c5",
+   "source": "C1",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.markedit.c6",
+   "source": "C1",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.markedit.c7",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.markedit.c8",
+   "source": "C1",
+   "text": "ネイティブ（Webビュー）",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marsdawn.c0",
+   "source": "C1",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marsdawn.c1",
+   "source": "C1",
+   "text": "USD 4.99買い切り",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marsdawn.c2",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marsdawn.c3",
+   "source": "C1",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marsdawn.c4",
+   "source": "C1",
+   "text": "あり、ページ番号なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marsdawn.c5",
+   "source": "C1",
+   "text": "あり、取り消し可",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marsdawn.c6",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marsdawn.c7",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.marsdawn.c8",
+   "source": "C1",
+   "text": "ネイティブ",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.obsidian.c0",
+   "source": "C1",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.obsidian.c1",
+   "source": "C1",
+   "text": "無料",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.obsidian.c2",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.obsidian.c3",
+   "source": "C1",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.obsidian.c4",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.obsidian.c5",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.obsidian.c6",
+   "source": "C1",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.obsidian.c7",
+   "source": "C1",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.obsidian.c8",
+   "source": "C1",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.qlmarkdown.c0",
+   "source": "C1",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.qlmarkdown.c1",
+   "source": "C1",
+   "text": "無料",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.qlmarkdown.c2",
+   "source": "C1",
+   "text": "オプション",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.qlmarkdown.c3",
+   "source": "C1",
+   "text": "MathJax（オプション）",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.qlmarkdown.c4",
+   "source": "C1",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.qlmarkdown.c5",
+   "source": "C1",
+   "text": "該当なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.qlmarkdown.c6",
+   "source": "C1",
+   "text": "該当なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.qlmarkdown.c7",
+   "source": "C1",
+   "text": "それ自体",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.qlmarkdown.c8",
+   "source": "C1",
+   "text": "ネイティブ",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.typora.c0",
+   "source": "C1",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.typora.c1",
+   "source": "C1",
+   "text": "USD 14.99買い切り",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.typora.c2",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.typora.c3",
+   "source": "C1",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.typora.c4",
+   "source": "C1",
+   "text": "あり、ページ番号付き",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.typora.c5",
+   "source": "C2",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.typora.c6",
+   "source": "C1",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.typora.c7",
+   "source": "C1",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.typora.c8",
+   "source": "C1",
+   "text": "ネイティブ",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.vs-code.c0",
+   "source": "C1",
+   "text": "VS Code",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.vs-code.c1",
+   "source": "C1",
+   "text": "無料",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.vs-code.c2",
+   "source": "C1",
+   "text": "あり（1.121以降）",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.vs-code.c3",
+   "source": "C1",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.vs-code.c4",
+   "source": "C1",
+   "text": "なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.vs-code.c5",
+   "source": "C1",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.vs-code.c6",
+   "source": "C1",
+   "text": "あり",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.vs-code.c7",
+   "source": "C1",
+   "text": "記載なし",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "comparison.vs-code.c8",
+   "source": "C1",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "notfor.h",
+   "source": "C1",
+   "text": "MarsDawnが向かない人",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "notfor.1",
+   "source": "C1",
+   "text": "PDFにページ番号が必要な人。TyporaとMarked 3は付けられますが、MarsDawnは付けられません。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "notfor.2",
+   "source": "C1",
+   "text": "リンクし合う自分のメモの知識ベースを育てている人。Obsidianはそのために作られています。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "notfor.3",
+   "source": "C1",
+   "text": "VS Codeから離れない人。標準のプレビューは無料で、VS CodeはAgentsウインドウに実験的なMarkdown表示を追加しつつあります。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "notfor.4",
+   "source": "C1",
+   "text": "Finderでプレビューできれば十分な人。QLMarkdownは無料です。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "faq.h",
+   "source": "C1",
+   "text": "よくある質問",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "faq.q1",
+   "source": "C1",
+   "text": "Mermaidに対応した無料のMac向けMarkdownビューアは？",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "faq.a1",
+   "source": "C1",
+   "text": "MacDown 3000、Obsidian、VS Code（1.121以降）が内蔵しています。QLMarkdownはオプションで、MarkEditは拡張機能で対応します。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "faq.q2",
+   "source": "C1",
+   "text": "ページ番号付きのPDFを書き出せるのは？",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "faq.a2",
+   "source": "C1",
+   "text": "TyporaとMarked 3です。MarsDawnのPDFにページ番号は付きません。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "faq.q3",
+   "source": "C1",
+   "text": "コマンドラインから指定行でファイルを開けるのは？",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "faq.a3",
+   "source": "C1",
+   "text": "MarsDawn（<code>marsdawn open notes.md:120</code>）とVS Code（<code>code -g file:line</code>）です。ほかは記載がありません。",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "faq.q4",
+   "source": "C1",
+   "text": "ElectronではなくネイティブのMacアプリは？",
+   "html": true
+  },
+  {
+   "locale": "ja",
+   "field": "faq.a4",
+   "source": "C1",
+   "text": "ObsidianとVS Code以外のすべてです。MarkEditはネイティブで、編集部分にWebビューを使っています。",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "title",
+   "source": "C4",
+   "text": "Der beste Markdown-Viewer für den Mac (2026)",
+   "html": false
+  },
+  {
+   "locale": "de",
+   "field": "description",
+   "source": "C4",
+   "text": "Acht Markdown-Viewer für den Mac im Vergleich: Preis, Mermaid, Formeln, PDF, Live-Neuladen, Übersicht, nativ oder Electron, und für wen sich jeder eignet.",
+   "html": false
+  },
+  {
+   "locale": "de",
+   "field": "h1",
+   "source": "C4",
+   "text": "Der beste Markdown-Viewer für den Mac (2026)",
+   "html": false
+  },
+  {
+   "locale": "de",
+   "field": "intro",
+   "source": "C4",
+   "text": "Welcher Markdown-Viewer der beste ist, hängt davon ab, was du liest. Für eigene Notizen reicht eine Alles-in-einem-Notiz-App. Bei langen Dokumenten mit Diagrammen und Formeln oder bei Dateien, die ein KI-Agent immer wieder neu schreibt, solltest du prüfen, wie jede App mit Live-Neuladen, Mermaid und PDF umgeht. Die Apps stehen in alphabetischer Reihenfolge, jeweils mit Zielgruppe, einem ehrlichen Nachteil und Preis.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.macdown-3000.name",
+   "source": "C4",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.macdown-3000.para",
+   "source": "C4",
+   "text": "Das ursprüngliche MacDown wird nicht mehr gepflegt. MacDown 3000 ist die Fortführung durch die Community: kostenlos und Open Source (MIT), nativ, mit Mermaid, MathJax, PDF-Export, Live-Neuladen und Übersicht.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.macdown-3000.bullet1",
+   "source": "C4",
+   "text": "Für: alle, die eine kostenlose native geteilte Ansicht wollen.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.macdown-3000.bullet2",
+   "source": "C4",
+   "text": "Nachteil: Ein Öffnen an einer bestimmten Zeile über die Befehlszeile ist nicht dokumentiert.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.macdown-3000.bullet3",
+   "source": "C4",
+   "text": "Preis: kostenlos.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.marked.name",
+   "source": "C4",
+   "text": "Marked",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.marked.para",
+   "source": "C4",
+   "text": "Marked 3 ist eine Vorschau-App für Markdown, das du in einer anderen App schreibst. Sie lädt neu, sobald sich die Datei ändert, beherrscht MathJax und KaTeX und druckt PDFs mit Seitenumbrüchen und Seitenzahlen. Marked 2 wird weiterhin verkauft.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.marked.bullet1",
+   "source": "C4",
+   "text": "Für: Schreibende, die ihr eigenes Schreibwerkzeug behalten und eine saubere Vorschau mit Druck wollen.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.marked.bullet2",
+   "source": "C4",
+   "text": "Nachteil: Die Übersicht ist eine separate App, Marked QL (9,99 USD).",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.marked.bullet3",
+   "source": "C4",
+   "text": "Preis: Marked 3 ist ein kostenloser Download, danach 2,99 USD/Monat, 29,99 USD/Jahr oder 69,99 USD einmalig. Marked 2 kostet direkt 14,99 USD, im Mac App Store 13,99 USD.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.markedit.name",
+   "source": "C4",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.markedit.para",
+   "source": "C4",
+   "text": "Eine schlanke, kostenlose native App (CodeMirror in einer Web-View) mit Übersicht.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.markedit.bullet1",
+   "source": "C4",
+   "text": "Für: alle, die ein schnelles Klartext-Werkzeug wollen, das sich nach Mac anfühlt.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.markedit.bullet2",
+   "source": "C4",
+   "text": "Nachteil: Mermaid und Formeln brauchen die offiziellen Erweiterungen, PDF-Export braucht Pandoc.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.markedit.bullet3",
+   "source": "C4",
+   "text": "Preis: kostenlos.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.marsdawn.name",
+   "source": "C4",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.marsdawn.para",
+   "source": "C4",
+   "text": "Eine native Mac-App, die Quelltext und Live-Vorschau nebeneinander zeigt, mit eingebautem Mermaid und KaTeX. Speichert ein Agent die Datei, übernimmt das offene Fenster die Änderung als ein einziges „Von Festplatte aktualisieren“, das du rückgängig machen kannst. <code>marsdawn open notes.md:120</code> öffnet eine Datei an einer Zeile, dazu gibt es einen Skill und einen MCP-Server für Agenten. Die Übersicht funktioniert mit und ohne Test. Mit „Für KI kopieren“ und „Verweis kopieren“ gibst du Text an einen Agenten weiter. Nichts verlässt deinen Mac, außer du willst es.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.marsdawn.bullet1",
+   "source": "C4",
+   "text": "Für: alle, die Markdown prüfen, das KI-Agenten schreiben.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.marsdawn.bullet2",
+   "source": "C4",
+   "text": "Nachteil: Der PDF-Export hat keine Seitenzahlen.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.marsdawn.bullet3",
+   "source": "C4",
+   "text": "Preis: kostenloser Download mit 14 Tagen Test, danach einmalig 4,99 USD. Kein Konto. Nur im Mac App Store.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.obsidian.name",
+   "source": "C4",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.obsidian.para",
+   "source": "C4",
+   "text": "Eine Notiz-App rund um einen Vault aus verlinkten Markdown-Dateien, mit Mermaid, MathJax, PDF-Export und Live-Neuladen.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.obsidian.bullet1",
+   "source": "C4",
+   "text": "Für: alle, die aus eigenen Notizen eine Wissensdatenbank aufbauen.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.obsidian.bullet2",
+   "source": "C4",
+   "text": "Nachteil: Es ist eine Electron-App und funktioniert am besten mit Dateien in einem Vault.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.obsidian.bullet3",
+   "source": "C4",
+   "text": "Preis: kostenlos. Sync und Publish kosten extra.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.qlmarkdown.name",
+   "source": "C4",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.qlmarkdown.para",
+   "source": "C4",
+   "text": "Eine Erweiterung für die Übersicht: Wähle im Finder eine .md-Datei aus und drücke die Leertaste. Mermaid und MathJax sind optional.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.qlmarkdown.bullet1",
+   "source": "C4",
+   "text": "Für: alle, die Dateien im Finder nur kurz ansehen wollen.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.qlmarkdown.bullet2",
+   "source": "C4",
+   "text": "Nachteil: Es ist keine App zum Lesen oder Bearbeiten, und ein PDF-Export ist nicht dokumentiert.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.qlmarkdown.bullet3",
+   "source": "C4",
+   "text": "Preis: kostenlos (GPL-3.0).",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.typora.name",
+   "source": "C4",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.typora.para",
+   "source": "C4",
+   "text": "Ein nahtloses Schreibwerkzeug, bei dem die Vorschau das Dokument ist, mit Mermaid, MathJax und PDF-Export mit Seitenzahlen in Kopf- oder Fußzeile.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.typora.bullet1",
+   "source": "C4",
+   "text": "Für: alle, die lieber in einer WYSIWYG-artigen Ansicht schreiben.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.typora.bullet2",
+   "source": "C4",
+   "text": "Nachteil: Quelltext und Vorschau stehen nicht nebeneinander.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.typora.bullet3",
+   "source": "C4",
+   "text": "Preis: einmalig 14,99 USD, für bis zu 3 Geräte.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.vs-code.name",
+   "source": "C4",
+   "text": "VS-Code-Vorschau",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.vs-code.para",
+   "source": "C4",
+   "text": "Die eingebaute Markdown-Vorschau, mit Mermaid ab 1.121 und KaTeX. <code>code -g file:line</code> öffnet eine Datei an einer Zeile.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.vs-code.bullet1",
+   "source": "C4",
+   "text": "Für: Entwicklerinnen und Entwickler, die ohnehin in VS Code arbeiten.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.vs-code.bullet2",
+   "source": "C4",
+   "text": "Nachteil: Es ist eine Electron-App, und ein PDF-Export ist nicht eingebaut.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "app.vs-code.bullet3",
+   "source": "C4",
+   "text": "Preis: kostenlos.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.h",
+   "source": "C4",
+   "text": "Vergleich",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.head0",
+   "source": "C4",
+   "text": "App",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.head1",
+   "source": "C4",
+   "text": "Preis",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.head2",
+   "source": "C4",
+   "text": "Mermaid",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.head3",
+   "source": "C4",
+   "text": "Formeln",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.head4",
+   "source": "C4",
+   "text": "PDF",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.head5",
+   "source": "C4",
+   "text": "Live-Neuladen",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.head6",
+   "source": "C4",
+   "text": "CLI an Zeile",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.head7",
+   "source": "C4",
+   "text": "Übersicht",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.head8",
+   "source": "C4",
+   "text": "Bauart",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.macdown-3000.c0",
+   "source": "C4",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.macdown-3000.c1",
+   "source": "C4",
+   "text": "Kostenlos",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.macdown-3000.c2",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.macdown-3000.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.macdown-3000.c4",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.macdown-3000.c5",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.macdown-3000.c6",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.macdown-3000.c7",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.macdown-3000.c8",
+   "source": "C4",
+   "text": "Nativ",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marked.c0",
+   "source": "C4",
+   "text": "Marked 3",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marked.c1",
+   "source": "C4",
+   "text": "Ab 2,99 USD/Monat",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marked.c2",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marked.c3",
+   "source": "C4",
+   "text": "MathJax, KaTeX",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marked.c4",
+   "source": "C4",
+   "text": "Ja, Seitenzahlen",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marked.c5",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marked.c6",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marked.c7",
+   "source": "C4",
+   "text": "Marked QL, 9,99 USD",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marked.c8",
+   "source": "C4",
+   "text": "Nativ",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.markedit.c0",
+   "source": "C4",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.markedit.c1",
+   "source": "C4",
+   "text": "Kostenlos",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.markedit.c2",
+   "source": "C4",
+   "text": "Erweiterung",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.markedit.c3",
+   "source": "C4",
+   "text": "KaTeX (Erweiterung)",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.markedit.c4",
+   "source": "C4",
+   "text": "Pandoc",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.markedit.c5",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.markedit.c6",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.markedit.c7",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.markedit.c8",
+   "source": "C4",
+   "text": "Nativ (Web-View)",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marsdawn.c0",
+   "source": "C4",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marsdawn.c1",
+   "source": "C4",
+   "text": "Einmalig 4,99 USD",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marsdawn.c2",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marsdawn.c3",
+   "source": "C4",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marsdawn.c4",
+   "source": "C4",
+   "text": "Ja, ohne Seitenzahlen",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marsdawn.c5",
+   "source": "C4",
+   "text": "Ja, rückgängig machbar",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marsdawn.c6",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marsdawn.c7",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.marsdawn.c8",
+   "source": "C4",
+   "text": "Nativ",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.obsidian.c0",
+   "source": "C4",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.obsidian.c1",
+   "source": "C4",
+   "text": "Kostenlos",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.obsidian.c2",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.obsidian.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.obsidian.c4",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.obsidian.c5",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.obsidian.c6",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.obsidian.c7",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.obsidian.c8",
+   "source": "C4",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.qlmarkdown.c0",
+   "source": "C4",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.qlmarkdown.c1",
+   "source": "C4",
+   "text": "Kostenlos",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.qlmarkdown.c2",
+   "source": "C4",
+   "text": "Optional",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.qlmarkdown.c3",
+   "source": "C4",
+   "text": "MathJax (optional)",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.qlmarkdown.c4",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.qlmarkdown.c5",
+   "source": "C4",
+   "text": "Entfällt",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.qlmarkdown.c6",
+   "source": "C4",
+   "text": "Entfällt",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.qlmarkdown.c7",
+   "source": "C4",
+   "text": "Ist selbst eine",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.qlmarkdown.c8",
+   "source": "C4",
+   "text": "Nativ",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.typora.c0",
+   "source": "C4",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.typora.c1",
+   "source": "C4",
+   "text": "Einmalig 14,99 USD",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.typora.c2",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.typora.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.typora.c4",
+   "source": "C4",
+   "text": "Ja, Seitenzahlen",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.typora.c5",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.typora.c6",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.typora.c7",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.typora.c8",
+   "source": "C4",
+   "text": "Nativ",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.vs-code.c0",
+   "source": "C4",
+   "text": "VS Code",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.vs-code.c1",
+   "source": "C4",
+   "text": "Kostenlos",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.vs-code.c2",
+   "source": "C4",
+   "text": "Ja (ab 1.121)",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.vs-code.c3",
+   "source": "C4",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.vs-code.c4",
+   "source": "C4",
+   "text": "Nein",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.vs-code.c5",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.vs-code.c6",
+   "source": "C4",
+   "text": "Ja",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.vs-code.c7",
+   "source": "C4",
+   "text": "Nicht dokumentiert",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "comparison.vs-code.c8",
+   "source": "C4",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "notfor.h",
+   "source": "C4",
+   "text": "Für wen MarsDawn nichts ist",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "notfor.1",
+   "source": "C4",
+   "text": "Du brauchst Seitenzahlen im PDF. Typora und Marked 3 fügen sie hinzu, MarsDawn nicht.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "notfor.2",
+   "source": "C4",
+   "text": "Du pflegst eine verlinkte Wissensdatenbank aus eigenen Notizen. Dafür ist Obsidian gebaut.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "notfor.3",
+   "source": "C4",
+   "text": "Du verlässt VS Code nie. Die eingebaute Vorschau ist kostenlos, und VS Code ergänzt sein Agents-Fenster um eine experimentelle Markdown-Ansicht.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "notfor.4",
+   "source": "C4",
+   "text": "Du willst nur eine Vorschau im Finder. QLMarkdown ist kostenlos.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "faq.h",
+   "source": "C4",
+   "text": "Häufige Fragen",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "faq.q1",
+   "source": "C4",
+   "text": "Welche kostenlosen Markdown-Viewer für den Mac können Mermaid?",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "faq.a1",
+   "source": "C4",
+   "text": "MacDown 3000, Obsidian und VS Code (ab 1.121) haben es eingebaut. QLMarkdown bietet es als Option, MarkEdit über eine Erweiterung.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "faq.q2",
+   "source": "C4",
+   "text": "Welche exportieren PDF mit Seitenzahlen?",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "faq.a2",
+   "source": "C4",
+   "text": "Typora und Marked 3. MarsDawn exportiert PDF ohne Seitenzahlen.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "faq.q3",
+   "source": "C4",
+   "text": "Welche öffnen eine Datei über die Befehlszeile an einer bestimmten Zeile?",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "faq.a3",
+   "source": "C4",
+   "text": "MarsDawn (<code>marsdawn open notes.md:120</code>) und VS Code (<code>code -g file:line</code>). Bei den anderen ist es nicht dokumentiert.",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "faq.q4",
+   "source": "C4",
+   "text": "Welche sind native Mac-Apps statt Electron?",
+   "html": true
+  },
+  {
+   "locale": "de",
+   "field": "faq.a4",
+   "source": "C4",
+   "text": "Alle außer Obsidian und VS Code. MarkEdit ist nativ, sein Editorbereich läuft in einer Web-View.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "title",
+   "source": "C4",
+   "text": "Meilleur lecteur Markdown pour Mac (2026)",
+   "html": false
+  },
+  {
+   "locale": "fr",
+   "field": "description",
+   "source": "C4",
+   "text": "Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.",
+   "html": false
+  },
+  {
+   "locale": "fr",
+   "field": "h1",
+   "source": "C4",
+   "text": "Meilleur lecteur Markdown pour Mac (2026)",
+   "html": false
+  },
+  {
+   "locale": "fr",
+   "field": "intro",
+   "source": "C4",
+   "text": "Le meilleur lecteur Markdown dépend de ce que vous lisez. Pour vos propres notes, une app de notes tout-en-un suffit. Pour de longs documents avec diagrammes et formules, ou des fichiers qu’un agent IA réécrit sans cesse, regardez comment chaque app gère le rechargement en direct, Mermaid et le PDF. Les apps sont classées par ordre alphabétique, chacune avec son public, un défaut honnête et son prix.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.macdown-3000.name",
+   "source": "C4",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.macdown-3000.para",
+   "source": "C4",
+   "text": "Le MacDown d’origine n’est plus maintenu. MacDown 3000 en est la suite communautaire : gratuit et open source (MIT), natif, avec Mermaid, MathJax, export PDF, rechargement en direct et Coup d’œil.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.macdown-3000.bullet1",
+   "source": "C4",
+   "text": "Pour : ceux qui veulent une vue scindée native et gratuite.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.macdown-3000.bullet2",
+   "source": "C4",
+   "text": "Défaut : l’ouverture à une ligne précise depuis la ligne de commande n’est pas documentée.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.macdown-3000.bullet3",
+   "source": "C4",
+   "text": "Prix : gratuit.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.marked.name",
+   "source": "C4",
+   "text": "Marked",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.marked.para",
+   "source": "C4",
+   "text": "Marked 3 est un outil d’aperçu pour le Markdown que vous écrivez dans une autre app. Il recharge dès que le fichier change, gère MathJax et KaTeX, et imprime des PDF paginés avec numéros de page. Marked 2 est toujours en vente.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.marked.bullet1",
+   "source": "C4",
+   "text": "Pour : les auteurs qui gardent leur outil d’écriture et veulent un aperçu et une impression soignés.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.marked.bullet2",
+   "source": "C4",
+   "text": "Défaut : Coup d’œil passe par une app séparée, Marked QL (9,99 USD).",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.marked.bullet3",
+   "source": "C4",
+   "text": "Prix : Marked 3 se télécharge gratuitement, puis 2,99 USD/mois, 29,99 USD/an ou 69,99 USD à vie. Marked 2 coûte 14,99 USD en direct, 13,99 USD sur le Mac App Store.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.markedit.name",
+   "source": "C4",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.markedit.para",
+   "source": "C4",
+   "text": "Une app native, légère et gratuite (CodeMirror dans une web view), avec Coup d’œil.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.markedit.bullet1",
+   "source": "C4",
+   "text": "Pour : ceux qui veulent un outil de texte brut rapide et bien intégré au Mac.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.markedit.bullet2",
+   "source": "C4",
+   "text": "Défaut : Mermaid et les maths demandent les extensions officielles, et l’export PDF passe par Pandoc.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.markedit.bullet3",
+   "source": "C4",
+   "text": "Prix : gratuit.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.marsdawn.name",
+   "source": "C4",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.marsdawn.para",
+   "source": "C4",
+   "text": "Une app Mac native qui affiche la source et un aperçu en direct côte à côte, avec Mermaid et KaTeX intégrés. Quand un agent enregistre le fichier, la fenêtre ouverte prend la modification comme une seule mise à jour depuis le disque, que vous pouvez annuler. <code>marsdawn open notes.md:120</code> ouvre un fichier à une ligne, et un skill ainsi qu’un serveur MCP sont fournis pour les agents. Coup d’œil fonctionne avec ou sans l’essai. « Copier pour l’IA » et « Copier la référence » transmettent du texte à un agent. Rien ne quitte votre Mac sans votre choix.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.marsdawn.bullet1",
+   "source": "C4",
+   "text": "Pour : ceux qui relisent le Markdown écrit par des agents IA.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.marsdawn.bullet2",
+   "source": "C4",
+   "text": "Défaut : l’export PDF n’a pas de numéros de page.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.marsdawn.bullet3",
+   "source": "C4",
+   "text": "Prix : téléchargement gratuit avec 14 jours d’essai, puis 4,99 USD une seule fois. Sans compte. Uniquement sur le Mac App Store.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.obsidian.name",
+   "source": "C4",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.obsidian.para",
+   "source": "C4",
+   "text": "Une app de notes bâtie autour d’un coffre (vault) de fichiers Markdown liés, avec Mermaid, MathJax, export PDF et rechargement en direct.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.obsidian.bullet1",
+   "source": "C4",
+   "text": "Pour : ceux qui construisent une base de connaissances à partir de leurs notes.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.obsidian.bullet2",
+   "source": "C4",
+   "text": "Défaut : c’est une app Electron, et elle fonctionne mieux avec des fichiers rangés dans un coffre.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.obsidian.bullet3",
+   "source": "C4",
+   "text": "Prix : gratuit. Sync et Publish sont payants.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.qlmarkdown.name",
+   "source": "C4",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.qlmarkdown.para",
+   "source": "C4",
+   "text": "Une extension Coup d’œil : sélectionnez un fichier .md dans le Finder et appuyez sur Espace. Mermaid et MathJax sont à activer.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.qlmarkdown.bullet1",
+   "source": "C4",
+   "text": "Pour : ceux qui veulent seulement jeter un œil aux fichiers dans le Finder.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.qlmarkdown.bullet2",
+   "source": "C4",
+   "text": "Défaut : ce n’est pas une app pour lire ou modifier, et aucun export PDF n’est documenté.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.qlmarkdown.bullet3",
+   "source": "C4",
+   "text": "Prix : gratuit (GPL-3.0).",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.typora.name",
+   "source": "C4",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.typora.para",
+   "source": "C4",
+   "text": "Un outil d’écriture où l’aperçu est le document, avec Mermaid, MathJax et un export PDF avec numéros de page en en-tête ou en pied de page.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.typora.bullet1",
+   "source": "C4",
+   "text": "Pour : ceux qui préfèrent écrire dans une vue de type WYSIWYG.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.typora.bullet2",
+   "source": "C4",
+   "text": "Défaut : pas de source et d’aperçu côte à côte.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.typora.bullet3",
+   "source": "C4",
+   "text": "Prix : 14,99 USD une seule fois, jusqu’à 3 appareils.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.vs-code.name",
+   "source": "C4",
+   "text": "Aperçu de VS Code",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.vs-code.para",
+   "source": "C4",
+   "text": "L’aperçu Markdown intégré, avec Mermaid intégré depuis la 1.121 et KaTeX. <code>code -g file:line</code> ouvre un fichier à une ligne.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.vs-code.bullet1",
+   "source": "C4",
+   "text": "Pour : les développeurs qui vivent déjà dans VS Code.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.vs-code.bullet2",
+   "source": "C4",
+   "text": "Défaut : c’est une app Electron, sans export PDF intégré.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "app.vs-code.bullet3",
+   "source": "C4",
+   "text": "Prix : gratuit.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.h",
+   "source": "C4",
+   "text": "Comparatif",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.head0",
+   "source": "C4",
+   "text": "App",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.head1",
+   "source": "C4",
+   "text": "Prix",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.head2",
+   "source": "C4",
+   "text": "Mermaid",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.head3",
+   "source": "C4",
+   "text": "Maths",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.head4",
+   "source": "C4",
+   "text": "PDF",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.head5",
+   "source": "C4",
+   "text": "Rechargement en direct",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.head6",
+   "source": "C4",
+   "text": "CLI à une ligne",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.head7",
+   "source": "C4",
+   "text": "Coup d’œil",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.head8",
+   "source": "C4",
+   "text": "Technologie",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.macdown-3000.c0",
+   "source": "C4",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.macdown-3000.c1",
+   "source": "C4",
+   "text": "Gratuit",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.macdown-3000.c2",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.macdown-3000.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.macdown-3000.c4",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.macdown-3000.c5",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.macdown-3000.c6",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.macdown-3000.c7",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.macdown-3000.c8",
+   "source": "C4",
+   "text": "Natif",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marked.c0",
+   "source": "C4",
+   "text": "Marked 3",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marked.c1",
+   "source": "C4",
+   "text": "Dès 2,99 USD/mois",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marked.c2",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marked.c3",
+   "source": "C4",
+   "text": "MathJax, KaTeX",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marked.c4",
+   "source": "C4",
+   "text": "Oui, numéros de page",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marked.c5",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marked.c6",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marked.c7",
+   "source": "C4",
+   "text": "Marked QL, 9,99 USD",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marked.c8",
+   "source": "C4",
+   "text": "Natif",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.markedit.c0",
+   "source": "C4",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.markedit.c1",
+   "source": "C4",
+   "text": "Gratuit",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.markedit.c2",
+   "source": "C4",
+   "text": "Extension",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.markedit.c3",
+   "source": "C4",
+   "text": "KaTeX (extension)",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.markedit.c4",
+   "source": "C4",
+   "text": "Pandoc",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.markedit.c5",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.markedit.c6",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.markedit.c7",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.markedit.c8",
+   "source": "C4",
+   "text": "Natif (web view)",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marsdawn.c0",
+   "source": "C4",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marsdawn.c1",
+   "source": "C4",
+   "text": "4,99 USD une fois",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marsdawn.c2",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marsdawn.c3",
+   "source": "C4",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marsdawn.c4",
+   "source": "C4",
+   "text": "Oui, sans numéros de page",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marsdawn.c5",
+   "source": "C4",
+   "text": "Oui, annulable",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marsdawn.c6",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marsdawn.c7",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.marsdawn.c8",
+   "source": "C4",
+   "text": "Natif",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.obsidian.c0",
+   "source": "C4",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.obsidian.c1",
+   "source": "C4",
+   "text": "Gratuit",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.obsidian.c2",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.obsidian.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.obsidian.c4",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.obsidian.c5",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.obsidian.c6",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.obsidian.c7",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.obsidian.c8",
+   "source": "C4",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.qlmarkdown.c0",
+   "source": "C4",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.qlmarkdown.c1",
+   "source": "C4",
+   "text": "Gratuit",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.qlmarkdown.c2",
+   "source": "C4",
+   "text": "À activer",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.qlmarkdown.c3",
+   "source": "C4",
+   "text": "MathJax (à activer)",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.qlmarkdown.c4",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.qlmarkdown.c5",
+   "source": "C4",
+   "text": "Sans objet",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.qlmarkdown.c6",
+   "source": "C4",
+   "text": "Sans objet",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.qlmarkdown.c7",
+   "source": "C4",
+   "text": "C’en est une",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.qlmarkdown.c8",
+   "source": "C4",
+   "text": "Natif",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.typora.c0",
+   "source": "C4",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.typora.c1",
+   "source": "C4",
+   "text": "14,99 USD une fois",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.typora.c2",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.typora.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.typora.c4",
+   "source": "C4",
+   "text": "Oui, numéros de page",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.typora.c5",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.typora.c6",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.typora.c7",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.typora.c8",
+   "source": "C4",
+   "text": "Natif",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.vs-code.c0",
+   "source": "C4",
+   "text": "VS Code",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.vs-code.c1",
+   "source": "C4",
+   "text": "Gratuit",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.vs-code.c2",
+   "source": "C4",
+   "text": "Oui (1.121+)",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.vs-code.c3",
+   "source": "C4",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.vs-code.c4",
+   "source": "C4",
+   "text": "Non",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.vs-code.c5",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.vs-code.c6",
+   "source": "C4",
+   "text": "Oui",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.vs-code.c7",
+   "source": "C4",
+   "text": "Non documenté",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "comparison.vs-code.c8",
+   "source": "C4",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "notfor.h",
+   "source": "C4",
+   "text": "À qui MarsDawn ne convient pas",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "notfor.1",
+   "source": "C4",
+   "text": "Il vous faut des numéros de page dans vos PDF. Typora et Marked 3 les ajoutent, MarsDawn non.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "notfor.2",
+   "source": "C4",
+   "text": "Vous entretenez une base de connaissances de notes liées. Obsidian est fait pour cela.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "notfor.3",
+   "source": "C4",
+   "text": "Vous ne quittez jamais VS Code. Son aperçu intégré est gratuit, et VS Code ajoute une vue Markdown expérimentale à sa fenêtre Agents.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "notfor.4",
+   "source": "C4",
+   "text": "Vous voulez seulement un aperçu dans le Finder. QLMarkdown est gratuit.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "faq.h",
+   "source": "C4",
+   "text": "Questions fréquentes",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "faq.q1",
+   "source": "C4",
+   "text": "Quels lecteurs Markdown gratuits pour Mac gèrent Mermaid ?",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "faq.a1",
+   "source": "C4",
+   "text": "MacDown 3000, Obsidian et VS Code (1.121 et ultérieur) l’intègrent. QLMarkdown le propose en option, MarkEdit via une extension.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "faq.q2",
+   "source": "C4",
+   "text": "Lesquels exportent un PDF avec numéros de page ?",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "faq.a2",
+   "source": "C4",
+   "text": "Typora et Marked 3. MarsDawn exporte le PDF sans numéros de page.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "faq.q3",
+   "source": "C4",
+   "text": "Lesquels ouvrent un fichier à une ligne précise depuis la ligne de commande ?",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "faq.a3",
+   "source": "C4",
+   "text": "MarsDawn (<code>marsdawn open notes.md:120</code>) et VS Code (<code>code -g file:line</code>). Pour les autres, ce n’est pas documenté.",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "faq.q4",
+   "source": "C4",
+   "text": "Lesquels sont des apps Mac natives plutôt qu’Electron ?",
+   "html": true
+  },
+  {
+   "locale": "fr",
+   "field": "faq.a4",
+   "source": "C4",
+   "text": "Toutes sauf Obsidian et VS Code. MarkEdit est natif, avec sa zone d’édition dans une web view.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "title",
+   "source": "C4",
+   "text": "El mejor visor de Markdown para Mac (2026)",
+   "html": false
+  },
+  {
+   "locale": "es",
+   "field": "description",
+   "source": "C4",
+   "text": "Ocho visores de Markdown para Mac comparados por precio, Mermaid, fórmulas, PDF, recarga en vivo, Vista rápida y nativo o Electron, y para quién es cada uno.",
+   "html": false
+  },
+  {
+   "locale": "es",
+   "field": "h1",
+   "source": "C4",
+   "text": "El mejor visor de Markdown para Mac (2026)",
+   "html": false
+  },
+  {
+   "locale": "es",
+   "field": "intro",
+   "source": "C4",
+   "text": "El mejor visor de Markdown depende de lo que leas. Si son notas que escribes tú, basta con una app de notas todo en uno. Si son documentos largos con diagramas y fórmulas, o archivos que un agente de IA reescribe una y otra vez, revisa cómo maneja cada app la recarga en vivo, Mermaid y el PDF. Las apps están en orden alfabético, cada una con para quién es, un defecto honesto y su precio.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.macdown-3000.name",
+   "source": "C4",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.macdown-3000.para",
+   "source": "C4",
+   "text": "El MacDown original ya no se mantiene. MacDown 3000 es la continuación de la comunidad: gratis y de código abierto (MIT), nativo, con Mermaid, MathJax, exportación a PDF, recarga en vivo y Vista rápida.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.macdown-3000.bullet1",
+   "source": "C4",
+   "text": "Para: quien quiere una vista dividida nativa y gratis.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.macdown-3000.bullet2",
+   "source": "C4",
+   "text": "Defecto: no está documentado cómo abrir un archivo en una línea desde la línea de comandos.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.macdown-3000.bullet3",
+   "source": "C4",
+   "text": "Precio: gratis.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.marked.name",
+   "source": "C4",
+   "text": "Marked",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.marked.para",
+   "source": "C4",
+   "text": "Marked 3 es una app de vista previa para el Markdown que escribes en otra app. Recarga en cuanto cambia el archivo, admite MathJax y KaTeX, e imprime PDF paginados con números de página. Marked 2 se sigue vendiendo.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.marked.bullet1",
+   "source": "C4",
+   "text": "Para: quienes escriben en su propia herramienta y quieren una vista previa e impresión cuidadas.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.marked.bullet2",
+   "source": "C4",
+   "text": "Defecto: Vista rápida es una app aparte, Marked QL (9,99 USD).",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.marked.bullet3",
+   "source": "C4",
+   "text": "Precio: Marked 3 se descarga gratis y luego cuesta 2,99 USD/mes, 29,99 USD/año o 69,99 USD de por vida. Marked 2 cuesta 14,99 USD directo o 13,99 USD en la Mac App Store.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.markedit.name",
+   "source": "C4",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.markedit.para",
+   "source": "C4",
+   "text": "Una app nativa, ligera y gratis (CodeMirror en una web view), con Vista rápida.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.markedit.bullet1",
+   "source": "C4",
+   "text": "Para: quien quiere una herramienta de texto plano rápida que se sienta propia del Mac.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.markedit.bullet2",
+   "source": "C4",
+   "text": "Defecto: Mermaid y las fórmulas necesitan las extensiones oficiales, y el PDF necesita Pandoc.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.markedit.bullet3",
+   "source": "C4",
+   "text": "Precio: gratis.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.marsdawn.name",
+   "source": "C4",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.marsdawn.para",
+   "source": "C4",
+   "text": "Una app nativa para Mac que muestra la fuente y una vista previa en vivo lado a lado, con Mermaid y KaTeX integrados. Cuando un agente guarda el archivo, la ventana abierta toma el cambio como una sola actualización desde el disco que puedes deshacer. <code>marsdawn open notes.md:120</code> abre un archivo en una línea, y hay un skill y un servidor MCP para agentes. Vista rápida funciona con o sin la prueba. «Copiar para IA» y «Copiar referencia» pasan texto a un agente. Nada sale de tu Mac a menos que tú lo decidas.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.marsdawn.bullet1",
+   "source": "C4",
+   "text": "Para: quien revisa el Markdown que escriben los agentes de IA.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.marsdawn.bullet2",
+   "source": "C4",
+   "text": "Defecto: el PDF exportado no tiene números de página.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.marsdawn.bullet3",
+   "source": "C4",
+   "text": "Precio: descarga gratis con 14 días de prueba y luego 4,99 USD una sola vez. Sin cuenta. Solo en la Mac App Store.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.obsidian.name",
+   "source": "C4",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.obsidian.para",
+   "source": "C4",
+   "text": "Una app de notas construida en torno a una bóveda (vault) de archivos Markdown enlazados, con Mermaid, MathJax, exportación a PDF y recarga en vivo.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.obsidian.bullet1",
+   "source": "C4",
+   "text": "Para: quien arma una base de conocimiento con sus propias notas.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.obsidian.bullet2",
+   "source": "C4",
+   "text": "Defecto: es una app Electron y funciona mejor con archivos dentro de una bóveda.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.obsidian.bullet3",
+   "source": "C4",
+   "text": "Precio: gratis. Sync y Publish son de pago.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.qlmarkdown.name",
+   "source": "C4",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.qlmarkdown.para",
+   "source": "C4",
+   "text": "Una extensión de Vista rápida: selecciona un archivo .md en el Finder y presiona la barra espaciadora. Mermaid y MathJax son opcionales.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.qlmarkdown.bullet1",
+   "source": "C4",
+   "text": "Para: quien solo quiere echar un vistazo a los archivos en el Finder.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.qlmarkdown.bullet2",
+   "source": "C4",
+   "text": "Defecto: no es una app para leer ni editar, y no tiene exportación a PDF documentada.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.qlmarkdown.bullet3",
+   "source": "C4",
+   "text": "Precio: gratis (GPL-3.0).",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.typora.name",
+   "source": "C4",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.typora.para",
+   "source": "C4",
+   "text": "Una herramienta de escritura donde la vista previa es el documento, con Mermaid, MathJax y exportación a PDF con números de página en el encabezado o el pie.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.typora.bullet1",
+   "source": "C4",
+   "text": "Para: quien prefiere escribir en una vista tipo WYSIWYG.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.typora.bullet2",
+   "source": "C4",
+   "text": "Defecto: no muestra la fuente y la vista previa lado a lado.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.typora.bullet3",
+   "source": "C4",
+   "text": "Precio: 14,99 USD una sola vez, hasta 3 dispositivos.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.vs-code.name",
+   "source": "C4",
+   "text": "Vista previa de VS Code",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.vs-code.para",
+   "source": "C4",
+   "text": "La vista previa de Markdown integrada, con Mermaid integrado desde la 1.121 y KaTeX. <code>code -g file:line</code> abre un archivo en una línea.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.vs-code.bullet1",
+   "source": "C4",
+   "text": "Para: desarrolladores que ya trabajan todo el día en VS Code.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.vs-code.bullet2",
+   "source": "C4",
+   "text": "Defecto: es una app Electron y no trae exportación a PDF.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "app.vs-code.bullet3",
+   "source": "C4",
+   "text": "Precio: gratis.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.h",
+   "source": "C4",
+   "text": "Comparativa",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.head0",
+   "source": "C4",
+   "text": "App",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.head1",
+   "source": "C4",
+   "text": "Precio",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.head2",
+   "source": "C4",
+   "text": "Mermaid",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.head3",
+   "source": "C4",
+   "text": "Fórmulas",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.head4",
+   "source": "C4",
+   "text": "PDF",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.head5",
+   "source": "C4",
+   "text": "Recarga en vivo",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.head6",
+   "source": "C4",
+   "text": "CLI en una línea",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.head7",
+   "source": "C4",
+   "text": "Vista rápida",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.head8",
+   "source": "C4",
+   "text": "Tecnología",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.macdown-3000.c0",
+   "source": "C4",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.macdown-3000.c1",
+   "source": "C4",
+   "text": "Gratis",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.macdown-3000.c2",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.macdown-3000.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.macdown-3000.c4",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.macdown-3000.c5",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.macdown-3000.c6",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.macdown-3000.c7",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.macdown-3000.c8",
+   "source": "C4",
+   "text": "Nativa",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marked.c0",
+   "source": "C4",
+   "text": "Marked 3",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marked.c1",
+   "source": "C4",
+   "text": "Desde 2,99 USD/mes",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marked.c2",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marked.c3",
+   "source": "C4",
+   "text": "MathJax, KaTeX",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marked.c4",
+   "source": "C4",
+   "text": "Sí, con números de página",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marked.c5",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marked.c6",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marked.c7",
+   "source": "C4",
+   "text": "Marked QL, 9,99 USD",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marked.c8",
+   "source": "C4",
+   "text": "Nativa",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.markedit.c0",
+   "source": "C4",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.markedit.c1",
+   "source": "C4",
+   "text": "Gratis",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.markedit.c2",
+   "source": "C4",
+   "text": "Extensión",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.markedit.c3",
+   "source": "C4",
+   "text": "KaTeX (extensión)",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.markedit.c4",
+   "source": "C4",
+   "text": "Pandoc",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.markedit.c5",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.markedit.c6",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.markedit.c7",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.markedit.c8",
+   "source": "C4",
+   "text": "Nativa (web view)",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marsdawn.c0",
+   "source": "C4",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marsdawn.c1",
+   "source": "C4",
+   "text": "4,99 USD una vez",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marsdawn.c2",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marsdawn.c3",
+   "source": "C4",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marsdawn.c4",
+   "source": "C4",
+   "text": "Sí, sin números de página",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marsdawn.c5",
+   "source": "C4",
+   "text": "Sí, se puede deshacer",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marsdawn.c6",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marsdawn.c7",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.marsdawn.c8",
+   "source": "C4",
+   "text": "Nativa",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.obsidian.c0",
+   "source": "C4",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.obsidian.c1",
+   "source": "C4",
+   "text": "Gratis",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.obsidian.c2",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.obsidian.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.obsidian.c4",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.obsidian.c5",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.obsidian.c6",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.obsidian.c7",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.obsidian.c8",
+   "source": "C4",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.qlmarkdown.c0",
+   "source": "C4",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.qlmarkdown.c1",
+   "source": "C4",
+   "text": "Gratis",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.qlmarkdown.c2",
+   "source": "C4",
+   "text": "Opcional",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.qlmarkdown.c3",
+   "source": "C4",
+   "text": "MathJax (opcional)",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.qlmarkdown.c4",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.qlmarkdown.c5",
+   "source": "C4",
+   "text": "No aplica",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.qlmarkdown.c6",
+   "source": "C4",
+   "text": "No aplica",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.qlmarkdown.c7",
+   "source": "C4",
+   "text": "Es una",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.qlmarkdown.c8",
+   "source": "C4",
+   "text": "Nativa",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.typora.c0",
+   "source": "C4",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.typora.c1",
+   "source": "C4",
+   "text": "14,99 USD una vez",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.typora.c2",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.typora.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.typora.c4",
+   "source": "C4",
+   "text": "Sí, con números de página",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.typora.c5",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.typora.c6",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.typora.c7",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.typora.c8",
+   "source": "C4",
+   "text": "Nativa",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.vs-code.c0",
+   "source": "C4",
+   "text": "VS Code",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.vs-code.c1",
+   "source": "C4",
+   "text": "Gratis",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.vs-code.c2",
+   "source": "C4",
+   "text": "Sí (1.121+)",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.vs-code.c3",
+   "source": "C4",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.vs-code.c4",
+   "source": "C4",
+   "text": "No",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.vs-code.c5",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.vs-code.c6",
+   "source": "C4",
+   "text": "Sí",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.vs-code.c7",
+   "source": "C4",
+   "text": "No documentado",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "comparison.vs-code.c8",
+   "source": "C4",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "notfor.h",
+   "source": "C4",
+   "text": "Para quién no es MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "notfor.1",
+   "source": "C4",
+   "text": "Necesitas números de página en tus PDF. Typora y Marked 3 los agregan, MarsDawn no.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "notfor.2",
+   "source": "C4",
+   "text": "Mantienes una base de conocimiento de notas enlazadas. Obsidian está hecho para eso.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "notfor.3",
+   "source": "C4",
+   "text": "Nunca sales de VS Code. Su vista previa integrada es gratis, y VS Code está agregando una vista de Markdown experimental a su ventana Agents.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "notfor.4",
+   "source": "C4",
+   "text": "Solo quieres una vista previa en el Finder. QLMarkdown es gratis.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "faq.h",
+   "source": "C4",
+   "text": "Preguntas frecuentes",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "faq.q1",
+   "source": "C4",
+   "text": "¿Qué visores de Markdown gratis para Mac tienen Mermaid?",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "faq.a1",
+   "source": "C4",
+   "text": "MacDown 3000, Obsidian y VS Code (1.121 y posteriores) lo traen integrado. QLMarkdown lo ofrece como opción y MarkEdit mediante una extensión.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "faq.q2",
+   "source": "C4",
+   "text": "¿Cuáles exportan PDF con números de página?",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "faq.a2",
+   "source": "C4",
+   "text": "Typora y Marked 3. MarsDawn exporta PDF sin números de página.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "faq.q3",
+   "source": "C4",
+   "text": "¿Cuáles abren un archivo en una línea concreta desde la línea de comandos?",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "faq.a3",
+   "source": "C4",
+   "text": "MarsDawn (<code>marsdawn open notes.md:120</code>) y VS Code (<code>code -g file:line</code>). En los demás no está documentado.",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "faq.q4",
+   "source": "C4",
+   "text": "¿Cuáles son apps nativas para Mac y no Electron?",
+   "html": true
+  },
+  {
+   "locale": "es",
+   "field": "faq.a4",
+   "source": "C4",
+   "text": "Todas menos Obsidian y VS Code. MarkEdit es nativa, con su zona de edición en una web view.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "title",
+   "source": "C4",
+   "text": "Mac용 Markdown 뷰어 추천 (2026)",
+   "html": false
+  },
+  {
+   "locale": "ko",
+   "field": "description",
+   "source": "C4",
+   "text": "Mac용 Markdown 뷰어 8종을 가격, Mermaid, 수식, PDF, 자동 새로 고침, 훑어보기, 네이티브/Electron으로 비교하고 각각 누구에게 맞는지 정리했습니다.",
+   "html": false
+  },
+  {
+   "locale": "ko",
+   "field": "h1",
+   "source": "C4",
+   "text": "Mac용 Markdown 뷰어 추천 (2026)",
+   "html": false
+  },
+  {
+   "locale": "ko",
+   "field": "intro",
+   "source": "C4",
+   "text": "어떤 Markdown 뷰어가 가장 좋은지는 무엇을 읽느냐에 달려 있습니다. 직접 쓴 메모라면 올인원 노트 앱으로 충분합니다. 다이어그램과 수식이 들어간 긴 문서나 AI 에이전트가 계속 다시 쓰는 파일이라면, 각 앱이 자동 새로 고침, Mermaid, PDF를 어떻게 다루는지 확인하세요. 아래 앱은 알파벳 순서이며, 각각 누구에게 맞는지, 솔직한 단점 하나, 가격을 적었습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.macdown-3000.name",
+   "source": "C4",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.macdown-3000.para",
+   "source": "C4",
+   "text": "원래의 MacDown은 더 이상 유지 관리되지 않습니다. MacDown 3000은 커뮤니티가 이어받은 버전으로, 무료 오픈 소스(MIT)이고 네이티브이며 Mermaid, MathJax, PDF 내보내기, 자동 새로 고침, 훑어보기를 지원합니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.macdown-3000.bullet1",
+   "source": "C4",
+   "text": "맞는 사람: 무료 네이티브 좌우 분할 보기를 원하는 사람.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.macdown-3000.bullet2",
+   "source": "C4",
+   "text": "단점: 명령줄에서 특정 줄로 여는 방법이 문서화되어 있지 않습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.macdown-3000.bullet3",
+   "source": "C4",
+   "text": "가격: 무료.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.marked.name",
+   "source": "C4",
+   "text": "Marked",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.marked.para",
+   "source": "C4",
+   "text": "Marked 3은 다른 앱에서 쓴 Markdown을 보기 위한 미리보기 앱입니다. 파일이 바뀔 때마다 다시 불러오고, MathJax와 KaTeX를 지원하며, 페이지 번호가 붙은 PDF를 인쇄할 수 있습니다. Marked 2도 계속 판매 중입니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.marked.bullet1",
+   "source": "C4",
+   "text": "맞는 사람: 자신의 작성 도구를 유지하면서 깔끔한 미리보기와 인쇄를 원하는 작가.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.marked.bullet2",
+   "source": "C4",
+   "text": "단점: 훑어보기는 별도 앱인 Marked QL(USD 9.99)이 필요합니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.marked.bullet3",
+   "source": "C4",
+   "text": "가격: Marked 3은 무료 다운로드 후 월 USD 2.99, 연 USD 29.99 또는 평생 USD 69.99. Marked 2는 공식 사이트 USD 14.99, Mac App Store USD 13.99.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.markedit.name",
+   "source": "C4",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.markedit.para",
+   "source": "C4",
+   "text": "가볍고 무료인 네이티브 앱(웹 뷰에서 CodeMirror 사용)이며 훑어보기를 지원합니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.markedit.bullet1",
+   "source": "C4",
+   "text": "맞는 사람: 빠르고 Mac다운 일반 텍스트 도구를 원하는 사람.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.markedit.bullet2",
+   "source": "C4",
+   "text": "단점: Mermaid와 수식에는 공식 확장 프로그램이, PDF 내보내기에는 Pandoc이 필요합니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.markedit.bullet3",
+   "source": "C4",
+   "text": "가격: 무료.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.marsdawn.name",
+   "source": "C4",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.marsdawn.para",
+   "source": "C4",
+   "text": "소스와 실시간 미리보기를 나란히 보여 주는 네이티브 Mac 앱으로, Mermaid와 KaTeX가 내장되어 있습니다. 에이전트가 파일을 저장하면 열린 윈도우가 그 변경을 한 번에 실행 취소할 수 있는 '디스크에서 업데이트'로 받아들입니다. <code>marsdawn open notes.md:120</code>으로 특정 줄을 열 수 있고, 에이전트용 스킬과 MCP 서버도 있습니다. 훑어보기는 체험 기간과 관계없이 작동합니다. 'AI용으로 복사'와 '참조 복사'로 텍스트를 에이전트에 넘길 수 있습니다. 직접 선택하지 않는 한 아무것도 Mac 밖으로 나가지 않습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.marsdawn.bullet1",
+   "source": "C4",
+   "text": "맞는 사람: AI 에이전트가 쓴 Markdown을 검토하는 사람.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.marsdawn.bullet2",
+   "source": "C4",
+   "text": "단점: 내보낸 PDF에 페이지 번호가 없습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.marsdawn.bullet3",
+   "source": "C4",
+   "text": "가격: 무료 다운로드, 14일 체험 후 USD 4.99 한 번 결제. 계정 불필요. Mac App Store 전용.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.obsidian.name",
+   "source": "C4",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.obsidian.para",
+   "source": "C4",
+   "text": "서로 링크된 Markdown 파일의 보관소(vault)를 중심으로 한 노트 앱으로, Mermaid, MathJax, PDF 내보내기, 자동 새로 고침을 지원합니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.obsidian.bullet1",
+   "source": "C4",
+   "text": "맞는 사람: 자신의 메모로 지식 베이스를 만드는 사람.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.obsidian.bullet2",
+   "source": "C4",
+   "text": "단점: Electron 앱이며, 파일이 보관소 안에 있을 때 가장 잘 작동합니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.obsidian.bullet3",
+   "source": "C4",
+   "text": "가격: 무료. Sync와 Publish는 유료.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.qlmarkdown.name",
+   "source": "C4",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.qlmarkdown.para",
+   "source": "C4",
+   "text": "훑어보기 확장 프로그램입니다. Finder에서 .md 파일을 선택하고 스페이스 바를 누르면 됩니다. Mermaid와 MathJax는 선택 사항입니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.qlmarkdown.bullet1",
+   "source": "C4",
+   "text": "맞는 사람: Finder에서 파일을 잠깐 보기만 하면 되는 사람.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.qlmarkdown.bullet2",
+   "source": "C4",
+   "text": "단점: 읽거나 편집하는 앱이 아니며, PDF 내보내기도 문서화되어 있지 않습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.qlmarkdown.bullet3",
+   "source": "C4",
+   "text": "가격: 무료(GPL-3.0).",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.typora.name",
+   "source": "C4",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.typora.para",
+   "source": "C4",
+   "text": "미리보기가 곧 문서가 되는 위지윅 방식의 작성 도구로, Mermaid, MathJax, 머리글이나 바닥글에 페이지 번호를 넣는 PDF 내보내기를 지원합니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.typora.bullet1",
+   "source": "C4",
+   "text": "맞는 사람: 완성된 모습에 가까운 화면에서 쓰고 싶은 사람.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.typora.bullet2",
+   "source": "C4",
+   "text": "단점: 소스와 미리보기를 나란히 보는 화면이 없습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.typora.bullet3",
+   "source": "C4",
+   "text": "가격: USD 14.99 한 번 결제, 기기 3대까지.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.vs-code.name",
+   "source": "C4",
+   "text": "VS Code 미리보기",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.vs-code.para",
+   "source": "C4",
+   "text": "기본 Markdown 미리보기로, 1.121부터 Mermaid가 내장되어 있고 KaTeX를 지원합니다. <code>code -g file:line</code>으로 특정 줄을 열 수 있습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.vs-code.bullet1",
+   "source": "C4",
+   "text": "맞는 사람: 이미 VS Code에서 일하는 개발자.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.vs-code.bullet2",
+   "source": "C4",
+   "text": "단점: Electron 앱이며, PDF 내보내기가 기본 제공되지 않습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "app.vs-code.bullet3",
+   "source": "C4",
+   "text": "가격: 무료.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.h",
+   "source": "C4",
+   "text": "비교표",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.head0",
+   "source": "C4",
+   "text": "앱",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.head1",
+   "source": "C4",
+   "text": "가격",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.head2",
+   "source": "C4",
+   "text": "Mermaid",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.head3",
+   "source": "C4",
+   "text": "수식",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.head4",
+   "source": "C4",
+   "text": "PDF",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.head5",
+   "source": "C4",
+   "text": "자동 새로 고침",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.head6",
+   "source": "C4",
+   "text": "CLI로 특정 줄 열기",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.head7",
+   "source": "C4",
+   "text": "훑어보기",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.head8",
+   "source": "C4",
+   "text": "구성",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.macdown-3000.c0",
+   "source": "C4",
+   "text": "MacDown 3000",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.macdown-3000.c1",
+   "source": "C4",
+   "text": "무료",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.macdown-3000.c2",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.macdown-3000.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.macdown-3000.c4",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.macdown-3000.c5",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.macdown-3000.c6",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.macdown-3000.c7",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.macdown-3000.c8",
+   "source": "C4",
+   "text": "네이티브",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marked.c0",
+   "source": "C4",
+   "text": "Marked 3",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marked.c1",
+   "source": "C4",
+   "text": "월 USD 2.99부터",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marked.c2",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marked.c3",
+   "source": "C4",
+   "text": "MathJax, KaTeX",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marked.c4",
+   "source": "C4",
+   "text": "지원, 페이지 번호",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marked.c5",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marked.c6",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marked.c7",
+   "source": "C4",
+   "text": "Marked QL, USD 9.99",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marked.c8",
+   "source": "C4",
+   "text": "네이티브",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.markedit.c0",
+   "source": "C4",
+   "text": "MarkEdit",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.markedit.c1",
+   "source": "C4",
+   "text": "무료",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.markedit.c2",
+   "source": "C4",
+   "text": "확장 프로그램",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.markedit.c3",
+   "source": "C4",
+   "text": "KaTeX(확장 프로그램)",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.markedit.c4",
+   "source": "C4",
+   "text": "Pandoc",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.markedit.c5",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.markedit.c6",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.markedit.c7",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.markedit.c8",
+   "source": "C4",
+   "text": "네이티브(웹 뷰)",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marsdawn.c0",
+   "source": "C4",
+   "text": "MarsDawn",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marsdawn.c1",
+   "source": "C4",
+   "text": "USD 4.99 한 번",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marsdawn.c2",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marsdawn.c3",
+   "source": "C4",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marsdawn.c4",
+   "source": "C4",
+   "text": "지원, 페이지 번호 없음",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marsdawn.c5",
+   "source": "C4",
+   "text": "지원, 실행 취소 가능",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marsdawn.c6",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marsdawn.c7",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.marsdawn.c8",
+   "source": "C4",
+   "text": "네이티브",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.obsidian.c0",
+   "source": "C4",
+   "text": "Obsidian",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.obsidian.c1",
+   "source": "C4",
+   "text": "무료",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.obsidian.c2",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.obsidian.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.obsidian.c4",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.obsidian.c5",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.obsidian.c6",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.obsidian.c7",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.obsidian.c8",
+   "source": "C4",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.qlmarkdown.c0",
+   "source": "C4",
+   "text": "QLMarkdown",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.qlmarkdown.c1",
+   "source": "C4",
+   "text": "무료",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.qlmarkdown.c2",
+   "source": "C4",
+   "text": "선택 사항",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.qlmarkdown.c3",
+   "source": "C4",
+   "text": "MathJax(선택 사항)",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.qlmarkdown.c4",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.qlmarkdown.c5",
+   "source": "C4",
+   "text": "해당 없음",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.qlmarkdown.c6",
+   "source": "C4",
+   "text": "해당 없음",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.qlmarkdown.c7",
+   "source": "C4",
+   "text": "그 자체",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.qlmarkdown.c8",
+   "source": "C4",
+   "text": "네이티브",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.typora.c0",
+   "source": "C4",
+   "text": "Typora",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.typora.c1",
+   "source": "C4",
+   "text": "USD 14.99 한 번",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.typora.c2",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.typora.c3",
+   "source": "C4",
+   "text": "MathJax",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.typora.c4",
+   "source": "C4",
+   "text": "지원, 페이지 번호",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.typora.c5",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.typora.c6",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.typora.c7",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.typora.c8",
+   "source": "C4",
+   "text": "네이티브",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.vs-code.c0",
+   "source": "C4",
+   "text": "VS Code",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.vs-code.c1",
+   "source": "C4",
+   "text": "무료",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.vs-code.c2",
+   "source": "C4",
+   "text": "지원(1.121 이상)",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.vs-code.c3",
+   "source": "C4",
+   "text": "KaTeX",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.vs-code.c4",
+   "source": "C4",
+   "text": "미지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.vs-code.c5",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.vs-code.c6",
+   "source": "C4",
+   "text": "지원",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.vs-code.c7",
+   "source": "C4",
+   "text": "문서화 안 됨",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "comparison.vs-code.c8",
+   "source": "C4",
+   "text": "Electron",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "notfor.h",
+   "source": "C4",
+   "text": "MarsDawn이 맞지 않는 사람",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "notfor.1",
+   "source": "C4",
+   "text": "PDF에 페이지 번호가 꼭 필요한 사람. Typora와 Marked 3은 넣을 수 있지만 MarsDawn은 넣을 수 없습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "notfor.2",
+   "source": "C4",
+   "text": "서로 링크된 개인 메모 지식 베이스를 가꾸는 사람. Obsidian은 그 용도로 만들어졌습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "notfor.3",
+   "source": "C4",
+   "text": "VS Code를 떠나지 않는 사람. 기본 미리보기는 무료이고, VS Code는 Agents 윈도우에 실험적인 Markdown 보기를 추가하고 있습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "notfor.4",
+   "source": "C4",
+   "text": "Finder에서 미리보기만 하면 되는 사람. QLMarkdown은 무료입니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "faq.h",
+   "source": "C4",
+   "text": "자주 묻는 질문",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "faq.q1",
+   "source": "C4",
+   "text": "Mermaid를 지원하는 무료 Mac Markdown 뷰어는?",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "faq.a1",
+   "source": "C4",
+   "text": "MacDown 3000, Obsidian, VS Code(1.121 이상)에 내장되어 있습니다. QLMarkdown은 선택 사항으로, MarkEdit은 확장 프로그램으로 지원합니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "faq.q2",
+   "source": "C4",
+   "text": "페이지 번호가 붙은 PDF를 내보낼 수 있는 앱은?",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "faq.a2",
+   "source": "C4",
+   "text": "Typora와 Marked 3입니다. MarsDawn의 PDF에는 페이지 번호가 없습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "faq.q3",
+   "source": "C4",
+   "text": "명령줄에서 특정 줄로 파일을 열 수 있는 앱은?",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "faq.a3",
+   "source": "C4",
+   "text": "MarsDawn(<code>marsdawn open notes.md:120</code>)과 VS Code(<code>code -g file:line</code>)입니다. 나머지는 문서화되어 있지 않습니다.",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "faq.q4",
+   "source": "C4",
+   "text": "Electron이 아닌 네이티브 Mac 앱은?",
+   "html": true
+  },
+  {
+   "locale": "ko",
+   "field": "faq.a4",
+   "source": "C4",
+   "text": "Obsidian과 VS Code를 제외한 모두입니다. MarkEdit은 네이티브 앱이며 편집 영역에 웹 뷰를 사용합니다.",
+   "html": true
+  }
+ ]
+}
