@@ -183,7 +183,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                              ['Claude Code から MarsDawn でファイルを開けますか？',
                               'はい。無料の marsdawn コマンドラインツールには open コマンドがあり、Markdown ファイルを MarsDawn で開けるので、Claude Code '
                               'やシェルコマンドを実行できるエージェントから呼び出せます。Claude が Markdown ファイルを書いたり編集したりするたびに開く、任意で有効にする Claude Code フックもあります。']]},
-         'de': {'ql_title': 'Markdown-Vorschau im Finder: Quick Look für .md-Dateien auf dem Mac · MarsDawn',
+         'de': {'ql_title': 'Markdown-Vorschau im Finder: Übersicht für .md-Dateien auf dem Mac · MarsDawn',
                 'ql_desc': 'Mit MarsDawn zeigt die Übersicht Markdown im Finder per Leertaste gerendert: Mermaid, KaTeX, hervorgehobener Code. Sie '
                            'funktioniert auch nach dem Test weiter.',
                 'ql_h1': 'Markdown im Finder mit der Übersicht ansehen.',
@@ -209,7 +209,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                               'stellt alle drei Phasen nebeneinander.',
                 'ql_next_h': 'Weiter',
                 'ql_link': 'So funktioniert die Übersicht',
-                'ui': 'Quick Look für Markdown',
+                'ui': 'Übersicht für Markdown',
                 'faq_h': 'Fragen und Antworten',
                 'ql_faq': [['Wie sehe ich eine Markdown-Datei im Finder in der Vorschau an?',
                             'Wähle die Datei aus und drücke die Leertaste. Mit installiertem MarsDawn zeigt die Übersicht die gerenderte Seite mit '
@@ -248,7 +248,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                               'Ja. Das kostenlose Befehlszeilenprogramm marsdawn hat einen Befehl open, der eine Markdown-Datei in MarsDawn öffnet. '
                               'Claude Code oder jeder Agent, der einen Shell-Befehl ausführen kann, kann ihn aufrufen. Ein optionaler '
                               'Claude-Code-Hook kann jede Markdown-Datei öffnen, die Claude schreibt oder bearbeitet.']]},
-         'fr': {'ql_title': 'Aperçu Markdown dans le Finder\xa0: Quick Look pour les fichiers .md sur Mac · MarsDawn',
+         'fr': {'ql_title': 'Aperçu Markdown dans le Finder\xa0: Coup d’œil pour les fichiers .md sur Mac · MarsDawn',
                 'ql_desc': 'Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace\xa0: Mermaid, KaTeX, code coloré. '
                            'Il fonctionne toujours après l’essai.',
                 'ql_h1': 'Prévisualiser le Markdown dans le Finder avec Coup d’œil.',
@@ -275,7 +275,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                               'présente les trois phases côte à côte.',
                 'ql_next_h': 'Pour aller plus loin',
                 'ql_link': 'Comment fonctionne Coup d’œil',
-                'ui': 'Quick Look pour Markdown',
+                'ui': 'Coup d’œil pour Markdown',
                 'faq_h': 'Questions et réponses',
                 'ql_faq': [['Comment prévisualiser un fichier Markdown dans le Finder\xa0?',
                             'Sélectionnez le fichier et appuyez sur Espace. Avec MarsDawn installé, Coup d’œil affiche la page mise en forme, avec '
@@ -315,7 +315,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                               'Oui. L’outil en ligne de commande gratuit marsdawn a une commande open qui ouvre un fichier Markdown dans MarsDawn, '
                               'donc Claude Code, ou tout agent capable d’exécuter une commande shell, peut l’appeler. Un hook Claude Code facultatif '
                               'peut ouvrir chaque fichier Markdown que Claude écrit ou modifie.']]},
-         'es': {'ql_title': 'Vista previa de Markdown en el Finder: Quick Look para archivos .md en Mac · MarsDawn',
+         'es': {'ql_title': 'Markdown en el Finder: Vista rápida para archivos .md en Mac · MarsDawn',
                 'ql_desc': 'Con MarsDawn, Vista rápida renderiza Markdown en el Finder con la barra espaciadora: Mermaid, KaTeX y código resaltado. '
                            'Sigue funcionando tras la prueba.',
                 'ql_h1': 'Previsualiza Markdown en el Finder con Vista rápida.',
@@ -343,7 +343,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                               'presenta las tres fases una al lado de otra.',
                 'ql_next_h': 'Siguiente',
                 'ql_link': 'Cómo funciona Vista rápida',
-                'ui': 'Quick Look para Markdown',
+                'ui': 'Vista rápida para Markdown',
                 'faq_h': 'Preguntas y respuestas',
                 'ql_faq': [['¿Cómo previsualizo un archivo Markdown en el Finder?',
                             'Selecciona el archivo y presiona la barra espaciadora. Con MarsDawn instalado, Vista rápida muestra la página '
