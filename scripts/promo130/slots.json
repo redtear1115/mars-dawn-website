@@ -154,6 +154,22 @@
      "sha256": "34de65b801cb4c0d953426f225a63eb705599ef0f4a18462a6c732bcfd643841",
      "chars": 15241
     }
+   ],
+   "249": [
+    {
+     "id": 6235380462,
+     "created_at": "2026-10-17T14:56:23Z",
+     "updated_at": "2026-10-17T14:56:23Z",
+     "sha256": "ea1c2c384ac8dd6c910c4aaa8ed3dfff860b423d5400817fe55ab5a49e4e8a29",
+     "chars": 1099
+    },
+    {
+     "id": 6235458801,
+     "created_at": "2026-10-17T15:03:58Z",
+     "updated_at": "2026-10-17T15:03:58Z",
+     "sha256": "d0382ff113dcd927b9c783f6c5c3536f3a12fc2fba398311a470da9af599dcde",
+     "chars": 1174
+    }
    ]
   }
  },
@@ -3721,7 +3737,12 @@
    "field": "title",
    "source": {
     "file": "scripts/seo_copy.py@8de3664",
-    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6"
+    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6",
+    "subst": {
+     "old": "Markdown-Vorschau im Finder: Quick Look für .md-Dateien auf dem Mac · MarsDawn",
+     "new": "Markdown-Vorschau im Finder: Übersicht für .md-Dateien auf dem Mac · MarsDawn",
+     "by": "comment 6235380462 (#249)"
+    }
    },
    "item": "ql_title",
    "version": "#189",
@@ -4109,7 +4130,12 @@
    "field": "breadcrumb",
    "source": {
     "file": "scripts/seo_copy.py@8de3664",
-    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6"
+    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6",
+    "subst": {
+     "old": "Quick Look für Markdown",
+     "new": "Übersicht für Markdown",
+     "by": "comment 6235380462 (#249)"
+    }
    },
    "item": "ui",
    "version": "#189",
@@ -4609,7 +4635,12 @@
    "field": "title",
    "source": {
     "file": "scripts/seo_copy.py@8de3664",
-    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6"
+    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6",
+    "subst": {
+     "old": "Aperçu Markdown dans le Finder : Quick Look pour les fichiers .md sur Mac · MarsDawn",
+     "new": "Aperçu Markdown dans le Finder : Coup d’œil pour les fichiers .md sur Mac · MarsDawn",
+     "by": "comment 6235458801 (#249)"
+    }
    },
    "item": "ql_title",
    "version": "#189",
@@ -4997,7 +5028,12 @@
    "field": "breadcrumb",
    "source": {
     "file": "scripts/seo_copy.py@8de3664",
-    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6"
+    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6",
+    "subst": {
+     "old": "Quick Look pour Markdown",
+     "new": "Coup d’œil pour Markdown",
+     "by": "comment 6235458801 (#249)"
+    }
    },
    "item": "ui",
    "version": "#189",
@@ -5497,7 +5533,12 @@
    "field": "title",
    "source": {
     "file": "scripts/seo_copy.py@8de3664",
-    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6"
+    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6",
+    "subst": {
+     "old": "Vista previa de Markdown en el Finder: Quick Look para archivos .md en Mac · MarsDawn",
+     "new": "Markdown en el Finder: Vista rápida para archivos .md en Mac · MarsDawn",
+     "by": "comment 6235458801 (#249)"
+    }
    },
    "item": "ql_title",
    "version": "#189",
@@ -5885,7 +5926,12 @@
    "field": "breadcrumb",
    "source": {
     "file": "scripts/seo_copy.py@8de3664",
-    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6"
+    "sha256": "abde71d1cd7f45fbc6bcb65f3bdca2955f1fa8f2c02148aecab6017cc6853ec6",
+    "subst": {
+     "old": "Quick Look para Markdown",
+     "new": "Vista rápida para Markdown",
+     "by": "comment 6235458801 (#249)"
+    }
    },
    "item": "ui",
    "version": "#189",
