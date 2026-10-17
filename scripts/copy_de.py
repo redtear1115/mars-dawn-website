@@ -1778,7 +1778,7 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
 <p><strong>Was du prüfen solltest:</strong> die Übergaben. Wo ein Agent die Arbeit eines anderen zusammenfasst, such nach einer Anforderung, die nicht mit hinübergekommen ist. Such nach zwei Dateien, die sich widersprechen, und entscheide, welche die maßgebliche ist, bevor jemand auf der anderen aufbaut. Öffne in MarsDawn den gemeinsamen Ordner mit Ablage &#9656; Ordner öffnen&#160;&#8230; (&#8679;&#8984;O): Neue Dateien erscheinen innerhalb etwa einer Sekunde im Tab Dateien, während die Agenten sie schreiben, und bei einem Git-Checkout nennt die Kopfzeile den Branch oder Worktree, damit zwei Fenster mit demselben Dateinamen aus verschiedenen Branches nicht gleich aussehen. Wenn das Ergebnis an Leute gehen muss, die kein Markdown lesen, zeigt <a href="/de/sharing-exported-pdfs/">Exportierte PDFs teilen</a> diesen Schritt.</p>
 
 <h2>Auf einen Blick</h2>
-<table>
+<div class="table-scroll"><table>
 <thead><tr><th>Muster (Ng)</th><th>Was es typischerweise übergibt (unsere Schlussfolgerung)</th><th>Zuerst lesen (unser Vorschlag)</th></tr></thead>
 <tbody>
 <tr><td>Reflexion</td><td>Ein überarbeiteter Entwurf, vielleicht mit Selbstprüfung</td><td>Das Ergebnis gegen deine eigene Anfrage; ein „geprüft“ selbst prüfen</td></tr>
@@ -1786,7 +1786,7 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
 <tr><td>Planung</td><td><code>plan.md</code>, eine Spezifikation, eine Aufgabenliste</td><td>Die Fünf-Minuten-Prüfung, bevor er läuft</td></tr>
 <tr><td>Zusammenarbeit mehrerer Agenten</td><td>Mehrere Dateien von mehreren Agenten, vielleicht auf mehreren Branches</td><td>Die Übergaben und welche Datei die maßgebliche ist</td></tr>
 </tbody>
-</table>
+</table></div>
 <p>Keiner der hier zitierten Autoren erwähnt MarsDawn, und keiner empfiehlt es oder ein anderes Markdown-Werkzeug. In MarsDawn steckt kein KI-Modell: Es weiß nicht, welches Muster eine Datei erzeugt hat, und es übernimmt diese Prüfungen nicht für dich. Es hält die Dateien lesbar, während du sie machst.</p>
 
 <h2>Ausprobieren</h2>
