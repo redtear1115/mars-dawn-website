@@ -60,13 +60,6 @@ try {
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
-<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
-  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
-  <div class="consent-actions">
-    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
-    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
-  </div>
-</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/ja/" aria-label="MarsDawn ホーム" aria-current="page">
@@ -369,14 +362,14 @@ try {
 <div class="table-scroll"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">機能</th><th scope="col">アプリ</th><th scope="col">CLI</th><th scope="col">MCP／skill</th><th scope="col">状態</th></tr></thead>
 <tbody>
-  <tr><th scope="row">行を指定して開く</th><td data-label="アプリ">その行へ移り、プレビューのブロックが光る</td><td data-label="CLI">marsdawn open notes.md:120（--background で前面に出ない）</td><td data-label="MCP／skill">open_in_marsdawn、skill は一度だけ開く</td><td data-label="状態">提供中</td></tr>
-  <tr><th scope="row">PDF 書き出し</th><td data-label="アプリ">ファイル ▸ PDF として書き出す…（⌥⌘E）</td><td data-label="CLI">marsdawn export、アプリ不要</td><td data-label="MCP／skill">export_markdown_to_pdf、skill</td><td data-label="状態">提供中</td></tr>
-  <tr><th scope="row">JSON の結果</th><td data-label="アプリ">—</td><td data-label="CLI">open と export に --json</td><td data-label="MCP／skill">MCP は同じ JSON を返す</td><td data-label="状態">提供中</td></tr>
-  <tr><th scope="row">エージェント用スキル</th><td data-label="アプリ">—</td><td data-label="CLI">marsdawn skill --install</td><td data-label="MCP／skill">一度開く・書き出すを教える</td><td data-label="状態">提供中</td></tr>
-  <tr><th scope="row">MCP サーバー</th><td data-label="アプリ">—</td><td data-label="CLI">内部で実行</td><td data-label="MCP／skill">marsdawn-mcp：ツール 2 つ、許可したフォルダだけ</td><td data-label="状態">提供中</td></tr>
-  <tr><th scope="row">AI 用にコピー、参照をコピー</th><td data-label="アプリ">編集 ▸ AI 用にコピー（⌃⌥⌘C）、参照をコピー（⌥⌘C）</td><td data-label="CLI">—</td><td data-label="MCP／skill">—（どのエージェントにも貼れる）</td><td data-label="状態">提供中</td></tr>
-  <tr><th scope="row">保存を自動で反映</th><td data-label="アプリ">保存された変更を反映、取り消しは一度で</td><td data-label="CLI">—</td><td data-label="MCP／skill">skill：もう一度開かない</td><td data-label="状態">提供中</td></tr>
-  <tr><th scope="row">Claude Code の hook</th><td data-label="アプリ">—</td><td data-label="CLI">open --background を使用</td><td data-label="MCP／skill">/cli/agents/ の hook スクリプト</td><td data-label="状態">ドキュメントあり・任意</td></tr>
+  <tr><th scope="row">行を指定して開く</th><td data-label="アプリ"><span class="cell">その行へ移り、プレビューのブロックが光る</span></td><td data-label="CLI"><span class="cell">marsdawn open notes.md:120（--background で前面に出ない）</span></td><td data-label="MCP／skill"><span class="cell">open_in_marsdawn、skill は一度だけ開く</span></td><td data-label="状態"><span class="cell">提供中</span></td></tr>
+  <tr><th scope="row">PDF 書き出し</th><td data-label="アプリ"><span class="cell">ファイル ▸ PDF として書き出す…（⌥⌘E）</span></td><td data-label="CLI"><span class="cell">marsdawn export、アプリ不要</span></td><td data-label="MCP／skill"><span class="cell">export_markdown_to_pdf、skill</span></td><td data-label="状態"><span class="cell">提供中</span></td></tr>
+  <tr><th scope="row">JSON の結果</th><td data-label="アプリ"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">open と export に --json</span></td><td data-label="MCP／skill"><span class="cell">MCP は同じ JSON を返す</span></td><td data-label="状態"><span class="cell">提供中</span></td></tr>
+  <tr><th scope="row">エージェント用スキル</th><td data-label="アプリ"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">marsdawn skill --install</span></td><td data-label="MCP／skill"><span class="cell">一度開く・書き出すを教える</span></td><td data-label="状態"><span class="cell">提供中</span></td></tr>
+  <tr><th scope="row">MCP サーバー</th><td data-label="アプリ"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">内部で実行</span></td><td data-label="MCP／skill"><span class="cell">marsdawn-mcp：ツール 2 つ、許可したフォルダだけ</span></td><td data-label="状態"><span class="cell">提供中</span></td></tr>
+  <tr><th scope="row">AI 用にコピー、参照をコピー</th><td data-label="アプリ"><span class="cell">編集 ▸ AI 用にコピー（⌃⌥⌘C）、参照をコピー（⌥⌘C）</span></td><td data-label="CLI"><span class="cell">—</span></td><td data-label="MCP／skill"><span class="cell">—（どのエージェントにも貼れる）</span></td><td data-label="状態"><span class="cell">提供中</span></td></tr>
+  <tr><th scope="row">保存を自動で反映</th><td data-label="アプリ"><span class="cell">保存された変更を反映、取り消しは一度で</span></td><td data-label="CLI"><span class="cell">—</span></td><td data-label="MCP／skill"><span class="cell">skill：もう一度開かない</span></td><td data-label="状態"><span class="cell">提供中</span></td></tr>
+  <tr><th scope="row">Claude Code の hook</th><td data-label="アプリ"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">open --background を使用</span></td><td data-label="MCP／skill"><span class="cell">/cli/agents/ の hook スクリプト</span></td><td data-label="状態"><span class="cell">ドキュメントあり・任意</span></td></tr>
 </tbody>
 </table></div>
 <p>提供中：上に書いたリリース版に含まれています。ドキュメントあり・任意：このサイトの手順で自分で追加するもので、ツールには含まれません。予定：まだなく、日付は未定です。予定：MCP の open_in_marsdawn にフォルダのオプション。--folder などほかのオプションは<a href="/ja/cli/">コマンドライン</a>へ。</p>
@@ -387,8 +380,8 @@ try {
 <div class="table-scroll"><table class="compare compare-wide">
 <thead><tr><th scope="col">ツール</th><th scope="col">組み合わせ方</th><th scope="col">設定</th></tr></thead>
 <tbody>
-  <tr><th scope="row">Claude Code</th><td data-label="組み合わせ方">skill に従い、書いたファイルを一度だけ、その行で開きます：<code>marsdawn open plan.md:42</code>。オプトインの hook を入れると、書いた .md をそのつどバックグラウンドで開きます</td><td data-label="設定"><code>marsdawn skill --install</code>、hook スクリプトは /cli/agents/ に</td></tr>
-  <tr><th scope="row">Codex、Cursor、Xcode</th><td data-label="組み合わせ方">専用の設定ガイドはまだありません。シェルコマンドを実行できるツールなら <code>marsdawn open file:line --json</code> を呼べます。指示ファイルを読むエージェントは SKILL.md（<code>--dir</code>）、MCP だけのクライアントは marsdawn-mcp を使えます</td><td data-label="設定"><code>brew install redtear1115/tap/marsdawn</code></td></tr>
+  <tr><th scope="row">Claude Code</th><td data-label="組み合わせ方"><span class="cell">skill に従い、書いたファイルを一度だけ、その行で開きます：<code>marsdawn open plan.md:42</code>。オプトインの hook を入れると、書いた .md をそのつどバックグラウンドで開きます</span></td><td data-label="設定"><span class="cell"><code>marsdawn skill --install</code>、hook スクリプトは /cli/agents/ に</span></td></tr>
+  <tr><th scope="row">Codex、Cursor、Xcode</th><td data-label="組み合わせ方"><span class="cell">専用の設定ガイドはまだありません。シェルコマンドを実行できるツールなら <code>marsdawn open file:line --json</code> を呼べます。指示ファイルを読むエージェントは SKILL.md（<code>--dir</code>）、MCP だけのクライアントは marsdawn-mcp を使えます</span></td><td data-label="設定"><span class="cell"><code>brew install redtear1115/tap/marsdawn</code></span></td></tr>
 </tbody>
 </table></div>
 <p>hook とコマンド：<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a> · <a href="/ja/cli/skill/">エージェント用スキル</a> · <a href="/ja/limits/">MarsDawn ができないこと</a></p>
@@ -525,6 +518,13 @@ try {
   </nav>
   <p class="footer-meta"><span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
 </div>
 </body>
 </html>

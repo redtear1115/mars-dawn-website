@@ -60,13 +60,6 @@ try {
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
-<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>
-  <p>Este sitio usa cookies de analítica para ver cómo lo usan los visitantes. Permanecen desactivadas a menos que las aceptes.</p>
-  <div class="consent-actions">
-    <button type="button" id="consent-decline" class="consent-btn">Rechazar</button>
-    <button type="button" id="consent-accept" class="consent-btn">Aceptar</button>
-  </div>
-</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/es/" aria-label="Inicio de MarsDawn" aria-current="page">
@@ -368,14 +361,14 @@ Activar checkout_v2 para todos el <span class="loop-day loop-d-u a"><span class=
 <div class="table-scroll"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">Función</th><th scope="col">En la app</th><th scope="col">CLI</th><th scope="col">MCP / skill</th><th scope="col">Estado</th></tr></thead>
 <tbody>
-  <tr><th scope="row">Abrir en una línea</th><td data-label="En la app">Va a la línea y el bloque de la vista previa parpadea</td><td data-label="CLI"><code>marsdawn open notes.md:120</code> (<code>--background</code> no roba el foco)</td><td data-label="MCP / skill"><code>open_in_marsdawn</code>; la skill abre una vez</td><td data-label="Estado">Disponible</td></tr>
-  <tr><th scope="row">Exportar a PDF</th><td data-label="En la app">Archivo ▸ Exportar como PDF… (⌥⌘E)</td><td data-label="CLI"><code>marsdawn export</code>, sin la app</td><td data-label="MCP / skill"><code>export_markdown_to_pdf</code>; skill</td><td data-label="Estado">Disponible</td></tr>
-  <tr><th scope="row">Resultado JSON</th><td data-label="En la app">—</td><td data-label="CLI"><code>--json</code> en open y export</td><td data-label="MCP / skill">MCP devuelve el mismo JSON</td><td data-label="Estado">Disponible</td></tr>
-  <tr><th scope="row">Skill para agentes</th><td data-label="En la app">—</td><td data-label="CLI"><code>marsdawn skill --install</code></td><td data-label="MCP / skill">Enseña a abrir una vez y a exportar</td><td data-label="Estado">Disponible</td></tr>
-  <tr><th scope="row">Servidor MCP</th><td data-label="En la app">—</td><td data-label="CLI">Funciona por debajo</td><td data-label="MCP / skill">marsdawn-mcp: dos herramientas, solo carpetas permitidas</td><td data-label="Estado">Disponible</td></tr>
-  <tr><th scope="row">Copiar para IA, Copiar referencia</th><td data-label="En la app">Edición ▸ Copiar para IA (⌃⌥⌘C), Copiar referencia (⌥⌘C)</td><td data-label="CLI">—</td><td data-label="MCP / skill">— (pégalo en cualquier agente)</td><td data-label="Estado">Disponible</td></tr>
-  <tr><th scope="row">Recarga al guardar</th><td data-label="En la app">Toma el cambio guardado, se deshace en un paso</td><td data-label="CLI">—</td><td data-label="MCP / skill">Skill: no volver a abrir</td><td data-label="Estado">Disponible</td></tr>
-  <tr><th scope="row">Hook de Claude Code</th><td data-label="En la app">—</td><td data-label="CLI">Usa <code>open --background</code></td><td data-label="MCP / skill">Script del hook en /cli/agents/</td><td data-label="Estado">Documentado, opcional</td></tr>
+  <tr><th scope="row">Abrir en una línea</th><td data-label="En la app"><span class="cell">Va a la línea y el bloque de la vista previa parpadea</span></td><td data-label="CLI"><span class="cell"><code>marsdawn open notes.md:120</code> (<code>--background</code> no roba el foco)</span></td><td data-label="MCP / skill"><span class="cell"><code>open_in_marsdawn</code>; la skill abre una vez</span></td><td data-label="Estado"><span class="cell">Disponible</span></td></tr>
+  <tr><th scope="row">Exportar a PDF</th><td data-label="En la app"><span class="cell">Archivo ▸ Exportar como PDF… (⌥⌘E)</span></td><td data-label="CLI"><span class="cell"><code>marsdawn export</code>, sin la app</span></td><td data-label="MCP / skill"><span class="cell"><code>export_markdown_to_pdf</code>; skill</span></td><td data-label="Estado"><span class="cell">Disponible</span></td></tr>
+  <tr><th scope="row">Resultado JSON</th><td data-label="En la app"><span class="cell">—</span></td><td data-label="CLI"><span class="cell"><code>--json</code> en open y export</span></td><td data-label="MCP / skill"><span class="cell">MCP devuelve el mismo JSON</span></td><td data-label="Estado"><span class="cell">Disponible</span></td></tr>
+  <tr><th scope="row">Skill para agentes</th><td data-label="En la app"><span class="cell">—</span></td><td data-label="CLI"><span class="cell"><code>marsdawn skill --install</code></span></td><td data-label="MCP / skill"><span class="cell">Enseña a abrir una vez y a exportar</span></td><td data-label="Estado"><span class="cell">Disponible</span></td></tr>
+  <tr><th scope="row">Servidor MCP</th><td data-label="En la app"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">Funciona por debajo</span></td><td data-label="MCP / skill"><span class="cell">marsdawn-mcp: dos herramientas, solo carpetas permitidas</span></td><td data-label="Estado"><span class="cell">Disponible</span></td></tr>
+  <tr><th scope="row">Copiar para IA, Copiar referencia</th><td data-label="En la app"><span class="cell">Edición ▸ Copiar para IA (⌃⌥⌘C), Copiar referencia (⌥⌘C)</span></td><td data-label="CLI"><span class="cell">—</span></td><td data-label="MCP / skill"><span class="cell">— (pégalo en cualquier agente)</span></td><td data-label="Estado"><span class="cell">Disponible</span></td></tr>
+  <tr><th scope="row">Recarga al guardar</th><td data-label="En la app"><span class="cell">Toma el cambio guardado, se deshace en un paso</span></td><td data-label="CLI"><span class="cell">—</span></td><td data-label="MCP / skill"><span class="cell">Skill: no volver a abrir</span></td><td data-label="Estado"><span class="cell">Disponible</span></td></tr>
+  <tr><th scope="row">Hook de Claude Code</th><td data-label="En la app"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">Usa <code>open --background</code></span></td><td data-label="MCP / skill"><span class="cell">Script del hook en /cli/agents/</span></td><td data-label="Estado"><span class="cell">Documentado, opcional</span></td></tr>
 </tbody>
 </table></div>
 <p>Disponible: en la versión indicada arriba. Documentado, opcional: instrucciones de este sitio que añades tú; no viene en la herramienta. Previsto: aún no existe, sin fecha. Previsto: una opción de carpeta en la herramienta MCP <code>open_in_marsdawn</code>. Otras opciones, como <code>--folder</code>, están en <a href="/es/cli/">Línea de comandos</a>.</p>
@@ -386,8 +379,8 @@ Activar checkout_v2 para todos el <span class="loop-day loop-d-u a"><span class=
 <div class="table-scroll"><table class="compare compare-wide">
 <thead><tr><th scope="col">Herramienta</th><th scope="col">Cómo se combinan</th><th scope="col">Configuración</th></tr></thead>
 <tbody>
-  <tr><th scope="row">Claude Code</th><td data-label="Cómo se combinan">La skill hace que abra una vez lo que escribió, en la línea: <code>marsdawn open plan.md:42</code>. Un hook opcional abre cada .md que escribe, en segundo plano</td><td data-label="Configuración"><code>marsdawn skill --install</code>; el script del hook en /cli/agents/</td></tr>
-  <tr><th scope="row">Codex, Cursor, Xcode</th><td data-label="Cómo se combinan">Aún no hay guía de configuración. Cualquier cosa que ejecute un comando de shell puede llamar a <code>marsdawn open file:line --json</code>; un agente que carga archivos de instrucciones puede usar SKILL.md (<code>--dir</code>), y un cliente solo MCP, marsdawn-mcp</td><td data-label="Configuración"><code>brew install redtear1115/tap/marsdawn</code></td></tr>
+  <tr><th scope="row">Claude Code</th><td data-label="Cómo se combinan"><span class="cell">La skill hace que abra una vez lo que escribió, en la línea: <code>marsdawn open plan.md:42</code>. Un hook opcional abre cada .md que escribe, en segundo plano</span></td><td data-label="Configuración"><span class="cell"><code>marsdawn skill --install</code>; el script del hook en /cli/agents/</span></td></tr>
+  <tr><th scope="row">Codex, Cursor, Xcode</th><td data-label="Cómo se combinan"><span class="cell">Aún no hay guía de configuración. Cualquier cosa que ejecute un comando de shell puede llamar a <code>marsdawn open file:line --json</code>; un agente que carga archivos de instrucciones puede usar SKILL.md (<code>--dir</code>), y un cliente solo MCP, marsdawn-mcp</span></td><td data-label="Configuración"><span class="cell"><code>brew install redtear1115/tap/marsdawn</code></span></td></tr>
 </tbody>
 </table></div>
 <p>El hook y los comandos: <a href="/es/cli/agents/">marsdawn para agentes</a> · <a href="/es/cli/skill/">Skill para agentes</a> · <a href="/es/limits/">Lo que MarsDawn no hace</a></p>
@@ -524,6 +517,13 @@ Activar checkout_v2 para todos el <span class="loop-day loop-d-u a"><span class=
   </nav>
   <p class="footer-meta"><span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>
+  <p>Este sitio usa cookies de analítica para ver cómo lo usan los visitantes. Permanecen desactivadas a menos que las aceptes.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Rechazar</button>
+    <button type="button" id="consent-accept" class="consent-btn">Aceptar</button>
+  </div>
 </div>
 </body>
 </html>

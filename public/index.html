@@ -60,13 +60,6 @@ try {
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
-  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
-  <div class="consent-actions">
-    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
-    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
-  </div>
-</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/" aria-label="MarsDawn home" aria-current="page">
@@ -368,14 +361,14 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
 <div class="table-scroll"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">Capability</th><th scope="col">In the app</th><th scope="col">CLI</th><th scope="col">MCP / skill</th><th scope="col">Status</th></tr></thead>
 <tbody>
-  <tr><th scope="row">Open at a line</th><td data-label="In the app">Lands on the line, flashes the preview block</td><td data-label="CLI">marsdawn open notes.md:120 (--background keeps focus)</td><td data-label="MCP / skill">open_in_marsdawn; the skill opens once</td><td data-label="Status">Shipped</td></tr>
-  <tr><th scope="row">PDF export</th><td data-label="In the app">File ▸ Export as PDF… (⌥⌘E)</td><td data-label="CLI">marsdawn export, no app needed</td><td data-label="MCP / skill">export_markdown_to_pdf; skill</td><td data-label="Status">Shipped</td></tr>
-  <tr><th scope="row">JSON result</th><td data-label="In the app">—</td><td data-label="CLI">--json on open and export</td><td data-label="MCP / skill">MCP returns the same JSON</td><td data-label="Status">Shipped</td></tr>
-  <tr><th scope="row">Agent skill</th><td data-label="In the app">—</td><td data-label="CLI">marsdawn skill --install</td><td data-label="MCP / skill">Teaches open once and export</td><td data-label="Status">Shipped</td></tr>
-  <tr><th scope="row">MCP server</th><td data-label="In the app">—</td><td data-label="CLI">Runs underneath</td><td data-label="MCP / skill">marsdawn-mcp: two tools, allowed folders only</td><td data-label="Status">Shipped</td></tr>
-  <tr><th scope="row">Copy for AI, Copy Reference</th><td data-label="In the app">Edit ▸ Copy for AI (⌃⌥⌘C), Copy Reference (⌥⌘C)</td><td data-label="CLI">—</td><td data-label="MCP / skill">— (paste into any agent)</td><td data-label="Status">Shipped</td></tr>
-  <tr><th scope="row">Live reload</th><td data-label="In the app">Takes the saved change, one Undo</td><td data-label="CLI">—</td><td data-label="MCP / skill">Skill: don't open again</td><td data-label="Status">Shipped</td></tr>
-  <tr><th scope="row">Claude Code hook</th><td data-label="In the app">—</td><td data-label="CLI">Uses open --background</td><td data-label="MCP / skill">Hook script from /cli/agents/</td><td data-label="Status">Documented, opt-in</td></tr>
+  <tr><th scope="row">Open at a line</th><td data-label="In the app"><span class="cell">Lands on the line, flashes the preview block</span></td><td data-label="CLI"><span class="cell">marsdawn open notes.md:120 (--background keeps focus)</span></td><td data-label="MCP / skill"><span class="cell">open_in_marsdawn; the skill opens once</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
+  <tr><th scope="row">PDF export</th><td data-label="In the app"><span class="cell">File ▸ Export as PDF… (⌥⌘E)</span></td><td data-label="CLI"><span class="cell">marsdawn export, no app needed</span></td><td data-label="MCP / skill"><span class="cell">export_markdown_to_pdf; skill</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
+  <tr><th scope="row">JSON result</th><td data-label="In the app"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">--json on open and export</span></td><td data-label="MCP / skill"><span class="cell">MCP returns the same JSON</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
+  <tr><th scope="row">Agent skill</th><td data-label="In the app"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">marsdawn skill --install</span></td><td data-label="MCP / skill"><span class="cell">Teaches open once and export</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
+  <tr><th scope="row">MCP server</th><td data-label="In the app"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">Runs underneath</span></td><td data-label="MCP / skill"><span class="cell">marsdawn-mcp: two tools, allowed folders only</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
+  <tr><th scope="row">Copy for AI, Copy Reference</th><td data-label="In the app"><span class="cell">Edit ▸ Copy for AI (⌃⌥⌘C), Copy Reference (⌥⌘C)</span></td><td data-label="CLI"><span class="cell">—</span></td><td data-label="MCP / skill"><span class="cell">— (paste into any agent)</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
+  <tr><th scope="row">Live reload</th><td data-label="In the app"><span class="cell">Takes the saved change, one Undo</span></td><td data-label="CLI"><span class="cell">—</span></td><td data-label="MCP / skill"><span class="cell">Skill: don't open again</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
+  <tr><th scope="row">Claude Code hook</th><td data-label="In the app"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">Uses open --background</span></td><td data-label="MCP / skill"><span class="cell">Hook script from /cli/agents/</span></td><td data-label="Status"><span class="cell">Documented, opt-in</span></td></tr>
 </tbody>
 </table></div>
 <p>Shipped: in the released version named above. Documented, opt-in: instructions on this site that you add yourself; not inside the tool. Planned: not built yet; no date. Planned: a folder option in the MCP open_in_marsdawn tool. More options, such as --folder, are on <a href="/cli/">Command Line</a>.</p>
@@ -386,8 +379,8 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
 <div class="table-scroll"><table class="compare compare-wide">
 <thead><tr><th scope="col">Tool</th><th scope="col">How it pairs</th><th scope="col">Set up</th></tr></thead>
 <tbody>
-  <tr><th scope="row">Claude Code</th><td data-label="How it pairs">The skill has it open what it wrote, once, at the line: <code>marsdawn open plan.md:42</code>. An opt-in hook opens each .md it writes, in the background</td><td data-label="Set up"><code>marsdawn skill --install</code>; the hook script from /cli/agents/</td></tr>
-  <tr><th scope="row">Codex, Cursor, Xcode</th><td data-label="How it pairs">No setup guide yet. Anything that runs a shell command can call <code>marsdawn open file:line --json</code>; an agent that loads instruction files can use SKILL.md (<code>--dir</code>), and an MCP-only client can use marsdawn-mcp</td><td data-label="Set up"><code>brew install redtear1115/tap/marsdawn</code></td></tr>
+  <tr><th scope="row">Claude Code</th><td data-label="How it pairs"><span class="cell">The skill has it open what it wrote, once, at the line: <code>marsdawn open plan.md:42</code>. An opt-in hook opens each .md it writes, in the background</span></td><td data-label="Set up"><span class="cell"><code>marsdawn skill --install</code>; the hook script from /cli/agents/</span></td></tr>
+  <tr><th scope="row">Codex, Cursor, Xcode</th><td data-label="How it pairs"><span class="cell">No setup guide yet. Anything that runs a shell command can call <code>marsdawn open file:line --json</code>; an agent that loads instruction files can use SKILL.md (<code>--dir</code>), and an MCP-only client can use marsdawn-mcp</span></td><td data-label="Set up"><span class="cell"><code>brew install redtear1115/tap/marsdawn</code></span></td></tr>
 </tbody>
 </table></div>
 <p>The hook and the commands: <a href="/cli/agents/">marsdawn for agents</a> · <a href="/cli/skill/">Agent skill</a> · <a href="/limits/">What MarsDawn doesn't do</a></p>
@@ -524,6 +517,13 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
   </nav>
   <p class="footer-meta"><span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+  <p>This site uses analytics cookies to see how visitors use it. They stay off unless you accept.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accept</button>
+  </div>
 </div>
 </body>
 </html>

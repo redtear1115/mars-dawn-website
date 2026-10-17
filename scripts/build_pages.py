@@ -962,7 +962,6 @@ def third_party_notices_html() -> str:
 </head>
 <body>
 <a class="skip" href="#main">{SKIP_LABEL["en"]}</a>
-{consent_banner_html("en")}
 <div class="page">
 {header_html}
 <main id="main">
@@ -970,6 +969,7 @@ def third_party_notices_html() -> str:
 </main>
 {footer_html}
 </div>
+{consent_banner_html("en")}
 </body>
 </html>
 """
@@ -5646,7 +5646,7 @@ def promo_table_html(head: list, rows: list, classes: str) -> str:
     cols = "".join(f'<th scope="col">{cell}</th>' for cell in head)
     body = "\n".join(
         f'  <tr><th scope="row">{row[0]}</th>'
-        + "".join(f'<td data-label="{_plain(label)}">{cell}</td>' for label, cell in zip(head[1:], row[1:])) + "</tr>"
+        + "".join(f'<td data-label="{_plain(label)}"><span class="cell">{cell}</span></td>' for label, cell in zip(head[1:], row[1:])) + "</tr>"
         for row in rows)
     return f'<div class="table-scroll"><table class="{classes}">\n<thead><tr>{cols}</tr></thead>\n<tbody>\n{body}\n</tbody>\n</table></div>'
 
@@ -5656,7 +5656,7 @@ def vs_page(copy: dict, sources_h2: str) -> dict:
     dont = "\n".join(f"  <li>{item}</li>" for item in copy["dont"])
     more = "\n".join(f"  <li>{item}</li>" for item in copy["links"])
     cite = lambda h: re.sub(r"\[((?:V\d+|kit)(?:[,、] ?(?:V\d+|kit))*)\]",
-                           lambda m: "[" + re.sub(r"V\d+|kit", lambda t: f'<a href="#{t.group(0).lower()}">{t.group(0)}</a>', m.group(1)) + "]", h)
+                           lambda m: '<span class="cite">[' + re.sub(r"V\d+|kit", lambda t: f'<a href="#{t.group(0).lower()}">{t.group(0)}</a>', m.group(1)) + "]</span>", h)
     rows = [[cite(cell) for cell in row] for row in copy["rows"]]
     sources = "\n".join(f'  <li id="{sid.lower()}">{sid} · <a href="{url}">{"Mac App Store" if url == LISTING_URL else url}</a></li>'
                          for sid, url in promo_data.DATA["vsources"])   # the store checker allows the listing URL only inside an href: its text is the site's own link label
@@ -6415,7 +6415,6 @@ def render(locale: str, slug: str, page: dict) -> str:
 {extra_js}</head>
 <body>
 <a class="skip" href="#main">{SKIP_LABEL[locale]}</a>
-{consent_banner_html(locale)}
 <div class="page">
 {site_header_html(locale, slug)}
 <main id="main">
@@ -6423,6 +6422,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 </main>
 {footer_html}
 </div>
+{consent_banner_html(locale)}
 </body>
 </html>
 """
@@ -6709,7 +6709,6 @@ def render_404(locale: str) -> str:
 </head>
 <body>
 <a class="skip" href="#main">{SKIP_LABEL[locale]}</a>
-{consent_banner_html(locale)}
 <div class="page">
 {site_header_html(locale)}
 <main id="main">
@@ -6724,6 +6723,7 @@ def render_404(locale: str) -> str:
 </main>
 {footer_html}
 </div>
+{consent_banner_html(locale)}
 </body>
 </html>
 """
