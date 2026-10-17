@@ -6188,19 +6188,21 @@ def add_h2_ids(locale: str, slug: str, page: dict, html: str) -> str:
 # German compounds that are wider than a 320px phone line in a heading. Without a break opportunity,
 # overflow-wrap: break-word splits them at the last letter that fits (Datenschutzrichtlini/e); a soft
 # hyphen lets them break at a syllable, with a visible hyphen. Only the HTML headings get them: titles,
-# breadcrumbs, the .md mirrors and the templates' own Markdown keep the plain word. hyphens: auto was
+# breadcrumbs, the .md mirrors and the templates' own Markdown keep the plain word. Table header cells (th) get
+# them too, for the row headers of the /vs/ table, which is only about 130px wide at 720px. hyphens: auto was
 # rejected because it also split short words and the CLI name (ei-nem, mars-dawn) in other headings.
 SOFT_HYPHENS = {
     "de": {
         "Datenschutzrichtlinie": "Daten&shy;schutz&shy;richt&shy;linie",
         "Besprechungsprotokolle": "Besprechungs&shy;proto&shy;kolle",
         "Veröffentlichungsablauf": "Veröffentlichungs&shy;ablauf",
+        "Systemvoraussetzungen": "System&shy;voraus&shy;setzungen",
     },
 }
 
 
 def soft_hyphenate(locale: str, html: str) -> str:
-    """Put SOFT_HYPHENS' break points into the text of a page's h1 to h3 headings."""
+    """Put SOFT_HYPHENS' break points into the text of a page's h1 to h3 headings and table header cells."""
     words = SOFT_HYPHENS.get(locale)
     if not words:
         return html
@@ -6211,7 +6213,7 @@ def soft_hyphenate(locale: str, html: str) -> str:
             text = text.replace(word, hyphenated)
         return m.group(1) + text + m.group(3)
 
-    return re.sub(r"(<h[1-3][^>]*>)(.*?)(</h[1-3]>)", heading, html, flags=re.S)
+    return re.sub(r"(<(?:h[1-3]|th)(?=[\s>])[^>]*>)(.*?)(</(?:h[1-3]|th)>)", heading, html, flags=re.S)
 
 
 # --- Structured data (schema.org JSON-LD) ------------------------------------------------------
