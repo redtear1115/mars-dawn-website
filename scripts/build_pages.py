@@ -6119,6 +6119,35 @@ def add_h2_ids(locale: str, slug: str, page: dict, html: str) -> str:
     return html
 
 
+# German compounds that are wider than a 320px phone line in a heading. Without a break opportunity,
+# overflow-wrap: break-word splits them at the last letter that fits (Datenschutzrichtlini/e); a soft
+# hyphen lets them break at a syllable, with a visible hyphen. Only the HTML headings get them: titles,
+# breadcrumbs, the .md mirrors and the templates' own Markdown keep the plain word. hyphens: auto was
+# rejected because it also split short words and the CLI name (ei-nem, mars-dawn) in other headings.
+SOFT_HYPHENS = {
+    "de": {
+        "Datenschutzrichtlinie": "Daten&shy;schutz&shy;richt&shy;linie",
+        "Besprechungsprotokolle": "Besprechungs&shy;proto&shy;kolle",
+        "Veröffentlichungsablauf": "Veröffentlichungs&shy;ablauf",
+    },
+}
+
+
+def soft_hyphenate(locale: str, html: str) -> str:
+    """Put SOFT_HYPHENS' break points into the text of a page's h1 to h3 headings."""
+    words = SOFT_HYPHENS.get(locale)
+    if not words:
+        return html
+
+    def heading(m: re.Match) -> str:
+        text = m.group(2)
+        for word, hyphenated in words.items():
+            text = text.replace(word, hyphenated)
+        return m.group(1) + text + m.group(3)
+
+    return re.sub(r"(<h[1-3][^>]*>)(.*?)(</h[1-3]>)", heading, html, flags=re.S)
+
+
 # --- Structured data (schema.org JSON-LD) ------------------------------------------------------
 # What the home page says about the app. APP_VERSION is the Mac app's current release (1.1.0 went on
 # sale 2026-10-09): raise it with each release, together with the app's own version.
@@ -6369,6 +6398,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = add_toc(locale, slug, main_html)
     elif slug != "index":
         main_html = add_h2_ids(locale, slug, page, main_html)
+    main_html = soft_hyphenate(locale, main_html)
     if slug in LEGAL_PAGES:
         # A visible link to this page's own .md mirror (issue #33), so a reader can see the
         # Markdown source MarsDawnKit rendered this from. It sits right after the kit-rendered
