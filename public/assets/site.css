@@ -77,32 +77,129 @@ a:focus-visible {
   padding: 0 16px 96px;
 }
 
-/* Masthead: the icon's sunrise, the name, one quiet line. */
+/* Masthead (#247): the icon's sunrise and the name, the five main pages, the language switch.
+   From 640px up it is two rows inside the text column: the name on the left and the languages on
+   the right, the pages under them. Below 640px it is one row: the name, a Menu button and a language
+   button. The pages and the languages are each in the markup twice, once for each layout, and CSS
+   shows one: the other is display:none, so no reader meets either twice. No script. */
 .masthead {
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-areas: "brand nav lang";
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 28px 0 20px;
+  gap: 8px;
+  padding: 14px 0;
   border-bottom: 1px solid var(--hairline);
 }
+.masthead-plain {
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "brand nav" "lang lang";
+}
 .brand {
+  grid-area: brand;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  min-width: 0;
   color: var(--ink);
   text-decoration: none;
 }
-.brand img { width: 40px; height: 40px; }
-.brand strong { font-size: 1.1rem; font-weight: 650; letter-spacing: -0.01em; }
-.lang {
-  font-size: 0.9rem;
-  color: var(--dust);
+.brand img { width: 30px; height: 30px; }
+.brand strong { font-size: 1rem; font-weight: 650; letter-spacing: -0.01em; }
+.site-nav { grid-area: nav; }
+.lang, .masthead-back { grid-area: lang; }
+.masthead-back { justify-self: start; font-size: 0.9rem; color: var(--dust); }
+.site-nav ul, .lang ul { list-style: none; margin: 0; padding: 0; }
+.site-nav li + li, .lang li + li { margin-top: 0; }
+.site-nav a, .lang a { color: var(--dust); text-decoration: none; white-space: nowrap; }
+.site-nav [aria-current], .lang [aria-current="true"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35em;
 }
-/* A 44px-tall tap target around each name. The padding is transparent and the
-   negative margins give it back, so the line looks the same as without it. */
-.lang a { color: var(--dust); display: inline-block; line-height: 24px; padding: 10px 6px; margin: -10px -6px; }
-.lang [aria-current="true"] { color: var(--ink); font-weight: 600; }
+.lang [aria-current="true"] { font-weight: 600; }
+.site-nav-wide, .lang-wide { display: none; }
+/* Menu and language buttons: the header's hairline outline, 44px tall, not a filled button. */
+.masthead summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 9px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  color: var(--dust);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.masthead summary::-webkit-details-marker { display: none; }
+.masthead summary::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border: solid currentColor;
+  border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-2px) rotate(45deg);
+}
+.masthead details[open] > summary::after { transform: translateY(1px) rotate(-135deg); }
+.masthead summary:hover { border-color: var(--dust); color: var(--ink); }
+.masthead summary:focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; }
+/* The opened panels float over the page under the header (no shadow: DESIGN.md, the Real Objects Rule). */
+.site-nav-narrow > ul,
+.lang-panel,
+.lang-more > ul {
+  position: absolute;
+  z-index: 20;
+  top: 100%;
+  margin-top: 4px;
+  padding: 4px 0;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+}
+.site-nav-narrow > ul { left: 0; right: 0; }
+.lang-panel { right: 0; min-width: 12rem; }
+.site-nav-narrow a, .lang-panel a, .lang-more a { display: flex; align-items: center; min-height: 44px; padding: 0 16px; }
+.lang-sep { margin: 4px 0; border: 0; border-top: 1px solid var(--hairline); }
+
+/* The narrowest phones (320px): the name, Menu and the language button still fit on one row in every
+   language, Japanese's four-character Menu included. */
+@media (max-width: 359px) {
+  .masthead { gap: 6px; }
+  .brand { gap: 6px; }
+  .brand img { width: 26px; height: 26px; }
+  .brand strong { font-size: 0.9rem; }
+  .masthead summary { gap: 4px; padding: 0 7px; font-size: 0.8rem; }
+}
+
+@media (min-width: 640px) {
+  .masthead {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "brand lang" "nav nav";
+    gap: 0 16px;
+    padding: 20px 0 6px;
+  }
+  .masthead-plain { grid-template-areas: "brand lang" "nav nav"; }
+  .brand { gap: 12px; }
+  .brand img { width: 40px; height: 40px; }
+  .brand strong { font-size: 1.1rem; }
+  .site-nav-narrow, .lang-narrow { display: none; }
+  .site-nav-wide { display: flex; flex-wrap: wrap; gap: 0 20px; font-size: 0.9rem; }
+  .lang-wide { display: flex; align-items: center; gap: 0 6px; font-size: 0.9rem; color: var(--dust); }
+  .lang-wide > ul { display: flex; flex-wrap: wrap; gap: 0 6px; }
+  /* A 44px-tall tap target on each name. */
+  .site-nav-wide a, .lang-wide > ul a { display: inline-flex; align-items: center; min-height: 44px; }
+  .lang-wide > ul a { padding: 0 6px; }
+  .lang-more { position: relative; }
+  .lang-more > summary { min-height: 44px; padding: 0 6px; border-color: transparent; }
+  .lang-more > ul { top: 100%; right: 0; min-width: 11rem; margin-top: 0; }
+}
 
 .intro { padding: 56px 0 8px; }
 .intro h1 {
@@ -229,28 +326,46 @@ kbd {
   flex-direction: column;
   gap: 10px;
 }
-/* Two rows (#65): the site's links, then the meta line. */
-.footer-nav,
+/* Two parts (#65, #247): the site's links in six titled groups, then the meta line. The groups are
+   one column below 640px and three by two from there; the footer stays in the text column. */
 .footer-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0; }
+.footer-nav { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px 24px; }
+.footer-nav section { min-width: 0; }
+.footer-nav h2 {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  font-weight: 650;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+.footer-nav ul { list-style: none; margin: 0; padding: 0; }
+.footer-nav li + li { margin-top: 0; }
 .footer a { color: var(--dust); white-space: nowrap; }
-/* The nav row's links may wrap inside themselves: a long label (es "Ver Markdown en otras
-   herramientas frente a MarsDawn") is wider than a 320-375px screen on its own line.
-   flex-wrap still moves whole links to the next row first. */
-.footer-nav a { white-space: normal; }
+/* A 44px tap target on each link; the negative margin gives the line spacing back (as `.lang a` did).
+   A long label (es "Ver Markdown en otras herramientas frente a MarsDawn") wraps inside itself. */
+.footer-nav a { display: block; padding: 12px 0; margin: -6px 0; line-height: 1.4; white-space: normal; overflow-wrap: anywhere; }
 .footer a[aria-current="page"] { color: var(--ink); }
+@media (min-width: 640px) {
+  .footer-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+}
 /* The origin mark, set as Futari's site sets it: tracked caps, the same in every language. */
 .footer-origin { font-size: 0.78rem; letter-spacing: 2px; white-space: nowrap; }
 
 /* "Cookie settings" (consent.js): a footer link with nothing to navigate to (it reopens
    the banner in place), so it's a <button> styled to match the <a>s beside it. */
 .footer-link-btn {
+  display: block;
   font: inherit;
+  line-height: 1.4;
+  text-align: left;
   color: var(--dust);
-  white-space: nowrap;
   background: none;
   border: none;
-  padding: 0;
+  padding: 12px 0;
+  margin: -6px 0;
   cursor: pointer;
+  overflow-wrap: anywhere;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
@@ -338,9 +453,8 @@ html.has-consent-banner body {
 
 html { scrollbar-color: var(--hairline) var(--paper); }
 
-.masthead { flex-wrap: wrap; }
-/* A link to the listing since launch (owner, 2026-09-20), so it needs a tap target and states,
-   but it keeps the quiet pill look: Dust text, hairline border, no fill and no underline. */
+/* A quiet status pill. Only the home hero uses it now, before launch (hero_cta_html); the masthead
+   stopped carrying one in #247 (owner, 2026-10-17). */
 .store-chip {
   display: inline-flex;
   align-items: center;
@@ -364,17 +478,6 @@ html { scrollbar-color: var(--hairline) var(--paper); }
   outline-offset: 3px;
   border-radius: 999px;
 }
-/* After the base rules above, so these win at the same specificity. */
-@media (max-width: 480px) {
-  /* Two rows, not three: the name and the store status share the first,
-     the languages take the second. */
-  .masthead { gap: 10px 12px; padding: 18px 0 14px; }
-  .brand { gap: 10px; }
-  .brand img { width: 34px; height: 34px; }
-  .masthead .store-chip { padding: 2px 8px; font-size: 0.72rem; }
-  .lang { flex-basis: 100%; font-size: 0.84rem; }
-}
-
 .shot {
   --gutter: 0px;
   /* The plate is --w-media, never narrower than the text column; the figure adds the callout

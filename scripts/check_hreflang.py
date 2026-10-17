@@ -10,7 +10,12 @@ For every public/**/index.html page it checks that:
   disk, since a locale may have only some pages) plus x-default, and x-default is the en page;
 - the alternate for its own language is its canonical URL;
 - every alternate is a page that exists, and that page lists the same set back (reciprocity);
-- the language switch links to the same pages as the alternates.
+- the "More" group follows the locales this page has: with none of de, fr, es and ko the header has no
+  `details.lang-more` and the narrow switch no separator; with any, exactly one of each; and the More
+  button names the page's own language when that is one of them (#247);
+- the page has exactly one language switch (`nav.lang`), and each of its two copies (the wide one and the
+  narrow one: CSS shows one) links to the same pages as the alternates, on its own and not as one merged
+  list, with exactly one link marked aria-current, the page's own language (#247).
 And for sitemap.xml, that every page is listed once with the same set of alternates as its HTML.
 
 Exits 1 and lists every problem if anything is off. To see it catch one, check a copy of public/
@@ -24,6 +29,10 @@ import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.dont_write_bytecode = True
+import chrome_parse  # noqa: E402  (reads the header's markup; does not import build_pages)
+
 BASE_URL = "https://marsdawn.southern-light.dev"
 # hreflang value -> path prefix. Mirrors LOCALES in build_pages.py, written out again on purpose:
 # a check that imports the thing it checks can't catch a mistake in it.
@@ -31,6 +40,9 @@ BASE_URL = "https://marsdawn.southern-light.dev"
 # pages on disk, and check_locales.py is what fails a half-built or unfinished one.
 LOCALES = {"en": "/", "zh-Hant": "/zh-hant/", "zh-Hans": "/zh-hans/", "ja": "/ja/",
            "de": "/de/", "fr": "/fr/", "es": "/es/", "ko": "/ko/"}
+MORE = ("de", "fr", "es", "ko")   # the languages the switch keeps under "More"
+LABEL = {"en": "English", "zh-Hant": "繁體中文", "zh-Hans": "简体中文", "ja": "日本語",
+         "de": "Deutsch", "fr": "Français", "es": "Español", "ko": "한국어"}   # each language's own name
 
 
 class Head(HTMLParser):
@@ -39,8 +51,6 @@ class Head(HTMLParser):
         self.lang = None
         self.canonical = None
         self.alternates = []  # (hreflang, href)
-        self.switch = []  # (hreflang, href)
-        self._in_switch = False
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -50,14 +60,6 @@ class Head(HTMLParser):
             self.canonical = a.get("href")
         elif tag == "link" and a.get("rel") == "alternate" and "hreflang" in a:
             self.alternates.append((a["hreflang"], a.get("href")))
-        elif tag == "nav" and "lang" in (a.get("class") or "").split():
-            self._in_switch = True
-        elif tag == "a" and self._in_switch:
-            self.switch.append((a.get("hreflang"), a.get("href")))
-
-    def handle_endtag(self, tag):
-        if tag == "nav":
-            self._in_switch = False
 
 
 def locale_of(url_path: str) -> str:
@@ -93,7 +95,8 @@ def main(argv) -> int:
         rel = "/" if rel == "/./" else rel
         url = BASE_URL + rel
         head = Head()
-        head.feed(path.read_text(encoding="utf-8"))
+        text = path.read_text(encoding="utf-8")
+        head.feed(text)
         where = rel
         if head.lang != locale_of(rel):
             problems.append(f"{where}: <html lang={head.lang!r}>, expected {locale_of(rel)!r}")
@@ -111,9 +114,31 @@ def main(argv) -> int:
             problems.append(f"{where}: its own-language alternate is {alts.get(locale_of(rel))}, expected {url}")
         if "x-default" in alts and alts["x-default"] != alts.get("en"):
             problems.append(f"{where}: x-default {alts['x-default']} isn't the en page {alts.get('en')}")
-        switch = {lang: BASE_URL + href for lang, href in head.switch}
-        if switch != {lang: href for lang, href in alts.items() if lang != "x-default"}:
-            problems.append(f"{where}: language switch {sorted(switch.items())} doesn't match the alternates")
+        chrome = chrome_parse.parse(text)
+        if chrome.nav_lang_count != 1:
+            problems.append(f"{where}: {chrome.nav_lang_count} language switches (nav.lang), want exactly 1")
+        want = {lang: href for lang, href in alts.items() if lang != "x-default"}
+        for copy in ("wide", "narrow"):
+            links = chrome.lang[copy]
+            switch = {lang: BASE_URL + href for lang, href, _, _ in links}
+            if switch != want or len(links) != len(want):
+                problems.append(f"{where}: {copy} language switch {sorted(switch.items())} doesn't match the alternates")
+            marked = [lang for lang, _, _, current in links if current == "true"]
+            if marked != [head.lang]:
+                problems.append(f"{where}: {copy} language switch marks {marked} aria-current, want just the page's own language {head.lang!r}")
+        live_more = [lang for lang in want if lang in MORE]
+        if not live_more and (chrome.lang_more_details or chrome.lang_seps):
+            problems.append(f"{where}: the More group is empty (no de, fr, es or ko version) but the header has "
+                            f"{chrome.lang_more_details} details.lang-more and {chrome.lang_seps} narrow separator(s)")
+        elif live_more and (chrome.lang_more_details, chrome.lang_seps) != (1, 1):
+            problems.append(f"{where}: the More group has {live_more} but the header has {chrome.lang_more_details} "
+                            f"details.lang-more and {chrome.lang_seps} narrow separator(s), want 1 and 1")
+        elif live_more:
+            shown = chrome.lang_more_summary
+            if head.lang in MORE and (shown is None or shown != (LABEL[head.lang], head.lang)):
+                problems.append(f"{where}: the More button shows {shown}, want the page's own language {(LABEL[head.lang], head.lang)}")
+            elif head.lang not in MORE and (shown is None or shown[0] in LABEL.values() or shown[1] is not None):
+                problems.append(f"{where}: the More button shows {shown}, but the page isn't in the More group, so it should say More")
         pages[url] = alts
 
     for url, alts in pages.items():

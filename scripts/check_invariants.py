@@ -40,6 +40,15 @@ steps are its visible numbered steps. /view-markdown-on-mac/ keeps its older FAQ
 `<section class="faq">`) and is left to its own page. The home page and /native/ open with a
 definition sentence (`<p class="definition">`), and `llms-full.txt` repeats each of them.
 
+The header and the footer (website #247), on every `index.html` page (the 404 pages and the licence
+notices page have no `index.html`; scripts/check_hreflang.py scans the same set; an independent audit
+covers those): the main navigation, which is in the markup twice (a wide and a narrow copy), has the
+five main pages in order under the page's own language prefix in each copy; the footer has six groups
+and 31 links plus one Cookie settings button last, and the same links, group for group, in every
+locale; every page the footer leaves out (the reading notes, the pattern hub, the template pages) is
+linked from another page's `<main>` in every locale, so none is an orphan; and no page carries a store
+chip. The language switch's own rules are check_hreflang.py's.
+
 Two things this deliberately does not catch, so nobody reads a green run as more than it is:
 
 - **A placeholder listing URL passes.** `https://apps.apple.com/app/idPLACEHOLDER` is a link to
@@ -64,6 +73,9 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.dont_write_bytecode = True
+import chrome_parse  # noqa: E402  (reads the header's markup; does not import build_pages)
 BUILD_PAGES = ROOT / "scripts" / "build_pages.py"
 
 PREFIX = {"zh-hant/": "zh-hant", "zh-hans/": "zh-hans", "ja/": "ja", "de/": "de", "fr/": "fr", "es/": "es", "ko/": "ko"}
@@ -106,6 +118,11 @@ PRE_LAUNCH_WORDING = {
 }
 
 LISTING_HOST = "apps.apple.com"
+
+# The header's five main pages, in order (website #247). Written out again on purpose.
+MAIN_NAV = ("features", "cli", "themes", "vs", "support")
+FOOTER_GROUPS = 6
+FOOTER_LINKS = 31
 
 # The hero's calls to action, as (class, href) pairs in order, per phase.
 CTA = re.compile(r'<a class="cta ([\w-]+)" href="([^"]*)"')
@@ -260,6 +277,83 @@ def locale_of(relative):
     return "en"
 
 
+def root_of(locale):
+    return "/" if locale == "en" else f"/{locale}/"
+
+
+def slug_of(relative):
+    locale = locale_of(relative)
+    slug = relative[:-len("index.html")].strip("/")
+    if locale != "en":
+        slug = slug[len(locale) + 1:] if slug != locale else ""
+    return slug
+
+
+def check_chrome(relative, text, problems):
+    """The header's main navigation and the footer of one page. Returns its parse, for the cross-page rules."""
+    locale = locale_of(relative)
+    root = root_of(locale)
+    chrome = chrome_parse.parse(text)
+    if chrome.store_chips:
+        problems.append(f"{relative}: {chrome.store_chips} store-chip element(s); the masthead and the pages carry none")
+    want = [f"{root}{slug}/" for slug in MAIN_NAV]
+    for copy in ("wide", "narrow"):
+        got = [href for href, _ in chrome.main_nav[copy]]
+        if got != want:
+            problems.append(f"{relative}: {copy} main navigation links {got}, want {want}")
+    if chrome.consent_ids != 1:
+        problems.append(f"{relative}: {chrome.consent_ids} elements with id consent-settings-link, want 1")
+    groups = chrome.footer_groups
+    links = [href for _, items in groups for href, _ in items if not href.startswith("#button:")]
+    if len(groups) != FOOTER_GROUPS or len(links) != FOOTER_LINKS:
+        problems.append(f"{relative}: the footer has {len(groups)} groups and {len(links)} links, want {FOOTER_GROUPS} and {FOOTER_LINKS}")
+    elif not groups[-1][1] or groups[-1][1][-1][0] != "#button:consent-settings-link":
+        problems.append(f"{relative}: the Cookie settings button isn't the last item of the footer's last group")
+    return chrome
+
+
+def footer_complete(chrome):
+    links = [href for _, items in chrome.footer_groups for href, _ in items if not href.startswith("#button:")]
+    return len(chrome.footer_groups) == FOOTER_GROUPS and len(links) == FOOTER_LINKS
+
+
+def footer_shape(chrome, locale):
+    """The footer's links per group, without the locale's prefix, for comparing locales."""
+    root = root_of(locale)
+    return [[href[len(root) - 1:] if href.startswith(root) else href for href, _ in items if not href.startswith("#button:")]
+            for _, items in chrome.footer_groups]
+
+
+def check_footer_across_locales(chromes, problems):
+    """Every locale's footer has the en page's links, group for group, page for page."""
+    for relative, chrome in sorted(chromes.items()):
+        locale = locale_of(relative)
+        if locale == "en":
+            continue
+        en = chromes.get(slug_of(relative) + "/index.html" if slug_of(relative) else "index.html")
+        if not footer_complete(chrome) or en is None or not footer_complete(en):
+            continue   # a footer with the wrong number of groups or links is already reported on its own
+        if footer_shape(chrome, locale) != footer_shape(en, "en"):
+            problems.append(f"{relative}: the footer's links differ from the en page's")
+
+
+def check_no_orphans(chromes, problems):
+    """Each page the footer leaves out is linked from another page's <main>, in every locale."""
+    for locale in sorted({locale_of(relative) for relative in chromes}):
+        mine = {slug_of(r): c for r, c in chromes.items() if locale_of(r) == locale}
+        root = root_of(locale)
+        in_footer = {href for c in mine.values() for _, items in c.footer_groups for href, _ in items}
+        if not in_footer:
+            continue
+        for slug in sorted(mine):
+            target = root if slug == "" else f"{root}{slug}/"
+            if slug == "" or target in in_footer:
+                continue
+            linked = any(target in c.main_hrefs for other, c in mine.items() if other != slug)
+            if not linked:
+                problems.append(f"{locale}: {target} is in no footer and no other page's main links to it")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=str(ROOT / "public"))
@@ -274,6 +368,7 @@ def main():
         sys.exit(f"check_invariants: no pages under {site}")
 
     problems = []
+    chromes = {}
     articles = article_slugs()
     llms_full = (site / "llms-full.txt").read_text() if (site / "llms-full.txt").is_file() else ""
 
@@ -295,6 +390,8 @@ def main():
         locale = locale_of(relative)
         text = page.read_text()
         check_structured_data(relative, text, articles, llms_full, problems)
+        chrome = check_chrome(relative, text, problems)
+        chromes[relative] = chrome
         if locale in NEW_LOCALES:
             if where != "launched":
                 problems.append(f"{relative}: {locale} is served before launch; it ships with 1.1.0, after launch")
@@ -326,6 +423,9 @@ def main():
             problems.append(f"{relative}: links to {LISTING_HOST} before launch")
         if where == "launched" and not links_out:
             problems.append(f"{relative}: doesn't link to {LISTING_HOST} after launch")
+
+    check_footer_across_locales(chromes, problems)
+    check_no_orphans(chromes, problems)
 
     homes = ["index.html", "zh-hant/index.html", "zh-hans/index.html", "ja/index.html"]
     homes += [f"{l}/index.html" for l in NEW_LOCALES if by_locale[l]]
