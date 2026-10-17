@@ -1062,6 +1062,7 @@ What MarsDawn lacks. It needs macOS 26 or later. There is no iPhone or iPad app;
 
 - [MacMD Viewer vs. MarsDawn](/vs/macmd-viewer/): a read-only viewer next to MarsDawn, cell by cell, with when to pick each.
 - [Markdown preview tools](/vs/markdown-preview-tools/): VS Code's preview, a browser extension and Claude Desktop's file preview.
+- [Best Markdown viewer for Mac (2026)](/best-markdown-viewer-mac/)
 
 ---
 
@@ -1176,6 +1177,120 @@ open notes.pdf
 - Every option of the command-line tool: [Command Line](/cli/).
 - Compared with reading Markdown in VS Code, a browser or Claude Desktop instead: [how they compare](/vs/markdown-preview-tools/).
 - All of MarsDawn's features on one page: [Features](/features/).
+
+---
+
+## Best Markdown viewer for Mac (2026)
+
+Source: https://marsdawn.southern-light.dev/best-markdown-viewer-mac/
+
+# Best Markdown viewer for Mac (2026)
+
+The best Markdown viewer depends on what you read. If it is notes you write yourself, an all-in-one editor is enough. If it is long documents with diagrams and math, or files an AI agent keeps rewriting, check how each app handles live reload, Mermaid and PDF. The apps below are in alphabetical order, and each one gets who it suits, one honest drawback and its price.
+
+## MacDown 3000
+
+The original MacDown is no longer maintained. MacDown 3000 is the community continuation: free and open source (MIT), native, with Mermaid, MathJax, PDF export, live reload and Quick Look.
+
+- Suits: people who want a free native split view.
+- Drawback: no documented way to open a file at a line from the command line.
+- Price: free.
+
+## Marked
+
+Marked 3 is a previewer for Markdown you write in another app. It reloads whenever the file changes, has MathJax and KaTeX, and prints paginated PDFs with page numbers. Marked 2 is still sold.
+
+- Suits: writers who keep their own editor and want a polished preview and print.
+- Drawback: Quick Look is a separate app, Marked QL (USD 9.99).
+- Price: Marked 3 is a free download, then USD 2.99/month, USD 29.99/year or USD 69.99 lifetime. Marked 2 is USD 14.99 direct or USD 13.99 on the Mac App Store.
+
+## MarkEdit
+
+A light, free native editor (CodeMirror in a web view) with Quick Look.
+
+- Suits: people who want a fast plain-text editor that feels at home on the Mac.
+- Drawback: Mermaid and math need the official extensions, and PDF export needs Pandoc.
+- Price: free.
+
+## MarsDawn
+
+A native Mac app that shows the source and a live preview side by side, with Mermaid and KaTeX built in. When an agent saves the file, the open window takes the change as one undoable "Update from Disk". `marsdawn open notes.md:120` opens a file at a line, and there is a skill and an MCP server for agents. Quick Look works with or without the trial. Copy for AI and Copy Reference hand text to an agent. Nothing leaves your Mac unless you choose.
+
+- Suits: people reviewing Markdown that AI agents write.
+- Drawback: the PDF export has no page numbers.
+- Price: free download with a 14-day trial, then USD 4.99 once. No account. Mac App Store only.
+
+## Obsidian
+
+A notes app built around a vault of linked Markdown files, with Mermaid, MathJax, PDF export and live reload.
+
+- Suits: people building a knowledge base of their own notes.
+- Drawback: it is an Electron app, and it works best with files inside a vault.
+- Price: free. Sync and Publish are paid.
+
+## QLMarkdown
+
+A Quick Look extension: select a .md file in Finder and press Space. Mermaid and MathJax are opt-in.
+
+- Suits: people who only want to glance at files in Finder.
+- Drawback: it is not an app for reading or editing, and has no documented PDF export.
+- Price: free (GPL-3.0).
+
+## Typora
+
+A seamless editor where the preview is the document, with Mermaid, MathJax and PDF export with page numbers in the header or footer.
+
+- Suits: people who prefer to write in a WYSIWYG-style view.
+- Drawback: no separate source and preview side by side.
+- Price: USD 14.99 once, for up to 3 devices.
+
+## VS Code preview
+
+The built-in Markdown preview, with Mermaid built in since 1.121 and KaTeX. `code -g file:line` opens a file at a line.
+
+- Suits: developers who already live in VS Code.
+- Drawback: it is an Electron app, and has no built-in PDF export.
+- Price: free.
+
+## Comparison
+
+| App | Price | Mermaid | Math | PDF | Live reload | CLI at line | Quick Look | Build |
+|---|---|---|---|---|---|---|---|---|
+| MacDown 3000 | Free | Yes | MathJax | Yes | Yes | Not documented | Yes | Native |
+| Marked 3 | From USD 2.99/mo | Yes | MathJax, KaTeX | Yes, page numbers | Yes | Not documented | Marked QL, USD 9.99 | Native |
+| MarkEdit | Free | Extension | KaTeX (extension) | Pandoc | Not documented | Not documented | Yes | Native (web view) |
+| MarsDawn | USD 4.99 once | Yes | KaTeX | Yes, no page numbers | Yes, undoable | Yes | Yes | Native |
+| Obsidian | Free | Yes | MathJax | Yes | Yes | Not documented | Not documented | Electron |
+| QLMarkdown | Free | Opt-in | MathJax (opt-in) | Not documented | n/a | n/a | It is one | Native |
+| Typora | USD 14.99 once | Yes | MathJax | Yes, page numbers | Not documented | Not documented | Not documented | Native |
+| VS Code | Free | Yes (1.121+) | KaTeX | No | Not documented | Yes | Not documented | Electron |
+
+## Who MarsDawn is not for
+
+- You need page numbers in your PDFs. Typora and Marked 3 add them, MarsDawn does not.
+- You keep a linked knowledge base of your own notes. Obsidian is built for that.
+- You never leave VS Code. Its built-in preview is free, and VS Code is adding an experimental Markdown view to its Agents window.
+- You only want a preview in Finder. QLMarkdown is free.
+
+## FAQ
+
+### Which free Markdown viewers for Mac have Mermaid?
+
+MacDown 3000, Obsidian and VS Code (1.121 and later) have it built in. QLMarkdown has it as an option, and MarkEdit through an extension.
+
+### Which ones export PDF with page numbers?
+
+Typora and Marked 3. MarsDawn exports PDF without page numbers.
+
+### Which ones open a file at a specific line from the command line?
+
+MarsDawn (`marsdawn open notes.md:120`) and VS Code (`code -g file:line`). For the others it is not documented.
+
+### Which ones are native Mac apps rather than Electron?
+
+All of them except Obsidian and VS Code. MarkEdit is native with its editor in a web view.
+
+[Download and try it free](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -4204,6 +4319,7 @@ MarsDawn 沒有的東西。需要 macOS 26 以上。沒有 iPhone 或 iPad app�
 
 - [MacMD Viewer 對比 MarsDawn](/zh-hant/vs/macmd-viewer/)：唯讀檢視器和 MarsDawn 逐格對照，並說明各自適合什麼情況。
 - [Markdown 預覽工具](/zh-hant/vs/markdown-preview-tools/)：VS Code 預覽、瀏覽器延伸功能和 Claude Desktop 的檔案預覽。
+- [2026 Mac Markdown 檢視器推薦](/zh-hant/best-markdown-viewer-mac/)
 
 ---
 
@@ -4318,6 +4434,120 @@ open notes.pdf
 - 命令列工具的所有選項：[命令列工具](/zh-hant/cli/)。
 - 和在 VS Code、瀏覽器或 Claude Desktop 看 Markdown 比較：[比較一下](/zh-hant/vs/markdown-preview-tools/)。
 - MarsDawn 的全部功能，一頁看完：[功能一覽](/zh-hant/features/)。
+
+---
+
+## 2026 Mac Markdown 檢視器推薦
+
+Source: https://marsdawn.southern-light.dev/zh-hant/best-markdown-viewer-mac/
+
+# 2026 Mac Markdown 檢視器推薦
+
+哪款 Markdown 檢視器最好，要看你讀的是什麼。如果是自己寫的筆記，一款全能的筆記 App 就夠了。如果是有圖表和數學式的長文件，或是 AI 代理不斷改寫的檔案，就要看各款怎麼處理自動重新載入、Mermaid 和 PDF。以下依字母排序，每款都寫出適合誰、一個老實的缺點和價格。
+
+## MacDown 3000
+
+原版 MacDown 已停止維護。MacDown 3000 是社群接手的版本：免費開源（MIT）、原生，具備 Mermaid、MathJax、PDF 輸出、自動重新載入與快速查看。
+
+- 適合：想要免費原生左右分欄的人。
+- 缺點：沒有記載可從命令列開到指定行的方法。
+- 價格：免費。
+
+## Marked
+
+Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變就重新載入，支援 MathJax 與 KaTeX，能列印分頁並加頁碼的 PDF。Marked 2 仍在販售。
+
+- 適合：保留自己編輯工具、想要精緻預覽與列印的寫作者。
+- 缺點：快速查看要另買 Marked QL（USD 9.99）。
+- 價格：Marked 3 免費下載，之後每月 USD 2.99、每年 USD 29.99 或終身 USD 69.99。Marked 2 官網 USD 14.99，Mac App Store USD 13.99。
+
+## MarkEdit
+
+輕巧免費的原生 App（在 web view 中使用 CodeMirror），支援快速查看。
+
+- 適合：想要快速、有 Mac 手感的純文字工具的人。
+- 缺點：Mermaid 與數學式要裝官方擴充功能，PDF 要靠 Pandoc。
+- 價格：免費。
+
+## MarsDawn
+
+原生 Mac App，原始碼與即時預覽左右並排，內建 Mermaid 與 KaTeX。AI 代理存檔時，開著的視窗會把變更收成一步可撤銷的「從磁碟更新」。`marsdawn open notes.md:120` 可開到指定行，另有給代理用的技能與 MCP 伺服器。快速查看不論試用與否都能用。「拷貝給 AI」與「拷貝引用」能把文字交給代理。除非你選擇，資料不會離開你的 Mac。
+
+- 適合：審閱 AI 代理所寫 Markdown 的人。
+- 缺點：輸出的 PDF 沒有頁碼。
+- 價格：免費下載，試用 14 天，之後一次 USD 4.99。不需帳號。僅在 Mac App Store 提供。
+
+## Obsidian
+
+以連結 Markdown 檔的 vault 為核心的筆記 App，具備 Mermaid、MathJax、PDF 輸出與自動重新載入。
+
+- 適合：建立個人知識庫的人。
+- 缺點：是 Electron App，檔案放在 vault 裡才最順手。
+- 價格：免費，Sync 與 Publish 另外付費。
+
+## QLMarkdown
+
+快速查看擴充功能：在 Finder 選取 .md 檔按空白鍵即可。Mermaid 與 MathJax 需自行開啟。
+
+- 適合：只想在 Finder 裡瞄一眼檔案的人。
+- 缺點：不是用來閱讀或編輯的 App，也沒有記載 PDF 輸出。
+- 價格：免費（GPL-3.0）。
+
+## Typora
+
+預覽即文件的所見即所得式寫作工具，具備 Mermaid、MathJax，PDF 輸出可在頁首或頁尾加頁碼。
+
+- 適合：偏好在排版畫面中直接寫的人。
+- 缺點：沒有原始碼與預覽左右並排。
+- 價格：一次 USD 14.99，最多 3 台裝置。
+
+## VS Code 預覽
+
+內建 Markdown 預覽，1.121 起內建 Mermaid，支援 KaTeX。`code -g file:line` 可開到指定行。
+
+- 適合：本來就整天用 VS Code 的開發者。
+- 缺點：是 Electron App，沒有內建 PDF 輸出。
+- 價格：免費。
+
+## 比較表
+
+| App | 價格 | Mermaid | 數學式 | PDF | 自動重新載入 | 命令列開到指定行 | 快速查看 | 架構 |
+|---|---|---|---|---|---|---|---|---|
+| MacDown 3000 | 免費 | 有 | MathJax | 有 | 有 | 未記載 | 有 | 原生 |
+| Marked 3 | 每月 USD 2.99 起 | 有 | MathJax、KaTeX | 有，含頁碼 | 有 | 未記載 | Marked QL，USD 9.99 | 原生 |
+| MarkEdit | 免費 | 擴充功能 | KaTeX（擴充功能） | Pandoc | 未記載 | 未記載 | 有 | 原生（web view） |
+| MarsDawn | 一次 USD 4.99 | 有 | KaTeX | 有，無頁碼 | 有，可撤銷 | 有 | 有 | 原生 |
+| Obsidian | 免費 | 有 | MathJax | 有 | 有 | 未記載 | 未記載 | Electron |
+| QLMarkdown | 免費 | 需開啟 | MathJax（需開啟） | 未記載 | 不適用 | 不適用 | 本身即是 | 原生 |
+| Typora | 一次 USD 14.99 | 有 | MathJax | 有，含頁碼 | 未記載 | 未記載 | 未記載 | 原生 |
+| VS Code | 免費 | 有（1.121 起） | KaTeX | 無 | 未記載 | 有 | 未記載 | Electron |
+
+## MarsDawn 不適合誰
+
+- PDF 一定要有頁碼。Typora 與 Marked 3 能加，MarsDawn 不能。
+- 你在經營互相連結的個人筆記庫。Obsidian 就是為此打造的。
+- 你從不離開 VS Code。內建預覽免費，VS Code 也正在 Agents 視窗加入實驗性的 Markdown 檢視。
+- 你只想在 Finder 預覽。QLMarkdown 免費。
+
+## 常見問題
+
+### 哪些免費的 Mac Markdown 檢視器支援 Mermaid？
+
+MacDown 3000、Obsidian 與 VS Code（1.121 起）內建。QLMarkdown 可選擇開啟，MarkEdit 要透過擴充功能。
+
+### 哪些能輸出含頁碼的 PDF？
+
+Typora 與 Marked 3。MarsDawn 輸出的 PDF 沒有頁碼。
+
+### 哪些能從命令列開到指定行？
+
+MarsDawn（`marsdawn open notes.md:120`）與 VS Code（`code -g file:line`）。其他幾款未記載。
+
+### 哪些是原生 Mac App，不是 Electron？
+
+除了 Obsidian 與 VS Code 都是。MarkEdit 是原生 App，編輯區用 web view。
+
+[立刻下載試用](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -7381,6 +7611,7 @@ MarsDawn 没有的东西。需要 macOS 26 或更新版本。没有 iPhone 或 i
 
 - [MacMD Viewer 对比 MarsDawn](/zh-hans/vs/macmd-viewer/)：只读查看器和 MarsDawn 逐格对照，并说明各自适合什么情况。
 - [Markdown 预览工具](/zh-hans/vs/markdown-preview-tools/)：VS Code 预览、浏览器扩展和 Claude Desktop 的文件预览。
+- [2026 Mac Markdown 查看器推荐](/zh-hans/best-markdown-viewer-mac/)
 
 ---
 
@@ -7494,6 +7725,120 @@ open notes.pdf
 - MarsDawn 做不到的事：[这份清单](/zh-hans/limits/)。
 - 命令行工具的所有选项：[命令行工具](/zh-hans/cli/)。
 - MarsDawn 的全部功能，一页看完：[功能一览](/zh-hans/features/)。
+
+---
+
+## 2026 Mac Markdown 查看器推荐
+
+Source: https://marsdawn.southern-light.dev/zh-hans/best-markdown-viewer-mac/
+
+# 2026 Mac Markdown 查看器推荐
+
+哪款 Markdown 查看器最好，要看你读的是什么。如果是自己写的笔记，一款全能的笔记 App 就够了。如果是带图表和数学公式的长文稿，或是 AI 代理不断改写的文件，就要看各款怎么处理自动重新载入、Mermaid 和 PDF。以下按字母排序，每款都写出适合谁、一个坦白的缺点和价格。
+
+## MacDown 3000
+
+原版 MacDown 已停止维护。MacDown 3000 是社区接手的版本：免费开源（MIT）、原生，支持 Mermaid、MathJax、PDF 导出、自动重新载入与快速查看。
+
+- 适合：想要免费原生左右分栏的人。
+- 缺点：没有文档说明能从命令行打开到指定行。
+- 价格：免费。
+
+## Marked
+
+Marked 3 是预览器，用来看你在其他 App 里写的 Markdown。文件一变就重新载入，支持 MathJax 与 KaTeX，能打印分页并带页码的 PDF。Marked 2 仍在销售。
+
+- 适合：保留自己的写作工具、想要精致预览与打印的写作者。
+- 缺点：快速查看要另买 Marked QL（USD 9.99）。
+- 价格：Marked 3 免费下载，之后每月 USD 2.99、每年 USD 29.99 或终身 USD 69.99。Marked 2 官网 USD 14.99，Mac App Store USD 13.99。
+
+## MarkEdit
+
+轻巧免费的原生 App（在 web view 中使用 CodeMirror），支持快速查看。
+
+- 适合：想要快速、有 Mac 手感的纯文本工具的人。
+- 缺点：Mermaid 与数学公式要装官方扩展，PDF 要靠 Pandoc。
+- 价格：免费。
+
+## MarsDawn
+
+原生 Mac App，源文本与实时预览左右并排，内置 Mermaid 与 KaTeX。AI 代理保存文件时，打开的窗口会把更改收成一步可撤销的“从磁盘更新”。`marsdawn open notes.md:120` 可打开到指定行，另有给代理用的代理技能与 MCP 服务器。无论是否在试用期，快速查看都能用。“拷贝给 AI”与“拷贝引用”能把文字交给代理。除非你选择，数据不会离开你的 Mac。
+
+- 适合：审阅 AI 代理所写 Markdown 的人。
+- 缺点：导出的 PDF 没有页码。
+- 价格：免费下载，试用 14 天，之后一次性 USD 4.99。无需账户。仅在 Mac App Store 提供。
+
+## Obsidian
+
+以链接 Markdown 文件的 vault 为核心的笔记 App，支持 Mermaid、MathJax、PDF 导出与自动重新载入。
+
+- 适合：搭建个人知识库的人。
+- 缺点：是 Electron App，文件放在 vault 里才最顺手。
+- 价格：免费，Sync 与 Publish 另行付费。
+
+## QLMarkdown
+
+快速查看扩展：在访达中选中 .md 文件按空格键即可。Mermaid 与 MathJax 需手动开启。
+
+- 适合：只想在访达里瞄一眼文件的人。
+- 缺点：不是用来阅读或编辑的 App，也没有文档说明 PDF 导出。
+- 价格：免费（GPL-3.0）。
+
+## Typora
+
+预览即文稿的所见即所得式写作工具，支持 Mermaid、MathJax，PDF 导出可在页眉或页脚加页码。
+
+- 适合：喜欢直接在排版画面中写作的人。
+- 缺点：没有源文本与预览左右并排。
+- 价格：一次性 USD 14.99，最多 3 台设备。
+
+## VS Code 预览
+
+内置 Markdown 预览，1.121 起内置 Mermaid，支持 KaTeX。`code -g file:line` 可打开到指定行。
+
+- 适合：本来就整天用 VS Code 的开发者。
+- 缺点：是 Electron App，没有内置 PDF 导出。
+- 价格：免费。
+
+## 比较表
+
+| App | 价格 | Mermaid | 数学公式 | PDF | 自动重新载入 | 命令行打开到指定行 | 快速查看 | 架构 |
+|---|---|---|---|---|---|---|---|---|
+| MacDown 3000 | 免费 | 有 | MathJax | 有 | 有 | 无文档 | 有 | 原生 |
+| Marked 3 | 每月 USD 2.99 起 | 有 | MathJax、KaTeX | 有，带页码 | 有 | 无文档 | Marked QL，USD 9.99 | 原生 |
+| MarkEdit | 免费 | 扩展 | KaTeX（扩展） | Pandoc | 无文档 | 无文档 | 有 | 原生（web view） |
+| MarsDawn | 一次性 USD 4.99 | 有 | KaTeX | 有，无页码 | 有，可撤销 | 有 | 有 | 原生 |
+| Obsidian | 免费 | 有 | MathJax | 有 | 有 | 无文档 | 无文档 | Electron |
+| QLMarkdown | 免费 | 需开启 | MathJax（需开启） | 无文档 | 不适用 | 不适用 | 本身就是 | 原生 |
+| Typora | 一次性 USD 14.99 | 有 | MathJax | 有，带页码 | 无文档 | 无文档 | 无文档 | 原生 |
+| VS Code | 免费 | 有（1.121 起） | KaTeX | 无 | 无文档 | 有 | 无文档 | Electron |
+
+## MarsDawn 不适合谁
+
+- PDF 一定要有页码。Typora 与 Marked 3 能加，MarsDawn 不能。
+- 你在维护互相链接的个人笔记库。Obsidian 就是为此打造的。
+- 你从不离开 VS Code。内置预览免费，VS Code 也正在 Agents 窗口加入实验性的 Markdown 查看。
+- 你只想在访达里预览。QLMarkdown 免费。
+
+## 常见问题
+
+### 哪些免费的 Mac Markdown 查看器支持 Mermaid？
+
+MacDown 3000、Obsidian 与 VS Code（1.121 起）内置。QLMarkdown 可选择开启，MarkEdit 要通过扩展。
+
+### 哪些能导出带页码的 PDF？
+
+Typora 与 Marked 3。MarsDawn 导出的 PDF 没有页码。
+
+### 哪些能从命令行打开到指定行？
+
+MarsDawn（`marsdawn open notes.md:120`）与 VS Code（`code -g file:line`）。其他几款无文档说明。
+
+### 哪些是原生 Mac App，而不是 Electron？
+
+除了 Obsidian 与 VS Code 都是。MarkEdit 是原生 App，编辑区使用 web view。
+
+[立即下载试用](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -10554,6 +10899,7 @@ MarsDawn にないもの。macOS 26 以降が必要です。iPhone や iPad の�
 
 - [MacMD Viewer と MarsDawn](/ja/vs/macmd-viewer/)：読み取り専用のビューアと MarsDawn をセルごとに比べ、どちらを選ぶべきかも書いています。
 - [Markdown プレビューツール](/ja/vs/markdown-preview-tools/)：VS Code のプレビュー、ブラウザ拡張、Claude Desktop のファイルプレビュー。
+- [Mac向けMarkdownビューアのおすすめ8選（2026年）](/ja/best-markdown-viewer-mac/)
 
 ---
 
@@ -10667,6 +11013,120 @@ open notes.pdf
 - MarsDawn ができないこと：[一覧はこちら](/ja/limits/)。
 - コマンドラインツールのすべてのオプション：[コマンドライン](/ja/cli/)。
 - MarsDawn の機能をすべて 1 ページで：[機能一覧](/ja/features/)。
+
+---
+
+## Mac向けMarkdownビューアのおすすめ8選（2026年）
+
+Source: https://marsdawn.southern-light.dev/ja/best-markdown-viewer-mac/
+
+# Mac向けMarkdownビューアのおすすめ8選（2026年）
+
+どのMarkdownビューアがよいかは、何を読むかで決まります。自分で書くメモなら、オールインワンのノートアプリで十分です。図や数式の入った長い文書や、AIエージェントが何度も書き換えるファイルなら、自動再読み込み、Mermaid、PDFの扱いを確かめてください。以下はアルファベット順で、それぞれ向いている人、正直な欠点、価格を載せています。
+
+## MacDown 3000
+
+元のMacDownは開発が止まっています。MacDown 3000はコミュニティによる後継版で、無料のオープンソース（MIT）、ネイティブで、Mermaid、MathJax、PDF書き出し、自動再読み込み、クイックルックに対応しています。
+
+- 向いている人：無料のネイティブな左右分割が欲しい人。
+- 欠点：コマンドラインから指定行で開く方法は記載されていません。
+- 価格：無料。
+
+## Marked
+
+Marked 3は、ほかのアプリで書いたMarkdownを見るためのプレビューアです。ファイルが変わるたびに再読み込みし、MathJaxとKaTeXに対応し、ページ番号付きのPDFを印刷できます。Marked 2も引き続き販売されています。
+
+- 向いている人：自分のエディタを使い続け、きれいなプレビューと印刷が欲しい書き手。
+- 欠点：クイックルックは別アプリのMarked QL（USD 9.99）です。
+- 価格：Marked 3は無料ダウンロード、その後は月額USD 2.99、年額USD 29.99、または買い切りUSD 69.99。Marked 2は公式サイトでUSD 14.99、Mac App StoreでUSD 13.99。
+
+## MarkEdit
+
+軽くて無料のネイティブアプリ（Webビュー内でCodeMirrorを使用）で、クイックルックに対応しています。
+
+- 向いている人：Macらしく速いプレーンテキストのツールが欲しい人。
+- 欠点：Mermaidと数式は公式の拡張機能が必要で、PDFにはPandocが必要です。
+- 価格：無料。
+
+## MarsDawn
+
+ソースとライブプレビューを左右に並べるネイティブMacアプリで、MermaidとKaTeXを内蔵しています。エージェントがファイルを保存すると、開いているウインドウはその変更を取り消せる1回の「ディスクから更新」として取り込みます。`marsdawn open notes.md:120`で指定行を開け、エージェント向けのスキルとMCPサーバもあります。クイックルックは試用中かどうかに関係なく使えます。「AI 用にコピー」と「参照をコピー」でテキストをエージェントに渡せます。自分で選ばない限り、データがMacの外に出ることはありません。
+
+- 向いている人：AIエージェントが書いたMarkdownをレビューする人。
+- 欠点：書き出したPDFにページ番号は付きません。
+- 価格：無料ダウンロードで14日間試用でき、その後はUSD 4.99の買い切り。アカウント不要。Mac App Storeのみ。
+
+## Obsidian
+
+リンクし合うMarkdownファイルのVaultを中心にしたノートアプリで、Mermaid、MathJax、PDF書き出し、自動再読み込みに対応しています。
+
+- 向いている人：自分のメモで知識ベースを作る人。
+- 欠点：Electronアプリで、ファイルはVaultの中にあるときに最も使いやすくなります。
+- 価格：無料。SyncとPublishは有料。
+
+## QLMarkdown
+
+クイックルックの拡張機能です。Finderで.mdファイルを選んでスペースキーを押します。MermaidとMathJaxはオプションです。
+
+- 向いている人：Finderでファイルをさっと見たいだけの人。
+- 欠点：読んだり編集したりするアプリではなく、PDF書き出しの記載もありません。
+- 価格：無料（GPL-3.0）。
+
+## Typora
+
+プレビューがそのまま文書になる書き味のツールで、Mermaid、MathJax、ヘッダやフッタにページ番号を入れられるPDF書き出しに対応しています。
+
+- 向いている人：仕上がりに近い画面で書きたい人。
+- 欠点：ソースとプレビューを左右に並べる表示はありません。
+- 価格：USD 14.99の買い切りで、3台まで。
+
+## VS Codeのプレビュー
+
+標準のMarkdownプレビューで、1.121からMermaidを内蔵し、KaTeXに対応しています。`code -g file:line`で指定行を開けます。
+
+- 向いている人：普段からVS Codeで作業している開発者。
+- 欠点：Electronアプリで、PDF書き出しは標準ではありません。
+- 価格：無料。
+
+## 比較表
+
+| アプリ | 価格 | Mermaid | 数式 | PDF | 自動再読み込み | CLIで指定行 | クイックルック | 構成 |
+|---|---|---|---|---|---|---|---|---|
+| MacDown 3000 | 無料 | あり | MathJax | あり | あり | 記載なし | あり | ネイティブ |
+| Marked 3 | 月額USD 2.99から | あり | MathJax、KaTeX | あり、ページ番号付き | あり | 記載なし | Marked QL、USD 9.99 | ネイティブ |
+| MarkEdit | 無料 | 拡張機能 | KaTeX（拡張機能） | Pandoc | 記載なし | 記載なし | あり | ネイティブ（Webビュー） |
+| MarsDawn | USD 4.99買い切り | あり | KaTeX | あり、ページ番号なし | あり、取り消し可 | あり | あり | ネイティブ |
+| Obsidian | 無料 | あり | MathJax | あり | あり | 記載なし | 記載なし | Electron |
+| QLMarkdown | 無料 | オプション | MathJax（オプション） | 記載なし | 該当なし | 該当なし | それ自体 | ネイティブ |
+| Typora | USD 14.99買い切り | あり | MathJax | あり、ページ番号付き | 記載なし | 記載なし | 記載なし | ネイティブ |
+| VS Code | 無料 | あり（1.121以降） | KaTeX | なし | 記載なし | あり | 記載なし | Electron |
+
+## MarsDawnが向かない人
+
+- PDFにページ番号が必要な人。TyporaとMarked 3は付けられますが、MarsDawnは付けられません。
+- リンクし合う自分のメモの知識ベースを育てている人。Obsidianはそのために作られています。
+- VS Codeから離れない人。標準のプレビューは無料で、VS CodeはAgentsウインドウに実験的なMarkdown表示を追加しつつあります。
+- Finderでプレビューできれば十分な人。QLMarkdownは無料です。
+
+## よくある質問
+
+### Mermaidに対応した無料のMac向けMarkdownビューアは？
+
+MacDown 3000、Obsidian、VS Code（1.121以降）が内蔵しています。QLMarkdownはオプションで、MarkEditは拡張機能で対応します。
+
+### ページ番号付きのPDFを書き出せるのは？
+
+TyporaとMarked 3です。MarsDawnのPDFにページ番号は付きません。
+
+### コマンドラインから指定行でファイルを開けるのは？
+
+MarsDawn（`marsdawn open notes.md:120`）とVS Code（`code -g file:line`）です。ほかは記載がありません。
+
+### ElectronではなくネイティブのMacアプリは？
+
+ObsidianとVS Code以外のすべてです。MarkEditはネイティブで、編集部分にWebビューを使っています。
+
+[今すぐダウンロードして試す](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -13730,6 +14190,7 @@ Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Es gibt keine App für iPhon
 
 - [MacMD Viewer oder MarsDawn](/de/vs/macmd-viewer/): ein reiner Viewer neben MarsDawn, Zelle für Zelle, mit der Frage, wann welches passt.
 - [Markdown-Vorschau-Tools](/de/vs/markdown-preview-tools/): die VS-Code-Vorschau, eine Browser-Erweiterung und die Dateivorschau von Claude Desktop.
+- [Der beste Markdown-Viewer für den Mac (2026)](/de/best-markdown-viewer-mac/)
 
 ---
 
@@ -13844,6 +14305,120 @@ open notes.pdf
 - Alle Optionen des Befehlszeilenwerkzeugs: [Befehlszeile](/de/cli/).
 - Im Vergleich dazu Markdown in VS Code, im Browser oder in Claude Desktop lesen: [der Vergleich](/de/vs/markdown-preview-tools/).
 - Alles, was MarsDawn kann, auf einer Seite: [Funktionen](/de/features/).
+
+---
+
+## Der beste Markdown-Viewer für den Mac (2026)
+
+Source: https://marsdawn.southern-light.dev/de/best-markdown-viewer-mac/
+
+# Der beste Markdown-Viewer für den Mac (2026)
+
+Welcher Markdown-Viewer der beste ist, hängt davon ab, was du liest. Für eigene Notizen reicht eine Alles-in-einem-Notiz-App. Bei langen Dokumenten mit Diagrammen und Formeln oder bei Dateien, die ein KI-Agent immer wieder neu schreibt, solltest du prüfen, wie jede App mit Live-Neuladen, Mermaid und PDF umgeht. Die Apps stehen in alphabetischer Reihenfolge, jeweils mit Zielgruppe, einem ehrlichen Nachteil und Preis.
+
+## MacDown 3000
+
+Das ursprüngliche MacDown wird nicht mehr gepflegt. MacDown 3000 ist die Fortführung durch die Community: kostenlos und Open Source (MIT), nativ, mit Mermaid, MathJax, PDF-Export, Live-Neuladen und Übersicht.
+
+- Für: alle, die eine kostenlose native geteilte Ansicht wollen.
+- Nachteil: Ein Öffnen an einer bestimmten Zeile über die Befehlszeile ist nicht dokumentiert.
+- Preis: kostenlos.
+
+## Marked
+
+Marked 3 ist eine Vorschau-App für Markdown, das du in einer anderen App schreibst. Sie lädt neu, sobald sich die Datei ändert, beherrscht MathJax und KaTeX und druckt PDFs mit Seitenumbrüchen und Seitenzahlen. Marked 2 wird weiterhin verkauft.
+
+- Für: Schreibende, die ihr eigenes Schreibwerkzeug behalten und eine saubere Vorschau mit Druck wollen.
+- Nachteil: Die Übersicht ist eine separate App, Marked QL (9,99 USD).
+- Preis: Marked 3 ist ein kostenloser Download, danach 2,99 USD/Monat, 29,99 USD/Jahr oder 69,99 USD einmalig. Marked 2 kostet direkt 14,99 USD, im Mac App Store 13,99 USD.
+
+## MarkEdit
+
+Eine schlanke, kostenlose native App (CodeMirror in einer Web-View) mit Übersicht.
+
+- Für: alle, die ein schnelles Klartext-Werkzeug wollen, das sich nach Mac anfühlt.
+- Nachteil: Mermaid und Formeln brauchen die offiziellen Erweiterungen, PDF-Export braucht Pandoc.
+- Preis: kostenlos.
+
+## MarsDawn
+
+Eine native Mac-App, die Quelltext und Live-Vorschau nebeneinander zeigt, mit eingebautem Mermaid und KaTeX. Speichert ein Agent die Datei, übernimmt das offene Fenster die Änderung als ein einziges „Von Festplatte aktualisieren“, das du rückgängig machen kannst. `marsdawn open notes.md:120` öffnet eine Datei an einer Zeile, dazu gibt es einen Skill und einen MCP-Server für Agenten. Die Übersicht funktioniert mit und ohne Test. Mit „Für KI kopieren“ und „Verweis kopieren“ gibst du Text an einen Agenten weiter. Nichts verlässt deinen Mac, außer du willst es.
+
+- Für: alle, die Markdown prüfen, das KI-Agenten schreiben.
+- Nachteil: Der PDF-Export hat keine Seitenzahlen.
+- Preis: kostenloser Download mit 14 Tagen Test, danach einmalig 4,99 USD. Kein Konto. Nur im Mac App Store.
+
+## Obsidian
+
+Eine Notiz-App rund um einen Vault aus verlinkten Markdown-Dateien, mit Mermaid, MathJax, PDF-Export und Live-Neuladen.
+
+- Für: alle, die aus eigenen Notizen eine Wissensdatenbank aufbauen.
+- Nachteil: Es ist eine Electron-App und funktioniert am besten mit Dateien in einem Vault.
+- Preis: kostenlos. Sync und Publish kosten extra.
+
+## QLMarkdown
+
+Eine Erweiterung für die Übersicht: Wähle im Finder eine .md-Datei aus und drücke die Leertaste. Mermaid und MathJax sind optional.
+
+- Für: alle, die Dateien im Finder nur kurz ansehen wollen.
+- Nachteil: Es ist keine App zum Lesen oder Bearbeiten, und ein PDF-Export ist nicht dokumentiert.
+- Preis: kostenlos (GPL-3.0).
+
+## Typora
+
+Ein nahtloses Schreibwerkzeug, bei dem die Vorschau das Dokument ist, mit Mermaid, MathJax und PDF-Export mit Seitenzahlen in Kopf- oder Fußzeile.
+
+- Für: alle, die lieber in einer WYSIWYG-artigen Ansicht schreiben.
+- Nachteil: Quelltext und Vorschau stehen nicht nebeneinander.
+- Preis: einmalig 14,99 USD, für bis zu 3 Geräte.
+
+## VS-Code-Vorschau
+
+Die eingebaute Markdown-Vorschau, mit Mermaid ab 1.121 und KaTeX. `code -g file:line` öffnet eine Datei an einer Zeile.
+
+- Für: Entwicklerinnen und Entwickler, die ohnehin in VS Code arbeiten.
+- Nachteil: Es ist eine Electron-App, und ein PDF-Export ist nicht eingebaut.
+- Preis: kostenlos.
+
+## Vergleich
+
+| App | Preis | Mermaid | Formeln | PDF | Live-Neuladen | CLI an Zeile | Übersicht | Bauart |
+|---|---|---|---|---|---|---|---|---|
+| MacDown 3000 | Kostenlos | Ja | MathJax | Ja | Ja | Nicht dokumentiert | Ja | Nativ |
+| Marked 3 | Ab 2,99 USD/Monat | Ja | MathJax, KaTeX | Ja, Seitenzahlen | Ja | Nicht dokumentiert | Marked QL, 9,99 USD | Nativ |
+| MarkEdit | Kostenlos | Erweiterung | KaTeX (Erweiterung) | Pandoc | Nicht dokumentiert | Nicht dokumentiert | Ja | Nativ (Web-View) |
+| MarsDawn | Einmalig 4,99 USD | Ja | KaTeX | Ja, ohne Seitenzahlen | Ja, rückgängig machbar | Ja | Ja | Nativ |
+| Obsidian | Kostenlos | Ja | MathJax | Ja | Ja | Nicht dokumentiert | Nicht dokumentiert | Electron |
+| QLMarkdown | Kostenlos | Optional | MathJax (optional) | Nicht dokumentiert | Entfällt | Entfällt | Ist selbst eine | Nativ |
+| Typora | Einmalig 14,99 USD | Ja | MathJax | Ja, Seitenzahlen | Nicht dokumentiert | Nicht dokumentiert | Nicht dokumentiert | Nativ |
+| VS Code | Kostenlos | Ja (ab 1.121) | KaTeX | Nein | Nicht dokumentiert | Ja | Nicht dokumentiert | Electron |
+
+## Für wen MarsDawn nichts ist
+
+- Du brauchst Seitenzahlen im PDF. Typora und Marked 3 fügen sie hinzu, MarsDawn nicht.
+- Du pflegst eine verlinkte Wissensdatenbank aus eigenen Notizen. Dafür ist Obsidian gebaut.
+- Du verlässt VS Code nie. Die eingebaute Vorschau ist kostenlos, und VS Code ergänzt sein Agents-Fenster um eine experimentelle Markdown-Ansicht.
+- Du willst nur eine Vorschau im Finder. QLMarkdown ist kostenlos.
+
+## Häufige Fragen
+
+### Welche kostenlosen Markdown-Viewer für den Mac können Mermaid?
+
+MacDown 3000, Obsidian und VS Code (ab 1.121) haben es eingebaut. QLMarkdown bietet es als Option, MarkEdit über eine Erweiterung.
+
+### Welche exportieren PDF mit Seitenzahlen?
+
+Typora und Marked 3. MarsDawn exportiert PDF ohne Seitenzahlen.
+
+### Welche öffnen eine Datei über die Befehlszeile an einer bestimmten Zeile?
+
+MarsDawn (`marsdawn open notes.md:120`) und VS Code (`code -g file:line`). Bei den anderen ist es nicht dokumentiert.
+
+### Welche sind native Mac-Apps statt Electron?
+
+Alle außer Obsidian und VS Code. MarkEdit ist nativ, sein Editorbereich läuft in einer Web-View.
+
+[Jetzt laden und testen](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -16865,6 +17440,7 @@ Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Il n’y a pas d’ap
 
 - [MacMD Viewer ou MarsDawn](/fr/vs/macmd-viewer/) : une visionneuse en lecture seule face à MarsDawn, cellule par cellule, avec quand choisir l’un ou l’autre.
 - [Outils d’aperçu Markdown](/fr/vs/markdown-preview-tools/) : l’aperçu de VS Code, une extension de navigateur et l’aperçu de fichiers de Claude Desktop.
+- [Meilleur lecteur Markdown pour Mac (2026)](/fr/best-markdown-viewer-mac/)
 
 ---
 
@@ -16979,6 +17555,120 @@ open notes.pdf
 - Toutes les options de l’outil en ligne de commande : [Ligne de commande](/fr/cli/).
 - Par rapport à la lecture du Markdown dans VS Code, un navigateur ou Claude Desktop : [la comparaison](/fr/vs/markdown-preview-tools/).
 - Tout ce que fait MarsDawn, sur une seule page : [Fonctionnalités](/fr/features/).
+
+---
+
+## Meilleur lecteur Markdown pour Mac (2026)
+
+Source: https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/
+
+# Meilleur lecteur Markdown pour Mac (2026)
+
+Le meilleur lecteur Markdown dépend de ce que vous lisez. Pour vos propres notes, une app de notes tout-en-un suffit. Pour de longs documents avec diagrammes et formules, ou des fichiers qu’un agent IA réécrit sans cesse, regardez comment chaque app gère le rechargement en direct, Mermaid et le PDF. Les apps sont classées par ordre alphabétique, chacune avec son public, un défaut honnête et son prix.
+
+## MacDown 3000
+
+Le MacDown d’origine n’est plus maintenu. MacDown 3000 en est la suite communautaire : gratuit et open source (MIT), natif, avec Mermaid, MathJax, export PDF, rechargement en direct et Coup d’œil.
+
+- Pour : ceux qui veulent une vue scindée native et gratuite.
+- Défaut : l’ouverture à une ligne précise depuis la ligne de commande n’est pas documentée.
+- Prix : gratuit.
+
+## Marked
+
+Marked 3 est un outil d’aperçu pour le Markdown que vous écrivez dans une autre app. Il recharge dès que le fichier change, gère MathJax et KaTeX, et imprime des PDF paginés avec numéros de page. Marked 2 est toujours en vente.
+
+- Pour : les auteurs qui gardent leur outil d’écriture et veulent un aperçu et une impression soignés.
+- Défaut : Coup d’œil passe par une app séparée, Marked QL (9,99 USD).
+- Prix : Marked 3 se télécharge gratuitement, puis 2,99 USD/mois, 29,99 USD/an ou 69,99 USD à vie. Marked 2 coûte 14,99 USD en direct, 13,99 USD sur le Mac App Store.
+
+## MarkEdit
+
+Une app native, légère et gratuite (CodeMirror dans une web view), avec Coup d’œil.
+
+- Pour : ceux qui veulent un outil de texte brut rapide et bien intégré au Mac.
+- Défaut : Mermaid et les maths demandent les extensions officielles, et l’export PDF passe par Pandoc.
+- Prix : gratuit.
+
+## MarsDawn
+
+Une app Mac native qui affiche la source et un aperçu en direct côte à côte, avec Mermaid et KaTeX intégrés. Quand un agent enregistre le fichier, la fenêtre ouverte prend la modification comme une seule mise à jour depuis le disque, que vous pouvez annuler. `marsdawn open notes.md:120` ouvre un fichier à une ligne, et un skill ainsi qu’un serveur MCP sont fournis pour les agents. Coup d’œil fonctionne avec ou sans l’essai. « Copier pour l’IA » et « Copier la référence » transmettent du texte à un agent. Rien ne quitte votre Mac sans votre choix.
+
+- Pour : ceux qui relisent le Markdown écrit par des agents IA.
+- Défaut : l’export PDF n’a pas de numéros de page.
+- Prix : téléchargement gratuit avec 14 jours d’essai, puis 4,99 USD une seule fois. Sans compte. Uniquement sur le Mac App Store.
+
+## Obsidian
+
+Une app de notes bâtie autour d’un coffre (vault) de fichiers Markdown liés, avec Mermaid, MathJax, export PDF et rechargement en direct.
+
+- Pour : ceux qui construisent une base de connaissances à partir de leurs notes.
+- Défaut : c’est une app Electron, et elle fonctionne mieux avec des fichiers rangés dans un coffre.
+- Prix : gratuit. Sync et Publish sont payants.
+
+## QLMarkdown
+
+Une extension Coup d’œil : sélectionnez un fichier .md dans le Finder et appuyez sur Espace. Mermaid et MathJax sont à activer.
+
+- Pour : ceux qui veulent seulement jeter un œil aux fichiers dans le Finder.
+- Défaut : ce n’est pas une app pour lire ou modifier, et aucun export PDF n’est documenté.
+- Prix : gratuit (GPL-3.0).
+
+## Typora
+
+Un outil d’écriture où l’aperçu est le document, avec Mermaid, MathJax et un export PDF avec numéros de page en en-tête ou en pied de page.
+
+- Pour : ceux qui préfèrent écrire dans une vue de type WYSIWYG.
+- Défaut : pas de source et d’aperçu côte à côte.
+- Prix : 14,99 USD une seule fois, jusqu’à 3 appareils.
+
+## Aperçu de VS Code
+
+L’aperçu Markdown intégré, avec Mermaid intégré depuis la 1.121 et KaTeX. `code -g file:line` ouvre un fichier à une ligne.
+
+- Pour : les développeurs qui vivent déjà dans VS Code.
+- Défaut : c’est une app Electron, sans export PDF intégré.
+- Prix : gratuit.
+
+## Comparatif
+
+| App | Prix | Mermaid | Maths | PDF | Rechargement en direct | CLI à une ligne | Coup d’œil | Technologie |
+|---|---|---|---|---|---|---|---|---|
+| MacDown 3000 | Gratuit | Oui | MathJax | Oui | Oui | Non documenté | Oui | Natif |
+| Marked 3 | Dès 2,99 USD/mois | Oui | MathJax, KaTeX | Oui, numéros de page | Oui | Non documenté | Marked QL, 9,99 USD | Natif |
+| MarkEdit | Gratuit | Extension | KaTeX (extension) | Pandoc | Non documenté | Non documenté | Oui | Natif (web view) |
+| MarsDawn | 4,99 USD une fois | Oui | KaTeX | Oui, sans numéros de page | Oui, annulable | Oui | Oui | Natif |
+| Obsidian | Gratuit | Oui | MathJax | Oui | Oui | Non documenté | Non documenté | Electron |
+| QLMarkdown | Gratuit | À activer | MathJax (à activer) | Non documenté | Sans objet | Sans objet | C’en est une | Natif |
+| Typora | 14,99 USD une fois | Oui | MathJax | Oui, numéros de page | Non documenté | Non documenté | Non documenté | Natif |
+| VS Code | Gratuit | Oui (1.121+) | KaTeX | Non | Non documenté | Oui | Non documenté | Electron |
+
+## À qui MarsDawn ne convient pas
+
+- Il vous faut des numéros de page dans vos PDF. Typora et Marked 3 les ajoutent, MarsDawn non.
+- Vous entretenez une base de connaissances de notes liées. Obsidian est fait pour cela.
+- Vous ne quittez jamais VS Code. Son aperçu intégré est gratuit, et VS Code ajoute une vue Markdown expérimentale à sa fenêtre Agents.
+- Vous voulez seulement un aperçu dans le Finder. QLMarkdown est gratuit.
+
+## Questions fréquentes
+
+### Quels lecteurs Markdown gratuits pour Mac gèrent Mermaid ?
+
+MacDown 3000, Obsidian et VS Code (1.121 et ultérieur) l’intègrent. QLMarkdown le propose en option, MarkEdit via une extension.
+
+### Lesquels exportent un PDF avec numéros de page ?
+
+Typora et Marked 3. MarsDawn exporte le PDF sans numéros de page.
+
+### Lesquels ouvrent un fichier à une ligne précise depuis la ligne de commande ?
+
+MarsDawn (`marsdawn open notes.md:120`) et VS Code (`code -g file:line`). Pour les autres, ce n’est pas documenté.
+
+### Lesquels sont des apps Mac natives plutôt qu’Electron ?
+
+Toutes sauf Obsidian et VS Code. MarkEdit est natif, avec sa zone d’édition dans une web view.
+
+[Télécharger et essayer](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -20000,6 +20690,7 @@ Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. No hay app para iPhon
 
 - [MacMD Viewer o MarsDawn](/es/vs/macmd-viewer/): un visor de solo lectura junto a MarsDawn, celda por celda, con cuándo elegir cada uno.
 - [Herramientas de vista previa de Markdown](/es/vs/markdown-preview-tools/): la vista previa de VS Code, una extensión de navegador y la vista previa de archivos de Claude Desktop.
+- [El mejor visor de Markdown para Mac (2026)](/es/best-markdown-viewer-mac/)
 
 ---
 
@@ -20114,6 +20805,120 @@ open notes.pdf
 - Todas las opciones de la herramienta de línea de comandos: [Línea de comandos](/es/cli/).
 - Comparado con leer Markdown en VS Code, un navegador o Claude Desktop: [cómo se comparan](/es/vs/markdown-preview-tools/).
 - Todo lo que hace MarsDawn, en una sola página: [Funciones](/es/features/).
+
+---
+
+## El mejor visor de Markdown para Mac (2026)
+
+Source: https://marsdawn.southern-light.dev/es/best-markdown-viewer-mac/
+
+# El mejor visor de Markdown para Mac (2026)
+
+El mejor visor de Markdown depende de lo que leas. Si son notas que escribes tú, basta con una app de notas todo en uno. Si son documentos largos con diagramas y fórmulas, o archivos que un agente de IA reescribe una y otra vez, revisa cómo maneja cada app la recarga en vivo, Mermaid y el PDF. Las apps están en orden alfabético, cada una con para quién es, un defecto honesto y su precio.
+
+## MacDown 3000
+
+El MacDown original ya no se mantiene. MacDown 3000 es la continuación de la comunidad: gratis y de código abierto (MIT), nativo, con Mermaid, MathJax, exportación a PDF, recarga en vivo y Vista rápida.
+
+- Para: quien quiere una vista dividida nativa y gratis.
+- Defecto: no está documentado cómo abrir un archivo en una línea desde la línea de comandos.
+- Precio: gratis.
+
+## Marked
+
+Marked 3 es una app de vista previa para el Markdown que escribes en otra app. Recarga en cuanto cambia el archivo, admite MathJax y KaTeX, e imprime PDF paginados con números de página. Marked 2 se sigue vendiendo.
+
+- Para: quienes escriben en su propia herramienta y quieren una vista previa e impresión cuidadas.
+- Defecto: Vista rápida es una app aparte, Marked QL (9,99 USD).
+- Precio: Marked 3 se descarga gratis y luego cuesta 2,99 USD/mes, 29,99 USD/año o 69,99 USD de por vida. Marked 2 cuesta 14,99 USD directo o 13,99 USD en la Mac App Store.
+
+## MarkEdit
+
+Una app nativa, ligera y gratis (CodeMirror en una web view), con Vista rápida.
+
+- Para: quien quiere una herramienta de texto plano rápida que se sienta propia del Mac.
+- Defecto: Mermaid y las fórmulas necesitan las extensiones oficiales, y el PDF necesita Pandoc.
+- Precio: gratis.
+
+## MarsDawn
+
+Una app nativa para Mac que muestra la fuente y una vista previa en vivo lado a lado, con Mermaid y KaTeX integrados. Cuando un agente guarda el archivo, la ventana abierta toma el cambio como una sola actualización desde el disco que puedes deshacer. `marsdawn open notes.md:120` abre un archivo en una línea, y hay un skill y un servidor MCP para agentes. Vista rápida funciona con o sin la prueba. «Copiar para IA» y «Copiar referencia» pasan texto a un agente. Nada sale de tu Mac a menos que tú lo decidas.
+
+- Para: quien revisa el Markdown que escriben los agentes de IA.
+- Defecto: el PDF exportado no tiene números de página.
+- Precio: descarga gratis con 14 días de prueba y luego 4,99 USD una sola vez. Sin cuenta. Solo en la Mac App Store.
+
+## Obsidian
+
+Una app de notas construida en torno a una bóveda (vault) de archivos Markdown enlazados, con Mermaid, MathJax, exportación a PDF y recarga en vivo.
+
+- Para: quien arma una base de conocimiento con sus propias notas.
+- Defecto: es una app Electron y funciona mejor con archivos dentro de una bóveda.
+- Precio: gratis. Sync y Publish son de pago.
+
+## QLMarkdown
+
+Una extensión de Vista rápida: selecciona un archivo .md en el Finder y presiona la barra espaciadora. Mermaid y MathJax son opcionales.
+
+- Para: quien solo quiere echar un vistazo a los archivos en el Finder.
+- Defecto: no es una app para leer ni editar, y no tiene exportación a PDF documentada.
+- Precio: gratis (GPL-3.0).
+
+## Typora
+
+Una herramienta de escritura donde la vista previa es el documento, con Mermaid, MathJax y exportación a PDF con números de página en el encabezado o el pie.
+
+- Para: quien prefiere escribir en una vista tipo WYSIWYG.
+- Defecto: no muestra la fuente y la vista previa lado a lado.
+- Precio: 14,99 USD una sola vez, hasta 3 dispositivos.
+
+## Vista previa de VS Code
+
+La vista previa de Markdown integrada, con Mermaid integrado desde la 1.121 y KaTeX. `code -g file:line` abre un archivo en una línea.
+
+- Para: desarrolladores que ya trabajan todo el día en VS Code.
+- Defecto: es una app Electron y no trae exportación a PDF.
+- Precio: gratis.
+
+## Comparativa
+
+| App | Precio | Mermaid | Fórmulas | PDF | Recarga en vivo | CLI en una línea | Vista rápida | Tecnología |
+|---|---|---|---|---|---|---|---|---|
+| MacDown 3000 | Gratis | Sí | MathJax | Sí | Sí | No documentado | Sí | Nativa |
+| Marked 3 | Desde 2,99 USD/mes | Sí | MathJax, KaTeX | Sí, con números de página | Sí | No documentado | Marked QL, 9,99 USD | Nativa |
+| MarkEdit | Gratis | Extensión | KaTeX (extensión) | Pandoc | No documentado | No documentado | Sí | Nativa (web view) |
+| MarsDawn | 4,99 USD una vez | Sí | KaTeX | Sí, sin números de página | Sí, se puede deshacer | Sí | Sí | Nativa |
+| Obsidian | Gratis | Sí | MathJax | Sí | Sí | No documentado | No documentado | Electron |
+| QLMarkdown | Gratis | Opcional | MathJax (opcional) | No documentado | No aplica | No aplica | Es una | Nativa |
+| Typora | 14,99 USD una vez | Sí | MathJax | Sí, con números de página | No documentado | No documentado | No documentado | Nativa |
+| VS Code | Gratis | Sí (1.121+) | KaTeX | No | No documentado | Sí | No documentado | Electron |
+
+## Para quién no es MarsDawn
+
+- Necesitas números de página en tus PDF. Typora y Marked 3 los agregan, MarsDawn no.
+- Mantienes una base de conocimiento de notas enlazadas. Obsidian está hecho para eso.
+- Nunca sales de VS Code. Su vista previa integrada es gratis, y VS Code está agregando una vista de Markdown experimental a su ventana Agents.
+- Solo quieres una vista previa en el Finder. QLMarkdown es gratis.
+
+## Preguntas frecuentes
+
+### ¿Qué visores de Markdown gratis para Mac tienen Mermaid?
+
+MacDown 3000, Obsidian y VS Code (1.121 y posteriores) lo traen integrado. QLMarkdown lo ofrece como opción y MarkEdit mediante una extensión.
+
+### ¿Cuáles exportan PDF con números de página?
+
+Typora y Marked 3. MarsDawn exporta PDF sin números de página.
+
+### ¿Cuáles abren un archivo en una línea concreta desde la línea de comandos?
+
+MarsDawn (`marsdawn open notes.md:120`) y VS Code (`code -g file:line`). En los demás no está documentado.
+
+### ¿Cuáles son apps nativas para Mac y no Electron?
+
+Todas menos Obsidian y VS Code. MarkEdit es nativa, con su zona de edición en una web view.
+
+[Descárgala y pruébala](https://apps.apple.com/app/id6812925073)
 
 ---
 
@@ -23135,6 +23940,7 @@ MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone이나 iPad �
 
 - [MacMD Viewer와 MarsDawn](/ko/vs/macmd-viewer/): 읽기 전용 뷰어와 MarsDawn을 칸마다 비교하고, 어떤 경우에 무엇을 고를지 적었습니다.
 - [Markdown 미리보기 도구](/ko/vs/markdown-preview-tools/): VS Code 미리보기, 브라우저 확장, Claude Desktop의 파일 미리보기.
+- [Mac용 Markdown 뷰어 추천 (2026)](/ko/best-markdown-viewer-mac/)
 
 ---
 
@@ -23249,6 +24055,120 @@ open notes.pdf
 - 명령줄 도구의 모든 옵션: [명령줄](/ko/cli/).
 - VS Code, 브라우저, Claude Desktop에서 Markdown을 읽는 경우와 비교: [비교해 보기](/ko/vs/markdown-preview-tools/).
 - MarsDawn의 모든 기능을 한 페이지에: [기능 한눈에 보기](/ko/features/).
+
+---
+
+## Mac용 Markdown 뷰어 추천 (2026)
+
+Source: https://marsdawn.southern-light.dev/ko/best-markdown-viewer-mac/
+
+# Mac용 Markdown 뷰어 추천 (2026)
+
+어떤 Markdown 뷰어가 가장 좋은지는 무엇을 읽느냐에 달려 있습니다. 직접 쓴 메모라면 올인원 노트 앱으로 충분합니다. 다이어그램과 수식이 들어간 긴 문서나 AI 에이전트가 계속 다시 쓰는 파일이라면, 각 앱이 자동 새로 고침, Mermaid, PDF를 어떻게 다루는지 확인하세요. 아래 앱은 알파벳 순서이며, 각각 누구에게 맞는지, 솔직한 단점 하나, 가격을 적었습니다.
+
+## MacDown 3000
+
+원래의 MacDown은 더 이상 유지 관리되지 않습니다. MacDown 3000은 커뮤니티가 이어받은 버전으로, 무료 오픈 소스(MIT)이고 네이티브이며 Mermaid, MathJax, PDF 내보내기, 자동 새로 고침, 훑어보기를 지원합니다.
+
+- 맞는 사람: 무료 네이티브 좌우 분할 보기를 원하는 사람.
+- 단점: 명령줄에서 특정 줄로 여는 방법이 문서화되어 있지 않습니다.
+- 가격: 무료.
+
+## Marked
+
+Marked 3은 다른 앱에서 쓴 Markdown을 보기 위한 미리보기 앱입니다. 파일이 바뀔 때마다 다시 불러오고, MathJax와 KaTeX를 지원하며, 페이지 번호가 붙은 PDF를 인쇄할 수 있습니다. Marked 2도 계속 판매 중입니다.
+
+- 맞는 사람: 자신의 작성 도구를 유지하면서 깔끔한 미리보기와 인쇄를 원하는 작가.
+- 단점: 훑어보기는 별도 앱인 Marked QL(USD 9.99)이 필요합니다.
+- 가격: Marked 3은 무료 다운로드 후 월 USD 2.99, 연 USD 29.99 또는 평생 USD 69.99. Marked 2는 공식 사이트 USD 14.99, Mac App Store USD 13.99.
+
+## MarkEdit
+
+가볍고 무료인 네이티브 앱(웹 뷰에서 CodeMirror 사용)이며 훑어보기를 지원합니다.
+
+- 맞는 사람: 빠르고 Mac다운 일반 텍스트 도구를 원하는 사람.
+- 단점: Mermaid와 수식에는 공식 확장 프로그램이, PDF 내보내기에는 Pandoc이 필요합니다.
+- 가격: 무료.
+
+## MarsDawn
+
+소스와 실시간 미리보기를 나란히 보여 주는 네이티브 Mac 앱으로, Mermaid와 KaTeX가 내장되어 있습니다. 에이전트가 파일을 저장하면 열린 윈도우가 그 변경을 한 번에 실행 취소할 수 있는 '디스크에서 업데이트'로 받아들입니다. `marsdawn open notes.md:120`으로 특정 줄을 열 수 있고, 에이전트용 스킬과 MCP 서버도 있습니다. 훑어보기는 체험 기간과 관계없이 작동합니다. 'AI용으로 복사'와 '참조 복사'로 텍스트를 에이전트에 넘길 수 있습니다. 직접 선택하지 않는 한 아무것도 Mac 밖으로 나가지 않습니다.
+
+- 맞는 사람: AI 에이전트가 쓴 Markdown을 검토하는 사람.
+- 단점: 내보낸 PDF에 페이지 번호가 없습니다.
+- 가격: 무료 다운로드, 14일 체험 후 USD 4.99 한 번 결제. 계정 불필요. Mac App Store 전용.
+
+## Obsidian
+
+서로 링크된 Markdown 파일의 보관소(vault)를 중심으로 한 노트 앱으로, Mermaid, MathJax, PDF 내보내기, 자동 새로 고침을 지원합니다.
+
+- 맞는 사람: 자신의 메모로 지식 베이스를 만드는 사람.
+- 단점: Electron 앱이며, 파일이 보관소 안에 있을 때 가장 잘 작동합니다.
+- 가격: 무료. Sync와 Publish는 유료.
+
+## QLMarkdown
+
+훑어보기 확장 프로그램입니다. Finder에서 .md 파일을 선택하고 스페이스 바를 누르면 됩니다. Mermaid와 MathJax는 선택 사항입니다.
+
+- 맞는 사람: Finder에서 파일을 잠깐 보기만 하면 되는 사람.
+- 단점: 읽거나 편집하는 앱이 아니며, PDF 내보내기도 문서화되어 있지 않습니다.
+- 가격: 무료(GPL-3.0).
+
+## Typora
+
+미리보기가 곧 문서가 되는 위지윅 방식의 작성 도구로, Mermaid, MathJax, 머리글이나 바닥글에 페이지 번호를 넣는 PDF 내보내기를 지원합니다.
+
+- 맞는 사람: 완성된 모습에 가까운 화면에서 쓰고 싶은 사람.
+- 단점: 소스와 미리보기를 나란히 보는 화면이 없습니다.
+- 가격: USD 14.99 한 번 결제, 기기 3대까지.
+
+## VS Code 미리보기
+
+기본 Markdown 미리보기로, 1.121부터 Mermaid가 내장되어 있고 KaTeX를 지원합니다. `code -g file:line`으로 특정 줄을 열 수 있습니다.
+
+- 맞는 사람: 이미 VS Code에서 일하는 개발자.
+- 단점: Electron 앱이며, PDF 내보내기가 기본 제공되지 않습니다.
+- 가격: 무료.
+
+## 비교표
+
+| 앱 | 가격 | Mermaid | 수식 | PDF | 자동 새로 고침 | CLI로 특정 줄 열기 | 훑어보기 | 구성 |
+|---|---|---|---|---|---|---|---|---|
+| MacDown 3000 | 무료 | 지원 | MathJax | 지원 | 지원 | 문서화 안 됨 | 지원 | 네이티브 |
+| Marked 3 | 월 USD 2.99부터 | 지원 | MathJax, KaTeX | 지원, 페이지 번호 | 지원 | 문서화 안 됨 | Marked QL, USD 9.99 | 네이티브 |
+| MarkEdit | 무료 | 확장 프로그램 | KaTeX(확장 프로그램) | Pandoc | 문서화 안 됨 | 문서화 안 됨 | 지원 | 네이티브(웹 뷰) |
+| MarsDawn | USD 4.99 한 번 | 지원 | KaTeX | 지원, 페이지 번호 없음 | 지원, 실행 취소 가능 | 지원 | 지원 | 네이티브 |
+| Obsidian | 무료 | 지원 | MathJax | 지원 | 지원 | 문서화 안 됨 | 문서화 안 됨 | Electron |
+| QLMarkdown | 무료 | 선택 사항 | MathJax(선택 사항) | 문서화 안 됨 | 해당 없음 | 해당 없음 | 그 자체 | 네이티브 |
+| Typora | USD 14.99 한 번 | 지원 | MathJax | 지원, 페이지 번호 | 문서화 안 됨 | 문서화 안 됨 | 문서화 안 됨 | 네이티브 |
+| VS Code | 무료 | 지원(1.121 이상) | KaTeX | 미지원 | 문서화 안 됨 | 지원 | 문서화 안 됨 | Electron |
+
+## MarsDawn이 맞지 않는 사람
+
+- PDF에 페이지 번호가 꼭 필요한 사람. Typora와 Marked 3은 넣을 수 있지만 MarsDawn은 넣을 수 없습니다.
+- 서로 링크된 개인 메모 지식 베이스를 가꾸는 사람. Obsidian은 그 용도로 만들어졌습니다.
+- VS Code를 떠나지 않는 사람. 기본 미리보기는 무료이고, VS Code는 Agents 윈도우에 실험적인 Markdown 보기를 추가하고 있습니다.
+- Finder에서 미리보기만 하면 되는 사람. QLMarkdown은 무료입니다.
+
+## 자주 묻는 질문
+
+### Mermaid를 지원하는 무료 Mac Markdown 뷰어는?
+
+MacDown 3000, Obsidian, VS Code(1.121 이상)에 내장되어 있습니다. QLMarkdown은 선택 사항으로, MarkEdit은 확장 프로그램으로 지원합니다.
+
+### 페이지 번호가 붙은 PDF를 내보낼 수 있는 앱은?
+
+Typora와 Marked 3입니다. MarsDawn의 PDF에는 페이지 번호가 없습니다.
+
+### 명령줄에서 특정 줄로 파일을 열 수 있는 앱은?
+
+MarsDawn(`marsdawn open notes.md:120`)과 VS Code(`code -g file:line`)입니다. 나머지는 문서화되어 있지 않습니다.
+
+### Electron이 아닌 네이티브 Mac 앱은?
+
+Obsidian과 VS Code를 제외한 모두입니다. MarkEdit은 네이티브 앱이며 편집 영역에 웹 뷰를 사용합니다.
+
+[지금 다운로드하고 체험하기](https://apps.apple.com/app/id6812925073)
 
 ---
 
