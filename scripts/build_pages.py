@@ -30,6 +30,7 @@ import article_dates  # noqa: E402
 import locales  # noqa: E402
 import theme_agents  # noqa: E402
 from promo130 import data as promo_data  # noqa: E402
+from best228 import data as best_data  # noqa: E402
 from ia247 import data as ia_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -5459,7 +5460,7 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "markdown-to-pdf", "vs", "vs/macmd-viewer", "cli", "cli/agents", "cli/skill",
+PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "markdown-to-pdf", "vs", "vs/macmd-viewer", "best-markdown-viewer-mac", "cli", "cli/agents", "cli/skill",
               "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/agents", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
@@ -5467,7 +5468,7 @@ PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits
 SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
                   "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "mermaid-preview-mac": "mermaid-preview-mac", "quicklook": "quicklook", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
-                  "vs": "vs", "vs/macmd-viewer": "vs-macmd-viewer",
+                  "vs": "vs", "vs/macmd-viewer": "vs-macmd-viewer", "best-markdown-viewer-mac": "best-markdown-viewer-mac",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
                   "vs/markdown-preview-tools": "vs-markdown-preview-tools", "themes": "themes", "themes/new": "themes-new", "themes/agents": "themes-agents",
                   "themes/gallery": "themes-gallery",
@@ -5526,7 +5527,7 @@ def all_pages() -> dict:
             body = "".join(pieces[:3]) + brand_film_themes.MARK + "\n" + "".join(pieces[3:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return apply_promo130(apply_seo_copy(merged))
+    return apply_best228(apply_promo130(apply_seo_copy(merged)))
 
 
 # --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
@@ -5745,6 +5746,71 @@ def apply_promo130(merged: dict) -> dict:
             layers = "\n".join(f'<p>{text}</p>\n<p class="more">{more}</p>' for text, more in zip(stays["layers"], stays["more"]))
             after.append(f'<section class="stays">\n<h2>{stays["h"]}</h2>\n{layers}\n</section>')
         out[(locale, "index")] = {**out[(locale, "index")], "after": "\n".join(after)}
+    return out
+
+
+# --- /best-markdown-viewer-mac/ (website #228) ------------------------------------------------------
+# Eight Markdown viewers compared, in all eight locales. Every string is scripts/best228/data.py's, which
+# scripts/best228/ingest.py carried over from the pinned comments on #228. Added at all_pages() time like
+# /vs/ (after every locale module is merged), so the locale modules and their shape checks stay as they are.
+# The table scrolls sideways inside its own box on a phone (a sticky first column, owner decision on #228);
+# its anchors are plain ids, so a link to #cmp-typora or #col-pdf works without a script.
+BEST228_SLUG = "best-markdown-viewer-mac"
+
+
+def best228_table_html(d: dict) -> str:
+    cols = d["cols"]
+    head = f'<th scope="col">{d["head"][0]}</th>' + "".join(
+        f'<th scope="col" id="col-{col}">{cell}</th>' for col, cell in zip(cols, d["head"][1:]))
+    body = "\n".join(
+        f'<tr id="cmp-{app["slug"]}"><th scope="row">{row[0]}</th>'
+        + "".join(f'<td data-col="{col}">{cell}</td>' for col, cell in zip(cols, row[1:])) + "</tr>"
+        for app, row in zip(d["apps"], d["rows"]))
+    return (f'<div class="table-scroll compare-scroll" tabindex="0" role="region" aria-labelledby="comparison">\n'
+            f'<table class="compare">\n<thead><tr>{head}</tr></thead>\n<tbody>\n{body}\n</tbody>\n</table>\n</div>')
+
+
+def best228_page(locale: str, d: dict) -> dict:
+    sections = "\n".join(
+        f'<h2 id="{app["slug"]}">{app["name"]}</h2>\n<p>{app["para"]}</p>\n<ul>\n'
+        + "\n".join(f"  <li>{b}</li>" for b in app["bullets"]) + "\n</ul>"
+        for app in d["apps"])
+    notfor = "\n".join(f"  <li>{item}</li>" for item in d["notfor"])
+    faq = "\n".join(f"<h3>{q}</h3>\n<p>{a}</p>" for q, a in d["faq"])
+    body = f"""<section class="intro">
+  <h1>{d["h1"]}</h1>
+  <p>{d["intro"]}</p>
+</section>
+{sections}
+<h2 id="comparison">{d["cmp_h"]}</h2>
+{best228_table_html(d)}
+<h2 id="not-for">{d["notfor_h"]}</h2>
+<ul>
+{notfor}
+</ul>
+<section class="faq">
+<h2 id="faq">{d["faq_h"]}</h2>
+{faq}
+</section>
+<p><a href="{LISTING_URL}">{HOME[locale]["cta_try"]}</a></p>
+"""
+    return {"title": d["title"], "description": d["description"], "body": body}
+
+
+def apply_best228(merged: dict) -> dict:
+    """merged with /best-markdown-viewer-mac/ added in every locale, and linked from the /vs/ hub's list."""
+    out = dict(merged)
+    for locale in LOCALES:
+        if (locale, "vs") not in out:
+            continue
+        d = best_data.DATA[locale]
+        UI[locale].setdefault(BEST228_SLUG, _plain(d["h1"]))
+        out[(locale, BEST228_SLUG)] = best228_page(locale, d)
+        hub = out[(locale, "vs")]
+        head, sep, tail = hub["body"].rpartition("</ul>")
+        assert sep and not tail.strip(), f"{locale}/vs: the body does not end with its link list"
+        link = f'  <li><a href="{page_path(locale, BEST228_SLUG)}">{UI[locale][BEST228_SLUG]}</a></li>\n'
+        out[(locale, "vs")] = {**hub, "body": head + link + "</ul>" + tail}
     return out
 
 

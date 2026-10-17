@@ -1561,3 +1561,25 @@ html { overflow-x: hidden; }
    heading that fits, and breaks inside the word rather than widen the page for one that
    doesn't. */
 :is(:lang(de), :lang(fr), :lang(es)) :is(h1, h2, h3) { overflow-wrap: break-word; }
+
+/* /best-markdown-viewer-mac/ (#228): an eight-column comparison that scrolls sideways inside its own box at
+   every width (it is wider than the text column), with the app names held at the left edge while the
+   columns move. The box takes keyboard focus so the arrow keys scroll it. Deep links are plain ids and
+   need no script: #<app>, #cmp-<app> (a row), #col-<feature> (a column head). */
+.compare-scroll { max-width: 100%; }
+.compare-scroll:focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; }
+.compare-scroll .compare { min-width: 60rem; }
+.compare-scroll .compare th,
+.compare-scroll .compare td { min-width: 7.5rem; }
+.compare-scroll .compare th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 8.5rem;
+  background: var(--paper);
+  box-shadow: 1px 0 0 var(--hairline);
+}
+main:has(.compare-scroll) h2[id],
+[id^="cmp-"],
+[id^="col-"] { scroll-margin-top: 24px; }
+[id^="col-"] { scroll-margin-left: 9rem; }
