@@ -14,6 +14,9 @@ transformations applied are the allowed ones: Markdown inline syntax to HTML ([t
 `x` -> <code>, **x** -> <strong>, *x* -> <em>, \\| -> |), the reply's own framing removed (check boxes,
 language labels, the code span wrapped around a whole item, character counts), commands and file
 names in <code>, and, for #189's zh-Hans strings only, the owner's zh-Hans word map (agent -> 代理).
+#189's de, fr and es `ui` and `ql_title` take the Quick Look names from #249's two Grok comments
+(Übersicht, Coup d’œil, Vista rápida); one of those values is given as a Python literal and is read
+with ast.literal_eval.
 
 Outputs: scripts/promo130/data.py (the strings the build reads) and scripts/promo130/slots.json (one
 row per shipped string: page x field x locale -> source, item label, version label).
@@ -21,6 +24,7 @@ row per shipped string: page x field x locale -> source, item label, version lab
     python3 -B scripts/promo130/ingest.py            # fetch, verify, write
     python3 -B scripts/promo130/ingest.py --through 189   # only the issues up to this one
 """
+import ast
 import hashlib
 import html
 import json
@@ -301,6 +305,25 @@ def comment_source(cid: int, round_: int, locator: str) -> dict:
 
 # ---- #189: scripts/seo_copy.py@8de3664 --------------------------------------------------------
 
+def ql_names_249() -> dict:
+    """{locale: {key: (value, comment id)}}: #249's corrected `ui` and `ql_title` for de, fr and es.
+    The first comment is de's and names no locale; the second labels each item fr or es."""
+    item = re.compile(r"^- \[ \] (?:(fr|es) )?`(ui|ql_title)`[^\n]*\n```\n(.*?)\n```", re.M | re.S)
+    names = {}
+    for round_ in (1, 2):
+        cid, body = comment(249, round_)
+        for m in item.finditer(body):
+            value = m.group(3)
+            if value.startswith("'"):
+                value = ast.literal_eval(value)
+            key = (m.group(1) or "de", m.group(2))
+            assert key[1] not in names.get(key[0], {}), f"#249 gives {key} twice"
+            names.setdefault(key[0], {})[key[1]] = (value, cid)
+    assert sorted((loc, k) for loc in names for k in names[loc]) == [
+        (loc, k) for loc in ("de", "es", "fr") for k in ("ql_title", "ui")], f"#249 items: {names}"
+    return names
+
+
 def ingest_189() -> None:
     cid2 = SOURCES["issues"]["240"][1]["id"]
     text = seo_source()
@@ -310,6 +333,7 @@ def ingest_189() -> None:
     # #240 round 2 corrects one zh-Hans word in Q4; the owner's zh-Hans map is agent -> 代理.
     comment(240, 2)
     zh_q4_old, zh_q4_new = "或任何能执行 shell 命令的 agent", "或任何能执行 shell 命令的代理"
+    ql_names = ql_names_249()
     for loc in LOCALES:
         c = copy[loc]
         src = {"file": f"scripts/seo_copy.py@{SEO_COMMIT[:7]}", "sha256": SEO_SHA256}
@@ -318,7 +342,16 @@ def ingest_189() -> None:
             put(("seo", loc, key) if not isinstance(key, tuple) else ("seo", loc) + key, esc(value),
                 slot={"locale": loc, "page": page, "field": field, "source": dict(src, **({"subst": subst} if subst else {})),
                       "item": item, "version": "#189"})
-        plain("ql_title", c["ql_title"], "quicklook", "title", "ql_title")
+
+        def named(key, page, field):
+            """(value, page, field, item, subst) for plain(), with #249's name when it gives one."""
+            if key not in ql_names.get(loc, {}):
+                return c[key], page, field, key, None
+            value, cid = ql_names[loc][key]
+            assert "Quick Look" in c[key] and "Quick Look" not in value, f"#249 {loc} {key}: {value!r}"
+            return value, page, field, key, {"old": c[key], "new": value, "by": f"comment {cid} (#249)"}
+
+        plain("ql_title", *named("ql_title", "quicklook", "title"))
         plain("ql_desc", c["ql_desc"], "quicklook", "description", "ql_desc")
         plain("ql_h1", c["ql_h1"], "quicklook", "h1", "ql_h1")
         plain("ql_lead", c["ql_lead"], "quicklook", "p", "ql_lead")
@@ -340,7 +373,7 @@ def ingest_189() -> None:
         plain("ql_trial_p", c["ql_trial_p"], "quicklook", "p", "ql_trial_p")
         plain("ql_next_h", c["ql_next_h"], "quicklook", "h2", "ql_next_h")
         plain("ql_link", c["ql_link"], "native", "a", "ql_link")
-        plain("ui", c["ui"], "quicklook", "breadcrumb", "ui")
+        plain("ui", *named("ui", "quicklook", "breadcrumb"))
         plain("faq_h", c["faq_h"], "quicklook", "h2", "faq_h")
         for key, page, items in (("ql_faq", "quicklook", c["ql_faq"]), ("pay_faq", "pay-once", c["pay_faq"]),
                                  ("home_faq", "index", c["home_faq"][1:4])):
