@@ -434,15 +434,16 @@ html.has-consent-banner body {
 /* A compact bar on narrow phones: the text takes its own line (it can still wrap to
    two), the actions sit on one line right-aligned below it, both scaled down together
    so Accept/Decline stay equal in size and weight to each other. */
-@media (max-width: 480px) {
+@media (max-width: 719px) {
   .consent-banner {
-    gap: 8px 12px;
-    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-    font-size: 0.85rem;
+    gap: 6px 12px;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+    font-size: 0.78rem;
+    line-height: 1.3;
   }
   .consent-banner p { flex: 1 1 100%; }
   .consent-actions { flex: 1 1 100%; justify-content: flex-end; gap: 8px; }
-  .consent-btn { padding: 7px 14px; font-size: 0.85rem; }
+  .consent-btn { padding: 6px 12px; font-size: 0.78rem; }
 }
 
 /* ---- Trait pages: annotated screenshots ------------------------------------
@@ -1414,7 +1415,17 @@ html { overflow-x: hidden; }
 .compare-ours td { color: var(--dust); }
 .compare-ours td:last-child { color: var(--ink); }
 .compare-wide { min-width: 40rem; }
-.compare-vs { min-width: 64rem; }
+/* /vs/ has six columns and fits its content column from 720px up, no sideways scroll: fixed
+   layout, equal columns after the row header, and long tokens (⇧⌘V, URLs) may wrap anywhere. */
+.compare-vs { min-width: 0; table-layout: fixed; }
+.compare-vs thead th:first-child { width: 20%; }
+.compare-vs { font-size: 0.8rem; line-height: 1.45; }
+.compare-vs th,
+.compare-vs td { padding-right: 8px; overflow-wrap: anywhere; }
+.compare-vs th:last-child,
+.compare-vs td:last-child { padding-right: 0; }
+/* A bracketed source reference such as [V3, V4] is never split across lines. */
+.cite { white-space: nowrap; }
 .compare-pieces { min-width: 52rem; }
 .compare-wide tbody th[scope="row"] { width: 18%; }
 /* On a phone the row labels stay put while the columns scroll under them. */

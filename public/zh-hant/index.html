@@ -60,13 +60,6 @@ try {
 </head>
 <body>
 <a class="skip" href="#main">跳到內容</a>
-<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
-  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
-  <div class="consent-actions">
-    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
-    <button type="button" id="consent-accept" class="consent-btn">接受</button>
-  </div>
-</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/zh-hant/" aria-label="MarsDawn 首頁" aria-current="page">
@@ -369,14 +362,14 @@ try {
 <div class="table-scroll"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">功能</th><th scope="col">App 內</th><th scope="col">CLI</th><th scope="col">MCP／skill</th><th scope="col">狀態</th></tr></thead>
 <tbody>
-  <tr><th scope="row">打開到某一行</th><td data-label="App 內">停在那一行，預覽區塊閃一下</td><td data-label="CLI">marsdawn open notes.md:120（--background 不搶焦點）</td><td data-label="MCP／skill">open_in_marsdawn；skill 只開一次</td><td data-label="狀態">已推出</td></tr>
-  <tr><th scope="row">輸出 PDF</th><td data-label="App 內">檔案 ▸ 輸出為 PDF⋯（⌥⌘E）</td><td data-label="CLI">marsdawn export，不需要 app</td><td data-label="MCP／skill">export_markdown_to_pdf；skill</td><td data-label="狀態">已推出</td></tr>
-  <tr><th scope="row">JSON 結果</th><td data-label="App 內">—</td><td data-label="CLI">open、export 加 --json</td><td data-label="MCP／skill">MCP 回傳同一份 JSON</td><td data-label="狀態">已推出</td></tr>
-  <tr><th scope="row">Agent skill</th><td data-label="App 內">—</td><td data-label="CLI">marsdawn skill --install</td><td data-label="MCP／skill">教 agent 開一次、輸出 PDF</td><td data-label="狀態">已推出</td></tr>
-  <tr><th scope="row">MCP 伺服器</th><td data-label="App 內">—</td><td data-label="CLI">在底下執行</td><td data-label="MCP／skill">marsdawn-mcp：兩個工具，只碰允許的資料夾</td><td data-label="狀態">已推出</td></tr>
-  <tr><th scope="row">拷貝給 AI、拷貝引用</th><td data-label="App 內">編輯 ▸ 拷貝給 AI（⌃⌥⌘C）、拷貝引用（⌥⌘C）</td><td data-label="CLI">—</td><td data-label="MCP／skill">—（貼給任何 agent）</td><td data-label="狀態">已推出</td></tr>
-  <tr><th scope="row">存檔後自動更新</th><td data-label="App 內">接收存檔的變更，可撤銷一次</td><td data-label="CLI">—</td><td data-label="MCP／skill">skill：不用再開一次</td><td data-label="狀態">已推出</td></tr>
-  <tr><th scope="row">Claude Code hook</th><td data-label="App 內">—</td><td data-label="CLI">用 open --background</td><td data-label="MCP／skill">/cli/agents/ 的 hook 腳本</td><td data-label="狀態">有文件，選用</td></tr>
+  <tr><th scope="row">打開到某一行</th><td data-label="App 內"><span class="cell">停在那一行，預覽區塊閃一下</span></td><td data-label="CLI"><span class="cell">marsdawn open notes.md:120（--background 不搶焦點）</span></td><td data-label="MCP／skill"><span class="cell">open_in_marsdawn；skill 只開一次</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
+  <tr><th scope="row">輸出 PDF</th><td data-label="App 內"><span class="cell">檔案 ▸ 輸出為 PDF⋯（⌥⌘E）</span></td><td data-label="CLI"><span class="cell">marsdawn export，不需要 app</span></td><td data-label="MCP／skill"><span class="cell">export_markdown_to_pdf；skill</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
+  <tr><th scope="row">JSON 結果</th><td data-label="App 內"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">open、export 加 --json</span></td><td data-label="MCP／skill"><span class="cell">MCP 回傳同一份 JSON</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
+  <tr><th scope="row">Agent skill</th><td data-label="App 內"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">marsdawn skill --install</span></td><td data-label="MCP／skill"><span class="cell">教 agent 開一次、輸出 PDF</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
+  <tr><th scope="row">MCP 伺服器</th><td data-label="App 內"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">在底下執行</span></td><td data-label="MCP／skill"><span class="cell">marsdawn-mcp：兩個工具，只碰允許的資料夾</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
+  <tr><th scope="row">拷貝給 AI、拷貝引用</th><td data-label="App 內"><span class="cell">編輯 ▸ 拷貝給 AI（⌃⌥⌘C）、拷貝引用（⌥⌘C）</span></td><td data-label="CLI"><span class="cell">—</span></td><td data-label="MCP／skill"><span class="cell">—（貼給任何 agent）</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
+  <tr><th scope="row">存檔後自動更新</th><td data-label="App 內"><span class="cell">接收存檔的變更，可撤銷一次</span></td><td data-label="CLI"><span class="cell">—</span></td><td data-label="MCP／skill"><span class="cell">skill：不用再開一次</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
+  <tr><th scope="row">Claude Code hook</th><td data-label="App 內"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">用 open --background</span></td><td data-label="MCP／skill"><span class="cell">/cli/agents/ 的 hook 腳本</span></td><td data-label="狀態"><span class="cell">有文件，選用</span></td></tr>
 </tbody>
 </table></div>
 <p>已推出：在上面寫的發行版本裡。有文件，選用：本站上的說明，要你自己加，不在工具裡。規劃中：還沒做，沒有日期。規劃中：MCP 的 open_in_marsdawn 加上資料夾選項。--folder 等其他選項見<a href="/zh-hant/cli/">命令列工具</a>。</p>
@@ -387,8 +380,8 @@ try {
 <div class="table-scroll"><table class="compare compare-wide">
 <thead><tr><th scope="col">工具</th><th scope="col">怎麼搭配</th><th scope="col">設定</th></tr></thead>
 <tbody>
-  <tr><th scope="row">Claude Code</th><td data-label="怎麼搭配">skill 會讓它寫完後打開一次，直接停在那一行：<code>marsdawn open plan.md:42</code>。另有選用的 hook，它寫的每個 .md 都會在背景打開</td><td data-label="設定"><code>marsdawn skill --install</code>；hook 腳本見 /cli/agents/</td></tr>
-  <tr><th scope="row">Codex、Cursor、Xcode</th><td data-label="怎麼搭配">還沒有專屬的設定說明。能跑 shell 指令的工具都能呼叫 <code>marsdawn open file:line --json</code>；會讀指令檔的 agent 可以用 SKILL.md（<code>--dir</code>），只走 MCP 的工具可以用 marsdawn-mcp</td><td data-label="設定"><code>brew install redtear1115/tap/marsdawn</code></td></tr>
+  <tr><th scope="row">Claude Code</th><td data-label="怎麼搭配"><span class="cell">skill 會讓它寫完後打開一次，直接停在那一行：<code>marsdawn open plan.md:42</code>。另有選用的 hook，它寫的每個 .md 都會在背景打開</span></td><td data-label="設定"><span class="cell"><code>marsdawn skill --install</code>；hook 腳本見 /cli/agents/</span></td></tr>
+  <tr><th scope="row">Codex、Cursor、Xcode</th><td data-label="怎麼搭配"><span class="cell">還沒有專屬的設定說明。能跑 shell 指令的工具都能呼叫 <code>marsdawn open file:line --json</code>；會讀指令檔的 agent 可以用 SKILL.md（<code>--dir</code>），只走 MCP 的工具可以用 marsdawn-mcp</span></td><td data-label="設定"><span class="cell"><code>brew install redtear1115/tap/marsdawn</code></span></td></tr>
 </tbody>
 </table></div>
 <p>hook 與指令：<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a> · <a href="/zh-hant/cli/skill/">給 agent 的 skill</a> · <a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
@@ -525,6 +518,13 @@ try {
   </nav>
   <p class="footer-meta"><span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
 </div>
 </body>
 </html>

@@ -60,13 +60,6 @@ try {
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
-<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
-  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
-  <div class="consent-actions">
-    <button type="button" id="consent-decline" class="consent-btn">거부</button>
-    <button type="button" id="consent-accept" class="consent-btn">수락</button>
-  </div>
-</div>
 <div class="page">
 <header class="masthead">
   <a class="brand" href="/ko/" aria-label="MarsDawn 홈" aria-current="page">
@@ -368,14 +361,14 @@ try {
 <div class="table-scroll"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">기능</th><th scope="col">앱</th><th scope="col">CLI</th><th scope="col">MCP / 스킬</th><th scope="col">상태</th></tr></thead>
 <tbody>
-  <tr><th scope="row">특정 줄에서 열기</th><td data-label="앱">그 줄로 이동, 미리보기 블록이 깜박임</td><td data-label="CLI"><code>marsdawn open notes.md:120</code> (<code>--background</code>는 포커스 유지)</td><td data-label="MCP / 스킬"><code>open_in_marsdawn</code>, 스킬은 한 번만 열기</td><td data-label="상태">제공 중</td></tr>
-  <tr><th scope="row">PDF 내보내기</th><td data-label="앱">파일 ▸ PDF로 내보내기… (⌥⌘E)</td><td data-label="CLI"><code>marsdawn export</code>, 앱 없이</td><td data-label="MCP / 스킬"><code>export_markdown_to_pdf</code>, 스킬</td><td data-label="상태">제공 중</td></tr>
-  <tr><th scope="row">JSON 결과</th><td data-label="앱">—</td><td data-label="CLI">open과 export에 <code>--json</code></td><td data-label="MCP / 스킬">MCP가 같은 JSON 반환</td><td data-label="상태">제공 중</td></tr>
-  <tr><th scope="row">에이전트 스킬</th><td data-label="앱">—</td><td data-label="CLI"><code>marsdawn skill --install</code></td><td data-label="MCP / 스킬">한 번 열기와 내보내기를 안내</td><td data-label="상태">제공 중</td></tr>
-  <tr><th scope="row">MCP 서버</th><td data-label="앱">—</td><td data-label="CLI">내부에서 실행</td><td data-label="MCP / 스킬">marsdawn-mcp: 도구 두 개, 허용한 폴더만</td><td data-label="상태">제공 중</td></tr>
-  <tr><th scope="row">AI용으로 복사, 참조 복사</th><td data-label="앱">편집 ▸ AI용으로 복사 (⌃⌥⌘C), 참조 복사 (⌥⌘C)</td><td data-label="CLI">—</td><td data-label="MCP / 스킬">— (어떤 에이전트에든 붙여 넣기)</td><td data-label="상태">제공 중</td></tr>
-  <tr><th scope="row">저장 시 자동 반영</th><td data-label="앱">저장된 변경을 반영, 한 번에 실행 취소</td><td data-label="CLI">—</td><td data-label="MCP / 스킬">스킬: 다시 열지 않음</td><td data-label="상태">제공 중</td></tr>
-  <tr><th scope="row">Claude Code 훅</th><td data-label="앱">—</td><td data-label="CLI"><code>open --background</code> 사용</td><td data-label="MCP / 스킬">/cli/agents/의 훅 스크립트</td><td data-label="상태">문서 제공, 선택 사항</td></tr>
+  <tr><th scope="row">특정 줄에서 열기</th><td data-label="앱"><span class="cell">그 줄로 이동, 미리보기 블록이 깜박임</span></td><td data-label="CLI"><span class="cell"><code>marsdawn open notes.md:120</code> (<code>--background</code>는 포커스 유지)</span></td><td data-label="MCP / 스킬"><span class="cell"><code>open_in_marsdawn</code>, 스킬은 한 번만 열기</span></td><td data-label="상태"><span class="cell">제공 중</span></td></tr>
+  <tr><th scope="row">PDF 내보내기</th><td data-label="앱"><span class="cell">파일 ▸ PDF로 내보내기… (⌥⌘E)</span></td><td data-label="CLI"><span class="cell"><code>marsdawn export</code>, 앱 없이</span></td><td data-label="MCP / 스킬"><span class="cell"><code>export_markdown_to_pdf</code>, 스킬</span></td><td data-label="상태"><span class="cell">제공 중</span></td></tr>
+  <tr><th scope="row">JSON 결과</th><td data-label="앱"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">open과 export에 <code>--json</code></span></td><td data-label="MCP / 스킬"><span class="cell">MCP가 같은 JSON 반환</span></td><td data-label="상태"><span class="cell">제공 중</span></td></tr>
+  <tr><th scope="row">에이전트 스킬</th><td data-label="앱"><span class="cell">—</span></td><td data-label="CLI"><span class="cell"><code>marsdawn skill --install</code></span></td><td data-label="MCP / 스킬"><span class="cell">한 번 열기와 내보내기를 안내</span></td><td data-label="상태"><span class="cell">제공 중</span></td></tr>
+  <tr><th scope="row">MCP 서버</th><td data-label="앱"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">내부에서 실행</span></td><td data-label="MCP / 스킬"><span class="cell">marsdawn-mcp: 도구 두 개, 허용한 폴더만</span></td><td data-label="상태"><span class="cell">제공 중</span></td></tr>
+  <tr><th scope="row">AI용으로 복사, 참조 복사</th><td data-label="앱"><span class="cell">편집 ▸ AI용으로 복사 (⌃⌥⌘C), 참조 복사 (⌥⌘C)</span></td><td data-label="CLI"><span class="cell">—</span></td><td data-label="MCP / 스킬"><span class="cell">— (어떤 에이전트에든 붙여 넣기)</span></td><td data-label="상태"><span class="cell">제공 중</span></td></tr>
+  <tr><th scope="row">저장 시 자동 반영</th><td data-label="앱"><span class="cell">저장된 변경을 반영, 한 번에 실행 취소</span></td><td data-label="CLI"><span class="cell">—</span></td><td data-label="MCP / 스킬"><span class="cell">스킬: 다시 열지 않음</span></td><td data-label="상태"><span class="cell">제공 중</span></td></tr>
+  <tr><th scope="row">Claude Code 훅</th><td data-label="앱"><span class="cell">—</span></td><td data-label="CLI"><span class="cell"><code>open --background</code> 사용</span></td><td data-label="MCP / 스킬"><span class="cell">/cli/agents/의 훅 스크립트</span></td><td data-label="상태"><span class="cell">문서 제공, 선택 사항</span></td></tr>
 </tbody>
 </table></div>
 <p>제공 중: 위에 적은 출시 버전에 포함. 문서 제공, 선택 사항: 이 사이트의 안내에 따라 직접 추가하며 도구에는 포함되지 않음. 예정: 아직 없으며 날짜 미정. 예정: MCP <code>open_in_marsdawn</code>의 폴더 옵션. <code>--folder</code> 등 다른 옵션은 <a href="/ko/cli/">명령줄</a>에 있습니다.</p>
@@ -386,8 +379,8 @@ try {
 <div class="table-scroll"><table class="compare compare-wide">
 <thead><tr><th scope="col">도구</th><th scope="col">연결 방식</th><th scope="col">설정</th></tr></thead>
 <tbody>
-  <tr><th scope="row">Claude Code</th><td data-label="연결 방식">스킬에 따라 쓴 파일을 한 번, 그 줄에서 엽니다: <code>marsdawn open plan.md:42</code>. 선택 사항인 훅을 켜면 쓴 .md를 매번 백그라운드에서 엽니다</td><td data-label="설정"><code>marsdawn skill --install</code>, 훅 스크립트는 /cli/agents/에</td></tr>
-  <tr><th scope="row">Codex, Cursor, Xcode</th><td data-label="연결 방식">아직 전용 설정 안내가 없습니다. 셸 명령을 실행할 수 있는 도구라면 <code>marsdawn open file:line --json</code>을 호출할 수 있고, 지침 파일을 읽는 에이전트는 SKILL.md(<code>--dir</code>)를, MCP만 쓰는 클라이언트는 marsdawn-mcp를 쓸 수 있습니다</td><td data-label="설정"><code>brew install redtear1115/tap/marsdawn</code></td></tr>
+  <tr><th scope="row">Claude Code</th><td data-label="연결 방식"><span class="cell">스킬에 따라 쓴 파일을 한 번, 그 줄에서 엽니다: <code>marsdawn open plan.md:42</code>. 선택 사항인 훅을 켜면 쓴 .md를 매번 백그라운드에서 엽니다</span></td><td data-label="설정"><span class="cell"><code>marsdawn skill --install</code>, 훅 스크립트는 /cli/agents/에</span></td></tr>
+  <tr><th scope="row">Codex, Cursor, Xcode</th><td data-label="연결 방식"><span class="cell">아직 전용 설정 안내가 없습니다. 셸 명령을 실행할 수 있는 도구라면 <code>marsdawn open file:line --json</code>을 호출할 수 있고, 지침 파일을 읽는 에이전트는 SKILL.md(<code>--dir</code>)를, MCP만 쓰는 클라이언트는 marsdawn-mcp를 쓸 수 있습니다</span></td><td data-label="설정"><span class="cell"><code>brew install redtear1115/tap/marsdawn</code></span></td></tr>
 </tbody>
 </table></div>
 <p>훅과 명령: <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a> · <a href="/ko/cli/skill/">에이전트 스킬</a> · <a href="/ko/limits/">MarsDawn이 하지 않는 일</a></p>
@@ -524,6 +517,13 @@ try {
   </nav>
   <p class="footer-meta"><span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
 </footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
 </div>
 </body>
 </html>
