@@ -1773,7 +1773,7 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
 <p><strong>Qué revisar:</strong> los traspasos. Donde un agente resume el trabajo de otro, busca un requisito que no haya pasado. Busca dos archivos que se contradigan, y decide cuál manda antes de que alguien construya sobre el otro. En MarsDawn, abre la carpeta compartida con Archivo &#9656; Abrir carpeta&#8230; (&#8679;&#8984;O): los archivos nuevos aparecen en la pestaña Archivos en un segundo aproximadamente, a medida que los agentes los escriben, y en una copia de trabajo de git el encabezado muestra la rama o el worktree, para que dos ventanas con el mismo nombre de archivo en ramas distintas no parezcan iguales. Cuando el resultado tiene que llegar a personas que no leen Markdown, <a href="/es/sharing-exported-pdfs/">Compartir PDF exportados</a> cubre ese paso.</p>
 
 <h2>De un vistazo</h2>
-<table>
+<div class="table-scroll"><table>
 <thead><tr><th>Patrón (Ng)</th><th>Lo que suele entregarte (deducción nuestra)</th><th>Qué leer primero (sugerencia nuestra)</th></tr></thead>
 <tbody>
 <tr><td>Reflexión</td><td>Un borrador revisado, quizá con una autoevaluación</td><td>El resultado frente a tu pedido; comprueba un «verificado»</td></tr>
@@ -1781,7 +1781,7 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
 <tr><td>Planificación</td><td><code>plan.md</code>, una especificación, una lista de tareas</td><td>La revisión de cinco minutos, antes de ejecutar</td></tr>
 <tr><td>Colaboración multiagente</td><td>Varios archivos de varios agentes, quizá en varias ramas</td><td>Los traspasos, y qué archivo manda</td></tr>
 </tbody>
-</table>
+</table></div>
 <p>Ninguno de los autores citados aquí menciona MarsDawn ni lo recomienda, ni a ninguna otra herramienta de Markdown. MarsDawn no incluye ningún modelo de IA: no sabe qué modelo produjo un archivo, y no hará estas comprobaciones por ti. Mantiene los archivos legibles mientras tú las haces.</p>
 
 <h2>Pruébalo</h2>
