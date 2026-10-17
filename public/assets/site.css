@@ -1566,7 +1566,18 @@ html { overflow-x: hidden; }
    every width (it is wider than the text column), with the app names held at the left edge while the
    columns move. The box takes keyboard focus so the arrow keys scroll it. Deep links are plain ids and
    need no script: #<app>, #cmp-<app> (a row), #col-<feature> (a column head). */
-.compare-scroll { max-width: 100%; }
+.compare-scroll {
+  --best-first: 8.5rem;
+  max-width: 100%;
+  /* Scroll cue, CSS only: a soft shadow at the right edge while more columns lie to the right and, once
+     scrolled, just after the pinned first column. The two shadows are fixed to the box; the two covers in
+     the page colour are attached to the content, so each cover hides its shadow at that end of the scroll. */
+  background:
+    linear-gradient(to right, var(--paper), var(--paper)) var(--best-first) 0 / 24px 100% no-repeat local,
+    linear-gradient(to left, var(--paper), var(--paper)) 100% 0 / 24px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--ink) 22%, transparent), transparent) var(--best-first) 0 / 14px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--ink) 22%, transparent), transparent) 100% 0 / 14px 100% no-repeat scroll;
+}
 .compare-scroll:focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; }
 .compare-scroll .compare { min-width: 60rem; }
 .compare-scroll .compare th,
@@ -1575,7 +1586,8 @@ html { overflow-x: hidden; }
   position: sticky;
   left: 0;
   z-index: 1;
-  min-width: 8.5rem;
+  width: var(--best-first);
+  min-width: var(--best-first);
   background: var(--paper);
   box-shadow: 1px 0 0 var(--hairline);
 }
