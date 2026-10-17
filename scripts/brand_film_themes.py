@@ -22,9 +22,9 @@ FILM = "/assets/film/marsdawn-themes-film-en-1080p30.mp4"
 POSTER = "/assets/film/marsdawn-themes-film-en-poster.jpg"
 DURATION_SECONDS = 88
 DURATION_ISO = "PT1M28S"
-# VideoObject.uploadDate. MUST be set to the deploy date when the film goes live (it is 2026-10-15, the day the
-# film was finished, until then).
-UPLOAD_DATE = "2026-10-16"
+# VideoObject.uploadDate: when the film went live (deploy run 38889080071, 11:10:25Z). Google wants a full
+# ISO 8601 datetime with a time-zone offset; a bare date is flagged "invalid datetime" / "missing time zone".
+UPLOAD_DATE = "2026-10-16T19:10:25+08:00"
 MARK = "<!--film-themes-->"
 
 TRACKS = {
