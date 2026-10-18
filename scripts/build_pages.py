@@ -5641,7 +5641,7 @@ def apply_seo_copy(merged: dict) -> dict:
     return out
 
 
-def promo_table_html(head: list, rows: list, classes: str) -> str:
+def promo_table_html(head: list, rows: list, classes: str, label_id: str = "") -> str:
     """A comparison table from promo-130 data: the head's cells and every cell are HTML-ready text; the first
     cell of a row is its row header, and each other cell names its column (the stacked layout on narrow screens)."""
     cols = "".join(f'<th scope="col">{cell}</th>' for cell in head)
@@ -5649,7 +5649,10 @@ def promo_table_html(head: list, rows: list, classes: str) -> str:
         f'  <tr><th scope="row">{row[0]}</th>'
         + "".join(f'<td data-label="{_plain(label)}"><span class="cell">{cell}</span></td>' for label, cell in zip(head[1:], row[1:])) + "</tr>"
         for row in rows)
-    return f'<div class="table-scroll"><table class="{classes}">\n<thead><tr>{cols}</tr></thead>\n<tbody>\n{body}\n</tbody>\n</table></div>'
+    # label_id: the id of the heading above, when the box is a focusable labelled region (#262 CS-2)
+    box = (f'<div class="table-scroll" tabindex="0" role="region" aria-labelledby="{label_id}">' if label_id
+           else '<div class="table-scroll">')
+    return f'{box}<table class="{classes}">\n<thead><tr>{cols}</tr></thead>\n<tbody>\n{body}\n</tbody>\n</table></div>'
 
 
 def vs_page(copy: dict, sources_h2: str) -> dict:
@@ -5734,8 +5737,8 @@ def apply_promo130(merged: dict) -> dict:
         after = []
         pieces = promo_data.DATA.get("pieces", {}).get(locale)
         if pieces:
-            after.append(f'<section class="pieces">\n<h2>{pieces["h"]}</h2>\n<p>{pieces["intro"]}</p>\n'
-                         f'{promo_table_html(pieces["head"], pieces["rows"], "compare compare-wide compare-pieces")}\n<p>{pieces["foot"]}</p>\n</section>')
+            after.append(f'<section class="pieces">\n<h2 id="pieces">{pieces["h"]}</h2>\n<p>{pieces["intro"]}</p>\n'
+                         f'{promo_table_html(pieces["head"], pieces["rows"], "compare compare-wide compare-pieces", "pieces")}\n<p>{pieces["foot"]}</p>\n</section>')
         indie = promo_data.DATA.get("indie", {}).get(locale)
         if indie:
             after.append(f'<section class="indie">\n<h2>{indie["h"]}</h2>\n<p>{indie["intro"]}</p>\n'

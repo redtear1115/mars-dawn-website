@@ -357,9 +357,9 @@ try {
 </nav>
 <p class="know">购买前先知道。 <a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
 <section class="pieces">
-<h2>各部分怎么搭在一起</h2>
+<h2 id="pieces">各部分怎么搭在一起</h2>
 <p>以 MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 为准，各部分目前能做的事。</p>
-<div class="table-scroll"><table class="compare compare-wide compare-pieces">
+<div class="table-scroll" tabindex="0" role="region" aria-labelledby="pieces"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">功能</th><th scope="col">App 内</th><th scope="col">CLI</th><th scope="col">MCP／skill</th><th scope="col">状态</th></tr></thead>
 <tbody>
   <tr><th scope="row">打开到某一行</th><td data-label="App 内"><span class="cell">停在那一行，预览区块闪一下</span></td><td data-label="CLI"><span class="cell"><code>marsdawn open notes.md:120</code>（<code>--background</code> 不抢焦点）</span></td><td data-label="MCP／skill"><span class="cell"><code>open_in_marsdawn</code>；skill 只打开一次</span></td><td data-label="状态"><span class="cell">已推出</span></td></tr>
