@@ -314,7 +314,7 @@ try {
 <span class="loop-h"><span class="loop-mk">##</span> 上线</span>
 <span class="loop-day loop-d-u a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span><span class="loop-ecaret loop-n5 a"></span></span> 为所有用户打开 checkout_v2。
 </div>
-<div class="loop-pre"><h3>结账 v2</h3><h4>目标</h4><p>单页结账加上已存卡片，<span class="loop-day loop-d-a a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span></span> 上线。</p><h4>数据回填</h4><p>迁移现有卡片 token：10/13 跑到 10/15。</p><h4>上线</h4><p><span class="loop-day loop-d-u a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span></span> 为所有用户打开 checkout_v2。</p></div>
+<div class="loop-pre"><div class="h3">结账 v2</div><div class="h4">目标</div><p>单页结账加上已存卡片，<span class="loop-day loop-d-a a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span></span> 上线。</p><div class="h4">数据回填</div><p>迁移现有卡片 token：10/13 跑到 10/15。</p><div class="h4">上线</div><p><span class="loop-day loop-d-u a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span></span> 为所有用户打开 checkout_v2。</p></div>
 </div>
 </div>
 <div class="loop-term a">
@@ -357,9 +357,9 @@ try {
 </nav>
 <p class="know">购买前先知道。 <a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
 <section class="pieces">
-<h2>各部分怎么搭在一起</h2>
+<h2 id="pieces">各部分怎么搭在一起</h2>
 <p>以 MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 为准，各部分目前能做的事。</p>
-<div class="table-scroll"><table class="compare compare-wide compare-pieces">
+<div class="table-scroll" tabindex="0" role="region" aria-labelledby="pieces"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">功能</th><th scope="col">App 内</th><th scope="col">CLI</th><th scope="col">MCP／skill</th><th scope="col">状态</th></tr></thead>
 <tbody>
   <tr><th scope="row">打开到某一行</th><td data-label="App 内"><span class="cell">停在那一行，预览区块闪一下</span></td><td data-label="CLI"><span class="cell"><code>marsdawn open notes.md:120</code>（<code>--background</code> 不抢焦点）</span></td><td data-label="MCP／skill"><span class="cell"><code>open_in_marsdawn</code>；skill 只打开一次</span></td><td data-label="状态"><span class="cell">已推出</span></td></tr>
@@ -453,8 +453,9 @@ try {
 </main>
 <footer class="footer footer-home">
   <nav class="footer-nav" aria-label="网站导航">
+    <h2 class="footer-nav-title">网站导航</h2>
     <section aria-labelledby="footer-product">
-      <h2 id="footer-product">产品</h2>
+      <h3 id="footer-product">产品</h3>
       <ul>
         <li><a href="/zh-hans/features/">功能一览</a></li>
         <li><a href="/zh-hans/quicklook/">Markdown 快速查看</a></li>
@@ -467,7 +468,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
-      <h2 id="footer-agents">代理与命令行</h2>
+      <h3 id="footer-agents">代理与命令行</h3>
       <ul>
         <li><a href="/zh-hans/cli/">命令行工具</a></li>
         <li><a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a></li>
@@ -477,7 +478,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-guides">
-      <h2 id="footer-guides">教学</h2>
+      <h3 id="footer-guides">教学</h3>
       <ul>
         <li><a href="/zh-hans/view-markdown-on-mac/">Mac 上怎么打开 md 文件</a></li>
         <li><a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a></li>
@@ -490,7 +491,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-compare">
-      <h2 id="footer-compare">比较</h2>
+      <h3 id="footer-compare">比较</h3>
       <ul>
         <li><a href="/zh-hans/vs/">MarsDawn 对比：VS Code 预览、Obsidian、QLMarkdown、LynxOffice</a></li>
         <li><a href="/zh-hans/vs/macmd-viewer/">MacMD Viewer 对比 MarsDawn</a></li>
@@ -498,7 +499,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-themes">
-      <h2 id="footer-themes">主题</h2>
+      <h3 id="footer-themes">主题</h3>
       <ul>
         <li><a href="/zh-hans/themes/">预览主题与 PDF 导出</a></li>
         <li><a href="/zh-hans/themes/gallery/">主题图库</a></li>
@@ -508,7 +509,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-support">
-      <h2 id="footer-support">支持与法律</h2>
+      <h3 id="footer-support">支持与法律</h3>
       <ul>
         <li><a href="/zh-hans/support/">支持</a></li>
         <li><a href="/zh-hans/privacy/">隐私政策</a></li>
@@ -520,7 +521,7 @@ try {
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
-  <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
+  <p>本站使用分析用 cookie，点击“接受”前不会启用。</p>
   <div class="consent-actions">
     <button type="button" id="consent-decline" class="consent-btn">拒绝</button>
     <button type="button" id="consent-accept" class="consent-btn">接受</button>

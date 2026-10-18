@@ -8,7 +8,7 @@ one (CSS shows one), so every list is kept per copy:
     nav.site-nav   ul.site-nav-wide, details.site-nav-narrow      -> main_nav["wide"|"narrow"]
     nav.lang       div.lang-wide (ul + details.lang-more),
                    details.lang-narrow (div.lang-panel: ul, hr.lang-sep, ul)   -> lang["wide"|"narrow"]
-    footer         nav.footer-nav > section > h2 + ul             -> footer_groups
+    footer         nav.footer-nav > section > h3 + ul             -> footer_groups
 """
 from html.parser import HTMLParser
 
@@ -73,8 +73,8 @@ class Chrome(HTMLParser):
             self.brand = (a.get("href"), a.get("aria-label"), a.get("aria-current"))
         elif tag == "section" and self._in("nav", "footer-nav"):
             self.footer_groups.append([None, []])
-        elif tag == "h2" and self._in("nav", "footer-nav") and self.footer_groups:
-            self._text = ("h2", [])
+        elif tag == "h3" and self._in("nav", "footer-nav") and self.footer_groups:
+            self._text = ("h3", [])
         elif tag == "summary":
             self._text = ("summary", [], a.get("lang"), self._summary_owner())
         elif tag == "a":
@@ -112,7 +112,7 @@ class Chrome(HTMLParser):
     def handle_endtag(self, tag):
         if self._text and self._text[0] == tag:
             text = "".join(self._text[1]).strip()
-            if tag == "h2":
+            if tag == "h3":
                 self.footer_groups[-1][0] = text
             else:
                 owner = self._text[3]

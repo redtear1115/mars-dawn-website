@@ -125,7 +125,7 @@ try {
   <p>如果你手边刚好开着 VS Code、浏览器或 Claude Desktop，用它们顺手看一眼 Markdown 文件也合理。以下是它们各自实际排版出什么、要花多少功夫才能看到，和在 MarsDawn 里打开同一份文件的比较。</p>
 </section>
 <h2 id="at-a-glance">一眼看完</h2>
-<div class="table-scroll"><table class="compare compare-wide">
+<div class="table-scroll" tabindex="0" role="region" aria-labelledby="at-a-glance"><table class="compare compare-wide">
 <thead><tr><th scope="col"></th><th scope="col">VS Code 预览</th><th scope="col">浏览器扩展</th><th scope="col">Claude Desktop</th><th scope="col">MarsDawn</th></tr></thead>
 <tbody>
   <tr><th scope="row">打开磁盘上的 Markdown 文件</th><td data-label="VS Code 预览">可以</td><td data-label="浏览器扩展">可以，但要先允许访问文件</td><td data-label="Claude Desktop">不行：Markdown 不在可上传的类型里</td><td data-label="MarsDawn">可以</td></tr>
@@ -152,8 +152,9 @@ try {
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="网站导航">
+    <h2 class="footer-nav-title">网站导航</h2>
     <section aria-labelledby="footer-product">
-      <h2 id="footer-product">产品</h2>
+      <h3 id="footer-product">产品</h3>
       <ul>
         <li><a href="/zh-hans/features/">功能一览</a></li>
         <li><a href="/zh-hans/quicklook/">Markdown 快速查看</a></li>
@@ -166,7 +167,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
-      <h2 id="footer-agents">代理与命令行</h2>
+      <h3 id="footer-agents">代理与命令行</h3>
       <ul>
         <li><a href="/zh-hans/cli/">命令行工具</a></li>
         <li><a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a></li>
@@ -176,7 +177,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-guides">
-      <h2 id="footer-guides">教学</h2>
+      <h3 id="footer-guides">教学</h3>
       <ul>
         <li><a href="/zh-hans/view-markdown-on-mac/">Mac 上怎么打开 md 文件</a></li>
         <li><a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a></li>
@@ -189,7 +190,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-compare">
-      <h2 id="footer-compare">比较</h2>
+      <h3 id="footer-compare">比较</h3>
       <ul>
         <li><a href="/zh-hans/vs/">MarsDawn 对比：VS Code 预览、Obsidian、QLMarkdown、LynxOffice</a></li>
         <li><a href="/zh-hans/vs/macmd-viewer/">MacMD Viewer 对比 MarsDawn</a></li>
@@ -197,7 +198,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-themes">
-      <h2 id="footer-themes">主题</h2>
+      <h3 id="footer-themes">主题</h3>
       <ul>
         <li><a href="/zh-hans/themes/">预览主题与 PDF 导出</a></li>
         <li><a href="/zh-hans/themes/gallery/">主题图库</a></li>
@@ -207,7 +208,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-support">
-      <h2 id="footer-support">支持与法律</h2>
+      <h3 id="footer-support">支持与法律</h3>
       <ul>
         <li><a href="/zh-hans/support/">支持</a></li>
         <li><a href="/zh-hans/privacy/">隐私政策</a></li>
@@ -219,7 +220,7 @@ try {
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
-  <p>本网站使用分析用 cookie，用来了解访客如何使用网站。除非你点击“接受”，否则这些 cookie 都不会启用。</p>
+  <p>本站使用分析用 cookie，点击“接受”前不会启用。</p>
   <div class="consent-actions">
     <button type="button" id="consent-decline" class="consent-btn">拒绝</button>
     <button type="button" id="consent-accept" class="consent-btn">接受</button>

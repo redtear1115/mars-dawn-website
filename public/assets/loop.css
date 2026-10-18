@@ -98,8 +98,12 @@
 .loop-h { font-weight: 700; }
 .loop-mk { color: var(--lw-accent); }
 .loop-pre { padding: calc(30 * var(--u)) calc(36 * var(--u)); overflow: hidden; }
-.loop-pre h3 { margin: 0 0 calc(22 * var(--u)); padding-bottom: calc(10 * var(--u)); border-bottom: calc(1 * var(--u)) solid var(--lw-rule); font-size: calc(40 * var(--u)); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: inherit; }
-.loop-pre h4 { margin: calc(22 * var(--u)) 0 calc(8 * var(--u)); font-size: calc(25 * var(--u)); font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; color: inherit; }
+.loop-pre .h3 { margin: 0 0 calc(22 * var(--u)); padding-bottom: calc(10 * var(--u)); border-bottom: calc(1 * var(--u)) solid var(--lw-rule); font-size: calc(40 * var(--u)); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: inherit; }
+.loop-pre .h4 { margin: calc(22 * var(--u)) 0 calc(8 * var(--u)); font-size: calc(25 * var(--u)); font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; color: inherit; }
+/* The demo's headings are divs (#262 VH-2): the preview is a picture, so its title and sub-titles must not
+   appear in the page's outline. These two rules keep the line breaking the site gives a real h3. */
+:lang(ja) .loop-pre .h3 { word-break: auto-phrase; overflow-wrap: anywhere; }
+:is(:lang(de), :lang(fr), :lang(es)) .loop-pre .h3 { overflow-wrap: break-word; }
 .loop-pre p { margin: 0; font-size: calc(20 * var(--u)); line-height: 1.55; }
 
 /* A day that changes: both words share one grid cell and have the same width. */

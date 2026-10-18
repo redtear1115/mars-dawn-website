@@ -65,6 +65,11 @@ a {
   text-underline-offset: 0.18em;
 }
 a:hover { text-decoration-thickness: 2px; }
+/* A film's own controls take the keyboard: the same ring as a link, so a Tab stop on the video is visible (#262 CS-3). */
+video:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
 a:focus-visible {
   outline: 2px solid var(--ember);
   outline-offset: 3px;
@@ -201,6 +206,27 @@ a:focus-visible {
   .lang-more > ul { top: 100%; right: 0; min-width: 11rem; margin-top: 0; }
 }
 
+/* One row on a desktop (#262 VH-1): from 720px (the narrowest width where the longest of the eight
+   languages' five pages still fit beside the name and the language button, measured) the masthead is a
+   single row, name, the five pages, then the language switch as its compact button. The wide language
+   list is hidden; the markup is unchanged. Between 640 and 719px the two rows above stay. */
+@media (min-width: 720px) {
+  .masthead:not(.masthead-plain) {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: "brand nav lang";
+    gap: 0 16px;
+    padding: 9px 0;
+  }
+  .masthead:not(.masthead-plain) .site-nav-wide {
+    flex-wrap: nowrap;
+    gap: 0 16px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+  .masthead:not(.masthead-plain) .lang-wide { display: none; }
+  .masthead:not(.masthead-plain) .lang-narrow { display: block; }
+}
+
 .intro { padding: 56px 0 8px; }
 .intro h1 {
   margin: 0 0 12px;
@@ -331,7 +357,21 @@ kbd {
 .footer-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0; }
 .footer-nav { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px 24px; }
 .footer-nav section { min-width: 0; }
-.footer-nav h2 {
+/* The one h2 over the six groups names the block for the outline and a screen reader's heading list;
+   it takes no room on screen (#262 A11Y-1). */
+.footer-nav-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.footer-nav h3 {
+  text-wrap: balance;
   margin: 0 0 6px;
   font-size: 0.9rem;
   line-height: 1.4;
@@ -713,6 +753,9 @@ html { overflow-x: hidden; }
   margin-left: calc(50% - 50vw);
   overflow: hidden;
   padding: clamp(40px, 9vw, 88px) 0 clamp(30px, 6vw, 60px);
+  /* The sky the SVG paints, as a plain colour under it (#262 A11Y-2): if the picture is blocked or late,
+     the hero's light text still sits on dark. */
+  background-color: var(--dawn-sky-1);
 }
 .dawn-wrap {
   position: absolute;
