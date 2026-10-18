@@ -33,7 +33,7 @@ consecutive positions and named items; each essay and reading note (`ARTICLE_DAT
 build_pages.py) carries a TechArticle with ISO datePublished and dateModified, in order and not in
 the future; and nothing else claims to be a TechArticle.
 
-Answer-engine copy (every locale): the home page, /pay-once/ and /quicklook/ each carry a visible FAQ
+Answer-engine copy (every locale): the home page, /pay-once/, /quicklook/ and /best-markdown-viewer-mac/ each carry a visible FAQ
 (`<section class="faq">`) and a FAQPage block whose questions and answers are, word for word, the
 visible ones, in the same order, and no other page has either; /quicklook/ carries a HowTo whose
 steps are its visible numbered steps. /view-markdown-on-mac/ keeps its older FAQPage block (no
@@ -216,7 +216,7 @@ def check_structured_data(relative, text, articles, llms_full, problems):
         problems.append(f"{relative}: a TechArticle on a page that isn't an essay or note")
 
 
-FAQ_SLUGS = {"", "pay-once", "quicklook"}  # the home page's slug is empty
+FAQ_SLUGS = {"", "pay-once", "quicklook", "best-markdown-viewer-mac"}  # the home page's slug is empty
 LEGACY_FAQ_SLUGS = {"view-markdown-on-mac"}  # a FAQPage block written before the faq section; no section to compare
 FAQ_SECTION = re.compile(r'<section class="faq">\n.*?\n</section>', re.S)
 HOWTO_SECTION = re.compile(r'<section class="howto">\n.*?\n</section>', re.S)

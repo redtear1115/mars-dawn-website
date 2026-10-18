@@ -1561,3 +1561,37 @@ html { overflow-x: hidden; }
    heading that fits, and breaks inside the word rather than widen the page for one that
    doesn't. */
 :is(:lang(de), :lang(fr), :lang(es)) :is(h1, h2, h3) { overflow-wrap: break-word; }
+
+/* /best-markdown-viewer-mac/ (#228): an eight-column comparison that scrolls sideways inside its own box at
+   every width (it is wider than the text column), with the app names held at the left edge while the
+   columns move. The box takes keyboard focus so the arrow keys scroll it. Deep links are plain ids and
+   need no script: #<app>, #cmp-<app> (a row), #col-<feature> (a column head). */
+.compare-scroll {
+  --best-first: 8.5rem;
+  max-width: 100%;
+  /* Scroll cue, CSS only: a soft shadow at the right edge while more columns lie to the right and, once
+     scrolled, just after the pinned first column. The two shadows are fixed to the box; the two covers in
+     the page colour are attached to the content, so each cover hides its shadow at that end of the scroll. */
+  background:
+    linear-gradient(to right, var(--paper), var(--paper)) var(--best-first) 0 / 24px 100% no-repeat local,
+    linear-gradient(to left, var(--paper), var(--paper)) 100% 0 / 24px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--ink) 22%, transparent), transparent) var(--best-first) 0 / 14px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--ink) 22%, transparent), transparent) 100% 0 / 14px 100% no-repeat scroll;
+}
+.compare-scroll:focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; }
+.compare-scroll .compare { min-width: 60rem; }
+.compare-scroll .compare th,
+.compare-scroll .compare td { min-width: 7.5rem; }
+.compare-scroll .compare th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  width: var(--best-first);
+  min-width: var(--best-first);
+  background: var(--paper);
+  box-shadow: 1px 0 0 var(--hairline);
+}
+main:has(.compare-scroll) h2[id],
+[id^="cmp-"],
+[id^="col-"] { scroll-margin-top: 24px; }
+[id^="col-"] { scroll-margin-left: 9rem; }
