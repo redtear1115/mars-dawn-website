@@ -267,7 +267,7 @@ UI = {
         "reading-notes-chip-huyen": "Reading notes: Chip Huyen", "reading-notes-lilian-weng": "Reading notes: Lilian Weng",
         "reading-notes-harrison-chase": "Reading notes: Harrison Chase", "reading-notes-langchain": "Reading notes: LangChain (Jess Ou)",
         "reading-notes-andrew-ng": "Reading notes: Andrew Ng",
-        "consent_text": "This site uses analytics cookies to see how visitors use it. They stay off unless you accept.",
+        "consent_text": "We use analytics cookies. They stay off unless you accept.",
         "consent_accept": "Accept", "consent_decline": "Decline", "consent_aria": "Cookie consent",
         "cookie_settings": "Cookie settings",
         "view_markdown_source": "View the Markdown source",
@@ -297,7 +297,7 @@ UI = {
         "reading-notes-chip-huyen": "閱讀筆記：Chip Huyen", "reading-notes-lilian-weng": "閱讀筆記：Lilian Weng",
         "reading-notes-harrison-chase": "閱讀筆記：Harrison Chase", "reading-notes-langchain": "閱讀筆記：LangChain（Jess Ou）",
         "reading-notes-andrew-ng": "閱讀筆記：Andrew Ng",
-        "consent_text": "本網站使用分析用 cookie，用來了解訪客如何使用網站。除非你按下「接受」，否則這些 cookie 都不會啟用。",
+        "consent_text": "本站使用分析用 cookie，按下「接受」前不會啟用。",
         "consent_accept": "接受", "consent_decline": "拒絕", "consent_aria": "Cookie 同意設定",
         "cookie_settings": "Cookie 設定",
         "view_markdown_source": "查看 Markdown 原始檔",
@@ -5927,9 +5927,11 @@ def site_footer_nav_html(locale: str, current=None) -> str:
                 rows.append(f'        <li><a href="{page_path(locale, slug)}"{mark}>{ui[SLUG_TO_UI_KEY[slug]]}</a></li>\n')
         if key == "support":
             rows.append(f'        <li><button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button></li>\n')
-        sections.append(f'    <section aria-labelledby="footer-{key}">\n      <h2 id="footer-{key}">{_attr(name)}</h2>\n'
+        sections.append(f'    <section aria-labelledby="footer-{key}">\n      <h3 id="footer-{key}">{_attr(name)}</h3>\n'
                         f'      <ul>\n{"".join(rows)}      </ul>\n    </section>\n')
-    return f'  <nav class="footer-nav" aria-label="{_attr(t["site_label"])}">\n{"".join(sections)}  </nav>\n'
+    # One visually hidden h2 names the whole block (the nav's own aria-label); the six groups are h3 under it (#262 A11Y-1).
+    return (f'  <nav class="footer-nav" aria-label="{_attr(t["site_label"])}">\n'
+            f'    <h2 class="footer-nav-title">{_attr(t["site_label"])}</h2>\n{"".join(sections)}  </nav>\n')
 
 
 def locales_with(slug: str) -> list:
@@ -6183,6 +6185,30 @@ def add_h2_ids(locale: str, slug: str, page: dict, html: str) -> str:
         anchor = re.sub(r"[^a-z0-9]+", "-", re.sub(r"<[^>]+>", "", head).lower()).strip("-")
         html = html.replace("<h2>", f'<h2 id="{anchor}">', 1)
     return html
+
+
+# Pages whose comparison table can be wider than its box on a phone in some language (measured at 320, 375,
+# 639, 720 and 1280px, all eight languages, #262 CS-2): there the box is a focusable, labelled region, so a
+# keyboard reader can scroll it. The label is the section heading just above it, by the id the build gave
+# that heading (add_h2_ids); a box whose heading has no id is left alone (the home page's, which has none).
+# Every other table-scroll box never overflows and gets nothing. The /best-markdown-viewer-mac/ box is
+# labelled where it is made.
+SCROLL_LABEL_SLUGS = {"agent-design-patterns", "cli/mcp", "vs/markdown-preview-tools"}
+
+
+def label_scroll_boxes(slug: str, html: str) -> str:
+    if slug not in SCROLL_LABEL_SLUGS:
+        return html
+    box = '<div class="table-scroll">'
+    out, pos = [], 0
+    while (at := html.find(box, pos)) != -1:
+        heads = re.findall(r"<h[1-4]\b[^>]*>", html[:at])
+        m = re.search(r' id="([^"]+)"', heads[-1]) if heads else None
+        out.append(html[pos:at])
+        out.append(f'<div class="table-scroll" tabindex="0" role="region" aria-labelledby="{m.group(1)}">' if m else box)
+        pos = at + len(box)
+    out.append(html[pos:])
+    return "".join(out)
 
 
 # German compounds that are wider than a 320px phone line in a heading. Without a break opportunity,
@@ -6466,6 +6492,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = add_toc(locale, slug, main_html)
     elif slug != "index":
         main_html = add_h2_ids(locale, slug, page, main_html)
+    main_html = label_scroll_boxes(slug, main_html)
     main_html = soft_hyphenate(locale, main_html)
     if slug in LEGAL_PAGES:
         # A visible link to this page's own .md mirror (issue #33), so a reader can see the
