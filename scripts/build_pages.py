@@ -6242,7 +6242,8 @@ def soft_hyphenate(locale: str, html: str) -> str:
             text = text.replace(word, hyphenated)
         return m.group(1) + text + m.group(3)
 
-    return re.sub(r"(<(?:h[1-3]|th)(?=[\s>])[^>]*>)(.*?)(</(?:h[1-3]|th)>)", heading, html, flags=re.S)
+    # The loop demo's title is a div.h3 (#262 VH-2), and keeps the break points the h3 it replaced had.
+    return re.sub(r'(<(?:h[1-3]|th)(?=[\s>])[^>]*>|<div class="h3">)(.*?)(</(?:h[1-3]|th)>|</div>)', heading, html, flags=re.S)
 
 
 # --- Structured data (schema.org JSON-LD) ------------------------------------------------------
