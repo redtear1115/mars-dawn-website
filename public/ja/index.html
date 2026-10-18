@@ -314,7 +314,7 @@ try {
 <span class="loop-h"><span class="loop-mk">##</span> リリース</span>
 <span class="loop-day loop-d-u a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span><span class="loop-ecaret loop-n5 a"></span></span> に全ユーザーで checkout_v2 をオン。
 </div>
-<div class="loop-pre"><h3>チェックアウト v2</h3><h4>目標</h4><p>保存済みカードで1ページ決済、<span class="loop-day loop-d-a a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span></span> 公開。</p><h4>バックフィル</h4><p>既存のカードトークンを移行：10/13〜10/15。</p><h4>リリース</h4><p><span class="loop-day loop-d-u a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span></span> に全ユーザーで checkout_v2 をオン。</p></div>
+<div class="loop-pre"><div class="h3">チェックアウト v2</div><div class="h4">目標</div><p>保存済みカードで1ページ決済、<span class="loop-day loop-d-a a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span></span> 公開。</p><div class="h4">バックフィル</div><p>既存のカードトークンを移行：10/13〜10/15。</p><div class="h4">リリース</div><p><span class="loop-day loop-d-u a"><span class="loop-old a">10/14</span><span class="loop-new loop-n5 a">10/16</span></span> に全ユーザーで checkout_v2 をオン。</p></div>
 </div>
 </div>
 <div class="loop-term a">
@@ -357,9 +357,9 @@ try {
 </nav>
 <p class="know">購入前に知っておくこと。 <a href="/ja/limits/">MarsDawn ができないこと</a></p>
 <section class="pieces">
-<h2>それぞれの役割</h2>
+<h2 id="pieces">それぞれの役割</h2>
 <p>MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 の時点で、それぞれができること。</p>
-<div class="table-scroll"><table class="compare compare-wide compare-pieces">
+<div class="table-scroll" tabindex="0" role="region" aria-labelledby="pieces"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">機能</th><th scope="col">アプリ</th><th scope="col">CLI</th><th scope="col">MCP／skill</th><th scope="col">状態</th></tr></thead>
 <tbody>
   <tr><th scope="row">行を指定して開く</th><td data-label="アプリ"><span class="cell">その行へ移り、プレビューのブロックが光る</span></td><td data-label="CLI"><span class="cell">marsdawn open notes.md:120（--background で前面に出ない）</span></td><td data-label="MCP／skill"><span class="cell">open_in_marsdawn、skill は一度だけ開く</span></td><td data-label="状態"><span class="cell">提供中</span></td></tr>
@@ -453,8 +453,9 @@ try {
 </main>
 <footer class="footer footer-home">
   <nav class="footer-nav" aria-label="サイトナビゲーション">
+    <h2 class="footer-nav-title">サイトナビゲーション</h2>
     <section aria-labelledby="footer-product">
-      <h2 id="footer-product">製品</h2>
+      <h3 id="footer-product">製品</h3>
       <ul>
         <li><a href="/ja/features/">機能一覧</a></li>
         <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
@@ -467,7 +468,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
-      <h2 id="footer-agents">エージェントと CLI</h2>
+      <h3 id="footer-agents">エージェントと CLI</h3>
       <ul>
         <li><a href="/ja/cli/">コマンドライン</a></li>
         <li><a href="/ja/cli/agents/">AI エージェント向け marsdawn</a></li>
@@ -477,7 +478,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-guides">
-      <h2 id="footer-guides">ガイド</h2>
+      <h3 id="footer-guides">ガイド</h3>
       <ul>
         <li><a href="/ja/view-markdown-on-mac/">Mac で .md ファイルを開く方法</a></li>
         <li><a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a></li>
@@ -490,7 +491,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-compare">
-      <h2 id="footer-compare">比較</h2>
+      <h3 id="footer-compare">比較</h3>
       <ul>
         <li><a href="/ja/vs/">MarsDawn と比較：VS Code プレビュー、Obsidian、QLMarkdown、LynxOffice</a></li>
         <li><a href="/ja/vs/macmd-viewer/">MacMD Viewer と MarsDawn</a></li>
@@ -498,7 +499,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-themes">
-      <h2 id="footer-themes">テーマ</h2>
+      <h3 id="footer-themes">テーマ</h3>
       <ul>
         <li><a href="/ja/themes/">プレビューテーマと PDF 書き出し</a></li>
         <li><a href="/ja/themes/gallery/">テーマギャラリー</a></li>
@@ -508,7 +509,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-support">
-      <h2 id="footer-support">サポートと法的情報</h2>
+      <h3 id="footer-support">サポートと法的情報</h3>
       <ul>
         <li><a href="/ja/support/">サポート</a></li>
         <li><a href="/ja/privacy/">プライバシーポリシー</a></li>
@@ -520,7 +521,7 @@ try {
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
-  <p>このサイトでは、訪問者がどのように利用しているかを把握するために分析用クッキーを使用します。「同意する」を選ばない限り、これらのクッキーは使われません。</p>
+  <p>分析用クッキーを使います。「同意する」を選ぶまで無効です。</p>
   <div class="consent-actions">
     <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
     <button type="button" id="consent-accept" class="consent-btn">同意する</button>

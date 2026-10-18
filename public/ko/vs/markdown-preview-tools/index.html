@@ -126,7 +126,7 @@ try {
 </section>
 
 <h2 id="at-a-glance">한눈에 보기</h2>
-<div class="table-scroll"><table class="compare compare-wide">
+<div class="table-scroll" tabindex="0" role="region" aria-labelledby="at-a-glance"><table class="compare compare-wide">
 <thead><tr><th scope="col"></th><th scope="col">VS Code 미리보기</th><th scope="col">브라우저 확장 프로그램</th><th scope="col">Claude Desktop</th><th scope="col">MarsDawn</th></tr></thead>
 <tbody>
   <tr><th scope="row">디스크의 Markdown 파일 열기</th><td data-label="VS Code 미리보기">예</td><td data-label="브라우저 확장 프로그램">예, 파일 접근을 허용한 뒤</td><td data-label="Claude Desktop">아니요. Markdown이 업로드 목록에 없음</td><td data-label="MarsDawn">예</td></tr>
@@ -157,8 +157,9 @@ try {
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="사이트 탐색">
+    <h2 class="footer-nav-title">사이트 탐색</h2>
     <section aria-labelledby="footer-product">
-      <h2 id="footer-product">제품</h2>
+      <h3 id="footer-product">제품</h3>
       <ul>
         <li><a href="/ko/features/">기능 한눈에 보기</a></li>
         <li><a href="/ko/quicklook/">Markdown 훑어보기</a></li>
@@ -171,7 +172,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
-      <h2 id="footer-agents">에이전트와 CLI</h2>
+      <h3 id="footer-agents">에이전트와 CLI</h3>
       <ul>
         <li><a href="/ko/cli/">명령줄</a></li>
         <li><a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a></li>
@@ -181,7 +182,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-guides">
-      <h2 id="footer-guides">가이드</h2>
+      <h3 id="footer-guides">가이드</h3>
       <ul>
         <li><a href="/ko/view-markdown-on-mac/">Mac에서 .md 파일 여는 방법</a></li>
         <li><a href="/ko/markdown-to-pdf/">Markdown을 PDF로</a></li>
@@ -194,7 +195,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-compare">
-      <h2 id="footer-compare">비교</h2>
+      <h3 id="footer-compare">비교</h3>
       <ul>
         <li><a href="/ko/vs/">MarsDawn 비교: VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice</a></li>
         <li><a href="/ko/vs/macmd-viewer/">MacMD Viewer와 MarsDawn 비교</a></li>
@@ -202,7 +203,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-themes">
-      <h2 id="footer-themes">테마</h2>
+      <h3 id="footer-themes">테마</h3>
       <ul>
         <li><a href="/ko/themes/">미리보기 테마와 PDF 내보내기</a></li>
         <li><a href="/ko/themes/gallery/">테마 갤러리</a></li>
@@ -212,7 +213,7 @@ try {
       </ul>
     </section>
     <section aria-labelledby="footer-support">
-      <h2 id="footer-support">지원 및 법적 정보</h2>
+      <h3 id="footer-support">지원 및 법적 정보</h3>
       <ul>
         <li><a href="/ko/support/">지원</a></li>
         <li><a href="/ko/privacy/">개인정보 처리방침</a></li>
@@ -224,7 +225,7 @@ try {
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
-  <p>이 사이트는 방문자가 사이트를 어떻게 이용하는지 파악하기 위해 분석 쿠키를 사용합니다. 수락하지 않으면 이 쿠키는 꺼진 상태로 유지됩니다.</p>
+  <p>분석 쿠키를 사용합니다. 수락하기 전에는 꺼져 있습니다.</p>
   <div class="consent-actions">
     <button type="button" id="consent-decline" class="consent-btn">거부</button>
     <button type="button" id="consent-accept" class="consent-btn">수락</button>
