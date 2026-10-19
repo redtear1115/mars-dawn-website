@@ -2,18 +2,19 @@
 """Checks that the published error schema and exit codes are the ones the documented marsdawn has.
 
 Usage:
-    python3 scripts/check_error_kinds.py [--tag 0.6.3] [--kit-file Commands.swift] [--self-test]
+    python3 scripts/check_error_kinds.py [--tag 0.7.1] [--kit-file Commands.swift] [--self-test]
 
 The kit owns the failure kinds: `CLIFailure.Code` in Sources/marsdawn/Commands.swift gives each exit
 code and the `error` string `--json` prints for it. This fetches that file at KIT_TAG (the same tag
 check_skill.py reads) and fails if the built site disagrees with it:
 
-- public/schemas/cli/error.v2.json: its `error` enum must be the kit's kinds, in code order. The
+- public/schemas/cli/error.v3.json: its `error` enum must be the kit's kinds: `CLIFailure.Code` in code
+  order, then `CLIFailure.SharedKind` (kinds that share a code, e.g. `input_too_large`) as declared. The
   built file is read, not build_pages.py's constant, so a build that didn't write it fails too.
 - EXIT_CODES in build_pages.py (the skill's table and the agents page): every code with a kind must
-  be the kit's code for that kind, and every kit kind must be listed.
+  be the kit's code for that kind, and every kit kind must be listed, by exit code.
 
-error.v1.json isn't compared: it's frozen at 0.5.1's four kinds and never changes.
+error.v1.json and error.v2.json aren't compared: each is frozen at its release's kinds and never changes.
 
 --self-test plants one drift of each kind into copies of the inputs and fails if any passes.
 """
@@ -28,11 +29,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_skill import KIT_TAG  # noqa: E402
 
 URL = "https://raw.githubusercontent.com/redtear1115/mars-dawn-kit/{tag}/Sources/marsdawn/Commands.swift"
-SCHEMA = Path("public/schemas/cli/error.v2.json")
+SCHEMA = Path("public/schemas/cli/error.v3.json")
 
 
 def kit_kinds(source: str) -> list[tuple[int, str]]:
-    """(exit code, kind) pairs from CLIFailure.Code, in code order."""
+    """(exit code, kind) pairs: CLIFailure.Code in code order, then CLIFailure.SharedKind as declared.
+
+    A shared kind reports another kind's exit code (`input_too_large` exits 5, like `export_failed`).
+    """
     enum = re.search(r"enum Code: Int32 \{(.*?)\n    \}\n", source, re.S)
     if not enum:
         raise ValueError("no `enum Code: Int32` in the kit source")
@@ -41,17 +45,27 @@ def kit_kinds(source: str) -> list[tuple[int, str]]:
     kinds = dict(re.findall(r'case \.(\w+): "([a-z_]+)"', body))
     if not codes or set(codes) != set(kinds):
         raise ValueError(f"codes {sorted(codes)} and kinds {sorted(kinds)} name different cases")
-    return sorted((int(codes[name]), kinds[name]) for name in codes)
+    pairs = sorted((int(codes[name]), kinds[name]) for name in codes)
+    shared = re.search(r"enum SharedKind: String, CaseIterable \{(.*?)\n    \}\n", source, re.S)
+    if shared:
+        body = shared.group(1)
+        raw = re.findall(r'case (\w+) = "([a-z_]+)"', body)
+        owner = dict(re.findall(r"case \.(\w+): \.(\w+)", body))
+        if not raw or set(owner) != {name for name, _ in raw} or not set(owner.values()) <= set(codes):
+            raise ValueError(f"shared kinds {raw} and their codes {owner} don't line up with the Code cases")
+        pairs += [(int(codes[owner[name]]), kind) for name, kind in raw]
+    return pairs
 
 
 def problems(kit: list[tuple[int, str]], schema: dict, exit_codes: list) -> list[str]:
     found = []
     enum = schema.get("properties", {}).get("error", {}).get("enum")
     if enum != [kind for _, kind in kit]:
-        found.append(f"error.v2.json enum {enum} != kit kinds {[kind for _, kind in kit]}")
+        found.append(f"error.v3.json enum {enum} != kit kinds {[kind for _, kind in kit]}")
     site = [(code, kind) for code, kind, _ in exit_codes if kind]
-    if site != kit:
-        found.append(f"EXIT_CODES {site} != kit {kit}")
+    by_code = sorted(kit, key=lambda pair: pair[0])  # stable: a shared kind follows the kind it shares a code with
+    if site != by_code:
+        found.append(f"EXIT_CODES {site} != kit {by_code}")
     return found
 
 
@@ -80,9 +94,12 @@ def self_test(kit_source: str, schema: dict, exit_codes: list) -> int:
     drifts = {
         "a kind added to the kit": (extra_case, schema, exit_codes),
         "a kind renamed in the kit": (renamed, schema, exit_codes),
-        "a kind missing from error.v2.json": (kit_source, short_schema, exit_codes),
+        "a kind missing from error.v3.json": (kit_source, short_schema, exit_codes),
         "an exit code renumbered on the site": (kit_source, schema, renumbered),
         "an exit code missing on the site": (kit_source, schema, missing_row),
+        "a shared kind moved to another code in the kit": (
+            kit_source.replace("case .inputTooLarge: .exportFailed", "case .inputTooLarge: .outputExists", 1),
+            schema, exit_codes),
         "no Code enum in the kit source": ("struct Nothing {}", schema, exit_codes),
     }
     failed = 0
