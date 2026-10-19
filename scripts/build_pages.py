@@ -1225,7 +1225,12 @@ SCHEMA_FILES = {
     "open_v2": "open.v2.json",
     "open_v1": "open.v1.json",
     "error_v1": "error.v1.json",
+    "error_v3": "error.v3.json",
 }
+# error.v3.json (marsdawn 0.7.1) adds skill_install_failed (exit 7, in the kit since the skill command but
+# missing from v2) and input_too_large (exit 5, like export_failed); kit PR #184, Commands.swift CLIFailure.
+# It is written to public/schemas but deliberately not in SCHEMA_ORDER yet: listing it needs per-locale
+# SCHEMA_NOTES copy, which comes from Grok.
 SCHEMA_ORDER = ("export", "open", "error", "open_v2", "open_v1", "error_v1")
 
 THEME_IDS = ["dawn", "classic", "modern", "vivid"]
@@ -1233,6 +1238,7 @@ PAPER_SIZES = ["a4", "letter"]
 # error.v1.json's kinds, frozen with it.
 ERROR_KINDS_V1 = ["input_not_found", "app_not_installed", "output_exists", "export_failed"]
 ERROR_KINDS = ERROR_KINDS_V1 + ["app_cannot_open_folders"]
+ERROR_KINDS_V3 = ERROR_KINDS + ["skill_install_failed", "input_too_large"]
 
 
 def schema_url(kind: str) -> str:
@@ -1391,6 +1397,20 @@ SCHEMAS = {
         "properties": {
             "ok": {"const": False},
             "error": {"enum": ERROR_KINDS, "description": "Machine-readable failure kind."},
+            "message": {"type": "string", "description": "Human-readable explanation."},
+        },
+    },
+    "error_v3": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": schema_url("error_v3"),
+        "title": "marsdawn --json: failure",
+        "description": "Printed on stdout as one line when a command run with --json fails with exit code 2, 3, 4, 5, 6 or 7. marsdawn 0.7.1 and later; error.v2.json is for 0.5.2\u20130.7.0, error.v1.json for 0.5.1 and earlier. Usage errors (exit code 64) are printed as text on stderr instead.",
+        "type": "object",
+        "required": ["ok", "error", "message"],
+        "additionalProperties": False,
+        "properties": {
+            "ok": {"const": False},
+            "error": {"enum": ERROR_KINDS_V3, "description": "Machine-readable failure kind."},
             "message": {"type": "string", "description": "Human-readable explanation."},
         },
     },
