@@ -28,6 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untracked file after a build
 import article_dates  # noqa: E402
 import locales  # noqa: E402
+import price  # noqa: E402
 import theme_agents  # noqa: E402
 from promo130 import data as promo_data  # noqa: E402
 from best228 import data as best_data  # noqa: E402
@@ -6379,8 +6380,9 @@ SAME_AS = [
 ]
 HOME_SCREENSHOT = "/assets/screens/01-split-1180.png"
 # The price facts (app repo PRODUCT.md, docs/free-trial-plan.md): a free download with a 14-day
-# trial, then a one-time $4.99 unlock. Machine-read text, so English in every locale.
-PRICE_UNLOCK = "4.99"
+# trial, then a one-time $4.99 unlock. Machine-read text, so English in every locale. The number
+# comes from scripts/price.py, which also moves it to the sale price in the sale phase (app #103).
+PRICE_UNLOCK = price.current()
 # The essays and notes: (datePublished, dateModified), read from scripts/article_dates.json, which
 # scripts/article_dates.py computes from origin/main's first-parent history (never typed here).
 ARTICLE_DATES = {slug: (page["published"], page["modified"])
@@ -6482,7 +6484,8 @@ def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> l
                     {"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0",
                      "priceCurrency": "USD", "availability": AVAILABILITY},
                     {"@type": "Offer", "name": "One-time unlock after the trial, no subscription",
-                     "price": PRICE_UNLOCK, "priceCurrency": "USD", "availability": AVAILABILITY},
+                     "price": PRICE_UNLOCK, "priceCurrency": "USD", "availability": AVAILABILITY,
+                     **({"priceValidUntil": price.SALE_LAST_DAY} if price.PHASE == "sale" else {})},
                 ],
             },
             "screenshot": abs_url(HOME_SCREENSHOT),
@@ -6583,7 +6586,7 @@ def render(locale: str, slug: str, page: dict) -> str:
             '<section class="hero-scene">\n'
             f"{DAWN_HERO_SVG}\n"
             '<div class="hero-inner">\n'
-            f'<div class="hero-copy">\n{page["intro"].strip()}\n{hero_cta_html(locale)}\n</div>\n'
+            f'<div class="hero-copy">\n{page["intro"].strip()}\n{price.sale_line_html(locale)}{hero_cta_html(locale)}\n</div>\n'
             f'<div class="hero-shot">\n{hero_window.window_html(locale)}\n</div>\n'
             "</div>\n"
             "</section>"
@@ -6606,7 +6609,9 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, FEATURES_TOP_FIGURE),
                                features_body_html(locale, page["body"].strip())])
     elif has_intro:
-        main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
+        # /pay-once/ is where the price is explained, so the sale line (app #103) goes under its intro.
+        intro_html = page["intro"].strip() + ("\n" + price.sale_line_html(locale).strip() if slug == "pay-once" else "")
+        main_html = "\n".join([intro_html.strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
         main_html = templates_pages.expand_loops(locale, page["body"].strip())
     main_html = main_html.replace(brand_film_themes.MARK, brand_film_themes.section_html(locale))
@@ -7146,20 +7151,22 @@ def sync_theme_kit_assets_into_public() -> None:
 
 
 def main() -> None:
+    # Every page, Markdown twin and llms file below goes through price.localize() on its way out, so
+    # it states the current phase's unlock price (app #103); check_price_phase.py holds public/ to it.
     sync_theme_kit_assets_into_public()
     pages = all_pages()
     for (locale, slug), page in pages.items():
         folder = SITE / LOCALES[locale]["prefix"] / ("" if slug == "index" else slug)
         folder.mkdir(parents=True, exist_ok=True)
         (folder / "index.html").write_text(
-            with_campaign_links(render(locale, slug, page), slug_campaign_token(slug)), encoding="utf-8")
+            price.localize(with_campaign_links(render(locale, slug, page), slug_campaign_token(slug))), encoding="utf-8")
         print(folder / "index.html")
-        (folder / "index.md").write_text(build_twin(pages, locale, slug), encoding="utf-8")
+        (folder / "index.md").write_text(price.localize(build_twin(pages, locale, slug)), encoding="utf-8")
         print(folder / "index.md")
 
-    (SITE / "llms.txt").write_text(build_llms_txt(pages), encoding="utf-8")
+    (SITE / "llms.txt").write_text(price.localize(build_llms_txt(pages)), encoding="utf-8")
     print(SITE / "llms.txt")
-    (SITE / "llms-full.txt").write_text(build_llms_full(pages), encoding="utf-8")
+    (SITE / "llms-full.txt").write_text(price.localize(build_llms_full(pages)), encoding="utf-8")
     print(SITE / "llms-full.txt")
     notices_path = SITE / "themes" / "third-party-notices.html"
     notices_path.parent.mkdir(parents=True, exist_ok=True)
@@ -7172,7 +7179,7 @@ def main() -> None:
     for path, text in templates_pages.downloads().items():
         target = SITE / path
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(text, encoding="utf-8")
+        target.write_text(price.localize(text), encoding="utf-8")
         print(target)
     print(SITE / "assets" / "annotations.css")
     (SITE / "robots.txt").write_text(ROBOTS_TXT, encoding="utf-8")
@@ -7180,7 +7187,7 @@ def main() -> None:
     (SITE / "_redirects").write_text(build_redirects(), encoding="utf-8")
     print(SITE / "_redirects")
     product_facts_path = SITE / PRODUCT_FACTS_PATH.lstrip("/")
-    product_facts_path.write_text(build_product_facts(pages), encoding="utf-8")
+    product_facts_path.write_text(price.localize(build_product_facts(pages)), encoding="utf-8")
     print(product_facts_path)
     (SITE / "sitemap.xml").write_text(
         build_sitemap(pages, extra_urls=[BASE_URL + PRODUCT_FACTS_PATH]), encoding="utf-8"
@@ -7189,7 +7196,7 @@ def main() -> None:
     for locale in LOCALES:
         target = SITE / LOCALES[locale]["prefix"] / "404.html" if LOCALES[locale]["prefix"] else SITE / "404.html"
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(with_campaign_links(render_404(locale), campaign_token("404.html")), encoding="utf-8")
+        target.write_text(price.localize(with_campaign_links(render_404(locale), campaign_token("404.html"))), encoding="utf-8")
         print(target)
     skill = SITE / "cli" / "skill" / "SKILL.md"
     skill.parent.mkdir(parents=True, exist_ok=True)
