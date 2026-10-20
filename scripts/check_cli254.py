@@ -18,8 +18,9 @@ the Markdown marks removed. Not against rich_pages.md_blocks, which would share 
 makes in rendering (#294: md_blocks turned de's "20. Oktober 2026. ..." date lines into <ol>, and a check
 rendered the same way agreed with it).
 
---self-test changes one character of one piece in a copy of each built page, and renders de's 0.7.2
-date line as the ordered list md_blocks made of it, and fails unless every change is caught.
+--self-test changes one character of one piece in a copy of each built page, swaps two bullets of each
+locale's 0.7.2 entry (which only the text comparison sees), and renders de's 0.7.2 date line as the
+ordered list md_blocks made of it, and fails unless every change is caught.
 """
 import argparse
 import html
@@ -172,6 +173,28 @@ def self_test() -> int:
             else:
                 print(f"self-test: {locale}/{slug}: a one-character change was NOT caught")
                 missed += 1
+    # Only the text comparison can catch this one: 0.7.2's first two bullets swapped. Every element is
+    # still on the page, marked up as md_inline would, so the markup half passes it.
+    for locale in data.DATA:
+        pages = read_pages(locale)
+        rest = data.DATA[locale]["changelog"]["0.7.2"].partition("\n\n")[2]
+        first, second = [el for el in markup(rest) if el.startswith("<li>")][:2]
+        pair = f"{first}\n  {second}"
+        page = pages["changelog"]
+        if pair not in page:
+            print(f"self-test: {locale}/changelog: the swap plant can't be made")
+            missed += 1
+            continue
+        swapped = page.replace(pair, f"{second}\n  {first}", 1)
+        entry = section(swapped, '<h3 id="marsdawn-0-7-2">marsdawn 0.7.2</h3>')
+        if any(el not in entry for el in markup(rest)):
+            print(f"self-test: {locale}/changelog: the swap plant is caught by the markup half too")
+            missed += 1
+        elif problems_for(locale, {**pages, "changelog": swapped}):
+            caught += 1
+        else:
+            print(f"self-test: {locale}/changelog: two bullets swapped were NOT caught")
+            missed += 1
     # #294's bug, exactly: de's 0.7.2 date line rendered as md_blocks renders it, an <ol>.
     if "de" in data.DATA:
         pages = read_pages("de")
