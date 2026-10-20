@@ -1,0 +1,332 @@
+[
+ {
+  "locale": "en",
+  "field": "description",
+  "source": "C1",
+  "section": "meta description"
+ },
+ {
+  "locale": "zh-hant",
+  "field": "description",
+  "source": "C1",
+  "section": "meta description"
+ },
+ {
+  "locale": "ja",
+  "field": "description",
+  "source": "C1",
+  "section": "meta description"
+ },
+ {
+  "locale": "en",
+  "field": "intro",
+  "source": "C1",
+  "section": "頁首說明（取代現在的第一段）"
+ },
+ {
+  "locale": "zh-hant",
+  "field": "intro",
+  "source": "C1",
+  "section": "頁首說明（取代現在的第一段）"
+ },
+ {
+  "locale": "ja",
+  "field": "intro",
+  "source": "C1",
+  "section": "頁首說明（取代現在的第一段）"
+ },
+ {
+  "locale": "en",
+  "field": "app_h",
+  "source": "C1",
+  "section": "兩區標題（H2）"
+ },
+ {
+  "locale": "en",
+  "field": "cli_h",
+  "source": "C1",
+  "section": "兩區標題（H2）"
+ },
+ {
+  "locale": "zh-hant",
+  "field": "app_h",
+  "source": "C1",
+  "section": "兩區標題（H2）"
+ },
+ {
+  "locale": "zh-hant",
+  "field": "cli_h",
+  "source": "C1",
+  "section": "兩區標題（H2）"
+ },
+ {
+  "locale": "ja",
+  "field": "app_h",
+  "source": "C1",
+  "section": "兩區標題（H2）"
+ },
+ {
+  "locale": "ja",
+  "field": "cli_h",
+  "source": "C1",
+  "section": "兩區標題（H2）"
+ },
+ {
+  "locale": "en",
+  "field": "cli_line",
+  "source": "C1",
+  "section": "CLI 區開頭（把原本的「0.5.1 以前不列」移到這裡）"
+ },
+ {
+  "locale": "zh-hant",
+  "field": "cli_line",
+  "source": "C1",
+  "section": "CLI 區開頭（把原本的「0.5.1 以前不列」移到這裡）"
+ },
+ {
+  "locale": "ja",
+  "field": "cli_line",
+  "source": "C1",
+  "section": "CLI 區開頭（把原本的「0.5.1 以前不列」移到這裡）"
+ },
+ {
+  "locale": "en",
+  "field": "first_release",
+  "source": "C1",
+  "section": "1.0.0 的條目（What's New 是空的，所以用這一行）"
+ },
+ {
+  "locale": "zh-hant",
+  "field": "first_release",
+  "source": "C1",
+  "section": "1.0.0 的條目（What's New 是空的，所以用這一行）"
+ },
+ {
+  "locale": "ja",
+  "field": "first_release",
+  "source": "C1",
+  "section": "1.0.0 的條目（What's New 是空的，所以用這一行）"
+ },
+ {
+  "locale": "en",
+  "field": "earlier",
+  "source": "C1",
+  "section": "較早版本只有英文說明（之後只用在 de、fr、es、ko，放在 App 區最後）"
+ },
+ {
+  "locale": "zh-hant",
+  "field": "earlier",
+  "source": "C1",
+  "section": "較早版本只有英文說明（之後只用在 de、fr、es、ko，放在 App 區最後）"
+ },
+ {
+  "locale": "ja",
+  "field": "earlier",
+  "source": "C1",
+  "section": "較早版本只有英文說明（之後只用在 de、fr、es、ko，放在 App 區最後）"
+ },
+ {
+  "locale": "zh-hans",
+  "field": "description",
+  "source": "C2",
+  "section": "zh-Hans"
+ },
+ {
+  "locale": "zh-hans",
+  "field": "intro",
+  "source": "C2",
+  "section": "zh-Hans"
+ },
+ {
+  "locale": "zh-hans",
+  "field": "app_h",
+  "source": "C2",
+  "section": "zh-Hans"
+ },
+ {
+  "locale": "zh-hans",
+  "field": "cli_h",
+  "source": "C2",
+  "section": "zh-Hans"
+ },
+ {
+  "locale": "zh-hans",
+  "field": "cli_line",
+  "source": "C2",
+  "section": "zh-Hans"
+ },
+ {
+  "locale": "zh-hans",
+  "field": "first_release",
+  "source": "C2",
+  "section": "zh-Hans"
+ },
+ {
+  "locale": "ko",
+  "field": "description",
+  "source": "C2",
+  "section": "ko"
+ },
+ {
+  "locale": "ko",
+  "field": "intro",
+  "source": "C2",
+  "section": "ko"
+ },
+ {
+  "locale": "ko",
+  "field": "app_h",
+  "source": "C2",
+  "section": "ko"
+ },
+ {
+  "locale": "ko",
+  "field": "cli_h",
+  "source": "C2",
+  "section": "ko"
+ },
+ {
+  "locale": "ko",
+  "field": "cli_line",
+  "source": "C2",
+  "section": "ko"
+ },
+ {
+  "locale": "ko",
+  "field": "first_release",
+  "source": "C2",
+  "section": "ko"
+ },
+ {
+  "locale": "ko",
+  "field": "earlier",
+  "source": "C2",
+  "section": "ko"
+ },
+ {
+  "locale": "de",
+  "field": "description",
+  "source": "C2",
+  "section": "de"
+ },
+ {
+  "locale": "de",
+  "field": "intro",
+  "source": "C2",
+  "section": "de"
+ },
+ {
+  "locale": "de",
+  "field": "app_h",
+  "source": "C2",
+  "section": "de"
+ },
+ {
+  "locale": "de",
+  "field": "cli_h",
+  "source": "C2",
+  "section": "de"
+ },
+ {
+  "locale": "de",
+  "field": "cli_line",
+  "source": "C2",
+  "section": "de"
+ },
+ {
+  "locale": "de",
+  "field": "first_release",
+  "source": "C2",
+  "section": "de"
+ },
+ {
+  "locale": "de",
+  "field": "earlier",
+  "source": "C2",
+  "section": "de"
+ },
+ {
+  "locale": "fr",
+  "field": "description",
+  "source": "C2",
+  "section": "fr"
+ },
+ {
+  "locale": "fr",
+  "field": "intro",
+  "source": "C2",
+  "section": "fr"
+ },
+ {
+  "locale": "fr",
+  "field": "app_h",
+  "source": "C2",
+  "section": "fr"
+ },
+ {
+  "locale": "fr",
+  "field": "cli_h",
+  "source": "C2",
+  "section": "fr"
+ },
+ {
+  "locale": "fr",
+  "field": "cli_line",
+  "source": "C2",
+  "section": "fr"
+ },
+ {
+  "locale": "fr",
+  "field": "first_release",
+  "source": "C2",
+  "section": "fr"
+ },
+ {
+  "locale": "fr",
+  "field": "earlier",
+  "source": "C2",
+  "section": "fr"
+ },
+ {
+  "locale": "es",
+  "field": "description",
+  "source": "C2",
+  "section": "es"
+ },
+ {
+  "locale": "es",
+  "field": "intro",
+  "source": "C2",
+  "section": "es"
+ },
+ {
+  "locale": "es",
+  "field": "app_h",
+  "source": "C2",
+  "section": "es"
+ },
+ {
+  "locale": "es",
+  "field": "cli_h",
+  "source": "C2",
+  "section": "es"
+ },
+ {
+  "locale": "es",
+  "field": "cli_line",
+  "source": "C2",
+  "section": "es"
+ },
+ {
+  "locale": "es",
+  "field": "first_release",
+  "source": "C2",
+  "section": "es"
+ },
+ {
+  "locale": "es",
+  "field": "earlier",
+  "source": "C2",
+  "section": "es"
+ }
+]

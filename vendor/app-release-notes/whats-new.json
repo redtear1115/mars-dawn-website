@@ -1,0 +1,78 @@
+{
+ "source": {
+  "app_repo": "redtear1115/mars-dawn",
+  "commit": "38ccf057dc27ad06c650413c86054ac5061fd90a",
+  "files": {
+   "docs/release-notes/1.0.2.md": "a1005eb6b9ae7987673b8717c4d67d74410d0a9087fe69eec9db925ff85cf428",
+   "docs/release-notes/1.1.0.md": "8ad1f81575582a09591e5f962f1d1149875c9c9ae4165f82636223e8d3629bce",
+   "docs/release-notes/1.1.1.md": "53031f43c9801997c8b30b48a1b5e08afb45c9e9f348255a51952251cbfa2731"
+  },
+  "asc_read": "2026-10-18T10:59:55.462098+00:00",
+  "dates": "https://apps.apple.com/us/app/id6812925073",
+  "dates_read": "2026-10-20"
+ },
+ "locale_map": {
+  "en-US": "en",
+  "zh-Hant": "zh-hant",
+  "zh-Hans": "zh-hans",
+  "ja": "ja",
+  "de-DE": "de",
+  "fr-FR": "fr",
+  "es-ES": "es",
+  "ko": "ko"
+ },
+ "versions": [
+  {
+   "version": "1.1.1",
+   "asc_version_id": "65212d07-b889-49df-8b6e-da8b59648ff9",
+   "released": "2026-10-15",
+   "released_at_store": "Thu Oct 15 2026 20:36:01 GMT+0000 (Coordinated Universal Time)",
+   "whatsNew": {
+    "de-DE": "- Auf Deutsch, Japanisch, Spanisch und Französisch zeigt Einstellungen > Erscheinungsbild > „Weitere Themes laden …“ den Szenario-Filter jetzt als Einblendmenü mit der Beschriftung „Szenario“, damit die fünf Optionen Platz haben. Auf Englisch, Koreanisch und Chinesisch bleibt es beim segmentierten Steuerelement.\n- Wenn ein Theme aus der Galerie zurückgezogen wird, nennt der Hinweis in „Weitere Themes laden …“ jetzt den Namen des Themes (zum Beispiel Inkwell Ivory) statt seiner internen ID.\n- Ausklappbare details-Abschnitte im GitHub-Stil beginnen in der Vorschau und in der Übersicht jetzt eingeklappt mit sichtbarer Zusammenfassung und öffnen sich per Klick. Der PDF-Export druckt weiterhin den Inhalt aller Abschnitte.\n- Dokumente, die du aus dem Finder, dem Dock, über Ablage > „Öffnen …“ oder mit dem Befehl marsdawn open öffnest, öffnen sich jetzt als Tabs im vordersten Fenster, ebenso neue Dokumente. Um das bisherige Verhalten beizubehalten, wähle „Systemeinstellung folgen“ unter Einstellungen > Erscheinungsbild.",
+    "en-US": "- In German, Japanese, Spanish and French, Settings > Appearance > Get More Themes... now shows the scenario filter as a pop-up menu labelled Scenario, so the five choices fit. English, Korean and Chinese still use the segmented control.\n- When a theme leaves the gallery, the notice in Get More Themes... now shows the theme's name (for example Inkwell Ivory) instead of its internal id.\n- Collapsible details sections written the GitHub way now start collapsed with their summary shown in the preview and in Quick Look, and open on click. PDF export still prints every section's content.\n- Documents you open from Finder, the Dock, File > Open... or the marsdawn open command now open as tabs in the front window, and so do new documents. To keep the previous behaviour, choose Follow System Setting in Settings > Appearance.",
+    "es-ES": "- En alemán, japonés, español y francés, Ajustes > Aspecto > «Obtener más temas…» ahora muestra el filtro de escenario como un menú desplegable con la etiqueta «Escenario», para que quepan las cinco opciones. En inglés, coreano y chino se sigue usando el control segmentado.\n- Cuando un tema se retira de la galería, el aviso de «Obtener más temas…» ahora muestra el nombre del tema (por ejemplo, Inkwell Ivory) en lugar de su identificador interno.\n- Las secciones details plegables escritas al estilo de GitHub ahora empiezan plegadas, con su resumen visible, en la vista previa y en Vista rápida, y se abren con un clic. La exportación a PDF sigue imprimiendo el contenido de todas las secciones.\n- Los documentos que abres desde el Finder, el Dock, Archivo > «Abrir…» o el comando marsdawn open ahora se abren como pestañas en la ventana del frente, igual que los documentos nuevos. Para mantener el comportamiento anterior, elige «Seguir ajuste del sistema» en Ajustes > Aspecto.",
+    "fr-FR": "- En allemand, en japonais, en espagnol et en français, Réglages > Apparence > « Obtenir plus de thèmes… » affiche désormais le filtre de scénario sous forme de menu local intitulé « Scénario », pour que les cinq choix tiennent. L’anglais, le coréen et le chinois utilisent toujours le contrôle segmenté.\n- Lorsqu’un thème est retiré de la galerie, l’avis dans « Obtenir plus de thèmes… » affiche maintenant le nom du thème (par exemple Inkwell Ivory) au lieu de son identifiant interne.\n- Les sections details repliables écrites à la manière de GitHub s’affichent désormais repliées, avec leur résumé visible, dans l’aperçu et dans Coup d’œil, et s’ouvrent d’un clic. L’export PDF imprime toujours le contenu de chaque section.\n- Les documents ouverts depuis le Finder, le Dock, Fichier > « Ouvrir… » ou la commande marsdawn open s’ouvrent désormais en onglets dans la fenêtre au premier plan, tout comme les nouveaux documents. Pour conserver l’ancien comportement, choisissez « Suivre le réglage système » dans Réglages > Apparence.",
+    "ja": "- ドイツ語、日本語、スペイン語、フランス語では、「設定 > 外観モード > テーマを追加…」のシナリオの絞り込みが「シナリオ」というラベルのポップアップメニューになり、5つの選択肢が収まるようになりました。英語、韓国語、中国語では引き続きセグメンテッドコントロールを使います。\n- テーマがテーマギャラリーから取り下げられたとき、「テーマを追加…」に表示されるお知らせに、内部 ID ではなくテーマ名（例：Inkwell Ivory）が表示されるようになりました。\n- GitHub の書き方で書いた折りたたみ可能な details セクションが、プレビューとクイックルックで、要約を表示した折りたたみ状態で始まり、クリックすると開くようになりました。PDF への書き出しでは、引き続きすべてのセクションの内容が印刷されます。\n- Finder、Dock、「ファイル > 開く…」、marsdawn open コマンドで開いた書類が、最前面のウインドウのタブとして開くようになりました。新規書類も同様です。以前の動作のままにするには、「設定 > 外観モード」で「システム設定に従う」を選びます。",
+    "ko": "- 독일어, 일본어, 스페인어, 프랑스어에서는 설정 > 화면 모드 > “테마 더 받기…”의 시나리오 필터가 이제 “시나리오”라는 레이블의 팝업 메뉴로 표시되어 다섯 가지 선택 항목이 모두 들어갑니다. 영어, 한국어, 중국어에서는 계속 세그먼트 컨트롤을 사용합니다.\n- 테마가 갤러리에서 철회되면 “테마 더 받기…”의 알림에 이제 내부 ID 대신 테마 이름(예: Inkwell Ivory)이 표시됩니다.\n- GitHub 방식으로 작성한 접을 수 있는 details 섹션이 이제 미리보기와 훑어보기에서 요약이 보이는 접힌 상태로 시작하며, 클릭하면 펼쳐집니다. PDF로 내보내기는 여전히 모든 섹션의 내용을 인쇄합니다.\n- Finder, Dock, 파일 > “열기…” 또는 marsdawn open 명령으로 연 문서가 이제 맨 앞 윈도우의 탭으로 열리며, 새 문서도 마찬가지입니다. 이전 방식을 유지하려면 설정 > 화면 모드에서 “시스템 설정 따르기”를 선택하세요.",
+    "zh-Hans": "- 在德语、日语、西班牙语和法语中，「设置 ▸ 外观 ▸ 获取更多主题…」的场景筛选改为标示为「场景」的弹出式菜单，五个选项才放得下。英语、韩语和中文仍使用分段控件。\n- 主题从主题图库下架时，「获取更多主题…」中的提示现在会显示主题名称（例如 Inkwell Ivory），不再显示内部 id。\n- 按 GitHub 写法编写的可折叠 details 区块，在预览和「快速查看」中会先折叠并显示摘要，点按后才展开。导出 PDF 时仍会打印每一部分的内容。\n- 从访达、程序坞、「文件 ▸ 打开…」或 marsdawn open 命令打开的文稿，以及新建的文稿，现在都会成为最前面窗口的标签页。要保持以前的方式，可以在「设置 ▸ 外观」中选择「跟随系统设置」。",
+    "zh-Hant": "- 在德文、日文、西班牙文與法文裡，「設定 ▸ 外觀 ▸ 取得更多主題⋯」的情境篩選改成標示為「情境」的彈出式選單，五個選項才放得下。英文、韓文與中文仍使用分段控制項。\n- 主題從主題庫下架時，「取得更多主題⋯」裡的提示現在會顯示主題名稱（例如 Inkwell Ivory），不再顯示內部 id。\n- 依 GitHub 寫法撰寫的可收合 details 區塊，在預覽與「快速查看」中會先收合並顯示摘要，點一下才展開。匯出 PDF 時仍會印出每一段內容。\n- 從 Finder、Dock、「檔案 ▸ 打開⋯」或 marsdawn open 指令打開的文件，以及新增的文件，現在都會成為最前面視窗的分頁。想維持以前的方式，可以在「設定 ▸ 外觀」選擇「依照系統設定」。"
+   }
+  },
+  {
+   "version": "1.1.0",
+   "asc_version_id": "81a866c3-f9a6-4599-a486-3ae1dd62a47d",
+   "released": "2026-10-09",
+   "released_at_store": "Fri Oct 09 2026 08:15:17 GMT+0000 (Coordinated Universal Time)",
+   "whatsNew": {
+    "en-US": "- Settings > Appearance has a new Get More Themes... button. It opens a gallery of extra preview themes. Install one and it shows up under View > Preview Theme; Remove takes it away again. The gallery only goes online while it is open.\n- Quick Look previews in Finder now use the theme you picked, instead of always Dawn.\n- Quick Look also follows the Appearance setting in MarsDawn: Light and Dark stay as chosen even when your Mac is set the other way, and System follows your Mac.\n- The git marker in the window title now shows \"+\" for a file that is staged but not yet committed. Before, it looked clean.\n- Clicking a link to another Markdown file in the preview, such as [notes](notes.md#plan), now opens that file, or brings it forward if it is already open, and scrolls to the heading. If the file is outside your sidebar folders, MarsDawn offers to add its folder to the sidebar. Then click the link again.",
+    "ja": "- 「設定 > 外観モード」に「テーマを追加…」ボタンが加わりました。プレビュー用テーマのギャラリーが開きます。インストールしたテーマは「表示 > プレビューのテーマ」に並び、「取り除く」でいつでも外せます。ギャラリーがインターネットに接続するのは、開いている間だけです。\n- Finder のクイックルックで、選んだテーマが使われるようになりました。以前は常に「夜明け」テーマでした。\n- クイックルックは MarsDawn の外観モード設定にも従います。「ライト」または「ダーク」を選ぶと、Mac が逆の設定でもその外観のままです。「システム」では Mac の設定に従います。\n- ウインドウタイトルの git マークが、ステージ済みで未コミットのファイルに「+」を表示するようになりました。以前は変更なしのように見えていました。\n- プレビュー内の他の Markdown ファイルへのリンク（例：[notes](notes.md#plan)）をクリックすると、そのファイルが開きます。すでに開いている場合は前面に表示され、見出しの位置までスクロールします。ファイルがサイドバーのフォルダの外にある場合は、そのフォルダをサイドバーに追加するよう MarsDawn が案内します。追加したあと、もう一度リンクをクリックすると開きます。",
+    "zh-Hans": "- 「设置 ▸ 外观」新增「获取更多主题…」按钮，可打开主题图库，挑选更多预览主题。安装后，主题会出现在「显示 ▸ 预览主题」中，也可以随时移除。主题图库只在打开时才会联网。\n- 在访达中用「快速查看」预览时，现在会使用你选的主题，不再一律使用黎明主题。\n- 「快速查看」也会跟随 MarsDawn 的外观设置：选「浅色」或「深色」就固定使用该外观，即使 Mac 设为另一种；选「系统」则跟随 Mac。\n- 窗口标题中的 git 标记，现在遇到已暂存但尚未提交的文件会显示「+」，以前看起来像是没有更改。\n- 在预览中点按指向其他 Markdown 文件的链接，例如 [notes](notes.md#plan)，现在会打开该文件；如果已经打开就带到最前面，并滚动到对应的标题。文件若不在边栏的文件夹内，MarsDawn 会先请你将该文件夹添加到边栏，添加后再点按一次链接。",
+    "zh-Hant": "- 「設定 ▸ 外觀」新增「取得更多主題⋯」按鈕，可開啟主題庫，挑選更多預覽主題。安裝後，主題會出現在「顯示方式 ▸ 預覽主題」，也可以隨時移除。主題庫只在開啟時才會連線。\n- 在 Finder 中用「快速查看」預覽時，現在會使用你選的主題，不再一律使用黎明主題。\n- 「快速查看」也會跟著 MarsDawn 的外觀設定：選「淺色」或「深色」就固定使用該外觀，即使 Mac 設成另一種；選「系統」則跟著 Mac。\n- 視窗標題中的 git 標記，現在遇到已暫存但尚未提交的檔案會顯示「+」，以前看起來像是沒有變更。\n- 在預覽中點一下指向其他 Markdown 檔案的連結，例如 [notes](notes.md#plan)，現在會開啟該檔案；如果已經開著就帶到最前面，並捲動到對應的標題。檔案若不在側邊欄的資料夾內，MarsDawn 會先請你把該資料夾加入側邊欄，加入後再點一次連結。"
+   }
+  },
+  {
+   "version": "1.0.2",
+   "asc_version_id": "9714e458-f3cf-4dc1-a8da-50c616b80cf0",
+   "released": "2026-10-07",
+   "released_at_store": "Wed Oct 07 2026 16:29:16 GMT+0000 (Coordinated Universal Time)",
+   "whatsNew": {
+    "en-US": "- Fixed: the editor no longer shifts up slightly the first time you switch layouts or show or hide the sidebar.\n- When a Mermaid diagram can't be drawn, its full error message now appears. If the line is known, clicking the message jumps to that line in the editor.",
+    "ja": "- 修正：最初にレイアウトを切り替えたとき、またはサイドバーを表示・非表示にしたときに、エディタがわずかに上へずれることがなくなりました。\n- 描画できない Mermaid 図では、エラーメッセージを全文表示するようになりました。行番号がわかる場合は、メッセージをクリックするとエディタ内の該当行へ移動します。",
+    "zh-Hans": "- 修正：第一次切换布局，或显示、隐藏边栏时，编辑器不会再向上偏移一小段。\n- 无法绘制的 Mermaid 图表现在会显示完整的错误信息；知道行号时，点按错误信息就会跳到编辑器中该图表所在的行。\n- 繁体中文、简体中文和西班牙语的菜单用词，改为与 macOS 内置的翻译一致，例如「保存为…」。",
+    "zh-Hant": "- 修正：第一次切換版面，或顯示、隱藏側邊欄時，編輯器不會再往上偏移一小段。\n- 無法繪製的 Mermaid 圖表現在會顯示完整的錯誤訊息；知道行號時，點一下錯誤訊息就會跳到編輯器中該圖表所在的行。\n- 繁體中文、簡體中文與西班牙文的選單用字，改為與 macOS 內建的翻譯一致，例如「儲存為⋯」和「移到⋯」。"
+   }
+  },
+  {
+   "version": "1.0.0",
+   "asc_version_id": "4fe6129f-6181-49e3-982a-87acd6fe2615",
+   "released": "2026-10-05",
+   "released_at_store": "Mon Oct 05 2026 22:15:27 GMT+0000 (Coordinated Universal Time)",
+   "whatsNew": {
+    "en-US": "",
+    "ja": "",
+    "zh-Hans": "",
+    "zh-Hant": ""
+   }
+  }
+ ]
+}
