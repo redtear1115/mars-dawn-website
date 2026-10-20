@@ -7,6 +7,10 @@ Markdown twin and llms file under public/. The sale line (`<p class="sale-line" 
 is skipped: it names the regular price on purpose ("back to USD 4.99 on 1 December"). Outside
 the sale phase there must be no sale line at all.
 
+The Markdown twins and the llms and product-facts files carry the line as a line ending in
+`<!-- sale-line -->` (price.sale_note_md()), skipped the same way. In the sale phase every .md or
+.txt file that states the sale price must carry one, so no agent quotes 2.49 with no end date.
+
 It also fails if a private-use KEEP sentinel from price.py reached a built file, which would mean
 some text was written without going through price.localize().
 
@@ -24,16 +28,21 @@ SUFFIXES = {".html", ".md", ".txt"}
 RULE_OTHER = "states the other phase's price"
 RULE_SENTINEL = "has a KEEP sentinel"
 RULE_LINE = "has a sale line outside the sale phase"
+RULE_NOTE = "states the sale price with no sale line"
+TEXT_SUFFIXES = {".md", ".txt"}
 
 
-def problems_in(where: str, text: str, phase: str) -> list:
-    """This check's rules, applied to one file's text."""
+def problems_in(where: str, text: str, phase: str, text_file: bool = False) -> list:
+    """This check's rules, applied to one file's text (`text_file`: a .md or .txt file)."""
     found = []
     if price.KEEP_OPEN in text or price.KEEP_CLOSE in text:
         found.append(f"{where}: {RULE_SENTINEL} (written without price.localize())")
-    if phase != "sale" and price.SALE_LINE_RE.search(text):
+    if phase != "sale" and (price.SALE_LINE_RE.search(text) or price.SALE_NOTE_MARK in text):
         found.append(f"{where}: {RULE_LINE}")
-    outside = price.SALE_LINE_RE.sub("", text)
+    outside = price.SALE_NOTE_RE.sub("", price.SALE_LINE_RE.sub("", text))
+    if (phase == "sale" and text_file and price.SALE_NOTE_MARK not in text
+            and price.pattern(price.SALE).search(outside)):
+        found.append(f"{where}: {RULE_NOTE}")
     wrong = price.REGULAR if phase == "sale" else price.SALE
     for m in price.pattern(wrong).finditer(outside):
         line = outside.count("\n", 0, m.start()) + 1
@@ -48,7 +57,8 @@ def main() -> int:
         if path.suffix not in SUFFIXES or not path.is_file():
             continue
         checked += 1
-        problems += problems_in(str(path.relative_to(SITE)), path.read_text(encoding="utf-8"), price.PHASE)
+        problems += problems_in(str(path.relative_to(SITE)), path.read_text(encoding="utf-8"), price.PHASE,
+                                path.suffix in TEXT_SUFFIXES)
     for problem in problems:
         print(f"check_price_phase: {problem}")
     print(f"{checked} files checked in the {price.PHASE} phase (unlock USD {price.current()}): {len(problems)} problems")
@@ -82,13 +92,35 @@ def self_test() -> int:
     except AssertionError as exc:
         expect("a sale-phase build refuses a locale with no sale line", "no 'ja' line" in str(exc), str(exc))
 
+    # price.sale_note_md()
+    def note(text, phase="sale", locale="en"):
+        return price.localize(price.sale_note_md(text, locale, phase, line), phase)
+
+    twin = "Eyebrow\n\n# Pay once\n\nUnlock it once for USD 4.99.\n"
+    llms = "# MarsDawn\n\n> Free to try, USD 4.99 once.\n\n## Docs\n- x: USD 4.99 once.\n"
+    tagged = f"{line['en']} {price.SALE_NOTE_MARK}"
+    expect("a twin gets the sale line after its H1",
+           note(twin) == f"Eyebrow\n\n# Pay once\n\n{tagged}\n\nUnlock it once for USD 2.49.\n", repr(note(twin)))
+    expect("llms.txt gets it after the H1's summary",
+           note(llms) == f"# MarsDawn\n\n> Free to try, USD 2.49 once.\n\n{tagged}\n\n## Docs\n- x: USD 2.49 once.\n",
+           repr(note(llms)))
+    expect("a text with no H1 gets it at the top",
+           note("for USD 4.99.\n") == f"{tagged}\n\nfor USD 2.49.\n", repr(note("for USD 4.99.\n")))
+    expect("a text with no price gets none", note(twin.replace("USD 4.99", "once")) == twin.replace("USD 4.99", "once"))
+    expect("the regular phase adds none", note(twin, "regular") == twin)
+    try:
+        note(twin, "sale", "ja")
+        expect("a sale-phase twin refuses a locale with no sale line", False)
+    except AssertionError as exc:
+        expect("a sale-phase twin refuses a locale with no sale line", "no 'ja' line" in str(exc), str(exc))
+
     # This check's rules: each plant must fail with its own rule, and the good pages must pass.
-    def red(name, text, phase, rule):
-        found = problems_in("plant", text, phase)
+    def red(name, text, phase, rule, text_file=False):
+        found = problems_in("plant", text, phase, text_file)
         expect(name, any(rule in p for p in found) and all(rule in p for p in found), str(found))
 
-    def green(name, text, phase):
-        found = problems_in("plant", text, phase)
+    def green(name, text, phase, text_file=False):
+        found = problems_in("plant", text, phase, text_file)
         expect(name, not found, str(found))
 
     green("a localized sale page passes, sale line and all", sale_page, "sale")
@@ -99,6 +131,15 @@ def self_test() -> int:
     red("regular phase, 2,49 USD left in a de/fr/es page", "<p>und 2,49 USD</p>", "regular", RULE_OTHER)
     red("regular phase, a sale line left behind", '<p class="sale-line" data-sale-line>x</p>', "regular", RULE_LINE)
     red("a KEEP sentinel that reached the output", f"<p>{price.KEEP_OPEN}x{price.KEEP_CLOSE}</p>", "regular", RULE_SENTINEL)
+    green("a sale-phase twin with its sale line passes", note(twin), "sale", True)
+    green("sale-phase llms.txt with its sale line passes", note(llms), "sale", True)
+    red("sale phase, a twin stating the sale price with no sale line",
+        price.localize(twin, "sale"), "sale", RULE_NOTE, True)
+    red("sale phase, the regular price outside a twin's sale line",
+        note(twin) + "Still USD 4.99.\n", "sale", RULE_OTHER, True)
+    red("regular phase, a twin's sale line left behind",
+        f"# Pay once\n\nback soon {price.SALE_NOTE_MARK}\n\nUSD 4.99\n", "regular", RULE_LINE, True)
+    green("an HTML page may state the sale price with no sale line", "<p>for USD 2.49.</p>", "sale")
     return 1 if failed else 0
 
 

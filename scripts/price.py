@@ -18,6 +18,11 @@ The sale line (SALE_LINES, one per locale, written by Grok and approved like any
 regular price on purpose ("back to USD 4.99 on 1 December"), so it is wrapped in KEEP sentinels
 that `localize()` doesn't substitute inside and then strips. In the built page it is
 `<p class="sale-line" data-sale-line>`, which check_price_phase.py skips for the same reason.
+
+The Markdown twins, llms.txt, llms-full.txt and product-facts.md state the price too, and agents
+quote them, so a sale price there carries the same line (`sale_note_md()`): one line after the
+file's H1, ending in `<!-- sale-line -->`, which check_price_phase.py skips and, in the sale phase,
+requires in every such file that states the sale price.
 """
 import re
 
@@ -35,6 +40,8 @@ SALE_LINES: dict = {}
 KEEP_OPEN = ""
 KEEP_CLOSE = ""
 SALE_LINE_RE = re.compile(r'<p class="sale-line" data-sale-line>.*?</p>', re.DOTALL)
+SALE_NOTE_MARK = "<!-- sale-line -->"
+SALE_NOTE_RE = re.compile(r"^.*<!-- sale-line -->$", re.MULTILINE)
 
 assert PHASE in PHASES, f"price.PHASE is {PHASE!r}, want one of {PHASES}"
 
@@ -88,3 +95,26 @@ def sale_line_html(locale: str, phase: str = None, lines: dict = None) -> str:
         return ""
     assert locale in lines, f"price.PHASE is 'sale' but SALE_LINES has no {locale!r} line"
     return f'{KEEP_OPEN}<p class="sale-line" data-sale-line>{lines[locale]}</p>{KEEP_CLOSE}\n'
+
+
+def sale_note_md(text: str, locale: str = "en", phase: str = None, lines: dict = None) -> str:
+    """Markdown or plain `text` with `locale`'s sale line after its H1, in the sale phase.
+
+    Only a text that states the price gets one. It goes after the first `# ` heading, and after
+    the `>` summary that follows it if there is one (llms.txt's form); with no H1, at the top.
+    """
+    phase = PHASE if phase is None else phase
+    lines = SALE_LINES if lines is None else lines
+    if phase != "sale" or not pattern(REGULAR).search(text):
+        return text
+    assert locale in lines, f"price.PHASE is 'sale' but SALE_LINES has no {locale!r} line"
+    note = f"{KEEP_OPEN}{lines[locale]} {SALE_NOTE_MARK}{KEEP_CLOSE}\n"
+    h1 = re.search(r"^# .*\n", text, re.MULTILINE)
+    if h1 is None:
+        return note + "\n" + text
+    at = h1.end()
+    summary = re.match(r"\n(?:>.*\n)+", text[at:])
+    if summary:
+        at += summary.end()
+    rest = text[at:]
+    return text[:at] + "\n" + note + ("" if rest.startswith("\n") else "\n") + rest

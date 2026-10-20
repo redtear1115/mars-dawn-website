@@ -7153,6 +7153,8 @@ def sync_theme_kit_assets_into_public() -> None:
 def main() -> None:
     # Every page, Markdown twin and llms file below goes through price.localize() on its way out, so
     # it states the current phase's unlock price (app #103); check_price_phase.py holds public/ to it.
+    # The twins, llms files and product-facts.md also get the sale line in the sale phase
+    # (price.sale_note_md()): in the twin's own language, in English in the files that mix them.
     sync_theme_kit_assets_into_public()
     pages = all_pages()
     for (locale, slug), page in pages.items():
@@ -7161,12 +7163,12 @@ def main() -> None:
         (folder / "index.html").write_text(
             price.localize(with_campaign_links(render(locale, slug, page), slug_campaign_token(slug))), encoding="utf-8")
         print(folder / "index.html")
-        (folder / "index.md").write_text(price.localize(build_twin(pages, locale, slug)), encoding="utf-8")
+        (folder / "index.md").write_text(price.localize(price.sale_note_md(build_twin(pages, locale, slug), locale)), encoding="utf-8")
         print(folder / "index.md")
 
-    (SITE / "llms.txt").write_text(price.localize(build_llms_txt(pages)), encoding="utf-8")
+    (SITE / "llms.txt").write_text(price.localize(price.sale_note_md(build_llms_txt(pages))), encoding="utf-8")
     print(SITE / "llms.txt")
-    (SITE / "llms-full.txt").write_text(price.localize(build_llms_full(pages)), encoding="utf-8")
+    (SITE / "llms-full.txt").write_text(price.localize(price.sale_note_md(build_llms_full(pages))), encoding="utf-8")
     print(SITE / "llms-full.txt")
     notices_path = SITE / "themes" / "third-party-notices.html"
     notices_path.parent.mkdir(parents=True, exist_ok=True)
@@ -7187,7 +7189,7 @@ def main() -> None:
     (SITE / "_redirects").write_text(build_redirects(), encoding="utf-8")
     print(SITE / "_redirects")
     product_facts_path = SITE / PRODUCT_FACTS_PATH.lstrip("/")
-    product_facts_path.write_text(price.localize(build_product_facts(pages)), encoding="utf-8")
+    product_facts_path.write_text(price.localize(price.sale_note_md(build_product_facts(pages))), encoding="utf-8")
     print(product_facts_path)
     (SITE / "sitemap.xml").write_text(
         build_sitemap(pages, extra_urls=[BASE_URL + PRODUCT_FACTS_PATH]), encoding="utf-8"
