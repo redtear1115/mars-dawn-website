@@ -1227,11 +1227,17 @@ SCHEMA_FILES = {
     "open_v1": "open.v1.json",
     "error_v1": "error.v1.json",
     "error_v3": "error.v3.json",
+    "error_v4": "error.v4.json",
 }
 # error.v3.json (marsdawn 0.7.1) adds skill_install_failed (exit 7, in the kit since the skill command but
 # missing from v2) and input_too_large (exit 5, like export_failed); kit PR #184, Commands.swift CLIFailure.
 # It is written to public/schemas but deliberately not in SCHEMA_ORDER yet: listing it needs per-locale
 # SCHEMA_NOTES copy, which comes from Grok.
+# error.v4.json (#295) is v3 plus the usage errors (exit 64) that print JSON with --json: a bad --wait
+# since 0.5.3, skill --install's refusals since 0.5.4, theme preview's refused -o since 0.6.1. v1 to v3
+# say every exit-64 error is text on stderr, which hasn't been true since 0.5.3. Kit b6995697 (0.7.2):
+# Commands.swift WaitRangeFailure, SkillInstallFailure, OutputPathFailure; main.swift finish(). Written,
+# not listed, for the same reason as v3: its SCHEMA_NOTES copy comes from Grok (#295).
 SCHEMA_ORDER = ("export", "open", "error", "open_v2", "open_v1", "error_v1")
 
 THEME_IDS = ["dawn", "classic", "modern", "vivid"]
@@ -1240,6 +1246,13 @@ PAPER_SIZES = ["a4", "letter"]
 ERROR_KINDS_V1 = ["input_not_found", "app_not_installed", "output_exists", "export_failed"]
 ERROR_KINDS = ERROR_KINDS_V1 + ["app_cannot_open_folders"]
 ERROR_KINDS_V3 = ERROR_KINDS + ["skill_install_failed", "input_too_large"]
+# The usage errors (exit 64) that print a kind with --json, in the kit's declaration order.
+USAGE_ERROR_KINDS = [
+    "wait_out_of_range",
+    "skill_differs", "skill_unsafe_symlink", "skill_target_not_a_file", "skill_unreadable",
+    "output_folder_missing", "output_symlink", "output_not_a_file",
+]
+ERROR_KINDS_V4 = ERROR_KINDS_V3 + USAGE_ERROR_KINDS
 
 
 def schema_url(kind: str) -> str:
@@ -1412,6 +1425,20 @@ SCHEMAS = {
         "properties": {
             "ok": {"const": False},
             "error": {"enum": ERROR_KINDS_V3, "description": "Machine-readable failure kind."},
+            "message": {"type": "string", "description": "Human-readable explanation."},
+        },
+    },
+    "error_v4": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": schema_url("error_v4"),
+        "title": "marsdawn --json: failure",
+        "description": "Printed on stdout as one line when a command run with --json fails: with exit code 2, 3, 4, 5, 6 or 7, or with exit code 64 for the usage errors that have a kind (an out-of-range --wait, skill --install's refusals, theme preview's refused -o). Other usage errors (exit code 64) are printed as text on stderr instead. marsdawn 0.7.1 and later; error.v3.json, for the same releases, leaves out the exit-64 kinds. error.v2.json is for 0.5.2\u20130.7.0, error.v1.json for 0.5.1 and earlier.",
+        "type": "object",
+        "required": ["ok", "error", "message"],
+        "additionalProperties": False,
+        "properties": {
+            "ok": {"const": False},
+            "error": {"enum": ERROR_KINDS_V4, "description": "Machine-readable failure kind."},
             "message": {"type": "string", "description": "Human-readable explanation."},
         },
     },
