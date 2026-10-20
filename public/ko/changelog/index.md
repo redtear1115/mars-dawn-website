@@ -1,15 +1,32 @@
 # 변경 내역
 
-무료 marsdawn 명령줄 도구에서 바뀐 점입니다. Mac App Store의 MarsDawn 빌드는 따로 적을 내용이 있을 때만 여기에 언급합니다. 0.5.1 이전 버전은 싣지 않았습니다.
+Mac App Store의 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버전마다 바뀐 점입니다. 앱의 날짜는 해당 버전이 Mac App Store에 출시된 날입니다.
 
-## marsdawn 0.6.3
+## MarsDawn 앱
+
+### MarsDawn 1.1.1
+
+2026년 10월 15일
+
+- 독일어, 일본어, 스페인어, 프랑스어에서는 설정 > 화면 모드 > “테마 더 받기…”의 시나리오 필터가 이제 “시나리오”라는 레이블의 팝업 메뉴로 표시되어 다섯 가지 선택 항목이 모두 들어갑니다. 영어, 한국어, 중국어에서는 계속 세그먼트 컨트롤을 사용합니다.
+- 테마가 갤러리에서 철회되면 “테마 더 받기…”의 알림에 이제 내부 ID 대신 테마 이름(예: Inkwell Ivory)이 표시됩니다.
+- GitHub 방식으로 작성한 접을 수 있는 details 섹션이 이제 미리보기와 훑어보기에서 요약이 보이는 접힌 상태로 시작하며, 클릭하면 펼쳐집니다. PDF로 내보내기는 여전히 모든 섹션의 내용을 인쇄합니다.
+- Finder, Dock, 파일 > “열기…” 또는 marsdawn open 명령으로 연 문서가 이제 맨 앞 윈도우의 탭으로 열리며, 새 문서도 마찬가지입니다. 이전 방식을 유지하려면 설정 > 화면 모드에서 “시스템 설정 따르기”를 선택하세요.
+
+이전 버전의 설명은 영어로만 제공됩니다. [영어 변경 내역 보기](/changelog/)
+
+## marsdawn 명령줄 도구
+
+0.5.1 이전 버전은 싣지 않았습니다.
+
+### marsdawn 0.6.3
 
 2026년 10월 6일. MarsDawn이 Mac App Store에 출시되었습니다.
 
 - 앱이 설치되어 있지 않으면 `marsdawn open`이 Mac App Store의 MarsDawn을 안내합니다.
 - README와 에이전트 스킬에서 `marsdawn open .`과 `--folder` 사용법을 안내합니다. MarsDawn 1.0.0은 윈도우의 사이드바에 폴더를 보여줍니다.
 
-## marsdawn 0.5.4
+### marsdawn 0.5.4
 
 2026년 9월 26일. Mermaid 수정, 다이어그램 오류의 줄 번호, 스킬 설치.
 
@@ -18,7 +35,7 @@
 - `marsdawn export --json`에 `diagramErrorDetails`가 추가되어 다이어그램 오류마다 줄 번호를 알려줍니다. 문서에서 다이어그램이 시작하는 위치와, Mermaid가 지목하는 경우 오류가 난 줄 자체입니다.
 - `marsdawn skill --install`은 Claude Code용 에이전트 스킬을 `~/.claude/skills/marsdawn/SKILL.md`에, 또는 `--dir`로 지정한 다른 폴더에 설치합니다. 같은 파일이 있으면 그대로 두고, 다른 파일은 `--force`를 줄 때만 바꿉니다. 그렇지 않으면 종료 코드 64(`skill_differs`)로 끝나며 아무것도 바꾸지 않습니다.
 
-## marsdawn 0.5.3
+### marsdawn 0.5.3
 
 2026년 9월 25일. 폴더 상태, Mermaid 오류 전문, 작은 수정들.
 
@@ -28,7 +45,7 @@
 - 앱이 PDF 내보내기와 프린트용으로 각주 되돌아가기 링크에 번역된 레이블을 붙일 수 있습니다. 이 레이블은 페이지에 인쇄되지 않으며, `marsdawn export`는 영어 레이블을 유지합니다.
 - 함께 들어 있는 highlight.js가 이제 KaTeX, Mermaid처럼 버전, 출처, SHA-256으로 고정됩니다.
 
-## marsdawn 0.5.2
+### marsdawn 0.5.2
 
 2026년 9월 24일. 각주, 대비, 폴더.
 
@@ -40,7 +57,7 @@
 - 이미지 자리 표시자가 아주 긴 상대 경로 뒤에 있는 절대 경로를 더는 보여주지 않습니다.
 - `MARSDAWN_APP_PATH`는 MarsDawn 앱을 가리킬 때만 사용됩니다.
 
-## marsdawn 0.5.1
+### marsdawn 0.5.1
 
 2026년 9월 19일. PDF 내보내기와 명령줄에서 파일 열기.
 
@@ -93,10 +110,10 @@
 - [명세서 템플릿](https://marsdawn.southern-light.dev/ko/templates/spec/index.md): 요구 사항, Mermaid 흐름도, 인수 기준이 들어 있는 Markdown 명세서 템플릿입니다. 에이전트가 채우고, 여러분은 MarsDawn에서 검토하세요.
 - [순서도 템플릿](https://marsdawn.southern-light.dev/ko/templates/flowchart/index.md): Markdown으로 쓰는 Mermaid 순서도 템플릿으로, 다이어그램 아래에 단계를 풀어 씁니다. Mac에서 미리 보고 PDF로 내보내세요.
 - [회의록 템플릿](https://marsdawn.southern-light.dev/ko/templates/meeting-notes/index.md): 결정 사항과 담당자가 정해진 실행 항목을 정리하는 Markdown 회의록 템플릿입니다. 에이전트가 쓰고, 여러분은 MarsDawn에서 확인하세요.
-- [English](https://marsdawn.southern-light.dev/changelog/index.md): What changed in the free marsdawn command-line tool.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/changelog/index.md): 免費的 marsdawn 命令列工具改了什麼。
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): 免费的 marsdawn 命令行工具改了什么。
-- [日本語](https://marsdawn.southern-light.dev/ja/changelog/index.md): 無料の marsdawn コマンドラインツールの変更点です。
-- [Deutsch](https://marsdawn.southern-light.dev/de/changelog/index.md): Was sich im kostenlosen Befehlszeilenprogramm marsdawn geändert hat.
-- [Français](https://marsdawn.southern-light.dev/fr/changelog/index.md): Ce qui a changé dans l’outil en ligne de commande gratuit marsdawn.
-- [Español](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en la herramienta de línea de comandos gratuita marsdawn.
+- [English](https://marsdawn.southern-light.dev/changelog/index.md): What changed in each version of the MarsDawn app and the free marsdawn CLI.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/changelog/index.md): MarsDawn App 與免費的 marsdawn 命令列工具，每個版本改了什麼。
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): MarsDawn App 与免费的 marsdawn 命令行工具，每个版本改了什么。
+- [日本語](https://marsdawn.southern-light.dev/ja/changelog/index.md): MarsDawn アプリと無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。
+- [Deutsch](https://marsdawn.southern-light.dev/de/changelog/index.md): Was sich in jeder Version der MarsDawn-App und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat.
+- [Français](https://marsdawn.southern-light.dev/fr/changelog/index.md): Ce qui a changé dans chaque version de l’app MarsDawn et de l’outil en ligne de commande gratuit marsdawn.
+- [Español](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en cada versión de la app MarsDawn y de la herramienta de línea de comandos gratuita marsdawn.

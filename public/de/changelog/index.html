@@ -26,7 +26,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Änderungsprotokoll · MarsDawn</title>
-<meta name="description" content="Was sich im kostenlosen Befehlszeilenprogramm marsdawn geändert hat.">
+<meta name="description" content="Was sich in jeder Version der MarsDawn-App und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -42,7 +42,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/de/changelog/">
 <link rel="alternate" type="text/markdown" href="/de/changelog/index.md">
 <meta property="og:title" content="Änderungsprotokoll · MarsDawn">
-<meta property="og:description" content="Was sich im kostenlosen Befehlszeilenprogramm marsdawn geändert hat.">
+<meta property="og:description" content="Was sich in jeder Version der MarsDawn-App und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/de/changelog/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -122,17 +122,33 @@ try {
 <main id="main">
 <section class="intro">
   <h1>Änderungsprotokoll</h1>
-  <p>Was sich im kostenlosen Befehlszeilenprogramm marsdawn geändert hat. Ein Build von MarsDawn aus dem Mac App Store wird hier nur erwähnt, wenn er eine eigene Zeile hat. Versionen vor 0.5.1 sind nicht aufgeführt.</p>
+  <p>Was sich in jeder Version der MarsDawn-App aus dem Mac App Store und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat. Bei der App ist das Datum der Tag, an dem die Version im Mac App Store erschien.</p>
 </section>
 
-<h2 id="marsdawn-0-6-3">marsdawn 0.6.3</h2>
+<h2 id="marsdawn-app">MarsDawn-App</h2>
+
+<h3 id="app-1-1-1">MarsDawn 1.1.1</h3>
+<p>15. Oktober 2026</p>
+<ul>
+  <li>Auf Deutsch, Japanisch, Spanisch und Französisch zeigt Einstellungen &gt; Erscheinungsbild &gt; „Weitere Themes laden …“ den Szenario-Filter jetzt als Einblendmenü mit der Beschriftung „Szenario“, damit die fünf Optionen Platz haben. Auf Englisch, Koreanisch und Chinesisch bleibt es beim segmentierten Steuerelement.</li>
+  <li>Wenn ein Theme aus der Galerie zurückgezogen wird, nennt der Hinweis in „Weitere Themes laden …“ jetzt den Namen des Themes (zum Beispiel Inkwell Ivory) statt seiner internen ID.</li>
+  <li>Ausklappbare details-Abschnitte im GitHub-Stil beginnen in der Vorschau und in der Übersicht jetzt eingeklappt mit sichtbarer Zusammenfassung und öffnen sich per Klick. Der PDF-Export druckt weiterhin den Inhalt aller Abschnitte.</li>
+  <li>Dokumente, die du aus dem Finder, dem Dock, über Ablage &gt; „Öffnen …“ oder mit dem Befehl marsdawn open öffnest, öffnen sich jetzt als Tabs im vordersten Fenster, ebenso neue Dokumente. Um das bisherige Verhalten beizubehalten, wähle „Systemeinstellung folgen“ unter Einstellungen &gt; Erscheinungsbild.</li>
+</ul>
+
+<p>Frühere Versionen sind nur auf Englisch beschrieben: <a href="/changelog/">zum englischen Änderungsprotokoll</a>.</p>
+
+<h2 id="marsdawn-command-line-tool">Befehlszeilenprogramm marsdawn</h2>
+<p>Versionen vor 0.5.1 sind nicht aufgeführt.</p>
+
+<h3 id="marsdawn-0-6-3">marsdawn 0.6.3</h3>
 <p>6. Oktober 2026. MarsDawn ist im Mac App Store.</p>
 <ul>
   <li>Wenn die App nicht installiert ist, verweist <code>marsdawn open</code> auf MarsDawn im Mac App Store.</li>
   <li>Das README und der Agent-Skill erklären <code>marsdawn open .</code> und <code>--folder</code>: MarsDawn 1.0.0 zeigt den Ordner in der Seitenleiste des Fensters.</li>
 </ul>
 
-<h2 id="marsdawn-0-5-4">marsdawn 0.5.4</h2>
+<h3 id="marsdawn-0-5-4">marsdawn 0.5.4</h3>
 <p>26. September 2026. Mermaid-Korrekturen, Zeilenangaben bei Diagrammfehlern und die Installation des Skills.</p>
 <ul>
   <li>In einem Sequenzdiagramm bleibt eine Nachrichtenbeschriftung, die die Lebenslinien anderer Teilnehmer kreuzt, lesbar, in der Vorschau und in exportierten PDFs.</li>
@@ -141,7 +157,7 @@ try {
   <li><code>marsdawn skill --install</code> installiert den Agent-Skill für Claude Code unter <code>~/.claude/skills/marsdawn/SKILL.md</code> oder mit <code>--dir</code> in einem anderen Ordner. Eine identische Datei lässt es unangetastet, eine abweichende ersetzt es nur mit <code>--force</code>. Andernfalls endet es mit Exit-Code 64 (<code>skill_differs</code>) und ändert nichts.</li>
 </ul>
 
-<h2 id="marsdawn-0-5-3">marsdawn 0.5.3</h2>
+<h3 id="marsdawn-0-5-3">marsdawn 0.5.3</h3>
 <p>25. September 2026. Ordnerstatus, vollständige Mermaid-Fehler und kleinere Korrekturen.</p>
 <ul>
   <li><code>marsdawn open --folder</code> kann melden, was mit dem Ordner passiert ist. Bei einer App, die Rückmeldung gibt, wartet es bis zu <code>--wait</code> Sekunden (standardmäßig 2), und <code>--json</code> liefert einen Status wie <code>attached</code> oder <code>needsUser</code>.</li>
@@ -151,7 +167,7 @@ try {
   <li>Das mitgelieferte highlight.js ist jetzt nach Version, Quelle und SHA-256 festgelegt, wie KaTeX und Mermaid.</li>
 </ul>
 
-<h2 id="marsdawn-0-5-2">marsdawn 0.5.2</h2>
+<h3 id="marsdawn-0-5-2">marsdawn 0.5.2</h3>
 <p>24. September 2026. Fußnoten, Kontrast und Ordner.</p>
 <ul>
   <li>Fußnoten werden in exportierten PDFs dargestellt: nummerierte Verweise, die Anmerkungen nach dem Haupttext.</li>
@@ -163,7 +179,7 @@ try {
   <li><code>MARSDAWN_APP_PATH</code> wird nur verwendet, wenn es auf eine MarsDawn-App zeigt.</li>
 </ul>
 
-<h2 id="marsdawn-0-5-1">marsdawn 0.5.1</h2>
+<h3 id="marsdawn-0-5-1">marsdawn 0.5.1</h3>
 <p>19. September 2026. PDF-Export und das Öffnen einer Datei über die Befehlszeile.</p>
 <ul>
   <li>Die Textebene eines exportierten PDFs ist für Chinesisch, Japanisch und Koreanisch repariert.</li>
