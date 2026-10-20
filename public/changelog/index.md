@@ -40,12 +40,57 @@ First release.
 
 Versions before 0.5.1 are not listed.
 
+### marsdawn 0.7.2
+
+20 October 2026. The Handbook layout, callouts and Japanese fonts.
+
+- The manual layout is now called Handbook: `marsdawn export --layout handbook`. `--layout manual` still works, but is deprecated.
+- Callouts render, in the preview and in exported PDFs: GitHub alerts such as `> [!NOTE]` and `> [!WARNING]`, and HackMD containers such as `:::info` and `:::warning`. `:::spoiler` makes a collapsible section.
+- A Japanese document uses Japanese fonts for its kana and kanji. marsdawn takes the language from `lang: ja` in the front matter, or from how much kana the text has.
+- After a successful `export` or `open` in a terminal, marsdawn shows a one-time tip on stderr when the agent skill is missing or out of date. Output on stdout and with `--json` doesn't change. Set `MARSDAWN_NO_SKILL_HINT=1` to turn the tip off.
+
+### marsdawn 0.7.1
+
+20 October 2026. The Handbook layout, and a size limit.
+
+- `marsdawn export --layout manual` prints the Handbook layout: wider margins, a 25 mm binding side and each top-level heading on a new page, plus a cover from the front matter's title, subtitle, version, date, author and logo, a table of contents of the level 1 and 2 headings with page numbers, `n / N` page numbers and PDF bookmarks. `--toc-title` sets the title of the contents page. `--layout document` is still the default.
+- `<!--BREAK-->` on a line of its own starts a new page, in either layout.
+- `marsdawn export` refuses a file over 16 MiB: it exits 5, reports `input_too_large` with `--json`, and writes nothing.
+- The preview page drops script and noscript elements; a Mermaid redraw keeps its own SVG.
+- A character reference that decodes to `=` or `^`, such as `&#61;`, no longer pairs with a HackMD mark.
+
+### marsdawn 0.7.0
+
+18 October 2026. HackMD Markdown, line breaks and limits for very large documents.
+
+- HackMD's inline marks render: `==mark==`, `^sup^` and `~sub~`. A `[TOC]` paragraph on its own becomes a table of contents, HackMD image sizes apply, embed tags become plain https links, and a code fence's language is read before HackMD options such as `js=`.
+- `marsdawn export --breaks` turns every newline inside a paragraph into a line break, as HackMD does. Without it, a newline between two Chinese or Japanese characters is dropped, so the lines read as one sentence. Korean keeps its space, because it spaces its words.
+- Very large documents have limits, in the preview and in exported PDFs. A code block over 128K characters isn't highlighted, and highlighting stops after 256K characters in all. Up to 100 Mermaid diagrams and 1,000 math expressions are rendered per update; the other diagrams show their source, with a note, even if they were drawn before.
+- In a sequence diagram, a message label inside a `rect` block gets a halo in the block's color.
+- A footnote reference just above a table no longer crashes `marsdawn export`.
+- `marsdawn skill --install` exits 7 (`skill_install_failed`) when it can't create the folder or write the file, and leaves an existing SKILL.md as it was.
+
+### marsdawn 0.6.4
+
+13 October 2026. Collapsible `<details>` blocks.
+
+- A GitHub-style `<details>` block with blank lines inside renders as one collapsible element, in the preview and in exported PDFs. Before, it broke apart at the first blank line.
+- PDF export opens every `<details>` block before printing, except front matter.
+- The preview keeps its scroll position when you open or close a `<details>` block.
+
 ### marsdawn 0.6.3
 
 6 October 2026. MarsDawn is on the Mac App Store.
 
 - When the app isn't installed, `marsdawn open` points to MarsDawn on the Mac App Store.
 - The README and the agent skill teach `marsdawn open .` and `--folder`: MarsDawn 1.0.0 shows the folder in the window's sidebar.
+
+### marsdawn 0.6.1
+
+29 September 2026. Checking a theme.
+
+- `marsdawn theme validate` checks a `theme.json` against the rules the app uses. It exits 0 when the theme is valid and 1 when it isn't, with each problem listed. `--require-complete` also asks for the syntax and diagram colors.
+- `marsdawn theme css` prints the CSS the preview uses for a valid theme, and `marsdawn theme preview` renders a sample document with it to a PNG, light or dark.
 
 ### marsdawn 0.5.4
 

@@ -155,10 +155,13 @@ marsdawn open notes.md --folder .</code></pre>
   <li>行番号は 1 から 999999999 までです。</li>
   <li>MarsDawn 1.0 はその行にジャンプしてファイルを開きます。</li>
   <li>フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます：<code>marsdawn open .</code> で現在のフォルダを表示します。<code>--folder &lt;path&gt;</code> はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つなので、2つ指定すると使用方法のエラーになります。</li>
+  <li><code>--wait &lt;n&gt;</code>：結果を返す MarsDawn 1.0.2 以降では、<code>--folder</code> はフォルダについてのアプリの回答を最大 n 秒（0〜30、初期値 2）待ちます。<code>--wait 0</code> の場合や、結果を返さないアプリでは待たず、これまでとまったく同じリクエストを送ります。</li>
+  <li><code>--wait</code> に 0〜30 以外の値を指定すると使用方法のエラー（コード 64）です。負の値は <code>--wait=-1</code> と書きます。</li>
+  <li><code>--json</code> では、フォルダは「表示済み」ではなく「依頼済み」として返ります。決めるのはアプリだからです。<code>--wait</code> を付けると、フォルダがどうなったかも返ります。一覧は <a href="/ja/cli/agents/">AI エージェント向け marsdawn</a> にあります。</li>
   <li><code>--background</code>：MarsDawn を前面に出さずに開きます。</li>
   <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
 </ul>
-<p>行の指定は marsdawn 0.3.0 で、フォルダと <code>--background</code> は 0.5.1 で追加されました。</p>
+<p>行の指定は marsdawn 0.3.0 で、フォルダと <code>--background</code> は 0.5.1 で、<code>--wait</code> とフォルダの状態は 0.5.3 で追加されました。</p>
 
 <h3>marsdawn export</h3>
 <p>Markdown ファイルを、MarsDawn 自身の PDF 書き出しと同じ書き出しエンジンで、ページ分割された PDF にレンダリングします。MarsDawn アプリは不要です。相対パスの画像は、入力ファイルのあるフォルダを基準に解決されます。</p>
@@ -167,10 +170,29 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>-o, --output &lt;path&gt;</code>：PDF の書き出し先。デフォルトは入力パスの拡張子を <code>.pdf</code> にしたものです。</li>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：プレビューテーマのライトパレット。デフォルトは <code>$MARSDAWN_THEME</code>、それもなければ <code>dawn</code> です。</li>
   <li><code>--paper &lt;a4|letter&gt;</code>：用紙サイズ。デフォルトは <code>a4</code> です。</li>
+  <li><code>--breaks</code>：HackMD と同じように、段落内の改行をすべて改行として表示します。付けないときは、中国語や日本語の文字どうしのあいだの改行を取り除き、前後の行を 1 つの文としてつなげます。</li>
+  <li><code>--layout &lt;document|handbook&gt;</code>：ページのレイアウト。初期値は <code>document</code>。<code>handbook</code> はハンドブックとして書き出します。余白を広くして綴じ側を取り、レベル 1 の見出しごとに改ページし、ページ番号付きの目次ページ、フッターのページ番号、PDF のしおりを付けます。front matter に <code>title</code> があれば表紙も付けます。</li>
+  <li><code>--toc-title &lt;text&gt;</code>：ハンドブックの目次ページの見出し。初期値は <code>Contents</code>。</li>
+  <li>1 行だけの <code>&lt;!--BREAK--&gt;</code> で改ページします。どちらのレイアウトでも使えます。</li>
   <li><code>--allow-remote-images</code>：レンダリング時にウェブから画像を読み込みます。デフォルトはオフです。</li>
   <li><code>--force</code>：出力ファイルがすでに存在する場合に置き換えます。</li>
   <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
+  <li>16 MiB を超えるファイルは書き出しません。<code>export</code> はコード 5 で終了し、何も書き出しません。</li>
 </ul>
+<p><code>--breaks</code> は marsdawn 0.7.0 で、<code>--layout</code> と <code>--toc-title</code> は 0.7.1 で、<code>handbook</code> という名前は 0.7.2 で追加されました。0.7.1 の名前 <code>manual</code> も使えます。</p>
+
+<h3>marsdawn theme</h3>
+<p>テーマファイル（<code>theme.json</code>）を共有する前に、チェックして見た目を確かめます。MarsDawn アプリは不要です。テーマの項目は <a href="/ja/themes/agents/">エージェントとテーマを作る</a> を参照してください。</p>
+<pre><code>marsdawn theme validate my-theme.json
+marsdawn theme css my-theme.json
+marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pre>
+<ul>
+  <li><code>validate &lt;file&gt;</code>：アプリと同じバリデータで、MarsDawn のテーマが満たすべきすべてのルールに照らしてチェックします。有効ならコード 0、無効ならコード 1 で終了し、問題を 1 つずつ示します。<code>--require-complete</code> を付けると、公開するテーマに必要なシンタックスと図の色も必須になります。</li>
+  <li><code>css &lt;file&gt;</code>：有効なテーマに対してプレビューが使う CSS を出力します。</li>
+  <li><code>preview &lt;file&gt; --appearance &lt;light|dark&gt; -o &lt;out.png&gt;</code>：そのテーマでサンプルの書類を PNG に描画します。<code>--width</code> で幅をピクセルで指定します（600〜2000、初期値 1200）。既存のファイルは <code>--force</code> を付けたときだけ置き換えます。</li>
+  <li><code>--json</code>：テキストの代わりに JSON の結果を出力します。</li>
+</ul>
+<p><code>theme</code> コマンドは marsdawn 0.6.1 で追加されました。</p>
 
 <h2 id="the-marsdawn-theme-variable">$MARSDAWN_THEME 環境変数</h2>
 <p><code>--theme</code> が指定されない場合、<code>export</code> は <code>$MARSDAWN_THEME</code> 環境変数を読み取ります。値は <code>dawn</code>、<code>classic</code>、<code>modern</code>、<code>vivid</code> のいずれかである必要があり、それ以外は <code>dawn</code> にフォールバックします。CLI はアプリ自身のテーマ設定を読み取りません。他のアプリのコンテナを読み取ると、macOS のプライバシープロンプトが表示されることがあるためです。</p>

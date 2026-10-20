@@ -47,10 +47,13 @@ marsdawn open notes.md --folder .
 - 行番号は 1 から 999999999 までです。
 - MarsDawn 1.0 はその行にジャンプしてファイルを開きます。
 - フォルダを引数にすると、書類としてではなくウインドウのサイドバーに開きます：`marsdawn open .` で現在のフォルダを表示します。`--folder <path>` はファイルと一緒に同じことをします。ウインドウのサイドバーに表示できるフォルダは1つなので、2つ指定すると使用方法のエラーになります。
+- `--wait <n>`：結果を返す MarsDawn 1.0.2 以降では、`--folder` はフォルダについてのアプリの回答を最大 n 秒（0〜30、初期値 2）待ちます。`--wait 0` の場合や、結果を返さないアプリでは待たず、これまでとまったく同じリクエストを送ります。
+- `--wait` に 0〜30 以外の値を指定すると使用方法のエラー（コード 64）です。負の値は `--wait=-1` と書きます。
+- `--json` では、フォルダは「表示済み」ではなく「依頼済み」として返ります。決めるのはアプリだからです。`--wait` を付けると、フォルダがどうなったかも返ります。一覧は [AI エージェント向け marsdawn](/ja/cli/agents/) にあります。
 - `--background`：MarsDawn を前面に出さずに開きます。
 - `--json`：テキストではなく JSON の結果を出力します。
 
-行の指定は marsdawn 0.3.0 で、フォルダと `--background` は 0.5.1 で追加されました。
+行の指定は marsdawn 0.3.0 で、フォルダと `--background` は 0.5.1 で、`--wait` とフォルダの状態は 0.5.3 で追加されました。
 
 ### marsdawn export
 
@@ -63,9 +66,33 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `-o, --output <path>`：PDF の書き出し先。デフォルトは入力パスの拡張子を `.pdf` にしたものです。
 - `--theme <dawn|classic|modern|vivid>`：プレビューテーマのライトパレット。デフォルトは `$MARSDAWN_THEME`、それもなければ `dawn` です。
 - `--paper <a4|letter>`：用紙サイズ。デフォルトは `a4` です。
+- `--breaks`：HackMD と同じように、段落内の改行をすべて改行として表示します。付けないときは、中国語や日本語の文字どうしのあいだの改行を取り除き、前後の行を 1 つの文としてつなげます。
+- `--layout <document|handbook>`：ページのレイアウト。初期値は `document`。`handbook` はハンドブックとして書き出します。余白を広くして綴じ側を取り、レベル 1 の見出しごとに改ページし、ページ番号付きの目次ページ、フッターのページ番号、PDF のしおりを付けます。front matter に `title` があれば表紙も付けます。
+- `--toc-title <text>`：ハンドブックの目次ページの見出し。初期値は `Contents`。
+- 1 行だけの `<!--BREAK-->` で改ページします。どちらのレイアウトでも使えます。
 - `--allow-remote-images`：レンダリング時にウェブから画像を読み込みます。デフォルトはオフです。
 - `--force`：出力ファイルがすでに存在する場合に置き換えます。
 - `--json`：テキストではなく JSON の結果を出力します。
+- 16 MiB を超えるファイルは書き出しません。`export` はコード 5 で終了し、何も書き出しません。
+
+`--breaks` は marsdawn 0.7.0 で、`--layout` と `--toc-title` は 0.7.1 で、`handbook` という名前は 0.7.2 で追加されました。0.7.1 の名前 `manual` も使えます。
+
+### marsdawn theme
+
+テーマファイル（`theme.json`）を共有する前に、チェックして見た目を確かめます。MarsDawn アプリは不要です。テーマの項目は [エージェントとテーマを作る](/ja/themes/agents/) を参照してください。
+
+```
+marsdawn theme validate my-theme.json
+marsdawn theme css my-theme.json
+marsdawn theme preview my-theme.json --appearance dark -o preview.png
+```
+
+- `validate <file>`：アプリと同じバリデータで、MarsDawn のテーマが満たすべきすべてのルールに照らしてチェックします。有効ならコード 0、無効ならコード 1 で終了し、問題を 1 つずつ示します。`--require-complete` を付けると、公開するテーマに必要なシンタックスと図の色も必須になります。
+- `css <file>`：有効なテーマに対してプレビューが使う CSS を出力します。
+- `preview <file> --appearance <light|dark> -o <out.png>`：そのテーマでサンプルの書類を PNG に描画します。`--width` で幅をピクセルで指定します（600〜2000、初期値 1200）。既存のファイルは `--force` を付けたときだけ置き換えます。
+- `--json`：テキストの代わりに JSON の結果を出力します。
+
+`theme` コマンドは marsdawn 0.6.1 で追加されました。
 
 ## $MARSDAWN_THEME 環境変数
 

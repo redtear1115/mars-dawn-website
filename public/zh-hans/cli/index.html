@@ -155,10 +155,13 @@ marsdawn open notes.md --folder .</code></pre>
   <li>行号范围是 1 到 999999999。</li>
   <li>MarsDawn 1.0 会打开文件，并跳到指定的行。</li>
   <li>文件夹参数会在窗口的侧边栏打开，而不是当成文稿：<code>marsdawn open .</code> 会显示当前的文件夹。<code>--folder &lt;path&gt;</code> 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹，所以指定两个是使用方式错误。</li>
+  <li><code>--wait &lt;n&gt;</code>：搭配会回报结果的 MarsDawn 1.0.2 或更高版本，<code>--folder</code> 最多等待 n 秒（0 到 30，默认 2），等 app 回报文件夹的结果。<code>--wait 0</code>，或 app 不会回报时，不会等待，发出的请求和以前完全相同。</li>
+  <li><code>--wait</code> 的值超出 0 到 30 是使用方式错误（代码 64）。负数要写成 <code>--wait=-1</code>。</li>
+  <li>加上 <code>--json</code> 时，文件夹报告的是「已请求」，而不是「已附加」，因为由 app 决定；加上 <code>--wait</code> 时，结果还会说明文件夹后来怎么样了。完整列表见<a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a>。</li>
   <li><code>--background</code>：打开时不把 MarsDawn 带到最前面。</li>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
 </ul>
-<p>行号功能从 marsdawn 0.3.0 开始提供，文件夹与 <code>--background</code> 从 0.5.1 开始。</p>
+<p>行号功能从 marsdawn 0.3.0 开始提供，文件夹与 <code>--background</code> 从 0.5.1 开始，<code>--wait</code> 与文件夹状态从 0.5.3 开始。</p>
 
 <h3>marsdawn export</h3>
 <p>把 Markdown 文件导出成分页的 PDF，使用和 MarsDawn 导出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。</p>
@@ -167,10 +170,29 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>-o, --output &lt;path&gt;</code>：PDF 的输出位置，默认是把输入文件的扩展名换成 <code>.pdf</code>。</li>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：预览主题的浅色版本，默认读取 <code>$MARSDAWN_THEME</code>，否则用 <code>dawn</code>。</li>
   <li><code>--paper &lt;a4|letter&gt;</code>：纸张大小，默认 <code>a4</code>。</li>
+  <li><code>--breaks</code>：段落内的每个换行都当作换行，和 HackMD 一样。不加时，两个中文或日文字符之间的换行会去掉，让前后两行连成一句。</li>
+  <li><code>--layout &lt;document|handbook&gt;</code>：页面布局，默认 <code>document</code>。<code>handbook</code> 会导出成手册：页边距更宽并留出装订边，每个一级标题从新的一页开始，附带有页码的目录页、页脚页码和 PDF 书签；front matter 有 <code>title</code> 时，还会加上封面。</li>
+  <li><code>--toc-title &lt;text&gt;</code>：手册目录页的标题，默认 <code>Contents</code>。</li>
+  <li>单独一行的 <code>&lt;!--BREAK--&gt;</code> 会从新的一页开始，两种布局都适用。</li>
   <li><code>--allow-remote-images</code>：导出时加载网络图片，默认关闭。</li>
   <li><code>--force</code>：如果输出文件已存在就直接覆盖。</li>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
+  <li>超过 16 MiB 的文件不会导出：<code>export</code> 以代码 5 结束，不写出任何文件。</li>
 </ul>
+<p><code>--breaks</code> 从 marsdawn 0.7.0 开始提供，<code>--layout</code> 和 <code>--toc-title</code> 从 0.7.1 开始，<code>handbook</code> 这个值从 0.7.2 开始。0.7.1 的旧值 <code>manual</code> 仍可使用。</p>
+
+<h3>marsdawn theme</h3>
+<p>在分享主题文件（<code>theme.json</code>）之前，先检查它，看看它的样子。不需要 MarsDawn app。主题有哪些字段，请见<a href="/zh-hans/themes/agents/">和你的代理一起做主题</a>。</p>
+<pre><code>marsdawn theme validate my-theme.json
+marsdawn theme css my-theme.json
+marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pre>
+<ul>
+  <li><code>validate &lt;file&gt;</code>：用 app 采用的同一个验证器，检查文件是否符合 MarsDawn 主题的每条规则。主题有效时以代码 0 结束，无效时以代码 1 结束，并列出每个问题。加上 <code>--require-complete</code> 时，还会要求语法高亮和图表的颜色，公开发布的主题都必须有这些。</li>
+  <li><code>css &lt;file&gt;</code>：输出预览为有效主题使用的 CSS。</li>
+  <li><code>preview &lt;file&gt; --appearance &lt;light|dark&gt; -o &lt;out.png&gt;</code>：用这个主题把一份示例文稿渲染成 PNG。<code>--width</code> 设置宽度（像素），范围 600 到 2000，默认 1200。文件已存在时，要加上 <code>--force</code> 才会替换。</li>
+  <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
+</ul>
+<p><code>theme</code> 命令从 marsdawn 0.6.1 开始提供。</p>
 
 <h2 id="the-marsdawn-theme-variable">$MARSDAWN_THEME 环境变量</h2>
 <p>没有传入 <code>--theme</code> 时，<code>export</code> 会读取 <code>$MARSDAWN_THEME</code> 环境变量，值必须是 <code>dawn</code>、<code>classic</code>、<code>modern</code> 或 <code>vivid</code> 其中之一，其他值都会改用 <code>dawn</code>。这个工具不会读取 App 本身的主题设置，因为读取其他 App 的容器可能触发 macOS 隐私提示。</p>

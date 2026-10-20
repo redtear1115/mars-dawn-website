@@ -83,6 +83,7 @@ marsdawn open notes.md --folder . --background --json
 ```
 
 - `folder`: 폴더를 줬을 때만 나타납니다. `path`는 폴더의 절대 경로입니다. `requested`는 항상 `true`입니다. marsdawn은 MarsDawn에 폴더를 보여 달라고 요청했을 뿐이고, 앱이 먼저 사람에게 접근 권한을 물을 수 있으므로 사이드바에 실제로 표시됐는지는 알 수 없습니다. 완료가 아니라 요청됨으로 보고하세요.
+- `--wait`가 0보다 크고 MarsDawn이 1.0.2 이상이면, 기다림이 끝난 뒤 `folder`에 `status`도 담깁니다. 값은 `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable`, `unknown` 중 하나입니다. `needsUser`일 때만 `waitingFor`(`confirmation` 또는 `folderChoice`)도 담깁니다. `--wait`가 없거나 결과를 알려 주지 않는 앱이면 `folder`는 `{"path": …, "requested": true}` 그대로입니다. `--wait`가 0~30을 벗어나면 코드 64로 종료하며 `error: "wait_out_of_range"`를 냅니다. (marsdawn 0.5.3 이상)
 - 폴더만 줬을 때 `opened`는 비어 있습니다.
 
 marsdawn 0.2.x는 `opened`를 경로 문자열 목록으로 출력했습니다. 두 형식을 모두 처리해야 한다면 `marsdawn --version`을 확인하세요.
@@ -166,8 +167,10 @@ exit 0
 모든 `--json` 결과에 대한 JSON Schema(draft 2020-12):
 
 - [export.v1.json](/schemas/cli/export.v1.json): export 성공
-- [open.v3.json](/schemas/cli/open.v3.json): open 성공, marsdawn 0.5.1 이상, 사이드바에 표시되는 폴더 포함
-- [error.v2.json](/schemas/cli/error.v2.json): 실패, 두 명령 공통, marsdawn 0.5.2 이상
+- [open.v4.json](/schemas/cli/open.v4.json): open 성공, marsdawn 0.5.3 이상, 폴더의 `status`와 `waitingFor` 포함
+- [open.v3.json](/schemas/cli/open.v3.json): open 성공, marsdawn 0.5.1~0.5.2, 사이드바에 표시되는 폴더 포함
+- [error.v3.json](/schemas/cli/error.v3.json): 실패, 모든 명령 공통, marsdawn 0.7.1 이상, `input_too_large`(코드 5)와 `skill_install_failed`(코드 7) 추가
+- [error.v2.json](/schemas/cli/error.v2.json): 실패, 두 명령 공통, marsdawn 0.5.2~0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 성공, marsdawn 0.3.0~0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 성공, marsdawn 0.2.x, 이때 `opened`는 경로 목록이었음
 - [error.v1.json](/schemas/cli/error.v1.json): 실패, 두 명령 공통, marsdawn 0.5.1 이하

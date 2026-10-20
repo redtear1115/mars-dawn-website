@@ -161,11 +161,56 @@ try {
 <h2 id="marsdawn-command-line-tool">marsdawn 命令行工具</h2>
 <p>0.5.1 以前的版本不列。</p>
 
+<h3 id="marsdawn-0-7-2">marsdawn 0.7.2</h3>
+<p>2026 年 10 月 20 日。手册布局、提示块，以及日文字体。</p>
+<ul>
+  <li><code>--layout</code> 的值改为 <code>handbook</code>，与 app 的「手册」（Handbook）布局同名：<code>marsdawn export --layout handbook</code>。<code>--layout manual</code> 仍可使用，但已弃用。</li>
+  <li>预览和导出的 PDF 都会显示提示块：GitHub 的 alert（例如 <code>&gt; [!NOTE]</code>、<code>&gt; [!WARNING]</code>），以及 HackMD 的容器（例如 <code>:::info</code>、<code>:::warning</code>）。<code>:::spoiler</code> 会成为可折叠的区块。</li>
+  <li>日文文稿的假名和汉字会改用日文字体。语言取自 front matter 的 <code>lang: ja</code>；没有写时，按正文中假名的比例判断。</li>
+  <li>在终端中成功运行 <code>export</code> 或 <code>open</code> 之后，如果代理技能没有安装或已经过期，marsdawn 会在 stderr 显示一次提示。stdout 和 <code>--json</code> 的输出都不变。设置 <code>MARSDAWN_NO_SKILL_HINT=1</code> 就不再提示。</li>
+</ul>
+
+<h3 id="marsdawn-0-7-1">marsdawn 0.7.1</h3>
+<p>2026 年 10 月 20 日。手册布局，以及文件大小上限。</p>
+<ul>
+  <li><code>marsdawn export --layout manual</code> 导出成手册：页边距更宽、装订边留 25 mm，每个一级标题从新的一页开始；另外有封面（取自 front matter 的 title、subtitle、version、date、author 和 logo）、列出一、二级标题并附页码的目录、<code>n / N</code> 页码，以及 PDF 书签。目录页的标题可以用 <code>--toc-title</code> 指定。默认仍是 <code>--layout document</code>。</li>
+  <li>单独一行的 <code>&lt;!--BREAK--&gt;</code> 会从新的一页开始，两种布局都适用。</li>
+  <li><code>marsdawn export</code> 不处理超过 16 MiB 的文件：以代码 5 结束，加上 <code>--json</code> 时报告 <code>input_too_large</code>，不写出任何文件。</li>
+  <li>预览页会移除 script 和 noscript 元素；Mermaid 重绘时保留图表自己的 SVG。</li>
+  <li>解码后是 <code>=</code> 或 <code>^</code> 的字符引用（例如 <code>&amp;#61;</code>）不再和 HackMD 标记配对。</li>
+</ul>
+
+<h3 id="marsdawn-0-7-0">marsdawn 0.7.0</h3>
+<p>2026 年 10 月 18 日。HackMD 语法、换行，以及超大文稿的上限。</p>
+<ul>
+  <li>支持 HackMD 的行内标记：<code>==mark==</code>、<code>^sup^</code> 和 <code>~sub~</code>。单独成段的 <code>[TOC]</code> 会变成目录；HackMD 写法的图片尺寸会生效；嵌入标签会变成普通的 https 链接；代码块的语言会先读出来，再处理 <code>js=</code> 这类 HackMD 选项。</li>
+  <li><code>marsdawn export --breaks</code> 会把段落内的每个换行都当作换行，和 HackMD 一样。不加时，两个中文或日文字符之间的换行会去掉，让前后两行连成一句；韩文的词与词之间本来就有空格，所以保留空格。</li>
+  <li>超大文稿在预览和导出的 PDF 中都有上限：单个代码块超过 128K 字符就不做语法高亮，整份累计超过 256K 字符后也不再高亮。每次更新最多绘制 100 个 Mermaid 图表、渲染 1,000 个数学公式；其余图表显示源代码并附上说明，即使之前绘制过也一样。</li>
+  <li>时序图中，<code>rect</code> 区块里的消息标签，描边底色改用该区块的颜色。</li>
+  <li>表格正上方有脚注引用时，<code>marsdawn export</code> 不再崩溃。</li>
+  <li><code>marsdawn skill --install</code> 无法创建文件夹或写入文件时，以代码 7（<code>skill_install_failed</code>）结束，原有的 SKILL.md 保持不变。</li>
+</ul>
+
+<h3 id="marsdawn-0-6-4">marsdawn 0.6.4</h3>
+<p>2026 年 10 月 13 日。可折叠的 <code>&lt;details&gt;</code> 区块。</p>
+<ul>
+  <li>GitHub 风格的 <code>&lt;details&gt;</code> 区块里有空行时，也会显示为一个可折叠的区块；预览和导出的 PDF 都一样。以前遇到第一个空行就会断开。</li>
+  <li>导出 PDF 时，会先把每个 <code>&lt;details&gt;</code> 区块展开再打印（front matter 除外）。</li>
+  <li>展开或折叠 <code>&lt;details&gt;</code> 区块时，预览会保持原来的滚动位置。</li>
+</ul>
+
 <h3 id="marsdawn-0-6-3">marsdawn 0.6.3</h3>
 <p>2026 年 10 月 6 日。MarsDawn 在 Mac App Store 上架。</p>
 <ul>
   <li>没有安装 app 时，<code>marsdawn open</code> 会指向 Mac App Store 上的 MarsDawn。</li>
   <li>README 和代理技能会教 <code>marsdawn open .</code> 与 <code>--folder</code>：MarsDawn 1.0.0 会把文件夹显示在窗口的侧边栏。</li>
+</ul>
+
+<h3 id="marsdawn-0-6-1">marsdawn 0.6.1</h3>
+<p>2026 年 9 月 29 日。检查主题。</p>
+<ul>
+  <li><code>marsdawn theme validate</code> 会用 app 采用的规则检查 <code>theme.json</code>。主题有效时以代码 0 结束，无效时以代码 1 结束，并列出每个问题。加上 <code>--require-complete</code> 时，还会要求语法高亮和图表的颜色。</li>
+  <li><code>marsdawn theme css</code> 会输出预览为有效主题使用的 CSS；<code>marsdawn theme preview</code> 会用这个主题把一份示例文稿渲染成 PNG，浅色或深色都可以。</li>
 </ul>
 
 <h3 id="marsdawn-0-5-4">marsdawn 0.5.4</h3>

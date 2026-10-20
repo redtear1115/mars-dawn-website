@@ -83,6 +83,7 @@ marsdawn open notes.md --folder . --background --json
 ```
 
 - `folder`：フォルダを指定したときだけ現れます。`path` はその絶対パスです。`requested` は常に `true` です：marsdawn は MarsDawn にフォルダの表示を依頼しましたが、サイドバーに実際に表示されたかどうかは分かりません。アプリが先に人にアクセスの許可を求めることがあるためです。「完了した」ではなく「依頼した」と報告してください。
+- `--wait` が 0 より大きく、MarsDawn が 1.0.2 以降の場合、待ち時間が終わると `folder` に `status` も入ります：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable`、`unknown` のいずれかです。`needsUser` のときだけ `waitingFor`（`confirmation` または `folderChoice`）も入ります。`--wait` がない場合や、結果を返さないアプリでは、`folder` は `{"path": …, "requested": true}` のままです。`--wait` が 0〜30 の範囲外ならコード 64 で終了し、`error: "wait_out_of_range"` を返します。（marsdawn 0.5.3 以降）
 - フォルダだけを指定したとき、`opened` は空です。
 
 marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方を扱う必要がある場合は `marsdawn --version` を確認してください。
@@ -166,8 +167,10 @@ exit 0
 各 `--json` 結果に対応する JSON Schema（draft 2020-12）：
 
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功時
-- [open.v3.json](/schemas/cli/open.v3.json): open 成功時、marsdawn 0.5.1 以降、サイドバーに表示するフォルダを含む
-- [error.v2.json](/schemas/cli/error.v2.json): 失敗時、両方のコマンド共通、marsdawn 0.5.2 以降
+- [open.v4.json](/schemas/cli/open.v4.json): open 成功時、marsdawn 0.5.3 以降、フォルダの `status` と `waitingFor` を含む
+- [open.v3.json](/schemas/cli/open.v3.json): open 成功時、marsdawn 0.5.1〜0.5.2、サイドバーに表示するフォルダを含む
+- [error.v3.json](/schemas/cli/error.v3.json): 失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、`input_too_large`（コード 5）と `skill_install_failed`（コード 7）を追加
+- [error.v2.json](/schemas/cli/error.v2.json): 失敗時、両方のコマンド共通、marsdawn 0.5.2〜0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 成功時、marsdawn 0.3.0〜0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功時、marsdawn 0.2.x（`opened` がパスのリストだった頃）
 - [error.v1.json](/schemas/cli/error.v1.json): 失敗時、両方のコマンド共通、marsdawn 0.5.1 以前

@@ -47,10 +47,13 @@ marsdawn open notes.md --folder .
 - 行號範圍是 1 到 999999999。
 - MarsDawn 1.0 會打開檔案，並跳到指定的行。
 - 資料夾參數會在視窗的側邊欄開啟，而不是當成文件：`marsdawn open .` 會顯示目前的資料夾。`--folder <path>` 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾，所以指定兩個是使用方式錯誤。
+- `--wait <n>`：搭配會回報結果的 MarsDawn 1.0.2 以上，`--folder` 最多等 n 秒（0 到 30，預設 2），等 app 回報資料夾的結果。`--wait 0`，或 app 不會回報時，不會等待，送出的請求和以前完全相同。
+- `--wait` 的值超出 0 到 30 是使用方式錯誤（代碼 64）。負數要寫成 `--wait=-1`。
+- 加上 `--json` 時，資料夾回報的是「已請求」，不是「已附加」，因為由 app 決定；加上 `--wait` 時，結果也會說明資料夾後來怎麼了。完整列表見[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
 - `--background`：開啟時不把 MarsDawn 帶到最前面。
 - `--json`：印出 JSON 結果，而不是文字。
 
-行號功能從 marsdawn 0.3.0 開始提供，資料夾與 `--background` 從 0.5.1 開始。
+行號功能從 marsdawn 0.3.0 開始提供，資料夾與 `--background` 從 0.5.1 開始，`--wait` 與資料夾狀態從 0.5.3 開始。
 
 ### marsdawn export
 
@@ -63,9 +66,33 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `-o, --output <path>`：PDF 的輸出位置，預設是把輸入檔的副檔名換成 `.pdf`。
 - `--theme <dawn|classic|modern|vivid>`：預覽主題的淺色版本，預設讀取 `$MARSDAWN_THEME`，否則用 `dawn`。
 - `--paper <a4|letter>`：紙張大小，預設 `a4`。
+- `--breaks`：段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句。
+- `--layout <document|handbook>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。
+- `--toc-title <text>`：手冊目錄頁的標題，預設是 `Contents`。
+- 單獨一行的 `<!--BREAK-->` 會從新的一頁開始，兩種版面都適用。
 - `--allow-remote-images`：輸出時載入網路圖片，預設關閉。
 - `--force`：如果輸出檔已存在就直接覆蓋。
 - `--json`：印出 JSON 結果，而不是文字。
+- 超過 16 MiB 的檔案不會輸出：`export` 以代碼 5 結束，不寫出任何檔案。
+
+`--breaks` 從 marsdawn 0.7.0 開始提供，`--layout` 和 `--toc-title` 從 0.7.1 開始，`handbook` 這個名稱從 0.7.2 開始。0.7.1 的舊名稱 `manual` 仍可使用。
+
+### marsdawn theme
+
+在分享主題檔（`theme.json`）之前，先檢查它、看看它的樣子。不需要 MarsDawn app。主題有哪些欄位，請見[和你的 agent 一起做主題](/zh-hant/themes/agents/)。
+
+```
+marsdawn theme validate my-theme.json
+marsdawn theme css my-theme.json
+marsdawn theme preview my-theme.json --appearance dark -o preview.png
+```
+
+- `validate <file>`：用 app 採用的同一套檢查，確認檔案符合 MarsDawn 主題的每條規則。主題有效時以代碼 0 結束，無效時以代碼 1 結束，並列出每個問題。加上 `--require-complete` 時，也會要求語法上色和圖表的顏色，公開的主題都必須有這些。
+- `css <file>`：印出預覽替有效主題使用的 CSS。
+- `preview <file> --appearance <light|dark> -o <out.png>`：用這個主題把一份範例文件畫成 PNG。`--width` 設定寬度（像素），範圍 600 到 2000，預設 1200。檔案已經存在時，要加 `--force` 才會取代。
+- `--json`：改為印出 JSON 結果，不印文字。
+
+`theme` 指令從 marsdawn 0.6.1 開始提供。
 
 ## $MARSDAWN_THEME 環境變數
 

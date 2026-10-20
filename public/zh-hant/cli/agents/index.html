@@ -190,6 +190,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
 <pre><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
 <ul>
   <li><code>folder</code>：只有指定了資料夾時才有。<code>path</code> 是它的絕對路徑。<code>requested</code> 一律是 <code>true</code>：marsdawn 已請 MarsDawn 顯示這個資料夾，但無法得知側邊欄是否真的顯示了，因為 app 可能會先向使用者要求存取權限。請回報為「已要求」，而不是「已完成」。</li>
+  <li><code>--wait</code> 大於 0、且 MarsDawn 為 1.0.2 以上時，等待結束後 <code>folder</code> 還會帶 <code>status</code>：<code>attached</code>、<code>needsUser</code>、<code>declined</code>、<code>failed</code>、<code>attachedDifferentFolder</code>、<code>full</code>、<code>unavailable</code> 或 <code>unknown</code>。只有在 <code>needsUser</code> 時，才會再帶 <code>waitingFor</code>：<code>confirmation</code> 或 <code>folderChoice</code>。沒有 <code>--wait</code>，或 app 不會回報時，<code>folder</code> 維持 <code>{"path": …, "requested": true}</code>。<code>--wait</code> 超出 0 到 30 時以代碼 64 結束，並帶 <code>error: "wait_out_of_range"</code>。（marsdawn 0.5.3 以後。）</li>
   <li>只指定資料夾時，<code>opened</code> 是空的。</li>
 </ul>
 <p>marsdawn 0.2.x 的 <code>opened</code> 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 <code>marsdawn --version</code>。</p>
@@ -260,8 +261,10 @@ exit 0</code></pre>
 <p>每種 <code>--json</code> 結果的 JSON Schema（draft 2020-12）：</p>
 <ul>
   <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功</li>
-  <li><a href="/schemas/cli/open.v3.json">open.v3.json</a>: open 成功，marsdawn 0.5.1 以後，包括在側邊欄顯示的資料夾</li>
-  <li><a href="/schemas/cli/error.v2.json">error.v2.json</a>: 兩個指令的失敗結果，marsdawn 0.5.2 以後</li>
+  <li><a href="/schemas/cli/open.v4.json">open.v4.json</a>: open 成功，marsdawn 0.5.3 以後，資料夾多了 <code>status</code> 和 <code>waitingFor</code></li>
+  <li><a href="/schemas/cli/open.v3.json">open.v3.json</a>: open 成功，marsdawn 0.5.1 和 0.5.2，包括在側邊欄顯示的資料夾</li>
+  <li><a href="/schemas/cli/error.v3.json">error.v3.json</a>: 所有指令的失敗結果，marsdawn 0.7.1 以後，新增 <code>input_too_large</code>（代碼 5）和 <code>skill_install_failed</code>（代碼 7）</li>
+  <li><a href="/schemas/cli/error.v2.json">error.v2.json</a>: 兩個指令的失敗結果，marsdawn 0.5.2 到 0.7.0</li>
   <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功，marsdawn 0.3.0 到 0.5.0</li>
   <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open 成功，marsdawn 0.2.x，當時 <code>opened</code> 是路徑清單</li>
   <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: 兩個指令的失敗結果，marsdawn 0.5.1 以前</li>
