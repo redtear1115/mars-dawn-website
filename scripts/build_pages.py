@@ -32,6 +32,7 @@ import theme_agents  # noqa: E402
 from promo130 import data as promo_data  # noqa: E402
 from best228 import data as best_data  # noqa: E402
 from ia247 import data as ia_data  # noqa: E402
+from tmde130 import data as changelog_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
@@ -5552,7 +5553,7 @@ def all_pages() -> dict:
             body = "".join(pieces[:3]) + brand_film_themes.MARK + "\n" + "".join(pieces[3:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return apply_best228(apply_promo130(apply_seo_copy(merged)))
+    return apply_app_changelog(apply_best228(apply_promo130(apply_seo_copy(merged))))
 
 
 # --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
@@ -5839,6 +5840,89 @@ def apply_best228(merged: dict) -> dict:
         assert sep and not tail.strip(), f"{locale}/vs: the body does not end with its link list"
         link = f'  <li><a href="{page_path(locale, BEST228_SLUG)}">{UI[locale][BEST228_SLUG]}</a></li>\n'
         out[(locale, "vs")] = {**hub, "body": head + link + "</ul>" + tail}
+    return out
+
+
+# --- /changelog/'s app section (website #273) ---------------------------------------------------------
+# The app's versions come first, then the CLI's. Each app version's What's New is the text it has on the
+# Mac App Store, vendored by scripts/tmde130/ingest.py from the app repo's approved release notes into
+# vendor/app-release-notes/whats-new.json; the page copy around it is scripts/tmde130/data.py's. A locale
+# gets a version only if the App Store has that version in its language, and a locale that misses one gets
+# the "earlier versions are in English only" line. The CLI entries keep their text and their anchors
+# (#marsdawn-0-6-3 and so on), now as h3 under the CLI heading. scripts/check_app_changelog.py checks it.
+APP_NOTES = json.loads((ROOT / "vendor" / "app-release-notes" / "whats-new.json").read_text(encoding="utf-8"))
+CHANGELOG_MONTHS = {
+    "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+           "November", "December"],
+    "de": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober",
+           "November", "Dezember"],
+    "fr": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre",
+           "novembre", "décembre"],
+    "es": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
+           "noviembre", "diciembre"],
+}
+
+
+def changelog_date(locale: str, iso: str) -> str:
+    """A date as the CLI entries on the same page write it (6 October 2026, 2026 年 10 月 6 日, ...)."""
+    y, m, d = (int(n) for n in iso.split("-"))
+    if locale in ("zh-hant", "zh-hans"):
+        return f"{y} 年 {m} 月 {d} 日"
+    if locale == "ja":
+        return f"{y}年{m}月{d}日"
+    if locale == "ko":
+        return f"{y}년 {m}월 {d}일"
+    month = CHANGELOG_MONTHS[locale][m - 1]
+    if locale == "de":
+        return f"{d}. {month} {y}"
+    if locale == "es":
+        return f"{d} de {month} de {y}"
+    if locale == "fr" and d == 1:
+        return f"1er {month} {y}"
+    return f"{d} {month} {y}"
+
+
+def app_versions_html(locale: str) -> str:
+    copy = changelog_data.DATA[locale]
+    to_store = {site: store for store, site in APP_NOTES["locale_map"].items()}
+    parts, omitted = [], False
+    for entry in APP_NOTES["versions"]:
+        notes = entry["whatsNew"].get(to_store[locale])
+        if notes is None:
+            omitted = True
+            continue
+        v = entry["version"]
+        head = (f'<h3 id="app-{v.replace(".", "-")}">MarsDawn {v}</h3>\n'
+                f'<p>{changelog_date(locale, entry["released"])}</p>\n')
+        if notes:
+            bullets = "\n".join(f"  <li>{html_escape(line[2:], quote=False)}</li>" for line in notes.split("\n"))
+            parts.append(head + f"<ul>\n{bullets}\n</ul>")
+        else:
+            parts.append(head + f'<p>{copy["first_release"]}</p>')
+    if omitted:
+        parts.append(f'<p>{copy["earlier"]}</p>')
+    return f'<h2>{copy["app_h"]}</h2>\n\n' + "\n\n".join(parts)
+
+
+def apply_app_changelog(merged: dict) -> dict:
+    """merged with /changelog/ covering the app and the CLI, in every locale that has the page."""
+    out = dict(merged)
+    for locale in LOCALES:
+        page = out.get((locale, "changelog"))
+        if page is None:
+            continue
+        copy = changelog_data.DATA[locale]
+        intro, n = re.subn(r'(<section class="intro">\s*<h1>[^<]*</h1>\s*<p>)[^<]*(</p>\s*</section>)',
+                           lambda m: m.group(1) + copy["intro"] + m.group(2), page["body"], count=1)
+        assert n == 1, f"{locale}/changelog: no intro paragraph"
+        head, sep, cli = intro.partition("</section>")
+        versions = re.findall(r"<h2>(marsdawn [0-9.]+)</h2>", cli)
+        assert versions and len(versions) == len(re.findall(r"<h2", cli)), f"{locale}/changelog: a heading is not a CLI version"
+        cli = re.sub(r"<h2>(marsdawn ([0-9.]+))</h2>",
+                     lambda m: f'<h3 id="marsdawn-{m.group(2).replace(".", "-")}">{m.group(1)}</h3>', cli)
+        body = (head + sep + "\n\n" + app_versions_html(locale) + "\n\n"
+                + f'<h2>{copy["cli_h"]}</h2>\n<p>{copy["cli_line"]}</p>\n\n' + cli.lstrip("\n"))
+        out[(locale, "changelog")] = {**page, "description": copy["description"], "body": body}
     return out
 
 
