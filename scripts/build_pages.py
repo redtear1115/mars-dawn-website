@@ -1835,7 +1835,7 @@ EXAMPLE_PLAN = {
 }
 
 # Exit codes, one source for the skill (and anything else that lists them). The kinds must be
-# ERROR_KINDS, in the same order, or the build stops.
+# ERROR_KINDS_V3's (marsdawn 0.7.1), listed by exit code, or the build stops.
 EXIT_CODES = [
     (0, None, "Success. With --json, stdout is one JSON line."),
     (1, None, "The theme isn't valid. Only the `theme` commands return this; with --json its problems are under `issues`."),
@@ -1843,10 +1843,12 @@ EXIT_CODES = [
     (3, "app_not_installed", "MarsDawn isn't installed. Only `open` returns this."),
     (4, "output_exists", "The PDF (or `theme preview`'s PNG) already exists. Pass --force to replace it, or -o to write elsewhere."),
     (5, "export_failed", "Rendering failed."),
+    (5, "input_too_large", 'The input is larger than 16 MiB (16,777,216 bytes), the most `export` renders. Nothing was written. Only `export` returns this.'),
     (6, "app_cannot_open_folders", "This MarsDawn can't show a folder, so nothing was opened. Only `open` returns this."),
+    (7, "skill_install_failed", "`skill --install` couldn't create the folder or write the file, or the final rename failed. An existing SKILL.md is left as it was. Only `skill --install` returns this."),
     (64, None, "Usage error: a bad option or value. Printed as text on stderr, never as JSON, except `theme preview`'s refused -o (`output_folder_missing`, `output_symlink`, `output_not_a_file`)."),
 ]
-assert [kind for _, kind, _ in EXIT_CODES if kind] == ERROR_KINDS, "EXIT_CODES and ERROR_KINDS disagree"
+assert sorted(kind for _, kind, _ in EXIT_CODES if kind) == sorted(ERROR_KINDS_V3), "EXIT_CODES and ERROR_KINDS_V3 disagree"
 
 
 _PLAN_HTML = {locale: xml_escape(text) for locale, text in EXAMPLE_PLAN.items()}
@@ -3772,8 +3774,11 @@ marsdawn export input.md --json
 ```
 
 Options: `-o out.pdf` (default: beside the input), `--theme {"|".join(THEME_IDS)}`,
-`--paper {"|".join(PAPER_SIZES)}`, `--force` to replace an existing PDF, and
-`--allow-remote-images` to load web images, which are left out by default.
+`--paper {"|".join(PAPER_SIZES)}`, `--force` to replace an existing PDF,
+`--allow-remote-images` to load web images, which are left out by default, and
+`--breaks` to turn every newline inside a paragraph into a line break, as HackMD does. Without it
+a newline is a space, except between two Chinese or Japanese characters, where it is
+dropped.
 
 On success it exits 0 and prints one JSON line:
 
