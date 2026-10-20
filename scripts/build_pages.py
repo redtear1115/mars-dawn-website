@@ -13,6 +13,7 @@ The app lives in another repository, so check them by hand when either side chan
 Static output, no build step at deploy time. Edit the copy here and rerun:
     python3 scripts/build_pages.py
 """
+import copy as _copy
 import json
 import re
 import shutil
@@ -34,6 +35,7 @@ from promo130 import data as promo_data  # noqa: E402
 from best228 import data as best_data  # noqa: E402
 from ia247 import data as ia_data  # noqa: E402
 from tmde130 import data as changelog_data  # noqa: E402
+from cli254 import data as cli254_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
@@ -1229,17 +1231,22 @@ SCHEMA_FILES = {
     "error_v1": "error.v1.json",
     "error_v3": "error.v3.json",
     "error_v4": "error.v4.json",
+    "open_v4": "open.v4.json",
 }
 # error.v3.json (marsdawn 0.7.1) adds skill_install_failed (exit 7, in the kit since the skill command but
 # missing from v2) and input_too_large (exit 5, like export_failed); kit PR #184, Commands.swift CLIFailure.
-# It is written to public/schemas but deliberately not in SCHEMA_ORDER yet: listing it needs per-locale
-# SCHEMA_NOTES copy, which comes from Grok.
 # error.v4.json (#295) is v3 plus the usage errors (exit 64) that print JSON with --json: a bad --wait
 # since 0.5.3, skill --install's refusals since 0.5.4, theme preview's refused -o since 0.6.1. v1 to v3
 # say every exit-64 error is text on stderr, which hasn't been true since 0.5.3. Kit b6995697 (0.7.2):
-# Commands.swift WaitRangeFailure, SkillInstallFailure, OutputPathFailure; main.swift finish(). Written,
-# not listed, for the same reason as v3: its SCHEMA_NOTES copy comes from Grok (#295).
-SCHEMA_ORDER = ("export", "open", "error", "open_v2", "open_v1", "error_v1")
+# Commands.swift WaitRangeFailure, SkillInstallFailure, OutputPathFailure; main.swift finish(). Written
+# but deliberately not in SCHEMA_ORDER yet: listing it needs per-locale SCHEMA_NOTES copy, which comes
+# from Grok (#295).
+# open.v4.json (website #254): with --wait and an app that reports back (marsdawn 0.5.3 and later), `folder`
+# also carries `status` and, only alongside needsUser, `waitingFor`. open.v3.json's folder forbids both, so a
+# real 0.5.3+ result failed it. Taken from redtear1115/mars-dawn-kit @ b6995697 (0.7.2): README.md:71,
+# Sources/marsdawn/Commands.swift folderFields(), FolderStatusRequest.swift FolderStatus / FolderWaitingFor.
+# Each new schema is listed just before the one it follows; the per-locale notes come from scripts/cli254.
+SCHEMA_ORDER = ("export", "open_v4", "open", "error_v3", "error", "open_v2", "open_v1", "error_v1")
 
 THEME_IDS = ["dawn", "classic", "modern", "vivid"]
 PAPER_SIZES = ["a4", "letter"]
@@ -1458,6 +1465,27 @@ SCHEMAS = {
         },
     },
 }
+FOLDER_STATUSES = ["attached", "needsUser", "declined", "failed", "attachedDifferentFolder", "full", "unavailable", "unknown"]
+SCHEMAS["open_v4"] = _copy.deepcopy(SCHEMAS["open"])
+SCHEMAS["open_v4"].update({
+    "$id": schema_url("open_v4"),
+    "description": "Printed on stdout as one line when `marsdawn open --json` succeeds (exit code 0). marsdawn 0.5.3 and later; open.v3.json is for 0.5.1 and 0.5.2.",
+})
+SCHEMAS["open_v4"]["properties"]["folder"]["properties"].update({
+    "status": {
+        "enum": FOLDER_STATUSES,
+        "description": "What the app did with the folder, once the wait ends. Present only with --wait above 0 and an app that reports back (MarsDawnReportsFolderStatus in its Info.plist); otherwise the folder carries only path and requested.",
+    },
+    "waitingFor": {
+        "enum": ["confirmation", "folderChoice"],
+        "description": "What the app is waiting for from the person. Present only alongside status needsUser.",
+    },
+})
+SCHEMAS["open_v4"]["properties"]["folder"].update({
+    "if": {"required": ["status"], "properties": {"status": {"const": "needsUser"}}},
+    "then": {"required": ["waitingFor"]},
+    "else": {"not": {"required": ["waitingFor"]}},
+})
 
 
 SCHEMA_NOTES = {
@@ -1478,6 +1506,10 @@ SCHEMA_NOTES = {
         "error_v1": "兩個指令的失敗結果，marsdawn 0.5.1 以前",
     },
 }
+
+
+for _locale in ("en", "zh-hant"):
+    SCHEMA_NOTES[_locale].update(cli254_data.DATA[_locale]["schema_notes"])
 
 
 def schema_links(locale: str) -> str:
@@ -4882,7 +4914,8 @@ def _make_k(locale: str) -> SimpleNamespace:
     return SimpleNamespace(
         EMAIL=EMAIL, UPDATED=UPDATED, BASE_URL=BASE_URL,
         KIT_URL=KIT_URL, BREW_TAP_INSTALL=BREW_TAP_INSTALL, LISTING_URL=LISTING_URL, INSTALL=_INSTALL, SKILL_URL=_SKILL_URL,
-        APP_UI_LANGUAGES=APP_UI_LANGUAGES.get(locale, ""), schema_links_from=schema_links_from, xml_escape=xml_escape,
+        APP_UI_LANGUAGES=APP_UI_LANGUAGES.get(locale, ""), xml_escape=xml_escape,
+        schema_links_from=lambda notes: schema_links_from({**notes, **cli254_data.DATA[locale]["schema_notes"]}),
         render_legal_body=render_legal_body,
         theme_agents_page=lambda copy: theme_agents.page(LOCALES[locale]["root"], copy),
         features_page=features_page,
@@ -4898,6 +4931,7 @@ def _merge_locale(locale: str, module) -> None:
     assert set(t["ui"]) == set(UI["en"]), f"{locale}: UI keys differ from en"
     UI[locale] = t["ui"]
     STORE_CHIP[locale] = t["store_chip"]
+    t["schema_notes"] = {**t["schema_notes"], **cli254_data.DATA[locale]["schema_notes"]}
     assert set(t["schema_notes"]) == set(SCHEMA_NOTES["en"]), f"{locale}: schema notes differ from en"
     SCHEMA_NOTES[locale] = t["schema_notes"]
     EXAMPLE_PLAN[locale] = t["example_plan"]
@@ -5590,7 +5624,7 @@ def all_pages() -> dict:
             body = "".join(pieces[:3]) + brand_film_themes.MARK + "\n" + "".join(pieces[3:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return apply_app_changelog(apply_best228(apply_promo130(apply_seo_copy(merged))))
+    return apply_app_changelog(apply_cli254(apply_best228(apply_promo130(apply_seo_copy(merged)))))
 
 
 # --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
@@ -5877,6 +5911,84 @@ def apply_best228(merged: dict) -> dict:
         assert sep and not tail.strip(), f"{locale}/vs: the body does not end with its link list"
         link = f'  <li><a href="{page_path(locale, BEST228_SLUG)}">{UI[locale][BEST228_SLUG]}</a></li>\n'
         out[(locale, "vs")] = {**hub, "body": head + link + "</ul>" + tail}
+    return out
+
+
+# --- /cli/, /cli/agents/ and /changelog/ catch up with marsdawn 0.7.2 (website #254) -----------------------
+# The copy is scripts/cli254/data.py, carried by scripts/cli254/ingest.py from the pinned issue comments, never
+# typed. Each piece goes at a place found by the pages' structure (the h3 of a command, the list item of an
+# option, a version heading), not by its words, so every locale's page takes it the same way.
+def _cli254_li(items: list) -> str:
+    return "".join(f"  <li>{rich_pages.md_inline(item)}</li>\n" for item in items)
+
+
+def _cli254_entry(md: str) -> str:
+    head, _, rest = md.partition("\n\n")
+    return f"<h2>{html_escape(head[3:], quote=False)}</h2>\n{rich_pages.md_blocks(rest)}\n\n"
+
+
+def _cli254_section(body: str, start: str, page: str) -> tuple:
+    """(before, section, after): section runs from the h3 start to the next h2 or h3."""
+    i = body.index(start)
+    m = re.compile(r"\n<h[23][ >]").search(body, i + len(start))
+    assert m, f"{page}: {start} has no end"
+    return body[:i], body[i:m.start() + 1], body[m.start() + 1:]
+
+
+def _cli254_before_li(section: str, option: str, html: str, page: str) -> str:
+    mark = f"  <li><code>{option}</code>"
+    assert section.count(mark) == 1, f"{page}: {option} item found {section.count(mark)} times"
+    return section.replace(mark, html + mark)
+
+
+def _cli254_after_li(section: str, option: str, html: str, page: str) -> str:
+    m = list(re.finditer(rf"  <li><code>{re.escape(option)}</code>.*?</li>\n", section))
+    assert len(m) == 1, f"{page}: {option} item found {len(m)} times"
+    return section[:m[0].end()] + html + section[m[0].end():]
+
+
+def cli254_cli(body: str, d: dict, page: str) -> str:
+    before, sec, after = _cli254_section(body, "<h3>marsdawn open</h3>", page)
+    sec = _cli254_before_li(sec, "--background", _cli254_li(d["open_items"]), page)
+    sec, n = re.subn(r"(</ul>\n)<p>[^\n]*</p>\n", lambda m: m.group(1) + f"<p>{rich_pages.md_inline(d['open_since'])}</p>\n", sec)
+    assert n == 1, f"{page}: open's version sentence found {n} times"
+    body = before + sec + after
+    before, sec, after = _cli254_section(body, "<h3>marsdawn export</h3>", page)
+    sec = _cli254_before_li(sec, "--allow-remote-images", _cli254_li(d["export_items"]), page)
+    sec = _cli254_after_li(sec, "--json", _cli254_li(d["export_after_json"]), page)
+    assert sec.count("</ul>\n") == 1, f"{page}: export has more than one list"
+    sec = sec.replace("</ul>\n", f"</ul>\n<p>{rich_pages.md_inline(d['export_since'])}</p>\n")
+    head, _, rest = d["theme_section"].partition("\n\n")
+    intro, _, rest = rest.partition("\n\n")
+    theme = (f"<h3>{html_escape(head[4:], quote=False)}</h3>\n<p>{rich_pages.md_inline(intro)}</p>\n"
+             f"<pre><code>{html_escape(cli254_data.SHARED['theme_example'], quote=False)}</code></pre>\n"
+             f"{rich_pages.md_blocks(rest)}\n\n")
+    return before + sec.rstrip("\n") + "\n\n" + theme + after
+
+
+def cli254_agents(body: str, d: dict, page: str) -> str:
+    i = body.index('"requested":true')
+    head, tail = body[:i], body[i:]
+    return head + _cli254_after_li(tail, "folder", _cli254_li(d["agents_folder_items"]), page)
+
+
+def cli254_changelog(body: str, d: dict, page: str) -> str:
+    entries = d["changelog"]
+    newer = "".join(_cli254_entry(entries[v]) for v in ("0.7.2", "0.7.1", "0.7.0", "0.6.4") if v in entries)
+    for heading, html in (("<h2>marsdawn 0.6.3</h2>", newer), ("<h2>marsdawn 0.5.4</h2>", _cli254_entry(entries["0.6.1"]))):
+        assert body.count(heading) == 1, f"{page}: {heading} found {body.count(heading)} times"
+        body = body.replace(heading, html + heading)
+    return body
+
+
+def apply_cli254(merged: dict) -> dict:
+    out = dict(merged)
+    for locale in LOCALES:
+        d = cli254_data.DATA[locale]
+        for slug, fn in (("cli", cli254_cli), ("cli/agents", cli254_agents), ("changelog", cli254_changelog)):
+            page = out.get((locale, slug))
+            if page is not None:
+                out[(locale, slug)] = {**page, "body": fn(page["body"], d, f"{locale}/{slug}")}
     return out
 
 
@@ -7117,6 +7229,7 @@ def merge_planned_locale(locale: str) -> None:
     t = None
     if not problems:
         t = module.build(_make_k(locale))
+        t["schema_notes"] = {**t["schema_notes"], **cli254_data.DATA[locale]["schema_notes"]}
         problems = shape_problems(en_reference(), t)
     if problems:
         raise SystemExit(f"scripts/{locales.module_name(locale)}.py says COMPLETE = True, but {locale} is not complete:\n  - "
