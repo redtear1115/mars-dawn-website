@@ -12,10 +12,17 @@ locale's page holds each piece in full and in its place:
   its schema file's link;
 - /changelog/: every CLI entry with its heading, date line and bullets, newest first, among the others.
 
---self-test changes one character of one piece in a copy of each built page and fails unless every
-change is caught.
+The changelog entries and the theme section are compared as text: the visible text of each <p> and
+<li>, tags stripped and entities decoded, against the copy's own paragraphs and "- " bullets with only
+the Markdown marks removed. Not against rich_pages.md_blocks, which would share any mistake the build
+makes in rendering (#294: md_blocks turned de's "20. Oktober 2026. ..." date lines into <ol>, and a check
+rendered the same way agreed with it).
+
+--self-test changes one character of one piece in a copy of each built page, and renders de's 0.7.2
+date line as the ordered list md_blocks made of it, and fails unless every change is caught.
 """
 import argparse
+import html
 import re
 import sys
 from pathlib import Path
@@ -34,6 +41,46 @@ ORDER = ["0.7.2", "0.7.1", "0.7.0", "0.6.4", "0.6.3", "0.6.1", "0.5.4"]
 
 def li(md: str) -> str:
     return f"<li>{rich_pages.md_inline(md)}</li>"
+
+
+def plain_inline(md: str) -> str:
+    md = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", md)
+    md = re.sub(r"\*\*(.+?)\*\*", r"\1", md)
+    return md.replace("`", "")
+
+
+def copy_text(md: str) -> list:
+    """(p|li, text) for each paragraph and each "- " bullet of the copy, in order."""
+    out = []
+    for chunk in re.split(r"\n\s*\n", md.strip()):
+        lines = chunk.split("\n")
+        if all(line.startswith("- ") for line in lines):
+            out += [("li", plain_inline(line[2:])) for line in lines]
+        else:
+            out.append(("p", plain_inline(" ".join(lines))))
+    return out
+
+
+def markup(md: str) -> list:
+    """Each paragraph and bullet of the copy as its own element, marked up inline by md_inline only."""
+    return [f"<{tag}>{rich_pages.md_inline(raw)}</{tag}>" for tag, raw in copy_blocks(md)]
+
+
+def copy_blocks(md: str) -> list:
+    out = []
+    for chunk in re.split(r"\n\s*\n", md.strip()):
+        lines = chunk.split("\n")
+        if all(line.startswith("- ") for line in lines):
+            out += [("li", line[2:]) for line in lines]
+        else:
+            out.append(("p", " ".join(lines)))
+    return out
+
+
+def page_text(fragment: str) -> list:
+    """(p|li, visible text) for each <p> and <li> of a built fragment, in order."""
+    return [(tag, html.unescape(re.sub(r"<[^>]+>", "", inner)))
+            for tag, inner in re.findall(r"<(p|li)>(.*?)</\1>", fragment, re.S)]
 
 
 def section(page: str, start: str) -> str:
@@ -62,9 +109,8 @@ def problems_for(locale: str, pages: dict) -> list:
     theme_sec = section(cli, "<h3>marsdawn theme</h3>")
     if not theme_sec or cli.find("<h3>marsdawn theme</h3>") < cli.find("<h3>marsdawn export</h3>"):
         out.append(f"{locale}/cli: no marsdawn theme section after export")
-    head, _, rest = d["theme_section"].partition("\n\n")
-    intro, _, rest = rest.partition("\n\n")
-    if f"<p>{rich_pages.md_inline(intro)}</p>" not in theme_sec or rich_pages.md_blocks(rest) not in theme_sec:
+    theme_md = d["theme_section"].partition("\n\n")[2]
+    if page_text(theme_sec) != copy_text(theme_md) or any(el not in theme_sec for el in markup(theme_md)):
         out.append(f"{locale}/cli: the theme section's text differs")
     if rich_pages.escape(data.SHARED["theme_example"]) not in theme_sec:
         out.append(f"{locale}/cli: the theme section's commands differ")
@@ -78,8 +124,8 @@ def problems_for(locale: str, pages: dict) -> list:
             out.append(f"{locale}/cli/agents: schema note {key} missing")
     for v, md in d["changelog"].items():
         heading, _, rest = md.partition("\n\n")
-        m = re.search(rf'<h3 id="marsdawn-{v.replace(".", "-")}">marsdawn {re.escape(v)}</h3>\n(.*?)\n\n', changelog + "\n\n", re.S)
-        if not m or m.group(1) != rich_pages.md_blocks(rest):
+        entry = section(changelog, f'<h3 id="marsdawn-{v.replace(".", "-")}">marsdawn {v}</h3>')
+        if not entry or page_text(entry) != copy_text(rest) or any(el not in entry for el in markup(rest)):
             out.append(f"{locale}/changelog: {v} differs or is missing")
     seen = re.findall(r'<h3 id="marsdawn-[0-9-]+">marsdawn ([0-9.]+)</h3>', changelog)
     want = [v for v in ORDER if v in seen]
@@ -109,10 +155,10 @@ def self_test() -> int:
         pages = read_pages(locale)
         d = data.DATA[locale]
         plants = [("cli", li(d["open_items"][0])), ("cli", li(d["export_items"][-1])),
-                  ("cli", rich_pages.md_blocks(d["theme_section"].split("\n\n", 2)[2])),
+                  ("cli", li(d["theme_section"].split("\n- ", 1)[1].split("\n")[0])),  # validate: only in theme
                   ("cli/agents", li(d["agents_folder_items"][0])),
                   ("cli/agents", d["schema_notes"]["open_v4"]),
-                  ("changelog", rich_pages.md_blocks(d["changelog"]["0.7.2"].partition("\n\n")[2]))]
+                  ("changelog", f'<p>{rich_pages.md_inline(d["changelog"]["0.7.2"].split(chr(10) * 2)[1])}</p>')]
         for slug, piece in plants:
             text = pages[slug]
             if piece not in text:
@@ -126,6 +172,19 @@ def self_test() -> int:
             else:
                 print(f"self-test: {locale}/{slug}: a one-character change was NOT caught")
                 missed += 1
+    # #294's bug, exactly: de's 0.7.2 date line rendered as md_blocks renders it, an <ol>.
+    if "de" in data.DATA:
+        pages = read_pages("de")
+        date = data.DATA["de"]["changelog"]["0.7.2"].split("\n\n")[1]
+        right, wrong = f"<p>{rich_pages.md_inline(date)}</p>", rich_pages.md_blocks(date)
+        if not wrong.startswith("<ol>") or right not in pages["changelog"]:
+            print("self-test: de/changelog: the <ol> plant can't be made")
+            missed += 1
+        elif problems_for("de", {**pages, "changelog": pages["changelog"].replace(right, wrong, 1)}):
+            caught += 1
+        else:
+            print("self-test: de/changelog: a date line rendered as <ol> was NOT caught")
+            missed += 1
     print(f"self-test: {caught} plants caught, {missed} missed")
     return 1 if missed or not caught else 0
 

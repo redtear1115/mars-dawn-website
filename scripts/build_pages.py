@@ -5922,9 +5922,23 @@ def _cli254_li(items: list) -> str:
     return "".join(f"  <li>{rich_pages.md_inline(item)}</li>\n" for item in items)
 
 
+def _cli254_blocks(md: str) -> str:
+    """#254's paragraphs and bullet lists. Not rich_pages.md_blocks: that makes a paragraph whose lines
+    start with "<number>. " an ordered list, and a German date line ("20. Oktober 2026. ...") is exactly
+    that. The copy has no numbered lists, so anything that isn't a "- " list is a paragraph."""
+    parts = []
+    for chunk in re.split(r"\n\s*\n", md.strip()):
+        lines = chunk.split("\n")
+        if all(line.startswith("- ") for line in lines):
+            parts.append("<ul>\n" + "".join(f"  <li>{rich_pages.md_inline(line[2:])}</li>\n" for line in lines) + "</ul>")
+        else:
+            parts.append(f"<p>{rich_pages.md_inline(' '.join(lines))}</p>")
+    return "\n".join(parts)
+
+
 def _cli254_entry(md: str) -> str:
     head, _, rest = md.partition("\n\n")
-    return f"<h2>{html_escape(head[3:], quote=False)}</h2>\n{rich_pages.md_blocks(rest)}\n\n"
+    return f"<h2>{html_escape(head[3:], quote=False)}</h2>\n{_cli254_blocks(rest)}\n\n"
 
 
 def _cli254_section(body: str, start: str, page: str) -> tuple:
@@ -5962,7 +5976,7 @@ def cli254_cli(body: str, d: dict, page: str) -> str:
     intro, _, rest = rest.partition("\n\n")
     theme = (f"<h3>{html_escape(head[4:], quote=False)}</h3>\n<p>{rich_pages.md_inline(intro)}</p>\n"
              f"<pre><code>{html_escape(cli254_data.SHARED['theme_example'], quote=False)}</code></pre>\n"
-             f"{rich_pages.md_blocks(rest)}\n\n")
+             f"{_cli254_blocks(rest)}\n\n")
     return before + sec.rstrip("\n") + "\n\n" + theme + after
 
 
