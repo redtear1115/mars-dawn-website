@@ -19,12 +19,57 @@ Mac App Store의 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버전�
 
 0.5.1 이전 버전은 싣지 않았습니다.
 
+### marsdawn 0.7.2
+
+2026년 10월 20일. 설명서 레이아웃, 콜아웃, 일본어 글꼴.
+
+- `--layout`의 값이 `handbook`으로 바뀌었습니다. 앱의 설명서(Handbook) 레이아웃과 같은 이름입니다: `marsdawn export --layout handbook`. `--layout manual`도 쓸 수 있지만 더 이상 권장하지 않습니다.
+- 미리보기와 내보낸 PDF 모두에서 콜아웃을 표시합니다. GitHub 알림(`> [!NOTE]`, `> [!WARNING]` 등)과 HackMD 컨테이너(`:::info`, `:::warning` 등)를 지원합니다. `:::spoiler`는 접을 수 있는 섹션이 됩니다.
+- 일본어 문서는 가나와 한자에 일본어 글꼴을 씁니다. 언어는 front matter의 `lang: ja`에서, 없으면 본문의 가나 비율로 판단합니다.
+- 터미널에서 `export`나 `open`이 성공한 뒤, 에이전트 스킬이 설치되어 있지 않거나 오래된 버전이면 stderr에 안내를 한 번 표시합니다. stdout과 `--json` 출력은 바뀌지 않습니다. `MARSDAWN_NO_SKILL_HINT=1`로 설정하면 표시하지 않습니다.
+
+### marsdawn 0.7.1
+
+2026년 10월 20일. 설명서 레이아웃과 파일 크기 상한.
+
+- `marsdawn export --layout manual`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽에 25mm를 남기며, 최상위 제목마다 새 페이지에서 시작합니다. front matter의 title, subtitle, version, date, author, logo로 만든 표지, 1·2단계 제목을 페이지 번호와 함께 나열한 목차, `n / N` 페이지 번호, PDF 책갈피도 들어갑니다. 목차 페이지의 제목은 `--toc-title`로 정합니다. 기본값은 여전히 `--layout document`입니다.
+- 한 줄에 단독으로 쓴 `<!--BREAK-->`는 새 페이지를 시작합니다. 두 레이아웃 모두 해당합니다.
+- `marsdawn export`는 16MiB를 넘는 파일을 처리하지 않습니다. 코드 5로 종료하고, `--json`에서는 `input_too_large`를 알리며, 아무것도 쓰지 않습니다.
+- 미리보기 페이지는 script와 noscript 요소를 없앱니다. Mermaid 다이어그램을 다시 그릴 때는 그 다이어그램의 SVG를 유지합니다.
+- 디코딩하면 `=`나 `^`가 되는 문자 참조(예: `&#61;`)는 더 이상 HackMD 표시와 짝을 이루지 않습니다.
+
+### marsdawn 0.7.0
+
+2026년 10월 18일. HackMD 문법, 줄바꿈, 아주 큰 문서의 상한.
+
+- HackMD의 인라인 표시 `==mark==`, `^sup^`, `~sub~`를 렌더링합니다. `[TOC]`만 있는 문단은 목차가 되고, HackMD 방식의 이미지 크기가 적용되며, 임베드 태그는 일반 https 링크가 됩니다. 코드 펜스의 언어는 `js=` 같은 HackMD 옵션보다 먼저 읽습니다.
+- `marsdawn export --breaks`는 HackMD처럼 문단 안의 모든 줄바꿈을 줄바꿈으로 표시합니다. 주지 않으면 중국어나 일본어 글자 두 개 사이의 줄바꿈은 없어져 앞뒤 줄이 한 문장으로 이어집니다. 한국어는 단어를 띄어 쓰므로 공백을 유지합니다.
+- 아주 큰 문서에는 미리보기와 내보낸 PDF 모두에 상한이 있습니다. 128K자를 넘는 코드 블록은 구문 강조를 하지 않고, 합계 256K자를 넘으면 구문 강조를 멈춥니다. 한 번 업데이트할 때 Mermaid 다이어그램은 100개, 수식은 1,000개까지 렌더링합니다. 나머지 다이어그램은 전에 그린 적이 있더라도 안내와 함께 소스를 보여 줍니다.
+- 시퀀스 다이어그램에서 `rect` 블록 안의 메시지 레이블 둘레가 그 블록의 색이 됩니다.
+- 표 바로 위에 각주 참조가 있어도 `marsdawn export`가 더 이상 비정상 종료되지 않습니다.
+- `marsdawn skill --install`은 폴더를 만들 수 없거나 파일을 쓸 수 없을 때 코드 7(`skill_install_failed`)로 종료합니다. 기존 SKILL.md는 그대로 둡니다.
+
+### marsdawn 0.6.4
+
+2026년 10월 13일. 접을 수 있는 `<details>` 블록.
+
+- GitHub 방식의 `<details>` 블록은 안에 빈 줄이 있어도 접을 수 있는 하나의 요소로 렌더링됩니다. 미리보기와 내보낸 PDF 모두 같습니다. 이전에는 첫 빈 줄에서 나뉘었습니다.
+- PDF로 내보낼 때는 인쇄하기 전에 모든 `<details>` 블록을 펼칩니다(front matter 제외).
+- `<details>` 블록을 펼치거나 접어도 미리보기의 스크롤 위치가 그대로 유지됩니다.
+
 ### marsdawn 0.6.3
 
 2026년 10월 6일. MarsDawn이 Mac App Store에 출시되었습니다.
 
 - 앱이 설치되어 있지 않으면 `marsdawn open`이 Mac App Store의 MarsDawn을 안내합니다.
 - README와 에이전트 스킬에서 `marsdawn open .`과 `--folder` 사용법을 안내합니다. MarsDawn 1.0.0은 윈도우의 사이드바에 폴더를 보여줍니다.
+
+### marsdawn 0.6.1
+
+2026년 9월 29일. 테마 확인.
+
+- `marsdawn theme validate`는 앱과 같은 규칙으로 `theme.json`을 확인합니다. 테마가 올바르면 코드 0, 아니면 코드 1로 종료하며 문제를 하나씩 보여 줍니다. `--require-complete`를 주면 구문 강조와 다이어그램 색상도 요구합니다.
+- `marsdawn theme css`는 올바른 테마에 대해 미리보기가 쓰는 CSS를 출력하고, `marsdawn theme preview`는 그 테마로 샘플 문서를 라이트나 다크 PNG로 렌더링합니다.
 
 ### marsdawn 0.5.4
 

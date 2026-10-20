@@ -83,6 +83,7 @@ Avec un dossier (marsdawn 0.5.1 et versions ultérieures), code de sortie 0 :
 ```
 
 - `folder` : présent seulement si un dossier a été donné. `path` est son chemin absolu. `requested` vaut toujours `true` : marsdawn a demandé à MarsDawn d’afficher le dossier, mais ne peut pas savoir si la barre latérale l’affiche, car l’app peut d’abord demander l’accès à la personne. Signalez-le comme demandé, pas comme fait.
+- Avec un `--wait` supérieur à 0 et MarsDawn 1.0.2 ou version ultérieure, `folder` contient aussi `status` une fois l’attente terminée : `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable` ou `unknown`. Seulement avec `needsUser`, il contient `waitingFor` : `confirmation` ou `folderChoice`. Sans `--wait`, ou avec une app qui ne donne pas de réponse, `folder` reste `{"path": …, "requested": true}`. Un `--wait` hors de 0 à 30 se termine avec le code 64 et `error: "wait_out_of_range"`. (marsdawn 0.5.3 et versions ultérieures.)
 - `opened` est vide si seul un dossier a été donné.
 
 marsdawn 0.2.x affichait `opened` sous forme de liste de chemins. Vérifiez `marsdawn --version` si vous devez gérer les deux.
@@ -166,8 +167,10 @@ Avec `--json`, un échec affiche un objet JSON sur stdout et se termine avec son
 JSON Schema (draft 2020-12) pour chaque résultat `--json` :
 
 - [export.v1.json](/schemas/cli/export.v1.json): succès de export
-- [open.v3.json](/schemas/cli/open.v3.json): succès de open, marsdawn 0.5.1 et versions ultérieures, y compris un dossier affiché dans la barre latérale
-- [error.v2.json](/schemas/cli/error.v2.json): échec, pour les deux commandes, marsdawn 0.5.2 et versions ultérieures
+- [open.v4.json](/schemas/cli/open.v4.json): succès de open, marsdawn 0.5.3 et versions ultérieures, avec `status` et `waitingFor` du dossier
+- [open.v3.json](/schemas/cli/open.v3.json): succès de open, marsdawn 0.5.1 et 0.5.2, y compris un dossier affiché dans la barre latérale
+- [error.v3.json](/schemas/cli/error.v3.json): échec, pour toutes les commandes, marsdawn 0.7.1 et versions ultérieures, avec `input_too_large` (code 5) et `skill_install_failed` (code 7)
+- [error.v2.json](/schemas/cli/error.v2.json): échec, pour les deux commandes, marsdawn 0.5.2 à 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): succès de open, marsdawn 0.3.0 à 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): succès de open, marsdawn 0.2.x, où `opened` était une liste de chemins
 - [error.v1.json](/schemas/cli/error.v1.json): échec, pour les deux commandes, marsdawn 0.5.1 et versions antérieures

@@ -47,10 +47,13 @@ marsdawn open notes.md --folder .
 - Lines run from 1 to 999999999.
 - MarsDawn 1.0 opens the file at that line.
 - A folder argument opens in the window's sidebar instead of as a document: `marsdawn open .` shows the current folder. `--folder <path>` does the same alongside files. A window's sidebar shows one folder, so naming two is a usage error.
+- `--wait <n>`: with MarsDawn 1.0.2 or later, which reports back, `--folder` waits up to n seconds (0 to 30, default 2) for the app's answer about the folder. `--wait 0`, or an app that doesn't report back, doesn't wait and sends the same request as before.
+- A `--wait` value outside 0 to 30 is a usage error (exit 64). Write a negative value as `--wait=-1`.
+- With `--json`, the folder is reported as requested, not attached, because the app decides; with `--wait`, the result also says what happened to it. The full list is in [marsdawn for agents](/cli/agents/).
 - `--background`: open without bringing MarsDawn to the front.
 - `--json`: print a JSON result instead of text.
 
-Lines were added in marsdawn 0.3.0, and folders and `--background` in 0.5.1.
+Lines were added in marsdawn 0.3.0, folders and `--background` in 0.5.1, and `--wait` with the folder status in 0.5.3.
 
 ### marsdawn export
 
@@ -63,9 +66,33 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `-o, --output <path>`: where to write the PDF. Defaults to the input path with a `.pdf` extension.
 - `--theme <dawn|classic|modern|vivid>`: the preview theme's light palette. Defaults to `$MARSDAWN_THEME`, then `dawn`.
 - `--paper <a4|letter>`: paper size. Defaults to `a4`.
+- `--breaks`: turn every newline inside a paragraph into a line break, as HackMD does. Without it, a newline between two Chinese or Japanese characters is dropped, so the lines read as one sentence.
+- `--layout <document|handbook>`: the page layout. Defaults to `document`. `handbook` prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a `title`.
+- `--toc-title <text>`: the heading of the handbook's contents page. Defaults to `Contents`.
+- `<!--BREAK-->` on a line of its own starts a new page, in either layout.
 - `--allow-remote-images`: load images from the web while rendering. Off by default.
 - `--force`: replace the output file if it already exists.
 - `--json`: print a JSON result instead of text.
+- A file over 16 MiB isn't exported: `export` exits 5 and writes nothing.
+
+`--breaks` was added in marsdawn 0.7.0, `--layout` and `--toc-title` in 0.7.1, and the name `handbook` in 0.7.2. The 0.7.1 name, `manual`, still works.
+
+### marsdawn theme
+
+Checks a theme file (`theme.json`) and shows what it looks like, before you share it. It doesn't need the MarsDawn app. For the fields of a theme, see [Make a theme with your agent](/themes/agents/).
+
+```
+marsdawn theme validate my-theme.json
+marsdawn theme css my-theme.json
+marsdawn theme preview my-theme.json --appearance dark -o preview.png
+```
+
+- `validate <file>`: checks the file against every rule a MarsDawn theme must meet, with the validator the app uses. Exits 0 when the theme is valid, and 1 when it isn't, listing each problem. `--require-complete` also requires the syntax and diagram colors, which a published theme must have.
+- `css <file>`: prints the CSS the preview uses for a valid theme.
+- `preview <file> --appearance <light|dark> -o <out.png>`: renders a sample document with the theme to a PNG. `--width` sets its width in pixels, from 600 to 2000 (default 1200). An existing file is replaced only with `--force`.
+- `--json`: print a JSON result instead of text.
+
+The `theme` commands were added in marsdawn 0.6.1.
 
 ## The $MARSDAWN_THEME variable
 

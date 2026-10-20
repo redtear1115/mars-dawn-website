@@ -83,6 +83,7 @@ With a folder (marsdawn 0.5.1 and later), exit code 0:
 ```
 
 - `folder`: present only when a folder was given. `path` is its absolute path. `requested` is always `true`: marsdawn asked MarsDawn to show the folder, and can't tell whether the sidebar shows it, because the app may first ask the person for access. Report it as asked, not as done.
+- With `--wait` above 0 and MarsDawn 1.0.2 or later, `folder` also carries `status` once the wait ends: `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable` or `unknown`. Only alongside `needsUser`, it carries `waitingFor`: `confirmation` or `folderChoice`. Without `--wait`, or with an app that doesn't report back, `folder` stays `{"path": …, "requested": true}`. A `--wait` outside 0 to 30 exits 64 with `error: "wait_out_of_range"`. (marsdawn 0.5.3 and later.)
 - `opened` is empty when only a folder was given.
 
 marsdawn 0.2.x printed `opened` as a list of path strings. Check `marsdawn --version` if you need to handle both.
@@ -166,8 +167,10 @@ With `--json`, a failure prints one JSON object on stdout and exits with its cod
 JSON Schema (draft 2020-12) for every `--json` result:
 
 - [export.v1.json](/schemas/cli/export.v1.json): export success
-- [open.v3.json](/schemas/cli/open.v3.json): open success, marsdawn 0.5.1 and later, including a folder shown in the sidebar
-- [error.v2.json](/schemas/cli/error.v2.json): failure, both commands, marsdawn 0.5.2 and later
+- [open.v4.json](/schemas/cli/open.v4.json): open success, marsdawn 0.5.3 and later, with the folder's `status` and `waitingFor`
+- [open.v3.json](/schemas/cli/open.v3.json): open success, marsdawn 0.5.1 and 0.5.2, including a folder shown in the sidebar
+- [error.v3.json](/schemas/cli/error.v3.json): failure, every command, marsdawn 0.7.1 and later, adding `input_too_large` (exit 5) and `skill_install_failed` (exit 7)
+- [error.v2.json](/schemas/cli/error.v2.json): failure, both commands, marsdawn 0.5.2 to 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open success, marsdawn 0.3.0 to 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open success, marsdawn 0.2.x, where `opened` was a list of paths
 - [error.v1.json](/schemas/cli/error.v1.json): failure, both commands, marsdawn 0.5.1 and earlier

@@ -366,8 +366,10 @@
 - [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): commands, JSON output, exit codes and requirements, with examples that were run before publishing
 - [Make a theme with your agent](https://marsdawn.southern-light.dev/themes/agents/index.md): every field of a theme.json, the check-and-render loop, the hand-off link and how to submit, for an agent making a theme
 - [export.v1.json](https://marsdawn.southern-light.dev/schemas/cli/export.v1.json): JSON Schema for the --json result, export success
-- [open.v3.json](https://marsdawn.southern-light.dev/schemas/cli/open.v3.json): JSON Schema for the --json result, open success, marsdawn 0.5.1 and later, including a folder shown in the sidebar
-- [error.v2.json](https://marsdawn.southern-light.dev/schemas/cli/error.v2.json): JSON Schema for the --json result, failure, both commands, marsdawn 0.5.2 and later
+- [open.v4.json](https://marsdawn.southern-light.dev/schemas/cli/open.v4.json): JSON Schema for the --json result, open success, marsdawn 0.5.3 and later, with the folder's `status` and `waitingFor`
+- [open.v3.json](https://marsdawn.southern-light.dev/schemas/cli/open.v3.json): JSON Schema for the --json result, open success, marsdawn 0.5.1 and 0.5.2, including a folder shown in the sidebar
+- [error.v3.json](https://marsdawn.southern-light.dev/schemas/cli/error.v3.json): JSON Schema for the --json result, failure, every command, marsdawn 0.7.1 and later, adding `input_too_large` (exit 5) and `skill_install_failed` (exit 7)
+- [error.v2.json](https://marsdawn.southern-light.dev/schemas/cli/error.v2.json): JSON Schema for the --json result, failure, both commands, marsdawn 0.5.2 to 0.7.0
 - [open.v2.json](https://marsdawn.southern-light.dev/schemas/cli/open.v2.json): JSON Schema for the --json result, open success, marsdawn 0.3.0 to 0.5.0
 - [open.v1.json](https://marsdawn.southern-light.dev/schemas/cli/open.v1.json): JSON Schema for the --json result, open success, marsdawn 0.2.x, where `opened` was a list of paths
 - [error.v1.json](https://marsdawn.southern-light.dev/schemas/cli/error.v1.json): JSON Schema for the --json result, failure, both commands, marsdawn 0.5.1 and earlier

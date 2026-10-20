@@ -47,10 +47,13 @@ marsdawn open notes.md --folder .
 - Zeilen reichen von 1 bis 999999999.
 - MarsDawn 1.0 öffnet die Datei in dieser Zeile.
 - Ein Ordner als Argument wird in der Seitenleiste des Fensters geöffnet statt als Dokument: `marsdawn open .` zeigt den aktuellen Ordner. `--folder <path>` macht dasselbe zusätzlich zu Dateien. Die Seitenleiste eines Fensters zeigt einen Ordner, zwei anzugeben ist daher ein Bedienungsfehler.
+- `--wait <n>`: Mit MarsDawn 1.0.2 oder neuer, das eine Rückmeldung gibt, wartet `--folder` bis zu n Sekunden (0 bis 30, Standard 2) auf die Antwort der App zum Ordner. Mit `--wait 0` oder einer App ohne Rückmeldung wird nicht gewartet, und die Anfrage ist dieselbe wie bisher.
+- Ein Wert für `--wait` außerhalb von 0 bis 30 ist ein Bedienungsfehler (Code 64). Einen negativen Wert schreibst du als `--wait=-1`.
+- Mit `--json` wird der Ordner als angefragt gemeldet, nicht als angezeigt, denn das entscheidet die App; mit `--wait` sagt das Ergebnis auch, was aus ihm wurde. Die vollständige Liste steht unter [marsdawn für Agenten](/de/cli/agents/).
 - `--background`: öffnen, ohne MarsDawn in den Vordergrund zu holen.
 - `--json`: ein JSON-Ergebnis statt Text ausgeben.
 
-Zeilen kamen mit marsdawn 0.3.0 hinzu, Ordner und `--background` mit 0.5.1.
+Zeilen kamen mit marsdawn 0.3.0 hinzu, Ordner und `--background` mit 0.5.1, `--wait` und der Ordnerstatus mit 0.5.3.
 
 ### marsdawn export
 
@@ -63,9 +66,33 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `-o, --output <path>`: wohin das PDF geschrieben wird. Standard ist der Eingabepfad mit der Endung `.pdf`.
 - `--theme <dawn|classic|modern|vivid>`: die helle Palette des Vorschau-Themas. Standard ist `$MARSDAWN_THEME`, dann `dawn`.
 - `--paper <a4|letter>`: Papierformat. Standard ist `a4`.
+- `--breaks`: jeden Zeilenumbruch innerhalb eines Absatzes als Zeilenumbruch darstellen, wie HackMD. Ohne die Option fällt ein Zeilenumbruch zwischen zwei chinesischen oder japanischen Zeichen weg, sodass sich die Zeilen wie ein Satz lesen.
+- `--layout <document|handbook>`: das Seitenlayout. Standard ist `document`. `handbook` druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen `title` hat.
+- `--toc-title <text>`: die Überschrift des Inhaltsverzeichnisses im Handbuch. Standard ist `Contents`.
+- `<!--BREAK-->` allein in einer Zeile beginnt eine neue Seite, in beiden Layouts.
 - `--allow-remote-images`: beim Rendern Bilder aus dem Web laden. Standardmäßig aus.
 - `--force`: die Ausgabedatei ersetzen, falls sie schon existiert.
 - `--json`: ein JSON-Ergebnis statt Text ausgeben.
+- Eine Datei über 16 MiB wird nicht exportiert: `export` endet mit Code 5 und schreibt nichts.
+
+`--breaks` kam mit marsdawn 0.7.0 hinzu, `--layout` und `--toc-title` mit 0.7.1, der Wert `handbook` mit 0.7.2. Der alte Wert aus 0.7.1, `manual`, funktioniert weiterhin.
+
+### marsdawn theme
+
+Prüft eine Themendatei (`theme.json`) und zeigt, wie sie aussieht, bevor du sie teilst. Die App MarsDawn wird dafür nicht gebraucht. Die Felder eines Themas findest du unter [Mit deinem Agenten ein Thema erstellen](/de/themes/agents/).
+
+```
+marsdawn theme validate my-theme.json
+marsdawn theme css my-theme.json
+marsdawn theme preview my-theme.json --appearance dark -o preview.png
+```
+
+- `validate <file>`: prüft die Datei gegen jede Regel, die ein MarsDawn-Thema erfüllen muss, mit demselben Validator wie die App. Endet mit Code 0, wenn das Thema gültig ist, und mit Code 1, wenn nicht, und listet jedes Problem auf. `--require-complete` verlangt zusätzlich die Syntax- und Diagrammfarben, die ein veröffentlichtes Thema haben muss.
+- `css <file>`: gibt das CSS aus, das die Vorschau für ein gültiges Thema verwendet.
+- `preview <file> --appearance <light|dark> -o <out.png>`: rendert ein Beispieldokument mit dem Thema als PNG. `--width` legt die Breite in Pixeln fest, von 600 bis 2000 (Standard 1200). Eine vorhandene Datei wird nur mit `--force` ersetzt.
+- `--json`: ein JSON-Ergebnis statt Text ausgeben.
+
+Die `theme`-Befehle kamen mit marsdawn 0.6.1 hinzu.
 
 ## Die Variable $MARSDAWN_THEME
 

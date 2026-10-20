@@ -190,6 +190,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
 <pre><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
 <ul>
   <li><code>folder</code>：フォルダを指定したときだけ現れます。<code>path</code> はその絶対パスです。<code>requested</code> は常に <code>true</code> です：marsdawn は MarsDawn にフォルダの表示を依頼しましたが、サイドバーに実際に表示されたかどうかは分かりません。アプリが先に人にアクセスの許可を求めることがあるためです。「完了した」ではなく「依頼した」と報告してください。</li>
+  <li><code>--wait</code> が 0 より大きく、MarsDawn が 1.0.2 以降の場合、待ち時間が終わると <code>folder</code> に <code>status</code> も入ります：<code>attached</code>、<code>needsUser</code>、<code>declined</code>、<code>failed</code>、<code>attachedDifferentFolder</code>、<code>full</code>、<code>unavailable</code>、<code>unknown</code> のいずれかです。<code>needsUser</code> のときだけ <code>waitingFor</code>（<code>confirmation</code> または <code>folderChoice</code>）も入ります。<code>--wait</code> がない場合や、結果を返さないアプリでは、<code>folder</code> は <code>{"path": …, "requested": true}</code> のままです。<code>--wait</code> が 0〜30 の範囲外ならコード 64 で終了し、<code>error: "wait_out_of_range"</code> を返します。（marsdawn 0.5.3 以降）</li>
   <li>フォルダだけを指定したとき、<code>opened</code> は空です。</li>
 </ul>
 <p>marsdawn 0.2.x では <code>opened</code> はパス文字列のリストでした。両方を扱う必要がある場合は <code>marsdawn --version</code> を確認してください。</p>
@@ -260,8 +261,10 @@ exit 0</code></pre>
 <p>各 <code>--json</code> 結果に対応する JSON Schema（draft 2020-12）：</p>
 <ul>
   <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功時</li>
-  <li><a href="/schemas/cli/open.v3.json">open.v3.json</a>: open 成功時、marsdawn 0.5.1 以降、サイドバーに表示するフォルダを含む</li>
-  <li><a href="/schemas/cli/error.v2.json">error.v2.json</a>: 失敗時、両方のコマンド共通、marsdawn 0.5.2 以降</li>
+  <li><a href="/schemas/cli/open.v4.json">open.v4.json</a>: open 成功時、marsdawn 0.5.3 以降、フォルダの <code>status</code> と <code>waitingFor</code> を含む</li>
+  <li><a href="/schemas/cli/open.v3.json">open.v3.json</a>: open 成功時、marsdawn 0.5.1〜0.5.2、サイドバーに表示するフォルダを含む</li>
+  <li><a href="/schemas/cli/error.v3.json">error.v3.json</a>: 失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、<code>input_too_large</code>（コード 5）と <code>skill_install_failed</code>（コード 7）を追加</li>
+  <li><a href="/schemas/cli/error.v2.json">error.v2.json</a>: 失敗時、両方のコマンド共通、marsdawn 0.5.2〜0.7.0</li>
   <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功時、marsdawn 0.3.0〜0.5.0</li>
   <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）</li>
   <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: 失敗時、両方のコマンド共通、marsdawn 0.5.1 以前</li>

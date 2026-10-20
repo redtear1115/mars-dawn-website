@@ -83,6 +83,7 @@ marsdawn open notes.md --folder . --background --json
 ```
 
 - `folder`：只有指定了資料夾時才有。`path` 是它的絕對路徑。`requested` 一律是 `true`：marsdawn 已請 MarsDawn 顯示這個資料夾，但無法得知側邊欄是否真的顯示了，因為 app 可能會先向使用者要求存取權限。請回報為「已要求」，而不是「已完成」。
+- `--wait` 大於 0、且 MarsDawn 為 1.0.2 以上時，等待結束後 `folder` 還會帶 `status`：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` 或 `unknown`。只有在 `needsUser` 時，才會再帶 `waitingFor`：`confirmation` 或 `folderChoice`。沒有 `--wait`，或 app 不會回報時，`folder` 維持 `{"path": …, "requested": true}`。`--wait` 超出 0 到 30 時以代碼 64 結束，並帶 `error: "wait_out_of_range"`。（marsdawn 0.5.3 以後。）
 - 只指定資料夾時，`opened` 是空的。
 
 marsdawn 0.2.x 的 `opened` 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 `marsdawn --version`。
@@ -166,8 +167,10 @@ exit 0
 每種 `--json` 結果的 JSON Schema（draft 2020-12）：
 
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功
-- [open.v3.json](/schemas/cli/open.v3.json): open 成功，marsdawn 0.5.1 以後，包括在側邊欄顯示的資料夾
-- [error.v2.json](/schemas/cli/error.v2.json): 兩個指令的失敗結果，marsdawn 0.5.2 以後
+- [open.v4.json](/schemas/cli/open.v4.json): open 成功，marsdawn 0.5.3 以後，資料夾多了 `status` 和 `waitingFor`
+- [open.v3.json](/schemas/cli/open.v3.json): open 成功，marsdawn 0.5.1 和 0.5.2，包括在側邊欄顯示的資料夾
+- [error.v3.json](/schemas/cli/error.v3.json): 所有指令的失敗結果，marsdawn 0.7.1 以後，新增 `input_too_large`（代碼 5）和 `skill_install_failed`（代碼 7）
+- [error.v2.json](/schemas/cli/error.v2.json): 兩個指令的失敗結果，marsdawn 0.5.2 到 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 成功，marsdawn 0.3.0 到 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功，marsdawn 0.2.x，當時 `opened` 是路徑清單
 - [error.v1.json](/schemas/cli/error.v1.json): 兩個指令的失敗結果，marsdawn 0.5.1 以前

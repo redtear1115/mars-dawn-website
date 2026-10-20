@@ -87,6 +87,11 @@ jobs:
       # python3 -I -B scripts/tmde130/ingest.py --app-repo ... --asc ... --check
       - name: The changelog's app versions match their vendored release notes
         run: python3 scripts/check_app_changelog.py --self-test
+      # /cli/, /cli/agents/ and /changelog/ (#254): every piece of the pinned copy verbatim and in place,
+      # in every locale. The comments themselves are checked locally (needs gh):
+      # python3 -I -B scripts/cli254/ingest.py --check
+      - name: The CLI pages carry #254's copy verbatim
+        run: python3 scripts/check_cli254.py --self-test
       # The homepage window's themes, labels and sample must be the kit's and the app's.
       # --kit reads the kit's public source at the pinned tag; --self-test plants drift of
       # each kind and fails if any goes unnoticed. The app side is checked on a Mac:

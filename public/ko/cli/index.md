@@ -47,10 +47,13 @@ marsdawn open notes.md --folder .
 - 줄 번호는 1부터 999999999까지입니다.
 - MarsDawn 1.0은 해당 줄에서 파일을 엽니다.
 - 폴더를 인수로 주면 문서가 아니라 윈도우의 사이드바에 열립니다. `marsdawn open .`은 현재 폴더를 보여줍니다. `--folder <path>`는 파일과 함께 같은 일을 합니다. 윈도우의 사이드바는 폴더 하나만 보여주므로, 두 개를 지정하면 사용법 오류입니다.
+- `--wait <n>`: 결과를 알려 주는 MarsDawn 1.0.2 이상에서는 `--folder`가 폴더에 대한 앱의 응답을 최대 n초(0~30, 기본값 2) 기다립니다. `--wait 0`이거나 결과를 알려 주지 않는 앱이면 기다리지 않으며, 이전과 똑같은 요청을 보냅니다.
+- `--wait` 값이 0~30을 벗어나면 사용법 오류(코드 64)입니다. 음수는 `--wait=-1`처럼 쓰세요.
+- `--json`에서는 폴더를 “연결됨”이 아니라 “요청함”으로 알려 줍니다. 결정은 앱이 하기 때문입니다. `--wait`를 주면 폴더가 어떻게 되었는지도 결과에 담깁니다. 전체 목록은 [에이전트를 위한 marsdawn](/ko/cli/agents/)에 있습니다.
 - `--background`: MarsDawn을 앞으로 가져오지 않고 엽니다.
 - `--json`: 텍스트 대신 JSON 결과를 출력합니다.
 
-줄 지정은 marsdawn 0.3.0에서, 폴더와 `--background`는 0.5.1에서 추가되었습니다.
+줄 지정은 marsdawn 0.3.0에서, 폴더와 `--background`는 0.5.1에서, `--wait`와 폴더 상태는 0.5.3에서 추가되었습니다.
 
 ### marsdawn export
 
@@ -63,9 +66,33 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `-o, --output <path>`: PDF를 쓸 위치입니다. 기본값은 입력 경로에 `.pdf` 확장자를 붙인 것입니다.
 - `--theme <dawn|classic|modern|vivid>`: 미리보기 테마의 라이트 팔레트입니다. 기본값은 `$MARSDAWN_THEME`, 그다음 `dawn`입니다.
 - `--paper <a4|letter>`: 용지 크기입니다. 기본값은 `a4`입니다.
+- `--breaks`: HackMD처럼 문단 안의 모든 줄바꿈을 줄바꿈으로 표시합니다. 주지 않으면 중국어나 일본어 글자 두 개 사이의 줄바꿈은 없어져, 앞뒤 줄이 한 문장으로 이어집니다.
+- `--layout <document|handbook>`: 페이지 레이아웃입니다. 기본값은 `document`입니다. `handbook`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽을 남기며, 최상위 제목마다 새 페이지에서 시작하고, 페이지 번호가 붙은 목차 페이지, 바닥글의 페이지 번호, PDF 책갈피를 넣습니다. front matter에 `title`이 있으면 표지도 붙입니다.
+- `--toc-title <text>`: 설명서 목차 페이지의 제목입니다. 기본값은 `Contents`입니다.
+- 한 줄에 단독으로 쓴 `<!--BREAK-->`는 새 페이지를 시작합니다. 두 레이아웃 모두 해당합니다.
 - `--allow-remote-images`: 렌더링하는 동안 웹 이미지를 불러옵니다. 기본값은 꺼짐입니다.
 - `--force`: 출력 파일이 이미 있으면 바꿉니다.
 - `--json`: 텍스트 대신 JSON 결과를 출력합니다.
+- 16MiB를 넘는 파일은 내보내지 않습니다. `export`는 코드 5로 종료하며 아무것도 쓰지 않습니다.
+
+`--breaks`는 marsdawn 0.7.0에서, `--layout`과 `--toc-title`은 0.7.1에서, `handbook` 값은 0.7.2에서 추가되었습니다. 0.7.1의 이전 값 `manual`도 계속 쓸 수 있습니다.
+
+### marsdawn theme
+
+테마 파일(`theme.json`)을 공유하기 전에 확인하고, 어떻게 보이는지 살펴봅니다. MarsDawn 앱은 필요 없습니다. 테마의 항목은 [에이전트와 함께 테마 만들기](/ko/themes/agents/)를 참고하세요.
+
+```
+marsdawn theme validate my-theme.json
+marsdawn theme css my-theme.json
+marsdawn theme preview my-theme.json --appearance dark -o preview.png
+```
+
+- `validate <file>`: 앱과 같은 검사기로, MarsDawn 테마가 지켜야 할 모든 규칙에 맞는지 확인합니다. 테마가 올바르면 코드 0, 아니면 코드 1로 종료하며 문제를 하나씩 보여 줍니다. `--require-complete`를 주면 공개하는 테마에 꼭 필요한 구문 강조와 다이어그램 색상도 요구합니다.
+- `css <file>`: 올바른 테마에 대해 미리보기가 쓰는 CSS를 출력합니다.
+- `preview <file> --appearance <light|dark> -o <out.png>`: 그 테마로 샘플 문서를 PNG로 렌더링합니다. `--width`로 너비를 픽셀 단위로 정합니다(600~2000, 기본값 1200). 파일이 이미 있으면 `--force`를 줄 때만 바꿉니다.
+- `--json`: 텍스트 대신 JSON 결과를 출력합니다.
+
+`theme` 명령은 marsdawn 0.6.1에서 추가되었습니다.
 
 ## $MARSDAWN_THEME 변수
 
