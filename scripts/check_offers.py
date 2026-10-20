@@ -9,7 +9,7 @@ new page from quietly shipping an offer with no availability at all.
 It also holds each home page's SoftwareApplication to the price the product actually has: an
 AggregateOffer from 0 to 4.99 USD (a free download with a 14-day trial, then a one-time unlock),
 two Offers inside it with exactly those prices, and the rest of the block that makes it citable:
-a version number, operating system, category, screenshot, publisher (the App Store seller, a Person) and sameAs list. A JSON-LD
+a version number (the newest app version in vendor/app-release-notes), operating system, category, screenshot, publisher (the App Store seller, a Person) and sameAs list. A JSON-LD
 block that doesn't parse fails on any page.
 """
 import json
@@ -18,6 +18,8 @@ import sys
 from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent / "public"
+# The newest Mac app version on the App Store, as vendored for /changelog/ (website #273, #289).
+NOTES = Path(__file__).resolve().parent.parent / "vendor" / "app-release-notes" / "whats-new.json"
 ALLOWED = {"https://schema.org/PreOrder", "https://schema.org/InStock"}
 SCRIPT = re.compile(
     r'<script type="application/ld\+json">(.*?)</script>', re.DOTALL
@@ -44,6 +46,11 @@ REQUIRED = ("name", "description", "applicationCategory", "operatingSystem", "so
             "screenshot", "publisher", "sameAs", "downloadUrl", "url")
 
 
+def newest_app_version():
+    versions = [v["version"] for v in json.loads(NOTES.read_text(encoding="utf-8"))["versions"]]
+    return max(versions, key=lambda v: tuple(map(int, v.split("."))))
+
+
 def check_home(where, data, problems):
     """The home page's blocks must hold exactly one SoftwareApplication with the real price."""
     apps = [d for d in data if isinstance(d, dict) and d.get("@type") == "SoftwareApplication"]
@@ -56,6 +63,9 @@ def check_home(where, data, problems):
             problems.append(f"{where}: SoftwareApplication has no {key}")
     if not re.fullmatch(r"\d+\.\d+\.\d+", str(app.get("softwareVersion", ""))):
         problems.append(f"{where}: softwareVersion {app.get('softwareVersion')!r} isn't major.minor.patch")
+    elif app["softwareVersion"] != newest_app_version():
+        problems.append(f"{where}: softwareVersion {app['softwareVersion']!r} isn't the newest app version, "
+                        f"{newest_app_version()!r} ({NOTES.relative_to(NOTES.parents[2])})")
     if str(app.get("screenshot", "")).startswith("https://") is False:
         problems.append(f"{where}: screenshot isn't an absolute https URL")
     if app.get("publisher") != PUBLISHER:
