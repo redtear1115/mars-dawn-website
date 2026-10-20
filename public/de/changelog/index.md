@@ -19,12 +19,57 @@ Frühere Versionen sind nur auf Englisch beschrieben: [zum englischen Änderungs
 
 Versionen vor 0.5.1 sind nicht aufgeführt.
 
+### marsdawn 0.7.2
+
+1. Oktober 2026. Das Handbuch-Layout, Hinweisboxen und japanische Schriften.
+
+- Der Wert für `--layout` heißt jetzt `handbook`, wie das Layout „Handbuch“ der App: `marsdawn export --layout handbook`. `--layout manual` funktioniert weiterhin, ist aber veraltet.
+- Hinweisboxen werden dargestellt, in der Vorschau und in exportierten PDFs: GitHub-Alerts wie `> [!NOTE]` und `> [!WARNING]` und HackMD-Container wie `:::info` und `:::warning`. `:::spoiler` ergibt einen ausklappbaren Abschnitt.
+- Ein japanisches Dokument verwendet japanische Schriften für Kana und Kanji. marsdawn erkennt die Sprache an `lang: ja` im Front Matter oder am Kana-Anteil des Textes.
+- Nach einem erfolgreichen `export` oder `open` im Terminal zeigt marsdawn einmalig einen Tipp auf stderr, wenn der Agent-Skill fehlt oder veraltet ist. Die Ausgabe auf stdout und mit `--json` ändert sich nicht. Mit `MARSDAWN_NO_SKILL_HINT=1` schaltest du den Tipp ab.
+
+### marsdawn 0.7.1
+
+1. Oktober 2026. Ein Handbuch-Layout und eine Größengrenze.
+
+- `marsdawn export --layout manual` druckt ein Handbuch: breitere Ränder, 25 mm Bundsteg und jede Überschrift der obersten Ebene auf einer neuen Seite, dazu ein Deckblatt aus title, subtitle, version, date, author und logo des Front Matter, ein Inhaltsverzeichnis der Überschriften der Ebenen 1 und 2 mit Seitenzahlen, Seitenzahlen als `n / N` und PDF-Lesezeichen. `--toc-title` legt die Überschrift des Inhaltsverzeichnisses fest. Standard bleibt `--layout document`.
+- `<!--BREAK-->` allein in einer Zeile beginnt eine neue Seite, in beiden Layouts.
+- `marsdawn export` lehnt Dateien über 16 MiB ab: Es endet mit Exit-Code 5, meldet mit `--json` `input_too_large` und schreibt nichts.
+- Die Vorschauseite entfernt script- und noscript-Elemente; ein neu gezeichnetes Mermaid-Diagramm behält sein eigenes SVG.
+- Ein Zeichenverweis, der zu `=` oder `^` decodiert wird, etwa `&#61;`, bildet kein Paar mehr mit einer HackMD-Markierung.
+
+### marsdawn 0.7.0
+
+1. Oktober 2026. HackMD-Markdown, Zeilenumbrüche und Grenzen für sehr große Dokumente.
+
+- HackMDs Inline-Markierungen werden dargestellt: `==mark==`, `^sup^` und `~sub~`. Ein Absatz, der nur aus `[TOC]` besteht, wird zum Inhaltsverzeichnis, HackMDs Bildgrößen werden übernommen, Embed-Tags werden zu einfachen https-Links, und die Sprache eines Codeblocks wird vor HackMD-Optionen wie `js=` gelesen.
+- `marsdawn export --breaks` macht wie HackMD jeden Zeilenumbruch in einem Absatz zu einem Zeilenumbruch. Ohne die Option fällt ein Zeilenumbruch zwischen zwei chinesischen oder japanischen Zeichen weg, sodass sich die Zeilen wie ein Satz lesen. Koreanisch behält sein Leerzeichen, weil es Wörter durch Leerzeichen trennt.
+- Sehr große Dokumente haben Grenzen, in der Vorschau und in exportierten PDFs. Ein Codeblock über 128K Zeichen wird nicht hervorgehoben, und nach insgesamt 256K Zeichen endet die Hervorhebung. Pro Aktualisierung werden bis zu 100 Mermaid-Diagramme und 1.000 Formeln dargestellt; die übrigen Diagramme zeigen ihren Quelltext mit einem Hinweis, auch wenn sie schon einmal gezeichnet waren.
+- In einem Sequenzdiagramm bekommt eine Nachrichtenbeschriftung in einem `rect`-Block einen Rand in der Farbe des Blocks.
+- Ein Fußnotenverweis direkt über einer Tabelle bringt `marsdawn export` nicht mehr zum Absturz.
+- `marsdawn skill --install` endet mit Exit-Code 7 (`skill_install_failed`), wenn es den Ordner nicht anlegen oder die Datei nicht schreiben kann, und lässt eine vorhandene SKILL.md unverändert.
+
+### marsdawn 0.6.4
+
+1. Oktober 2026. Ausklappbare `<details>`-Blöcke.
+
+- Ein `<details>`-Block im GitHub-Stil mit Leerzeilen darin wird als ein ausklappbares Element dargestellt, in der Vorschau und in exportierten PDFs. Bisher zerfiel er an der ersten Leerzeile.
+- Der PDF-Export öffnet vor dem Drucken jeden `<details>`-Block, außer dem Front Matter.
+- Die Vorschau behält ihre Scrollposition, wenn du einen `<details>`-Block öffnest oder schließt.
+
 ### marsdawn 0.6.3
 
 6. Oktober 2026. MarsDawn ist im Mac App Store.
 
 - Wenn die App nicht installiert ist, verweist `marsdawn open` auf MarsDawn im Mac App Store.
 - Das README und der Agent-Skill erklären `marsdawn open .` und `--folder`: MarsDawn 1.0.0 zeigt den Ordner in der Seitenleiste des Fensters.
+
+### marsdawn 0.6.1
+
+1. September 2026. Themen prüfen.
+
+- `marsdawn theme validate` prüft eine `theme.json` nach den Regeln der App. Es endet mit Exit-Code 0, wenn das Thema gültig ist, und mit 1, wenn nicht, und listet jedes Problem auf. `--require-complete` verlangt zusätzlich die Syntax- und Diagrammfarben.
+- `marsdawn theme css` gibt das CSS aus, das die Vorschau für ein gültiges Thema verwendet, und `marsdawn theme preview` rendert damit ein Beispieldokument als PNG, hell oder dunkel.
 
 ### marsdawn 0.5.4
 

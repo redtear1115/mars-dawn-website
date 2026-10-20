@@ -14,8 +14,10 @@ program, never typed. Each comment is fetched by id with `gh api` and held to th
   occur exactly once), and the ja layout name ハンドブック (#254 6295059627) in place of マニュアル in ja 0.7.1.
 - The owner approved A and B for en, zh-Hant and ja on 2026-10-20 (#254 6295102211), and C with those
   edits on 2026-10-21 (#254 6295263711); both are pinned.
-- The other five locales: Grok's needs-i18n comment(s), listed in sources.json under "i18n", under
-  the standing machine-locale OK.
+- I, #254 6295975448 (Grok, 2026-10-21): the same pieces in zh-Hans, ko, de, fr and es, under the
+  standing machine-locale OK. One section per locale (## zh-Hans ...) with items A to F, and E as one
+  table. Its changelog entries use ### headings (the page's level since #273); they are read as ##, the
+  level the build inserts at, with nothing else changed.
 
 Writes scripts/cli254/data.py, which scripts/build_pages.py reads (apply_cli254). The text is the
 comments' Markdown; the build turns it into HTML with rich_pages.md_inline. Schema notes are HTML in
@@ -218,6 +220,68 @@ def parse_c(body: str, edits: str, locales: list, data: dict) -> None:
             data[loc]["changelog"][v] = entry_text
 
 
+def parse_i(body: str, locales: list, data: dict) -> None:
+    text = body.replace("\r\n", "\n")
+    parts = re.split(r"(?m)^## ", text)
+    by_loc = {}
+    for part in parts:
+        head = part.split("\n", 1)[0].strip()
+        if head in LABELS and LABELS[head] in locales:
+            by_loc[LABELS[head]] = part
+    if sorted(by_loc) != sorted(locales):
+        raise Stop(f"I: locale sections {sorted(by_loc)}")
+    for loc in locales:
+        found = []
+        item, fence = None, None
+        for line in by_loc[loc].split("\n"):
+            if fence is not None:
+                if line.strip() == "```":
+                    found.append((item, "\n".join(fence)))
+                    fence = None
+                else:
+                    fence.append(line)
+                continue
+            if line.startswith("```"):
+                fence = []
+                continue
+            m = re.match(r"\*\*([A-F])\. ", line)
+            if m:
+                item = m.group(1)
+        got = {k: [t for i, t in found if i == k] for k in "ABCDF"}
+        counts = {k: len(v) for k, v in got.items()}
+        if counts != {"A": 1, "B": 3, "C": 1, "D": 1, "F": 2}:
+            raise Stop(f"I {loc}: blocks per item {counts}")
+        d = data[loc]
+        items, _, since = got["A"][0].partition("\n\n")
+        d["open_items"] = bullets(items)
+        d["open_since"] = one_line(since)
+        d["export_items"] = bullets(got["B"][0])
+        d["export_after_json"] = bullets(got["B"][1])
+        d["export_since"] = one_line(got["B"][2])
+        if not got["C"][0].startswith("### marsdawn theme\n\n"):
+            raise Stop(f"I {loc}: the theme section has no heading")
+        d["theme_section"] = got["C"][0]
+        d["agents_folder_items"] = bullets(got["D"][0])
+        entries = "\n\n".join(got["F"])
+        for chunk in re.split(r"(?m)^(?=### marsdawn )", entries):
+            if not chunk.strip():
+                continue
+            v = re.match(r"### marsdawn (\S+)\n\n", chunk).group(1)
+            if v in d["changelog"]:
+                raise Stop(f"I {loc}: {v} twice")
+            d["changelog"][v] = entry(chunk[1:].rstrip("\n"), v)
+        if sorted(d["changelog"]) != ["0.6.1", "0.6.4", "0.7.0", "0.7.1", "0.7.2"]:
+            raise Stop(f"I {loc}: changelog versions {sorted(d['changelog'])}")
+    rows = table_rows(body, "E.")
+    head, rows = rows[0], rows[2:]
+    cols = {LABELS[h]: i for i, h in enumerate(head) if h in LABELS}
+    for loc in locales:
+        notes = {re.match(r"`(\w+)`", row[0]).group(1): row[cols[loc]] for row in rows}
+        if sorted(notes) != sorted(SCHEMA_KEYS):
+            raise Stop(f"I {loc}: schema note keys {sorted(notes)}")
+        data[loc]["schema_notes"] = notes
+
+
 def build() -> tuple:
     c = SOURCES["comments"]
     fetch(c["approval"])
@@ -229,8 +293,10 @@ def build() -> tuple:
     parse_a(fetch(c["A"]), approved, data)
     parse_b(fetch(c["B"]), approved, data, shared)
     parse_c(fetch(c["C"]), fetch(c["C_edits"]), approved, data)
-    for key, pinned in SOURCES.get("i18n", {}).items():
-        raise Stop(f"i18n source {key}: no parser yet")
+    machine = ["zh-hans", "ko", "de", "fr", "es"]
+    for loc in machine:
+        data[loc] = {"changelog": {}}
+    parse_i(fetch(c["I"]), machine, data)
     return data, shared
 
 

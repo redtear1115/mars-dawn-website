@@ -41,12 +41,57 @@ Mac App Store 上的 MarsDawn App，以及免費的 marsdawn 命令列工具，�
 
 0.5.1 以前的版本不列。
 
+### marsdawn 0.7.2
+
+2026 年 10 月 20 日。手冊版面、提示區塊，以及日文字型。
+
+- 原本的 manual 版面改名為「手冊」：`marsdawn export --layout handbook`。`--layout manual` 仍可使用，但已不建議使用。
+- 預覽和輸出的 PDF 都會呈現提示區塊：GitHub 的 alert（例如 `> [!NOTE]`、`> [!WARNING]`），以及 HackMD 的容器（例如 `:::info`、`:::warning`）。`:::spoiler` 會成為可收合的區塊。
+- 日文文件的假名和漢字會改用日文字型。語言取自 front matter 的 `lang: ja`；沒有寫時，依內文的假名比例判斷。
+- 在終端機裡成功執行 `export` 或 `open` 之後，如果 agent skill 沒有安裝或已經過期，marsdawn 會在 stderr 顯示一次提示。stdout 和 `--json` 的輸出都不變。設定 `MARSDAWN_NO_SKILL_HINT=1` 就不再提示。
+
+### marsdawn 0.7.1
+
+2026 年 10 月 20 日。手冊版面，以及檔案大小上限。
+
+- `marsdawn export --layout manual` 輸出成使用手冊：邊界較寬、裝訂側留 25 mm，每個一級標題從新的一頁開始；另外有封面（取自 front matter 的 title、subtitle、version、date、author 和 logo）、列出一、二級標題並附頁碼的目錄、`n / N` 頁碼，以及 PDF 書籤。目錄頁的標題可以用 `--toc-title` 指定。預設仍是 `--layout document`。
+- 單獨一行的 `<!--BREAK-->` 會從新的一頁開始，兩種版面都適用。
+- `marsdawn export` 不處理超過 16 MiB 的檔案：以代碼 5 結束，加上 `--json` 時回報 `input_too_large`，不寫出任何檔案。
+- 預覽頁會移除 script 和 noscript 元素；Mermaid 重畫時保留圖表自己的 SVG。
+- 解碼後是 `=` 或 `^` 的字元參照（例如 `&#61;`）不再和 HackMD 標記配對。
+
+### marsdawn 0.7.0
+
+2026 年 10 月 18 日。HackMD 語法、換行，以及超大檔案的上限。
+
+- 支援 HackMD 的行內標記：`==mark==`、`^sup^` 和 `~sub~`。單獨成段的 `[TOC]` 會變成目錄；HackMD 寫法的圖片尺寸會套用；嵌入標籤會變成一般的 https 連結；程式碼區塊的語言會先讀出來，再處理 `js=` 這類 HackMD 選項。
+- `marsdawn export --breaks` 會把段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句；韓文的詞與詞之間本來就空格，所以保留空格。
+- 超大檔案在預覽和輸出的 PDF 裡都有上限：單一程式碼區塊超過 128K 字元就不上色，整份累計超過 256K 字元後也不再上色。每次更新最多畫 100 張 Mermaid 圖表、算 1,000 個數學式；其餘圖表顯示原始碼並附上說明，即使之前畫過也一樣。
+- 循序圖中，`rect` 區塊裡的訊息標籤，外框底色改用該區塊的顏色。
+- 表格正上方有註腳參照時，`marsdawn export` 不再當掉。
+- `marsdawn skill --install` 無法建立資料夾或寫入檔案時，以代碼 7（`skill_install_failed`）結束，原本的 SKILL.md 保持不變。
+
+### marsdawn 0.6.4
+
+2026 年 10 月 13 日。可收合的 `<details>` 區塊。
+
+- GitHub 風格的 `<details>` 區塊裡有空行時，也會呈現為一個可收合的區塊；預覽和輸出的 PDF 都一樣。以前遇到第一個空行就會斷開。
+- 輸出 PDF 時，會先把每個 `<details>` 區塊展開再列印（front matter 除外）。
+- 展開或收合 `<details>` 區塊時，預覽會保持原本的捲動位置。
+
 ### marsdawn 0.6.3
 
 2026 年 10 月 6 日。MarsDawn 在 Mac App Store 上架。
 
 - 沒有安裝 app 時，`marsdawn open` 會指向 Mac App Store 上的 MarsDawn。
 - README 和 agent skill 會教 `marsdawn open .` 與 `--folder`：MarsDawn 1.0.0 會把資料夾顯示在視窗的側邊欄。
+
+### marsdawn 0.6.1
+
+2026 年 9 月 29 日。檢查主題。
+
+- `marsdawn theme validate` 會用 app 採用的規則檢查 `theme.json`。主題有效時以代碼 0 結束，無效時以代碼 1 結束，並列出每個問題。加上 `--require-complete` 時，也會要求語法上色和圖表的顏色。
+- `marsdawn theme css` 會印出預覽替有效主題使用的 CSS；`marsdawn theme preview` 會用這個主題把一份範例文件畫成 PNG，淺色或深色都可以。
 
 ### marsdawn 0.5.4
 

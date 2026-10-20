@@ -62,6 +62,15 @@
    "updated_at": "2026-10-20T16:02:06Z",
    "sha256": "f68881e6e5784f692a44ce44527f1975c569b0e43c9d34739540d55797dc7426",
    "chars": 800
+  },
+  "I": {
+   "issue": 254,
+   "id": 6295975448,
+   "what": "Grok's zh-Hans, ko, de, fr and es copy (needs-i18n, standing machine-locale OK)",
+   "created_at": "2026-10-20T16:36:31Z",
+   "updated_at": "2026-10-20T16:36:31Z",
+   "sha256": "e41989fce4804f874ee0b876a03a4396267fe7e54637a3f184b12b94d047c997",
+   "chars": 37303
   }
  }
 }

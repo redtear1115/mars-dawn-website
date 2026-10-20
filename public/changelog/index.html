@@ -160,11 +160,56 @@ try {
 <h2 id="marsdawn-command-line-tool">marsdawn command-line tool</h2>
 <p>Versions before 0.5.1 are not listed.</p>
 
+<h3 id="marsdawn-0-7-2">marsdawn 0.7.2</h3>
+<p>20 October 2026. The Handbook layout, callouts and Japanese fonts.</p>
+<ul>
+  <li>The manual layout is now called Handbook: <code>marsdawn export --layout handbook</code>. <code>--layout manual</code> still works, but is deprecated.</li>
+  <li>Callouts render, in the preview and in exported PDFs: GitHub alerts such as <code>&gt; [!NOTE]</code> and <code>&gt; [!WARNING]</code>, and HackMD containers such as <code>:::info</code> and <code>:::warning</code>. <code>:::spoiler</code> makes a collapsible section.</li>
+  <li>A Japanese document uses Japanese fonts for its kana and kanji. marsdawn takes the language from <code>lang: ja</code> in the front matter, or from how much kana the text has.</li>
+  <li>After a successful <code>export</code> or <code>open</code> in a terminal, marsdawn shows a one-time tip on stderr when the agent skill is missing or out of date. Output on stdout and with <code>--json</code> doesn't change. Set <code>MARSDAWN_NO_SKILL_HINT=1</code> to turn the tip off.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-1">marsdawn 0.7.1</h3>
+<p>20 October 2026. The Handbook layout, and a size limit.</p>
+<ul>
+  <li><code>marsdawn export --layout manual</code> prints the Handbook layout: wider margins, a 25 mm binding side and each top-level heading on a new page, plus a cover from the front matter's title, subtitle, version, date, author and logo, a table of contents of the level 1 and 2 headings with page numbers, <code>n / N</code> page numbers and PDF bookmarks. <code>--toc-title</code> sets the title of the contents page. <code>--layout document</code> is still the default.</li>
+  <li><code>&lt;!--BREAK--&gt;</code> on a line of its own starts a new page, in either layout.</li>
+  <li><code>marsdawn export</code> refuses a file over 16 MiB: it exits 5, reports <code>input_too_large</code> with <code>--json</code>, and writes nothing.</li>
+  <li>The preview page drops script and noscript elements; a Mermaid redraw keeps its own SVG.</li>
+  <li>A character reference that decodes to <code>=</code> or <code>^</code>, such as <code>&amp;#61;</code>, no longer pairs with a HackMD mark.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-0">marsdawn 0.7.0</h3>
+<p>18 October 2026. HackMD Markdown, line breaks and limits for very large documents.</p>
+<ul>
+  <li>HackMD's inline marks render: <code>==mark==</code>, <code>^sup^</code> and <code>~sub~</code>. A <code>[TOC]</code> paragraph on its own becomes a table of contents, HackMD image sizes apply, embed tags become plain https links, and a code fence's language is read before HackMD options such as <code>js=</code>.</li>
+  <li><code>marsdawn export --breaks</code> turns every newline inside a paragraph into a line break, as HackMD does. Without it, a newline between two Chinese or Japanese characters is dropped, so the lines read as one sentence. Korean keeps its space, because it spaces its words.</li>
+  <li>Very large documents have limits, in the preview and in exported PDFs. A code block over 128K characters isn't highlighted, and highlighting stops after 256K characters in all. Up to 100 Mermaid diagrams and 1,000 math expressions are rendered per update; the other diagrams show their source, with a note, even if they were drawn before.</li>
+  <li>In a sequence diagram, a message label inside a <code>rect</code> block gets a halo in the block's color.</li>
+  <li>A footnote reference just above a table no longer crashes <code>marsdawn export</code>.</li>
+  <li><code>marsdawn skill --install</code> exits 7 (<code>skill_install_failed</code>) when it can't create the folder or write the file, and leaves an existing SKILL.md as it was.</li>
+</ul>
+
+<h3 id="marsdawn-0-6-4">marsdawn 0.6.4</h3>
+<p>13 October 2026. Collapsible <code>&lt;details&gt;</code> blocks.</p>
+<ul>
+  <li>A GitHub-style <code>&lt;details&gt;</code> block with blank lines inside renders as one collapsible element, in the preview and in exported PDFs. Before, it broke apart at the first blank line.</li>
+  <li>PDF export opens every <code>&lt;details&gt;</code> block before printing, except front matter.</li>
+  <li>The preview keeps its scroll position when you open or close a <code>&lt;details&gt;</code> block.</li>
+</ul>
+
 <h3 id="marsdawn-0-6-3">marsdawn 0.6.3</h3>
 <p>6 October 2026. MarsDawn is on the Mac App Store.</p>
 <ul>
   <li>When the app isn't installed, <code>marsdawn open</code> points to MarsDawn on the Mac App Store.</li>
   <li>The README and the agent skill teach <code>marsdawn open .</code> and <code>--folder</code>: MarsDawn 1.0.0 shows the folder in the window's sidebar.</li>
+</ul>
+
+<h3 id="marsdawn-0-6-1">marsdawn 0.6.1</h3>
+<p>29 September 2026. Checking a theme.</p>
+<ul>
+  <li><code>marsdawn theme validate</code> checks a <code>theme.json</code> against the rules the app uses. It exits 0 when the theme is valid and 1 when it isn't, with each problem listed. <code>--require-complete</code> also asks for the syntax and diagram colors.</li>
+  <li><code>marsdawn theme css</code> prints the CSS the preview uses for a valid theme, and <code>marsdawn theme preview</code> renders a sample document with it to a PNG, light or dark.</li>
 </ul>
 
 <h3 id="marsdawn-0-5-4">marsdawn 0.5.4</h3>

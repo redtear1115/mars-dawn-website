@@ -7222,14 +7222,20 @@ def preflight_problems(locale: str) -> list:
     return out
 
 
+def build_planned_locale(module, locale: str) -> dict:
+    """A planned locale's copy module's texts, with #254's schema notes (scripts/cli254/data.py) merged in."""
+    t = module.build(_make_k(locale))
+    t["schema_notes"] = {**t["schema_notes"], **cli254_data.DATA[locale]["schema_notes"]}
+    return t
+
+
 def merge_planned_locale(locale: str) -> None:
     """Merges de, fr, es or ko, which locales.enabled() has said is complete, or stops and says what is missing."""
     module = importlib.import_module(locales.module_name(locale))
     problems = preflight_problems(locale)
     t = None
     if not problems:
-        t = module.build(_make_k(locale))
-        t["schema_notes"] = {**t["schema_notes"], **cli254_data.DATA[locale]["schema_notes"]}
+        t = build_planned_locale(module, locale)
         problems = shape_problems(en_reference(), t)
     if problems:
         raise SystemExit(f"scripts/{locales.module_name(locale)}.py says COMPLETE = True, but {locale} is not complete:\n  - "

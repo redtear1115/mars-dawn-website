@@ -155,10 +155,13 @@ marsdawn open notes.md --folder .</code></pre>
   <li>Zeilen reichen von 1 bis 999999999.</li>
   <li>MarsDawn 1.0 öffnet die Datei in dieser Zeile.</li>
   <li>Ein Ordner als Argument wird in der Seitenleiste des Fensters geöffnet statt als Dokument: <code>marsdawn open .</code> zeigt den aktuellen Ordner. <code>--folder &lt;path&gt;</code> macht dasselbe zusätzlich zu Dateien. Die Seitenleiste eines Fensters zeigt einen Ordner, zwei anzugeben ist daher ein Bedienungsfehler.</li>
+  <li><code>--wait &lt;n&gt;</code>: Mit MarsDawn 1.0.2 oder neuer, das eine Rückmeldung gibt, wartet <code>--folder</code> bis zu n Sekunden (0 bis 30, Standard 2) auf die Antwort der App zum Ordner. Mit <code>--wait 0</code> oder einer App ohne Rückmeldung wird nicht gewartet, und die Anfrage ist dieselbe wie bisher.</li>
+  <li>Ein Wert für <code>--wait</code> außerhalb von 0 bis 30 ist ein Bedienungsfehler (Code 64). Einen negativen Wert schreibst du als <code>--wait=-1</code>.</li>
+  <li>Mit <code>--json</code> wird der Ordner als angefragt gemeldet, nicht als angezeigt, denn das entscheidet die App; mit <code>--wait</code> sagt das Ergebnis auch, was aus ihm wurde. Die vollständige Liste steht unter <a href="/de/cli/agents/">marsdawn für Agenten</a>.</li>
   <li><code>--background</code>: öffnen, ohne MarsDawn in den Vordergrund zu holen.</li>
   <li><code>--json</code>: ein JSON-Ergebnis statt Text ausgeben.</li>
 </ul>
-<p>Zeilen kamen mit marsdawn 0.3.0 hinzu, Ordner und <code>--background</code> mit 0.5.1.</p>
+<p>Zeilen kamen mit marsdawn 0.3.0 hinzu, Ordner und <code>--background</code> mit 0.5.1, <code>--wait</code> und der Ordnerstatus mit 0.5.3.</p>
 
 <h3>marsdawn export</h3>
 <p>Rendert eine Markdown-Datei als PDF mit Seiten, mit demselben Exporter, den der PDF-Export von MarsDawn selbst verwendet. Die App MarsDawn wird dafür nicht gebraucht. Relative Bilder werden vom Ordner der Eingabedatei aus aufgelöst.</p>
@@ -167,10 +170,29 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>-o, --output &lt;path&gt;</code>: wohin das PDF geschrieben wird. Standard ist der Eingabepfad mit der Endung <code>.pdf</code>.</li>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: die helle Palette des Vorschau-Themas. Standard ist <code>$MARSDAWN_THEME</code>, dann <code>dawn</code>.</li>
   <li><code>--paper &lt;a4|letter&gt;</code>: Papierformat. Standard ist <code>a4</code>.</li>
+  <li><code>--breaks</code>: jeden Zeilenumbruch innerhalb eines Absatzes als Zeilenumbruch darstellen, wie HackMD. Ohne die Option fällt ein Zeilenumbruch zwischen zwei chinesischen oder japanischen Zeichen weg, sodass sich die Zeilen wie ein Satz lesen.</li>
+  <li><code>--layout &lt;document|handbook&gt;</code>: das Seitenlayout. Standard ist <code>document</code>. <code>handbook</code> druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen <code>title</code> hat.</li>
+  <li><code>--toc-title &lt;text&gt;</code>: die Überschrift des Inhaltsverzeichnisses im Handbuch. Standard ist <code>Contents</code>.</li>
+  <li><code>&lt;!--BREAK--&gt;</code> allein in einer Zeile beginnt eine neue Seite, in beiden Layouts.</li>
   <li><code>--allow-remote-images</code>: beim Rendern Bilder aus dem Web laden. Standardmäßig aus.</li>
   <li><code>--force</code>: die Ausgabedatei ersetzen, falls sie schon existiert.</li>
   <li><code>--json</code>: ein JSON-Ergebnis statt Text ausgeben.</li>
+  <li>Eine Datei über 16 MiB wird nicht exportiert: <code>export</code> endet mit Code 5 und schreibt nichts.</li>
 </ul>
+<p><code>--breaks</code> kam mit marsdawn 0.7.0 hinzu, <code>--layout</code> und <code>--toc-title</code> mit 0.7.1, der Wert <code>handbook</code> mit 0.7.2. Der alte Wert aus 0.7.1, <code>manual</code>, funktioniert weiterhin.</p>
+
+<h3>marsdawn theme</h3>
+<p>Prüft eine Themendatei (<code>theme.json</code>) und zeigt, wie sie aussieht, bevor du sie teilst. Die App MarsDawn wird dafür nicht gebraucht. Die Felder eines Themas findest du unter <a href="/de/themes/agents/">Mit deinem Agenten ein Thema erstellen</a>.</p>
+<pre><code>marsdawn theme validate my-theme.json
+marsdawn theme css my-theme.json
+marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pre>
+<ul>
+  <li><code>validate &lt;file&gt;</code>: prüft die Datei gegen jede Regel, die ein MarsDawn-Thema erfüllen muss, mit demselben Validator wie die App. Endet mit Code 0, wenn das Thema gültig ist, und mit Code 1, wenn nicht, und listet jedes Problem auf. <code>--require-complete</code> verlangt zusätzlich die Syntax- und Diagrammfarben, die ein veröffentlichtes Thema haben muss.</li>
+  <li><code>css &lt;file&gt;</code>: gibt das CSS aus, das die Vorschau für ein gültiges Thema verwendet.</li>
+  <li><code>preview &lt;file&gt; --appearance &lt;light|dark&gt; -o &lt;out.png&gt;</code>: rendert ein Beispieldokument mit dem Thema als PNG. <code>--width</code> legt die Breite in Pixeln fest, von 600 bis 2000 (Standard 1200). Eine vorhandene Datei wird nur mit <code>--force</code> ersetzt.</li>
+  <li><code>--json</code>: ein JSON-Ergebnis statt Text ausgeben.</li>
+</ul>
+<p>Die <code>theme</code>-Befehle kamen mit marsdawn 0.6.1 hinzu.</p>
 
 <h2 id="the-marsdawn-theme-variable">Die Variable $MARSDAWN_THEME</h2>
 <p>Wird <code>--theme</code> nicht übergeben, liest <code>export</code> die Umgebungsvariable <code>$MARSDAWN_THEME</code>. Ihr Wert muss <code>dawn</code>, <code>classic</code>, <code>modern</code> oder <code>vivid</code> sein; alles andere fällt auf <code>dawn</code> zurück. Die CLI liest nicht die Thema-Einstellung der App, weil das Lesen des Containers einer anderen App eine Datenschutzabfrage von macOS auslösen kann.</p>
