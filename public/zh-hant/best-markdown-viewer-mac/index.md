@@ -1,5 +1,7 @@
 # 2026 Mac Markdown 檢視器推薦
 
+黑色星期五特價：一次解鎖只要半價 USD 2.49（原價 USD 4.99），優惠到 11 月 30 日，12 月 1 日起恢復 USD 4.99。 <!-- sale-line -->
+
 哪款 Markdown 檢視器最好，要看你讀的是什麼。如果是自己寫的筆記，一款全能的筆記 App 就夠了。如果是有圖表和數學式的長文件，或是 AI 代理不斷改寫的檔案，就要看各款怎麼處理自動重新載入、Mermaid 和 PDF。以下依字母排序，每款都寫出適合誰、一個老實的缺點和價格。
 
 ## MacDown 3000
@@ -32,7 +34,7 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 
 - 適合：審閱 AI 代理所寫 Markdown 的人。
 - 缺點：輸出的 PDF 沒有頁碼。
-- 價格：免費下載，試用 14 天，之後一次 USD 4.99。不需帳號。僅在 Mac App Store 提供。
+- 價格：免費下載，試用 14 天，之後一次 USD 2.49。不需帳號。僅在 Mac App Store 提供。
 
 ## Obsidian
 
@@ -73,7 +75,7 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 | MacDown 3000 | 免費 | 有 | MathJax | 有 | 有 | 未記載 | 有 | 原生 |
 | Marked 3 | 每月 USD 2.99 起 | 有 | MathJax、KaTeX | 有，含頁碼 | 有 | 未記載 | Marked QL，USD 9.99 | 原生 |
 | MarkEdit | 免費 | 擴充功能 | KaTeX（擴充功能） | Pandoc | 未記載 | 未記載 | 有 | 原生（web view） |
-| MarsDawn | 一次 USD 4.99 | 有 | KaTeX | 有，無頁碼 | 有，可撤銷 | 有 | 有 | 原生 |
+| MarsDawn | 一次 USD 2.49 | 有 | KaTeX | 有，無頁碼 | 有，可撤銷 | 有 | 有 | 原生 |
 | Obsidian | 免費 | 有 | MathJax | 有 | 有 | 未記載 | 未記載 | Electron |
 | QLMarkdown | 免費 | 需開啟 | MathJax（需開啟） | 未記載 | 不適用 | 不適用 | 本身即是 | 原生 |
 | Typora | 一次 USD 14.99 | 有 | MathJax | 有，含頁碼 | 未記載 | 未記載 | 未記載 | 原生 |
@@ -108,10 +110,10 @@ MarsDawn（`marsdawn open notes.md:120`）與 VS Code（`code -g file:line`）�
 
 ## 其他頁面
 
-- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 讀懂、檢查 agent 寫的 Markdown 的 Mac 原生 app：分割即時預覽、Mermaid、KaTeX、快速查看、PDF 輸出。可免費試用，之後一次 USD 4.99。
+- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 讀懂、檢查 agent 寫的 Markdown 的 Mac 原生 app：分割即時預覽、Mermaid、KaTeX、快速查看、PDF 輸出。可免費試用，之後一次 USD 2.49。
 - [功能一覽](https://marsdawn.southern-light.dev/zh-hant/features/index.md): Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。
 - [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hant/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
-- [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
+- [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 2.49 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。
 - [為 Mac 而做](https://marsdawn.southern-light.dev/zh-hant/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
 - [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號。內建四種主題，主題庫還有更多。購買前先知道。
@@ -122,7 +124,7 @@ MarsDawn（`marsdawn open notes.md:120`）與 VS Code（`code -g file:line`）�
 - [Markdown 快速查看](https://marsdawn.southern-light.dev/zh-hant/quicklook/index.md): MarsDawn 的快速查看讓你在 Finder 按空白鍵就看到排版後的 Markdown，Mermaid 圖表、KaTeX 數學式和程式碼上色都在。試用期結束後，快速查看照常可用。
 - [Markdown 轉 PDF](https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/index.md): 免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。
 - [MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hant/vs/index.md): 寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。
-- [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 4.99 解鎖一次。逐項比較，附來源。
+- [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 2.49 解鎖一次。逐項比較，附來源。
 - [命令列工具](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。
 - [給 AI agent 的 marsdawn 參考](https://marsdawn.southern-light.dev/zh-hant/cli/agents/index.md): 給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。
 - [給 agent 的 skill](https://marsdawn.southern-light.dev/zh-hant/cli/skill/index.md): 一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你審閱，也學會安裝 marsdawn、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。

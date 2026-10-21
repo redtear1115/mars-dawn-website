@@ -1,5 +1,7 @@
 # Mac에서 Markdown 읽기: MarsDawn과 다른 방법
 
+블랙 프라이데이 할인: 한 번만 구입하는 잠금 해제가 11월 30일까지 반값인 USD 2.49입니다(정가 USD 4.99). 12월 1일부터는 다시 USD 4.99입니다. <!-- sale-line -->
+
 Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방법을 고르는 분을 위한 페이지입니다. 아래 표의 각 칸은 각 회사의 공식 페이지나 저희가 직접 확인한 내용이며, 모두 2026년 10월 16일 기준입니다. 제품은 바뀌므로 내용이 오래될 수 있습니다. 틀린 내용을 발견하면 [지원](/ko/support/) 페이지의 주소로 알려 주세요.
 
 |  | MarsDawn | VS Code 미리보기 | Obsidian | QLMarkdown | LynxOffice |
@@ -9,7 +11,7 @@ Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방
 | 수식 | KaTeX, `$…$`와 `$$…$$` [[kit](#kit)] | KaTeX [[V8](#v8)] | MathJax [[V16](#v16)] | MathJax [[V22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[V3](#v3)] |
 | 에이전트의 계획 검토／줄로 이동 | `marsdawn open file:line`, 디스크에서 업데이트, 참조 복사 [/cli/, /features/] | Markdown diff 미리보기, 변경된 줄 강조 [[V8](#v8)]; `code -g file:line` [[V14](#v14)] | `obsidian://open`에 줄 번호 지정 없음 [[V20](#v20)] | 공식 설명 없음 | CLI와 MCP 서버 있음, 줄 이동은 설명 없음 [[V4](#v4), [V5](#v5)] |
 | PDF: 페이지 나누기, 페이지 번호 | 짧은 코드 블록을 나누지 않는 페이지 나누기 [/pdf/], 페이지 번호 없음 [직접 확인] | 공식 설명 없음 [[V8](#v8)] | 용지 크기, 여백; 페이지 나누기와 번호는 설명 없음 [[V17](#v17)] | 공식 설명 없음 [[V22](#v22)] | PDF "including tables", 페이지 나누기와 번호는 설명 없음 [[V3](#v3)] |
-| 가격 | 무료 다운로드, 잠금 해제 한 번 USD 4.99, 14일 체험 [[V1](#v1)] | 공식 설명 없음 [[V12](#v12), [V13](#v13)] | 개인: "Free without limits", 상업용 라이선스는 선택 [[V15](#v15)] | 무료, GPL-3.0 [[V22](#v22)] | "Free while in early release." [[V2](#v2)] |
+| 가격 | 무료 다운로드, 잠금 해제 한 번 USD 2.49, 14일 체험 [[V1](#v1)] | 공식 설명 없음 [[V12](#v12), [V13](#v13)] | 개인: "Free without limits", 상업용 라이선스는 선택 [[V15](#v15)] | 무료, GPL-3.0 [[V22](#v22)] | "Free while in early release." [[V2](#v2)] |
 | 시스템 요구 사항 | macOS 26.0 이상 [[V1](#v1)] | "the latest release and the two previous versions" [[V9](#v9)] | 공식 설명 없음 [[V18](#v18)] | macOS 12.0 이상 [[V23](#v23)] | macOS 13 이상 [[V2](#v2)] |
 | 계정 필요 | 필요 없음 [/privacy/] | 공식 설명 없음 | "No sign-up required" [[V15](#v15)] | 공식 설명 없음 | 필요 없음 [[V2](#v2)] |
 
@@ -58,10 +60,10 @@ MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone이나 iPad �
 
 ## 더 보기
 
-- [MarsDawn](https://marsdawn.southern-light.dev/ko/index.md): 에이전트가 쓴 Markdown을 읽고 검토하는 Mac 네이티브 앱. 분할 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료로 체험하고, 잠금 해제는 한 번 USD 4.99.
+- [MarsDawn](https://marsdawn.southern-light.dev/ko/index.md): 에이전트가 쓴 Markdown을 읽고 검토하는 Mac 네이티브 앱. 분할 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료로 체험하고, 잠금 해제는 한 번 USD 2.49.
 - [기능 한눈에 보기](https://marsdawn.southern-light.dev/ko/features/index.md): Mac 네이티브 Markdown 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 그리고 회의와 여백 메모, 종이 기록에 쓸 수 있는 깔끔한 PDF와 프린트 페이지.
 - [내 글은 내 Mac에](https://marsdawn.southern-light.dev/ko/yours/index.md): MarsDawn에는 계정도, 동기화도, 클라우드도 없습니다. Markdown 문서는 직접 고른 파일과 폴더에 담겨 Mac에 남습니다.
-- [무료로 체험하고, 한 번만 구입](https://marsdawn.southern-light.dev/ko/pay-once/index.md): MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다.
+- [무료로 체험하고, 한 번만 구입](https://marsdawn.southern-light.dev/ko/pay-once/index.md): MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 2.49에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다.
 - [PDF 내보내기](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록을 가르지 않도록 합니다.
 - [Mac 앱](https://marsdawn.southern-light.dev/ko/native/index.md): 진짜 Mac 앱인 Markdown 편집기. 네이티브 윈도우와 탭, 자동 저장, 버전 기록, Finder의 훑어보기, 그리고 Mac답게 동작하는 텍스트 편집기를 갖췄습니다.
 - [MarsDawn이 하지 않는 일](https://marsdawn.southern-light.dev/ko/limits/index.md): 동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 기본 테마는 네 가지이고, 갤러리에 더 있습니다. 구입 전에 알아 두세요.
@@ -71,7 +73,7 @@ MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone이나 iPad �
 - [Mac에서 Mermaid 미리보기](https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/index.md): Mac에서 Mermaid 다이어그램을 Markdown 옆에 그려서 보세요: 실시간 미리보기, 훑어보기, PDF 내보내기. 다이어그램에 오류가 있으면 오류와 해당 줄이 표시됩니다.
 - [Markdown 훑어보기](https://marsdawn.southern-light.dev/ko/quicklook/index.md): MarsDawn의 훑어보기로 Finder에서 스페이스 바를 누르면 Markdown이 렌더링되어 보입니다. Mermaid, KaTeX, 강조된 코드도 표시됩니다. 체험이 끝난 뒤에도 계속 작동합니다.
 - [Markdown을 PDF로](https://marsdawn.southern-light.dev/ko/markdown-to-pdf/index.md): 무료 marsdawn 명령줄 도구로 Mac에서 Markdown을 PDF로 변환하세요. Homebrew로 설치하고 명령 하나만 실행하면 됩니다. 표, 수식, Mermaid, 코드까지 지원합니다.
-- [MacMD Viewer와 MarsDawn 비교](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 읽기 전용 Markdown 뷰어로 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 14일 무료 체험 후 USD 4.99를 한 번만 내면 됩니다. 항목별 비교, 출처 포함.
+- [MacMD Viewer와 MarsDawn 비교](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 읽기 전용 Markdown 뷰어로 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 14일 무료 체험 후 USD 2.49를 한 번만 내면 됩니다. 항목별 비교, 출처 포함.
 - [Mac용 Markdown 뷰어 추천 (2026)](https://marsdawn.southern-light.dev/ko/best-markdown-viewer-mac/index.md): Mac용 Markdown 뷰어 8종을 가격, Mermaid, 수식, PDF, 자동 새로 고침, 훑어보기, 네이티브/Electron으로 비교하고 각각 누구에게 맞는지 정리했습니다.
 - [명령줄](https://marsdawn.southern-light.dev/ko/cli/index.md): Mac용 무료 marsdawn 명령줄 도구. 셸, 스크립트, LLM 에이전트에서 Markdown을 PDF로 내보내고 JSON으로 결과를 받으세요. Homebrew로 설치합니다.
 - [에이전트를 위한 marsdawn](https://marsdawn.southern-light.dev/ko/cli/agents/index.md): marsdawn을 호출해 Markdown을 PDF로 바꾸는 AI 에이전트와 스크립트를 위한 레퍼런스입니다. 명령, JSON 출력, 스키마, 종료 코드, 요구 사항을 다룹니다.

@@ -1,5 +1,7 @@
 # Mac向けMarkdownビューアのおすすめ8選（2026年）
 
+ブラックフライデーセール：一度きりのロック解除が半額の USD 2.49（通常 USD 4.99）。11月30日まで。12月1日から USD 4.99 に戻ります。 <!-- sale-line -->
+
 どのMarkdownビューアがよいかは、何を読むかで決まります。自分で書くメモなら、オールインワンのノートアプリで十分です。図や数式の入った長い文書や、AIエージェントが何度も書き換えるファイルなら、自動再読み込み、Mermaid、PDFの扱いを確かめてください。以下はアルファベット順で、それぞれ向いている人、正直な欠点、価格を載せています。
 
 ## MacDown 3000
@@ -32,7 +34,7 @@ Marked 3は、ほかのアプリで書いたMarkdownを見るためのプレビ�
 
 - 向いている人：AIエージェントが書いたMarkdownをレビューする人。
 - 欠点：書き出したPDFにページ番号は付きません。
-- 価格：無料ダウンロードで14日間試用でき、その後はUSD 4.99の買い切り。アカウント不要。Mac App Storeのみ。
+- 価格：無料ダウンロードで14日間試用でき、その後はUSD 2.49の買い切り。アカウント不要。Mac App Storeのみ。
 
 ## Obsidian
 
@@ -73,7 +75,7 @@ Marked 3は、ほかのアプリで書いたMarkdownを見るためのプレビ�
 | MacDown 3000 | 無料 | あり | MathJax | あり | あり | 記載なし | あり | ネイティブ |
 | Marked 3 | 月額USD 2.99から | あり | MathJax、KaTeX | あり、ページ番号付き | あり | 記載なし | Marked QL、USD 9.99 | ネイティブ |
 | MarkEdit | 無料 | 拡張機能 | KaTeX（拡張機能） | Pandoc | 記載なし | 記載なし | あり | ネイティブ（Webビュー） |
-| MarsDawn | USD 4.99買い切り | あり | KaTeX | あり、ページ番号なし | あり、取り消し可 | あり | あり | ネイティブ |
+| MarsDawn | USD 2.49買い切り | あり | KaTeX | あり、ページ番号なし | あり、取り消し可 | あり | あり | ネイティブ |
 | Obsidian | 無料 | あり | MathJax | あり | あり | 記載なし | 記載なし | Electron |
 | QLMarkdown | 無料 | オプション | MathJax（オプション） | 記載なし | 該当なし | 該当なし | それ自体 | ネイティブ |
 | Typora | USD 14.99買い切り | あり | MathJax | あり、ページ番号付き | 記載なし | 記載なし | 記載なし | ネイティブ |
@@ -108,10 +110,10 @@ ObsidianとVS Code以外のすべてです。MarkEditはネイティブで、編
 
 ## その他
 
-- [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): エージェントが書いた Markdown を読んで確かめる Mac ネイティブアプリ。分割ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF 書き出し。無料で試せて、解除は一度だけ USD 4.99。
+- [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): エージェントが書いた Markdown を読んで確かめる Mac ネイティブアプリ。分割ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF 書き出し。無料で試せて、解除は一度だけ USD 2.49。
 - [機能一覧](https://marsdawn.southern-light.dev/ja/features/index.md): Mac ネイティブの Markdown エディタ：リアルタイムプレビュー、Mermaid と数式、テーマに加え、会議や書き込み、紙での保管に使える PDF とプリントのページ。
 - [あなたの文章は Mac に残ります](https://marsdawn.southern-light.dev/ja/yours/index.md): MarsDawn にはアカウントも同期もクラウドもありません。Markdown 文書はあなたの Mac 上に、選んだファイルとフォルダの中に残ります。
-- [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
+- [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 2.49 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
 - [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックを分断しないよう配慮されます。
 - [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
 - [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類で、テーマギャラリーにはさらに多くあります。購入前に知っておいてください。
@@ -122,7 +124,7 @@ ObsidianとVS Code以外のすべてです。MarkEditはネイティブで、編
 - [Markdown のクイックルック](https://marsdawn.southern-light.dev/ja/quicklook/index.md): MarsDawn のクイックルックなら、Finder でスペースキーを押すだけで Markdown を描画して表示します。Mermaid 図、KaTeX 数式、ハイライトされたコードにも対応。トライアル終了後も使えます。
 - [Markdown から PDF へ](https://marsdawn.southern-light.dev/ja/markdown-to-pdf/index.md): 無料の marsdawn コマンドラインツールで、Mac 上の Markdown を PDF に変換します。Homebrew でインストールしてコマンド1つで実行：表、数式、Mermaid、コードに対応。
 - [MarsDawn と比較：VS Code プレビュー、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/ja/vs/index.md): Mac で Markdown を、多くはエージェントが書いたものを読んで確かめる方法を選ぶ人へ。表の各セルは、各社の公式ページか私たちの確認によるもので、いずれも 2026 年 10 月 16 日時点です。製品は変わるので、古くなることがあります。誤りに気づいたら、サポートのアドレスまでお知らせください。
-- [MacMD Viewer と MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用の Markdown ビューアで USD 19.99。MarsDawn は編集とプレビューを並べて表示し、14 日間無料、その後 USD 4.99 を一度だけ。項目ごとの比較、出典つき。
+- [MacMD Viewer と MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用の Markdown ビューアで USD 19.99。MarsDawn は編集とプレビューを並べて表示し、14 日間無料、その後 USD 2.49 を一度だけ。項目ごとの比較、出典つき。
 - [コマンドライン](https://marsdawn.southern-light.dev/ja/cli/index.md): 無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。
 - [AI エージェント向け marsdawn](https://marsdawn.southern-light.dev/ja/cli/agents/index.md): marsdawn を呼び出して Markdown を PDF に変換する AI エージェントとスクリプトのためのリファレンス：コマンド、JSON 出力、スキーマ、終了コード、必要環境。
 - [エージェント用スキル](https://marsdawn.southern-light.dev/ja/cli/skill/index.md): コーディングエージェントが読み込む1つのファイルです。自分が書いた Markdown を MarsDawn で開いてあなたに確認してもらう方法と、marsdawn のインストール、Markdown の PDF への書き出し、JSON の結果の読み取りを教えます。

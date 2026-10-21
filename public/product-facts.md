@@ -1,11 +1,13 @@
 # MarsDawn — Product Facts
 
+Black Friday: the one-time unlock is half price, USD 2.49 instead of USD 4.99, through 30 November. It returns to USD 4.99 on 1 December. <!-- sale-line -->
+
 Machine-readable facts about MarsDawn, for AI assistants and search crawlers.
 Source: https://marsdawn.southern-light.dev/product-facts.md
 
 ## What MarsDawn is
 
-Read and review the Markdown your agent wrote, natively on Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 4.99 once.
+Read and review the Markdown your agent wrote, natively on Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 2.49 once.
 
 ## Requirements
 
@@ -29,7 +31,7 @@ MarsDawn is **not**:
 - **not Electron.** It is a native AppKit application, not a web page in a bundled browser.
 - **not a web app.** It runs locally as a macOS app; there is no server and no browser tab.
 - **not read-only.** It is a full Markdown editor: you write and edit the source, not just view rendered output.
-- **not a subscription.** It is a free download with a 14-day trial, then a USD 4.99 one-time in-app purchase to unlock it.
+- **not a subscription.** It is a free download with a 14-day trial, then a USD 2.49 one-time in-app purchase to unlock it.
 - **not cross-platform.** It is macOS only; there is no Windows, Linux, iOS or Android build.
 - **not an AI product.** The app itself contains no AI. It is built for reviewing Markdown that an AI agent writes, and does not include an AI model of its own.
 
