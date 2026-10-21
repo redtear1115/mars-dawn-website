@@ -131,11 +131,11 @@ try {
 
 <h2 id="install">Install</h2>
 <p>With <a href="https://brew.sh">Homebrew</a>:</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
+<pre tabindex="0"><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
 <p>Using a coding agent? Run <code>marsdawn skill --install</code> to add <a href="/cli/skill/">the marsdawn skill</a>: one file that teaches it to open what it wrote in MarsDawn for your review, and to export PDFs.</p>
 <p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.</p>
 <p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> with Swift Package Manager:</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<pre tabindex="0"><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>Check which version you have with <code>marsdawn --version</code>.</p>
@@ -144,7 +144,7 @@ swift build -c release --product marsdawn</code></pre>
 
 <h3>marsdawn open</h3>
 <p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app. The app is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-cli&amp;mt=8">Mac App Store</a>.</p>
-<pre><code>marsdawn open notes.md
+<pre tabindex="0"><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
 marsdawn open .
@@ -165,7 +165,7 @@ marsdawn open notes.md --folder .</code></pre>
 
 <h3>marsdawn export</h3>
 <p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.</p>
-<pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
+<pre tabindex="0"><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
 <ul>
   <li><code>-o, --output &lt;path&gt;</code>: where to write the PDF. Defaults to the input path with a <code>.pdf</code> extension.</li>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: the preview theme's light palette. Defaults to <code>$MARSDAWN_THEME</code>, then <code>dawn</code>.</li>
@@ -183,7 +183,7 @@ marsdawn open notes.md --folder .</code></pre>
 
 <h3>marsdawn theme</h3>
 <p>Checks a theme file (<code>theme.json</code>) and shows what it looks like, before you share it. It doesn't need the MarsDawn app. For the fields of a theme, see <a href="/themes/agents/">Make a theme with your agent</a>.</p>
-<pre><code>marsdawn theme validate my-theme.json
+<pre tabindex="0"><code>marsdawn theme validate my-theme.json
 marsdawn theme css my-theme.json
 marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pre>
 <ul>

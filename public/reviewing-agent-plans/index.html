@@ -133,7 +133,7 @@ try {
 
 <h2 id="the-example">The example</h2>
 <p>You asked an agent to move user avatars to object storage without breaking existing links. It hands back this:</p>
-<pre><code># Plan: move user avatars to object storage
+<pre tabindex="0" role="region" aria-labelledby="the-example"><code># Plan: move user avatars to object storage
 
 ## Goal
 Serve avatars from object storage instead of the app server.
@@ -153,13 +153,13 @@ All tests pass.</code></pre>
 <p><strong>1. Read only the headings.</strong> <em>(about a minute)</em> Does the outline match what you asked for? A missing section usually means missing work. Here: Goal, Steps, Status. You asked for existing links to keep working, and there's no heading about old links or about undoing the change. That's your first comment.</p>
 <p>From a terminal, <code>grep -n '^#' plan.md</code> prints just the headings, and most editors can show an outline too. In MarsDawn, the Outline tab in the sidebar (View &#9656; Show Sidebar, &#8963;&#8984;S) lists them, and clicking one jumps there.</p>
 <p><strong>2. Find every place that says something is done, passing or verified, and check one yourself.</strong> <em>(about a minute)</em> Open the file, run the test, count the rows. Chip Huyen describes a failure where &#8220;The agent is convinced that it&#8217;s accomplished a task when it hasn&#8217;t.&#8221; In her example, an agent asked to put 50 people in 30 hotel rooms places 40 and insists it's finished.</p>
-<pre><code>grep -n -i -E 'done|pass|verified|&#9989;' plan.md</code></pre>
+<pre tabindex="0"><code>grep -n -i -E 'done|pass|verified|&#9989;' plan.md</code></pre>
 <p>Here that finds &#8220;&#9989; done&#8221; and &#8220;All tests pass.&#8221; Which tests? Do any of them touch avatars? Run them, or ask. MarsDawn can't do this step for you. Nothing can but you.</p>
 <p><strong>3. Look for steps that can't be undone.</strong> <em>(about a minute)</em> Deleting data, migrations, force-pushes, anything that sends, pays or publishes. Those wait for your explicit yes. Chip Huyen describes the same idea from the system's side: &#8220;If a plan involves risky operations, such as updating a database or merging a code change, the system can ask for explicit human approval before executing or defer to humans to execute these operations.&#8221; Here, step 4 deletes the originals, and it comes before step 5, the copy.</p>
 <p><strong>4. Read the diagrams rendered, and check each arrow against the text.</strong> A flowchart that says &#8220;copy &#8594; verify &#8594; delete&#8221; while the steps say otherwise is a finding. This plan has no diagram, so skip it today. When there is one, look at the picture, not the Mermaid source: many editors have a preview, and <a href="/view-markdown-on-mac/">How to view a Markdown file on a Mac</a> and <a href="/vs/markdown-preview-tools/">Viewing Markdown elsewhere</a> cover the options. In MarsDawn the rendered diagram sits beside its source (&#8984;2), and a broken diagram shows its source with the error underneath, which is worth a comment of its own.</p>
 <p><strong>5. List the files and systems the plan touches, and ask about anything you didn't request.</strong> <em>(steps 4 and 5 together, about a minute)</em> Here: the storage config, the templates, a folder on the server, a bucket. Who can read the bucket? You didn't say it should be public. If you opened the agent's working folder in MarsDawn (File &#9656; Open Folder&#8230;, &#8679;&#8984;O), new files it writes show up in the Files tab within about a second, and the header names the git branch or worktree, so you know which checkout you're reviewing.</p>
 <p><strong>6. Write feedback as place, problem, fix, one problem per line.</strong> <em>(the last minute)</em></p>
-<pre><code>plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
+<pre tabindex="0"><code>plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
 plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
 plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.</code></pre>
 <p>Any editor with line numbers will do. In MarsDawn, Edit &#9656; Copy Reference (&#8997;&#8984;C) copies your place as <code>plan.md:10</code>, and Copy for AI (&#8963;&#8997;&#8984;C) adds the selected text under it.</p>
@@ -176,7 +176,7 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
 
 <h2 id="try-it">Try it</h2>
 <p>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reviewing-agent-plans&amp;mt=8">Mac App Store</a>. There's also the free <code>marsdawn</code> command-line tool:</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="try-it"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>It exports Markdown to PDF without the app.</p>
 <p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
 

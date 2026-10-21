@@ -127,22 +127,22 @@ try {
 <div class="summary"><p><strong>One Markdown file, at <code>~/.claude/skills/marsdawn/SKILL.md</code>.</strong> With it your agent installs <code>marsdawn</code>, exports to PDF and reads the JSON result, and it still asks before it runs anything.</p></div>
 <h2 id="install-it-in-claude-code">Install it in Claude Code</h2>
 <p>The <code>marsdawn</code> command-line tool writes the skill for you, and the file it writes matches the version of <code>marsdawn</code> you have installed. If you don't have <code>marsdawn</code> yet, install it with <a href="https://brew.sh">Homebrew</a>:</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="install-it-in-claude-code"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>Then install the skill:</p>
 <pre><code>marsdawn skill --install</code></pre>
 <p>That writes <code>~/.claude/skills/marsdawn/SKILL.md</code>, creating the folder if it isn't there. Because the file comes from your copy of <code>marsdawn</code>, it never describes an option your copy doesn't have.</p>
 <p>Claude Code loads it when a task calls for a PDF, or when it has written or revised a Markdown document for you to read, and you can run it yourself as <code>/marsdawn</code>. It's <a href="/cli/skill/SKILL.md">one short file</a> if you'd like to read it first.</p>
 <h2 id="after-you-upgrade-marsdawn">After you upgrade marsdawn</h2>
 <p>Homebrew upgrades <code>marsdawn</code> but leaves the skill where it was, so it stays at the old version until you refresh it:</p>
-<pre><code>marsdawn skill --install --force</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="after-you-upgrade-marsdawn"><code>marsdawn skill --install --force</code></pre>
 <p><code>--force</code> replaces the existing <code>SKILL.md</code>, including any changes you made to it. Without <code>--force</code>, if a different <code>SKILL.md</code> is already there, <code>marsdawn</code> leaves it alone, tells you it differs and exits with code 64 (<code>skill_differs</code>). If the file is already the current one, nothing changes.</p>
 <h2 id="for-other-agents">For other agents</h2>
 <p>Add <code>--dir</code> with the folder where your agent keeps its skills, and <code>marsdawn</code> writes <code>SKILL.md</code> there instead:</p>
-<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="for-other-agents"><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
 <p>The file is plain Markdown, instructions and commands, so an agent that loads instruction files can use it as it is.</p>
 <h2 id="without-homebrew-or-the-command-line-tool">Without Homebrew or the command-line tool</h2>
 <p>If you can't install <code>marsdawn</code> first, download the file instead:</p>
-<pre><code>mkdir -p ~/.claude/skills/marsdawn
+<pre tabindex="0" role="region" aria-labelledby="without-homebrew-or-the-command-line-tool"><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <p>This fetches the latest skill from this site, which may be ahead of an older <code>marsdawn</code>. Once you have the tool, <code>marsdawn skill --install --force</code> replaces it with the one that matches. You can also point an agent at the URL, or paste the file in.</p>
 <h2 id="what-it-teaches">What it teaches</h2>

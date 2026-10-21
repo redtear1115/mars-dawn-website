@@ -317,6 +317,11 @@ pre code {
   overflow-wrap: normal;
   white-space: pre;
 }
+/* A code block wider than its box takes the keyboard so it can be scrolled (#271): the same ring as a film. */
+pre[tabindex]:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
 kbd {
   font: 0.85em var(--font);
   padding: 0.05em 0.4em;

@@ -144,7 +144,7 @@ try {
 <p>Si un agente de IA escribió el archivo, este es el ciclo para el que está hecho MarsDawn: el agente escribe, tú lo lees renderizado y el agente lo corrige. Consulta <a href="/es/">la página de inicio</a> y <a href="/es/cli/agents/">marsdawn para agentes</a> si quieres que un agente abra archivos por ti. Para saber por qué importa esa lectura y cómo revisar un plan, consulta <a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a> y <a href="/es/reviewing-agent-plans/">Revisar el plan de un agente en cinco minutos</a>.</p>
 <h2 id="without-the-app-turn-it-into-a-pdf">Sin la app: conviértelo en PDF</h2>
 <p>La herramienta de línea de comandos gratuita <code>marsdawn</code> renderiza un archivo Markdown como PDF, que cualquier Mac puede abrir. Las tablas, las fórmulas, los diagramas Mermaid y el código resaltado salen renderizados, y no necesita nada más instalado, ni siquiera la app MarsDawn.</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre tabindex="0" role="region" aria-labelledby="without-the-app-turn-it-into-a-pdf"><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <p><code>export</code> escribe <code>notes.pdf</code> junto al archivo Markdown, y <code>open</code> lo muestra en tu visor de PDF. Requiere macOS 15 o posterior. La guía paso a paso, con una página exportada real, está en <a href="/es/markdown-to-pdf/">Markdown a PDF</a>.</p>

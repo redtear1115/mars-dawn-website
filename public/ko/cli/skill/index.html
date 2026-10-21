@@ -127,22 +127,22 @@ try {
 <div class="summary"><p><strong><code>~/.claude/skills/marsdawn/SKILL.md</code>에 두는 Markdown 파일 하나.</strong> 이 파일이 있으면 에이전트가 <code>marsdawn</code>을 설치하고, PDF로 내보내고, JSON 결과를 읽습니다. 무언가를 실행하기 전에는 여전히 먼저 묻습니다.</p></div>
 <h2 id="install-it-in-claude-code">Claude Code에 설치하기</h2>
 <p>명령줄 도구 <code>marsdawn</code>가 스킬을 대신 써 주며, 써 주는 파일은 설치된 <code>marsdawn</code> 버전과 일치합니다. 아직 <code>marsdawn</code>가 없다면 <a href="https://brew.sh">Homebrew</a>로 설치하세요.</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="install-it-in-claude-code"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>그런 다음 스킬을 설치합니다.</p>
 <pre><code>marsdawn skill --install</code></pre>
 <p>이 명령은 <code>~/.claude/skills/marsdawn/SKILL.md</code>를 쓰고, 폴더가 없으면 만듭니다. 파일은 설치된 <code>marsdawn</code>에서 나오므로, 그 버전에 없는 옵션이 적히는 일은 없습니다.</p>
 <p>Claude Code는 PDF가 필요한 작업일 때, 또는 여러분이 읽을 Markdown 문서를 쓰거나 고쳤을 때 이 스킬을 불러옵니다. <code>/marsdawn</code>으로 직접 실행할 수도 있습니다. 먼저 내용을 읽어 보고 싶다면 <a href="/cli/skill/SKILL.md">짧은 파일 하나</a>입니다.</p>
 <h2 id="after-you-upgrade-marsdawn">marsdawn을 업그레이드한 뒤</h2>
 <p>Homebrew는 <code>marsdawn</code>를 업그레이드하지만 스킬은 그대로 두므로, 새로 고치기 전까지 예전 버전으로 남아 있습니다.</p>
-<pre><code>marsdawn skill --install --force</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="after-you-upgrade-marsdawn"><code>marsdawn skill --install --force</code></pre>
 <p><code>--force</code>는 기존 <code>SKILL.md</code>를, 직접 고친 부분까지 포함해 교체합니다. <code>--force</code> 없이 실행하면, 내용이 다른 <code>SKILL.md</code>가 이미 있을 때 <code>marsdawn</code>는 그 파일을 건드리지 않고 내용이 다르다고 알려 준 뒤 코드 64(<code>skill_differs</code>)로 종료합니다. 파일이 이미 최신이면 아무것도 바뀌지 않습니다.</p>
 <h2 id="for-other-agents">다른 에이전트의 경우</h2>
 <p><code>--dir</code>에 에이전트가 스킬을 두는 폴더를 지정하면 <code>marsdawn</code>가 <code>SKILL.md</code>를 그곳에 씁니다.</p>
-<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="for-other-agents"><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
 <p>이 파일은 지침과 명령으로 된 일반 Markdown이므로, 지침 파일을 불러오는 에이전트라면 그대로 쓸 수 있습니다.</p>
 <h2 id="without-homebrew-or-the-command-line-tool">Homebrew나 명령줄 도구가 없는 경우</h2>
 <p>먼저 <code>marsdawn</code>를 설치할 수 없다면 파일을 직접 내려받으세요.</p>
-<pre><code>mkdir -p ~/.claude/skills/marsdawn
+<pre tabindex="0" role="region" aria-labelledby="without-homebrew-or-the-command-line-tool"><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <p>이 방법은 이 사이트의 최신 스킬을 가져오므로, 오래된 <code>marsdawn</code>보다 앞서 있을 수 있습니다. 도구를 설치한 뒤에는 <code>marsdawn skill --install --force</code>로 거기에 맞는 것으로 교체할 수 있습니다. 에이전트에게 이 URL을 알려 주거나 파일을 붙여 넣어도 됩니다.</p>
 <h2 id="what-it-teaches">가르치는 내용</h2>

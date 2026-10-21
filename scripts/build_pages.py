@@ -19,6 +19,7 @@ import re
 import shutil
 import struct
 import sys
+import unicodedata
 from types import SimpleNamespace
 from html import escape as html_escape, unescape as html_unescape
 from html.parser import HTMLParser
@@ -6491,6 +6492,45 @@ def label_scroll_boxes(slug: str, html: str) -> str:
     return "".join(out)
 
 
+# Code blocks (#271) keep their lines and scroll sideways when a line is wider than the box. At 320px with a
+# classic (space-taking) scrollbar, a box has 241px for text and the code font (14.4px ui-monospace) takes
+# 8.67px a column, so 27 columns fit (CJK characters count two); a line wider than that scrolls there. Without
+# a scrollbar (phones) 31 fit, so 28 to 31 columns scroll only on a narrow desktop window. Those boxes are
+# focusable, so a keyboard reader can scroll them, and labelled the way label_scroll_boxes labels a table:
+# a region named by the heading just above, by the id the build gave it. Where that heading has no id (the
+# /cli/ command headings, h3), or names more than one such box (two regions may not share a name), the box
+# is focusable without a name: naming it would need new copy. The home page's install box wraps its line
+# instead (.install pre code), so it never scrolls and gets nothing.
+CODE_FITS = 27
+
+
+def _columns(line: str) -> int:
+    return sum(2 if unicodedata.east_asian_width(ch) in "WF" else 1 for ch in line)
+
+
+def label_code_boxes(html: str) -> str:
+    labels = {}  # the start of each box that scrolls: the id of the heading above it, or None
+    for m in re.finditer(r"<pre><code>(.*?)</code></pre>", html, re.S):
+        text = html_unescape(re.sub(r"<[^>]+>", "", m.group(1)))
+        install = html.rfind('<section class="install"', 0, m.start())
+        if install != -1 and html.find("</section>", install, m.start()) == -1:
+            continue
+        if max(_columns(line) for line in text.split("\n")) <= CODE_FITS:
+            continue
+        heads = re.findall(r"<h[1-4]\b[^>]*>", html[:m.start()])
+        label = re.search(r' id="([^"]+)"', heads[-1]) if heads else None
+        labels[m.start()] = label.group(1) if label else None
+    shared = {i for i in labels.values() if list(labels.values()).count(i) > 1}
+
+    def box(m: re.Match) -> str:
+        if m.start() not in labels:
+            return m.group(0)
+        label = labels[m.start()]
+        attrs = f' tabindex="0" role="region" aria-labelledby="{label}"' if label and label not in shared else ' tabindex="0"'
+        return f"<pre{attrs}><code>{m.group(1)}</code></pre>"
+    return re.sub(r"<pre><code>(.*?)</code></pre>", box, html, flags=re.S)
+
+
 # German compounds that are wider than a 320px phone line in a heading. Without a break opportunity,
 # overflow-wrap: break-word splits them at the last letter that fits (Datenschutzrichtlini/e); a soft
 # hyphen lets them break at a syllable, with a visible hyphen. Only the HTML headings get them: titles,
@@ -6778,6 +6818,7 @@ def render(locale: str, slug: str, page: dict) -> str:
     elif slug != "index":
         main_html = add_h2_ids(locale, slug, page, main_html)
     main_html = label_scroll_boxes(slug, main_html)
+    main_html = label_code_boxes(main_html)
     main_html = soft_hyphenate(locale, main_html)
     if slug in LEGAL_PAGES:
         # A visible link to this page's own .md mirror (issue #33), so a reader can see the
