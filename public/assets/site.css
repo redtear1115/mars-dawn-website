@@ -871,6 +871,14 @@ html { overflow-x: hidden; }
   text-wrap: pretty;
   text-shadow: 0 1px 14px color-mix(in srgb, #000 55%, transparent);
 }
+/* The sale line (price.py, sale phase only) sits in the hero copy but outside .hero, so it would
+   take the page's ink: on the sky, it is the hero sub (the Fixed Sky Rule). Under /pay-once/'s
+   intro it stays page text. */
+.hero-copy .sale-line {
+  color: var(--hero-sub);
+  text-wrap: pretty;
+  text-shadow: 0 1px 14px color-mix(in srgb, #000 55%, transparent);
+}
 
 .hero-shot { margin-top: clamp(36px, 8vw, 88px); }
 
