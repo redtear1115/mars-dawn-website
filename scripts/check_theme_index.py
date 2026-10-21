@@ -1414,6 +1414,21 @@ def rolled_back_head(repo):
     edit_index(lambda d: d.__setitem__("themes", [index_entry(doc, sha256(data))]))(repo, None)
 
 
+def declared_min_head(repo):
+    """olympus-dusk's theme.json declares minAppVersion 1.2.0: both the build input and the
+    published v1 copy carry it, and expected_min_app_version lifts the index entry to it."""
+    write_tree(repo)
+    doc = fixture_theme("olympus-dusk")
+    doc["minAppVersion"] = "1.2.0"
+    data = dumps(doc).encode()
+    write_file(repo, f"{THEMES_REL}/olympus-dusk/theme.json", data)
+    write_file(repo, f"{V1_REL}/olympus-dusk/1.0.0/theme.json", data)
+    published = read_json(repo, PUBLISHED_REL)
+    published["olympus-dusk/1.0.0/theme.json"] = sha256(data)
+    write_json(repo, PUBLISHED_REL, dict(sorted(published.items())))
+    edit_index(lambda d: d.__setitem__("themes", [index_entry(doc, sha256(data))]))(repo, None)
+
+
 MAINTAINER = PR(DEFAULT_MAINTAINER_IDS[0])
 BOT = PR(BOT_ID)
 OTHER = PR(12345)
@@ -1446,6 +1461,8 @@ RULES = [
      ["minAppVersion is '1.1.1'", "it must be '1.1.0'"]),
     ("theme.minAppVersion below the gallery's first app version", edit_entry(lambda t: t.__setitem__("minAppVersion", "1.0.9")),
      ["minAppVersion is '1.0.9'", "it must be '1.1.0'"]),
+    ("theme.minAppVersion below the theme.json declaration", edit_entry(lambda t: t.__setitem__("minAppVersion", "1.1.0")),
+     ["minAppVersion is '1.1.0'", "it must be '1.2.0'"], MAINTAINER, declared_min_head, declared_min_head),
     ("theme.name wrong type", edit_entry(lambda t: t.__setitem__("name", "Olympus Dusk")), ["name must be an object"]),
     ("theme.summary missing 'en'", edit_entry(lambda t: t.__setitem__("summary", {})), ["summary must be an object"]),
     ("theme.author wrong type", edit_entry(lambda t: t.__setitem__("author", "Jane Doe")), ["author must be an object"]),

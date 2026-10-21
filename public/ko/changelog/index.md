@@ -1,15 +1,77 @@
 # 변경 내역
 
-무료 marsdawn 명령줄 도구에서 바뀐 점입니다. Mac App Store의 MarsDawn 빌드는 따로 적을 내용이 있을 때만 여기에 언급합니다. 0.5.1 이전 버전은 싣지 않았습니다.
+Mac App Store의 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버전마다 바뀐 점입니다. 앱의 날짜는 해당 버전이 Mac App Store에 출시된 날입니다.
 
-## marsdawn 0.6.3
+## MarsDawn 앱
+
+### MarsDawn 1.1.1
+
+2026년 10월 15일
+
+- 독일어, 일본어, 스페인어, 프랑스어에서는 설정 > 화면 모드 > “테마 더 받기…”의 시나리오 필터가 이제 “시나리오”라는 레이블의 팝업 메뉴로 표시되어 다섯 가지 선택 항목이 모두 들어갑니다. 영어, 한국어, 중국어에서는 계속 세그먼트 컨트롤을 사용합니다.
+- 테마가 갤러리에서 철회되면 “테마 더 받기…”의 알림에 이제 내부 ID 대신 테마 이름(예: Inkwell Ivory)이 표시됩니다.
+- GitHub 방식으로 작성한 접을 수 있는 details 섹션이 이제 미리보기와 훑어보기에서 요약이 보이는 접힌 상태로 시작하며, 클릭하면 펼쳐집니다. PDF로 내보내기는 여전히 모든 섹션의 내용을 인쇄합니다.
+- Finder, Dock, 파일 > “열기…” 또는 marsdawn open 명령으로 연 문서가 이제 맨 앞 윈도우의 탭으로 열리며, 새 문서도 마찬가지입니다. 이전 방식을 유지하려면 설정 > 화면 모드에서 “시스템 설정 따르기”를 선택하세요.
+
+이전 버전의 설명은 영어로만 제공됩니다. [영어 변경 내역 보기](/changelog/)
+
+## marsdawn 명령줄 도구
+
+0.5.1 이전 버전은 싣지 않았습니다.
+
+### marsdawn 0.7.2
+
+2026년 10월 20일. 설명서 레이아웃, 콜아웃, 일본어 글꼴.
+
+- `--layout`의 값이 `handbook`으로 바뀌었습니다. 앱의 설명서(Handbook) 레이아웃과 같은 이름입니다: `marsdawn export --layout handbook`. `--layout manual`도 쓸 수 있지만 더 이상 권장하지 않습니다.
+- 미리보기와 내보낸 PDF 모두에서 콜아웃을 표시합니다. GitHub 알림(`> [!NOTE]`, `> [!WARNING]` 등)과 HackMD 컨테이너(`:::info`, `:::warning` 등)를 지원합니다. `:::spoiler`는 접을 수 있는 섹션이 됩니다.
+- 일본어 문서는 가나와 한자에 일본어 글꼴을 씁니다. 언어는 front matter의 `lang: ja`에서, 없으면 본문의 가나 비율로 판단합니다.
+- 터미널에서 `export`나 `open`이 성공한 뒤, 에이전트 스킬이 설치되어 있지 않거나 오래된 버전이면 stderr에 안내를 한 번 표시합니다. stdout과 `--json` 출력은 바뀌지 않습니다. `MARSDAWN_NO_SKILL_HINT=1`로 설정하면 표시하지 않습니다.
+
+### marsdawn 0.7.1
+
+2026년 10월 20일. 설명서 레이아웃과 파일 크기 상한.
+
+- `marsdawn export --layout manual`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽에 25mm를 남기며, 최상위 제목마다 새 페이지에서 시작합니다. front matter의 title, subtitle, version, date, author, logo로 만든 표지, 1·2단계 제목을 페이지 번호와 함께 나열한 목차, `n / N` 페이지 번호, PDF 책갈피도 들어갑니다. 목차 페이지의 제목은 `--toc-title`로 정합니다. 기본값은 여전히 `--layout document`입니다.
+- 한 줄에 단독으로 쓴 `<!--BREAK-->`는 새 페이지를 시작합니다. 두 레이아웃 모두 해당합니다.
+- `marsdawn export`는 16MiB를 넘는 파일을 처리하지 않습니다. 코드 5로 종료하고, `--json`에서는 `input_too_large`를 알리며, 아무것도 쓰지 않습니다.
+- 미리보기 페이지는 script와 noscript 요소를 없앱니다. Mermaid 다이어그램을 다시 그릴 때는 그 다이어그램의 SVG를 유지합니다.
+- 디코딩하면 `=`나 `^`가 되는 문자 참조(예: `&#61;`)는 더 이상 HackMD 표시와 짝을 이루지 않습니다.
+
+### marsdawn 0.7.0
+
+2026년 10월 18일. HackMD 문법, 줄바꿈, 아주 큰 문서의 상한.
+
+- HackMD의 인라인 표시 `==mark==`, `^sup^`, `~sub~`를 렌더링합니다. `[TOC]`만 있는 문단은 목차가 되고, HackMD 방식의 이미지 크기가 적용되며, 임베드 태그는 일반 https 링크가 됩니다. 코드 펜스의 언어는 `js=` 같은 HackMD 옵션보다 먼저 읽습니다.
+- `marsdawn export --breaks`는 HackMD처럼 문단 안의 모든 줄바꿈을 줄바꿈으로 표시합니다. 주지 않으면 중국어나 일본어 글자 두 개 사이의 줄바꿈은 없어져 앞뒤 줄이 한 문장으로 이어집니다. 한국어는 단어를 띄어 쓰므로 공백을 유지합니다.
+- 아주 큰 문서에는 미리보기와 내보낸 PDF 모두에 상한이 있습니다. 128K자를 넘는 코드 블록은 구문 강조를 하지 않고, 합계 256K자를 넘으면 구문 강조를 멈춥니다. 한 번 업데이트할 때 Mermaid 다이어그램은 100개, 수식은 1,000개까지 렌더링합니다. 나머지 다이어그램은 전에 그린 적이 있더라도 안내와 함께 소스를 보여 줍니다.
+- 시퀀스 다이어그램에서 `rect` 블록 안의 메시지 레이블 둘레가 그 블록의 색이 됩니다.
+- 표 바로 위에 각주 참조가 있어도 `marsdawn export`가 더 이상 비정상 종료되지 않습니다.
+- `marsdawn skill --install`은 폴더를 만들 수 없거나 파일을 쓸 수 없을 때 코드 7(`skill_install_failed`)로 종료합니다. 기존 SKILL.md는 그대로 둡니다.
+
+### marsdawn 0.6.4
+
+2026년 10월 13일. 접을 수 있는 `<details>` 블록.
+
+- GitHub 방식의 `<details>` 블록은 안에 빈 줄이 있어도 접을 수 있는 하나의 요소로 렌더링됩니다. 미리보기와 내보낸 PDF 모두 같습니다. 이전에는 첫 빈 줄에서 나뉘었습니다.
+- PDF로 내보낼 때는 인쇄하기 전에 모든 `<details>` 블록을 펼칩니다(front matter 제외).
+- `<details>` 블록을 펼치거나 접어도 미리보기의 스크롤 위치가 그대로 유지됩니다.
+
+### marsdawn 0.6.3
 
 2026년 10월 6일. MarsDawn이 Mac App Store에 출시되었습니다.
 
 - 앱이 설치되어 있지 않으면 `marsdawn open`이 Mac App Store의 MarsDawn을 안내합니다.
 - README와 에이전트 스킬에서 `marsdawn open .`과 `--folder` 사용법을 안내합니다. MarsDawn 1.0.0은 윈도우의 사이드바에 폴더를 보여줍니다.
 
-## marsdawn 0.5.4
+### marsdawn 0.6.1
+
+2026년 9월 29일. 테마 확인.
+
+- `marsdawn theme validate`는 앱과 같은 규칙으로 `theme.json`을 확인합니다. 테마가 올바르면 코드 0, 아니면 코드 1로 종료하며 문제를 하나씩 보여 줍니다. `--require-complete`를 주면 구문 강조와 다이어그램 색상도 요구합니다.
+- `marsdawn theme css`는 올바른 테마에 대해 미리보기가 쓰는 CSS를 출력하고, `marsdawn theme preview`는 그 테마로 샘플 문서를 라이트나 다크 PNG로 렌더링합니다.
+
+### marsdawn 0.5.4
 
 2026년 9월 26일. Mermaid 수정, 다이어그램 오류의 줄 번호, 스킬 설치.
 
@@ -18,7 +80,7 @@
 - `marsdawn export --json`에 `diagramErrorDetails`가 추가되어 다이어그램 오류마다 줄 번호를 알려줍니다. 문서에서 다이어그램이 시작하는 위치와, Mermaid가 지목하는 경우 오류가 난 줄 자체입니다.
 - `marsdawn skill --install`은 Claude Code용 에이전트 스킬을 `~/.claude/skills/marsdawn/SKILL.md`에, 또는 `--dir`로 지정한 다른 폴더에 설치합니다. 같은 파일이 있으면 그대로 두고, 다른 파일은 `--force`를 줄 때만 바꿉니다. 그렇지 않으면 종료 코드 64(`skill_differs`)로 끝나며 아무것도 바꾸지 않습니다.
 
-## marsdawn 0.5.3
+### marsdawn 0.5.3
 
 2026년 9월 25일. 폴더 상태, Mermaid 오류 전문, 작은 수정들.
 
@@ -28,7 +90,7 @@
 - 앱이 PDF 내보내기와 프린트용으로 각주 되돌아가기 링크에 번역된 레이블을 붙일 수 있습니다. 이 레이블은 페이지에 인쇄되지 않으며, `marsdawn export`는 영어 레이블을 유지합니다.
 - 함께 들어 있는 highlight.js가 이제 KaTeX, Mermaid처럼 버전, 출처, SHA-256으로 고정됩니다.
 
-## marsdawn 0.5.2
+### marsdawn 0.5.2
 
 2026년 9월 24일. 각주, 대비, 폴더.
 
@@ -40,7 +102,7 @@
 - 이미지 자리 표시자가 아주 긴 상대 경로 뒤에 있는 절대 경로를 더는 보여주지 않습니다.
 - `MARSDAWN_APP_PATH`는 MarsDawn 앱을 가리킬 때만 사용됩니다.
 
-## marsdawn 0.5.1
+### marsdawn 0.5.1
 
 2026년 9월 19일. PDF 내보내기와 명령줄에서 파일 열기.
 
@@ -93,10 +155,10 @@
 - [명세서 템플릿](https://marsdawn.southern-light.dev/ko/templates/spec/index.md): 요구 사항, Mermaid 흐름도, 인수 기준이 들어 있는 Markdown 명세서 템플릿입니다. 에이전트가 채우고, 여러분은 MarsDawn에서 검토하세요.
 - [순서도 템플릿](https://marsdawn.southern-light.dev/ko/templates/flowchart/index.md): Markdown으로 쓰는 Mermaid 순서도 템플릿으로, 다이어그램 아래에 단계를 풀어 씁니다. Mac에서 미리 보고 PDF로 내보내세요.
 - [회의록 템플릿](https://marsdawn.southern-light.dev/ko/templates/meeting-notes/index.md): 결정 사항과 담당자가 정해진 실행 항목을 정리하는 Markdown 회의록 템플릿입니다. 에이전트가 쓰고, 여러분은 MarsDawn에서 확인하세요.
-- [English](https://marsdawn.southern-light.dev/changelog/index.md): What changed in the free marsdawn command-line tool.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/changelog/index.md): 免費的 marsdawn 命令列工具改了什麼。
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): 免费的 marsdawn 命令行工具改了什么。
-- [日本語](https://marsdawn.southern-light.dev/ja/changelog/index.md): 無料の marsdawn コマンドラインツールの変更点です。
-- [Deutsch](https://marsdawn.southern-light.dev/de/changelog/index.md): Was sich im kostenlosen Befehlszeilenprogramm marsdawn geändert hat.
-- [Français](https://marsdawn.southern-light.dev/fr/changelog/index.md): Ce qui a changé dans l’outil en ligne de commande gratuit marsdawn.
-- [Español](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en la herramienta de línea de comandos gratuita marsdawn.
+- [English](https://marsdawn.southern-light.dev/changelog/index.md): What changed in each version of the MarsDawn app and the free marsdawn CLI.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/changelog/index.md): MarsDawn App 與免費的 marsdawn 命令列工具，每個版本改了什麼。
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): MarsDawn App 与免费的 marsdawn 命令行工具，每个版本改了什么。
+- [日本語](https://marsdawn.southern-light.dev/ja/changelog/index.md): MarsDawn アプリと無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。
+- [Deutsch](https://marsdawn.southern-light.dev/de/changelog/index.md): Was sich in jeder Version der MarsDawn-App und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat.
+- [Français](https://marsdawn.southern-light.dev/fr/changelog/index.md): Ce qui a changé dans chaque version de l’app MarsDawn et de l’outil en ligne de commande gratuit marsdawn.
+- [Español](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en cada versión de la app MarsDawn y de la herramienta de línea de comandos gratuita marsdawn.

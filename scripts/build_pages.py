@@ -13,6 +13,7 @@ The app lives in another repository, so check them by hand when either side chan
 Static output, no build step at deploy time. Edit the copy here and rerun:
     python3 scripts/build_pages.py
 """
+import copy as _copy
 import json
 import re
 import shutil
@@ -28,10 +29,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untracked file after a build
 import article_dates  # noqa: E402
 import locales  # noqa: E402
+import price  # noqa: E402
 import theme_agents  # noqa: E402
 from promo130 import data as promo_data  # noqa: E402
 from best228 import data as best_data  # noqa: E402
 from ia247 import data as ia_data  # noqa: E402
+from tmde130 import data as changelog_data  # noqa: E402
+from cli254 import data as cli254_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
@@ -1226,12 +1230,23 @@ SCHEMA_FILES = {
     "open_v1": "open.v1.json",
     "error_v1": "error.v1.json",
     "error_v3": "error.v3.json",
+    "error_v4": "error.v4.json",
+    "open_v4": "open.v4.json",
 }
 # error.v3.json (marsdawn 0.7.1) adds skill_install_failed (exit 7, in the kit since the skill command but
 # missing from v2) and input_too_large (exit 5, like export_failed); kit PR #184, Commands.swift CLIFailure.
-# It is written to public/schemas but deliberately not in SCHEMA_ORDER yet: listing it needs per-locale
-# SCHEMA_NOTES copy, which comes from Grok.
-SCHEMA_ORDER = ("export", "open", "error", "open_v2", "open_v1", "error_v1")
+# error.v4.json (#295) is v3 plus the usage errors (exit 64) that print JSON with --json: a bad --wait
+# since 0.5.3, skill --install's refusals since 0.5.4, theme preview's refused -o since 0.6.1. v1 to v3
+# say every exit-64 error is text on stderr, which hasn't been true since 0.5.3. Kit b6995697 (0.7.2):
+# Commands.swift WaitRangeFailure, SkillInstallFailure, OutputPathFailure; main.swift finish(). Written
+# but deliberately not in SCHEMA_ORDER yet: listing it needs per-locale SCHEMA_NOTES copy, which comes
+# from Grok (#295).
+# open.v4.json (website #254): with --wait and an app that reports back (marsdawn 0.5.3 and later), `folder`
+# also carries `status` and, only alongside needsUser, `waitingFor`. open.v3.json's folder forbids both, so a
+# real 0.5.3+ result failed it. Taken from redtear1115/mars-dawn-kit @ b6995697 (0.7.2): README.md:71,
+# Sources/marsdawn/Commands.swift folderFields(), FolderStatusRequest.swift FolderStatus / FolderWaitingFor.
+# Each new schema is listed just before the one it follows; the per-locale notes come from scripts/cli254.
+SCHEMA_ORDER = ("export", "open_v4", "open", "error_v3", "error", "open_v2", "open_v1", "error_v1")
 
 THEME_IDS = ["dawn", "classic", "modern", "vivid"]
 PAPER_SIZES = ["a4", "letter"]
@@ -1239,6 +1254,13 @@ PAPER_SIZES = ["a4", "letter"]
 ERROR_KINDS_V1 = ["input_not_found", "app_not_installed", "output_exists", "export_failed"]
 ERROR_KINDS = ERROR_KINDS_V1 + ["app_cannot_open_folders"]
 ERROR_KINDS_V3 = ERROR_KINDS + ["skill_install_failed", "input_too_large"]
+# The usage errors (exit 64) that print a kind with --json, in the kit's declaration order.
+USAGE_ERROR_KINDS = [
+    "wait_out_of_range",
+    "skill_differs", "skill_unsafe_symlink", "skill_target_not_a_file", "skill_unreadable",
+    "output_folder_missing", "output_symlink", "output_not_a_file",
+]
+ERROR_KINDS_V4 = ERROR_KINDS_V3 + USAGE_ERROR_KINDS
 
 
 def schema_url(kind: str) -> str:
@@ -1414,6 +1436,20 @@ SCHEMAS = {
             "message": {"type": "string", "description": "Human-readable explanation."},
         },
     },
+    "error_v4": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": schema_url("error_v4"),
+        "title": "marsdawn --json: failure",
+        "description": "Printed on stdout as one line when a command run with --json fails: with exit code 2, 3, 4, 5, 6 or 7, or with exit code 64 for the usage errors that have a kind (an out-of-range --wait, skill --install's refusals, theme preview's refused -o). Other usage errors (exit code 64) are printed as text on stderr instead. marsdawn 0.7.1 and later; error.v3.json, for the same releases, leaves out the exit-64 kinds. error.v2.json is for 0.5.2\u20130.7.0, error.v1.json for 0.5.1 and earlier.",
+        "type": "object",
+        "required": ["ok", "error", "message"],
+        "additionalProperties": False,
+        "properties": {
+            "ok": {"const": False},
+            "error": {"enum": ERROR_KINDS_V4, "description": "Machine-readable failure kind."},
+            "message": {"type": "string", "description": "Human-readable explanation."},
+        },
+    },
     "error_v1": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": schema_url("error_v1"),
@@ -1429,6 +1465,27 @@ SCHEMAS = {
         },
     },
 }
+FOLDER_STATUSES = ["attached", "needsUser", "declined", "failed", "attachedDifferentFolder", "full", "unavailable", "unknown"]
+SCHEMAS["open_v4"] = _copy.deepcopy(SCHEMAS["open"])
+SCHEMAS["open_v4"].update({
+    "$id": schema_url("open_v4"),
+    "description": "Printed on stdout as one line when `marsdawn open --json` succeeds (exit code 0). marsdawn 0.5.3 and later; open.v3.json is for 0.5.1 and 0.5.2.",
+})
+SCHEMAS["open_v4"]["properties"]["folder"]["properties"].update({
+    "status": {
+        "enum": FOLDER_STATUSES,
+        "description": "What the app did with the folder, once the wait ends. Present only with --wait above 0 and an app that reports back (MarsDawnReportsFolderStatus in its Info.plist); otherwise the folder carries only path and requested.",
+    },
+    "waitingFor": {
+        "enum": ["confirmation", "folderChoice"],
+        "description": "What the app is waiting for from the person. Present only alongside status needsUser.",
+    },
+})
+SCHEMAS["open_v4"]["properties"]["folder"].update({
+    "if": {"required": ["status"], "properties": {"status": {"const": "needsUser"}}},
+    "then": {"required": ["waitingFor"]},
+    "else": {"not": {"required": ["waitingFor"]}},
+})
 
 
 SCHEMA_NOTES = {
@@ -1449,6 +1506,10 @@ SCHEMA_NOTES = {
         "error_v1": "兩個指令的失敗結果，marsdawn 0.5.1 以前",
     },
 }
+
+
+for _locale in ("en", "zh-hant"):
+    SCHEMA_NOTES[_locale].update(cli254_data.DATA[_locale]["schema_notes"])
 
 
 def schema_links(locale: str) -> str:
@@ -1842,7 +1903,7 @@ EXIT_CODES = [
     (2, "input_not_found", "The input file isn't there."),
     (3, "app_not_installed", "MarsDawn isn't installed. Only `open` returns this."),
     (4, "output_exists", "The PDF (or `theme preview`'s PNG) already exists. Pass --force to replace it, or -o to write elsewhere."),
-    (5, "export_failed", "Rendering failed."),
+    (5, "export_failed", "Rendering failed. With `--layout handbook` that includes a document whose page numbers couldn't be worked out; nothing is written, so retry with the `document` layout."),
     (5, "input_too_large", 'The input is larger than 16 MiB (16,777,216 bytes), the most `export` renders. Nothing was written. Only `export` returns this.'),
     (6, "app_cannot_open_folders", "This MarsDawn can't show a folder, so nothing was opened. Only `open` returns this."),
     (7, "skill_install_failed", "`skill --install` couldn't create the folder or write the file, or the final rename failed. An existing SKILL.md is left as it was. Only `skill --install` returns this."),
@@ -3780,6 +3841,15 @@ Options: `-o out.pdf` (default: beside the input), `--theme {"|".join(THEME_IDS)
 a newline is a space, except between two Chinese or Japanese characters, where it is
 dropped.
 
+`--layout document|handbook` picks the page layout (default `document`; `manual`, the 0.7.1 name,
+still works but is deprecated). `handbook` is the Handbook layout: wider margins with a 25 mm binding side, every
+top-level heading on a new page, a table of contents of the level 1 and 2 headings, "n / N" page
+numbers and PDF bookmarks. A cover comes first when the front matter has a `title`; it also shows
+`subtitle`, `version`, `date`, `author` and `logo` (an image path) when present.
+`--toc-title "<text>"` sets the contents heading (default `Contents`) and only applies to
+`handbook`. A line holding only `<!--BREAK-->` starts a new page, in either layout. The JSON result
+doesn't say which layout was used.
+
 On success it exits 0 and prints one JSON line:
 
 {fields}
@@ -4844,7 +4914,8 @@ def _make_k(locale: str) -> SimpleNamespace:
     return SimpleNamespace(
         EMAIL=EMAIL, UPDATED=UPDATED, BASE_URL=BASE_URL,
         KIT_URL=KIT_URL, BREW_TAP_INSTALL=BREW_TAP_INSTALL, LISTING_URL=LISTING_URL, INSTALL=_INSTALL, SKILL_URL=_SKILL_URL,
-        APP_UI_LANGUAGES=APP_UI_LANGUAGES.get(locale, ""), schema_links_from=schema_links_from, xml_escape=xml_escape,
+        APP_UI_LANGUAGES=APP_UI_LANGUAGES.get(locale, ""), xml_escape=xml_escape,
+        schema_links_from=lambda notes: schema_links_from({**notes, **cli254_data.DATA[locale]["schema_notes"]}),
         render_legal_body=render_legal_body,
         theme_agents_page=lambda copy: theme_agents.page(LOCALES[locale]["root"], copy),
         features_page=features_page,
@@ -4860,6 +4931,7 @@ def _merge_locale(locale: str, module) -> None:
     assert set(t["ui"]) == set(UI["en"]), f"{locale}: UI keys differ from en"
     UI[locale] = t["ui"]
     STORE_CHIP[locale] = t["store_chip"]
+    t["schema_notes"] = {**t["schema_notes"], **cli254_data.DATA[locale]["schema_notes"]}
     assert set(t["schema_notes"]) == set(SCHEMA_NOTES["en"]), f"{locale}: schema notes differ from en"
     SCHEMA_NOTES[locale] = t["schema_notes"]
     EXAMPLE_PLAN[locale] = t["example_plan"]
@@ -5552,7 +5624,7 @@ def all_pages() -> dict:
             body = "".join(pieces[:3]) + brand_film_themes.MARK + "\n" + "".join(pieces[3:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return apply_best228(apply_promo130(apply_seo_copy(merged)))
+    return apply_app_changelog(apply_cli254(apply_best228(apply_promo130(apply_seo_copy(merged)))))
 
 
 # --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
@@ -5839,6 +5911,181 @@ def apply_best228(merged: dict) -> dict:
         assert sep and not tail.strip(), f"{locale}/vs: the body does not end with its link list"
         link = f'  <li><a href="{page_path(locale, BEST228_SLUG)}">{UI[locale][BEST228_SLUG]}</a></li>\n'
         out[(locale, "vs")] = {**hub, "body": head + link + "</ul>" + tail}
+    return out
+
+
+# --- /cli/, /cli/agents/ and /changelog/ catch up with marsdawn 0.7.2 (website #254) -----------------------
+# The copy is scripts/cli254/data.py, carried by scripts/cli254/ingest.py from the pinned issue comments, never
+# typed. Each piece goes at a place found by the pages' structure (the h3 of a command, the list item of an
+# option, a version heading), not by its words, so every locale's page takes it the same way.
+def _cli254_li(items: list) -> str:
+    return "".join(f"  <li>{rich_pages.md_inline(item)}</li>\n" for item in items)
+
+
+def _cli254_blocks(md: str) -> str:
+    """#254's paragraphs and bullet lists. Not rich_pages.md_blocks: that makes a paragraph whose lines
+    start with "<number>. " an ordered list, and a German date line ("20. Oktober 2026. ...") is exactly
+    that. The copy has no numbered lists, so anything that isn't a "- " list is a paragraph."""
+    parts = []
+    for chunk in re.split(r"\n\s*\n", md.strip()):
+        lines = chunk.split("\n")
+        if all(line.startswith("- ") for line in lines):
+            parts.append("<ul>\n" + "".join(f"  <li>{rich_pages.md_inline(line[2:])}</li>\n" for line in lines) + "</ul>")
+        else:
+            parts.append(f"<p>{rich_pages.md_inline(' '.join(lines))}</p>")
+    return "\n".join(parts)
+
+
+def _cli254_entry(md: str) -> str:
+    head, _, rest = md.partition("\n\n")
+    return f"<h2>{html_escape(head[3:], quote=False)}</h2>\n{_cli254_blocks(rest)}\n\n"
+
+
+def _cli254_section(body: str, start: str, page: str) -> tuple:
+    """(before, section, after): section runs from the h3 start to the next h2 or h3."""
+    i = body.index(start)
+    m = re.compile(r"\n<h[23][ >]").search(body, i + len(start))
+    assert m, f"{page}: {start} has no end"
+    return body[:i], body[i:m.start() + 1], body[m.start() + 1:]
+
+
+def _cli254_before_li(section: str, option: str, html: str, page: str) -> str:
+    mark = f"  <li><code>{option}</code>"
+    assert section.count(mark) == 1, f"{page}: {option} item found {section.count(mark)} times"
+    return section.replace(mark, html + mark)
+
+
+def _cli254_after_li(section: str, option: str, html: str, page: str) -> str:
+    m = list(re.finditer(rf"  <li><code>{re.escape(option)}</code>.*?</li>\n", section))
+    assert len(m) == 1, f"{page}: {option} item found {len(m)} times"
+    return section[:m[0].end()] + html + section[m[0].end():]
+
+
+def cli254_cli(body: str, d: dict, page: str) -> str:
+    before, sec, after = _cli254_section(body, "<h3>marsdawn open</h3>", page)
+    sec = _cli254_before_li(sec, "--background", _cli254_li(d["open_items"]), page)
+    sec, n = re.subn(r"(</ul>\n)<p>[^\n]*</p>\n", lambda m: m.group(1) + f"<p>{rich_pages.md_inline(d['open_since'])}</p>\n", sec)
+    assert n == 1, f"{page}: open's version sentence found {n} times"
+    body = before + sec + after
+    before, sec, after = _cli254_section(body, "<h3>marsdawn export</h3>", page)
+    sec = _cli254_before_li(sec, "--allow-remote-images", _cli254_li(d["export_items"]), page)
+    sec = _cli254_after_li(sec, "--json", _cli254_li(d["export_after_json"]), page)
+    assert sec.count("</ul>\n") == 1, f"{page}: export has more than one list"
+    sec = sec.replace("</ul>\n", f"</ul>\n<p>{rich_pages.md_inline(d['export_since'])}</p>\n")
+    head, _, rest = d["theme_section"].partition("\n\n")
+    intro, _, rest = rest.partition("\n\n")
+    theme = (f"<h3>{html_escape(head[4:], quote=False)}</h3>\n<p>{rich_pages.md_inline(intro)}</p>\n"
+             f"<pre><code>{html_escape(cli254_data.SHARED['theme_example'], quote=False)}</code></pre>\n"
+             f"{_cli254_blocks(rest)}\n\n")
+    return before + sec.rstrip("\n") + "\n\n" + theme + after
+
+
+def cli254_agents(body: str, d: dict, page: str) -> str:
+    i = body.index('"requested":true')
+    head, tail = body[:i], body[i:]
+    return head + _cli254_after_li(tail, "folder", _cli254_li(d["agents_folder_items"]), page)
+
+
+def cli254_changelog(body: str, d: dict, page: str) -> str:
+    entries = d["changelog"]
+    newer = "".join(_cli254_entry(entries[v]) for v in ("0.7.2", "0.7.1", "0.7.0", "0.6.4") if v in entries)
+    for heading, html in (("<h2>marsdawn 0.6.3</h2>", newer), ("<h2>marsdawn 0.5.4</h2>", _cli254_entry(entries["0.6.1"]))):
+        assert body.count(heading) == 1, f"{page}: {heading} found {body.count(heading)} times"
+        body = body.replace(heading, html + heading)
+    return body
+
+
+def apply_cli254(merged: dict) -> dict:
+    out = dict(merged)
+    for locale in LOCALES:
+        d = cli254_data.DATA[locale]
+        for slug, fn in (("cli", cli254_cli), ("cli/agents", cli254_agents), ("changelog", cli254_changelog)):
+            page = out.get((locale, slug))
+            if page is not None:
+                out[(locale, slug)] = {**page, "body": fn(page["body"], d, f"{locale}/{slug}")}
+    return out
+
+
+# --- /changelog/'s app section (website #273) ---------------------------------------------------------
+# The app's versions come first, then the CLI's. Each app version's What's New is the text it has on the
+# Mac App Store, vendored by scripts/tmde130/ingest.py from the app repo's approved release notes into
+# vendor/app-release-notes/whats-new.json; the page copy around it is scripts/tmde130/data.py's. A locale
+# gets a version only if the App Store has that version in its language, and a locale that misses one gets
+# the "earlier versions are in English only" line. The CLI entries keep their text and their anchors
+# (#marsdawn-0-6-3 and so on), now as h3 under the CLI heading. scripts/check_app_changelog.py checks it.
+APP_NOTES = json.loads((ROOT / "vendor" / "app-release-notes" / "whats-new.json").read_text(encoding="utf-8"))
+CHANGELOG_MONTHS = {
+    "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+           "November", "December"],
+    "de": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober",
+           "November", "Dezember"],
+    "fr": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre",
+           "novembre", "décembre"],
+    "es": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
+           "noviembre", "diciembre"],
+}
+
+
+def changelog_date(locale: str, iso: str) -> str:
+    """A date as the CLI entries on the same page write it (6 October 2026, 2026 年 10 月 6 日, ...)."""
+    y, m, d = (int(n) for n in iso.split("-"))
+    if locale in ("zh-hant", "zh-hans"):
+        return f"{y} 年 {m} 月 {d} 日"
+    if locale == "ja":
+        return f"{y}年{m}月{d}日"
+    if locale == "ko":
+        return f"{y}년 {m}월 {d}일"
+    month = CHANGELOG_MONTHS[locale][m - 1]
+    if locale == "de":
+        return f"{d}. {month} {y}"
+    if locale == "es":
+        return f"{d} de {month} de {y}"
+    if locale == "fr" and d == 1:
+        return f"1er {month} {y}"
+    return f"{d} {month} {y}"
+
+
+def app_versions_html(locale: str) -> str:
+    copy = changelog_data.DATA[locale]
+    to_store = {site: store for store, site in APP_NOTES["locale_map"].items()}
+    parts, omitted = [], False
+    for entry in APP_NOTES["versions"]:
+        notes = entry["whatsNew"].get(to_store[locale])
+        if notes is None:
+            omitted = True
+            continue
+        v = entry["version"]
+        head = (f'<h3 id="app-{v.replace(".", "-")}">MarsDawn {v}</h3>\n'
+                f'<p>{changelog_date(locale, entry["released"])}</p>\n')
+        if notes:
+            bullets = "\n".join(f"  <li>{html_escape(line[2:], quote=False)}</li>" for line in notes.split("\n"))
+            parts.append(head + f"<ul>\n{bullets}\n</ul>")
+        else:
+            parts.append(head + f'<p>{copy["first_release"]}</p>')
+    if omitted:
+        parts.append(f'<p>{copy["earlier"]}</p>')
+    return f'<h2>{copy["app_h"]}</h2>\n\n' + "\n\n".join(parts)
+
+
+def apply_app_changelog(merged: dict) -> dict:
+    """merged with /changelog/ covering the app and the CLI, in every locale that has the page."""
+    out = dict(merged)
+    for locale in LOCALES:
+        page = out.get((locale, "changelog"))
+        if page is None:
+            continue
+        copy = changelog_data.DATA[locale]
+        intro, n = re.subn(r'(<section class="intro">\s*<h1>[^<]*</h1>\s*<p>)[^<]*(</p>\s*</section>)',
+                           lambda m: m.group(1) + copy["intro"] + m.group(2), page["body"], count=1)
+        assert n == 1, f"{locale}/changelog: no intro paragraph"
+        head, sep, cli = intro.partition("</section>")
+        versions = re.findall(r"<h2>(marsdawn [0-9.]+)</h2>", cli)
+        assert versions and len(versions) == len(re.findall(r"<h2", cli)), f"{locale}/changelog: a heading is not a CLI version"
+        cli = re.sub(r"<h2>(marsdawn ([0-9.]+))</h2>",
+                     lambda m: f'<h3 id="marsdawn-{m.group(2).replace(".", "-")}">{m.group(1)}</h3>', cli)
+        body = (head + sep + "\n\n" + app_versions_html(locale) + "\n\n"
+                + f'<h2>{copy["cli_h"]}</h2>\n<p>{copy["cli_line"]}</p>\n\n' + cli.lstrip("\n"))
+        out[(locale, "changelog")] = {**page, "description": copy["description"], "body": body}
     return out
 
 
@@ -6272,9 +6519,9 @@ def soft_hyphenate(locale: str, html: str) -> str:
 
 
 # --- Structured data (schema.org JSON-LD) ------------------------------------------------------
-# What the home page says about the app. APP_VERSION is the Mac app's current release (1.1.0 went on
-# sale 2026-10-09): raise it with each release, together with the app's own version.
-APP_VERSION = "1.1.0"
+# What the home page says about the app. APP_VERSION is the Mac app's current release: the newest version
+# in vendor/app-release-notes, so it rises when that release's notes are vendored for /changelog/ (#289).
+APP_VERSION = max((v["version"] for v in APP_NOTES["versions"]), key=lambda v: tuple(map(int, v.split("."))))
 # The App Store's sellerName and artistName for MarsDawn (owner decision, 2026-10-09).
 PUBLISHER = {"@type": "Person", "name": "Nan-Kuang Lee"}
 # Other pages that are about this same app. Each URL was fetched and answered 200 on 2026-10-09.
@@ -6286,8 +6533,9 @@ SAME_AS = [
 ]
 HOME_SCREENSHOT = "/assets/screens/01-split-1180.png"
 # The price facts (app repo PRODUCT.md, docs/free-trial-plan.md): a free download with a 14-day
-# trial, then a one-time $4.99 unlock. Machine-read text, so English in every locale.
-PRICE_UNLOCK = "4.99"
+# trial, then a one-time $4.99 unlock. Machine-read text, so English in every locale. The number
+# comes from scripts/price.py, which also moves it to the sale price in the sale phase (app #103).
+PRICE_UNLOCK = price.current()
 # The essays and notes: (datePublished, dateModified), read from scripts/article_dates.json, which
 # scripts/article_dates.py computes from origin/main's first-parent history (never typed here).
 ARTICLE_DATES = {slug: (page["published"], page["modified"])
@@ -6389,7 +6637,8 @@ def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> l
                     {"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0",
                      "priceCurrency": "USD", "availability": AVAILABILITY},
                     {"@type": "Offer", "name": "One-time unlock after the trial, no subscription",
-                     "price": PRICE_UNLOCK, "priceCurrency": "USD", "availability": AVAILABILITY},
+                     "price": PRICE_UNLOCK, "priceCurrency": "USD", "availability": AVAILABILITY,
+                     **({"priceValidUntil": price.SALE_LAST_DAY} if price.PHASE == "sale" else {})},
                 ],
             },
             "screenshot": abs_url(HOME_SCREENSHOT),
@@ -6490,7 +6739,7 @@ def render(locale: str, slug: str, page: dict) -> str:
             '<section class="hero-scene">\n'
             f"{DAWN_HERO_SVG}\n"
             '<div class="hero-inner">\n'
-            f'<div class="hero-copy">\n{page["intro"].strip()}\n{hero_cta_html(locale)}\n</div>\n'
+            f'<div class="hero-copy">\n{page["intro"].strip()}\n{price.sale_line_html(locale)}{hero_cta_html(locale)}\n</div>\n'
             f'<div class="hero-shot">\n{hero_window.window_html(locale)}\n</div>\n'
             "</div>\n"
             "</section>"
@@ -6513,7 +6762,9 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = "\n".join([page["intro"].strip(), figure_html(locale, FEATURES_TOP_FIGURE),
                                features_body_html(locale, page["body"].strip())])
     elif has_intro:
-        main_html = "\n".join([page["intro"].strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
+        # /pay-once/ is where the price is explained, so the sale line (app #103) goes under its intro.
+        intro_html = page["intro"].strip() + ("\n" + price.sale_line_html(locale).strip() if slug == "pay-once" else "")
+        main_html = "\n".join([intro_html.strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
         main_html = templates_pages.expand_loops(locale, page["body"].strip())
     main_html = main_html.replace(brand_film_themes.MARK, brand_film_themes.section_html(locale))
@@ -6985,13 +7236,20 @@ def preflight_problems(locale: str) -> list:
     return out
 
 
+def build_planned_locale(module, locale: str) -> dict:
+    """A planned locale's copy module's texts, with #254's schema notes (scripts/cli254/data.py) merged in."""
+    t = module.build(_make_k(locale))
+    t["schema_notes"] = {**t["schema_notes"], **cli254_data.DATA[locale]["schema_notes"]}
+    return t
+
+
 def merge_planned_locale(locale: str) -> None:
     """Merges de, fr, es or ko, which locales.enabled() has said is complete, or stops and says what is missing."""
     module = importlib.import_module(locales.module_name(locale))
     problems = preflight_problems(locale)
     t = None
     if not problems:
-        t = module.build(_make_k(locale))
+        t = build_planned_locale(module, locale)
         problems = shape_problems(en_reference(), t)
     if problems:
         raise SystemExit(f"scripts/{locales.module_name(locale)}.py says COMPLETE = True, but {locale} is not complete:\n  - "
@@ -7053,20 +7311,24 @@ def sync_theme_kit_assets_into_public() -> None:
 
 
 def main() -> None:
+    # Every page, Markdown twin and llms file below goes through price.localize() on its way out, so
+    # it states the current phase's unlock price (app #103); check_price_phase.py holds public/ to it.
+    # The twins, llms files and product-facts.md also get the sale line in the sale phase
+    # (price.sale_note_md()): in the twin's own language, in English in the files that mix them.
     sync_theme_kit_assets_into_public()
     pages = all_pages()
     for (locale, slug), page in pages.items():
         folder = SITE / LOCALES[locale]["prefix"] / ("" if slug == "index" else slug)
         folder.mkdir(parents=True, exist_ok=True)
         (folder / "index.html").write_text(
-            with_campaign_links(render(locale, slug, page), slug_campaign_token(slug)), encoding="utf-8")
+            price.localize(with_campaign_links(render(locale, slug, page), slug_campaign_token(slug))), encoding="utf-8")
         print(folder / "index.html")
-        (folder / "index.md").write_text(build_twin(pages, locale, slug), encoding="utf-8")
+        (folder / "index.md").write_text(price.localize(price.sale_note_md(build_twin(pages, locale, slug), locale)), encoding="utf-8")
         print(folder / "index.md")
 
-    (SITE / "llms.txt").write_text(build_llms_txt(pages), encoding="utf-8")
+    (SITE / "llms.txt").write_text(price.localize(price.sale_note_md(build_llms_txt(pages))), encoding="utf-8")
     print(SITE / "llms.txt")
-    (SITE / "llms-full.txt").write_text(build_llms_full(pages), encoding="utf-8")
+    (SITE / "llms-full.txt").write_text(price.localize(price.sale_note_md(build_llms_full(pages))), encoding="utf-8")
     print(SITE / "llms-full.txt")
     notices_path = SITE / "themes" / "third-party-notices.html"
     notices_path.parent.mkdir(parents=True, exist_ok=True)
@@ -7079,7 +7341,7 @@ def main() -> None:
     for path, text in templates_pages.downloads().items():
         target = SITE / path
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(text, encoding="utf-8")
+        target.write_text(price.localize(text), encoding="utf-8")
         print(target)
     print(SITE / "assets" / "annotations.css")
     (SITE / "robots.txt").write_text(ROBOTS_TXT, encoding="utf-8")
@@ -7087,7 +7349,7 @@ def main() -> None:
     (SITE / "_redirects").write_text(build_redirects(), encoding="utf-8")
     print(SITE / "_redirects")
     product_facts_path = SITE / PRODUCT_FACTS_PATH.lstrip("/")
-    product_facts_path.write_text(build_product_facts(pages), encoding="utf-8")
+    product_facts_path.write_text(price.localize(price.sale_note_md(build_product_facts(pages))), encoding="utf-8")
     print(product_facts_path)
     (SITE / "sitemap.xml").write_text(
         build_sitemap(pages, extra_urls=[BASE_URL + PRODUCT_FACTS_PATH]), encoding="utf-8"
@@ -7096,7 +7358,7 @@ def main() -> None:
     for locale in LOCALES:
         target = SITE / LOCALES[locale]["prefix"] / "404.html" if LOCALES[locale]["prefix"] else SITE / "404.html"
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(with_campaign_links(render_404(locale), campaign_token("404.html")), encoding="utf-8")
+        target.write_text(price.localize(with_campaign_links(render_404(locale), campaign_token("404.html"))), encoding="utf-8")
         print(target)
     skill = SITE / "cli" / "skill" / "SKILL.md"
     skill.parent.mkdir(parents=True, exist_ok=True)

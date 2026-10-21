@@ -2,7 +2,7 @@
 """Checks that the published error schema and exit codes are the ones the documented marsdawn has.
 
 Usage:
-    python3 scripts/check_error_kinds.py [--tag 0.7.1] [--kit-file Commands.swift] [--self-test]
+    python3 scripts/check_error_kinds.py [--tag 0.7.2] [--kit-file Commands.swift] [--kit-main main.swift] [--self-test]
 
 The kit owns the failure kinds: `CLIFailure.Code` in Sources/marsdawn/Commands.swift gives each exit
 code and the `error` string `--json` prints for it. This fetches that file at KIT_TAG (the same tag
@@ -13,6 +13,10 @@ check_skill.py reads) and fails if the built site disagrees with it:
   built file is read, not build_pages.py's constant, so a build that didn't write it fails too.
 - EXIT_CODES in build_pages.py (the skill's table and the agents page): every code with a kind must
   be the kit's code for that kind, and every kit kind must be listed, by exit code.
+- public/schemas/cli/error.v4.json (#295): v3's kinds, then the usage errors that print a kind with
+  --json. Those are the kit's other `*Failure` types with `static let exitCode: Int32 = 64` (a
+  `static let kind`, or the raw values of their `enum Kind`), in declaration order, each counted only
+  if main.swift's `finish()` prints JSON for it. main.swift is fetched at the same tag.
 
 error.v1.json and error.v2.json aren't compared: each is frozen at its release's kinds and never changes.
 
@@ -29,7 +33,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_skill import KIT_TAG  # noqa: E402
 
 URL = "https://raw.githubusercontent.com/redtear1115/mars-dawn-kit/{tag}/Sources/marsdawn/Commands.swift"
+MAIN_URL = "https://raw.githubusercontent.com/redtear1115/mars-dawn-kit/{tag}/Sources/marsdawn/main.swift"
 SCHEMA = Path("public/schemas/cli/error.v3.json")
+SCHEMA_V4 = Path("public/schemas/cli/error.v4.json")
 
 
 def kit_kinds(source: str) -> list[tuple[int, str]]:
@@ -57,6 +63,32 @@ def kit_kinds(source: str) -> list[tuple[int, str]]:
     return pairs
 
 
+def kit_usage_kinds(source: str, main_source: str) -> list[str]:
+    """The kinds of the usage errors (exit 64) that main.swift prints as JSON, in declaration order."""
+    kinds = []
+    for m in re.finditer(r"\nstruct (\w+Failure): Error, CustomStringConvertible \{(.*?)\n\}\n", source, re.S):
+        name, body = m.groups()
+        if name == "CLIFailure" or not re.search(r"static let exitCode: Int32 = 64\b", body):
+            continue
+        single = re.findall(r'static let kind = "([a-z_]+)"', body)
+        enum = re.search(r"enum Kind: String \{(.*?)\n    \}\n", body, re.S)
+        found = single + (re.findall(r'case \w+ = "([a-z_]+)"', enum.group(1)) if enum else [])
+        if not found:
+            raise ValueError(f"{name} exits 64 but names no kind")
+        block = re.search(rf"if let failure = error as\? {name} \{{(.*?)\n    \}}\n", main_source, re.S)
+        if block and "printJSON(" in block.group(1) and "if wantsJSON" in block.group(1):
+            kinds += found
+    if not kinds:
+        raise ValueError("no usage error in the kit prints JSON")
+    return kinds
+
+
+def problems_v4(kit: list[tuple[int, str]], usage: list[str], schema_v4: dict) -> list[str]:
+    enum = schema_v4.get("properties", {}).get("error", {}).get("enum")
+    want = [kind for _, kind in kit] + usage
+    return [] if enum == want else [f"error.v4.json enum {enum} != kit kinds {want}"]
+
+
 def problems(kit: list[tuple[int, str]], schema: dict, exit_codes: list) -> list[str]:
     found = []
     enum = schema.get("properties", {}).get("error", {}).get("enum")
@@ -69,11 +101,48 @@ def problems(kit: list[tuple[int, str]], schema: dict, exit_codes: list) -> list
     return found
 
 
-def run(kit_source: str, schema: dict, exit_codes: list) -> list[str]:
+def run(kit_source: str, schema: dict, exit_codes: list, main_source: str = None, schema_v4: dict = None) -> list[str]:
     try:
-        return problems(kit_kinds(kit_source), schema, exit_codes)
+        kit = kit_kinds(kit_source)
+        found = problems(kit, schema, exit_codes)
+        if main_source is not None:
+            found += problems_v4(kit, kit_usage_kinds(kit_source, main_source), schema_v4)
+        return found
     except ValueError as error:
         return [str(error)]
+
+
+def self_test_v4(kit_source: str, main_source: str, schema: dict, exit_codes: list, schema_v4: dict) -> int:
+    usage = kit_usage_kinds(kit_source, main_source)
+    if len(usage) < 3:
+        print(f"check_error_kinds: self-test: parsed only usage kinds {usage}", file=sys.stderr)
+        return 1
+    short = json.loads(json.dumps(schema_v4))
+    short["properties"]["error"]["enum"].remove(usage[0])
+    extra = json.loads(json.dumps(schema_v4))
+    extra["properties"]["error"]["enum"].append("planted_kind")
+    no_json = re.sub(r"(if let failure = error as\? WaitRangeFailure \{.*?)printJSON\(", r"\1print(", main_source, 1, re.S)
+    added = kit_source.replace('case differs = "skill_differs"', 'case differs = "skill_differs"\n        case planted = "skill_planted"', 1)
+    not_usage = re.sub(r"(struct WaitRangeFailure.*?static let exitCode: Int32 = )64", r"\g<1>2", kit_source, 1, re.S)
+    drifts = {
+        "a usage kind missing from error.v4.json": (kit_source, main_source, short),
+        "an extra kind in error.v4.json": (kit_source, main_source, extra),
+        "main.swift stops printing JSON for a usage error": (kit_source, no_json, schema_v4),
+        "a usage kind added to the kit": (added, main_source, schema_v4),
+        "a usage error that no longer exits 64": (not_usage, main_source, schema_v4),
+    }
+    failed = 0
+    for name, (k, m, v4) in drifts.items():
+        if k == kit_source and m == main_source and v4 is schema_v4:
+            print(f"check_error_kinds: self-test: {name}: plant didn't change anything", file=sys.stderr)
+            failed += 1
+        elif not run(k, schema, exit_codes, m, v4):
+            print(f"check_error_kinds: self-test: {name} went unnoticed", file=sys.stderr)
+            failed += 1
+    if failed:
+        return 1
+    print(f"check_error_kinds: self-test: all {len(drifts)} planted error.v4 drifts caught")
+    return 0
 
 
 def self_test(kit_source: str, schema: dict, exit_codes: list) -> int:
@@ -120,33 +189,41 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--tag", default=KIT_TAG)
     parser.add_argument("--kit-file", help="read Commands.swift from here instead of the kit at --tag")
+    parser.add_argument("--kit-main", help="read main.swift from here instead of the kit at --tag")
     parser.add_argument("--schema", default=str(SCHEMA))
+    parser.add_argument("--schema-v4", default=str(SCHEMA_V4))
     parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args()
 
-    if args.kit_file:
-        source, origin = Path(args.kit_file).read_text(encoding="utf-8"), args.kit_file
-    else:
-        url = URL.format(tag=args.tag)
+    def fetch(local, template):
+        if local:
+            return Path(local).read_text(encoding="utf-8")
+        url = template.format(tag=args.tag)
         try:
             with urllib.request.urlopen(url, timeout=30) as response:
-                source = response.read().decode("utf-8")
+                return response.read().decode("utf-8")
         except Exception as error:  # a missing tag is a failure, not a pass
             print(f"check_error_kinds: can't fetch {url}: {error}", file=sys.stderr)
-            return 1
-        origin = f"marsdawn {args.tag}"
+            return None
+
+    source, main_source = fetch(args.kit_file, URL), fetch(args.kit_main, MAIN_URL)
+    if source is None or main_source is None:
+        return 1
+    origin = args.kit_file or f"marsdawn {args.tag}"
     schema = json.loads(Path(args.schema).read_text(encoding="utf-8"))
+    schema_v4 = json.loads(Path(args.schema_v4).read_text(encoding="utf-8"))
     from build_pages import EXIT_CODES
 
-    if args.self_test and self_test(source, schema, EXIT_CODES):
+    if args.self_test and (self_test(source, schema, EXIT_CODES)
+                           or self_test_v4(source, main_source, schema, EXIT_CODES, schema_v4)):
         return 1
-    found = run(source, schema, EXIT_CODES)
+    found = run(source, schema, EXIT_CODES, main_source, schema_v4)
     if found:
         for problem in found:
             print(f"check_error_kinds: {problem}", file=sys.stderr)
         print(f"check_error_kinds: the site's failure kinds differ from {origin}'s", file=sys.stderr)
         return 1
-    print(f"check_error_kinds: {args.schema} and EXIT_CODES match {origin}'s failure kinds")
+    print(f"check_error_kinds: {args.schema}, {args.schema_v4} and EXIT_CODES match {origin}'s failure kinds")
     return 0
 
 

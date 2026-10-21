@@ -83,6 +83,7 @@ marsdawn open notes.md --folder . --background --json
 ```
 
 - `folder`：フォルダを指定したときだけ現れます。`path` はその絶対パスです。`requested` は常に `true` です：marsdawn は MarsDawn にフォルダの表示を依頼しましたが、サイドバーに実際に表示されたかどうかは分かりません。アプリが先に人にアクセスの許可を求めることがあるためです。「完了した」ではなく「依頼した」と報告してください。
+- `--wait` が 0 より大きく、MarsDawn が 1.0.2 以降の場合、待ち時間が終わると `folder` に `status` も入ります：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable`、`unknown` のいずれかです。`needsUser` のときだけ `waitingFor`（`confirmation` または `folderChoice`）も入ります。`--wait` がない場合や、結果を返さないアプリでは、`folder` は `{"path": …, "requested": true}` のままです。`--wait` が 0〜30 の範囲外ならコード 64 で終了し、`error: "wait_out_of_range"` を返します。（marsdawn 0.5.3 以降）
 - フォルダだけを指定したとき、`opened` は空です。
 
 marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方を扱う必要がある場合は `marsdawn --version` を確認してください。
@@ -166,8 +167,10 @@ exit 0
 各 `--json` 結果に対応する JSON Schema（draft 2020-12）：
 
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功時
-- [open.v3.json](/schemas/cli/open.v3.json): open 成功時、marsdawn 0.5.1 以降、サイドバーに表示するフォルダを含む
-- [error.v2.json](/schemas/cli/error.v2.json): 失敗時、両方のコマンド共通、marsdawn 0.5.2 以降
+- [open.v4.json](/schemas/cli/open.v4.json): open 成功時、marsdawn 0.5.3 以降、フォルダの `status` と `waitingFor` を含む
+- [open.v3.json](/schemas/cli/open.v3.json): open 成功時、marsdawn 0.5.1〜0.5.2、サイドバーに表示するフォルダを含む
+- [error.v3.json](/schemas/cli/error.v3.json): 失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、`input_too_large`（コード 5）と `skill_install_failed`（コード 7）を追加
+- [error.v2.json](/schemas/cli/error.v2.json): 失敗時、両方のコマンド共通、marsdawn 0.5.2〜0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 成功時、marsdawn 0.3.0〜0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功時、marsdawn 0.2.x（`opened` がパスのリストだった頃）
 - [error.v1.json](/schemas/cli/error.v1.json): 失敗時、両方のコマンド共通、marsdawn 0.5.1 以前
@@ -238,7 +241,7 @@ swift build -c release --product marsdawn
 - [エージェントの透明性](https://marsdawn.southern-light.dev/ja/agent-transparency/index.md): Anthropic のエージェント構築ガイドは透明性を求めている：計画のステップを示せと。そこに何が書いてあり、何が書いてないか、そしてそのステップがなぜ結局読む必要のある Markdown ファイルになるのか。
 - [エージェントの計画をレビューする](https://marsdawn.southern-light.dev/ja/reviewing-agent-plans/index.md): AI エージェントが実行前に渡してくる計画を、どのエディタでも使える 6 ステップの方法で、実例を交えて約 5 分でレビューする。
 - [エージェント設計パターン](https://marsdawn.southern-light.dev/ja/agent-design-patterns/index.md): Andrew Ng が描いた reflection、tool use、planning、multi-agent collaboration という 4 つの設計パターン、それぞれがどんな文書を返してくる傍向があるか。
-- [更新履歴](https://marsdawn.southern-light.dev/ja/changelog/index.md): 無料の marsdawn コマンドラインツールの変更点です。
+- [更新履歴](https://marsdawn.southern-light.dev/ja/changelog/index.md): MarsDawn アプリと無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。
 - [編集者の読書ノート](https://marsdawn.southern-light.dev/ja/reading-notes/index.md): AI エージェントを作っている人たちが実際に何を主張しているかを見る、6 本の短いノート——Anthropic、Chip Huyen、Lilian Weng、Harrison Chase、LangChain、Andrew Ng——それぞれが、エージェントの返してきたものを読む人にとって何を意味するか。
 - [読書ノート：Anthropic](https://marsdawn.southern-light.dev/ja/reading-notes/anthropic-building-effective-agents/index.md): 2024 年 12 月に Anthropic が発表したガイドは workflow と agent を分けて考え、5 つの workflow パターンを説明している。そのうち 1 つは、もう一回の LLM 呼び出しがレビューを担う。これは、あなたのフォルダに落ちてくるものにとって何を意味するか。
 - [読書ノート：Chip Huyen](https://marsdawn.southern-light.dev/ja/reading-notes/chip-huyen-agents/index.md): Chip Huyen が 2025 年 1 月に書いたエッセイは、エージェントの行動を read-only と write action に分ける。承認する前の 5 分間で、計画のどの行を特に見るべきかを見分ける、手早い方法。

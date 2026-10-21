@@ -83,6 +83,7 @@ Con una carpeta (marsdawn 0.5.1 y posterior), código de salida 0:
 ```
 
 - `folder`: solo aparece cuando se dio una carpeta. `path` es su ruta absoluta. `requested` siempre es `true`: marsdawn le pidió a MarsDawn que mostrara la carpeta y no puede saber si la barra lateral la muestra, porque la app puede pedirle acceso a la persona primero. Infórmalo como solicitado, no como hecho.
+- Con un `--wait` mayor que 0 y MarsDawn 1.0.2 o posterior, `folder` también incluye `status` cuando termina la espera: `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable` o `unknown`. Solo junto con `needsUser` incluye `waitingFor`: `confirmation` o `folderChoice`. Sin `--wait`, o con una app que no informa del resultado, `folder` sigue siendo `{"path": …, "requested": true}`. Un `--wait` fuera de 0 a 30 termina con el código 64 y `error: "wait_out_of_range"`. (marsdawn 0.5.3 y posterior.)
 - `opened` está vacío cuando solo se dio una carpeta.
 
 marsdawn 0.2.x imprimía `opened` como una lista de rutas en texto. Revisa `marsdawn --version` si necesitas manejar ambos casos.
@@ -166,8 +167,10 @@ Con `--json`, un error imprime un objeto JSON en stdout y termina con su código
 JSON Schema (draft 2020-12) para cada resultado de `--json`:
 
 - [export.v1.json](/schemas/cli/export.v1.json): éxito de export
-- [open.v3.json](/schemas/cli/open.v3.json): éxito de open, marsdawn 0.5.1 y posterior, incluida una carpeta mostrada en la barra lateral
-- [error.v2.json](/schemas/cli/error.v2.json): error, ambos comandos, marsdawn 0.5.2 y posterior
+- [open.v4.json](/schemas/cli/open.v4.json): éxito de open, marsdawn 0.5.3 y posterior, con `status` y `waitingFor` de la carpeta
+- [open.v3.json](/schemas/cli/open.v3.json): éxito de open, marsdawn 0.5.1 y 0.5.2, incluida una carpeta mostrada en la barra lateral
+- [error.v3.json](/schemas/cli/error.v3.json): error, todos los comandos, marsdawn 0.7.1 y posterior, con `input_too_large` (código 5) y `skill_install_failed` (código 7)
+- [error.v2.json](/schemas/cli/error.v2.json): error, ambos comandos, marsdawn 0.5.2 a 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): éxito de open, marsdawn 0.3.0 a 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): éxito de open, marsdawn 0.2.x, donde `opened` era una lista de rutas
 - [error.v1.json](/schemas/cli/error.v1.json): error, ambos comandos, marsdawn 0.5.1 y anterior
@@ -241,7 +244,7 @@ swift build -c release --product marsdawn
 - [Transparencia de los agentes](https://marsdawn.southern-light.dev/es/agent-transparency/index.md): La guía de Anthropic para construir agentes pide transparencia: mostrar los pasos de planificación. Qué dice, qué no dice y por qué esos pasos suelen terminar en un archivo Markdown que alguien tiene que leer.
 - [Revisar el plan de un agente](https://marsdawn.southern-light.dev/es/reviewing-agent-plans/index.md): Un método de seis pasos para revisar el plan que te entrega un agente de IA antes de que se ejecute, en unos cinco minutos y en cualquier editor, con un ejemplo detallado.
 - [Patrones de diseño de agentes](https://marsdawn.southern-light.dev/es/agent-design-patterns/index.md): Reflexión, uso de herramientas, planificación y colaboración multiagente, tal como los describió Andrew Ng, y lo que cada uno suele entregarte para leer.
-- [Historial de cambios](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en la herramienta de línea de comandos gratuita marsdawn.
+- [Historial de cambios](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en cada versión de la app MarsDawn y de la herramienta de línea de comandos gratuita marsdawn.
 - [Notas de lectura de la redacción](https://marsdawn.southern-light.dev/es/reading-notes/index.md): Seis notas breves sobre lo que argumentan de verdad las personas que construyen agentes de IA — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain y Andrew Ng — y qué significa cada una para quien tiene que leer lo que ese agente devuelve.
 - [Notas de lectura: Anthropic](https://marsdawn.southern-light.dev/es/reading-notes/anthropic-building-effective-agents/index.md): La guía de Anthropic de diciembre de 2024 para quien construye agentes separa workflows de agentes y describe cinco patrones de workflow, incluido uno en el que una segunda llamada a un LLM revisa la primera. Qué significa eso para lo que aterriza en tu carpeta.
 - [Notas de lectura: Chip Huyen](https://marsdawn.southern-light.dev/es/reading-notes/chip-huyen-agents/index.md): El ensayo «Agents» de Chip Huyen de enero de 2025 reparte las acciones de un agente en read-only y write. Por qué esa división es una forma rápida de ver, en un plan, la línea que merece una mirada más atenta antes de aprobar.

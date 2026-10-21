@@ -83,6 +83,7 @@ marsdawn open notes.md --folder . --background --json
 ```
 
 - `folder`：只有指定了文件夹时才有。`path` 是它的绝对路径。`requested` 一律是 `true`：marsdawn 已请 MarsDawn 显示这个文件夹，但无法得知侧边栏是否真的显示了，因为 app 可能会先向用户请求访问权限。请报告为“已请求”，而不是“已完成”。
+- `--wait` 大于 0，且 MarsDawn 为 1.0.2 或更高版本时，等待结束后 `folder` 还会带有 `status`：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` 或 `unknown`。只有在 `needsUser` 时，才会再带有 `waitingFor`：`confirmation` 或 `folderChoice`。没有 `--wait`，或 app 不会回报时，`folder` 保持 `{"path": …, "requested": true}`。`--wait` 超出 0 到 30 时以代码 64 结束，并带有 `error: "wait_out_of_range"`。（marsdawn 0.5.3 及更高版本。）
 - 只指定文件夹时，`opened` 是空的。
 
 marsdawn 0.2.x 的 `opened` 是路径字符串的清单。如果需要同时处理两种格式，请先查看 `marsdawn --version`。
@@ -166,8 +167,10 @@ exit 0
 每种 `--json` 结果的 JSON Schema（draft 2020-12）：
 
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功
-- [open.v3.json](/schemas/cli/open.v3.json): open 成功，marsdawn 0.5.1 以后，包括在侧边栏显示的文件夹
-- [error.v2.json](/schemas/cli/error.v2.json): 两个命令的失败结果，marsdawn 0.5.2 以后
+- [open.v4.json](/schemas/cli/open.v4.json): open 成功，marsdawn 0.5.3 以后，文件夹多了 `status` 和 `waitingFor`
+- [open.v3.json](/schemas/cli/open.v3.json): open 成功，marsdawn 0.5.1 和 0.5.2，包括在侧边栏显示的文件夹
+- [error.v3.json](/schemas/cli/error.v3.json): 所有命令的失败结果，marsdawn 0.7.1 以后，新增 `input_too_large`（代码 5）和 `skill_install_failed`（代码 7）
+- [error.v2.json](/schemas/cli/error.v2.json): 两个命令的失败结果，marsdawn 0.5.2 到 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 成功，marsdawn 0.3.0 到 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功，marsdawn 0.2.x，当时 `opened` 是路径清单
 - [error.v1.json](/schemas/cli/error.v1.json): 两个命令的失败结果，marsdawn 0.5.1 以前
@@ -238,7 +241,7 @@ swift build -c release --product marsdawn
 - [代理的透明](https://marsdawn.southern-light.dev/zh-hans/agent-transparency/index.md): Anthropic 谈打造代理的指南要求透明：把规划步骤摊开来。它说了什么、没说什么，以及为什么这些步骤最后多半变成一份要有人读的 Markdown。
 - [审代理计划](https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/index.md): 代理交出计划、还没开始执行之前，用六个步骤、大约五分钟把它审完。什么编辑器都能用，附一份实际的例子。
 - [代理设计模式](https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/index.md): Andrew Ng 提出的四种代理设计模式：reflection、tool use、planning、multi-agent collaboration，以及每一种通常会交回什么要你读的文件。
-- [更新记录](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): 免费的 marsdawn 命令行工具改了什么。
+- [更新记录](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): MarsDawn App 与免费的 marsdawn 命令行工具，每个版本改了什么。
 - [编者的阅读笔记](https://marsdawn.southern-light.dev/zh-hans/reading-notes/index.md): 六篇短笔记，谈打造 AI 代理的人实际主张了什么——Anthropic、Chip Huyen、Lilian Weng、Harrison Chase、LangChain 与 Andrew Ng——以及这些主张对“要读代理交回来的东西”的人分别意味着什么。
 - [阅读笔记：Anthropic](https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/index.md): Anthropic 在 2024 年 12 月发表的指南把 workflow 和代理分开来看，并描述了五种 workflow 模式，其中一种让另一次 LLM 调用来审查。这对落进你文件夹的东西来说，意味着什么。
 - [阅读笔记：Chip Huyen](https://marsdawn.southern-light.dev/zh-hans/reading-notes/chip-huyen-agents/index.md): Chip Huyen 在 2025 年 1 月的文章里，把代理的动作分成 read-only 和 write action 两种。这个分法为什么是核准计划前，快速抓出该多看一眼的那一行的好方法。

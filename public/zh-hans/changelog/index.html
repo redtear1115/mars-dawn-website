@@ -26,7 +26,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>更新记录 · MarsDawn</title>
-<meta name="description" content="免费的 marsdawn 命令行工具改了什么。">
+<meta name="description" content="MarsDawn App 与免费的 marsdawn 命令行工具，每个版本改了什么。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -42,7 +42,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/changelog/">
 <link rel="alternate" type="text/markdown" href="/zh-hans/changelog/index.md">
 <meta property="og:title" content="更新记录 · MarsDawn">
-<meta property="og:description" content="免费的 marsdawn 命令行工具改了什么。">
+<meta property="og:description" content="MarsDawn App 与免费的 marsdawn 命令行工具，每个版本改了什么。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/changelog/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -122,17 +122,98 @@ try {
 <main id="main">
 <section class="intro">
   <h1>更新记录</h1>
-  <p>免费的 marsdawn 命令行工具改了什么。Mac App Store 上的 MarsDawn，只有某个版本值得单独记一笔时才会出现在这里。0.5.1 以前的版本不列。</p>
+  <p>Mac App Store 上的 MarsDawn App，以及免费的 marsdawn 命令行工具，每个版本改了什么。App 的日期是该版本在 Mac App Store 上架的日子。</p>
 </section>
 
-<h2 id="marsdawn-0-6-3">marsdawn 0.6.3</h2>
+<h2 id="marsdawn-app">MarsDawn App</h2>
+
+<h3 id="app-1-1-1">MarsDawn 1.1.1</h3>
+<p>2026 年 10 月 15 日</p>
+<ul>
+  <li>在德语、日语、西班牙语和法语中，「设置 ▸ 外观 ▸ 获取更多主题…」的场景筛选改为标示为「场景」的弹出式菜单，五个选项才放得下。英语、韩语和中文仍使用分段控件。</li>
+  <li>主题从主题图库下架时，「获取更多主题…」中的提示现在会显示主题名称（例如 Inkwell Ivory），不再显示内部 id。</li>
+  <li>按 GitHub 写法编写的可折叠 details 区块，在预览和「快速查看」中会先折叠并显示摘要，点按后才展开。导出 PDF 时仍会打印每一部分的内容。</li>
+  <li>从访达、程序坞、「文件 ▸ 打开…」或 marsdawn open 命令打开的文稿，以及新建的文稿，现在都会成为最前面窗口的标签页。要保持以前的方式，可以在「设置 ▸ 外观」中选择「跟随系统设置」。</li>
+</ul>
+
+<h3 id="app-1-1-0">MarsDawn 1.1.0</h3>
+<p>2026 年 10 月 9 日</p>
+<ul>
+  <li>「设置 ▸ 外观」新增「获取更多主题…」按钮，可打开主题图库，挑选更多预览主题。安装后，主题会出现在「显示 ▸ 预览主题」中，也可以随时移除。主题图库只在打开时才会联网。</li>
+  <li>在访达中用「快速查看」预览时，现在会使用你选的主题，不再一律使用黎明主题。</li>
+  <li>「快速查看」也会跟随 MarsDawn 的外观设置：选「浅色」或「深色」就固定使用该外观，即使 Mac 设为另一种；选「系统」则跟随 Mac。</li>
+  <li>窗口标题中的 git 标记，现在遇到已暂存但尚未提交的文件会显示「+」，以前看起来像是没有更改。</li>
+  <li>在预览中点按指向其他 Markdown 文件的链接，例如 [notes](notes.md#plan)，现在会打开该文件；如果已经打开就带到最前面，并滚动到对应的标题。文件若不在边栏的文件夹内，MarsDawn 会先请你将该文件夹添加到边栏，添加后再点按一次链接。</li>
+</ul>
+
+<h3 id="app-1-0-2">MarsDawn 1.0.2</h3>
+<p>2026 年 10 月 7 日</p>
+<ul>
+  <li>修正：第一次切换布局，或显示、隐藏边栏时，编辑器不会再向上偏移一小段。</li>
+  <li>无法绘制的 Mermaid 图表现在会显示完整的错误信息；知道行号时，点按错误信息就会跳到编辑器中该图表所在的行。</li>
+  <li>繁体中文、简体中文和西班牙语的菜单用词，改为与 macOS 内置的翻译一致，例如「保存为…」。</li>
+</ul>
+
+<h3 id="app-1-0-0">MarsDawn 1.0.0</h3>
+<p>2026 年 10 月 5 日</p>
+<p>首次发布。</p>
+
+<h2 id="marsdawn-command-line-tool">marsdawn 命令行工具</h2>
+<p>0.5.1 以前的版本不列。</p>
+
+<h3 id="marsdawn-0-7-2">marsdawn 0.7.2</h3>
+<p>2026 年 10 月 20 日。手册布局、提示块，以及日文字体。</p>
+<ul>
+  <li><code>--layout</code> 的值改为 <code>handbook</code>，与 app 的「手册」（Handbook）布局同名：<code>marsdawn export --layout handbook</code>。<code>--layout manual</code> 仍可使用，但已弃用。</li>
+  <li>预览和导出的 PDF 都会显示提示块：GitHub 的 alert（例如 <code>&gt; [!NOTE]</code>、<code>&gt; [!WARNING]</code>），以及 HackMD 的容器（例如 <code>:::info</code>、<code>:::warning</code>）。<code>:::spoiler</code> 会成为可折叠的区块。</li>
+  <li>日文文稿的假名和汉字会改用日文字体。语言取自 front matter 的 <code>lang: ja</code>；没有写时，按正文中假名的比例判断。</li>
+  <li>在终端中成功运行 <code>export</code> 或 <code>open</code> 之后，如果代理技能没有安装或已经过期，marsdawn 会在 stderr 显示一次提示。stdout 和 <code>--json</code> 的输出都不变。设置 <code>MARSDAWN_NO_SKILL_HINT=1</code> 就不再提示。</li>
+</ul>
+
+<h3 id="marsdawn-0-7-1">marsdawn 0.7.1</h3>
+<p>2026 年 10 月 20 日。手册布局，以及文件大小上限。</p>
+<ul>
+  <li><code>marsdawn export --layout manual</code> 导出成手册：页边距更宽、装订边留 25 mm，每个一级标题从新的一页开始；另外有封面（取自 front matter 的 title、subtitle、version、date、author 和 logo）、列出一、二级标题并附页码的目录、<code>n / N</code> 页码，以及 PDF 书签。目录页的标题可以用 <code>--toc-title</code> 指定。默认仍是 <code>--layout document</code>。</li>
+  <li>单独一行的 <code>&lt;!--BREAK--&gt;</code> 会从新的一页开始，两种布局都适用。</li>
+  <li><code>marsdawn export</code> 不处理超过 16 MiB 的文件：以代码 5 结束，加上 <code>--json</code> 时报告 <code>input_too_large</code>，不写出任何文件。</li>
+  <li>预览页会移除 script 和 noscript 元素；Mermaid 重绘时保留图表自己的 SVG。</li>
+  <li>解码后是 <code>=</code> 或 <code>^</code> 的字符引用（例如 <code>&amp;#61;</code>）不再和 HackMD 标记配对。</li>
+</ul>
+
+<h3 id="marsdawn-0-7-0">marsdawn 0.7.0</h3>
+<p>2026 年 10 月 18 日。HackMD 语法、换行，以及超大文稿的上限。</p>
+<ul>
+  <li>支持 HackMD 的行内标记：<code>==mark==</code>、<code>^sup^</code> 和 <code>~sub~</code>。单独成段的 <code>[TOC]</code> 会变成目录；HackMD 写法的图片尺寸会生效；嵌入标签会变成普通的 https 链接；代码块的语言会先读出来，再处理 <code>js=</code> 这类 HackMD 选项。</li>
+  <li><code>marsdawn export --breaks</code> 会把段落内的每个换行都当作换行，和 HackMD 一样。不加时，两个中文或日文字符之间的换行会去掉，让前后两行连成一句；韩文的词与词之间本来就有空格，所以保留空格。</li>
+  <li>超大文稿在预览和导出的 PDF 中都有上限：单个代码块超过 128K 字符就不做语法高亮，整份累计超过 256K 字符后也不再高亮。每次更新最多绘制 100 个 Mermaid 图表、渲染 1,000 个数学公式；其余图表显示源代码并附上说明，即使之前绘制过也一样。</li>
+  <li>时序图中，<code>rect</code> 区块里的消息标签，描边底色改用该区块的颜色。</li>
+  <li>表格正上方有脚注引用时，<code>marsdawn export</code> 不再崩溃。</li>
+  <li><code>marsdawn skill --install</code> 无法创建文件夹或写入文件时，以代码 7（<code>skill_install_failed</code>）结束，原有的 SKILL.md 保持不变。</li>
+</ul>
+
+<h3 id="marsdawn-0-6-4">marsdawn 0.6.4</h3>
+<p>2026 年 10 月 13 日。可折叠的 <code>&lt;details&gt;</code> 区块。</p>
+<ul>
+  <li>GitHub 风格的 <code>&lt;details&gt;</code> 区块里有空行时，也会显示为一个可折叠的区块；预览和导出的 PDF 都一样。以前遇到第一个空行就会断开。</li>
+  <li>导出 PDF 时，会先把每个 <code>&lt;details&gt;</code> 区块展开再打印（front matter 除外）。</li>
+  <li>展开或折叠 <code>&lt;details&gt;</code> 区块时，预览会保持原来的滚动位置。</li>
+</ul>
+
+<h3 id="marsdawn-0-6-3">marsdawn 0.6.3</h3>
 <p>2026 年 10 月 6 日。MarsDawn 在 Mac App Store 上架。</p>
 <ul>
   <li>没有安装 app 时，<code>marsdawn open</code> 会指向 Mac App Store 上的 MarsDawn。</li>
   <li>README 和代理技能会教 <code>marsdawn open .</code> 与 <code>--folder</code>：MarsDawn 1.0.0 会把文件夹显示在窗口的侧边栏。</li>
 </ul>
 
-<h2 id="marsdawn-0-5-4">marsdawn 0.5.4</h2>
+<h3 id="marsdawn-0-6-1">marsdawn 0.6.1</h3>
+<p>2026 年 9 月 29 日。检查主题。</p>
+<ul>
+  <li><code>marsdawn theme validate</code> 会用 app 采用的规则检查 <code>theme.json</code>。主题有效时以代码 0 结束，无效时以代码 1 结束，并列出每个问题。加上 <code>--require-complete</code> 时，还会要求语法高亮和图表的颜色。</li>
+  <li><code>marsdawn theme css</code> 会输出预览为有效主题使用的 CSS；<code>marsdawn theme preview</code> 会用这个主题把一份示例文稿渲染成 PNG，浅色或深色都可以。</li>
+</ul>
+
+<h3 id="marsdawn-0-5-4">marsdawn 0.5.4</h3>
 <p>2026 年 9 月 26 日。Mermaid 修复、图表错误的行号，以及安装 skill。</p>
 <ul>
   <li>时序图中，消息标签跨过其他参与者的生命线时，文字仍清晰可读；预览和导出的 PDF 都是如此。</li>
@@ -141,7 +222,7 @@ try {
   <li><code>marsdawn skill --install</code> 会把代理技能安装到 <code>~/.claude/skills/marsdawn/SKILL.md</code>，供 Claude Code 使用；加上 <code>--dir</code> 可以改装到其他文件夹。已有相同的文件时不会改动它；内容不同时，只有加上 <code>--force</code> 才会替换，否则以代码 64（<code>skill_differs</code>）结束，不做任何改动。</li>
 </ul>
 
-<h2 id="marsdawn-0-5-3">marsdawn 0.5.3</h2>
+<h3 id="marsdawn-0-5-3">marsdawn 0.5.3</h3>
 <p>2026 年 9 月 25 日。文件夹状态、完整的 Mermaid 错误信息，以及其他小修复。</p>
 <ul>
   <li><code>marsdawn open --folder</code> 可以报告文件夹最后的状态。配合会回报状态的 app，它最多等待 <code>--wait</code> 秒（默认 2 秒），<code>--json</code> 会给出 <code>attached</code>、<code>needsUser</code> 等状态。</li>
@@ -151,7 +232,7 @@ try {
   <li>内置的 highlight.js 现在和 KaTeX、Mermaid 一样，记录版本、来源与 SHA-256。</li>
 </ul>
 
-<h2 id="marsdawn-0-5-2">marsdawn 0.5.2</h2>
+<h3 id="marsdawn-0-5-2">marsdawn 0.5.2</h3>
 <p>2026 年 9 月 24 日。脚注、对比度与文件夹。</p>
 <ul>
   <li>导出的 PDF 会呈现脚注：引用有编号，脚注内容接在正文之后。</li>
@@ -163,7 +244,7 @@ try {
   <li><code>MARSDAWN_APP_PATH</code> 只有指向 MarsDawn app 时才会采用。</li>
 </ul>
 
-<h2 id="marsdawn-0-5-1">marsdawn 0.5.1</h2>
+<h3 id="marsdawn-0-5-1">marsdawn 0.5.1</h3>
 <p>2026 年 9 月 19 日。PDF 导出，以及从命令行打开文件。</p>
 <ul>
   <li>导出的 PDF 中，中文、日文与韩文的文字层已修正。</li>

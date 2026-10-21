@@ -26,7 +26,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Historique des versions · MarsDawn</title>
-<meta name="description" content="Ce qui a changé dans l’outil en ligne de commande gratuit marsdawn.">
+<meta name="description" content="Ce qui a changé dans chaque version de l’app MarsDawn et de l’outil en ligne de commande gratuit marsdawn.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -42,7 +42,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/fr/changelog/">
 <link rel="alternate" type="text/markdown" href="/fr/changelog/index.md">
 <meta property="og:title" content="Historique des versions · MarsDawn">
-<meta property="og:description" content="Ce qui a changé dans l’outil en ligne de commande gratuit marsdawn.">
+<meta property="og:description" content="Ce qui a changé dans chaque version de l’app MarsDawn et de l’outil en ligne de commande gratuit marsdawn.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/fr/changelog/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -122,17 +122,78 @@ try {
 <main id="main">
 <section class="intro">
   <h1>Historique des versions</h1>
-  <p>Ce qui a changé dans l’outil en ligne de commande gratuit marsdawn. Une version de MarsDawn du Mac App Store n’est mentionnée ici que lorsqu’elle a sa propre ligne. Les versions antérieures à 0.5.1 ne sont pas listées.</p>
+  <p>Ce qui a changé dans chaque version de l’app MarsDawn du Mac App Store et de l’outil en ligne de commande gratuit marsdawn. Pour l’app, la date est le jour où la version est parue sur le Mac App Store.</p>
 </section>
 
-<h2 id="marsdawn-0-6-3">marsdawn 0.6.3</h2>
+<h2 id="marsdawn-app">App MarsDawn</h2>
+
+<h3 id="app-1-1-1">MarsDawn 1.1.1</h3>
+<p>15 octobre 2026</p>
+<ul>
+  <li>En allemand, en japonais, en espagnol et en français, Réglages &gt; Apparence &gt; « Obtenir plus de thèmes… » affiche désormais le filtre de scénario sous forme de menu local intitulé « Scénario », pour que les cinq choix tiennent. L’anglais, le coréen et le chinois utilisent toujours le contrôle segmenté.</li>
+  <li>Lorsqu’un thème est retiré de la galerie, l’avis dans « Obtenir plus de thèmes… » affiche maintenant le nom du thème (par exemple Inkwell Ivory) au lieu de son identifiant interne.</li>
+  <li>Les sections details repliables écrites à la manière de GitHub s’affichent désormais repliées, avec leur résumé visible, dans l’aperçu et dans Coup d’œil, et s’ouvrent d’un clic. L’export PDF imprime toujours le contenu de chaque section.</li>
+  <li>Les documents ouverts depuis le Finder, le Dock, Fichier &gt; « Ouvrir… » ou la commande marsdawn open s’ouvrent désormais en onglets dans la fenêtre au premier plan, tout comme les nouveaux documents. Pour conserver l’ancien comportement, choisissez « Suivre le réglage système » dans Réglages &gt; Apparence.</li>
+</ul>
+
+<p>Les versions précédentes ne sont décrites qu’en anglais : <a href="/changelog/">voir l’historique en anglais</a>.</p>
+
+<h2 id="marsdawn-command-line-tool">Outil en ligne de commande marsdawn</h2>
+<p>Les versions antérieures à 0.5.1 ne sont pas listées.</p>
+
+<h3 id="marsdawn-0-7-2">marsdawn 0.7.2</h3>
+<p>20 octobre 2026. La mise en page Guide, les encadrés et les polices japonaises.</p>
+<ul>
+  <li>La valeur de <code>--layout</code> devient <code>handbook</code>, la mise en page Guide de l’app : <code>marsdawn export --layout handbook</code>. <code>--layout manual</code> fonctionne toujours, mais est obsolète.</li>
+  <li>Les encadrés s’affichent, dans l’aperçu et dans les PDF exportés : les alertes GitHub comme <code>&gt; [!NOTE]</code> et <code>&gt; [!WARNING]</code>, et les conteneurs HackMD comme <code>:::info</code> et <code>:::warning</code>. <code>:::spoiler</code> crée une section repliable.</li>
+  <li>Un document en japonais utilise des polices japonaises pour ses kana et ses kanji. marsdawn déduit la langue de <code>lang: ja</code> dans le front matter, ou de la part de kana dans le texte.</li>
+  <li>Après un <code>export</code> ou un <code>open</code> réussi dans un terminal, marsdawn affiche une fois un conseil sur stderr quand la skill pour agents est absente ou périmée. La sortie sur stdout et avec <code>--json</code> ne change pas. Définissez <code>MARSDAWN_NO_SKILL_HINT=1</code> pour ne plus l’afficher.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-1">marsdawn 0.7.1</h3>
+<p>20 octobre 2026. Une mise en page Guide, et une taille maximale.</p>
+<ul>
+  <li><code>marsdawn export --layout manual</code> produit un guide : marges plus larges, côté de reliure de 25 mm et chaque titre de premier niveau sur une nouvelle page, plus une couverture tirée des champs title, subtitle, version, date, author et logo du front matter, une table des matières des titres de niveaux 1 et 2 avec numéros de page, des numéros de page <code>n / N</code> et des signets PDF. <code>--toc-title</code> définit le titre de la page de table des matières. <code>--layout document</code> reste la valeur par défaut.</li>
+  <li><code>&lt;!--BREAK--&gt;</code> seul sur une ligne commence une nouvelle page, dans les deux mises en page.</li>
+  <li><code>marsdawn export</code> refuse un fichier de plus de 16 Mio : il se termine avec le code 5, indique <code>input_too_large</code> avec <code>--json</code> et n’écrit rien.</li>
+  <li>La page d’aperçu retire les éléments script et noscript ; un diagramme Mermaid redessiné garde son propre SVG.</li>
+  <li>Une référence de caractère qui se décode en <code>=</code> ou <code>^</code>, comme <code>&amp;#61;</code>, ne s’associe plus à une marque HackMD.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-0">marsdawn 0.7.0</h3>
+<p>18 octobre 2026. Le Markdown de HackMD, les retours à la ligne et des limites pour les très gros documents.</p>
+<ul>
+  <li>Les marques en ligne de HackMD s’affichent : <code>==mark==</code>, <code>^sup^</code> et <code>~sub~</code>. Un paragraphe <code>[TOC]</code> seul devient une table des matières, les tailles d’image de HackMD s’appliquent, les balises d’intégration deviennent de simples liens https, et la langue d’un bloc de code est lue avant les options HackMD comme <code>js=</code>.</li>
+  <li><code>marsdawn export --breaks</code> transforme chaque retour à la ligne d’un paragraphe en saut de ligne, comme HackMD. Sans cette option, un retour à la ligne entre deux caractères chinois ou japonais disparaît, et les lignes se lisent comme une seule phrase. Le coréen garde son espace, car il sépare ses mots par des espaces.</li>
+  <li>Les très gros documents ont des limites, dans l’aperçu et dans les PDF exportés. Un bloc de code de plus de 128K caractères n’est pas coloré, et la coloration s’arrête après 256K caractères au total. Jusqu’à 100 diagrammes Mermaid et 1 000 formules sont rendus par mise à jour ; les autres diagrammes affichent leur source, avec une note, même s’ils avaient déjà été dessinés.</li>
+  <li>Dans un diagramme de séquence, le libellé d’un message dans un bloc <code>rect</code> prend un contour de la couleur du bloc.</li>
+  <li>Une référence de note de bas de page juste au-dessus d’un tableau ne fait plus planter <code>marsdawn export</code>.</li>
+  <li><code>marsdawn skill --install</code> se termine avec le code 7 (<code>skill_install_failed</code>) quand il ne peut pas créer le dossier ou écrire le fichier, et laisse intact un SKILL.md existant.</li>
+</ul>
+
+<h3 id="marsdawn-0-6-4">marsdawn 0.6.4</h3>
+<p>13 octobre 2026. Blocs <code>&lt;details&gt;</code> repliables.</p>
+<ul>
+  <li>Un bloc <code>&lt;details&gt;</code> à la manière de GitHub, avec des lignes vides à l’intérieur, s’affiche comme un seul élément repliable, dans l’aperçu et dans les PDF exportés. Avant, il se coupait à la première ligne vide.</li>
+  <li>L’export PDF ouvre chaque bloc <code>&lt;details&gt;</code> avant l’impression, sauf le front matter.</li>
+  <li>L’aperçu garde sa position de défilement quand vous ouvrez ou fermez un bloc <code>&lt;details&gt;</code>.</li>
+</ul>
+
+<h3 id="marsdawn-0-6-3">marsdawn 0.6.3</h3>
 <p>6 octobre 2026. MarsDawn est sur le Mac App Store.</p>
 <ul>
   <li>Quand l’app n’est pas installée, <code>marsdawn open</code> renvoie vers MarsDawn sur le Mac App Store.</li>
   <li>Le README et la skill pour agents expliquent <code>marsdawn open .</code> et <code>--folder</code> : MarsDawn 1.0.0 affiche le dossier dans la barre latérale de la fenêtre.</li>
 </ul>
 
-<h2 id="marsdawn-0-5-4">marsdawn 0.5.4</h2>
+<h3 id="marsdawn-0-6-1">marsdawn 0.6.1</h3>
+<p>29 septembre 2026. Vérifier un thème.</p>
+<ul>
+  <li><code>marsdawn theme validate</code> vérifie un <code>theme.json</code> selon les règles de l’app. Il se termine avec le code 0 si le thème est valide et 1 sinon, en listant chaque problème. <code>--require-complete</code> exige aussi les couleurs de syntaxe et de diagramme.</li>
+  <li><code>marsdawn theme css</code> affiche le CSS que l’aperçu utilise pour un thème valide, et <code>marsdawn theme preview</code> rend avec lui un document d’exemple dans un PNG, clair ou sombre.</li>
+</ul>
+
+<h3 id="marsdawn-0-5-4">marsdawn 0.5.4</h3>
 <p>26 septembre 2026. Corrections Mermaid, lignes des erreurs de diagramme et installation de la skill.</p>
 <ul>
   <li>Dans un diagramme de séquence, le libellé d’un message qui croise les lignes de vie d’autres participants reste lisible, dans l’aperçu comme dans les PDF exportés.</li>
@@ -141,7 +202,7 @@ try {
   <li><code>marsdawn skill --install</code> installe la skill pour Claude Code dans <code>~/.claude/skills/marsdawn/SKILL.md</code>, ou dans un autre dossier avec <code>--dir</code>. Il laisse intact un fichier identique et ne remplace un fichier différent qu’avec <code>--force</code>. Sinon, il se termine avec le code 64 (<code>skill_differs</code>) sans rien modifier.</li>
 </ul>
 
-<h2 id="marsdawn-0-5-3">marsdawn 0.5.3</h2>
+<h3 id="marsdawn-0-5-3">marsdawn 0.5.3</h3>
 <p>25 septembre 2026. État du dossier, erreurs Mermaid complètes et petites corrections.</p>
 <ul>
   <li><code>marsdawn open --folder</code> peut indiquer ce qu’il est advenu du dossier. Avec une app qui répond, il attend jusqu’à <code>--wait</code> secondes (2 par défaut), et <code>--json</code> donne un état comme <code>attached</code> ou <code>needsUser</code>.</li>
@@ -151,7 +212,7 @@ try {
   <li>La copie intégrée de highlight.js est désormais épinglée par version, source et SHA-256, comme KaTeX et Mermaid.</li>
 </ul>
 
-<h2 id="marsdawn-0-5-2">marsdawn 0.5.2</h2>
+<h3 id="marsdawn-0-5-2">marsdawn 0.5.2</h3>
 <p>24 septembre 2026. Notes de bas de page, contraste et dossiers.</p>
 <ul>
   <li>Les notes de bas de page s’affichent dans les PDF exportés : appels numérotés, avec les notes après le corps du texte.</li>
@@ -163,7 +224,7 @@ try {
   <li><code>MARSDAWN_APP_PATH</code> n’est utilisé que s’il pointe vers une app MarsDawn.</li>
 </ul>
 
-<h2 id="marsdawn-0-5-1">marsdawn 0.5.1</h2>
+<h3 id="marsdawn-0-5-1">marsdawn 0.5.1</h3>
 <p>19 septembre 2026. Export PDF, et ouverture d’un fichier depuis la ligne de commande.</p>
 <ul>
   <li>La couche de texte d’un PDF exporté est réparée pour le chinois, le japonais et le coréen.</li>

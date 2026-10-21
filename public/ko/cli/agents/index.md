@@ -83,6 +83,7 @@ marsdawn open notes.md --folder . --background --json
 ```
 
 - `folder`: 폴더를 줬을 때만 나타납니다. `path`는 폴더의 절대 경로입니다. `requested`는 항상 `true`입니다. marsdawn은 MarsDawn에 폴더를 보여 달라고 요청했을 뿐이고, 앱이 먼저 사람에게 접근 권한을 물을 수 있으므로 사이드바에 실제로 표시됐는지는 알 수 없습니다. 완료가 아니라 요청됨으로 보고하세요.
+- `--wait`가 0보다 크고 MarsDawn이 1.0.2 이상이면, 기다림이 끝난 뒤 `folder`에 `status`도 담깁니다. 값은 `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable`, `unknown` 중 하나입니다. `needsUser`일 때만 `waitingFor`(`confirmation` 또는 `folderChoice`)도 담깁니다. `--wait`가 없거나 결과를 알려 주지 않는 앱이면 `folder`는 `{"path": …, "requested": true}` 그대로입니다. `--wait`가 0~30을 벗어나면 코드 64로 종료하며 `error: "wait_out_of_range"`를 냅니다. (marsdawn 0.5.3 이상)
 - 폴더만 줬을 때 `opened`는 비어 있습니다.
 
 marsdawn 0.2.x는 `opened`를 경로 문자열 목록으로 출력했습니다. 두 형식을 모두 처리해야 한다면 `marsdawn --version`을 확인하세요.
@@ -166,8 +167,10 @@ exit 0
 모든 `--json` 결과에 대한 JSON Schema(draft 2020-12):
 
 - [export.v1.json](/schemas/cli/export.v1.json): export 성공
-- [open.v3.json](/schemas/cli/open.v3.json): open 성공, marsdawn 0.5.1 이상, 사이드바에 표시되는 폴더 포함
-- [error.v2.json](/schemas/cli/error.v2.json): 실패, 두 명령 공통, marsdawn 0.5.2 이상
+- [open.v4.json](/schemas/cli/open.v4.json): open 성공, marsdawn 0.5.3 이상, 폴더의 `status`와 `waitingFor` 포함
+- [open.v3.json](/schemas/cli/open.v3.json): open 성공, marsdawn 0.5.1~0.5.2, 사이드바에 표시되는 폴더 포함
+- [error.v3.json](/schemas/cli/error.v3.json): 실패, 모든 명령 공통, marsdawn 0.7.1 이상, `input_too_large`(코드 5)와 `skill_install_failed`(코드 7) 추가
+- [error.v2.json](/schemas/cli/error.v2.json): 실패, 두 명령 공통, marsdawn 0.5.2~0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 성공, marsdawn 0.3.0~0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 성공, marsdawn 0.2.x, 이때 `opened`는 경로 목록이었음
 - [error.v1.json](/schemas/cli/error.v1.json): 실패, 두 명령 공통, marsdawn 0.5.1 이하
@@ -241,7 +244,7 @@ swift build -c release --product marsdawn
 - [에이전트의 투명성](https://marsdawn.southern-light.dev/ko/agent-transparency/index.md): Anthropic의 에이전트 구축 가이드는 투명성, 즉 계획 단계를 보여 줄 것을 요구합니다. 가이드가 말하는 것과 말하지 않는 것, 그리고 그 단계들이 왜 대개 누군가 읽어야 하는 Markdown 파일로 끝나는지 살펴봅니다.
 - [에이전트의 계획 검토하기](https://marsdawn.southern-light.dev/ko/reviewing-agent-plans/index.md): AI 에이전트가 넘긴 계획을 실행 전에 약 5분 동안, 어떤 에디터에서든 검토하는 6단계 방법을 예시와 함께 소개합니다.
 - [에이전트 설계 패턴](https://marsdawn.southern-light.dev/ko/agent-design-patterns/index.md): Andrew Ng이 설명한 리플렉션, 도구 사용, 계획, 멀티 에이전트 협업과, 각 패턴이 보통 읽을거리로 넘기는 것을 정리했습니다.
-- [변경 내역](https://marsdawn.southern-light.dev/ko/changelog/index.md): 무료 marsdawn 명령줄 도구에서 바뀐 점입니다.
+- [변경 내역](https://marsdawn.southern-light.dev/ko/changelog/index.md): MarsDawn 앱과 무료 marsdawn 명령줄 도구의 버전별 변경 사항입니다.
 - [편집자의 독서 노트](https://marsdawn.southern-light.dev/ko/reading-notes/index.md): AI 에이전트를 만드는 사람들이 실제로 무엇을 주장하는지 살피는 짧은 노트 여섯 편 — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain, Andrew Ng — 그리고 각각이 그런 에이전트가 돌려준 것을 읽어야 하는 사람에게 무엇을 의미하는지.
 - [독서 노트: Anthropic](https://marsdawn.southern-light.dev/ko/reading-notes/anthropic-building-effective-agents/index.md): 2024년 12월 Anthropic이 에이전트를 만드는 사람을 위해 낸 가이드는 workflow와 agent를 나누고, 그중 하나가 두 번째 LLM 호출로 첫 번째를 검토하는 다섯 가지 workflow 패턴을 설명합니다. 그게 폴더에 떨어지는 파일에 무엇을 뜻하는지.
 - [독서 노트: Chip Huyen](https://marsdawn.southern-light.dev/ko/reading-notes/chip-huyen-agents/index.md): Chip Huyen의 2025년 1월 에세이 «Agents»는 에이전트 행동을 read-only와 write로 나눕니다. 그 구분이 계획에서 승인 전에 더 자세히 볼 줄을 빠르게 짚는 방법이 되는 이유.

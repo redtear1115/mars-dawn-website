@@ -47,10 +47,13 @@ marsdawn open notes.md --folder .
 - 行号范围是 1 到 999999999。
 - MarsDawn 1.0 会打开文件，并跳到指定的行。
 - 文件夹参数会在窗口的侧边栏打开，而不是当成文稿：`marsdawn open .` 会显示当前的文件夹。`--folder <path>` 可以在打开文件的同时做到一样的事。一个窗口的侧边栏只显示一个文件夹，所以指定两个是使用方式错误。
+- `--wait <n>`：搭配会回报结果的 MarsDawn 1.0.2 或更高版本，`--folder` 最多等待 n 秒（0 到 30，默认 2），等 app 回报文件夹的结果。`--wait 0`，或 app 不会回报时，不会等待，发出的请求和以前完全相同。
+- `--wait` 的值超出 0 到 30 是使用方式错误（代码 64）。负数要写成 `--wait=-1`。
+- 加上 `--json` 时，文件夹报告的是「已请求」，而不是「已附加」，因为由 app 决定；加上 `--wait` 时，结果还会说明文件夹后来怎么样了。完整列表见[给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/)。
 - `--background`：打开时不把 MarsDawn 带到最前面。
 - `--json`：输出 JSON 结果，而不是文本。
 
-行号功能从 marsdawn 0.3.0 开始提供，文件夹与 `--background` 从 0.5.1 开始。
+行号功能从 marsdawn 0.3.0 开始提供，文件夹与 `--background` 从 0.5.1 开始，`--wait` 与文件夹状态从 0.5.3 开始。
 
 ### marsdawn export
 
@@ -63,9 +66,33 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `-o, --output <path>`：PDF 的输出位置，默认是把输入文件的扩展名换成 `.pdf`。
 - `--theme <dawn|classic|modern|vivid>`：预览主题的浅色版本，默认读取 `$MARSDAWN_THEME`，否则用 `dawn`。
 - `--paper <a4|letter>`：纸张大小，默认 `a4`。
+- `--breaks`：段落内的每个换行都当作换行，和 HackMD 一样。不加时，两个中文或日文字符之间的换行会去掉，让前后两行连成一句。
+- `--layout <document|handbook>`：页面布局，默认 `document`。`handbook` 会导出成手册：页边距更宽并留出装订边，每个一级标题从新的一页开始，附带有页码的目录页、页脚页码和 PDF 书签；front matter 有 `title` 时，还会加上封面。
+- `--toc-title <text>`：手册目录页的标题，默认 `Contents`。
+- 单独一行的 `<!--BREAK-->` 会从新的一页开始，两种布局都适用。
 - `--allow-remote-images`：导出时加载网络图片，默认关闭。
 - `--force`：如果输出文件已存在就直接覆盖。
 - `--json`：输出 JSON 结果，而不是文本。
+- 超过 16 MiB 的文件不会导出：`export` 以代码 5 结束，不写出任何文件。
+
+`--breaks` 从 marsdawn 0.7.0 开始提供，`--layout` 和 `--toc-title` 从 0.7.1 开始，`handbook` 这个值从 0.7.2 开始。0.7.1 的旧值 `manual` 仍可使用。
+
+### marsdawn theme
+
+在分享主题文件（`theme.json`）之前，先检查它，看看它的样子。不需要 MarsDawn app。主题有哪些字段，请见[和你的代理一起做主题](/zh-hans/themes/agents/)。
+
+```
+marsdawn theme validate my-theme.json
+marsdawn theme css my-theme.json
+marsdawn theme preview my-theme.json --appearance dark -o preview.png
+```
+
+- `validate <file>`：用 app 采用的同一个验证器，检查文件是否符合 MarsDawn 主题的每条规则。主题有效时以代码 0 结束，无效时以代码 1 结束，并列出每个问题。加上 `--require-complete` 时，还会要求语法高亮和图表的颜色，公开发布的主题都必须有这些。
+- `css <file>`：输出预览为有效主题使用的 CSS。
+- `preview <file> --appearance <light|dark> -o <out.png>`：用这个主题把一份示例文稿渲染成 PNG。`--width` 设置宽度（像素），范围 600 到 2000，默认 1200。文件已存在时，要加上 `--force` 才会替换。
+- `--json`：输出 JSON 结果，而不是文本。
+
+`theme` 命令从 marsdawn 0.6.1 开始提供。
 
 ## $MARSDAWN_THEME 环境变量
 
@@ -124,7 +151,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - [代理的透明](https://marsdawn.southern-light.dev/zh-hans/agent-transparency/index.md): Anthropic 谈打造代理的指南要求透明：把规划步骤摊开来。它说了什么、没说什么，以及为什么这些步骤最后多半变成一份要有人读的 Markdown。
 - [审代理计划](https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/index.md): 代理交出计划、还没开始执行之前，用六个步骤、大约五分钟把它审完。什么编辑器都能用，附一份实际的例子。
 - [代理设计模式](https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/index.md): Andrew Ng 提出的四种代理设计模式：reflection、tool use、planning、multi-agent collaboration，以及每一种通常会交回什么要你读的文件。
-- [更新记录](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): 免费的 marsdawn 命令行工具改了什么。
+- [更新记录](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): MarsDawn App 与免费的 marsdawn 命令行工具，每个版本改了什么。
 - [编者的阅读笔记](https://marsdawn.southern-light.dev/zh-hans/reading-notes/index.md): 六篇短笔记，谈打造 AI 代理的人实际主张了什么——Anthropic、Chip Huyen、Lilian Weng、Harrison Chase、LangChain 与 Andrew Ng——以及这些主张对“要读代理交回来的东西”的人分别意味着什么。
 - [阅读笔记：Anthropic](https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/index.md): Anthropic 在 2024 年 12 月发表的指南把 workflow 和代理分开来看，并描述了五种 workflow 模式，其中一种让另一次 LLM 调用来审查。这对落进你文件夹的东西来说，意味着什么。
 - [阅读笔记：Chip Huyen](https://marsdawn.southern-light.dev/zh-hans/reading-notes/chip-huyen-agents/index.md): Chip Huyen 在 2025 年 1 月的文章里，把代理的动作分成 read-only 和 write action 两种。这个分法为什么是核准计划前，快速抓出该多看一眼的那一行的好方法。

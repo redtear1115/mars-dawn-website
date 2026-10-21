@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marsdawn.southern-light.dev/schemas/cli/error.v4.json",
+  "title": "marsdawn --json: failure",
+  "description": "Printed on stdout as one line when a command run with --json fails: with exit code 2, 3, 4, 5, 6 or 7, or with exit code 64 for the usage errors that have a kind (an out-of-range --wait, skill --install's refusals, theme preview's refused -o). Other usage errors (exit code 64) are printed as text on stderr instead. marsdawn 0.7.1 and later; error.v3.json, for the same releases, leaves out the exit-64 kinds. error.v2.json is for 0.5.2–0.7.0, error.v1.json for 0.5.1 and earlier.",
+  "type": "object",
+  "required": [
+    "ok",
+    "error",
+    "message"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "ok": {
+      "const": false
+    },
+    "error": {
+      "enum": [
+        "input_not_found",
+        "app_not_installed",
+        "output_exists",
+        "export_failed",
+        "app_cannot_open_folders",
+        "skill_install_failed",
+        "input_too_large",
+        "wait_out_of_range",
+        "skill_differs",
+        "skill_unsafe_symlink",
+        "skill_target_not_a_file",
+        "skill_unreadable",
+        "output_folder_missing",
+        "output_symlink",
+        "output_not_a_file"
+      ],
+      "description": "Machine-readable failure kind."
+    },
+    "message": {
+      "type": "string",
+      "description": "Human-readable explanation."
+    }
+  }
+}

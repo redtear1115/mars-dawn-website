@@ -190,6 +190,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
 <pre><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
 <ul>
   <li><code>folder</code> : présent seulement si un dossier a été donné. <code>path</code> est son chemin absolu. <code>requested</code> vaut toujours <code>true</code> : marsdawn a demandé à MarsDawn d’afficher le dossier, mais ne peut pas savoir si la barre latérale l’affiche, car l’app peut d’abord demander l’accès à la personne. Signalez-le comme demandé, pas comme fait.</li>
+  <li>Avec un <code>--wait</code> supérieur à 0 et MarsDawn 1.0.2 ou version ultérieure, <code>folder</code> contient aussi <code>status</code> une fois l’attente terminée : <code>attached</code>, <code>needsUser</code>, <code>declined</code>, <code>failed</code>, <code>attachedDifferentFolder</code>, <code>full</code>, <code>unavailable</code> ou <code>unknown</code>. Seulement avec <code>needsUser</code>, il contient <code>waitingFor</code> : <code>confirmation</code> ou <code>folderChoice</code>. Sans <code>--wait</code>, ou avec une app qui ne donne pas de réponse, <code>folder</code> reste <code>{"path": …, "requested": true}</code>. Un <code>--wait</code> hors de 0 à 30 se termine avec le code 64 et <code>error: "wait_out_of_range"</code>. (marsdawn 0.5.3 et versions ultérieures.)</li>
   <li><code>opened</code> est vide si seul un dossier a été donné.</li>
 </ul>
 <p>marsdawn 0.2.x affichait <code>opened</code> sous forme de liste de chemins. Vérifiez <code>marsdawn --version</code> si vous devez gérer les deux.</p>
@@ -260,8 +261,10 @@ exit 0</code></pre>
 <p>JSON Schema (draft 2020-12) pour chaque résultat <code>--json</code> :</p>
 <ul>
   <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: succès de export</li>
-  <li><a href="/schemas/cli/open.v3.json">open.v3.json</a>: succès de open, marsdawn 0.5.1 et versions ultérieures, y compris un dossier affiché dans la barre latérale</li>
-  <li><a href="/schemas/cli/error.v2.json">error.v2.json</a>: échec, pour les deux commandes, marsdawn 0.5.2 et versions ultérieures</li>
+  <li><a href="/schemas/cli/open.v4.json">open.v4.json</a>: succès de open, marsdawn 0.5.3 et versions ultérieures, avec <code>status</code> et <code>waitingFor</code> du dossier</li>
+  <li><a href="/schemas/cli/open.v3.json">open.v3.json</a>: succès de open, marsdawn 0.5.1 et 0.5.2, y compris un dossier affiché dans la barre latérale</li>
+  <li><a href="/schemas/cli/error.v3.json">error.v3.json</a>: échec, pour toutes les commandes, marsdawn 0.7.1 et versions ultérieures, avec <code>input_too_large</code> (code 5) et <code>skill_install_failed</code> (code 7)</li>
+  <li><a href="/schemas/cli/error.v2.json">error.v2.json</a>: échec, pour les deux commandes, marsdawn 0.5.2 à 0.7.0</li>
   <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: succès de open, marsdawn 0.3.0 à 0.5.0</li>
   <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: succès de open, marsdawn 0.2.x, où <code>opened</code> était une liste de chemins</li>
   <li><a href="/schemas/cli/error.v1.json">error.v1.json</a>: échec, pour les deux commandes, marsdawn 0.5.1 et versions antérieures</li>

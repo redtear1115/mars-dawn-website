@@ -87,7 +87,7 @@ def check() -> int:
             print(f"{path.name}: not started (fine: {locale} is not built)")
             continue
         module = __import__(locales.module_name(locale))
-        problems = build_pages.shape_problems(ref, module.build(build_pages._make_k(locale)), allow_empty=True)
+        problems = build_pages.shape_problems(ref, build_pages.build_planned_locale(module, locale), allow_empty=True)
         for problem in problems:
             print(f"{path.name}: {problem}")
         print(f"{path.name}: {len(problems)} structure problems")

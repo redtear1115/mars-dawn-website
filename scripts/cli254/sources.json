@@ -1,0 +1,76 @@
+{
+ "comments": {
+  "A": {
+   "issue": 254,
+   "id": 6233038202,
+   "what": "Grok's en, zh-Hant and ja copy of 2026-10-17: open --wait, folder status, 0.6.4",
+   "created_at": "2026-10-17T10:52:21Z",
+   "updated_at": "2026-10-17T10:52:29Z",
+   "sha256": "6ba47d5723196fd3df6a464051ea7c2515363edd8b3ac545adca103ef57be488",
+   "chars": 5434
+  },
+  "B": {
+   "issue": 254,
+   "id": 6294978172,
+   "what": "Grok's en, zh-Hant and ja copy of 2026-10-20: changelog 0.7.2 and 0.6.1, theme, export flags, schema notes",
+   "created_at": "2026-10-20T15:49:06Z",
+   "updated_at": "2026-10-20T15:49:06Z",
+   "sha256": "64f227d99643cb5a58e1897d5acc48a1a35e55b13110f06723dc006b360d0d0f",
+   "chars": 11243
+  },
+  "approval": {
+   "issue": 254,
+   "id": 6295102211,
+   "what": "owner approval of A and B (en, zh-Hant, ja), 2026-10-20, recorded by marsdawn-orchi",
+   "created_at": "2026-10-20T15:54:51Z",
+   "updated_at": "2026-10-20T15:54:51Z",
+   "sha256": "ca6fba829ee5f01ff18114aa2f15cd6bf12aec5332be06781e567f475f4b494e",
+   "chars": 784
+  },
+  "C": {
+   "issue": 286,
+   "id": 6280485104,
+   "what": "Grok's en, zh-Hant and ja changelog entries for 0.7.1 and 0.7.0 (its 0.6.4 is void)",
+   "created_at": "2026-10-20T00:33:53Z",
+   "updated_at": "2026-10-20T00:33:53Z",
+   "sha256": "bd7dc9be1dbcb1cb9539af954be4672b8973cc6fb0bb23b8b8c26aa1c7f6fc5f",
+   "chars": 6585
+  },
+  "C_edits": {
+   "issue": 286,
+   "id": 6280891336,
+   "what": "Grok's edits to C, section 6c",
+   "created_at": "2026-10-20T01:05:24Z",
+   "updated_at": "2026-10-20T01:05:24Z",
+   "sha256": "13fcf3303505a9ae65950eb0258ac473fba7831f45ff91040d4979c29598c49f",
+   "chars": 21533
+  },
+  "ja_name": {
+   "issue": 254,
+   "id": 6295059627,
+   "what": "ja layout name ハンドブック (Grok, Ray agreed)",
+   "created_at": "2026-10-20T15:52:51Z",
+   "updated_at": "2026-10-20T15:52:51Z",
+   "sha256": "68bd3f010eeb112f2ac125d43f493e3347c822cc14e7c3e4e8f1908416a4c2fb",
+   "chars": 270
+  },
+  "approval_c": {
+   "issue": 254,
+   "id": 6295263711,
+   "what": "owner approval of C with the 6c edits and ハンドブック, 2026-10-21, recorded by marsdawn-orchi",
+   "created_at": "2026-10-20T16:01:59Z",
+   "updated_at": "2026-10-20T16:02:06Z",
+   "sha256": "f68881e6e5784f692a44ce44527f1975c569b0e43c9d34739540d55797dc7426",
+   "chars": 800
+  },
+  "I": {
+   "issue": 254,
+   "id": 6295975448,
+   "what": "Grok's zh-Hans, ko, de, fr and es copy (needs-i18n, standing machine-locale OK)",
+   "created_at": "2026-10-20T16:36:31Z",
+   "updated_at": "2026-10-20T16:36:31Z",
+   "sha256": "e41989fce4804f874ee0b876a03a4396267fe7e54637a3f184b12b94d047c997",
+   "chars": 37303
+  }
+ }
+}

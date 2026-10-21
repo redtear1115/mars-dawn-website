@@ -1,0 +1,53 @@
+{
+ "issue": 273,
+ "comments": {
+  "C1": {
+   "id": 6249084047,
+   "what": "Grok's en, zh-Hant and ja copy",
+   "created_at": "2026-10-18T11:04:54Z",
+   "updated_at": "2026-10-18T11:04:54Z",
+   "sha256": "5439e5dfdb53fb2dd53d07dacafb3e284a6fab84c649583ff1aced30d279d841",
+   "chars": 2310
+  },
+  "C2": {
+   "id": 6256883031,
+   "what": "Grok's zh-Hans, ko, de, fr and es copy (needs-i18n, standing machine-locale OK of 2026-10-16)",
+   "created_at": "2026-10-19T00:09:55Z",
+   "updated_at": "2026-10-19T00:09:55Z",
+   "sha256": "f13c0345758db4fc5f18e84da17ed304594dbb14177497d8af44393aca5224b9",
+   "chars": 3401
+  }
+ },
+ "approval": {
+  "id": 6251240241,
+  "what": "owner approval of C1, 2026-10-18 22:45 CST: H3 'MarsDawn <version>' with the date on the first line, no build number",
+  "updated_at": "2026-10-18T14:44:15Z",
+  "sha256": "d10fa1f00d1f82eb0b6154be71fd49953e8b7c6c7b480a25e5d26f47646500f8"
+ },
+ "app": {
+  "repo": "redtear1115/mars-dawn",
+  "commit": "38ccf057dc27ad06c650413c86054ac5061fd90a",
+  "files": {
+   "docs/release-notes/1.0.2.md": "a1005eb6b9ae7987673b8717c4d67d74410d0a9087fe69eec9db925ff85cf428",
+   "docs/release-notes/1.1.0.md": "8ad1f81575582a09591e5f962f1d1149875c9c9ae4165f82636223e8d3629bce",
+   "docs/release-notes/1.1.1.md": "53031f43c9801997c8b30b48a1b5e08afb45c9e9f348255a51952251cbfa2731"
+  }
+ },
+ "asc": {
+  "what": "App Store Connect read, GET only, of every Mac version's localizations and What's New (#273 comment 6249047503)",
+  "fetched_at": "2026-10-18T10:59:55.462098+00:00",
+  "sha256": "2e57a3ddc2b2093982b076cecce8a8324e68ab7136354d5d202ffd2db04c7af6"
+ },
+ "first_version": "1.0.0",
+ "dates": {
+  "url": "https://apps.apple.com/us/app/id6812925073",
+  "read": "2026-10-20",
+  "rule": "the date the App Store's version history gives (its <time datetime>, the UTC date of the timestamp below); the tw storefront gives the same dates"
+ },
+ "versions": [
+  {"version": "1.0.0", "released": "2026-10-05", "released_at_store": "Mon Oct 05 2026 22:15:27 GMT+0000 (Coordinated Universal Time)"},
+  {"version": "1.0.2", "released": "2026-10-07", "released_at_store": "Wed Oct 07 2026 16:29:16 GMT+0000 (Coordinated Universal Time)"},
+  {"version": "1.1.0", "released": "2026-10-09", "released_at_store": "Fri Oct 09 2026 08:15:17 GMT+0000 (Coordinated Universal Time)"},
+  {"version": "1.1.1", "released": "2026-10-15", "released_at_store": "Thu Oct 15 2026 20:36:01 GMT+0000 (Coordinated Universal Time)"}
+ ]
+}

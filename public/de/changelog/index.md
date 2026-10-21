@@ -1,15 +1,77 @@
 # Änderungsprotokoll
 
-Was sich im kostenlosen Befehlszeilenprogramm marsdawn geändert hat. Ein Build von MarsDawn aus dem Mac App Store wird hier nur erwähnt, wenn er eine eigene Zeile hat. Versionen vor 0.5.1 sind nicht aufgeführt.
+Was sich in jeder Version der MarsDawn-App aus dem Mac App Store und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat. Bei der App ist das Datum der Tag, an dem die Version im Mac App Store erschien.
 
-## marsdawn 0.6.3
+## MarsDawn-App
+
+### MarsDawn 1.1.1
+
+15. Oktober 2026
+
+- Auf Deutsch, Japanisch, Spanisch und Französisch zeigt Einstellungen > Erscheinungsbild > „Weitere Themes laden …“ den Szenario-Filter jetzt als Einblendmenü mit der Beschriftung „Szenario“, damit die fünf Optionen Platz haben. Auf Englisch, Koreanisch und Chinesisch bleibt es beim segmentierten Steuerelement.
+- Wenn ein Theme aus der Galerie zurückgezogen wird, nennt der Hinweis in „Weitere Themes laden …“ jetzt den Namen des Themes (zum Beispiel Inkwell Ivory) statt seiner internen ID.
+- Ausklappbare details-Abschnitte im GitHub-Stil beginnen in der Vorschau und in der Übersicht jetzt eingeklappt mit sichtbarer Zusammenfassung und öffnen sich per Klick. Der PDF-Export druckt weiterhin den Inhalt aller Abschnitte.
+- Dokumente, die du aus dem Finder, dem Dock, über Ablage > „Öffnen …“ oder mit dem Befehl marsdawn open öffnest, öffnen sich jetzt als Tabs im vordersten Fenster, ebenso neue Dokumente. Um das bisherige Verhalten beizubehalten, wähle „Systemeinstellung folgen“ unter Einstellungen > Erscheinungsbild.
+
+Frühere Versionen sind nur auf Englisch beschrieben: [zum englischen Änderungsprotokoll](/changelog/).
+
+## Befehlszeilenprogramm marsdawn
+
+Versionen vor 0.5.1 sind nicht aufgeführt.
+
+### marsdawn 0.7.2
+
+20. Oktober 2026. Das Handbuch-Layout, Hinweisboxen und japanische Schriften.
+
+- Der Wert für `--layout` heißt jetzt `handbook`, wie das Layout „Handbuch“ der App: `marsdawn export --layout handbook`. `--layout manual` funktioniert weiterhin, ist aber veraltet.
+- Hinweisboxen werden dargestellt, in der Vorschau und in exportierten PDFs: GitHub-Alerts wie `> [!NOTE]` und `> [!WARNING]` und HackMD-Container wie `:::info` und `:::warning`. `:::spoiler` ergibt einen ausklappbaren Abschnitt.
+- Ein japanisches Dokument verwendet japanische Schriften für Kana und Kanji. marsdawn erkennt die Sprache an `lang: ja` im Front Matter oder am Kana-Anteil des Textes.
+- Nach einem erfolgreichen `export` oder `open` im Terminal zeigt marsdawn einmalig einen Tipp auf stderr, wenn der Agent-Skill fehlt oder veraltet ist. Die Ausgabe auf stdout und mit `--json` ändert sich nicht. Mit `MARSDAWN_NO_SKILL_HINT=1` schaltest du den Tipp ab.
+
+### marsdawn 0.7.1
+
+20. Oktober 2026. Ein Handbuch-Layout und eine Größengrenze.
+
+- `marsdawn export --layout manual` druckt ein Handbuch: breitere Ränder, 25 mm Bundsteg und jede Überschrift der obersten Ebene auf einer neuen Seite, dazu ein Deckblatt aus title, subtitle, version, date, author und logo des Front Matter, ein Inhaltsverzeichnis der Überschriften der Ebenen 1 und 2 mit Seitenzahlen, Seitenzahlen als `n / N` und PDF-Lesezeichen. `--toc-title` legt die Überschrift des Inhaltsverzeichnisses fest. Standard bleibt `--layout document`.
+- `<!--BREAK-->` allein in einer Zeile beginnt eine neue Seite, in beiden Layouts.
+- `marsdawn export` lehnt Dateien über 16 MiB ab: Es endet mit Exit-Code 5, meldet mit `--json` `input_too_large` und schreibt nichts.
+- Die Vorschauseite entfernt script- und noscript-Elemente; ein neu gezeichnetes Mermaid-Diagramm behält sein eigenes SVG.
+- Ein Zeichenverweis, der zu `=` oder `^` decodiert wird, etwa `&#61;`, bildet kein Paar mehr mit einer HackMD-Markierung.
+
+### marsdawn 0.7.0
+
+18. Oktober 2026. HackMD-Markdown, Zeilenumbrüche und Grenzen für sehr große Dokumente.
+
+- HackMDs Inline-Markierungen werden dargestellt: `==mark==`, `^sup^` und `~sub~`. Ein Absatz, der nur aus `[TOC]` besteht, wird zum Inhaltsverzeichnis, HackMDs Bildgrößen werden übernommen, Embed-Tags werden zu einfachen https-Links, und die Sprache eines Codeblocks wird vor HackMD-Optionen wie `js=` gelesen.
+- `marsdawn export --breaks` macht wie HackMD jeden Zeilenumbruch in einem Absatz zu einem Zeilenumbruch. Ohne die Option fällt ein Zeilenumbruch zwischen zwei chinesischen oder japanischen Zeichen weg, sodass sich die Zeilen wie ein Satz lesen. Koreanisch behält sein Leerzeichen, weil es Wörter durch Leerzeichen trennt.
+- Sehr große Dokumente haben Grenzen, in der Vorschau und in exportierten PDFs. Ein Codeblock über 128K Zeichen wird nicht hervorgehoben, und nach insgesamt 256K Zeichen endet die Hervorhebung. Pro Aktualisierung werden bis zu 100 Mermaid-Diagramme und 1.000 Formeln dargestellt; die übrigen Diagramme zeigen ihren Quelltext mit einem Hinweis, auch wenn sie schon einmal gezeichnet waren.
+- In einem Sequenzdiagramm bekommt eine Nachrichtenbeschriftung in einem `rect`-Block einen Rand in der Farbe des Blocks.
+- Ein Fußnotenverweis direkt über einer Tabelle bringt `marsdawn export` nicht mehr zum Absturz.
+- `marsdawn skill --install` endet mit Exit-Code 7 (`skill_install_failed`), wenn es den Ordner nicht anlegen oder die Datei nicht schreiben kann, und lässt eine vorhandene SKILL.md unverändert.
+
+### marsdawn 0.6.4
+
+13. Oktober 2026. Ausklappbare `<details>`-Blöcke.
+
+- Ein `<details>`-Block im GitHub-Stil mit Leerzeilen darin wird als ein ausklappbares Element dargestellt, in der Vorschau und in exportierten PDFs. Bisher zerfiel er an der ersten Leerzeile.
+- Der PDF-Export öffnet vor dem Drucken jeden `<details>`-Block, außer dem Front Matter.
+- Die Vorschau behält ihre Scrollposition, wenn du einen `<details>`-Block öffnest oder schließt.
+
+### marsdawn 0.6.3
 
 6. Oktober 2026. MarsDawn ist im Mac App Store.
 
 - Wenn die App nicht installiert ist, verweist `marsdawn open` auf MarsDawn im Mac App Store.
 - Das README und der Agent-Skill erklären `marsdawn open .` und `--folder`: MarsDawn 1.0.0 zeigt den Ordner in der Seitenleiste des Fensters.
 
-## marsdawn 0.5.4
+### marsdawn 0.6.1
+
+29. September 2026. Themen prüfen.
+
+- `marsdawn theme validate` prüft eine `theme.json` nach den Regeln der App. Es endet mit Exit-Code 0, wenn das Thema gültig ist, und mit 1, wenn nicht, und listet jedes Problem auf. `--require-complete` verlangt zusätzlich die Syntax- und Diagrammfarben.
+- `marsdawn theme css` gibt das CSS aus, das die Vorschau für ein gültiges Thema verwendet, und `marsdawn theme preview` rendert damit ein Beispieldokument als PNG, hell oder dunkel.
+
+### marsdawn 0.5.4
 
 26. September 2026. Mermaid-Korrekturen, Zeilenangaben bei Diagrammfehlern und die Installation des Skills.
 
@@ -18,7 +80,7 @@ Was sich im kostenlosen Befehlszeilenprogramm marsdawn geändert hat. Ein Build 
 - `marsdawn export --json` ergänzt `diagramErrorDetails` mit Zeilennummern für jeden Diagrammfehler: wo das Diagramm in deinem Dokument beginnt und, wenn Mermaid eine nennt, die Zeile des Fehlers selbst.
 - `marsdawn skill --install` installiert den Agent-Skill für Claude Code unter `~/.claude/skills/marsdawn/SKILL.md` oder mit `--dir` in einem anderen Ordner. Eine identische Datei lässt es unangetastet, eine abweichende ersetzt es nur mit `--force`. Andernfalls endet es mit Exit-Code 64 (`skill_differs`) und ändert nichts.
 
-## marsdawn 0.5.3
+### marsdawn 0.5.3
 
 25. September 2026. Ordnerstatus, vollständige Mermaid-Fehler und kleinere Korrekturen.
 
@@ -28,7 +90,7 @@ Was sich im kostenlosen Befehlszeilenprogramm marsdawn geändert hat. Ein Build 
 - Eine App kann dem Rücklink einer Fußnote für PDF-Export und Drucken eine übersetzte Beschriftung geben. Die Beschriftung wird nicht auf die Seite gedruckt, und `marsdawn export` behält die englische.
 - Das mitgelieferte highlight.js ist jetzt nach Version, Quelle und SHA-256 festgelegt, wie KaTeX und Mermaid.
 
-## marsdawn 0.5.2
+### marsdawn 0.5.2
 
 24. September 2026. Fußnoten, Kontrast und Ordner.
 
@@ -40,7 +102,7 @@ Was sich im kostenlosen Befehlszeilenprogramm marsdawn geändert hat. Ein Build 
 - Ein Bildplatzhalter zeigt hinter einem sehr langen relativen Pfad nicht mehr den absoluten Pfad.
 - `MARSDAWN_APP_PATH` wird nur verwendet, wenn es auf eine MarsDawn-App zeigt.
 
-## marsdawn 0.5.1
+### marsdawn 0.5.1
 
 19. September 2026. PDF-Export und das Öffnen einer Datei über die Befehlszeile.
 
@@ -93,10 +155,10 @@ Was sich im kostenlosen Befehlszeilenprogramm marsdawn geändert hat. Ein Build 
 - [Spezifikationsvorlage](https://marsdawn.southern-light.dev/de/templates/spec/index.md): Eine Markdown-Vorlage für Spezifikationen mit Anforderungen, einem Mermaid-Ablaufdiagramm und Akzeptanzkriterien. Dein Agent füllt sie aus, du prüfst sie in MarsDawn.
 - [Flussdiagramm-Vorlage](https://marsdawn.southern-light.dev/de/templates/flowchart/index.md): Eine Mermaid-Flussdiagramm-Vorlage in Markdown, darunter die Schritte ausgeschrieben. Auf dem Mac in der Vorschau ansehen und als PDF exportieren.
 - [Protokollvorlage](https://marsdawn.southern-light.dev/de/templates/meeting-notes/index.md): Eine Markdown-Vorlage für Besprechungsprotokolle mit Entscheidungen und Aufgaben, jeweils mit einer verantwortlichen Person. Dein Agent schreibt es, du prüfst es in MarsDawn.
-- [English](https://marsdawn.southern-light.dev/changelog/index.md): What changed in the free marsdawn command-line tool.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/changelog/index.md): 免費的 marsdawn 命令列工具改了什麼。
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): 免费的 marsdawn 命令行工具改了什么。
-- [日本語](https://marsdawn.southern-light.dev/ja/changelog/index.md): 無料の marsdawn コマンドラインツールの変更点です。
-- [Français](https://marsdawn.southern-light.dev/fr/changelog/index.md): Ce qui a changé dans l’outil en ligne de commande gratuit marsdawn.
-- [Español](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en la herramienta de línea de comandos gratuita marsdawn.
-- [한국어](https://marsdawn.southern-light.dev/ko/changelog/index.md): 무료 marsdawn 명령줄 도구에서 바뀐 점입니다.
+- [English](https://marsdawn.southern-light.dev/changelog/index.md): What changed in each version of the MarsDawn app and the free marsdawn CLI.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/changelog/index.md): MarsDawn App 與免費的 marsdawn 命令列工具，每個版本改了什麼。
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): MarsDawn App 与免费的 marsdawn 命令行工具，每个版本改了什么。
+- [日本語](https://marsdawn.southern-light.dev/ja/changelog/index.md): MarsDawn アプリと無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。
+- [Français](https://marsdawn.southern-light.dev/fr/changelog/index.md): Ce qui a changé dans chaque version de l’app MarsDawn et de l’outil en ligne de commande gratuit marsdawn.
+- [Español](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en cada versión de la app MarsDawn y de la herramienta de línea de comandos gratuita marsdawn.
+- [한국어](https://marsdawn.southern-light.dev/ko/changelog/index.md): MarsDawn 앱과 무료 marsdawn 명령줄 도구의 버전별 변경 사항입니다.

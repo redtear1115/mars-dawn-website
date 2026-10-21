@@ -1,15 +1,99 @@
 # 更新记录
 
-免费的 marsdawn 命令行工具改了什么。Mac App Store 上的 MarsDawn，只有某个版本值得单独记一笔时才会出现在这里。0.5.1 以前的版本不列。
+Mac App Store 上的 MarsDawn App，以及免费的 marsdawn 命令行工具，每个版本改了什么。App 的日期是该版本在 Mac App Store 上架的日子。
 
-## marsdawn 0.6.3
+## MarsDawn App
+
+### MarsDawn 1.1.1
+
+2026 年 10 月 15 日
+
+- 在德语、日语、西班牙语和法语中，「设置 ▸ 外观 ▸ 获取更多主题…」的场景筛选改为标示为「场景」的弹出式菜单，五个选项才放得下。英语、韩语和中文仍使用分段控件。
+- 主题从主题图库下架时，「获取更多主题…」中的提示现在会显示主题名称（例如 Inkwell Ivory），不再显示内部 id。
+- 按 GitHub 写法编写的可折叠 details 区块，在预览和「快速查看」中会先折叠并显示摘要，点按后才展开。导出 PDF 时仍会打印每一部分的内容。
+- 从访达、程序坞、「文件 ▸ 打开…」或 marsdawn open 命令打开的文稿，以及新建的文稿，现在都会成为最前面窗口的标签页。要保持以前的方式，可以在「设置 ▸ 外观」中选择「跟随系统设置」。
+
+### MarsDawn 1.1.0
+
+2026 年 10 月 9 日
+
+- 「设置 ▸ 外观」新增「获取更多主题…」按钮，可打开主题图库，挑选更多预览主题。安装后，主题会出现在「显示 ▸ 预览主题」中，也可以随时移除。主题图库只在打开时才会联网。
+- 在访达中用「快速查看」预览时，现在会使用你选的主题，不再一律使用黎明主题。
+- 「快速查看」也会跟随 MarsDawn 的外观设置：选「浅色」或「深色」就固定使用该外观，即使 Mac 设为另一种；选「系统」则跟随 Mac。
+- 窗口标题中的 git 标记，现在遇到已暂存但尚未提交的文件会显示「+」，以前看起来像是没有更改。
+- 在预览中点按指向其他 Markdown 文件的链接，例如 [notes](notes.md#plan)，现在会打开该文件；如果已经打开就带到最前面，并滚动到对应的标题。文件若不在边栏的文件夹内，MarsDawn 会先请你将该文件夹添加到边栏，添加后再点按一次链接。
+
+### MarsDawn 1.0.2
+
+2026 年 10 月 7 日
+
+- 修正：第一次切换布局，或显示、隐藏边栏时，编辑器不会再向上偏移一小段。
+- 无法绘制的 Mermaid 图表现在会显示完整的错误信息；知道行号时，点按错误信息就会跳到编辑器中该图表所在的行。
+- 繁体中文、简体中文和西班牙语的菜单用词，改为与 macOS 内置的翻译一致，例如「保存为…」。
+
+### MarsDawn 1.0.0
+
+2026 年 10 月 5 日
+
+首次发布。
+
+## marsdawn 命令行工具
+
+0.5.1 以前的版本不列。
+
+### marsdawn 0.7.2
+
+2026 年 10 月 20 日。手册布局、提示块，以及日文字体。
+
+- `--layout` 的值改为 `handbook`，与 app 的「手册」（Handbook）布局同名：`marsdawn export --layout handbook`。`--layout manual` 仍可使用，但已弃用。
+- 预览和导出的 PDF 都会显示提示块：GitHub 的 alert（例如 `> [!NOTE]`、`> [!WARNING]`），以及 HackMD 的容器（例如 `:::info`、`:::warning`）。`:::spoiler` 会成为可折叠的区块。
+- 日文文稿的假名和汉字会改用日文字体。语言取自 front matter 的 `lang: ja`；没有写时，按正文中假名的比例判断。
+- 在终端中成功运行 `export` 或 `open` 之后，如果代理技能没有安装或已经过期，marsdawn 会在 stderr 显示一次提示。stdout 和 `--json` 的输出都不变。设置 `MARSDAWN_NO_SKILL_HINT=1` 就不再提示。
+
+### marsdawn 0.7.1
+
+2026 年 10 月 20 日。手册布局，以及文件大小上限。
+
+- `marsdawn export --layout manual` 导出成手册：页边距更宽、装订边留 25 mm，每个一级标题从新的一页开始；另外有封面（取自 front matter 的 title、subtitle、version、date、author 和 logo）、列出一、二级标题并附页码的目录、`n / N` 页码，以及 PDF 书签。目录页的标题可以用 `--toc-title` 指定。默认仍是 `--layout document`。
+- 单独一行的 `<!--BREAK-->` 会从新的一页开始，两种布局都适用。
+- `marsdawn export` 不处理超过 16 MiB 的文件：以代码 5 结束，加上 `--json` 时报告 `input_too_large`，不写出任何文件。
+- 预览页会移除 script 和 noscript 元素；Mermaid 重绘时保留图表自己的 SVG。
+- 解码后是 `=` 或 `^` 的字符引用（例如 `&#61;`）不再和 HackMD 标记配对。
+
+### marsdawn 0.7.0
+
+2026 年 10 月 18 日。HackMD 语法、换行，以及超大文稿的上限。
+
+- 支持 HackMD 的行内标记：`==mark==`、`^sup^` 和 `~sub~`。单独成段的 `[TOC]` 会变成目录；HackMD 写法的图片尺寸会生效；嵌入标签会变成普通的 https 链接；代码块的语言会先读出来，再处理 `js=` 这类 HackMD 选项。
+- `marsdawn export --breaks` 会把段落内的每个换行都当作换行，和 HackMD 一样。不加时，两个中文或日文字符之间的换行会去掉，让前后两行连成一句；韩文的词与词之间本来就有空格，所以保留空格。
+- 超大文稿在预览和导出的 PDF 中都有上限：单个代码块超过 128K 字符就不做语法高亮，整份累计超过 256K 字符后也不再高亮。每次更新最多绘制 100 个 Mermaid 图表、渲染 1,000 个数学公式；其余图表显示源代码并附上说明，即使之前绘制过也一样。
+- 时序图中，`rect` 区块里的消息标签，描边底色改用该区块的颜色。
+- 表格正上方有脚注引用时，`marsdawn export` 不再崩溃。
+- `marsdawn skill --install` 无法创建文件夹或写入文件时，以代码 7（`skill_install_failed`）结束，原有的 SKILL.md 保持不变。
+
+### marsdawn 0.6.4
+
+2026 年 10 月 13 日。可折叠的 `<details>` 区块。
+
+- GitHub 风格的 `<details>` 区块里有空行时，也会显示为一个可折叠的区块；预览和导出的 PDF 都一样。以前遇到第一个空行就会断开。
+- 导出 PDF 时，会先把每个 `<details>` 区块展开再打印（front matter 除外）。
+- 展开或折叠 `<details>` 区块时，预览会保持原来的滚动位置。
+
+### marsdawn 0.6.3
 
 2026 年 10 月 6 日。MarsDawn 在 Mac App Store 上架。
 
 - 没有安装 app 时，`marsdawn open` 会指向 Mac App Store 上的 MarsDawn。
 - README 和代理技能会教 `marsdawn open .` 与 `--folder`：MarsDawn 1.0.0 会把文件夹显示在窗口的侧边栏。
 
-## marsdawn 0.5.4
+### marsdawn 0.6.1
+
+2026 年 9 月 29 日。检查主题。
+
+- `marsdawn theme validate` 会用 app 采用的规则检查 `theme.json`。主题有效时以代码 0 结束，无效时以代码 1 结束，并列出每个问题。加上 `--require-complete` 时，还会要求语法高亮和图表的颜色。
+- `marsdawn theme css` 会输出预览为有效主题使用的 CSS；`marsdawn theme preview` 会用这个主题把一份示例文稿渲染成 PNG，浅色或深色都可以。
+
+### marsdawn 0.5.4
 
 2026 年 9 月 26 日。Mermaid 修复、图表错误的行号，以及安装 skill。
 
@@ -18,7 +102,7 @@
 - `marsdawn export --json` 新增 `diagramErrorDetails`，用行号标出每个图表错误：图表在文稿中从第几行开始；Mermaid 指出行号时，也给出错误本身所在的行。
 - `marsdawn skill --install` 会把代理技能安装到 `~/.claude/skills/marsdawn/SKILL.md`，供 Claude Code 使用；加上 `--dir` 可以改装到其他文件夹。已有相同的文件时不会改动它；内容不同时，只有加上 `--force` 才会替换，否则以代码 64（`skill_differs`）结束，不做任何改动。
 
-## marsdawn 0.5.3
+### marsdawn 0.5.3
 
 2026 年 9 月 25 日。文件夹状态、完整的 Mermaid 错误信息，以及其他小修复。
 
@@ -28,7 +112,7 @@
 - app 可以在导出 PDF 和打印时，为脚注的返回链接提供翻译后的标签。这个标签不会打印在页面上，`marsdawn export` 仍使用英文。
 - 内置的 highlight.js 现在和 KaTeX、Mermaid 一样，记录版本、来源与 SHA-256。
 
-## marsdawn 0.5.2
+### marsdawn 0.5.2
 
 2026 年 9 月 24 日。脚注、对比度与文件夹。
 
@@ -40,7 +124,7 @@
 - 相对路径很长时，图片占位文字不再显示它背后的绝对路径。
 - `MARSDAWN_APP_PATH` 只有指向 MarsDawn app 时才会采用。
 
-## marsdawn 0.5.1
+### marsdawn 0.5.1
 
 2026 年 9 月 19 日。PDF 导出，以及从命令行打开文件。
 
@@ -93,10 +177,10 @@
 - [规格文档模板](https://marsdawn.southern-light.dev/zh-hans/templates/spec/index.md): Markdown 规格文档模板，包含需求、Mermaid 流程图和验收标准。代理来填，你在 MarsDawn 里审阅。
 - [流程图模板](https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/index.md): Markdown 的 Mermaid 流程图模板，图的下方把步骤写出来。在 Mac 上预览，也能导出成 PDF。
 - [会议记录模板](https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/index.md): Markdown 会议记录模板，列出决议和行动项，每项都有负责人。代理来写，你在 MarsDawn 里确认。
-- [English](https://marsdawn.southern-light.dev/changelog/index.md): What changed in the free marsdawn command-line tool.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/changelog/index.md): 免費的 marsdawn 命令列工具改了什麼。
-- [日本語](https://marsdawn.southern-light.dev/ja/changelog/index.md): 無料の marsdawn コマンドラインツールの変更点です。
-- [Deutsch](https://marsdawn.southern-light.dev/de/changelog/index.md): Was sich im kostenlosen Befehlszeilenprogramm marsdawn geändert hat.
-- [Français](https://marsdawn.southern-light.dev/fr/changelog/index.md): Ce qui a changé dans l’outil en ligne de commande gratuit marsdawn.
-- [Español](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en la herramienta de línea de comandos gratuita marsdawn.
-- [한국어](https://marsdawn.southern-light.dev/ko/changelog/index.md): 무료 marsdawn 명령줄 도구에서 바뀐 점입니다.
+- [English](https://marsdawn.southern-light.dev/changelog/index.md): What changed in each version of the MarsDawn app and the free marsdawn CLI.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/changelog/index.md): MarsDawn App 與免費的 marsdawn 命令列工具，每個版本改了什麼。
+- [日本語](https://marsdawn.southern-light.dev/ja/changelog/index.md): MarsDawn アプリと無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。
+- [Deutsch](https://marsdawn.southern-light.dev/de/changelog/index.md): Was sich in jeder Version der MarsDawn-App und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat.
+- [Français](https://marsdawn.southern-light.dev/fr/changelog/index.md): Ce qui a changé dans chaque version de l’app MarsDawn et de l’outil en ligne de commande gratuit marsdawn.
+- [Español](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en cada versión de la app MarsDawn y de la herramienta de línea de comandos gratuita marsdawn.
+- [한국어](https://marsdawn.southern-light.dev/ko/changelog/index.md): MarsDawn 앱과 무료 marsdawn 명령줄 도구의 버전별 변경 사항입니다.

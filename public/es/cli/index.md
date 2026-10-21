@@ -47,10 +47,13 @@ marsdawn open notes.md --folder .
 - Las líneas van de 1 a 999999999.
 - MarsDawn 1.0 abre el archivo en esa línea.
 - Una carpeta como argumento se abre en la barra lateral de la ventana en lugar de como documento: `marsdawn open .` muestra la carpeta actual. `--folder <path>` hace lo mismo junto con archivos. La barra lateral de una ventana muestra una carpeta, así que indicar dos es un error de uso.
+- `--wait <n>`: con MarsDawn 1.0.2 o posterior, que informa del resultado, `--folder` espera hasta n segundos (de 0 a 30, 2 de forma predeterminada) la respuesta de la app sobre la carpeta. Con `--wait 0`, o con una app que no informa del resultado, no espera y envía la misma solicitud que antes.
+- Un valor de `--wait` fuera de 0 a 30 es un error de uso (código 64). Escribe un valor negativo como `--wait=-1`.
+- Con `--json`, la carpeta figura como solicitada, no como mostrada, porque decide la app; con `--wait`, el resultado también dice qué pasó con ella. La lista completa está en [marsdawn para agentes](/es/cli/agents/).
 - `--background`: abrir sin traer MarsDawn al frente.
 - `--json`: mostrar un resultado JSON en lugar de texto.
 
-Las líneas llegaron con marsdawn 0.3.0, y las carpetas y `--background` con la 0.5.1.
+Las líneas llegaron con marsdawn 0.3.0, las carpetas y `--background` con la 0.5.1, y `--wait` y el estado de la carpeta con la 0.5.3.
 
 ### marsdawn export
 
@@ -63,9 +66,33 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `-o, --output <path>`: dónde escribir el PDF. De forma predeterminada, la ruta de entrada con la extensión `.pdf`.
 - `--theme <dawn|classic|modern|vivid>`: la paleta clara del tema de la vista previa. De forma predeterminada, `$MARSDAWN_THEME` y, si no, `dawn`.
 - `--paper <a4|letter>`: tamaño del papel. De forma predeterminada, `a4`.
+- `--breaks`: mostrar cada salto de línea dentro de un párrafo como un salto de línea, como HackMD. Sin esta opción, un salto de línea entre dos caracteres chinos o japoneses desaparece, y las líneas se leen como una sola frase.
+- `--layout <document|handbook>`: la disposición de página. De forma predeterminada, `document`. `handbook` genera una guía: márgenes más anchos con un lado de encuadernación, cada encabezado de primer nivel en una página nueva, una tabla de contenido con números de página, números de página en el pie y marcadores PDF, además de una portada cuando el front matter tiene `title`.
+- `--toc-title <text>`: el título de la página de contenido de la guía. De forma predeterminada, `Contents`.
+- `<!--BREAK-->` solo en una línea empieza una página nueva, en ambas disposiciones.
 - `--allow-remote-images`: cargar imágenes de la web durante el renderizado. Desactivado de forma predeterminada.
 - `--force`: reemplazar el archivo de salida si ya existe.
 - `--json`: mostrar un resultado JSON en lugar de texto.
+- Un archivo de más de 16 MiB no se exporta: `export` termina con el código 5 y no escribe nada.
+
+`--breaks` llegó con marsdawn 0.7.0, `--layout` y `--toc-title` con la 0.7.1, y el valor `handbook` con la 0.7.2. El valor anterior de la 0.7.1, `manual`, sigue funcionando.
+
+### marsdawn theme
+
+Comprueba un archivo de tema (`theme.json`) y muestra cómo se ve antes de que lo compartas. No necesita la app MarsDawn. Para los campos de un tema, consulta [Crea un tema con tu agente](/es/themes/agents/).
+
+```
+marsdawn theme validate my-theme.json
+marsdawn theme css my-theme.json
+marsdawn theme preview my-theme.json --appearance dark -o preview.png
+```
+
+- `validate <file>`: comprueba el archivo con cada regla que debe cumplir un tema de MarsDawn, con el mismo validador que usa la app. Termina con el código 0 si el tema es válido y con 1 si no, y enumera cada problema. `--require-complete` exige también los colores de sintaxis y de diagramas, que todo tema publicado debe tener.
+- `css <file>`: muestra el CSS que usa la vista previa para un tema válido.
+- `preview <file> --appearance <light|dark> -o <out.png>`: genera un documento de ejemplo con el tema en un PNG. `--width` fija su ancho en píxeles, de 600 a 2000 (1200 de forma predeterminada). Un archivo existente solo se reemplaza con `--force`.
+- `--json`: mostrar un resultado JSON en lugar de texto.
+
+Los comandos `theme` llegaron con marsdawn 0.6.1.
 
 ## La variable $MARSDAWN_THEME
 
@@ -124,7 +151,7 @@ Si todo sale bien, `marsdawn open --json` muestra `ok`, `opened` (una lista con 
 - [Transparencia de los agentes](https://marsdawn.southern-light.dev/es/agent-transparency/index.md): La guía de Anthropic para construir agentes pide transparencia: mostrar los pasos de planificación. Qué dice, qué no dice y por qué esos pasos suelen terminar en un archivo Markdown que alguien tiene que leer.
 - [Revisar el plan de un agente](https://marsdawn.southern-light.dev/es/reviewing-agent-plans/index.md): Un método de seis pasos para revisar el plan que te entrega un agente de IA antes de que se ejecute, en unos cinco minutos y en cualquier editor, con un ejemplo detallado.
 - [Patrones de diseño de agentes](https://marsdawn.southern-light.dev/es/agent-design-patterns/index.md): Reflexión, uso de herramientas, planificación y colaboración multiagente, tal como los describió Andrew Ng, y lo que cada uno suele entregarte para leer.
-- [Historial de cambios](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en la herramienta de línea de comandos gratuita marsdawn.
+- [Historial de cambios](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en cada versión de la app MarsDawn y de la herramienta de línea de comandos gratuita marsdawn.
 - [Notas de lectura de la redacción](https://marsdawn.southern-light.dev/es/reading-notes/index.md): Seis notas breves sobre lo que argumentan de verdad las personas que construyen agentes de IA — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain y Andrew Ng — y qué significa cada una para quien tiene que leer lo que ese agente devuelve.
 - [Notas de lectura: Anthropic](https://marsdawn.southern-light.dev/es/reading-notes/anthropic-building-effective-agents/index.md): La guía de Anthropic de diciembre de 2024 para quien construye agentes separa workflows de agentes y describe cinco patrones de workflow, incluido uno en el que una segunda llamada a un LLM revisa la primera. Qué significa eso para lo que aterriza en tu carpeta.
 - [Notas de lectura: Chip Huyen](https://marsdawn.southern-light.dev/es/reading-notes/chip-huyen-agents/index.md): El ensayo «Agents» de Chip Huyen de enero de 2025 reparte las acciones de un agente en read-only y write. Por qué esa división es una forma rápida de ver, en un plan, la línea que merece una mirada más atenta antes de aprobar.

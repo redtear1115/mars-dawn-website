@@ -75,9 +75,23 @@ jobs:
       - name: Every App Store link is in the form its file allows
         run: python3 scripts/check_store_links.py --self-test
       - name: Every schema.org Offer states its availability
-        run: python3 scripts/check_offers.py
+        run: python3 scripts/check_offers.py --self-test && python3 scripts/check_offers.py
+      # scripts/price.py's PHASE decides the unlock price every page states (app #103): no page may
+      # state the other phase's price, and no sale line may outlive the sale.
+      - name: Every page states the current phase's unlock price
+        run: python3 scripts/check_price_phase.py --self-test && python3 scripts/check_price_phase.py
       - name: The site's launch-phase invariants hold
         run: python3 scripts/check_invariants.py
+      # /changelog/'s app section (#273): each version's What's New verbatim from the vendored App Store
+      # text, the pinned page copy, the CLI anchors kept. The app side is checked on a Mac:
+      # python3 -I -B scripts/tmde130/ingest.py --app-repo ... --asc ... --check
+      - name: The changelog's app versions match their vendored release notes
+        run: python3 scripts/check_app_changelog.py --self-test
+      # /cli/, /cli/agents/ and /changelog/ (#254): every piece of the pinned copy verbatim and in place,
+      # in every locale. The comments themselves are checked locally (needs gh):
+      # python3 -I -B scripts/cli254/ingest.py --check
+      - name: The CLI pages carry #254's copy verbatim
+        run: python3 scripts/check_cli254.py --self-test
       # The homepage window's themes, labels and sample must be the kit's and the app's.
       # --kit reads the kit's public source at the pinned tag; --self-test plants drift of
       # each kind and fails if any goes unnoticed. The app side is checked on a Mac:

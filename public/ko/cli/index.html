@@ -155,10 +155,13 @@ marsdawn open notes.md --folder .</code></pre>
   <li>줄 번호는 1부터 999999999까지입니다.</li>
   <li>MarsDawn 1.0은 해당 줄에서 파일을 엽니다.</li>
   <li>폴더를 인수로 주면 문서가 아니라 윈도우의 사이드바에 열립니다. <code>marsdawn open .</code>은 현재 폴더를 보여줍니다. <code>--folder &lt;path&gt;</code>는 파일과 함께 같은 일을 합니다. 윈도우의 사이드바는 폴더 하나만 보여주므로, 두 개를 지정하면 사용법 오류입니다.</li>
+  <li><code>--wait &lt;n&gt;</code>: 결과를 알려 주는 MarsDawn 1.0.2 이상에서는 <code>--folder</code>가 폴더에 대한 앱의 응답을 최대 n초(0~30, 기본값 2) 기다립니다. <code>--wait 0</code>이거나 결과를 알려 주지 않는 앱이면 기다리지 않으며, 이전과 똑같은 요청을 보냅니다.</li>
+  <li><code>--wait</code> 값이 0~30을 벗어나면 사용법 오류(코드 64)입니다. 음수는 <code>--wait=-1</code>처럼 쓰세요.</li>
+  <li><code>--json</code>에서는 폴더를 “연결됨”이 아니라 “요청함”으로 알려 줍니다. 결정은 앱이 하기 때문입니다. <code>--wait</code>를 주면 폴더가 어떻게 되었는지도 결과에 담깁니다. 전체 목록은 <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a>에 있습니다.</li>
   <li><code>--background</code>: MarsDawn을 앞으로 가져오지 않고 엽니다.</li>
   <li><code>--json</code>: 텍스트 대신 JSON 결과를 출력합니다.</li>
 </ul>
-<p>줄 지정은 marsdawn 0.3.0에서, 폴더와 <code>--background</code>는 0.5.1에서 추가되었습니다.</p>
+<p>줄 지정은 marsdawn 0.3.0에서, 폴더와 <code>--background</code>는 0.5.1에서, <code>--wait</code>와 폴더 상태는 0.5.3에서 추가되었습니다.</p>
 
 <h3>marsdawn export</h3>
 <p>MarsDawn 자체의 PDF 내보내기와 같은 엔진으로 Markdown 파일을 페이지가 나뉜 PDF로 렌더링합니다. MarsDawn 앱은 필요 없습니다. 상대 경로의 이미지는 입력 파일이 있는 폴더를 기준으로 찾습니다.</p>
@@ -167,10 +170,29 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>-o, --output &lt;path&gt;</code>: PDF를 쓸 위치입니다. 기본값은 입력 경로에 <code>.pdf</code> 확장자를 붙인 것입니다.</li>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: 미리보기 테마의 라이트 팔레트입니다. 기본값은 <code>$MARSDAWN_THEME</code>, 그다음 <code>dawn</code>입니다.</li>
   <li><code>--paper &lt;a4|letter&gt;</code>: 용지 크기입니다. 기본값은 <code>a4</code>입니다.</li>
+  <li><code>--breaks</code>: HackMD처럼 문단 안의 모든 줄바꿈을 줄바꿈으로 표시합니다. 주지 않으면 중국어나 일본어 글자 두 개 사이의 줄바꿈은 없어져, 앞뒤 줄이 한 문장으로 이어집니다.</li>
+  <li><code>--layout &lt;document|handbook&gt;</code>: 페이지 레이아웃입니다. 기본값은 <code>document</code>입니다. <code>handbook</code>은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽을 남기며, 최상위 제목마다 새 페이지에서 시작하고, 페이지 번호가 붙은 목차 페이지, 바닥글의 페이지 번호, PDF 책갈피를 넣습니다. front matter에 <code>title</code>이 있으면 표지도 붙입니다.</li>
+  <li><code>--toc-title &lt;text&gt;</code>: 설명서 목차 페이지의 제목입니다. 기본값은 <code>Contents</code>입니다.</li>
+  <li>한 줄에 단독으로 쓴 <code>&lt;!--BREAK--&gt;</code>는 새 페이지를 시작합니다. 두 레이아웃 모두 해당합니다.</li>
   <li><code>--allow-remote-images</code>: 렌더링하는 동안 웹 이미지를 불러옵니다. 기본값은 꺼짐입니다.</li>
   <li><code>--force</code>: 출력 파일이 이미 있으면 바꿉니다.</li>
   <li><code>--json</code>: 텍스트 대신 JSON 결과를 출력합니다.</li>
+  <li>16MiB를 넘는 파일은 내보내지 않습니다. <code>export</code>는 코드 5로 종료하며 아무것도 쓰지 않습니다.</li>
 </ul>
+<p><code>--breaks</code>는 marsdawn 0.7.0에서, <code>--layout</code>과 <code>--toc-title</code>은 0.7.1에서, <code>handbook</code> 값은 0.7.2에서 추가되었습니다. 0.7.1의 이전 값 <code>manual</code>도 계속 쓸 수 있습니다.</p>
+
+<h3>marsdawn theme</h3>
+<p>테마 파일(<code>theme.json</code>)을 공유하기 전에 확인하고, 어떻게 보이는지 살펴봅니다. MarsDawn 앱은 필요 없습니다. 테마의 항목은 <a href="/ko/themes/agents/">에이전트와 함께 테마 만들기</a>를 참고하세요.</p>
+<pre><code>marsdawn theme validate my-theme.json
+marsdawn theme css my-theme.json
+marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pre>
+<ul>
+  <li><code>validate &lt;file&gt;</code>: 앱과 같은 검사기로, MarsDawn 테마가 지켜야 할 모든 규칙에 맞는지 확인합니다. 테마가 올바르면 코드 0, 아니면 코드 1로 종료하며 문제를 하나씩 보여 줍니다. <code>--require-complete</code>를 주면 공개하는 테마에 꼭 필요한 구문 강조와 다이어그램 색상도 요구합니다.</li>
+  <li><code>css &lt;file&gt;</code>: 올바른 테마에 대해 미리보기가 쓰는 CSS를 출력합니다.</li>
+  <li><code>preview &lt;file&gt; --appearance &lt;light|dark&gt; -o &lt;out.png&gt;</code>: 그 테마로 샘플 문서를 PNG로 렌더링합니다. <code>--width</code>로 너비를 픽셀 단위로 정합니다(600~2000, 기본값 1200). 파일이 이미 있으면 <code>--force</code>를 줄 때만 바꿉니다.</li>
+  <li><code>--json</code>: 텍스트 대신 JSON 결과를 출력합니다.</li>
+</ul>
+<p><code>theme</code> 명령은 marsdawn 0.6.1에서 추가되었습니다.</p>
 
 <h2 id="the-marsdawn-theme-variable">$MARSDAWN_THEME 변수</h2>
 <p><code>--theme</code>를 주지 않으면 <code>export</code>는 <code>$MARSDAWN_THEME</code> 환경 변수를 읽습니다. 값은 <code>dawn</code>, <code>classic</code>, <code>modern</code>, <code>vivid</code> 중 하나여야 하며, 그 밖의 값은 <code>dawn</code>으로 처리됩니다. 다른 앱의 컨테이너를 읽으면 macOS 개인정보 보호 확인 창이 뜰 수 있기 때문에, CLI는 앱 자체의 테마 설정을 읽지 않습니다.</p>
