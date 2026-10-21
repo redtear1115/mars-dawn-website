@@ -6487,15 +6487,16 @@ def label_scroll_boxes(slug: str, html: str) -> str:
     return "".join(out)
 
 
-# Code blocks (#271) keep their lines and scroll sideways when a line is wider than the box. Measured at 320,
-# 375, 639, 720 and 1280px on every page: a plain <pre> overflows somewhere exactly when its longest line is
-# wider than 31 monospace columns (CJK characters count two), the most that fits at 320px. Those boxes are
+# Code blocks (#271) keep their lines and scroll sideways when a line is wider than the box. At 320px with a
+# classic (space-taking) scrollbar, a box has 241px for text and the code font (14.4px ui-monospace) takes
+# 8.67px a column, so 27 columns fit (CJK characters count two); a line wider than that scrolls there. Without
+# a scrollbar (phones) 31 fit, so 28 to 31 columns scroll only on a narrow desktop window. Those boxes are
 # focusable, so a keyboard reader can scroll them, and labelled the way label_scroll_boxes labels a table:
 # a region named by the heading just above, by the id the build gave it. Where that heading has no id (the
 # /cli/ command headings, h3), or names more than one such box (two regions may not share a name), the box
 # is focusable without a name: naming it would need new copy. The home page's install box wraps its line
 # instead (.install pre code), so it never scrolls and gets nothing.
-CODE_FITS = 31
+CODE_FITS = 27
 
 
 def _columns(line: str) -> int:
