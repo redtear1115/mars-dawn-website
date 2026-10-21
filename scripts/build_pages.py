@@ -5759,13 +5759,15 @@ def vs_page(copy: dict, sources_h2: str) -> dict:
     more = "\n".join(f"  <li>{item}</li>" for item in copy["links"])
     # A source reference ([V8], [V4, V5], [kit], [app 1.1.1]) is a small superscript marker (#302): V8 shows as 8 and
     # still links to #v8; kit keeps its label and link; the app version has no source entry, so it isn't a link.
-    ref = r"V\d+|kit|app \d+(?:\.\d+)*"
-    label = lambda t: (t.group(0) if t.group(0).startswith("app ")
-                       else f'<a href="#{t.group(0).lower()}">{t.group(0).removeprefix("V")}</a>')
+    # In-site references ([/cli/, /features/]) and each locale's self-check marker ([check]) get the same marker,
+    # as plain text (#307).
+    ref = r"V\d+|kit|app \d+(?:\.\d+)*|/[a-z0-9-]+/|check|Prüfung|vérif\.|prueba|직접 확인|实测|實測|実測"
+    label = lambda t: (f'<a href="#{t.group(0).lower()}">{t.group(0).removeprefix("V")}</a>'
+                       if re.fullmatch(r"V\d+|kit", t.group(0)) else t.group(0))
     cite = lambda h: re.sub(rf"\[((?:{ref})(?:[,、] ?(?:{ref}))*)\]",
                            lambda m: '<span class="cite">[' + re.sub(ref, label, m.group(1)) + "]</span>", h)
     rows = [[cite(cell) for cell in row] for row in copy["rows"]]
-    sources = "\n".join(f'  <li id="{sid.lower()}">{sid} · <a href="{url}">{"Mac App Store" if url == LISTING_URL else url}</a></li>'
+    sources = "\n".join(f'  <li id="{sid.lower()}">{sid.removeprefix("V")} · <a href="{url}">{"Mac App Store" if url == LISTING_URL else url}</a></li>'
                          for sid, url in promo_data.DATA["vsources"])   # the store checker allows the listing URL only inside an href: its text is the site's own link label
     body = f"""<section class="intro">
   <h1>{copy["h1"]}</h1>
