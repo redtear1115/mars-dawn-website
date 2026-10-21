@@ -4,14 +4,14 @@ For anyone choosing how to read and review Markdown on a Mac, often what an agen
 
 |  | MarsDawn | VS Code preview | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
-| Open a local .md | Yes; edits the file in place [app 1.1.1] | Yes; preview with ⇧⌘V [[V8](#v8)] | Not stated by the vendor [[V21](#v21)] | Preview only: "for viewing Markdown files" [[V22](#v22)] | "Markdown opens rendered and saves back verbatim." [[V3](#v3)] |
-| Mermaid | Built in [[V1](#v1)] | Built in [[V8](#v8)] | Built in, note syntax [[V16](#v16)] | Built in, `mermaid` fences [[V22](#v22)] | "diagram blocks are not rendered" [[V3](#v3)] |
-| Math | KaTeX, `$…$` and `$$…$$` [[kit](#kit)] | KaTeX [[V8](#v8)] | MathJax [[V16](#v16)] | MathJax [[V22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[V3](#v3)] |
-| Review an agent's plan / jump to a line | `marsdawn open file:line`; updates from disk; Copy Reference [/cli/, /features/] | Markdown diff preview, changed lines highlighted [[V8](#v8)]; `code -g file:line` [[V14](#v14)] | No line parameter in `obsidian://open` [[V20](#v20)] | Not stated by the vendor | CLI and MCP server; no line jump stated [[V4](#v4), [V5](#v5)] |
-| PDF: page breaks, page numbers | Breaks avoid splitting short code blocks [/pdf/]; no page numbers [check] | Not stated by the vendor [[V8](#v8)] | Paper size, margins; breaks and numbers not stated [[V17](#v17)] | Not stated by the vendor [[V22](#v22)] | PDF "including tables"; breaks and numbers not stated [[V3](#v3)] |
-| Price | Free download; Unlock USD 4.99 once; 14-day trial [[V1](#v1)] | Not stated by the vendor [[V12](#v12), [V13](#v13)] | Personal: "Free without limits"; commercial licence optional [[V15](#v15)] | Free, GPL-3.0 [[V22](#v22)] | "Free while in early release." [[V2](#v2)] |
-| System requirements | macOS 26.0 or later [[V1](#v1)] | "the latest release and the two previous versions" [[V9](#v9)] | Not stated by the vendor [[V18](#v18)] | macOS 12.0 or later [[V23](#v23)] | macOS 13 or later [[V2](#v2)] |
-| Account needed | No [/privacy/] | Not stated by the vendor | "No sign-up required" [[V15](#v15)] | Not stated by the vendor | No [[V2](#v2)] |
+| Open a local .md | Yes; edits the file in place [app 1.1.1] | Yes; preview with ⇧⌘V [[8](#v8)] | Not stated by the vendor [[21](#v21)] | Preview only: "for viewing Markdown files" [[22](#v22)] | "Markdown opens rendered and saves back verbatim." [[3](#v3)] |
+| Mermaid | Built in [[1](#v1)] | Built in [[8](#v8)] | Built in, note syntax [[16](#v16)] | Built in, `mermaid` fences [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
+| Math | KaTeX, `$…$` and `$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
+| Review an agent's plan / jump to a line | `marsdawn open file:line`; updates from disk; Copy Reference [/cli/, /features/] | Markdown diff preview, changed lines highlighted [[8](#v8)]; `code -g file:line` [[14](#v14)] | No line parameter in `obsidian://open` [[20](#v20)] | Not stated by the vendor | CLI and MCP server; no line jump stated [[4](#v4), [5](#v5)] |
+| PDF: page breaks, page numbers | Breaks avoid splitting short code blocks [/pdf/]; no page numbers [check] | Not stated by the vendor [[8](#v8)] | Paper size, margins; breaks and numbers not stated [[17](#v17)] | Not stated by the vendor [[22](#v22)] | PDF "including tables"; breaks and numbers not stated [[3](#v3)] |
+| Price | Free download; Unlock USD 4.99 once; 14-day trial [[1](#v1)] | Not stated by the vendor [[12](#v12), [13](#v13)] | Personal: "Free without limits"; commercial licence optional [[15](#v15)] | Free, GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
+| System requirements | macOS 26.0 or later [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | Not stated by the vendor [[18](#v18)] | macOS 12.0 or later [[23](#v23)] | macOS 13 or later [[2](#v2)] |
+| Account needed | No [/privacy/] | Not stated by the vendor | "No sign-up required" [[15](#v15)] | Not stated by the vendor | No [[2](#v2)] |
 
 Every cell was checked on 16 October 2026 against the source in brackets (V-ids are listed below; [check] is our own export with marsdawn 0.6.4). Vendor quotes stay as written. "Not stated by the vendor" means the pages we read were silent, not that the feature is missing. No cell ranks the products.
 

@@ -4,14 +4,14 @@
 
 |  | MarsDawn | VS Code 预览 | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
-| 打开本地 .md | 可以，直接改原文件 [app 1.1.1] | 可以，⇧⌘V 打开预览 [[V8](#v8)] | 厂商未说明 [[V21](#v21)] | 只能预览: "for viewing Markdown files" [[V22](#v22)] | "Markdown opens rendered and saves back verbatim." [[V3](#v3)] |
-| Mermaid | 内置 [[V1](#v1)] | 内置 [[V8](#v8)] | 内置，笔记语法 [[V16](#v16)] | 内置，`mermaid` 区块 [[V22](#v22)] | "diagram blocks are not rendered" [[V3](#v3)] |
-| 数学公式 | KaTeX，`$…$`、`$$…$$` [[kit](#kit)] | KaTeX [[V8](#v8)] | MathJax [[V16](#v16)] | MathJax [[V22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[V3](#v3)] |
-| 检查代理的计划／跳到某一行 | `marsdawn open file:line`；从磁盘更新；拷贝引用 [/cli/, /features/] | Markdown diff 预览，标出改动的行 [[V8](#v8)]；`code -g file:line` [[V14](#v14)] | `obsidian://open` 没有行号参数 [[V20](#v20)] | 厂商未说明 | 有 CLI 和 MCP 服务器；未说明跳行 [[V4](#v4), [V5](#v5)] |
-| PDF：分页、页码 | 分页不切开短代码块 [/pdf/]；没有页码 [实测] | 厂商未说明 [[V8](#v8)] | 纸张大小、边距；分页与页码未说明 [[V17](#v17)] | 厂商未说明 [[V22](#v22)] | PDF "including tables"；分页与页码未说明 [[V3](#v3)] |
-| 价格 | 免费下载；解锁一次 USD 4.99；试用 14 天 [[V1](#v1)] | 厂商未说明 [[V12](#v12), [V13](#v13)] | 个人："Free without limits"；商用授权非必需 [[V15](#v15)] | 免费，GPL-3.0 [[V22](#v22)] | "Free while in early release." [[V2](#v2)] |
-| 系统要求 | macOS 26.0 或更新版本 [[V1](#v1)] | "the latest release and the two previous versions" [[V9](#v9)] | 厂商未说明 [[V18](#v18)] | macOS 12.0 或更新版本 [[V23](#v23)] | macOS 13 或更新版本 [[V2](#v2)] |
-| 需要账户 | 不需要 [/privacy/] | 厂商未说明 | "No sign-up required" [[V15](#v15)] | 厂商未说明 | 不需要 [[V2](#v2)] |
+| 打开本地 .md | 可以，直接改原文件 [app 1.1.1] | 可以，⇧⌘V 打开预览 [[8](#v8)] | 厂商未说明 [[21](#v21)] | 只能预览: "for viewing Markdown files" [[22](#v22)] | "Markdown opens rendered and saves back verbatim." [[3](#v3)] |
+| Mermaid | 内置 [[1](#v1)] | 内置 [[8](#v8)] | 内置，笔记语法 [[16](#v16)] | 内置，`mermaid` 区块 [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
+| 数学公式 | KaTeX，`$…$`、`$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
+| 检查代理的计划／跳到某一行 | `marsdawn open file:line`；从磁盘更新；拷贝引用 [/cli/, /features/] | Markdown diff 预览，标出改动的行 [[8](#v8)]；`code -g file:line` [[14](#v14)] | `obsidian://open` 没有行号参数 [[20](#v20)] | 厂商未说明 | 有 CLI 和 MCP 服务器；未说明跳行 [[4](#v4), [5](#v5)] |
+| PDF：分页、页码 | 分页不切开短代码块 [/pdf/]；没有页码 [实测] | 厂商未说明 [[8](#v8)] | 纸张大小、边距；分页与页码未说明 [[17](#v17)] | 厂商未说明 [[22](#v22)] | PDF "including tables"；分页与页码未说明 [[3](#v3)] |
+| 价格 | 免费下载；解锁一次 USD 4.99；试用 14 天 [[1](#v1)] | 厂商未说明 [[12](#v12), [13](#v13)] | 个人："Free without limits"；商用授权非必需 [[15](#v15)] | 免费，GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
+| 系统要求 | macOS 26.0 或更新版本 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 厂商未说明 [[18](#v18)] | macOS 12.0 或更新版本 [[23](#v23)] | macOS 13 或更新版本 [[2](#v2)] |
+| 需要账户 | 不需要 [/privacy/] | 厂商未说明 | "No sign-up required" [[15](#v15)] | 厂商未说明 | 不需要 [[2](#v2)] |
 
 每一格都在 2026 年 10 月 16 日对照括号里的来源核实（V 编号列在下方；[实测] 是我们用 marsdawn 0.6.4 实际导出的结果）。厂商原文照录。“厂商未说明”表示我们读到的页面没有提到，不代表没有这个功能。表格不为产品排名。
 

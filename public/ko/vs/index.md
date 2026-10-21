@@ -4,14 +4,14 @@ Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방
 
 |  | MarsDawn | VS Code 미리보기 | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
-| 로컬 .md 열기 | 가능, 원본 파일을 바로 편집 [app 1.1.1] | 가능, ⇧⌘V로 미리보기 [[V8](#v8)] | 공식 설명 없음 [[V21](#v21)] | 미리보기만: "for viewing Markdown files" [[V22](#v22)] | "Markdown opens rendered and saves back verbatim." [[V3](#v3)] |
-| Mermaid | 기본 제공 [[V1](#v1)] | 기본 제공 [[V8](#v8)] | 기본 제공, 노트 문법 [[V16](#v16)] | 기본 제공, `mermaid` 블록 [[V22](#v22)] | "diagram blocks are not rendered" [[V3](#v3)] |
-| 수식 | KaTeX, `$…$`와 `$$…$$` [[kit](#kit)] | KaTeX [[V8](#v8)] | MathJax [[V16](#v16)] | MathJax [[V22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[V3](#v3)] |
-| 에이전트의 계획 검토／줄로 이동 | `marsdawn open file:line`, 디스크에서 업데이트, 참조 복사 [/cli/, /features/] | Markdown diff 미리보기, 변경된 줄 강조 [[V8](#v8)]; `code -g file:line` [[V14](#v14)] | `obsidian://open`에 줄 번호 지정 없음 [[V20](#v20)] | 공식 설명 없음 | CLI와 MCP 서버 있음, 줄 이동은 설명 없음 [[V4](#v4), [V5](#v5)] |
-| PDF: 페이지 나누기, 페이지 번호 | 짧은 코드 블록을 나누지 않는 페이지 나누기 [/pdf/], 페이지 번호 없음 [직접 확인] | 공식 설명 없음 [[V8](#v8)] | 용지 크기, 여백; 페이지 나누기와 번호는 설명 없음 [[V17](#v17)] | 공식 설명 없음 [[V22](#v22)] | PDF "including tables", 페이지 나누기와 번호는 설명 없음 [[V3](#v3)] |
-| 가격 | 무료 다운로드, 잠금 해제 한 번 USD 4.99, 14일 체험 [[V1](#v1)] | 공식 설명 없음 [[V12](#v12), [V13](#v13)] | 개인: "Free without limits", 상업용 라이선스는 선택 [[V15](#v15)] | 무료, GPL-3.0 [[V22](#v22)] | "Free while in early release." [[V2](#v2)] |
-| 시스템 요구 사항 | macOS 26.0 이상 [[V1](#v1)] | "the latest release and the two previous versions" [[V9](#v9)] | 공식 설명 없음 [[V18](#v18)] | macOS 12.0 이상 [[V23](#v23)] | macOS 13 이상 [[V2](#v2)] |
-| 계정 필요 | 필요 없음 [/privacy/] | 공식 설명 없음 | "No sign-up required" [[V15](#v15)] | 공식 설명 없음 | 필요 없음 [[V2](#v2)] |
+| 로컬 .md 열기 | 가능, 원본 파일을 바로 편집 [app 1.1.1] | 가능, ⇧⌘V로 미리보기 [[8](#v8)] | 공식 설명 없음 [[21](#v21)] | 미리보기만: "for viewing Markdown files" [[22](#v22)] | "Markdown opens rendered and saves back verbatim." [[3](#v3)] |
+| Mermaid | 기본 제공 [[1](#v1)] | 기본 제공 [[8](#v8)] | 기본 제공, 노트 문법 [[16](#v16)] | 기본 제공, `mermaid` 블록 [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
+| 수식 | KaTeX, `$…$`와 `$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
+| 에이전트의 계획 검토／줄로 이동 | `marsdawn open file:line`, 디스크에서 업데이트, 참조 복사 [/cli/, /features/] | Markdown diff 미리보기, 변경된 줄 강조 [[8](#v8)]; `code -g file:line` [[14](#v14)] | `obsidian://open`에 줄 번호 지정 없음 [[20](#v20)] | 공식 설명 없음 | CLI와 MCP 서버 있음, 줄 이동은 설명 없음 [[4](#v4), [5](#v5)] |
+| PDF: 페이지 나누기, 페이지 번호 | 짧은 코드 블록을 나누지 않는 페이지 나누기 [/pdf/], 페이지 번호 없음 [직접 확인] | 공식 설명 없음 [[8](#v8)] | 용지 크기, 여백; 페이지 나누기와 번호는 설명 없음 [[17](#v17)] | 공식 설명 없음 [[22](#v22)] | PDF "including tables", 페이지 나누기와 번호는 설명 없음 [[3](#v3)] |
+| 가격 | 무료 다운로드, 잠금 해제 한 번 USD 4.99, 14일 체험 [[1](#v1)] | 공식 설명 없음 [[12](#v12), [13](#v13)] | 개인: "Free without limits", 상업용 라이선스는 선택 [[15](#v15)] | 무료, GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
+| 시스템 요구 사항 | macOS 26.0 이상 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 공식 설명 없음 [[18](#v18)] | macOS 12.0 이상 [[23](#v23)] | macOS 13 이상 [[2](#v2)] |
+| 계정 필요 | 필요 없음 [/privacy/] | 공식 설명 없음 | "No sign-up required" [[15](#v15)] | 공식 설명 없음 | 필요 없음 [[2](#v2)] |
 
 모든 칸은 2026년 10월 16일에 괄호 안의 출처로 확인했습니다(V 번호는 아래 목록, [직접 확인]은 marsdawn 0.6.4로 직접 내보낸 결과). 각 회사의 원문은 그대로 인용합니다. ‘공식 설명 없음’은 읽은 페이지에 언급이 없었다는 뜻이며, 기능이 없다는 뜻은 아닙니다. 표는 제품의 순위를 매기지 않습니다.
 
