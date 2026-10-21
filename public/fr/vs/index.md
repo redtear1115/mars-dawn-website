@@ -1,5 +1,7 @@
 # Lire du Markdown sur Mac : MarsDawn et les autres options
 
+Offre Black Friday : l’achat unique qui déverrouille l’app est à moitié prix, 2,49 USD au lieu de 4,99 USD, jusqu’au 30 novembre. Il repasse à 4,99 USD le 1er décembre. <!-- sale-line -->
+
 Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur [Assistance](/fr/support/).
 
 |  | MarsDawn | Aperçu VS Code | Obsidian | QLMarkdown | LynxOffice |
@@ -9,7 +11,7 @@ Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, 
 | Formules | KaTeX, `$…$` et `$$…$$` [[kit](#kit)] | KaTeX [[V8](#v8)] | MathJax [[V16](#v16)] | MathJax [[V22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[V3](#v3)] |
 | Relire le plan d’un agent / aller à une ligne | `marsdawn open file:line` ; mise à jour depuis le disque ; Copier la référence [/cli/, /features/] | Aperçu diff Markdown, lignes modifiées surlignées [[V8](#v8)] ; `code -g file:line` [[V14](#v14)] | Pas de paramètre de ligne dans `obsidian://open` [[V20](#v20)] | Non précisé par le fournisseur | CLI et serveur MCP ; saut à une ligne non précisé [[V4](#v4), [V5](#v5)] |
 | PDF : sauts de page, numéros de page | Les sauts ne coupent pas les blocs de code courts [/pdf/] ; pas de numéros de page [vérif.] | Non précisé par le fournisseur [[V8](#v8)] | Format du papier, marges ; sauts et numéros non précisés [[V17](#v17)] | Non précisé par le fournisseur [[V22](#v22)] | PDF "including tables" ; sauts et numéros non précisés [[V3](#v3)] |
-| Prix | Téléchargement gratuit ; déverrouillage 4,99 USD une fois ; essai de 14 jours [[V1](#v1)] | Non précisé par le fournisseur [[V12](#v12), [V13](#v13)] | Personnel : "Free without limits" ; licence commerciale facultative [[V15](#v15)] | Gratuit, GPL-3.0 [[V22](#v22)] | "Free while in early release." [[V2](#v2)] |
+| Prix | Téléchargement gratuit ; déverrouillage 2,49 USD une fois ; essai de 14 jours [[V1](#v1)] | Non précisé par le fournisseur [[V12](#v12), [V13](#v13)] | Personnel : "Free without limits" ; licence commerciale facultative [[V15](#v15)] | Gratuit, GPL-3.0 [[V22](#v22)] | "Free while in early release." [[V2](#v2)] |
 | Configuration requise | macOS 26.0 ou ultérieur [[V1](#v1)] | "the latest release and the two previous versions" [[V9](#v9)] | Non précisé par le fournisseur [[V18](#v18)] | macOS 12.0 ou ultérieur [[V23](#v23)] | macOS 13 ou ultérieur [[V2](#v2)] |
 | Compte requis | Non [/privacy/] | Non précisé par le fournisseur | "No sign-up required" [[V15](#v15)] | Non précisé par le fournisseur | Non [[V2](#v2)] |
 
@@ -58,10 +60,10 @@ Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Il n’y a pas d’ap
 
 ## Plus
 
-- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Lisez et relisez le Markdown de votre agent sur Mac : aperçu partagé en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.
+- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Lisez et relisez le Markdown de votre agent sur Mac : aperçu partagé en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 2,49 USD une fois.
 - [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Markdown natif pour Mac : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions, notes en marge et dossiers papier.
 - [Vos textes restent sur votre Mac](https://marsdawn.southern-light.dev/fr/yours/index.md): MarsDawn n’a ni compte, ni synchronisation, ni cloud. Vos documents Markdown restent sur votre Mac, dans les fichiers et dossiers que vous choisissez.
-- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
+- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 2,49 USD. Sans abonnement, sans compte.
 - [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.
 - [Une app Mac](https://marsdawn.southern-light.dev/fr/native/index.md): Un éditeur Markdown qui est une vraie app Mac : fenêtres et onglets natifs, enregistrement automatique, historique des versions, Coup d’œil dans le Finder et un éditeur de texte qui se comporte comme sur Mac.
 - [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Quatre thèmes intégrés, d’autres dans la galerie. À savoir avant d’acheter.
@@ -71,7 +73,7 @@ Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Il n’y a pas d’ap
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
+- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 2,49 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.
 - [marsdawn pour les agents](https://marsdawn.southern-light.dev/fr/cli/agents/index.md): Une référence pour les agents IA et les scripts qui appellent marsdawn pour convertir du Markdown en PDF : commandes, sortie JSON, schémas, codes de sortie et configuration requise.

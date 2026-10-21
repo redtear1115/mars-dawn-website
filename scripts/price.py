@@ -30,11 +30,20 @@ REGULAR = "4.99"
 SALE = "2.49"
 SALE_LAST_DAY = "2026-11-30"
 PHASES = ("regular", "sale")
-PHASE = "regular"
+PHASE = "sale"
 
 # One line per locale, shown only in the sale phase, on the home page and /pay-once/. Empty until
 # the copy is approved; a sale-phase build with any locale missing fails (sale_line_html).
-SALE_LINES: dict = {}
+SALE_LINES: dict = {
+    'en': 'Black Friday: the one-time unlock is half price, USD 2.49 instead of USD 4.99, through 30 November. It returns to USD 4.99 on 1 December.',
+    'zh-hant': '黑色星期五特價：一次解鎖只要半價 USD 2.49（原價 USD 4.99），優惠到 11 月 30 日，12 月 1 日起恢復 USD 4.99。',
+    'zh-hans': '黑色星期五特价：一次解锁只要半价 USD 2.49（原价 USD 4.99），优惠到 11 月 30 日，12 月 1 日起恢复 USD 4.99。',
+    'ja': 'ブラックフライデーセール：一度きりのロック解除が半額の USD 2.49（通常 USD 4.99）。11月30日まで。12月1日から USD 4.99 に戻ります。',
+    'de': 'Black-Friday-Angebot: Der einmalige Kauf zum Freischalten kostet bis 30. November die Hälfte, 2,49 USD statt 4,99 USD. Ab dem 1. Dezember kostet er wieder 4,99 USD.',
+    'fr': 'Offre Black Friday : l’achat unique qui déverrouille l’app est à moitié prix, 2,49 USD au lieu de 4,99 USD, jusqu’au 30 novembre. Il repasse à 4,99 USD le 1er décembre.',
+    'es': 'Oferta de Black Friday: la compra única que desbloquea la app está a mitad de precio, 2,49 USD en lugar de 4,99 USD, hasta el 30 de noviembre. Vuelve a 4,99 USD el 1 de diciembre.',
+    'ko': '블랙 프라이데이 할인: 한 번만 구입하는 잠금 해제가 11월 30일까지 반값인 USD 2.49입니다(정가 USD 4.99). 12월 1일부터는 다시 USD 4.99입니다.',
+}
 
 # Private-use code points: never in copy, so they can't collide with real text.
 KEEP_OPEN = ""
