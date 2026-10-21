@@ -317,6 +317,11 @@ pre code {
   overflow-wrap: normal;
   white-space: pre;
 }
+/* A code block wider than its box takes the keyboard so it can be scrolled (#271): the same ring as a film. */
+pre[tabindex]:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
 kbd {
   font: 0.85em var(--font);
   padding: 0.05em 0.4em;
@@ -1467,8 +1472,16 @@ html { overflow-x: hidden; }
 .compare-vs td { padding-right: 8px; overflow-wrap: anywhere; }
 .compare-vs th:last-child,
 .compare-vs td:last-child { padding-right: 0; }
-/* A bracketed source reference such as [V3, V4] is never split across lines. */
-.cite { white-space: nowrap; }
+/* A source reference such as [3, 4] is a small muted superscript, never split across lines (#302).
+   line-height 0 keeps the raised marker from making its line taller than the cell's other lines. */
+.cite {
+  white-space: nowrap;
+  font-size: 0.8em;
+  line-height: 0;
+  vertical-align: super;
+  color: var(--dust);
+}
+.cite a { color: inherit; }
 .compare-pieces { min-width: 52rem; }
 .compare-wide tbody th[scope="row"] { width: 18%; }
 /* On a phone the row labels stay put while the columns scroll under them. */

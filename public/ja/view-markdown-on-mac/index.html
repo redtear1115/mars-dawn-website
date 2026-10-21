@@ -144,7 +144,7 @@ try {
 <p>もしそのファイルを AI エージェントが書いたなら、これはまさに MarsDawn が想定しているループです。エージェントが書き、あなたがレンダリングされたページを読み、エージェントが修正します。<a href="/ja/">ホームページ</a>と、エージェントにファイルを開かせる方法については<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>をご覧ください。その読み方がなぜ重要か、計画をどうレビューするかは、<a href="/ja/reading-agent-output/">「エージェントが返してくるものを読む」</a>と<a href="/ja/reviewing-agent-plans/">「エージェントの計画を 5 分でレビューする」</a>にあります。</p>
 <h2 id="without-the-app-turn-it-into-a-pdf">アプリなしで：PDF に変換する</h2>
 <p>無料の <code>marsdawn</code> コマンドラインツールは、Markdown ファイルをどの Mac でも開ける PDF にレンダリングします。表、数式、Mermaid 図、ハイライトされたコードはすべてレンダリングされ、MarsDawn アプリすら含め、他に何もインストールする必要はありません。</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre tabindex="0" role="region" aria-labelledby="without-the-app-turn-it-into-a-pdf"><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <p><code>export</code> は Markdown ファイルの隣に <code>notes.pdf</code> を書き出し、<code>open</code> はそれをあなたの PDF ビューアで表示します。macOS 15 以降が必要です。実際に書き出したページを使った解説は、<a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a>にあります。</p>

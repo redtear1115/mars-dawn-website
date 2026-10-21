@@ -144,7 +144,7 @@ try {
 <p>如果这份文件是 AI 代理写的，这正是 MarsDawn 要支持的循环：代理写，你读排好的页面，代理再修改。请看<a href="/zh-hans/">首页</a>，想让代理帮你开文件，请看<a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a>。为什么这样的阅读重要、怎么审一份计划，请看<a href="/zh-hans/reading-agent-output/">读懂代理交回来的 Markdown</a>和<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份代理计划</a>。</p>
 <h2 id="without-the-app-turn-it-into-a-pdf">不装 app 也行：转成 PDF</h2>
 <p>免费的 <code>marsdawn</code> 命令行工具，能把 Markdown 文件排版成 PDF，任何一台 Mac 都打得开。表格、数学公式、Mermaid 图表和代码高亮都会排好，而且不需要安装其他东西，连 MarsDawn app 都不用。</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre tabindex="0" role="region" aria-labelledby="without-the-app-turn-it-into-a-pdf"><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <p><code>export</code> 会在 Markdown 文件旁边写出 <code>notes.pdf</code>，<code>open</code> 会用你的 PDF 查看器打开它。这个工具需要 macOS 15 以上。完整步骤和一页实际导出的结果，请看<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。</p>

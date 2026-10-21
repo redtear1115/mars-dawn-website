@@ -4,41 +4,41 @@ For anyone choosing how to read and review Markdown on a Mac, often what an agen
 
 |  | MarsDawn | VS Code preview | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
-| Open a local .md | Yes; edits the file in place [app 1.1.1] | Yes; preview with ⇧⌘V [[V8](#v8)] | Not stated by the vendor [[V21](#v21)] | Preview only: "for viewing Markdown files" [[V22](#v22)] | "Markdown opens rendered and saves back verbatim." [[V3](#v3)] |
-| Mermaid | Built in [[V1](#v1)] | Built in [[V8](#v8)] | Built in, note syntax [[V16](#v16)] | Built in, `mermaid` fences [[V22](#v22)] | "diagram blocks are not rendered" [[V3](#v3)] |
-| Math | KaTeX, `$…$` and `$$…$$` [[kit](#kit)] | KaTeX [[V8](#v8)] | MathJax [[V16](#v16)] | MathJax [[V22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[V3](#v3)] |
-| Review an agent's plan / jump to a line | `marsdawn open file:line`; updates from disk; Copy Reference [/cli/, /features/] | Markdown diff preview, changed lines highlighted [[V8](#v8)]; `code -g file:line` [[V14](#v14)] | No line parameter in `obsidian://open` [[V20](#v20)] | Not stated by the vendor | CLI and MCP server; no line jump stated [[V4](#v4), [V5](#v5)] |
-| PDF: page breaks, page numbers | Breaks avoid splitting short code blocks [/pdf/]; no page numbers [check] | Not stated by the vendor [[V8](#v8)] | Paper size, margins; breaks and numbers not stated [[V17](#v17)] | Not stated by the vendor [[V22](#v22)] | PDF "including tables"; breaks and numbers not stated [[V3](#v3)] |
-| Price | Free download; Unlock USD 4.99 once; 14-day trial [[V1](#v1)] | Not stated by the vendor [[V12](#v12), [V13](#v13)] | Personal: "Free without limits"; commercial licence optional [[V15](#v15)] | Free, GPL-3.0 [[V22](#v22)] | "Free while in early release." [[V2](#v2)] |
-| System requirements | macOS 26.0 or later [[V1](#v1)] | "the latest release and the two previous versions" [[V9](#v9)] | Not stated by the vendor [[V18](#v18)] | macOS 12.0 or later [[V23](#v23)] | macOS 13 or later [[V2](#v2)] |
-| Account needed | No [/privacy/] | Not stated by the vendor | "No sign-up required" [[V15](#v15)] | Not stated by the vendor | No [[V2](#v2)] |
+| Open a local .md | Yes; edits the file in place [app 1.1.1] | Yes; preview with ⇧⌘V [[8](#v8)] | Not stated by the vendor [[21](#v21)] | Preview only: "for viewing Markdown files" [[22](#v22)] | "Markdown opens rendered and saves back verbatim." [[3](#v3)] |
+| Mermaid | Built in [[1](#v1)] | Built in [[8](#v8)] | Built in, note syntax [[16](#v16)] | Built in, `mermaid` fences [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
+| Math | KaTeX, `$…$` and `$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
+| Review an agent's plan / jump to a line | `marsdawn open file:line`; updates from disk; Copy Reference [/cli/, /features/] | Markdown diff preview, changed lines highlighted [[8](#v8)]; `code -g file:line` [[14](#v14)] | No line parameter in `obsidian://open` [[20](#v20)] | Not stated by the vendor | CLI and MCP server; no line jump stated [[4](#v4), [5](#v5)] |
+| PDF: page breaks, page numbers | Breaks avoid splitting short code blocks [/pdf/]; no page numbers [check] | Not stated by the vendor [[8](#v8)] | Paper size, margins; breaks and numbers not stated [[17](#v17)] | Not stated by the vendor [[22](#v22)] | PDF "including tables"; breaks and numbers not stated [[3](#v3)] |
+| Price | Free download; Unlock USD 4.99 once; 14-day trial [[1](#v1)] | Not stated by the vendor [[12](#v12), [13](#v13)] | Personal: "Free without limits"; commercial licence optional [[15](#v15)] | Free, GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
+| System requirements | macOS 26.0 or later [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | Not stated by the vendor [[18](#v18)] | macOS 12.0 or later [[23](#v23)] | macOS 13 or later [[2](#v2)] |
+| Account needed | No [/privacy/] | Not stated by the vendor | "No sign-up required" [[15](#v15)] | Not stated by the vendor | No [[2](#v2)] |
 
 Every cell was checked on 16 October 2026 against the source in brackets (V-ids are listed below; [check] is our own export with marsdawn 0.6.4). Vendor quotes stay as written. "Not stated by the vendor" means the pages we read were silent, not that the feature is missing. No cell ranks the products.
 
 ## Sources
 
-- V1 · [Mac App Store](https://apps.apple.com/app/id6812925073)
-- V2 · [https://lynxoffice.com/](https://lynxoffice.com/)
-- V3 · [https://lynxoffice.com/markdown/](https://lynxoffice.com/markdown/)
-- V4 · [https://lynxoffice.com/cli/](https://lynxoffice.com/cli/)
-- V5 · [https://lynxoffice.com/mcp/](https://lynxoffice.com/mcp/)
-- V6 · [https://lynxoffice.com/release-notes/](https://lynxoffice.com/release-notes/)
-- V8 · [https://code.visualstudio.com/docs/languages/markdown](https://code.visualstudio.com/docs/languages/markdown)
-- V9 · [https://code.visualstudio.com/docs/supporting/requirements](https://code.visualstudio.com/docs/supporting/requirements)
-- V11 · [https://code.visualstudio.com/updates/v1_142](https://code.visualstudio.com/updates/v1_142)
-- V12 · [https://code.visualstudio.com/license](https://code.visualstudio.com/license)
-- V13 · [https://code.visualstudio.com/](https://code.visualstudio.com/)
-- V14 · [https://code.visualstudio.com/docs/configure/command-line](https://code.visualstudio.com/docs/configure/command-line)
-- V15 · [https://obsidian.md/pricing](https://obsidian.md/pricing)
-- V16 · [https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax](https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax)
-- V17 · [https://obsidian.md/help/pdf](https://obsidian.md/help/pdf)
-- V18 · [https://obsidian.md/download](https://obsidian.md/download)
-- V19 · [https://obsidian.md/changelog/](https://obsidian.md/changelog/)
-- V20 · [https://obsidian.md/help/uri](https://obsidian.md/help/uri)
-- V21 · [https://obsidian.md/help/Getting+started/Create+a+vault](https://obsidian.md/help/Getting+started/Create+a+vault)
-- V22 · [https://github.com/sbarex/QLMarkdown](https://github.com/sbarex/QLMarkdown)
-- V23 · [https://github.com/sbarex/QLMarkdown/releases](https://github.com/sbarex/QLMarkdown/releases)
-- V24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
+- 1 · [Mac App Store](https://apps.apple.com/app/id6812925073)
+- 2 · [https://lynxoffice.com/](https://lynxoffice.com/)
+- 3 · [https://lynxoffice.com/markdown/](https://lynxoffice.com/markdown/)
+- 4 · [https://lynxoffice.com/cli/](https://lynxoffice.com/cli/)
+- 5 · [https://lynxoffice.com/mcp/](https://lynxoffice.com/mcp/)
+- 6 · [https://lynxoffice.com/release-notes/](https://lynxoffice.com/release-notes/)
+- 8 · [https://code.visualstudio.com/docs/languages/markdown](https://code.visualstudio.com/docs/languages/markdown)
+- 9 · [https://code.visualstudio.com/docs/supporting/requirements](https://code.visualstudio.com/docs/supporting/requirements)
+- 11 · [https://code.visualstudio.com/updates/v1_142](https://code.visualstudio.com/updates/v1_142)
+- 12 · [https://code.visualstudio.com/license](https://code.visualstudio.com/license)
+- 13 · [https://code.visualstudio.com/](https://code.visualstudio.com/)
+- 14 · [https://code.visualstudio.com/docs/configure/command-line](https://code.visualstudio.com/docs/configure/command-line)
+- 15 · [https://obsidian.md/pricing](https://obsidian.md/pricing)
+- 16 · [https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax](https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax)
+- 17 · [https://obsidian.md/help/pdf](https://obsidian.md/help/pdf)
+- 18 · [https://obsidian.md/download](https://obsidian.md/download)
+- 19 · [https://obsidian.md/changelog/](https://obsidian.md/changelog/)
+- 20 · [https://obsidian.md/help/uri](https://obsidian.md/help/uri)
+- 21 · [https://obsidian.md/help/Getting+started/Create+a+vault](https://obsidian.md/help/Getting+started/Create+a+vault)
+- 22 · [https://github.com/sbarex/QLMarkdown](https://github.com/sbarex/QLMarkdown)
+- 23 · [https://github.com/sbarex/QLMarkdown/releases](https://github.com/sbarex/QLMarkdown/releases)
+- 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
 What MarsDawn lacks. It needs macOS 26 or later. There is no iPhone or iPad app; MarsDawn is for the Mac. There's no shared editing, no sync and no account. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Its PDFs have no page numbers. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.

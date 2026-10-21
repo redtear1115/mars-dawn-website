@@ -138,7 +138,7 @@ try {
 
 <h2 id="check-and-render">Prüfen und rendern</h2>
 <p>Führe diese Befehle in dem Ordner aus, der <code>theme.json</code> enthält. Sie brauchen das Werkzeug <code>marsdawn</code>: siehe <a href="/de/cli/agents/">marsdawn für Agenten</a>.</p>
-<pre><code>marsdawn theme validate theme.json --require-complete --json
+<pre tabindex="0" role="region" aria-labelledby="check-and-render"><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
@@ -160,7 +160,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 <h3 id="example-dawn">Beispiel: Dawn</h3>
 <p>Das ist <code>dawn.json</code>, Byte für Byte. Ihre einzige Stiloption ist eine dünne Linie in der Akzentfarbe für <code>hr</code>.</p>
-<pre><code>{
+<pre tabindex="0" role="region" aria-labelledby="example-dawn"><code>{
   "schemaVersion": 1,
   "id": "dawn",
   "version": "1.0.0",
@@ -389,7 +389,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 
 <h2 id="hand-it-over-as-a-link">Als Link übergeben</h2>
 <p>Die Seite <a href="/de/themes/new/">Ein Thema erstellen</a> öffnet ein Thema aus einem Link, damit die Person es nach Augenmaß abstimmen kann. Der Link besteht aus der Adresse der Seite, dann <code>#theme=</code>, dann den Bytes der Datei als base64url ohne Auffüllzeichen. Die Datei darf höchstens 16.384 Bytes groß sein. Diese eine Zeile baut den Link in zsh und in bash, auf macOS und Linux:</p>
-<pre><code>printf 'https://marsdawn.southern-light.dev/de/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="hand-it-over-as-a-link"><code>printf 'https://marsdawn.southern-light.dev/de/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>Das Thema steht hinter einem <code>#</code>, das ein Browser nicht an die Website sendet, und die Website leitet es nirgendwohin weiter. Der Link bleibt aber im Verlauf deiner Shell und des Browsers, und jede Person, der du ihn schickst, kann das Thema lesen.</p>
 
 <h2 id="submit-it">Einreichen</h2>

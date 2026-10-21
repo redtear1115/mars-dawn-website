@@ -24,7 +24,10 @@ scripts/tmde130/ingest.py) and scripts/tmde130/data.py (the page copy, from the 
 
 --self-test plants one break per rule in a copy of the built pages and of the vendored file, and
 fails unless each plant is reported by its own rule's message and nothing else, and the clean copy
-passes. Then it checks the real tree.
+passes. A2 also gets a plant that changes the last character of a bullet in the HTML and one in the
+.md twin, each of which must be reported as a missing bullet: a dropped bullet alone would still be
+caught by the bullet count if the text comparison stopped comparing text (#292). Then it checks the
+real tree.
 """
 import hashlib
 import html
@@ -174,9 +177,15 @@ def self_test() -> bool:
         notes = json.loads((VENDOR / "whats-new.json").read_text(encoding="utf-8"))
         first_bullet = notes["versions"][0]["whatsNew"]["en-US"].split("\n")[0][2:]
         first_v = notes["versions"][-1]["version"]
+        first_html = html.escape(first_bullet, quote=False)
+        lacks = f"A2 en/changelog: {notes['versions'][0]['version']} lacks the bullet "
         plants = [
             ("A1", lambda p, v: edit(v / "whats-new.json", '"dates_read": "2026', '"dates_read": "2025')),
-            ("A2", lambda p, v: edit(p / "changelog" / "index.html", f"  <li>{html.escape(first_bullet, quote=False)}</li>\n", "")),
+            ("A2", lambda p, v: edit(p / "changelog" / "index.html", f"  <li>{first_html}</li>\n", "")),
+            (lacks, lambda p, v: edit(p / "changelog" / "index.html", f"<li>{first_html}</li>",
+                                      f"<li>{first_html[:-1]}{'#' if first_html[-1] != '#' else '%'}</li>")),
+            (lacks, lambda p, v: edit(p / "changelog" / "index.md", f"\n- {twin(first_bullet)}\n",
+                                      f"\n- {twin(first_bullet)[:-1]}{'#' if first_bullet[-1] != '#' else '%'}\n")),
             ("A3", lambda p, v: edit(p / "zh-hant" / "changelog" / "index.html", f'<p>{copy["zh-hant"]["first_release"]}</p>', "")),
             ("A4", lambda p, v: edit(p / "de" / "changelog" / "index.html", f'<h2 id="marsdawn-app">{copy["de"]["app_h"]}</h2>\n',
                                      f'<h2 id="marsdawn-app">{copy["de"]["app_h"]}</h2>\n'
@@ -191,11 +200,11 @@ def self_test() -> bool:
             public, vendor = fresh()
             plant(public, vendor)
             found = check(public, vendor, copy)
-            if len(found) != 1 or not found[0].startswith(rule + " "):
+            if len(found) != 1 or not found[0].startswith(rule if rule.endswith(" ") else rule + " "):
                 print(f"self-test: plant for {rule} reported {found}")
                 ok = False
             else:
-                print(f"self-test: {rule} caught: {found[0][:100]}")
+                print(f"self-test: {rule.split()[0]} caught: {found[0][:100]}")
     return ok
 
 

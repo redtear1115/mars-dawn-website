@@ -127,22 +127,22 @@ try {
 <div class="summary"><p><strong>Un seul fichier Markdown, dans <code>~/.claude/skills/marsdawn/SKILL.md</code>.</strong> Avec lui, votre agent installe <code>marsdawn</code>, exporte en PDF et lit le résultat JSON, et il demande toujours avant d’exécuter quoi que ce soit.</p></div>
 <h2 id="install-it-in-claude-code">L’installer dans Claude Code</h2>
 <p>L’outil en ligne de commande <code>marsdawn</code> écrit la skill pour vous, et le fichier qu’il écrit correspond à la version de <code>marsdawn</code> que vous avez installée. Si vous n’avez pas encore <code>marsdawn</code>, installez-le avec <a href="https://brew.sh">Homebrew</a> :</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="install-it-in-claude-code"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>Installez ensuite la skill :</p>
 <pre><code>marsdawn skill --install</code></pre>
 <p>Cela écrit <code>~/.claude/skills/marsdawn/SKILL.md</code>, en créant le dossier s’il n’existe pas. Comme le fichier vient de votre copie de <code>marsdawn</code>, il ne décrit jamais une option que votre copie n’a pas.</p>
 <p>Claude Code la charge quand une tâche demande un PDF, ou quand il a écrit ou révisé un document Markdown que vous allez lire, et vous pouvez la lancer vous-même avec <code>/marsdawn</code>. Si vous voulez la lire d’abord, c’est <a href="/cli/skill/SKILL.md">un fichier court</a>.</p>
 <h2 id="after-you-upgrade-marsdawn">Après une mise à jour de marsdawn</h2>
 <p>Homebrew met à jour <code>marsdawn</code> mais laisse la skill où elle était, elle reste donc à l’ancienne version tant que vous ne la rafraîchissez pas :</p>
-<pre><code>marsdawn skill --install --force</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="after-you-upgrade-marsdawn"><code>marsdawn skill --install --force</code></pre>
 <p><code>--force</code> remplace le <code>SKILL.md</code> existant, y compris les modifications que vous y avez faites. Sans <code>--force</code>, si un <code>SKILL.md</code> différent est déjà là, <code>marsdawn</code> n’y touche pas, vous dit qu’il diffère et se termine avec le code 64 (<code>skill_differs</code>). Si le fichier est déjà le bon, rien ne change.</p>
 <h2 id="for-other-agents">Pour d’autres agents</h2>
 <p>Ajoutez <code>--dir</code> avec le dossier où votre agent range ses skills, et <code>marsdawn</code> y écrit <code>SKILL.md</code> à la place :</p>
-<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="for-other-agents"><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
 <p>Le fichier est du Markdown brut, des instructions et des commandes : un agent qui charge des fichiers d’instructions peut l’utiliser tel quel.</p>
 <h2 id="without-homebrew-or-the-command-line-tool">Sans Homebrew ni l’outil en ligne de commande</h2>
 <p>Si vous ne pouvez pas installer <code>marsdawn</code> d’abord, téléchargez plutôt le fichier :</p>
-<pre><code>mkdir -p ~/.claude/skills/marsdawn
+<pre tabindex="0" role="region" aria-labelledby="without-homebrew-or-the-command-line-tool"><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <p>Cela récupère la dernière skill de ce site, qui peut être en avance sur un <code>marsdawn</code> plus ancien. Une fois l’outil installé, <code>marsdawn skill --install --force</code> la remplace par celle qui correspond. Vous pouvez aussi indiquer l’URL à un agent, ou coller le fichier.</p>
 <h2 id="what-it-teaches">Ce qu’elle enseigne</h2>

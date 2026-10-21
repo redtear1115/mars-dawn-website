@@ -131,11 +131,11 @@ try {
 
 <h2 id="install">Instalación</h2>
 <p>Con <a href="https://brew.sh">Homebrew</a>:</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
+<pre tabindex="0"><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
 <p>¿Usas un agente de programación? Ejecuta <code>marsdawn skill --install</code> para agregar <a href="/es/cli/skill/">la skill de marsdawn</a>: un solo archivo que le enseña a abrir lo que escribió en MarsDawn para que lo revises, y a exportar PDF.</p>
 <p>En una Mac con chip de Apple, Homebrew instala una copia precompilada en segundos, sin nada más que instalar. En una Mac con Intel, compila marsdawn desde el código fuente, lo que toma unos minutos y requiere Xcode 26 o posterior (Swift 6.2). La herramienta funciona en macOS 15 o posterior.</p>
 <p>O compílala desde <a href="https://github.com/redtear1115/mars-dawn-kit">el código fuente</a> con Swift Package Manager:</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<pre tabindex="0"><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>Revisa qué versión tienes con <code>marsdawn --version</code>.</p>
@@ -144,7 +144,7 @@ swift build -c release --product marsdawn</code></pre>
 
 <h3>marsdawn open</h3>
 <p>Abre uno o varios archivos Markdown en la app MarsDawn para que los revises. Necesita la app instalada: sin ella, <code>marsdawn open</code> termina con el código 3 e indica que MarsDawn no está instalado. <code>export</code> no necesita la app. La app está en el <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-cli&amp;mt=8">Mac App Store</a>.</p>
-<pre><code>marsdawn open notes.md
+<pre tabindex="0"><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
 marsdawn open .
@@ -165,7 +165,7 @@ marsdawn open notes.md --folder .</code></pre>
 
 <h3>marsdawn export</h3>
 <p>Convierte un archivo Markdown en un PDF paginado, con el mismo exportador que usa la exportación a PDF de MarsDawn. No necesita la app MarsDawn. Las imágenes relativas se resuelven a partir de la carpeta del archivo de entrada.</p>
-<pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
+<pre tabindex="0"><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
 <ul>
   <li><code>-o, --output &lt;path&gt;</code>: dónde escribir el PDF. De forma predeterminada, la ruta de entrada con la extensión <code>.pdf</code>.</li>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: la paleta clara del tema de la vista previa. De forma predeterminada, <code>$MARSDAWN_THEME</code> y, si no, <code>dawn</code>.</li>
@@ -183,7 +183,7 @@ marsdawn open notes.md --folder .</code></pre>
 
 <h3>marsdawn theme</h3>
 <p>Comprueba un archivo de tema (<code>theme.json</code>) y muestra cómo se ve antes de que lo compartas. No necesita la app MarsDawn. Para los campos de un tema, consulta <a href="/es/themes/agents/">Crea un tema con tu agente</a>.</p>
-<pre><code>marsdawn theme validate my-theme.json
+<pre tabindex="0"><code>marsdawn theme validate my-theme.json
 marsdawn theme css my-theme.json
 marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pre>
 <ul>

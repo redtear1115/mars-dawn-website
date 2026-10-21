@@ -138,7 +138,7 @@ try {
 
 <h2 id="check-and-render">Comprobar y renderizar</h2>
 <p>Ejecuta estos comandos en la carpeta que contiene <code>theme.json</code>. Necesitan la herramienta <code>marsdawn</code>: consulta <a href="/es/cli/agents/">marsdawn para agentes</a>.</p>
-<pre><code>marsdawn theme validate theme.json --require-complete --json
+<pre tabindex="0" role="region" aria-labelledby="check-and-render"><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
@@ -160,7 +160,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 <h3 id="example-dawn">Ejemplo: Dawn</h3>
 <p>Este es <code>dawn.json</code>, byte por byte. Su única opción de estilo es una línea fina del color de acento para <code>hr</code>.</p>
-<pre><code>{
+<pre tabindex="0" role="region" aria-labelledby="example-dawn"><code>{
   "schemaVersion": 1,
   "id": "dawn",
   "version": "1.0.0",
@@ -389,7 +389,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 
 <h2 id="hand-it-over-as-a-link">Entrégalo como un enlace</h2>
 <p>La página <a href="/es/themes/new/">Crear un tema</a> abre un tema desde un enlace, para que la persona pueda afinarlo a ojo. El enlace es la dirección de esa página, luego <code>#theme=</code> y luego los bytes del archivo en base64url sin relleno. El archivo puede pesar como máximo 16 384 bytes. Esta única línea construye el enlace en zsh y en bash, en macOS y en Linux:</p>
-<pre><code>printf 'https://marsdawn.southern-light.dev/es/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="hand-it-over-as-a-link"><code>printf 'https://marsdawn.southern-light.dev/es/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>El tema viaja detrás de un <code>#</code>, que el navegador no envía al sitio, y el sitio no lo envía a ninguna parte. Eso sí, el enlace queda en el historial de tu shell y en el del navegador, y cualquiera a quien se lo pegues puede leer el tema.</p>
 
 <h2 id="submit-it">Envíalo</h2>

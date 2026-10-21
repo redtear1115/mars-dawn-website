@@ -4,41 +4,41 @@ Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방
 
 |  | MarsDawn | VS Code 미리보기 | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
-| 로컬 .md 열기 | 가능, 원본 파일을 바로 편집 [app 1.1.1] | 가능, ⇧⌘V로 미리보기 [[V8](#v8)] | 공식 설명 없음 [[V21](#v21)] | 미리보기만: "for viewing Markdown files" [[V22](#v22)] | "Markdown opens rendered and saves back verbatim." [[V3](#v3)] |
-| Mermaid | 기본 제공 [[V1](#v1)] | 기본 제공 [[V8](#v8)] | 기본 제공, 노트 문법 [[V16](#v16)] | 기본 제공, `mermaid` 블록 [[V22](#v22)] | "diagram blocks are not rendered" [[V3](#v3)] |
-| 수식 | KaTeX, `$…$`와 `$$…$$` [[kit](#kit)] | KaTeX [[V8](#v8)] | MathJax [[V16](#v16)] | MathJax [[V22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[V3](#v3)] |
-| 에이전트의 계획 검토／줄로 이동 | `marsdawn open file:line`, 디스크에서 업데이트, 참조 복사 [/cli/, /features/] | Markdown diff 미리보기, 변경된 줄 강조 [[V8](#v8)]; `code -g file:line` [[V14](#v14)] | `obsidian://open`에 줄 번호 지정 없음 [[V20](#v20)] | 공식 설명 없음 | CLI와 MCP 서버 있음, 줄 이동은 설명 없음 [[V4](#v4), [V5](#v5)] |
-| PDF: 페이지 나누기, 페이지 번호 | 짧은 코드 블록을 나누지 않는 페이지 나누기 [/pdf/], 페이지 번호 없음 [직접 확인] | 공식 설명 없음 [[V8](#v8)] | 용지 크기, 여백; 페이지 나누기와 번호는 설명 없음 [[V17](#v17)] | 공식 설명 없음 [[V22](#v22)] | PDF "including tables", 페이지 나누기와 번호는 설명 없음 [[V3](#v3)] |
-| 가격 | 무료 다운로드, 잠금 해제 한 번 USD 4.99, 14일 체험 [[V1](#v1)] | 공식 설명 없음 [[V12](#v12), [V13](#v13)] | 개인: "Free without limits", 상업용 라이선스는 선택 [[V15](#v15)] | 무료, GPL-3.0 [[V22](#v22)] | "Free while in early release." [[V2](#v2)] |
-| 시스템 요구 사항 | macOS 26.0 이상 [[V1](#v1)] | "the latest release and the two previous versions" [[V9](#v9)] | 공식 설명 없음 [[V18](#v18)] | macOS 12.0 이상 [[V23](#v23)] | macOS 13 이상 [[V2](#v2)] |
-| 계정 필요 | 필요 없음 [/privacy/] | 공식 설명 없음 | "No sign-up required" [[V15](#v15)] | 공식 설명 없음 | 필요 없음 [[V2](#v2)] |
+| 로컬 .md 열기 | 가능, 원본 파일을 바로 편집 [app 1.1.1] | 가능, ⇧⌘V로 미리보기 [[8](#v8)] | 공식 설명 없음 [[21](#v21)] | 미리보기만: "for viewing Markdown files" [[22](#v22)] | "Markdown opens rendered and saves back verbatim." [[3](#v3)] |
+| Mermaid | 기본 제공 [[1](#v1)] | 기본 제공 [[8](#v8)] | 기본 제공, 노트 문법 [[16](#v16)] | 기본 제공, `mermaid` 블록 [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
+| 수식 | KaTeX, `$…$`와 `$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
+| 에이전트의 계획 검토／줄로 이동 | `marsdawn open file:line`, 디스크에서 업데이트, 참조 복사 [/cli/, /features/] | Markdown diff 미리보기, 변경된 줄 강조 [[8](#v8)]; `code -g file:line` [[14](#v14)] | `obsidian://open`에 줄 번호 지정 없음 [[20](#v20)] | 공식 설명 없음 | CLI와 MCP 서버 있음, 줄 이동은 설명 없음 [[4](#v4), [5](#v5)] |
+| PDF: 페이지 나누기, 페이지 번호 | 짧은 코드 블록을 나누지 않는 페이지 나누기 [/pdf/], 페이지 번호 없음 [직접 확인] | 공식 설명 없음 [[8](#v8)] | 용지 크기, 여백; 페이지 나누기와 번호는 설명 없음 [[17](#v17)] | 공식 설명 없음 [[22](#v22)] | PDF "including tables", 페이지 나누기와 번호는 설명 없음 [[3](#v3)] |
+| 가격 | 무료 다운로드, 잠금 해제 한 번 USD 4.99, 14일 체험 [[1](#v1)] | 공식 설명 없음 [[12](#v12), [13](#v13)] | 개인: "Free without limits", 상업용 라이선스는 선택 [[15](#v15)] | 무료, GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
+| 시스템 요구 사항 | macOS 26.0 이상 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 공식 설명 없음 [[18](#v18)] | macOS 12.0 이상 [[23](#v23)] | macOS 13 이상 [[2](#v2)] |
+| 계정 필요 | 필요 없음 [/privacy/] | 공식 설명 없음 | "No sign-up required" [[15](#v15)] | 공식 설명 없음 | 필요 없음 [[2](#v2)] |
 
 모든 칸은 2026년 10월 16일에 괄호 안의 출처로 확인했습니다(V 번호는 아래 목록, [직접 확인]은 marsdawn 0.6.4로 직접 내보낸 결과). 각 회사의 원문은 그대로 인용합니다. ‘공식 설명 없음’은 읽은 페이지에 언급이 없었다는 뜻이며, 기능이 없다는 뜻은 아닙니다. 표는 제품의 순위를 매기지 않습니다.
 
 ## 출처
 
-- V1 · [Mac App Store](https://apps.apple.com/app/id6812925073)
-- V2 · [https://lynxoffice.com/](https://lynxoffice.com/)
-- V3 · [https://lynxoffice.com/markdown/](https://lynxoffice.com/markdown/)
-- V4 · [https://lynxoffice.com/cli/](https://lynxoffice.com/cli/)
-- V5 · [https://lynxoffice.com/mcp/](https://lynxoffice.com/mcp/)
-- V6 · [https://lynxoffice.com/release-notes/](https://lynxoffice.com/release-notes/)
-- V8 · [https://code.visualstudio.com/docs/languages/markdown](https://code.visualstudio.com/docs/languages/markdown)
-- V9 · [https://code.visualstudio.com/docs/supporting/requirements](https://code.visualstudio.com/docs/supporting/requirements)
-- V11 · [https://code.visualstudio.com/updates/v1_142](https://code.visualstudio.com/updates/v1_142)
-- V12 · [https://code.visualstudio.com/license](https://code.visualstudio.com/license)
-- V13 · [https://code.visualstudio.com/](https://code.visualstudio.com/)
-- V14 · [https://code.visualstudio.com/docs/configure/command-line](https://code.visualstudio.com/docs/configure/command-line)
-- V15 · [https://obsidian.md/pricing](https://obsidian.md/pricing)
-- V16 · [https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax](https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax)
-- V17 · [https://obsidian.md/help/pdf](https://obsidian.md/help/pdf)
-- V18 · [https://obsidian.md/download](https://obsidian.md/download)
-- V19 · [https://obsidian.md/changelog/](https://obsidian.md/changelog/)
-- V20 · [https://obsidian.md/help/uri](https://obsidian.md/help/uri)
-- V21 · [https://obsidian.md/help/Getting+started/Create+a+vault](https://obsidian.md/help/Getting+started/Create+a+vault)
-- V22 · [https://github.com/sbarex/QLMarkdown](https://github.com/sbarex/QLMarkdown)
-- V23 · [https://github.com/sbarex/QLMarkdown/releases](https://github.com/sbarex/QLMarkdown/releases)
-- V24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
+- 1 · [Mac App Store](https://apps.apple.com/app/id6812925073)
+- 2 · [https://lynxoffice.com/](https://lynxoffice.com/)
+- 3 · [https://lynxoffice.com/markdown/](https://lynxoffice.com/markdown/)
+- 4 · [https://lynxoffice.com/cli/](https://lynxoffice.com/cli/)
+- 5 · [https://lynxoffice.com/mcp/](https://lynxoffice.com/mcp/)
+- 6 · [https://lynxoffice.com/release-notes/](https://lynxoffice.com/release-notes/)
+- 8 · [https://code.visualstudio.com/docs/languages/markdown](https://code.visualstudio.com/docs/languages/markdown)
+- 9 · [https://code.visualstudio.com/docs/supporting/requirements](https://code.visualstudio.com/docs/supporting/requirements)
+- 11 · [https://code.visualstudio.com/updates/v1_142](https://code.visualstudio.com/updates/v1_142)
+- 12 · [https://code.visualstudio.com/license](https://code.visualstudio.com/license)
+- 13 · [https://code.visualstudio.com/](https://code.visualstudio.com/)
+- 14 · [https://code.visualstudio.com/docs/configure/command-line](https://code.visualstudio.com/docs/configure/command-line)
+- 15 · [https://obsidian.md/pricing](https://obsidian.md/pricing)
+- 16 · [https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax](https://obsidian.md/help/Editing+and+formatting/Advanced+formatting+syntax)
+- 17 · [https://obsidian.md/help/pdf](https://obsidian.md/help/pdf)
+- 18 · [https://obsidian.md/download](https://obsidian.md/download)
+- 19 · [https://obsidian.md/changelog/](https://obsidian.md/changelog/)
+- 20 · [https://obsidian.md/help/uri](https://obsidian.md/help/uri)
+- 21 · [https://obsidian.md/help/Getting+started/Create+a+vault](https://obsidian.md/help/Getting+started/Create+a+vault)
+- 22 · [https://github.com/sbarex/QLMarkdown](https://github.com/sbarex/QLMarkdown)
+- 23 · [https://github.com/sbarex/QLMarkdown/releases](https://github.com/sbarex/QLMarkdown/releases)
+- 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
 MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone이나 iPad 앱은 없으며, MarsDawn은 Mac 전용입니다. 공동 편집, 동기화, 계정이 없습니다. 미리보기는 직접 편집할 수 없고, 옆의 Markdown 소스를 편집합니다. Word로 내보내기와 플러그인이 없습니다. PDF에는 페이지 번호가 없습니다. diff 보기가 없습니다. 에이전트가 변경을 저장하면 열린 윈도우가 디스크에서 업데이트되고 한 번에 실행 취소할 수 있지만, 무엇이 바뀌었는지는 강조하지 않습니다. 14일 체험이 끝나면 잠금 해제할 때까지 문서 내용이 가려진 채로 열립니다.

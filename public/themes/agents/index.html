@@ -138,7 +138,7 @@ try {
 
 <h2 id="check-and-render">Check and render</h2>
 <p>Run these in the folder that holds <code>theme.json</code>. They need the <code>marsdawn</code> tool: see <a href="/cli/agents/">marsdawn for agents</a>.</p>
-<pre><code>marsdawn theme validate theme.json --require-complete --json
+<pre tabindex="0" role="region" aria-labelledby="check-and-render"><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
@@ -160,7 +160,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 <h3 id="example-dawn">Example: Dawn</h3>
 <p>This is <code>dawn.json</code>, byte for byte. Its only style option is a thin accent rule for <code>hr</code>.</p>
-<pre><code>{
+<pre tabindex="0" role="region" aria-labelledby="example-dawn"><code>{
   "schemaVersion": 1,
   "id": "dawn",
   "version": "1.0.0",
@@ -389,7 +389,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 
 <h2 id="hand-it-over-as-a-link">Hand it over as a link</h2>
 <p>The <a href="/themes/new/">Build a theme</a> page opens a theme from a link, so the person can tune it by eye. The link is that page's address, then <code>#theme=</code>, then the file's bytes in base64url without padding. The file can be at most 16,384 bytes. This one line builds the link in zsh and in bash, on macOS and Linux:</p>
-<pre><code>printf 'https://marsdawn.southern-light.dev/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="hand-it-over-as-a-link"><code>printf 'https://marsdawn.southern-light.dev/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>The theme travels after a <code>#</code>, which a browser does not send to the site, and the site does not send it anywhere. The link does stay in your shell history and in the browser's history, and anyone you paste it to can read the theme.</p>
 
 <h2 id="submit-it">Submit it</h2>

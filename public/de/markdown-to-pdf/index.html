@@ -125,12 +125,12 @@ try {
   <p>Das kostenlose Werkzeug <code>marsdawn</code> macht mit einem einzigen Befehl aus einer Markdown-Datei ein PDF. Tabellen, Formeln, Mermaid-Diagramme und hervorgehobener Code sehen so aus, wie sie im Quelltext gemeint sind, und es braucht sonst nichts, nicht einmal die MarsDawn-App.</p>
 </section>
 <h2 id="install-it">Installieren</h2>
-<pre><code>brew install redtear1115/tap/marsdawn
+<pre tabindex="0" role="region" aria-labelledby="install-it"><code>brew install redtear1115/tap/marsdawn
 marsdawn --version</code></pre>
 <p>Auf einem Mac mit Apple Chip installiert Homebrew in Sekunden eine fertig gebaute Kopie. Auf einem Intel-Mac wird stattdessen aus dem Quellcode gebaut. Das dauert ein paar Minuten und erfordert Xcode 26 oder neuer. Das Werkzeug läuft unter macOS 15 oder neuer, und <code>marsdawn --version</code> zeigt die installierte Version an.</p>
 <h2 id="save-a-document">Ein Dokument sichern</h2>
 <p>Füge Folgendes in eine Datei namens <code>plan.md</code> ein:</p>
-<pre><code># Plan: schnellere Exporte
+<pre tabindex="0" role="region" aria-labelledby="save-a-document"><code># Plan: schnellere Exporte
 
 Diesen Plan hat ein Agent geschrieben. Du prüfst ihn und machst daraus ein PDF.
 
@@ -159,11 +159,11 @@ let pdf = try export("plan.md")
 <h2 id="export-it">Exportieren</h2>
 <pre><code>marsdawn export plan.md</code></pre>
 <p>Es schreibt <code>plan.pdf</code> neben die Quelldatei und gibt aus, wo die Datei gelandet ist:</p>
-<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="export-it"><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>Das ist diese Seite, aufgenommen aus einem echten Lauf von <code>marsdawn</code> 0.5.0:</p>
 <p><img class="pdf-page" src="/assets/cli/plan-de.png" alt="Das exportierte PDF: die Überschrift, eine Tabelle mit Schritten, eine Formel im Text und eine abgesetzte Formel, ein Diagramm Entwurf, Prüfung, Veröffentlichung und eine hervorgehobene Zeile Swift." width="989" height="930"></p>
 <h2 id="choose-a-theme-paper-size-and-file-name">Thema, Papierformat und Dateiname wählen</h2>
-<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="choose-a-theme-paper-size-and-file-name"><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
 <ul>
   <li><code>--theme</code>: dawn, classic, modern oder vivid, jeweils in den hellen Farben des Themas. Ohne diese Option verwendet <code>export</code> <code>$MARSDAWN_THEME</code> und sonst dawn.</li>
   <li><code>--paper</code>: a4 oder letter. Standard ist a4.</li>

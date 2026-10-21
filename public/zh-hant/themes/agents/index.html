@@ -138,7 +138,7 @@ try {
 
 <h2 id="check-and-render">檢查與渲染</h2>
 <p>在放有 <code>theme.json</code> 的資料夾裡執行這些指令。需要 <code>marsdawn</code> 工具：見<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>。</p>
-<pre><code>marsdawn theme validate theme.json --require-complete --json
+<pre tabindex="0" role="region" aria-labelledby="check-and-render"><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
@@ -160,7 +160,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 <h3 id="example-dawn">範例：Dawn</h3>
 <p>這是 <code>dawn.json</code>，一個位元組都沒改。它唯一的樣式選項是 <code>hr</code> 的一條細的強調色分隔線。</p>
-<pre><code>{
+<pre tabindex="0" role="region" aria-labelledby="example-dawn"><code>{
   "schemaVersion": 1,
   "id": "dawn",
   "version": "1.0.0",
@@ -389,7 +389,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 
 <h2 id="hand-it-over-as-a-link">用連結交給人</h2>
 <p><a href="/zh-hant/themes/new/">打造一個主題</a>頁面可以從連結開啟主題，讓人用眼睛調整。連結是該頁的網址，接著 <code>#theme=</code>，再接檔案位元組的 base64url（不含補位）。檔案最大 16,384 位元組。下面這一行指令在 macOS 與 Linux 的 zsh 和 bash 都能產生連結：</p>
-<pre><code>printf 'https://marsdawn.southern-light.dev/zh-hant/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="hand-it-over-as-a-link"><code>printf 'https://marsdawn.southern-light.dev/zh-hant/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>主題跟在 <code>#</code> 後面，瀏覽器不會把它送給網站，網站也不會把它送到任何地方。連結確實會留在你的 shell 歷史與瀏覽器歷史裡，你貼給誰，誰就能讀到這個主題。</p>
 
 <h2 id="submit-it">投稿</h2>
