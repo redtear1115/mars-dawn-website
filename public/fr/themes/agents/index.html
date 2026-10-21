@@ -138,7 +138,7 @@ try {
 
 <h2 id="check-and-render">Vérifier et rendre</h2>
 <p>Lancez ces commandes dans le dossier qui contient <code>theme.json</code>. Elles demandent l’outil <code>marsdawn</code> : voir <a href="/fr/cli/agents/">marsdawn pour les agents</a>.</p>
-<pre><code>marsdawn theme validate theme.json --require-complete --json
+<pre tabindex="0" role="region" aria-labelledby="check-and-render"><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
@@ -160,7 +160,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 <h3 id="example-dawn">Exemple : Dawn</h3>
 <p>Voici <code>dawn.json</code>, octet pour octet. Sa seule option de style est un fin filet de couleur d’accent pour <code>hr</code>.</p>
-<pre><code>{
+<pre tabindex="0" role="region" aria-labelledby="example-dawn"><code>{
   "schemaVersion": 1,
   "id": "dawn",
   "version": "1.0.0",
@@ -389,7 +389,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 
 <h2 id="hand-it-over-as-a-link">Le remettre sous forme de lien</h2>
 <p>La page <a href="/fr/themes/new/">Créer un thème</a> ouvre un thème à partir d’un lien, pour que la personne puisse l’ajuster à l’œil. Le lien est l’adresse de la page, puis <code>#theme=</code>, puis les octets du fichier en base64url sans remplissage. Le fichier fait au plus 16 384 octets. Cette seule ligne construit le lien sous zsh et sous bash, sur macOS et sur Linux :</p>
-<pre><code>printf 'https://marsdawn.southern-light.dev/fr/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="hand-it-over-as-a-link"><code>printf 'https://marsdawn.southern-light.dev/fr/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>Le thème voyage après un <code>#</code>, que le navigateur n’envoie pas au site, et le site ne le transmet nulle part. Le lien reste toutefois dans l’historique de votre shell et du navigateur, et toute personne à qui vous le collez peut lire le thème.</p>
 
 <h2 id="submit-it">Le soumettre</h2>

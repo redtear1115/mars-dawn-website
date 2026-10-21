@@ -125,12 +125,12 @@ try {
   <p>免費的 <code>marsdawn</code> 工具只要一個指令，就能把 Markdown 檔案轉成 PDF。表格、數學式、Mermaid 圖表和程式碼上色，都會照原始檔的樣子呈現，而且不需要安裝其他東西，連 MarsDawn app 都不用。</p>
 </section>
 <h2 id="install-it">安裝</h2>
-<pre><code>brew install redtear1115/tap/marsdawn
+<pre tabindex="0" role="region" aria-labelledby="install-it"><code>brew install redtear1115/tap/marsdawn
 marsdawn --version</code></pre>
 <p>在 Apple 晶片的 Mac 上，Homebrew 會直接安裝預先建置好的版本，幾秒就完成。在 Intel Mac 上則會從原始碼建置，需要幾分鐘，也需要 Xcode 26 以上。這個工具需要 macOS 15 以上，<code>marsdawn --version</code> 會印出你裝到的版本。</p>
 <h2 id="save-a-document">存一份文件</h2>
 <p>把下面的內容貼進一個叫 <code>plan.md</code> 的檔案：</p>
-<pre><code># 計畫：讓輸出更快
+<pre tabindex="0" role="region" aria-labelledby="save-a-document"><code># 計畫：讓輸出更快
 
 這份計畫由 agent 撰寫，你審閱後再把它轉成 PDF。
 
@@ -159,11 +159,11 @@ let pdf = try export("plan.md")
 <h2 id="export-it">匯出</h2>
 <pre><code>marsdawn export plan.md</code></pre>
 <p>它會在原始檔旁邊寫出 <code>plan.pdf</code>，並印出存放的位置：</p>
-<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="export-it"><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>這是那一頁，擷取自 <code>marsdawn</code> 0.5.0 的實際執行結果：</p>
 <p><img class="pdf-page" src="/assets/cli/plan-zh.png" alt="匯出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。" width="989" height="930"></p>
 <h2 id="choose-a-theme-paper-size-and-file-name">選主題、紙張大小和檔名</h2>
-<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="choose-a-theme-paper-size-and-file-name"><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
 <ul>
   <li><code>--theme</code>：dawn、classic、modern 或 vivid，使用主題的淺色配色。沒有指定時，<code>export</code> 會用 <code>$MARSDAWN_THEME</code>，再來才是 dawn。</li>
   <li><code>--paper</code>：a4 或 letter，預設是 a4。</li>

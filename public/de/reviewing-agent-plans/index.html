@@ -133,7 +133,7 @@ try {
 
 <h2 id="the-example">Das Beispiel</h2>
 <p>Du hast einen Agenten gebeten, Benutzer-Avatare in einen Objektspeicher zu verschieben, ohne bestehende Links zu brechen. Er gibt dir das hier zurück:</p>
-<pre><code># Plan: move user avatars to object storage
+<pre tabindex="0" role="region" aria-labelledby="the-example"><code># Plan: move user avatars to object storage
 
 ## Goal
 Serve avatars from object storage instead of the app server.
@@ -153,13 +153,13 @@ All tests pass.</code></pre>
 <p><strong>1. Lies nur die Überschriften.</strong> <em>(etwa eine Minute)</em> Passt die Gliederung zu dem, worum du gebeten hast? Ein fehlender Abschnitt bedeutet meist fehlende Arbeit. Hier: Goal, Steps, Status. Du wolltest, dass bestehende Links weiter funktionieren, und es gibt keine Überschrift zu alten Links oder dazu, wie man die Änderung rückgängig macht. Das ist dein erster Kommentar.</p>
 <p>Im Terminal gibt <code>grep -n '^#' plan.md</code> nur die Überschriften aus, und die meisten Editoren können auch eine Gliederung zeigen. In MarsDawn listet der Tab Gliederung in der Seitenleiste (Darstellung &#9656; Seitenleiste einblenden, &#8963;&#8984;S) sie auf, und ein Klick springt dorthin.</p>
 <p><strong>2. Finde jede Stelle, die sagt, dass etwas erledigt, bestanden oder geprüft ist, und prüfe eine selbst.</strong> <em>(etwa eine Minute)</em> Öffne die Datei, führe den Test aus, zähle die Zeilen. Chip Huyen beschreibt einen Fehler, bei dem „der Agent überzeugt ist, eine Aufgabe erledigt zu haben, obwohl er es nicht hat“. In ihrem Beispiel soll ein Agent 50 Personen auf 30 Hotelzimmer verteilen, bringt 40 unter und besteht darauf, fertig zu sein.</p>
-<pre><code>grep -n -i -E 'done|pass|verified|&#9989;' plan.md</code></pre>
+<pre tabindex="0"><code>grep -n -i -E 'done|pass|verified|&#9989;' plan.md</code></pre>
 <p>Hier findet das „&#9989; done“ und „All tests pass.“ Welche Tests? Berührt einer davon die Avatare? Führ sie aus oder frag nach. Diesen Schritt kann MarsDawn dir nicht abnehmen. Das kann niemand außer dir.</p>
 <p><strong>3. Achte auf Schritte, die sich nicht rückgängig machen lassen.</strong> <em>(etwa eine Minute)</em> Daten löschen, Migrationen, Force-Pushes, alles, was sendet, bezahlt oder veröffentlicht. Die warten auf dein ausdrückliches Ja. Chip Huyen beschreibt dieselbe Idee von der Seite des Systems aus: „Wenn ein Plan riskante Vorgänge umfasst, etwa eine Datenbank zu aktualisieren oder eine Codeänderung zu mergen, kann das System vor der Ausführung ausdrücklich um menschliche Zustimmung bitten oder die Ausführung dieser Vorgänge Menschen überlassen.“ Hier löscht Schritt 4 die Originale, und er kommt vor Schritt 5, dem Kopieren.</p>
 <p><strong>4. Lies die Diagramme gerendert und prüfe jeden Pfeil gegen den Text.</strong> Ein Flussdiagramm, das „kopieren &#8594; prüfen &#8594; löschen“ sagt, während die Schritte etwas anderes sagen, ist ein Befund. Dieser Plan hat kein Diagramm, also fällt der Schritt heute weg. Wenn es eines gibt, sieh dir das Bild an, nicht den Mermaid-Quelltext: Viele Editoren haben eine Vorschau, und <a href="/de/view-markdown-on-mac/">Eine Markdown-Datei auf dem Mac ansehen</a> und <a href="/de/vs/markdown-preview-tools/">Markdown anderswo ansehen</a> zeigen die Möglichkeiten. In MarsDawn steht das gerenderte Diagramm neben seinem Quelltext (&#8984;2), und ein fehlerhaftes Diagramm zeigt seinen Quelltext mit dem Fehler darunter, was einen eigenen Kommentar wert ist.</p>
 <p><strong>5. Liste die Dateien und Systeme auf, die der Plan berührt, und frag nach allem, worum du nicht gebeten hast.</strong> <em>(Schritte 4 und 5 zusammen, etwa eine Minute)</em> Hier: die Speicherkonfiguration, die Templates, ein Ordner auf dem Server, ein Bucket. Wer kann den Bucket lesen? Du hast nicht gesagt, dass er öffentlich sein soll. Wenn du den Arbeitsordner des Agenten in MarsDawn geöffnet hast (Ablage &#9656; Ordner öffnen&#160;&#8230;, &#8679;&#8984;O), erscheinen neue Dateien, die er schreibt, innerhalb etwa einer Sekunde im Tab Dateien, und die Kopfzeile nennt den Git-Branch oder Worktree, damit du weißt, welchen Checkout du prüfst.</p>
 <p><strong>6. Schreib Feedback als Stelle, Problem, Lösung, ein Problem pro Zeile.</strong> <em>(die letzte Minute)</em></p>
-<pre><code>plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
+<pre tabindex="0"><code>plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
 plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
 plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.</code></pre>
 <p>Jeder Editor mit Zeilennummern genügt. In MarsDawn kopiert Bearbeiten &#9656; Verweis kopieren (&#8997;&#8984;C) deine Stelle als <code>plan.md:10</code>, und Für KI kopieren (&#8963;&#8997;&#8984;C) fügt den ausgewählten Text darunter ein.</p>
@@ -176,7 +176,7 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
 
 <h2 id="try-it">Ausprobieren</h2>
 <p>MarsDawn gibt es im <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reviewing-agent-plans&amp;mt=8">Mac App Store</a>. Dazu kommt das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code>:</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="try-it"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>Es exportiert Markdown ohne die App als PDF.</p>
 <p><a href="/de/cli/">Befehlszeile</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
 

@@ -155,9 +155,9 @@ try {
   <li><code>--force</code>：輸出檔已存在時覆寫。</li>
   <li><code>--json</code>：在 stdout 輸出一個 JSON 物件，而不是文字。</li>
 </ul>
-<pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
+<pre tabindex="0"><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
 <p>成功，離開代碼 0：</p>
-<pre><code>{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}</code></pre>
+<pre tabindex="0"><code>{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}</code></pre>
 <ul>
   <li><code>output</code>：寫出的 PDF 的絕對路徑。</li>
   <li><code>pages</code>：頁數。</li>
@@ -166,7 +166,7 @@ try {
 </ul>
 
 <h2 id="open">open</h2>
-<pre><code>marsdawn open notes.md --json
+<pre tabindex="0"><code>marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json
 marsdawn open . --json
@@ -181,13 +181,13 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li>資料夾與 <code>--background</code> 從 marsdawn 0.5.1 開始提供。</li>
 </ul>
 <p>成功，離開代碼 0：</p>
-<pre><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
+<pre tabindex="0"><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
 <ul>
   <li><code>opened</code>：每個檔案一個物件，順序與傳入時相同。<code>path</code> 是檔案的絕對路徑；只有指定了行號時才有 <code>line</code>。</li>
   <li><code>app</code>：開啟它們的 MarsDawn app 路徑。</li>
 </ul>
 <p>有資料夾時（marsdawn 0.5.1 以後），離開代碼 0：</p>
-<pre><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
+<pre tabindex="0"><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
 <ul>
   <li><code>folder</code>：只有指定了資料夾時才有。<code>path</code> 是它的絕對路徑。<code>requested</code> 一律是 <code>true</code>：marsdawn 已請 MarsDawn 顯示這個資料夾，但無法得知側邊欄是否真的顯示了，因為 app 可能會先向使用者要求存取權限。請回報為「已要求」，而不是「已完成」。</li>
   <li><code>--wait</code> 大於 0、且 MarsDawn 為 1.0.2 以上時，等待結束後 <code>folder</code> 還會帶 <code>status</code>：<code>attached</code>、<code>needsUser</code>、<code>declined</code>、<code>failed</code>、<code>attachedDifferentFolder</code>、<code>full</code>、<code>unavailable</code> 或 <code>unknown</code>。只有在 <code>needsUser</code> 時，才會再帶 <code>waitingFor</code>：<code>confirmation</code> 或 <code>folderChoice</code>。沒有 <code>--wait</code>，或 app 不會回報時，<code>folder</code> 維持 <code>{"path": …, "requested": true}</code>。<code>--wait</code> 超出 0 到 30 時以代碼 64 結束，並帶 <code>error: "wait_out_of_range"</code>。（marsdawn 0.5.3 以後。）</li>
@@ -199,7 +199,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
 <p>一個需要自行啟用的 <a href="https://code.claude.com/docs/en/hooks">Claude Code hook</a>：Claude 寫入或編輯 Markdown 檔案之後，在背景用 MarsDawn 開啟那個檔案，每個 session 每個檔案只開一次。除非你加上它，否則不會啟用，而且要一個專案一個專案加，因為你沒要求就跳出來的視窗會打斷注意力。它執行的是 shell 指令，不花模型 token。</p>
 <p>需要 marsdawn 0.5.1 或更新版本，才有 <code>--background</code>，以及 MarsDawn app。</p>
 <p>把下面的內容存成專案裡的 <code>.claude/hooks/marsdawn-open.sh</code>，再用 <code>chmod +x</code> 讓它可以執行：</p>
-<pre><code>#!/bin/sh
+<pre tabindex="0"><code>#!/bin/sh
 # Claude Code PostToolUse hook: open a Markdown file Claude just wrote or edited in MarsDawn,
 # in the background, once per file per session. Never blocks Claude: every path exits 0.
 input=$(cat)
@@ -224,7 +224,7 @@ echo "$file" &gt;&gt; "$seen"
 "$marsdawn" open --background "$file" &gt;/dev/null 2&gt;&amp;1 || true
 exit 0</code></pre>
 <p>然後把 hook 加到專案的 <code>.claude/settings.json</code>；如果只想自己用，改加到 <code>.claude/settings.local.json</code>：</p>
-<pre><code>{
+<pre tabindex="0"><code>{
   "hooks": {
     "PostToolUse": [
       {
@@ -247,7 +247,7 @@ exit 0</code></pre>
 
 <h2 id="failures">失敗</h2>
 <p>加上 <code>--json</code> 時，失敗會在 stdout 輸出一個 JSON 物件，並以對應的代碼結束：</p>
-<pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="failures"><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
 <ul>
   <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字；或 <code>--folder</code> 的路徑不存在、不是資料夾。</li>
   <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
@@ -283,10 +283,10 @@ exit 0</code></pre>
 
 <h2 id="install">安裝</h2>
 <p>使用 Homebrew。在 Apple 晶片的 Mac 上，會直接安裝預先建置好的版本，幾秒就完成，不需要 Xcode。在 Intel Mac 上則會從原始碼編譯 marsdawn，需要幾分鐘，也需要 Xcode 26 以上。</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre tabindex="0"><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn --version</code></pre>
 <p>也可以從<a href="https://github.com/redtear1115/mars-dawn-kit">原始碼</a>建置。第一次建置會下載相依套件並編譯，同樣需要幾分鐘。</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<pre tabindex="0"><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>

@@ -155,9 +155,9 @@ try {
   <li><code>--force</code> : remplace le fichier de sortie s’il existe.</li>
   <li><code>--json</code> : affiche un objet JSON sur stdout au lieu de texte.</li>
 </ul>
-<pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
+<pre tabindex="0"><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
 <p>Succès, code de sortie 0 :</p>
-<pre><code>{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}</code></pre>
+<pre tabindex="0"><code>{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}</code></pre>
 <ul>
   <li><code>output</code> : chemin absolu du PDF écrit.</li>
   <li><code>pages</code> : nombre de pages.</li>
@@ -166,7 +166,7 @@ try {
 </ul>
 
 <h2 id="open">open</h2>
-<pre><code>marsdawn open notes.md --json
+<pre tabindex="0"><code>marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json
 marsdawn open . --json
@@ -181,13 +181,13 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li>Les dossiers et <code>--background</code> ont été ajoutés dans marsdawn 0.5.1.</li>
 </ul>
 <p>Succès, code de sortie 0 :</p>
-<pre><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
+<pre tabindex="0"><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
 <ul>
   <li><code>opened</code> : un objet par fichier, dans l’ordre donné. <code>path</code> est le chemin absolu du fichier ; <code>line</code> n’apparaît que si une ligne a été demandée.</li>
   <li><code>app</code> : chemin de l’app MarsDawn qui les a ouverts.</li>
 </ul>
 <p>Avec un dossier (marsdawn 0.5.1 et versions ultérieures), code de sortie 0 :</p>
-<pre><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
+<pre tabindex="0"><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
 <ul>
   <li><code>folder</code> : présent seulement si un dossier a été donné. <code>path</code> est son chemin absolu. <code>requested</code> vaut toujours <code>true</code> : marsdawn a demandé à MarsDawn d’afficher le dossier, mais ne peut pas savoir si la barre latérale l’affiche, car l’app peut d’abord demander l’accès à la personne. Signalez-le comme demandé, pas comme fait.</li>
   <li>Avec un <code>--wait</code> supérieur à 0 et MarsDawn 1.0.2 ou version ultérieure, <code>folder</code> contient aussi <code>status</code> une fois l’attente terminée : <code>attached</code>, <code>needsUser</code>, <code>declined</code>, <code>failed</code>, <code>attachedDifferentFolder</code>, <code>full</code>, <code>unavailable</code> ou <code>unknown</code>. Seulement avec <code>needsUser</code>, il contient <code>waitingFor</code> : <code>confirmation</code> ou <code>folderChoice</code>. Sans <code>--wait</code>, ou avec une app qui ne donne pas de réponse, <code>folder</code> reste <code>{"path": …, "requested": true}</code>. Un <code>--wait</code> hors de 0 à 30 se termine avec le code 64 et <code>error: "wait_out_of_range"</code>. (marsdawn 0.5.3 et versions ultérieures.)</li>
@@ -199,7 +199,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
 <p>Un <a href="https://code.claude.com/docs/en/hooks">hook Claude Code</a> facultatif : après que Claude a écrit ou modifié un fichier Markdown, il ouvre ce fichier dans MarsDawn en arrière-plan, une fois par fichier et par session. Il est désactivé tant que vous ne l’ajoutez pas, projet par projet, car une fenêtre que vous n’avez pas demandée détourne l’attention. Il exécute une commande shell et ne coûte aucun token de modèle.</p>
 <p>Il nécessite marsdawn 0.5.1 ou version ultérieure, pour <code>--background</code>, ainsi que l’app MarsDawn.</p>
 <p>Enregistrez ceci sous <code>.claude/hooks/marsdawn-open.sh</code> dans votre projet, et rendez-le exécutable avec <code>chmod +x</code> :</p>
-<pre><code>#!/bin/sh
+<pre tabindex="0"><code>#!/bin/sh
 # Claude Code PostToolUse hook: open a Markdown file Claude just wrote or edited in MarsDawn,
 # in the background, once per file per session. Never blocks Claude: every path exits 0.
 input=$(cat)
@@ -224,7 +224,7 @@ echo "$file" &gt;&gt; "$seen"
 "$marsdawn" open --background "$file" &gt;/dev/null 2&gt;&amp;1 || true
 exit 0</code></pre>
 <p>Ajoutez ensuite le hook à <code>.claude/settings.json</code> dans le projet, ou à <code>.claude/settings.local.json</code> pour le garder pour vous :</p>
-<pre><code>{
+<pre tabindex="0"><code>{
   "hooks": {
     "PostToolUse": [
       {
@@ -247,7 +247,7 @@ exit 0</code></pre>
 
 <h2 id="failures">Échecs</h2>
 <p>Avec <code>--json</code>, un échec affiche un objet JSON sur stdout et se termine avec son code :</p>
-<pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="failures"><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
 <ul>
   <li><code>2</code>, <code>input_not_found</code> : l’entrée n’existe pas, est un dossier ou n’est pas du texte UTF-8 ; ou un chemin <code>--folder</code> n’existe pas ou n’est pas un dossier.</li>
   <li><code>3</code>, <code>app_not_installed</code> : MarsDawn n’est pas installé. Seul <code>open</code> renvoie ce code.</li>
@@ -283,10 +283,10 @@ exit 0</code></pre>
 
 <h2 id="install">Installation</h2>
 <p>Avec Homebrew. Sur puce Apple, il installe un bottle précompilé en quelques secondes, sans Xcode. Sur un Mac Intel, il compile marsdawn à partir des sources, ce qui prend quelques minutes et nécessite Xcode 26 ou version ultérieure.</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre tabindex="0"><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn --version</code></pre>
 <p>Ou compilez-le à partir <a href="https://github.com/redtear1115/mars-dawn-kit">des sources</a>. La première compilation récupère les dépendances et compile, ce qui prend aussi quelques minutes.</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<pre tabindex="0"><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>

@@ -155,9 +155,9 @@ try {
   <li><code>--force</code>：出力ファイルが存在する場合に置き換えます。</li>
   <li><code>--json</code>：stdout にテキストではなく1つの JSON オブジェクトを出力します。</li>
 </ul>
-<pre><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
+<pre tabindex="0"><code>marsdawn export notes.md -o out.pdf --theme classic --paper letter --force --json</code></pre>
 <p>成功、終了コード 0：</p>
-<pre><code>{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}</code></pre>
+<pre tabindex="0"><code>{"diagramErrors":[],"ok":true,"output":"/path/to/out.pdf","pages":1,"paper":"letter","theme":"classic"}</code></pre>
 <ul>
   <li><code>output</code>：書き出された PDF の絶対パス。</li>
   <li><code>pages</code>：ページ数。</li>
@@ -166,7 +166,7 @@ try {
 </ul>
 
 <h2 id="open">open</h2>
-<pre><code>marsdawn open notes.md --json
+<pre tabindex="0"><code>marsdawn open notes.md --json
 marsdawn open notes.md:120 --json
 marsdawn open notes.md --line 120 --json
 marsdawn open . --json
@@ -181,13 +181,13 @@ marsdawn open notes.md --folder . --background --json</code></pre>
   <li>フォルダと <code>--background</code> は marsdawn 0.5.1 で追加されました。</li>
 </ul>
 <p>成功、終了コード 0：</p>
-<pre><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
+<pre tabindex="0"><code>{"app":"/Applications/MarsDawn.app","ok":true,"opened":[{"line":120,"path":"/path/to/notes.md"}]}</code></pre>
 <ul>
   <li><code>opened</code>：渡された順に、ファイルごとの1つのオブジェクト。<code>path</code> はファイルの絶対パス、<code>line</code> は行が指定されたときだけ現れます。</li>
   <li><code>app</code>：それらを開いた MarsDawn アプリのパス。</li>
 </ul>
 <p>フォルダを指定した場合（marsdawn 0.5.1 以降）、終了コード 0：</p>
-<pre><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
+<pre tabindex="0"><code>{"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}</code></pre>
 <ul>
   <li><code>folder</code>：フォルダを指定したときだけ現れます。<code>path</code> はその絶対パスです。<code>requested</code> は常に <code>true</code> です：marsdawn は MarsDawn にフォルダの表示を依頼しましたが、サイドバーに実際に表示されたかどうかは分かりません。アプリが先に人にアクセスの許可を求めることがあるためです。「完了した」ではなく「依頼した」と報告してください。</li>
   <li><code>--wait</code> が 0 より大きく、MarsDawn が 1.0.2 以降の場合、待ち時間が終わると <code>folder</code> に <code>status</code> も入ります：<code>attached</code>、<code>needsUser</code>、<code>declined</code>、<code>failed</code>、<code>attachedDifferentFolder</code>、<code>full</code>、<code>unavailable</code>、<code>unknown</code> のいずれかです。<code>needsUser</code> のときだけ <code>waitingFor</code>（<code>confirmation</code> または <code>folderChoice</code>）も入ります。<code>--wait</code> がない場合や、結果を返さないアプリでは、<code>folder</code> は <code>{"path": …, "requested": true}</code> のままです。<code>--wait</code> が 0〜30 の範囲外ならコード 64 で終了し、<code>error: "wait_out_of_range"</code> を返します。（marsdawn 0.5.3 以降）</li>
@@ -199,7 +199,7 @@ marsdawn open notes.md --folder . --background --json</code></pre>
 <p>オプトインの <a href="https://code.claude.com/docs/en/hooks">Claude Code フック</a>です。Claude が Markdown ファイルを書き込んだり編集したりすると、そのファイルを MarsDawn でバックグラウンドで開きます。開くのはセッションごと、ファイルごとに一度だけです。頼んでいないウインドウは注意をそらすので、追加しない限り有効にならず、プロジェクトごとに追加します。シェルコマンドを実行するだけなので、モデルのトークンは使いません。</p>
 <p><code>--background</code> のために marsdawn 0.5.1 以降と、MarsDawn アプリが必要です。</p>
 <p>次の内容をプロジェクトの <code>.claude/hooks/marsdawn-open.sh</code> として保存し、<code>chmod +x</code> で実行可能にします。</p>
-<pre><code>#!/bin/sh
+<pre tabindex="0"><code>#!/bin/sh
 # Claude Code PostToolUse hook: open a Markdown file Claude just wrote or edited in MarsDawn,
 # in the background, once per file per session. Never blocks Claude: every path exits 0.
 input=$(cat)
@@ -224,7 +224,7 @@ echo "$file" &gt;&gt; "$seen"
 "$marsdawn" open --background "$file" &gt;/dev/null 2&gt;&amp;1 || true
 exit 0</code></pre>
 <p>次に、プロジェクトの <code>.claude/settings.json</code> にフックを追加します。自分だけで使う場合は <code>.claude/settings.local.json</code> に追加します。</p>
-<pre><code>{
+<pre tabindex="0"><code>{
   "hooks": {
     "PostToolUse": [
       {
@@ -247,7 +247,7 @@ exit 0</code></pre>
 
 <h2 id="failures">失敗時</h2>
 <p><code>--json</code> を指定すると、失敗時は stdout に1つの JSON オブジェクトを出力し、対応するコードで終了します。</p>
-<pre><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="failures"><code>{"error":"output_exists","message":"/path/to/notes.pdf already exists. Pass --force to replace it.","ok":false}</code></pre>
 <ul>
   <li><code>2</code>、<code>input_not_found</code>：入力が存在しない、フォルダである、または UTF-8 テキストでない。または <code>--folder</code> のパスが存在しないか、フォルダでない。</li>
   <li><code>3</code>、<code>app_not_installed</code>：MarsDawn がインストールされていない。<code>open</code> のみがこれを返します。</li>
@@ -283,10 +283,10 @@ exit 0</code></pre>
 
 <h2 id="install">インストール</h2>
 <p>Homebrew を使う場合。Apple シリコンでは、Xcode 不要でビルド済みのボトルを数秒でインストールします。Intel Mac では marsdawn をソースからコンパイルするため数分かかり、Xcode 26 以降が必要です。</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre tabindex="0"><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn --version</code></pre>
 <p>または、<a href="https://github.com/redtear1115/mars-dawn-kit">ソース</a>からビルドします。最初のビルドでは依存関係の取得とコンパイルが行われ、これも数分かかります。</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<pre tabindex="0"><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn
 .build/release/marsdawn export notes.md --json</code></pre>

@@ -138,7 +138,7 @@ try {
 
 <h2 id="check-and-render">检查与渲染</h2>
 <p>在放有 <code>theme.json</code> 的文件夹里运行这些命令。需要 <code>marsdawn</code> 工具：见<a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a>。</p>
-<pre><code>marsdawn theme validate theme.json --require-complete --json
+<pre tabindex="0" role="region" aria-labelledby="check-and-render"><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
@@ -160,7 +160,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 <h3 id="example-dawn">范例：Dawn</h3>
 <p>这是 <code>dawn.json</code>，一个字节都没改。它唯一的样式选项是 <code>hr</code> 的一条细的强调色分隔线。</p>
-<pre><code>{
+<pre tabindex="0" role="region" aria-labelledby="example-dawn"><code>{
   "schemaVersion": 1,
   "id": "dawn",
   "version": "1.0.0",
@@ -389,7 +389,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 
 <h2 id="hand-it-over-as-a-link">用链接交给人</h2>
 <p><a href="/zh-hans/themes/new/">打造一个主题</a>页面可以从链接打开主题，让人用眼睛调整。链接是该页的网址，接着 <code>#theme=</code>，再接文件字节的 base64url（不含补位）。文件最大 16,384 字节。下面这一行命令在 macOS 与 Linux 的 zsh 和 bash 都能生成链接：</p>
-<pre><code>printf 'https://marsdawn.southern-light.dev/zh-hans/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="hand-it-over-as-a-link"><code>printf 'https://marsdawn.southern-light.dev/zh-hans/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>主题跟在 <code>#</code> 后面，浏览器不会把它发送给网站，网站也不会把它发送到任何地方。链接确实会留在你的 shell 历史与浏览器历史里，你贴给谁，谁就能读到这个主题。</p>
 
 <h2 id="submit-it">投稿</h2>

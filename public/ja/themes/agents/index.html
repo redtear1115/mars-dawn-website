@@ -138,7 +138,7 @@ try {
 
 <h2 id="check-and-render">検証とレンダリング</h2>
 <p><code>theme.json</code> のあるフォルダで実行します。<code>marsdawn</code> ツールが必要です。<a href="/ja/cli/agents/">AI エージェント向け marsdawn</a>を参照してください。</p>
-<pre><code>marsdawn theme validate theme.json --require-complete --json
+<pre tabindex="0" role="region" aria-labelledby="check-and-render"><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
@@ -160,7 +160,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 <h3 id="example-dawn">例：Dawn</h3>
 <p><code>dawn.json</code> を1バイトも変えずに載せています。スタイルオプションは <code>hr</code> の細いアクセントカラーの線だけです。</p>
-<pre><code>{
+<pre tabindex="0" role="region" aria-labelledby="example-dawn"><code>{
   "schemaVersion": 1,
   "id": "dawn",
   "version": "1.0.0",
@@ -389,7 +389,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 
 <h2 id="hand-it-over-as-a-link">リンクとして渡す</h2>
 <p><a href="/ja/themes/new/">「テーマを作る」</a>ページは、リンクからテーマを開けるので、人が見た目を整えられます。リンクは、そのページのアドレス、<code>#theme=</code>、パディングなしの base64url にしたファイルのバイト列でできています。ファイルは最大 16,384 バイトです。次の1行で、macOS と Linux の zsh と bash でリンクを作れます。</p>
-<pre><code>printf 'https://marsdawn.southern-light.dev/ja/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="hand-it-over-as-a-link"><code>printf 'https://marsdawn.southern-light.dev/ja/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>テーマはブラウザがサイトに送らない <code>#</code> の後ろに入り、サイトもそれをどこにも送りません。ただしリンクはシェルとブラウザの履歴に残り、リンクを貼った相手はテーマを読めます。</p>
 
 <h2 id="submit-it">投稿する</h2>

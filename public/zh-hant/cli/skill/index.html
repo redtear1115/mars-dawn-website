@@ -127,22 +127,22 @@ try {
 <div class="summary"><p><strong>一個 Markdown 檔案，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 會安裝 <code>marsdawn</code>、輸出 PDF 並讀懂 JSON 結果；執行任何指令之前，它還是會先問你。</p></div>
 <h2 id="install-it-in-claude-code">在 Claude Code 中安裝</h2>
 <p>命令列工具 <code>marsdawn</code> 會幫你寫好這個 skill，寫進去的內容和你已安裝的 <code>marsdawn</code> 版本相符。如果還沒有 <code>marsdawn</code>，先用 <a href="https://brew.sh">Homebrew</a> 安裝：</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="install-it-in-claude-code"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>然後安裝 skill：</p>
 <pre><code>marsdawn skill --install</code></pre>
 <p>這會把 skill 寫到 <code>~/.claude/skills/marsdawn/SKILL.md</code>，資料夾不存在時會一併建立。因為檔案是由你手上的 <code>marsdawn</code> 產生的，裡面不會出現你這個版本沒有的選項。</p>
 <p>需要做出 PDF，或寫好、改好一份要給你讀的 Markdown 文件時，Claude Code 會自動載入它，你也可以用 <code>/marsdawn</code> 自己執行。想先看內容的話，它只是<a href="/cli/skill/SKILL.md">一個簡短的檔案</a>。</p>
 <h2 id="after-you-upgrade-marsdawn">升級 marsdawn 之後</h2>
 <p>Homebrew 會升級 <code>marsdawn</code>，但不會動 skill，所以它會停在舊版本，要自己更新：</p>
-<pre><code>marsdawn skill --install --force</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="after-you-upgrade-marsdawn"><code>marsdawn skill --install --force</code></pre>
 <p><code>--force</code> 會取代現有的 <code>SKILL.md</code>，包括你自己改過的地方。不加 <code>--force</code> 的話，如果那裡已經有內容不同的 <code>SKILL.md</code>，<code>marsdawn</code> 不會動它，會告訴你內容不同，並以代碼 64（<code>skill_differs</code>）結束。檔案已經是最新的，就什麼都不改。</p>
 <h2 id="for-other-agents">給其他 agent</h2>
 <p>加上 <code>--dir</code>，指到你的 agent 放 skill 的資料夾，<code>marsdawn</code> 就會把 <code>SKILL.md</code> 寫到那裡：</p>
-<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="for-other-agents"><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
 <p>這個檔案是純 Markdown，只有說明和指令，會讀指令檔的 agent 可以直接用。</p>
 <h2 id="without-homebrew-or-the-command-line-tool">沒有 Homebrew，或沒有命令列工具</h2>
 <p>如果沒辦法先安裝 <code>marsdawn</code>，就直接下載這個檔案：</p>
-<pre><code>mkdir -p ~/.claude/skills/marsdawn
+<pre tabindex="0" role="region" aria-labelledby="without-homebrew-or-the-command-line-tool"><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <p>這會從本站抓最新的 skill，可能比較舊的 <code>marsdawn</code> 還新。等你裝好命令列工具，再執行 <code>marsdawn skill --install --force</code>，就會換成和它相符的版本。你也可以讓 agent 讀這個網址，或直接貼給它。這個檔案是英文的。</p>
 <h2 id="what-it-teaches">它教什麼</h2>

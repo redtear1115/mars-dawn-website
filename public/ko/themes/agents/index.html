@@ -138,7 +138,7 @@ try {
 
 <h2 id="check-and-render">검사하고 렌더링하기</h2>
 <p><code>theme.json</code>이 있는 폴더에서 실행하세요. <code>marsdawn</code> 도구가 필요합니다. <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a>을 보세요.</p>
-<pre><code>marsdawn theme validate theme.json --require-complete --json
+<pre tabindex="0" role="region" aria-labelledby="check-and-render"><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
@@ -160,7 +160,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 <h3 id="example-dawn">예시: Dawn</h3>
 <p><code>dawn.json</code>을 한 바이트도 바꾸지 않고 옮긴 것입니다. 스타일 옵션은 <code>hr</code>의 얇은 강조색 선 하나뿐입니다.</p>
-<pre><code>{
+<pre tabindex="0" role="region" aria-labelledby="example-dawn"><code>{
   "schemaVersion": 1,
   "id": "dawn",
   "version": "1.0.0",
@@ -389,7 +389,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 
 <h2 id="hand-it-over-as-a-link">링크로 건네기</h2>
 <p><a href="/ko/themes/new/">테마 만들기</a> 페이지는 링크로 테마를 열어 사람이 눈으로 다듬을 수 있게 합니다. 링크는 그 페이지의 주소, <code>#theme=</code>, 그리고 패딩 없는 base64url로 인코딩한 파일 바이트로 이루어집니다. 파일은 최대 16,384바이트입니다. 이 한 줄이 macOS와 Linux의 zsh와 bash에서 링크를 만들어 줍니다.</p>
-<pre><code>printf 'https://marsdawn.southern-light.dev/ko/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="hand-it-over-as-a-link"><code>printf 'https://marsdawn.southern-light.dev/ko/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>테마는 브라우저가 사이트로 보내지 않는 <code>#</code> 뒤에 담기며, 사이트는 이를 어디에도 보내지 않습니다. 다만 링크는 셸과 브라우저의 기록에 남고, 링크를 받은 사람은 누구나 테마를 읽을 수 있습니다.</p>
 
 <h2 id="submit-it">제출하기</h2>

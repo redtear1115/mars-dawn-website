@@ -131,11 +131,11 @@ try {
 
 <h2 id="install">安装</h2>
 <p>使用 <a href="https://brew.sh">Homebrew</a>：</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
+<pre tabindex="0"><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
 <p>在用写程序的代理吗？执行 <code>marsdawn skill --install</code> 来加上 <a href="/zh-hans/cli/skill/">marsdawn skill</a>：一个文件，教它把自己写的文稿在 MarsDawn 里打开给你审阅，也能导出 PDF。</p>
 <p>在 Apple 芯片的 Mac 上，Homebrew 会直接安装预先构建好的版本，几秒就完成，不需要另外安装任何东西。在 Intel Mac 上则会从源代码构建，需要几分钟，也需要 Xcode 26 以上（Swift 6.2）。这个工具需要 macOS 15 以上。</p>
 <p>也可以从<a href="https://github.com/redtear1115/mars-dawn-kit">源代码</a>用 Swift Package Manager 构建：</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<pre tabindex="0"><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>用 <code>marsdawn --version</code> 查看安装的版本。</p>
@@ -144,7 +144,7 @@ swift build -c release --product marsdawn</code></pre>
 
 <h3>marsdawn open</h3>
 <p>在 MarsDawn app 中打开一个或多个 Markdown 文件，方便审阅。需要先安装这个 app：没有安装时，<code>marsdawn open</code> 会以代码 3 结束，并说明没有安装 MarsDawn。<code>export</code> 不需要这个 app。App 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-cli&amp;mt=8">Mac App Store</a> 上架。</p>
-<pre><code>marsdawn open notes.md
+<pre tabindex="0"><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
 marsdawn open .
@@ -165,7 +165,7 @@ marsdawn open notes.md --folder .</code></pre>
 
 <h3>marsdawn export</h3>
 <p>把 Markdown 文件导出成分页的 PDF，使用和 MarsDawn 导出 PDF 相同的组件。不需要安装 MarsDawn app。相对路径的图片，会以输入文件所在的文件夹为准。</p>
-<pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
+<pre tabindex="0"><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
 <ul>
   <li><code>-o, --output &lt;path&gt;</code>：PDF 的输出位置，默认是把输入文件的扩展名换成 <code>.pdf</code>。</li>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：预览主题的浅色版本，默认读取 <code>$MARSDAWN_THEME</code>，否则用 <code>dawn</code>。</li>
@@ -183,7 +183,7 @@ marsdawn open notes.md --folder .</code></pre>
 
 <h3>marsdawn theme</h3>
 <p>在分享主题文件（<code>theme.json</code>）之前，先检查它，看看它的样子。不需要 MarsDawn app。主题有哪些字段，请见<a href="/zh-hans/themes/agents/">和你的代理一起做主题</a>。</p>
-<pre><code>marsdawn theme validate my-theme.json
+<pre tabindex="0"><code>marsdawn theme validate my-theme.json
 marsdawn theme css my-theme.json
 marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pre>
 <ul>
