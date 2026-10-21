@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-11T15:08:03Z",
+  "generatedAt": "2026-10-21T08:10:56Z",
   "themes": [
     {
       "id": "dracula",
@@ -218,7 +218,7 @@
     },
     {
       "id": "solarized",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "name": {
         "en": "Solarized"
       },
@@ -243,13 +243,13 @@
       "minAppVersion": "1.1.0",
       "files": {
         "theme.json": {
-          "path": "solarized/1.0.1/theme.json",
-          "sha256": "6017cd04632ad746420de3ef99f2c6e5bd33f2c199894c1cb977fe37f1bc9d6e"
+          "path": "solarized/1.0.2/theme.json",
+          "sha256": "ee92318ea79c90ad3e0caa2ebb27a5d576358e12aa2260f567c34a1409f2b8e9"
         }
       },
       "previews": {
-        "light": "solarized/1.0.1/preview-light.png",
-        "dark": "solarized/1.0.1/preview-dark.png"
+        "light": "solarized/1.0.2/preview-light.png",
+        "dark": "solarized/1.0.2/preview-dark.png"
       }
     },
     {

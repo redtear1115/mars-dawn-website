@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "solarized",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": {
     "en": "Solarized"
   },
@@ -28,7 +28,7 @@
   "light": {
     "background": "#FDF6E3",
     "surface": "#EEE8D5",
-    "text": "#53646B",
+    "text": "#4B5A61",
     "muted": "#5E6A6A",
     "border": "#DDD3B0",
     "heading": "#1F7670",
@@ -56,7 +56,7 @@
   "dark": {
     "background": "#002B36",
     "surface": "#073642",
-    "text": "#9BA9A9",
+    "text": "#A3B0B0",
     "muted": "#859DA4",
     "border": "#0B4A59",
     "heading": "#2EAFA5",
@@ -64,7 +64,7 @@
     "link": "#3094DA",
     "quote": "#6C71C4",
     "syntax": {
-      "keyword": "#99B100",
+      "keyword": "#99B200",
       "string": "#2CAAA0",
       "comment": "#869DA4",
       "number": "#9094D2",
