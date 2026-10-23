@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>로드맵 · MarsDawn</title>
+<meta name="description" content="Mac, iPhone, iPad용 MarsDawn에서 개발 중인 기능과 다음에 나올 기능을 버전별로 정리했습니다. 날짜는 적지 않고, 일정이 없는 항목은 따로 표시합니다.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/roadmap/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/roadmap/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/roadmap/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/roadmap/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/roadmap/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/roadmap/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/roadmap/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/roadmap/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/roadmap/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/roadmap/">
+<link rel="alternate" type="text/markdown" href="/ko/roadmap/index.md">
+<meta property="og:title" content="로드맵 · MarsDawn">
+<meta property="og:description" content="Mac, iPhone, iPad용 MarsDawn에서 개발 중인 기능과 다음에 나올 기능을 버전별로 정리했습니다. 날짜는 적지 않고, 일정이 없는 항목은 따로 표시합니다.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/roadmap/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/ko/"}, {"@type": "ListItem", "position": 2, "name": "로드맵", "item": "https://marsdawn.southern-light.dev/ko/roadmap/"}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/" aria-label="MarsDawn 홈">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="site-nav" aria-label="주요 탐색">
+    <ul class="site-nav-wide">
+      <li><a href="/ko/features/">기능</a></li>
+      <li><a href="/ko/cli/">에이전트</a></li>
+      <li><a href="/ko/themes/">테마</a></li>
+      <li><a href="/ko/vs/">비교</a></li>
+      <li><a href="/ko/support/">지원</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>메뉴</summary>
+      <ul>
+        <li><a href="/ko/features/">기능</a></li>
+        <li><a href="/ko/cli/">에이전트</a></li>
+        <li><a href="/ko/themes/">테마</a></li>
+        <li><a href="/ko/vs/">비교</a></li>
+        <li><a href="/ko/support/">지원</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="언어">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/roadmap/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/roadmap/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/roadmap/" hreflang="ja" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/roadmap/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary lang="ko">한국어</summary>
+      <ul>
+        <li><a href="/de/roadmap/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/roadmap/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/roadmap/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/roadmap/" hreflang="ko" aria-current="true" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>KO</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/roadmap/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/roadmap/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/roadmap/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/roadmap/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/roadmap/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/roadmap/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/roadmap/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/roadmap/" hreflang="ko" aria-current="true" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>로드맵</h1>
+  <p>다음에 만들 것을 버전별로 정리했습니다. 날짜는 적지 않습니다. 준비가 끝난 버전부터 내놓습니다.</p>
+</section>
+<p>마지막 업데이트: 2026년 10월 23일</p>
+<p>계획은 바뀔 수 있습니다. 항목이 다른 버전으로 옮겨지거나 취소될 수도 있습니다.</p>
+<h2 id="released">출시됨</h2>
+<p>지금까지 출시한 내용은 모두 <a href="/ko/changelog/">변경 내역</a>에 있습니다.</p>
+<h2 id="in-progress">개발 중</h2>
+<h3>Mac 1.2.0</h3>
+<ul>
+  <li>소스 위에 포맷 막대를 추가하고, ‘포맷’ 메뉴와 키보드 단축키도 제공합니다.</li>
+  <li>Ask AI: 선택한 텍스트를 파일 이름, 줄 번호, 프롬프트와 함께 Claude나 ChatGPT로 보냅니다.</li>
+  <li>RTF로 복사: 렌더링한 문서를 Google 문서, Notion, 메일, Pages에 붙여 넣을 수 있습니다.</li>
+  <li>클립보드에서 신규: Markdown을 붙여 넣으면 바로 렌더링 결과를 볼 수 있습니다. AI 출력에서 이스케이프된 문자도 마찬가지입니다.</li>
+  <li>PDF 내보내기의 ‘설명서’ 레이아웃: 본문 페이지 번호는 1부터 시작하고, 꼬리말에 ‘n / N’을 넣고, 왼쪽에 제본 여백을 둡니다.</li>
+  <li>HackMD 호환: HackMD의 줄바꿈 설정과 문법을 지원합니다.</li>
+  <li>앱, marsdawn 명령줄 도구, 에이전트 스킬 중 하나를 설치하면 나머지 두 개도 설치하도록 MarsDawn이 안내합니다.</li>
+</ul>
+<h3>iPhone 및 iPad (iOS 1.0)</h3>
+<ul>
+  <li>iPhone과 iPad에서 Mac과 같은 미리보기로 Markdown을 읽습니다.</li>
+</ul>
+<h2 id="next">다음 계획</h2>
+<h3>Mac 1.2.1</h3>
+<ul>
+  <li>JSON과 YAML을 열어 편집하고, 옆에서 실시간 트리 미리보기를 봅니다.</li>
+  <li>URL 열기: GitHub, Gist, raw 파일의 공개 링크에서 Markdown을 읽습니다.</li>
+  <li>콜아웃: GitHub alerts와 HackMD의 <code>:::</code> 블록을 지원합니다.</li>
+  <li>Claude Code의 Plans 폴더를 클릭 한 번으로 사이드바에 추가하고, 최신 계획을 맨 위에 둡니다.</li>
+</ul>
+<h3>Mac 1.2.2</h3>
+<ul>
+  <li>에이전트가 파일을 바꾼 뒤 어떤 블록이 바뀌었는지 보여 줍니다.</li>
+  <li>이미지 뷰어: PNG, JPEG, GIF, WebP를 엽니다.</li>
+</ul>
+<h3>iPad 및 펼친 iPhone Duo (iOS 1.1)</h3>
+<ul>
+  <li>큰 화면에서 편집.</li>
+</ul>
+<h2 id="later-not-scheduled">나중에 (일정 없음)</h2>
+<ul>
+  <li>앱 내 AI: Apple의 온디바이스 Foundation Models로 Mac에서 문서를 생성합니다. 일정 없음.</li>
+  <li>진정한 WYSIWYG 편집. 일정 없음.</li>
+  <li>Word(.docx)로 내보내기. 일정 없음.</li>
+</ul>
+<p>원하는 기능이 없나요? <a href="mailto:support@southern-light.dev?subject=Feature%20request">메일로 알려 주세요</a>. 어디에 쓰고 싶은지도 함께 적어 주세요.</p>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트 탐색">
+    <h2 class="footer-nav-title">사이트 탐색</h2>
+    <section aria-labelledby="footer-product">
+      <h3 id="footer-product">제품</h3>
+      <ul>
+        <li><a href="/ko/features/">기능 한눈에 보기</a></li>
+        <li><a href="/ko/quicklook/">Markdown 훑어보기</a></li>
+        <li><a href="/ko/native/">Mac 앱</a></li>
+        <li><a href="/ko/pdf/">PDF 내보내기</a></li>
+        <li><a href="/ko/limits/">MarsDawn이 하지 않는 일</a></li>
+        <li><a href="/ko/pay-once/">무료로 체험하고, 한 번만 구입</a></li>
+        <li><a href="/ko/yours/">내 글은 내 Mac에</a></li>
+        <li><a href="/ko/changelog/">변경 내역</a></li>
+        <li><a href="/ko/roadmap/" aria-current="page">로드맵</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h3 id="footer-agents">에이전트와 CLI</h3>
+      <ul>
+        <li><a href="/ko/cli/">명령줄</a></li>
+        <li><a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a></li>
+        <li><a href="/ko/cli/mcp/">MCP 서버</a></li>
+        <li><a href="/ko/cli/skill/">에이전트 스킬</a></li>
+        <li><a href="/ko/agent-transparency/">에이전트의 투명성</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h3 id="footer-guides">가이드</h3>
+      <ul>
+        <li><a href="/ko/view-markdown-on-mac/">Mac에서 .md 파일 여는 방법</a></li>
+        <li><a href="/ko/markdown-to-pdf/">Markdown을 PDF로</a></li>
+        <li><a href="/ko/mermaid-preview-mac/">Mac에서 Mermaid 미리보기</a></li>
+        <li><a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a></li>
+        <li><a href="/ko/reviewing-ai-output/">AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유</a></li>
+        <li><a href="/ko/reviewing-agent-plans/">에이전트의 계획 검토하기</a></li>
+        <li><a href="/ko/token-efficient-review/">토큰을 아끼는 검토</a></li>
+        <li><a href="/ko/sharing-exported-pdfs/">내보낸 PDF 공유하기</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h3 id="footer-compare">비교</h3>
+      <ul>
+        <li><a href="/ko/vs/">MarsDawn 비교: VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice</a></li>
+        <li><a href="/ko/vs/macmd-viewer/">MacMD Viewer와 MarsDawn 비교</a></li>
+        <li><a href="/ko/vs/markdown-preview-tools/">다른 도구로 Markdown 보기와 MarsDawn 비교</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h3 id="footer-themes">테마</h3>
+      <ul>
+        <li><a href="/ko/themes/">미리보기 테마와 PDF 내보내기</a></li>
+        <li><a href="/ko/themes/gallery/">테마 갤러리</a></li>
+        <li><a href="/ko/themes/new/">테마 만들기</a></li>
+        <li><a href="/ko/themes/agents/">에이전트와 함께 테마 만들기</a></li>
+        <li><a href="/ko/templates/">템플릿</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h3 id="footer-support">지원 및 법적 정보</h3>
+      <ul>
+        <li><a href="/ko/support/">지원</a></li>
+        <li><a href="/ko/privacy/">개인정보 처리방침</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button></li>
+      </ul>
+    </section>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-roadmap&amp;mt=8">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>분석 쿠키를 사용합니다. 수락하기 전에는 꺼져 있습니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+</body>
+</html>
