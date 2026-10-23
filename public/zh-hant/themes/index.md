@@ -1,8 +1,6 @@
-# 八種樣子，一套輸出。
+# 內建四種主題，主題庫裡還有更多。
 
-MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有淺色與深色——八種讀文件的樣子。輸出成 PDF 或列印，出來的就是你正在讀的那個樣子。
-
-**四種主題 × 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。**[在瀏覽器裡打造一個自己的主題](/zh-hant/themes/new/)，或是[逛逛主題庫](/zh-hant/themes/gallery/)，看看別人投稿了什麼。
+MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有淺色與深色。從 1.1 版起，你可以在 App 裡的主題庫安裝更多主題；在 Finder 用「快速查看」預覽時，也會用你選的主題。
 
 ## 四種主題
 
@@ -20,9 +18,32 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 
 每種主題都有各自的淺色和深色版本，所以切換 Mac 的外觀，連帶切換的是主題本身的配色，不只是介面的顏色。
 
-## PDF 輸出和列印用同一個主題
+## App 裡的主題庫
 
-輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開圖表。免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，所以腳本或 agent 也能用 `--theme` 產生一模一樣的 PDF，四種主題都可以。
+在 MarsDawn 打開「設定 ▸ 外觀」，按「取得更多主題⋯」。主題庫會在打開時載入清單，只有開著的時候才會連線；沒有網路時會顯示提示，內建的四種主題照常可用。
+
+- 「安裝」會把主題加進「淺色主題」和「深色主題」的選單，以及「顯示方式 ▸ 預覽主題」。「移除」會刪掉它。
+- 「檢查主題更新」會再向主題庫查一次有沒有新版本。
+- 可以依用途篩選：審閱代理產出、技術文件、正式輸出、筆記分享。
+- 「回報主題⋯」會打開一則預先填好的 GitHub issue，或寄信給我們。
+
+## 主題庫裡有什麼
+
+目前有八個主題，都是我們製作並審核的：Dracula、Gruvbox、Nord 和 Solarized 改編自知名配色，並為可讀性調整；Guide、Ledger、Spec 和 Story 則分別為使用者指南、預算表、PRD 和衝刺筆記而做。
+
+## 經過審核，而且只是資料
+
+每個主題都要經過我們審核、合併，才會出現在主題庫。主題是一個小小的 JSON 檔，只有顏色和幾個有範圍限制的選項：沒有腳本、沒有 CSS，也沒有作者自帶的圖片；MarsDawn 安裝前會檢查每一個值。被回報的主題會在 24 小時內從主題庫下架；如果它有害，下次在已安裝的 Mac 上打開主題庫時，也會一併移除，正在使用的話，MarsDawn 會改回黎明。
+
+主題庫只會連到 `marsdawn.southern-light.dev/themes/v1/`，而且只在你打開它、檢查更新或安裝主題時才連線。它不會送出帳號、識別碼、cookie，也不會送出任何文件內容。
+
+## 快速查看也用你的主題
+
+在 Finder 選一個 Markdown 檔，按空白鍵。「快速查看」會用你選的主題顯示，已安裝的主題也一樣，並且跟著 MarsDawn 的外觀設定：選「淺色」或「深色」就固定使用，選「系統」則跟著 Mac。
+
+## PDF 輸出和列印
+
+輸出成 PDF 或列印時，頁面用的是你為「淺色」選的主題：Mermaid 圖表直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開表格與圖表。免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，可以用 `--theme` 指定四種內建主題中的任一種。
 
 ## 頁面印出來之後
 
@@ -30,9 +51,9 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 
 [MarsDawn 影片，88 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
-## 打造自己的主題，也看看別人做的
+## 打造自己的主題
 
-[在瀏覽器裡打造一個主題](/zh-hant/themes/new/)：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。[主題庫](/zh-hant/themes/gallery/)收錄每一套經過維護者審核並合併的投稿主題，可以依用途篩選。在 App 的「設定 › 外觀 › 取得更多主題⋯」就能安裝，Finder 的快速查看也會跟著套用。
+[在瀏覽器裡打造一個主題](/zh-hant/themes/new/)：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 等待審核。需要 GitHub 帳號，但不用安裝，也不用 git。送出本身不會發布任何東西；要等我們審核、合併後，才會出現在[主題庫](/zh-hant/themes/gallery/)。
 
 正在和 agent 一起工作？[讓它先做出主題](/zh-hant/themes/agents/)，再在瀏覽器裡調整。
 
@@ -50,7 +71,7 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。
 - [為 Mac 而做](https://marsdawn.southern-light.dev/zh-hant/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
-- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號。內建四種主題，主題庫還有更多。購買前先知道。
+- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號；可以換主題，但不能自訂 CSS。購買前先知道。
 - [支援](https://marsdawn.southern-light.dev/zh-hant/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。
 - [隱私權政策](https://marsdawn.southern-light.dev/zh-hant/privacy/index.md): MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。
 - [Mac 怎麼開 md 檔](https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/index.md): Mac 怎麼開 md 檔：雙擊、設成預設 App、在 Finder 用快速查看。AI agent 寫出來的 .md，也可以用 MarsDawn 打開，讀排好版的頁面。
@@ -68,7 +89,7 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 - [在別處看 Markdown，對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/index.md): MarsDawn 對比在 VS Code 內建預覽、瀏覽器擴充功能，或 Claude Desktop 檔案預覽裡看 Markdown：各自能排版出什麼，打開一個檔案要花多少功夫。
 - [打造一個主題](https://marsdawn.southern-light.dev/zh-hant/themes/new/index.md): 挑選顏色和幾個樣式選項，即時看它們套用在範例文件上，再把主題送出成一個 GitHub issue。不用安裝，也不用 git。
 - [和 agent 一起做主題](https://marsdawn.southern-light.dev/zh-hant/themes/agents/index.md): 給 AI agent 的 MarsDawn 主題製作參考：theme.json 每個欄位的型別與範圍、檢查並渲染的 CLI 流程、交給人的連結，以及怎麼投稿。
-- [主題庫](https://marsdawn.southern-light.dev/zh-hant/themes/gallery/index.md): 瀏覽社群投稿的 MarsDawn 預覽主題，依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造一個自己的主題，不用安裝，也不用 git。
+- [主題庫](https://marsdawn.southern-light.dev/zh-hant/themes/gallery/index.md): 瀏覽 MarsDawn 的預覽主題，每一個都經過開發者審核；可以依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造自己的主題，不用安裝，也不用 git。
 - [分享輸出的 PDF](https://marsdawn.southern-light.dev/zh-hant/sharing-exported-pdfs/index.md): 把 agent 寫的 Markdown 輸出成 PDF，交給不寫 Markdown、也不會安裝任何東西的同事。不用懂語法，不用裝 app，也不需要帳號就能打開。
 - [為什麼 AI 寫的東西還是需要人讀過](https://marsdawn.southern-light.dev/zh-hant/reviewing-ai-output/index.md): AI 寫的 Markdown 還是得由人來理解，不能因為讀起來通順就直接相信。MarsDawn 把排版後的頁面和原始碼並排，也把 Mermaid 圖表與 KaTeX 數學式畫出來，讓結構一眼就看得懂。
 - [讀懂 agent 交回來的 Markdown](https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/index.md): AI agent 把工作成果交成 Markdown：計畫、規格、進度報告。做 agent 的人怎麼談檢查點和失敗、這些產出為什麼難讀，以及五分鐘審完一份計畫的檢查清單。
@@ -87,7 +108,7 @@ MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有�
 - [規格文件範本](https://marsdawn.southern-light.dev/zh-hant/templates/spec/index.md): Markdown 規格文件範本，含需求、Mermaid 流程圖和驗收條件。agent 來填，你在 MarsDawn 裡審閱。
 - [流程圖範本](https://marsdawn.southern-light.dev/zh-hant/templates/flowchart/index.md): Markdown 的 Mermaid 流程圖範本，圖的下方把步驟寫出來。在 Mac 上預覽，也能輸出成 PDF。
 - [會議記錄範本](https://marsdawn.southern-light.dev/zh-hant/templates/meeting-notes/index.md): Markdown 會議記錄範本，列出決議和行動項目，每項都有負責人。agent 來寫，你在 MarsDawn 裡確認。
-- [English](https://marsdawn.southern-light.dev/themes/index.md): Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. Build your own theme in the browser, and browse the community gallery.
+- [English](https://marsdawn.southern-light.dev/themes/index.md): Four built-in preview themes, each light and dark, plus a curated gallery you open from Settings in MarsDawn for Mac. Quick Look uses your theme.
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/themes/index.md): 四种主题，各有浅色与深色，一套导出对应你正在看的主题。在浏览器里打造自己的主题，也可以逛逛社区主题图库。
 - [日本語](https://marsdawn.southern-light.dev/ja/themes/index.md): それぞれライトとダークを持つ4種類のプレビューテーマと、今見ているテーマに合わせた1つの PDF・プリント書き出し。ブラウザで自分のテーマを作り、コミュニティギャラリーも閲覧できます。
 - [Deutsch](https://marsdawn.southern-light.dev/de/themes/index.md): Vier Vorschauthemen mit je einer hellen und einer dunklen Palette und ein PDF- und Druckexport, der zum gewählten Thema passt. Bau dein eigenes Thema im Browser und sieh dir die Community-Galerie an.
