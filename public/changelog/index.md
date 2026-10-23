@@ -2,7 +2,7 @@
 
 What changed in each version of the MarsDawn app on the Mac App Store and the free marsdawn command-line tool. App dates are the day the version appeared on the Mac App Store.
 
-zh-Hant | ja | zh-Hans | ko | de | fr | es
+What's coming next is on the [roadmap](/roadmap/).
 
 ## MarsDawn app
 
