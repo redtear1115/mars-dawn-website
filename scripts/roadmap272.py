@@ -43,7 +43,7 @@ FAQ_MORE = {'en': 'More: [Roadmap](/roadmap/)',
  'es': 'Más información: [Hoja de ruta](/es/roadmap/)'}
 
 # (e) the paragraph after /changelog/'s intro.
-CHANGELOG_BACKLINK = {'en': 'zh-Hant | ja | zh-Hans | ko | de | fr | es',
+CHANGELOG_BACKLINK = {'en': "What's coming next is on the [roadmap](/roadmap/).",
  'zh-hant': '接下來要做的事列在[路線圖](/zh-hant/roadmap/)。',
  'ja': '今後の予定は[ロードマップ](/ja/roadmap/)にあります。',
  'zh-hans': '接下来要做的事列在[路线图](/zh-hans/roadmap/)。',
