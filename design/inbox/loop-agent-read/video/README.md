@@ -9,7 +9,6 @@
 | `launch-note-loop-en.mp4` | 51.6 s, 1600×900, 60 fps, H.264, silent, faststart, 2.9 MB |
 | `launch-note-loop-en-poster.png` | Poster frame: "Who does what" after the agent's edit |
 | `fixtures/` | The note in its three states. Every word on screen comes from these files |
-| `rig/` | The recording, cutting and checking scripts |
 
 ## What happens
 
@@ -29,16 +28,16 @@ The note starts with the launch on Wednesday. The reader moves it to Friday in o
 
 ## How it was made
 
-- Everything is a real screen recording of a Mac (1920×1080 at 1x), one continuous take. There are hard cuts between shots. The push-ins are deterministic crop and zoom keyframes (`rig/render.py`). No generative model touched any frame, so no glyph was redrawn.
+- Everything is a real screen recording of a Mac (1920×1080 at 1x), one continuous take. There are hard cuts between shots. The push-ins are deterministic crop and zoom keyframes (scripted crop and zoom). No generative model touched any frame, so no glyph was redrawn.
 - The app is a Release build of mars-dawn `main` at `d891882` (it has Outline), with the paywall flag off, as for the store screenshots. It ran as a throwaway copy under its own bundle id. The installed app was not touched.
-- The terminal is Terminal.app with the built-in Basic profile and a dark background, and the prompt is `›`. The title bar is cropped out, because it carries local paths. The "agent" is `rig/replay.sh`. It types the user's lines, prints the replies, and writes the file with `cp`. `marsdawn open` is the real CLI, 0.5.1.
-- The pointer and the typing are scripted (`rig/take.sh`, `rig/vidax.swift`). Some segments are played 1.25–1.3× faster to fit about 50 seconds. The table above uses cut time.
+- The terminal is Terminal.app with the built-in Basic profile and a dark background, and the prompt is `›`. The title bar is cropped out, because it carries local paths. The "agent" was a replay script. It typed the user's lines, prints the replies, and writes the file with `cp`. `marsdawn open` is the real CLI, 0.5.1.
+- The pointer and the typing were scripted. Some segments are played 1.25–1.3× faster to fit about 50 seconds. The table above uses cut time.
 - The status items at the right of the menu bar that fall inside the crop (the recording indicator and its neighbours) are covered with an empty stretch of the same menu bar.
 - The banner "Another app/agent changed this file. Your previous text was kept. Undo · Browse All Versions…" is the app's real behavior when the agent overwrites the file. It was left in.
 
 ## What was checked
 
-`rig/verify.py` reads key frames with Vision OCR and compares them word for word with the fixtures and with `replay.sh`. The comparisons cover the ask, the reply and the command; v1 in the preview; the Wednesday section after the jump; the user's "Friday" edit; all three terminal lines intact; the agent's reply; v3 after reload; "Who does what" on Friday; and the exported PDF. They also check that "Wednesday" appears nowhere after the agent's edit. 19 of 19 pass on this encode. The check can fail: on an earlier take it failed on `launch-fote.md`, where the pointer covered the "n", and that take was re-recorded.
+A check script read key frames with Vision OCR and compared them word for word with the fixtures and with the replay script. The comparisons cover the ask, the reply and the command; v1 in the preview; the Wednesday section after the jump; the user's "Friday" edit; all three terminal lines intact; the agent's reply; v3 after reload; "Who does what" on Friday; and the exported PDF. They also check that "Wednesday" appears nowhere after the agent's edit. 19 of 19 pass on this encode. The check can fail: on an earlier take it failed on `launch-fote.md`, where the pointer covered the "n", and that take was re-recorded.
 
 It was also checked during the take itself:
 
@@ -69,4 +68,4 @@ The zh-Hans and ja lines are drafts and need a native reviewer. The video itself
 
 ## Re-making it
 
-`rig/take.sh` records a take. Take the screen lock (`SCREEN.md`) yourself first; the script does not. It needs the paywall-off Release build, Terminal.app not running, and the display awake. The paths in it, and in `render.py` and `verify.py`, are the recording machine's. `rig/render.py` cuts it, and `rig/verify.py` checks the result.
+The recording, cutting and checking scripts were removed on 2026-10-23. A re-shoot goes through the owner's brand-films project, not this folder.
