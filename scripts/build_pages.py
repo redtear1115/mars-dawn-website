@@ -5723,10 +5723,14 @@ def apply_seo_copy(merged: dict) -> dict:
         stays = promo_data.DATA.get("stays", {}).get(locale)   # #240: the rewritten first question, then the privacy questions
         home_items = ([stays["faq"]["Q1"]] if stays else []) + copy["home_faq"] \
             + ([stays["faq"][k] for k in ("P1", "P2", "P3", "P4") if k in stays["faq"]] if stays else [])
-        # #272 (c): the iPhone and iPad question (the third of the home FAQ) gets a link row to /roadmap/; its answer is #275's
+        # #272 (c): the iPhone and iPad question (the third of the home FAQ) gets a link row to /roadmap/.
+        # #275: its answer is replaced by the approved one, and two questions are added at the end of the home FAQ.
         iphone = [i for i, item in enumerate(home_items) if len(item) == 2 and "iPhone" in item[0] and "iPad" in item[0]]
         assert len(iphone) == 1 and iphone[0] == 2, f"{locale}: the home FAQ's third question is not the iPhone and iPad one"
-        home_items[2] = [*home_items[2], rich_pages.md_inline(roadmap272.FAQ_MORE[locale])]
+        faq275 = promo_data.DATA["faq275"][locale]
+        home_items[2] = [home_items[2][0], faq275["q3"], rich_pages.md_inline(roadmap272.FAQ_MORE[locale])]
+        home_items += [faq275["q9"], faq275["q10"]]
+        assert len(home_items) == 10, f"{locale}: the home FAQ has {len(home_items)} questions, want 10 (#275)"
         out[(locale, "index")] = {**home, "body": home["body"].rstrip() + "\n" + faq_html(copy["faq_h"], home_items) + "\n"}
         pay = out[(locale, "pay-once")]
         out[(locale, "pay-once")] = {**pay, "body": pay["body"].rstrip() + "\n" + faq_html(copy["faq_h"], copy["pay_faq"]) + "\n"}

@@ -103,7 +103,7 @@ No. MarsDawn is a free download with a 14-day trial of every feature. After that
 
 ### Does MarsDawn work on iPhone or iPad?
 
-No. MarsDawn is a Mac app and needs macOS 26 or later. There is no iPhone or iPad app.
+Not yet. MarsDawn is a Mac app and needs macOS 26 or later. An iPhone and iPad version is in progress, but it isn't available yet.
 
 More: [Roadmap](/roadmap/)
 
@@ -134,6 +134,18 @@ More: [Privacy Policy](/privacy/#when-marsdawn-uses-the-internet)
 No. The app and this website are separate: the app collects nothing, and a visit can be recorded only on marsdawn.southern-light.dev. The site's Google Analytics starts denied and sets cookies only after you choose Accept; Cookie settings in the footer changes that. The app's requests for theme files under /themes/ are skipped.
 
 More: [Privacy Policy](/privacy/#the-website)
+
+### Why use MarsDawn instead of another app?
+
+You may not need it. If you mostly write your own notes, a notes app such as Obsidian fits better. If you live in VS Code, its built-in preview is free. If you only want to peek at files in Finder, a free Quick Look extension is enough. If your PDFs need page numbers, MarsDawn doesn't add them. MarsDawn is for reading and reviewing Markdown an agent wrote: the source beside a live preview, a change from your agent you can undo in one step, and a file opened at the exact line. If it doesn't suit you, write and tell us why.
+
+More: [How MarsDawn compares](/vs/) · [Best Markdown viewer for Mac](/best-markdown-viewer-mac/)
+
+### Will MarsDawn keep being maintained?
+
+Yes. Every update since MarsDawn arrived on the Mac App Store is in the changelog, and an iPhone and iPad version is in progress. MarsDawn's rendering core and the free marsdawn command-line tool are already open source under the Apache-2.0 license, in mars-dawn-kit. And if MarsDawn's developer ever stops maintaining the app, the app's own source code will be published under an open-source license, so others can keep it going.
+
+More: [Changelog](/changelog/) · [Roadmap](/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
 ## The app, as it is
 

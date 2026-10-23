@@ -1802,4 +1802,123 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
               ['V22', 'https://github.com/sbarex/QLMarkdown'],
               ['V23', 'https://github.com/sbarex/QLMarkdown/releases'],
               ['V24', 'https://api.github.com/repos/sbarex/QLMarkdown/releases'],
-              ['kit', 'https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7']]}
+              ['kit', 'https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7']],
+ 'faq275': {'en': {'q3': "Not yet. MarsDawn is a Mac app and needs macOS 26 or later. An iPhone and iPad version is in progress, but it isn't "
+                         'available yet.',
+                   'q9': ['Why use MarsDawn instead of another app?',
+                          'You may not need it. If you mostly write your own notes, a notes app such as Obsidian fits better. If you live in VS '
+                          'Code, its built-in preview is free. If you only want to peek at files in Finder, a free Quick Look extension is enough. '
+                          "If your PDFs need page numbers, MarsDawn doesn't add them. MarsDawn is for reading and reviewing Markdown an agent wrote: "
+                          'the source beside a live preview, a change from your agent you can undo in one step, and a file opened at the exact line. '
+                          "If it doesn't suit you, write and tell us why.",
+                          'More: <a href="/vs/">How MarsDawn compares</a> · <a href="/best-markdown-viewer-mac/">Best Markdown viewer for Mac</a>'],
+                   'q10': ['Will MarsDawn keep being maintained?',
+                           'Yes. Every update since MarsDawn arrived on the Mac App Store is in the changelog, and an iPhone and iPad version is in '
+                           "progress. MarsDawn's rendering core and the free marsdawn command-line tool are already open source under the Apache-2.0 "
+                           "license, in mars-dawn-kit. And if MarsDawn's developer ever stops maintaining the app, the app's own source code will be "
+                           'published under an open-source license, so others can keep it going.',
+                           'More: <a href="/changelog/">Changelog</a> · <a href="/roadmap/">Roadmap</a> · <a '
+                           'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
+            'zh-hant': {'q3': '還沒有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本。iPhone 與 iPad 版正在開發中，目前還不能使用。',
+                        'q9': ['為什麼用 MarsDawn，不用別的 App？',
+                               '你可能不需要它。如果你主要寫自己的筆記，Obsidian 這類筆記 App 更適合。如果你整天待在 VS Code，它內建的預覽是免費的。如果你只想在 Finder 裡瞄一眼檔案，免費的快速查看擴充功能就夠了。如果你的 PDF '
+                               '需要頁碼，MarsDawn 不會加。MarsDawn 是用來閱讀和審閱 agent 寫的 Markdown：原始碼旁邊就是即時預覽，agent 的修改一步就能撤銷，檔案直接開到指定的那一行。如果它不合用，歡迎寫信告訴我們原因。',
+                               '詳見：<a href="/zh-hant/vs/">MarsDawn 與其他工具比較</a> · <a href="/zh-hant/best-markdown-viewer-mac/">Mac Markdown '
+                               '檢視器推薦</a>'],
+                        'q10': ['MarsDawn 會持續維護嗎？',
+                                '會。MarsDawn 上架 Mac App Store 以來的每次更新都在更新紀錄裡，iPhone 與 iPad 版也在開發中。MarsDawn 的算繪核心和免費的 marsdawn 命令列工具，已經以 Apache-2.0 '
+                                '授權在 mars-dawn-kit 開源。如果 MarsDawn 的開發者哪天停止維護這個 App，會以開源授權公開 App 本身的原始碼，讓其他人可以接手。',
+                                '詳見：<a href="/zh-hant/changelog/">更新紀錄</a> · <a href="/zh-hant/roadmap/">路線圖</a> · <a '
+                                'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
+            'zh-hans': {'q3': '还没有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本。iPhone 与 iPad 版正在开发中，目前还不能使用。',
+                        'q9': ['为什么用 MarsDawn，不用别的 App？',
+                               '你可能不需要它。如果你主要写自己的笔记，Obsidian 这类笔记 App 更合适。如果你整天待在 VS Code 里，它内置的预览是免费的。如果你只想在访达里瞄一眼文件，免费的快速查看扩展就够了。如果你的 PDF '
+                               '需要页码，MarsDawn 不会加。MarsDawn 是用来阅读和审阅代理写的 Markdown 的：源文本旁边就是实时预览，代理的修改一步就能撤销，文件直接打开到指定的那一行。如果它不合用，欢迎写信告诉我们原因。',
+                               '详见：<a href="/zh-hans/vs/">MarsDawn 与其他工具比较</a> · <a href="/zh-hans/best-markdown-viewer-mac/">Mac Markdown '
+                               '查看器推荐</a>'],
+                        'q10': ['MarsDawn 会持续维护吗？',
+                                '会。MarsDawn 上架 Mac App Store 以来的每次更新都在更新记录里，iPhone 与 iPad 版也在开发中。MarsDawn 的渲染核心和免费的 marsdawn 命令行工具，已经以 Apache-2.0 '
+                                '许可证在 mars-dawn-kit 开源。如果 MarsDawn 的开发者哪天停止维护这个 App，会以开源许可证公开 App 本身的源代码，让其他人可以接手。',
+                                '详见：<a href="/zh-hans/changelog/">更新记录</a> · <a href="/zh-hans/roadmap/">路线图</a> · <a '
+                                'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
+            'ja': {'q3': 'まだ使えません。MarsDawn は Mac アプリで、macOS 26 以降が必要です。iPhone と iPad 版は開発中ですが、まだ提供していません。',
+                   'q9': ['ほかのアプリではなく MarsDawn を使う理由は？',
+                          '必要ないかもしれません。自分のメモを書くのが中心なら、Obsidian のようなノートアプリのほうが向いています。VS Code でずっと作業しているなら、標準のプレビューが無料で使えます。Finder '
+                          'でファイルをさっと見たいだけなら、無料のクイックルック拡張機能で十分です。PDF にページ番号が必要なら、MarsDawn は付けられません。MarsDawn は、エージェントが書いた Markdown '
+                          'を読んでレビューするためのアプリです。ソースの横にライブプレビューがあり、エージェントの変更は一度で取り消せ、ファイルを指定の行で開けます。合わないと感じたら、その理由をメールで教えてください。',
+                          '詳しくは：<a href="/ja/vs/">MarsDawn とほかのツールの比較</a> · <a href="/ja/best-markdown-viewer-mac/">Mac 向け Markdown ビューアのおすすめ</a>'],
+                   'q10': ['MarsDawn はこれからもメンテナンスされますか？',
+                           'はい。MarsDawn が Mac App Store に登場してからのアップデートはすべて更新履歴に載っています。iPhone と iPad 版も開発中です。MarsDawn のレンダリングの中核と無料の marsdawn '
+                           'コマンドラインツールは、すでに Apache-2.0 ライセンスで mars-dawn-kit としてオープンソースになっています。そして、MarsDawn '
+                           'の開発者がアプリのメンテナンスをやめるときは、アプリ自体のソースコードをオープンソースライセンスで公開し、ほかの人が引き継げるようにします。',
+                           '詳しくは：<a href="/ja/changelog/">更新履歴</a> · <a href="/ja/roadmap/">ロードマップ</a> · <a '
+                           'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
+            'de': {'q3': 'Noch nicht. MarsDawn ist eine Mac-App und braucht macOS 26 oder neuer. Eine Version für iPhone und iPad ist in Arbeit, '
+                         'aber noch nicht erhältlich.',
+                   'q9': ['Warum MarsDawn und nicht eine andere App?',
+                          'Vielleicht brauchst du MarsDawn gar nicht. Wenn du vor allem eigene Notizen schreibst, passt eine Notiz-App wie Obsidian '
+                          'besser. Wenn du den ganzen Tag in VS Code arbeitest, ist die eingebaute Vorschau kostenlos. Wenn du Dateien im Finder nur '
+                          'kurz ansehen willst, reicht eine kostenlose Erweiterung für die Übersicht. Wenn deine PDFs Seitenzahlen brauchen: Die '
+                          'fügt MarsDawn nicht hinzu. MarsDawn ist zum Lesen und Prüfen von Markdown da, das ein Agent geschrieben hat: der '
+                          'Quelltext neben einer Live-Vorschau, eine Änderung deines Agenten, die du in einem Schritt widerrufst, und eine Datei, '
+                          'die genau an der angegebenen Zeile aufgeht. Wenn es nicht zu dir passt, schreib uns, warum.',
+                          'Mehr dazu: <a href="/de/vs/">MarsDawn im Vergleich</a> · <a href="/de/best-markdown-viewer-mac/">Der beste '
+                          'Markdown-Viewer für den Mac</a>'],
+                   'q10': ['Wird MarsDawn weiter gepflegt?',
+                           'Ja. Jedes Update, seit MarsDawn im Mac App Store erschienen ist, steht im Änderungsprotokoll, und eine Version für '
+                           'iPhone und iPad ist in Arbeit. Der Rendering-Kern von MarsDawn und das kostenlose Befehlszeilenprogramm marsdawn sind '
+                           'bereits unter der Lizenz Apache-2.0 als Open Source verfügbar, in mars-dawn-kit. Und falls der Entwickler von MarsDawn '
+                           'die App einmal nicht mehr pflegt, wird ihr eigener Quellcode unter einer Open-Source-Lizenz veröffentlicht, damit andere '
+                           'sie weiterführen können.',
+                           'Mehr dazu: <a href="/de/changelog/">Änderungsprotokoll</a> · <a href="/de/roadmap/">Roadmap</a> · <a '
+                           'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
+            'fr': {'q3': 'Pas encore. MarsDawn est une app Mac et demande macOS 26 ou une version ultérieure. Une version pour iPhone et iPad est en '
+                         'préparation, mais elle n’est pas encore disponible.',
+                   'q9': ['Pourquoi MarsDawn plutôt qu’une autre app ?',
+                          'Vous n’en avez peut-être pas besoin. Si vous écrivez surtout vos propres notes, une app de notes comme Obsidian vous '
+                          'conviendra mieux. Si vous passez vos journées dans VS Code, son aperçu intégré est gratuit. Si vous voulez seulement '
+                          'regarder rapidement vos fichiers dans le Finder, une extension Coup d’œil gratuite suffit. Si vos PDF ont besoin de '
+                          'numéros de page, MarsDawn n’en ajoute pas. MarsDawn sert à lire et relire le Markdown écrit par un agent : la source à '
+                          'côté d’un aperçu en direct, une modification de votre agent que vous annulez en une seule étape, et un fichier ouvert à '
+                          'la ligne exacte. S’il ne vous convient pas, écrivez-nous pour nous dire pourquoi.',
+                          'En savoir plus : <a href="/fr/vs/">MarsDawn comparé aux autres outils</a> · <a '
+                          'href="/fr/best-markdown-viewer-mac/">Meilleur lecteur Markdown pour Mac</a>'],
+                   'q10': ['MarsDawn sera-t-il maintenu dans la durée ?',
+                           'Oui. Chaque mise à jour depuis l’arrivée de MarsDawn sur le Mac App Store figure dans l’historique des versions, et une '
+                           'version pour iPhone et iPad est en préparation. Le cœur de rendu de MarsDawn et l’outil en ligne de commande gratuit '
+                           'marsdawn sont déjà open source sous licence Apache-2.0, dans mars-dawn-kit. Et si le développeur de MarsDawn arrête un '
+                           'jour de maintenir l’app, le code source de l’app elle-même sera publié sous une licence open source, pour que d’autres '
+                           'puissent la reprendre.',
+                           'En savoir plus : <a href="/fr/changelog/">Historique des versions</a> · <a href="/fr/roadmap/">Feuille de route</a> · <a '
+                           'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
+            'es': {'q3': 'Todavía no. MarsDawn es una app para Mac y necesita macOS 26 o posterior. Hay una versión para iPhone y iPad en '
+                         'desarrollo, pero aún no está disponible.',
+                   'q9': ['¿Por qué usar MarsDawn y no otra app?',
+                          'Puede que no lo necesites. Si sobre todo escribes tus propias notas, una app de notas como Obsidian te irá mejor. Si '
+                          'pasas el día en VS Code, su vista previa integrada es gratis. Si solo quieres echar un vistazo a los archivos en el '
+                          'Finder, basta con una extensión gratuita de Vista rápida. Si tus PDF necesitan números de página, MarsDawn no los añade. '
+                          'MarsDawn sirve para leer y revisar el Markdown que escribió un agente: el código fuente junto a una vista previa en vivo, '
+                          'un cambio de tu agente que deshaces en un solo paso y un archivo abierto en la línea exacta. Si no te sirve, escríbenos y '
+                          'cuéntanos por qué.',
+                          'Más información: <a href="/es/vs/">MarsDawn frente a otras herramientas</a> · <a href="/es/best-markdown-viewer-mac/">El '
+                          'mejor visor de Markdown para Mac</a>'],
+                   'q10': ['¿MarsDawn seguirá teniendo mantenimiento?',
+                           'Sí. Cada actualización desde que MarsDawn llegó a la Mac App Store está en el historial de cambios, y hay una versión '
+                           'para iPhone y iPad en desarrollo. El núcleo de renderizado de MarsDawn y la herramienta de línea de comandos gratuita '
+                           'marsdawn ya son de código abierto con la licencia Apache-2.0, en mars-dawn-kit. Y si el desarrollador de MarsDawn deja '
+                           'algún día de mantener la app, el código fuente de la propia app se publicará con una licencia de código abierto, para '
+                           'que otros puedan continuarla.',
+                           'Más información: <a href="/es/changelog/">Historial de cambios</a> · <a href="/es/roadmap/">Hoja de ruta</a> · <a '
+                           'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
+            'ko': {'q3': '아직은 쓸 수 없습니다. MarsDawn은 Mac 앱이며 macOS 26 이상이 필요합니다. iPhone·iPad용 앱은 개발 중이지만 아직 나오지 않았습니다.',
+                   'q9': ['다른 앱 대신 MarsDawn을 쓸 이유가 있나요?',
+                          '필요 없을 수도 있습니다. 주로 자기 노트를 쓴다면 Obsidian 같은 노트 앱이 더 잘 맞습니다. VS Code에서 하루 종일 작업한다면 내장 미리보기를 무료로 쓸 수 있습니다. Finder에서 파일을 잠깐 '
+                          '들여다보기만 하려면 무료 훑어보기 확장 프로그램으로 충분합니다. PDF에 페이지 번호가 필요하다면 MarsDawn은 넣어 주지 않습니다. MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 앱입니다. '
+                          '소스 옆에 실시간 미리보기가 있고, 에이전트가 바꾼 내용을 한 번에 되돌릴 수 있으며, 파일을 지정한 줄에서 바로 엽니다. 맞지 않는다면 그 이유를 메일로 알려 주세요.',
+                          '자세히: <a href="/ko/vs/">MarsDawn과 다른 도구 비교</a> · <a href="/ko/best-markdown-viewer-mac/">Mac용 Markdown 뷰어 추천</a>'],
+                   'q10': ['MarsDawn은 앞으로도 유지 관리되나요?',
+                           '네. MarsDawn이 Mac App Store에 나온 뒤의 모든 업데이트는 변경 내역에 있고, iPhone·iPad용 앱도 개발 중입니다. MarsDawn의 렌더링 핵심과 무료 marsdawn 명령줄 도구는 이미 '
+                           'Apache-2.0 라이선스로 mars-dawn-kit에서 오픈 소스로 공개되어 있습니다. 그리고 MarsDawn 개발자가 언젠가 앱 유지 관리를 그만두게 되면, 다른 사람이 이어받을 수 있도록 앱 자체의 소스 '
+                           '코드를 오픈 소스 라이선스로 공개합니다.',
+                           '자세히: <a href="/ko/changelog/">변경 내역</a> · <a href="/ko/roadmap/">로드맵</a> · <a '
+                           'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']}}}

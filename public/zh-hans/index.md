@@ -103,7 +103,7 @@ MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源�
 
 ### MarsDawn 有 iPhone 或 iPad 版吗？
 
-没有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本，没有 iPhone 或 iPad 版。
+还没有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本。iPhone 与 iPad 版正在开发中，目前还不能使用。
 
 详见：[路线图](/zh-hans/roadmap/)
 
@@ -134,6 +134,18 @@ MarsDawn 本身不发送任何东西。skill 只是一份文字说明，marsdawn
 没有关系。App 和这个网站是两回事：App 不收集数据，会记录访问的只有 marsdawn.southern-light.dev。网站的 Google Analytics 一开始是拒绝状态，你在横幅中选择“接受”后才会设置 cookie，页脚的“Cookie 设置”可以随时更改。App 请求 /themes/ 下主题文件的请求不会被记录。
 
 详见：[隐私政策](/zh-hans/privacy/#the-website)
+
+### 为什么用 MarsDawn，不用别的 App？
+
+你可能不需要它。如果你主要写自己的笔记，Obsidian 这类笔记 App 更合适。如果你整天待在 VS Code 里，它内置的预览是免费的。如果你只想在访达里瞄一眼文件，免费的快速查看扩展就够了。如果你的 PDF 需要页码，MarsDawn 不会加。MarsDawn 是用来阅读和审阅代理写的 Markdown 的：源文本旁边就是实时预览，代理的修改一步就能撤销，文件直接打开到指定的那一行。如果它不合用，欢迎写信告诉我们原因。
+
+详见：[MarsDawn 与其他工具比较](/zh-hans/vs/) · [Mac Markdown 查看器推荐](/zh-hans/best-markdown-viewer-mac/)
+
+### MarsDawn 会持续维护吗？
+
+会。MarsDawn 上架 Mac App Store 以来的每次更新都在更新记录里，iPhone 与 iPad 版也在开发中。MarsDawn 的渲染核心和免费的 marsdawn 命令行工具，已经以 Apache-2.0 许可证在 mars-dawn-kit 开源。如果 MarsDawn 的开发者哪天停止维护这个 App，会以开源许可证公开 App 本身的源代码，让其他人可以接手。
+
+详见：[更新记录](/zh-hans/changelog/) · [路线图](/zh-hans/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
 ## App 实际的样子
 

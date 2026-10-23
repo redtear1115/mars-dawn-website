@@ -103,7 +103,7 @@ MarsDawn は、エージェントが書いた Markdown を読んで確かめる�
 
 ### MarsDawn は iPhone や iPad で使えますか？
 
-いいえ。MarsDawn は Mac アプリで、macOS 26 以降が必要です。iPhone 版や iPad 版はありません。
+まだ使えません。MarsDawn は Mac アプリで、macOS 26 以降が必要です。iPhone と iPad 版は開発中ですが、まだ提供していません。
 
 詳しくは：[ロードマップ](/ja/roadmap/)
 
@@ -134,6 +134,18 @@ MarsDawn 自体は何も送りません。skill は指示を書いたテキス�
 関係ありません。アプリとこのウェブサイトは別のものです。アプリはデータを収集せず、訪問が記録され得るのは marsdawn.southern-light.dev だけです。サイトの Google Analytics は最初は拒否の状態で、バナーで「同意する」を選んだあとにだけクッキーを設定し、フッターの「Cookie 設定」でいつでも変えられます。アプリが /themes/ のテーマファイルを取りに行くリクエストは記録されません。
 
 詳しくは：[プライバシーポリシー](/ja/privacy/#the-website)
+
+### ほかのアプリではなく MarsDawn を使う理由は？
+
+必要ないかもしれません。自分のメモを書くのが中心なら、Obsidian のようなノートアプリのほうが向いています。VS Code でずっと作業しているなら、標準のプレビューが無料で使えます。Finder でファイルをさっと見たいだけなら、無料のクイックルック拡張機能で十分です。PDF にページ番号が必要なら、MarsDawn は付けられません。MarsDawn は、エージェントが書いた Markdown を読んでレビューするためのアプリです。ソースの横にライブプレビューがあり、エージェントの変更は一度で取り消せ、ファイルを指定の行で開けます。合わないと感じたら、その理由をメールで教えてください。
+
+詳しくは：[MarsDawn とほかのツールの比較](/ja/vs/) · [Mac 向け Markdown ビューアのおすすめ](/ja/best-markdown-viewer-mac/)
+
+### MarsDawn はこれからもメンテナンスされますか？
+
+はい。MarsDawn が Mac App Store に登場してからのアップデートはすべて更新履歴に載っています。iPhone と iPad 版も開発中です。MarsDawn のレンダリングの中核と無料の marsdawn コマンドラインツールは、すでに Apache-2.0 ライセンスで mars-dawn-kit としてオープンソースになっています。そして、MarsDawn の開発者がアプリのメンテナンスをやめるときは、アプリ自体のソースコードをオープンソースライセンスで公開し、ほかの人が引き継げるようにします。
+
+詳しくは：[更新履歴](/ja/changelog/) · [ロードマップ](/ja/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
 ## 実際のアプリ画面
 
