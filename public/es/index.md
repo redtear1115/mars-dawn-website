@@ -103,7 +103,7 @@ No. MarsDawn se descarga gratis y incluye 14 días de prueba de todas las funcio
 
 ### ¿MarsDawn funciona en iPhone o iPad?
 
-No. MarsDawn es una app para Mac y necesita macOS 26 o posterior. No existe una app para iPhone ni iPad.
+Todavía no. MarsDawn es una app para Mac y necesita macOS 26 o posterior. Hay una versión para iPhone y iPad en desarrollo, pero aún no está disponible.
 
 Más información: [Hoja de ruta](/es/roadmap/)
 
@@ -134,6 +134,18 @@ Más información: [Política de privacidad](/es/privacy/#when-marsdawn-uses-the
 No. La app y este sitio son cosas distintas: la app no recopila nada y una visita solo puede registrarse en marsdawn.southern-light.dev. En el sitio, Google Analytics empieza denegado y solo pone cookies después de que elijas «Aceptar» en el banner; puedes cambiarlo en «Ajustes de cookies», en el pie de página. Las solicitudes de la app de archivos de tema en /themes/ no se registran.
 
 Más información: [Política de privacidad](/es/privacy/#the-website)
+
+### ¿Por qué usar MarsDawn y no otra app?
+
+Puede que no lo necesites. Si sobre todo escribes tus propias notas, una app de notas como Obsidian te irá mejor. Si pasas el día en VS Code, su vista previa integrada es gratis. Si solo quieres echar un vistazo a los archivos en el Finder, basta con una extensión gratuita de Vista rápida. Si tus PDF necesitan números de página, MarsDawn no los añade. MarsDawn sirve para leer y revisar el Markdown que escribió un agente: el código fuente junto a una vista previa en vivo, un cambio de tu agente que deshaces en un solo paso y un archivo abierto en la línea exacta. Si no te sirve, escríbenos y cuéntanos por qué.
+
+Más información: [MarsDawn frente a otras herramientas](/es/vs/) · [El mejor visor de Markdown para Mac](/es/best-markdown-viewer-mac/)
+
+### ¿MarsDawn seguirá teniendo mantenimiento?
+
+Sí. Cada actualización desde que MarsDawn llegó a la Mac App Store está en el historial de cambios, y hay una versión para iPhone y iPad en desarrollo. El núcleo de renderizado de MarsDawn y la herramienta de línea de comandos gratuita marsdawn ya son de código abierto con la licencia Apache-2.0, en mars-dawn-kit. Y si el desarrollador de MarsDawn deja algún día de mantener la app, el código fuente de la propia app se publicará con una licencia de código abierto, para que otros puedan continuarla.
+
+Más información: [Historial de cambios](/es/changelog/) · [Hoja de ruta](/es/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
 ## La app, tal como es
 
