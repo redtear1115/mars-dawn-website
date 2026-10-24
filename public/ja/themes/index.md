@@ -1,8 +1,6 @@
-# 8つの見た目、1つの書き出し。
+# 4種類のテーマを内蔵。ギャラリーにはさらに多く。
 
-MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種類のプレビューテーマが付属し、それぞれライトとダークがあります。文書を読むための8通りの組み合わせです。PDF に書き出す、またはプリントすると、そのとき読んでいたものと同じ見た目でページが出てきます。
-
-**4つのテーマ × ライトとダーク＝文書を読む8つの方法があり、書き出しはどれを選んでいても対応します。**[ブラウザで自分のテーマを作る](/ja/themes/new/)か、[ギャラリー](/ja/themes/gallery/)で他の人が投稿したものを見てみましょう。
+MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種類のプレビューテーマが内蔵されており、それぞれライトとダークの配色があります。バージョン 1.1 からはアプリ内のテーマギャラリーからさらに追加でき、Finder のクイックルックでも選んだテーマで書類が表示されます。
 
 ## 4種類のテーマ
 
@@ -20,9 +18,32 @@ MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種�
 
 それぞれ独自のライトとダークの配色を持つので、Mac の外観を切り替えると、インターフェースの色だけでなくテーマの配色自体も切り替わります。
 
-## PDF 書き出しとプリントは同じテーマを使う
+## アプリ内のテーマギャラリー
 
-PDF に書き出す、またはプリントすると、テーマのライトカラーが使われます。Mermaid 図はそこに描き込まれ、コードブロックは構文のハイライトを保ち、改ページは見出しをそのセクションから切り離したり、図を途中で切ったりしないよう配慮されます。無料の[marsdawn コマンドラインツール](/ja/cli/)も同じ書き出しエンジンを使うので、スクリプトやエージェントも `--theme` で、4種類のどのテーマでも同一の PDF を作れます。
+MarsDawn で「設定 ▸ 外観モード」を開き、「テーマを追加…」をクリックします。テーマギャラリーは開いたときに一覧を読み込みます。オンラインになるのは開いているあいだだけで、接続がないときは通知を表示し、内蔵の4つのテーマはそのまま使えます。
+
+- 「インストール」は「ライトテーマ」と「ダークテーマ」の選択メニュー、および「表示 ▸ プレビューのテーマ」にテーマを追加します。「取り除く」で削除します。
+- 「テーマのアップデートを確認」は、新しいバージョンがないかギャラリーに再度問い合わせます。
+- テーマの用途で絞り込めます：エージェント出力のレビュー、技術ドキュメント、フォーマルな出力、メモ・共有。
+- 「テーマを報告…」は、入力済みの GitHub issue または私たち宛てのメールを開きます。
+
+## ギャラリーにあるテーマ
+
+現在は8つのテーマがあり、すべて私たちが作成・レビューしたものです。よく知られた配色を基に読みやすく調整した Dracula、Gruvbox、Nord、Solarized に加え、ユーザーガイド、予算表、PRD、スプリントノート向けに作られた Guide、Ledger、Spec、Story を揃えています。
+
+## レビュー済みで、中身はデータのみ
+
+すべてのテーマは、ギャラリーに表示される前に私たちがレビューしてマージしています。テーマは色といくつかの範囲が限られたオプションだけを収めた小さな JSON ファイルです。スクリプトも CSS も作者の画像も含まれず、MarsDawn はインストール前にすべての値を検証します。報告されたテーマは24時間以内にギャラリーから取り下げられます。有害なテーマであった場合は、次にギャラリーを開いたときにインストール済みの Mac からも削除され、使用中だった場合は夜明けに戻ります。
+
+ギャラリーが通信するのは `marsdawn.southern-light.dev/themes/v1/` のみで、ギャラリーを開くとき、アップデートを確認するとき、またはテーマをインストールするときに限られます。アカウント、識別子、Cookie、書類の内容は一切送信しません。
+
+## クイックルックにも選んだテーマを反映
+
+Finder で Markdown ファイルを選んでスペースキーを押します。クイックルックは、インストールしたテーマも含めてあなたが選んだテーマでファイルを表示し、MarsDawn の「外観モード」の設定に従います。「ライト」と「ダーク」は選んだまま固定され、「システム」は Mac に合わせます。
+
+## PDF 書き出しとプリント
+
+PDF に書き出す、またはプリントすると、ページには「ライト」に選んだテーマが使われます。Mermaid の図はそこに描き込まれ、コードブロックはハイライトを保ち、改ページは見出しをそのセクションから切り離したり、表や図を途中で切ったりしないよう配慮されます。無料の[marsdawn コマンドラインツール](/ja/cli/)も同じ書き出しエンジンを使い、`--theme` で4つの内蔵テーマのどれでも指定できます。
 
 ## ページをプリントしたあと
 
@@ -30,9 +51,9 @@ PDF に書き出す、またはプリントすると、テーマのライトカ�
 
 [MarsDawn の動画（88 秒）](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
-## 自分のテーマを作り、他の人が作ったものも見る
+## 自分のテーマを作る
 
-[ブラウザでテーマを作れます](/ja/themes/new/)：色といくつかのスタイルオプションを選び、その場で確認し、レビュー用に GitHub の issue として送信します — インストールも git も不要です。[ギャラリー](/ja/themes/gallery/)には、メンテナがレビューしてマージした投稿テーマが並び、用途で絞り込めます。アプリの「設定 › 外観モード › テーマを追加…」からインストールでき、Finder のクイックルックにも反映されます。
+[ブラウザでテーマを作れます](/ja/themes/new/)：色といくつかのスタイルオプションを選び、その場で反映を確認して、レビュー用に GitHub の issue として送信します。GitHub アカウントは必要ですが、インストールも git も不要です。送信しただけでは公開されず、私たちがレビューしてマージしたあとにのみ[ギャラリー](/ja/themes/gallery/)に表示されます。
 
 エージェントと作業していますか？[エージェントにテーマを作らせて](/ja/themes/agents/)、ブラウザで整えましょう。
 
@@ -50,7 +71,7 @@ PDF に書き出す、またはプリントすると、テーマのライトカ�
 - [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
 - [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックを分断しないよう配慮されます。
 - [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
-- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類で、テーマギャラリーにはさらに多くあります。購入前に知っておいてください。
+- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
 - [サポート](https://marsdawn.southern-light.dev/ja/support/index.md): macOS 向け Markdown エディタ MarsDawn のヘルプ。
 - [プライバシーポリシー](https://marsdawn.southern-light.dev/ja/privacy/index.md): MarsDawn は個人データを収集しません。文書と設定はあなたの Mac 上に残ります。
 - [Mac で .md ファイルを開く方法](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): Mac で .md ファイルを開く方法：ダブルクリック、標準のアプリの設定、Finder のクイックルック。AI エージェントが書いた .md は、MarsDawn でレンダリングして読めます。
@@ -68,7 +89,7 @@ PDF に書き出す、またはプリントすると、テーマのライトカ�
 - [他のツールで Markdown を見る場合との比較](https://marsdawn.southern-light.dev/ja/vs/markdown-preview-tools/index.md): VS Code の内蔵プレビュー、ブラウザ拡張機能、Claude Desktop のファイルプレビューで Markdown を読む場合と、MarsDawn を比較：それぞれが実際にレンダリングするもの、1つのファイルを開くのにかかる手間。
 - [テーマを作る](https://marsdawn.southern-light.dev/ja/themes/new/index.md): 配色といくつかのスタイルオプションを選ぶと、サンプル文書にその場で反映されます。できあがったテーマは GitHub の issue として送信できます。インストールも git も不要です。
 - [エージェントとテーマを作る](https://marsdawn.southern-light.dev/ja/themes/agents/index.md): MarsDawn のテーマを作る AI エージェント向けの参考資料。theme.json の全フィールドの型と範囲、検証とレンダリングの CLI 手順、人に渡すリンク、投稿の方法。
-- [テーマギャラリー](https://marsdawn.southern-light.dev/ja/themes/gallery/index.md): コミュニティが投稿した MarsDawn のプレビューテーマを閲覧し、シナリオで絞り込み、問題があれば通報できます。ブラウザで自分のテーマを作れます。インストールも git も不要です。
+- [テーマギャラリー](https://marsdawn.southern-light.dev/ja/themes/gallery/index.md): 開発者がレビューした MarsDawn のプレビューテーマを閲覧し、シナリオで絞り込み、問題があれば通報できます。ブラウザで自分のテーマを作れます。インストールも git も不要です。
 - [書き出した PDF を共有する](https://marsdawn.southern-light.dev/ja/sharing-exported-pdfs/index.md): エージェントの書いた Markdown を PDF に書き出し、Markdown を読まず何もインストールしない同僚に渡します。構文もアプリもアカウントも、開くのに一切不要です。
 - [AI の出力を人が確認する理由](https://marsdawn.southern-light.dev/ja/reviewing-ai-output/index.md): AI が書いた Markdown も、結局は人が理解しなければなりません。読みやすいからといって鵜呑みにはできません。MarsDawn はレンダリングされたページとソースを並べ、Mermaid 図と KaTeX 数式を描画するので、構造が一目で分かります。
 - [エージェントが返してくるものを読む](https://marsdawn.southern-light.dev/ja/reading-agent-output/index.md): AI エージェントは仕事の成果を Markdown で返します：計画、仕様書、進捗報告。エージェントを作る人たちがチェックポイントや失敗について何を言うか、その出力がなぜ読みづらいのか、そして計画を 5 分でレビューするチェックリスト。
@@ -90,8 +111,8 @@ PDF に書き出す、またはプリントすると、テーマのライトカ�
 - [議事録テンプレート](https://marsdawn.southern-light.dev/ja/templates/meeting-notes/index.md): 決定事項と、担当者付きのアクションアイテムをまとめる Markdown の議事録テンプレート。エージェントが書き、あなたが MarsDawn で確かめます。
 - [English](https://marsdawn.southern-light.dev/themes/index.md): Four built-in preview themes, each light and dark, plus a curated gallery you open from Settings in MarsDawn for Mac. Quick Look uses your theme.
 - [繁體中文](https://marsdawn.southern-light.dev/zh-hant/themes/index.md): 內建四種預覽主題，各有淺色與深色；在 Mac 版 MarsDawn 的設定裡打開主題庫，還能安裝更多。快速查看也會用你選的主題。
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/themes/index.md): 四种主题，各有浅色与深色，一套导出对应你正在看的主题。在浏览器里打造自己的主题，也可以逛逛社区主题图库。
-- [Deutsch](https://marsdawn.southern-light.dev/de/themes/index.md): Vier Vorschauthemen mit je einer hellen und einer dunklen Palette und ein PDF- und Druckexport, der zum gewählten Thema passt. Bau dein eigenes Thema im Browser und sieh dir die Community-Galerie an.
-- [Français](https://marsdawn.southern-light.dev/fr/themes/index.md): Quatre thèmes d’aperçu, chacun avec une palette claire et une palette sombre, et un seul export PDF et impression qui suit celui que vous utilisez. Créez votre propre thème dans le navigateur, et parcourez la galerie communautaire.
-- [Español](https://marsdawn.southern-light.dev/es/themes/index.md): Cuatro temas de vista previa, cada uno con una paleta clara y una oscura, y una sola exportación a PDF e impresión que respeta el que estés usando. Crea tu propio tema en el navegador y explora la galería de la comunidad.
-- [한국어](https://marsdawn.southern-light.dev/ko/themes/index.md): 라이트와 다크 팔레트를 각각 갖춘 미리보기 테마 네 가지, 그리고 지금 쓰는 테마를 그대로 따르는 PDF 내보내기와 프린트. 브라우저에서 테마를 직접 만들고, 커뮤니티 갤러리도 둘러보세요.
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/themes/index.md): 内置四种预览主题，各有浅色与深色；在 Mac 版 MarsDawn 的设置里打开主题图库，还能安装更多。快速查看也会用你选的主题。
+- [Deutsch](https://marsdawn.southern-light.dev/de/themes/index.md): Vier integrierte Vorschauthemen in Hell und Dunkel sowie eine kuratierte Galerie in den Einstellungen von MarsDawn für Mac. Die Übersicht nutzt das Thema.
+- [Français](https://marsdawn.southern-light.dev/fr/themes/index.md): Quatre thèmes d’aperçu intégrés, chacun clair et sombre, et une galerie vérifiée dans les réglages de MarsDawn pour Mac. Coup d’œil utilise votre thème.
+- [Español](https://marsdawn.southern-light.dev/es/themes/index.md): Cuatro temas de vista previa integrados, en claro y oscuro, y una galería revisada que abres desde Ajustes en MarsDawn para Mac. Vista rápida usa tu tema.
+- [한국어](https://marsdawn.southern-light.dev/ko/themes/index.md): 라이트와 다크를 각각 갖춘 기본 미리보기 테마 네 가지와, Mac용 MarsDawn 설정에서 여는 엄선된 테마 갤러리. 훑어보기도 고른 테마를 씁니다.

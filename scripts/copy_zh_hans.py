@@ -430,7 +430,7 @@ SKILL_INSTALL = '<h2>在 Claude Code 中安装</h2>\n<p>命令行工具 <code>ma
 
 def build(k) -> dict:
     k.set_skill_install(SKILL_INSTALL)
-    ui = {'features': '功能一览', 'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI 代理的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给代理的 skill', 'view-markdown-on-mac': 'Mac 上怎么打开 md 文件', 'mermaid-preview-mac': '在 Mac 上预览 Mermaid', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读代理写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '预览主题与 PDF 导出', 'themes-new': '打造一个主题', 'themes-agents': '和代理一起做主题', 'themes-gallery': '主题图库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂代理交回来的 Markdown', 'agent-transparency': '代理的透明', 'reviewing-agent-plans': '审代理计划', 'agent-design-patterns': '代理设计模式', 'changelog': '更新记录', 'roadmap': '路线图', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本站使用分析用 cookie，点击“接受”前不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
+    ui = {'features': '功能一览', 'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI 代理的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给代理的 skill', 'view-markdown-on-mac': 'Mac 上怎么打开 md 文件', 'mermaid-preview-mac': '在 Mac 上预览 Mermaid', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读代理写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '主题', 'themes-new': '打造一个主题', 'themes-agents': '和代理一起做主题', 'themes-gallery': '主题图库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂代理交回来的 Markdown', 'agent-transparency': '代理的透明', 'reviewing-agent-plans': '审代理计划', 'agent-design-patterns': '代理设计模式', 'changelog': '更新记录', 'roadmap': '路线图', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本站使用分析用 cookie，点击“接受”前不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
     store_chip = '已在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.5.1 以后，包括在侧边栏显示的文件夹', 'open_v2': 'open 成功，marsdawn 0.3.0 到 0.5.0', 'error': '两个命令的失败结果，marsdawn 0.5.2 以后', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单', 'error_v1': '两个命令的失败结果，marsdawn 0.5.1 以前'}
     example_plan = '# 计划：让导出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -819,7 +819,7 @@ swift build -c release --product marsdawn
     }
     pages['limits'] = {
         "title": 'MarsDawn 做不到的事 · MarsDawn',
-        "description": '没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户。内置四种主题，主题图库还有更多。购买前先知道。',
+        "description": '没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户；可以换主题，但不能自定义 CSS。购买前先知道。',
         "intro": f"""
 <section class="intro">
   <h1>MarsDawn 做不到的事。</h1>
@@ -840,7 +840,7 @@ swift build -c release --product marsdawn
   <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
   <li><strong>格式：</strong>MarsDawn 能导出 PDF 和打印，不能导出 Word 文件。</li>
   <li><strong>其他文件：</strong>纯文本文件和 PDF 以只读方式打开。</li>
-  <li><strong>主题：</strong>内置黎明、典雅、流行、活泼四种，各有浅色和深色。更多主题在<a href="/zh-hans/themes/gallery/">主题图库</a>：在“设置 › 外观 › 获取更多主题…”安装，或在浏览器里<a href="/zh-hans/themes/new/">自己做一套</a>。主题只是配色和样式设置，不是插件。</li>
+  <li><strong>主题：</strong>内置黎明、典雅、流行和活泼，每种都有浅色与深色；也可以从经过审核的<a href="/zh-hans/themes/gallery/">主题图库</a>安装更多（“设置 ▸ 外观 ▸ 获取更多主题…”）。主题只能设置颜色和几个样式选项，不能自定义 CSS。详见<a href="/zh-hans/themes/">主题</a>。</li>
   <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
 </ul>
 <h2>试用结束之后</h2>
@@ -1054,15 +1054,13 @@ marsdawn --version</code></pre>
 """,
     }
     pages['themes'] = {
-        "title": "MarsDawn 的预览主题与 PDF 导出 · MarsDawn",
-        "description": "四种主题，各有浅色与深色，一套导出对应你正在看的主题。在浏览器里打造自己的主题，也可以逛逛社区主题图库。",
-        "body": """
+        "title": '预览主题与主题图库 · MarsDawn',
+        "description": '内置四种预览主题，各有浅色与深色；在 Mac 版 MarsDawn 的设置里打开主题图库，还能安装更多。快速查看也会用你选的主题。',
+        "body": '''
 <section class="intro">
-  <h1>八种样子，一套导出。</h1>
-  <p>MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有浅色与深色&#8212;&#8212;八种读文稿的样子。导出成 PDF 或打印，出来的就是你正在读的那个样子。</p>
+  <h1>内置四种主题，主题图库里还有更多。</h1>
+  <p>MarsDawn 内置四种预览主题：黎明、典雅、流行和活泼，各有浅色与深色。从 1.1 版起，你可以在 App 里的主题图库安装更多主题；在访达用“快速查看”预览时，也会用你选的主题。</p>
 </section>
-
-<div class="summary"><p><strong>四种主题 &#215; 浅色与深色＝八种读文稿的方式，导出时用的正是你选的那一种。</strong><a href="/zh-hans/themes/new/">在浏览器里打造一个自己的主题</a>，或是<a href="/zh-hans/themes/gallery/">逛逛主题图库</a>，看看别人投稿了什么。</p></div>
 
 <h2>四种主题</h2>
 <!--theme-gallery-->
@@ -1074,11 +1072,30 @@ marsdawn --version</code></pre>
 </ul>
 <p>每种主题都有各自的浅色和深色版本，所以切换 Mac 的外观，连带切换的是主题本身的配色，不只是界面的颜色。</p>
 
-<h2>PDF 导出和打印用同一个主题</h2>
-<p>导出成 PDF 或打印，用的是你主题的浅色配色：Mermaid 图表会直接画进去，代码块保留语法上色，分页时也会尽量不让标题和内容分开，或切开图表。免费的 <a href="/zh-hans/cli/">marsdawn 命令行工具</a>使用同一套导出程序，所以脚本或代理也能用 <code>--theme</code> 生成一模一样的 PDF，四种主题都可以。</p>
+<h2>App 里的主题图库</h2>
+<p>在 MarsDawn 打开“设置 &#9656; 外观”，点按“获取更多主题&#8230;”。主题图库会在打开时载入清单，只有开着的时候才会连线；没有网络时会显示提示，内置的四种主题照常可用。</p>
+<ul>
+  <li>“安装”会把主题加进“浅色主题”和“深色主题”的菜单，以及“显示 &#9656; 预览主题”。“移除”会删掉它。</li>
+  <li>“检查主题更新”会再向主题图库查一次有没有新版本。</li>
+  <li>可以按用途筛选：审阅代理产出、技术文档、正式输出、笔记分享。</li>
+  <li>“举报主题&#8230;”会打开一则预先填好的 GitHub issue，或发邮件给我们。</li>
+</ul>
 
-<h2>打造自己的主题，也看看别人做的</h2>
-<p><a href="/zh-hans/themes/new/">在浏览器里打造一个主题</a>：挑选颜色和几个样式选项，实时看效果，再送出成一个 GitHub issue 让人审核——不用安装，也不用 git。<a href="/zh-hans/themes/gallery/">主题图库</a>收录每一套经过维护者审核并合并的投稿主题，可以按用途筛选。在 App 的“设置 › 外观 › 获取更多主题…”就能安装，访达的快速查看也会跟着套用。</p>
+<h2>主题图库里有什么</h2>
+<p>目前有八个主题，都是我们制作并审核的：Dracula、Gruvbox、Nord 和 Solarized 改编自知名配色，并为可读性做了调整；Guide、Ledger、Spec 和 Story 则分别为用户指南、预算表、PRD 和冲刺笔记而做。</p>
+
+<h2>经过审核，而且只是数据</h2>
+<p>每个主题都要经过我们审核、合并，才会出现在主题图库。主题是一个小小的 JSON 文件，只有颜色和几个有范围限制的选项：没有脚本、没有 CSS，也没有作者自带的图像；MarsDawn 安装前会检查每一个值。被举报的主题会在 24 小时内从主题图库下架；如果它有害，下次在已安装的 Mac 上打开主题图库时，也会一并移除，正在使用的话，MarsDawn 会改回黎明。</p>
+<p>主题图库只会连到 <code>marsdawn.southern-light.dev/themes/v1/</code>，而且只在你打开它、检查更新或安装主题时才连线。它不会发送账户、标识符、cookie，也不会发送任何文稿内容。</p>
+
+<h2>快速查看也用你的主题</h2>
+<p>在访达选一个 Markdown 文件，按空格键。“快速查看”会用你选的主题显示，已安装的主题也一样，并且跟着 MarsDawn 的外观设置：选“浅色”或“深色”就固定使用，选“系统”则跟着 Mac。</p>
+
+<h2>PDF 导出和打印</h2>
+<p>导出成 PDF 或打印时，页面用的是你为“浅色”选的主题：Mermaid 图表直接画进去，代码块保留语法高亮，分页时也会尽量不让标题和内容分开，或切开表格与图表。免费的 <a href="/zh-hans/cli/">marsdawn 命令行工具</a>使用同一套导出程序，可以用 <code>--theme</code> 指定四种内置主题中的任一种。</p>
+
+<h2>打造自己的主题</h2>
+<p><a href="/zh-hans/themes/new/">在浏览器里打造一个主题</a>：挑选颜色和几个样式选项，实时看效果，再提交成一个 GitHub issue 等待审核。需要 GitHub 账户，但不用安装，也不用 git。提交本身不会发布任何东西；要等我们审核、合并后，才会出现在<a href="/zh-hans/themes/gallery/">主题图库</a>。</p>
 <p>正在和代理一起工作？<a href="/zh-hans/themes/agents/">让它先做出主题</a>，再在浏览器里调整。</p>
 
 <h2>接下来</h2>
@@ -1087,7 +1104,7 @@ marsdawn --version</code></pre>
   <li>MarsDawn 现在还做不到的事：<a href="/zh-hans/limits/">这份清单</a>。</li>
   <li>把导出的 PDF 交给不写 Markdown 的人：<a href="/zh-hans/sharing-exported-pdfs/">分享 PDF</a>。</li>
 </ul>
-""",
+''',
     }
     pages['token-efficient-review'] = {
         "title": "不花代理 token 的审阅方式 · MarsDawn",

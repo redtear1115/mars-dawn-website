@@ -1015,12 +1015,12 @@ GALLERY_PAGES = {
 """,
     },
     ("zh-hans", "themes/gallery"): {
-        "title": "主题图库：MarsDawn 的社区主题 · MarsDawn",
-        "description": "浏览社区投稿的 MarsDawn 预览主题，按场景筛选，也可以举报有问题的主题。在浏览器里打造一个自己的主题，不用安装，也不用 git。",
+        "title": "主题图库：经过审核的 MarsDawn 主题 · MarsDawn",
+        "description": "浏览 MarsDawn 的预览主题，每一个都经过开发者审核；可以按场景筛选，也可以举报有问题的主题。在浏览器里打造自己的主题，不用安装，也不用 git。",
         "body": f"""
 <section class="intro">
   <h1>主题图库</h1>
-  <p>社区投稿的预览主题，每一个都经过开发者审核、合并后才会出现在这里。按场景筛选，或是<a href="/zh-hans/themes/new/">在浏览器里打造一个自己的主题</a>——不用安装，也不用 git。</p>
+  <p>MarsDawn 的预览主题，每一个都经过开发者审核、合并后才会出现在这里。目前的八个都由 Southern Light 制作，其中四个改编自知名配色。可以按场景筛选，或是<a href="/zh-hans/themes/new/">在浏览器里打造一个自己的主题</a>：提交后会开一则 GitHub issue 等待审核，不用安装，也不用 git。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
 <h2>版权与授权</h2>
@@ -1030,12 +1030,12 @@ GALLERY_PAGES = {
 """,
     },
     ("ja", "themes/gallery"): {
-        "title": "テーマギャラリー：MarsDawn のコミュニティテーマ · MarsDawn",
-        "description": "コミュニティが投稿した MarsDawn のプレビューテーマを閲覧し、シナリオで絞り込み、問題があれば通報できます。ブラウザで自分のテーマを作れます。インストールも git も不要です。",
+        "title": "テーマギャラリー：審査済みの MarsDawn テーマ · MarsDawn",
+        "description": "開発者がレビューした MarsDawn のプレビューテーマを閲覧し、シナリオで絞り込み、問題があれば通報できます。ブラウザで自分のテーマを作れます。インストールも git も不要です。",
         "body": f"""
 <section class="intro">
   <h1>テーマギャラリー</h1>
-  <p>コミュニティが投稿したプレビューテーマです。それぞれ開発者がレビューし、マージしてからここに表示されます。シナリオで絞り込むか、<a href="/ja/themes/new/">ブラウザで自分のテーマを作る</a>こともできます &#8212; インストールも git も不要です。</p>
+  <p>MarsDawn のプレビューテーマです。それぞれ開発者がレビューし、マージしてからここに表示されます。現在の8つはすべて Southern Light が作成したもので、そのうち4つはよく知られた配色を基にしています。シナリオで絞り込むか、<a href="/ja/themes/new/">ブラウザで自分のテーマを作る</a>こともできます。送信するとレビュー依頼の GitHub issue が開きます。インストールも git も不要です。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
 <h2>クレジットとライセンス</h2>
@@ -4337,12 +4337,17 @@ TRAIT_LINK = {
         "features": ("功能一覽", "MarsDawn 能做的事，一頁看完。"),
     },
 }
-# The home page's "Themes" line (#186). Not in TRAIT_LINK: every locale's copy module must carry the same
-# TRAIT_LINK keys as en, and the other six locales get this line through needs-i18n. Until then
-# home_sections_html leaves it out of a locale that has no entry here.
+# The home page's "Themes" line (#186). Not in TRAIT_LINK so every locale's copy module keeps its existing
+# TRAIT_LINK keys.
 HOME_THEMES_LINK = {
     "en": ("Themes", "Four built in, more in the gallery."),
     "zh-hant": ("主題", "內建四種，主題庫裡還有更多。"),
+    "zh-hans": ("主题", "内置四种，主题图库里还有更多。"),
+    "ja": ("テーマ", "4種類を内蔵、ギャラリーにはさらに多く。"),
+    "ko": ("테마", "기본 테마 네 가지, 갤러리에 더 있습니다."),
+    "de": ("Themen", "Vier integriert, mehr in der Galerie."),
+    "fr": ("Thèmes", "Quatre intégrés, d’autres dans la galerie."),
+    "es": ("Temas", "Cuatro integrados, más en la galería."),
 }
 TRAIT_NAV_HEADING = {"en": "What to expect from MarsDawn", "zh-hant": "MarsDawn 是什麼樣的 app"}
 FIGURE_LIST_LABEL = {"en": "In this screenshot", "zh-hant": "這張截圖裡"}
@@ -5668,9 +5673,9 @@ def all_pages() -> dict:
             body = features_marks(locale, body)
         if slug == "themes":
             # After the section on PDF export and print: before the last two headings (build your own, next).
-            # The other locales' page has four headings, en and zh-hant's (#186) has eight.
+            # Every locale's page (#186) has eight headings.
             pieces = re.split(r"(?=<h2>)", body)
-            assert len(pieces) in (5, 9), f"{locale}/themes: {len(pieces) - 1} headings, expected 4 or 8"
+            assert len(pieces) == 9, f"{locale}/themes: {len(pieces) - 1} headings, expected 8"
             body = "".join(pieces[:-2]) + brand_film_themes.MARK + "\n" + "".join(pieces[-2:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
