@@ -261,7 +261,7 @@ UI = {
         "yours": "Your writing stays on your Mac", "pay-once": "Try free, pay once", "pdf": "PDF export",
         "native": "A Mac app", "limits": "What MarsDawn doesn't do",
         "mcp": "MCP server", "token-efficient-review": "Token-efficient review",
-        "vs-markdown-preview-tools": "Viewing Markdown elsewhere vs. MarsDawn", "themes": "Preview themes and PDF export",
+        "vs-markdown-preview-tools": "Viewing Markdown elsewhere vs. MarsDawn", "themes": "Themes",
         "themes-new": "Build a theme", "themes-agents": "Make a theme with your agent", "themes-gallery": "Theme gallery",
         "features": "Features",
         "sharing-exported-pdfs": "Sharing exported PDFs", "reviewing-ai-output": "Why AI output still needs a human reader",
@@ -292,7 +292,7 @@ UI = {
         "yours": "你寫的內容留在你的 Mac 上", "pay-once": "免費試用，買一次就好", "pdf": "輸出 PDF",
         "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
         "mcp": "MCP 伺服器", "token-efficient-review": "節省 token 的審閱方式",
-        "vs-markdown-preview-tools": "在別處看 Markdown，對比 MarsDawn", "themes": "預覽主題與 PDF 輸出",
+        "vs-markdown-preview-tools": "在別處看 Markdown，對比 MarsDawn", "themes": "主題",
         "themes-new": "打造一個主題", "themes-agents": "和 agent 一起做主題", "themes-gallery": "主題庫",
         "features": "功能一覽",
         "sharing-exported-pdfs": "分享輸出的 PDF", "reviewing-ai-output": "為什麼 AI 寫的東西還是需要人讀過",
@@ -985,12 +985,12 @@ def third_party_notices_html() -> str:
 
 GALLERY_PAGES = {
     ("en", "themes/gallery"): {
-        "title": "Theme gallery: community MarsDawn themes · MarsDawn",
-        "description": "Browse preview themes the community submitted for MarsDawn, filter them by scenario, and report a problem with one. Build your own in the browser, no install, no git.",
+        "title": "Theme gallery: curated MarsDawn themes · MarsDawn",
+        "description": "Browse preview themes for MarsDawn, each reviewed by the developer, filter them by scenario, and report a problem with one. Build your own in the browser.",
         "body": f"""
 <section class="intro">
   <h1>Theme gallery</h1>
-  <p>Preview themes the community submitted, each reviewed and merged by the developer before it appears here. Filter by scenario, or <a href="/themes/new/">build your own</a> in the browser &#8212; no install, no git.</p>
+  <p>Preview themes for MarsDawn, each reviewed and merged by the developer before it appears here. The eight so far are made by Southern Light, four of them adapted from well-known palettes. Filter by scenario, or <a href="/themes/new/">build your own</a> in the browser: submitting opens a GitHub issue that asks for review, with no install and no git.</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
 <h2>Credits</h2>
@@ -1000,12 +1000,12 @@ GALLERY_PAGES = {
 """,
     },
     ("zh-hant", "themes/gallery"): {
-        "title": "主題庫：MarsDawn 的社群主題 · MarsDawn",
-        "description": "瀏覽社群投稿的 MarsDawn 預覽主題，依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造一個自己的主題，不用安裝，也不用 git。",
+        "title": "主題庫：經過審核的 MarsDawn 主題 · MarsDawn",
+        "description": "瀏覽 MarsDawn 的預覽主題，每一個都經過開發者審核；可以依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造自己的主題，不用安裝，也不用 git。",
         "body": f"""
 <section class="intro">
   <h1>主題庫</h1>
-  <p>社群投稿的預覽主題，每一個都經過開發者審核、合併後才會出現在這裡。依情境篩選，或是<a href="/zh-hant/themes/new/">在瀏覽器裡打造一個自己的主題</a>——不用安裝，也不用 git。</p>
+  <p>MarsDawn 的預覽主題，每一個都經過開發者審核、合併後才會出現在這裡。目前的八個都由 Southern Light 製作，其中四個改編自知名配色。可以依情境篩選，或是<a href="/zh-hant/themes/new/">在瀏覽器裡打造一個自己的主題</a>：送出後會開一則 GitHub issue 等待審核，不用安裝，也不用 git。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
 <h2>版權與授權</h2>
@@ -1015,12 +1015,12 @@ GALLERY_PAGES = {
 """,
     },
     ("zh-hans", "themes/gallery"): {
-        "title": "主题图库：MarsDawn 的社区主题 · MarsDawn",
-        "description": "浏览社区投稿的 MarsDawn 预览主题，按场景筛选，也可以举报有问题的主题。在浏览器里打造一个自己的主题，不用安装，也不用 git。",
+        "title": "主题图库：经过审核的 MarsDawn 主题 · MarsDawn",
+        "description": "浏览 MarsDawn 的预览主题，每一个都经过开发者审核；可以按场景筛选，也可以举报有问题的主题。在浏览器里打造自己的主题，不用安装，也不用 git。",
         "body": f"""
 <section class="intro">
   <h1>主题图库</h1>
-  <p>社区投稿的预览主题，每一个都经过开发者审核、合并后才会出现在这里。按场景筛选，或是<a href="/zh-hans/themes/new/">在浏览器里打造一个自己的主题</a>——不用安装，也不用 git。</p>
+  <p>MarsDawn 的预览主题，每一个都经过开发者审核、合并后才会出现在这里。目前的八个都由 Southern Light 制作，其中四个改编自知名配色。可以按场景筛选，或是<a href="/zh-hans/themes/new/">在浏览器里打造一个自己的主题</a>：提交后会开一则 GitHub issue 等待审核，不用安装，也不用 git。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
 <h2>版权与授权</h2>
@@ -1030,12 +1030,12 @@ GALLERY_PAGES = {
 """,
     },
     ("ja", "themes/gallery"): {
-        "title": "テーマギャラリー：MarsDawn のコミュニティテーマ · MarsDawn",
-        "description": "コミュニティが投稿した MarsDawn のプレビューテーマを閲覧し、シナリオで絞り込み、問題があれば通報できます。ブラウザで自分のテーマを作れます。インストールも git も不要です。",
+        "title": "テーマギャラリー：審査済みの MarsDawn テーマ · MarsDawn",
+        "description": "開発者がレビューした MarsDawn のプレビューテーマを閲覧し、シナリオで絞り込み、問題があれば通報できます。ブラウザで自分のテーマを作れます。インストールも git も不要です。",
         "body": f"""
 <section class="intro">
   <h1>テーマギャラリー</h1>
-  <p>コミュニティが投稿したプレビューテーマです。それぞれ開発者がレビューし、マージしてからここに表示されます。シナリオで絞り込むか、<a href="/ja/themes/new/">ブラウザで自分のテーマを作る</a>こともできます &#8212; インストールも git も不要です。</p>
+  <p>MarsDawn のプレビューテーマです。それぞれ開発者がレビューし、マージしてからここに表示されます。現在の8つはすべて Southern Light が作成したもので、そのうち4つはよく知られた配色を基にしています。シナリオで絞り込むか、<a href="/ja/themes/new/">ブラウザで自分のテーマを作る</a>こともできます。送信するとレビュー依頼の GitHub issue が開きます。インストールも git も不要です。</p>
 </section>
 {COMMUNITY_GALLERY_MARK}
 <h2>クレジットとライセンス</h2>
@@ -2293,15 +2293,13 @@ BRAINSTORM_PAGES = {
 """,
     },
     ("en", "themes"): {
-        "title": "Preview themes and PDF export in MarsDawn · MarsDawn",
-        "description": "Four preview themes, each with a light and dark palette, and one PDF/print export that matches whichever you're in. Build your own theme in the browser, and browse the community gallery.",
+        "title": "Preview themes and the theme gallery · MarsDawn",
+        "description": "Four built-in preview themes, each light and dark, plus a curated gallery you open from Settings in MarsDawn for Mac. Quick Look uses your theme.",
         "body": """
 <section class="intro">
-  <h1>Eight looks, one export.</h1>
-  <p>MarsDawn ships four preview themes, Dawn, Classic, Modern and Vivid, each with a light and a dark palette &#8212; eight combinations to read a document in. Export to PDF or print, and the page comes out in whichever one you were reading.</p>
+  <h1>Four themes built in. More in the gallery.</h1>
+  <p>MarsDawn comes with four preview themes, Dawn, Classic, Modern and Vivid, each with a light and a dark palette. Since version 1.1 you can add more from the Theme Gallery inside the app, and Quick Look in Finder shows your documents in the theme you chose.</p>
 </section>
-
-<div class="summary"><p><strong>Four themes &#215; light and dark = eight ways to read a document, and one export path that matches whichever you chose.</strong> <a href="/themes/new/">Build your own</a> in the browser, or <a href="/themes/gallery/">browse the gallery</a> for what others have submitted.</p></div>
 
 <h2>The four themes</h2>
 <!--theme-gallery-->
@@ -2313,11 +2311,30 @@ BRAINSTORM_PAGES = {
 </ul>
 <p>Each one has its own light and dark variant, so switching your Mac's appearance switches the theme's palette with it, not just the interface chrome.</p>
 
-<h2>PDF export and print use the same theme</h2>
-<p>Export to PDF or print, and the page uses your theme's light palette: Mermaid diagrams are drawn into it, code blocks keep their syntax highlighting, and page breaks avoid splitting a heading from its section or cutting a diagram in half. The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so a script or an agent produces the identical PDF, in any of the four themes, with <code>--theme</code>.</p>
+<h2>The Theme Gallery, inside the app</h2>
+<p>In MarsDawn, open Settings &#9656; Appearance and click Get More Themes&#8230;. The Theme Gallery loads its list when it opens. It goes online only while it is open; without a connection it shows a notice, and the four built-in themes keep working.</p>
+<ul>
+  <li>Install adds a theme to the Light Theme and Dark Theme pickers and to View &#9656; Preview Theme. Remove deletes it.</li>
+  <li>Check for Theme Updates asks the gallery again for newer versions.</li>
+  <li>Filter by what a theme is for: Agent review, Technical docs, Formal output, Notes &amp; sharing.</li>
+  <li>Report Theme&#8230; opens a prefilled GitHub issue or an email to us.</li>
+</ul>
 
-<h2>Build your own, and browse what others made</h2>
-<p><a href="/themes/new/">Build a theme in your browser</a>: pick colours and a few style options, see them applied live, and submit it as a GitHub issue for review &#8212; no install, no git. <a href="/themes/gallery/">The gallery</a> shows every submitted theme a maintainer has reviewed and merged, filterable by what it's good for. Install any of them in the app from Settings › Appearance › Get More Themes…, and Quick Look in Finder uses it too.</p>
+<h2>What's in the gallery</h2>
+<p>Eight themes today, all made and reviewed by us: Dracula, Gruvbox, Nord and Solarized, adapted from the well-known palettes and adjusted for readability, plus Guide, Ledger, Spec and Story, made for user guides, budgets, PRDs and sprint notes.</p>
+
+<h2>Reviewed, and only data</h2>
+<p>Every theme is reviewed and merged by us before it appears in the gallery. A theme is a small JSON file of colours and a few bounded options: no scripts, no CSS and no images from its author, and MarsDawn checks every value before installing it. A reported theme leaves the gallery within 24 hours. If it is harmful, it is also removed from Macs that installed it the next time the gallery opens there, and MarsDawn switches back to Dawn if it was in use.</p>
+<p>The gallery asks only <code>marsdawn.southern-light.dev/themes/v1/</code>, and only when you open it, check for updates or install a theme. It sends no account, no identifier, no cookies and nothing from your documents.</p>
+
+<h2>Quick Look uses your theme</h2>
+<p>Select a Markdown file in Finder and press Space. Quick Look shows it in the theme you chose, installed themes included, and follows the Appearance setting in MarsDawn: Light and Dark stay as chosen, and System follows your Mac.</p>
+
+<h2>PDF export and print</h2>
+<p>Export to PDF or print, and the page uses the theme you picked for Light: Mermaid diagrams are drawn into it, code blocks keep their highlighting, and page breaks avoid splitting a heading from its section or cutting a table or diagram in half. The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, with any of the four built-in themes via <code>--theme</code>.</p>
+
+<h2>Build your own</h2>
+<p><a href="/themes/new/">Build a theme in your browser</a>: pick colours and a few style options, see them applied live, and submit it as a GitHub issue for review. You need a GitHub account, but no install and no git. A submission publishes nothing by itself; it appears in the <a href="/themes/gallery/">gallery</a> only after we have reviewed and merged it.</p>
 <p>Working with an agent? <a href="/themes/agents/">Have it make the theme</a>, then tune it in your browser.</p>
 
 <h2>Next</h2>
@@ -2329,15 +2346,13 @@ BRAINSTORM_PAGES = {
 """,
     },
     ("zh-hant", "themes"): {
-        "title": "MarsDawn 的預覽主題與 PDF 輸出 · MarsDawn",
-        "description": "四種主題，各有淺色與深色，一套輸出對應你正在看的主題。在瀏覽器裡打造自己的主題，也可以逛逛社群主題庫。",
+        "title": "預覽主題與主題庫 · MarsDawn",
+        "description": "內建四種預覽主題，各有淺色與深色；在 Mac 版 MarsDawn 的設定裡打開主題庫，還能安裝更多。快速查看也會用你選的主題。",
         "body": """
 <section class="intro">
-  <h1>八種樣子，一套輸出。</h1>
-  <p>MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有淺色與深色&#8212;&#8212;八種讀文件的樣子。輸出成 PDF 或列印，出來的就是你正在讀的那個樣子。</p>
+  <h1>內建四種主題，主題庫裡還有更多。</h1>
+  <p>MarsDawn 內建四種預覽主題：黎明、典雅、流行和活潑，各有淺色與深色。從 1.1 版起，你可以在 App 裡的主題庫安裝更多主題；在 Finder 用「快速查看」預覽時，也會用你選的主題。</p>
 </section>
-
-<div class="summary"><p><strong>四種主題 &#215; 淺色與深色＝八種讀文件的方式，輸出時用的正是你選的那一種。</strong><a href="/zh-hant/themes/new/">在瀏覽器裡打造一個自己的主題</a>，或是<a href="/zh-hant/themes/gallery/">逛逛主題庫</a>，看看別人投稿了什麼。</p></div>
 
 <h2>四種主題</h2>
 <!--theme-gallery-->
@@ -2349,11 +2364,30 @@ BRAINSTORM_PAGES = {
 </ul>
 <p>每種主題都有各自的淺色和深色版本，所以切換 Mac 的外觀，連帶切換的是主題本身的配色，不只是介面的顏色。</p>
 
-<h2>PDF 輸出和列印用同一個主題</h2>
-<p>輸出成 PDF 或列印，用的是你主題的淺色配色：Mermaid 圖表會直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開圖表。免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>使用同一套輸出程式，所以腳本或 agent 也能用 <code>--theme</code> 產生一模一樣的 PDF，四種主題都可以。</p>
+<h2>App 裡的主題庫</h2>
+<p>在 MarsDawn 打開「設定 &#9656; 外觀」，按「取得更多主題&#8943;」。主題庫會在打開時載入清單，只有開著的時候才會連線；沒有網路時會顯示提示，內建的四種主題照常可用。</p>
+<ul>
+  <li>「安裝」會把主題加進「淺色主題」和「深色主題」的選單，以及「顯示方式 &#9656; 預覽主題」。「移除」會刪掉它。</li>
+  <li>「檢查主題更新」會再向主題庫查一次有沒有新版本。</li>
+  <li>可以依用途篩選：審閱代理產出、技術文件、正式輸出、筆記分享。</li>
+  <li>「回報主題&#8943;」會打開一則預先填好的 GitHub issue，或寄信給我們。</li>
+</ul>
 
-<h2>打造自己的主題，也看看別人做的</h2>
-<p><a href="/zh-hant/themes/new/">在瀏覽器裡打造一個主題</a>：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 讓人審核——不用安裝，也不用 git。<a href="/zh-hant/themes/gallery/">主題庫</a>收錄每一套經過維護者審核並合併的投稿主題，可以依用途篩選。在 App 的「設定 › 外觀 › 取得更多主題⋯」就能安裝，Finder 的快速查看也會跟著套用。</p>
+<h2>主題庫裡有什麼</h2>
+<p>目前有八個主題，都是我們製作並審核的：Dracula、Gruvbox、Nord 和 Solarized 改編自知名配色，並為可讀性調整；Guide、Ledger、Spec 和 Story 則分別為使用者指南、預算表、PRD 和衝刺筆記而做。</p>
+
+<h2>經過審核，而且只是資料</h2>
+<p>每個主題都要經過我們審核、合併，才會出現在主題庫。主題是一個小小的 JSON 檔，只有顏色和幾個有範圍限制的選項：沒有腳本、沒有 CSS，也沒有作者自帶的圖片；MarsDawn 安裝前會檢查每一個值。被回報的主題會在 24 小時內從主題庫下架；如果它有害，下次在已安裝的 Mac 上打開主題庫時，也會一併移除，正在使用的話，MarsDawn 會改回黎明。</p>
+<p>主題庫只會連到 <code>marsdawn.southern-light.dev/themes/v1/</code>，而且只在你打開它、檢查更新或安裝主題時才連線。它不會送出帳號、識別碼、cookie，也不會送出任何文件內容。</p>
+
+<h2>快速查看也用你的主題</h2>
+<p>在 Finder 選一個 Markdown 檔，按空白鍵。「快速查看」會用你選的主題顯示，已安裝的主題也一樣，並且跟著 MarsDawn 的外觀設定：選「淺色」或「深色」就固定使用，選「系統」則跟著 Mac。</p>
+
+<h2>PDF 輸出和列印</h2>
+<p>輸出成 PDF 或列印時，頁面用的是你為「淺色」選的主題：Mermaid 圖表直接畫進去，程式碼區塊保留語法上色，分頁時也會盡量不讓標題和內容分開，或切開表格與圖表。免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>使用同一套輸出程式，可以用 <code>--theme</code> 指定四種內建主題中的任一種。</p>
+
+<h2>打造自己的主題</h2>
+<p><a href="/zh-hant/themes/new/">在瀏覽器裡打造一個主題</a>：挑選顏色和幾個樣式選項，即時看效果，再送出成一個 GitHub issue 等待審核。需要 GitHub 帳號，但不用安裝，也不用 git。送出本身不會發布任何東西；要等我們審核、合併後，才會出現在<a href="/zh-hant/themes/gallery/">主題庫</a>。</p>
 <p>正在和 agent 一起工作？<a href="/zh-hant/themes/agents/">讓它先做出主題</a>，再在瀏覽器裡調整。</p>
 
 <h2>接下來</h2>
@@ -4225,7 +4259,7 @@ TRAIT_PAGES = {
     ),
     ("en", "limits"): _trait_page(
         "What MarsDawn doesn't do · MarsDawn",
-        "No sync, no iPhone or iPad app, no plugins, no accounts. Four built-in themes, more in the gallery. Know before you buy.",
+        "No sync, no iPhone or iPad app, no plugins, no accounts. Themes, but no custom CSS. Know before you buy.",
         """
 <section class="intro">
   <h1>What MarsDawn doesn't do.</h1>
@@ -4246,7 +4280,7 @@ TRAIT_PAGES = {
   <li><strong>Editing:</strong> you write Markdown on the left and read the page on the right; the page itself can't be edited.</li>
   <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
   <li><strong>Other files:</strong> plain text files and PDFs open read-only.</li>
-  <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark. More are in the <a href="/themes/gallery/">theme gallery</a>: install one from Settings › Appearance › Get More Themes…, or <a href="/themes/new/">build your own</a> in the browser. A theme is colours and style settings, not a plugin.</li>
+  <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can install more from the curated <a href="/themes/gallery/">Theme Gallery</a> (Settings ▸ Appearance ▸ Get More Themes…). A theme sets colours and a few style options; there's no custom CSS. See <a href="/themes/">themes</a>.</li>
   <li><strong>Plugins:</strong> MarsDawn has no plugins or extensions.</li>
 </ul>
 <h2>After the trial</h2>
@@ -4255,7 +4289,7 @@ TRAIT_PAGES = {
     ),
     ("zh-hant", "limits"): _trait_page(
         "MarsDawn 做不到的事 · MarsDawn",
-        "沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號。內建四種主題，主題庫還有更多。購買前先知道。",
+        "沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號；可以換主題，但不能自訂 CSS。購買前先知道。",
         """
 <section class="intro">
   <h1>MarsDawn 做不到的事。</h1>
@@ -4276,7 +4310,7 @@ TRAIT_PAGES = {
   <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
   <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
   <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
-  <li><strong>主題：</strong>內建黎明、典雅、流行、活潑四種，各有淺色和深色。更多主題在<a href="/zh-hant/themes/gallery/">主題庫</a>：在「設定 › 外觀 › 取得更多主題⋯」安裝，或在瀏覽器裡<a href="/zh-hant/themes/new/">自己做一套</a>。主題只是配色和樣式設定，不是外掛。</li>
+  <li><strong>主題：</strong>內建黎明、典雅、流行和活潑，每種都有淺色與深色；也可以從經過審核的<a href="/zh-hant/themes/gallery/">主題庫</a>安裝更多（「設定 ▸ 外觀 ▸ 取得更多主題⋯」）。主題只能設定顏色和幾個樣式選項，不能自訂 CSS。詳見<a href="/zh-hant/themes/">主題</a>。</li>
   <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
 </ul>
 <h2>試用結束之後</h2>
@@ -4302,6 +4336,18 @@ TRAIT_LINK = {
         "limits": ("MarsDawn 做不到的事", "購買前先知道。"),
         "features": ("功能一覽", "MarsDawn 能做的事，一頁看完。"),
     },
+}
+# The home page's "Themes" line (#186). Not in TRAIT_LINK so every locale's copy module keeps its existing
+# TRAIT_LINK keys.
+HOME_THEMES_LINK = {
+    "en": ("Themes", "Four built in, more in the gallery."),
+    "zh-hant": ("主題", "內建四種，主題庫裡還有更多。"),
+    "zh-hans": ("主题", "内置四种，主题图库里还有更多。"),
+    "ja": ("テーマ", "4種類を内蔵、ギャラリーにはさらに多く。"),
+    "ko": ("테마", "기본 테마 네 가지, 갤러리에 더 있습니다."),
+    "de": ("Themen", "Vier integriert, mehr in der Galerie."),
+    "fr": ("Thèmes", "Quatre intégrés, d’autres dans la galerie."),
+    "es": ("Temas", "Cuatro integrados, más en la galería."),
 }
 TRAIT_NAV_HEADING = {"en": "What to expect from MarsDawn", "zh-hant": "MarsDawn 是什麼樣的 app"}
 FIGURE_LIST_LABEL = {"en": "In this screenshot", "zh-hant": "這張截圖裡"}
@@ -5063,6 +5109,9 @@ def home_sections_html(locale: str) -> str:
         f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a><span>{trait_line(slug)}</span></li>'
         for slug in HOME_TRAITS
     )
+    if locale in HOME_THEMES_LINK:
+        title, line = HOME_THEMES_LINK[locale]
+        traits += f'\n  <li><a href="{page_path(locale, "themes")}">{title}</a><span>{line}</span></li>'
     limits_title, limits_line = TRAIT_LINK[locale]["limits"]
     return f"""<section class="install" id="install">
 <h2>{home["install_h"]}</h2>
@@ -5623,11 +5672,11 @@ def all_pages() -> dict:
         if slug == "features":
             body = features_marks(locale, body)
         if slug == "themes":
-            # After the section on PDF export and print: before the third heading (the four themes, PDF and
-            # print, build your own, next). Every locale's page has the same four.
+            # After the section on PDF export and print: before the last two headings (build your own, next).
+            # Every locale's page (#186) has eight headings.
             pieces = re.split(r"(?=<h2>)", body)
-            assert len(pieces) == 5, f"{locale}/themes: {len(pieces) - 1} headings, expected 4"
-            body = "".join(pieces[:3]) + brand_film_themes.MARK + "\n" + "".join(pieces[3:])
+            assert len(pieces) == 9, f"{locale}/themes: {len(pieces) - 1} headings, expected 8"
+            body = "".join(pieces[:-2]) + brand_film_themes.MARK + "\n" + "".join(pieces[-2:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
     return apply_app_changelog(apply_cli254(apply_best228(apply_promo130(apply_seo_copy(merged)))))
