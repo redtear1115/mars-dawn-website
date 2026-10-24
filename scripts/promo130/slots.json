@@ -170,6 +170,36 @@
      "sha256": "d0382ff113dcd927b9c783f6c5c3536f3a12fc2fba398311a470da9af599dcde",
      "chars": 1174
     }
+   ],
+   "275": [
+    {
+     "id": 6249084399,
+     "created_at": "2026-10-18T11:04:56Z",
+     "updated_at": "2026-10-18T11:04:56Z",
+     "sha256": "0984975f9f5fc14445a86f83258780f1621d83eaab9cd1c92df85df7902afbb4",
+     "chars": 4544
+    },
+    {
+     "id": 6361396256,
+     "created_at": "2026-10-23T09:04:30Z",
+     "updated_at": "2026-10-23T09:04:30Z",
+     "sha256": "dc26014de86c3702a04d0250976427809872aa6e2f379276c3cbd0e8572c4c80",
+     "chars": 8796
+    },
+    {
+     "id": 6361621270,
+     "created_at": "2026-10-23T09:17:19Z",
+     "updated_at": "2026-10-23T09:17:19Z",
+     "sha256": "bc253c91501fac318ab70480221d7c86adc6defd3c1e3537febeed90cb36cf25",
+     "chars": 785
+    },
+    {
+     "id": 6361648122,
+     "created_at": "2026-10-23T09:18:56Z",
+     "updated_at": "2026-10-23T09:18:56Z",
+     "sha256": "b840eac113eb3501f189b094733432e83a7895b36b2aab36138b06fed4e4c856",
+     "chars": 602
+    }
    ]
   }
  },
@@ -36753,6 +36783,1037 @@
    "item": "/vs/ source list heading",
    "version": "reused",
    "path": null
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6361396256,
+     "round": "R2",
+     "locator": "### 第 3 題, en"
+    },
+    {
+     "comment": 6361648122,
+     "round": "R4",
+     "locator": "approval, en"
+    }
+   ],
+   "item": "#275 Q3 answer (iPhone and iPad)",
+   "version": "R2+R4",
+   "path": [
+    "faq275",
+    "en",
+    "q3"
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 1., en"
+   },
+   "item": "#275 Q9 question",
+   "version": "R1",
+   "path": [
+    "faq275",
+    "en",
+    "q9",
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 1., en"
+   },
+   "item": "#275 Q9 answer",
+   "version": "R1",
+   "path": [
+    "faq275",
+    "en",
+    "q9",
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 1., en, link row"
+   },
+   "item": "#275 Q9 link row",
+   "version": "R1",
+   "path": [
+    "faq275",
+    "en",
+    "q9",
+    2
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 2., en"
+   },
+   "item": "#275 Q10 question",
+   "version": "R1",
+   "path": [
+    "faq275",
+    "en",
+    "q10",
+    0
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 2., en"
+   },
+   "item": "#275 Q10 answer",
+   "version": "R1",
+   "path": [
+    "faq275",
+    "en",
+    "q10",
+    1
+   ]
+  },
+  {
+   "locale": "en",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 2., en, link row"
+   },
+   "item": "#275 Q10 link row",
+   "version": "R1",
+   "path": [
+    "faq275",
+    "en",
+    "q10",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6361396256,
+     "round": "R2",
+     "locator": "### 第 3 題, zh-hant"
+    },
+    {
+     "comment": 6361648122,
+     "round": "R4",
+     "locator": "approval, zh-hant"
+    }
+   ],
+   "item": "#275 Q3 answer (iPhone and iPad)",
+   "version": "R2+R4",
+   "path": [
+    "faq275",
+    "zh-hant",
+    "q3"
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 1., zh-hant"
+   },
+   "item": "#275 Q9 question",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "zh-hant",
+    "q9",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 1., zh-hant"
+   },
+   "item": "#275 Q9 answer",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "zh-hant",
+    "q9",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361621270,
+    "round": "R3",
+    "locator": "table, 連結列（Q9）, zh-hant"
+   },
+   "item": "#275 Q9 link row",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "zh-hant",
+    "q9",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 2., zh-hant"
+   },
+   "item": "#275 Q10 question",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "zh-hant",
+    "q10",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 2., zh-hant"
+   },
+   "item": "#275 Q10 answer",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "zh-hant",
+    "q10",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hant",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361621270,
+    "round": "R3",
+    "locator": "table, 連結列（Q10）, zh-hant"
+   },
+   "item": "#275 Q10 link row",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "zh-hant",
+    "q10",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6361396256,
+     "round": "R2",
+     "locator": "### zh-hans table, Q3 答（改）"
+    }
+   ],
+   "item": "#275 Q3 answer (iPhone and iPad)",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "zh-hans",
+    "q3"
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### zh-hans table, Q9 問/答"
+   },
+   "item": "#275 Q9 question",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "zh-hans",
+    "q9",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### zh-hans table, Q9 問/答"
+   },
+   "item": "#275 Q9 answer",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "zh-hans",
+    "q9",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### zh-hans table, 連結列（Q9）"
+   },
+   "item": "#275 Q9 link row",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "zh-hans",
+    "q9",
+    2
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### zh-hans table, Q10 問/答"
+   },
+   "item": "#275 Q10 question",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "zh-hans",
+    "q10",
+    0
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### zh-hans table, Q10 問/答"
+   },
+   "item": "#275 Q10 answer",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "zh-hans",
+    "q10",
+    1
+   ]
+  },
+  {
+   "locale": "zh-hans",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### zh-hans table, 連結列（Q10）"
+   },
+   "item": "#275 Q10 link row",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "zh-hans",
+    "q10",
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6361396256,
+     "round": "R2",
+     "locator": "### 第 3 題, ja"
+    },
+    {
+     "comment": 6361648122,
+     "round": "R4",
+     "locator": "approval, ja"
+    }
+   ],
+   "item": "#275 Q3 answer (iPhone and iPad)",
+   "version": "R2+R4",
+   "path": [
+    "faq275",
+    "ja",
+    "q3"
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 1., ja"
+   },
+   "item": "#275 Q9 question",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "ja",
+    "q9",
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 1., ja"
+   },
+   "item": "#275 Q9 answer",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "ja",
+    "q9",
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361621270,
+    "round": "R3",
+    "locator": "table, 連結列（Q9）, ja"
+   },
+   "item": "#275 Q9 link row",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "ja",
+    "q9",
+    2
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 2., ja"
+   },
+   "item": "#275 Q10 question",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "ja",
+    "q10",
+    0
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6249084399,
+    "round": "R1",
+    "locator": "### 2., ja"
+   },
+   "item": "#275 Q10 answer",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "ja",
+    "q10",
+    1
+   ]
+  },
+  {
+   "locale": "ja",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361621270,
+    "round": "R3",
+    "locator": "table, 連結列（Q10）, ja"
+   },
+   "item": "#275 Q10 link row",
+   "version": "R1+R3",
+   "path": [
+    "faq275",
+    "ja",
+    "q10",
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6361396256,
+     "round": "R2",
+     "locator": "### de table, Q3 答（改）"
+    }
+   ],
+   "item": "#275 Q3 answer (iPhone and iPad)",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "de",
+    "q3"
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### de table, Q9 問/答"
+   },
+   "item": "#275 Q9 question",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "de",
+    "q9",
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### de table, Q9 問/答"
+   },
+   "item": "#275 Q9 answer",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "de",
+    "q9",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### de table, 連結列（Q9）"
+   },
+   "item": "#275 Q9 link row",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "de",
+    "q9",
+    2
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### de table, Q10 問/答"
+   },
+   "item": "#275 Q10 question",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "de",
+    "q10",
+    0
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### de table, Q10 問/答"
+   },
+   "item": "#275 Q10 answer",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "de",
+    "q10",
+    1
+   ]
+  },
+  {
+   "locale": "de",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### de table, 連結列（Q10）"
+   },
+   "item": "#275 Q10 link row",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "de",
+    "q10",
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6361396256,
+     "round": "R2",
+     "locator": "### fr table, Q3 答（改）"
+    }
+   ],
+   "item": "#275 Q3 answer (iPhone and iPad)",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "fr",
+    "q3"
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### fr table, Q9 問/答"
+   },
+   "item": "#275 Q9 question",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "fr",
+    "q9",
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### fr table, Q9 問/答"
+   },
+   "item": "#275 Q9 answer",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "fr",
+    "q9",
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### fr table, 連結列（Q9）"
+   },
+   "item": "#275 Q9 link row",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "fr",
+    "q9",
+    2
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### fr table, Q10 問/答"
+   },
+   "item": "#275 Q10 question",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "fr",
+    "q10",
+    0
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### fr table, Q10 問/答"
+   },
+   "item": "#275 Q10 answer",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "fr",
+    "q10",
+    1
+   ]
+  },
+  {
+   "locale": "fr",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### fr table, 連結列（Q10）"
+   },
+   "item": "#275 Q10 link row",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "fr",
+    "q10",
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6361396256,
+     "round": "R2",
+     "locator": "### es table, Q3 答（改）"
+    }
+   ],
+   "item": "#275 Q3 answer (iPhone and iPad)",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "es",
+    "q3"
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### es table, Q9 問/答"
+   },
+   "item": "#275 Q9 question",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "es",
+    "q9",
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### es table, Q9 問/答"
+   },
+   "item": "#275 Q9 answer",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "es",
+    "q9",
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### es table, 連結列（Q9）"
+   },
+   "item": "#275 Q9 link row",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "es",
+    "q9",
+    2
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### es table, Q10 問/答"
+   },
+   "item": "#275 Q10 question",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "es",
+    "q10",
+    0
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### es table, Q10 問/答"
+   },
+   "item": "#275 Q10 answer",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "es",
+    "q10",
+    1
+   ]
+  },
+  {
+   "locale": "es",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### es table, 連結列（Q10）"
+   },
+   "item": "#275 Q10 link row",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "es",
+    "q10",
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_a",
+   "source": [
+    {
+     "comment": 6361396256,
+     "round": "R2",
+     "locator": "### ko table, Q3 答（改）"
+    }
+   ],
+   "item": "#275 Q3 answer (iPhone and iPad)",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "ko",
+    "q3"
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### ko table, Q9 問/答"
+   },
+   "item": "#275 Q9 question",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "ko",
+    "q9",
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### ko table, Q9 問/答"
+   },
+   "item": "#275 Q9 answer",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "ko",
+    "q9",
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### ko table, 連結列（Q9）"
+   },
+   "item": "#275 Q9 link row",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "ko",
+    "q9",
+    2
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_q",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### ko table, Q10 問/答"
+   },
+   "item": "#275 Q10 question",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "ko",
+    "q10",
+    0
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "faq_a",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### ko table, Q10 問/答"
+   },
+   "item": "#275 Q10 answer",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "ko",
+    "q10",
+    1
+   ]
+  },
+  {
+   "locale": "ko",
+   "page": "index",
+   "field": "p",
+   "source": {
+    "comment": 6361396256,
+    "round": "R2",
+    "locator": "### ko table, 連結列（Q10）"
+   },
+   "item": "#275 Q10 link row",
+   "version": "R2",
+   "path": [
+    "faq275",
+    "ko",
+    "q10",
+    2
+   ]
   }
  ]
 }

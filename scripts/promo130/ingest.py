@@ -44,7 +44,7 @@ LOCALES = ["en", "zh-hant", "zh-hans", "ja", "de", "fr", "es", "ko"]
 FIRST = ["en", "zh-hant", "ja"]            # the first-round languages
 MACHINE = ["zh-hans", "ko", "de", "fr", "es"]   # Grok's needs-i18n round
 
-ORDER = [189, 244, 246, 242, 240, 241, 245, 243, 2421]
+ORDER = [189, 244, 246, 242, 240, 241, 245, 243, 2421, 275]
 
 
 class Stop(SystemExit):
@@ -944,9 +944,69 @@ def ingest_vsources() -> None:
                       "version": "reused", "path": None})
 
 
+# ---- #275: the home FAQ's iPhone and iPad answer (Q3), and two new questions at its end (Q9, Q10) ----------
+
+def ingest_275() -> None:
+    """DATA["faq275"][locale] = {"q3": the new answer to the iPhone and iPad question, "q9": [question, answer, link row],
+    "q10": [...]}. Sources, all on #275:
+    - comment 1 (R1): Q9 and Q10 in en, zh-Hant and ja (one fenced block per language: '### question', answer, link row);
+    - comment 2 (R2): Q3's new answer in en, zh-Hant and ja (approved by comment 4), and for zh-Hans, ko, de, fr and es a
+      table with Q3's answer, Q9 and Q10 (question, answer, link row);
+    - comment 3 (R3): the zh-Hant and ja link rows of Q9 and Q10, which replace comment 1's;
+    - comment 4 (R4): the owner's approval of Q3's new answer, the same words as comment 2's."""
+    c1, b1 = comment(275, 1)
+    c2, b2 = comment(275, 2)
+    c3, b3 = comment(275, 3)
+    c4, b4 = comment(275, 4)
+    q3_r2 = by_loc([(LOC_LABEL[k], "", unwrap(v)) for k, v in
+                    re.findall(r"^- \[[ x]\] \*\*(en|zh-Hant|ja)\*\*[：:]\s*(.+)$", section(b2, "### 第 3 題"), re.M)])
+    q3_r4 = by_loc([(LOC_LABEL[k], "", unwrap(v)) for k, v in
+                    re.findall(r"^- \[[ x]\] \*\*(en|zh-Hant|ja)\*\*[：:]\s*(.+)$", b4, re.M)])
+    assert set(q3_r2) == set(q3_r4) == set(FIRST) and q3_r2 == q3_r4, "comment 4 does not approve comment 2's Q3 answers as written"
+    # comment 1: '### 1. ...' and '### 2. ...' each hold three '- [ ] <locale>' items with one fenced block
+    parts = re.split(r"^### ([12])\. .*$", b1, flags=re.M)
+    blocks = {}
+    for num, text in zip(parts[1::2], parts[2::2]):
+        for loc, block in re.findall(r"^- \[[ x]\] (en|zh-Hant|ja)\n```\n(.*?)\n```", text, re.M | re.S):
+            head, answer, more = block.split("\n\n")
+            assert head.startswith("### ") and more.split(":")[0].split("：")[0] in ("More", "更多", "詳しく"), (num, loc, block[:80])
+            blocks[(int(num), LOC_LABEL[loc])] = (head[4:], answer, more)
+    assert sorted(blocks) == [(n, l) for n in (1, 2) for l in sorted(FIRST)], sorted(blocks)
+    r3 = {row[0]: row[1:] for row in data_tables(b3)[0][1:]}      # 連結列（Q9）, 連結列（Q10） -> [zh-Hant, ja]
+    assert set(r3) == {"連結列（Q9）", "連結列（Q10）"}, r3
+    for loc in LOCALES:
+        if loc in FIRST:
+            q3, q3src = q3_r2[loc], [comment_source(c2, 2, f"### 第 3 題, {loc}"), comment_source(c4, 4, f"approval, {loc}")]
+            qa = {}
+            for key, num in (("q9", 1), ("q10", 2)):
+                q, a, more = blocks[(num, loc)]
+                msrc = comment_source(c1, 1, f"### {num}., {loc}, link row")
+                if loc in ("zh-hant", "ja"):
+                    more = r3[f"連結列（Q{9 if num == 1 else 10}）"][0 if loc == "zh-hant" else 1]
+                    msrc = comment_source(c3, 3, f"table, 連結列（Q{9 if num == 1 else 10}）, {loc}")
+                qa[key] = (q, a, more, comment_source(c1, 1, f"### {num}., {loc}"), msrc)
+            ver = "R1+R3" if loc != "en" else "R1"
+        else:
+            t = r2_table(b2, loc)
+            q3, q3src = t["Q3 答（改）"], [comment_source(c2, 2, f"### {loc} table, Q3 答（改）")]
+            qa = {key: (t[f"{Q} 問"], t[f"{Q} 答"], t[f"連結列（{Q}）"], comment_source(c2, 2, f"### {loc} table, {Q} 問/答"),
+                        comment_source(c2, 2, f"### {loc} table, 連結列（{Q}）")) for key, Q in (("q9", "Q9"), ("q10", "Q10"))}
+            ver = "R2"
+        put(("faq275", loc, "q3"), esc(q3), slot={"locale": loc, "page": "index", "field": "faq_a", "source": q3src,
+                                                  "item": "#275 Q3 answer (iPhone and iPad)", "version": ver if loc not in FIRST else "R2+R4"})
+        for key in ("q9", "q10"):
+            q, a, more, qsrc, msrc = qa[key]
+            DATA["faq275"][loc][key] = [esc(q), esc(a), inline(more)]
+            for j, (field, kind) in enumerate((("faq_q", "question"), ("faq_a", "answer"))):
+                SLOTS.append({"locale": loc, "page": "index", "field": field, "source": qsrc, "item": f"#275 {key.upper()} {kind}", "version": ver,
+                              "path": ["faq275", loc, key, j]})
+            SLOTS.append({"locale": loc, "page": "index", "field": "p", "source": msrc, "item": f"#275 {key.upper()} link row", "version": ver,
+                          "path": ["faq275", loc, key, 2]})
+
+
 # ---- main -------------------------------------------------------------------------------------
 
-INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240, 241: ingest_241, 245: ingest_245, 243: ingest_243, 2421: ingest_vsources}
+INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240, 241: ingest_241, 245: ingest_245, 243: ingest_243, 2421: ingest_vsources, 275: ingest_275}
 
 
 def write() -> None:

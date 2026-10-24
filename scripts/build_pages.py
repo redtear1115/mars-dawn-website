@@ -268,6 +268,7 @@ UI = {
         "reading-agent-output": "Reading what your agent hands back", "agent-transparency": "Agent transparency",
         "reviewing-agent-plans": "Reviewing an agent plan", "agent-design-patterns": "Agent design patterns",
         "changelog": "Changelog",
+        "roadmap": "Roadmap",
         "reading-notes": "Editor's reading notes", "reading-notes-anthropic": "Reading notes: Anthropic",
         "reading-notes-chip-huyen": "Reading notes: Chip Huyen", "reading-notes-lilian-weng": "Reading notes: Lilian Weng",
         "reading-notes-harrison-chase": "Reading notes: Harrison Chase", "reading-notes-langchain": "Reading notes: LangChain (Jess Ou)",
@@ -298,6 +299,7 @@ UI = {
         "reading-agent-output": "讀懂 agent 交回來的 Markdown", "agent-transparency": "agent 的透明",
         "reviewing-agent-plans": "審 agent 計畫", "agent-design-patterns": "agent 設計模式",
         "changelog": "更新紀錄",
+        "roadmap": "路線圖",
         "reading-notes": "編者的閱讀筆記", "reading-notes-anthropic": "閱讀筆記：Anthropic",
         "reading-notes-chip-huyen": "閱讀筆記：Chip Huyen", "reading-notes-lilian-weng": "閱讀筆記：Lilian Weng",
         "reading-notes-harrison-chase": "閱讀筆記：Harrison Chase", "reading-notes-langchain": "閱讀筆記：LangChain（Jess Ou）",
@@ -4360,6 +4362,7 @@ import brand_film  # noqa: E402
 import brand_film_themes  # noqa: E402
 import approved_copy  # noqa: E402
 import rich_pages  # noqa: E402
+import roadmap272  # noqa: E402
 import loop_anim  # noqa: E402
 import templates_pages  # noqa: E402
 
@@ -5604,7 +5607,7 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
 
 PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "markdown-to-pdf", "vs", "vs/macmd-viewer", "best-markdown-viewer-mac", "cli", "cli/agents", "cli/skill",
               "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/agents", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
-              "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog",
+              "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog", "roadmap",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
 SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
@@ -5617,7 +5620,7 @@ SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support",
                   "sharing-exported-pdfs": "sharing-exported-pdfs", "reviewing-ai-output": "reviewing-ai-output",
                   "reading-agent-output": "reading-agent-output", "agent-transparency": "agent-transparency",
                   "reviewing-agent-plans": "reviewing-agent-plans", "agent-design-patterns": "agent-design-patterns",
-                  "changelog": "changelog",
+                  "changelog": "changelog", "roadmap": "roadmap",
                   "reading-notes": "reading-notes", "reading-notes/anthropic-building-effective-agents": "reading-notes-anthropic", "reading-notes/chip-huyen-agents": "reading-notes-chip-huyen", "reading-notes/lilian-weng-llm-agents": "reading-notes-lilian-weng", "reading-notes/harrison-chase-what-is-an-agent": "reading-notes-harrison-chase", "reading-notes/langchain-what-is-an-agent": "reading-notes-langchain", "reading-notes/andrew-ng-design-patterns": "reading-notes-andrew-ng",
                   "templates": "templates", "templates/spec": "templates-spec",
                   "templates/flowchart": "templates-flowchart", "templates/meeting-notes": "templates-meeting-notes"}
@@ -5644,6 +5647,8 @@ def _base_pages() -> dict:
 def all_pages() -> dict:
     merged = _base_pages()
     merged.update(EXTRA_PAGES)
+    merged.update({(locale, "roadmap"): roadmap272.page(locale, changelog_date(locale, roadmap272.LAST_UPDATED))
+                   for locale in LOCALES})   # /roadmap/ (#272), in every locale the site serves
     for (locale, slug), page in merged.items():
         body = page["body"]
         if THEME_GALLERY_MARK in body:
@@ -5762,6 +5767,14 @@ def apply_seo_copy(merged: dict) -> dict:
         stays = promo_data.DATA.get("stays", {}).get(locale)   # #240: the rewritten first question, then the privacy questions
         home_items = ([stays["faq"]["Q1"]] if stays else []) + copy["home_faq"] \
             + ([stays["faq"][k] for k in ("P1", "P2", "P3", "P4") if k in stays["faq"]] if stays else [])
+        # #272 (c): the iPhone and iPad question (the third of the home FAQ) gets a link row to /roadmap/.
+        # #275: its answer is replaced by the approved one, and two questions are added at the end of the home FAQ.
+        iphone = [i for i, item in enumerate(home_items) if len(item) == 2 and "iPhone" in item[0] and "iPad" in item[0]]
+        assert len(iphone) == 1 and iphone[0] == 2, f"{locale}: the home FAQ's third question is not the iPhone and iPad one"
+        faq275 = promo_data.DATA["faq275"][locale]
+        home_items[2] = [home_items[2][0], faq275["q3"], rich_pages.md_inline(roadmap272.FAQ_MORE[locale])]
+        home_items += [faq275["q9"], faq275["q10"]]
+        assert len(home_items) == 10, f"{locale}: the home FAQ has {len(home_items)} questions, want 10 (#275)"
         out[(locale, "index")] = {**home, "body": home["body"].rstrip() + "\n" + faq_html(copy["faq_h"], home_items) + "\n"}
         pay = out[(locale, "pay-once")]
         out[(locale, "pay-once")] = {**pay, "body": pay["body"].rstrip() + "\n" + faq_html(copy["faq_h"], copy["pay_faq"]) + "\n"}
@@ -6135,7 +6148,8 @@ def apply_app_changelog(merged: dict) -> dict:
         assert versions and len(versions) == len(re.findall(r"<h2", cli)), f"{locale}/changelog: a heading is not a CLI version"
         cli = re.sub(r"<h2>(marsdawn ([0-9.]+))</h2>",
                      lambda m: f'<h3 id="marsdawn-{m.group(2).replace(".", "-")}">{m.group(1)}</h3>', cli)
-        body = (head + sep + "\n\n" + app_versions_html(locale) + "\n\n"
+        body = (head + sep + f'\n\n<p>{rich_pages.md_inline(roadmap272.CHANGELOG_BACKLINK[locale])}</p>\n\n'   # #272 (e)
+                + app_versions_html(locale) + "\n\n"
                 + f'<h2>{copy["cli_h"]}</h2>\n<p>{copy["cli_line"]}</p>\n\n' + cli.lstrip("\n"))
         out[(locale, "changelog")] = {**page, "description": copy["description"], "body": body}
     return out
@@ -6240,14 +6254,14 @@ def site_header_html(locale: str, slug=None, *, switch: bool = True, back: str =
 
 
 def site_footer_nav_html(locale: str, current=None) -> str:
-    """The footer's navigation: six groups, each a heading and its pages, 31 pages in all, then the
+    """The footer's navigation: six groups, each a heading and its pages, 32 pages in all, then the
     Cookie settings button last in the last group (consent.js binds it by id). A page this locale
     doesn't have is left out. `current` is the page's slug, marked aria-current="page" when it is here."""
     ui, t = UI[locale], ia_data.DATA["locales"][locale]
     sections = []
     for key, name, pages in zip(FOOTER_KEYS, t["footer"], ia_data.DATA["footer_pages"]):
         rows = []
-        for href in pages:
+        for href in (*pages, "/roadmap/") if key == "product" else pages:   # /roadmap/ (#272) follows the changelog
             slug = href.strip("/")
             if has_page(locale, slug):
                 mark = ' aria-current="page"' if slug == current else ""
@@ -7007,8 +7021,8 @@ MarsDawn is **not**:
 - **not a web app.** It runs locally as a macOS app; there is no server and no browser tab.
 - **not read-only.** It is a full Markdown editor: you write and edit the source, not just view rendered output.
 - **not a subscription.** It is a free download with a 14-day trial, then a USD 4.99 one-time in-app purchase to unlock it.
-- **not cross-platform.** It is macOS only; there is no Windows, Linux, iOS or Android build.
-- **not an AI product.** The app itself contains no AI. It is built for reviewing Markdown that an AI agent writes, and does not include an AI model of its own.
+- **not cross-platform.** It is macOS only for now; there is no Windows, Linux or Android build. An iPhone and iPad version is in progress and not yet available; see the [roadmap]({BASE_URL}/roadmap/).
+- **not an AI product.** The app itself currently contains no AI. It is built for reviewing Markdown that an AI agent writes, and does not include an AI model of its own.
 
 ## More
 

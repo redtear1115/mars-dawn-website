@@ -103,7 +103,9 @@ Non. MarsDawn se télécharge gratuitement, avec 14 jours d’essai de toutes le
 
 ### MarsDawn fonctionne-t-il sur iPhone ou iPad ?
 
-Non. MarsDawn est une app Mac et demande macOS 26 ou une version ultérieure. Il n’existe pas d’app pour iPhone ou iPad.
+Pas encore. MarsDawn est une app Mac et demande macOS 26 ou une version ultérieure. Une version pour iPhone et iPad est en préparation, mais elle n’est pas encore disponible.
+
+En savoir plus : [Feuille de route](/fr/roadmap/)
 
 ### Claude Code peut-il ouvrir des fichiers dans MarsDawn ?
 
@@ -132,6 +134,18 @@ En savoir plus : [Politique de confidentialité](/fr/privacy/#when-marsdawn-uses
 Non. L’app et ce site sont distincts : l’app ne collecte rien, et une visite ne peut être enregistrée que sur marsdawn.southern-light.dev. Sur le site, Google Analytics démarre refusé et ne pose de cookies qu’après « Accepter » dans le bandeau ; « Réglages des cookies » en pied de page permet de changer ce choix. Les requêtes de l’app pour les fichiers de thème sous /themes/ ne sont pas enregistrées.
 
 En savoir plus : [Politique de confidentialité](/fr/privacy/#the-website)
+
+### Pourquoi MarsDawn plutôt qu’une autre app ?
+
+Vous n’en avez peut-être pas besoin. Si vous écrivez surtout vos propres notes, une app de notes comme Obsidian vous conviendra mieux. Si vous passez vos journées dans VS Code, son aperçu intégré est gratuit. Si vous voulez seulement regarder rapidement vos fichiers dans le Finder, une extension Coup d’œil gratuite suffit. Si vos PDF ont besoin de numéros de page, MarsDawn n’en ajoute pas. MarsDawn sert à lire et relire le Markdown écrit par un agent : la source à côté d’un aperçu en direct, une modification de votre agent que vous annulez en une seule étape, et un fichier ouvert à la ligne exacte. S’il ne vous convient pas, écrivez-nous pour nous dire pourquoi.
+
+En savoir plus : [MarsDawn comparé aux autres outils](/fr/vs/) · [Meilleur lecteur Markdown pour Mac](/fr/best-markdown-viewer-mac/)
+
+### MarsDawn sera-t-il maintenu dans la durée ?
+
+Oui. Chaque mise à jour depuis l’arrivée de MarsDawn sur le Mac App Store figure dans l’historique des versions, et une version pour iPhone et iPad est en préparation. Le cœur de rendu de MarsDawn et l’outil en ligne de commande gratuit marsdawn sont déjà open source sous licence Apache-2.0, dans mars-dawn-kit. Et si le développeur de MarsDawn arrête un jour de maintenir l’app, le code source de l’app elle-même sera publié sous une licence open source, pour que d’autres puissent la reprendre.
+
+En savoir plus : [Historique des versions](/fr/changelog/) · [Feuille de route](/fr/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
 ## L’app, telle qu’elle est
 
@@ -189,6 +203,7 @@ Sur cette capture d’écran :
 - [Relire le plan d’un agent](https://marsdawn.southern-light.dev/fr/reviewing-agent-plans/index.md): Une méthode en six étapes pour relire le plan qu’un agent IA vous remet avant qu’il ne s’exécute, en cinq minutes environ et dans n’importe quel éditeur, avec un exemple détaillé.
 - [Patrons de conception d’agents](https://marsdawn.southern-light.dev/fr/agent-design-patterns/index.md): Réflexion, utilisation d’outils, planification et collaboration multi-agents, tels qu’Andrew Ng les a décrits, et ce que chacun vous rend généralement à lire.
 - [Historique des versions](https://marsdawn.southern-light.dev/fr/changelog/index.md): Ce qui a changé dans chaque version de l’app MarsDawn et de l’outil en ligne de commande gratuit marsdawn.
+- [Feuille de route](https://marsdawn.southern-light.dev/fr/roadmap/index.md): Ce qui est en cours et ce qui vient ensuite pour MarsDawn sur Mac, iPhone et iPad, version par version. Sans dates ; les idées non planifiées sont signalées.
 - [Notes de lecture de la rédaction](https://marsdawn.southern-light.dev/fr/reading-notes/index.md): Six courtes notes sur ce que les gens qui construisent des agents IA avancent réellement — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain et Andrew Ng — et ce que cela signifie pour la personne qui doit lire ce qu’un tel agent rend.
 - [Notes de lecture : Anthropic](https://marsdawn.southern-light.dev/fr/reading-notes/anthropic-building-effective-agents/index.md): Le guide d’Anthropic de décembre 2024 pour qui construit des agents sépare workflows et agents et décrit cinq patrons de workflow, dont un où un second appel LLM relit le premier. Ce que cela signifie pour ce qui atterrit dans votre dossier.
 - [Notes de lecture : Chip Huyen](https://marsdawn.southern-light.dev/fr/reading-notes/chip-huyen-agents/index.md): L’essai « Agents » de Chip Huyen de janvier 2025 partage les actions d’un agent en read-only et write. Pourquoi cette distinction est un moyen rapide de repérer, dans un plan, la ligne qui mérite un regard plus attentif avant d’approuver.
