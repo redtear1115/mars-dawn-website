@@ -30,8 +30,8 @@ MarsDawn is **not**:
 - **not a web app.** It runs locally as a macOS app; there is no server and no browser tab.
 - **not read-only.** It is a full Markdown editor: you write and edit the source, not just view rendered output.
 - **not a subscription.** It is a free download with a 14-day trial, then a USD 4.99 one-time in-app purchase to unlock it.
-- **not cross-platform.** It is macOS only; there is no Windows, Linux, iOS or Android build.
-- **not an AI product.** The app itself contains no AI. It is built for reviewing Markdown that an AI agent writes, and does not include an AI model of its own.
+- **not cross-platform.** It is macOS only for now; there is no Windows, Linux or Android build. An iPhone and iPad version is in progress and not yet available; see the [roadmap](https://marsdawn.southern-light.dev/roadmap/).
+- **not an AI product.** The app itself currently contains no AI. It is built for reviewing Markdown that an AI agent writes, and does not include an AI model of its own.
 
 ## More
 
