@@ -2,7 +2,7 @@
 
 How MarsDawn, the Markdown editor for macOS, handles your information.
 
-Last updated 2026-10-12
+Last updated 2026-10-25
 
 > **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
 
@@ -25,11 +25,11 @@ Once you accept, Google Analytics sets its own cookies (`_ga` and `_ga_<measurem
 
 ## Launch survey
 
-From 20 October to 2 November 2026, MarsDawn runs a short survey on Google Forms. Filling it in is up to you, and the app itself still collects nothing.
+From 26 October to 8 November 2026, MarsDawn runs a short survey on Google Forms. Filling it in is up to you, and the app itself still collects nothing.
 
 - **What it collects.** Your answers and the email address you type. Nothing else.
-- **The email.** It's used to send you a code if you're drawn. If you don't tick the update box, it's deleted within 30 days after the codes are sent. If you tick it, it's kept only to send MarsDawn version-update emails, each with a one-click unsubscribe, until you unsubscribe.
-- **The answers.** After the draw they're kept without the email, and they may appear anonymised and aggregated in a published summary.
+- **The email.** It's used to send a code to the first 500 respondents. If you don't tick the update box, it's deleted within 30 days after the codes are sent. If you tick it, it's kept only to send MarsDawn version-update emails, each with a one-click unsubscribe, until you unsubscribe.
+- **The answers.** After the survey closes they're kept without the email, and they may appear anonymised and aggregated in a published summary.
 - **Never shared or sold,** and never used for anything else.
 - **Where it's stored.** Google Forms stores the responses with Google, under Google's privacy policy.
 - **Deletion.** To have your response or email deleted sooner, write to support@southern-light.dev.

@@ -2,7 +2,7 @@
 
 Cómo trata tu información MarsDawn, el editor de Markdown para macOS.
 
-Última actualización: 2026-10-12
+Última actualización: 2026-10-25
 
 > **La app MarsDawn no recopila ningún dato sobre ti.** No hay cuenta, ni publicidad, ni seguimiento. Tus documentos y tus ajustes se quedan en tu Mac.
 
@@ -25,11 +25,11 @@ Una vez que aceptas, Google Analytics instala sus propias cookies (`_ga` y `_ga_
 
 ## Encuesta de lanzamiento
 
-Del 20 de octubre al 2 de noviembre de 2026, MarsDawn realiza una breve encuesta en Formularios de Google. Rellenarla depende de ti, y la propia app sigue sin recopilar nada.
+Del 26 de octubre al 8 de noviembre de 2026, MarsDawn realiza una breve encuesta en Formularios de Google. Rellenarla depende de ti, y la propia app sigue sin recopilar nada.
 
 - **Qué se recopila.** Tus respuestas y la dirección de correo electrónico que escribas. Nada más.
-- **El correo electrónico.** Se usa para enviarte un código si resultas elegido en el sorteo. Si no marcas la casilla de avisos de novedades, se elimina en los 30 días siguientes al envío de los códigos. Si la marcas, se conserva solo para enviarte correos sobre nuevas versiones de MarsDawn, cada uno con un enlace para darte de baja con un clic, hasta que te des de baja.
-- **Las respuestas.** Tras el sorteo se conservan sin el correo electrónico y pueden aparecer de forma anónima y agregada en un resumen publicado.
+- **El correo electrónico.** Se usa para enviar un código a las primeras 500 personas que respondan. Si no marcas la casilla de avisos de novedades, se elimina en los 30 días siguientes al envío de los códigos. Si la marcas, se conserva solo para enviarte correos sobre nuevas versiones de MarsDawn, cada uno con un enlace para darte de baja con un clic, hasta que te des de baja.
+- **Las respuestas.** Al cerrar la encuesta se conservan sin el correo electrónico y pueden aparecer de forma anónima y agregada en un resumen publicado.
 - **Nunca se comparten ni se venden,** y nunca se usan para nada más.
 - **Dónde se almacenan.** Formularios de Google guarda las respuestas en Google, conforme a la política de privacidad de Google.
 - **Eliminación.** Para que eliminemos antes tu respuesta o tu correo electrónico, escribe a support@southern-light.dev.
