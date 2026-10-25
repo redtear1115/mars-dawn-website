@@ -487,7 +487,7 @@ SKILL_INSTALL = '<h2>Claude Code にインストールする</h2>\n<p>コマン�
 
 def build(k) -> dict:
     k.set_skill_install(SKILL_INSTALL)
-    ui = {'features': '機能一覧', 'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で .md ファイルを開く方法', 'mermaid-preview-mac': 'Mac で Mermaid をプレビューする', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'プレビューテーマと PDF 書き出し', 'themes-new': 'テーマを作る', 'themes-agents': 'エージェントとテーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'roadmap': 'ロードマップ', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': '分析用クッキーを使います。「同意する」を選ぶまで無効です。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
+    ui = {'features': '機能一覧', 'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で .md ファイルを開く方法', 'mermaid-preview-mac': 'Mac で Mermaid をプレビューする', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'テーマ', 'themes-new': 'テーマを作る', 'themes-agents': 'エージェントとテーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'roadmap': 'ロードマップ', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': '分析用クッキーを使います。「同意する」を選ぶまで無効です。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
     store_chip = 'Mac App Store で配信中'
     schema_notes = {'export': 'export 成功時', 'open': 'open 成功時、marsdawn 0.5.1 以降、サイドバーに表示するフォルダを含む', 'open_v2': 'open 成功時、marsdawn 0.3.0〜0.5.0', 'error': '失敗時、両方のコマンド共通、marsdawn 0.5.2 以降', 'open_v1': 'open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）', 'error_v1': '失敗時、両方のコマンド共通、marsdawn 0.5.1 以前'}
     example_plan = '# 計画：書き出しを高速化\n\nこの計画はエージェントが書きました。内容を確認してから、PDF にします。\n\n## ステップ\n\n| ステップ | 担当 | 状況 |\n|------|-------|--------|\n| 遅いページを計測する | エージェント | 完了 |\n| レンダリング済み図をキャッシュする | エージェント | レビュー中 |\n\n50 ページの文書で目標とするのは $t < 2\\,\\text{s}$：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  ドラフト --> レビュー --> 公開\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -653,7 +653,7 @@ def build(k) -> dict:
     }
     pages['limits'] = {
         "title": "MarsDawn ができないこと · MarsDawn",
-        "description": '同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。組み込みテーマは4種類で、テーマギャラリーにはさらに多くあります。購入前に知っておいてください。',
+        "description": '同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。',
         "intro": f"""
 <section class="intro">
   <h1>MarsDawn ができないこと。</h1>
@@ -674,7 +674,7 @@ def build(k) -> dict:
   <li><strong>編集：</strong>左に Markdown を書き、右でページを読みます。ページ自体は編集できません。</li>
   <li><strong>形式：</strong>MarsDawn は PDF の書き出しとプリントに対応していますが、Word ファイルへの書き出しはできません。</li>
   <li><strong>その他のファイル：</strong>プレーンテキストファイルと PDF は読み取り専用で開きます。</li>
-  <li><strong>テーマ：</strong>夜明け、クラシック、モダン、ビビッドの4種類が組み込まれており、それぞれライトとダークがあります。ほかのテーマは<a href="/ja/themes/gallery/">テーマギャラリー</a>にあり、「設定 › 外観モード › テーマを追加…」からインストールするか、ブラウザで<a href="/ja/themes/new/">自分で作る</a>こともできます。テーマは配色とスタイルの設定で、プラグインではありません。</li>
+  <li><strong>テーマ：</strong>夜明け、クラシック、モダン、ビビッドの4種類が内蔵されており、それぞれライトとダークがあります。また、審査済みの<a href="/ja/themes/gallery/">テーマギャラリー</a>からさらにインストールできます（「設定 ▸ 外観モード ▸ テーマを追加…」）。テーマは色といくつかのスタイルオプションを設定するもので、カスタム CSS は使えません。詳しくは<a href="/ja/themes/">テーマ</a>をご覧ください。</li>
   <li><strong>プラグイン：</strong>MarsDawn にプラグインや拡張機能はありません。</li>
 </ul>
 <h2>試用期間が終わったら</h2>
@@ -1134,15 +1134,13 @@ swift build -c release --product marsdawn
 """,
     }
     pages['themes'] = {
-        "title": 'MarsDawn のプレビューテーマと PDF 書き出し · MarsDawn',
-        "description": 'それぞれライトとダークを持つ4種類のプレビューテーマと、今見ているテーマに合わせた1つの PDF・プリント書き出し。ブラウザで自分のテーマを作り、コミュニティギャラリーも閲覧できます。',
-        "body": """
+        "title": 'プレビューテーマとテーマギャラリー · MarsDawn',
+        "description": 'それぞれライトとダークを備えた4種類の内蔵プレビューテーマに加え、Mac 版 MarsDawn の設定から開ける厳選ギャラリーも。クイックルックにも選んだテーマが反映されます。',
+        "body": '''
 <section class="intro">
-  <h1>8つの見た目、1つの書き出し。</h1>
-  <p>MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種類のプレビューテーマが付属し、それぞれライトとダークがあります。文書を読むための8通りの組み合わせです。PDF に書き出す、またはプリントすると、そのとき読んでいたものと同じ見た目でページが出てきます。</p>
+  <h1>4種類のテーマを内蔵。ギャラリーにはさらに多く。</h1>
+  <p>MarsDawn には 夜明け、クラシック、モダン、ビビッド の4種類のプレビューテーマが内蔵されており、それぞれライトとダークの配色があります。バージョン 1.1 からはアプリ内のテーマギャラリーからさらに追加でき、Finder のクイックルックでも選んだテーマで書類が表示されます。</p>
 </section>
-
-<div class="summary"><p><strong>4つのテーマ × ライトとダーク＝文書を読む8つの方法があり、書き出しはどれを選んでいても対応します。</strong><a href="/ja/themes/new/">ブラウザで自分のテーマを作る</a>か、<a href="/ja/themes/gallery/">ギャラリー</a>で他の人が投稿したものを見てみましょう。</p></div>
 
 <h2>4種類のテーマ</h2>
 <!--theme-gallery-->
@@ -1154,11 +1152,30 @@ swift build -c release --product marsdawn
 </ul>
 <p>それぞれ独自のライトとダークの配色を持つので、Mac の外観を切り替えると、インターフェースの色だけでなくテーマの配色自体も切り替わります。</p>
 
-<h2>PDF 書き出しとプリントは同じテーマを使う</h2>
-<p>PDF に書き出す、またはプリントすると、テーマのライトカラーが使われます。Mermaid 図はそこに描き込まれ、コードブロックは構文のハイライトを保ち、改ページは見出しをそのセクションから切り離したり、図を途中で切ったりしないよう配慮されます。無料の<a href="/ja/cli/">marsdawn コマンドラインツール</a>も同じ書き出しエンジンを使うので、スクリプトやエージェントも <code>--theme</code> で、4種類のどのテーマでも同一の PDF を作れます。</p>
+<h2>アプリ内のテーマギャラリー</h2>
+<p>MarsDawn で「設定 &#9656; 外観モード」を開き、「テーマを追加&#8230;」をクリックします。テーマギャラリーは開いたときに一覧を読み込みます。オンラインになるのは開いているあいだだけで、接続がないときは通知を表示し、内蔵の4つのテーマはそのまま使えます。</p>
+<ul>
+  <li>「インストール」は「ライトテーマ」と「ダークテーマ」の選択メニュー、および「表示 &#9656; プレビューのテーマ」にテーマを追加します。「取り除く」で削除します。</li>
+  <li>「テーマのアップデートを確認」は、新しいバージョンがないかギャラリーに再度問い合わせます。</li>
+  <li>テーマの用途で絞り込めます：エージェント出力のレビュー、技術ドキュメント、フォーマルな出力、メモ・共有。</li>
+  <li>「テーマを報告&#8230;」は、入力済みの GitHub issue または私たち宛てのメールを開きます。</li>
+</ul>
 
-<h2>自分のテーマを作り、他の人が作ったものも見る</h2>
-<p><a href="/ja/themes/new/">ブラウザでテーマを作れます</a>：色といくつかのスタイルオプションを選び、その場で確認し、レビュー用に GitHub の issue として送信します — インストールも git も不要です。<a href="/ja/themes/gallery/">ギャラリー</a>には、メンテナがレビューしてマージした投稿テーマが並び、用途で絞り込めます。アプリの「設定 › 外観モード › テーマを追加…」からインストールでき、Finder のクイックルックにも反映されます。</p>
+<h2>ギャラリーにあるテーマ</h2>
+<p>現在は8つのテーマがあり、すべて私たちが作成・レビューしたものです。よく知られた配色を基に読みやすく調整した Dracula、Gruvbox、Nord、Solarized に加え、ユーザーガイド、予算表、PRD、スプリントノート向けに作られた Guide、Ledger、Spec、Story を揃えています。</p>
+
+<h2>レビュー済みで、中身はデータのみ</h2>
+<p>すべてのテーマは、ギャラリーに表示される前に私たちがレビューしてマージしています。テーマは色といくつかの範囲が限られたオプションだけを収めた小さな JSON ファイルです。スクリプトも CSS も作者の画像も含まれず、MarsDawn はインストール前にすべての値を検証します。報告されたテーマは24時間以内にギャラリーから取り下げられます。有害なテーマであった場合は、次にギャラリーを開いたときにインストール済みの Mac からも削除され、使用中だった場合は夜明けに戻ります。</p>
+<p>ギャラリーが通信するのは <code>marsdawn.southern-light.dev/themes/v1/</code> のみで、ギャラリーを開くとき、アップデートを確認するとき、またはテーマをインストールするときに限られます。アカウント、識別子、Cookie、書類の内容は一切送信しません。</p>
+
+<h2>クイックルックにも選んだテーマを反映</h2>
+<p>Finder で Markdown ファイルを選んでスペースキーを押します。クイックルックは、インストールしたテーマも含めてあなたが選んだテーマでファイルを表示し、MarsDawn の「外観モード」の設定に従います。「ライト」と「ダーク」は選んだまま固定され、「システム」は Mac に合わせます。</p>
+
+<h2>PDF 書き出しとプリント</h2>
+<p>PDF に書き出す、またはプリントすると、ページには「ライト」に選んだテーマが使われます。Mermaid の図はそこに描き込まれ、コードブロックはハイライトを保ち、改ページは見出しをそのセクションから切り離したり、表や図を途中で切ったりしないよう配慮されます。無料の<a href="/ja/cli/">marsdawn コマンドラインツール</a>も同じ書き出しエンジンを使い、<code>--theme</code> で4つの内蔵テーマのどれでも指定できます。</p>
+
+<h2>自分のテーマを作る</h2>
+<p><a href="/ja/themes/new/">ブラウザでテーマを作れます</a>：色といくつかのスタイルオプションを選び、その場で反映を確認して、レビュー用に GitHub の issue として送信します。GitHub アカウントは必要ですが、インストールも git も不要です。送信しただけでは公開されず、私たちがレビューしてマージしたあとにのみ<a href="/ja/themes/gallery/">ギャラリー</a>に表示されます。</p>
 <p>エージェントと作業していますか？<a href="/ja/themes/agents/">エージェントにテーマを作らせて</a>、ブラウザで整えましょう。</p>
 
 <h2>次に</h2>
@@ -1167,7 +1184,7 @@ swift build -c release --product marsdawn
   <li>MarsDawn がまだできないこと：<a href="/ja/limits/">その一覧</a>。</li>
   <li>Markdown を使わない人に、書き出した PDF を渡す：<a href="/ja/sharing-exported-pdfs/">PDF を共有する</a>。</li>
 </ul>
-""",
+''',
     }
     pages['sharing-exported-pdfs'] = {
         "title": 'Markdown を教えずに、エージェントが書いたものを共有する · MarsDawn',
