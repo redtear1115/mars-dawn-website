@@ -44,7 +44,7 @@ The header and the footer (website #247), on every `index.html` page (the 404 pa
 notices page have no `index.html`; scripts/check_hreflang.py scans the same set; an independent audit
 covers those): the main navigation, which is in the markup twice (a wide and a narrow copy), has the
 five main pages in order under the page's own language prefix in each copy; the footer has six groups
-and 31 links plus one Cookie settings button last, and the same links, group for group, in every
+and 32 links plus one Cookie settings button last, and the same links, group for group, in every
 locale; every page the footer leaves out (the reading notes, the pattern hub, the template pages) is
 linked from another page's `<main>` in every locale, so none is an orphan; and no page carries a store
 chip. The language switch's own rules are check_hreflang.py's.
@@ -115,6 +115,10 @@ PRE_LAUNCH_WORDING = {
     "zh-hant": ["即將在 Mac App Store 上架", "還沒開賣"],
     "zh-hans": ["即将在 Mac App Store 上架", "还没开卖"],
     "ja": ["Mac App Store で近日公開", "近日公開：", "まだ販売されていません", "近日 Mac App Store に登場予定"],
+    "de": ["kommt bald"],
+    "fr": ["arrive bientôt"],
+    "es": ["llegará pronto"],
+    "ko": ["곧 Mac App Store에 올라갑니다"],
 }
 
 LISTING_HOST = "apps.apple.com"
@@ -122,7 +126,7 @@ LISTING_HOST = "apps.apple.com"
 # The header's five main pages, in order (website #247). Written out again on purpose.
 MAIN_NAV = ("features", "cli", "themes", "vs", "support")
 FOOTER_GROUPS = 6
-FOOTER_LINKS = 31
+FOOTER_LINKS = 32
 
 # The hero's calls to action, as (class, href) pairs in order, per phase.
 CTA = re.compile(r'<a class="cta ([\w-]+)" href="([^"]*)"')

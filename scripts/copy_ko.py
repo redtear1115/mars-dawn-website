@@ -616,7 +616,7 @@ def build(k) -> dict:
     }
     pages['limits'] = {
         "title": 'MarsDawn이 하지 않는 일 · MarsDawn',
-        "description": '동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 기본 테마는 네 가지이고, 갤러리에 더 있습니다. 구입 전에 알아 두세요.',
+        "description": '동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 테마는 바꿀 수 있지만 사용자 지정 CSS는 없습니다. 구입 전에 알아 두세요.',
         "intro": """
 <section class="intro">
   <h1>MarsDawn이 하지 않는 일.</h1>
@@ -637,7 +637,7 @@ def build(k) -> dict:
   <li><strong>편집:</strong> 왼쪽에서 Markdown을 쓰고 오른쪽에서 페이지를 읽습니다. 페이지 자체는 편집할 수 없습니다.</li>
   <li><strong>형식:</strong> MarsDawn은 PDF로 내보내고 프린트할 수 있지만, Word 파일로는 내보내지 않습니다.</li>
   <li><strong>기타 파일:</strong> 일반 텍스트 파일과 PDF는 읽기 전용으로 열립니다.</li>
-  <li><strong>테마:</strong> 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있습니다. 더 많은 테마는 <a href="/ko/themes/gallery/">테마 갤러리</a>에 있습니다. 설정 › 화면 모드 › 테마 더 받기…에서 설치하거나, 브라우저에서 <a href="/ko/themes/new/">직접 만들</a> 수 있습니다. 테마는 색과 스타일 설정일 뿐, 플러그인이 아닙니다.</li>
+  <li><strong>테마:</strong> 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있으며, 검토를 거친 <a href="/ko/themes/gallery/">테마 갤러리</a>(설정 ▸ 화면 모드 ▸ 테마 더 받기…)에서 더 설치할 수 있습니다. 테마는 색상과 몇 가지 스타일 옵션을 정할 뿐, 사용자 지정 CSS는 없습니다. <a href="/ko/themes/">테마</a>를 참고하세요.</li>
   <li><strong>플러그인:</strong> MarsDawn에는 플러그인이나 확장 기능이 없습니다.</li>
 </ul>
 <h2>체험이 끝난 뒤</h2>
@@ -1182,15 +1182,13 @@ swift build -c release --product marsdawn
     }
 
     pages['themes'] = {
-        "title": 'MarsDawn의 미리보기 테마와 PDF 내보내기 · MarsDawn',
-        "description": '라이트와 다크 팔레트를 각각 갖춘 미리보기 테마 네 가지, 그리고 지금 쓰는 테마를 그대로 따르는 PDF 내보내기와 프린트. 브라우저에서 테마를 직접 만들고, 커뮤니티 갤러리도 둘러보세요.',
-        "body": f"""
+        "title": '미리보기 테마와 테마 갤러리 · MarsDawn',
+        "description": '라이트와 다크를 각각 갖춘 기본 미리보기 테마 네 가지와, Mac용 MarsDawn 설정에서 여는 엄선된 테마 갤러리. 훑어보기도 고른 테마를 씁니다.',
+        "body": '''
 <section class="intro">
-  <h1>여덟 가지 모습, 하나의 내보내기.</h1>
-  <p>MarsDawn에는 새벽, 클래식, 모던, 비비드 네 가지 미리보기 테마가 있고, 각각 라이트와 다크 팔레트를 갖추고 있습니다. 문서를 읽는 여덟 가지 조합입니다. PDF로 내보내거나 프린트하면, 읽고 있던 바로 그 조합으로 페이지가 나옵니다.</p>
+  <h1>기본 테마 네 가지. 갤러리에 더 있습니다.</h1>
+  <p>MarsDawn에는 새벽, 클래식, 모던, 비비드 네 가지 미리보기 테마가 기본으로 들어 있으며, 각각 라이트와 다크 팔레트를 갖추고 있습니다. 버전 1.1부터는 앱 안의 테마 갤러리에서 테마를 더 추가할 수 있고, Finder의 훑어보기도 고른 테마로 문서를 보여 줍니다.</p>
 </section>
-
-<div class="summary"><p><strong>테마 네 가지 &#215; 라이트와 다크 = 문서를 읽는 여덟 가지 방법, 그리고 고른 것을 그대로 따르는 하나의 내보내기 경로.</strong> <a href="/ko/themes/new/">브라우저에서 직접 만들거나</a>, <a href="/ko/themes/gallery/">갤러리</a>에서 다른 사람이 올린 것을 둘러보세요.</p></div>
 
 <h2>네 가지 테마</h2>
 <!--theme-gallery-->
@@ -1202,11 +1200,30 @@ swift build -c release --product marsdawn
 </ul>
 <p>테마마다 라이트와 다크 변형이 따로 있어서, Mac의 화면 모드를 바꾸면 인터페이스만이 아니라 테마의 팔레트도 함께 바뀝니다.</p>
 
-<h2>PDF 내보내기와 프린트도 같은 테마로</h2>
-<p>PDF로 내보내거나 프린트하면 페이지는 테마의 라이트 팔레트를 씁니다. Mermaid 다이어그램이 그대로 그려지고, 코드 블록은 구문 강조를 유지하며, 페이지 나눔은 제목과 본문을 떼어 놓거나 다이어그램을 반으로 자르지 않습니다. 무료 <a href="/ko/cli/">marsdawn 명령줄 도구</a>도 같은 내보내기 엔진을 쓰므로, 스크립트나 에이전트도 <code>--theme</code>으로 네 가지 테마 중 어느 것이든 똑같은 PDF를 만듭니다.</p>
+<h2>앱 안의 테마 갤러리</h2>
+<p>MarsDawn에서 설정 &#9656; 화면 모드를 열고 테마 더 받기&#8230;를 클릭합니다. 테마 갤러리는 열릴 때 목록을 불러옵니다. 열려 있는 동안에만 온라인에 연결되며, 연결이 없으면 안내를 표시하고 기본 테마 네 가지는 그대로 작동합니다.</p>
+<ul>
+  <li>설치는 라이트 테마와 다크 테마 선택 메뉴 및 보기 &#9656; 미리보기 테마에 테마를 추가합니다. 제거는 테마를 삭제합니다.</li>
+  <li>테마 업데이트 확인은 갤러리에 새 버전이 있는지 다시 확인합니다.</li>
+  <li>테마의 용도별로 걸러 볼 수 있습니다: 에이전트 결과물 검토, 기술 문서, 공식 출력물, 노트 및 공유.</li>
+  <li>테마 신고&#8230;는 내용이 미리 채워진 GitHub 이슈나 저희에게 보내는 이메일을 엽니다.</li>
+</ul>
 
-<h2>직접 만들고, 다른 사람이 만든 것도 둘러보세요</h2>
-<p><a href="/ko/themes/new/">브라우저에서 테마를 만드세요</a>. 색과 몇 가지 스타일 옵션을 고르고, 실시간으로 적용된 모습을 본 뒤, 검토용 GitHub 이슈로 제출하면 됩니다. 설치도 git도 필요 없습니다. <a href="/ko/themes/gallery/">갤러리</a>에는 유지 관리자가 검토하고 병합한 제출 테마가 나열되며, 용도로 걸러 볼 수 있습니다. 앱의 설정 › 화면 모드 › 테마 더 받기…에서 설치할 수 있고, Finder의 훑어보기에도 적용됩니다.</p>
+<h2>갤러리에 있는 테마</h2>
+<p>현재 여덟 가지 테마가 있으며, 모두 저희가 만들고 검토했습니다. 잘 알려진 팔레트를 바탕으로 가독성을 손본 Dracula, Gruvbox, Nord, Solarized에 더해, 사용자 가이드, 예산표, PRD, 스프린트 노트를 위해 만든 Guide, Ledger, Spec, Story가 있습니다.</p>
+
+<h2>검토를 거치며, 오직 데이터뿐</h2>
+<p>모든 테마는 저희가 검토하고 병합한 뒤에야 갤러리에 나타납니다. 테마는 색상과 범위가 제한된 몇 가지 옵션으로 이루어진 작은 JSON 파일입니다. 스크립트도, CSS도, 작성자의 이미지도 없으며, MarsDawn은 설치하기 전에 모든 값을 검사합니다. 신고된 테마는 24시간 안에 갤러리에서 내려갑니다. 유해한 테마라면, 설치한 Mac에서 다음에 갤러리를 열 때 함께 제거되며, 사용 중이었다면 MarsDawn이 새벽으로 되돌립니다.</p>
+<p>갤러리는 <code>marsdawn.southern-light.dev/themes/v1/</code>에만 요청을 보내며, 갤러리를 열거나 업데이트를 확인하거나 테마를 설치할 때만 연결됩니다. 계정, 식별자, 쿠키는 물론 문서의 어떤 내용도 보내지 않습니다.</p>
+
+<h2>훑어보기도 고른 테마를 씁니다</h2>
+<p>Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르세요. 훑어보기는 설치한 테마를 포함해 고른 테마로 파일을 보여 주며, MarsDawn의 화면 모드 설정을 따릅니다. 라이트와 다크는 고른 대로 유지되고, 시스템은 Mac을 따릅니다.</p>
+
+<h2>PDF 내보내기와 프린트</h2>
+<p>PDF로 내보내거나 프린트하면 페이지는 라이트용으로 고른 테마를 씁니다. Mermaid 다이어그램이 그대로 그려지고, 코드 블록은 구문 강조를 유지하며, 페이지 나눔은 제목과 본문을 떼어 놓거나 표나 다이어그램을 반으로 자르지 않도록 피합니다. 무료 <a href="/ko/cli/">marsdawn 명령줄 도구</a>도 같은 내보내기 엔진을 쓰며, <code>--theme</code>으로 네 가지 기본 테마 중 어느 것이든 지정할 수 있습니다.</p>
+
+<h2>직접 만들기</h2>
+<p><a href="/ko/themes/new/">브라우저에서 테마를 만드세요</a>: 색상과 몇 가지 스타일 옵션을 고르고, 실시간으로 적용된 모습을 본 뒤, 검토용 GitHub 이슈로 제출하면 됩니다. GitHub 계정은 필요하지만, 설치도 git도 필요 없습니다. 제출만으로는 아무것도 게시되지 않으며, 저희가 검토하고 병합한 뒤에야 <a href="/ko/themes/gallery/">갤러리</a>에 나타납니다.</p>
 <p>에이전트와 작업하고 있나요? <a href="/ko/themes/agents/">에이전트에게 테마를 만들게 하고</a> 브라우저에서 다듬으세요.</p>
 
 <h2>다음</h2>
@@ -1215,7 +1232,7 @@ swift build -c release --product marsdawn
   <li>MarsDawn이 아직 하지 않는 일: <a href="/ko/limits/">목록</a>.</li>
   <li>Markdown을 쓰지 않는 사람에게 내보낸 PDF 전달하기: <a href="/ko/sharing-exported-pdfs/">PDF 공유하기</a>.</li>
 </ul>
-""",
+''',
     }
 
 
@@ -1235,12 +1252,12 @@ swift build -c release --product marsdawn
 """,
     }
     pages['themes/gallery'] = {
-        "title": "테마 갤러리: MarsDawn 커뮤니티 테마 · MarsDawn",
-        "description": "커뮤니티가 MarsDawn에 제출한 미리보기 테마를 둘러보고, 용도로 걸러 보고, 문제가 있으면 신고하세요. 브라우저에서 직접 만드세요. 설치도 git도 필요 없습니다.",
+        "title": "테마 갤러리: 검토를 거친 MarsDawn 테마 · MarsDawn",
+        "description": "개발자가 검토한 MarsDawn 미리보기 테마를 둘러보고, 용도로 걸러 보고, 문제가 있으면 신고하세요. 브라우저에서 직접 만들 수 있습니다. 설치도 git도 필요 없습니다.",
         "body": f"""
 <section class="intro">
   <h1>테마 갤러리</h1>
-  <p>커뮤니티가 제출한 미리보기 테마입니다. 각각 개발자가 검토하고 병합한 뒤에야 여기에 나타납니다. 용도로 걸러 보거나, <a href="/ko/themes/new/">브라우저에서 직접 만드세요</a>. 설치도 git도 필요 없습니다.</p>
+  <p>MarsDawn의 미리보기 테마로, 각각 개발자가 검토하고 병합한 뒤에야 여기에 나타납니다. 지금 있는 여덟 가지는 모두 Southern Light가 만들었으며, 그중 네 가지는 잘 알려진 팔레트를 바탕으로 했습니다. 용도로 걸러 보거나, <a href="/ko/themes/new/">브라우저에서 직접 만드세요</a>: 제출하면 검토를 요청하는 GitHub 이슈가 열리며, 설치도 git도 필요 없습니다.</p>
 </section>
 <!--community-theme-gallery-->
 <h2>크레딧 및 라이선스</h2>
@@ -1840,7 +1857,7 @@ flowchart LR
     }
 
     app_ui_languages = '영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어'
-    ui = {'features': '기능 한눈에 보기', 'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 .md 파일 여는 방법', 'mermaid-preview-mac': 'Mac에서 Mermaid 미리보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': 'PDF 내보내기', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '미리보기 테마와 PDF 내보내기', 'themes-new': '테마 만들기', 'themes-agents': '에이전트와 함께 테마 만들기', 'themes-gallery': '테마 갤러리', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'changelog': '변경 내역', 'reading-notes': '편집자의 독서 노트', 'reading-notes-anthropic': '독서 노트: Anthropic', 'reading-notes-chip-huyen': '독서 노트: Chip Huyen', 'reading-notes-lilian-weng': '독서 노트: Lilian Weng', 'reading-notes-harrison-chase': '독서 노트: Harrison Chase', 'reading-notes-langchain': '독서 노트: LangChain(Jess Ou)', 'reading-notes-andrew-ng': '독서 노트: Andrew Ng', 'consent_text': '분석 쿠키를 사용합니다. 수락하기 전에는 꺼져 있습니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
+    ui = {'features': '기능 한눈에 보기', 'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 .md 파일 여는 방법', 'mermaid-preview-mac': 'Mac에서 Mermaid 미리보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': 'PDF 내보내기', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '테마', 'themes-new': '테마 만들기', 'themes-agents': '에이전트와 함께 테마 만들기', 'themes-gallery': '테마 갤러리', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'changelog': '변경 내역', 'roadmap': '로드맵', 'reading-notes': '편집자의 독서 노트', 'reading-notes-anthropic': '독서 노트: Anthropic', 'reading-notes-chip-huyen': '독서 노트: Chip Huyen', 'reading-notes-lilian-weng': '독서 노트: Lilian Weng', 'reading-notes-harrison-chase': '독서 노트: Harrison Chase', 'reading-notes-langchain': '독서 노트: LangChain(Jess Ou)', 'reading-notes-andrew-ng': '독서 노트: Andrew Ng', 'consent_text': '분석 쿠키를 사용합니다. 수락하기 전에는 꺼져 있습니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
     store_chip = 'Mac App Store에서 판매 중'
     trait_link = {'features': ('기능 한눈에 보기', 'MarsDawn이 하는 모든 일을 한 페이지에.'), 'yours': ('내 글은 내 Mac에', '계정도, 동기화도, 클라우드도 없습니다.'), 'pay-once': ('무료로 체험하고, 한 번만 구입', '14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.'), 'pdf': ('PDF 내보내기', '다이어그램, 코드 하이라이트, 세심한 페이지 나눔.'), 'native': ('Mac 앱', '네이티브 윈도우와 탭, 자동 저장, 훑어보기.'), 'limits': ('MarsDawn이 하지 않는 일', '구입 전에 알아 둘 점.')}
     trait_nav_heading = 'MarsDawn에서 기대할 수 있는 것'

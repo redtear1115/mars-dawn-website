@@ -762,7 +762,7 @@ def build(k) -> dict:
     }
     pages['limits'] = {
         "title": 'Was MarsDawn nicht kann · MarsDawn',
-        "description": 'Keine Synchronisierung, keine iPhone- oder iPad-App, keine Plug-ins, keine Konten. Vier integrierte Themen, mehr in der Galerie. Gut zu wissen, bevor du kaufst.',
+        "description": 'Keine Synchronisierung, keine iPhone- oder iPad-App, keine Plug-ins, keine Konten. Themen, aber kein eigenes CSS. Vor dem Kauf gut zu wissen.',
         "intro": """
 <section class="intro">
   <h1>Was MarsDawn nicht kann.</h1>
@@ -783,7 +783,7 @@ def build(k) -> dict:
   <li><strong>Bearbeiten:</strong> Du schreibst links Markdown und liest rechts die Seite; die Seite selbst lässt sich nicht bearbeiten.</li>
   <li><strong>Formate:</strong> MarsDawn exportiert PDF und druckt, exportiert aber keine Word-Dateien.</li>
   <li><strong>Andere Dateien:</strong> Reine Textdateien und PDFs werden schreibgeschützt geöffnet.</li>
-  <li><strong>Themen:</strong> Enthalten sind Morgenrot, Klassisch, Modern und Lebhaft, jeweils hell und dunkel. Weitere findest du in der <a href="/de/themes/gallery/">Themengalerie</a>: Installiere eines über Einstellungen › Erscheinungsbild › Weitere Themes laden …, oder <a href="/de/themes/new/">bau dein eigenes</a> im Browser. Ein Thema besteht aus Farben und Stileinstellungen, es ist kein Plug-in.</li>
+  <li><strong>Themen:</strong> Enthalten sind Morgenrot, Klassisch, Modern und Lebhaft, jeweils hell und dunkel, und über die kuratierte <a href="/de/themes/gallery/">Themengalerie</a> (Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden …) lassen sich weitere installieren. Ein Thema legt Farben und ein paar Stiloptionen fest; eigenes CSS gibt es nicht. Siehe <a href="/de/themes/">Themen</a>.</li>
   <li><strong>Plug-ins:</strong> MarsDawn hat keine Plug-ins oder Erweiterungen.</li>
 </ul>
 <h2>Nach dem Test</h2>
@@ -1328,15 +1328,13 @@ swift build -c release --product marsdawn
     }
 
     pages['themes'] = {
-        "title": 'Vorschauthemen und PDF-Export in MarsDawn · MarsDawn',
-        "description": 'Vier Vorschauthemen mit je einer hellen und einer dunklen Palette und ein PDF- und Druckexport, der zum gewählten Thema passt. Bau dein eigenes Thema im Browser und sieh dir die Community-Galerie an.',
-        "body": f"""
+        "title": 'Vorschauthemen und Themengalerie · MarsDawn',
+        "description": 'Vier integrierte Vorschauthemen in Hell und Dunkel sowie eine kuratierte Galerie in den Einstellungen von MarsDawn für Mac. Die Übersicht nutzt das Thema.',
+        "body": '''
 <section class="intro">
-  <h1>Acht Looks, ein Export.</h1>
-  <p>MarsDawn bringt vier Vorschauthemen mit, Morgenrot, Klassisch, Modern und Lebhaft, jedes mit einer hellen und einer dunklen Palette: acht Kombinationen, um ein Dokument zu lesen. Exportierst du als PDF oder druckst, kommt die Seite in dem Thema heraus, in dem du gerade gelesen hast.</p>
+  <h1>Vier Themen integriert. Mehr in der Galerie.</h1>
+  <p>MarsDawn bringt vier Vorschauthemen mit, Morgenrot, Klassisch, Modern und Lebhaft, jedes mit einer hellen und einer dunklen Palette. Seit Version 1.1 lassen sich weitere aus der Themengalerie in der App hinzufügen, und die Übersicht im Finder zeigt Dokumente im gewählten Thema.</p>
 </section>
-
-<div class="summary"><p><strong>Vier Themen &#215; hell und dunkel = acht Arten, ein Dokument zu lesen, und ein Exportweg, der zu deiner Wahl passt.</strong> <a href="/de/themes/new/">Bau dein eigenes</a> im Browser, oder <a href="/de/themes/gallery/">sieh dir die Galerie an</a>, was andere eingereicht haben.</p></div>
 
 <h2>Die vier Themen</h2>
 <!--theme-gallery-->
@@ -1348,11 +1346,30 @@ swift build -c release --product marsdawn
 </ul>
 <p>Jedes hat seine eigene helle und dunkle Variante: Wechselst du das Erscheinungsbild deines Macs, wechselt die Palette des Themas mit, nicht nur die Oberfläche drumherum.</p>
 
-<h2>PDF-Export und Drucken verwenden dasselbe Thema</h2>
-<p>Exportierst du als PDF oder druckst, verwendet die Seite die helle Palette deines Themes: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Syntaxhervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und schneiden kein Diagramm in der Mitte durch. Das kostenlose <a href="/de/cli/">Befehlszeilenwerkzeug marsdawn</a> verwendet denselben Exporter, ein Skript oder ein Agent erzeugt also mit <code>--theme</code> das identische PDF, in jedem der vier Themes.</p>
+<h2>Die Themengalerie in der App</h2>
+<p>In MarsDawn Einstellungen &#9656; Erscheinungsbild öffnen und auf „Weitere Themes laden&#160;&#8230;“ klicken. Die Themengalerie lädt ihre Liste beim Öffnen. Sie geht nur online, solange sie geöffnet ist; ohne Verbindung zeigt sie einen Hinweis, und die vier integrierten Themen funktionieren weiter.</p>
+<ul>
+  <li>„Installieren“ fügt ein Thema zu den Auswahlen „Helles Thema“ und „Dunkles Thema“ sowie zu Darstellung &#9656; Vorschau-Thema hinzu. „Entfernen“ löscht es.</li>
+  <li>„Nach Theme-Updates suchen“ fragt in der Galerie erneut nach neueren Versionen.</li>
+  <li>Nach Verwendungszweck filtern: Agenten-Review, Technische Dokumente, Formelle Ausgabe, Notizen &amp; Teilen.</li>
+  <li>„Theme melden&#160;&#8230;“ öffnet ein vorausgefülltes GitHub-Issue oder eine E-Mail an uns.</li>
+</ul>
 
-<h2>Bau dein eigenes, und sieh dir an, was andere gemacht haben</h2>
-<p><a href="/de/themes/new/">Bau ein Thema in deinem Browser</a>: wähle Farben und ein paar Stiloptionen, sieh sie live angewendet und reiche es als GitHub-Issue zur Prüfung ein &#8212; keine Installation, kein git. <a href="/de/themes/gallery/">Die Galerie</a> zeigt jedes eingereichte Thema, das ein Maintainer geprüft und gemerged hat, filterbar nach Verwendungszweck. Installiere eines in der App über Einstellungen › Erscheinungsbild › Weitere Themes laden …, dann verwendet es auch die Übersicht im Finder.</p>
+<h2>Was in der Galerie ist</h2>
+<p>Heute acht Themen, alle von uns erstellt und geprüft: Dracula, Gruvbox, Nord und Solarized, adaptiert von den bekannten Paletten und für gute Lesbarkeit angepasst, sowie Guide, Ledger, Spec und Story für Benutzerhandbücher, Budgets, PRDs und Sprint-Notizen.</p>
+
+<h2>Geprüft, und nur Daten</h2>
+<p>Jedes Thema wird von uns geprüft und gemerged, bevor es in der Galerie erscheint. Ein Thema ist eine kleine JSON-Datei mit Farben und ein paar begrenzten Optionen: keine Skripte, kein CSS und keine Bilder vom Autor, und MarsDawn prüft jeden Wert vor der Installation. Ein gemeldetes Thema verlässt die Galerie innerhalb von 24 Stunden. Ist es schädlich, wird es beim nächsten Öffnen der Galerie auch von Macs entfernt, auf denen es installiert wurde, und MarsDawn wechselt zurück zu Morgenrot, falls es aktiv war.</p>
+<p>Die Galerie fragt nur <code>marsdawn.southern-light.dev/themes/v1/</code> ab, und nur beim Öffnen, bei der Suche nach Updates oder beim Installieren eines Themas. Sie sendet kein Konto, keine Kennung, keine Cookies und nichts aus Dokumenten.</p>
+
+<h2>Die Übersicht verwendet das gewählte Thema</h2>
+<p>Im Finder eine Markdown-Datei auswählen und die Leertaste drücken. Die Übersicht zeigt sie im gewählten Thema, einschließlich installierter Themen, und folgt der Einstellung „Erscheinungsbild“ in MarsDawn: „Hell“ und „Dunkel“ bleiben wie gewählt, „System“ folgt dem Mac.</p>
+
+<h2>PDF-Export und Drucken</h2>
+<p>Beim Exportieren als PDF oder beim Drucken verwendet die Seite das für „Hell“ gewählte Thema: Mermaid-Diagramme werden hineingezeichnet, Codeblöcke behalten ihre Hervorhebung, und Seitenumbrüche vermeiden es, eine Überschrift von ihrem Abschnitt zu trennen oder eine Tabelle oder ein Diagramm in der Mitte durchzuschneiden. Das kostenlose <a href="/de/cli/">Befehlszeilenwerkzeug marsdawn</a> verwendet denselben Exporter, mit jedem der vier integrierten Themen über <code>--theme</code>.</p>
+
+<h2>Eigenes Thema erstellen</h2>
+<p><a href="/de/themes/new/">Ein Thema im Browser erstellen</a>: Farben und ein paar Stiloptionen wählen, live angewendet sehen und als GitHub-Issue zur Prüfung einreichen. Erforderlich ist ein GitHub-Konto, aber weder eine Installation noch git. Eine Einreichung veröffentlicht von sich aus nichts; sie erscheint erst in der <a href="/de/themes/gallery/">Galerie</a>, nachdem wir sie geprüft und gemerged haben.</p>
 <p>Du arbeitest mit einem Agenten? <a href="/de/themes/agents/">Lass ihn das Thema erstellen</a>, und stimme es dann im Browser ab.</p>
 
 <h2>Weiter</h2>
@@ -1361,7 +1378,7 @@ swift build -c release --product marsdawn
   <li>Was MarsDawn noch nicht kann: <a href="/de/limits/">die Liste</a>.</li>
   <li>Ein exportiertes PDF an jemanden weitergeben, der kein Markdown nutzt: <a href="/de/sharing-exported-pdfs/">ein PDF teilen</a>.</li>
 </ul>
-""",
+''',
     }
 
 
@@ -1381,12 +1398,12 @@ swift build -c release --product marsdawn
 """,
     }
     pages['themes/gallery'] = {
-        "title": "Themen-Galerie: Community-Themen für MarsDawn · MarsDawn",
-        "description": "Durchsuche Vorschau-Themen, die die Community für MarsDawn eingereicht hat, filtere nach Szenario und melde ein Problem. Bau dein eigenes im Browser, ohne Installation und ohne git.",
+        "title": "Themengalerie: kuratierte Themen für MarsDawn · MarsDawn",
+        "description": "Geprüfte Vorschauthemen für MarsDawn durchsuchen, nach Szenario filtern oder ein Problem melden. Eigenes Thema im Browser erstellen, ohne git.",
         "body": f"""
 <section class="intro">
   <h1>Themen-Galerie</h1>
-  <p>Vorschau-Themen, die die Community eingereicht hat; jedes wurde vom Entwickler geprüft und gemerged, bevor es hier erscheint. Filtere nach Szenario, oder <a href="/de/themes/new/">baue dein eigenes</a> im Browser &#8212; keine Installation, kein git.</p>
+  <p>Vorschauthemen für MarsDawn, jedes vom Entwickler geprüft und gemerged, bevor es hier erscheint. Die bisherigen acht stammen von Southern Light, vier davon adaptiert von bekannten Paletten. Nach Szenario filtern oder <a href="/de/themes/new/">im Browser ein eigenes erstellen</a>: Das Einreichen öffnet ein GitHub-Issue zur Prüfung, ohne Installation und ohne git.</p>
 </section>
 <!--community-theme-gallery-->
 <h2>Credits &amp; Lizenz</h2>
@@ -1987,7 +2004,7 @@ Teilnehmende: _Namen_
     }
 
     app_ui_languages = 'Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch'
-    ui = {'features': 'Funktionen', 'home': 'MarsDawn', 'privacy': 'Datenschutzrichtlinie', 'support': 'Support', 'cli': 'Befehlszeile', 'agents': 'marsdawn für Agenten', 'using_cli': 'Die CLI verwenden', 'markdown-to-pdf': 'Markdown zu PDF', 'skill': 'Agent-Skill', 'view-markdown-on-mac': 'So öffnest du .md-Dateien auf dem Mac', 'mermaid-preview-mac': 'Mermaid-Vorschau auf dem Mac', 'vs-macmd-viewer': 'MacMD Viewer vs. MarsDawn', 'updated': f'Zuletzt aktualisiert am {k.UPDATED}', 'tagline': 'Lies, was dein Agent geschrieben hat.', 'slogan': 'Ein neuer Morgen für Markdown.', 'footer_store': f'MarsDawn gibt es im <a href="{k.LISTING_URL}">Mac App Store</a>.', 'footer_nav': 'Website', 'more': 'Mehr', 'yours': 'Deine Texte bleiben auf deinem Mac', 'pay-once': 'Kostenlos testen, einmal bezahlen', 'pdf': 'PDF-Export', 'native': 'Eine Mac-App', 'limits': 'Was MarsDawn nicht kann', 'mcp': 'MCP-Server', 'token-efficient-review': 'Review mit wenigen Tokens', 'vs-markdown-preview-tools': 'Markdown anderswo ansehen vs. MarsDawn', 'themes': 'Vorschau-Themen und PDF-Export', 'themes-new': 'Ein Thema erstellen', 'themes-agents': 'Mit deinem Agenten ein Thema erstellen', 'themes-gallery': 'Themen-Galerie', 'sharing-exported-pdfs': 'Exportierte PDFs teilen', 'reviewing-ai-output': 'Warum KI-Ergebnisse weiterhin einen menschlichen Leser brauchen', 'reading-agent-output': 'Lesen, was dein Agent zurückgibt', 'agent-transparency': 'Transparenz von Agenten', 'reviewing-agent-plans': 'Den Plan eines Agenten prüfen', 'agent-design-patterns': 'Entwurfsmuster für Agenten', 'changelog': 'Änderungsprotokoll', 'reading-notes': 'Lektürenotizen der Redaktion', 'reading-notes-anthropic': 'Lektürenotizen: Anthropic', 'reading-notes-chip-huyen': 'Lektürenotizen: Chip Huyen', 'reading-notes-lilian-weng': 'Lektürenotizen: Lilian Weng', 'reading-notes-harrison-chase': 'Lektürenotizen: Harrison Chase', 'reading-notes-langchain': 'Lektürenotizen: LangChain (Jess Ou)', 'reading-notes-andrew-ng': 'Lektürenotizen: Andrew Ng', 'consent_text': 'Wir nutzen Analyse-Cookies. Sie bleiben aus, bis du zustimmst.', 'consent_accept': 'Akzeptieren', 'consent_decline': 'Ablehnen', 'consent_aria': 'Cookie-Einwilligung', 'cookie_settings': 'Cookie-Einstellungen', 'view_markdown_source': 'Markdown-Quelltext ansehen'}
+    ui = {'features': 'Funktionen', 'home': 'MarsDawn', 'privacy': 'Datenschutzrichtlinie', 'support': 'Support', 'cli': 'Befehlszeile', 'agents': 'marsdawn für Agenten', 'using_cli': 'Die CLI verwenden', 'markdown-to-pdf': 'Markdown zu PDF', 'skill': 'Agent-Skill', 'view-markdown-on-mac': 'So öffnest du .md-Dateien auf dem Mac', 'mermaid-preview-mac': 'Mermaid-Vorschau auf dem Mac', 'vs-macmd-viewer': 'MacMD Viewer vs. MarsDawn', 'updated': f'Zuletzt aktualisiert am {k.UPDATED}', 'tagline': 'Lies, was dein Agent geschrieben hat.', 'slogan': 'Ein neuer Morgen für Markdown.', 'footer_store': f'MarsDawn gibt es im <a href="{k.LISTING_URL}">Mac App Store</a>.', 'footer_nav': 'Website', 'more': 'Mehr', 'yours': 'Deine Texte bleiben auf deinem Mac', 'pay-once': 'Kostenlos testen, einmal bezahlen', 'pdf': 'PDF-Export', 'native': 'Eine Mac-App', 'limits': 'Was MarsDawn nicht kann', 'mcp': 'MCP-Server', 'token-efficient-review': 'Review mit wenigen Tokens', 'vs-markdown-preview-tools': 'Markdown anderswo ansehen vs. MarsDawn', 'themes': 'Themen', 'themes-new': 'Ein Thema erstellen', 'themes-agents': 'Mit deinem Agenten ein Thema erstellen', 'themes-gallery': 'Themen-Galerie', 'sharing-exported-pdfs': 'Exportierte PDFs teilen', 'reviewing-ai-output': 'Warum KI-Ergebnisse weiterhin einen menschlichen Leser brauchen', 'reading-agent-output': 'Lesen, was dein Agent zurückgibt', 'agent-transparency': 'Transparenz von Agenten', 'reviewing-agent-plans': 'Den Plan eines Agenten prüfen', 'agent-design-patterns': 'Entwurfsmuster für Agenten', 'changelog': 'Änderungsprotokoll', 'roadmap': 'Roadmap', 'reading-notes': 'Lektürenotizen der Redaktion', 'reading-notes-anthropic': 'Lektürenotizen: Anthropic', 'reading-notes-chip-huyen': 'Lektürenotizen: Chip Huyen', 'reading-notes-lilian-weng': 'Lektürenotizen: Lilian Weng', 'reading-notes-harrison-chase': 'Lektürenotizen: Harrison Chase', 'reading-notes-langchain': 'Lektürenotizen: LangChain (Jess Ou)', 'reading-notes-andrew-ng': 'Lektürenotizen: Andrew Ng', 'consent_text': 'Wir nutzen Analyse-Cookies. Sie bleiben aus, bis du zustimmst.', 'consent_accept': 'Akzeptieren', 'consent_decline': 'Ablehnen', 'consent_aria': 'Cookie-Einwilligung', 'cookie_settings': 'Cookie-Einstellungen', 'view_markdown_source': 'Markdown-Quelltext ansehen'}
     store_chip = 'Im Mac App Store'
     trait_link = {'features': ('Funktionen', 'Alles, was MarsDawn kann, auf einer Seite.'), 'yours': ('Deine Texte bleiben auf deinem Mac', 'Kein Konto, keine Synchronisierung, keine Cloud.'), 'pay-once': ('Kostenlos testen, einmal bezahlen', '14 Tage kostenlos, danach einmalig 4,99 USD. Kein Abo.'), 'pdf': ('PDF-Export', 'Diagramme, hervorgehobener Code, saubere Seitenumbrüche.'), 'native': ('Eine Mac-App', 'Native Fenster und Tabs, automatisches Sichern, Übersicht.'), 'limits': ('Was MarsDawn nicht kann', 'Gut zu wissen, bevor du kaufst.')}
     trait_nav_heading = 'Was du von MarsDawn erwarten kannst'
