@@ -2,7 +2,7 @@
 
 Wie MarsDawn, der Markdown-Editor für macOS, mit deinen Daten umgeht.
 
-Zuletzt aktualisiert am 2026-10-12
+Zuletzt aktualisiert am 2026-10-25
 
 > **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
 
@@ -25,11 +25,11 @@ Sobald du zustimmst, setzt Google Analytics eigene Cookies (`_ga` und `_ga_<meas
 
 ## Umfrage zum Launch
 
-Vom 20. Oktober bis zum 2. November 2026 führt MarsDawn eine kurze Umfrage über Google Formulare durch. Ob du mitmachst, entscheidest du selbst, und die App selbst erhebt weiterhin nichts.
+Vom 26. Oktober bis zum 8. November 2026 führt MarsDawn eine kurze Umfrage über Google Formulare durch. Ob du mitmachst, entscheidest du selbst, und die App selbst erhebt weiterhin nichts.
 
 - **Was erhoben wird.** Deine Antworten und die E-Mail-Adresse, die du eingibst. Sonst nichts.
-- **Die E-Mail-Adresse.** Sie wird verwendet, um dir einen Code zu schicken, falls du gezogen wirst. Wenn du das Kästchen für Update-Hinweise nicht anklickst, wird sie innerhalb von 30 Tagen nach dem Versand der Codes gelöscht. Wenn du es anklickst, wird sie nur aufbewahrt, um dir E-Mails zu neuen MarsDawn-Versionen zu schicken, jeweils mit Abmeldung per Klick, bis du dich abmeldest.
-- **Die Antworten.** Nach der Ziehung werden sie ohne die E-Mail-Adresse aufbewahrt und können anonymisiert und zusammengefasst in einer veröffentlichten Auswertung erscheinen.
+- **Die E-Mail-Adresse.** Sie wird verwendet, um den ersten 500 Teilnehmenden einen Code zu schicken. Wenn du das Kästchen für Update-Hinweise nicht anklickst, wird sie innerhalb von 30 Tagen nach dem Versand der Codes gelöscht. Wenn du es anklickst, wird sie nur aufbewahrt, um dir E-Mails zu neuen MarsDawn-Versionen zu schicken, jeweils mit Abmeldung per Klick, bis du dich abmeldest.
+- **Die Antworten.** Nach Ende der Umfrage werden sie ohne die E-Mail-Adresse aufbewahrt und können anonymisiert und zusammengefasst in einer veröffentlichten Auswertung erscheinen.
 - **Nie weitergegeben oder verkauft,** und nie für etwas anderes verwendet.
 - **Wo sie gespeichert werden.** Google Formulare speichert die Antworten bei Google, nach der Datenschutzerklärung von Google.
 - **Löschung.** Wenn du deine Antwort oder E-Mail-Adresse früher löschen lassen möchtest, schreibe an support@southern-light.dev.
