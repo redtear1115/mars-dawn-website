@@ -49,7 +49,7 @@ Status: **proposal**. It goes live only after Ray approves.
 <section class="intro">
   <h1>A test that passes on one Mac may not be testing what you think.</h1>
   <!-- src S11 -->
-  <p>Vibe coding isn't a bad thing. Describing what you want and letting an agent build it is how a lot of software starts now, and MarsDawn is built with agents too. But software people rely on is judged by what comes after the first version: years of maintenance, and keeping it secure. An agent can change dozens of files in an evening. So who checks it didn't break anything? Here is one test that showed us how that checking goes wrong, and what we changed.</p>
+  <p>Vibe coding isn't a bad thing, and MarsDawn is built with agents too. But software you rely on is judged by what comes after the first version: years of maintenance and security, which start with checking that a change didn't break anything.</p>
 </section>
 
 <div class="summary"><p><strong>A test passed on a Mac mini and failed on a MacBook Air. The product was fine. The test had been reading colours through the screen's colour profile, and on the Mac mini it had been passing by luck. A second machine found a bug in the test, not in the code.</strong></p></div>
@@ -148,7 +148,7 @@ Status: **proposal**. It goes live only after Ray approves.
 <section class="intro">
   <h1>在一台 Mac 上通過的測試，不一定在測你以為的東西。</h1>
   <!-- src S11 -->
-  <p>vibe coding 不是壞事。把想要的東西說出來、讓 agent 做出來，現在很多軟體都是這樣起頭的，MarsDawn 也是用 agent 開發的。但要讓人長期依賴的軟體，看的是第一版之後的事：多年的維護，以及安全。agent 一個晚上就能改幾十個檔案，那誰來確認它沒改壞？下面是一個讓我們看清楚「檢查」會怎麼出錯的測試，以及我們改了什麼。</p>
+  <p>vibe coding 不是壞事，MarsDawn 也是用 agent 開發的。但要讓人長期依賴的軟體，看的是第一版之後的事：多年的維護和安全，而這要從確認改動沒有改壞東西開始。</p>
 </section>
 
 <div class="summary"><p><strong>同一個測試，在 Mac mini 上通過，在 MacBook Air 上失敗。產品沒壞。是測試透過螢幕的色彩描述檔在讀顏色，它在 Mac mini 上通過只是運氣好。換一台機器，抓到的是測試的 bug，不是程式的 bug。</strong></p></div>
@@ -247,7 +247,7 @@ Status: **proposal**. It goes live only after Ray approves.
 <section class="intro">
   <h1>在一台 Mac 上通过的测试，不一定在测你以为的东西。</h1>
   <!-- src S11 -->
-  <p>vibe coding 不是坏事。把想要的东西说出来、让代理做出来，现在很多软件都是这样起步的，MarsDawn 也是用代理开发的。但让人长期依赖的软件，看的是第一版之后的事：多年的维护，以及安全。代理一个晚上就能改几十个文件，那谁来确认它没改坏？下面是一个让我们看清“检查”会怎么出错的测试，以及我们改了什么。</p>
+  <p>vibe coding 不是坏事，MarsDawn 也是用代理开发的。但让人长期依赖的软件，看的是第一版之后的事：多年的维护和安全，而这要从确认改动没有改坏东西开始。</p>
 </section>
 
 <div class="summary"><p><strong>同一个测试，在 Mac mini 上通过，在 MacBook Air 上失败。产品没坏。是测试通过屏幕的颜色描述文件在读颜色，它在 Mac mini 上通过只是运气好。换一台机器，抓到的是测试的 bug，不是代码的 bug。</strong></p></div>
@@ -346,7 +346,7 @@ Status: **proposal**. It goes live only after Ray approves.
 <section class="intro">
   <h1>ある Mac で通るテストが、思っているものをテストしているとは限りません。</h1>
   <!-- src S11 -->
-  <p>バイブコーディング（vibe coding）は悪いことではありません。ほしいものを言葉で伝えて、エージェントに作ってもらう。いまは多くのソフトウェアがそうやって始まり、MarsDawn もエージェントと一緒に作っています。ただ、人が長く頼るソフトウェアは、最初のバージョンのあとで評価されます。何年にもわたるメンテナンスと、安全を保ち続けることです。エージェントはひと晩で何十ものファイルを変更できます。では、何も壊していないことを誰が確かめるのでしょうか。ここでは、その確認がどう失敗するかを教えてくれたひとつのテストと、私たちが変えたことを紹介します。</p>
+  <p>バイブコーディング（vibe coding）は悪いことではなく、MarsDawn もエージェントと一緒に作っています。ただ、人が長く頼るソフトウェアを支えるのは、最初のバージョンのあとの何年にもわたるメンテナンスと安全であり、その出発点は、変更が何も壊していないと確かめることです。</p>
 </section>
 
 <div class="summary"><p><strong>あるテストが Mac mini では通り、MacBook Air では失敗しました。製品に問題はありませんでした。テストが画面のカラープロファイルを通して色を読んでいて、Mac mini で通っていたのはたまたまでした。2 台目のマシンが見つけたのは、コードではなくテストのバグです。</strong></p></div>
@@ -445,7 +445,7 @@ Status: **proposal**. It goes live only after Ray approves.
 <section class="intro">
   <h1>한 Mac에서 통과한 테스트가 생각하는 것을 테스트하고 있다는 보장은 없습니다.</h1>
   <!-- src S11 -->
-  <p>바이브 코딩(vibe coding)은 나쁜 것이 아닙니다. 원하는 것을 말로 설명하고 에이전트가 만들게 하는 것. 요즘 많은 소프트웨어가 그렇게 시작하고, MarsDawn도 에이전트와 함께 만듭니다. 하지만 사람들이 오래 의지하는 소프트웨어는 첫 버전 이후로 평가받습니다. 몇 년에 걸친 유지보수, 그리고 보안을 지켜 가는 일입니다. 에이전트는 하룻저녁에 파일 수십 개를 바꿀 수 있습니다. 그렇다면 아무것도 망가지지 않았는지는 누가 확인할까요? 그 확인이 어떻게 어긋나는지 보여 준 테스트 하나와, 우리가 바꾼 것을 소개합니다.</p>
+  <p>바이브 코딩(vibe coding)은 나쁜 것이 아니며, MarsDawn도 에이전트와 함께 만듭니다. 하지만 사람들이 오래 의지하는 소프트웨어는 첫 버전 이후 몇 년에 걸친 유지보수와 보안으로 평가받고, 그 출발점은 변경이 아무것도 망가뜨리지 않았는지 확인하는 일입니다.</p>
 </section>
 
 <div class="summary"><p><strong>한 테스트가 Mac mini에서는 통과하고 MacBook Air에서는 실패했습니다. 제품에는 문제가 없었습니다. 테스트가 화면의 색상 프로파일을 거쳐 색을 읽고 있었고, Mac mini에서 통과한 것은 운이 좋았을 뿐입니다. 두 번째 기기가 찾아낸 것은 코드가 아니라 테스트의 버그였습니다.</strong></p></div>
@@ -544,7 +544,7 @@ Status: **proposal**. It goes live only after Ray approves.
 <section class="intro">
   <h1>Ein Test, der auf einem Mac besteht, testet vielleicht nicht, was du denkst.</h1>
   <!-- src S11 -->
-  <p>Vibe Coding ist nichts Schlechtes. Beschreiben, was man will, und einen Agenten bauen lassen: So beginnt heute viel Software, und auch MarsDawn entsteht mit Agenten. Aber Software, auf die sich Menschen verlassen, wird an dem gemessen, was nach der ersten Version kommt: jahrelange Wartung und Sicherheit, die hält. Ein Agent kann an einem Abend Dutzende Dateien ändern. Wer prüft also, dass er nichts kaputt gemacht hat? Hier ist ein Test, der uns gezeigt hat, wie diese Prüfung schiefgehen kann, und was wir geändert haben.</p>
+  <p>Vibe Coding ist nichts Schlechtes, und auch MarsDawn entsteht mit Agenten. Aber Software, auf die man sich verlässt, wird an dem gemessen, was nach der ersten Version kommt: jahrelange Wartung und Sicherheit, und die beginnen mit der Prüfung, dass eine Änderung nichts kaputt gemacht hat.</p>
 </section>
 
 <div class="summary"><p><strong>Ein Test bestand auf einem Mac mini und schlug auf einem MacBook Air fehl. Das Produkt war in Ordnung. Der Test hatte Farben durch das Farbprofil des Bildschirms gelesen, und auf dem Mac mini hatte er nur durch Glück bestanden. Ein zweites Gerät fand einen Fehler im Test, nicht im Code.</strong></p></div>
@@ -643,7 +643,7 @@ Status: **proposal**. It goes live only after Ray approves.
 <section class="intro">
   <h1>Un test qui passe sur un Mac ne teste peut-être pas ce que vous croyez.</h1>
   <!-- src S11 -->
-  <p>Le vibe coding n’a rien de mal. Décrire ce que l’on veut et laisser un agent le construire : c’est ainsi que naissent aujourd’hui beaucoup de logiciels, et MarsDawn est lui aussi développé avec des agents. Mais un logiciel sur lequel on compte se juge à ce qui vient après la première version : des années de maintenance, et une sécurité tenue dans la durée. Un agent peut modifier des dizaines de fichiers en une soirée. Alors, qui vérifie qu’il n’a rien cassé ? Voici un test qui nous a montré comment cette vérification peut déraper, et ce que nous avons changé.</p>
+  <p>Le vibe coding n’a rien de mal, et MarsDawn est lui aussi développé avec des agents. Mais un logiciel sur lequel on compte se juge à ce qui vient après la première version : des années de maintenance et de sécurité, qui commencent par vérifier qu’un changement n’a rien cassé.</p>
 </section>
 
 <div class="summary"><p><strong>Un test passait sur un Mac mini et échouait sur un MacBook Air. Le produit allait bien. Le test lisait les couleurs à travers le profil colorimétrique de l’écran, et sur le Mac mini, il passait par chance. Une deuxième machine a trouvé un bug dans le test, pas dans le code.</strong></p></div>
@@ -742,7 +742,7 @@ Status: **proposal**. It goes live only after Ray approves.
 <section class="intro">
   <h1>Una prueba que pasa en un Mac quizá no esté probando lo que crees.</h1>
   <!-- src S11 -->
-  <p>El vibe coding no es algo malo. Describir lo que quieres y dejar que un agente lo construya es como empieza hoy mucho software, y MarsDawn también se desarrolla con agentes. Pero el software del que la gente depende se juzga por lo que viene después de la primera versión: años de mantenimiento y seguir siendo seguro. Un agente puede cambiar decenas de archivos en una noche. Entonces, ¿quién comprueba que no ha roto nada? Aquí va una prueba que nos enseñó cómo puede fallar esa comprobación, y lo que cambiamos.</p>
+  <p>El vibe coding no es algo malo, y MarsDawn también se desarrolla con agentes. Pero el software del que dependes se juzga por lo que viene después de la primera versión: años de mantenimiento y seguridad, que empiezan por comprobar que un cambio no ha roto nada.</p>
 </section>
 
 <div class="summary"><p><strong>Una prueba pasaba en un Mac mini y fallaba en un MacBook Air. El producto estaba bien. La prueba leía los colores a través del perfil de color de la pantalla, y en el Mac mini pasaba por suerte. Una segunda máquina encontró un error en la prueba, no en el código.</strong></p></div>
