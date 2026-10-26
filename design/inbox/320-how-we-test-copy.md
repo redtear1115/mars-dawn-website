@@ -8,7 +8,7 @@ Status: **proposal**. It goes live only after Ray approves.
 
 - The bodies below are HTML fragments in the same shape as the other evergreen articles in `scripts/build_pages.py` (`section.intro` → `div.summary` → `h2` sections → Next → Sources).
 - **Every number has a source in an HTML comment** (`<!-- src: ... -->`), as #320's acceptance requires.
-- **Placeholders**: `{{TBD:...}}`. Fill them in after kit #242 is merged, using that CI run. Don't publish while any are left: `grep -n 'TBD' design/inbox/320-how-we-test-copy.md`.
+- **Placeholders**: `{{TBD:...}}`. kit #242's are filled in (merged as 85fe880, PR CI run 40285279080). One is left: the self-hosted MacBook Air run, which comes from kit #240. Don't publish while any are left: `grep -n 'TBD' design/inbox/320-how-we-test-copy.md`.
 - Suggested slug: `/how-we-test/` (zh-Hant `/zh-hant/how-we-test/`). It needs to be added to `article_dates.py`'s `ARTICLE_SLUGS` and to the footer `ui` dict. Footer labels are at the end of this file.
 - The app repo is private, so app facts are described in the text but not linked. Kit facts link to the public kit repo.
 
@@ -18,7 +18,9 @@ Status: **proposal**. It goes live only after Ray approves.
 |---|---|---|
 | S1 | The test failed on the MacBook Air: 0.1634 / 0.1648 / 0.1796, limit 0.16. It passed on the Mac mini. Same commit, macOS 26.6.2, Xcode 27.1. | kit #241 body; CI run 40271990387 |
 | S2 | The pure-colour probe: sRGB (0.784, 0.278, 0.106) reads back as (0.822, 0.335, 0.179) on the mini and (0.782, 0.395, 0.221) on the Air. | kit #241 body |
-| S3 | Independent verification of the fix: `best` 0.0 on both machines. The old path on the mini was off by up to 0.128. With the expected colours set to #0000FF, all 5 callouts fail. Note and Caution are about 0.119 apart. | kit PR #242, comment of 2026-10-26 07:39 UTC |
+| S3 | Independent verification of the fix: `best` 0.0 on both machines. The old path on the mini was off by up to 0.128. With the expected colours set to #0000FF, all 5 callouts fail. Note (#C8471B) and Caution (#B03C0C) are about 0.119 apart. | kit PR #242, comment of 2026-10-26 07:39 UTC |
+| S10 | kit #242 merged as 85fe880. Its PR CI run is all green. | https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080 |
+| S11 | Vibe coding framing: Ray's decision, relayed by Paula on 2026-10-26: vibe coding isn't bad, but software depends on long-term maintenance and security, and people should be choosy about the software they pick. No names of people or products. | #320 / Ray |
 | S4 | A full run on hosted macOS 15: debug about 32 min plus release about 25 min (run 40196953693). Moving macOS 26 to self-hosted MacBook Airs is expected to cut a normal PR from about 60 min to about 15–20. | kit PR #240 body (**not merged**; the 15–20 min figure is an estimate) |
 | S5 | The timeout went from 30 to 45, then 50, then 70 minutes. macos-15 hit the 50-minute limit twice in the release pass with every test passing (run 39231688388). | kit `.github/workflows/ci.yml` comments, main 8e93930, lines 27–34 |
 | S6 | Kit CI matrix: macos-15 (the floor) and macos-26 (what the app ships on), debug and release passes. The PDF corpus runs in its own process. A release suite name that matches no test fails the job. | kit `ci.yml` lines 21–26, 85–129 |
@@ -36,7 +38,8 @@ Status: **proposal**. It goes live only after Ray approves.
 ```html
 <section class="intro">
   <h1>A test that passes on one Mac may not be testing what you think.</h1>
-  <p>MarsDawn is built with agents, and an agent can change dozens of files in an evening. So who checks it didn't break anything? Here is one test that showed us how that checking goes wrong, and what we changed.</p>
+  <!-- src S11 -->
+  <p>Vibe coding isn't a bad thing. Describing what you want and letting an agent build it is how a lot of software starts now, and MarsDawn is built with agents too. But software people rely on is judged by what comes after the first version: years of maintenance, and keeping it secure. An agent can change dozens of files in an evening. So who checks it didn't break anything? Here is one test that showed us how that checking goes wrong, and what we changed.</p>
 </section>
 
 <div class="summary"><p><strong>A test passed on a Mac mini and failed on a MacBook Air. The product was fine. The test had been reading colours through the screen's colour profile, and on the Mac mini it had been passing by luck. A second machine found a bug in the test, not in the code.</strong></p></div>
@@ -51,8 +54,8 @@ Status: **proposal**. It goes live only after Ray approves.
 <p>The test turned each PDF page into an image and read the pixels. macOS draws that image in the colour space of the main display. The Mac mini was connected to an ordinary external monitor; the MacBook Air was using its built-in screen. We filled an image with one orange and read it back: (0.784, 0.278, 0.106) came back as (0.822, 0.335, 0.179) on the Mac mini and (0.782, 0.395, 0.221) on the MacBook Air.</p>
 <!-- src S3: kit #242 verification comment -->
 <p>Then came the part that matters. On the Mac mini, the test hadn't been reading the right colours either. It was off by as much as 0.128, just inside the 0.16 limit. It had been passing because of the monitor, not because it was measuring the bar correctly.</p>
-<!-- src S3; {{TBD:242-run}} = the CI run after kit #242 is merged -->
-<p>The fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) changes only the test: it draws the page into an image with a fixed sRGB colour space, so no screen is involved. Now both machines read the bar colours with a distance of {{TBD:distance, expected 0}} (CI run {{TBD:242-run}}). To check that it still catches mistakes, we set every expected colour to blue, and it failed for all five callouts.</p>
+<!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
+<p>The fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) changes only the test: it draws the page into an image with a fixed sRGB colour space, so no screen is involved. Now both machines read the bar colours exactly: the best match is 0.0, on the MacBook Air's built-in screen as well as on the Mac mini. The pull request's CI passed (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), and so did the full suite on the MacBook Air runner (run {{TBD:mba-run}}). To check that it still catches mistakes, we set every expected colour to blue, and it failed for all five callouts.</p>
 <p>It still has a known gap. Note and Caution use two oranges about 0.119 apart, inside the 0.16 limit, so if those two were swapped, the test would probably not notice. We've written that down rather than pretend the test is complete.</p>
 <p>What we took from it: green on one machine tells you the test passed on that machine. It doesn't tell you the test measures what its name says. A second environment finds bugs in the tests, not only in the product.</p>
 
@@ -73,6 +76,8 @@ Status: **proposal**. It goes live only after Ray approves.
 </ol>
 
 <h2>The short version</h2>
+<!-- src S11 -->
+<p>Whether an app was vibe coded matters less than whether anyone keeps testing and maintaining it. That's worth checking when you choose software: does it say how it's tested, and when was it last updated?</p>
 <p>Let the agent be fast. Leave the checking to tests that measure the right thing, and to a person who reads the result.</p>
 
 <h2>Next</h2>
@@ -101,7 +106,8 @@ Status: **proposal**. It goes live only after Ray approves.
 ```html
 <section class="intro">
   <h1>在一台 Mac 上通過的測試，不一定在測你以為的東西。</h1>
-  <p>MarsDawn 是用 agent 開發的，而 agent 一個晚上就能改幾十個檔案。那誰來確認它沒改壞？下面是一個讓我們看清楚「檢查」會怎麼出錯的測試，以及我們改了什麼。</p>
+  <!-- src S11 -->
+  <p>vibe coding 不是壞事。把想要的東西說出來、讓 agent 做出來，現在很多軟體都是這樣起頭的，MarsDawn 也是用 agent 開發的。但要讓人長期依賴的軟體，看的是第一版之後的事：多年的維護，以及安全。agent 一個晚上就能改幾十個檔案，那誰來確認它沒改壞？下面是一個讓我們看清楚「檢查」會怎麼出錯的測試，以及我們改了什麼。</p>
 </section>
 
 <div class="summary"><p><strong>同一個測試，在 Mac mini 上通過，在 MacBook Air 上失敗。產品沒壞。是測試透過螢幕的色彩描述檔在讀顏色，它在 Mac mini 上通過只是運氣好。換一台機器，抓到的是測試的 bug，不是程式的 bug。</strong></p></div>
@@ -116,8 +122,8 @@ Status: **proposal**. It goes live only after Ray approves.
 <p>這個測試會把 PDF 每一頁畫成圖片，再讀像素。macOS 畫這張圖時，用的是主螢幕的色彩空間。Mac mini 接的是一般的外接螢幕，MacBook Air 用的是內建螢幕。我們拿一張填滿同一種橘色的圖片讀回來：(0.784, 0.278, 0.106) 在 Mac mini 上讀成 (0.822, 0.335, 0.179)，在 MacBook Air 上讀成 (0.782, 0.395, 0.221)。</p>
 <!-- src S3: kit #242 驗證留言 -->
 <p>接下來才是重點：在 Mac mini 上，測試讀到的顏色其實也不對，最多差了 0.128，只是剛好落在 0.16 的上限內。它會通過，靠的是那台螢幕，不是因為它真的量對了色條。</p>
-<!-- src S3；{{TBD:242-run}}＝kit #242 合併後的 CI run -->
-<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改測試：把頁面畫進一張固定使用 sRGB 色彩空間的圖片，完全不經過螢幕。現在兩台機器讀到的色條色差都是 {{TBD:色差，預期 0}}（CI run {{TBD:242-run}}）。為了確認它還抓得到錯，我們把每個預期顏色都改成藍色，五個提示框全部失敗。</p>
+<!-- src S3, S10；{{TBD:mba-run}}＝自架 MacBook Air 的 run，來自 kit #240 -->
+<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改測試：把頁面畫進一張固定使用 sRGB 色彩空間的圖片，完全不經過螢幕。現在兩台機器都能準確讀出色條的顏色：不論是 MacBook Air 的內建螢幕還是 Mac mini，最接近的色差都是 0.0。這個 pull request 的 CI 全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），MacBook Air 機器上的完整測試也通過了（run {{TBD:mba-run}}）。為了確認它還抓得到錯，我們把每個預期顏色都改成藍色，五個提示框全部失敗。</p>
 <p>它還有一個已知的漏洞：Note 和 Caution 用的兩種橘色只差約 0.119，在 0.16 的上限內，所以這兩個顏色如果對調，測試多半不會發現。我們把這件事記了下來，沒有假裝這個測試已經完整。</p>
 <p>我們從中學到的是：一台機器上的綠燈，只代表測試在那台機器上通過，不代表它測的就是名字上寫的那件事。多一個環境，抓到的不只是產品的 bug，也會抓到測試自己的 bug。</p>
 
@@ -138,6 +144,8 @@ Status: **proposal**. It goes live only after Ray approves.
 </ol>
 
 <h2>一句話</h2>
+<!-- src S11 -->
+<p>一個 App 是不是 vibe coding 做的，沒那麼重要；重要的是有沒有人持續在測試、在維護。選軟體的時候值得看一眼：它有沒有說明自己怎麼測試？最近一次更新是什麼時候？</p>
 <p>速度交給 agent，把關留給真的量對東西的測試，以及讀過結果的人。</p>
 
 <h2>接下來</h2>
