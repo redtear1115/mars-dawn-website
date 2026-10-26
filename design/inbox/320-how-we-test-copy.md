@@ -1,7 +1,7 @@
-# #320 How we test MarsDawn: en and zh-Hant first draft
+# #320 How we test MarsDawn: en and zh-Hant draft
 
 Issue: https://github.com/redtear1115/mars-dawn-website/issues/320
-Outline: the issue's latest comment (Una's review, accepted as is).
+Outline: the issue's latest comment (Una's review, accepted as is), plus Ray's later decisions relayed by Paula (S11, S14).
 Status: **proposal**. It goes live only after Ray approves.
 
 ## How to read this file
@@ -19,21 +19,25 @@ Status: **proposal**. It goes live only after Ray approves.
 | S1 | The test failed on the MacBook Air: 0.1634 / 0.1648 / 0.1796, limit 0.16. It passed on the Mac mini. Same commit, macOS 26.6.2, Xcode 27.1. | kit #241 body; CI run 40271990387 |
 | S2 | The pure-colour probe: sRGB (0.784, 0.278, 0.106) reads back as (0.822, 0.335, 0.179) on the mini and (0.782, 0.395, 0.221) on the Air. | kit #241 body |
 | S3 | Independent verification of the fix: `best` 0.0 on both machines. The old path on the mini was off by up to 0.128. With the expected colours set to #0000FF, all 5 callouts fail. Note (#C8471B) and Caution (#B03C0C) are about 0.119 apart. | kit PR #242, comment of 2026-10-26 07:39 UTC |
-| S10 | kit #242 merged as 85fe880. Its PR CI run is all green. | https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080 |
-| S11 | Vibe coding framing: Ray's decision, relayed by Paula on 2026-10-26: vibe coding isn't bad, but software depends on long-term maintenance and security, and people should be choosy about the software they pick. No names of people or products. | #320 / Ray |
-| S4 | A full run on hosted macOS 15: debug about 32 min plus release about 25 min (run 40196953693). Moving macOS 26 to self-hosted MacBook Airs is expected to cut a normal PR from about 60 min to about 15–20. | kit PR #240 body (**not merged**; the 15–20 min figure is an estimate) |
+| S4 | A full run on hosted macOS 15: debug about 32 min plus release about 25 min (run 40196953693). Moving macOS 26 to self-hosted MacBook Airs is expected to cut a normal PR from about 60 min to about 15–20. | kit PR #240 body (**not merged**; the 15–20 min figure is an estimate and is not used in the text) |
 | S5 | The timeout went from 30 to 45, then 50, then 70 minutes. macos-15 hit the 50-minute limit twice in the release pass with every test passing (run 39231688388). | kit `.github/workflows/ci.yml` comments, main 8e93930, lines 27–34 |
 | S6 | Kit CI matrix: macos-15 (the floor) and macos-26 (what the app ships on), debug and release passes. The PDF corpus runs in its own process. A release suite name that matches no test fails the job. | kit `ci.yml` lines 21–26, 85–129 |
-| S7 | App CI: one self-hosted runner, `CODE_SIGNING_ALLOWED=NO`. "An exit code is not a result": python 3.9's unittest exits 0 having found no tests, so the job checks the count is above 0, and guards.sh's summary must read "N passed, 0 failed" with N > 0. | app `.github/workflows/ci.yml` lines 78–108 (private) |
+| S7 | App CI: one self-hosted runner, `CODE_SIGNING_ALLOWED=NO`. python 3.9's unittest exits 0 having found no tests, so the job checks that the count is above 0, and guards.sh's summary must read "N passed, 0 failed" with N > 0. | app `.github/workflows/ci.yml` lines 78–108 (private) |
 | S8 | That guards.sh check came out of an independent verification of #335 (finding P3). | app #341 (private) |
-| S9 | `tools/test.sh --all`: signed and unsigned, each with the paywall off and on, so 4 combinations, run locally on a Mac and a MacBook Air (not in CI). | app `tools/test.sh` lines 9, 24–26; #320 owner comment |
+| S9 | `tools/test.sh --all`: signed and unsigned, each with the paywall off and on, so 4 combinations, run locally on a Mac and a MacBook Air (not in CI). **These are not debug/release × macOS 15/26; that matrix is the kit's CI (S6).** | app `tools/test.sh` lines 9, 24–26; #320 owner comment |
+| S10 | kit #242 merged as 85fe880. Its PR CI run is all green. | https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080 |
+| S11 | Vibe coding framing: Ray's decision, relayed by Paula on 2026-10-26: vibe coding isn't bad, but software depends on long-term maintenance and security, and people should be choosy about the software they pick. No names of people or products. | #320 / Ray |
+| S12 | Red controls: the app's CI expects exactly 11. Each is a copy of the local cleanup script (`tools/cleanup-local.sh`) with one safety guard cut out, and the test suite must FAIL against every one; if a copy passes, CI fails. | app `ci.yml` (`expected 11 red controls caught`); `tools/test-cleanup-local.sh` lines 9–13, 685–713 (private) |
+| S13 | PDF goldens: sample documents are exported and each page's text is compared with a recorded copy, per OS build (the `pdf-goldens` CI job). The corpus guards against export silently losing content, the page count changing, and export drifting from the preview. | kit `Tests/MarsDawnExportTests/PDFCorpusTests.swift` lines 10–13, 126–175; `record-pdf-goldens.yml` |
+| S14 | Ray's decision, relayed by Paula on 2026-10-26: add back "deliberately break a test to check it catches the error" as a recommended habit, and lead into 「測試是一層一層的網子，有很多種目的，這種紅綠測試的意涵」. | #320 / Ray |
+| S15 | Scenario review: UX copy and flows go through a scenario review (`needs-ux` → `replied-ux`) before copy and build; #320 itself went through one. | website #320 labels and comment of 2026-10-26 08:31 UTC |
 
 ---
 
 ## en
 
 - **title**: `How we test MarsDawn: one test, two Macs · MarsDawn`
-- **description** (about 150 characters): `A test passed on one Mac and failed on another. The product was fine; the test was reading the screen's colours. How we check agent-written code, and three habits you can copy.`
+- **description** (about 150 characters): `A test passed on one Mac and failed on another. The product was fine; the test was reading the screen's colours. How we layer our tests, and four habits you can copy.`
 
 ```html
 <section class="intro">
@@ -48,31 +52,48 @@ Status: **proposal**. It goes live only after Ray approves.
 <!-- src S4: kit PR #240 (not merged), run 40196953693 -->
 <p>A full run of the export engine's tests on GitHub's macOS 15 runner takes close to an hour: about 32 minutes for the debug build and about 25 for the release build. To cut that down, we started moving the macOS 26 half onto a MacBook Air of our own (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
 <!-- src S1: kit #241, run 40271990387 -->
-<p>On its first run there, one test failed. It exports a PDF with callouts (Note, Tip, Warning) and checks that each one has a coloured bar at its edge, in the right colour. "Right" means a colour distance under 0.16. On the MacBook Air the distances were 0.1634, 0.1648 and 0.1796. On a Mac mini, the same commit with the same macOS and Xcode, the test passed.</p>
+<p>On its first run there, one test failed. It exports a PDF with callouts (Note, Tip, Warning) and checks that each one has a bar at its edge in the right colour, meaning a colour distance under 0.16. On the MacBook Air the distances were 0.1634, 0.1648 and 0.1796. On a Mac mini, with the same commit, macOS and Xcode, the test passed.</p>
 <p>Our first guess was that the export had broken. It hadn't. Nothing was wrong with the PDF; what differed between the machines was how the test read it.</p>
 <!-- src S1, S2: kit #241 -->
-<p>The test turned each PDF page into an image and read the pixels. macOS draws that image in the colour space of the main display. The Mac mini was connected to an ordinary external monitor; the MacBook Air was using its built-in screen. We filled an image with one orange and read it back: (0.784, 0.278, 0.106) came back as (0.822, 0.335, 0.179) on the Mac mini and (0.782, 0.395, 0.221) on the MacBook Air.</p>
+<p>The test turned each PDF page into an image and read the pixels, and macOS draws that image in the colour space of the main display. The Mac mini was connected to an ordinary external monitor; the MacBook Air was using its built-in screen. We filled an image with one orange and read it back: (0.784, 0.278, 0.106) came back as (0.822, 0.335, 0.179) on the Mac mini and (0.782, 0.395, 0.221) on the MacBook Air.</p>
 <!-- src S3: kit #242 verification comment -->
-<p>Then came the part that matters. On the Mac mini, the test hadn't been reading the right colours either. It was off by as much as 0.128, just inside the 0.16 limit. It had been passing because of the monitor, not because it was measuring the bar correctly.</p>
+<p>Here's the part that matters: on the Mac mini, the test hadn't been reading the right colours either. It was off by as much as 0.128, just inside the 0.16 limit. It passed because of the monitor, not because it measured the bar correctly.</p>
 <!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>The fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) changes only the test: it draws the page into an image with a fixed sRGB colour space, so no screen is involved. Now both machines read the bar colours exactly: the best match is 0.0, on the MacBook Air's built-in screen as well as on the Mac mini. The pull request's CI passed (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), and so did the full suite on the MacBook Air runner (run {{TBD:mba-run}}). To check that it still catches mistakes, we set every expected colour to blue, and it failed for all five callouts.</p>
+<p>The fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) changes only the test: it draws the page into an image with a fixed sRGB colour space, so no screen is involved. Both machines now read the bar colours exactly: the best match is 0.0, on the MacBook Air's built-in screen as well as on the Mac mini. The pull request's CI passed (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), and so did the full suite on the MacBook Air runner (run {{TBD:mba-run}}). Then we made it fail on purpose: with every expected colour set to blue, it went red for all five callouts.</p>
 <p>It still has a known gap. Note and Caution use two oranges about 0.119 apart, inside the 0.16 limit, so if those two were swapped, the test would probably not notice. We've written that down rather than pretend the test is complete.</p>
-<p>What we took from it: green on one machine tells you the test passed on that machine. It doesn't tell you the test measures what its name says. A second environment finds bugs in the tests, not only in the product.</p>
+<p>A test that can't fail protects nothing, and neither does one that fails for the wrong reason, like a screen's colour profile. Green on one machine tells you the test passed there, not that it measures what its name says.</p>
 
-<h2>Who checks, and where</h2>
-<p><strong>The agent that writes a change doesn't verify it.</strong> A separate session gets the pull request and its acceptance list, not the writer's reasoning, and has to run things itself. For kit #242, the verifier ran the old test on the MacBook Air to watch it fail, ran the new one on both machines, and broke the expected colours on purpose to see the test go red. It also found the Note and Caution gap above and listed what it had not checked.</p>
-<!-- src S6, S5: kit ci.yml -->
-<p><strong>The export engine</strong> (the open-source <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, which also powers the <code>marsdawn</code> command) runs on macOS 15, the oldest version it supports, and on macOS 26, the one the app ships on. Each runs a debug pass and a release pass, and a corpus of sample PDFs is checked in a process of its own. That isn't free: the time limit for a run has gone from 30 minutes to 45, then 50, then 70, and macOS 15 once hit the 50-minute limit twice with every test passing.</p>
-<!-- src S7, S9: app ci.yml, tools/test.sh (private) -->
-<p><strong>The app</strong> runs its CI on one Mac of our own, unsigned. Its full suite also runs locally on two Macs in four combinations: signed and unsigned, each with the paywall off and on, because the shipping build has the paywall on and a development build doesn't.</p>
-<p><strong>A person merges.</strong> No change reaches the main branch because an agent said it was done.</p>
+<h2>What red and green mean</h2>
+<!-- src S14 -->
+<p>Green means a test passed. That's only worth something if you've seen the same test go red when the thing it checks is actually wrong. So the order matters: break it on purpose, watch it turn red, put it back, watch it turn green. Then you know the test is looking at the right thing. If you've never seen it red, a green check might just mean the test isn't looking.</p>
 
-<h2>Three habits you can copy</h2>
+<h2>Tests are layers of nets</h2>
+<p>No single test catches everything. Each layer is a net with a different mesh, and a mistake that slips through one should land in the next:</p>
+<ul>
+  <!-- src S6 -->
+  <li><strong>Unit tests</strong> in the export engine (the open-source <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, which also powers the <code>marsdawn</code> command): a piece of code that returns the wrong answer.</li>
+  <!-- src S13 -->
+  <li><strong>Reference PDFs:</strong> sample documents are exported and every page's text is compared with a recorded copy. This catches content that silently goes missing, or a page count that changes.</li>
+  <!-- src S6, S9 -->
+  <li><strong>Different systems and builds:</strong> the engine runs on macOS 15, the oldest version it supports, and macOS 26, the one the app ships on, each as a debug and a release build. The app's full suite runs in four combinations: signed and unsigned, each with the paywall off and on. This catches what breaks only on an older system, or only in the build customers actually get.</li>
+  <!-- src S4, S1 -->
+  <li><strong>Real hardware:</strong> besides GitHub's machines, tests run on Macs of our own, including the MacBook Air above. This catches what a server without a screen can't show.</li>
+  <!-- src S12 -->
+  <li><strong>Red controls:</strong> the app's CI keeps 11 deliberately broken copies of a cleanup script, each missing one safety check, and the tests must fail on every one. If one passes, the test is the thing that's broken.</li>
+  <!-- src S3, S15 -->
+  <li><strong>A second pair of eyes:</strong> a separate agent verifies each change, and a scenario review checks how people will really use a feature before it's built. This catches "done" that isn't, and code that works but in the wrong situation.</li>
+  <li><strong>A person merges.</strong> No change reaches the main branch because an agent said it was done.</li>
+</ul>
+<!-- src S5 -->
+<p>None of this is free. The time limit for one engine run has gone from 30 minutes to 45, then 50, then 70, and macOS 15 once hit the 50-minute limit twice with every test passing.</p>
+
+<h2>Four habits you can copy</h2>
 <ol>
-  <li><strong>Keep the agent that writes apart from the agent that checks.</strong> Give the checker the change and what "done" means, not the writer's explanation, and ask it to run the tests itself and say what it didn't check. Otherwise the second agent tends to approve whatever the first one wrote. It costs a second session's tokens; on a change you'd have to fix later, it's cheaper.</li>
-  <li><strong>Run your tests in a second environment.</strong> No second Mac? A CI matrix with two OS versions, or a debug build and a release build, is enough to start. You're looking for tests that pass only by accident.</li>
+  <li><strong>Keep the agent that writes apart from the agent that checks.</strong> Give the checker the change and what "done" means, not the writer's explanation, and ask it to run the tests itself and say what it didn't check. For kit #242, the verifier ran the old test on the MacBook Air to watch it fail before passing the new one. It costs a second session's tokens, which is still cheaper than fixing a broken change later.</li>
+  <li><strong>See every test fail once.</strong> Before you trust a green check, break the thing it guards (or ask the agent to) and make sure it goes red. Agents are good at writing tests that pass; that's exactly why you need to see them fail.</li>
+  <li><strong>Run your tests in a second environment.</strong> No second Mac? A CI matrix with two OS versions, or a debug build and a release build, is a fine start. You're looking for tests that pass only by accident.</li>
   <!-- src S7, S8 -->
-  <li><strong>Treat "no tests ran" as a failure.</strong> Python 3.9's <code>unittest</code> exits successfully when it finds no tests at all, so a typo in a path gives you a green check. Our CI reads the count and fails if it's zero; it also checks the summary says "0 failed", not just the exit code. That second check came out of the independent verification of an earlier change. An agent reporting "all tests pass" when none ran is one of the most common false finishes there is.</li>
+  <li><strong>Treat "no tests ran" as a failure.</strong> Python 3.9's <code>unittest</code> exits successfully when it finds no tests at all, so a typo in a path gives you a green check. Our CI reads the count and fails on zero, and checks that the summary says "0 failed", not just the exit code. An agent reporting "all tests pass" when none ran is one of the most common false finishes there is.</li>
 </ol>
 
 <h2>The short version</h2>
@@ -92,7 +113,7 @@ Status: **proposal**. It goes live only after Ray approves.
   <li>The fix and its independent verification: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>.</li>
   <li>Moving CI onto a MacBook Air, with run times: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
   <li>The export engine's CI, with the history of its time limit in the comments: <a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>.</li>
-  <li>The app's repository is private; the app details above come from its CI workflow and test script.</li>
+  <li>The app's repository is private; the app details above come from its CI workflow and test scripts.</li>
 </ul>
 ```
 
@@ -101,7 +122,7 @@ Status: **proposal**. It goes live only after Ray approves.
 ## zh-Hant
 
 - **title**: `MarsDawn 怎麼測試：同一個測試，兩台 Mac · MarsDawn`
-- **description**: `同一個測試，在一台 Mac 通過、在另一台失敗。產品沒壞，是測試讀到了螢幕的色彩。我們怎麼檢查 agent 寫的程式，以及你也能照做的三個習慣。`
+- **description**: `同一個測試，在一台 Mac 通過、在另一台失敗。產品沒壞，是測試讀到了螢幕的色彩。我們怎麼一層一層地測試，以及你也能照做的四個習慣。`
 
 ```html
 <section class="intro">
@@ -116,31 +137,48 @@ Status: **proposal**. It goes live only after Ray approves.
 <!-- src S4: kit PR #240（未合併）、run 40196953693 -->
 <p>輸出引擎的測試，在 GitHub 的 macOS 15 機器上完整跑一次將近一小時：debug 版約 32 分鐘，release 版約 25 分鐘。為了縮短時間，我們開始把 macOS 26 那一半移到自己的 MacBook Air 上跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>）。</p>
 <!-- src S1: kit #241、run 40271990387 -->
-<p>在那台機器上第一次跑，就有一個測試失敗。這個測試會輸出一份帶有提示框（Note、Tip、Warning）的 PDF，檢查每個提示框邊上都有一條顏色正確的色條。「正確」的意思是色差小於 0.16。在 MacBook Air 上，色差是 0.1634、0.1648 和 0.1796。換到 Mac mini，同一個 commit、同樣的 macOS 和 Xcode，測試通過。</p>
+<p>在那台機器上第一次跑，就有一個測試失敗。這個測試會輸出一份帶有提示框（Note、Tip、Warning）的 PDF，檢查每個提示框邊上的色條顏色對不對，也就是色差要小於 0.16。在 MacBook Air 上，色差是 0.1634、0.1648 和 0.1796。換到 Mac mini，同一個 commit、同樣的 macOS 和 Xcode，測試通過。</p>
 <p>我們第一個懷疑是輸出壞了。結果不是：PDF 本身沒問題，兩台機器不一樣的，是測試讀它的方式。</p>
 <!-- src S1, S2: kit #241 -->
-<p>這個測試會把 PDF 每一頁畫成圖片，再讀像素。macOS 畫這張圖時，用的是主螢幕的色彩空間。Mac mini 接的是一般的外接螢幕，MacBook Air 用的是內建螢幕。我們拿一張填滿同一種橘色的圖片讀回來：(0.784, 0.278, 0.106) 在 Mac mini 上讀成 (0.822, 0.335, 0.179)，在 MacBook Air 上讀成 (0.782, 0.395, 0.221)。</p>
+<p>這個測試會把 PDF 每一頁畫成圖片再讀像素，而 macOS 畫這張圖時，用的是主螢幕的色彩空間。Mac mini 接的是一般的外接螢幕，MacBook Air 用的是內建螢幕。我們拿一張填滿同一種橘色的圖片讀回來：(0.784, 0.278, 0.106) 在 Mac mini 上讀成 (0.822, 0.335, 0.179)，在 MacBook Air 上讀成 (0.782, 0.395, 0.221)。</p>
 <!-- src S3: kit #242 驗證留言 -->
-<p>接下來才是重點：在 Mac mini 上，測試讀到的顏色其實也不對，最多差了 0.128，只是剛好落在 0.16 的上限內。它會通過，靠的是那台螢幕，不是因為它真的量對了色條。</p>
+<p>重點在這裡：在 Mac mini 上，測試讀到的顏色其實也不對，最多差了 0.128，只是剛好落在 0.16 的上限內。它會通過，靠的是那台螢幕，不是因為它真的量對了色條。</p>
 <!-- src S3, S10；{{TBD:mba-run}}＝自架 MacBook Air 的 run，來自 kit #240 -->
-<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改測試：把頁面畫進一張固定使用 sRGB 色彩空間的圖片，完全不經過螢幕。現在兩台機器都能準確讀出色條的顏色：不論是 MacBook Air 的內建螢幕還是 Mac mini，最接近的色差都是 0.0。這個 pull request 的 CI 全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），MacBook Air 機器上的完整測試也通過了（run {{TBD:mba-run}}）。為了確認它還抓得到錯，我們把每個預期顏色都改成藍色，五個提示框全部失敗。</p>
+<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改測試：把頁面畫進一張固定使用 sRGB 色彩空間的圖片，完全不經過螢幕。現在兩台機器都能準確讀出色條的顏色：不論是 MacBook Air 的內建螢幕還是 Mac mini，最接近的色差都是 0.0。這個 pull request 的 CI 全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），MacBook Air 機器上的完整測試也通過了（run {{TBD:mba-run}}）。接著我們故意讓它失敗：把每個預期顏色都改成藍色，五個提示框全部變紅。</p>
 <p>它還有一個已知的漏洞：Note 和 Caution 用的兩種橘色只差約 0.119，在 0.16 的上限內，所以這兩個顏色如果對調，測試多半不會發現。我們把這件事記了下來，沒有假裝這個測試已經完整。</p>
-<p>我們從中學到的是：一台機器上的綠燈，只代表測試在那台機器上通過，不代表它測的就是名字上寫的那件事。多一個環境，抓到的不只是產品的 bug，也會抓到測試自己的 bug。</p>
+<p>一個不會失敗的測試，什麼也保護不了；因為錯的理由而失敗的測試（例如螢幕的色彩描述檔）也一樣。一台機器上的綠燈，只代表測試在那台機器上通過，不代表它測的就是名字上寫的那件事。</p>
 
-<h2>誰來驗，在哪裡驗</h2>
-<p><strong>寫改動的 agent 不驗自己的改動。</strong>另開一個 session，只拿到 pull request 和它的驗收清單，拿不到寫的人的思路，而且要自己動手跑。驗 kit #242 時，驗證的 agent 先在 MacBook Air 上跑舊的測試，親眼看它失敗，再在兩台機器上跑新的測試，還故意把預期顏色改錯，確認測試會變紅。上面 Note 和 Caution 的漏洞也是它找到的，它也列出了自己沒驗到的項目。</p>
-<!-- src S6, S5: kit ci.yml -->
-<p><strong>輸出引擎</strong>（開源的 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>，<code>marsdawn</code> 指令也用它）在 macOS 15 和 macOS 26 上都要跑：前者是它支援的最舊版本，後者是 App 實際出貨的版本。每個版本都要跑 debug 和 release 兩輪，另外還有一組 PDF 樣本，在獨立的行程裡檢查。這要付出時間：單次執行的時間上限從 30 分鐘拉到 45、50，再到 70 分鐘；macOS 15 還曾在測試全部通過的情況下，兩次撞到 50 分鐘的上限。</p>
-<!-- src S7, S9: app ci.yml、tools/test.sh（私有） -->
-<p><strong>App</strong> 的 CI 跑在我們自己的一台 Mac 上，不簽章。完整的測試還會在兩台 Mac 上手動跑四種組合：簽章與不簽章，各自再分付費牆開與關。因為出貨的版本有付費牆，開發中的版本沒有。</p>
-<p><strong>最後由人合併。</strong>沒有任何改動是因為 agent 說「做完了」就進到主分支。</p>
+<h2>紅燈和綠燈代表什麼</h2>
+<!-- src S14 -->
+<p>綠燈代表測試通過。但只有在你看過同一個測試，在它檢查的東西真的出錯時亮紅燈，這個綠燈才有意義。所以順序很重要：先故意弄壞，看它變紅；再改回來，看它變綠。這樣你才知道測試盯著的是對的地方。如果從來沒看過它變紅，綠燈可能只代表測試根本沒在看。</p>
 
-<h2>你也能照做的三個習慣</h2>
+<h2>測試是一層一層的網子</h2>
+<p>沒有一個測試能抓到所有問題。每一層都是一張網目不同的網，從這一層漏掉的錯，應該要被下一層接住：</p>
+<ul>
+  <!-- src S6 -->
+  <li><strong>單元測試</strong>，在輸出引擎裡（開源的 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>，<code>marsdawn</code> 指令也用它）：抓某一段程式算錯答案。</li>
+  <!-- src S13 -->
+  <li><strong>參考 PDF：</strong>把一組樣本文件輸出成 PDF，每一頁的文字都和事先記錄的版本比對。抓內容悄悄不見，或頁數突然改變。</li>
+  <!-- src S6, S9 -->
+  <li><strong>不同的系統和版本：</strong>引擎在 macOS 15（支援的最舊版本）和 macOS 26（App 實際出貨的版本）上都要跑，各跑 debug 和 release 兩種版本。App 的完整測試則跑四種組合：簽章與不簽章，各自再分付費牆開與關。抓只在舊系統上壞掉，或只在使用者實際拿到的版本裡壞掉的問題。</li>
+  <!-- src S4, S1 -->
+  <li><strong>真的硬體：</strong>除了 GitHub 的機器，測試也在我們自己的 Mac 上跑，包括上面那台 MacBook Air。抓沒有螢幕的伺服器看不出來的問題。</li>
+  <!-- src S12 -->
+  <li><strong>紅燈對照組：</strong>App 的 CI 固定放著 11 份故意弄壞的清理腳本，每份都拿掉一道安全檢查，測試碰到每一份都必須失敗。只要有一份通過，壞掉的就是測試本身。</li>
+  <!-- src S3, S15 -->
+  <li><strong>另一雙眼睛：</strong>每個改動都由另一個 agent 驗證；功能動工前，也會先做情境審查，看大家實際會怎麼用。抓「說做完了其實沒做完」，以及程式能跑、卻用錯了場合。</li>
+  <li><strong>最後由人合併。</strong>沒有任何改動是因為 agent 說「做完了」就進到主分支。</li>
+</ul>
+<!-- src S5 -->
+<p>這些都有代價。引擎單次執行的時間上限從 30 分鐘拉到 45、50，再到 70 分鐘；macOS 15 還曾在測試全部通過的情況下，兩次撞到 50 分鐘的上限。</p>
+
+<h2>你也能照做的四個習慣</h2>
 <ol>
-  <li><strong>寫的 agent 和驗的 agent 分開。</strong>只給驗證的那個改動本身和「怎樣才算完成」，不要給寫的人的說明，請它自己跑測試，並列出沒驗到的地方。不然第二個 agent 很容易變成只負責蓋章。這要多花一個 session 的 token，但比起事後修一個壞掉的改動，還是便宜。</li>
+  <li><strong>寫的 agent 和驗的 agent 分開。</strong>只給驗證的那個改動本身和「怎樣才算完成」，不要給寫的人的說明，請它自己跑測試，並列出沒驗到的地方。驗 kit #242 時，驗證的 agent 先在 MacBook Air 上跑舊測試、親眼看它失敗，才讓新測試過關。這要多花一個 session 的 token，但比起事後修一個壞掉的改動，還是便宜。</li>
+  <li><strong>每個測試都要看它失敗一次。</strong>相信綠燈之前，先把它守著的東西弄壞（或請 agent 弄壞），確認它會變紅。agent 很會寫出會通過的測試，正因為這樣，你才需要看到它失敗。</li>
   <li><strong>測試至少在第二個環境跑一次。</strong>沒有第二台 Mac 也沒關係，CI 裡跑兩個 OS 版本，或 debug 和 release 各跑一次，就是不錯的起點。要找的是那些靠運氣才通過的測試。</li>
   <!-- src S7, S8 -->
-  <li><strong>「一個測試都沒跑」要算失敗。</strong>Python 3.9 的 <code>unittest</code> 一個測試都沒找到時，還是會回報成功，所以路徑打錯一個字，你照樣拿到綠燈。我們的 CI 會讀測試數量，是 0 就失敗；也會檢查摘要寫的是「0 failed」，不只看結束代碼。第二項檢查，就是之前驗證另一次改動時提出來的。agent 回報「測試全部通過」，其實一個都沒跑，是最常見的假完成之一。</li>
+  <li><strong>「一個測試都沒跑」要算失敗。</strong>Python 3.9 的 <code>unittest</code> 一個測試都沒找到時，還是會回報成功，所以路徑打錯一個字，你照樣拿到綠燈。我們的 CI 會讀測試數量，是 0 就失敗，也會檢查摘要寫的是「0 failed」，不只看結束代碼。agent 回報「測試全部通過」，其實一個都沒跑，是最常見的假完成之一。</li>
 </ol>
 
 <h2>一句話</h2>
