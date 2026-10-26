@@ -31,6 +31,11 @@ Status: **proposal**. It goes live only after Ray approves.
 | S13 | PDF goldens: sample documents are exported and each page's text is compared with a recorded copy, per OS build (the `pdf-goldens` CI job). The corpus guards against export silently losing content, the page count changing, and export drifting from the preview. | kit `Tests/MarsDawnExportTests/PDFCorpusTests.swift` lines 10–13, 126–175; `record-pdf-goldens.yml` |
 | S14 | Ray's decision, relayed by Paula on 2026-10-26: add back "deliberately break a test to check it catches the error" as a recommended habit, and lead into 「測試是一層一層的網子，有很多種目的，這種紅綠測試的意涵」. | #320 / Ray |
 | S15 | Scenario review: UX copy and flows go through a scenario review (`needs-ux` → `replied-ux`) before copy and build; #320 itself went through one. | website #320 labels and comment of 2026-10-26 08:31 UTC |
+| S16 | Large inputs. 2 MB of dense Markdown renders within 1.5 s; 5 MB (about a million nodes) falls back to plain source within 1.0 s (release budgets; debug allows 10×). The default byte cap is 16 MiB: one byte over is shown as source, unparsed. About 3 MB of one-line blocks (`- a`, `# a`; ~786,000 lines) is refused by the pre-scan's early stop and falls back as too complex (no timing assertion). There is **no** test aimed at line breaks as such; this is the closest. | kit main 85fe880: `Tests/MarsDawnKitTests/MarkdownParsingTests.swift` lines 375–394 (`largeDocuments`), 396–417; `Tests/MarsDawnKitTests/ByteCapTests.swift` lines 5–7, 73, 103; `Tests/MarsDawnKitTests/NodeBudgetTests.swift` line 218 (`realSizeBlockHeavyDocumentsStopEarly`) |
+| S17 | Unclosed markers. 1 MiB of `:::` callout openers with no closers, and 65,536 openers then closers, must each render in under 2× the time of 1 MiB of plain text (+0.05 s). Callout nesting caps at 8. Doubling unmatched `<details>` openings may at most 2.5× the time (release). | kit `Tests/MarsDawnKitTests/CalloutSecurityTests.swift` lines 125–146, 156; `Tests/MarsDawnKitTests/DetailsGroupingCostTests.swift` lines 74–84 |
+| S18 | Math (KaTeX in the preview). A bad expression shows an error instead of throwing; over 10,000 characters stays as source; at most 1,000 expressions per update; hostile TeX never becomes markup; `trust: false` gives no link or image. | kit `Tests/MarsDawnKitTests/PreviewMathPageTests.swift` lines 85, 98, 133, 160, 192; `Tests/MarsDawnKitTests/MathRenderingTests.swift` lines 383–387 |
+| S19 | Hostile HTML. `script`/`noscript` are removed from the content and nothing runs; a copy with that filter reverted must fail (red control); inline handlers are blocked by the enforced CSP; `link`/`meta`/`base`/`iframe`/`object`/`embed` never reach the page. Remote content: the blocked list stops every request; with remote images allowed only the HTTPS image loads and plain HTTP never connects; preconnects are stopped too. | kit `Tests/MarsDawnKitTests/PreviewFilterAndCSPSecurityTests.swift` lines 43, 54, 96; `Tests/MarsDawnKitTests/PreviewDOMFilterTests.swift` lines 29–31, 98; `Tests/MarsDawnKitTests/ContentRuleBehaviorTests.swift` lines 84, 150, 245 |
+| S20 | Hostile theme files are refused, and no message repeats a control character, a link, a mention or more than a capped slice of the input. Theme files over 16,384 bytes are refused unread. | kit `Tests/MarsDawnThemesTests/ThemeFixtureTests.swift` lines 108–123, 128, 145 |
 
 ---
 
@@ -83,6 +88,23 @@ Status: **proposal**. It goes live only after Ray approves.
   <!-- src S3, S15 -->
   <li><strong>A second pair of eyes:</strong> a separate agent verifies each change, and a scenario review checks how people will really use a feature before it's built. This catches "done" that isn't, and code that works but in the wrong situation.</li>
   <li><strong>A person merges.</strong> No change reaches the main branch because an agent said it was done.</li>
+</ul>
+
+<h2>What we throw at it</h2>
+<p>Those nets are only as good as what goes into them. A few of the inputs the engine's tests feed it, and what each test makes sure happens:</p>
+<ul>
+  <!-- src S16 -->
+  <li><strong>Very large files.</strong> A 2 MB document renders in under a second and a half. A 5 MB one too complex to lay out still opens, as plain text, within a second. Anything over 16 MB is shown as text without being parsed at all.</li>
+  <!-- src S16 -->
+  <li><strong>Hundreds of thousands of lines.</strong> About 3 MB of one-word lines, close to 800,000 of them, is spotted as too much partway through reading and shown as plain text instead of tying the app up.</li>
+  <!-- src S17 -->
+  <li><strong>Markers that never close.</strong> A megabyte of section openers with no closers, or tens of thousands nested inside each other, must take no more than about twice as long as a megabyte of plain text. Nesting stops at eight levels.</li>
+  <!-- src S18 -->
+  <li><strong>Formulas.</strong> A broken formula shows an error where it sits instead of breaking the page. One over 10,000 characters stays as written, only the first 1,000 in a document are drawn at a time, and nothing in a formula can turn into a link, an image or page markup.</li>
+  <!-- src S19 -->
+  <li><strong>Hostile HTML inside Markdown.</strong> Scripts are removed and never run, and embedded frames are taken out before the page shows them. Remote images stay off unless you allow them, and even then only secure (HTTPS) ones load. One control copy has the script filter taken out, and the test must fail on it.</li>
+  <!-- src S20 -->
+  <li><strong>A hostile theme file.</strong> It's refused, and the error message never repeats hidden control characters or links from the file. Theme files over 16 KB aren't read at all.</li>
 </ul>
 <!-- src S5 -->
 <p>None of this is free. The time limit for one engine run has gone from 30 minutes to 45, then 50, then 70, and macOS 15 once hit the 50-minute limit twice with every test passing.</p>
@@ -168,6 +190,23 @@ Status: **proposal**. It goes live only after Ray approves.
   <!-- src S3, S15 -->
   <li><strong>另一雙眼睛：</strong>每個改動都由另一個 agent 驗證；功能動工前，也會先做情境審查，看大家實際會怎麼用。抓「說做完了其實沒做完」，以及程式能跑、卻用錯了場合。</li>
   <li><strong>最後由人合併。</strong>沒有任何改動是因為 agent 說「做完了」就進到主分支。</li>
+</ul>
+
+<h2>我們丟給它的東西</h2>
+<p>網子好不好，要看丟進去的是什麼。下面是引擎測試會餵給它的幾種輸入，以及每個測試確保會發生的事：</p>
+<ul>
+  <!-- src S16 -->
+  <li><strong>超大的檔案。</strong>2 MB 的文件要在一秒半內顯示完。5 MB、複雜到排不了版的文件照樣打得開，一秒內以純文字顯示。超過 16 MB 的檔案完全不解析，直接以文字顯示。</li>
+  <!-- src S16 -->
+  <li><strong>幾十萬行。</strong>大約 3 MB、每行只有一個字的文件，將近 80 萬行，讀到一半就會被判定太多，改以純文字顯示，不會把 App 卡住。</li>
+  <!-- src S17 -->
+  <li><strong>永遠不關的標記。</strong>1 MB 只開不關的區塊標記，或幾萬層互相包住的區塊，花的時間不能超過同樣 1 MB 純文字的兩倍左右。巢狀最多到八層。</li>
+  <!-- src S18 -->
+  <li><strong>數學公式。</strong>寫錯的公式就在原處顯示錯誤，不會讓整頁壞掉。超過一萬個字元的公式保留原樣；一份文件一次最多畫前 1,000 個；公式裡的內容也不會變成連結、圖片或網頁標籤。</li>
+  <!-- src S19 -->
+  <li><strong>藏在 Markdown 裡的惡意 HTML。</strong>指令碼會被移除，絕不執行；內嵌的框架在頁面顯示前就被拿掉。遠端圖片預設不載入，就算你允許，也只載入安全連線（HTTPS）的圖片。另有一份拿掉指令碼過濾的對照版本，測試碰到它必須失敗。</li>
+  <!-- src S20 -->
+  <li><strong>惡意的主題檔。</strong>會被拒絕，錯誤訊息也不會重複檔案裡隱藏的控制字元或連結。超過 16 KB 的主題檔直接不讀。</li>
 </ul>
 <!-- src S5 -->
 <p>這些都有代價。引擎單次執行的時間上限從 30 分鐘拉到 45、50，再到 70 分鐘；macOS 15 還曾在測試全部通過的情況下，兩次撞到 50 分鐘的上限。</p>
