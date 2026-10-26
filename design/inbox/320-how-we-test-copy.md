@@ -34,8 +34,9 @@ Status: **proposal**. It goes live only after Ray approves.
 | S16 | Large inputs. 2 MB of dense Markdown renders within 1.5 s; 5 MB (about a million nodes) falls back to plain source within 1.0 s (release budgets; debug allows 10×). The default byte cap is 16 MiB: one byte over is shown as source, unparsed. About 3 MB of one-line blocks (`- a`, `# a`; ~786,000 lines) is refused by the pre-scan's early stop and falls back as too complex (no timing assertion). There is **no** test aimed at line breaks as such; this is the closest. | kit main 85fe880: `Tests/MarsDawnKitTests/MarkdownParsingTests.swift` lines 375–394 (`largeDocuments`), 396–417; `Tests/MarsDawnKitTests/ByteCapTests.swift` lines 5–7, 73, 103; `Tests/MarsDawnKitTests/NodeBudgetTests.swift` line 218 (`realSizeBlockHeavyDocumentsStopEarly`) |
 | S17 | Unclosed markers. 1 MiB of `:::` callout openers with no closers, and 65,536 openers then closers, must each render in under 2× the time of 1 MiB of plain text (+0.05 s). Callout nesting caps at 8. Doubling unmatched `<details>` openings may at most 2.5× the time (release). | kit `Tests/MarsDawnKitTests/CalloutSecurityTests.swift` lines 125–146, 156; `Tests/MarsDawnKitTests/DetailsGroupingCostTests.swift` lines 74–84 |
 | S18 | Math (KaTeX in the preview). A bad expression shows an error instead of throwing; over 10,000 characters stays as source; at most 1,000 expressions per update; hostile TeX never becomes markup; `trust: false` gives no link or image. | kit `Tests/MarsDawnKitTests/PreviewMathPageTests.swift` lines 85, 98, 133, 160, 192; `Tests/MarsDawnKitTests/MathRenderingTests.swift` lines 383–387 |
-| S19 | Hostile HTML. `script`/`noscript` are removed from the content and nothing runs; a copy with that filter reverted must fail (red control); inline handlers are blocked by the enforced CSP; `link`/`meta`/`base`/`iframe`/`object`/`embed` never reach the page. Remote content: the blocked list stops every request; with remote images allowed only the HTTPS image loads and plain HTTP never connects; preconnects are stopped too. | kit `Tests/MarsDawnKitTests/PreviewFilterAndCSPSecurityTests.swift` lines 43, 54, 96; `Tests/MarsDawnKitTests/PreviewDOMFilterTests.swift` lines 29–31, 98; `Tests/MarsDawnKitTests/ContentRuleBehaviorTests.swift` lines 84, 150, 245 |
+| S19 | Hostile HTML. `script`/`noscript` are removed from the content and nothing runs; a copy with that filter reverted must fail (red control); inline handlers are blocked by the enforced CSP; `link`/`meta`/`base`/`iframe`/`object`/`embed` never reach the page. Remote content: the blocked list stops every request; with remote images allowed only the HTTPS image loads and plain HTTP never connects; preconnects are stopped too. The app's own setting to load remote images is off unless the user turns it on (`loadRemoteImages`, read with `UserDefaults.bool`, so false when unset). | app `MarsDawn/Settings/AppSettings.swift` lines 150–152, 259 (private); kit `Tests/MarsDawnKitTests/PreviewFilterAndCSPSecurityTests.swift` lines 43, 54, 96; `Tests/MarsDawnKitTests/PreviewDOMFilterTests.swift` lines 29–31, 98; `Tests/MarsDawnKitTests/ContentRuleBehaviorTests.swift` lines 84, 150, 245 |
 | S20 | Hostile theme files are refused, and no message repeats a control character, a link, a mention or more than a capped slice of the input. Theme files over 16,384 bytes are refused unread. | kit `Tests/MarsDawnThemesTests/ThemeFixtureTests.swift` lines 108–123, 128, 145 |
+| S21 | Merging: Ray reviews and performs every merge (e.g. kit #242, merged by redtear1115 on 2026-10-26); bots never merge. Ray's confirmation, relayed by Paula on 2026-10-26. | #320 / Ray; kit PR #242 |
 
 ---
 
@@ -52,6 +53,7 @@ Status: **proposal**. It goes live only after Ray approves.
 </section>
 
 <div class="summary"><p><strong>A test passed on a Mac mini and failed on a MacBook Air. The product was fine. The test had been reading colours through the screen's colour profile, and on the Mac mini it had been passing by luck. A second machine found a bug in the test, not in the code.</strong></p></div>
+<p>Only want to know which extreme or hostile files MarsDawn is tested against? Skip to <a href="#inputs">What we throw at it</a>.</p>
 
 <h2>The test that failed on a MacBook Air</h2>
 <!-- src S4: kit PR #240 (not merged), run 40196953693 -->
@@ -64,41 +66,36 @@ Status: **proposal**. It goes live only after Ray approves.
 <!-- src S3: kit #242 verification comment -->
 <p>Here's the part that matters: on the Mac mini, the test hadn't been reading the right colours either. It was off by as much as 0.128, just inside the 0.16 limit. It passed because of the monitor, not because it measured the bar correctly.</p>
 <!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>The fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) changes only the test: it draws the page into an image with a fixed sRGB colour space, so no screen is involved. Both machines now read the bar colours exactly: the best match is 0.0, on the MacBook Air's built-in screen as well as on the Mac mini. The pull request's CI passed (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), and so did the full suite on the MacBook Air runner (run {{TBD:mba-run}}). Then we made it fail on purpose: with every expected colour set to blue, it went red for all five callouts.</p>
+<p>The fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) changes only the test: it draws the page into an image with a fixed sRGB colour space, so no screen is involved. Both machines now read the bar colours exactly, with a distance of 0.0, on the MacBook Air's built-in screen as well as on the Mac mini. The pull request's CI passed (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), and so did the full suite on the MacBook Air runner (run {{TBD:mba-run}}). Then we made it fail on purpose: with every expected colour set to blue, it went red for all five callouts.</p>
 <p>It still has a known gap. Note and Caution use two oranges about 0.119 apart, inside the 0.16 limit, so if those two were swapped, the test would probably not notice. We've written that down rather than pretend the test is complete.</p>
 <p>A test that can't fail protects nothing, and neither does one that fails for the wrong reason, like a screen's colour profile. Green on one machine tells you the test passed there, not that it measures what its name says.</p>
-
-<h2>What red and green mean</h2>
-<!-- src S14 -->
-<p>Green means a test passed. That's only worth something if you've seen the same test go red when the thing it checks is actually wrong. So the order matters: break it on purpose, watch it turn red, put it back, watch it turn green. Then you know the test is looking at the right thing. If you've never seen it red, a green check might just mean the test isn't looking.</p>
 
 <h2>Tests are layers of nets</h2>
 <p>No single test catches everything. Each layer is a net with a different mesh, and a mistake that slips through one should land in the next:</p>
 <ul>
-  <!-- src S6 -->
-  <li><strong>Unit tests</strong> in the export engine (the open-source <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, which also powers the <code>marsdawn</code> command): a piece of code that returns the wrong answer.</li>
   <!-- src S13 -->
-  <li><strong>Reference PDFs:</strong> sample documents are exported and every page's text is compared with a recorded copy. This catches content that silently goes missing, or a page count that changes.</li>
+  <li><strong>Reference PDFs:</strong> the export engine (the open-source <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, which also powers the <code>marsdawn</code> command) exports sample documents, and every page's text is compared with a recorded copy. This catches content that silently goes missing, or a page count that changes.</li>
   <!-- src S6, S9 -->
   <li><strong>Different systems and builds:</strong> the engine runs on macOS 15, the oldest version it supports, and macOS 26, the one the app ships on, each as a debug and a release build. The app's full suite runs in four combinations: signed and unsigned, each with the paywall off and on. This catches what breaks only on an older system, or only in the build customers actually get.</li>
-  <!-- src S4, S1 -->
-  <li><strong>Real hardware:</strong> besides GitHub's machines, tests run on Macs of our own, including the MacBook Air above. This catches what a server without a screen can't show.</li>
+  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
+  <li><strong>Real hardware:</strong> we're moving part of the engine's tests from GitHub's machines onto Macs of our own, starting with the MacBook Air above. As the story shows, a second machine catches tests that pass only because of the machine they run on.</li>
   <!-- src S12 -->
-  <li><strong>Red controls:</strong> the app's CI keeps 11 deliberately broken copies of a cleanup script, each missing one safety check, and the tests must fail on every one. If one passes, the test is the thing that's broken.</li>
+  <li><strong>Red controls:</strong> the app's CI keeps 11 deliberately broken copies of a cleanup script, each missing one safety check, and the tests must fail on every one. The script removes old builds and working copies from a Mac, so one missing check could remove the wrong thing. If a broken copy passes, the test is what's broken.</li>
   <!-- src S3, S15 -->
-  <li><strong>A second pair of eyes:</strong> a separate agent verifies each change, and a scenario review checks how people will really use a feature before it's built. This catches "done" that isn't, and code that works but in the wrong situation.</li>
-  <li><strong>A person merges.</strong> No change reaches the main branch because an agent said it was done.</li>
+  <li><strong>A second pair of eyes:</strong> our practice is to have a separate agent verify a change before it's merged, as with kit #242, and changes to how people use the app get a scenario review first. This catches "done" that isn't, and code that works but in the wrong situation.</li>
+  <!-- src S21 -->
+  <li><strong>A person merges.</strong> The developer behind MarsDawn reviews and merges every change; no agent or bot merges anything.</li>
 </ul>
 
-<h2>What we throw at it</h2>
+<h2 id="inputs">What we throw at it</h2>
 <p>Those nets are only as good as what goes into them. A few of the inputs the engine's tests feed it, and what each test makes sure happens:</p>
 <ul>
   <!-- src S16 -->
-  <li><strong>Very large files.</strong> A 2 MB document renders in under a second and a half. A 5 MB one too complex to lay out still opens, as plain text, within a second. Anything over 16 MB is shown as text without being parsed at all.</li>
+  <li><strong>Very large files.</strong> On our test machine, in a release build, a 2 MB document renders in under a second and a half, and a 5 MB one too complex to lay out still opens as plain text within a second. Anything over 16 MB is shown as text without being parsed at all.</li>
   <!-- src S16 -->
-  <li><strong>Hundreds of thousands of lines.</strong> About 3 MB of one-word lines, close to 800,000 of them, is spotted as too much partway through reading and shown as plain text instead of tying the app up.</li>
+  <li><strong>Hundreds of thousands of lines.</strong> About 3 MB of one-word lines, close to 800,000 of them, is spotted as too much partway through: the engine stops reading there and shows the file as plain text.</li>
   <!-- src S17 -->
-  <li><strong>Markers that never close.</strong> A megabyte of section openers with no closers, or tens of thousands nested inside each other, must take no more than about twice as long as a megabyte of plain text. Nesting stops at eight levels.</li>
+  <li><strong>Markers that never close.</strong> A megabyte of section openers with no closers, or tens of thousands stacked inside each other, must take no more than about twice as long as a megabyte of plain text. Past eight levels, nothing nests any deeper.</li>
   <!-- src S18 -->
   <li><strong>Formulas.</strong> A broken formula shows an error where it sits instead of breaking the page. One over 10,000 characters stays as written, only the first 1,000 in a document are drawn at a time, and nothing in a formula can turn into a link, an image or page markup.</li>
   <!-- src S19 -->
@@ -111,11 +108,12 @@ Status: **proposal**. It goes live only after Ray approves.
 
 <h2>Four habits you can copy</h2>
 <ol>
-  <li><strong>Keep the agent that writes apart from the agent that checks.</strong> Give the checker the change and what "done" means, not the writer's explanation, and ask it to run the tests itself and say what it didn't check. For kit #242, the verifier ran the old test on the MacBook Air to watch it fail before passing the new one. It costs a second session's tokens, which is still cheaper than fixing a broken change later.</li>
-  <li><strong>See every test fail once.</strong> Before you trust a green check, break the thing it guards (or ask the agent to) and make sure it goes red. Agents are good at writing tests that pass; that's exactly why you need to see them fail.</li>
+  <li><strong>Keep the agent that writes apart from the agent that checks.</strong> Give the checker the change and what "done" means, not the writing agent's explanation, and ask it to run the tests itself and say what it didn't check. For kit #242, the verifier ran the old test on the MacBook Air to watch it fail before passing the new one. It costs a second session's tokens.</li>
+  <!-- src S14 -->
+  <li><strong>See every test fail once.</strong> Green only means something if you've seen the same test go red when the thing it checks was really wrong. So before you trust a green check, break what it guards (or ask the agent to), watch it go red, put it back, and watch it go green. Agents are good at writing tests that pass; that's exactly why you need to see them fail.</li>
   <li><strong>Run your tests in a second environment.</strong> No second Mac? A CI matrix with two OS versions, or a debug build and a release build, is a fine start. You're looking for tests that pass only by accident.</li>
   <!-- src S7, S8 -->
-  <li><strong>Treat "no tests ran" as a failure.</strong> Python 3.9's <code>unittest</code> exits successfully when it finds no tests at all, so a typo in a path gives you a green check. Our CI reads the count and fails on zero, and checks that the summary says "0 failed", not just the exit code. An agent reporting "all tests pass" when none ran is one of the most common false finishes there is.</li>
+  <li><strong>Treat "no tests ran" as a failure.</strong> Python 3.9's <code>unittest</code> exits successfully when it finds no tests at all, so a typo in a path gives you a green check. Our CI reads the count and fails on zero, and checks that the summary says "0 failed", not just the exit code. We added that check after an independent verification caught the gap in our own CI.</li>
 </ol>
 
 <h2>The short version</h2>
@@ -154,6 +152,7 @@ Status: **proposal**. It goes live only after Ray approves.
 </section>
 
 <div class="summary"><p><strong>同一個測試，在 Mac mini 上通過，在 MacBook Air 上失敗。產品沒壞。是測試透過螢幕的色彩描述檔在讀顏色，它在 Mac mini 上通過只是運氣好。換一台機器，抓到的是測試的 bug，不是程式的 bug。</strong></p></div>
+<p>只想知道 MarsDawn 會拿哪些極端或惡意的檔案來測試？可以直接跳到〈<a href="#inputs">我們丟給它的東西</a>〉。</p>
 
 <h2>只在 MacBook Air 上失敗的測試</h2>
 <!-- src S4: kit PR #240（未合併）、run 40196953693 -->
@@ -166,41 +165,36 @@ Status: **proposal**. It goes live only after Ray approves.
 <!-- src S3: kit #242 驗證留言 -->
 <p>重點在這裡：在 Mac mini 上，測試讀到的顏色其實也不對，最多差了 0.128，只是剛好落在 0.16 的上限內。它會通過，靠的是那台螢幕，不是因為它真的量對了色條。</p>
 <!-- src S3, S10；{{TBD:mba-run}}＝自架 MacBook Air 的 run，來自 kit #240 -->
-<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改測試：把頁面畫進一張固定使用 sRGB 色彩空間的圖片，完全不經過螢幕。現在兩台機器都能準確讀出色條的顏色：不論是 MacBook Air 的內建螢幕還是 Mac mini，最接近的色差都是 0.0。這個 pull request 的 CI 全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），MacBook Air 機器上的完整測試也通過了（run {{TBD:mba-run}}）。接著我們故意讓它失敗：把每個預期顏色都改成藍色，五個提示框全部變紅。</p>
+<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改測試：把頁面畫進一張固定使用 sRGB 色彩空間的圖片，完全不經過螢幕。現在兩台機器都能準確讀出色條的顏色：不論是 MacBook Air 的內建螢幕還是 Mac mini，色差都是 0.0。這個 pull request 的 CI 全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），MacBook Air 機器上的完整測試也通過了（run {{TBD:mba-run}}）。接著我們故意讓它失敗：把每個預期顏色都改成藍色，五個提示框全部變紅。</p>
 <p>它還有一個已知的漏洞：Note 和 Caution 用的兩種橘色只差約 0.119，在 0.16 的上限內，所以這兩個顏色如果對調，測試多半不會發現。我們把這件事記了下來，沒有假裝這個測試已經完整。</p>
 <p>一個不會失敗的測試，什麼也保護不了；因為錯的理由而失敗的測試（例如螢幕的色彩描述檔）也一樣。一台機器上的綠燈，只代表測試在那台機器上通過，不代表它測的就是名字上寫的那件事。</p>
-
-<h2>紅燈和綠燈代表什麼</h2>
-<!-- src S14 -->
-<p>綠燈代表測試通過。但只有在你看過同一個測試，在它檢查的東西真的出錯時亮紅燈，這個綠燈才有意義。所以順序很重要：先故意弄壞，看它變紅；再改回來，看它變綠。這樣你才知道測試盯著的是對的地方。如果從來沒看過它變紅，綠燈可能只代表測試根本沒在看。</p>
 
 <h2>測試是一層一層的網子</h2>
 <p>沒有一個測試能抓到所有問題。每一層都是一張網目不同的網，從這一層漏掉的錯，應該要被下一層接住：</p>
 <ul>
-  <!-- src S6 -->
-  <li><strong>單元測試</strong>，在輸出引擎裡（開源的 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>，<code>marsdawn</code> 指令也用它）：抓某一段程式算錯答案。</li>
   <!-- src S13 -->
-  <li><strong>參考 PDF：</strong>把一組樣本文件輸出成 PDF，每一頁的文字都和事先記錄的版本比對。抓內容悄悄不見，或頁數突然改變。</li>
+  <li><strong>參考 PDF：</strong>輸出引擎（開源的 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>，<code>marsdawn</code> 指令也用它）把一組樣本文件輸出成 PDF，每一頁的文字都和事先記錄的版本比對。抓內容悄悄不見，或頁數突然改變。</li>
   <!-- src S6, S9 -->
   <li><strong>不同的系統和版本：</strong>引擎在 macOS 15（支援的最舊版本）和 macOS 26（App 實際出貨的版本）上都要跑，各跑 debug 和 release 兩種版本。App 的完整測試則跑四種組合：簽章與不簽章，各自再分付費牆開與關。抓只在舊系統上壞掉，或只在使用者實際拿到的版本裡壞掉的問題。</li>
-  <!-- src S4, S1 -->
-  <li><strong>真的硬體：</strong>除了 GitHub 的機器，測試也在我們自己的 Mac 上跑，包括上面那台 MacBook Air。抓沒有螢幕的伺服器看不出來的問題。</li>
+  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
+  <li><strong>真的硬體：</strong>我們正把引擎的一部分測試，從 GitHub 的機器移到自己的 Mac 上，第一台就是上面那台 MacBook Air。就像這個故事，換一台機器，能抓到只因為跑在某台機器上才通過的測試。</li>
   <!-- src S12 -->
-  <li><strong>紅燈對照組：</strong>App 的 CI 固定放著 11 份故意弄壞的清理腳本，每份都拿掉一道安全檢查，測試碰到每一份都必須失敗。只要有一份通過，壞掉的就是測試本身。</li>
+  <li><strong>紅燈對照組：</strong>App 的 CI 固定放著 11 份故意弄壞的清理腳本，每份都拿掉一道安全檢查，測試碰到每一份都必須失敗。這個腳本會刪掉 Mac 上舊的建置和工作副本，少一道檢查就可能刪錯東西。只要有一份弄壞的通過，壞掉的就是測試本身。</li>
   <!-- src S3, S15 -->
-  <li><strong>另一雙眼睛：</strong>每個改動都由另一個 agent 驗證；功能動工前，也會先做情境審查，看大家實際會怎麼用。抓「說做完了其實沒做完」，以及程式能跑、卻用錯了場合。</li>
-  <li><strong>最後由人合併。</strong>沒有任何改動是因為 agent 說「做完了」就進到主分支。</li>
+  <li><strong>另一雙眼睛：</strong>我們的做法是合併前把改動交給另一個 agent 驗證，像 kit #242 那樣；牽涉到使用流程的改動，會先做情境審查。抓「說做完了其實沒做完」，以及程式能跑、卻用錯了場合。</li>
+  <!-- src S21 -->
+  <li><strong>最後由人合併。</strong>每個改動都由 MarsDawn 的開發者本人審過、親手合併；agent 和 bot 都不會合併。</li>
 </ul>
 
-<h2>我們丟給它的東西</h2>
+<h2 id="inputs">我們丟給它的東西</h2>
 <p>網子好不好，要看丟進去的是什麼。下面是引擎測試會餵給它的幾種輸入，以及每個測試確保會發生的事：</p>
 <ul>
   <!-- src S16 -->
-  <li><strong>超大的檔案。</strong>2 MB 的文件要在一秒半內顯示完。5 MB、複雜到排不了版的文件照樣打得開，一秒內以純文字顯示。超過 16 MB 的檔案完全不解析，直接以文字顯示。</li>
+  <li><strong>超大的檔案。</strong>在我們的測試機上、以 release 版來量：2 MB 的文件在一秒半內顯示完；5 MB、複雜到排不了版的文件照樣打得開，一秒內以純文字顯示。超過 16 MB 的檔案完全不解析，直接以文字顯示。</li>
   <!-- src S16 -->
-  <li><strong>幾十萬行。</strong>大約 3 MB、每行只有一個字的文件，將近 80 萬行，讀到一半就會被判定太多，改以純文字顯示，不會把 App 卡住。</li>
+  <li><strong>幾十萬行。</strong>大約 3 MB、每行只有一個字的文件，將近 80 萬行，讀到一半就會被判定太多：引擎在那裡停下來，改以純文字顯示。</li>
   <!-- src S17 -->
-  <li><strong>永遠不關的標記。</strong>1 MB 只開不關的區塊標記，或幾萬層互相包住的區塊，花的時間不能超過同樣 1 MB 純文字的兩倍左右。巢狀最多到八層。</li>
+  <li><strong>永遠不關的標記。</strong>1 MB 只開不關的區塊標記，或疊了幾萬層的區塊，花的時間不能超過同樣 1 MB 純文字的兩倍左右；超過八層的部分不再往下巢狀。</li>
   <!-- src S18 -->
   <li><strong>數學公式。</strong>寫錯的公式就在原處顯示錯誤，不會讓整頁壞掉。超過一萬個字元的公式保留原樣；一份文件一次最多畫前 1,000 個；公式裡的內容也不會變成連結、圖片或網頁標籤。</li>
   <!-- src S19 -->
@@ -213,11 +207,12 @@ Status: **proposal**. It goes live only after Ray approves.
 
 <h2>你也能照做的四個習慣</h2>
 <ol>
-  <li><strong>寫的 agent 和驗的 agent 分開。</strong>只給驗證的那個改動本身和「怎樣才算完成」，不要給寫的人的說明，請它自己跑測試，並列出沒驗到的地方。驗 kit #242 時，驗證的 agent 先在 MacBook Air 上跑舊測試、親眼看它失敗，才讓新測試過關。這要多花一個 session 的 token，但比起事後修一個壞掉的改動，還是便宜。</li>
-  <li><strong>每個測試都要看它失敗一次。</strong>相信綠燈之前，先把它守著的東西弄壞（或請 agent 弄壞），確認它會變紅。agent 很會寫出會通過的測試，正因為這樣，你才需要看到它失敗。</li>
+  <li><strong>寫的 agent 和驗的 agent 分開。</strong>只給驗證的那個改動本身和「怎樣才算完成」，不要附上寫程式那個 agent 的解釋，請它自己跑測試，並列出沒驗到的地方。驗 kit #242 時，驗證的 agent 先在 MacBook Air 上跑舊測試、親眼看它失敗，才讓新測試過關。代價是多一個 session 的 token。</li>
+  <!-- src S14 -->
+  <li><strong>每個測試都要看它失敗一次。</strong>只有看過同一個測試在它檢查的東西真的出錯時亮紅燈，綠燈才有意義。所以相信綠燈之前，先把它守著的東西弄壞（或請 agent 弄壞），看它變紅；再改回來，看它變綠。agent 很會寫出會通過的測試，正因為這樣，你才需要看到它失敗。</li>
   <li><strong>測試至少在第二個環境跑一次。</strong>沒有第二台 Mac 也沒關係，CI 裡跑兩個 OS 版本，或 debug 和 release 各跑一次，就是不錯的起點。要找的是那些靠運氣才通過的測試。</li>
   <!-- src S7, S8 -->
-  <li><strong>「一個測試都沒跑」要算失敗。</strong>Python 3.9 的 <code>unittest</code> 一個測試都沒找到時，還是會回報成功，所以路徑打錯一個字，你照樣拿到綠燈。我們的 CI 會讀測試數量，是 0 就失敗，也會檢查摘要寫的是「0 failed」，不只看結束代碼。agent 回報「測試全部通過」，其實一個都沒跑，是最常見的假完成之一。</li>
+  <li><strong>「一個測試都沒跑」要算失敗。</strong>Python 3.9 的 <code>unittest</code> 一個測試都沒找到時，還是會回報成功，所以路徑打錯一個字，你照樣拿到綠燈。我們的 CI 會讀測試數量，是 0 就失敗，也會檢查摘要寫的是「0 failed」，不只看結束代碼。這道檢查，是一次獨立驗證在我們自己的 CI 裡抓到這個漏洞之後才加上的。</li>
 </ol>
 
 <h2>一句話</h2>
@@ -256,6 +251,7 @@ Status: **proposal**. It goes live only after Ray approves.
 </section>
 
 <div class="summary"><p><strong>同一个测试，在 Mac mini 上通过，在 MacBook Air 上失败。产品没坏。是测试通过屏幕的颜色描述文件在读颜色，它在 Mac mini 上通过只是运气好。换一台机器，抓到的是测试的 bug，不是代码的 bug。</strong></p></div>
+<p>只想知道 MarsDawn 会拿哪些极端或恶意的文件来测试？可以直接跳到“<a href="#inputs">我们丢给它的东西</a>”。</p>
 
 <h2>只在 MacBook Air 上失败的测试</h2>
 <!-- src S4: kit PR #240 (not merged), run 40196953693 -->
@@ -268,41 +264,36 @@ Status: **proposal**. It goes live only after Ray approves.
 <!-- src S3: kit #242 verification comment -->
 <p>关键在这里：在 Mac mini 上，测试读到的颜色其实也不对，最多差了 0.128，只是刚好落在 0.16 的上限内。它能通过，靠的是那台显示器，而不是真的量对了色条。</p>
 <!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>修复（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改测试：把页面画进一张固定使用 sRGB 色彩空间的图像，完全不经过屏幕。现在两台机器都能准确读出色条的颜色：无论是 MacBook Air 的内建显示屏还是 Mac mini，最接近的色差都是 0.0。这个 pull request 的 CI 全部通过（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），MacBook Air 机器上的完整测试也通过了（run {{TBD:mba-run}}）。接着我们故意让它失败：把每个预期颜色都改成蓝色，五个提示框全部变红。</p>
+<p>修复（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改测试：把页面画进一张固定使用 sRGB 色彩空间的图像，完全不经过屏幕。现在两台机器都能准确读出色条的颜色：无论是 MacBook Air 的内建显示屏还是 Mac mini，色差都是 0.0。这个 pull request 的 CI 全部通过（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），MacBook Air 机器上的完整测试也通过了（run {{TBD:mba-run}}）。接着我们故意让它失败：把每个预期颜色都改成蓝色，五个提示框全部变红。</p>
 <p>它还有一个已知的漏洞：Note 和 Caution 用的两种橙色只差约 0.119，在 0.16 的上限内，所以这两个颜色如果对调，测试多半发现不了。我们把这件事记了下来，没有假装这个测试已经完整。</p>
 <p>一个不会失败的测试，什么也保护不了；因为错误的理由而失败的测试（比如屏幕的颜色描述文件）也一样。一台机器上的绿灯，只说明测试在那台机器上通过，不说明它测的就是名字上写的那件事。</p>
-
-<h2>红灯和绿灯代表什么</h2>
-<!-- src S14 -->
-<p>绿灯代表测试通过。但只有在你见过同一个测试在它检查的东西真的出错时亮红灯，这个绿灯才有意义。所以顺序很重要：先故意弄坏，看它变红；再改回来，看它变绿。这样你才知道测试盯着的是对的地方。如果从来没见过它变红，绿灯可能只说明测试根本没在看。</p>
 
 <h2>测试是一层一层的网</h2>
 <p>没有哪个测试能抓到所有问题。每一层都是一张网眼不同的网，从这一层漏掉的错，应该被下一层接住：</p>
 <ul>
-  <!-- src S6 -->
-  <li><strong>单元测试</strong>，在导出引擎里（开源的 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>，<code>marsdawn</code> 命令也用它）：抓某段代码算错答案。</li>
   <!-- src S13 -->
-  <li><strong>参考 PDF：</strong>把一组样本文稿导出成 PDF，每一页的文字都和事先记录的版本比对。抓内容悄悄丢失，或页数突然改变。</li>
+  <li><strong>参考 PDF：</strong>导出引擎（开源的 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>，<code>marsdawn</code> 命令也用它）把一组样本文稿导出成 PDF，每一页的文字都和事先记录的版本比对。抓内容悄悄丢失，或页数突然改变。</li>
   <!-- src S6, S9 -->
   <li><strong>不同的系统和版本：</strong>引擎在 macOS 15（支持的最低版本）和 macOS 26（App 实际发布的版本）上都要跑，各跑 debug 和 release 两种版本。App 的完整测试则跑四种组合：签名与不签名，各自再分付费墙开与关。抓只在旧系统上出错，或只在用户实际拿到的版本里出错的问题。</li>
-  <!-- src S4, S1 -->
-  <li><strong>真实硬件：</strong>除了 GitHub 的机器，测试也在我们自己的 Mac 上跑，包括上面那台 MacBook Air。抓没有屏幕的服务器看不出来的问题。</li>
+  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
+  <li><strong>真实硬件：</strong>我们正把引擎的一部分测试，从 GitHub 的机器移到自己的 Mac 上，第一台就是上面那台 MacBook Air。就像这个故事，换一台机器，能抓到只因为跑在某台机器上才通过的测试。</li>
   <!-- src S12 -->
-  <li><strong>红灯对照组：</strong>App 的 CI 固定放着 11 份故意弄坏的清理脚本，每份都去掉一道安全检查，测试碰到每一份都必须失败。只要有一份通过，坏掉的就是测试本身。</li>
+  <li><strong>红灯对照组：</strong>App 的 CI 固定放着 11 份故意弄坏的清理脚本，每份都去掉一道安全检查，测试碰到每一份都必须失败。这个脚本会删除 Mac 上旧的构建和工作副本，少一道检查就可能删错东西。只要有一份弄坏的通过，坏掉的就是测试本身。</li>
   <!-- src S3, S15 -->
-  <li><strong>另一双眼睛：</strong>每个改动都由另一个代理验证；功能动工前，还会先做情境审查，看大家实际会怎么用。抓“说做完了其实没做完”，以及代码能跑、却用错了场合。</li>
-  <li><strong>最后由人合并。</strong>没有任何改动是因为代理说“做完了”就进入主分支。</li>
+  <li><strong>另一双眼睛：</strong>我们的做法是合并前把改动交给另一个代理验证，像 kit #242 那样；涉及使用流程的改动，会先做情境审查。抓“说做完了其实没做完”，以及代码能跑、却用错了场合。</li>
+  <!-- src S21 -->
+  <li><strong>最后由人合并。</strong>每个改动都由 MarsDawn 的开发者本人审过、亲手合并；代理和 bot 都不会合并。</li>
 </ul>
 
-<h2>我们丢给它的东西</h2>
+<h2 id="inputs">我们丢给它的东西</h2>
 <p>网好不好，要看丢进去的是什么。下面是引擎测试会喂给它的几种输入，以及每个测试确保会发生的事：</p>
 <ul>
   <!-- src S16 -->
-  <li><strong>超大的文件。</strong>2 MB 的文稿要在一秒半内显示完。5 MB、复杂到排不了版的文稿照样能打开，一秒内以纯文本显示。超过 16 MB 的文件完全不解析，直接以文本显示。</li>
+  <li><strong>超大的文件。</strong>在我们的测试机上、以 release 版来测：2 MB 的文稿在一秒半内显示完；5 MB、复杂到排不了版的文稿照样能打开，一秒内以纯文本显示。超过 16 MB 的文件完全不解析，直接以文本显示。</li>
   <!-- src S16 -->
-  <li><strong>几十万行。</strong>大约 3 MB、每行只有一个词的文稿，将近 80 万行，读到一半就会被判定太多，改以纯文本显示，不会把 App 卡住。</li>
+  <li><strong>几十万行。</strong>大约 3 MB、每行只有一个词的文稿，将近 80 万行，读到一半就会被判定太多：引擎在那里停下来，改以纯文本显示。</li>
   <!-- src S17 -->
-  <li><strong>永远不闭合的标记。</strong>1 MB 只开不关的区块标记，或几万层互相嵌套的区块，花的时间不能超过同样 1 MB 纯文本的两倍左右。嵌套最多到八层。</li>
+  <li><strong>永远不闭合的标记。</strong>1 MB 只开不关的区块标记，或叠了几万层的区块，花的时间不能超过同样 1 MB 纯文本的两倍左右；超过八层的部分不再往下嵌套。</li>
   <!-- src S18 -->
   <li><strong>数学公式。</strong>写错的公式就在原处显示错误，不会让整页坏掉。超过一万个字符的公式保留原样；一份文稿一次最多渲染前 1,000 个；公式里的内容也不会变成链接、图像或网页标签。</li>
   <!-- src S19 -->
@@ -315,11 +306,12 @@ Status: **proposal**. It goes live only after Ray approves.
 
 <h2>你也能照做的四个习惯</h2>
 <ol>
-  <li><strong>写的代理和验的代理分开。</strong>只给验证的那个改动本身和“怎样才算完成”，不要给写的那个的说明，请它自己跑测试，并列出没验到的地方。验 kit #242 时，验证的代理先在 MacBook Air 上跑旧测试、亲眼看它失败，才让新测试过关。这要多花一个会话的 token，但比起事后修一个改坏的改动，还是便宜。</li>
-  <li><strong>每个测试都要看它失败一次。</strong>相信绿灯之前，先把它守着的东西弄坏（或请代理弄坏），确认它会变红。代理很会写出能通过的测试，正因为这样，你才需要看到它失败。</li>
+  <li><strong>写的代理和验的代理分开。</strong>只给验证的那个改动本身和“怎样才算完成”，不要附上写代码那个代理的解释，请它自己跑测试，并列出没验到的地方。验 kit #242 时，验证的代理先在 MacBook Air 上跑旧测试、亲眼看它失败，才让新测试过关。代价是多一个会话的 token。</li>
+  <!-- src S14 -->
+  <li><strong>每个测试都要看它失败一次。</strong>只有见过同一个测试在它检查的东西真的出错时亮红灯，绿灯才有意义。所以相信绿灯之前，先把它守着的东西弄坏（或请代理弄坏），看它变红；再改回来，看它变绿。代理很会写出能通过的测试，正因为这样，你才需要看到它失败。</li>
   <li><strong>测试至少在第二个环境跑一次。</strong>没有第二台 Mac 也没关系，CI 里跑两个系统版本，或 debug 和 release 各跑一次，就是不错的起点。要找的是那些靠运气才通过的测试。</li>
   <!-- src S7, S8 -->
-  <li><strong>“一个测试都没跑”要算失败。</strong>Python 3.9 的 <code>unittest</code> 一个测试都没找到时，还是会报告成功，所以路径打错一个字，你照样拿到绿灯。我们的 CI 会读测试数量，是 0 就失败，也会检查摘要写的是“0 failed”，不只看退出码。代理报告“测试全部通过”，其实一个都没跑，是最常见的假完成之一。</li>
+  <li><strong>“一个测试都没跑”要算失败。</strong>Python 3.9 的 <code>unittest</code> 一个测试都没找到时，还是会报告成功，所以路径打错一个字，你照样拿到绿灯。我们的 CI 会读测试数量，是 0 就失败，也会检查摘要写的是“0 failed”，不只看退出码。这道检查，是一次独立验证在我们自己的 CI 里抓到这个漏洞之后才加上的。</li>
 </ol>
 
 <h2>一句话</h2>
@@ -358,6 +350,7 @@ Status: **proposal**. It goes live only after Ray approves.
 </section>
 
 <div class="summary"><p><strong>あるテストが Mac mini では通り、MacBook Air では失敗しました。製品に問題はありませんでした。テストが画面のカラープロファイルを通して色を読んでいて、Mac mini で通っていたのはたまたまでした。2 台目のマシンが見つけたのは、コードではなくテストのバグです。</strong></p></div>
+<p>MarsDawn がどんな極端なファイルや悪意のあるファイルでテストされているかだけ知りたい方は、「<a href="#inputs">テストに投げ込むもの</a>」へどうぞ。</p>
 
 <h2>MacBook Air でだけ失敗したテスト</h2>
 <!-- src S4: kit PR #240 (not merged), run 40196953693 -->
@@ -370,41 +363,36 @@ Status: **proposal**. It goes live only after Ray approves.
 <!-- src S3: kit #242 verification comment -->
 <p>大事なのはここからです。Mac mini でも、テストは正しい色を読めていませんでした。ずれは最大 0.128 で、0.16 の上限にぎりぎり収まっていただけです。通っていたのはディスプレイのおかげで、帯の色を正しく測れていたからではありません。</p>
 <!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）で変えたのはテストだけです。ページを sRGB に固定したカラースペースの画像に描くので、画面はまったく関わりません。いまは 2 台とも帯の色を正確に読めます。いちばん近い色差は、MacBook Air の内蔵ディスプレイでも Mac mini でも 0.0 です。プルリクエストの CI は通り（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>）、MacBook Air のランナーでの全テストも通りました（run {{TBD:mba-run}}）。そのあと、わざと失敗させました。期待する色をすべて青にすると、5 つのコールアウトすべてで赤になりました。</p>
+<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）で変えたのはテストだけです。ページを sRGB に固定したカラースペースの画像に描くので、画面はまったく関わりません。いまは 2 台とも帯の色を正確に読めます。色差は、MacBook Air の内蔵ディスプレイでも Mac mini でも 0.0 です。プルリクエストの CI は通り（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>）、MacBook Air のランナーでの全テストも通りました（run {{TBD:mba-run}}）。そのあと、わざと失敗させました。期待する色をすべて青にすると、5 つのコールアウトすべてで赤になりました。</p>
 <p>既知の穴もまだあります。Note と Caution は色差が約 0.119 の 2 つのオレンジを使っていて、0.16 の上限より内側です。この 2 色が入れ替わっても、テストはおそらく気づきません。テストが完全なふりはせず、このことを記録に残しました。</p>
 <p>失敗しようのないテストは何も守りません。画面のカラープロファイルのような、間違った理由で失敗するテストも同じです。1 台のマシンでの緑は、そこでテストが通ったことを示すだけで、名前どおりのものを測っているという意味ではありません。</p>
-
-<h2>赤と緑が意味すること</h2>
-<!-- src S14 -->
-<p>緑はテストが通ったという意味です。それに価値があるのは、確かめている対象が本当に間違っているときに、同じテストが赤になるのを見たことがある場合だけです。だから順番が大切です。わざと壊して赤になるのを見る。元に戻して緑になるのを見る。そうして初めて、テストが正しいところを見ているとわかります。赤を一度も見ていないなら、その緑はテストが何も見ていないだけかもしれません。</p>
 
 <h2>テストは何層にも重ねた網</h2>
 <p>すべてを捕まえるテストはひとつもありません。層ごとに網目の違う網があり、ひとつをすり抜けた間違いは次の網にかかるはずです。</p>
 <ul>
-  <!-- src S6 -->
-  <li><strong>単体テスト</strong>：書き出しエンジン（オープンソースの <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>。<code>marsdawn</code> コマンドもこれで動いています）の中にあります。コードの一部が間違った答えを返すことを捕まえます。</li>
   <!-- src S13 -->
-  <li><strong>参照 PDF：</strong>サンプルの書類を書き出し、各ページのテキストを記録済みのものと比べます。内容が知らないうちに消えることや、ページ数が変わることを捕まえます。</li>
+  <li><strong>参照 PDF：</strong>書き出しエンジン（オープンソースの <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>。<code>marsdawn</code> コマンドもこれで動いています）でサンプルの書類を書き出し、各ページのテキストを記録済みのものと比べます。内容が知らないうちに消えることや、ページ数が変わることを捕まえます。</li>
   <!-- src S6, S9 -->
   <li><strong>異なるシステムとビルド：</strong>エンジンは、サポートする最も古い macOS 15 と、アプリを出荷している macOS 26 の両方で、それぞれ debug と release のビルドとして実行します。アプリの全テストは 4 通りの組み合わせで実行します。署名ありと署名なし、それぞれペイウォールのオフとオンです。古いシステムでだけ、あるいはお客さまが実際に受け取るビルドでだけ壊れるものを捕まえます。</li>
-  <!-- src S4, S1 -->
-  <li><strong>実機：</strong>GitHub のマシンに加えて、上の MacBook Air を含む自前の Mac でもテストを実行します。画面のないサーバーでは見えないものを捕まえます。</li>
+  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
+  <li><strong>実機：</strong>エンジンのテストの一部を、GitHub のマシンから自前の Mac へ移しているところです。最初の 1 台が上の MacBook Air です。この話のとおり、2 台目のマシンは、そのマシンで動いているから通っているだけのテストを捕まえます。</li>
   <!-- src S12 -->
-  <li><strong>赤になるべき対照群：</strong>アプリの CI には、わざと壊したクリーンアップスクリプトのコピーが 11 個あり、それぞれ安全チェックがひとつずつ抜いてあります。テストはそのすべてで失敗しなければなりません。ひとつでも通れば、壊れているのはテストのほうです。</li>
+  <li><strong>赤になるべき対照群：</strong>アプリの CI には、わざと壊したクリーンアップスクリプトのコピーが 11 個あり、それぞれ安全チェックがひとつずつ抜いてあります。テストはそのすべてで失敗しなければなりません。このスクリプトは Mac から古いビルドや作業コピーを削除するので、チェックがひとつ欠けるだけで、消してはいけないものを消しかねません。壊したコピーがひとつでも通れば、壊れているのはテストのほうです。</li>
   <!-- src S3, S15 -->
-  <li><strong>もうひとつの目：</strong>変更はそれぞれ別のエージェントが検証し、機能を作る前には、人が実際にどう使うかをシナリオレビューで確かめます。「完了」と言いながら終わっていないことや、動くけれど使われる場面を間違えているコードを捕まえます。</li>
-  <li><strong>マージするのは人です。</strong>エージェントが終わったと言ったからといって、変更がメインブランチに入ることはありません。</li>
+  <li><strong>もうひとつの目：</strong>kit #242 のように、マージの前に別のエージェントに変更を検証させるのが私たちのやり方です。使い方の流れに関わる変更は、先にシナリオレビューを通します。「完了」と言いながら終わっていないことや、動くけれど使われる場面を間違えているコードを捕まえます。</li>
+  <!-- src S21 -->
+  <li><strong>マージするのは人です。</strong>どの変更も MarsDawn の開発者本人が確認し、自分でマージします。エージェントやボットがマージすることはありません。</li>
 </ul>
 
-<h2>テストに投げ込むもの</h2>
+<h2 id="inputs">テストに投げ込むもの</h2>
 <p>網が役に立つかどうかは、何を投げ込むかで決まります。エンジンのテストが与える入力の一部と、それぞれのテストが保証することです。</p>
 <ul>
   <!-- src S16 -->
-  <li><strong>とても大きなファイル。</strong>2 MB の書類は 1.5 秒以内に表示されます。レイアウトしきれないほど複雑な 5 MB の書類も、1 秒以内にプレーンテキストとして開きます。16 MB を超えるものは、まったく解析せずにテキストとして表示します。</li>
+  <li><strong>とても大きなファイル。</strong>私たちのテストマシンで release ビルドを使って測ると、2 MB の書類は 1.5 秒以内に表示され、レイアウトしきれないほど複雑な 5 MB の書類も 1 秒以内にプレーンテキストとして開きます。16 MB を超えるものは、まったく解析せずにテキストとして表示します。</li>
   <!-- src S16 -->
-  <li><strong>何十万もの行。</strong>1 行 1 語で約 3 MB、80 万行近い書類は、読んでいる途中で多すぎると判断され、アプリを止めずにプレーンテキストとして表示されます。</li>
+  <li><strong>何十万もの行。</strong>1 行 1 語で約 3 MB、80 万行近い書類は、途中で多すぎると判断されます。エンジンはそこで読むのをやめ、プレーンテキストとして表示します。</li>
   <!-- src S17 -->
-  <li><strong>閉じない記号。</strong>閉じのないブロックの開始記号が 1 MB 分あっても、何万層にも入れ子になったブロックでも、同じ 1 MB のプレーンテキストのおよそ 2 倍より長くかかってはいけません。入れ子は 8 階層で止まります。</li>
+  <li><strong>閉じない記号。</strong>閉じのないブロックの開始記号が 1 MB 分あっても、何万層にも積み重なったブロックでも、同じ 1 MB のプレーンテキストのおよそ 2 倍より長くかかってはいけません。8 階層より深い部分は、それ以上入れ子になりません。</li>
   <!-- src S18 -->
   <li><strong>数式。</strong>間違った数式は、ページを壊さずにその場所にエラーを表示します。10,000 文字を超える数式は書かれたまま残し、一度に描くのは書類の最初の 1,000 個までです。数式の中身がリンクや画像、ページのマークアップになることはありません。</li>
   <!-- src S19 -->
@@ -417,11 +405,12 @@ Status: **proposal**. It goes live only after Ray approves.
 
 <h2>まねできる 4 つの習慣</h2>
 <ol>
-  <li><strong>書くエージェントと確かめるエージェントを分ける。</strong>確かめる側には、書いた側の説明ではなく、変更そのものと「完了」の条件を渡し、テストを自分で実行して、確かめなかったことを挙げてもらいます。kit #242 では、検証したエージェントが新しいテストを通す前に、MacBook Air で古いテストを実行して失敗するのを確かめました。2 つ目のセッションのトークン代はかかりますが、壊れた変更をあとで直すよりは安上がりです。</li>
-  <li><strong>どのテストも一度は失敗するのを見る。</strong>緑を信じる前に、そのテストが守っているものを壊して（またはエージェントに壊してもらって）、赤になることを確かめます。エージェントは通るテストを書くのが得意です。だからこそ、失敗するところを見る必要があります。</li>
+  <li><strong>書くエージェントと確かめるエージェントを分ける。</strong>確かめる側には、書いたエージェントの説明は付けず、変更そのものと「完了」の条件を渡し、テストを自分で実行して、確かめなかったことを挙げてもらいます。kit #242 では、検証したエージェントが新しいテストを通す前に、MacBook Air で古いテストを実行して失敗するのを確かめました。かかるのは 2 つ目のセッションのトークン代です。</li>
+  <!-- src S14 -->
+  <li><strong>どのテストも一度は失敗するのを見る。</strong>緑に意味があるのは、確かめている対象が本当に間違っているときに、同じテストが赤になるのを見たことがある場合だけです。緑を信じる前に、そのテストが守っているものを壊して（またはエージェントに壊してもらって）赤になるのを見て、元に戻して緑になるのを見ます。エージェントは通るテストを書くのが得意です。だからこそ、失敗するところを見る必要があります。</li>
   <li><strong>テストを 2 つ目の環境で実行する。</strong>2 台目の Mac がなくてもかまいません。2 つの OS バージョン、あるいは debug ビルドと release ビルドの CI マトリクスで十分なスタートです。探すのは、偶然に通っているだけのテストです。</li>
   <!-- src S7, S8 -->
-  <li><strong>「テストが 1 つも実行されなかった」を失敗として扱う。</strong>Python 3.9 の <code>unittest</code> は、テストが 1 つも見つからなくても成功として終了します。パスを 1 文字打ち間違えただけで緑になるわけです。私たちの CI はテストの数を読んで 0 なら失敗にし、終了コードだけでなく、まとめに「0 failed」と書かれていることも確かめます。何も実行していないのにエージェントが「すべてのテストが通りました」と報告するのは、いちばんよくある見せかけの完了のひとつです。</li>
+  <li><strong>「テストが 1 つも実行されなかった」を失敗として扱う。</strong>Python 3.9 の <code>unittest</code> は、テストが 1 つも見つからなくても成功として終了します。パスを 1 文字打ち間違えただけで緑になるわけです。私たちの CI はテストの数を読んで 0 なら失敗にし、終了コードだけでなく、まとめに「0 failed」と書かれていることも確かめます。このチェックは、独立した検証で私たち自身の CI のこの穴が見つかってから加えたものです。</li>
 </ol>
 
 <h2>まとめ</h2>
@@ -460,6 +449,7 @@ Status: **proposal**. It goes live only after Ray approves.
 </section>
 
 <div class="summary"><p><strong>한 테스트가 Mac mini에서는 통과하고 MacBook Air에서는 실패했습니다. 제품에는 문제가 없었습니다. 테스트가 화면의 색상 프로파일을 거쳐 색을 읽고 있었고, Mac mini에서 통과한 것은 운이 좋았을 뿐입니다. 두 번째 기기가 찾아낸 것은 코드가 아니라 테스트의 버그였습니다.</strong></p></div>
+<p>MarsDawn이 어떤 극단적이거나 악의적인 파일로 테스트되는지만 궁금하다면 '<a href="#inputs">테스트에 던져 넣는 것들</a>'로 바로 가세요.</p>
 
 <h2>MacBook Air에서만 실패한 테스트</h2>
 <!-- src S4: kit PR #240 (not merged), run 40196953693 -->
@@ -472,41 +462,36 @@ Status: **proposal**. It goes live only after Ray approves.
 <!-- src S3: kit #242 verification comment -->
 <p>중요한 건 여기부터입니다. Mac mini에서도 테스트는 올바른 색을 읽지 못하고 있었습니다. 최대 0.128까지 어긋나 있었고, 0.16 한도 안에 겨우 들어왔을 뿐입니다. 통과한 건 모니터 덕분이지, 막대를 제대로 측정해서가 아니었습니다.</p>
 <!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>수정(<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>)은 테스트만 바꿉니다. 페이지를 sRGB로 고정한 색 공간의 이미지에 그리기 때문에 화면이 전혀 끼어들지 않습니다. 이제 두 기기 모두 막대 색을 정확하게 읽습니다. 가장 가까운 색 차이는 MacBook Air의 내장 디스플레이에서도, Mac mini에서도 0.0입니다. 풀 리퀘스트의 CI가 통과했고(<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), MacBook Air 러너에서 전체 테스트도 통과했습니다(run {{TBD:mba-run}}). 그다음 일부러 실패시켰습니다. 기대하는 색을 모두 파란색으로 바꾸자 콜아웃 다섯 개 모두에서 빨간불이 들어왔습니다.</p>
+<p>수정(<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>)은 테스트만 바꿉니다. 페이지를 sRGB로 고정한 색 공간의 이미지에 그리기 때문에 화면이 전혀 끼어들지 않습니다. 이제 두 기기 모두 막대 색을 정확하게 읽습니다. 색 차이는 MacBook Air의 내장 디스플레이에서도, Mac mini에서도 0.0입니다. 풀 리퀘스트의 CI가 통과했고(<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), MacBook Air 러너에서 전체 테스트도 통과했습니다(run {{TBD:mba-run}}). 그다음 일부러 실패시켰습니다. 기대하는 색을 모두 파란색으로 바꾸자 콜아웃 다섯 개 모두에서 빨간불이 들어왔습니다.</p>
 <p>알려진 빈틈도 아직 있습니다. Note와 Caution은 색 차이가 약 0.119인 두 주황색을 쓰는데, 0.16 한도 안쪽입니다. 그래서 두 색이 서로 바뀌어도 테스트는 아마 알아차리지 못할 것입니다. 테스트가 완벽한 척하지 않고 이 사실을 기록해 두었습니다.</p>
 <p>실패할 수 없는 테스트는 아무것도 지켜 주지 못합니다. 화면의 색상 프로파일처럼 엉뚱한 이유로 실패하는 테스트도 마찬가지입니다. 한 기기에서의 초록불은 테스트가 거기서 통과했다는 뜻일 뿐, 이름에 적힌 것을 측정한다는 뜻은 아닙니다.</p>
-
-<h2>빨간불과 초록불이 뜻하는 것</h2>
-<!-- src S14 -->
-<p>초록불은 테스트가 통과했다는 뜻입니다. 그것이 의미가 있으려면, 확인하는 대상이 정말로 잘못됐을 때 같은 테스트가 빨간불로 바뀌는 것을 본 적이 있어야 합니다. 그래서 순서가 중요합니다. 일부러 망가뜨려 빨간불을 보고, 되돌려 초록불을 봅니다. 그래야 테스트가 올바른 곳을 보고 있다는 걸 알 수 있습니다. 빨간불을 한 번도 보지 못했다면, 그 초록불은 테스트가 아무것도 보고 있지 않다는 뜻일 수도 있습니다.</p>
 
 <h2>테스트는 여러 겹의 그물입니다</h2>
 <p>모든 것을 잡아내는 테스트는 없습니다. 겹마다 그물코가 다른 그물이 있고, 한 그물을 빠져나간 실수는 다음 그물에 걸려야 합니다.</p>
 <ul>
-  <!-- src S6 -->
-  <li><strong>단위 테스트</strong>: 내보내기 엔진(오픈 소스인 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, <code>marsdawn</code> 명령도 이것으로 돌아갑니다) 안에 있습니다. 코드 일부가 틀린 답을 내는 것을 잡아냅니다.</li>
   <!-- src S13 -->
-  <li><strong>기준 PDF:</strong> 샘플 문서를 내보내고 페이지마다 텍스트를 기록해 둔 사본과 비교합니다. 내용이 조용히 사라지거나 페이지 수가 바뀌는 것을 잡아냅니다.</li>
+  <li><strong>기준 PDF:</strong> 내보내기 엔진(오픈 소스인 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, <code>marsdawn</code> 명령도 이것으로 돌아갑니다)으로 샘플 문서를 내보내고, 페이지마다 텍스트를 기록해 둔 사본과 비교합니다. 내용이 조용히 사라지거나 페이지 수가 바뀌는 것을 잡아냅니다.</li>
   <!-- src S6, S9 -->
   <li><strong>다른 시스템과 빌드:</strong> 엔진은 지원하는 가장 오래된 버전인 macOS 15와, 앱이 출시되는 macOS 26에서 각각 debug와 release 빌드로 돌아갑니다. 앱의 전체 테스트는 네 가지 조합으로 돕니다. 서명한 것과 서명하지 않은 것, 각각 페이월을 끈 것과 켠 것입니다. 오래된 시스템에서만, 또는 고객이 실제로 받는 빌드에서만 망가지는 것을 잡아냅니다.</li>
-  <!-- src S4, S1 -->
-  <li><strong>실제 하드웨어:</strong> GitHub의 기기 말고도 위의 MacBook Air를 포함한 우리 Mac에서 테스트를 돌립니다. 화면 없는 서버에서는 보이지 않는 것을 잡아냅니다.</li>
+  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
+  <li><strong>실제 하드웨어:</strong> 엔진 테스트의 일부를 GitHub의 기기에서 우리 Mac으로 옮기는 중이며, 첫 번째가 위의 MacBook Air입니다. 이 이야기처럼, 두 번째 기기는 특정 기기에서 돌았기 때문에 통과했을 뿐인 테스트를 잡아냅니다.</li>
   <!-- src S12 -->
-  <li><strong>빨간불 대조군:</strong> 앱의 CI에는 일부러 망가뜨린 정리 스크립트 사본 11개가 있고, 사본마다 안전 검사가 하나씩 빠져 있습니다. 테스트는 그 모두에서 실패해야 합니다. 하나라도 통과하면 망가진 것은 테스트입니다.</li>
+  <li><strong>빨간불 대조군:</strong> 앱의 CI에는 일부러 망가뜨린 정리 스크립트 사본 11개가 있고, 사본마다 안전 검사가 하나씩 빠져 있습니다. 테스트는 그 모두에서 실패해야 합니다. 이 스크립트는 Mac에서 오래된 빌드와 작업 사본을 지우기 때문에, 검사 하나만 빠져도 엉뚱한 것을 지울 수 있습니다. 망가뜨린 사본이 하나라도 통과하면 망가진 것은 테스트입니다.</li>
   <!-- src S3, S15 -->
-  <li><strong>또 하나의 눈:</strong> 변경마다 다른 에이전트가 검증하고, 기능을 만들기 전에는 시나리오 리뷰로 사람들이 실제로 어떻게 쓸지 확인합니다. 끝났다고 했지만 끝나지 않은 것, 그리고 동작은 하지만 잘못된 상황에 쓰인 코드를 잡아냅니다.</li>
-  <li><strong>병합은 사람이 합니다.</strong> 에이전트가 끝났다고 말했다는 이유로 메인 브랜치에 들어가는 변경은 없습니다.</li>
+  <li><strong>또 하나의 눈:</strong> kit #242처럼, 병합 전에 다른 에이전트에게 변경을 검증하게 하는 것이 우리의 방식입니다. 사용 흐름에 관련된 변경은 먼저 시나리오 리뷰를 거칩니다. 끝났다고 했지만 끝나지 않은 것, 그리고 동작은 하지만 잘못된 상황에 쓰인 코드를 잡아냅니다.</li>
+  <!-- src S21 -->
+  <li><strong>병합은 사람이 합니다.</strong> 모든 변경은 MarsDawn 개발자가 직접 검토하고 병합합니다. 에이전트나 봇은 병합하지 않습니다.</li>
 </ul>
 
-<h2>테스트에 던져 넣는 것들</h2>
+<h2 id="inputs">테스트에 던져 넣는 것들</h2>
 <p>그물이 얼마나 쓸모 있는지는 무엇을 던져 넣느냐에 달려 있습니다. 엔진 테스트가 넣는 입력 몇 가지와, 각 테스트가 보장하는 것입니다.</p>
 <ul>
   <!-- src S16 -->
-  <li><strong>아주 큰 파일.</strong> 2MB 문서는 1.5초 안에 표시됩니다. 레이아웃하기에 너무 복잡한 5MB 문서도 1초 안에 일반 텍스트로 열립니다. 16MB가 넘는 것은 아예 파싱하지 않고 텍스트로 보여 줍니다.</li>
+  <li><strong>아주 큰 파일.</strong> 우리 테스트 기기에서 release 빌드로 재면, 2MB 문서는 1.5초 안에 표시되고, 레이아웃하기에 너무 복잡한 5MB 문서도 1초 안에 일반 텍스트로 열립니다. 16MB가 넘는 것은 아예 파싱하지 않고 텍스트로 보여 줍니다.</li>
   <!-- src S16 -->
-  <li><strong>수십만 줄.</strong> 한 줄에 한 단어씩, 약 3MB에 80만 줄 가까운 문서는 읽는 도중에 너무 많다고 판단되어, 앱을 붙잡아 두지 않고 일반 텍스트로 표시됩니다.</li>
+  <li><strong>수십만 줄.</strong> 한 줄에 한 단어씩, 약 3MB에 80만 줄 가까운 문서는 도중에 너무 많다고 판단됩니다. 엔진은 거기서 읽기를 멈추고 일반 텍스트로 표시합니다.</li>
   <!-- src S17 -->
-  <li><strong>닫히지 않는 표시.</strong> 닫는 짝이 없는 블록 시작 표시 1MB, 또는 수만 겹으로 중첩된 블록도 같은 1MB 일반 텍스트의 약 두 배보다 오래 걸리면 안 됩니다. 중첩은 8단계에서 멈춥니다.</li>
+  <li><strong>닫히지 않는 표시.</strong> 닫는 짝이 없는 블록 시작 표시 1MB, 또는 수만 겹으로 쌓인 블록도 같은 1MB 일반 텍스트의 약 두 배보다 오래 걸리면 안 됩니다. 8단계를 넘는 부분은 더 이상 중첩되지 않습니다.</li>
   <!-- src S18 -->
   <li><strong>수식.</strong> 잘못된 수식은 페이지를 망가뜨리지 않고 그 자리에 오류를 표시합니다. 10,000자가 넘는 수식은 쓴 그대로 두고, 한 번에 문서의 처음 1,000개까지만 그립니다. 수식 안의 내용이 링크나 이미지, 페이지 마크업이 되는 일은 없습니다.</li>
   <!-- src S19 -->
@@ -519,11 +504,12 @@ Status: **proposal**. It goes live only after Ray approves.
 
 <h2>따라 할 수 있는 네 가지 습관</h2>
 <ol>
-  <li><strong>작성하는 에이전트와 확인하는 에이전트를 나누세요.</strong> 확인하는 쪽에는 작성한 쪽의 설명이 아니라 변경 자체와 '완료'의 기준을 주고, 테스트를 직접 돌려 확인하지 않은 것을 말해 달라고 하세요. kit #242에서는 검증한 에이전트가 새 테스트를 통과시키기 전에 MacBook Air에서 예전 테스트를 돌려 실패하는 것을 확인했습니다. 두 번째 세션의 토큰 비용이 들지만, 망가진 변경을 나중에 고치는 것보다는 쌉니다.</li>
-  <li><strong>모든 테스트가 한 번은 실패하는 것을 보세요.</strong> 초록불을 믿기 전에, 그 테스트가 지키는 것을 망가뜨려 보고(또는 에이전트에게 맡기고) 빨간불이 들어오는지 확인하세요. 에이전트는 통과하는 테스트를 잘 씁니다. 바로 그래서 실패하는 모습을 봐야 합니다.</li>
+  <li><strong>작성하는 에이전트와 확인하는 에이전트를 나누세요.</strong> 확인하는 쪽에는 작성한 에이전트의 설명은 붙이지 말고 변경 자체와 '완료'의 기준만 주고, 테스트를 직접 돌려 확인하지 않은 것을 말해 달라고 하세요. kit #242에서는 검증한 에이전트가 새 테스트를 통과시키기 전에 MacBook Air에서 예전 테스트를 돌려 실패하는 것을 확인했습니다. 드는 비용은 두 번째 세션의 토큰입니다.</li>
+  <!-- src S14 -->
+  <li><strong>모든 테스트가 한 번은 실패하는 것을 보세요.</strong> 초록불은 확인하는 대상이 정말 잘못됐을 때 같은 테스트가 빨간불로 바뀌는 것을 본 적이 있어야 의미가 있습니다. 그러니 초록불을 믿기 전에, 그 테스트가 지키는 것을 망가뜨려 보고(또는 에이전트에게 맡기고) 빨간불을 확인한 뒤, 되돌려 초록불을 확인하세요. 에이전트는 통과하는 테스트를 잘 씁니다. 바로 그래서 실패하는 모습을 봐야 합니다.</li>
   <li><strong>테스트를 두 번째 환경에서 돌리세요.</strong> 두 번째 Mac이 없어도 괜찮습니다. OS 버전 두 개, 또는 debug와 release 빌드로 된 CI 매트릭스면 충분한 출발점입니다. 찾는 것은 우연히 통과하는 테스트입니다.</li>
   <!-- src S7, S8 -->
-  <li><strong>'테스트가 하나도 돌지 않음'을 실패로 처리하세요.</strong> Python 3.9의 <code>unittest</code>는 테스트를 하나도 찾지 못해도 성공으로 끝납니다. 그래서 경로에 오타 하나만 있어도 초록불을 받습니다. 우리 CI는 테스트 수를 읽어 0이면 실패시키고, 종료 코드만이 아니라 요약에 "0 failed"라고 적혀 있는지도 확인합니다. 아무것도 돌지 않았는데 에이전트가 "모든 테스트 통과"라고 보고하는 것은 가장 흔한 가짜 완료 중 하나입니다.</li>
+  <li><strong>'테스트가 하나도 돌지 않음'을 실패로 처리하세요.</strong> Python 3.9의 <code>unittest</code>는 테스트를 하나도 찾지 못해도 성공으로 끝납니다. 그래서 경로에 오타 하나만 있어도 초록불을 받습니다. 우리 CI는 테스트 수를 읽어 0이면 실패시키고, 종료 코드만이 아니라 요약에 "0 failed"라고 적혀 있는지도 확인합니다. 이 검사는 독립 검증이 우리 CI의 이 빈틈을 찾아낸 뒤에 추가했습니다.</li>
 </ol>
 
 <h2>짧게 말하면</h2>
@@ -562,6 +548,7 @@ Status: **proposal**. It goes live only after Ray approves.
 </section>
 
 <div class="summary"><p><strong>Ein Test bestand auf einem Mac mini und schlug auf einem MacBook Air fehl. Das Produkt war in Ordnung. Der Test hatte Farben durch das Farbprofil des Bildschirms gelesen, und auf dem Mac mini hatte er nur durch Glück bestanden. Ein zweites Gerät fand einen Fehler im Test, nicht im Code.</strong></p></div>
+<p>Du willst nur wissen, mit welchen extremen oder feindseligen Dateien MarsDawn getestet wird? Dann spring direkt zu <a href="#inputs">Was wir hineinwerfen</a>.</p>
 
 <h2>Der Test, der auf einem MacBook Air fehlschlug</h2>
 <!-- src S4: kit PR #240 (not merged), run 40196953693 -->
@@ -574,41 +561,36 @@ Status: **proposal**. It goes live only after Ray approves.
 <!-- src S3: kit #242 verification comment -->
 <p>Jetzt kommt der entscheidende Teil: Auch auf dem Mac mini hatte der Test nicht die richtigen Farben gelesen. Er lag um bis zu 0,128 daneben, knapp innerhalb der Grenze von 0,16. Er bestand wegen des Monitors, nicht weil er den Balken richtig gemessen hätte.</p>
 <!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>Der Fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) ändert nur den Test: Er zeichnet die Seite in ein Bild mit festem sRGB-Farbraum, sodass kein Bildschirm beteiligt ist. Beide Geräte lesen die Balkenfarben jetzt exakt: Die beste Übereinstimmung ist 0,0, auf dem eingebauten Display des MacBook Air genauso wie auf dem Mac mini. Die CI des Pull Requests lief durch (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), ebenso die komplette Testsuite auf dem MacBook-Air-Runner (run {{TBD:mba-run}}). Dann haben wir ihn absichtlich scheitern lassen: Mit Blau als erwarteter Farbe überall wurde er für alle fünf Hinweisboxen rot.</p>
+<p>Der Fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) ändert nur den Test: Er zeichnet die Seite in ein Bild mit festem sRGB-Farbraum, sodass kein Bildschirm beteiligt ist. Beide Geräte lesen die Balkenfarben jetzt exakt, mit einem Farbabstand von 0,0, auf dem eingebauten Display des MacBook Air genauso wie auf dem Mac mini. Die CI des Pull Requests lief durch (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), ebenso die komplette Testsuite auf dem MacBook-Air-Runner (run {{TBD:mba-run}}). Dann haben wir ihn absichtlich scheitern lassen: Mit Blau als erwarteter Farbe überall wurde er für alle fünf Hinweisboxen rot.</p>
 <p>Eine bekannte Lücke hat er noch. Note und Caution verwenden zwei Orangetöne, die etwa 0,119 auseinanderliegen, also innerhalb der Grenze von 0,16. Würden die beiden vertauscht, würde der Test es wahrscheinlich nicht merken. Das haben wir aufgeschrieben, statt so zu tun, als wäre der Test vollständig.</p>
 <p>Ein Test, der nicht fehlschlagen kann, schützt nichts, und einer, der aus dem falschen Grund fehlschlägt, etwa wegen des Farbprofils eines Bildschirms, ebenso wenig. Grün auf einem Gerät heißt nur, dass der Test dort bestanden hat, nicht, dass er misst, was sein Name sagt.</p>
-
-<h2>Was Rot und Grün bedeuten</h2>
-<!-- src S14 -->
-<p>Grün heißt: Ein Test hat bestanden. Das ist nur etwas wert, wenn du denselben Test schon rot gesehen hast, als das, was er prüft, wirklich falsch war. Deshalb kommt es auf die Reihenfolge an: absichtlich kaputt machen, rot werden sehen, zurücksetzen, grün werden sehen. Dann weißt du, dass der Test auf das Richtige schaut. Hast du ihn nie rot gesehen, heißt ein grüner Haken vielleicht nur, dass der Test gar nicht hinschaut.</p>
 
 <h2>Tests sind Netze in Schichten</h2>
 <p>Kein einzelner Test fängt alles. Jede Schicht ist ein Netz mit anderer Maschenweite, und ein Fehler, der durch eines rutscht, sollte im nächsten landen:</p>
 <ul>
-  <!-- src S6 -->
-  <li><strong>Unit-Tests</strong> in der Export-Engine (dem quelloffenen <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, auf dem auch der Befehl <code>marsdawn</code> läuft): ein Stück Code, das die falsche Antwort liefert.</li>
   <!-- src S13 -->
-  <li><strong>Referenz-PDFs:</strong> Beispieldokumente werden exportiert, und der Text jeder Seite wird mit einer gespeicherten Fassung verglichen. Das fängt Inhalte, die still verschwinden, oder eine Seitenzahl, die sich ändert.</li>
+  <li><strong>Referenz-PDFs:</strong> Die Export-Engine (das quelloffene <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, auf dem auch der Befehl <code>marsdawn</code> läuft) exportiert Beispieldokumente, und der Text jeder Seite wird mit einer gespeicherten Fassung verglichen. Das fängt Inhalte, die still verschwinden, oder eine Seitenzahl, die sich ändert.</li>
   <!-- src S6, S9 -->
   <li><strong>Verschiedene Systeme und Builds:</strong> Die Engine läuft auf macOS 15, der ältesten unterstützten Version, und auf macOS 26, mit dem die App ausgeliefert wird, jeweils als Debug- und als Release-Build. Die komplette Testsuite der App läuft in vier Kombinationen: signiert und unsigniert, jeweils mit ausgeschalteter und eingeschalteter Paywall. Das fängt, was nur auf einem älteren System kaputtgeht oder nur in dem Build, den die Kundschaft tatsächlich bekommt.</li>
-  <!-- src S4, S1 -->
-  <li><strong>Echte Hardware:</strong> Neben den Maschinen von GitHub laufen die Tests auf eigenen Macs, darunter das MacBook Air von oben. Das fängt, was ein Server ohne Bildschirm nicht zeigen kann.</li>
+  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
+  <li><strong>Echte Hardware:</strong> Wir verlegen einen Teil der Engine-Tests von den Maschinen von GitHub auf eigene Macs, angefangen mit dem MacBook Air von oben. Wie die Geschichte zeigt, fängt ein zweites Gerät Tests, die nur wegen des Geräts bestehen, auf dem sie laufen.</li>
   <!-- src S12 -->
-  <li><strong>Negativkontrollen:</strong> Die CI der App hält 11 absichtlich kaputte Kopien eines Aufräumskripts bereit, jeder fehlt eine Sicherheitsprüfung, und die Tests müssen bei jeder einzelnen fehlschlagen. Besteht eine, ist der Test das, was kaputt ist.</li>
+  <li><strong>Negativkontrollen:</strong> Die CI der App hält 11 absichtlich kaputte Kopien eines Aufräumskripts bereit, jeder fehlt eine Sicherheitsprüfung, und die Tests müssen bei jeder einzelnen fehlschlagen. Das Skript löscht alte Builds und Arbeitskopien auf einem Mac, eine fehlende Prüfung könnte also das Falsche löschen. Besteht eine kaputte Kopie, ist der Test das, was kaputt ist.</li>
   <!-- src S3, S15 -->
-  <li><strong>Ein zweites Paar Augen:</strong> Ein separater Agent prüft jede Änderung, und ein Szenario-Review klärt, wie Menschen eine Funktion wirklich nutzen werden, bevor sie gebaut wird. Das fängt „fertig“, das es nicht ist, und Code, der funktioniert, aber in der falschen Situation.</li>
-  <li><strong>Zusammenführen tut ein Mensch.</strong> Keine Änderung landet im Hauptbranch, nur weil ein Agent sagt, sie sei fertig.</li>
+  <li><strong>Ein zweites Paar Augen:</strong> Bei uns prüft in der Regel ein separater Agent eine Änderung, bevor sie zusammengeführt wird, wie bei kit #242, und Änderungen an Abläufen in der App bekommen vorher ein Szenario-Review. Das fängt „fertig“, das es nicht ist, und Code, der funktioniert, aber in der falschen Situation.</li>
+  <!-- src S21 -->
+  <li><strong>Zusammenführen tut ein Mensch.</strong> Jede Änderung wird von der Person, die MarsDawn entwickelt, selbst geprüft und zusammengeführt; kein Agent und kein Bot führt etwas zusammen.</li>
 </ul>
 
-<h2>Was wir hineinwerfen</h2>
+<h2 id="inputs">Was wir hineinwerfen</h2>
 <p>Die Netze sind nur so gut wie das, was hineinkommt. Ein paar der Eingaben, mit denen die Tests die Engine füttern, und was jeder Test sicherstellt:</p>
 <ul>
   <!-- src S16 -->
-  <li><strong>Sehr große Dateien.</strong> Ein 2-MB-Dokument wird in weniger als anderthalb Sekunden dargestellt. Ein 5-MB-Dokument, das zu komplex für das Layout ist, öffnet sich trotzdem, als reiner Text, innerhalb einer Sekunde. Alles über 16 MB wird als Text angezeigt, ohne überhaupt geparst zu werden.</li>
+  <li><strong>Sehr große Dateien.</strong> Auf unserem Testgerät, im Release-Build gemessen, wird ein 2-MB-Dokument in weniger als anderthalb Sekunden dargestellt, und ein 5-MB-Dokument, das zu komplex für das Layout ist, öffnet sich trotzdem innerhalb einer Sekunde als reiner Text. Alles über 16 MB wird als Text angezeigt, ohne überhaupt geparst zu werden.</li>
   <!-- src S16 -->
-  <li><strong>Hunderttausende Zeilen.</strong> Etwa 3 MB Zeilen mit je einem Wort, knapp 800.000 davon, werden schon während des Lesens als zu viel erkannt und als reiner Text angezeigt, statt die App zu blockieren.</li>
+  <li><strong>Hunderttausende Zeilen.</strong> Etwa 3 MB Zeilen mit je einem Wort, knapp 800.000 davon, werden unterwegs als zu viel erkannt: Die Engine hört dort auf zu lesen und zeigt die Datei als reinen Text.</li>
   <!-- src S17 -->
-  <li><strong>Markierungen, die nie schließen.</strong> Ein Megabyte öffnender Abschnittsmarken ohne Gegenstück oder Zehntausende ineinander verschachtelte dürfen höchstens etwa doppelt so lange brauchen wie ein Megabyte reiner Text. Die Verschachtelung endet bei acht Ebenen.</li>
+  <li><strong>Markierungen, die nie schließen.</strong> Ein Megabyte öffnender Abschnittsmarken ohne Gegenstück oder Zehntausende übereinandergestapelte dürfen höchstens etwa doppelt so lange brauchen wie ein Megabyte reiner Text. Ab der achten Ebene wird nichts mehr tiefer verschachtelt.</li>
   <!-- src S18 -->
   <li><strong>Formeln.</strong> Eine fehlerhafte Formel zeigt an ihrer Stelle einen Fehler, statt die Seite kaputt zu machen. Eine mit mehr als 10.000 Zeichen bleibt, wie sie geschrieben ist, es werden jeweils nur die ersten 1.000 eines Dokuments gezeichnet, und nichts in einer Formel kann zu einem Link, einem Bild oder Seiten-Markup werden.</li>
   <!-- src S19 -->
@@ -621,11 +603,12 @@ Status: **proposal**. It goes live only after Ray approves.
 
 <h2>Vier Gewohnheiten zum Nachmachen</h2>
 <ol>
-  <li><strong>Trenne den Agenten, der schreibt, von dem, der prüft.</strong> Gib dem prüfenden die Änderung und was „fertig“ heißt, nicht die Erklärung des schreibenden, und lass ihn die Tests selbst ausführen und sagen, was er nicht geprüft hat. Bei kit #242 ließ der prüfende Agent den alten Test auf dem MacBook Air laufen, um ihn scheitern zu sehen, bevor er den neuen durchgehen ließ. Das kostet die Tokens einer zweiten Sitzung, ist aber immer noch billiger, als später eine kaputte Änderung zu reparieren.</li>
-  <li><strong>Sieh jeden Test einmal fehlschlagen.</strong> Bevor du einem grünen Haken traust, mach kaputt, was er bewacht (oder lass den Agenten das tun), und vergewissere dich, dass er rot wird. Agenten sind gut darin, Tests zu schreiben, die bestehen; genau deshalb musst du sie scheitern sehen.</li>
+  <li><strong>Trenne den Agenten, der schreibt, von dem, der prüft.</strong> Gib dem prüfenden die Änderung und was „fertig“ heißt, ohne die Erklärung des schreibenden Agenten, und lass ihn die Tests selbst ausführen und sagen, was er nicht geprüft hat. Bei kit #242 ließ der prüfende Agent den alten Test auf dem MacBook Air laufen, um ihn scheitern zu sehen, bevor er den neuen durchgehen ließ. Das kostet die Tokens einer zweiten Sitzung.</li>
+  <!-- src S14 -->
+  <li><strong>Sieh jeden Test einmal fehlschlagen.</strong> Grün ist nur etwas wert, wenn du denselben Test schon rot gesehen hast, als das, was er prüft, wirklich falsch war. Bevor du einem grünen Haken traust, mach also kaputt, was er bewacht (oder lass den Agenten das tun), sieh ihn rot werden, setz es zurück und sieh ihn grün werden. Agenten sind gut darin, Tests zu schreiben, die bestehen; genau deshalb musst du sie scheitern sehen.</li>
   <li><strong>Lass deine Tests in einer zweiten Umgebung laufen.</strong> Kein zweiter Mac? Eine CI-Matrix mit zwei OS-Versionen oder mit einem Debug- und einem Release-Build ist ein guter Anfang. Du suchst Tests, die nur zufällig bestehen.</li>
   <!-- src S7, S8 -->
-  <li><strong>Werte „keine Tests gelaufen“ als Fehlschlag.</strong> <code>unittest</code> in Python 3.9 beendet sich erfolgreich, wenn es überhaupt keine Tests findet; ein Tippfehler im Pfad bringt dir also einen grünen Haken. Unsere CI liest die Anzahl, schlägt bei null fehl und prüft, dass die Zusammenfassung „0 failed“ sagt, statt nur auf den Exit-Code zu schauen. Ein Agent, der „alle Tests bestanden“ meldet, obwohl keiner lief, ist eines der häufigsten falschen „Fertig“, die es gibt.</li>
+  <li><strong>Werte „keine Tests gelaufen“ als Fehlschlag.</strong> <code>unittest</code> in Python 3.9 beendet sich erfolgreich, wenn es überhaupt keine Tests findet; ein Tippfehler im Pfad bringt dir also einen grünen Haken. Unsere CI liest die Anzahl, schlägt bei null fehl und prüft, dass die Zusammenfassung „0 failed“ sagt, statt nur auf den Exit-Code zu schauen. Diese Kontrolle kam dazu, nachdem eine unabhängige Verifikation genau diese Lücke in unserer eigenen CI gefunden hatte.</li>
 </ol>
 
 <h2>Kurz gesagt</h2>
@@ -664,6 +647,7 @@ Status: **proposal**. It goes live only after Ray approves.
 </section>
 
 <div class="summary"><p><strong>Un test passait sur un Mac mini et échouait sur un MacBook Air. Le produit allait bien. Le test lisait les couleurs à travers le profil colorimétrique de l’écran, et sur le Mac mini, il passait par chance. Une deuxième machine a trouvé un bug dans le test, pas dans le code.</strong></p></div>
+<p>Vous voulez seulement savoir avec quels fichiers extrêmes ou hostiles MarsDawn est testé ? Passez directement à <a href="#inputs">Ce que nous lui faisons subir</a>.</p>
 
 <h2>Le test qui échouait sur un MacBook Air</h2>
 <!-- src S4: kit PR #240 (not merged), run 40196953693 -->
@@ -676,41 +660,36 @@ Status: **proposal**. It goes live only after Ray approves.
 <!-- src S3: kit #242 verification comment -->
 <p>Voici ce qui compte : sur le Mac mini non plus, le test ne lisait pas les bonnes couleurs. Il se trompait de 0,128 au plus, juste sous la limite de 0,16. Il passait grâce au moniteur, pas parce qu’il mesurait correctement la barre.</p>
 <!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>Le correctif (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) ne modifie que le test : il dessine la page dans une image à l’espace colorimétrique sRGB fixe, sans aucun écran en jeu. Les deux machines lisent désormais exactement les couleurs des barres : la meilleure correspondance est de 0,0, sur l’écran intégré du MacBook Air comme sur le Mac mini. La CI de la pull request est passée (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), tout comme la suite complète sur le runner du MacBook Air (run {{TBD:mba-run}}). Puis nous l’avons fait échouer exprès : avec du bleu comme couleur attendue partout, il est passé au rouge pour les cinq encadrés.</p>
+<p>Le correctif (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) ne modifie que le test : il dessine la page dans une image à l’espace colorimétrique sRGB fixe, sans aucun écran en jeu. Les deux machines lisent désormais exactement les couleurs des barres, avec un écart de 0,0, sur l’écran intégré du MacBook Air comme sur le Mac mini. La CI de la pull request est passée (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), tout comme la suite complète sur le runner du MacBook Air (run {{TBD:mba-run}}). Puis nous l’avons fait échouer exprès : avec du bleu comme couleur attendue partout, il est passé au rouge pour les cinq encadrés.</p>
 <p>Il lui reste une faille connue. Note et Caution utilisent deux oranges séparés d’environ 0,119, sous la limite de 0,16 : si on les intervertissait, le test ne le remarquerait probablement pas. Nous l’avons noté plutôt que de faire comme si le test était complet.</p>
 <p>Un test qui ne peut pas échouer ne protège rien, pas plus qu’un test qui échoue pour une mauvaise raison, comme le profil colorimétrique d’un écran. Le vert sur une machine vous dit que le test y est passé, pas qu’il mesure ce que dit son nom.</p>
-
-<h2>Ce que veulent dire le rouge et le vert</h2>
-<!-- src S14 -->
-<p>Le vert signifie qu’un test est passé. Cela ne vaut quelque chose que si vous avez vu ce même test passer au rouge quand ce qu’il vérifie était vraiment faux. L’ordre compte donc : casser exprès, le voir passer au rouge, remettre en place, le voir passer au vert. Vous savez alors que le test regarde au bon endroit. Si vous ne l’avez jamais vu rouge, une coche verte veut peut-être seulement dire que le test ne regarde pas.</p>
 
 <h2>Les tests sont des filets superposés</h2>
 <p>Aucun test ne rattrape tout. Chaque couche est un filet aux mailles différentes, et une erreur qui passe à travers l’un devrait tomber dans le suivant :</p>
 <ul>
-  <!-- src S6 -->
-  <li><strong>Tests unitaires</strong> dans le moteur d’export (le projet open source <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, qui fait aussi tourner la commande <code>marsdawn</code>) : un morceau de code qui renvoie une mauvaise réponse.</li>
   <!-- src S13 -->
-  <li><strong>PDF de référence :</strong> des documents d’exemple sont exportés, et le texte de chaque page est comparé à une copie enregistrée. Cela rattrape le contenu qui disparaît sans bruit, ou un nombre de pages qui change.</li>
+  <li><strong>PDF de référence :</strong> le moteur d’export (le projet open source <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, qui fait aussi tourner la commande <code>marsdawn</code>) exporte des documents d’exemple, et le texte de chaque page est comparé à une copie enregistrée. Cela rattrape le contenu qui disparaît sans bruit, ou un nombre de pages qui change.</li>
   <!-- src S6, S9 -->
   <li><strong>Systèmes et builds différents :</strong> le moteur tourne sous macOS 15, la plus ancienne version prise en charge, et sous macOS 26, celle avec laquelle l’app est livrée, chaque fois en build debug et en build release. La suite complète de l’app tourne en quatre combinaisons : signée et non signée, chacune avec le paywall désactivé puis activé. Cela rattrape ce qui ne casse que sur un système plus ancien, ou seulement dans le build que reçoivent réellement les clients.</li>
-  <!-- src S4, S1 -->
-  <li><strong>Vrai matériel :</strong> en plus des machines de GitHub, les tests tournent sur nos propres Mac, dont le MacBook Air ci-dessus. Cela rattrape ce qu’un serveur sans écran ne peut pas montrer.</li>
+  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
+  <li><strong>Vrai matériel :</strong> nous déplaçons une partie des tests du moteur des machines de GitHub vers nos propres Mac, à commencer par le MacBook Air ci-dessus. Comme le montre cette histoire, une deuxième machine rattrape les tests qui ne passent qu’à cause de la machine sur laquelle ils tournent.</li>
   <!-- src S12 -->
-  <li><strong>Contrôles négatifs :</strong> la CI de l’app garde 11 copies volontairement cassées d’un script de nettoyage, chacune privée d’une vérification de sécurité, et les tests doivent échouer sur chacune. Si l’une passe, c’est le test qui est cassé.</li>
+  <li><strong>Contrôles négatifs :</strong> la CI de l’app garde 11 copies volontairement cassées d’un script de nettoyage, chacune privée d’une vérification de sécurité, et les tests doivent échouer sur chacune. Ce script supprime d’anciens builds et copies de travail sur un Mac : une seule vérification manquante pourrait supprimer ce qu’il ne faut pas. Si une copie cassée passe, c’est le test qui est cassé.</li>
   <!-- src S3, S15 -->
-  <li><strong>Un deuxième regard :</strong> un agent distinct vérifie chaque changement, et une revue de scénarios examine comment les gens utiliseront vraiment une fonction avant qu’elle soit construite. Cela rattrape le « terminé » qui ne l’est pas, et le code qui marche, mais dans la mauvaise situation.</li>
-  <li><strong>Une personne fusionne.</strong> Aucun changement n’arrive sur la branche principale simplement parce qu’un agent a dit qu’il était terminé.</li>
+  <li><strong>Un deuxième regard :</strong> notre pratique est de faire vérifier un changement par un agent distinct avant de le fusionner, comme pour kit #242, et les changements qui touchent à la façon d’utiliser l’app passent d’abord par une revue de scénarios. Cela rattrape le « terminé » qui ne l’est pas, et le code qui marche, mais dans la mauvaise situation.</li>
+  <!-- src S21 -->
+  <li><strong>Une personne fusionne.</strong> Chaque changement est relu et fusionné par la personne qui développe MarsDawn ; aucun agent ni bot ne fusionne quoi que ce soit.</li>
 </ul>
 
-<h2>Ce que nous lui faisons subir</h2>
+<h2 id="inputs">Ce que nous lui faisons subir</h2>
 <p>Ces filets ne valent que ce qu’on y jette. Voici quelques-unes des entrées que les tests donnent au moteur, et ce que chaque test garantit :</p>
 <ul>
   <!-- src S16 -->
-  <li><strong>Des fichiers très volumineux.</strong> Un document de 2 Mo s’affiche en moins d’une seconde et demie. Un document de 5 Mo trop complexe à mettre en page s’ouvre quand même, en texte brut, en moins d’une seconde. Au-delà de 16 Mo, le fichier s’affiche en texte sans être analysé du tout.</li>
+  <li><strong>Des fichiers très volumineux.</strong> Mesuré sur notre machine de test, en build release : un document de 2 Mo s’affiche en moins d’une seconde et demie, et un document de 5 Mo trop complexe à mettre en page s’ouvre quand même en texte brut en moins d’une seconde. Au-delà de 16 Mo, le fichier s’affiche en texte sans être analysé du tout.</li>
   <!-- src S16 -->
-  <li><strong>Des centaines de milliers de lignes.</strong> Environ 3 Mo de lignes d’un seul mot, près de 800 000, sont repérés comme trop lourds en cours de lecture et affichés en texte brut au lieu de bloquer l’app.</li>
+  <li><strong>Des centaines de milliers de lignes.</strong> Environ 3 Mo de lignes d’un seul mot, près de 800 000, sont repérés comme trop lourds en cours de route : le moteur arrête de lire à cet endroit et affiche le fichier en texte brut.</li>
   <!-- src S17 -->
-  <li><strong>Des balises jamais fermées.</strong> Un mégaoctet de marques d’ouverture de section sans fermeture, ou des dizaines de milliers imbriquées les unes dans les autres, ne doit pas prendre plus d’environ deux fois le temps d’un mégaoctet de texte brut. L’imbrication s’arrête à huit niveaux.</li>
+  <li><strong>Des balises jamais fermées.</strong> Un mégaoctet de marques d’ouverture de section sans fermeture, ou des dizaines de milliers empilées les unes dans les autres, ne doit pas prendre plus d’environ deux fois le temps d’un mégaoctet de texte brut. Au-delà de huit niveaux, plus rien ne s’imbrique.</li>
   <!-- src S18 -->
   <li><strong>Des formules.</strong> Une formule erronée affiche une erreur à sa place au lieu de casser la page. Une formule de plus de 10 000 caractères reste telle qu’elle est écrite, seules les 1 000 premières d’un document sont dessinées à la fois, et rien dans une formule ne peut devenir un lien, une image ou du balisage de page.</li>
   <!-- src S19 -->
@@ -723,11 +702,12 @@ Status: **proposal**. It goes live only after Ray approves.
 
 <h2>Quatre habitudes à reprendre</h2>
 <ol>
-  <li><strong>Séparez l’agent qui écrit de l’agent qui vérifie.</strong> Donnez au vérificateur le changement et ce que « terminé » veut dire, pas l’explication de celui qui a écrit, et demandez-lui de lancer lui-même les tests et de dire ce qu’il n’a pas vérifié. Pour kit #242, l’agent vérificateur a lancé l’ancien test sur le MacBook Air pour le voir échouer avant de valider le nouveau. Cela coûte les tokens d’une deuxième session, ce qui reste moins cher que de réparer plus tard un changement cassé.</li>
-  <li><strong>Voyez chaque test échouer une fois.</strong> Avant de faire confiance à une coche verte, cassez ce qu’elle protège (ou demandez à l’agent de le faire) et vérifiez qu’elle passe au rouge. Les agents savent très bien écrire des tests qui passent ; c’est justement pour cela qu’il faut les voir échouer.</li>
+  <li><strong>Séparez l’agent qui écrit de l’agent qui vérifie.</strong> Donnez au vérificateur le changement et ce que « terminé » veut dire, sans joindre l’explication de l’agent qui a écrit, et demandez-lui de lancer lui-même les tests et de dire ce qu’il n’a pas vérifié. Pour kit #242, l’agent vérificateur a lancé l’ancien test sur le MacBook Air pour le voir échouer avant de valider le nouveau. Cela coûte les tokens d’une deuxième session.</li>
+  <!-- src S14 -->
+  <li><strong>Voyez chaque test échouer une fois.</strong> Le vert ne vaut quelque chose que si vous avez vu ce même test passer au rouge quand ce qu’il vérifie était vraiment faux. Avant de faire confiance à une coche verte, cassez donc ce qu’elle protège (ou demandez à l’agent de le faire), voyez-la passer au rouge, remettez en place et voyez-la repasser au vert. Les agents savent très bien écrire des tests qui passent ; c’est justement pour cela qu’il faut les voir échouer.</li>
   <li><strong>Lancez vos tests dans un deuxième environnement.</strong> Pas de deuxième Mac ? Une matrice de CI avec deux versions de l’OS, ou avec un build debug et un build release, est un bon début. Vous cherchez les tests qui ne passent que par hasard.</li>
   <!-- src S7, S8 -->
-  <li><strong>Considérez « aucun test lancé » comme un échec.</strong> L’outil <code>unittest</code> de Python 3.9 se termine avec succès quand il ne trouve aucun test, si bien qu’une faute de frappe dans un chemin vous donne une coche verte. Notre CI lit le nombre de tests et échoue à zéro, et vérifie que le résumé indique « 0 failed », sans se fier au seul code de sortie. Un agent qui annonce « tous les tests passent » alors qu’aucun n’a tourné : c’est l’un des faux « terminé » les plus courants.</li>
+  <li><strong>Considérez « aucun test lancé » comme un échec.</strong> L’outil <code>unittest</code> de Python 3.9 se termine avec succès quand il ne trouve aucun test, si bien qu’une faute de frappe dans un chemin vous donne une coche verte. Notre CI lit le nombre de tests et échoue à zéro, et vérifie que le résumé indique « 0 failed », sans se fier au seul code de sortie. Nous avons ajouté ce contrôle après qu’une vérification indépendante a trouvé cette faille dans notre propre CI.</li>
 </ol>
 
 <h2>En bref</h2>
@@ -766,6 +746,7 @@ Status: **proposal**. It goes live only after Ray approves.
 </section>
 
 <div class="summary"><p><strong>Una prueba pasaba en un Mac mini y fallaba en un MacBook Air. El producto estaba bien. La prueba leía los colores a través del perfil de color de la pantalla, y en el Mac mini pasaba por suerte. Una segunda máquina encontró un error en la prueba, no en el código.</strong></p></div>
+<p>¿Solo quieres saber con qué archivos extremos u hostiles se prueba MarsDawn? Salta directamente a <a href="#inputs">Lo que le echamos</a>.</p>
 
 <h2>La prueba que fallaba en un MacBook Air</h2>
 <!-- src S4: kit PR #240 (not merged), run 40196953693 -->
@@ -778,41 +759,36 @@ Status: **proposal**. It goes live only after Ray approves.
 <!-- src S3: kit #242 verification comment -->
 <p>Esto es lo importante: en el Mac mini, la prueba tampoco leía los colores correctos. Se desviaba hasta 0,128, justo dentro del límite de 0,16. Pasaba gracias al monitor, no porque midiera bien la barra.</p>
 <!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>La corrección (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) solo cambia la prueba: dibuja la página en una imagen con un espacio de color sRGB fijo, así que no interviene ninguna pantalla. Ahora las dos máquinas leen los colores de las barras con exactitud: la mejor coincidencia es 0,0, tanto en la pantalla integrada del MacBook Air como en el Mac mini. La CI del pull request pasó (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), y también la batería completa en el runner del MacBook Air (run {{TBD:mba-run}}). Después la hicimos fallar a propósito: con todos los colores esperados en azul, se puso en rojo en los cinco recuadros de aviso.</p>
+<p>La corrección (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) solo cambia la prueba: dibuja la página en una imagen con un espacio de color sRGB fijo, así que no interviene ninguna pantalla. Ahora las dos máquinas leen los colores de las barras con exactitud, con una distancia de 0,0, tanto en la pantalla integrada del MacBook Air como en el Mac mini. La CI del pull request pasó (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), y también la batería completa en el runner del MacBook Air (run {{TBD:mba-run}}). Después la hicimos fallar a propósito: con todos los colores esperados en azul, se puso en rojo en los cinco recuadros de aviso.</p>
 <p>Todavía tiene un hueco conocido. Note y Caution usan dos naranjas separados por unos 0,119, dentro del límite de 0,16, así que si se intercambiaran, la prueba probablemente no lo notaría. Lo dejamos por escrito en lugar de fingir que la prueba es completa.</p>
 <p>Una prueba que no puede fallar no protege nada, y tampoco una que falla por el motivo equivocado, como el perfil de color de una pantalla. El verde en una máquina te dice que la prueba pasó allí, no que mida lo que dice su nombre.</p>
-
-<h2>Qué significan el rojo y el verde</h2>
-<!-- src S14 -->
-<p>Verde significa que una prueba pasó. Eso solo vale algo si has visto esa misma prueba ponerse en rojo cuando lo que comprueba estaba realmente mal. Por eso el orden importa: rómpelo a propósito, mira cómo se pone en rojo, déjalo como estaba, mira cómo se pone en verde. Entonces sabes que la prueba mira donde debe. Si nunca la has visto en rojo, una marca verde puede significar solo que la prueba no está mirando.</p>
 
 <h2>Las pruebas son capas de redes</h2>
 <p>Ninguna prueba lo atrapa todo. Cada capa es una red con una malla distinta, y un error que se escapa por una debería caer en la siguiente:</p>
 <ul>
-  <!-- src S6 -->
-  <li><strong>Pruebas unitarias</strong> en el motor de exportación (el proyecto de código abierto <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, que también hace funcionar el comando <code>marsdawn</code>): un trozo de código que devuelve la respuesta equivocada.</li>
   <!-- src S13 -->
-  <li><strong>PDF de referencia:</strong> se exportan documentos de ejemplo y el texto de cada página se compara con una copia guardada. Esto atrapa contenido que desaparece sin avisar o un número de páginas que cambia.</li>
+  <li><strong>PDF de referencia:</strong> el motor de exportación (el proyecto de código abierto <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, que también hace funcionar el comando <code>marsdawn</code>) exporta documentos de ejemplo, y el texto de cada página se compara con una copia guardada. Esto atrapa contenido que desaparece sin avisar o un número de páginas que cambia.</li>
   <!-- src S6, S9 -->
   <li><strong>Sistemas y compilaciones distintos:</strong> el motor se ejecuta en macOS 15, la versión más antigua que admite, y en macOS 26, con la que se distribuye la app, cada uno como compilación debug y release. La batería completa de la app se ejecuta en cuatro combinaciones: firmada y sin firmar, cada una con el paywall desactivado y activado. Esto atrapa lo que solo se rompe en un sistema más antiguo, o solo en la compilación que reciben de verdad los clientes.</li>
-  <!-- src S4, S1 -->
-  <li><strong>Hardware real:</strong> además de las máquinas de GitHub, las pruebas se ejecutan en Mac propios, incluido el MacBook Air de arriba. Esto atrapa lo que un servidor sin pantalla no puede mostrar.</li>
+  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
+  <li><strong>Hardware real:</strong> estamos pasando parte de las pruebas del motor de las máquinas de GitHub a Mac propios, empezando por el MacBook Air de arriba. Como muestra esta historia, una segunda máquina atrapa las pruebas que solo pasan por la máquina en la que se ejecutan.</li>
   <!-- src S12 -->
-  <li><strong>Controles negativos:</strong> la CI de la app guarda 11 copias rotas a propósito de un script de limpieza, a cada una le falta una comprobación de seguridad, y las pruebas tienen que fallar con todas. Si una pasa, lo que está roto es la prueba.</li>
+  <li><strong>Controles negativos:</strong> la CI de la app guarda 11 copias rotas a propósito de un script de limpieza, a cada una le falta una comprobación de seguridad, y las pruebas tienen que fallar con todas. El script borra compilaciones antiguas y copias de trabajo de un Mac, así que una sola comprobación que falte podría borrar lo que no debe. Si una copia rota pasa, lo que está roto es la prueba.</li>
   <!-- src S3, S15 -->
-  <li><strong>Otro par de ojos:</strong> un agente aparte verifica cada cambio, y una revisión de escenarios comprueba cómo usará de verdad la gente una función antes de construirla. Esto atrapa el «terminado» que no lo está, y el código que funciona, pero en la situación equivocada.</li>
-  <li><strong>Una persona fusiona.</strong> Ningún cambio llega a la rama principal solo porque un agente haya dicho que estaba terminado.</li>
+  <li><strong>Otro par de ojos:</strong> nuestra práctica es que un agente aparte verifique un cambio antes de fusionarlo, como en kit #242, y los cambios que afectan a cómo se usa la app pasan antes por una revisión de escenarios. Esto atrapa el «terminado» que no lo está, y el código que funciona, pero en la situación equivocada.</li>
+  <!-- src S21 -->
+  <li><strong>Una persona fusiona.</strong> La persona que desarrolla MarsDawn revisa y fusiona cada cambio; ningún agente ni bot fusiona nada.</li>
 </ul>
 
-<h2>Lo que le echamos</h2>
+<h2 id="inputs">Lo que le echamos</h2>
 <p>Esas redes valen tanto como lo que se echa en ellas. Algunas de las entradas con las que las pruebas alimentan al motor, y lo que cada prueba garantiza:</p>
 <ul>
   <!-- src S16 -->
-  <li><strong>Archivos muy grandes.</strong> Un documento de 2 MB se muestra en menos de un segundo y medio. Uno de 5 MB demasiado complejo para maquetar se abre igualmente, como texto sin formato, en menos de un segundo. Lo que pase de 16 MB se muestra como texto sin analizarlo en absoluto.</li>
+  <li><strong>Archivos muy grandes.</strong> Medido en nuestra máquina de pruebas, con una compilación release: un documento de 2 MB se muestra en menos de un segundo y medio, y uno de 5 MB demasiado complejo para maquetar se abre igualmente como texto sin formato en menos de un segundo. Lo que pase de 16 MB se muestra como texto sin analizarlo en absoluto.</li>
   <!-- src S16 -->
-  <li><strong>Cientos de miles de líneas.</strong> Unos 3 MB de líneas de una sola palabra, cerca de 800 000, se detectan como demasiado a mitad de la lectura y se muestran como texto sin formato en lugar de bloquear la app.</li>
+  <li><strong>Cientos de miles de líneas.</strong> Unos 3 MB de líneas de una sola palabra, cerca de 800 000, se detectan como demasiado a mitad de camino: el motor deja de leer ahí y muestra el archivo como texto sin formato.</li>
   <!-- src S17 -->
-  <li><strong>Marcas que nunca se cierran.</strong> Un megabyte de marcas de apertura de sección sin cierre, o decenas de miles anidadas unas dentro de otras, no debe tardar más de unas dos veces lo que tarda un megabyte de texto sin formato. El anidamiento se detiene en ocho niveles.</li>
+  <li><strong>Marcas que nunca se cierran.</strong> Un megabyte de marcas de apertura de sección sin cierre, o decenas de miles apiladas unas dentro de otras, no debe tardar más de unas dos veces lo que tarda un megabyte de texto sin formato. A partir del octavo nivel, nada se anida más.</li>
   <!-- src S18 -->
   <li><strong>Fórmulas.</strong> Una fórmula mal escrita muestra un error en su sitio en lugar de romper la página. Una de más de 10 000 caracteres se queda tal como está escrita, solo se dibujan a la vez las primeras 1000 de un documento, y nada dentro de una fórmula puede convertirse en un enlace, una imagen o marcado de la página.</li>
   <!-- src S19 -->
@@ -825,11 +801,12 @@ Status: **proposal**. It goes live only after Ray approves.
 
 <h2>Cuatro hábitos que puedes copiar</h2>
 <ol>
-  <li><strong>Separa el agente que escribe del agente que comprueba.</strong> Dale al que comprueba el cambio y lo que significa «terminado», no la explicación del que lo escribió, y pídele que ejecute él mismo las pruebas y diga qué no comprobó. En kit #242, el agente verificador ejecutó la prueba antigua en el MacBook Air para verla fallar antes de dar por buena la nueva. Cuesta los tokens de una segunda sesión, que sigue siendo más barato que arreglar después un cambio roto.</li>
-  <li><strong>Mira fallar cada prueba una vez.</strong> Antes de fiarte de una marca verde, rompe lo que protege (o pídeselo al agente) y asegúrate de que se pone en rojo. Los agentes escriben muy bien pruebas que pasan; justo por eso necesitas verlas fallar.</li>
+  <li><strong>Separa el agente que escribe del agente que comprueba.</strong> Dale al que comprueba el cambio y lo que significa «terminado», sin la explicación del agente que lo escribió, y pídele que ejecute él mismo las pruebas y diga qué no comprobó. En kit #242, el agente verificador ejecutó la prueba antigua en el MacBook Air para verla fallar antes de dar por buena la nueva. Cuesta los tokens de una segunda sesión.</li>
+  <!-- src S14 -->
+  <li><strong>Mira fallar cada prueba una vez.</strong> El verde solo vale algo si has visto esa misma prueba ponerse en rojo cuando lo que comprueba estaba realmente mal. Así que, antes de fiarte de una marca verde, rompe lo que protege (o pídeselo al agente), mira cómo se pone en rojo, déjalo como estaba y mira cómo vuelve al verde. Los agentes escriben muy bien pruebas que pasan; justo por eso necesitas verlas fallar.</li>
   <li><strong>Ejecuta tus pruebas en un segundo entorno.</strong> ¿No tienes un segundo Mac? Una matriz de CI con dos versiones del sistema, o con una compilación debug y otra release, es un buen comienzo. Buscas pruebas que solo pasan por casualidad.</li>
   <!-- src S7, S8 -->
-  <li><strong>Trata «no se ejecutó ninguna prueba» como un fallo.</strong> El <code>unittest</code> de Python 3.9 termina con éxito cuando no encuentra ninguna prueba, así que una errata en una ruta te da una marca verde. Nuestra CI lee el número de pruebas y falla si es cero, y comprueba que el resumen diga «0 failed», no solo el código de salida. Un agente que informa de que «todas las pruebas pasan» cuando no se ejecutó ninguna es uno de los falsos «terminado» más comunes que hay.</li>
+  <li><strong>Trata «no se ejecutó ninguna prueba» como un fallo.</strong> El <code>unittest</code> de Python 3.9 termina con éxito cuando no encuentra ninguna prueba, así que una errata en una ruta te da una marca verde. Nuestra CI lee el número de pruebas y falla si es cero, y comprueba que el resumen diga «0 failed», no solo el código de salida. Añadimos esa comprobación después de que una verificación independiente encontrara ese hueco en nuestra propia CI.</li>
 </ol>
 
 <h2>En pocas palabras</h2>
