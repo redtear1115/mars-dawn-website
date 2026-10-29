@@ -23,7 +23,7 @@ MacMD Viewer 自身のサイトとリポジトリで 2026 年 10 月 15 日に�
 | コマンドライン | 独立したコマンドラインツールの記載なし。`markdownviewer://` の URL スキームと、ファイルを開くための Claude Code のプラグインとフックがある [[S6](#s6)] | 無料の `marsdawn` ツール：`marsdawn export` はアプリなしで PDF を書き出し、`marsdawn open` は行を指定してファイルを開く |
 | インターフェイスの言語 | 公式の資料に記載なし [[S1](#s1), [S3](#s3), [S7](#s7)] | 英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語 |
 | 動作環境 | macOS 14（Sonoma）以降。Apple シリコンと Intel [[S1](#s1), [S7](#s7)] | macOS 26（Tahoe）以降 |
-| ほかのプラットフォーム | Mac のみ [[S1](#s1)] | Mac のみ。iPhone や iPad のアプリはない |
+| ほかのプラットフォーム | Mac のみ [[S1](#s1)] | Mac。iPhone と iPad では閲覧のみ |
 
 ## 価格と購入方法
 
@@ -113,7 +113,7 @@ open notes.pdf
 - [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
 - [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックを分断しないよう配慮されます。
 - [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
-- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
+- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad では編集不可、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
 - [サポート](https://marsdawn.southern-light.dev/ja/support/index.md): macOS 向け Markdown エディタ MarsDawn のヘルプ。
 - [プライバシーポリシー](https://marsdawn.southern-light.dev/ja/privacy/index.md): MarsDawn は個人データを収集しません。文書と設定はあなたの Mac 上に残ります。
 - [Mac で .md ファイルを開く方法](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): Mac で .md ファイルを開く方法：ダブルクリック、標準のアプリの設定、Finder のクイックルック。AI エージェントが書いた .md は、MarsDawn でレンダリングして読めます。

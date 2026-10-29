@@ -13,7 +13,7 @@
 | 系统要求 | macOS 26.0 或更新版本 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 厂商未说明 [[18](#v18)] | macOS 12.0 或更新版本 [[23](#v23)] | macOS 13 或更新版本 [[2](#v2)] |
 | 需要账户 | 不需要 [/privacy/] | 厂商未说明 | "No sign-up required" [[15](#v15)] | 厂商未说明 | 不需要 [[2](#v2)] |
 
-每一格都在 2026 年 10 月 16 日对照括号里的来源核实（V 编号列在下方；[实测] 是我们用 marsdawn 0.6.4 实际导出的结果）。厂商原文照录。“厂商未说明”表示我们读到的页面没有提到，不代表没有这个功能。表格不为产品排名。
+每一格都在 2026 年 10 月 16 日对照括号里的来源核实（V 编号列在下方；[实测] 是我们用 marsdawn 0.6.4 实际导出的结果）。厂商原文照录。“厂商未说明”表示我们读到的页面没有提到，不代表没有这个功能。表格不为产品排名。MarsDawn 自己那一栏在 2026 年 10 月 29 日根据 iPhone 和 iPad 版更新。
 
 ## 来源
 
@@ -41,7 +41,7 @@
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn 没有的东西。需要 macOS 26 或更新版本。没有 iPhone 或 iPad app，MarsDawn 只做 Mac。不能共同编辑，不同步，也没有账户。预览本身不能改，要改旁边的 Markdown 源文本。不能导出 Word，也没有插件。导出的 PDF 没有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。
+MarsDawn 没有的东西。需要 macOS 26 或更新版本。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。不能共同编辑，不同步，也没有账户。预览本身不能改，要改旁边的 Markdown 源文本。不能导出 Word，也没有插件。导出的 PDF 没有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。
 
 ## 什么时候用不到 MarsDawn
 
@@ -49,7 +49,7 @@ MarsDawn 没有的东西。需要 macOS 26 或更新版本。没有 iPhone 或 i
 - 你只想在访达里按空格键预览：QLMarkdown 是免费的 Markdown 快速查看扩展。
 - 你的 Mac 系统比较旧：QLMarkdown 需要 12.0 或更新版本，LynxOffice 需要 13 或更新版本。免费的 marsdawn 工具只要 macOS 15，不打开 app 也能导出 PDF。
 - 你用 vault 管理互相链接的笔记：Obsidian 就是为此而做。
-- 你需要 iPhone 或 iPad app、共同编辑，或导出 Word。
+- 你需要在 iPhone 或 iPad 上编辑、共同编辑，或导出 Word。
 - 你想让代理处理电子表格、Word 和 PDF：LynxOffice 为它们提供了 MCP 服务器文档。
 
 - [MacMD Viewer 对比 MarsDawn](/zh-hans/vs/macmd-viewer/)：只读查看器和 MarsDawn 逐格对照，并说明各自适合什么情况。
@@ -64,7 +64,7 @@ MarsDawn 没有的东西。需要 macOS 26 或更新版本。没有 iPhone 或 i
 - [免费试用，买一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
 - [导出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 导出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码，超过一页的会接到下一页。
 - [为 Mac 而做](https://marsdawn.southern-light.dev/zh-hans/native/index.md): 真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在访达用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。
-- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户；可以换主题，但不能自定义 CSS。购买前先知道。
+- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、iPhone 和 iPad 上不能编辑、没有插件、不需要账户；可以换主题，但不能自定义 CSS。购买前先知道。
 - [支持](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 编辑器）的使用说明与联系方式。
 - [隐私政策](https://marsdawn.southern-light.dev/zh-hans/privacy/index.md): MarsDawn 不收集任何个人数据，你的文稿与设置都留在你的 Mac 上。
 - [Mac 上怎么打开 md 文件](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI 代理写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。

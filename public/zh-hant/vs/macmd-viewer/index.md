@@ -23,7 +23,7 @@
 | 命令列 | 沒有描述獨立的命令列工具。它有 `markdownviewer://` URL scheme，以及用來開啟檔案的 Claude Code 外掛和 hook [[S6](#s6)] | 免費的 `marsdawn` 工具：`marsdawn export` 不需要 app 就能輸出 PDF，`marsdawn open` 能在指定行開啟檔案 |
 | 介面語言 | 自己的資料沒有寫出 [[S1](#s1), [S3](#s3), [S7](#s7)] | 英文、繁體中文、簡體中文、日文、德文、法文、西班牙文和韓文 |
 | 系統需求 | macOS 14（Sonoma）以上；Apple 晶片與 Intel [[S1](#s1), [S7](#s7)] | macOS 26（Tahoe）以上 |
-| 其他平台 | 只有 Mac [[S1](#s1)] | 只有 Mac，沒有 iPhone 或 iPad 版 |
+| 其他平台 | 只有 Mac [[S1](#s1)] | Mac；iPhone 和 iPad 上只能閱讀 |
 
 ## 價格與購買方式
 
@@ -114,7 +114,7 @@ open notes.pdf
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。
 - [為 Mac 而做](https://marsdawn.southern-light.dev/zh-hant/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
-- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號；可以換主題，但不能自訂 CSS。購買前先知道。
+- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、iPhone 和 iPad 上不能編輯、沒有外掛、不需要帳號；可以換主題，但不能自訂 CSS。購買前先知道。
 - [支援](https://marsdawn.southern-light.dev/zh-hant/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。
 - [隱私權政策](https://marsdawn.southern-light.dev/zh-hant/privacy/index.md): MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。
 - [Mac 怎麼開 md 檔](https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/index.md): Mac 怎麼開 md 檔：雙擊、設成預設 App、在 Finder 用快速查看。AI agent 寫出來的 .md，也可以用 MarsDawn 打開，讀排好版的頁面。

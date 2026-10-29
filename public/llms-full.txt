@@ -110,7 +110,7 @@ No. MarsDawn is a free download with a 14-day trial of every feature. After that
 
 ### Does MarsDawn work on iPhone or iPad?
 
-Not yet. MarsDawn is a Mac app and needs macOS 26 or later. An iPhone and iPad version is in progress, but it isn't available yet.
+Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown files and renders Mermaid diagrams, math, code and tables, with an outline and themes. It doesn't edit, export PDFs or sync. It needs iOS 26 or iPadOS 26 or later. With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.
 
 More: [Roadmap](/roadmap/)
 
@@ -150,7 +150,7 @@ More: [How MarsDawn compares](/vs/) · [Best Markdown viewer for Mac](/best-mark
 
 ### Will MarsDawn keep being maintained?
 
-Yes. Every update since MarsDawn arrived on the Mac App Store is in the changelog, and an iPhone and iPad version is in progress. MarsDawn's rendering core and the free marsdawn command-line tool are already open source under the Apache-2.0 license, in mars-dawn-kit. And if MarsDawn's developer ever stops maintaining the app, the app's own source code will be published under an open-source license, so others can keep it going.
+Yes. Every update since MarsDawn arrived on the Mac App Store is in the changelog, and since 28 October 2026 MarsDawn is also on iPhone and iPad, for reading. MarsDawn's rendering core and the free marsdawn command-line tool are already open source under the Apache-2.0 license, in mars-dawn-kit. And if MarsDawn's developer ever stops maintaining the app, the app's own source code will be published under an open-source license, so others can keep it going.
 
 More: [Changelog](/changelog/) · [Roadmap](/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
@@ -443,6 +443,7 @@ In this screenshot:
 
 - The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.
 - There is no account. MarsDawn never asks you to create one.
+- With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. On iPhone and iPad, MarsDawn is for reading: it doesn't edit or export PDFs.
 
 ## What works when
 
@@ -573,9 +574,9 @@ In this screenshot:
 ### Devices and people
 
 - **Sync:** MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.
-- **iPhone and iPad:** there is no app for them; MarsDawn is for the Mac.
+- **iPhone and iPad:** MarsDawn there is for reading. It opens Markdown and plain text files and renders them, with an outline and themes, but it doesn't edit, export PDFs or sync. Your files get there through the cloud you already use.
 - **Sharing:** there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.
-- **System:** MarsDawn needs macOS 26 or later.
+- **System:** MarsDawn needs macOS 26 or later on the Mac, and iOS 26 or iPadOS 26 or later on iPhone and iPad.
 
 ### Files and features
 
@@ -653,11 +654,11 @@ Source: https://marsdawn.southern-light.dev/privacy/
 
 # Privacy Policy
 
-How MarsDawn, the Markdown editor for macOS, handles your information.
+How MarsDawn, the Markdown app for Mac, iPhone and iPad, handles your information.
 
-Last updated 2026-10-25
+Last updated 2026-10-29
 
-> **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your Mac.
+> **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your devices.
 
 ## The website
 
@@ -726,7 +727,7 @@ The MarsDawn app does not collect data from anyone, including children. A visit 
 
 ## Purchases
 
-MarsDawn is sold through the Mac App Store. Apple processes the purchase under its own terms, and the developer never receives your payment details.
+MarsDawn is sold through the App Store, for Mac, iPhone and iPad. Apple processes the purchase under its own terms, and the developer never receives your payment details.
 
 ## Changes to this policy
 
@@ -1036,7 +1037,7 @@ For anyone choosing how to read and review Markdown on a Mac, often what an agen
 | System requirements | macOS 26.0 or later [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | Not stated by the vendor [[18](#v18)] | macOS 12.0 or later [[23](#v23)] | macOS 13 or later [[2](#v2)] |
 | Account needed | No [/privacy/] | Not stated by the vendor | "No sign-up required" [[15](#v15)] | Not stated by the vendor | No [[2](#v2)] |
 
-Every cell was checked on 16 October 2026 against the source in brackets (V-ids are listed below; [check] is our own export with marsdawn 0.6.4). Vendor quotes stay as written. "Not stated by the vendor" means the pages we read were silent, not that the feature is missing. No cell ranks the products.
+Every cell was checked on 16 October 2026 against the source in brackets (V-ids are listed below; [check] is our own export with marsdawn 0.6.4). Vendor quotes stay as written. "Not stated by the vendor" means the pages we read were silent, not that the feature is missing. No cell ranks the products. MarsDawn's own cells were updated on 29 October 2026 for the iPhone and iPad app.
 
 ## Sources
 
@@ -1064,7 +1065,7 @@ Every cell was checked on 16 October 2026 against the source in brackets (V-ids 
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-What MarsDawn lacks. It needs macOS 26 or later. There is no iPhone or iPad app; MarsDawn is for the Mac. There's no shared editing, no sync and no account. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Its PDFs have no page numbers. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.
+What MarsDawn lacks. It needs macOS 26 or later. On iPhone and iPad it only reads: it can't edit or export PDFs there. There's no shared editing, no sync and no account. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Its PDFs have no page numbers. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.
 
 ## When you don't need MarsDawn
 
@@ -1072,7 +1073,7 @@ What MarsDawn lacks. It needs macOS 26 or later. There is no iPhone or iPad app;
 - You only want a space-bar preview in Finder: QLMarkdown is a free Quick Look extension for Markdown.
 - Your Mac runs an older macOS: QLMarkdown needs 12.0 or later and LynxOffice 13 or later. The free marsdawn tool needs macOS 15 and exports PDF without the app.
 - You keep a vault of linked notes: that is what Obsidian is built for.
-- You need an iPhone or iPad app, shared editing or Word export.
+- You need to edit on iPhone or iPad, or you need shared editing or Word export.
 - You want an agent to handle spreadsheets, Word files and PDFs: LynxOffice documents an MCP server for them.
 
 - [MacMD Viewer vs. MarsDawn](/vs/macmd-viewer/): a read-only viewer next to MarsDawn, cell by cell, with when to pick each.
@@ -1110,7 +1111,7 @@ Checked against MacMD Viewer's own site and repository on 15 October 2026 (versi
 | Command line | No standalone command-line tool is described. It has a `markdownviewer://` URL scheme and a Claude Code plugin and hooks that open files in the viewer [[S6](#s6)] | The free `marsdawn` tool: `marsdawn export` renders a PDF without the app, `marsdawn open` opens a file at a line |
 | Interface languages | Not stated in its own materials [[S1](#s1), [S3](#s3), [S7](#s7)] | English, Traditional Chinese, Simplified Chinese, Japanese, German, French, Spanish and Korean |
 | Requires | macOS 14 (Sonoma) or later; Apple Silicon and Intel [[S1](#s1), [S7](#s7)] | macOS 26 (Tahoe) or later |
-| Other platforms | Mac only [[S1](#s1)] | Mac only. No iPhone or iPad app |
+| Other platforms | Mac only [[S1](#s1)] | Mac, plus iPhone and iPad for reading only |
 
 ## Price and how you buy it
 
@@ -2830,25 +2831,9 @@ Plans can change: an item may move to another version or be dropped.
 
 Everything that has shipped is in the [changelog](/changelog/).
 
-## In progress
-
-### Mac 1.2.0
-
-- A formatting bar above the source, plus a Format menu and keyboard shortcuts.
-- Ask AI: send the selected text, with the file name, line numbers and your prompt, to Claude or ChatGPT.
-- Copy as RTF, to paste the rendered document into Google Docs, Notion, Mail or Pages.
-- New from Clipboard: paste Markdown, including AI output with escaped characters, and see it rendered.
-- The Handbook layout for PDF export: body pages numbered from 1, "n / N" in the footer and a binding margin on the left.
-- HackMD compatibility: its line-break setting and its syntax.
-- Install the app, the marsdawn command-line tool or the agent skill, and MarsDawn helps you add the other two.
-
-### iPhone and iPad (iOS 1.0)
-
-- Read Markdown on iPhone and iPad with the same preview as on the Mac.
-
 ## Next
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - Open JSON and YAML, edit them, and see a live tree preview beside the source.
 - Open a URL: read Markdown from a public link on GitHub, a Gist or a raw file.
@@ -3578,7 +3563,7 @@ MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原�
 
 ### MarsDawn 有 iPhone 或 iPad 版嗎？
 
-還沒有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本。iPhone 與 iPad 版正在開發中，目前還不能使用。
+有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown 檔，排好 Mermaid 圖表、數學式、程式碼和表格，也有大綱和主題；不能編輯、不能輸出 PDF，也不會同步。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。
 
 詳見：[路線圖](/zh-hant/roadmap/)
 
@@ -3618,7 +3603,7 @@ MarsDawn 本身不傳送任何東西。skill 只是一份文字說明，marsdawn
 
 ### MarsDawn 會持續維護嗎？
 
-會。MarsDawn 上架 Mac App Store 以來的每次更新都在更新紀錄裡，iPhone 與 iPad 版也在開發中。MarsDawn 的算繪核心和免費的 marsdawn 命令列工具，已經以 Apache-2.0 授權在 mars-dawn-kit 開源。如果 MarsDawn 的開發者哪天停止維護這個 App，會以開源授權公開 App 本身的原始碼，讓其他人可以接手。
+會。MarsDawn 上架 Mac App Store 以來的每次更新都在更新紀錄裡；2026 年 10 月 28 日起，iPhone 和 iPad 上也能用 MarsDawn 閱讀。MarsDawn 的算繪核心和免費的 marsdawn 命令列工具，已經以 Apache-2.0 授權在 mars-dawn-kit 開源。如果 MarsDawn 的開發者哪天停止維護這個 App，會以開源授權公開 App 本身的原始碼，讓其他人可以接手。
 
 詳見：[更新紀錄](/zh-hant/changelog/) · [路線圖](/zh-hant/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
@@ -3911,6 +3896,7 @@ MarsDawn 可以免費下載。開始 14 天試用後，所有功能都能使用�
 
 - 試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。
 - 不需要帳號，MarsDawn 從不要求你建立帳號。
+- 用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。
 
 ## 各階段能做什麼
 
@@ -4041,9 +4027,9 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 ### 裝置與使用的人
 
 - **同步：**MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。
-- **iPhone 和 iPad：**沒有這兩個平台的版本，MarsDawn 只給 Mac。
+- **iPhone 和 iPad：**MarsDawn 在這兩個裝置上只能閱讀：可以打開 Markdown 和純文字檔並排好顯示，也有大綱和主題，但不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳過去。
 - **分享：**沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。
-- **系統：**MarsDawn 需要 macOS 26 以上。
+- **系統：**MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。
 
 ### 檔案與功能
 
@@ -4121,11 +4107,11 @@ Source: https://marsdawn.southern-light.dev/zh-hant/privacy/
 
 # 隱私權政策
 
-macOS 的 Markdown 編輯器 MarsDawn 如何處理你的資訊。
+Mac、iPhone 和 iPad 上的 Markdown App MarsDawn 如何處理你的資訊。
 
-最後更新：2026-10-25
+最後更新：2026-10-29
 
-> **MarsDawn app 不收集任何關於你的資料**。沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的 Mac 上。
+> **MarsDawn app 不收集任何關於你的資料**。沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的裝置上。
 
 ## 這個網站
 
@@ -4194,7 +4180,7 @@ MarsDawn app 不向任何人收集資料，包括兒童。網站上記下的造�
 
 ## 購買
 
-MarsDawn 透過 Mac App Store 販售，付款由 Apple 依其條款處理，開發者不會取得你的付款資訊。
+MarsDawn 透過 App Store 販售（Mac、iPhone 和 iPad），付款由 Apple 依其條款處理，開發者不會取得你的付款資訊。
 
 ## 政策變更
 
@@ -4504,7 +4490,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/
 | 系統需求 | macOS 26.0 以上 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 廠商未說明 [[18](#v18)] | macOS 12.0 以上 [[23](#v23)] | macOS 13 以上 [[2](#v2)] |
 | 需要帳號 | 不用 [/privacy/] | 廠商未說明 | "No sign-up required" [[15](#v15)] | 廠商未說明 | 不用 [[2](#v2)] |
 
-每一格都在 2026 年 10 月 16 日對照括號裡的來源查證（V 編號列在下方；[實測] 是我們用 marsdawn 0.6.4 實際輸出的結果）。廠商原文照錄。「廠商未說明」表示我們讀到的頁面沒有提到，不代表沒有這個功能。表格不替產品排名。
+每一格都在 2026 年 10 月 16 日對照括號裡的來源查證（V 編號列在下方；[實測] 是我們用 marsdawn 0.6.4 實際輸出的結果）。廠商原文照錄。「廠商未說明」表示我們讀到的頁面沒有提到，不代表沒有這個功能。表格不替產品排名。MarsDawn 自己那一欄在 2026 年 10 月 29 日依 iPhone 和 iPad 版更新。
 
 ## 來源
 
@@ -4532,7 +4518,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn 沒有的東西。需要 macOS 26 以上。沒有 iPhone 或 iPad app，MarsDawn 只做 Mac。不能共同編輯，不同步，也沒有帳號。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。輸出的 PDF 沒有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。
+MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。不能共同編輯，不同步，也沒有帳號。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。輸出的 PDF 沒有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。
 
 ## 什麼時候用不到 MarsDawn
 
@@ -4540,7 +4526,7 @@ MarsDawn 沒有的東西。需要 macOS 26 以上。沒有 iPhone 或 iPad app�
 - 你只想在 Finder 按空白鍵預覽：QLMarkdown 是免費的 Markdown 快速查看延伸功能。
 - 你的 Mac 系統比較舊：QLMarkdown 需要 12.0 以上，LynxOffice 需要 13 以上。免費的 marsdawn 工具只要 macOS 15，不開 app 也能輸出 PDF。
 - 你用 vault 管理互相連結的筆記：Obsidian 就是為此而做。
-- 你需要 iPhone 或 iPad app、共同編輯，或輸出 Word。
+- 你需要在 iPhone 或 iPad 上編輯、共同編輯，或輸出 Word。
 - 你想讓 agent 處理試算表、Word 和 PDF：LynxOffice 有為它們寫好的 MCP 伺服器說明。
 
 - [MacMD Viewer 對比 MarsDawn](/zh-hant/vs/macmd-viewer/)：唯讀檢視器和 MarsDawn 逐格對照，並說明各自適合什麼情況。
@@ -4578,7 +4564,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/
 | 命令列 | 沒有描述獨立的命令列工具。它有 `markdownviewer://` URL scheme，以及用來開啟檔案的 Claude Code 外掛和 hook [[S6](#s6)] | 免費的 `marsdawn` 工具：`marsdawn export` 不需要 app 就能輸出 PDF，`marsdawn open` 能在指定行開啟檔案 |
 | 介面語言 | 自己的資料沒有寫出 [[S1](#s1), [S3](#s3), [S7](#s7)] | 英文、繁體中文、簡體中文、日文、德文、法文、西班牙文和韓文 |
 | 系統需求 | macOS 14（Sonoma）以上；Apple 晶片與 Intel [[S1](#s1), [S7](#s7)] | macOS 26（Tahoe）以上 |
-| 其他平台 | 只有 Mac [[S1](#s1)] | 只有 Mac，沒有 iPhone 或 iPad 版 |
+| 其他平台 | 只有 Mac [[S1](#s1)] | Mac；iPhone 和 iPad 上只能閱讀 |
 
 ## 價格與購買方式
 
@@ -6303,25 +6289,9 @@ Source: https://marsdawn.southern-light.dev/zh-hant/roadmap/
 
 已推出的內容都在[更新紀錄](/zh-hant/changelog/)裡。
 
-## 進行中
-
-### Mac 1.2.0
-
-- 原始碼上方加入格式列，另有「格式」選單和快速鍵。
-- Ask AI：把選取的文字連同檔名、行號和你的提示詞，送到 Claude 或 ChatGPT。
-- 拷貝為 RTF：把算繪好的文件貼進 Google 文件、Notion、郵件或 Pages。
-- 從剪貼板新增：貼上 Markdown，連 AI 輸出時被跳脫的字元也一樣，直接看算繪結果。
-- PDF 輸出的「手冊」版面：內文頁碼從 1 起算、頁尾顯示「n / N」、左側留裝訂邊。
-- 相容 HackMD：支援它的換行設定和語法。
-- App、marsdawn 命令列工具、agent skill 裝了其中一個，MarsDawn 會帶你裝好另外兩個。
-
-### iPhone 與 iPad（iOS 1.0）
-
-- 在 iPhone 和 iPad 上讀 Markdown，預覽和 Mac 版一樣。
-
 ## 接下來
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - 開啟 JSON 和 YAML，可以編輯，旁邊是即時的樹狀預覽。
 - 開啟網址：從 GitHub、Gist 或 raw 檔的公開連結讀 Markdown。
@@ -7085,7 +7055,7 @@ MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源�
 
 ### MarsDawn 有 iPhone 或 iPad 版吗？
 
-还没有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本。iPhone 与 iPad 版正在开发中，目前还不能使用。
+有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown 文件，排好 Mermaid 图表、数学公式、代码和表格，也有大纲和主题；不能编辑、不能导出 PDF，也不会同步。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。
 
 详见：[路线图](/zh-hans/roadmap/)
 
@@ -7125,7 +7095,7 @@ MarsDawn 本身不发送任何东西。skill 只是一份文字说明，marsdawn
 
 ### MarsDawn 会持续维护吗？
 
-会。MarsDawn 上架 Mac App Store 以来的每次更新都在更新记录里，iPhone 与 iPad 版也在开发中。MarsDawn 的渲染核心和免费的 marsdawn 命令行工具，已经以 Apache-2.0 许可证在 mars-dawn-kit 开源。如果 MarsDawn 的开发者哪天停止维护这个 App，会以开源许可证公开 App 本身的源代码，让其他人可以接手。
+会。MarsDawn 上架 Mac App Store 以来的每次更新都在更新记录里；2026 年 10 月 28 日起，iPhone 和 iPad 上也能用 MarsDawn 阅读。MarsDawn 的渲染核心和免费的 marsdawn 命令行工具，已经以 Apache-2.0 许可证在 mars-dawn-kit 开源。如果 MarsDawn 的开发者哪天停止维护这个 App，会以开源许可证公开 App 本身的源代码，让其他人可以接手。
 
 详见：[更新记录](/zh-hans/changelog/) · [路线图](/zh-hans/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
@@ -7418,6 +7388,7 @@ MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用�
 
 - 试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。
 - 不需要账户，MarsDawn 从不要求你创建账户。
+- 用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。
 
 ## 各阶段能做什么
 
@@ -7548,9 +7519,9 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 ### 设备与使用的人
 
 - **同步：**MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。
-- **iPhone 和 iPad：**没有这两个平台的版本，MarsDawn 只给 Mac。
+- **iPhone 和 iPad：**MarsDawn 在这两种设备上只能阅读：可以打开 Markdown 和纯文本文件并排好显示，也有大纲和主题，但不能编辑、不能导出 PDF，也不会同步。文件通过你自己用的云端传过去。
 - **分享：**没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。
-- **系统：**MarsDawn 需要 macOS 26 以上。
+- **系统：**MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。
 
 ### 文件与功能
 
@@ -7628,11 +7599,11 @@ Source: https://marsdawn.southern-light.dev/zh-hans/privacy/
 
 # 隐私政策
 
-macOS 的 Markdown 编辑器 MarsDawn 如何处理你的信息。
+Mac、iPhone 和 iPad 上的 Markdown App MarsDawn 如何处理你的信息。
 
-最后更新：2026-10-25
+最后更新：2026-10-29
 
-> **MarsDawn app 不收集任何关于你的数据**。没有账户、没有广告，也不追踪。你的文稿与设置都留在你的 Mac 上。
+> **MarsDawn app 不收集任何关于你的数据**。没有账户、没有广告，也不追踪。你的文稿与设置都留在你的设备上。
 
 ## 这个网站
 
@@ -7701,7 +7672,7 @@ MarsDawn app 不向任何人收集数据，包括儿童。网站上记下的访�
 
 ## 购买
 
-MarsDawn 通过 Mac App Store 销售，付款由 Apple 依其条款处理，开发者不会取得你的付款信息。
+MarsDawn 通过 App Store 销售（Mac、iPhone 和 iPad），付款由 Apple 依其条款处理，开发者不会取得你的付款信息。
 
 ## 政策变更
 
@@ -8008,7 +7979,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/
 | 系统要求 | macOS 26.0 或更新版本 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 厂商未说明 [[18](#v18)] | macOS 12.0 或更新版本 [[23](#v23)] | macOS 13 或更新版本 [[2](#v2)] |
 | 需要账户 | 不需要 [/privacy/] | 厂商未说明 | "No sign-up required" [[15](#v15)] | 厂商未说明 | 不需要 [[2](#v2)] |
 
-每一格都在 2026 年 10 月 16 日对照括号里的来源核实（V 编号列在下方；[实测] 是我们用 marsdawn 0.6.4 实际导出的结果）。厂商原文照录。“厂商未说明”表示我们读到的页面没有提到，不代表没有这个功能。表格不为产品排名。
+每一格都在 2026 年 10 月 16 日对照括号里的来源核实（V 编号列在下方；[实测] 是我们用 marsdawn 0.6.4 实际导出的结果）。厂商原文照录。“厂商未说明”表示我们读到的页面没有提到，不代表没有这个功能。表格不为产品排名。MarsDawn 自己那一栏在 2026 年 10 月 29 日根据 iPhone 和 iPad 版更新。
 
 ## 来源
 
@@ -8036,7 +8007,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn 没有的东西。需要 macOS 26 或更新版本。没有 iPhone 或 iPad app，MarsDawn 只做 Mac。不能共同编辑，不同步，也没有账户。预览本身不能改，要改旁边的 Markdown 源文本。不能导出 Word，也没有插件。导出的 PDF 没有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。
+MarsDawn 没有的东西。需要 macOS 26 或更新版本。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。不能共同编辑，不同步，也没有账户。预览本身不能改，要改旁边的 Markdown 源文本。不能导出 Word，也没有插件。导出的 PDF 没有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。
 
 ## 什么时候用不到 MarsDawn
 
@@ -8044,7 +8015,7 @@ MarsDawn 没有的东西。需要 macOS 26 或更新版本。没有 iPhone 或 i
 - 你只想在访达里按空格键预览：QLMarkdown 是免费的 Markdown 快速查看扩展。
 - 你的 Mac 系统比较旧：QLMarkdown 需要 12.0 或更新版本，LynxOffice 需要 13 或更新版本。免费的 marsdawn 工具只要 macOS 15，不打开 app 也能导出 PDF。
 - 你用 vault 管理互相链接的笔记：Obsidian 就是为此而做。
-- 你需要 iPhone 或 iPad app、共同编辑，或导出 Word。
+- 你需要在 iPhone 或 iPad 上编辑、共同编辑，或导出 Word。
 - 你想让代理处理电子表格、Word 和 PDF：LynxOffice 为它们提供了 MCP 服务器文档。
 
 - [MacMD Viewer 对比 MarsDawn](/zh-hans/vs/macmd-viewer/)：只读查看器和 MarsDawn 逐格对照，并说明各自适合什么情况。
@@ -8082,7 +8053,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 | 命令行 | 没有描述独立的命令行工具。它有 `markdownviewer://` URL scheme，以及用来打开文件的 Claude Code 插件和 hook [[S6](#s6)] | 免费的 `marsdawn` 工具：`marsdawn export` 不需要 app 就能导出 PDF，`marsdawn open` 能在指定行打开文件 |
 | 界面语言 | 自己的资料没有写明 [[S1](#s1), [S3](#s3), [S7](#s7)] | 英文、繁体中文、简体中文、日文、德文、法文、西班牙文和韩文 |
 | 系统要求 | macOS 14（Sonoma）或更高版本；Apple 芯片与 Intel [[S1](#s1), [S7](#s7)] | macOS 26（Tahoe）或更高版本 |
-| 其他平台 | 只有 Mac [[S1](#s1)] | 只有 Mac，没有 iPhone 或 iPad 版 |
+| 其他平台 | 只有 Mac [[S1](#s1)] | Mac；iPhone 和 iPad 上只能阅读 |
 
 ## 价格与购买方式
 
@@ -9803,25 +9774,9 @@ Source: https://marsdawn.southern-light.dev/zh-hans/roadmap/
 
 已推出的内容都在[更新记录](/zh-hans/changelog/)里。
 
-## 进行中
-
-### Mac 1.2.0
-
-- 源文本上方加入格式栏，另有“格式”菜单和快捷键。
-- Ask AI：把选中的文字连同文件名、行号和你的提示词，发送到 Claude 或 ChatGPT。
-- 拷贝为 RTF：把渲染好的文稿粘贴到 Google 文档、Notion、邮件或 Pages。
-- 从剪贴板新建：粘贴 Markdown，连 AI 输出时被转义的字符也一样，直接看渲染结果。
-- PDF 导出的“手册”版面：正文页码从 1 起算，页脚显示“n / N”，左侧留装订边。
-- 兼容 HackMD：支持它的换行设置和语法。
-- App、marsdawn 命令行工具、代理技能装了其中一个，MarsDawn 会带你装好另外两个。
-
-### iPhone 与 iPad（iOS 1.0）
-
-- 在 iPhone 和 iPad 上读 Markdown，预览和 Mac 版一样。
-
 ## 接下来
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - 打开 JSON 和 YAML，可以编辑，旁边是实时的树状预览。
 - 打开网址：从 GitHub、Gist 或 raw 文件的公开链接读取 Markdown。
@@ -10585,7 +10540,7 @@ MarsDawn は、エージェントが書いた Markdown を読んで確かめる�
 
 ### MarsDawn は iPhone や iPad で使えますか？
 
-まだ使えません。MarsDawn は Mac アプリで、macOS 26 以降が必要です。iPhone と iPad 版は開発中ですが、まだ提供していません。
+はい、閲覧用です。iPhone と iPad の MarsDawn は Markdown ファイルを開き、Mermaid 図、数式、コード、表を整えて表示します。アウトラインとテーマも使えます。編集、PDF の書き出し、同期はできません。iOS 26 または iPadOS 26 以降が必要です。同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。
 
 詳しくは：[ロードマップ](/ja/roadmap/)
 
@@ -10625,7 +10580,7 @@ MarsDawn 自体は何も送りません。skill は指示を書いたテキス�
 
 ### MarsDawn はこれからもメンテナンスされますか？
 
-はい。MarsDawn が Mac App Store に登場してからのアップデートはすべて更新履歴に載っています。iPhone と iPad 版も開発中です。MarsDawn のレンダリングの中核と無料の marsdawn コマンドラインツールは、すでに Apache-2.0 ライセンスで mars-dawn-kit としてオープンソースになっています。そして、MarsDawn の開発者がアプリのメンテナンスをやめるときは、アプリ自体のソースコードをオープンソースライセンスで公開し、ほかの人が引き継げるようにします。
+はい。MarsDawn が Mac App Store に登場してからのアップデートはすべて更新履歴に載っています。2026 年 10 月 28 日からは、iPhone と iPad でも MarsDawn で書類を読めます。MarsDawn のレンダリングの中核と無料の marsdawn コマンドラインツールは、すでに Apache-2.0 ライセンスで mars-dawn-kit としてオープンソースになっています。そして、MarsDawn の開発者がアプリのメンテナンスをやめるときは、アプリ自体のソースコードをオープンソースライセンスで公開し、ほかの人が引き継げるようにします。
 
 詳しくは：[更新履歴](/ja/changelog/) · [ロードマップ](/ja/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
@@ -10918,6 +10873,7 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 
 - トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。
 - アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。
+- 同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。
 
 ## 各段階でできること
 
@@ -11048,9 +11004,9 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 ### デバイスと使う人
 
 - **同期：**MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。
-- **iPhone と iPad：**これらの端末向けアプリはありません。MarsDawn は Mac 専用です。
+- **iPhone と iPad：**これらの端末では閲覧専用です。Markdown とテキストファイルを開いて整えて表示し、アウトラインとテーマも使えますが、編集、PDF の書き出し、同期はできません。ファイルは、普段使っているクラウドを通して届けます。
 - **共有：**アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。
-- **システム：**MarsDawn には macOS 26 以降が必要です。
+- **システム：**MarsDawn には、Mac では macOS 26 以降、iPhone と iPad では iOS 26 または iPadOS 26 以降が必要です。
 
 ### ファイルと機能
 
@@ -11128,11 +11084,11 @@ Source: https://marsdawn.southern-light.dev/ja/privacy/
 
 # プライバシーポリシー
 
-macOS 向け Markdown エディタ、MarsDawn がどのようにあなたの情報を扱うか。
+Mac、iPhone、iPad 向け Markdown アプリ、MarsDawn がどのようにあなたの情報を扱うか。
 
-最終更新日：2026-10-25
+最終更新日：2026-10-29
 
-> **MarsDawn アプリは、あなたに関するデータを一切収集しません**。アカウントも、広告も、トラッキングもありません。文書と設定はあなたの Mac 上に残ります。
+> **MarsDawn アプリは、あなたに関するデータを一切収集しません**。アカウントも、広告も、トラッキングもありません。文書と設定はあなたのデバイス上に残ります。
 
 ## このウェブサイト
 
@@ -11201,7 +11157,7 @@ MarsDawn アプリは、子どもを含め、誰からもデータを収集し�
 
 ## 購入
 
-MarsDawn は Mac App Store を通じて販売されます。購入は Apple 自身の規約のもとで処理され、開発者があなたの支払い情報を受け取ることはありません。
+MarsDawn は App Store（Mac、iPhone、iPad）を通じて販売されます。購入は Apple 自身の規約のもとで処理され、開発者があなたの支払い情報を受け取ることはありません。
 
 ## このポリシーの変更
 
@@ -11508,7 +11464,7 @@ Mac で Markdown を、多くはエージェントが書いたものを読んで
 | 動作環境 | macOS 26.0 以降 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 記載なし [[18](#v18)] | macOS 12.0 以降 [[23](#v23)] | macOS 13 以降 [[2](#v2)] |
 | アカウント | 不要 [/privacy/] | 記載なし | "No sign-up required" [[15](#v15)] | 記載なし | 不要 [[2](#v2)] |
 
-各セルは 2026 年 10 月 16 日に、角かっこ内の出典で確認しました（V の番号は下に一覧、[実測] は marsdawn 0.6.4 で書き出した私たちの確認）。各社の原文はそのまま引用しています。「記載なし」は、読んだページに書かれていなかったという意味で、機能がないという意味ではありません。製品の順位付けはしていません。
+各セルは 2026 年 10 月 16 日に、角かっこ内の出典で確認しました（V の番号は下に一覧、[実測] は marsdawn 0.6.4 で書き出した私たちの確認）。各社の原文はそのまま引用しています。「記載なし」は、読んだページに書かれていなかったという意味で、機能がないという意味ではありません。製品の順位付けはしていません。MarsDawn 自身の列は、iPhone と iPad 版に合わせて 2026 年 10 月 29 日に更新しました。
 
 ## 出典
 
@@ -11536,7 +11492,7 @@ Mac で Markdown を、多くはエージェントが書いたものを読んで
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn にないもの。macOS 26 以降が必要です。iPhone や iPad のアプリはなく、MarsDawn は Mac 専用です。共同編集も同期もアカウントもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号は入りません。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
+MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集も同期もアカウントもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号は入りません。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
 
 ## MarsDawn がいらないとき
 
@@ -11544,7 +11500,7 @@ MarsDawn にないもの。macOS 26 以降が必要です。iPhone や iPad の�
 - Finder でスペースバーのプレビューだけほしい。QLMarkdown は無料の Markdown 用クイックルック拡張です。
 - Mac の macOS が古い。QLMarkdown は 12.0 以降、LynxOffice は 13 以降です。無料の marsdawn ツールは macOS 15 で動き、アプリなしで PDF を書き出せます。
 - リンクでつながったノートを保管庫で管理している。Obsidian はそのためのアプリです。
-- iPhone や iPad のアプリ、共同編集、Word 書き出しが必要。
+- iPhone や iPad での編集、共同編集、Word 書き出しが必要。
 - 表計算、Word、PDF をエージェントに扱わせたい。LynxOffice はそのための MCP サーバーを公開しています。
 
 - [MacMD Viewer と MarsDawn](/ja/vs/macmd-viewer/)：読み取り専用のビューアと MarsDawn をセルごとに比べ、どちらを選ぶべきかも書いています。
@@ -11582,7 +11538,7 @@ MacMD Viewer 自身のサイトとリポジトリで 2026 年 10 月 15 日に�
 | コマンドライン | 独立したコマンドラインツールの記載なし。`markdownviewer://` の URL スキームと、ファイルを開くための Claude Code のプラグインとフックがある [[S6](#s6)] | 無料の `marsdawn` ツール：`marsdawn export` はアプリなしで PDF を書き出し、`marsdawn open` は行を指定してファイルを開く |
 | インターフェイスの言語 | 公式の資料に記載なし [[S1](#s1), [S3](#s3), [S7](#s7)] | 英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語 |
 | 動作環境 | macOS 14（Sonoma）以降。Apple シリコンと Intel [[S1](#s1), [S7](#s7)] | macOS 26（Tahoe）以降 |
-| ほかのプラットフォーム | Mac のみ [[S1](#s1)] | Mac のみ。iPhone や iPad のアプリはない |
+| ほかのプラットフォーム | Mac のみ [[S1](#s1)] | Mac。iPhone と iPad では閲覧のみ |
 
 ## 価格と購入方法
 
@@ -13302,25 +13258,9 @@ Source: https://marsdawn.southern-light.dev/ja/roadmap/
 
 これまでに公開した内容は[更新履歴](/ja/changelog/)にあります。
 
-## 開発中
-
-### Mac 1.2.0
-
-- ソースの上にフォーマットバーを追加。「フォーマット」メニューとキーボードショートカットも用意します。
-- Ask AI：選択したテキストを、ファイル名、行番号、プロンプトと一緒に Claude または ChatGPT に送ります。
-- RTF としてコピー：レンダリングした文書を Google ドキュメント、Notion、メール、Pages に貼り付けられます。
-- クリップボードから新規作成：Markdown を貼り付けるだけでレンダリング結果を表示します。AI の出力でエスケープされた文字にも対応します。
-- PDF 書き出しの「ハンドブック」レイアウト：本文のページ番号は 1 から、フッタに「n / N」、左側に綴じしろを付けます。
-- HackMD 互換：改行の設定と HackMD の記法に対応します。
-- アプリ、marsdawn コマンドラインツール、エージェントスキルのどれかを入れると、残りの 2 つを入れる手順を案内します。
-
-### iPhone と iPad（iOS 1.0）
-
-- iPhone と iPad で、Mac と同じプレビューで Markdown を読めます。
-
 ## 今後の予定
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - JSON と YAML を開いて編集でき、横にリアルタイムのツリープレビューを表示します。
 - URL を開く：GitHub、Gist、raw ファイルの公開リンクから Markdown を読み込みます。
@@ -14084,7 +14024,7 @@ Nein. MarsDawn ist ein kostenloser Download mit 14 Tagen Test aller Funktionen. 
 
 ### Läuft MarsDawn auf dem iPhone oder iPad?
 
-Noch nicht. MarsDawn ist eine Mac-App und braucht macOS 26 oder neuer. Eine Version für iPhone und iPad ist in Arbeit, aber noch nicht erhältlich.
+Ja, zum Lesen. Auf iPhone und iPad öffnet MarsDawn Markdown-Dateien und stellt Mermaid-Diagramme, Formeln, Code und Tabellen dar, mit Gliederung und Themen. Bearbeiten, PDF-Export und Synchronisierung gibt es dort nicht. Es braucht iOS 26 oder iPadOS 26 oder neuer. Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.
 
 Mehr dazu: [Roadmap](/de/roadmap/)
 
@@ -14124,7 +14064,7 @@ Mehr dazu: [MarsDawn im Vergleich](/de/vs/) · [Der beste Markdown-Viewer für d
 
 ### Wird MarsDawn weiter gepflegt?
 
-Ja. Jedes Update, seit MarsDawn im Mac App Store erschienen ist, steht im Änderungsprotokoll, und eine Version für iPhone und iPad ist in Arbeit. Der Rendering-Kern von MarsDawn und das kostenlose Befehlszeilenprogramm marsdawn sind bereits unter der Lizenz Apache-2.0 als Open Source verfügbar, in mars-dawn-kit. Und falls der Entwickler von MarsDawn die App einmal nicht mehr pflegt, wird ihr eigener Quellcode unter einer Open-Source-Lizenz veröffentlicht, damit andere sie weiterführen können.
+Ja. Jedes Update, seit MarsDawn im Mac App Store erschienen ist, steht im Änderungsprotokoll, und seit dem 28. Oktober 2026 gibt es MarsDawn auch auf iPhone und iPad, zum Lesen. Der Rendering-Kern von MarsDawn und das kostenlose Befehlszeilenprogramm marsdawn sind bereits unter der Lizenz Apache-2.0 als Open Source verfügbar, in mars-dawn-kit. Und falls der Entwickler von MarsDawn die App einmal nicht mehr pflegt, wird ihr eigener Quellcode unter einer Open-Source-Lizenz veröffentlicht, damit andere sie weiterführen können.
 
 Mehr dazu: [Änderungsprotokoll](/de/changelog/) · [Roadmap](/de/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
@@ -14417,6 +14357,7 @@ Auf diesem Bildschirmfoto:
 
 - Auch der Test kostet nichts. Wenn er endet, wird nichts gekauft, es sei denn, du entscheidest dich für die Freischaltung.
 - Es gibt kein Konto. MarsDawn verlangt nie, dass du eines anlegst.
+- Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad. Auf iPhone und iPad ist MarsDawn zum Lesen da: Bearbeiten und PDF-Export gibt es dort nicht.
 
 ## Was wann funktioniert
 
@@ -14547,9 +14488,9 @@ Auf diesem Bildschirmfoto:
 ### Geräte und Personen
 
 - **Synchronisierung:** MarsDawn synchronisiert deine Dokumente nicht. Sie bleiben dort, wo du sie sicherst. Um eines auf einem anderen Mac zu verwenden, lege es in einen Ordner, den du ohnehin synchronisierst.
-- **iPhone und iPad:** Dafür gibt es keine App; MarsDawn ist für den Mac.
+- **iPhone und iPad:** Dort ist MarsDawn zum Lesen da. Es öffnet Markdown- und Textdateien und stellt sie dar, mit Gliederung und Themen, aber es bearbeitet nicht, exportiert keine PDFs und synchronisiert nicht. Deine Dateien kommen über die Cloud dorthin, die du schon nutzt.
 - **Teilen:** Es gibt keine Konten und keine gemeinsame Bearbeitung, denn MarsDawn ist für eine Person an ihrem eigenen Mac.
-- **System:** MarsDawn benötigt macOS 26 oder neuer.
+- **System:** MarsDawn benötigt auf dem Mac macOS 26 oder neuer und auf iPhone und iPad iOS 26 bzw. iPadOS 26 oder neuer.
 
 ### Dateien und Funktionen
 
@@ -14627,11 +14568,11 @@ Source: https://marsdawn.southern-light.dev/de/privacy/
 
 # Datenschutzrichtlinie
 
-Wie MarsDawn, der Markdown-Editor für macOS, mit deinen Daten umgeht.
+Wie MarsDawn, die Markdown-App für Mac, iPhone und iPad, mit deinen Daten umgeht.
 
-Zuletzt aktualisiert am 2026-10-25
+Zuletzt aktualisiert am 2026-10-29
 
-> **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
+> **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinen Geräten.
 
 ## Die Website
 
@@ -14700,7 +14641,7 @@ Die App MarsDawn erhebt von niemandem Daten, auch nicht von Kindern. Ein auf der
 
 ## Käufe
 
-MarsDawn wird über den Mac App Store verkauft. Apple wickelt den Kauf nach eigenen Bedingungen ab, und der Entwickler erhält nie deine Zahlungsdaten.
+MarsDawn wird über den App Store verkauft, für Mac, iPhone und iPad. Apple wickelt den Kauf nach eigenen Bedingungen ab, und der Entwickler erhält nie deine Zahlungsdaten.
 
 ## Änderungen dieser Richtlinie
 
@@ -15010,7 +14951,7 @@ Für alle, die entscheiden, wie sie Markdown auf dem Mac lesen und prüfen, oft 
 | Systemvoraussetzungen | macOS 26.0 oder neuer [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | Vom Hersteller nicht angegeben [[18](#v18)] | macOS 12.0 oder neuer [[23](#v23)] | macOS 13 oder neuer [[2](#v2)] |
 | Konto nötig | Nein [/privacy/] | Vom Hersteller nicht angegeben | "No sign-up required" [[15](#v15)] | Vom Hersteller nicht angegeben | Nein [[2](#v2)] |
 
-Jede Zelle wurde am 16. Oktober 2026 an der Quelle in Klammern geprüft (die V-Nummern stehen unten; [Prüfung] ist unser eigener Export mit marsdawn 0.6.4). Zitate der Hersteller bleiben im Original. „Vom Hersteller nicht angegeben“ heißt, dass die gelesenen Seiten dazu schweigen, nicht dass die Funktion fehlt. Keine Zelle bewertet die Produkte.
+Jede Zelle wurde am 16. Oktober 2026 an der Quelle in Klammern geprüft (die V-Nummern stehen unten; [Prüfung] ist unser eigener Export mit marsdawn 0.6.4). Zitate der Hersteller bleiben im Original. „Vom Hersteller nicht angegeben“ heißt, dass die gelesenen Seiten dazu schweigen, nicht dass die Funktion fehlt. Keine Zelle bewertet die Produkte. Die Spalte von MarsDawn selbst wurde am 29. Oktober 2026 für die iPhone- und iPad-App aktualisiert.
 
 ## Quellen
 
@@ -15038,7 +14979,7 @@ Jede Zelle wurde am 16. Oktober 2026 an der Quelle in Klammern geprüft (die V-N
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Es gibt keine App für iPhone oder iPad; MarsDawn ist für den Mac. Kein gemeinsames Bearbeiten, keine Synchronisierung und kein Konto. Die Vorschau lässt sich nicht bearbeiten; du bearbeitest den Markdown-Quelltext daneben. Kein Word-Export und keine Plug-ins. Die PDFs haben keine Seitenzahlen. Es gibt keine Diff-Ansicht: Sichert ein Agent eine Änderung, aktualisiert sich das offene Fenster von der Festplatte in einem Schritt, den du widerrufen kannst, hebt aber nicht hervor, was sich geändert hat. Nach dem 14-tägigen Test öffnen sich Dokumente mit verdecktem Inhalt, bis du freischaltest.
+Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Auf iPhone und iPad liest es nur: Bearbeiten und PDF-Export gibt es dort nicht. Kein gemeinsames Bearbeiten, keine Synchronisierung und kein Konto. Die Vorschau lässt sich nicht bearbeiten; du bearbeitest den Markdown-Quelltext daneben. Kein Word-Export und keine Plug-ins. Die PDFs haben keine Seitenzahlen. Es gibt keine Diff-Ansicht: Sichert ein Agent eine Änderung, aktualisiert sich das offene Fenster von der Festplatte in einem Schritt, den du widerrufen kannst, hebt aber nicht hervor, was sich geändert hat. Nach dem 14-tägigen Test öffnen sich Dokumente mit verdecktem Inhalt, bis du freischaltest.
 
 ## Wann du MarsDawn nicht brauchst
 
@@ -15046,7 +14987,7 @@ Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Es gibt keine App für iPhon
 - Du willst nur eine Vorschau per Leertaste im Finder: QLMarkdown ist eine kostenlose Übersicht-Erweiterung für Markdown.
 - Dein Mac hat ein älteres macOS: QLMarkdown braucht 12.0 oder neuer, LynxOffice 13 oder neuer. Das kostenlose Tool marsdawn braucht macOS 15 und exportiert PDF ohne die App.
 - Du führst einen Vault verknüpfter Notizen: Dafür ist Obsidian gemacht.
-- Du brauchst eine App für iPhone oder iPad, gemeinsames Bearbeiten oder Word-Export.
+- Du willst auf iPhone oder iPad bearbeiten oder brauchst gemeinsames Bearbeiten oder Word-Export.
 - Ein Agent soll Tabellen, Word-Dateien und PDFs bearbeiten: LynxOffice dokumentiert dafür einen MCP-Server.
 
 - [MacMD Viewer oder MarsDawn](/de/vs/macmd-viewer/): ein reiner Viewer neben MarsDawn, Zelle für Zelle, mit der Frage, wann welches passt.
@@ -15084,7 +15025,7 @@ Geprüft gegen die eigene Website und das Repository von MacMD Viewer am 15. Okt
 | Befehlszeile | Es wird kein eigenständiges Befehlszeilenwerkzeug beschrieben. Es gibt ein URL-Schema `markdownviewer://` und ein Claude-Code-Plug-in samt Hooks, die Dateien im Viewer öffnen [[S6](#s6)] | Das kostenlose Werkzeug `marsdawn`: `marsdawn export` erzeugt ein PDF ohne die App, `marsdawn open` öffnet eine Datei bei einer Zeile |
 | Sprachen der Oberfläche | In den eigenen Unterlagen nicht angegeben [[S1](#s1), [S3](#s3), [S7](#s7)] | Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch |
 | Voraussetzung | macOS 14 (Sonoma) oder neuer; Apple Silicon und Intel [[S1](#s1), [S7](#s7)] | macOS 26 (Tahoe) oder neuer |
-| Andere Plattformen | Nur Mac [[S1](#s1)] | Nur Mac. Keine App für iPhone oder iPad |
+| Andere Plattformen | Nur Mac [[S1](#s1)] | Mac, dazu iPhone und iPad nur zum Lesen |
 
 ## Preis und Kauf
 
@@ -16776,25 +16717,9 @@ Pläne können sich ändern: Ein Punkt kann in eine andere Version wandern oder 
 
 Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/).
 
-## In Arbeit
-
-### Mac 1.2.0
-
-- Eine Formatleiste über dem Quelltext, dazu ein Menü „Format“ und Tastaturkurzbefehle.
-- Ask AI: den markierten Text mit Dateiname, Zeilennummern und deinem Prompt an Claude oder ChatGPT senden.
-- Als RTF kopieren, um das gerenderte Dokument in Google Docs, Notion, Mail oder Pages einzufügen.
-- „Neu aus der Zwischenablage“: Markdown einfügen, auch KI-Ausgabe mit maskierten Zeichen, und es gerendert sehen.
-- Das Layout „Handbuch“ für den PDF-Export: Seitenzahlen ab 1 im Hauptteil, „n / N“ in der Fußzeile und ein Bundsteg links.
-- HackMD-Kompatibilität: seine Einstellung für Zeilenumbrüche und seine Syntax.
-- Installiere die App, das Befehlszeilenprogramm marsdawn oder den Agent-Skill, und MarsDawn hilft dir, die anderen beiden hinzuzufügen.
-
-### iPhone und iPad (iOS 1.0)
-
-- Markdown auf iPhone und iPad lesen, mit derselben Vorschau wie auf dem Mac.
-
 ## Als Nächstes
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - JSON und YAML öffnen, bearbeiten und neben dem Quelltext eine Live-Baumvorschau sehen.
 - URL öffnen: Markdown von einem öffentlichen Link auf GitHub, aus einem Gist oder einer Raw-Datei lesen.
@@ -17524,7 +17449,7 @@ Non. MarsDawn se télécharge gratuitement, avec 14 jours d’essai de toutes le
 
 ### MarsDawn fonctionne-t-il sur iPhone ou iPad ?
 
-Pas encore. MarsDawn est une app Mac et demande macOS 26 ou une version ultérieure. Une version pour iPhone et iPad est en préparation, mais elle n’est pas encore disponible.
+Oui, pour la lecture. Sur iPhone et iPad, MarsDawn ouvre les fichiers Markdown et met en forme les diagrammes Mermaid, les formules, le code et les tableaux, avec un plan et des thèmes. Il ne permet ni de modifier, ni d’exporter en PDF, ni de synchroniser. Il demande iOS 26 ou iPadOS 26 ou une version ultérieure. Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.
 
 En savoir plus : [Feuille de route](/fr/roadmap/)
 
@@ -17564,7 +17489,7 @@ En savoir plus : [MarsDawn comparé aux autres outils](/fr/vs/) · [Meilleur lec
 
 ### MarsDawn sera-t-il maintenu dans la durée ?
 
-Oui. Chaque mise à jour depuis l’arrivée de MarsDawn sur le Mac App Store figure dans l’historique des versions, et une version pour iPhone et iPad est en préparation. Le cœur de rendu de MarsDawn et l’outil en ligne de commande gratuit marsdawn sont déjà open source sous licence Apache-2.0, dans mars-dawn-kit. Et si le développeur de MarsDawn arrête un jour de maintenir l’app, le code source de l’app elle-même sera publié sous une licence open source, pour que d’autres puissent la reprendre.
+Oui. Chaque mise à jour depuis l’arrivée de MarsDawn sur le Mac App Store figure dans l’historique des versions, et depuis le 28 octobre 2026, MarsDawn est aussi sur iPhone et iPad, pour la lecture. Le cœur de rendu de MarsDawn et l’outil en ligne de commande gratuit marsdawn sont déjà open source sous licence Apache-2.0, dans mars-dawn-kit. Et si le développeur de MarsDawn arrête un jour de maintenir l’app, le code source de l’app elle-même sera publié sous une licence open source, pour que d’autres puissent la reprendre.
 
 En savoir plus : [Historique des versions](/fr/changelog/) · [Feuille de route](/fr/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
@@ -17857,6 +17782,7 @@ Sur cette capture d’écran :
 
 - L’essai ne vous coûte rien non plus. À la fin, rien n’est acheté, sauf si vous choisissez de déverrouiller.
 - Il n’y a pas de compte. MarsDawn ne vous demande jamais d’en créer un.
+- Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad. Sur iPhone et iPad, MarsDawn sert à lire : il ne permet ni de modifier ni d’exporter en PDF.
 
 ## Ce qui fonctionne, et quand
 
@@ -17987,9 +17913,9 @@ Sur cette capture d’écran :
 ### Appareils et personnes
 
 - **Synchronisation :** MarsDawn ne synchronise pas vos documents. Ils restent là où vous les enregistrez ; pour en utiliser un sur un autre Mac, gardez-le dans un dossier que vous synchronisez déjà.
-- **iPhone et iPad :** il n’existe pas d’app pour eux ; MarsDawn est fait pour le Mac.
+- **iPhone et iPad :** MarsDawn y sert à lire. Il ouvre les fichiers Markdown et texte et les met en forme, avec un plan et des thèmes, mais il ne permet ni de modifier, ni d’exporter en PDF, ni de synchroniser. Vos fichiers y arrivent par le cloud que vous utilisez déjà.
 - **Partage :** il n’y a ni comptes ni édition partagée, car MarsDawn est conçu pour une personne, sur son propre Mac.
-- **Système :** MarsDawn nécessite macOS 26 ou version ultérieure.
+- **Système :** MarsDawn nécessite macOS 26 ou version ultérieure sur Mac, et iOS 26 ou iPadOS 26 ou version ultérieure sur iPhone et iPad.
 
 ### Fichiers et fonctionnalités
 
@@ -18067,11 +17993,11 @@ Source: https://marsdawn.southern-light.dev/fr/privacy/
 
 # Politique de confidentialité
 
-Comment MarsDawn, l’éditeur Markdown pour macOS, traite vos informations.
+Comment MarsDawn, l’app Markdown pour Mac, iPhone et iPad, traite vos informations.
 
-Dernière mise à jour : 2026-10-25
+Dernière mise à jour : 2026-10-29
 
-> **L’app MarsDawn ne collecte aucune donnée vous concernant.** Il n’y a ni compte, ni publicité, ni suivi. Vos documents et vos réglages restent sur votre Mac.
+> **L’app MarsDawn ne collecte aucune donnée vous concernant.** Il n’y a ni compte, ni publicité, ni suivi. Vos documents et vos réglages restent sur vos appareils.
 
 ## Le site web
 
@@ -18140,7 +18066,7 @@ L’app MarsDawn ne collecte de données auprès de personne, y compris les enfa
 
 ## Achats
 
-MarsDawn est vendu sur le Mac App Store. Apple traite l’achat selon ses propres conditions, et le développeur ne reçoit jamais vos informations de paiement.
+MarsDawn est vendu sur l’App Store, pour Mac, iPhone et iPad. Apple traite l’achat selon ses propres conditions, et le développeur ne reçoit jamais vos informations de paiement.
 
 ## Modifications de cette politique
 
@@ -18450,7 +18376,7 @@ Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, 
 | Configuration requise | macOS 26.0 ou ultérieur [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | Non précisé par le fournisseur [[18](#v18)] | macOS 12.0 ou ultérieur [[23](#v23)] | macOS 13 ou ultérieur [[2](#v2)] |
 | Compte requis | Non [/privacy/] | Non précisé par le fournisseur | "No sign-up required" [[15](#v15)] | Non précisé par le fournisseur | Non [[2](#v2)] |
 
-Chaque cellule a été vérifiée le 16 octobre 2026 auprès de la source entre crochets (les numéros V sont listés plus bas ; [vérif.] est notre propre export avec marsdawn 0.6.4). Les citations des fournisseurs restent telles quelles. « Non précisé par le fournisseur » signifie que les pages lues n’en disent rien, pas que la fonction manque. Aucune cellule ne classe les produits.
+Chaque cellule a été vérifiée le 16 octobre 2026 auprès de la source entre crochets (les numéros V sont listés plus bas ; [vérif.] est notre propre export avec marsdawn 0.6.4). Les citations des fournisseurs restent telles quelles. « Non précisé par le fournisseur » signifie que les pages lues n’en disent rien, pas que la fonction manque. Aucune cellule ne classe les produits. La colonne de MarsDawn elle-même a été mise à jour le 29 octobre 2026 pour l’app iPhone et iPad.
 
 ## Sources
 
@@ -18478,7 +18404,7 @@ Chaque cellule a été vérifiée le 16 octobre 2026 auprès de la source entre 
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Il n’y a pas d’app pour iPhone ou iPad ; MarsDawn est fait pour le Mac. Pas d’édition partagée, pas de synchronisation, pas de compte. L’aperçu ne se modifie pas ; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Les PDF n’ont pas de numéros de page. Pas de vue diff : quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les documents s’ouvrent avec leur contenu masqué jusqu’au déverrouillage.
+Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Sur iPhone et iPad, il ne fait que lire : il ne permet ni de modifier ni d’exporter en PDF. Pas d’édition partagée, pas de synchronisation, pas de compte. L’aperçu ne se modifie pas ; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Les PDF n’ont pas de numéros de page. Pas de vue diff : quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les documents s’ouvrent avec leur contenu masqué jusqu’au déverrouillage.
 
 ## Quand vous n’avez pas besoin de MarsDawn
 
@@ -18486,7 +18412,7 @@ Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Il n’y a pas d’ap
 - Vous voulez seulement un aperçu à la barre d’espace dans le Finder : QLMarkdown est une extension Coup d’œil gratuite pour le Markdown.
 - Votre Mac a un macOS plus ancien : QLMarkdown demande la 12.0 ou ultérieure, LynxOffice la 13 ou ultérieure. L’outil gratuit marsdawn demande macOS 15 et exporte en PDF sans l’app.
 - Vous tenez un coffre (vault) de notes liées : c’est pour cela qu’Obsidian est fait.
-- Il vous faut une app iPhone ou iPad, l’édition partagée ou l’export Word.
+- Vous voulez modifier sur iPhone ou iPad, ou il vous faut l’édition partagée ou l’export Word.
 - Vous voulez qu’un agent traite tableurs, fichiers Word et PDF : LynxOffice documente un serveur MCP pour cela.
 
 - [MacMD Viewer ou MarsDawn](/fr/vs/macmd-viewer/) : une visionneuse en lecture seule face à MarsDawn, cellule par cellule, avec quand choisir l’un ou l’autre.
@@ -18524,7 +18450,7 @@ Vérifié sur le site et le dépôt de MacMD Viewer le 15 octobre 2026 (version 
 | Ligne de commande | Aucun outil en ligne de commande autonome n’est décrit. Il a un schéma d’URL `markdownviewer://` et un plug-in Claude Code avec des hooks qui ouvrent des fichiers dans la visionneuse [[S6](#s6)] | L’outil gratuit `marsdawn` : `marsdawn export` produit un PDF sans l’app, `marsdawn open` ouvre un fichier à une ligne donnée |
 | Langues de l’interface | Non précisé dans ses propres documents [[S1](#s1), [S3](#s3), [S7](#s7)] | anglais, chinois traditionnel, chinois simplifié, japonais, allemand, français, espagnol et coréen |
 | Configuration requise | macOS 14 (Sonoma) ou version ultérieure ; Apple silicon et Intel [[S1](#s1), [S7](#s7)] | macOS 26 (Tahoe) ou version ultérieure |
-| Autres plateformes | Mac uniquement [[S1](#s1)] | Mac uniquement. Pas d’app pour iPhone ou iPad |
+| Autres plateformes | Mac uniquement [[S1](#s1)] | Mac, plus iPhone et iPad en lecture seule |
 
 ## Prix et mode d’achat
 
@@ -20216,25 +20142,9 @@ Les plans peuvent changer : un élément peut passer à une autre version ou êt
 
 Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/changelog/).
 
-## En cours
-
-### Mac 1.2.0
-
-- Une barre de format au-dessus de la source, avec un menu Format et des raccourcis clavier.
-- Ask AI : envoyer le texte sélectionné, avec le nom du fichier, les numéros de ligne et votre prompt, à Claude ou ChatGPT.
-- Copier en RTF, pour coller le document mis en forme dans Google Docs, Notion, Mail ou Pages.
-- Créer à partir du presse-papiers : collez du Markdown, y compris une sortie d’IA aux caractères échappés, et voyez le rendu.
-- La mise en page « Guide » pour l’export PDF : pages du corps numérotées à partir de 1, « n / N » en pied de page et une marge de reliure à gauche.
-- Compatibilité HackMD : son réglage des sauts de ligne et sa syntaxe.
-- Installez l’app, l’outil en ligne de commande marsdawn ou le skill d’agent, et MarsDawn vous aide à ajouter les deux autres.
-
-### iPhone et iPad (iOS 1.0)
-
-- Lire du Markdown sur iPhone et iPad avec le même aperçu que sur Mac.
-
 ## Ensuite
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - Ouvrir du JSON et du YAML, les modifier et voir un aperçu en arborescence en direct à côté de la source.
 - Ouvrir une URL : lire du Markdown depuis un lien public sur GitHub, un Gist ou un fichier brut.
@@ -20964,7 +20874,7 @@ No. MarsDawn se descarga gratis y incluye 14 días de prueba de todas las funcio
 
 ### ¿MarsDawn funciona en iPhone o iPad?
 
-Todavía no. MarsDawn es una app para Mac y necesita macOS 26 o posterior. Hay una versión para iPhone y iPad en desarrollo, pero aún no está disponible.
+Sí, para leer. En iPhone y iPad, MarsDawn abre archivos Markdown y muestra con formato diagramas de Mermaid, fórmulas, código y tablas, con esquema y temas. No edita, no exporta PDF ni sincroniza. Necesita iOS 26 o iPadOS 26 o posterior. Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.
 
 Más información: [Hoja de ruta](/es/roadmap/)
 
@@ -21004,7 +20914,7 @@ Más información: [MarsDawn frente a otras herramientas](/es/vs/) · [El mejor 
 
 ### ¿MarsDawn seguirá teniendo mantenimiento?
 
-Sí. Cada actualización desde que MarsDawn llegó a la Mac App Store está en el historial de cambios, y hay una versión para iPhone y iPad en desarrollo. El núcleo de renderizado de MarsDawn y la herramienta de línea de comandos gratuita marsdawn ya son de código abierto con la licencia Apache-2.0, en mars-dawn-kit. Y si el desarrollador de MarsDawn deja algún día de mantener la app, el código fuente de la propia app se publicará con una licencia de código abierto, para que otros puedan continuarla.
+Sí. Cada actualización desde que MarsDawn llegó a la Mac App Store está en el historial de cambios, y desde el 28 de octubre de 2026 MarsDawn también está en iPhone y iPad, para leer. El núcleo de renderizado de MarsDawn y la herramienta de línea de comandos gratuita marsdawn ya son de código abierto con la licencia Apache-2.0, en mars-dawn-kit. Y si el desarrollador de MarsDawn deja algún día de mantener la app, el código fuente de la propia app se publicará con una licencia de código abierto, para que otros puedan continuarla.
 
 Más información: [Historial de cambios](/es/changelog/) · [Hoja de ruta](/es/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
@@ -21297,6 +21207,7 @@ En esta captura de pantalla:
 
 - La prueba tampoco te cobra nada. Cuando termina, no se compra nada a menos que elijas desbloquear.
 - No hay cuenta. MarsDawn nunca te pide que crees una.
+- Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad. En iPhone y iPad, MarsDawn es para leer: no edita ni exporta PDF.
 
 ## Qué funciona y cuándo
 
@@ -21427,9 +21338,9 @@ En esta captura de pantalla:
 ### Dispositivos y personas
 
 - **Sincronización:** MarsDawn no sincroniza tus documentos. Se quedan donde los guardas; para usar uno en otro Mac, guárdalo en una carpeta que ya sincronices.
-- **iPhone y iPad:** no hay app para ellos; MarsDawn es para la Mac.
+- **iPhone y iPad:** ahí MarsDawn es para leer. Abre archivos Markdown y de texto y los muestra con formato, con esquema y temas, pero no edita, no exporta PDF ni sincroniza. Tus archivos llegan a través de la nube que ya usas.
 - **Compartir:** no hay cuentas ni edición compartida, porque MarsDawn es para una persona en su propio Mac.
-- **Sistema:** MarsDawn necesita macOS 26 o posterior.
+- **Sistema:** MarsDawn necesita macOS 26 o posterior en la Mac, y iOS 26 o iPadOS 26 o posterior en iPhone y iPad.
 
 ### Archivos y funciones
 
@@ -21507,11 +21418,11 @@ Source: https://marsdawn.southern-light.dev/es/privacy/
 
 # Política de privacidad
 
-Cómo trata tu información MarsDawn, el editor de Markdown para macOS.
+Cómo trata tu información MarsDawn, la app de Markdown para Mac, iPhone y iPad.
 
-Última actualización: 2026-10-25
+Última actualización: 2026-10-29
 
-> **La app MarsDawn no recopila ningún dato sobre ti.** No hay cuenta, ni publicidad, ni seguimiento. Tus documentos y tus ajustes se quedan en tu Mac.
+> **La app MarsDawn no recopila ningún dato sobre ti.** No hay cuenta, ni publicidad, ni seguimiento. Tus documentos y tus ajustes se quedan en tus dispositivos.
 
 ## El sitio web
 
@@ -21580,7 +21491,7 @@ La app MarsDawn no recopila datos de nadie, menores incluidos. Una visita regist
 
 ## Compras
 
-MarsDawn se vende a través del Mac App Store. Apple procesa la compra según sus propias condiciones, y el desarrollador nunca recibe tus datos de pago.
+MarsDawn se vende a través del App Store, para Mac, iPhone y iPad. Apple procesa la compra según sus propias condiciones, y el desarrollador nunca recibe tus datos de pago.
 
 ## Cambios en esta política
 
@@ -21890,7 +21801,7 @@ Para quien elige cómo leer y revisar Markdown en un Mac, a menudo lo que escrib
 | Requisitos del sistema | macOS 26.0 o posterior [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | El fabricante no lo indica [[18](#v18)] | macOS 12.0 o posterior [[23](#v23)] | macOS 13 o posterior [[2](#v2)] |
 | Requiere cuenta | No [/privacy/] | El fabricante no lo indica | "No sign-up required" [[15](#v15)] | El fabricante no lo indica | No [[2](#v2)] |
 
-Cada celda se comprobó el 16 de octubre de 2026 con la fuente entre corchetes (los números V están abajo; [prueba] es nuestra propia exportación con marsdawn 0.6.4). Las citas de los fabricantes se mantienen tal cual. «El fabricante no lo indica» significa que las páginas que leímos no dicen nada, no que la función falte. Ninguna celda clasifica los productos.
+Cada celda se comprobó el 16 de octubre de 2026 con la fuente entre corchetes (los números V están abajo; [prueba] es nuestra propia exportación con marsdawn 0.6.4). Las citas de los fabricantes se mantienen tal cual. «El fabricante no lo indica» significa que las páginas que leímos no dicen nada, no que la función falte. Ninguna celda clasifica los productos. La columna de MarsDawn se actualizó el 29 de octubre de 2026 por la app para iPhone y iPad.
 
 ## Fuentes
 
@@ -21918,7 +21829,7 @@ Cada celda se comprobó el 16 de octubre de 2026 con la fuente entre corchetes (
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. No hay app para iPhone ni iPad; MarsDawn es para el Mac. No hay edición compartida, ni sincronización, ni cuentas. La vista previa no se puede editar; editas el código fuente Markdown al lado. No exporta a Word ni tiene plugins. Sus PDF no tienen números de página. No hay vista de diferencias: cuando un agente guarda un cambio, la ventana abierta se actualiza desde el disco en un paso que puedes deshacer, pero no resalta qué cambió. Tras la prueba de 14 días, los documentos se abren con el contenido tapado hasta que desbloquees la app.
+Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. En iPhone y iPad solo lee: ahí no edita ni exporta PDF. No hay edición compartida, ni sincronización, ni cuentas. La vista previa no se puede editar; editas el código fuente Markdown al lado. No exporta a Word ni tiene plugins. Sus PDF no tienen números de página. No hay vista de diferencias: cuando un agente guarda un cambio, la ventana abierta se actualiza desde el disco en un paso que puedes deshacer, pero no resalta qué cambió. Tras la prueba de 14 días, los documentos se abren con el contenido tapado hasta que desbloquees la app.
 
 ## Cuándo no necesitas MarsDawn
 
@@ -21926,7 +21837,7 @@ Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. No hay app para iPhon
 - Solo quieres una vista previa con la barra espaciadora en el Finder: QLMarkdown es una extensión gratuita de Vista rápida para Markdown.
 - Tu Mac tiene un macOS más antiguo: QLMarkdown necesita 12.0 o posterior y LynxOffice 13 o posterior. La herramienta gratuita marsdawn necesita macOS 15 y exporta a PDF sin la app.
 - Llevas un vault de notas enlazadas: para eso está hecho Obsidian.
-- Necesitas una app para iPhone o iPad, edición compartida o exportar a Word.
+- Necesitas editar en iPhone o iPad, edición compartida o exportar a Word.
 - Quieres que un agente maneje hojas de cálculo, archivos de Word y PDF: LynxOffice documenta un servidor MCP para eso.
 
 - [MacMD Viewer o MarsDawn](/es/vs/macmd-viewer/): un visor de solo lectura junto a MarsDawn, celda por celda, con cuándo elegir cada uno.
@@ -21964,7 +21875,7 @@ Comprobado con el sitio y el repositorio propios de MacMD Viewer el 15 de octubr
 | Línea de comandos | No se describe ninguna herramienta de línea de comandos independiente. Tiene un esquema de URL `markdownviewer://` y un plug-in de Claude Code con hooks que abren archivos en el visor [[S6](#s6)] | La herramienta gratuita `marsdawn`: `marsdawn export` genera un PDF sin la app, `marsdawn open` abre un archivo en una línea |
 | Idiomas de la interfaz | No se indican en sus propios materiales [[S1](#s1), [S3](#s3), [S7](#s7)] | inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano |
 | Requisitos | macOS 14 (Sonoma) o posterior; Apple silicon e Intel [[S1](#s1), [S7](#s7)] | macOS 26 (Tahoe) o posterior |
-| Otras plataformas | Solo Mac [[S1](#s1)] | Solo Mac. Sin app para iPhone ni iPad |
+| Otras plataformas | Solo Mac [[S1](#s1)] | Mac, y iPhone y iPad solo para leer |
 
 ## Precio y forma de compra
 
@@ -23656,25 +23567,9 @@ Los planes pueden cambiar: un elemento puede pasar a otra versión o descartarse
 
 Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
-## En desarrollo
-
-### Mac 1.2.0
-
-- Una barra de formato sobre el código fuente, con un menú Formato y atajos de teclado.
-- Ask AI: envía el texto seleccionado, con el nombre del archivo, los números de línea y tu prompt, a Claude o ChatGPT.
-- Copiar como RTF, para pegar el documento renderizado en Google Docs, Notion, Mail o Pages.
-- Nuevo a partir del portapapeles: pega Markdown, incluida salida de IA con caracteres escapados, y míralo renderizado.
-- El diseño «Guía» para exportar a PDF: páginas del cuerpo numeradas desde 1, «n / N» en el pie y un margen de encuadernación a la izquierda.
-- Compatibilidad con HackMD: su ajuste de saltos de línea y su sintaxis.
-- Instala la app, la herramienta de línea de comandos marsdawn o la skill de agente, y MarsDawn te ayuda a añadir las otras dos.
-
-### iPhone y iPad (iOS 1.0)
-
-- Lee Markdown en iPhone y iPad con la misma vista previa que en el Mac.
-
 ## A continuación
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - Abre JSON y YAML, edítalos y ve una vista previa en árbol en vivo junto al código fuente.
 - Abrir una URL: lee Markdown desde un enlace público de GitHub, un Gist o un archivo raw.
@@ -24404,7 +24299,7 @@ MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 Mac 네�
 
 ### MarsDawn은 iPhone이나 iPad에서 쓸 수 있나요?
 
-아직은 쓸 수 없습니다. MarsDawn은 Mac 앱이며 macOS 26 이상이 필요합니다. iPhone·iPad용 앱은 개발 중이지만 아직 나오지 않았습니다.
+네, 읽기용으로 쓸 수 있습니다. iPhone과 iPad의 MarsDawn은 Markdown 파일을 열어 Mermaid 다이어그램, 수식, 코드, 표를 렌더링하며 개요와 테마도 제공합니다. 편집, PDF 내보내기, 동기화는 할 수 없습니다. iOS 26 또는 iPadOS 26 이상이 필요합니다. 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.
 
 자세히: [로드맵](/ko/roadmap/)
 
@@ -24444,7 +24339,7 @@ MarsDawn 자체는 아무것도 보내지 않습니다. 스킬은 지침을 적�
 
 ### MarsDawn은 앞으로도 유지 관리되나요?
 
-네. MarsDawn이 Mac App Store에 나온 뒤의 모든 업데이트는 변경 내역에 있고, iPhone·iPad용 앱도 개발 중입니다. MarsDawn의 렌더링 핵심과 무료 marsdawn 명령줄 도구는 이미 Apache-2.0 라이선스로 mars-dawn-kit에서 오픈 소스로 공개되어 있습니다. 그리고 MarsDawn 개발자가 언젠가 앱 유지 관리를 그만두게 되면, 다른 사람이 이어받을 수 있도록 앱 자체의 소스 코드를 오픈 소스 라이선스로 공개합니다.
+네. MarsDawn이 Mac App Store에 나온 뒤의 모든 업데이트는 변경 내역에 있고, 2026년 10월 28일부터는 iPhone과 iPad에서도 MarsDawn으로 문서를 읽을 수 있습니다. MarsDawn의 렌더링 핵심과 무료 marsdawn 명령줄 도구는 이미 Apache-2.0 라이선스로 mars-dawn-kit에서 오픈 소스로 공개되어 있습니다. 그리고 MarsDawn 개발자가 언젠가 앱 유지 관리를 그만두게 되면, 다른 사람이 이어받을 수 있도록 앱 자체의 소스 코드를 오픈 소스 라이선스로 공개합니다.
 
 자세히: [변경 내역](/ko/changelog/) · [로드맵](/ko/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
@@ -24737,6 +24632,7 @@ MarsDawn은 무료로 다운로드할 수 있습니다. 14일 체험을 시작�
 
 - 체험에도 요금이 청구되지 않습니다. 체험이 끝나도 잠금 해제를 선택하지 않는 한 아무것도 구입되지 않습니다.
 - 계정이 없습니다. MarsDawn은 계정을 만들라고 요구하지 않습니다.
+- 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다.
 
 ## 단계별로 쓸 수 있는 기능
 
@@ -24867,9 +24763,9 @@ Source: https://marsdawn.southern-light.dev/ko/limits/
 ### 기기와 사람
 
 - **동기화:** MarsDawn은 문서를 동기화하지 않습니다. 문서는 저장한 곳에 있으므로, 다른 Mac에서 쓰려면 이미 동기화하고 있는 폴더에 두세요.
-- **iPhone과 iPad:** 이들을 위한 앱은 없습니다. MarsDawn은 Mac용입니다.
+- **iPhone과 iPad:** 이 기기에서는 읽기 전용입니다. Markdown과 텍스트 파일을 열어 렌더링하고 개요와 테마도 쓸 수 있지만, 편집, PDF 내보내기, 동기화는 할 수 없습니다. 파일은 이미 쓰고 있는 클라우드를 통해 옮깁니다.
 - **공유:** MarsDawn은 자기 Mac을 쓰는 한 사람을 위한 앱이라 계정도 공동 편집도 없습니다.
-- **시스템:** MarsDawn은 macOS 26 이상이 필요합니다.
+- **시스템:** MarsDawn은 Mac에서는 macOS 26 이상, iPhone과 iPad에서는 iOS 26 또는 iPadOS 26 이상이 필요합니다.
 
 ### 파일과 기능
 
@@ -24947,11 +24843,11 @@ Source: https://marsdawn.southern-light.dev/ko/privacy/
 
 # 개인정보 처리방침
 
-macOS용 Markdown 편집기 MarsDawn이 사용자의 정보를 어떻게 다루는지 설명합니다.
+Mac, iPhone, iPad용 Markdown 앱 MarsDawn이 사용자의 정보를 어떻게 다루는지 설명합니다.
 
-최종 업데이트: 2026-10-25
+최종 업데이트: 2026-10-29
 
-> **MarsDawn 앱은 사용자에 관한 데이터를 일절 수집하지 않습니다.** 계정도, 광고도, 추적도 없습니다. 문서와 설정은 사용자의 Mac에 남습니다.
+> **MarsDawn 앱은 사용자에 관한 데이터를 일절 수집하지 않습니다.** 계정도, 광고도, 추적도 없습니다. 문서와 설정은 사용자의 기기에 남습니다.
 
 ## 웹사이트
 
@@ -25020,7 +24916,7 @@ MarsDawn 앱은 아동을 포함해 누구의 데이터도 수집하지 않습�
 
 ## 구입
 
-MarsDawn은 Mac App Store를 통해 판매됩니다. 구입은 Apple이 자체 약관에 따라 처리하며, 개발자는 결제 정보를 절대 받지 않습니다.
+MarsDawn은 App Store(Mac, iPhone, iPad)를 통해 판매됩니다. 구입은 Apple이 자체 약관에 따라 처리하며, 개발자는 결제 정보를 절대 받지 않습니다.
 
 ## 이 방침의 변경
 
@@ -25330,7 +25226,7 @@ Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방
 | 시스템 요구 사항 | macOS 26.0 이상 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 공식 설명 없음 [[18](#v18)] | macOS 12.0 이상 [[23](#v23)] | macOS 13 이상 [[2](#v2)] |
 | 계정 필요 | 필요 없음 [/privacy/] | 공식 설명 없음 | "No sign-up required" [[15](#v15)] | 공식 설명 없음 | 필요 없음 [[2](#v2)] |
 
-모든 칸은 2026년 10월 16일에 괄호 안의 출처로 확인했습니다(V 번호는 아래 목록, [직접 확인]은 marsdawn 0.6.4로 직접 내보낸 결과). 각 회사의 원문은 그대로 인용합니다. ‘공식 설명 없음’은 읽은 페이지에 언급이 없었다는 뜻이며, 기능이 없다는 뜻은 아닙니다. 표는 제품의 순위를 매기지 않습니다.
+모든 칸은 2026년 10월 16일에 괄호 안의 출처로 확인했습니다(V 번호는 아래 목록, [직접 확인]은 marsdawn 0.6.4로 직접 내보낸 결과). 각 회사의 원문은 그대로 인용합니다. ‘공식 설명 없음’은 읽은 페이지에 언급이 없었다는 뜻이며, 기능이 없다는 뜻은 아닙니다. 표는 제품의 순위를 매기지 않습니다. MarsDawn 자체 열은 iPhone·iPad 앱에 맞춰 2026년 10월 29일에 업데이트했습니다.
 
 ## 출처
 
@@ -25358,7 +25254,7 @@ Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone이나 iPad 앱은 없으며, MarsDawn은 Mac 전용입니다. 공동 편집, 동기화, 계정이 없습니다. 미리보기는 직접 편집할 수 없고, 옆의 Markdown 소스를 편집합니다. Word로 내보내기와 플러그인이 없습니다. PDF에는 페이지 번호가 없습니다. diff 보기가 없습니다. 에이전트가 변경을 저장하면 열린 윈도우가 디스크에서 업데이트되고 한 번에 실행 취소할 수 있지만, 무엇이 바뀌었는지는 강조하지 않습니다. 14일 체험이 끝나면 잠금 해제할 때까지 문서 내용이 가려진 채로 열립니다.
+MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다. 공동 편집, 동기화, 계정이 없습니다. 미리보기는 직접 편집할 수 없고, 옆의 Markdown 소스를 편집합니다. Word로 내보내기와 플러그인이 없습니다. PDF에는 페이지 번호가 없습니다. diff 보기가 없습니다. 에이전트가 변경을 저장하면 열린 윈도우가 디스크에서 업데이트되고 한 번에 실행 취소할 수 있지만, 무엇이 바뀌었는지는 강조하지 않습니다. 14일 체험이 끝나면 잠금 해제할 때까지 문서 내용이 가려진 채로 열립니다.
 
 ## MarsDawn이 필요 없는 경우
 
@@ -25366,7 +25262,7 @@ MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone이나 iPad �
 - Finder에서 스페이스 바 미리보기만 원하는 경우. QLMarkdown은 무료 Markdown 훑어보기 확장입니다.
 - Mac의 macOS가 오래된 경우. QLMarkdown은 12.0 이상, LynxOffice는 13 이상이 필요합니다. 무료 marsdawn 도구는 macOS 15에서 동작하며 앱 없이 PDF를 내보냅니다.
 - 서로 연결된 노트를 보관소(vault)에서 관리하는 경우. Obsidian이 바로 그런 앱입니다.
-- iPhone이나 iPad 앱, 공동 편집, Word 내보내기가 필요한 경우.
+- iPhone이나 iPad에서 편집, 공동 편집, Word 내보내기가 필요한 경우.
 - 에이전트에게 스프레드시트, Word, PDF를 다루게 하려는 경우. LynxOffice는 이를 위한 MCP 서버를 문서로 제공합니다.
 
 - [MacMD Viewer와 MarsDawn](/ko/vs/macmd-viewer/): 읽기 전용 뷰어와 MarsDawn을 칸마다 비교하고, 어떤 경우에 무엇을 고를지 적었습니다.
@@ -25404,7 +25300,7 @@ MacMD Viewer 자체 사이트와 저장소를 기준으로 2026년 10월 15일�
 | 명령줄 | 독립된 명령줄 도구는 기재되어 있지 않음. `markdownviewer://` URL 스킴과, 뷰어에서 파일을 여는 Claude Code 플러그인 및 훅이 있음 [[S6](#s6)] | 무료 `marsdawn` 도구: `marsdawn export`는 앱 없이 PDF를 만들고, `marsdawn open`은 지정한 줄에서 파일을 엶 |
 | 인터페이스 언어 | 자체 자료에 기재되어 있지 않음 [[S1](#s1), [S3](#s3), [S7](#s7)] | 영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어 |
 | 요구 사항 | macOS 14(Sonoma) 이상, Apple 실리콘과 Intel [[S1](#s1), [S7](#s7)] | macOS 26(Tahoe) 이상 |
-| 다른 플랫폼 | Mac 전용 [[S1](#s1)] | Mac 전용. iPhone이나 iPad 앱은 없음 |
+| 다른 플랫폼 | Mac 전용 [[S1](#s1)] | Mac. iPhone과 iPad에서는 읽기 전용 |
 
 ## 가격과 구입 방법
 
@@ -27096,25 +26992,9 @@ Source: https://marsdawn.southern-light.dev/ko/roadmap/
 
 지금까지 출시한 내용은 모두 [변경 내역](/ko/changelog/)에 있습니다.
 
-## 개발 중
-
-### Mac 1.2.0
-
-- 소스 위에 포맷 막대를 추가하고, ‘포맷’ 메뉴와 키보드 단축키도 제공합니다.
-- Ask AI: 선택한 텍스트를 파일 이름, 줄 번호, 프롬프트와 함께 Claude나 ChatGPT로 보냅니다.
-- RTF로 복사: 렌더링한 문서를 Google 문서, Notion, 메일, Pages에 붙여 넣을 수 있습니다.
-- 클립보드에서 신규: Markdown을 붙여 넣으면 바로 렌더링 결과를 볼 수 있습니다. AI 출력에서 이스케이프된 문자도 마찬가지입니다.
-- PDF 내보내기의 ‘설명서’ 레이아웃: 본문 페이지 번호는 1부터 시작하고, 꼬리말에 ‘n / N’을 넣고, 왼쪽에 제본 여백을 둡니다.
-- HackMD 호환: HackMD의 줄바꿈 설정과 문법을 지원합니다.
-- 앱, marsdawn 명령줄 도구, 에이전트 스킬 중 하나를 설치하면 나머지 두 개도 설치하도록 MarsDawn이 안내합니다.
-
-### iPhone 및 iPad (iOS 1.0)
-
-- iPhone과 iPad에서 Mac과 같은 미리보기로 Markdown을 읽습니다.
-
 ## 다음 계획
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - JSON과 YAML을 열어 편집하고, 옆에서 실시간 트리 미리보기를 봅니다.
 - URL 열기: GitHub, Gist, raw 파일의 공개 링크에서 Markdown을 읽습니다.

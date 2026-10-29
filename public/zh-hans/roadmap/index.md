@@ -10,25 +10,9 @@
 
 已推出的内容都在[更新记录](/zh-hans/changelog/)里。
 
-## 进行中
-
-### Mac 1.2.0
-
-- 源文本上方加入格式栏，另有“格式”菜单和快捷键。
-- Ask AI：把选中的文字连同文件名、行号和你的提示词，发送到 Claude 或 ChatGPT。
-- 拷贝为 RTF：把渲染好的文稿粘贴到 Google 文档、Notion、邮件或 Pages。
-- 从剪贴板新建：粘贴 Markdown，连 AI 输出时被转义的字符也一样，直接看渲染结果。
-- PDF 导出的“手册”版面：正文页码从 1 起算，页脚显示“n / N”，左侧留装订边。
-- 兼容 HackMD：支持它的换行设置和语法。
-- App、marsdawn 命令行工具、代理技能装了其中一个，MarsDawn 会带你装好另外两个。
-
-### iPhone 与 iPad（iOS 1.0）
-
-- 在 iPhone 和 iPad 上读 Markdown，预览和 Mac 版一样。
-
 ## 接下来
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - 打开 JSON 和 YAML，可以编辑，旁边是实时的树状预览。
 - 打开网址：从 GitHub、Gist 或 raw 文件的公开链接读取 Markdown。
@@ -60,7 +44,7 @@
 - [免费试用，买一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
 - [导出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 导出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码，超过一页的会接到下一页。
 - [为 Mac 而做](https://marsdawn.southern-light.dev/zh-hans/native/index.md): 真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在访达用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。
-- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户；可以换主题，但不能自定义 CSS。购买前先知道。
+- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、iPhone 和 iPad 上不能编辑、没有插件、不需要账户；可以换主题，但不能自定义 CSS。购买前先知道。
 - [支持](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 编辑器）的使用说明与联系方式。
 - [隐私政策](https://marsdawn.southern-light.dev/zh-hans/privacy/index.md): MarsDawn 不收集任何个人数据，你的文稿与设置都留在你的 Mac 上。
 - [Mac 上怎么打开 md 文件](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI 代理写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。

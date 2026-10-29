@@ -10,25 +10,9 @@
 
 これまでに公開した内容は[更新履歴](/ja/changelog/)にあります。
 
-## 開発中
-
-### Mac 1.2.0
-
-- ソースの上にフォーマットバーを追加。「フォーマット」メニューとキーボードショートカットも用意します。
-- Ask AI：選択したテキストを、ファイル名、行番号、プロンプトと一緒に Claude または ChatGPT に送ります。
-- RTF としてコピー：レンダリングした文書を Google ドキュメント、Notion、メール、Pages に貼り付けられます。
-- クリップボードから新規作成：Markdown を貼り付けるだけでレンダリング結果を表示します。AI の出力でエスケープされた文字にも対応します。
-- PDF 書き出しの「ハンドブック」レイアウト：本文のページ番号は 1 から、フッタに「n / N」、左側に綴じしろを付けます。
-- HackMD 互換：改行の設定と HackMD の記法に対応します。
-- アプリ、marsdawn コマンドラインツール、エージェントスキルのどれかを入れると、残りの 2 つを入れる手順を案内します。
-
-### iPhone と iPad（iOS 1.0）
-
-- iPhone と iPad で、Mac と同じプレビューで Markdown を読めます。
-
 ## 今後の予定
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - JSON と YAML を開いて編集でき、横にリアルタイムのツリープレビューを表示します。
 - URL を開く：GitHub、Gist、raw ファイルの公開リンクから Markdown を読み込みます。
@@ -60,7 +44,7 @@
 - [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
 - [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックを分断しないよう配慮されます。
 - [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
-- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
+- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad では編集不可、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
 - [サポート](https://marsdawn.southern-light.dev/ja/support/index.md): macOS 向け Markdown エディタ MarsDawn のヘルプ。
 - [プライバシーポリシー](https://marsdawn.southern-light.dev/ja/privacy/index.md): MarsDawn は個人データを収集しません。文書と設定はあなたの Mac 上に残ります。
 - [Mac で .md ファイルを開く方法](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): Mac で .md ファイルを開く方法：ダブルクリック、標準のアプリの設定、Finder のクイックルック。AI エージェントが書いた .md は、MarsDawn でレンダリングして読めます。
