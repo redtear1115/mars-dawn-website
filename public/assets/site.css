@@ -1662,3 +1662,44 @@ main:has(.compare-scroll) h2[id],
 [id^="cmp-"],
 [id^="col-"] { scroll-margin-top: 24px; }
 [id^="col-"] { scroll-margin-left: 9rem; }
+
+/* /features/: the Mac, iPhone and iPad steps (#323). Three numbered cards side by side, one column
+   on a phone, in reading order. The number is text (the list's own counter), not colour or an arrow. */
+.devsteps {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+  counter-reset: devstep;
+}
+.devsteps li {
+  counter-increment: devstep;
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--sand);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+}
+.devsteps li::before {
+  content: counter(devstep);
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  background: var(--ember);
+  color: var(--paper);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.devsteps strong { display: block; }
+@media (min-width: 720px) {
+  .devsteps { grid-template-columns: repeat(3, 1fr); }
+}
+.devnote {
+  padding-left: 12px;
+  border-left: 3px solid var(--ember);
+}
+main > h2[id="iphone-ipad"] { scroll-margin-top: 16px; }
