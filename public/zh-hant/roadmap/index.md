@@ -19,7 +19,7 @@
 - 提示框：支援 GitHub alerts 和 HackMD 的 `:::` 區塊。
 - 一鍵把 Claude Code 的 Plans 資料夾加進側邊欄，最新的計畫排在最上面。
 
-### Mac 1.2.2
+### Mac 1.2.3
 
 - agent 改了檔案之後，看得出哪些區塊變了。
 - 圖片檢視器：開啟 PNG、JPEG、GIF、WebP。

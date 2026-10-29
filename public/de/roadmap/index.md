@@ -19,7 +19,7 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 - Callouts: GitHub-Alerts und HackMD-Blöcke mit `:::`.
 - Den Plans-Ordner von Claude Code mit einem Klick zur Seitenleiste hinzufügen, den neuesten Plan zuerst.
 
-### Mac 1.2.2
+### Mac 1.2.3
 
 - Nachdem ein Agent eine Datei geändert hat, sehen, welche Blöcke sich geändert haben.
 - Ein Bildbetrachter für PNG, JPEG, GIF und WebP.

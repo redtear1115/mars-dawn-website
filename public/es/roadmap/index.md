@@ -19,7 +19,7 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 - Avisos destacados: las alertas de GitHub y los bloques `:::` de HackMD.
 - Añade la carpeta Plans de Claude Code a la barra lateral con un clic, con el plan más reciente arriba.
 
-### Mac 1.2.2
+### Mac 1.2.3
 
 - Después de que un agente cambie un archivo, ve qué bloques cambiaron.
 - Un visor de imágenes para PNG, JPEG, GIF y WebP.

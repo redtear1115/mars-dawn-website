@@ -76,7 +76,7 @@ Everything that has shipped is in the [changelog](/changelog/).
 - Callouts: GitHub alerts and HackMD `:::` blocks.
 - Add Claude Code's Plans folder to the sidebar in one click, newest plan first.
 
-### Mac 1.2.2
+### Mac 1.2.3
 - After an agent changes a file, see which blocks changed.
 - An image viewer for PNG, JPEG, GIF and WebP.
 
@@ -114,7 +114,7 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 - 提示框：支援 GitHub alerts 和 HackMD 的 `:::` 區塊。
 - 一鍵把 Claude Code 的 Plans 資料夾加進側邊欄，最新的計畫排在最上面。
 
-### Mac 1.2.2
+### Mac 1.2.3
 - agent 改了檔案之後，看得出哪些區塊變了。
 - 圖片檢視器：開啟 PNG、JPEG、GIF、WebP。
 
@@ -152,7 +152,7 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 - 提示框：支持 GitHub alerts 和 HackMD 的 `:::` 区块。
 - 一键把 Claude Code 的 Plans 文件夹加入边栏，最新的计划排在最上面。
 
-### Mac 1.2.2
+### Mac 1.2.3
 - 代理改了文件之后，看得出哪些区块变了。
 - 图片查看器：打开 PNG、JPEG、GIF、WebP。
 
@@ -190,7 +190,7 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 - コールアウト：GitHub alerts と HackMD の `:::` ブロックに対応します。
 - Claude Code の Plans フォルダをワンクリックでサイドバーに追加。新しいプランが一番上に並びます。
 
-### Mac 1.2.2
+### Mac 1.2.3
 - エージェントがファイルを変更したあと、どのブロックが変わったかがわかります。
 - 画像ビューア：PNG、JPEG、GIF、WebP を開けます。
 
@@ -228,7 +228,7 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 - Callouts: GitHub-Alerts und HackMD-Blöcke mit `:::`.
 - Den Plans-Ordner von Claude Code mit einem Klick zur Seitenleiste hinzufügen, den neuesten Plan zuerst.
 
-### Mac 1.2.2
+### Mac 1.2.3
 - Nachdem ein Agent eine Datei geändert hat, sehen, welche Blöcke sich geändert haben.
 - Ein Bildbetrachter für PNG, JPEG, GIF und WebP.
 
@@ -266,7 +266,7 @@ Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/chang
 - Encadrés : les alertes GitHub et les blocs `:::` de HackMD.
 - Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.
 
-### Mac 1.2.2
+### Mac 1.2.3
 - Après qu’un agent a modifié un fichier, voir quels blocs ont changé.
 - Un visualiseur d’images pour PNG, JPEG, GIF et WebP.
 
@@ -304,7 +304,7 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 - Avisos destacados: las alertas de GitHub y los bloques `:::` de HackMD.
 - Añade la carpeta Plans de Claude Code a la barra lateral con un clic, con el plan más reciente arriba.
 
-### Mac 1.2.2
+### Mac 1.2.3
 - Después de que un agente cambie un archivo, ve qué bloques cambiaron.
 - Un visor de imágenes para PNG, JPEG, GIF y WebP.
 
@@ -342,7 +342,7 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 - 콜아웃: GitHub alerts와 HackMD의 `:::` 블록을 지원합니다.
 - Claude Code의 Plans 폴더를 클릭 한 번으로 사이드바에 추가하고, 최신 계획을 맨 위에 둡니다.
 
-### Mac 1.2.2
+### Mac 1.2.3
 - 에이전트가 파일을 바꾼 뒤 어떤 블록이 바뀌었는지 보여 줍니다.
 - 이미지 뷰어: PNG, JPEG, GIF, WebP를 엽니다.
 

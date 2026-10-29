@@ -19,7 +19,7 @@ Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/chang
 - Encadrés : les alertes GitHub et les blocs `:::` de HackMD.
 - Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.
 
-### Mac 1.2.2
+### Mac 1.2.3
 
 - Après qu’un agent a modifié un fichier, voir quels blocs ont changé.
 - Un visualiseur d’images pour PNG, JPEG, GIF et WebP.

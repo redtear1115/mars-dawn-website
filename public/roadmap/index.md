@@ -19,7 +19,7 @@ Everything that has shipped is in the [changelog](/changelog/).
 - Callouts: GitHub alerts and HackMD `:::` blocks.
 - Add Claude Code's Plans folder to the sidebar in one click, newest plan first.
 
-### Mac 1.2.2
+### Mac 1.2.3
 
 - After an agent changes a file, see which blocks changed.
 - An image viewer for PNG, JPEG, GIF and WebP.
