@@ -879,6 +879,61 @@ html { overflow-x: hidden; }
 
 .hero-shot { margin-top: clamp(36px, 8vw, 88px); }
 
+/* #330 (#327 B): under the store badge, the devices line and the system requirements; on a phone's
+   first screen with the headline. */
+.hero p.hero-devices {
+  margin: 12px 0 0;
+  color: var(--hero-ink);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.hero p.hero-req {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+.hero p.hero-req + .definition { margin-top: 20px; }
+/* On a phone the badge and the CLI button stack, and in the longer languages that pushed the devices
+   line below a 320 x 568 first screen. There the CLI button moves under the requirements: the
+   order the plan asks for (badge, devices line, requirements) is kept, and the line stays in view. */
+@media (max-width: 639px) {
+  .hero-copy .intro { display: flex; flex-direction: column; }
+  .hero-copy .intro > * { margin-left: 0; margin-right: 0; }
+  .hero-copy .hero-cta { display: contents; }
+  .hero-copy .hero-cta .store-badge { align-self: flex-start; margin-top: 18px; }
+  .hero-copy .hero-cta .cta-secondary { order: 1; align-self: flex-start; margin-top: 14px; }
+  .hero-copy .definition { order: 2; }
+}
+
+/* The window with an iPhone screenshot over its lower right (#327 B): one picture, scaled at every
+   width, so the phone is always about 38% of the window's width and never larger than the window.
+   The stage takes the width .mdw used to take itself (the window inside fills it), and leaves room
+   under the window for the phone's overhang. Nothing reaches past the stage's edges, so a narrow
+   screen never scrolls sideways. */
+.hero-stage {
+  --mdw-width: max(100%, var(--w-media));
+  position: relative;
+  margin: 0 calc((100% - var(--mdw-width)) / 2);
+  padding-bottom: 7%;
+}
+.hero-stage .mdw { margin: 0; width: 88%; }
+.hero-phone {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 38%;
+  max-width: 400px;
+}
+.hero-phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 9% / 6.2%;
+  box-shadow: 0 0 0 1px color-mix(in srgb, #000 22%, transparent),
+              0 30px 50px -22px color-mix(in srgb, #000 70%, transparent),
+              0 10px 22px -12px color-mix(in srgb, #000 55%, transparent);
+}
+
 /* The hero's MarsDawn window: a working model of the app, drawn after its macOS 26
    window (public/assets/screens/01-split and 03-dark). The theme menu and the layout
    control are radio groups that :has() reads, so it needs no script. The theme
