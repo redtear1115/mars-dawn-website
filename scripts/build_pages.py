@@ -5217,9 +5217,11 @@ HERO_PHONE_ALT = {
 
 def hero_devices_html(locale: str) -> str:
     """The devices line and the system requirements, under the store badge."""
+    # The short form is shown and hidden from screen readers; the full sentence, with "or later", is
+    # read and not shown. Not an aria-label: a <p> may not be named, so readers skip it (#338 P2).
     return (f'<p class="hero-devices">{xml_escape(HERO_DEVICES[locale])}</p>\n'
-            f'<p class="hero-req" aria-label="{xml_escape(HERO_REQUIREMENTS_LABEL[locale], {chr(34): "&quot;"})}">'
-            f'{xml_escape(HERO_REQUIREMENTS)}</p>')
+            f'<p class="hero-req"><span aria-hidden="true">{xml_escape(HERO_REQUIREMENTS)}</span>'
+            f'<span class="visually-hidden">{xml_escape(HERO_REQUIREMENTS_LABEL[locale])}</span></p>')
 
 
 def hero_intro_html(locale: str, intro: str) -> str:
@@ -5235,7 +5237,9 @@ def hero_phone_html(locale: str) -> str:
     """The iPhone screenshot, light or dark with the visitor's appearance, at its own size."""
     def srcset(appearance: str) -> str:
         return ", ".join(f"/assets/hero/iphone-{appearance}-{w}.webp {w}w" for w in HERO_PHONE_WIDTHS)
-    sizes = "(min-width: 1100px) 400px, 36vw"
+    # The phone's shown width: about 230 px wide on a desktop, 190 px from 640 px (sized by the
+    # window's height), and about 35% of the viewport on a phone (#338 P3-1).
+    sizes = "(min-width: 1100px) 230px, (min-width: 640px) 190px, 35vw"
     width, height = HERO_PHONE_SIZE
     alt = xml_escape(HERO_PHONE_ALT[locale], {chr(34): "&quot;"})
     return ('<picture class="hero-phone">\n'

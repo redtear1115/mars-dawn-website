@@ -893,6 +893,18 @@ html { overflow-x: hidden; }
   letter-spacing: 0.02em;
 }
 .hero p.hero-req + .definition { margin-top: 20px; }
+/* Read, not shown: the requirements' full sentence (#338 P2). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
 /* On a phone the badge and the CLI button stack, and in the longer languages that pushed the devices
    line below a 320 x 568 first screen. There the CLI button moves under the requirements: the
    order the plan asks for (badge, devices line, requirements) is kept, and the line stays in view. */
