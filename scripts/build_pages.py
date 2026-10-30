@@ -4118,6 +4118,7 @@ TRAIT_PAGES = {
 <ul>
   <li>The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.</li>
   <li>There is no account. MarsDawn never asks you to create one.</li>
+  <li>With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. On iPhone and iPad, MarsDawn is for reading: it doesn't edit or export PDFs.</li>
 </ul>
 <h2>What works when</h2>
 <!--compare:pay-once-states-->
@@ -4151,6 +4152,7 @@ TRAIT_PAGES = {
 <ul>
   <li>試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。</li>
   <li>不需要帳號，MarsDawn 從不要求你建立帳號。</li>
+  <li>用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。</li>
 </ul>
 <h2>各階段能做什麼</h2>
 <!--compare:pay-once-states-->
@@ -4259,7 +4261,7 @@ TRAIT_PAGES = {
     ),
     ("en", "limits"): _trait_page(
         "What MarsDawn doesn't do · MarsDawn",
-        "No sync, no iPhone or iPad app, no plugins, no accounts. Themes, but no custom CSS. Know before you buy.",
+        "No sync, no editing on iPhone or iPad, no plugins, no accounts. Themes, but no custom CSS. Know before you buy.",
         """
 <section class="intro">
   <h1>What MarsDawn doesn't do.</h1>
@@ -4271,9 +4273,9 @@ TRAIT_PAGES = {
 <h3>Devices and people</h3>
 <ul>
   <li><strong>Sync:</strong> MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.</li>
-  <li><strong>iPhone and iPad:</strong> there is no app for them; MarsDawn is for the Mac.</li>
+  <li><strong>iPhone and iPad:</strong> MarsDawn there is for reading. It opens Markdown and plain text files and renders them, with an outline and themes, but it doesn't edit, export PDFs or sync. Your files get there through the cloud you already use.</li>
   <li><strong>Sharing:</strong> there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.</li>
-  <li><strong>System:</strong> MarsDawn needs macOS 26 or later.</li>
+  <li><strong>System:</strong> MarsDawn needs macOS 26 or later on the Mac, and iOS 26 or iPadOS 26 or later on iPhone and iPad.</li>
 </ul>
 <h3>Files and features</h3>
 <ul>
@@ -4289,7 +4291,7 @@ TRAIT_PAGES = {
     ),
     ("zh-hant", "limits"): _trait_page(
         "MarsDawn 做不到的事 · MarsDawn",
-        "沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號；可以換主題，但不能自訂 CSS。購買前先知道。",
+        "沒有同步、iPhone 和 iPad 上不能編輯、沒有外掛、不需要帳號；可以換主題，但不能自訂 CSS。購買前先知道。",
         """
 <section class="intro">
   <h1>MarsDawn 做不到的事。</h1>
@@ -4301,9 +4303,9 @@ TRAIT_PAGES = {
 <h3>裝置與使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。</li>
-  <li><strong>iPhone 和 iPad：</strong>沒有這兩個平台的版本，MarsDawn 只給 Mac。</li>
+  <li><strong>iPhone 和 iPad：</strong>MarsDawn 在這兩個裝置上只能閱讀：可以打開 Markdown 和純文字檔並排好顯示，也有大綱和主題，但不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳過去。</li>
   <li><strong>分享：</strong>沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。</li>
-  <li><strong>系統：</strong>MarsDawn 需要 macOS 26 以上。</li>
+  <li><strong>系統：</strong>MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。</li>
 </ul>
 <h3>檔案與功能</h3>
 <ul>
@@ -4725,6 +4727,14 @@ FEATURES_COPY = {
                            'Settings… ▸ Notes Folder.',
                    'lead_links': ['native'],
                    'items': []}],
+     'devices': {'h2': 'On your Mac, and on the go',
+                 'lead': 'Your agent works on the Mac. Its plans and reports can come with you on your iPhone or iPad.',
+                 'steps': [
+                           "On the Mac: save the agent's plans and reports in a folder your cloud syncs, such as iCloud Drive.",
+                           'On iPhone or iPad: in MarsDawn, tap Open and pick the same file. Mermaid diagrams, math, code and tables are rendered, with an outline and your theme.',
+                           'Back on the Mac: keep editing, or export a PDF.'],
+                 'buy': 'With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.',
+                 'limits': "On iPhone and iPad, MarsDawn is for reading: it doesn't edit, export PDFs or sync. Your files get to your phone through the cloud you already use; MarsDawn has no sync of its own."},
      'cta': {'h2': 'Try it on your Mac',
              'p1': 'MarsDawn is free to download. Try everything for 14 days, then unlock it once for '
                    'USD 4.99. No subscription, no account. It needs macOS 26 or later.',
@@ -4870,6 +4880,14 @@ FEATURES_COPY = {
                            'Inbox.md。',
                    'lead_links': ['native'],
                    'items': []}],
+     'devices': {'h2': '在 Mac 上寫，在路上讀',
+                 'lead': 'agent 在 Mac 上工作，它寫的計畫和報告，你在 iPhone 或 iPad 上也能讀。',
+                 'steps': [
+                           '在 Mac 上：把 agent 的計畫和報告存在會同步的雲端資料夾，例如 iCloud Drive。',
+                           '在 iPhone 或 iPad 上：打開 MarsDawn，點「開啟」，選同一個檔案。Mermaid 圖表、數學式、程式碼和表格都會排好顯示，也有大綱和你選的主題。',
+                           '回到 Mac：繼續編輯，或輸出 PDF。'],
+                 'buy': '用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。',
+                 'limits': '在 iPhone 和 iPad 上，MarsDawn 只能閱讀：不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳到手機，MarsDawn 本身沒有同步功能。'},
      'cta': {'h2': '在你的 Mac 上試試',
              'p1': 'MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。',
              'trial': ['試用怎麼運作：', 'pay-once'],
@@ -4879,6 +4897,7 @@ FEATURES_COPY = {
 
 FEATURES_TOP_FIGURE = "native"
 FEATURES_SHOTS = {"themes": "pdf"}
+FEATURES_DEVICES_ID = "iphone-ipad"
 # Command names, flags and file names in the copy are set in <code>, the way the site sets them
 # elsewhere. Longest first. The words are the same in every language.
 FEATURES_CODE_TOKENS = ("marsdawn export", "marsdawn open", "marsdawn", "--theme", "--json", "docs/plan.md:42",
@@ -4895,6 +4914,23 @@ def _features_more(slugs: list) -> str:
     return f'<p class="more">{links}</p>' if slugs else ""
 
 
+_STEP_LABEL = re.compile(r"^([^:\uff1a]+[:\uff1a])(.*)$")
+
+
+def _features_devices(copy: dict) -> list:
+    """The Mac, iPhone and iPad group (#323), before "Files, tabs and Quick Look". Three numbered steps whose
+    device label (the words before the first colon) is set bold, then what iPhone and iPad can't do, in view
+    under the steps. The anchor is fixed, so other pages can link to /features/#iphone-ipad in every locale."""
+    d = copy["devices"]
+    steps = []
+    for step in d["steps"]:
+        label, rest = _STEP_LABEL.match(step).groups()
+        steps.append(f"  <li><strong>{_features_text(label)}</strong>{_features_text(rest)}</li>")
+    return [f'<h2 id="{FEATURES_DEVICES_ID}">{_features_text(d["h2"])}</h2>', f"<p>{_features_text(d['lead'])}</p>",
+            '<ol class="devsteps">', *steps, "</ol>", f"<p>{_features_text(d['buy'])}</p>",
+            f'<p class="devnote">{_features_text(d["limits"])}</p>']
+
+
 def features_page(copy: dict) -> dict:
     """A locale's /features/ page, from its copy (FEATURES_COPY's shape). Its link, button and
     screenshot marks are filled in by all_pages() and render(), once every locale's labels exist."""
@@ -4904,6 +4940,8 @@ def features_page(copy: dict) -> dict:
                        + [f"  <p>{_features_text(p)}</p>" for p in copy["intro"]] + ["</section>"])
     parts = []
     for section in copy["sections"]:
+        if section["id"] == "files":
+            parts += _features_devices(copy)
         parts.append(f"<h2>{_features_text(section['h2'])}</h2>")
         if section["lead"]:
             parts.append(f"<p>{_features_text(section['lead'])}</p>")
@@ -6735,7 +6773,7 @@ def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> l
             "name": "MarsDawn",
             "description": page["description"],
             "applicationCategory": "DeveloperApplication",
-            "operatingSystem": "macOS 26 or later",
+            "operatingSystem": "macOS 26 or later, iOS 26 or later, iPadOS 26 or later",
             "softwareVersion": APP_VERSION,
             "offers": {
                 "@type": "AggregateOffer",
@@ -7024,9 +7062,9 @@ MarsDawn is **not**:
 
 - **not Electron.** It is a native AppKit application, not a web page in a bundled browser.
 - **not a web app.** It runs locally as a macOS app; there is no server and no browser tab.
-- **not read-only.** It is a full Markdown editor: you write and edit the source, not just view rendered output.
+- **not read-only on the Mac.** On the Mac it is a full Markdown editor: you write and edit the source, not just view rendered output (the iPhone and iPad app is a viewer).
 - **not a subscription.** It is a free download with a 14-day trial, then a USD 4.99 one-time in-app purchase to unlock it.
-- **not cross-platform.** It is macOS only for now; there is no Windows, Linux or Android build. An iPhone and iPad version is in progress and not yet available; see the [roadmap]({BASE_URL}/roadmap/).
+- **not cross-platform.** It runs only on Apple devices: the editor on the Mac, and since 28 October 2026 a read-only viewer on iPhone and iPad, covered by the same purchase. There is no Windows, Linux or Android build.
 - **not an AI product.** The app itself currently contains no AI. It is built for reviewing Markdown that an AI agent writes, and does not include an AI model of its own.
 
 ## More

@@ -68,29 +68,15 @@ Plans can change: an item may move to another version or be dropped.
 
 Everything that has shipped is in the [changelog](/changelog/).
 
-## In progress
-
-### Mac 1.2.0
-- A formatting bar above the source, plus a Format menu and keyboard shortcuts.
-- Ask AI: send the selected text, with the file name, line numbers and your prompt, to Claude or ChatGPT.
-- Copy as RTF, to paste the rendered document into Google Docs, Notion, Mail or Pages.
-- New from Clipboard: paste Markdown, including AI output with escaped characters, and see it rendered.
-- The Handbook layout for PDF export: body pages numbered from 1, "n / N" in the footer and a binding margin on the left.
-- HackMD compatibility: its line-break setting and its syntax.
-- Install the app, the marsdawn command-line tool or the agent skill, and MarsDawn helps you add the other two.
-
-### iPhone and iPad (iOS 1.0)
-- Read Markdown on iPhone and iPad with the same preview as on the Mac.
-
 ## Next
 
-### Mac 1.2.1
+### Mac 1.2.2
 - Open JSON and YAML, edit them, and see a live tree preview beside the source.
 - Open a URL: read Markdown from a public link on GitHub, a Gist or a raw file.
 - Callouts: GitHub alerts and HackMD `:::` blocks.
 - Add Claude Code's Plans folder to the sidebar in one click, newest plan first.
 
-### Mac 1.2.2
+### Mac 1.2.3
 - After an agent changes a file, see which blocks changed.
 - An image viewer for PNG, JPEG, GIF and WebP.
 
@@ -120,29 +106,15 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 
 已推出的內容都在[更新紀錄](/zh-hant/changelog/)裡。
 
-## 進行中
-
-### Mac 1.2.0
-- 原始碼上方加入格式列，另有「格式」選單和快速鍵。
-- Ask AI：把選取的文字連同檔名、行號和你的提示詞，送到 Claude 或 ChatGPT。
-- 拷貝為 RTF：把算繪好的文件貼進 Google 文件、Notion、郵件或 Pages。
-- 從剪貼板新增：貼上 Markdown，連 AI 輸出時被跳脫的字元也一樣，直接看算繪結果。
-- PDF 輸出的「手冊」版面：內文頁碼從 1 起算、頁尾顯示「n / N」、左側留裝訂邊。
-- 相容 HackMD：支援它的換行設定和語法。
-- App、marsdawn 命令列工具、agent skill 裝了其中一個，MarsDawn 會帶你裝好另外兩個。
-
-### iPhone 與 iPad（iOS 1.0）
-- 在 iPhone 和 iPad 上讀 Markdown，預覽和 Mac 版一樣。
-
 ## 接下來
 
-### Mac 1.2.1
+### Mac 1.2.2
 - 開啟 JSON 和 YAML，可以編輯，旁邊是即時的樹狀預覽。
 - 開啟網址：從 GitHub、Gist 或 raw 檔的公開連結讀 Markdown。
 - 提示框：支援 GitHub alerts 和 HackMD 的 `:::` 區塊。
 - 一鍵把 Claude Code 的 Plans 資料夾加進側邊欄，最新的計畫排在最上面。
 
-### Mac 1.2.2
+### Mac 1.2.3
 - agent 改了檔案之後，看得出哪些區塊變了。
 - 圖片檢視器：開啟 PNG、JPEG、GIF、WebP。
 
@@ -172,29 +144,15 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 
 已推出的内容都在[更新记录](/zh-hans/changelog/)里。
 
-## 进行中
-
-### Mac 1.2.0
-- 源文本上方加入格式栏，另有“格式”菜单和快捷键。
-- Ask AI：把选中的文字连同文件名、行号和你的提示词，发送到 Claude 或 ChatGPT。
-- 拷贝为 RTF：把渲染好的文稿粘贴到 Google 文档、Notion、邮件或 Pages。
-- 从剪贴板新建：粘贴 Markdown，连 AI 输出时被转义的字符也一样，直接看渲染结果。
-- PDF 导出的“手册”版面：正文页码从 1 起算，页脚显示“n / N”，左侧留装订边。
-- 兼容 HackMD：支持它的换行设置和语法。
-- App、marsdawn 命令行工具、代理技能装了其中一个，MarsDawn 会带你装好另外两个。
-
-### iPhone 与 iPad（iOS 1.0）
-- 在 iPhone 和 iPad 上读 Markdown，预览和 Mac 版一样。
-
 ## 接下来
 
-### Mac 1.2.1
+### Mac 1.2.2
 - 打开 JSON 和 YAML，可以编辑，旁边是实时的树状预览。
 - 打开网址：从 GitHub、Gist 或 raw 文件的公开链接读取 Markdown。
 - 提示框：支持 GitHub alerts 和 HackMD 的 `:::` 区块。
 - 一键把 Claude Code 的 Plans 文件夹加入边栏，最新的计划排在最上面。
 
-### Mac 1.2.2
+### Mac 1.2.3
 - 代理改了文件之后，看得出哪些区块变了。
 - 图片查看器：打开 PNG、JPEG、GIF、WebP。
 
@@ -224,29 +182,15 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 
 これまでに公開した内容は[更新履歴](/ja/changelog/)にあります。
 
-## 開発中
-
-### Mac 1.2.0
-- ソースの上にフォーマットバーを追加。「フォーマット」メニューとキーボードショートカットも用意します。
-- Ask AI：選択したテキストを、ファイル名、行番号、プロンプトと一緒に Claude または ChatGPT に送ります。
-- RTF としてコピー：レンダリングした文書を Google ドキュメント、Notion、メール、Pages に貼り付けられます。
-- クリップボードから新規作成：Markdown を貼り付けるだけでレンダリング結果を表示します。AI の出力でエスケープされた文字にも対応します。
-- PDF 書き出しの「ハンドブック」レイアウト：本文のページ番号は 1 から、フッタに「n / N」、左側に綴じしろを付けます。
-- HackMD 互換：改行の設定と HackMD の記法に対応します。
-- アプリ、marsdawn コマンドラインツール、エージェントスキルのどれかを入れると、残りの 2 つを入れる手順を案内します。
-
-### iPhone と iPad（iOS 1.0）
-- iPhone と iPad で、Mac と同じプレビューで Markdown を読めます。
-
 ## 今後の予定
 
-### Mac 1.2.1
+### Mac 1.2.2
 - JSON と YAML を開いて編集でき、横にリアルタイムのツリープレビューを表示します。
 - URL を開く：GitHub、Gist、raw ファイルの公開リンクから Markdown を読み込みます。
 - コールアウト：GitHub alerts と HackMD の `:::` ブロックに対応します。
 - Claude Code の Plans フォルダをワンクリックでサイドバーに追加。新しいプランが一番上に並びます。
 
-### Mac 1.2.2
+### Mac 1.2.3
 - エージェントがファイルを変更したあと、どのブロックが変わったかがわかります。
 - 画像ビューア：PNG、JPEG、GIF、WebP を開けます。
 
@@ -276,29 +220,15 @@ Pläne können sich ändern: Ein Punkt kann in eine andere Version wandern oder 
 
 Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/).
 
-## In Arbeit
-
-### Mac 1.2.0
-- Eine Formatleiste über dem Quelltext, dazu ein Menü „Format“ und Tastaturkurzbefehle.
-- Ask AI: den markierten Text mit Dateiname, Zeilennummern und deinem Prompt an Claude oder ChatGPT senden.
-- Als RTF kopieren, um das gerenderte Dokument in Google Docs, Notion, Mail oder Pages einzufügen.
-- „Neu aus der Zwischenablage“: Markdown einfügen, auch KI-Ausgabe mit maskierten Zeichen, und es gerendert sehen.
-- Das Layout „Handbuch“ für den PDF-Export: Seitenzahlen ab 1 im Hauptteil, „n / N“ in der Fußzeile und ein Bundsteg links.
-- HackMD-Kompatibilität: seine Einstellung für Zeilenumbrüche und seine Syntax.
-- Installiere die App, das Befehlszeilenprogramm marsdawn oder den Agent-Skill, und MarsDawn hilft dir, die anderen beiden hinzuzufügen.
-
-### iPhone und iPad (iOS 1.0)
-- Markdown auf iPhone und iPad lesen, mit derselben Vorschau wie auf dem Mac.
-
 ## Als Nächstes
 
-### Mac 1.2.1
+### Mac 1.2.2
 - JSON und YAML öffnen, bearbeiten und neben dem Quelltext eine Live-Baumvorschau sehen.
 - URL öffnen: Markdown von einem öffentlichen Link auf GitHub, aus einem Gist oder einer Raw-Datei lesen.
 - Callouts: GitHub-Alerts und HackMD-Blöcke mit `:::`.
 - Den Plans-Ordner von Claude Code mit einem Klick zur Seitenleiste hinzufügen, den neuesten Plan zuerst.
 
-### Mac 1.2.2
+### Mac 1.2.3
 - Nachdem ein Agent eine Datei geändert hat, sehen, welche Blöcke sich geändert haben.
 - Ein Bildbetrachter für PNG, JPEG, GIF und WebP.
 
@@ -328,29 +258,15 @@ Les plans peuvent changer : un élément peut passer à une autre version ou êt
 
 Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/changelog/).
 
-## En cours
-
-### Mac 1.2.0
-- Une barre de format au-dessus de la source, avec un menu Format et des raccourcis clavier.
-- Ask AI : envoyer le texte sélectionné, avec le nom du fichier, les numéros de ligne et votre prompt, à Claude ou ChatGPT.
-- Copier en RTF, pour coller le document mis en forme dans Google Docs, Notion, Mail ou Pages.
-- Créer à partir du presse-papiers : collez du Markdown, y compris une sortie d’IA aux caractères échappés, et voyez le rendu.
-- La mise en page « Guide » pour l’export PDF : pages du corps numérotées à partir de 1, « n / N » en pied de page et une marge de reliure à gauche.
-- Compatibilité HackMD : son réglage des sauts de ligne et sa syntaxe.
-- Installez l’app, l’outil en ligne de commande marsdawn ou le skill d’agent, et MarsDawn vous aide à ajouter les deux autres.
-
-### iPhone et iPad (iOS 1.0)
-- Lire du Markdown sur iPhone et iPad avec le même aperçu que sur Mac.
-
 ## Ensuite
 
-### Mac 1.2.1
+### Mac 1.2.2
 - Ouvrir du JSON et du YAML, les modifier et voir un aperçu en arborescence en direct à côté de la source.
 - Ouvrir une URL : lire du Markdown depuis un lien public sur GitHub, un Gist ou un fichier brut.
 - Encadrés : les alertes GitHub et les blocs `:::` de HackMD.
 - Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.
 
-### Mac 1.2.2
+### Mac 1.2.3
 - Après qu’un agent a modifié un fichier, voir quels blocs ont changé.
 - Un visualiseur d’images pour PNG, JPEG, GIF et WebP.
 
@@ -380,29 +296,15 @@ Los planes pueden cambiar: un elemento puede pasar a otra versión o descartarse
 
 Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
-## En desarrollo
-
-### Mac 1.2.0
-- Una barra de formato sobre el código fuente, con un menú Formato y atajos de teclado.
-- Ask AI: envía el texto seleccionado, con el nombre del archivo, los números de línea y tu prompt, a Claude o ChatGPT.
-- Copiar como RTF, para pegar el documento renderizado en Google Docs, Notion, Mail o Pages.
-- Nuevo a partir del portapapeles: pega Markdown, incluida salida de IA con caracteres escapados, y míralo renderizado.
-- El diseño «Guía» para exportar a PDF: páginas del cuerpo numeradas desde 1, «n / N» en el pie y un margen de encuadernación a la izquierda.
-- Compatibilidad con HackMD: su ajuste de saltos de línea y su sintaxis.
-- Instala la app, la herramienta de línea de comandos marsdawn o la skill de agente, y MarsDawn te ayuda a añadir las otras dos.
-
-### iPhone y iPad (iOS 1.0)
-- Lee Markdown en iPhone y iPad con la misma vista previa que en el Mac.
-
 ## A continuación
 
-### Mac 1.2.1
+### Mac 1.2.2
 - Abre JSON y YAML, edítalos y ve una vista previa en árbol en vivo junto al código fuente.
 - Abrir una URL: lee Markdown desde un enlace público de GitHub, un Gist o un archivo raw.
 - Avisos destacados: las alertas de GitHub y los bloques `:::` de HackMD.
 - Añade la carpeta Plans de Claude Code a la barra lateral con un clic, con el plan más reciente arriba.
 
-### Mac 1.2.2
+### Mac 1.2.3
 - Después de que un agente cambie un archivo, ve qué bloques cambiaron.
 - Un visor de imágenes para PNG, JPEG, GIF y WebP.
 
@@ -432,29 +334,15 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
 지금까지 출시한 내용은 모두 [변경 내역](/ko/changelog/)에 있습니다.
 
-## 개발 중
-
-### Mac 1.2.0
-- 소스 위에 포맷 막대를 추가하고, ‘포맷’ 메뉴와 키보드 단축키도 제공합니다.
-- Ask AI: 선택한 텍스트를 파일 이름, 줄 번호, 프롬프트와 함께 Claude나 ChatGPT로 보냅니다.
-- RTF로 복사: 렌더링한 문서를 Google 문서, Notion, 메일, Pages에 붙여 넣을 수 있습니다.
-- 클립보드에서 신규: Markdown을 붙여 넣으면 바로 렌더링 결과를 볼 수 있습니다. AI 출력에서 이스케이프된 문자도 마찬가지입니다.
-- PDF 내보내기의 ‘설명서’ 레이아웃: 본문 페이지 번호는 1부터 시작하고, 꼬리말에 ‘n / N’을 넣고, 왼쪽에 제본 여백을 둡니다.
-- HackMD 호환: HackMD의 줄바꿈 설정과 문법을 지원합니다.
-- 앱, marsdawn 명령줄 도구, 에이전트 스킬 중 하나를 설치하면 나머지 두 개도 설치하도록 MarsDawn이 안내합니다.
-
-### iPhone 및 iPad (iOS 1.0)
-- iPhone과 iPad에서 Mac과 같은 미리보기로 Markdown을 읽습니다.
-
 ## 다음 계획
 
-### Mac 1.2.1
+### Mac 1.2.2
 - JSON과 YAML을 열어 편집하고, 옆에서 실시간 트리 미리보기를 봅니다.
 - URL 열기: GitHub, Gist, raw 파일의 공개 링크에서 Markdown을 읽습니다.
 - 콜아웃: GitHub alerts와 HackMD의 `:::` 블록을 지원합니다.
 - Claude Code의 Plans 폴더를 클릭 한 번으로 사이드바에 추가하고, 최신 계획을 맨 위에 둡니다.
 
-### Mac 1.2.2
+### Mac 1.2.3
 - 에이전트가 파일을 바꾼 뒤 어떤 블록이 바뀌었는지 보여 줍니다.
 - 이미지 뷰어: PNG, JPEG, GIF, WebP를 엽니다.
 

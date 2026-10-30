@@ -13,7 +13,7 @@ Mac で Markdown を、多くはエージェントが書いたものを読んで
 | 動作環境 | macOS 26.0 以降 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 記載なし [[18](#v18)] | macOS 12.0 以降 [[23](#v23)] | macOS 13 以降 [[2](#v2)] |
 | アカウント | 不要 [/privacy/] | 記載なし | "No sign-up required" [[15](#v15)] | 記載なし | 不要 [[2](#v2)] |
 
-各セルは 2026 年 10 月 16 日に、角かっこ内の出典で確認しました（V の番号は下に一覧、[実測] は marsdawn 0.6.4 で書き出した私たちの確認）。各社の原文はそのまま引用しています。「記載なし」は、読んだページに書かれていなかったという意味で、機能がないという意味ではありません。製品の順位付けはしていません。
+各セルは 2026 年 10 月 16 日に、角かっこ内の出典で確認しました（V の番号は下に一覧、[実測] は marsdawn 0.6.4 で書き出した私たちの確認）。各社の原文はそのまま引用しています。「記載なし」は、読んだページに書かれていなかったという意味で、機能がないという意味ではありません。製品の順位付けはしていません。MarsDawn 自身の列は、iPhone と iPad 版に合わせて 2026 年 10 月 29 日に更新しました。
 
 ## 出典
 
@@ -41,7 +41,7 @@ Mac で Markdown を、多くはエージェントが書いたものを読んで
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn にないもの。macOS 26 以降が必要です。iPhone や iPad のアプリはなく、MarsDawn は Mac 専用です。共同編集も同期もアカウントもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号は入りません。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
+MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集も同期もアカウントもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号は入りません。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
 
 ## MarsDawn がいらないとき
 
@@ -49,7 +49,7 @@ MarsDawn にないもの。macOS 26 以降が必要です。iPhone や iPad の�
 - Finder でスペースバーのプレビューだけほしい。QLMarkdown は無料の Markdown 用クイックルック拡張です。
 - Mac の macOS が古い。QLMarkdown は 12.0 以降、LynxOffice は 13 以降です。無料の marsdawn ツールは macOS 15 で動き、アプリなしで PDF を書き出せます。
 - リンクでつながったノートを保管庫で管理している。Obsidian はそのためのアプリです。
-- iPhone や iPad のアプリ、共同編集、Word 書き出しが必要。
+- iPhone や iPad での編集、共同編集、Word 書き出しが必要。
 - 表計算、Word、PDF をエージェントに扱わせたい。LynxOffice はそのための MCP サーバーを公開しています。
 
 - [MacMD Viewer と MarsDawn](/ja/vs/macmd-viewer/)：読み取り専用のビューアと MarsDawn をセルごとに比べ、どちらを選ぶべきかも書いています。
@@ -64,7 +64,7 @@ MarsDawn にないもの。macOS 26 以降が必要です。iPhone や iPad の�
 - [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
 - [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックを分断しないよう配慮されます。
 - [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
-- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
+- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad では編集不可、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
 - [サポート](https://marsdawn.southern-light.dev/ja/support/index.md): macOS 向け Markdown エディタ MarsDawn のヘルプ。
 - [プライバシーポリシー](https://marsdawn.southern-light.dev/ja/privacy/index.md): MarsDawn は個人データを収集しません。文書と設定はあなたの Mac 上に残ります。
 - [Mac で .md ファイルを開く方法](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): Mac で .md ファイルを開く方法：ダブルクリック、標準のアプリの設定、Finder のクイックルック。AI エージェントが書いた .md は、MarsDawn でレンダリングして読めます。

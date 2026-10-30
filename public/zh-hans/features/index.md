@@ -138,6 +138,18 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 1. Mermaid 图表直接画进 PDF。
 2. 代码保留语法高亮。
 
+## 在 Mac 上写，在路上读
+
+代理在 Mac 上工作，它写的计划和报告，你在 iPhone 或 iPad 上也能读。
+
+1. **在 Mac 上：**把代理的计划和报告存在会同步的云端文件夹，例如 iCloud 云盘。
+2. **在 iPhone 或 iPad 上：**打开 MarsDawn，点“打开”，选同一个文件。Mermaid 图表、数学公式、代码和表格都会排好显示，也有大纲和你选的主题。
+3. **回到 Mac：**继续编辑，或导出 PDF。
+
+用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。
+
+在 iPhone 和 iPad 上，MarsDawn 只能阅读：不能编辑、不能导出 PDF，也不会同步。文件通过你自己用的云服务传到手机，MarsDawn 本身没有同步功能。
+
 ## 文件、标签页和快速查看
 
 ### 窗口和标签页
@@ -215,7 +227,7 @@ MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁
 - [免费试用，买一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
 - [导出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 导出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码，超过一页的会接到下一页。
 - [为 Mac 而做](https://marsdawn.southern-light.dev/zh-hans/native/index.md): 真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在访达用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。
-- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户；可以换主题，但不能自定义 CSS。购买前先知道。
+- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、iPhone 和 iPad 上不能编辑、没有插件、不需要账户；可以换主题，但不能自定义 CSS。购买前先知道。
 - [支持](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 编辑器）的使用说明与联系方式。
 - [隐私政策](https://marsdawn.southern-light.dev/zh-hans/privacy/index.md): MarsDawn 不收集任何个人数据，你的文稿与设置都留在你的 Mac 上。
 - [Mac 上怎么打开 md 文件](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI 代理写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。

@@ -138,6 +138,18 @@ KaTeX の構文で書いた数式は、プレビューとクイックルック�
 1. Mermaid 図は PDF に描き込まれます。
 2. コードはハイライトを保ちます。
 
+## Mac で書いて、出先で読む
+
+エージェントは Mac で作業します。その計画やレポートは、iPhone や iPad でも読めます。
+
+1. **Mac で：**エージェントの計画やレポートを、クラウドで同期されるフォルダ（iCloud Drive など）に保存します。
+2. **iPhone や iPad で：**MarsDawn で「開く」をタップし、同じファイルを選びます。Mermaid の図、数式、コード、表がきちんと表示され、アウトラインと選んだテーマも使えます。
+3. **Mac に戻って：**編集を続けたり、PDF に書き出したりできます。
+
+同じ Apple Account なら、1 回のトライアルと 1 回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。
+
+iPhone と iPad の MarsDawn は読むためのものです。編集、PDF の書き出し、同期はできません。ファイルは、いつも使っているクラウドを通じて届きます。MarsDawn 自体には同期機能がありません。
+
 ## ファイル、タブ、クイックルック
 
 ### ウインドウとタブ
@@ -215,7 +227,7 @@ MarsDawn は無料でダウンロードできます。14日間はすべての機
 - [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
 - [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックを分断しないよう配慮されます。
 - [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
-- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
+- [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad では編集不可、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
 - [サポート](https://marsdawn.southern-light.dev/ja/support/index.md): macOS 向け Markdown エディタ MarsDawn のヘルプ。
 - [プライバシーポリシー](https://marsdawn.southern-light.dev/ja/privacy/index.md): MarsDawn は個人データを収集しません。文書と設定はあなたの Mac 上に残ります。
 - [Mac で .md ファイルを開く方法](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): Mac で .md ファイルを開く方法：ダブルクリック、標準のアプリの設定、Finder のクイックルック。AI エージェントが書いた .md は、MarsDawn でレンダリングして読めます。

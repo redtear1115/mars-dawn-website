@@ -315,6 +315,14 @@ FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Se
                        'Ordner, den du unter MarsDawn ▸ Einstellungen … ▸ Notizordner wählst.',
                'lead_links': ['native'],
                'items': []}],
+ 'devices': {'h2': 'Auf dem Mac schreiben, unterwegs lesen',
+             'lead': 'Dein Agent arbeitet auf dem Mac. Seine Pläne und Berichte kannst du auch auf dem iPhone oder iPad lesen.',
+             'steps': [
+                       'Auf dem Mac: Speichere die Pläne und Berichte des Agenten in einem Ordner, den deine Cloud synchronisiert, etwa iCloud Drive.',
+                       'Auf iPhone oder iPad: Tippe in MarsDawn auf „Öffnen“ und wähle dieselbe Datei. Mermaid-Diagramme, Formeln, Code und Tabellen werden dargestellt, mit Gliederung und deinem Thema.',
+                       'Zurück am Mac: Bearbeite weiter oder exportiere ein PDF.'],
+             'buy': 'Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.',
+             'limits': 'Auf iPhone und iPad ist MarsDawn zum Lesen da: Es bearbeitet nicht, exportiert keine PDFs und synchronisiert nicht. Deine Dateien kommen über die Cloud aufs iPhone oder iPad, die du ohnehin nutzt; MarsDawn hat keine eigene Synchronisierung.'},
  'cta': {'h2': 'Probier es auf deinem Mac aus',
          'p1': 'MarsDawn ist kostenlos erhältlich. Teste alles 14 Tage lang und schalte es danach '
                'einmalig für 4,99 USD frei. Kein Abo, kein Konto. Es braucht macOS 26 oder neuer.',
@@ -540,7 +548,7 @@ VS_MACMD = {'title': 'MacMD Viewer oder MarsDawn: Markdown-Viewer oder Editor ·
                       ['Voraussetzung',
                        'macOS 14 (Sonoma) oder neuer; Apple Silicon und Intel [S1, S7]',
                        'macOS 26 (Tahoe) oder neuer'],
-                      ['Andere Plattformen', 'Nur Mac [S1]', 'Nur Mac. Keine App für iPhone oder iPad']]},
+                      ['Andere Plattformen', 'Nur Mac [S1]', 'Mac, dazu iPhone und iPad nur zum Lesen']]},
             {'h2': 'Preis und Kauf',
              'head': ['', 'MacMD Viewer', 'MarsDawn'],
              'rows': [['Wo du es kaufst',
@@ -700,6 +708,7 @@ def build(k) -> dict:
 <ul>
   <li>Auch der Test kostet nichts. Wenn er endet, wird nichts gekauft, es sei denn, du entscheidest dich für die Freischaltung.</li>
   <li>Es gibt kein Konto. MarsDawn verlangt nie, dass du eines anlegst.</li>
+  <li>Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad. Auf iPhone und iPad ist MarsDawn zum Lesen da: Bearbeiten und PDF-Export gibt es dort nicht.</li>
 </ul>
 <h2>Was wann funktioniert</h2>
 <!--compare:pay-once-states-->
@@ -762,7 +771,7 @@ def build(k) -> dict:
     }
     pages['limits'] = {
         "title": 'Was MarsDawn nicht kann · MarsDawn',
-        "description": 'Keine Synchronisierung, keine iPhone- oder iPad-App, keine Plug-ins, keine Konten. Themen, aber kein eigenes CSS. Vor dem Kauf gut zu wissen.',
+        "description": 'Keine Synchronisierung, kein Bearbeiten auf iPhone oder iPad, keine Plug-ins, keine Konten. Themen, aber kein eigenes CSS. Vor dem Kauf gut zu wissen.',
         "intro": """
 <section class="intro">
   <h1>Was MarsDawn nicht kann.</h1>
@@ -774,9 +783,9 @@ def build(k) -> dict:
 <h3>Geräte und Personen</h3>
 <ul>
   <li><strong>Synchronisierung:</strong> MarsDawn synchronisiert deine Dokumente nicht. Sie bleiben dort, wo du sie sicherst. Um eines auf einem anderen Mac zu verwenden, lege es in einen Ordner, den du ohnehin synchronisierst.</li>
-  <li><strong>iPhone und iPad:</strong> Dafür gibt es keine App; MarsDawn ist für den Mac.</li>
+  <li><strong>iPhone und iPad:</strong> Dort ist MarsDawn zum Lesen da. Es öffnet Markdown- und Textdateien und stellt sie dar, mit Gliederung und Themen, aber es bearbeitet nicht, exportiert keine PDFs und synchronisiert nicht. Deine Dateien kommen über die Cloud dorthin, die du schon nutzt.</li>
   <li><strong>Teilen:</strong> Es gibt keine Konten und keine gemeinsame Bearbeitung, denn MarsDawn ist für eine Person an ihrem eigenen Mac.</li>
-  <li><strong>System:</strong> MarsDawn benötigt macOS 26 oder neuer.</li>
+  <li><strong>System:</strong> MarsDawn benötigt auf dem Mac macOS 26 oder neuer und auf iPhone und iPad iOS 26 bzw. iPadOS 26 oder neuer.</li>
 </ul>
 <h3>Dateien und Funktionen</h3>
 <ul>

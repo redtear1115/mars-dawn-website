@@ -23,7 +23,7 @@ Checked against MacMD Viewer's own site and repository on 15 October 2026 (versi
 | Command line | No standalone command-line tool is described. It has a `markdownviewer://` URL scheme and a Claude Code plugin and hooks that open files in the viewer [[S6](#s6)] | The free `marsdawn` tool: `marsdawn export` renders a PDF without the app, `marsdawn open` opens a file at a line |
 | Interface languages | Not stated in its own materials [[S1](#s1), [S3](#s3), [S7](#s7)] | English, Traditional Chinese, Simplified Chinese, Japanese, German, French, Spanish and Korean |
 | Requires | macOS 14 (Sonoma) or later; Apple Silicon and Intel [[S1](#s1), [S7](#s7)] | macOS 26 (Tahoe) or later |
-| Other platforms | Mac only [[S1](#s1)] | Mac only. No iPhone or iPad app |
+| Other platforms | Mac only [[S1](#s1)] | Mac, plus iPhone and iPad for reading only |
 
 ## Price and how you buy it
 
@@ -114,7 +114,7 @@ open notes.pdf
 - [Try free, pay once](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.
 - [PDF export](https://marsdawn.southern-light.dev/pdf/index.md): Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks.
 - [A Mac app](https://marsdawn.southern-light.dev/native/index.md): A Markdown editor that is a real Mac app: native windows and tabs, autosave, version history, Quick Look in Finder and a text editor that behaves like a Mac.
-- [What MarsDawn doesn't do](https://marsdawn.southern-light.dev/limits/index.md): No sync, no iPhone or iPad app, no plugins, no accounts. Themes, but no custom CSS. Know before you buy.
+- [What MarsDawn doesn't do](https://marsdawn.southern-light.dev/limits/index.md): No sync, no editing on iPhone or iPad, no plugins, no accounts. Themes, but no custom CSS. Know before you buy.
 - [Support](https://marsdawn.southern-light.dev/support/index.md): Get help with MarsDawn, the Markdown editor for macOS.
 - [Privacy Policy](https://marsdawn.southern-light.dev/privacy/index.md): MarsDawn does not collect personal data. Your documents and settings stay on your Mac.
 - [How to open .md files on Mac](https://marsdawn.southern-light.dev/view-markdown-on-mac/index.md): How to open a .md file on a Mac: double-click, set a default app, preview in Finder. For .md files an AI agent wrote, read them rendered in MarsDawn.
