@@ -5200,7 +5200,7 @@ HERO_REQUIREMENTS_LABEL = {
 # with a regular iPhone's for one, is replacing those files and HERO_PHONE_SIZE, nothing else.
 # HERO_PHONE_SIZE is the largest file's size; the page reserves that shape before it loads (CLS).
 HERO_PHONE_WIDTHS = (420, 840)
-HERO_PHONE_SIZE = (840, 1222)
+HERO_PHONE_SIZE = (840, 1826)
 # Its alt, from #333's table: the light capture's sentence, which says what the picture shows; the
 # dark one is the same picture in the dark palette.
 HERO_PHONE_ALT = {

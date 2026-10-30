@@ -917,18 +917,29 @@ html { overflow-x: hidden; }
   padding-bottom: 7%;
 }
 .hero-stage .mdw { margin: 0; width: 88%; }
+/* The phone fits a box 38% of the stage wide and as tall as the stage below the window's title
+   bar: a tall capture is sized by the box's height, so the phone never stands taller than the
+   window it sits on. */
 .hero-phone {
   position: absolute;
   right: 0;
   bottom: 0;
+  top: 14%;
   width: 38%;
   max-width: 400px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 .hero-phone img {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
-  border-radius: 9% / 6.2%;
+  min-width: 0;
+  min-height: 0;
+  border-radius: 9% / 4.2%;
   box-shadow: 0 0 0 1px color-mix(in srgb, #000 22%, transparent),
               0 30px 50px -22px color-mix(in srgb, #000 70%, transparent),
               0 10px 22px -12px color-mix(in srgb, #000 55%, transparent);
