@@ -92,6 +92,35 @@ LISTING_URL = "https://apps.apple.com/app/id6812925073"
 # clicks them). scripts/check_store_links.py holds all of this.
 CAMPAIGN_BASE = "https://apps.apple.com/app/apple-store/id6812925073"
 CAMPAIGN_PROVIDER = "128976951"
+HOME_HERO_CAMPAIGN = "web-home"
+HOME_IPHONE_CAMPAIGN = "web-home-iphone"
+FEATURES_IPHONE_CAMPAIGN = "web-mac-iphone"
+HOME_CLOSE_CAMPAIGN = "web-close"
+PRICING_CAMPAIGN = "web-pricing"
+
+# TODO(#333): per-locale wording from Aria; English everywhere until then.
+APPLE_TRADEMARK_NOTICE = "Apple, the Apple logo, App Store, iPhone, iPad and Mac are trademarks of Apple Inc., registered in the U.S. and other countries and regions."
+
+# Each badge's width at height 40, rounded: width/height attributes take whole pixels (the CSS keeps
+# the SVG's own proportions).
+STORE_BADGES = {
+    "en": ("120", "Download on the App Store"),
+    "zh-hant": ("109", "在 App Store 下載"),
+    "zh-hans": ("109", "在 App Store 下载"),
+    "ja": ("109", "App Storeからダウンロード"),
+    "de": ("120", "Laden im App Store"),
+    "fr": ("127", "Télécharger dans l'App Store"),
+    "es": ("120", "Descargar en el App Store"),
+    "ko": ("130", "App Store에서 다운로드하기"),
+}
+
+
+def store_badge_html(locale: str, token: str) -> str:
+    width, alt = STORE_BADGES[locale]
+    return (f'<a class="store-badge" href="{html_escape(campaign_url(token), quote=True)}">'
+            f'<img src="/assets/badges/app-store-{locale}.svg" width="{width}" height="40" '
+            f'alt="{html_escape(alt, quote=True)}"></a>')
+
 
 
 def campaign_token(path: str) -> str:
@@ -951,12 +980,13 @@ def third_party_notices_html() -> str:
         '<footer class="footer">\n'
         f'{site_footer_nav_html("en")}'
         f'  <p class="footer-meta"><span>{ui["slogan"]}</span> <span>{ui["footer_store"]}</span> '
-        '<span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>\n</footer>'
+        f'<span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>\n  <p class="footer-legal">{APPLE_TRADEMARK_NOTICE}</p>\n</footer>'
     )
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 {consent_head_html()}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Third-party notices · MarsDawn</title>
@@ -4928,7 +4958,7 @@ def _features_devices(copy: dict) -> list:
         steps.append(f"  <li><strong>{_features_text(label)}</strong>{_features_text(rest)}</li>")
     return [f'<h2 id="{FEATURES_DEVICES_ID}">{_features_text(d["h2"])}</h2>', f"<p>{_features_text(d['lead'])}</p>",
             '<ol class="devsteps">', *steps, "</ol>", f"<p>{_features_text(d['buy'])}</p>",
-            f'<p class="devnote">{_features_text(d["limits"])}</p>']
+            '<!--iphone-badge-->', f'<p class="devnote">{_features_text(d["limits"])}</p>']
 
 
 def features_page(copy: dict) -> dict:
@@ -5112,11 +5142,11 @@ def launched() -> bool:
 
 def hero_cta_html(locale: str) -> str:
     """Before launch: install the CLI, beside the coming-soon chip. After: the listing, then the
-    CLI. Plain links in both, never a store badge."""
+    CLI. The launched listing uses Apple's localized badge."""
     home = HOME[locale]
     if launched():
         assert LISTING_URL, "AVAILABILITY is InStock but LISTING_URL isn't set"
-        return (f'<p class="hero-cta"><a class="cta cta-primary" href="{LISTING_URL}">{home["cta_store"]}</a> '
+        return (f'<p class="hero-cta">{store_badge_html(locale, HOME_HERO_CAMPAIGN)} '
                 f'<a class="cta cta-secondary" href="#install">{home["cta_cli"]}</a></p>')
     return (f'<p class="hero-cta"><a class="cta cta-primary" href="#install">{home["cta_cli"]}</a> '
             f'<span class="store-chip">{STORE_CHIP[locale]}</span></p>')
@@ -5127,7 +5157,7 @@ def closing_cta_html(locale: str) -> str:
     home = HOME[locale]
     if launched():
         assert LISTING_URL, "AVAILABILITY is InStock but LISTING_URL isn't set"
-        return f'<a href="{LISTING_URL}">{home["cta_try"]}</a>'
+        return store_badge_html(locale, HOME_CLOSE_CAMPAIGN)
     return f'<a href="#install">{home["cta_cli"]}</a>'
 
 
@@ -6892,9 +6922,12 @@ def render(locale: str, slug: str, page: dict) -> str:
             "</div>\n"
             "</section>"
         )
+        # The closing section's own text link counts as the close position too (web-close).
+        close_store = ui["footer_store"].replace(
+            f'href="{LISTING_URL}"', 'href="' + campaign_url(HOME_CLOSE_CAMPAIGN).replace("&", "&amp;") + '"')
         closing_html = (
             '<section class="dawn-close">\n'
-            f'<p><strong>{ui["slogan"]}</strong> {ui["footer_store"]}</p>\n'
+            f'<p><strong>{ui["slogan"]}</strong> {close_store}</p>\n'
             f'<p class="close-next">{closing_cta_html(locale)}</p>\n'
             "</section>"
         )
@@ -6915,6 +6948,16 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = "\n".join([intro_html.strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
     else:
         main_html = templates_pages.expand_loops(locale, page["body"].strip())
+    main_html = main_html.replace("<!--iphone-badge-->", store_badge_html(locale, FEATURES_IPHONE_CAMPAIGN))
+    # Standalone listing links in rich pages are download CTAs; prose links stay text.
+    main_html = re.sub(r'<p><a href="' + re.escape(LISTING_URL) + r'">[^<]+</a></p>',
+                       lambda m: '<p>' + store_badge_html(locale, slug_campaign_token(slug)) + '</p>', main_html)
+    if slug == "pay-once":
+        # The price badge goes after "How it works" (the three steps and the list under them),
+        # not inside the screenshot's caption, whose own list comes first in the page.
+        steps = main_html.index('<ol class="loop-steps">')
+        after = main_html.index("</ul>", main_html.index("</ol>", steps)) + len("</ul>")
+        main_html = main_html[:after] + "\n<p>" + store_badge_html(locale, PRICING_CAMPAIGN) + "</p>" + main_html[after:]
     main_html = main_html.replace(brand_film_themes.MARK, brand_film_themes.section_html(locale))
     if slug in TOC_PAGES:
         main_html = add_toc(locale, slug, main_html)
@@ -6945,7 +6988,7 @@ def render(locale: str, slug: str, page: dict) -> str:
     footer_html = (
         f'<footer class="footer{" footer-home" if slug == "index" else ""}">\n'
         f'{footer_links}'
-        f'  <p class="footer-meta">{footer_meta}</p>\n</footer>'
+        f'  <p class="footer-meta">{footer_meta}</p>\n  <p class="footer-legal">{APPLE_TRADEMARK_NOTICE}</p>\n</footer>'
     )
     # A page in LEGAL_PAGES carries its markdown-body content in the kit's own Dawn palette
     # (themes.css's `:root[data-theme="dawn"]`); the attribute goes on <html>, not the div
@@ -6956,6 +6999,7 @@ def render(locale: str, slug: str, page: dict) -> str:
 <html lang="{lang}"{html_theme_attr}>
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 {head_js}{consent_head_html()}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{page["title"]}</title>
@@ -7244,12 +7288,13 @@ def render_404(locale: str) -> str:
     footer_html = (
         '<footer class="footer">\n'
         f'{footer_links}'
-        f'  <p class="footer-meta">{footer_meta}</p>\n</footer>'
+        f'  <p class="footer-meta">{footer_meta}</p>\n  <p class="footer-legal">{APPLE_TRADEMARK_NOTICE}</p>\n</footer>'
     )
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 {consent_head_html()}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{copy["title"]}</title>

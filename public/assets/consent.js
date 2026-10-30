@@ -10,6 +10,20 @@
   "use strict";
   var KEY = "md-consent";
 
+  document.addEventListener("click", function (event) {
+    var a = event.target.closest && event.target.closest('a[href^="https://apps.apple.com/"]');
+    if (a && typeof window.gtag === "function") {
+      window.gtag("event", "click", {
+        link_url: a.href,
+        link_domain: "apps.apple.com",
+        outbound: true,
+        link_classes: a.className,
+        campaign_ct: new URL(a.href).searchParams.get("ct") || "",
+        transport_type: "beacon"
+      });
+    }
+  }, true);
+
   // GTM-KCC7FDWZ's GA4 tag is G-J8S869VKNH; GA4 names its own per-property cookie
   // _ga_<measurement id, without the "G-">. Update this if that tag's measurement ID
   // ever changes (and update the privacy policy's four locales to match).

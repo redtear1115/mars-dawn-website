@@ -1703,3 +1703,8 @@ main:has(.compare-scroll) h2[id],
   border-left: 3px solid var(--ember);
 }
 main > h2[id="iphone-ipad"] { scroll-margin-top: 16px; }
+
+/* Apple badges keep their intrinsic proportions and a quarter-height clear space. */
+.store-badge { display: inline-block; padding: 10px; max-width: 100%; box-sizing: border-box; vertical-align: middle; line-height: 0; }
+.store-badge img { display: block; height: 40px; width: auto; }
+.footer-legal { margin: 0; font-size: 0.75rem; color: var(--dust); overflow-wrap: anywhere; }
