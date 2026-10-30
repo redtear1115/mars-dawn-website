@@ -309,6 +309,14 @@ FEATURES = {'title': 'Funciones: un editor de Markdown para Mac, en una sola pá
                        'carpeta que elijas en MarsDawn ▸ Ajustes… ▸ Carpeta de notas.',
                'lead_links': ['native'],
                'items': []}],
+ 'devices': {'h2': 'Escribe en el Mac, lee por el camino',
+             'lead': 'Tu agente trabaja en el Mac. Sus planes e informes pueden ir contigo en el iPhone o el iPad.',
+             'steps': [
+                       'En el Mac: guarda los planes e informes del agente en una carpeta que sincronice tu servicio en la nube, como iCloud Drive.',
+                       'En el iPhone o el iPad: en MarsDawn, toca «Abrir» y elige el mismo archivo. Los diagramas Mermaid, las fórmulas, el código y las tablas se muestran con formato, con el esquema y tu tema.',
+                       'De vuelta en el Mac: sigue editando o exporta un PDF.'],
+             'buy': 'Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.',
+             'limits': 'En el iPhone y el iPad, MarsDawn es para leer: no edita, no exporta PDF y no sincroniza. Tus archivos llegan a tu dispositivo a través de la nube que ya usas; MarsDawn no tiene sincronización propia.'},
  'cta': {'h2': 'Pruébalo en tu Mac',
          'p1': 'MarsDawn se descarga gratis. Prueba todo durante 14 días y después desbloquéalo '
                'una sola vez por 4,99 USD. Sin suscripción ni cuenta. Requiere macOS 26 o '

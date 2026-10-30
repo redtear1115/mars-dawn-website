@@ -321,6 +321,18 @@ In this screenshot:
 1. Mermaid diagrams, drawn into the PDF.
 2. Code keeps its highlighting.
 
+## On your Mac, and on the go
+
+Your agent works on the Mac. Its plans and reports can come with you on your iPhone or iPad.
+
+1. **On the Mac:** save the agent's plans and reports in a folder your cloud syncs, such as iCloud Drive.
+2. **On iPhone or iPad:** in MarsDawn, tap Open and pick the same file. Mermaid diagrams, math, code and tables are rendered, with an outline and your theme.
+3. **Back on the Mac:** keep editing, or export a PDF.
+
+With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.
+
+On iPhone and iPad, MarsDawn is for reading: it doesn't edit, export PDFs or sync. Your files get to your phone through the cloud you already use; MarsDawn has no sync of its own.
+
 ## Files, tabs and Quick Look
 
 ### Windows and tabs
@@ -3773,6 +3785,18 @@ App 介面有英文、繁體中文、簡體中文、日文、德文、法文、�
 
 1. Mermaid 圖表直接畫進 PDF。
 2. 程式碼保留語法上色。
+
+## 在 Mac 上寫，在路上讀
+
+agent 在 Mac 上工作，它寫的計畫和報告，你在 iPhone 或 iPad 上也能讀。
+
+1. **在 Mac 上：**把 agent 的計畫和報告存在會同步的雲端資料夾，例如 iCloud Drive。
+2. **在 iPhone 或 iPad 上：**打開 MarsDawn，點「開啟」，選同一個檔案。Mermaid 圖表、數學式、程式碼和表格都會排好顯示，也有大綱和你選的主題。
+3. **回到 Mac：**繼續編輯，或輸出 PDF。
+
+用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。
+
+在 iPhone 和 iPad 上，MarsDawn 只能閱讀：不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳到手機，MarsDawn 本身沒有同步功能。
 
 ## 檔案、分頁和快速查看
 
@@ -7266,6 +7290,18 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 1. Mermaid 图表直接画进 PDF。
 2. 代码保留语法高亮。
 
+## 在 Mac 上写，在路上读
+
+代理在 Mac 上工作，它写的计划和报告，你在 iPhone 或 iPad 上也能读。
+
+1. **在 Mac 上：**把代理的计划和报告存在会同步的云端文件夹，例如 iCloud 云盘。
+2. **在 iPhone 或 iPad 上：**打开 MarsDawn，点“打开”，选同一个文件。Mermaid 图表、数学公式、代码和表格都会排好显示，也有大纲和你选的主题。
+3. **回到 Mac：**继续编辑，或导出 PDF。
+
+用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。
+
+在 iPhone 和 iPad 上，MarsDawn 只能阅读：不能编辑、不能导出 PDF，也不会同步。文件通过你自己用的云服务传到手机，MarsDawn 本身没有同步功能。
+
 ## 文件、标签页和快速查看
 
 ### 窗口和标签页
@@ -10751,6 +10787,18 @@ KaTeX の構文で書いた数式は、プレビューとクイックルック�
 1. Mermaid 図は PDF に描き込まれます。
 2. コードはハイライトを保ちます。
 
+## Mac で書いて、出先で読む
+
+エージェントは Mac で作業します。その計画やレポートは、iPhone や iPad でも読めます。
+
+1. **Mac で：**エージェントの計画やレポートを、クラウドで同期されるフォルダ（iCloud Drive など）に保存します。
+2. **iPhone や iPad で：**MarsDawn で「開く」をタップし、同じファイルを選びます。Mermaid の図、数式、コード、表がきちんと表示され、アウトラインと選んだテーマも使えます。
+3. **Mac に戻って：**編集を続けたり、PDF に書き出したりできます。
+
+同じ Apple Account なら、1 回のトライアルと 1 回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。
+
+iPhone と iPad の MarsDawn は読むためのものです。編集、PDF の書き出し、同期はできません。ファイルは、いつも使っているクラウドを通じて届きます。MarsDawn 自体には同期機能がありません。
+
 ## ファイル、タブ、クイックルック
 
 ### ウインドウとタブ
@@ -14235,6 +14283,18 @@ Auf diesem Bildschirmfoto:
 1. Mermaid-Diagramme, ins PDF gezeichnet.
 2. Code behält seine Hervorhebung.
 
+## Auf dem Mac schreiben, unterwegs lesen
+
+Dein Agent arbeitet auf dem Mac. Seine Pläne und Berichte kannst du auch auf dem iPhone oder iPad lesen.
+
+1. **Auf dem Mac:** Speichere die Pläne und Berichte des Agenten in einem Ordner, den deine Cloud synchronisiert, etwa iCloud Drive.
+2. **Auf iPhone oder iPad:** Tippe in MarsDawn auf „Öffnen“ und wähle dieselbe Datei. Mermaid-Diagramme, Formeln, Code und Tabellen werden dargestellt, mit Gliederung und deinem Thema.
+3. **Zurück am Mac:** Bearbeite weiter oder exportiere ein PDF.
+
+Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.
+
+Auf iPhone und iPad ist MarsDawn zum Lesen da: Es bearbeitet nicht, exportiert keine PDFs und synchronisiert nicht. Deine Dateien kommen über die Cloud aufs iPhone oder iPad, die du ohnehin nutzt; MarsDawn hat keine eigene Synchronisierung.
+
 ## Dateien, Tabs und Übersicht
 
 ### Fenster und Tabs
@@ -17659,6 +17719,18 @@ Sur cette capture d’écran :
 
 1. Les diagrammes Mermaid, dessinés dans le PDF.
 2. Le code garde sa coloration.
+
+## Écrire sur le Mac, lire en chemin
+
+Votre agent travaille sur le Mac. Ses plans et ses rapports peuvent vous suivre sur iPhone ou iPad.
+
+1. **Sur le Mac :** enregistrez les plans et les rapports de l’agent dans un dossier synchronisé par votre service cloud, comme iCloud Drive.
+2. **Sur iPhone ou iPad :** dans MarsDawn, touchez « Ouvrir » et choisissez le même fichier. Les diagrammes Mermaid, les formules, le code et les tableaux s’affichent mis en forme, avec le plan et votre thème.
+3. **De retour sur le Mac :** continuez à modifier, ou exportez un PDF.
+
+Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.
+
+Sur iPhone et iPad, MarsDawn sert à lire : il ne modifie pas, n’exporte pas de PDF et ne synchronise pas. Vos fichiers arrivent sur votre appareil par le cloud que vous utilisez déjà ; MarsDawn n’a pas de synchronisation à lui.
 
 ## Fichiers, onglets et Coup d’œil
 
@@ -21085,6 +21157,18 @@ En esta captura de pantalla:
 1. Diagramas Mermaid, dibujados dentro del PDF.
 2. El código conserva su resaltado.
 
+## Escribe en el Mac, lee por el camino
+
+Tu agente trabaja en el Mac. Sus planes e informes pueden ir contigo en el iPhone o el iPad.
+
+1. **En el Mac:** guarda los planes e informes del agente en una carpeta que sincronice tu servicio en la nube, como iCloud Drive.
+2. **En el iPhone o el iPad:** en MarsDawn, toca «Abrir» y elige el mismo archivo. Los diagramas Mermaid, las fórmulas, el código y las tablas se muestran con formato, con el esquema y tu tema.
+3. **De vuelta en el Mac:** sigue editando o exporta un PDF.
+
+Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.
+
+En el iPhone y el iPad, MarsDawn es para leer: no edita, no exporta PDF y no sincroniza. Tus archivos llegan a tu dispositivo a través de la nube que ya usas; MarsDawn no tiene sincronización propia.
+
 ## Archivos, pestañas y Vista rápida
 
 ### Ventanas y pestañas
@@ -24509,6 +24593,18 @@ KaTeX 구문으로 쓴 수식은 미리보기와 훑어보기에 그려지고, �
 
 1. Mermaid 다이어그램이 PDF 안에 그려집니다.
 2. 코드는 하이라이트를 유지합니다.
+
+## Mac에서 쓰고, 이동 중에 읽기
+
+에이전트는 Mac에서 일합니다. 에이전트가 쓴 계획과 보고서는 iPhone이나 iPad에서도 읽을 수 있습니다.
+
+1. **Mac에서:** 에이전트의 계획과 보고서를 클라우드로 동기화되는 폴더(예: iCloud Drive)에 저장합니다.
+2. **iPhone이나 iPad에서:** MarsDawn에서 '열기'를 탭하고 같은 파일을 고릅니다. Mermaid 다이어그램, 수식, 코드, 표가 제대로 표시되고, 개요와 내가 고른 테마도 쓸 수 있습니다.
+3. **다시 Mac에서:** 계속 편집하거나 PDF로 내보냅니다.
+
+같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.
+
+iPhone과 iPad의 MarsDawn은 읽기 전용입니다. 편집, PDF 내보내기, 동기화는 할 수 없습니다. 파일은 이미 쓰고 있는 클라우드를 통해 옮겨지며, MarsDawn 자체에는 동기화 기능이 없습니다.
 
 ## 파일, 탭, 훑어보기
 

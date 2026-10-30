@@ -315,6 +315,14 @@ FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur u
                        'Dossier de notes.',
                'lead_links': ['native'],
                'items': []}],
+ 'devices': {'h2': 'Écrire sur le Mac, lire en chemin',
+             'lead': 'Votre agent travaille sur le Mac. Ses plans et ses rapports peuvent vous suivre sur iPhone ou iPad.',
+             'steps': [
+                       'Sur le Mac\xa0: enregistrez les plans et les rapports de l’agent dans un dossier synchronisé par votre service cloud, comme iCloud Drive.',
+                       'Sur iPhone ou iPad\xa0: dans MarsDawn, touchez «\xa0Ouvrir\xa0» et choisissez le même fichier. Les diagrammes Mermaid, les formules, le code et les tableaux s’affichent mis en forme, avec le plan et votre thème.',
+                       'De retour sur le Mac\xa0: continuez à modifier, ou exportez un PDF.'],
+             'buy': 'Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.',
+             'limits': 'Sur iPhone et iPad, MarsDawn sert à lire\xa0: il ne modifie pas, n’exporte pas de PDF et ne synchronise pas. Vos fichiers arrivent sur votre appareil par le cloud que vous utilisez déjà\xa0; MarsDawn n’a pas de synchronisation à lui.'},
  'cta': {'h2': 'Essayez-le sur votre Mac',
          'p1': 'MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis '
                'débloquez-le une seule fois pour 4,99 USD. Sans abonnement ni compte. macOS 26 ou '

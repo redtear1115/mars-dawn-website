@@ -138,6 +138,18 @@ Sur cette capture d’écran :
 1. Les diagrammes Mermaid, dessinés dans le PDF.
 2. Le code garde sa coloration.
 
+## Écrire sur le Mac, lire en chemin
+
+Votre agent travaille sur le Mac. Ses plans et ses rapports peuvent vous suivre sur iPhone ou iPad.
+
+1. **Sur le Mac :** enregistrez les plans et les rapports de l’agent dans un dossier synchronisé par votre service cloud, comme iCloud Drive.
+2. **Sur iPhone ou iPad :** dans MarsDawn, touchez « Ouvrir » et choisissez le même fichier. Les diagrammes Mermaid, les formules, le code et les tableaux s’affichent mis en forme, avec le plan et votre thème.
+3. **De retour sur le Mac :** continuez à modifier, ou exportez un PDF.
+
+Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.
+
+Sur iPhone et iPad, MarsDawn sert à lire : il ne modifie pas, n’exporte pas de PDF et ne synchronise pas. Vos fichiers arrivent sur votre appareil par le cloud que vous utilisez déjà ; MarsDawn n’a pas de synchronisation à lui.
+
 ## Fichiers, onglets et Coup d’œil
 
 ### Fenêtres et onglets
