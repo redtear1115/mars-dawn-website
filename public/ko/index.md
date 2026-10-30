@@ -104,7 +104,7 @@ MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 Mac 네�
 
 ### MarsDawn은 iPhone이나 iPad에서 쓸 수 있나요?
 
-아직은 쓸 수 없습니다. MarsDawn은 Mac 앱이며 macOS 26 이상이 필요합니다. iPhone·iPad용 앱은 개발 중이지만 아직 나오지 않았습니다.
+네, 읽기용으로 쓸 수 있습니다. iPhone과 iPad의 MarsDawn은 Markdown 파일을 열어 Mermaid 다이어그램, 수식, 코드, 표를 렌더링하며 개요와 테마도 제공합니다. 편집, PDF 내보내기, 동기화는 할 수 없습니다. iOS 26 또는 iPadOS 26 이상이 필요합니다. 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.
 
 자세히: [로드맵](/ko/roadmap/)
 
@@ -144,7 +144,7 @@ MarsDawn 자체는 아무것도 보내지 않습니다. 스킬은 지침을 적�
 
 ### MarsDawn은 앞으로도 유지 관리되나요?
 
-네. MarsDawn이 Mac App Store에 나온 뒤의 모든 업데이트는 변경 내역에 있고, iPhone·iPad용 앱도 개발 중입니다. MarsDawn의 렌더링 핵심과 무료 marsdawn 명령줄 도구는 이미 Apache-2.0 라이선스로 mars-dawn-kit에서 오픈 소스로 공개되어 있습니다. 그리고 MarsDawn 개발자가 언젠가 앱 유지 관리를 그만두게 되면, 다른 사람이 이어받을 수 있도록 앱 자체의 소스 코드를 오픈 소스 라이선스로 공개합니다.
+네. MarsDawn이 Mac App Store에 나온 뒤의 모든 업데이트는 변경 내역에 있고, 2026년 10월 28일부터는 iPhone과 iPad에서도 MarsDawn으로 문서를 읽을 수 있습니다. MarsDawn의 렌더링 핵심과 무료 marsdawn 명령줄 도구는 이미 Apache-2.0 라이선스로 mars-dawn-kit에서 오픈 소스로 공개되어 있습니다. 그리고 MarsDawn 개발자가 언젠가 앱 유지 관리를 그만두게 되면, 다른 사람이 이어받을 수 있도록 앱 자체의 소스 코드를 오픈 소스 라이선스로 공개합니다.
 
 자세히: [변경 내역](/ko/changelog/) · [로드맵](/ko/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
@@ -177,7 +177,7 @@ MarsDawn 자체는 아무것도 보내지 않습니다. 스킬은 지침을 적�
 - [무료로 체험하고, 한 번만 구입](https://marsdawn.southern-light.dev/ko/pay-once/index.md): MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다.
 - [PDF 내보내기](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록을 가르지 않도록 합니다.
 - [Mac 앱](https://marsdawn.southern-light.dev/ko/native/index.md): 진짜 Mac 앱인 Markdown 편집기. 네이티브 윈도우와 탭, 자동 저장, 버전 기록, Finder의 훑어보기, 그리고 Mac답게 동작하는 텍스트 편집기를 갖췄습니다.
-- [MarsDawn이 하지 않는 일](https://marsdawn.southern-light.dev/ko/limits/index.md): 동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 테마는 바꿀 수 있지만 사용자 지정 CSS는 없습니다. 구입 전에 알아 두세요.
+- [MarsDawn이 하지 않는 일](https://marsdawn.southern-light.dev/ko/limits/index.md): 동기화도, iPhone·iPad에서의 편집도, 플러그인도, 계정도 없습니다. 테마는 바꿀 수 있지만 사용자 지정 CSS는 없습니다. 구입 전에 알아 두세요.
 - [지원](https://marsdawn.southern-light.dev/ko/support/index.md): macOS용 Markdown 편집기 MarsDawn에 관한 도움말입니다.
 - [개인정보 처리방침](https://marsdawn.southern-light.dev/ko/privacy/index.md): MarsDawn은 개인정보를 수집하지 않습니다. 문서와 설정은 사용자의 Mac에 남습니다.
 - [Mac에서 .md 파일 여는 방법](https://marsdawn.southern-light.dev/ko/view-markdown-on-mac/index.md): Mac에서 .md 파일을 여는 방법: 더블 클릭, 기본 앱 지정, Finder 훑어보기. AI 에이전트가 쓴 .md 파일은 MarsDawn에서 렌더링된 모습으로 읽으세요.

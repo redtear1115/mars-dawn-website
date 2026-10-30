@@ -104,7 +104,7 @@ Non. MarsDawn se télécharge gratuitement, avec 14 jours d’essai de toutes le
 
 ### MarsDawn fonctionne-t-il sur iPhone ou iPad ?
 
-Pas encore. MarsDawn est une app Mac et demande macOS 26 ou une version ultérieure. Une version pour iPhone et iPad est en préparation, mais elle n’est pas encore disponible.
+Oui, pour la lecture. Sur iPhone et iPad, MarsDawn ouvre les fichiers Markdown et met en forme les diagrammes Mermaid, les formules, le code et les tableaux, avec un plan et des thèmes. Il ne permet ni de modifier, ni d’exporter en PDF, ni de synchroniser. Il demande iOS 26 ou iPadOS 26 ou une version ultérieure. Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.
 
 En savoir plus : [Feuille de route](/fr/roadmap/)
 
@@ -144,7 +144,7 @@ En savoir plus : [MarsDawn comparé aux autres outils](/fr/vs/) · [Meilleur lec
 
 ### MarsDawn sera-t-il maintenu dans la durée ?
 
-Oui. Chaque mise à jour depuis l’arrivée de MarsDawn sur le Mac App Store figure dans l’historique des versions, et une version pour iPhone et iPad est en préparation. Le cœur de rendu de MarsDawn et l’outil en ligne de commande gratuit marsdawn sont déjà open source sous licence Apache-2.0, dans mars-dawn-kit. Et si le développeur de MarsDawn arrête un jour de maintenir l’app, le code source de l’app elle-même sera publié sous une licence open source, pour que d’autres puissent la reprendre.
+Oui. Chaque mise à jour depuis l’arrivée de MarsDawn sur le Mac App Store figure dans l’historique des versions, et depuis le 28 octobre 2026, MarsDawn est aussi sur iPhone et iPad, pour la lecture. Le cœur de rendu de MarsDawn et l’outil en ligne de commande gratuit marsdawn sont déjà open source sous licence Apache-2.0, dans mars-dawn-kit. Et si le développeur de MarsDawn arrête un jour de maintenir l’app, le code source de l’app elle-même sera publié sous une licence open source, pour que d’autres puissent la reprendre.
 
 En savoir plus : [Historique des versions](/fr/changelog/) · [Feuille de route](/fr/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
 
@@ -177,7 +177,7 @@ Sur cette capture d’écran :
 - [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
 - [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.
 - [Une app Mac](https://marsdawn.southern-light.dev/fr/native/index.md): Un éditeur Markdown qui est une vraie app Mac : fenêtres et onglets natifs, enregistrement automatique, historique des versions, Coup d’œil dans le Finder et un éditeur de texte qui se comporte comme sur Mac.
-- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
+- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas de modification sur iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
 - [Assistance](https://marsdawn.southern-light.dev/fr/support/index.md): De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
 - [Politique de confidentialité](https://marsdawn.southern-light.dev/fr/privacy/index.md): MarsDawn ne collecte aucune donnée personnelle. Vos documents et vos réglages restent sur votre Mac.
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.

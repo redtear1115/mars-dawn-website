@@ -414,7 +414,7 @@ VS_MACMD = {'title': 'MacMD Viewer와 MarsDawn: Markdown 뷰어일까, 편집기
                        '무료 `marsdawn` 도구: `marsdawn export`는 앱 없이 PDF를 만들고, `marsdawn open`은 지정한 줄에서 파일을 엶'],
                       ['인터페이스 언어', '자체 자료에 기재되어 있지 않음 [S1, S3, S7]', '{langs}'],
                       ['요구 사항', 'macOS 14(Sonoma) 이상, Apple 실리콘과 Intel [S1, S7]', 'macOS 26(Tahoe) 이상'],
-                      ['다른 플랫폼', 'Mac 전용 [S1]', 'Mac 전용. iPhone이나 iPad 앱은 없음']]},
+                      ['다른 플랫폼', 'Mac 전용 [S1]', 'Mac. iPhone과 iPad에서는 읽기 전용']]},
             {'h2': '가격과 구입 방법',
              'head': ['', 'MacMD Viewer', 'MarsDawn'],
              'rows': [['구입처', '자체 사이트, Homebrew 또는 Setapp. Mac App Store에는 없음 [S2, S7]', 'Mac App Store에서만'],
@@ -554,6 +554,7 @@ def build(k) -> dict:
 <ul>
   <li>체험에도 요금이 청구되지 않습니다. 체험이 끝나도 잠금 해제를 선택하지 않는 한 아무것도 구입되지 않습니다.</li>
   <li>계정이 없습니다. MarsDawn은 계정을 만들라고 요구하지 않습니다.</li>
+  <li>같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다.</li>
 </ul>
 <h2>단계별로 쓸 수 있는 기능</h2>
 <!--compare:pay-once-states-->
@@ -616,7 +617,7 @@ def build(k) -> dict:
     }
     pages['limits'] = {
         "title": 'MarsDawn이 하지 않는 일 · MarsDawn',
-        "description": '동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 테마는 바꿀 수 있지만 사용자 지정 CSS는 없습니다. 구입 전에 알아 두세요.',
+        "description": '동기화도, iPhone·iPad에서의 편집도, 플러그인도, 계정도 없습니다. 테마는 바꿀 수 있지만 사용자 지정 CSS는 없습니다. 구입 전에 알아 두세요.',
         "intro": """
 <section class="intro">
   <h1>MarsDawn이 하지 않는 일.</h1>
@@ -628,9 +629,9 @@ def build(k) -> dict:
 <h3>기기와 사람</h3>
 <ul>
   <li><strong>동기화:</strong> MarsDawn은 문서를 동기화하지 않습니다. 문서는 저장한 곳에 있으므로, 다른 Mac에서 쓰려면 이미 동기화하고 있는 폴더에 두세요.</li>
-  <li><strong>iPhone과 iPad:</strong> 이들을 위한 앱은 없습니다. MarsDawn은 Mac용입니다.</li>
+  <li><strong>iPhone과 iPad:</strong> 이 기기에서는 읽기 전용입니다. Markdown과 텍스트 파일을 열어 렌더링하고 개요와 테마도 쓸 수 있지만, 편집, PDF 내보내기, 동기화는 할 수 없습니다. 파일은 이미 쓰고 있는 클라우드를 통해 옮깁니다.</li>
   <li><strong>공유:</strong> MarsDawn은 자기 Mac을 쓰는 한 사람을 위한 앱이라 계정도 공동 편집도 없습니다.</li>
-  <li><strong>시스템:</strong> MarsDawn은 macOS 26 이상이 필요합니다.</li>
+  <li><strong>시스템:</strong> MarsDawn은 Mac에서는 macOS 26 이상, iPhone과 iPad에서는 iOS 26 또는 iPadOS 26 이상이 필요합니다.</li>
 </ul>
 <h3>파일과 기능</h3>
 <ul>

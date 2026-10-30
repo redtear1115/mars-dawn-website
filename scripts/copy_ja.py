@@ -411,7 +411,7 @@ VS_MACMD = {'title': 'MacMD Viewer と MarsDawn：Markdown のビューアか、
                        'は行を指定してファイルを開く'],
                       ['インターフェイスの言語', '公式の資料に記載なし [S1, S3, S7]', '{langs}'],
                       ['動作環境', 'macOS 14（Sonoma）以降。Apple シリコンと Intel [S1, S7]', 'macOS 26（Tahoe）以降'],
-                      ['ほかのプラットフォーム', 'Mac のみ [S1]', 'Mac のみ。iPhone や iPad のアプリはない']]},
+                      ['ほかのプラットフォーム', 'Mac のみ [S1]', 'Mac。iPhone と iPad では閲覧のみ']]},
             {'h2': '価格と購入方法',
              'head': ['', 'MacMD Viewer', 'MarsDawn'],
              'rows': [['購入場所', '公式サイト、Homebrew、Setapp。Mac App Store には掲載なし [S2, S7]', 'Mac App Store のみ'],
@@ -591,6 +591,7 @@ def build(k) -> dict:
 <ul>
   <li>トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。</li>
   <li>アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。</li>
+  <li>同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。</li>
 </ul>
 <h2>各段階でできること</h2>
 <!--compare:pay-once-states-->
@@ -653,7 +654,7 @@ def build(k) -> dict:
     }
     pages['limits'] = {
         "title": "MarsDawn ができないこと · MarsDawn",
-        "description": '同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。',
+        "description": '同期なし、iPhone・iPad では編集不可、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。',
         "intro": f"""
 <section class="intro">
   <h1>MarsDawn ができないこと。</h1>
@@ -665,9 +666,9 @@ def build(k) -> dict:
 <h3>デバイスと使う人</h3>
 <ul>
   <li><strong>同期：</strong>MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。</li>
-  <li><strong>iPhone と iPad：</strong>これらの端末向けアプリはありません。MarsDawn は Mac 専用です。</li>
+  <li><strong>iPhone と iPad：</strong>これらの端末では閲覧専用です。Markdown とテキストファイルを開いて整えて表示し、アウトラインとテーマも使えますが、編集、PDF の書き出し、同期はできません。ファイルは、普段使っているクラウドを通して届けます。</li>
   <li><strong>共有：</strong>アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。</li>
-  <li><strong>システム：</strong>MarsDawn には macOS 26 以降が必要です。</li>
+  <li><strong>システム：</strong>MarsDawn には、Mac では macOS 26 以降、iPhone と iPad では iOS 26 または iPadOS 26 以降が必要です。</li>
 </ul>
 <h3>ファイルと機能</h3>
 <ul>

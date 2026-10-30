@@ -551,7 +551,7 @@ VS_MACMD = {'title': 'MacMD Viewer ou MarsDawn\xa0: visionneuse ou éditeur Mark
                        'macOS 26 (Tahoe) ou version ultérieure'],
                       ['Autres plateformes',
                        'Mac uniquement [S1]',
-                       'Mac uniquement. Pas d’app pour iPhone ou iPad']]},
+                       'Mac, plus iPhone et iPad en lecture seule']]},
             {'h2': 'Prix et mode d’achat',
              'head': ['', 'MacMD Viewer', 'MarsDawn'],
              'rows': [['Où l’acheter',
@@ -712,6 +712,7 @@ def build(k) -> dict:
 <ul>
   <li>L’essai ne vous coûte rien non plus. À la fin, rien n’est acheté, sauf si vous choisissez de déverrouiller.</li>
   <li>Il n’y a pas de compte. MarsDawn ne vous demande jamais d’en créer un.</li>
+  <li>Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad. Sur iPhone et iPad, MarsDawn sert à lire : il ne permet ni de modifier ni d’exporter en PDF.</li>
 </ul>
 <h2>Ce qui fonctionne, et quand</h2>
 <!--compare:pay-once-states-->
@@ -774,7 +775,7 @@ def build(k) -> dict:
     }
     pages['limits'] = {
         "title": 'Ce que MarsDawn ne fait pas · MarsDawn',
-        "description": 'Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.',
+        "description": 'Pas de synchronisation, pas de modification sur iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.',
         "intro": """
 <section class="intro">
   <h1>Ce que MarsDawn ne fait pas.</h1>
@@ -786,9 +787,9 @@ def build(k) -> dict:
 <h3>Appareils et personnes</h3>
 <ul>
   <li><strong>Synchronisation :</strong> MarsDawn ne synchronise pas vos documents. Ils restent là où vous les enregistrez ; pour en utiliser un sur un autre Mac, gardez-le dans un dossier que vous synchronisez déjà.</li>
-  <li><strong>iPhone et iPad :</strong> il n’existe pas d’app pour eux ; MarsDawn est fait pour le Mac.</li>
+  <li><strong>iPhone et iPad :</strong> MarsDawn y sert à lire. Il ouvre les fichiers Markdown et texte et les met en forme, avec un plan et des thèmes, mais il ne permet ni de modifier, ni d’exporter en PDF, ni de synchroniser. Vos fichiers y arrivent par le cloud que vous utilisez déjà.</li>
   <li><strong>Partage :</strong> il n’y a ni comptes ni édition partagée, car MarsDawn est conçu pour une personne, sur son propre Mac.</li>
-  <li><strong>Système :</strong> MarsDawn nécessite macOS 26 ou version ultérieure.</li>
+  <li><strong>Système :</strong> MarsDawn nécessite macOS 26 ou version ultérieure sur Mac, et iOS 26 ou iPadOS 26 ou version ultérieure sur iPhone et iPad.</li>
 </ul>
 <h3>Fichiers et fonctionnalités</h3>
 <ul>

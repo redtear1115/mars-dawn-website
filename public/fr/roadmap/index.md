@@ -10,32 +10,16 @@ Les plans peuvent changer : un élément peut passer à une autre version ou êt
 
 Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/changelog/).
 
-## En cours
-
-### Mac 1.2.0
-
-- Une barre de format au-dessus de la source, avec un menu Format et des raccourcis clavier.
-- Ask AI : envoyer le texte sélectionné, avec le nom du fichier, les numéros de ligne et votre prompt, à Claude ou ChatGPT.
-- Copier en RTF, pour coller le document mis en forme dans Google Docs, Notion, Mail ou Pages.
-- Créer à partir du presse-papiers : collez du Markdown, y compris une sortie d’IA aux caractères échappés, et voyez le rendu.
-- La mise en page « Guide » pour l’export PDF : pages du corps numérotées à partir de 1, « n / N » en pied de page et une marge de reliure à gauche.
-- Compatibilité HackMD : son réglage des sauts de ligne et sa syntaxe.
-- Installez l’app, l’outil en ligne de commande marsdawn ou le skill d’agent, et MarsDawn vous aide à ajouter les deux autres.
-
-### iPhone et iPad (iOS 1.0)
-
-- Lire du Markdown sur iPhone et iPad avec le même aperçu que sur Mac.
-
 ## Ensuite
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - Ouvrir du JSON et du YAML, les modifier et voir un aperçu en arborescence en direct à côté de la source.
 - Ouvrir une URL : lire du Markdown depuis un lien public sur GitHub, un Gist ou un fichier brut.
 - Encadrés : les alertes GitHub et les blocs `:::` de HackMD.
 - Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.
 
-### Mac 1.2.2
+### Mac 1.2.3
 
 - Après qu’un agent a modifié un fichier, voir quels blocs ont changé.
 - Un visualiseur d’images pour PNG, JPEG, GIF et WebP.
@@ -60,7 +44,7 @@ Il vous manque quelque chose ? [Écrivez-nous](mailto:support@southern-light.dev
 - [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
 - [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.
 - [Une app Mac](https://marsdawn.southern-light.dev/fr/native/index.md): Un éditeur Markdown qui est une vraie app Mac : fenêtres et onglets natifs, enregistrement automatique, historique des versions, Coup d’œil dans le Finder et un éditeur de texte qui se comporte comme sur Mac.
-- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
+- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas de modification sur iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
 - [Assistance](https://marsdawn.southern-light.dev/fr/support/index.md): De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
 - [Politique de confidentialité](https://marsdawn.southern-light.dev/fr/privacy/index.md): MarsDawn ne collecte aucune donnée personnelle. Vos documents et vos réglages restent sur votre Mac.
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.

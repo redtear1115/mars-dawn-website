@@ -10,32 +10,16 @@
 
 已推出的內容都在[更新紀錄](/zh-hant/changelog/)裡。
 
-## 進行中
-
-### Mac 1.2.0
-
-- 原始碼上方加入格式列，另有「格式」選單和快速鍵。
-- Ask AI：把選取的文字連同檔名、行號和你的提示詞，送到 Claude 或 ChatGPT。
-- 拷貝為 RTF：把算繪好的文件貼進 Google 文件、Notion、郵件或 Pages。
-- 從剪貼板新增：貼上 Markdown，連 AI 輸出時被跳脫的字元也一樣，直接看算繪結果。
-- PDF 輸出的「手冊」版面：內文頁碼從 1 起算、頁尾顯示「n / N」、左側留裝訂邊。
-- 相容 HackMD：支援它的換行設定和語法。
-- App、marsdawn 命令列工具、agent skill 裝了其中一個，MarsDawn 會帶你裝好另外兩個。
-
-### iPhone 與 iPad（iOS 1.0）
-
-- 在 iPhone 和 iPad 上讀 Markdown，預覽和 Mac 版一樣。
-
 ## 接下來
 
-### Mac 1.2.1
+### Mac 1.2.2
 
 - 開啟 JSON 和 YAML，可以編輯，旁邊是即時的樹狀預覽。
 - 開啟網址：從 GitHub、Gist 或 raw 檔的公開連結讀 Markdown。
 - 提示框：支援 GitHub alerts 和 HackMD 的 `:::` 區塊。
 - 一鍵把 Claude Code 的 Plans 資料夾加進側邊欄，最新的計畫排在最上面。
 
-### Mac 1.2.2
+### Mac 1.2.3
 
 - agent 改了檔案之後，看得出哪些區塊變了。
 - 圖片檢視器：開啟 PNG、JPEG、GIF、WebP。
@@ -60,7 +44,7 @@
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。
 - [為 Mac 而做](https://marsdawn.southern-light.dev/zh-hant/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
-- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、沒有 iPhone 或 iPad 版、沒有外掛、不需要帳號；可以換主題，但不能自訂 CSS。購買前先知道。
+- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、iPhone 和 iPad 上不能編輯、沒有外掛、不需要帳號；可以換主題，但不能自訂 CSS。購買前先知道。
 - [支援](https://marsdawn.southern-light.dev/zh-hant/support/index.md): MarsDawn（macOS Markdown 編輯器）的使用說明與聯絡方式。
 - [隱私權政策](https://marsdawn.southern-light.dev/zh-hant/privacy/index.md): MarsDawn 不收集任何個人資料，你的文件與設定都留在你的 Mac 上。
 - [Mac 怎麼開 md 檔](https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/index.md): Mac 怎麼開 md 檔：雙擊、設成預設 App、在 Finder 用快速查看。AI agent 寫出來的 .md，也可以用 MarsDawn 打開，讀排好版的頁面。

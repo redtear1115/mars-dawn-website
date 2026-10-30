@@ -366,7 +366,7 @@ VS_MACMD = {'title': 'MacMD Viewer 对比 MarsDawn：Markdown 查看器还是编
                        '免费的 `marsdawn` 工具：`marsdawn export` 不需要 app 就能导出 PDF，`marsdawn open` 能在指定行打开文件'],
                       ['界面语言', '自己的资料没有写明 [S1, S3, S7]', '{langs}'],
                       ['系统要求', 'macOS 14（Sonoma）或更高版本；Apple 芯片与 Intel [S1, S7]', 'macOS 26（Tahoe）或更高版本'],
-                      ['其他平台', '只有 Mac [S1]', '只有 Mac，没有 iPhone 或 iPad 版']]},
+                      ['其他平台', '只有 Mac [S1]', 'Mac；iPhone 和 iPad 上只能阅读']]},
             {'h2': '价格与购买方式',
              'head': ['', 'MacMD Viewer', 'MarsDawn'],
              'rows': [['从哪里买', '自己的网站、Homebrew 或 Setapp；没有在 Mac App Store 上架 [S2, S7]', '只在 Mac App Store'],
@@ -819,7 +819,7 @@ swift build -c release --product marsdawn
     }
     pages['limits'] = {
         "title": 'MarsDawn 做不到的事 · MarsDawn',
-        "description": '没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户；可以换主题，但不能自定义 CSS。购买前先知道。',
+        "description": '没有同步、iPhone 和 iPad 上不能编辑、没有插件、不需要账户；可以换主题，但不能自定义 CSS。购买前先知道。',
         "intro": f"""
 <section class="intro">
   <h1>MarsDawn 做不到的事。</h1>
@@ -831,9 +831,9 @@ swift build -c release --product marsdawn
 <h3>设备与使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。</li>
-  <li><strong>iPhone 和 iPad：</strong>没有这两个平台的版本，MarsDawn 只给 Mac。</li>
+  <li><strong>iPhone 和 iPad：</strong>MarsDawn 在这两种设备上只能阅读：可以打开 Markdown 和纯文本文件并排好显示，也有大纲和主题，但不能编辑、不能导出 PDF，也不会同步。文件通过你自己用的云端传过去。</li>
   <li><strong>分享：</strong>没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。</li>
-  <li><strong>系统：</strong>MarsDawn 需要 macOS 26 以上。</li>
+  <li><strong>系统：</strong>MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。</li>
 </ul>
 <h3>文件与功能</h3>
 <ul>
@@ -935,6 +935,7 @@ marsdawn --version</code></pre>
 <ul>
   <li>试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。</li>
   <li>不需要账户，MarsDawn 从不要求你创建账户。</li>
+  <li>用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。</li>
 </ul>
 <h2>各阶段能做什么</h2>
 <!--compare:pay-once-states-->

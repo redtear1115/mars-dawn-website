@@ -1,10 +1,10 @@
 # Datenschutzrichtlinie
 
-Wie MarsDawn, der Markdown-Editor für macOS, mit deinen Daten umgeht.
+Wie MarsDawn, die Markdown-App für Mac, iPhone und iPad, mit deinen Daten umgeht.
 
-Zuletzt aktualisiert am 2026-10-25
+Zuletzt aktualisiert am 2026-10-29
 
-> **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinem Mac.
+> **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinen Geräten.
 
 ## Die Website
 
@@ -74,7 +74,7 @@ Die App MarsDawn erhebt von niemandem Daten, auch nicht von Kindern. Ein auf der
 
 ## Käufe
 
-MarsDawn wird über den Mac App Store verkauft. Apple wickelt den Kauf nach eigenen Bedingungen ab, und der Entwickler erhält nie deine Zahlungsdaten.
+MarsDawn wird über den App Store verkauft, für Mac, iPhone und iPad. Apple wickelt den Kauf nach eigenen Bedingungen ab, und der Entwickler erhält nie deine Zahlungsdaten.
 
 ## Änderungen dieser Richtlinie
 
