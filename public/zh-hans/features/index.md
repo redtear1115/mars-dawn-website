@@ -206,6 +206,10 @@ MarsDawn 没有自己的 AI 模型。它不会帮你摘要或评分代理写的�
 
 [为 Mac 而做](/zh-hans/native/)
 
+## 观看影片
+
+[MarsDawn 影片，54 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
+
 ## 页面打印出来之后
 
 大家围着打印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。
