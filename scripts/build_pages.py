@@ -98,8 +98,18 @@ FEATURES_IPHONE_CAMPAIGN = "web-mac-iphone"
 HOME_CLOSE_CAMPAIGN = "web-close"
 PRICING_CAMPAIGN = "web-pricing"
 
-# TODO(#333): per-locale wording from Aria; English everywhere until then.
-APPLE_TRADEMARK_NOTICE = "Apple, the Apple logo, App Store, iPhone, iPad and Mac are trademarks of Apple Inc., registered in the U.S. and other countries and regions."
+# Apple's trademark notice in every footer, in each locale's own language (#333, approved by the
+# owner 2026-10-31), brand names kept in Latin letters as Apple's regional sites do.
+APPLE_TRADEMARK_NOTICE = {
+    "en": "Apple, the Apple logo, Mac, iPhone, iPad and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store and Mac App Store are service marks of Apple Inc.",
+    "zh-hant": "Apple、Apple 標誌、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美國及其他國家和地區註冊的商標。App Store 和 Mac App Store 是 Apple Inc. 的服務標誌。",
+    "zh-hans": "Apple、Apple 标志、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美国和其他国家和地区注册的商标。App Store 和 Mac App Store 是 Apple Inc. 的服务商标。",
+    "ja": "Apple、Apple のロゴ、Mac、iPhone、iPad、iCloud は、米国およびその他の国や地域で登録された Apple Inc. の商標です。App Store および Mac App Store は Apple Inc. のサービスマークです。",
+    "ko": "Apple, Apple 로고, Mac, iPhone, iPad 및 iCloud는 미국 및 기타 국가와 지역에서 등록된 Apple Inc.의 상표입니다. App Store 및 Mac App Store는 Apple Inc.의 서비스 마크입니다.",
+    "de": "Apple, das Apple Logo, Mac, iPhone, iPad und iCloud sind Marken der Apple Inc., die in den USA und weiteren Ländern und Regionen eingetragen sind. App Store und Mac App Store sind Dienstleistungsmarken der Apple Inc.",
+    "fr": "Apple, le logo Apple, Mac, iPhone, iPad et iCloud sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres pays et régions. App Store et Mac App Store sont des marques de service d’Apple Inc.",
+    "es": "Apple, el logotipo de Apple, Mac, iPhone, iPad e iCloud son marcas comerciales de Apple Inc., registradas en EE. UU. y en otros países y regiones. App Store y Mac App Store son marcas de servicio de Apple Inc.",
+}
 
 # Each badge's width at height 40, rounded: width/height attributes take whole pixels (the CSS keeps
 # the SVG's own proportions).
@@ -980,7 +990,7 @@ def third_party_notices_html() -> str:
         '<footer class="footer">\n'
         f'{site_footer_nav_html("en")}'
         f'  <p class="footer-meta"><span>{ui["slogan"]}</span> <span>{ui["footer_store"]}</span> '
-        f'<span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>\n  <p class="footer-legal">{APPLE_TRADEMARK_NOTICE}</p>\n</footer>'
+        f'<span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>\n  <p class="footer-legal">{APPLE_TRADEMARK_NOTICE["en"]}</p>\n</footer>'
     )
     return f"""<!doctype html>
 <html lang="en">
@@ -5152,6 +5162,99 @@ def hero_cta_html(locale: str) -> str:
             f'<span class="store-chip">{STORE_CHIP[locale]}</span></p>')
 
 
+# MARK: Home hero (#330, #327 B)
+#
+# The hero's parts, each its own function, so the sections that follow it (#331, #332, #335) can
+# change the page around the hero without reaching into it. Order (#327 B): kicker, headline,
+# subtitle, the store badge, the "write on the Mac, read on iPhone and iPad" line, the system
+# requirements, then the long definition paragraph; beside it, the MarsDawn window with an iPhone
+# screenshot over its lower right. The copy is #333's, approved by the owner 2026-10-31.
+
+# The one line on the first screen that names iPhone: writing and reading side by side, so someone
+# with only an iPhone sees what the iPhone app is for (#327 condition 1). No full stop: a tagline.
+HERO_DEVICES = {
+    "en": "Write on the Mac, read on iPhone and iPad",
+    "zh-hant": "在 Mac 上寫，在 iPhone 和 iPad 上讀",
+    "zh-hans": "在 Mac 上写，在 iPhone 和 iPad 上读",
+    "ja": "Mac で書いて、iPhone と iPad で読む",
+    "ko": "Mac에서 쓰고, iPhone과 iPad에서 읽기",
+    "de": "Auf dem Mac schreiben, auf iPhone und iPad lesen",
+    "fr": "Écrire sur Mac, lire sur iPhone et iPad",
+    "es": "Escribe en Mac, lee en iPhone y iPad",
+}
+# The same in every language on screen; the full sentence, with "or later", for screen readers.
+HERO_REQUIREMENTS = "macOS 26 · iOS 26 · iPadOS 26"
+HERO_REQUIREMENTS_LABEL = {
+    "en": "Requires macOS 26, iOS 26 or iPadOS 26 or later",
+    "zh-hant": "需要 macOS 26、iOS 26 或 iPadOS 26 以上",
+    "zh-hans": "需要 macOS 26、iOS 26 或 iPadOS 26 以上",
+    "ja": "macOS 26、iOS 26、iPadOS 26 以降が必要です",
+    "ko": "macOS 26, iOS 26 또는 iPadOS 26 이상이 필요합니다",
+    "de": "Ab macOS 26, iOS 26 und iPadOS 26",
+    "fr": "À partir de macOS 26, iOS 26 et iPadOS 26",
+    "es": "Requiere macOS 26, iOS 26 o iPadOS 26 o posterior",
+}
+
+# The iPhone screenshot over the window (#329): one capture, en, for every locale. Its files have
+# generic names (public/assets/hero/iphone-<light|dark>-<width>.webp) so that replacing the capture,
+# with a regular iPhone's for one, is replacing those files and HERO_PHONE_SIZE, nothing else.
+# HERO_PHONE_SIZE is the largest file's size; the page reserves that shape before it loads (CLS).
+HERO_PHONE_WIDTHS = (420, 840)
+HERO_PHONE_SIZE = (840, 1826)
+# Its alt, from #333's table: the light capture's sentence, which says what the picture shows; the
+# dark one is the same picture in the dark palette.
+HERO_PHONE_ALT = {
+    "en": "MarsDawn on iPhone showing an agent's checkout plan with a Mermaid flowchart, in the Dawn theme, light",
+    "zh-hant": "iPhone 上的 MarsDawn，顯示 agent 寫的結帳計畫和一張 Mermaid 流程圖，黎明主題淺色",
+    "zh-hans": "iPhone 上的 MarsDawn，显示代理写的结账计划和一张 Mermaid 流程图，黎明主题浅色",
+    "ja": "iPhone の MarsDawn に、エージェントが書いたチェックアウトの計画書と Mermaid のフローチャートを表示（夜明けテーマ、ライト）",
+    "ko": "iPhone의 MarsDawn에서 에이전트가 쓴 결제 계획서와 Mermaid 순서도를 표시한 화면(새벽 테마, 라이트)",
+    "de": "MarsDawn auf dem iPhone mit dem Checkout-Plan eines Agents und einem Mermaid-Flussdiagramm, Thema Morgenrot, hell",
+    "fr": "MarsDawn sur iPhone affichant le plan de paiement d’un agent avec un organigramme Mermaid, thème Aube, clair",
+    "es": "MarsDawn en iPhone mostrando el plan de pago de un agente con un diagrama de flujo de Mermaid, tema Amanecer, claro",
+}
+
+
+def hero_devices_html(locale: str) -> str:
+    """The devices line and the system requirements, under the store badge."""
+    # The short form is shown and hidden from screen readers; the full sentence, with "or later", is
+    # read and not shown. Not an aria-label: a <p> may not be named, so readers skip it (#338 P2).
+    return (f'<p class="hero-devices">{xml_escape(HERO_DEVICES[locale])}</p>\n'
+            f'<p class="hero-req"><span aria-hidden="true">{xml_escape(HERO_REQUIREMENTS)}</span>'
+            f'<span class="visually-hidden">{xml_escape(HERO_REQUIREMENTS_LABEL[locale])}</span></p>')
+
+
+def hero_intro_html(locale: str, intro: str) -> str:
+    """The home intro with the badge, the devices line and the requirements put between the
+    subtitle and the definition paragraph (#327 B), so all three are on a phone's first screen."""
+    after = f"{price.sale_line_html(locale)}{hero_cta_html(locale)}\n{hero_devices_html(locale)}\n"
+    marker = '<p class="definition">'
+    assert intro.count(marker) == 1, f"{locale}: the home intro has no single definition paragraph"
+    return intro.replace(marker, after + "  " + marker, 1)
+
+
+def hero_phone_html(locale: str) -> str:
+    """The iPhone screenshot, light or dark with the visitor's appearance, at its own size."""
+    def srcset(appearance: str) -> str:
+        return ", ".join(f"/assets/hero/iphone-{appearance}-{w}.webp {w}w" for w in HERO_PHONE_WIDTHS)
+    # The phone's shown width: about 230 px wide on a desktop, 190 px from 640 px (sized by the
+    # window's height), and about 35% of the viewport on a phone (#338 P3-1).
+    sizes = "(min-width: 1100px) 230px, (min-width: 640px) 190px, 35vw"
+    width, height = HERO_PHONE_SIZE
+    alt = xml_escape(HERO_PHONE_ALT[locale], {chr(34): "&quot;"})
+    return ('<picture class="hero-phone">\n'
+            f'  <source media="(prefers-color-scheme: dark)" type="image/webp" srcset="{srcset("dark")}" sizes="{sizes}">\n'
+            f'  <img src="/assets/hero/iphone-light-{HERO_PHONE_WIDTHS[-1]}.webp" srcset="{srcset("light")}" sizes="{sizes}" '
+            f'width="{width}" height="{height}" alt="{alt}" decoding="async">\n'
+            '</picture>')
+
+
+def hero_stage_html(locale: str) -> str:
+    """The window, with the iPhone screenshot over its lower right (#327 B): the same picture,
+    scaled, at every width, the phone always narrower than the window."""
+    return f'<div class="hero-stage">\n{hero_window.window_html(locale)}\n{hero_phone_html(locale)}\n</div>'
+
+
 def closing_cta_html(locale: str) -> str:
     """The closing line's one link: the app's listing once there is one, the CLI install before."""
     home = HOME[locale]
@@ -6917,8 +7020,8 @@ def render(locale: str, slug: str, page: dict) -> str:
             '<section class="hero-scene">\n'
             f"{DAWN_HERO_SVG}\n"
             '<div class="hero-inner">\n'
-            f'<div class="hero-copy">\n{page["intro"].strip()}\n{price.sale_line_html(locale)}{hero_cta_html(locale)}\n</div>\n'
-            f'<div class="hero-shot">\n{hero_window.window_html(locale)}\n</div>\n'
+            f'<div class="hero-copy">\n{hero_intro_html(locale, page["intro"].strip())}\n</div>\n'
+            f'<div class="hero-shot">\n{hero_stage_html(locale)}\n</div>\n'
             "</div>\n"
             "</section>"
         )
@@ -6988,7 +7091,7 @@ def render(locale: str, slug: str, page: dict) -> str:
     footer_html = (
         f'<footer class="footer{" footer-home" if slug == "index" else ""}">\n'
         f'{footer_links}'
-        f'  <p class="footer-meta">{footer_meta}</p>\n  <p class="footer-legal">{APPLE_TRADEMARK_NOTICE}</p>\n</footer>'
+        f'  <p class="footer-meta">{footer_meta}</p>\n  <p class="footer-legal">{APPLE_TRADEMARK_NOTICE[locale]}</p>\n</footer>'
     )
     # A page in LEGAL_PAGES carries its markdown-body content in the kit's own Dawn palette
     # (themes.css's `:root[data-theme="dawn"]`); the attribute goes on <html>, not the div
@@ -7288,7 +7391,7 @@ def render_404(locale: str) -> str:
     footer_html = (
         '<footer class="footer">\n'
         f'{footer_links}'
-        f'  <p class="footer-meta">{footer_meta}</p>\n  <p class="footer-legal">{APPLE_TRADEMARK_NOTICE}</p>\n</footer>'
+        f'  <p class="footer-meta">{footer_meta}</p>\n  <p class="footer-legal">{APPLE_TRADEMARK_NOTICE[locale]}</p>\n</footer>'
     )
     return f"""<!doctype html>
 <html lang="{lang}">
