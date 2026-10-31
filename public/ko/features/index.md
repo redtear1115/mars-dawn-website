@@ -206,6 +206,10 @@ MarsDawn에는 자체 AI 모델이 없습니다. 에이전트가 쓴 글을 요�
 
 [Mac 앱](/ko/native/)
 
+## 영상 보기
+
+[MarsDawn 영상(영어), 54초](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
+
 ## 페이지를 프린트한 뒤
 
 프린트한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.

@@ -31,3 +31,18 @@
   border-radius: var(--r-plate);
   background: #000;
 }
+
+/* The first brand film on /features/ (scripts/brand_film_mac.py, website #159). It has no animation or
+   transition of its own, so there is no reduced-motion rule to write. */
+.film-mac { margin-top: 48px; }
+.film-mac h2 { margin-top: 0; }
+/* --w-media (site.css): the same edges as the hero window, the loop and the screenshot plates. */
+.film-mac video {
+  display: block;
+  width: max(100%, var(--w-media));
+  margin-inline: calc((100% - max(100%, var(--w-media))) / 2);
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: var(--r-plate);
+  background: #000;
+}

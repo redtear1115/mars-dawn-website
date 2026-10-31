@@ -206,6 +206,10 @@ Busca MarsDawn en la app Atajos para encontrar tres acciones: Nuevo documento Ma
 
 [Una app para Mac](/es/native/)
 
+## Ver el video
+
+[Video de MarsDawn (en inglés), 54 segundos](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
+
 ## Después de imprimir la página
 
 Una reunión alrededor de páginas impresas, un bolígrafo en el margen, un registro en papel archivado.

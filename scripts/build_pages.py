@@ -4407,6 +4407,7 @@ import importlib  # noqa: E402
 import hero_window  # noqa: E402
 import brand_film  # noqa: E402
 import brand_film_themes  # noqa: E402
+import brand_film_mac  # noqa: E402
 import approved_copy  # noqa: E402
 import rich_pages  # noqa: E402
 import roadmap272  # noqa: E402
@@ -4990,6 +4991,7 @@ def features_page(copy: dict) -> dict:
             parts += [f"<h3>{_features_text(item['h'])}</h3>", f"<p>{_features_text(item['p'])}</p>", _features_more(item["links"])]
         if section["id"] in FEATURES_SHOTS:
             parts.append(f"<!--shot:{FEATURES_SHOTS[section['id']]}-->")
+    parts.append(brand_film_mac.MARK)
     parts.append(brand_film_themes.MARK)
     cta = copy["cta"]
     (trial, trial_slug), (left, left_slug) = cta["trial"], cta["left"]
@@ -5819,11 +5821,13 @@ def annotations_css() -> str:
         for index, (x, y, _, _) in enumerate(FIGURES[slug]["callouts"], start=1):
             cx, cy = cropped_position(image, x, y)
             rules.append(f".co-{slug}-{index} {{ --x: {cx}%; --y: {cy}%; }}")
-    return "\n".join(rules) + "\n\n" + brand_film_themes.CSS
+    return "\n".join(rules) + "\n\n" + brand_film_themes.CSS + "\n" + brand_film_mac.CSS
 
 
 def page_markdown(pages: dict, locale: str, slug: str) -> str:
     page = pages[(locale, slug)]
+    if brand_film_mac.MARK in page["body"]:
+        page = {**page, "body": page["body"].replace(brand_film_mac.MARK, brand_film_mac.section_markdown_html(locale, BASE_URL))}
     if brand_film_themes.MARK in page["body"]:
         page = {**page, "body": page["body"].replace(brand_film_themes.MARK, brand_film_themes.section_markdown_html(locale, BASE_URL))}
     if "intro" not in page:
@@ -7136,6 +7140,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         steps = main_html.index('<ol class="loop-steps">')
         after = main_html.index("</ul>", main_html.index("</ol>", steps)) + len("</ul>")
         main_html = main_html[:after] + "\n<p>" + store_badge_html(locale, PRICING_CAMPAIGN) + "</p>" + main_html[after:]
+    main_html = main_html.replace(brand_film_mac.MARK, brand_film_mac.section_html(locale))
     main_html = main_html.replace(brand_film_themes.MARK, brand_film_themes.section_html(locale))
     if slug in TOC_PAGES:
         main_html = add_toc(locale, slug, main_html)

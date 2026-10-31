@@ -206,6 +206,10 @@ MarsDawn は独自の AI モデルを持っていません。エージェント�
 
 [Mac アプリ](/ja/native/)
 
+## 動画を見る
+
+[MarsDawn の動画（54 秒）](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
+
 ## ページをプリントしたあと
 
 プリントしたページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。

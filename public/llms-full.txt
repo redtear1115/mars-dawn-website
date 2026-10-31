@@ -401,6 +401,10 @@ Search for MarsDawn in the Shortcuts app to find three actions: New Markdown Doc
 
 [A Mac app](/native/)
 
+## Watch the film
+
+[MarsDawn film, 54 seconds](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
+
 ## After the page is printed
 
 A meeting around printed pages, a pen in the margin, a paper record on file.
@@ -3877,6 +3881,10 @@ MarsDawn 沒有自己的 AI 模型。它不會幫你摘要或評分 agent 寫的
 在「捷徑」App 搜尋 MarsDawn，可以找到三個動作：「新增 Markdown 文件」（可選範本）、「新增筆記到收件匣」和「打開最近的文件」。筆記會加到你在「MarsDawn ▸ 設定⋯ ▸ 筆記資料夾」選的資料夾中的 `Inbox.md`。
 
 [為 Mac 而做](/zh-hant/native/)
+
+## 觀看影片
+
+[MarsDawn 影片，54 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
 
 ## 頁面印出來之後
 
@@ -7394,6 +7402,10 @@ MarsDawn 没有自己的 AI 模型。它不会帮你摘要或评分代理写的�
 
 [为 Mac 而做](/zh-hans/native/)
 
+## 观看影片
+
+[MarsDawn 影片，54 秒](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
+
 ## 页面打印出来之后
 
 大家围着打印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。
@@ -10903,6 +10915,10 @@ MarsDawn は独自の AI モデルを持っていません。エージェント�
 
 [Mac アプリ](/ja/native/)
 
+## 動画を見る
+
+[MarsDawn の動画（54 秒）](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
+
 ## ページをプリントしたあと
 
 プリントしたページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。
@@ -14411,6 +14427,10 @@ Suche in der App „Kurzbefehle“ nach MarsDawn, um drei Aktionen zu finden: Ne
 
 [Eine Mac-App](/de/native/)
 
+## Den Film ansehen
+
+[MarsDawn-Film (Englisch), 54 Sekunden](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
+
 ## Nachdem die Seite gedruckt ist
 
 Eine Besprechung rund um gedruckte Seiten, ein Stift am Rand, eine Papierakte im Ordner.
@@ -17859,6 +17879,10 @@ MarsDawn n’a pas de modèle d’IA à lui. Il ne résume pas et ne note pas ce
 Recherchez MarsDawn dans l’app Raccourcis pour trouver trois actions : Nouveau document Markdown (à partir d’un modèle), Ajouter une note à la boîte de réception et Ouvrir un document récent. Les notes vont dans `Inbox.md`, dans le dossier que vous choisissez dans MarsDawn ▸ Réglages… ▸ Dossier de notes.
 
 [Une app Mac](/fr/native/)
+
+## Voir le film
+
+[Film MarsDawn (en anglais), 54 secondes](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
 
 ## Une fois la page imprimée
 
@@ -21309,6 +21333,10 @@ Busca MarsDawn en la app Atajos para encontrar tres acciones: Nuevo documento Ma
 
 [Una app para Mac](/es/native/)
 
+## Ver el video
+
+[Video de MarsDawn (en inglés), 54 segundos](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
+
 ## Después de imprimir la página
 
 Una reunión alrededor de páginas impresas, un bolígrafo en el margen, un registro en papel archivado.
@@ -24757,6 +24785,10 @@ MarsDawn에는 자체 AI 모델이 없습니다. 에이전트가 쓴 글을 요�
 단축어 앱에서 MarsDawn을 검색하면 세 가지 동작이 있습니다. 새로운 Markdown 문서(템플릿으로 시작), 수신함에 메모 추가, 최근 사용한 문서 열기입니다. 메모는 MarsDawn ▸ 설정… ▸ 메모 폴더에서 선택한 폴더의 `Inbox.md`에 추가됩니다.
 
 [Mac 앱](/ko/native/)
+
+## 영상 보기
+
+[MarsDawn 영상(영어), 54초](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
 
 ## 페이지를 프린트한 뒤
 
