@@ -142,13 +142,13 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 代理在 Mac 上工作，它写的计划和报告，你在 iPhone 或 iPad 上也能读。
 
-1. **在 Mac 上：**把代理的计划和报告存在会同步的云端文件夹，例如 iCloud 云盘。
+1. **在 Mac 上：**把代理的计划和报告存在 iCloud 云盘里的文件夹。
 2. **在 iPhone 或 iPad 上：**打开 MarsDawn，点“打开”，选同一个文件。Mermaid 图表、数学公式、代码和表格都会排好显示，也有大纲和你选的主题。
 3. **回到 Mac：**继续编辑，或导出 PDF。
 
 用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。
 
-在 iPhone 和 iPad 上，MarsDawn 只能阅读：不能编辑、不能导出 PDF，也不会同步。文件通过你自己用的云服务传到手机，MarsDawn 本身没有同步功能。
+在 iPhone 和 iPad 上，MarsDawn 只能阅读：只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。
 
 ## 文件、标签页和快速查看
 

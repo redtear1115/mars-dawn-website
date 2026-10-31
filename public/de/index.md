@@ -8,6 +8,18 @@ MarsDawn ist eine native macOS-App zum Lesen und Prüfen von Markdown, mit getei
 
 Die Seite zeigt ein bedienbares MarsDawn-Fenster mit einem Ausschnitt aus der Einführung der App. Im Palettenmenü wählst du ein Erscheinungsbild (System, Hell, Dunkel) und für Hell und Dunkel je eines von vier Vorschau-Themen (Morgenrot, Klassisch, Modern, Lebhaft), in der Symbolleiste eines von drei Layouts (Quelltext, Geteilt, Vorschau).
 
+## Lies, was dein Agent geschrieben hat, auch fern vom Schreibtisch
+
+1. Lass deinen Agent auf dem Mac seine Dateien in einem Ordner in iCloud Drive speichern.
+2. Öffne MarsDawn auf iPhone oder iPad und wähle die Datei aus.
+3. Zum Bearbeiten oder für den PDF-Export gehst du zurück an den Mac.
+
+Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet nur Markdown- und reine Textdateien.
+
+[![Laden im App Store](/assets/badges/app-store-de.svg)](https://apps.apple.com/app/id6812925073)
+
+[Mehr zu MarsDawn auf iPhone und iPad](/de/features/#iphone-ipad)
+
 ## Lies, was dein Agent geschrieben hat.
 
 1. **Der Agent schreibt.** Dein Coding-Agent oder Schreibassistent entwirft das Markdown: ein README, eine Spezifikation, ein paar Notizen.
@@ -104,7 +116,7 @@ Nein. MarsDawn ist ein kostenloser Download mit 14 Tagen Test aller Funktionen. 
 
 ### Läuft MarsDawn auf dem iPhone oder iPad?
 
-Ja, zum Lesen. Auf iPhone und iPad öffnet MarsDawn Markdown-Dateien und stellt Mermaid-Diagramme, Formeln, Code und Tabellen dar, mit Gliederung und Themen. Bearbeiten, PDF-Export und Synchronisierung gibt es dort nicht. Es braucht iOS 26 oder iPadOS 26 oder neuer. Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.
+Ja, zum Lesen. Auf iPhone und iPad öffnet MarsDawn Markdown- und reine Textdateien und stellt Mermaid-Diagramme, Formeln, Code und Tabellen dar, mit Gliederung und Themen. Bearbeiten und PDF-Export gibt es dort nicht. Es braucht iOS 26 oder iPadOS 26 oder neuer. Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.
 
 Mehr dazu: [Roadmap](/de/roadmap/)
 

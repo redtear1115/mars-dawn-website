@@ -8,6 +8,18 @@ MarsDawn is a native Mac app for reading and reviewing Markdown, with live split
 
 The page shows a working MarsDawn window over part of the app's Welcome guide. Its palette menu picks an appearance (System, Light, Dark) and a preview theme for light and for dark from four (Dawn, Classic, Modern, Vivid), and its toolbar one of three layouts (Source, Split, Preview).
 
+## Read what your agent wrote, away from your desk
+
+1. On your Mac, have your agent save its files to a folder in iCloud Drive.
+2. On your iPhone or iPad, open MarsDawn and choose the file.
+3. To edit it or export a PDF, go back to your Mac.
+
+On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain text files.
+
+[![Download on the App Store](/assets/badges/app-store-en.svg)](https://apps.apple.com/app/id6812925073)
+
+[More on MarsDawn for iPhone and iPad](/features/#iphone-ipad)
+
 ## Read what your agent wrote.
 
 1. **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
@@ -104,7 +116,7 @@ No. MarsDawn is a free download with a 14-day trial of every feature. After that
 
 ### Does MarsDawn work on iPhone or iPad?
 
-Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown files and renders Mermaid diagrams, math, code and tables, with an outline and themes. It doesn't edit, export PDFs or sync. It needs iOS 26 or iPadOS 26 or later. With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.
+Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown and plain text files and renders Mermaid diagrams, math, code and tables, with an outline and themes. It doesn't edit or export PDFs. It needs iOS 26 or iPadOS 26 or later. With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.
 
 More: [Roadmap](/roadmap/)
 

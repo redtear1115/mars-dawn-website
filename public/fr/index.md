@@ -8,6 +8,18 @@ MarsDawn est une app macOS native pour lire et relire du Markdown, avec aperçu 
 
 La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide de bienvenue de l’app. Dans son menu de palette, vous choisissez une apparence (Système, Clair, Sombre) et, pour le clair comme pour le sombre, l’un des quatre thèmes d’aperçu (Aube, Classique, Moderne, Vif). Sa barre d’outils propose trois dispositions (Source, Partagé, Aperçu).
 
+## Lisez ce qu’a écrit votre agent, même loin de votre bureau
+
+1. Sur votre Mac, demandez à votre agent d’enregistrer ses fichiers dans un dossier d’iCloud Drive.
+2. Sur votre iPhone ou iPad, ouvrez MarsDawn et choisissez le fichier.
+3. Pour le modifier ou l’exporter en PDF, revenez sur votre Mac.
+
+Sur iPhone et iPad, MarsDawn sert uniquement à lire et n’ouvre que les fichiers Markdown et texte brut.
+
+[![Télécharger dans l'App Store](/assets/badges/app-store-fr.svg)](https://apps.apple.com/app/id6812925073)
+
+[En savoir plus sur MarsDawn pour iPhone et iPad](/fr/features/#iphone-ipad)
+
 ## Lisez ce que votre agent a écrit.
 
 1. **L’agent écrit.** Votre agent de code ou votre assistant d’écriture rédige le Markdown : un README, une spécification, des notes.
@@ -104,7 +116,7 @@ Non. MarsDawn se télécharge gratuitement, avec 14 jours d’essai de toutes le
 
 ### MarsDawn fonctionne-t-il sur iPhone ou iPad ?
 
-Oui, pour la lecture. Sur iPhone et iPad, MarsDawn ouvre les fichiers Markdown et met en forme les diagrammes Mermaid, les formules, le code et les tableaux, avec un plan et des thèmes. Il ne permet ni de modifier, ni d’exporter en PDF, ni de synchroniser. Il demande iOS 26 ou iPadOS 26 ou une version ultérieure. Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.
+Oui, pour la lecture. Sur iPhone et iPad, MarsDawn ouvre les fichiers Markdown et texte brut et met en forme les diagrammes Mermaid, les formules, le code et les tableaux, avec un plan et des thèmes. Il ne permet ni de modifier ni d’exporter en PDF. Il demande iOS 26 ou iPadOS 26 ou une version ultérieure. Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.
 
 En savoir plus : [Feuille de route](/fr/roadmap/)
 

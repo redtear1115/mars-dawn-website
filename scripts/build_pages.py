@@ -4770,11 +4770,11 @@ FEATURES_COPY = {
      'devices': {'h2': 'On your Mac, and on the go',
                  'lead': 'Your agent works on the Mac. Its plans and reports can come with you on your iPhone or iPad.',
                  'steps': [
-                           "On the Mac: save the agent's plans and reports in a folder your cloud syncs, such as iCloud Drive.",
+                           "On the Mac: save the agent's plans and reports in a folder in iCloud Drive.",
                            'On iPhone or iPad: in MarsDawn, tap Open and pick the same file. Mermaid diagrams, math, code and tables are rendered, with an outline and your theme.',
                            'Back on the Mac: keep editing, or export a PDF.'],
                  'buy': 'With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.',
-                 'limits': "On iPhone and iPad, MarsDawn is for reading: it doesn't edit, export PDFs or sync. Your files get to your phone through the cloud you already use; MarsDawn has no sync of its own."},
+                 'limits': "On iPhone and iPad, MarsDawn is for reading only: it opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own."},
      'cta': {'h2': 'Try it on your Mac',
              'p1': 'MarsDawn is free to download. Try everything for 14 days, then unlock it once for '
                    'USD 4.99. No subscription, no account. It needs macOS 26 or later.',
@@ -4923,11 +4923,11 @@ FEATURES_COPY = {
      'devices': {'h2': '在 Mac 上寫，在路上讀',
                  'lead': 'agent 在 Mac 上工作，它寫的計畫和報告，你在 iPhone 或 iPad 上也能讀。',
                  'steps': [
-                           '在 Mac 上：把 agent 的計畫和報告存在會同步的雲端資料夾，例如 iCloud Drive。',
+                           '在 Mac 上：把 agent 的計畫和報告存在 iCloud 雲碟裡的資料夾。',
                            '在 iPhone 或 iPad 上：打開 MarsDawn，點「開啟」，選同一個檔案。Mermaid 圖表、數學式、程式碼和表格都會排好顯示，也有大綱和你選的主題。',
                            '回到 Mac：繼續編輯，或輸出 PDF。'],
                  'buy': '用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。',
-                 'limits': '在 iPhone 和 iPad 上，MarsDawn 只能閱讀：不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳到手機，MarsDawn 本身沒有同步功能。'},
+                 'limits': '在 iPhone 和 iPad 上，MarsDawn 只能閱讀：只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。'},
      'cta': {'h2': '在你的 Mac 上試試',
              'p1': 'MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。',
              'trial': ['試用怎麼運作：', 'pay-once'],
@@ -5253,6 +5253,79 @@ def hero_stage_html(locale: str) -> str:
     """The window, with the iPhone screenshot over its lower right (#327 B): the same picture,
     scaled, at every width, the phone always narrower than the window."""
     return f'<div class="hero-stage">\n{hero_window.window_html(locale)}\n{hero_phone_html(locale)}\n</div>'
+
+
+# Home steps: #333 comment 6516118620 §3, with 6516160149 §4 corrections.
+HOME_IPHONE_STEPS = {'en': {'h2': 'Read what your agent wrote, away from your desk',
+        'steps': ['On your Mac, have your agent save its files to a folder in iCloud Drive.',
+                  'On your iPhone or iPad, open MarsDawn and choose the file.',
+                  'To edit it or export a PDF, go back to your Mac.'],
+        'limits': 'On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain text '
+                  'files.'},
+ 'zh-hant': {'h2': '離開座位，也能讀 agent 寫的東西',
+             'steps': ['在 Mac 上，讓 agent 把檔案存進 iCloud 雲碟裡的資料夾。',
+                       '在 iPhone 或 iPad 上打開 MarsDawn，選那份檔案。',
+                       '要修改或輸出 PDF，回到 Mac 上做。'],
+             'limits': '在 iPhone 和 iPad 上只能閱讀，只開 Markdown 和純文字檔。'},
+ 'zh-hans': {'h2': '离开座位，也能读代理写的东西',
+             'steps': ['在 Mac 上，让代理把文件存进 iCloud 云盘里的文件夹。',
+                       '在 iPhone 或 iPad 上打开 MarsDawn，选择那份文件。',
+                       '要修改或导出 PDF，回到 Mac 上操作。'],
+             'limits': '在 iPhone 和 iPad 上只能阅读，只能打开 Markdown 和纯文本文件。'},
+ 'ja': {'h2': '席を離れても、エージェントが書いたものを読める',
+        'steps': ['Mac で、エージェントにファイルを iCloud Drive のフォルダへ保存させます。',
+                  'iPhone や iPad で MarsDawn を開き、そのファイルを選びます。',
+                  '編集や PDF の書き出しは、Mac に戻って行います。'],
+        'limits': 'iPhone と iPad では閲覧専用で、開けるのは Markdown とプレーンテキストのファイルだけです。'},
+ 'ko': {'h2': '자리를 떠나도 에이전트가 쓴 글을 읽을 수 있습니다',
+        'steps': ['Mac에서 에이전트가 iCloud Drive의 폴더에 파일을 저장하게 합니다.',
+                  'iPhone이나 iPad에서 MarsDawn을 열고 그 파일을 선택합니다.',
+                  '편집하거나 PDF로 내보내려면 Mac으로 돌아갑니다.'],
+        'limits': 'iPhone과 iPad에서는 읽기 전용이며, Markdown과 일반 텍스트 파일만 열 수 있습니다.'},
+ 'de': {'h2': 'Lies, was dein Agent geschrieben hat, auch fern vom Schreibtisch',
+        'steps': ['Lass deinen Agent auf dem Mac seine Dateien in einem Ordner in iCloud Drive speichern.',
+                  'Öffne MarsDawn auf iPhone oder iPad und wähle die Datei aus.',
+                  'Zum Bearbeiten oder für den PDF-Export gehst du zurück an den Mac.'],
+        'limits': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet nur Markdown- und reine '
+                  'Textdateien.'},
+ 'fr': {'h2': 'Lisez ce qu’a écrit votre agent, même loin de votre bureau',
+        'steps': ['Sur votre Mac, demandez à votre agent d’enregistrer ses fichiers dans un dossier d’iCloud '
+                  'Drive.',
+                  'Sur votre iPhone ou iPad, ouvrez MarsDawn et choisissez le fichier.',
+                  'Pour le modifier ou l’exporter en PDF, revenez sur votre Mac.'],
+        'limits': 'Sur iPhone et iPad, MarsDawn sert uniquement à lire et n’ouvre que les fichiers Markdown '
+                  'et texte brut.'},
+ 'es': {'h2': 'Lee lo que escribió tu agente, aunque no estés en tu escritorio',
+        'steps': ['En tu Mac, haz que tu agente guarde sus archivos en una carpeta de iCloud Drive.',
+                  'En tu iPhone o iPad, abre MarsDawn y elige el archivo.',
+                  'Para editarlo o exportarlo a PDF, vuelve a tu Mac.'],
+        'limits': 'En iPhone y iPad, MarsDawn solo sirve para leer y solo abre archivos Markdown y de texto '
+                  'plano.'}}
+
+# Link to the features section; copy approved by Ray on PR #342 (Aria's proposal).
+HOME_IPHONE_STEPS_MORE = {
+    'en': 'More on MarsDawn for iPhone and iPad',
+    'zh-hant': '進一步了解 iPhone 和 iPad 版',
+    'zh-hans': '进一步了解 iPhone 和 iPad 版',
+    'ja': 'iPhone と iPad 版について詳しく',
+    'ko': 'iPhone 및 iPad 버전 자세히 보기',
+    'de': 'Mehr zu MarsDawn auf iPhone und iPad',
+    'fr': 'En savoir plus sur MarsDawn pour iPhone et iPad',
+    'es': 'Más sobre MarsDawn en iPhone y iPad',
+}
+
+
+def home_steps_html(locale: str) -> str:
+    """Reading away from the Mac, directly after the hero (#331)."""
+    copy = HOME_IPHONE_STEPS[locale]
+    steps = "\n".join(f"  <li>{xml_escape(step)}</li>" for step in copy["steps"])
+    return ('<section class="iphone-steps" id="iphone-steps" aria-labelledby="iphone-steps-title">\n'
+            f'<h2 id="iphone-steps-title">{xml_escape(copy["h2"])}</h2>\n'
+            f'<ol>\n{steps}\n</ol>\n'
+            f'<p class="iphone-steps-limit">{xml_escape(copy["limits"])}</p>\n'
+            f'<p>{store_badge_html(locale, HOME_IPHONE_CAMPAIGN)}</p>\n'
+            f'<p><a href="{page_path(locale, "features")}#iphone-ipad">{xml_escape(HOME_IPHONE_STEPS_MORE[locale])}</a></p>\n'
+            '</section>')
 
 
 def closing_cta_html(locale: str) -> str:
@@ -5762,6 +5835,8 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         return "\n\n".join([
             html_to_markdown(page["intro"]).rstrip(),
             hero_window.window_markdown(locale),
+            # Twins carry the plain listing URL, never a campaign one (check_store_links R4).
+            html_to_markdown(home_steps_html(locale).replace(campaign_url(HOME_IPHONE_CAMPAIGN).replace("&", "&amp;"), LISTING_URL)).rstrip(),
             html_to_markdown(home_body).rstrip(),
             html_to_markdown("\n".join(plan_loop_parts(locale))).rstrip(),
             html_to_markdown(_home_sections_for_twin(locale)).rstrip(),
@@ -7037,7 +7112,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
         # The FAQ is written with the page's body but belongs after the install block and the traits.
         home_body, home_faq = split_faq(page["body"])
-        main_html = "\n".join(part for part in (hero_html, brand_film.film_html(locale), home_body.strip(), *plan_loop_parts_with(locale),
+        main_html = "\n".join(part for part in (hero_html, home_steps_html(locale), brand_film.film_html(locale), home_body.strip(), *plan_loop_parts_with(locale),
                                                  home_sections_html(locale), page.get("after", "").strip(), home_faq, proof_html, closing_html)
                               if part)
     elif slug == "features":

@@ -58,8 +58,8 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                               'No. MarsDawn is a free download with a 14-day trial of every feature. After that, a single in-app purchase of USD '
                               '4.99 unlocks it for good. Nothing renews, and there is no account.'],
                              ['Does MarsDawn work on iPhone or iPad?',
-                              'Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown files and renders Mermaid diagrams, math, code and '
-                              "tables, with an outline and themes. It doesn't edit, export PDFs or sync. It needs iOS 26 or iPadOS 26 or later. With "
+                              'Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown and plain text files and renders Mermaid diagrams, math, code and '
+                              "tables, with an outline and themes. It doesn't edit or export PDFs. It needs iOS 26 or iPadOS 26 or later. With "
                               'the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.'],
                              ['Can Claude Code open files in MarsDawn?',
                               'Yes. The free marsdawn command-line tool has an open command that opens a Markdown file in MarsDawn, so Claude Code, '
@@ -99,7 +99,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                  ['試用結束後，快速查看還能用嗎？', '能。Finder 裡的快速查看不論有沒有試用都能用。免費的 marsdawn 命令列工具也會繼續把 Markdown 輸出成 PDF。'],
                                  ['需要帳號嗎？', '不需要。MarsDawn 不會要求你建立帳號。']],
                      'home_faq': [['MarsDawn 要訂閱嗎？', '不用。MarsDawn 免費下載，14 天內所有功能都能試用；之後一次 USD 4.99 的 App 內購買就能永久解鎖。沒有任何續訂，也不需要帳號。'],
-                                  ['MarsDawn 有 iPhone 或 iPad 版嗎？', '有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown 檔，排好 Mermaid 圖表、數學式、程式碼和表格，也有大綱和主題；不能編輯、不能輸出 PDF，也不會同步。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。'],
+                                  ['MarsDawn 有 iPhone 或 iPad 版嗎？', '有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown 和純文字檔，排好 Mermaid 圖表、數學式、程式碼和表格，也有大綱和主題；不能編輯，也不能輸出 PDF。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。'],
                                   ['Claude Code 可以用 MarsDawn 開檔案嗎？',
                                    '可以。免費的 marsdawn 命令列工具有 open 指令，能用 MarsDawn 開啟 Markdown 檔案，所以 Claude Code，或任何能執行 shell 指令的 '
                                    'agent，都能呼叫它。另有一個需要自行啟用的 Claude Code hook，可以在 Claude 寫入或編輯 Markdown 檔案時自動開啟。']]},
@@ -135,7 +135,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                  ['试用结束后，快速查看还能用吗？', '能。访达里的快速查看不论有没有试用都能用。免费的 marsdawn 命令行工具也会继续把 Markdown 导出成 PDF。'],
                                  ['需要账户吗？', '不需要。MarsDawn 不会要求你创建账户。']],
                      'home_faq': [['MarsDawn 要订阅吗？', '不用。MarsDawn 免费下载，14 天内所有功能都能试用；之后一次 USD 4.99 的 App 内购买就能永久解锁。没有任何续订，也不需要账户。'],
-                                  ['MarsDawn 有 iPhone 或 iPad 版吗？', '有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown 文件，排好 Mermaid 图表、数学公式、代码和表格，也有大纲和主题；不能编辑、不能导出 PDF，也不会同步。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。'],
+                                  ['MarsDawn 有 iPhone 或 iPad 版吗？', '有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown 和纯文本文件，排好 Mermaid 图表、数学公式、代码和表格，也有大纲和主题；不能编辑，也不能导出 PDF。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。'],
                                   ['Claude Code 可以用 MarsDawn 打开文件吗？',
                                    '可以。免费的 marsdawn 命令行工具有 open 命令，能用 MarsDawn 打开 Markdown 文件，所以 Claude Code，或任何能执行 shell 命令的代理，都能调用它。另有一个需要自行启用的 '
                                    'Claude Code hook，可以在 Claude 写入或编辑 Markdown 文件时自动打开。']]},
@@ -181,7 +181,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                             ['アカウントは必要ですか？', 'いいえ。MarsDawn がアカウントの作成を求めることはありません。']],
                 'home_faq': [['MarsDawn はサブスクリプションですか？',
                               'いいえ。MarsDawn は無料でダウンロードでき、14日間はすべての機能を試せます。そのあとは USD 4.99 のApp 内課金を一度行うだけで、ずっとロック解除されます。更新はなく、アカウントも不要です。'],
-                             ['MarsDawn は iPhone や iPad で使えますか？', 'はい、閲覧用です。iPhone と iPad の MarsDawn は Markdown ファイルを開き、Mermaid 図、数式、コード、表を整えて表示します。アウトラインとテーマも使えます。編集、PDF の書き出し、同期はできません。iOS 26 または iPadOS 26 以降が必要です。同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。'],
+                             ['MarsDawn は iPhone や iPad で使えますか？', 'はい、閲覧用です。iPhone と iPad の MarsDawn は Markdown とプレーンテキストのファイルを開き、Mermaid 図、数式、コード、表を整えて表示します。アウトラインとテーマも使えます。編集と PDF の書き出しはできません。iOS 26 または iPadOS 26 以降が必要です。同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。'],
                              ['Claude Code から MarsDawn でファイルを開けますか？',
                               'はい。無料の marsdawn コマンドラインツールには open コマンドがあり、Markdown ファイルを MarsDawn で開けるので、Claude Code '
                               'やシェルコマンドを実行できるエージェントから呼び出せます。Claude が Markdown ファイルを書いたり編集したりするたびに開く、任意で有効にする Claude Code フックもあります。']]},
@@ -245,7 +245,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                               'Nein. MarsDawn ist ein kostenloser Download mit 14 Tagen Test aller Funktionen. Danach schaltet ein einmaliger '
                               'In-App-Kauf für 4,99 USD die App dauerhaft frei. Nichts verlängert sich, und es gibt kein Konto.'],
                              ['Läuft MarsDawn auf dem iPhone oder iPad?',
-                              'Ja, zum Lesen. Auf iPhone und iPad öffnet MarsDawn Markdown-Dateien und stellt Mermaid-Diagramme, Formeln, Code und Tabellen dar, mit Gliederung und Themen. Bearbeiten, PDF-Export und Synchronisierung gibt es dort nicht. Es braucht iOS 26 oder iPadOS 26 oder neuer. Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.'],
+                              'Ja, zum Lesen. Auf iPhone und iPad öffnet MarsDawn Markdown- und reine Textdateien und stellt Mermaid-Diagramme, Formeln, Code und Tabellen dar, mit Gliederung und Themen. Bearbeiten und PDF-Export gibt es dort nicht. Es braucht iOS 26 oder iPadOS 26 oder neuer. Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.'],
                              ['Kann Claude Code Dateien in MarsDawn öffnen?',
                               'Ja. Das kostenlose Befehlszeilenprogramm marsdawn hat einen Befehl open, der eine Markdown-Datei in MarsDawn öffnet. '
                               'Claude Code oder jeder Agent, der einen Shell-Befehl ausführen kann, kann ihn aufrufen. Ein optionaler '
@@ -311,10 +311,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                               'Non. MarsDawn se télécharge gratuitement, avec 14 jours d’essai de toutes les fonctions. Ensuite, un seul achat '
                               'intégré de 4,99 USD le déverrouille pour de bon. Rien ne se renouvelle, et il n’y a pas de compte.'],
                              ['MarsDawn fonctionne-t-il sur iPhone ou iPad\xa0?',
-                              'Oui, pour la lecture. Sur iPhone et iPad, MarsDawn ouvre les fichiers Markdown et met en forme les diagrammes Mermaid,'
-                              ' les formules, le code et les tableaux, avec un plan et des thèmes. Il ne permet ni de modifier, ni d’exporter en PDF,'
-                              ' ni de synchroniser. Il demande iOS 26 ou iPadOS 26 ou une version ultérieure. Avec le même compte Apple, un seul '
-                              'essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.'],
+                              'Oui, pour la lecture. Sur iPhone et iPad, MarsDawn ouvre les fichiers Markdown et texte brut et met en forme les diagrammes Mermaid, les formules, le code et les tableaux, avec un plan et des thèmes. Il ne permet ni de modifier ni d’exporter en PDF. Il demande iOS 26 ou iPadOS 26 ou une version ultérieure. Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.'],
                              ['Claude Code peut-il ouvrir des fichiers dans MarsDawn\xa0?',
                               'Oui. L’outil en ligne de commande gratuit marsdawn a une commande open qui ouvre un fichier Markdown dans MarsDawn, '
                               'donc Claude Code, ou tout agent capable d’exécuter une commande shell, peut l’appeler. Un hook Claude Code facultatif '
@@ -380,7 +377,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                               'No. MarsDawn se descarga gratis y incluye 14 días de prueba de todas las funciones. Después, una sola compra dentro '
                               'de la app por 4,99 USD lo desbloquea para siempre. Nada se renueva y no hay cuenta.'],
                              ['¿MarsDawn funciona en iPhone o iPad?',
-                              'Sí, para leer. En iPhone y iPad, MarsDawn abre archivos Markdown y muestra con formato diagramas de Mermaid, fórmulas, código y tablas, con esquema y temas. No edita, no exporta PDF ni sincroniza. Necesita iOS 26 o iPadOS 26 o posterior. Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.'],
+                              'Sí, para leer. En iPhone y iPad, MarsDawn abre archivos Markdown y de texto plano y muestra con formato diagramas de Mermaid, fórmulas, código y tablas, con esquema y temas. No edita ni exporta PDF. Necesita iOS 26 o iPadOS 26 o posterior. Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.'],
                              ['¿Puede Claude Code abrir archivos en MarsDawn?',
                               'Sí. La herramienta de línea de comandos gratuita marsdawn tiene un comando open que abre un archivo Markdown en '
                               'MarsDawn, así que Claude Code, o cualquier agente que pueda ejecutar un comando de shell, puede llamarlo. Un hook '
@@ -428,7 +425,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                 'home_faq': [['MarsDawn은 구독인가요?',
                               '아니요. MarsDawn은 무료로 다운로드할 수 있고, 14일 동안 모든 기능을 체험할 수 있습니다. 그 뒤에는 USD 4.99의 앱 내 구입 한 번으로 영구히 잠금 해제됩니다. 갱신되는 것은 없고, 계정도 '
                               '없습니다.'],
-                             ['MarsDawn은 iPhone이나 iPad에서 쓸 수 있나요?', '네, 읽기용으로 쓸 수 있습니다. iPhone과 iPad의 MarsDawn은 Markdown 파일을 열어 Mermaid 다이어그램, 수식, 코드, 표를 렌더링하며 개요와 테마도 제공합니다. 편집, PDF 내보내기, 동기화는 할 수 없습니다. iOS 26 또는 iPadOS 26 이상이 필요합니다. 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.'],
+                             ['MarsDawn은 iPhone이나 iPad에서 쓸 수 있나요?', '네, 읽기용으로 쓸 수 있습니다. iPhone과 iPad의 MarsDawn은 Markdown과 일반 텍스트 파일을 열어 Mermaid 다이어그램, 수식, 코드, 표를 렌더링하며 개요와 테마도 제공합니다. 편집과 PDF 내보내기는 할 수 없습니다. iOS 26 또는 iPadOS 26 이상이 필요합니다. 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.'],
                              ['Claude Code가 MarsDawn에서 파일을 열 수 있나요?',
                               '네. 무료 marsdawn 명령줄 도구에는 Markdown 파일을 MarsDawn에서 여는 open 명령이 있어서, Claude Code나 셸 명령을 실행할 수 있는 모든 에이전트가 호출할 수 있습니다. '
                               '선택적으로 켜는 Claude Code 훅은 Claude가 쓰거나 편집한 Markdown 파일을 열어 줍니다.']]}},
@@ -1814,8 +1811,8 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
               ['V23', 'https://github.com/sbarex/QLMarkdown/releases'],
               ['V24', 'https://api.github.com/repos/sbarex/QLMarkdown/releases'],
               ['kit', 'https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7']],
- 'faq275': {'en': {'q3': 'Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown files and renders Mermaid diagrams, math, code and '
-                         "tables, with an outline and themes. It doesn't edit, export PDFs or sync. It needs iOS 26 or iPadOS 26 or later. With "
+ 'faq275': {'en': {'q3': 'Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown and plain text files and renders Mermaid diagrams, math, code and '
+                         "tables, with an outline and themes. It doesn't edit or export PDFs. It needs iOS 26 or iPadOS 26 or later. With "
                          'the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.',
                    'q9': ['Why use MarsDawn instead of another app?',
                           'You may not need it. If you mostly write your own notes, a notes app such as Obsidian fits better. If you live in VS '
@@ -1831,7 +1828,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            "app, the app's own source code will be published under an open-source license, so others can keep it going.",
                            'More: <a href="/changelog/">Changelog</a> · <a href="/roadmap/">Roadmap</a> · <a '
                            'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
-            'zh-hant': {'q3': '有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown 檔，排好 Mermaid 圖表、數學式、程式碼和表格，也有大綱和主題；不能編輯、不能輸出 PDF，也不會同步。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。',
+            'zh-hant': {'q3': '有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown 和純文字檔，排好 Mermaid 圖表、數學式、程式碼和表格，也有大綱和主題；不能編輯，也不能輸出 PDF。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。',
                         'q9': ['為什麼用 MarsDawn，不用別的 App？',
                                '你可能不需要它。如果你主要寫自己的筆記，Obsidian 這類筆記 App 更適合。如果你整天待在 VS Code，它內建的預覽是免費的。如果你只想在 Finder 裡瞄一眼檔案，免費的快速查看擴充功能就夠了。如果你的 PDF '
                                '需要頁碼，MarsDawn 不會加。MarsDawn 是用來閱讀和審閱 agent 寫的 Markdown：原始碼旁邊就是即時預覽，agent 的修改一步就能撤銷，檔案直接開到指定的那一行。如果它不合用，歡迎寫信告訴我們原因。',
@@ -1842,7 +1839,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                 'marsdawn 命令列工具，已經以 Apache-2.0 授權在 mars-dawn-kit 開源。如果 MarsDawn 的開發者哪天停止維護這個 App，會以開源授權公開 App 本身的原始碼，讓其他人可以接手。',
                                 '詳見：<a href="/zh-hant/changelog/">更新紀錄</a> · <a href="/zh-hant/roadmap/">路線圖</a> · <a '
                                 'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
-            'zh-hans': {'q3': '有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown 文件，排好 Mermaid 图表、数学公式、代码和表格，也有大纲和主题；不能编辑、不能导出 PDF，也不会同步。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。',
+            'zh-hans': {'q3': '有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown 和纯文本文件，排好 Mermaid 图表、数学公式、代码和表格，也有大纲和主题；不能编辑，也不能导出 PDF。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。',
                         'q9': ['为什么用 MarsDawn，不用别的 App？',
                                '你可能不需要它。如果你主要写自己的笔记，Obsidian 这类笔记 App 更合适。如果你整天待在 VS Code 里，它内置的预览是免费的。如果你只想在访达里瞄一眼文件，免费的快速查看扩展就够了。如果你的 PDF '
                                '需要页码，MarsDawn 不会加。MarsDawn 是用来阅读和审阅代理写的 Markdown 的：源文本旁边就是实时预览，代理的修改一步就能撤销，文件直接打开到指定的那一行。如果它不合用，欢迎写信告诉我们原因。',
@@ -1853,7 +1850,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                 'marsdawn 命令行工具，已经以 Apache-2.0 许可证在 mars-dawn-kit 开源。如果 MarsDawn 的开发者哪天停止维护这个 App，会以开源许可证公开 App 本身的源代码，让其他人可以接手。',
                                 '详见：<a href="/zh-hans/changelog/">更新记录</a> · <a href="/zh-hans/roadmap/">路线图</a> · <a '
                                 'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
-            'ja': {'q3': 'はい、閲覧用です。iPhone と iPad の MarsDawn は Markdown ファイルを開き、Mermaid 図、数式、コード、表を整えて表示します。アウトラインとテーマも使えます。編集、PDF の書き出し、同期はできません。iOS 26 または iPadOS 26 以降が必要です。同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。',
+            'ja': {'q3': 'はい、閲覧用です。iPhone と iPad の MarsDawn は Markdown とプレーンテキストのファイルを開き、Mermaid 図、数式、コード、表を整えて表示します。アウトラインとテーマも使えます。編集と PDF の書き出しはできません。iOS 26 または iPadOS 26 以降が必要です。同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。',
                    'q9': ['ほかのアプリではなく MarsDawn を使う理由は？',
                           '必要ないかもしれません。自分のメモを書くのが中心なら、Obsidian のようなノートアプリのほうが向いています。VS Code でずっと作業しているなら、標準のプレビューが無料で使えます。Finder '
                           'でファイルをさっと見たいだけなら、無料のクイックルック拡張機能で十分です。PDF にページ番号が必要なら、MarsDawn は付けられません。MarsDawn は、エージェントが書いた Markdown '
@@ -1865,10 +1862,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            'としてオープンソースになっています。そして、MarsDawn の開発者がアプリのメンテナンスをやめるときは、アプリ自体のソースコードをオープンソースライセンスで公開し、ほかの人が引き継げるようにします。',
                            '詳しくは：<a href="/ja/changelog/">更新履歴</a> · <a href="/ja/roadmap/">ロードマップ</a> · <a '
                            'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
-            'de': {'q3': 'Ja, zum Lesen. Auf iPhone und iPad öffnet MarsDawn Markdown-Dateien und stellt Mermaid-Diagramme, Formeln, Code und '
-                         'Tabellen dar, mit Gliederung und Themen. Bearbeiten, PDF-Export und Synchronisierung gibt es dort nicht. Es braucht '
-                         'iOS 26 oder iPadOS 26 oder neuer. Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf '
-                         'Mac, iPhone und iPad.',
+            'de': {'q3': 'Ja, zum Lesen. Auf iPhone und iPad öffnet MarsDawn Markdown- und reine Textdateien und stellt Mermaid-Diagramme, Formeln, Code und Tabellen dar, mit Gliederung und Themen. Bearbeiten und PDF-Export gibt es dort nicht. Es braucht iOS 26 oder iPadOS 26 oder neuer. Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.',
                    'q9': ['Warum MarsDawn und nicht eine andere App?',
                           'Vielleicht brauchst du MarsDawn gar nicht. Wenn du vor allem eigene Notizen schreibst, passt eine Notiz-App wie Obsidian '
                           'besser. Wenn du den ganzen Tag in VS Code arbeitest, ist die eingebaute Vorschau kostenlos. Wenn du Dateien im Finder nur '
@@ -1886,10 +1880,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            'Open-Source-Lizenz veröffentlicht, damit andere sie weiterführen können.',
                            'Mehr dazu: <a href="/de/changelog/">Änderungsprotokoll</a> · <a href="/de/roadmap/">Roadmap</a> · <a '
                            'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
-            'fr': {'q3': 'Oui, pour la lecture. Sur iPhone et iPad, MarsDawn ouvre les fichiers Markdown et met en forme les diagrammes Mermaid,'
-                         ' les formules, le code et les tableaux, avec un plan et des thèmes. Il ne permet ni de modifier, ni d’exporter en PDF,'
-                         ' ni de synchroniser. Il demande iOS 26 ou iPadOS 26 ou une version ultérieure. Avec le même compte Apple, un seul '
-                         'essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.',
+            'fr': {'q3': 'Oui, pour la lecture. Sur iPhone et iPad, MarsDawn ouvre les fichiers Markdown et texte brut et met en forme les diagrammes Mermaid, les formules, le code et les tableaux, avec un plan et des thèmes. Il ne permet ni de modifier ni d’exporter en PDF. Il demande iOS 26 ou iPadOS 26 ou une version ultérieure. Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.',
                    'q9': ['Pourquoi MarsDawn plutôt qu’une autre app ?',
                           'Vous n’en avez peut-être pas besoin. Si vous écrivez surtout vos propres notes, une app de notes comme Obsidian vous '
                           'conviendra mieux. Si vous passez vos journées dans VS Code, son aperçu intégré est gratuit. Si vous voulez seulement '
@@ -1907,9 +1898,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            'licence open source, pour que d’autres puissent la reprendre.',
                            'En savoir plus : <a href="/fr/changelog/">Historique des versions</a> · <a href="/fr/roadmap/">Feuille de route</a> · <a '
                            'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
-            'es': {'q3': 'Sí, para leer. En iPhone y iPad, MarsDawn abre archivos Markdown y muestra con formato diagramas de Mermaid, fórmulas,'
-                         ' código y tablas, con esquema y temas. No edita, no exporta PDF ni sincroniza. Necesita iOS 26 o iPadOS 26 o '
-                         'posterior. Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.',
+            'es': {'q3': 'Sí, para leer. En iPhone y iPad, MarsDawn abre archivos Markdown y de texto plano y muestra con formato diagramas de Mermaid, fórmulas, código y tablas, con esquema y temas. No edita ni exporta PDF. Necesita iOS 26 o iPadOS 26 o posterior. Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.',
                    'q9': ['¿Por qué usar MarsDawn y no otra app?',
                           'Puede que no lo necesites. Si sobre todo escribes tus propias notas, una app de notas como Obsidian te irá mejor. Si '
                           'pasas el día en VS Code, su vista previa integrada es gratis. Si solo quieres echar un vistazo a los archivos en el '
@@ -1927,7 +1916,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            'se publicará con una licencia de código abierto, para que otros puedan continuarla.',
                            'Más información: <a href="/es/changelog/">Historial de cambios</a> · <a href="/es/roadmap/">Hoja de ruta</a> · <a '
                            'href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>']},
-            'ko': {'q3': '네, 읽기용으로 쓸 수 있습니다. iPhone과 iPad의 MarsDawn은 Markdown 파일을 열어 Mermaid 다이어그램, 수식, 코드, 표를 렌더링하며 개요와 테마도 제공합니다. 편집, PDF 내보내기, 동기화는 할 수 없습니다. iOS 26 또는 iPadOS 26 이상이 필요합니다. 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.',
+            'ko': {'q3': '네, 읽기용으로 쓸 수 있습니다. iPhone과 iPad의 MarsDawn은 Markdown과 일반 텍스트 파일을 열어 Mermaid 다이어그램, 수식, 코드, 표를 렌더링하며 개요와 테마도 제공합니다. 편집과 PDF 내보내기는 할 수 없습니다. iOS 26 또는 iPadOS 26 이상이 필요합니다. 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.',
                    'q9': ['다른 앱 대신 MarsDawn을 쓸 이유가 있나요?',
                           '필요 없을 수도 있습니다. 주로 자기 노트를 쓴다면 Obsidian 같은 노트 앱이 더 잘 맞습니다. VS Code에서 하루 종일 작업한다면 내장 미리보기를 무료로 쓸 수 있습니다. Finder에서 파일을 잠깐 '
                           '들여다보기만 하려면 무료 훑어보기 확장 프로그램으로 충분합니다. PDF에 페이지 번호가 필요하다면 MarsDawn은 넣어 주지 않습니다. MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 앱입니다. '

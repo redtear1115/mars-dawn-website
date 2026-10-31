@@ -8,6 +8,18 @@ MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、M
 
 頁面上有一個可以操作的 MarsDawn 視窗，內容是 App 內建歡迎指南的一段。調色盤選單可以選外觀（系統、淺色、深色），並分別替淺色和深色從四個預覽主題（黎明、典雅、流行、活潑）裡選一個；工具列可以選三種版面（原始碼、並排、預覽）。
 
+## 離開座位，也能讀 agent 寫的東西
+
+1. 在 Mac 上，讓 agent 把檔案存進 iCloud 雲碟裡的資料夾。
+2. 在 iPhone 或 iPad 上打開 MarsDawn，選那份檔案。
+3. 要修改或輸出 PDF，回到 Mac 上做。
+
+在 iPhone 和 iPad 上只能閱讀，只開 Markdown 和純文字檔。
+
+[![在 App Store 下載](/assets/badges/app-store-zh-hant.svg)](https://apps.apple.com/app/id6812925073)
+
+[進一步了解 iPhone 和 iPad 版](/zh-hant/features/#iphone-ipad)
+
 ## 讀 agent 寫的 Markdown。
 
 1. **Agent 動筆。**你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。
@@ -104,7 +116,7 @@ MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原�
 
 ### MarsDawn 有 iPhone 或 iPad 版嗎？
 
-有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown 檔，排好 Mermaid 圖表、數學式、程式碼和表格，也有大綱和主題；不能編輯、不能輸出 PDF，也不會同步。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。
+有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown 和純文字檔，排好 Mermaid 圖表、數學式、程式碼和表格，也有大綱和主題；不能編輯，也不能輸出 PDF。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。
 
 詳見：[路線圖](/zh-hant/roadmap/)
 

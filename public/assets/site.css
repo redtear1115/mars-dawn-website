@@ -1786,3 +1786,15 @@ main > h2[id="iphone-ipad"] { scroll-margin-top: 16px; }
 .store-badge { display: inline-block; padding: 10px; max-width: 100%; box-sizing: border-box; vertical-align: middle; line-height: 0; }
 .store-badge img { display: block; height: 40px; width: auto; }
 .footer-legal { margin: 0; font-size: 0.75rem; color: var(--dust); overflow-wrap: anywhere; }
+
+/* Home steps (#331): text tier, hairlines, and DOM order at every width. */
+.iphone-steps { margin: 48px 0; overflow-wrap: anywhere; }
+.iphone-steps h2 { margin: 0 0 24px; }
+.iphone-steps ol { display: grid; gap: 24px; margin: 0; padding-left: 24px; }
+.iphone-steps li { min-width: 0; padding: 12px 0 0 8px; border-top: 1px solid var(--hairline); }
+.iphone-steps li + li { margin-top: 0; }
+.iphone-steps li::marker { color: var(--dust); font-weight: 650; }
+.iphone-steps-limit { margin-top: 24px; padding-left: 16px; border-left: 2px solid var(--ember); }
+@media (min-width: 720px) {
+  .iphone-steps ol { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+}
