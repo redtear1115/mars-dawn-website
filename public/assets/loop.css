@@ -547,17 +547,32 @@
   38%, 100% { opacity: 0; transform: translate(calc(520 * var(--u)), calc(576 * var(--u))); }
 }
 
-/* The home page's brand film (scripts/brand_film.py, website #159). It has no animation or
-   transition of its own, so there is no reduced-motion rule to write. */
+/* The home page's agents film (scripts/brand_film.py, website #335).
+   No animation or transition of its own, so no reduced-motion rule is needed. */
 .film { margin-top: 56px; }
 .film h2 { margin-top: 0; }
-/* --w-media (site.css): the same edges as the hero window, the loop and the screenshot plates. */
+.film figure { margin: 0; }
 .film video {
   display: block;
-  width: max(100%, var(--w-media));
-  margin-inline: calc((100% - max(100%, var(--w-media))) / 2);
-  aspect-ratio: 16 / 9;
   height: auto;
   border-radius: var(--r-plate);
   background: #000;
+}
+.film video.film-wide {
+  width: max(100%, var(--w-media));
+  margin-inline: calc((100% - max(100%, var(--w-media))) / 2);
+  aspect-ratio: 16 / 9;
+}
+.film video.film-tall {
+  aspect-ratio: 9 / 16;
+  width: min(100%, calc(80svh * 9 / 16));
+  margin-inline: auto;
+}
+.film figcaption { margin-top: 12px; }
+@media (min-width: 768px) {
+  .film video.film-tall { display: none; }
+}
+@media (max-width: 767.98px) {
+  .film video.film-wide { display: none; }
+  .film figcaption { text-align: center; }
 }

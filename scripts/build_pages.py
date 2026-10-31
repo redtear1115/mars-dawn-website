@@ -7002,7 +7002,7 @@ def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> l
             "sameAs": SAME_AS,
             "downloadUrl": LISTING_URL,
             "url": canonical_url,
-        }] + faq_data(page)
+        }] + faq_data(page) + [brand_film.video_object(locale, BASE_URL)]
     data = [breadcrumb_data(locale, slug, page)] + faq_data(page) + howto_data(page)
     if slug in FAQ_PAGES:
         data.append(faq_data_plain(page))
