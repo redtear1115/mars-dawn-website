@@ -70,10 +70,10 @@ def video_object(locale: str, base_url: str) -> dict:
     language = _film_language(locale)
     if language == "zh-Hant":
         name = "MarsDawn：任何 agent，任何地方"
-        description = "用手機交代下去，agent 在 Mac 上動筆，Mac 版 MarsDawn 打開它寫的 Markdown 和 HTML。在 iPhone 或 iPad 上讀同一份計畫，修改回到 Mac。"
+        description = "這支 30 秒短片裡，你用手機交代 agent，它在 Mac 上動筆。Mac 版 MarsDawn 打開它寫的 Markdown 和 HTML；在 iPhone 或 iPad 上讀同一份計畫，修改回到 Mac。"
     else:
         name = "MarsDawn: work with any agent, anywhere"
-        description = "Send the task from your phone. Your agent writes on your Mac, and MarsDawn for Mac opens its Markdown and HTML. Read the same plan on your iPhone or iPad; editing stays on the Mac."
+        description = "In this 30-second film, you brief your agent from your phone and it writes on your Mac. MarsDawn for Mac opens its Markdown and HTML; on iPhone or iPad you read the same plan, and editing stays on the Mac."
     return {
         "@context": "https://schema.org",
         "@type": "VideoObject",
