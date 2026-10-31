@@ -24,8 +24,7 @@ moved on. Either half-flip fails here.
 
 The home page's calls to action follow the same phase. Before launch the hero's one primary
 button installs the free CLI (it jumps to the `#install` block) and nothing store-shaped is a
-button; after launch the primary goes to the Mac App Store listing and the CLI is second. In
-neither phase is the hero's call to action an image, so it can't pass for a store badge.
+button; after launch the primary goes to the Mac App Store listing and the CLI is second. After launch the listing uses the official localized App Store badge.
 
 Structured data on inner pages (every locale): each page except a home page carries a
 BreadcrumbList whose first item is that locale's home, whose last is the page itself, with
@@ -442,13 +441,13 @@ def main():
         if where == "pre-launch" and ctas != [("cta-primary", "#install")]:
             problems.append(f"{home}: before launch the hero's calls to action should be just the CLI install, got {ctas}")
         if where == "launched" and not (
-            len(ctas) == 2 and ctas[0][0] == "cta-primary" and ctas[0][1].startswith(f"https://{LISTING_HOST}/")
-            and ctas[1] == ("cta-secondary", "#install")
+            ctas == [("cta-secondary", "#install")]
+            and re.search(r'<p class="hero-cta"><a class="store-badge" href="https://apps\.apple\.com/[^\"]+"><img src="/assets/badges/app-store-' + locale_of(home) + r'\.svg"', text)
         ):
             problems.append(f"{home}: after launch the hero's calls to action should be the listing, then the CLI, got {ctas}")
         hero_cta = HERO_CTA.search(text)
-        if not hero_cta or "<img" in hero_cta.group(1):
-            problems.append(f"{home}: the hero's call to action is missing, or is an image")
+        if not hero_cta or (where == "pre-launch" and "<img" in hero_cta.group(1)):
+            problems.append(f"{home}: the hero's call to action is missing, or uses an image before launch")
         if 'id="install"' not in text or "brew install" not in text.split('id="install"', 1)[-1].split("</section>", 1)[0]:
             problems.append(f"{home}: no #install block with the Homebrew command for the CTA to land on")
         has = '"downloadUrl"' in text
