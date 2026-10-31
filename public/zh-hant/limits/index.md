@@ -16,7 +16,7 @@
 ### 裝置與使用的人
 
 - **同步：**MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。
-- **iPhone 和 iPad：**在 iPhone 和 iPad 上，MarsDawn 只能閱讀：只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。
+- **iPhone 和 iPad：**MarsDawn 只能閱讀，只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。
 - **分享：**沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。
 - **系統：**MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。
 

@@ -775,7 +775,7 @@ def build(k) -> dict:
 <h3>Geräte und Personen</h3>
 <ul>
   <li><strong>Synchronisierung:</strong> MarsDawn synchronisiert deine Dokumente nicht. Sie bleiben dort, wo du sie sicherst. Um eines auf einem anderen Mac zu verwenden, lege es in einen Ordner, den du ohnehin synchronisierst.</li>
-  <li><strong>iPhone und iPad:</strong> Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.</li>
+  <li><strong>iPhone und iPad:</strong> MarsDawn ist dort nur zum Lesen da. Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.</li>
   <li><strong>Teilen:</strong> Es gibt keine Konten und keine gemeinsame Bearbeitung, denn MarsDawn ist für eine Person an ihrem eigenen Mac.</li>
   <li><strong>System:</strong> MarsDawn benötigt auf dem Mac macOS 26 oder neuer und auf iPhone und iPad iOS 26 bzw. iPadOS 26 oder neuer.</li>
 </ul>

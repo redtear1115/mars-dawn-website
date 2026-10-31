@@ -16,7 +16,7 @@ Auf diesem Bildschirmfoto:
 ### Geräte und Personen
 
 - **Synchronisierung:** MarsDawn synchronisiert deine Dokumente nicht. Sie bleiben dort, wo du sie sicherst. Um eines auf einem anderen Mac zu verwenden, lege es in einen Ordner, den du ohnehin synchronisierst.
-- **iPhone und iPad:** Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.
+- **iPhone und iPad:** MarsDawn ist dort nur zum Lesen da. Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.
 - **Teilen:** Es gibt keine Konten und keine gemeinsame Bearbeitung, denn MarsDawn ist für eine Person an ihrem eigenen Mac.
 - **System:** MarsDawn benötigt auf dem Mac macOS 26 oder neuer und auf iPhone und iPad iOS 26 bzw. iPadOS 26 oder neuer.
 

@@ -16,7 +16,7 @@
 ### 기기와 사람
 
 - **동기화:** MarsDawn은 문서를 동기화하지 않습니다. 문서는 저장한 곳에 있으므로, 다른 Mac에서 쓰려면 이미 동기화하고 있는 폴더에 두세요.
-- **iPhone과 iPad:** iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.
+- **iPhone과 iPad:** MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.
 - **공유:** MarsDawn은 자기 Mac을 쓰는 한 사람을 위한 앱이라 계정도 공동 편집도 없습니다.
 - **시스템:** MarsDawn은 Mac에서는 macOS 26 이상, iPhone과 iPad에서는 iOS 26 또는 iPadOS 26 이상이 필요합니다.
 

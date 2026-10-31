@@ -602,7 +602,7 @@ In this screenshot:
 ### Devices and people
 
 - **Sync:** MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.
-- **iPhone and iPad:** On iPhone and iPad, MarsDawn is for reading only: it opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.
+- **iPhone and iPad:** MarsDawn is for reading only. It opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.
 - **Sharing:** there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.
 - **System:** MarsDawn needs macOS 26 or later on the Mac, and iOS 26 or iPadOS 26 or later on iPhone and iPad.
 
@@ -4084,7 +4084,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 ### 裝置與使用的人
 
 - **同步：**MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。
-- **iPhone 和 iPad：**在 iPhone 和 iPad 上，MarsDawn 只能閱讀：只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。
+- **iPhone 和 iPad：**MarsDawn 只能閱讀，只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。
 - **分享：**沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。
 - **系統：**MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。
 
@@ -7605,7 +7605,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 ### 设备与使用的人
 
 - **同步：**MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。
-- **iPhone 和 iPad：**在 iPhone 和 iPad 上，MarsDawn 只能阅读：只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。
+- **iPhone 和 iPad：**MarsDawn 只能阅读，只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。
 - **分享：**没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。
 - **系统：**MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。
 
@@ -11119,7 +11119,7 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 ### デバイスと使う人
 
 - **同期：**MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。
-- **iPhone と iPad：**iPhone と iPad の MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。
+- **iPhone と iPad：**MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。
 - **共有：**アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。
 - **システム：**MarsDawn には、Mac では macOS 26 以降、iPhone と iPad では iOS 26 または iPadOS 26 以降が必要です。
 
@@ -14632,7 +14632,7 @@ Auf diesem Bildschirmfoto:
 ### Geräte und Personen
 
 - **Synchronisierung:** MarsDawn synchronisiert deine Dokumente nicht. Sie bleiben dort, wo du sie sicherst. Um eines auf einem anderen Mac zu verwenden, lege es in einen Ordner, den du ohnehin synchronisierst.
-- **iPhone und iPad:** Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.
+- **iPhone und iPad:** MarsDawn ist dort nur zum Lesen da. Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.
 - **Teilen:** Es gibt keine Konten und keine gemeinsame Bearbeitung, denn MarsDawn ist für eine Person an ihrem eigenen Mac.
 - **System:** MarsDawn benötigt auf dem Mac macOS 26 oder neuer und auf iPhone und iPad iOS 26 bzw. iPadOS 26 oder neuer.
 
@@ -18086,7 +18086,7 @@ Sur cette capture d’écran :
 ### Appareils et personnes
 
 - **Synchronisation :** MarsDawn ne synchronise pas vos documents. Ils restent là où vous les enregistrez ; pour en utiliser un sur un autre Mac, gardez-le dans un dossier que vous synchronisez déjà.
-- **iPhone et iPad :** Sur iPhone et iPad, MarsDawn sert uniquement à lire : il ouvre les fichiers Markdown et texte brut, sans modification ni export PDF. Il lit les fichiers que vous gardez dans iCloud Drive ; MarsDawn n’a pas de cloud à lui.
+- **iPhone et iPad :** MarsDawn y sert uniquement à lire. Il ouvre les fichiers Markdown et texte brut, sans modification ni export PDF. Il lit les fichiers que vous gardez dans iCloud Drive ; MarsDawn n’a pas de cloud à lui.
 - **Partage :** il n’y a ni comptes ni édition partagée, car MarsDawn est conçu pour une personne, sur son propre Mac.
 - **Système :** MarsDawn nécessite macOS 26 ou version ultérieure sur Mac, et iOS 26 ou iPadOS 26 ou version ultérieure sur iPhone et iPad.
 
@@ -21540,7 +21540,7 @@ En esta captura de pantalla:
 ### Dispositivos y personas
 
 - **Sincronización:** MarsDawn no sincroniza tus documentos. Se quedan donde los guardas; para usar uno en otro Mac, guárdalo en una carpeta que ya sincronices.
-- **iPhone y iPad:** En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.
+- **iPhone y iPad:** Allí, MarsDawn es solo para leer. Abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.
 - **Compartir:** no hay cuentas ni edición compartida, porque MarsDawn es para una persona en su propio Mac.
 - **Sistema:** MarsDawn necesita macOS 26 o posterior en la Mac, y iOS 26 o iPadOS 26 o posterior en iPhone y iPad.
 
@@ -24994,7 +24994,7 @@ Source: https://marsdawn.southern-light.dev/ko/limits/
 ### 기기와 사람
 
 - **동기화:** MarsDawn은 문서를 동기화하지 않습니다. 문서는 저장한 곳에 있으므로, 다른 Mac에서 쓰려면 이미 동기화하고 있는 폴더에 두세요.
-- **iPhone과 iPad:** iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.
+- **iPhone과 iPad:** MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.
 - **공유:** MarsDawn은 자기 Mac을 쓰는 한 사람을 위한 앱이라 계정도 공동 편집도 없습니다.
 - **시스템:** MarsDawn은 Mac에서는 macOS 26 이상, iPhone과 iPad에서는 iOS 26 또는 iPadOS 26 이상이 필요합니다.
 

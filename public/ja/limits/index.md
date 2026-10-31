@@ -16,7 +16,7 @@
 ### デバイスと使う人
 
 - **同期：**MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。
-- **iPhone と iPad：**iPhone と iPad の MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。
+- **iPhone と iPad：**MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。
 - **共有：**アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。
 - **システム：**MarsDawn には、Mac では macOS 26 以降、iPhone と iPad では iOS 26 または iPadOS 26 以降が必要です。
 

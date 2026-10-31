@@ -16,7 +16,7 @@
 ### 设备与使用的人
 
 - **同步：**MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。
-- **iPhone 和 iPad：**在 iPhone 和 iPad 上，MarsDawn 只能阅读：只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。
+- **iPhone 和 iPad：**MarsDawn 只能阅读，只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。
 - **分享：**没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。
 - **系统：**MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。
 

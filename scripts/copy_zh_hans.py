@@ -838,7 +838,7 @@ swift build -c release --product marsdawn
 <h3>设备与使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。</li>
-  <li><strong>iPhone 和 iPad：</strong>在 iPhone 和 iPad 上，MarsDawn 只能阅读：只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。</li>
+  <li><strong>iPhone 和 iPad：</strong>MarsDawn 只能阅读，只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。</li>
   <li><strong>分享：</strong>没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。</li>
   <li><strong>系统：</strong>MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。</li>
 </ul>
