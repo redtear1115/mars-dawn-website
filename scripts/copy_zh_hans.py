@@ -96,7 +96,7 @@ THEME_AGENTS = {
 # UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
 # Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
 FEATURES = {'title': '功能一览：Mac 上的 Markdown 编辑器 · MarsDawn',
- 'description': 'Mac 原生的 Markdown 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可以拿去开会、用笔批注，或当纸质存档。',
+ 'description': 'Mac 原生的 Markdown、JSON、YAML 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可拿去开会或存档。',
  'h1': 'MarsDawn 能做的事，一页看完。',
  'intro': ['MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后的页面，图表、数学公式和代码都画在里面。它没有自己的 AI '
            '模型：做它是为了读代理写的东西，也让你写自己的。工作换到会议桌或档案柜上时，它也能打印、导出干净的页面。',
@@ -198,8 +198,7 @@ FEATURES = {'title': '功能一览：Mac 上的 Markdown 编辑器 · MarsDawn',
                                '选的主题，也跟着 MarsDawn 的外观设置。',
                           'links': ['native']},
                          {'h': '其他文件',
-                          'p': 'MarsDawn 也能打开纯文本文件（.txt、.log、代码文件）和 PDF。UTF-8 '
-                               '纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。',
+                          'p': 'MarsDawn 也能打开纯文本文件（.txt、.log、代码文件）和 PDF。UTF-8 纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。在 Mac 上，JSON 和 YAML 文件可以作为文稿打开并编辑，旁边的树状预览会随输入实时更新。在“访达”中用“快速查看”也会显示同样的树状视图。iPhone 和 iPad 不能打开 JSON 或 YAML。',
                           'links': []},
                          {'h': '你的文件留在你手上',
                           'p': '不需要账户，没有同步，也没有云端。文稿留在你存储的位置，MarsDawn 不收集任何关于你的数据。',

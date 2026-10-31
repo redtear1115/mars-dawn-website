@@ -4574,8 +4574,7 @@ SKILL_LINE_MARKS = {"<!--skill-line:cli-->": approved_copy.CLI_SKILL_LINE, "<!--
 # Not on the top navigation: the footer and the home page's "What to expect" list link here.
 FEATURES_COPY = {
     "en": {'title': 'Features: a Markdown editor for Mac, on one page · MarsDawn',
-     'description': 'A native Mac Markdown editor: live preview, Mermaid and math, themes, plus clean '
-                    'PDF and print pages for meetings, margin notes and paper records.',
+     'description': 'A native Mac editor for Markdown, JSON and YAML: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings and records.',
      'h1': 'Everything MarsDawn does, on one page.',
      'intro': ['MarsDawn is a Markdown editor for the Mac. You write on one side and read the rendered '
                'page on the other, with diagrams, math and code drawn in. It has no AI model of its '
@@ -4726,9 +4725,7 @@ FEATURES_COPY = {
                                    'in MarsDawn and follows its Appearance setting.',
                               'links': ['native']},
                              {'h': 'Other files',
-                              'p': 'MarsDawn also opens plain text files (.txt, .log, source code) and '
-                                   'PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in '
-                                   'a viewer with page thumbnails, zoom and search.',
+                              'p': "MarsDawn also opens plain text files (.txt, .log, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. iPhone and iPad don't open JSON or YAML.",
                               'links': []},
                              {'h': 'Your files stay yours',
                               'p': 'There is no account, no sync and no cloud. Documents stay where '
@@ -4783,7 +4780,7 @@ FEATURES_COPY = {
              'left': ['. What is left out on purpose: ', 'limits'],
              'tail': '.'}},
     "zh-hant": {'title': '功能一覽：Mac 上的 Markdown 編輯器 · MarsDawn',
-     'description': 'Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。',
+     'description': 'Mac 原生的 Markdown、JSON、YAML 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可拿去開會或存檔。',
      'h1': 'MarsDawn 能做的事，一頁看完。',
      'intro': ['MarsDawn 是為 Mac 做的 Markdown 編輯器。一邊寫，一邊讀排版後的頁面，圖表、數學式和程式碼都畫在裡面。它沒有自己的 AI 模型：做它是為了讀 '
                'agent 寫的東西，也讓你寫自己的。工作換到會議桌或檔案櫃上時，它也能印出、輸出乾淨的頁面。',
@@ -4888,8 +4885,7 @@ FEATURES_COPY = {
                                    '選的主題，也跟著 MarsDawn 的外觀設定。',
                               'links': ['native']},
                              {'h': '其他檔案',
-                              'p': 'MarsDawn 也能打開純文字檔（.txt、.log、程式碼檔）和 PDF。UTF-8 '
-                                   '純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。',
+                              'p': 'MarsDawn 也能打開純文字檔（.txt、.log、程式碼檔）和 PDF。UTF-8 純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。在 Mac 上，JSON 和 YAML 檔可以當成文件打開來編輯，旁邊的樹狀預覽會隨著打字更新。在 Finder 用「快速查看」也會看到同樣的樹狀檢視。iPhone 和 iPad 不能打開 JSON 或 YAML。',
                               'links': []},
                              {'h': '你的檔案留在你手上',
                               'p': '不需要帳號，沒有同步，也沒有雲端。文件留在你儲存的位置，MarsDawn 不收集任何關於你的資料。',

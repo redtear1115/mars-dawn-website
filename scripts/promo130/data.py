@@ -461,47 +461,43 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                    'features': 'Funciones: revisa el Markdown de tu agente en Mac · MarsDawn',
                    'yours': 'Lee el Markdown de tu agente, sin cuenta y sin nube · MarsDawn',
                    'vs/macmd-viewer': 'MacMD Viewer o MarsDawn: solo ver, o leer y editar · MarsDawn'}},
- 'home': {'en': {'description': 'Read and review the Markdown your agent wrote, natively on Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF '
-                                'export. Free to try, USD 4.99 once.',
+ 'home': {'en': {'description': "Read and review your agent's Markdown, JSON and YAML natively on Mac: live preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 4.99 once.",
                  'definition': 'MarsDawn is a native Mac app for reading and reviewing Markdown, with live split preview, Mermaid diagrams, KaTeX '
                                'math, Quick Look and PDF export, free to try for 14 days and USD 4.99 once to unlock.',
                  'vs_short': "Choosing between MarsDawn, VS Code's preview, Obsidian, QLMarkdown and LynxOffice? The comparison lists what each "
                              'vendor states, what MarsDawn lacks, and when you don\'t need it. <a href="/vs/">Compare</a>'},
-          'zh-hant': {'description': '讀懂、檢查 agent 寫的 Markdown 的 Mac 原生 app：分割即時預覽、Mermaid、KaTeX、快速查看、PDF 輸出。可免費試用，之後一次 USD 4.99。',
+          'zh-hant': {'description': '檢查 agent 寫的 Markdown、JSON、YAML：Mac 原生 app，即時預覽、Mermaid、KaTeX、快速查看、PDF。免費試用，之後一次 USD 4.99。',
                       'definition': 'MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、Mermaid 圖表、KaTeX 數學式、快速查看與 PDF 輸出；可免費試用 14 天，一次付 USD 4.99 解鎖。',
                       'vs_short': '在 MarsDawn、VS Code 預覽、Obsidian、QLMarkdown、LynxOffice 之間猶豫？比較頁列出各家自己的說法、MarsDawn 沒有的東西，以及什麼時候用不到它。<a '
                                   'href="/zh-hant/vs/">看比較</a>'},
-          'ja': {'description': 'エージェントが書いた Markdown を読んで確かめる Mac ネイティブアプリ。分割ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF 書き出し。無料で試せて、解除は一度だけ USD 4.99。',
+          'ja': {'description': 'エージェントが書いた Markdown・JSON・YAML を確かめる Mac ネイティブアプリ。ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF。無料で試せて、一度だけ USD 4.99。',
                  'definition': 'MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ '
                                'USD 4.99 で解除できます。',
                  'vs_short': 'MarsDawn、VS Code のプレビュー、Obsidian、QLMarkdown、LynxOffice で迷っていますか。比較ページに、各社の記載、MarsDawn にないもの、MarsDawn がいらない場面をまとめました。<a '
                              'href="/ja/vs/">比較を見る</a>'},
-          'zh-hans': {'description': '读懂、检查代理写的 Markdown 的 Mac 原生 app：分栏实时预览、Mermaid、KaTeX、快速查看、PDF 导出。可免费试用，之后一次 USD 4.99。',
+          'zh-hans': {'description': '检查代理写的 Markdown、JSON、YAML：Mac 原生 app，实时预览、Mermaid、KaTeX、快速查看、PDF。免费试用，之后一次 USD 4.99。',
                       'definition': 'MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、Mermaid 图表、KaTeX 数学公式、快速查看与 PDF 导出；可免费试用 14 天，一次付 USD 4.99 解锁。',
                       'vs_short': '在 MarsDawn、VS Code 预览、Obsidian、QLMarkdown、LynxOffice 之间犹豫？对比页列出各家自己的说法、MarsDawn 没有的东西，以及什么时候用不到它。<a '
                                   'href="/zh-hans/vs/">看对比</a>'},
-          'ko': {'description': '에이전트가 쓴 Markdown을 읽고 검토하는 Mac 네이티브 앱. 분할 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료로 체험하고, 잠금 해제는 한 번 USD 4.99.',
+          'ko': {'description': '에이전트가 쓴 Markdown, JSON, YAML을 검토하는 Mac 네이티브 앱. 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료 체험 후 한 번만 USD 4.99.',
                  'definition': 'MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 실시간 미리보기, Mermaid 다이어그램, KaTeX 수식, 훑어보기, PDF 내보내기를 갖추고 있으며, 14일 동안 무료로 '
                                '체험한 뒤 USD 4.99 한 번으로 잠금 해제할 수 있습니다.',
                  'vs_short': 'MarsDawn, VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice 사이에서 고민 중인가요? 비교 페이지에 각 회사의 설명, MarsDawn에 없는 것, MarsDawn이 필요 '
                              '없는 경우를 정리했습니다. <a href="/ko/vs/">비교 보기</a>'},
-          'de': {'description': 'Lies und prüfe das Markdown deines Agenten nativ auf dem Mac: geteilte Vorschau, Mermaid, KaTeX, Übersicht, '
-                                'PDF-Export. Kostenlos testen, dann einmal 4,99 USD.',
+          'de': {'description': 'Lies Markdown, JSON und YAML deines Agenten nativ auf dem Mac: Live-Vorschau, Mermaid, KaTeX, Übersicht, PDF-Export. Kostenlos testen, dann einmal 4,99 USD.',
                  'definition': 'MarsDawn ist eine native macOS-App zum Lesen und Prüfen von Markdown, mit geteilter Live-Vorschau, '
                                'Mermaid-Diagrammen, KaTeX-Formeln, Übersicht und PDF-Export, 14 Tage kostenlos testbar und einmalig für 4,99 USD '
                                'freigeschaltet.',
                  'vs_short': 'Du schwankst zwischen MarsDawn, der VS-Code-Vorschau, Obsidian, QLMarkdown und LynxOffice? Der Vergleich zeigt, was '
                              'jeder Hersteller angibt, was MarsDawn fehlt und wann du es nicht brauchst. <a href="/de/vs/">Zum Vergleich</a>'},
-          'fr': {'description': 'Lisez et relisez le Markdown de votre agent sur Mac\xa0: aperçu partagé en direct, Mermaid, KaTeX, Coup d’œil, '
-                                'export PDF. Essai gratuit, puis 4,99 USD une fois.',
+          'fr': {'description': 'Relisez le Markdown, JSON et YAML de votre agent sur Mac\xa0: aperçu en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.',
                  'definition': 'MarsDawn est une app macOS native pour lire et relire du Markdown, avec aperçu partagé en direct, diagrammes '
                                'Mermaid, formules KaTeX, Coup d’œil et export PDF, gratuite à l’essai pendant 14 jours et déverrouillée pour 4,99 '
                                'USD une seule fois.',
                  'vs_short': 'Vous hésitez entre MarsDawn, l’aperçu de VS Code, Obsidian, QLMarkdown et LynxOffice\xa0? La comparaison indique ce '
                              'que chaque fournisseur précise, ce qui manque à MarsDawn et quand vous n’en avez pas besoin. <a '
                              'href="/fr/vs/">Comparer</a>'},
-          'es': {'description': 'Lee y revisa el Markdown de tu agente en tu Mac: vista previa dividida en vivo, Mermaid, KaTeX, Vista rápida y PDF. '
-                                'Pruébalo gratis y luego 4,99 USD una vez.',
+          'es': {'description': 'Revisa el Markdown, JSON y YAML de tu agente en tu Mac: vista previa en vivo, Mermaid, KaTeX, Vista rápida y PDF. Pruébalo gratis y luego 4,99 USD una vez.',
                  'definition': 'MarsDawn es una app nativa de macOS para leer y revisar Markdown, con vista previa dividida en vivo, diagramas '
                                'Mermaid, fórmulas KaTeX, Vista rápida y exportación a PDF; pruébala gratis 14 días y desbloquéala por 4,99 USD una '
                                'sola vez.',

@@ -101,8 +101,7 @@ THEME_AGENTS = {
 # UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
 # Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
 FEATURES = {'title': '기능 한눈에 보기: 한 페이지로 보는 Mac용 Markdown 편집기 · MarsDawn',
- 'description': 'Mac 네이티브 Markdown 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 그리고 회의와 여백 메모, 종이 기록에 쓸 수 있는 '
-                '깔끔한 PDF와 프린트 페이지.',
+ 'description': 'Mac 네이티브 Markdown, JSON, YAML 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 회의와 기록에 쓸 수 있는 깔끔한 PDF와 프린트 페이지.',
  'h1': 'MarsDawn이 하는 모든 일을 한 페이지에.',
  'intro': ['MarsDawn은 Mac용 Markdown 편집기입니다. 한쪽에서 쓰고 다른 쪽에서 렌더링된 페이지를 읽으며, 다이어그램과 수식, 코드가 그대로 '
            '그려집니다. 자체 AI 모델은 없습니다. 에이전트가 쓴 글을 읽고 내 글을 쓰기 위해 만든 앱입니다. 그리고 작업이 책상이나 회의, 서류 보관함으로 옮겨 '
@@ -221,8 +220,7 @@ FEATURES = {'title': '기능 한눈에 보기: 한 페이지로 보는 Mac용 Ma
                                '있습니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.',
                           'links': ['native']},
                          {'h': '기타 파일',
-                          'p': 'MarsDawn은 일반 텍스트 파일(.txt, .log, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 '
-                               '바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다.',
+                          'p': 'MarsDawn은 일반 텍스트 파일(.txt, .log, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다. Mac에서 JSON 및 YAML 파일을 편집 가능한 문서로 열 수 있으며, 입력할 때마다 업데이트되는 트리 미리보기가 옆에 표시됩니다. Finder의 훑어보기에서도 같은 트리 보기가 표시됩니다. iPhone과 iPad에서는 JSON과 YAML을 열 수 없습니다.',
                           'links': []},
                          {'h': '내 파일은 내 것',
                           'p': '계정도, 동기화도, 클라우드도 없습니다. 문서는 저장한 곳에 그대로 있고, MarsDawn은 나에 대한 어떤 데이터도 '

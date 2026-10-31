@@ -101,9 +101,7 @@ THEME_AGENTS = {
 # UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
 # Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
 FEATURES = {'title': 'Funciones: un editor de Markdown para Mac, en una sola página · MarsDawn',
- 'description': 'Editor de Markdown nativo para Mac: vista previa, Mermaid, fórmulas, temas '
-                'y páginas en PDF o impresas para reuniones, notas al margen y registros '
-                'en papel.',
+ 'description': 'Editor nativo para Mac de Markdown, JSON y YAML: vista previa, Mermaid, fórmulas, temas y páginas en PDF o impresas para reuniones y registros en papel.',
  'h1': 'Todo lo que hace MarsDawn, en una sola página.',
  'intro': ['MarsDawn es un editor de Markdown para Mac. Escribes en un lado y lees la página '
            'renderizada en el otro, con los diagramas, las fórmulas y el código ya dibujados. No '
@@ -264,10 +262,7 @@ FEATURES = {'title': 'Funciones: un editor de Markdown para Mac, en una sola pá
                                'ajuste de aspecto.',
                           'links': ['native']},
                          {'h': 'Otros archivos',
-                          'p': 'MarsDawn también abre archivos de texto sin formato (.txt, .log, '
-                               'código fuente) y PDF. El texto UTF-8 se abre listo para editar, '
-                               'solo como código. Los PDF se abren en un visor con miniaturas de '
-                               'página, zoom y búsqueda.',
+                          'p': 'MarsDawn también abre archivos de texto sin formato (.txt, .log, código fuente) y PDF. El texto UTF-8 se abre listo para editar, solo como código. Los PDF se abren en un visor con miniaturas de página, zoom y búsqueda. En el Mac, abre archivos JSON y YAML como documentos editables, con una vista previa en árbol que se actualiza mientras escribes. Vista Rápida en el Finder muestra el mismo árbol. El iPhone y el iPad no abren archivos JSON ni YAML.',
                           'links': []},
                          {'h': 'Tus archivos siguen siendo tuyos',
                           'p': 'No hay cuenta, ni sincronización, ni nube. Los documentos se '

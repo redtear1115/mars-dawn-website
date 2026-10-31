@@ -101,9 +101,7 @@ THEME_AGENTS = {
 # UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
 # Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
 FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur une seule page · MarsDawn',
- 'description': 'Éditeur Markdown natif pour Mac\xa0: aperçu en direct, Mermaid, formules, '
-                'thèmes et pages PDF ou imprimées pour réunions, notes en marge et dossiers '
-                'papier.',
+ 'description': 'Éditeur Mac natif pour Markdown, JSON et YAML\xa0: aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions et dossiers papier.',
  'h1': 'Tout ce que fait MarsDawn, sur une seule page.',
  'intro': ['MarsDawn est un éditeur Markdown pour Mac. Vous écrivez d’un côté et vous lisez la '
            'page mise en forme de l’autre, avec les diagrammes, les formules et le code dessinés. '
@@ -268,10 +266,7 @@ FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur u
                                'réglage d’apparence.',
                           'links': ['native']},
                          {'h': 'Autres fichiers',
-                          'p': 'MarsDawn ouvre aussi les fichiers texte brut (.txt, .log, code '
-                               'source) et les PDF. Le texte UTF-8 s’ouvre prêt à être modifié, en '
-                               'source uniquement. Les PDF s’ouvrent dans un lecteur avec '
-                               'vignettes de pages, zoom et recherche.',
+                          'p': 'MarsDawn ouvre aussi les fichiers texte brut (.txt, .log, code source) et les PDF. Le texte UTF-8 s’ouvre prêt à être modifié, en source uniquement. Les PDF s’ouvrent dans un lecteur avec vignettes de pages, zoom et recherche. Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre. iPhone et iPad n’ouvrent pas les fichiers JSON et YAML.',
                           'links': []},
                          {'h': 'Vos fichiers restent les vôtres',
                           'p': 'Il n’y a ni compte, ni synchronisation, ni cloud. Les documents '

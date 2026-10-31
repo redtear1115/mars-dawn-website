@@ -101,9 +101,7 @@ THEME_AGENTS = {
 # UI labels quoted in it are the app's own strings in this language (Localizable.xcstrings and the
 # Welcome guide, tag 1.1.0). The links, the button and the screenshots come from the site, not from here.
 FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Seite · MarsDawn',
- 'description': 'Nativer Markdown-Editor für den Mac: Live-Vorschau, Mermaid, Formeln, '
-                'Themes und saubere PDF- und Druckseiten für Besprechungen, Randnotizen '
-                'und Papierakten.',
+ 'description': 'Nativer Mac-Editor für Markdown, JSON und YAML: Live-Vorschau, Mermaid, Formeln, Themes und saubere PDF- und Druckseiten für Besprechungen und Papierakten.',
  'h1': 'Alles, was MarsDawn kann, auf einer Seite.',
  'intro': ['MarsDawn ist ein Markdown-Editor für den Mac. Auf der einen Seite schreibst du, auf '
            'der anderen liest du die gerenderte Seite, mit eingezeichneten Diagrammen, Formeln und '
@@ -270,9 +268,7 @@ FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Se
                                'dessen Einstellung für das Erscheinungsbild.',
                           'links': ['native']},
                          {'h': 'Andere Dateien',
-                          'p': 'MarsDawn öffnet auch reine Textdateien (.txt, .log, Quellcode) und '
-                               'PDFs. UTF-8-Text öffnet sich bearbeitbar, nur als Quelltext. PDFs '
-                               'öffnen sich in einem Viewer mit Seitenminiaturen, Zoom und Suche.',
+                          'p': 'MarsDawn öffnet auch reine Textdateien (.txt, .log, Quellcode) und PDFs. UTF-8-Text öffnet sich bearbeitbar, nur als Quelltext. PDFs öffnen sich in einem Viewer mit Seitenminiaturen, Zoom und Suche. Auf dem Mac öffnest du JSON- und YAML-Dateien als bearbeitbare Dokumente, daneben eine Baumvorschau, die sich beim Tippen aktualisiert. Die Übersicht im Finder zeigt denselben Baum. Auf iPhone und iPad lassen sich JSON und YAML nicht öffnen.',
                           'links': []},
                          {'h': 'Deine Dateien bleiben deine',
                           'p': 'Es gibt kein Konto, keine Synchronisierung und keine Cloud. '
