@@ -16,7 +16,7 @@ MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 �
 
 iPhone과 iPad에서는 읽기 전용이며, Markdown과 일반 텍스트 파일만 열 수 있습니다.
 
-[![App Store에서 다운로드하기](/assets/badges/app-store-ko.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![App Store에서 다운로드하기](/assets/badges/app-store-ko.svg)](https://apps.apple.com/app/id6812925073)
 
 [기능 한눈에 보기](/ko/features/#iphone-ipad)
 

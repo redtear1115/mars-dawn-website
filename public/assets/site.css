@@ -1792,6 +1792,7 @@ main > h2[id="iphone-ipad"] { scroll-margin-top: 16px; }
 .iphone-steps h2 { margin: 0 0 24px; }
 .iphone-steps ol { display: grid; gap: 24px; margin: 0; padding-left: 24px; }
 .iphone-steps li { min-width: 0; padding: 12px 0 0 8px; border-top: 1px solid var(--hairline); }
+.iphone-steps li + li { margin-top: 0; }
 .iphone-steps li::marker { color: var(--dust); font-weight: 650; }
 .iphone-steps-limit { margin-top: 24px; padding-left: 16px; border-left: 2px solid var(--ember); }
 @media (min-width: 720px) {

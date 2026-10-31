@@ -5823,7 +5823,8 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         return "\n\n".join([
             html_to_markdown(page["intro"]).rstrip(),
             hero_window.window_markdown(locale),
-            html_to_markdown(home_steps_html(locale)).rstrip(),
+            # Twins carry the plain listing URL, never a campaign one (check_store_links R4).
+            html_to_markdown(home_steps_html(locale).replace(campaign_url(HOME_IPHONE_CAMPAIGN).replace("&", "&amp;"), LISTING_URL)).rstrip(),
             html_to_markdown(home_body).rstrip(),
             html_to_markdown("\n".join(plan_loop_parts(locale))).rstrip(),
             html_to_markdown(_home_sections_for_twin(locale)).rstrip(),

@@ -22,7 +22,7 @@ The page shows a working MarsDawn window over part of the app's Welcome guide. I
 
 On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain text files.
 
-[![Download on the App Store](/assets/badges/app-store-en.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![Download on the App Store](/assets/badges/app-store-en.svg)](https://apps.apple.com/app/id6812925073)
 
 [Features](/features/#iphone-ipad)
 
@@ -3499,7 +3499,7 @@ MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、M
 
 在 iPhone 和 iPad 上只能閱讀，只開 Markdown 和純文字檔。
 
-[![在 App Store 下載](/assets/badges/app-store-zh-hant.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![在 App Store 下載](/assets/badges/app-store-zh-hant.svg)](https://apps.apple.com/app/id6812925073)
 
 [功能一覽](/zh-hant/features/#iphone-ipad)
 
@@ -7015,7 +7015,7 @@ MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、M
 
 在 iPhone 和 iPad 上只能阅读，只能打开 Markdown 和纯文本文件。
 
-[![在 App Store 下载](/assets/badges/app-store-zh-hans.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![在 App Store 下载](/assets/badges/app-store-zh-hans.svg)](https://apps.apple.com/app/id6812925073)
 
 [功能一览](/zh-hans/features/#iphone-ipad)
 
@@ -10524,7 +10524,7 @@ MarsDawn は、Markdown を読んで確かめるための Mac ネイティブア
 
 iPhone と iPad では閲覧専用で、開けるのは Markdown とプレーンテキストのファイルだけです。
 
-[![App Storeからダウンロード](/assets/badges/app-store-ja.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![App Storeからダウンロード](/assets/badges/app-store-ja.svg)](https://apps.apple.com/app/id6812925073)
 
 [機能一覧](/ja/features/#iphone-ipad)
 
@@ -14032,7 +14032,7 @@ Die Seite zeigt ein bedienbares MarsDawn-Fenster mit einem Ausschnitt aus der Ei
 
 Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet nur Markdown- und reine Textdateien.
 
-[![Laden im App Store](/assets/badges/app-store-de.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![Laden im App Store](/assets/badges/app-store-de.svg)](https://apps.apple.com/app/id6812925073)
 
 [Funktionen](/de/features/#iphone-ipad)
 
@@ -17481,7 +17481,7 @@ La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide
 
 Sur iPhone et iPad, MarsDawn sert uniquement à lire et n’ouvre que les fichiers Markdown et texte brut.
 
-[![Télécharger dans l'App Store](/assets/badges/app-store-fr.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![Télécharger dans l'App Store](/assets/badges/app-store-fr.svg)](https://apps.apple.com/app/id6812925073)
 
 [Fonctionnalités](/fr/features/#iphone-ipad)
 
@@ -20930,7 +20930,7 @@ La página muestra una ventana de MarsDawn interactiva que presenta un fragmento
 
 En iPhone y iPad, MarsDawn solo sirve para leer y solo abre archivos Markdown y de texto plano.
 
-[![Descargar en el App Store](/assets/badges/app-store-es.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![Descargar en el App Store](/assets/badges/app-store-es.svg)](https://apps.apple.com/app/id6812925073)
 
 [Funciones](/es/features/#iphone-ipad)
 
@@ -24379,7 +24379,7 @@ MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 �
 
 iPhone과 iPad에서는 읽기 전용이며, Markdown과 일반 텍스트 파일만 열 수 있습니다.
 
-[![App Store에서 다운로드하기](/assets/badges/app-store-ko.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![App Store에서 다운로드하기](/assets/badges/app-store-ko.svg)](https://apps.apple.com/app/id6812925073)
 
 [기능 한눈에 보기](/ko/features/#iphone-ipad)
 

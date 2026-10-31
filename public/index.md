@@ -16,7 +16,7 @@ The page shows a working MarsDawn window over part of the app's Welcome guide. I
 
 On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain text files.
 
-[![Download on the App Store](/assets/badges/app-store-en.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![Download on the App Store](/assets/badges/app-store-en.svg)](https://apps.apple.com/app/id6812925073)
 
 [Features](/features/#iphone-ipad)
 

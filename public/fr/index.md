@@ -16,7 +16,7 @@ La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide
 
 Sur iPhone et iPad, MarsDawn sert uniquement à lire et n’ouvre que les fichiers Markdown et texte brut.
 
-[![Télécharger dans l'App Store](/assets/badges/app-store-fr.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![Télécharger dans l'App Store](/assets/badges/app-store-fr.svg)](https://apps.apple.com/app/id6812925073)
 
 [Fonctionnalités](/fr/features/#iphone-ipad)
 

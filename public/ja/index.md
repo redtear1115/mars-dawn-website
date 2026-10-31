@@ -16,7 +16,7 @@ MarsDawn は、Markdown を読んで確かめるための Mac ネイティブア
 
 iPhone と iPad では閲覧専用で、開けるのは Markdown とプレーンテキストのファイルだけです。
 
-[![App Storeからダウンロード](/assets/badges/app-store-ja.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![App Storeからダウンロード](/assets/badges/app-store-ja.svg)](https://apps.apple.com/app/id6812925073)
 
 [機能一覧](/ja/features/#iphone-ipad)
 

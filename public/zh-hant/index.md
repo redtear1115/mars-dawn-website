@@ -16,7 +16,7 @@ MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、M
 
 在 iPhone 和 iPad 上只能閱讀，只開 Markdown 和純文字檔。
 
-[![在 App Store 下載](/assets/badges/app-store-zh-hant.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+[![在 App Store 下載](/assets/badges/app-store-zh-hant.svg)](https://apps.apple.com/app/id6812925073)
 
 [功能一覽](/zh-hant/features/#iphone-ipad)
 
