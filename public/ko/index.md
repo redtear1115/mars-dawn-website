@@ -4,7 +4,7 @@
 
 에이전트의 작업을 이끄는 사람을 위한 Markdown.
 
-MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 실시간 미리보기, Mermaid 다이어그램, KaTeX 수식, 훑어보기, PDF 내보내기를 갖추고 있으며, 14일 동안 무료로 체험한 뒤 USD 4.99 한 번으로 잠금 해제할 수 있습니다.
+MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 실시간 미리보기, Mermaid 다이어그램, KaTeX 수식, 훑어보기, PDF 내보내기를 갖추고 있으며, 14일 동안 무료로 체험한 뒤 USD 4.99 한 번으로 잠금 해제할 수 있습니다. Mac에서는 JSON과 YAML도 트리 미리보기와 함께 열 수 있습니다.
 
 이 페이지에는 앱의 시작 가이드 일부를 보여 주는, 직접 조작할 수 있는 MarsDawn 창이 있습니다. 팔레트 메뉴에서 화면 모드(시스템, 라이트, 다크)를 고르고, 라이트와 다크에 각각 네 가지 미리보기 테마(새벽, 클래식, 모던, 비비드) 중 하나를 지정할 수 있으며, 도구 막대에서는 세 가지 레이아웃(소스, 분할, 미리보기) 중 하나를 고를 수 있습니다.
 
@@ -234,4 +234,4 @@ MarsDawn 자체는 아무것도 보내지 않습니다. 스킬은 지침을 적�
 - [日本語](https://marsdawn.southern-light.dev/ja/index.md): エージェントが書いた Markdown・JSON・YAML を確かめる Mac ネイティブアプリ。ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF。無料で試せて、一度だけ USD 4.99。
 - [Deutsch](https://marsdawn.southern-light.dev/de/index.md): Lies Markdown, JSON und YAML deines Agenten nativ auf dem Mac: Live-Vorschau, Mermaid, KaTeX, Übersicht, PDF-Export. Kostenlos testen, dann einmal 4,99 USD.
 - [Français](https://marsdawn.southern-light.dev/fr/index.md): Relisez le Markdown, JSON et YAML de votre agent sur Mac : aperçu en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.
-- [Español](https://marsdawn.southern-light.dev/es/index.md): Revisa el Markdown, JSON y YAML de tu agente en tu Mac: vista previa en vivo, Mermaid, KaTeX, Vista rápida y PDF. Pruébalo gratis y luego 4,99 USD una vez.
+- [Español](https://marsdawn.southern-light.dev/es/index.md): Revisa el Markdown, JSON y YAML de tu agente en tu Mac: vista previa en vivo, Mermaid, KaTeX, Vista Rápida y PDF. Pruébalo gratis y luego 4,99 USD una vez.

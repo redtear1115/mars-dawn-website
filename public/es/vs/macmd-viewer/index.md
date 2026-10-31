@@ -18,8 +18,8 @@ Comprobado con el sitio y el repositorio propios de MacMD Viewer el 15 de octubr
 | Pestañas | Sí, opcionales y desactivadas por defecto (desde 1.6.0) [[S5](#s5), [S8](#s8)] | Sí |
 | Exportación a PDF | Sí, una sola página continua, con el tema actual, sin marca de agua [[S3](#s3), [S9](#s9)] | Sí, páginas paginadas con la paleta clara del tema; los saltos de página evitan partir bloques de código cortos |
 | Impresión | Sí, mediante el diálogo de impresión de macOS [[S3](#s3), [S9](#s9)] | Sí |
-| Vista rápida en el Finder | Sí, incluida; la activas en Ajustes del Sistema; usa tu tema [[S4](#s4)] | Sí, funciona con o sin la prueba; usa tu tema |
-| Mermaid y matemáticas en Vista rápida | Mermaid: sí [[S4](#s4)]. Matemáticas: no, no las renderiza [[S7](#s7)] | Sí, se dibujan las dos cosas |
+| Vista Rápida en el Finder | Sí, incluida; la activas en Ajustes del Sistema; usa tu tema [[S4](#s4)] | Sí, funciona con o sin la prueba; usa tu tema |
+| Mermaid y matemáticas en Vista Rápida | Mermaid: sí [[S4](#s4)]. Matemáticas: no, no las renderiza [[S7](#s7)] | Sí, se dibujan las dos cosas |
 | Línea de comandos | No se describe ninguna herramienta de línea de comandos independiente. Tiene un esquema de URL `markdownviewer://` y un plug-in de Claude Code con hooks que abren archivos en el visor [[S6](#s6)] | La herramienta gratuita `marsdawn`: `marsdawn export` genera un PDF sin la app, `marsdawn open` abre un archivo en una línea |
 | Idiomas de la interfaz | No se indican en sus propios materiales [[S1](#s1), [S3](#s3), [S7](#s7)] | inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano |
 | Requisitos | macOS 14 (Sonoma) o posterior; Apple silicon e Intel [[S1](#s1), [S7](#s7)] | macOS 26 (Tahoe) o posterior |
@@ -41,7 +41,7 @@ Comprobado con el sitio y el repositorio propios de MacMD Viewer el 15 de octubr
 
 |  | MacMD Viewer | MarsDawn |
 |---|---|---|
-| Después | Sin prueba; una vez comprada, sigue funcionando | Si no la desbloqueas pasados 14 días, los documentos se abren con su contenido cubierto; tus archivos no se tocan, y Vista rápida y la exportación gratuita de `marsdawn` siguen funcionando |
+| Después | Sin prueba; una vez comprada, sigue funcionando | Si no la desbloqueas pasados 14 días, los documentos se abren con su contenido cubierto; tus archivos no se tocan, y Vista Rápida y la exportación gratuita de `marsdawn` siguen funcionando |
 
 ## Fuentes
 
@@ -62,7 +62,7 @@ Comprobado con el sitio y el repositorio propios de MacMD Viewer el 15 de octubr
 
 **Elige MarsDawn si** el Markdown vuelve para otra pasada. El plan, el README o la especificación de un agente suele necesitar una corrección, una frase reformulada o una sección nueva, y en MarsDawn lo haces en la ventana donde ya estás leyendo. También cubre las matemáticas (KaTeX), que MacMD Viewer dice que no renderiza [[S7](#s7)]; viene en ocho idiomas de interfaz; tiene una línea de comandos `marsdawn` gratuita que exporta un PDF sin la app; y su precio es de 4,99 USD tras una prueba de 14 días en la que todo funciona.
 
-**Cualquiera sirve si** lees Markdown en una Mac reciente, quieres diagramas Mermaid bien dibujados y quieres Vista rápida en el Finder. Las dos lo hacen.
+**Cualquiera sirve si** lees Markdown en una Mac reciente, quieres diagramas Mermaid bien dibujados y quieres Vista Rápida en el Finder. Las dos lo hacen.
 
 **Y puedes usar las dos.** No son excluyentes: nada te impide tener un visor de solo lectura para lo que solo lees y un editor para lo que escribes.
 
@@ -78,7 +78,7 @@ Sus propias páginas citan su sitio, Homebrew y Setapp, y no mencionan el Mac Ap
 
 ### ¿Puede MarsDawn abrir los mismos archivos?
 
-Sí. Abre archivos `.md`, y también archivos de texto plano y PDF: el texto se abre listo para editar como UTF-8, y los PDF se abren en un visor.
+Sí. Abre archivos `.md`, y también archivos de texto plano y PDF: el texto se abre listo para editar como UTF-8, y los PDF se abren en un visor. En el Mac también abre JSON y YAML como documentos editables, con vista previa en árbol.
 
 ### ¿Y si tengo macOS 14 o 15?
 
@@ -108,28 +108,28 @@ open notes.pdf
 
 ## Más
 
-- [MarsDawn](https://marsdawn.southern-light.dev/es/index.md): Revisa el Markdown, JSON y YAML de tu agente en tu Mac: vista previa en vivo, Mermaid, KaTeX, Vista rápida y PDF. Pruébalo gratis y luego 4,99 USD una vez.
+- [MarsDawn](https://marsdawn.southern-light.dev/es/index.md): Revisa el Markdown, JSON y YAML de tu agente en tu Mac: vista previa en vivo, Mermaid, KaTeX, Vista Rápida y PDF. Pruébalo gratis y luego 4,99 USD una vez.
 - [Funciones](https://marsdawn.southern-light.dev/es/features/index.md): Editor nativo para Mac de Markdown, JSON y YAML: vista previa, Mermaid, fórmulas, temas y páginas en PDF o impresas para reuniones y registros en papel.
 - [Lo que escribes se queda en tu Mac](https://marsdawn.southern-light.dev/es/yours/index.md): MarsDawn no tiene cuenta, ni sincronización, ni nube. Tus documentos Markdown se quedan en tu Mac, en los archivos y carpetas que elijas.
 - [Pruébalo gratis, paga una vez](https://marsdawn.southern-light.dev/es/pay-once/index.md): MarsDawn se descarga gratis. Prueba todo durante 14 días y desbloquéalo una sola vez por 4,99 USD. Sin suscripción y sin cuenta.
 - [Exportación a PDF](https://marsdawn.southern-light.dev/es/pdf/index.md): Exporta Markdown como PDF o imprímelo en tu Mac, con diagramas Mermaid y código resaltado. Los saltos de página evitan partir bloques de código cortos.
-- [Una app para Mac](https://marsdawn.southern-light.dev/es/native/index.md): Un editor de Markdown que es una app de Mac de verdad: ventanas y pestañas nativas, guardado automático, historial de versiones, Vista rápida en el Finder y un editor de texto que se comporta como en la Mac.
+- [Una app para Mac](https://marsdawn.southern-light.dev/es/native/index.md): Un editor de Markdown que es una app de Mac de verdad: ventanas y pestañas nativas, guardado automático, historial de versiones, Vista Rápida en el Finder y un editor de texto que se comporta como en la Mac.
 - [Lo que MarsDawn no hace](https://marsdawn.southern-light.dev/es/limits/index.md): Sin sincronización, sin edición en iPhone o iPad, sin plugins, sin cuentas. Temas, pero sin CSS personalizado. Lo que conviene saber antes de comprar.
 - [Soporte](https://marsdawn.southern-light.dev/es/support/index.md): Ayuda con MarsDawn, el editor de Markdown para macOS.
 - [Política de privacidad](https://marsdawn.southern-light.dev/es/privacy/index.md): MarsDawn no recopila datos personales. Tus documentos y tus ajustes se quedan en tu Mac.
-- [Cómo abrir archivos .md en Mac](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Cómo abrir un archivo .md en una Mac: doble clic, app predeterminada, Vista rápida en el Finder. Lee en MarsDawn, ya renderizados, los .md de un agente de IA.
-- [Vista previa de Mermaid en Mac](https://marsdawn.southern-light.dev/es/mermaid-preview-mac/index.md): Diagramas Mermaid junto a tu Markdown en una Mac: vista previa en vivo, Vista rápida y exportación a PDF. Un diagrama con errores muestra el error y la línea.
-- [Vista rápida para Markdown](https://marsdawn.southern-light.dev/es/quicklook/index.md): Con MarsDawn, Vista rápida renderiza Markdown en el Finder con la barra espaciadora: Mermaid, KaTeX y código resaltado. Sigue funcionando tras la prueba.
+- [Cómo abrir archivos .md en Mac](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Cómo abrir un archivo .md en una Mac: doble clic, app predeterminada, Vista Rápida en el Finder. Lee en MarsDawn, ya renderizados, los .md de un agente de IA.
+- [Vista previa de Mermaid en Mac](https://marsdawn.southern-light.dev/es/mermaid-preview-mac/index.md): Diagramas Mermaid junto a tu Markdown en una Mac: vista previa en vivo, Vista Rápida y exportación a PDF. Un diagrama con errores muestra el error y la línea.
+- [Vista Rápida para Markdown](https://marsdawn.southern-light.dev/es/quicklook/index.md): Con MarsDawn, Vista Rápida renderiza Markdown en el Finder con la barra espaciadora: Mermaid, KaTeX y código resaltado. Sigue funcionando tras la prueba.
 - [De Markdown a PDF](https://marsdawn.southern-light.dev/es/markdown-to-pdf/index.md): Convierte Markdown a PDF en Mac con la herramienta de línea de comandos gratuita marsdawn. Instálala con Homebrew y ejecuta un solo comando: tablas, matemáticas, Mermaid y código.
 - [MarsDawn comparado: vista previa de VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/es/vs/index.md): Para quien elige cómo leer y revisar Markdown en un Mac, a menudo lo que escribió un agente. Cada celda viene de las páginas del propio fabricante o de nuestra propia comprobación, todas del 16 de octubre de 2026; los productos cambian, así que una celda puede quedar desfasada. Si ves un error, escribe a la dirección que aparece en Soporte.
-- [El mejor visor de Markdown para Mac (2026)](https://marsdawn.southern-light.dev/es/best-markdown-viewer-mac/index.md): Ocho visores de Markdown para Mac comparados por precio, Mermaid, fórmulas, PDF, recarga en vivo, Vista rápida y nativo o Electron, y para quién es cada uno.
+- [El mejor visor de Markdown para Mac (2026)](https://marsdawn.southern-light.dev/es/best-markdown-viewer-mac/index.md): Ocho visores de Markdown para Mac comparados por precio, Mermaid, fórmulas, PDF, recarga en vivo, Vista Rápida y nativo o Electron, y para quién es cada uno.
 - [Línea de comandos](https://marsdawn.southern-light.dev/es/cli/index.md): La herramienta de línea de comandos gratuita marsdawn para Mac: exporta Markdown a PDF desde una shell, un script o un agente LLM, con salida JSON. Se instala con Homebrew.
 - [marsdawn para agentes](https://marsdawn.southern-light.dev/es/cli/agents/index.md): Una referencia para agentes de IA y scripts que llaman a marsdawn para convertir Markdown en PDF: comandos, salida JSON, esquemas, códigos de salida y requisitos.
 - [Skill para agentes](https://marsdawn.southern-light.dev/es/cli/skill/index.md): Un archivo que tu agente de programación carga para abrir en MarsDawn el Markdown que escribió, para que lo revises, y para instalar marsdawn, exportar Markdown a PDF y leer el resultado JSON.
 - [Servidor MCP](https://marsdawn.southern-light.dev/es/cli/mcp/index.md): marsdawn no tiene un modelo de IA propio, así que no importa qué agente escribió el Markdown. Llámalo desde la CLI, un archivo de skill o el servidor MCP marsdawn-mcp: los tres ejecutan la misma exportación.
 - [Revisión que ahorra tokens](https://marsdawn.southern-light.dev/es/token-efficient-review/index.md): Una persona revisa la página renderizada en MarsDawn, y nunca se vuelve a leer en el contexto del agente. La llamada a la herramienta devuelve un resultado JSON compacto, no el contenido renderizado, así que llamarla también sale barato.
 - [Ver Markdown en otras herramientas frente a MarsDawn](https://marsdawn.southern-light.dev/es/vs/markdown-preview-tools/index.md): Cómo se compara MarsDawn con leer Markdown en la vista previa integrada de VS Code, una extensión del navegador o la vista previa de archivos de Claude Desktop: qué renderiza cada uno y qué hace falta para abrir un archivo.
-- [Temas](https://marsdawn.southern-light.dev/es/themes/index.md): Cuatro temas de vista previa integrados, en claro y oscuro, y una galería revisada que abres desde Ajustes en MarsDawn para Mac. Vista rápida usa tu tema.
+- [Temas](https://marsdawn.southern-light.dev/es/themes/index.md): Cuatro temas de vista previa integrados, en claro y oscuro, y una galería revisada que abres desde Ajustes en MarsDawn para Mac. Vista Rápida usa tu tema.
 - [Crear un tema](https://marsdawn.southern-light.dev/es/themes/new/index.md): Elige colores y unas pocas opciones de estilo, míralos aplicados en vivo a un documento de ejemplo y envía tu tema como un issue de GitHub. Sin instalación, sin git.
 - [Crea un tema con tu agente](https://marsdawn.southern-light.dev/es/themes/agents/index.md): Referencia de temas de MarsDawn para agentes de IA: cada campo de theme.json con tipo y rango, comprobación y renderizado por CLI, enlace de entrega y envío.
 - [Galería de temas](https://marsdawn.southern-light.dev/es/themes/gallery/index.md): Explora temas de vista previa para MarsDawn revisados por el desarrollador, fíltralos por escenario y denuncia un problema. Crea el tuyo en el navegador.

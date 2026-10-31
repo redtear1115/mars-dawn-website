@@ -10,7 +10,7 @@ Frontier tools for builders
 
 Markdown for humans who steer agentic work.
 
-MarsDawn is a native Mac app for reading and reviewing Markdown, with live split preview, Mermaid diagrams, KaTeX math, Quick Look and PDF export, free to try for 14 days and USD 4.99 once to unlock.
+MarsDawn is a native Mac app for reading and reviewing Markdown, with live split preview, Mermaid diagrams, KaTeX math, Quick Look and PDF export, free to try for 14 days and USD 4.99 once to unlock. On the Mac, it also opens JSON and YAML with a tree preview.
 
 The page shows a working MarsDawn window over part of the app's Welcome guide. Its palette menu picks an appearance (System, Light, Dark) and a preview theme for light and for dark from four (Dawn, Classic, Modern, Vivid), and its toolbar one of three layouts (Source, Split, Preview).
 
@@ -355,7 +355,7 @@ Each document opens in its own window. Choose Window ▸ Merge All Windows to ga
 
 ### Quick Look in Finder
 
-Select a Markdown file in Finder and press Space to read it rendered, diagrams included. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.
+Select a Markdown file in Finder and press Space to read it rendered, diagrams included. JSON and YAML files show as a tree. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.
 
 [A Mac app](/native/) · [Quick Look for Markdown](/quicklook/)
 
@@ -551,7 +551,7 @@ Source: https://marsdawn.southern-light.dev/native/
 
 # Built out of the Mac's own parts.
 
-MarsDawn is a native Mac app for reading and reviewing Markdown, with live split preview, Mermaid diagrams, KaTeX math, Quick Look and PDF export, free to try for 14 days and USD 4.99 once to unlock.
+MarsDawn is a native Mac app for reading and reviewing Markdown, with live split preview, Mermaid diagrams, KaTeX math, Quick Look and PDF export, free to try for 14 days and USD 4.99 once to unlock. On the Mac, it also opens JSON and YAML with a tree preview.
 
 The windows, tabs, menus and text editor are the Mac's own. The rendered page is drawn by WebKit, the engine behind Safari.
 
@@ -602,7 +602,7 @@ In this screenshot:
 ### Devices and people
 
 - **Sync:** MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.
-- **iPhone and iPad:** MarsDawn there is for reading. It opens Markdown and plain text files and renders them, with an outline and themes, but it doesn't edit, export PDFs or sync. Your files get there through the cloud you already use.
+- **iPhone and iPad:** On iPhone and iPad, MarsDawn is for reading only: it opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.
 - **Sharing:** there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.
 - **System:** MarsDawn needs macOS 26 or later on the Mac, and iOS 26 or iPadOS 26 or later on iPhone and iPad.
 
@@ -610,7 +610,7 @@ In this screenshot:
 
 - **Editing:** you write Markdown on the left and read the page on the right; the page itself can't be edited.
 - **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
-- **Other files:** plain text files and PDFs open read-only.
+- **Other files:** PDFs open read-only, and so do text files in encodings other than UTF-8. On the Mac, JSON and YAML open as editable documents with a tree preview; iPhone and iPad don't open them.
 - **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can install more from the curated [Theme Gallery](/themes/gallery/) (Settings ▸ Appearance ▸ Get More Themes…). A theme sets colours and a few style options; there's no custom CSS. See [themes](/themes/).
 - **Plugins:** MarsDawn has no plugins or extensions.
 
@@ -912,6 +912,7 @@ Select a Markdown file in Finder and press Space. With MarsDawn installed, Quick
 - Mermaid diagrams, KaTeX math and highlighted code blocks.
 - The preview theme you picked in MarsDawn, in light or dark.
 - Web images stay blocked, and pictures stored next to the file can appear as placeholders.
+- JSON and YAML files as a tree, the same as MarsDawn's tree preview.
 
 ## How to preview a Markdown file with Quick Look
 
@@ -1194,7 +1195,7 @@ Its own pages list its site, Homebrew and Setapp, and don't mention the Mac App 
 
 ### Can MarsDawn open the same files?
 
-Yes. It opens `.md` files, and also plain text files and PDFs: text opens ready to edit as UTF-8, and PDFs open in a viewer.
+Yes. It opens `.md` files, and also plain text files and PDFs: text opens ready to edit as UTF-8, and PDFs open in a viewer. On the Mac it also opens JSON and YAML as editable documents with a tree preview.
 
 ### What if I'm on macOS 14 or 15?
 
@@ -3491,7 +3492,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/
 
 給要掌舵 agentic 開發的人用的 Markdown。
 
-MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、Mermaid 圖表、KaTeX 數學式、快速查看與 PDF 輸出；可免費試用 14 天，一次付 USD 4.99 解鎖。
+MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、Mermaid 圖表、KaTeX 數學式、快速查看與 PDF 輸出；可免費試用 14 天，一次付 USD 4.99 解鎖。在 Mac 上也能打開 JSON 和 YAML，附樹狀預覽。
 
 頁面上有一個可以操作的 MarsDawn 視窗，內容是 App 內建歡迎指南的一段。調色盤選單可以選外觀（系統、淺色、深色），並分別替淺色和深色從四個預覽主題（黎明、典雅、流行、活潑）裡選一個；工具列可以選三種版面（原始碼、並排、預覽）。
 
@@ -3836,7 +3837,7 @@ agent 在 Mac 上工作，它寫的計畫和報告，你在 iPhone 或 iPad 上�
 
 ### 在 Finder 用快速查看
 
-在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。快速查看會用你在 MarsDawn 選的主題，也跟著 MarsDawn 的外觀設定。
+在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。JSON 和 YAML 檔則會顯示成樹狀檢視。快速查看會用你在 MarsDawn 選的主題，也跟著 MarsDawn 的外觀設定。
 
 [為 Mac 而做](/zh-hant/native/) · [Markdown 快速查看](/zh-hant/quicklook/)
 
@@ -4032,7 +4033,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/native/
 
 # 用 Mac 原生的元件做的。
 
-MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、Mermaid 圖表、KaTeX 數學式、快速查看與 PDF 輸出；可免費試用 14 天，一次付 USD 4.99 解鎖。
+MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、Mermaid 圖表、KaTeX 數學式、快速查看與 PDF 輸出；可免費試用 14 天，一次付 USD 4.99 解鎖。在 Mac 上也能打開 JSON 和 YAML，附樹狀預覽。
 
 視窗、分頁、選單和文字編輯器都是 Mac 原生的。排版後的頁面由 Safari 使用的 WebKit 引擎繪製。
 
@@ -4083,7 +4084,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 ### 裝置與使用的人
 
 - **同步：**MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。
-- **iPhone 和 iPad：**MarsDawn 在這兩個裝置上只能閱讀：可以打開 Markdown 和純文字檔並排好顯示，也有大綱和主題，但不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳過去。
+- **iPhone 和 iPad：**在 iPhone 和 iPad 上，MarsDawn 只能閱讀：只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。
 - **分享：**沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。
 - **系統：**MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。
 
@@ -4091,7 +4092,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 
 - **編輯：**你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。
 - **格式：**MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。
-- **其他檔案：**純文字檔和 PDF 以唯讀方式開啟。
+- **其他檔案：**PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML 可以當成文件打開來編輯，並有樹狀預覽；iPhone 和 iPad 不能打開這兩種檔案。
 - **主題：**內建黎明、典雅、流行和活潑，每種都有淺色與深色；也可以從經過審核的[主題庫](/zh-hant/themes/gallery/)安裝更多（「設定 ▸ 外觀 ▸ 取得更多主題⋯」）。主題只能設定顏色和幾個樣式選項，不能自訂 CSS。詳見[主題](/zh-hant/themes/)。
 - **外掛：**MarsDawn 沒有外掛或擴充功能。
 
@@ -4393,6 +4394,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/quicklook/
 - Mermaid 圖表、KaTeX 數學式和上色的程式碼區塊。
 - 你在 MarsDawn 選的預覽主題，淺色或深色。
 - 網路圖片依然會被擋下，放在檔案旁邊的圖片也可能只顯示佔位圖示。
+- JSON 和 YAML 檔顯示成樹狀檢視，跟 MarsDawn 的樹狀預覽一樣。
 
 ## 如何用快速查看預覽 Markdown 檔案
 
@@ -4675,7 +4677,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/
 
 ### MarsDawn 能打開同樣的檔案嗎？
 
-可以。它打開 `.md` 檔案，也能打開純文字檔和 PDF：UTF-8 的文字檔可直接編輯，PDF 以檢視器開啟。
+可以。它打開 `.md` 檔案，也能打開純文字檔和 PDF：UTF-8 的文字檔可直接編輯，PDF 以檢視器開啟。在 Mac 上也能把 JSON 和 YAML 當成文件打開來編輯，並有樹狀預覽。
 
 ### 我的 Mac 是 macOS 14 或 15 呢？
 
@@ -7011,7 +7013,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/
 
 给要掌舵 agentic 开发的人用的 Markdown。
 
-MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、Mermaid 图表、KaTeX 数学公式、快速查看与 PDF 导出；可免费试用 14 天，一次付 USD 4.99 解锁。
+MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、Mermaid 图表、KaTeX 数学公式、快速查看与 PDF 导出；可免费试用 14 天，一次付 USD 4.99 解锁。在 Mac 上也能打开 JSON 和 YAML，附树状预览。
 
 页面上有一个可以操作的 MarsDawn 窗口，内容是 App 内置欢迎指南的一段。调色板菜单可以选外观（系统、浅色、深色），并分别为浅色和深色从四个预览主题（黎明、典雅、流行、活泼）里选一个；工具栏可以选三种布局（源代码、并排、预览）。
 
@@ -7356,7 +7358,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 ### 在访达用快速查看
 
-在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。快速查看会用你在 MarsDawn 选的主题，也跟着 MarsDawn 的外观设置。
+在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。JSON 和 YAML 文件则会显示成树状视图。快速查看会用你在 MarsDawn 选的主题，也跟着 MarsDawn 的外观设置。
 
 [为 Mac 而做](/zh-hans/native/) · [Markdown 快速查看](/zh-hans/quicklook/)
 
@@ -7552,7 +7554,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/native/
 
 # 用 Mac 原生的组件做的。
 
-MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、Mermaid 图表、KaTeX 数学公式、快速查看与 PDF 导出；可免费试用 14 天，一次付 USD 4.99 解锁。
+MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、Mermaid 图表、KaTeX 数学公式、快速查看与 PDF 导出；可免费试用 14 天，一次付 USD 4.99 解锁。在 Mac 上也能打开 JSON 和 YAML，附树状预览。
 
 窗口、标签页、菜单和文本编辑器都是 Mac 原生的。排版后的页面由 Safari 使用的 WebKit 引擎绘制。
 
@@ -7603,7 +7605,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 ### 设备与使用的人
 
 - **同步：**MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。
-- **iPhone 和 iPad：**MarsDawn 在这两种设备上只能阅读：可以打开 Markdown 和纯文本文件并排好显示，也有大纲和主题，但不能编辑、不能导出 PDF，也不会同步。文件通过你自己用的云端传过去。
+- **iPhone 和 iPad：**在 iPhone 和 iPad 上，MarsDawn 只能阅读：只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。
 - **分享：**没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。
 - **系统：**MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。
 
@@ -7611,7 +7613,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 
 - **编辑：**你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。
 - **格式：**MarsDawn 能导出 PDF 和打印，不能导出 Word 文件。
-- **其他文件：**纯文本文件和 PDF 以只读方式打开。
+- **其他文件：**PDF 以只读方式打开，不是 UTF-8 编码的文本文件也是。在 Mac 上，JSON 和 YAML 可以作为文稿打开并编辑，并有树状预览；iPhone 和 iPad 不能打开这两种文件。
 - **主题：**内置黎明、典雅、流行和活泼，每种都有浅色与深色；也可以从经过审核的[主题图库](/zh-hans/themes/gallery/)安装更多（“设置 ▸ 外观 ▸ 获取更多主题…”）。主题只能设置颜色和几个样式选项，不能自定义 CSS。详见[主题](/zh-hans/themes/)。
 - **插件：**MarsDawn 没有插件或扩展功能。
 
@@ -7912,6 +7914,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/quicklook/
 - Mermaid 图表、KaTeX 数学公式和高亮的代码块。
 - 你在 MarsDawn 里选的预览主题，浅色或深色。
 - 网络图片依然会被拦下，放在文件旁边的图片也可能只显示占位图标。
+- JSON 和 YAML 文件显示成树状视图，和 MarsDawn 的树状预览一样。
 
 ## 如何用快速查看预览 Markdown 文件
 
@@ -8192,7 +8195,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/
 
 ### MarsDawn 能打开同样的文件吗？
 
-可以。它打开 `.md` 文件，也能打开纯文本文件和 PDF：UTF-8 的文本文件可直接编辑，PDF 以查看器打开。
+可以。它打开 `.md` 文件，也能打开纯文本文件和 PDF：UTF-8 的文本文件可直接编辑，PDF 以查看器打开。在 Mac 上也能把 JSON 和 YAML 作为文稿打开并编辑，并有树状预览。
 
 ### 我的 Mac 是 macOS 14 或 15 呢？
 
@@ -10524,7 +10527,7 @@ Source: https://marsdawn.southern-light.dev/ja/
 
 エージェント開発の舵を取る人のための Markdown。
 
-MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ USD 4.99 で解除できます。
+MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ USD 4.99 で解除できます。Mac では JSON と YAML もツリープレビュー付きで開けます。
 
 ページには操作できる MarsDawn のウインドウがあり、アプリ内蔵のようこそガイドの一部を表示しています。パレットのメニューで外観モード（システム、ライト、ダーク）を選び、ライトとダークそれぞれに 4 つのプレビューテーマ（夜明け、クラシック、モダン、ビビッド）から 1 つを選べます。ツールバーでは 3 つのレイアウト（ソース、分割、プレビュー）から選べます。
 
@@ -10869,7 +10872,7 @@ iPhone と iPad の MarsDawn は閲覧専用です。開けるのは Markdown �
 
 ### Finder のクイックルック
 
-Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。クイックルックは MarsDawn で選んだテーマを使い、その外観モードの設定に従います。
+Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。JSON と YAML のファイルはツリー表示になります。クイックルックは MarsDawn で選んだテーマを使い、その外観モードの設定に従います。
 
 [Mac アプリ](/ja/native/) · [Markdown のクイックルック](/ja/quicklook/)
 
@@ -11065,7 +11068,7 @@ Source: https://marsdawn.southern-light.dev/ja/native/
 
 # Mac 自身のパーツで作られています。
 
-MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ USD 4.99 で解除できます。
+MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ USD 4.99 で解除できます。Mac では JSON と YAML もツリープレビュー付きで開けます。
 
 ウインドウ、タブ、メニュー、テキストエディタはすべて Mac 自身のものです。レンダリングされたページは、Safari を動かしているエンジンである WebKit が描画します。
 
@@ -11116,7 +11119,7 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 ### デバイスと使う人
 
 - **同期：**MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。
-- **iPhone と iPad：**これらの端末では閲覧専用です。Markdown とテキストファイルを開いて整えて表示し、アウトラインとテーマも使えますが、編集、PDF の書き出し、同期はできません。ファイルは、普段使っているクラウドを通して届けます。
+- **iPhone と iPad：**iPhone と iPad の MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。
 - **共有：**アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。
 - **システム：**MarsDawn には、Mac では macOS 26 以降、iPhone と iPad では iOS 26 または iPadOS 26 以降が必要です。
 
@@ -11124,7 +11127,7 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 
 - **編集：**左に Markdown を書き、右でページを読みます。ページ自体は編集できません。
 - **形式：**MarsDawn は PDF の書き出しとプリントに対応していますが、Word ファイルへの書き出しはできません。
-- **その他のファイル：**プレーンテキストファイルと PDF は読み取り専用で開きます。
+- **その他のファイル：**PDF と、UTF-8 以外のエンコーディングのテキストファイルは読み取り専用で開きます。Mac では JSON と YAML を書類として開いて編集でき、ツリープレビューも表示されます。iPhone と iPad では開けません。
 - **テーマ：**夜明け、クラシック、モダン、ビビッドの4種類が内蔵されており、それぞれライトとダークがあります。また、審査済みの[テーマギャラリー](/ja/themes/gallery/)からさらにインストールできます（「設定 ▸ 外観モード ▸ テーマを追加…」）。テーマは色といくつかのスタイルオプションを設定するもので、カスタム CSS は使えません。詳しくは[テーマ](/ja/themes/)をご覧ください。
 - **プラグイン：**MarsDawn にプラグインや拡張機能はありません。
 
@@ -11425,6 +11428,7 @@ Finder で Markdown ファイルを選んでスペースキーを押します。
 - Mermaid 図、KaTeX 数式、ハイライトされたコードブロック。
 - MarsDawn で選んだプレビューテーマ（ライトまたはダーク）。
 - Web の画像はブロックされたままで、ファイルの隣にある画像はプレースホルダとして表示されることがあります。
+- JSON と YAML のファイルは、MarsDawn のツリープレビューと同じツリー表示。
 
 ## クイックルックで Markdown ファイルをプレビューする方法
 
@@ -11705,7 +11709,7 @@ MacMD Viewer 自身のサイトとリポジトリで 2026 年 10 月 15 日に�
 
 ### MarsDawn は同じファイルを開けますか？
 
-はい。`.md` ファイルのほか、プレーンテキストと PDF も開けます。UTF-8 のテキストはそのまま編集でき、PDF はビューアで開きます。
+はい。`.md` ファイルのほか、プレーンテキストと PDF も開けます。UTF-8 のテキストはそのまま編集でき、PDF はビューアで開きます。Mac では JSON と YAML も書類として開いて編集でき、ツリープレビューが表示されます。
 
 ### macOS 14 や 15 の場合は？
 
@@ -14036,7 +14040,7 @@ Pionierwerkzeug für alle, die bauen
 
 Markdown für Menschen, die agentische Arbeit steuern.
 
-MarsDawn ist eine native macOS-App zum Lesen und Prüfen von Markdown, mit geteilter Live-Vorschau, Mermaid-Diagrammen, KaTeX-Formeln, Übersicht und PDF-Export, 14 Tage kostenlos testbar und einmalig für 4,99 USD freigeschaltet.
+MarsDawn ist eine native macOS-App zum Lesen und Prüfen von Markdown, mit geteilter Live-Vorschau, Mermaid-Diagrammen, KaTeX-Formeln, Übersicht und PDF-Export, 14 Tage kostenlos testbar und einmalig für 4,99 USD freigeschaltet. Auf dem Mac öffnet sie außerdem JSON und YAML mit Baumvorschau.
 
 Die Seite zeigt ein bedienbares MarsDawn-Fenster mit einem Ausschnitt aus der Einführung der App. Im Palettenmenü wählst du ein Erscheinungsbild (System, Hell, Dunkel) und für Hell und Dunkel je eines von vier Vorschau-Themen (Morgenrot, Klassisch, Modern, Lebhaft), in der Symbolleiste eines von drei Layouts (Quelltext, Geteilt, Vorschau).
 
@@ -14381,7 +14385,7 @@ Jedes Dokument öffnet in einem eigenen Fenster. Wähle Fenster ▸ Alle Fenster
 
 ### Übersicht im Finder
 
-Wähle im Finder eine Markdown-Datei aus und drücke die Leertaste, um sie gerendert zu lesen, samt Diagrammen. Die Übersicht verwendet das Theme, das du in MarsDawn gewählt hast, und folgt dessen Einstellung für das Erscheinungsbild.
+Wähle im Finder eine Markdown-Datei aus und drücke die Leertaste, um sie gerendert zu lesen, samt Diagrammen. JSON- und YAML-Dateien zeigt sie als Baum. Die Übersicht verwendet das Theme, das du in MarsDawn gewählt hast, und folgt dessen Einstellung für das Erscheinungsbild.
 
 [Eine Mac-App](/de/native/) · [Übersicht für Markdown](/de/quicklook/)
 
@@ -14577,7 +14581,7 @@ Source: https://marsdawn.southern-light.dev/de/native/
 
 # Gebaut aus den eigenen Teilen des Mac.
 
-MarsDawn ist eine native macOS-App zum Lesen und Prüfen von Markdown, mit geteilter Live-Vorschau, Mermaid-Diagrammen, KaTeX-Formeln, Übersicht und PDF-Export, 14 Tage kostenlos testbar und einmalig für 4,99 USD freigeschaltet.
+MarsDawn ist eine native macOS-App zum Lesen und Prüfen von Markdown, mit geteilter Live-Vorschau, Mermaid-Diagrammen, KaTeX-Formeln, Übersicht und PDF-Export, 14 Tage kostenlos testbar und einmalig für 4,99 USD freigeschaltet. Auf dem Mac öffnet sie außerdem JSON und YAML mit Baumvorschau.
 
 Fenster, Tabs, Menüs und Texteditor sind die des Mac. Die gerenderte Seite zeichnet WebKit, die Engine hinter Safari.
 
@@ -14628,7 +14632,7 @@ Auf diesem Bildschirmfoto:
 ### Geräte und Personen
 
 - **Synchronisierung:** MarsDawn synchronisiert deine Dokumente nicht. Sie bleiben dort, wo du sie sicherst. Um eines auf einem anderen Mac zu verwenden, lege es in einen Ordner, den du ohnehin synchronisierst.
-- **iPhone und iPad:** Dort ist MarsDawn zum Lesen da. Es öffnet Markdown- und Textdateien und stellt sie dar, mit Gliederung und Themen, aber es bearbeitet nicht, exportiert keine PDFs und synchronisiert nicht. Deine Dateien kommen über die Cloud dorthin, die du schon nutzt.
+- **iPhone und iPad:** Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.
 - **Teilen:** Es gibt keine Konten und keine gemeinsame Bearbeitung, denn MarsDawn ist für eine Person an ihrem eigenen Mac.
 - **System:** MarsDawn benötigt auf dem Mac macOS 26 oder neuer und auf iPhone und iPad iOS 26 bzw. iPadOS 26 oder neuer.
 
@@ -14636,7 +14640,7 @@ Auf diesem Bildschirmfoto:
 
 - **Bearbeiten:** Du schreibst links Markdown und liest rechts die Seite; die Seite selbst lässt sich nicht bearbeiten.
 - **Formate:** MarsDawn exportiert PDF und druckt, exportiert aber keine Word-Dateien.
-- **Andere Dateien:** Reine Textdateien und PDFs werden schreibgeschützt geöffnet.
+- **Andere Dateien:** PDFs und Textdateien in anderen Kodierungen als UTF-8 öffnen sich schreibgeschützt. Auf dem Mac öffnest du JSON und YAML als bearbeitbare Dokumente mit Baumvorschau; iPhone und iPad öffnen sie nicht.
 - **Themen:** Enthalten sind Morgenrot, Klassisch, Modern und Lebhaft, jeweils hell und dunkel, und über die kuratierte [Themengalerie](/de/themes/gallery/) (Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden …) lassen sich weitere installieren. Ein Thema legt Farben und ein paar Stiloptionen fest; eigenes CSS gibt es nicht. Siehe [Themen](/de/themes/).
 - **Plug-ins:** MarsDawn hat keine Plug-ins oder Erweiterungen.
 
@@ -14938,6 +14942,7 @@ Wähle im Finder eine Markdown-Datei aus und drücke die Leertaste. Mit installi
 - Mermaid-Diagramme, KaTeX-Formeln und hervorgehobene Codeblöcke.
 - Das Vorschau-Thema, das du in MarsDawn gewählt hast, hell oder dunkel.
 - Bilder aus dem Web bleiben blockiert, und Bilder neben der Datei können als Platzhalter erscheinen.
+- JSON- und YAML-Dateien als Baum, wie in der Baumvorschau von MarsDawn.
 
 ## So siehst du eine Markdown-Datei mit der Übersicht an
 
@@ -15220,7 +15225,7 @@ Die eigenen Seiten nennen die Website, Homebrew und Setapp und erwähnen den Mac
 
 ### Kann MarsDawn dieselben Dateien öffnen?
 
-Ja. Es öffnet `.md`-Dateien, außerdem reine Textdateien und PDFs: Text öffnet sich bearbeitbar als UTF-8, PDFs öffnen sich in einem Viewer.
+Ja. Es öffnet `.md`-Dateien, außerdem reine Textdateien und PDFs: Text öffnet sich bearbeitbar als UTF-8, PDFs öffnen sich in einem Viewer. Auf dem Mac öffnet es außerdem JSON und YAML als bearbeitbare Dokumente mit Baumvorschau.
 
 ### Was, wenn ich macOS 14 oder 15 nutze?
 
@@ -17489,7 +17494,7 @@ Des outils de pionnier pour ceux qui construisent
 
 Du Markdown pour les humains qui pilotent le travail des agents.
 
-MarsDawn est une app macOS native pour lire et relire du Markdown, avec aperçu partagé en direct, diagrammes Mermaid, formules KaTeX, Coup d’œil et export PDF, gratuite à l’essai pendant 14 jours et déverrouillée pour 4,99 USD une seule fois.
+MarsDawn est une app macOS native pour lire et relire du Markdown, avec aperçu partagé en direct, diagrammes Mermaid, formules KaTeX, Coup d’œil et export PDF, gratuite à l’essai pendant 14 jours et déverrouillée pour 4,99 USD une seule fois. Sur Mac, elle ouvre aussi JSON et YAML avec un aperçu en arbre.
 
 La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide de bienvenue de l’app. Dans son menu de palette, vous choisissez une apparence (Système, Clair, Sombre) et, pour le clair comme pour le sombre, l’un des quatre thèmes d’aperçu (Aube, Classique, Moderne, Vif). Sa barre d’outils propose trois dispositions (Source, Partagé, Aperçu).
 
@@ -17834,7 +17839,7 @@ Chaque document s’ouvre dans sa propre fenêtre. Choisissez Fenêtre ▸ Fusio
 
 ### Coup d’œil dans le Finder
 
-Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le lire mis en forme, diagrammes compris. Coup d’œil utilise le thème que vous avez choisi dans MarsDawn et suit son réglage d’apparence.
+Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le lire mis en forme, diagrammes compris. Les fichiers JSON et YAML s’affichent en arbre. Coup d’œil utilise le thème que vous avez choisi dans MarsDawn et suit son réglage d’apparence.
 
 [Une app Mac](/fr/native/) · [Coup d’œil pour Markdown](/fr/quicklook/)
 
@@ -18030,7 +18035,7 @@ Source: https://marsdawn.southern-light.dev/fr/native/
 
 # Construit avec les pièces du Mac.
 
-MarsDawn est une app macOS native pour lire et relire du Markdown, avec aperçu partagé en direct, diagrammes Mermaid, formules KaTeX, Coup d’œil et export PDF, gratuite à l’essai pendant 14 jours et déverrouillée pour 4,99 USD une seule fois.
+MarsDawn est une app macOS native pour lire et relire du Markdown, avec aperçu partagé en direct, diagrammes Mermaid, formules KaTeX, Coup d’œil et export PDF, gratuite à l’essai pendant 14 jours et déverrouillée pour 4,99 USD une seule fois. Sur Mac, elle ouvre aussi JSON et YAML avec un aperçu en arbre.
 
 Les fenêtres, les onglets, les menus et l’éditeur de texte sont ceux du Mac. La page mise en forme est dessinée par WebKit, le moteur de Safari.
 
@@ -18081,7 +18086,7 @@ Sur cette capture d’écran :
 ### Appareils et personnes
 
 - **Synchronisation :** MarsDawn ne synchronise pas vos documents. Ils restent là où vous les enregistrez ; pour en utiliser un sur un autre Mac, gardez-le dans un dossier que vous synchronisez déjà.
-- **iPhone et iPad :** MarsDawn y sert à lire. Il ouvre les fichiers Markdown et texte et les met en forme, avec un plan et des thèmes, mais il ne permet ni de modifier, ni d’exporter en PDF, ni de synchroniser. Vos fichiers y arrivent par le cloud que vous utilisez déjà.
+- **iPhone et iPad :** Sur iPhone et iPad, MarsDawn sert uniquement à lire : il ouvre les fichiers Markdown et texte brut, sans modification ni export PDF. Il lit les fichiers que vous gardez dans iCloud Drive ; MarsDawn n’a pas de cloud à lui.
 - **Partage :** il n’y a ni comptes ni édition partagée, car MarsDawn est conçu pour une personne, sur son propre Mac.
 - **Système :** MarsDawn nécessite macOS 26 ou version ultérieure sur Mac, et iOS 26 ou iPadOS 26 ou version ultérieure sur iPhone et iPad.
 
@@ -18089,7 +18094,7 @@ Sur cette capture d’écran :
 
 - **Édition :** vous écrivez le Markdown à gauche et lisez la page à droite ; la page elle-même n’est pas modifiable.
 - **Formats :** MarsDawn exporte en PDF et imprime, mais n’exporte pas de fichiers Word.
-- **Autres fichiers :** les fichiers texte brut et les PDF s’ouvrent en lecture seule.
+- **Autres fichiers :** les PDF et les fichiers texte dans un autre encodage que l’UTF-8 s’ouvrent en lecture seule. Sur Mac, JSON et YAML s’ouvrent comme des documents modifiables avec un aperçu en arbre ; iPhone et iPad ne les ouvrent pas.
 - **Thèmes :** l’app inclut Aube, Classique, Moderne et Vif, chacun en clair et en sombre, et vous pouvez en installer d’autres depuis la [galerie de thèmes](/fr/themes/gallery/) vérifiée (Réglages ▸ Apparence ▸ Obtenir plus de thèmes…). Un thème définit des couleurs et quelques options de style ; il n’y a pas de CSS personnalisé. Voir [les thèmes](/fr/themes/).
 - **Plug-ins :** MarsDawn n’a ni plug-ins ni extensions.
 
@@ -18391,6 +18396,7 @@ Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace. Avec Mar
 - Des diagrammes Mermaid, des formules KaTeX et des blocs de code colorés.
 - Le thème d’aperçu que vous avez choisi dans MarsDawn, en clair ou en sombre.
 - Les images du web restent bloquées, et les images placées à côté du fichier peuvent apparaître sous forme d’espaces réservés.
+- Les fichiers JSON et YAML en arbre, comme dans l’aperçu en arbre de MarsDawn.
 
 ## Comment prévisualiser un fichier Markdown avec Coup d’œil
 
@@ -18673,7 +18679,7 @@ Ses propres pages citent son site, Homebrew et Setapp, et ne mentionnent pas le 
 
 ### MarsDawn peut-il ouvrir les mêmes fichiers ?
 
-Oui. Il ouvre les fichiers `.md`, ainsi que les fichiers de texte brut et les PDF : le texte s’ouvre prêt à être modifié en UTF-8, et les PDF s’ouvrent dans une visionneuse.
+Oui. Il ouvre les fichiers `.md`, ainsi que les fichiers de texte brut et les PDF : le texte s’ouvre prêt à être modifié en UTF-8, et les PDF s’ouvrent dans une visionneuse. Sur Mac, il ouvre aussi JSON et YAML comme des documents modifiables, avec un aperçu en arbre.
 
 ### Et si j’ai macOS 14 ou 15 ?
 
@@ -20942,7 +20948,7 @@ Herramientas de frontera para quienes construyen
 
 Markdown para las personas que dirigen el trabajo de los agentes.
 
-MarsDawn es una app nativa de macOS para leer y revisar Markdown, con vista previa dividida en vivo, diagramas Mermaid, fórmulas KaTeX, Vista rápida y exportación a PDF; pruébala gratis 14 días y desbloquéala por 4,99 USD una sola vez.
+MarsDawn es una app nativa de macOS para leer y revisar Markdown, con vista previa dividida en vivo, diagramas Mermaid, fórmulas KaTeX, Vista Rápida y exportación a PDF; pruébala gratis 14 días y desbloquéala por 4,99 USD una sola vez. En el Mac también abre JSON y YAML con vista previa en árbol.
 
 La página muestra una ventana de MarsDawn interactiva que presenta un fragmento de la guía de bienvenida de la app. En su menú de paleta eliges un aspecto (Sistema, Claro, Oscuro) y, para claro y para oscuro, uno de cuatro temas de vista previa (Amanecer, Clásico, Moderno, Vívido). Su barra de herramientas ofrece tres disposiciones (Código, Dividido, Vista previa).
 
@@ -20990,7 +20996,7 @@ brew install redtear1115/tap/marsdawn
 
 ## Qué esperar de MarsDawn
 
-- [Una app para Mac](/es/native/): Ventanas y pestañas nativas, guardado automático, [Vista rápida](/es/quicklook/).
+- [Una app para Mac](/es/native/): Ventanas y pestañas nativas, guardado automático, [Vista Rápida](/es/quicklook/).
 - [Lo que escribes se queda en tu Mac](/es/yours/): Sin cuenta, sin sincronización, sin nube.
 - [Pruébalo gratis, paga una vez](/es/pay-once/): Gratis durante 14 días; después, 4,99 USD una sola vez. Sin suscripción.
 - [Funciones](/es/features/): Todo lo que hace MarsDawn, en una sola página.
@@ -21046,7 +21052,7 @@ Más información: [Política de privacidad](/es/privacy/#when-marsdawn-uses-the
 
 ### ¿Qué es MarsDawn?
 
-MarsDawn es una app nativa para Mac para leer y revisar el Markdown que escribió tu agente, con el código fuente junto a una vista previa en vivo. Dibuja Mermaid y KaTeX, muestra archivos .md en Vista rápida y exporta a PDF; también puedes editar el código fuente.
+MarsDawn es una app nativa para Mac para leer y revisar el Markdown que escribió tu agente, con el código fuente junto a una vista previa en vivo. Dibuja Mermaid y KaTeX, muestra archivos .md en Vista Rápida y exporta a PDF; también puedes editar el código fuente.
 
 ### ¿MarsDawn es una suscripción?
 
@@ -21088,7 +21094,7 @@ Más información: [Política de privacidad](/es/privacy/#the-website)
 
 ### ¿Por qué usar MarsDawn y no otra app?
 
-Puede que no lo necesites. Si sobre todo escribes tus propias notas, una app de notas como Obsidian te irá mejor. Si pasas el día en VS Code, su vista previa integrada es gratis. Si solo quieres echar un vistazo a los archivos en el Finder, basta con una extensión gratuita de Vista rápida. Si tus PDF necesitan números de página, MarsDawn no los añade. MarsDawn sirve para leer y revisar el Markdown que escribió un agente: el código fuente junto a una vista previa en vivo, un cambio de tu agente que deshaces en un solo paso y un archivo abierto en la línea exacta. Si no te sirve, escríbenos y cuéntanos por qué.
+Puede que no lo necesites. Si sobre todo escribes tus propias notas, una app de notas como Obsidian te irá mejor. Si pasas el día en VS Code, su vista previa integrada es gratis. Si solo quieres echar un vistazo a los archivos en el Finder, basta con una extensión gratuita de Vista Rápida. Si tus PDF necesitan números de página, MarsDawn no los añade. MarsDawn sirve para leer y revisar el Markdown que escribió un agente: el código fuente junto a una vista previa en vivo, un cambio de tu agente que deshaces en un solo paso y un archivo abierto en la línea exacta. Si no te sirve, escríbenos y cuéntanos por qué.
 
 Más información: [MarsDawn frente a otras herramientas](/es/vs/) · [El mejor visor de Markdown para Mac](/es/best-markdown-viewer-mac/)
 
@@ -21212,7 +21218,7 @@ Guarda el documento y después arrastra o pega una imagen en el editor. MarsDawn
 
 ### El front matter no estorba
 
-Un bloque de front matter al principio de un archivo se muestra como una sección plegada Información del documento en la vista previa y en Vista rápida, y se omite del PDF.
+Un bloque de front matter al principio de un archivo se muestra como una sección plegada Información del documento en la vista previa y en Vista Rápida, y se omite del PDF.
 
 ### Ocho idiomas
 
@@ -21234,7 +21240,7 @@ Los bloques de código se resaltan en los lenguajes más comunes. Indica el leng
 
 ### Fórmulas
 
-Las fórmulas escritas en sintaxis KaTeX se dibujan en la vista previa y en Vista rápida, y llegan al PDF exportado.
+Las fórmulas escritas en sintaxis KaTeX se dibujan en la vista previa y en Vista Rápida, y llegan al PDF exportado.
 
 [Por qué lo que produce la IA todavía necesita un lector humano](/es/reviewing-ai-output/)
 
@@ -21277,7 +21283,7 @@ Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac,
 
 En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.
 
-## Archivos, pestañas y Vista rápida
+## Archivos, pestañas y Vista Rápida
 
 ### Ventanas y pestañas
 
@@ -21285,11 +21291,11 @@ Cada documento se abre en su propia ventana. Elige Ventana ▸ Unir todas las ve
 
 [Una app para Mac](/es/native/)
 
-### Vista rápida en el Finder
+### Vista Rápida en el Finder
 
-Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora para leerlo renderizado, con los diagramas incluidos. Vista rápida usa el tema que elegiste en MarsDawn y sigue su ajuste de aspecto.
+Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora para leerlo renderizado, con los diagramas incluidos. Los archivos JSON y YAML se muestran en árbol. Vista Rápida usa el tema que elegiste en MarsDawn y sigue su ajuste de aspecto.
 
-[Una app para Mac](/es/native/) · [Vista rápida para Markdown](/es/quicklook/)
+[Una app para Mac](/es/native/) · [Vista Rápida para Markdown](/es/quicklook/)
 
 ### Otros archivos
 
@@ -21398,7 +21404,7 @@ En esta captura de pantalla:
 ## Cómo funciona
 
 1. **Descárgalo gratis.** MarsDawn se descarga gratis desde el Mac App Store.
-2. **Prueba todo durante 14 días.** Comienza la prueba y todo MarsDawn funciona durante 14 días: todos los temas y disposiciones, la exportación a PDF y la impresión, y las acciones de Siri y Atajos. Vista rápida en el Finder funciona con o sin prueba.
+2. **Prueba todo durante 14 días.** Comienza la prueba y todo MarsDawn funciona durante 14 días: todos los temas y disposiciones, la exportación a PDF y la impresión, y las acciones de Siri y Atajos. Vista Rápida en el Finder funciona con o sin prueba.
 3. **Desbloquéalo una vez.** Para seguir usándolo después, desbloquéalo una sola vez por 4,99 USD. Es una compra dentro de la app, no una suscripción: nada se renueva y nada se te cobra más adelante.
 
 - La prueba tampoco te cobra nada. Cuando termina, no se compra nada a menos que elijas desbloquear.
@@ -21414,7 +21420,7 @@ En esta captura de pantalla:
 | Exportar como PDF e imprimir desde MarsDawn | Sí | No | Sí |
 | Conservar el texto escrito con Archivo ▸ Guardar como… | Sí | Sí, en una ventana abierta cuando terminó la prueba | Sí |
 | Acciones de Siri y Atajos | Sí | No | Sí |
-| Vista rápida en el Finder, con diagramas Mermaid y fórmulas | Sí | Sí, sin cambios | Sí |
+| Vista Rápida en el Finder, con diagramas Mermaid y fórmulas | Sí | Sí, sin cambios | Sí |
 | `marsdawn export` (herramienta de línea de comandos gratuita): PDF con diagramas y fórmulas | Sí | Sí, sin cambios | Sí |
 | Tus archivos en el disco | Como los guardaste | Como los guardaste; el bloqueo nunca los cambia | Como los guardaste |
 
@@ -21425,7 +21431,7 @@ Los archivos PDF que abres en MarsDawn se bloquean de la misma manera cuando ter
 ## Si no lo desbloqueas
 
 - Después de 14 días, y hasta que lo desbloquees, no puedes leer, editar, exportar ni imprimir documentos en MarsDawn. Un documento se sigue abriendo, pero su contenido queda cubierto.
-- Tus archivos no cambian. Son archivos normales en tu Mac, y Vista rápida en el Finder los sigue mostrando.
+- Tus archivos no cambian. Son archivos normales en tu Mac, y Vista Rápida en el Finder los sigue mostrando.
 - La [herramienta de línea de comandos `marsdawn`](/es/cli/), que es gratis, los sigue exportando a PDF, con prueba o sin ella.
 - Si hay un documento abierto en MarsDawn cuando termina la prueba, el texto que escribiste no se pierde: usa Archivo ▸ Guardar como… para conservarlo.
 
@@ -21443,9 +21449,9 @@ No. El desbloqueo es una sola compra: nada se renueva y no se te cobra más adel
 
 Hasta que desbloquees MarsDawn, no puedes leer, editar, exportar ni imprimir documentos en la app: se abren con el contenido cubierto. Tus archivos quedan exactamente como los guardaste.
 
-### ¿Vista rápida sigue funcionando después de la prueba?
+### ¿Vista Rápida sigue funcionando después de la prueba?
 
-Sí. Vista rápida (Quick Look) en el Finder funciona con o sin la prueba. La herramienta de línea de comandos gratuita marsdawn también sigue exportando Markdown a PDF.
+Sí. Vista Rápida (Quick Look) en el Finder funciona con o sin la prueba. La herramienta de línea de comandos gratuita marsdawn también sigue exportando Markdown a PDF.
 
 ### ¿Necesito una cuenta?
 
@@ -21483,7 +21489,7 @@ Source: https://marsdawn.southern-light.dev/es/native/
 
 # Hecho con las piezas del propio Mac.
 
-MarsDawn es una app nativa de macOS para leer y revisar Markdown, con vista previa dividida en vivo, diagramas Mermaid, fórmulas KaTeX, Vista rápida y exportación a PDF; pruébala gratis 14 días y desbloquéala por 4,99 USD una sola vez.
+MarsDawn es una app nativa de macOS para leer y revisar Markdown, con vista previa dividida en vivo, diagramas Mermaid, fórmulas KaTeX, Vista Rápida y exportación a PDF; pruébala gratis 14 días y desbloquéala por 4,99 USD una sola vez. En el Mac también abre JSON y YAML con vista previa en árbol.
 
 Las ventanas, las pestañas, los menús y el editor de texto son los de la Mac. La página renderizada la dibuja WebKit, el motor detrás de Safari.
 
@@ -21507,7 +21513,7 @@ En esta captura de pantalla:
 ### El resto de la Mac
 
 - Ventanas y pestañas nativas, guardado automático e historial de versiones.
-- Vista rápida: presiona la barra espaciadora sobre un archivo Markdown en el Finder para ver una vista previa, con diagramas incluidos. [Cómo funciona Vista rápida](/es/quicklook/)
+- Vista Rápida: presiona la barra espaciadora sobre un archivo Markdown en el Finder para ver una vista previa, con diagramas incluidos. [Cómo funciona Vista Rápida](/es/quicklook/)
 - Siri y Atajos: crea un documento nuevo a partir de una plantilla, agrega una línea a la bandeja de entrada de tus notas o vuelve a abrir un documento reciente.
 - Inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano.
 ---
@@ -21534,7 +21540,7 @@ En esta captura de pantalla:
 ### Dispositivos y personas
 
 - **Sincronización:** MarsDawn no sincroniza tus documentos. Se quedan donde los guardas; para usar uno en otro Mac, guárdalo en una carpeta que ya sincronices.
-- **iPhone y iPad:** ahí MarsDawn es para leer. Abre archivos Markdown y de texto y los muestra con formato, con esquema y temas, pero no edita, no exporta PDF ni sincroniza. Tus archivos llegan a través de la nube que ya usas.
+- **iPhone y iPad:** En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.
 - **Compartir:** no hay cuentas ni edición compartida, porque MarsDawn es para una persona en su propio Mac.
 - **Sistema:** MarsDawn necesita macOS 26 o posterior en la Mac, y iOS 26 o iPadOS 26 o posterior en iPhone y iPad.
 
@@ -21542,13 +21548,13 @@ En esta captura de pantalla:
 
 - **Edición:** escribes Markdown a la izquierda y lees la página a la derecha; la página en sí no se puede editar.
 - **Formatos:** MarsDawn exporta a PDF e imprime, pero no exporta archivos de Word.
-- **Otros archivos:** los archivos de texto simple y los PDF se abren en modo de solo lectura.
+- **Otros archivos:** los PDF y los archivos de texto con una codificación distinta de UTF-8 se abren en modo de solo lectura. En el Mac, JSON y YAML se abren como documentos editables con vista previa en árbol; el iPhone y el iPad no los abren.
 - **Temas:** incluye Amanecer, Clásico, Moderno y Vívido, cada uno en claro y oscuro, y puedes instalar más desde la [Galería de temas](/es/themes/gallery/) revisada (Ajustes ▸ Aspecto ▸ Obtener más temas…). Un tema define colores y unas pocas opciones de estilo; no hay CSS personalizado. Consulta [temas](/es/themes/).
 - **Plugins:** MarsDawn no tiene plugins ni extensiones.
 
 ## Después de la prueba
 
-Si no desbloqueas MarsDawn cuando termina la prueba de 14 días, no puedes leer, editar, exportar ni imprimir documentos en la app: se abren con el contenido cubierto. Tus archivos se quedan como están, Vista rápida los sigue mostrando y la herramienta de línea de comandos gratuita los sigue exportando. La [página de la prueba y el desbloqueo](/es/pay-once/) pone las tres etapas lado a lado.
+Si no desbloqueas MarsDawn cuando termina la prueba de 14 días, no puedes leer, editar, exportar ni imprimir documentos en la app: se abren con el contenido cubierto. Tus archivos se quedan como están, Vista Rápida los sigue mostrando y la herramienta de línea de comandos gratuita los sigue exportando. La [página de la prueba y el desbloqueo](/es/pay-once/) pone las tres etapas lado a lado.
 ---
 
 ## Soporte
@@ -21713,7 +21719,7 @@ Un archivo `.md` es texto plano. Los títulos, las palabras en negrita, las tabl
 
 1. **Haz doble clic en el archivo.** Se abre en la app que tu Mac tiene asignada a los archivos `.md`. Sin una app de Markdown, suele ser un editor de texto plano, que muestra las marcas en lugar de la página.
 2. **Elige tú la app.** Haz clic en el archivo mientras mantienes pulsada la tecla Control y elige «Abrir con», y luego la app. O elige «Archivo ▸ Obtener información» (⌘I), elige una app en «Abrir con:» y haz clic en «Cambiar todo…» para que todos los archivos de este tipo se abran allí. MarsDawn abre archivos `.md`, `.markdown`, `.mdown`, `.mkd` y `.mkdn`.
-3. **Ver sin abrir.** Selecciona el archivo en el Finder y pulsa la barra espaciadora. Con MarsDawn instalado, Vista rápida muestra la página renderizada, con los diagramas incluidos.
+3. **Ver sin abrir.** Selecciona el archivo en el Finder y pulsa la barra espaciadora. Con MarsDawn instalado, Vista Rápida muestra la página renderizada, con los diagramas incluidos.
 
 ## Léelo en MarsDawn
 
@@ -21778,7 +21784,7 @@ Source: https://marsdawn.southern-light.dev/es/mermaid-preview-mac/
 
 # Vista previa de Mermaid en Mac.
 
-Mermaid te permite escribir un diagrama como texto dentro de un archivo Markdown. La mayoría de los editores te muestran el texto. MarsDawn dibuja el diagrama: en la vista previa junto al código fuente, en Vista rápida en el Finder y en el PDF que exportas.
+Mermaid te permite escribir un diagrama como texto dentro de un archivo Markdown. La mayoría de los editores te muestran el texto. MarsDawn dibuja el diagrama: en la vista previa junto al código fuente, en Vista Rápida en el Finder y en el PDF que exportas.
 
 ## Escribe el diagrama como texto
 
@@ -21801,7 +21807,7 @@ En MarsDawn, ese bloque se convierte en un diagrama de flujo: Escribir Markdown,
 ## Dónde se dibuja el diagrama
 
 - **En la vista previa.** Abre el archivo y el diagrama aparece junto a su código fuente (⌘2). La página se actualiza mientras escribes, y los dos paneles se desplazan juntos.
-- **En Vista rápida.** Selecciona el archivo en el Finder y pulsa la barra espaciadora; allí también se dibujan los diagramas.
+- **En Vista Rápida.** Selecciona el archivo en el Finder y pulsa la barra espaciadora; allí también se dibujan los diagramas.
 - **En el PDF.** «Archivo ▸ Exportar como PDF…» y «Archivo ▸ Imprimir…» dibujan el diagrama en la página. Los saltos de página evitan partir un diagrama por la mitad. El PDF usa los colores claros del tema.
 - **Desde la línea de comandos.** La herramienta gratuita `marsdawn export` dibuja los mismos diagramas en un PDF y no necesita la app. Consulta [Línea de comandos](/es/cli/).
 - **En tu tema.** El ajuste Aspecto de la vista previa también se aplica a los diagramas, así que un diagrama sigue el modo claro u oscuro.
@@ -21830,13 +21836,13 @@ MarsDawn se descarga gratis. Prueba todo durante 14 días y desbloquéalo una so
 
 ---
 
-## Vista rápida para Markdown
+## Vista Rápida para Markdown
 
 Source: https://marsdawn.southern-light.dev/es/quicklook/
 
-# Previsualiza Markdown en el Finder con Vista rápida.
+# Previsualiza Markdown en el Finder con Vista Rápida.
 
-Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora. Con MarsDawn instalado, Vista rápida (Quick Look) muestra la página renderizada en lugar de texto sin formato.
+Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora. Con MarsDawn instalado, Vista Rápida (Quick Look) muestra la página renderizada en lugar de texto sin formato.
 
 ## Qué muestra la vista previa
 
@@ -21844,35 +21850,36 @@ Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora. Con
 - Diagramas Mermaid, fórmulas KaTeX y bloques de código resaltados.
 - El tema de vista previa que elegiste en MarsDawn, claro u oscuro.
 - Las imágenes de la web siguen bloqueadas, y las imágenes guardadas junto al archivo pueden aparecer como marcadores de posición.
+- Los archivos JSON y YAML en árbol, como en la vista previa en árbol de MarsDawn.
 
-## Cómo previsualizar un archivo Markdown con Vista rápida
+## Cómo previsualizar un archivo Markdown con Vista Rápida
 
-1. **Instala MarsDawn.** Descarga MarsDawn desde el Mac App Store. La extensión de Vista rápida forma parte de la app.
+1. **Instala MarsDawn.** Descarga MarsDawn desde el Mac App Store. La extensión de Vista Rápida forma parte de la app.
 2. **Selecciona un archivo Markdown.** En el Finder, haz clic una vez en un archivo .md.
 3. **Presiona la barra espaciadora.** Se abre la vista previa renderizada. Vuelve a presionar la barra espaciadora para cerrarla.
-4. **Si ves texto sin formato, activa la extensión.** Abre Ajustes del Sistema, ve a General ▸ Ítems de inicio y extensiones, haz clic en el botón de información junto a «Vista rápida» en Extensiones, activa «MarsDawn Preview» y haz clic en Aceptar.
+4. **Si ves texto sin formato, activa la extensión.** Abre Ajustes del Sistema, ve a General ▸ Ítems de inicio y extensiones, haz clic en el botón de información junto a «Vista Rápida» en Extensiones, activa «MarsDawn Preview» y haz clic en Aceptar.
 
 ## No queda bloqueada por la prueba
 
-Vista rápida sigue funcionando cuando termina la prueba. Muestra la misma vista previa renderizada mientras la prueba está en marcha, después de que termine y tras desbloquear. Cuando la prueba termina y hasta que desbloquees, solo las ventanas de MarsDawn se abren con el contenido cubierto; las vistas previas del Finder no cambian. La [página sobre la prueba y el desbloqueo](/es/pay-once/) presenta las tres fases una al lado de otra.
+Vista Rápida sigue funcionando cuando termina la prueba. Muestra la misma vista previa renderizada mientras la prueba está en marcha, después de que termine y tras desbloquear. Cuando la prueba termina y hasta que desbloquees, solo las ventanas de MarsDawn se abren con el contenido cubierto; las vistas previas del Finder no cambian. La [página sobre la prueba y el desbloqueo](/es/pay-once/) presenta las tres fases una al lado de otra.
 
 ## Preguntas y respuestas
 
 ### ¿Cómo previsualizo un archivo Markdown en el Finder?
 
-Selecciona el archivo y presiona la barra espaciadora. Con MarsDawn instalado, Vista rápida muestra la página renderizada, con diagramas Mermaid, fórmulas KaTeX y código resaltado.
+Selecciona el archivo y presiona la barra espaciadora. Con MarsDawn instalado, Vista Rápida muestra la página renderizada, con diagramas Mermaid, fórmulas KaTeX y código resaltado.
 
-### ¿Vista rápida sigue funcionando después de la prueba de 14 días?
+### ¿Vista Rápida sigue funcionando después de la prueba de 14 días?
 
-Sí. Vista rápida no queda bloqueada por la prueba. Sigue renderizando archivos Markdown mientras la prueba está en marcha, después de que termine y una vez desbloqueada la app.
+Sí. Vista Rápida no queda bloqueada por la prueba. Sigue renderizando archivos Markdown mientras la prueba está en marcha, después de que termine y una vez desbloqueada la app.
 
-### ¿Por qué Vista rápida muestra texto sin formato?
+### ¿Por qué Vista Rápida muestra texto sin formato?
 
-Puede que la extensión de Vista rápida esté desactivada. Abre Ajustes del Sistema, ve a General ▸ Ítems de inicio y extensiones, haz clic en el botón de información junto a «Vista rápida» en Extensiones, activa «MarsDawn Preview» y haz clic en Aceptar.
+Puede que la extensión de Vista Rápida esté desactivada. Abre Ajustes del Sistema, ve a General ▸ Ítems de inicio y extensiones, haz clic en el botón de información junto a «Vista Rápida» en Extensiones, activa «MarsDawn Preview» y haz clic en Aceptar.
 
-### ¿Vista rápida cuesta algo aparte?
+### ¿Vista Rápida cuesta algo aparte?
 
-No. La extensión de Vista rápida forma parte de MarsDawn, sin compra aparte. MarsDawn se descarga gratis, con 14 días de prueba y un desbloqueo único de 4,99 USD, y Vista rápida funciona con o sin la prueba.
+No. La extensión de Vista Rápida forma parte de MarsDawn, sin compra aparte. MarsDawn se descarga gratis, con 14 días de prueba y un desbloqueo único de 4,99 USD, y Vista Rápida funciona con o sin la prueba.
 
 ### ¿Qué versión de macOS necesita?
 
@@ -22030,7 +22037,7 @@ Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. En iPhone y iPad solo
 ## Cuándo no necesitas MarsDawn
 
 - Vives en VS Code y te basta un panel de vista previa: muestra Mermaid y KaTeX, tiene vista previa de diff de Markdown y salta a una línea con code -g.
-- Solo quieres una vista previa con la barra espaciadora en el Finder: QLMarkdown es una extensión gratuita de Vista rápida para Markdown.
+- Solo quieres una vista previa con la barra espaciadora en el Finder: QLMarkdown es una extensión gratuita de Vista Rápida para Markdown.
 - Tu Mac tiene un macOS más antiguo: QLMarkdown necesita 12.0 o posterior y LynxOffice 13 o posterior. La herramienta gratuita marsdawn necesita macOS 15 y exporta a PDF sin la app.
 - Llevas un vault de notas enlazadas: para eso está hecho Obsidian.
 - Necesitas editar en iPhone o iPad, edición compartida o exportar a Word.
@@ -22066,8 +22073,8 @@ Comprobado con el sitio y el repositorio propios de MacMD Viewer el 15 de octubr
 | Pestañas | Sí, opcionales y desactivadas por defecto (desde 1.6.0) [[S5](#s5), [S8](#s8)] | Sí |
 | Exportación a PDF | Sí, una sola página continua, con el tema actual, sin marca de agua [[S3](#s3), [S9](#s9)] | Sí, páginas paginadas con la paleta clara del tema; los saltos de página evitan partir bloques de código cortos |
 | Impresión | Sí, mediante el diálogo de impresión de macOS [[S3](#s3), [S9](#s9)] | Sí |
-| Vista rápida en el Finder | Sí, incluida; la activas en Ajustes del Sistema; usa tu tema [[S4](#s4)] | Sí, funciona con o sin la prueba; usa tu tema |
-| Mermaid y matemáticas en Vista rápida | Mermaid: sí [[S4](#s4)]. Matemáticas: no, no las renderiza [[S7](#s7)] | Sí, se dibujan las dos cosas |
+| Vista Rápida en el Finder | Sí, incluida; la activas en Ajustes del Sistema; usa tu tema [[S4](#s4)] | Sí, funciona con o sin la prueba; usa tu tema |
+| Mermaid y matemáticas en Vista Rápida | Mermaid: sí [[S4](#s4)]. Matemáticas: no, no las renderiza [[S7](#s7)] | Sí, se dibujan las dos cosas |
 | Línea de comandos | No se describe ninguna herramienta de línea de comandos independiente. Tiene un esquema de URL `markdownviewer://` y un plug-in de Claude Code con hooks que abren archivos en el visor [[S6](#s6)] | La herramienta gratuita `marsdawn`: `marsdawn export` genera un PDF sin la app, `marsdawn open` abre un archivo en una línea |
 | Idiomas de la interfaz | No se indican en sus propios materiales [[S1](#s1), [S3](#s3), [S7](#s7)] | inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano |
 | Requisitos | macOS 14 (Sonoma) o posterior; Apple silicon e Intel [[S1](#s1), [S7](#s7)] | macOS 26 (Tahoe) o posterior |
@@ -22089,7 +22096,7 @@ Comprobado con el sitio y el repositorio propios de MacMD Viewer el 15 de octubr
 
 |  | MacMD Viewer | MarsDawn |
 |---|---|---|
-| Después | Sin prueba; una vez comprada, sigue funcionando | Si no la desbloqueas pasados 14 días, los documentos se abren con su contenido cubierto; tus archivos no se tocan, y Vista rápida y la exportación gratuita de `marsdawn` siguen funcionando |
+| Después | Sin prueba; una vez comprada, sigue funcionando | Si no la desbloqueas pasados 14 días, los documentos se abren con su contenido cubierto; tus archivos no se tocan, y Vista Rápida y la exportación gratuita de `marsdawn` siguen funcionando |
 
 ## Fuentes
 
@@ -22110,7 +22117,7 @@ Comprobado con el sitio y el repositorio propios de MacMD Viewer el 15 de octubr
 
 **Elige MarsDawn si** el Markdown vuelve para otra pasada. El plan, el README o la especificación de un agente suele necesitar una corrección, una frase reformulada o una sección nueva, y en MarsDawn lo haces en la ventana donde ya estás leyendo. También cubre las matemáticas (KaTeX), que MacMD Viewer dice que no renderiza [[S7](#s7)]; viene en ocho idiomas de interfaz; tiene una línea de comandos `marsdawn` gratuita que exporta un PDF sin la app; y su precio es de 4,99 USD tras una prueba de 14 días en la que todo funciona.
 
-**Cualquiera sirve si** lees Markdown en una Mac reciente, quieres diagramas Mermaid bien dibujados y quieres Vista rápida en el Finder. Las dos lo hacen.
+**Cualquiera sirve si** lees Markdown en una Mac reciente, quieres diagramas Mermaid bien dibujados y quieres Vista Rápida en el Finder. Las dos lo hacen.
 
 **Y puedes usar las dos.** No son excluyentes: nada te impide tener un visor de solo lectura para lo que solo lees y un editor para lo que escribes.
 
@@ -22126,7 +22133,7 @@ Sus propias páginas citan su sitio, Homebrew y Setapp, y no mencionan el Mac Ap
 
 ### ¿Puede MarsDawn abrir los mismos archivos?
 
-Sí. Abre archivos `.md`, y también archivos de texto plano y PDF: el texto se abre listo para editar como UTF-8, y los PDF se abren en un visor.
+Sí. Abre archivos `.md`, y también archivos de texto plano y PDF: el texto se abre listo para editar como UTF-8, y los PDF se abren en un visor. En el Mac también abre JSON y YAML como documentos editables, con vista previa en árbol.
 
 ### ¿Y si tengo macOS 14 o 15?
 
@@ -22166,7 +22173,7 @@ El mejor visor de Markdown depende de lo que leas. Si son notas que escribes tú
 
 ## MacDown 3000
 
-El MacDown original ya no se mantiene. MacDown 3000 es la continuación de la comunidad: gratis y de código abierto (MIT), nativo, con Mermaid, MathJax, exportación a PDF, recarga en vivo y Vista rápida.
+El MacDown original ya no se mantiene. MacDown 3000 es la continuación de la comunidad: gratis y de código abierto (MIT), nativo, con Mermaid, MathJax, exportación a PDF, recarga en vivo y Vista Rápida.
 
 - Para: quien quiere una vista dividida nativa y gratis.
 - Defecto: no está documentado cómo abrir un archivo en una línea desde la línea de comandos.
@@ -22177,12 +22184,12 @@ El MacDown original ya no se mantiene. MacDown 3000 es la continuación de la co
 Marked 3 es una app de vista previa para el Markdown que escribes en otra app. Recarga en cuanto cambia el archivo, admite MathJax y KaTeX, e imprime PDF paginados con números de página. Marked 2 se sigue vendiendo.
 
 - Para: quienes escriben en su propia herramienta y quieren una vista previa e impresión cuidadas.
-- Defecto: Vista rápida es una app aparte, Marked QL (9,99 USD).
+- Defecto: Vista Rápida es una app aparte, Marked QL (9,99 USD).
 - Precio: Marked 3 se descarga gratis y luego cuesta 2,99 USD/mes, 29,99 USD/año o 69,99 USD de por vida. Marked 2 cuesta 14,99 USD directo o 13,99 USD en la Mac App Store.
 
 ## MarkEdit
 
-Una app nativa, ligera y gratis (CodeMirror en una web view), con Vista rápida.
+Una app nativa, ligera y gratis (CodeMirror en una web view), con Vista Rápida.
 
 - Para: quien quiere una herramienta de texto plano rápida que se sienta propia del Mac.
 - Defecto: Mermaid y las fórmulas necesitan las extensiones oficiales, y el PDF necesita Pandoc.
@@ -22190,7 +22197,7 @@ Una app nativa, ligera y gratis (CodeMirror en una web view), con Vista rápida.
 
 ## MarsDawn
 
-Una app nativa para Mac que muestra la fuente y una vista previa en vivo lado a lado, con Mermaid y KaTeX integrados. Cuando un agente guarda el archivo, la ventana abierta toma el cambio como una sola actualización desde el disco que puedes deshacer. `marsdawn open notes.md:120` abre un archivo en una línea, y hay un skill y un servidor MCP para agentes. Vista rápida funciona con o sin la prueba. «Copiar para IA» y «Copiar referencia» pasan texto a un agente. Nada sale de tu Mac a menos que tú lo decidas.
+Una app nativa para Mac que muestra la fuente y una vista previa en vivo lado a lado, con Mermaid y KaTeX integrados. Cuando un agente guarda el archivo, la ventana abierta toma el cambio como una sola actualización desde el disco que puedes deshacer. `marsdawn open notes.md:120` abre un archivo en una línea, y hay un skill y un servidor MCP para agentes. Vista Rápida funciona con o sin la prueba. «Copiar para IA» y «Copiar referencia» pasan texto a un agente. Nada sale de tu Mac a menos que tú lo decidas.
 
 - Para: quien revisa el Markdown que escriben los agentes de IA.
 - Defecto: el PDF exportado no tiene números de página.
@@ -22206,7 +22213,7 @@ Una app de notas construida en torno a una bóveda (vault) de archivos Markdown 
 
 ## QLMarkdown
 
-Una extensión de Vista rápida: selecciona un archivo .md en el Finder y presiona la barra espaciadora. Mermaid y MathJax son opcionales.
+Una extensión de Vista Rápida: selecciona un archivo .md en el Finder y presiona la barra espaciadora. Mermaid y MathJax son opcionales.
 
 - Para: quien solo quiere echar un vistazo a los archivos en el Finder.
 - Defecto: no es una app para leer ni editar, y no tiene exportación a PDF documentada.
@@ -22230,7 +22237,7 @@ La vista previa de Markdown integrada, con Mermaid integrado desde la 1.121 y Ka
 
 ## Comparativa
 
-| App | Precio | Mermaid | Fórmulas | PDF | Recarga en vivo | CLI en una línea | Vista rápida | Tecnología |
+| App | Precio | Mermaid | Fórmulas | PDF | Recarga en vivo | CLI en una línea | Vista Rápida | Tecnología |
 |---|---|---|---|---|---|---|---|---|
 | MacDown 3000 | Gratis | Sí | MathJax | Sí | Sí | No documentado | Sí | Nativa |
 | Marked 3 | Desde 2,99 USD/mes | Sí | MathJax, KaTeX | Sí, con números de página | Sí | No documentado | Marked QL, 9,99 USD | Nativa |
@@ -22825,7 +22832,7 @@ Source: https://marsdawn.southern-light.dev/es/themes/
 
 # Cuatro temas integrados. Más en la galería.
 
-MarsDawn incluye cuatro temas de vista previa, Amanecer, Clásico, Moderno y Vívido, cada uno con una paleta clara y una oscura. Desde la versión 1.1 puedes añadir más desde la Galería de temas dentro de la app, y Vista rápida en el Finder muestra tus documentos con el tema que elegiste.
+MarsDawn incluye cuatro temas de vista previa, Amanecer, Clásico, Moderno y Vívido, cada uno con una paleta clara y una oscura. Desde la versión 1.1 puedes añadir más desde la Galería de temas dentro de la app, y Vista Rápida en el Finder muestra tus documentos con el tema que elegiste.
 
 ## Los cuatro temas
 
@@ -22862,9 +22869,9 @@ Cada tema es revisado y fusionado por nosotros antes de aparecer en la galería.
 
 La galería consulta únicamente `marsdawn.southern-light.dev/themes/v1/`, y solo cuando la abres, buscas actualizaciones o instalas un tema. No envía cuenta, identificador, cookies ni nada de tus documentos.
 
-## Vista rápida usa tu tema
+## Vista Rápida usa tu tema
 
-Selecciona un archivo Markdown en el Finder y pulsa la barra espaciadora. Vista rápida lo muestra con el tema que elegiste, incluidos los instalados, y sigue el ajuste Aspecto de MarsDawn: Claro y Oscuro se mantienen como los elegiste, y Sistema sigue a tu Mac.
+Selecciona un archivo Markdown en el Finder y pulsa la barra espaciadora. Vista Rápida lo muestra con el tema que elegiste, incluidos los instalados, y sigue el ajuste Aspecto de MarsDawn: Claro y Oscuro se mantienen como los elegiste, y Sistema sigue a tu Mac.
 
 ## Exportación a PDF e impresión
 
@@ -24395,7 +24402,7 @@ Source: https://marsdawn.southern-light.dev/ko/
 
 에이전트의 작업을 이끄는 사람을 위한 Markdown.
 
-MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 실시간 미리보기, Mermaid 다이어그램, KaTeX 수식, 훑어보기, PDF 내보내기를 갖추고 있으며, 14일 동안 무료로 체험한 뒤 USD 4.99 한 번으로 잠금 해제할 수 있습니다.
+MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 실시간 미리보기, Mermaid 다이어그램, KaTeX 수식, 훑어보기, PDF 내보내기를 갖추고 있으며, 14일 동안 무료로 체험한 뒤 USD 4.99 한 번으로 잠금 해제할 수 있습니다. Mac에서는 JSON과 YAML도 트리 미리보기와 함께 열 수 있습니다.
 
 이 페이지에는 앱의 시작 가이드 일부를 보여 주는, 직접 조작할 수 있는 MarsDawn 창이 있습니다. 팔레트 메뉴에서 화면 모드(시스템, 라이트, 다크)를 고르고, 라이트와 다크에 각각 네 가지 미리보기 테마(새벽, 클래식, 모던, 비비드) 중 하나를 지정할 수 있으며, 도구 막대에서는 세 가지 레이아웃(소스, 분할, 미리보기) 중 하나를 고를 수 있습니다.
 
@@ -24740,7 +24747,7 @@ iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스�
 
 ### Finder의 훑어보기
 
-Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 있습니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.
+Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 있습니다. JSON과 YAML 파일은 트리 보기로 표시됩니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.
 
 [Mac 앱](/ko/native/) · [Markdown 훑어보기](/ko/quicklook/)
 
@@ -24936,7 +24943,7 @@ Source: https://marsdawn.southern-light.dev/ko/native/
 
 # Mac의 부품으로 만들었습니다.
 
-MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 실시간 미리보기, Mermaid 다이어그램, KaTeX 수식, 훑어보기, PDF 내보내기를 갖추고 있으며, 14일 동안 무료로 체험한 뒤 USD 4.99 한 번으로 잠금 해제할 수 있습니다.
+MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 실시간 미리보기, Mermaid 다이어그램, KaTeX 수식, 훑어보기, PDF 내보내기를 갖추고 있으며, 14일 동안 무료로 체험한 뒤 USD 4.99 한 번으로 잠금 해제할 수 있습니다. Mac에서는 JSON과 YAML도 트리 미리보기와 함께 열 수 있습니다.
 
 윈도우, 탭, 메뉴, 텍스트 편집기는 모두 Mac의 것입니다. 렌더링된 페이지는 Safari의 엔진인 WebKit이 그립니다.
 
@@ -24987,7 +24994,7 @@ Source: https://marsdawn.southern-light.dev/ko/limits/
 ### 기기와 사람
 
 - **동기화:** MarsDawn은 문서를 동기화하지 않습니다. 문서는 저장한 곳에 있으므로, 다른 Mac에서 쓰려면 이미 동기화하고 있는 폴더에 두세요.
-- **iPhone과 iPad:** 이 기기에서는 읽기 전용입니다. Markdown과 텍스트 파일을 열어 렌더링하고 개요와 테마도 쓸 수 있지만, 편집, PDF 내보내기, 동기화는 할 수 없습니다. 파일은 이미 쓰고 있는 클라우드를 통해 옮깁니다.
+- **iPhone과 iPad:** iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.
 - **공유:** MarsDawn은 자기 Mac을 쓰는 한 사람을 위한 앱이라 계정도 공동 편집도 없습니다.
 - **시스템:** MarsDawn은 Mac에서는 macOS 26 이상, iPhone과 iPad에서는 iOS 26 또는 iPadOS 26 이상이 필요합니다.
 
@@ -24995,7 +25002,7 @@ Source: https://marsdawn.southern-light.dev/ko/limits/
 
 - **편집:** 왼쪽에서 Markdown을 쓰고 오른쪽에서 페이지를 읽습니다. 페이지 자체는 편집할 수 없습니다.
 - **형식:** MarsDawn은 PDF로 내보내고 프린트할 수 있지만, Word 파일로는 내보내지 않습니다.
-- **기타 파일:** 일반 텍스트 파일과 PDF는 읽기 전용으로 열립니다.
+- **기타 파일:** PDF와 UTF-8이 아닌 인코딩의 텍스트 파일은 읽기 전용으로 열립니다. Mac에서는 JSON과 YAML을 편집 가능한 문서로 열 수 있고 트리 미리보기도 표시됩니다. iPhone과 iPad에서는 열 수 없습니다.
 - **테마:** 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있으며, 검토를 거친 [테마 갤러리](/ko/themes/gallery/)(설정 ▸ 화면 모드 ▸ 테마 더 받기…)에서 더 설치할 수 있습니다. 테마는 색상과 몇 가지 스타일 옵션을 정할 뿐, 사용자 지정 CSS는 없습니다. [테마](/ko/themes/)를 참고하세요.
 - **플러그인:** MarsDawn에는 플러그인이나 확장 기능이 없습니다.
 
@@ -25297,6 +25304,7 @@ Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르세요. M
 - Mermaid 다이어그램, KaTeX 수식, 강조된 코드 블록.
 - MarsDawn에서 고른 미리보기 테마(라이트 또는 다크).
 - 웹 이미지는 계속 차단되며, 파일 옆에 있는 이미지는 자리 표시자로 나타날 수 있습니다.
+- JSON과 YAML 파일은 MarsDawn의 트리 미리보기와 같은 트리 보기로 표시.
 
 ## 훑어보기로 Markdown 파일을 미리 보는 방법
 
@@ -25579,7 +25587,7 @@ MacMD Viewer 자체 사이트와 저장소를 기준으로 2026년 10월 15일�
 
 ### MarsDawn도 같은 파일을 열 수 있나요?
 
-네. `.md` 파일은 물론 일반 텍스트 파일과 PDF도 엽니다. 텍스트는 UTF-8로 바로 편집할 수 있게 열리고, PDF는 뷰어로 열립니다.
+네. `.md` 파일은 물론 일반 텍스트 파일과 PDF도 엽니다. 텍스트는 UTF-8로 바로 편집할 수 있게 열리고, PDF는 뷰어로 열립니다. Mac에서는 JSON과 YAML도 편집 가능한 문서로 열 수 있으며 트리 미리보기가 표시됩니다.
 
 ### macOS 14나 15를 쓰면요?
 

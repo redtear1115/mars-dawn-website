@@ -260,10 +260,7 @@ FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur u
                                'fait pendant la saisie.',
                           'links': ['native']},
                          {'h': 'Coup d’œil dans le Finder',
-                          'p': 'Sélectionnez un fichier Markdown dans le Finder et appuyez sur '
-                               'Espace pour le lire mis en forme, diagrammes compris. Coup d’œil '
-                               'utilise le thème que vous avez choisi dans MarsDawn et suit son '
-                               'réglage d’apparence.',
+                          'p': 'Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le lire mis en forme, diagrammes compris. Les fichiers JSON et YAML s’affichent en arbre. Coup d’œil utilise le thème que vous avez choisi dans MarsDawn et suit son réglage d’apparence.',
                           'links': ['native']},
                          {'h': 'Autres fichiers',
                           'p': 'MarsDawn ouvre aussi les fichiers texte brut (.txt, .log, code source) et les PDF. Le texte UTF-8 s’ouvre prêt à être modifié, en source uniquement. Les PDF s’ouvrent dans un lecteur avec vignettes de pages, zoom et recherche. Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre. iPhone et iPad n’ouvrent pas les fichiers JSON et YAML.',
@@ -623,8 +620,7 @@ VS_MACMD = {'title': 'MacMD Viewer ou MarsDawn\xa0: visionneuse ou éditeur Mark
           'Ses propres pages citent son site, Homebrew et Setapp, et ne mentionnent pas le Mac App Store '
           '[S2, S7]. MarsDawn est uniquement sur le Mac App Store.'],
          ['MarsDawn peut-il ouvrir les mêmes fichiers\xa0?',
-          'Oui. Il ouvre les fichiers `.md`, ainsi que les fichiers de texte brut et les PDF\xa0: le texte '
-          's’ouvre prêt à être modifié en UTF-8, et les PDF s’ouvrent dans une visionneuse.'],
+          'Oui. Il ouvre les fichiers `.md`, ainsi que les fichiers de texte brut et les PDF\xa0: le texte s’ouvre prêt à être modifié en UTF-8, et les PDF s’ouvrent dans une visionneuse. Sur Mac, il ouvre aussi JSON et YAML comme des documents modifiables, avec un aperçu en arbre.'],
          ['Et si j’ai macOS 14 ou 15\xa0?',
           'MacMD Viewer fonctionne sous macOS 14 ou version ultérieure [S1]. MarsDawn demande macOS 26 ou '
           'version ultérieure, et l’outil gratuit `marsdawn` en ligne de commande peut malgré tout exporter '
@@ -790,7 +786,7 @@ def build(k) -> dict:
 <h3>Appareils et personnes</h3>
 <ul>
   <li><strong>Synchronisation :</strong> MarsDawn ne synchronise pas vos documents. Ils restent là où vous les enregistrez ; pour en utiliser un sur un autre Mac, gardez-le dans un dossier que vous synchronisez déjà.</li>
-  <li><strong>iPhone et iPad :</strong> MarsDawn y sert à lire. Il ouvre les fichiers Markdown et texte et les met en forme, avec un plan et des thèmes, mais il ne permet ni de modifier, ni d’exporter en PDF, ni de synchroniser. Vos fichiers y arrivent par le cloud que vous utilisez déjà.</li>
+  <li><strong>iPhone et iPad :</strong> Sur iPhone et iPad, MarsDawn sert uniquement à lire : il ouvre les fichiers Markdown et texte brut, sans modification ni export PDF. Il lit les fichiers que vous gardez dans iCloud Drive ; MarsDawn n’a pas de cloud à lui.</li>
   <li><strong>Partage :</strong> il n’y a ni comptes ni édition partagée, car MarsDawn est conçu pour une personne, sur son propre Mac.</li>
   <li><strong>Système :</strong> MarsDawn nécessite macOS 26 ou version ultérieure sur Mac, et iOS 26 ou iPadOS 26 ou version ultérieure sur iPhone et iPad.</li>
 </ul>
@@ -798,7 +794,7 @@ def build(k) -> dict:
 <ul>
   <li><strong>Édition :</strong> vous écrivez le Markdown à gauche et lisez la page à droite ; la page elle-même n’est pas modifiable.</li>
   <li><strong>Formats :</strong> MarsDawn exporte en PDF et imprime, mais n’exporte pas de fichiers Word.</li>
-  <li><strong>Autres fichiers :</strong> les fichiers texte brut et les PDF s’ouvrent en lecture seule.</li>
+  <li><strong>Autres fichiers :</strong> les PDF et les fichiers texte dans un autre encodage que l’UTF-8 s’ouvrent en lecture seule. Sur Mac, JSON et YAML s’ouvrent comme des documents modifiables avec un aperçu en arbre ; iPhone et iPad ne les ouvrent pas.</li>
   <li><strong>Thèmes :</strong> l’app inclut Aube, Classique, Moderne et Vif, chacun en clair et en sombre, et vous pouvez en installer d’autres depuis la <a href="/fr/themes/gallery/">galerie de thèmes</a> vérifiée (Réglages ▸ Apparence ▸ Obtenir plus de thèmes…). Un thème définit des couleurs et quelques options de style ; il n’y a pas de CSS personnalisé. Voir <a href="/fr/themes/">les thèmes</a>.</li>
   <li><strong>Plug-ins :</strong> MarsDawn n’a ni plug-ins ni extensions.</li>
 </ul>

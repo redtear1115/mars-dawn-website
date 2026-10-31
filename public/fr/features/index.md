@@ -160,7 +160,7 @@ Chaque document s’ouvre dans sa propre fenêtre. Choisissez Fenêtre ▸ Fusio
 
 ### Coup d’œil dans le Finder
 
-Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le lire mis en forme, diagrammes compris. Coup d’œil utilise le thème que vous avez choisi dans MarsDawn et suit son réglage d’apparence.
+Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le lire mis en forme, diagrammes compris. Les fichiers JSON et YAML s’affichent en arbre. Coup d’œil utilise le thème que vous avez choisi dans MarsDawn et suit son réglage d’apparence.
 
 [Une app Mac](/fr/native/) · [Coup d’œil pour Markdown](/fr/quicklook/)
 

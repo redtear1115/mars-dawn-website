@@ -160,7 +160,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 ### 在访达用快速查看
 
-在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。快速查看会用你在 MarsDawn 选的主题，也跟着 MarsDawn 的外观设置。
+在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。JSON 和 YAML 文件则会显示成树状视图。快速查看会用你在 MarsDawn 选的主题，也跟着 MarsDawn 的外观设置。
 
 [为 Mac 而做](/zh-hans/native/) · [Markdown 快速查看](/zh-hans/quicklook/)
 

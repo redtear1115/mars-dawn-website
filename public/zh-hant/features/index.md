@@ -160,7 +160,7 @@ agent 在 Mac 上工作，它寫的計畫和報告，你在 iPhone 或 iPad 上�
 
 ### 在 Finder 用快速查看
 
-在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。快速查看會用你在 MarsDawn 選的主題，也跟著 MarsDawn 的外觀設定。
+在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。JSON 和 YAML 檔則會顯示成樹狀檢視。快速查看會用你在 MarsDawn 選的主題，也跟著 MarsDawn 的外觀設定。
 
 [為 Mac 而做](/zh-hant/native/) · [Markdown 快速查看](/zh-hant/quicklook/)
 

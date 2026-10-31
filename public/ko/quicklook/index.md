@@ -8,6 +8,7 @@ Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르세요. M
 - Mermaid 다이어그램, KaTeX 수식, 강조된 코드 블록.
 - MarsDawn에서 고른 미리보기 테마(라이트 또는 다크).
 - 웹 이미지는 계속 차단되며, 파일 옆에 있는 이미지는 자리 표시자로 나타날 수 있습니다.
+- JSON과 YAML 파일은 MarsDawn의 트리 미리보기와 같은 트리 보기로 표시.
 
 ## 훑어보기로 Markdown 파일을 미리 보는 방법
 
@@ -100,4 +101,4 @@ MarsDawn에는 macOS 26 이상이 필요합니다.
 - [日本語](https://marsdawn.southern-light.dev/ja/quicklook/index.md): MarsDawn のクイックルックなら、Finder でスペースキーを押すだけで Markdown を描画して表示します。Mermaid 図、KaTeX 数式、ハイライトされたコードにも対応。トライアル終了後も使えます。
 - [Deutsch](https://marsdawn.southern-light.dev/de/quicklook/index.md): Mit MarsDawn zeigt die Übersicht Markdown im Finder per Leertaste gerendert: Mermaid, KaTeX, hervorgehobener Code. Sie funktioniert auch nach dem Test weiter.
 - [Français](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
-- [Español](https://marsdawn.southern-light.dev/es/quicklook/index.md): Con MarsDawn, Vista rápida renderiza Markdown en el Finder con la barra espaciadora: Mermaid, KaTeX y código resaltado. Sigue funcionando tras la prueba.
+- [Español](https://marsdawn.southern-light.dev/es/quicklook/index.md): Con MarsDawn, Vista Rápida renderiza Markdown en el Finder con la barra espaciadora: Mermaid, KaTeX y código resaltado. Sigue funcionando tras la prueba.

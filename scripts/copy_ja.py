@@ -206,7 +206,7 @@ FEATURES = {'title': '機能一覧：Mac 用 Markdown エディタを1ページ�
                                'すべてのウインドウを結合」を選ぶと、開いているウインドウを1つのウインドウのタブにまとめられます。自動保存は入力中に働きます。',
                           'links': ['native']},
                          {'h': 'Finder のクイックルック',
-                          'p': 'Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。クイックルックは '
+                          'p': 'Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。JSON と YAML のファイルはツリー表示になります。クイックルックは '
                                'MarsDawn で選んだテーマを使い、その外観モードの設定に従います。',
                           'links': ['native']},
                          {'h': 'そのほかのファイル',
@@ -468,7 +468,7 @@ VS_MACMD = {'title': 'MacMD Viewer と MarsDawn：Markdown のビューアか、
           '自身のページに挙がっているのは公式サイト、Homebrew、Setapp で、Mac App Store への言及はありません [S2, S7]。MarsDawn は Mac App Store '
           'のみです。'],
          ['MarsDawn は同じファイルを開けますか？',
-          'はい。`.md` ファイルのほか、プレーンテキストと PDF も開けます。UTF-8 のテキストはそのまま編集でき、PDF はビューアで開きます。'],
+          'はい。`.md` ファイルのほか、プレーンテキストと PDF も開けます。UTF-8 のテキストはそのまま編集でき、PDF はビューアで開きます。Mac では JSON と YAML も書類として開いて編集でき、ツリープレビューが表示されます。'],
          ['macOS 14 や 15 の場合は？',
           'MacMD Viewer は macOS 14 以降で動きます [S1]。MarsDawn は macOS 26 以降が必要ですが、無料の `marsdawn` コマンドラインツールなら PDF '
           'の書き出しはできます。'],
@@ -671,7 +671,7 @@ def build(k) -> dict:
 <h3>デバイスと使う人</h3>
 <ul>
   <li><strong>同期：</strong>MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。</li>
-  <li><strong>iPhone と iPad：</strong>これらの端末では閲覧専用です。Markdown とテキストファイルを開いて整えて表示し、アウトラインとテーマも使えますが、編集、PDF の書き出し、同期はできません。ファイルは、普段使っているクラウドを通して届けます。</li>
+  <li><strong>iPhone と iPad：</strong>iPhone と iPad の MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。</li>
   <li><strong>共有：</strong>アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。</li>
   <li><strong>システム：</strong>MarsDawn には、Mac では macOS 26 以降、iPhone と iPad では iOS 26 または iPadOS 26 以降が必要です。</li>
 </ul>
@@ -679,7 +679,7 @@ def build(k) -> dict:
 <ul>
   <li><strong>編集：</strong>左に Markdown を書き、右でページを読みます。ページ自体は編集できません。</li>
   <li><strong>形式：</strong>MarsDawn は PDF の書き出しとプリントに対応していますが、Word ファイルへの書き出しはできません。</li>
-  <li><strong>その他のファイル：</strong>プレーンテキストファイルと PDF は読み取り専用で開きます。</li>
+  <li><strong>その他のファイル：</strong>PDF と、UTF-8 以外のエンコーディングのテキストファイルは読み取り専用で開きます。Mac では JSON と YAML を書類として開いて編集でき、ツリープレビューも表示されます。iPhone と iPad では開けません。</li>
   <li><strong>テーマ：</strong>夜明け、クラシック、モダン、ビビッドの4種類が内蔵されており、それぞれライトとダークがあります。また、審査済みの<a href="/ja/themes/gallery/">テーマギャラリー</a>からさらにインストールできます（「設定 ▸ 外観モード ▸ テーマを追加…」）。テーマは色といくつかのスタイルオプションを設定するもので、カスタム CSS は使えません。詳しくは<a href="/ja/themes/">テーマ</a>をご覧ください。</li>
   <li><strong>プラグイン：</strong>MarsDawn にプラグインや拡張機能はありません。</li>
 </ul>

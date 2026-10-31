@@ -194,7 +194,7 @@ FEATURES = {'title': '功能一览：Mac 上的 Markdown 编辑器 · MarsDawn',
                           'p': '每份文稿默认在自己的窗口打开。用“窗口 ▸ 合并所有窗口”，可以把开着的窗口收成同一个窗口里的标签页。输入时会自动存储。',
                           'links': ['native']},
                          {'h': '在访达用快速查看',
-                          'p': '在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。快速查看会用你在 MarsDawn '
+                          'p': '在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。JSON 和 YAML 文件则会显示成树状视图。快速查看会用你在 MarsDawn '
                                '选的主题，也跟着 MarsDawn 的外观设置。',
                           'links': ['native']},
                          {'h': '其他文件',
@@ -415,7 +415,7 @@ VS_MACMD = {'title': 'MacMD Viewer 对比 MarsDawn：Markdown 查看器还是编
           '不能。它是只读的，照它自己的说法，不会保存对源文件的改动 [S1, S9]。它可以把文件交给你的文本编辑器打开（“文件”菜单，⇧⌘E，1.7.0 起）[S5]。'],
          ['MacMD Viewer 在 Mac App Store 上吗？',
           '它自己的页面列出的是官网、Homebrew 和 Setapp，没有提到 Mac App Store [S2, S7]。MarsDawn 只在 Mac App Store。'],
-         ['MarsDawn 能打开同样的文件吗？', '可以。它打开 `.md` 文件，也能打开纯文本文件和 PDF：UTF-8 的文本文件可直接编辑，PDF 以查看器打开。'],
+         ['MarsDawn 能打开同样的文件吗？', '可以。它打开 `.md` 文件，也能打开纯文本文件和 PDF：UTF-8 的文本文件可直接编辑，PDF 以查看器打开。在 Mac 上也能把 JSON 和 YAML 作为文稿打开并编辑，并有树状预览。'],
          ['我的 Mac 是 macOS 14 或 15 呢？',
           'MacMD Viewer 在 macOS 14 以上都能跑 [S1]。MarsDawn 需要 macOS 26 以上，不过免费的 `marsdawn` 命令行工具仍然可以导出 PDF。'],
          ['为什么一个是 USD 19.99，一个是 USD 4.99？',
@@ -838,7 +838,7 @@ swift build -c release --product marsdawn
 <h3>设备与使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。</li>
-  <li><strong>iPhone 和 iPad：</strong>MarsDawn 在这两种设备上只能阅读：可以打开 Markdown 和纯文本文件并排好显示，也有大纲和主题，但不能编辑、不能导出 PDF，也不会同步。文件通过你自己用的云端传过去。</li>
+  <li><strong>iPhone 和 iPad：</strong>在 iPhone 和 iPad 上，MarsDawn 只能阅读：只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。</li>
   <li><strong>分享：</strong>没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。</li>
   <li><strong>系统：</strong>MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。</li>
 </ul>
@@ -846,7 +846,7 @@ swift build -c release --product marsdawn
 <ul>
   <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
   <li><strong>格式：</strong>MarsDawn 能导出 PDF 和打印，不能导出 Word 文件。</li>
-  <li><strong>其他文件：</strong>纯文本文件和 PDF 以只读方式打开。</li>
+  <li><strong>其他文件：</strong>PDF 以只读方式打开，不是 UTF-8 编码的文本文件也是。在 Mac 上，JSON 和 YAML 可以作为文稿打开并编辑，并有树状预览；iPhone 和 iPad 不能打开这两种文件。</li>
   <li><strong>主题：</strong>内置黎明、典雅、流行和活泼，每种都有浅色与深色；也可以从经过审核的<a href="/zh-hans/themes/gallery/">主题图库</a>安装更多（“设置 ▸ 外观 ▸ 获取更多主题…”）。主题只能设置颜色和几个样式选项，不能自定义 CSS。详见<a href="/zh-hans/themes/">主题</a>。</li>
   <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
 </ul>

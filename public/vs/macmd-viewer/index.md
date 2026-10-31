@@ -78,7 +78,7 @@ Its own pages list its site, Homebrew and Setapp, and don't mention the Mac App 
 
 ### Can MarsDawn open the same files?
 
-Yes. It opens `.md` files, and also plain text files and PDFs: text opens ready to edit as UTF-8, and PDFs open in a viewer.
+Yes. It opens `.md` files, and also plain text files and PDFs: text opens ready to edit as UTF-8, and PDFs open in a viewer. On the Mac it also opens JSON and YAML as editable documents with a tree preview.
 
 ### What if I'm on macOS 14 or 15?
 

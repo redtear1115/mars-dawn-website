@@ -216,8 +216,7 @@ FEATURES = {'title': '기능 한눈에 보기: 한 페이지로 보는 Mac용 Ma
                                '모입니다. 자동 저장은 입력하는 동안 작동합니다.',
                           'links': ['native']},
                          {'h': 'Finder의 훑어보기',
-                          'p': 'Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 '
-                               '있습니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.',
+                          'p': 'Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 있습니다. JSON과 YAML 파일은 트리 보기로 표시됩니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.',
                           'links': ['native']},
                          {'h': '기타 파일',
                           'p': 'MarsDawn은 일반 텍스트 파일(.txt, .log, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다. Mac에서 JSON 및 YAML 파일을 편집 가능한 문서로 열 수 있으며, 입력할 때마다 업데이트되는 트리 미리보기가 옆에 표시됩니다. Finder의 훑어보기에서도 같은 트리 보기가 표시됩니다. iPhone과 iPad에서는 JSON과 YAML을 열 수 없습니다.',
@@ -473,7 +472,7 @@ VS_MACMD = {'title': 'MacMD Viewer와 MarsDawn: Markdown 뷰어일까, 편집기
           '자체 페이지에는 사이트, Homebrew, Setapp이 나와 있고 Mac App Store는 언급되어 있지 않습니다 [S2, S7]. MarsDawn은 Mac App '
           'Store에서만 받을 수 있습니다.'],
          ['MarsDawn도 같은 파일을 열 수 있나요?',
-          '네. `.md` 파일은 물론 일반 텍스트 파일과 PDF도 엽니다. 텍스트는 UTF-8로 바로 편집할 수 있게 열리고, PDF는 뷰어로 열립니다.'],
+          '네. `.md` 파일은 물론 일반 텍스트 파일과 PDF도 엽니다. 텍스트는 UTF-8로 바로 편집할 수 있게 열리고, PDF는 뷰어로 열립니다. Mac에서는 JSON과 YAML도 편집 가능한 문서로 열 수 있으며 트리 미리보기가 표시됩니다.'],
          ['macOS 14나 15를 쓰면요?',
           'MacMD Viewer는 macOS 14 이상에서 실행됩니다 [S1]. MarsDawn은 macOS 26 이상이 필요하지만, 무료 `marsdawn` 명령줄 도구로는 여전히 '
           'PDF를 내보낼 수 있습니다.'],
@@ -635,7 +634,7 @@ def build(k) -> dict:
 <h3>기기와 사람</h3>
 <ul>
   <li><strong>동기화:</strong> MarsDawn은 문서를 동기화하지 않습니다. 문서는 저장한 곳에 있으므로, 다른 Mac에서 쓰려면 이미 동기화하고 있는 폴더에 두세요.</li>
-  <li><strong>iPhone과 iPad:</strong> 이 기기에서는 읽기 전용입니다. Markdown과 텍스트 파일을 열어 렌더링하고 개요와 테마도 쓸 수 있지만, 편집, PDF 내보내기, 동기화는 할 수 없습니다. 파일은 이미 쓰고 있는 클라우드를 통해 옮깁니다.</li>
+  <li><strong>iPhone과 iPad:</strong> iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.</li>
   <li><strong>공유:</strong> MarsDawn은 자기 Mac을 쓰는 한 사람을 위한 앱이라 계정도 공동 편집도 없습니다.</li>
   <li><strong>시스템:</strong> MarsDawn은 Mac에서는 macOS 26 이상, iPhone과 iPad에서는 iOS 26 또는 iPadOS 26 이상이 필요합니다.</li>
 </ul>
@@ -643,7 +642,7 @@ def build(k) -> dict:
 <ul>
   <li><strong>편집:</strong> 왼쪽에서 Markdown을 쓰고 오른쪽에서 페이지를 읽습니다. 페이지 자체는 편집할 수 없습니다.</li>
   <li><strong>형식:</strong> MarsDawn은 PDF로 내보내고 프린트할 수 있지만, Word 파일로는 내보내지 않습니다.</li>
-  <li><strong>기타 파일:</strong> 일반 텍스트 파일과 PDF는 읽기 전용으로 열립니다.</li>
+  <li><strong>기타 파일:</strong> PDF와 UTF-8이 아닌 인코딩의 텍스트 파일은 읽기 전용으로 열립니다. Mac에서는 JSON과 YAML을 편집 가능한 문서로 열 수 있고 트리 미리보기도 표시됩니다. iPhone과 iPad에서는 열 수 없습니다.</li>
   <li><strong>테마:</strong> 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있으며, 검토를 거친 <a href="/ko/themes/gallery/">테마 갤러리</a>(설정 ▸ 화면 모드 ▸ 테마 더 받기…)에서 더 설치할 수 있습니다. 테마는 색상과 몇 가지 스타일 옵션을 정할 뿐, 사용자 지정 CSS는 없습니다. <a href="/ko/themes/">테마</a>를 참고하세요.</li>
   <li><strong>플러그인:</strong> MarsDawn에는 플러그인이나 확장 기능이 없습니다.</li>
 </ul>

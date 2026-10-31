@@ -160,7 +160,7 @@ iPhone と iPad の MarsDawn は閲覧専用です。開けるのは Markdown �
 
 ### Finder のクイックルック
 
-Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。クイックルックは MarsDawn で選んだテーマを使い、その外観モードの設定に従います。
+Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。JSON と YAML のファイルはツリー表示になります。クイックルックは MarsDawn で選んだテーマを使い、その外観モードの設定に従います。
 
 [Mac アプリ](/ja/native/) · [Markdown のクイックルック](/ja/quicklook/)
 

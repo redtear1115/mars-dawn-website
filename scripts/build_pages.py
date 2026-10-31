@@ -4313,7 +4313,7 @@ TRAIT_PAGES = {
 <h3>Devices and people</h3>
 <ul>
   <li><strong>Sync:</strong> MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.</li>
-  <li><strong>iPhone and iPad:</strong> MarsDawn there is for reading. It opens Markdown and plain text files and renders them, with an outline and themes, but it doesn't edit, export PDFs or sync. Your files get there through the cloud you already use.</li>
+  <li><strong>iPhone and iPad:</strong> On iPhone and iPad, MarsDawn is for reading only: it opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.</li>
   <li><strong>Sharing:</strong> there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.</li>
   <li><strong>System:</strong> MarsDawn needs macOS 26 or later on the Mac, and iOS 26 or iPadOS 26 or later on iPhone and iPad.</li>
 </ul>
@@ -4321,7 +4321,7 @@ TRAIT_PAGES = {
 <ul>
   <li><strong>Editing:</strong> you write Markdown on the left and read the page on the right; the page itself can't be edited.</li>
   <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
-  <li><strong>Other files:</strong> plain text files and PDFs open read-only.</li>
+  <li><strong>Other files:</strong> PDFs open read-only, and so do text files in encodings other than UTF-8. On the Mac, JSON and YAML open as editable documents with a tree preview; iPhone and iPad don't open them.</li>
   <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can install more from the curated <a href="/themes/gallery/">Theme Gallery</a> (Settings ▸ Appearance ▸ Get More Themes…). A theme sets colours and a few style options; there's no custom CSS. See <a href="/themes/">themes</a>.</li>
   <li><strong>Plugins:</strong> MarsDawn has no plugins or extensions.</li>
 </ul>
@@ -4343,7 +4343,7 @@ TRAIT_PAGES = {
 <h3>裝置與使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。</li>
-  <li><strong>iPhone 和 iPad：</strong>MarsDawn 在這兩個裝置上只能閱讀：可以打開 Markdown 和純文字檔並排好顯示，也有大綱和主題，但不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳過去。</li>
+  <li><strong>iPhone 和 iPad：</strong>在 iPhone 和 iPad 上，MarsDawn 只能閱讀：只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。</li>
   <li><strong>分享：</strong>沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。</li>
   <li><strong>系統：</strong>MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。</li>
 </ul>
@@ -4351,7 +4351,7 @@ TRAIT_PAGES = {
 <ul>
   <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
   <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
-  <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
+  <li><strong>其他檔案：</strong>PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML 可以當成文件打開來編輯，並有樹狀預覽；iPhone 和 iPad 不能打開這兩種檔案。</li>
   <li><strong>主題：</strong>內建黎明、典雅、流行和活潑，每種都有淺色與深色；也可以從經過審核的<a href="/zh-hant/themes/gallery/">主題庫</a>安裝更多（「設定 ▸ 外觀 ▸ 取得更多主題⋯」）。主題只能設定顏色和幾個樣式選項，不能自訂 CSS。詳見<a href="/zh-hant/themes/">主題</a>。</li>
   <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
 </ul>
@@ -4720,9 +4720,7 @@ FEATURES_COPY = {
                                    'you type.',
                               'links': ['native']},
                              {'h': 'Quick Look in Finder',
-                              'p': 'Select a Markdown file in Finder and press Space to read it '
-                                   'rendered, diagrams included. Quick Look uses the theme you picked '
-                                   'in MarsDawn and follows its Appearance setting.',
+                              'p': 'Select a Markdown file in Finder and press Space to read it rendered, diagrams included. JSON and YAML files show as a tree. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.',
                               'links': ['native']},
                              {'h': 'Other files',
                               'p': "MarsDawn also opens plain text files (.txt, .log, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. iPhone and iPad don't open JSON or YAML.",
@@ -4881,7 +4879,7 @@ FEATURES_COPY = {
                               'p': '每份文件預設在自己的視窗打開。用「視窗 ▸ 合併所有視窗」，可以把開著的視窗收成同一個視窗裡的分頁。打字時會自動儲存。',
                               'links': ['native']},
                              {'h': '在 Finder 用快速查看',
-                              'p': '在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。快速查看會用你在 MarsDawn '
+                              'p': '在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。JSON 和 YAML 檔則會顯示成樹狀檢視。快速查看會用你在 MarsDawn '
                                    '選的主題，也跟著 MarsDawn 的外觀設定。',
                               'links': ['native']},
                              {'h': '其他檔案',
@@ -5937,7 +5935,7 @@ def all_pages() -> dict:
 # howto_steps), so the markup and the visible text cannot differ.
 QUICKLOOK_PREFIX = {  # how each locale's /native/ Quick Look list item starts (the macOS feature's name)
     "en": "Quick Look", "zh-hant": "快速查看", "zh-hans": "快速查看", "ja": "クイックルック",
-    "de": "Übersicht", "fr": "Coup d’œil", "es": "Vista rápida", "ko": "훑어보기",
+    "de": "Übersicht", "fr": "Coup d’œil", "es": "Vista Rápida", "ko": "훑어보기",
 }
 
 

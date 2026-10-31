@@ -11,7 +11,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                 'ql_shows': ["The rendered page, drawn by the same renderer as MarsDawn's preview pane.",
                              'Mermaid diagrams, KaTeX math and highlighted code blocks.',
                              'The preview theme you picked in MarsDawn, in light or dark.',
-                             'Web images stay blocked, and pictures stored next to the file can appear as placeholders.'],
+                             'Web images stay blocked, and pictures stored next to the file can appear as placeholders.', "JSON and YAML files as a tree, the same as MarsDawn's tree preview."],
                 'ql_how_name': 'How to preview a Markdown file with Quick Look',
                 'ql_steps': [['Install MarsDawn.', 'Download MarsDawn from the Mac App Store. The Quick Look extension is part of the app.'],
                              ['Select a Markdown file.', 'In Finder, click a .md file once.'],
@@ -73,7 +73,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                      'ql_shows': ['排版後的頁面，和 MarsDawn 預覽窗格用的是同一個轉譯器。',
                                   'Mermaid 圖表、KaTeX 數學式和上色的程式碼區塊。',
                                   '你在 MarsDawn 選的預覽主題，淺色或深色。',
-                                  '網路圖片依然會被擋下，放在檔案旁邊的圖片也可能只顯示佔位圖示。'],
+                                  '網路圖片依然會被擋下，放在檔案旁邊的圖片也可能只顯示佔位圖示。', 'JSON 和 YAML 檔顯示成樹狀檢視，跟 MarsDawn 的樹狀預覽一樣。'],
                      'ql_how_name': '如何用快速查看預覽 Markdown 檔案',
                      'ql_steps': [['安裝 MarsDawn。', '從 Mac App Store 下載 MarsDawn。快速查看擴充功能是 app 的一部分。'],
                                   ['選取 Markdown 檔案。', '在 Finder 點一下 .md 檔案。'],
@@ -111,7 +111,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                      'ql_shows': ['排版后的页面，和 MarsDawn 预览窗格用的是同一个渲染器。',
                                   'Mermaid 图表、KaTeX 数学公式和高亮的代码块。',
                                   '你在 MarsDawn 里选的预览主题，浅色或深色。',
-                                  '网络图片依然会被拦下，放在文件旁边的图片也可能只显示占位图标。'],
+                                  '网络图片依然会被拦下，放在文件旁边的图片也可能只显示占位图标。', 'JSON 和 YAML 文件显示成树状视图，和 MarsDawn 的树状预览一样。'],
                      'ql_how_name': '如何用快速查看预览 Markdown 文件',
                      'ql_steps': [['安装 MarsDawn。', '从 Mac App Store 下载 MarsDawn。快速查看扩展是 app 的一部分。'],
                                   ['选取 Markdown 文件。', '在访达点一下 .md 文件。'],
@@ -147,7 +147,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                 'ql_shows': ['MarsDawn のプレビューペインと同じレンダラーで描画されたページ。',
                              'Mermaid 図、KaTeX 数式、ハイライトされたコードブロック。',
                              'MarsDawn で選んだプレビューテーマ（ライトまたはダーク）。',
-                             'Web の画像はブロックされたままで、ファイルの隣にある画像はプレースホルダとして表示されることがあります。'],
+                             'Web の画像はブロックされたままで、ファイルの隣にある画像はプレースホルダとして表示されることがあります。', 'JSON と YAML のファイルは、MarsDawn のツリープレビューと同じツリー表示。'],
                 'ql_how_name': 'クイックルックで Markdown ファイルをプレビューする方法',
                 'ql_steps': [['MarsDawn をインストールします。', 'Mac App Store から MarsDawn をダウンロードします。クイックルックの機能拡張はアプリの一部です。'],
                              ['Markdown ファイルを選びます。', 'Finder で .md ファイルを一度クリックします。'],
@@ -195,7 +195,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                 'ql_shows': ['Die gerenderte Seite, gezeichnet vom selben Renderer wie der Vorschaubereich von MarsDawn.',
                              'Mermaid-Diagramme, KaTeX-Formeln und hervorgehobene Codeblöcke.',
                              'Das Vorschau-Thema, das du in MarsDawn gewählt hast, hell oder dunkel.',
-                             'Bilder aus dem Web bleiben blockiert, und Bilder neben der Datei können als Platzhalter erscheinen.'],
+                             'Bilder aus dem Web bleiben blockiert, und Bilder neben der Datei können als Platzhalter erscheinen.', 'JSON- und YAML-Dateien als Baum, wie in der Baumvorschau von MarsDawn.'],
                 'ql_how_name': 'So siehst du eine Markdown-Datei mit der Übersicht an',
                 'ql_steps': [['Installiere MarsDawn.', 'Lade MarsDawn aus dem Mac App Store. Die Erweiterung für die Übersicht gehört zur App.'],
                              ['Wähle eine Markdown-Datei aus.', 'Klicke im Finder einmal auf eine .md-Datei.'],
@@ -261,7 +261,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                              'Des diagrammes Mermaid, des formules KaTeX et des blocs de code colorés.',
                              'Le thème d’aperçu que vous avez choisi dans MarsDawn, en clair ou en sombre.',
                              'Les images du web restent bloquées, et les images placées à côté du fichier peuvent apparaître sous forme d’espaces '
-                             'réservés.'],
+                             'réservés.', 'Les fichiers JSON et YAML en arbre, comme dans l’aperçu en arbre de MarsDawn.'],
                 'ql_how_name': 'Comment prévisualiser un fichier Markdown avec Coup d’œil',
                 'ql_steps': [['Installez MarsDawn.', 'Téléchargez MarsDawn depuis le Mac App Store. L’extension Coup d’œil fait partie de l’app.'],
                              ['Sélectionnez un fichier Markdown.', 'Dans le Finder, cliquez une fois sur un fichier .md.'],
@@ -316,49 +316,49 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                               'Oui. L’outil en ligne de commande gratuit marsdawn a une commande open qui ouvre un fichier Markdown dans MarsDawn, '
                               'donc Claude Code, ou tout agent capable d’exécuter une commande shell, peut l’appeler. Un hook Claude Code facultatif '
                               'peut ouvrir chaque fichier Markdown que Claude écrit ou modifie.']]},
-         'es': {'ql_title': 'Markdown en el Finder: Vista rápida para archivos .md en Mac · MarsDawn',
-                'ql_desc': 'Con MarsDawn, Vista rápida renderiza Markdown en el Finder con la barra espaciadora: Mermaid, KaTeX y código resaltado. '
+         'es': {'ql_title': 'Markdown en el Finder: Vista Rápida para archivos .md en Mac · MarsDawn',
+                'ql_desc': 'Con MarsDawn, Vista Rápida renderiza Markdown en el Finder con la barra espaciadora: Mermaid, KaTeX y código resaltado. '
                            'Sigue funcionando tras la prueba.',
-                'ql_h1': 'Previsualiza Markdown en el Finder con Vista rápida.',
-                'ql_lead': 'Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora. Con MarsDawn instalado, Vista rápida (Quick '
+                'ql_h1': 'Previsualiza Markdown en el Finder con Vista Rápida.',
+                'ql_lead': 'Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora. Con MarsDawn instalado, Vista Rápida (Quick '
                            'Look) muestra la página renderizada en lugar de texto sin formato.',
                 'ql_shows_h': 'Qué muestra la vista previa',
                 'ql_shows': ['La página renderizada, dibujada por el mismo renderizador que el panel de vista previa de MarsDawn.',
                              'Diagramas Mermaid, fórmulas KaTeX y bloques de código resaltados.',
                              'El tema de vista previa que elegiste en MarsDawn, claro u oscuro.',
                              'Las imágenes de la web siguen bloqueadas, y las imágenes guardadas junto al archivo pueden aparecer como marcadores de '
-                             'posición.'],
-                'ql_how_name': 'Cómo previsualizar un archivo Markdown con Vista rápida',
-                'ql_steps': [['Instala MarsDawn.', 'Descarga MarsDawn desde el Mac App Store. La extensión de Vista rápida forma parte de la app.'],
+                             'posición.', 'Los archivos JSON y YAML en árbol, como en la vista previa en árbol de MarsDawn.'],
+                'ql_how_name': 'Cómo previsualizar un archivo Markdown con Vista Rápida',
+                'ql_steps': [['Instala MarsDawn.', 'Descarga MarsDawn desde el Mac App Store. La extensión de Vista Rápida forma parte de la app.'],
                              ['Selecciona un archivo Markdown.', 'En el Finder, haz clic una vez en un archivo .md.'],
                              ['Presiona la barra espaciadora.',
                               'Se abre la vista previa renderizada. Vuelve a presionar la barra espaciadora para cerrarla.'],
                              ['Si ves texto sin formato, activa la extensión.',
                               'Abre Ajustes del Sistema, ve a General ▸ Ítems de inicio y extensiones, haz clic en el botón de información junto a '
-                              '«Vista rápida» en Extensiones, activa «MarsDawn Preview» y haz clic en Aceptar.']],
+                              '«Vista Rápida» en Extensiones, activa «MarsDawn Preview» y haz clic en Aceptar.']],
                 'ql_trial_h': 'No queda bloqueada por la prueba',
                 'ql_pay_link_text': 'página sobre la prueba y el desbloqueo',
-                'ql_trial_p': 'Vista rápida sigue funcionando cuando termina la prueba. Muestra la misma vista previa renderizada mientras la prueba '
+                'ql_trial_p': 'Vista Rápida sigue funcionando cuando termina la prueba. Muestra la misma vista previa renderizada mientras la prueba '
                               'está en marcha, después de que termine y tras desbloquear. Cuando la prueba termina y hasta que desbloquees, solo las '
                               'ventanas de MarsDawn se abren con el contenido cubierto; las vistas previas del Finder no cambian. La {pay_link} '
                               'presenta las tres fases una al lado de otra.',
                 'ql_next_h': 'Siguiente',
-                'ql_link': 'Cómo funciona Vista rápida',
-                'ui': 'Vista rápida para Markdown',
+                'ql_link': 'Cómo funciona Vista Rápida',
+                'ui': 'Vista Rápida para Markdown',
                 'faq_h': 'Preguntas y respuestas',
                 'ql_faq': [['¿Cómo previsualizo un archivo Markdown en el Finder?',
-                            'Selecciona el archivo y presiona la barra espaciadora. Con MarsDawn instalado, Vista rápida muestra la página '
+                            'Selecciona el archivo y presiona la barra espaciadora. Con MarsDawn instalado, Vista Rápida muestra la página '
                             'renderizada, con diagramas Mermaid, fórmulas KaTeX y código resaltado.'],
-                           ['¿Vista rápida sigue funcionando después de la prueba de 14 días?',
-                            'Sí. Vista rápida no queda bloqueada por la prueba. Sigue renderizando archivos Markdown mientras la prueba está en '
+                           ['¿Vista Rápida sigue funcionando después de la prueba de 14 días?',
+                            'Sí. Vista Rápida no queda bloqueada por la prueba. Sigue renderizando archivos Markdown mientras la prueba está en '
                             'marcha, después de que termine y una vez desbloqueada la app.'],
-                           ['¿Por qué Vista rápida muestra texto sin formato?',
-                            'Puede que la extensión de Vista rápida esté desactivada. Abre Ajustes del Sistema, ve a General ▸ Ítems de inicio y '
-                            'extensiones, haz clic en el botón de información junto a «Vista rápida» en Extensiones, activa «MarsDawn Preview» y haz '
+                           ['¿Por qué Vista Rápida muestra texto sin formato?',
+                            'Puede que la extensión de Vista Rápida esté desactivada. Abre Ajustes del Sistema, ve a General ▸ Ítems de inicio y '
+                            'extensiones, haz clic en el botón de información junto a «Vista Rápida» en Extensiones, activa «MarsDawn Preview» y haz '
                             'clic en Aceptar.'],
-                           ['¿Vista rápida cuesta algo aparte?',
-                            'No. La extensión de Vista rápida forma parte de MarsDawn, sin compra aparte. MarsDawn se descarga gratis, con 14 días '
-                            'de prueba y un desbloqueo único de 4,99 USD, y Vista rápida funciona con o sin la prueba.'],
+                           ['¿Vista Rápida cuesta algo aparte?',
+                            'No. La extensión de Vista Rápida forma parte de MarsDawn, sin compra aparte. MarsDawn se descarga gratis, con 14 días '
+                            'de prueba y un desbloqueo único de 4,99 USD, y Vista Rápida funciona con o sin la prueba.'],
                            ['¿Qué versión de macOS necesita?', 'MarsDawn necesita macOS 26 o posterior.']],
                 'pay_faq': [['¿Cuánto cuesta MarsDawn?',
                              'MarsDawn se descarga gratis desde el Mac App Store. Puedes usar todas las funciones durante 14 días y después una '
@@ -369,8 +369,8 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                             ['¿Qué pasa cuando termina la prueba de 14 días?',
                              'Hasta que desbloquees MarsDawn, no puedes leer, editar, exportar ni imprimir documentos en la app: se abren con el '
                              'contenido cubierto. Tus archivos quedan exactamente como los guardaste.'],
-                            ['¿Vista rápida sigue funcionando después de la prueba?',
-                             'Sí. Vista rápida (Quick Look) en el Finder funciona con o sin la prueba. La herramienta de línea de comandos gratuita '
+                            ['¿Vista Rápida sigue funcionando después de la prueba?',
+                             'Sí. Vista Rápida (Quick Look) en el Finder funciona con o sin la prueba. La herramienta de línea de comandos gratuita '
                              'marsdawn también sigue exportando Markdown a PDF.'],
                             ['¿Necesito una cuenta?', 'No. MarsDawn nunca te pide que crees una cuenta.']],
                 'home_faq': [['¿MarsDawn es una suscripción?',
@@ -390,7 +390,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                 'ql_shows': ['MarsDawn의 미리보기 패널과 같은 렌더러로 그린 렌더링된 페이지.',
                              'Mermaid 다이어그램, KaTeX 수식, 강조된 코드 블록.',
                              'MarsDawn에서 고른 미리보기 테마(라이트 또는 다크).',
-                             '웹 이미지는 계속 차단되며, 파일 옆에 있는 이미지는 자리 표시자로 나타날 수 있습니다.'],
+                             '웹 이미지는 계속 차단되며, 파일 옆에 있는 이미지는 자리 표시자로 나타날 수 있습니다.', 'JSON과 YAML 파일은 MarsDawn의 트리 미리보기와 같은 트리 보기로 표시.'],
                 'ql_how_name': '훑어보기로 Markdown 파일을 미리 보는 방법',
                 'ql_steps': [['MarsDawn을 설치하세요.', 'Mac App Store에서 MarsDawn을 다운로드하세요. 훑어보기 확장 프로그램은 앱의 일부입니다.'],
                              ['Markdown 파일을 선택하세요.', 'Finder에서 .md 파일을 한 번 클릭하세요.'],
@@ -462,45 +462,36 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                    'yours': 'Lee el Markdown de tu agente, sin cuenta y sin nube · MarsDawn',
                    'vs/macmd-viewer': 'MacMD Viewer o MarsDawn: solo ver, o leer y editar · MarsDawn'}},
  'home': {'en': {'description': "Read and review your agent's Markdown, JSON and YAML natively on Mac: live preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 4.99 once.",
-                 'definition': 'MarsDawn is a native Mac app for reading and reviewing Markdown, with live split preview, Mermaid diagrams, KaTeX '
-                               'math, Quick Look and PDF export, free to try for 14 days and USD 4.99 once to unlock.',
+                 'definition': 'MarsDawn is a native Mac app for reading and reviewing Markdown, with live split preview, Mermaid diagrams, KaTeX math, Quick Look and PDF export, free to try for 14 days and USD 4.99 once to unlock. On the Mac, it also opens JSON and YAML with a tree preview.',
                  'vs_short': "Choosing between MarsDawn, VS Code's preview, Obsidian, QLMarkdown and LynxOffice? The comparison lists what each "
                              'vendor states, what MarsDawn lacks, and when you don\'t need it. <a href="/vs/">Compare</a>'},
           'zh-hant': {'description': '檢查 agent 寫的 Markdown、JSON、YAML：Mac 原生 app，即時預覽、Mermaid、KaTeX、快速查看、PDF。免費試用，之後一次 USD 4.99。',
-                      'definition': 'MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、Mermaid 圖表、KaTeX 數學式、快速查看與 PDF 輸出；可免費試用 14 天，一次付 USD 4.99 解鎖。',
+                      'definition': 'MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、Mermaid 圖表、KaTeX 數學式、快速查看與 PDF 輸出；可免費試用 14 天，一次付 USD 4.99 解鎖。在 Mac 上也能打開 JSON 和 YAML，附樹狀預覽。',
                       'vs_short': '在 MarsDawn、VS Code 預覽、Obsidian、QLMarkdown、LynxOffice 之間猶豫？比較頁列出各家自己的說法、MarsDawn 沒有的東西，以及什麼時候用不到它。<a '
                                   'href="/zh-hant/vs/">看比較</a>'},
           'ja': {'description': 'エージェントが書いた Markdown・JSON・YAML を確かめる Mac ネイティブアプリ。ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF。無料で試せて、一度だけ USD 4.99。',
-                 'definition': 'MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ '
-                               'USD 4.99 で解除できます。',
+                 'definition': 'MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ USD 4.99 で解除できます。Mac では JSON と YAML もツリープレビュー付きで開けます。',
                  'vs_short': 'MarsDawn、VS Code のプレビュー、Obsidian、QLMarkdown、LynxOffice で迷っていますか。比較ページに、各社の記載、MarsDawn にないもの、MarsDawn がいらない場面をまとめました。<a '
                              'href="/ja/vs/">比較を見る</a>'},
           'zh-hans': {'description': '检查代理写的 Markdown、JSON、YAML：Mac 原生 app，实时预览、Mermaid、KaTeX、快速查看、PDF。免费试用，之后一次 USD 4.99。',
-                      'definition': 'MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、Mermaid 图表、KaTeX 数学公式、快速查看与 PDF 导出；可免费试用 14 天，一次付 USD 4.99 解锁。',
+                      'definition': 'MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、Mermaid 图表、KaTeX 数学公式、快速查看与 PDF 导出；可免费试用 14 天，一次付 USD 4.99 解锁。在 Mac 上也能打开 JSON 和 YAML，附树状预览。',
                       'vs_short': '在 MarsDawn、VS Code 预览、Obsidian、QLMarkdown、LynxOffice 之间犹豫？对比页列出各家自己的说法、MarsDawn 没有的东西，以及什么时候用不到它。<a '
                                   'href="/zh-hans/vs/">看对比</a>'},
           'ko': {'description': '에이전트가 쓴 Markdown, JSON, YAML을 검토하는 Mac 네이티브 앱. 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료 체험 후 한 번만 USD 4.99.',
-                 'definition': 'MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 실시간 미리보기, Mermaid 다이어그램, KaTeX 수식, 훑어보기, PDF 내보내기를 갖추고 있으며, 14일 동안 무료로 '
-                               '체험한 뒤 USD 4.99 한 번으로 잠금 해제할 수 있습니다.',
+                 'definition': 'MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 실시간 미리보기, Mermaid 다이어그램, KaTeX 수식, 훑어보기, PDF 내보내기를 갖추고 있으며, 14일 동안 무료로 체험한 뒤 USD 4.99 한 번으로 잠금 해제할 수 있습니다. Mac에서는 JSON과 YAML도 트리 미리보기와 함께 열 수 있습니다.',
                  'vs_short': 'MarsDawn, VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice 사이에서 고민 중인가요? 비교 페이지에 각 회사의 설명, MarsDawn에 없는 것, MarsDawn이 필요 '
                              '없는 경우를 정리했습니다. <a href="/ko/vs/">비교 보기</a>'},
           'de': {'description': 'Lies Markdown, JSON und YAML deines Agenten nativ auf dem Mac: Live-Vorschau, Mermaid, KaTeX, Übersicht, PDF-Export. Kostenlos testen, dann einmal 4,99 USD.',
-                 'definition': 'MarsDawn ist eine native macOS-App zum Lesen und Prüfen von Markdown, mit geteilter Live-Vorschau, '
-                               'Mermaid-Diagrammen, KaTeX-Formeln, Übersicht und PDF-Export, 14 Tage kostenlos testbar und einmalig für 4,99 USD '
-                               'freigeschaltet.',
+                 'definition': 'MarsDawn ist eine native macOS-App zum Lesen und Prüfen von Markdown, mit geteilter Live-Vorschau, Mermaid-Diagrammen, KaTeX-Formeln, Übersicht und PDF-Export, 14 Tage kostenlos testbar und einmalig für 4,99 USD freigeschaltet. Auf dem Mac öffnet sie außerdem JSON und YAML mit Baumvorschau.',
                  'vs_short': 'Du schwankst zwischen MarsDawn, der VS-Code-Vorschau, Obsidian, QLMarkdown und LynxOffice? Der Vergleich zeigt, was '
                              'jeder Hersteller angibt, was MarsDawn fehlt und wann du es nicht brauchst. <a href="/de/vs/">Zum Vergleich</a>'},
           'fr': {'description': 'Relisez le Markdown, JSON et YAML de votre agent sur Mac\xa0: aperçu en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.',
-                 'definition': 'MarsDawn est une app macOS native pour lire et relire du Markdown, avec aperçu partagé en direct, diagrammes '
-                               'Mermaid, formules KaTeX, Coup d’œil et export PDF, gratuite à l’essai pendant 14 jours et déverrouillée pour 4,99 '
-                               'USD une seule fois.',
+                 'definition': 'MarsDawn est une app macOS native pour lire et relire du Markdown, avec aperçu partagé en direct, diagrammes Mermaid, formules KaTeX, Coup d’œil et export PDF, gratuite à l’essai pendant 14 jours et déverrouillée pour 4,99 USD une seule fois. Sur Mac, elle ouvre aussi JSON et YAML avec un aperçu en arbre.',
                  'vs_short': 'Vous hésitez entre MarsDawn, l’aperçu de VS Code, Obsidian, QLMarkdown et LynxOffice\xa0? La comparaison indique ce '
                              'que chaque fournisseur précise, ce qui manque à MarsDawn et quand vous n’en avez pas besoin. <a '
                              'href="/fr/vs/">Comparer</a>'},
-          'es': {'description': 'Revisa el Markdown, JSON y YAML de tu agente en tu Mac: vista previa en vivo, Mermaid, KaTeX, Vista rápida y PDF. Pruébalo gratis y luego 4,99 USD una vez.',
-                 'definition': 'MarsDawn es una app nativa de macOS para leer y revisar Markdown, con vista previa dividida en vivo, diagramas '
-                               'Mermaid, fórmulas KaTeX, Vista rápida y exportación a PDF; pruébala gratis 14 días y desbloquéala por 4,99 USD una '
-                               'sola vez.',
+          'es': {'description': 'Revisa el Markdown, JSON y YAML de tu agente en tu Mac: vista previa en vivo, Mermaid, KaTeX, Vista Rápida y PDF. Pruébalo gratis y luego 4,99 USD una vez.',
+                 'definition': 'MarsDawn es una app nativa de macOS para leer y revisar Markdown, con vista previa dividida en vivo, diagramas Mermaid, fórmulas KaTeX, Vista Rápida y exportación a PDF; pruébala gratis 14 días y desbloquéala por 4,99 USD una sola vez. En el Mac también abre JSON y YAML con vista previa en árbol.',
                  'vs_short': '¿Dudas entre MarsDawn, la vista previa de VS Code, Obsidian, QLMarkdown y LynxOffice? La comparación recoge lo que '
                              'indica cada fabricante, lo que le falta a MarsDawn y cuándo no lo necesitas. <a href="/es/vs/">Ver la '
                              'comparación</a>'}},
@@ -968,7 +959,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                'dont_h': 'Cuándo no necesitas MarsDawn',
                'dont': ['Vives en VS Code y te basta un panel de vista previa: muestra Mermaid y KaTeX, tiene vista previa de diff de Markdown y '
                         'salta a una línea con code -g.',
-                        'Solo quieres una vista previa con la barra espaciadora en el Finder: QLMarkdown es una extensión gratuita de Vista rápida '
+                        'Solo quieres una vista previa con la barra espaciadora en el Finder: QLMarkdown es una extensión gratuita de Vista Rápida '
                         'para Markdown.',
                         'Tu Mac tiene un macOS más antiguo: QLMarkdown necesita 12.0 o posterior y LynxOffice 13 o posterior. La herramienta '
                         'gratuita marsdawn necesita macOS 15 y exporta a PDF sin la app.',
@@ -1308,7 +1299,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            'Más información: <a href="/es/privacy/#when-marsdawn-uses-the-internet">Política de privacidad</a>'],
                   'faq': {'Q1': ['¿Qué es MarsDawn?',
                                  'MarsDawn es una app nativa para Mac para leer y revisar el Markdown que escribió tu agente, con el código fuente '
-                                 'junto a una vista previa en vivo. Dibuja Mermaid y KaTeX, muestra archivos .md en Vista rápida y exporta a PDF; '
+                                 'junto a una vista previa en vivo. Dibuja Mermaid y KaTeX, muestra archivos .md en Vista Rápida y exporta a PDF; '
                                  'también puedes editar el código fuente.',
                                  None],
                           'P1': ['¿MarsDawn sube mis documentos?',
@@ -1898,7 +1889,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                    'q9': ['¿Por qué usar MarsDawn y no otra app?',
                           'Puede que no lo necesites. Si sobre todo escribes tus propias notas, una app de notas como Obsidian te irá mejor. Si '
                           'pasas el día en VS Code, su vista previa integrada es gratis. Si solo quieres echar un vistazo a los archivos en el '
-                          'Finder, basta con una extensión gratuita de Vista rápida. Si tus PDF necesitan números de página, MarsDawn no los añade. '
+                          'Finder, basta con una extensión gratuita de Vista Rápida. Si tus PDF necesitan números de página, MarsDawn no los añade. '
                           'MarsDawn sirve para leer y revisar el Markdown que escribió un agente: el código fuente junto a una vista previa en vivo, '
                           'un cambio de tu agente que deshaces en un solo paso y un archivo abierto en la línea exacta. Si no te sirve, escríbenos y '
                           'cuéntanos por qué.',

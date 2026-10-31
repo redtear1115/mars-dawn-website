@@ -577,7 +577,7 @@ DATA = {'en': {'title': 'Best Markdown viewer for Mac (2026)',
                 ('Lesquels sont des apps Mac natives plutôt qu’Electron\xa0?',
                  'Toutes sauf Obsidian et VS Code. MarkEdit est natif, avec sa zone d’édition dans une web view.')]},
  'es': {'title': 'El mejor visor de Markdown para Mac (2026)',
-        'description': 'Ocho visores de Markdown para Mac comparados por precio, Mermaid, fórmulas, PDF, recarga en vivo, Vista rápida y '
+        'description': 'Ocho visores de Markdown para Mac comparados por precio, Mermaid, fórmulas, PDF, recarga en vivo, Vista Rápida y '
                        'nativo o Electron, y para quién es cada uno.',
         'h1': 'El mejor visor de Markdown para Mac (2026)',
         'intro': 'El mejor visor de Markdown depende de lo que leas. Si son notas que escribes tú, basta con una app de notas todo en uno. '
@@ -587,7 +587,7 @@ DATA = {'en': {'title': 'Best Markdown viewer for Mac (2026)',
         'apps': [{'slug': 'macdown-3000',
                   'name': 'MacDown 3000',
                   'para': 'El MacDown original ya no se mantiene. MacDown 3000 es la continuación de la comunidad: gratis y de código '
-                          'abierto (MIT), nativo, con Mermaid, MathJax, exportación a PDF, recarga en vivo y Vista rápida.',
+                          'abierto (MIT), nativo, con Mermaid, MathJax, exportación a PDF, recarga en vivo y Vista Rápida.',
                   'bullets': ['Para: quien quiere una vista dividida nativa y gratis.',
                               'Defecto: no está documentado cómo abrir un archivo en una línea desde la línea de comandos.',
                               'Precio: gratis.']},
@@ -596,12 +596,12 @@ DATA = {'en': {'title': 'Best Markdown viewer for Mac (2026)',
                   'para': 'Marked 3 es una app de vista previa para el Markdown que escribes en otra app. Recarga en cuanto cambia el '
                           'archivo, admite MathJax y KaTeX, e imprime PDF paginados con números de página. Marked 2 se sigue vendiendo.',
                   'bullets': ['Para: quienes escriben en su propia herramienta y quieren una vista previa e impresión cuidadas.',
-                              'Defecto: Vista rápida es una app aparte, Marked QL (9,99 USD).',
+                              'Defecto: Vista Rápida es una app aparte, Marked QL (9,99 USD).',
                               'Precio: Marked 3 se descarga gratis y luego cuesta 2,99 USD/mes, 29,99 USD/año o 69,99 USD de por vida. '
                               'Marked 2 cuesta 14,99 USD directo o 13,99 USD en la Mac App Store.']},
                  {'slug': 'markedit',
                   'name': 'MarkEdit',
-                  'para': 'Una app nativa, ligera y gratis (CodeMirror en una web view), con Vista rápida.',
+                  'para': 'Una app nativa, ligera y gratis (CodeMirror en una web view), con Vista Rápida.',
                   'bullets': ['Para: quien quiere una herramienta de texto plano rápida que se sienta propia del Mac.',
                               'Defecto: Mermaid y las fórmulas necesitan las extensiones oficiales, y el PDF necesita Pandoc.',
                               'Precio: gratis.']},
@@ -610,7 +610,7 @@ DATA = {'en': {'title': 'Best Markdown viewer for Mac (2026)',
                   'para': 'Una app nativa para Mac que muestra la fuente y una vista previa en vivo lado a lado, con Mermaid y KaTeX '
                           'integrados. Cuando un agente guarda el archivo, la ventana abierta toma el cambio como una sola actualización '
                           'desde el disco que puedes deshacer. <code>marsdawn open notes.md:120</code> abre un archivo en una línea, y hay '
-                          'un skill y un servidor MCP para agentes. Vista rápida funciona con o sin la prueba. «Copiar para IA» y «Copiar '
+                          'un skill y un servidor MCP para agentes. Vista Rápida funciona con o sin la prueba. «Copiar para IA» y «Copiar '
                           'referencia» pasan texto a un agente. Nada sale de tu Mac a menos que tú lo decidas.',
                   'bullets': ['Para: quien revisa el Markdown que escriben los agentes de IA.',
                               'Defecto: el PDF exportado no tiene números de página.',
@@ -625,7 +625,7 @@ DATA = {'en': {'title': 'Best Markdown viewer for Mac (2026)',
                               'Precio: gratis. Sync y Publish son de pago.']},
                  {'slug': 'qlmarkdown',
                   'name': 'QLMarkdown',
-                  'para': 'Una extensión de Vista rápida: selecciona un archivo .md en el Finder y presiona la barra espaciadora. Mermaid '
+                  'para': 'Una extensión de Vista Rápida: selecciona un archivo .md en el Finder y presiona la barra espaciadora. Mermaid '
                           'y MathJax son opcionales.',
                   'bullets': ['Para: quien solo quiere echar un vistazo a los archivos en el Finder.',
                               'Defecto: no es una app para leer ni editar, y no tiene exportación a PDF documentada.',
@@ -644,7 +644,7 @@ DATA = {'en': {'title': 'Best Markdown viewer for Mac (2026)',
                   'bullets': ['Para: desarrolladores que ya trabajan todo el día en VS Code.',
                               'Defecto: es una app Electron y no trae exportación a PDF.',
                               'Precio: gratis.']}],
-        'head': ['App', 'Precio', 'Mermaid', 'Fórmulas', 'PDF', 'Recarga en vivo', 'CLI en una línea', 'Vista rápida', 'Tecnología'],
+        'head': ['App', 'Precio', 'Mermaid', 'Fórmulas', 'PDF', 'Recarga en vivo', 'CLI en una línea', 'Vista Rápida', 'Tecnología'],
         'rows': [['MacDown 3000', 'Gratis', 'Sí', 'MathJax', 'Sí', 'Sí', 'No documentado', 'Sí', 'Nativa'],
                  ['Marked 3',
                   'Desde 2,99 USD/mes',

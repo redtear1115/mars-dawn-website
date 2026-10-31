@@ -160,7 +160,7 @@ Each document opens in its own window. Choose Window ▸ Merge All Windows to ga
 
 ### Quick Look in Finder
 
-Select a Markdown file in Finder and press Space to read it rendered, diagrams included. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.
+Select a Markdown file in Finder and press Space to read it rendered, diagrams included. JSON and YAML files show as a tree. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.
 
 [A Mac app](/native/) · [Quick Look for Markdown](/quicklook/)
 

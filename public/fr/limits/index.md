@@ -16,7 +16,7 @@ Sur cette capture d’écran :
 ### Appareils et personnes
 
 - **Synchronisation :** MarsDawn ne synchronise pas vos documents. Ils restent là où vous les enregistrez ; pour en utiliser un sur un autre Mac, gardez-le dans un dossier que vous synchronisez déjà.
-- **iPhone et iPad :** MarsDawn y sert à lire. Il ouvre les fichiers Markdown et texte et les met en forme, avec un plan et des thèmes, mais il ne permet ni de modifier, ni d’exporter en PDF, ni de synchroniser. Vos fichiers y arrivent par le cloud que vous utilisez déjà.
+- **iPhone et iPad :** Sur iPhone et iPad, MarsDawn sert uniquement à lire : il ouvre les fichiers Markdown et texte brut, sans modification ni export PDF. Il lit les fichiers que vous gardez dans iCloud Drive ; MarsDawn n’a pas de cloud à lui.
 - **Partage :** il n’y a ni comptes ni édition partagée, car MarsDawn est conçu pour une personne, sur son propre Mac.
 - **Système :** MarsDawn nécessite macOS 26 ou version ultérieure sur Mac, et iOS 26 ou iPadOS 26 ou version ultérieure sur iPhone et iPad.
 
@@ -24,7 +24,7 @@ Sur cette capture d’écran :
 
 - **Édition :** vous écrivez le Markdown à gauche et lisez la page à droite ; la page elle-même n’est pas modifiable.
 - **Formats :** MarsDawn exporte en PDF et imprime, mais n’exporte pas de fichiers Word.
-- **Autres fichiers :** les fichiers texte brut et les PDF s’ouvrent en lecture seule.
+- **Autres fichiers :** les PDF et les fichiers texte dans un autre encodage que l’UTF-8 s’ouvrent en lecture seule. Sur Mac, JSON et YAML s’ouvrent comme des documents modifiables avec un aperçu en arbre ; iPhone et iPad ne les ouvrent pas.
 - **Thèmes :** l’app inclut Aube, Classique, Moderne et Vif, chacun en clair et en sombre, et vous pouvez en installer d’autres depuis la [galerie de thèmes](/fr/themes/gallery/) vérifiée (Réglages ▸ Apparence ▸ Obtenir plus de thèmes…). Un thème définit des couleurs et quelques options de style ; il n’y a pas de CSS personnalisé. Voir [les thèmes](/fr/themes/).
 - **Plug-ins :** MarsDawn n’a ni plug-ins ni extensions.
 
