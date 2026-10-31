@@ -311,8 +311,7 @@ VS_MACMD = {'en': {'title': 'MacMD Viewer vs. MarsDawn: a Markdown viewer or an 
                  "Its own pages list its site, Homebrew and Setapp, and don't mention the Mac App Store [S2, "
                  'S7]. MarsDawn is on the Mac App Store only.'],
                 ['Can MarsDawn open the same files?',
-                 'Yes. It opens `.md` files, and also plain text files and PDFs: text opens ready to edit as '
-                 'UTF-8, and PDFs open in a viewer.'],
+                 'Yes. It opens `.md` files, and also plain text files and PDFs: text opens ready to edit as UTF-8, and PDFs open in a viewer. On the Mac it also opens JSON and YAML as editable documents with a tree preview.'],
                 ["What if I'm on macOS 14 or 15?",
                  'MacMD Viewer runs on macOS 14 or later [S1]. MarsDawn needs macOS 26 or later, and the '
                  'free `marsdawn` command-line tool can still export a PDF.'],
@@ -390,7 +389,7 @@ VS_MACMD = {'en': {'title': 'MacMD Viewer vs. MarsDawn: a Markdown viewer or an 
                      ['MacMD Viewer 在 Mac App Store 上嗎？',
                       '它自己的頁面列出的是官網、Homebrew 和 Setapp，沒有提到 Mac App Store [S2, S7]。MarsDawn 只在 Mac App '
                       'Store。'],
-                     ['MarsDawn 能打開同樣的檔案嗎？', '可以。它打開 `.md` 檔案，也能打開純文字檔和 PDF：UTF-8 的文字檔可直接編輯，PDF 以檢視器開啟。'],
+                     ['MarsDawn 能打開同樣的檔案嗎？', '可以。它打開 `.md` 檔案，也能打開純文字檔和 PDF：UTF-8 的文字檔可直接編輯，PDF 以檢視器開啟。在 Mac 上也能把 JSON 和 YAML 當成文件打開來編輯，並有樹狀預覽。'],
                      ['我的 Mac 是 macOS 14 或 15 呢？',
                       'MacMD Viewer 在 macOS 14 以上都能跑 [S1]。MarsDawn 需要 macOS 26 以上，不過免費的 `marsdawn` '
                       '命令列工具仍然可以輸出 PDF。'],
