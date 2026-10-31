@@ -108,7 +108,7 @@ More: [Privacy Policy](/privacy/#when-marsdawn-uses-the-internet)
 
 ### What is MarsDawn?
 
-MarsDawn is a native Mac app for reading and reviewing the Markdown your agent wrote, with the source beside a live preview. It draws Mermaid and KaTeX, previews .md files in Quick Look and exports PDF, and you can edit the source too.
+MarsDawn is a native Mac app for reading and reviewing the Markdown your agent wrote, with the source beside a live preview. It draws Mermaid and KaTeX, previews .md files in Quick Look and exports PDF, and you can edit the source too. On the Mac, it also opens JSON and YAML with a tree preview.
 
 ### Is MarsDawn a subscription?
 

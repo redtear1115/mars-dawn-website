@@ -108,7 +108,7 @@ hook 與指令：[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/) · [�
 
 ### MarsDawn 是什麼？
 
-MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原始碼和即時預覽並排，能畫 Mermaid、排 KaTeX，在快速查看裡預覽 .md，也能輸出 PDF。原始碼也可以直接改。
+MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原始碼和即時預覽並排，能畫 Mermaid、排 KaTeX，在快速查看裡預覽 .md，也能輸出 PDF。原始碼也可以直接改。在 Mac 上也能打開 JSON 和 YAML，附樹狀預覽。
 
 ### MarsDawn 要訂閱嗎？
 

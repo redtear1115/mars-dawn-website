@@ -530,7 +530,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                        "silent, not that the feature is missing. No cell ranks the products. MarsDawn's own cells were updated on 29 October "
                        '2026 for the iPhone and iPad app.',
                'lacks': "What MarsDawn lacks. It needs macOS 26 or later. On iPhone and iPad it only reads: it can't edit or export PDFs there."
-                        " There's no shared editing, no sync and no account. The preview can't be edited; you edit the Markdown source beside "
+                        " There's no shared editing, no account and no cloud service of its own. The preview can't be edited; you edit the Markdown source beside "
                         "it. It doesn't export Word files and has no plugins. Its PDFs have no page numbers. There's no diff view: when an "
                         "agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what "
                         'changed. After the 14-day trial, documents open with their content covered until you unlock it.',
@@ -602,7 +602,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                              'href="/zh-hant/support/">支援</a>頁上的地址。',
                     'note': '每一格都在 2026 年 10 月 16 日對照括號裡的來源查證（V 編號列在下方；[實測] 是我們用 marsdawn 0.6.4 '
                             '實際輸出的結果）。廠商原文照錄。「廠商未說明」表示我們讀到的頁面沒有提到，不代表沒有這個功能。表格不替產品排名。MarsDawn 自己那一欄在 2026 年 10 月 29 日依 iPhone 和 iPad 版更新。',
-                    'lacks': 'MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。不能共同編輯，不同步，也沒有帳號。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 '
+                    'lacks': 'MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。不能共同編輯，沒有帳號，也沒有自己的雲端服務。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 '
                              'Word，也沒有外掛。輸出的 PDF 沒有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。',
                     'dont_h': '什麼時候用不到 MarsDawn',
                     'dont': ['你整天待在 VS Code，預覽窗格就夠：它能畫 Mermaid、排 KaTeX，有 Markdown diff 預覽，也能用 code -g 跳到某一行。',
@@ -663,7 +663,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                              'href="/zh-hans/support/">支持</a>页上的地址。',
                     'note': '每一格都在 2026 年 10 月 16 日对照括号里的来源核实（V 编号列在下方；[实测] 是我们用 marsdawn 0.6.4 '
                             '实际导出的结果）。厂商原文照录。“厂商未说明”表示我们读到的页面没有提到，不代表没有这个功能。表格不为产品排名。MarsDawn 自己那一栏在 2026 年 10 月 29 日根据 iPhone 和 iPad 版更新。',
-                    'lacks': 'MarsDawn 没有的东西。需要 macOS 26 或更新版本。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。不能共同编辑，不同步，也没有账户。预览本身不能改，要改旁边的 Markdown 源文本。不能导出'
+                    'lacks': 'MarsDawn 没有的东西。需要 macOS 26 或更新版本。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。不能共同编辑，没有账户，也没有自己的云端服务。预览本身不能改，要改旁边的 Markdown 源文本。不能导出'
                              ' Word，也没有插件。导出的 PDF 没有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。',
                     'dont_h': '什么时候用不到 MarsDawn',
                     'dont': ['你整天待在 VS Code，预览窗格就够：它能画 Mermaid、排 KaTeX，有 Markdown diff 预览，也能用 code -g 跳到某一行。',
@@ -725,7 +725,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                'note': '各セルは 2026 年 10 月 16 日に、角かっこ内の出典で確認しました（V の番号は下に一覧、[実測] は marsdawn 0.6.4 '
                        'で書き出した私たちの確認）。各社の原文はそのまま引用しています。「記載なし」は、読んだページに書かれていなかったという意味で、機能がないという意味ではありません。製品の順位付けはしていません。MarsDawn 自身の列は、iPhone '
                        'と iPad 版に合わせて 2026 年 10 月 29 日に更新しました。',
-               'lacks': 'MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集も同期もアカウントもありません。プレビューは直接編集できず、横の '
+               'lacks': 'MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集もアカウントも独自のクラウドサービスもありません。プレビューは直接編集できず、横の '
                         'Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF '
                         'にページ番号は入りません。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 '
                         '日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。',
@@ -793,7 +793,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                        'heißt, dass die gelesenen Seiten dazu schweigen, nicht dass die Funktion fehlt. Keine Zelle bewertet die Produkte. Die'
                        ' Spalte von MarsDawn selbst wurde am 29. Oktober 2026 für die iPhone- und iPad-App aktualisiert.',
                'lacks': 'Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Auf iPhone und iPad liest es nur: Bearbeiten und PDF-Export gibt '
-                        'es dort nicht. Kein gemeinsames Bearbeiten, keine Synchronisierung und kein Konto. Die Vorschau lässt sich nicht '
+                        'es dort nicht. Kein gemeinsames Bearbeiten, kein Konto und keine eigene Cloud. Die Vorschau lässt sich nicht '
                         'bearbeiten; du bearbeitest den Markdown-Quelltext daneben. Kein Word-Export und keine Plug-ins. Die PDFs haben keine '
                         'Seitenzahlen. Es gibt keine Diff-Ansicht: Sichert ein Agent eine Änderung, aktualisiert sich das offene Fenster von '
                         'der Festplatte in einem Schritt, den du widerrufen kannst, hebt aber nicht hervor, was sich geändert hat. Nach dem '
@@ -872,7 +872,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                        'cellule ne classe les produits. La colonne de MarsDawn elle-même a été mise à jour le 29 octobre 2026 pour l’app '
                        'iPhone et iPad.',
                'lacks': 'Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Sur iPhone et iPad, il ne fait que lire\xa0: il ne permet ni de '
-                        'modifier ni d’exporter en PDF. Pas d’édition partagée, pas de synchronisation, pas de compte. L’aperçu ne se modifie '
+                        'modifier ni d’exporter en PDF. Pas d’édition partagée, pas de compte, pas de cloud propre. L’aperçu ne se modifie '
                         'pas\xa0; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Les PDF n’ont pas de numéros de '
                         'page. Pas de vue diff\xa0: quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque '
                         'en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les '
@@ -950,12 +950,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                        'nuestra propia exportación con marsdawn 0.6.4). Las citas de los fabricantes se mantienen tal cual. «El fabricante no '
                        'lo indica» significa que las páginas que leímos no dicen nada, no que la función falte. Ninguna celda clasifica los '
                        'productos. La columna de MarsDawn se actualizó el 29 de octubre de 2026 por la app para iPhone y iPad.',
-               'lacks': 'Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. En iPhone y iPad solo lee: ahí no edita ni exporta PDF. No '
-                        'hay edición compartida, ni sincronización, ni cuentas. La vista previa no se puede editar; editas el código fuente '
-                        'Markdown al lado. No exporta a Word ni tiene plugins. Sus PDF no tienen números de página. No hay vista de '
-                        'diferencias: cuando un agente guarda un cambio, la ventana abierta se actualiza desde el disco en un paso que puedes '
-                        'deshacer, pero no resalta qué cambió. Tras la prueba de 14 días, los documentos se abren con el contenido tapado hasta'
-                        ' que desbloquees la app.',
+               'lacks': 'Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. En iPhone y iPad solo lee: ahí no edita ni exporta PDF. No hay edición compartida, ni cuentas, ni nube propia. La vista previa no se puede editar; editas el código fuente Markdown al lado. No exporta a Word ni tiene plugins. Sus PDF no tienen números de página. No hay vista de diferencias: cuando un agente guarda un cambio, la ventana abierta se actualiza desde el disco en un paso que puedes deshacer, pero no resalta qué cambió. Tras la prueba de 14 días, los documentos se abren con el contenido tapado hasta que desbloquees la app.',
                'dont_h': 'Cuándo no necesitas MarsDawn',
                'dont': ['Vives en VS Code y te basta un panel de vista previa: muestra Mermaid y KaTeX, tiene vista previa de diff de Markdown y '
                         'salta a una línea con code -g.',
@@ -1026,7 +1021,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                'note': '모든 칸은 2026년 10월 16일에 괄호 안의 출처로 확인했습니다(V 번호는 아래 목록, [직접 확인]은 marsdawn 0.6.4로 직접 내보낸 결과). 각 회사의 원문은 그대로 인용합니다. ‘공식 설명 '
                        '없음’은 읽은 페이지에 언급이 없었다는 뜻이며, 기능이 없다는 뜻은 아닙니다. 표는 제품의 순위를 매기지 않습니다. MarsDawn 자체 열은 iPhone·iPad 앱에 맞춰 2026년 10월 29일에 '
                        '업데이트했습니다.',
-               'lacks': 'MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다. 공동 편집, 동기화, 계정이 없습니다. 미리보기는 직접 편집할 '
+               'lacks': 'MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다. 공동 편집, 계정, 자체 클라우드 서비스가 없습니다. 미리보기는 직접 편집할 '
                         '수 없고, 옆의 Markdown 소스를 편집합니다. Word로 내보내기와 플러그인이 없습니다. PDF에는 페이지 번호가 없습니다. diff 보기가 없습니다. 에이전트가 변경을 저장하면 열린 윈도우가 디스크에서 '
                         '업데이트되고 한 번에 실행 취소할 수 있지만, 무엇이 바뀌었는지는 강조하지 않습니다. 14일 체험이 끝나면 잠금 해제할 때까지 문서 내용이 가려진 채로 열립니다.',
                'dont_h': 'MarsDawn이 필요 없는 경우',
@@ -1094,9 +1089,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            'More: <a href="/privacy/#when-marsdawn-uses-the-internet">Privacy Policy</a>',
                            'More: <a href="/privacy/#when-marsdawn-uses-the-internet">Privacy Policy</a>'],
                   'faq': {'Q1': ['What is MarsDawn?',
-                                 'MarsDawn is a native Mac app for reading and reviewing the Markdown your agent wrote, with the source beside a '
-                                 'live preview. It draws Mermaid and KaTeX, previews .md files in Quick Look and exports PDF, and you can edit the '
-                                 'source too.',
+                                 'MarsDawn is a native Mac app for reading and reviewing the Markdown your agent wrote, with the source beside a live preview. It draws Mermaid and KaTeX, previews .md files in Quick Look and exports PDF, and you can edit the source too. On the Mac, it also opens JSON and YAML with a tree preview.',
                                  None],
                           'P1': ['Does MarsDawn upload my documents?',
                                  'No. The app never uploads your documents, collects no data about you and has no account; your documents and '
@@ -1127,8 +1120,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                 '詳見：<a href="/zh-hant/privacy/#when-marsdawn-uses-the-internet">隱私權政策</a>',
                                 '詳見：<a href="/zh-hant/privacy/#when-marsdawn-uses-the-internet">隱私權政策</a>'],
                        'faq': {'Q1': ['MarsDawn 是什麼？',
-                                      'MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原始碼和即時預覽並排，能畫 Mermaid、排 KaTeX，在快速查看裡預覽 .md，也能輸出 '
-                                      'PDF。原始碼也可以直接改。',
+                                      'MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原始碼和即時預覽並排，能畫 Mermaid、排 KaTeX，在快速查看裡預覽 .md，也能輸出 PDF。原始碼也可以直接改。在 Mac 上也能打開 JSON 和 YAML，附樹狀預覽。',
                                       None],
                                'P1': ['MarsDawn 會上傳我的文件嗎？',
                                       '不會。App 不會上傳你的文件，不收集任何關於你的資料，也沒有帳號；文件和設定都留在你的 Mac 上。只有文件引用網路內容、而你選擇載入時，你的 Mac 才會向放置那些內容的伺服器取用，MarsDawn '
@@ -1155,7 +1147,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                 '详见：<a href="/zh-hans/privacy/#when-marsdawn-uses-the-internet">隐私政策</a>',
                                 '详见：<a href="/zh-hans/privacy/#when-marsdawn-uses-the-internet">隐私政策</a>'],
                        'faq': {'Q1': ['MarsDawn 是什么？',
-                                      'MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源文本和实时预览并排，能画 Mermaid、排 KaTeX，在快速查看里预览 .md，也能导出 PDF。源文本也可以直接改。',
+                                      'MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源文本和实时预览并排，能画 Mermaid、排 KaTeX，在快速查看里预览 .md，也能导出 PDF。源文本也可以直接改。在 Mac 上也能打开 JSON 和 YAML，附树状预览。',
                                       None],
                                'P1': ['MarsDawn 会上传我的文稿吗？',
                                       '不会。App 不会上传你的文稿，不收集任何关于你的数据，也没有账户；文稿和设置都留在你的 Mac 上。只有文稿引用网络内容、而你选择加载时，你的 Mac 才会向托管这些内容的服务器获取，MarsDawn '
@@ -1183,8 +1175,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            '詳しくは：<a href="/ja/privacy/#when-marsdawn-uses-the-internet">プライバシーポリシー</a>',
                            '詳しくは：<a href="/ja/privacy/#when-marsdawn-uses-the-internet">プライバシーポリシー</a>'],
                   'faq': {'Q1': ['MarsDawn とは何ですか？',
-                                 'MarsDawn は、エージェントが書いた Markdown を読んで確かめるための Mac ネイティブアプリです。ソースの横にライブプレビューを並べ、Mermaid と KaTeX を描画し、クイックルックで .md '
-                                 'をプレビューし、PDF に書き出せます。ソースの編集もできます。',
+                                 'MarsDawn は、エージェントが書いた Markdown を読んで確かめるための Mac ネイティブアプリです。ソースの横にライブプレビューを並べ、Mermaid と KaTeX を描画し、クイックルックで .md をプレビューし、PDF に書き出せます。ソースの編集もできます。Mac では JSON と YAML もツリープレビュー付きで開けます。',
                                  None],
                           'P1': ['MarsDawn は文書をアップロードしますか？',
                                  'いいえ。アプリが文書をアップロードすることはなく、あなたに関するデータも集めず、アカウントもありません。文書と設定は Mac に残ります。文書が Web を参照していて、それを読み込むと選んだときだけ、Mac '
@@ -1216,9 +1207,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            'Mehr dazu: <a href="/de/privacy/#when-marsdawn-uses-the-internet">Datenschutzrichtlinie</a>',
                            'Mehr dazu: <a href="/de/privacy/#when-marsdawn-uses-the-internet">Datenschutzrichtlinie</a>'],
                   'faq': {'Q1': ['Was ist MarsDawn?',
-                                 'MarsDawn ist eine native Mac-App, mit der du das Markdown liest und prüfst, das dein Agent geschrieben hat, mit '
-                                 'dem Quelltext neben einer Live-Vorschau. Sie zeichnet Mermaid und KaTeX, zeigt .md-Dateien in der Übersicht und '
-                                 'exportiert PDF; den Quelltext kannst du auch bearbeiten.',
+                                 'MarsDawn ist eine native Mac-App, mit der du das Markdown liest und prüfst, das dein Agent geschrieben hat, mit dem Quelltext neben einer Live-Vorschau. Sie zeichnet Mermaid und KaTeX, zeigt .md-Dateien in der Übersicht und exportiert PDF; den Quelltext kannst du auch bearbeiten. Auf dem Mac öffnet sie außerdem JSON und YAML mit Baumvorschau.',
                                  None],
                           'P1': ['Lädt MarsDawn meine Dokumente hoch?',
                                  'Nein. Die App lädt deine Dokumente nie hoch, erfasst keine Daten über dich und hat kein Konto; Dokumente und '
@@ -1257,9 +1246,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            'En savoir plus\xa0: <a href="/fr/privacy/#when-marsdawn-uses-the-internet">Politique de confidentialité</a>',
                            'En savoir plus\xa0: <a href="/fr/privacy/#when-marsdawn-uses-the-internet">Politique de confidentialité</a>'],
                   'faq': {'Q1': ['Qu’est-ce que MarsDawn\xa0?',
-                                 'MarsDawn est une app Mac native pour lire et relire le Markdown écrit par votre agent, avec la source à côté d’un '
-                                 'aperçu en direct. Elle dessine Mermaid et KaTeX, affiche les fichiers .md dans Coup d’œil et exporte en PDF\xa0; '
-                                 'vous pouvez aussi modifier la source.',
+                                 'MarsDawn est une app Mac native pour lire et relire le Markdown écrit par votre agent, avec la source à côté d’un aperçu en direct. Elle dessine Mermaid et KaTeX, affiche les fichiers .md dans Coup d’œil et exporte en PDF\xa0; vous pouvez aussi modifier la source. Sur Mac, elle ouvre aussi JSON et YAML avec un aperçu en arbre.',
                                  None],
                           'P1': ['MarsDawn envoie-t-il mes documents en ligne\xa0?',
                                  'Non. L’app n’envoie jamais vos documents, ne collecte aucune donnée sur vous et n’a pas de compte\xa0; vos '
@@ -1298,9 +1285,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            'Más información: <a href="/es/privacy/#when-marsdawn-uses-the-internet">Política de privacidad</a>',
                            'Más información: <a href="/es/privacy/#when-marsdawn-uses-the-internet">Política de privacidad</a>'],
                   'faq': {'Q1': ['¿Qué es MarsDawn?',
-                                 'MarsDawn es una app nativa para Mac para leer y revisar el Markdown que escribió tu agente, con el código fuente '
-                                 'junto a una vista previa en vivo. Dibuja Mermaid y KaTeX, muestra archivos .md en Vista Rápida y exporta a PDF; '
-                                 'también puedes editar el código fuente.',
+                                 'MarsDawn es una app nativa para Mac para leer y revisar el Markdown que escribió tu agente, con el código fuente junto a una vista previa en vivo. Dibuja Mermaid y KaTeX, muestra archivos .md en Vista Rápida y exporta a PDF; también puedes editar el código fuente. En el Mac también abre JSON y YAML con vista previa en árbol.',
                                  None],
                           'P1': ['¿MarsDawn sube mis documentos?',
                                  'No. La app nunca sube tus documentos, no recopila datos sobre ti y no tiene cuentas; tus documentos y ajustes se '
@@ -1336,8 +1321,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                            '자세히: <a href="/ko/privacy/#when-marsdawn-uses-the-internet">개인정보 처리방침</a>',
                            '자세히: <a href="/ko/privacy/#when-marsdawn-uses-the-internet">개인정보 처리방침</a>'],
                   'faq': {'Q1': ['MarsDawn은 무엇인가요?',
-                                 'MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 Mac 네이티브 앱입니다. 소스 옆에 실시간 미리보기를 띄우고, Mermaid와 KaTeX를 그리며, 훑어보기로 .md 파일을 미리 '
-                                 '보고, PDF로 내보냅니다. 소스를 직접 편집할 수도 있습니다.',
+                                 'MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 Mac 네이티브 앱입니다. 소스 옆에 실시간 미리보기를 띄우고, Mermaid와 KaTeX를 그리며, 훑어보기로 .md 파일을 미리 보고, PDF로 내보냅니다. 소스를 직접 편집할 수도 있습니다. Mac에서는 JSON과 YAML도 트리 미리보기와 함께 열 수 있습니다.',
                                  None],
                           'P1': ['MarsDawn이 내 문서를 업로드하나요?',
                                  '아니요. 앱은 문서를 업로드하지 않고, 사용자에 관한 데이터를 수집하지 않으며, 계정도 없습니다. 문서와 설정은 Mac에 남습니다. 문서가 웹을 참조하고 그 내용을 불러오기로 선택한 경우에만 Mac이 해당 '

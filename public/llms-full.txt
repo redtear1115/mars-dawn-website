@@ -114,7 +114,7 @@ More: [Privacy Policy](/privacy/#when-marsdawn-uses-the-internet)
 
 ### What is MarsDawn?
 
-MarsDawn is a native Mac app for reading and reviewing the Markdown your agent wrote, with the source beside a live preview. It draws Mermaid and KaTeX, previews .md files in Quick Look and exports PDF, and you can edit the source too.
+MarsDawn is a native Mac app for reading and reviewing the Markdown your agent wrote, with the source beside a live preview. It draws Mermaid and KaTeX, previews .md files in Quick Look and exports PDF, and you can edit the source too. On the Mac, it also opens JSON and YAML with a tree preview.
 
 ### Is MarsDawn a subscription?
 
@@ -1094,7 +1094,7 @@ Every cell was checked on 16 October 2026 against the source in brackets (V-ids 
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-What MarsDawn lacks. It needs macOS 26 or later. On iPhone and iPad it only reads: it can't edit or export PDFs there. There's no shared editing, no sync and no account. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Its PDFs have no page numbers. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.
+What MarsDawn lacks. It needs macOS 26 or later. On iPhone and iPad it only reads: it can't edit or export PDFs there. There's no shared editing, no account and no cloud service of its own. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Its PDFs have no page numbers. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.
 
 ## When you don't need MarsDawn
 
@@ -3596,7 +3596,7 @@ hook 與指令：[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/) · [�
 
 ### MarsDawn 是什麼？
 
-MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原始碼和即時預覽並排，能畫 Mermaid、排 KaTeX，在快速查看裡預覽 .md，也能輸出 PDF。原始碼也可以直接改。
+MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原始碼和即時預覽並排，能畫 Mermaid、排 KaTeX，在快速查看裡預覽 .md，也能輸出 PDF。原始碼也可以直接改。在 Mac 上也能打開 JSON 和 YAML，附樹狀預覽。
 
 ### MarsDawn 要訂閱嗎？
 
@@ -4576,7 +4576,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。不能共同編輯，不同步，也沒有帳號。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。輸出的 PDF 沒有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。
+MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。不能共同編輯，沒有帳號，也沒有自己的雲端服務。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。輸出的 PDF 沒有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。
 
 ## 什麼時候用不到 MarsDawn
 
@@ -7117,7 +7117,7 @@ hook 与命令：[给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/) · [�
 
 ### MarsDawn 是什么？
 
-MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源文本和实时预览并排，能画 Mermaid、排 KaTeX，在快速查看里预览 .md，也能导出 PDF。源文本也可以直接改。
+MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源文本和实时预览并排，能画 Mermaid、排 KaTeX，在快速查看里预览 .md，也能导出 PDF。源文本也可以直接改。在 Mac 上也能打开 JSON 和 YAML，附树状预览。
 
 ### MarsDawn 要订阅吗？
 
@@ -8094,7 +8094,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn 没有的东西。需要 macOS 26 或更新版本。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。不能共同编辑，不同步，也没有账户。预览本身不能改，要改旁边的 Markdown 源文本。不能导出 Word，也没有插件。导出的 PDF 没有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。
+MarsDawn 没有的东西。需要 macOS 26 或更新版本。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。不能共同编辑，没有账户，也没有自己的云端服务。预览本身不能改，要改旁边的 Markdown 源文本。不能导出 Word，也没有插件。导出的 PDF 没有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。
 
 ## 什么时候用不到 MarsDawn
 
@@ -10631,7 +10631,7 @@ Mac の中で。閲覧、編集、レンダリング、[PDF 書き出し](/ja/pr
 
 ### MarsDawn とは何ですか？
 
-MarsDawn は、エージェントが書いた Markdown を読んで確かめるための Mac ネイティブアプリです。ソースの横にライブプレビューを並べ、Mermaid と KaTeX を描画し、クイックルックで .md をプレビューし、PDF に書き出せます。ソースの編集もできます。
+MarsDawn は、エージェントが書いた Markdown を読んで確かめるための Mac ネイティブアプリです。ソースの横にライブプレビューを並べ、Mermaid と KaTeX を描画し、クイックルックで .md をプレビューし、PDF に書き出せます。ソースの編集もできます。Mac では JSON と YAML もツリープレビュー付きで開けます。
 
 ### MarsDawn はサブスクリプションですか？
 
@@ -11608,7 +11608,7 @@ Mac で Markdown を、多くはエージェントが書いたものを読んで
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集も同期もアカウントもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号は入りません。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
+MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集もアカウントも独自のクラウドサービスもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号は入りません。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
 
 ## MarsDawn がいらないとき
 
@@ -14144,7 +14144,7 @@ Mehr dazu: [Datenschutzrichtlinie](/de/privacy/#when-marsdawn-uses-the-internet)
 
 ### Was ist MarsDawn?
 
-MarsDawn ist eine native Mac-App, mit der du das Markdown liest und prüfst, das dein Agent geschrieben hat, mit dem Quelltext neben einer Live-Vorschau. Sie zeichnet Mermaid und KaTeX, zeigt .md-Dateien in der Übersicht und exportiert PDF; den Quelltext kannst du auch bearbeiten.
+MarsDawn ist eine native Mac-App, mit der du das Markdown liest und prüfst, das dein Agent geschrieben hat, mit dem Quelltext neben einer Live-Vorschau. Sie zeichnet Mermaid und KaTeX, zeigt .md-Dateien in der Übersicht und exportiert PDF; den Quelltext kannst du auch bearbeiten. Auf dem Mac öffnet sie außerdem JSON und YAML mit Baumvorschau.
 
 ### Ist MarsDawn ein Abo?
 
@@ -15124,7 +15124,7 @@ Jede Zelle wurde am 16. Oktober 2026 an der Quelle in Klammern geprüft (die V-N
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Auf iPhone und iPad liest es nur: Bearbeiten und PDF-Export gibt es dort nicht. Kein gemeinsames Bearbeiten, keine Synchronisierung und kein Konto. Die Vorschau lässt sich nicht bearbeiten; du bearbeitest den Markdown-Quelltext daneben. Kein Word-Export und keine Plug-ins. Die PDFs haben keine Seitenzahlen. Es gibt keine Diff-Ansicht: Sichert ein Agent eine Änderung, aktualisiert sich das offene Fenster von der Festplatte in einem Schritt, den du widerrufen kannst, hebt aber nicht hervor, was sich geändert hat. Nach dem 14-tägigen Test öffnen sich Dokumente mit verdecktem Inhalt, bis du freischaltest.
+Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Auf iPhone und iPad liest es nur: Bearbeiten und PDF-Export gibt es dort nicht. Kein gemeinsames Bearbeiten, kein Konto und keine eigene Cloud. Die Vorschau lässt sich nicht bearbeiten; du bearbeitest den Markdown-Quelltext daneben. Kein Word-Export und keine Plug-ins. Die PDFs haben keine Seitenzahlen. Es gibt keine Diff-Ansicht: Sichert ein Agent eine Änderung, aktualisiert sich das offene Fenster von der Festplatte in einem Schritt, den du widerrufen kannst, hebt aber nicht hervor, was sich geändert hat. Nach dem 14-tägigen Test öffnen sich Dokumente mit verdecktem Inhalt, bis du freischaltest.
 
 ## Wann du MarsDawn nicht brauchst
 
@@ -17598,7 +17598,7 @@ En savoir plus : [Politique de confidentialité](/fr/privacy/#when-marsdawn-uses
 
 ### Qu’est-ce que MarsDawn ?
 
-MarsDawn est une app Mac native pour lire et relire le Markdown écrit par votre agent, avec la source à côté d’un aperçu en direct. Elle dessine Mermaid et KaTeX, affiche les fichiers .md dans Coup d’œil et exporte en PDF ; vous pouvez aussi modifier la source.
+MarsDawn est une app Mac native pour lire et relire le Markdown écrit par votre agent, avec la source à côté d’un aperçu en direct. Elle dessine Mermaid et KaTeX, affiche les fichiers .md dans Coup d’œil et exporte en PDF ; vous pouvez aussi modifier la source. Sur Mac, elle ouvre aussi JSON et YAML avec un aperçu en arbre.
 
 ### MarsDawn est-il un abonnement ?
 
@@ -18578,7 +18578,7 @@ Chaque cellule a été vérifiée le 16 octobre 2026 auprès de la source entre 
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Sur iPhone et iPad, il ne fait que lire : il ne permet ni de modifier ni d’exporter en PDF. Pas d’édition partagée, pas de synchronisation, pas de compte. L’aperçu ne se modifie pas ; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Les PDF n’ont pas de numéros de page. Pas de vue diff : quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les documents s’ouvrent avec leur contenu masqué jusqu’au déverrouillage.
+Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Sur iPhone et iPad, il ne fait que lire : il ne permet ni de modifier ni d’exporter en PDF. Pas d’édition partagée, pas de compte, pas de cloud propre. L’aperçu ne se modifie pas ; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Les PDF n’ont pas de numéros de page. Pas de vue diff : quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les documents s’ouvrent avec leur contenu masqué jusqu’au déverrouillage.
 
 ## Quand vous n’avez pas besoin de MarsDawn
 
@@ -21052,7 +21052,7 @@ Más información: [Política de privacidad](/es/privacy/#when-marsdawn-uses-the
 
 ### ¿Qué es MarsDawn?
 
-MarsDawn es una app nativa para Mac para leer y revisar el Markdown que escribió tu agente, con el código fuente junto a una vista previa en vivo. Dibuja Mermaid y KaTeX, muestra archivos .md en Vista Rápida y exporta a PDF; también puedes editar el código fuente.
+MarsDawn es una app nativa para Mac para leer y revisar el Markdown que escribió tu agente, con el código fuente junto a una vista previa en vivo. Dibuja Mermaid y KaTeX, muestra archivos .md en Vista Rápida y exporta a PDF; también puedes editar el código fuente. En el Mac también abre JSON y YAML con vista previa en árbol.
 
 ### ¿MarsDawn es una suscripción?
 
@@ -22032,7 +22032,7 @@ Cada celda se comprobó el 16 de octubre de 2026 con la fuente entre corchetes (
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. En iPhone y iPad solo lee: ahí no edita ni exporta PDF. No hay edición compartida, ni sincronización, ni cuentas. La vista previa no se puede editar; editas el código fuente Markdown al lado. No exporta a Word ni tiene plugins. Sus PDF no tienen números de página. No hay vista de diferencias: cuando un agente guarda un cambio, la ventana abierta se actualiza desde el disco en un paso que puedes deshacer, pero no resalta qué cambió. Tras la prueba de 14 días, los documentos se abren con el contenido tapado hasta que desbloquees la app.
+Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. En iPhone y iPad solo lee: ahí no edita ni exporta PDF. No hay edición compartida, ni cuentas, ni nube propia. La vista previa no se puede editar; editas el código fuente Markdown al lado. No exporta a Word ni tiene plugins. Sus PDF no tienen números de página. No hay vista de diferencias: cuando un agente guarda un cambio, la ventana abierta se actualiza desde el disco en un paso que puedes deshacer, pero no resalta qué cambió. Tras la prueba de 14 días, los documentos se abren con el contenido tapado hasta que desbloquees la app.
 
 ## Cuándo no necesitas MarsDawn
 
@@ -24506,7 +24506,7 @@ Mac 안에서. 읽기, 편집, 렌더링, [PDF 내보내기](/ko/privacy/#export
 
 ### MarsDawn은 무엇인가요?
 
-MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 Mac 네이티브 앱입니다. 소스 옆에 실시간 미리보기를 띄우고, Mermaid와 KaTeX를 그리며, 훑어보기로 .md 파일을 미리 보고, PDF로 내보냅니다. 소스를 직접 편집할 수도 있습니다.
+MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 Mac 네이티브 앱입니다. 소스 옆에 실시간 미리보기를 띄우고, Mermaid와 KaTeX를 그리며, 훑어보기로 .md 파일을 미리 보고, PDF로 내보냅니다. 소스를 직접 편집할 수도 있습니다. Mac에서는 JSON과 YAML도 트리 미리보기와 함께 열 수 있습니다.
 
 ### MarsDawn은 구독인가요?
 
@@ -25486,7 +25486,7 @@ Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다. 공동 편집, 동기화, 계정이 없습니다. 미리보기는 직접 편집할 수 없고, 옆의 Markdown 소스를 편집합니다. Word로 내보내기와 플러그인이 없습니다. PDF에는 페이지 번호가 없습니다. diff 보기가 없습니다. 에이전트가 변경을 저장하면 열린 윈도우가 디스크에서 업데이트되고 한 번에 실행 취소할 수 있지만, 무엇이 바뀌었는지는 강조하지 않습니다. 14일 체험이 끝나면 잠금 해제할 때까지 문서 내용이 가려진 채로 열립니다.
+MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다. 공동 편집, 계정, 자체 클라우드 서비스가 없습니다. 미리보기는 직접 편집할 수 없고, 옆의 Markdown 소스를 편집합니다. Word로 내보내기와 플러그인이 없습니다. PDF에는 페이지 번호가 없습니다. diff 보기가 없습니다. 에이전트가 변경을 저장하면 열린 윈도우가 디스크에서 업데이트되고 한 번에 실행 취소할 수 있지만, 무엇이 바뀌었는지는 강조하지 않습니다. 14일 체험이 끝나면 잠금 해제할 때까지 문서 내용이 가려진 채로 열립니다.
 
 ## MarsDawn이 필요 없는 경우
 

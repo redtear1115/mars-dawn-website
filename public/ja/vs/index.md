@@ -41,7 +41,7 @@ Mac で Markdown を、多くはエージェントが書いたものを読んで
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集も同期もアカウントもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号は入りません。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
+MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集もアカウントも独自のクラウドサービスもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号は入りません。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
 
 ## MarsDawn がいらないとき
 

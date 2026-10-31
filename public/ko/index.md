@@ -108,7 +108,7 @@ Mac 안에서. 읽기, 편집, 렌더링, [PDF 내보내기](/ko/privacy/#export
 
 ### MarsDawn은 무엇인가요?
 
-MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 Mac 네이티브 앱입니다. 소스 옆에 실시간 미리보기를 띄우고, Mermaid와 KaTeX를 그리며, 훑어보기로 .md 파일을 미리 보고, PDF로 내보냅니다. 소스를 직접 편집할 수도 있습니다.
+MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 Mac 네이티브 앱입니다. 소스 옆에 실시간 미리보기를 띄우고, Mermaid와 KaTeX를 그리며, 훑어보기로 .md 파일을 미리 보고, PDF로 내보냅니다. 소스를 직접 편집할 수도 있습니다. Mac에서는 JSON과 YAML도 트리 미리보기와 함께 열 수 있습니다.
 
 ### MarsDawn은 구독인가요?
 
