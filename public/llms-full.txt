@@ -14,6 +14,18 @@ MarsDawn is a native Mac app for reading and reviewing Markdown, with live split
 
 The page shows a working MarsDawn window over part of the app's Welcome guide. Its palette menu picks an appearance (System, Light, Dark) and a preview theme for light and for dark from four (Dawn, Classic, Modern, Vivid), and its toolbar one of three layouts (Source, Split, Preview).
 
+## Read what your agent wrote, away from your desk
+
+1. On your Mac, have your agent save its files to a folder in iCloud Drive.
+2. On your iPhone or iPad, open MarsDawn and choose the file.
+3. To edit it or export a PDF, go back to your Mac.
+
+On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain text files.
+
+[![Download on the App Store](/assets/badges/app-store-en.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+
+[Features](/features/#iphone-ipad)
+
 ## Read what your agent wrote.
 
 1. **The agent writes.** Your coding agent or writing assistant drafts the Markdown: a README, a spec, a set of notes.
@@ -110,7 +122,7 @@ No. MarsDawn is a free download with a 14-day trial of every feature. After that
 
 ### Does MarsDawn work on iPhone or iPad?
 
-Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown files and renders Mermaid diagrams, math, code and tables, with an outline and themes. It doesn't edit, export PDFs or sync. It needs iOS 26 or iPadOS 26 or later. With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.
+Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown and plain text files and renders Mermaid diagrams, math, code and tables, with an outline and themes. It doesn't edit or export PDFs. It needs iOS 26 or iPadOS 26 or later. With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.
 
 More: [Roadmap](/roadmap/)
 
@@ -325,13 +337,13 @@ In this screenshot:
 
 Your agent works on the Mac. Its plans and reports can come with you on your iPhone or iPad.
 
-1. **On the Mac:** save the agent's plans and reports in a folder your cloud syncs, such as iCloud Drive.
+1. **On the Mac:** save the agent's plans and reports in a folder in iCloud Drive.
 2. **On iPhone or iPad:** in MarsDawn, tap Open and pick the same file. Mermaid diagrams, math, code and tables are rendered, with an outline and your theme.
 3. **Back on the Mac:** keep editing, or export a PDF.
 
 With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.
 
-On iPhone and iPad, MarsDawn is for reading: it doesn't edit, export PDFs or sync. Your files get to your phone through the cloud you already use; MarsDawn has no sync of its own.
+On iPhone and iPad, MarsDawn is for reading only: it opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.
 
 ## Files, tabs and Quick Look
 
@@ -3479,6 +3491,18 @@ MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、M
 
 頁面上有一個可以操作的 MarsDawn 視窗，內容是 App 內建歡迎指南的一段。調色盤選單可以選外觀（系統、淺色、深色），並分別替淺色和深色從四個預覽主題（黎明、典雅、流行、活潑）裡選一個；工具列可以選三種版面（原始碼、並排、預覽）。
 
+## 離開座位，也能讀 agent 寫的東西
+
+1. 在 Mac 上，讓 agent 把檔案存進 iCloud 雲碟裡的資料夾。
+2. 在 iPhone 或 iPad 上打開 MarsDawn，選那份檔案。
+3. 要修改或輸出 PDF，回到 Mac 上做。
+
+在 iPhone 和 iPad 上只能閱讀，只開 Markdown 和純文字檔。
+
+[![在 App Store 下載](/assets/badges/app-store-zh-hant.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+
+[功能一覽](/zh-hant/features/#iphone-ipad)
+
 ## 讀 agent 寫的 Markdown。
 
 1. **Agent 動筆。**你的程式碼助手或寫作 agent 先寫出 Markdown：README、規格文件，或一份筆記。
@@ -3575,7 +3599,7 @@ MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原�
 
 ### MarsDawn 有 iPhone 或 iPad 版嗎？
 
-有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown 檔，排好 Mermaid 圖表、數學式、程式碼和表格，也有大綱和主題；不能編輯、不能輸出 PDF，也不會同步。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。
+有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown 和純文字檔，排好 Mermaid 圖表、數學式、程式碼和表格，也有大綱和主題；不能編輯，也不能輸出 PDF。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。
 
 詳見：[路線圖](/zh-hant/roadmap/)
 
@@ -3790,13 +3814,13 @@ App 介面有英文、繁體中文、簡體中文、日文、德文、法文、�
 
 agent 在 Mac 上工作，它寫的計畫和報告，你在 iPhone 或 iPad 上也能讀。
 
-1. **在 Mac 上：**把 agent 的計畫和報告存在會同步的雲端資料夾，例如 iCloud Drive。
+1. **在 Mac 上：**把 agent 的計畫和報告存在 iCloud 雲碟裡的資料夾。
 2. **在 iPhone 或 iPad 上：**打開 MarsDawn，點「開啟」，選同一個檔案。Mermaid 圖表、數學式、程式碼和表格都會排好顯示，也有大綱和你選的主題。
 3. **回到 Mac：**繼續編輯，或輸出 PDF。
 
 用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。
 
-在 iPhone 和 iPad 上，MarsDawn 只能閱讀：不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳到手機，MarsDawn 本身沒有同步功能。
+在 iPhone 和 iPad 上，MarsDawn 只能閱讀：只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。
 
 ## 檔案、分頁和快速查看
 
@@ -6983,6 +7007,18 @@ MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、M
 
 页面上有一个可以操作的 MarsDawn 窗口，内容是 App 内置欢迎指南的一段。调色板菜单可以选外观（系统、浅色、深色），并分别为浅色和深色从四个预览主题（黎明、典雅、流行、活泼）里选一个；工具栏可以选三种布局（源代码、并排、预览）。
 
+## 离开座位，也能读代理写的东西
+
+1. 在 Mac 上，让代理把文件存进 iCloud 云盘里的文件夹。
+2. 在 iPhone 或 iPad 上打开 MarsDawn，选择那份文件。
+3. 要修改或导出 PDF，回到 Mac 上操作。
+
+在 iPhone 和 iPad 上只能阅读，只能打开 Markdown 和纯文本文件。
+
+[![在 App Store 下载](/assets/badges/app-store-zh-hans.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+
+[功能一览](/zh-hans/features/#iphone-ipad)
+
 ## 读代理写的 Markdown。
 
 1. **代理动笔。**你的代码助手或写作代理先写出 Markdown：README、规格文档，或一份笔记。
@@ -7079,7 +7115,7 @@ MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源�
 
 ### MarsDawn 有 iPhone 或 iPad 版吗？
 
-有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown 文件，排好 Mermaid 图表、数学公式、代码和表格，也有大纲和主题；不能编辑、不能导出 PDF，也不会同步。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。
+有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown 和纯文本文件，排好 Mermaid 图表、数学公式、代码和表格，也有大纲和主题；不能编辑，也不能导出 PDF。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。
 
 详见：[路线图](/zh-hans/roadmap/)
 
@@ -7294,13 +7330,13 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 代理在 Mac 上工作，它写的计划和报告，你在 iPhone 或 iPad 上也能读。
 
-1. **在 Mac 上：**把代理的计划和报告存在会同步的云端文件夹，例如 iCloud 云盘。
+1. **在 Mac 上：**把代理的计划和报告存在 iCloud 云盘里的文件夹。
 2. **在 iPhone 或 iPad 上：**打开 MarsDawn，点“打开”，选同一个文件。Mermaid 图表、数学公式、代码和表格都会排好显示，也有大纲和你选的主题。
 3. **回到 Mac：**继续编辑，或导出 PDF。
 
 用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。
 
-在 iPhone 和 iPad 上，MarsDawn 只能阅读：不能编辑、不能导出 PDF，也不会同步。文件通过你自己用的云服务传到手机，MarsDawn 本身没有同步功能。
+在 iPhone 和 iPad 上，MarsDawn 只能阅读：只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。
 
 ## 文件、标签页和快速查看
 
@@ -10480,6 +10516,18 @@ MarsDawn は、Markdown を読んで確かめるための Mac ネイティブア
 
 ページには操作できる MarsDawn のウインドウがあり、アプリ内蔵のようこそガイドの一部を表示しています。パレットのメニューで外観モード（システム、ライト、ダーク）を選び、ライトとダークそれぞれに 4 つのプレビューテーマ（夜明け、クラシック、モダン、ビビッド）から 1 つを選べます。ツールバーでは 3 つのレイアウト（ソース、分割、プレビュー）から選べます。
 
+## 席を離れても、エージェントが書いたものを読める
+
+1. Mac で、エージェントにファイルを iCloud Drive のフォルダへ保存させます。
+2. iPhone や iPad で MarsDawn を開き、そのファイルを選びます。
+3. 編集や PDF の書き出しは、Mac に戻って行います。
+
+iPhone と iPad では閲覧専用で、開けるのは Markdown とプレーンテキストのファイルだけです。
+
+[![App Storeからダウンロード](/assets/badges/app-store-ja.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+
+[機能一覧](/ja/features/#iphone-ipad)
+
 ## エージェントが書いた Markdown を読む。
 
 1. **エージェントが書く。**あなたのコーディングエージェントやライティングアシスタントが Markdown の下書きを作ります。README、仕様書、メモなど。
@@ -10576,7 +10624,7 @@ MarsDawn は、エージェントが書いた Markdown を読んで確かめる�
 
 ### MarsDawn は iPhone や iPad で使えますか？
 
-はい、閲覧用です。iPhone と iPad の MarsDawn は Markdown ファイルを開き、Mermaid 図、数式、コード、表を整えて表示します。アウトラインとテーマも使えます。編集、PDF の書き出し、同期はできません。iOS 26 または iPadOS 26 以降が必要です。同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。
+はい、閲覧用です。iPhone と iPad の MarsDawn は Markdown とプレーンテキストのファイルを開き、Mermaid 図、数式、コード、表を整えて表示します。アウトラインとテーマも使えます。編集と PDF の書き出しはできません。iOS 26 または iPadOS 26 以降が必要です。同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。
 
 詳しくは：[ロードマップ](/ja/roadmap/)
 
@@ -10791,13 +10839,13 @@ KaTeX の構文で書いた数式は、プレビューとクイックルック�
 
 エージェントは Mac で作業します。その計画やレポートは、iPhone や iPad でも読めます。
 
-1. **Mac で：**エージェントの計画やレポートを、クラウドで同期されるフォルダ（iCloud Drive など）に保存します。
+1. **Mac で：**エージェントの計画やレポートを、iCloud Drive のフォルダに保存します。
 2. **iPhone や iPad で：**MarsDawn で「開く」をタップし、同じファイルを選びます。Mermaid の図、数式、コード、表がきちんと表示され、アウトラインと選んだテーマも使えます。
 3. **Mac に戻って：**編集を続けたり、PDF に書き出したりできます。
 
 同じ Apple Account なら、1 回のトライアルと 1 回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。
 
-iPhone と iPad の MarsDawn は読むためのものです。編集、PDF の書き出し、同期はできません。ファイルは、いつも使っているクラウドを通じて届きます。MarsDawn 自体には同期機能がありません。
+iPhone と iPad の MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。
 
 ## ファイル、タブ、クイックルック
 
@@ -13976,6 +14024,18 @@ MarsDawn ist eine native macOS-App zum Lesen und Prüfen von Markdown, mit getei
 
 Die Seite zeigt ein bedienbares MarsDawn-Fenster mit einem Ausschnitt aus der Einführung der App. Im Palettenmenü wählst du ein Erscheinungsbild (System, Hell, Dunkel) und für Hell und Dunkel je eines von vier Vorschau-Themen (Morgenrot, Klassisch, Modern, Lebhaft), in der Symbolleiste eines von drei Layouts (Quelltext, Geteilt, Vorschau).
 
+## Lies, was dein Agent geschrieben hat, auch fern vom Schreibtisch
+
+1. Lass deinen Agent auf dem Mac seine Dateien in einem Ordner in iCloud Drive speichern.
+2. Öffne MarsDawn auf iPhone oder iPad und wähle die Datei aus.
+3. Zum Bearbeiten oder für den PDF-Export gehst du zurück an den Mac.
+
+Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet nur Markdown- und reine Textdateien.
+
+[![Laden im App Store](/assets/badges/app-store-de.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+
+[Funktionen](/de/features/#iphone-ipad)
+
 ## Lies, was dein Agent geschrieben hat.
 
 1. **Der Agent schreibt.** Dein Coding-Agent oder Schreibassistent entwirft das Markdown: ein README, eine Spezifikation, ein paar Notizen.
@@ -14072,7 +14132,7 @@ Nein. MarsDawn ist ein kostenloser Download mit 14 Tagen Test aller Funktionen. 
 
 ### Läuft MarsDawn auf dem iPhone oder iPad?
 
-Ja, zum Lesen. Auf iPhone und iPad öffnet MarsDawn Markdown-Dateien und stellt Mermaid-Diagramme, Formeln, Code und Tabellen dar, mit Gliederung und Themen. Bearbeiten, PDF-Export und Synchronisierung gibt es dort nicht. Es braucht iOS 26 oder iPadOS 26 oder neuer. Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.
+Ja, zum Lesen. Auf iPhone und iPad öffnet MarsDawn Markdown- und reine Textdateien und stellt Mermaid-Diagramme, Formeln, Code und Tabellen dar, mit Gliederung und Themen. Bearbeiten und PDF-Export gibt es dort nicht. Es braucht iOS 26 oder iPadOS 26 oder neuer. Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.
 
 Mehr dazu: [Roadmap](/de/roadmap/)
 
@@ -14287,13 +14347,13 @@ Auf diesem Bildschirmfoto:
 
 Dein Agent arbeitet auf dem Mac. Seine Pläne und Berichte kannst du auch auf dem iPhone oder iPad lesen.
 
-1. **Auf dem Mac:** Speichere die Pläne und Berichte des Agenten in einem Ordner, den deine Cloud synchronisiert, etwa iCloud Drive.
+1. **Auf dem Mac:** Speichere die Pläne und Berichte des Agenten in einem Ordner in iCloud Drive.
 2. **Auf iPhone oder iPad:** Tippe in MarsDawn auf „Öffnen“ und wähle dieselbe Datei. Mermaid-Diagramme, Formeln, Code und Tabellen werden dargestellt, mit Gliederung und deinem Thema.
 3. **Zurück am Mac:** Bearbeite weiter oder exportiere ein PDF.
 
 Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.
 
-Auf iPhone und iPad ist MarsDawn zum Lesen da: Es bearbeitet nicht, exportiert keine PDFs und synchronisiert nicht. Deine Dateien kommen über die Cloud aufs iPhone oder iPad, die du ohnehin nutzt; MarsDawn hat keine eigene Synchronisierung.
+Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.
 
 ## Dateien, Tabs und Übersicht
 
@@ -17413,6 +17473,18 @@ MarsDawn est une app macOS native pour lire et relire du Markdown, avec aperçu 
 
 La page montre une fenêtre MarsDawn interactive qui affiche un extrait du guide de bienvenue de l’app. Dans son menu de palette, vous choisissez une apparence (Système, Clair, Sombre) et, pour le clair comme pour le sombre, l’un des quatre thèmes d’aperçu (Aube, Classique, Moderne, Vif). Sa barre d’outils propose trois dispositions (Source, Partagé, Aperçu).
 
+## Lisez ce qu’a écrit votre agent, même loin de votre bureau
+
+1. Sur votre Mac, demandez à votre agent d’enregistrer ses fichiers dans un dossier d’iCloud Drive.
+2. Sur votre iPhone ou iPad, ouvrez MarsDawn et choisissez le fichier.
+3. Pour le modifier ou l’exporter en PDF, revenez sur votre Mac.
+
+Sur iPhone et iPad, MarsDawn sert uniquement à lire et n’ouvre que les fichiers Markdown et texte brut.
+
+[![Télécharger dans l'App Store](/assets/badges/app-store-fr.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+
+[Fonctionnalités](/fr/features/#iphone-ipad)
+
 ## Lisez ce que votre agent a écrit.
 
 1. **L’agent écrit.** Votre agent de code ou votre assistant d’écriture rédige le Markdown : un README, une spécification, des notes.
@@ -17509,7 +17581,7 @@ Non. MarsDawn se télécharge gratuitement, avec 14 jours d’essai de toutes le
 
 ### MarsDawn fonctionne-t-il sur iPhone ou iPad ?
 
-Oui, pour la lecture. Sur iPhone et iPad, MarsDawn ouvre les fichiers Markdown et met en forme les diagrammes Mermaid, les formules, le code et les tableaux, avec un plan et des thèmes. Il ne permet ni de modifier, ni d’exporter en PDF, ni de synchroniser. Il demande iOS 26 ou iPadOS 26 ou une version ultérieure. Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.
+Oui, pour la lecture. Sur iPhone et iPad, MarsDawn ouvre les fichiers Markdown et texte brut et met en forme les diagrammes Mermaid, les formules, le code et les tableaux, avec un plan et des thèmes. Il ne permet ni de modifier ni d’exporter en PDF. Il demande iOS 26 ou iPadOS 26 ou une version ultérieure. Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.
 
 En savoir plus : [Feuille de route](/fr/roadmap/)
 
@@ -17724,13 +17796,13 @@ Sur cette capture d’écran :
 
 Votre agent travaille sur le Mac. Ses plans et ses rapports peuvent vous suivre sur iPhone ou iPad.
 
-1. **Sur le Mac :** enregistrez les plans et les rapports de l’agent dans un dossier synchronisé par votre service cloud, comme iCloud Drive.
+1. **Sur le Mac :** enregistrez les plans et les rapports de l’agent dans un dossier d’iCloud Drive.
 2. **Sur iPhone ou iPad :** dans MarsDawn, touchez « Ouvrir » et choisissez le même fichier. Les diagrammes Mermaid, les formules, le code et les tableaux s’affichent mis en forme, avec le plan et votre thème.
 3. **De retour sur le Mac :** continuez à modifier, ou exportez un PDF.
 
 Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.
 
-Sur iPhone et iPad, MarsDawn sert à lire : il ne modifie pas, n’exporte pas de PDF et ne synchronise pas. Vos fichiers arrivent sur votre appareil par le cloud que vous utilisez déjà ; MarsDawn n’a pas de synchronisation à lui.
+Sur iPhone et iPad, MarsDawn sert uniquement à lire : il ouvre les fichiers Markdown et texte brut, sans modification ni export PDF. Il lit les fichiers que vous gardez dans iCloud Drive ; MarsDawn n’a pas de cloud à lui.
 
 ## Fichiers, onglets et Coup d’œil
 
@@ -20850,6 +20922,18 @@ MarsDawn es una app nativa de macOS para leer y revisar Markdown, con vista prev
 
 La página muestra una ventana de MarsDawn interactiva que presenta un fragmento de la guía de bienvenida de la app. En su menú de paleta eliges un aspecto (Sistema, Claro, Oscuro) y, para claro y para oscuro, uno de cuatro temas de vista previa (Amanecer, Clásico, Moderno, Vívido). Su barra de herramientas ofrece tres disposiciones (Código, Dividido, Vista previa).
 
+## Lee lo que escribió tu agente, aunque no estés en tu escritorio
+
+1. En tu Mac, haz que tu agente guarde sus archivos en una carpeta de iCloud Drive.
+2. En tu iPhone o iPad, abre MarsDawn y elige el archivo.
+3. Para editarlo o exportarlo a PDF, vuelve a tu Mac.
+
+En iPhone y iPad, MarsDawn solo sirve para leer y solo abre archivos Markdown y de texto plano.
+
+[![Descargar en el App Store](/assets/badges/app-store-es.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+
+[Funciones](/es/features/#iphone-ipad)
+
 ## Lee lo que escribió tu agente.
 
 1. **El agente escribe.** Tu agente de programación o tu asistente de escritura redacta el Markdown: un README, una especificación, unas notas.
@@ -20946,7 +21030,7 @@ No. MarsDawn se descarga gratis y incluye 14 días de prueba de todas las funcio
 
 ### ¿MarsDawn funciona en iPhone o iPad?
 
-Sí, para leer. En iPhone y iPad, MarsDawn abre archivos Markdown y muestra con formato diagramas de Mermaid, fórmulas, código y tablas, con esquema y temas. No edita, no exporta PDF ni sincroniza. Necesita iOS 26 o iPadOS 26 o posterior. Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.
+Sí, para leer. En iPhone y iPad, MarsDawn abre archivos Markdown y de texto plano y muestra con formato diagramas de Mermaid, fórmulas, código y tablas, con esquema y temas. No edita ni exporta PDF. Necesita iOS 26 o iPadOS 26 o posterior. Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.
 
 Más información: [Hoja de ruta](/es/roadmap/)
 
@@ -21161,13 +21245,13 @@ En esta captura de pantalla:
 
 Tu agente trabaja en el Mac. Sus planes e informes pueden ir contigo en el iPhone o el iPad.
 
-1. **En el Mac:** guarda los planes e informes del agente en una carpeta que sincronice tu servicio en la nube, como iCloud Drive.
+1. **En el Mac:** guarda los planes e informes del agente en una carpeta de iCloud Drive.
 2. **En el iPhone o el iPad:** en MarsDawn, toca «Abrir» y elige el mismo archivo. Los diagramas Mermaid, las fórmulas, el código y las tablas se muestran con formato, con el esquema y tu tema.
 3. **De vuelta en el Mac:** sigue editando o exporta un PDF.
 
 Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.
 
-En el iPhone y el iPad, MarsDawn es para leer: no edita, no exporta PDF y no sincroniza. Tus archivos llegan a tu dispositivo a través de la nube que ya usas; MarsDawn no tiene sincronización propia.
+En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.
 
 ## Archivos, pestañas y Vista rápida
 
@@ -24287,6 +24371,18 @@ MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 �
 
 이 페이지에는 앱의 시작 가이드 일부를 보여 주는, 직접 조작할 수 있는 MarsDawn 창이 있습니다. 팔레트 메뉴에서 화면 모드(시스템, 라이트, 다크)를 고르고, 라이트와 다크에 각각 네 가지 미리보기 테마(새벽, 클래식, 모던, 비비드) 중 하나를 지정할 수 있으며, 도구 막대에서는 세 가지 레이아웃(소스, 분할, 미리보기) 중 하나를 고를 수 있습니다.
 
+## 자리를 떠나도 에이전트가 쓴 글을 읽을 수 있습니다
+
+1. Mac에서 에이전트가 iCloud Drive의 폴더에 파일을 저장하게 합니다.
+2. iPhone이나 iPad에서 MarsDawn을 열고 그 파일을 선택합니다.
+3. 편집하거나 PDF로 내보내려면 Mac으로 돌아갑니다.
+
+iPhone과 iPad에서는 읽기 전용이며, Markdown과 일반 텍스트 파일만 열 수 있습니다.
+
+[![App Store에서 다운로드하기](/assets/badges/app-store-ko.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+
+[기능 한눈에 보기](/ko/features/#iphone-ipad)
+
 ## 에이전트가 쓴 글을 읽으세요.
 
 1. **에이전트가 씁니다.** 코딩 에이전트나 글쓰기 도우미가 README, 명세서, 메모 같은 Markdown 초안을 작성합니다.
@@ -24383,7 +24479,7 @@ MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 Mac 네�
 
 ### MarsDawn은 iPhone이나 iPad에서 쓸 수 있나요?
 
-네, 읽기용으로 쓸 수 있습니다. iPhone과 iPad의 MarsDawn은 Markdown 파일을 열어 Mermaid 다이어그램, 수식, 코드, 표를 렌더링하며 개요와 테마도 제공합니다. 편집, PDF 내보내기, 동기화는 할 수 없습니다. iOS 26 또는 iPadOS 26 이상이 필요합니다. 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.
+네, 읽기용으로 쓸 수 있습니다. iPhone과 iPad의 MarsDawn은 Markdown과 일반 텍스트 파일을 열어 Mermaid 다이어그램, 수식, 코드, 표를 렌더링하며 개요와 테마도 제공합니다. 편집과 PDF 내보내기는 할 수 없습니다. iOS 26 또는 iPadOS 26 이상이 필요합니다. 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.
 
 자세히: [로드맵](/ko/roadmap/)
 
@@ -24598,13 +24694,13 @@ KaTeX 구문으로 쓴 수식은 미리보기와 훑어보기에 그려지고, �
 
 에이전트는 Mac에서 일합니다. 에이전트가 쓴 계획과 보고서는 iPhone이나 iPad에서도 읽을 수 있습니다.
 
-1. **Mac에서:** 에이전트의 계획과 보고서를 클라우드로 동기화되는 폴더(예: iCloud Drive)에 저장합니다.
+1. **Mac에서:** 에이전트의 계획과 보고서를 iCloud Drive의 폴더에 저장합니다.
 2. **iPhone이나 iPad에서:** MarsDawn에서 '열기'를 탭하고 같은 파일을 고릅니다. Mermaid 다이어그램, 수식, 코드, 표가 제대로 표시되고, 개요와 내가 고른 테마도 쓸 수 있습니다.
 3. **다시 Mac에서:** 계속 편집하거나 PDF로 내보냅니다.
 
 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.
 
-iPhone과 iPad의 MarsDawn은 읽기 전용입니다. 편집, PDF 내보내기, 동기화는 할 수 없습니다. 파일은 이미 쓰고 있는 클라우드를 통해 옮겨지며, MarsDawn 자체에는 동기화 기능이 없습니다.
+iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.
 
 ## 파일, 탭, 훑어보기
 

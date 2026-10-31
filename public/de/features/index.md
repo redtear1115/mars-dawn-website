@@ -142,13 +142,13 @@ Auf diesem Bildschirmfoto:
 
 Dein Agent arbeitet auf dem Mac. Seine Pläne und Berichte kannst du auch auf dem iPhone oder iPad lesen.
 
-1. **Auf dem Mac:** Speichere die Pläne und Berichte des Agenten in einem Ordner, den deine Cloud synchronisiert, etwa iCloud Drive.
+1. **Auf dem Mac:** Speichere die Pläne und Berichte des Agenten in einem Ordner in iCloud Drive.
 2. **Auf iPhone oder iPad:** Tippe in MarsDawn auf „Öffnen“ und wähle dieselbe Datei. Mermaid-Diagramme, Formeln, Code und Tabellen werden dargestellt, mit Gliederung und deinem Thema.
 3. **Zurück am Mac:** Bearbeite weiter oder exportiere ein PDF.
 
 Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.
 
-Auf iPhone und iPad ist MarsDawn zum Lesen da: Es bearbeitet nicht, exportiert keine PDFs und synchronisiert nicht. Deine Dateien kommen über die Cloud aufs iPhone oder iPad, die du ohnehin nutzt; MarsDawn hat keine eigene Synchronisierung.
+Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.
 
 ## Dateien, Tabs und Übersicht
 

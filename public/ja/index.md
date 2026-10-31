@@ -8,6 +8,18 @@ MarsDawn は、Markdown を読んで確かめるための Mac ネイティブア
 
 ページには操作できる MarsDawn のウインドウがあり、アプリ内蔵のようこそガイドの一部を表示しています。パレットのメニューで外観モード（システム、ライト、ダーク）を選び、ライトとダークそれぞれに 4 つのプレビューテーマ（夜明け、クラシック、モダン、ビビッド）から 1 つを選べます。ツールバーでは 3 つのレイアウト（ソース、分割、プレビュー）から選べます。
 
+## 席を離れても、エージェントが書いたものを読める
+
+1. Mac で、エージェントにファイルを iCloud Drive のフォルダへ保存させます。
+2. iPhone や iPad で MarsDawn を開き、そのファイルを選びます。
+3. 編集や PDF の書き出しは、Mac に戻って行います。
+
+iPhone と iPad では閲覧専用で、開けるのは Markdown とプレーンテキストのファイルだけです。
+
+[![App Storeからダウンロード](/assets/badges/app-store-ja.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+
+[機能一覧](/ja/features/#iphone-ipad)
+
 ## エージェントが書いた Markdown を読む。
 
 1. **エージェントが書く。**あなたのコーディングエージェントやライティングアシスタントが Markdown の下書きを作ります。README、仕様書、メモなど。
@@ -104,7 +116,7 @@ MarsDawn は、エージェントが書いた Markdown を読んで確かめる�
 
 ### MarsDawn は iPhone や iPad で使えますか？
 
-はい、閲覧用です。iPhone と iPad の MarsDawn は Markdown ファイルを開き、Mermaid 図、数式、コード、表を整えて表示します。アウトラインとテーマも使えます。編集、PDF の書き出し、同期はできません。iOS 26 または iPadOS 26 以降が必要です。同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。
+はい、閲覧用です。iPhone と iPad の MarsDawn は Markdown とプレーンテキストのファイルを開き、Mermaid 図、数式、コード、表を整えて表示します。アウトラインとテーマも使えます。編集と PDF の書き出しはできません。iOS 26 または iPadOS 26 以降が必要です。同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。
 
 詳しくは：[ロードマップ](/ja/roadmap/)
 

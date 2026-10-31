@@ -142,13 +142,13 @@ In this screenshot:
 
 Your agent works on the Mac. Its plans and reports can come with you on your iPhone or iPad.
 
-1. **On the Mac:** save the agent's plans and reports in a folder your cloud syncs, such as iCloud Drive.
+1. **On the Mac:** save the agent's plans and reports in a folder in iCloud Drive.
 2. **On iPhone or iPad:** in MarsDawn, tap Open and pick the same file. Mermaid diagrams, math, code and tables are rendered, with an outline and your theme.
 3. **Back on the Mac:** keep editing, or export a PDF.
 
 With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.
 
-On iPhone and iPad, MarsDawn is for reading: it doesn't edit, export PDFs or sync. Your files get to your phone through the cloud you already use; MarsDawn has no sync of its own.
+On iPhone and iPad, MarsDawn is for reading only: it opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.
 
 ## Files, tabs and Quick Look
 

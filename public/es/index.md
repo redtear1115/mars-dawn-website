@@ -8,6 +8,18 @@ MarsDawn es una app nativa de macOS para leer y revisar Markdown, con vista prev
 
 La página muestra una ventana de MarsDawn interactiva que presenta un fragmento de la guía de bienvenida de la app. En su menú de paleta eliges un aspecto (Sistema, Claro, Oscuro) y, para claro y para oscuro, uno de cuatro temas de vista previa (Amanecer, Clásico, Moderno, Vívido). Su barra de herramientas ofrece tres disposiciones (Código, Dividido, Vista previa).
 
+## Lee lo que escribió tu agente, aunque no estés en tu escritorio
+
+1. En tu Mac, haz que tu agente guarde sus archivos en una carpeta de iCloud Drive.
+2. En tu iPhone o iPad, abre MarsDawn y elige el archivo.
+3. Para editarlo o exportarlo a PDF, vuelve a tu Mac.
+
+En iPhone y iPad, MarsDawn solo sirve para leer y solo abre archivos Markdown y de texto plano.
+
+[![Descargar en el App Store](/assets/badges/app-store-es.svg)](https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&ct=web-home-iphone&mt=8)
+
+[Funciones](/es/features/#iphone-ipad)
+
 ## Lee lo que escribió tu agente.
 
 1. **El agente escribe.** Tu agente de programación o tu asistente de escritura redacta el Markdown: un README, una especificación, unas notas.
@@ -104,7 +116,7 @@ No. MarsDawn se descarga gratis y incluye 14 días de prueba de todas las funcio
 
 ### ¿MarsDawn funciona en iPhone o iPad?
 
-Sí, para leer. En iPhone y iPad, MarsDawn abre archivos Markdown y muestra con formato diagramas de Mermaid, fórmulas, código y tablas, con esquema y temas. No edita, no exporta PDF ni sincroniza. Necesita iOS 26 o iPadOS 26 o posterior. Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.
+Sí, para leer. En iPhone y iPad, MarsDawn abre archivos Markdown y de texto plano y muestra con formato diagramas de Mermaid, fórmulas, código y tablas, con esquema y temas. No edita ni exporta PDF. Necesita iOS 26 o iPadOS 26 o posterior. Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.
 
 Más información: [Hoja de ruta](/es/roadmap/)
 

@@ -142,13 +142,13 @@ App 介面有英文、繁體中文、簡體中文、日文、德文、法文、�
 
 agent 在 Mac 上工作，它寫的計畫和報告，你在 iPhone 或 iPad 上也能讀。
 
-1. **在 Mac 上：**把 agent 的計畫和報告存在會同步的雲端資料夾，例如 iCloud Drive。
+1. **在 Mac 上：**把 agent 的計畫和報告存在 iCloud 雲碟裡的資料夾。
 2. **在 iPhone 或 iPad 上：**打開 MarsDawn，點「開啟」，選同一個檔案。Mermaid 圖表、數學式、程式碼和表格都會排好顯示，也有大綱和你選的主題。
 3. **回到 Mac：**繼續編輯，或輸出 PDF。
 
 用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。
 
-在 iPhone 和 iPad 上，MarsDawn 只能閱讀：不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳到手機，MarsDawn 本身沒有同步功能。
+在 iPhone 和 iPad 上，MarsDawn 只能閱讀：只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。
 
 ## 檔案、分頁和快速查看
 
