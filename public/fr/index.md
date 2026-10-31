@@ -18,7 +18,7 @@ Sur iPhone et iPad, MarsDawn sert uniquement à lire et n’ouvre que les fichie
 
 [![Télécharger dans l'App Store](/assets/badges/app-store-fr.svg)](https://apps.apple.com/app/id6812925073)
 
-[Fonctionnalités](/fr/features/#iphone-ipad)
+[En savoir plus sur MarsDawn pour iPhone et iPad](/fr/features/#iphone-ipad)
 
 ## Lisez ce que votre agent a écrit.
 

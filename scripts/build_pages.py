@@ -5302,6 +5302,18 @@ HOME_IPHONE_STEPS = {'en': {'h2': 'Read what your agent wrote, away from your de
         'limits': 'En iPhone y iPad, MarsDawn solo sirve para leer y solo abre archivos Markdown y de texto '
                   'plano.'}}
 
+# Link to the features section; copy approved by Ray on PR #342 (Aria's proposal).
+HOME_IPHONE_STEPS_MORE = {
+    'en': 'More on MarsDawn for iPhone and iPad',
+    'zh-hant': '進一步了解 iPhone 和 iPad 版',
+    'zh-hans': '进一步了解 iPhone 和 iPad 版',
+    'ja': 'iPhone と iPad 版について詳しく',
+    'ko': 'iPhone 및 iPad 버전 자세히 보기',
+    'de': 'Mehr zu MarsDawn auf iPhone und iPad',
+    'fr': 'En savoir plus sur MarsDawn pour iPhone et iPad',
+    'es': 'Más sobre MarsDawn en iPhone y iPad',
+}
+
 
 def home_steps_html(locale: str) -> str:
     """Reading away from the Mac, directly after the hero (#331)."""
@@ -5312,7 +5324,7 @@ def home_steps_html(locale: str) -> str:
             f'<ol>\n{steps}\n</ol>\n'
             f'<p class="iphone-steps-limit">{xml_escape(copy["limits"])}</p>\n'
             f'<p>{store_badge_html(locale, HOME_IPHONE_CAMPAIGN)}</p>\n'
-            f'<p><a href="{page_path(locale, "features")}#iphone-ipad">{xml_escape(UI[locale]["features"])}</a></p>\n'
+            f'<p><a href="{page_path(locale, "features")}#iphone-ipad">{xml_escape(HOME_IPHONE_STEPS_MORE[locale])}</a></p>\n'
             '</section>')
 
 

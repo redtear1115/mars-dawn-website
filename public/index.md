@@ -18,7 +18,7 @@ On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain te
 
 [![Download on the App Store](/assets/badges/app-store-en.svg)](https://apps.apple.com/app/id6812925073)
 
-[Features](/features/#iphone-ipad)
+[More on MarsDawn for iPhone and iPad](/features/#iphone-ipad)
 
 ## Read what your agent wrote.
 

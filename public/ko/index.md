@@ -18,7 +18,7 @@ iPhone과 iPad에서는 읽기 전용이며, Markdown과 일반 텍스트 파일
 
 [![App Store에서 다운로드하기](/assets/badges/app-store-ko.svg)](https://apps.apple.com/app/id6812925073)
 
-[기능 한눈에 보기](/ko/features/#iphone-ipad)
+[iPhone 및 iPad 버전 자세히 보기](/ko/features/#iphone-ipad)
 
 ## 에이전트가 쓴 글을 읽으세요.
 

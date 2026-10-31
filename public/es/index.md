@@ -18,7 +18,7 @@ En iPhone y iPad, MarsDawn solo sirve para leer y solo abre archivos Markdown y 
 
 [![Descargar en el App Store](/assets/badges/app-store-es.svg)](https://apps.apple.com/app/id6812925073)
 
-[Funciones](/es/features/#iphone-ipad)
+[Más sobre MarsDawn en iPhone y iPad](/es/features/#iphone-ipad)
 
 ## Lee lo que escribió tu agente.
 

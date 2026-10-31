@@ -18,7 +18,7 @@ iPhone と iPad では閲覧専用で、開けるのは Markdown とプレーン
 
 [![App Storeからダウンロード](/assets/badges/app-store-ja.svg)](https://apps.apple.com/app/id6812925073)
 
-[機能一覧](/ja/features/#iphone-ipad)
+[iPhone と iPad 版について詳しく](/ja/features/#iphone-ipad)
 
 ## エージェントが書いた Markdown を読む。
 

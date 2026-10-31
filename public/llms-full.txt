@@ -24,7 +24,7 @@ On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain te
 
 [![Download on the App Store](/assets/badges/app-store-en.svg)](https://apps.apple.com/app/id6812925073)
 
-[Features](/features/#iphone-ipad)
+[More on MarsDawn for iPhone and iPad](/features/#iphone-ipad)
 
 ## Read what your agent wrote.
 
@@ -3501,7 +3501,7 @@ MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、M
 
 [![在 App Store 下載](/assets/badges/app-store-zh-hant.svg)](https://apps.apple.com/app/id6812925073)
 
-[功能一覽](/zh-hant/features/#iphone-ipad)
+[進一步了解 iPhone 和 iPad 版](/zh-hant/features/#iphone-ipad)
 
 ## 讀 agent 寫的 Markdown。
 
@@ -7017,7 +7017,7 @@ MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、M
 
 [![在 App Store 下载](/assets/badges/app-store-zh-hans.svg)](https://apps.apple.com/app/id6812925073)
 
-[功能一览](/zh-hans/features/#iphone-ipad)
+[进一步了解 iPhone 和 iPad 版](/zh-hans/features/#iphone-ipad)
 
 ## 读代理写的 Markdown。
 
@@ -10526,7 +10526,7 @@ iPhone と iPad では閲覧専用で、開けるのは Markdown とプレーン
 
 [![App Storeからダウンロード](/assets/badges/app-store-ja.svg)](https://apps.apple.com/app/id6812925073)
 
-[機能一覧](/ja/features/#iphone-ipad)
+[iPhone と iPad 版について詳しく](/ja/features/#iphone-ipad)
 
 ## エージェントが書いた Markdown を読む。
 
@@ -14034,7 +14034,7 @@ Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet nur Markdown- und 
 
 [![Laden im App Store](/assets/badges/app-store-de.svg)](https://apps.apple.com/app/id6812925073)
 
-[Funktionen](/de/features/#iphone-ipad)
+[Mehr zu MarsDawn auf iPhone und iPad](/de/features/#iphone-ipad)
 
 ## Lies, was dein Agent geschrieben hat.
 
@@ -17483,7 +17483,7 @@ Sur iPhone et iPad, MarsDawn sert uniquement à lire et n’ouvre que les fichie
 
 [![Télécharger dans l'App Store](/assets/badges/app-store-fr.svg)](https://apps.apple.com/app/id6812925073)
 
-[Fonctionnalités](/fr/features/#iphone-ipad)
+[En savoir plus sur MarsDawn pour iPhone et iPad](/fr/features/#iphone-ipad)
 
 ## Lisez ce que votre agent a écrit.
 
@@ -20932,7 +20932,7 @@ En iPhone y iPad, MarsDawn solo sirve para leer y solo abre archivos Markdown y 
 
 [![Descargar en el App Store](/assets/badges/app-store-es.svg)](https://apps.apple.com/app/id6812925073)
 
-[Funciones](/es/features/#iphone-ipad)
+[Más sobre MarsDawn en iPhone y iPad](/es/features/#iphone-ipad)
 
 ## Lee lo que escribió tu agente.
 
@@ -24381,7 +24381,7 @@ iPhone과 iPad에서는 읽기 전용이며, Markdown과 일반 텍스트 파일
 
 [![App Store에서 다운로드하기](/assets/badges/app-store-ko.svg)](https://apps.apple.com/app/id6812925073)
 
-[기능 한눈에 보기](/ko/features/#iphone-ipad)
+[iPhone 및 iPad 버전 자세히 보기](/ko/features/#iphone-ipad)
 
 ## 에이전트가 쓴 글을 읽으세요.
 
