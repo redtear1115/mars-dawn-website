@@ -947,16 +947,19 @@ html { overflow-x: hidden; }
   container-type: size;
 }
 /* #339: the phone's size is worked out from the box alone, not from the loaded image: as wide as
-   the box or as tall as it, whichever comes first, at 840:1826. Before, width and height were auto,
-   so the img was 0 x 0 until it loaded and the page shifted. Both sides are given (no height: 100%
-   with aspect-ratio, which stretched the phone at 375 px wide when the width hit its max). The
-   max-width and max-height never bind here; they keep the old fit where container units are not
-   supported. */
+   the box or as tall as it, whichever comes first, at 840:1826. With auto sizes alone the img was
+   0 x 0 until it loaded and the page shifted. Both sides are given (no height: 100% with
+   aspect-ratio, which stretched the phone at 375 px wide when the width hit its max), and with
+   them max-width and max-height never bind. The width: auto and height: auto before them are the
+   fallback: a browser without container units drops the cq lines and sizes the phone as before
+   #339, the original fit, losing only the placeholder before the image loads. */
 .hero-phone img {
   display: block;
   flex: none;
   max-width: 100%;
   max-height: 100%;
+  width: auto;
+  height: auto;
   width: min(100cqw, 100cqh * 840 / 1826);
   height: min(100cqh, 100cqw * 1826 / 840);
   border-radius: 9% / 4.2%;
