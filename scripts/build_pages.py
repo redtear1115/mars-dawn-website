@@ -197,7 +197,10 @@ MCP_LICENSE = "Apache-2.0"
 # container, not in this repo's code, so only the container id appears here.
 GTM_CONTAINER_ID = "GTM-KCC7FDWZ"
 # The loader runs only on the production site: a local preview (localhost, 127.0.0.1, any other
-# host) loads no GTM, so it sends no sessions to GA (#310).
+# host) loads no GTM, so it sends no sessions to GA (#310). It also stays off in automated
+# browsers (#311): Playwright's Firefox and WebKit report navigator.webdriver true, and their
+# runs were counted as new users in GA. Playwright MCP's Chromium reports false, but it blocks
+# the GA domains itself; blocking in the test tools (layer 2) is a separate matter.
 GTM_HOSTNAME = "marsdawn.southern-light.dev"
 CONSENT_STORAGE_KEY = "md-consent"
 
@@ -221,7 +224,7 @@ try {{
 }} catch (e) {{}}"""
 
 GTM_HEAD_SCRIPT = f"""(function(w,d,s,l,i){{
-  if (w.location.hostname !== '{GTM_HOSTNAME}') return;
+  if (w.location.hostname !== '{GTM_HOSTNAME}' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({{'gtm.start': new Date().getTime(), event: 'gtm.js'}});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
