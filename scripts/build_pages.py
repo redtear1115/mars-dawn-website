@@ -196,6 +196,9 @@ MCP_LICENSE = "Apache-2.0"
 # in localStorage, never a cookie of ours. The GA4 tag itself lives inside the GTM
 # container, not in this repo's code, so only the container id appears here.
 GTM_CONTAINER_ID = "GTM-KCC7FDWZ"
+# The loader runs only on the production site: a local preview (localhost, 127.0.0.1, any other
+# host) loads no GTM, so it sends no sessions to GA (#310).
+GTM_HOSTNAME = "marsdawn.southern-light.dev"
 CONSENT_STORAGE_KEY = "md-consent"
 
 # The Consent Mode default + the standard GTM loader, exactly as they render in every page's
@@ -218,6 +221,7 @@ try {{
 }} catch (e) {{}}"""
 
 GTM_HEAD_SCRIPT = f"""(function(w,d,s,l,i){{
+  if (w.location.hostname !== '{GTM_HOSTNAME}') return;
   w[l] = w[l] || [];
   w[l].push({{'gtm.start': new Date().getTime(), event: 'gtm.js'}});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
