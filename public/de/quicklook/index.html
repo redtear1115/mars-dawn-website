@@ -18,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -133,6 +134,7 @@ try {
   <li>Mermaid-Diagramme, KaTeX-Formeln und hervorgehobene Codeblöcke.</li>
   <li>Das Vorschau-Thema, das du in MarsDawn gewählt hast, hell oder dunkel.</li>
   <li>Bilder aus dem Web bleiben blockiert, und Bilder neben der Datei können als Platzhalter erscheinen.</li>
+  <li>JSON- und YAML-Dateien als Baum, wie in der Baumvorschau von MarsDawn.</li>
 </ul>
 <section class="howto">
 <h2 id="how-to-preview-a-markdown-file-with-quick-look">So siehst du eine Markdown-Datei mit der Übersicht an</h2>

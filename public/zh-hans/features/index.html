@@ -18,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -27,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>功能一览：在 Mac 上检查代理的 Markdown · MarsDawn</title>
-<meta name="description" content="Mac 原生的 Markdown 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可以拿去开会、用笔批注，或当纸质存档。">
+<meta name="description" content="Mac 原生的 Markdown、JSON、YAML 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可拿去开会或存档。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -44,7 +45,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/features/">
 <link rel="alternate" type="text/markdown" href="/zh-hans/features/index.md">
 <meta property="og:title" content="功能一览：在 Mac 上检查代理的 Markdown · MarsDawn">
-<meta property="og:description" content="Mac 原生的 Markdown 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可以拿去开会、用笔批注，或当纸质存档。">
+<meta property="og:description" content="Mac 原生的 Markdown、JSON、YAML 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可拿去开会或存档。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/features/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -212,22 +213,22 @@ try {
 <h2 id="iphone-ipad">在 Mac 上写，在路上读</h2>
 <p>代理在 Mac 上工作，它写的计划和报告，你在 iPhone 或 iPad 上也能读。</p>
 <ol class="devsteps">
-  <li><strong>在 Mac 上：</strong>把代理的计划和报告存在会同步的云端文件夹，例如 iCloud 云盘。</li>
+  <li><strong>在 Mac 上：</strong>把代理的计划和报告存在 iCloud 云盘里的文件夹。</li>
   <li><strong>在 iPhone 或 iPad 上：</strong>打开 MarsDawn，点“打开”，选同一个文件。Mermaid 图表、数学公式、代码和表格都会排好显示，也有大纲和你选的主题。</li>
   <li><strong>回到 Mac：</strong>继续编辑，或导出 PDF。</li>
 </ol>
 <p>用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。</p>
 <a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mac-iphone&amp;mt=8"><img src="/assets/badges/app-store-zh-hans.svg" width="109" height="40" alt="在 App Store 下载"></a>
-<p class="devnote">在 iPhone 和 iPad 上，MarsDawn 只能阅读：不能编辑、不能导出 PDF，也不会同步。文件通过你自己用的云服务传到手机，MarsDawn 本身没有同步功能。</p>
+<p class="devnote">在 iPhone 和 iPad 上，MarsDawn 只能阅读：只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。</p>
 <h2 id="files-tabs-and-quick-look">文件、标签页和快速查看</h2>
 <h3>窗口和标签页</h3>
 <p>每份文稿默认在自己的窗口打开。用“窗口 ▸ 合并所有窗口”，可以把开着的窗口收成同一个窗口里的标签页。输入时会自动存储。</p>
 <p class="more"><a href="/zh-hans/native/">为 Mac 而做</a></p>
 <h3>在访达用快速查看</h3>
-<p>在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。快速查看会用你在 MarsDawn 选的主题，也跟着 MarsDawn 的外观设置。</p>
+<p>在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。JSON 和 YAML 文件则会显示成树状视图。快速查看会用你在 MarsDawn 选的主题，也跟着 MarsDawn 的外观设置。</p>
 <p class="more"><a href="/zh-hans/native/">为 Mac 而做</a> &#183; <a href="/zh-hans/quicklook/">Markdown 快速查看</a></p>
 <h3>其他文件</h3>
-<p>MarsDawn 也能打开纯文本文件（<code>.txt</code>、<code>.log</code>、代码文件）和 PDF。UTF-8 纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。</p>
+<p>MarsDawn 也能打开纯文本文件（<code>.txt</code>、<code>.log</code>、代码文件）和 PDF。UTF-8 纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。在 Mac 上，JSON 和 YAML 文件可以作为文稿打开并编辑，旁边的树状预览会随输入实时更新。在“访达”中用“快速查看”也会显示同样的树状视图。iPhone 和 iPad 不能打开 JSON 或 YAML。</p>
 <h3>你的文件留在你手上</h3>
 <p>不需要账户，没有同步，也没有云端。文稿留在你存储的位置，MarsDawn 不收集任何关于你的数据。</p>
 <p class="more"><a href="/zh-hans/yours/">你写的内容留在你的 Mac 上</a></p>
@@ -247,6 +248,14 @@ try {
 <h2 id="siri-and-shortcuts">Siri 和快捷指令</h2>
 <p>在“快捷指令”App 中搜索 MarsDawn，可以找到三个操作：“新建 Markdown 文稿”（可选模板）、“添加笔记到收件箱”和“打开最近使用的文稿”。笔记会添加到你在“MarsDawn ▸ 设置… ▸ 笔记文件夹”选的文件夹中的 <code>Inbox.md</code>。</p>
 <p class="more"><a href="/zh-hans/native/">为 Mac 而做</a></p>
+<section class="film-mac" aria-labelledby="film-mac-h">
+<h2 id="film-mac-h">观看影片</h2>
+<video controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/marsdawn-film-en-poster.jpg" aria-label="MarsDawn 影片，54 秒">
+<source src="/assets/film/marsdawn-film-en-1080p30.mp4" type="video/mp4">
+<track kind="subtitles" src="/assets/film/marsdawn-film-zh-hans.vtt" srclang="zh-Hans" label="简体中文" default>
+<p>你的浏览器无法播放这支影片。</p>
+</video>
+</section>
 <section class="film-themes" aria-labelledby="film-themes-h">
 <h2 id="film-themes-h">页面打印出来之后</h2>
 <p>大家围着打印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。</p>

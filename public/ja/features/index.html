@@ -18,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -27,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>機能一覧：エージェントの Markdown を Mac で確かめる · MarsDawn</title>
-<meta name="description" content="Mac ネイティブの Markdown エディタ：リアルタイムプレビュー、Mermaid と数式、テーマに加え、会議や書き込み、紙での保管に使える PDF とプリントのページ。">
+<meta name="description" content="Mac ネイティブの Markdown・JSON・YAML エディタ：リアルタイムプレビュー、Mermaid と数式、テーマ、会議や保管に使える PDF とプリントのページ。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -44,7 +45,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ja/features/">
 <link rel="alternate" type="text/markdown" href="/ja/features/index.md">
 <meta property="og:title" content="機能一覧：エージェントの Markdown を Mac で確かめる · MarsDawn">
-<meta property="og:description" content="Mac ネイティブの Markdown エディタ：リアルタイムプレビュー、Mermaid と数式、テーマに加え、会議や書き込み、紙での保管に使える PDF とプリントのページ。">
+<meta property="og:description" content="Mac ネイティブの Markdown・JSON・YAML エディタ：リアルタイムプレビュー、Mermaid と数式、テーマ、会議や保管に使える PDF とプリントのページ。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/features/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -212,22 +213,22 @@ try {
 <h2 id="iphone-ipad">Mac で書いて、出先で読む</h2>
 <p>エージェントは Mac で作業します。その計画やレポートは、iPhone や iPad でも読めます。</p>
 <ol class="devsteps">
-  <li><strong>Mac で：</strong>エージェントの計画やレポートを、クラウドで同期されるフォルダ（iCloud Drive など）に保存します。</li>
+  <li><strong>Mac で：</strong>エージェントの計画やレポートを、iCloud Drive のフォルダに保存します。</li>
   <li><strong>iPhone や iPad で：</strong>MarsDawn で「開く」をタップし、同じファイルを選びます。Mermaid の図、数式、コード、表がきちんと表示され、アウトラインと選んだテーマも使えます。</li>
   <li><strong>Mac に戻って：</strong>編集を続けたり、PDF に書き出したりできます。</li>
 </ol>
 <p>同じ Apple Account なら、1 回のトライアルと 1 回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。</p>
 <a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mac-iphone&amp;mt=8"><img src="/assets/badges/app-store-ja.svg" width="109" height="40" alt="App Storeからダウンロード"></a>
-<p class="devnote">iPhone と iPad の MarsDawn は読むためのものです。編集、PDF の書き出し、同期はできません。ファイルは、いつも使っているクラウドを通じて届きます。MarsDawn 自体には同期機能がありません。</p>
+<p class="devnote">iPhone と iPad の MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。</p>
 <h2 id="files-tabs-and-quick-look">ファイル、タブ、クイックルック</h2>
 <h3>ウインドウとタブ</h3>
 <p>書類はそれぞれ別のウインドウで開きます。「ウインドウ ▸ すべてのウインドウを結合」を選ぶと、開いているウインドウを1つのウインドウのタブにまとめられます。自動保存は入力中に働きます。</p>
 <p class="more"><a href="/ja/native/">Mac アプリ</a></p>
 <h3>Finder のクイックルック</h3>
-<p>Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。クイックルックは MarsDawn で選んだテーマを使い、その外観モードの設定に従います。</p>
+<p>Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。JSON と YAML のファイルはツリー表示になります。クイックルックは MarsDawn で選んだテーマを使い、その外観モードの設定に従います。</p>
 <p class="more"><a href="/ja/native/">Mac アプリ</a> &#183; <a href="/ja/quicklook/">Markdown のクイックルック</a></p>
 <h3>そのほかのファイル</h3>
-<p>MarsDawn では、テキストファイル（<code>.txt</code>、<code>.log</code>、ソースコード）と PDF も開けます。UTF-8 のテキストはそのまま編集でき、ソースのみの表示になります。PDF は、ページのサムネール、拡大・縮小、検索を備えたビューアで開きます。</p>
+<p>MarsDawn では、テキストファイル（<code>.txt</code>、<code>.log</code>、ソースコード）と PDF も開けます。UTF-8 のテキストはそのまま編集でき、ソースのみの表示になります。PDF は、ページのサムネール、拡大・縮小、検索を備えたビューアで開きます。Mac で JSON と YAML のファイルを書類として開いて編集でき、入力に合わせて更新されるツリープレビューが横に表示されます。Finder のクイックルックでも同じツリー表示になります。iPhone と iPad では JSON と YAML は開けません。</p>
 <h3>ファイルはあなたのもの</h3>
 <p>アカウントも、同期も、クラウドもありません。書類は保存した場所に残り、MarsDawn があなたに関するデータを収集することはありません。</p>
 <p class="more"><a href="/ja/yours/">あなたの文章は Mac に残ります</a></p>
@@ -247,6 +248,14 @@ try {
 <h2 id="siri-and-shortcuts">Siri とショートカット</h2>
 <p>「ショートカット」App で MarsDawn を検索すると、3つのアクションが見つかります：「新規 Markdown 書類」（テンプレートから）、「受信トレイにメモを追加」、「最近使った書類を開く」。メモは、「MarsDawn ▸ 設定… ▸ メモフォルダ」で選んだフォルダの <code>Inbox.md</code> に追加されます。</p>
 <p class="more"><a href="/ja/native/">Mac アプリ</a></p>
+<section class="film-mac" aria-labelledby="film-mac-h">
+<h2 id="film-mac-h">動画を見る</h2>
+<video controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/marsdawn-film-en-poster.jpg" aria-label="MarsDawn の動画（54 秒）">
+<source src="/assets/film/marsdawn-film-en-1080p30.mp4" type="video/mp4">
+<track kind="subtitles" src="/assets/film/marsdawn-film-ja.vtt" srclang="ja" label="日本語" default>
+<p>お使いのブラウザではこの動画を再生できません。</p>
+</video>
+</section>
 <section class="film-themes" aria-labelledby="film-themes-h">
 <h2 id="film-themes-h">ページをプリントしたあと</h2>
 <p>プリントしたページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。</p>

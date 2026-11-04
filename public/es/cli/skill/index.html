@@ -18,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -169,7 +170,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
       <h3 id="footer-product">Producto</h3>
       <ul>
         <li><a href="/es/features/">Funciones</a></li>
-        <li><a href="/es/quicklook/">Vista rápida para Markdown</a></li>
+        <li><a href="/es/quicklook/">Vista Rápida para Markdown</a></li>
         <li><a href="/es/native/">Una app para Mac</a></li>
         <li><a href="/es/pdf/">Exportación a PDF</a></li>
         <li><a href="/es/limits/">Lo que MarsDawn no hace</a></li>

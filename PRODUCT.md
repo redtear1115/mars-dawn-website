@@ -8,13 +8,13 @@ This file is the website's layer on top of the MarsDawn app's product record, `P
 
 - When an app fact changes, update the parent first, then this file, then the site copy in `scripts/build_pages.py`.
 - If this file and the parent disagree about the app, the parent wins. Treat the difference as a bug in this file.
-- Last synced with the parent: 2026-09-19.
+- Last synced with the parent: 2026-10-31.
 
 ## Platform
 
 web
 
-(The app itself is a native macOS app. This record covers its website.)
+(The app runs natively on Mac, iPhone and iPad. This record covers its website.)
 
 ## Users
 
@@ -28,11 +28,11 @@ AI assistants and crawlers read the site too, through `llms.txt`, `llms-full.txt
 
 ## Product Purpose
 
-The site is the public home of MarsDawn, a native Mac Markdown editor with live preview, Mermaid diagrams, KaTeX math and PDF export, built for reading what AI agents write. The app is sold only through the Mac App Store, where it is available now. The free `marsdawn` CLI can be installed today.
+The site is the public home of MarsDawn, a native Mac Markdown editor with live preview, Mermaid diagrams, KaTeX math and PDF export, built for reading what AI agents write. The Mac app is available on the Mac App Store. MarsDawn for iOS 1.0.1 is available on the App Store for iPhone and iPad. The free `marsdawn` CLI can be installed today.
 
-While the app is still unreleased, the site succeeds on two things:
+The site succeeds on two things:
 
-1. Building intent to buy the app when it launches.
+1. Helping visitors decide whether to try and unlock the app.
 2. Search and AI visibility: Google and LLMs understand MarsDawn correctly and cite it accurately.
 
 The privacy and support pages also serve App Store review. They must stay stable and reachable.
@@ -57,10 +57,11 @@ The site leads with one angle on top of them. MarsDawn is the careful-read step 
 ## Capabilities and Constraints
 
 **App facts, from the parent**
-- **Pricing**, decided 2026-09-19 but not built yet: a free download with a 14-day trial, then a USD 4.99 unlock. Both are In-App Purchases and both are one-time: no subscription and no account. After day 14 without the unlock, documents still open but their content is covered in the app. The lock never changes files on disk, Quick Look keeps showing them, and the free `marsdawn export` CLI keeps exporting them.
+- **Pricing**: a free download with a 14-day trial, then a USD 4.99 unlock. Both are In-App Purchases and both are one-time: no subscription and no account. With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. After day 14 without the unlock, documents still open but their content is covered in the app. The lock never changes files on disk, Quick Look keeps showing them, and the free `marsdawn export` CLI keeps exporting them.
 - **Requirements**: the app needs macOS 26 (Tahoe) or later, on Apple silicon or Intel. The `marsdawn` CLI needs macOS 15 or later, and `marsdawn export` works without the app installed.
 - **Themes**: four preview themes, Dawn (the default), Classic (典雅), Modern (流行) and Vivid (活潑).
-- **Limits**: no sync, no iPhone or iPad app (a read-only iPhone viewer is a future plan), no plugins and no accounts.
+- **iPhone and iPad**: MarsDawn for iOS 1.0.1 is for reading only. It opens Markdown and plain text files and renders Mermaid diagrams, math, code and tables, with an outline and themes. It requires iOS 26 or iPadOS 26 or later. Editing and PDF export stay on the Mac.
+- **Limits**: no cloud service of its own, no plugins and no accounts.
 
 **Pricing copy:** the site describes the model (free download, 14-day trial, USD 4.99 one-time unlock) as live, because the app is on the Mac App Store. Keep it in step with the parent if the model changes again.
 
@@ -89,7 +90,7 @@ These are specific to the site:
 - CLI assets in `public/assets/cli/`.
 - The app icon (`public/assets/icon-192.png`, `favicon-64.png`): a sun cresting a dark ridge.
 - The mars-dawn-kit repository and the Homebrew install (`brew tap redtear1115/tap && brew install marsdawn`).
-- Not available: the app is unreleased, so there are no testimonials, reviews, user counts, press or ratings. None may be invented, and no claim may go beyond what the parent confirms.
+- Not available: verified testimonials, reviews, user counts, press or ratings. None may be invented, and no claim may go beyond what the parent confirms.
 
 ## Product Principles
 

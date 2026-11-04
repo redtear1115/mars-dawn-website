@@ -196,6 +196,12 @@ MCP_LICENSE = "Apache-2.0"
 # in localStorage, never a cookie of ours. The GA4 tag itself lives inside the GTM
 # container, not in this repo's code, so only the container id appears here.
 GTM_CONTAINER_ID = "GTM-KCC7FDWZ"
+# The loader runs only on the production site: a local preview (localhost, 127.0.0.1, any other
+# host) loads no GTM, so it sends no sessions to GA (#310). It also stays off in automated
+# browsers (#311): Playwright's Firefox and WebKit report navigator.webdriver true, and their
+# runs were counted as new users in GA. Playwright MCP's Chromium reports false, but it blocks
+# the GA domains itself; blocking in the test tools (layer 2) is a separate matter.
+GTM_HOSTNAME = "marsdawn.southern-light.dev"
 CONSENT_STORAGE_KEY = "md-consent"
 
 # The Consent Mode default + the standard GTM loader, exactly as they render in every page's
@@ -218,6 +224,7 @@ try {{
 }} catch (e) {{}}"""
 
 GTM_HEAD_SCRIPT = f"""(function(w,d,s,l,i){{
+  if (w.location.hostname !== '{GTM_HOSTNAME}' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({{'gtm.start': new Date().getTime(), event: 'gtm.js'}});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -4313,7 +4320,7 @@ TRAIT_PAGES = {
 <h3>Devices and people</h3>
 <ul>
   <li><strong>Sync:</strong> MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.</li>
-  <li><strong>iPhone and iPad:</strong> MarsDawn there is for reading. It opens Markdown and plain text files and renders them, with an outline and themes, but it doesn't edit, export PDFs or sync. Your files get there through the cloud you already use.</li>
+  <li><strong>iPhone and iPad:</strong> MarsDawn is for reading only. It opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.</li>
   <li><strong>Sharing:</strong> there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.</li>
   <li><strong>System:</strong> MarsDawn needs macOS 26 or later on the Mac, and iOS 26 or iPadOS 26 or later on iPhone and iPad.</li>
 </ul>
@@ -4321,7 +4328,7 @@ TRAIT_PAGES = {
 <ul>
   <li><strong>Editing:</strong> you write Markdown on the left and read the page on the right; the page itself can't be edited.</li>
   <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
-  <li><strong>Other files:</strong> plain text files and PDFs open read-only.</li>
+  <li><strong>Other files:</strong> PDFs open read-only, and so do text files in encodings other than UTF-8. On the Mac, JSON and YAML open as editable documents with a tree preview; iPhone and iPad don't open them.</li>
   <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can install more from the curated <a href="/themes/gallery/">Theme Gallery</a> (Settings ▸ Appearance ▸ Get More Themes…). A theme sets colours and a few style options; there's no custom CSS. See <a href="/themes/">themes</a>.</li>
   <li><strong>Plugins:</strong> MarsDawn has no plugins or extensions.</li>
 </ul>
@@ -4343,7 +4350,7 @@ TRAIT_PAGES = {
 <h3>裝置與使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。</li>
-  <li><strong>iPhone 和 iPad：</strong>MarsDawn 在這兩個裝置上只能閱讀：可以打開 Markdown 和純文字檔並排好顯示，也有大綱和主題，但不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳過去。</li>
+  <li><strong>iPhone 和 iPad：</strong>MarsDawn 只能閱讀，只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。</li>
   <li><strong>分享：</strong>沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。</li>
   <li><strong>系統：</strong>MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。</li>
 </ul>
@@ -4351,7 +4358,7 @@ TRAIT_PAGES = {
 <ul>
   <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
   <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
-  <li><strong>其他檔案：</strong>純文字檔和 PDF 以唯讀方式開啟。</li>
+  <li><strong>其他檔案：</strong>PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML 可以當成文件打開來編輯，並有樹狀預覽；iPhone 和 iPad 不能打開這兩種檔案。</li>
   <li><strong>主題：</strong>內建黎明、典雅、流行和活潑，每種都有淺色與深色；也可以從經過審核的<a href="/zh-hant/themes/gallery/">主題庫</a>安裝更多（「設定 ▸ 外觀 ▸ 取得更多主題⋯」）。主題只能設定顏色和幾個樣式選項，不能自訂 CSS。詳見<a href="/zh-hant/themes/">主題</a>。</li>
   <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
 </ul>
@@ -4407,6 +4414,7 @@ import importlib  # noqa: E402
 import hero_window  # noqa: E402
 import brand_film  # noqa: E402
 import brand_film_themes  # noqa: E402
+import brand_film_mac  # noqa: E402
 import approved_copy  # noqa: E402
 import rich_pages  # noqa: E402
 import roadmap272  # noqa: E402
@@ -4573,8 +4581,7 @@ SKILL_LINE_MARKS = {"<!--skill-line:cli-->": approved_copy.CLI_SKILL_LINE, "<!--
 # Not on the top navigation: the footer and the home page's "What to expect" list link here.
 FEATURES_COPY = {
     "en": {'title': 'Features: a Markdown editor for Mac, on one page · MarsDawn',
-     'description': 'A native Mac Markdown editor: live preview, Mermaid and math, themes, plus clean '
-                    'PDF and print pages for meetings, margin notes and paper records.',
+     'description': 'A native Mac editor for Markdown, JSON and YAML: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings and records.',
      'h1': 'Everything MarsDawn does, on one page.',
      'intro': ['MarsDawn is a Markdown editor for the Mac. You write on one side and read the rendered '
                'page on the other, with diagrams, math and code drawn in. It has no AI model of its '
@@ -4720,14 +4727,10 @@ FEATURES_COPY = {
                                    'you type.',
                               'links': ['native']},
                              {'h': 'Quick Look in Finder',
-                              'p': 'Select a Markdown file in Finder and press Space to read it '
-                                   'rendered, diagrams included. Quick Look uses the theme you picked '
-                                   'in MarsDawn and follows its Appearance setting.',
+                              'p': 'Select a Markdown file in Finder and press Space to read it rendered, diagrams included. JSON and YAML files show as a tree. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.',
                               'links': ['native']},
                              {'h': 'Other files',
-                              'p': 'MarsDawn also opens plain text files (.txt, .log, source code) and '
-                                   'PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in '
-                                   'a viewer with page thumbnails, zoom and search.',
+                              'p': "MarsDawn also opens plain text files (.txt, .log, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. iPhone and iPad don't open JSON or YAML.",
                               'links': []},
                              {'h': 'Your files stay yours',
                               'p': 'There is no account, no sync and no cloud. Documents stay where '
@@ -4770,11 +4773,11 @@ FEATURES_COPY = {
      'devices': {'h2': 'On your Mac, and on the go',
                  'lead': 'Your agent works on the Mac. Its plans and reports can come with you on your iPhone or iPad.',
                  'steps': [
-                           "On the Mac: save the agent's plans and reports in a folder your cloud syncs, such as iCloud Drive.",
+                           "On the Mac: save the agent's plans and reports in a folder in iCloud Drive.",
                            'On iPhone or iPad: in MarsDawn, tap Open and pick the same file. Mermaid diagrams, math, code and tables are rendered, with an outline and your theme.',
                            'Back on the Mac: keep editing, or export a PDF.'],
                  'buy': 'With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.',
-                 'limits': "On iPhone and iPad, MarsDawn is for reading: it doesn't edit, export PDFs or sync. Your files get to your phone through the cloud you already use; MarsDawn has no sync of its own."},
+                 'limits': "On iPhone and iPad, MarsDawn is for reading only: it opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own."},
      'cta': {'h2': 'Try it on your Mac',
              'p1': 'MarsDawn is free to download. Try everything for 14 days, then unlock it once for '
                    'USD 4.99. No subscription, no account. It needs macOS 26 or later.',
@@ -4782,7 +4785,7 @@ FEATURES_COPY = {
              'left': ['. What is left out on purpose: ', 'limits'],
              'tail': '.'}},
     "zh-hant": {'title': '功能一覽：Mac 上的 Markdown 編輯器 · MarsDawn',
-     'description': 'Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。',
+     'description': 'Mac 原生的 Markdown、JSON、YAML 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可拿去開會或存檔。',
      'h1': 'MarsDawn 能做的事，一頁看完。',
      'intro': ['MarsDawn 是為 Mac 做的 Markdown 編輯器。一邊寫，一邊讀排版後的頁面，圖表、數學式和程式碼都畫在裡面。它沒有自己的 AI 模型：做它是為了讀 '
                'agent 寫的東西，也讓你寫自己的。工作換到會議桌或檔案櫃上時，它也能印出、輸出乾淨的頁面。',
@@ -4883,12 +4886,11 @@ FEATURES_COPY = {
                               'p': '每份文件預設在自己的視窗打開。用「視窗 ▸ 合併所有視窗」，可以把開著的視窗收成同一個視窗裡的分頁。打字時會自動儲存。',
                               'links': ['native']},
                              {'h': '在 Finder 用快速查看',
-                              'p': '在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。快速查看會用你在 MarsDawn '
+                              'p': '在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。JSON 和 YAML 檔則會顯示成樹狀檢視。快速查看會用你在 MarsDawn '
                                    '選的主題，也跟著 MarsDawn 的外觀設定。',
                               'links': ['native']},
                              {'h': '其他檔案',
-                              'p': 'MarsDawn 也能打開純文字檔（.txt、.log、程式碼檔）和 PDF。UTF-8 '
-                                   '純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。',
+                              'p': 'MarsDawn 也能打開純文字檔（.txt、.log、程式碼檔）和 PDF。UTF-8 純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。在 Mac 上，JSON 和 YAML 檔可以當成文件打開來編輯，旁邊的樹狀預覽會隨著打字更新。在 Finder 用「快速查看」也會看到同樣的樹狀檢視。iPhone 和 iPad 不能打開 JSON 或 YAML。',
                               'links': []},
                              {'h': '你的檔案留在你手上',
                               'p': '不需要帳號，沒有同步，也沒有雲端。文件留在你儲存的位置，MarsDawn 不收集任何關於你的資料。',
@@ -4923,11 +4925,11 @@ FEATURES_COPY = {
      'devices': {'h2': '在 Mac 上寫，在路上讀',
                  'lead': 'agent 在 Mac 上工作，它寫的計畫和報告，你在 iPhone 或 iPad 上也能讀。',
                  'steps': [
-                           '在 Mac 上：把 agent 的計畫和報告存在會同步的雲端資料夾，例如 iCloud Drive。',
+                           '在 Mac 上：把 agent 的計畫和報告存在 iCloud 雲碟裡的資料夾。',
                            '在 iPhone 或 iPad 上：打開 MarsDawn，點「開啟」，選同一個檔案。Mermaid 圖表、數學式、程式碼和表格都會排好顯示，也有大綱和你選的主題。',
                            '回到 Mac：繼續編輯，或輸出 PDF。'],
                  'buy': '用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。',
-                 'limits': '在 iPhone 和 iPad 上，MarsDawn 只能閱讀：不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳到手機，MarsDawn 本身沒有同步功能。'},
+                 'limits': '在 iPhone 和 iPad 上，MarsDawn 只能閱讀：只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。'},
      'cta': {'h2': '在你的 Mac 上試試',
              'p1': 'MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。',
              'trial': ['試用怎麼運作：', 'pay-once'],
@@ -4990,6 +4992,7 @@ def features_page(copy: dict) -> dict:
             parts += [f"<h3>{_features_text(item['h'])}</h3>", f"<p>{_features_text(item['p'])}</p>", _features_more(item["links"])]
         if section["id"] in FEATURES_SHOTS:
             parts.append(f"<!--shot:{FEATURES_SHOTS[section['id']]}-->")
+    parts.append(brand_film_mac.MARK)
     parts.append(brand_film_themes.MARK)
     cta = copy["cta"]
     (trial, trial_slug), (left, left_slug) = cta["trial"], cta["left"]
@@ -5253,6 +5256,79 @@ def hero_stage_html(locale: str) -> str:
     """The window, with the iPhone screenshot over its lower right (#327 B): the same picture,
     scaled, at every width, the phone always narrower than the window."""
     return f'<div class="hero-stage">\n{hero_window.window_html(locale)}\n{hero_phone_html(locale)}\n</div>'
+
+
+# Home steps: #333 comment 6516118620 §3, with 6516160149 §4 corrections.
+HOME_IPHONE_STEPS = {'en': {'h2': 'Read what your agent wrote, away from your desk',
+        'steps': ['On your Mac, have your agent save its files to a folder in iCloud Drive.',
+                  'On your iPhone or iPad, open MarsDawn and choose the file.',
+                  'To edit it or export a PDF, go back to your Mac.'],
+        'limits': 'On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain text '
+                  'files.'},
+ 'zh-hant': {'h2': '離開座位，也能讀 agent 寫的東西',
+             'steps': ['在 Mac 上，讓 agent 把檔案存進 iCloud 雲碟裡的資料夾。',
+                       '在 iPhone 或 iPad 上打開 MarsDawn，選那份檔案。',
+                       '要修改或輸出 PDF，回到 Mac 上做。'],
+             'limits': '在 iPhone 和 iPad 上只能閱讀，只開 Markdown 和純文字檔。'},
+ 'zh-hans': {'h2': '离开座位，也能读代理写的东西',
+             'steps': ['在 Mac 上，让代理把文件存进 iCloud 云盘里的文件夹。',
+                       '在 iPhone 或 iPad 上打开 MarsDawn，选择那份文件。',
+                       '要修改或导出 PDF，回到 Mac 上操作。'],
+             'limits': '在 iPhone 和 iPad 上只能阅读，只能打开 Markdown 和纯文本文件。'},
+ 'ja': {'h2': '席を離れても、エージェントが書いたものを読める',
+        'steps': ['Mac で、エージェントにファイルを iCloud Drive のフォルダへ保存させます。',
+                  'iPhone や iPad で MarsDawn を開き、そのファイルを選びます。',
+                  '編集や PDF の書き出しは、Mac に戻って行います。'],
+        'limits': 'iPhone と iPad では閲覧専用で、開けるのは Markdown とプレーンテキストのファイルだけです。'},
+ 'ko': {'h2': '자리를 떠나도 에이전트가 쓴 글을 읽을 수 있습니다',
+        'steps': ['Mac에서 에이전트가 iCloud Drive의 폴더에 파일을 저장하게 합니다.',
+                  'iPhone이나 iPad에서 MarsDawn을 열고 그 파일을 선택합니다.',
+                  '편집하거나 PDF로 내보내려면 Mac으로 돌아갑니다.'],
+        'limits': 'iPhone과 iPad에서는 읽기 전용이며, Markdown과 일반 텍스트 파일만 열 수 있습니다.'},
+ 'de': {'h2': 'Lies, was dein Agent geschrieben hat, auch fern vom Schreibtisch',
+        'steps': ['Lass deinen Agent auf dem Mac seine Dateien in einem Ordner in iCloud Drive speichern.',
+                  'Öffne MarsDawn auf iPhone oder iPad und wähle die Datei aus.',
+                  'Zum Bearbeiten oder für den PDF-Export gehst du zurück an den Mac.'],
+        'limits': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet nur Markdown- und reine '
+                  'Textdateien.'},
+ 'fr': {'h2': 'Lisez ce qu’a écrit votre agent, même loin de votre bureau',
+        'steps': ['Sur votre Mac, demandez à votre agent d’enregistrer ses fichiers dans un dossier d’iCloud '
+                  'Drive.',
+                  'Sur votre iPhone ou iPad, ouvrez MarsDawn et choisissez le fichier.',
+                  'Pour le modifier ou l’exporter en PDF, revenez sur votre Mac.'],
+        'limits': 'Sur iPhone et iPad, MarsDawn sert uniquement à lire et n’ouvre que les fichiers Markdown '
+                  'et texte brut.'},
+ 'es': {'h2': 'Lee lo que escribió tu agente, aunque no estés en tu escritorio',
+        'steps': ['En tu Mac, haz que tu agente guarde sus archivos en una carpeta de iCloud Drive.',
+                  'En tu iPhone o iPad, abre MarsDawn y elige el archivo.',
+                  'Para editarlo o exportarlo a PDF, vuelve a tu Mac.'],
+        'limits': 'En iPhone y iPad, MarsDawn solo sirve para leer y solo abre archivos Markdown y de texto '
+                  'plano.'}}
+
+# Link to the features section; copy approved by Ray on PR #342 (Aria's proposal).
+HOME_IPHONE_STEPS_MORE = {
+    'en': 'More on MarsDawn for iPhone and iPad',
+    'zh-hant': '進一步了解 iPhone 和 iPad 版',
+    'zh-hans': '进一步了解 iPhone 和 iPad 版',
+    'ja': 'iPhone と iPad 版について詳しく',
+    'ko': 'iPhone 및 iPad 버전 자세히 보기',
+    'de': 'Mehr zu MarsDawn auf iPhone und iPad',
+    'fr': 'En savoir plus sur MarsDawn pour iPhone et iPad',
+    'es': 'Más sobre MarsDawn en iPhone y iPad',
+}
+
+
+def home_steps_html(locale: str) -> str:
+    """Reading away from the Mac, directly after the hero (#331)."""
+    copy = HOME_IPHONE_STEPS[locale]
+    steps = "\n".join(f"  <li>{xml_escape(step)}</li>" for step in copy["steps"])
+    return ('<section class="iphone-steps" id="iphone-steps" aria-labelledby="iphone-steps-title">\n'
+            f'<h2 id="iphone-steps-title">{xml_escape(copy["h2"])}</h2>\n'
+            f'<ol>\n{steps}\n</ol>\n'
+            f'<p class="iphone-steps-limit">{xml_escape(copy["limits"])}</p>\n'
+            f'<p>{store_badge_html(locale, HOME_IPHONE_CAMPAIGN)}</p>\n'
+            f'<p><a href="{page_path(locale, "features")}#iphone-ipad">{xml_escape(HOME_IPHONE_STEPS_MORE[locale])}</a></p>\n'
+            '</section>')
 
 
 def closing_cta_html(locale: str) -> str:
@@ -5746,11 +5822,13 @@ def annotations_css() -> str:
         for index, (x, y, _, _) in enumerate(FIGURES[slug]["callouts"], start=1):
             cx, cy = cropped_position(image, x, y)
             rules.append(f".co-{slug}-{index} {{ --x: {cx}%; --y: {cy}%; }}")
-    return "\n".join(rules) + "\n\n" + brand_film_themes.CSS
+    return "\n".join(rules) + "\n\n" + brand_film_themes.CSS + "\n" + brand_film_mac.CSS
 
 
 def page_markdown(pages: dict, locale: str, slug: str) -> str:
     page = pages[(locale, slug)]
+    if brand_film_mac.MARK in page["body"]:
+        page = {**page, "body": page["body"].replace(brand_film_mac.MARK, brand_film_mac.section_markdown_html(locale, BASE_URL))}
     if brand_film_themes.MARK in page["body"]:
         page = {**page, "body": page["body"].replace(brand_film_themes.MARK, brand_film_themes.section_markdown_html(locale, BASE_URL))}
     if "intro" not in page:
@@ -5762,6 +5840,8 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         return "\n\n".join([
             html_to_markdown(page["intro"]).rstrip(),
             hero_window.window_markdown(locale),
+            # Twins carry the plain listing URL, never a campaign one (check_store_links R4).
+            html_to_markdown(home_steps_html(locale).replace(campaign_url(HOME_IPHONE_CAMPAIGN).replace("&", "&amp;"), LISTING_URL)).rstrip(),
             html_to_markdown(home_body).rstrip(),
             html_to_markdown("\n".join(plan_loop_parts(locale))).rstrip(),
             html_to_markdown(_home_sections_for_twin(locale)).rstrip(),
@@ -5862,7 +5942,7 @@ def all_pages() -> dict:
 # howto_steps), so the markup and the visible text cannot differ.
 QUICKLOOK_PREFIX = {  # how each locale's /native/ Quick Look list item starts (the macOS feature's name)
     "en": "Quick Look", "zh-hant": "快速查看", "zh-hans": "快速查看", "ja": "クイックルック",
-    "de": "Übersicht", "fr": "Coup d’œil", "es": "Vista rápida", "ko": "훑어보기",
+    "de": "Übersicht", "fr": "Coup d’œil", "es": "Vista Rápida", "ko": "훑어보기",
 }
 
 
@@ -6927,7 +7007,7 @@ def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> l
             "sameAs": SAME_AS,
             "downloadUrl": LISTING_URL,
             "url": canonical_url,
-        }] + faq_data(page)
+        }] + faq_data(page) + [brand_film.video_object(locale, BASE_URL)]
     data = [breadcrumb_data(locale, slug, page)] + faq_data(page) + howto_data(page)
     if slug in FAQ_PAGES:
         data.append(faq_data_plain(page))
@@ -7037,7 +7117,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
         # The FAQ is written with the page's body but belongs after the install block and the traits.
         home_body, home_faq = split_faq(page["body"])
-        main_html = "\n".join(part for part in (hero_html, brand_film.film_html(locale), home_body.strip(), *plan_loop_parts_with(locale),
+        main_html = "\n".join(part for part in (hero_html, home_steps_html(locale), brand_film.film_html(locale), home_body.strip(), *plan_loop_parts_with(locale),
                                                  home_sections_html(locale), page.get("after", "").strip(), home_faq, proof_html, closing_html)
                               if part)
     elif slug == "features":
@@ -7061,6 +7141,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         steps = main_html.index('<ol class="loop-steps">')
         after = main_html.index("</ul>", main_html.index("</ol>", steps)) + len("</ul>")
         main_html = main_html[:after] + "\n<p>" + store_badge_html(locale, PRICING_CAMPAIGN) + "</p>" + main_html[after:]
+    main_html = main_html.replace(brand_film_mac.MARK, brand_film_mac.section_html(locale))
     main_html = main_html.replace(brand_film_themes.MARK, brand_film_themes.section_html(locale))
     if slug in TOC_PAGES:
         main_html = add_toc(locale, slug, main_html)
