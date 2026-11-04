@@ -16,7 +16,7 @@
 ### 裝置與使用的人
 
 - **同步：**MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。
-- **iPhone 和 iPad：**MarsDawn 在這兩個裝置上只能閱讀：可以打開 Markdown 和純文字檔並排好顯示，也有大綱和主題，但不能編輯、不能輸出 PDF，也不會同步。檔案透過你自己用的雲端傳過去。
+- **iPhone 和 iPad：**MarsDawn 只能閱讀，只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。
 - **分享：**沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。
 - **系統：**MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。
 
@@ -24,7 +24,7 @@
 
 - **編輯：**你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。
 - **格式：**MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。
-- **其他檔案：**純文字檔和 PDF 以唯讀方式開啟。
+- **其他檔案：**PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML 可以當成文件打開來編輯，並有樹狀預覽；iPhone 和 iPad 不能打開這兩種檔案。
 - **主題：**內建黎明、典雅、流行和活潑，每種都有淺色與深色；也可以從經過審核的[主題庫](/zh-hant/themes/gallery/)安裝更多（「設定 ▸ 外觀 ▸ 取得更多主題⋯」）。主題只能設定顏色和幾個樣式選項，不能自訂 CSS。詳見[主題](/zh-hant/themes/)。
 - **外掛：**MarsDawn 沒有外掛或擴充功能。
 
@@ -34,8 +34,8 @@
 
 ## 其他頁面
 
-- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 讀懂、檢查 agent 寫的 Markdown 的 Mac 原生 app：分割即時預覽、Mermaid、KaTeX、快速查看、PDF 輸出。可免費試用，之後一次 USD 4.99。
-- [功能一覽](https://marsdawn.southern-light.dev/zh-hant/features/index.md): Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。
+- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 檢查 agent 寫的 Markdown、JSON、YAML：Mac 原生 app，即時預覽、Mermaid、KaTeX、快速查看、PDF。免費試用，之後一次 USD 4.99。
+- [功能一覽](https://marsdawn.southern-light.dev/zh-hant/features/index.md): Mac 原生的 Markdown、JSON、YAML 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可拿去開會或存檔。
 - [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hant/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
 - [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [輸出 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。
