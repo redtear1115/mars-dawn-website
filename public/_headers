@@ -9,8 +9,9 @@
 # never embeds the GTM noscript <iframe> (see README's Editing/analytics note): that iframe
 # would fire before the visitor has made any consent choice. Recompute the hashes (see
 # scripts/build_pages.py, consent_head_html) if either inline script's text ever changes.
+# GA4 also posts some hits to www.google.com/g/collect (issue #350).
 /*
-  Content-Security-Policy: default-src 'none'; script-src 'self' https://www.googletagmanager.com 'sha256-ylEE22n2STTXrv3UyLAJppGxBgV21fP9wtwHyTalatg=' 'sha256-e2jUmcP+ZvrlClwFjlJ34ekYh0iogrdKjUL1ZZSG7G0='; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; img-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; media-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://www.googletagmanager.com 'sha256-ylEE22n2STTXrv3UyLAJppGxBgV21fP9wtwHyTalatg=' 'sha256-e2jUmcP+ZvrlClwFjlJ34ekYh0iogrdKjUL1ZZSG7G0='; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://www.google.com; img-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; media-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   X-Frame-Options: DENY
