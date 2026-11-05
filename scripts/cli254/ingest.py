@@ -282,6 +282,24 @@ def parse_i(body: str, locales: list, data: dict) -> None:
         data[loc]["schema_notes"] = notes
 
 
+def apply_295(data: dict) -> None:
+    """Apply the owner's supplied #295 snapshots, pinned locally without network metadata.
+
+    Remote comment ids/updated_at were not supplied for both files. Keep their exact bodies
+    and hashes rather than inventing remote pins; these override #254's older schema notes.
+    """
+    for pin in SOURCES["local_copy_295"]:
+        body = (HERE / pin["path"]).read_text(encoding="utf-8")
+        if sha256(body) != pin["sha256"]:
+            raise Stop(f"#295 local copy differs: {pin['path']}")
+        rows = table_rows(body, "1.")
+        cols = {LABELS[h]: i for i, h in enumerate(rows[0]) if h in LABELS}
+        for row in rows[2:]:
+            key = re.match(r"`(\w+)`", row[0]).group(1)
+            for loc in pin["locales"]:
+                data[loc]["schema_notes"][key] = row[cols[loc]]
+
+
 def build() -> tuple:
     c = SOURCES["comments"]
     fetch(c["approval"])
@@ -297,6 +315,7 @@ def build() -> tuple:
     for loc in machine:
         data[loc] = {"changelog": {}}
     parse_i(fetch(c["I"]), machine, data)
+    apply_295(data)
     return data, shared
 
 

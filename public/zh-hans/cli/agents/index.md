@@ -159,8 +159,13 @@ exit 0
 - `3`，`app_not_installed`：没有安装 MarsDawn。只有 `open` 会返回这个代码。
 - `4`，`output_exists`：输出文件已存在，请加上 `--force`。
 - `5`，`export_failed`：导出本身失败。
+- `5`，`input_too_large`：输入文件超过 16 MiB，所以没有写出任何文件。只有 `export` 会返回这个代码。
 - `6`，`app_cannot_open_folders`：这个版本的 MarsDawn 还不能显示文件夹，所以没有打开任何东西。只有 `open` 会返回这个代码。
-- `64`：用法错误，例如未知的选项、无效的值、行号超出范围、`--line` 搭配了多个文件或文件夹、指定了多个文件夹，或使用了 `-a`。这种错误一律以文本输出到 stderr，即使加了 `--json` 也一样。
+- `7`，`skill_install_failed`：`skill --install` 无法创建文件夹或写入文件。原有的 SKILL.md 保持不变。
+- `64`：用法错误。大多数用法错误，例如未知的选项、无效的值、行号超出范围、`--line` 搭配了多个文件或文件夹、指定了多个文件夹，或使用了 `-a`，都以文本输出到 stderr，即使加了 `--json` 也一样。下面这几种有自己的 `error` 值，会和其他失败一样在 stdout 输出 JSON：
+  - `wait_out_of_range`：`open --wait` 超出 0 到 30。
+  - `skill_differs`、`skill_unsafe_symlink`、`skill_target_not_a_file`、`skill_unreadable`：`skill --install` 拒绝写入。
+  - `output_folder_missing`、`output_symlink`、`output_not_a_file`：`theme preview` 拒绝 `-o` 指定的路径。
 
 ## JSON Schema
 
@@ -169,7 +174,8 @@ exit 0
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功
 - [open.v4.json](/schemas/cli/open.v4.json): open 成功，marsdawn 0.5.3 以后，文件夹多了 `status` 和 `waitingFor`
 - [open.v3.json](/schemas/cli/open.v3.json): open 成功，marsdawn 0.5.1 和 0.5.2，包括在侧边栏显示的文件夹
-- [error.v3.json](/schemas/cli/error.v3.json): 所有命令的失败结果，marsdawn 0.7.1 以后，新增 `input_too_large`（代码 5）和 `skill_install_failed`（代码 7）
+- [error.v4.json](/schemas/cli/error.v4.json): 所有命令的失败结果，marsdawn 0.7.1 以后，包括以代码 64 输出 JSON 的用法错误
+- [error.v3.json](/schemas/cli/error.v3.json): 所有命令的失败结果，marsdawn 0.7.1 以后，不含代码 64 的种类；已由 error.v4.json 取代
 - [error.v2.json](/schemas/cli/error.v2.json): 两个命令的失败结果，marsdawn 0.5.2 到 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 成功，marsdawn 0.3.0 到 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功，marsdawn 0.2.x，当时 `opened` 是路径清单

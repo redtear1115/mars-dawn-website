@@ -159,8 +159,13 @@ exit 0
 - `3`、`app_not_installed`：MarsDawn がインストールされていない。`open` のみがこれを返します。
 - `4`、`output_exists`：出力ファイルが存在する。`--force` を指定してください。
 - `5`、`export_failed`：書き出し自体が失敗した。
+- `5`、`input_too_large`：入力が 16 MiB を超えているため、何も書き出さなかった。`export` のみがこれを返します。
 - `6`、`app_cannot_open_folders`：この MarsDawn はまだフォルダを表示できないため、何も開かなかった。`open` のみがこれを返します。
-- `64`：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルやフォルダに対する `--line` の指定、複数のフォルダの指定、`-a` の指定など。この場合は、`--json` を指定していても stderr にテキストとして出力されます。
+- `7`、`skill_install_failed`：`skill --install` がフォルダを作成できなかった、またはファイルを書き込めなかった。既存の SKILL.md はそのままです。
+- `64`：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルやフォルダに対する `--line` の指定、複数のフォルダの指定、`-a` の指定など、ほとんどの場合は `--json` を指定していても stderr にテキストとして出力されます。次のものは独自の `error` を持ち、ほかの失敗と同じく stdout に JSON を出力します。
+  - `wait_out_of_range`：`open --wait` の値が 0〜30 の範囲外。
+  - `skill_differs`、`skill_unsafe_symlink`、`skill_target_not_a_file`、`skill_unreadable`：`skill --install` が書き込みを拒否した。
+  - `output_folder_missing`、`output_symlink`、`output_not_a_file`：`theme preview` が `-o` のパスを拒否した。
 
 ## JSON Schema
 
@@ -169,7 +174,8 @@ exit 0
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功時
 - [open.v4.json](/schemas/cli/open.v4.json): open 成功時、marsdawn 0.5.3 以降、フォルダの `status` と `waitingFor` を含む
 - [open.v3.json](/schemas/cli/open.v3.json): open 成功時、marsdawn 0.5.1〜0.5.2、サイドバーに表示するフォルダを含む
-- [error.v3.json](/schemas/cli/error.v3.json): 失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、`input_too_large`（コード 5）と `skill_install_failed`（コード 7）を追加
+- [error.v4.json](/schemas/cli/error.v4.json): 失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、コード 64 で JSON を返す使用方法のエラーを含む
+- [error.v3.json](/schemas/cli/error.v3.json): 失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、コード 64 の種類を含まない（error.v4.json に置き換え）
 - [error.v2.json](/schemas/cli/error.v2.json): 失敗時、両方のコマンド共通、marsdawn 0.5.2〜0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 成功時、marsdawn 0.3.0〜0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功時、marsdawn 0.2.x（`opened` がパスのリストだった頃）

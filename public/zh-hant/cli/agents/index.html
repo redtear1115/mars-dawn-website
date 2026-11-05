@@ -255,8 +255,16 @@ exit 0</code></pre>
   <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
   <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
+  <li><code>5</code>，<code>input_too_large</code>：輸入檔超過 16 MiB，所以沒有寫出任何檔案。只有 <code>export</code> 會回傳這個代碼。</li>
   <li><code>6</code>，<code>app_cannot_open_folders</code>：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西。只有 <code>open</code> 會回傳這個代碼。</li>
-  <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 <code>-a</code>。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
+  <li><code>7</code>，<code>skill_install_failed</code>：<code>skill --install</code> 無法建立資料夾或寫入檔案。原本的 SKILL.md 保持不變。</li>
+  <li><code>64</code>：用法錯誤。大多數用法錯誤，例如未知的選項、無效的值、行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 <code>-a</code>，都以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。下面這幾種有自己的 <code>error</code> 值，會和其他失敗一樣在 stdout 輸出 JSON：
+    <ul>
+      <li><code>wait_out_of_range</code>：<code>open --wait</code> 超出 0 到 30。</li>
+      <li><code>skill_differs</code>、<code>skill_unsafe_symlink</code>、<code>skill_target_not_a_file</code>、<code>skill_unreadable</code>：<code>skill --install</code> 拒絕寫入。</li>
+      <li><code>output_folder_missing</code>、<code>output_symlink</code>、<code>output_not_a_file</code>：<code>theme preview</code> 拒絕 <code>-o</code> 指定的路徑。</li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="json-schemas">JSON Schema</h2>
@@ -265,7 +273,8 @@ exit 0</code></pre>
   <li><a href="/schemas/cli/export.v1.json">export.v1.json</a>: export 成功</li>
   <li><a href="/schemas/cli/open.v4.json">open.v4.json</a>: open 成功，marsdawn 0.5.3 以後，資料夾多了 <code>status</code> 和 <code>waitingFor</code></li>
   <li><a href="/schemas/cli/open.v3.json">open.v3.json</a>: open 成功，marsdawn 0.5.1 和 0.5.2，包括在側邊欄顯示的資料夾</li>
-  <li><a href="/schemas/cli/error.v3.json">error.v3.json</a>: 所有指令的失敗結果，marsdawn 0.7.1 以後，新增 <code>input_too_large</code>（代碼 5）和 <code>skill_install_failed</code>（代碼 7）</li>
+  <li><a href="/schemas/cli/error.v4.json">error.v4.json</a>: 所有指令的失敗結果，marsdawn 0.7.1 以後，包括以代碼 64 輸出 JSON 的用法錯誤</li>
+  <li><a href="/schemas/cli/error.v3.json">error.v3.json</a>: 所有指令的失敗結果，marsdawn 0.7.1 以後，不含代碼 64 的種類；已由 error.v4.json 取代</li>
   <li><a href="/schemas/cli/error.v2.json">error.v2.json</a>: 兩個指令的失敗結果，marsdawn 0.5.2 到 0.7.0</li>
   <li><a href="/schemas/cli/open.v2.json">open.v2.json</a>: open 成功，marsdawn 0.3.0 到 0.5.0</li>
   <li><a href="/schemas/cli/open.v1.json">open.v1.json</a>: open 成功，marsdawn 0.2.x，當時 <code>opened</code> 是路徑清單</li>

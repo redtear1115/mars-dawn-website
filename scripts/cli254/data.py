@@ -154,9 +154,10 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
         'open_since': 'Zeilen kamen mit marsdawn 0.3.0 hinzu, Ordner und `--background` mit 0.5.1, `--wait` '
                       'und der Ordnerstatus mit 0.5.3.',
         'schema_notes': {'error': 'Fehler, beide Befehle, marsdawn 0.5.2 bis 0.7.0',
-                         'error_v3': 'Fehler, alle Befehle, marsdawn 0.7.1 und neuer, mit '
-                                     '<code>input_too_large</code> (Code 5) und '
-                                     '<code>skill_install_failed</code> (Code 7)',
+                         'error_v3': 'Fehler, alle Befehle, marsdawn 0.7.1 und neuer, ohne die Arten mit '
+                                     'Code 64; ersetzt durch error.v4.json',
+                         'error_v4': 'Fehler, alle Befehle, marsdawn 0.7.1 und neuer, einschließlich der '
+                                     'Bedienungsfehler, die mit Code 64 JSON ausgeben',
                          'open': 'open erfolgreich, marsdawn 0.5.1 und 0.5.2, einschließlich eines in der '
                                  'Seitenleiste angezeigten Ordners',
                          'open_v4': 'open erfolgreich, marsdawn 0.5.3 und neuer, mit <code>status</code> und '
@@ -293,9 +294,10 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
         'open_since': 'Lines were added in marsdawn 0.3.0, folders and `--background` in 0.5.1, and `--wait` '
                       'with the folder status in 0.5.3.',
         'schema_notes': {'error': 'failure, both commands, marsdawn 0.5.2 to 0.7.0',
-                         'error_v3': 'failure, every command, marsdawn 0.7.1 and later, adding '
-                                     '<code>input_too_large</code> (exit 5) and '
-                                     '<code>skill_install_failed</code> (exit 7)',
+                         'error_v3': 'failure, every command, marsdawn 0.7.1 and later, without the exit-64 '
+                                     'kinds; error.v4.json replaces it',
+                         'error_v4': 'failure, every command, marsdawn 0.7.1 and later, including the usage '
+                                     'errors that print JSON at exit 64',
                          'open': 'open success, marsdawn 0.5.1 and 0.5.2, including a folder shown in the '
                                  'sidebar',
                          'open_v4': "open success, marsdawn 0.5.3 and later, with the folder's "
@@ -442,9 +444,10 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
         'open_since': 'Las líneas llegaron con marsdawn 0.3.0, las carpetas y `--background` con la 0.5.1, y '
                       '`--wait` y el estado de la carpeta con la 0.5.3.',
         'schema_notes': {'error': 'error, ambos comandos, marsdawn 0.5.2 a 0.7.0',
-                         'error_v3': 'error, todos los comandos, marsdawn 0.7.1 y posterior, con '
-                                     '<code>input_too_large</code> (código 5) y '
-                                     '<code>skill_install_failed</code> (código 7)',
+                         'error_v3': 'error, todos los comandos, marsdawn 0.7.1 y posterior, sin los tipos '
+                                     'del código 64; lo reemplaza error.v4.json',
+                         'error_v4': 'error, todos los comandos, marsdawn 0.7.1 y posterior, incluidos los '
+                                     'errores de uso que imprimen JSON con el código 64',
                          'open': 'éxito de open, marsdawn 0.5.1 y 0.5.2, incluida una carpeta mostrada en la '
                                  'barra lateral',
                          'open_v4': 'éxito de open, marsdawn 0.5.3 y posterior, con <code>status</code> y '
@@ -593,8 +596,10 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                       '0.5.1, et `--wait` et l’état du dossier avec la 0.5.3.',
         'schema_notes': {'error': 'échec, pour les deux commandes, marsdawn 0.5.2 à 0.7.0',
                          'error_v3': 'échec, pour toutes les commandes, marsdawn 0.7.1 et versions '
-                                     'ultérieures, avec <code>input_too_large</code> (code 5) et '
-                                     '<code>skill_install_failed</code> (code 7)',
+                                     'ultérieures, sans les types du code 64 ; remplacé par error.v4.json',
+                         'error_v4': 'échec, pour toutes les commandes, marsdawn 0.7.1 et versions '
+                                     'ultérieures, y compris les erreurs d’utilisation qui affichent du JSON '
+                                     'avec le code 64',
                          'open': 'succès de open, marsdawn 0.5.1 et 0.5.2, y compris un dossier affiché dans '
                                  'la barre latérale',
                          'open_v4': 'succès de open, marsdawn 0.5.3 et versions ultérieures, avec '
@@ -704,8 +709,8 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
         'open_since': '行の指定は marsdawn 0.3.0 で、フォルダと `--background` は 0.5.1 で、`--wait` とフォルダの状態は 0.5.3 '
                       'で追加されました。',
         'schema_notes': {'error': '失敗時、両方のコマンド共通、marsdawn 0.5.2〜0.7.0',
-                         'error_v3': '失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、<code>input_too_large</code>（コード 5）と '
-                                     '<code>skill_install_failed</code>（コード 7）を追加',
+                         'error_v3': '失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、コード 64 の種類を含まない（error.v4.json に置き換え）',
+                         'error_v4': '失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、コード 64 で JSON を返す使用方法のエラーを含む',
                          'open': 'open 成功時、marsdawn 0.5.1〜0.5.2、サイドバーに表示するフォルダを含む',
                          'open_v4': 'open 成功時、marsdawn 0.5.3 以降、フォルダの <code>status</code> と '
                                     '<code>waitingFor</code> を含む'},
@@ -811,8 +816,8 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
         'open_since': '줄 지정은 marsdawn 0.3.0에서, 폴더와 `--background`는 0.5.1에서, `--wait`와 폴더 상태는 0.5.3에서 '
                       '추가되었습니다.',
         'schema_notes': {'error': '실패, 두 명령 공통, marsdawn 0.5.2~0.7.0',
-                         'error_v3': '실패, 모든 명령 공통, marsdawn 0.7.1 이상, <code>input_too_large</code>(코드 5)와 '
-                                     '<code>skill_install_failed</code>(코드 7) 추가',
+                         'error_v3': '실패, 모든 명령 공통, marsdawn 0.7.1 이상, 코드 64 종류 제외, error.v4.json으로 대체됨',
+                         'error_v4': '실패, 모든 명령 공통, marsdawn 0.7.1 이상, 코드 64로 JSON을 출력하는 사용법 오류 포함',
                          'open': 'open 성공, marsdawn 0.5.1~0.5.2, 사이드바에 표시되는 폴더 포함',
                          'open_v4': 'open 성공, marsdawn 0.5.3 이상, 폴더의 <code>status</code>와 '
                                     '<code>waitingFor</code> 포함'},
@@ -910,8 +915,8 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
              'open_since': '行号功能从 marsdawn 0.3.0 开始提供，文件夹与 `--background` 从 0.5.1 开始，`--wait` 与文件夹状态从 0.5.3 '
                            '开始。',
              'schema_notes': {'error': '两个命令的失败结果，marsdawn 0.5.2 到 0.7.0',
-                              'error_v3': '所有命令的失败结果，marsdawn 0.7.1 以后，新增 <code>input_too_large</code>（代码 '
-                                          '5）和 <code>skill_install_failed</code>（代码 7）',
+                              'error_v3': '所有命令的失败结果，marsdawn 0.7.1 以后，不含代码 64 的种类；已由 error.v4.json 取代',
+                              'error_v4': '所有命令的失败结果，marsdawn 0.7.1 以后，包括以代码 64 输出 JSON 的用法错误',
                               'open': 'open 成功，marsdawn 0.5.1 和 0.5.2，包括在侧边栏显示的文件夹',
                               'open_v4': 'open 成功，marsdawn 0.5.3 以后，文件夹多了 <code>status</code> 和 '
                                          '<code>waitingFor</code>'},
@@ -1009,8 +1014,8 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
              'open_since': '行號功能從 marsdawn 0.3.0 開始提供，資料夾與 `--background` 從 0.5.1 開始，`--wait` 與資料夾狀態從 0.5.3 '
                            '開始。',
              'schema_notes': {'error': '兩個指令的失敗結果，marsdawn 0.5.2 到 0.7.0',
-                              'error_v3': '所有指令的失敗結果，marsdawn 0.7.1 以後，新增 <code>input_too_large</code>（代碼 '
-                                          '5）和 <code>skill_install_failed</code>（代碼 7）',
+                              'error_v3': '所有指令的失敗結果，marsdawn 0.7.1 以後，不含代碼 64 的種類；已由 error.v4.json 取代',
+                              'error_v4': '所有指令的失敗結果，marsdawn 0.7.1 以後，包括以代碼 64 輸出 JSON 的用法錯誤',
                               'open': 'open 成功，marsdawn 0.5.1 和 0.5.2，包括在側邊欄顯示的資料夾',
                               'open_v4': 'open 成功，marsdawn 0.5.3 以後，資料夾多了 <code>status</code> 和 '
                                          '<code>waitingFor</code>'},

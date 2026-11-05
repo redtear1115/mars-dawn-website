@@ -948,8 +948,16 @@ exit 0</code></pre>
   <li><code>3</code>、<code>app_not_installed</code>：MarsDawn がインストールされていない。<code>open</code> のみがこれを返します。</li>
   <li><code>4</code>、<code>output_exists</code>：出力ファイルが存在する。<code>--force</code> を指定してください。</li>
   <li><code>5</code>、<code>export_failed</code>：書き出し自体が失敗した。</li>
+  <li><code>5</code>、<code>input_too_large</code>：入力が 16 MiB を超えているため、何も書き出さなかった。<code>export</code> のみがこれを返します。</li>
   <li><code>6</code>、<code>app_cannot_open_folders</code>：この MarsDawn はまだフォルダを表示できないため、何も開かなかった。<code>open</code> のみがこれを返します。</li>
-  <li><code>64</code>：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルやフォルダに対する <code>--line</code> の指定、複数のフォルダの指定、<code>-a</code> の指定など。この場合は、<code>--json</code> を指定していても stderr にテキストとして出力されます。</li>
+  <li><code>7</code>、<code>skill_install_failed</code>：<code>skill --install</code> がフォルダを作成できなかった、またはファイルを書き込めなかった。既存の SKILL.md はそのままです。</li>
+  <li><code>64</code>：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルやフォルダに対する <code>--line</code> の指定、複数のフォルダの指定、<code>-a</code> の指定など、ほとんどの場合は <code>--json</code> を指定していても stderr にテキストとして出力されます。次のものは独自の <code>error</code> を持ち、ほかの失敗と同じく stdout に JSON を出力します。
+    <ul>
+      <li><code>wait_out_of_range</code>：<code>open --wait</code> の値が 0〜30 の範囲外。</li>
+      <li><code>skill_differs</code>、<code>skill_unsafe_symlink</code>、<code>skill_target_not_a_file</code>、<code>skill_unreadable</code>：<code>skill --install</code> が書き込みを拒否した。</li>
+      <li><code>output_folder_missing</code>、<code>output_symlink</code>、<code>output_not_a_file</code>：<code>theme preview</code> が <code>-o</code> のパスを拒否した。</li>
+    </ul>
+  </li>
 </ul>
 
 <h2>JSON Schema</h2>

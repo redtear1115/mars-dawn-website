@@ -72,5 +72,29 @@
    "sha256": "e41989fce4804f874ee0b876a03a4396267fe7e54637a3f184b12b94d047c997",
    "chars": 37303
   }
- }
+ },
+ "local_copy_295": [
+  {
+   "path": "approved295/three.md",
+   "issue": 295,
+   "sha256": "59a0591cb1872ec1a53e7cd0cfa7466f5845c438b3bd947948c82ea4e51e58c8",
+   "locales": [
+    "en",
+    "zh-hant",
+    "ja"
+   ]
+  },
+  {
+   "path": "approved295/five.md",
+   "issue": 295,
+   "sha256": "027ef3133193cbfa54831aa65dad8ad2149f83f96539159431d39320fb5856ea",
+   "locales": [
+    "zh-hans",
+    "ko",
+    "de",
+    "fr",
+    "es"
+   ]
+  }
+ ]
 }

@@ -1174,8 +1174,16 @@ exit 0</code></pre>
   <li><code>3</code>, <code>app_not_installed</code>: MarsDawn no está instalado. Solo <code>open</code> devuelve este código.</li>
   <li><code>4</code>, <code>output_exists</code>: el archivo de salida existe. Pasa <code>--force</code>.</li>
   <li><code>5</code>, <code>export_failed</code>: la exportación en sí falló.</li>
+  <li><code>5</code>, <code>input_too_large</code>: la entrada supera los 16 MiB, así que no se escribió nada. Solo <code>export</code> devuelve este código.</li>
   <li><code>6</code>, <code>app_cannot_open_folders</code>: esta versión de MarsDawn no puede mostrar una carpeta, así que no se abrió nada. Solo <code>open</code> devuelve este código.</li>
-  <li><code>64</code>: error de uso, como una opción desconocida, un valor no válido, una línea fuera de rango, <code>--line</code> con más de un archivo o con una carpeta, más de una carpeta o <code>-a</code>. Este se imprime como texto en stderr, incluso con <code>--json</code>.</li>
+  <li><code>7</code>, <code>skill_install_failed</code>: <code>skill --install</code> no pudo crear la carpeta ni escribir el archivo. Un SKILL.md existente se deja como estaba.</li>
+  <li><code>64</code>: error de uso. La mayoría, como una opción desconocida, un valor no válido, una línea fuera de rango, <code>--line</code> con más de un archivo o con una carpeta, más de una carpeta o <code>-a</code>, se imprimen como texto en stderr, incluso con <code>--json</code>. Estos tienen su propio <code>error</code> e imprimen JSON en stdout, como cualquier otro error:
+    <ul>
+      <li><code>wait_out_of_range</code>: <code>open --wait</code> fuera de 0 a 30.</li>
+      <li><code>skill_differs</code>, <code>skill_unsafe_symlink</code>, <code>skill_target_not_a_file</code>, <code>skill_unreadable</code>: <code>skill --install</code> se negó a escribir.</li>
+      <li><code>output_folder_missing</code>, <code>output_symlink</code>, <code>output_not_a_file</code>: <code>theme preview</code> rechazó la ruta de <code>-o</code>.</li>
+    </ul>
+  </li>
 </ul>
 
 <h2>Esquemas JSON</h2>
