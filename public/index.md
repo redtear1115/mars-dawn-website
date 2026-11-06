@@ -62,7 +62,7 @@ Know before you buy. [What MarsDawn doesn't do](/limits/)
 
 ## How the pieces fit
 
-What each part does today, as of MarsDawn 1.1.1, marsdawn 0.6.4 and marsdawn-mcp v0.2.4.
+What each part does today, as of MarsDawn 1.2.1, marsdawn 0.6.4 and marsdawn-mcp v0.2.4.
 
 | Capability | In the app | CLI | MCP / skill | Status |
 |---|---|---|---|---|

@@ -6,6 +6,32 @@ Lo que viene después está en la [hoja de ruta](/es/roadmap/).
 
 ## App MarsDawn
 
+### MarsDawn 1.2.1
+
+3 de noviembre de 2026
+
+- En el Mac, abre archivos JSON y YAML como documentos editables, con una vista previa en árbol que se actualiza mientras escribes. Vista Rápida en el Finder muestra el mismo árbol.
+- MarsDawn ya está en iPhone y iPad, para leer. Con la misma cuenta de Apple, una prueba y un desbloqueo cubren Mac, iPhone y iPad, y las pantallas de desbloqueo ahora lo indican.
+
+### MarsDawn 1.2.0
+
+27 de octubre de 2026
+
+- Una barra de formato sobre el editor y el nuevo menú Formato insertan negrita (⌘B), cursiva (⌘I), tachado (⇧⌘X), encabezados H1–H6 (⌥⌘1–⌥⌘6), código, citas, listas con viñetas, numeradas y de tareas, enlaces (⌘K), «Imagen…», tablas, separadores, diagramas de Mermaid y fórmulas. Activa por omisión; ocúltala en Visualización > «Ocultar barra de formato» o en Ajustes > Aspecto.
+- Visualización > Solo código > «Ocultar sintaxis de Markdown» (⌘/) oculta las marcas en Solo código dejando en Markdown la línea del cursor, y recuerda tu elección.
+- Archivo > «Nuevo a partir del portapapeles» (⌥⌘V) abre el portapapeles en un documento nuevo. Si contiene texto JSON escapado de una IA (como \n), lo convierte una vez para leerlo y muestra una barra para conservar el original.
+- Selecciona texto en el editor o en la vista previa y usa «Enviar a…» en el menú contextual para abrir Claude o ChatGPT con una indicación, tu selección, la ruta relativa (o el nombre del archivo) y los números de línea. Pide confirmación el primer uso y ofrece copiar si la selección es demasiado larga.
+- Edición > «Copiar como texto con formato» copia los bloques seleccionados, o todo el documento, con formato para Mail, Pages, Documentos de Google o Notion, junto con el Markdown en texto sin formato.
+- Ayuda > «Instalar la herramienta de línea de comandos y la skill de agente…» abre una ventana con el comando de una línea e instrucciones para copiar en tu agente de IA, sin instalar nada por sí misma.
+- Archivo > «Exportar como PDF…» añade un menú «Disposición» (recordado entre exportaciones) con tres opciones para cualquier tema: «Estándar», «Guía» (portada desde tu front matter, índice numerado, cada capítulo en página nueva, pie «n / N», marcadores PDF y margen de encuadernación) y «Folleto» (columna derecha para notas, título en la página 1, pie «nombre · fecha · n / N» y tablas anchas). «Imprimir…» usa siempre «Estándar».
+- Pulsa ⌘F en Solo vista previa o en el lado de la vista previa en modo Dividido para buscar: ⌘G y ⇧⌘G recorren las coincidencias dando la vuelta, ⌘E usa la selección actual y los resultados se resaltan en amarillo. En modo Dividido busca en el lado activo.
+- El texto entre virgulillas simples sin espacios, como ~x~, ahora se muestra como subíndice, igual que en HackMD. Para tachar texto, usa dos virgulillas: ~~x~~. Esto se aplica a la vista previa, a «Exportar como PDF» y a Vista rápida.
+- MarsDawn ahora también lee más sintaxis de HackMD: ==resaltado==, ^superíndice^, una tabla de contenido con [TOC], tamaños de imagen como =300x200 e inserciones como {%youtube %}, que aparecen como enlaces.
+- «Mantener saltos de línea simples» en Ajustes > Aspecto respeta cada salto de línea del código en la vista previa, «Exportar como PDF», al imprimir y en Vista rápida, como en HackMD.
+- Los archivos Markdown en otra codificación (como Big5) se abren en solo lectura con una barra para «Guardar como UTF-8…». «Exportar como PDF…» e «Imprimir…» siguen funcionando igual.
+- En documentos de más de 16 MiB, la barra lateral Esquema muestra «Este documento es demasiado grande para mostrar un esquema.» en vez de «Sin encabezados».
+- El recuento de palabras ya no cuenta bloques de código en secciones details plegadas, y las llamadas a nota al pie sobre una tabla se muestran como enlaces.
+
 ### MarsDawn 1.1.1
 
 15 de octubre de 2026
@@ -20,6 +46,33 @@ Las versiones anteriores solo tienen notas en inglés: [ver el historial en ingl
 ## Herramienta de línea de comandos marsdawn
 
 No se incluyen las versiones anteriores a la 0.5.1.
+
+### marsdawn 0.7.6
+
+2 de noviembre de 2026. Los PDF de Guía en macOS 27.2.
+
+- En macOS 27.2, un PDF con la disposición Guía conserva los números de página de la tabla de contenido y los marcadores de los capítulos que empiezan en una página nueva.
+
+### marsdawn 0.7.5
+
+30 de octubre de 2026. Los encabezados de Folleto no se separan de sus tablas.
+
+- En la disposición Folleto, un encabezado se mantiene con la tabla ancha que tiene debajo, en lugar de quedar solo al pie de la página.
+
+### marsdawn 0.7.4
+
+25 de octubre de 2026. Correcciones en las notas al pie.
+
+- Una referencia a nota al pie en el párrafo justo encima de una tabla enlaza con su nota.
+- Una referencia a nota al pie en el título de un aviso destacado, el resumen de un spoiler o el texto alternativo de una imagen ya no deja caracteres sobrantes en la página. En el texto alternativo se queda tal como se escribió.
+- Una referencia a nota al pie en una línea posterior de la definición de una nota queda en el lugar correcto, así que ya no rompe un código en línea cercano.
+- La skill para agentes nombra todos los errores de uso que imprimen JSON.
+
+### marsdawn 0.7.3
+
+22 de octubre de 2026. La disposición Folleto.
+
+- `marsdawn export --layout handout` deja una columna de notas en blanco a la derecha de cada página, pone el título y la fecha en la parte superior de la página 1 y termina cada página con el nombre del archivo, la fecha y el número de página. Una tabla muy ancha puede invadir la columna de notas.
 
 ### marsdawn 0.7.2
 

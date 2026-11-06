@@ -18,6 +18,10 @@ program, never typed. Each comment is fetched by id with `gh api` and held to th
   standing machine-locale OK. One section per locale (## zh-Hans ...) with items A to F, and E as one
   table. Its changelog entries use ### headings (the page's level since #273); they are read as ##, the
   level the build inserts at, with nothing else changed.
+- K, #355 6666174606 (Aria, 2026-11-05): the 0.7.3 to 0.7.6 changelog entries in en and zh-Hant, approved by
+  the owner on 2026-11-06 (#355 6683315581). K_i18n, #355 6684157004 (Aria, 2026-11-06): the same in the
+  other six locales, under the standing machine-locale OK. One `## <locale>` section with one md block in
+  each; ### headings are read as ##, as in I.
 
 Writes scripts/cli254/data.py, which scripts/build_pages.py reads (apply_cli254). The text is the
 comments' Markdown; the build turns it into HTML with rich_pages.md_inline. Schema notes are HTML in
@@ -300,6 +304,32 @@ def apply_295(data: dict) -> None:
                 data[loc]["schema_notes"][key] = row[cols[loc]]
 
 
+NEW_355 = ["0.7.6", "0.7.5", "0.7.4", "0.7.3"]
+
+
+def apply_355(body: str, locales: list, data: dict) -> None:
+    """K and K_i18n: each locale's section holds one block with the four entries, newest first."""
+    names = {name.lower(): site for name, site in LABELS.items()}
+    sections = {}
+    for part in re.split(r"(?m)^## ", body.replace("\r\n", "\n")):
+        head = part.split("\n", 1)[0].strip().lower()
+        if head in names and names[head] in locales:
+            sections[names[head]] = part
+    if sorted(sections) != sorted(locales):
+        raise Stop(f"K: locale sections {sorted(sections)}")
+    for locale in locales:
+        found = re.findall(r"(?ms)^```md\n(.*?)\n```$", sections[locale])
+        if len(found) != 1:
+            raise Stop(f"K {locale}: {len(found)} blocks")
+        chunks = re.split(r"(?m)^(?=### marsdawn )", found[0])
+        chunks = [chunk.rstrip("\n") for chunk in chunks if chunk.strip()]
+        versions = [re.match(r"### marsdawn (\S+)\n\n", chunk).group(1) for chunk in chunks]
+        if versions != NEW_355:
+            raise Stop(f"K {locale}: versions {versions}")
+        for version, chunk in zip(versions, chunks):
+            data[locale]["changelog"][version] = entry(chunk[1:], version)
+
+
 def build() -> tuple:
     c = SOURCES["comments"]
     fetch(c["approval"])
@@ -316,6 +346,9 @@ def build() -> tuple:
         data[loc] = {"changelog": {}}
     parse_i(fetch(c["I"]), machine, data)
     apply_295(data)
+    fetch(c["approval_355"])
+    apply_355(fetch(c["K"]), ["en", "zh-hant"], data)
+    apply_355(fetch(c["K_i18n"]), ["zh-hans", "ja", "ko", "de", "fr", "es"], data)
     return data, shared
 
 

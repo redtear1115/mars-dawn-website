@@ -26,28 +26,32 @@
  },
  "app": {
   "repo": "redtear1115/mars-dawn",
-  "commit": "38ccf057dc27ad06c650413c86054ac5061fd90a",
+  "commit": "1a048a6255c97fa5600807ee276fa0e7984d0ab3",
   "files": {
    "docs/release-notes/1.0.2.md": "a1005eb6b9ae7987673b8717c4d67d74410d0a9087fe69eec9db925ff85cf428",
    "docs/release-notes/1.1.0.md": "8ad1f81575582a09591e5f962f1d1149875c9c9ae4165f82636223e8d3629bce",
-   "docs/release-notes/1.1.1.md": "53031f43c9801997c8b30b48a1b5e08afb45c9e9f348255a51952251cbfa2731"
+   "docs/release-notes/1.1.1.md": "53031f43c9801997c8b30b48a1b5e08afb45c9e9f348255a51952251cbfa2731",
+   "docs/release-notes/1.2.0.md": "6b23a1720d78241dcab0b4c14ff6ee14691dd7f8bd2b2e199280c64404a5fc50",
+   "docs/release-notes/1.2.1.md": "572213d24996c1c61f23e8d83420014195f19a5e49cee397c73c69fa8b46d681"
   }
  },
  "asc": {
-  "what": "App Store Connect read, GET only, of every Mac version's localizations and What's New (#273 comment 6249047503)",
-  "fetched_at": "2026-10-18T10:59:55.462098+00:00",
-  "sha256": "2e57a3ddc2b2093982b076cecce8a8324e68ab7136354d5d202ffd2db04c7af6"
+  "what": "App Store Connect read, GET only, of every Mac version's localizations and What's New (tools/release/asc.py, 2026-11-06, #266)",
+  "fetched_at": "2026-11-06T02:25:44.604821+00:00",
+  "sha256": "40d40d6470880a005d1ffeaf82f48e7e9031b140294c0a8e564cb30ac4c055e5"
  },
  "first_version": "1.0.0",
  "dates": {
-  "url": "https://apps.apple.com/us/app/id6812925073",
-  "read": "2026-10-20",
+  "url": "https://apps.apple.com/us/app/id6812925073?platform=mac",
+  "read": "2026-11-06",
   "rule": "the date the App Store's version history gives (its <time datetime>, the UTC date of the timestamp below); the tw storefront gives the same dates"
  },
  "versions": [
   {"version": "1.0.0", "released": "2026-10-05", "released_at_store": "Mon Oct 05 2026 22:15:27 GMT+0000 (Coordinated Universal Time)"},
   {"version": "1.0.2", "released": "2026-10-07", "released_at_store": "Wed Oct 07 2026 16:29:16 GMT+0000 (Coordinated Universal Time)"},
   {"version": "1.1.0", "released": "2026-10-09", "released_at_store": "Fri Oct 09 2026 08:15:17 GMT+0000 (Coordinated Universal Time)"},
-  {"version": "1.1.1", "released": "2026-10-15", "released_at_store": "Thu Oct 15 2026 20:36:01 GMT+0000 (Coordinated Universal Time)"}
+  {"version": "1.1.1", "released": "2026-10-15", "released_at_store": "Thu Oct 15 2026 20:36:01 GMT+0000 (Coordinated Universal Time)"},
+  {"version": "1.2.0", "released": "2026-10-27", "released_at_store": "Tue Oct 27 2026 17:08:18 GMT+0000 (Coordinated Universal Time)"},
+  {"version": "1.2.1", "released": "2026-11-03", "released_at_store": "Tue Nov 03 2026 19:21:37 GMT+0000 (Coordinated Universal Time)"}
  ]
 }

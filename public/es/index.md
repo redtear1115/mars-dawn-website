@@ -62,7 +62,7 @@ Lo que conviene saber antes de comprar. [Lo que MarsDawn no hace](/es/limits/)
 
 ## Cómo encajan las piezas
 
-Lo que hace cada parte hoy, con MarsDawn 1.1.1, marsdawn 0.6.4 y marsdawn-mcp v0.2.4.
+Lo que hace cada parte hoy, con MarsDawn 1.2.1, marsdawn 0.6.4 y marsdawn-mcp v0.2.4.
 
 | Función | En la app | CLI | MCP / skill | Estado |
 |---|---|---|---|---|
