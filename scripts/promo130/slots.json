@@ -8648,7 +8648,7 @@
     {
      "comment": 6218632854,
      "round": "R2",
-     "locator": "lacks 加的句子, en, spliced after 'Its PDFs have no page numbers.'"
+     "locator": "lacks 加的句子, en, spliced after 'Page numbers come only with the Handbook and Handout PDF layouts.'"
     }
    ],
    "item": "#242(d) What MarsDawn lacks (A)",
@@ -9920,7 +9920,7 @@
     {
      "comment": 6218632854,
      "round": "R2",
-     "locator": "lacks 加的句子, zh-hant, spliced after '輸出的 PDF 沒有頁碼。'"
+     "locator": "lacks 加的句子, zh-hant, spliced after '只有手冊與講義版面的 PDF 有頁碼。'"
     }
    ],
    "item": "#242(d) What MarsDawn lacks (A)",
@@ -12459,7 +12459,7 @@
     {
      "comment": 6218632854,
      "round": "R2",
-     "locator": "lacks 加的句子, ja, spliced after 'PDF にページ番号は入りません。'"
+     "locator": "lacks 加的句子, ja, spliced after 'PDF にページ番号が入るのは、ハンドブックと配布資料のレイアウトだけです。'"
     }
    ],
    "item": "#242(d) What MarsDawn lacks (A)",

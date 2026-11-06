@@ -254,10 +254,7 @@ FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur u
                'lead': '',
                'lead_links': [],
                'items': [{'h': 'Fenêtres et onglets',
-                          'p': 'Chaque document s’ouvre dans sa propre fenêtre. Choisissez Fenêtre '
-                               '▸ Fusionner toutes les fenêtres pour regrouper les fenêtres '
-                               'ouvertes en onglets d’une seule. L’enregistrement automatique se '
-                               'fait pendant la saisie.',
+                          'p': 'Par défaut, les documents s’ouvrent en onglets de la fenêtre au premier plan. Pour utiliser plutôt le réglage d’onglets de votre Mac, choisissez Suivre le réglage système dans Réglages ▸ Apparence. L’enregistrement automatique se fait pendant la saisie.',
                           'links': ['native']},
                          {'h': 'Coup d’œil dans le Finder',
                           'p': 'Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le lire mis en forme, diagrammes compris. Les fichiers JSON et YAML s’affichent en arbre. Coup d’œil utilise le thème que vous avez choisi dans MarsDawn et suit son réglage d’apparence.',
@@ -948,7 +945,7 @@ marsdawn open notes.md --folder .</code></pre>
         'native': {"alt": 'MarsDawn en vue partagée : la source Markdown à gauche, la page mise en forme à droite.',
                    "callouts": ['Une fenêtre Mac native.', 'L’éditeur de texte du Mac, avec la coloration Markdown.', '⌘1 source, ⌘2 partagé, ⌘3 aperçu.', 'La page se met à jour pendant la saisie.']},
         'limits': {"alt": 'MarsDawn en mode sombre, la source Markdown à gauche et la page mise en forme à droite.',
-                   "callouts": ['Un document par fenêtre, sur ce Mac.', 'C’est ici que vous écrivez le Markdown.', 'La barre d’outils contient les thèmes et les dispositions, et il n’y a pas de menu de plug-ins.', 'La page sert à lire, pas à modifier.']},
+                   "callouts": ['Chaque document est un fichier sur ce Mac.', 'C’est ici que vous écrivez le Markdown.', 'La barre d’outils contient les thèmes et les dispositions, et il n’y a pas de menu de plug-ins.', 'La page sert à lire, pas à modifier.']},
     }
     home = {
         "cta_cli": 'Installer la CLI gratuite',

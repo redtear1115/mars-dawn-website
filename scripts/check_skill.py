@@ -20,7 +20,7 @@ import sys
 import urllib.request
 from pathlib import Path
 
-KIT_TAG = "0.7.2"
+KIT_TAG = "0.7.3"
 URL = "https://raw.githubusercontent.com/redtear1115/mars-dawn-kit/{tag}/skill/SKILL.md"
 
 

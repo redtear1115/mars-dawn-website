@@ -6,6 +6,32 @@ Mac App Store 上的 MarsDawn App，以及免費的 marsdawn 命令列工具，�
 
 ## MarsDawn App
 
+### MarsDawn 1.2.1
+
+2026 年 11 月 3 日
+
+- 在 Mac 上，JSON 和 YAML 檔可以當成文件打開來編輯，旁邊的樹狀預覽會隨著打字更新。在 Finder 用「快速查看」也會看到同樣的樹狀檢視。
+- MarsDawn 現在也有 iPhone 和 iPad 版，用來閱讀。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad；解鎖畫面現在也會寫明。
+
+### MarsDawn 1.2.0
+
+2026 年 10 月 27 日
+
+- Markdown 編輯器上方新增格式列，選單列也新增「格式」選單，可插入粗體（⌘B）、斜體（⌘I）、刪除線（⇧⌘X）、標題 H1–H6（⌥⌘1–⌥⌘6）、程式碼、引言、項目符號列表、編號列表、檢查表、連結（⌘K）、圖片⋯、表格、分隔線、Mermaid 圖表與數學公式。格式列預設開啟，可從「顯示方式 ▸ 隱藏格式列」或「設定 ▸ 外觀」關閉。
+- 「顯示方式 ▸ 只顯示原始碼 ▸ 隱藏 Markdown 符號」（⌘/）會在「只顯示原始碼」版面隱藏 Markdown 標記（游標所在那一行仍顯示原始碼），並記住設定。
+- 「檔案 ▸ 從剪貼板新增」（⌥⌘V）會把剪貼板上的文字開成一份新的 Markdown 文件。若剪貼板是 AI 輸出的 JSON 跳脫文字（例如 \n），MarsDawn 會先還原一次以便閱讀，並顯示提示列，可隨時關閉以保留剪貼板原文。
+- 在編輯器或預覽選取文字後按右鍵選「傳給⋯」，就能把選取文字連同提示、檔案在專案中的路徑（或檔名）與行號帶到 Claude 或 ChatGPT。每個服務第一次使用時會先請你確認；選取內容太長、放不進連結時則會提醒並改為拷貝提示。
+- 「編輯 ▸ 拷貝為豐富文字」會把選取範圍所在的段落（未選取時為整份文件）拷貝為帶格式的文字，可貼到「郵件」、Pages、Google 文件或 Notion，並同時附上純文字的 Markdown 原文。
+- 「輔助說明 ▸ 安裝命令列工具與 agent skill⋯」會打開說明視窗，顯示一行安裝指令並提供可拷貝給 AI agent 的設定說明；視窗本身不會安裝任何東西。
+- 「檔案 ▸ 輸出為 PDF⋯」的存檔面板新增「版面」選單，會記住上次的選擇，提供三種版面並可搭配任何主題：「標準」、「手冊」（用 front matter 產生封面、附頁碼的目錄、每章從新的一頁開始、頁尾 n / N 頁碼、PDF 書籤與裝訂邊），以及「講義」（右側留白供作筆記、首頁標題、頁尾「名稱 · 日期 · n / N」，寬表格可延伸到筆記欄）。「列印⋯」一律使用「標準」版面。
+- 在「只顯示預覽」或「並排」的預覽側按 ⌘F 會出現搜尋列：⌘G 與 ⇧⌘G 可跳到下一個或上一個相符項目（到底後會繞回開頭），⌘E 會把目前選取的文字設為搜尋字串，找到的位置會以黃色標示。並排時，搜尋的是游標所在的那一側。
+- 用單一波浪號包住、中間沒有空格的文字（例如 ~x~），現在會和 HackMD 一樣顯示成下標。要刪除線請用兩個波浪號：~~x~~。預覽、「輸出為 PDF」與「快速查看」都一樣。
+- MarsDawn 也支援更多 HackMD 語法：==螢光標記==、^上標^、[TOC] 目錄、=300x200 這類圖片尺寸，以及 {%youtube %} 這類嵌入（顯示為連結）。
+- 「設定 ▸ 外觀」新增「保留單一換行」：開啟時，原始碼裡的每個換行在預覽、「輸出為 PDF」、列印與「快速查看」中也會換行，和 HackMD 一樣。
+- 以其他編碼（例如 Big5）儲存的 Markdown 檔案現在會以唯讀方式打開，並在視窗上方顯示編碼列，可按「儲存為 UTF-8⋯」另存一份可編輯的副本；「輸出為 PDF⋯」與「列印⋯」照常可用。
+- 超過 16 MiB 的檔案，「大綱」側邊欄現在會顯示「這份文件太大，無法顯示大綱。」，不再顯示「沒有標題」。
+- 字數統計不再算進收合的 details 區塊裡的程式碼區塊；緊接在表格上方的註腳引用現在會正確顯示為連結。
+
 ### MarsDawn 1.1.1
 
 2026 年 10 月 15 日
@@ -42,6 +68,33 @@ Mac App Store 上的 MarsDawn App，以及免費的 marsdawn 命令列工具，�
 ## marsdawn 命令列工具
 
 0.5.1 以前的版本不列。
+
+### marsdawn 0.7.6
+
+2026 年 11 月 2 日。macOS 27.2 上的手冊 PDF。
+
+- 在 macOS 27.2 上，手冊 PDF 裡從新的一頁開始的章節，會保留目錄頁碼和書籤。
+
+### marsdawn 0.7.5
+
+2026 年 10 月 30 日。講義的標題不再和表格分開。
+
+- 在講義版面，標題會和底下的寬表格留在一起，不再單獨留在頁尾。
+
+### marsdawn 0.7.4
+
+2026 年 10 月 25 日。註腳修正。
+
+- 表格正上方段落裡的註腳參照，現在會連到註腳。
+- 提示區塊標題、spoiler 摘要或圖片替代文字裡的註腳參照，不再在頁面上留下多餘字元。在替代文字裡會照原文顯示。
+- 註腳定義後面幾行的註腳參照，現在會放在正確的位置，不再弄壞旁邊的行內程式碼。
+- agent skill 列出了所有會印出 JSON 的使用方式錯誤。
+
+### marsdawn 0.7.3
+
+2026 年 10 月 22 日。講義版面。
+
+- `marsdawn export --layout handout` 會在每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。
 
 ### marsdawn 0.7.2
 
@@ -149,7 +202,7 @@ Mac App Store 上的 MarsDawn App，以及免費的 marsdawn 命令列工具，�
 - [在 Mac 上預覽 Mermaid](https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/index.md): 在 Mac 上預覽 Mermaid 圖表：原始碼旁邊即時畫出來，快速查看和輸出 PDF 也看得到。圖表寫錯時，會顯示錯誤訊息和出錯的那一行。
 - [Markdown 快速查看](https://marsdawn.southern-light.dev/zh-hant/quicklook/index.md): MarsDawn 的快速查看讓你在 Finder 按空白鍵就看到排版後的 Markdown，Mermaid 圖表、KaTeX 數學式和程式碼上色都在。試用期結束後，快速查看照常可用。
 - [Markdown 轉 PDF](https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/index.md): 免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。
-- [MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hant/vs/index.md): 寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。
+- [MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hant/vs/index.md): 寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新於 2026 年 11 月 7 日）；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。
 - [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 4.99 解鎖一次。逐項比較，附來源。
 - [2026 Mac Markdown 檢視器推薦](https://marsdawn.southern-light.dev/zh-hant/best-markdown-viewer-mac/index.md): 比較 8 款 Mac Markdown 檢視器的價格、Mermaid、數學式、PDF、自動重新載入、快速查看與原生／Electron，並說明各自適合誰。
 - [命令列工具](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。

@@ -62,7 +62,7 @@ brew install redtear1115/tap/marsdawn
 
 ## Comment les éléments s’assemblent
 
-Ce que fait chaque élément aujourd’hui, avec MarsDawn 1.1.1, marsdawn 0.6.4 et marsdawn-mcp v0.2.4.
+Ce que fait chaque élément aujourd’hui, avec MarsDawn 1.2.1, marsdawn 0.6.4 et marsdawn-mcp v0.2.4.
 
 | Fonction | Dans l’app | CLI | MCP / skill | Statut |
 |---|---|---|---|---|
@@ -150,7 +150,7 @@ En savoir plus : [Politique de confidentialité](/fr/privacy/#the-website)
 
 ### Pourquoi MarsDawn plutôt qu’une autre app ?
 
-Vous n’en avez peut-être pas besoin. Si vous écrivez surtout vos propres notes, une app de notes comme Obsidian vous conviendra mieux. Si vous passez vos journées dans VS Code, son aperçu intégré est gratuit. Si vous voulez seulement regarder rapidement vos fichiers dans le Finder, une extension Coup d’œil gratuite suffit. Si vos PDF ont besoin de numéros de page, MarsDawn n’en ajoute pas. MarsDawn sert à lire et relire le Markdown écrit par un agent : la source à côté d’un aperçu en direct, une modification de votre agent que vous annulez en une seule étape, et un fichier ouvert à la ligne exacte. S’il ne vous convient pas, écrivez-nous pour nous dire pourquoi.
+Vous n’en avez peut-être pas besoin. Si vous écrivez surtout vos propres notes, une app de notes comme Obsidian vous conviendra mieux. Si vous passez vos journées dans VS Code, son aperçu intégré est gratuit. Si vous voulez seulement regarder rapidement vos fichiers dans le Finder, une extension Coup d’œil gratuite suffit. MarsDawn sert à lire et relire le Markdown écrit par un agent : la source à côté d’un aperçu en direct, une modification de votre agent que vous annulez en une seule étape, et un fichier ouvert à la ligne exacte. S’il ne vous convient pas, écrivez-nous pour nous dire pourquoi.
 
 En savoir plus : [MarsDawn comparé aux autres outils](/fr/vs/) · [Meilleur lecteur Markdown pour Mac](/fr/best-markdown-viewer-mac/)
 
@@ -196,7 +196,7 @@ Sur cette capture d’écran :
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.

@@ -20,7 +20,7 @@ from xml.sax.saxutils import escape
 LOCALES = ("en", "zh-hant", "zh-hans", "ja", "de", "fr", "es", "ko")
 
 # The day the copy was last changed. Update it with each release, as the page says.
-LAST_UPDATED = "2026-10-23"
+LAST_UPDATED = "2026-11-07"
 
 # The page's h1 and its name in the footer (and in the sitemap-style lists that read UI["roadmap"]).
 NAME = {'en': 'Roadmap',
@@ -71,14 +71,15 @@ Everything that has shipped is in the [changelog](/changelog/).
 ## Next
 
 ### Mac 1.2.2
-- Open JSON and YAML, edit them, and see a live tree preview beside the source.
-- Open a URL: read Markdown from a public link on GitHub, a Gist or a raw file.
 - Callouts: GitHub alerts and HackMD `:::` blocks.
 - Add Claude Code's Plans folder to the sidebar in one click, newest plan first.
 
 ### Mac 1.2.3
 - After an agent changes a file, see which blocks changed.
 - An image viewer for PNG, JPEG, GIF and WebP.
+
+### Mac 1.3.0
+- Open a URL: read Markdown from a public link on GitHub, a Gist or a raw file.
 
 ### iPad and unfolded iPhone Duo (iOS 1.1)
 - Editing on the larger screen.
@@ -109,14 +110,15 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 ## 接下來
 
 ### Mac 1.2.2
-- 開啟 JSON 和 YAML，可以編輯，旁邊是即時的樹狀預覽。
-- 開啟網址：從 GitHub、Gist 或 raw 檔的公開連結讀 Markdown。
 - 提示框：支援 GitHub alerts 和 HackMD 的 `:::` 區塊。
 - 一鍵把 Claude Code 的 Plans 資料夾加進側邊欄，最新的計畫排在最上面。
 
 ### Mac 1.2.3
 - agent 改了檔案之後，看得出哪些區塊變了。
 - 圖片檢視器：開啟 PNG、JPEG、GIF、WebP。
+
+### Mac 1.3.0
+- 打開 URL：從 GitHub、Gist 或 raw 檔的公開連結讀 Markdown。
 
 ### iPad 與展開的 iPhone Duo（iOS 1.1）
 - 在大螢幕上編輯。
@@ -147,14 +149,15 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 ## 接下来
 
 ### Mac 1.2.2
-- 打开 JSON 和 YAML，可以编辑，旁边是实时的树状预览。
-- 打开网址：从 GitHub、Gist 或 raw 文件的公开链接读取 Markdown。
 - 提示框：支持 GitHub alerts 和 HackMD 的 `:::` 区块。
 - 一键把 Claude Code 的 Plans 文件夹加入边栏，最新的计划排在最上面。
 
 ### Mac 1.2.3
 - 代理改了文件之后，看得出哪些区块变了。
 - 图片查看器：打开 PNG、JPEG、GIF、WebP。
+
+### Mac 1.3.0
+- 打开网址：从 GitHub、Gist 或 raw 文件的公开链接读取 Markdown。
 
 ### iPad 与展开的 iPhone Duo（iOS 1.1）
 - 在大屏幕上编辑。
@@ -185,14 +188,15 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 ## 今後の予定
 
 ### Mac 1.2.2
-- JSON と YAML を開いて編集でき、横にリアルタイムのツリープレビューを表示します。
-- URL を開く：GitHub、Gist、raw ファイルの公開リンクから Markdown を読み込みます。
 - コールアウト：GitHub alerts と HackMD の `:::` ブロックに対応します。
 - Claude Code の Plans フォルダをワンクリックでサイドバーに追加。新しいプランが一番上に並びます。
 
 ### Mac 1.2.3
 - エージェントがファイルを変更したあと、どのブロックが変わったかがわかります。
 - 画像ビューア：PNG、JPEG、GIF、WebP を開けます。
+
+### Mac 1.3.0
+- URL を開く：GitHub、Gist、raw ファイルの公開リンクから Markdown を読み込みます。
 
 ### iPad と開いた iPhone Duo（iOS 1.1）
 - 大きな画面での編集。
@@ -223,14 +227,15 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 ## Als Nächstes
 
 ### Mac 1.2.2
-- JSON und YAML öffnen, bearbeiten und neben dem Quelltext eine Live-Baumvorschau sehen.
-- URL öffnen: Markdown von einem öffentlichen Link auf GitHub, aus einem Gist oder einer Raw-Datei lesen.
 - Callouts: GitHub-Alerts und HackMD-Blöcke mit `:::`.
 - Den Plans-Ordner von Claude Code mit einem Klick zur Seitenleiste hinzufügen, den neuesten Plan zuerst.
 
 ### Mac 1.2.3
 - Nachdem ein Agent eine Datei geändert hat, sehen, welche Blöcke sich geändert haben.
 - Ein Bildbetrachter für PNG, JPEG, GIF und WebP.
+
+### Mac 1.3.0
+- URL öffnen: Markdown von einem öffentlichen Link auf GitHub, aus einem Gist oder einer Raw-Datei lesen.
 
 ### iPad und aufgeklapptes iPhone Duo (iOS 1.1)
 - Bearbeiten auf dem größeren Bildschirm.
@@ -261,14 +266,15 @@ Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/chang
 ## Ensuite
 
 ### Mac 1.2.2
-- Ouvrir du JSON et du YAML, les modifier et voir un aperçu en arborescence en direct à côté de la source.
-- Ouvrir une URL : lire du Markdown depuis un lien public sur GitHub, un Gist ou un fichier brut.
 - Encadrés : les alertes GitHub et les blocs `:::` de HackMD.
 - Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.
 
 ### Mac 1.2.3
 - Après qu’un agent a modifié un fichier, voir quels blocs ont changé.
 - Un visualiseur d’images pour PNG, JPEG, GIF et WebP.
+
+### Mac 1.3.0
+- Ouvrir une URL : lire du Markdown depuis un lien public sur GitHub, un Gist ou un fichier brut.
 
 ### iPad et iPhone Duo déplié (iOS 1.1)
 - Modifier sur le grand écran.
@@ -299,14 +305,15 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 ## A continuación
 
 ### Mac 1.2.2
-- Abre JSON y YAML, edítalos y ve una vista previa en árbol en vivo junto al código fuente.
-- Abrir una URL: lee Markdown desde un enlace público de GitHub, un Gist o un archivo raw.
 - Avisos destacados: las alertas de GitHub y los bloques `:::` de HackMD.
 - Añade la carpeta Plans de Claude Code a la barra lateral con un clic, con el plan más reciente arriba.
 
 ### Mac 1.2.3
 - Después de que un agente cambie un archivo, ve qué bloques cambiaron.
 - Un visor de imágenes para PNG, JPEG, GIF y WebP.
+
+### Mac 1.3.0
+- Abrir una URL: lee Markdown desde un enlace público de GitHub, un Gist o un archivo raw.
 
 ### iPad y iPhone Duo desplegado (iOS 1.1)
 - Edición en la pantalla más grande.
@@ -337,14 +344,15 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 ## 다음 계획
 
 ### Mac 1.2.2
-- JSON과 YAML을 열어 편집하고, 옆에서 실시간 트리 미리보기를 봅니다.
-- URL 열기: GitHub, Gist, raw 파일의 공개 링크에서 Markdown을 읽습니다.
 - 콜아웃: GitHub alerts와 HackMD의 `:::` 블록을 지원합니다.
 - Claude Code의 Plans 폴더를 클릭 한 번으로 사이드바에 추가하고, 최신 계획을 맨 위에 둡니다.
 
 ### Mac 1.2.3
 - 에이전트가 파일을 바꾼 뒤 어떤 블록이 바뀌었는지 보여 줍니다.
 - 이미지 뷰어: PNG, JPEG, GIF, WebP를 엽니다.
+
+### Mac 1.3.0
+- URL 열기: GitHub, Gist, raw 파일의 공개 링크에서 Markdown을 읽습니다.
 
 ### iPad 및 펼친 iPhone Duo (iOS 1.1)
 - 큰 화면에서 편집.

@@ -31,7 +31,7 @@ Une app native, légère et gratuite (CodeMirror dans une web view), avec Coup d
 Une app Mac native qui affiche la source et un aperçu en direct côte à côte, avec Mermaid et KaTeX intégrés. Quand un agent enregistre le fichier, la fenêtre ouverte prend la modification comme une seule mise à jour depuis le disque, que vous pouvez annuler. `marsdawn open notes.md:120` ouvre un fichier à une ligne, et un skill ainsi qu’un serveur MCP sont fournis pour les agents. Coup d’œil fonctionne avec ou sans l’essai. « Copier pour l’IA » et « Copier la référence » transmettent du texte à un agent. Rien ne quitte votre Mac sans votre choix.
 
 - Pour : ceux qui relisent le Markdown écrit par des agents IA.
-- Défaut : l’export PDF n’a pas de numéros de page.
+- Défaut : les numéros de page exigent la mise en page Guide ou Polycopié. La mise en page par défaut, Document, n’en a pas.
 - Prix : téléchargement gratuit avec 14 jours d’essai, puis 4,99 USD une seule fois. Sans compte. Uniquement sur le Mac App Store.
 
 ## Obsidian
@@ -73,7 +73,7 @@ L’aperçu Markdown intégré, avec Mermaid intégré depuis la 1.121 et KaTeX.
 | MacDown 3000 | Gratuit | Oui | MathJax | Oui | Oui | Non documenté | Oui | Natif |
 | Marked 3 | Dès 2,99 USD/mois | Oui | MathJax, KaTeX | Oui, numéros de page | Oui | Non documenté | Marked QL, 9,99 USD | Natif |
 | MarkEdit | Gratuit | Extension | KaTeX (extension) | Pandoc | Non documenté | Non documenté | Oui | Natif (web view) |
-| MarsDawn | 4,99 USD une fois | Oui | KaTeX | Oui, sans numéros de page | Oui, annulable | Oui | Oui | Natif |
+| MarsDawn | 4,99 USD une fois | Oui | KaTeX | Oui, numéros de page en Guide et Polycopié | Oui, annulable | Oui | Oui | Natif |
 | Obsidian | Gratuit | Oui | MathJax | Oui | Oui | Non documenté | Non documenté | Electron |
 | QLMarkdown | Gratuit | À activer | MathJax (à activer) | Non documenté | Sans objet | Sans objet | C’en est une | Natif |
 | Typora | 14,99 USD une fois | Oui | MathJax | Oui, numéros de page | Non documenté | Non documenté | Non documenté | Natif |
@@ -81,7 +81,6 @@ L’aperçu Markdown intégré, avec Mermaid intégré depuis la 1.121 et KaTeX.
 
 ## À qui MarsDawn ne convient pas
 
-- Il vous faut des numéros de page dans vos PDF. Typora et Marked 3 les ajoutent, MarsDawn non.
 - Vous entretenez une base de connaissances de notes liées. Obsidian est fait pour cela.
 - Vous ne quittez jamais VS Code. Son aperçu intégré est gratuit, et VS Code ajoute une vue Markdown expérimentale à sa fenêtre Agents.
 - Vous voulez seulement un aperçu dans le Finder. QLMarkdown est gratuit.
@@ -94,7 +93,7 @@ MacDown 3000, Obsidian et VS Code (1.121 et ultérieur) l’intègrent. QLMarkdo
 
 ### Lesquels exportent un PDF avec numéros de page ?
 
-Typora et Marked 3. MarsDawn exporte le PDF sans numéros de page.
+Typora, Marked 3 et MarsDawn. Dans MarsDawn, choisissez la mise en page Guide ou Polycopié ; la mise en page par défaut, Document, n’a pas de numéros de page.
 
 ### Lesquels ouvrent un fichier à une ligne précise depuis la ligne de commande ?
 
@@ -121,7 +120,7 @@ Toutes sauf Obsidian et VS Code. MarkEdit est natif, avec sa zone d’édition d
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.
 - [marsdawn pour les agents](https://marsdawn.southern-light.dev/fr/cli/agents/index.md): Une référence pour les agents IA et les scripts qui appellent marsdawn pour convertir du Markdown en PDF : commandes, sortie JSON, schémas, codes de sortie et configuration requise.
