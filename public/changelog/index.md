@@ -6,6 +6,32 @@ What's coming next is on the [roadmap](/roadmap/).
 
 ## MarsDawn app
 
+### MarsDawn 1.2.1
+
+3 November 2026
+
+- On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree.
+- MarsDawn is now on iPhone and iPad, for reading. With the same Apple Account, one trial and one unlock cover Mac, iPhone and iPad, and the unlock screens now say so.
+
+### MarsDawn 1.2.0
+
+27 October 2026
+
+- A formatting bar above the Markdown editor and a new Format menu insert bold (⌘B), italic (⌘I), strikethrough (⇧⌘X), headings H1-H6 (⌥⌘1-⌥⌘6), code, quotes, bulleted, numbered and task lists, links (⌘K), images, tables, horizontal rules, Mermaid diagrams and math. On by default; hide it from View > Hide Formatting Bar or Settings > Appearance.
+- View > Source Only > Hide Markdown Syntax (⌘/) hides Markdown markers in Source Only while keeping the caret's line in plain Markdown, and remembers your choice.
+- File > New from Clipboard (⌥⌘V) opens clipboard text as a new document. If the clipboard holds JSON-escaped AI output (such as \n), MarsDawn unescapes it once and shows a bar to turn that off.
+- Select text in the editor or preview and Control-click for Send to... to open Claude or ChatGPT with a prompt, your selection, the project-relative path (or file name) and line numbers. First use asks for confirmation; long selections offer to copy the prompt instead.
+- Edit > Copy as Rich Text copies the selected blocks, or the whole document, as formatted text for Mail, Pages, Google Docs or Notion, with the Markdown alongside as plain text.
+- Help > Install the CLI and Agent Skill... opens a window with the one-line install command and copyable instructions for your AI agent; it installs nothing itself.
+- File > Export as PDF... adds a Layout menu (remembered across exports) with three choices that work with any theme: Document, Handbook (cover from front matter, numbered table of contents, each chapter on a new page, n / N footer, PDF bookmarks and binding margin) and Handout (blank right-hand note column, page-1 title header, name/date/n / N footer, and wide tables extending into the note column). Print... always uses Document.
+- Press ⌘F in Preview Only, or on the preview side of Split, to search the preview: ⌘G and ⇧⌘G step through matches and wrap around, ⌘E uses the current selection as the search text, and matches are highlighted in yellow. In Split, Find searches the focused side.
+- Text between single tildes with no spaces, like ~x~, now shows as subscript, as in HackMD. For strikethrough, use two tildes: ~~x~~. This applies to the preview, Export as PDF and Quick Look.
+- MarsDawn now also reads more HackMD syntax: ==highlight==, ^superscript^, a [TOC] table of contents, image sizes such as =300x200, and embeds such as {%youtube %}, which appear as links.
+- Keep single line breaks in Settings > Appearance makes each line break in the source also break the line in the preview, Export as PDF, printing and Quick Look, as in HackMD.
+- Markdown files in other encodings (such as Big5) now open read-only with an encoding bar offering Save As UTF-8.... Export as PDF... and Print... still work as usual.
+- For documents over 16 MiB, the Outline sidebar now says "This document is too large to show an outline." instead of "No headings".
+- Word count no longer counts code blocks inside collapsed details sections, and a footnote reference right above a table now renders as a link.
+
 ### MarsDawn 1.1.1
 
 15 October 2026

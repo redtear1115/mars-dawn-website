@@ -6,6 +6,32 @@ Was als Nächstes kommt, steht in der [Roadmap](/de/roadmap/).
 
 ## MarsDawn-App
 
+### MarsDawn 1.2.1
+
+3. November 2026
+
+- Auf dem Mac öffnest du JSON- und YAML-Dateien als bearbeitbare Dokumente, daneben eine Baumvorschau, die sich beim Tippen aktualisiert. Die Übersicht im Finder zeigt denselben Baum.
+- MarsDawn gibt es jetzt auch für iPhone und iPad, zum Lesen. Mit demselben Apple Account gelten ein Test und eine Freischaltung für Mac, iPhone und iPad, und die Freischaltungsbildschirme sagen das jetzt auch.
+
+### MarsDawn 1.2.0
+
+27. Oktober 2026
+
+- Eine Formatleiste über dem Editor und das neue Menü „Format“ fügen Fett (⌘B), Kursiv (⌘I), Durchgestrichen (⇧⌘X), Überschriften H1–H6 (⌥⌘1–⌥⌘6), Code, Zitate, Aufzählungs-, nummerierte und Checklisten, Links (⌘K), „Bild …“, Tabellen, Trennlinien, Mermaid-Diagramme und Formeln ein. Standardmäßig aktiv; umschaltbar über Darstellung > „Formatleiste ausblenden“ oder Einstellungen > Erscheinungsbild.
+- Darstellung > Nur Quelltext > „Markdown-Syntax ausblenden“ (⌘/) blendet Markdown-Zeichen unter „Nur Quelltext“ aus (die Cursorzeile bleibt reines Markdown) und merkt sich die Einstellung.
+- Ablage > „Neu aus der Zwischenablage“ (⌥⌘V) öffnet Text aus der Zwischenablage als neues Dokument. JSON-maskierter KI-Text (etwa \n) wird einmal zum Lesen umgewandelt; über eine Leiste lässt sich der Originaltext behalten.
+- Text im Editor oder in der Vorschau auswählen und im Kontextmenü „Senden an …“ wählen, um Claude oder ChatGPT mit Prompt, Auswahl, relativem Dateipfad (oder Dateinamen) und Zeilennummern zu öffnen. Beim ersten Mal wird nachgefragt; bei zu langer Auswahl wird das Kopieren angeboten.
+- Bearbeiten > „Als Rich Text kopieren“ kopiert die gewählten Blöcke oder das ganze Dokument als formatierten Text für Mail, Pages, Google Docs oder Notion, samt Markdown als reinem Text.
+- Hilfe > „Befehlszeilentool und Agent-Skill installieren …“ öffnet ein Fenster mit dem Installationsbefehl und kopierbaren Anleitungen für KI-Agenten; es installiert selbst nichts.
+- Ablage > „Als PDF exportieren …“ bietet im Menü „Layout“ drei gemerkte Optionen für jedes Theme: „Standard“, „Handbuch“ (Deckblatt aus dem front matter, nummeriertes Inhaltsverzeichnis, Kapitel auf neuer Seite, Fußzeile „n / N“, PDF-Lesezeichen, Bundsteg) und „Handout“ (rechte Notizspalte, Titelkopf auf Seite 1, Fußzeile „Name · Datum · n / N“, breite Tabellen bis in die Notizspalte). „Drucken …“ nutzt immer „Standard“.
+- Mit ⌘F in „Nur Vorschau“ oder auf der Vorschauseite von „Geteilt“ öffnet sich die Suchleiste: ⌘G und ⇧⌘G springen umlaufend durch Treffer, ⌘E übernimmt die Auswahl als Suchbegriff, und Treffer werden gelb markiert. Unter „Geteilt“ wird auf der fokussierten Seite gesucht.
+- Text zwischen einzelnen Tilden ohne Leerzeichen, etwa ~x~, erscheint jetzt wie in HackMD tiefgestellt. Für durchgestrichenen Text zwei Tilden verwenden: ~~x~~. Das gilt für die Vorschau, „Als PDF exportieren“ und die Übersicht.
+- MarsDawn versteht jetzt auch mehr HackMD-Syntax: ==Hervorhebung==, ^Hochgestellt^, ein Inhaltsverzeichnis mit [TOC], Bildgrößen wie =300x200 und Einbettungen wie {%youtube %}, die als Links erscheinen.
+- „Einzelne Zeilenumbrüche beibehalten“ unter Einstellungen > Erscheinungsbild erhält jeden Zeilenumbruch im Quelltext wie in HackMD auch in der Vorschau, bei „Als PDF exportieren“, beim Drucken und in der Übersicht.
+- Anders kodierte Markdown-Dateien (etwa Big5) öffnen sich schreibgeschützt mit einer Kodierungsleiste für „Als UTF-8 sichern …“. „Als PDF exportieren …“ und „Drucken …“ funktionieren wie gewohnt.
+- Bei Dokumenten über 16 MiB zeigt die Seitenleiste „Gliederung“ jetzt „Dieses Dokument ist zu groß, um eine Gliederung anzuzeigen.“ statt „Keine Überschriften“.
+- Die Wortzählung ignoriert Codeblöcke in eingeklappten details-Abschnitten, und Fußnotenverweise direkt über einer Tabelle erscheinen jetzt als Link.
+
 ### MarsDawn 1.1.1
 
 15. Oktober 2026

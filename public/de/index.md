@@ -62,7 +62,7 @@ Gut zu wissen, bevor du kaufst. [Was MarsDawn nicht kann](/de/limits/)
 
 ## Wie die Teile zusammenpassen
 
-Was jeder Teil heute kann, Stand MarsDawn 1.1.1, marsdawn 0.6.4 und marsdawn-mcp v0.2.4.
+Was jeder Teil heute kann, Stand MarsDawn 1.2.1, marsdawn 0.6.4 und marsdawn-mcp v0.2.4.
 
 | Funktion | In der App | CLI | MCP / Skill | Status |
 |---|---|---|---|---|
