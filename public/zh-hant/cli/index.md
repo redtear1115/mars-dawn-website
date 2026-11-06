@@ -69,7 +69,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--breaks`：段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句。
 - `--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。`handout` 會在每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。
 - `--toc-title <text>`：手冊目錄頁的標題，預設是 `Contents`。
-- 單獨一行的 `<!--BREAK-->` 會從新的一頁開始，兩種版面都適用。
+- 單獨一行的 `<!--BREAK-->` 會從新的一頁開始，所有版面都適用。
 - `--allow-remote-images`：輸出時載入網路圖片，預設關閉。
 - `--force`：如果輸出檔已存在就直接覆蓋。
 - `--json`：印出 JSON 結果，而不是文字。

@@ -69,7 +69,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--breaks`: mostrar cada salto de línea dentro de un párrafo como un salto de línea, como HackMD. Sin esta opción, un salto de línea entre dos caracteres chinos o japoneses desaparece, y las líneas se leen como una sola frase.
 - `--layout <document|handbook|handout>`: la disposición de página. De forma predeterminada, `document`. `handbook` genera una guía: márgenes más anchos con un lado de encuadernación, cada encabezado de primer nivel en una página nueva, una tabla de contenido con números de página, números de página en el pie y marcadores PDF, además de una portada cuando el front matter tiene `title`. `handout` deja una columna de notas en blanco a la derecha de cada página, pone el título y la fecha en la parte superior de la página 1 y termina cada página con el nombre del archivo, la fecha y el número de página. Una tabla muy ancha puede invadir la columna de notas.
 - `--toc-title <text>`: el título de la página de contenido de la guía. De forma predeterminada, `Contents`.
-- `<!--BREAK-->` solo en una línea empieza una página nueva, en ambas disposiciones.
+- `<!--BREAK-->` solo en una línea empieza una página nueva, en todas las disposiciones.
 - `--allow-remote-images`: cargar imágenes de la web durante el renderizado. Desactivado de forma predeterminada.
 - `--force`: reemplazar el archivo de salida si ya existe.
 - `--json`: mostrar un resultado JSON en lugar de texto.

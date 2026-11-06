@@ -1413,7 +1413,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--breaks`: turn every newline inside a paragraph into a line break, as HackMD does. Without it, a newline between two Chinese or Japanese characters is dropped, so the lines read as one sentence.
 - `--layout <document|handbook|handout>`: the page layout. Defaults to `document`. `handbook` prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a `title`. `handout` leaves a blank notes column on the right of every page, puts the title and date at the top of page 1, and ends every page with the file name, the date and the page number. A very wide table may run into the notes column.
 - `--toc-title <text>`: the heading of the handbook's contents page. Defaults to `Contents`.
-- `<!--BREAK-->` on a line of its own starts a new page, in either layout.
+- `<!--BREAK-->` on a line of its own starts a new page, in every layout.
 - `--allow-remote-images`: load images from the web while rendering. Off by default.
 - `--force`: replace the output file if it already exists.
 - `--json`: print a JSON result instead of text.
@@ -4949,7 +4949,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--breaks`：段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句。
 - `--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。`handout` 會在每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。
 - `--toc-title <text>`：手冊目錄頁的標題，預設是 `Contents`。
-- 單獨一行的 `<!--BREAK-->` 會從新的一頁開始，兩種版面都適用。
+- 單獨一行的 `<!--BREAK-->` 會從新的一頁開始，所有版面都適用。
 - `--allow-remote-images`：輸出時載入網路圖片，預設關閉。
 - `--force`：如果輸出檔已存在就直接覆蓋。
 - `--json`：印出 JSON 結果，而不是文字。
@@ -8520,7 +8520,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--breaks`：段落内的每个换行都当作换行，和 HackMD 一样。不加时，两个中文或日文字符之间的换行会去掉，让前后两行连成一句。
 - `--layout <document|handbook|handout>`：页面布局，默认 `document`。`handbook` 会导出成手册：页边距更宽并留出装订边，每个一级标题从新的一页开始，附带有页码的目录页、页脚页码和 PDF 书签；front matter 有 `title` 时，还会加上封面。`handout` 会在每页右侧留一栏空白笔记栏，第 1 页顶部放标题和日期，每页末尾放文件名、日期和页码。很宽的表格可能会占用笔记栏。
 - `--toc-title <text>`：手册目录页的标题，默认 `Contents`。
-- 单独一行的 `<!--BREAK-->` 会从新的一页开始，两种布局都适用。
+- 单独一行的 `<!--BREAK-->` 会从新的一页开始，所有布局都适用。
 - `--allow-remote-images`：导出时加载网络图片，默认关闭。
 - `--force`：如果输出文件已存在就直接覆盖。
 - `--json`：输出 JSON 结果，而不是文本。
@@ -12088,7 +12088,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--breaks`：HackMD と同じように、段落内の改行をすべて改行として表示します。付けないときは、中国語や日本語の文字どうしのあいだの改行を取り除き、前後の行を 1 つの文としてつなげます。
 - `--layout <document|handbook|handout>`：ページのレイアウト。初期値は `document`。`handbook` はハンドブックとして書き出します。余白を広くして綴じ側を取り、レベル 1 の見出しごとに改ページし、ページ番号付きの目次ページ、フッターのページ番号、PDF のしおりを付けます。front matter に `title` があれば表紙も付けます。`handout` は、各ページの右側に空白のメモ欄を設け、1 ページ目の上部にタイトルと日付を入れ、各ページの末尾にファイル名、日付、ページ番号を入れます。とても幅の広い表は、メモ欄にはみ出すことがあります。
 - `--toc-title <text>`：ハンドブックの目次ページの見出し。初期値は `Contents`。
-- 1 行だけの `<!--BREAK-->` で改ページします。どちらのレイアウトでも使えます。
+- 1 行だけの `<!--BREAK-->` で改ページします。どのレイアウトでも使えます。
 - `--allow-remote-images`：レンダリング時にウェブから画像を読み込みます。デフォルトはオフです。
 - `--force`：出力ファイルがすでに存在する場合に置き換えます。
 - `--json`：テキストではなく JSON の結果を出力します。
@@ -15659,7 +15659,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--breaks`: jeden Zeilenumbruch innerhalb eines Absatzes als Zeilenumbruch darstellen, wie HackMD. Ohne die Option fällt ein Zeilenumbruch zwischen zwei chinesischen oder japanischen Zeichen weg, sodass sich die Zeilen wie ein Satz lesen.
 - `--layout <document|handbook|handout>`: das Seitenlayout. Standard ist `document`. `handbook` druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen `title` hat. `handout` lässt rechts auf jeder Seite eine leere Notizspalte, setzt Titel und Datum oben auf Seite 1 und schließt jede Seite mit Dateiname, Datum und Seitenzahl ab. Eine sehr breite Tabelle kann in die Notizspalte hineinragen.
 - `--toc-title <text>`: die Überschrift des Inhaltsverzeichnisses im Handbuch. Standard ist `Contents`.
-- `<!--BREAK-->` allein in einer Zeile beginnt eine neue Seite, in beiden Layouts.
+- `<!--BREAK-->` allein in einer Zeile beginnt eine neue Seite, in allen Layouts.
 - `--allow-remote-images`: beim Rendern Bilder aus dem Web laden. Standardmäßig aus.
 - `--force`: die Ausgabedatei ersetzen, falls sie schon existiert.
 - `--json`: ein JSON-Ergebnis statt Text ausgeben.
@@ -19167,7 +19167,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--breaks` : rendre chaque retour à la ligne d’un paragraphe comme un saut de ligne, comme HackMD. Sans cette option, un retour à la ligne entre deux caractères chinois ou japonais disparaît, et les lignes se lisent comme une seule phrase.
 - `--layout <document|handbook|handout>` : la mise en page. Par défaut, `document`. `handbook` produit un guide : marges plus larges avec un côté de reliure, chaque titre de premier niveau sur une nouvelle page, une table des matières avec numéros de page, des numéros de page en pied de page et des signets PDF, plus une couverture quand le front matter a un `title`. `handout` laisse une colonne de notes vide à droite de chaque page, place le titre et la date en haut de la page 1 et termine chaque page par le nom du fichier, la date et le numéro de page. Un tableau très large peut déborder sur la colonne de notes.
 - `--toc-title <text>` : le titre de la page de table des matières du guide. Par défaut, `Contents`.
-- `<!--BREAK-->` seul sur une ligne commence une nouvelle page, dans les deux mises en page.
+- `<!--BREAK-->` seul sur une ligne commence une nouvelle page, dans toutes les mises en page.
 - `--allow-remote-images` : charger les images web pendant le rendu. Désactivé par défaut.
 - `--force` : remplacer le fichier de sortie s’il existe déjà.
 - `--json` : afficher un résultat JSON au lieu de texte.
@@ -22675,7 +22675,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--breaks`: mostrar cada salto de línea dentro de un párrafo como un salto de línea, como HackMD. Sin esta opción, un salto de línea entre dos caracteres chinos o japoneses desaparece, y las líneas se leen como una sola frase.
 - `--layout <document|handbook|handout>`: la disposición de página. De forma predeterminada, `document`. `handbook` genera una guía: márgenes más anchos con un lado de encuadernación, cada encabezado de primer nivel en una página nueva, una tabla de contenido con números de página, números de página en el pie y marcadores PDF, además de una portada cuando el front matter tiene `title`. `handout` deja una columna de notas en blanco a la derecha de cada página, pone el título y la fecha en la parte superior de la página 1 y termina cada página con el nombre del archivo, la fecha y el número de página. Una tabla muy ancha puede invadir la columna de notas.
 - `--toc-title <text>`: el título de la página de contenido de la guía. De forma predeterminada, `Contents`.
-- `<!--BREAK-->` solo en una línea empieza una página nueva, en ambas disposiciones.
+- `<!--BREAK-->` solo en una línea empieza una página nueva, en todas las disposiciones.
 - `--allow-remote-images`: cargar imágenes de la web durante el renderizado. Desactivado de forma predeterminada.
 - `--force`: reemplazar el archivo de salida si ya existe.
 - `--json`: mostrar un resultado JSON en lugar de texto.
@@ -26183,7 +26183,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--breaks`: HackMD처럼 문단 안의 모든 줄바꿈을 줄바꿈으로 표시합니다. 주지 않으면 중국어나 일본어 글자 두 개 사이의 줄바꿈은 없어져, 앞뒤 줄이 한 문장으로 이어집니다.
 - `--layout <document|handbook|handout>`: 페이지 레이아웃입니다. 기본값은 `document`입니다. `handbook`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽을 남기며, 최상위 제목마다 새 페이지에서 시작하고, 페이지 번호가 붙은 목차 페이지, 바닥글의 페이지 번호, PDF 책갈피를 넣습니다. front matter에 `title`이 있으면 표지도 붙입니다. `handout`은 모든 페이지 오른쪽에 빈 메모 공간을 남기고, 1페이지 위쪽에 제목과 날짜를 넣으며, 모든 페이지 끝에 파일 이름, 날짜, 페이지 번호를 넣습니다. 아주 넓은 표는 메모 공간까지 넘어갈 수 있습니다.
 - `--toc-title <text>`: 설명서 목차 페이지의 제목입니다. 기본값은 `Contents`입니다.
-- 한 줄에 단독으로 쓴 `<!--BREAK-->`는 새 페이지를 시작합니다. 두 레이아웃 모두 해당합니다.
+- 한 줄에 단독으로 쓴 `<!--BREAK-->`는 새 페이지를 시작합니다. 모든 레이아웃에 해당합니다.
 - `--allow-remote-images`: 렌더링하는 동안 웹 이미지를 불러옵니다. 기본값은 꺼짐입니다.
 - `--force`: 출력 파일이 이미 있으면 바꿉니다.
 - `--json`: 텍스트 대신 JSON 결과를 출력합니다.

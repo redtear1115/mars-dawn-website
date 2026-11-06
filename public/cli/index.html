@@ -175,7 +175,7 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>--breaks</code>: turn every newline inside a paragraph into a line break, as HackMD does. Without it, a newline between two Chinese or Japanese characters is dropped, so the lines read as one sentence.</li>
   <li><code>--layout &lt;document|handbook|handout&gt;</code>: the page layout. Defaults to <code>document</code>. <code>handbook</code> prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a <code>title</code>. <code>handout</code> leaves a blank notes column on the right of every page, puts the title and date at the top of page 1, and ends every page with the file name, the date and the page number. A very wide table may run into the notes column.</li>
   <li><code>--toc-title &lt;text&gt;</code>: the heading of the handbook's contents page. Defaults to <code>Contents</code>.</li>
-  <li><code>&lt;!--BREAK--&gt;</code> on a line of its own starts a new page, in either layout.</li>
+  <li><code>&lt;!--BREAK--&gt;</code> on a line of its own starts a new page, in every layout.</li>
   <li><code>--allow-remote-images</code>: load images from the web while rendering. Off by default.</li>
   <li><code>--force</code>: replace the output file if it already exists.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
