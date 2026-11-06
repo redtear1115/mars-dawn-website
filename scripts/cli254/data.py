@@ -18,12 +18,21 @@ SOURCES = {'A': {'id': 6233038202,
  'J': {'id': 6666104435,
        'issue': 296,
        'sha256': '4800a5035ab5255b1d3cc8149af9e3532f08d906b1097d445be07c482b8164a9'},
+ 'K': {'id': 6666174606,
+       'issue': 355,
+       'sha256': 'a6f531ce0eae6da3a376137c9188d1e9aabc80ef90b5f39760ea6e4d4b9309e5'},
+ 'K_i18n': {'id': 6684157004,
+            'issue': 355,
+            'sha256': '5af66720b71d638deaff9c79c4006fcc5c212734d74cb20ef522878615381eb6'},
  'approval': {'id': 6295102211,
               'issue': 254,
               'sha256': 'ca6fba829ee5f01ff18114aa2f15cd6bf12aec5332be06781e567f475f4b494e'},
  'approval_296': {'id': 6683377854,
                   'issue': 296,
                   'sha256': '9fba7f746d1d915d48086bc9455a2492f3323b4fb52eba9b7f0058a859e47114'},
+ 'approval_355': {'id': 6683315581,
+                  'issue': 355,
+                  'sha256': '7813a6f40daef2a37e0bd1a930881a2eba48a052eae2655a2a23167c556fee1c'},
  'approval_c': {'id': 6295263711,
                 'issue': 254,
                 'sha256': 'f68881e6e5784f692a44ce44527f1975c569b0e43c9d34739540d55797dc7426'},
@@ -137,7 +146,42 @@ DATA = {'de': {'agents_folder_items': ['Mit MarsDawn 1.0.2 oder neuer enthält `
                                '- Nach einem erfolgreichen `export` oder `open` im Terminal zeigt marsdawn '
                                'einmalig einen Tipp auf stderr, wenn der Agent-Skill fehlt oder veraltet '
                                'ist. Die Ausgabe auf stdout und mit `--json` ändert sich nicht. Mit '
-                               '`MARSDAWN_NO_SKILL_HINT=1` schaltest du den Tipp ab.'},
+                               '`MARSDAWN_NO_SKILL_HINT=1` schaltest du den Tipp ab.',
+                      '0.7.3': '## marsdawn 0.7.3\n'
+                               '\n'
+                               '22. Oktober 2026. Das Handout-Layout.\n'
+                               '\n'
+                               '- `marsdawn export --layout handout` lässt rechts auf jeder Seite eine leere '
+                               'Notizspalte, setzt Titel und Datum oben auf Seite 1 und schließt jede Seite '
+                               'mit Dateiname, Datum und Seitenzahl ab. Eine sehr breite Tabelle kann in die '
+                               'Notizspalte hineinragen.',
+                      '0.7.4': '## marsdawn 0.7.4\n'
+                               '\n'
+                               '25. Oktober 2026. Korrekturen bei Fußnoten.\n'
+                               '\n'
+                               '- Ein Fußnotenverweis im Absatz direkt über einer Tabelle verlinkt auf seine '
+                               'Fußnote.\n'
+                               '- Ein Fußnotenverweis in einem Hinweisbox-Titel, einer '
+                               'Spoiler-Zusammenfassung oder dem Alt-Text eines Bildes hinterlässt keine '
+                               'überzähligen Zeichen mehr auf der Seite. Im Alt-Text bleibt er so stehen, '
+                               'wie er geschrieben wurde.\n'
+                               '- Ein Fußnotenverweis in einer späteren Zeile einer Fußnotendefinition '
+                               'landet an der richtigen Stelle und zerstört keinen Inline-Code in der Nähe '
+                               'mehr.\n'
+                               '- Der Agent-Skill nennt jeden Bedienungsfehler, der JSON ausgibt.',
+                      '0.7.5': '## marsdawn 0.7.5\n'
+                               '\n'
+                               '30. Oktober 2026. Handout-Überschriften bleiben bei ihren Tabellen.\n'
+                               '\n'
+                               '- Im Handout-Layout bleibt eine Überschrift bei der breiten Tabelle '
+                               'darunter, statt allein am Seitenende zu stehen.',
+                      '0.7.6': '## marsdawn 0.7.6\n'
+                               '\n'
+                               '2. November 2026. Handbuch-PDFs unter macOS 27.2.\n'
+                               '\n'
+                               '- Unter macOS 27.2 behält ein Handbuch-PDF die Seitenzahlen im '
+                               'Inhaltsverzeichnis und die Lesezeichen von Kapiteln, die auf einer neuen '
+                               'Seite beginnen.'},
         'export_after_json': ['Eine Datei über 16 MiB wird nicht exportiert: `export` endet mit Code 5 und '
                               'schreibt nichts.'],
         'export_items': ['`--breaks`: jeden Zeilenumbruch innerhalb eines Absatzes als Zeilenumbruch '
@@ -287,7 +331,39 @@ DATA = {'de': {'agents_folder_items': ['Mit MarsDawn 1.0.2 oder neuer enthält `
                                '- After a successful `export` or `open` in a terminal, marsdawn shows a '
                                'one-time tip on stderr when the agent skill is missing or out of date. '
                                "Output on stdout and with `--json` doesn't change. Set "
-                               '`MARSDAWN_NO_SKILL_HINT=1` to turn the tip off.'},
+                               '`MARSDAWN_NO_SKILL_HINT=1` to turn the tip off.',
+                      '0.7.3': '## marsdawn 0.7.3\n'
+                               '\n'
+                               '22 October 2026. The Handout layout.\n'
+                               '\n'
+                               '- `marsdawn export --layout handout` leaves a blank notes column on the '
+                               'right of every page, puts the title and date at the top of page 1, and ends '
+                               'every page with the file name, the date and the page number. A very wide '
+                               'table may run into the notes column.',
+                      '0.7.4': '## marsdawn 0.7.4\n'
+                               '\n'
+                               '25 October 2026. Footnote fixes.\n'
+                               '\n'
+                               '- A footnote reference in the paragraph just above a table links to its '
+                               'note.\n'
+                               "- A footnote reference in a callout title, a spoiler summary or an image's "
+                               'alt text no longer puts stray characters on the page. In alt text it stays '
+                               'as written.\n'
+                               '- A footnote reference on a later line of a footnote definition lands in the '
+                               'right place, so it no longer breaks a code span nearby.\n'
+                               '- The agent skill names every usage error that prints JSON.',
+                      '0.7.5': '## marsdawn 0.7.5\n'
+                               '\n'
+                               '30 October 2026. Handout headings stay with their tables.\n'
+                               '\n'
+                               '- In the Handout layout, a heading stays with the wide table under it, '
+                               'instead of being left alone at the foot of the page.',
+                      '0.7.6': '## marsdawn 0.7.6\n'
+                               '\n'
+                               '2 November 2026. Handbook PDFs on macOS 27.2.\n'
+                               '\n'
+                               '- On macOS 27.2, a Handbook PDF keeps the contents page numbers and '
+                               'bookmarks of chapters that start on a new page.'},
         'export_after_json': ["A file over 16 MiB isn't exported: `export` exits 5 and writes nothing."],
         'export_items': ['`--breaks`: turn every newline inside a paragraph into a line break, as HackMD '
                          'does. Without it, a newline between two Chinese or Japanese characters is dropped, '
@@ -439,7 +515,43 @@ DATA = {'de': {'agents_folder_items': ['Mit MarsDawn 1.0.2 oder neuer enthält `
                                '- Tras un `export` o un `open` correcto en una terminal, marsdawn muestra '
                                'una vez una sugerencia en stderr si falta la skill para agentes o está '
                                'desactualizada. La salida en stdout y con `--json` no cambia. Define '
-                               '`MARSDAWN_NO_SKILL_HINT=1` para no mostrarla.'},
+                               '`MARSDAWN_NO_SKILL_HINT=1` para no mostrarla.',
+                      '0.7.3': '## marsdawn 0.7.3\n'
+                               '\n'
+                               '22 de octubre de 2026. La disposición Folleto.\n'
+                               '\n'
+                               '- `marsdawn export --layout handout` deja una columna de notas en blanco a '
+                               'la derecha de cada página, pone el título y la fecha en la parte superior de '
+                               'la página 1 y termina cada página con el nombre del archivo, la fecha y el '
+                               'número de página. Una tabla muy ancha puede invadir la columna de notas.',
+                      '0.7.4': '## marsdawn 0.7.4\n'
+                               '\n'
+                               '25 de octubre de 2026. Correcciones en las notas al pie.\n'
+                               '\n'
+                               '- Una referencia a nota al pie en el párrafo justo encima de una tabla '
+                               'enlaza con su nota.\n'
+                               '- Una referencia a nota al pie en el título de un aviso destacado, el '
+                               'resumen de un spoiler o el texto alternativo de una imagen ya no deja '
+                               'caracteres sobrantes en la página. En el texto alternativo se queda tal como '
+                               'se escribió.\n'
+                               '- Una referencia a nota al pie en una línea posterior de la definición de '
+                               'una nota queda en el lugar correcto, así que ya no rompe un código en línea '
+                               'cercano.\n'
+                               '- La skill para agentes nombra todos los errores de uso que imprimen JSON.',
+                      '0.7.5': '## marsdawn 0.7.5\n'
+                               '\n'
+                               '30 de octubre de 2026. Los encabezados de Folleto no se separan de sus '
+                               'tablas.\n'
+                               '\n'
+                               '- En la disposición Folleto, un encabezado se mantiene con la tabla ancha '
+                               'que tiene debajo, en lugar de quedar solo al pie de la página.',
+                      '0.7.6': '## marsdawn 0.7.6\n'
+                               '\n'
+                               '2 de noviembre de 2026. Los PDF de Guía en macOS 27.2.\n'
+                               '\n'
+                               '- En macOS 27.2, un PDF con la disposición Guía conserva los números de '
+                               'página de la tabla de contenido y los marcadores de los capítulos que '
+                               'empiezan en una página nueva.'},
         'export_after_json': ['Un archivo de más de 16 MiB no se exporta: `export` termina con el código 5 y '
                               'no escribe nada.'],
         'export_items': ['`--breaks`: mostrar cada salto de línea dentro de un párrafo como un salto de '
@@ -597,7 +709,43 @@ DATA = {'de': {'agents_folder_items': ['Mit MarsDawn 1.0.2 oder neuer enthält `
                                '- Après un `export` ou un `open` réussi dans un terminal, marsdawn affiche '
                                'une fois un conseil sur stderr quand la skill pour agents est absente ou '
                                'périmée. La sortie sur stdout et avec `--json` ne change pas. Définissez '
-                               '`MARSDAWN_NO_SKILL_HINT=1` pour ne plus l’afficher.'},
+                               '`MARSDAWN_NO_SKILL_HINT=1` pour ne plus l’afficher.',
+                      '0.7.3': '## marsdawn 0.7.3\n'
+                               '\n'
+                               '22 octobre 2026. La mise en page Polycopié.\n'
+                               '\n'
+                               '- `marsdawn export --layout handout` laisse une colonne de notes vide à '
+                               'droite de chaque page, place le titre et la date en haut de la page 1 et '
+                               'termine chaque page par le nom du fichier, la date et le numéro de page. Un '
+                               'tableau très large peut déborder sur la colonne de notes.',
+                      '0.7.4': '## marsdawn 0.7.4\n'
+                               '\n'
+                               '25 octobre 2026. Corrections des notes de bas de page.\n'
+                               '\n'
+                               '- Une référence de note de bas de page dans le paragraphe juste au-dessus '
+                               'd’un tableau renvoie à sa note.\n'
+                               '- Une référence de note de bas de page dans le titre d’un encadré, le résumé '
+                               'd’un spoiler ou le texte alternatif d’une image ne laisse plus de caractères '
+                               'parasites sur la page. Dans le texte alternatif, elle reste telle qu’elle a '
+                               'été écrite.\n'
+                               '- Une référence de note de bas de page sur une ligne suivante d’une '
+                               'définition de note arrive au bon endroit et ne casse plus un code en ligne '
+                               'voisin.\n'
+                               '- La skill pour agents cite toutes les erreurs d’utilisation qui affichent '
+                               'du JSON.',
+                      '0.7.5': '## marsdawn 0.7.5\n'
+                               '\n'
+                               '30 octobre 2026. Les titres du Polycopié restent avec leurs tableaux.\n'
+                               '\n'
+                               '- Dans la mise en page Polycopié, un titre reste avec le tableau large placé '
+                               'dessous, au lieu de se retrouver seul en bas de page.',
+                      '0.7.6': '## marsdawn 0.7.6\n'
+                               '\n'
+                               '2 novembre 2026. Les PDF Guide sous macOS 27.2.\n'
+                               '\n'
+                               '- Sous macOS 27.2, un PDF en mise en page Guide conserve les numéros de page '
+                               'de la table des matières et les signets des chapitres qui commencent sur une '
+                               'nouvelle page.'},
         'export_after_json': ['Un fichier de plus de 16 Mio n’est pas exporté : `export` se termine avec le '
                               'code 5 et n’écrit rien.'],
         'export_items': ['`--breaks` : rendre chaque retour à la ligne d’un paragraphe comme un saut de '
@@ -726,7 +874,32 @@ DATA = {'de': {'agents_folder_items': ['Mit MarsDawn 1.0.2 oder neuer enthält `
                                'から、書かれていなければ本文のかなの割合から判断します。\n'
                                '- ターミナルで `export` や `open` が成功したあと、エージェントスキルが入っていないか古いときは、stderr '
                                'に一度だけヒントを表示します。stdout と `--json` の出力は変わりません。`MARSDAWN_NO_SKILL_HINT=1` '
-                               'を設定すると表示しません。'},
+                               'を設定すると表示しません。',
+                      '0.7.3': '## marsdawn 0.7.3\n'
+                               '\n'
+                               '2026年10月22日。配布資料レイアウト。\n'
+                               '\n'
+                               '- `marsdawn export --layout handout` は、各ページの右側に空白のメモ欄を設け、1 '
+                               'ページ目の上部にタイトルと日付を入れ、各ページの末尾にファイル名、日付、ページ番号を入れます。とても幅の広い表は、メモ欄にはみ出すことがあります。',
+                      '0.7.4': '## marsdawn 0.7.4\n'
+                               '\n'
+                               '2026年10月25日。脚注の修正。\n'
+                               '\n'
+                               '- 表のすぐ上の段落にある脚注の参照が、脚注にリンクするようになりました。\n'
+                               '- コールアウトのタイトル、spoiler '
+                               'の概要、画像の代替テキストにある脚注の参照で、余分な文字がページに残らなくなりました。代替テキストでは、書いたとおりの形で残ります。\n'
+                               '- 脚注の定義の 2 行目以降にある脚注の参照が正しい位置に入り、近くのインラインコードを壊さなくなりました。\n'
+                               '- エージェントスキルに、JSON を出力する使用方法のエラーをすべて記載しました。',
+                      '0.7.5': '## marsdawn 0.7.5\n'
+                               '\n'
+                               '2026年10月30日。配布資料の見出しが表から離れなくなりました。\n'
+                               '\n'
+                               '- 配布資料レイアウトでは、見出しはその下の幅の広い表から離れず、ページの下端に見出しだけが残らなくなりました。',
+                      '0.7.6': '## marsdawn 0.7.6\n'
+                               '\n'
+                               '2026年11月2日。macOS 27.2 のハンドブック PDF。\n'
+                               '\n'
+                               '- macOS 27.2 のハンドブック PDF で、新しいページから始まる章の、目次のページ番号とブックマークが保たれます。'},
         'export_after_json': ['16 MiB を超えるファイルは書き出しません。`export` はコード 5 で終了し、何も書き出しません。'],
         'export_items': ['`--breaks`：HackMD '
                          'と同じように、段落内の改行をすべて改行として表示します。付けないときは、中国語や日本語の文字どうしのあいだの改行を取り除き、前後の行を 1 つの文としてつなげます。',
@@ -839,7 +1012,32 @@ DATA = {'de': {'agents_folder_items': ['Mit MarsDawn 1.0.2 oder neuer enthält `
                                '비율로 판단합니다.\n'
                                '- 터미널에서 `export`나 `open`이 성공한 뒤, 에이전트 스킬이 설치되어 있지 않거나 오래된 버전이면 stderr에 안내를 한 '
                                '번 표시합니다. stdout과 `--json` 출력은 바뀌지 않습니다. `MARSDAWN_NO_SKILL_HINT=1`로 설정하면 '
-                               '표시하지 않습니다.'},
+                               '표시하지 않습니다.',
+                      '0.7.3': '## marsdawn 0.7.3\n'
+                               '\n'
+                               '2026년 10월 22일. 프린트물 레이아웃.\n'
+                               '\n'
+                               '- `marsdawn export --layout handout`은 모든 페이지 오른쪽에 빈 메모 공간을 남기고, 1페이지 위쪽에 제목과 '
+                               '날짜를 넣으며, 모든 페이지 끝에 파일 이름, 날짜, 페이지 번호를 넣습니다. 아주 넓은 표는 메모 공간까지 넘어갈 수 있습니다.',
+                      '0.7.4': '## marsdawn 0.7.4\n'
+                               '\n'
+                               '2026년 10월 25일. 각주 수정.\n'
+                               '\n'
+                               '- 표 바로 위 문단의 각주 참조가 이제 각주로 연결됩니다.\n'
+                               '- 콜아웃 제목, spoiler 요약, 이미지 대체 텍스트의 각주 참조가 더 이상 페이지에 불필요한 문자를 남기지 않습니다. 대체 '
+                               '텍스트에서는 쓴 그대로 유지됩니다.\n'
+                               '- 각주 정의의 둘째 줄 이후에 있는 각주 참조가 올바른 위치에 들어가, 더 이상 근처의 인라인 코드를 깨뜨리지 않습니다.\n'
+                               '- 에이전트 스킬에 JSON을 출력하는 사용법 오류를 모두 적었습니다.',
+                      '0.7.5': '## marsdawn 0.7.5\n'
+                               '\n'
+                               '2026년 10월 30일. 프린트물의 제목이 표와 떨어지지 않습니다.\n'
+                               '\n'
+                               '- 프린트물 레이아웃에서 제목은 아래에 있는 넓은 표와 함께 유지되며, 페이지 아래쪽에 혼자 남지 않습니다.',
+                      '0.7.6': '## marsdawn 0.7.6\n'
+                               '\n'
+                               '2026년 11월 2일. macOS 27.2의 설명서 PDF.\n'
+                               '\n'
+                               '- macOS 27.2에서 설명서 PDF는 새 페이지에서 시작하는 장의 목차 페이지 번호와 책갈피를 유지합니다.'},
         'export_after_json': ['16MiB를 넘는 파일은 내보내지 않습니다. `export`는 코드 5로 종료하며 아무것도 쓰지 않습니다.'],
         'export_items': ['`--breaks`: HackMD처럼 문단 안의 모든 줄바꿈을 줄바꿈으로 표시합니다. 주지 않으면 중국어나 일본어 글자 두 개 사이의 줄바꿈은 '
                          '없어져, 앞뒤 줄이 한 문장으로 이어집니다.',
@@ -944,7 +1142,31 @@ DATA = {'de': {'agents_folder_items': ['Mit MarsDawn 1.0.2 oder neuer enthält `
                                     'HackMD 的容器（例如 `:::info`、`:::warning`）。`:::spoiler` 会成为可折叠的区块。\n'
                                     '- 日文文稿的假名和汉字会改用日文字体。语言取自 front matter 的 `lang: ja`；没有写时，按正文中假名的比例判断。\n'
                                     '- 在终端中成功运行 `export` 或 `open` 之后，如果代理技能没有安装或已经过期，marsdawn 会在 stderr '
-                                    '显示一次提示。stdout 和 `--json` 的输出都不变。设置 `MARSDAWN_NO_SKILL_HINT=1` 就不再提示。'},
+                                    '显示一次提示。stdout 和 `--json` 的输出都不变。设置 `MARSDAWN_NO_SKILL_HINT=1` 就不再提示。',
+                           '0.7.3': '## marsdawn 0.7.3\n'
+                                    '\n'
+                                    '2026 年 10 月 22 日。讲义布局。\n'
+                                    '\n'
+                                    '- `marsdawn export --layout handout` 会在每页右侧留一栏空白笔记栏，第 1 '
+                                    '页顶部放标题和日期，每页末尾放文件名、日期和页码。很宽的表格可能会占用笔记栏。',
+                           '0.7.4': '## marsdawn 0.7.4\n'
+                                    '\n'
+                                    '2026 年 10 月 25 日。脚注修正。\n'
+                                    '\n'
+                                    '- 表格正上方段落中的脚注引用，现在会链接到脚注。\n'
+                                    '- 提示块标题、spoiler 摘要或图片替代文本中的脚注引用，不再在页面上留下多余字符。在替代文本中会按原文显示。\n'
+                                    '- 脚注定义后面几行的脚注引用，现在会放在正确的位置，不再破坏旁边的行内代码。\n'
+                                    '- 代理技能列出了所有会输出 JSON 的使用方式错误。',
+                           '0.7.5': '## marsdawn 0.7.5\n'
+                                    '\n'
+                                    '2026 年 10 月 30 日。讲义的标题不再和表格分开。\n'
+                                    '\n'
+                                    '- 在讲义布局中，标题会和下方的宽表格留在一起，不再单独留在页尾。',
+                           '0.7.6': '## marsdawn 0.7.6\n'
+                                    '\n'
+                                    '2026 年 11 月 2 日。macOS 27.2 上的手册 PDF。\n'
+                                    '\n'
+                                    '- 在 macOS 27.2 上，手册 PDF 中从新的一页开始的章节，会保留目录页码和书签。'},
              'export_after_json': ['超过 16 MiB 的文件不会导出：`export` 以代码 5 结束，不写出任何文件。'],
              'export_items': ['`--breaks`：段落内的每个换行都当作换行，和 HackMD 一样。不加时，两个中文或日文字符之间的换行会去掉，让前后两行连成一句。',
                               '`--layout <document|handbook>`：页面布局，默认 `document`。`handbook` '
@@ -1048,7 +1270,31 @@ DATA = {'de': {'agents_folder_items': ['Mit MarsDawn 1.0.2 oder neuer enthält `
                                     '- 日文文件的假名和漢字會改用日文字型。語言取自 front matter 的 `lang: ja`；沒有寫時，依內文的假名比例判斷。\n'
                                     '- 在終端機裡成功執行 `export` 或 `open` 之後，如果 agent skill 沒有安裝或已經過期，marsdawn 會在 '
                                     'stderr 顯示一次提示。stdout 和 `--json` 的輸出都不變。設定 `MARSDAWN_NO_SKILL_HINT=1` '
-                                    '就不再提示。'},
+                                    '就不再提示。',
+                           '0.7.3': '## marsdawn 0.7.3\n'
+                                    '\n'
+                                    '2026 年 10 月 22 日。講義版面。\n'
+                                    '\n'
+                                    '- `marsdawn export --layout handout` 會在每頁右側留一欄空白筆記欄，第 1 '
+                                    '頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。',
+                           '0.7.4': '## marsdawn 0.7.4\n'
+                                    '\n'
+                                    '2026 年 10 月 25 日。註腳修正。\n'
+                                    '\n'
+                                    '- 表格正上方段落裡的註腳參照，現在會連到註腳。\n'
+                                    '- 提示區塊標題、spoiler 摘要或圖片替代文字裡的註腳參照，不再在頁面上留下多餘字元。在替代文字裡會照原文顯示。\n'
+                                    '- 註腳定義後面幾行的註腳參照，現在會放在正確的位置，不再弄壞旁邊的行內程式碼。\n'
+                                    '- agent skill 列出了所有會印出 JSON 的使用方式錯誤。',
+                           '0.7.5': '## marsdawn 0.7.5\n'
+                                    '\n'
+                                    '2026 年 10 月 30 日。講義的標題不再和表格分開。\n'
+                                    '\n'
+                                    '- 在講義版面，標題會和底下的寬表格留在一起，不再單獨留在頁尾。',
+                           '0.7.6': '## marsdawn 0.7.6\n'
+                                    '\n'
+                                    '2026 年 11 月 2 日。macOS 27.2 上的手冊 PDF。\n'
+                                    '\n'
+                                    '- 在 macOS 27.2 上，手冊 PDF 裡從新的一頁開始的章節，會保留目錄頁碼和書籤。'},
              'export_after_json': ['超過 16 MiB 的檔案不會輸出：`export` 以代碼 5 結束，不寫出任何檔案。'],
              'export_items': ['`--breaks`：段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句。',
                               '`--layout <document|handbook>`：頁面版面，預設是 `document`。`handbook` '

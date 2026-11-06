@@ -62,7 +62,7 @@ brew install redtear1115/tap/marsdawn
 
 ## 各部分怎么搭在一起
 
-以 MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 为准，各部分目前能做的事。
+以 MarsDawn 1.2.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 为准，各部分目前能做的事。
 
 | 功能 | App 内 | CLI | MCP／skill | 状态 |
 |---|---|---|---|---|

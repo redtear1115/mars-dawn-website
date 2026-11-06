@@ -62,7 +62,7 @@ brew install redtear1115/tap/marsdawn
 
 ## それぞれの役割
 
-MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 の時点で、それぞれができること。
+MarsDawn 1.2.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 の時点で、それぞれができること。
 
 | 機能 | アプリ | CLI | MCP／skill | 状態 |
 |---|---|---|---|---|

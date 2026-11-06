@@ -6,6 +6,32 @@ Ce qui arrive ensuite figure dans la [feuille de route](/fr/roadmap/).
 
 ## App MarsDawn
 
+### MarsDawn 1.2.1
+
+3 novembre 2026
+
+- Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre.
+- MarsDawn est désormais disponible sur iPhone et iPad, pour la lecture. Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent Mac, iPhone et iPad, et les écrans de déverrouillage l’indiquent désormais.
+
+### MarsDawn 1.2.0
+
+27 octobre 2026
+
+- Une barre de format au-dessus de l’éditeur et un nouveau menu Format insèrent gras (⌘B), italique (⌘I), barré (⇧⌘X), titres H1–H6 (⌥⌘1–⌥⌘6), code, citations, listes à puces, numérotées et de pointage, liens (⌘K), « Image… », tableaux, séparateurs, diagrammes Mermaid et formules. Affichée par défaut ; masquez-la via Présentation > « Masquer la barre de format » ou Réglages > Apparence.
+- Présentation > Source uniquement > « Masquer la syntaxe Markdown » (⌘/) masque les marqueurs en mode Source uniquement tout en laissant la ligne du curseur en Markdown brut, et mémorise votre choix.
+- Fichier > « Créer à partir du presse-papiers » (⌥⌘V) ouvre le presse-papiers dans un nouveau document. Le texte JSON échappé issu d’une IA (comme \n) est converti une fois pour la lecture, avec une barre pour garder le texte tel quel.
+- Sélectionnez du texte dans l’éditeur ou l’aperçu et choisissez « Envoyer à… » au clic secondaire pour ouvrir Claude ou ChatGPT avec une invite, la sélection, le chemin relatif (ou le nom du fichier) et les numéros de ligne. Une confirmation s’affiche au premier envoi ; si la sélection est trop longue, la copie est proposée.
+- Édition > « Copier en texte riche » copie les blocs sélectionnés, ou tout le document, en texte mis en forme pour Mail, Pages, Google Docs ou Notion, avec le Markdown en texte brut à côté.
+- Aide > « Installer l’outil en ligne de commande et le skill d’agent… » ouvre une fenêtre avec la commande en une ligne et les instructions à copier pour votre agent IA, sans rien installer elle-même.
+- Fichier > « Exporter au format PDF… » ajoute un menu « Mise en page » mémorisé à trois choix compatibles avec tous les thèmes : « Standard », « Guide » (couverture tirée de votre front matter, table des matières numérotée, chapitres sur une nouvelle page, pied de page « n / N », signets PDF, marge de reliure) et « Polycopié » (colonne de notes à droite, titre en page 1, pied « nom · date · n / N », tableaux larges). « Imprimer… » utilise toujours « Standard ».
+- Appuyez sur ⌘F en mode Aperçu uniquement ou côté aperçu en mode Partagé pour rechercher : ⌘G et ⇧⌘G parcourent les occurrences en boucle, ⌘E reprend la sélection et les résultats sont surlignés en jaune. En mode Partagé, la recherche porte sur le côté actif.
+- Le texte entouré d’un seul tilde de chaque côté et sans espace, comme ~x~, s’affiche désormais en indice, comme dans HackMD. Pour barrer du texte, utilisez deux tildes : ~~x~~. Cela s’applique à l’aperçu, à « Exporter au format PDF » et à Coup d’œil.
+- MarsDawn lit aussi davantage de syntaxe HackMD : ==surlignage==, ^exposant^, une table des matières [TOC], des tailles d’image comme =300x200 et des intégrations comme {%youtube %}, qui s’affichent sous forme de liens.
+- « Conserver les sauts de ligne simples » dans Réglages > Apparence conserve chaque saut de ligne de la source dans l’aperçu, « Exporter au format PDF », l’impression et Coup d’œil, comme dans HackMD.
+- Les fichiers Markdown dans un autre encodage (comme Big5) s’ouvrent en lecture seule avec une barre proposant « Enregistrer en UTF-8… ». « Exporter au format PDF… » et « Imprimer… » restent disponibles.
+- Au-delà de 16 Mio, la barre latérale Plan affiche « Ce document est trop volumineux pour afficher un plan. » au lieu de « Aucun titre ».
+- Le décompte des mots ignore les blocs de code dans les sections details repliées, et un appel de note juste au-dessus d’un tableau s’affiche correctement en lien.
+
 ### MarsDawn 1.1.1
 
 15 octobre 2026
@@ -20,6 +46,33 @@ Les versions précédentes ne sont décrites qu’en anglais : [voir l’histori
 ## Outil en ligne de commande marsdawn
 
 Les versions antérieures à 0.5.1 ne sont pas listées.
+
+### marsdawn 0.7.6
+
+2 novembre 2026. Les PDF Guide sous macOS 27.2.
+
+- Sous macOS 27.2, un PDF en mise en page Guide conserve les numéros de page de la table des matières et les signets des chapitres qui commencent sur une nouvelle page.
+
+### marsdawn 0.7.5
+
+30 octobre 2026. Les titres du Polycopié restent avec leurs tableaux.
+
+- Dans la mise en page Polycopié, un titre reste avec le tableau large placé dessous, au lieu de se retrouver seul en bas de page.
+
+### marsdawn 0.7.4
+
+25 octobre 2026. Corrections des notes de bas de page.
+
+- Une référence de note de bas de page dans le paragraphe juste au-dessus d’un tableau renvoie à sa note.
+- Une référence de note de bas de page dans le titre d’un encadré, le résumé d’un spoiler ou le texte alternatif d’une image ne laisse plus de caractères parasites sur la page. Dans le texte alternatif, elle reste telle qu’elle a été écrite.
+- Une référence de note de bas de page sur une ligne suivante d’une définition de note arrive au bon endroit et ne casse plus un code en ligne voisin.
+- La skill pour agents cite toutes les erreurs d’utilisation qui affichent du JSON.
+
+### marsdawn 0.7.3
+
+22 octobre 2026. La mise en page Polycopié.
+
+- `marsdawn export --layout handout` laisse une colonne de notes vide à droite de chaque page, place le titre et la date en haut de la page 1 et termine chaque page par le nom du fichier, la date et le numéro de page. Un tableau très large peut déborder sur la colonne de notes.
 
 ### marsdawn 0.7.2
 

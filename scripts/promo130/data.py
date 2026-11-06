@@ -1340,7 +1340,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                  '거부된 상태로 시작하고, 배너에서 ‘수락’을 선택한 뒤에만 쿠키를 설정하며, 하단의 ‘쿠키 설정’에서 언제든 바꿀 수 있습니다. 앱이 /themes/ 아래 테마 파일을 요청하는 것은 기록하지 않습니다.',
                                  '자세히: <a href="/ko/privacy/#the-website">개인정보 처리방침</a>']}}},
  'pieces': {'en': {'h': 'How the pieces fit',
-                   'intro': 'What each part does today, as of MarsDawn 1.1.1, marsdawn 0.6.4 and marsdawn-mcp v0.2.4.',
+                   'intro': 'What each part does today, as of MarsDawn 1.2.1, marsdawn 0.6.4 and marsdawn-mcp v0.2.4.',
                    'foot': 'Shipped: in the released version named above. Documented, opt-in: instructions on this site that you add yourself; not '
                            'inside the tool. Planned: not built yet; no date. Planned: a folder option in the MCP open_in_marsdawn tool. More '
                            'options, such as --folder, are on <a href="/cli/">Command Line</a>.',
@@ -1366,7 +1366,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                             ['Live reload', 'Takes the saved change, one Undo', '—', "Skill: don't open again", 'Shipped'],
                             ['Claude Code hook', '—', 'Uses open --background', 'Hook script from /cli/agents/', 'Documented, opt-in']]},
             'zh-hant': {'h': '各部分怎麼搭在一起',
-                        'intro': '以 MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 為準，各部分目前能做的事。',
+                        'intro': '以 MarsDawn 1.2.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 為準，各部分目前能做的事。',
                         'foot': '已推出：在上面寫的發行版本裡。有文件，選用：本站上的說明，要你自己加，不在工具裡。規劃中：還沒做，沒有日期。規劃中：MCP 的 open_in_marsdawn 加上資料夾選項。--folder 等其他選項見<a '
                                 'href="/zh-hant/cli/">命令列工具</a>。',
                         'head': ['功能', 'App 內', 'CLI', 'MCP／skill', '狀態'],
@@ -1379,7 +1379,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                  ['存檔後自動更新', '接收存檔的變更，可撤銷一次', '—', 'skill：不用再開一次', '已推出'],
                                  ['Claude Code hook', '—', '用 open --background', '/cli/agents/ 的 hook 腳本', '有文件，選用']]},
             'zh-hans': {'h': '各部分怎么搭在一起',
-                        'intro': '以 MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 为准，各部分目前能做的事。',
+                        'intro': '以 MarsDawn 1.2.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 为准，各部分目前能做的事。',
                         'foot': '已推出：在上面写的发行版本里。有文档，可选：本站上的说明，需要你自己添加，不在工具里。计划中：还没做，没有日期。计划中：MCP 的 <code>open_in_marsdawn</code> '
                                 '加上文件夹选项。<code>--folder</code> 等其他选项见<a href="/zh-hans/cli/">命令行工具</a>。',
                         'head': ['功能', 'App 内', 'CLI', 'MCP／skill', '状态'],
@@ -1400,7 +1400,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                  ['保存后自动更新', '接收保存的更改，可一次撤销', '—', 'skill：不用再打开一次', '已推出'],
                                  ['Claude Code hook', '—', '用 <code>open --background</code>', '/cli/agents/ 的 hook 脚本', '有文档，可选']]},
             'ja': {'h': 'それぞれの役割',
-                   'intro': 'MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 の時点で、それぞれができること。',
+                   'intro': 'MarsDawn 1.2.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 の時点で、それぞれができること。',
                    'foot': '提供中：上に書いたリリース版に含まれています。ドキュメントあり・任意：このサイトの手順で自分で追加するもので、ツールには含まれません。予定：まだなく、日付は未定です。予定：MCP の open_in_marsdawn '
                            'にフォルダのオプション。--folder などほかのオプションは<a href="/ja/cli/">コマンドライン</a>へ。',
                    'head': ['機能', 'アプリ', 'CLI', 'MCP／skill', '状態'],
@@ -1417,7 +1417,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                             ['保存を自動で反映', '保存された変更を反映、取り消しは一度で', '—', 'skill：もう一度開かない', '提供中'],
                             ['Claude Code の hook', '—', 'open --background を使用', '/cli/agents/ の hook スクリプト', 'ドキュメントあり・任意']]},
             'de': {'h': 'Wie die Teile zusammenpassen',
-                   'intro': 'Was jeder Teil heute kann, Stand MarsDawn 1.1.1, marsdawn 0.6.4 und marsdawn-mcp v0.2.4.',
+                   'intro': 'Was jeder Teil heute kann, Stand MarsDawn 1.2.1, marsdawn 0.6.4 und marsdawn-mcp v0.2.4.',
                    'foot': 'Verfügbar: in der oben genannten Version enthalten. Dokumentiert, optional: Anleitung auf dieser Website, die du selbst '
                            'einrichtest; nicht im Tool enthalten. Geplant: noch nicht gebaut, ohne Datum. Geplant: eine Ordner-Option im MCP-Tool '
                            '<code>open_in_marsdawn</code>. Weitere Optionen wie <code>--folder</code> stehen unter <a '
@@ -1452,7 +1452,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                              'Hook-Skript von /cli/agents/',
                              'Dokumentiert, optional']]},
             'fr': {'h': 'Comment les éléments s’assemblent',
-                   'intro': 'Ce que fait chaque élément aujourd’hui, avec MarsDawn 1.1.1, marsdawn 0.6.4 et marsdawn-mcp v0.2.4.',
+                   'intro': 'Ce que fait chaque élément aujourd’hui, avec MarsDawn 1.2.1, marsdawn 0.6.4 et marsdawn-mcp v0.2.4.',
                    'foot': 'Disponible\xa0: dans la version indiquée ci-dessus. Documenté, facultatif\xa0: instructions de ce site que vous ajoutez '
                            'vous-même\xa0; pas inclus dans l’outil. Prévu\xa0: pas encore fait, sans date. Prévu\xa0: une option de dossier dans '
                            'l’outil MCP <code>open_in_marsdawn</code>. D’autres options, comme <code>--folder</code>, sont sur <a '
@@ -1491,7 +1491,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                              'Script de hook de /cli/agents/',
                              'Documenté, facultatif']]},
             'es': {'h': 'Cómo encajan las piezas',
-                   'intro': 'Lo que hace cada parte hoy, con MarsDawn 1.1.1, marsdawn 0.6.4 y marsdawn-mcp v0.2.4.',
+                   'intro': 'Lo que hace cada parte hoy, con MarsDawn 1.2.1, marsdawn 0.6.4 y marsdawn-mcp v0.2.4.',
                    'foot': 'Disponible: en la versión indicada arriba. Documentado, opcional: instrucciones de este sitio que añades tú; no viene en '
                            'la herramienta. Previsto: aún no existe, sin fecha. Previsto: una opción de carpeta en la herramienta MCP '
                            '<code>open_in_marsdawn</code>. Otras opciones, como <code>--folder</code>, están en <a href="/es/cli/">Línea de '
@@ -1522,7 +1522,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                              'Script del hook en /cli/agents/',
                              'Documentado, opcional']]},
             'ko': {'h': '각 부분의 역할',
-                   'intro': 'MarsDawn 1.1.1, marsdawn 0.6.4, marsdawn-mcp v0.2.4 기준으로 각 부분이 지금 하는 일.',
+                   'intro': 'MarsDawn 1.2.1, marsdawn 0.6.4, marsdawn-mcp v0.2.4 기준으로 각 부분이 지금 하는 일.',
                    'foot': '제공 중: 위에 적은 출시 버전에 포함. 문서 제공, 선택 사항: 이 사이트의 안내에 따라 직접 추가하며 도구에는 포함되지 않음. 예정: 아직 없으며 날짜 미정. 예정: MCP '
                            '<code>open_in_marsdawn</code>의 폴더 옵션. <code>--folder</code> 등 다른 옵션은 <a href="/ko/cli/">명령줄</a>에 있습니다.',
                    'head': ['기능', '앱', 'CLI', 'MCP / 스킬', '상태'],
