@@ -62,7 +62,7 @@ brew install redtear1115/tap/marsdawn
 
 ## Comment les éléments s’assemblent
 
-Ce que fait chaque élément aujourd’hui, avec MarsDawn 1.1.1, marsdawn 0.6.4 et marsdawn-mcp v0.2.4.
+Ce que fait chaque élément aujourd’hui, avec MarsDawn 1.2.1, marsdawn 0.6.4 et marsdawn-mcp v0.2.4.
 
 | Fonction | Dans l’app | CLI | MCP / skill | Statut |
 |---|---|---|---|---|

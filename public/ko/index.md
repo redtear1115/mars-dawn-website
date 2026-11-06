@@ -62,7 +62,7 @@ brew install redtear1115/tap/marsdawn
 
 ## 각 부분의 역할
 
-MarsDawn 1.1.1, marsdawn 0.6.4, marsdawn-mcp v0.2.4 기준으로 각 부분이 지금 하는 일.
+MarsDawn 1.2.1, marsdawn 0.6.4, marsdawn-mcp v0.2.4 기준으로 각 부분이 지금 하는 일.
 
 | 기능 | 앱 | CLI | MCP / 스킬 | 상태 |
 |---|---|---|---|---|
