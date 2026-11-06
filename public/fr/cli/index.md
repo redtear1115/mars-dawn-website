@@ -49,7 +49,7 @@ marsdawn open notes.md --folder .
 - Un dossier passé en argument s’ouvre dans la barre latérale de la fenêtre plutôt que comme un document : `marsdawn open .` affiche le dossier courant. `--folder <path>` fait de même en plus de fichiers. La barre latérale d’une fenêtre affiche un seul dossier, donc en nommer deux est une erreur d’utilisation.
 - `--wait <n>` : avec MarsDawn 1.0.2 ou version ultérieure, qui donne une réponse, `--folder` attend jusqu’à n secondes (de 0 à 30, 2 par défaut) la réponse de l’app au sujet du dossier. Avec `--wait 0`, ou une app qui ne donne pas de réponse, il n’attend pas et envoie la même requête qu’avant.
 - Une valeur de `--wait` hors de 0 à 30 est une erreur d’utilisation (code 64). Écrivez une valeur négative sous la forme `--wait=-1`.
-- Avec `--json`, le dossier est indiqué comme demandé, et non comme affiché, car c’est l’app qui décide ; avec `--wait`, le résultat dit aussi ce qu’il est devenu. La liste complète se trouve dans [marsdawn pour les agents](/fr/cli/agents/).
+- Avec `--json`, le dossier est indiqué comme demandé, et non comme affiché, car c’est l’app qui décide. Avec MarsDawn 1.0.2 ou version ultérieure, le résultat dit aussi ce qu’il est devenu, sauf avec `--wait 0`. La liste complète se trouve dans [marsdawn pour les agents](/fr/cli/agents/).
 - `--background` : ouvrir sans faire passer MarsDawn au premier plan.
 - `--json` : afficher un résultat JSON au lieu de texte.
 

@@ -82,8 +82,8 @@ With a folder (marsdawn 0.5.1 and later), exit code 0:
 {"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}
 ```
 
-- `folder`: present only when a folder was given. `path` is its absolute path. `requested` is always `true`: marsdawn asked MarsDawn to show the folder, and can't tell whether the sidebar shows it, because the app may first ask the person for access. Report it as asked, not as done.
-- With `--wait` above 0 and MarsDawn 1.0.2 or later, `folder` also carries `status` once the wait ends: `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable` or `unknown`. Only alongside `needsUser`, it carries `waitingFor`: `confirmation` or `folderChoice`. Without `--wait`, or with an app that doesn't report back, `folder` stays `{"path": …, "requested": true}`. A `--wait` outside 0 to 30 exits 64 with `error: "wait_out_of_range"`. (marsdawn 0.5.3 and later.)
+- `folder`: present only when a folder was given. `path` is its absolute path. `requested` is always `true`: marsdawn asked MarsDawn to show the folder. Whether the sidebar shows it is the app's call, and the app may first ask the person for access. With MarsDawn 1.0.2 or later, `status` in the next item says what happened, unless you pass `--wait 0`. Without `status`, marsdawn can't tell, so report it as asked, not as done.
+- With MarsDawn 1.0.2 or later, `folder` also carries `status` once the wait ends (`--wait`, 2 seconds by default): `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable` or `unknown`. Only alongside `needsUser`, it carries `waitingFor`: `confirmation` or `folderChoice`. With `--wait 0`, or with an app that doesn't report back, `folder` stays `{"path": …, "requested": true}`. A `--wait` outside 0 to 30 exits 64 with `error: "wait_out_of_range"`. (marsdawn 0.5.3 and later.)
 - `opened` is empty when only a folder was given.
 
 marsdawn 0.2.x printed `opened` as a list of path strings. Check `marsdawn --version` if you need to handle both.

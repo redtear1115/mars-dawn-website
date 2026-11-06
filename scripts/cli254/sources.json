@@ -71,6 +71,24 @@
    "updated_at": "2026-10-20T16:36:31Z",
    "sha256": "e41989fce4804f874ee0b876a03a4396267fe7e54637a3f184b12b94d047c997",
    "chars": 37303
+  },
+  "J": {
+   "issue": 296,
+   "id": 6666104435,
+   "what": "Aria's rewrite of the folder item, the status item and /cli/'s --json item, 8 locales, 2026-11-05",
+   "created_at": "2026-11-05T18:37:06Z",
+   "updated_at": "2026-11-05T18:37:06Z",
+   "sha256": "4800a5035ab5255b1d3cc8149af9e3532f08d906b1097d445be07c482b8164a9",
+   "chars": 10712
+  },
+  "approval_296": {
+   "issue": 296,
+   "id": 6683377854,
+   "what": "owner approval of J, 2026-11-06: 「4. 核准 並且實際跑一次」, relayed by Ditto with Ray's words quoted",
+   "created_at": "2026-11-06T11:05:46Z",
+   "updated_at": "2026-11-06T11:05:46Z",
+   "sha256": "9fba7f746d1d915d48086bc9455a2492f3323b4fb52eba9b7f0058a859e47114",
+   "chars": 285
   }
  }
 }
