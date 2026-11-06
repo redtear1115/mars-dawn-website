@@ -286,6 +286,37 @@ def parse_i(body: str, locales: list, data: dict) -> None:
         data[loc]["schema_notes"] = notes
 
 
+def apply_295(data: dict) -> None:
+    """Apply the owner's supplied #295 snapshots, pinned locally without network metadata.
+
+    Remote comment ids/updated_at were not supplied for both files. Keep their exact bodies
+    and hashes rather than inventing remote pins; these override #254's older schema notes.
+    """
+    for pin in SOURCES["local_copy_295"]:
+        body = (HERE / pin["path"]).read_text(encoding="utf-8")
+        if sha256(body) != pin["sha256"]:
+            raise Stop(f"#295 local copy differs: {pin['path']}")
+        rows = table_rows(body, "1.")
+        cols = {LABELS[h]: i for i, h in enumerate(rows[0]) if h in LABELS}
+        for row in rows[2:]:
+            key = re.match(r"`(\w+)`", row[0]).group(1)
+            for loc in pin["locales"]:
+                data[loc]["schema_notes"][key] = row[cols[loc]]
+
+
+def apply_360(data: dict) -> None:
+    """#360 changed `--layout`, `<!--BREAK-->` and the version sentence in data.py itself, from comments
+    on #357 that aren't pinned here, so a run without this put the old sentences back. approved360.json
+    is those two fields as #360 merged them, cut from main's data.py by program, and they win.
+    """
+    pin = SOURCES["local_copy_360"]
+    body = (HERE / pin["path"]).read_text(encoding="utf-8")
+    if sha256(body) != pin["sha256"]:
+        raise Stop(f"#360 local copy differs: {pin['path']}")
+    for locale, fields in json.loads(body).items():
+        data[locale].update(fields)
+
+
 NEW_355 = ["0.7.6", "0.7.5", "0.7.4", "0.7.3"]
 
 
@@ -327,9 +358,11 @@ def build() -> tuple:
     for loc in machine:
         data[loc] = {"changelog": {}}
     parse_i(fetch(c["I"]), machine, data)
+    apply_295(data)
     fetch(c["approval_355"])
     apply_355(fetch(c["K"]), ["en", "zh-hant"], data)
     apply_355(fetch(c["K_i18n"]), ["zh-hans", "ja", "ko", "de", "fr", "es"], data)
+    apply_360(data)
     return data, shared
 
 

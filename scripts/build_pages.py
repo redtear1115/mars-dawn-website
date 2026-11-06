@@ -1289,15 +1289,13 @@ SCHEMA_FILES = {
 # error.v4.json (#295) is v3 plus the usage errors (exit 64) that print JSON with --json: a bad --wait
 # since 0.5.3, skill --install's refusals since 0.5.4, theme preview's refused -o since 0.6.1. v1 to v3
 # say every exit-64 error is text on stderr, which hasn't been true since 0.5.3. Kit b6995697 (0.7.2):
-# Commands.swift WaitRangeFailure, SkillInstallFailure, OutputPathFailure; main.swift finish(). Written
-# but deliberately not in SCHEMA_ORDER yet: listing it needs per-locale SCHEMA_NOTES copy, which comes
-# from Grok (#295).
+# Commands.swift WaitRangeFailure, SkillInstallFailure, OutputPathFailure; main.swift finish().
 # open.v4.json (website #254): with --wait and an app that reports back (marsdawn 0.5.3 and later), `folder`
 # also carries `status` and, only alongside needsUser, `waitingFor`. open.v3.json's folder forbids both, so a
 # real 0.5.3+ result failed it. Taken from redtear1115/mars-dawn-kit @ b6995697 (0.7.2): README.md:71,
 # Sources/marsdawn/Commands.swift folderFields(), FolderStatusRequest.swift FolderStatus / FolderWaitingFor.
 # Each new schema is listed just before the one it follows; the per-locale notes come from scripts/cli254.
-SCHEMA_ORDER = ("export", "open_v4", "open", "error_v3", "error", "open_v2", "open_v1", "error_v1")
+SCHEMA_ORDER = ("export", "open_v4", "open", "error_v4", "error_v3", "error", "open_v2", "open_v1", "error_v1")
 
 THEME_IDS = ["dawn", "classic", "modern", "vivid"]
 PAPER_SIZES = ["a4", "letter"]
@@ -1711,8 +1709,16 @@ exit 0</code></pre>
   <li><code>3</code>, <code>app_not_installed</code>: MarsDawn isn't installed. Only <code>open</code> returns this.</li>
   <li><code>4</code>, <code>output_exists</code>: the output file exists. Pass <code>--force</code>.</li>
   <li><code>5</code>, <code>export_failed</code>: the export itself failed.</li>
+  <li><code>5</code>, <code>input_too_large</code>: the input is over 16 MiB, so nothing was written. Only <code>export</code> returns this.</li>
   <li><code>6</code>, <code>app_cannot_open_folders</code>: this MarsDawn can't show a folder, so nothing was opened. Only <code>open</code> returns this.</li>
-  <li><code>64</code>: usage error, such as an unknown option, an invalid value, a line out of range, <code>--line</code> with more than one file or with a folder, more than one folder, or <code>-a</code>. This one is printed as text on stderr, even with <code>--json</code>.</li>
+  <li><code>7</code>, <code>skill_install_failed</code>: <code>skill --install</code> couldn't create the folder or write the file. An existing SKILL.md is left as it was.</li>
+  <li><code>64</code>: usage error. Most usage errors, such as an unknown option, an invalid value, a line out of range, <code>--line</code> with more than one file or with a folder, more than one folder, or <code>-a</code>, are printed as text on stderr, even with <code>--json</code>. These have their own <code>error</code> and print JSON on stdout, like any other failure:
+    <ul>
+      <li><code>wait_out_of_range</code>: <code>open --wait</code> outside 0 to 30.</li>
+      <li><code>skill_differs</code>, <code>skill_unsafe_symlink</code>, <code>skill_target_not_a_file</code>, <code>skill_unreadable</code>: <code>skill --install</code> refused to write.</li>
+      <li><code>output_folder_missing</code>, <code>output_symlink</code>, <code>output_not_a_file</code>: <code>theme preview</code> refused the <code>-o</code> path.</li>
+    </ul>
+  </li>
 </ul>
 
 <h2>JSON Schemas</h2>
@@ -1888,8 +1894,16 @@ exit 0</code></pre>
   <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
   <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
+  <li><code>5</code>，<code>input_too_large</code>：輸入檔超過 16 MiB，所以沒有寫出任何檔案。只有 <code>export</code> 會回傳這個代碼。</li>
   <li><code>6</code>，<code>app_cannot_open_folders</code>：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西。只有 <code>open</code> 會回傳這個代碼。</li>
-  <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 <code>-a</code>。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
+  <li><code>7</code>，<code>skill_install_failed</code>：<code>skill --install</code> 無法建立資料夾或寫入檔案。原本的 SKILL.md 保持不變。</li>
+  <li><code>64</code>：用法錯誤。大多數用法錯誤，例如未知的選項、無效的值、行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 <code>-a</code>，都以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。下面這幾種有自己的 <code>error</code> 值，會和其他失敗一樣在 stdout 輸出 JSON：
+    <ul>
+      <li><code>wait_out_of_range</code>：<code>open --wait</code> 超出 0 到 30。</li>
+      <li><code>skill_differs</code>、<code>skill_unsafe_symlink</code>、<code>skill_target_not_a_file</code>、<code>skill_unreadable</code>：<code>skill --install</code> 拒絕寫入。</li>
+      <li><code>output_folder_missing</code>、<code>output_symlink</code>、<code>output_not_a_file</code>：<code>theme preview</code> 拒絕 <code>-o</code> 指定的路徑。</li>
+    </ul>
+  </li>
 </ul>
 
 <h2>JSON Schema</h2>
@@ -6681,7 +6695,13 @@ def _render_block(node: _Node) -> str:
             if child.tag != "li":
                 raise MarkdownConversionError(f"unsupported child <{child.tag}> of <{tag}>")
             bullet = f"{len(items) + 1}." if tag == "ol" else "-"
-            items.append(f"{bullet} " + _render_inline(child.children).strip())
+            inline = [c for c in child.children if isinstance(c, str) or c.tag not in ("ul", "ol")]
+            nested = [c for c in child.children if not isinstance(c, str) and c.tag in ("ul", "ol")]
+            item = f"{bullet} " + _render_inline(inline).strip()
+            for sublist in nested:
+                item += "\n" + "\n".join(" " * (len(bullet) + 1) + line
+                                          for line in _render_block(sublist).rstrip().split("\n"))
+            items.append(item)
         return "\n".join(items) + "\n\n"
     if tag == "table":
         rows = []

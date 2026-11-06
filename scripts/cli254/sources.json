@@ -99,5 +99,34 @@
    "sha256": "5af66720b71d638deaff9c79c4006fcc5c212734d74cb20ef522878615381eb6",
    "chars": 7971
   }
- }
+ },
+ "local_copy_360": {
+  "path": "approved360.json",
+  "pr": 360,
+  "sha256": "770dc5eaf6b93ef09b32afcee388232e18af19c8217d613db053a465a5827712"
+ },
+ "local_copy_295": [
+  {
+   "path": "approved295/three.md",
+   "issue": 295,
+   "sha256": "59a0591cb1872ec1a53e7cd0cfa7466f5845c438b3bd947948c82ea4e51e58c8",
+   "locales": [
+    "en",
+    "zh-hant",
+    "ja"
+   ]
+  },
+  {
+   "path": "approved295/five.md",
+   "issue": 295,
+   "sha256": "027ef3133193cbfa54831aa65dad8ad2149f83f96539159431d39320fb5856ea",
+   "locales": [
+    "zh-hans",
+    "ko",
+    "de",
+    "fr",
+    "es"
+   ]
+  }
+ ]
 }

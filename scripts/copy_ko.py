@@ -1038,8 +1038,16 @@ exit 0</code></pre>
   <li><code>3</code>, <code>app_not_installed</code>: MarsDawn이 설치되어 있지 않습니다. <code>open</code>만 이 코드를 반환합니다.</li>
   <li><code>4</code>, <code>output_exists</code>: 출력 파일이 이미 있습니다. <code>--force</code>를 주세요.</li>
   <li><code>5</code>, <code>export_failed</code>: 내보내기 자체가 실패했습니다.</li>
+  <li><code>5</code>, <code>input_too_large</code>: 입력이 16 MiB를 넘어서 아무것도 저장하지 않았습니다. <code>export</code>만 이 코드를 반환합니다.</li>
   <li><code>6</code>, <code>app_cannot_open_folders</code>: 이 버전의 MarsDawn은 폴더를 표시할 수 없어서 아무것도 열지 않았습니다. <code>open</code>만 이 코드를 반환합니다.</li>
-  <li><code>64</code>: 사용법 오류. 알 수 없는 옵션, 잘못된 값, 범위를 벗어난 줄, 파일 두 개 이상이나 폴더와 함께 쓴 <code>--line</code>, 폴더 두 개 이상, <code>-a</code> 등이 해당합니다. 이 오류는 <code>--json</code>을 줘도 stderr에 텍스트로 출력됩니다.</li>
+  <li><code>7</code>, <code>skill_install_failed</code>: <code>skill --install</code>이 폴더를 만들거나 파일을 쓰지 못했습니다. 기존 SKILL.md는 그대로 둡니다.</li>
+  <li><code>64</code>: 사용법 오류. 알 수 없는 옵션, 잘못된 값, 범위를 벗어난 줄, 파일 두 개 이상이나 폴더와 함께 쓴 <code>--line</code>, 폴더 두 개 이상, <code>-a</code> 등 대부분의 사용법 오류는 <code>--json</code>을 줘도 stderr에 텍스트로 출력됩니다. 다음 오류는 각자의 <code>error</code>가 있으며, 다른 실패와 마찬가지로 stdout에 JSON을 출력합니다.
+    <ul>
+      <li><code>wait_out_of_range</code>: <code>open --wait</code>가 0~30을 벗어남.</li>
+      <li><code>skill_differs</code>, <code>skill_unsafe_symlink</code>, <code>skill_target_not_a_file</code>, <code>skill_unreadable</code>: <code>skill --install</code>이 쓰기를 거부함.</li>
+      <li><code>output_folder_missing</code>, <code>output_symlink</code>, <code>output_not_a_file</code>: <code>theme preview</code>가 <code>-o</code> 경로를 거부함.</li>
+    </ul>
+  </li>
 </ul>
 
 <h2>JSON 스키마</h2>

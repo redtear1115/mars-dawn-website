@@ -36,7 +36,7 @@ from cli254 import data  # noqa: E402
 SITE = HERE.parent / "public"
 ROOTS = {"en": "", "zh-hant": "zh-hant/", "zh-hans": "zh-hans/", "ja": "ja/", "de": "de/", "fr": "fr/",
          "es": "es/", "ko": "ko/"}
-SCHEMA_FILES = {"open_v4": "open.v4.json", "open": "open.v3.json", "error_v3": "error.v3.json", "error": "error.v2.json"}
+SCHEMA_FILES = {"error_v4": "error.v4.json", "open_v4": "open.v4.json", "open": "open.v3.json", "error_v3": "error.v3.json", "error": "error.v2.json"}
 ORDER = ["0.7.6", "0.7.5", "0.7.4", "0.7.3", "0.7.2", "0.7.1", "0.7.0", "0.6.4", "0.6.3", "0.6.1", "0.5.4"]
 
 
@@ -159,6 +159,7 @@ def self_test() -> int:
                   ("cli", li(d["theme_section"].split("\n- ", 1)[1].split("\n")[0])),  # validate: only in theme
                   ("cli/agents", li(d["agents_folder_items"][0])),
                   ("cli/agents", d["schema_notes"]["open_v4"]),
+                  ("cli/agents", d["schema_notes"]["error_v4"]),
                   ("changelog", f'<p>{rich_pages.md_inline(d["changelog"]["0.7.2"].split(chr(10) * 2)[1])}</p>')]
         for slug, piece in plants:
             text = pages[slug]

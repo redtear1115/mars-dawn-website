@@ -1178,8 +1178,16 @@ exit 0</code></pre>
   <li><code>3</code>, <code>app_not_installed</code>: MarsDawn ist nicht installiert. Nur <code>open</code> liefert das.</li>
   <li><code>4</code>, <code>output_exists</code>: Die Ausgabedatei existiert. Übergib <code>--force</code>.</li>
   <li><code>5</code>, <code>export_failed</code>: Der Export selbst ist fehlgeschlagen.</li>
+  <li><code>5</code>, <code>input_too_large</code>: Die Eingabe ist größer als 16 MiB, also wurde nichts geschrieben. Nur <code>export</code> liefert das.</li>
   <li><code>6</code>, <code>app_cannot_open_folders</code>: Dieses MarsDawn kann keinen Ordner anzeigen, also wurde nichts geöffnet. Nur <code>open</code> liefert das.</li>
-  <li><code>64</code>: Bedienungsfehler, etwa eine unbekannte Option, ein ungültiger Wert, eine Zeile außerhalb des Bereichs, <code>--line</code> mit mehr als einer Datei oder mit einem Ordner, mehr als ein Ordner oder <code>-a</code>. Dieser wird als Text auf stderr ausgegeben, auch mit <code>--json</code>.</li>
+  <li><code>7</code>, <code>skill_install_failed</code>: <code>skill --install</code> konnte den Ordner nicht anlegen oder die Datei nicht schreiben. Eine vorhandene SKILL.md bleibt unverändert.</li>
+  <li><code>64</code>: Bedienungsfehler. Die meisten, etwa eine unbekannte Option, ein ungültiger Wert, eine Zeile außerhalb des Bereichs, <code>--line</code> mit mehr als einer Datei oder mit einem Ordner, mehr als ein Ordner oder <code>-a</code>, werden als Text auf stderr ausgegeben, auch mit <code>--json</code>. Diese haben ein eigenes <code>error</code> und geben wie jeder andere Fehler JSON auf stdout aus:
+    <ul>
+      <li><code>wait_out_of_range</code>: <code>open --wait</code> außerhalb von 0 bis 30.</li>
+      <li><code>skill_differs</code>, <code>skill_unsafe_symlink</code>, <code>skill_target_not_a_file</code>, <code>skill_unreadable</code>: <code>skill --install</code> hat das Schreiben verweigert.</li>
+      <li><code>output_folder_missing</code>, <code>output_symlink</code>, <code>output_not_a_file</code>: <code>theme preview</code> hat den Pfad von <code>-o</code> abgelehnt.</li>
+    </ul>
+  </li>
 </ul>
 
 <h2>JSON-Schemas</h2>

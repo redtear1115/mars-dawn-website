@@ -159,8 +159,13 @@ With `--json`, a failure prints one JSON object on stdout and exits with its cod
 - `3`, `app_not_installed`: MarsDawn isn't installed. Only `open` returns this.
 - `4`, `output_exists`: the output file exists. Pass `--force`.
 - `5`, `export_failed`: the export itself failed.
+- `5`, `input_too_large`: the input is over 16 MiB, so nothing was written. Only `export` returns this.
 - `6`, `app_cannot_open_folders`: this MarsDawn can't show a folder, so nothing was opened. Only `open` returns this.
-- `64`: usage error, such as an unknown option, an invalid value, a line out of range, `--line` with more than one file or with a folder, more than one folder, or `-a`. This one is printed as text on stderr, even with `--json`.
+- `7`, `skill_install_failed`: `skill --install` couldn't create the folder or write the file. An existing SKILL.md is left as it was.
+- `64`: usage error. Most usage errors, such as an unknown option, an invalid value, a line out of range, `--line` with more than one file or with a folder, more than one folder, or `-a`, are printed as text on stderr, even with `--json`. These have their own `error` and print JSON on stdout, like any other failure:
+  - `wait_out_of_range`: `open --wait` outside 0 to 30.
+  - `skill_differs`, `skill_unsafe_symlink`, `skill_target_not_a_file`, `skill_unreadable`: `skill --install` refused to write.
+  - `output_folder_missing`, `output_symlink`, `output_not_a_file`: `theme preview` refused the `-o` path.
 
 ## JSON Schemas
 
@@ -169,7 +174,8 @@ JSON Schema (draft 2020-12) for every `--json` result:
 - [export.v1.json](/schemas/cli/export.v1.json): export success
 - [open.v4.json](/schemas/cli/open.v4.json): open success, marsdawn 0.5.3 and later, with the folder's `status` and `waitingFor`
 - [open.v3.json](/schemas/cli/open.v3.json): open success, marsdawn 0.5.1 and 0.5.2, including a folder shown in the sidebar
-- [error.v3.json](/schemas/cli/error.v3.json): failure, every command, marsdawn 0.7.1 and later, adding `input_too_large` (exit 5) and `skill_install_failed` (exit 7)
+- [error.v4.json](/schemas/cli/error.v4.json): failure, every command, marsdawn 0.7.1 and later, including the usage errors that print JSON at exit 64
+- [error.v3.json](/schemas/cli/error.v3.json): failure, every command, marsdawn 0.7.1 and later, without the exit-64 kinds; error.v4.json replaces it
 - [error.v2.json](/schemas/cli/error.v2.json): failure, both commands, marsdawn 0.5.2 to 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open success, marsdawn 0.3.0 to 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open success, marsdawn 0.2.x, where `opened` was a list of paths

@@ -159,8 +159,13 @@ exit 0
 - `3`, `app_not_installed`: MarsDawn이 설치되어 있지 않습니다. `open`만 이 코드를 반환합니다.
 - `4`, `output_exists`: 출력 파일이 이미 있습니다. `--force`를 주세요.
 - `5`, `export_failed`: 내보내기 자체가 실패했습니다.
+- `5`, `input_too_large`: 입력이 16 MiB를 넘어서 아무것도 저장하지 않았습니다. `export`만 이 코드를 반환합니다.
 - `6`, `app_cannot_open_folders`: 이 버전의 MarsDawn은 폴더를 표시할 수 없어서 아무것도 열지 않았습니다. `open`만 이 코드를 반환합니다.
-- `64`: 사용법 오류. 알 수 없는 옵션, 잘못된 값, 범위를 벗어난 줄, 파일 두 개 이상이나 폴더와 함께 쓴 `--line`, 폴더 두 개 이상, `-a` 등이 해당합니다. 이 오류는 `--json`을 줘도 stderr에 텍스트로 출력됩니다.
+- `7`, `skill_install_failed`: `skill --install`이 폴더를 만들거나 파일을 쓰지 못했습니다. 기존 SKILL.md는 그대로 둡니다.
+- `64`: 사용법 오류. 알 수 없는 옵션, 잘못된 값, 범위를 벗어난 줄, 파일 두 개 이상이나 폴더와 함께 쓴 `--line`, 폴더 두 개 이상, `-a` 등 대부분의 사용법 오류는 `--json`을 줘도 stderr에 텍스트로 출력됩니다. 다음 오류는 각자의 `error`가 있으며, 다른 실패와 마찬가지로 stdout에 JSON을 출력합니다.
+  - `wait_out_of_range`: `open --wait`가 0~30을 벗어남.
+  - `skill_differs`, `skill_unsafe_symlink`, `skill_target_not_a_file`, `skill_unreadable`: `skill --install`이 쓰기를 거부함.
+  - `output_folder_missing`, `output_symlink`, `output_not_a_file`: `theme preview`가 `-o` 경로를 거부함.
 
 ## JSON 스키마
 
@@ -169,7 +174,8 @@ exit 0
 - [export.v1.json](/schemas/cli/export.v1.json): export 성공
 - [open.v4.json](/schemas/cli/open.v4.json): open 성공, marsdawn 0.5.3 이상, 폴더의 `status`와 `waitingFor` 포함
 - [open.v3.json](/schemas/cli/open.v3.json): open 성공, marsdawn 0.5.1~0.5.2, 사이드바에 표시되는 폴더 포함
-- [error.v3.json](/schemas/cli/error.v3.json): 실패, 모든 명령 공통, marsdawn 0.7.1 이상, `input_too_large`(코드 5)와 `skill_install_failed`(코드 7) 추가
+- [error.v4.json](/schemas/cli/error.v4.json): 실패, 모든 명령 공통, marsdawn 0.7.1 이상, 코드 64로 JSON을 출력하는 사용법 오류 포함
+- [error.v3.json](/schemas/cli/error.v3.json): 실패, 모든 명령 공통, marsdawn 0.7.1 이상, 코드 64 종류 제외, error.v4.json으로 대체됨
 - [error.v2.json](/schemas/cli/error.v2.json): 실패, 두 명령 공통, marsdawn 0.5.2~0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 성공, marsdawn 0.3.0~0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 성공, marsdawn 0.2.x, 이때 `opened`는 경로 목록이었음

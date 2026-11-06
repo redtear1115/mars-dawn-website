@@ -159,8 +159,13 @@ exit 0
 - `3`，`app_not_installed`：沒有安裝 MarsDawn。只有 `open` 會回傳這個代碼。
 - `4`，`output_exists`：輸出檔已存在，請加上 `--force`。
 - `5`，`export_failed`：匯出本身失敗。
+- `5`，`input_too_large`：輸入檔超過 16 MiB，所以沒有寫出任何檔案。只有 `export` 會回傳這個代碼。
 - `6`，`app_cannot_open_folders`：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西。只有 `open` 會回傳這個代碼。
-- `64`：用法錯誤，例如未知的選項、無效的值、行號超出範圍、`--line` 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 `-a`。這種錯誤一律以文字輸出到 stderr，即使加了 `--json` 也一樣。
+- `7`，`skill_install_failed`：`skill --install` 無法建立資料夾或寫入檔案。原本的 SKILL.md 保持不變。
+- `64`：用法錯誤。大多數用法錯誤，例如未知的選項、無效的值、行號超出範圍、`--line` 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 `-a`，都以文字輸出到 stderr，即使加了 `--json` 也一樣。下面這幾種有自己的 `error` 值，會和其他失敗一樣在 stdout 輸出 JSON：
+  - `wait_out_of_range`：`open --wait` 超出 0 到 30。
+  - `skill_differs`、`skill_unsafe_symlink`、`skill_target_not_a_file`、`skill_unreadable`：`skill --install` 拒絕寫入。
+  - `output_folder_missing`、`output_symlink`、`output_not_a_file`：`theme preview` 拒絕 `-o` 指定的路徑。
 
 ## JSON Schema
 
@@ -169,7 +174,8 @@ exit 0
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功
 - [open.v4.json](/schemas/cli/open.v4.json): open 成功，marsdawn 0.5.3 以後，資料夾多了 `status` 和 `waitingFor`
 - [open.v3.json](/schemas/cli/open.v3.json): open 成功，marsdawn 0.5.1 和 0.5.2，包括在側邊欄顯示的資料夾
-- [error.v3.json](/schemas/cli/error.v3.json): 所有指令的失敗結果，marsdawn 0.7.1 以後，新增 `input_too_large`（代碼 5）和 `skill_install_failed`（代碼 7）
+- [error.v4.json](/schemas/cli/error.v4.json): 所有指令的失敗結果，marsdawn 0.7.1 以後，包括以代碼 64 輸出 JSON 的用法錯誤
+- [error.v3.json](/schemas/cli/error.v3.json): 所有指令的失敗結果，marsdawn 0.7.1 以後，不含代碼 64 的種類；已由 error.v4.json 取代
 - [error.v2.json](/schemas/cli/error.v2.json): 兩個指令的失敗結果，marsdawn 0.5.2 到 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 成功，marsdawn 0.3.0 到 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功，marsdawn 0.2.x，當時 `opened` 是路徑清單

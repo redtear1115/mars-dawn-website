@@ -159,8 +159,13 @@ Con `--json`, un error imprime un objeto JSON en stdout y termina con su código
 - `3`, `app_not_installed`: MarsDawn no está instalado. Solo `open` devuelve este código.
 - `4`, `output_exists`: el archivo de salida existe. Pasa `--force`.
 - `5`, `export_failed`: la exportación en sí falló.
+- `5`, `input_too_large`: la entrada supera los 16 MiB, así que no se escribió nada. Solo `export` devuelve este código.
 - `6`, `app_cannot_open_folders`: esta versión de MarsDawn no puede mostrar una carpeta, así que no se abrió nada. Solo `open` devuelve este código.
-- `64`: error de uso, como una opción desconocida, un valor no válido, una línea fuera de rango, `--line` con más de un archivo o con una carpeta, más de una carpeta o `-a`. Este se imprime como texto en stderr, incluso con `--json`.
+- `7`, `skill_install_failed`: `skill --install` no pudo crear la carpeta ni escribir el archivo. Un SKILL.md existente se deja como estaba.
+- `64`: error de uso. La mayoría, como una opción desconocida, un valor no válido, una línea fuera de rango, `--line` con más de un archivo o con una carpeta, más de una carpeta o `-a`, se imprimen como texto en stderr, incluso con `--json`. Estos tienen su propio `error` e imprimen JSON en stdout, como cualquier otro error:
+  - `wait_out_of_range`: `open --wait` fuera de 0 a 30.
+  - `skill_differs`, `skill_unsafe_symlink`, `skill_target_not_a_file`, `skill_unreadable`: `skill --install` se negó a escribir.
+  - `output_folder_missing`, `output_symlink`, `output_not_a_file`: `theme preview` rechazó la ruta de `-o`.
 
 ## Esquemas JSON
 
@@ -169,7 +174,8 @@ JSON Schema (draft 2020-12) para cada resultado de `--json`:
 - [export.v1.json](/schemas/cli/export.v1.json): éxito de export
 - [open.v4.json](/schemas/cli/open.v4.json): éxito de open, marsdawn 0.5.3 y posterior, con `status` y `waitingFor` de la carpeta
 - [open.v3.json](/schemas/cli/open.v3.json): éxito de open, marsdawn 0.5.1 y 0.5.2, incluida una carpeta mostrada en la barra lateral
-- [error.v3.json](/schemas/cli/error.v3.json): error, todos los comandos, marsdawn 0.7.1 y posterior, con `input_too_large` (código 5) y `skill_install_failed` (código 7)
+- [error.v4.json](/schemas/cli/error.v4.json): error, todos los comandos, marsdawn 0.7.1 y posterior, incluidos los errores de uso que imprimen JSON con el código 64
+- [error.v3.json](/schemas/cli/error.v3.json): error, todos los comandos, marsdawn 0.7.1 y posterior, sin los tipos del código 64; lo reemplaza error.v4.json
 - [error.v2.json](/schemas/cli/error.v2.json): error, ambos comandos, marsdawn 0.5.2 a 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): éxito de open, marsdawn 0.3.0 a 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): éxito de open, marsdawn 0.2.x, donde `opened` era una lista de rutas
