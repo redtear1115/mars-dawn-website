@@ -24,7 +24,7 @@
 
 ### Mac 1.3.0
 
-- 開啟網址：從 GitHub、Gist 或 raw 檔的公開連結讀 Markdown。
+- 打開 URL：從 GitHub、Gist 或 raw 檔的公開連結讀 Markdown。
 
 ### iPad 與展開的 iPhone Duo（iOS 1.1）
 
