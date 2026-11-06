@@ -47,6 +47,33 @@ Las versiones anteriores solo tienen notas en inglés: [ver el historial en ingl
 
 No se incluyen las versiones anteriores a la 0.5.1.
 
+### marsdawn 0.7.6
+
+2 de noviembre de 2026. Los PDF de Guía en macOS 27.2.
+
+- En macOS 27.2, un PDF con la disposición Guía conserva los números de página de la tabla de contenido y los marcadores de los capítulos que empiezan en una página nueva.
+
+### marsdawn 0.7.5
+
+30 de octubre de 2026. Los encabezados de Folleto no se separan de sus tablas.
+
+- En la disposición Folleto, un encabezado se mantiene con la tabla ancha que tiene debajo, en lugar de quedar solo al pie de la página.
+
+### marsdawn 0.7.4
+
+25 de octubre de 2026. Correcciones en las notas al pie.
+
+- Una referencia a nota al pie en el párrafo justo encima de una tabla enlaza con su nota.
+- Una referencia a nota al pie en el título de un aviso destacado, el resumen de un spoiler o el texto alternativo de una imagen ya no deja caracteres sobrantes en la página. En el texto alternativo se queda tal como se escribió.
+- Una referencia a nota al pie en una línea posterior de la definición de una nota queda en el lugar correcto, así que ya no rompe un código en línea cercano.
+- La skill para agentes nombra todos los errores de uso que imprimen JSON.
+
+### marsdawn 0.7.3
+
+22 de octubre de 2026. La disposición Folleto.
+
+- `marsdawn export --layout handout` deja una columna de notas en blanco a la derecha de cada página, pone el título y la fecha en la parte superior de la página 1 y termina cada página con el nombre del archivo, la fecha y el número de página. Una tabla muy ancha puede invadir la columna de notas.
+
 ### marsdawn 0.7.2
 
 20 de octubre de 2026. La disposición Guía, los avisos destacados y las fuentes japonesas.

@@ -47,6 +47,33 @@ Les versions précédentes ne sont décrites qu’en anglais : [voir l’histori
 
 Les versions antérieures à 0.5.1 ne sont pas listées.
 
+### marsdawn 0.7.6
+
+2 novembre 2026. Les PDF Guide sous macOS 27.2.
+
+- Sous macOS 27.2, un PDF en mise en page Guide conserve les numéros de page de la table des matières et les signets des chapitres qui commencent sur une nouvelle page.
+
+### marsdawn 0.7.5
+
+30 octobre 2026. Les titres du Polycopié restent avec leurs tableaux.
+
+- Dans la mise en page Polycopié, un titre reste avec le tableau large placé dessous, au lieu de se retrouver seul en bas de page.
+
+### marsdawn 0.7.4
+
+25 octobre 2026. Corrections des notes de bas de page.
+
+- Une référence de note de bas de page dans le paragraphe juste au-dessus d’un tableau renvoie à sa note.
+- Une référence de note de bas de page dans le titre d’un encadré, le résumé d’un spoiler ou le texte alternatif d’une image ne laisse plus de caractères parasites sur la page. Dans le texte alternatif, elle reste telle qu’elle a été écrite.
+- Une référence de note de bas de page sur une ligne suivante d’une définition de note arrive au bon endroit et ne casse plus un code en ligne voisin.
+- La skill pour agents cite toutes les erreurs d’utilisation qui affichent du JSON.
+
+### marsdawn 0.7.3
+
+22 octobre 2026. La mise en page Polycopié.
+
+- `marsdawn export --layout handout` laisse une colonne de notes vide à droite de chaque page, place le titre et la date en haut de la page 1 et termine chaque page par le nom du fichier, la date et le numéro de page. Un tableau très large peut déborder sur la colonne de notes.
+
 ### marsdawn 0.7.2
 
 20 octobre 2026. La mise en page Guide, les encadrés et les polices japonaises.

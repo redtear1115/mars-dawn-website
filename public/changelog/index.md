@@ -68,6 +68,33 @@ First release.
 
 Versions before 0.5.1 are not listed.
 
+### marsdawn 0.7.6
+
+2 November 2026. Handbook PDFs on macOS 27.2.
+
+- On macOS 27.2, a Handbook PDF keeps the contents page numbers and bookmarks of chapters that start on a new page.
+
+### marsdawn 0.7.5
+
+30 October 2026. Handout headings stay with their tables.
+
+- In the Handout layout, a heading stays with the wide table under it, instead of being left alone at the foot of the page.
+
+### marsdawn 0.7.4
+
+25 October 2026. Footnote fixes.
+
+- A footnote reference in the paragraph just above a table links to its note.
+- A footnote reference in a callout title, a spoiler summary or an image's alt text no longer puts stray characters on the page. In alt text it stays as written.
+- A footnote reference on a later line of a footnote definition lands in the right place, so it no longer breaks a code span nearby.
+- The agent skill names every usage error that prints JSON.
+
+### marsdawn 0.7.3
+
+22 October 2026. The Handout layout.
+
+- `marsdawn export --layout handout` leaves a blank notes column on the right of every page, puts the title and date at the top of page 1, and ends every page with the file name, the date and the page number. A very wide table may run into the notes column.
+
 ### marsdawn 0.7.2
 
 20 October 2026. The Handbook layout, callouts and Japanese fonts.
