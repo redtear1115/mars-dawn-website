@@ -6309,7 +6309,7 @@ def cli254_agents(body: str, d: dict, page: str) -> str:
 
 def cli254_changelog(body: str, d: dict, page: str) -> str:
     entries = d["changelog"]
-    newer = "".join(_cli254_entry(entries[v]) for v in ("0.7.2", "0.7.1", "0.7.0", "0.6.4") if v in entries)
+    newer = "".join(_cli254_entry(entries[v]) for v in ("0.7.6", "0.7.5", "0.7.4", "0.7.3", "0.7.2", "0.7.1", "0.7.0", "0.6.4") if v in entries)
     for heading, html in (("<h2>marsdawn 0.6.3</h2>", newer), ("<h2>marsdawn 0.5.4</h2>", _cli254_entry(entries["0.6.1"]))):
         assert body.count(heading) == 1, f"{page}: {heading} found {body.count(heading)} times"
         body = body.replace(heading, html + heading)

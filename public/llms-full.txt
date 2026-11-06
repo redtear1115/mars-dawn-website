@@ -2777,6 +2777,33 @@ First release.
 
 Versions before 0.5.1 are not listed.
 
+### marsdawn 0.7.6
+
+2 November 2026. Handbook PDFs on macOS 27.2.
+
+- On macOS 27.2, a Handbook PDF keeps the contents page numbers and bookmarks of chapters that start on a new page.
+
+### marsdawn 0.7.5
+
+30 October 2026. Handout headings stay with their tables.
+
+- In the Handout layout, a heading stays with the wide table under it, instead of being left alone at the foot of the page.
+
+### marsdawn 0.7.4
+
+25 October 2026. Footnote fixes.
+
+- A footnote reference in the paragraph just above a table links to its note.
+- A footnote reference in a callout title, a spoiler summary or an image's alt text no longer puts stray characters on the page. In alt text it stays as written.
+- A footnote reference on a later line of a footnote definition lands in the right place, so it no longer breaks a code span nearby.
+- The agent skill names every usage error that prints JSON.
+
+### marsdawn 0.7.3
+
+22 October 2026. The Handout layout.
+
+- `marsdawn export --layout handout` leaves a blank notes column on the right of every page, puts the title and date at the top of page 1, and ends every page with the file name, the date and the page number. A very wide table may run into the notes column.
+
 ### marsdawn 0.7.2
 
 20 October 2026. The Handbook layout, callouts and Japanese fonts.
@@ -6289,6 +6316,33 @@ Mac App Store 上的 MarsDawn App，以及免費的 marsdawn 命令列工具，�
 ## marsdawn 命令列工具
 
 0.5.1 以前的版本不列。
+
+### marsdawn 0.7.6
+
+2026 年 11 月 2 日。macOS 27.2 上的手冊 PDF。
+
+- 在 macOS 27.2 上，手冊 PDF 裡從新的一頁開始的章節，會保留目錄頁碼和書籤。
+
+### marsdawn 0.7.5
+
+2026 年 10 月 30 日。講義的標題不再和表格分開。
+
+- 在講義版面，標題會和底下的寬表格留在一起，不再單獨留在頁尾。
+
+### marsdawn 0.7.4
+
+2026 年 10 月 25 日。註腳修正。
+
+- 表格正上方段落裡的註腳參照，現在會連到註腳。
+- 提示區塊標題、spoiler 摘要或圖片替代文字裡的註腳參照，不再在頁面上留下多餘字元。在替代文字裡會照原文顯示。
+- 註腳定義後面幾行的註腳參照，現在會放在正確的位置，不再弄壞旁邊的行內程式碼。
+- agent skill 列出了所有會印出 JSON 的使用方式錯誤。
+
+### marsdawn 0.7.3
+
+2026 年 10 月 22 日。講義版面。
+
+- `marsdawn export --layout handout` 會在每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。
 
 ### marsdawn 0.7.2
 
@@ -9830,6 +9884,33 @@ Mac App Store 上的 MarsDawn App，以及免费的 marsdawn 命令行工具，�
 
 0.5.1 以前的版本不列。
 
+### marsdawn 0.7.6
+
+2026 年 11 月 2 日。macOS 27.2 上的手册 PDF。
+
+- 在 macOS 27.2 上，手册 PDF 中从新的一页开始的章节，会保留目录页码和书签。
+
+### marsdawn 0.7.5
+
+2026 年 10 月 30 日。讲义的标题不再和表格分开。
+
+- 在讲义布局中，标题会和下方的宽表格留在一起，不再单独留在页尾。
+
+### marsdawn 0.7.4
+
+2026 年 10 月 25 日。脚注修正。
+
+- 表格正上方段落中的脚注引用，现在会链接到脚注。
+- 提示块标题、spoiler 摘要或图片替代文本中的脚注引用，不再在页面上留下多余字符。在替代文本中会按原文显示。
+- 脚注定义后面几行的脚注引用，现在会放在正确的位置，不再破坏旁边的行内代码。
+- 代理技能列出了所有会输出 JSON 的使用方式错误。
+
+### marsdawn 0.7.3
+
+2026 年 10 月 22 日。讲义布局。
+
+- `marsdawn export --layout handout` 会在每页右侧留一栏空白笔记栏，第 1 页顶部放标题和日期，每页末尾放文件名、日期和页码。很宽的表格可能会占用笔记栏。
+
 ### marsdawn 0.7.2
 
 2026 年 10 月 20 日。手册布局、提示块，以及日文字体。
@@ -13369,6 +13450,33 @@ Mac App Store 版 MarsDawn アプリと、無料の marsdawn コマンドライ�
 
 0.5.1 より前のバージョンは載せていません。
 
+### marsdawn 0.7.6
+
+2026年11月2日。macOS 27.2 のハンドブック PDF。
+
+- macOS 27.2 のハンドブック PDF で、新しいページから始まる章の、目次のページ番号とブックマークが保たれます。
+
+### marsdawn 0.7.5
+
+2026年10月30日。配布資料の見出しが表から離れなくなりました。
+
+- 配布資料レイアウトでは、見出しはその下の幅の広い表から離れず、ページの下端に見出しだけが残らなくなりました。
+
+### marsdawn 0.7.4
+
+2026年10月25日。脚注の修正。
+
+- 表のすぐ上の段落にある脚注の参照が、脚注にリンクするようになりました。
+- コールアウトのタイトル、spoiler の概要、画像の代替テキストにある脚注の参照で、余分な文字がページに残らなくなりました。代替テキストでは、書いたとおりの形で残ります。
+- 脚注の定義の 2 行目以降にある脚注の参照が正しい位置に入り、近くのインラインコードを壊さなくなりました。
+- エージェントスキルに、JSON を出力する使用方法のエラーをすべて記載しました。
+
+### marsdawn 0.7.3
+
+2026年10月22日。配布資料レイアウト。
+
+- `marsdawn export --layout handout` は、各ページの右側に空白のメモ欄を設け、1 ページ目の上部にタイトルと日付を入れ、各ページの末尾にファイル名、日付、ページ番号を入れます。とても幅の広い表は、メモ欄にはみ出すことがあります。
+
 ### marsdawn 0.7.2
 
 2026年10月20日。ハンドブックレイアウト、コールアウト、日本語のフォント。
@@ -16883,6 +16991,33 @@ Frühere Versionen sind nur auf Englisch beschrieben: [zum englischen Änderungs
 
 Versionen vor 0.5.1 sind nicht aufgeführt.
 
+### marsdawn 0.7.6
+
+2. November 2026. Handbuch-PDFs unter macOS 27.2.
+
+- Unter macOS 27.2 behält ein Handbuch-PDF die Seitenzahlen im Inhaltsverzeichnis und die Lesezeichen von Kapiteln, die auf einer neuen Seite beginnen.
+
+### marsdawn 0.7.5
+
+30. Oktober 2026. Handout-Überschriften bleiben bei ihren Tabellen.
+
+- Im Handout-Layout bleibt eine Überschrift bei der breiten Tabelle darunter, statt allein am Seitenende zu stehen.
+
+### marsdawn 0.7.4
+
+25. Oktober 2026. Korrekturen bei Fußnoten.
+
+- Ein Fußnotenverweis im Absatz direkt über einer Tabelle verlinkt auf seine Fußnote.
+- Ein Fußnotenverweis in einem Hinweisbox-Titel, einer Spoiler-Zusammenfassung oder dem Alt-Text eines Bildes hinterlässt keine überzähligen Zeichen mehr auf der Seite. Im Alt-Text bleibt er so stehen, wie er geschrieben wurde.
+- Ein Fußnotenverweis in einer späteren Zeile einer Fußnotendefinition landet an der richtigen Stelle und zerstört keinen Inline-Code in der Nähe mehr.
+- Der Agent-Skill nennt jeden Bedienungsfehler, der JSON ausgibt.
+
+### marsdawn 0.7.3
+
+22. Oktober 2026. Das Handout-Layout.
+
+- `marsdawn export --layout handout` lässt rechts auf jeder Seite eine leere Notizspalte, setzt Titel und Datum oben auf Seite 1 und schließt jede Seite mit Dateiname, Datum und Seitenzahl ab. Eine sehr breite Tabelle kann in die Notizspalte hineinragen.
+
 ### marsdawn 0.7.2
 
 20. Oktober 2026. Das Handbuch-Layout, Hinweisboxen und japanische Schriften.
@@ -20362,6 +20497,33 @@ Les versions précédentes ne sont décrites qu’en anglais : [voir l’histori
 ## Outil en ligne de commande marsdawn
 
 Les versions antérieures à 0.5.1 ne sont pas listées.
+
+### marsdawn 0.7.6
+
+2 novembre 2026. Les PDF Guide sous macOS 27.2.
+
+- Sous macOS 27.2, un PDF en mise en page Guide conserve les numéros de page de la table des matières et les signets des chapitres qui commencent sur une nouvelle page.
+
+### marsdawn 0.7.5
+
+30 octobre 2026. Les titres du Polycopié restent avec leurs tableaux.
+
+- Dans la mise en page Polycopié, un titre reste avec le tableau large placé dessous, au lieu de se retrouver seul en bas de page.
+
+### marsdawn 0.7.4
+
+25 octobre 2026. Corrections des notes de bas de page.
+
+- Une référence de note de bas de page dans le paragraphe juste au-dessus d’un tableau renvoie à sa note.
+- Une référence de note de bas de page dans le titre d’un encadré, le résumé d’un spoiler ou le texte alternatif d’une image ne laisse plus de caractères parasites sur la page. Dans le texte alternatif, elle reste telle qu’elle a été écrite.
+- Une référence de note de bas de page sur une ligne suivante d’une définition de note arrive au bon endroit et ne casse plus un code en ligne voisin.
+- La skill pour agents cite toutes les erreurs d’utilisation qui affichent du JSON.
+
+### marsdawn 0.7.3
+
+22 octobre 2026. La mise en page Polycopié.
+
+- `marsdawn export --layout handout` laisse une colonne de notes vide à droite de chaque page, place le titre et la date en haut de la page 1 et termine chaque page par le nom du fichier, la date et le numéro de page. Un tableau très large peut déborder sur la colonne de notes.
 
 ### marsdawn 0.7.2
 
@@ -23843,6 +24005,33 @@ Las versiones anteriores solo tienen notas en inglés: [ver el historial en ingl
 
 No se incluyen las versiones anteriores a la 0.5.1.
 
+### marsdawn 0.7.6
+
+2 de noviembre de 2026. Los PDF de Guía en macOS 27.2.
+
+- En macOS 27.2, un PDF con la disposición Guía conserva los números de página de la tabla de contenido y los marcadores de los capítulos que empiezan en una página nueva.
+
+### marsdawn 0.7.5
+
+30 de octubre de 2026. Los encabezados de Folleto no se separan de sus tablas.
+
+- En la disposición Folleto, un encabezado se mantiene con la tabla ancha que tiene debajo, en lugar de quedar solo al pie de la página.
+
+### marsdawn 0.7.4
+
+25 de octubre de 2026. Correcciones en las notas al pie.
+
+- Una referencia a nota al pie en el párrafo justo encima de una tabla enlaza con su nota.
+- Una referencia a nota al pie en el título de un aviso destacado, el resumen de un spoiler o el texto alternativo de una imagen ya no deja caracteres sobrantes en la página. En el texto alternativo se queda tal como se escribió.
+- Una referencia a nota al pie en una línea posterior de la definición de una nota queda en el lugar correcto, así que ya no rompe un código en línea cercano.
+- La skill para agentes nombra todos los errores de uso que imprimen JSON.
+
+### marsdawn 0.7.3
+
+22 de octubre de 2026. La disposición Folleto.
+
+- `marsdawn export --layout handout` deja una columna de notas en blanco a la derecha de cada página, pone el título y la fecha en la parte superior de la página 1 y termina cada página con el nombre del archivo, la fecha y el número de página. Una tabla muy ancha puede invadir la columna de notas.
+
 ### marsdawn 0.7.2
 
 20 de octubre de 2026. La disposición Guía, los avisos destacados y las fuentes japonesas.
@@ -27322,6 +27511,33 @@ Mac App Store의 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버전�
 ## marsdawn 명령줄 도구
 
 0.5.1 이전 버전은 싣지 않았습니다.
+
+### marsdawn 0.7.6
+
+2026년 11월 2일. macOS 27.2의 설명서 PDF.
+
+- macOS 27.2에서 설명서 PDF는 새 페이지에서 시작하는 장의 목차 페이지 번호와 책갈피를 유지합니다.
+
+### marsdawn 0.7.5
+
+2026년 10월 30일. 프린트물의 제목이 표와 떨어지지 않습니다.
+
+- 프린트물 레이아웃에서 제목은 아래에 있는 넓은 표와 함께 유지되며, 페이지 아래쪽에 혼자 남지 않습니다.
+
+### marsdawn 0.7.4
+
+2026년 10월 25일. 각주 수정.
+
+- 표 바로 위 문단의 각주 참조가 이제 각주로 연결됩니다.
+- 콜아웃 제목, spoiler 요약, 이미지 대체 텍스트의 각주 참조가 더 이상 페이지에 불필요한 문자를 남기지 않습니다. 대체 텍스트에서는 쓴 그대로 유지됩니다.
+- 각주 정의의 둘째 줄 이후에 있는 각주 참조가 올바른 위치에 들어가, 더 이상 근처의 인라인 코드를 깨뜨리지 않습니다.
+- 에이전트 스킬에 JSON을 출력하는 사용법 오류를 모두 적었습니다.
+
+### marsdawn 0.7.3
+
+2026년 10월 22일. 프린트물 레이아웃.
+
+- `marsdawn export --layout handout`은 모든 페이지 오른쪽에 빈 메모 공간을 남기고, 1페이지 위쪽에 제목과 날짜를 넣으며, 모든 페이지 끝에 파일 이름, 날짜, 페이지 번호를 넣습니다. 아주 넓은 표는 메모 공간까지 넘어갈 수 있습니다.
 
 ### marsdawn 0.7.2
 

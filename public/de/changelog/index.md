@@ -47,6 +47,33 @@ Frühere Versionen sind nur auf Englisch beschrieben: [zum englischen Änderungs
 
 Versionen vor 0.5.1 sind nicht aufgeführt.
 
+### marsdawn 0.7.6
+
+2. November 2026. Handbuch-PDFs unter macOS 27.2.
+
+- Unter macOS 27.2 behält ein Handbuch-PDF die Seitenzahlen im Inhaltsverzeichnis und die Lesezeichen von Kapiteln, die auf einer neuen Seite beginnen.
+
+### marsdawn 0.7.5
+
+30. Oktober 2026. Handout-Überschriften bleiben bei ihren Tabellen.
+
+- Im Handout-Layout bleibt eine Überschrift bei der breiten Tabelle darunter, statt allein am Seitenende zu stehen.
+
+### marsdawn 0.7.4
+
+25. Oktober 2026. Korrekturen bei Fußnoten.
+
+- Ein Fußnotenverweis im Absatz direkt über einer Tabelle verlinkt auf seine Fußnote.
+- Ein Fußnotenverweis in einem Hinweisbox-Titel, einer Spoiler-Zusammenfassung oder dem Alt-Text eines Bildes hinterlässt keine überzähligen Zeichen mehr auf der Seite. Im Alt-Text bleibt er so stehen, wie er geschrieben wurde.
+- Ein Fußnotenverweis in einer späteren Zeile einer Fußnotendefinition landet an der richtigen Stelle und zerstört keinen Inline-Code in der Nähe mehr.
+- Der Agent-Skill nennt jeden Bedienungsfehler, der JSON ausgibt.
+
+### marsdawn 0.7.3
+
+22. Oktober 2026. Das Handout-Layout.
+
+- `marsdawn export --layout handout` lässt rechts auf jeder Seite eine leere Notizspalte, setzt Titel und Datum oben auf Seite 1 und schließt jede Seite mit Dateiname, Datum und Seitenzahl ab. Eine sehr breite Tabelle kann in die Notizspalte hineinragen.
+
 ### marsdawn 0.7.2
 
 20. Oktober 2026. Das Handbuch-Layout, Hinweisboxen und japanische Schriften.
