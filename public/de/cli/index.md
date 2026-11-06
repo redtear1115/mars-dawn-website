@@ -67,7 +67,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`: die helle Palette des Vorschau-Themas. Standard ist `$MARSDAWN_THEME`, dann `dawn`.
 - `--paper <a4|letter>`: Papierformat. Standard ist `a4`.
 - `--breaks`: jeden Zeilenumbruch innerhalb eines Absatzes als Zeilenumbruch darstellen, wie HackMD. Ohne die Option fällt ein Zeilenumbruch zwischen zwei chinesischen oder japanischen Zeichen weg, sodass sich die Zeilen wie ein Satz lesen.
-- `--layout <document|handbook>`: das Seitenlayout. Standard ist `document`. `handbook` druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen `title` hat.
+- `--layout <document|handbook|handout>`: das Seitenlayout. Standard ist `document`. `handbook` druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen `title` hat. `handout` lässt rechts auf jeder Seite eine leere Notizspalte, setzt Titel und Datum oben auf Seite 1 und schließt jede Seite mit Dateiname, Datum und Seitenzahl ab. Eine sehr breite Tabelle kann in die Notizspalte hineinragen.
 - `--toc-title <text>`: die Überschrift des Inhaltsverzeichnisses im Handbuch. Standard ist `Contents`.
 - `<!--BREAK-->` allein in einer Zeile beginnt eine neue Seite, in beiden Layouts.
 - `--allow-remote-images`: beim Rendern Bilder aus dem Web laden. Standardmäßig aus.
@@ -75,7 +75,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--json`: ein JSON-Ergebnis statt Text ausgeben.
 - Eine Datei über 16 MiB wird nicht exportiert: `export` endet mit Code 5 und schreibt nichts.
 
-`--breaks` kam mit marsdawn 0.7.0 hinzu, `--layout` und `--toc-title` mit 0.7.1, der Wert `handbook` mit 0.7.2. Der alte Wert aus 0.7.1, `manual`, funktioniert weiterhin.
+`--breaks` kam mit marsdawn 0.7.0 hinzu, `--layout` und `--toc-title` mit 0.7.1, der Wert `handbook` mit 0.7.2, der Wert `handout` mit 0.7.3. Der alte Wert aus 0.7.1, `manual`, funktioniert weiterhin.
 
 ### marsdawn theme
 
@@ -133,7 +133,7 @@ Bei Erfolg gibt `marsdawn open --json` `ok`, `opened` (eine Liste mit dem `path`
 - [Mermaid-Vorschau auf dem Mac](https://marsdawn.southern-light.dev/de/mermaid-preview-mac/index.md): Mermaid-Diagramme auf dem Mac neben deinem Markdown: Live-Vorschau, Übersicht und PDF-Export. Ein fehlerhaftes Diagramm zeigt den Fehler und die Zeile.
 - [Übersicht für Markdown](https://marsdawn.southern-light.dev/de/quicklook/index.md): Mit MarsDawn zeigt die Übersicht Markdown im Finder per Leertaste gerendert: Mermaid, KaTeX, hervorgehobener Code. Sie funktioniert auch nach dem Test weiter.
 - [Markdown zu PDF](https://marsdawn.southern-light.dev/de/markdown-to-pdf/index.md): Wandle Markdown auf dem Mac mit dem kostenlosen Befehlszeilenwerkzeug marsdawn in ein PDF um. Mit Homebrew installieren, einen Befehl ausführen: Tabellen, Mathematik, Mermaid und Code.
-- [MarsDawn im Vergleich: VS-Code-Vorschau, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/de/vs/index.md): Für alle, die entscheiden, wie sie Markdown auf dem Mac lesen und prüfen, oft das, was ein Agent geschrieben hat. Jede Zelle unten stammt von den Seiten des Herstellers oder aus unserer eigenen Prüfung, alles am 16. Oktober 2026; Produkte ändern sich, also kann eine Zelle veralten. Wenn du einen Fehler findest, schreib an die Adresse auf Support.
+- [MarsDawn im Vergleich: VS-Code-Vorschau, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/de/vs/index.md): Für alle, die entscheiden, wie sie Markdown auf dem Mac lesen und prüfen, oft das, was ein Agent geschrieben hat. Jede Zelle unten stammt von den Seiten des Herstellers oder aus unserer eigenen Prüfung, alles am 16. Oktober 2026, außer der PDF-Zelle von MarsDawn, aktualisiert am 7. November 2026; Produkte ändern sich, also kann eine Zelle veralten. Wenn du einen Fehler findest, schreib an die Adresse auf Support.
 - [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/de/vs/macmd-viewer/index.md): MacMD Viewer ist ein Markdown-Viewer nur zum Lesen für 19,99 USD. MarsDawn bearbeitet und zeigt die Vorschau daneben: 14 Tage kostenlos, dann einmalig 4,99 USD.
 - [Der beste Markdown-Viewer für den Mac (2026)](https://marsdawn.southern-light.dev/de/best-markdown-viewer-mac/index.md): Acht Markdown-Viewer für den Mac im Vergleich: Preis, Mermaid, Formeln, PDF, Live-Neuladen, Übersicht, nativ oder Electron, und für wen sich jeder eignet.
 - [marsdawn für Agenten](https://marsdawn.southern-light.dev/de/cli/agents/index.md): Eine Referenz für KI-Agenten und Skripte, die marsdawn aufrufen, um Markdown in PDF umzuwandeln: Befehle, JSON-Ausgabe, Schemas, Exit-Codes und Voraussetzungen.

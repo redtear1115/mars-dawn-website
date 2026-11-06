@@ -67,7 +67,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`: the preview theme's light palette. Defaults to `$MARSDAWN_THEME`, then `dawn`.
 - `--paper <a4|letter>`: paper size. Defaults to `a4`.
 - `--breaks`: turn every newline inside a paragraph into a line break, as HackMD does. Without it, a newline between two Chinese or Japanese characters is dropped, so the lines read as one sentence.
-- `--layout <document|handbook>`: the page layout. Defaults to `document`. `handbook` prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a `title`.
+- `--layout <document|handbook|handout>`: the page layout. Defaults to `document`. `handbook` prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a `title`. `handout` leaves a blank notes column on the right of every page, puts the title and date at the top of page 1, and ends every page with the file name, the date and the page number. A very wide table may run into the notes column.
 - `--toc-title <text>`: the heading of the handbook's contents page. Defaults to `Contents`.
 - `<!--BREAK-->` on a line of its own starts a new page, in either layout.
 - `--allow-remote-images`: load images from the web while rendering. Off by default.
@@ -75,7 +75,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--json`: print a JSON result instead of text.
 - A file over 16 MiB isn't exported: `export` exits 5 and writes nothing.
 
-`--breaks` was added in marsdawn 0.7.0, `--layout` and `--toc-title` in 0.7.1, and the name `handbook` in 0.7.2. The 0.7.1 name, `manual`, still works.
+`--breaks` was added in marsdawn 0.7.0, `--layout` and `--toc-title` in 0.7.1, the name `handbook` in 0.7.2, and `handout` in 0.7.3. The 0.7.1 name, `manual`, still works.
 
 ### marsdawn theme
 
@@ -133,7 +133,7 @@ On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file'
 - [Mermaid preview on Mac](https://marsdawn.southern-light.dev/mermaid-preview-mac/index.md): See Mermaid diagrams drawn next to your Markdown on a Mac: live preview, Quick Look and PDF export. A broken diagram shows its error and the line.
 - [Quick Look for Markdown](https://marsdawn.southern-light.dev/quicklook/index.md): MarsDawn's Quick Look renders Markdown in Finder when you press Space, with Mermaid, KaTeX and highlighted code. It keeps working after the trial ends.
 - [Markdown to PDF](https://marsdawn.southern-light.dev/markdown-to-pdf/index.md): Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.
-- [MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/vs/index.md): For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on Support.
+- [MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/vs/index.md): For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026, except MarsDawn's PDF cell, updated on 7 November 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on Support.
 - [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer is a read-only Markdown viewer for USD 19.99. MarsDawn edits and previews side by side: free for 14 days, then USD 4.99 once.
 - [Best Markdown viewer for Mac (2026)](https://marsdawn.southern-light.dev/best-markdown-viewer-mac/index.md): Eight Markdown viewers for Mac compared by price, Mermaid, math, PDF, live reload, Quick Look and native vs Electron, with who each one suits.
 - [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): A reference for AI agents and scripts that call marsdawn to turn Markdown into PDF: commands, JSON output, schemas, exit codes and requirements.

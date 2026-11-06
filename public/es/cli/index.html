@@ -173,7 +173,7 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: la paleta clara del tema de la vista previa. De forma predeterminada, <code>$MARSDAWN_THEME</code> y, si no, <code>dawn</code>.</li>
   <li><code>--paper &lt;a4|letter&gt;</code>: tamaño del papel. De forma predeterminada, <code>a4</code>.</li>
   <li><code>--breaks</code>: mostrar cada salto de línea dentro de un párrafo como un salto de línea, como HackMD. Sin esta opción, un salto de línea entre dos caracteres chinos o japoneses desaparece, y las líneas se leen como una sola frase.</li>
-  <li><code>--layout &lt;document|handbook&gt;</code>: la disposición de página. De forma predeterminada, <code>document</code>. <code>handbook</code> genera una guía: márgenes más anchos con un lado de encuadernación, cada encabezado de primer nivel en una página nueva, una tabla de contenido con números de página, números de página en el pie y marcadores PDF, además de una portada cuando el front matter tiene <code>title</code>.</li>
+  <li><code>--layout &lt;document|handbook|handout&gt;</code>: la disposición de página. De forma predeterminada, <code>document</code>. <code>handbook</code> genera una guía: márgenes más anchos con un lado de encuadernación, cada encabezado de primer nivel en una página nueva, una tabla de contenido con números de página, números de página en el pie y marcadores PDF, además de una portada cuando el front matter tiene <code>title</code>. <code>handout</code> deja una columna de notas en blanco a la derecha de cada página, pone el título y la fecha en la parte superior de la página 1 y termina cada página con el nombre del archivo, la fecha y el número de página. Una tabla muy ancha puede invadir la columna de notas.</li>
   <li><code>--toc-title &lt;text&gt;</code>: el título de la página de contenido de la guía. De forma predeterminada, <code>Contents</code>.</li>
   <li><code>&lt;!--BREAK--&gt;</code> solo en una línea empieza una página nueva, en ambas disposiciones.</li>
   <li><code>--allow-remote-images</code>: cargar imágenes de la web durante el renderizado. Desactivado de forma predeterminada.</li>
@@ -181,7 +181,7 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>--json</code>: mostrar un resultado JSON en lugar de texto.</li>
   <li>Un archivo de más de 16 MiB no se exporta: <code>export</code> termina con el código 5 y no escribe nada.</li>
 </ul>
-<p><code>--breaks</code> llegó con marsdawn 0.7.0, <code>--layout</code> y <code>--toc-title</code> con la 0.7.1, y el valor <code>handbook</code> con la 0.7.2. El valor anterior de la 0.7.1, <code>manual</code>, sigue funcionando.</p>
+<p><code>--breaks</code> llegó con marsdawn 0.7.0, <code>--layout</code> y <code>--toc-title</code> con la 0.7.1, el valor <code>handbook</code> con la 0.7.2, y el valor <code>handout</code> con la 0.7.3. El valor anterior de la 0.7.1, <code>manual</code>, sigue funcionando.</p>
 
 <h3>marsdawn theme</h3>
 <p>Comprueba un archivo de tema (<code>theme.json</code>) y muestra cómo se ve antes de que lo compartas. No necesita la app MarsDawn. Para los campos de un tema, consulta <a href="/es/themes/agents/">Crea un tema con tu agente</a>.</p>

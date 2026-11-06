@@ -173,7 +173,7 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：预览主题的浅色版本，默认读取 <code>$MARSDAWN_THEME</code>，否则用 <code>dawn</code>。</li>
   <li><code>--paper &lt;a4|letter&gt;</code>：纸张大小，默认 <code>a4</code>。</li>
   <li><code>--breaks</code>：段落内的每个换行都当作换行，和 HackMD 一样。不加时，两个中文或日文字符之间的换行会去掉，让前后两行连成一句。</li>
-  <li><code>--layout &lt;document|handbook&gt;</code>：页面布局，默认 <code>document</code>。<code>handbook</code> 会导出成手册：页边距更宽并留出装订边，每个一级标题从新的一页开始，附带有页码的目录页、页脚页码和 PDF 书签；front matter 有 <code>title</code> 时，还会加上封面。</li>
+  <li><code>--layout &lt;document|handbook|handout&gt;</code>：页面布局，默认 <code>document</code>。<code>handbook</code> 会导出成手册：页边距更宽并留出装订边，每个一级标题从新的一页开始，附带有页码的目录页、页脚页码和 PDF 书签；front matter 有 <code>title</code> 时，还会加上封面。<code>handout</code> 会在每页右侧留一栏空白笔记栏，第 1 页顶部放标题和日期，每页末尾放文件名、日期和页码。很宽的表格可能会占用笔记栏。</li>
   <li><code>--toc-title &lt;text&gt;</code>：手册目录页的标题，默认 <code>Contents</code>。</li>
   <li>单独一行的 <code>&lt;!--BREAK--&gt;</code> 会从新的一页开始，两种布局都适用。</li>
   <li><code>--allow-remote-images</code>：导出时加载网络图片，默认关闭。</li>
@@ -181,7 +181,7 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>--json</code>：输出 JSON 结果，而不是文本。</li>
   <li>超过 16 MiB 的文件不会导出：<code>export</code> 以代码 5 结束，不写出任何文件。</li>
 </ul>
-<p><code>--breaks</code> 从 marsdawn 0.7.0 开始提供，<code>--layout</code> 和 <code>--toc-title</code> 从 0.7.1 开始，<code>handbook</code> 这个值从 0.7.2 开始。0.7.1 的旧值 <code>manual</code> 仍可使用。</p>
+<p><code>--breaks</code> 从 marsdawn 0.7.0 开始提供，<code>--layout</code> 和 <code>--toc-title</code> 从 0.7.1 开始，<code>handbook</code> 这个值从 0.7.2 开始，<code>handout</code> 从 0.7.3 开始。0.7.1 的旧值 <code>manual</code> 仍可使用。</p>
 
 <h3>marsdawn theme</h3>
 <p>在分享主题文件（<code>theme.json</code>）之前，先检查它，看看它的样子。不需要 MarsDawn app。主题有哪些字段，请见<a href="/zh-hans/themes/agents/">和你的代理一起做主题</a>。</p>

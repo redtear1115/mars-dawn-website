@@ -2,7 +2,7 @@
 
 What we're building next, by version. There are no dates: a version ships when it's ready.
 
-Last updated: 23 October 2026
+Last updated: 7 November 2026
 
 Plans can change: an item may move to another version or be dropped.
 
@@ -14,8 +14,6 @@ Everything that has shipped is in the [changelog](/changelog/).
 
 ### Mac 1.2.2
 
-- Open JSON and YAML, edit them, and see a live tree preview beside the source.
-- Open a URL: read Markdown from a public link on GitHub, a Gist or a raw file.
 - Callouts: GitHub alerts and HackMD `:::` blocks.
 - Add Claude Code's Plans folder to the sidebar in one click, newest plan first.
 
@@ -23,6 +21,10 @@ Everything that has shipped is in the [changelog](/changelog/).
 
 - After an agent changes a file, see which blocks changed.
 - An image viewer for PNG, JPEG, GIF and WebP.
+
+### Mac 1.3.0
+
+- Open a URL: read Markdown from a public link on GitHub, a Gist or a raw file.
 
 ### iPad and unfolded iPhone Duo (iOS 1.1)
 
@@ -51,7 +53,7 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 - [Mermaid preview on Mac](https://marsdawn.southern-light.dev/mermaid-preview-mac/index.md): See Mermaid diagrams drawn next to your Markdown on a Mac: live preview, Quick Look and PDF export. A broken diagram shows its error and the line.
 - [Quick Look for Markdown](https://marsdawn.southern-light.dev/quicklook/index.md): MarsDawn's Quick Look renders Markdown in Finder when you press Space, with Mermaid, KaTeX and highlighted code. It keeps working after the trial ends.
 - [Markdown to PDF](https://marsdawn.southern-light.dev/markdown-to-pdf/index.md): Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.
-- [MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/vs/index.md): For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on Support.
+- [MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/vs/index.md): For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026, except MarsDawn's PDF cell, updated on 7 November 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on Support.
 - [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer is a read-only Markdown viewer for USD 19.99. MarsDawn edits and previews side by side: free for 14 days, then USD 4.99 once.
 - [Best Markdown viewer for Mac (2026)](https://marsdawn.southern-light.dev/best-markdown-viewer-mac/index.md): Eight Markdown viewers for Mac compared by price, Mermaid, math, PDF, live reload, Quick Look and native vs Electron, with who each one suits.
 - [Command Line](https://marsdawn.southern-light.dev/cli/index.md): The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.

@@ -156,7 +156,7 @@ More: [Privacy Policy](/privacy/#the-website)
 
 ### Why use MarsDawn instead of another app?
 
-You may not need it. If you mostly write your own notes, a notes app such as Obsidian fits better. If you live in VS Code, its built-in preview is free. If you only want to peek at files in Finder, a free Quick Look extension is enough. If your PDFs need page numbers, MarsDawn doesn't add them. MarsDawn is for reading and reviewing Markdown an agent wrote: the source beside a live preview, a change from your agent you can undo in one step, and a file opened at the exact line. If it doesn't suit you, write and tell us why.
+You may not need it. If you mostly write your own notes, a notes app such as Obsidian fits better. If you live in VS Code, its built-in preview is free. If you only want to peek at files in Finder, a free Quick Look extension is enough. MarsDawn is for reading and reviewing Markdown an agent wrote: the source beside a live preview, a change from your agent you can undo in one step, and a file opened at the exact line. If it doesn't suit you, write and tell us why.
 
 More: [How MarsDawn compares](/vs/) · [Best Markdown viewer for Mac](/best-markdown-viewer-mac/)
 
@@ -349,7 +349,7 @@ On iPhone and iPad, MarsDawn is for reading only: it opens Markdown and plain te
 
 ### Windows and tabs
 
-Each document opens in its own window. Choose Window ▸ Merge All Windows to gather open windows as tabs of one. Autosave runs as you type.
+By default, documents open as tabs of the front window. To use your Mac's tab setting instead, choose Follow System Setting in Settings ▸ Appearance. Autosave runs as you type.
 
 [A Mac app](/native/)
 
@@ -592,7 +592,7 @@ Some things are left out on purpose. If you need one of them, it's better to kno
 
 In this screenshot:
 
-1. One document per window, on this Mac.
+1. Each document is a file on this Mac.
 2. You write Markdown here.
 3. The toolbar holds themes and layouts, and there is no plugins menu.
 4. The page is for reading, not editing.
@@ -1053,7 +1053,7 @@ Source: https://marsdawn.southern-light.dev/vs/
 
 # MarsDawn and other ways to read Markdown on a Mac
 
-For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on [Support](/support/).
+For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026, except MarsDawn's PDF cell, updated on 7 November 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on [Support](/support/).
 
 |  | MarsDawn | VS Code preview | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
@@ -1061,7 +1061,7 @@ For anyone choosing how to read and review Markdown on a Mac, often what an agen
 | Mermaid | Built in [[1](#v1)] | Built in [[8](#v8)] | Built in, note syntax [[16](#v16)] | Built in, `mermaid` fences [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
 | Math | KaTeX, `$…$` and `$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
 | Review an agent's plan / jump to a line | `marsdawn open file:line`; updates from disk; Copy Reference [/cli/, /features/] | Markdown diff preview, changed lines highlighted [[8](#v8)]; `code -g file:line` [[14](#v14)] | No line parameter in `obsidian://open` [[20](#v20)] | Not stated by the vendor | CLI and MCP server; no line jump stated [[4](#v4), [5](#v5)] |
-| PDF: page breaks, page numbers | Breaks avoid splitting short code blocks [/pdf/]; no page numbers [check] | Not stated by the vendor [[8](#v8)] | Paper size, margins; breaks and numbers not stated [[17](#v17)] | Not stated by the vendor [[22](#v22)] | PDF "including tables"; breaks and numbers not stated [[3](#v3)] |
+| PDF: page breaks, page numbers | Breaks avoid splitting short code blocks [/pdf/]; page numbers in the Handbook and Handout layouts [/changelog/] | Not stated by the vendor [[8](#v8)] | Paper size, margins; breaks and numbers not stated [[17](#v17)] | Not stated by the vendor [[22](#v22)] | PDF "including tables"; breaks and numbers not stated [[3](#v3)] |
 | Price | Free download; Unlock USD 4.99 once; 14-day trial [[1](#v1)] | Not stated by the vendor [[12](#v12), [13](#v13)] | Personal: "Free without limits"; commercial licence optional [[15](#v15)] | Free, GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
 | System requirements | macOS 26.0 or later [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | Not stated by the vendor [[18](#v18)] | macOS 12.0 or later [[23](#v23)] | macOS 13 or later [[2](#v2)] |
 | Account needed | No [/privacy/] | Not stated by the vendor | "No sign-up required" [[15](#v15)] | Not stated by the vendor | No [[2](#v2)] |
@@ -1094,7 +1094,7 @@ Every cell was checked on 16 October 2026 against the source in brackets (V-ids 
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-What MarsDawn lacks. It needs macOS 26 or later. On iPhone and iPad it only reads: it can't edit or export PDFs there. There's no shared editing, no account and no cloud service of its own. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Its PDFs have no page numbers. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.
+What MarsDawn lacks. It needs macOS 26 or later. On iPhone and iPad it only reads: it can't edit or export PDFs there. There's no shared editing, no account and no cloud service of its own. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Page numbers come only with the Handbook and Handout PDF layouts. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.
 
 ## When you don't need MarsDawn
 
@@ -1262,7 +1262,7 @@ A light, free native editor (CodeMirror in a web view) with Quick Look.
 A native Mac app that shows the source and a live preview side by side, with Mermaid and KaTeX built in. When an agent saves the file, the open window takes the change as one undoable "Update from Disk". `marsdawn open notes.md:120` opens a file at a line, and there is a skill and an MCP server for agents. Quick Look works with or without the trial. Copy for AI and Copy Reference hand text to an agent. Nothing leaves your Mac unless you choose.
 
 - Suits: people reviewing Markdown that AI agents write.
-- Drawback: the PDF export has no page numbers.
+- Drawback: PDF page numbers need the Handbook or Handout layout. The default Document layout has none.
 - Price: free download with a 14-day trial, then USD 4.99 once. No account. Mac App Store only.
 
 ## Obsidian
@@ -1304,7 +1304,7 @@ The built-in Markdown preview, with Mermaid built in since 1.121 and KaTeX. `cod
 | MacDown 3000 | Free | Yes | MathJax | Yes | Yes | Not documented | Yes | Native |
 | Marked 3 | From USD 2.99/mo | Yes | MathJax, KaTeX | Yes, page numbers | Yes | Not documented | Marked QL, USD 9.99 | Native |
 | MarkEdit | Free | Extension | KaTeX (extension) | Pandoc | Not documented | Not documented | Yes | Native (web view) |
-| MarsDawn | USD 4.99 once | Yes | KaTeX | Yes, no page numbers | Yes, undoable | Yes | Yes | Native |
+| MarsDawn | USD 4.99 once | Yes | KaTeX | Yes, page numbers in Handbook and Handout | Yes, undoable | Yes | Yes | Native |
 | Obsidian | Free | Yes | MathJax | Yes | Yes | Not documented | Not documented | Electron |
 | QLMarkdown | Free | Opt-in | MathJax (opt-in) | Not documented | n/a | n/a | It is one | Native |
 | Typora | USD 14.99 once | Yes | MathJax | Yes, page numbers | Not documented | Not documented | Not documented | Native |
@@ -1312,7 +1312,6 @@ The built-in Markdown preview, with Mermaid built in since 1.121 and KaTeX. `cod
 
 ## Who MarsDawn is not for
 
-- You need page numbers in your PDFs. Typora and Marked 3 add them, MarsDawn does not.
 - You keep a linked knowledge base of your own notes. Obsidian is built for that.
 - You never leave VS Code. Its built-in preview is free, and VS Code is adding an experimental Markdown view to its Agents window.
 - You only want a preview in Finder. QLMarkdown is free.
@@ -1325,7 +1324,7 @@ MacDown 3000, Obsidian and VS Code (1.121 and later) have it built in. QLMarkdow
 
 ### Which ones export PDF with page numbers?
 
-Typora and Marked 3. MarsDawn exports PDF without page numbers.
+Typora, Marked 3 and MarsDawn. In MarsDawn, choose the Handbook or Handout layout; the default Document layout has no page numbers.
 
 ### Which ones open a file at a specific line from the command line?
 
@@ -1412,7 +1411,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`: the preview theme's light palette. Defaults to `$MARSDAWN_THEME`, then `dawn`.
 - `--paper <a4|letter>`: paper size. Defaults to `a4`.
 - `--breaks`: turn every newline inside a paragraph into a line break, as HackMD does. Without it, a newline between two Chinese or Japanese characters is dropped, so the lines read as one sentence.
-- `--layout <document|handbook>`: the page layout. Defaults to `document`. `handbook` prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a `title`.
+- `--layout <document|handbook|handout>`: the page layout. Defaults to `document`. `handbook` prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a `title`. `handout` leaves a blank notes column on the right of every page, puts the title and date at the top of page 1, and ends every page with the file name, the date and the page number. A very wide table may run into the notes column.
 - `--toc-title <text>`: the heading of the handbook's contents page. Defaults to `Contents`.
 - `<!--BREAK-->` on a line of its own starts a new page, in either layout.
 - `--allow-remote-images`: load images from the web while rendering. Off by default.
@@ -1420,7 +1419,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--json`: print a JSON result instead of text.
 - A file over 16 MiB isn't exported: `export` exits 5 and writes nothing.
 
-`--breaks` was added in marsdawn 0.7.0, `--layout` and `--toc-title` in 0.7.1, and the name `handbook` in 0.7.2. The 0.7.1 name, `manual`, still works.
+`--breaks` was added in marsdawn 0.7.0, `--layout` and `--toc-title` in 0.7.1, the name `handbook` in 0.7.2, and `handout` in 0.7.3. The 0.7.1 name, `manual`, still works.
 
 ### marsdawn theme
 
@@ -2905,7 +2904,7 @@ Source: https://marsdawn.southern-light.dev/roadmap/
 
 What we're building next, by version. There are no dates: a version ships when it's ready.
 
-Last updated: 23 October 2026
+Last updated: 7 November 2026
 
 Plans can change: an item may move to another version or be dropped.
 
@@ -2917,8 +2916,6 @@ Everything that has shipped is in the [changelog](/changelog/).
 
 ### Mac 1.2.2
 
-- Open JSON and YAML, edit them, and see a live tree preview beside the source.
-- Open a URL: read Markdown from a public link on GitHub, a Gist or a raw file.
 - Callouts: GitHub alerts and HackMD `:::` blocks.
 - Add Claude Code's Plans folder to the sidebar in one click, newest plan first.
 
@@ -2926,6 +2923,10 @@ Everything that has shipped is in the [changelog](/changelog/).
 
 - After an agent changes a file, see which blocks changed.
 - An image viewer for PNG, JPEG, GIF and WebP.
+
+### Mac 1.3.0
+
+- Open a URL: read Markdown from a public link on GitHub, a Gist or a raw file.
 
 ### iPad and unfolded iPhone Duo (iOS 1.1)
 
@@ -3691,7 +3692,7 @@ MarsDawn 本身不傳送任何東西。skill 只是一份文字說明，marsdawn
 
 ### 為什麼用 MarsDawn，不用別的 App？
 
-你可能不需要它。如果你主要寫自己的筆記，Obsidian 這類筆記 App 更適合。如果你整天待在 VS Code，它內建的預覽是免費的。如果你只想在 Finder 裡瞄一眼檔案，免費的快速查看擴充功能就夠了。如果你的 PDF 需要頁碼，MarsDawn 不會加。MarsDawn 是用來閱讀和審閱 agent 寫的 Markdown：原始碼旁邊就是即時預覽，agent 的修改一步就能撤銷，檔案直接開到指定的那一行。如果它不合用，歡迎寫信告訴我們原因。
+你可能不需要它。如果你主要寫自己的筆記，Obsidian 這類筆記 App 更適合。如果你整天待在 VS Code，它內建的預覽是免費的。如果你只想在 Finder 裡瞄一眼檔案，免費的快速查看擴充功能就夠了。MarsDawn 是用來閱讀和審閱 agent 寫的 Markdown：原始碼旁邊就是即時預覽，agent 的修改一步就能撤銷，檔案直接開到指定的那一行。如果它不合用，歡迎寫信告訴我們原因。
 
 詳見：[MarsDawn 與其他工具比較](/zh-hant/vs/) · [Mac Markdown 檢視器推薦](/zh-hant/best-markdown-viewer-mac/)
 
@@ -3884,7 +3885,7 @@ agent 在 Mac 上工作，它寫的計畫和報告，你在 iPhone 或 iPad 上�
 
 ### 視窗和分頁
 
-每份文件預設在自己的視窗打開。用「視窗 ▸ 合併所有視窗」，可以把開著的視窗收成同一個視窗裡的分頁。打字時會自動儲存。
+打開的文件預設會成為最前面視窗的分頁。想依照 Mac 的分頁設定，請到「設定 ▸ 外觀」選「依照系統設定」。打字時會自動儲存。
 
 [為 Mac 而做](/zh-hant/native/)
 
@@ -4127,7 +4128,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 
 這張截圖裡：
 
-1. 一個視窗一份文件，就在這台 Mac 上。
+1. 每份文件都是這台 Mac 上的檔案。
 2. 你在這裡寫 Markdown。
 3. 工具列只有主題和版面，沒有外掛選單。
 4. 這一側用來閱讀，不能直接編輯。
@@ -4588,7 +4589,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/
 
 # 在 Mac 上讀 Markdown：MarsDawn 和其他做法
 
-寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日；產品會變，格子也可能過時。發現錯誤，請寫信到[支援](/zh-hant/support/)頁上的地址。
+寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新於 2026 年 11 月 7 日）；產品會變，格子也可能過時。發現錯誤，請寫信到[支援](/zh-hant/support/)頁上的地址。
 
 |  | MarsDawn | VS Code 預覽 | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
@@ -4596,7 +4597,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/
 | Mermaid | 內建 [[1](#v1)] | 內建 [[8](#v8)] | 內建，筆記語法 [[16](#v16)] | 內建，`mermaid` 區塊 [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
 | 數學式 | KaTeX，`$…$`、`$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
 | 檢查 agent 的計畫／跳到某一行 | `marsdawn open file:line`；從磁碟更新；拷貝引用 [/cli/、/features/] | Markdown diff 預覽，標示改動的行 [[8](#v8)]；`code -g file:line` [[14](#v14)] | `obsidian://open` 沒有行號參數 [[20](#v20)] | 廠商未說明 | 有 CLI 和 MCP 伺服器；未說明跳行 [[4](#v4)、[5](#v5)] |
-| PDF：分頁、頁碼 | 分頁不切開短程式碼區塊 [/pdf/]；沒有頁碼 [實測] | 廠商未說明 [[8](#v8)] | 紙張大小、邊界；分頁與頁碼未說明 [[17](#v17)] | 廠商未說明 [[22](#v22)] | PDF "including tables"；分頁與頁碼未說明 [[3](#v3)] |
+| PDF：分頁、頁碼 | 分頁不切開短程式碼區塊 [/pdf/]；手冊與講義版面有頁碼 [/changelog/] | 廠商未說明 [[8](#v8)] | 紙張大小、邊界；分頁與頁碼未說明 [[17](#v17)] | 廠商未說明 [[22](#v22)] | PDF "including tables"；分頁與頁碼未說明 [[3](#v3)] |
 | 價格 | 免費下載；解鎖一次 USD 4.99；試用 14 天 [[1](#v1)] | 廠商未說明 [[12](#v12)、[13](#v13)] | 個人："Free without limits"；商用授權非必要 [[15](#v15)] | 免費，GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
 | 系統需求 | macOS 26.0 以上 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 廠商未說明 [[18](#v18)] | macOS 12.0 以上 [[23](#v23)] | macOS 13 以上 [[2](#v2)] |
 | 需要帳號 | 不用 [/privacy/] | 廠商未說明 | "No sign-up required" [[15](#v15)] | 廠商未說明 | 不用 [[2](#v2)] |
@@ -4629,7 +4630,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。不能共同編輯，沒有帳號，也沒有自己的雲端服務。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。輸出的 PDF 沒有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。
+MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。不能共同編輯，沒有帳號，也沒有自己的雲端服務。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。只有手冊與講義版面的 PDF 有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。
 
 ## 什麼時候用不到 MarsDawn
 
@@ -4797,7 +4798,7 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 原生 Mac App，原始碼與即時預覽左右並排，內建 Mermaid 與 KaTeX。AI 代理存檔時，開著的視窗會把變更收成一步可撤銷的「從磁碟更新」。`marsdawn open notes.md:120` 可開到指定行，另有給代理用的技能與 MCP 伺服器。快速查看不論試用與否都能用。「拷貝給 AI」與「拷貝引用」能把文字交給代理。除非你選擇，資料不會離開你的 Mac。
 
 - 適合：審閱 AI 代理所寫 Markdown 的人。
-- 缺點：輸出的 PDF 沒有頁碼。
+- 缺點：PDF 要用手冊或講義版面才有頁碼，預設的文件版面沒有。
 - 價格：免費下載，試用 14 天，之後一次 USD 4.99。不需帳號。僅在 Mac App Store 提供。
 
 ## Obsidian
@@ -4839,7 +4840,7 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 | MacDown 3000 | 免費 | 有 | MathJax | 有 | 有 | 未記載 | 有 | 原生 |
 | Marked 3 | 每月 USD 2.99 起 | 有 | MathJax、KaTeX | 有，含頁碼 | 有 | 未記載 | Marked QL，USD 9.99 | 原生 |
 | MarkEdit | 免費 | 擴充功能 | KaTeX（擴充功能） | Pandoc | 未記載 | 未記載 | 有 | 原生（web view） |
-| MarsDawn | 一次 USD 4.99 | 有 | KaTeX | 有，無頁碼 | 有，可撤銷 | 有 | 有 | 原生 |
+| MarsDawn | 一次 USD 4.99 | 有 | KaTeX | 有，手冊與講義版面含頁碼 | 有，可撤銷 | 有 | 有 | 原生 |
 | Obsidian | 免費 | 有 | MathJax | 有 | 有 | 未記載 | 未記載 | Electron |
 | QLMarkdown | 免費 | 需開啟 | MathJax（需開啟） | 未記載 | 不適用 | 不適用 | 本身即是 | 原生 |
 | Typora | 一次 USD 14.99 | 有 | MathJax | 有，含頁碼 | 未記載 | 未記載 | 未記載 | 原生 |
@@ -4847,7 +4848,6 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 
 ## MarsDawn 不適合誰
 
-- PDF 一定要有頁碼。Typora 與 Marked 3 能加，MarsDawn 不能。
 - 你在經營互相連結的個人筆記庫。Obsidian 就是為此打造的。
 - 你從不離開 VS Code。內建預覽免費，VS Code 也正在 Agents 視窗加入實驗性的 Markdown 檢視。
 - 你只想在 Finder 預覽。QLMarkdown 免費。
@@ -4860,7 +4860,7 @@ MacDown 3000、Obsidian 與 VS Code（1.121 起）內建。QLMarkdown 可選擇�
 
 ### 哪些能輸出含頁碼的 PDF？
 
-Typora 與 Marked 3。MarsDawn 輸出的 PDF 沒有頁碼。
+Typora、Marked 3 與 MarsDawn。在 MarsDawn 選手冊或講義版面；預設的文件版面沒有頁碼。
 
 ### 哪些能從命令列開到指定行？
 
@@ -4947,7 +4947,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`：預覽主題的淺色版本，預設讀取 `$MARSDAWN_THEME`，否則用 `dawn`。
 - `--paper <a4|letter>`：紙張大小，預設 `a4`。
 - `--breaks`：段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句。
-- `--layout <document|handbook>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。
+- `--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。`handout` 會在每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。
 - `--toc-title <text>`：手冊目錄頁的標題，預設是 `Contents`。
 - 單獨一行的 `<!--BREAK-->` 會從新的一頁開始，兩種版面都適用。
 - `--allow-remote-images`：輸出時載入網路圖片，預設關閉。
@@ -4955,7 +4955,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--json`：印出 JSON 結果，而不是文字。
 - 超過 16 MiB 的檔案不會輸出：`export` 以代碼 5 結束，不寫出任何檔案。
 
-`--breaks` 從 marsdawn 0.7.0 開始提供，`--layout` 和 `--toc-title` 從 0.7.1 開始，`handbook` 這個名稱從 0.7.2 開始。0.7.1 的舊名稱 `manual` 仍可使用。
+`--breaks` 從 marsdawn 0.7.0 開始提供，`--layout` 和 `--toc-title` 從 0.7.1 開始，`handbook` 這個名稱從 0.7.2 開始，`handout` 從 0.7.3 開始。0.7.1 的舊名稱 `manual` 仍可使用。
 
 ### marsdawn theme
 
@@ -6445,7 +6445,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/roadmap/
 
 依版本列出我們接下來要做的事。不寫日期：版本做好了才會推出。
 
-最後更新：2026 年 10 月 23 日
+最後更新：2026 年 11 月 7 日
 
 計畫可能會調整：項目可能移到別的版本，也可能取消。
 
@@ -6457,8 +6457,6 @@ Source: https://marsdawn.southern-light.dev/zh-hant/roadmap/
 
 ### Mac 1.2.2
 
-- 開啟 JSON 和 YAML，可以編輯，旁邊是即時的樹狀預覽。
-- 開啟網址：從 GitHub、Gist 或 raw 檔的公開連結讀 Markdown。
 - 提示框：支援 GitHub alerts 和 HackMD 的 `:::` 區塊。
 - 一鍵把 Claude Code 的 Plans 資料夾加進側邊欄，最新的計畫排在最上面。
 
@@ -6466,6 +6464,10 @@ Source: https://marsdawn.southern-light.dev/zh-hant/roadmap/
 
 - agent 改了檔案之後，看得出哪些區塊變了。
 - 圖片檢視器：開啟 PNG、JPEG、GIF、WebP。
+
+### Mac 1.3.0
+
+- 開啟網址：從 GitHub、Gist 或 raw 檔的公開連結讀 Markdown。
 
 ### iPad 與展開的 iPhone Duo（iOS 1.1）
 
@@ -7265,7 +7267,7 @@ MarsDawn 本身不发送任何东西。skill 只是一份文字说明，marsdawn
 
 ### 为什么用 MarsDawn，不用别的 App？
 
-你可能不需要它。如果你主要写自己的笔记，Obsidian 这类笔记 App 更合适。如果你整天待在 VS Code 里，它内置的预览是免费的。如果你只想在访达里瞄一眼文件，免费的快速查看扩展就够了。如果你的 PDF 需要页码，MarsDawn 不会加。MarsDawn 是用来阅读和审阅代理写的 Markdown 的：源文本旁边就是实时预览，代理的修改一步就能撤销，文件直接打开到指定的那一行。如果它不合用，欢迎写信告诉我们原因。
+你可能不需要它。如果你主要写自己的笔记，Obsidian 这类笔记 App 更合适。如果你整天待在 VS Code 里，它内置的预览是免费的。如果你只想在访达里瞄一眼文件，免费的快速查看扩展就够了。MarsDawn 是用来阅读和审阅代理写的 Markdown 的：源文本旁边就是实时预览，代理的修改一步就能撤销，文件直接打开到指定的那一行。如果它不合用，欢迎写信告诉我们原因。
 
 详见：[MarsDawn 与其他工具比较](/zh-hans/vs/) · [Mac Markdown 查看器推荐](/zh-hans/best-markdown-viewer-mac/)
 
@@ -7458,7 +7460,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 ### 窗口和标签页
 
-每份文稿默认在自己的窗口打开。用“窗口 ▸ 合并所有窗口”，可以把开着的窗口收成同一个窗口里的标签页。输入时会自动存储。
+打开的文稿默认会成为最前面窗口的标签页。想按照 Mac 的标签页设置，请到“设置 ▸ 外观”选择“跟随系统设置”。输入时会自动存储。
 
 [为 Mac 而做](/zh-hans/native/)
 
@@ -7701,7 +7703,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 
 这张截图里：
 
-1. 一个窗口一份文稿，就在这台 Mac 上。
+1. 每份文稿都是这台 Mac 上的文件。
 2. 你在这里写 Markdown。
 3. 工具栏只有主题和布局，没有插件菜单。
 4. 这一侧用来阅读，不能直接编辑。
@@ -8159,7 +8161,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/
 
 # 在 Mac 上读 Markdown：MarsDawn 和其他做法
 
-写给正在挑选工具、要在 Mac 上读 Markdown（常常是代理写的）的人。下表每一格都出自厂商自己的页面或我们实际的检查，日期都是 2026 年 10 月 16 日；产品会变，格子也可能过时。发现错误，请写信到[支持](/zh-hans/support/)页上的地址。
+写给正在挑选工具、要在 Mac 上读 Markdown（常常是代理写的）的人。下表每一格都出自厂商自己的页面或我们实际的检查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新于 2026 年 11 月 7 日）；产品会变，格子也可能过时。发现错误，请写信到[支持](/zh-hans/support/)页上的地址。
 
 |  | MarsDawn | VS Code 预览 | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
@@ -8167,7 +8169,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/
 | Mermaid | 内置 [[1](#v1)] | 内置 [[8](#v8)] | 内置，笔记语法 [[16](#v16)] | 内置，`mermaid` 区块 [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
 | 数学公式 | KaTeX，`$…$`、`$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
 | 检查代理的计划／跳到某一行 | `marsdawn open file:line`；从磁盘更新；拷贝引用 [/cli/, /features/] | Markdown diff 预览，标出改动的行 [[8](#v8)]；`code -g file:line` [[14](#v14)] | `obsidian://open` 没有行号参数 [[20](#v20)] | 厂商未说明 | 有 CLI 和 MCP 服务器；未说明跳行 [[4](#v4), [5](#v5)] |
-| PDF：分页、页码 | 分页不切开短代码块 [/pdf/]；没有页码 [实测] | 厂商未说明 [[8](#v8)] | 纸张大小、边距；分页与页码未说明 [[17](#v17)] | 厂商未说明 [[22](#v22)] | PDF "including tables"；分页与页码未说明 [[3](#v3)] |
+| PDF：分页、页码 | 分页不切开短代码块 [/pdf/]；手册与讲义布局有页码 [/changelog/] | 厂商未说明 [[8](#v8)] | 纸张大小、边距；分页与页码未说明 [[17](#v17)] | 厂商未说明 [[22](#v22)] | PDF "including tables"；分页与页码未说明 [[3](#v3)] |
 | 价格 | 免费下载；解锁一次 USD 4.99；试用 14 天 [[1](#v1)] | 厂商未说明 [[12](#v12), [13](#v13)] | 个人："Free without limits"；商用授权非必需 [[15](#v15)] | 免费，GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
 | 系统要求 | macOS 26.0 或更新版本 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 厂商未说明 [[18](#v18)] | macOS 12.0 或更新版本 [[23](#v23)] | macOS 13 或更新版本 [[2](#v2)] |
 | 需要账户 | 不需要 [/privacy/] | 厂商未说明 | "No sign-up required" [[15](#v15)] | 厂商未说明 | 不需要 [[2](#v2)] |
@@ -8200,7 +8202,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn 没有的东西。需要 macOS 26 或更新版本。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。不能共同编辑，没有账户，也没有自己的云端服务。预览本身不能改，要改旁边的 Markdown 源文本。不能导出 Word，也没有插件。导出的 PDF 没有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。
+MarsDawn 没有的东西。需要 macOS 26 或更新版本。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。不能共同编辑，没有账户，也没有自己的云端服务。预览本身不能改，要改旁边的 Markdown 源文本。不能导出 Word，也没有插件。只有手册与讲义布局的 PDF 有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。
 
 ## 什么时候用不到 MarsDawn
 
@@ -8367,7 +8369,7 @@ Marked 3 是预览器，用来看你在其他 App 里写的 Markdown。文件一
 原生 Mac App，源文本与实时预览左右并排，内置 Mermaid 与 KaTeX。AI 代理保存文件时，打开的窗口会把更改收成一步可撤销的“从磁盘更新”。`marsdawn open notes.md:120` 可打开到指定行，另有给代理用的代理技能与 MCP 服务器。无论是否在试用期，快速查看都能用。“拷贝给 AI”与“拷贝引用”能把文字交给代理。除非你选择，数据不会离开你的 Mac。
 
 - 适合：审阅 AI 代理所写 Markdown 的人。
-- 缺点：导出的 PDF 没有页码。
+- 缺点：PDF 要用手册或讲义布局才有页码，默认的文稿布局没有。
 - 价格：免费下载，试用 14 天，之后一次性 USD 4.99。无需账户。仅在 Mac App Store 提供。
 
 ## Obsidian
@@ -8409,7 +8411,7 @@ Marked 3 是预览器，用来看你在其他 App 里写的 Markdown。文件一
 | MacDown 3000 | 免费 | 有 | MathJax | 有 | 有 | 无文档 | 有 | 原生 |
 | Marked 3 | 每月 USD 2.99 起 | 有 | MathJax、KaTeX | 有，带页码 | 有 | 无文档 | Marked QL，USD 9.99 | 原生 |
 | MarkEdit | 免费 | 扩展 | KaTeX（扩展） | Pandoc | 无文档 | 无文档 | 有 | 原生（web view） |
-| MarsDawn | 一次性 USD 4.99 | 有 | KaTeX | 有，无页码 | 有，可撤销 | 有 | 有 | 原生 |
+| MarsDawn | 一次性 USD 4.99 | 有 | KaTeX | 有，手册与讲义布局带页码 | 有，可撤销 | 有 | 有 | 原生 |
 | Obsidian | 免费 | 有 | MathJax | 有 | 有 | 无文档 | 无文档 | Electron |
 | QLMarkdown | 免费 | 需开启 | MathJax（需开启） | 无文档 | 不适用 | 不适用 | 本身就是 | 原生 |
 | Typora | 一次性 USD 14.99 | 有 | MathJax | 有，带页码 | 无文档 | 无文档 | 无文档 | 原生 |
@@ -8417,7 +8419,6 @@ Marked 3 是预览器，用来看你在其他 App 里写的 Markdown。文件一
 
 ## MarsDawn 不适合谁
 
-- PDF 一定要有页码。Typora 与 Marked 3 能加，MarsDawn 不能。
 - 你在维护互相链接的个人笔记库。Obsidian 就是为此打造的。
 - 你从不离开 VS Code。内置预览免费，VS Code 也正在 Agents 窗口加入实验性的 Markdown 查看。
 - 你只想在访达里预览。QLMarkdown 免费。
@@ -8430,7 +8431,7 @@ MacDown 3000、Obsidian 与 VS Code（1.121 起）内置。QLMarkdown 可选择�
 
 ### 哪些能导出带页码的 PDF？
 
-Typora 与 Marked 3。MarsDawn 导出的 PDF 没有页码。
+Typora、Marked 3 与 MarsDawn。在 MarsDawn 中选择手册或讲义布局；默认的文稿布局没有页码。
 
 ### 哪些能从命令行打开到指定行？
 
@@ -8517,7 +8518,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`：预览主题的浅色版本，默认读取 `$MARSDAWN_THEME`，否则用 `dawn`。
 - `--paper <a4|letter>`：纸张大小，默认 `a4`。
 - `--breaks`：段落内的每个换行都当作换行，和 HackMD 一样。不加时，两个中文或日文字符之间的换行会去掉，让前后两行连成一句。
-- `--layout <document|handbook>`：页面布局，默认 `document`。`handbook` 会导出成手册：页边距更宽并留出装订边，每个一级标题从新的一页开始，附带有页码的目录页、页脚页码和 PDF 书签；front matter 有 `title` 时，还会加上封面。
+- `--layout <document|handbook|handout>`：页面布局，默认 `document`。`handbook` 会导出成手册：页边距更宽并留出装订边，每个一级标题从新的一页开始，附带有页码的目录页、页脚页码和 PDF 书签；front matter 有 `title` 时，还会加上封面。`handout` 会在每页右侧留一栏空白笔记栏，第 1 页顶部放标题和日期，每页末尾放文件名、日期和页码。很宽的表格可能会占用笔记栏。
 - `--toc-title <text>`：手册目录页的标题，默认 `Contents`。
 - 单独一行的 `<!--BREAK-->` 会从新的一页开始，两种布局都适用。
 - `--allow-remote-images`：导出时加载网络图片，默认关闭。
@@ -8525,7 +8526,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--json`：输出 JSON 结果，而不是文本。
 - 超过 16 MiB 的文件不会导出：`export` 以代码 5 结束，不写出任何文件。
 
-`--breaks` 从 marsdawn 0.7.0 开始提供，`--layout` 和 `--toc-title` 从 0.7.1 开始，`handbook` 这个值从 0.7.2 开始。0.7.1 的旧值 `manual` 仍可使用。
+`--breaks` 从 marsdawn 0.7.0 开始提供，`--layout` 和 `--toc-title` 从 0.7.1 开始，`handbook` 这个值从 0.7.2 开始，`handout` 从 0.7.3 开始。0.7.1 的旧值 `manual` 仍可使用。
 
 ### marsdawn theme
 
@@ -10012,7 +10013,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/roadmap/
 
 按版本列出我们接下来要做的事。不写日期：版本做好了才会推出。
 
-最后更新：2026 年 10 月 23 日
+最后更新：2026 年 11 月 7 日
 
 计划可能会调整：项目可能移到别的版本，也可能取消。
 
@@ -10024,8 +10025,6 @@ Source: https://marsdawn.southern-light.dev/zh-hans/roadmap/
 
 ### Mac 1.2.2
 
-- 打开 JSON 和 YAML，可以编辑，旁边是实时的树状预览。
-- 打开网址：从 GitHub、Gist 或 raw 文件的公开链接读取 Markdown。
 - 提示框：支持 GitHub alerts 和 HackMD 的 `:::` 区块。
 - 一键把 Claude Code 的 Plans 文件夹加入边栏，最新的计划排在最上面。
 
@@ -10033,6 +10032,10 @@ Source: https://marsdawn.southern-light.dev/zh-hans/roadmap/
 
 - 代理改了文件之后，看得出哪些区块变了。
 - 图片查看器：打开 PNG、JPEG、GIF、WebP。
+
+### Mac 1.3.0
+
+- 打开网址：从 GitHub、Gist 或 raw 文件的公开链接读取 Markdown。
 
 ### iPad 与展开的 iPhone Duo（iOS 1.1）
 
@@ -10832,7 +10835,7 @@ MarsDawn 自体は何も送りません。skill は指示を書いたテキス�
 
 ### ほかのアプリではなく MarsDawn を使う理由は？
 
-必要ないかもしれません。自分のメモを書くのが中心なら、Obsidian のようなノートアプリのほうが向いています。VS Code でずっと作業しているなら、標準のプレビューが無料で使えます。Finder でファイルをさっと見たいだけなら、無料のクイックルック拡張機能で十分です。PDF にページ番号が必要なら、MarsDawn は付けられません。MarsDawn は、エージェントが書いた Markdown を読んでレビューするためのアプリです。ソースの横にライブプレビューがあり、エージェントの変更は一度で取り消せ、ファイルを指定の行で開けます。合わないと感じたら、その理由をメールで教えてください。
+必要ないかもしれません。自分のメモを書くのが中心なら、Obsidian のようなノートアプリのほうが向いています。VS Code でずっと作業しているなら、標準のプレビューが無料で使えます。Finder でファイルをさっと見たいだけなら、無料のクイックルック拡張機能で十分です。MarsDawn は、エージェントが書いた Markdown を読んでレビューするためのアプリです。ソースの横にライブプレビューがあり、エージェントの変更は一度で取り消せ、ファイルを指定の行で開けます。合わないと感じたら、その理由をメールで教えてください。
 
 詳しくは：[MarsDawn とほかのツールの比較](/ja/vs/) · [Mac 向け Markdown ビューアのおすすめ](/ja/best-markdown-viewer-mac/)
 
@@ -11025,7 +11028,7 @@ iPhone と iPad の MarsDawn は閲覧専用です。開けるのは Markdown �
 
 ### ウインドウとタブ
 
-書類はそれぞれ別のウインドウで開きます。「ウインドウ ▸ すべてのウインドウを結合」を選ぶと、開いているウインドウを1つのウインドウのタブにまとめられます。自動保存は入力中に働きます。
+書類は、標準では最前面のウインドウのタブとして開きます。Mac のタブの設定に合わせるには、「設定 ▸ 外観モード」で「システム設定に従う」を選びます。自動保存は入力中に働きます。
 
 [Mac アプリ](/ja/native/)
 
@@ -11268,7 +11271,7 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 
 このスクリーンショットの内容：
 
-1. この Mac で、ウインドウひとつにつき文書ひとつ。
+1. 書類はどれも、この Mac 上のファイルです。
 2. ここで Markdown を書きます。
 3. ツールバーにあるのはテーマとレイアウトだけで、プラグインメニューはありません。
 4. このページは読むためのもので、編集はできません。
@@ -11726,7 +11729,7 @@ Source: https://marsdawn.southern-light.dev/ja/vs/
 
 # Mac で Markdown を読む：MarsDawn とほかの方法
 
-Mac で Markdown を、多くはエージェントが書いたものを読んで確かめる方法を選ぶ人へ。表の各セルは、各社の公式ページか私たちの確認によるもので、いずれも 2026 年 10 月 16 日時点です。製品は変わるので、古くなることがあります。誤りに気づいたら、[サポート](/ja/support/)のアドレスまでお知らせください。
+Mac で Markdown を、多くはエージェントが書いたものを読んで確かめる方法を選ぶ人へ。表の各セルは、各社の公式ページか私たちの確認によるもので、いずれも 2026 年 10 月 16 日時点です（MarsDawn の PDF のセルは 2026 年 11 月 7 日に更新）。製品は変わるので、古くなることがあります。誤りに気づいたら、[サポート](/ja/support/)のアドレスまでお知らせください。
 
 |  | MarsDawn | VS Code プレビュー | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
@@ -11734,7 +11737,7 @@ Mac で Markdown を、多くはエージェントが書いたものを読んで
 | Mermaid | 内蔵 [[1](#v1)] | 内蔵 [[8](#v8)] | 内蔵、ノートの記法 [[16](#v16)] | 内蔵、`mermaid` ブロック [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
 | 数式 | KaTeX、`$…$` と `$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
 | エージェントの計画を確認／行へ移動 | `marsdawn open file:line`、ディスクから更新、参照をコピー [/cli/、/features/] | Markdown の差分プレビュー、変更行を強調 [[8](#v8)]、`code -g file:line` [[14](#v14)] | `obsidian://open` に行番号の指定なし [[20](#v20)] | 記載なし | CLI と MCP サーバーあり、行へ移動は記載なし [[4](#v4)、[5](#v5)] |
-| PDF：改ページ・ページ番号 | 短いコードブロックを分けない改ページ [/pdf/]、ページ番号なし [実測] | 記載なし [[8](#v8)] | 用紙サイズ・余白、改ページと番号は記載なし [[17](#v17)] | 記載なし [[22](#v22)] | PDF "including tables"、改ページと番号は記載なし [[3](#v3)] |
+| PDF：改ページ・ページ番号 | 短いコードブロックを分けない改ページ [/pdf/]、ハンドブックと配布資料のレイアウトにページ番号 [/changelog/] | 記載なし [[8](#v8)] | 用紙サイズ・余白、改ページと番号は記載なし [[17](#v17)] | 記載なし [[22](#v22)] | PDF "including tables"、改ページと番号は記載なし [[3](#v3)] |
 | 価格 | 無料ダウンロード、解除は一度だけ USD 4.99、14 日間の試用 [[1](#v1)] | 記載なし [[12](#v12)、[13](#v13)] | 個人："Free without limits"、商用ライセンスは任意 [[15](#v15)] | 無料、GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
 | 動作環境 | macOS 26.0 以降 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 記載なし [[18](#v18)] | macOS 12.0 以降 [[23](#v23)] | macOS 13 以降 [[2](#v2)] |
 | アカウント | 不要 [/privacy/] | 記載なし | "No sign-up required" [[15](#v15)] | 記載なし | 不要 [[2](#v2)] |
@@ -11767,7 +11770,7 @@ Mac で Markdown を、多くはエージェントが書いたものを読んで
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集もアカウントも独自のクラウドサービスもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号は入りません。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
+MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集もアカウントも独自のクラウドサービスもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号が入るのは、ハンドブックと配布資料のレイアウトだけです。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
 
 ## MarsDawn がいらないとき
 
@@ -11934,7 +11937,7 @@ Marked 3は、ほかのアプリで書いたMarkdownを見るためのプレビ�
 ソースとライブプレビューを左右に並べるネイティブMacアプリで、MermaidとKaTeXを内蔵しています。エージェントがファイルを保存すると、開いているウインドウはその変更を取り消せる1回の「ディスクから更新」として取り込みます。`marsdawn open notes.md:120`で指定行を開け、エージェント向けのスキルとMCPサーバもあります。クイックルックは試用中かどうかに関係なく使えます。「AI 用にコピー」と「参照をコピー」でテキストをエージェントに渡せます。自分で選ばない限り、データがMacの外に出ることはありません。
 
 - 向いている人：AIエージェントが書いたMarkdownをレビューする人。
-- 欠点：書き出したPDFにページ番号は付きません。
+- 欠点：PDFにページ番号を付けるには、ハンドブックか配布資料のレイアウトを選びます。初期設定の書類レイアウトには付きません。
 - 価格：無料ダウンロードで14日間試用でき、その後はUSD 4.99の買い切り。アカウント不要。Mac App Storeのみ。
 
 ## Obsidian
@@ -11976,7 +11979,7 @@ Marked 3は、ほかのアプリで書いたMarkdownを見るためのプレビ�
 | MacDown 3000 | 無料 | あり | MathJax | あり | あり | 記載なし | あり | ネイティブ |
 | Marked 3 | 月額USD 2.99から | あり | MathJax、KaTeX | あり、ページ番号付き | あり | 記載なし | Marked QL、USD 9.99 | ネイティブ |
 | MarkEdit | 無料 | 拡張機能 | KaTeX（拡張機能） | Pandoc | 記載なし | 記載なし | あり | ネイティブ（Webビュー） |
-| MarsDawn | USD 4.99買い切り | あり | KaTeX | あり、ページ番号なし | あり、取り消し可 | あり | あり | ネイティブ |
+| MarsDawn | USD 4.99買い切り | あり | KaTeX | あり、ハンドブックと配布資料はページ番号付き | あり、取り消し可 | あり | あり | ネイティブ |
 | Obsidian | 無料 | あり | MathJax | あり | あり | 記載なし | 記載なし | Electron |
 | QLMarkdown | 無料 | オプション | MathJax（オプション） | 記載なし | 該当なし | 該当なし | それ自体 | ネイティブ |
 | Typora | USD 14.99買い切り | あり | MathJax | あり、ページ番号付き | 記載なし | 記載なし | 記載なし | ネイティブ |
@@ -11984,7 +11987,6 @@ Marked 3は、ほかのアプリで書いたMarkdownを見るためのプレビ�
 
 ## MarsDawnが向かない人
 
-- PDFにページ番号が必要な人。TyporaとMarked 3は付けられますが、MarsDawnは付けられません。
 - リンクし合う自分のメモの知識ベースを育てている人。Obsidianはそのために作られています。
 - VS Codeから離れない人。標準のプレビューは無料で、VS CodeはAgentsウインドウに実験的なMarkdown表示を追加しつつあります。
 - Finderでプレビューできれば十分な人。QLMarkdownは無料です。
@@ -11997,7 +11999,7 @@ MacDown 3000、Obsidian、VS Code（1.121以降）が内蔵しています。QLM
 
 ### ページ番号付きのPDFを書き出せるのは？
 
-TyporaとMarked 3です。MarsDawnのPDFにページ番号は付きません。
+Typora、Marked 3、MarsDawnです。MarsDawnではハンドブックか配布資料のレイアウトを選びます。初期設定の書類レイアウトにページ番号は付きません。
 
 ### コマンドラインから指定行でファイルを開けるのは？
 
@@ -12084,7 +12086,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`：プレビューテーマのライトパレット。デフォルトは `$MARSDAWN_THEME`、それもなければ `dawn` です。
 - `--paper <a4|letter>`：用紙サイズ。デフォルトは `a4` です。
 - `--breaks`：HackMD と同じように、段落内の改行をすべて改行として表示します。付けないときは、中国語や日本語の文字どうしのあいだの改行を取り除き、前後の行を 1 つの文としてつなげます。
-- `--layout <document|handbook>`：ページのレイアウト。初期値は `document`。`handbook` はハンドブックとして書き出します。余白を広くして綴じ側を取り、レベル 1 の見出しごとに改ページし、ページ番号付きの目次ページ、フッターのページ番号、PDF のしおりを付けます。front matter に `title` があれば表紙も付けます。
+- `--layout <document|handbook|handout>`：ページのレイアウト。初期値は `document`。`handbook` はハンドブックとして書き出します。余白を広くして綴じ側を取り、レベル 1 の見出しごとに改ページし、ページ番号付きの目次ページ、フッターのページ番号、PDF のしおりを付けます。front matter に `title` があれば表紙も付けます。`handout` は、各ページの右側に空白のメモ欄を設け、1 ページ目の上部にタイトルと日付を入れ、各ページの末尾にファイル名、日付、ページ番号を入れます。とても幅の広い表は、メモ欄にはみ出すことがあります。
 - `--toc-title <text>`：ハンドブックの目次ページの見出し。初期値は `Contents`。
 - 1 行だけの `<!--BREAK-->` で改ページします。どちらのレイアウトでも使えます。
 - `--allow-remote-images`：レンダリング時にウェブから画像を読み込みます。デフォルトはオフです。
@@ -12092,7 +12094,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--json`：テキストではなく JSON の結果を出力します。
 - 16 MiB を超えるファイルは書き出しません。`export` はコード 5 で終了し、何も書き出しません。
 
-`--breaks` は marsdawn 0.7.0 で、`--layout` と `--toc-title` は 0.7.1 で、`handbook` という名前は 0.7.2 で追加されました。0.7.1 の名前 `manual` も使えます。
+`--breaks` は marsdawn 0.7.0 で、`--layout` と `--toc-title` は 0.7.1 で、`handbook` という名前は 0.7.2 で、`handout` は 0.7.3 で追加されました。0.7.1 の名前 `manual` も使えます。
 
 ### marsdawn theme
 
@@ -13578,7 +13580,7 @@ Source: https://marsdawn.southern-light.dev/ja/roadmap/
 
 これから作るものを、バージョンごとにまとめています。日付は書きません。準備ができたバージョンから公開します。
 
-最終更新：2026年10月23日
+最終更新：2026年11月7日
 
 計画は変わることがあります。項目が別のバージョンに移ったり、取りやめになったりすることもあります。
 
@@ -13590,8 +13592,6 @@ Source: https://marsdawn.southern-light.dev/ja/roadmap/
 
 ### Mac 1.2.2
 
-- JSON と YAML を開いて編集でき、横にリアルタイムのツリープレビューを表示します。
-- URL を開く：GitHub、Gist、raw ファイルの公開リンクから Markdown を読み込みます。
 - コールアウト：GitHub alerts と HackMD の `:::` ブロックに対応します。
 - Claude Code の Plans フォルダをワンクリックでサイドバーに追加。新しいプランが一番上に並びます。
 
@@ -13599,6 +13599,10 @@ Source: https://marsdawn.southern-light.dev/ja/roadmap/
 
 - エージェントがファイルを変更したあと、どのブロックが変わったかがわかります。
 - 画像ビューア：PNG、JPEG、GIF、WebP を開けます。
+
+### Mac 1.3.0
+
+- URL を開く：GitHub、Gist、raw ファイルの公開リンクから Markdown を読み込みます。
 
 ### iPad と開いた iPhone Duo（iOS 1.1）
 
@@ -14398,7 +14402,7 @@ Mehr dazu: [Datenschutzrichtlinie](/de/privacy/#the-website)
 
 ### Warum MarsDawn und nicht eine andere App?
 
-Vielleicht brauchst du MarsDawn gar nicht. Wenn du vor allem eigene Notizen schreibst, passt eine Notiz-App wie Obsidian besser. Wenn du den ganzen Tag in VS Code arbeitest, ist die eingebaute Vorschau kostenlos. Wenn du Dateien im Finder nur kurz ansehen willst, reicht eine kostenlose Erweiterung für die Übersicht. Wenn deine PDFs Seitenzahlen brauchen: Die fügt MarsDawn nicht hinzu. MarsDawn ist zum Lesen und Prüfen von Markdown da, das ein Agent geschrieben hat: der Quelltext neben einer Live-Vorschau, eine Änderung deines Agenten, die du in einem Schritt widerrufst, und eine Datei, die genau an der angegebenen Zeile aufgeht. Wenn es nicht zu dir passt, schreib uns, warum.
+Vielleicht brauchst du MarsDawn gar nicht. Wenn du vor allem eigene Notizen schreibst, passt eine Notiz-App wie Obsidian besser. Wenn du den ganzen Tag in VS Code arbeitest, ist die eingebaute Vorschau kostenlos. Wenn du Dateien im Finder nur kurz ansehen willst, reicht eine kostenlose Erweiterung für die Übersicht. MarsDawn ist zum Lesen und Prüfen von Markdown da, das ein Agent geschrieben hat: der Quelltext neben einer Live-Vorschau, eine Änderung deines Agenten, die du in einem Schritt widerrufst, und eine Datei, die genau an der angegebenen Zeile aufgeht. Wenn es nicht zu dir passt, schreib uns, warum.
 
 Mehr dazu: [MarsDawn im Vergleich](/de/vs/) · [Der beste Markdown-Viewer für den Mac](/de/best-markdown-viewer-mac/)
 
@@ -14591,7 +14595,7 @@ Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es öffnet Markdown- und rein
 
 ### Fenster und Tabs
 
-Jedes Dokument öffnet in einem eigenen Fenster. Wähle Fenster ▸ Alle Fenster zusammenführen, um geöffnete Fenster als Tabs eines Fensters zu sammeln. Das Sichern läuft automatisch beim Tippen.
+Dokumente öffnen standardmäßig als Tabs des vordersten Fensters. Wenn du stattdessen die Tab-Einstellung deines Mac verwenden möchtest, wähle unter Einstellungen ▸ Erscheinungsbild „Systemeinstellung folgen“. Das Sichern läuft automatisch beim Tippen.
 
 [Eine Mac-App](/de/native/)
 
@@ -14834,7 +14838,7 @@ Manches fehlt mit Absicht. Wenn du etwas davon brauchst, ist es besser, es jetzt
 
 Auf diesem Bildschirmfoto:
 
-1. Ein Dokument pro Fenster, auf diesem Mac.
+1. Jedes Dokument ist eine Datei auf diesem Mac.
 2. Hier schreibst du Markdown.
 3. Die Symbolleiste enthält Themen und Layouts, und es gibt kein Plug-in-Menü.
 4. Die Seite ist zum Lesen da, nicht zum Bearbeiten.
@@ -15295,7 +15299,7 @@ Source: https://marsdawn.southern-light.dev/de/vs/
 
 # Markdown auf dem Mac lesen: MarsDawn und andere Wege
 
-Für alle, die entscheiden, wie sie Markdown auf dem Mac lesen und prüfen, oft das, was ein Agent geschrieben hat. Jede Zelle unten stammt von den Seiten des Herstellers oder aus unserer eigenen Prüfung, alles am 16. Oktober 2026; Produkte ändern sich, also kann eine Zelle veralten. Wenn du einen Fehler findest, schreib an die Adresse auf [Support](/de/support/).
+Für alle, die entscheiden, wie sie Markdown auf dem Mac lesen und prüfen, oft das, was ein Agent geschrieben hat. Jede Zelle unten stammt von den Seiten des Herstellers oder aus unserer eigenen Prüfung, alles am 16. Oktober 2026, außer der PDF-Zelle von MarsDawn, aktualisiert am 7. November 2026; Produkte ändern sich, also kann eine Zelle veralten. Wenn du einen Fehler findest, schreib an die Adresse auf [Support](/de/support/).
 
 |  | MarsDawn | VS-Code-Vorschau | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
@@ -15303,7 +15307,7 @@ Für alle, die entscheiden, wie sie Markdown auf dem Mac lesen und prüfen, oft 
 | Mermaid | Integriert [[1](#v1)] | Integriert [[8](#v8)] | Integriert, Notizsyntax [[16](#v16)] | Integriert, `mermaid`-Blöcke [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
 | Formeln | KaTeX, `$…$` und `$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
 | Plan eines Agenten prüfen / zu einer Zeile springen | `marsdawn open file:line`; Von Festplatte aktualisieren; Verweis kopieren [/cli/, /features/] | Markdown-Diff-Vorschau, geänderte Zeilen hervorgehoben [[8](#v8)]; `code -g file:line` [[14](#v14)] | Kein Zeilenparameter in `obsidian://open` [[20](#v20)] | Vom Hersteller nicht angegeben | CLI und MCP-Server; Sprung zur Zeile nicht angegeben [[4](#v4), [5](#v5)] |
-| PDF: Seitenumbrüche, Seitenzahlen | Umbrüche teilen keine kurzen Codeblöcke [/pdf/]; keine Seitenzahlen [Prüfung] | Vom Hersteller nicht angegeben [[8](#v8)] | Papierformat, Ränder; Umbrüche und Zahlen nicht angegeben [[17](#v17)] | Vom Hersteller nicht angegeben [[22](#v22)] | PDF "including tables"; Umbrüche und Zahlen nicht angegeben [[3](#v3)] |
+| PDF: Seitenumbrüche, Seitenzahlen | Umbrüche teilen keine kurzen Codeblöcke [/pdf/]; Seitenzahlen in den Layouts Handbuch und Handout [/changelog/] | Vom Hersteller nicht angegeben [[8](#v8)] | Papierformat, Ränder; Umbrüche und Zahlen nicht angegeben [[17](#v17)] | Vom Hersteller nicht angegeben [[22](#v22)] | PDF "including tables"; Umbrüche und Zahlen nicht angegeben [[3](#v3)] |
 | Preis | Kostenloser Download; Freischaltung einmal 4,99 USD; 14 Tage Test [[1](#v1)] | Vom Hersteller nicht angegeben [[12](#v12), [13](#v13)] | Privat: "Free without limits"; kommerzielle Lizenz optional [[15](#v15)] | Kostenlos, GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
 | Systemvoraussetzungen | macOS 26.0 oder neuer [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | Vom Hersteller nicht angegeben [[18](#v18)] | macOS 12.0 oder neuer [[23](#v23)] | macOS 13 oder neuer [[2](#v2)] |
 | Konto nötig | Nein [/privacy/] | Vom Hersteller nicht angegeben | "No sign-up required" [[15](#v15)] | Vom Hersteller nicht angegeben | Nein [[2](#v2)] |
@@ -15336,7 +15340,7 @@ Jede Zelle wurde am 16. Oktober 2026 an der Quelle in Klammern geprüft (die V-N
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Auf iPhone und iPad liest es nur: Bearbeiten und PDF-Export gibt es dort nicht. Kein gemeinsames Bearbeiten, kein Konto und keine eigene Cloud. Die Vorschau lässt sich nicht bearbeiten; du bearbeitest den Markdown-Quelltext daneben. Kein Word-Export und keine Plug-ins. Die PDFs haben keine Seitenzahlen. Es gibt keine Diff-Ansicht: Sichert ein Agent eine Änderung, aktualisiert sich das offene Fenster von der Festplatte in einem Schritt, den du widerrufen kannst, hebt aber nicht hervor, was sich geändert hat. Nach dem 14-tägigen Test öffnen sich Dokumente mit verdecktem Inhalt, bis du freischaltest.
+Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Auf iPhone und iPad liest es nur: Bearbeiten und PDF-Export gibt es dort nicht. Kein gemeinsames Bearbeiten, kein Konto und keine eigene Cloud. Die Vorschau lässt sich nicht bearbeiten; du bearbeitest den Markdown-Quelltext daneben. Kein Word-Export und keine Plug-ins. Seitenzahlen gibt es nur in den PDF-Layouts Handbuch und Handout. Es gibt keine Diff-Ansicht: Sichert ein Agent eine Änderung, aktualisiert sich das offene Fenster von der Festplatte in einem Schritt, den du widerrufen kannst, hebt aber nicht hervor, was sich geändert hat. Nach dem 14-tägigen Test öffnen sich Dokumente mit verdecktem Inhalt, bis du freischaltest.
 
 ## Wann du MarsDawn nicht brauchst
 
@@ -15504,7 +15508,7 @@ Eine schlanke, kostenlose native App (CodeMirror in einer Web-View) mit Übersic
 Eine native Mac-App, die Quelltext und Live-Vorschau nebeneinander zeigt, mit eingebautem Mermaid und KaTeX. Speichert ein Agent die Datei, übernimmt das offene Fenster die Änderung als ein einziges „Von Festplatte aktualisieren“, das du rückgängig machen kannst. `marsdawn open notes.md:120` öffnet eine Datei an einer Zeile, dazu gibt es einen Skill und einen MCP-Server für Agenten. Die Übersicht funktioniert mit und ohne Test. Mit „Für KI kopieren“ und „Verweis kopieren“ gibst du Text an einen Agenten weiter. Nichts verlässt deinen Mac, außer du willst es.
 
 - Für: alle, die Markdown prüfen, das KI-Agenten schreiben.
-- Nachteil: Der PDF-Export hat keine Seitenzahlen.
+- Nachteil: Seitenzahlen gibt es nur in den PDF-Layouts Handbuch und Handout. Das Standardlayout Dokument hat keine.
 - Preis: kostenloser Download mit 14 Tagen Test, danach einmalig 4,99 USD. Kein Konto. Nur im Mac App Store.
 
 ## Obsidian
@@ -15546,7 +15550,7 @@ Die eingebaute Markdown-Vorschau, mit Mermaid ab 1.121 und KaTeX. `code -g file:
 | MacDown 3000 | Kostenlos | Ja | MathJax | Ja | Ja | Nicht dokumentiert | Ja | Nativ |
 | Marked 3 | Ab 2,99 USD/Monat | Ja | MathJax, KaTeX | Ja, Seitenzahlen | Ja | Nicht dokumentiert | Marked QL, 9,99 USD | Nativ |
 | MarkEdit | Kostenlos | Erweiterung | KaTeX (Erweiterung) | Pandoc | Nicht dokumentiert | Nicht dokumentiert | Ja | Nativ (Web-View) |
-| MarsDawn | Einmalig 4,99 USD | Ja | KaTeX | Ja, ohne Seitenzahlen | Ja, rückgängig machbar | Ja | Ja | Nativ |
+| MarsDawn | Einmalig 4,99 USD | Ja | KaTeX | Ja, Seitenzahlen in Handbuch und Handout | Ja, rückgängig machbar | Ja | Ja | Nativ |
 | Obsidian | Kostenlos | Ja | MathJax | Ja | Ja | Nicht dokumentiert | Nicht dokumentiert | Electron |
 | QLMarkdown | Kostenlos | Optional | MathJax (optional) | Nicht dokumentiert | Entfällt | Entfällt | Ist selbst eine | Nativ |
 | Typora | Einmalig 14,99 USD | Ja | MathJax | Ja, Seitenzahlen | Nicht dokumentiert | Nicht dokumentiert | Nicht dokumentiert | Nativ |
@@ -15554,7 +15558,6 @@ Die eingebaute Markdown-Vorschau, mit Mermaid ab 1.121 und KaTeX. `code -g file:
 
 ## Für wen MarsDawn nichts ist
 
-- Du brauchst Seitenzahlen im PDF. Typora und Marked 3 fügen sie hinzu, MarsDawn nicht.
 - Du pflegst eine verlinkte Wissensdatenbank aus eigenen Notizen. Dafür ist Obsidian gebaut.
 - Du verlässt VS Code nie. Die eingebaute Vorschau ist kostenlos, und VS Code ergänzt sein Agents-Fenster um eine experimentelle Markdown-Ansicht.
 - Du willst nur eine Vorschau im Finder. QLMarkdown ist kostenlos.
@@ -15567,7 +15570,7 @@ MacDown 3000, Obsidian und VS Code (ab 1.121) haben es eingebaut. QLMarkdown bie
 
 ### Welche exportieren PDF mit Seitenzahlen?
 
-Typora und Marked 3. MarsDawn exportiert PDF ohne Seitenzahlen.
+Typora, Marked 3 und MarsDawn. Wähle in MarsDawn das Layout Handbuch oder Handout; das Standardlayout Dokument hat keine Seitenzahlen.
 
 ### Welche öffnen eine Datei über die Befehlszeile an einer bestimmten Zeile?
 
@@ -15654,7 +15657,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`: die helle Palette des Vorschau-Themas. Standard ist `$MARSDAWN_THEME`, dann `dawn`.
 - `--paper <a4|letter>`: Papierformat. Standard ist `a4`.
 - `--breaks`: jeden Zeilenumbruch innerhalb eines Absatzes als Zeilenumbruch darstellen, wie HackMD. Ohne die Option fällt ein Zeilenumbruch zwischen zwei chinesischen oder japanischen Zeichen weg, sodass sich die Zeilen wie ein Satz lesen.
-- `--layout <document|handbook>`: das Seitenlayout. Standard ist `document`. `handbook` druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen `title` hat.
+- `--layout <document|handbook|handout>`: das Seitenlayout. Standard ist `document`. `handbook` druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen `title` hat. `handout` lässt rechts auf jeder Seite eine leere Notizspalte, setzt Titel und Datum oben auf Seite 1 und schließt jede Seite mit Dateiname, Datum und Seitenzahl ab. Eine sehr breite Tabelle kann in die Notizspalte hineinragen.
 - `--toc-title <text>`: die Überschrift des Inhaltsverzeichnisses im Handbuch. Standard ist `Contents`.
 - `<!--BREAK-->` allein in einer Zeile beginnt eine neue Seite, in beiden Layouts.
 - `--allow-remote-images`: beim Rendern Bilder aus dem Web laden. Standardmäßig aus.
@@ -15662,7 +15665,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--json`: ein JSON-Ergebnis statt Text ausgeben.
 - Eine Datei über 16 MiB wird nicht exportiert: `export` endet mit Code 5 und schreibt nichts.
 
-`--breaks` kam mit marsdawn 0.7.0 hinzu, `--layout` und `--toc-title` mit 0.7.1, der Wert `handbook` mit 0.7.2. Der alte Wert aus 0.7.1, `manual`, funktioniert weiterhin.
+`--breaks` kam mit marsdawn 0.7.0 hinzu, `--layout` und `--toc-title` mit 0.7.1, der Wert `handbook` mit 0.7.2, der Wert `handout` mit 0.7.3. Der alte Wert aus 0.7.1, `manual`, funktioniert weiterhin.
 
 ### marsdawn theme
 
@@ -17119,7 +17122,7 @@ Source: https://marsdawn.southern-light.dev/de/roadmap/
 
 Woran wir als Nächstes arbeiten, nach Version. Es gibt keine Termine: Eine Version erscheint, wenn sie fertig ist.
 
-Zuletzt aktualisiert: 23. Oktober 2026
+Zuletzt aktualisiert: 7. November 2026
 
 Pläne können sich ändern: Ein Punkt kann in eine andere Version wandern oder wegfallen.
 
@@ -17131,8 +17134,6 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 
 ### Mac 1.2.2
 
-- JSON und YAML öffnen, bearbeiten und neben dem Quelltext eine Live-Baumvorschau sehen.
-- URL öffnen: Markdown von einem öffentlichen Link auf GitHub, aus einem Gist oder einer Raw-Datei lesen.
 - Callouts: GitHub-Alerts und HackMD-Blöcke mit `:::`.
 - Den Plans-Ordner von Claude Code mit einem Klick zur Seitenleiste hinzufügen, den neuesten Plan zuerst.
 
@@ -17140,6 +17141,10 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 
 - Nachdem ein Agent eine Datei geändert hat, sehen, welche Blöcke sich geändert haben.
 - Ein Bildbetrachter für PNG, JPEG, GIF und WebP.
+
+### Mac 1.3.0
+
+- URL öffnen: Markdown von einem öffentlichen Link auf GitHub, aus einem Gist oder einer Raw-Datei lesen.
 
 ### iPad und aufgeklapptes iPhone Duo (iOS 1.1)
 
@@ -17905,7 +17910,7 @@ En savoir plus : [Politique de confidentialité](/fr/privacy/#the-website)
 
 ### Pourquoi MarsDawn plutôt qu’une autre app ?
 
-Vous n’en avez peut-être pas besoin. Si vous écrivez surtout vos propres notes, une app de notes comme Obsidian vous conviendra mieux. Si vous passez vos journées dans VS Code, son aperçu intégré est gratuit. Si vous voulez seulement regarder rapidement vos fichiers dans le Finder, une extension Coup d’œil gratuite suffit. Si vos PDF ont besoin de numéros de page, MarsDawn n’en ajoute pas. MarsDawn sert à lire et relire le Markdown écrit par un agent : la source à côté d’un aperçu en direct, une modification de votre agent que vous annulez en une seule étape, et un fichier ouvert à la ligne exacte. S’il ne vous convient pas, écrivez-nous pour nous dire pourquoi.
+Vous n’en avez peut-être pas besoin. Si vous écrivez surtout vos propres notes, une app de notes comme Obsidian vous conviendra mieux. Si vous passez vos journées dans VS Code, son aperçu intégré est gratuit. Si vous voulez seulement regarder rapidement vos fichiers dans le Finder, une extension Coup d’œil gratuite suffit. MarsDawn sert à lire et relire le Markdown écrit par un agent : la source à côté d’un aperçu en direct, une modification de votre agent que vous annulez en une seule étape, et un fichier ouvert à la ligne exacte. S’il ne vous convient pas, écrivez-nous pour nous dire pourquoi.
 
 En savoir plus : [MarsDawn comparé aux autres outils](/fr/vs/) · [Meilleur lecteur Markdown pour Mac](/fr/best-markdown-viewer-mac/)
 
@@ -18098,7 +18103,7 @@ Sur iPhone et iPad, MarsDawn sert uniquement à lire : il ouvre les fichiers Mar
 
 ### Fenêtres et onglets
 
-Chaque document s’ouvre dans sa propre fenêtre. Choisissez Fenêtre ▸ Fusionner toutes les fenêtres pour regrouper les fenêtres ouvertes en onglets d’une seule. L’enregistrement automatique se fait pendant la saisie.
+Par défaut, les documents s’ouvrent en onglets de la fenêtre au premier plan. Pour utiliser plutôt le réglage d’onglets de votre Mac, choisissez Suivre le réglage système dans Réglages ▸ Apparence. L’enregistrement automatique se fait pendant la saisie.
 
 [Une app Mac](/fr/native/)
 
@@ -18341,7 +18346,7 @@ Certaines choses sont absentes à dessein. Si vous avez besoin de l’une d’el
 
 Sur cette capture d’écran :
 
-1. Un document par fenêtre, sur ce Mac.
+1. Chaque document est un fichier sur ce Mac.
 2. C’est ici que vous écrivez le Markdown.
 3. La barre d’outils contient les thèmes et les dispositions, et il n’y a pas de menu de plug-ins.
 4. La page sert à lire, pas à modifier.
@@ -18802,7 +18807,7 @@ Source: https://marsdawn.southern-light.dev/fr/vs/
 
 # Lire du Markdown sur Mac : MarsDawn et les autres options
 
-Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur [Assistance](/fr/support/).
+Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur [Assistance](/fr/support/).
 
 |  | MarsDawn | Aperçu VS Code | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
@@ -18810,7 +18815,7 @@ Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, 
 | Mermaid | Intégré [[1](#v1)] | Intégré [[8](#v8)] | Intégré, syntaxe des notes [[16](#v16)] | Intégré, blocs `mermaid` [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
 | Formules | KaTeX, `$…$` et `$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
 | Relire le plan d’un agent / aller à une ligne | `marsdawn open file:line` ; mise à jour depuis le disque ; Copier la référence [/cli/, /features/] | Aperçu diff Markdown, lignes modifiées surlignées [[8](#v8)] ; `code -g file:line` [[14](#v14)] | Pas de paramètre de ligne dans `obsidian://open` [[20](#v20)] | Non précisé par le fournisseur | CLI et serveur MCP ; saut à une ligne non précisé [[4](#v4), [5](#v5)] |
-| PDF : sauts de page, numéros de page | Les sauts ne coupent pas les blocs de code courts [/pdf/] ; pas de numéros de page [vérif.] | Non précisé par le fournisseur [[8](#v8)] | Format du papier, marges ; sauts et numéros non précisés [[17](#v17)] | Non précisé par le fournisseur [[22](#v22)] | PDF "including tables" ; sauts et numéros non précisés [[3](#v3)] |
+| PDF : sauts de page, numéros de page | Les sauts ne coupent pas les blocs de code courts [/pdf/] ; numéros de page dans les mises en page Guide et Polycopié [/changelog/] | Non précisé par le fournisseur [[8](#v8)] | Format du papier, marges ; sauts et numéros non précisés [[17](#v17)] | Non précisé par le fournisseur [[22](#v22)] | PDF "including tables" ; sauts et numéros non précisés [[3](#v3)] |
 | Prix | Téléchargement gratuit ; déverrouillage 4,99 USD une fois ; essai de 14 jours [[1](#v1)] | Non précisé par le fournisseur [[12](#v12), [13](#v13)] | Personnel : "Free without limits" ; licence commerciale facultative [[15](#v15)] | Gratuit, GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
 | Configuration requise | macOS 26.0 ou ultérieur [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | Non précisé par le fournisseur [[18](#v18)] | macOS 12.0 ou ultérieur [[23](#v23)] | macOS 13 ou ultérieur [[2](#v2)] |
 | Compte requis | Non [/privacy/] | Non précisé par le fournisseur | "No sign-up required" [[15](#v15)] | Non précisé par le fournisseur | Non [[2](#v2)] |
@@ -18843,7 +18848,7 @@ Chaque cellule a été vérifiée le 16 octobre 2026 auprès de la source entre 
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Sur iPhone et iPad, il ne fait que lire : il ne permet ni de modifier ni d’exporter en PDF. Pas d’édition partagée, pas de compte, pas de cloud propre. L’aperçu ne se modifie pas ; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Les PDF n’ont pas de numéros de page. Pas de vue diff : quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les documents s’ouvrent avec leur contenu masqué jusqu’au déverrouillage.
+Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Sur iPhone et iPad, il ne fait que lire : il ne permet ni de modifier ni d’exporter en PDF. Pas d’édition partagée, pas de compte, pas de cloud propre. L’aperçu ne se modifie pas ; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Seules les mises en page Guide et Polycopié ajoutent des numéros de page aux PDF. Pas de vue diff : quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les documents s’ouvrent avec leur contenu masqué jusqu’au déverrouillage.
 
 ## Quand vous n’avez pas besoin de MarsDawn
 
@@ -19011,7 +19016,7 @@ Une app native, légère et gratuite (CodeMirror dans une web view), avec Coup d
 Une app Mac native qui affiche la source et un aperçu en direct côte à côte, avec Mermaid et KaTeX intégrés. Quand un agent enregistre le fichier, la fenêtre ouverte prend la modification comme une seule mise à jour depuis le disque, que vous pouvez annuler. `marsdawn open notes.md:120` ouvre un fichier à une ligne, et un skill ainsi qu’un serveur MCP sont fournis pour les agents. Coup d’œil fonctionne avec ou sans l’essai. « Copier pour l’IA » et « Copier la référence » transmettent du texte à un agent. Rien ne quitte votre Mac sans votre choix.
 
 - Pour : ceux qui relisent le Markdown écrit par des agents IA.
-- Défaut : l’export PDF n’a pas de numéros de page.
+- Défaut : les numéros de page exigent la mise en page Guide ou Polycopié. La mise en page par défaut, Document, n’en a pas.
 - Prix : téléchargement gratuit avec 14 jours d’essai, puis 4,99 USD une seule fois. Sans compte. Uniquement sur le Mac App Store.
 
 ## Obsidian
@@ -19053,7 +19058,7 @@ L’aperçu Markdown intégré, avec Mermaid intégré depuis la 1.121 et KaTeX.
 | MacDown 3000 | Gratuit | Oui | MathJax | Oui | Oui | Non documenté | Oui | Natif |
 | Marked 3 | Dès 2,99 USD/mois | Oui | MathJax, KaTeX | Oui, numéros de page | Oui | Non documenté | Marked QL, 9,99 USD | Natif |
 | MarkEdit | Gratuit | Extension | KaTeX (extension) | Pandoc | Non documenté | Non documenté | Oui | Natif (web view) |
-| MarsDawn | 4,99 USD une fois | Oui | KaTeX | Oui, sans numéros de page | Oui, annulable | Oui | Oui | Natif |
+| MarsDawn | 4,99 USD une fois | Oui | KaTeX | Oui, numéros de page en Guide et Polycopié | Oui, annulable | Oui | Oui | Natif |
 | Obsidian | Gratuit | Oui | MathJax | Oui | Oui | Non documenté | Non documenté | Electron |
 | QLMarkdown | Gratuit | À activer | MathJax (à activer) | Non documenté | Sans objet | Sans objet | C’en est une | Natif |
 | Typora | 14,99 USD une fois | Oui | MathJax | Oui, numéros de page | Non documenté | Non documenté | Non documenté | Natif |
@@ -19061,7 +19066,6 @@ L’aperçu Markdown intégré, avec Mermaid intégré depuis la 1.121 et KaTeX.
 
 ## À qui MarsDawn ne convient pas
 
-- Il vous faut des numéros de page dans vos PDF. Typora et Marked 3 les ajoutent, MarsDawn non.
 - Vous entretenez une base de connaissances de notes liées. Obsidian est fait pour cela.
 - Vous ne quittez jamais VS Code. Son aperçu intégré est gratuit, et VS Code ajoute une vue Markdown expérimentale à sa fenêtre Agents.
 - Vous voulez seulement un aperçu dans le Finder. QLMarkdown est gratuit.
@@ -19074,7 +19078,7 @@ MacDown 3000, Obsidian et VS Code (1.121 et ultérieur) l’intègrent. QLMarkdo
 
 ### Lesquels exportent un PDF avec numéros de page ?
 
-Typora et Marked 3. MarsDawn exporte le PDF sans numéros de page.
+Typora, Marked 3 et MarsDawn. Dans MarsDawn, choisissez la mise en page Guide ou Polycopié ; la mise en page par défaut, Document, n’a pas de numéros de page.
 
 ### Lesquels ouvrent un fichier à une ligne précise depuis la ligne de commande ?
 
@@ -19161,7 +19165,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>` : la palette claire du thème de l’aperçu. Par défaut, `$MARSDAWN_THEME`, puis `dawn`.
 - `--paper <a4|letter>` : format du papier. Par défaut, `a4`.
 - `--breaks` : rendre chaque retour à la ligne d’un paragraphe comme un saut de ligne, comme HackMD. Sans cette option, un retour à la ligne entre deux caractères chinois ou japonais disparaît, et les lignes se lisent comme une seule phrase.
-- `--layout <document|handbook>` : la mise en page. Par défaut, `document`. `handbook` produit un guide : marges plus larges avec un côté de reliure, chaque titre de premier niveau sur une nouvelle page, une table des matières avec numéros de page, des numéros de page en pied de page et des signets PDF, plus une couverture quand le front matter a un `title`.
+- `--layout <document|handbook|handout>` : la mise en page. Par défaut, `document`. `handbook` produit un guide : marges plus larges avec un côté de reliure, chaque titre de premier niveau sur une nouvelle page, une table des matières avec numéros de page, des numéros de page en pied de page et des signets PDF, plus une couverture quand le front matter a un `title`. `handout` laisse une colonne de notes vide à droite de chaque page, place le titre et la date en haut de la page 1 et termine chaque page par le nom du fichier, la date et le numéro de page. Un tableau très large peut déborder sur la colonne de notes.
 - `--toc-title <text>` : le titre de la page de table des matières du guide. Par défaut, `Contents`.
 - `<!--BREAK-->` seul sur une ligne commence une nouvelle page, dans les deux mises en page.
 - `--allow-remote-images` : charger les images web pendant le rendu. Désactivé par défaut.
@@ -19169,7 +19173,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--json` : afficher un résultat JSON au lieu de texte.
 - Un fichier de plus de 16 Mio n’est pas exporté : `export` se termine avec le code 5 et n’écrit rien.
 
-`--breaks` est arrivé avec marsdawn 0.7.0, `--layout` et `--toc-title` avec la 0.7.1, et la valeur `handbook` avec la 0.7.2. L’ancienne valeur de la 0.7.1, `manual`, fonctionne toujours.
+`--breaks` est arrivé avec marsdawn 0.7.0, `--layout` et `--toc-title` avec la 0.7.1, la valeur `handbook` avec la 0.7.2, et la valeur `handout` avec la 0.7.3. L’ancienne valeur de la 0.7.1, `manual`, fonctionne toujours.
 
 ### marsdawn theme
 
@@ -20626,7 +20630,7 @@ Source: https://marsdawn.southern-light.dev/fr/roadmap/
 
 Ce que nous préparons, version par version. Pas de dates : une version sort quand elle est prête.
 
-Dernière mise à jour : 23 octobre 2026
+Dernière mise à jour : 7 novembre 2026
 
 Les plans peuvent changer : un élément peut passer à une autre version ou être abandonné.
 
@@ -20638,8 +20642,6 @@ Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/chang
 
 ### Mac 1.2.2
 
-- Ouvrir du JSON et du YAML, les modifier et voir un aperçu en arborescence en direct à côté de la source.
-- Ouvrir une URL : lire du Markdown depuis un lien public sur GitHub, un Gist ou un fichier brut.
 - Encadrés : les alertes GitHub et les blocs `:::` de HackMD.
 - Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.
 
@@ -20647,6 +20649,10 @@ Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/chang
 
 - Après qu’un agent a modifié un fichier, voir quels blocs ont changé.
 - Un visualiseur d’images pour PNG, JPEG, GIF et WebP.
+
+### Mac 1.3.0
+
+- Ouvrir une URL : lire du Markdown depuis un lien public sur GitHub, un Gist ou un fichier brut.
 
 ### iPad et iPhone Duo déplié (iOS 1.1)
 
@@ -21412,7 +21418,7 @@ Más información: [Política de privacidad](/es/privacy/#the-website)
 
 ### ¿Por qué usar MarsDawn y no otra app?
 
-Puede que no lo necesites. Si sobre todo escribes tus propias notas, una app de notas como Obsidian te irá mejor. Si pasas el día en VS Code, su vista previa integrada es gratis. Si solo quieres echar un vistazo a los archivos en el Finder, basta con una extensión gratuita de Vista Rápida. Si tus PDF necesitan números de página, MarsDawn no los añade. MarsDawn sirve para leer y revisar el Markdown que escribió un agente: el código fuente junto a una vista previa en vivo, un cambio de tu agente que deshaces en un solo paso y un archivo abierto en la línea exacta. Si no te sirve, escríbenos y cuéntanos por qué.
+Puede que no lo necesites. Si sobre todo escribes tus propias notas, una app de notas como Obsidian te irá mejor. Si pasas el día en VS Code, su vista previa integrada es gratis. Si solo quieres echar un vistazo a los archivos en el Finder, basta con una extensión gratuita de Vista Rápida. MarsDawn sirve para leer y revisar el Markdown que escribió un agente: el código fuente junto a una vista previa en vivo, un cambio de tu agente que deshaces en un solo paso y un archivo abierto en la línea exacta. Si no te sirve, escríbenos y cuéntanos por qué.
 
 Más información: [MarsDawn frente a otras herramientas](/es/vs/) · [El mejor visor de Markdown para Mac](/es/best-markdown-viewer-mac/)
 
@@ -21605,7 +21611,7 @@ En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown y de 
 
 ### Ventanas y pestañas
 
-Cada documento se abre en su propia ventana. Elige Ventana ▸ Unir todas las ventanas para reunir las ventanas abiertas como pestañas de una sola. El guardado automático funciona mientras escribes.
+De forma predeterminada, los documentos se abren como pestañas de la ventana del frente. Para usar el ajuste de pestañas de tu Mac, elige Seguir ajuste del sistema en Ajustes ▸ Aspecto. El guardado automático funciona mientras escribes.
 
 [Una app para Mac](/es/native/)
 
@@ -21848,7 +21854,7 @@ Algunas cosas quedaron fuera a propósito. Si necesitas alguna, es mejor saberlo
 
 En esta captura de pantalla:
 
-1. Un documento por ventana, en este Mac.
+1. Cada documento es un archivo en este Mac.
 2. Aquí escribes Markdown.
 3. La barra de herramientas tiene temas y disposiciones, y no hay menú de plugins.
 4. La página es para leer, no para editar.
@@ -22309,7 +22315,7 @@ Source: https://marsdawn.southern-light.dev/es/vs/
 
 # Leer Markdown en un Mac: MarsDawn y otras opciones
 
-Para quien elige cómo leer y revisar Markdown en un Mac, a menudo lo que escribió un agente. Cada celda viene de las páginas del propio fabricante o de nuestra propia comprobación, todas del 16 de octubre de 2026; los productos cambian, así que una celda puede quedar desfasada. Si ves un error, escribe a la dirección que aparece en [Soporte](/es/support/).
+Para quien elige cómo leer y revisar Markdown en un Mac, a menudo lo que escribió un agente. Cada celda viene de las páginas del propio fabricante o de nuestra propia comprobación, todas del 16 de octubre de 2026, salvo la celda de PDF de MarsDawn, actualizada el 7 de noviembre de 2026; los productos cambian, así que una celda puede quedar desfasada. Si ves un error, escribe a la dirección que aparece en [Soporte](/es/support/).
 
 |  | MarsDawn | Vista previa de VS Code | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
@@ -22317,7 +22323,7 @@ Para quien elige cómo leer y revisar Markdown en un Mac, a menudo lo que escrib
 | Mermaid | Integrado [[1](#v1)] | Integrado [[8](#v8)] | Integrado, sintaxis de notas [[16](#v16)] | Integrado, bloques `mermaid` [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
 | Fórmulas | KaTeX, `$…$` y `$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
 | Revisar el plan de un agente / saltar a una línea | `marsdawn open file:line`; actualizar desde el disco; Copiar referencia [/cli/, /features/] | Vista previa de diff de Markdown, líneas cambiadas resaltadas [[8](#v8)]; `code -g file:line` [[14](#v14)] | Sin parámetro de línea en `obsidian://open` [[20](#v20)] | El fabricante no lo indica | CLI y servidor MCP; salto a línea no indicado [[4](#v4), [5](#v5)] |
-| PDF: saltos de página, números de página | Los saltos no parten bloques de código cortos [/pdf/]; sin números de página [prueba] | El fabricante no lo indica [[8](#v8)] | Tamaño de papel, márgenes; saltos y números no indicados [[17](#v17)] | El fabricante no lo indica [[22](#v22)] | PDF "including tables"; saltos y números no indicados [[3](#v3)] |
+| PDF: saltos de página, números de página | Los saltos no parten bloques de código cortos [/pdf/]; números de página en las disposiciones Guía y Folleto [/changelog/] | El fabricante no lo indica [[8](#v8)] | Tamaño de papel, márgenes; saltos y números no indicados [[17](#v17)] | El fabricante no lo indica [[22](#v22)] | PDF "including tables"; saltos y números no indicados [[3](#v3)] |
 | Precio | Descarga gratis; desbloqueo 4,99 USD una vez; prueba de 14 días [[1](#v1)] | El fabricante no lo indica [[12](#v12), [13](#v13)] | Personal: "Free without limits"; licencia comercial opcional [[15](#v15)] | Gratis, GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
 | Requisitos del sistema | macOS 26.0 o posterior [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | El fabricante no lo indica [[18](#v18)] | macOS 12.0 o posterior [[23](#v23)] | macOS 13 o posterior [[2](#v2)] |
 | Requiere cuenta | No [/privacy/] | El fabricante no lo indica | "No sign-up required" [[15](#v15)] | El fabricante no lo indica | No [[2](#v2)] |
@@ -22350,7 +22356,7 @@ Cada celda se comprobó el 16 de octubre de 2026 con la fuente entre corchetes (
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. En iPhone y iPad solo lee: ahí no edita ni exporta PDF. No hay edición compartida, ni cuentas, ni nube propia. La vista previa no se puede editar; editas el código fuente Markdown al lado. No exporta a Word ni tiene plugins. Sus PDF no tienen números de página. No hay vista de diferencias: cuando un agente guarda un cambio, la ventana abierta se actualiza desde el disco en un paso que puedes deshacer, pero no resalta qué cambió. Tras la prueba de 14 días, los documentos se abren con el contenido tapado hasta que desbloquees la app.
+Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. En iPhone y iPad solo lee: ahí no edita ni exporta PDF. No hay edición compartida, ni cuentas, ni nube propia. La vista previa no se puede editar; editas el código fuente Markdown al lado. No exporta a Word ni tiene plugins. Solo las disposiciones Guía y Folleto agregan números de página a los PDF. No hay vista de diferencias: cuando un agente guarda un cambio, la ventana abierta se actualiza desde el disco en un paso que puedes deshacer, pero no resalta qué cambió. Tras la prueba de 14 días, los documentos se abren con el contenido tapado hasta que desbloquees la app.
 
 ## Cuándo no necesitas MarsDawn
 
@@ -22518,7 +22524,7 @@ Una app nativa, ligera y gratis (CodeMirror en una web view), con Vista Rápida.
 Una app nativa para Mac que muestra la fuente y una vista previa en vivo lado a lado, con Mermaid y KaTeX integrados. Cuando un agente guarda el archivo, la ventana abierta toma el cambio como una sola actualización desde el disco que puedes deshacer. `marsdawn open notes.md:120` abre un archivo en una línea, y hay un skill y un servidor MCP para agentes. Vista Rápida funciona con o sin la prueba. «Copiar para IA» y «Copiar referencia» pasan texto a un agente. Nada sale de tu Mac a menos que tú lo decidas.
 
 - Para: quien revisa el Markdown que escriben los agentes de IA.
-- Defecto: el PDF exportado no tiene números de página.
+- Defecto: los números de página requieren la disposición Guía o Folleto. La disposición predeterminada, Documento, no los tiene.
 - Precio: descarga gratis con 14 días de prueba y luego 4,99 USD una sola vez. Sin cuenta. Solo en la Mac App Store.
 
 ## Obsidian
@@ -22560,7 +22566,7 @@ La vista previa de Markdown integrada, con Mermaid integrado desde la 1.121 y Ka
 | MacDown 3000 | Gratis | Sí | MathJax | Sí | Sí | No documentado | Sí | Nativa |
 | Marked 3 | Desde 2,99 USD/mes | Sí | MathJax, KaTeX | Sí, con números de página | Sí | No documentado | Marked QL, 9,99 USD | Nativa |
 | MarkEdit | Gratis | Extensión | KaTeX (extensión) | Pandoc | No documentado | No documentado | Sí | Nativa (web view) |
-| MarsDawn | 4,99 USD una vez | Sí | KaTeX | Sí, sin números de página | Sí, se puede deshacer | Sí | Sí | Nativa |
+| MarsDawn | 4,99 USD una vez | Sí | KaTeX | Sí, números de página en Guía y Folleto | Sí, se puede deshacer | Sí | Sí | Nativa |
 | Obsidian | Gratis | Sí | MathJax | Sí | Sí | No documentado | No documentado | Electron |
 | QLMarkdown | Gratis | Opcional | MathJax (opcional) | No documentado | No aplica | No aplica | Es una | Nativa |
 | Typora | 14,99 USD una vez | Sí | MathJax | Sí, con números de página | No documentado | No documentado | No documentado | Nativa |
@@ -22568,7 +22574,6 @@ La vista previa de Markdown integrada, con Mermaid integrado desde la 1.121 y Ka
 
 ## Para quién no es MarsDawn
 
-- Necesitas números de página en tus PDF. Typora y Marked 3 los agregan, MarsDawn no.
 - Mantienes una base de conocimiento de notas enlazadas. Obsidian está hecho para eso.
 - Nunca sales de VS Code. Su vista previa integrada es gratis, y VS Code está agregando una vista de Markdown experimental a su ventana Agents.
 - Solo quieres una vista previa en el Finder. QLMarkdown es gratis.
@@ -22581,7 +22586,7 @@ MacDown 3000, Obsidian y VS Code (1.121 y posteriores) lo traen integrado. QLMar
 
 ### ¿Cuáles exportan PDF con números de página?
 
-Typora y Marked 3. MarsDawn exporta PDF sin números de página.
+Typora, Marked 3 y MarsDawn. En MarsDawn, elige la disposición Guía o Folleto; la disposición predeterminada, Documento, no tiene números de página.
 
 ### ¿Cuáles abren un archivo en una línea concreta desde la línea de comandos?
 
@@ -22668,7 +22673,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`: la paleta clara del tema de la vista previa. De forma predeterminada, `$MARSDAWN_THEME` y, si no, `dawn`.
 - `--paper <a4|letter>`: tamaño del papel. De forma predeterminada, `a4`.
 - `--breaks`: mostrar cada salto de línea dentro de un párrafo como un salto de línea, como HackMD. Sin esta opción, un salto de línea entre dos caracteres chinos o japoneses desaparece, y las líneas se leen como una sola frase.
-- `--layout <document|handbook>`: la disposición de página. De forma predeterminada, `document`. `handbook` genera una guía: márgenes más anchos con un lado de encuadernación, cada encabezado de primer nivel en una página nueva, una tabla de contenido con números de página, números de página en el pie y marcadores PDF, además de una portada cuando el front matter tiene `title`.
+- `--layout <document|handbook|handout>`: la disposición de página. De forma predeterminada, `document`. `handbook` genera una guía: márgenes más anchos con un lado de encuadernación, cada encabezado de primer nivel en una página nueva, una tabla de contenido con números de página, números de página en el pie y marcadores PDF, además de una portada cuando el front matter tiene `title`. `handout` deja una columna de notas en blanco a la derecha de cada página, pone el título y la fecha en la parte superior de la página 1 y termina cada página con el nombre del archivo, la fecha y el número de página. Una tabla muy ancha puede invadir la columna de notas.
 - `--toc-title <text>`: el título de la página de contenido de la guía. De forma predeterminada, `Contents`.
 - `<!--BREAK-->` solo en una línea empieza una página nueva, en ambas disposiciones.
 - `--allow-remote-images`: cargar imágenes de la web durante el renderizado. Desactivado de forma predeterminada.
@@ -22676,7 +22681,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--json`: mostrar un resultado JSON en lugar de texto.
 - Un archivo de más de 16 MiB no se exporta: `export` termina con el código 5 y no escribe nada.
 
-`--breaks` llegó con marsdawn 0.7.0, `--layout` y `--toc-title` con la 0.7.1, y el valor `handbook` con la 0.7.2. El valor anterior de la 0.7.1, `manual`, sigue funcionando.
+`--breaks` llegó con marsdawn 0.7.0, `--layout` y `--toc-title` con la 0.7.1, el valor `handbook` con la 0.7.2, y el valor `handout` con la 0.7.3. El valor anterior de la 0.7.1, `manual`, sigue funcionando.
 
 ### marsdawn theme
 
@@ -24133,7 +24138,7 @@ Source: https://marsdawn.southern-light.dev/es/roadmap/
 
 Lo que vamos a hacer a continuación, por versión. No hay fechas: una versión sale cuando está lista.
 
-Última actualización: 23 de octubre de 2026
+Última actualización: 7 de noviembre de 2026
 
 Los planes pueden cambiar: un elemento puede pasar a otra versión o descartarse.
 
@@ -24145,8 +24150,6 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
 ### Mac 1.2.2
 
-- Abre JSON y YAML, edítalos y ve una vista previa en árbol en vivo junto al código fuente.
-- Abrir una URL: lee Markdown desde un enlace público de GitHub, un Gist o un archivo raw.
 - Avisos destacados: las alertas de GitHub y los bloques `:::` de HackMD.
 - Añade la carpeta Plans de Claude Code a la barra lateral con un clic, con el plan más reciente arriba.
 
@@ -24154,6 +24157,10 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
 - Después de que un agente cambie un archivo, ve qué bloques cambiaron.
 - Un visor de imágenes para PNG, JPEG, GIF y WebP.
+
+### Mac 1.3.0
+
+- Abrir una URL: lee Markdown desde un enlace público de GitHub, un Gist o un archivo raw.
 
 ### iPad y iPhone Duo desplegado (iOS 1.1)
 
@@ -24919,7 +24926,7 @@ MarsDawn 자체는 아무것도 보내지 않습니다. 스킬은 지침을 적�
 
 ### 다른 앱 대신 MarsDawn을 쓸 이유가 있나요?
 
-필요 없을 수도 있습니다. 주로 자기 노트를 쓴다면 Obsidian 같은 노트 앱이 더 잘 맞습니다. VS Code에서 하루 종일 작업한다면 내장 미리보기를 무료로 쓸 수 있습니다. Finder에서 파일을 잠깐 들여다보기만 하려면 무료 훑어보기 확장 프로그램으로 충분합니다. PDF에 페이지 번호가 필요하다면 MarsDawn은 넣어 주지 않습니다. MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 앱입니다. 소스 옆에 실시간 미리보기가 있고, 에이전트가 바꾼 내용을 한 번에 되돌릴 수 있으며, 파일을 지정한 줄에서 바로 엽니다. 맞지 않는다면 그 이유를 메일로 알려 주세요.
+필요 없을 수도 있습니다. 주로 자기 노트를 쓴다면 Obsidian 같은 노트 앱이 더 잘 맞습니다. VS Code에서 하루 종일 작업한다면 내장 미리보기를 무료로 쓸 수 있습니다. Finder에서 파일을 잠깐 들여다보기만 하려면 무료 훑어보기 확장 프로그램으로 충분합니다. MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 앱입니다. 소스 옆에 실시간 미리보기가 있고, 에이전트가 바꾼 내용을 한 번에 되돌릴 수 있으며, 파일을 지정한 줄에서 바로 엽니다. 맞지 않는다면 그 이유를 메일로 알려 주세요.
 
 자세히: [MarsDawn과 다른 도구 비교](/ko/vs/) · [Mac용 Markdown 뷰어 추천](/ko/best-markdown-viewer-mac/)
 
@@ -25112,7 +25119,7 @@ iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스�
 
 ### 윈도우와 탭
 
-각 문서는 별도의 윈도우에서 열립니다. 윈도우 ▸ 모든 윈도우 통합을 선택하면 열려 있는 윈도우가 한 윈도우의 탭으로 모입니다. 자동 저장은 입력하는 동안 작동합니다.
+문서는 기본적으로 맨 앞 윈도우의 탭으로 열립니다. Mac의 탭 설정을 따르려면 설정 ▸ 화면 모드에서 시스템 설정 따르기를 선택하십시오. 자동 저장은 입력하는 동안 작동합니다.
 
 [Mac 앱](/ko/native/)
 
@@ -25355,7 +25362,7 @@ Source: https://marsdawn.southern-light.dev/ko/limits/
 
 이 스크린샷의 내용:
 
-1. 이 Mac에서, 윈도우 하나에 문서 하나.
+1. 모든 문서는 이 Mac에 있는 파일입니다.
 2. 여기에서 Markdown을 씁니다.
 3. 도구 막대에는 테마와 레이아웃이 있고, 플러그인 메뉴는 없습니다.
 4. 이 페이지는 읽기용이며 편집할 수 없습니다.
@@ -25816,7 +25823,7 @@ Source: https://marsdawn.southern-light.dev/ko/vs/
 
 # Mac에서 Markdown 읽기: MarsDawn과 다른 방법
 
-Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방법을 고르는 분을 위한 페이지입니다. 아래 표의 각 칸은 각 회사의 공식 페이지나 저희가 직접 확인한 내용이며, 모두 2026년 10월 16일 기준입니다. 제품은 바뀌므로 내용이 오래될 수 있습니다. 틀린 내용을 발견하면 [지원](/ko/support/) 페이지의 주소로 알려 주세요.
+Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방법을 고르는 분을 위한 페이지입니다. 아래 표의 각 칸은 각 회사의 공식 페이지나 저희가 직접 확인한 내용이며, 모두 2026년 10월 16일 기준입니다(MarsDawn의 PDF 칸은 2026년 11월 7일에 업데이트). 제품은 바뀌므로 내용이 오래될 수 있습니다. 틀린 내용을 발견하면 [지원](/ko/support/) 페이지의 주소로 알려 주세요.
 
 |  | MarsDawn | VS Code 미리보기 | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
@@ -25824,7 +25831,7 @@ Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방
 | Mermaid | 기본 제공 [[1](#v1)] | 기본 제공 [[8](#v8)] | 기본 제공, 노트 문법 [[16](#v16)] | 기본 제공, `mermaid` 블록 [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
 | 수식 | KaTeX, `$…$`와 `$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
 | 에이전트의 계획 검토／줄로 이동 | `marsdawn open file:line`, 디스크에서 업데이트, 참조 복사 [/cli/, /features/] | Markdown diff 미리보기, 변경된 줄 강조 [[8](#v8)]; `code -g file:line` [[14](#v14)] | `obsidian://open`에 줄 번호 지정 없음 [[20](#v20)] | 공식 설명 없음 | CLI와 MCP 서버 있음, 줄 이동은 설명 없음 [[4](#v4), [5](#v5)] |
-| PDF: 페이지 나누기, 페이지 번호 | 짧은 코드 블록을 나누지 않는 페이지 나누기 [/pdf/], 페이지 번호 없음 [직접 확인] | 공식 설명 없음 [[8](#v8)] | 용지 크기, 여백; 페이지 나누기와 번호는 설명 없음 [[17](#v17)] | 공식 설명 없음 [[22](#v22)] | PDF "including tables", 페이지 나누기와 번호는 설명 없음 [[3](#v3)] |
+| PDF: 페이지 나누기, 페이지 번호 | 짧은 코드 블록을 나누지 않는 페이지 나누기 [/pdf/], 설명서와 프린트물 레이아웃에 페이지 번호 [/changelog/] | 공식 설명 없음 [[8](#v8)] | 용지 크기, 여백; 페이지 나누기와 번호는 설명 없음 [[17](#v17)] | 공식 설명 없음 [[22](#v22)] | PDF "including tables", 페이지 나누기와 번호는 설명 없음 [[3](#v3)] |
 | 가격 | 무료 다운로드, 잠금 해제 한 번 USD 4.99, 14일 체험 [[1](#v1)] | 공식 설명 없음 [[12](#v12), [13](#v13)] | 개인: "Free without limits", 상업용 라이선스는 선택 [[15](#v15)] | 무료, GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
 | 시스템 요구 사항 | macOS 26.0 이상 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 공식 설명 없음 [[18](#v18)] | macOS 12.0 이상 [[23](#v23)] | macOS 13 이상 [[2](#v2)] |
 | 계정 필요 | 필요 없음 [/privacy/] | 공식 설명 없음 | "No sign-up required" [[15](#v15)] | 공식 설명 없음 | 필요 없음 [[2](#v2)] |
@@ -25857,7 +25864,7 @@ Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다. 공동 편집, 계정, 자체 클라우드 서비스가 없습니다. 미리보기는 직접 편집할 수 없고, 옆의 Markdown 소스를 편집합니다. Word로 내보내기와 플러그인이 없습니다. PDF에는 페이지 번호가 없습니다. diff 보기가 없습니다. 에이전트가 변경을 저장하면 열린 윈도우가 디스크에서 업데이트되고 한 번에 실행 취소할 수 있지만, 무엇이 바뀌었는지는 강조하지 않습니다. 14일 체험이 끝나면 잠금 해제할 때까지 문서 내용이 가려진 채로 열립니다.
+MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다. 공동 편집, 계정, 자체 클라우드 서비스가 없습니다. 미리보기는 직접 편집할 수 없고, 옆의 Markdown 소스를 편집합니다. Word로 내보내기와 플러그인이 없습니다. PDF 페이지 번호는 설명서와 프린트물 레이아웃에만 있습니다. diff 보기가 없습니다. 에이전트가 변경을 저장하면 열린 윈도우가 디스크에서 업데이트되고 한 번에 실행 취소할 수 있지만, 무엇이 바뀌었는지는 강조하지 않습니다. 14일 체험이 끝나면 잠금 해제할 때까지 문서 내용이 가려진 채로 열립니다.
 
 ## MarsDawn이 필요 없는 경우
 
@@ -26025,7 +26032,7 @@ Marked 3은 다른 앱에서 쓴 Markdown을 보기 위한 미리보기 앱입�
 소스와 실시간 미리보기를 나란히 보여 주는 네이티브 Mac 앱으로, Mermaid와 KaTeX가 내장되어 있습니다. 에이전트가 파일을 저장하면 열린 윈도우가 그 변경을 한 번에 실행 취소할 수 있는 '디스크에서 업데이트'로 받아들입니다. `marsdawn open notes.md:120`으로 특정 줄을 열 수 있고, 에이전트용 스킬과 MCP 서버도 있습니다. 훑어보기는 체험 기간과 관계없이 작동합니다. 'AI용으로 복사'와 '참조 복사'로 텍스트를 에이전트에 넘길 수 있습니다. 직접 선택하지 않는 한 아무것도 Mac 밖으로 나가지 않습니다.
 
 - 맞는 사람: AI 에이전트가 쓴 Markdown을 검토하는 사람.
-- 단점: 내보낸 PDF에 페이지 번호가 없습니다.
+- 단점: PDF에 페이지 번호를 넣으려면 설명서나 프린트물 레이아웃을 써야 합니다. 기본값인 문서 레이아웃에는 없습니다.
 - 가격: 무료 다운로드, 14일 체험 후 USD 4.99 한 번 결제. 계정 불필요. Mac App Store 전용.
 
 ## Obsidian
@@ -26067,7 +26074,7 @@ Marked 3은 다른 앱에서 쓴 Markdown을 보기 위한 미리보기 앱입�
 | MacDown 3000 | 무료 | 지원 | MathJax | 지원 | 지원 | 문서화 안 됨 | 지원 | 네이티브 |
 | Marked 3 | 월 USD 2.99부터 | 지원 | MathJax, KaTeX | 지원, 페이지 번호 | 지원 | 문서화 안 됨 | Marked QL, USD 9.99 | 네이티브 |
 | MarkEdit | 무료 | 확장 프로그램 | KaTeX(확장 프로그램) | Pandoc | 문서화 안 됨 | 문서화 안 됨 | 지원 | 네이티브(웹 뷰) |
-| MarsDawn | USD 4.99 한 번 | 지원 | KaTeX | 지원, 페이지 번호 없음 | 지원, 실행 취소 가능 | 지원 | 지원 | 네이티브 |
+| MarsDawn | USD 4.99 한 번 | 지원 | KaTeX | 지원, 설명서와 프린트물에 페이지 번호 | 지원, 실행 취소 가능 | 지원 | 지원 | 네이티브 |
 | Obsidian | 무료 | 지원 | MathJax | 지원 | 지원 | 문서화 안 됨 | 문서화 안 됨 | Electron |
 | QLMarkdown | 무료 | 선택 사항 | MathJax(선택 사항) | 문서화 안 됨 | 해당 없음 | 해당 없음 | 그 자체 | 네이티브 |
 | Typora | USD 14.99 한 번 | 지원 | MathJax | 지원, 페이지 번호 | 문서화 안 됨 | 문서화 안 됨 | 문서화 안 됨 | 네이티브 |
@@ -26075,7 +26082,6 @@ Marked 3은 다른 앱에서 쓴 Markdown을 보기 위한 미리보기 앱입�
 
 ## MarsDawn이 맞지 않는 사람
 
-- PDF에 페이지 번호가 꼭 필요한 사람. Typora와 Marked 3은 넣을 수 있지만 MarsDawn은 넣을 수 없습니다.
 - 서로 링크된 개인 메모 지식 베이스를 가꾸는 사람. Obsidian은 그 용도로 만들어졌습니다.
 - VS Code를 떠나지 않는 사람. 기본 미리보기는 무료이고, VS Code는 Agents 윈도우에 실험적인 Markdown 보기를 추가하고 있습니다.
 - Finder에서 미리보기만 하면 되는 사람. QLMarkdown은 무료입니다.
@@ -26088,7 +26094,7 @@ MacDown 3000, Obsidian, VS Code(1.121 이상)에 내장되어 있습니다. QLMa
 
 ### 페이지 번호가 붙은 PDF를 내보낼 수 있는 앱은?
 
-Typora와 Marked 3입니다. MarsDawn의 PDF에는 페이지 번호가 없습니다.
+Typora, Marked 3, MarsDawn입니다. MarsDawn에서는 설명서나 프린트물 레이아웃을 선택하면 됩니다. 기본값인 문서 레이아웃에는 페이지 번호가 없습니다.
 
 ### 명령줄에서 특정 줄로 파일을 열 수 있는 앱은?
 
@@ -26175,7 +26181,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`: 미리보기 테마의 라이트 팔레트입니다. 기본값은 `$MARSDAWN_THEME`, 그다음 `dawn`입니다.
 - `--paper <a4|letter>`: 용지 크기입니다. 기본값은 `a4`입니다.
 - `--breaks`: HackMD처럼 문단 안의 모든 줄바꿈을 줄바꿈으로 표시합니다. 주지 않으면 중국어나 일본어 글자 두 개 사이의 줄바꿈은 없어져, 앞뒤 줄이 한 문장으로 이어집니다.
-- `--layout <document|handbook>`: 페이지 레이아웃입니다. 기본값은 `document`입니다. `handbook`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽을 남기며, 최상위 제목마다 새 페이지에서 시작하고, 페이지 번호가 붙은 목차 페이지, 바닥글의 페이지 번호, PDF 책갈피를 넣습니다. front matter에 `title`이 있으면 표지도 붙입니다.
+- `--layout <document|handbook|handout>`: 페이지 레이아웃입니다. 기본값은 `document`입니다. `handbook`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽을 남기며, 최상위 제목마다 새 페이지에서 시작하고, 페이지 번호가 붙은 목차 페이지, 바닥글의 페이지 번호, PDF 책갈피를 넣습니다. front matter에 `title`이 있으면 표지도 붙입니다. `handout`은 모든 페이지 오른쪽에 빈 메모 공간을 남기고, 1페이지 위쪽에 제목과 날짜를 넣으며, 모든 페이지 끝에 파일 이름, 날짜, 페이지 번호를 넣습니다. 아주 넓은 표는 메모 공간까지 넘어갈 수 있습니다.
 - `--toc-title <text>`: 설명서 목차 페이지의 제목입니다. 기본값은 `Contents`입니다.
 - 한 줄에 단독으로 쓴 `<!--BREAK-->`는 새 페이지를 시작합니다. 두 레이아웃 모두 해당합니다.
 - `--allow-remote-images`: 렌더링하는 동안 웹 이미지를 불러옵니다. 기본값은 꺼짐입니다.
@@ -26183,7 +26189,7 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--json`: 텍스트 대신 JSON 결과를 출력합니다.
 - 16MiB를 넘는 파일은 내보내지 않습니다. `export`는 코드 5로 종료하며 아무것도 쓰지 않습니다.
 
-`--breaks`는 marsdawn 0.7.0에서, `--layout`과 `--toc-title`은 0.7.1에서, `handbook` 값은 0.7.2에서 추가되었습니다. 0.7.1의 이전 값 `manual`도 계속 쓸 수 있습니다.
+`--breaks`는 marsdawn 0.7.0에서, `--layout`과 `--toc-title`은 0.7.1에서, `handbook` 값은 0.7.2에서, `handout` 값은 0.7.3에서 추가되었습니다. 0.7.1의 이전 값 `manual`도 계속 쓸 수 있습니다.
 
 ### marsdawn theme
 
@@ -27640,7 +27646,7 @@ Source: https://marsdawn.southern-light.dev/ko/roadmap/
 
 다음에 만들 것을 버전별로 정리했습니다. 날짜는 적지 않습니다. 준비가 끝난 버전부터 내놓습니다.
 
-마지막 업데이트: 2026년 10월 23일
+마지막 업데이트: 2026년 11월 7일
 
 계획은 바뀔 수 있습니다. 항목이 다른 버전으로 옮겨지거나 취소될 수도 있습니다.
 
@@ -27652,8 +27658,6 @@ Source: https://marsdawn.southern-light.dev/ko/roadmap/
 
 ### Mac 1.2.2
 
-- JSON과 YAML을 열어 편집하고, 옆에서 실시간 트리 미리보기를 봅니다.
-- URL 열기: GitHub, Gist, raw 파일의 공개 링크에서 Markdown을 읽습니다.
 - 콜아웃: GitHub alerts와 HackMD의 `:::` 블록을 지원합니다.
 - Claude Code의 Plans 폴더를 클릭 한 번으로 사이드바에 추가하고, 최신 계획을 맨 위에 둡니다.
 
@@ -27661,6 +27665,10 @@ Source: https://marsdawn.southern-light.dev/ko/roadmap/
 
 - 에이전트가 파일을 바꾼 뒤 어떤 블록이 바뀌었는지 보여 줍니다.
 - 이미지 뷰어: PNG, JPEG, GIF, WebP를 엽니다.
+
+### Mac 1.3.0
+
+- URL 열기: GitHub, Gist, raw 파일의 공개 링크에서 Markdown을 읽습니다.
 
 ### iPad 및 펼친 iPhone Duo (iOS 1.1)
 
