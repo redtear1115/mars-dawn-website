@@ -67,15 +67,15 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`: the preview theme's light palette. Defaults to `$MARSDAWN_THEME`, then `dawn`.
 - `--paper <a4|letter>`: paper size. Defaults to `a4`.
 - `--breaks`: turn every newline inside a paragraph into a line break, as HackMD does. Without it, a newline between two Chinese or Japanese characters is dropped, so the lines read as one sentence.
-- `--layout <document|handbook>`: the page layout. Defaults to `document`. `handbook` prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a `title`.
+- `--layout <document|handbook|handout>`: the page layout. Defaults to `document`. `handbook` prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a `title`. `handout` leaves a blank notes column on the right of every page, puts the title and date at the top of page 1, and ends every page with the file name, the date and the page number. A very wide table may run into the notes column.
 - `--toc-title <text>`: the heading of the handbook's contents page. Defaults to `Contents`.
-- `<!--BREAK-->` on a line of its own starts a new page, in either layout.
+- `<!--BREAK-->` on a line of its own starts a new page, in every layout.
 - `--allow-remote-images`: load images from the web while rendering. Off by default.
 - `--force`: replace the output file if it already exists.
 - `--json`: print a JSON result instead of text.
 - A file over 16 MiB isn't exported: `export` exits 5 and writes nothing.
 
-`--breaks` was added in marsdawn 0.7.0, `--layout` and `--toc-title` in 0.7.1, and the name `handbook` in 0.7.2. The 0.7.1 name, `manual`, still works.
+`--breaks` was added in marsdawn 0.7.0, `--layout` and `--toc-title` in 0.7.1, the name `handbook` in 0.7.2, and `handout` in 0.7.3. The 0.7.1 name, `manual`, still works.
 
 ### marsdawn theme
 

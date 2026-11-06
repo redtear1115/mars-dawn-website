@@ -67,15 +67,15 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>` : la palette claire du thème de l’aperçu. Par défaut, `$MARSDAWN_THEME`, puis `dawn`.
 - `--paper <a4|letter>` : format du papier. Par défaut, `a4`.
 - `--breaks` : rendre chaque retour à la ligne d’un paragraphe comme un saut de ligne, comme HackMD. Sans cette option, un retour à la ligne entre deux caractères chinois ou japonais disparaît, et les lignes se lisent comme une seule phrase.
-- `--layout <document|handbook>` : la mise en page. Par défaut, `document`. `handbook` produit un guide : marges plus larges avec un côté de reliure, chaque titre de premier niveau sur une nouvelle page, une table des matières avec numéros de page, des numéros de page en pied de page et des signets PDF, plus une couverture quand le front matter a un `title`.
+- `--layout <document|handbook|handout>` : la mise en page. Par défaut, `document`. `handbook` produit un guide : marges plus larges avec un côté de reliure, chaque titre de premier niveau sur une nouvelle page, une table des matières avec numéros de page, des numéros de page en pied de page et des signets PDF, plus une couverture quand le front matter a un `title`. `handout` laisse une colonne de notes vide à droite de chaque page, place le titre et la date en haut de la page 1 et termine chaque page par le nom du fichier, la date et le numéro de page. Un tableau très large peut déborder sur la colonne de notes.
 - `--toc-title <text>` : le titre de la page de table des matières du guide. Par défaut, `Contents`.
-- `<!--BREAK-->` seul sur une ligne commence une nouvelle page, dans les deux mises en page.
+- `<!--BREAK-->` seul sur une ligne commence une nouvelle page, dans toutes les mises en page.
 - `--allow-remote-images` : charger les images web pendant le rendu. Désactivé par défaut.
 - `--force` : remplacer le fichier de sortie s’il existe déjà.
 - `--json` : afficher un résultat JSON au lieu de texte.
 - Un fichier de plus de 16 Mio n’est pas exporté : `export` se termine avec le code 5 et n’écrit rien.
 
-`--breaks` est arrivé avec marsdawn 0.7.0, `--layout` et `--toc-title` avec la 0.7.1, et la valeur `handbook` avec la 0.7.2. L’ancienne valeur de la 0.7.1, `manual`, fonctionne toujours.
+`--breaks` est arrivé avec marsdawn 0.7.0, `--layout` et `--toc-title` avec la 0.7.1, la valeur `handbook` avec la 0.7.2, et la valeur `handout` avec la 0.7.3. L’ancienne valeur de la 0.7.1, `manual`, fonctionne toujours.
 
 ### marsdawn theme
 

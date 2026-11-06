@@ -67,15 +67,15 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`: die helle Palette des Vorschau-Themas. Standard ist `$MARSDAWN_THEME`, dann `dawn`.
 - `--paper <a4|letter>`: Papierformat. Standard ist `a4`.
 - `--breaks`: jeden Zeilenumbruch innerhalb eines Absatzes als Zeilenumbruch darstellen, wie HackMD. Ohne die Option fällt ein Zeilenumbruch zwischen zwei chinesischen oder japanischen Zeichen weg, sodass sich die Zeilen wie ein Satz lesen.
-- `--layout <document|handbook>`: das Seitenlayout. Standard ist `document`. `handbook` druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen `title` hat.
+- `--layout <document|handbook|handout>`: das Seitenlayout. Standard ist `document`. `handbook` druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen `title` hat. `handout` lässt rechts auf jeder Seite eine leere Notizspalte, setzt Titel und Datum oben auf Seite 1 und schließt jede Seite mit Dateiname, Datum und Seitenzahl ab. Eine sehr breite Tabelle kann in die Notizspalte hineinragen.
 - `--toc-title <text>`: die Überschrift des Inhaltsverzeichnisses im Handbuch. Standard ist `Contents`.
-- `<!--BREAK-->` allein in einer Zeile beginnt eine neue Seite, in beiden Layouts.
+- `<!--BREAK-->` allein in einer Zeile beginnt eine neue Seite, in allen Layouts.
 - `--allow-remote-images`: beim Rendern Bilder aus dem Web laden. Standardmäßig aus.
 - `--force`: die Ausgabedatei ersetzen, falls sie schon existiert.
 - `--json`: ein JSON-Ergebnis statt Text ausgeben.
 - Eine Datei über 16 MiB wird nicht exportiert: `export` endet mit Code 5 und schreibt nichts.
 
-`--breaks` kam mit marsdawn 0.7.0 hinzu, `--layout` und `--toc-title` mit 0.7.1, der Wert `handbook` mit 0.7.2. Der alte Wert aus 0.7.1, `manual`, funktioniert weiterhin.
+`--breaks` kam mit marsdawn 0.7.0 hinzu, `--layout` und `--toc-title` mit 0.7.1, der Wert `handbook` mit 0.7.2, der Wert `handout` mit 0.7.3. Der alte Wert aus 0.7.1, `manual`, funktioniert weiterhin.
 
 ### marsdawn theme
 

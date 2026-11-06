@@ -173,15 +173,15 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: the preview theme's light palette. Defaults to <code>$MARSDAWN_THEME</code>, then <code>dawn</code>.</li>
   <li><code>--paper &lt;a4|letter&gt;</code>: paper size. Defaults to <code>a4</code>.</li>
   <li><code>--breaks</code>: turn every newline inside a paragraph into a line break, as HackMD does. Without it, a newline between two Chinese or Japanese characters is dropped, so the lines read as one sentence.</li>
-  <li><code>--layout &lt;document|handbook&gt;</code>: the page layout. Defaults to <code>document</code>. <code>handbook</code> prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a <code>title</code>.</li>
+  <li><code>--layout &lt;document|handbook|handout&gt;</code>: the page layout. Defaults to <code>document</code>. <code>handbook</code> prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a <code>title</code>. <code>handout</code> leaves a blank notes column on the right of every page, puts the title and date at the top of page 1, and ends every page with the file name, the date and the page number. A very wide table may run into the notes column.</li>
   <li><code>--toc-title &lt;text&gt;</code>: the heading of the handbook's contents page. Defaults to <code>Contents</code>.</li>
-  <li><code>&lt;!--BREAK--&gt;</code> on a line of its own starts a new page, in either layout.</li>
+  <li><code>&lt;!--BREAK--&gt;</code> on a line of its own starts a new page, in every layout.</li>
   <li><code>--allow-remote-images</code>: load images from the web while rendering. Off by default.</li>
   <li><code>--force</code>: replace the output file if it already exists.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
   <li>A file over 16 MiB isn't exported: <code>export</code> exits 5 and writes nothing.</li>
 </ul>
-<p><code>--breaks</code> was added in marsdawn 0.7.0, <code>--layout</code> and <code>--toc-title</code> in 0.7.1, and the name <code>handbook</code> in 0.7.2. The 0.7.1 name, <code>manual</code>, still works.</p>
+<p><code>--breaks</code> was added in marsdawn 0.7.0, <code>--layout</code> and <code>--toc-title</code> in 0.7.1, the name <code>handbook</code> in 0.7.2, and <code>handout</code> in 0.7.3. The 0.7.1 name, <code>manual</code>, still works.</p>
 
 <h3>marsdawn theme</h3>
 <p>Checks a theme file (<code>theme.json</code>) and shows what it looks like, before you share it. It doesn't need the MarsDawn app. For the fields of a theme, see <a href="/themes/agents/">Make a theme with your agent</a>.</p>

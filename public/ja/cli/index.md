@@ -67,15 +67,15 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`：プレビューテーマのライトパレット。デフォルトは `$MARSDAWN_THEME`、それもなければ `dawn` です。
 - `--paper <a4|letter>`：用紙サイズ。デフォルトは `a4` です。
 - `--breaks`：HackMD と同じように、段落内の改行をすべて改行として表示します。付けないときは、中国語や日本語の文字どうしのあいだの改行を取り除き、前後の行を 1 つの文としてつなげます。
-- `--layout <document|handbook>`：ページのレイアウト。初期値は `document`。`handbook` はハンドブックとして書き出します。余白を広くして綴じ側を取り、レベル 1 の見出しごとに改ページし、ページ番号付きの目次ページ、フッターのページ番号、PDF のしおりを付けます。front matter に `title` があれば表紙も付けます。
+- `--layout <document|handbook|handout>`：ページのレイアウト。初期値は `document`。`handbook` はハンドブックとして書き出します。余白を広くして綴じ側を取り、レベル 1 の見出しごとに改ページし、ページ番号付きの目次ページ、フッターのページ番号、PDF のしおりを付けます。front matter に `title` があれば表紙も付けます。`handout` は、各ページの右側に空白のメモ欄を設け、1 ページ目の上部にタイトルと日付を入れ、各ページの末尾にファイル名、日付、ページ番号を入れます。とても幅の広い表は、メモ欄にはみ出すことがあります。
 - `--toc-title <text>`：ハンドブックの目次ページの見出し。初期値は `Contents`。
-- 1 行だけの `<!--BREAK-->` で改ページします。どちらのレイアウトでも使えます。
+- 1 行だけの `<!--BREAK-->` で改ページします。どのレイアウトでも使えます。
 - `--allow-remote-images`：レンダリング時にウェブから画像を読み込みます。デフォルトはオフです。
 - `--force`：出力ファイルがすでに存在する場合に置き換えます。
 - `--json`：テキストではなく JSON の結果を出力します。
 - 16 MiB を超えるファイルは書き出しません。`export` はコード 5 で終了し、何も書き出しません。
 
-`--breaks` は marsdawn 0.7.0 で、`--layout` と `--toc-title` は 0.7.1 で、`handbook` という名前は 0.7.2 で追加されました。0.7.1 の名前 `manual` も使えます。
+`--breaks` は marsdawn 0.7.0 で、`--layout` と `--toc-title` は 0.7.1 で、`handbook` という名前は 0.7.2 で、`handout` は 0.7.3 で追加されました。0.7.1 の名前 `manual` も使えます。
 
 ### marsdawn theme
 

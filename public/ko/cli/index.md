@@ -67,15 +67,15 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`: 미리보기 테마의 라이트 팔레트입니다. 기본값은 `$MARSDAWN_THEME`, 그다음 `dawn`입니다.
 - `--paper <a4|letter>`: 용지 크기입니다. 기본값은 `a4`입니다.
 - `--breaks`: HackMD처럼 문단 안의 모든 줄바꿈을 줄바꿈으로 표시합니다. 주지 않으면 중국어나 일본어 글자 두 개 사이의 줄바꿈은 없어져, 앞뒤 줄이 한 문장으로 이어집니다.
-- `--layout <document|handbook>`: 페이지 레이아웃입니다. 기본값은 `document`입니다. `handbook`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽을 남기며, 최상위 제목마다 새 페이지에서 시작하고, 페이지 번호가 붙은 목차 페이지, 바닥글의 페이지 번호, PDF 책갈피를 넣습니다. front matter에 `title`이 있으면 표지도 붙입니다.
+- `--layout <document|handbook|handout>`: 페이지 레이아웃입니다. 기본값은 `document`입니다. `handbook`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽을 남기며, 최상위 제목마다 새 페이지에서 시작하고, 페이지 번호가 붙은 목차 페이지, 바닥글의 페이지 번호, PDF 책갈피를 넣습니다. front matter에 `title`이 있으면 표지도 붙입니다. `handout`은 모든 페이지 오른쪽에 빈 메모 공간을 남기고, 1페이지 위쪽에 제목과 날짜를 넣으며, 모든 페이지 끝에 파일 이름, 날짜, 페이지 번호를 넣습니다. 아주 넓은 표는 메모 공간까지 넘어갈 수 있습니다.
 - `--toc-title <text>`: 설명서 목차 페이지의 제목입니다. 기본값은 `Contents`입니다.
-- 한 줄에 단독으로 쓴 `<!--BREAK-->`는 새 페이지를 시작합니다. 두 레이아웃 모두 해당합니다.
+- 한 줄에 단독으로 쓴 `<!--BREAK-->`는 새 페이지를 시작합니다. 모든 레이아웃에 해당합니다.
 - `--allow-remote-images`: 렌더링하는 동안 웹 이미지를 불러옵니다. 기본값은 꺼짐입니다.
 - `--force`: 출력 파일이 이미 있으면 바꿉니다.
 - `--json`: 텍스트 대신 JSON 결과를 출력합니다.
 - 16MiB를 넘는 파일은 내보내지 않습니다. `export`는 코드 5로 종료하며 아무것도 쓰지 않습니다.
 
-`--breaks`는 marsdawn 0.7.0에서, `--layout`과 `--toc-title`은 0.7.1에서, `handbook` 값은 0.7.2에서 추가되었습니다. 0.7.1의 이전 값 `manual`도 계속 쓸 수 있습니다.
+`--breaks`는 marsdawn 0.7.0에서, `--layout`과 `--toc-title`은 0.7.1에서, `handbook` 값은 0.7.2에서, `handout` 값은 0.7.3에서 추가되었습니다. 0.7.1의 이전 값 `manual`도 계속 쓸 수 있습니다.
 
 ### marsdawn theme
 
