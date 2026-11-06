@@ -67,15 +67,15 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`: 미리보기 테마의 라이트 팔레트입니다. 기본값은 `$MARSDAWN_THEME`, 그다음 `dawn`입니다.
 - `--paper <a4|letter>`: 용지 크기입니다. 기본값은 `a4`입니다.
 - `--breaks`: HackMD처럼 문단 안의 모든 줄바꿈을 줄바꿈으로 표시합니다. 주지 않으면 중국어나 일본어 글자 두 개 사이의 줄바꿈은 없어져, 앞뒤 줄이 한 문장으로 이어집니다.
-- `--layout <document|handbook>`: 페이지 레이아웃입니다. 기본값은 `document`입니다. `handbook`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽을 남기며, 최상위 제목마다 새 페이지에서 시작하고, 페이지 번호가 붙은 목차 페이지, 바닥글의 페이지 번호, PDF 책갈피를 넣습니다. front matter에 `title`이 있으면 표지도 붙입니다.
+- `--layout <document|handbook|handout>`: 페이지 레이아웃입니다. 기본값은 `document`입니다. `handbook`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽을 남기며, 최상위 제목마다 새 페이지에서 시작하고, 페이지 번호가 붙은 목차 페이지, 바닥글의 페이지 번호, PDF 책갈피를 넣습니다. front matter에 `title`이 있으면 표지도 붙입니다. `handout`은 모든 페이지 오른쪽에 빈 메모 공간을 남기고, 1페이지 위쪽에 제목과 날짜를 넣으며, 모든 페이지 끝에 파일 이름, 날짜, 페이지 번호를 넣습니다. 아주 넓은 표는 메모 공간까지 넘어갈 수 있습니다.
 - `--toc-title <text>`: 설명서 목차 페이지의 제목입니다. 기본값은 `Contents`입니다.
-- 한 줄에 단독으로 쓴 `<!--BREAK-->`는 새 페이지를 시작합니다. 두 레이아웃 모두 해당합니다.
+- 한 줄에 단독으로 쓴 `<!--BREAK-->`는 새 페이지를 시작합니다. 모든 레이아웃에 해당합니다.
 - `--allow-remote-images`: 렌더링하는 동안 웹 이미지를 불러옵니다. 기본값은 꺼짐입니다.
 - `--force`: 출력 파일이 이미 있으면 바꿉니다.
 - `--json`: 텍스트 대신 JSON 결과를 출력합니다.
 - 16MiB를 넘는 파일은 내보내지 않습니다. `export`는 코드 5로 종료하며 아무것도 쓰지 않습니다.
 
-`--breaks`는 marsdawn 0.7.0에서, `--layout`과 `--toc-title`은 0.7.1에서, `handbook` 값은 0.7.2에서 추가되었습니다. 0.7.1의 이전 값 `manual`도 계속 쓸 수 있습니다.
+`--breaks`는 marsdawn 0.7.0에서, `--layout`과 `--toc-title`은 0.7.1에서, `handbook` 값은 0.7.2에서, `handout` 값은 0.7.3에서 추가되었습니다. 0.7.1의 이전 값 `manual`도 계속 쓸 수 있습니다.
 
 ### marsdawn theme
 
@@ -133,7 +133,7 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png
 - [Mac에서 Mermaid 미리보기](https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/index.md): Mac에서 Mermaid 다이어그램을 Markdown 옆에 그려서 보세요: 실시간 미리보기, 훑어보기, PDF 내보내기. 다이어그램에 오류가 있으면 오류와 해당 줄이 표시됩니다.
 - [Markdown 훑어보기](https://marsdawn.southern-light.dev/ko/quicklook/index.md): MarsDawn의 훑어보기로 Finder에서 스페이스 바를 누르면 Markdown이 렌더링되어 보입니다. Mermaid, KaTeX, 강조된 코드도 표시됩니다. 체험이 끝난 뒤에도 계속 작동합니다.
 - [Markdown을 PDF로](https://marsdawn.southern-light.dev/ko/markdown-to-pdf/index.md): 무료 marsdawn 명령줄 도구로 Mac에서 Markdown을 PDF로 변환하세요. Homebrew로 설치하고 명령 하나만 실행하면 됩니다. 표, 수식, Mermaid, 코드까지 지원합니다.
-- [MarsDawn 비교: VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/ko/vs/index.md): Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방법을 고르는 분을 위한 페이지입니다. 아래 표의 각 칸은 각 회사의 공식 페이지나 저희가 직접 확인한 내용이며, 모두 2026년 10월 16일 기준입니다. 제품은 바뀌므로 내용이 오래될 수 있습니다. 틀린 내용을 발견하면 지원 페이지의 주소로 알려 주세요.
+- [MarsDawn 비교: VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/ko/vs/index.md): Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방법을 고르는 분을 위한 페이지입니다. 아래 표의 각 칸은 각 회사의 공식 페이지나 저희가 직접 확인한 내용이며, 모두 2026년 10월 16일 기준입니다(MarsDawn의 PDF 칸은 2026년 11월 7일에 업데이트). 제품은 바뀌므로 내용이 오래될 수 있습니다. 틀린 내용을 발견하면 지원 페이지의 주소로 알려 주세요.
 - [MacMD Viewer와 MarsDawn 비교](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 읽기 전용 Markdown 뷰어로 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 14일 무료 체험 후 USD 4.99를 한 번만 내면 됩니다. 항목별 비교, 출처 포함.
 - [Mac용 Markdown 뷰어 추천 (2026)](https://marsdawn.southern-light.dev/ko/best-markdown-viewer-mac/index.md): Mac용 Markdown 뷰어 8종을 가격, Mermaid, 수식, PDF, 자동 새로 고침, 훑어보기, 네이티브/Electron으로 비교하고 각각 누구에게 맞는지 정리했습니다.
 - [에이전트를 위한 marsdawn](https://marsdawn.southern-light.dev/ko/cli/agents/index.md): marsdawn을 호출해 Markdown을 PDF로 바꾸는 AI 에이전트와 스크립트를 위한 레퍼런스입니다. 명령, JSON 출력, 스키마, 종료 코드, 요구 사항을 다룹니다.

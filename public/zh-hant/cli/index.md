@@ -67,15 +67,15 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`：預覽主題的淺色版本，預設讀取 `$MARSDAWN_THEME`，否則用 `dawn`。
 - `--paper <a4|letter>`：紙張大小，預設 `a4`。
 - `--breaks`：段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句。
-- `--layout <document|handbook>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。
+- `--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。`handout` 會在每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。
 - `--toc-title <text>`：手冊目錄頁的標題，預設是 `Contents`。
-- 單獨一行的 `<!--BREAK-->` 會從新的一頁開始，兩種版面都適用。
+- 單獨一行的 `<!--BREAK-->` 會從新的一頁開始，所有版面都適用。
 - `--allow-remote-images`：輸出時載入網路圖片，預設關閉。
 - `--force`：如果輸出檔已存在就直接覆蓋。
 - `--json`：印出 JSON 結果，而不是文字。
 - 超過 16 MiB 的檔案不會輸出：`export` 以代碼 5 結束，不寫出任何檔案。
 
-`--breaks` 從 marsdawn 0.7.0 開始提供，`--layout` 和 `--toc-title` 從 0.7.1 開始，`handbook` 這個名稱從 0.7.2 開始。0.7.1 的舊名稱 `manual` 仍可使用。
+`--breaks` 從 marsdawn 0.7.0 開始提供，`--layout` 和 `--toc-title` 從 0.7.1 開始，`handbook` 這個名稱從 0.7.2 開始，`handout` 從 0.7.3 開始。0.7.1 的舊名稱 `manual` 仍可使用。
 
 ### marsdawn theme
 
@@ -133,7 +133,7 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png
 - [在 Mac 上預覽 Mermaid](https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/index.md): 在 Mac 上預覽 Mermaid 圖表：原始碼旁邊即時畫出來，快速查看和輸出 PDF 也看得到。圖表寫錯時，會顯示錯誤訊息和出錯的那一行。
 - [Markdown 快速查看](https://marsdawn.southern-light.dev/zh-hant/quicklook/index.md): MarsDawn 的快速查看讓你在 Finder 按空白鍵就看到排版後的 Markdown，Mermaid 圖表、KaTeX 數學式和程式碼上色都在。試用期結束後，快速查看照常可用。
 - [Markdown 轉 PDF](https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/index.md): 免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。
-- [MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hant/vs/index.md): 寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。
+- [MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hant/vs/index.md): 寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新於 2026 年 11 月 7 日）；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。
 - [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 4.99 解鎖一次。逐項比較，附來源。
 - [2026 Mac Markdown 檢視器推薦](https://marsdawn.southern-light.dev/zh-hant/best-markdown-viewer-mac/index.md): 比較 8 款 Mac Markdown 檢視器的價格、Mermaid、數學式、PDF、自動重新載入、快速查看與原生／Electron，並說明各自適合誰。
 - [給 AI agent 的 marsdawn 參考](https://marsdawn.southern-light.dev/zh-hant/cli/agents/index.md): 給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。

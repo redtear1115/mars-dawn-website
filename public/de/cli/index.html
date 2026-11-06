@@ -173,15 +173,15 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: die helle Palette des Vorschau-Themas. Standard ist <code>$MARSDAWN_THEME</code>, dann <code>dawn</code>.</li>
   <li><code>--paper &lt;a4|letter&gt;</code>: Papierformat. Standard ist <code>a4</code>.</li>
   <li><code>--breaks</code>: jeden Zeilenumbruch innerhalb eines Absatzes als Zeilenumbruch darstellen, wie HackMD. Ohne die Option fällt ein Zeilenumbruch zwischen zwei chinesischen oder japanischen Zeichen weg, sodass sich die Zeilen wie ein Satz lesen.</li>
-  <li><code>--layout &lt;document|handbook&gt;</code>: das Seitenlayout. Standard ist <code>document</code>. <code>handbook</code> druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen <code>title</code> hat.</li>
+  <li><code>--layout &lt;document|handbook|handout&gt;</code>: das Seitenlayout. Standard ist <code>document</code>. <code>handbook</code> druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen <code>title</code> hat. <code>handout</code> lässt rechts auf jeder Seite eine leere Notizspalte, setzt Titel und Datum oben auf Seite 1 und schließt jede Seite mit Dateiname, Datum und Seitenzahl ab. Eine sehr breite Tabelle kann in die Notizspalte hineinragen.</li>
   <li><code>--toc-title &lt;text&gt;</code>: die Überschrift des Inhaltsverzeichnisses im Handbuch. Standard ist <code>Contents</code>.</li>
-  <li><code>&lt;!--BREAK--&gt;</code> allein in einer Zeile beginnt eine neue Seite, in beiden Layouts.</li>
+  <li><code>&lt;!--BREAK--&gt;</code> allein in einer Zeile beginnt eine neue Seite, in allen Layouts.</li>
   <li><code>--allow-remote-images</code>: beim Rendern Bilder aus dem Web laden. Standardmäßig aus.</li>
   <li><code>--force</code>: die Ausgabedatei ersetzen, falls sie schon existiert.</li>
   <li><code>--json</code>: ein JSON-Ergebnis statt Text ausgeben.</li>
   <li>Eine Datei über 16 MiB wird nicht exportiert: <code>export</code> endet mit Code 5 und schreibt nichts.</li>
 </ul>
-<p><code>--breaks</code> kam mit marsdawn 0.7.0 hinzu, <code>--layout</code> und <code>--toc-title</code> mit 0.7.1, der Wert <code>handbook</code> mit 0.7.2. Der alte Wert aus 0.7.1, <code>manual</code>, funktioniert weiterhin.</p>
+<p><code>--breaks</code> kam mit marsdawn 0.7.0 hinzu, <code>--layout</code> und <code>--toc-title</code> mit 0.7.1, der Wert <code>handbook</code> mit 0.7.2, der Wert <code>handout</code> mit 0.7.3. Der alte Wert aus 0.7.1, <code>manual</code>, funktioniert weiterhin.</p>
 
 <h3>marsdawn theme</h3>
 <p>Prüft eine Themendatei (<code>theme.json</code>) und zeigt, wie sie aussieht, bevor du sie teilst. Die App MarsDawn wird dafür nicht gebraucht. Die Felder eines Themas findest du unter <a href="/de/themes/agents/">Mit deinem Agenten ein Thema erstellen</a>.</p>

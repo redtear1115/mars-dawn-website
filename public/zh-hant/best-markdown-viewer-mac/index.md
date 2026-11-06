@@ -31,7 +31,7 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 原生 Mac App，原始碼與即時預覽左右並排，內建 Mermaid 與 KaTeX。AI 代理存檔時，開著的視窗會把變更收成一步可撤銷的「從磁碟更新」。`marsdawn open notes.md:120` 可開到指定行，另有給代理用的技能與 MCP 伺服器。快速查看不論試用與否都能用。「拷貝給 AI」與「拷貝引用」能把文字交給代理。除非你選擇，資料不會離開你的 Mac。
 
 - 適合：審閱 AI 代理所寫 Markdown 的人。
-- 缺點：輸出的 PDF 沒有頁碼。
+- 缺點：PDF 要用手冊或講義版面才有頁碼，預設的文件版面沒有。
 - 價格：免費下載，試用 14 天，之後一次 USD 4.99。不需帳號。僅在 Mac App Store 提供。
 
 ## Obsidian
@@ -73,7 +73,7 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 | MacDown 3000 | 免費 | 有 | MathJax | 有 | 有 | 未記載 | 有 | 原生 |
 | Marked 3 | 每月 USD 2.99 起 | 有 | MathJax、KaTeX | 有，含頁碼 | 有 | 未記載 | Marked QL，USD 9.99 | 原生 |
 | MarkEdit | 免費 | 擴充功能 | KaTeX（擴充功能） | Pandoc | 未記載 | 未記載 | 有 | 原生（web view） |
-| MarsDawn | 一次 USD 4.99 | 有 | KaTeX | 有，無頁碼 | 有，可撤銷 | 有 | 有 | 原生 |
+| MarsDawn | 一次 USD 4.99 | 有 | KaTeX | 有，手冊與講義版面含頁碼 | 有，可撤銷 | 有 | 有 | 原生 |
 | Obsidian | 免費 | 有 | MathJax | 有 | 有 | 未記載 | 未記載 | Electron |
 | QLMarkdown | 免費 | 需開啟 | MathJax（需開啟） | 未記載 | 不適用 | 不適用 | 本身即是 | 原生 |
 | Typora | 一次 USD 14.99 | 有 | MathJax | 有，含頁碼 | 未記載 | 未記載 | 未記載 | 原生 |
@@ -81,7 +81,6 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 
 ## MarsDawn 不適合誰
 
-- PDF 一定要有頁碼。Typora 與 Marked 3 能加，MarsDawn 不能。
 - 你在經營互相連結的個人筆記庫。Obsidian 就是為此打造的。
 - 你從不離開 VS Code。內建預覽免費，VS Code 也正在 Agents 視窗加入實驗性的 Markdown 檢視。
 - 你只想在 Finder 預覽。QLMarkdown 免費。
@@ -94,7 +93,7 @@ MacDown 3000、Obsidian 與 VS Code（1.121 起）內建。QLMarkdown 可選擇�
 
 ### 哪些能輸出含頁碼的 PDF？
 
-Typora 與 Marked 3。MarsDawn 輸出的 PDF 沒有頁碼。
+Typora、Marked 3 與 MarsDawn。在 MarsDawn 選手冊或講義版面；預設的文件版面沒有頁碼。
 
 ### 哪些能從命令列開到指定行？
 
@@ -121,7 +120,7 @@ MarsDawn（`marsdawn open notes.md:120`）與 VS Code（`code -g file:line`）�
 - [在 Mac 上預覽 Mermaid](https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/index.md): 在 Mac 上預覽 Mermaid 圖表：原始碼旁邊即時畫出來，快速查看和輸出 PDF 也看得到。圖表寫錯時，會顯示錯誤訊息和出錯的那一行。
 - [Markdown 快速查看](https://marsdawn.southern-light.dev/zh-hant/quicklook/index.md): MarsDawn 的快速查看讓你在 Finder 按空白鍵就看到排版後的 Markdown，Mermaid 圖表、KaTeX 數學式和程式碼上色都在。試用期結束後，快速查看照常可用。
 - [Markdown 轉 PDF](https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/index.md): 免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。
-- [MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hant/vs/index.md): 寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。
+- [MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hant/vs/index.md): 寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新於 2026 年 11 月 7 日）；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。
 - [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 4.99 解鎖一次。逐項比較，附來源。
 - [命令列工具](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。
 - [給 AI agent 的 marsdawn 參考](https://marsdawn.southern-light.dev/zh-hant/cli/agents/index.md): 給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。
