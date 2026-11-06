@@ -31,6 +31,7 @@ sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untrac
 import article_dates  # noqa: E402
 import locales  # noqa: E402
 import price  # noqa: E402
+import price_card  # noqa: E402
 import theme_agents  # noqa: E402
 from promo130 import data as promo_data  # noqa: E402
 from best228 import data as best_data  # noqa: E402
@@ -7149,6 +7150,16 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = add_toc(locale, slug, main_html)
     elif slug != "index":
         main_html = add_h2_ids(locale, slug, page, main_html)
+    # HTML-only component: heading processing has finished; Markdown twins use the copy above.
+    if slug == "index":
+        anchor = '<section class="faq">'
+        assert main_html.count(anchor) == 1, f"{locale}: home FAQ insertion point changed"
+        main_html = main_html.replace(anchor, price_card.html(locale, campaign_url("web-home")) + "\n" + anchor, 1)
+    elif slug == "pay-once":
+        anchor = intro_html.strip()
+        assert main_html.startswith(anchor + "\n"), f"{locale}: pay-once intro insertion point changed"
+        assert anchor.startswith('<section') and '</section>' in anchor, locale
+        main_html = anchor + "\n" + price_card.html(locale, campaign_url("web-pay-once")) + main_html[len(anchor):]
     main_html = label_scroll_boxes(slug, main_html)
     main_html = label_code_boxes(main_html)
     main_html = soft_hyphenate(locale, main_html)
