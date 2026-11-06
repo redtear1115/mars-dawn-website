@@ -257,9 +257,7 @@ FEATURES = {'title': 'Funktionen: ein Markdown-Editor für den Mac, auf einer Se
                'lead': '',
                'lead_links': [],
                'items': [{'h': 'Fenster und Tabs',
-                          'p': 'Jedes Dokument öffnet in einem eigenen Fenster. Wähle Fenster ▸ '
-                               'Alle Fenster zusammenführen, um geöffnete Fenster als Tabs eines '
-                               'Fensters zu sammeln. Das Sichern läuft automatisch beim Tippen.',
+                          'p': 'Dokumente öffnen standardmäßig als Tabs des vordersten Fensters. Wenn du stattdessen die Tab-Einstellung deines Mac verwenden möchtest, wähle unter Einstellungen ▸ Erscheinungsbild „Systemeinstellung folgen“. Das Sichern läuft automatisch beim Tippen.',
                           'links': ['native']},
                          {'h': 'Übersicht im Finder',
                           'p': 'Wähle im Finder eine Markdown-Datei aus und drücke die Leertaste, um sie gerendert zu lesen, samt Diagrammen. JSON- und YAML-Dateien zeigt sie als Baum. Die Übersicht verwendet das Theme, das du in MarsDawn gewählt hast, und folgt dessen Einstellung für das Erscheinungsbild.',
@@ -937,7 +935,7 @@ marsdawn open notes.md --folder .</code></pre>
         'native': {"alt": 'MarsDawn in geteilter Ansicht: links der Markdown-Quelltext, rechts die gerenderte Seite.',
                    "callouts": ['Ein natives Mac-Fenster.', 'Der Texteditor des Mac, mit Markdown-Hervorhebung.', '⌘1 Quelltext, ⌘2 geteilt, ⌘3 Vorschau.', 'Die Seite aktualisiert sich beim Tippen.']},
         'limits': {"alt": 'MarsDawn im dunklen Modus, links der Markdown-Quelltext, rechts die gerenderte Seite.',
-                   "callouts": ['Ein Dokument pro Fenster, auf diesem Mac.', 'Hier schreibst du Markdown.', 'Die Symbolleiste enthält Themen und Layouts, und es gibt kein Plug-in-Menü.', 'Die Seite ist zum Lesen da, nicht zum Bearbeiten.']},
+                   "callouts": ['Jedes Dokument ist eine Datei auf diesem Mac.', 'Hier schreibst du Markdown.', 'Die Symbolleiste enthält Themen und Layouts, und es gibt kein Plug-in-Menü.', 'Die Seite ist zum Lesen da, nicht zum Bearbeiten.']},
     }
     home = {
         "cta_cli": 'Kostenlose CLI installieren',

@@ -251,9 +251,7 @@ FEATURES = {'title': 'Funciones: un editor de Markdown para Mac, en una sola pá
                'lead': '',
                'lead_links': [],
                'items': [{'h': 'Ventanas y pestañas',
-                          'p': 'Cada documento se abre en su propia ventana. Elige Ventana ▸ Unir '
-                               'todas las ventanas para reunir las ventanas abiertas como pestañas '
-                               'de una sola. El guardado automático funciona mientras escribes.',
+                          'p': 'De forma predeterminada, los documentos se abren como pestañas de la ventana del frente. Para usar el ajuste de pestañas de tu Mac, elige Seguir ajuste del sistema en Ajustes ▸ Aspecto. El guardado automático funciona mientras escribes.',
                           'links': ['native']},
                          {'h': 'Vista Rápida en el Finder',
                           'p': 'Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora para leerlo renderizado, con los diagramas incluidos. Los archivos JSON y YAML se muestran en árbol. Vista Rápida usa el tema que elegiste en MarsDawn y sigue su ajuste de aspecto.',
@@ -931,7 +929,7 @@ marsdawn open notes.md --folder .</code></pre>
         'native': {"alt": 'MarsDawn en vista dividida: el código Markdown a la izquierda y la página renderizada a la derecha.',
                    "callouts": ['Una ventana nativa de Mac.', 'El editor de texto de la Mac, con resaltado de Markdown.', '⌘1 código, ⌘2 dividido, ⌘3 vista previa.', 'La página se actualiza mientras escribes.']},
         'limits': {"alt": 'MarsDawn en modo oscuro, con el código Markdown a la izquierda y la página renderizada a la derecha.',
-                   "callouts": ['Un documento por ventana, en este Mac.', 'Aquí escribes Markdown.', 'La barra de herramientas tiene temas y disposiciones, y no hay menú de plugins.', 'La página es para leer, no para editar.']},
+                   "callouts": ['Cada documento es un archivo en este Mac.', 'Aquí escribes Markdown.', 'La barra de herramientas tiene temas y disposiciones, y no hay menú de plugins.', 'La página es para leer, no para editar.']},
     }
     home = {
         "cta_cli": 'Instala la CLI gratuita',

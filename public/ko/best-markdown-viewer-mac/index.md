@@ -31,7 +31,7 @@ Marked 3은 다른 앱에서 쓴 Markdown을 보기 위한 미리보기 앱입�
 소스와 실시간 미리보기를 나란히 보여 주는 네이티브 Mac 앱으로, Mermaid와 KaTeX가 내장되어 있습니다. 에이전트가 파일을 저장하면 열린 윈도우가 그 변경을 한 번에 실행 취소할 수 있는 '디스크에서 업데이트'로 받아들입니다. `marsdawn open notes.md:120`으로 특정 줄을 열 수 있고, 에이전트용 스킬과 MCP 서버도 있습니다. 훑어보기는 체험 기간과 관계없이 작동합니다. 'AI용으로 복사'와 '참조 복사'로 텍스트를 에이전트에 넘길 수 있습니다. 직접 선택하지 않는 한 아무것도 Mac 밖으로 나가지 않습니다.
 
 - 맞는 사람: AI 에이전트가 쓴 Markdown을 검토하는 사람.
-- 단점: 내보낸 PDF에 페이지 번호가 없습니다.
+- 단점: PDF에 페이지 번호를 넣으려면 설명서나 프린트물 레이아웃을 써야 합니다. 기본값인 문서 레이아웃에는 없습니다.
 - 가격: 무료 다운로드, 14일 체험 후 USD 4.99 한 번 결제. 계정 불필요. Mac App Store 전용.
 
 ## Obsidian
@@ -73,7 +73,7 @@ Marked 3은 다른 앱에서 쓴 Markdown을 보기 위한 미리보기 앱입�
 | MacDown 3000 | 무료 | 지원 | MathJax | 지원 | 지원 | 문서화 안 됨 | 지원 | 네이티브 |
 | Marked 3 | 월 USD 2.99부터 | 지원 | MathJax, KaTeX | 지원, 페이지 번호 | 지원 | 문서화 안 됨 | Marked QL, USD 9.99 | 네이티브 |
 | MarkEdit | 무료 | 확장 프로그램 | KaTeX(확장 프로그램) | Pandoc | 문서화 안 됨 | 문서화 안 됨 | 지원 | 네이티브(웹 뷰) |
-| MarsDawn | USD 4.99 한 번 | 지원 | KaTeX | 지원, 페이지 번호 없음 | 지원, 실행 취소 가능 | 지원 | 지원 | 네이티브 |
+| MarsDawn | USD 4.99 한 번 | 지원 | KaTeX | 지원, 설명서와 프린트물에 페이지 번호 | 지원, 실행 취소 가능 | 지원 | 지원 | 네이티브 |
 | Obsidian | 무료 | 지원 | MathJax | 지원 | 지원 | 문서화 안 됨 | 문서화 안 됨 | Electron |
 | QLMarkdown | 무료 | 선택 사항 | MathJax(선택 사항) | 문서화 안 됨 | 해당 없음 | 해당 없음 | 그 자체 | 네이티브 |
 | Typora | USD 14.99 한 번 | 지원 | MathJax | 지원, 페이지 번호 | 문서화 안 됨 | 문서화 안 됨 | 문서화 안 됨 | 네이티브 |
@@ -81,7 +81,6 @@ Marked 3은 다른 앱에서 쓴 Markdown을 보기 위한 미리보기 앱입�
 
 ## MarsDawn이 맞지 않는 사람
 
-- PDF에 페이지 번호가 꼭 필요한 사람. Typora와 Marked 3은 넣을 수 있지만 MarsDawn은 넣을 수 없습니다.
 - 서로 링크된 개인 메모 지식 베이스를 가꾸는 사람. Obsidian은 그 용도로 만들어졌습니다.
 - VS Code를 떠나지 않는 사람. 기본 미리보기는 무료이고, VS Code는 Agents 윈도우에 실험적인 Markdown 보기를 추가하고 있습니다.
 - Finder에서 미리보기만 하면 되는 사람. QLMarkdown은 무료입니다.
@@ -94,7 +93,7 @@ MacDown 3000, Obsidian, VS Code(1.121 이상)에 내장되어 있습니다. QLMa
 
 ### 페이지 번호가 붙은 PDF를 내보낼 수 있는 앱은?
 
-Typora와 Marked 3입니다. MarsDawn의 PDF에는 페이지 번호가 없습니다.
+Typora, Marked 3, MarsDawn입니다. MarsDawn에서는 설명서나 프린트물 레이아웃을 선택하면 됩니다. 기본값인 문서 레이아웃에는 페이지 번호가 없습니다.
 
 ### 명령줄에서 특정 줄로 파일을 열 수 있는 앱은?
 
@@ -121,7 +120,7 @@ Obsidian과 VS Code를 제외한 모두입니다. MarkEdit은 네이티브 앱�
 - [Mac에서 Mermaid 미리보기](https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/index.md): Mac에서 Mermaid 다이어그램을 Markdown 옆에 그려서 보세요: 실시간 미리보기, 훑어보기, PDF 내보내기. 다이어그램에 오류가 있으면 오류와 해당 줄이 표시됩니다.
 - [Markdown 훑어보기](https://marsdawn.southern-light.dev/ko/quicklook/index.md): MarsDawn의 훑어보기로 Finder에서 스페이스 바를 누르면 Markdown이 렌더링되어 보입니다. Mermaid, KaTeX, 강조된 코드도 표시됩니다. 체험이 끝난 뒤에도 계속 작동합니다.
 - [Markdown을 PDF로](https://marsdawn.southern-light.dev/ko/markdown-to-pdf/index.md): 무료 marsdawn 명령줄 도구로 Mac에서 Markdown을 PDF로 변환하세요. Homebrew로 설치하고 명령 하나만 실행하면 됩니다. 표, 수식, Mermaid, 코드까지 지원합니다.
-- [MarsDawn 비교: VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/ko/vs/index.md): Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방법을 고르는 분을 위한 페이지입니다. 아래 표의 각 칸은 각 회사의 공식 페이지나 저희가 직접 확인한 내용이며, 모두 2026년 10월 16일 기준입니다. 제품은 바뀌므로 내용이 오래될 수 있습니다. 틀린 내용을 발견하면 지원 페이지의 주소로 알려 주세요.
+- [MarsDawn 비교: VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/ko/vs/index.md): Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방법을 고르는 분을 위한 페이지입니다. 아래 표의 각 칸은 각 회사의 공식 페이지나 저희가 직접 확인한 내용이며, 모두 2026년 10월 16일 기준입니다(MarsDawn의 PDF 칸은 2026년 11월 7일에 업데이트). 제품은 바뀌므로 내용이 오래될 수 있습니다. 틀린 내용을 발견하면 지원 페이지의 주소로 알려 주세요.
 - [MacMD Viewer와 MarsDawn 비교](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 읽기 전용 Markdown 뷰어로 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 14일 무료 체험 후 USD 4.99를 한 번만 내면 됩니다. 항목별 비교, 출처 포함.
 - [명령줄](https://marsdawn.southern-light.dev/ko/cli/index.md): Mac용 무료 marsdawn 명령줄 도구. 셸, 스크립트, LLM 에이전트에서 Markdown을 PDF로 내보내고 JSON으로 결과를 받으세요. Homebrew로 설치합니다.
 - [에이전트를 위한 marsdawn](https://marsdawn.southern-light.dev/ko/cli/agents/index.md): marsdawn을 호출해 Markdown을 PDF로 바꾸는 AI 에이전트와 스크립트를 위한 레퍼런스입니다. 명령, JSON 출력, 스키마, 종료 코드, 요구 사항을 다룹니다.

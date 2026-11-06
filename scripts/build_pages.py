@@ -3939,13 +3939,17 @@ Options: `-o out.pdf` (default: beside the input), `--theme {"|".join(THEME_IDS)
 a newline is a space, except between two Chinese or Japanese characters, where it is
 dropped.
 
-`--layout document|handbook` picks the page layout (default `document`; `manual`, the 0.7.1 name,
+`--layout document|handbook|handout` picks the page layout (default `document`; `manual`, the 0.7.1 name,
 still works but is deprecated). `handbook` is the Handbook layout: wider margins with a 25 mm binding side, every
 top-level heading on a new page, a table of contents of the level 1 and 2 headings, "n / N" page
 numbers and PDF bookmarks. A cover comes first when the front matter has a `title`; it also shows
 `subtitle`, `version`, `date`, `author` and `logo` (an image path) when present.
 `--toc-title "<text>"` sets the contents heading (default `Contents`) and only applies to
-`handbook`. A line holding only `<!--BREAK-->` starts a new page, in either layout. The JSON result
+`handbook`. `handout` leaves a blank notes column on the right of every page (a table too
+wide for the body may run into it), puts the front matter's `title` (or the file name) and `date`
+at the top of page 1, and ends every page with
+"file name · date · n / N"; without a front-matter `date` it is the day of the export.
+A line holding only `<!--BREAK-->` starts a new page, in every layout. The JSON result
 doesn't say which layout was used.
 
 On success it exits 0 and prints one JSON line:
@@ -4104,7 +4108,7 @@ FIGURES = {
             "zh-hant": "MarsDawn 的深色模式，左邊是 Markdown 原始碼，右邊是排版後的頁面。",
         },
         "callouts": [
-            (16.53, 7.0, "l", {"en": "One document per window, on this Mac.", "zh-hant": "一個視窗一份文件，就在這台 Mac 上。"}),
+            (16.53, 7.0, "l", {"en": "Each document is a file on this Mac.", "zh-hant": "每份文件都是這台 Mac 上的檔案。"}),
             (10.07, 14.0, "l", {"en": "You write Markdown here.", "zh-hant": "你在這裡寫 Markdown。"}),
             (88.89, 5.56, "r", {"en": "The toolbar holds themes and layouts, and there is no plugins menu.", "zh-hant": "工具列只有主題和版面，沒有外掛選單。"}),
             (70.14, 13.78, "r", {"en": "The page is for reading, not editing.", "zh-hant": "這一側用來閱讀，不能直接編輯。"}),
@@ -4736,9 +4740,7 @@ FEATURES_COPY = {
                    'lead': '',
                    'lead_links': [],
                    'items': [{'h': 'Windows and tabs',
-                              'p': 'Each document opens in its own window. Choose Window ▸ Merge All '
-                                   'Windows to gather open windows as tabs of one. Autosave runs as '
-                                   'you type.',
+                              'p': "By default, documents open as tabs of the front window. To use your Mac's tab setting instead, choose Follow System Setting in Settings ▸ Appearance. Autosave runs as you type.",
                               'links': ['native']},
                              {'h': 'Quick Look in Finder',
                               'p': 'Select a Markdown file in Finder and press Space to read it rendered, diagrams included. JSON and YAML files show as a tree. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.',
@@ -4897,7 +4899,7 @@ FEATURES_COPY = {
                    'lead': '',
                    'lead_links': [],
                    'items': [{'h': '視窗和分頁',
-                              'p': '每份文件預設在自己的視窗打開。用「視窗 ▸ 合併所有視窗」，可以把開著的視窗收成同一個視窗裡的分頁。打字時會自動儲存。',
+                              'p': '打開的文件預設會成為最前面視窗的分頁。想依照 Mac 的分頁設定，請到「設定 ▸ 外觀」選「依照系統設定」。打字時會自動儲存。',
                               'links': ['native']},
                              {'h': '在 Finder 用快速查看',
                               'p': '在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。JSON 和 YAML 檔則會顯示成樹狀檢視。快速查看會用你在 MarsDawn '
