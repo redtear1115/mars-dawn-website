@@ -523,10 +523,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
  'vs': {'en': {'title': 'MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice',
                'h1': 'MarsDawn and other ways to read Markdown on a Mac',
                'intro': 'For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor\'s own pages or our own check, all on 16 October 2026, except MarsDawn\'s PDF cell, updated on 7 November 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on <a href="/support/">Support</a>.',
-               'note': 'Every cell was checked on 16 October 2026 against the source in brackets (V-ids are listed below; [check] is our own '
-                       'export with marsdawn 0.6.4). Vendor quotes stay as written. "Not stated by the vendor" means the pages we read were '
-                       "silent, not that the feature is missing. No cell ranks the products. MarsDawn's own cells were updated on 29 October "
-                       '2026 for the iPhone and iPad app.',
+               'note': 'Every cell was checked on 16 October 2026 against the source in brackets (V-ids are listed below). Vendor quotes stay as written. "Not stated by the vendor" means the pages we read were silent, not that the feature is missing. No cell ranks the products. MarsDawn\'s own cells were updated on 29 October 2026 for the iPhone and iPad app, and its PDF cell on 7 November 2026 for the Handbook and Handout layouts.',
                'lacks': "What MarsDawn lacks. It needs macOS 26 or later. On iPhone and iPad it only reads: it can't edit or export PDFs there. There's no shared editing, no account and no cloud service of its own. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Page numbers come only with the Handbook and Handout PDF layouts. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.",
                'dont_h': "When you don't need MarsDawn",
                'dont': ['You live in VS Code and a preview pane is enough: it renders Mermaid and KaTeX, shows Markdown diff previews and jumps to a '
@@ -593,8 +590,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
         'zh-hant': {'title': 'MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice',
                     'h1': '在 Mac 上讀 Markdown：MarsDawn 和其他做法',
                     'intro': '寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新於 2026 年 11 月 7 日）；產品會變，格子也可能過時。發現錯誤，請寫信到<a href="/zh-hant/support/">支援</a>頁上的地址。',
-                    'note': '每一格都在 2026 年 10 月 16 日對照括號裡的來源查證（V 編號列在下方；[實測] 是我們用 marsdawn 0.6.4 '
-                            '實際輸出的結果）。廠商原文照錄。「廠商未說明」表示我們讀到的頁面沒有提到，不代表沒有這個功能。表格不替產品排名。MarsDawn 自己那一欄在 2026 年 10 月 29 日依 iPhone 和 iPad 版更新。',
+                    'note': '每一格都在 2026 年 10 月 16 日對照括號裡的來源查證（V 編號列在下方）。廠商原文照錄。「廠商未說明」表示我們讀到的頁面沒有提到，不代表沒有這個功能。表格不替產品排名。MarsDawn 自己那一欄在 2026 年 10 月 29 日依 iPhone 和 iPad 版更新，PDF 格子在 2026 年 11 月 7 日依手冊和講義版面更新。',
                     'lacks': 'MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。不能共同編輯，沒有帳號，也沒有自己的雲端服務。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。只有手冊與講義版面的 PDF 有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。',
                     'dont_h': '什麼時候用不到 MarsDawn',
                     'dont': ['你整天待在 VS Code，預覽窗格就夠：它能畫 Mermaid、排 KaTeX，有 Markdown diff 預覽，也能用 code -g 跳到某一行。',
@@ -652,8 +648,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
         'zh-hans': {'title': 'MarsDawn 对比：VS Code 预览、Obsidian、QLMarkdown、LynxOffice',
                     'h1': '在 Mac 上读 Markdown：MarsDawn 和其他做法',
                     'intro': '写给正在挑选工具、要在 Mac 上读 Markdown（常常是代理写的）的人。下表每一格都出自厂商自己的页面或我们实际的检查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新于 2026 年 11 月 7 日）；产品会变，格子也可能过时。发现错误，请写信到<a href="/zh-hans/support/">支持</a>页上的地址。',
-                    'note': '每一格都在 2026 年 10 月 16 日对照括号里的来源核实（V 编号列在下方；[实测] 是我们用 marsdawn 0.6.4 '
-                            '实际导出的结果）。厂商原文照录。“厂商未说明”表示我们读到的页面没有提到，不代表没有这个功能。表格不为产品排名。MarsDawn 自己那一栏在 2026 年 10 月 29 日根据 iPhone 和 iPad 版更新。',
+                    'note': '每一格都在 2026 年 10 月 16 日对照括号里的来源核实（V 编号列在下方）。厂商原文照录。“厂商未说明”表示我们读到的页面没有提到，不代表没有这个功能。表格不为产品排名。MarsDawn 自己那一栏在 2026 年 10 月 29 日根据 iPhone 和 iPad 版更新，PDF 格子在 2026 年 11 月 7 日根据手册和讲义布局更新。',
                     'lacks': 'MarsDawn 没有的东西。需要 macOS 26 或更新版本。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。不能共同编辑，没有账户，也没有自己的云端服务。预览本身不能改，要改旁边的 Markdown 源文本。不能导出 Word，也没有插件。只有手册与讲义布局的 PDF 有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。',
                     'dont_h': '什么时候用不到 MarsDawn',
                     'dont': ['你整天待在 VS Code，预览窗格就够：它能画 Mermaid、排 KaTeX，有 Markdown diff 预览，也能用 code -g 跳到某一行。',
@@ -711,9 +706,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
         'ja': {'title': 'MarsDawn と比較：VS Code プレビュー、Obsidian、QLMarkdown、LynxOffice',
                'h1': 'Mac で Markdown を読む：MarsDawn とほかの方法',
                'intro': 'Mac で Markdown を、多くはエージェントが書いたものを読んで確かめる方法を選ぶ人へ。表の各セルは、各社の公式ページか私たちの確認によるもので、いずれも 2026 年 10 月 16 日時点です（MarsDawn の PDF のセルは 2026 年 11 月 7 日に更新）。製品は変わるので、古くなることがあります。誤りに気づいたら、<a href="/ja/support/">サポート</a>のアドレスまでお知らせください。',
-               'note': '各セルは 2026 年 10 月 16 日に、角かっこ内の出典で確認しました（V の番号は下に一覧、[実測] は marsdawn 0.6.4 '
-                       'で書き出した私たちの確認）。各社の原文はそのまま引用しています。「記載なし」は、読んだページに書かれていなかったという意味で、機能がないという意味ではありません。製品の順位付けはしていません。MarsDawn 自身の列は、iPhone '
-                       'と iPad 版に合わせて 2026 年 10 月 29 日に更新しました。',
+               'note': '各セルは 2026 年 10 月 16 日に、角かっこ内の出典で確認しました（V の番号は下に一覧）。各社の原文はそのまま引用しています。「記載なし」は、読んだページに書かれていなかったという意味で、機能がないという意味ではありません。製品の順位付けはしていません。MarsDawn 自身の列は、iPhone と iPad 版に合わせて 2026 年 10 月 29 日に更新し、PDF のセルはハンドブックと配布資料のレイアウトに合わせて 2026 年 11 月 7 日に更新しました。',
                'lacks': 'MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集もアカウントも独自のクラウドサービスもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号が入るのは、ハンドブックと配布資料のレイアウトだけです。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。',
                'dont_h': 'MarsDawn がいらないとき',
                'dont': ['普段から VS Code にいて、プレビューのペインで足りる。Mermaid と KaTeX を描画し、Markdown の差分プレビューがあり、code -g で行へ移動できます。',
@@ -771,10 +764,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
         'de': {'title': 'MarsDawn im Vergleich: VS-Code-Vorschau, Obsidian, QLMarkdown, LynxOffice',
                'h1': 'Markdown auf dem Mac lesen: MarsDawn und andere Wege',
                'intro': 'Für alle, die entscheiden, wie sie Markdown auf dem Mac lesen und prüfen, oft das, was ein Agent geschrieben hat. Jede Zelle unten stammt von den Seiten des Herstellers oder aus unserer eigenen Prüfung, alles am 16. Oktober 2026, außer der PDF-Zelle von MarsDawn, aktualisiert am 7. November 2026; Produkte ändern sich, also kann eine Zelle veralten. Wenn du einen Fehler findest, schreib an die Adresse auf <a href="/de/support/">Support</a>.',
-               'note': 'Jede Zelle wurde am 16. Oktober 2026 an der Quelle in Klammern geprüft (die V-Nummern stehen unten; [Prüfung] ist '
-                       'unser eigener Export mit marsdawn 0.6.4). Zitate der Hersteller bleiben im Original. „Vom Hersteller nicht angegeben“ '
-                       'heißt, dass die gelesenen Seiten dazu schweigen, nicht dass die Funktion fehlt. Keine Zelle bewertet die Produkte. Die'
-                       ' Spalte von MarsDawn selbst wurde am 29. Oktober 2026 für die iPhone- und iPad-App aktualisiert.',
+               'note': 'Jede Zelle wurde am 16. Oktober 2026 an der Quelle in Klammern geprüft (die V-Nummern stehen unten). Zitate der Hersteller bleiben im Original. „Vom Hersteller nicht angegeben“ heißt, dass die gelesenen Seiten dazu schweigen, nicht dass die Funktion fehlt. Keine Zelle bewertet die Produkte. Die Spalte von MarsDawn selbst wurde am 29. Oktober 2026 für die iPhone- und iPad-App aktualisiert, die PDF-Zelle am 7. November 2026 für die Layouts Handbuch und Handout.',
                'lacks': 'Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Auf iPhone und iPad liest es nur: Bearbeiten und PDF-Export gibt es dort nicht. Kein gemeinsames Bearbeiten, kein Konto und keine eigene Cloud. Die Vorschau lässt sich nicht bearbeiten; du bearbeitest den Markdown-Quelltext daneben. Kein Word-Export und keine Plug-ins. Seitenzahlen gibt es nur in den PDF-Layouts Handbuch und Handout. Es gibt keine Diff-Ansicht: Sichert ein Agent eine Änderung, aktualisiert sich das offene Fenster von der Festplatte in einem Schritt, den du widerrufen kannst, hebt aber nicht hervor, was sich geändert hat. Nach dem 14-tägigen Test öffnen sich Dokumente mit verdecktem Inhalt, bis du freischaltest.',
                'dont_h': 'Wann du MarsDawn nicht brauchst',
                'dont': ['Du arbeitest ohnehin in VS Code, und eine Vorschau reicht: Sie rendert Mermaid und KaTeX, hat eine Markdown-Diff-Vorschau '
@@ -841,11 +831,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
         'fr': {'title': 'MarsDawn comparé\xa0: aperçu VS Code, Obsidian, QLMarkdown, LynxOffice',
                'h1': 'Lire du Markdown sur Mac\xa0: MarsDawn et les autres options',
                'intro': 'Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026\xa0; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur <a href="/fr/support/">Assistance</a>.',
-               'note': 'Chaque cellule a été vérifiée le 16 octobre 2026 auprès de la source entre crochets (les numéros V sont listés plus '
-                       'bas\xa0; [vérif.] est notre propre export avec marsdawn 0.6.4). Les citations des fournisseurs restent telles quelles. '
-                       '«\xa0Non précisé par le fournisseur\xa0» signifie que les pages lues n’en disent rien, pas que la fonction manque. Aucune '
-                       'cellule ne classe les produits. La colonne de MarsDawn elle-même a été mise à jour le 29 octobre 2026 pour l’app '
-                       'iPhone et iPad.',
+               'note': 'Chaque cellule a été vérifiée le 16 octobre 2026 auprès de la source entre crochets (les numéros V sont listés plus bas). Les citations des fournisseurs restent telles quelles. «\xa0Non précisé par le fournisseur\xa0» signifie que les pages lues n’en disent rien, pas que la fonction manque. Aucune cellule ne classe les produits. La colonne de MarsDawn elle-même a été mise à jour le 29 octobre 2026 pour l’app iPhone et iPad, et sa cellule PDF le 7 novembre 2026 pour les mises en page Guide et Polycopié.',
                'lacks': 'Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Sur iPhone et iPad, il ne fait que lire\xa0: il ne permet ni de modifier ni d’exporter en PDF. Pas d’édition partagée, pas de compte, pas de cloud propre. L’aperçu ne se modifie pas\xa0; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Seules les mises en page Guide et Polycopié ajoutent des numéros de page aux PDF. Pas de vue diff\xa0: quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les documents s’ouvrent avec leur contenu masqué jusqu’au déverrouillage.',
                'dont_h': 'Quand vous n’avez pas besoin de MarsDawn',
                'dont': ['Vous vivez dans VS Code et un volet d’aperçu suffit\xa0: il affiche Mermaid et KaTeX, propose un aperçu diff Markdown et va '
@@ -913,10 +899,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
         'es': {'title': 'MarsDawn comparado: vista previa de VS Code, Obsidian, QLMarkdown, LynxOffice',
                'h1': 'Leer Markdown en un Mac: MarsDawn y otras opciones',
                'intro': 'Para quien elige cómo leer y revisar Markdown en un Mac, a menudo lo que escribió un agente. Cada celda viene de las páginas del propio fabricante o de nuestra propia comprobación, todas del 16 de octubre de 2026, salvo la celda de PDF de MarsDawn, actualizada el 7 de noviembre de 2026; los productos cambian, así que una celda puede quedar desfasada. Si ves un error, escribe a la dirección que aparece en <a href="/es/support/">Soporte</a>.',
-               'note': 'Cada celda se comprobó el 16 de octubre de 2026 con la fuente entre corchetes (los números V están abajo; [prueba] es '
-                       'nuestra propia exportación con marsdawn 0.6.4). Las citas de los fabricantes se mantienen tal cual. «El fabricante no '
-                       'lo indica» significa que las páginas que leímos no dicen nada, no que la función falte. Ninguna celda clasifica los '
-                       'productos. La columna de MarsDawn se actualizó el 29 de octubre de 2026 por la app para iPhone y iPad.',
+               'note': 'Cada celda se comprobó el 16 de octubre de 2026 con la fuente entre corchetes (los números V están abajo). Las citas de los fabricantes se mantienen tal cual. «El fabricante no lo indica» significa que las páginas que leímos no dicen nada, no que la función falte. Ninguna celda clasifica los productos. La columna de MarsDawn se actualizó el 29 de octubre de 2026 por la app para iPhone y iPad, y su celda de PDF el 7 de noviembre de 2026 por las disposiciones Guía y Folleto.',
                'lacks': 'Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. En iPhone y iPad solo lee: ahí no edita ni exporta PDF. No hay edición compartida, ni cuentas, ni nube propia. La vista previa no se puede editar; editas el código fuente Markdown al lado. No exporta a Word ni tiene plugins. Solo las disposiciones Guía y Folleto agregan números de página a los PDF. No hay vista de diferencias: cuando un agente guarda un cambio, la ventana abierta se actualiza desde el disco en un paso que puedes deshacer, pero no resalta qué cambió. Tras la prueba de 14 días, los documentos se abren con el contenido tapado hasta que desbloquees la app.',
                'dont_h': 'Cuándo no necesitas MarsDawn',
                'dont': ['Vives en VS Code y te basta un panel de vista previa: muestra Mermaid y KaTeX, tiene vista previa de diff de Markdown y '
@@ -984,9 +967,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
         'ko': {'title': 'MarsDawn 비교: VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice',
                'h1': 'Mac에서 Markdown 읽기: MarsDawn과 다른 방법',
                'intro': 'Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방법을 고르는 분을 위한 페이지입니다. 아래 표의 각 칸은 각 회사의 공식 페이지나 저희가 직접 확인한 내용이며, 모두 2026년 10월 16일 기준입니다(MarsDawn의 PDF 칸은 2026년 11월 7일에 업데이트). 제품은 바뀌므로 내용이 오래될 수 있습니다. 틀린 내용을 발견하면 <a href="/ko/support/">지원</a> 페이지의 주소로 알려 주세요.',
-               'note': '모든 칸은 2026년 10월 16일에 괄호 안의 출처로 확인했습니다(V 번호는 아래 목록, [직접 확인]은 marsdawn 0.6.4로 직접 내보낸 결과). 각 회사의 원문은 그대로 인용합니다. ‘공식 설명 '
-                       '없음’은 읽은 페이지에 언급이 없었다는 뜻이며, 기능이 없다는 뜻은 아닙니다. 표는 제품의 순위를 매기지 않습니다. MarsDawn 자체 열은 iPhone·iPad 앱에 맞춰 2026년 10월 29일에 '
-                       '업데이트했습니다.',
+               'note': '모든 칸은 2026년 10월 16일에 괄호 안의 출처로 확인했습니다(V 번호는 아래 목록). 각 회사의 원문은 그대로 인용합니다. ‘공식 설명 없음’은 읽은 페이지에 언급이 없었다는 뜻이며, 기능이 없다는 뜻은 아닙니다. 표는 제품의 순위를 매기지 않습니다. MarsDawn 자체 열은 iPhone·iPad 앱에 맞춰 2026년 10월 29일에, PDF 칸은 설명서와 프린트물 레이아웃에 맞춰 2026년 11월 7일에 업데이트했습니다.',
                'lacks': 'MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다. 공동 편집, 계정, 자체 클라우드 서비스가 없습니다. 미리보기는 직접 편집할 수 없고, 옆의 Markdown 소스를 편집합니다. Word로 내보내기와 플러그인이 없습니다. PDF 페이지 번호는 설명서와 프린트물 레이아웃에만 있습니다. diff 보기가 없습니다. 에이전트가 변경을 저장하면 열린 윈도우가 디스크에서 업데이트되고 한 번에 실행 취소할 수 있지만, 무엇이 바뀌었는지는 강조하지 않습니다. 14일 체험이 끝나면 잠금 해제할 때까지 문서 내용이 가려진 채로 열립니다.',
                'dont_h': 'MarsDawn이 필요 없는 경우',
                'dont': ['늘 VS Code에서 일하고 미리보기 패널로 충분한 경우. Mermaid와 KaTeX를 렌더링하고, Markdown diff 미리보기가 있으며, code -g로 줄로 이동할 수 있습니다.',

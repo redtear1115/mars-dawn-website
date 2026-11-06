@@ -13,7 +13,7 @@ Para quien elige cómo leer y revisar Markdown en un Mac, a menudo lo que escrib
 | Requisitos del sistema | macOS 26.0 o posterior [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | El fabricante no lo indica [[18](#v18)] | macOS 12.0 o posterior [[23](#v23)] | macOS 13 o posterior [[2](#v2)] |
 | Requiere cuenta | No [/privacy/] | El fabricante no lo indica | "No sign-up required" [[15](#v15)] | El fabricante no lo indica | No [[2](#v2)] |
 
-Cada celda se comprobó el 16 de octubre de 2026 con la fuente entre corchetes (los números V están abajo; [prueba] es nuestra propia exportación con marsdawn 0.6.4). Las citas de los fabricantes se mantienen tal cual. «El fabricante no lo indica» significa que las páginas que leímos no dicen nada, no que la función falte. Ninguna celda clasifica los productos. La columna de MarsDawn se actualizó el 29 de octubre de 2026 por la app para iPhone y iPad.
+Cada celda se comprobó el 16 de octubre de 2026 con la fuente entre corchetes (los números V están abajo). Las citas de los fabricantes se mantienen tal cual. «El fabricante no lo indica» significa que las páginas que leímos no dicen nada, no que la función falte. Ninguna celda clasifica los productos. La columna de MarsDawn se actualizó el 29 de octubre de 2026 por la app para iPhone y iPad, y su celda de PDF el 7 de noviembre de 2026 por las disposiciones Guía y Folleto.
 
 ## Fuentes
 
