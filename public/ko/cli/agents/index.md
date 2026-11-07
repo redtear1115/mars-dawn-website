@@ -82,8 +82,8 @@ marsdawn open notes.md --folder . --background --json
 {"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}
 ```
 
-- `folder`: 폴더를 줬을 때만 나타납니다. `path`는 폴더의 절대 경로입니다. `requested`는 항상 `true`입니다. marsdawn은 MarsDawn에 폴더를 보여 달라고 요청했을 뿐이고, 앱이 먼저 사람에게 접근 권한을 물을 수 있으므로 사이드바에 실제로 표시됐는지는 알 수 없습니다. 완료가 아니라 요청됨으로 보고하세요.
-- `--wait`가 0보다 크고 MarsDawn이 1.0.2 이상이면, 기다림이 끝난 뒤 `folder`에 `status`도 담깁니다. 값은 `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable`, `unknown` 중 하나입니다. `needsUser`일 때만 `waitingFor`(`confirmation` 또는 `folderChoice`)도 담깁니다. `--wait`가 없거나 결과를 알려 주지 않는 앱이면 `folder`는 `{"path": …, "requested": true}` 그대로입니다. `--wait`가 0~30을 벗어나면 코드 64로 종료하며 `error: "wait_out_of_range"`를 냅니다. (marsdawn 0.5.3 이상)
+- `folder`: 폴더를 줬을 때만 나타납니다. `path`는 폴더의 절대 경로입니다. `requested`는 항상 `true`입니다. marsdawn은 MarsDawn에 폴더를 보여 달라고 요청했을 뿐입니다. 사이드바에 표시할지는 앱이 정하며, 앱이 먼저 사람에게 접근 권한을 물을 수도 있습니다. MarsDawn이 1.0.2 이상이면 다음 항목의 `status`로 결과를 알 수 있습니다. 단, `--wait 0`이면 `status`가 없습니다. `status`가 없으면 marsdawn이 알 수 없으므로 완료가 아니라 요청됨으로 보고하세요.
+- MarsDawn이 1.0.2 이상이면, 기다림(`--wait`, 기본값 2초)이 끝난 뒤 `folder`에 `status`도 담깁니다. 값은 `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable`, `unknown` 중 하나입니다. `needsUser`일 때만 `waitingFor`(`confirmation` 또는 `folderChoice`)도 담깁니다. `--wait 0`이거나 결과를 알려 주지 않는 앱이면 `folder`는 `{"path": …, "requested": true}` 그대로입니다. `--wait`가 0~30을 벗어나면 코드 64로 종료하며 `error: "wait_out_of_range"`를 냅니다. (marsdawn 0.5.3 이상)
 - 폴더만 줬을 때 `opened`는 비어 있습니다.
 
 marsdawn 0.2.x는 `opened`를 경로 문자열 목록으로 출력했습니다. 두 형식을 모두 처리해야 한다면 `marsdawn --version`을 확인하세요.

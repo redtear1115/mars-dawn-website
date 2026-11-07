@@ -18,6 +18,9 @@ program, never typed. Each comment is fetched by id with `gh api` and held to th
   standing machine-locale OK. One section per locale (## zh-Hans ...) with items A to F, and E as one
   table. Its changelog entries use ### headings (the page's level since #273); they are read as ##, the
   level the build inserts at, with nothing else changed.
+- J, #296 6666104435 (Aria, 2026-11-05): three lines in all eight locales, replacing what A, B and I gave
+  for them. `--wait` defaults to 2, so `status` comes without passing it and only `--wait 0` drops it.
+  The owner approved J on 2026-11-06 (#296 6683377854).
 - K, #355 6666174606 (Aria, 2026-11-05): the 0.7.3 to 0.7.6 changelog entries in en and zh-Hant, approved by
   the owner on 2026-11-06 (#355 6683315581). K_i18n, #355 6684157004 (Aria, 2026-11-06): the same in the
   other six locales, under the standing machine-locale OK. One `## <locale>` section with one md block in
@@ -286,6 +289,24 @@ def parse_i(body: str, locales: list, data: dict) -> None:
         data[loc]["schema_notes"] = notes
 
 
+def apply_296(body: str, locales: list, data: dict) -> None:
+    """J: under each locale, in order, /cli/agents/'s `folder` item, its `status` item and /cli/'s --json item."""
+    found = blocks(body)
+    for locale in locales:
+        lines = [text for _, loc, text in found if loc == locale]
+        if len(lines) != 3:
+            raise Stop(f"J: {locale} has {len(lines)} blocks, not 3")
+        folder, status, json_item = (bullets(one_line(text))[0] for text in lines)
+        if not folder.startswith("`folder`") or "`status`" not in status or "--json" not in json_item:
+            raise Stop(f"J: {locale}'s blocks are not the three expected lines")
+        d = data[locale]
+        if len(d["agents_folder_items"]) != 1 or len(d["open_items"]) != 3 or "--json" not in d["open_items"][2]:
+            raise Stop(f"J: {locale}'s earlier items are not the ones J replaces")
+        d["agents_folder_line"] = folder
+        d["agents_folder_items"] = [status]
+        d["open_items"][2] = json_item
+
+
 NEW_355 = ["0.7.6", "0.7.5", "0.7.4", "0.7.3"]
 
 
@@ -327,6 +348,8 @@ def build() -> tuple:
     for loc in machine:
         data[loc] = {"changelog": {}}
     parse_i(fetch(c["I"]), machine, data)
+    fetch(c["approval_296"])
+    apply_296(fetch(c["J"]), approved + machine, data)
     fetch(c["approval_355"])
     apply_355(fetch(c["K"]), ["en", "zh-hant"], data)
     apply_355(fetch(c["K_i18n"]), ["zh-hans", "ja", "ko", "de", "fr", "es"], data)

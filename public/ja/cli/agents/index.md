@@ -82,8 +82,8 @@ marsdawn open notes.md --folder . --background --json
 {"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}
 ```
 
-- `folder`：フォルダを指定したときだけ現れます。`path` はその絶対パスです。`requested` は常に `true` です：marsdawn は MarsDawn にフォルダの表示を依頼しましたが、サイドバーに実際に表示されたかどうかは分かりません。アプリが先に人にアクセスの許可を求めることがあるためです。「完了した」ではなく「依頼した」と報告してください。
-- `--wait` が 0 より大きく、MarsDawn が 1.0.2 以降の場合、待ち時間が終わると `folder` に `status` も入ります：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable`、`unknown` のいずれかです。`needsUser` のときだけ `waitingFor`（`confirmation` または `folderChoice`）も入ります。`--wait` がない場合や、結果を返さないアプリでは、`folder` は `{"path": …, "requested": true}` のままです。`--wait` が 0〜30 の範囲外ならコード 64 で終了し、`error: "wait_out_of_range"` を返します。（marsdawn 0.5.3 以降）
+- `folder`：フォルダを指定したときだけ現れます。`path` はその絶対パスです。`requested` は常に `true` です：marsdawn は MarsDawn にフォルダの表示を依頼しました。サイドバーに表示するかどうかはアプリが決め、アプリが先に人にアクセスの許可を求めることもあります。MarsDawn が 1.0.2 以降なら、次の項目の `status` で結果が分かります（`--wait 0` の場合を除く）。`status` がない場合は marsdawn には分からないため、「完了した」ではなく「依頼した」と報告してください。
+- MarsDawn が 1.0.2 以降の場合、待ち時間（`--wait`、初期値 2 秒）が終わると `folder` に `status` も入ります：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable`、`unknown` のいずれかです。`needsUser` のときだけ `waitingFor`（`confirmation` または `folderChoice`）も入ります。`--wait 0` の場合や、結果を返さないアプリでは、`folder` は `{"path": …, "requested": true}` のままです。`--wait` が 0〜30 の範囲外ならコード 64 で終了し、`error: "wait_out_of_range"` を返します。（marsdawn 0.5.3 以降）
 - フォルダだけを指定したとき、`opened` は空です。
 
 marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方を扱う必要がある場合は `marsdawn --version` を確認してください。

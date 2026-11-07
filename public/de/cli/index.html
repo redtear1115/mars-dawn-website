@@ -159,7 +159,7 @@ marsdawn open notes.md --folder .</code></pre>
   <li>Ein Ordner als Argument wird in der Seitenleiste des Fensters geöffnet statt als Dokument: <code>marsdawn open .</code> zeigt den aktuellen Ordner. <code>--folder &lt;path&gt;</code> macht dasselbe zusätzlich zu Dateien. Die Seitenleiste eines Fensters zeigt einen Ordner, zwei anzugeben ist daher ein Bedienungsfehler.</li>
   <li><code>--wait &lt;n&gt;</code>: Mit MarsDawn 1.0.2 oder neuer, das eine Rückmeldung gibt, wartet <code>--folder</code> bis zu n Sekunden (0 bis 30, Standard 2) auf die Antwort der App zum Ordner. Mit <code>--wait 0</code> oder einer App ohne Rückmeldung wird nicht gewartet, und die Anfrage ist dieselbe wie bisher.</li>
   <li>Ein Wert für <code>--wait</code> außerhalb von 0 bis 30 ist ein Bedienungsfehler (Code 64). Einen negativen Wert schreibst du als <code>--wait=-1</code>.</li>
-  <li>Mit <code>--json</code> wird der Ordner als angefragt gemeldet, nicht als angezeigt, denn das entscheidet die App; mit <code>--wait</code> sagt das Ergebnis auch, was aus ihm wurde. Die vollständige Liste steht unter <a href="/de/cli/agents/">marsdawn für Agenten</a>.</li>
+  <li>Mit <code>--json</code> wird der Ordner als angefragt gemeldet, nicht als angezeigt, denn das entscheidet die App. Mit MarsDawn 1.0.2 oder neuer sagt das Ergebnis auch, was aus ihm wurde, außer bei <code>--wait 0</code>. Die vollständige Liste steht unter <a href="/de/cli/agents/">marsdawn für Agenten</a>.</li>
   <li><code>--background</code>: öffnen, ohne MarsDawn in den Vordergrund zu holen.</li>
   <li><code>--json</code>: ein JSON-Ergebnis statt Text ausgeben.</li>
 </ul>

@@ -6279,6 +6279,12 @@ def _cli254_before_li(section: str, option: str, html: str, page: str) -> str:
     return section.replace(mark, html + mark)
 
 
+def _cli254_replace_li(section: str, option: str, html: str, page: str) -> str:
+    m = list(re.finditer(rf"  <li><code>{re.escape(option)}</code>.*?</li>\n", section))
+    assert len(m) == 1, f"{page}: {option} item found {len(m)} times"
+    return section[:m[0].start()] + html + section[m[0].end():]
+
+
 def _cli254_after_li(section: str, option: str, html: str, page: str) -> str:
     m = list(re.finditer(rf"  <li><code>{re.escape(option)}</code>.*?</li>\n", section))
     assert len(m) == 1, f"{page}: {option} item found {len(m)} times"
@@ -6307,6 +6313,8 @@ def cli254_cli(body: str, d: dict, page: str) -> str:
 def cli254_agents(body: str, d: dict, page: str) -> str:
     i = body.index('"requested":true')
     head, tail = body[:i], body[i:]
+    # #296: the `folder` item written with the page is replaced whole by the approved line.
+    tail = _cli254_replace_li(tail, "folder", _cli254_li([d["agents_folder_line"]]), page)
     return head + _cli254_after_li(tail, "folder", _cli254_li(d["agents_folder_items"]), page)
 
 

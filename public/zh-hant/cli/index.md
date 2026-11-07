@@ -49,7 +49,7 @@ marsdawn open notes.md --folder .
 - 資料夾參數會在視窗的側邊欄開啟，而不是當成文件：`marsdawn open .` 會顯示目前的資料夾。`--folder <path>` 可以在開啟檔案的同時做到一樣的事。一個視窗的側邊欄只顯示一個資料夾，所以指定兩個是使用方式錯誤。
 - `--wait <n>`：搭配會回報結果的 MarsDawn 1.0.2 以上，`--folder` 最多等 n 秒（0 到 30，預設 2），等 app 回報資料夾的結果。`--wait 0`，或 app 不會回報時，不會等待，送出的請求和以前完全相同。
 - `--wait` 的值超出 0 到 30 是使用方式錯誤（代碼 64）。負數要寫成 `--wait=-1`。
-- 加上 `--json` 時，資料夾回報的是「已請求」，不是「已附加」，因為由 app 決定；加上 `--wait` 時，結果也會說明資料夾後來怎麼了。完整列表見[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
+- 加上 `--json` 時，資料夾回報的是「已要求」，不是「已附加」，因為由 app 決定；MarsDawn 為 1.0.2 以上時，結果也會說明資料夾後來怎麼了，除非加上 `--wait 0`。完整列表見[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。
 - `--background`：開啟時不把 MarsDawn 帶到最前面。
 - `--json`：印出 JSON 結果，而不是文字。
 

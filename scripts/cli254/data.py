@@ -15,6 +15,9 @@ SOURCES = {'A': {'id': 6233038202,
  'I': {'id': 6295975448,
        'issue': 254,
        'sha256': 'e41989fce4804f874ee0b876a03a4396267fe7e54637a3f184b12b94d047c997'},
+ 'J': {'id': 6666104435,
+       'issue': 296,
+       'sha256': '4800a5035ab5255b1d3cc8149af9e3532f08d906b1097d445be07c482b8164a9'},
  'K': {'id': 6666174606,
        'issue': 355,
        'sha256': 'a6f531ce0eae6da3a376137c9188d1e9aabc80ef90b5f39760ea6e4d4b9309e5'},
@@ -24,6 +27,9 @@ SOURCES = {'A': {'id': 6233038202,
  'approval': {'id': 6295102211,
               'issue': 254,
               'sha256': 'ca6fba829ee5f01ff18114aa2f15cd6bf12aec5332be06781e567f475f4b494e'},
+ 'approval_296': {'id': 6683377854,
+                  'issue': 296,
+                  'sha256': '9fba7f746d1d915d48086bc9455a2492f3323b4fb52eba9b7f0058a859e47114'},
  'approval_355': {'id': 6683315581,
                   'issue': 355,
                   'sha256': '7813a6f40daef2a37e0bd1a930881a2eba48a052eae2655a2a23167c556fee1c'},
@@ -38,14 +44,21 @@ SHARED = {'theme_example': 'marsdawn theme validate my-theme.json\n'
                   'marsdawn theme css my-theme.json\n'
                   'marsdawn theme preview my-theme.json --appearance dark -o preview.png'}
 
-DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 oder neuer enthält `folder` nach dem '
-                                'Warten auch `status`: `attached`, `needsUser`, `declined`, `failed`, '
-                                '`attachedDifferentFolder`, `full`, `unavailable` oder `unknown`. Nur '
-                                'zusammen mit `needsUser` enthält es `waitingFor`: `confirmation` oder '
-                                '`folderChoice`. Ohne `--wait` oder mit einer App ohne Rückmeldung bleibt '
+DATA = {'de': {'agents_folder_items': ['Mit MarsDawn 1.0.2 oder neuer enthält `folder` nach dem Warten (`--wait`, '
+                                'Standard 2 Sekunden) auch `status`: `attached`, `needsUser`, `declined`, '
+                                '`failed`, `attachedDifferentFolder`, `full`, `unavailable` oder `unknown`. '
+                                'Nur zusammen mit `needsUser` enthält es `waitingFor`: `confirmation` oder '
+                                '`folderChoice`. Mit `--wait 0` oder mit einer App ohne Rückmeldung bleibt '
                                 '`folder` bei `{"path": …, "requested": true}`. Ein `--wait` außerhalb von 0 '
                                 'bis 30 endet mit Code 64 und `error: "wait_out_of_range"`. (marsdawn 0.5.3 '
                                 'und neuer.)'],
+        'agents_folder_line': '`folder`: nur vorhanden, wenn ein Ordner angegeben wurde. `path` ist sein '
+                              'absoluter Pfad. `requested` ist immer `true`: marsdawn hat MarsDawn gebeten, '
+                              'den Ordner anzuzeigen. Ob die Seitenleiste ihn zeigt, entscheidet die App, '
+                              'und sie fragt den Menschen womöglich erst nach Zugriff. Mit MarsDawn 1.0.2 '
+                              'oder neuer sagt `status` im nächsten Punkt, was passiert ist, außer bei '
+                              '`--wait 0`. Ohne `status` kann marsdawn es nicht wissen, also melde es als '
+                              'angefragt, nicht als erledigt.',
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '29. September 2026. Themen prüfen.\n'
@@ -187,8 +200,9 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                        'Ein Wert für `--wait` außerhalb von 0 bis 30 ist ein Bedienungsfehler (Code 64). '
                        'Einen negativen Wert schreibst du als `--wait=-1`.',
                        'Mit `--json` wird der Ordner als angefragt gemeldet, nicht als angezeigt, denn das '
-                       'entscheidet die App; mit `--wait` sagt das Ergebnis auch, was aus ihm wurde. Die '
-                       'vollständige Liste steht unter [marsdawn für Agenten](/de/cli/agents/).'],
+                       'entscheidet die App. Mit MarsDawn 1.0.2 oder neuer sagt das Ergebnis auch, was aus '
+                       'ihm wurde, außer bei `--wait 0`. Die vollständige Liste steht unter [marsdawn für '
+                       'Agenten](/de/cli/agents/).'],
         'open_since': 'Zeilen kamen mit marsdawn 0.3.0 hinzu, Ordner und `--background` mit 0.5.1, `--wait` '
                       'und der Ordnerstatus mit 0.5.3.',
         'schema_notes': {'error': 'Fehler, beide Befehle, marsdawn 0.5.2 bis 0.7.0',
@@ -219,13 +233,19 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json`: ein JSON-Ergebnis statt Text ausgeben.\n'
                          '\n'
                          'Die `theme`-Befehle kamen mit marsdawn 0.6.1 hinzu.'},
- 'en': {'agents_folder_items': ['With `--wait` above 0 and MarsDawn 1.0.2 or later, `folder` also carries '
-                                '`status` once the wait ends: `attached`, `needsUser`, `declined`, `failed`, '
-                                '`attachedDifferentFolder`, `full`, `unavailable` or `unknown`. Only '
-                                'alongside `needsUser`, it carries `waitingFor`: `confirmation` or '
-                                "`folderChoice`. Without `--wait`, or with an app that doesn't report back, "
+ 'en': {'agents_folder_items': ['With MarsDawn 1.0.2 or later, `folder` also carries `status` once the wait '
+                                'ends (`--wait`, 2 seconds by default): `attached`, `needsUser`, `declined`, '
+                                '`failed`, `attachedDifferentFolder`, `full`, `unavailable` or `unknown`. '
+                                'Only alongside `needsUser`, it carries `waitingFor`: `confirmation` or '
+                                "`folderChoice`. With `--wait 0`, or with an app that doesn't report back, "
                                 '`folder` stays `{"path": …, "requested": true}`. A `--wait` outside 0 to 30 '
                                 'exits 64 with `error: "wait_out_of_range"`. (marsdawn 0.5.3 and later.)'],
+        'agents_folder_line': '`folder`: present only when a folder was given. `path` is its absolute path. '
+                              '`requested` is always `true`: marsdawn asked MarsDawn to show the folder. '
+                              "Whether the sidebar shows it is the app's call, and the app may first ask the "
+                              'person for access. With MarsDawn 1.0.2 or later, `status` in the next item '
+                              'says what happened, unless you pass `--wait 0`. Without `status`, marsdawn '
+                              "can't tell, so report it as asked, not as done.",
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '29 September 2026. Checking a theme.\n'
@@ -354,8 +374,9 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                        'A `--wait` value outside 0 to 30 is a usage error (exit 64). Write a negative value '
                        'as `--wait=-1`.',
                        'With `--json`, the folder is reported as requested, not attached, because the app '
-                       'decides; with `--wait`, the result also says what happened to it. The full list is '
-                       'in [marsdawn for agents](/cli/agents/).'],
+                       'decides. With MarsDawn 1.0.2 or later, the result also says what happened to it, '
+                       'unless you pass `--wait 0`. The full list is in [marsdawn for '
+                       'agents](/cli/agents/).'],
         'open_since': 'Lines were added in marsdawn 0.3.0, folders and `--background` in 0.5.1, and `--wait` '
                       'with the folder status in 0.5.3.',
         'schema_notes': {'error': 'failure, both commands, marsdawn 0.5.2 to 0.7.0',
@@ -383,14 +404,20 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json`: print a JSON result instead of text.\n'
                          '\n'
                          'The `theme` commands were added in marsdawn 0.6.1.'},
- 'es': {'agents_folder_items': ['Con un `--wait` mayor que 0 y MarsDawn 1.0.2 o posterior, `folder` también '
-                                'incluye `status` cuando termina la espera: `attached`, `needsUser`, '
-                                '`declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable` o '
-                                '`unknown`. Solo junto con `needsUser` incluye `waitingFor`: `confirmation` '
-                                'o `folderChoice`. Sin `--wait`, o con una app que no informa del resultado, '
-                                '`folder` sigue siendo `{"path": …, "requested": true}`. Un `--wait` fuera '
-                                'de 0 a 30 termina con el código 64 y `error: "wait_out_of_range"`. '
-                                '(marsdawn 0.5.3 y posterior.)'],
+ 'es': {'agents_folder_items': ['Con MarsDawn 1.0.2 o posterior, `folder` también incluye `status` cuando '
+                                'termina la espera (`--wait`, 2 segundos de forma predeterminada): '
+                                '`attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, '
+                                '`full`, `unavailable` o `unknown`. Solo junto con `needsUser` incluye '
+                                '`waitingFor`: `confirmation` o `folderChoice`. Con `--wait 0`, o con una '
+                                'app que no informa del resultado, `folder` sigue siendo `{"path": …, '
+                                '"requested": true}`. Un `--wait` fuera de 0 a 30 termina con el código 64 y '
+                                '`error: "wait_out_of_range"`. (marsdawn 0.5.3 y posterior.)'],
+        'agents_folder_line': '`folder`: solo aparece cuando se dio una carpeta. `path` es su ruta absoluta. '
+                              '`requested` siempre es `true`: marsdawn le pidió a MarsDawn que mostrara la '
+                              'carpeta. Si la barra lateral la muestra lo decide la app, que puede pedirle '
+                              'acceso a la persona primero. Con MarsDawn 1.0.2 o posterior, `status`, en el '
+                              'punto siguiente, indica qué pasó, salvo con `--wait 0`. Sin `status`, '
+                              'marsdawn no puede saberlo, así que infórmalo como solicitado, no como hecho.',
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '29 de septiembre de 2026. Comprobar un tema.\n'
@@ -532,8 +559,9 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                        'Un valor de `--wait` fuera de 0 a 30 es un error de uso (código 64). Escribe un '
                        'valor negativo como `--wait=-1`.',
                        'Con `--json`, la carpeta figura como solicitada, no como mostrada, porque decide la '
-                       'app; con `--wait`, el resultado también dice qué pasó con ella. La lista completa '
-                       'está en [marsdawn para agentes](/es/cli/agents/).'],
+                       'app. Con MarsDawn 1.0.2 o posterior, el resultado también dice qué pasó con ella, '
+                       'salvo con `--wait 0`. La lista completa está en [marsdawn para '
+                       'agentes](/es/cli/agents/).'],
         'open_since': 'Las líneas llegaron con marsdawn 0.3.0, las carpetas y `--background` con la 0.5.1, y '
                       '`--wait` y el estado de la carpeta con la 0.5.3.',
         'schema_notes': {'error': 'error, ambos comandos, marsdawn 0.5.2 a 0.7.0',
@@ -563,14 +591,21 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json`: mostrar un resultado JSON en lugar de texto.\n'
                          '\n'
                          'Los comandos `theme` llegaron con marsdawn 0.6.1.'},
- 'fr': {'agents_folder_items': ['Avec un `--wait` supérieur à 0 et MarsDawn 1.0.2 ou version ultérieure, '
-                                '`folder` contient aussi `status` une fois l’attente terminée : `attached`, '
+ 'fr': {'agents_folder_items': ['Avec MarsDawn 1.0.2 ou version ultérieure, `folder` contient aussi `status` '
+                                'une fois l’attente terminée (`--wait`, 2 secondes par défaut) : `attached`, '
                                 '`needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, '
                                 '`unavailable` ou `unknown`. Seulement avec `needsUser`, il contient '
-                                '`waitingFor` : `confirmation` ou `folderChoice`. Sans `--wait`, ou avec une '
-                                'app qui ne donne pas de réponse, `folder` reste `{"path": …, "requested": '
-                                'true}`. Un `--wait` hors de 0 à 30 se termine avec le code 64 et `error: '
-                                '"wait_out_of_range"`. (marsdawn 0.5.3 et versions ultérieures.)'],
+                                '`waitingFor` : `confirmation` ou `folderChoice`. Avec `--wait 0`, ou avec '
+                                'une app qui ne donne pas de réponse, `folder` reste `{"path": …, '
+                                '"requested": true}`. Un `--wait` hors de 0 à 30 se termine avec le code 64 '
+                                'et `error: "wait_out_of_range"`. (marsdawn 0.5.3 et versions ultérieures.)'],
+        'agents_folder_line': '`folder` : présent seulement si un dossier a été donné. `path` est son chemin '
+                              'absolu. `requested` vaut toujours `true` : marsdawn a demandé à MarsDawn '
+                              'd’afficher le dossier. C’est l’app qui décide si la barre latérale l’affiche, '
+                              'et elle peut d’abord demander l’accès à la personne. Avec MarsDawn 1.0.2 ou '
+                              'version ultérieure, `status`, décrit au point suivant, indique ce qui s’est '
+                              'passé, sauf avec `--wait 0`. Sans `status`, marsdawn ne peut pas le savoir : '
+                              'signalez-le comme demandé, pas comme fait.',
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '29 septembre 2026. Vérifier un thème.\n'
@@ -711,8 +746,9 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                        'Une valeur de `--wait` hors de 0 à 30 est une erreur d’utilisation (code 64). '
                        'Écrivez une valeur négative sous la forme `--wait=-1`.',
                        'Avec `--json`, le dossier est indiqué comme demandé, et non comme affiché, car c’est '
-                       'l’app qui décide ; avec `--wait`, le résultat dit aussi ce qu’il est devenu. La '
-                       'liste complète se trouve dans [marsdawn pour les agents](/fr/cli/agents/).'],
+                       'l’app qui décide. Avec MarsDawn 1.0.2 ou version ultérieure, le résultat dit aussi '
+                       'ce qu’il est devenu, sauf avec `--wait 0`. La liste complète se trouve dans '
+                       '[marsdawn pour les agents](/fr/cli/agents/).'],
         'open_since': 'Les lignes sont arrivées avec marsdawn 0.3.0, les dossiers et `--background` avec la '
                       '0.5.1, et `--wait` et l’état du dossier avec la 0.5.3.',
         'schema_notes': {'error': 'échec, pour les deux commandes, marsdawn 0.5.2 à 0.7.0',
@@ -741,12 +777,17 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json` : afficher un résultat JSON au lieu de texte.\n'
                          '\n'
                          'Les commandes `theme` sont arrivées avec marsdawn 0.6.1.'},
- 'ja': {'agents_folder_items': ['`--wait` が 0 より大きく、MarsDawn が 1.0.2 以降の場合、待ち時間が終わると `folder` に `status` '
+ 'ja': {'agents_folder_items': ['MarsDawn が 1.0.2 以降の場合、待ち時間（`--wait`、初期値 2 秒）が終わると `folder` に `status` '
                                 'も入ります：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable`、`unknown` '
                                 'のいずれかです。`needsUser` のときだけ `waitingFor`（`confirmation` または '
-                                '`folderChoice`）も入ります。`--wait` がない場合や、結果を返さないアプリでは、`folder` は `{"path": …, '
+                                '`folderChoice`）も入ります。`--wait 0` の場合や、結果を返さないアプリでは、`folder` は `{"path": …, '
                                 '"requested": true}` のままです。`--wait` が 0〜30 の範囲外ならコード 64 で終了し、`error: '
                                 '"wait_out_of_range"` を返します。（marsdawn 0.5.3 以降）'],
+        'agents_folder_line': '`folder`：フォルダを指定したときだけ現れます。`path` はその絶対パスです。`requested` は常に `true` '
+                              'です：marsdawn は MarsDawn '
+                              'にフォルダの表示を依頼しました。サイドバーに表示するかどうかはアプリが決め、アプリが先に人にアクセスの許可を求めることもあります。MarsDawn が '
+                              '1.0.2 以降なら、次の項目の `status` で結果が分かります（`--wait 0` の場合を除く）。`status` がない場合は '
+                              'marsdawn には分からないため、「完了した」ではなく「依頼した」と報告してください。',
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '2026年9月29日。テーマのチェック。\n'
@@ -845,8 +886,9 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
         'open_items': ['`--wait <n>`：結果を返す MarsDawn 1.0.2 以降では、`--folder` はフォルダについてのアプリの回答を最大 n 秒（0〜30、初期値 '
                        '2）待ちます。`--wait 0` の場合や、結果を返さないアプリでは待たず、これまでとまったく同じリクエストを送ります。',
                        '`--wait` に 0〜30 以外の値を指定すると使用方法のエラー（コード 64）です。負の値は `--wait=-1` と書きます。',
-                       '`--json` では、フォルダは「表示済み」ではなく「依頼済み」として返ります。決めるのはアプリだからです。`--wait` '
-                       'を付けると、フォルダがどうなったかも返ります。一覧は [AI エージェント向け marsdawn](/ja/cli/agents/) にあります。'],
+                       '`--json` では、フォルダは「表示済み」ではなく「依頼済み」として返ります。決めるのはアプリだからです。MarsDawn が 1.0.2 '
+                       '以降なら、フォルダがどうなったかも返ります（`--wait 0` の場合を除く）。一覧は [AI エージェント向け marsdawn](/ja/cli/agents/) '
+                       'にあります。'],
         'open_since': '行の指定は marsdawn 0.3.0 で、フォルダと `--background` は 0.5.1 で、`--wait` とフォルダの状態は 0.5.3 '
                       'で追加されました。',
         'schema_notes': {'error': '失敗時、両方のコマンド共通、marsdawn 0.5.2〜0.7.0',
@@ -870,13 +912,18 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json`：テキストの代わりに JSON の結果を出力します。\n'
                          '\n'
                          '`theme` コマンドは marsdawn 0.6.1 で追加されました。'},
- 'ko': {'agents_folder_items': ['`--wait`가 0보다 크고 MarsDawn이 1.0.2 이상이면, 기다림이 끝난 뒤 `folder`에 `status`도 담깁니다. '
+ 'ko': {'agents_folder_items': ['MarsDawn이 1.0.2 이상이면, 기다림(`--wait`, 기본값 2초)이 끝난 뒤 `folder`에 `status`도 담깁니다. '
                                 '값은 `attached`, `needsUser`, `declined`, `failed`, '
                                 '`attachedDifferentFolder`, `full`, `unavailable`, `unknown` 중 하나입니다. '
                                 '`needsUser`일 때만 `waitingFor`(`confirmation` 또는 `folderChoice`)도 담깁니다. '
-                                '`--wait`가 없거나 결과를 알려 주지 않는 앱이면 `folder`는 `{"path": …, "requested": true}` '
+                                '`--wait 0`이거나 결과를 알려 주지 않는 앱이면 `folder`는 `{"path": …, "requested": true}` '
                                 '그대로입니다. `--wait`가 0~30을 벗어나면 코드 64로 종료하며 `error: "wait_out_of_range"`를 냅니다. '
                                 '(marsdawn 0.5.3 이상)'],
+        'agents_folder_line': '`folder`: 폴더를 줬을 때만 나타납니다. `path`는 폴더의 절대 경로입니다. `requested`는 항상 `true`입니다. '
+                              'marsdawn은 MarsDawn에 폴더를 보여 달라고 요청했을 뿐입니다. 사이드바에 표시할지는 앱이 정하며, 앱이 먼저 사람에게 접근 '
+                              '권한을 물을 수도 있습니다. MarsDawn이 1.0.2 이상이면 다음 항목의 `status`로 결과를 알 수 있습니다. 단, '
+                              '`--wait 0`이면 `status`가 없습니다. `status`가 없으면 marsdawn이 알 수 없으므로 완료가 아니라 요청됨으로 '
+                              '보고하세요.',
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '2026년 9월 29일. 테마 확인.\n'
@@ -974,8 +1021,9 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
         'open_items': ['`--wait <n>`: 결과를 알려 주는 MarsDawn 1.0.2 이상에서는 `--folder`가 폴더에 대한 앱의 응답을 최대 n초(0~30, '
                        '기본값 2) 기다립니다. `--wait 0`이거나 결과를 알려 주지 않는 앱이면 기다리지 않으며, 이전과 똑같은 요청을 보냅니다.',
                        '`--wait` 값이 0~30을 벗어나면 사용법 오류(코드 64)입니다. 음수는 `--wait=-1`처럼 쓰세요.',
-                       '`--json`에서는 폴더를 “연결됨”이 아니라 “요청함”으로 알려 줍니다. 결정은 앱이 하기 때문입니다. `--wait`를 주면 폴더가 어떻게 '
-                       '되었는지도 결과에 담깁니다. 전체 목록은 [에이전트를 위한 marsdawn](/ko/cli/agents/)에 있습니다.'],
+                       '`--json`에서는 폴더를 “연결됨”이 아니라 “요청함”으로 알려 줍니다. 결정은 앱이 하기 때문입니다. MarsDawn이 1.0.2 이상이면 폴더가 '
+                       '어떻게 되었는지도 결과에 담깁니다. 단, `--wait 0`이면 담기지 않습니다. 전체 목록은 [에이전트를 위한 '
+                       'marsdawn](/ko/cli/agents/)에 있습니다.'],
         'open_since': '줄 지정은 marsdawn 0.3.0에서, 폴더와 `--background`는 0.5.1에서, `--wait`와 폴더 상태는 0.5.3에서 '
                       '추가되었습니다.',
         'schema_notes': {'error': '실패, 두 명령 공통, marsdawn 0.5.2~0.7.0',
@@ -999,12 +1047,16 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json`: 텍스트 대신 JSON 결과를 출력합니다.\n'
                          '\n'
                          '`theme` 명령은 marsdawn 0.6.1에서 추가되었습니다.'},
- 'zh-hans': {'agents_folder_items': ['`--wait` 大于 0，且 MarsDawn 为 1.0.2 或更高版本时，等待结束后 `folder` 还会带有 '
-                                     '`status`：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` '
+ 'zh-hans': {'agents_folder_items': ['MarsDawn 为 1.0.2 或更高版本时，等待结束后 `folder` 还会带有 `status`（`--wait` 默认 2 '
+                                     '秒）：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` '
                                      '或 `unknown`。只有在 `needsUser` 时，才会再带有 `waitingFor`：`confirmation` 或 '
-                                     '`folderChoice`。没有 `--wait`，或 app 不会回报时，`folder` 保持 `{"path": …, '
+                                     '`folderChoice`。加上 `--wait 0`，或 app 不会回报时，`folder` 保持 `{"path": …, '
                                      '"requested": true}`。`--wait` 超出 0 到 30 时以代码 64 结束，并带有 `error: '
                                      '"wait_out_of_range"`。（marsdawn 0.5.3 及更高版本。）'],
+             'agents_folder_line': '`folder`：只有指定了文件夹时才有。`path` 是它的绝对路径。`requested` 一律是 `true`：marsdawn 已请 '
+                                   'MarsDawn 显示这个文件夹。侧边栏是否显示由 app 决定，app 也可能先向用户请求访问权限。MarsDawn 为 1.0.2 '
+                                   '或更高版本时，下一条的 `status` 会说明结果，除非加上 `--wait 0`。没有 `status` 时 marsdawn '
+                                   '无法得知，请报告为“已请求”，而不是“已完成”。',
              'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                     '\n'
                                     '2026 年 9 月 29 日。检查主题。\n'
@@ -1094,8 +1146,9 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
              'open_items': ['`--wait <n>`：搭配会回报结果的 MarsDawn 1.0.2 或更高版本，`--folder` 最多等待 n 秒（0 到 30，默认 2），等 '
                             'app 回报文件夹的结果。`--wait 0`，或 app 不会回报时，不会等待，发出的请求和以前完全相同。',
                             '`--wait` 的值超出 0 到 30 是使用方式错误（代码 64）。负数要写成 `--wait=-1`。',
-                            '加上 `--json` 时，文件夹报告的是「已请求」，而不是「已附加」，因为由 app 决定；加上 `--wait` '
-                            '时，结果还会说明文件夹后来怎么样了。完整列表见[给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/)。'],
+                            '加上 `--json` 时，文件夹报告的是「已请求」，而不是「已附加」，因为由 app 决定；MarsDawn 为 1.0.2 '
+                            '或更高版本时，结果还会说明文件夹后来怎么样了，除非加上 `--wait 0`。完整列表见[给 AI 代理的 marsdawn '
+                            '参考](/zh-hans/cli/agents/)。'],
              'open_since': '行号功能从 marsdawn 0.3.0 开始提供，文件夹与 `--background` 从 0.5.1 开始，`--wait` 与文件夹状态从 0.5.3 '
                            '开始。',
              'schema_notes': {'error': '两个命令的失败结果，marsdawn 0.5.2 到 0.7.0',
@@ -1118,12 +1171,16 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                               '- `--json`：输出 JSON 结果，而不是文本。\n'
                               '\n'
                               '`theme` 命令从 marsdawn 0.6.1 开始提供。'},
- 'zh-hant': {'agents_folder_items': ['`--wait` 大於 0、且 MarsDawn 為 1.0.2 以上時，等待結束後 `folder` 還會帶 '
-                                     '`status`：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` '
+ 'zh-hant': {'agents_folder_items': ['MarsDawn 為 1.0.2 以上時，等待結束後 `folder` 還會帶 `status`（`--wait` 預設 2 '
+                                     '秒）：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` '
                                      '或 `unknown`。只有在 `needsUser` 時，才會再帶 `waitingFor`：`confirmation` 或 '
-                                     '`folderChoice`。沒有 `--wait`，或 app 不會回報時，`folder` 維持 `{"path": …, '
+                                     '`folderChoice`。加上 `--wait 0`，或 app 不會回報時，`folder` 維持 `{"path": …, '
                                      '"requested": true}`。`--wait` 超出 0 到 30 時以代碼 64 結束，並帶 `error: '
                                      '"wait_out_of_range"`。（marsdawn 0.5.3 以後。）'],
+             'agents_folder_line': '`folder`：只有指定了資料夾時才有。`path` 是它的絕對路徑。`requested` 一律是 `true`：marsdawn 已請 '
+                                   'MarsDawn 顯示這個資料夾。側邊欄是否顯示由 app 決定，app 也可能先向使用者要求存取權限。MarsDawn 為 1.0.2 '
+                                   '以上時，下一條的 `status` 會說明結果，除非加上 `--wait 0`。沒有 `status` 時 marsdawn '
+                                   '無法得知，請回報為「已要求」，而不是「已完成」。',
              'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                     '\n'
                                     '2026 年 9 月 29 日。檢查主題。\n'
@@ -1214,8 +1271,9 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
              'open_items': ['`--wait <n>`：搭配會回報結果的 MarsDawn 1.0.2 以上，`--folder` 最多等 n 秒（0 到 30，預設 2），等 app '
                             '回報資料夾的結果。`--wait 0`，或 app 不會回報時，不會等待，送出的請求和以前完全相同。',
                             '`--wait` 的值超出 0 到 30 是使用方式錯誤（代碼 64）。負數要寫成 `--wait=-1`。',
-                            '加上 `--json` 時，資料夾回報的是「已請求」，不是「已附加」，因為由 app 決定；加上 `--wait` '
-                            '時，結果也會說明資料夾後來怎麼了。完整列表見[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。'],
+                            '加上 `--json` 時，資料夾回報的是「已要求」，不是「已附加」，因為由 app 決定；MarsDawn 為 1.0.2 '
+                            '以上時，結果也會說明資料夾後來怎麼了，除非加上 `--wait 0`。完整列表見[給 AI agent 的 marsdawn '
+                            '參考](/zh-hant/cli/agents/)。'],
              'open_since': '行號功能從 marsdawn 0.3.0 開始提供，資料夾與 `--background` 從 0.5.1 開始，`--wait` 與資料夾狀態從 0.5.3 '
                            '開始。',
              'schema_notes': {'error': '兩個指令的失敗結果，marsdawn 0.5.2 到 0.7.0',
