@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copier un chemin de fichier et des numéros de ligne pour votre agent · MarsDawn</title>
+<meta name="description" content="Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/copy-for-ai/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/copy-for-ai/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/copy-for-ai/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/copy-for-ai/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/copy-for-ai/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/copy-for-ai/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/copy-for-ai/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/copy-for-ai/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/copy-for-ai/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/fr/copy-for-ai/">
+<link rel="alternate" type="text/markdown" href="/fr/copy-for-ai/index.md">
+<meta property="og:title" content="Copier un chemin de fichier et des numéros de ligne pour votre agent · MarsDawn">
+<meta property="og:description" content="Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/fr/copy-for-ai/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/fr/"}, {"@type": "ListItem", "position": 2, "name": "Copier pour l’IA", "item": "https://marsdawn.southern-light.dev/fr/copy-for-ai/"}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/fr/" aria-label="Accueil de MarsDawn">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="site-nav" aria-label="Navigation principale">
+    <ul class="site-nav-wide">
+      <li><a href="/fr/features/">Fonctionnalités</a></li>
+      <li><a href="/fr/cli/">Agents</a></li>
+      <li><a href="/fr/themes/">Thèmes</a></li>
+      <li><a href="/fr/vs/">Comparer</a></li>
+      <li><a href="/fr/support/">Assistance</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>Menu</summary>
+      <ul>
+        <li><a href="/fr/features/">Fonctionnalités</a></li>
+        <li><a href="/fr/cli/">Agents</a></li>
+        <li><a href="/fr/themes/">Thèmes</a></li>
+        <li><a href="/fr/vs/">Comparer</a></li>
+        <li><a href="/fr/support/">Assistance</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="Langue">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/copy-for-ai/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/copy-for-ai/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/copy-for-ai/" hreflang="ja" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/copy-for-ai/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary lang="fr">Français</summary>
+      <ul>
+        <li><a href="/de/copy-for-ai/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/copy-for-ai/" hreflang="fr" aria-current="true" lang="fr">Français</a></li>
+        <li><a href="/es/copy-for-ai/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/copy-for-ai/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>FR</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/copy-for-ai/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/copy-for-ai/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/copy-for-ai/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/copy-for-ai/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/copy-for-ai/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/copy-for-ai/" hreflang="fr" aria-current="true" lang="fr">Français</a></li>
+        <li><a href="/es/copy-for-ai/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/copy-for-ai/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Donnez à votre agent le chemin, les numéros de ligne et le texte</h1>
+  <p>Copier pour l’IA copie votre sélection avec son chemin de fichier et ses numéros de ligne, sans IDE ni plug-in. Collez-la dans n’importe quel agent.</p>
+</section>
+<p>Ce que vous collez :</p>
+<pre tabindex="0"><code>docs/plan.md:42-43
+```markdown
+Réessayer trois fois après un échec.
+Puis afficher la dernière copie.
+```</code></pre>
+<h2 id="how-to-use-it">Comment l’utiliser</h2>
+<ol>
+  <li>Sélectionnez du texte dans la source, en Source uniquement ou Partagé. Sans sélection, la ligne du curseur est copiée.</li>
+  <li>Choisissez Édition ▸ Copier pour l’IA, appuyez sur ⌃⌥⌘C, ou faites un clic secondaire sur la sélection.</li>
+  <li>Collez-la dans le chat de votre agent.</li>
+</ol>
+<h2 id="copy-for-ai-or-send-to">Copier pour l’IA ou Envoyer à…</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-labelledby="copy-for-ai-or-send-to"><table class="compare">
+<thead><tr><td></td><th scope="col">Copier pour l’IA</th><th scope="col">Envoyer à…</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Résultat</th><td>Dans le presse-papiers, à coller vous-même</td><td>Ouvre Claude ou ChatGPT avec une invite</td></tr>
+  <tr><th scope="row">Chemin</th><td>Relatif dans un projet, complet en dehors</td><td>Relatif ou nom du fichier, jamais complet</td></tr>
+  <tr><th scope="row">Qui répond</th><td>L’agent où vous collez</td><td>Le service choisi</td></tr>
+</tbody>
+</table></div>
+<h2 id="what-the-path-looks-like">À quoi ressemble le chemin</h2>
+<p>Dans un checkout Git accessible à MarsDawn, ou un dossier de la barre latérale, le chemin est relatif au projet. Ailleurs, c’est le chemin complet, qui peut montrer votre nom d’utilisateur. Dans un worktree, la barre latérale affiche la branche dès que le dossier du dépôt principal est aussi accessible.</p>
+<h2 id="next">Pour aller plus loin</h2>
+<ul>
+  <li><a href="/fr/reviewing-agent-plans/">Relire le plan d’un agent en cinq minutes</a></li>
+  <li><a href="/fr/features/">Toutes les fonctionnalités</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Navigation du site">
+    <h2 class="footer-nav-title">Navigation du site</h2>
+    <section aria-labelledby="footer-product">
+      <h3 id="footer-product">Produit</h3>
+      <ul>
+        <li><a href="/fr/features/">Fonctionnalités</a></li>
+        <li><a href="/fr/quicklook/">Coup d’œil pour Markdown</a></li>
+        <li><a href="/fr/native/">Une app Mac</a></li>
+        <li><a href="/fr/pdf/">Export PDF</a></li>
+        <li><a href="/fr/limits/">Ce que MarsDawn ne fait pas</a></li>
+        <li><a href="/fr/pay-once/">Essai gratuit, achat unique</a></li>
+        <li><a href="/fr/yours/">Vos textes restent sur votre Mac</a></li>
+        <li><a href="/fr/changelog/">Historique des versions</a></li>
+        <li><a href="/fr/roadmap/">Feuille de route</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h3 id="footer-agents">Pour les agents et la CLI</h3>
+      <ul>
+        <li><a href="/fr/cli/">Ligne de commande</a></li>
+        <li><a href="/fr/cli/agents/">marsdawn pour les agents</a></li>
+        <li><a href="/fr/cli/mcp/">Serveur MCP</a></li>
+        <li><a href="/fr/cli/skill/">Skill pour agents</a></li>
+        <li><a href="/fr/agent-transparency/">Transparence des agents</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h3 id="footer-guides">Guides</h3>
+      <ul>
+        <li><a href="/fr/view-markdown-on-mac/">Ouvrir un fichier .md sur Mac</a></li>
+        <li><a href="/fr/markdown-to-pdf/">Markdown vers PDF</a></li>
+        <li><a href="/fr/mermaid-preview-mac/">Aperçu Mermaid sur Mac</a></li>
+        <li><a href="/fr/reading-agent-output/">Lire ce que votre agent vous rend</a></li>
+        <li><a href="/fr/reviewing-ai-output/">Pourquoi ce que produit l’IA a encore besoin d’un lecteur humain</a></li>
+        <li><a href="/fr/reviewing-agent-plans/">Relire le plan d’un agent</a></li>
+        <li><a href="/fr/token-efficient-review/">Relire en économisant les tokens</a></li>
+        <li><a href="/fr/sharing-exported-pdfs/">Partager les PDF exportés</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h3 id="footer-compare">Comparer</h3>
+      <ul>
+        <li><a href="/fr/vs/">MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice</a></li>
+        <li><a href="/fr/vs/macmd-viewer/">MacMD Viewer vs MarsDawn</a></li>
+        <li><a href="/fr/vs/markdown-preview-tools/">Afficher du Markdown ailleurs vs MarsDawn</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h3 id="footer-themes">Thèmes</h3>
+      <ul>
+        <li><a href="/fr/themes/">Thèmes</a></li>
+        <li><a href="/fr/themes/gallery/">Galerie de thèmes</a></li>
+        <li><a href="/fr/themes/new/">Créer un thème</a></li>
+        <li><a href="/fr/themes/agents/">Créer un thème avec votre agent</a></li>
+        <li><a href="/fr/templates/">Modèles</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h3 id="footer-support">Assistance et mentions légales</h3>
+      <ul>
+        <li><a href="/fr/support/">Assistance</a></li>
+        <li><a href="/fr/privacy/">Politique de confidentialité</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">Réglages des cookies</button></li>
+      </ul>
+    </section>
+  </nav>
+  <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-copy-for-ai&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, le logo Apple, Mac, iPhone, iPad et iCloud sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres pays et régions. App Store et Mac App Store sont des marques de service d’Apple Inc.</p>
+</footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentement aux cookies" hidden>
+  <p>Cookies de mesure d’audience, désactivés tant que vous n’acceptez pas.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Refuser</button>
+    <button type="button" id="consent-accept" class="consent-btn">Accepter</button>
+  </div>
+</div>
+</body>
+</html>

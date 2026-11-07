@@ -25,7 +25,7 @@ The file is long, and the part that matters is rarely near the top. It has Merma
 - **Diagrams and math:** Mermaid and KaTeX are drawn in the preview beside the source (⌘2), and the two panes scroll together.
 - **Rewritten while you read:** when the agent rewrites the file, MarsDawn reloads it and keeps your place, as long as you have no unsaved edits of your own.
 - **Several files:** open the agent's folder with File ▸ Open Folder… (⇧⌘O). New files show up in the Files tab within about a second, and for a git checkout the header names the branch or worktree.
-- **Exact feedback:** Edit ▸ Copy Reference (⌥⌘C) copies your place as `docs/plan.md:42`. Copy for AI (⌃⌥⌘C) adds the selected text under it. Paste either into the agent's chat.
+- **Exact feedback:** Edit ▸ Copy Reference (⌥⌘C) copies your place as `docs/plan.md:42`. [Copy for AI](/copy-for-ai/) (⌃⌥⌘C) adds the selected text under it. Paste either into the agent's chat.
 
 Two more for the loop: an agent can run `marsdawn open plan.md:42` to open the file in MarsDawn at line 42, the line it wants you to see first, and a reviewed file exports to PDF from the app or with the free `marsdawn export` command.
 
@@ -85,6 +85,7 @@ It exports Markdown to PDF without the app, and `marsdawn open` lets your agent 
 - [How to open .md files on Mac](https://marsdawn.southern-light.dev/view-markdown-on-mac/index.md): How to open a .md file on a Mac: double-click, set a default app, preview in Finder. For .md files an AI agent wrote, read them rendered in MarsDawn.
 - [Mermaid preview on Mac](https://marsdawn.southern-light.dev/mermaid-preview-mac/index.md): See Mermaid diagrams drawn next to your Markdown on a Mac: live preview, Quick Look and PDF export. A broken diagram shows its error and the line.
 - [Quick Look for Markdown](https://marsdawn.southern-light.dev/quicklook/index.md): MarsDawn's Quick Look renders Markdown in Finder when you press Space, with Mermaid, KaTeX and highlighted code. It keeps working after the trial ends.
+- [Copy for AI](https://marsdawn.southern-light.dev/copy-for-ai/index.md): Copy selected text with its file path and line numbers, then paste it into Claude Code or any agent. MarsDawn does this on your Mac, with no IDE or plugin.
 - [Markdown to PDF](https://marsdawn.southern-light.dev/markdown-to-pdf/index.md): Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.
 - [MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/vs/index.md): For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026, except MarsDawn's PDF cell, updated on 7 November 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on Support.
 - [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer is a read-only Markdown viewer for USD 19.99. MarsDawn edits and previews side by side: free for 14 days, then USD 4.99 once.

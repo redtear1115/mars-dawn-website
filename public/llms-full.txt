@@ -224,7 +224,7 @@ The sidebar's Outline tab lists a document's headings; click one to jump there. 
 
 ### Point at the exact line
 
-Edit ▸ Copy Reference copies your place as a path and line, like `docs/plan.md:42`. Copy for AI adds the selected text under it. Paste either into the agent's chat.
+Edit ▸ Copy Reference copies your place as a path and line, like `docs/plan.md:42`. [Copy for AI](/copy-for-ai/) adds the selected text under it. Paste either into the agent's chat.
 
 [Reading what your agent hands back](/reading-agent-output/)
 
@@ -952,6 +952,49 @@ MarsDawn needs macOS 26 or later.
 - [A Mac app](/native/)
 - [Try free, pay once](/pay-once/)
 - [How to open .md files on Mac](/view-markdown-on-mac/)
+
+---
+
+## Copy for AI
+
+Source: https://marsdawn.southern-light.dev/copy-for-ai/
+
+# Give your agent the file path, line numbers and text
+
+Copy for AI copies your selection with its file path and line numbers, with no IDE or plugin. Paste it into any agent.
+
+What you paste:
+
+````
+docs/plan.md:42-43
+```markdown
+Retry a failed upload three times.
+Then show the last saved copy.
+```
+````
+
+## How to use it
+
+1. Select text in the source, in Source Only or Split. With nothing selected, the line the cursor is on is copied.
+2. Choose Edit ▸ Copy for AI, press ⌃⌥⌘C, or Control-click the selection.
+3. Paste it into your agent's chat.
+
+## Copy for AI or Send to…
+
+|  | Copy for AI | Send to… |
+|---|---|---|
+| Result | On the clipboard, for you to paste | Opens Claude or ChatGPT with a prompt |
+| Path | Relative in a project, full path outside one | Relative path or file name, never a full path |
+| Who answers | The agent you paste into | The service you pick |
+
+## What the path looks like
+
+In a Git checkout MarsDawn can access, or a sidebar folder, the path is relative to the project. Elsewhere it's the full path, which can show your user name. In a worktree, the sidebar shows the branch once the main repo folder has access too.
+
+## Next
+
+- [Reviewing an agent plan in five minutes](/reviewing-agent-plans/)
+- [All features](/features/)
 
 ---
 
@@ -2368,7 +2411,7 @@ The file is long, and the part that matters is rarely near the top. It has Merma
 - **Diagrams and math:** Mermaid and KaTeX are drawn in the preview beside the source (⌘2), and the two panes scroll together.
 - **Rewritten while you read:** when the agent rewrites the file, MarsDawn reloads it and keeps your place, as long as you have no unsaved edits of your own.
 - **Several files:** open the agent's folder with File ▸ Open Folder… (⇧⌘O). New files show up in the Files tab within about a second, and for a git checkout the header names the branch or worktree.
-- **Exact feedback:** Edit ▸ Copy Reference (⌥⌘C) copies your place as `docs/plan.md:42`. Copy for AI (⌃⌥⌘C) adds the selected text under it. Paste either into the agent's chat.
+- **Exact feedback:** Edit ▸ Copy Reference (⌥⌘C) copies your place as `docs/plan.md:42`. [Copy for AI](/copy-for-ai/) (⌃⌥⌘C) adds the selected text under it. Paste either into the agent's chat.
 
 Two more for the loop: an agent can run `marsdawn open plan.md:42` to open the file in MarsDawn at line 42, the line it wants you to see first, and a reviewed file exports to PDF from the app or with the free `marsdawn export` command.
 
@@ -2565,7 +2608,7 @@ plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
 plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.
 ```
 
-Any editor with line numbers will do. In MarsDawn, Edit ▸ Copy Reference (⌥⌘C) copies your place as `plan.md:10`, and Copy for AI (⌃⌥⌘C) adds the selected text under it.
+Any editor with line numbers will do. In MarsDawn, Edit ▸ Copy Reference (⌥⌘C) copies your place as `plan.md:10`, and [Copy for AI](/copy-for-ai/) (⌃⌥⌘C) adds the selected text under it.
 
 ## If you have one minute
 
@@ -3760,7 +3803,7 @@ MarsDawn 是為 Mac 做的 Markdown 編輯器。一邊寫，一邊讀排版後�
 
 ### 指出確切的那一行
 
-「編輯 ▸ 拷貝引用」會把你的位置拷貝成路徑加行號，例如 `docs/plan.md:42`。「拷貝給 AI」再附上所選的文字。貼到 agent 的對話裡就行。
+「編輯 ▸ 拷貝引用」會把你的位置拷貝成路徑加行號，例如 `docs/plan.md:42`。「[拷貝給 AI](/zh-hant/copy-for-ai/)」再附上所選的文字。貼到 agent 的對話裡就行。
 
 [讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)
 
@@ -4488,6 +4531,49 @@ MarsDawn 需要 macOS 26 或更新版本。
 - [為 Mac 而做](/zh-hant/native/)
 - [免費試用，買一次就好](/zh-hant/pay-once/)
 - [Mac 怎麼開 md 檔](/zh-hant/view-markdown-on-mac/)
+
+---
+
+## 拷貝給 AI
+
+Source: https://marsdawn.southern-light.dev/zh-hant/copy-for-ai/
+
+# 把檔案路徑、行號和內容一起交給 agent
+
+「拷貝給 AI」會把選取的文字連同檔案路徑和行號一起拷貝，不用開 IDE，也不用裝外掛。貼進任何 agent 就好。
+
+貼上後長這樣：
+
+````
+docs/plan.md:42-43
+```markdown
+上傳失敗時重試三次。
+之後顯示上次儲存的版本。
+```
+````
+
+## 怎麼用
+
+1. 在原始碼裡選取文字，用「只顯示原始碼」或「並排」都可以。沒有選取時，會拷貝游標所在的那一行。
+2. 選「編輯 ▸ 拷貝給 AI」、按 ⌃⌥⌘C，或在選取的文字上按右鍵。
+3. 貼到 agent 的對話裡。
+
+## 「拷貝給 AI」和「傳給⋯」的差別
+
+|  | 拷貝給 AI | 傳給⋯ |
+|---|---|---|
+| 結果 | 放到剪貼簿，由你貼上 | 帶著提示打開 Claude 或 ChatGPT |
+| 路徑 | 專案內是相對路徑，專案外是完整路徑 | 相對路徑或檔名，不會是完整路徑 |
+| 誰回答 | 你貼給的 agent | 你選的服務 |
+
+## 路徑長什麼樣
+
+檔案在 MarsDawn 可存取的 git checkout 或側邊欄資料夾裡，路徑相對於專案。其他是完整路徑，可能帶出使用者名稱。worktree 要主 repo 資料夾也授權，側邊欄才會顯示分支。
+
+## 接下來
+
+- [五分鐘審完一份 agent 計畫](/zh-hant/reviewing-agent-plans/)
+- [所有功能](/zh-hant/features/)
 
 ---
 
@@ -5904,7 +5990,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/reading-agent-output/
 - **圖表和數學式：**Mermaid 和 KaTeX 直接畫在預覽裡，和原始碼並排（⌘2），兩邊一起捲動。
 - **讀到一半被改寫：**agent 改寫檔案時，MarsDawn 會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改。
 - **好幾個檔案：**用「檔案 ▸ 打開資料夾⋯」（⇧⌘O）打開 agent 工作的資料夾，新檔案大約一秒內就會出現在「檔案」分頁；如果是 git 檢出，清單上方會標出分支或工作樹。
-- **回饋要準：**「編輯 ▸ 拷貝引用」（⌥⌘C）把目前位置拷貝成 `docs/plan.md:42`，「拷貝給 AI」（⌃⌥⌘C）會在下面附上你選取的文字，直接貼給 agent 就好。
+- **回饋要準：**「編輯 ▸ 拷貝引用」（⌥⌘C）把目前位置拷貝成 `docs/plan.md:42`，「[拷貝給 AI](/zh-hant/copy-for-ai/)」（⌃⌥⌘C）會在下面附上你選取的文字，直接貼給 agent 就好。
 
 另外兩件事也和這個循環有關：agent 可以執行 `marsdawn open plan.md:42`，在 MarsDawn 裡幫你打開檔案，直接停在第 42 行，也就是它想先讓你看的那一行；審完的檔案可以從 app 輸出 PDF，也可以用免費的 `marsdawn export` 指令。
 
@@ -6103,7 +6189,7 @@ plan.md:14：是哪些測試？加一個切換後載入舊頭像網址的測試�
 plan.md:6：沒有處理舊連結。加一步讓舊連結繼續能用，也寫出怎麼退回去。
 ```
 
-有行號的編輯器都能做到。在 MarsDawn 裡，「編輯 ▸ 拷貝引用」（⌥⌘C）會把目前位置拷貝成 `plan.md:10`，「拷貝給 AI」（⌃⌥⌘C）會在下面附上你選取的文字。
+有行號的編輯器都能做到。在 MarsDawn 裡，「編輯 ▸ 拷貝引用」（⌥⌘C）會把目前位置拷貝成 `plan.md:10`，「[拷貝給 AI](/zh-hant/copy-for-ai/)」（⌃⌥⌘C）會在下面附上你選取的文字。
 
 ## 只有一分鐘的話
 
@@ -7335,7 +7421,7 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后�
 
 ### 指出确切的那一行
 
-“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 `docs/plan.md:42`。“拷贝给 AI”再附上所选的文字。粘贴到代理的对话里就行。
+“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 `docs/plan.md:42`。“[拷贝给 AI](/zh-hans/copy-for-ai/)”再附上所选的文字。粘贴到代理的对话里就行。
 
 [读懂代理交回来的 Markdown](/zh-hans/reading-agent-output/)
 
@@ -8062,6 +8148,49 @@ MarsDawn 需要 macOS 26 或更新版本。
 - [为 Mac 而做](/zh-hans/native/)
 - [免费试用，买一次就好](/zh-hans/pay-once/)
 - [Mac 上怎么打开 md 文件](/zh-hans/view-markdown-on-mac/)
+
+---
+
+## 拷贝给 AI
+
+Source: https://marsdawn.southern-light.dev/zh-hans/copy-for-ai/
+
+# 把文件路径、行号和内容一起交给代理
+
+“拷贝给 AI”会把所选文本连同文件路径和行号一起拷贝，不用打开 IDE，也不用装插件。粘贴到任何代理就好。
+
+粘贴后是这样：
+
+````
+docs/plan.md:42-43
+```markdown
+上传失败时重试三次。
+之后显示上次存储的版本。
+```
+````
+
+## 怎么用
+
+1. 在源代码里选中文本，用“仅显示源代码”或“并排”都可以。没有选中时，会拷贝光标所在的那一行。
+2. 选择“编辑 ▸ 拷贝给 AI”、按 ⌃⌥⌘C，或在选中的文本上点按右键。
+3. 粘贴到代理的对话里。
+
+## “拷贝给 AI”和“传给…”的区别
+
+|  | 拷贝给 AI | 传给… |
+|---|---|---|
+| 结果 | 放到剪贴板，由你粘贴 | 带着提示打开 Claude 或 ChatGPT |
+| 路径 | 项目内是相对路径，项目外是完整路径 | 相对路径或文件名，不会是完整路径 |
+| 谁回答 | 你粘贴给的代理 | 你选的服务 |
+
+## 路径是什么样
+
+文件在 MarsDawn 可访问的 git checkout 或边栏文件夹里，路径相对于项目。其他是完整路径，可能带出用户名。worktree 要主仓库文件夹也授权，边栏才会显示分支。
+
+## 接下来
+
+- [五分钟审完一份代理计划](/zh-hans/reviewing-agent-plans/)
+- [所有功能](/zh-hans/features/)
 
 ---
 
@@ -9472,7 +9601,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/reading-agent-output/
 - **图表和数学式：**Mermaid 和 KaTeX 直接画在预览里，和原始码并排（⌘2），两边一起卷动。
 - **读到一半被改写：**代理改写文件时，MarsDawn 会重新加载，停在你原本读到的位置，前提是你自己没有未储存的修改。
 - **好几个文件：**用“文件 ▸ 打开文件夹⋯”（⇧⌘O）打开代理工作的文件夹，新文件大约一秒内就会出现在“文件”标签页；如果是 git 检出，清单上方会标出分支或工作树。
-- **反馈要准：**“编辑 ▸ 拷贝引用”（⌥⌘C）把目前位置拷贝成 `docs/plan.md:42`，“拷贝给 AI”（⌃⌥⌘C）会在下面附上你选取的文字，直接贴给代理就好。
+- **反馈要准：**“编辑 ▸ 拷贝引用”（⌥⌘C）把目前位置拷贝成 `docs/plan.md:42`，“[拷贝给 AI](/zh-hans/copy-for-ai/)”（⌃⌥⌘C）会在下面附上你选取的文字，直接贴给代理就好。
 
 另外两件事也和这个循环有关：代理可以执行 `marsdawn open plan.md:42`，在 MarsDawn 里帮你打开文件，直接停在第 42 行，也就是它想先让你看的那一行；审完的文件可以从 app 导出 PDF，也可以用免费的 `marsdawn export` 指令。
 
@@ -9671,7 +9800,7 @@ plan.md:14：是哪些测试？加一个切换后加载旧头像网址的测试�
 plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写出怎么退回去。
 ```
 
-有行号的编辑器都能做到。在 MarsDawn 里，“编辑 ▸ 拷贝引用”（⌥⌘C）会把目前位置拷贝成 `plan.md:10`，“拷贝给 AI”（⌃⌥⌘C）会在下面附上你选取的文字。
+有行号的编辑器都能做到。在 MarsDawn 里，“编辑 ▸ 拷贝引用”（⌥⌘C）会把目前位置拷贝成 `plan.md:10`，“[拷贝给 AI](/zh-hans/copy-for-ai/)”（⌃⌥⌘C）会在下面附上你选取的文字。
 
 ## 只有一分钟的话
 
@@ -10903,7 +11032,7 @@ Markdown ファイルを開くと、整形されたページがソースの隣�
 
 ### 正確な行を示す
 
-「編集 ▸ 参照をコピー」は、現在の位置を `docs/plan.md:42` のようにパスと行番号でコピーします。「AI 用にコピー」は、その下に選択したテキストも付けます。どちらもエージェントのチャットにそのままペーストできます。
+「編集 ▸ 参照をコピー」は、現在の位置を `docs/plan.md:42` のようにパスと行番号でコピーします。「[AI 用にコピー](/ja/copy-for-ai/)」は、その下に選択したテキストも付けます。どちらもエージェントのチャットにそのままペーストできます。
 
 [エージェントが返してくるものを読む](/ja/reading-agent-output/)
 
@@ -11630,6 +11759,49 @@ MarsDawn には macOS 26 以降が必要です。
 - [Mac アプリ](/ja/native/)
 - [無料で試して、一度だけ購入](/ja/pay-once/)
 - [Mac で .md ファイルを開く方法](/ja/view-markdown-on-mac/)
+
+---
+
+## AI 用にコピー
+
+Source: https://marsdawn.southern-light.dev/ja/copy-for-ai/
+
+# ファイルパス、行番号、内容をまとめてエージェントへ
+
+「AI 用にコピー」は、選択したテキストをファイルパスと行番号ごとコピーします。IDE もプラグインも要りません。どのエージェントにも貼り付けられます。
+
+貼り付けるとこうなります：
+
+````
+docs/plan.md:42-43
+```markdown
+アップロード失敗時は 3 回再試行。
+そのあと最後に保存した版を表示。
+```
+````
+
+## 使い方
+
+1. ソースのテキストを選択します。「ソースのみ」でも「分割」でも使えます。選択がないときは、カーソルのある行をコピーします。
+2. 「編集 ▸ AI 用にコピー」を選ぶか、⌃⌥⌘Cを押すか、選択範囲を副ボタンでクリックします。
+3. エージェントのチャットに貼り付けます。
+
+## 「AI 用にコピー」と「送信先…」の違い
+
+|  | AI 用にコピー | 送信先… |
+|---|---|---|
+| 結果 | クリップボードに入り、自分で貼り付ける | プロンプト付きで Claude か ChatGPT を開く |
+| パス | プロジェクト内は相対パス、外はフルパス | 相対パスかファイル名。フルパスにはならない |
+| 答える相手 | 貼り付けた先のエージェント | 選んだサービス |
+
+## パスの形
+
+MarsDawn がアクセスできる git チェックアウトやサイドバーのフォルダ内なら、パスはプロジェクトからの相対パスです。それ以外はフルパスで、ユーザ名が含まれることがあります。worktree では、メインのリポジトリのフォルダにもアクセスを許可すると、サイドバーにブランチが表示されます。
+
+## 次に読む
+
+- [エージェントの計画を 5 分でレビューする](/ja/reviewing-agent-plans/)
+- [すべての機能](/ja/features/)
 
 ---
 
@@ -13040,7 +13212,7 @@ Source: https://marsdawn.southern-light.dev/ja/reading-agent-output/
 - **図と数式：**Mermaid と KaTeX はソースの隣のプレビューに描画され（⌘2）、両方のペインが一緒にスクロールする。
 - **読んでいる途中の書き換え：**エージェントがファイルを書き換えると、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ。
 - **複数のファイル：**「ファイル ▸ フォルダを開く⋯」（⇧⌘O）でエージェントの作業フォルダを開く。新しいファイルは 1 秒ほどでファイルタブに現れ、git のチェックアウトならヘッダーにブランチや worktree の名前が出る。
-- **正確なフィードバック：**「編集 ▸ 参照をコピー」（⌥⌘C）で、いまいる場所を `docs/plan.md:42` の形でコピーできる。「AI 用にコピー」（⌃⌥⌘C）は、その下に選択したテキストを付け加える。どちらもエージェントのチャットに貼り付ければいい。
+- **正確なフィードバック：**「編集 ▸ 参照をコピー」（⌥⌘C）で、いまいる場所を `docs/plan.md:42` の形でコピーできる。「[AI 用にコピー](/ja/copy-for-ai/)」（⌃⌥⌘C）は、その下に選択したテキストを付け加える。どちらもエージェントのチャットに貼り付ければいい。
 
 このループにはもう 2 つ関係がある。エージェントは `marsdawn open plan.md:42` を実行して、MarsDawn でファイルを 42 行目、つまりまず見てほしい行で開かせることができる。そしてレビューが終わったファイルは、アプリから、あるいは無料の `marsdawn export` コマンドで PDF に書き出せる。
 
@@ -13239,7 +13411,7 @@ plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
 plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.
 ```
 
-行番号のあるエディタなら何でもいい。MarsDawn では、「編集 ▸ 参照をコピー」（⌥⌘C）でいまいる場所を `plan.md:10` の形でコピーでき、「AI 用にコピー」（⌃⌥⌘C）はその下に選択したテキストを付け加える。
+行番号のあるエディタなら何でもいい。MarsDawn では、「編集 ▸ 参照をコピー」（⌥⌘C）でいまいる場所を `plan.md:10` の形でコピーでき、「[AI 用にコピー](/ja/copy-for-ai/)」（⌃⌥⌘C）はその下に選択したテキストを付け加える。
 
 ## 1 分しかないなら
 
@@ -14470,7 +14642,7 @@ Der Tab „Gliederung“ der Seitenleiste listet die Überschriften eines Dokume
 
 ### Auf die genaue Zeile zeigen
 
-Bearbeiten ▸ Verweis kopieren kopiert deine Position als Pfad und Zeile, etwa `docs/plan.md:42`. Für KI kopieren fügt darunter den ausgewählten Text hinzu. Setze beides in den Chat des Agenten ein.
+Bearbeiten ▸ Verweis kopieren kopiert deine Position als Pfad und Zeile, etwa `docs/plan.md:42`. [Für KI kopieren](/de/copy-for-ai/) fügt darunter den ausgewählten Text hinzu. Setze beides in den Chat des Agenten ein.
 
 [Lesen, was dein Agent zurückgibt](/de/reading-agent-output/)
 
@@ -15198,6 +15370,49 @@ MarsDawn braucht macOS 26 oder neuer.
 - [Eine Mac-App](/de/native/)
 - [Kostenlos testen, einmal bezahlen](/de/pay-once/)
 - [So öffnest du .md-Dateien auf dem Mac](/de/view-markdown-on-mac/)
+
+---
+
+## Für KI kopieren
+
+Source: https://marsdawn.southern-light.dev/de/copy-for-ai/
+
+# Gib deinem Agenten Dateipfad, Zeilennummern und Text
+
+Für KI kopieren kopiert deine Auswahl mit Dateipfad und Zeilennummern, ohne IDE oder Plugin. Füge sie in einen beliebigen Agenten ein.
+
+Das fügst du ein:
+
+````
+docs/plan.md:42-43
+```markdown
+Upload bei Fehler dreimal wiederholen.
+Danach letzte gesicherte Kopie zeigen.
+```
+````
+
+## So geht es
+
+1. Wähle Text im Quelltext aus, in Nur Quelltext oder Geteilt. Ohne Auswahl wird die Zeile mit dem Cursor kopiert.
+2. Wähle Bearbeiten ▸ Für KI kopieren, drücke ⌃⌥⌘C oder öffne das Kontextmenü der Auswahl.
+3. Füge es in den Chat deines Agenten ein.
+
+## Für KI kopieren oder Senden an …
+
+|  | Für KI kopieren | Senden an … |
+|---|---|---|
+| Ergebnis | In der Zwischenablage, du fügst selbst ein | Öffnet Claude oder ChatGPT mit einem Prompt |
+| Pfad | Relativ im Projekt, außerhalb der volle Pfad | Relativer Pfad oder Dateiname, nie der volle Pfad |
+| Wer antwortet | Der Agent, in den du einfügst | Der Dienst, den du wählst |
+
+## So sieht der Pfad aus
+
+In einem Git-Checkout, auf den MarsDawn zugreifen kann, oder einem Ordner der Seitenleiste ist der Pfad relativ zum Projekt. Sonst ist es der volle Pfad, der deinen Benutzernamen zeigen kann. In einem Worktree zeigt die Seitenleiste den Branch, sobald auch der Ordner des Haupt-Repositorys Zugriff hat.
+
+## Weiter
+
+- [Einen Agentenplan in fünf Minuten prüfen](/de/reviewing-agent-plans/)
+- [Alle Funktionen](/de/features/)
 
 ---
 
@@ -16614,7 +16829,7 @@ Die Datei ist lang, und der wichtige Teil steht selten oben. Sie enthält Mermai
 - **Diagramme und Formeln:** Mermaid und KaTeX werden in der Vorschau neben dem Quelltext gezeichnet (⌘2), und beide Bereiche scrollen gemeinsam.
 - **Umgeschrieben, während du liest:** Wenn der Agent die Datei umschreibt, lädt MarsDawn sie neu und behält deine Stelle, solange du keine eigenen ungesicherten Änderungen hast.
 - **Mehrere Dateien:** Öffne den Ordner des Agenten mit Ablage ▸ Ordner öffnen … (⇧⌘O). Neue Dateien erscheinen innerhalb etwa einer Sekunde im Tab Dateien, und bei einem Git-Checkout nennt die Kopfzeile den Branch oder Worktree.
-- **Genaues Feedback:** Bearbeiten ▸ Verweis kopieren (⌥⌘C) kopiert deine Stelle als `docs/plan.md:42`. Für KI kopieren (⌃⌥⌘C) fügt den ausgewählten Text darunter ein. Füge beides in den Chat mit dem Agenten ein.
+- **Genaues Feedback:** Bearbeiten ▸ Verweis kopieren (⌥⌘C) kopiert deine Stelle als `docs/plan.md:42`. [Für KI kopieren](/de/copy-for-ai/) (⌃⌥⌘C) fügt den ausgewählten Text darunter ein. Füge beides in den Chat mit dem Agenten ein.
 
 Zwei weitere für den Ablauf: Ein Agent kann `marsdawn open plan.md:42` ausführen, um die Datei in MarsDawn bei Zeile 42 zu öffnen, der Zeile, die du zuerst sehen sollst, und eine geprüfte Datei lässt sich aus der App oder mit dem kostenlosen Befehl `marsdawn export` als PDF exportieren.
 
@@ -16808,7 +17023,7 @@ plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
 plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.
 ```
 
-Jeder Editor mit Zeilennummern genügt. In MarsDawn kopiert Bearbeiten ▸ Verweis kopieren (⌥⌘C) deine Stelle als `plan.md:10`, und Für KI kopieren (⌃⌥⌘C) fügt den ausgewählten Text darunter ein.
+Jeder Editor mit Zeilennummern genügt. In MarsDawn kopiert Bearbeiten ▸ Verweis kopieren (⌥⌘C) deine Stelle als `plan.md:10`, und [Für KI kopieren](/de/copy-for-ai/) (⌃⌥⌘C) fügt den ausgewählten Text darunter ein.
 
 ## Wenn du nur eine Minute hast
 
@@ -17978,7 +18193,7 @@ L’onglet Plan de la barre latérale liste les titres d’un document ; cliquez
 
 ### Montrer la ligne exacte
 
-Édition ▸ Copier la référence copie votre position sous la forme d’un chemin et d’une ligne, comme `docs/plan.md:42`. Copier pour l’IA ajoute en dessous le texte sélectionné. Collez l’un ou l’autre dans la conversation de l’agent.
+Édition ▸ Copier la référence copie votre position sous la forme d’un chemin et d’une ligne, comme `docs/plan.md:42`. [Copier pour l’IA](/fr/copy-for-ai/) ajoute en dessous le texte sélectionné. Collez l’un ou l’autre dans la conversation de l’agent.
 
 [Lire ce que votre agent vous rend](/fr/reading-agent-output/)
 
@@ -18706,6 +18921,49 @@ MarsDawn demande macOS 26 ou une version ultérieure.
 - [Une app Mac](/fr/native/)
 - [Essai gratuit, achat unique](/fr/pay-once/)
 - [Ouvrir un fichier .md sur Mac](/fr/view-markdown-on-mac/)
+
+---
+
+## Copier pour l’IA
+
+Source: https://marsdawn.southern-light.dev/fr/copy-for-ai/
+
+# Donnez à votre agent le chemin, les numéros de ligne et le texte
+
+Copier pour l’IA copie votre sélection avec son chemin de fichier et ses numéros de ligne, sans IDE ni plug-in. Collez-la dans n’importe quel agent.
+
+Ce que vous collez :
+
+````
+docs/plan.md:42-43
+```markdown
+Réessayer trois fois après un échec.
+Puis afficher la dernière copie.
+```
+````
+
+## Comment l’utiliser
+
+1. Sélectionnez du texte dans la source, en Source uniquement ou Partagé. Sans sélection, la ligne du curseur est copiée.
+2. Choisissez Édition ▸ Copier pour l’IA, appuyez sur ⌃⌥⌘C, ou faites un clic secondaire sur la sélection.
+3. Collez-la dans le chat de votre agent.
+
+## Copier pour l’IA ou Envoyer à…
+
+|  | Copier pour l’IA | Envoyer à… |
+|---|---|---|
+| Résultat | Dans le presse-papiers, à coller vous-même | Ouvre Claude ou ChatGPT avec une invite |
+| Chemin | Relatif dans un projet, complet en dehors | Relatif ou nom du fichier, jamais complet |
+| Qui répond | L’agent où vous collez | Le service choisi |
+
+## À quoi ressemble le chemin
+
+Dans un checkout Git accessible à MarsDawn, ou un dossier de la barre latérale, le chemin est relatif au projet. Ailleurs, c’est le chemin complet, qui peut montrer votre nom d’utilisateur. Dans un worktree, la barre latérale affiche la branche dès que le dossier du dépôt principal est aussi accessible.
+
+## Pour aller plus loin
+
+- [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/)
+- [Toutes les fonctionnalités](/fr/features/)
 
 ---
 
@@ -20122,7 +20380,7 @@ Le fichier est long, et la partie importante se trouve rarement en haut. Il cont
 - **Diagrammes et maths :** Mermaid et KaTeX sont dessinés dans l’aperçu à côté de la source (⌘2), et les deux volets défilent ensemble.
 - **Réécrit pendant que vous lisez :** quand l’agent réécrit le fichier, MarsDawn le recharge et garde votre position, tant que vous n’avez pas de modifications non enregistrées.
 - **Plusieurs fichiers :** ouvrez le dossier de l’agent avec Fichier ▸ Ouvrir un dossier… (⇧⌘O). Les nouveaux fichiers apparaissent dans l’onglet Fichiers en une seconde environ, et pour un checkout git, l’en-tête indique la branche ou le worktree.
-- **Un retour précis :** Édition ▸ Copier la référence (⌥⌘C) copie votre position sous la forme `docs/plan.md:42`. Copier pour l’IA (⌃⌥⌘C) ajoute le texte sélectionné en dessous. Collez l’un ou l’autre dans la conversation avec l’agent.
+- **Un retour précis :** Édition ▸ Copier la référence (⌥⌘C) copie votre position sous la forme `docs/plan.md:42`. [Copier pour l’IA](/fr/copy-for-ai/) (⌃⌥⌘C) ajoute le texte sélectionné en dessous. Collez l’un ou l’autre dans la conversation avec l’agent.
 
 Deux de plus pour la boucle : un agent peut lancer `marsdawn open plan.md:42` pour ouvrir le fichier dans MarsDawn à la ligne 42, celle qu’il veut vous montrer en premier, et un fichier relu s’exporte en PDF depuis l’app ou avec la commande gratuite `marsdawn export`.
 
@@ -20316,7 +20574,7 @@ plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
 plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.
 ```
 
-N’importe quel éditeur avec des numéros de ligne fait l’affaire. Dans MarsDawn, Édition ▸ Copier la référence (⌥⌘C) copie votre position sous la forme `plan.md:10`, et Copier pour l’IA (⌃⌥⌘C) ajoute le texte sélectionné en dessous.
+N’importe quel éditeur avec des numéros de ligne fait l’affaire. Dans MarsDawn, Édition ▸ Copier la référence (⌥⌘C) copie votre position sous la forme `plan.md:10`, et [Copier pour l’IA](/fr/copy-for-ai/) (⌃⌥⌘C) ajoute le texte sélectionné en dessous.
 
 ## Si vous avez une minute
 
@@ -21486,7 +21744,7 @@ La pestaña Esquema de la barra lateral enumera los encabezados de un documento;
 
 ### Señala la línea exacta
 
-Edición ▸ Copiar referencia copia dónde estás como una ruta y una línea, por ejemplo `docs/plan.md:42`. Copiar para IA agrega debajo el texto seleccionado. Pega cualquiera de los dos en el chat del agente.
+Edición ▸ Copiar referencia copia dónde estás como una ruta y una línea, por ejemplo `docs/plan.md:42`. [Copiar para IA](/es/copy-for-ai/) agrega debajo el texto seleccionado. Pega cualquiera de los dos en el chat del agente.
 
 [Leer lo que te devuelve tu agente](/es/reading-agent-output/)
 
@@ -22214,6 +22472,49 @@ MarsDawn necesita macOS 26 o posterior.
 - [Una app para Mac](/es/native/)
 - [Pruébalo gratis, paga una vez](/es/pay-once/)
 - [Cómo abrir archivos .md en Mac](/es/view-markdown-on-mac/)
+
+---
+
+## Copiar para IA
+
+Source: https://marsdawn.southern-light.dev/es/copy-for-ai/
+
+# Dale a tu agente la ruta, los números de línea y el texto
+
+Copiar para IA copia tu selección con su ruta de archivo y números de línea, sin IDE ni plugins. Pégala en cualquier agente.
+
+Lo que pegas:
+
+````
+docs/plan.md:42-43
+```markdown
+Reintentar 3 veces si falla la subida.
+Luego mostrar la última copia.
+```
+````
+
+## Cómo usarlo
+
+1. Selecciona texto en el código, en Solo código o Dividido. Sin selección, se copia la línea del cursor.
+2. Elige Edición ▸ Copiar para IA, pulsa ⌃⌥⌘C o abre el menú contextual de la selección.
+3. Pégalo en el chat de tu agente.
+
+## Copiar para IA o Enviar a…
+
+|  | Copiar para IA | Enviar a… |
+|---|---|---|
+| Resultado | En el portapapeles, para pegarlo tú | Abre Claude o ChatGPT con una indicación |
+| Ruta | Relativa en un proyecto, completa fuera de él | Relativa o nombre de archivo, nunca completa |
+| Quién responde | El agente donde pegas | El servicio que elijas |
+
+## Cómo es la ruta
+
+En un checkout de Git al que MarsDawn puede acceder, o en una carpeta de la barra lateral, la ruta es relativa al proyecto. En otros casos es la ruta completa, que puede mostrar tu nombre de usuario. En un worktree, la barra lateral muestra la rama cuando la carpeta del repositorio principal también tiene acceso.
+
+## Siguiente
+
+- [Revisar el plan de un agente en cinco minutos](/es/reviewing-agent-plans/)
+- [Todas las funciones](/es/features/)
 
 ---
 
@@ -23630,7 +23931,7 @@ El archivo es largo, y la parte que importa rara vez está arriba. Tiene diagram
 - **Diagramas y fórmulas:** Mermaid y KaTeX se dibujan en la vista previa junto al código fuente (⌘2), y los dos paneles se desplazan juntos.
 - **Reescrito mientras lees:** cuando el agente reescribe el archivo, MarsDawn lo vuelve a cargar y conserva tu posición, siempre que no tengas cambios propios sin guardar.
 - **Varios archivos:** abre la carpeta del agente con Archivo ▸ Abrir carpeta… (⇧⌘O). Los archivos nuevos aparecen en la pestaña Archivos en aproximadamente un segundo y, en un checkout de git, el encabezado indica la rama o el worktree.
-- **Comentarios exactos:** Edición ▸ Copiar referencia (⌥⌘C) copia tu posición como `docs/plan.md:42`. Copiar para IA (⌃⌥⌘C) agrega el texto seleccionado debajo. Pega cualquiera de los dos en el chat con el agente.
+- **Comentarios exactos:** Edición ▸ Copiar referencia (⌥⌘C) copia tu posición como `docs/plan.md:42`. [Copiar para IA](/es/copy-for-ai/) (⌃⌥⌘C) agrega el texto seleccionado debajo. Pega cualquiera de los dos en el chat con el agente.
 
 Dos más para el ciclo: un agente puede ejecutar `marsdawn open plan.md:42` para abrir el archivo en MarsDawn en la línea 42, la que quiere que veas primero, y un archivo revisado se exporta a PDF desde la app o con el comando gratuito `marsdawn export`.
 
@@ -23824,7 +24125,7 @@ plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
 plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.
 ```
 
-Cualquier editor con números de línea sirve. En MarsDawn, Edición ▸ Copiar referencia (⌥⌘C) copia tu posición como `plan.md:10`, y Copiar para IA (⌃⌥⌘C) añade debajo el texto seleccionado.
+Cualquier editor con números de línea sirve. En MarsDawn, Edición ▸ Copiar referencia (⌥⌘C) copia tu posición como `plan.md:10`, y [Copiar para IA](/es/copy-for-ai/) (⌃⌥⌘C) añade debajo el texto seleccionado.
 
 ## Si tienes un minuto
 
@@ -24994,7 +25295,7 @@ Markdown 파일을 열면 렌더링된 페이지가 소스 옆에 나타납니�
 
 ### 정확한 줄 가리키기
 
-편집 ▸ 참조 복사는 현재 위치를 `docs/plan.md:42`처럼 경로와 줄 번호로 복사합니다. AI용으로 복사는 그 아래에 선택한 텍스트를 덧붙입니다. 어느 쪽이든 에이전트의 채팅에 붙여넣으면 됩니다.
+편집 ▸ 참조 복사는 현재 위치를 `docs/plan.md:42`처럼 경로와 줄 번호로 복사합니다. [AI용으로 복사](/ko/copy-for-ai/)는 그 아래에 선택한 텍스트를 덧붙입니다. 어느 쪽이든 에이전트의 채팅에 붙여넣으면 됩니다.
 
 [에이전트가 돌려준 결과 읽기](/ko/reading-agent-output/)
 
@@ -25722,6 +26023,49 @@ MarsDawn에는 macOS 26 이상이 필요합니다.
 - [Mac 앱](/ko/native/)
 - [무료로 체험하고, 한 번만 구입](/ko/pay-once/)
 - [Mac에서 .md 파일 여는 방법](/ko/view-markdown-on-mac/)
+
+---
+
+## AI용으로 복사
+
+Source: https://marsdawn.southern-light.dev/ko/copy-for-ai/
+
+# 파일 경로, 줄 번호, 내용을 에이전트에게 함께 전달하기
+
+AI용으로 복사는 선택한 텍스트를 파일 경로, 줄 번호와 함께 복사합니다. IDE도 플러그인도 필요 없습니다. 어떤 에이전트에든 붙여 넣으세요.
+
+붙여 넣으면 이렇게 보입니다:
+
+````
+docs/plan.md:42-43
+```markdown
+업로드 실패 시 세 번 다시 시도.
+그다음 마지막 저장본을 표시.
+```
+````
+
+## 사용 방법
+
+1. 소스에서 텍스트를 선택합니다. 소스만이나 분할 모두 됩니다. 선택하지 않으면 커서가 있는 줄을 복사합니다.
+2. 편집 ▸ AI용으로 복사를 선택하거나, ⌃⌥⌘C를 누르거나, 선택 영역을 보조 클릭합니다.
+3. 에이전트 채팅에 붙여 넣습니다.
+
+## AI용으로 복사와 다음으로 보내기…의 차이
+
+|  | AI용으로 복사 | 다음으로 보내기… |
+|---|---|---|
+| 결과 | 클립보드에 담겨 직접 붙여 넣음 | 프롬프트와 함께 Claude나 ChatGPT를 엶 |
+| 경로 | 프로젝트 안은 상대 경로, 밖은 전체 경로 | 상대 경로나 파일 이름, 전체 경로는 없음 |
+| 답하는 쪽 | 붙여 넣은 에이전트 | 선택한 서비스 |
+
+## 경로는 어떻게 보이나요
+
+MarsDawn이 접근할 수 있는 git 체크아웃이나 사이드바 폴더 안이면 경로는 프로젝트 기준 상대 경로입니다. 그 외에는 전체 경로이며 사용자 이름이 보일 수 있습니다. worktree는 기본 저장소 폴더에도 접근을 허용해야 사이드바에 브랜치가 표시됩니다.
+
+## 다음으로
+
+- [에이전트의 계획을 5분 안에 검토하는 법](/ko/reviewing-agent-plans/)
+- [모든 기능](/ko/features/)
 
 ---
 
@@ -27138,7 +27482,7 @@ Source: https://marsdawn.southern-light.dev/ko/reading-agent-output/
 - **다이어그램과 수식:** Mermaid와 KaTeX가 소스 옆 미리보기에 그려지고(⌘2), 두 패널이 함께 스크롤됩니다.
 - **읽는 동안 고쳐 쓰일 때:** 에이전트가 파일을 고쳐 쓰면 MarsDawn이 다시 불러오고 읽던 위치를 유지합니다. 여러분이 저장하지 않은 편집이 없는 한 그렇습니다.
 - **여러 파일:** 파일 ▸ 폴더 열기…(⇧⌘O)로 에이전트의 폴더를 여세요. 새 파일은 약 1초 안에 파일 탭에 나타나고, git 체크아웃이라면 헤더에 브랜치나 워크트리 이름이 표시됩니다.
-- **정확한 피드백:** 편집 ▸ 참조 복사(⌥⌘C)는 현재 위치를 `docs/plan.md:42` 형식으로 복사합니다. AI용으로 복사(⌃⌥⌘C)는 그 아래에 선택한 텍스트를 덧붙입니다. 어느 쪽이든 에이전트와의 채팅에 붙여 넣으세요.
+- **정확한 피드백:** 편집 ▸ 참조 복사(⌥⌘C)는 현재 위치를 `docs/plan.md:42` 형식으로 복사합니다. [AI용으로 복사](/ko/copy-for-ai/)(⌃⌥⌘C)는 그 아래에 선택한 텍스트를 덧붙입니다. 어느 쪽이든 에이전트와의 채팅에 붙여 넣으세요.
 
 반복 과정에 쓸 것이 두 가지 더 있습니다. 에이전트는 `marsdawn open plan.md:42`를 실행해 여러분이 가장 먼저 봤으면 하는 42번째 줄에서 MarsDawn으로 파일을 열 수 있고, 검토를 마친 파일은 앱에서 또는 무료 `marsdawn export` 명령으로 PDF로 내보낼 수 있습니다.
 
@@ -27332,7 +27676,7 @@ plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
 plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.
 ```
 
-줄 번호가 있는 에디터라면 무엇이든 괜찮습니다. MarsDawn에서는 편집 ▸ 참조 복사(⌥⌘C)로 현재 위치를 `plan.md:10` 형식으로 복사하고, AI용으로 복사(⌃⌥⌘C)로 선택한 텍스트를 그 아래에 덧붙일 수 있습니다.
+줄 번호가 있는 에디터라면 무엇이든 괜찮습니다. MarsDawn에서는 편집 ▸ 참조 복사(⌥⌘C)로 현재 위치를 `plan.md:10` 형식으로 복사하고, [AI용으로 복사](/ko/copy-for-ai/)(⌃⌥⌘C)로 선택한 텍스트를 그 아래에 덧붙일 수 있습니다.
 
 ## 1분밖에 없다면
 

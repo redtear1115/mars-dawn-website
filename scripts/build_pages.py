@@ -38,6 +38,7 @@ from best228 import data as best_data  # noqa: E402
 from ia247 import data as ia_data  # noqa: E402
 from tmde130 import data as changelog_data  # noqa: E402
 from cli254 import data as cli254_data  # noqa: E402
+from copy364 import data as copy364_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
@@ -5864,13 +5865,13 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "markdown-to-pdf", "vs", "vs/macmd-viewer", "best-markdown-viewer-mac", "cli", "cli/agents", "cli/skill",
+PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "copy-for-ai", "markdown-to-pdf", "vs", "vs/macmd-viewer", "best-markdown-viewer-mac", "cli", "cli/agents", "cli/skill",
               "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/agents", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog", "roadmap",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
 SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
-                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "mermaid-preview-mac": "mermaid-preview-mac", "quicklook": "quicklook", "cli/skill": "skill",
+                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "mermaid-preview-mac": "mermaid-preview-mac", "quicklook": "quicklook", "copy-for-ai": "copy-for-ai", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
                   "vs": "vs", "vs/macmd-viewer": "vs-macmd-viewer", "best-markdown-viewer-mac": "best-markdown-viewer-mac",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
@@ -5933,7 +5934,7 @@ def all_pages() -> dict:
             body = "".join(pieces[:-2]) + brand_film_themes.MARK + "\n" + "".join(pieces[-2:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return apply_app_changelog(apply_cli254(apply_best228(apply_promo130(apply_seo_copy(merged)))))
+    return apply_copy_for_ai(apply_app_changelog(apply_cli254(apply_best228(apply_promo130(apply_seo_copy(merged))))))
 
 
 # --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
@@ -6011,6 +6012,65 @@ def quicklook_page(locale: str, copy: dict) -> dict:
 </ul>
 """
     return {"title": copy["ql_title"], "description": copy["ql_desc"], "body": body}
+
+
+def copy_for_ai_page(locale: str, copy: dict) -> dict:
+    """/copy-for-ai/ (#364), to Daphne's structure. The film goes under the sample when it exists, and
+    until then the page has no empty place for it. The word in the table's head is the app's own name
+    for the feature, and it's the other pages' link text."""
+    links = "\n".join(f'  <li><a href="{page_path(locale, slug)}">{text}</a></li>'
+                      for slug, text in zip(("reviewing-agent-plans", "features"), copy["next"]))
+    steps = "\n".join(f"  <li>{step}</li>" for step in copy["steps"])
+    head, *rows = copy["table"]
+    cols = "".join(f'<th scope="col">{cell}</th>' for cell in head[1:])
+    trs = "\n".join(f'  <tr><th scope="row">{row[0]}</th>' + "".join(f"<td>{cell}</td>" for cell in row[1:]) + "</tr>" for row in rows)
+    sample = html_escape("\n".join(copy["sample"]), quote=False)
+    body = f"""<section class="intro">
+  <h1>{copy["h1"]}</h1>
+  <p>{copy["lede"]}</p>
+</section>
+<p>{copy["sample_label"]}</p>
+<pre><code>{sample}</code></pre>
+<h2>{copy["how_h"]}</h2>
+<ol>
+{steps}
+</ol>
+<h2>{copy["compare_h"]}</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><td></td>{cols}</tr></thead>
+<tbody>
+{trs}
+</tbody>
+</table></div>
+<h2>{copy["path_h"]}</h2>
+<p>{copy["path"]}</p>
+<h2>{copy["next_h"]}</h2>
+<ul>
+{links}
+</ul>
+"""
+    return {"title": f'{copy["title"]} · MarsDawn', "description": copy["description"], "body": body}
+
+
+def apply_copy_for_ai(merged: dict) -> dict:
+    """The page, and a link to it from the sentence that already names the feature on three pages (#364)."""
+    out = dict(merged)
+    for locale, copy in copy364_data.DATA.items():
+        if locale not in LOCALES or (locale, "index") not in out:
+            continue
+        name = copy["table"][0][1]
+        UI[locale].setdefault("copy-for-ai", name)
+        out[(locale, "copy-for-ai")] = copy_for_ai_page(locale, copy)
+        for slug in ("reading-agent-output", "features", "reviewing-agent-plans"):
+            page = out[(locale, slug)]
+            # Any locale's name, as /quicklook/'s link does: a copy module may still hold another locale's words.
+            names = "|".join(re.escape(c["table"][0][1]) for c in copy364_data.DATA.values())
+            body, n = re.subn(rf'(plan\.md:\d+</code>.*?)({names})',
+                              lambda m: f'{m.group(1)}<a href="{page_path(locale, "copy-for-ai")}">{m.group(2)}</a>',
+                              page["body"], count=1, flags=re.S)
+            assert n == 1, f"{locale}/{slug}: no sentence naming the feature"
+            out[(locale, slug)] = {**page, "body": body}
+    return out
 
 
 def apply_seo_copy(merged: dict) -> dict:
@@ -6788,12 +6848,12 @@ def add_h2_ids(locale: str, slug: str, page: dict, html: str) -> str:
 
 
 # Pages whose comparison table can be wider than its box on a phone in some language (measured at 320, 375,
-# 639, 720 and 1280px, all eight languages, #262 CS-2): there the box is a focusable, labelled region, so a
+# 639, 720 and 1280px, all eight languages, #262 CS-2; /copy-for-ai/ in de at 320px, #364): there the box is a focusable, labelled region, so a
 # keyboard reader can scroll it. The label is the section heading just above it, by the id the build gave
 # that heading (add_h2_ids); a box whose heading has no id is left alone (the home page's, which has none).
 # Every other table-scroll box never overflows and gets nothing. The /best-markdown-viewer-mac/ box is
 # labelled where it is made.
-SCROLL_LABEL_SLUGS = {"agent-design-patterns", "cli/mcp", "vs/markdown-preview-tools"}
+SCROLL_LABEL_SLUGS = {"agent-design-patterns", "cli/mcp", "vs/markdown-preview-tools", "copy-for-ai"}
 
 
 def label_scroll_boxes(slug: str, html: str) -> str:

@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>把文件路径和行号拷贝给代理 · MarsDawn</title>
+<meta name="description" content="选中文本，连同文件路径和行号一起拷贝，粘贴到 Claude Code 或任何代理。在 Mac 上就能做，不用打开 IDE，也不用装插件。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/copy-for-ai/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/copy-for-ai/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/copy-for-ai/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/copy-for-ai/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/copy-for-ai/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/copy-for-ai/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/copy-for-ai/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/copy-for-ai/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/copy-for-ai/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/copy-for-ai/">
+<link rel="alternate" type="text/markdown" href="/zh-hans/copy-for-ai/index.md">
+<meta property="og:title" content="把文件路径和行号拷贝给代理 · MarsDawn">
+<meta property="og:description" content="选中文本，连同文件路径和行号一起拷贝，粘贴到 Claude Code 或任何代理。在 Mac 上就能做，不用打开 IDE，也不用装插件。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/copy-for-ai/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hans/"}, {"@type": "ListItem", "position": 2, "name": "拷贝给 AI", "item": "https://marsdawn.southern-light.dev/zh-hans/copy-for-ai/"}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到内容</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hans/" aria-label="MarsDawn 首页">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="site-nav" aria-label="主导航">
+    <ul class="site-nav-wide">
+      <li><a href="/zh-hans/features/">功能</a></li>
+      <li><a href="/zh-hans/cli/">代理</a></li>
+      <li><a href="/zh-hans/themes/">主题</a></li>
+      <li><a href="/zh-hans/vs/">比较</a></li>
+      <li><a href="/zh-hans/support/">支持</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>菜单</summary>
+      <ul>
+        <li><a href="/zh-hans/features/">功能</a></li>
+        <li><a href="/zh-hans/cli/">代理</a></li>
+        <li><a href="/zh-hans/themes/">主题</a></li>
+        <li><a href="/zh-hans/vs/">比较</a></li>
+        <li><a href="/zh-hans/support/">支持</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="语言">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/copy-for-ai/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/copy-for-ai/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/copy-for-ai/" hreflang="ja" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/copy-for-ai/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary>更多</summary>
+      <ul>
+        <li><a href="/de/copy-for-ai/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/copy-for-ai/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/copy-for-ai/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/copy-for-ai/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>简中</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/copy-for-ai/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/copy-for-ai/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/copy-for-ai/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/copy-for-ai/" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/copy-for-ai/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/copy-for-ai/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/copy-for-ai/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/copy-for-ai/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>把文件路径、行号和内容一起交给代理</h1>
+  <p>“拷贝给 AI”会把所选文本连同文件路径和行号一起拷贝，不用打开 IDE，也不用装插件。粘贴到任何代理就好。</p>
+</section>
+<p>粘贴后是这样：</p>
+<pre><code>docs/plan.md:42-43
+```markdown
+上传失败时重试三次。
+之后显示上次存储的版本。
+```</code></pre>
+<h2 id="how-to-use-it">怎么用</h2>
+<ol>
+  <li>在源代码里选中文本，用“仅显示源代码”或“并排”都可以。没有选中时，会拷贝光标所在的那一行。</li>
+  <li>选择“编辑 ▸ 拷贝给 AI”、按 ⌃⌥⌘C，或在选中的文本上点按右键。</li>
+  <li>粘贴到代理的对话里。</li>
+</ol>
+<h2 id="copy-for-ai-or-send-to">“拷贝给 AI”和“传给…”的区别</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-labelledby="copy-for-ai-or-send-to"><table class="compare">
+<thead><tr><td></td><th scope="col">拷贝给 AI</th><th scope="col">传给…</th></tr></thead>
+<tbody>
+  <tr><th scope="row">结果</th><td>放到剪贴板，由你粘贴</td><td>带着提示打开 Claude 或 ChatGPT</td></tr>
+  <tr><th scope="row">路径</th><td>项目内是相对路径，项目外是完整路径</td><td>相对路径或文件名，不会是完整路径</td></tr>
+  <tr><th scope="row">谁回答</th><td>你粘贴给的代理</td><td>你选的服务</td></tr>
+</tbody>
+</table></div>
+<h2 id="what-the-path-looks-like">路径是什么样</h2>
+<p>文件在 MarsDawn 可访问的 git checkout 或边栏文件夹里，路径相对于项目。其他是完整路径，可能带出用户名。worktree 要主仓库文件夹也授权，边栏才会显示分支。</p>
+<h2 id="next">接下来</h2>
+<ul>
+  <li><a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份代理计划</a></li>
+  <li><a href="/zh-hans/features/">所有功能</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="网站导航">
+    <h2 class="footer-nav-title">网站导航</h2>
+    <section aria-labelledby="footer-product">
+      <h3 id="footer-product">产品</h3>
+      <ul>
+        <li><a href="/zh-hans/features/">功能一览</a></li>
+        <li><a href="/zh-hans/quicklook/">Markdown 快速查看</a></li>
+        <li><a href="/zh-hans/native/">为 Mac 而做</a></li>
+        <li><a href="/zh-hans/pdf/">导出 PDF</a></li>
+        <li><a href="/zh-hans/limits/">MarsDawn 做不到的事</a></li>
+        <li><a href="/zh-hans/pay-once/">免费试用，买一次就好</a></li>
+        <li><a href="/zh-hans/yours/">你写的内容留在你的 Mac 上</a></li>
+        <li><a href="/zh-hans/changelog/">更新记录</a></li>
+        <li><a href="/zh-hans/roadmap/">路线图</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h3 id="footer-agents">代理与命令行</h3>
+      <ul>
+        <li><a href="/zh-hans/cli/">命令行工具</a></li>
+        <li><a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a></li>
+        <li><a href="/zh-hans/cli/mcp/">MCP 服务器</a></li>
+        <li><a href="/zh-hans/cli/skill/">给代理的 skill</a></li>
+        <li><a href="/zh-hans/agent-transparency/">代理的透明</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h3 id="footer-guides">教学</h3>
+      <ul>
+        <li><a href="/zh-hans/view-markdown-on-mac/">Mac 上怎么打开 md 文件</a></li>
+        <li><a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a></li>
+        <li><a href="/zh-hans/mermaid-preview-mac/">在 Mac 上预览 Mermaid</a></li>
+        <li><a href="/zh-hans/reading-agent-output/">读懂代理交回来的 Markdown</a></li>
+        <li><a href="/zh-hans/reviewing-ai-output/">为什么 AI 写的东西还是需要人读过</a></li>
+        <li><a href="/zh-hans/reviewing-agent-plans/">审代理计划</a></li>
+        <li><a href="/zh-hans/token-efficient-review/">节省 token 的审阅方式</a></li>
+        <li><a href="/zh-hans/sharing-exported-pdfs/">分享导出的 PDF</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h3 id="footer-compare">比较</h3>
+      <ul>
+        <li><a href="/zh-hans/vs/">MarsDawn 对比：VS Code 预览、Obsidian、QLMarkdown、LynxOffice</a></li>
+        <li><a href="/zh-hans/vs/macmd-viewer/">MacMD Viewer 对比 MarsDawn</a></li>
+        <li><a href="/zh-hans/vs/markdown-preview-tools/">在别处看 Markdown，对比 MarsDawn</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h3 id="footer-themes">主题</h3>
+      <ul>
+        <li><a href="/zh-hans/themes/">主题</a></li>
+        <li><a href="/zh-hans/themes/gallery/">主题图库</a></li>
+        <li><a href="/zh-hans/themes/new/">打造一个主题</a></li>
+        <li><a href="/zh-hans/themes/agents/">和代理一起做主题</a></li>
+        <li><a href="/zh-hans/templates/">模板</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h3 id="footer-support">支持与法律</h3>
+      <ul>
+        <li><a href="/zh-hans/support/">支持</a></li>
+        <li><a href="/zh-hans/privacy/">隐私政策</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 设置</button></li>
+      </ul>
+    </section>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-copy-for-ai&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 标志、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美国和其他国家和地区注册的商标。App Store 和 Mac App Store 是 Apple Inc. 的服务商标。</p>
+</footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>
+  <p>本站使用分析用 cookie，点击“接受”前不会启用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒绝</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+</body>
+</html>

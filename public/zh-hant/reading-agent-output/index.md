@@ -25,7 +25,7 @@
 - **圖表和數學式：**Mermaid 和 KaTeX 直接畫在預覽裡，和原始碼並排（⌘2），兩邊一起捲動。
 - **讀到一半被改寫：**agent 改寫檔案時，MarsDawn 會重新載入，停在你原本讀到的位置，前提是你自己沒有未儲存的修改。
 - **好幾個檔案：**用「檔案 ▸ 打開資料夾⋯」（⇧⌘O）打開 agent 工作的資料夾，新檔案大約一秒內就會出現在「檔案」分頁；如果是 git 檢出，清單上方會標出分支或工作樹。
-- **回饋要準：**「編輯 ▸ 拷貝引用」（⌥⌘C）把目前位置拷貝成 `docs/plan.md:42`，「拷貝給 AI」（⌃⌥⌘C）會在下面附上你選取的文字，直接貼給 agent 就好。
+- **回饋要準：**「編輯 ▸ 拷貝引用」（⌥⌘C）把目前位置拷貝成 `docs/plan.md:42`，「[拷貝給 AI](/zh-hant/copy-for-ai/)」（⌃⌥⌘C）會在下面附上你選取的文字，直接貼給 agent 就好。
 
 另外兩件事也和這個循環有關：agent 可以執行 `marsdawn open plan.md:42`，在 MarsDawn 裡幫你打開檔案，直接停在第 42 行，也就是它想先讓你看的那一行；審完的檔案可以從 app 輸出 PDF，也可以用免費的 `marsdawn export` 指令。
 
@@ -85,6 +85,7 @@ brew install redtear1115/tap/marsdawn
 - [Mac 怎麼開 md 檔](https://marsdawn.southern-light.dev/zh-hant/view-markdown-on-mac/index.md): Mac 怎麼開 md 檔：雙擊、設成預設 App、在 Finder 用快速查看。AI agent 寫出來的 .md，也可以用 MarsDawn 打開，讀排好版的頁面。
 - [在 Mac 上預覽 Mermaid](https://marsdawn.southern-light.dev/zh-hant/mermaid-preview-mac/index.md): 在 Mac 上預覽 Mermaid 圖表：原始碼旁邊即時畫出來，快速查看和輸出 PDF 也看得到。圖表寫錯時，會顯示錯誤訊息和出錯的那一行。
 - [Markdown 快速查看](https://marsdawn.southern-light.dev/zh-hant/quicklook/index.md): MarsDawn 的快速查看讓你在 Finder 按空白鍵就看到排版後的 Markdown，Mermaid 圖表、KaTeX 數學式和程式碼上色都在。試用期結束後，快速查看照常可用。
+- [拷貝給 AI](https://marsdawn.southern-light.dev/zh-hant/copy-for-ai/index.md): 選取文字，連同檔案路徑和行號一起拷貝，貼進 Claude Code 或任何 agent。在 Mac 上就能做，不用開 IDE，也不用裝外掛。
 - [Markdown 轉 PDF](https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/index.md): 免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。
 - [MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hant/vs/index.md): 寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新於 2026 年 11 月 7 日）；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。
 - [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 4.99 解鎖一次。逐項比較，附來源。
