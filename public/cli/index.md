@@ -110,13 +110,14 @@ When `--theme` isn't passed, `export` reads the `$MARSDAWN_THEME` environment va
 | `2` | input not found. | Check the path and the file name |
 | `3` | MarsDawn is not installed (`open` only). | Install the app, or use `export`, which doesn't need it |
 | `4` | output exists (pass `--force`). | Pass `--force` to replace it, or `-o` to write elsewhere |
-| `5` | export failed. | Read `message` in the JSON result |
+| `5` | export failed, or the input is larger than 16 MiB (`export` only). | Read `message` in the JSON result; for `input_too_large`, split the file |
 | `6` | this MarsDawn can't show a folder, so nothing was opened (`open` only). |  |
+| `7` | `skill --install` couldn't create the folder or write the file. An existing `SKILL.md` is left as it was. | Check that the folder can be written to, then run it again |
 | `64` | usage error, including a line out of range, `--line` with more than one file or with a folder, or more than one folder. | Fix the option or value; this error is text on stderr, even with `--json` |
 
 ## --json output
 
-On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file's `path`, plus `line` when one was asked for), `app` (the app path) and, when a folder was given, `folder`. `marsdawn export --json` prints `ok`, `output`, `pages`, `theme`, `paper` and `diagramErrors`. On failure, both print `ok`, `error` and `message`.
+On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file's `path`, plus `line` when one was asked for), `app` (the app path) and, when a folder was given, `folder`. `marsdawn export --json` prints `ok`, `output`, `pages`, `theme`, `paper`, `diagramErrors` and `diagramErrorDetails`. On failure, both print `ok`, `error` and `message`.
 
 ## More
 
@@ -164,7 +165,7 @@ On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file'
 - [Spec template](https://marsdawn.southern-light.dev/templates/spec/index.md): A Markdown spec template with requirements, a Mermaid flow diagram and acceptance criteria. Your agent fills it in; you review it in MarsDawn.
 - [Flowchart template](https://marsdawn.southern-light.dev/templates/flowchart/index.md): A Mermaid flowchart template in Markdown, with the steps written out below it. Preview it on a Mac and export it to PDF.
 - [Meeting notes template](https://marsdawn.southern-light.dev/templates/meeting-notes/index.md): A Markdown meeting notes template with decisions and action items, each with an owner. Your agent writes it up; you check it in MarsDawn.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 輸出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/cli/index.md): 免费的 marsdawn 命令行工具：在 Mac 上从终端、脚本或 LLM 代理把 Markdown 导出成 PDF，并提供 JSON 输出。用 Homebrew 安装。
 - [日本語](https://marsdawn.southern-light.dev/ja/cli/index.md): 無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。
 - [Deutsch](https://marsdawn.southern-light.dev/de/cli/index.md): Das kostenlose Befehlszeilenprogramm marsdawn für den Mac: Markdown aus einer Shell, einem Skript oder einem LLM-Agenten als PDF exportieren, mit JSON-Ausgabe. Installation mit Homebrew.

@@ -13,7 +13,7 @@ For anyone choosing how to read and review Markdown on a Mac, often what an agen
 | System requirements | macOS 26.0 or later [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | Not stated by the vendor [[18](#v18)] | macOS 12.0 or later [[23](#v23)] | macOS 13 or later [[2](#v2)] |
 | Account needed | No [/privacy/] | Not stated by the vendor | "No sign-up required" [[15](#v15)] | Not stated by the vendor | No [[2](#v2)] |
 
-Every cell was checked on 16 October 2026 against the source in brackets (V-ids are listed below). Vendor quotes stay as written. "Not stated by the vendor" means the pages we read were silent, not that the feature is missing. No cell ranks the products. MarsDawn's own cells were updated on 29 October 2026 for the iPhone and iPad app, and its PDF cell on 7 November 2026 for the Handbook and Handout layouts.
+Every cell was checked on 16 October 2026 against the source in brackets: a number or kit is listed under Sources below, a path such as /pdf/ is one of our own pages, and [check] is our own export with marsdawn 0.6.4. Vendor quotes stay as written. "Not stated by the vendor" means the pages we read were silent, not that the feature is missing. No cell ranks the products. MarsDawn's own cells were updated on 29 October 2026 for the iPhone and iPad app, and its PDF cell on 7 November 2026 for the Handbook and Handout layouts.
 
 ## Sources
 

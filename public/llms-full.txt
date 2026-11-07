@@ -68,12 +68,12 @@ Know before you buy. [What MarsDawn doesn't do](/limits/)
 
 ## How the pieces fit
 
-What each part does today, as of MarsDawn 1.2.1, marsdawn 0.6.4 and marsdawn-mcp v0.2.4.
+What each part does today, as of MarsDawn 1.2.1, marsdawn 0.7.7 and marsdawn-mcp v0.2.4.
 
 | Capability | In the app | CLI | MCP / skill | Status |
 |---|---|---|---|---|
 | Open at a line | Lands on the line, flashes the preview block | marsdawn open notes.md:120 (--background keeps focus) | open_in_marsdawn; the skill opens once | Shipped |
-| PDF export | File ▸ Export as PDF… (⌥⌘E) | marsdawn export, no app needed | export_markdown_to_pdf; skill | Shipped |
+| PDF export | File ▸ Export as PDF… (⌥⌘E), with Document, Handbook and Handout layouts | marsdawn export, no app needed; --layout handbook or handout | export_markdown_to_pdf; skill | Shipped |
 | JSON result | — | --json on open and export | MCP returns the same JSON | Shipped |
 | Agent skill | — | marsdawn skill --install | Teaches open once and export | Shipped |
 | MCP server | — | Runs underneath | marsdawn-mcp: two tools, allowed folders only | Shipped |
@@ -1066,7 +1066,7 @@ For anyone choosing how to read and review Markdown on a Mac, often what an agen
 | System requirements | macOS 26.0 or later [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | Not stated by the vendor [[18](#v18)] | macOS 12.0 or later [[23](#v23)] | macOS 13 or later [[2](#v2)] |
 | Account needed | No [/privacy/] | Not stated by the vendor | "No sign-up required" [[15](#v15)] | Not stated by the vendor | No [[2](#v2)] |
 
-Every cell was checked on 16 October 2026 against the source in brackets (V-ids are listed below). Vendor quotes stay as written. "Not stated by the vendor" means the pages we read were silent, not that the feature is missing. No cell ranks the products. MarsDawn's own cells were updated on 29 October 2026 for the iPhone and iPad app, and its PDF cell on 7 November 2026 for the Handbook and Handout layouts.
+Every cell was checked on 16 October 2026 against the source in brackets: a number or kit is listed under Sources below, a path such as /pdf/ is one of our own pages, and [check] is our own export with marsdawn 0.6.4. Vendor quotes stay as written. "Not stated by the vendor" means the pages we read were silent, not that the feature is missing. No cell ranks the products. MarsDawn's own cells were updated on 29 October 2026 for the iPhone and iPad app, and its PDF cell on 7 November 2026 for the Handbook and Handout layouts.
 
 ## Sources
 
@@ -1454,13 +1454,14 @@ When `--theme` isn't passed, `export` reads the `$MARSDAWN_THEME` environment va
 | `2` | input not found. | Check the path and the file name |
 | `3` | MarsDawn is not installed (`open` only). | Install the app, or use `export`, which doesn't need it |
 | `4` | output exists (pass `--force`). | Pass `--force` to replace it, or `-o` to write elsewhere |
-| `5` | export failed. | Read `message` in the JSON result |
+| `5` | export failed, or the input is larger than 16 MiB (`export` only). | Read `message` in the JSON result; for `input_too_large`, split the file |
 | `6` | this MarsDawn can't show a folder, so nothing was opened (`open` only). |  |
+| `7` | `skill --install` couldn't create the folder or write the file. An existing `SKILL.md` is left as it was. | Check that the folder can be written to, then run it again |
 | `64` | usage error, including a line out of range, `--line` with more than one file or with a folder, or more than one folder. | Fix the option or value; this error is text on stderr, even with `--json` |
 
 ## --json output
 
-On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file's `path`, plus `line` when one was asked for), `app` (the app path) and, when a folder was given, `folder`. `marsdawn export --json` prints `ok`, `output`, `pages`, `theme`, `paper` and `diagramErrors`. On failure, both print `ok`, `error` and `message`.
+On success, `marsdawn open --json` prints `ok`, `opened` (a list with each file's `path`, plus `line` when one was asked for), `app` (the app path) and, when a folder was given, `folder`. `marsdawn export --json` prints `ok`, `output`, `pages`, `theme`, `paper`, `diagramErrors` and `diagramErrorDetails`. On failure, both print `ok`, `error` and `message`.
 
 ---
 
@@ -2776,6 +2777,12 @@ First release.
 
 Versions before 0.5.1 are not listed.
 
+### marsdawn 0.7.7
+
+DATE-TBD. More reliable parallel exports.
+
+- When parallel exports try to save the same content rules at once, marsdawn retries instead of immediately failing the export.
+
 ### marsdawn 0.7.6
 
 2 November 2026. Handbook PDFs on macOS 27.2.
@@ -3604,12 +3611,12 @@ brew install redtear1115/tap/marsdawn
 
 ## 各部分怎麼搭在一起
 
-以 MarsDawn 1.2.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 為準，各部分目前能做的事。
+以 MarsDawn 1.2.1、marsdawn 0.7.7、marsdawn-mcp v0.2.4 為準，各部分目前能做的事。
 
 | 功能 | App 內 | CLI | MCP／skill | 狀態 |
 |---|---|---|---|---|
 | 打開到某一行 | 停在那一行，預覽區塊閃一下 | marsdawn open notes.md:120（--background 不搶焦點） | open_in_marsdawn；skill 只開一次 | 已推出 |
-| 輸出 PDF | 檔案 ▸ 輸出為 PDF⋯（⌥⌘E） | marsdawn export，不需要 app | export_markdown_to_pdf；skill | 已推出 |
+| 輸出 PDF | 檔案 ▸ 輸出為 PDF⋯（⌥⌘E），可選標準、手冊、講義版面 | marsdawn export，不需要 app；--layout handbook 或 handout | export_markdown_to_pdf；skill | 已推出 |
 | JSON 結果 | — | open、export 加 --json | MCP 回傳同一份 JSON | 已推出 |
 | Agent skill | — | marsdawn skill --install | 教 agent 開一次、輸出 PDF | 已推出 |
 | MCP 伺服器 | — | 在底下執行 | marsdawn-mcp：兩個工具，只碰允許的資料夾 | 已推出 |
@@ -4343,7 +4350,7 @@ marsdawn export notes.md
 open notes.pdf
 ```
 
-`export` 會在 Markdown 檔案旁邊寫出 `notes.pdf`，`open` 會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
+`export` 會在 Markdown 檔案旁邊寫出 `notes.pdf`，`open` 會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際輸出的結果，請看[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
 
 ## 常見問題
 
@@ -4540,7 +4547,7 @@ let pdf = try export("plan.md")
 ```
 ````
 
-## 匯出
+## 輸出
 
 ```
 marsdawn export plan.md
@@ -4554,7 +4561,7 @@ Exported /Users/you/plan.pdf (1 page)
 
 這是那一頁，擷取自 `marsdawn` 0.5.0 的實際執行結果：
 
-![匯出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。](/assets/cli/plan-zh.png)
+![輸出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。](/assets/cli/plan-zh.png)
 
 ## 選主題、紙張大小和檔名
 
@@ -4602,7 +4609,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/
 | 系統需求 | macOS 26.0 以上 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 廠商未說明 [[18](#v18)] | macOS 12.0 以上 [[23](#v23)] | macOS 13 以上 [[2](#v2)] |
 | 需要帳號 | 不用 [/privacy/] | 廠商未說明 | "No sign-up required" [[15](#v15)] | 廠商未說明 | 不用 [[2](#v2)] |
 
-每一格都在 2026 年 10 月 16 日對照括號裡的來源查證（V 編號列在下方）。廠商原文照錄。「廠商未說明」表示我們讀到的頁面沒有提到，不代表沒有這個功能。表格不替產品排名。MarsDawn 自己那一欄在 2026 年 10 月 29 日依 iPhone 和 iPad 版更新，PDF 格子在 2026 年 11 月 7 日依手冊和講義版面更新。
+每一格都在 2026 年 10 月 16 日對照括號裡的來源查證：數字和 kit 列在下方「來源」，/pdf/ 這類路徑是我們自己的頁面，[實測] 是我們用 marsdawn 0.6.4 實際輸出的結果。廠商原文照錄。「廠商未說明」表示我們讀到的頁面沒有提到，不代表沒有這個功能。表格不替產品排名。MarsDawn 自己那一欄在 2026 年 10 月 29 日依 iPhone 和 iPad 版更新，PDF 格子在 2026 年 11 月 7 日依手冊和講義版面更新。
 
 ## 來源
 
@@ -4880,7 +4887,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/
 
 # 命令列工具
 
-免費的 `marsdawn` 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。
+免費的 `marsdawn` 命令列工具：從終端機或 LLM agent 把 Markdown 輸出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。
 
 **marsdawn 免費、另外發佈，不透過 Mac App Store。**用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。`export` 可以單獨使用；`open` 需要 MarsDawn app。
 
@@ -4947,9 +4954,9 @@ marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 - `--theme <dawn|classic|modern|vivid>`：預覽主題的淺色版本，預設讀取 `$MARSDAWN_THEME`，否則用 `dawn`。
 - `--paper <a4|letter>`：紙張大小，預設 `a4`。
 - `--breaks`：段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句。
-- `--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。`handout` 會在每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。
+- `--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。`handout` 會輸出成講義：每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。
 - `--toc-title <text>`：手冊目錄頁的標題，預設是 `Contents`。
-- 單獨一行的 `<!--BREAK-->` 會從新的一頁開始，所有版面都適用。
+- 單獨一行的 `<!--BREAK-->` 會從新的一頁開始，每種版面都適用。
 - `--allow-remote-images`：輸出時載入網路圖片，預設關閉。
 - `--force`：如果輸出檔已存在就直接覆蓋。
 - `--json`：印出 JSON 結果，而不是文字。
@@ -4990,13 +4997,14 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png
 | `2` | 找不到輸入檔。 | 檢查路徑和檔名 |
 | `3` | 尚未安裝 MarsDawn（只有 `open` 會用到）。 | 安裝 app，或改用不需要 app 的 `export` |
 | `4` | 輸出檔已存在（可加上 `--force`）。 | 加上 `--force` 覆寫，或用 `-o` 寫到別處 |
-| `5` | 輸出失敗。 | 讀 JSON 結果裡的 `message` |
+| `5` | 輸出失敗，或輸入超過 16 MiB（只有 `export` 會用到）。 | 讀 JSON 結果裡的 `message`；如果是 `input_too_large`，把檔案拆小 |
 | `6` | 這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西（只有 `open` 會用到）。 |  |
+| `7` | `skill --install` 無法建立資料夾或寫入檔案，原本的 `SKILL.md` 保持不變。 | 確認資料夾可以寫入，再執行一次 |
 | `64` | 使用方式錯誤，包括行號超出範圍、`--line` 搭配了多個檔案或資料夾，或指定了多個資料夾。 | 修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 `--json` 也一樣 |
 
 ## --json 輸出
 
-成功時，`marsdawn open --json` 會印出 `ok`、`opened`（每個檔案的 `path`，有指定行號時另含 `line`）、`app`（App 路徑），有資料夾時另含 `folder`；`marsdawn export --json` 會印出 `ok`、`output`、`pages`、`theme`、`paper` 與 `diagramErrors`。失敗時兩者都會印出 `ok`、`error` 與 `message`。
+成功時，`marsdawn open --json` 會印出 `ok`、`opened`（每個檔案的 `path`，有指定行號時另含 `line`）、`app`（App 路徑），有資料夾時另含 `folder`；`marsdawn export --json` 會印出 `ok`、`output`、`pages`、`theme`、`paper`、`diagramErrors` 與 `diagramErrorDetails`。失敗時兩者都會印出 `ok`、`error` 與 `message`。
 
 ---
 
@@ -5012,7 +5020,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/agents/
 
 ## 能做什麼
 
-- `export`：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。
+- `export`：用和 MarsDawn app 相同的輸出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。
 - `open`：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人審閱，也可以指定每個檔案要定位的行，或在視窗的側邊欄顯示一個資料夾。
 
 ## 不做什麼
@@ -5164,7 +5172,7 @@ exit 0
 - `2`，`input_not_found`：輸入檔不存在、是資料夾，或不是 UTF-8 文字；或 `--folder` 的路徑不存在、不是資料夾。
 - `3`，`app_not_installed`：沒有安裝 MarsDawn。只有 `open` 會回傳這個代碼。
 - `4`，`output_exists`：輸出檔已存在，請加上 `--force`。
-- `5`，`export_failed`：匯出本身失敗。
+- `5`，`export_failed`：輸出本身失敗。
 - `6`，`app_cannot_open_folders`：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西。只有 `open` 會回傳這個代碼。
 - `64`：用法錯誤，例如未知的選項、無效的值、行號超出範圍、`--line` 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 `-a`。這種錯誤一律以文字輸出到 stderr，即使加了 `--json` 也一樣。
 
@@ -5225,7 +5233,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/skill/
 
 # 讓 agent 把寫好的文件拿給你看，也幫你做出 PDF。
 
-這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 把自己寫的文件在 MarsDawn 裡打開給你審閱，也教它安裝 `marsdawn`、確認它能用、把文件匯出成 PDF 並讀懂結果。
+這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 把自己寫的文件在 MarsDawn 裡打開給你審閱，也教它安裝 `marsdawn`、確認它能用、把文件輸出成 PDF 並讀懂結果。
 
 **一個 Markdown 檔案，放在 `~/.claude/skills/marsdawn/SKILL.md`。**有了它，你的 agent 會安裝 `marsdawn`、輸出 PDF 並讀懂 JSON 結果；執行任何指令之前，它還是會先問你。
 
@@ -5281,8 +5289,8 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
 ## 它教什麼
 
 - 如果沒有 `marsdawn`，就用 Homebrew 安裝，再用 `marsdawn --version` 確認版本，而不是假設某個版本。
-- 用 `marsdawn export … --json` 匯出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。
-- 依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。
+- 用 `marsdawn export … --json` 輸出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。
+- 依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、輸出失敗、選項錯誤。
 - 用 `marsdawn open file.md:行號` 打開自己寫的文件，停在第一處修改，而且只開一次：之後的修改會自己出現在已開啟的視窗裡。
 - 如果沒有安裝 MarsDawn app，就告訴你一次然後繼續，不會一直重試。絕不用 `open` 來做 PDF。
 - 使用 `--folder`（marsdawn 0.5.1 以上）時，把資料夾回報為「已要求顯示」，而不是「已顯示」：由 app 決定，也不會有結果回報。
@@ -5369,7 +5377,7 @@ PDF 產生之後，人會打開它——在 MarsDawn 裡，或任何 PDF 檢視�
 
 ## 這樣省下什麼
 
-- 不用把排版後的 Markdown、一張截圖，或對截圖的描述貼回對話裡，只為了讓 agent 確認匯出成功。
+- 不用把排版後的 Markdown、一張截圖，或對截圖的描述貼回對話裡，只為了讓 agent 確認輸出成功。
 - agent 不需要重建 Mermaid 圖表或 KaTeX 公式排版後的樣子，直接讓人去看就好。
 - 不需要在第一次呼叫已經回報成功之後，再多一次呼叫去讀取 PDF 的內容。
 
@@ -6316,6 +6324,12 @@ Mac App Store 上的 MarsDawn App，以及免費的 marsdawn 命令列工具，�
 ## marsdawn 命令列工具
 
 0.5.1 以前的版本不列。
+
+### marsdawn 0.7.7
+
+DATE-TBD。多個輸出同時執行時更穩定。
+
+- 多個輸出同時儲存同一份內容規則時，marsdawn 會重試，不會立刻讓輸出失敗。
 
 ### marsdawn 0.7.6
 
@@ -11742,7 +11756,7 @@ Mac で Markdown を、多くはエージェントが書いたものを読んで
 | 動作環境 | macOS 26.0 以降 [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | 記載なし [[18](#v18)] | macOS 12.0 以降 [[23](#v23)] | macOS 13 以降 [[2](#v2)] |
 | アカウント | 不要 [/privacy/] | 記載なし | "No sign-up required" [[15](#v15)] | 記載なし | 不要 [[2](#v2)] |
 
-各セルは 2026 年 10 月 16 日に、角かっこ内の出典で確認しました（V の番号は下に一覧）。各社の原文はそのまま引用しています。「記載なし」は、読んだページに書かれていなかったという意味で、機能がないという意味ではありません。製品の順位付けはしていません。MarsDawn 自身の列は、iPhone と iPad 版に合わせて 2026 年 10 月 29 日に更新し、PDF のセルはハンドブックと配布資料のレイアウトに合わせて 2026 年 11 月 7 日に更新しました。
+各セルは 2026 年 10 月 16 日に、角かっこ内の出典で確認しました。番号と kit は下の「出典」に一覧があり、/pdf/ などのパスは当サイトのページ、[実測] は marsdawn 0.6.4 で書き出した私たちの確認です。各社の原文はそのまま引用しています。「記載なし」は、読んだページに書かれていなかったという意味で、機能がないという意味ではありません。製品の順位付けはしていません。MarsDawn 自身の列は、iPhone と iPad 版に合わせて 2026 年 10 月 29 日に更新し、PDF のセルはハンドブックと配布資料のレイアウトに合わせて 2026 年 11 月 7 日に更新しました。
 
 ## 出典
 

@@ -68,6 +68,12 @@ First release.
 
 Versions before 0.5.1 are not listed.
 
+### marsdawn 0.7.7
+
+DATE-TBD. More reliable parallel exports.
+
+- When parallel exports try to save the same content rules at once, marsdawn retries instead of immediately failing the export.
+
 ### marsdawn 0.7.6
 
 2 November 2026. Handbook PDFs on macOS 27.2.

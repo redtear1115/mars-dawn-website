@@ -332,6 +332,11 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '\n'
                                '- In the Handout layout, a heading stays with the wide table under it, '
                                'instead of being left alone at the foot of the page.',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               'DATE-TBD. More reliable parallel exports.\n'
+                               '\n'
+                               '- When parallel exports try to save the same content rules at once, marsdawn retries instead of immediately failing the export.',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2 November 2026. Handbook PDFs on macOS 27.2.\n'
@@ -1200,6 +1205,11 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                     '2026 年 10 月 30 日。講義的標題不再和表格分開。\n'
                                     '\n'
                                     '- 在講義版面，標題會和底下的寬表格留在一起，不再單獨留在頁尾。',
+                           '0.7.7': '## marsdawn 0.7.7\n'
+                                    '\n'
+                                    'DATE-TBD。多個輸出同時執行時更穩定。\n'
+                                    '\n'
+                                    '- 多個輸出同時儲存同一份內容規則時，marsdawn 會重試，不會立刻讓輸出失敗。',
                            '0.7.6': '## marsdawn 0.7.6\n'
                                     '\n'
                                     '2026 年 11 月 2 日。macOS 27.2 上的手冊 PDF。\n'
@@ -1207,9 +1217,9 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                     '- 在 macOS 27.2 上，手冊 PDF 裡從新的一頁開始的章節，會保留目錄頁碼和書籤。'},
              'export_after_json': ['超過 16 MiB 的檔案不會輸出：`export` 以代碼 5 結束，不寫出任何檔案。'],
              'export_items': ['`--breaks`：段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句。',
-                              '`--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。`handout` 會在每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。',
+                              '`--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。`handout` 會輸出成講義：每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。',
                               '`--toc-title <text>`：手冊目錄頁的標題，預設是 `Contents`。',
-                              '單獨一行的 `<!--BREAK-->` 會從新的一頁開始，所有版面都適用。'],
+                              '單獨一行的 `<!--BREAK-->` 會從新的一頁開始，每種版面都適用。'],
              'export_since': '`--breaks` 從 marsdawn 0.7.0 開始提供，`--layout` 和 `--toc-title` 從 0.7.1 開始，`handbook` 這個名稱從 0.7.2 開始，`handout` 從 0.7.3 開始。0.7.1 的舊名稱 `manual` 仍可使用。',
              'open_items': ['`--wait <n>`：搭配會回報結果的 MarsDawn 1.0.2 以上，`--folder` 最多等 n 秒（0 到 30，預設 2），等 app '
                             '回報資料夾的結果。`--wait 0`，或 app 不會回報時，不會等待，送出的請求和以前完全相同。',
