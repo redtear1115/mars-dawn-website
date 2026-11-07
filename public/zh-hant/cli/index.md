@@ -110,7 +110,7 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png
 | `2` | 找不到輸入檔。 | 檢查路徑和檔名 |
 | `3` | 尚未安裝 MarsDawn（只有 `open` 會用到）。 | 安裝 app，或改用不需要 app 的 `export` |
 | `4` | 輸出檔已存在（可加上 `--force`）。 | 加上 `--force` 覆寫，或用 `-o` 寫到別處 |
-| `5` | 輸出失敗，或輸入超過 16 MiB（只有 `export` 會用到）。 | 讀 JSON 結果裡的 `message`；如果是 `input_too_large`，把檔案拆小 |
+| `5` | 輸出失敗，或輸入超過 16 MiB（只有 `export` 會用到）。 | 讀 JSON 結果裡的 `message`⁠；如果是 `input_too_large`，把檔案拆小 |
 | `6` | 這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西（只有 `open` 會用到）。 |  |
 | `7` | `skill --install` 無法建立資料夾或寫入檔案，原本的 `SKILL.md` 保持不變。 | 確認資料夾可以寫入，再執行一次 |
 | `64` | 使用方式錯誤，包括行號超出範圍、`--line` 搭配了多個檔案或資料夾，或指定了多個資料夾。 | 修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 `--json` 也一樣 |

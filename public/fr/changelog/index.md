@@ -47,6 +47,16 @@ Les versions précédentes ne sont décrites qu’en anglais : [voir l’histori
 
 Les versions antérieures à 0.5.1 ne sont pas listées.
 
+### marsdawn 0.7.7
+
+DATE-TBD. Export PNG, blocs repliables et exports plus rapides des gros fichiers.
+
+- `marsdawn export --format png` exporte un document en PNG pour vérifier son rendu : `--width` (600–2000, 1200 par défaut), `--appearance light|dark`, `--theme`, et `--lines` ou `--heading` pour n’en exporter qu’une partie. Une page de plus de 8 000 pixels de haut est découpée en images numérotées, jamais au milieu d’un tableau, d’un bloc de code ou d’un diagramme.
+- `marsdawn export --details` définit comment les blocs repliables s’impriment : `expand`, par défaut, les imprime tous ouverts, comme avant ; `as-written` n’ouvre que les blocs écrits ouverts et n’imprime que le résumé des autres. Dans les deux cas, le résumé s’imprime sur une ligne en gras, sans triangle.
+- Les blocs repliables prennent en charge davantage de syntaxes de HackMD et d’Obsidian : `:::spoiler` sans titre ou avec `{state="open"}`, du Markdown dans les titres, des `::::spoiler` imbriqués, et les encadrés repliables d’Obsidian `> [!note]-` et `> [!tip]+`.
+- Les gros documents s’exportent beaucoup plus vite : dans notre test, un fichier de 10 Mo a pris environ 74 secondes au lieu d’environ 4 minutes.
+- Quand plusieurs commandes `marsdawn export` s’exécutaient en même temps, l’une d’elles pouvait se terminer avec le code 5. Elle réessaie désormais.
+
 ### marsdawn 0.7.6
 
 2 novembre 2026. Les PDF Guide sous macOS 27.2.

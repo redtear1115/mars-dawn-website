@@ -5629,7 +5629,7 @@ EXIT_REMEDY = {
         "2": "檢查路徑和檔名",
         "3": "安裝 app，或改用不需要 app 的 <code>export</code>",
         "4": "加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處",
-        "5": "讀 JSON 結果裡的 <code>message</code>；如果是 <code>input_too_large</code>，把檔案拆小",
+        "5": "讀 JSON 結果裡的 <code>message</code>&#8288;；如果是 <code>input_too_large</code>，把檔案拆小",  # word joiner: the ； never starts a line
         "64": "修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣",
     },
     "zh-hans": {

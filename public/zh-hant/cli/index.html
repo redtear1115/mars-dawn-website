@@ -210,7 +210,7 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pr
   <tr><th scope="row"><code>2</code></th><td data-label="意思">找不到輸入檔。</td><td data-label="怎麼處理">檢查路徑和檔名</td></tr>
   <tr><th scope="row"><code>3</code></th><td data-label="意思">尚未安裝 MarsDawn（只有 <code>open</code> 會用到）。</td><td data-label="怎麼處理">安裝 app，或改用不需要 app 的 <code>export</code></td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="意思">輸出檔已存在（可加上 <code>--force</code>）。</td><td data-label="怎麼處理">加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處</td></tr>
-  <tr><th scope="row"><code>5</code></th><td data-label="意思">輸出失敗，或輸入超過 16 MiB（只有 <code>export</code> 會用到）。</td><td data-label="怎麼處理">讀 JSON 結果裡的 <code>message</code>；如果是 <code>input_too_large</code>，把檔案拆小</td></tr>
+  <tr><th scope="row"><code>5</code></th><td data-label="意思">輸出失敗，或輸入超過 16 MiB（只有 <code>export</code> 會用到）。</td><td data-label="怎麼處理">讀 JSON 結果裡的 <code>message</code>&#8288;；如果是 <code>input_too_large</code>，把檔案拆小</td></tr>
   <tr><th scope="row"><code>6</code></th><td data-label="意思">這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西（只有 <code>open</code> 會用到）。</td><td data-label="怎麼處理"></td></tr>
   <tr><th scope="row"><code>7</code></th><td data-label="意思"><code>skill --install</code> 無法建立資料夾或寫入檔案，原本的 <code>SKILL.md</code> 保持不變。</td><td data-label="怎麼處理">確認資料夾可以寫入，再執行一次</td></tr>
   <tr><th scope="row"><code>64</code></th><td data-label="意思">使用方式錯誤，包括行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾，或指定了多個資料夾。</td><td data-label="怎麼處理">修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣</td></tr>
