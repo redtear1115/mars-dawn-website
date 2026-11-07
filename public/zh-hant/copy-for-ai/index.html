@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>把檔案路徑和行號拷貝給 agent · MarsDawn</title>
+<meta name="description" content="選取文字，連同檔案路徑和行號一起拷貝，貼進 Claude Code 或任何 agent。在 Mac 上就能做，不用開 IDE，也不用裝外掛。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/copy-for-ai/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/copy-for-ai/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/copy-for-ai/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/copy-for-ai/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/copy-for-ai/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/copy-for-ai/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/copy-for-ai/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/copy-for-ai/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/copy-for-ai/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/copy-for-ai/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/copy-for-ai/index.md">
+<meta property="og:title" content="把檔案路徑和行號拷貝給 agent · MarsDawn">
+<meta property="og:description" content="選取文字，連同檔案路徑和行號一起拷貝，貼進 Claude Code 或任何 agent。在 Mac 上就能做，不用開 IDE，也不用裝外掛。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/copy-for-ai/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hant/"}, {"@type": "ListItem", "position": 2, "name": "拷貝給 AI", "item": "https://marsdawn.southern-light.dev/zh-hant/copy-for-ai/"}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/" aria-label="MarsDawn 首頁">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="site-nav" aria-label="主要導覽">
+    <ul class="site-nav-wide">
+      <li><a href="/zh-hant/features/">功能</a></li>
+      <li><a href="/zh-hant/cli/">Agent</a></li>
+      <li><a href="/zh-hant/themes/">主題</a></li>
+      <li><a href="/zh-hant/vs/">比較</a></li>
+      <li><a href="/zh-hant/support/">支援</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>選單</summary>
+      <ul>
+        <li><a href="/zh-hant/features/">功能</a></li>
+        <li><a href="/zh-hant/cli/">Agent</a></li>
+        <li><a href="/zh-hant/themes/">主題</a></li>
+        <li><a href="/zh-hant/vs/">比較</a></li>
+        <li><a href="/zh-hant/support/">支援</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="語言">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/copy-for-ai/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/copy-for-ai/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/copy-for-ai/" hreflang="ja" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/copy-for-ai/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary>更多</summary>
+      <ul>
+        <li><a href="/de/copy-for-ai/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/copy-for-ai/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/copy-for-ai/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/copy-for-ai/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>繁中</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/copy-for-ai/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/copy-for-ai/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/copy-for-ai/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/copy-for-ai/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/copy-for-ai/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/copy-for-ai/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/copy-for-ai/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/copy-for-ai/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>把檔案路徑、行號和內容一起交給 agent</h1>
+  <p>「拷貝給 AI」會把選取的文字連同檔案路徑和行號一起拷貝，不用開 IDE，也不用裝外掛。貼進任何 agent 就好。</p>
+</section>
+<p>貼上後長這樣：</p>
+<pre class="copy-sample"><code>docs/plan.md:42-43
+```markdown
+上傳失敗時重試三次。
+之後顯示上次儲存的版本。
+```</code></pre>
+<h2 id="how-to-use-it">怎麼用</h2>
+<ol>
+  <li>在原始碼裡選取文字，用「只顯示原始碼」或「並排」都可以。沒有選取時，會拷貝游標所在的那一行。</li>
+  <li>選「編輯 ▸ 拷貝給 AI」、按 ⌃⌥⌘C，或在選取的文字上按右鍵。</li>
+  <li>貼到 agent 的對話裡。</li>
+</ol>
+<h2 id="copy-for-ai-or-send-to">「拷貝給 AI」和「傳給⋯」的差別</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-labelledby="copy-for-ai-or-send-to"><table class="compare">
+<thead><tr><td></td><th scope="col">拷貝給 AI</th><th scope="col">傳給⋯</th></tr></thead>
+<tbody>
+  <tr><th scope="row">結果</th><td>放到剪貼簿，由你貼上</td><td>帶著提示打開 Claude 或 ChatGPT</td></tr>
+  <tr><th scope="row">路徑</th><td>專案內是相對路徑，專案外是完整路徑</td><td>相對路徑或檔名，不會是完整路徑</td></tr>
+  <tr><th scope="row">誰回答</th><td>你貼給的 agent</td><td>你選的服務</td></tr>
+</tbody>
+</table></div>
+<h2 id="what-the-path-looks-like">路徑長什麼樣</h2>
+<p>檔案在 MarsDawn 可存取的 git checkout 或側邊欄資料夾裡，路徑相對於專案。其他是完整路徑，可能帶出使用者名稱。主 repo 可讀取時，worktree 的分支顯示在視窗副標題。</p>
+<h2 id="next">接下來</h2>
+<ul>
+  <li><a href="/zh-hant/reviewing-agent-plans/">五分鐘審完一份 agent 計畫</a></li>
+  <li><a href="/zh-hant/features/">所有功能</a></li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="網站導覽">
+    <h2 class="footer-nav-title">網站導覽</h2>
+    <section aria-labelledby="footer-product">
+      <h3 id="footer-product">產品</h3>
+      <ul>
+        <li><a href="/zh-hant/features/">功能一覽</a></li>
+        <li><a href="/zh-hant/quicklook/">Markdown 快速查看</a></li>
+        <li><a href="/zh-hant/native/">為 Mac 而做</a></li>
+        <li><a href="/zh-hant/pdf/">輸出 PDF</a></li>
+        <li><a href="/zh-hant/limits/">MarsDawn 做不到的事</a></li>
+        <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a></li>
+        <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a></li>
+        <li><a href="/zh-hant/changelog/">更新紀錄</a></li>
+        <li><a href="/zh-hant/roadmap/">路線圖</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h3 id="footer-agents">Agent 與命令列</h3>
+      <ul>
+        <li><a href="/zh-hant/cli/">命令列工具</a></li>
+        <li><a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a></li>
+        <li><a href="/zh-hant/cli/mcp/">MCP 伺服器</a></li>
+        <li><a href="/zh-hant/cli/skill/">給 agent 的 skill</a></li>
+        <li><a href="/zh-hant/agent-transparency/">agent 的透明</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h3 id="footer-guides">教學</h3>
+      <ul>
+        <li><a href="/zh-hant/view-markdown-on-mac/">Mac 怎麼開 md 檔</a></li>
+        <li><a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a></li>
+        <li><a href="/zh-hant/mermaid-preview-mac/">在 Mac 上預覽 Mermaid</a></li>
+        <li><a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a></li>
+        <li><a href="/zh-hant/reviewing-ai-output/">為什麼 AI 寫的東西還是需要人讀過</a></li>
+        <li><a href="/zh-hant/reviewing-agent-plans/">審 agent 計畫</a></li>
+        <li><a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a></li>
+        <li><a href="/zh-hant/sharing-exported-pdfs/">分享輸出的 PDF</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h3 id="footer-compare">比較</h3>
+      <ul>
+        <li><a href="/zh-hant/vs/">MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice</a></li>
+        <li><a href="/zh-hant/vs/macmd-viewer/">MacMD Viewer 對比 MarsDawn</a></li>
+        <li><a href="/zh-hant/vs/markdown-preview-tools/">在別處看 Markdown，對比 MarsDawn</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h3 id="footer-themes">主題</h3>
+      <ul>
+        <li><a href="/zh-hant/themes/">主題</a></li>
+        <li><a href="/zh-hant/themes/gallery/">主題庫</a></li>
+        <li><a href="/zh-hant/themes/new/">打造一個主題</a></li>
+        <li><a href="/zh-hant/themes/agents/">和 agent 一起做主題</a></li>
+        <li><a href="/zh-hant/templates/">範本</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h3 id="footer-support">支援與法律</h3>
+      <ul>
+        <li><a href="/zh-hant/support/">支援</a></li>
+        <li><a href="/zh-hant/privacy/">隱私權政策</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button></li>
+      </ul>
+    </section>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-copy-for-ai&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 標誌、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美國及其他國家和地區註冊的商標。App Store 和 Mac App Store 是 Apple Inc. 的服務標誌。</p>
+</footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本站使用分析用 cookie，按下「接受」前不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+</body>
+</html>
