@@ -1168,22 +1168,23 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>2</code>: input not found.</li>
   <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
   <li><code>4</code>: output exists (pass <code>--force</code>).</li>
-  <li><code>5</code>: export failed.</li>
+  <li><code>5</code>: export failed, or the input is larger than 16 MiB (<code>export</code> only).</li>
   <li><code>6</code>: this MarsDawn can't show a folder, so nothing was opened (<code>open</code> only).</li>
+  <li><code>7</code>: <code>skill --install</code> couldn't create the folder or write the file. An existing <code>SKILL.md</code> is left as it was.</li>
   <li><code>64</code>: usage error, including a line out of range, <code>--line</code> with more than one file or with a folder, or more than one folder.</li>
 </ul>
 
 <h2>--json output</h2>
-<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when a folder was given, <code>folder</code>. <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when a folder was given, <code>folder</code>. <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code>, <code>diagramErrors</code> and <code>diagramErrorDetails</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 """,
     },
     ("zh-hant", "cli"): {
         "title": "marsdawn：免費的 Markdown 轉 PDF 命令列工具 · MarsDawn",
-        "description": "免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。",
+        "description": "免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 輸出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。",
         "body": f"""
 <section class="intro">
   <h1>命令列工具</h1>
-  <p>免費的 <code>marsdawn</code> 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。</p>
+  <p>免費的 <code>marsdawn</code> 命令列工具：從終端機或 LLM agent 把 Markdown 輸出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。</p>
 </section>
 
 <div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。</p></div>
@@ -1246,13 +1247,14 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>2</code>：找不到輸入檔。</li>
   <li><code>3</code>：尚未安裝 MarsDawn（只有 <code>open</code> 會用到）。</li>
   <li><code>4</code>：輸出檔已存在（可加上 <code>--force</code>）。</li>
-  <li><code>5</code>：輸出失敗。</li>
+  <li><code>5</code>：輸出失敗，或輸入超過 16 MiB（只有 <code>export</code> 會用到）。</li>
   <li><code>6</code>：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西（只有 <code>open</code> 會用到）。</li>
+  <li><code>7</code>：<code>skill --install</code> 無法建立資料夾或寫入檔案，原本的 <code>SKILL.md</code> 保持不變。</li>
   <li><code>64</code>：使用方式錯誤，包括行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾，或指定了多個資料夾。</li>
 </ul>
 
 <h2>--json 輸出</h2>
-<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）、<code>app</code>（App 路徑），有資料夾時另含 <code>folder</code>；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
+<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）、<code>app</code>（App 路徑），有資料夾時另含 <code>folder</code>；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> 與 <code>diagramErrorDetails</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
 """,
     },
 }
@@ -1765,7 +1767,7 @@ swift build -c release --product marsdawn
 
 <h2>能做什麼</h2>
 <ul>
-  <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
+  <li><code>export</code>：用和 MarsDawn app 相同的輸出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
   <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人審閱，也可以指定每個檔案要定位的行，或在視窗的側邊欄顯示一個資料夾。</li>
 </ul>
 
@@ -1887,7 +1889,7 @@ exit 0</code></pre>
   <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字；或 <code>--folder</code> 的路徑不存在、不是資料夾。</li>
   <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
-  <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
+  <li><code>5</code>，<code>export_failed</code>：輸出本身失敗。</li>
   <li><code>6</code>，<code>app_cannot_open_folders</code>：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 <code>-a</code>。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
 </ul>
@@ -2029,12 +2031,12 @@ marsdawn --version</code></pre>
 <h2>存一份文件</h2>
 <p>把下面的內容貼進一個叫 <code>plan.md</code> 的檔案：</p>
 <pre><code>{_PLAN_HTML["zh-hant"]}</code></pre>
-<h2>匯出</h2>
+<h2>輸出</h2>
 <pre><code>marsdawn export plan.md</code></pre>
 <p>它會在原始檔旁邊寫出 <code>plan.pdf</code>，並印出存放的位置：</p>
 <pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>這是那一頁，擷取自 <code>marsdawn</code> 0.5.0 的實際執行結果：</p>
-<p><img class="pdf-page" src="/assets/cli/plan-zh.png" alt="匯出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。" width="989" height="930"></p>
+<p><img class="pdf-page" src="/assets/cli/plan-zh.png" alt="輸出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。" width="989" height="930"></p>
 <h2>選主題、紙張大小和檔名</h2>
 <pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
 <ul>
@@ -2091,19 +2093,19 @@ SKILL_PAGES = {
     },
     ("zh-hant", "cli/skill"): {
         "title": "讓寫程式的 agent 把 Markdown 轉 PDF 的 skill · MarsDawn",
-        "description": "一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你審閱，也學會安裝 marsdawn、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。",
+        "description": "一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你審閱，也學會安裝 marsdawn、把 Markdown 輸出成 PDF，並讀懂 JSON 結果。",
         "body": f"""
 <section class="intro">
   <h1>讓 agent 把寫好的文件拿給你看，也幫你做出 PDF。</h1>
-  <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 把自己寫的文件在 MarsDawn 裡打開給你審閱，也教它安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果。</p>
+  <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 把自己寫的文件在 MarsDawn 裡打開給你審閱，也教它安裝 <code>marsdawn</code>、確認它能用、把文件輸出成 PDF 並讀懂結果。</p>
 </section>
 <div class="summary"><p><strong>一個 Markdown 檔案，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 會安裝 <code>marsdawn</code>、輸出 PDF 並讀懂 JSON 結果；執行任何指令之前，它還是會先問你。</p></div>
 <!--skill-install-->
 <h2>它教什麼</h2>
 <ul>
   <li>如果沒有 <code>marsdawn</code>，就用 Homebrew 安裝，再用 <code>marsdawn --version</code> 確認版本，而不是假設某個版本。</li>
-  <li>用 <code>marsdawn export … --json</code> 匯出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。</li>
-  <li>依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。</li>
+  <li>用 <code>marsdawn export … --json</code> 輸出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。</li>
+  <li>依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、輸出失敗、選項錯誤。</li>
   <li>用 <code>marsdawn open file.md:行號</code> 打開自己寫的文件，停在第一處修改，而且只開一次：之後的修改會自己出現在已開啟的視窗裡。</li>
   <li>如果沒有安裝 MarsDawn app，就告訴你一次然後繼續，不會一直重試。絕不用 <code>open</code> 來做 PDF。</li>
   <li>使用 <code>--folder</code>（marsdawn 0.5.1 以上）時，把資料夾回報為「已要求顯示」，而不是「已顯示」：由 app 決定，也不會有結果回報。</li>
@@ -2262,7 +2264,7 @@ BRAINSTORM_PAGES = {
 
 <h2>這樣省下什麼</h2>
 <ul>
-  <li>不用把排版後的 Markdown、一張截圖，或對截圖的描述貼回對話裡，只為了讓 agent 確認匯出成功。</li>
+  <li>不用把排版後的 Markdown、一張截圖，或對截圖的描述貼回對話裡，只為了讓 agent 確認輸出成功。</li>
   <li>agent 不需要重建 Mermaid 圖表或 KaTeX 公式排版後的樣子，直接讓人去看就好。</li>
   <li>不需要在第一次呼叫已經回報成功之後，再多一次呼叫去讀取 PDF 的內容。</li>
 </ul>
@@ -4516,7 +4518,7 @@ OPEN_MD_KEPT = {'en': {'opening_html': 'A <code>.md</code> file is plain text. T
              'pdf_p1_html': '免費的 <code>marsdawn</code> 命令列工具，能把 Markdown 檔案排版成 PDF，任何一台 Mac '
                             '都打得開。表格、數學式、Mermaid 圖表和程式碼上色都會排好，而且不需要安裝其他東西，連 MarsDawn app 都不用。',
              'pdf_p2_html': '<code>export</code> 會在 Markdown 檔案旁邊寫出 <code>notes.pdf</code>，<code>open</code> '
-                            '會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看<a '
+                            '會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際輸出的結果，請看<a '
                             'href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。',
              'next_h2': '接下來',
              'next_items_html': ['命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。',
@@ -5619,7 +5621,7 @@ EXIT_REMEDY = {
         "2": "Check the path and the file name",
         "3": "Install the app, or use <code>export</code>, which doesn't need it",
         "4": "Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere",
-        "5": "Read <code>message</code> in the JSON result",
+        "5": "Read <code>message</code> in the JSON result; for <code>input_too_large</code>, split the file",
         "64": "Fix the option or value; this error is text on stderr, even with <code>--json</code>",
     },
     "zh-hant": {
@@ -5627,7 +5629,7 @@ EXIT_REMEDY = {
         "2": "檢查路徑和檔名",
         "3": "安裝 app，或改用不需要 app 的 <code>export</code>",
         "4": "加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處",
-        "5": "讀 JSON 結果裡的 <code>message</code>",
+        "5": "讀 JSON 結果裡的 <code>message</code>&#8288;；如果是 <code>input_too_large</code>，把檔案拆小",  # word joiner: the ； never starts a line
         "64": "修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣",
     },
     "zh-hans": {
@@ -5647,6 +5649,11 @@ EXIT_REMEDY = {
         "64": "オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される",
     },
 }
+# Scoped separately so this approved pair does not add a required translation key to every locale.
+EXIT_SKILL_REMEDY = {
+    "en": "Check that the folder can be written to, then run it again",
+    "zh-hant": "確認資料夾可以寫入，再執行一次",
+}
 _EXIT_LIST = re.compile(re.escape(EXIT_TABLE_MARK) + r"\n<ul>\n(.*?)</ul>", re.S)
 _EXIT_ITEM = re.compile(r"<li><code>(\d+)</code>\s*[:：]\s*(.*?)</li>")
 
@@ -5657,7 +5664,7 @@ def exit_table_html(locale: str, body: str) -> str:
         labels = EXIT_TABLE_HEAD[locale][1:]
         rows = "\n".join(
             f'  <tr><th scope="row"><code>{code}</code></th><td data-label="{labels[0]}">{means}</td>'
-            f'<td data-label="{labels[1]}">{EXIT_REMEDY[locale].get(code, "")}</td></tr>'
+            f'<td data-label="{labels[1]}">{EXIT_REMEDY[locale].get(code, EXIT_SKILL_REMEDY.get(locale, "") if code == "7" else "")}</td></tr>'
             for code, means in _EXIT_ITEM.findall(m.group(1))
         )
         return (f'<div class="table-scroll"><table class="compare">\n<thead><tr>{head}</tr></thead>\n'
@@ -6312,7 +6319,7 @@ def cli254_agents(body: str, d: dict, page: str) -> str:
 
 def cli254_changelog(body: str, d: dict, page: str) -> str:
     entries = d["changelog"]
-    newer = "".join(_cli254_entry(entries[v]) for v in ("0.7.6", "0.7.5", "0.7.4", "0.7.3", "0.7.2", "0.7.1", "0.7.0", "0.6.4") if v in entries)
+    newer = "".join(_cli254_entry(entries[v]) for v in ("0.7.7", "0.7.6", "0.7.5", "0.7.4", "0.7.3", "0.7.2", "0.7.1", "0.7.0", "0.6.4") if v in entries)
     for heading, html in (("<h2>marsdawn 0.6.3</h2>", newer), ("<h2>marsdawn 0.5.4</h2>", _cli254_entry(entries["0.6.1"]))):
         assert body.count(heading) == 1, f"{page}: {heading} found {body.count(heading)} times"
         body = body.replace(heading, html + heading)

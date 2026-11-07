@@ -162,6 +162,15 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '\n'
                                '- Im Handout-Layout bleibt eine Überschrift bei der breiten Tabelle '
                                'darunter, statt allein am Seitenende zu stehen.',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               'DATE-TBD. PNG-Export, ausklappbare Blöcke und schnellere Exporte großer Dateien.\n'
+                               '\n'
+                               '- `marsdawn export --format png` exportiert ein Dokument als PNG, um die Darstellung zu prüfen: `--width` (600–2000, Standard 1200), `--appearance light|dark`, `--theme` sowie `--lines` oder `--heading` für einen Teil davon. Eine Seite, die höher als 8.000 Pixel ist, wird in nummerierte Bilder geteilt, nie mitten in einer Tabelle, einem Codeblock oder einem Diagramm.\n'
+                               '- `marsdawn export --details` legt fest, wie ausklappbare Blöcke gedruckt werden: `expand`, der Standard, druckt wie bisher alle geöffnet; `as-written` öffnet nur die Blöcke, die geöffnet geschrieben sind, und druckt von den anderen nur die Zusammenfassung. In beiden Fällen wird die Zusammenfassung als fette Zeile ohne Dreieck gedruckt.\n'
+                               '- Ausklappbare Blöcke unterstützen mehr Schreibweisen aus HackMD und Obsidian: `:::spoiler` ohne Titel oder mit `{state="open"}`, Markdown in Titeln, verschachtelte `::::spoiler` und Obsidians ausklappbare Hinweisboxen `> [!note]-` und `> [!tip]+`.\n'
+                               '- Große Dokumente werden deutlich schneller exportiert: In unserem Test brauchte eine 10-MB-Datei etwa 74 Sekunden statt etwa 4 Minuten.\n'
+                               '- Wenn mehrere `marsdawn export`-Befehle gleichzeitig laufen, konnte einer davon mit Exit-Code 5 enden. Jetzt wird es erneut versucht.',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2. November 2026. Handbuch-PDFs unter macOS 27.2.\n'
@@ -332,6 +341,15 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '\n'
                                '- In the Handout layout, a heading stays with the wide table under it, '
                                'instead of being left alone at the foot of the page.',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               'DATE-TBD. PNG export, collapsible blocks and faster large exports.\n'
+                               '\n'
+                               '- `marsdawn export --format png` renders a document to PNG, to check how it looks: `--width` (600–2000, default 1200), `--appearance light|dark`, `--theme`, and `--lines` or `--heading` for part of it. A page taller than 8,000 pixels is split into numbered images, never inside a table, code block or diagram.\n'
+                               '- `marsdawn export --details` decides how collapsible blocks print: `expand`, the default, prints every one open, as before; `as-written` prints only the blocks written open, and the others as their summary alone. Either way, a summary prints as a bold line without the triangle.\n'
+                               '- Collapsible blocks render more of what HackMD and Obsidian write: `:::spoiler` with no title or with `{state="open"}`, Markdown in titles, nested `::::spoiler`, and Obsidian\'s foldable callouts `> [!note]-` and `> [!tip]+`.\n'
+                               '- Large documents export much faster: in our test, a 10 MB file took about 74 seconds instead of about 4 minutes.\n'
+                               '- When several `marsdawn export` commands run at once, one of them could fail with exit code 5. It now tries again instead.',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2 November 2026. Handbook PDFs on macOS 27.2.\n'
@@ -508,6 +526,15 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '\n'
                                '- En la disposición Folleto, un encabezado se mantiene con la tabla ancha '
                                'que tiene debajo, en lugar de quedar solo al pie de la página.',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               'DATE-TBD. Exportación a PNG, bloques plegables y exportaciones más rápidas de archivos grandes.\n'
+                               '\n'
+                               '- `marsdawn export --format png` exporta un documento a PNG para comprobar cómo se ve: `--width` (600–2000, 1200 por defecto), `--appearance light|dark`, `--theme`, y `--lines` o `--heading` para exportar solo una parte. Una página de más de 8000 píxeles de alto se divide en imágenes numeradas, nunca en medio de una tabla, un bloque de código o un diagrama.\n'
+                               '- `marsdawn export --details` decide cómo se imprimen los bloques plegables: `expand`, la opción predeterminada, los imprime todos abiertos, como antes; `as-written` solo abre los bloques escritos como abiertos e imprime de los demás solo el resumen. En ambos casos, el resumen se imprime como una línea en negrita, sin triángulo.\n'
+                               '- Los bloques plegables admiten más formas de escribir de HackMD y Obsidian: `:::spoiler` sin título o con `{state="open"}`, Markdown en los títulos, `::::spoiler` anidados y los avisos destacados plegables de Obsidian `> [!note]-` y `> [!tip]+`.\n'
+                               '- Los documentos grandes se exportan mucho más rápido: en nuestra prueba, un archivo de 10 MB tardó unos 74 segundos en vez de unos 4 minutos.\n'
+                               '- Cuando se ejecutaban varios comandos `marsdawn export` a la vez, uno podía terminar con el código 5. Ahora vuelve a intentarlo.',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2 de noviembre de 2026. Los PDF de Guía en macOS 27.2.\n'
@@ -687,6 +714,15 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '\n'
                                '- Dans la mise en page Polycopié, un titre reste avec le tableau large placé '
                                'dessous, au lieu de se retrouver seul en bas de page.',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               'DATE-TBD. Export PNG, blocs repliables et exports plus rapides des gros fichiers.\n'
+                               '\n'
+                               '- `marsdawn export --format png` exporte un document en PNG pour vérifier son rendu\xa0: `--width` (600–2000, 1200 par défaut), `--appearance light|dark`, `--theme`, et `--lines` ou `--heading` pour n’en exporter qu’une partie. Une page de plus de 8 000 pixels de haut est découpée en images numérotées, jamais au milieu d’un tableau, d’un bloc de code ou d’un diagramme.\n'
+                               '- `marsdawn export --details` définit comment les blocs repliables s’impriment\xa0: `expand`, par défaut, les imprime tous ouverts, comme avant\xa0; `as-written` n’ouvre que les blocs écrits ouverts et n’imprime que le résumé des autres. Dans les deux cas, le résumé s’imprime sur une ligne en gras, sans triangle.\n'
+                               '- Les blocs repliables prennent en charge davantage de syntaxes de HackMD et d’Obsidian\xa0: `:::spoiler` sans titre ou avec `{state="open"}`, du Markdown dans les titres, des `::::spoiler` imbriqués, et les encadrés repliables d’Obsidian `> [!note]-` et `> [!tip]+`.\n'
+                               '- Les gros documents s’exportent beaucoup plus vite\xa0: dans notre test, un fichier de 10 Mo a pris environ 74 secondes au lieu d’environ 4 minutes.\n'
+                               '- Quand plusieurs commandes `marsdawn export` s’exécutaient en même temps, l’une d’elles pouvait se terminer avec le code 5. Elle réessaie désormais.',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2 novembre 2026. Les PDF Guide sous macOS 27.2.\n'
@@ -830,6 +866,15 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '2026年10月30日。配布資料の見出しが表から離れなくなりました。\n'
                                '\n'
                                '- 配布資料レイアウトでは、見出しはその下の幅の広い表から離れず、ページの下端に見出しだけが残らなくなりました。',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               'DATE-TBD。PNG の書き出し、折りたたみブロック、大きなファイルの高速な書き出し。\n'
+                               '\n'
+                               '- `marsdawn export --format png` は、書類を PNG に書き出して表示を確認できます。`--width`（600–2000、初期値 1200）、`--appearance light|dark`、`--theme`、一部だけを書き出す `--lines` か `--heading` を指定できます。高さが 8,000 ピクセルを超えるページは番号付きの複数の画像に分かれ、表、コードブロック、図の途中では分かれません。\n'
+                               '- `marsdawn export --details` は、折りたたみブロックのプリント方法を決めます。初期値の `expand` はこれまでどおりすべて開いてプリントし、`as-written` は開いた状態で書かれたブロックだけを開き、ほかは見出しだけをプリントします。どちらも見出しは三角形なしの太字 1 行になります。\n'
+                               '- 折りたたみブロックが、HackMD と Obsidian の書き方にさらに対応しました。見出しのない `:::spoiler` や `{state="open"}` 付きの `:::spoiler`、見出し内の Markdown、入れ子の `::::spoiler`、Obsidian の折りたためるコールアウト `> [!note]-`、`> [!tip]+` に対応します。\n'
+                               '- 大きなファイルの書き出しがかなり速くなりました。私たちのテストでは、10 MB のファイルが約 4 分から約 74 秒になりました。\n'
+                               '- 複数の `marsdawn export` を同時に実行すると、まれにひとつがコード 5 で終了することがありました。これからは自動的に再試行します。',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2026年11月2日。macOS 27.2 のハンドブック PDF。\n'
@@ -959,6 +1004,15 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '2026년 10월 30일. 프린트물의 제목이 표와 떨어지지 않습니다.\n'
                                '\n'
                                '- 프린트물 레이아웃에서 제목은 아래에 있는 넓은 표와 함께 유지되며, 페이지 아래쪽에 혼자 남지 않습니다.',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               'DATE-TBD. PNG 내보내기, 접을 수 있는 블록, 더 빨라진 큰 파일 내보내기.\n'
+                               '\n'
+                               '- `marsdawn export --format png`는 문서를 PNG로 내보내 렌더링을 확인할 수 있게 합니다. `--width`(600–2000, 기본값 1200), `--appearance light|dark`, `--theme`, 일부만 내보내는 `--lines`나 `--heading`을 지정할 수 있습니다. 높이가 8,000픽셀을 넘는 페이지는 번호가 붙은 여러 이미지로 나뉘며, 표, 코드 블록, 다이어그램 중간에서는 나뉘지 않습니다.\n'
+                               '- `marsdawn export --details`는 접을 수 있는 블록을 어떻게 인쇄할지 정합니다. 기본값인 `expand`는 이전처럼 모두 펼쳐 인쇄하고, `as-written`은 펼친 상태로 작성된 블록만 펼치고 나머지는 제목만 인쇄합니다. 두 방식 모두 제목은 삼각형 없이 굵은 한 줄로 인쇄됩니다.\n'
+                               '- 접을 수 있는 블록이 HackMD와 Obsidian의 작성법을 더 지원합니다. 제목이 없거나 `{state="open"}`이 붙은 `:::spoiler`, 제목 안의 Markdown, 중첩된 `::::spoiler`, Obsidian의 접을 수 있는 콜아웃 `> [!note]-`, `> [!tip]+`를 지원합니다.\n'
+                               '- 큰 파일을 훨씬 빨리 내보냅니다. 저희 테스트에서 10MB 파일이 약 4분에서 약 74초로 줄었습니다.\n'
+                               '- 여러 `marsdawn export`를 동시에 실행하면 가끔 하나가 코드 5로 종료되었습니다. 이제는 자동으로 다시 시도합니다.',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2026년 11월 2일. macOS 27.2의 설명서 PDF.\n'
@@ -1080,6 +1134,15 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                     '2026 年 10 月 30 日。讲义的标题不再和表格分开。\n'
                                     '\n'
                                     '- 在讲义布局中，标题会和下方的宽表格留在一起，不再单独留在页尾。',
+                           '0.7.7': '## marsdawn 0.7.7\n'
+                                    '\n'
+                                    'DATE-TBD。导出 PNG、可折叠区块，以及大文件导出更快。\n'
+                                    '\n'
+                                    '- `marsdawn export --format png` 会把文稿导出为 PNG，用来确认排版：`--width`（600–2000，默认 1200）、`--appearance light|dark`、`--theme`，以及只导出一部分的 `--lines` 或 `--heading`。高度超过 8,000 像素的页面会分成编号的多张图，切点不会落在表格、代码块或图表中间。\n'
+                                    '- `marsdawn export --details` 决定可折叠区块怎么打印：默认的 `expand` 和以前一样全部展开；`as-written` 只展开原本写成展开的区块，其他只打印标题。两种方式的标题都打印成粗体一行，不画三角形。\n'
+                                    '- 可折叠区块支持更多 HackMD 和 Obsidian 的写法：没有标题或加上 `{state="open"}` 的 `:::spoiler`、标题里的 Markdown、嵌套的 `::::spoiler`，以及 Obsidian 可折叠的提示块 `> [!note]-`、`> [!tip]+`。\n'
+                                    '- 大文件导出快很多：在我们的测试中，10 MB 的文件从约 4 分钟缩短到约 74 秒。\n'
+                                    '- 同时运行多个 `marsdawn export` 时，偶尔会有一个以代码 5 结束。现在会自动重试。',
                            '0.7.6': '## marsdawn 0.7.6\n'
                                     '\n'
                                     '2026 年 11 月 2 日。macOS 27.2 上的手册 PDF。\n'
@@ -1200,6 +1263,15 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                     '2026 年 10 月 30 日。講義的標題不再和表格分開。\n'
                                     '\n'
                                     '- 在講義版面，標題會和底下的寬表格留在一起，不再單獨留在頁尾。',
+                           '0.7.7': '## marsdawn 0.7.7\n'
+                                    '\n'
+                                    'DATE-TBD。輸出 PNG、可收合區塊，以及大檔案輸出更快。\n'
+                                    '\n'
+                                    '- `marsdawn export --format png` 會把文件輸出成 PNG，用來確認排版：`--width`（600–2000，預設 1200）、`--appearance light|dark`、`--theme`，以及只輸出一部分的 `--lines` 或 `--heading`。高度超過 8,000 像素的頁面會分成編號的多張圖，切點不會落在表格、程式碼區塊或圖表中間。\n'
+                                    '- `marsdawn export --details` 決定可收合區塊怎麼印：預設的 `expand` 和以前一樣全部展開；`as-written` 只展開原本寫成展開的區塊，其他只印標題。兩種方式的標題都印成粗體一行，不畫三角形。\n'
+                                    '- 可收合區塊支援更多 HackMD 和 Obsidian 的寫法：沒有標題或加上 `{state="open"}` 的 `:::spoiler`、標題裡的 Markdown、巢狀的 `::::spoiler`，以及 Obsidian 可收合的 callout `> [!note]-`、`> [!tip]+`。\n'
+                                    '- 大檔案輸出快很多：在我們的測試中，10 MB 的檔案從約 4 分鐘縮短到約 74 秒。\n'
+                                    '- 同時執行多個 `marsdawn export` 時，偶爾會有一個以代碼 5 結束。現在會自動重試。',
                            '0.7.6': '## marsdawn 0.7.6\n'
                                     '\n'
                                     '2026 年 11 月 2 日。macOS 27.2 上的手冊 PDF。\n'
@@ -1207,9 +1279,9 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                     '- 在 macOS 27.2 上，手冊 PDF 裡從新的一頁開始的章節，會保留目錄頁碼和書籤。'},
              'export_after_json': ['超過 16 MiB 的檔案不會輸出：`export` 以代碼 5 結束，不寫出任何檔案。'],
              'export_items': ['`--breaks`：段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句。',
-                              '`--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。`handout` 會在每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。',
+                              '`--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。`handout` 會輸出成講義：每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。',
                               '`--toc-title <text>`：手冊目錄頁的標題，預設是 `Contents`。',
-                              '單獨一行的 `<!--BREAK-->` 會從新的一頁開始，所有版面都適用。'],
+                              '單獨一行的 `<!--BREAK-->` 會從新的一頁開始，每種版面都適用。'],
              'export_since': '`--breaks` 從 marsdawn 0.7.0 開始提供，`--layout` 和 `--toc-title` 從 0.7.1 開始，`handbook` 這個名稱從 0.7.2 開始，`handout` 從 0.7.3 開始。0.7.1 的舊名稱 `manual` 仍可使用。',
              'open_items': ['`--wait <n>`：搭配會回報結果的 MarsDawn 1.0.2 以上，`--folder` 最多等 n 秒（0 到 30，預設 2），等 app '
                             '回報資料夾的結果。`--wait 0`，或 app 不會回報時，不會等待，送出的請求和以前完全相同。',

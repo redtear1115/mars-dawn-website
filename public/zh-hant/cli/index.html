@@ -28,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>marsdawn：免費的 Markdown 轉 PDF 命令列工具 · MarsDawn</title>
-<meta name="description" content="免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。">
+<meta name="description" content="免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 輸出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -44,7 +44,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/cli/">
 <link rel="alternate" type="text/markdown" href="/zh-hant/cli/index.md">
 <meta property="og:title" content="marsdawn：免費的 Markdown 轉 PDF 命令列工具 · MarsDawn">
-<meta property="og:description" content="免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。">
+<meta property="og:description" content="免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 輸出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/cli/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -124,7 +124,7 @@ try {
 <main id="main">
 <section class="intro">
   <h1>命令列工具</h1>
-  <p>免費的 <code>marsdawn</code> 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。</p>
+  <p>免費的 <code>marsdawn</code> 命令列工具：從終端機或 LLM agent 把 Markdown 輸出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。</p>
 </section>
 
 <div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。</p></div>
@@ -173,9 +173,9 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：預覽主題的淺色版本，預設讀取 <code>$MARSDAWN_THEME</code>，否則用 <code>dawn</code>。</li>
   <li><code>--paper &lt;a4|letter&gt;</code>：紙張大小，預設 <code>a4</code>。</li>
   <li><code>--breaks</code>：段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句。</li>
-  <li><code>--layout &lt;document|handbook|handout&gt;</code>：頁面版面，預設是 <code>document</code>。<code>handbook</code> 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 <code>title</code> 時，另外加上封面。<code>handout</code> 會在每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。</li>
+  <li><code>--layout &lt;document|handbook|handout&gt;</code>：頁面版面，預設是 <code>document</code>。<code>handbook</code> 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 <code>title</code> 時，另外加上封面。<code>handout</code> 會輸出成講義：每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。</li>
   <li><code>--toc-title &lt;text&gt;</code>：手冊目錄頁的標題，預設是 <code>Contents</code>。</li>
-  <li>單獨一行的 <code>&lt;!--BREAK--&gt;</code> 會從新的一頁開始，所有版面都適用。</li>
+  <li>單獨一行的 <code>&lt;!--BREAK--&gt;</code> 會從新的一頁開始，每種版面都適用。</li>
   <li><code>--allow-remote-images</code>：輸出時載入網路圖片，預設關閉。</li>
   <li><code>--force</code>：如果輸出檔已存在就直接覆蓋。</li>
   <li><code>--json</code>：印出 JSON 結果，而不是文字。</li>
@@ -210,14 +210,15 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pr
   <tr><th scope="row"><code>2</code></th><td data-label="意思">找不到輸入檔。</td><td data-label="怎麼處理">檢查路徑和檔名</td></tr>
   <tr><th scope="row"><code>3</code></th><td data-label="意思">尚未安裝 MarsDawn（只有 <code>open</code> 會用到）。</td><td data-label="怎麼處理">安裝 app，或改用不需要 app 的 <code>export</code></td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="意思">輸出檔已存在（可加上 <code>--force</code>）。</td><td data-label="怎麼處理">加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處</td></tr>
-  <tr><th scope="row"><code>5</code></th><td data-label="意思">輸出失敗。</td><td data-label="怎麼處理">讀 JSON 結果裡的 <code>message</code></td></tr>
+  <tr><th scope="row"><code>5</code></th><td data-label="意思">輸出失敗，或輸入超過 16 MiB（只有 <code>export</code> 會用到）。</td><td data-label="怎麼處理">讀 JSON 結果裡的 <code>message</code>&#8288;；如果是 <code>input_too_large</code>，把檔案拆小</td></tr>
   <tr><th scope="row"><code>6</code></th><td data-label="意思">這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西（只有 <code>open</code> 會用到）。</td><td data-label="怎麼處理"></td></tr>
+  <tr><th scope="row"><code>7</code></th><td data-label="意思"><code>skill --install</code> 無法建立資料夾或寫入檔案，原本的 <code>SKILL.md</code> 保持不變。</td><td data-label="怎麼處理">確認資料夾可以寫入，再執行一次</td></tr>
   <tr><th scope="row"><code>64</code></th><td data-label="意思">使用方式錯誤，包括行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾，或指定了多個資料夾。</td><td data-label="怎麼處理">修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣</td></tr>
 </tbody>
 </table></div>
 
 <h2 id="json-output">--json 輸出</h2>
-<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）、<code>app</code>（App 路徑），有資料夾時另含 <code>folder</code>；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
+<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）、<code>app</code>（App 路徑），有資料夾時另含 <code>folder</code>；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> 與 <code>diagramErrorDetails</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="網站導覽">
