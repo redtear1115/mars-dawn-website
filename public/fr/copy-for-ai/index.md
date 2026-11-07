@@ -28,7 +28,7 @@ Puis afficher la dernière copie.
 
 ## À quoi ressemble le chemin
 
-Dans un checkout Git accessible à MarsDawn, ou un dossier de la barre latérale, le chemin est relatif au projet. Ailleurs, c’est le chemin complet, qui peut montrer votre nom d’utilisateur. Dans un worktree, la barre latérale affiche la branche dès que le dossier du dépôt principal est aussi accessible.
+Dans un checkout Git accessible à MarsDawn, ou un dossier de la barre latérale, le chemin est relatif au projet. Ailleurs, c’est le chemin complet, qui peut montrer votre nom d’utilisateur. Dans un worktree, le sous-titre de la fenêtre indique la branche si MarsDawn peut lire le dépôt principal.
 
 ## Pour aller plus loin
 

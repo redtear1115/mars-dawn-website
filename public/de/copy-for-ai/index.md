@@ -28,7 +28,7 @@ Danach letzte gesicherte Kopie zeigen.
 
 ## So sieht der Pfad aus
 
-In einem Git-Checkout, auf den MarsDawn zugreifen kann, oder einem Ordner der Seitenleiste ist der Pfad relativ zum Projekt. Sonst ist es der volle Pfad, der deinen Benutzernamen zeigen kann. In einem Worktree zeigt die Seitenleiste den Branch, sobald auch der Ordner des Haupt-Repositorys Zugriff hat.
+In einem Git-Checkout, auf den MarsDawn zugreifen kann, oder einem Ordner der Seitenleiste ist der Pfad relativ zum Projekt. Sonst ist es der volle Pfad, der deinen Benutzernamen zeigen kann. In einem Worktree zeigt der Fensteruntertitel den Branch, wenn MarsDawn das Haupt-Repository lesen kann.
 
 ## Weiter
 

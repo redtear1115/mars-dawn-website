@@ -6030,7 +6030,7 @@ def copy_for_ai_page(locale: str, copy: dict) -> dict:
   <p>{copy["lede"]}</p>
 </section>
 <p>{copy["sample_label"]}</p>
-<pre><code>{sample}</code></pre>
+<pre class="copy-sample"><code>{sample}</code></pre>
 <h2>{copy["how_h"]}</h2>
 <ol>
 {steps}

@@ -26,8 +26,8 @@ DATA = {'en': {'title': 'Copy a file path and line numbers for your agent',
                   ['Who answers', 'The agent you paste into', 'The service you pick']],
         'path_h': 'What the path looks like',
         'path': 'In a Git checkout MarsDawn can access, or a sidebar folder, the path is relative to the project. '
-                "Elsewhere it's the full path, which can show your user name. In a worktree, the sidebar shows the "
-                'branch once the main repo folder has access too.',
+                "Elsewhere it's the full path, which can show your user name. The window subtitle shows a worktree's "
+                'branch if MarsDawn can read the main repo.',
         'next_h': 'Next',
         'next': ['Reviewing an agent plan in five minutes', 'All features']},
  'zh-hant': {'title': '把檔案路徑和行號拷貝給 agent',
@@ -46,8 +46,8 @@ DATA = {'en': {'title': 'Copy a file path and line numbers for your agent',
                        ['路徑', '專案內是相對路徑，專案外是完整路徑', '相對路徑或檔名，不會是完整路徑'],
                        ['誰回答', '你貼給的 agent', '你選的服務']],
              'path_h': '路徑長什麼樣',
-             'path': '檔案在 MarsDawn 可存取的 git checkout 或側邊欄資料夾裡，路徑相對於專案。其他是完整路徑，可能帶出使用者名稱。worktree 要主 repo '
-                     '資料夾也授權，側邊欄才會顯示分支。',
+             'path': '檔案在 MarsDawn 可存取的 git checkout 或側邊欄資料夾裡，路徑相對於專案。其他是完整路徑，可能帶出使用者名稱。主 repo 可讀取時，worktree '
+                     '的分支顯示在視窗副標題。',
              'next_h': '接下來',
              'next': ['五分鐘審完一份 agent 計畫', '所有功能']},
  'zh-hans': {'title': '把文件路径和行号拷贝给代理',
@@ -66,7 +66,7 @@ DATA = {'en': {'title': 'Copy a file path and line numbers for your agent',
                        ['路径', '项目内是相对路径，项目外是完整路径', '相对路径或文件名，不会是完整路径'],
                        ['谁回答', '你粘贴给的代理', '你选的服务']],
              'path_h': '路径是什么样',
-             'path': '文件在 MarsDawn 可访问的 git checkout 或边栏文件夹里，路径相对于项目。其他是完整路径，可能带出用户名。worktree 要主仓库文件夹也授权，边栏才会显示分支。',
+             'path': '文件在 MarsDawn 可访问的 git checkout 或边栏文件夹里，路径相对于项目。其他是完整路径，可能带出用户名。主仓库可读取时，worktree 的分支显示在窗口副标题。',
              'next_h': '接下来',
              'next': ['五分钟审完一份代理计划', '所有功能']},
  'ja': {'title': 'ファイルパスと行番号をエージェント用にコピー',
@@ -86,7 +86,7 @@ DATA = {'en': {'title': 'Copy a file path and line numbers for your agent',
                   ['答える相手', '貼り付けた先のエージェント', '選んだサービス']],
         'path_h': 'パスの形',
         'path': 'MarsDawn がアクセスできる git チェックアウトやサイドバーのフォルダ内なら、パスはプロジェクトからの相対パスです。それ以外はフルパスで、ユーザ名が含まれることがあります。worktree '
-                'では、メインのリポジトリのフォルダにもアクセスを許可すると、サイドバーにブランチが表示されます。',
+                'では、MarsDawn がメインのリポジトリを読めると、ウインドウのサブタイトルにブランチが表示されます。',
         'next_h': '次に読む',
         'next': ['エージェントの計画を 5 分でレビューする', 'すべての機能']},
  'ko': {'title': '파일 경로와 줄 번호를 에이전트용으로 복사',
@@ -106,7 +106,7 @@ DATA = {'en': {'title': 'Copy a file path and line numbers for your agent',
                   ['답하는 쪽', '붙여 넣은 에이전트', '선택한 서비스']],
         'path_h': '경로는 어떻게 보이나요',
         'path': 'MarsDawn이 접근할 수 있는 git 체크아웃이나 사이드바 폴더 안이면 경로는 프로젝트 기준 상대 경로입니다. 그 외에는 전체 경로이며 사용자 이름이 보일 수 있습니다. '
-                'worktree는 기본 저장소 폴더에도 접근을 허용해야 사이드바에 브랜치가 표시됩니다.',
+                'worktree에서는 MarsDawn이 기본 저장소를 읽을 수 있으면 윈도우 부제목에 브랜치가 표시됩니다.',
         'next_h': '다음으로',
         'next': ['에이전트의 계획을 5분 안에 검토하는 법', '모든 기능']},
  'de': {'title': 'Dateipfad und Zeilennummern für deinen Agenten kopieren',
@@ -138,7 +138,7 @@ DATA = {'en': {'title': 'Copy a file path and line numbers for your agent',
         'path_h': 'So sieht der Pfad aus',
         'path': 'In einem Git-Checkout, auf den MarsDawn zugreifen kann, oder einem Ordner der Seitenleiste ist der '
                 'Pfad relativ zum Projekt. Sonst ist es der volle Pfad, der deinen Benutzernamen zeigen kann. In einem '
-                'Worktree zeigt die Seitenleiste den Branch, sobald auch der Ordner des Haupt-Repositorys Zugriff hat.',
+                'Worktree zeigt der Fensteruntertitel den Branch, wenn MarsDawn das Haupt-Repository lesen kann.',
         'next_h': 'Weiter',
         'next': ['Einen Agentenplan in fünf Minuten prüfen', 'Alle Funktionen']},
  'fr': {'title': 'Copier un chemin de fichier et des numéros de ligne pour votre agent',
@@ -167,8 +167,7 @@ DATA = {'en': {'title': 'Copy a file path and line numbers for your agent',
         'path_h': 'À quoi ressemble le chemin',
         'path': 'Dans un checkout Git accessible à MarsDawn, ou un dossier de la barre latérale, le chemin est relatif '
                 'au projet. Ailleurs, c’est le chemin complet, qui peut montrer votre nom d’utilisateur. Dans un '
-                'worktree, la barre latérale affiche la branche dès que le dossier du dépôt principal est aussi '
-                'accessible.',
+                'worktree, le sous-titre de la fenêtre indique la branche si MarsDawn peut lire le dépôt principal.',
         'next_h': 'Pour aller plus loin',
         'next': ['Relire le plan d’un agent en cinq minutes', 'Toutes les fonctionnalités']},
  'es': {'title': 'Copiar la ruta del archivo y los números de línea para tu agente',
@@ -198,7 +197,7 @@ DATA = {'en': {'title': 'Copy a file path and line numbers for your agent',
         'path_h': 'Cómo es la ruta',
         'path': 'En un checkout de Git al que MarsDawn puede acceder, o en una carpeta de la barra lateral, la ruta es '
                 'relativa al proyecto. En otros casos es la ruta completa, que puede mostrar tu nombre de usuario. En '
-                'un worktree, la barra lateral muestra la rama cuando la carpeta del repositorio principal también '
-                'tiene acceso.',
+                'un worktree, el subtítulo de la ventana muestra la rama si MarsDawn puede leer el repositorio '
+                'principal.',
         'next_h': 'Siguiente',
         'next': ['Revisar el plan de un agente en cinco minutos', 'Todas las funciones']}}

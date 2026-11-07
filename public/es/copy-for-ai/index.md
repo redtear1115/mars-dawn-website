@@ -28,7 +28,7 @@ Luego mostrar la última copia.
 
 ## Cómo es la ruta
 
-En un checkout de Git al que MarsDawn puede acceder, o en una carpeta de la barra lateral, la ruta es relativa al proyecto. En otros casos es la ruta completa, que puede mostrar tu nombre de usuario. En un worktree, la barra lateral muestra la rama cuando la carpeta del repositorio principal también tiene acceso.
+En un checkout de Git al que MarsDawn puede acceder, o en una carpeta de la barra lateral, la ruta es relativa al proyecto. En otros casos es la ruta completa, que puede mostrar tu nombre de usuario. En un worktree, el subtítulo de la ventana muestra la rama si MarsDawn puede leer el repositorio principal.
 
 ## Siguiente
 

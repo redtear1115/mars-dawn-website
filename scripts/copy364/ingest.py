@@ -2,7 +2,8 @@
 """The /copy-for-ai/ copy (website #364), carried by program from Aria's comments, never retyped.
 
 source/ holds the two comments as posted: 6703346378 (en, zh-Hant, Ray approved in 6703356047) and
-6703372880 (the other six). data.py is generated from them:
+6703372880 (the other six). 6709431188 replaces the worktree sentence in every locale (Ray approved
+en and zh-Hant on #366), and is applied by program over the first two. data.py is generated from them:
 
     python3 -I -B scripts/copy364/ingest.py          # write data.py
     python3 -I -B scripts/copy364/ingest.py --check  # fail if data.py isn't what the sources give
@@ -53,12 +54,33 @@ def parse(md: str) -> dict:
     }
 
 
+WORKTREE = "6709431188-worktree.md"
+
+
+def worktree_sentences() -> dict:
+    """Locale: (the sentence as it was, the approved one), from the table in 6709431188."""
+    text = (HERE / "source" / WORKTREE).read_text(encoding="utf-8")
+    rows = {}
+    for line in text.splitlines():
+        match = re.fullmatch(r"\| ([a-z-]+) \| `(.+)` \| `(.+)` \|", line.strip())
+        if match:
+            rows[match.group(1)] = (match.group(2), match.group(3))
+    return rows
+
+
 def build() -> dict:
     data = {}
+    swaps = worktree_sentences()
     for name, locales in SOURCES.items():
         text = (HERE / "source" / name).read_text(encoding="utf-8")
         for heading, locale in locales.items():
-            data[locale] = parse(block(text, heading))
+            md = block(text, heading)
+            old, new = swaps[locale]
+            if md.count(old) != 1:
+                raise SystemExit(f"{locale}: the worktree sentence isn't in the copy once")
+            data[locale] = parse(md.replace(old, new))
+    if set(swaps) != set(data):
+        raise SystemExit(f"worktree sentences for {sorted(swaps)}, copy for {sorted(data)}")
     return data
 
 

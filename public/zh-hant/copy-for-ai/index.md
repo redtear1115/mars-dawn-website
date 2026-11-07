@@ -28,7 +28,7 @@ docs/plan.md:42-43
 
 ## 路徑長什麼樣
 
-檔案在 MarsDawn 可存取的 git checkout 或側邊欄資料夾裡，路徑相對於專案。其他是完整路徑，可能帶出使用者名稱。worktree 要主 repo 資料夾也授權，側邊欄才會顯示分支。
+檔案在 MarsDawn 可存取的 git checkout 或側邊欄資料夾裡，路徑相對於專案。其他是完整路徑，可能帶出使用者名稱。主 repo 可讀取時，worktree 的分支顯示在視窗副標題。
 
 ## 接下來
 

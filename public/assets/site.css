@@ -1546,6 +1546,10 @@ html { overflow-x: hidden; }
 /* On a phone the command wraps instead of scrolling out of sight; one click still selects all of it.
    The code element sets the wrapping: the site's `pre code` rule keeps it on one line otherwise. */
 .install pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* /copy-for-ai/'s sample of what Copy for AI pastes (#364): a narrow phone folds a line instead of
+   scrolling, so the whole answer is on the first screen. Wide enough, the lines are the app's own;
+   folding is display only, and a copied selection keeps the original lines. */
+.copy-sample code { white-space: pre-wrap; overflow-wrap: anywhere; }
 :lang(ja) :is(h2, h3) { word-break: auto-phrase; }
 
 /* ---- Themes page: the themes themselves, two to a row ----------------------

@@ -989,7 +989,7 @@ Then show the last saved copy.
 
 ## What the path looks like
 
-In a Git checkout MarsDawn can access, or a sidebar folder, the path is relative to the project. Elsewhere it's the full path, which can show your user name. In a worktree, the sidebar shows the branch once the main repo folder has access too.
+In a Git checkout MarsDawn can access, or a sidebar folder, the path is relative to the project. Elsewhere it's the full path, which can show your user name. The window subtitle shows a worktree's branch if MarsDawn can read the main repo.
 
 ## Next
 
@@ -4568,7 +4568,7 @@ docs/plan.md:42-43
 
 ## 路徑長什麼樣
 
-檔案在 MarsDawn 可存取的 git checkout 或側邊欄資料夾裡，路徑相對於專案。其他是完整路徑，可能帶出使用者名稱。worktree 要主 repo 資料夾也授權，側邊欄才會顯示分支。
+檔案在 MarsDawn 可存取的 git checkout 或側邊欄資料夾裡，路徑相對於專案。其他是完整路徑，可能帶出使用者名稱。主 repo 可讀取時，worktree 的分支顯示在視窗副標題。
 
 ## 接下來
 
@@ -8185,7 +8185,7 @@ docs/plan.md:42-43
 
 ## 路径是什么样
 
-文件在 MarsDawn 可访问的 git checkout 或边栏文件夹里，路径相对于项目。其他是完整路径，可能带出用户名。worktree 要主仓库文件夹也授权，边栏才会显示分支。
+文件在 MarsDawn 可访问的 git checkout 或边栏文件夹里，路径相对于项目。其他是完整路径，可能带出用户名。主仓库可读取时，worktree 的分支显示在窗口副标题。
 
 ## 接下来
 
@@ -11796,7 +11796,7 @@ docs/plan.md:42-43
 
 ## パスの形
 
-MarsDawn がアクセスできる git チェックアウトやサイドバーのフォルダ内なら、パスはプロジェクトからの相対パスです。それ以外はフルパスで、ユーザ名が含まれることがあります。worktree では、メインのリポジトリのフォルダにもアクセスを許可すると、サイドバーにブランチが表示されます。
+MarsDawn がアクセスできる git チェックアウトやサイドバーのフォルダ内なら、パスはプロジェクトからの相対パスです。それ以外はフルパスで、ユーザ名が含まれることがあります。worktree では、MarsDawn がメインのリポジトリを読めると、ウインドウのサブタイトルにブランチが表示されます。
 
 ## 次に読む
 
@@ -15407,7 +15407,7 @@ Danach letzte gesicherte Kopie zeigen.
 
 ## So sieht der Pfad aus
 
-In einem Git-Checkout, auf den MarsDawn zugreifen kann, oder einem Ordner der Seitenleiste ist der Pfad relativ zum Projekt. Sonst ist es der volle Pfad, der deinen Benutzernamen zeigen kann. In einem Worktree zeigt die Seitenleiste den Branch, sobald auch der Ordner des Haupt-Repositorys Zugriff hat.
+In einem Git-Checkout, auf den MarsDawn zugreifen kann, oder einem Ordner der Seitenleiste ist der Pfad relativ zum Projekt. Sonst ist es der volle Pfad, der deinen Benutzernamen zeigen kann. In einem Worktree zeigt der Fensteruntertitel den Branch, wenn MarsDawn das Haupt-Repository lesen kann.
 
 ## Weiter
 
@@ -18958,7 +18958,7 @@ Puis afficher la dernière copie.
 
 ## À quoi ressemble le chemin
 
-Dans un checkout Git accessible à MarsDawn, ou un dossier de la barre latérale, le chemin est relatif au projet. Ailleurs, c’est le chemin complet, qui peut montrer votre nom d’utilisateur. Dans un worktree, la barre latérale affiche la branche dès que le dossier du dépôt principal est aussi accessible.
+Dans un checkout Git accessible à MarsDawn, ou un dossier de la barre latérale, le chemin est relatif au projet. Ailleurs, c’est le chemin complet, qui peut montrer votre nom d’utilisateur. Dans un worktree, le sous-titre de la fenêtre indique la branche si MarsDawn peut lire le dépôt principal.
 
 ## Pour aller plus loin
 
@@ -22509,7 +22509,7 @@ Luego mostrar la última copia.
 
 ## Cómo es la ruta
 
-En un checkout de Git al que MarsDawn puede acceder, o en una carpeta de la barra lateral, la ruta es relativa al proyecto. En otros casos es la ruta completa, que puede mostrar tu nombre de usuario. En un worktree, la barra lateral muestra la rama cuando la carpeta del repositorio principal también tiene acceso.
+En un checkout de Git al que MarsDawn puede acceder, o en una carpeta de la barra lateral, la ruta es relativa al proyecto. En otros casos es la ruta completa, que puede mostrar tu nombre de usuario. En un worktree, el subtítulo de la ventana muestra la rama si MarsDawn puede leer el repositorio principal.
 
 ## Siguiente
 
@@ -26060,7 +26060,7 @@ docs/plan.md:42-43
 
 ## 경로는 어떻게 보이나요
 
-MarsDawn이 접근할 수 있는 git 체크아웃이나 사이드바 폴더 안이면 경로는 프로젝트 기준 상대 경로입니다. 그 외에는 전체 경로이며 사용자 이름이 보일 수 있습니다. worktree는 기본 저장소 폴더에도 접근을 허용해야 사이드바에 브랜치가 표시됩니다.
+MarsDawn이 접근할 수 있는 git 체크아웃이나 사이드바 폴더 안이면 경로는 프로젝트 기준 상대 경로입니다. 그 외에는 전체 경로이며 사용자 이름이 보일 수 있습니다. worktree에서는 MarsDawn이 기본 저장소를 읽을 수 있으면 윈도우 부제목에 브랜치가 표시됩니다.
 
 ## 다음으로
 

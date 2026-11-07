@@ -28,7 +28,7 @@ Then show the last saved copy.
 
 ## What the path looks like
 
-In a Git checkout MarsDawn can access, or a sidebar folder, the path is relative to the project. Elsewhere it's the full path, which can show your user name. In a worktree, the sidebar shows the branch once the main repo folder has access too.
+In a Git checkout MarsDawn can access, or a sidebar folder, the path is relative to the project. Elsewhere it's the full path, which can show your user name. The window subtitle shows a worktree's branch if MarsDawn can read the main repo.
 
 ## Next
 
