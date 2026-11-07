@@ -70,9 +70,13 @@ Versions before 0.5.1 are not listed.
 
 ### marsdawn 0.7.7
 
-DATE-TBD. More reliable parallel exports.
+DATE-TBD. PNG export, collapsible blocks and faster large exports.
 
-- When parallel exports try to save the same content rules at once, marsdawn retries instead of immediately failing the export.
+- `marsdawn export --format png` renders a document to PNG, to check how it looks: `--width` (600–2000, default 1200), `--appearance light|dark`, `--theme`, and `--lines` or `--heading` for part of it. A page taller than 8,000 pixels is split into numbered images, never inside a table, code block or diagram.
+- `marsdawn export --details` decides how collapsible blocks print: `expand`, the default, prints every one open, as before; `as-written` prints only the blocks written open, and the others as their summary alone. Either way, a summary prints as a bold line without the triangle.
+- Collapsible blocks render more of what HackMD and Obsidian write: `:::spoiler` with no title or with `{state="open"}`, Markdown in titles, nested `::::spoiler`, and Obsidian's foldable callouts `> [!note]-` and `> [!tip]+`.
+- Large documents export much faster: in our test, a 10 MB file took about 74 seconds instead of about 4 minutes.
+- When several `marsdawn export` commands run at once, one of them could fail with exit code 5. It now tries again instead.
 
 ### marsdawn 0.7.6
 
