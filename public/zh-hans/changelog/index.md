@@ -71,13 +71,14 @@ Mac App Store 上的 MarsDawn App，以及免费的 marsdawn 命令行工具，�
 
 ### marsdawn 0.7.7
 
-DATE-TBD。导出 PNG、可折叠区块，以及大文件导出更快。
+2026 年 11 月 9 日。导出 PNG、可折叠区块，以及大文件导出更快。
 
 - `marsdawn export --format png` 会把文稿导出为 PNG，用来确认排版：`--width`（600–2000，默认 1200）、`--appearance light|dark`、`--theme`，以及只导出一部分的 `--lines` 或 `--heading`。高度超过 8,000 像素的页面会分成编号的多张图，切点不会落在表格、代码块或图表中间。
 - `marsdawn export --details` 决定可折叠区块怎么打印：默认的 `expand` 和以前一样全部展开；`as-written` 只展开原本写成展开的区块，其他只打印标题。两种方式的标题都打印成粗体一行，不画三角形。
 - 可折叠区块支持更多 HackMD 和 Obsidian 的写法：没有标题或加上 `{state="open"}` 的 `:::spoiler`、标题里的 Markdown、嵌套的 `::::spoiler`，以及 Obsidian 可折叠的提示块 `> [!note]-`、`> [!tip]+`。
 - 大文件导出快很多：在我们的测试中，10 MB 的文件从约 4 分钟缩短到约 74 秒。
 - 同时运行多个 `marsdawn export` 时，偶尔会有一个以代码 5 结束。现在会自动重试。
+- MarsDawn App 没有运行时，同时运行多个 `marsdawn open` 现在每个文件都会打开。以前有些文件没打开，命令却报告成功。
 
 ### marsdawn 0.7.6
 

@@ -172,13 +172,14 @@ try {
 <p>No se incluyen las versiones anteriores a la 0.5.1.</p>
 
 <h3 id="marsdawn-0-7-7">marsdawn 0.7.7</h3>
-<p>DATE-TBD. Exportación a PNG, bloques plegables y exportaciones más rápidas de archivos grandes.</p>
+<p>9 de noviembre de 2026. Exportación a PNG, bloques plegables y exportaciones más rápidas de archivos grandes.</p>
 <ul>
   <li><code>marsdawn export --format png</code> exporta un documento a PNG para comprobar cómo se ve: <code>--width</code> (600–2000, 1200 por defecto), <code>--appearance light|dark</code>, <code>--theme</code>, y <code>--lines</code> o <code>--heading</code> para exportar solo una parte. Una página de más de 8000 píxeles de alto se divide en imágenes numeradas, nunca en medio de una tabla, un bloque de código o un diagrama.</li>
   <li><code>marsdawn export --details</code> decide cómo se imprimen los bloques plegables: <code>expand</code>, la opción predeterminada, los imprime todos abiertos, como antes; <code>as-written</code> solo abre los bloques escritos como abiertos e imprime de los demás solo el resumen. En ambos casos, el resumen se imprime como una línea en negrita, sin triángulo.</li>
   <li>Los bloques plegables admiten más formas de escribir de HackMD y Obsidian: <code>:::spoiler</code> sin título o con <code>{state="open"}</code>, Markdown en los títulos, <code>::::spoiler</code> anidados y los avisos destacados plegables de Obsidian <code>&gt; [!note]-</code> y <code>&gt; [!tip]+</code>.</li>
   <li>Los documentos grandes se exportan mucho más rápido: en nuestra prueba, un archivo de 10 MB tardó unos 74 segundos en vez de unos 4 minutos.</li>
   <li>Cuando se ejecutaban varios comandos <code>marsdawn export</code> a la vez, uno podía terminar con el código 5. Ahora vuelve a intentarlo.</li>
+  <li>Cuando la app MarsDawn no está abierta, varios comandos <code>marsdawn open</code> a la vez ahora abren todos los archivos. Antes, algunos archivos no se abrían aunque el comando informara que todo había ido bien.</li>
 </ul>
 
 <h3 id="marsdawn-0-7-6">marsdawn 0.7.6</h3>
