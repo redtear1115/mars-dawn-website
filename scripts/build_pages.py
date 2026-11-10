@@ -4423,6 +4423,7 @@ import hero_window  # noqa: E402
 import brand_film  # noqa: E402
 import brand_film_themes  # noqa: E402
 import brand_film_mac  # noqa: E402
+import brand_film_copy_for_ai  # noqa: E402
 import approved_copy  # noqa: E402
 import rich_pages  # noqa: E402
 import roadmap272  # noqa: E402
@@ -5842,6 +5843,10 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         page = {**page, "body": page["body"].replace(brand_film_mac.MARK, brand_film_mac.section_markdown_html(locale, BASE_URL))}
     if brand_film_themes.MARK in page["body"]:
         page = {**page, "body": page["body"].replace(brand_film_themes.MARK, brand_film_themes.section_markdown_html(locale, BASE_URL))}
+    if brand_film_copy_for_ai.MARK in page["body"]:
+        page = {**page, "body": page["body"].replace(
+            brand_film_copy_for_ai.MARK,
+            brand_film_copy_for_ai.section_markdown_html(locale, BASE_URL, copy_for_ai_feature(locale)))}
     if "intro" not in page:
         return html_to_markdown(page["body"])
     if slug == "index":
@@ -6021,9 +6026,14 @@ def quicklook_page(locale: str, copy: dict) -> dict:
     return {"title": copy["ql_title"], "description": copy["ql_desc"], "body": body}
 
 
+def copy_for_ai_feature(locale: str) -> str:
+    """The page's own name for the feature (the word in the table's head), as plain text."""
+    return _plain(copy364_data.DATA[locale]["table"][0][1])
+
+
 def copy_for_ai_page(locale: str, copy: dict) -> dict:
-    """/copy-for-ai/ (#364), to Daphne's structure. The film goes under the sample when it exists, and
-    until then the page has no empty place for it. The word in the table's head is the app's own name
+    """/copy-for-ai/ (#364), to Daphne's structure. The film (#366) goes under the sample, by its marker,
+    which render() and page_markdown() replace. The word in the table's head is the app's own name
     for the feature, and it's the other pages' link text."""
     links = "\n".join(f'  <li><a href="{page_path(locale, slug)}">{text}</a></li>'
                       for slug, text in zip(("reviewing-agent-plans", "features"), copy["next"]))
@@ -6038,6 +6048,7 @@ def copy_for_ai_page(locale: str, copy: dict) -> dict:
 </section>
 <p>{copy["sample_label"]}</p>
 <pre class="copy-sample"><code>{sample}</code></pre>
+{brand_film_copy_for_ai.MARK}
 <h2>{copy["how_h"]}</h2>
 <ol>
 {steps}
@@ -7083,6 +7094,8 @@ def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> l
         data.append(faq_data_plain(page))
     if brand_film_themes.MARK in page["body"]:
         data.append(brand_film_themes.video_object(locale, BASE_URL))
+    if brand_film_copy_for_ai.MARK in page["body"]:
+        data.append(brand_film_copy_for_ai.video_object(locale, BASE_URL, _plain(copy364_data.DATA[locale]["lede"])))
     if slug in ARTICLE_DATES:
         published, modified = ARTICLE_DATES[slug]
         data.append({
@@ -7165,6 +7178,10 @@ def render(locale: str, slug: str, page: dict) -> str:
     elif slug == "themes/gallery":
         extra_css = '<link rel="stylesheet" href="/assets/theme-gallery.css">\n'
         extra_js = '<script type="module" src="/assets/theme-gallery.js"></script>\n'
+    # The 18-second film on /copy-for-ai/ (#366): an external deferred script (script-src 'self'). It starts
+    # the film unless the visitor asked for reduced motion, and picks the 720p file on a phone-width window.
+    if brand_film_copy_for_ai.MARK in page["body"]:
+        extra_js += f'<script src="{brand_film_copy_for_ai.SCRIPT}" defer></script>\n'
     if slug == "index":
         hero_html = (
             '<section class="hero-scene">\n'
@@ -7213,6 +7230,7 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = main_html[:after] + "\n<p>" + store_badge_html(locale, PRICING_CAMPAIGN) + "</p>" + main_html[after:]
     main_html = main_html.replace(brand_film_mac.MARK, brand_film_mac.section_html(locale))
     main_html = main_html.replace(brand_film_themes.MARK, brand_film_themes.section_html(locale))
+    main_html = main_html.replace(brand_film_copy_for_ai.MARK, brand_film_copy_for_ai.section_html(locale, copy_for_ai_feature(locale)))
     if slug in TOC_PAGES:
         main_html = add_toc(locale, slug, main_html)
     elif slug != "index":

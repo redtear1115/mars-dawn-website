@@ -12,6 +12,8 @@ Danach letzte gesicherte Kopie zeigen.
 ```
 ````
 
+[Für KI kopieren | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
+
 ## So geht es
 
 1. Wähle Text im Quelltext aus, in Nur Quelltext oder Geteilt. Ohne Auswahl wird die Zeile mit dem Cursor kopiert.

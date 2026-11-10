@@ -12,6 +12,8 @@ docs/plan.md:42-43
 ```
 ````
 
+[AI 用にコピー | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
+
 ## 使い方
 
 1. ソースのテキストを選択します。「ソースのみ」でも「分割」でも使えます。選択がないときは、カーソルのある行をコピーします。

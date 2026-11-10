@@ -12,6 +12,8 @@ Then show the last saved copy.
 ```
 ````
 
+[Copy for AI | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
+
 ## How to use it
 
 1. Select text in the source, in Source Only or Split. With nothing selected, the line the cursor is on is copied.

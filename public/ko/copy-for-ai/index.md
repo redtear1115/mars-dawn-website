@@ -12,6 +12,8 @@ docs/plan.md:42-43
 ```
 ````
 
+[AI용으로 복사 | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
+
 ## 사용 방법
 
 1. 소스에서 텍스트를 선택합니다. 소스만이나 분할 모두 됩니다. 선택하지 않으면 커서가 있는 줄을 복사합니다.

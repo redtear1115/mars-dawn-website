@@ -973,6 +973,8 @@ Then show the last saved copy.
 ```
 ````
 
+[Copy for AI | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
+
 ## How to use it
 
 1. Select text in the source, in Source Only or Split. With nothing selected, the line the cursor is on is copied.
@@ -4563,6 +4565,8 @@ docs/plan.md:42-43
 之後顯示上次儲存的版本。
 ```
 ````
+
+[拷貝給 AI | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-zh-Hant-1080p30.mp4)
 
 ## 怎麼用
 
@@ -8193,6 +8197,8 @@ docs/plan.md:42-43
 ```
 ````
 
+[拷贝给 AI | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
+
 ## 怎么用
 
 1. 在源代码里选中文本，用“仅显示源代码”或“并排”都可以。没有选中时，会拷贝光标所在的那一行。
@@ -11814,6 +11820,8 @@ docs/plan.md:42-43
 そのあと最後に保存した版を表示。
 ```
 ````
+
+[AI 用にコピー | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
 
 ## 使い方
 
@@ -15437,6 +15445,8 @@ Danach letzte gesicherte Kopie zeigen.
 ```
 ````
 
+[Für KI kopieren | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
+
 ## So geht es
 
 1. Wähle Text im Quelltext aus, in Nur Quelltext oder Geteilt. Ohne Auswahl wird die Zeile mit dem Cursor kopiert.
@@ -18998,6 +19008,8 @@ Réessayer trois fois après un échec.
 Puis afficher la dernière copie.
 ```
 ````
+
+[Copier pour l’IA | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
 
 ## Comment l’utiliser
 
@@ -22561,6 +22573,8 @@ Luego mostrar la última copia.
 ```
 ````
 
+[Copiar para IA | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
+
 ## Cómo usarlo
 
 1. Selecciona texto en el código, en Solo código o Dividido. Sin selección, se copia la línea del cursor.
@@ -26122,6 +26136,8 @@ docs/plan.md:42-43
 그다음 마지막 저장본을 표시.
 ```
 ````
+
+[AI용으로 복사 | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
 
 ## 사용 방법
 

@@ -1550,6 +1550,21 @@ html { overflow-x: hidden; }
    scrolling, so the whole answer is on the first screen. Wide enough, the lines are the app's own;
    folding is display only, and a copied selection keeps the original lines. */
 .copy-sample code { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* The 18-second film under the sample (scripts/brand_film_copy_for_ai.py, #366): always shown, 16:9 at
+   every width. As wide as the hero window and the screenshot plates (--w-media), never narrower than the
+   text column, so on a phone it is the column. width and height on the element hold its place before the
+   poster arrives. It has no animation or transition of its own; reduced motion is handled in
+   copy-for-ai-film.js, which then leaves the poster as it is. */
+.film-copy-ai { margin: 32px 0 0; }
+.film-copy-ai video {
+  display: block;
+  width: max(100%, var(--w-media));
+  margin-inline: calc((100% - max(100%, var(--w-media))) / 2);
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: var(--r-plate);
+  background: #000;
+}
 :lang(ja) :is(h2, h3) { word-break: auto-phrase; }
 
 /* ---- Themes page: the themes themselves, two to a row ----------------------

@@ -12,6 +12,8 @@ Puis afficher la dernière copie.
 ```
 ````
 
+[Copier pour l’IA | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
+
 ## Comment l’utiliser
 
 1. Sélectionnez du texte dans la source, en Source uniquement ou Partagé. Sans sélection, la ligne du curseur est copiée.

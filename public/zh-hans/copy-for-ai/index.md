@@ -12,6 +12,8 @@ docs/plan.md:42-43
 ```
 ````
 
+[拷贝给 AI | MarsDawn](https://marsdawn.southern-light.dev/assets/film/marsdawn-copy-for-ai-en-1080p30.mp4)
+
 ## 怎么用
 
 1. 在源代码里选中文本，用“仅显示源代码”或“并排”都可以。没有选中时，会拷贝光标所在的那一行。
