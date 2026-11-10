@@ -69,6 +69,17 @@ Mac App Store 上的 MarsDawn App，以及免費的 marsdawn 命令列工具，�
 
 0.5.1 以前的版本不列。
 
+### marsdawn 0.7.7
+
+2026 年 11 月 9 日。輸出 PNG、可收合區塊，以及大檔案輸出更快。
+
+- `marsdawn export --format png` 會把文件輸出成 PNG，用來確認排版：`--width`（600–2000，預設 1200）、`--appearance light|dark`、`--theme`，以及只輸出一部分的 `--lines` 或 `--heading`。高度超過 8,000 像素的頁面會分成編號的多張圖，切點不會落在表格、程式碼區塊或圖表中間。
+- `marsdawn export --details` 決定可收合區塊怎麼印：預設的 `expand` 和以前一樣全部展開；`as-written` 只展開原本寫成展開的區塊，其他只印標題。兩種方式的標題都印成粗體一行，不畫三角形。
+- 可收合區塊支援更多 HackMD 和 Obsidian 的寫法：沒有標題或加上 `{state="open"}` 的 `:::spoiler`、標題裡的 Markdown、巢狀的 `::::spoiler`，以及 Obsidian 可收合的 callout `> [!note]-`、`> [!tip]+`。
+- 大檔案輸出快很多：在我們的測試中，10 MB 的檔案從約 4 分鐘縮短到約 74 秒。
+- 同時執行多個 `marsdawn export` 時，偶爾會有一個以代碼 5 結束。現在會自動重試。
+- MarsDawn App 沒在執行時，同時執行多個 `marsdawn open` 現在每個檔案都會打開。以前有些檔案沒打開，指令卻回報成功。
+
 ### marsdawn 0.7.6
 
 2026 年 11 月 2 日。macOS 27.2 上的手冊 PDF。
@@ -206,9 +217,9 @@ Mac App Store 上的 MarsDawn App，以及免費的 marsdawn 命令列工具，�
 - [MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hant/vs/index.md): 寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新於 2026 年 11 月 7 日）；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。
 - [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 4.99 解鎖一次。逐項比較，附來源。
 - [2026 Mac Markdown 檢視器推薦](https://marsdawn.southern-light.dev/zh-hant/best-markdown-viewer-mac/index.md): 比較 8 款 Mac Markdown 檢視器的價格、Mermaid、數學式、PDF、自動重新載入、快速查看與原生／Electron，並說明各自適合誰。
-- [命令列工具](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。
+- [命令列工具](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 輸出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。
 - [給 AI agent 的 marsdawn 參考](https://marsdawn.southern-light.dev/zh-hant/cli/agents/index.md): 給呼叫 marsdawn 把 Markdown 轉成 PDF 的 AI agent 與腳本的參考：指令、JSON 輸出、Schema、離開代碼與系統需求。
-- [給 agent 的 skill](https://marsdawn.southern-light.dev/zh-hant/cli/skill/index.md): 一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你審閱，也學會安裝 marsdawn、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。
+- [給 agent 的 skill](https://marsdawn.southern-light.dev/zh-hant/cli/skill/index.md): 一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你審閱，也學會安裝 marsdawn、把 Markdown 輸出成 PDF，並讀懂 JSON 結果。
 - [MCP 伺服器](https://marsdawn.southern-light.dev/zh-hant/cli/mcp/index.md): marsdawn 沒有自己的 AI 模型，是哪個 agent 寫出 Markdown 都無所謂。可以從 CLI、skill 檔案，或 marsdawn-mcp 這個 MCP 伺服器呼叫，三者最後都執行同一個 export。
 - [節省 token 的審閱方式](https://marsdawn.southern-light.dev/zh-hant/token-efficient-review/index.md): 人在 MarsDawn 裡讀排版後的頁面，不會被讀回 agent 的 context。工具呼叫本身回傳的也只是精簡的 JSON，不是排版內容，呼叫本身就很便宜。
 - [在別處看 Markdown，對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/markdown-preview-tools/index.md): MarsDawn 對比在 VS Code 內建預覽、瀏覽器擴充功能，或 Claude Desktop 檔案預覽裡看 Markdown：各自能排版出什麼，打開一個檔案要花多少功夫。

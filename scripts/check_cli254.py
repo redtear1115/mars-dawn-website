@@ -37,7 +37,7 @@ SITE = HERE.parent / "public"
 ROOTS = {"en": "", "zh-hant": "zh-hant/", "zh-hans": "zh-hans/", "ja": "ja/", "de": "de/", "fr": "fr/",
          "es": "es/", "ko": "ko/"}
 SCHEMA_FILES = {"open_v4": "open.v4.json", "open": "open.v3.json", "error_v3": "error.v3.json", "error": "error.v2.json"}
-ORDER = ["0.7.6", "0.7.5", "0.7.4", "0.7.3", "0.7.2", "0.7.1", "0.7.0", "0.6.4", "0.6.3", "0.6.1", "0.5.4"]
+ORDER = ["0.7.7", "0.7.6", "0.7.5", "0.7.4", "0.7.3", "0.7.2", "0.7.1", "0.7.0", "0.6.4", "0.6.3", "0.6.1", "0.5.4"]
 
 
 def li(md: str) -> str:

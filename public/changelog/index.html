@@ -190,6 +190,17 @@ try {
 <h2 id="marsdawn-command-line-tool">marsdawn command-line tool</h2>
 <p>Versions before 0.5.1 are not listed.</p>
 
+<h3 id="marsdawn-0-7-7">marsdawn 0.7.7</h3>
+<p>9 November 2026. PNG export, collapsible blocks and faster large exports.</p>
+<ul>
+  <li><code>marsdawn export --format png</code> renders a document to PNG, to check how it looks: <code>--width</code> (600–2000, default 1200), <code>--appearance light|dark</code>, <code>--theme</code>, and <code>--lines</code> or <code>--heading</code> for part of it. A page taller than 8,000 pixels is split into numbered images, never inside a table, code block or diagram.</li>
+  <li><code>marsdawn export --details</code> decides how collapsible blocks print: <code>expand</code>, the default, prints every one open, as before; <code>as-written</code> prints only the blocks written open, and the others as their summary alone. Either way, a summary prints as a bold line without the triangle.</li>
+  <li>Collapsible blocks render more of what HackMD and Obsidian write: <code>:::spoiler</code> with no title or with <code>{state="open"}</code>, Markdown in titles, nested <code>::::spoiler</code>, and Obsidian's foldable callouts <code>&gt; [!note]-</code> and <code>&gt; [!tip]+</code>.</li>
+  <li>Large documents export much faster: in our test, a 10 MB file took about 74 seconds instead of about 4 minutes.</li>
+  <li>When several <code>marsdawn export</code> commands run at once, one of them could fail with exit code 5. It now tries again instead.</li>
+  <li>When the MarsDawn app isn't running, several <code>marsdawn open</code> commands run at once now open every file. Before, some files didn't open even when the command reported success.</li>
+</ul>
+
 <h3 id="marsdawn-0-7-6">marsdawn 0.7.6</h3>
 <p>2 November 2026. Handbook PDFs on macOS 27.2.</p>
 <ul>

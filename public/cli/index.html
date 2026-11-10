@@ -210,14 +210,15 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pr
   <tr><th scope="row"><code>2</code></th><td data-label="Means">input not found.</td><td data-label="What to do">Check the path and the file name</td></tr>
   <tr><th scope="row"><code>3</code></th><td data-label="Means">MarsDawn is not installed (<code>open</code> only).</td><td data-label="What to do">Install the app, or use <code>export</code>, which doesn't need it</td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="Means">output exists (pass <code>--force</code>).</td><td data-label="What to do">Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere</td></tr>
-  <tr><th scope="row"><code>5</code></th><td data-label="Means">export failed.</td><td data-label="What to do">Read <code>message</code> in the JSON result</td></tr>
+  <tr><th scope="row"><code>5</code></th><td data-label="Means">export failed, or the input is larger than 16 MiB (<code>export</code> only).</td><td data-label="What to do">Read <code>message</code> in the JSON result; for <code>input_too_large</code>, split the file</td></tr>
   <tr><th scope="row"><code>6</code></th><td data-label="Means">this MarsDawn can't show a folder, so nothing was opened (<code>open</code> only).</td><td data-label="What to do"></td></tr>
+  <tr><th scope="row"><code>7</code></th><td data-label="Means"><code>skill --install</code> couldn't create the folder or write the file. An existing <code>SKILL.md</code> is left as it was.</td><td data-label="What to do">Check that the folder can be written to, then run it again</td></tr>
   <tr><th scope="row"><code>64</code></th><td data-label="Means">usage error, including a line out of range, <code>--line</code> with more than one file or with a folder, or more than one folder.</td><td data-label="What to do">Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
 </tbody>
 </table></div>
 
 <h2 id="json-output">--json output</h2>
-<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when a folder was given, <code>folder</code>. <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when a folder was given, <code>folder</code>. <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code>, <code>diagramErrors</code> and <code>diagramErrorDetails</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="Site navigation">

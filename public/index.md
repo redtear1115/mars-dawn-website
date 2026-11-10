@@ -62,12 +62,12 @@ Know before you buy. [What MarsDawn doesn't do](/limits/)
 
 ## How the pieces fit
 
-What each part does today, as of MarsDawn 1.2.1, marsdawn 0.6.4 and marsdawn-mcp v0.2.4.
+What each part does today, as of MarsDawn 1.2.1, marsdawn 0.7.7 and marsdawn-mcp v0.2.4.
 
 | Capability | In the app | CLI | MCP / skill | Status |
 |---|---|---|---|---|
 | Open at a line | Lands on the line, flashes the preview block | marsdawn open notes.md:120 (--background keeps focus) | open_in_marsdawn; the skill opens once | Shipped |
-| PDF export | File ▸ Export as PDF… (⌥⌘E) | marsdawn export, no app needed | export_markdown_to_pdf; skill | Shipped |
+| PDF export | File ▸ Export as PDF… (⌥⌘E), with Document, Handbook and Handout layouts | marsdawn export, no app needed; --layout handbook or handout | export_markdown_to_pdf; skill | Shipped |
 | JSON result | — | --json on open and export | MCP returns the same JSON | Shipped |
 | Agent skill | — | marsdawn skill --install | Teaches open once and export | Shipped |
 | MCP server | — | Runs underneath | marsdawn-mcp: two tools, allowed folders only | Shipped |
