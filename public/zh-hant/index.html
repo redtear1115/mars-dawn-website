@@ -389,12 +389,12 @@ try {
 <p class="know">購買前先知道。 <a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
 <section class="pieces">
 <h2 id="pieces">各部分怎麼搭在一起</h2>
-<p>以 MarsDawn 1.2.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 為準，各部分目前能做的事。</p>
+<p>以 MarsDawn 1.2.1、marsdawn 0.7.7、marsdawn-mcp v0.2.4 為準，各部分目前能做的事。</p>
 <div class="table-scroll" tabindex="0" role="region" aria-labelledby="pieces"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">功能</th><th scope="col">App 內</th><th scope="col">CLI</th><th scope="col">MCP／skill</th><th scope="col">狀態</th></tr></thead>
 <tbody>
   <tr><th scope="row">打開到某一行</th><td data-label="App 內"><span class="cell">停在那一行，預覽區塊閃一下</span></td><td data-label="CLI"><span class="cell">marsdawn open notes.md:120（--background 不搶焦點）</span></td><td data-label="MCP／skill"><span class="cell">open_in_marsdawn；skill 只開一次</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
-  <tr><th scope="row">輸出 PDF</th><td data-label="App 內"><span class="cell">檔案 ▸ 輸出為 PDF⋯（⌥⌘E）</span></td><td data-label="CLI"><span class="cell">marsdawn export，不需要 app</span></td><td data-label="MCP／skill"><span class="cell">export_markdown_to_pdf；skill</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
+  <tr><th scope="row">輸出 PDF</th><td data-label="App 內"><span class="cell">檔案 ▸ 輸出為 PDF⋯（⌥⌘E），可選標準、手冊、講義版面</span></td><td data-label="CLI"><span class="cell">marsdawn export，不需要 app；--layout handbook 或 handout</span></td><td data-label="MCP／skill"><span class="cell">export_markdown_to_pdf；skill</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
   <tr><th scope="row">JSON 結果</th><td data-label="App 內"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">open、export 加 --json</span></td><td data-label="MCP／skill"><span class="cell">MCP 回傳同一份 JSON</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
   <tr><th scope="row">Agent skill</th><td data-label="App 內"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">marsdawn skill --install</span></td><td data-label="MCP／skill"><span class="cell">教 agent 開一次、輸出 PDF</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>
   <tr><th scope="row">MCP 伺服器</th><td data-label="App 內"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">在底下執行</span></td><td data-label="MCP／skill"><span class="cell">marsdawn-mcp：兩個工具，只碰允許的資料夾</span></td><td data-label="狀態"><span class="cell">已推出</span></td></tr>

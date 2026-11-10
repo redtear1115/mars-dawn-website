@@ -190,6 +190,17 @@ try {
 <h2 id="marsdawn-command-line-tool">marsdawn コマンドラインツール</h2>
 <p>0.5.1 より前のバージョンは載せていません。</p>
 
+<h3 id="marsdawn-0-7-7">marsdawn 0.7.7</h3>
+<p>2026年11月9日。PNG の書き出し、折りたたみブロック、大きなファイルの高速な書き出し。</p>
+<ul>
+  <li><code>marsdawn export --format png</code> は、書類を PNG に書き出して表示を確認できます。<code>--width</code>（600–2000、初期値 1200）、<code>--appearance light|dark</code>、<code>--theme</code>、一部だけを書き出す <code>--lines</code> か <code>--heading</code> を指定できます。高さが 8,000 ピクセルを超えるページは番号付きの複数の画像に分かれ、表、コードブロック、図の途中では分かれません。</li>
+  <li><code>marsdawn export --details</code> は、折りたたみブロックのプリント方法を決めます。初期値の <code>expand</code> はこれまでどおりすべて開いてプリントし、<code>as-written</code> は開いた状態で書かれたブロックだけを開き、ほかは見出しだけをプリントします。どちらも見出しは三角形なしの太字 1 行になります。</li>
+  <li>折りたたみブロックが、HackMD と Obsidian の書き方にさらに対応しました。見出しのない <code>:::spoiler</code> や <code>{state="open"}</code> 付きの <code>:::spoiler</code>、見出し内の Markdown、入れ子の <code>::::spoiler</code>、Obsidian の折りたためるコールアウト <code>&gt; [!note]-</code>、<code>&gt; [!tip]+</code> に対応します。</li>
+  <li>大きなファイルの書き出しがかなり速くなりました。私たちのテストでは、10 MB のファイルが約 4 分から約 74 秒になりました。</li>
+  <li>複数の <code>marsdawn export</code> を同時に実行すると、まれにひとつがコード 5 で終了することがありました。これからは自動的に再試行します。</li>
+  <li>MarsDawn アプリが起動していないときに複数の <code>marsdawn open</code> を同時に実行しても、すべてのファイルが開くようになりました。これまでは、成功と表示されても開かないファイルがありました。</li>
+</ul>
+
 <h3 id="marsdawn-0-7-6">marsdawn 0.7.6</h3>
 <p>2026年11月2日。macOS 27.2 のハンドブック PDF。</p>
 <ul>

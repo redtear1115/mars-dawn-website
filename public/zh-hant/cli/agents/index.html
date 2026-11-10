@@ -131,7 +131,7 @@ try {
 
 <h2 id="what-it-does">能做什麼</h2>
 <ul>
-  <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
+  <li><code>export</code>：用和 MarsDawn app 相同的輸出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
   <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人審閱，也可以指定每個檔案要定位的行，或在視窗的側邊欄顯示一個資料夾。</li>
 </ul>
 
@@ -254,7 +254,7 @@ exit 0</code></pre>
   <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字；或 <code>--folder</code> 的路徑不存在、不是資料夾。</li>
   <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
-  <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
+  <li><code>5</code>，<code>export_failed</code>：輸出本身失敗。</li>
   <li><code>6</code>，<code>app_cannot_open_folders</code>：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 <code>-a</code>。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
 </ul>
