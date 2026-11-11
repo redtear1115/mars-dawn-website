@@ -15,6 +15,7 @@ In this screenshot:
 - Code blocks keep their syntax highlighting.
 - Page breaks avoid leaving a heading at the bottom of a page or splitting code and diagrams.
 - Any layout. Export works even while only the source is showing.
+- Preview the pages before you print or export, and pick a layout: Document, Handbook with a cover and table of contents, or Handout with a notes column.
 
 The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script or an AI agent gets the same PDF.
 

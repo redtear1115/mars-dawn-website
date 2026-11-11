@@ -11,10 +11,10 @@ MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 �
 ## 자리를 떠나도 에이전트가 쓴 글을 읽을 수 있습니다
 
 1. Mac에서 에이전트가 iCloud Drive의 폴더에 파일을 저장하게 합니다.
-2. iPhone이나 iPad에서 MarsDawn을 열고 그 파일을 선택합니다.
-3. 편집하거나 PDF로 내보내려면 Mac으로 돌아갑니다.
+2. iPhone이나 iPad에서 MarsDawn으로 열거나 다른 앱에서 엽니다.
+3. 공유하거나 프린트하거나 PDF로 저장할 수 있습니다. 편집은 Mac에서 합니다.
 
-iPhone과 iPad에서는 읽기 전용이며, Markdown과 일반 텍스트 파일만 열 수 있습니다.
+iPhone과 iPad에서는 읽기 전용이며, Markdown, 텍스트, PDF, JSON, YAML을 열 수 있습니다.
 
 [![App Store에서 다운로드하기](/assets/badges/app-store-ko.svg)](https://apps.apple.com/app/id6812925073)
 
@@ -116,7 +116,7 @@ MarsDawn은 에이전트가 쓴 Markdown을 읽고 검토하기 위한 Mac 네�
 
 ### MarsDawn은 iPhone이나 iPad에서 쓸 수 있나요?
 
-네, 읽기용으로 쓸 수 있습니다. iPhone과 iPad의 MarsDawn은 Markdown과 일반 텍스트 파일을 열어 Mermaid 다이어그램, 수식, 코드, 표를 렌더링하며 개요와 테마도 제공합니다. 편집과 PDF 내보내기는 할 수 없습니다. iOS 26 또는 iPadOS 26 이상이 필요합니다. 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.
+네, 읽기용으로 쓸 수 있습니다. iPhone과 iPad의 MarsDawn은 Markdown, 텍스트, PDF, JSON, YAML을 열고 Mermaid 다이어그램, 수식, 코드, 표를 렌더링합니다. 파일을 공유하거나 프린트하거나 PDF로 저장할 수 있지만 편집은 할 수 없습니다. iOS 26 또는 iPadOS 26 이상이 필요합니다. 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad를 모두 포함합니다.
 
 자세히: [로드맵](/ko/roadmap/)
 

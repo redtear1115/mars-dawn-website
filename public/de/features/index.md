@@ -27,6 +27,10 @@ Der Tab „Gliederung“ der Seitenleiste listet die Überschriften eines Dokume
 
 [Lesen, was dein Agent zurückgibt](/de/reading-agent-output/)
 
+### Ein langes Dokument reduzieren
+
+In der Vorschau reduziert Darstellung ▸ Alles bis Überschrift 2 reduzieren einen langen Plan oder eine Spezifikation bis zu den Überschriften der Ebene 2, und Darstellung ▸ Alles erweitern öffnet alles wieder. Format ▸ Reduzierbarer Block fügt einen Block ein, der sich reduzieren lässt.
+
 ### Auf die genaue Zeile zeigen
 
 Bearbeiten ▸ Verweis kopieren kopiert deine Position als Pfad und Zeile, etwa `docs/plan.md:42`. Für KI kopieren fügt darunter den ausgewählten Text hinzu. Setze beides in den Chat des Agenten ein.
@@ -75,7 +79,7 @@ Fett, kursiv, durchgestrichen, Inline-Code, Links, Zitate und Aufgabenlisten fun
 
 ### Zoom, Zeilennummern und eine Statusleiste
 
-Zoome Quelltext und Vorschau gemeinsam von 50 % bis 300 %. Neben dem Quelltext läuft eine Spalte mit Zeilennummern, und die Statusleiste zeigt Zeile und Spalte sowie Wort- und Zeichenzahl und die Lesezeit für das Dokument oder deine Auswahl.
+Zoome Quelltext und Vorschau gemeinsam von 50 % bis 300 %. Neben dem Quelltext läuft eine Spalte mit Zeilennummern, und die Statusleiste zeigt Zeile und Spalte sowie Wort- und Zeichenzahl und die Lesezeit für das Dokument oder deine Auswahl.
 
 ### Bilder
 
@@ -127,7 +131,7 @@ Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden … öffnet eine Gal
 
 ### Als PDF exportieren oder drucken
 
-Ablage ▸ Als PDF exportieren … sichert ein PDF mit Seitenumbrüchen, und Ablage ▸ Drucken … druckt dieselben Seiten. Mermaid-Diagramme werden eingezeichnet, Code behält seine Hervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und zerschneiden keinen kurzen Codeblock und kein Diagramm. Das PDF verwendet immer die hellen Farben des Themes, auch wenn du im Dunkeln gelesen hast.
+Ablage ▸ Drucken … und Ablage ▸ Als PDF exportieren … öffnen „Drucken und Exportieren“ mit einer Vorschau der Seiten. Wähle ein Layout: Dokument; Handbuch, mit Deckblatt, Inhaltsverzeichnis und PDF-Lesezeichen; oder Handout, mit einer Notizspalte. Dann druckst oder sicherst du. Mermaid-Diagramme werden eingezeichnet, Code behält seine Hervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und zerschneiden keinen kurzen Codeblock und kein Diagramm. PDFs verwenden die hellen Farben des Themes.
 
 [PDF-Export](/de/pdf/)
 
@@ -143,12 +147,12 @@ Auf diesem Bildschirmfoto:
 Dein Agent arbeitet auf dem Mac. Seine Pläne und Berichte kannst du auch auf dem iPhone oder iPad lesen.
 
 1. **Auf dem Mac:** Speichere die Pläne und Berichte des Agenten in einem Ordner in iCloud Drive.
-2. **Auf iPhone oder iPad:** Tippe in MarsDawn auf „Öffnen“ und wähle dieselbe Datei. Mermaid-Diagramme, Formeln, Code und Tabellen werden dargestellt, mit Gliederung und deinem Thema.
-3. **Zurück am Mac:** Bearbeite weiter oder exportiere ein PDF.
+2. **Auf iPhone oder iPad:** Tippe in MarsDawn auf „Öffnen“ und wähle dieselbe Datei, oder öffne sie aus einer anderen App. Mermaid-Diagramme, Formeln, Code und Tabellen werden dargestellt, mit Gliederung und deinem Thema.
+3. **Weitergeben:** Teile sie, drucke sie oder sichere sie als PDF.
 
 Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.
 
-Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.
+Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es öffnet Markdown, Text, PDF, JSON und YAML, bearbeitet aber nichts. Links in einem dort gesicherten PDF funktionieren nicht. Eine eigene Cloud hat MarsDawn nicht.
 
 ## Dateien, Tabs und Übersicht
 

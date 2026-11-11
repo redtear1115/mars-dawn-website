@@ -1,52 +1,52 @@
 # Le travail de votre agent revient sous forme de fichier Markdown.
 
-Vous demandez à un agent de code de planifier une migration, de rédiger une spécification ou de traquer un bug. Il travaille seul un moment, puis vous remet un fichier : `plan.md`, `SPEC.md`, un rapport d’avancement, un résumé de recherche. Pour autant que vous puissiez vérifier le travail, ce fichier est le travail.
+Vous demandez à un agent de code de planifier une migration, de rédiger une spécification ou de traquer un bug. Il travaille seul un moment, puis vous remet un fichier : `plan.md`, `SPEC.md`, un rapport d’avancement, un résumé de recherche. Pour autant que vous puissiez vérifier le travail, ce fichier est le travail.
 
 **Pour savoir si l’agent a vu juste, il faut lire ce qu’il vous rend. MarsDawn est une app Mac pour cette lecture.**
 
 ## Ce que disent ceux qui construisent des agents
 
-Citations telles qu’écrites ; notre lecture suit.
+Citations telles qu’écrites ; notre lecture suit.
 
-- « Building Effective Agents » d’Anthropic (Erik S. et Barry Zhang, décembre 2024) donne trois principes fondamentaux pour construire des agents. L’un d’eux : « Privilégiez la transparence en montrant explicitement les étapes de planification de l’agent. » Ce texte s’adresse à ceux qui construisent des agents. De votre côté, cette transparence, c’est le plan que vous finissez par lire.
-- Le même article : « Les agents peuvent alors faire une pause pour obtenir un retour humain à des points de contrôle ou face à un blocage. » Notez le verbe : *peuvent*.
-- Chip Huyen, dans « Agents » (janvier 2025), explique pourquoi la planification doit rester séparée de l’exécution : « Sans supervision, un agent peut exécuter ces étapes pendant des heures, gaspillant temps et argent en appels d’API, avant que vous ne vous rendiez compte qu’il n’aboutit à rien. » Elle décrit aussi un échec où « l’agent est convaincu d’avoir accompli une tâche alors que ce n’est pas le cas ». Chargé de loger 50 personnes dans 30 chambres d’hôtel, il en place 40 et affirme avoir terminé.
-- Andrew Ng, sur le modèle de conception de la planification, dans The Batch (avril 2024) : « D’un côté, la planification est une capacité très puissante ; de l’autre, elle produit des résultats moins prévisibles. » C’est une remarque sur la prévisibilité, pas un appel à la relecture humaine, et il s’attend à ce que la planification progresse vite.
+- « Building Effective Agents » d’Anthropic (Erik S. et Barry Zhang, décembre 2024) donne trois principes fondamentaux pour construire des agents. L’un d’eux : « Privilégiez la transparence en montrant explicitement les étapes de planification de l’agent. » Ce texte s’adresse à ceux qui construisent des agents. De votre côté, cette transparence, c’est le plan que vous finissez par lire.
+- Le même article : « Les agents peuvent alors faire une pause pour obtenir un retour humain à des points de contrôle ou face à un blocage. » Notez le verbe : *peuvent*.
+- Chip Huyen, dans « Agents » (janvier 2025), explique pourquoi la planification doit rester séparée de l’exécution : « Sans supervision, un agent peut exécuter ces étapes pendant des heures, gaspillant temps et argent en appels d’API, avant que vous ne vous rendiez compte qu’il n’aboutit à rien. » Elle décrit aussi un échec où « l’agent est convaincu d’avoir accompli une tâche alors que ce n’est pas le cas ». Chargé de loger 50 personnes dans 30 chambres d’hôtel, il en place 40 et affirme avoir terminé.
+- Andrew Ng, sur le modèle de conception de la planification, dans The Batch (avril 2024) : « D’un côté, la planification est une capacité très puissante ; de l’autre, elle produit des résultats moins prévisibles. » C’est une remarque sur la prévisibilité, pas un appel à la relecture humaine, et il s’attend à ce que la planification progresse vite.
 
-**Notre déduction, pas la leur :** si un agent expose son plan et s’arrête à des points de contrôle, quelqu’un lit ce plan au point de contrôle, et c’est généralement vous. Si un agent peut se croire fini alors qu’il ne l’est pas, son rapport « terminé » a lui aussi besoin d’un lecteur. Aucun de ces auteurs ne mentionne MarsDawn ni ne le recommande, pas plus qu’aucun autre outil Markdown.
+**Notre déduction, pas la leur :** si un agent expose son plan et s’arrête à des points de contrôle, quelqu’un lit ce plan au point de contrôle, et c’est généralement vous. Si un agent peut se croire fini alors qu’il ne l’est pas, son rapport « terminé » a lui aussi besoin d’un lecteur. Aucun de ces auteurs ne mentionne MarsDawn ni ne le recommande, pas plus qu’aucun autre outil Markdown.
 
 ## Pourquoi c’est plus difficile à lire qu’il n’y paraît
 
-Le fichier est long, et la partie importante se trouve rarement en haut. Il contient des diagrammes Mermaid et des formules difficiles à suivre sous forme de source. L’agent est peut-être encore en train de le réécrire alors que vous en êtes à la moitié. C’est souvent un fichier parmi d’autres, parfois répartis sur plusieurs branches ou worktrees. Et quand vous trouvez un problème, « la partie sur le cache a l’air bizarre » laisse l’agent deviner ; « `docs/plan.md:42` supprime l’ancienne table avant la fin du backfill », non.
+Le fichier est long, et la partie importante se trouve rarement en haut. Il contient des diagrammes Mermaid et des formules difficiles à suivre sous forme de source. L’agent est peut-être encore en train de le réécrire alors que vous en êtes à la moitié. C’est souvent un fichier parmi d’autres, parfois répartis sur plusieurs branches ou worktrees. Et quand vous trouvez un problème, « la partie sur le cache a l’air bizarre » laisse l’agent deviner ; « `docs/plan.md:42` supprime l’ancienne table avant la fin du backfill », non.
 
 ## Là où MarsDawn aide
 
-- **Fichiers longs :** l’onglet Plan de la barre latérale (⌃⌘S) liste les titres. Cliquez sur l’un d’eux et les deux volets y sautent.
-- **Diagrammes et maths :** Mermaid et KaTeX sont dessinés dans l’aperçu à côté de la source (⌘2), et les deux volets défilent ensemble.
-- **Réécrit pendant que vous lisez :** quand l’agent réécrit le fichier, MarsDawn le recharge et garde votre position, tant que vous n’avez pas de modifications non enregistrées.
-- **Plusieurs fichiers :** ouvrez le dossier de l’agent avec Fichier ▸ Ouvrir un dossier… (⇧⌘O). Les nouveaux fichiers apparaissent dans l’onglet Fichiers en une seconde environ, et pour un checkout git, l’en-tête indique la branche ou le worktree.
-- **Un retour précis :** Édition ▸ Copier la référence (⌥⌘C) copie votre position sous la forme `docs/plan.md:42`. Copier pour l’IA (⌃⌥⌘C) ajoute le texte sélectionné en dessous. Collez l’un ou l’autre dans la conversation avec l’agent.
+- **Fichiers longs :** l’onglet Plan de la barre latérale (⌃⌘S) liste les titres. Cliquez sur l’un d’eux et les deux volets y sautent.
+- **Diagrammes et maths :** Mermaid et KaTeX sont dessinés dans l’aperçu à côté de la source (⌘2), et les deux volets défilent ensemble.
+- **Réécrit pendant que vous lisez :** quand l’agent réécrit le fichier, MarsDawn le recharge et garde votre position, tant que vous n’avez pas de modifications non enregistrées.
+- **Plusieurs fichiers :** ouvrez le dossier de l’agent avec Fichier ▸ Ouvrir un dossier… (⇧⌘O). Les nouveaux fichiers apparaissent dans l’onglet Fichiers en une seconde environ, et pour un checkout git, l’en-tête indique la branche ou le worktree.
+- **Un retour précis :** Édition ▸ Copier la référence (⌥⌘C) copie votre position sous la forme `docs/plan.md:42`. Copier pour l’IA (⌃⌥⌘C) ajoute le texte sélectionné en dessous. Collez l’un ou l’autre dans la conversation avec l’agent.
 
-Deux de plus pour la boucle : un agent peut lancer `marsdawn open plan.md:42` pour ouvrir le fichier dans MarsDawn à la ligne 42, celle qu’il veut vous montrer en premier, et un fichier relu s’exporte en PDF depuis l’app ou avec la commande gratuite `marsdawn export`.
+Deux de plus pour la boucle : un agent peut lancer `marsdawn open plan.md:42` pour ouvrir le fichier dans MarsDawn à la ligne 42, celle qu’il veut vous montrer en premier, et un fichier relu s’exporte en PDF depuis l’app ou avec la commande gratuite `marsdawn export`.
 
-MarsDawn n’embarque aucun modèle d’IA. Il ne résume pas le plan, ne le note pas et ne vous dit pas ce qui ne va pas. C’est vous qui lisez ; il garde lisible un fichier long qui change, et vous permet de désigner la ligne exacte.
+MarsDawn n’embarque aucun modèle d’IA. Il ne résume pas le plan, ne le note pas et ne vous dit pas ce qui ne va pas. C’est vous qui lisez ; il garde lisible un fichier long qui change, et vous permet de désigner la ligne exacte.
 
 ## Relire le plan d’un agent en cinq minutes
 
 Cela marche dans n’importe quel éditeur.
 
-1. Lisez seulement les titres. Le plan correspond-il à ce que vous avez demandé ? Une section manquante signifie généralement du travail manquant.
-2. Repérez chaque endroit qui affirme que quelque chose est fait, réussi ou vérifié, et vérifiez-en un vous-même : ouvrez le fichier, lancez le test, comptez les lignes.
-3. Cherchez les étapes irréversibles : suppression de données, migrations, force-push, tout ce qui envoie, paie ou publie. Celles-là attendent votre accord explicite.
+1. Lisez seulement les titres. Le plan correspond-il à ce que vous avez demandé ? Une section manquante signifie généralement du travail manquant.
+2. Repérez chaque endroit qui affirme que quelque chose est fait, réussi ou vérifié, et vérifiez-en un vous-même : ouvrez le fichier, lancez le test, comptez les lignes.
+3. Cherchez les étapes irréversibles : suppression de données, migrations, force-push, tout ce qui envoie, paie ou publie. Celles-là attendent votre accord explicite.
 4. Lisez les diagrammes rendus, et confrontez chaque flèche au texte.
 5. Listez les fichiers et systèmes que le plan touche. Posez des questions sur tout ce que vous n’avez pas demandé avant que cela s’exécute.
-6. Rédigez vos retours sous la forme endroit, problème, correction : « `plan.md:88` : le backfill s’exécute après la suppression. Inversez les étapes 4 et 5. » Un problème par ligne.
+6. Rédigez vos retours sous la forme endroit, problème, correction : « `plan.md:88` : le backfill s’exécute après la suppression. Inversez les étapes 4 et 5. » Un problème par ligne.
 
-Peu de temps ? Faites l’étape 2. C’est là qu’on prend en défaut un agent qui se croit fini. La version longue, avec un exemple détaillé : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/).
+Peu de temps ? Faites l’étape 2. C’est là qu’on prend en défaut un agent qui se croit fini. La version longue, avec un exemple détaillé : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/).
 
 ## Essayer
 
-MarsDawn est sur le [Mac App Store](https://apps.apple.com/app/id6812925073). Il existe aussi l’outil en ligne de commande gratuit `marsdawn` :
+MarsDawn est sur le [Mac App Store](https://apps.apple.com/app/id6812925073). Il existe aussi l’outil en ligne de commande gratuit `marsdawn` :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -54,21 +54,21 @@ brew install redtear1115/tap/marsdawn
 
 Il exporte le Markdown en PDF sans l’app, et `marsdawn open` permet à votre agent d’ouvrir des fichiers dans MarsDawn pour vous.
 
-[Ligne de commande](/fr/cli/) · [marsdawn pour les agents](/fr/cli/agents/) · À savoir avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
+[Ligne de commande](/fr/cli/) · [marsdawn pour les agents](/fr/cli/agents/) · À savoir avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
 
 ## Pour aller plus loin
 
-- L’argument court pour lire ce que produit l’IA : [Pourquoi ce que produit l’IA a toujours besoin d’un lecteur humain](/fr/reviewing-ai-output/).
-- Garder le contexte de l’agent réduit pendant la relecture : [une relecture économe en tokens](/fr/token-efficient-review/).
-- Pourquoi les agents exposent leurs plans : [Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?](/fr/agent-transparency/)
-- La liste ci-dessus, étape par étape avec un exemple : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/).
-- Quels documents vous remettent les différents types d’agents : [Quatre modèles de conception d’agents et les documents que chacun vous remet](/fr/agent-design-patterns/).
+- L’argument court pour lire ce que produit l’IA : [Pourquoi ce que produit l’IA a toujours besoin d’un lecteur humain](/fr/reviewing-ai-output/).
+- Garder le contexte de l’agent réduit pendant la relecture : [une relecture économe en tokens](/fr/token-efficient-review/).
+- Pourquoi les agents exposent leurs plans : [Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?](/fr/agent-transparency/)
+- La liste ci-dessus, étape par étape avec un exemple : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/).
+- Quels documents vous remettent les différents types d’agents : [Quatre modèles de conception d’agents et les documents que chacun vous remet](/fr/agent-design-patterns/).
 
 ## Sources
 
-- Erik S. et Barry Zhang, « Building Effective Agents », Anthropic, 19 décembre 2024 : [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) (cité d’après la version en ligne le 26/09/2026 ; l’article précise désormais qu’une grande partie des outils décrits a changé depuis décembre 2024).
-- Chip Huyen, « Agents », 7 janvier 2025 : [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
-- Andrew Ng, « Agentic Design Patterns Part 4, Planning », The Batch, 10 avril 2024 : [https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/)
+- Erik S. et Barry Zhang, « Building Effective Agents », Anthropic, 19 décembre 2024 : [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) (cité d’après la version en ligne le 26/09/2026 ; l’article précise désormais qu’une grande partie des outils décrits a changé depuis décembre 2024).
+- Chip Huyen, « Agents », 7 janvier 2025 : [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Andrew Ng, « Agentic Design Patterns Part 4, Planning », The Batch, 10 avril 2024 : [https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/](https://www.deeplearning.ai/the-batch/agentic-design-patterns-part-4-planning/)
 
 ## Plus
 

@@ -15,31 +15,31 @@ Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace. Avec Mar
 1. **Installez MarsDawn.** Téléchargez MarsDawn depuis le Mac App Store. L’extension Coup d’œil fait partie de l’app.
 2. **Sélectionnez un fichier Markdown.** Dans le Finder, cliquez une fois sur un fichier .md.
 3. **Appuyez sur Espace.** L’aperçu mis en forme s’ouvre. Appuyez de nouveau sur Espace pour le fermer.
-4. **Si vous voyez du texte brut, activez l’extension.** Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
+4. **Si vous voyez du texte brut, activez l’extension.** Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
 
 ## Non verrouillé par l’essai
 
-Coup d’œil continue de fonctionner après la fin de l’essai. Il affiche le même aperçu mis en forme pendant l’essai, après sa fin et après le déverrouillage. Une fois l’essai terminé et tant que vous n’avez pas déverrouillé, seules les fenêtres de MarsDawn s’ouvrent avec leur contenu masqué ; les aperçus du Finder ne changent pas. La [page sur l’essai et le déverrouillage](/fr/pay-once/) présente les trois phases côte à côte.
+Coup d’œil continue de fonctionner après la fin de l’essai. Il affiche le même aperçu mis en forme pendant l’essai, après sa fin et après le déverrouillage. Une fois l’essai terminé et tant que vous n’avez pas déverrouillé, seules les fenêtres de MarsDawn s’ouvrent avec leur contenu masqué ; les aperçus du Finder ne changent pas. La [page sur l’essai et le déverrouillage](/fr/pay-once/) présente les trois phases côte à côte.
 
 ## Questions et réponses
 
-### Comment prévisualiser un fichier Markdown dans le Finder ?
+### Comment prévisualiser un fichier Markdown dans le Finder ?
 
 Sélectionnez le fichier et appuyez sur Espace. Avec MarsDawn installé, Coup d’œil affiche la page mise en forme, avec diagrammes Mermaid, formules KaTeX et code coloré.
 
-### Coup d’œil fonctionne-t-il encore après l’essai de 14 jours ?
+### Coup d’œil fonctionne-t-il encore après l’essai de 14 jours ?
 
 Oui. Coup d’œil n’est pas verrouillé par l’essai. Il continue d’afficher les fichiers Markdown pendant l’essai, après sa fin et une fois l’app déverrouillée.
 
-### Pourquoi Coup d’œil affiche-t-il du texte brut ?
+### Pourquoi Coup d’œil affiche-t-il du texte brut ?
 
-L’extension Coup d’œil est peut-être désactivée. Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
+L’extension Coup d’œil est peut-être désactivée. Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
 
-### Coup d’œil est-il payant en plus ?
+### Coup d’œil est-il payant en plus ?
 
 Non. L’extension Coup d’œil fait partie de MarsDawn, sans achat séparé. MarsDawn se télécharge gratuitement, avec 14 jours d’essai et un déverrouillage unique à 4,99 USD, et Coup d’œil fonctionne avec ou sans l’essai.
 
-### Quelle version de macOS faut-il ?
+### Quelle version de macOS faut-il ?
 
 MarsDawn demande macOS 26 ou une version ultérieure.
 

@@ -15,6 +15,7 @@ En esta captura de pantalla:
 - Los bloques de código conservan su resaltado de sintaxis.
 - Los saltos de página evitan dejar un encabezado al final de una página o partir código y diagramas.
 - Con cualquier disposición. La exportación funciona incluso cuando solo se muestra el código.
+- Vista previa de las páginas antes de imprimir o exportar, y elección de disposición: Documento, Guía con portada e índice, o Folleto con columna para notas.
 
 La [herramienta de línea de comandos marsdawn](/es/cli/), que es gratis, usa el mismo exportador, así que un script o un agente de IA obtiene el mismo PDF.
 

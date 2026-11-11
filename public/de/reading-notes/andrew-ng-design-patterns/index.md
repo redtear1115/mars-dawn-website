@@ -20,7 +20,7 @@ Ngs Rangfolge gilt Ausgabequalität und Vorhersagbarkeit vom Stuhl des Bauenden 
 
 ## Wo MarsDawn hilft und wo nicht
 
-MarsDawn weiß nicht, welches von Ngs vier Mustern eine gegebene Datei erzeugt hat, ordnet nichts nach Vorhersagbarkeit und hat kein KI-Modell innen — es führt die Prüfung nicht aus, die seine Rangfolge nahelegt. Es hält die Datei lesbar, während du das selbst tust: Der Tab Gliederung (Darstellung ▸ Seitenleiste einblenden, ⌃⌘S) zeigt die Form eines langen Plans, Quelltext und gerenderte Vorschau stehen nebeneinander (⌘2), und für eine Multi-Agenten-Übergabe zeigt das Öffnen des gemeinsamen Ordners mit Ablage ▸ Ordner öffnen … (⇧⌘O) neue Dateien im Tab Dateien innerhalb etwa einer Sekunde, sobald verschiedene Agenten schreiben, und die Kopfzeile nennt den Git-Branch oder Worktree, damit zwei Dateien mit demselben Namen von verschiedenen Agenten nicht verwechselt werden.
+MarsDawn weiß nicht, welches von Ngs vier Mustern eine gegebene Datei erzeugt hat, ordnet nichts nach Vorhersagbarkeit und hat kein KI-Modell innen — es führt die Prüfung nicht aus, die seine Rangfolge nahelegt. Es hält die Datei lesbar, während du das selbst tust: Der Tab Gliederung (Darstellung ▸ Seitenleiste einblenden, ⌃⌘S) zeigt die Form eines langen Plans, Quelltext und gerenderte Vorschau stehen nebeneinander (⌘2), und für eine Multi-Agenten-Übergabe zeigt das Öffnen des gemeinsamen Ordners mit Ablage ▸ Ordner öffnen … (⇧⌘O) neue Dateien im Tab Dateien innerhalb etwa einer Sekunde, sobald verschiedene Agenten schreiben, und die Kopfzeile nennt den Git-Branch oder Worktree, damit zwei Dateien mit demselben Namen von verschiedenen Agenten nicht verwechselt werden.
 
 ## Ausprobieren
 

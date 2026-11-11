@@ -6,16 +6,16 @@ Une référence pour un agent IA qui crée un thème d’aperçu MarsDawn. L’a
 
 ## Ce qu’est un thème
 
-- **Des couleurs** pour le clair et pour le sombre : une palette de base, et des couleurs de syntaxe et de diagramme facultatives. Chacune est de la forme `#RRGGBB`.
-- **Un style de police** : `sans`, `serif` ou `rounded`.
-- **Un ensemble fermé d’options de style** : des nombres dans des plages fixes et des choix dans des listes fixes. Une couleur dans une option de style est toujours un rôle de palette comme `accent`, jamais une couleur littérale.
-- **Des textes affichés** : un nom et un résumé, et éventuellement un auteur et une licence.
+- **Des couleurs** pour le clair et pour le sombre : une palette de base, et des couleurs de syntaxe et de diagramme facultatives. Chacune est de la forme `#RRGGBB`.
+- **Un style de police** : `sans`, `serif` ou `rounded`.
+- **Un ensemble fermé d’options de style** : des nombres dans des plages fixes et des choix dans des listes fixes. Une couleur dans une option de style est toujours un rôle de palette comme `accent`, jamais une couleur littérale.
+- **Des textes affichés** : un nom et un résumé, et éventuellement un auteur et une licence.
 
 Une clé absente des tableaux ci-dessous est une erreur, tout comme une clé écrite deux fois. Le fichier fait au plus 16 384 octets.
 
 ## Vérifier et rendre
 
-Lancez ces commandes dans le dossier qui contient `theme.json`. Elles demandent l’outil `marsdawn` : voir [marsdawn pour les agents](/fr/cli/agents/).
+Lancez ces commandes dans le dossier qui contient `theme.json`. Elles demandent l’outil `marsdawn` : voir [marsdawn pour les agents](/fr/cli/agents/).
 
 ```
 marsdawn theme validate theme.json --require-complete --json
@@ -24,22 +24,22 @@ marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png
 ```
 
-- Codes de sortie : 0 valide, 1 invalide avec des identifiants de règle, 2 fichier introuvable, 64 erreur d’usage. `preview` ajoute 4 quand le PNG existe déjà (passez `--force` ou choisissez un autre nom) et 5 quand le rendu échoue.
+- Codes de sortie : 0 valide, 1 invalide avec des identifiants de règle, 2 fichier introuvable, 64 erreur d’usage. `preview` ajoute 4 quand le PNG existe déjà (passez `--force` ou choisissez un autre nom) et 5 quand le rendu échoue.
 - Avec `--json`, un thème invalide énumère ses problèmes sous `issues`, chacun avec un identifiant `rule`, un `path` et un `message`. Corrigez-les et relancez la commande.
-- `--require-complete` est la vérification d’un thème destiné à être publié : elle exige aussi les couleurs `syntax` et `diagram` dans les deux palettes.
-- `css` affiche le CSS que sert l’aperçu. `preview` rend un document d’exemple en PNG. Les deux valident d’abord : un thème invalide ne produit aucun rendu.
+- `--require-complete` est la vérification d’un thème destiné à être publié : elle exige aussi les couleurs `syntax` et `diagram` dans les deux palettes.
+- `css` affiche le CSS que sert l’aperçu. `preview` rend un document d’exemple en PNG. Les deux valident d’abord : un thème invalide ne produit aucun rendu.
 - Regardez le PNG clair et le PNG sombre avant de remettre le thème.
 
 ## Partir d’un thème intégré
 
-Copiez l’un des quatre thèmes intégrés et modifiez-le. Chacun est un fichier complet et valide :
+Copiez l’un des quatre thèmes intégrés et modifiez-le. Chacun est un fichier complet et valide :
 
 - [`/assets/theme-sim/kit/themes/dawn.json`](/assets/theme-sim/kit/themes/dawn.json): le thème par défaut, et l’exemple ci-dessous
 - [`/assets/theme-sim/kit/themes/classic.json`](/assets/theme-sim/kit/themes/classic.json): une palette plus sobre, proche d’un document
 - [`/assets/theme-sim/kit/themes/modern.json`](/assets/theme-sim/kit/themes/modern.json): une palette plus froide et plus contemporaine
 - [`/assets/theme-sim/kit/themes/vivid.json`](/assets/theme-sim/kit/themes/vivid.json): une palette plus vive et plus contrastée
 
-### Exemple : Dawn
+### Exemple : Dawn
 
 Voici `dawn.json`, octet pour octet. Sa seule option de style est un fin filet de couleur d’accent pour `hr`.
 
@@ -74,16 +74,16 @@ Voici `dawn.json`, octet pour octet. Sa seule option de style est un fin filet d
 
 Chaque objet ci-dessous est lu de la même façon. `required` signifie que la clé doit être présente, et une clé qui n’est pas listée est une erreur.
 
-Types : `string`, `integer`, `number`, `boolean`, `map` (balise de langue vers texte), `enum` (l’une des valeurs listées), `role` (un rôle de palette) et `object` (le tableau vers lequel il renvoie). Un `[]` après un type signifie une liste.
+Types : `string`, `integer`, `number`, `boolean`, `map` (balise de langue vers texte), `enum` (l’une des valeurs listées), `role` (un rôle de palette) et `object` (le tableau vers lequel il renvoie). Un `[]` après un type signifie une liste.
 
 ### `theme.json`
 
 | Champ | Type | Présence | Valeurs et remarques |
 |---|---|---|---|
 | `schemaVersion` | `integer` | `required` | Toujours `1`. |
-| `id` | `string` | `required` | De 1 à 32 caractères : lettres minuscules et chiffres, en blocs reliés par des tirets simples, par exemple `calm-green`. |
+| `id` | `string` | `required` | De 1 à 32 caractères : lettres minuscules et chiffres, en blocs reliés par des tirets simples, par exemple `calm-green`. |
 | `version` | `string` | `required` | `MAJOR.MINOR.PATCH`, par exemple `1.0.0`. |
-| `name` | `map` | `required` | Balise de langue vers texte. `en` est obligatoire ; les autres clés sont des balises de langue comme `zh-Hant`. Chaque texte compte au plus 48 caractères, sans lien ni saut de ligne. |
+| `name` | `map` | `required` | Balise de langue vers texte. `en` est obligatoire ; les autres clés sont des balises de langue comme `zh-Hant`. Chaque texte compte au plus 48 caractères, sans lien ni saut de ligne. |
 | `summary` | `map` | `required` | Même forme que `name`, au plus 120 caractères par texte. |
 | `fontDesign` | `enum` | `required` | `sans`, `serif`, `rounded` |
 | `scenarios` | `enum[]` | `required` | `agent-review`, `technical-docs`, `formal-output`, `notes-sharing` — Un ou deux, sans répétition. Ils fixent le contraste que le thème doit atteindre. |
@@ -154,7 +154,7 @@ Types : `string`, `integer`, `number`, `boolean`, `map` (balise de langue vers t
 | `hr` | `object` | `optional` | [`style.hr`](#t-style-hr) |
 | `table` | `object` | `optional` | [`style.table`](#t-style-table) |
 | `listMarker` | `role` | `optional` | [un rôle de palette](#roles) |
-| `inlineCode` | `role` | `optional` | [un rôle de palette](#roles) — Seulement `text` ou un rôle de syntaxe : `keyword`, `string`, `comment`, `number`, `function` ou `type`. |
+| `inlineCode` | `role` | `optional` | [un rôle de palette](#roles) — Seulement `text` ou un rôle de syntaxe : `keyword`, `string`, `comment`, `number`, `function` ou `type`. |
 | `link` | `object` | `optional` | [`style.link`](#t-style-link) |
 | `syntax` | `object` | `optional` | [`style.syntax`](#t-style-syntax) |
 
@@ -236,7 +236,7 @@ Ces options de style sont des objets avec un `type`. Chaque `type` accepte les c
 
 ### Rôles de palette
 
-Un rôle de palette est l’un de ces noms :
+Un rôle de palette est l’un de ces noms :
 
 `background`, `surface`, `text`, `muted`, `border`, `heading`, `accent`, `link`, `quote`, `keyword`, `string`, `comment`, `number`, `function`, `type`
 
@@ -265,7 +265,7 @@ Un nombre est arrondi au multiple le plus proche de son pas, puis doit se trouve
 
 ## Le remettre sous forme de lien
 
-La page [Créer un thème](/fr/themes/new/) ouvre un thème à partir d’un lien, pour que la personne puisse l’ajuster à l’œil. Le lien est l’adresse de la page, puis `#theme=`, puis les octets du fichier en base64url sans remplissage. Le fichier fait au plus 16 384 octets. Cette seule ligne construit le lien sous zsh et sous bash, sur macOS et sur Linux :
+La page [Créer un thème](/fr/themes/new/) ouvre un thème à partir d’un lien, pour que la personne puisse l’ajuster à l’œil. Le lien est l’adresse de la page, puis `#theme=`, puis les octets du fichier en base64url sans remplissage. Le fichier fait au plus 16 384 octets. Cette seule ligne construit le lien sous zsh et sous bash, sur macOS et sur Linux :
 
 ```
 printf 'https://marsdawn.southern-light.dev/fr/themes/new/#theme=%s\n' "$(base64 < theme.json | tr -d '\n=' | tr '+/' '-_')"
@@ -275,12 +275,12 @@ Le thème voyage après un `#`, que le navigateur n’envoie pas au site, et le 
 
 ## Le soumettre
 
-L’agent prépare le fichier et le lien. La personne soumet. Les deux voies demandent le Developer Certificate of Origin et la publication sous Apache-2.0, et c’est la personne qui fait cette attestation : l’agent ne coche pas la case et ne signe pas à sa place.
+L’agent prépare le fichier et le lien. La personne soumet. Les deux voies demandent le Developer Certificate of Origin et la publication sous Apache-2.0, et c’est la personne qui fait cette attestation : l’agent ne coche pas la case et ne signe pas à sa place.
 
-- **Issue.** La personne ouvre le lien et appuie sur **Submit** dans la page « Créer un thème », ou ouvre le [formulaire d’issue](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml) et colle le JSON dans *Theme*. Un workflow vérifie le thème et répond.
+- **Issue.** La personne ouvre le lien et appuie sur **Submit** dans la page « Créer un thème », ou ouvre le [formulaire d’issue](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml) et colle le JSON dans *Theme*. Un workflow vérifie le thème et répond.
 - **Pull request.** Ne modifiez que `themes/<id>/theme.json`, mettez dans `author.github` l’identifiant de l’auteur de la pull request et signez chaque commit avec `git commit -s`. Les règles sont dans [CONTRIBUTING.md](https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md).
 
-Le nom d’auteur, le nom, le résumé et l’identifiant GitHub d’un thème soumis deviennent publics de façon permanente : mettez dans `author.name` un nom que la personne accepte de publier.
+Le nom d’auteur, le nom, le résumé et l’identifiant GitHub d’un thème soumis deviennent publics de façon permanente : mettez dans `author.name` un nom que la personne accepte de publier.
 
 ## Thèmes publiés
 

@@ -147,6 +147,8 @@ try {
 <h3>大纲和文件边栏</h3>
 <p>边栏的“大纲”列出文稿的标题，点按一下就跳到该处。打开文件夹后，“文件”标签列出里面的文件；代理正在写入时，新文件会自动出现。如果文件夹是 git 检出，上方标题会写出是哪个分支或工作树。</p>
 <p class="more"><a href="/zh-hans/reading-agent-output/">读懂代理交回来的 Markdown</a></p>
+<h3>折叠长文稿</h3>
+<p>在预览中，“显示 ▸ 全部折叠到标题 2”会把长的计划或规格折叠到 2 级标题，“显示 ▸ 全部展开”再全部展开。“格式 ▸ 可折叠区块”会插入一段可以折叠的区块。</p>
 <h3>指出确切的那一行</h3>
 <p>“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 <code>docs/plan.md:42</code>。“拷贝给 AI”再附上所选的文字。粘贴到代理的对话里就行。</p>
 <p class="more"><a href="/zh-hans/reading-agent-output/">读懂代理交回来的 Markdown</a></p>
@@ -197,7 +199,7 @@ try {
 <p>“设置 ▸ 外观 ▸ 获取更多主题…”会打开额外预览主题的主题图库。装上一个，它就出现在“显示 ▸ 预览主题”里；点按“移除”就拿掉。主题图库只在打开的时候连上网络。</p>
 <p class="more"><a href="/zh-hans/themes/gallery/">主题图库</a> &#183; <a href="/zh-hans/themes/new/">打造一个主题</a></p>
 <h3>导出 PDF，或打印</h3>
-<p>“文件 ▸ 导出为 PDF…”会存成自动分页的 PDF，“文件 ▸ 打印…”打印相同的页面。Mermaid 图表直接画进去，代码保留语法着色，分页时会尽量不让标题落在页尾，也不切开短的代码块和图表。PDF 一律用主题的浅色配色，就算你是在深色下读的也一样。</p>
+<p>“文件 ▸ 打印…”和“文件 ▸ 导出为 PDF…”会打开“打印与导出”，先预览页面。选一种布局：“文稿”；“手册”，有封面、目录和 PDF 书签；或“讲义”，有笔记栏。然后打印或存储。Mermaid 图表直接画进去，代码保留语法着色，分页时会尽量不让标题落在页尾，也不切开短的代码块和图表。PDF 一律用主题的浅色配色。</p>
 <p class="more"><a href="/zh-hans/pdf/">导出 PDF</a></p>
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
@@ -214,12 +216,12 @@ try {
 <p>代理在 Mac 上工作，它写的计划和报告，你在 iPhone 或 iPad 上也能读。</p>
 <ol class="devsteps">
   <li><strong>在 Mac 上：</strong>把代理的计划和报告存在 iCloud 云盘里的文件夹。</li>
-  <li><strong>在 iPhone 或 iPad 上：</strong>打开 MarsDawn，点“打开”，选同一个文件。Mermaid 图表、数学公式、代码和表格都会排好显示，也有大纲和你选的主题。</li>
-  <li><strong>回到 Mac：</strong>继续编辑，或导出 PDF。</li>
+  <li><strong>在 iPhone 或 iPad 上：</strong>打开 MarsDawn，点“打开”，选同一个文件，也可以从其他 App 打开。Mermaid 图表、数学公式、代码和表格都会排好显示，也有大纲和你选的主题。</li>
+  <li><strong>交给别人：</strong>共享、打印，或存储为 PDF。</li>
 </ol>
 <p>用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。</p>
 <a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mac-iphone&amp;mt=8"><img src="/assets/badges/app-store-zh-hans.svg" width="109" height="40" alt="在 App Store 下载"></a>
-<p class="devnote">在 iPhone 和 iPad 上，MarsDawn 只能阅读：只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。</p>
+<p class="devnote">在 iPhone 和 iPad 上，MarsDawn 只能阅读：可以打开 Markdown、纯文本、PDF、JSON 和 YAML，但不能编辑。在这里存储的 PDF，里面的链接不能点按。MarsDawn 本身没有云端服务。</p>
 <h2 id="files-tabs-and-quick-look">文件、标签页和快速查看</h2>
 <h3>窗口和标签页</h3>
 <p>打开的文稿默认会成为最前面窗口的标签页。想按照 Mac 的标签页设置，请到“设置 ▸ 外观”选择“跟随系统设置”。输入时会自动存储。</p>

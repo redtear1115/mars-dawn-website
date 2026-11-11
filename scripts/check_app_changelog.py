@@ -62,8 +62,8 @@ def plain(fragment: str) -> str:
 
 
 def twin(text: str) -> str:
-    """The site's HTML-to-Markdown converter writes a no-break space as a plain space (every twin does)."""
-    return text.replace("\u00a0", " ")
+    """The site's HTML-to-Markdown converter keeps a no-break space as it is (#369: it used to turn it into a plain space)."""
+    return text
 
 
 def no_shy(text: str) -> str:

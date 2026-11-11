@@ -1,10 +1,10 @@
 # Aperçu Mermaid sur Mac.
 
-Mermaid permet d’écrire un diagramme sous forme de texte dans un fichier Markdown. La plupart des éditeurs vous montrent le texte. MarsDawn dessine le diagramme : dans l’aperçu à côté de la source, dans Coup d’œil dans le Finder, et dans le PDF que vous exportez.
+Mermaid permet d’écrire un diagramme sous forme de texte dans un fichier Markdown. La plupart des éditeurs vous montrent le texte. MarsDawn dessine le diagramme : dans l’aperçu à côté de la source, dans Coup d’œil dans le Finder, et dans le PDF que vous exportez.
 
 ## Écrire le diagramme sous forme de texte
 
-Placez le diagramme dans un bloc de code marqué `mermaid` :
+Placez le diagramme dans un bloc de code marqué `mermaid` :
 
 ````
 ```mermaid
@@ -16,15 +16,15 @@ flowchart LR
 ```
 ````
 
-Dans MarsDawn, ce bloc devient un organigramme : Écrire en Markdown, puis Aperçu en direct, puis un choix Partager ? qui mène à PDF ou à Imprimer.
+Dans MarsDawn, ce bloc devient un organigramme : Écrire en Markdown, puis Aperçu en direct, puis un choix Partager ? qui mène à PDF ou à Imprimer.
 
 ![Le thème Aube en vue partagée : la source Markdown à gauche, la page rendue à droite.](/assets/screens/01-split-800.png)
 
 ## Où le diagramme est dessiné
 
 - **Dans l’aperçu.** Ouvrez le fichier et le diagramme se trouve à côté de sa source (⌘2). La page se met à jour pendant la saisie, et les deux volets défilent ensemble.
-- **Dans Coup d’œil.** Sélectionnez le fichier dans le Finder et appuyez sur la barre d’espace ; les diagrammes y sont dessinés aussi.
-- **Dans le PDF.** « Fichier ▸ Exporter au format PDF… » et « Fichier ▸ Imprimer… » dessinent le diagramme dans la page. Les sauts de page évitent de couper un diagramme en deux. Le PDF utilise les couleurs claires du thème.
+- **Dans Coup d’œil.** Sélectionnez le fichier dans le Finder et appuyez sur la barre d’espace ; les diagrammes y sont dessinés aussi.
+- **Dans le PDF.** « Fichier ▸ Exporter au format PDF… » et « Fichier ▸ Imprimer… » dessinent le diagramme dans la page. Les sauts de page évitent de couper un diagramme en deux. Le PDF utilise les couleurs claires du thème.
 - **En ligne de commande.** L’outil gratuit `marsdawn export` dessine les mêmes diagrammes dans un PDF, sans avoir besoin de l’app. Voir [Ligne de commande](/fr/cli/).
 - **Dans votre thème.** Le réglage Apparence de l’aperçu s’applique aussi aux diagrammes, un diagramme suit donc le clair ou le sombre.
 
@@ -40,9 +40,9 @@ Si Mermaid ne peut pas dessiner un diagramme, l’aperçu affiche la source du d
 
 ## Pour aller plus loin
 
-- Partez d’un diagramme qui fonctionne déjà : le [modèle d’organigramme](/fr/templates/flowchart/).
-- Exportez-le : [Export PDF](/fr/pdf/), ou depuis un script, [Ligne de commande](/fr/cli/).
-- Vous ne savez pas comment ouvrir le fichier ? [Ouvrir un fichier .md sur Mac](/fr/view-markdown-on-mac/).
+- Partez d’un diagramme qui fonctionne déjà : le [modèle d’organigramme](/fr/templates/flowchart/).
+- Exportez-le : [Export PDF](/fr/pdf/), ou depuis un script, [Ligne de commande](/fr/cli/).
+- Vous ne savez pas comment ouvrir le fichier ? [Ouvrir un fichier .md sur Mac](/fr/view-markdown-on-mac/).
 
 ## Essayez-le sur votre Mac
 

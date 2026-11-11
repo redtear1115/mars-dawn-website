@@ -15,6 +15,7 @@ Auf diesem Bildschirmfoto:
 - Codeblöcke behalten ihre Syntaxhervorhebung.
 - Seitenumbrüche vermeiden es, eine Überschrift unten auf einer Seite stehen zu lassen oder Code und Diagramme zu teilen.
 - In jedem Layout. Der Export funktioniert auch, wenn nur der Quelltext angezeigt wird.
+- Vor dem Drucken oder Exportieren siehst du die Seiten in der Vorschau und wählst ein Layout: Dokument, Handbuch mit Deckblatt und Inhaltsverzeichnis oder Handout mit Notizspalte.
 
 Das kostenlose [Befehlszeilenprogramm marsdawn](/de/cli/) verwendet denselben Exporter, sodass ein Skript oder ein KI-Agent dasselbe PDF erhält.
 

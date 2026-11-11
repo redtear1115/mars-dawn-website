@@ -1,30 +1,30 @@
 # La distinction read-only / write action de Chip Huyen, et pourquoi elle compte avant d’approuver
 
-**L’essai « Agents » de Chip Huyen de janvier 2025 part de la définition du manuel et aboutit à quelque chose de plus précis : les actions d’un agent se partagent entre celles qui ne font que regarder le monde et celles qui le changent. Cette distinction est un bon moyen de décider, dans les cinq minutes dont vous disposez, quelles lignes d’un plan méritent un regard plus attentif avant de dire oui.**
+**L’essai « Agents » de Chip Huyen de janvier 2025 part de la définition du manuel et aboutit à quelque chose de plus précis : les actions d’un agent se partagent entre celles qui ne font que regarder le monde et celles qui le changent. Cette distinction est un bon moyen de décider, dans les cinq minutes dont vous disposez, quelles lignes d’un plan méritent un regard plus attentif avant de dire oui.**
 
 ## Ce que le texte avance
 
-Huyen ouvre simplement :
+Huyen ouvre simplement :
 
 > “An agent is anything that can perceive its environment and act upon that environment.”
 
-De là elle construit ce dont un agent a besoin : un environnement où agir, et un ensemble d’outils — son « tool inventory » — qui détermine ce qu’il peut faire. Elle nomme la distinction entre les actions qui ne laissent un agent que percevoir son environnement (« read-only actions ») et celles qui lui permettent d’agir sur cet environnement (« write actions »). Sur le risque du second type, elle est directe : « Write actions enable a system to do more », mais « the prospect of giving AI the ability to automatically alter our lives is frightening » — selon ses mots, « you shouldn’t allow an unreliable AI to initiate bank transfers. » Tout aussi franche sur la partie d’un agent la plus dure à bien faire :
+De là elle construit ce dont un agent a besoin : un environnement où agir, et un ensemble d’outils — son « tool inventory » — qui détermine ce qu’il peut faire. Elle nomme la distinction entre les actions qui ne laissent un agent que percevoir son environnement (« read-only actions ») et celles qui lui permettent d’agir sur cet environnement (« write actions »). Sur le risque du second type, elle est directe : « Write actions enable a system to do more », mais « the prospect of giving AI the ability to automatically alter our lives is frightening » — selon ses mots, « you shouldn’t allow an unreliable AI to initiate bank transfers. » Tout aussi franche sur la partie d’un agent la plus dure à bien faire :
 
 > “If you’ve ever been in any planning meeting, you know that planning is hard.”
 
-Huyen ne mentionne MarsDawn nulle part dans cet essai et ne recommande aucun outil Markdown. `/reviewing-agent-plans/` cite déjà trois de ses phrases du même essai : le coût de sauter la surveillance avant qu’un plan ne tourne, l’agent qui croit avoir fini alors qu’il n’a pas fini, et, à l’étape 3 de sa checklist, sa ligne qu’un système face à une opération risquée « can ask for explicit human approval before executing ». Cette note ne répète pas ces citations ; si vous n’avez pas lu cette page, elle est liée ci-dessous.
+Huyen ne mentionne MarsDawn nulle part dans cet essai et ne recommande aucun outil Markdown. `/reviewing-agent-plans/` cite déjà trois de ses phrases du même essai : le coût de sauter la surveillance avant qu’un plan ne tourne, l’agent qui croit avoir fini alors qu’il n’a pas fini, et, à l’étape 3 de sa checklist, sa ligne qu’un système face à une opération risquée « can ask for explicit human approval before executing ». Cette note ne répète pas ces citations ; si vous n’avez pas lu cette page, elle est liée ci-dessous.
 
 ## Notre lecture, pas celle de Huyen
 
-La distinction read-only / write de Huyen n’est pas écrite comme un conseil de relecture — c’est une façon de classer ce qu’un outil fait. Mais c’est un test simple et général pour repérer exactement le genre de ligne d’opération risquée que l’étape 3 de cette checklist vous demande déjà de ralentir : lire un fichier, lancer une recherche, lister un répertoire sont en lecture seule, et une étape read-only qui rate vous coûte une reprise ; supprimer des données, forcer un push, fusionner une branche, envoyer un e-mail, débiter une carte sont des write actions, et — comme elle le dit — une étape write qui rate est le genre effrayant, et au moment où vous lisez le rapport de l’agent, elle peut déjà avoir eu lieu. Son point que la planification est dure même pour des humains dans une pièce est un contrôle utile contre le fait d’attendre d’un plan plus de précision que le format ne peut porter : un plan qui se lit avec assurance n’est pas la même chose qu’un plan juste.
+La distinction read-only / write de Huyen n’est pas écrite comme un conseil de relecture — c’est une façon de classer ce qu’un outil fait. Mais c’est un test simple et général pour repérer exactement le genre de ligne d’opération risquée que l’étape 3 de cette checklist vous demande déjà de ralentir : lire un fichier, lancer une recherche, lister un répertoire sont en lecture seule, et une étape read-only qui rate vous coûte une reprise ; supprimer des données, forcer un push, fusionner une branche, envoyer un e-mail, débiter une carte sont des write actions, et — comme elle le dit — une étape write qui rate est le genre effrayant, et au moment où vous lisez le rapport de l’agent, elle peut déjà avoir eu lieu. Son point que la planification est dure même pour des humains dans une pièce est un contrôle utile contre le fait d’attendre d’un plan plus de précision que le format ne peut porter : un plan qui se lit avec assurance n’est pas la même chose qu’un plan juste.
 
 ## Où MarsDawn aide, et où non
 
-MarsDawn ne peut pas distinguer une étape read-only d’une write dans un plan — c’est un jugement que le texte n’étiquette pas, et rien dans l’app ne lit pour le sens. Il n’a aucun modèle d’IA à l’intérieur : il ne signalera pas la ligne risquée pour vous, ne fera pas le contrôle « la planification est dure », ni ne notera le plan. Ce qu’il fait, c’est garder le fichier lisible pendant que vous portez ce jugement vous-même : l’onglet Plan (Présentation ▸ Afficher la barre latérale, ⌃⌘S) laisse balayer la forme d’un plan avant de le lire ligne à ligne, la source et la page rendue côte à côte (⌘2) pour qu’un diagramme des étapes ne reste pas coincé en Mermaid brut, et Édition ▸ Copier la référence (⌥⌘C) transforme votre place en `plan.md:10`, prêt à coller comme retour dès que vous repérez une write action dans le mauvais ordre.
+MarsDawn ne peut pas distinguer une étape read-only d’une write dans un plan — c’est un jugement que le texte n’étiquette pas, et rien dans l’app ne lit pour le sens. Il n’a aucun modèle d’IA à l’intérieur : il ne signalera pas la ligne risquée pour vous, ne fera pas le contrôle « la planification est dure », ni ne notera le plan. Ce qu’il fait, c’est garder le fichier lisible pendant que vous portez ce jugement vous-même : l’onglet Plan (Présentation ▸ Afficher la barre latérale, ⌃⌘S) laisse balayer la forme d’un plan avant de le lire ligne à ligne, la source et la page rendue côte à côte (⌘2) pour qu’un diagramme des étapes ne reste pas coincé en Mermaid brut, et Édition ▸ Copier la référence (⌥⌘C) transforme votre place en `plan.md:10`, prêt à coller comme retour dès que vous repérez une write action dans le mauvais ordre.
 
 ## Essayer
 
-MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -32,13 +32,13 @@ brew install redtear1115/tap/marsdawn
 
 Il exporte le Markdown en PDF sans l’app.
 
-[Ligne de commande](/fr/cli/) · Avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
+[Ligne de commande](/fr/cli/) · Avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
 
 ## Ensuite
 
-- La checklist complète en six étapes et cinq minutes tirée du même essai : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/)
-- Pourquoi la sortie d’un agent est en général difficile à lire : [Lire ce que votre agent vous rend](/fr/reading-agent-output/)
-- Retour à la série : [Notes de lecture de la rédaction](/fr/reading-notes/)
+- La checklist complète en six étapes et cinq minutes tirée du même essai : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/)
+- Pourquoi la sortie d’un agent est en général difficile à lire : [Lire ce que votre agent vous rend](/fr/reading-agent-output/)
+- Retour à la série : [Notes de lecture de la rédaction](/fr/reading-notes/)
 
 ## Sources
 

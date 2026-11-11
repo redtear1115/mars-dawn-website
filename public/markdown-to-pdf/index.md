@@ -67,6 +67,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 - `--theme`: dawn, classic, modern or vivid, in the theme's light colors. Without it, `export` uses `$MARSDAWN_THEME`, then dawn.
 - `--paper`: a4 or letter. The default is a4.
+- `--layout`: document (the default), handbook or handout. Handbook adds a cover from the front matter, a table of contents and PDF bookmarks.
 - `-o`: where to write the PDF, instead of next to the source.
 - `--allow-remote-images`: load images from the web while rendering. They stay off unless you pass it.
 
@@ -79,6 +80,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## Next
 
+- In the MarsDawn app, File ▸ Print… previews the same layouts before you print or save: [PDF export](/pdf/).
 - Every option and the JSON it prints: [Command Line](/cli/).
 - To have a coding agent do this for you, run `marsdawn skill --install` to add [the marsdawn agent skill](/cli/skill/).
 - All four preview themes, and where PDF export is headed: [preview themes and PDF export](/themes/).

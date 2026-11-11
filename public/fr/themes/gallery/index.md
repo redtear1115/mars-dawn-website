@@ -1,6 +1,6 @@
 # Galerie de thèmes
 
-Thèmes d’aperçu pour MarsDawn, chacun relu et fusionné par le développeur avant d’apparaître ici. Les huit actuels sont réalisés par Southern Light, dont quatre adaptés de palettes bien connues. Filtrez par scénario, ou [créez le vôtre](/fr/themes/new/) dans le navigateur : l’envoi ouvre une issue GitHub demandant une relecture, sans installation ni git.
+Thèmes d’aperçu pour MarsDawn, chacun relu et fusionné par le développeur avant d’apparaître ici. Les huit actuels sont réalisés par Southern Light, dont quatre adaptés de palettes bien connues. Filtrez par scénario, ou [créez le vôtre](/fr/themes/new/) dans le navigateur : l’envoi ouvre une issue GitHub demandant une relecture, sans installation ni git.
 
 Tous
 
@@ -25,11 +25,11 @@ Notes et partage
 
 ## Crédits et licence
 
-Dracula, Nord, Gruvbox et Solarized s’appuient sur des palettes open source ; voir les [mentions des tiers](/themes/third-party-notices.html) pour le copyright et le texte complet de la licence de chaque projet.
+Dracula, Nord, Gruvbox et Solarized s’appuient sur des palettes open source ; voir les [mentions des tiers](/themes/third-party-notices.html) pour le copyright et le texte complet de la licence de chaque projet.
 
-## Un thème pose problème ?
+## Un thème pose problème ?
 
-Utilisez le bouton « Signaler » sur sa carte (JavaScript requis), ou écrivez directement à [support@southern-light.dev](mailto:support@southern-light.dev) avec son nom et sa version, JavaScript ou non. Les signalements sont examinés à la main ; un thème confirmé problématique est retiré sous un jour.
+Utilisez le bouton « Signaler » sur sa carte (JavaScript requis), ou écrivez directement à [support@southern-light.dev](mailto:support@southern-light.dev) avec son nom et sa version, JavaScript ou non. Les signalements sont examinés à la main ; un thème confirmé problématique est retiré sous un jour.
 
 ## Plus
 

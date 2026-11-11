@@ -147,6 +147,8 @@ try {
 <h3>Gliederung und Dateien in der Seitenleiste</h3>
 <p>Der Tab „Gliederung“ der Seitenleiste listet die Überschriften eines Dokuments auf; mit einem Klick springst du dorthin. Öffne einen Ordner, dann listet der Tab „Dateien“ auf, was darin liegt, und neue Dateien erscheinen von selbst, während ein Agent hineinschreibt. Ist der Ordner ein Git-Checkout, nennt die Kopfzeile den Branch oder Worktree.</p>
 <p class="more"><a href="/de/reading-agent-output/">Lesen, was dein Agent zurückgibt</a></p>
+<h3>Ein langes Dokument reduzieren</h3>
+<p>In der Vorschau reduziert Darstellung ▸ Alles bis Überschrift 2 reduzieren einen langen Plan oder eine Spezifikation bis zu den Überschriften der Ebene 2, und Darstellung ▸ Alles erweitern öffnet alles wieder. Format ▸ Reduzierbarer Block fügt einen Block ein, der sich reduzieren lässt.</p>
 <h3>Auf die genaue Zeile zeigen</h3>
 <p>Bearbeiten ▸ Verweis kopieren kopiert deine Position als Pfad und Zeile, etwa <code>docs/plan.md:42</code>. Für KI kopieren fügt darunter den ausgewählten Text hinzu. Setze beides in den Chat des Agenten ein.</p>
 <p class="more"><a href="/de/reading-agent-output/">Lesen, was dein Agent zurückgibt</a></p>
@@ -197,7 +199,7 @@ try {
 <p>Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden … öffnet eine Galerie mit zusätzlichen Vorschau-Themes. Installiere eines, dann erscheint es unter Darstellung ▸ Vorschau-Thema; mit Entfernen nimmst du es wieder heraus. Die Galerie geht nur online, solange sie geöffnet ist.</p>
 <p class="more"><a href="/de/themes/gallery/">Themen-Galerie</a> &#183; <a href="/de/themes/new/">Ein Thema erstellen</a></p>
 <h3>Als PDF exportieren oder drucken</h3>
-<p>Ablage ▸ Als PDF exportieren … sichert ein PDF mit Seitenumbrüchen, und Ablage ▸ Drucken … druckt dieselben Seiten. Mermaid-Diagramme werden eingezeichnet, Code behält seine Hervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und zerschneiden keinen kurzen Codeblock und kein Diagramm. Das PDF verwendet immer die hellen Farben des Themes, auch wenn du im Dunkeln gelesen hast.</p>
+<p>Ablage ▸ Drucken … und Ablage ▸ Als PDF exportieren … öffnen „Drucken und Exportieren“ mit einer Vorschau der Seiten. Wähle ein Layout: Dokument; Handbuch, mit Deckblatt, Inhaltsverzeichnis und PDF-Lesezeichen; oder Handout, mit einer Notizspalte. Dann druckst oder sicherst du. Mermaid-Diagramme werden eingezeichnet, Code behält seine Hervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und zerschneiden keinen kurzen Codeblock und kein Diagramm. PDFs verwenden die hellen Farben des Themes.</p>
 <p class="more"><a href="/de/pdf/">PDF-Export</a></p>
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
@@ -214,12 +216,12 @@ try {
 <p>Dein Agent arbeitet auf dem Mac. Seine Pläne und Berichte kannst du auch auf dem iPhone oder iPad lesen.</p>
 <ol class="devsteps">
   <li><strong>Auf dem Mac:</strong> Speichere die Pläne und Berichte des Agenten in einem Ordner in iCloud Drive.</li>
-  <li><strong>Auf iPhone oder iPad:</strong> Tippe in MarsDawn auf „Öffnen“ und wähle dieselbe Datei. Mermaid-Diagramme, Formeln, Code und Tabellen werden dargestellt, mit Gliederung und deinem Thema.</li>
-  <li><strong>Zurück am Mac:</strong> Bearbeite weiter oder exportiere ein PDF.</li>
+  <li><strong>Auf iPhone oder iPad:</strong> Tippe in MarsDawn auf „Öffnen“ und wähle dieselbe Datei, oder öffne sie aus einer anderen App. Mermaid-Diagramme, Formeln, Code und Tabellen werden dargestellt, mit Gliederung und deinem Thema.</li>
+  <li><strong>Weitergeben:</strong> Teile sie, drucke sie oder sichere sie als PDF.</li>
 </ol>
 <p>Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad.</p>
 <a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mac-iphone&amp;mt=8"><img src="/assets/badges/app-store-de.svg" width="120" height="40" alt="Laden im App Store"></a>
-<p class="devnote">Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.</p>
+<p class="devnote">Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es öffnet Markdown, Text, PDF, JSON und YAML, bearbeitet aber nichts. Links in einem dort gesicherten PDF funktionieren nicht. Eine eigene Cloud hat MarsDawn nicht.</p>
 <h2 id="files-tabs-and-quick-look">Dateien, Tabs und Übersicht</h2>
 <h3>Fenster und Tabs</h3>
 <p>Dokumente öffnen standardmäßig als Tabs des vordersten Fensters. Wenn du stattdessen die Tab-Einstellung deines Mac verwenden möchtest, wähle unter Einstellungen ▸ Erscheinungsbild „Systemeinstellung folgen“. Das Sichern läuft automatisch beim Tippen.</p>

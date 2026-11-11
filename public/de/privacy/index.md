@@ -53,7 +53,7 @@ Wenn Webinhalte geladen werden, fordert dein Mac sie direkt bei den Servern an, 
 
 Links, auf die du in der Vorschau klickst, öffnen sich in deinem Standard-Webbrowser, nach dessen eigenen Datenschutzpraktiken. Audio und Video spielen nie von selbst ab.
 
-Wenn du *Einstellungen › Erscheinungsbild › Weitere Themes laden …* öffnest, *Nach Theme-Updates suchen* wählst oder ein Theme installierst oder aktualisierst, lädt MarsDawn die Theme-Liste, Vorschauen und Theme-Dateien von marsdawn.southern-light.dev herunter. Themes werden nur bei diesen Downloads automatisch aktualisiert, nie im Hintergrund. Die Anfrage enthält kein Konto, keine Kennung, kein Cookie und keine Dokumentdaten; wie bei jeder Webanfrage sieht unser Hoster Cloudflare deine IP-Adresse und welche Dateien angefordert wurden. *Theme melden…* sendet keine Anfrage aus der App: Der Befehl öffnet nur einen GitHub- oder E-Mail-Link in deinem Browser oder deiner Mail-App.
+Wenn du *Einstellungen › Erscheinungsbild › Weitere Themes laden …* öffnest, *Nach Theme-Updates suchen* wählst oder ein Theme installierst oder aktualisierst, lädt MarsDawn die Theme-Liste, Vorschauen und Theme-Dateien von marsdawn.southern-light.dev herunter. Themes werden nur bei diesen Downloads automatisch aktualisiert, nie im Hintergrund. Die Anfrage enthält kein Konto, keine Kennung, kein Cookie und keine Dokumentdaten; wie bei jeder Webanfrage sieht unser Hoster Cloudflare deine IP-Adresse und welche Dateien angefordert wurden. *Theme melden…* sendet keine Anfrage aus der App: Der Befehl öffnet nur einen GitHub- oder E-Mail-Link in deinem Browser oder deiner Mail-App.
 
 ## Siri, Kurzbefehle und Spotlight
 
