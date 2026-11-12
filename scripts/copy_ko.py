@@ -218,7 +218,7 @@ FEATURES = {'title': '기능 한눈에 보기: 한 페이지로 보는 Mac용 Ma
                           'p': 'Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 있습니다. JSON과 YAML 파일은 트리 보기로 표시됩니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.',
                           'links': ['native']},
                          {'h': '기타 파일',
-                          'p': 'MarsDawn은 일반 텍스트 파일(.txt, .log, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다. Mac에서 JSON 및 YAML 파일을 편집 가능한 문서로 열 수 있으며, 입력할 때마다 업데이트되는 트리 미리보기가 옆에 표시됩니다. Finder의 훑어보기에서도 같은 트리 보기가 표시됩니다. iPhone과 iPad에서는 JSON과 YAML을 열 수 없습니다.',
+                          'p': 'MarsDawn은 일반 텍스트 파일(.txt, .log, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다. Mac에서 JSON 및 YAML 파일을 편집 가능한 문서로 열 수 있으며, 입력할 때마다 업데이트되는 트리 미리보기가 옆에 표시됩니다. Finder의 훑어보기에서도 같은 트리 보기가 표시됩니다. iPhone과 iPad에서는 JSON과 YAML을 읽기 전용으로 열 수 있으며, 트리 미리보기가 표시됩니다.',
                           'links': []},
                          {'h': '내 파일은 내 것',
                           'p': '계정도, 동기화도, 클라우드도 없습니다. 문서는 저장한 곳에 그대로 있고, MarsDawn은 나에 대한 어떤 데이터도 '
@@ -258,7 +258,7 @@ FEATURES = {'title': '기능 한눈에 보기: 한 페이지로 보는 Mac용 Ma
                        "iPhone이나 iPad에서: MarsDawn에서 '열기'를 탭하고 같은 파일을 고릅니다. Mermaid 다이어그램, 수식, 코드, 표가 제대로 표시되고, 개요와 내가 고른 테마도 쓸 수 있습니다.",
                        '다시 Mac에서: 계속 편집하거나 PDF로 내보냅니다.'],
              'buy': '같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.',
-             'limits': 'iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.'},
+             'limits': 'iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown, 텍스트, PDF, JSON, YAML을 열 수 있지만 편집은 할 수 없습니다. 여기서 저장한 PDF의 링크는 작동하지 않습니다. MarsDawn 자체에는 클라우드 서비스가 없습니다.'},
  'cta': {'h2': 'Mac에서 사용해 보세요',
          'p1': 'MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하면 됩니다. 구독도, '
                '계정도 필요 없습니다. macOS 26 이상이 필요합니다.',
@@ -558,7 +558,7 @@ def build(k) -> dict:
 <ul>
   <li>체험에도 요금이 청구되지 않습니다. 체험이 끝나도 잠금 해제를 선택하지 않는 한 아무것도 구입되지 않습니다.</li>
   <li>계정이 없습니다. MarsDawn은 계정을 만들라고 요구하지 않습니다.</li>
-  <li>같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다.</li>
+  <li>같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다. iPhone과 iPad에서는 읽기 전용이라 편집할 수 없습니다.</li>
 </ul>
 <h2>단계별로 쓸 수 있는 기능</h2>
 <!--compare:pay-once-states-->
@@ -633,7 +633,7 @@ def build(k) -> dict:
 <h3>기기와 사람</h3>
 <ul>
   <li><strong>동기화:</strong> MarsDawn은 문서를 동기화하지 않습니다. 문서는 저장한 곳에 있으므로, 다른 Mac에서 쓰려면 이미 동기화하고 있는 폴더에 두세요.</li>
-  <li><strong>iPhone과 iPad:</strong> MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.</li>
+  <li><strong>iPhone과 iPad:</strong> MarsDawn은 읽기 전용입니다. Markdown, 텍스트, PDF, JSON, YAML 파일을 열 수 있지만 편집은 할 수 없습니다. 공유, 프린트, PDF로 저장은 할 수 있지만, 여기서 저장한 PDF의 링크는 작동하지 않습니다. iCloud Drive에 둔 파일이나 다른 앱에서 연 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.</li>
   <li><strong>공유:</strong> MarsDawn은 자기 Mac을 쓰는 한 사람을 위한 앱이라 계정도 공동 편집도 없습니다.</li>
   <li><strong>시스템:</strong> MarsDawn은 Mac에서는 macOS 26 이상, iPhone과 iPad에서는 iOS 26 또는 iPadOS 26 이상이 필요합니다.</li>
 </ul>
@@ -641,7 +641,7 @@ def build(k) -> dict:
 <ul>
   <li><strong>편집:</strong> 왼쪽에서 Markdown을 쓰고 오른쪽에서 페이지를 읽습니다. 페이지 자체는 편집할 수 없습니다.</li>
   <li><strong>형식:</strong> MarsDawn은 PDF로 내보내고 프린트할 수 있지만, Word 파일로는 내보내지 않습니다.</li>
-  <li><strong>기타 파일:</strong> PDF와 UTF-8이 아닌 인코딩의 텍스트 파일은 읽기 전용으로 열립니다. Mac에서는 JSON과 YAML을 편집 가능한 문서로 열 수 있고 트리 미리보기도 표시됩니다. iPhone과 iPad에서는 열 수 없습니다.</li>
+  <li><strong>기타 파일:</strong> PDF와 UTF-8이 아닌 인코딩의 텍스트 파일은 읽기 전용으로 열립니다. Mac에서는 JSON과 YAML을 편집 가능한 문서로 열 수 있고 트리 미리보기도 표시됩니다. iPhone과 iPad에서는 읽기 전용으로 열리며 트리 미리보기도 표시됩니다.</li>
   <li><strong>테마:</strong> 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있으며, 검토를 거친 <a href="/ko/themes/gallery/">테마 갤러리</a>(설정 ▸ 화면 모드 ▸ 테마 더 받기…)에서 더 설치할 수 있습니다. 테마는 색상과 몇 가지 스타일 옵션을 정할 뿐, 사용자 지정 CSS는 없습니다. <a href="/ko/themes/">테마</a>를 참고하세요.</li>
   <li><strong>플러그인:</strong> MarsDawn에는 플러그인이나 확장 기능이 없습니다.</li>
 </ul>
