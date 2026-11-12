@@ -5317,50 +5317,51 @@ def hero_stage_html(locale: str) -> str:
     return f'<div class="hero-stage">\n{hero_window.window_html(locale)}\n{hero_phone_html(locale)}\n</div>'
 
 
-# Home steps: #333 comment 6516118620 §3, with 6516160149 §4 corrections.
+# Home steps: #333 comment 6516118620 §3, with 6516160149 §4 corrections; the three steps are the #369 plan A
+# text (approval comment 6796859928), the same as copy369/data.py key home_ios, which apply_copy369_home_steps
+# below also enforces at build time.
 HOME_IPHONE_STEPS = {'en': {'h2': 'Read what your agent wrote, away from your desk',
         'steps': ['On your Mac, have your agent save its files to a folder in iCloud Drive.',
-                  'On your iPhone or iPad, open MarsDawn and choose the file.',
-                  'To edit it or export a PDF, go back to your Mac.'],
+                  'On your iPhone or iPad, open it in MarsDawn, or from another app.',
+                  'Share, print or save it as a PDF; edit it on your Mac.'],
         'limits': 'On iPhone and iPad, MarsDawn is for reading only. It opens Markdown, text, PDF, '
                   'JSON and YAML.'},
  'zh-hant': {'h2': '離開座位，也能讀 agent 寫的東西',
              'steps': ['在 Mac 上，讓 agent 把檔案存進 iCloud 雲碟裡的資料夾。',
-                       '在 iPhone 或 iPad 上打開 MarsDawn，選那份檔案。',
-                       '要修改或輸出 PDF，回到 Mac 上做。'],
+                       '在 iPhone 或 iPad 上用 MarsDawn 打開，也可以從其他 App 打開。',
+                       '可以分享、列印或存成 PDF；要修改，回到 Mac 上做。'],
              'limits': '在 iPhone 和 iPad 上只能閱讀，能開 Markdown、純文字、PDF、JSON 和 YAML 檔。'},
  'zh-hans': {'h2': '离开座位，也能读代理写的东西',
              'steps': ['在 Mac 上，让代理把文件存进 iCloud 云盘里的文件夹。',
-                       '在 iPhone 或 iPad 上打开 MarsDawn，选择那份文件。',
-                       '要修改或导出 PDF，回到 Mac 上操作。'],
+                       '在 iPhone 或 iPad 上用 MarsDawn 打开，也可以从其他 App 打开。',
+                       '可以共享、打印或存储为 PDF；要修改，回到 Mac 上操作。'],
              'limits': '在 iPhone 和 iPad 上只能阅读，可以打开 Markdown、纯文本、PDF、JSON 和 YAML 文件。'},
  'ja': {'h2': '席を離れても、エージェントが書いたものを読める',
         'steps': ['Mac で、エージェントにファイルを iCloud Drive のフォルダへ保存させます。',
-                  'iPhone や iPad で MarsDawn を開き、そのファイルを選びます。',
-                  '編集や PDF の書き出しは、Mac に戻って行います。'],
+                  'iPhone や iPad で、MarsDawn から開くか、ほかの App から開きます。',
+                  '共有、プリント、PDF として保存ができます。編集は Mac で行います。'],
         'limits': 'iPhone と iPad では閲覧専用で、Markdown、テキスト、PDF、JSON、YAML を開けます。'},
  'ko': {'h2': '자리를 떠나도 에이전트가 쓴 글을 읽을 수 있습니다',
         'steps': ['Mac에서 에이전트가 iCloud Drive의 폴더에 파일을 저장하게 합니다.',
-                  'iPhone이나 iPad에서 MarsDawn을 열고 그 파일을 선택합니다.',
-                  '편집하거나 PDF로 내보내려면 Mac으로 돌아갑니다.'],
+                  'iPhone이나 iPad에서 MarsDawn으로 열거나 다른 앱에서 엽니다.',
+                  '공유하거나 프린트하거나 PDF로 저장할 수 있습니다. 편집은 Mac에서 합니다.'],
         'limits': 'iPhone과 iPad에서는 읽기 전용이며, Markdown, 텍스트, PDF, JSON, YAML을 열 수 있습니다.'},
  'de': {'h2': 'Lies, was dein Agent geschrieben hat, auch fern vom Schreibtisch',
         'steps': ['Lass deinen Agent auf dem Mac seine Dateien in einem Ordner in iCloud Drive speichern.',
-                  'Öffne MarsDawn auf iPhone oder iPad und wähle die Datei aus.',
-                  'Zum Bearbeiten oder für den PDF-Export gehst du zurück an den Mac.'],
+                  'Öffne die Datei auf iPhone oder iPad in MarsDawn oder aus einer anderen App.',
+                  'Teile sie, drucke sie oder sichere sie als PDF; bearbeiten kannst du sie am Mac.'],
         'limits': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet Markdown, Text, PDF, '
                   'JSON und YAML.'},
  'fr': {'h2': 'Lisez ce qu’a écrit votre agent, même loin de votre bureau',
-        'steps': ['Sur votre Mac, demandez à votre agent d’enregistrer ses fichiers dans un dossier d’iCloud '
-                  'Drive.',
-                  'Sur votre iPhone ou iPad, ouvrez MarsDawn et choisissez le fichier.',
-                  'Pour le modifier ou l’exporter en PDF, revenez sur votre Mac.'],
+        'steps': ['Sur votre Mac, demandez à votre agent d’enregistrer ses fichiers dans un dossier d’iCloud Drive.',
+                  'Sur votre iPhone ou iPad, ouvrez le fichier dans MarsDawn, ou depuis une autre app.',
+                  'Partagez-le, imprimez-le ou enregistrez-le en PDF\xa0; pour le modifier, revenez sur votre Mac.'],
         'limits': 'Sur iPhone et iPad, MarsDawn sert uniquement à lire et ouvre les fichiers Markdown, '
                   'texte, PDF, JSON et YAML.'},
  'es': {'h2': 'Lee lo que escribió tu agente, aunque no estés en tu escritorio',
         'steps': ['En tu Mac, haz que tu agente guarde sus archivos en una carpeta de iCloud Drive.',
-                  'En tu iPhone o iPad, abre MarsDawn y elige el archivo.',
-                  'Para editarlo o exportarlo a PDF, vuelve a tu Mac.'],
+                  'En tu iPhone o iPad, ábrelo en MarsDawn o desde otra app.',
+                  'Compártelo, imprímelo o guárdalo como PDF; para editarlo, vuelve a tu Mac.'],
         'limits': 'En iPhone y iPad, MarsDawn solo sirve para leer y abre archivos Markdown, de texto, PDF, '
                   'JSON y YAML.'}}
 

@@ -28,7 +28,7 @@ AI assistants and crawlers read the site too, through `llms.txt`, `llms-full.txt
 
 ## Product Purpose
 
-The site is the public home of MarsDawn, a native Mac Markdown editor with live preview, Mermaid diagrams, KaTeX math and PDF export, built for reading what AI agents write. The Mac app is available on the Mac App Store. MarsDawn for iOS 1.0.1 is available on the App Store for iPhone and iPad. The free `marsdawn` CLI can be installed today.
+The site is the public home of MarsDawn, a native Mac Markdown editor with live preview, Mermaid diagrams, KaTeX math and PDF export, built for reading what AI agents write. The Mac app is available on the Mac App Store. MarsDawn for iOS is available on the App Store for iPhone and iPad. The free `marsdawn` CLI can be installed today.
 
 The site succeeds on two things:
 
