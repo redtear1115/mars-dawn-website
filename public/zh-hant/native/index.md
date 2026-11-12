@@ -28,6 +28,13 @@ MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、M
 - Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。
 - 支援英文、繁體中文、簡體中文、日文、德文、法文、西班牙文和韓文。
 
+### 小而安靜
+
+- 從 Mac App Store 下載只要 11.4 MB。
+- 文件開著、沒有變動時，CPU 用量 0%。
+
+以 1.2.1 版實測，2026 年 11 月。
+
 ## 其他頁面
 
 - [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 檢查 agent 寫的 Markdown、JSON、YAML：Mac 原生 app，即時預覽、Mermaid、KaTeX、快速查看、PDF。免費試用，之後一次 USD 4.99。

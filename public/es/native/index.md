@@ -28,6 +28,13 @@ En esta captura de pantalla:
 - Siri y Atajos: crea un documento nuevo a partir de una plantilla, agrega una línea a la bandeja de entrada de tus notas o vuelve a abrir un documento reciente.
 - Inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano.
 
+### Pequeña y silenciosa
+
+- Una descarga de 11,4 MB desde el Mac App Store.
+- 0 % de CPU con un documento abierto y sin cambios.
+
+Medido con la versión 1.2.1, noviembre de 2026.
+
 ## Más
 
 - [MarsDawn](https://marsdawn.southern-light.dev/es/index.md): Revisa el Markdown, JSON y YAML de tu agente en tu Mac: vista previa en vivo, Mermaid, KaTeX, Vista Rápida y PDF. Pruébalo gratis y luego 4,99 USD una vez.

@@ -28,6 +28,13 @@ MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 �
 - Siri와 단축어: 템플릿으로 새로운 문서를 시작하거나, 메모 수신함에 한 줄을 추가하거나, 최근 문서를 다시 열 수 있습니다.
 - 영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어.
 
+### 작고 조용하게
+
+- Mac App Store에서 내려받는 크기는 11.4MB입니다.
+- 문서를 열어 둔 채 변경이 없으면 CPU 사용률은 0%입니다.
+
+버전 1.2.1에서 측정(2026년 11월).
+
 ## 더 보기
 
 - [MarsDawn](https://marsdawn.southern-light.dev/ko/index.md): 에이전트가 쓴 Markdown, JSON, YAML을 검토하는 Mac 네이티브 앱. 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료 체험 후 한 번만 USD 4.99.

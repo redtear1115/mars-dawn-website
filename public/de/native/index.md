@@ -28,6 +28,13 @@ Auf diesem Bildschirmfoto:
 - Siri und Kurzbefehle: ein neues Dokument aus einer Vorlage beginnen, eine Zeile zum Notizeingang hinzufügen oder ein zuletzt benutztes Dokument wieder öffnen.
 - Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch.
 
+### Klein und leise
+
+- 11,4 MB Download aus dem Mac App Store.
+- 0 % CPU, wenn ein Dokument geöffnet ist und sich nichts ändert.
+
+Gemessen mit Version 1.2.1, November 2026.
+
 ## Mehr
 
 - [MarsDawn](https://marsdawn.southern-light.dev/de/index.md): Lies Markdown, JSON und YAML deines Agenten nativ auf dem Mac: Live-Vorschau, Mermaid, KaTeX, Übersicht, PDF-Export. Kostenlos testen, dann einmal 4,99 USD.
