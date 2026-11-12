@@ -68,7 +68,7 @@
   "fr": "- Encadrés : les alertes GitHub et les blocs `:::` de HackMD.",
   "es": "- Avisos destacados: las alertas de GitHub y los bloques `:::` de HackMD."
  },
- "kept": {
+ "removed_plans": {
   "en": "- Add Claude Code's Plans folder to the sidebar in one click, newest plan first.",
   "zh-hant": "- 一鍵把 Claude Code 的 Plans 資料夾加進側邊欄，最新的計畫排在最上面。",
   "zh-hans": "- 一键把 Claude Code 的 Plans 文件夹加入边栏，最新的计划排在最上面。",
@@ -78,51 +78,53 @@
   "fr": "- Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.",
   "es": "- Añade la carpeta Plans de Claude Code a la barra lateral con un clic, con el plan más reciente arriba."
  },
+ "removed_heading": {
+  "en": "Mac 1.2.2",
+  "zh-hant": "Mac 1.2.2",
+  "zh-hans": "Mac 1.2.2",
+  "ja": "Mac 1.2.2",
+  "ko": "Mac 1.2.2",
+  "de": "Mac 1.2.2",
+  "fr": "Mac 1.2.2",
+  "es": "Mac 1.2.2"
+ },
  "headings": {
   "en": [
-   "Mac 1.2.2",
    "Mac 1.2.3",
    "Mac 1.3.0",
    "iPad and unfolded iPhone Duo (iOS 1.1)"
   ],
   "zh-hant": [
-   "Mac 1.2.2",
    "Mac 1.2.3",
    "Mac 1.3.0",
    "iPad 與展開的 iPhone Duo（iOS 1.1）"
   ],
   "zh-hans": [
-   "Mac 1.2.2",
    "Mac 1.2.3",
    "Mac 1.3.0",
    "iPad 与展开的 iPhone Duo（iOS 1.1）"
   ],
   "ja": [
-   "Mac 1.2.2",
    "Mac 1.2.3",
    "Mac 1.3.0",
    "iPad と開いた iPhone Duo（iOS 1.1）"
   ],
   "ko": [
-   "Mac 1.2.2",
    "Mac 1.2.3",
    "Mac 1.3.0",
    "iPad 및 펼친 iPhone Duo (iOS 1.1)"
   ],
   "de": [
-   "Mac 1.2.2",
    "Mac 1.2.3",
    "Mac 1.3.0",
    "iPad und aufgeklapptes iPhone Duo (iOS 1.1)"
   ],
   "fr": [
-   "Mac 1.2.2",
    "Mac 1.2.3",
    "Mac 1.3.0",
    "iPad et iPhone Duo déplié (iOS 1.1)"
   ],
   "es": [
-   "Mac 1.2.2",
    "Mac 1.2.3",
    "Mac 1.3.0",
    "iPad y iPhone Duo desplegado (iOS 1.1)"

@@ -12,10 +12,6 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
 ## A continuación
 
-### Mac 1.2.2
-
-- Añade la carpeta Plans de Claude Code a la barra lateral con un clic, con el plan más reciente arriba.
-
 ### Mac 1.2.3
 
 - Después de que un agente cambie un archivo, ve qué bloques cambiaron.

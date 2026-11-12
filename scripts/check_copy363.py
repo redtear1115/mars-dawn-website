@@ -3,20 +3,21 @@
 
 scripts/copy363/data.py holds Aria's corrections of the old iOS claims: DATA[locale] has 6 pieces.
 scripts/copy363/old.json holds what they replace (written by the caller from the #370 head): the 5 old
-strings, the deleted Callouts bullet of Mac 1.2.2, the Plans bullet that stays, the four h3 titles of
-/roadmap/ and the old "Last updated" line. This reads the built public/ files, not build_pages.py, and fails
+strings, the deleted Callouts bullet of Mac 1.2.2, the removed Plans bullet and heading, the three
+remaining h3 titles of /roadmap/ and the old "Last updated" line. This reads the built public/ files, not build_pages.py, and fails
 unless every locale's pages and their Markdown twins (index.md) hold each piece in full and in its place:
 
 - /features/: the paragraph right after the h3 whose paragraph lists .log ends with features_other_last;
 - /limits/: one list item equals limits_ios and one limits_other, each starting with its bold label;
 - /vs/: one paragraph holds vs_lacks_ios; /pay-once/: one list item ends with payonce_ios;
-- /roadmap/: one paragraph equals roadmap_updated, the only bullet under "Mac 1.2.2" is the kept one, the
-  Callouts bullet is gone, the four headings are there once each and in order;
+- /roadmap/: one paragraph equals roadmap_updated, the removed heading and Plans and Callouts bullets
+  are absent, and the three remaining headings are there once each and in order;
 - every piece once on its page (in <main>, and in the twin);
 - fr's U+00A0 (limits_ios 2, limits_other 2, vs_lacks_ios 1, payonce_ios 1, roadmap_updated 1) on the pages
   as the character itself, not &nbsp; or a space; none in any other locale;
-- no old string, Callouts bullet or old "Last updated" line on any file under public/ (.html, .md, .txt,
+- no old string, Plans or Callouts bullet or old "Last updated" line on any file under public/ (.html, .md, .txt,
   .json), even with tags, non-breaking spaces or &nbsp; between its words;
+- no removed roadmap h3 in roadmap files or llms-full.txt (changelog version mentions are allowed);
 - the home page's third FAQ answer still #369's (scripts/copy369/data.py) as visible text, as the FAQPage
   JSON-LD's mainEntity[2] answer, in the twin and in llms-full.txt, once each; and the old iPhone-or-iPad
   answers (scripts/promo130/data.py) on no file under public/;
@@ -28,7 +29,8 @@ Pieces are compared as visible text: tags stripped, entities decoded, runs of AS
 against the build's own rendering, which would share any mistake the build makes.
 
 --self-test reads the built pages into memory and, on copies, changes one character of each piece, empties
-and duplicates each piece, puts the Callouts bullet back, removes the Plans bullet, swaps two headings,
+and duplicates each piece, restores the removed section, heading alone and Plans bullet alone,
+puts the Callouts bullet back, swaps two remaining headings, removes a remaining heading,
 brings the old "Last updated" line back, turns fr's U+00A0 into spaces and into &nbsp;, plants each old
 string (whole, NBSP-spaced, &nbsp;-spaced, tag-wrapped) into a copy of /features/ and llms-full.txt, and
 changes and duplicates the home FAQ answer; it fails unless the unplanted copies are clean and every change
@@ -277,7 +279,7 @@ def payonce_problems(loc: str, d: dict, old: dict, h: str, md: str, holders: dic
 def roadmap_problems(loc: str, d: dict, old: dict, h: str, md: str, holders: dict) -> list:
     out, key = [], "roadmap_updated"
     heads = old["headings"][loc]
-    kept, callouts = old["kept"][loc], old["callouts"][loc]
+    removed, callouts = old["removed_plans"][loc], old["callouts"][loc]
     if h is None:
         out.append(f"{where(loc, 'roadmap', 'html')}: missing")
     else:
@@ -298,13 +300,11 @@ def roadmap_problems(loc: str, d: dict, old: dict, h: str, md: str, holders: dic
             else:
                 at.append(texts.index(t))
         if len(at) == len(heads) and at != sorted(at):
-            out.append(f"{w}: the four headings are not in order: {[texts[i] for i in sorted(at)]!r}")
-        if texts.count(heads[0]) == 1:
-            h3 = h3s[texts.index(heads[0])]
-            ul = re.match(r"\s*<ul>(.*?)</ul>", main[h3.end():], re.S)
-            items = [vis(m.group(1)) for m in elements(ul.group(1), "li")] if ul else None
-            if items != [plain(kept)]:
-                out.append(f"{w}: under {heads[0]!r} the bullets are {items!r}, want only the kept one")
+            out.append(f"{w}: the three headings are not in order: {[texts[i] for i in sorted(at)]!r}")
+        if old["removed_heading"][loc] in texts:
+            out.append(f"{w}: the removed heading is on the page")
+        if plain(removed) in vis(main):
+            out.append(f"{w}: the Plans bullet is on the page")
         if plain(callouts) in vis(main):
             out.append(f"{w}: the Callouts bullet is on the page")
     if md is None:
@@ -326,17 +326,11 @@ def roadmap_problems(loc: str, d: dict, old: dict, h: str, md: str, holders: dic
             else:
                 at.append(texts.index("### " + t))
         if len(at) == len(heads) and at != sorted(at):
-            out.append(f"{w}: the four headings are not in order")
-        if texts.count("### " + heads[0]) == 1:
-            i = texts.index("### " + heads[0]) + 1
-            while i < len(texts) and texts[i] == "":
-                i += 1
-            items = []
-            while i < len(texts) and texts[i].startswith("- "):
-                items.append(texts[i])
-                i += 1
-            if items != [kept]:
-                out.append(f"{w}: under '### {heads[0]}' the bullets are {items!r}, want only the kept one")
+            out.append(f"{w}: the three headings are not in order")
+        if old["removed_heading"][loc] in [plain(line[4:]) for _, line in lines if line.startswith("### ")]:
+            out.append(f"{w}: the removed heading is in the twin")
+        if plain(removed) in ws(plain_inline(md)):
+            out.append(f"{w}: the Plans bullet is in the twin")
         if callouts in texts or plain(callouts) in ws(plain_inline(md)):
             out.append(f"{w}: the Callouts bullet is in the twin")
     return out
@@ -393,12 +387,12 @@ def data_problems(old: dict) -> list:
             want = NBSP_WANT.get(loc, {}).get(key, 0)
             if v.count(NBSP) != want:
                 out.append(f"{loc}: data {key} has {v.count(NBSP)} U+00A0, want {want}")
-    for part, size in (("old", 5), ("headings", 4)):
+    for part, size in (("old", 5), ("headings", 3)):
         for loc in ROOTS:
             v = old.get(part, {}).get(loc)
             if not isinstance(v, list) or len(v) != size or not all(isinstance(s, str) and s.strip() for s in v):
                 out.append(f"old.json {part}/{loc}: want {size} non-empty strings")
-    for part in ("callouts", "kept", "last_updated_before"):
+    for part in ("callouts", "removed_plans", "removed_heading", "last_updated_before"):
         for loc in ROOTS:
             v = old.get(part, {}).get(loc)
             if not isinstance(v, str) or not v.strip():
@@ -501,7 +495,7 @@ def needles(old: dict) -> list:
     out = []
     for loc in ROOTS:
         named = [(f"old[{i}]", s) for i, s in enumerate(old["old"][loc])]
-        named += [("callouts", old["callouts"][loc]), ("last_updated_before", old["last_updated_before"][loc])]
+        named += [(key, old[key][loc]) for key in ("removed_plans", "callouts", "last_updated_before")]
         for name, s in named:
             for n in (hay(plain(s)).strip(" "), hay(re.sub(r"^- ", "", s)).strip(" ")):
                 if n and (loc, name, n) not in out:
@@ -530,6 +524,11 @@ def old_problems(old: dict, files: dict) -> list:
     out, ns = [], needles(old)
     for name, text in files.items():
         hays = file_hays(name, text)
+        headings = [vis(m.group(1)) for m in elements(text, "h3")]
+        headings += [vis(plain_inline(m.group(1))) for m in re.finditer(r"^###[ \t]+(.+?)\s*$", text, re.M)]
+        for heading in set(old["removed_heading"].values()):
+            if heading in headings and ("roadmap/" in name or name == "llms-full.txt"):
+                out.append(f"{name}: removed roadmap h3 {heading!r} is on it")
         seen = set()
         for loc, what, n in ns:
             if (loc, what) not in seen and any(n in h for h in hays):
@@ -695,30 +694,31 @@ def self_test() -> int:
                             i = text.index(NBSP, a, b)
                             expect(f"{w}: one U+00A0 as {name}", run(page, ext, text[:i] + repl + text[i + 1:]))
 
-        # /roadmap/: the Callouts bullet back, the Plans bullet removed, two headings swapped, old date back
-        heads, kept, callouts = old["headings"][loc], old["kept"][loc], old["callouts"][loc]
-        rh, rm = pages["roadmap.html"], pages["roadmap.md"]
-        callouts_li = "  <li>" + html.escape(callouts[2:], quote=False).replace("**", "") + "</li>\n"
-        callouts_li = re.sub(r"`([^`]+)`", r"<code>\1</code>", callouts_li)
-        opening = f"<h3>{html.escape(heads[0], quote=False)}</h3>\n<ul>\n"
-        if opening in rh:
-            expect(f"{loc}/roadmap.html: Callouts bullet back", run("roadmap", "html", rh.replace(opening, opening + callouts_li, 1)))
-        else:
-            cant(f"{loc}/roadmap.html: Callouts bullet back")
-        md_opening = f"### {heads[0]}\n\n"
-        if md_opening in rm:
-            expect(f"{loc}/roadmap.md: Callouts bullet back", run("roadmap", "md", rm.replace(md_opening, md_opening + callouts + "\n", 1)))
-        else:
-            cant(f"{loc}/roadmap.md: Callouts bullet back")
-        kept_li = next((m.group(0) for m in elements(rh, "li") if vis(m.group(1)) == plain(kept)), None)
-        if kept_li:
-            expect(f"{loc}/roadmap.html: Plans bullet removed", run("roadmap", "html", rh.replace(kept_li, "", 1)))
-        else:
-            cant(f"{loc}/roadmap.html: Plans bullet removed")
-        if kept + "\n" in rm:
-            expect(f"{loc}/roadmap.md: Plans bullet removed", run("roadmap", "md", rm.replace(kept + "\n", "", 1)))
-        else:
-            cant(f"{loc}/roadmap.md: Plans bullet removed")
+        # /roadmap/: restore removed content, disturb remaining headings, and restore the old date.
+        heads = old["headings"][loc]
+        for ext in ("html", "md"):
+            text = pages[f"roadmap.{ext}"]
+            heading = old["removed_heading"][loc]
+            def bullet(piece):
+                if ext == "md":
+                    return piece + "\n"
+                body = html.escape(plain(piece), quote=False)
+                return "<ul><li>" + body + "</li></ul>\n"
+            title = f"<h3>{html.escape(heading)}</h3>\n" if ext == "html" else f"### {heading}\n\n"
+            plans = bullet(old["removed_plans"][loc])
+            anchor = f"<h3>{html.escape(heads[0])}</h3>" if ext == "html" else f"### {heads[0]}"
+            for name, plant in (("removed section", title + plans), ("removed heading", title),
+                                ("Plans bullet", plans), ("Callouts bullet", bullet(old["callouts"][loc]))):
+                if anchor not in text:
+                    cant(f"{loc}/roadmap.{ext}: {name} back")
+                    continue
+                back = text.replace(anchor, plant + anchor, 1)
+                expect(f"{loc}/roadmap.{ext}: {name} back", run("roadmap", ext, back))
+                expect(f"{loc}/roadmap.{ext}: {name} back, site-wide search",
+                       old_problems(old, {rel(loc, "roadmap", ext): back}))
+                if name == "removed heading":
+                    expect(f"{loc}/roadmap.{ext}: heading in llms-full.txt",
+                           old_problems(old, {"llms-full.txt": llms + "\n" + plant}))
         for ext, fmt in (("html", "<h3>{}</h3>"), ("md", "### {}\n")):
             text = pages[f"roadmap.{ext}"]
             a, b = fmt.format(html.escape(heads[1], quote=False) if ext == "html" else heads[1]), \
@@ -728,6 +728,11 @@ def self_test() -> int:
                        run("roadmap", ext, text.replace(a, "\0", 1).replace(b, a, 1).replace("\0", b, 1)))
             else:
                 cant(f"{loc}/roadmap.{ext}: headings swapped")
+            if a in text:
+                expect(f"{loc}/roadmap.{ext}: remaining heading removed",
+                       run("roadmap", ext, text.replace(a, "", 1)))
+            else:
+                cant(f"{loc}/roadmap.{ext}: remaining heading removed")
             span = holders.get(("roadmap", ext, "roadmap_updated"))
             if span:
                 back = text[:span[2]] + html.escape(old["last_updated_before"][loc], quote=False) + text[span[3]:]
@@ -773,7 +778,7 @@ def self_test() -> int:
 
     # old strings planted into copies of en /features/ and llms-full.txt
     plants = [(loc, f"old[{i}]", s) for loc in ROOTS for i, s in enumerate(old["old"][loc])]
-    plants += [(loc, k, old[k][loc]) for loc in ROOTS for k in ("callouts", "last_updated_before")]
+    plants += [(loc, k, old[k][loc]) for loc in ROOTS for k in ("callouts", "removed_plans", "last_updated_before")]
     plants += [(loc, "old FAQ answer", a) for loc, a in old_faq_answers()]
     for loc, what, s in plants:
         p = plain(s)

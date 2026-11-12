@@ -2933,10 +2933,6 @@ Everything that has shipped is in the [changelog](/changelog/).
 
 ## Next
 
-### Mac 1.2.2
-
-- Add Claude Code's Plans folder to the sidebar in one click, newest plan first.
-
 ### Mac 1.2.3
 
 - After an agent changes a file, see which blocks changed.
@@ -6491,10 +6487,6 @@ Source: https://marsdawn.southern-light.dev/zh-hant/roadmap/
 已推出的內容都在[更新紀錄](/zh-hant/changelog/)裡。
 
 ## 接下來
-
-### Mac 1.2.2
-
-- 一鍵把 Claude Code 的 Plans 資料夾加進側邊欄，最新的計畫排在最上面。
 
 ### Mac 1.2.3
 
@@ -10077,10 +10069,6 @@ Source: https://marsdawn.southern-light.dev/zh-hans/roadmap/
 
 ## 接下来
 
-### Mac 1.2.2
-
-- 一键把 Claude Code 的 Plans 文件夹加入边栏，最新的计划排在最上面。
-
 ### Mac 1.2.3
 
 - 代理改了文件之后，看得出哪些区块变了。
@@ -13661,10 +13649,6 @@ Source: https://marsdawn.southern-light.dev/ja/roadmap/
 
 ## 今後の予定
 
-### Mac 1.2.2
-
-- Claude Code の Plans フォルダをワンクリックでサイドバーに追加。新しいプランが一番上に並びます。
-
 ### Mac 1.2.3
 
 - エージェントがファイルを変更したあと、どのブロックが変わったかがわかります。
@@ -17220,10 +17204,6 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 
 ## Als Nächstes
 
-### Mac 1.2.2
-
-- Den Plans-Ordner von Claude Code mit einem Klick zur Seitenleiste hinzufügen, den neuesten Plan zuerst.
-
 ### Mac 1.2.3
 
 - Nachdem ein Agent eine Datei geändert hat, sehen, welche Blöcke sich geändert haben.
@@ -20744,10 +20724,6 @@ Les plans peuvent changer : un élément peut passer à une autre version ou êt
 Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/changelog/).
 
 ## Ensuite
-
-### Mac 1.2.2
-
-- Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.
 
 ### Mac 1.2.3
 
@@ -24270,10 +24246,6 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
 ## A continuación
 
-### Mac 1.2.2
-
-- Añade la carpeta Plans de Claude Code a la barra lateral con un clic, con el plan más reciente arriba.
-
 ### Mac 1.2.3
 
 - Después de que un agente cambie un archivo, ve qué bloques cambiaron.
@@ -27794,10 +27766,6 @@ Source: https://marsdawn.southern-light.dev/ko/roadmap/
 지금까지 출시한 내용은 모두 [변경 내역](/ko/changelog/)에 있습니다.
 
 ## 다음 계획
-
-### Mac 1.2.2
-
-- Claude Code의 Plans 폴더를 클릭 한 번으로 사이드바에 추가하고, 최신 계획을 맨 위에 둡니다.
 
 ### Mac 1.2.3
 
