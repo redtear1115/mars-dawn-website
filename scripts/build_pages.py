@@ -4286,6 +4286,12 @@ TRAIT_PAGES = {
   <li>Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.</li>
   <li>{APP_UI_LANGUAGES["en"]}.</li>
 </ul>
+<h3>Small and quiet</h3>
+<ul>
+  <li>An 11.4 MB download from the Mac App Store.</li>
+  <li>0% CPU when a document is open and nothing is changing.</li>
+</ul>
+<p>Measured on version 1.2.1, November 2026.</p>
 """,
     ),
     ("zh-hant", "native"): _trait_page(
@@ -4312,6 +4318,12 @@ TRAIT_PAGES = {
   <li>Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。</li>
   <li>支援{APP_UI_LANGUAGES["zh-hant"]}。</li>
 </ul>
+<h3>小而安靜</h3>
+<ul>
+  <li>從 Mac App Store 下載只要 11.4 MB。</li>
+  <li>文件開著、沒有變動時，CPU 用量 0%。</li>
+</ul>
+<p>以 1.2.1 版實測，2026 年 11 月。</p>
 """,
     ),
     ("en", "limits"): _trait_page(

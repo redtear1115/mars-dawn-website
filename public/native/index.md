@@ -28,6 +28,13 @@ In this screenshot:
 - Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.
 - English, Traditional Chinese, Simplified Chinese, Japanese, German, French, Spanish and Korean.
 
+### Small and quiet
+
+- An 11.4 MB download from the Mac App Store.
+- 0% CPU when a document is open and nothing is changing.
+
+Measured on version 1.2.1, November 2026.
+
 ## More
 
 - [MarsDawn](https://marsdawn.southern-light.dev/index.md): Read and review your agent's Markdown, JSON and YAML natively on Mac: live preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 4.99 once.
