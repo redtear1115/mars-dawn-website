@@ -30,8 +30,8 @@ En esta captura de pantalla:
 
 ### Pequeña y silenciosa
 
-- Una descarga de 11,4 MB desde el Mac App Store.
-- 0 % de CPU con un documento abierto y sin cambios.
+- Una descarga de 11,4 MB desde el Mac App Store.
+- 0 % de CPU con un documento abierto y sin cambios.
 
 Medido con la versión 1.2.1, noviembre de 2026.
 
