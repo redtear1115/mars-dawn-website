@@ -28,6 +28,13 @@ Sur cette capture d’écran :
 - Siri et Raccourcis : commencer un nouveau document à partir d’un modèle, ajouter une ligne à la boîte de réception de vos notes ou rouvrir un document récent.
 - Anglais, chinois traditionnel, chinois simplifié, japonais, allemand, français, espagnol et coréen.
 
+### Petite et discrète
+
+- 11,4 Mo à télécharger sur le Mac App Store.
+- 0 % de CPU quand un document est ouvert et que rien ne change.
+
+Mesuré avec la version 1.2.1, novembre 2026.
+
 ## Plus
 
 - [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Relisez le Markdown, JSON et YAML de votre agent sur Mac : aperçu en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.
