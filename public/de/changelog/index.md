@@ -6,14 +6,6 @@ Was als Nächstes kommt, steht in der [Roadmap](/de/roadmap/).
 
 ## MarsDawn für den Mac
 
-### MarsDawn 1.2.2
-
-23. November 2026
-
-- Ablage > „Drucken …“ und Ablage > „Als PDF exportieren …“ öffnen jetzt das Blatt „Drucken und Exportieren“ mit einer PDF-Vorschau. Wähle „Dokument“, „Handbuch“ oder „Handout“ und drucke oder sichere dann als PDF. Drucken ist nicht mehr auf „Dokument“ beschränkt.
-- Behoben: Text, der direkt nach dem automatischen Sichern getippt wurde, konnte ersetzt werden, und Scrollen direkt nach dem Wechsel zurück zu „Geteilt“ konnte zurückspringen.
-- Bei „Handbuch“ zeigt das Blatt „Drucken und Exportieren“, was auf das Deckblatt kommt, und du kannst das Deckblattbild „Sonnenaufgang auf dem Mars“ hinzufügen. „Drucken und Exportieren“ lässt sich auch zur Symbolleiste hinzufügen.
-
 ### MarsDawn 1.2.1
 
 3. November 2026
@@ -50,21 +42,6 @@ Was als Nächstes kommt, steht in der [Roadmap](/de/roadmap/).
 - Dokumente, die du aus dem Finder, dem Dock, über Ablage > „Öffnen …“ oder mit dem Befehl marsdawn open öffnest, öffnen sich jetzt als Tabs im vordersten Fenster, ebenso neue Dokumente. Um das bisherige Verhalten beizubehalten, wähle „Systemeinstellung folgen“ unter Einstellungen > Erscheinungsbild.
 
 Frühere Versionen sind nur auf Englisch beschrieben: [zum englischen Änderungsprotokoll](/changelog/).
-
-## MarsDawn für iPhone und iPad
-
-### MarsDawn 1.0.2
-
-23. November 2026
-
-- Öffne PDFs und suche Text darin. Bei einem PDF mit Passwort wirst du zuerst danach gefragt.
-- Öffne JSON- und YAML-Dateien als schreibgeschützte Dokumente, mit einer Baumvorschau.
-- Öffne Markdown-, Text-, PDF-, JSON- und YAML-Dateien aus Dateien, Mail und anderen Apps.
-- Suche Text in der Vorschau (mit Tastatur ⌘F). „Einzelne Zeilenumbrüche beibehalten“ ist jetzt in „Erscheinungsbild und Thema“.
-- Teile die Datei über die Symbolleiste oder drucke sie.
-- Auf dem iPad und dem aufgeklappten iPhone Duo ist die Gliederung jetzt eine Seitenleiste, die zeigt, wo du gerade bist. Dort erscheinen auch PDF-Lesezeichen.
-
-Versionen vor 1.0.2 sind nicht aufgeführt.
 
 ## Befehlszeilenprogramm marsdawn
 

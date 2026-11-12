@@ -6,14 +6,6 @@ Lo que viene después está en la [hoja de ruta](/es/roadmap/).
 
 ## MarsDawn para Mac
 
-### MarsDawn 1.2.2
-
-23 de noviembre de 2026
-
-- Archivo > «Imprimir…» y Archivo > «Exportar como PDF…» ahora abren la hoja «Imprimir y exportar», con una vista previa del PDF. Elige «Documento», «Guía» o «Folleto» y luego imprime o guarda como PDF. Imprimir ya no se limita a «Documento».
-- Corregido: el texto escrito justo después del guardado automático podía reemplazarse, y desplazarse justo después de volver a «Dividido» podía saltar atrás.
-- Con «Guía», la hoja «Imprimir y exportar» muestra lo que aparecerá en la portada y puedes añadir la imagen de portada «Amanecer en Marte». También puedes añadir «Imprimir y exportar» a la barra de herramientas.
-
 ### MarsDawn 1.2.1
 
 3 de noviembre de 2026
@@ -50,21 +42,6 @@ Lo que viene después está en la [hoja de ruta](/es/roadmap/).
 - Los documentos que abres desde el Finder, el Dock, Archivo > «Abrir…» o el comando marsdawn open ahora se abren como pestañas en la ventana del frente, igual que los documentos nuevos. Para mantener el comportamiento anterior, elige «Seguir ajuste del sistema» en Ajustes > Aspecto.
 
 Las versiones anteriores solo tienen notas en inglés: [ver el historial en inglés](/changelog/).
-
-## MarsDawn para iPhone y iPad
-
-### MarsDawn 1.0.2
-
-23 de noviembre de 2026
-
-- Abre archivos PDF y busca texto en ellos. Un PDF con contraseña te la pide primero.
-- Abre archivos JSON y YAML como documentos de solo lectura, con una vista previa en árbol.
-- Abre archivos Markdown, de texto, PDF, JSON y YAML desde Archivos, Mail y otras apps.
-- Busca texto en la vista previa (⌘F con teclado). «Mantener saltos de línea simples» ahora está en «Aspecto y tema».
-- Comparte el archivo desde la barra de herramientas o imprímelo.
-- En el iPad y el iPhone Duo desplegado, el esquema pasa a ser una barra lateral que muestra dónde estás. Los marcadores del PDF también aparecen ahí.
-
-No se incluyen las versiones anteriores a la 1.0.2.
 
 ## Herramienta de línea de comandos marsdawn
 

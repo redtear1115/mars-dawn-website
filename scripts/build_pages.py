@@ -6347,7 +6347,22 @@ def apply_cli254(merged: dict) -> dict:
 # entries keep their text and their anchors (#marsdawn-0-6-3 and so on), now as h3 under the CLI heading.
 # scripts/check_app_changelog.py checks it. APP_NOTES["versions"] stays the Mac's alone: APP_VERSION and
 # scripts/check_offers.py read it as the Mac app's version.
-APP_NOTES = json.loads((ROOT / "vendor" / "app-release-notes" / "whats-new.json").read_text(encoding="utf-8"))
+#
+# A version marked "pending" in whats-new.json is not on the App Store yet (its date is only a due date).
+# published_notes() is the one place that drops it: APP_NOTES is what the build reads (the Mac and iOS
+# sections, the Markdown twins, llms.txt, llms-full.txt, the home page's softwareVersion), so a pending
+# version reaches no page. The data stays in the vendored file; the day it ships, `pending` is removed
+# there, its real date is set and the pages are rebuilt (the steps are "When a release lands" in
+# scripts/tmde130/ingest.py).
+def published_notes(raw: dict) -> dict:
+    """raw (the vendored whats-new.json) without the versions that are still pending, Mac and iOS."""
+    return {**raw,
+            "versions": [v for v in raw["versions"] if not v.get("pending")],
+            "ios": {**raw["ios"], "versions": [v for v in raw["ios"]["versions"] if not v.get("pending")]}}
+
+
+APP_NOTES = published_notes(
+    json.loads((ROOT / "vendor" / "app-release-notes" / "whats-new.json").read_text(encoding="utf-8")))
 CHANGELOG_MONTHS = {
     "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
            "November", "December"],
@@ -6412,10 +6427,13 @@ def app_versions_html(locale: str) -> str:
 
 
 def ios_versions_html(locale: str) -> str:
-    """The iPhone and iPad section: its heading, every iOS version (anchor ios-<version>, because iOS 1.0.2
-    and Mac 1.0.2 share a name) and the line that says which versions are not listed, as the section's last
-    paragraph. A locale without one of these versions stops the build rather than losing it quietly."""
+    """The iPhone and iPad section: its heading, every published iOS version (anchor ios-<version>, because
+    iOS 1.0.2 and Mac 1.0.2 share a name) and the line that says which versions are not listed, as the
+    section's last paragraph. A locale without one of these versions stops the build rather than losing it
+    quietly. While every iOS version is still pending there is nothing to list, so there is no section."""
     copy = changelog_data.DATA[locale]
+    if not APP_NOTES["ios"]["versions"]:
+        return ""
     parts, omitted = _version_blocks(locale, APP_NOTES["ios"]["versions"], "ios")
     assert parts and not omitted, f"{locale}/changelog: an iOS version has no What's New in this language"
     return f'<h2 id="marsdawn-ios">{copy["ios_h"]}</h2>\n\n' + "\n\n".join(parts + [f'<p>{copy["ios_line"]}</p>'])
@@ -6442,7 +6460,7 @@ def apply_app_changelog(merged: dict) -> dict:
         # a heading can be renamed without moving its anchor: #marsdawn-app and #marsdawn-command-line-tool
         # are the old ones, #marsdawn-ios is new.
         body = (head + sep + f'\n\n<p>{rich_pages.md_inline(roadmap272.CHANGELOG_BACKLINK[locale])}</p>\n\n'   # #272 (e)
-                + app_versions_html(locale) + "\n\n" + ios_versions_html(locale) + "\n\n"
+                + app_versions_html(locale) + "\n\n" + "".join(s + "\n\n" for s in [ios_versions_html(locale)] if s)
                 + f'<h2 id="marsdawn-command-line-tool">{copy["cli_h"]}</h2>\n<p>{copy["cli_line"]}</p>\n\n'
                 + cli.lstrip("\n"))
         assert "<h2>" not in body, f"{locale}/changelog: a bare <h2> is left; add_h2_ids would renumber the anchors"
@@ -6920,7 +6938,8 @@ def soft_hyphenate(locale: str, html: str) -> str:
 
 # --- Structured data (schema.org JSON-LD) ------------------------------------------------------
 # What the home page says about the app. APP_VERSION is the Mac app's current release: the newest version
-# in vendor/app-release-notes, so it rises when that release's notes are vendored for /changelog/ (#289).
+# in vendor/app-release-notes that is on the App Store (APP_NOTES has no pending one), so it rises when that
+# release ships and its notes lose `pending` (#289).
 APP_VERSION = max((v["version"] for v in APP_NOTES["versions"]), key=lambda v: tuple(map(int, v.split("."))))
 # The App Store's sellerName and artistName for MarsDawn (owner decision, 2026-10-09).
 PUBLISHER = {"@type": "Person", "name": "Nan-Kuang Lee"}

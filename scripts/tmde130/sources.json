@@ -40,7 +40,7 @@
  },
  "app": {
   "repo": "redtear1115/mars-dawn",
-  "_pins": "Each pin is one commit of the app repo and the sha256 of every release-notes file read at it. 1.2.2 and ios-1.0.2 are at the head of PR #673 (not on main yet): when #673 changes, set the new commit and sha256s here and run the ingester again.",
+  "_pins": "Each pin is one commit of the app repo and the sha256 of every release-notes file read at it. 1.2.2 and ios-1.0.2 are read at c884e68a83c2, the head of mars-dawn#673, which was merged on 2026-11-11 (the commit is on the app repo's main, and main's two files still have these sha256s): when either file changes in the app repo, set the new commit and sha256s here and run the ingester again.",
   "pins": [
    {
     "commit": "1a048a6255c97fa5600807ee276fa0e7984d0ab3",
@@ -82,7 +82,7 @@
   {"version": "1.2.2", "pending": true, "released": "2026-11-23"}
  ],
  "ios": {
-  "_pending": "A pending version is not on the App Store yet: its What's New is the release-notes file at the pin (sha256 held) and its date is 'released' here, the due date of the milestone 'Mac 1.2.2 + iOS 1.0.2 live' until the day it ships (then set the real date). The ASC read and the public page are not consulted. To ship: drop 'pending', add released_at_store, run the ingester; an iOS version then takes its date from ios.dates.url, as a Mac one does from dates.url.",
+  "_pending": "A pending version is not on the App Store yet: its What's New is the release-notes file at the pin (sha256 held) and its date is 'released' here, the due date of the milestone 'Mac 1.2.2 + iOS 1.0.2 live' until the day it ships (then set the real date). The ASC read and the public page are not consulted. The build, the Markdown twins, llms.txt, llms-full.txt and the home page's softwareVersion leave a pending version out: it appears nowhere in public/ (check_app_changelog.py --no-pending-in-public). To ship: drop 'pending', set 'released' to the App Store's UTC date, add released_at_store, run the ingester, rebuild; an iOS version then takes its date from ios.dates.url, as a Mac one does from dates.url. The steps are in scripts/tmde130/ingest.py's docstring.",
   "dates": {
    "url": "https://apps.apple.com/us/app/id6812925073?platform=iphone",
    "read": null,

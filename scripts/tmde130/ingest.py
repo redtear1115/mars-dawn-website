@@ -32,6 +32,19 @@ never typed:
   notes file (sha256 held), its date is the pinned `released` (a due date until the day it ships), and
   neither the ASC read nor the public page is consulted. whats-new.json records it with "pending": true
   and no store date. scripts/check_app_changelog.py --release fails while any version is pending.
+  The build leaves a pending version out of every page, Markdown twin, llms file and JSON-LD (it is
+  vendored, not published), and scripts/check_app_changelog.py --no-pending-in-public proves that;
+
+When a release lands (the day a pending version is on the App Store), for each version that shipped:
+  1. in sources.json, remove `"pending": true` from the version, set `released` to the UTC date of
+     the App Store's version history and add `released_at_store` (the timestamp the page gives);
+  2. python3 -I -B scripts/tmde130/ingest.py --app-repo PATH --asc FILE   # writes whats-new.json and
+     manifest.json (the Mac version needs --asc the first time; the iOS one takes its date from ios.dates.url);
+  3. python3 -I -B scripts/build_pages.py   # about 15 minutes; the version now appears on /changelog/
+     in all eight locales, in the Markdown twins, llms-full.txt and, for the Mac, the home page's softwareVersion;
+  4. python3 -I -B scripts/check_app_changelog.py --self-test --release   # no version left pending;
+     python3 -I -B scripts/check_app_changelog.py --no-pending-in-public  # nothing pending left in public/;
+  5. git status is clean after the build except for the files you meant to change; commit.
 
 Outputs: vendor/app-release-notes/whats-new.json and manifest.json (sha256 of whats-new.json),
 scripts/tmde130/data.py (the page copy the build reads) and scripts/tmde130/slots.json (one row per

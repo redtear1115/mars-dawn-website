@@ -6,14 +6,6 @@ What's coming next is on the [roadmap](/roadmap/).
 
 ## MarsDawn for Mac
 
-### MarsDawn 1.2.2
-
-23 November 2026
-
-- File > Print... and File > Export as PDF... now open a Print & Export sheet with a preview of the PDF. Choose Document, Handbook or Handout, then print it or save it as a PDF. Printing is no longer limited to Document.
-- Fixed: text typed right after an autosave could be replaced, and scrolling right after switching back to Split could jump back.
-- When you choose Handbook, the Print & Export sheet shows what will go on the cover, and you can add the Mars Sunrise cover image. Print & Export can also be added to the toolbar.
-
 ### MarsDawn 1.2.1
 
 3 November 2026
@@ -71,21 +63,6 @@ What's coming next is on the [roadmap](/roadmap/).
 5 October 2026
 
 First release.
-
-## MarsDawn for iPhone and iPad
-
-### MarsDawn 1.0.2
-
-23 November 2026
-
-- Open PDFs and find text in them. A PDF with a password asks for it first.
-- Open JSON and YAML files as read-only documents, with a tree preview.
-- Open Markdown, text, PDF, JSON and YAML files from Files, Mail and other apps.
-- Find text in the preview (⌘F on a keyboard). Keep single line breaks is now in Appearance and Theme.
-- Share the file from the toolbar, or print it.
-- On iPad and an unfolded iPhone Duo, the outline is now a sidebar that shows where you are. PDF bookmarks appear there too.
-
-Versions before 1.0.2 are not listed.
 
 ## marsdawn command-line tool
 

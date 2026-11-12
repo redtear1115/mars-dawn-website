@@ -2715,14 +2715,6 @@ What's coming next is on the [roadmap](/roadmap/).
 
 ## MarsDawn for Mac
 
-### MarsDawn 1.2.2
-
-23 November 2026
-
-- File > Print... and File > Export as PDF... now open a Print & Export sheet with a preview of the PDF. Choose Document, Handbook or Handout, then print it or save it as a PDF. Printing is no longer limited to Document.
-- Fixed: text typed right after an autosave could be replaced, and scrolling right after switching back to Split could jump back.
-- When you choose Handbook, the Print & Export sheet shows what will go on the cover, and you can add the Mars Sunrise cover image. Print & Export can also be added to the toolbar.
-
 ### MarsDawn 1.2.1
 
 3 November 2026
@@ -2780,21 +2772,6 @@ What's coming next is on the [roadmap](/roadmap/).
 5 October 2026
 
 First release.
-
-## MarsDawn for iPhone and iPad
-
-### MarsDawn 1.0.2
-
-23 November 2026
-
-- Open PDFs and find text in them. A PDF with a password asks for it first.
-- Open JSON and YAML files as read-only documents, with a tree preview.
-- Open Markdown, text, PDF, JSON and YAML files from Files, Mail and other apps.
-- Find text in the preview (⌘F on a keyboard). Keep single line breaks is now in Appearance and Theme.
-- Share the file from the toolbar, or print it.
-- On iPad and an unfolded iPhone Duo, the outline is now a sidebar that shows where you are. PDF bookmarks appear there too.
-
-Versions before 1.0.2 are not listed.
 
 ## marsdawn command-line tool
 
@@ -6290,14 +6267,6 @@ MarsDawn 的 Mac、iPhone 和 iPad App，以及免費的 marsdawn 命令列工�
 
 ## Mac 版 MarsDawn
 
-### MarsDawn 1.2.2
-
-2026 年 11 月 23 日
-
-- 「檔案 ▸ 列印⋯」和「檔案 ▸ 輸出為 PDF⋯」現在都會打開「列印與輸出」面板，先預覽 PDF。選擇「文件」、「手冊」或「講義」後，再列印或儲存為 PDF。列印也不再只能用「文件」版面。
-- 修正：自動儲存後馬上打的字可能被換掉，切回「並排」後馬上捲動可能被拉回去。
-- 選擇「手冊」時，「列印與輸出」面板會列出封面要顯示的內容，也可以加上「火星日出」封面圖。「列印與輸出」也可以加到工具列。
-
 ### MarsDawn 1.2.1
 
 2026 年 11 月 3 日
@@ -6356,21 +6325,6 @@ MarsDawn 的 Mac、iPhone 和 iPad App，以及免費的 marsdawn 命令列工�
 2026 年 10 月 5 日
 
 首次發表。
-
-## iPhone 和 iPad 版 MarsDawn
-
-### MarsDawn 1.0.2
-
-2026 年 11 月 23 日
-
-- 可以打開 PDF，也能在裡面尋找文字。有密碼的 PDF 會先請你輸入密碼。
-- JSON 和 YAML 檔可以當成唯讀文件打開，並有樹狀預覽。
-- 可以從「檔案」、「郵件」和其他 App 打開 Markdown、文字、PDF、JSON 和 YAML 檔。
-- 可以在預覽裡尋找文字（鍵盤按 ⌘F）。「外觀與主題」新增「保留單一換行」。
-- 可以從工具列分享檔案，或列印出來。
-- 在 iPad 和展開的 iPhone Duo 上，大綱改成側邊欄，會標出你讀到哪裡。PDF 的書籤也顯示在這裡。
-
-1.0.2 以前的版本不列。
 
 ## marsdawn 命令列工具
 
@@ -9892,14 +9846,6 @@ MarsDawn 的 Mac、iPhone 和 iPad App，以及免费的 marsdawn 命令行工�
 
 ## Mac 版 MarsDawn
 
-### MarsDawn 1.2.2
-
-2026 年 11 月 23 日
-
-- “文件 ▸ 打印…”和“文件 ▸ 导出为 PDF…”现在都会打开“打印与导出”面板，先预览 PDF。选择“文稿”、“手册”或“讲义”后，再打印或存储为 PDF。打印也不再只能用“文稿”布局。
-- 修复：自动存储后马上输入的文字可能被替换，切回“并排”后马上滚动可能被拉回去。
-- 选择“手册”时，“打印与导出”面板会列出封面要显示的内容，也可以加上“火星日出”封面图。“打印与导出”也可以添加到工具栏。
-
 ### MarsDawn 1.2.1
 
 2026 年 11 月 3 日
@@ -9958,21 +9904,6 @@ MarsDawn 的 Mac、iPhone 和 iPad App，以及免费的 marsdawn 命令行工�
 2026 年 10 月 5 日
 
 首次发布。
-
-## iPhone 和 iPad 版 MarsDawn
-
-### MarsDawn 1.0.2
-
-2026 年 11 月 23 日
-
-- 可以打开 PDF，也能在其中查找文字。有密码的 PDF 会先请你输入密码。
-- JSON 和 YAML 文件可以作为只读文稿打开，并带树状预览。
-- 可以从“文件”、“邮件”和其他 App 打开 Markdown、文本、PDF、JSON 和 YAML 文件。
-- 可以在预览中查找文字（键盘按 ⌘F）。“外观与主题”新增“保留单个换行”。
-- 可以从工具栏共享文件，或打印出来。
-- 在 iPad 和展开的 iPhone Duo 上，大纲改为边栏，会标出你读到的位置。PDF 的书签也显示在这里。
-
-1.0.2 以前的版本不列。
 
 ## marsdawn 命令行工具
 
@@ -13494,14 +13425,6 @@ Mac、iPhone、iPad 版 MarsDawn アプリと、無料の marsdawn コマンド�
 
 ## Mac 版 MarsDawn
 
-### MarsDawn 1.2.2
-
-2026年11月23日
-
-- 「ファイル > プリント…」と「ファイル > PDF として書き出す…」は、どちらも「プリントと書き出し」シートを開くようになり、PDF をプレビューできます。「書類」「ハンドブック」「配布資料」を選んでから、プリントするか PDF として保存します。プリントでも「書類」以外のレイアウトを使えます。
-- 修正：自動保存の直後に入力した文字が置き換えられることがある問題と、「分割」に戻した直後のスクロールが引き戻されることがある問題。
-- 「ハンドブック」を選ぶと、「プリントと書き出し」シートに表紙に載る内容が表示され、「火星の日の出」の表紙の画像も追加できます。「プリントと書き出し」はツールバーにも追加できます。
-
 ### MarsDawn 1.2.1
 
 2026年11月3日
@@ -13559,21 +13482,6 @@ Mac、iPhone、iPad 版 MarsDawn アプリと、無料の marsdawn コマンド�
 2026年10月5日
 
 最初のリリースです。
-
-## iPhone・iPad 版 MarsDawn
-
-### MarsDawn 1.0.2
-
-2026年11月23日
-
-- PDF を開いて、テキストを検索できるようになりました。パスワード付きの PDF は、先にパスワードの入力を求められます。
-- JSON と YAML のファイルを読み出し専用の書類として開き、ツリープレビューで表示できます。
-- 「ファイル」、「メール」、ほかの App から Markdown、テキスト、PDF、JSON、YAML ファイルを開けるようになりました。
-- プレビューでテキストを検索できるようになりました（キーボードでは ⌘F）。「外観モードとテーマ」に「単一の改行を保持」を追加しました。
-- ツールバーからファイルを共有したり、プリントしたりできます。
-- iPad と開いた iPhone Duo では、アウトラインがサイドバーになり、読んでいる場所を示します。PDF のブックマークもここに表示されます。
-
-1.0.2 より前のバージョンは載せていません。
 
 ## marsdawn コマンドラインツール
 
@@ -17091,14 +16999,6 @@ Was als Nächstes kommt, steht in der [Roadmap](/de/roadmap/).
 
 ## MarsDawn für den Mac
 
-### MarsDawn 1.2.2
-
-23. November 2026
-
-- Ablage > „Drucken …“ und Ablage > „Als PDF exportieren …“ öffnen jetzt das Blatt „Drucken und Exportieren“ mit einer PDF-Vorschau. Wähle „Dokument“, „Handbuch“ oder „Handout“ und drucke oder sichere dann als PDF. Drucken ist nicht mehr auf „Dokument“ beschränkt.
-- Behoben: Text, der direkt nach dem automatischen Sichern getippt wurde, konnte ersetzt werden, und Scrollen direkt nach dem Wechsel zurück zu „Geteilt“ konnte zurückspringen.
-- Bei „Handbuch“ zeigt das Blatt „Drucken und Exportieren“, was auf das Deckblatt kommt, und du kannst das Deckblattbild „Sonnenaufgang auf dem Mars“ hinzufügen. „Drucken und Exportieren“ lässt sich auch zur Symbolleiste hinzufügen.
-
 ### MarsDawn 1.2.1
 
 3. November 2026
@@ -17135,21 +17035,6 @@ Was als Nächstes kommt, steht in der [Roadmap](/de/roadmap/).
 - Dokumente, die du aus dem Finder, dem Dock, über Ablage > „Öffnen …“ oder mit dem Befehl marsdawn open öffnest, öffnen sich jetzt als Tabs im vordersten Fenster, ebenso neue Dokumente. Um das bisherige Verhalten beizubehalten, wähle „Systemeinstellung folgen“ unter Einstellungen > Erscheinungsbild.
 
 Frühere Versionen sind nur auf Englisch beschrieben: [zum englischen Änderungsprotokoll](/changelog/).
-
-## MarsDawn für iPhone und iPad
-
-### MarsDawn 1.0.2
-
-23. November 2026
-
-- Öffne PDFs und suche Text darin. Bei einem PDF mit Passwort wirst du zuerst danach gefragt.
-- Öffne JSON- und YAML-Dateien als schreibgeschützte Dokumente, mit einer Baumvorschau.
-- Öffne Markdown-, Text-, PDF-, JSON- und YAML-Dateien aus Dateien, Mail und anderen Apps.
-- Suche Text in der Vorschau (mit Tastatur ⌘F). „Einzelne Zeilenumbrüche beibehalten“ ist jetzt in „Erscheinungsbild und Thema“.
-- Teile die Datei über die Symbolleiste oder drucke sie.
-- Auf dem iPad und dem aufgeklappten iPhone Duo ist die Gliederung jetzt eine Seitenleiste, die zeigt, wo du gerade bist. Dort erscheinen auch PDF-Lesezeichen.
-
-Versionen vor 1.0.2 sind nicht aufgeführt.
 
 ## Befehlszeilenprogramm marsdawn
 
@@ -20633,14 +20518,6 @@ Ce qui arrive ensuite figure dans la [feuille de route](/fr/roadmap/).
 
 ## MarsDawn pour Mac
 
-### MarsDawn 1.2.2
-
-23 novembre 2026
-
-- Fichier > « Imprimer… » et Fichier > « Exporter au format PDF… » ouvrent désormais la feuille « Imprimer et exporter », avec un aperçu du PDF. Choisissez « Document », « Guide » ou « Polycopié », puis imprimez ou enregistrez au format PDF. L’impression n’est plus limitée à « Document ».
-- Corrigé : un texte tapé juste après l’enregistrement automatique pouvait être remplacé, et le défilement juste après le retour à « Partagé » pouvait revenir en arrière.
-- Avec « Guide », la feuille « Imprimer et exporter » montre ce qui figurera sur la couverture, et vous pouvez ajouter l’image de couverture « Lever de soleil sur Mars ». « Imprimer et exporter » peut aussi être ajouté à la barre d’outils.
-
 ### MarsDawn 1.2.1
 
 3 novembre 2026
@@ -20677,21 +20554,6 @@ Ce qui arrive ensuite figure dans la [feuille de route](/fr/roadmap/).
 - Les documents ouverts depuis le Finder, le Dock, Fichier > « Ouvrir… » ou la commande marsdawn open s’ouvrent désormais en onglets dans la fenêtre au premier plan, tout comme les nouveaux documents. Pour conserver l’ancien comportement, choisissez « Suivre le réglage système » dans Réglages > Apparence.
 
 Les versions précédentes ne sont décrites qu’en anglais : [voir l’historique en anglais](/changelog/).
-
-## MarsDawn pour iPhone et iPad
-
-### MarsDawn 1.0.2
-
-23 novembre 2026
-
-- Ouvrez des PDF et recherchez du texte à l’intérieur. Un PDF protégé demande d’abord son mot de passe.
-- Ouvrez les fichiers JSON et YAML comme des documents en lecture seule, avec un aperçu en arbre.
-- Ouvrez des fichiers Markdown, texte, PDF, JSON et YAML depuis Fichiers, Mail et d’autres apps.
-- Recherchez du texte dans l’aperçu (⌘F au clavier). « Conserver les sauts de ligne simples » est désormais dans « Apparence et thème ».
-- Partagez le fichier depuis la barre d’outils ou imprimez-le.
-- Sur iPad et sur l’iPhone Duo déplié, le plan devient une barre latérale qui indique où vous en êtes. Les signets PDF y apparaissent aussi.
-
-Les versions antérieures à 1.0.2 ne sont pas listées.
 
 ## Outil en ligne de commande marsdawn
 
@@ -24175,14 +24037,6 @@ Lo que viene después está en la [hoja de ruta](/es/roadmap/).
 
 ## MarsDawn para Mac
 
-### MarsDawn 1.2.2
-
-23 de noviembre de 2026
-
-- Archivo > «Imprimir…» y Archivo > «Exportar como PDF…» ahora abren la hoja «Imprimir y exportar», con una vista previa del PDF. Elige «Documento», «Guía» o «Folleto» y luego imprime o guarda como PDF. Imprimir ya no se limita a «Documento».
-- Corregido: el texto escrito justo después del guardado automático podía reemplazarse, y desplazarse justo después de volver a «Dividido» podía saltar atrás.
-- Con «Guía», la hoja «Imprimir y exportar» muestra lo que aparecerá en la portada y puedes añadir la imagen de portada «Amanecer en Marte». También puedes añadir «Imprimir y exportar» a la barra de herramientas.
-
 ### MarsDawn 1.2.1
 
 3 de noviembre de 2026
@@ -24219,21 +24073,6 @@ Lo que viene después está en la [hoja de ruta](/es/roadmap/).
 - Los documentos que abres desde el Finder, el Dock, Archivo > «Abrir…» o el comando marsdawn open ahora se abren como pestañas en la ventana del frente, igual que los documentos nuevos. Para mantener el comportamiento anterior, elige «Seguir ajuste del sistema» en Ajustes > Aspecto.
 
 Las versiones anteriores solo tienen notas en inglés: [ver el historial en inglés](/changelog/).
-
-## MarsDawn para iPhone y iPad
-
-### MarsDawn 1.0.2
-
-23 de noviembre de 2026
-
-- Abre archivos PDF y busca texto en ellos. Un PDF con contraseña te la pide primero.
-- Abre archivos JSON y YAML como documentos de solo lectura, con una vista previa en árbol.
-- Abre archivos Markdown, de texto, PDF, JSON y YAML desde Archivos, Mail y otras apps.
-- Busca texto en la vista previa (⌘F con teclado). «Mantener saltos de línea simples» ahora está en «Aspecto y tema».
-- Comparte el archivo desde la barra de herramientas o imprímelo.
-- En el iPad y el iPhone Duo desplegado, el esquema pasa a ser una barra lateral que muestra dónde estás. Los marcadores del PDF también aparecen ahí.
-
-No se incluyen las versiones anteriores a la 1.0.2.
 
 ## Herramienta de línea de comandos marsdawn
 
@@ -27717,14 +27556,6 @@ Mac, iPhone, iPad용 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버�
 
 ## Mac용 MarsDawn
 
-### MarsDawn 1.2.2
-
-2026년 11월 23일
-
-- 파일 > ‘프린트…’와 파일 > ‘PDF로 내보내기…’를 선택하면 이제 ‘프린트 및 내보내기’ 시트가 열려 PDF를 미리 볼 수 있습니다. ‘문서’, ‘설명서’, ‘프린트물’ 중 하나를 고른 뒤 프린트하거나 PDF로 저장합니다. 프린트에서도 ‘문서’ 외의 레이아웃을 쓸 수 있습니다.
-- 수정: 자동 저장 직후 입력한 글자가 바뀔 수 있던 문제와 ‘분할’로 돌아온 직후 스크롤이 되돌아갈 수 있던 문제.
-- ‘설명서’를 고르면 ‘프린트 및 내보내기’ 시트에 표지에 들어갈 내용이 표시되고, ‘화성의 일출’ 표지 이미지도 넣을 수 있습니다. ‘프린트 및 내보내기’를 도구 막대에 추가할 수도 있습니다.
-
 ### MarsDawn 1.2.1
 
 2026년 11월 3일
@@ -27761,21 +27592,6 @@ Mac, iPhone, iPad용 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버�
 - Finder, Dock, 파일 > “열기…” 또는 marsdawn open 명령으로 연 문서가 이제 맨 앞 윈도우의 탭으로 열리며, 새 문서도 마찬가지입니다. 이전 방식을 유지하려면 설정 > 화면 모드에서 “시스템 설정 따르기”를 선택하세요.
 
 이전 버전의 설명은 영어로만 제공됩니다. [영어 변경 내역 보기](/changelog/)
-
-## iPhone 및 iPad용 MarsDawn
-
-### MarsDawn 1.0.2
-
-2026년 11월 23일
-
-- PDF를 열고 안의 텍스트를 찾을 수 있습니다. 암호가 있는 PDF는 먼저 암호를 묻습니다.
-- JSON 및 YAML 파일을 읽기 전용 문서로 열 수 있으며, 트리 미리보기가 표시됩니다.
-- 파일, Mail, 다른 앱에서 Markdown, 텍스트, PDF, JSON, YAML 파일을 열 수 있습니다.
-- 미리보기에서 텍스트를 찾을 수 있습니다(키보드에서는 ⌘F). ‘화면 모드 및 테마’에 ‘단일 줄 바꿈 유지’가 추가되었습니다.
-- 도구 막대에서 파일을 공유하거나 프린트할 수 있습니다.
-- iPad와 펼친 iPhone Duo에서 개요가 사이드바로 바뀌어 읽고 있는 위치를 표시합니다. PDF 책갈피도 여기에 표시됩니다.
-
-1.0.2 이전 버전은 싣지 않았습니다.
 
 ## marsdawn 명령줄 도구
 

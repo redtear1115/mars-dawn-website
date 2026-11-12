@@ -6,14 +6,6 @@ Ce qui arrive ensuite figure dans la [feuille de route](/fr/roadmap/).
 
 ## MarsDawn pour Mac
 
-### MarsDawn 1.2.2
-
-23 novembre 2026
-
-- Fichier > « Imprimer… » et Fichier > « Exporter au format PDF… » ouvrent désormais la feuille « Imprimer et exporter », avec un aperçu du PDF. Choisissez « Document », « Guide » ou « Polycopié », puis imprimez ou enregistrez au format PDF. L’impression n’est plus limitée à « Document ».
-- Corrigé : un texte tapé juste après l’enregistrement automatique pouvait être remplacé, et le défilement juste après le retour à « Partagé » pouvait revenir en arrière.
-- Avec « Guide », la feuille « Imprimer et exporter » montre ce qui figurera sur la couverture, et vous pouvez ajouter l’image de couverture « Lever de soleil sur Mars ». « Imprimer et exporter » peut aussi être ajouté à la barre d’outils.
-
 ### MarsDawn 1.2.1
 
 3 novembre 2026
@@ -50,21 +42,6 @@ Ce qui arrive ensuite figure dans la [feuille de route](/fr/roadmap/).
 - Les documents ouverts depuis le Finder, le Dock, Fichier > « Ouvrir… » ou la commande marsdawn open s’ouvrent désormais en onglets dans la fenêtre au premier plan, tout comme les nouveaux documents. Pour conserver l’ancien comportement, choisissez « Suivre le réglage système » dans Réglages > Apparence.
 
 Les versions précédentes ne sont décrites qu’en anglais : [voir l’historique en anglais](/changelog/).
-
-## MarsDawn pour iPhone et iPad
-
-### MarsDawn 1.0.2
-
-23 novembre 2026
-
-- Ouvrez des PDF et recherchez du texte à l’intérieur. Un PDF protégé demande d’abord son mot de passe.
-- Ouvrez les fichiers JSON et YAML comme des documents en lecture seule, avec un aperçu en arbre.
-- Ouvrez des fichiers Markdown, texte, PDF, JSON et YAML depuis Fichiers, Mail et d’autres apps.
-- Recherchez du texte dans l’aperçu (⌘F au clavier). « Conserver les sauts de ligne simples » est désormais dans « Apparence et thème ».
-- Partagez le fichier depuis la barre d’outils ou imprimez-le.
-- Sur iPad et sur l’iPhone Duo déplié, le plan devient une barre latérale qui indique où vous en êtes. Les signets PDF y apparaissent aussi.
-
-Les versions antérieures à 1.0.2 ne sont pas listées.
 
 ## Outil en ligne de commande marsdawn
 
