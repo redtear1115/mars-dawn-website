@@ -14934,8 +14934,8 @@ Auf diesem Bildschirmfoto:
 
 ### Klein und leise
 
-- 11,4 MB Download aus dem Mac App Store.
-- 0 % CPU, wenn ein Dokument geöffnet ist und sich nichts ändert.
+- 11,4 MB Download aus dem Mac App Store.
+- 0 % CPU, wenn ein Dokument geöffnet ist und sich nichts ändert.
 
 Gemessen mit Version 1.2.1, November 2026.
 ---
@@ -18467,8 +18467,8 @@ Sur cette capture d’écran :
 
 ### Petite et discrète
 
-- 11,4 Mo à télécharger sur le Mac App Store.
-- 0 % de CPU quand un document est ouvert et que rien ne change.
+- 11,4 Mo à télécharger sur le Mac App Store.
+- 0 % de CPU quand un document est ouvert et que rien ne change.
 
 Mesuré avec la version 1.2.1, novembre 2026.
 ---
@@ -22000,8 +22000,8 @@ En esta captura de pantalla:
 
 ### Pequeña y silenciosa
 
-- Una descarga de 11,4 MB desde el Mac App Store.
-- 0 % de CPU con un documento abierto y sin cambios.
+- Una descarga de 11,4 MB desde el Mac App Store.
+- 0 % de CPU con un documento abierto y sin cambios.
 
 Medido con la versión 1.2.1, noviembre de 2026.
 ---
