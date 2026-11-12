@@ -757,6 +757,12 @@ def build(k) -> dict:
   <li>Siri und Kurzbefehle: ein neues Dokument aus einer Vorlage beginnen, eine Zeile zum Notizeingang hinzufügen oder ein zuletzt benutztes Dokument wieder öffnen.</li>
   <li>Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch.</li>
 </ul>
+<h3>Klein und leise</h3>
+<ul>
+  <li>11,4 MB Download aus dem Mac App Store.</li>
+  <li>0 % CPU, wenn ein Dokument geöffnet ist und sich nichts ändert.</li>
+</ul>
+<p>Gemessen mit Version 1.2.1, November 2026.</p>
 """,
     }
     pages['limits'] = {

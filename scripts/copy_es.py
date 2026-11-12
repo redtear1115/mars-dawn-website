@@ -751,6 +751,12 @@ def build(k) -> dict:
   <li>Siri y Atajos: crea un documento nuevo a partir de una plantilla, agrega una línea a la bandeja de entrada de tus notas o vuelve a abrir un documento reciente.</li>
   <li>Inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano.</li>
 </ul>
+<h3>Pequeña y silenciosa</h3>
+<ul>
+  <li>Una descarga de 11,4 MB desde el Mac App Store.</li>
+  <li>0 % de CPU con un documento abierto y sin cambios.</li>
+</ul>
+<p>Medido con la versión 1.2.1, noviembre de 2026.</p>
 """,
     }
     pages['limits'] = {

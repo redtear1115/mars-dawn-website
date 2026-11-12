@@ -583,6 +583,13 @@ In this screenshot:
 - Quick Look: press Space on a Markdown file in Finder for a preview, diagrams included. [How Quick Look works](/quicklook/)
 - Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.
 - English, Traditional Chinese, Simplified Chinese, Japanese, German, French, Spanish and Korean.
+
+### Small and quiet
+
+- An 11.4 MB download from the Mac App Store.
+- 0% CPU when a document is open and nothing is changing.
+
+Measured on version 1.2.1, November 2026.
 ---
 
 ## What MarsDawn doesn't do
@@ -4133,6 +4140,13 @@ MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、M
 - 快速查看：在 Finder 選取 Markdown 檔按空白鍵就能預覽，圖表也會顯示。[快速查看怎麼用](/zh-hant/quicklook/)
 - Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。
 - 支援英文、繁體中文、簡體中文、日文、德文、法文、西班牙文和韓文。
+
+### 小而安靜
+
+- 從 Mac App Store 下載只要 11.4 MB。
+- 文件開著、沒有變動時，CPU 用量 0%。
+
+以 1.2.1 版實測，2026 年 11 月。
 ---
 
 ## MarsDawn 做不到的事
@@ -7722,6 +7736,13 @@ MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、M
 - 快速查看：在访达选取 Markdown 文件按空格键就能预览，图表也会显示。[快速查看怎么用](/zh-hans/quicklook/)
 - Siri 和快捷指令：用模板添加文稿、在笔记收件箱加上一行，或重新打开最近的文稿。
 - 支持英文、繁体中文、简体中文、日文、德文、法文、西班牙文和韩文。
+
+### 小而安静
+
+- 从 Mac App Store 下载只要 11.4 MB。
+- 文稿开着、没有变动时，CPU 占用 0%。
+
+以 1.2.1 版实测，2026 年 11 月。
 ---
 
 ## MarsDawn 做不到的事
@@ -11303,6 +11324,13 @@ MarsDawn は、Markdown を読んで確かめるための Mac ネイティブア
 - クイックルック：Finder で Markdown ファイルを選んでスペースキーを押すとプレビューでき、図も表示されます。[クイックルックの使い方](/ja/quicklook/)
 - Siri とショートカット：テンプレートから新しい文書を作成する、メモの受信トレイに1行追加する、最近使った文書を再度開く、といった操作ができます。
 - 英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語に対応。
+
+### 小さくて、静か
+
+- Mac App Store からのダウンロードは 11.4 MB。
+- 書類を開いたまま変更がないとき、CPU 使用率は 0%。
+
+バージョン 1.2.1 で計測（2026年11月）。
 ---
 
 ## MarsDawn ができないこと
@@ -14883,6 +14911,13 @@ Auf diesem Bildschirmfoto:
 - Übersicht: Drücke im Finder die Leertaste auf einer Markdown-Datei, um eine Vorschau zu sehen, Diagramme inklusive. [So funktioniert die Übersicht](/de/quicklook/)
 - Siri und Kurzbefehle: ein neues Dokument aus einer Vorlage beginnen, eine Zeile zum Notizeingang hinzufügen oder ein zuletzt benutztes Dokument wieder öffnen.
 - Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch.
+
+### Klein und leise
+
+- 11,4 MB Download aus dem Mac App Store.
+- 0 % CPU, wenn ein Dokument geöffnet ist und sich nichts ändert.
+
+Gemessen mit Version 1.2.1, November 2026.
 ---
 
 ## Was MarsDawn nicht kann
@@ -18404,6 +18439,13 @@ Sur cette capture d’écran :
 - Coup d’œil : appuyez sur Espace sur un fichier Markdown dans le Finder pour un aperçu, diagrammes compris. [Comment fonctionne Coup d’œil](/fr/quicklook/)
 - Siri et Raccourcis : commencer un nouveau document à partir d’un modèle, ajouter une ligne à la boîte de réception de vos notes ou rouvrir un document récent.
 - Anglais, chinois traditionnel, chinois simplifié, japonais, allemand, français, espagnol et coréen.
+
+### Petite et discrète
+
+- 11,4 Mo à télécharger sur le Mac App Store.
+- 0 % de CPU quand un document est ouvert et que rien ne change.
+
+Mesuré avec la version 1.2.1, novembre 2026.
 ---
 
 ## Ce que MarsDawn ne fait pas
@@ -21925,6 +21967,13 @@ En esta captura de pantalla:
 - Vista Rápida: presiona la barra espaciadora sobre un archivo Markdown en el Finder para ver una vista previa, con diagramas incluidos. [Cómo funciona Vista Rápida](/es/quicklook/)
 - Siri y Atajos: crea un documento nuevo a partir de una plantilla, agrega una línea a la bandeja de entrada de tus notas o vuelve a abrir un documento reciente.
 - Inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano.
+
+### Pequeña y silenciosa
+
+- Una descarga de 11,4 MB desde el Mac App Store.
+- 0 % de CPU con un documento abierto y sin cambios.
+
+Medido con la versión 1.2.1, noviembre de 2026.
 ---
 
 ## Lo que MarsDawn no hace
@@ -25446,6 +25495,13 @@ MarsDawn은 Markdown을 읽고 검토하는 Mac 네이티브 앱으로, 분할 �
 - 훑어보기: Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램까지 포함된 미리보기가 나타납니다. [훑어보기 사용법](/ko/quicklook/)
 - Siri와 단축어: 템플릿으로 새로운 문서를 시작하거나, 메모 수신함에 한 줄을 추가하거나, 최근 문서를 다시 열 수 있습니다.
 - 영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어.
+
+### 작고 조용하게
+
+- Mac App Store에서 내려받는 크기는 11.4MB입니다.
+- 문서를 열어 둔 채 변경이 없으면 CPU 사용률은 0%입니다.
+
+버전 1.2.1에서 측정(2026년 11월).
 ---
 
 ## MarsDawn이 하지 않는 일

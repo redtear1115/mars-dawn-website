@@ -921,6 +921,12 @@ marsdawn --version</code></pre>
   <li>Siri 和快捷指令：用模板添加文稿、在笔记收件箱加上一行，或重新打开最近的文稿。</li>
   <li>支持{k.APP_UI_LANGUAGES}。</li>
 </ul>
+<h3>小而安静</h3>
+<ul>
+  <li>从 Mac App Store 下载只要 11.4 MB。</li>
+  <li>文稿开着、没有变动时，CPU 占用 0%。</li>
+</ul>
+<p>以 1.2.1 版实测，2026 年 11 月。</p>
 """,
     }
     pages['pay-once'] = {

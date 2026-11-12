@@ -767,6 +767,12 @@ def build(k) -> dict:
   <li>Siri et Raccourcis : commencer un nouveau document à partir d’un modèle, ajouter une ligne à la boîte de réception de vos notes ou rouvrir un document récent.</li>
   <li>Anglais, chinois traditionnel, chinois simplifié, japonais, allemand, français, espagnol et coréen.</li>
 </ul>
+<h3>Petite et discrète</h3>
+<ul>
+  <li>11,4 Mo à télécharger sur le Mac App Store.</li>
+  <li>0 % de CPU quand un document est ouvert et que rien ne change.</li>
+</ul>
+<p>Mesuré avec la version 1.2.1, novembre 2026.</p>
 """,
     }
     pages['limits'] = {
