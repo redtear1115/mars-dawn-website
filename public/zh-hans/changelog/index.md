@@ -1,10 +1,18 @@
 # 更新记录
 
-Mac App Store 上的 MarsDawn App，以及免费的 marsdawn 命令行工具，每个版本改了什么。App 的日期是该版本在 Mac App Store 上架的日子。
+MarsDawn 的 Mac、iPhone 和 iPad App，以及免费的 marsdawn 命令行工具，每个版本改了什么。App 的日期是该版本在 App Store 上架的日子。
 
 接下来要做的事列在[路线图](/zh-hans/roadmap/)。
 
-## MarsDawn App
+## Mac 版 MarsDawn
+
+### MarsDawn 1.2.2
+
+2026 年 11 月 23 日
+
+- “文件 ▸ 打印…”和“文件 ▸ 导出为 PDF…”现在都会打开“打印与导出”面板，先预览 PDF。选择“文稿”、“手册”或“讲义”后，再打印或存储为 PDF。打印也不再只能用“文稿”布局。
+- 修复：自动存储后马上输入的文字可能被替换，切回“并排”后马上滚动可能被拉回去。
+- 选择“手册”时，“打印与导出”面板会列出封面要显示的内容，也可以加上“火星日出”封面图。“打印与导出”也可以添加到工具栏。
 
 ### MarsDawn 1.2.1
 
@@ -64,6 +72,21 @@ Mac App Store 上的 MarsDawn App，以及免费的 marsdawn 命令行工具，�
 2026 年 10 月 5 日
 
 首次发布。
+
+## iPhone 和 iPad 版 MarsDawn
+
+### MarsDawn 1.0.2
+
+2026 年 11 月 23 日
+
+- 可以打开 PDF，也能在其中查找文字。有密码的 PDF 会先请你输入密码。
+- JSON 和 YAML 文件可以作为只读文稿打开，并带树状预览。
+- 可以从“文件”、“邮件”和其他 App 打开 Markdown、文本、PDF、JSON 和 YAML 文件。
+- 可以在预览中查找文字（键盘按 ⌘F）。“外观与主题”新增“保留单个换行”。
+- 可以从工具栏共享文件，或打印出来。
+- 在 iPad 和展开的 iPhone Duo 上，大纲改为边栏，会标出你读到的位置。PDF 的书签也显示在这里。
+
+1.0.2 以前的版本不列。
 
 ## marsdawn 命令行工具
 

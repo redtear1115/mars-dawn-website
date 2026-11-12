@@ -2,71 +2,87 @@
 change the pin and run the ingester again."""
 
 DATA = {'en': {'description': 'What changed in each version of the MarsDawn app and the free marsdawn CLI.',
-        'intro': 'What changed in each version of the MarsDawn app on the Mac App Store and the free marsdawn '
-                 'command-line tool. App dates are the day the version appeared on the Mac App Store.',
-        'app_h': 'MarsDawn app',
+        'intro': 'What changed in each version of the MarsDawn app for Mac, iPhone and iPad, and of the free marsdawn '
+                 'command-line tool. App dates are the day the version appeared on the App Store.',
+        'app_h': 'MarsDawn for Mac',
         'cli_h': 'marsdawn command-line tool',
         'cli_line': 'Versions before 0.5.1 are not listed.',
         'first_release': 'First release.',
-        'earlier': 'Earlier versions have notes in English only: <a href="/changelog/">see the English changelog</a>.'},
+        'earlier': 'Earlier versions have notes in English only: <a href="/changelog/">see the English changelog</a>.',
+        'ios_h': 'MarsDawn for iPhone and iPad',
+        'ios_line': 'Versions before 1.0.2 are not listed.'},
  'zh-hant': {'description': 'MarsDawn App 與免費的 marsdawn 命令列工具，每個版本改了什麼。',
-             'intro': 'Mac App Store 上的 MarsDawn App，以及免費的 marsdawn 命令列工具，每個版本改了什麼。App 的日期是該版本在 Mac App Store 上架的日子。',
-             'app_h': 'MarsDawn App',
+             'intro': 'MarsDawn 的 Mac、iPhone 和 iPad App，以及免費的 marsdawn 命令列工具，每個版本改了什麼。App 的日期是該版本在 App Store 上架的日子。',
+             'app_h': 'Mac 版 MarsDawn',
              'cli_h': 'marsdawn 命令列工具',
              'cli_line': '0.5.1 以前的版本不列。',
              'first_release': '首次發表。',
-             'earlier': '較早的版本只有英文說明：<a href="/changelog/">看英文版更新紀錄</a>。'},
+             'earlier': '較早的版本只有英文說明：<a href="/changelog/">看英文版更新紀錄</a>。',
+             'ios_h': 'iPhone 和 iPad 版 MarsDawn',
+             'ios_line': '1.0.2 以前的版本不列。'},
  'zh-hans': {'description': 'MarsDawn App 与免费的 marsdawn 命令行工具，每个版本改了什么。',
-             'intro': 'Mac App Store 上的 MarsDawn App，以及免费的 marsdawn 命令行工具，每个版本改了什么。App 的日期是该版本在 Mac App Store 上架的日子。',
-             'app_h': 'MarsDawn App',
+             'intro': 'MarsDawn 的 Mac、iPhone 和 iPad App，以及免费的 marsdawn 命令行工具，每个版本改了什么。App 的日期是该版本在 App Store 上架的日子。',
+             'app_h': 'Mac 版 MarsDawn',
              'cli_h': 'marsdawn 命令行工具',
              'cli_line': '0.5.1 以前的版本不列。',
-             'first_release': '首次发布。'},
+             'first_release': '首次发布。',
+             'ios_h': 'iPhone 和 iPad 版 MarsDawn',
+             'ios_line': '1.0.2 以前的版本不列。'},
  'ja': {'description': 'MarsDawn アプリと無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。',
-        'intro': 'Mac App Store 版 MarsDawn アプリと、無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。アプリの日付は、そのバージョンが Mac App Store '
+        'intro': 'Mac、iPhone、iPad 版 MarsDawn アプリと、無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。アプリの日付は、そのバージョンが App Store '
                  'に公開された日です。',
-        'app_h': 'MarsDawn アプリ',
+        'app_h': 'Mac 版 MarsDawn',
         'cli_h': 'marsdawn コマンドラインツール',
         'cli_line': '0.5.1 より前のバージョンは載せていません。',
         'first_release': '最初のリリースです。',
-        'earlier': 'それより前のバージョンは英語の説明のみです：<a href="/changelog/">英語版の更新履歴を見る</a>。'},
+        'earlier': 'それより前のバージョンは英語の説明のみです：<a href="/changelog/">英語版の更新履歴を見る</a>。',
+        'ios_h': 'iPhone・iPad 版 MarsDawn',
+        'ios_line': '1.0.2 より前のバージョンは載せていません。'},
  'de': {'description': 'Was sich in jeder Version der MarsDawn-App und des kostenlosen Befehlszeilenprogramms marsdawn '
                        'geändert hat.',
-        'intro': 'Was sich in jeder Version der MarsDawn-App aus dem Mac App Store und des kostenlosen '
+        'intro': 'Was sich in jeder Version der MarsDawn-App für Mac, iPhone und iPad und des kostenlosen '
                  'Befehlszeilenprogramms marsdawn geändert hat. Bei der App ist das Datum der Tag, an dem die Version '
-                 'im Mac App Store erschien.',
-        'app_h': 'MarsDawn-App',
+                 'im App Store erschien.',
+        'app_h': 'MarsDawn für den Mac',
         'cli_h': 'Befehlszeilenprogramm marsdawn',
         'cli_line': 'Versionen vor 0.5.1 sind nicht aufgeführt.',
         'first_release': 'Erste Version.',
         'earlier': 'Frühere Versionen sind nur auf Englisch beschrieben: <a href="/changelog/">zum englischen '
-                   'Änderungsprotokoll</a>.'},
+                   'Änderungsprotokoll</a>.',
+        'ios_h': 'MarsDawn für iPhone und iPad',
+        'ios_line': 'Versionen vor 1.0.2 sind nicht aufgeführt.'},
  'fr': {'description': 'Ce qui a changé dans chaque version de l’app MarsDawn et de l’outil en ligne de commande '
                        'gratuit marsdawn.',
-        'intro': 'Ce qui a changé dans chaque version de l’app MarsDawn du Mac App Store et de l’outil en ligne de '
-                 'commande gratuit marsdawn. Pour l’app, la date est le jour où la version est parue sur le Mac App '
-                 'Store.',
-        'app_h': 'App MarsDawn',
+        'intro': 'Ce qui a changé dans chaque version de l’app MarsDawn pour Mac, iPhone et iPad, et de l’outil en '
+                 'ligne de commande gratuit marsdawn. Pour l’app, la date est le jour où la version est parue sur '
+                 'l’App Store.',
+        'app_h': 'MarsDawn pour Mac',
         'cli_h': 'Outil en ligne de commande marsdawn',
         'cli_line': 'Les versions antérieures à 0.5.1 ne sont pas listées.',
         'first_release': 'Première version.',
         'earlier': 'Les versions précédentes ne sont décrites qu’en anglais\xa0: <a href="/changelog/">voir '
-                   'l’historique en anglais</a>.'},
+                   'l’historique en anglais</a>.',
+        'ios_h': 'MarsDawn pour iPhone et iPad',
+        'ios_line': 'Les versions antérieures à 1.0.2 ne sont pas listées.'},
  'es': {'description': 'Qué cambió en cada versión de la app MarsDawn y de la herramienta de línea de comandos '
                        'gratuita marsdawn.',
-        'intro': 'Qué cambió en cada versión de la app MarsDawn del Mac App Store y de la herramienta de línea de '
-                 'comandos gratuita marsdawn. En la app, la fecha es el día en que la versión apareció en el Mac App '
+        'intro': 'Qué cambió en cada versión de la app MarsDawn para Mac, iPhone y iPad, y de la herramienta de línea '
+                 'de comandos gratuita marsdawn. En la app, la fecha es el día en que la versión apareció en el App '
                  'Store.',
-        'app_h': 'App MarsDawn',
+        'app_h': 'MarsDawn para Mac',
         'cli_h': 'Herramienta de línea de comandos marsdawn',
         'cli_line': 'No se incluyen las versiones anteriores a la 0.5.1.',
         'first_release': 'Primera versión.',
         'earlier': 'Las versiones anteriores solo tienen notas en inglés: <a href="/changelog/">ver el historial en '
-                   'inglés</a>.'},
+                   'inglés</a>.',
+        'ios_h': 'MarsDawn para iPhone y iPad',
+        'ios_line': 'No se incluyen las versiones anteriores a la 1.0.2.'},
  'ko': {'description': 'MarsDawn 앱과 무료 marsdawn 명령줄 도구의 버전별 변경 사항입니다.',
-        'intro': 'Mac App Store의 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버전마다 바뀐 점입니다. 앱의 날짜는 해당 버전이 Mac App Store에 출시된 날입니다.',
-        'app_h': 'MarsDawn 앱',
+        'intro': 'Mac, iPhone, iPad용 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버전마다 바뀐 점입니다. 앱의 날짜는 해당 버전이 App Store에 출시된 날입니다.',
+        'app_h': 'Mac용 MarsDawn',
         'cli_h': 'marsdawn 명령줄 도구',
         'cli_line': '0.5.1 이전 버전은 싣지 않았습니다.',
         'first_release': '첫 출시입니다.',
-        'earlier': '이전 버전의 설명은 영어로만 제공됩니다. <a href="/changelog/">영어 변경 내역 보기</a>'}}
+        'earlier': '이전 버전의 설명은 영어로만 제공됩니다. <a href="/changelog/">영어 변경 내역 보기</a>',
+        'ios_h': 'iPhone 및 iPad용 MarsDawn',
+        'ios_line': '1.0.2 이전 버전은 싣지 않았습니다.'}}

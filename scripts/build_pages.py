@@ -6338,12 +6338,15 @@ def apply_cli254(merged: dict) -> dict:
 
 
 # --- /changelog/'s app section (website #273) ---------------------------------------------------------
-# The app's versions come first, then the CLI's. Each app version's What's New is the text it has on the
-# Mac App Store, vendored by scripts/tmde130/ingest.py from the app repo's approved release notes into
-# vendor/app-release-notes/whats-new.json; the page copy around it is scripts/tmde130/data.py's. A locale
-# gets a version only if the App Store has that version in its language, and a locale that misses one gets
-# the "earlier versions are in English only" line. The CLI entries keep their text and their anchors
-# (#marsdawn-0-6-3 and so on), now as h3 under the CLI heading. scripts/check_app_changelog.py checks it.
+# The Mac app's versions come first, then the iPhone and iPad app's (#368), then the CLI's. Each app
+# version's What's New is the text it has on the App Store, vendored by scripts/tmde130/ingest.py from the
+# app repo's approved release notes into vendor/app-release-notes/whats-new.json (the Mac's under "versions",
+# the iOS's under "ios"); the page copy around it is scripts/tmde130/data.py's. A locale gets a Mac version
+# only if the App Store has that version in its language, and a locale that misses one gets the "earlier
+# versions are in English only" line (every locale has every iOS version, and the build stops if not). The CLI
+# entries keep their text and their anchors (#marsdawn-0-6-3 and so on), now as h3 under the CLI heading.
+# scripts/check_app_changelog.py checks it. APP_NOTES["versions"] stays the Mac's alone: APP_VERSION and
+# scripts/check_offers.py read it as the Mac app's version.
 APP_NOTES = json.loads((ROOT / "vendor" / "app-release-notes" / "whats-new.json").read_text(encoding="utf-8"))
 CHANGELOG_MONTHS = {
     "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
@@ -6376,26 +6379,46 @@ def changelog_date(locale: str, iso: str) -> str:
     return f"{d} {month} {y}"
 
 
-def app_versions_html(locale: str) -> str:
+def _version_blocks(locale: str, entries: list, prefix: str) -> tuple:
+    """(one h3 block per version the locale has, whether it misses one) for a platform's versions, newest
+    first. A block is the heading (anchor <prefix>-<version>), the date and the bullets."""
     copy = changelog_data.DATA[locale]
     to_store = {site: store for store, site in APP_NOTES["locale_map"].items()}
     parts, omitted = [], False
-    for entry in APP_NOTES["versions"]:
+    for entry in entries:
         notes = entry["whatsNew"].get(to_store[locale])
         if notes is None:
             omitted = True
             continue
         v = entry["version"]
-        head = (f'<h3 id="app-{v.replace(".", "-")}">MarsDawn {v}</h3>\n'
+        head = (f'<h3 id="{prefix}-{v.replace(".", "-")}">MarsDawn {v}</h3>\n'
                 f'<p>{changelog_date(locale, entry["released"])}</p>\n')
         if notes:
             bullets = "\n".join(f"  <li>{html_escape(line[2:], quote=False)}</li>" for line in notes.split("\n"))
             parts.append(head + f"<ul>\n{bullets}\n</ul>")
         else:
             parts.append(head + f'<p>{copy["first_release"]}</p>')
+    return parts, omitted
+
+
+def app_versions_html(locale: str) -> str:
+    """The Mac section: its heading (with a fixed id, see apply_app_changelog), every Mac version, and the
+    "earlier versions are in English only" line if the locale misses one."""
+    copy = changelog_data.DATA[locale]
+    parts, omitted = _version_blocks(locale, APP_NOTES["versions"], "app")
     if omitted:
         parts.append(f'<p>{copy["earlier"]}</p>')
-    return f'<h2>{copy["app_h"]}</h2>\n\n' + "\n\n".join(parts)
+    return f'<h2 id="marsdawn-app">{copy["app_h"]}</h2>\n\n' + "\n\n".join(parts)
+
+
+def ios_versions_html(locale: str) -> str:
+    """The iPhone and iPad section: its heading, every iOS version (anchor ios-<version>, because iOS 1.0.2
+    and Mac 1.0.2 share a name) and the line that says which versions are not listed, as the section's last
+    paragraph. A locale without one of these versions stops the build rather than losing it quietly."""
+    copy = changelog_data.DATA[locale]
+    parts, omitted = _version_blocks(locale, APP_NOTES["ios"]["versions"], "ios")
+    assert parts and not omitted, f"{locale}/changelog: an iOS version has no What's New in this language"
+    return f'<h2 id="marsdawn-ios">{copy["ios_h"]}</h2>\n\n' + "\n\n".join(parts + [f'<p>{copy["ios_line"]}</p>'])
 
 
 def apply_app_changelog(merged: dict) -> dict:
@@ -6414,9 +6437,15 @@ def apply_app_changelog(merged: dict) -> dict:
         assert versions and len(versions) == len(re.findall(r"<h2", cli)), f"{locale}/changelog: a heading is not a CLI version"
         cli = re.sub(r"<h2>(marsdawn ([0-9.]+))</h2>",
                      lambda m: f'<h3 id="marsdawn-{m.group(2).replace(".", "-")}">{m.group(1)}</h3>', cli)
+        # The three h2 (Mac, iOS, CLI) are written with their ids in every locale. add_h2_ids names an id from
+        # the English heading and touches only a bare <h2>, which this page no longer has (asserted below), so
+        # a heading can be renamed without moving its anchor: #marsdawn-app and #marsdawn-command-line-tool
+        # are the old ones, #marsdawn-ios is new.
         body = (head + sep + f'\n\n<p>{rich_pages.md_inline(roadmap272.CHANGELOG_BACKLINK[locale])}</p>\n\n'   # #272 (e)
-                + app_versions_html(locale) + "\n\n"
-                + f'<h2>{copy["cli_h"]}</h2>\n<p>{copy["cli_line"]}</p>\n\n' + cli.lstrip("\n"))
+                + app_versions_html(locale) + "\n\n" + ios_versions_html(locale) + "\n\n"
+                + f'<h2 id="marsdawn-command-line-tool">{copy["cli_h"]}</h2>\n<p>{copy["cli_line"]}</p>\n\n'
+                + cli.lstrip("\n"))
+        assert "<h2>" not in body, f"{locale}/changelog: a bare <h2> is left; add_h2_ids would renumber the anchors"
         out[(locale, "changelog")] = {**page, "description": copy["description"], "body": body}
     return out
 
