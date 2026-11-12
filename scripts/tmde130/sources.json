@@ -40,7 +40,7 @@
  },
  "app": {
   "repo": "redtear1115/mars-dawn",
-  "_pins": "Each pin is one commit of the app repo and the sha256 of every release-notes file read at it. 1.2.2 and ios-1.0.2 are read at c884e68a83c2, the head of mars-dawn#673, which was merged on 2026-11-11 (the commit is on the app repo's main, and main's two files still have these sha256s): when either file changes in the app repo, set the new commit and sha256s here and run the ingester again.",
+  "_pins": "Each pin is one commit of the app repo and the sha256 of every release-notes file read at it. 1.2.2 and ios-1.0.2 are read at 7445942a89651b375a2b132c3eff4b93ad3338ca, tag 1.2.2 on the app repo's main (mars-dawn#701 changed item 4 of iOS 1.0.2 in en, de, fr, es; mars-dawn#703 added item 4 to Mac 1.2.2 in all ten ASC locales); the earlier pin was c884e68a83c2 (mars-dawn#673): when either file changes in the app repo, set the new commit and sha256s here and run the ingester again.",
   "pins": [
    {
     "commit": "1a048a6255c97fa5600807ee276fa0e7984d0ab3",
@@ -53,10 +53,10 @@
     }
    },
    {
-    "commit": "c884e68a83c2f348c52fcd27f0f7fa626c6dc099",
+    "commit": "7445942a89651b375a2b132c3eff4b93ad3338ca",
     "files": {
-     "docs/release-notes/1.2.2.md": "7038a96fdf7523d55062bc7e5a6f867f9ec9713b57a0d400ed8a213dd6cc03c0",
-     "docs/release-notes/ios-1.0.2.md": "491d5e198212e422fdef7fa10c0c48b612a031706d859b80085a66185ed75191"
+     "docs/release-notes/1.2.2.md": "95d7b3ca41c9ebd33fb8ea2f7024b10d32bc8fbbc6aa732b38846d73968c07af",
+     "docs/release-notes/ios-1.0.2.md": "f461e4058542c42f9ddd87c9bf899e1fed526e3ed14e80a7ed5ff1bdd34692ee"
     }
    }
   ]
