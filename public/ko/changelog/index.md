@@ -1,10 +1,10 @@
 # 변경 내역
 
-Mac App Store의 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버전마다 바뀐 점입니다. 앱의 날짜는 해당 버전이 Mac App Store에 출시된 날입니다.
+Mac, iPhone, iPad용 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버전마다 바뀐 점입니다. 앱의 날짜는 해당 버전이 App Store에 출시된 날입니다.
 
 앞으로 나올 기능은 [로드맵](/ko/roadmap/)에 있습니다.
 
-## MarsDawn 앱
+## Mac용 MarsDawn
 
 ### MarsDawn 1.2.1
 

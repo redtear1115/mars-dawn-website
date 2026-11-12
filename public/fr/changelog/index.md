@@ -1,10 +1,10 @@
 # Historique des versions
 
-Ce qui a changé dans chaque version de l’app MarsDawn du Mac App Store et de l’outil en ligne de commande gratuit marsdawn. Pour l’app, la date est le jour où la version est parue sur le Mac App Store.
+Ce qui a changé dans chaque version de l’app MarsDawn pour Mac, iPhone et iPad, et de l’outil en ligne de commande gratuit marsdawn. Pour l’app, la date est le jour où la version est parue sur l’App Store.
 
 Ce qui arrive ensuite figure dans la [feuille de route](/fr/roadmap/).
 
-## App MarsDawn
+## MarsDawn pour Mac
 
 ### MarsDawn 1.2.1
 

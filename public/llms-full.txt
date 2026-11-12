@@ -2716,11 +2716,11 @@ Source: https://marsdawn.southern-light.dev/changelog/
 
 # Changelog
 
-What changed in each version of the MarsDawn app on the Mac App Store and the free marsdawn command-line tool. App dates are the day the version appeared on the Mac App Store.
+What changed in each version of the MarsDawn app for Mac, iPhone and iPad, and of the free marsdawn command-line tool. App dates are the day the version appeared on the App Store.
 
 What's coming next is on the [roadmap](/roadmap/).
 
-## MarsDawn app
+## MarsDawn for Mac
 
 ### MarsDawn 1.2.1
 
@@ -6275,11 +6275,11 @@ Source: https://marsdawn.southern-light.dev/zh-hant/changelog/
 
 # 更新紀錄
 
-Mac App Store 上的 MarsDawn App，以及免費的 marsdawn 命令列工具，每個版本改了什麼。App 的日期是該版本在 Mac App Store 上架的日子。
+MarsDawn 的 Mac、iPhone 和 iPad App，以及免費的 marsdawn 命令列工具，每個版本改了什麼。App 的日期是該版本在 App Store 上架的日子。
 
 接下來要做的事列在[路線圖](/zh-hant/roadmap/)。
 
-## MarsDawn App
+## Mac 版 MarsDawn
 
 ### MarsDawn 1.2.1
 
@@ -9861,11 +9861,11 @@ Source: https://marsdawn.southern-light.dev/zh-hans/changelog/
 
 # 更新记录
 
-Mac App Store 上的 MarsDawn App，以及免费的 marsdawn 命令行工具，每个版本改了什么。App 的日期是该版本在 Mac App Store 上架的日子。
+MarsDawn 的 Mac、iPhone 和 iPad App，以及免费的 marsdawn 命令行工具，每个版本改了什么。App 的日期是该版本在 App Store 上架的日子。
 
 接下来要做的事列在[路线图](/zh-hans/roadmap/)。
 
-## MarsDawn App
+## Mac 版 MarsDawn
 
 ### MarsDawn 1.2.1
 
@@ -13447,11 +13447,11 @@ Source: https://marsdawn.southern-light.dev/ja/changelog/
 
 # 更新履歴
 
-Mac App Store 版 MarsDawn アプリと、無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。アプリの日付は、そのバージョンが Mac App Store に公開された日です。
+Mac、iPhone、iPad 版 MarsDawn アプリと、無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。アプリの日付は、そのバージョンが App Store に公開された日です。
 
 今後の予定は[ロードマップ](/ja/roadmap/)にあります。
 
-## MarsDawn アプリ
+## Mac 版 MarsDawn
 
 ### MarsDawn 1.2.1
 
@@ -17028,11 +17028,11 @@ Source: https://marsdawn.southern-light.dev/de/changelog/
 
 # Änderungsprotokoll
 
-Was sich in jeder Version der MarsDawn-App aus dem Mac App Store und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat. Bei der App ist das Datum der Tag, an dem die Version im Mac App Store erschien.
+Was sich in jeder Version der MarsDawn-App für Mac, iPhone und iPad und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat. Bei der App ist das Datum der Tag, an dem die Version im App Store erschien.
 
 Was als Nächstes kommt, steht in der [Roadmap](/de/roadmap/).
 
-## MarsDawn-App
+## MarsDawn für den Mac
 
 ### MarsDawn 1.2.1
 
@@ -20554,11 +20554,11 @@ Source: https://marsdawn.southern-light.dev/fr/changelog/
 
 # Historique des versions
 
-Ce qui a changé dans chaque version de l’app MarsDawn du Mac App Store et de l’outil en ligne de commande gratuit marsdawn. Pour l’app, la date est le jour où la version est parue sur le Mac App Store.
+Ce qui a changé dans chaque version de l’app MarsDawn pour Mac, iPhone et iPad, et de l’outil en ligne de commande gratuit marsdawn. Pour l’app, la date est le jour où la version est parue sur l’App Store.
 
 Ce qui arrive ensuite figure dans la [feuille de route](/fr/roadmap/).
 
-## App MarsDawn
+## MarsDawn pour Mac
 
 ### MarsDawn 1.2.1
 
@@ -24080,11 +24080,11 @@ Source: https://marsdawn.southern-light.dev/es/changelog/
 
 # Historial de cambios
 
-Qué cambió en cada versión de la app MarsDawn del Mac App Store y de la herramienta de línea de comandos gratuita marsdawn. En la app, la fecha es el día en que la versión apareció en el Mac App Store.
+Qué cambió en cada versión de la app MarsDawn para Mac, iPhone y iPad, y de la herramienta de línea de comandos gratuita marsdawn. En la app, la fecha es el día en que la versión apareció en el App Store.
 
 Lo que viene después está en la [hoja de ruta](/es/roadmap/).
 
-## App MarsDawn
+## MarsDawn para Mac
 
 ### MarsDawn 1.2.1
 
@@ -27606,11 +27606,11 @@ Source: https://marsdawn.southern-light.dev/ko/changelog/
 
 # 변경 내역
 
-Mac App Store의 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버전마다 바뀐 점입니다. 앱의 날짜는 해당 버전이 Mac App Store에 출시된 날입니다.
+Mac, iPhone, iPad용 MarsDawn 앱과 무료 marsdawn 명령줄 도구에서 버전마다 바뀐 점입니다. 앱의 날짜는 해당 버전이 App Store에 출시된 날입니다.
 
 앞으로 나올 기능은 [로드맵](/ko/roadmap/)에 있습니다.
 
-## MarsDawn 앱
+## Mac용 MarsDawn
 
 ### MarsDawn 1.2.1
 

@@ -1,10 +1,10 @@
 # Changelog
 
-What changed in each version of the MarsDawn app on the Mac App Store and the free marsdawn command-line tool. App dates are the day the version appeared on the Mac App Store.
+What changed in each version of the MarsDawn app for Mac, iPhone and iPad, and of the free marsdawn command-line tool. App dates are the day the version appeared on the App Store.
 
 What's coming next is on the [roadmap](/roadmap/).
 
-## MarsDawn app
+## MarsDawn for Mac
 
 ### MarsDawn 1.2.1
 

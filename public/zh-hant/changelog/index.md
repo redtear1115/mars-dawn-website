@@ -1,10 +1,10 @@
 # 更新紀錄
 
-Mac App Store 上的 MarsDawn App，以及免費的 marsdawn 命令列工具，每個版本改了什麼。App 的日期是該版本在 Mac App Store 上架的日子。
+MarsDawn 的 Mac、iPhone 和 iPad App，以及免費的 marsdawn 命令列工具，每個版本改了什麼。App 的日期是該版本在 App Store 上架的日子。
 
 接下來要做的事列在[路線圖](/zh-hant/roadmap/)。
 
-## MarsDawn App
+## Mac 版 MarsDawn
 
 ### MarsDawn 1.2.1
 

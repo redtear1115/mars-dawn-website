@@ -20,26 +20,26 @@
  {
   "locale": "en",
   "field": "intro",
-  "source": "C1",
-  "section": "頁首說明（取代現在的第一段）"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "zh-hant",
   "field": "intro",
-  "source": "C1",
-  "section": "頁首說明（取代現在的第一段）"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "ja",
   "field": "intro",
-  "source": "C1",
-  "section": "頁首說明（取代現在的第一段）"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "en",
   "field": "app_h",
-  "source": "C1",
-  "section": "兩區標題（H2）"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "en",
@@ -50,8 +50,8 @@
  {
   "locale": "zh-hant",
   "field": "app_h",
-  "source": "C1",
-  "section": "兩區標題（H2）"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "zh-hant",
@@ -62,8 +62,8 @@
  {
   "locale": "ja",
   "field": "app_h",
-  "source": "C1",
-  "section": "兩區標題（H2）"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "ja",
@@ -134,14 +134,14 @@
  {
   "locale": "zh-hans",
   "field": "intro",
-  "source": "C2",
-  "section": "zh-Hans"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "zh-hans",
   "field": "app_h",
-  "source": "C2",
-  "section": "zh-Hans"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "zh-hans",
@@ -170,14 +170,14 @@
  {
   "locale": "ko",
   "field": "intro",
-  "source": "C2",
-  "section": "ko"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "ko",
   "field": "app_h",
-  "source": "C2",
-  "section": "ko"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "ko",
@@ -212,14 +212,14 @@
  {
   "locale": "de",
   "field": "intro",
-  "source": "C2",
-  "section": "de"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "de",
   "field": "app_h",
-  "source": "C2",
-  "section": "de"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "de",
@@ -254,14 +254,14 @@
  {
   "locale": "fr",
   "field": "intro",
-  "source": "C2",
-  "section": "fr"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "fr",
   "field": "app_h",
-  "source": "C2",
-  "section": "fr"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "fr",
@@ -296,14 +296,14 @@
  {
   "locale": "es",
   "field": "intro",
-  "source": "C2",
-  "section": "es"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "es",
   "field": "app_h",
-  "source": "C2",
-  "section": "es"
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  },
  {
   "locale": "es",
@@ -328,5 +328,101 @@
   "field": "earlier",
   "source": "C2",
   "section": "es"
+ },
+ {
+  "locale": "en",
+  "field": "ios_h",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "en",
+  "field": "ios_line",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "zh-hant",
+  "field": "ios_h",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "zh-hant",
+  "field": "ios_line",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "zh-hans",
+  "field": "ios_h",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "zh-hans",
+  "field": "ios_line",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "ja",
+  "field": "ios_h",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "ja",
+  "field": "ios_line",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "de",
+  "field": "ios_h",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "de",
+  "field": "ios_line",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "fr",
+  "field": "ios_h",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "fr",
+  "field": "ios_line",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "es",
+  "field": "ios_h",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "es",
+  "field": "ios_line",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "ko",
+  "field": "ios_h",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
+ },
+ {
+  "locale": "ko",
+  "field": "ios_line",
+  "source": "C3",
+  "section": "頁面文字（新寫）"
  }
 ]

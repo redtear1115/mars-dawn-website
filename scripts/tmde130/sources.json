@@ -16,6 +16,14 @@
    "updated_at": "2026-10-19T00:09:55Z",
    "sha256": "f13c0345758db4fc5f18e84da17ed304594dbb14177497d8af44393aca5224b9",
    "chars": 3401
+  },
+  "C3": {
+   "id": 6773393587,
+   "what": "Aria's page copy for Mac 1.2.2 and iOS 1.0.2 (website #368): app_h and intro replace C1/C2's, ios_h and ios_line are new. Only the '## 頁面文字（新寫）' section is read; its two tables are field x locale",
+   "created_at": "2026-11-10T16:48:31Z",
+   "updated_at": "2026-11-10T16:48:31Z",
+   "sha256": "a7402bea358dbff0c803515fd647fe14e91ab96191563d098e3d3a024c7d416f",
+   "chars": 17116
   }
  },
  "approval": {
@@ -24,16 +32,34 @@
   "updated_at": "2026-10-18T14:44:15Z",
   "sha256": "d10fa1f00d1f82eb0b6154be71fd49953e8b7c6c7b480a25e5d26f47646500f8"
  },
+ "approval_c3": {
+  "id": 6796386327,
+  "what": "owner approval of C3, 2026-11-11 (reply 'changelog 文字 ok' on #368): Aria's [I] entry and page copy, iOS in its own section anchored ios-1-0-2, the Mac section renamed 'Mac 版'",
+  "updated_at": "2026-11-11T12:55:03Z",
+  "sha256": "744f63f069e206929d52b0e7ff5d78f8f8530691e3db376b03e1bdfdd77e5b8f"
+ },
  "app": {
   "repo": "redtear1115/mars-dawn",
-  "commit": "1a048a6255c97fa5600807ee276fa0e7984d0ab3",
-  "files": {
-   "docs/release-notes/1.0.2.md": "a1005eb6b9ae7987673b8717c4d67d74410d0a9087fe69eec9db925ff85cf428",
-   "docs/release-notes/1.1.0.md": "8ad1f81575582a09591e5f962f1d1149875c9c9ae4165f82636223e8d3629bce",
-   "docs/release-notes/1.1.1.md": "53031f43c9801997c8b30b48a1b5e08afb45c9e9f348255a51952251cbfa2731",
-   "docs/release-notes/1.2.0.md": "6b23a1720d78241dcab0b4c14ff6ee14691dd7f8bd2b2e199280c64404a5fc50",
-   "docs/release-notes/1.2.1.md": "572213d24996c1c61f23e8d83420014195f19a5e49cee397c73c69fa8b46d681"
-  }
+  "_pins": "Each pin is one commit of the app repo and the sha256 of every release-notes file read at it. 1.2.2 and ios-1.0.2 are read at 7445942a89651b375a2b132c3eff4b93ad3338ca, tag 1.2.2 on the app repo's main (mars-dawn#701 changed item 4 of iOS 1.0.2 in en, de, fr, es; mars-dawn#703 added item 4 to Mac 1.2.2 in all ten ASC locales); the earlier pin was c884e68a83c2 (mars-dawn#673): when either file changes in the app repo, set the new commit and sha256s here and run the ingester again.",
+  "pins": [
+   {
+    "commit": "1a048a6255c97fa5600807ee276fa0e7984d0ab3",
+    "files": {
+     "docs/release-notes/1.0.2.md": "a1005eb6b9ae7987673b8717c4d67d74410d0a9087fe69eec9db925ff85cf428",
+     "docs/release-notes/1.1.0.md": "8ad1f81575582a09591e5f962f1d1149875c9c9ae4165f82636223e8d3629bce",
+     "docs/release-notes/1.1.1.md": "53031f43c9801997c8b30b48a1b5e08afb45c9e9f348255a51952251cbfa2731",
+     "docs/release-notes/1.2.0.md": "6b23a1720d78241dcab0b4c14ff6ee14691dd7f8bd2b2e199280c64404a5fc50",
+     "docs/release-notes/1.2.1.md": "572213d24996c1c61f23e8d83420014195f19a5e49cee397c73c69fa8b46d681"
+    }
+   },
+   {
+    "commit": "7445942a89651b375a2b132c3eff4b93ad3338ca",
+    "files": {
+     "docs/release-notes/1.2.2.md": "95d7b3ca41c9ebd33fb8ea2f7024b10d32bc8fbbc6aa732b38846d73968c07af",
+     "docs/release-notes/ios-1.0.2.md": "f461e4058542c42f9ddd87c9bf899e1fed526e3ed14e80a7ed5ff1bdd34692ee"
+    }
+   }
+  ]
  },
  "asc": {
   "what": "App Store Connect read, GET only, of every Mac version's localizations and What's New (tools/release/asc.py, 2026-11-06, #266)",
@@ -52,6 +78,18 @@
   {"version": "1.1.0", "released": "2026-10-09", "released_at_store": "Fri Oct 09 2026 08:15:17 GMT+0000 (Coordinated Universal Time)"},
   {"version": "1.1.1", "released": "2026-10-15", "released_at_store": "Thu Oct 15 2026 20:36:01 GMT+0000 (Coordinated Universal Time)"},
   {"version": "1.2.0", "released": "2026-10-27", "released_at_store": "Tue Oct 27 2026 17:08:18 GMT+0000 (Coordinated Universal Time)"},
-  {"version": "1.2.1", "released": "2026-11-03", "released_at_store": "Tue Nov 03 2026 19:21:37 GMT+0000 (Coordinated Universal Time)"}
- ]
+  {"version": "1.2.1", "released": "2026-11-03", "released_at_store": "Tue Nov 03 2026 19:21:37 GMT+0000 (Coordinated Universal Time)"},
+  {"version": "1.2.2", "pending": true, "released": "2026-11-23"}
+ ],
+ "ios": {
+  "_pending": "A pending version is not on the App Store yet: its What's New is the release-notes file at the pin (sha256 held) and its date is 'released' here, the due date of the milestone 'Mac 1.2.2 + iOS 1.0.2 live' until the day it ships (then set the real date). The ASC read and the public page are not consulted. The build, the Markdown twins, llms.txt, llms-full.txt and the home page's softwareVersion leave a pending version out: it appears nowhere in public/ (check_app_changelog.py --no-pending-in-public). To ship: drop 'pending', set 'released' to the App Store's UTC date, add released_at_store, run the ingester, rebuild; an iOS version then takes its date from ios.dates.url, as a Mac one does from dates.url. The steps are in scripts/tmde130/ingest.py's docstring.",
+  "dates": {
+   "url": "https://apps.apple.com/us/app/id6812925073?platform=iphone",
+   "read": null,
+   "rule": "the same as the Mac page's; no iOS version has been read from it yet (1.0.0 and 1.0.1 are on the page but not listed on /changelog/)"
+  },
+  "versions": [
+   {"version": "1.0.2", "pending": true, "released": "2026-11-23"}
+  ]
+ }
 }

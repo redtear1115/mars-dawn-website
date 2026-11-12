@@ -1,10 +1,10 @@
 # Änderungsprotokoll
 
-Was sich in jeder Version der MarsDawn-App aus dem Mac App Store und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat. Bei der App ist das Datum der Tag, an dem die Version im Mac App Store erschien.
+Was sich in jeder Version der MarsDawn-App für Mac, iPhone und iPad und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat. Bei der App ist das Datum der Tag, an dem die Version im App Store erschien.
 
 Was als Nächstes kommt, steht in der [Roadmap](/de/roadmap/).
 
-## MarsDawn-App
+## MarsDawn für den Mac
 
 ### MarsDawn 1.2.1
 

@@ -1,10 +1,10 @@
 # 更新履歴
 
-Mac App Store 版 MarsDawn アプリと、無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。アプリの日付は、そのバージョンが Mac App Store に公開された日です。
+Mac、iPhone、iPad 版 MarsDawn アプリと、無料の marsdawn コマンドラインツールの、バージョンごとの変更点です。アプリの日付は、そのバージョンが App Store に公開された日です。
 
 今後の予定は[ロードマップ](/ja/roadmap/)にあります。
 
-## MarsDawn アプリ
+## Mac 版 MarsDawn
 
 ### MarsDawn 1.2.1
 
