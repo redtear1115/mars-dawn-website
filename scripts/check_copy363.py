@@ -4,7 +4,8 @@
 scripts/copy363/data.py holds Aria's corrections of the old iOS claims: DATA[locale] has 6 pieces.
 scripts/copy363/old.json holds what they replace (written by the caller from the #370 head): the 5 old
 strings, the deleted Callouts bullet of Mac 1.2.2, the removed Plans bullet and heading, the three
-remaining h3 titles of /roadmap/ and the old "Last updated" line. This reads the built public/ files, not build_pages.py, and fails
+remaining h3 titles of /roadmap/, the old "Last updated" line, and old_faq: the distinct old
+FAQ answers frozen from promo130/data.py and seo_copy.py at eb346ee before source cleanup. This reads the built public/ files, not build_pages.py, and fails
 unless every locale's pages and their Markdown twins (index.md) hold each piece in full and in its place:
 
 - /features/: the paragraph right after the h3 whose paragraph lists .log ends with features_other_last;
@@ -12,7 +13,8 @@ unless every locale's pages and their Markdown twins (index.md) hold each piece 
 - /vs/: one paragraph holds vs_lacks_ios; /pay-once/: one list item ends with payonce_ios;
 - /roadmap/: one paragraph equals roadmap_updated, the removed heading and Plans and Callouts bullets
   are absent, and the three remaining headings are there once each and in order;
-- every piece once on its page (in <main>, and in the twin);
+- every piece once on its page (in <main>, and in the twin), and once in its locale
+  in llms-full.txt (Japanese payonce_ios twice: /pay-once/ and /vs/);
 - fr's U+00A0 (limits_ios 2, limits_other 2, vs_lacks_ios 1, payonce_ios 1, roadmap_updated 1) on the pages
   as the character itself, not &nbsp; or a space; none in any other locale;
 - no old string, Plans or Callouts bullet or old "Last updated" line on any file under public/ (.html, .md, .txt,
@@ -20,7 +22,7 @@ unless every locale's pages and their Markdown twins (index.md) hold each piece 
 - no removed roadmap h3 in roadmap files or llms-full.txt (changelog version mentions are allowed);
 - the home page's third FAQ answer still #369's (scripts/copy369/data.py) as visible text, as the FAQPage
   JSON-LD's mainEntity[2] answer, in the twin and in llms-full.txt, once each; and the old iPhone-or-iPad
-  answers (scripts/promo130/data.py) on no file under public/;
+  answers (old.json old_faq) on no file under public/;
 - with --against REF_DIR (or --base-dir DIR, the same): native/ and vs/macmd-viewer/ (index.html and
   index.md, every locale) byte for byte as in REF_DIR, a second public tree such as the #370 head's.
 
@@ -33,7 +35,7 @@ and duplicates each piece, restores the removed section, heading alone and Plans
 puts the Callouts bullet back, swaps two remaining headings, removes a remaining heading,
 brings the old "Last updated" line back, turns fr's U+00A0 into spaces and into &nbsp;, plants each old
 string (whole, NBSP-spaced, &nbsp;-spaced, tag-wrapped) into a copy of /features/ and llms-full.txt, and
-changes and duplicates the home FAQ answer; it fails unless the unplanted copies are clean and every change
+changes, removes and duplicates each llms-full piece, and changes and duplicates the home FAQ answer; it fails unless the unplanted copies are clean and every change
 is caught. Nothing is written to public/.
 """
 import argparse
@@ -47,7 +49,6 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from copy363 import data  # noqa: E402
 from copy369 import data as data369  # noqa: E402
-from promo130 import data as promo_data  # noqa: E402
 
 SITE = HERE.parent / "public"
 OLD_JSON = HERE / "copy363" / "old.json"
@@ -392,6 +393,10 @@ def data_problems(old: dict) -> list:
             v = old.get(part, {}).get(loc)
             if not isinstance(v, list) or len(v) != size or not all(isinstance(s, str) and s.strip() for s in v):
                 out.append(f"old.json {part}/{loc}: want {size} non-empty strings")
+    for loc in ROOTS:
+        v = old.get("old_faq", {}).get(loc)
+        if not isinstance(v, list) or not v or not all(isinstance(a, str) and a.strip() for a in v):
+            out.append(f"old.json old_faq/{loc}: want a non-empty list of non-empty strings")
     for part in ("callouts", "removed_plans", "removed_heading", "last_updated_before"):
         for loc in ROOTS:
             v = old.get(part, {}).get(loc)
@@ -464,15 +469,31 @@ def llms_faq_problems(llms: str) -> list:
             for loc, d in data369.DATA.items() if lines.count(plain(d["faq"])) != 1]
 
 
-def old_faq_answers() -> list:
-    """(locale, answer) for each old iPhone-or-iPad home FAQ answer, HTML stripped."""
+def llms_pieces_problems(llms: str) -> list:
+    if llms is None:
+        return ["llms-full.txt: missing"]
+    sections = {loc: "" for loc in ROOTS}
+    # Each page block names its source URL; group blocks by the locale path prefix.
+    for m in re.finditer(r"^Source: https://marsdawn\.southern-light\.dev/([^\n]*)\n(.*?)(?=^Source: |\Z)",
+                         llms, re.M | re.S):
+        prefix = m[1].split("/")[0]
+        loc = prefix if prefix in ROOTS else "en"
+        sections[loc] += "\n" + m[2]
     out = []
     for loc in ROOTS:
-        for q, a in promo_data.DATA["seo"][loc]["home_faq"]:
-            if "iPhone" in q and "iPad" in q:
-                out.append((loc, a))
-        out.append((loc, promo_data.DATA["faq275"][loc]["q3"]))
-    return [(loc, vis(a)) for loc, a in out]
+        text = ws(plain_inline(sections[loc]))
+        for key in KEYS:
+            # Japanese /vs/ also contains the full /pay-once/ iOS sentence.
+            want = 2 if (loc, key) == ("ja", "payonce_ios") else 1
+            n = text.count(plain(data.DATA[loc][key]))
+            if n != want:
+                out.append(f"{loc} llms-full.txt: {key} is in llms-full.txt {n} times, want {want}")
+    return out
+
+
+def old_faq_answers(old: dict) -> list:
+    """(locale, answer) from the frozen pre-cleanup FAQ answers, HTML stripped."""
+    return [(loc, vis(a)) for loc in ROOTS for a in old["old_faq"][loc]]
 
 
 # ---------------------------------------------------------------- old strings, anywhere under public/
@@ -500,7 +521,7 @@ def needles(old: dict) -> list:
             for n in (hay(plain(s)).strip(" "), hay(re.sub(r"^- ", "", s)).strip(" ")):
                 if n and (loc, name, n) not in out:
                     out.append((loc, name, n))
-    for loc, a in old_faq_answers():
+    for loc, a in old_faq_answers(old):
         n = hay(a).strip(" ")
         if n and (loc, "old FAQ answer", n) not in out:
             out.append((loc, "old FAQ answer", n))
@@ -587,7 +608,7 @@ def check(against: Path = None) -> list:
         return out
     for loc in ROOTS:
         out += problems_for(loc, read_pages(loc), old)
-    out += llms_faq_problems(read_llms())
+    out += llms_faq_problems(read_llms()) + llms_pieces_problems(read_llms())
     out += old_problems(old, site_files())
     if against is not None:
         out += against_problems(read_bytes(SITE), read_bytes(against), str(against))
@@ -626,7 +647,7 @@ def self_test() -> int:
     llms = read_llms() or ""
     base = {"features/index.html": feats, "llms-full.txt": llms}
     baseline = [p for loc in ROOTS for p in problems_for(loc, all_pages[loc], old)]
-    baseline += llms_faq_problems(read_llms()) + old_problems(old, base)
+    baseline += llms_faq_problems(read_llms()) + llms_pieces_problems(read_llms()) + old_problems(old, base)
     if baseline:
         print(f"self-test: baseline not clean: {len(baseline)} problems on the unplanted copies, so no plant is tried:")
         for p in baseline:
@@ -742,6 +763,24 @@ def self_test() -> int:
             else:
                 cant(f"{loc}/roadmap.{ext}: old Last-updated line back")
 
+        # Each #363 piece in llms-full: changed, removed and duplicated in its page block.
+        for key in KEYS:
+            line = next((x for x in llms.split("\n") if plain(d[key]) in ws(plain_inline(x))), None)
+            if line is None:
+                cant(f"llms-full.txt: {loc} {key}")
+                continue
+            spans = piece_spans(line, 0, len(line), d[key])
+            if not spans:
+                cant(f"llms-full.txt: {loc} {key} spans")
+                continue
+            a, b = max(spans, key=lambda span: span[1] - span[0])
+            i = (a + b) // 2
+            changed = line[:i] + ("X" if line[i] != "X" else "Y") + line[i + 1:]
+            for name, replacement in (("changed", changed), ("removed", ""),
+                                      ("duplicated", line + "\n" + line)):
+                expect(f"llms-full.txt: {loc} {key} {name}",
+                       llms_pieces_problems(llms.replace(line, replacement, 1)))
+
         # the home FAQ answer: changed (visible, JSON-LD, twin) and duplicated
         want = data369.DATA[loc]["faq"]
         hh, hm = pages["home.html"], pages["home.md"]
@@ -779,7 +818,7 @@ def self_test() -> int:
     # old strings planted into copies of en /features/ and llms-full.txt
     plants = [(loc, f"old[{i}]", s) for loc in ROOTS for i, s in enumerate(old["old"][loc])]
     plants += [(loc, k, old[k][loc]) for loc in ROOTS for k in ("callouts", "removed_plans", "last_updated_before")]
-    plants += [(loc, "old FAQ answer", a) for loc, a in old_faq_answers()]
+    plants += [(loc, "old FAQ answer", a) for loc, a in old_faq_answers(old)]
     for loc, what, s in plants:
         p = plain(s)
         words = p.replace(NBSP, " ").split(" ")
