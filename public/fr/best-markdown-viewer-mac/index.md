@@ -28,43 +28,43 @@ Une app native, légère et gratuite (CodeMirror dans une web view), avec Coup d
 
 ## MarsDawn
 
-Une app Mac native qui affiche la source et un aperçu en direct côte à côte, avec Mermaid et KaTeX intégrés. Quand un agent enregistre le fichier, la fenêtre ouverte prend la modification comme une seule mise à jour depuis le disque, que vous pouvez annuler. `marsdawn open notes.md:120` ouvre un fichier à une ligne, et un skill ainsi qu’un serveur MCP sont fournis pour les agents. Coup d’œil fonctionne avec ou sans l’essai. « Copier pour l’IA » et « Copier la référence » transmettent du texte à un agent. Rien ne quitte votre Mac sans votre choix.
+Une app Mac native qui affiche la source et un aperçu en direct côte à côte, avec Mermaid et KaTeX intégrés. Quand un agent enregistre le fichier, la fenêtre ouverte prend la modification comme une seule mise à jour depuis le disque, que vous pouvez annuler. `marsdawn open notes.md:120` ouvre un fichier à une ligne, et un skill ainsi qu’un serveur MCP sont fournis pour les agents. Coup d’œil fonctionne avec ou sans l’essai. « Copier pour l’IA » et « Copier la référence » transmettent du texte à un agent. Rien ne quitte votre Mac sans votre choix.
 
-- Pour : ceux qui relisent le Markdown écrit par des agents IA.
-- Défaut : les numéros de page exigent la mise en page Guide ou Polycopié. La mise en page par défaut, Document, n’en a pas.
-- Prix : téléchargement gratuit avec 14 jours d’essai, puis 4,99 USD une seule fois. Sans compte. Uniquement sur le Mac App Store.
+- Pour : ceux qui relisent le Markdown écrit par des agents IA.
+- Défaut : les numéros de page exigent la mise en page Guide ou Polycopié. La mise en page par défaut, Document, n’en a pas.
+- Prix : téléchargement gratuit avec 14 jours d’essai, puis 4,99 USD une seule fois. Sans compte. Uniquement sur le Mac App Store.
 
 ## Obsidian
 
 Une app de notes bâtie autour d’un coffre (vault) de fichiers Markdown liés, avec Mermaid, MathJax, export PDF et rechargement en direct.
 
-- Pour : ceux qui construisent une base de connaissances à partir de leurs notes.
-- Défaut : c’est une app Electron, et elle fonctionne mieux avec des fichiers rangés dans un coffre.
-- Prix : gratuit. Sync et Publish sont payants.
+- Pour : ceux qui construisent une base de connaissances à partir de leurs notes.
+- Défaut : c’est une app Electron, et elle fonctionne mieux avec des fichiers rangés dans un coffre.
+- Prix : gratuit. Sync et Publish sont payants.
 
 ## QLMarkdown
 
-Une extension Coup d’œil : sélectionnez un fichier .md dans le Finder et appuyez sur Espace. Mermaid et MathJax sont à activer.
+Une extension Coup d’œil : sélectionnez un fichier .md dans le Finder et appuyez sur Espace. Mermaid et MathJax sont à activer.
 
-- Pour : ceux qui veulent seulement jeter un œil aux fichiers dans le Finder.
-- Défaut : ce n’est pas une app pour lire ou modifier, et aucun export PDF n’est documenté.
-- Prix : gratuit (GPL-3.0).
+- Pour : ceux qui veulent seulement jeter un œil aux fichiers dans le Finder.
+- Défaut : ce n’est pas une app pour lire ou modifier, et aucun export PDF n’est documenté.
+- Prix : gratuit (GPL-3.0).
 
 ## Typora
 
 Un outil d’écriture où l’aperçu est le document, avec Mermaid, MathJax et un export PDF avec numéros de page en en-tête ou en pied de page.
 
-- Pour : ceux qui préfèrent écrire dans une vue de type WYSIWYG.
-- Défaut : pas de source et d’aperçu côte à côte.
-- Prix : 14,99 USD une seule fois, jusqu’à 3 appareils.
+- Pour : ceux qui préfèrent écrire dans une vue de type WYSIWYG.
+- Défaut : pas de source et d’aperçu côte à côte.
+- Prix : 14,99 USD une seule fois, jusqu’à 3 appareils.
 
 ## Aperçu de VS Code
 
 L’aperçu Markdown intégré, avec Mermaid intégré depuis la 1.121 et KaTeX. `code -g file:line` ouvre un fichier à une ligne.
 
-- Pour : les développeurs qui vivent déjà dans VS Code.
-- Défaut : c’est une app Electron, sans export PDF intégré.
-- Prix : gratuit.
+- Pour : les développeurs qui vivent déjà dans VS Code.
+- Défaut : c’est une app Electron, sans export PDF intégré.
+- Prix : gratuit.
 
 ## Comparatif
 
@@ -87,19 +87,19 @@ L’aperçu Markdown intégré, avec Mermaid intégré depuis la 1.121 et KaTeX.
 
 ## Questions fréquentes
 
-### Quels lecteurs Markdown gratuits pour Mac gèrent Mermaid ?
+### Quels lecteurs Markdown gratuits pour Mac gèrent Mermaid ?
 
 MacDown 3000, Obsidian et VS Code (1.121 et ultérieur) l’intègrent. QLMarkdown le propose en option, MarkEdit via une extension.
 
-### Lesquels exportent un PDF avec numéros de page ?
+### Lesquels exportent un PDF avec numéros de page ?
 
-Typora, Marked 3 et MarsDawn. Dans MarsDawn, choisissez la mise en page Guide ou Polycopié ; la mise en page par défaut, Document, n’a pas de numéros de page.
+Typora, Marked 3 et MarsDawn. Dans MarsDawn, choisissez la mise en page Guide ou Polycopié ; la mise en page par défaut, Document, n’a pas de numéros de page.
 
-### Lesquels ouvrent un fichier à une ligne précise depuis la ligne de commande ?
+### Lesquels ouvrent un fichier à une ligne précise depuis la ligne de commande ?
 
 MarsDawn (`marsdawn open notes.md:120`) et VS Code (`code -g file:line`). Pour les autres, ce n’est pas documenté.
 
-### Lesquels sont des apps Mac natives plutôt qu’Electron ?
+### Lesquels sont des apps Mac natives plutôt qu’Electron ?
 
 Toutes sauf Obsidian et VS Code. MarkEdit est natif, avec sa zone d’édition dans une web view.
 

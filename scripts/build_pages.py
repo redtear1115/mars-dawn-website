@@ -38,6 +38,8 @@ from best228 import data as best_data  # noqa: E402
 from ia247 import data as ia_data  # noqa: E402
 from tmde130 import data as changelog_data  # noqa: E402
 from cli254 import data as cli254_data  # noqa: E402
+from copy369 import data as copy369_data  # noqa: E402
+from copy363 import data as copy363_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
@@ -4172,7 +4174,7 @@ TRAIT_PAGES = {
 <ul>
   <li>The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.</li>
   <li>There is no account. MarsDawn never asks you to create one.</li>
-  <li>With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. On iPhone and iPad, MarsDawn is for reading: it doesn't edit or export PDFs.</li>
+  <li>With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. On iPhone and iPad, MarsDawn is for reading: it doesn't edit files.</li>
 </ul>
 <h2>What works when</h2>
 <!--compare:pay-once-states-->
@@ -4206,7 +4208,7 @@ TRAIT_PAGES = {
 <ul>
   <li>試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。</li>
   <li>不需要帳號，MarsDawn 從不要求你建立帳號。</li>
-  <li>用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。</li>
+  <li>用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能閱讀，不能編輯。</li>
 </ul>
 <h2>各階段能做什麼</h2>
 <!--compare:pay-once-states-->
@@ -4339,7 +4341,7 @@ TRAIT_PAGES = {
 <h3>Devices and people</h3>
 <ul>
   <li><strong>Sync:</strong> MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.</li>
-  <li><strong>iPhone and iPad:</strong> MarsDawn is for reading only. It opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.</li>
+  <li><strong>iPhone and iPad:</strong> MarsDawn is for reading only. It opens Markdown, text, PDF, JSON and YAML files but doesn't edit them. You can share, print or save a PDF, but links in a PDF saved there don't work. It reads the files you keep in iCloud Drive or open from other apps; MarsDawn has no cloud service of its own.</li>
   <li><strong>Sharing:</strong> there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.</li>
   <li><strong>System:</strong> MarsDawn needs macOS 26 or later on the Mac, and iOS 26 or iPadOS 26 or later on iPhone and iPad.</li>
 </ul>
@@ -4347,7 +4349,7 @@ TRAIT_PAGES = {
 <ul>
   <li><strong>Editing:</strong> you write Markdown on the left and read the page on the right; the page itself can't be edited.</li>
   <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
-  <li><strong>Other files:</strong> PDFs open read-only, and so do text files in encodings other than UTF-8. On the Mac, JSON and YAML open as editable documents with a tree preview; iPhone and iPad don't open them.</li>
+  <li><strong>Other files:</strong> PDFs open read-only, and so do text files in encodings other than UTF-8. On the Mac, JSON and YAML open as editable documents with a tree preview; on iPhone and iPad, they open read-only, also with a tree preview.</li>
   <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can install more from the curated <a href="/themes/gallery/">Theme Gallery</a> (Settings ▸ Appearance ▸ Get More Themes…). A theme sets colours and a few style options; there's no custom CSS. See <a href="/themes/">themes</a>.</li>
   <li><strong>Plugins:</strong> MarsDawn has no plugins or extensions.</li>
 </ul>
@@ -4369,7 +4371,7 @@ TRAIT_PAGES = {
 <h3>裝置與使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。</li>
-  <li><strong>iPhone 和 iPad：</strong>MarsDawn 只能閱讀，只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。</li>
+  <li><strong>iPhone 和 iPad：</strong>MarsDawn 只能閱讀，能開 Markdown、純文字、PDF、JSON 和 YAML 檔，但不能編輯。可以分享、列印或存成 PDF，但在這裡存成的 PDF，裡面的連結不能點。它讀的是你放在 iCloud 雲碟裡、或從其他 App 打開的檔案，MarsDawn 本身沒有雲端服務。</li>
   <li><strong>分享：</strong>沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。</li>
   <li><strong>系統：</strong>MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。</li>
 </ul>
@@ -4377,7 +4379,7 @@ TRAIT_PAGES = {
 <ul>
   <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
   <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
-  <li><strong>其他檔案：</strong>PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML 可以當成文件打開來編輯，並有樹狀預覽；iPhone 和 iPad 不能打開這兩種檔案。</li>
+  <li><strong>其他檔案：</strong>PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML 可以當成文件打開來編輯，並有樹狀預覽；在 iPhone 和 iPad 上則以唯讀方式打開，也有樹狀預覽。</li>
   <li><strong>主題：</strong>內建黎明、典雅、流行和活潑，每種都有淺色與深色；也可以從經過審核的<a href="/zh-hant/themes/gallery/">主題庫</a>安裝更多（「設定 ▸ 外觀 ▸ 取得更多主題⋯」）。主題只能設定顏色和幾個樣式選項，不能自訂 CSS。詳見<a href="/zh-hant/themes/">主題</a>。</li>
   <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
 </ul>
@@ -4747,7 +4749,7 @@ FEATURES_COPY = {
                               'p': 'Select a Markdown file in Finder and press Space to read it rendered, diagrams included. JSON and YAML files show as a tree. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.',
                               'links': ['native']},
                              {'h': 'Other files',
-                              'p': "MarsDawn also opens plain text files (.txt, .log, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. iPhone and iPad don't open JSON or YAML.",
+                              'p': "MarsDawn also opens plain text files (.txt, .log, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. On iPhone and iPad, JSON and YAML open read-only, with a tree preview.",
                               'links': []},
                              {'h': 'Your files stay yours',
                               'p': 'There is no account, no sync and no cloud. Documents stay where '
@@ -4794,7 +4796,7 @@ FEATURES_COPY = {
                            'On iPhone or iPad: in MarsDawn, tap Open and pick the same file. Mermaid diagrams, math, code and tables are rendered, with an outline and your theme.',
                            'Back on the Mac: keep editing, or export a PDF.'],
                  'buy': 'With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.',
-                 'limits': "On iPhone and iPad, MarsDawn is for reading only: it opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own."},
+                 'limits': "On iPhone and iPad, MarsDawn is for reading only: it opens Markdown, text, PDF, JSON and YAML but doesn't edit. Links in a PDF saved there don't work. MarsDawn has no cloud service of its own."},
      'cta': {'h2': 'Try it on your Mac',
              'p1': 'MarsDawn is free to download. Try everything for 14 days, then unlock it once for '
                    'USD 4.99. No subscription, no account. It needs macOS 26 or later.',
@@ -4907,7 +4909,7 @@ FEATURES_COPY = {
                                    '選的主題，也跟著 MarsDawn 的外觀設定。',
                               'links': ['native']},
                              {'h': '其他檔案',
-                              'p': 'MarsDawn 也能打開純文字檔（.txt、.log、程式碼檔）和 PDF。UTF-8 純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。在 Mac 上，JSON 和 YAML 檔可以當成文件打開來編輯，旁邊的樹狀預覽會隨著打字更新。在 Finder 用「快速查看」也會看到同樣的樹狀檢視。iPhone 和 iPad 不能打開 JSON 或 YAML。',
+                              'p': 'MarsDawn 也能打開純文字檔（.txt、.log、程式碼檔）和 PDF。UTF-8 純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。在 Mac 上，JSON 和 YAML 檔可以當成文件打開來編輯，旁邊的樹狀預覽會隨著打字更新。在 Finder 用「快速查看」也會看到同樣的樹狀檢視。在 iPhone 和 iPad 上，JSON 和 YAML 以唯讀方式打開，並有樹狀預覽。',
                               'links': []},
                              {'h': '你的檔案留在你手上',
                               'p': '不需要帳號，沒有同步，也沒有雲端。文件留在你儲存的位置，MarsDawn 不收集任何關於你的資料。',
@@ -4946,7 +4948,7 @@ FEATURES_COPY = {
                            '在 iPhone 或 iPad 上：打開 MarsDawn，點「開啟」，選同一個檔案。Mermaid 圖表、數學式、程式碼和表格都會排好顯示，也有大綱和你選的主題。',
                            '回到 Mac：繼續編輯，或輸出 PDF。'],
                  'buy': '用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。',
-                 'limits': '在 iPhone 和 iPad 上，MarsDawn 只能閱讀：只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。'},
+                 'limits': '在 iPhone 和 iPad 上，MarsDawn 只能閱讀：能開 Markdown、純文字、PDF、JSON 和 YAML，但不能編輯。在這裡存成的 PDF，裡面的連結不能點。MarsDawn 本身沒有雲端服務。'},
      'cta': {'h2': '在你的 Mac 上試試',
              'p1': 'MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。',
              'trial': ['試用怎麼運作：', 'pay-once'],
@@ -4990,11 +4992,51 @@ def _features_devices(copy: dict) -> list:
             '<!--iphone-badge-->', f'<p class="devnote">{_features_text(d["limits"])}</p>']
 
 
-def features_page(copy: dict) -> dict:
+_COPY369_STEP = re.compile(r"^(\d+)\. \*\*([^*]+)\*\*(.*)$", re.S)
+
+
+def _copy369_step(text: str, number: int) -> str:
+    """'N. **Label:** rest' (copy369 data) -> 'Label: rest', the way FEATURES_COPY stores a step."""
+    m = _COPY369_STEP.match(text)
+    assert m and m.group(1) == str(number), f"#369: step {number} lacks its '{number}. **…**' prefix: {text[:40]!r}"
+    bold, rest = m.group(2), m.group(3)
+    assert "**" not in rest, f"#369: step {number} has more bold markers than the label"
+    step = bold + rest
+    label = _STEP_LABEL.match(step)
+    assert label and label.group(1) == bold, f"#369: step {number}: rendered bold {label and label.group(1)!r} != {bold!r}"
+    return step
+
+
+def apply_copy369_features(copy: dict, locale: str) -> dict:
+    """#369: a deep copy of a locale's features copy with copy369_data's fold (new item after 'Outline and
+    Files sidebar'), export (the 'Export as PDF, or print' paragraph), ios_s2/ios_s3 (steps 2 and 3) and
+    devnote (the iPhone and iPad limits). The original copy is not changed."""
+    data = copy369_data.DATA[locale]
+    copy = _copy.deepcopy(copy)
+    read = [s for s in copy["sections"] if s["id"] == "read"]
+    assert len(read) == 1, f"#369 {locale}: {len(read)} 'read' sections"
+    items = read[0]["items"]
+    assert len(items) == 4 and items[1]["links"] == ["reading-agent-output"] == items[2]["links"], \
+        f"#369 {locale}: 'read' items are not the expected four"
+    items.insert(2, {"h": data["fold_h"], "p": data["fold"], "links": []})
+    themes = [s for s in copy["sections"] if s["id"] == "themes"]
+    assert len(themes) == 1, f"#369 {locale}: {len(themes)} 'themes' sections"
+    items = themes[0]["items"]
+    assert len(items) == 3 and items[2]["links"] == ["pdf"], f"#369 {locale}: 'themes' items are not the expected three"
+    items[2]["p"] = data["export"]
+    steps = copy["devices"]["steps"]
+    assert len(steps) == 3, f"#369 {locale}: {len(steps)} device steps"
+    steps[1], steps[2] = _copy369_step(data["ios_s2"], 2), _copy369_step(data["ios_s3"], 3)
+    copy["devices"]["limits"] = data["devnote"]
+    return copy
+
+
+def features_page(copy: dict, locale: str) -> dict:
     """A locale's /features/ page, from its copy (FEATURES_COPY's shape). Its link, button and
     screenshot marks are filled in by all_pages() and render(), once every locale's labels exist."""
     problems = shape_problems(FEATURES_COPY["en"], copy)
     assert not problems, "features copy differs in shape from en: " + "; ".join(problems)
+    copy = apply_copy369_features(copy, locale)
     intro = "\n".join(['<section class="intro">', f"  <h1>{_features_text(copy['h1'])}</h1>"]
                        + [f"  <p>{_features_text(p)}</p>" for p in copy["intro"]] + ["</section>"])
     parts = []
@@ -5024,7 +5066,7 @@ def features_page(copy: dict) -> dict:
 
 
 def features_pages() -> dict:
-    return {(locale, "features"): features_page(copy) for locale, copy in FEATURES_COPY.items()}
+    return {(locale, "features"): features_page(copy, locale) for locale, copy in FEATURES_COPY.items()}
 
 _FEATURES_MARK = re.compile(r"<!--(link:[a-z/-]+|cta|shot:[a-z]+)-->")
 
@@ -5066,7 +5108,7 @@ def _make_k(locale: str) -> SimpleNamespace:
         schema_links_from=lambda notes: schema_links_from({**notes, **cli254_data.DATA[locale]["schema_notes"]}),
         render_legal_body=render_legal_body,
         theme_agents_page=lambda copy: theme_agents.page(LOCALES[locale]["root"], copy),
-        features_page=features_page,
+        features_page=lambda copy: features_page(copy, locale),
         open_md_page=open_md_page, mermaid_page=mermaid_page,
         vs_macmd_page=vs_macmd_page, vs_compare=vs_compare,
         set_skill_install=lambda html: SKILL_INSTALL_HTML.__setitem__(locale, html),
@@ -5275,52 +5317,70 @@ def hero_stage_html(locale: str) -> str:
     return f'<div class="hero-stage">\n{hero_window.window_html(locale)}\n{hero_phone_html(locale)}\n</div>'
 
 
-# Home steps: #333 comment 6516118620 §3, with 6516160149 §4 corrections.
+# Home steps: #333 comment 6516118620 §3, with 6516160149 §4 corrections; the three steps are the #369 plan A
+# text (approval comment 6796859928), the same as copy369/data.py key home_ios, which apply_copy369_home_steps
+# below also enforces at build time.
 HOME_IPHONE_STEPS = {'en': {'h2': 'Read what your agent wrote, away from your desk',
         'steps': ['On your Mac, have your agent save its files to a folder in iCloud Drive.',
-                  'On your iPhone or iPad, open MarsDawn and choose the file.',
-                  'To edit it or export a PDF, go back to your Mac.'],
-        'limits': 'On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain text '
-                  'files.'},
+                  'On your iPhone or iPad, open it in MarsDawn, or from another app.',
+                  'Share, print or save it as a PDF; edit it on your Mac.'],
+        'limits': 'On iPhone and iPad, MarsDawn is for reading only. It opens Markdown, text, PDF, '
+                  'JSON and YAML.'},
  'zh-hant': {'h2': '離開座位，也能讀 agent 寫的東西',
              'steps': ['在 Mac 上，讓 agent 把檔案存進 iCloud 雲碟裡的資料夾。',
-                       '在 iPhone 或 iPad 上打開 MarsDawn，選那份檔案。',
-                       '要修改或輸出 PDF，回到 Mac 上做。'],
-             'limits': '在 iPhone 和 iPad 上只能閱讀，只開 Markdown 和純文字檔。'},
+                       '在 iPhone 或 iPad 上用 MarsDawn 打開，也可以從其他 App 打開。',
+                       '可以分享、列印或存成 PDF；要修改，回到 Mac 上做。'],
+             'limits': '在 iPhone 和 iPad 上只能閱讀，能開 Markdown、純文字、PDF、JSON 和 YAML 檔。'},
  'zh-hans': {'h2': '离开座位，也能读代理写的东西',
              'steps': ['在 Mac 上，让代理把文件存进 iCloud 云盘里的文件夹。',
-                       '在 iPhone 或 iPad 上打开 MarsDawn，选择那份文件。',
-                       '要修改或导出 PDF，回到 Mac 上操作。'],
-             'limits': '在 iPhone 和 iPad 上只能阅读，只能打开 Markdown 和纯文本文件。'},
+                       '在 iPhone 或 iPad 上用 MarsDawn 打开，也可以从其他 App 打开。',
+                       '可以共享、打印或存储为 PDF；要修改，回到 Mac 上操作。'],
+             'limits': '在 iPhone 和 iPad 上只能阅读，可以打开 Markdown、纯文本、PDF、JSON 和 YAML 文件。'},
  'ja': {'h2': '席を離れても、エージェントが書いたものを読める',
         'steps': ['Mac で、エージェントにファイルを iCloud Drive のフォルダへ保存させます。',
-                  'iPhone や iPad で MarsDawn を開き、そのファイルを選びます。',
-                  '編集や PDF の書き出しは、Mac に戻って行います。'],
-        'limits': 'iPhone と iPad では閲覧専用で、開けるのは Markdown とプレーンテキストのファイルだけです。'},
+                  'iPhone や iPad で、MarsDawn から開くか、ほかの App から開きます。',
+                  '共有、プリント、PDF として保存ができます。編集は Mac で行います。'],
+        'limits': 'iPhone と iPad では閲覧専用で、Markdown、テキスト、PDF、JSON、YAML を開けます。'},
  'ko': {'h2': '자리를 떠나도 에이전트가 쓴 글을 읽을 수 있습니다',
         'steps': ['Mac에서 에이전트가 iCloud Drive의 폴더에 파일을 저장하게 합니다.',
-                  'iPhone이나 iPad에서 MarsDawn을 열고 그 파일을 선택합니다.',
-                  '편집하거나 PDF로 내보내려면 Mac으로 돌아갑니다.'],
-        'limits': 'iPhone과 iPad에서는 읽기 전용이며, Markdown과 일반 텍스트 파일만 열 수 있습니다.'},
+                  'iPhone이나 iPad에서 MarsDawn으로 열거나 다른 앱에서 엽니다.',
+                  '공유하거나 프린트하거나 PDF로 저장할 수 있습니다. 편집은 Mac에서 합니다.'],
+        'limits': 'iPhone과 iPad에서는 읽기 전용이며, Markdown, 텍스트, PDF, JSON, YAML을 열 수 있습니다.'},
  'de': {'h2': 'Lies, was dein Agent geschrieben hat, auch fern vom Schreibtisch',
         'steps': ['Lass deinen Agent auf dem Mac seine Dateien in einem Ordner in iCloud Drive speichern.',
-                  'Öffne MarsDawn auf iPhone oder iPad und wähle die Datei aus.',
-                  'Zum Bearbeiten oder für den PDF-Export gehst du zurück an den Mac.'],
-        'limits': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet nur Markdown- und reine '
-                  'Textdateien.'},
+                  'Öffne die Datei auf iPhone oder iPad in MarsDawn oder aus einer anderen App.',
+                  'Teile sie, drucke sie oder sichere sie als PDF; bearbeiten kannst du sie am Mac.'],
+        'limits': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet Markdown, Text, PDF, '
+                  'JSON und YAML.'},
  'fr': {'h2': 'Lisez ce qu’a écrit votre agent, même loin de votre bureau',
-        'steps': ['Sur votre Mac, demandez à votre agent d’enregistrer ses fichiers dans un dossier d’iCloud '
-                  'Drive.',
-                  'Sur votre iPhone ou iPad, ouvrez MarsDawn et choisissez le fichier.',
-                  'Pour le modifier ou l’exporter en PDF, revenez sur votre Mac.'],
-        'limits': 'Sur iPhone et iPad, MarsDawn sert uniquement à lire et n’ouvre que les fichiers Markdown '
-                  'et texte brut.'},
+        'steps': ['Sur votre Mac, demandez à votre agent d’enregistrer ses fichiers dans un dossier d’iCloud Drive.',
+                  'Sur votre iPhone ou iPad, ouvrez le fichier dans MarsDawn, ou depuis une autre app.',
+                  'Partagez-le, imprimez-le ou enregistrez-le en PDF\xa0; pour le modifier, revenez sur votre Mac.'],
+        'limits': 'Sur iPhone et iPad, MarsDawn sert uniquement à lire et ouvre les fichiers Markdown, '
+                  'texte, PDF, JSON et YAML.'},
  'es': {'h2': 'Lee lo que escribió tu agente, aunque no estés en tu escritorio',
         'steps': ['En tu Mac, haz que tu agente guarde sus archivos en una carpeta de iCloud Drive.',
-                  'En tu iPhone o iPad, abre MarsDawn y elige el archivo.',
-                  'Para editarlo o exportarlo a PDF, vuelve a tu Mac.'],
-        'limits': 'En iPhone y iPad, MarsDawn solo sirve para leer y solo abre archivos Markdown y de texto '
-                  'plano.'}}
+                  'En tu iPhone o iPad, ábrelo en MarsDawn o desde otra app.',
+                  'Compártelo, imprímelo o guárdalo como PDF; para editarlo, vuelve a tu Mac.'],
+        'limits': 'En iPhone y iPad, MarsDawn solo sirve para leer y abre archivos Markdown, de texto, PDF, '
+                  'JSON y YAML.'}}
+
+
+def apply_copy369_home_steps() -> None:
+    """#369 (plan A): each locale's steps and limit line come from copy369_data (key home_ios, three
+    numbered lines, a blank line, one limit line); the heading stays. The steps and limits above are superseded."""
+    assert sorted(HOME_IPHONE_STEPS) == sorted(copy369_data.DATA), "#369: home steps locales differ"
+    for locale, copy in HOME_IPHONE_STEPS.items():
+        steps, limit = copy369_data.DATA[locale]["home_ios"].split("\n\n")
+        lines = steps.split("\n")
+        assert [line[:3] for line in lines] == ["1. ", "2. ", "3. "], f"{locale}: home_ios steps are not 1. 2. 3."
+        assert limit and "\n" not in limit, f"{locale}: home_ios limit is not one line"
+        assert len(copy["steps"]) == 3, f"{locale}: the home steps are not three"
+        copy["steps"] = [line[3:] for line in lines]
+        copy["limits"] = limit
+
+
+apply_copy369_home_steps()
 
 # Link to the features section; copy approved by Ray on PR #342 (Aria's proposal).
 HOME_IPHONE_STEPS_MORE = {
@@ -5925,7 +5985,7 @@ def _base_pages() -> dict:
 def all_pages() -> dict:
     merged = _base_pages()
     merged.update(EXTRA_PAGES)
-    merged.update({(locale, "roadmap"): roadmap272.page(locale, changelog_date(locale, roadmap272.LAST_UPDATED))
+    merged.update({(locale, "roadmap"): roadmap272.page(locale, copy363_data.DATA[locale]["roadmap_updated"])
                    for locale in LOCALES})   # /roadmap/ (#272), in every locale the site serves
     for (locale, slug), page in merged.items():
         body = page["body"]
@@ -5952,7 +6012,8 @@ def all_pages() -> dict:
             body = "".join(pieces[:-2]) + brand_film_themes.MARK + "\n" + "".join(pieces[-2:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return apply_app_changelog(apply_cli254(apply_best228(apply_promo130(apply_seo_copy(merged)))))
+    return apply_copy363(apply_copy369_pdf_pages(apply_app_changelog(apply_cli254(apply_best228(apply_promo130(
+        apply_seo_copy(merged)))))))
 
 
 # --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
@@ -6050,7 +6111,11 @@ def apply_seo_copy(merged: dict) -> dict:
         iphone = [i for i, item in enumerate(home_items) if len(item) == 2 and "iPhone" in item[0] and "iPad" in item[0]]
         assert len(iphone) == 1 and iphone[0] == 2, f"{locale}: the home FAQ's third question is not the iPhone and iPad one"
         faq275 = promo_data.DATA["faq275"][locale]
-        home_items[2] = [home_items[2][0], faq275["q3"], rich_pages.md_inline(roadmap272.FAQ_MORE[locale])]
+        # #369 (plan A): the answer is copy369_data's "faq"; faq275["q3"] (scripts/promo130/data.py) and the
+        # older answer in scripts/seo_copy.py are superseded for this question. Plain text, made HTML-ready here.
+        answer = copy369_data.DATA[locale]["faq"]
+        assert "<" not in answer and ">" not in answer, f"{locale}: #369 faq has markup"
+        home_items[2] = [home_items[2][0], xml_escape(answer), rich_pages.md_inline(roadmap272.FAQ_MORE[locale])]
         home_items += [faq275["q9"], faq275["q10"]]
         assert len(home_items) == 10, f"{locale}: the home FAQ has {len(home_items)} questions, want 10 (#275)"
         out[(locale, "index")] = {**home, "body": home["body"].rstrip() + "\n" + faq_html(copy["faq_h"], home_items) + "\n"}
@@ -6349,6 +6414,147 @@ def apply_cli254(merged: dict) -> dict:
     return out
 
 
+def _copy369_li(text: str, where: str) -> str:
+    """A copy369_data bullet ('- ...', one line) as an <li> of the pages' two-space list style."""
+    assert text.startswith("- ") and "\n" not in text, f"#369 {where}: not a one-line '- ' bullet"
+    return f"  <li>{rich_pages.md_inline(text[2:])}</li>\n"
+
+
+def apply_copy369_pdf_pages(merged: dict) -> dict:
+    """#369: copy369_data's pdf (last item of /pdf/'s one list), layout (after the --paper item of
+    /markdown-to-pdf/) and next (first item of /markdown-to-pdf/'s last list, under its last heading)."""
+    out = dict(merged)
+    for locale in LOCALES:
+        d = copy369_data.DATA[locale]
+        page = out.get((locale, "pdf"))
+        assert page is not None, f"#369 {locale}: no /pdf/ page"
+        body = page["body"]
+        assert body.count("<ul") == 1 and body.count("</ul>") == 1, f"#369 {locale}/pdf: {body.count('<ul')} lists, want 1"
+        end = body.index("</ul>")
+        assert body[:end].endswith("</li>\n"), f"#369 {locale}/pdf: the list does not end with '</li>\\n'"
+        out[(locale, "pdf")] = {**page, "body": body[:end] + _copy369_li(d["pdf"], f"{locale}/pdf") + body[end:]}
+
+        page = out.get((locale, "markdown-to-pdf"))
+        assert page is not None, f"#369 {locale}: no /markdown-to-pdf/ page"
+        body, where = page["body"], f"{locale}/markdown-to-pdf"
+        paper = list(re.finditer(r"(?m)^  <li><code>--paper</code>[^\n]*</li>\n", body))
+        assert len(paper) == 1, f"#369 {where}: {len(paper)} '--paper' items, want 1"
+        assert body.count("<li><code>--paper</code>") == 1, f"#369 {where}: '--paper' item is not a one-line <li>"
+        body = body[:paper[0].end()] + _copy369_li(d["layout"], where) + body[paper[0].end():]
+        last_h2 = body.rindex("<h2")
+        h2_end = body.index("</h2>", last_h2) + len("</h2>")
+        assert body[h2_end:].startswith("\n<ul>\n"), f"#369 {where}: the last heading is not followed by a list"
+        assert body.rfind("<ul") == h2_end + 1, f"#369 {where}: the list under the last heading is not the last list"
+        at = h2_end + len("\n<ul>\n")
+        body = body[:at] + _copy369_li(d["next"], where) + body[at:]
+        out[(locale, "markdown-to-pdf")] = {**page, "body": body}
+    return out
+
+
+# --- Old iOS claims (website #363) -----------------------------------------------------------------
+# copy363_data (scripts/copy363/data.py) corrects what the pages said about iPhone and iPad (no JSON or
+# YAML, no PDF export) in five places per locale. Each place is found by structure and must match exactly
+# once, and a sentence is replaced, not the paragraph, where the rest of the paragraph stays.
+
+# A sentence ends after . ! ? that a space follows (en, de, fr, es, ko; fr puts U+00A0, not a space, before
+# ; : ? !) or after a CJK full stop, which no space follows. The pieces join back to the text: every
+# sentence but the first keeps the space before it.
+_COPY363_SENTENCE_END = re.compile(r"(?<=[.!?])(?= )|(?<=[。！？])")
+
+
+def _copy363_sentences(text: str) -> list:
+    pieces = _COPY363_SENTENCE_END.split(text)
+    if pieces and pieces[-1] == "":
+        pieces.pop()
+    assert "".join(pieces) == text
+    return pieces
+
+
+def _copy363_put(pieces: list, i: int, sentence: str) -> str:
+    """The pieces joined, with piece i replaced by sentence (keeping the space in front of it)."""
+    lead = pieces[i][:len(pieces[i]) - len(pieces[i].lstrip())]
+    return "".join(pieces[:i] + [lead + sentence] + pieces[i + 1:])
+
+
+def _copy363_iphone(pieces: list, where: str) -> int:
+    """The index of the one sentence that names iPhone."""
+    hits = [i for i, s in enumerate(pieces) if "iPhone" in s]
+    assert len(hits) == 1, f"#363 {where}: {len(hits)} sentences name iPhone, want 1: {pieces!r}"
+    return hits[0]
+
+
+def _copy363_one(pattern: str, body: str, where: str) -> re.Match:
+    found = list(re.finditer(pattern, body))
+    assert len(found) == 1, f"#363 {where}: {len(found)} matches, want 1"
+    return found[0]
+
+
+def apply_copy363(merged: dict) -> dict:
+    """#363: in every locale, the last sentence of /features/'s "Other files" paragraph, the iPhone and iPad
+    item and the "Other files" item of /limits/, the iPhone sentence of /vs/'s "What MarsDawn lacks" and
+    the second sentence of /pay-once/'s iPhone item. Applied last, so the Markdown twins, llms-full.txt and
+    product-facts.md, which are read from the pages, say the same."""
+    out = dict(merged)
+    for locale in LOCALES:
+        d = copy363_data.DATA[locale]
+        for key, value in d.items():
+            assert not set(value) & set("<>&"), f"#363 {locale} {key}: has < > or &"
+
+        # 1. /features/: the paragraph under an h3 that lists .log; its last sentence.
+        where = f"{locale}/features"
+        page = out[(locale, "features")]
+        m = _copy363_one(r"(?m)^<h3>[^\n]*</h3>\n<p>([^\n]*<code>\.log</code>[^\n]*)</p>\n", page["body"], where)
+        pieces = _copy363_sentences(m.group(1))
+        assert len(pieces) >= 2 and _copy363_iphone(pieces, where) == len(pieces) - 1, \
+            f"#363 {where}: iPhone is not in the last sentence"
+        para = _copy363_put(pieces, len(pieces) - 1, d["features_other_last"])
+        body = page["body"][:m.start(1)] + para + page["body"][m.end(1):]
+        out[(locale, "features")] = {**page, "body": body}
+
+        # 2, 3. /limits/: the list item whose bold label names iPhone and the one item that names JSON, each
+        # replaced whole. Both are found on the page as it was, before either is replaced, and not by the
+        # label's words, which the locale self-test's fixture (de pages that hold ja copy) does not have.
+        where = f"{locale}/limits"
+        page = out[(locale, "limits")]
+        body = page["body"]
+        found = {
+            "limits_ios": _copy363_one(r"(?m)^  <li><strong>[^<\n]*iPhone[^<\n]*</strong>[^\n]*</li>\n", body,
+                                       f"{where} limits_ios"),
+        }
+        other = [m for m in re.finditer(r"(?m)^  <li>[^\n]*JSON[^\n]*</li>\n", body)
+                 if m.start() != found["limits_ios"].start()]
+        assert len(other) == 1, f"#363 {where} limits_other: {len(other)} matches, want 1"
+        found["limits_other"] = other[0]
+        assert found["limits_ios"].start() != found["limits_other"].start(), f"#363 {where}: one item for both"
+        for key, m in sorted(found.items(), key=lambda kv: kv[1].start(), reverse=True):
+            text = d[key]
+            assert text.startswith("- **") and "\n" not in text, f"#363 {where} {key}: not a one-line bullet"
+            body = body[:m.start()] + f"  <li>{rich_pages.md_inline(text[2:])}</li>\n" + body[m.end():]
+        out[(locale, "limits")] = {**page, "body": body}
+
+        # 4. /vs/: "What MarsDawn lacks" (promo_data's vs lacks, as one <p>); its iPhone sentence.
+        where = f"{locale}/vs"
+        page = out[(locale, "vs")]
+        lacks = promo_data.DATA["vs"][locale]["lacks"]
+        m = _copy363_one(re.escape(f"<p>{lacks}</p>"), page["body"], where)
+        pieces = _copy363_sentences(lacks)
+        para = _copy363_put(pieces, _copy363_iphone(pieces, where), d["vs_lacks_ios"])
+        body = page["body"][:m.start()] + f"<p>{para}</p>" + page["body"][m.end():]
+        out[(locale, "vs")] = {**page, "body": body}
+
+        # 5. /pay-once/: the one list item that names iPhone, two sentences; its second.
+        where = f"{locale}/pay-once"
+        page = out[(locale, "pay-once")]
+        m = _copy363_one(r"(?m)^  <li>([^\n]*iPhone[^\n]*)</li>\n", page["body"], where)
+        pieces = _copy363_sentences(m.group(1))
+        assert len(pieces) == 2 and _copy363_iphone(pieces[1:], where) == 0, \
+            f"#363 {where}: the iPhone item is not two sentences with iPhone in the second: {pieces!r}"
+        item = _copy363_put(pieces, 1, d["payonce_ios"])
+        body = page["body"][:m.start(1)] + item + page["body"][m.end(1):]
+        out[(locale, "pay-once")] = {**page, "body": body}
+    return out
+
+
 # --- /changelog/'s app section (website #273) ---------------------------------------------------------
 # The app's versions come first, then the CLI's. Each app version's What's New is the text it has on the
 # Mac App Store, vendored by scripts/tmde130/ingest.py from the app repo's approved release notes into
@@ -6626,7 +6832,8 @@ class _TreeBuilder(HTMLParser):
 
 
 def _collapse(text: str) -> str:
-    return re.sub(r"\s+", " ", text)
+    # #369: U+00A0 is not collapsed (Python's \s matches it): the fr and de copy keeps its no-break spaces.
+    return re.sub(r"[^\S\u00a0]+", " ", text)
 
 
 def _render_inline(children) -> str:

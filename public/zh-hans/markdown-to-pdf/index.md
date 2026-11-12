@@ -67,6 +67,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 - `--theme`：dawn、classic、modern 或 vivid，使用主题的浅色配色。没有指定时，`export` 会用 `$MARSDAWN_THEME`，再来才是 dawn。
 - `--paper`：a4 或 letter，默认是 a4。
+- `--layout`：document（默认）、handbook 或 handout。handbook 会用 front matter 生成封面，加上目录和 PDF 书签。
 - `-o`：PDF 要写到哪里，而不是写在源文件旁边。
 - `--allow-remote-images`：转换时加载网络上的图片。没加这个选项就不会加载。
 
@@ -79,6 +80,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## 接下来
 
+- 在 MarsDawn App 里，“文件 ▸ 打印…”会先预览同样的布局，再打印或存储：[导出 PDF](/zh-hans/pdf/)。
 - 所有选项和它输出的 JSON：[命令行工具](/zh-hans/cli/)。
 - 让写程序的代理帮你做这件事：运行 `marsdawn skill --install` 来加上 [marsdawn 的代理技能](/zh-hans/cli/skill/)。
 

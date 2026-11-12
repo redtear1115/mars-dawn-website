@@ -16,7 +16,7 @@ En esta captura de pantalla:
 ### Dispositivos y personas
 
 - **Sincronización:** MarsDawn no sincroniza tus documentos. Se quedan donde los guardas; para usar uno en otro Mac, guárdalo en una carpeta que ya sincronices.
-- **iPhone y iPad:** Allí, MarsDawn es solo para leer. Abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.
+- **iPhone y iPad:** Allí, MarsDawn es solo para leer. Abre archivos Markdown, de texto, PDF, JSON y YAML, pero no los edita. Puedes compartir, imprimir o guardar como PDF, pero los enlaces de un PDF guardado desde ahí no funcionan. Lee los archivos que guardas en iCloud Drive o abres desde otra app; MarsDawn no tiene nube propia.
 - **Compartir:** no hay cuentas ni edición compartida, porque MarsDawn es para una persona en su propio Mac.
 - **Sistema:** MarsDawn necesita macOS 26 o posterior en la Mac, y iOS 26 o iPadOS 26 o posterior en iPhone y iPad.
 
@@ -24,7 +24,7 @@ En esta captura de pantalla:
 
 - **Edición:** escribes Markdown a la izquierda y lees la página a la derecha; la página en sí no se puede editar.
 - **Formatos:** MarsDawn exporta a PDF e imprime, pero no exporta archivos de Word.
-- **Otros archivos:** los PDF y los archivos de texto con una codificación distinta de UTF-8 se abren en modo de solo lectura. En el Mac, JSON y YAML se abren como documentos editables con vista previa en árbol; el iPhone y el iPad no los abren.
+- **Otros archivos:** los PDF y los archivos de texto con una codificación distinta de UTF-8 se abren en modo de solo lectura. En el Mac, JSON y YAML se abren como documentos editables con vista previa en árbol; en el iPhone y el iPad se abren en modo de solo lectura, también con vista previa en árbol.
 - **Temas:** incluye Amanecer, Clásico, Moderno y Vívido, cada uno en claro y oscuro, y puedes instalar más desde la [Galería de temas](/es/themes/gallery/) revisada (Ajustes ▸ Aspecto ▸ Obtener más temas…). Un tema define colores y unas pocas opciones de estilo; no hay CSS personalizado. Consulta [temas](/es/themes/).
 - **Plugins:** MarsDawn no tiene plugins ni extensiones.
 

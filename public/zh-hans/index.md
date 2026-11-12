@@ -11,10 +11,10 @@ MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、M
 ## 离开座位，也能读代理写的东西
 
 1. 在 Mac 上，让代理把文件存进 iCloud 云盘里的文件夹。
-2. 在 iPhone 或 iPad 上打开 MarsDawn，选择那份文件。
-3. 要修改或导出 PDF，回到 Mac 上操作。
+2. 在 iPhone 或 iPad 上用 MarsDawn 打开，也可以从其他 App 打开。
+3. 可以共享、打印或存储为 PDF；要修改，回到 Mac 上操作。
 
-在 iPhone 和 iPad 上只能阅读，只能打开 Markdown 和纯文本文件。
+在 iPhone 和 iPad 上只能阅读，可以打开 Markdown、纯文本、PDF、JSON 和 YAML 文件。
 
 [![在 App Store 下载](/assets/badges/app-store-zh-hans.svg)](https://apps.apple.com/app/id6812925073)
 
@@ -116,7 +116,7 @@ MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源�
 
 ### MarsDawn 有 iPhone 或 iPad 版吗？
 
-有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown 和纯文本文件，排好 Mermaid 图表、数学公式、代码和表格，也有大纲和主题；不能编辑，也不能导出 PDF。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。
+有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown、纯文本、PDF、JSON 和 YAML 文件，排好 Mermaid 图表、数学公式、代码和表格。可以共享、打印文件，或存储为 PDF，但不能编辑。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad。
 
 详见：[路线图](/zh-hans/roadmap/)
 

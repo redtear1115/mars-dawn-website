@@ -1,6 +1,6 @@
 # MacMD Viewer ou MarsDawn.
 
-Ce sont deux apps Mac pour lire du Markdown sous forme de page terminée. MacMD Viewer ouvre un fichier `.md` et l’affiche ; il est en lecture seule par conception et n’enregistre jamais de modifications dans votre fichier. MarsDawn place un éditeur à côté du même genre d’aperçu rendu, pour que vous écriviez et relisiez dans une seule fenêtre. Cette page met les deux côte à côte, ligne par ligne, avec une source pour chaque fait sur MacMD Viewer, et dit quand MacMD Viewer est le meilleur choix.
+Ce sont deux apps Mac pour lire du Markdown sous forme de page terminée. MacMD Viewer ouvre un fichier `.md` et l’affiche ; il est en lecture seule par conception et n’enregistre jamais de modifications dans votre fichier. MarsDawn place un éditeur à côté du même genre d’aperçu rendu, pour que vous écriviez et relisiez dans une seule fenêtre. Cette page met les deux côte à côte, ligne par ligne, avec une source pour chaque fait sur MacMD Viewer, et dit quand MacMD Viewer est le meilleur choix.
 
 Vérifié sur le site et le dépôt de MacMD Viewer le 15 octobre 2026 (version 1.7.0, publiée le 10 octobre 2026). Si quelque chose ici est périmé, écrivez-nous à l’adresse de la [page d’assistance](/fr/support/).
 
@@ -8,32 +8,32 @@ Vérifié sur le site et le dépôt de MacMD Viewer le 15 octobre 2026 (version 
 
 |  | MacMD Viewer | MarsDawn |
 |---|---|---|
-| Ce que c’est | Une visionneuse : « en lecture seule, n’enregistre jamais de modifications dans votre fichier source » [[S1](#s1), [S9](#s9)] | Un éditeur avec aperçu en direct : le Markdown à gauche, la page rendue à droite, avec trois présentations (source, partagé, aperçu) |
-| Modification | Non [[S1](#s1), [S7](#s7), [S9](#s9)] | Oui. La page rendue elle-même n’est pas modifiable ; vous modifiez la source à côté |
-| Aperçu en direct | Affiche le fichier ; se recharge quand un autre éditeur l’enregistre [[S9](#s9)] | Se met à jour pendant la saisie. Quand une autre app modifie le fichier, MarsDawn le recharge et garde votre position, tant que vous n’avez pas de modifications non enregistrées. |
-| Mermaid | Oui : organigrammes, diagrammes de séquence et d’états, diagrammes de Gantt, camemberts et plus, hors ligne [[S1](#s1), [S3](#s3), [S7](#s7)] | Oui |
-| Mathématiques | Non : son README dit qu’il « n’affiche pas les mathématiques (LaTeX/KaTeX) » [[S7](#s7)] | Oui, KaTeX |
+| Ce que c’est | Une visionneuse : « en lecture seule, n’enregistre jamais de modifications dans votre fichier source » [[S1](#s1), [S9](#s9)] | Un éditeur avec aperçu en direct : le Markdown à gauche, la page rendue à droite, avec trois présentations (source, partagé, aperçu) |
+| Modification | Non [[S1](#s1), [S7](#s7), [S9](#s9)] | Oui. La page rendue elle-même n’est pas modifiable ; vous modifiez la source à côté |
+| Aperçu en direct | Affiche le fichier ; se recharge quand un autre éditeur l’enregistre [[S9](#s9)] | Se met à jour pendant la saisie. Quand une autre app modifie le fichier, MarsDawn le recharge et garde votre position, tant que vous n’avez pas de modifications non enregistrées. |
+| Mermaid | Oui : organigrammes, diagrammes de séquence et d’états, diagrammes de Gantt, camemberts et plus, hors ligne [[S1](#s1), [S3](#s3), [S7](#s7)] | Oui |
+| Mathématiques | Non : son README dit qu’il « n’affiche pas les mathématiques (LaTeX/KaTeX) » [[S7](#s7)] | Oui, KaTeX |
 | Coloration du code | Oui [[S1](#s1), [S9](#s9)] | Oui |
 | Thèmes | 12 thèmes de document [[S1](#s1), [S7](#s7)] | 4 intégrés (Aube, Classique, Moderne, Vif), chacun avec une palette claire et une sombre, plus d’autres dans la galerie de thèmes |
 | Onglets | Oui, facultatifs et désactivés par défaut (depuis 1.6.0) [[S5](#s5), [S8](#s8)] | Oui |
-| Export PDF | Oui, une seule page continue, dans le thème actuel, sans filigrane [[S3](#s3), [S9](#s9)] | Oui, pages paginées dans la palette claire du thème ; les sauts de page évitent de couper les blocs de code courts |
+| Export PDF | Oui, une seule page continue, dans le thème actuel, sans filigrane [[S3](#s3), [S9](#s9)] | Oui, pages paginées dans la palette claire du thème ; les sauts de page évitent de couper les blocs de code courts |
 | Impression | Oui, via la fenêtre d’impression de macOS [[S3](#s3), [S9](#s9)] | Oui |
-| Coup d’œil dans le Finder | Oui, inclus ; vous l’activez dans Réglages Système ; utilise votre thème [[S4](#s4)] | Oui, fonctionne avec ou sans l’essai ; utilise votre thème |
-| Mermaid et mathématiques dans Coup d’œil | Mermaid : oui [[S4](#s4)]. Mathématiques : non, il ne les affiche pas [[S7](#s7)] | Oui, les deux sont dessinés |
-| Ligne de commande | Aucun outil en ligne de commande autonome n’est décrit. Il a un schéma d’URL `markdownviewer://` et un plug-in Claude Code avec des hooks qui ouvrent des fichiers dans la visionneuse [[S6](#s6)] | L’outil gratuit `marsdawn` : `marsdawn export` produit un PDF sans l’app, `marsdawn open` ouvre un fichier à une ligne donnée |
+| Coup d’œil dans le Finder | Oui, inclus ; vous l’activez dans Réglages Système ; utilise votre thème [[S4](#s4)] | Oui, fonctionne avec ou sans l’essai ; utilise votre thème |
+| Mermaid et mathématiques dans Coup d’œil | Mermaid : oui [[S4](#s4)]. Mathématiques : non, il ne les affiche pas [[S7](#s7)] | Oui, les deux sont dessinés |
+| Ligne de commande | Aucun outil en ligne de commande autonome n’est décrit. Il a un schéma d’URL `markdownviewer://` et un plug-in Claude Code avec des hooks qui ouvrent des fichiers dans la visionneuse [[S6](#s6)] | L’outil gratuit `marsdawn` : `marsdawn export` produit un PDF sans l’app, `marsdawn open` ouvre un fichier à une ligne donnée |
 | Langues de l’interface | Non précisé dans ses propres documents [[S1](#s1), [S3](#s3), [S7](#s7)] | anglais, chinois traditionnel, chinois simplifié, japonais, allemand, français, espagnol et coréen |
-| Configuration requise | macOS 14 (Sonoma) ou version ultérieure ; Apple silicon et Intel [[S1](#s1), [S7](#s7)] | macOS 26 (Tahoe) ou version ultérieure |
+| Configuration requise | macOS 14 (Sonoma) ou version ultérieure ; Apple silicon et Intel [[S1](#s1), [S7](#s7)] | macOS 26 (Tahoe) ou version ultérieure |
 | Autres plateformes | Mac uniquement [[S1](#s1)] | Mac, plus iPhone et iPad en lecture seule |
 
 ## Prix et mode d’achat
 
 |  | MacMD Viewer | MarsDawn |
 |---|---|---|
-| Où l’acheter | Son propre site, Homebrew ou Setapp ; pas de fiche sur le Mac App Store [[S2](#s2), [S7](#s7)] | Uniquement sur le Mac App Store |
-| Prix | 19,99 USD une seule fois, pour un Mac actif (transférable vers un autre Mac) ; Family Pack à 39,99 USD pour 3 ; 10 clés à 129 USD [[S2](#s2)] | Téléchargement gratuit, puis 4,99 USD une seule fois |
-| L’essayer d’abord | Ni essai ni version gratuite ; remboursement intégral sous 14 jours pour un achat direct [[S2](#s2)] | Essai gratuit de 14 jours, avec toutes les fonctions |
+| Où l’acheter | Son propre site, Homebrew ou Setapp ; pas de fiche sur le Mac App Store [[S2](#s2), [S7](#s7)] | Uniquement sur le Mac App Store |
+| Prix | 19,99 USD une seule fois, pour un Mac actif (transférable vers un autre Mac) ; Family Pack à 39,99 USD pour 3 ; 10 clés à 129 USD [[S2](#s2)] | Téléchargement gratuit, puis 4,99 USD une seule fois |
+| L’essayer d’abord | Ni essai ni version gratuite ; remboursement intégral sous 14 jours pour un achat direct [[S2](#s2)] | Essai gratuit de 14 jours, avec toutes les fonctions |
 | Remboursements | Via son propre support, sous 14 jours [[S2](#s2)] | Via Apple |
-| Mises à jour | Les mises à jour de la version majeure en cours sont gratuites [[S2](#s2)] ; le téléchargement direct se met à jour avec Sparkle [[S7](#s7)] | Via le Mac App Store |
+| Mises à jour | Les mises à jour de la version majeure en cours sont gratuites [[S2](#s2)] ; le téléchargement direct se met à jour avec Sparkle [[S7](#s7)] | Via le Mac App Store |
 | Compte requis | Non [[S2](#s2)] | Non |
 | Abonnement | Non [[S1](#s1), [S2](#s2)] | Non |
 
@@ -41,7 +41,7 @@ Vérifié sur le site et le dépôt de MacMD Viewer le 15 octobre 2026 (version 
 
 |  | MacMD Viewer | MarsDawn |
 |---|---|---|
-| Ensuite | Pas d’essai ; une fois acheté, il continue de fonctionner | Si vous ne déverrouillez pas après 14 jours, les documents s’ouvrent avec leur contenu masqué ; vos fichiers ne sont pas touchés, Coup d’œil et l’export `marsdawn` gratuit continuent de fonctionner |
+| Ensuite | Pas d’essai ; une fois acheté, il continue de fonctionner | Si vous ne déverrouillez pas après 14 jours, les documents s’ouvrent avec leur contenu masqué ; vos fichiers ne sont pas touchés, Coup d’œil et l’export `marsdawn` gratuit continuent de fonctionner |
 
 ## Sources
 
@@ -58,39 +58,39 @@ Vérifié sur le site et le dépôt de MacMD Viewer le 15 octobre 2026 (version 
 
 ## Lequel choisir
 
-**Choisissez MacMD Viewer si** vous ne faites que lire du Markdown et voulez la garantie que votre fichier ne sera jamais modifié : il n’enregistre jamais de modifications [[S1](#s1)]. Il convient aussi mieux si votre Mac tourne sous macOS 14 ou 15, puisque MarsDawn demande macOS 26 [[S1](#s1), [S7](#s7)] ; si vous préférez acheter sur le site d’un développeur, via Homebrew ou Setapp plutôt que sur le Mac App Store [[S2](#s2), [S7](#s7)] ; si vous voulez que les fichiers qu’un agent modifie s’ouvrent automatiquement dans la visionneuse, ce qu’il fait grâce à des hooks pour Claude Code, Cursor et Windsurf [[S6](#s6)] ; ou si vous voulez un PDF d’une seule page continue plutôt que de pages paginées [[S9](#s9)]. Il n’a pas d’essai, mais un remboursement sous 14 jours [[S2](#s2)].
+**Choisissez MacMD Viewer si** vous ne faites que lire du Markdown et voulez la garantie que votre fichier ne sera jamais modifié : il n’enregistre jamais de modifications [[S1](#s1)]. Il convient aussi mieux si votre Mac tourne sous macOS 14 ou 15, puisque MarsDawn demande macOS 26 [[S1](#s1), [S7](#s7)] ; si vous préférez acheter sur le site d’un développeur, via Homebrew ou Setapp plutôt que sur le Mac App Store [[S2](#s2), [S7](#s7)] ; si vous voulez que les fichiers qu’un agent modifie s’ouvrent automatiquement dans la visionneuse, ce qu’il fait grâce à des hooks pour Claude Code, Cursor et Windsurf [[S6](#s6)] ; ou si vous voulez un PDF d’une seule page continue plutôt que de pages paginées [[S9](#s9)]. Il n’a pas d’essai, mais un remboursement sous 14 jours [[S2](#s2)].
 
-**Choisissez MarsDawn si** le Markdown revient pour un nouveau passage. Le plan, le README ou la spécification d’un agent demande généralement une correction, une phrase reformulée ou une nouvelle section, et dans MarsDawn vous la faites dans la fenêtre où vous lisez déjà. Il couvre aussi les mathématiques (KaTeX), que MacMD Viewer dit ne pas afficher [[S7](#s7)] ; il est livré en huit langues d’interface ; il a un outil `marsdawn` en ligne de commande gratuit qui exporte un PDF sans l’app ; et son prix est de 4,99 USD après un essai de 14 jours où tout fonctionne.
+**Choisissez MarsDawn si** le Markdown revient pour un nouveau passage. Le plan, le README ou la spécification d’un agent demande généralement une correction, une phrase reformulée ou une nouvelle section, et dans MarsDawn vous la faites dans la fenêtre où vous lisez déjà. Il couvre aussi les mathématiques (KaTeX), que MacMD Viewer dit ne pas afficher [[S7](#s7)] ; il est livré en huit langues d’interface ; il a un outil `marsdawn` en ligne de commande gratuit qui exporte un PDF sans l’app ; et son prix est de 4,99 USD après un essai de 14 jours où tout fonctionne.
 
 **L’un ou l’autre convient si** vous lisez du Markdown sur un Mac récent, voulez des diagrammes Mermaid bien dessinés et voulez Coup d’œil dans le Finder. Les deux le font.
 
-**Et vous pouvez utiliser les deux.** Ils ne s’excluent pas : rien ne vous empêche de garder une visionneuse en lecture seule pour ce que vous ne faites que lire et un éditeur pour ce que vous écrivez.
+**Et vous pouvez utiliser les deux.** Ils ne s’excluent pas : rien ne vous empêche de garder une visionneuse en lecture seule pour ce que vous ne faites que lire et un éditeur pour ce que vous écrivez.
 
 ## Questions
 
-### MacMD Viewer modifie-t-il les fichiers ?
+### MacMD Viewer modifie-t-il les fichiers ?
 
 Non. Il est en lecture seule et, selon ses propres termes, n’enregistre jamais de modifications dans votre fichier source [[S1](#s1), [S9](#s9)]. Il peut ouvrir le fichier dans votre éditeur de texte (menu Fichier, ⇧⌘E, depuis 1.7.0), ce qui confie le fichier à une autre app [[S5](#s5)].
 
-### MacMD Viewer est-il sur le Mac App Store ?
+### MacMD Viewer est-il sur le Mac App Store ?
 
 Ses propres pages citent son site, Homebrew et Setapp, et ne mentionnent pas le Mac App Store [[S2](#s2), [S7](#s7)]. MarsDawn est uniquement sur le Mac App Store.
 
-### MarsDawn peut-il ouvrir les mêmes fichiers ?
+### MarsDawn peut-il ouvrir les mêmes fichiers ?
 
-Oui. Il ouvre les fichiers `.md`, ainsi que les fichiers de texte brut et les PDF : le texte s’ouvre prêt à être modifié en UTF-8, et les PDF s’ouvrent dans une visionneuse. Sur Mac, il ouvre aussi JSON et YAML comme des documents modifiables, avec un aperçu en arbre.
+Oui. Il ouvre les fichiers `.md`, ainsi que les fichiers de texte brut et les PDF : le texte s’ouvre prêt à être modifié en UTF-8, et les PDF s’ouvrent dans une visionneuse. Sur Mac, il ouvre aussi JSON et YAML comme des documents modifiables, avec un aperçu en arbre.
 
-### Et si j’ai macOS 14 ou 15 ?
+### Et si j’ai macOS 14 ou 15 ?
 
 MacMD Viewer fonctionne sous macOS 14 ou version ultérieure [[S1](#s1)]. MarsDawn demande macOS 26 ou version ultérieure, et l’outil gratuit `marsdawn` en ligne de commande peut malgré tout exporter un PDF.
 
-### Pourquoi l’un coûte-t-il 19,99 USD et l’autre 4,99 USD ?
+### Pourquoi l’un coûte-t-il 19,99 USD et l’autre 4,99 USD ?
 
 Ils diffèrent par ce que vous obtenez et par la façon de payer. MacMD Viewer est un achat unique avec remboursement sous 14 jours et sans essai [[S2](#s2)]. MarsDawn est un téléchargement gratuit avec un essai de 14 jours, puis un déverrouillage unique. Aucun des deux n’est un abonnement.
 
 ## Essayez-le gratuitement dès aujourd’hui
 
-MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fait aussi le rendu de n’importe quel fichier Markdown en PDF, avec les diagrammes Mermaid et le code coloré, et rien d’autre n’est nécessaire :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fait aussi le rendu de n’importe quel fichier Markdown en PDF, avec les diagrammes Mermaid et le code coloré, et rien d’autre n’est nécessaire :
 
 ```
 brew tap redtear1115/tap && brew install marsdawn
@@ -100,11 +100,11 @@ open notes.pdf
 
 ## Pour aller plus loin
 
-- Le pas-à-pas complet : [Markdown en PDF](/fr/markdown-to-pdf/).
-- Ce que MarsDawn ne fait pas : [la liste](/fr/limits/).
-- Toutes les options de l’outil en ligne de commande : [Ligne de commande](/fr/cli/).
-- Par rapport à la lecture du Markdown dans VS Code, un navigateur ou Claude Desktop : [la comparaison](/fr/vs/markdown-preview-tools/).
-- Tout ce que fait MarsDawn, sur une seule page : [Fonctionnalités](/fr/features/).
+- Le pas-à-pas complet : [Markdown en PDF](/fr/markdown-to-pdf/).
+- Ce que MarsDawn ne fait pas : [la liste](/fr/limits/).
+- Toutes les options de l’outil en ligne de commande : [Ligne de commande](/fr/cli/).
+- Par rapport à la lecture du Markdown dans VS Code, un navigateur ou Claude Desktop : [la comparaison](/fr/vs/markdown-preview-tools/).
+- Tout ce que fait MarsDawn, sur une seule page : [Fonctionnalités](/fr/features/).
 
 ## Plus
 

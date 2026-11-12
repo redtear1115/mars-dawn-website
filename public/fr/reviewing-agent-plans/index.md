@@ -6,11 +6,11 @@ Votre agent a rédigé un plan et attend votre feu vert. Vous avez cinq minutes,
 
 ## Pourquoi s’en soucier avant l’exécution
 
-Chip Huyen, expliquant pourquoi la planification doit rester séparée de l’exécution, chiffre le coût sans détour : « Sans supervision, un agent peut exécuter ces étapes pendant des heures, gaspillant temps et argent en appels d’API, avant que vous ne vous rendiez compte qu’il n’aboutit à rien. » Notre ajout : un plan est l’endroit le moins coûteux pour repérer une erreur. Corriger une ligne de `plan.md` coûte une phrase. Corriger ce que l’agent a fait après coup coûte un après-midi.
+Chip Huyen, expliquant pourquoi la planification doit rester séparée de l’exécution, chiffre le coût sans détour : « Sans supervision, un agent peut exécuter ces étapes pendant des heures, gaspillant temps et argent en appels d’API, avant que vous ne vous rendiez compte qu’il n’aboutit à rien. » Notre ajout : un plan est l’endroit le moins coûteux pour repérer une erreur. Corriger une ligne de `plan.md` coûte une phrase. Corriger ce que l’agent a fait après coup coûte un après-midi.
 
 ## L’exemple
 
-Vous avez demandé à un agent de déplacer les avatars des utilisateurs vers un stockage objet sans casser les liens existants. Il vous rend ceci :
+Vous avez demandé à un agent de déplacer les avatars des utilisateurs vers un stockage objet sans casser les liens existants. Il vous rend ceci :
 
 ```
 # Plan: move user avatars to object storage
@@ -33,23 +33,23 @@ Cela se lit bien. Cela supprimerait aussi tous les avatars avant d’en avoir co
 
 ## Les six étapes
 
-**1. Lisez seulement les titres.** *(une minute environ)* Le plan correspond-il à ce que vous avez demandé ? Une section manquante signifie généralement du travail manquant. Ici : Goal, Steps, Status. Vous avez demandé que les liens existants continuent de fonctionner, et aucun titre ne parle des anciens liens ni de la façon d’annuler le changement. C’est votre premier commentaire.
+**1. Lisez seulement les titres.** *(une minute environ)* Le plan correspond-il à ce que vous avez demandé ? Une section manquante signifie généralement du travail manquant. Ici : Goal, Steps, Status. Vous avez demandé que les liens existants continuent de fonctionner, et aucun titre ne parle des anciens liens ni de la façon d’annuler le changement. C’est votre premier commentaire.
 
 Dans un terminal, `grep -n '^#' plan.md` affiche uniquement les titres, et la plupart des éditeurs savent aussi afficher un plan. Dans MarsDawn, l’onglet Plan de la barre latérale (Présentation ▸ Afficher la barre latérale, ⌃⌘S) les liste, et un clic y mène.
 
-**2. Repérez chaque endroit qui affirme que quelque chose est fait, réussi ou vérifié, et vérifiez-en un vous-même.** *(une minute environ)* Ouvrez le fichier, lancez le test, comptez les lignes. Chip Huyen décrit un échec où « l’agent est convaincu d’avoir accompli une tâche alors que ce n’est pas le cas ». Dans son exemple, un agent chargé de loger 50 personnes dans 30 chambres d’hôtel en place 40 et affirme avoir terminé.
+**2. Repérez chaque endroit qui affirme que quelque chose est fait, réussi ou vérifié, et vérifiez-en un vous-même.** *(une minute environ)* Ouvrez le fichier, lancez le test, comptez les lignes. Chip Huyen décrit un échec où « l’agent est convaincu d’avoir accompli une tâche alors que ce n’est pas le cas ». Dans son exemple, un agent chargé de loger 50 personnes dans 30 chambres d’hôtel en place 40 et affirme avoir terminé.
 
 ```
 grep -n -i -E 'done|pass|verified|✅' plan.md
 ```
 
-Ici, cela trouve « ✅ done » et « All tests pass. » Quels tests ? L’un d’eux touche-t-il aux avatars ? Lancez-les, ou demandez. MarsDawn ne peut pas faire cette étape à votre place. Personne d’autre que vous ne le peut.
+Ici, cela trouve « ✅ done » et « All tests pass. » Quels tests ? L’un d’eux touche-t-il aux avatars ? Lancez-les, ou demandez. MarsDawn ne peut pas faire cette étape à votre place. Personne d’autre que vous ne le peut.
 
-**3. Cherchez les étapes irréversibles.** *(une minute environ)* Suppression de données, migrations, force-push, tout ce qui envoie, paie ou publie. Celles-là attendent votre accord explicite. Chip Huyen décrit la même idée du côté du système : « Si un plan comporte des opérations risquées, comme mettre à jour une base de données ou fusionner une modification de code, le système peut demander une approbation humaine explicite avant de les exécuter, ou laisser des humains les exécuter. » Ici, l’étape 4 supprime les originaux, et elle vient avant l’étape 5, la copie.
+**3. Cherchez les étapes irréversibles.** *(une minute environ)* Suppression de données, migrations, force-push, tout ce qui envoie, paie ou publie. Celles-là attendent votre accord explicite. Chip Huyen décrit la même idée du côté du système : « Si un plan comporte des opérations risquées, comme mettre à jour une base de données ou fusionner une modification de code, le système peut demander une approbation humaine explicite avant de les exécuter, ou laisser des humains les exécuter. » Ici, l’étape 4 supprime les originaux, et elle vient avant l’étape 5, la copie.
 
-**4. Lisez les diagrammes rendus, et confrontez chaque flèche au texte.** Un organigramme qui dit « copier → vérifier → supprimer » alors que les étapes disent autre chose, c’est une trouvaille. Ce plan n’a pas de diagramme : on passe pour aujourd’hui. Quand il y en a un, regardez l’image, pas le source Mermaid : beaucoup d’éditeurs ont un aperçu, et [Comment afficher un fichier Markdown sur Mac](/fr/view-markdown-on-mac/) et [Afficher du Markdown ailleurs](/fr/vs/markdown-preview-tools/) présentent les options. Dans MarsDawn, le diagramme rendu se trouve à côté de son source (⌘2), et un diagramme cassé affiche son source avec l’erreur en dessous, ce qui mérite un commentaire à part entière.
+**4. Lisez les diagrammes rendus, et confrontez chaque flèche au texte.** Un organigramme qui dit « copier → vérifier → supprimer » alors que les étapes disent autre chose, c’est une trouvaille. Ce plan n’a pas de diagramme : on passe pour aujourd’hui. Quand il y en a un, regardez l’image, pas le source Mermaid : beaucoup d’éditeurs ont un aperçu, et [Comment afficher un fichier Markdown sur Mac](/fr/view-markdown-on-mac/) et [Afficher du Markdown ailleurs](/fr/vs/markdown-preview-tools/) présentent les options. Dans MarsDawn, le diagramme rendu se trouve à côté de son source (⌘2), et un diagramme cassé affiche son source avec l’erreur en dessous, ce qui mérite un commentaire à part entière.
 
-**5. Listez les fichiers et systèmes que le plan touche, et posez des questions sur tout ce que vous n’avez pas demandé.** *(étapes 4 et 5 ensemble, une minute environ)* Ici : la configuration du stockage, les templates, un dossier sur le serveur, un bucket. Qui peut lire le bucket ? Vous n’avez pas dit qu’il devait être public. Si vous avez ouvert le dossier de travail de l’agent dans MarsDawn (Fichier ▸ Ouvrir un dossier…, ⇧⌘O), les nouveaux fichiers qu’il écrit apparaissent dans l’onglet Fichiers en une seconde environ, et l’en-tête indique la branche git ou le worktree, pour que vous sachiez quel checkout vous relisez.
+**5. Listez les fichiers et systèmes que le plan touche, et posez des questions sur tout ce que vous n’avez pas demandé.** *(étapes 4 et 5 ensemble, une minute environ)* Ici : la configuration du stockage, les templates, un dossier sur le serveur, un bucket. Qui peut lire le bucket ? Vous n’avez pas dit qu’il devait être public. Si vous avez ouvert le dossier de travail de l’agent dans MarsDawn (Fichier ▸ Ouvrir un dossier…, ⇧⌘O), les nouveaux fichiers qu’il écrit apparaissent dans l’onglet Fichiers en une seconde environ, et l’en-tête indique la branche git ou le worktree, pour que vous sachiez quel checkout vous relisez.
 
 **6. Rédigez vos retours sous la forme endroit, problème, correction, un problème par ligne.** *(la dernière minute)*
 
@@ -67,17 +67,17 @@ Faites l’étape 2. C’est là qu’on prend en défaut un agent qui se croit 
 
 ## Quand cinq minutes ne suffisent pas
 
-Parfois, vous ne pouvez pas savoir si une étape est juste, parce qu’elle sort de votre domaine. Jess Ou, dans l’article explicatif de LangChain sur les agents paru en 2026, le dit en deux phrases : « Ne déléguez pas un jugement que vous ne pouvez pas évaluer. Si vous ne reconnaîtriez pas une bonne réponse, l’agent non plus. » Notre conclusion : si vous ne pouvez pas juger une étape, ce n’est pas une raison pour l’approuver plus vite. C’est une raison pour demander à quelqu’un qui le peut.
+Parfois, vous ne pouvez pas savoir si une étape est juste, parce qu’elle sort de votre domaine. Jess Ou, dans l’article explicatif de LangChain sur les agents paru en 2026, le dit en deux phrases : « Ne déléguez pas un jugement que vous ne pouvez pas évaluer. Si vous ne reconnaîtriez pas une bonne réponse, l’agent non plus. » Notre conclusion : si vous ne pouvez pas juger une étape, ce n’est pas une raison pour l’approuver plus vite. C’est une raison pour demander à quelqu’un qui le peut.
 
 ## Ce que MarsDawn fait ici, et ce qu’il ne fait pas
 
-MarsDawn n’embarque aucun modèle d’IA. Il ne trouvera pas les problèmes de ce plan, et il ne fait ni l’étape 2 ni l’étape 3. Il garde le fichier lisible pendant que vous travaillez : le plan pour l’étape 1, les diagrammes rendus pour l’étape 4, l’onglet Fichiers pour l’étape 5, les références de ligne pour l’étape 6. Et si l’agent révise le plan pendant votre lecture, MarsDawn le recharge et garde votre position, tant que vous n’avez pas de modifications non enregistrées.
+MarsDawn n’embarque aucun modèle d’IA. Il ne trouvera pas les problèmes de ce plan, et il ne fait ni l’étape 2 ni l’étape 3. Il garde le fichier lisible pendant que vous travaillez : le plan pour l’étape 1, les diagrammes rendus pour l’étape 4, l’onglet Fichiers pour l’étape 5, les références de ligne pour l’étape 6. Et si l’agent révise le plan pendant votre lecture, MarsDawn le recharge et garde votre position, tant que vous n’avez pas de modifications non enregistrées.
 
 Une fois le plan arrêté, si quelqu’un d’autre doit le voir, [Partager des PDF exportés](/fr/sharing-exported-pdfs/) et [Markdown en PDF](/fr/markdown-to-pdf/) expliquent comment le transmettre en PDF.
 
 ## Essayer
 
-MarsDawn est sur le [Mac App Store](https://apps.apple.com/app/id6812925073). Il existe aussi l’outil en ligne de commande gratuit `marsdawn` :
+MarsDawn est sur le [Mac App Store](https://apps.apple.com/app/id6812925073). Il existe aussi l’outil en ligne de commande gratuit `marsdawn` :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -85,18 +85,18 @@ brew install redtear1115/tap/marsdawn
 
 Il exporte le Markdown en PDF sans l’app.
 
-[Ligne de commande](/fr/cli/) · À savoir avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
+[Ligne de commande](/fr/cli/) · À savoir avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
 
 ## Pour aller plus loin
 
-- Pourquoi ce que rend un agent est difficile à lire : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
-- Pourquoi les agents exposent leurs plans : [Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?](/fr/agent-transparency/)
-- Les plans ne sont pas la seule chose que rendent les agents : [Quatre modèles de conception d’agents et les documents que chacun vous remet](/fr/agent-design-patterns/).
+- Pourquoi ce que rend un agent est difficile à lire : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
+- Pourquoi les agents exposent leurs plans : [Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?](/fr/agent-transparency/)
+- Les plans ne sont pas la seule chose que rendent les agents : [Quatre modèles de conception d’agents et les documents que chacun vous remet](/fr/agent-design-patterns/).
 
 ## Sources
 
-- Chip Huyen, « Agents », 7 janvier 2025 : [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
-- Jess Ou, « What is an AI agent? », LangChain, 31 juillet 2026 : [https://www.langchain.com/blog/what-is-an-agent](https://www.langchain.com/blog/what-is-an-agent)
+- Chip Huyen, « Agents », 7 janvier 2025 : [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
+- Jess Ou, « What is an AI agent? », LangChain, 31 juillet 2026 : [https://www.langchain.com/blog/what-is-an-agent](https://www.langchain.com/blog/what-is-an-agent)
 
 ## Plus
 

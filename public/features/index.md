@@ -27,6 +27,10 @@ The sidebar's Outline tab lists a document's headings; click one to jump there. 
 
 [Reading what your agent hands back](/reading-agent-output/)
 
+### Fold a long document
+
+In the preview, View ▸ Collapse All to Heading 2 folds a long plan or spec down to its level 2 headings, and View ▸ Expand All opens it again. Format ▸ Collapsible Section inserts a block that folds.
+
 ### Point at the exact line
 
 Edit ▸ Copy Reference copies your place as a path and line, like `docs/plan.md:42`. Copy for AI adds the selected text under it. Paste either into the agent's chat.
@@ -127,7 +131,7 @@ Settings ▸ Appearance ▸ Get More Themes… opens a gallery of extra preview 
 
 ### Export as PDF, or print
 
-File ▸ Export as PDF… saves a paginated PDF, and File ▸ Print… prints the same pages. Mermaid diagrams are drawn in, code keeps its highlighting, and page breaks avoid splitting a heading from its section or cutting a short code block or diagram in half. The PDF always uses the theme's light colors, even if you were reading in dark.
+File ▸ Print… and File ▸ Export as PDF… open Print & Export, with a preview of the pages. Pick a layout: Document; Handbook, with a cover, a table of contents and PDF bookmarks; or Handout, with a notes column. Then print or save. Mermaid diagrams are drawn in, code keeps its highlighting, and page breaks avoid splitting a heading from its section or cutting a short code block or diagram in half. PDFs use the theme's light colors.
 
 [PDF export](/pdf/)
 
@@ -143,12 +147,12 @@ In this screenshot:
 Your agent works on the Mac. Its plans and reports can come with you on your iPhone or iPad.
 
 1. **On the Mac:** save the agent's plans and reports in a folder in iCloud Drive.
-2. **On iPhone or iPad:** in MarsDawn, tap Open and pick the same file. Mermaid diagrams, math, code and tables are rendered, with an outline and your theme.
-3. **Back on the Mac:** keep editing, or export a PDF.
+2. **On iPhone or iPad:** in MarsDawn, tap Open and pick the same file, or open one from another app. Mermaid diagrams, math, code and tables are rendered, with an outline and your theme.
+3. **Pass it on:** share, print or save it as a PDF.
 
 With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.
 
-On iPhone and iPad, MarsDawn is for reading only: it opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.
+On iPhone and iPad, MarsDawn is for reading only: it opens Markdown, text, PDF, JSON and YAML but doesn't edit. Links in a PDF saved there don't work. MarsDawn has no cloud service of its own.
 
 ## Files, tabs and Quick Look
 
@@ -166,7 +170,7 @@ Select a Markdown file in Finder and press Space to read it rendered, diagrams i
 
 ### Other files
 
-MarsDawn also opens plain text files (`.txt`, `.log`, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. iPhone and iPad don't open JSON or YAML.
+MarsDawn also opens plain text files (`.txt`, `.log`, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. On iPhone and iPad, JSON and YAML open read-only, with a tree preview.
 
 ### Your files stay yours
 

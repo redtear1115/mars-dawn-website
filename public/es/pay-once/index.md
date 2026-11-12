@@ -19,7 +19,7 @@ En esta captura de pantalla:
 
 - La prueba tampoco te cobra nada. Cuando termina, no se compra nada a menos que elijas desbloquear.
 - No hay cuenta. MarsDawn nunca te pide que crees una.
-- Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad. En iPhone y iPad, MarsDawn es para leer: no edita ni exporta PDF.
+- Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad. En iPhone y iPad, MarsDawn es para leer: no edita.
 
 ## Qué funciona y cuándo
 

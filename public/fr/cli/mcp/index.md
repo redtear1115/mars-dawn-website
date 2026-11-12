@@ -1,8 +1,8 @@
 # Trois façons d’appeler marsdawn.
 
-MarsDawn n’a pas de modèle d’IA à lui : il est conçu pour relire du Markdown, pas pour en écrire, donc peu importe quel agent ou quel modèle a produit le fichier. Un agent ou un script peut appeler `marsdawn` de trois façons, et toutes les trois finissent par lancer le même `export`.
+MarsDawn n’a pas de modèle d’IA à lui : il est conçu pour relire du Markdown, pas pour en écrire, donc peu importe quel agent ou quel modèle a produit le fichier. Un agent ou un script peut appeler `marsdawn` de trois façons, et toutes les trois finissent par lancer le même `export`.
 
-**Choisissez ce que vos outils prennent en charge : la CLI gratuite `marsdawn`, un fichier de compétence en Markdown brut, ou le serveur MCP [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp).** Tous trois appellent le même `marsdawn export` et renvoient le même résultat JSON.
+**Choisissez ce que vos outils prennent en charge : la CLI gratuite `marsdawn`, un fichier de compétence en Markdown brut, ou le serveur MCP [marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp).** Tous trois appellent le même `marsdawn export` et renvoient le même résultat JSON.
 
 ## Laquelle utiliser
 
@@ -14,36 +14,36 @@ MarsDawn n’a pas de modèle d’IA à lui : il est conçu pour relire du Markd
 
 ## La CLI
 
-`marsdawn export notes.md --json` peut être appelé par tout agent ou script capable de lancer une commande shell : il est indépendant du modèle par construction. Chaque champ qu’il renvoie est documenté dans [marsdawn pour les agents](/fr/cli/agents/), la référence pour le schéma JSON vers laquelle renvoient les deux autres options ci-dessous.
+`marsdawn export notes.md --json` peut être appelé par tout agent ou script capable de lancer une commande shell : il est indépendant du modèle par construction. Chaque champ qu’il renvoie est documenté dans [marsdawn pour les agents](/fr/cli/agents/), la référence pour le schéma JSON vers laquelle renvoient les deux autres options ci-dessous.
 
 ## Le fichier de compétence
 
-Pour un agent qui lit des instructions en Markdown brut au lieu d’appeler directement un shell (aujourd’hui, Claude Code), [la compétence marsdawn](/fr/cli/skill/) est un fichier qui lui apprend à installer marsdawn, lancer `export` et lire le résultat. C’est du Markdown brut : d’autres agents qui chargent des fichiers d’instructions peuvent utiliser le même.
+Pour un agent qui lit des instructions en Markdown brut au lieu d’appeler directement un shell (aujourd’hui, Claude Code), [la compétence marsdawn](/fr/cli/skill/) est un fichier qui lui apprend à installer marsdawn, lancer `export` et lire le résultat. C’est du Markdown brut : d’autres agents qui chargent des fichiers d’instructions peuvent utiliser le même.
 
 ## Le serveur MCP
 
-[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) est un dépôt séparé, public, sous licence Apache-2.0. C’est un serveur MCP doté de deux outils, `export_markdown_to_pdf` et `open_in_marsdawn`, qui enveloppent `marsdawn export --json` et `marsdawn open --json` : pointez un client MCP vers lui, et un appel d’outil renvoie le même JSON que la CLI.
+[marsdawn-mcp](https://github.com/redtear1115/marsdawn-mcp) est un dépôt séparé, public, sous licence Apache-2.0. C’est un serveur MCP doté de deux outils, `export_markdown_to_pdf` et `open_in_marsdawn`, qui enveloppent `marsdawn export --json` et `marsdawn open --json` : pointez un client MCP vers lui, et un appel d’outil renvoie le même JSON que la CLI.
 
-- **Où l’obtenir :** sous forme de MCP Bundle, `marsdawn.mcpb`, joint à [sa release GitHub](https://github.com/redtear1115/marsdawn-mcp/releases), ou en lançant le serveur depuis les sources via stdio.
-- **Registre :** référencé dans le [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) sous le nom `dev.southern-light.mcp/marsdawn`.
-- **Hébergement :** auto-hébergé uniquement. Il n’existe pas de service marsdawn-mcp hébergé ; le serveur tourne sur votre propre machine, à côté de marsdawn.
-- **Configuration requise :** macOS, marsdawn 0.5.0 ou version ultérieure, et Node.js 20 ou version ultérieure pour lancer le serveur.
+- **Où l’obtenir :** sous forme de MCP Bundle, `marsdawn.mcpb`, joint à [sa release GitHub](https://github.com/redtear1115/marsdawn-mcp/releases), ou en lançant le serveur depuis les sources via stdio.
+- **Registre :** référencé dans le [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/dev.southern-light.mcp%2Fmarsdawn/versions/latest) sous le nom `dev.southern-light.mcp/marsdawn`.
+- **Hébergement :** auto-hébergé uniquement. Il n’existe pas de service marsdawn-mcp hébergé ; le serveur tourne sur votre propre machine, à côté de marsdawn.
+- **Configuration requise :** macOS, marsdawn 0.5.0 ou version ultérieure, et Node.js 20 ou version ultérieure pour lancer le serveur.
 
 ## Limité aux dossiers que vous autorisez
 
-Les deux outils n’accèdent qu’aux dossiers que vous autorisez : le réglage **Allowed folders** de l’extension, vide au départ et sans valeur prédéfinie, ou à défaut les racines que propose votre client MCP. Si aucun des deux n’est défini, chaque appel est refusé, et le message de refus explique comment y remédier. Chaque chemin doit être absolu, et `export_markdown_to_pdf` n’écrit jamais qu’un fichier `.pdf`, jamais à travers un lien symbolique.
+Les deux outils n’accèdent qu’aux dossiers que vous autorisez : le réglage **Allowed folders** de l’extension, vide au départ et sans valeur prédéfinie, ou à défaut les racines que propose votre client MCP. Si aucun des deux n’est défini, chaque appel est refusé, et le message de refus explique comment y remédier. Chaque chemin doit être absolu, et `export_markdown_to_pdf` n’écrit jamais qu’un fichier `.pdf`, jamais à travers un lien symbolique.
 
-**Sécurité :** passez à la version [0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1). Avec 0.1.0 et 0.2.0, un appel pouvait écrire un PDF à n’importe quel emplacement accessible en écriture à votre compte ; corrigé sous la référence [GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc).
+**Sécurité :** passez à la version [0.2.1](https://github.com/redtear1115/marsdawn-mcp/releases/tag/v0.2.1). Avec 0.1.0 et 0.2.0, un appel pouvait écrire un PDF à n’importe quel emplacement accessible en écriture à votre compte ; corrigé sous la référence [GHSA-fqgj-hcxc-34qc](https://github.com/redtear1115/marsdawn-mcp/security/advisories/GHSA-fqgj-hcxc-34qc).
 
 ## Le même export, trois portes
 
-Quelle que soit la porte d’entrée, le comportement de fond ne change pas : le même moteur d’export, les mêmes thèmes et formats de papier, les mêmes `diagramErrors` quand un diagramme Mermaid ne peut pas être rendu. Cette page ne répète pas ce contrat ; [marsdawn pour les agents](/fr/cli/agents/) le décrit en entier.
+Quelle que soit la porte d’entrée, le comportement de fond ne change pas : le même moteur d’export, les mêmes thèmes et formats de papier, les mêmes `diagramErrors` quand un diagramme Mermaid ne peut pas être rendu. Cette page ne répète pas ce contrat ; [marsdawn pour les agents](/fr/cli/agents/) le décrit en entier.
 
 ## Pour aller plus loin
 
-- Le schéma JSON complet et chaque code de sortie : [marsdawn pour les agents](/fr/cli/agents/).
-- La compétence en un seul fichier pour Claude Code et les agents similaires : [la compétence marsdawn](/fr/cli/skill/).
-- Pourquoi un résultat JSON compact compte pour le contexte de votre agent : [une relecture économe en tokens](/fr/token-efficient-review/).
+- Le schéma JSON complet et chaque code de sortie : [marsdawn pour les agents](/fr/cli/agents/).
+- La compétence en un seul fichier pour Claude Code et les agents similaires : [la compétence marsdawn](/fr/cli/skill/).
+- Pourquoi un résultat JSON compact compte pour le contexte de votre agent : [une relecture économe en tokens](/fr/token-efficient-review/).
 
 ## Plus
 

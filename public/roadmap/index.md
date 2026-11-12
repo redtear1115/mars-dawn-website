@@ -2,7 +2,7 @@
 
 What we're building next, by version. There are no dates: a version ships when it's ready.
 
-Last updated: 7 November 2026
+Last updated: 24 November 2026
 
 Plans can change: an item may move to another version or be dropped.
 
@@ -11,11 +11,6 @@ Plans can change: an item may move to another version or be dropped.
 Everything that has shipped is in the [changelog](/changelog/).
 
 ## Next
-
-### Mac 1.2.2
-
-- Callouts: GitHub alerts and HackMD `:::` blocks.
-- Add Claude Code's Plans folder to the sidebar in one click, newest plan first.
 
 ### Mac 1.2.3
 

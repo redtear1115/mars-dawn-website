@@ -1,19 +1,19 @@
-# Lire du Markdown sur Mac : MarsDawn et les autres options
+# Lire du Markdown sur Mac : MarsDawn et les autres options
 
-Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur [Assistance](/fr/support/).
+Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur [Assistance](/fr/support/).
 
 |  | MarsDawn | Aperçu VS Code | Obsidian | QLMarkdown | LynxOffice |
 |---|---|---|---|---|---|
 | Ouvrir un .md local | Oui, modifie le fichier sur place [app 1.1.1] | Oui, aperçu avec ⇧⌘V [[8](#v8)] | Non précisé par le fournisseur [[21](#v21)] | Aperçu seulement: "for viewing Markdown files" [[22](#v22)] | "Markdown opens rendered and saves back verbatim." [[3](#v3)] |
 | Mermaid | Intégré [[1](#v1)] | Intégré [[8](#v8)] | Intégré, syntaxe des notes [[16](#v16)] | Intégré, blocs `mermaid` [[22](#v22)] | "diagram blocks are not rendered" [[3](#v3)] |
 | Formules | KaTeX, `$…$` et `$$…$$` [[kit](#kit)] | KaTeX [[8](#v8)] | MathJax [[16](#v16)] | MathJax [[22](#v22)] | "Footnotes, math, and diagram blocks are not rendered." [[3](#v3)] |
-| Relire le plan d’un agent / aller à une ligne | `marsdawn open file:line` ; mise à jour depuis le disque ; Copier la référence [/cli/, /features/] | Aperçu diff Markdown, lignes modifiées surlignées [[8](#v8)] ; `code -g file:line` [[14](#v14)] | Pas de paramètre de ligne dans `obsidian://open` [[20](#v20)] | Non précisé par le fournisseur | CLI et serveur MCP ; saut à une ligne non précisé [[4](#v4), [5](#v5)] |
-| PDF : sauts de page, numéros de page | Les sauts ne coupent pas les blocs de code courts [/pdf/] ; numéros de page dans les mises en page Guide et Polycopié [/changelog/] | Non précisé par le fournisseur [[8](#v8)] | Format du papier, marges ; sauts et numéros non précisés [[17](#v17)] | Non précisé par le fournisseur [[22](#v22)] | PDF "including tables" ; sauts et numéros non précisés [[3](#v3)] |
-| Prix | Téléchargement gratuit ; déverrouillage 4,99 USD une fois ; essai de 14 jours [[1](#v1)] | Non précisé par le fournisseur [[12](#v12), [13](#v13)] | Personnel : "Free without limits" ; licence commerciale facultative [[15](#v15)] | Gratuit, GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
+| Relire le plan d’un agent / aller à une ligne | `marsdawn open file:line` ; mise à jour depuis le disque ; Copier la référence [/cli/, /features/] | Aperçu diff Markdown, lignes modifiées surlignées [[8](#v8)] ; `code -g file:line` [[14](#v14)] | Pas de paramètre de ligne dans `obsidian://open` [[20](#v20)] | Non précisé par le fournisseur | CLI et serveur MCP ; saut à une ligne non précisé [[4](#v4), [5](#v5)] |
+| PDF : sauts de page, numéros de page | Les sauts ne coupent pas les blocs de code courts [/pdf/] ; numéros de page dans les mises en page Guide et Polycopié [/changelog/] | Non précisé par le fournisseur [[8](#v8)] | Format du papier, marges ; sauts et numéros non précisés [[17](#v17)] | Non précisé par le fournisseur [[22](#v22)] | PDF "including tables" ; sauts et numéros non précisés [[3](#v3)] |
+| Prix | Téléchargement gratuit ; déverrouillage 4,99 USD une fois ; essai de 14 jours [[1](#v1)] | Non précisé par le fournisseur [[12](#v12), [13](#v13)] | Personnel : "Free without limits" ; licence commerciale facultative [[15](#v15)] | Gratuit, GPL-3.0 [[22](#v22)] | "Free while in early release." [[2](#v2)] |
 | Configuration requise | macOS 26.0 ou ultérieur [[1](#v1)] | "the latest release and the two previous versions" [[9](#v9)] | Non précisé par le fournisseur [[18](#v18)] | macOS 12.0 ou ultérieur [[23](#v23)] | macOS 13 ou ultérieur [[2](#v2)] |
 | Compte requis | Non [/privacy/] | Non précisé par le fournisseur | "No sign-up required" [[15](#v15)] | Non précisé par le fournisseur | Non [[2](#v2)] |
 
-Chaque cellule a été vérifiée le 16 octobre 2026 auprès de la source entre crochets (les numéros V sont listés plus bas). Les citations des fournisseurs restent telles quelles. « Non précisé par le fournisseur » signifie que les pages lues n’en disent rien, pas que la fonction manque. Aucune cellule ne classe les produits. La colonne de MarsDawn elle-même a été mise à jour le 29 octobre 2026 pour l’app iPhone et iPad, et sa cellule PDF le 7 novembre 2026 pour les mises en page Guide et Polycopié.
+Chaque cellule a été vérifiée le 16 octobre 2026 auprès de la source entre crochets (les numéros V sont listés plus bas). Les citations des fournisseurs restent telles quelles. « Non précisé par le fournisseur » signifie que les pages lues n’en disent rien, pas que la fonction manque. Aucune cellule ne classe les produits. La colonne de MarsDawn elle-même a été mise à jour le 29 octobre 2026 pour l’app iPhone et iPad, et sa cellule PDF le 7 novembre 2026 pour les mises en page Guide et Polycopié.
 
 ## Sources
 
@@ -41,19 +41,19 @@ Chaque cellule a été vérifiée le 16 octobre 2026 auprès de la source entre 
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Sur iPhone et iPad, il ne fait que lire : il ne permet ni de modifier ni d’exporter en PDF. Pas d’édition partagée, pas de compte, pas de cloud propre. L’aperçu ne se modifie pas ; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Seules les mises en page Guide et Polycopié ajoutent des numéros de page aux PDF. Pas de vue diff : quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les documents s’ouvrent avec leur contenu masqué jusqu’au déverrouillage.
+Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Sur iPhone et iPad, il ne fait que lire : il ne permet pas de modifier, et les liens d’un PDF enregistré depuis l’app ne fonctionnent pas. Pas d’édition partagée, pas de compte, pas de cloud propre. L’aperçu ne se modifie pas ; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Seules les mises en page Guide et Polycopié ajoutent des numéros de page aux PDF. Pas de vue diff : quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les documents s’ouvrent avec leur contenu masqué jusqu’au déverrouillage.
 
 ## Quand vous n’avez pas besoin de MarsDawn
 
-- Vous vivez dans VS Code et un volet d’aperçu suffit : il affiche Mermaid et KaTeX, propose un aperçu diff Markdown et va à une ligne avec code -g.
-- Vous voulez seulement un aperçu à la barre d’espace dans le Finder : QLMarkdown est une extension Coup d’œil gratuite pour le Markdown.
-- Votre Mac a un macOS plus ancien : QLMarkdown demande la 12.0 ou ultérieure, LynxOffice la 13 ou ultérieure. L’outil gratuit marsdawn demande macOS 15 et exporte en PDF sans l’app.
-- Vous tenez un coffre (vault) de notes liées : c’est pour cela qu’Obsidian est fait.
+- Vous vivez dans VS Code et un volet d’aperçu suffit : il affiche Mermaid et KaTeX, propose un aperçu diff Markdown et va à une ligne avec code -g.
+- Vous voulez seulement un aperçu à la barre d’espace dans le Finder : QLMarkdown est une extension Coup d’œil gratuite pour le Markdown.
+- Votre Mac a un macOS plus ancien : QLMarkdown demande la 12.0 ou ultérieure, LynxOffice la 13 ou ultérieure. L’outil gratuit marsdawn demande macOS 15 et exporte en PDF sans l’app.
+- Vous tenez un coffre (vault) de notes liées : c’est pour cela qu’Obsidian est fait.
 - Vous voulez modifier sur iPhone ou iPad, ou il vous faut l’édition partagée ou l’export Word.
-- Vous voulez qu’un agent traite tableurs, fichiers Word et PDF : LynxOffice documente un serveur MCP pour cela.
+- Vous voulez qu’un agent traite tableurs, fichiers Word et PDF : LynxOffice documente un serveur MCP pour cela.
 
-- [MacMD Viewer ou MarsDawn](/fr/vs/macmd-viewer/) : une visionneuse en lecture seule face à MarsDawn, cellule par cellule, avec quand choisir l’un ou l’autre.
-- [Outils d’aperçu Markdown](/fr/vs/markdown-preview-tools/) : l’aperçu de VS Code, une extension de navigateur et l’aperçu de fichiers de Claude Desktop.
+- [MacMD Viewer ou MarsDawn](/fr/vs/macmd-viewer/) : une visionneuse en lecture seule face à MarsDawn, cellule par cellule, avec quand choisir l’un ou l’autre.
+- [Outils d’aperçu Markdown](/fr/vs/markdown-preview-tools/) : l’aperçu de VS Code, une extension de navigateur et l’aperçu de fichiers de Claude Desktop.
 - [Meilleur lecteur Markdown pour Mac (2026)](/fr/best-markdown-viewer-mac/)
 
 ## Plus

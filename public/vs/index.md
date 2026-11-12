@@ -41,7 +41,7 @@ Every cell was checked on 16 October 2026 against the source in brackets: a numb
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-What MarsDawn lacks. It needs macOS 26 or later. On iPhone and iPad it only reads: it can't edit or export PDFs there. There's no shared editing, no account and no cloud service of its own. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Page numbers come only with the Handbook and Handout PDF layouts. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.
+What MarsDawn lacks. It needs macOS 26 or later. On iPhone and iPad it only reads: it can't edit there, and links in a PDF saved there don't work. There's no shared editing, no account and no cloud service of its own. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Page numbers come only with the Handbook and Handout PDF layouts. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.
 
 ## When you don't need MarsDawn
 

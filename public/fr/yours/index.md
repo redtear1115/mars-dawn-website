@@ -13,8 +13,8 @@ Sur cette capture d’écran :
 
 - Il n’y a aucun compte à créer ni aucune connexion.
 - Rien n’est synchronisé dans un cloud. Vos documents restent là où vous les enregistrez.
-- Rien n’est suivi. MarsDawn ne collecte aucune donnée vous concernant, et son étiquette de confidentialité sur l’App Store indique « Aucune donnée collectée ».
-- Les images web restent bloquées jusqu’à ce que vous choisissiez de les charger : ouvrir un document n’indique donc jamais à un serveur que vous le lisez. Quand vous les chargez, c’est uniquement en https.
+- Rien n’est suivi. MarsDawn ne collecte aucune donnée vous concernant, et son étiquette de confidentialité sur l’App Store indique « Aucune donnée collectée ».
+- Les images web restent bloquées jusqu’à ce que vous choisissiez de les charger : ouvrir un document n’indique donc jamais à un serveur que vous le lisez. Quand vous les chargez, c’est uniquement en https.
 - Les images locales s’affichent dans l’aperçu dès que vous autorisez l’accès à leur dossier.
 
 Les détails se trouvent dans la [politique de confidentialité](/fr/privacy/).

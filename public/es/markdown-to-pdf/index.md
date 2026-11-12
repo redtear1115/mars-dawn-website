@@ -67,6 +67,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 - `--theme`: dawn, classic, modern o vivid, con los colores claros del tema. Sin esta opción, `export` usa `$MARSDAWN_THEME` y, si no existe, dawn.
 - `--paper`: a4 o letter. El valor predeterminado es a4.
+- `--layout`: document (predeterminado), handbook o handout. handbook añade una portada a partir del front matter, un índice y marcadores PDF.
 - `-o`: dónde escribir el PDF, en lugar de junto al archivo fuente.
 - `--allow-remote-images`: carga imágenes de la web durante el renderizado. Quedan desactivadas a menos que la indiques.
 
@@ -79,6 +80,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## Siguiente
 
+- En la app MarsDawn, Archivo ▸ Imprimir… muestra una vista previa de las mismas disposiciones antes de imprimir o guardar: [Exportación a PDF](/es/pdf/).
 - Todas las opciones y el JSON que imprime: [Línea de comandos](/es/cli/).
 - Para que un agente de programación lo haga por ti, ejecuta `marsdawn skill --install` para agregar [la skill de agente de marsdawn](/es/cli/skill/).
 - Los cuatro temas de vista previa y hacia dónde va la exportación a PDF: [temas de vista previa y exportación a PDF](/es/themes/).

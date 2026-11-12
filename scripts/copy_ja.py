@@ -209,7 +209,7 @@ FEATURES = {'title': '機能一覧：Mac 用 Markdown エディタを1ページ�
                                'MarsDawn で選んだテーマを使い、その外観モードの設定に従います。',
                           'links': ['native']},
                          {'h': 'そのほかのファイル',
-                          'p': 'MarsDawn では、テキストファイル（.txt、.log、ソースコード）と PDF も開けます。UTF-8 のテキストはそのまま編集でき、ソースのみの表示になります。PDF は、ページのサムネール、拡大・縮小、検索を備えたビューアで開きます。Mac で JSON と YAML のファイルを書類として開いて編集でき、入力に合わせて更新されるツリープレビューが横に表示されます。Finder のクイックルックでも同じツリー表示になります。iPhone と iPad では JSON と YAML は開けません。',
+                          'p': 'MarsDawn では、テキストファイル（.txt、.log、ソースコード）と PDF も開けます。UTF-8 のテキストはそのまま編集でき、ソースのみの表示になります。PDF は、ページのサムネール、拡大・縮小、検索を備えたビューアで開きます。Mac で JSON と YAML のファイルを書類として開いて編集でき、入力に合わせて更新されるツリープレビューが横に表示されます。Finder のクイックルックでも同じツリー表示になります。iPhone と iPad では、JSON と YAML を読み出し専用で開き、ツリープレビューで表示できます。',
                           'links': []},
                          {'h': 'ファイルはあなたのもの',
                           'p': 'アカウントも、同期も、クラウドもありません。書類は保存した場所に残り、MarsDawn '
@@ -250,7 +250,7 @@ FEATURES = {'title': '機能一覧：Mac 用 Markdown エディタを1ページ�
                        'iPhone や iPad で：MarsDawn で「開く」をタップし、同じファイルを選びます。Mermaid の図、数式、コード、表がきちんと表示され、アウトラインと選んだテーマも使えます。',
                        'Mac に戻って：編集を続けたり、PDF に書き出したりできます。'],
              'buy': '同じ Apple Account なら、1 回のトライアルと 1 回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。',
-             'limits': 'iPhone と iPad の MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。'},
+             'limits': 'iPhone と iPad の MarsDawn は閲覧専用です。Markdown、テキスト、PDF、JSON、YAML を開けますが、編集はできません。ここで保存した PDF のリンクは機能しません。MarsDawn 自体にはクラウドサービスがありません。'},
  'cta': {'h2': 'Mac で試してみる',
          'p1': 'MarsDawn は無料でダウンロードできます。14日間はすべての機能を試せて、その後は USD 4.99 '
                'で一度だけ購入します。サブスクリプションもアカウントも不要です。macOS 26 以降が必要です。',
@@ -595,7 +595,7 @@ def build(k) -> dict:
 <ul>
   <li>トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。</li>
   <li>アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。</li>
-  <li>同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。</li>
+  <li>同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。iPhone と iPad では閲覧専用で、編集はできません。</li>
 </ul>
 <h2>各段階でできること</h2>
 <!--compare:pay-once-states-->
@@ -676,7 +676,7 @@ def build(k) -> dict:
 <h3>デバイスと使う人</h3>
 <ul>
   <li><strong>同期：</strong>MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。</li>
-  <li><strong>iPhone と iPad：</strong>MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。</li>
+  <li><strong>iPhone と iPad：</strong>MarsDawn は閲覧専用です。Markdown、テキスト、PDF、JSON、YAML のファイルを開けますが、編集はできません。共有、プリント、PDF として保存はできますが、ここで保存した PDF のリンクは機能しません。読むのは iCloud Drive に置いたファイルか、ほかの App から開いたファイルで、MarsDawn 自体にはクラウドサービスがありません。</li>
   <li><strong>共有：</strong>アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。</li>
   <li><strong>システム：</strong>MarsDawn には、Mac では macOS 26 以降、iPhone と iPad では iOS 26 または iPadOS 26 以降が必要です。</li>
 </ul>
@@ -684,7 +684,7 @@ def build(k) -> dict:
 <ul>
   <li><strong>編集：</strong>左に Markdown を書き、右でページを読みます。ページ自体は編集できません。</li>
   <li><strong>形式：</strong>MarsDawn は PDF の書き出しとプリントに対応していますが、Word ファイルへの書き出しはできません。</li>
-  <li><strong>その他のファイル：</strong>PDF と、UTF-8 以外のエンコーディングのテキストファイルは読み取り専用で開きます。Mac では JSON と YAML を書類として開いて編集でき、ツリープレビューも表示されます。iPhone と iPad では開けません。</li>
+  <li><strong>その他のファイル：</strong>PDF と、UTF-8 以外のエンコーディングのテキストファイルは読み出し専用で開きます。Mac では JSON と YAML を書類として開いて編集でき、ツリープレビューも表示されます。iPhone と iPad では読み出し専用で開き、ツリープレビューも表示されます。</li>
   <li><strong>テーマ：</strong>夜明け、クラシック、モダン、ビビッドの4種類が内蔵されており、それぞれライトとダークがあります。また、審査済みの<a href="/ja/themes/gallery/">テーマギャラリー</a>からさらにインストールできます（「設定 ▸ 外観モード ▸ テーマを追加…」）。テーマは色といくつかのスタイルオプションを設定するもので、カスタム CSS は使えません。詳しくは<a href="/ja/themes/">テーマ</a>をご覧ください。</li>
   <li><strong>プラグイン：</strong>MarsDawn にプラグインや拡張機能はありません。</li>
 </ul>

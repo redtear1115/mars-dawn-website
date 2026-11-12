@@ -147,6 +147,8 @@ try {
 <h3>개요와 파일 사이드바</h3>
 <p>사이드바의 개요 탭에는 문서의 제목이 나열되며, 하나를 클릭하면 그 위치로 이동합니다. 폴더를 열면 파일 탭에 안에 든 파일이 나열되고, 에이전트가 쓰는 동안 새 파일이 저절로 나타납니다. 폴더가 git 체크아웃이면 머리말에 브랜치나 worktree 이름이 표시됩니다.</p>
 <p class="more"><a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a></p>
+<h3>긴 문서 접기</h3>
+<p>미리보기에서 보기 ▸ 모두 제목 2까지 접기를 선택하면 긴 계획이나 사양서가 2단계 제목까지 접히고, 보기 ▸ 모두 펼치기로 다시 펼칩니다. 포맷 ▸ 접을 수 있는 블록으로 접히는 블록을 넣을 수 있습니다.</p>
 <h3>정확한 줄 가리키기</h3>
 <p>편집 ▸ 참조 복사는 현재 위치를 <code>docs/plan.md:42</code>처럼 경로와 줄 번호로 복사합니다. AI용으로 복사는 그 아래에 선택한 텍스트를 덧붙입니다. 어느 쪽이든 에이전트의 채팅에 붙여넣으면 됩니다.</p>
 <p class="more"><a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a></p>
@@ -197,7 +199,7 @@ try {
 <p>설정 ▸ 화면 모드 ▸ 테마 더 받기…를 선택하면 추가 미리보기 테마 갤러리가 열립니다. 하나를 설치하면 보기 ▸ 미리보기 테마에 나타나고, 제거를 누르면 다시 없어집니다. 갤러리는 열려 있는 동안에만 온라인에 연결됩니다.</p>
 <p class="more"><a href="/ko/themes/gallery/">테마 갤러리</a> &#183; <a href="/ko/themes/new/">테마 만들기</a></p>
 <h3>PDF로 내보내기, 또는 프린트</h3>
-<p>파일 ▸ PDF로 내보내기…는 페이지가 나뉜 PDF를 저장하고, 파일 ▸ 프린트…는 같은 페이지를 프린트합니다. Mermaid 다이어그램이 그려지고, 코드는 구문 강조를 유지하며, 페이지 나눔은 제목을 해당 절에서 떼어 놓거나 짧은 코드 블록이나 다이어그램을 반으로 자르지 않도록 피합니다. 다크 모드로 읽고 있었더라도 PDF에는 항상 테마의 라이트 색상이 쓰입니다.</p>
+<p>파일 ▸ 프린트… 또는 파일 ▸ PDF로 내보내기… 메뉴를 선택하면 ‘프린트 및 내보내기’가 열려 페이지를 미리 볼 수 있습니다. 레이아웃은 ‘문서’, 표지·목차·PDF 책갈피가 있는 ‘설명서’, 메모 칸이 있는 ‘프린트물’ 중에서 고른 뒤 프린트하거나 저장합니다. Mermaid 다이어그램이 그려지고, 코드는 구문 강조를 유지하며, 페이지 나눔은 제목을 해당 절에서 떼어 놓거나 짧은 코드 블록이나 다이어그램을 반으로 자르지 않도록 피합니다. PDF에는 항상 테마의 라이트 색상이 쓰입니다.</p>
 <p class="more"><a href="/ko/pdf/">PDF 내보내기</a></p>
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
@@ -214,12 +216,12 @@ try {
 <p>에이전트는 Mac에서 일합니다. 에이전트가 쓴 계획과 보고서는 iPhone이나 iPad에서도 읽을 수 있습니다.</p>
 <ol class="devsteps">
   <li><strong>Mac에서:</strong> 에이전트의 계획과 보고서를 iCloud Drive의 폴더에 저장합니다.</li>
-  <li><strong>iPhone이나 iPad에서:</strong> MarsDawn에서 '열기'를 탭하고 같은 파일을 고릅니다. Mermaid 다이어그램, 수식, 코드, 표가 제대로 표시되고, 개요와 내가 고른 테마도 쓸 수 있습니다.</li>
-  <li><strong>다시 Mac에서:</strong> 계속 편집하거나 PDF로 내보냅니다.</li>
+  <li><strong>iPhone이나 iPad에서:</strong> MarsDawn에서 '열기'를 탭하고 같은 파일을 고르거나, 다른 앱에서 엽니다. Mermaid 다이어그램, 수식, 코드, 표가 제대로 표시되고, 개요와 내가 고른 테마도 쓸 수 있습니다.</li>
+  <li><strong>전달하기:</strong> 공유하거나 프린트하거나 PDF로 저장합니다.</li>
 </ol>
 <p>같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.</p>
 <a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mac-iphone&amp;mt=8"><img src="/assets/badges/app-store-ko.svg" width="130" height="40" alt="App Store에서 다운로드하기"></a>
-<p class="devnote">iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.</p>
+<p class="devnote">iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown, 텍스트, PDF, JSON, YAML을 열 수 있지만 편집은 할 수 없습니다. 여기서 저장한 PDF의 링크는 작동하지 않습니다. MarsDawn 자체에는 클라우드 서비스가 없습니다.</p>
 <h2 id="files-tabs-and-quick-look">파일, 탭, 훑어보기</h2>
 <h3>윈도우와 탭</h3>
 <p>문서는 기본적으로 맨 앞 윈도우의 탭으로 열립니다. Mac의 탭 설정을 따르려면 설정 ▸ 화면 모드에서 시스템 설정 따르기를 선택하십시오. 자동 저장은 입력하는 동안 작동합니다.</p>
@@ -228,7 +230,7 @@ try {
 <p>Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 있습니다. JSON과 YAML 파일은 트리 보기로 표시됩니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.</p>
 <p class="more"><a href="/ko/native/">Mac 앱</a> &#183; <a href="/ko/quicklook/">Markdown 훑어보기</a></p>
 <h3>기타 파일</h3>
-<p>MarsDawn은 일반 텍스트 파일(<code>.txt</code>, <code>.log</code>, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다. Mac에서 JSON 및 YAML 파일을 편집 가능한 문서로 열 수 있으며, 입력할 때마다 업데이트되는 트리 미리보기가 옆에 표시됩니다. Finder의 훑어보기에서도 같은 트리 보기가 표시됩니다. iPhone과 iPad에서는 JSON과 YAML을 열 수 없습니다.</p>
+<p>MarsDawn은 일반 텍스트 파일(<code>.txt</code>, <code>.log</code>, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다. Mac에서 JSON 및 YAML 파일을 편집 가능한 문서로 열 수 있으며, 입력할 때마다 업데이트되는 트리 미리보기가 옆에 표시됩니다. Finder의 훑어보기에서도 같은 트리 보기가 표시됩니다. iPhone과 iPad에서는 JSON과 YAML을 읽기 전용으로 열 수 있으며, 트리 미리보기가 표시됩니다.</p>
 <h3>내 파일은 내 것</h3>
 <p>계정도, 동기화도, 클라우드도 없습니다. 문서는 저장한 곳에 그대로 있고, MarsDawn은 나에 대한 어떤 데이터도 수집하지 않습니다.</p>
 <p class="more"><a href="/ko/yours/">내 글은 내 Mac에</a></p>

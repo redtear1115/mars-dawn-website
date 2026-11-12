@@ -48,11 +48,11 @@ Weil sie reiner Text ist und ein Texteditor sie so zeigt, wie sie ist. An der Da
 
 ### Warum öffnet sie sich mit unlesbaren Zeichen?
 
-Unlesbare Zeichen bedeuten meist, dass die Datei in einer anderen Textkodierung als UTF-8 gesichert wurde und die App, die sie geöffnet hat, falsch geraten hat. Die Lösung ist, eine UTF-8-Kopie zu sichern. MarsDawn öffnet eine Nur-Text-Datei, die nicht UTF-8 ist, schreibgeschützt, nennt in einer Leiste oben im Fenster die Kodierung, als die es sie gelesen hat, und bietet dort „Als UTF-8 sichern …“ oder „Ablage ▸ Sichern unter …“ (⌥⇧⌘S) an, um eine UTF-8-Kopie zu schreiben, die du bearbeiten kannst.
+Unlesbare Zeichen bedeuten meist, dass die Datei in einer anderen Textkodierung als UTF-8 gesichert wurde und die App, die sie geöffnet hat, falsch geraten hat. Die Lösung ist, eine UTF-8-Kopie zu sichern. MarsDawn öffnet eine Nur-Text-Datei, die nicht UTF-8 ist, schreibgeschützt, nennt in einer Leiste oben im Fenster die Kodierung, als die es sie gelesen hat, und bietet dort „Als UTF-8 sichern …“ oder „Ablage ▸ Sichern unter …“ (⌥⇧⌘S) an, um eine UTF-8-Kopie zu schreiben, die du bearbeiten kannst.
 
 ### Kann ich eine .md-Datei in ein PDF umwandeln?
 
-Ja. Wähle in MarsDawn „Ablage ▸ Als PDF exportieren …“ (⌥⌘E) oder „Ablage ▸ Drucken …“; die Seiten werden umbrochen, Diagramme sind eingezeichnet und Code ist hervorgehoben, in den hellen Farben des Themas. Ohne die App erzeugt das kostenlose Befehlszeilenwerkzeug `marsdawn export` dasselbe PDF: `marsdawn export notes.md`. Siehe [PDF-Export](/de/pdf/) und [Markdown zu PDF](/de/markdown-to-pdf/).
+Ja. Wähle in MarsDawn „Ablage ▸ Als PDF exportieren …“ (⌥⌘E) oder „Ablage ▸ Drucken …“; die Seiten werden umbrochen, Diagramme sind eingezeichnet und Code ist hervorgehoben, in den hellen Farben des Themas. Ohne die App erzeugt das kostenlose Befehlszeilenwerkzeug `marsdawn export` dasselbe PDF: `marsdawn export notes.md`. Siehe [PDF-Export](/de/pdf/) und [Markdown zu PDF](/de/markdown-to-pdf/).
 
 ### Kann ich die .md-Dateien öffnen, die mein KI-Agent geschrieben hat?
 

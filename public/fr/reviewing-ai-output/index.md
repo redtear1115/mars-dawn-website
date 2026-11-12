@@ -2,30 +2,30 @@
 
 Un agent IA peut rédiger vite un plan, une spécification ou des notes. Ce qu’il produit doit pourtant être compris par la personne qui va agir en conséquence, et non cru parce que le texte est fluide.
 
-**MarsDawn est conçu pour cette lecture : la page rendue à côté de la source, avec les diagrammes Mermaid et les formules KaTeX dessinés au lieu de rester des marques, pour que la structure d’un document se lise d’un coup d’œil.**
+**MarsDawn est conçu pour cette lecture : la page rendue à côté de la source, avec les diagrammes Mermaid et les formules KaTeX dessinés au lieu de rester des marques, pour que la structure d’un document se lise d’un coup d’œil.**
 
 ## Fluide ne veut pas dire juste
 
-À propos du code écrit avec l’aide de l’IA et destiné à être retravaillé plutôt que jeté, Simon Willison l’a formulé ainsi : « la qualité et la compréhensibilité du code sous-jacent sont essentielles » ([Vibe coding](https://simonwillison.net/2025/Mar/6/vibe-coding/), 2025). C’est vrai aussi d’un document : le brouillon d’un agent qui se lit sans accroc peut se tromper de structure, de chiffres ou de logique, et une prose fluide n’indique pas quelles parties vérifier.
+À propos du code écrit avec l’aide de l’IA et destiné à être retravaillé plutôt que jeté, Simon Willison l’a formulé ainsi : « la qualité et la compréhensibilité du code sous-jacent sont essentielles » ([Vibe coding](https://simonwillison.net/2025/Mar/6/vibe-coding/), 2025). C’est vrai aussi d’un document : le brouillon d’un agent qui se lit sans accroc peut se tromper de structure, de chiffres ou de logique, et une prose fluide n’indique pas quelles parties vérifier.
 
 ## De l’inférence, pas de la compilation
 
-Birgitta Böckeler, pour Thoughtworks, pose la distinction sans détour : « les LLM ne sont PAS des compilateurs, interpréteurs, transpileurs ou assembleurs du langage naturel, ce sont des moteurs d’inférence » ([I still care about the code](https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html)). Un compilateur accepte votre entrée ou signale une erreur ; un agent peut rendre quelque chose qui s’exécute, ou se lit, sans être juste. Quelqu’un doit encore vérifier.
+Birgitta Böckeler, pour Thoughtworks, pose la distinction sans détour : « les LLM ne sont PAS des compilateurs, interpréteurs, transpileurs ou assembleurs du langage naturel, ce sont des moteurs d’inférence » ([I still care about the code](https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html)). Un compilateur accepte votre entrée ou signale une erreur ; un agent peut rendre quelque chose qui s’exécute, ou se lit, sans être juste. Quelqu’un doit encore vérifier.
 
 ## Ce que MarsDawn apporte à ce lecteur
 
 - La page rendue à côté de la source, mise à jour quand l’un ou l’autre côté change, pour avoir sous les yeux à la fois une affirmation et la façon dont elle est structurée.
-- Les diagrammes Mermaid dessinés : un organigramme qu’un agent a décrit en texte devient une forme que vous pouvez réellement suivre.
-- Les formules KaTeX rendues, pas laissées sous forme de suite de barres obliques inverses : une formule se lit comme une formule.
-- Rien ne se lance tout seul. MarsDawn ne note pas, ne résume pas et ne signale rien dans le document à votre place ; il met la structure sous vos yeux pour que vous le fassiez.
+- Les diagrammes Mermaid dessinés : un organigramme qu’un agent a décrit en texte devient une forme que vous pouvez réellement suivre.
+- Les formules KaTeX rendues, pas laissées sous forme de suite de barres obliques inverses : une formule se lit comme une formule.
+- Rien ne se lance tout seul. MarsDawn ne note pas, ne résume pas et ne signale rien dans le document à votre place ; il met la structure sous vos yeux pour que vous le fassiez.
 
 ## Pour aller plus loin
 
-- Comment cette relecture reste économique pour le contexte de l’agent : [une relecture économe en tokens](/fr/token-efficient-review/).
-- Remettre le document relu à quelqu’un d’autre : [partager un PDF](/fr/sharing-exported-pdfs/).
-- Pourquoi c’est difficile à lire, et comment s’y prendre : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
-- Pourquoi les agents exposent leurs plans : [Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?](/fr/agent-transparency/)
-- Ce qu’est MarsDawn, en une page : [la page d’accueil](/fr/).
+- Comment cette relecture reste économique pour le contexte de l’agent : [une relecture économe en tokens](/fr/token-efficient-review/).
+- Remettre le document relu à quelqu’un d’autre : [partager un PDF](/fr/sharing-exported-pdfs/).
+- Pourquoi c’est difficile à lire, et comment s’y prendre : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
+- Pourquoi les agents exposent leurs plans : [Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?](/fr/agent-transparency/)
+- Ce qu’est MarsDawn, en une page : [la page d’accueil](/fr/).
 
 ## Plus
 

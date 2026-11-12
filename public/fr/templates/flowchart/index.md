@@ -1,6 +1,6 @@
 # Modèle d’organigramme en Markdown
 
-Un organigramme Mermaid avec les étapes détaillées en dessous, pour que le diagramme et le texte puissent se vérifier l’un l’autre. Retirez une étape, et demandez à l’agent de corriger le reste. Comment le diagramme est dessiné sur Mac : [Aperçu Mermaid sur Mac](/fr/mermaid-preview-mac/).
+Un organigramme Mermaid avec les étapes détaillées en dessous, pour que le diagramme et le texte puissent se vérifier l’un l’autre. Retirez une étape, et demandez à l’agent de corriger le reste. Comment le diagramme est dessiné sur Mac : [Aperçu Mermaid sur Mac](/fr/mermaid-preview-mac/).
 
 ## Le modèle
 
@@ -42,7 +42,7 @@ Dessine le flux de [le processus] dans flowchart.md, à partir du modèle dispon
 
 ## Le partager en PDF
 
-`marsdawn export flowchart.md` : le diagramme est dessiné dans le PDF.
+`marsdawn export flowchart.md` : le diagramme est dessiné dans le PDF.
 
 ## Ce qu’il ne fait pas
 
@@ -50,18 +50,18 @@ MarsDawn dessine ce que dit le Mermaid. Il ne permet pas de disposer le diagramm
 
 ## Questions
 
-### Quels diagrammes fonctionnent ?
+### Quels diagrammes fonctionnent ?
 
-Tout ce que Mermaid sait dessiner : organigrammes, diagrammes de séquence, diagrammes d’états, et plus encore.
+Tout ce que Mermaid sait dessiner : organigrammes, diagrammes de séquence, diagrammes d’états, et plus encore.
 
-### Pourquoi écrire aussi les étapes ?
+### Pourquoi écrire aussi les étapes ?
 
-Qui survole regarde le diagramme ; qui vérifie a besoin du texte. L’agent peut garder les deux en phase.
+Qui survole regarde le diagramme ; qui vérifie a besoin du texte. L’agent peut garder les deux en phase.
 
 ## Autres modèles
 
-- [Spécification (PRD)](/fr/templates/spec/) : problème, objectifs, exigences, un diagramme de flux et des critères d’acceptation.
-- [Compte rendu de réunion](/fr/templates/meeting-notes/) : décisions et actions, chacune avec un responsable.
+- [Spécification (PRD)](/fr/templates/spec/) : problème, objectifs, exigences, un diagramme de flux et des critères d’acceptation.
+- [Compte rendu de réunion](/fr/templates/meeting-notes/) : décisions et actions, chacune avec un responsable.
 - [Modèles Markdown](/fr/templates/)
 
 ## Plus

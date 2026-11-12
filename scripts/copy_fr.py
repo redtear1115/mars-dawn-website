@@ -260,7 +260,7 @@ FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur u
                           'p': 'Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le lire mis en forme, diagrammes compris. Les fichiers JSON et YAML s’affichent en arbre. Coup d’œil utilise le thème que vous avez choisi dans MarsDawn et suit son réglage d’apparence.',
                           'links': ['native']},
                          {'h': 'Autres fichiers',
-                          'p': 'MarsDawn ouvre aussi les fichiers texte brut (.txt, .log, code source) et les PDF. Le texte UTF-8 s’ouvre prêt à être modifié, en source uniquement. Les PDF s’ouvrent dans un lecteur avec vignettes de pages, zoom et recherche. Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre. iPhone et iPad n’ouvrent pas les fichiers JSON et YAML.',
+                          'p': 'MarsDawn ouvre aussi les fichiers texte brut (.txt, .log, code source) et les PDF. Le texte UTF-8 s’ouvre prêt à être modifié, en source uniquement. Les PDF s’ouvrent dans un lecteur avec vignettes de pages, zoom et recherche. Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre. Sur iPhone et iPad, JSON et YAML s’ouvrent en lecture seule, avec un aperçu en arbre.',
                           'links': []},
                          {'h': 'Vos fichiers restent les vôtres',
                           'p': 'Il n’y a ni compte, ni synchronisation, ni cloud. Les documents '
@@ -311,7 +311,7 @@ FEATURES = {'title': 'Fonctionnalités\xa0: un éditeur Markdown pour Mac, sur u
                        'Sur iPhone ou iPad\xa0: dans MarsDawn, touchez «\xa0Ouvrir\xa0» et choisissez le même fichier. Les diagrammes Mermaid, les formules, le code et les tableaux s’affichent mis en forme, avec le plan et votre thème.',
                        'De retour sur le Mac\xa0: continuez à modifier, ou exportez un PDF.'],
              'buy': 'Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.',
-             'limits': 'Sur iPhone et iPad, MarsDawn sert uniquement à lire\xa0: il ouvre les fichiers Markdown et texte brut, sans modification ni export PDF. Il lit les fichiers que vous gardez dans iCloud Drive\xa0; MarsDawn n’a pas de cloud à lui.'},
+             'limits': 'Sur iPhone et iPad, MarsDawn sert uniquement à lire\xa0: il ouvre les fichiers Markdown, texte, PDF, JSON et YAML, sans modification. Les liens d’un PDF enregistré depuis l’app ne fonctionnent pas. MarsDawn n’a pas de cloud à lui.'},
  'cta': {'h2': 'Essayez-le sur votre Mac',
          'p1': 'MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis '
                'débloquez-le une seule fois pour 4,99 USD. Sans abonnement ni compte. macOS 26 ou '
@@ -708,7 +708,7 @@ def build(k) -> dict:
 <ul>
   <li>L’essai ne vous coûte rien non plus. À la fin, rien n’est acheté, sauf si vous choisissez de déverrouiller.</li>
   <li>Il n’y a pas de compte. MarsDawn ne vous demande jamais d’en créer un.</li>
-  <li>Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad. Sur iPhone et iPad, MarsDawn sert à lire : il ne permet ni de modifier ni d’exporter en PDF.</li>
+  <li>Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad. Sur iPhone et iPad, MarsDawn sert à lire : il ne permet pas de modifier.</li>
 </ul>
 <h2>Ce qui fonctionne, et quand</h2>
 <!--compare:pay-once-states-->
@@ -789,7 +789,7 @@ def build(k) -> dict:
 <h3>Appareils et personnes</h3>
 <ul>
   <li><strong>Synchronisation :</strong> MarsDawn ne synchronise pas vos documents. Ils restent là où vous les enregistrez ; pour en utiliser un sur un autre Mac, gardez-le dans un dossier que vous synchronisez déjà.</li>
-  <li><strong>iPhone et iPad :</strong> MarsDawn y sert uniquement à lire. Il ouvre les fichiers Markdown et texte brut, sans modification ni export PDF. Il lit les fichiers que vous gardez dans iCloud Drive ; MarsDawn n’a pas de cloud à lui.</li>
+  <li><strong>iPhone et iPad :</strong> MarsDawn y sert uniquement à lire. Il ouvre les fichiers Markdown, texte, PDF, JSON et YAML, sans modification. Vous pouvez partager, imprimer ou enregistrer en PDF, mais les liens d’un PDF enregistré depuis l’app ne fonctionnent pas. Il lit les fichiers que vous gardez dans iCloud Drive ou ouvrez depuis une autre app ; MarsDawn n’a pas de cloud à lui.</li>
   <li><strong>Partage :</strong> il n’y a ni comptes ni édition partagée, car MarsDawn est conçu pour une personne, sur son propre Mac.</li>
   <li><strong>Système :</strong> MarsDawn nécessite macOS 26 ou version ultérieure sur Mac, et iOS 26 ou iPadOS 26 ou version ultérieure sur iPhone et iPad.</li>
 </ul>
@@ -797,7 +797,7 @@ def build(k) -> dict:
 <ul>
   <li><strong>Édition :</strong> vous écrivez le Markdown à gauche et lisez la page à droite ; la page elle-même n’est pas modifiable.</li>
   <li><strong>Formats :</strong> MarsDawn exporte en PDF et imprime, mais n’exporte pas de fichiers Word.</li>
-  <li><strong>Autres fichiers :</strong> les PDF et les fichiers texte dans un autre encodage que l’UTF-8 s’ouvrent en lecture seule. Sur Mac, JSON et YAML s’ouvrent comme des documents modifiables avec un aperçu en arbre ; iPhone et iPad ne les ouvrent pas.</li>
+  <li><strong>Autres fichiers :</strong> les PDF et les fichiers texte dans un autre encodage que l’UTF-8 s’ouvrent en lecture seule. Sur Mac, JSON et YAML s’ouvrent comme des documents modifiables avec un aperçu en arbre ; sur iPhone et iPad, ils s’ouvrent en lecture seule, avec un aperçu en arbre aussi.</li>
   <li><strong>Thèmes :</strong> l’app inclut Aube, Classique, Moderne et Vif, chacun en clair et en sombre, et vous pouvez en installer d’autres depuis la <a href="/fr/themes/gallery/">galerie de thèmes</a> vérifiée (Réglages ▸ Apparence ▸ Obtenir plus de thèmes…). Un thème définit des couleurs et quelques options de style ; il n’y a pas de CSS personnalisé. Voir <a href="/fr/themes/">les thèmes</a>.</li>
   <li><strong>Plug-ins :</strong> MarsDawn n’a ni plug-ins ni extensions.</li>
 </ul>

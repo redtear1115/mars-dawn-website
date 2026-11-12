@@ -1,30 +1,30 @@
 # Le pipeline d’evals de Jess Ou, et l’étape qui reste encore la vôtre
 
-**En juillet 2026, LangChain a publié un nouveau « What is an AI agent ? » à l’adresse où se trouvait le billet 2024 de Harrison Chase « What is an agent ? » — celui-ci écrit par Jess Ou, avec une définition presque mot pour mot la sienne. L’essentiel de son billet porte sur quelque chose que le sien ne couvrait pas : tout un pipeline pour évaluer les agents automatiquement. Son texte est candid sur les endroits où ce pipeline a encore besoin d’une personne — et où non.**
+**En juillet 2026, LangChain a publié un nouveau « What is an AI agent ? » à l’adresse où se trouvait le billet 2024 de Harrison Chase « What is an agent ? » — celui-ci écrit par Jess Ou, avec une définition presque mot pour mot la sienne. L’essentiel de son billet porte sur quelque chose que le sien ne couvrait pas : tout un pipeline pour évaluer les agents automatiquement. Son texte est candid sur les endroits où ce pipeline a encore besoin d’une personne — et où non.**
 
 ## Ce que le billet avance
 
-La définition d’Ou fait écho de près à celle de Chase :
+La définition d’Ou fait écho de près à celle de Chase :
 
 > “An AI agent is a system that uses a large language model to decide the control flow of an application.”
 
-Le control flow, encore une fois, c’est simplement quelle étape tourne ensuite. De là elle décrit le Agent Development Lifecycle de LangChain — build, test, deploy, monitor — et une approche en couches pour vérifier le travail d’un agent sans qu’une personne lise chaque exécution : les evals en ligne échantillonnent les traces de production (journaux enregistrés d’exécutions réelles) pour les régressions, les evals hors ligne tournent contre des jeux de données curatés pour attraper un mauvais changement avant la mise en production, et « LLM-as-a-judge » note la sortie d’une exécution selon des critères qu’une personne a définis à l’avance, à une échelle que la relecture manuelle ne peut pas atteindre. Elle est directe sur la place qui reste à une personne dans ce pipeline :
+Le control flow, encore une fois, c’est simplement quelle étape tourne ensuite. De là elle décrit le Agent Development Lifecycle de LangChain — build, test, deploy, monitor — et une approche en couches pour vérifier le travail d’un agent sans qu’une personne lise chaque exécution : les evals en ligne échantillonnent les traces de production (journaux enregistrés d’exécutions réelles) pour les régressions, les evals hors ligne tournent contre des jeux de données curatés pour attraper un mauvais changement avant la mise en production, et « LLM-as-a-judge » note la sortie d’une exécution selon des critères qu’une personne a définis à l’avance, à une échelle que la relecture manuelle ne peut pas atteindre. Elle est directe sur la place qui reste à une personne dans ce pipeline :
 
 > “For sensitive or irreversible actions, we recommend human-in-the-loop controls that pause the agent for approval, edits, rejection, or clarification.”
 
-Elle a aussi une phrase sur le jugement qui ne s’évapore pas à l’échelle, quel que soit le niveau du pipeline : « Do not outsource judgment you cannot evaluate. If you wouldn’t recognize a correct answer, neither will the agent. » `/reviewing-agent-plans/` s’appuie déjà sur exactement cette phrase — cette note ne répète pas cette discussion. Ou ne mentionne MarsDawn nulle part et ne recommande aucun outil Markdown. Elle ne nomme jamais Chase non plus ; ce qui relie les deux billets, c’est que LangChain a publié le sien en 2026 à l’adresse qu’occupait le sien de 2024, avec une définition presque identique — une observation que nous faisons, pas elle.
+Elle a aussi une phrase sur le jugement qui ne s’évapore pas à l’échelle, quel que soit le niveau du pipeline : « Do not outsource judgment you cannot evaluate. If you wouldn’t recognize a correct answer, neither will the agent. » `/reviewing-agent-plans/` s’appuie déjà sur exactement cette phrase — cette note ne répète pas cette discussion. Ou ne mentionne MarsDawn nulle part et ne recommande aucun outil Markdown. Elle ne nomme jamais Chase non plus ; ce qui relie les deux billets, c’est que LangChain a publié le sien en 2026 à l’adresse qu’occupait le sien de 2024, avec une définition presque identique — une observation que nous faisons, pas elle.
 
 ## Notre lecture, pas celle d’Ou
 
-La phrase human-in-the-loop d’Ou porte sur le filtrage d’actions précises avant qu’elles ne tournent — mettre en pause une write action pour approbation, la même idée que la distinction read-only / write de Chip Huyen pointe sous un autre angle — pas sur une personne qui lit un rapport fini après coup. Lu avec soin, l’essentiel de son pipeline est conçu pour retirer une personne de la vérification de routine, pas pour en ajouter une : les evals en ligne et hors ligne et le LLM-as-a-judge existent précisément pour qu’une équipe n’ait pas à relire manuellement chaque trace. Ce n’est pas une critique du texte — c’est son but déclaré, et un but raisonnable à l’échelle de production. Mais cela signifie que la relecture que vous faites à la main — lire un plan ou un rapport qu’un agent vous tend directement — est exactement le genre de contrôle que son pipeline est bâti pour réduire, pas remplacer. Sa propre phrase sur le jugement pose un plancher sous cette réduction : partout où vous ne pouvez pas personnellement distinguer une bonne réponse d’une mauvaise, il vous faut encore le lire vous-même.
+La phrase human-in-the-loop d’Ou porte sur le filtrage d’actions précises avant qu’elles ne tournent — mettre en pause une write action pour approbation, la même idée que la distinction read-only / write de Chip Huyen pointe sous un autre angle — pas sur une personne qui lit un rapport fini après coup. Lu avec soin, l’essentiel de son pipeline est conçu pour retirer une personne de la vérification de routine, pas pour en ajouter une : les evals en ligne et hors ligne et le LLM-as-a-judge existent précisément pour qu’une équipe n’ait pas à relire manuellement chaque trace. Ce n’est pas une critique du texte — c’est son but déclaré, et un but raisonnable à l’échelle de production. Mais cela signifie que la relecture que vous faites à la main — lire un plan ou un rapport qu’un agent vous tend directement — est exactement le genre de contrôle que son pipeline est bâti pour réduire, pas remplacer. Sa propre phrase sur le jugement pose un plancher sous cette réduction : partout où vous ne pouvez pas personnellement distinguer une bonne réponse d’une mauvaise, il vous faut encore le lire vous-même.
 
 ## Où MarsDawn aide, et où non
 
-MarsDawn n’est pas un pipeline d’evals et n’a aucun modèle d’IA à l’intérieur — il ne notera pas une trace, ne lancera pas de passe LLM-as-a-judge, ni ne décidera quelles actions sont assez sensibles pour être mises en pause. Il est bâti pour le moment que son pipeline confie encore à une personne : lire la chose directement. L’onglet Plan (Présentation ▸ Afficher la barre latérale, ⌃⌘S) liste les titres d’un long rapport, la source et l’aperçu rendu côte à côte (⌘2) avec Mermaid et KaTeX dessinés, et Édition ▸ Copier la référence (⌥⌘C) avec Copier pour l’IA (⌃⌥⌘C) transforment un contrôle ponctuel en retour précis sur lequel l’agent peut agir.
+MarsDawn n’est pas un pipeline d’evals et n’a aucun modèle d’IA à l’intérieur — il ne notera pas une trace, ne lancera pas de passe LLM-as-a-judge, ni ne décidera quelles actions sont assez sensibles pour être mises en pause. Il est bâti pour le moment que son pipeline confie encore à une personne : lire la chose directement. L’onglet Plan (Présentation ▸ Afficher la barre latérale, ⌃⌘S) liste les titres d’un long rapport, la source et l’aperçu rendu côte à côte (⌘2) avec Mermaid et KaTeX dessinés, et Édition ▸ Copier la référence (⌥⌘C) avec Copier pour l’IA (⌃⌥⌘C) transforment un contrôle ponctuel en retour précis sur lequel l’agent peut agir.
 
 ## Essayer
 
-MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -32,13 +32,13 @@ brew install redtear1115/tap/marsdawn
 
 Il exporte le Markdown en PDF sans l’app.
 
-[Ligne de commande](/fr/cli/) · Avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
+[Ligne de commande](/fr/cli/) · Avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
 
 ## Ensuite
 
-- La checklist complète construite en partie sur sa phrase « outsource judgment » : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/)
-- Où cette même définition a commencé, en 2024 : [Le spectre de Harrison Chase : plus c’est agentic, plus vous voudrez regarder](/fr/reading-notes/harrison-chase-what-is-an-agent/)
-- Retour à la série : [Notes de lecture de la rédaction](/fr/reading-notes/)
+- La checklist complète construite en partie sur sa phrase « outsource judgment » : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/)
+- Où cette même définition a commencé, en 2024 : [Le spectre de Harrison Chase : plus c’est agentic, plus vous voudrez regarder](/fr/reading-notes/harrison-chase-what-is-an-agent/)
+- Retour à la série : [Notes de lecture de la rédaction](/fr/reading-notes/)
 
 ## Sources
 

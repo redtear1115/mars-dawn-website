@@ -67,6 +67,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 - `--theme`：dawn、classic、modern、vivid のいずれかで、テーマのライトカラーを使います。指定しない場合、`export` は `$MARSDAWN_THEME`、それもなければ dawn を使います。
 - `--paper`：a4 または letter。デフォルトは a4 です。
+- `--layout`：document（デフォルト）、handbook、handout のいずれか。handbook はフロントマターから表紙を作り、目次と PDF のブックマークを付けます。
 - `-o`：PDF をソースの隣ではなく、どこに書き出すか。
 - `--allow-remote-images`：レンダリング時にウェブから画像を読み込みます。指定しない限りオフのままです。
 
@@ -79,6 +80,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## 次に
 
+- MarsDawn アプリでは、「ファイル ▸ プリント…」で同じレイアウトをプレビューしてから、プリントまたは保存できます：[PDF 書き出し](/ja/pdf/)。
 - すべてのオプションと出力される JSON：[コマンドライン](/ja/cli/)。
 - コーディングエージェントにこれをやらせるには、`marsdawn skill --install` を実行して[marsdawn のエージェントスキル](/ja/cli/skill/)を追加してください。
 

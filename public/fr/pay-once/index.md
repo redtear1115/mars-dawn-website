@@ -1,6 +1,6 @@
 # Essayez tout. Puis payez une fois.
 
-MarsDawn se télécharge gratuitement. Lancez l’essai de 14 jours et toutes les fonctionnalités sont disponibles ; pour continuer ensuite, un achat unique de 4,99 USD le déverrouille. Il n’y a ni abonnement ni compte.
+MarsDawn se télécharge gratuitement. Lancez l’essai de 14 jours et toutes les fonctionnalités sont disponibles ; pour continuer ensuite, un achat unique de 4,99 USD le déverrouille. Il n’y a ni abonnement ni compte.
 
 ![MarsDawn avec le thème Vif, la source Markdown à gauche et la page mise en forme à droite.](https://marsdawn.southern-light.dev/assets/screens/04-vivid-1180.png)
 
@@ -14,12 +14,12 @@ Sur cette capture d’écran :
 ## Comment ça marche
 
 1. **Téléchargez-le gratuitement.** MarsDawn se télécharge gratuitement sur le Mac App Store.
-2. **Essayez tout pendant 14 jours.** Lancez l’essai et tout MarsDawn fonctionne pendant 14 jours : tous les thèmes et toutes les dispositions, l’export PDF et l’impression, ainsi que les actions Siri et Raccourcis. Coup d’œil dans le Finder fonctionne avec ou sans essai.
-3. **Déverrouillez-le une fois.** Pour continuer ensuite, déverrouillez-le une fois pour 4,99 USD. C’est un achat intégré, pas un abonnement : rien ne se renouvelle et rien ne vous sera facturé plus tard.
+2. **Essayez tout pendant 14 jours.** Lancez l’essai et tout MarsDawn fonctionne pendant 14 jours : tous les thèmes et toutes les dispositions, l’export PDF et l’impression, ainsi que les actions Siri et Raccourcis. Coup d’œil dans le Finder fonctionne avec ou sans essai.
+3. **Déverrouillez-le une fois.** Pour continuer ensuite, déverrouillez-le une fois pour 4,99 USD. C’est un achat intégré, pas un abonnement : rien ne se renouvelle et rien ne vous sera facturé plus tard.
 
 - L’essai ne vous coûte rien non plus. À la fin, rien n’est acheté, sauf si vous choisissez de déverrouiller.
 - Il n’y a pas de compte. MarsDawn ne vous demande jamais d’en créer un.
-- Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad. Sur iPhone et iPad, MarsDawn sert à lire : il ne permet ni de modifier ni d’exporter en PDF.
+- Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad. Sur iPhone et iPad, MarsDawn sert à lire : il ne permet pas de modifier.
 
 ## Ce qui fonctionne, et quand
 
@@ -31,8 +31,8 @@ Sur cette capture d’écran :
 | Garder le texte saisi avec Fichier ▸ Enregistrer sous… | Oui | Oui, dans une fenêtre ouverte à la fin de l’essai | Oui |
 | Actions Siri et Raccourcis | Oui | Non | Oui |
 | Coup d’œil dans le Finder, avec diagrammes Mermaid et formules | Oui | Oui, sans changement | Oui |
-| `marsdawn export` (outil en ligne de commande gratuit) : PDF avec diagrammes et formules | Oui | Oui, sans changement | Oui |
-| Vos fichiers sur le disque | Tels que vous les avez enregistrés | Tels que vous les avez enregistrés ; le verrouillage ne les modifie jamais | Tels que vous les avez enregistrés |
+| `marsdawn export` (outil en ligne de commande gratuit) : PDF avec diagrammes et formules | Oui | Oui, sans changement | Oui |
+| Vos fichiers sur le disque | Tels que vous les avez enregistrés | Tels que vous les avez enregistrés ; le verrouillage ne les modifie jamais | Tels que vous les avez enregistrés |
 
 Avant que vous lanciez l’essai, MarsDawn affiche l’offre d’essai. La lancer ne coûte rien.
 
@@ -43,27 +43,27 @@ Les fichiers PDF ouverts dans MarsDawn sont verrouillés de la même façon à l
 - Après 14 jours, et tant que vous ne l’avez pas déverrouillé, vous ne pouvez plus lire, modifier, exporter ni imprimer de documents dans MarsDawn. Un document s’ouvre toujours, mais son contenu est masqué.
 - Vos fichiers ne changent pas. Ce sont des fichiers ordinaires sur votre Mac, et Coup d’œil dans le Finder continue de les afficher.
 - L’[outil en ligne de commande `marsdawn`](/fr/cli/), gratuit, continue de les exporter en PDF, avec ou sans essai.
-- Si un document est ouvert dans MarsDawn à la fin de l’essai, le texte saisi n’est pas perdu : utilisez Fichier ▸ Enregistrer sous… pour le garder.
+- Si un document est ouvert dans MarsDawn à la fin de l’essai, le texte saisi n’est pas perdu : utilisez Fichier ▸ Enregistrer sous… pour le garder.
 
 ## Questions et réponses
 
-### Combien coûte MarsDawn ?
+### Combien coûte MarsDawn ?
 
 MarsDawn se télécharge gratuitement depuis le Mac App Store. Vous pouvez utiliser toutes les fonctions pendant 14 jours, puis un achat intégré unique de 4,99 USD le déverrouille.
 
-### Y a-t-il un abonnement ?
+### Y a-t-il un abonnement ?
 
-Non. Le déverrouillage est un achat unique : rien ne se renouvelle et rien ne vous est facturé plus tard. Lancer l’essai ne coûte rien non plus.
+Non. Le déverrouillage est un achat unique : rien ne se renouvelle et rien ne vous est facturé plus tard. Lancer l’essai ne coûte rien non plus.
 
-### Que se passe-t-il à la fin de l’essai de 14 jours ?
+### Que se passe-t-il à la fin de l’essai de 14 jours ?
 
-Tant que vous n’avez pas déverrouillé MarsDawn, vous ne pouvez plus y lire, modifier, exporter ni imprimer de documents : ils s’ouvrent avec leur contenu masqué. Vos fichiers restent exactement comme vous les avez enregistrés.
+Tant que vous n’avez pas déverrouillé MarsDawn, vous ne pouvez plus y lire, modifier, exporter ni imprimer de documents : ils s’ouvrent avec leur contenu masqué. Vos fichiers restent exactement comme vous les avez enregistrés.
 
-### Coup d’œil fonctionne-t-il encore après l’essai ?
+### Coup d’œil fonctionne-t-il encore après l’essai ?
 
 Oui. Coup d’œil (Quick Look) dans le Finder fonctionne avec ou sans l’essai. L’outil en ligne de commande gratuit marsdawn continue aussi d’exporter le Markdown en PDF.
 
-### Ai-je besoin d’un compte ?
+### Ai-je besoin d’un compte ?
 
 Non. MarsDawn ne vous demande jamais de créer un compte.
 

@@ -955,7 +955,10 @@ def ingest_275() -> None:
     - comment 2 (R2): Q3's new answer in en, zh-Hant and ja (approved by comment 4), and for zh-Hans, ko, de, fr and es a
       table with Q3's answer, Q9 and Q10 (question, answer, link row);
     - comment 3 (R3): the zh-Hant and ja link rows of Q9 and Q10, which replace comment 1's;
-    - comment 4 (R4): the owner's approval of Q3's new answer, the same words as comment 2's."""
+    - comment 4 (R4): the owner's approval of Q3's new answer, the same words as comment 2's.
+    Q3 is superseded (#369, plan A): build_pages.py takes the home FAQ's iPhone and iPad answer from copy369/data.py
+    key "faq" (approval comment 6796859928) and no longer reads "q3". The "q3" values here and their #275 records in
+    slots.json only show what #275 approved; Q9 and Q10 are still built from #275."""
     c1, b1 = comment(275, 1)
     c2, b2 = comment(275, 2)
     c3, b3 = comment(275, 3)
