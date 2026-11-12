@@ -365,7 +365,7 @@ Select a Markdown file in Finder and press Space to read it rendered, diagrams i
 
 ### Other files
 
-MarsDawn also opens plain text files (`.txt`, `.log`, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. iPhone and iPad don't open JSON or YAML.
+MarsDawn also opens plain text files (`.txt`, `.log`, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. On iPhone and iPad, JSON and YAML open read-only, with a tree preview.
 
 ### Your files stay yours
 
@@ -475,7 +475,7 @@ In this screenshot:
 
 - The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.
 - There is no account. MarsDawn never asks you to create one.
-- With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. On iPhone and iPad, MarsDawn is for reading: it doesn't edit or export PDFs.
+- With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. On iPhone and iPad, MarsDawn is for reading: it doesn't edit files.
 
 ## What works when
 
@@ -607,7 +607,7 @@ In this screenshot:
 ### Devices and people
 
 - **Sync:** MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.
-- **iPhone and iPad:** MarsDawn is for reading only. It opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.
+- **iPhone and iPad:** MarsDawn is for reading only. It opens Markdown, text, PDF, JSON and YAML files but doesn't edit them. You can share, print or save a PDF, but links in a PDF saved there don't work. It reads the files you keep in iCloud Drive or open from other apps; MarsDawn has no cloud service of its own.
 - **Sharing:** there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.
 - **System:** MarsDawn needs macOS 26 or later on the Mac, and iOS 26 or iPadOS 26 or later on iPhone and iPad.
 
@@ -615,7 +615,7 @@ In this screenshot:
 
 - **Editing:** you write Markdown on the left and read the page on the right; the page itself can't be edited.
 - **Formats:** MarsDawn exports PDF and prints, and doesn't export Word files.
-- **Other files:** PDFs open read-only, and so do text files in encodings other than UTF-8. On the Mac, JSON and YAML open as editable documents with a tree preview; iPhone and iPad don't open them.
+- **Other files:** PDFs open read-only, and so do text files in encodings other than UTF-8. On the Mac, JSON and YAML open as editable documents with a tree preview; on iPhone and iPad, they open read-only, also with a tree preview.
 - **Themes:** it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can install more from the curated [Theme Gallery](/themes/gallery/) (Settings ▸ Appearance ▸ Get More Themes…). A theme sets colours and a few style options; there's no custom CSS. See [themes](/themes/).
 - **Plugins:** MarsDawn has no plugins or extensions.
 
@@ -1101,7 +1101,7 @@ Every cell was checked on 16 October 2026 against the source in brackets: a numb
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-What MarsDawn lacks. It needs macOS 26 or later. On iPhone and iPad it only reads: it can't edit or export PDFs there. There's no shared editing, no account and no cloud service of its own. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Page numbers come only with the Handbook and Handout PDF layouts. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.
+What MarsDawn lacks. It needs macOS 26 or later. On iPhone and iPad it only reads: it can't edit there, and links in a PDF saved there don't work. There's no shared editing, no account and no cloud service of its own. The preview can't be edited; you edit the Markdown source beside it. It doesn't export Word files and has no plugins. Page numbers come only with the Handbook and Handout PDF layouts. There's no diff view: when an agent saves a change, the open window updates from disk in one step you can undo, but it doesn't highlight what changed. After the 14-day trial, documents open with their content covered until you unlock it.
 
 ## When you don't need MarsDawn
 
@@ -2923,7 +2923,7 @@ Source: https://marsdawn.southern-light.dev/roadmap/
 
 What we're building next, by version. There are no dates: a version ships when it's ready.
 
-Last updated: 7 November 2026
+Last updated: 24 November 2026
 
 Plans can change: an item may move to another version or be dropped.
 
@@ -2935,7 +2935,6 @@ Everything that has shipped is in the [changelog](/changelog/).
 
 ### Mac 1.2.2
 
-- Callouts: GitHub alerts and HackMD `:::` blocks.
 - Add Claude Code's Plans folder to the sidebar in one click, newest plan first.
 
 ### Mac 1.2.3
@@ -3920,7 +3919,7 @@ agent 在 Mac 上工作，它寫的計畫和報告，你在 iPhone 或 iPad 上�
 
 ### 其他檔案
 
-MarsDawn 也能打開純文字檔（`.txt`、`.log`、程式碼檔）和 PDF。UTF-8 純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。在 Mac 上，JSON 和 YAML 檔可以當成文件打開來編輯，旁邊的樹狀預覽會隨著打字更新。在 Finder 用「快速查看」也會看到同樣的樹狀檢視。iPhone 和 iPad 不能打開 JSON 或 YAML。
+MarsDawn 也能打開純文字檔（`.txt`、`.log`、程式碼檔）和 PDF。UTF-8 純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。在 Mac 上，JSON 和 YAML 檔可以當成文件打開來編輯，旁邊的樹狀預覽會隨著打字更新。在 Finder 用「快速查看」也會看到同樣的樹狀檢視。在 iPhone 和 iPad 上，JSON 和 YAML 以唯讀方式打開，並有樹狀預覽。
 
 ### 你的檔案留在你手上
 
@@ -4030,7 +4029,7 @@ MarsDawn 可以免費下載。開始 14 天試用後，所有功能都能使用�
 
 - 試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。
 - 不需要帳號，MarsDawn 從不要求你建立帳號。
-- 用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。
+- 用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能閱讀，不能編輯。
 
 ## 各階段能做什麼
 
@@ -4162,7 +4161,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 ### 裝置與使用的人
 
 - **同步：**MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。
-- **iPhone 和 iPad：**MarsDawn 只能閱讀，只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。
+- **iPhone 和 iPad：**MarsDawn 只能閱讀，能開 Markdown、純文字、PDF、JSON 和 YAML 檔，但不能編輯。可以分享、列印或存成 PDF，但在這裡存成的 PDF，裡面的連結不能點。它讀的是你放在 iCloud 雲碟裡、或從其他 App 打開的檔案，MarsDawn 本身沒有雲端服務。
 - **分享：**沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。
 - **系統：**MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。
 
@@ -4170,7 +4169,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/limits/
 
 - **編輯：**你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。
 - **格式：**MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。
-- **其他檔案：**PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML 可以當成文件打開來編輯，並有樹狀預覽；iPhone 和 iPad 不能打開這兩種檔案。
+- **其他檔案：**PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML 可以當成文件打開來編輯，並有樹狀預覽；在 iPhone 和 iPad 上則以唯讀方式打開，也有樹狀預覽。
 - **主題：**內建黎明、典雅、流行和活潑，每種都有淺色與深色；也可以從經過審核的[主題庫](/zh-hant/themes/gallery/)安裝更多（「設定 ▸ 外觀 ▸ 取得更多主題⋯」）。主題只能設定顏色和幾個樣式選項，不能自訂 CSS。詳見[主題](/zh-hant/themes/)。
 - **外掛：**MarsDawn 沒有外掛或擴充功能。
 
@@ -4656,7 +4655,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/vs/
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。不能共同編輯，沒有帳號，也沒有自己的雲端服務。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。只有手冊與講義版面的 PDF 有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。
+MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只能閱讀，不能編輯；在那裡存成的 PDF，裡面的連結不能點。不能共同編輯，沒有帳號，也沒有自己的雲端服務。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。只有手冊與講義版面的 PDF 有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。
 
 ## 什麼時候用不到 MarsDawn
 
@@ -6483,7 +6482,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/roadmap/
 
 依版本列出我們接下來要做的事。不寫日期：版本做好了才會推出。
 
-最後更新：2026 年 11 月 7 日
+最後更新：2026 年 11 月 24 日
 
 計畫可能會調整：項目可能移到別的版本，也可能取消。
 
@@ -6495,7 +6494,6 @@ Source: https://marsdawn.southern-light.dev/zh-hant/roadmap/
 
 ### Mac 1.2.2
 
-- 提示框：支援 GitHub alerts 和 HackMD 的 `:::` 區塊。
 - 一鍵把 Claude Code 的 Plans 資料夾加進側邊欄，最新的計畫排在最上面。
 
 ### Mac 1.2.3
@@ -7514,7 +7512,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 ### 其他文件
 
-MarsDawn 也能打开纯文本文件（`.txt`、`.log`、代码文件）和 PDF。UTF-8 纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。在 Mac 上，JSON 和 YAML 文件可以作为文稿打开并编辑，旁边的树状预览会随输入实时更新。在“访达”中用“快速查看”也会显示同样的树状视图。iPhone 和 iPad 不能打开 JSON 或 YAML。
+MarsDawn 也能打开纯文本文件（`.txt`、`.log`、代码文件）和 PDF。UTF-8 纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。在 Mac 上，JSON 和 YAML 文件可以作为文稿打开并编辑，旁边的树状预览会随输入实时更新。在“访达”中用“快速查看”也会显示同样的树状视图。在 iPhone 和 iPad 上，JSON 和 YAML 以只读方式打开，并有树状预览。
 
 ### 你的文件留在你手上
 
@@ -7624,7 +7622,7 @@ MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用�
 
 - 试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。
 - 不需要账户，MarsDawn 从不要求你创建账户。
-- 用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。
+- 用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能阅读，不能编辑。
 
 ## 各阶段能做什么
 
@@ -7756,7 +7754,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 ### 设备与使用的人
 
 - **同步：**MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。
-- **iPhone 和 iPad：**MarsDawn 只能阅读，只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。
+- **iPhone 和 iPad：**MarsDawn 只能阅读，可以打开 Markdown、纯文本、PDF、JSON 和 YAML 文件，但不能编辑。可以共享、打印或存储为 PDF，但在这里存储的 PDF，里面的链接不能点按。它读的是你放在 iCloud 云盘里、或从其他 App 打开的文件，MarsDawn 本身没有云端服务。
 - **分享：**没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。
 - **系统：**MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。
 
@@ -7764,7 +7762,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/limits/
 
 - **编辑：**你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。
 - **格式：**MarsDawn 能导出 PDF 和打印，不能导出 Word 文件。
-- **其他文件：**PDF 以只读方式打开，不是 UTF-8 编码的文本文件也是。在 Mac 上，JSON 和 YAML 可以作为文稿打开并编辑，并有树状预览；iPhone 和 iPad 不能打开这两种文件。
+- **其他文件：**PDF 以只读方式打开，不是 UTF-8 编码的文本文件也是。在 Mac 上，JSON 和 YAML 可以作为文稿打开并编辑，并有树状预览；在 iPhone 和 iPad 上则以只读方式打开，也有树状预览。
 - **主题：**内置黎明、典雅、流行和活泼，每种都有浅色与深色；也可以从经过审核的[主题图库](/zh-hans/themes/gallery/)安装更多（“设置 ▸ 外观 ▸ 获取更多主题…”）。主题只能设置颜色和几个样式选项，不能自定义 CSS。详见[主题](/zh-hans/themes/)。
 - **插件：**MarsDawn 没有插件或扩展功能。
 
@@ -8247,7 +8245,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/vs/
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn 没有的东西。需要 macOS 26 或更新版本。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。不能共同编辑，没有账户，也没有自己的云端服务。预览本身不能改，要改旁边的 Markdown 源文本。不能导出 Word，也没有插件。只有手册与讲义布局的 PDF 有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。
+MarsDawn 没有的东西。需要 macOS 26 或更新版本。在 iPhone 和 iPad 上只能阅读，不能编辑；在那里存储的 PDF，里面的链接不能点按。不能共同编辑，没有账户，也没有自己的云端服务。预览本身不能改，要改旁边的 Markdown 源文本。不能导出 Word，也没有插件。只有手册与讲义布局的 PDF 有页码。没有 diff 视图：代理保存更改后，打开的窗口会从磁盘更新，一步就能撤销，但不会标出改了哪里。14 天试用结束后，文稿打开时内容会被遮住，直到解锁。
 
 ## 什么时候用不到 MarsDawn
 
@@ -10069,7 +10067,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/roadmap/
 
 按版本列出我们接下来要做的事。不写日期：版本做好了才会推出。
 
-最后更新：2026 年 11 月 7 日
+最后更新：2026 年 11 月 24 日
 
 计划可能会调整：项目可能移到别的版本，也可能取消。
 
@@ -10081,7 +10079,6 @@ Source: https://marsdawn.southern-light.dev/zh-hans/roadmap/
 
 ### Mac 1.2.2
 
-- 提示框：支持 GitHub alerts 和 HackMD 的 `:::` 区块。
 - 一键把 Claude Code 的 Plans 文件夹加入边栏，最新的计划排在最上面。
 
 ### Mac 1.2.3
@@ -11100,7 +11097,7 @@ Finder で Markdown ファイルを選んでスペースバーを押すと、図
 
 ### そのほかのファイル
 
-MarsDawn では、テキストファイル（`.txt`、`.log`、ソースコード）と PDF も開けます。UTF-8 のテキストはそのまま編集でき、ソースのみの表示になります。PDF は、ページのサムネール、拡大・縮小、検索を備えたビューアで開きます。Mac で JSON と YAML のファイルを書類として開いて編集でき、入力に合わせて更新されるツリープレビューが横に表示されます。Finder のクイックルックでも同じツリー表示になります。iPhone と iPad では JSON と YAML は開けません。
+MarsDawn では、テキストファイル（`.txt`、`.log`、ソースコード）と PDF も開けます。UTF-8 のテキストはそのまま編集でき、ソースのみの表示になります。PDF は、ページのサムネール、拡大・縮小、検索を備えたビューアで開きます。Mac で JSON と YAML のファイルを書類として開いて編集でき、入力に合わせて更新されるツリープレビューが横に表示されます。Finder のクイックルックでも同じツリー表示になります。iPhone と iPad では、JSON と YAML を読み出し専用で開き、ツリープレビューで表示できます。
 
 ### ファイルはあなたのもの
 
@@ -11210,7 +11207,7 @@ MarsDawn は無料でダウンロードできます。14日間のトライアル
 
 - トライアル自体も課金されません。終了時、あなたがロック解除を選ばない限り何も購入されません。
 - アカウントはありません。MarsDawn がアカウント作成を求めることは決してありません。
-- 同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。
+- 同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。iPhone と iPad では閲覧専用で、編集はできません。
 
 ## 各段階でできること
 
@@ -11342,7 +11339,7 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 ### デバイスと使う人
 
 - **同期：**MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。
-- **iPhone と iPad：**MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。
+- **iPhone と iPad：**MarsDawn は閲覧専用です。Markdown、テキスト、PDF、JSON、YAML のファイルを開けますが、編集はできません。共有、プリント、PDF として保存はできますが、ここで保存した PDF のリンクは機能しません。読むのは iCloud Drive に置いたファイルか、ほかの App から開いたファイルで、MarsDawn 自体にはクラウドサービスがありません。
 - **共有：**アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。
 - **システム：**MarsDawn には、Mac では macOS 26 以降、iPhone と iPad では iOS 26 または iPadOS 26 以降が必要です。
 
@@ -11350,7 +11347,7 @@ Source: https://marsdawn.southern-light.dev/ja/limits/
 
 - **編集：**左に Markdown を書き、右でページを読みます。ページ自体は編集できません。
 - **形式：**MarsDawn は PDF の書き出しとプリントに対応していますが、Word ファイルへの書き出しはできません。
-- **その他のファイル：**PDF と、UTF-8 以外のエンコーディングのテキストファイルは読み取り専用で開きます。Mac では JSON と YAML を書類として開いて編集でき、ツリープレビューも表示されます。iPhone と iPad では開けません。
+- **その他のファイル：**PDF と、UTF-8 以外のエンコーディングのテキストファイルは読み出し専用で開きます。Mac では JSON と YAML を書類として開いて編集でき、ツリープレビューも表示されます。iPhone と iPad では読み出し専用で開き、ツリープレビューも表示されます。
 - **テーマ：**夜明け、クラシック、モダン、ビビッドの4種類が内蔵されており、それぞれライトとダークがあります。また、審査済みの[テーマギャラリー](/ja/themes/gallery/)からさらにインストールできます（「設定 ▸ 外観モード ▸ テーマを追加…」）。テーマは色といくつかのスタイルオプションを設定するもので、カスタム CSS は使えません。詳しくは[テーマ](/ja/themes/)をご覧ください。
 - **プラグイン：**MarsDawn にプラグインや拡張機能はありません。
 
@@ -11833,7 +11830,7 @@ Mac で Markdown を、多くはエージェントが書いたものを読んで
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。共同編集もアカウントも独自のクラウドサービスもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号が入るのは、ハンドブックと配布資料のレイアウトだけです。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
+MarsDawn にないもの。macOS 26 以降が必要です。iPhone と iPad では閲覧専用で、編集はできません。そこで保存した PDF のリンクは機能しません。共同編集もアカウントも独自のクラウドサービスもありません。プレビューは直接編集できず、横の Markdown ソースを編集します。Word への書き出しも、プラグインもありません。PDF にページ番号が入るのは、ハンドブックと配布資料のレイアウトだけです。差分表示はありません。エージェントが変更を保存すると、開いているウインドウはディスクから更新され、一度で取り消せますが、どこが変わったかは強調しません。14 日間の試用が終わると、解除するまで書類の内容は隠れた状態で開きます。
 
 ## MarsDawn がいらないとき
 
@@ -13654,7 +13651,7 @@ Source: https://marsdawn.southern-light.dev/ja/roadmap/
 
 これから作るものを、バージョンごとにまとめています。日付は書きません。準備ができたバージョンから公開します。
 
-最終更新：2026年11月7日
+最終更新：2026年11月24日
 
 計画は変わることがあります。項目が別のバージョンに移ったり、取りやめになったりすることもあります。
 
@@ -13666,7 +13663,6 @@ Source: https://marsdawn.southern-light.dev/ja/roadmap/
 
 ### Mac 1.2.2
 
-- コールアウト：GitHub alerts と HackMD の `:::` ブロックに対応します。
 - Claude Code の Plans フォルダをワンクリックでサイドバーに追加。新しいプランが一番上に並びます。
 
 ### Mac 1.2.3
@@ -14685,7 +14681,7 @@ Wähle im Finder eine Markdown-Datei aus und drücke die Leertaste, um sie geren
 
 ### Andere Dateien
 
-MarsDawn öffnet auch reine Textdateien (`.txt`, `.log`, Quellcode) und PDFs. UTF-8-Text öffnet sich bearbeitbar, nur als Quelltext. PDFs öffnen sich in einem Viewer mit Seitenminiaturen, Zoom und Suche. Auf dem Mac öffnest du JSON- und YAML-Dateien als bearbeitbare Dokumente, daneben eine Baumvorschau, die sich beim Tippen aktualisiert. Die Übersicht im Finder zeigt denselben Baum. Auf iPhone und iPad lassen sich JSON und YAML nicht öffnen.
+MarsDawn öffnet auch reine Textdateien (`.txt`, `.log`, Quellcode) und PDFs. UTF-8-Text öffnet sich bearbeitbar, nur als Quelltext. PDFs öffnen sich in einem Viewer mit Seitenminiaturen, Zoom und Suche. Auf dem Mac öffnest du JSON- und YAML-Dateien als bearbeitbare Dokumente, daneben eine Baumvorschau, die sich beim Tippen aktualisiert. Die Übersicht im Finder zeigt denselben Baum. Auf iPhone und iPad öffnen sich JSON und YAML schreibgeschützt, mit Baumvorschau.
 
 ### Deine Dateien bleiben deine
 
@@ -14795,7 +14791,7 @@ Auf diesem Bildschirmfoto:
 
 - Auch der Test kostet nichts. Wenn er endet, wird nichts gekauft, es sei denn, du entscheidest dich für die Freischaltung.
 - Es gibt kein Konto. MarsDawn verlangt nie, dass du eines anlegst.
-- Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad. Auf iPhone und iPad ist MarsDawn zum Lesen da: Bearbeiten und PDF-Export gibt es dort nicht.
+- Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad. Auf iPhone und iPad ist MarsDawn zum Lesen da: Bearbeiten gibt es dort nicht.
 
 ## Was wann funktioniert
 
@@ -14927,7 +14923,7 @@ Auf diesem Bildschirmfoto:
 ### Geräte und Personen
 
 - **Synchronisierung:** MarsDawn synchronisiert deine Dokumente nicht. Sie bleiben dort, wo du sie sicherst. Um eines auf einem anderen Mac zu verwenden, lege es in einen Ordner, den du ohnehin synchronisierst.
-- **iPhone und iPad:** MarsDawn ist dort nur zum Lesen da. Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.
+- **iPhone und iPad:** MarsDawn ist dort nur zum Lesen da. Es öffnet Markdown, Text, PDF, JSON und YAML, bearbeitet aber nichts. Teilen, Drucken und Sichern als PDF gehen, aber Links in einem dort gesicherten PDF funktionieren nicht. Es liest die Dateien, die du in iCloud Drive ablegst oder aus einer anderen App öffnest; eine eigene Cloud hat MarsDawn nicht.
 - **Teilen:** Es gibt keine Konten und keine gemeinsame Bearbeitung, denn MarsDawn ist für eine Person an ihrem eigenen Mac.
 - **System:** MarsDawn benötigt auf dem Mac macOS 26 oder neuer und auf iPhone und iPad iOS 26 bzw. iPadOS 26 oder neuer.
 
@@ -14935,7 +14931,7 @@ Auf diesem Bildschirmfoto:
 
 - **Bearbeiten:** Du schreibst links Markdown und liest rechts die Seite; die Seite selbst lässt sich nicht bearbeiten.
 - **Formate:** MarsDawn exportiert PDF und druckt, exportiert aber keine Word-Dateien.
-- **Andere Dateien:** PDFs und Textdateien in anderen Kodierungen als UTF-8 öffnen sich schreibgeschützt. Auf dem Mac öffnest du JSON und YAML als bearbeitbare Dokumente mit Baumvorschau; iPhone und iPad öffnen sie nicht.
+- **Andere Dateien:** PDFs und Textdateien in anderen Kodierungen als UTF-8 öffnen sich schreibgeschützt. Auf dem Mac öffnest du JSON und YAML als bearbeitbare Dokumente mit Baumvorschau; auf iPhone und iPad öffnen sie sich schreibgeschützt, ebenfalls mit Baumvorschau.
 - **Themen:** Enthalten sind Morgenrot, Klassisch, Modern und Lebhaft, jeweils hell und dunkel, und über die kuratierte [Themengalerie](/de/themes/gallery/) (Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden …) lassen sich weitere installieren. Ein Thema legt Farben und ein paar Stiloptionen fest; eigenes CSS gibt es nicht. Siehe [Themen](/de/themes/).
 - **Plug-ins:** MarsDawn hat keine Plug-ins oder Erweiterungen.
 
@@ -15421,7 +15417,7 @@ Jede Zelle wurde am 16. Oktober 2026 an der Quelle in Klammern geprüft (die V-N
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Auf iPhone und iPad liest es nur: Bearbeiten und PDF-Export gibt es dort nicht. Kein gemeinsames Bearbeiten, kein Konto und keine eigene Cloud. Die Vorschau lässt sich nicht bearbeiten; du bearbeitest den Markdown-Quelltext daneben. Kein Word-Export und keine Plug-ins. Seitenzahlen gibt es nur in den PDF-Layouts Handbuch und Handout. Es gibt keine Diff-Ansicht: Sichert ein Agent eine Änderung, aktualisiert sich das offene Fenster von der Festplatte in einem Schritt, den du widerrufen kannst, hebt aber nicht hervor, was sich geändert hat. Nach dem 14-tägigen Test öffnen sich Dokumente mit verdecktem Inhalt, bis du freischaltest.
+Was MarsDawn fehlt. Es braucht macOS 26 oder neuer. Auf iPhone und iPad liest es nur: Bearbeiten gibt es dort nicht, und Links in einem dort gesicherten PDF funktionieren nicht. Kein gemeinsames Bearbeiten, kein Konto und keine eigene Cloud. Die Vorschau lässt sich nicht bearbeiten; du bearbeitest den Markdown-Quelltext daneben. Kein Word-Export und keine Plug-ins. Seitenzahlen gibt es nur in den PDF-Layouts Handbuch und Handout. Es gibt keine Diff-Ansicht: Sichert ein Agent eine Änderung, aktualisiert sich das offene Fenster von der Festplatte in einem Schritt, den du widerrufen kannst, hebt aber nicht hervor, was sich geändert hat. Nach dem 14-tägigen Test öffnen sich Dokumente mit verdecktem Inhalt, bis du freischaltest.
 
 ## Wann du MarsDawn nicht brauchst
 
@@ -17214,7 +17210,7 @@ Source: https://marsdawn.southern-light.dev/de/roadmap/
 
 Woran wir als Nächstes arbeiten, nach Version. Es gibt keine Termine: Eine Version erscheint, wenn sie fertig ist.
 
-Zuletzt aktualisiert: 7. November 2026
+Zuletzt aktualisiert: 24. November 2026
 
 Pläne können sich ändern: Ein Punkt kann in eine andere Version wandern oder wegfallen.
 
@@ -17226,7 +17222,6 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 
 ### Mac 1.2.2
 
-- Callouts: GitHub-Alerts und HackMD-Blöcke mit `:::`.
 - Den Plans-Ordner von Claude Code mit einem Klick zur Seitenleiste hinzufügen, den neuesten Plan zuerst.
 
 ### Mac 1.2.3
@@ -18211,7 +18206,7 @@ Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le l
 
 ### Autres fichiers
 
-MarsDawn ouvre aussi les fichiers texte brut (`.txt`, `.log`, code source) et les PDF. Le texte UTF-8 s’ouvre prêt à être modifié, en source uniquement. Les PDF s’ouvrent dans un lecteur avec vignettes de pages, zoom et recherche. Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre. iPhone et iPad n’ouvrent pas les fichiers JSON et YAML.
+MarsDawn ouvre aussi les fichiers texte brut (`.txt`, `.log`, code source) et les PDF. Le texte UTF-8 s’ouvre prêt à être modifié, en source uniquement. Les PDF s’ouvrent dans un lecteur avec vignettes de pages, zoom et recherche. Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre. Sur iPhone et iPad, JSON et YAML s’ouvrent en lecture seule, avec un aperçu en arbre.
 
 ### Vos fichiers restent les vôtres
 
@@ -18321,7 +18316,7 @@ Sur cette capture d’écran :
 
 - L’essai ne vous coûte rien non plus. À la fin, rien n’est acheté, sauf si vous choisissez de déverrouiller.
 - Il n’y a pas de compte. MarsDawn ne vous demande jamais d’en créer un.
-- Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad. Sur iPhone et iPad, MarsDawn sert à lire : il ne permet ni de modifier ni d’exporter en PDF.
+- Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad. Sur iPhone et iPad, MarsDawn sert à lire : il ne permet pas de modifier.
 
 ## Ce qui fonctionne, et quand
 
@@ -18453,7 +18448,7 @@ Sur cette capture d’écran :
 ### Appareils et personnes
 
 - **Synchronisation :** MarsDawn ne synchronise pas vos documents. Ils restent là où vous les enregistrez ; pour en utiliser un sur un autre Mac, gardez-le dans un dossier que vous synchronisez déjà.
-- **iPhone et iPad :** MarsDawn y sert uniquement à lire. Il ouvre les fichiers Markdown et texte brut, sans modification ni export PDF. Il lit les fichiers que vous gardez dans iCloud Drive ; MarsDawn n’a pas de cloud à lui.
+- **iPhone et iPad :** MarsDawn y sert uniquement à lire. Il ouvre les fichiers Markdown, texte, PDF, JSON et YAML, sans modification. Vous pouvez partager, imprimer ou enregistrer en PDF, mais les liens d’un PDF enregistré depuis l’app ne fonctionnent pas. Il lit les fichiers que vous gardez dans iCloud Drive ou ouvrez depuis une autre app ; MarsDawn n’a pas de cloud à lui.
 - **Partage :** il n’y a ni comptes ni édition partagée, car MarsDawn est conçu pour une personne, sur son propre Mac.
 - **Système :** MarsDawn nécessite macOS 26 ou version ultérieure sur Mac, et iOS 26 ou iPadOS 26 ou version ultérieure sur iPhone et iPad.
 
@@ -18461,7 +18456,7 @@ Sur cette capture d’écran :
 
 - **Édition :** vous écrivez le Markdown à gauche et lisez la page à droite ; la page elle-même n’est pas modifiable.
 - **Formats :** MarsDawn exporte en PDF et imprime, mais n’exporte pas de fichiers Word.
-- **Autres fichiers :** les PDF et les fichiers texte dans un autre encodage que l’UTF-8 s’ouvrent en lecture seule. Sur Mac, JSON et YAML s’ouvrent comme des documents modifiables avec un aperçu en arbre ; iPhone et iPad ne les ouvrent pas.
+- **Autres fichiers :** les PDF et les fichiers texte dans un autre encodage que l’UTF-8 s’ouvrent en lecture seule. Sur Mac, JSON et YAML s’ouvrent comme des documents modifiables avec un aperçu en arbre ; sur iPhone et iPad, ils s’ouvrent en lecture seule, avec un aperçu en arbre aussi.
 - **Thèmes :** l’app inclut Aube, Classique, Moderne et Vif, chacun en clair et en sombre, et vous pouvez en installer d’autres depuis la [galerie de thèmes](/fr/themes/gallery/) vérifiée (Réglages ▸ Apparence ▸ Obtenir plus de thèmes…). Un thème définit des couleurs et quelques options de style ; il n’y a pas de CSS personnalisé. Voir [les thèmes](/fr/themes/).
 - **Plug-ins :** MarsDawn n’a ni plug-ins ni extensions.
 
@@ -18947,7 +18942,7 @@ Chaque cellule a été vérifiée le 16 octobre 2026 auprès de la source entre 
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Sur iPhone et iPad, il ne fait que lire : il ne permet ni de modifier ni d’exporter en PDF. Pas d’édition partagée, pas de compte, pas de cloud propre. L’aperçu ne se modifie pas ; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Seules les mises en page Guide et Polycopié ajoutent des numéros de page aux PDF. Pas de vue diff : quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les documents s’ouvrent avec leur contenu masqué jusqu’au déverrouillage.
+Ce qui manque à MarsDawn. Il faut macOS 26 ou ultérieur. Sur iPhone et iPad, il ne fait que lire : il ne permet pas de modifier, et les liens d’un PDF enregistré depuis l’app ne fonctionnent pas. Pas d’édition partagée, pas de compte, pas de cloud propre. L’aperçu ne se modifie pas ; vous modifiez la source Markdown à côté. Pas d’export Word, pas de plug-ins. Seules les mises en page Guide et Polycopié ajoutent des numéros de page aux PDF. Pas de vue diff : quand un agent enregistre une modification, la fenêtre ouverte se met à jour depuis le disque en une étape que vous pouvez annuler, mais elle ne surligne pas ce qui a changé. Après l’essai de 14 jours, les documents s’ouvrent avec leur contenu masqué jusqu’au déverrouillage.
 
 ## Quand vous n’avez pas besoin de MarsDawn
 
@@ -20740,7 +20735,7 @@ Source: https://marsdawn.southern-light.dev/fr/roadmap/
 
 Ce que nous préparons, version par version. Pas de dates : une version sort quand elle est prête.
 
-Dernière mise à jour : 7 novembre 2026
+Dernière mise à jour : 24 novembre 2026
 
 Les plans peuvent changer : un élément peut passer à une autre version ou être abandonné.
 
@@ -20752,7 +20747,6 @@ Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/chang
 
 ### Mac 1.2.2
 
-- Encadrés : les alertes GitHub et les blocs `:::` de HackMD.
 - Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.
 
 ### Mac 1.2.3
@@ -21737,7 +21731,7 @@ Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora para
 
 ### Otros archivos
 
-MarsDawn también abre archivos de texto sin formato (`.txt`, `.log`, código fuente) y PDF. El texto UTF-8 se abre listo para editar, solo como código. Los PDF se abren en un visor con miniaturas de página, zoom y búsqueda. En el Mac, abre archivos JSON y YAML como documentos editables, con una vista previa en árbol que se actualiza mientras escribes. Vista Rápida en el Finder muestra el mismo árbol. El iPhone y el iPad no abren archivos JSON ni YAML.
+MarsDawn también abre archivos de texto sin formato (`.txt`, `.log`, código fuente) y PDF. El texto UTF-8 se abre listo para editar, solo como código. Los PDF se abren en un visor con miniaturas de página, zoom y búsqueda. En el Mac, abre archivos JSON y YAML como documentos editables, con una vista previa en árbol que se actualiza mientras escribes. Vista Rápida en el Finder muestra el mismo árbol. En el iPhone y el iPad, JSON y YAML se abren en modo de solo lectura, con vista previa en árbol.
 
 ### Tus archivos siguen siendo tuyos
 
@@ -21847,7 +21841,7 @@ En esta captura de pantalla:
 
 - La prueba tampoco te cobra nada. Cuando termina, no se compra nada a menos que elijas desbloquear.
 - No hay cuenta. MarsDawn nunca te pide que crees una.
-- Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad. En iPhone y iPad, MarsDawn es para leer: no edita ni exporta PDF.
+- Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad. En iPhone y iPad, MarsDawn es para leer: no edita.
 
 ## Qué funciona y cuándo
 
@@ -21979,7 +21973,7 @@ En esta captura de pantalla:
 ### Dispositivos y personas
 
 - **Sincronización:** MarsDawn no sincroniza tus documentos. Se quedan donde los guardas; para usar uno en otro Mac, guárdalo en una carpeta que ya sincronices.
-- **iPhone y iPad:** Allí, MarsDawn es solo para leer. Abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.
+- **iPhone y iPad:** Allí, MarsDawn es solo para leer. Abre archivos Markdown, de texto, PDF, JSON y YAML, pero no los edita. Puedes compartir, imprimir o guardar como PDF, pero los enlaces de un PDF guardado desde ahí no funcionan. Lee los archivos que guardas en iCloud Drive o abres desde otra app; MarsDawn no tiene nube propia.
 - **Compartir:** no hay cuentas ni edición compartida, porque MarsDawn es para una persona en su propio Mac.
 - **Sistema:** MarsDawn necesita macOS 26 o posterior en la Mac, y iOS 26 o iPadOS 26 o posterior en iPhone y iPad.
 
@@ -21987,7 +21981,7 @@ En esta captura de pantalla:
 
 - **Edición:** escribes Markdown a la izquierda y lees la página a la derecha; la página en sí no se puede editar.
 - **Formatos:** MarsDawn exporta a PDF e imprime, pero no exporta archivos de Word.
-- **Otros archivos:** los PDF y los archivos de texto con una codificación distinta de UTF-8 se abren en modo de solo lectura. En el Mac, JSON y YAML se abren como documentos editables con vista previa en árbol; el iPhone y el iPad no los abren.
+- **Otros archivos:** los PDF y los archivos de texto con una codificación distinta de UTF-8 se abren en modo de solo lectura. En el Mac, JSON y YAML se abren como documentos editables con vista previa en árbol; en el iPhone y el iPad se abren en modo de solo lectura, también con vista previa en árbol.
 - **Temas:** incluye Amanecer, Clásico, Moderno y Vívido, cada uno en claro y oscuro, y puedes instalar más desde la [Galería de temas](/es/themes/gallery/) revisada (Ajustes ▸ Aspecto ▸ Obtener más temas…). Un tema define colores y unas pocas opciones de estilo; no hay CSS personalizado. Consulta [temas](/es/themes/).
 - **Plugins:** MarsDawn no tiene plugins ni extensiones.
 
@@ -22473,7 +22467,7 @@ Cada celda se comprobó el 16 de octubre de 2026 con la fuente entre corchetes (
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. En iPhone y iPad solo lee: ahí no edita ni exporta PDF. No hay edición compartida, ni cuentas, ni nube propia. La vista previa no se puede editar; editas el código fuente Markdown al lado. No exporta a Word ni tiene plugins. Solo las disposiciones Guía y Folleto agregan números de página a los PDF. No hay vista de diferencias: cuando un agente guarda un cambio, la ventana abierta se actualiza desde el disco en un paso que puedes deshacer, pero no resalta qué cambió. Tras la prueba de 14 días, los documentos se abren con el contenido tapado hasta que desbloquees la app.
+Lo que le falta a MarsDawn. Necesita macOS 26 o posterior. En iPhone y iPad solo lee: ahí no edita, y los enlaces de un PDF guardado desde ahí no funcionan. No hay edición compartida, ni cuentas, ni nube propia. La vista previa no se puede editar; editas el código fuente Markdown al lado. No exporta a Word ni tiene plugins. Solo las disposiciones Guía y Folleto agregan números de página a los PDF. No hay vista de diferencias: cuando un agente guarda un cambio, la ventana abierta se actualiza desde el disco en un paso que puedes deshacer, pero no resalta qué cambió. Tras la prueba de 14 días, los documentos se abren con el contenido tapado hasta que desbloquees la app.
 
 ## Cuándo no necesitas MarsDawn
 
@@ -24266,7 +24260,7 @@ Source: https://marsdawn.southern-light.dev/es/roadmap/
 
 Lo que vamos a hacer a continuación, por versión. No hay fechas: una versión sale cuando está lista.
 
-Última actualización: 7 de noviembre de 2026
+Última actualización: 24 de noviembre de 2026
 
 Los planes pueden cambiar: un elemento puede pasar a otra versión o descartarse.
 
@@ -24278,7 +24272,6 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
 ### Mac 1.2.2
 
-- Avisos destacados: las alertas de GitHub y los bloques `:::` de HackMD.
 - Añade la carpeta Plans de Claude Code a la barra lateral con un clic, con el plan más reciente arriba.
 
 ### Mac 1.2.3
@@ -25263,7 +25256,7 @@ Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다�
 
 ### 기타 파일
 
-MarsDawn은 일반 텍스트 파일(`.txt`, `.log`, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다. Mac에서 JSON 및 YAML 파일을 편집 가능한 문서로 열 수 있으며, 입력할 때마다 업데이트되는 트리 미리보기가 옆에 표시됩니다. Finder의 훑어보기에서도 같은 트리 보기가 표시됩니다. iPhone과 iPad에서는 JSON과 YAML을 열 수 없습니다.
+MarsDawn은 일반 텍스트 파일(`.txt`, `.log`, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다. Mac에서 JSON 및 YAML 파일을 편집 가능한 문서로 열 수 있으며, 입력할 때마다 업데이트되는 트리 미리보기가 옆에 표시됩니다. Finder의 훑어보기에서도 같은 트리 보기가 표시됩니다. iPhone과 iPad에서는 JSON과 YAML을 읽기 전용으로 열 수 있으며, 트리 미리보기가 표시됩니다.
 
 ### 내 파일은 내 것
 
@@ -25373,7 +25366,7 @@ MarsDawn은 무료로 다운로드할 수 있습니다. 14일 체험을 시작�
 
 - 체험에도 요금이 청구되지 않습니다. 체험이 끝나도 잠금 해제를 선택하지 않는 한 아무것도 구입되지 않습니다.
 - 계정이 없습니다. MarsDawn은 계정을 만들라고 요구하지 않습니다.
-- 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다.
+- 같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다. iPhone과 iPad에서는 읽기 전용이라 편집할 수 없습니다.
 
 ## 단계별로 쓸 수 있는 기능
 
@@ -25505,7 +25498,7 @@ Source: https://marsdawn.southern-light.dev/ko/limits/
 ### 기기와 사람
 
 - **동기화:** MarsDawn은 문서를 동기화하지 않습니다. 문서는 저장한 곳에 있으므로, 다른 Mac에서 쓰려면 이미 동기화하고 있는 폴더에 두세요.
-- **iPhone과 iPad:** MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.
+- **iPhone과 iPad:** MarsDawn은 읽기 전용입니다. Markdown, 텍스트, PDF, JSON, YAML 파일을 열 수 있지만 편집은 할 수 없습니다. 공유, 프린트, PDF로 저장은 할 수 있지만, 여기서 저장한 PDF의 링크는 작동하지 않습니다. iCloud Drive에 둔 파일이나 다른 앱에서 연 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.
 - **공유:** MarsDawn은 자기 Mac을 쓰는 한 사람을 위한 앱이라 계정도 공동 편집도 없습니다.
 - **시스템:** MarsDawn은 Mac에서는 macOS 26 이상, iPhone과 iPad에서는 iOS 26 또는 iPadOS 26 이상이 필요합니다.
 
@@ -25513,7 +25506,7 @@ Source: https://marsdawn.southern-light.dev/ko/limits/
 
 - **편집:** 왼쪽에서 Markdown을 쓰고 오른쪽에서 페이지를 읽습니다. 페이지 자체는 편집할 수 없습니다.
 - **형식:** MarsDawn은 PDF로 내보내고 프린트할 수 있지만, Word 파일로는 내보내지 않습니다.
-- **기타 파일:** PDF와 UTF-8이 아닌 인코딩의 텍스트 파일은 읽기 전용으로 열립니다. Mac에서는 JSON과 YAML을 편집 가능한 문서로 열 수 있고 트리 미리보기도 표시됩니다. iPhone과 iPad에서는 열 수 없습니다.
+- **기타 파일:** PDF와 UTF-8이 아닌 인코딩의 텍스트 파일은 읽기 전용으로 열립니다. Mac에서는 JSON과 YAML을 편집 가능한 문서로 열 수 있고 트리 미리보기도 표시됩니다. iPhone과 iPad에서는 읽기 전용으로 열리며 트리 미리보기도 표시됩니다.
 - **테마:** 새벽, 클래식, 모던, 비비드가 각각 라이트와 다크로 들어 있으며, 검토를 거친 [테마 갤러리](/ko/themes/gallery/)(설정 ▸ 화면 모드 ▸ 테마 더 받기…)에서 더 설치할 수 있습니다. 테마는 색상과 몇 가지 스타일 옵션을 정할 뿐, 사용자 지정 CSS는 없습니다. [테마](/ko/themes/)를 참고하세요.
 - **플러그인:** MarsDawn에는 플러그인이나 확장 기능이 없습니다.
 
@@ -25999,7 +25992,7 @@ Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방
 - 24 · [https://api.github.com/repos/sbarex/QLMarkdown/releases](https://api.github.com/repos/sbarex/QLMarkdown/releases)
 - kit · [https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7](https://github.com/redtear1115/mars-dawn-kit/blob/0.6.4/README.md?plain=1#L7)
 
-MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다. 공동 편집, 계정, 자체 클라우드 서비스가 없습니다. 미리보기는 직접 편집할 수 없고, 옆의 Markdown 소스를 편집합니다. Word로 내보내기와 플러그인이 없습니다. PDF 페이지 번호는 설명서와 프린트물 레이아웃에만 있습니다. diff 보기가 없습니다. 에이전트가 변경을 저장하면 열린 윈도우가 디스크에서 업데이트되고 한 번에 실행 취소할 수 있지만, 무엇이 바뀌었는지는 강조하지 않습니다. 14일 체험이 끝나면 잠금 해제할 때까지 문서 내용이 가려진 채로 열립니다.
+MarsDawn에 없는 것. macOS 26 이상이 필요합니다. iPhone과 iPad에서는 읽기 전용이라 편집할 수 없고, 거기서 저장한 PDF의 링크는 작동하지 않습니다. 공동 편집, 계정, 자체 클라우드 서비스가 없습니다. 미리보기는 직접 편집할 수 없고, 옆의 Markdown 소스를 편집합니다. Word로 내보내기와 플러그인이 없습니다. PDF 페이지 번호는 설명서와 프린트물 레이아웃에만 있습니다. diff 보기가 없습니다. 에이전트가 변경을 저장하면 열린 윈도우가 디스크에서 업데이트되고 한 번에 실행 취소할 수 있지만, 무엇이 바뀌었는지는 강조하지 않습니다. 14일 체험이 끝나면 잠금 해제할 때까지 문서 내용이 가려진 채로 열립니다.
 
 ## MarsDawn이 필요 없는 경우
 
@@ -27792,7 +27785,7 @@ Source: https://marsdawn.southern-light.dev/ko/roadmap/
 
 다음에 만들 것을 버전별로 정리했습니다. 날짜는 적지 않습니다. 준비가 끝난 버전부터 내놓습니다.
 
-마지막 업데이트: 2026년 11월 7일
+마지막 업데이트: 2026년 11월 24일
 
 계획은 바뀔 수 있습니다. 항목이 다른 버전으로 옮겨지거나 취소될 수도 있습니다.
 
@@ -27804,7 +27797,6 @@ Source: https://marsdawn.southern-light.dev/ko/roadmap/
 
 ### Mac 1.2.2
 
-- 콜아웃: GitHub alerts와 HackMD의 `:::` 블록을 지원합니다.
 - Claude Code의 Plans 폴더를 클릭 한 번으로 사이드바에 추가하고, 최신 계획을 맨 위에 둡니다.
 
 ### Mac 1.2.3

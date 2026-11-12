@@ -170,7 +170,7 @@ Wähle im Finder eine Markdown-Datei aus und drücke die Leertaste, um sie geren
 
 ### Andere Dateien
 
-MarsDawn öffnet auch reine Textdateien (`.txt`, `.log`, Quellcode) und PDFs. UTF-8-Text öffnet sich bearbeitbar, nur als Quelltext. PDFs öffnen sich in einem Viewer mit Seitenminiaturen, Zoom und Suche. Auf dem Mac öffnest du JSON- und YAML-Dateien als bearbeitbare Dokumente, daneben eine Baumvorschau, die sich beim Tippen aktualisiert. Die Übersicht im Finder zeigt denselben Baum. Auf iPhone und iPad lassen sich JSON und YAML nicht öffnen.
+MarsDawn öffnet auch reine Textdateien (`.txt`, `.log`, Quellcode) und PDFs. UTF-8-Text öffnet sich bearbeitbar, nur als Quelltext. PDFs öffnen sich in einem Viewer mit Seitenminiaturen, Zoom und Suche. Auf dem Mac öffnest du JSON- und YAML-Dateien als bearbeitbare Dokumente, daneben eine Baumvorschau, die sich beim Tippen aktualisiert. Die Übersicht im Finder zeigt denselben Baum. Auf iPhone und iPad öffnen sich JSON und YAML schreibgeschützt, mit Baumvorschau.
 
 ### Deine Dateien bleiben deine
 

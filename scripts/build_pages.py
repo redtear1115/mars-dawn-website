@@ -39,6 +39,7 @@ from ia247 import data as ia_data  # noqa: E402
 from tmde130 import data as changelog_data  # noqa: E402
 from cli254 import data as cli254_data  # noqa: E402
 from copy369 import data as copy369_data  # noqa: E402
+from copy363 import data as copy363_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
@@ -5971,7 +5972,7 @@ def _base_pages() -> dict:
 def all_pages() -> dict:
     merged = _base_pages()
     merged.update(EXTRA_PAGES)
-    merged.update({(locale, "roadmap"): roadmap272.page(locale, changelog_date(locale, roadmap272.LAST_UPDATED))
+    merged.update({(locale, "roadmap"): roadmap272.page(locale, copy363_data.DATA[locale]["roadmap_updated"])
                    for locale in LOCALES})   # /roadmap/ (#272), in every locale the site serves
     for (locale, slug), page in merged.items():
         body = page["body"]
@@ -5998,7 +5999,8 @@ def all_pages() -> dict:
             body = "".join(pieces[:-2]) + brand_film_themes.MARK + "\n" + "".join(pieces[-2:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return apply_copy369_pdf_pages(apply_app_changelog(apply_cli254(apply_best228(apply_promo130(apply_seo_copy(merged))))))
+    return apply_copy363(apply_copy369_pdf_pages(apply_app_changelog(apply_cli254(apply_best228(apply_promo130(
+        apply_seo_copy(merged)))))))
 
 
 # --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
@@ -6433,6 +6435,107 @@ def apply_copy369_pdf_pages(merged: dict) -> dict:
         at = h2_end + len("\n<ul>\n")
         body = body[:at] + _copy369_li(d["next"], where) + body[at:]
         out[(locale, "markdown-to-pdf")] = {**page, "body": body}
+    return out
+
+
+# --- Old iOS claims (website #363) -----------------------------------------------------------------
+# copy363_data (scripts/copy363/data.py) corrects what the pages said about iPhone and iPad (no JSON or
+# YAML, no PDF export) in five places per locale. Each place is found by structure and must match exactly
+# once, and a sentence is replaced, not the paragraph, where the rest of the paragraph stays.
+
+# A sentence ends after . ! ? that a space follows (en, de, fr, es, ko; fr puts U+00A0, not a space, before
+# ; : ? !) or after a CJK full stop, which no space follows. The pieces join back to the text: every
+# sentence but the first keeps the space before it.
+_COPY363_SENTENCE_END = re.compile(r"(?<=[.!?])(?= )|(?<=[。！？])")
+
+
+def _copy363_sentences(text: str) -> list:
+    pieces = _COPY363_SENTENCE_END.split(text)
+    if pieces and pieces[-1] == "":
+        pieces.pop()
+    assert "".join(pieces) == text
+    return pieces
+
+
+def _copy363_put(pieces: list, i: int, sentence: str) -> str:
+    """The pieces joined, with piece i replaced by sentence (keeping the space in front of it)."""
+    lead = pieces[i][:len(pieces[i]) - len(pieces[i].lstrip())]
+    return "".join(pieces[:i] + [lead + sentence] + pieces[i + 1:])
+
+
+def _copy363_iphone(pieces: list, where: str) -> int:
+    """The index of the one sentence that names iPhone."""
+    hits = [i for i, s in enumerate(pieces) if "iPhone" in s]
+    assert len(hits) == 1, f"#363 {where}: {len(hits)} sentences name iPhone, want 1: {pieces!r}"
+    return hits[0]
+
+
+def _copy363_one(pattern: str, body: str, where: str) -> re.Match:
+    found = list(re.finditer(pattern, body))
+    assert len(found) == 1, f"#363 {where}: {len(found)} matches, want 1"
+    return found[0]
+
+
+def apply_copy363(merged: dict) -> dict:
+    """#363: in every locale, the last sentence of /features/'s "Other files" paragraph, the iPhone and iPad
+    item and the "Other files" item of /limits/, the iPhone sentence of /vs/'s "What MarsDawn lacks" and
+    the second sentence of /pay-once/'s iPhone item. Applied last, so the Markdown twins, llms-full.txt and
+    product-facts.md, which are read from the pages, say the same."""
+    out = dict(merged)
+    for locale in LOCALES:
+        d = copy363_data.DATA[locale]
+        for key, value in d.items():
+            assert not set(value) & set("<>&"), f"#363 {locale} {key}: has < > or &"
+
+        # 1. /features/: the paragraph under an h3 that lists .log; its last sentence.
+        where = f"{locale}/features"
+        page = out[(locale, "features")]
+        m = _copy363_one(r"(?m)^<h3>[^\n]*</h3>\n<p>([^\n]*<code>\.log</code>[^\n]*)</p>\n", page["body"], where)
+        pieces = _copy363_sentences(m.group(1))
+        assert len(pieces) >= 2 and _copy363_iphone(pieces, where) == len(pieces) - 1, \
+            f"#363 {where}: iPhone is not in the last sentence"
+        para = _copy363_put(pieces, len(pieces) - 1, d["features_other_last"])
+        body = page["body"][:m.start(1)] + para + page["body"][m.end(1):]
+        out[(locale, "features")] = {**page, "body": body}
+
+        # 2, 3. /limits/: the list item whose bold label names iPhone and the one item that names JSON, each
+        # replaced whole. Both are found on the page as it was, before either is replaced, and not by the
+        # label's words, which the locale self-test's fixture (de pages that hold ja copy) does not have.
+        where = f"{locale}/limits"
+        page = out[(locale, "limits")]
+        body = page["body"]
+        found = {
+            "limits_ios": _copy363_one(r"(?m)^  <li><strong>[^<\n]*iPhone[^<\n]*</strong>[^\n]*</li>\n", body,
+                                       f"{where} limits_ios"),
+            "limits_other": _copy363_one(r"(?m)^  <li>[^\n]*JSON[^\n]*</li>\n", body, f"{where} limits_other"),
+        }
+        assert found["limits_ios"].start() != found["limits_other"].start(), f"#363 {where}: one item for both"
+        for key, m in sorted(found.items(), key=lambda kv: kv[1].start(), reverse=True):
+            text = d[key]
+            assert text.startswith("- **") and "\n" not in text, f"#363 {where} {key}: not a one-line bullet"
+            body = body[:m.start()] + f"  <li>{rich_pages.md_inline(text[2:])}</li>\n" + body[m.end():]
+        out[(locale, "limits")] = {**page, "body": body}
+
+        # 4. /vs/: "What MarsDawn lacks" (promo_data's vs lacks, as one <p>); its iPhone sentence.
+        where = f"{locale}/vs"
+        page = out[(locale, "vs")]
+        lacks = promo_data.DATA["vs"][locale]["lacks"]
+        m = _copy363_one(re.escape(f"<p>{lacks}</p>"), page["body"], where)
+        pieces = _copy363_sentences(lacks)
+        para = _copy363_put(pieces, _copy363_iphone(pieces, where), d["vs_lacks_ios"])
+        body = page["body"][:m.start()] + f"<p>{para}</p>" + page["body"][m.end():]
+        out[(locale, "vs")] = {**page, "body": body}
+
+        # 5. /pay-once/: the one list item that names iPhone, two sentences; its second.
+        where = f"{locale}/pay-once"
+        page = out[(locale, "pay-once")]
+        m = _copy363_one(r"(?m)^  <li>([^\n]*iPhone[^\n]*)</li>\n", page["body"], where)
+        pieces = _copy363_sentences(m.group(1))
+        assert len(pieces) == 2 and _copy363_iphone(pieces[1:], where) == 0, \
+            f"#363 {where}: the iPhone item is not two sentences with iPhone in the second: {pieces!r}"
+        item = _copy363_put(pieces, 1, d["payonce_ios"])
+        body = page["body"][:m.start(1)] + item + page["body"][m.end(1):]
+        out[(locale, "pay-once")] = {**page, "body": body}
     return out
 
 

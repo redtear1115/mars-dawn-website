@@ -19,7 +19,7 @@ Sur cette capture d’écran :
 
 - L’essai ne vous coûte rien non plus. À la fin, rien n’est acheté, sauf si vous choisissez de déverrouiller.
 - Il n’y a pas de compte. MarsDawn ne vous demande jamais d’en créer un.
-- Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad. Sur iPhone et iPad, MarsDawn sert à lire : il ne permet ni de modifier ni d’exporter en PDF.
+- Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad. Sur iPhone et iPad, MarsDawn sert à lire : il ne permet pas de modifier.
 
 ## Ce qui fonctionne, et quand
 

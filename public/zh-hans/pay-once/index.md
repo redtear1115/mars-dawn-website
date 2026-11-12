@@ -19,7 +19,7 @@ MarsDawn 可以免费下载。开始 14 天试用后，所有功能都能使用�
 
 - 试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。
 - 不需要账户，MarsDawn 从不要求你创建账户。
-- 用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。
+- 用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能阅读，不能编辑。
 
 ## 各阶段能做什么
 

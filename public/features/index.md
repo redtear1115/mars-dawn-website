@@ -170,7 +170,7 @@ Select a Markdown file in Finder and press Space to read it rendered, diagrams i
 
 ### Other files
 
-MarsDawn also opens plain text files (`.txt`, `.log`, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. iPhone and iPad don't open JSON or YAML.
+MarsDawn also opens plain text files (`.txt`, `.log`, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. On iPhone and iPad, JSON and YAML open read-only, with a tree preview.
 
 ### Your files stay yours
 

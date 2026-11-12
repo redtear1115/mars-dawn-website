@@ -19,7 +19,7 @@ Auf diesem Bildschirmfoto:
 
 - Auch der Test kostet nichts. Wenn er endet, wird nichts gekauft, es sei denn, du entscheidest dich für die Freischaltung.
 - Es gibt kein Konto. MarsDawn verlangt nie, dass du eines anlegst.
-- Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad. Auf iPhone und iPad ist MarsDawn zum Lesen da: Bearbeiten und PDF-Export gibt es dort nicht.
+- Mit demselben Apple Account gelten ein Test und eine Freischaltung für MarsDawn auf Mac, iPhone und iPad. Auf iPhone und iPad ist MarsDawn zum Lesen da: Bearbeiten gibt es dort nicht.
 
 ## Was wann funktioniert
 

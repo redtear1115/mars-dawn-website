@@ -19,7 +19,7 @@ In this screenshot:
 
 - The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.
 - There is no account. MarsDawn never asks you to create one.
-- With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. On iPhone and iPad, MarsDawn is for reading: it doesn't edit or export PDFs.
+- With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. On iPhone and iPad, MarsDawn is for reading: it doesn't edit files.
 
 ## What works when
 

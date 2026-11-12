@@ -11,16 +11,14 @@ Sources (all on redtear1115/mars-dawn-website#272, none retyped by hand; this fi
                             zh-Hant and ja "Released" links carry their locale's prefix.
 
 Each page is its Markdown block: "# " is the h1, the paragraph after it the intro, "## " and "### " are headings,
-"- " lines are lists. {date} in the "Last updated" line is LAST_UPDATED written as /changelog/ writes its dates.
+"- " lines are lists. The paragraph that holds {date} is replaced as a whole by the "Last updated" line page() is
+given: website #363's roadmap_updated (scripts/copy363/data.py).
 The private app issue numbers the list was written from never appear on the page.
 """
 from rich_pages import attr, md_blocks, md_inline
 from xml.sax.saxutils import escape
 
 LOCALES = ("en", "zh-hant", "zh-hans", "ja", "de", "fr", "es", "ko")
-
-# The day the copy was last changed. Update it with each release, as the page says.
-LAST_UPDATED = "2026-11-07"
 
 # The page's h1 and its name in the footer (and in the sitemap-style lists that read UI["roadmap"]).
 NAME = {'en': 'Roadmap',
@@ -71,7 +69,6 @@ Everything that has shipped is in the [changelog](/changelog/).
 ## Next
 
 ### Mac 1.2.2
-- Callouts: GitHub alerts and HackMD `:::` blocks.
 - Add Claude Code's Plans folder to the sidebar in one click, newest plan first.
 
 ### Mac 1.2.3
@@ -110,7 +107,6 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 ## 接下來
 
 ### Mac 1.2.2
-- 提示框：支援 GitHub alerts 和 HackMD 的 `:::` 區塊。
 - 一鍵把 Claude Code 的 Plans 資料夾加進側邊欄，最新的計畫排在最上面。
 
 ### Mac 1.2.3
@@ -149,7 +145,6 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 ## 接下来
 
 ### Mac 1.2.2
-- 提示框：支持 GitHub alerts 和 HackMD 的 `:::` 区块。
 - 一键把 Claude Code 的 Plans 文件夹加入边栏，最新的计划排在最上面。
 
 ### Mac 1.2.3
@@ -188,7 +183,6 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 ## 今後の予定
 
 ### Mac 1.2.2
-- コールアウト：GitHub alerts と HackMD の `:::` ブロックに対応します。
 - Claude Code の Plans フォルダをワンクリックでサイドバーに追加。新しいプランが一番上に並びます。
 
 ### Mac 1.2.3
@@ -227,7 +221,6 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 ## Als Nächstes
 
 ### Mac 1.2.2
-- Callouts: GitHub-Alerts und HackMD-Blöcke mit `:::`.
 - Den Plans-Ordner von Claude Code mit einem Klick zur Seitenleiste hinzufügen, den neuesten Plan zuerst.
 
 ### Mac 1.2.3
@@ -266,7 +259,6 @@ Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/chang
 ## Ensuite
 
 ### Mac 1.2.2
-- Encadrés : les alertes GitHub et les blocs `:::` de HackMD.
 - Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.
 
 ### Mac 1.2.3
@@ -305,7 +297,6 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 ## A continuación
 
 ### Mac 1.2.2
-- Avisos destacados: las alertas de GitHub y los bloques `:::` de HackMD.
 - Añade la carpeta Plans de Claude Code a la barra lateral con un clic, con el plan más reciente arriba.
 
 ### Mac 1.2.3
@@ -344,7 +335,6 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 ## 다음 계획
 
 ### Mac 1.2.2
-- 콜아웃: GitHub alerts와 HackMD의 `:::` 블록을 지원합니다.
 - Claude Code의 Plans 폴더를 클릭 한 번으로 사이드바에 추가하고, 최신 계획을 맨 위에 둡니다.
 
 ### Mac 1.2.3
@@ -368,11 +358,16 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 }
 
 
-def page(locale: str, date: str) -> dict:
+def page(locale: str, updated: str) -> dict:
     """{title, description, body} for /roadmap/ in one locale; the body is the Markdown above as HTML.
-    `date` is LAST_UPDATED as /changelog/ writes it in this locale."""
+    `updated` is the whole "Last updated" line (website #363's roadmap_updated); it replaces the paragraph
+    that holds {date}."""
     copy = COPY[locale]
-    h1, intro, rest = copy["md"].replace("{date}", date).split("\n\n", 2)
+    paras = copy["md"].split("\n\n")
+    at = [i for i, para in enumerate(paras) if "{date}" in para]
+    assert len(at) == 1, f"roadmap {locale}: {len(at)} paragraphs hold {{date}}"
+    paras[at[0]] = updated
+    h1, intro, rest = "\n\n".join(paras).split("\n\n", 2)
     parts = [f'<section class="intro">\n  <h1>{escape(h1[2:])}</h1>\n  <p>{md_inline(intro)}</p>\n</section>']
     for chunk in rest.strip().split("\n\n"):
         for level, text in _split_headings(chunk):

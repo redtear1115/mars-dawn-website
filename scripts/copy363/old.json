@@ -1,0 +1,141 @@
+{
+ "base": "738fa0e2684c3d07379967cf3d340373bf4f1c2a",
+ "old": {
+  "en": [
+   "iPhone and iPad don't open JSON or YAML.",
+   "- **iPhone and iPad:** MarsDawn is for reading only. It opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.",
+   "- **Other files:** PDFs open read-only, and so do text files in encodings other than UTF-8. On the Mac, JSON and YAML open as editable documents with a tree preview; iPhone and iPad don't open them.",
+   "On iPhone and iPad it only reads: it can't edit or export PDFs there.",
+   "On iPhone and iPad, MarsDawn is for reading: it doesn't edit or export PDFs."
+  ],
+  "zh-hant": [
+   "iPhone 和 iPad 不能打開 JSON 或 YAML。",
+   "- **iPhone 和 iPad：**MarsDawn 只能閱讀，只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。",
+   "- **其他檔案：**PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML 可以當成文件打開來編輯，並有樹狀預覽；iPhone 和 iPad 不能打開這兩種檔案。",
+   "在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。",
+   "在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。"
+  ],
+  "zh-hans": [
+   "iPhone 和 iPad 不能打开 JSON 或 YAML。",
+   "- **iPhone 和 iPad：**MarsDawn 只能阅读，只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。",
+   "- **其他文件：**PDF 以只读方式打开，不是 UTF-8 编码的文本文件也是。在 Mac 上，JSON 和 YAML 可以作为文稿打开并编辑，并有树状预览；iPhone 和 iPad 不能打开这两种文件。",
+   "在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。",
+   "在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。"
+  ],
+  "ja": [
+   "iPhone と iPad では JSON と YAML は開けません。",
+   "- **iPhone と iPad：**MarsDawn は閲覧専用です。開けるのは Markdown とプレーンテキストのファイルだけで、編集や PDF の書き出しはできません。読むのは iCloud Drive に置いたファイルで、MarsDawn 自体にはクラウドサービスがありません。",
+   "- **その他のファイル：**PDF と、UTF-8 以外のエンコーディングのテキストファイルは読み取り専用で開きます。Mac では JSON と YAML を書類として開いて編集でき、ツリープレビューも表示されます。iPhone と iPad では開けません。",
+   "iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。",
+   "iPhone と iPad では閲覧専用で、編集や PDF の書き出しはできません。"
+  ],
+  "ko": [
+   "iPhone과 iPad에서는 JSON과 YAML을 열 수 없습니다.",
+   "- **iPhone과 iPad:** MarsDawn은 읽기 전용입니다. Markdown과 일반 텍스트 파일만 열 수 있으며, 편집과 PDF 내보내기는 할 수 없습니다. iCloud Drive에 둔 파일을 읽으며, MarsDawn 자체에는 클라우드 서비스가 없습니다.",
+   "- **기타 파일:** PDF와 UTF-8이 아닌 인코딩의 텍스트 파일은 읽기 전용으로 열립니다. Mac에서는 JSON과 YAML을 편집 가능한 문서로 열 수 있고 트리 미리보기도 표시됩니다. iPhone과 iPad에서는 열 수 없습니다.",
+   "iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다.",
+   "iPhone과 iPad에서는 읽기 전용이라 편집하거나 PDF로 내보낼 수 없습니다."
+  ],
+  "de": [
+   "Auf iPhone und iPad lassen sich JSON und YAML nicht öffnen.",
+   "- **iPhone und iPad:** MarsDawn ist dort nur zum Lesen da. Es öffnet Markdown- und reine Textdateien, bearbeitet nicht und exportiert keine PDFs. Es liest die Dateien, die du in iCloud Drive ablegst; eine eigene Cloud hat MarsDawn nicht.",
+   "- **Andere Dateien:** PDFs und Textdateien in anderen Kodierungen als UTF-8 öffnen sich schreibgeschützt. Auf dem Mac öffnest du JSON und YAML als bearbeitbare Dokumente mit Baumvorschau; iPhone und iPad öffnen sie nicht.",
+   "Auf iPhone und iPad liest es nur: Bearbeiten und PDF-Export gibt es dort nicht.",
+   "Auf iPhone und iPad ist MarsDawn zum Lesen da: Bearbeiten und PDF-Export gibt es dort nicht."
+  ],
+  "fr": [
+   "iPhone et iPad n’ouvrent pas les fichiers JSON et YAML.",
+   "- **iPhone et iPad :** MarsDawn y sert uniquement à lire. Il ouvre les fichiers Markdown et texte brut, sans modification ni export PDF. Il lit les fichiers que vous gardez dans iCloud Drive ; MarsDawn n’a pas de cloud à lui.",
+   "- **Autres fichiers :** les PDF et les fichiers texte dans un autre encodage que l’UTF-8 s’ouvrent en lecture seule. Sur Mac, JSON et YAML s’ouvrent comme des documents modifiables avec un aperçu en arbre ; iPhone et iPad ne les ouvrent pas.",
+   "Sur iPhone et iPad, il ne fait que lire : il ne permet ni de modifier ni d’exporter en PDF.",
+   "Sur iPhone et iPad, MarsDawn sert à lire : il ne permet ni de modifier ni d’exporter en PDF."
+  ],
+  "es": [
+   "El iPhone y el iPad no abren archivos JSON ni YAML.",
+   "- **iPhone y iPad:** Allí, MarsDawn es solo para leer. Abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.",
+   "- **Otros archivos:** los PDF y los archivos de texto con una codificación distinta de UTF-8 se abren en modo de solo lectura. En el Mac, JSON y YAML se abren como documentos editables con vista previa en árbol; el iPhone y el iPad no los abren.",
+   "En iPhone y iPad solo lee: ahí no edita ni exporta PDF.",
+   "En iPhone y iPad, MarsDawn es para leer: no edita ni exporta PDF."
+  ]
+ },
+ "callouts": {
+  "en": "- Callouts: GitHub alerts and HackMD `:::` blocks.",
+  "zh-hant": "- 提示框：支援 GitHub alerts 和 HackMD 的 `:::` 區塊。",
+  "zh-hans": "- 提示框：支持 GitHub alerts 和 HackMD 的 `:::` 区块。",
+  "ja": "- コールアウト：GitHub alerts と HackMD の `:::` ブロックに対応します。",
+  "ko": "- 콜아웃: GitHub alerts와 HackMD의 `:::` 블록을 지원합니다.",
+  "de": "- Callouts: GitHub-Alerts und HackMD-Blöcke mit `:::`.",
+  "fr": "- Encadrés : les alertes GitHub et les blocs `:::` de HackMD.",
+  "es": "- Avisos destacados: las alertas de GitHub y los bloques `:::` de HackMD."
+ },
+ "kept": {
+  "en": "- Add Claude Code's Plans folder to the sidebar in one click, newest plan first.",
+  "zh-hant": "- 一鍵把 Claude Code 的 Plans 資料夾加進側邊欄，最新的計畫排在最上面。",
+  "zh-hans": "- 一键把 Claude Code 的 Plans 文件夹加入边栏，最新的计划排在最上面。",
+  "ja": "- Claude Code の Plans フォルダをワンクリックでサイドバーに追加。新しいプランが一番上に並びます。",
+  "ko": "- Claude Code의 Plans 폴더를 클릭 한 번으로 사이드바에 추가하고, 최신 계획을 맨 위에 둡니다.",
+  "de": "- Den Plans-Ordner von Claude Code mit einem Klick zur Seitenleiste hinzufügen, den neuesten Plan zuerst.",
+  "fr": "- Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.",
+  "es": "- Añade la carpeta Plans de Claude Code a la barra lateral con un clic, con el plan más reciente arriba."
+ },
+ "headings": {
+  "en": [
+   "Mac 1.2.2",
+   "Mac 1.2.3",
+   "Mac 1.3.0",
+   "iPad and unfolded iPhone Duo (iOS 1.1)"
+  ],
+  "zh-hant": [
+   "Mac 1.2.2",
+   "Mac 1.2.3",
+   "Mac 1.3.0",
+   "iPad 與展開的 iPhone Duo（iOS 1.1）"
+  ],
+  "zh-hans": [
+   "Mac 1.2.2",
+   "Mac 1.2.3",
+   "Mac 1.3.0",
+   "iPad 与展开的 iPhone Duo（iOS 1.1）"
+  ],
+  "ja": [
+   "Mac 1.2.2",
+   "Mac 1.2.3",
+   "Mac 1.3.0",
+   "iPad と開いた iPhone Duo（iOS 1.1）"
+  ],
+  "ko": [
+   "Mac 1.2.2",
+   "Mac 1.2.3",
+   "Mac 1.3.0",
+   "iPad 및 펼친 iPhone Duo (iOS 1.1)"
+  ],
+  "de": [
+   "Mac 1.2.2",
+   "Mac 1.2.3",
+   "Mac 1.3.0",
+   "iPad und aufgeklapptes iPhone Duo (iOS 1.1)"
+  ],
+  "fr": [
+   "Mac 1.2.2",
+   "Mac 1.2.3",
+   "Mac 1.3.0",
+   "iPad et iPhone Duo déplié (iOS 1.1)"
+  ],
+  "es": [
+   "Mac 1.2.2",
+   "Mac 1.2.3",
+   "Mac 1.3.0",
+   "iPad y iPhone Duo desplegado (iOS 1.1)"
+  ]
+ },
+ "last_updated_before": {
+  "en": "Last updated: 7 November 2026",
+  "zh-hant": "最後更新：2026 年 11 月 7 日",
+  "zh-hans": "最后更新：2026 年 11 月 7 日",
+  "ja": "最終更新：2026年11月7日",
+  "ko": "마지막 업데이트: 2026년 11월 7일",
+  "de": "Zuletzt aktualisiert: 7. November 2026",
+  "fr": "Dernière mise à jour : 7 novembre 2026",
+  "es": "Última actualización: 7 de noviembre de 2026"
+ }
+}

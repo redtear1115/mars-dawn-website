@@ -170,7 +170,7 @@ Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora para
 
 ### Otros archivos
 
-MarsDawn también abre archivos de texto sin formato (`.txt`, `.log`, código fuente) y PDF. El texto UTF-8 se abre listo para editar, solo como código. Los PDF se abren en un visor con miniaturas de página, zoom y búsqueda. En el Mac, abre archivos JSON y YAML como documentos editables, con una vista previa en árbol que se actualiza mientras escribes. Vista Rápida en el Finder muestra el mismo árbol. El iPhone y el iPad no abren archivos JSON ni YAML.
+MarsDawn también abre archivos de texto sin formato (`.txt`, `.log`, código fuente) y PDF. El texto UTF-8 se abre listo para editar, solo como código. Los PDF se abren en un visor con miniaturas de página, zoom y búsqueda. En el Mac, abre archivos JSON y YAML como documentos editables, con una vista previa en árbol que se actualiza mientras escribes. Vista Rápida en el Finder muestra el mismo árbol. En el iPhone y el iPad, JSON y YAML se abren en modo de solo lectura, con vista previa en árbol.
 
 ### Tus archivos siguen siendo tuyos
 

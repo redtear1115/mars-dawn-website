@@ -170,7 +170,7 @@ Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le l
 
 ### Autres fichiers
 
-MarsDawn ouvre aussi les fichiers texte brut (`.txt`, `.log`, code source) et les PDF. Le texte UTF-8 s’ouvre prêt à être modifié, en source uniquement. Les PDF s’ouvrent dans un lecteur avec vignettes de pages, zoom et recherche. Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre. iPhone et iPad n’ouvrent pas les fichiers JSON et YAML.
+MarsDawn ouvre aussi les fichiers texte brut (`.txt`, `.log`, code source) et les PDF. Le texte UTF-8 s’ouvre prêt à être modifié, en source uniquement. Les PDF s’ouvrent dans un lecteur avec vignettes de pages, zoom et recherche. Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre. Sur iPhone et iPad, JSON et YAML s’ouvrent en lecture seule, avec un aperçu en arbre.
 
 ### Vos fichiers restent les vôtres
 

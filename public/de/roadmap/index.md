@@ -2,7 +2,7 @@
 
 Woran wir als Nächstes arbeiten, nach Version. Es gibt keine Termine: Eine Version erscheint, wenn sie fertig ist.
 
-Zuletzt aktualisiert: 7. November 2026
+Zuletzt aktualisiert: 24. November 2026
 
 Pläne können sich ändern: Ein Punkt kann in eine andere Version wandern oder wegfallen.
 
@@ -14,7 +14,6 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 
 ### Mac 1.2.2
 
-- Callouts: GitHub-Alerts und HackMD-Blöcke mit `:::`.
 - Den Plans-Ordner von Claude Code mit einem Klick zur Seitenleiste hinzufügen, den neuesten Plan zuerst.
 
 ### Mac 1.2.3

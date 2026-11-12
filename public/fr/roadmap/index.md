@@ -2,7 +2,7 @@
 
 Ce que nous préparons, version par version. Pas de dates : une version sort quand elle est prête.
 
-Dernière mise à jour : 7 novembre 2026
+Dernière mise à jour : 24 novembre 2026
 
 Les plans peuvent changer : un élément peut passer à une autre version ou être abandonné.
 
@@ -14,7 +14,6 @@ Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/chang
 
 ### Mac 1.2.2
 
-- Encadrés : les alertes GitHub et les blocs `:::` de HackMD.
 - Ajouter le dossier Plans de Claude Code à la barre latérale en un clic, le plan le plus récent en premier.
 
 ### Mac 1.2.3
