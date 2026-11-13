@@ -11,10 +11,10 @@ MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、M
 ## 離開座位，也能讀 agent 寫的東西
 
 1. 在 Mac 上，讓 agent 把檔案存進 iCloud 雲碟裡的資料夾。
-2. 在 iPhone 或 iPad 上打開 MarsDawn，選那份檔案。
-3. 要修改或輸出 PDF，回到 Mac 上做。
+2. 在 iPhone 或 iPad 上用 MarsDawn 打開，也可以從其他 App 打開。
+3. 可以分享、列印或存成 PDF；要修改，回到 Mac 上做。
 
-在 iPhone 和 iPad 上只能閱讀，只開 Markdown 和純文字檔。
+在 iPhone 和 iPad 上只能閱讀，能開 Markdown、純文字、PDF、JSON 和 YAML 檔。
 
 [![在 App Store 下載](/assets/badges/app-store-zh-hant.svg)](https://apps.apple.com/app/id6812925073)
 
@@ -116,7 +116,7 @@ MarsDawn 是 Mac 原生 app，用來讀懂、檢查 agent 寫的 Markdown：原�
 
 ### MarsDawn 有 iPhone 或 iPad 版嗎？
 
-有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown 和純文字檔，排好 Mermaid 圖表、數學式、程式碼和表格，也有大綱和主題；不能編輯，也不能輸出 PDF。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。
+有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown、純文字、PDF、JSON 和 YAML 檔，排好 Mermaid 圖表、數學式、程式碼和表格。可以分享、列印檔案，或存成 PDF，但不能編輯。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad。
 
 詳見：[路線圖](/zh-hant/roadmap/)
 

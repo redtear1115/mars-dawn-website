@@ -27,6 +27,10 @@ La pestaña Esquema de la barra lateral enumera los encabezados de un documento;
 
 [Leer lo que te devuelve tu agente](/es/reading-agent-output/)
 
+### Contraer un documento largo
+
+En la vista previa, Visualización ▸ Contraer todo hasta el encabezamiento 2 contrae un plan o una especificación largos hasta los encabezamientos de nivel 2, y Visualización ▸ Expandir todo lo vuelve a abrir. Formato ▸ Bloque plegable inserta un bloque que se pliega.
+
 ### Señala la línea exacta
 
 Edición ▸ Copiar referencia copia dónde estás como una ruta y una línea, por ejemplo `docs/plan.md:42`. Copiar para IA agrega debajo el texto seleccionado. Pega cualquiera de los dos en el chat del agente.
@@ -75,7 +79,7 @@ La negrita, la cursiva, el tachado, el código en línea, los enlaces, las citas
 
 ### Zoom, números de línea y barra de estado
 
-Acerca y aleja el código y la vista previa a la vez, del 50 % al 300 %. Junto al código hay un margen con números de línea, y la barra de estado muestra tu línea y columna, además del recuento de palabras y caracteres y el tiempo de lectura del documento o de tu selección.
+Acerca y aleja el código y la vista previa a la vez, del 50 % al 300 %. Junto al código hay un margen con números de línea, y la barra de estado muestra tu línea y columna, además del recuento de palabras y caracteres y el tiempo de lectura del documento o de tu selección.
 
 ### Imágenes
 
@@ -127,7 +131,7 @@ Ajustes ▸ Aspecto ▸ Obtener más temas… abre una galería de temas de vist
 
 ### Exportar como PDF, o imprimir
 
-Archivo ▸ Exportar como PDF… guarda un PDF paginado, y Archivo ▸ Imprimir… imprime las mismas páginas. Los diagramas Mermaid se dibujan, el código conserva su resaltado, y los saltos de página evitan separar un encabezado de su sección o partir por la mitad un bloque de código corto o un diagrama. El PDF usa siempre los colores claros del tema, aunque estuvieras leyendo en oscuro.
+Archivo ▸ Imprimir… y Archivo ▸ Exportar como PDF… abren «Imprimir y exportar», con una vista previa de las páginas. Elige una disposición: Documento; Guía, con portada, índice y marcadores PDF; o Folleto, con una columna para notas. Luego imprime o guarda. Los diagramas Mermaid se dibujan, el código conserva su resaltado, y los saltos de página evitan separar un encabezado de su sección o partir por la mitad un bloque de código corto o un diagrama. El PDF usa siempre los colores claros del tema.
 
 [Exportación a PDF](/es/pdf/)
 
@@ -143,12 +147,12 @@ En esta captura de pantalla:
 Tu agente trabaja en el Mac. Sus planes e informes pueden ir contigo en el iPhone o el iPad.
 
 1. **En el Mac:** guarda los planes e informes del agente en una carpeta de iCloud Drive.
-2. **En el iPhone o el iPad:** en MarsDawn, toca «Abrir» y elige el mismo archivo. Los diagramas Mermaid, las fórmulas, el código y las tablas se muestran con formato, con el esquema y tu tema.
-3. **De vuelta en el Mac:** sigue editando o exporta un PDF.
+2. **En el iPhone o el iPad:** en MarsDawn, toca «Abrir» y elige el mismo archivo, o ábrelo desde otra app. Los diagramas Mermaid, las fórmulas, el código y las tablas se muestran con formato, con el esquema y tu tema.
+3. **Para pasarlo:** compártelo, imprímelo o guárdalo como PDF.
 
 Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.
 
-En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.
+En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown, de texto, PDF, JSON y YAML, pero no los edita. Los enlaces de un PDF guardado desde ahí no funcionan. MarsDawn no tiene nube propia.
 
 ## Archivos, pestañas y Vista Rápida
 

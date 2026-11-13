@@ -6,13 +6,13 @@ Cette compétence tient en un fichier Markdown. Elle apprend à un agent de code
 
 ## L’installer dans Claude Code
 
-L’outil en ligne de commande `marsdawn` écrit la skill pour vous, et le fichier qu’il écrit correspond à la version de `marsdawn` que vous avez installée. Si vous n’avez pas encore `marsdawn`, installez-le avec [Homebrew](https://brew.sh) :
+L’outil en ligne de commande `marsdawn` écrit la skill pour vous, et le fichier qu’il écrit correspond à la version de `marsdawn` que vous avez installée. Si vous n’avez pas encore `marsdawn`, installez-le avec [Homebrew](https://brew.sh) :
 
 ```
 brew install redtear1115/tap/marsdawn
 ```
 
-Installez ensuite la skill :
+Installez ensuite la skill :
 
 ```
 marsdawn skill --install
@@ -24,7 +24,7 @@ Claude Code la charge quand une tâche demande un PDF, ou quand il a écrit ou r
 
 ## Après une mise à jour de marsdawn
 
-Homebrew met à jour `marsdawn` mais laisse la skill où elle était, elle reste donc à l’ancienne version tant que vous ne la rafraîchissez pas :
+Homebrew met à jour `marsdawn` mais laisse la skill où elle était, elle reste donc à l’ancienne version tant que vous ne la rafraîchissez pas :
 
 ```
 marsdawn skill --install --force
@@ -34,17 +34,17 @@ marsdawn skill --install --force
 
 ## Pour d’autres agents
 
-Ajoutez `--dir` avec le dossier où votre agent range ses skills, et `marsdawn` y écrit `SKILL.md` à la place :
+Ajoutez `--dir` avec le dossier où votre agent range ses skills, et `marsdawn` y écrit `SKILL.md` à la place :
 
 ```
 marsdawn skill --install --dir <path>
 ```
 
-Le fichier est du Markdown brut, des instructions et des commandes : un agent qui charge des fichiers d’instructions peut l’utiliser tel quel.
+Le fichier est du Markdown brut, des instructions et des commandes : un agent qui charge des fichiers d’instructions peut l’utiliser tel quel.
 
 ## Sans Homebrew ni l’outil en ligne de commande
 
-Si vous ne pouvez pas installer `marsdawn` d’abord, téléchargez plutôt le fichier :
+Si vous ne pouvez pas installer `marsdawn` d’abord, téléchargez plutôt le fichier :
 
 ```
 mkdir -p ~/.claude/skills/marsdawn
@@ -56,11 +56,11 @@ Cela récupère la dernière skill de ce site, qui peut être en avance sur un `
 ## Ce qu’elle enseigne
 
 - Installer `marsdawn` avec Homebrew s’il manque, puis le vérifier avec `marsdawn --version` au lieu de supposer une version.
-- Exporter avec `marsdawn export … --json` et lire le résultat : où est allé le PDF, combien de pages il compte, et quel diagramme Mermaid n’a pas pu être rendu.
-- Distinguer les échecs par leur code de sortie : fichier introuvable, PDF déjà présent, export échoué, option incorrecte.
-- Ouvrir un document qu’il a écrit avec `marsdawn open file.md:line`, sur sa première modification, et une seule fois : les modifications suivantes apparaissent d’elles-mêmes dans la fenêtre ouverte.
+- Exporter avec `marsdawn export … --json` et lire le résultat : où est allé le PDF, combien de pages il compte, et quel diagramme Mermaid n’a pas pu être rendu.
+- Distinguer les échecs par leur code de sortie : fichier introuvable, PDF déjà présent, export échoué, option incorrecte.
+- Ouvrir un document qu’il a écrit avec `marsdawn open file.md:line`, sur sa première modification, et une seule fois : les modifications suivantes apparaissent d’elles-mêmes dans la fenêtre ouverte.
 - Si l’app MarsDawn n’est pas installée, le dire une fois et continuer, sans réessayer. Ne jamais utiliser `open` pour produire un PDF.
-- Avec `--folder` (marsdawn 0.5.1 et versions ultérieures), signaler le dossier comme demandé, pas comme affiché : c’est l’app qui décide, et rien ne le confirme.
+- Avec `--folder` (marsdawn 0.5.1 et versions ultérieures), signaler le dossier comme demandé, pas comme affiché : c’est l’app qui décide, et rien ne le confirme.
 
 ## Ce qu’elle ne fait pas
 

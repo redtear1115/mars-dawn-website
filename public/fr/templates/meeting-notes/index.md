@@ -47,18 +47,18 @@ MarsDawn n’enregistre pas la réunion, ne la transcrit pas et ne suit pas les 
 
 ## Questions
 
-### Les cases à cocher fonctionnent-elles ?
+### Les cases à cocher fonctionnent-elles ?
 
 Elles s’affichent comme des cases à cocher dans l’aperçu et dans le PDF. Pour en cocher une, remplacez `[ ]` par `[x]` dans le source.
 
-### L’agent peut-il garder le compte rendu et les actions en phase ?
+### L’agent peut-il garder le compte rendu et les actions en phase ?
 
-Oui, c’est tout l’intérêt de la boucle : modifiez l’un, et demandez-lui de mettre à jour le reste. MarsDawn vous montre le résultat.
+Oui, c’est tout l’intérêt de la boucle : modifiez l’un, et demandez-lui de mettre à jour le reste. MarsDawn vous montre le résultat.
 
 ## Autres modèles
 
-- [Spécification (PRD)](/fr/templates/spec/) : problème, objectifs, exigences, un diagramme de flux et des critères d’acceptation.
-- [Organigramme](/fr/templates/flowchart/) : un diagramme Mermaid, avec les étapes écrites en dessous.
+- [Spécification (PRD)](/fr/templates/spec/) : problème, objectifs, exigences, un diagramme de flux et des critères d’acceptation.
+- [Organigramme](/fr/templates/flowchart/) : un diagramme Mermaid, avec les étapes écrites en dessous.
 - [Modèles Markdown](/fr/templates/)
 
 ## Plus

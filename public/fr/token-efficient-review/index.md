@@ -1,16 +1,16 @@
 # Relire sans dépenser les tokens de votre agent.
 
-Deux choses distinctes restent économiques dans cette boucle : ce que l’agent reçoit en appelant l’outil, et ce qu’il faut pour confirmer que le résultat est correct.
+Deux choses distinctes restent économiques dans cette boucle : ce que l’agent reçoit en appelant l’outil, et ce qu’il faut pour confirmer que le résultat est correct.
 
-**L’appel d’outil renvoie un petit objet JSON, pas la page rendue, et c’est une personne qui relit la page rendue dans MarsDawn ; elle n’est jamais relue dans le contexte de l’agent.**
+**L’appel d’outil renvoie un petit objet JSON, pas la page rendue, et c’est une personne qui relit la page rendue dans MarsDawn ; elle n’est jamais relue dans le contexte de l’agent.**
 
 ## L’appel d’outil lui-même coûte peu
 
-Appelez `marsdawn export`, depuis la CLI, la compétence ou [le serveur MCP](/fr/cli/mcp/), et vous recevez [un objet JSON compact](/fr/cli/agents/) : `ok`, `output`, `pages`, `theme`, `paper` et `diagramErrors`. Le schéma complet est [export.v1.json](/schemas/cli/export.v1.json). Rien de tout cela n’est le document rendu. Un PDF de 50 pages avec une douzaine de diagrammes Mermaid renvoie la même poignée de champs qu’une note d’une page.
+Appelez `marsdawn export`, depuis la CLI, la compétence ou [le serveur MCP](/fr/cli/mcp/), et vous recevez [un objet JSON compact](/fr/cli/agents/) : `ok`, `output`, `pages`, `theme`, `paper` et `diagramErrors`. Le schéma complet est [export.v1.json](/schemas/cli/export.v1.json). Rien de tout cela n’est le document rendu. Un PDF de 50 pages avec une douzaine de diagrammes Mermaid renvoie la même poignée de champs qu’une note d’une page.
 
 ## La relecture se fait à côté
 
-Une fois le PDF créé, une personne l’ouvre, dans MarsDawn ou n’importe quel lecteur PDF, et lit les diagrammes, les formules et la mise en page rendus. L’agent n’a jamais besoin de relire ce rendu dans sa propre fenêtre de contexte pour confirmer qu’il est correct : la relecture se fait dans une autre fenêtre, sur un autre écran, et non dans un nouvel aller-retour de tokens passés à décrire à quoi ressemble un diagramme.
+Une fois le PDF créé, une personne l’ouvre, dans MarsDawn ou n’importe quel lecteur PDF, et lit les diagrammes, les formules et la mise en page rendus. L’agent n’a jamais besoin de relire ce rendu dans sa propre fenêtre de contexte pour confirmer qu’il est correct : la relecture se fait dans une autre fenêtre, sur un autre écran, et non dans un nouvel aller-retour de tokens passés à décrire à quoi ressemble un diagramme.
 
 ## Ce que cela évite
 
@@ -20,10 +20,10 @@ Une fois le PDF créé, une personne l’ouvre, dans MarsDawn ou n’importe que
 
 ## Pour aller plus loin
 
-- Les trois façons d’appeler marsdawn, CLI, fichier de compétence, serveur MCP : [trois portes d’entrée](/fr/cli/mcp/).
-- Chaque champ du résultat JSON : [marsdawn pour les agents](/fr/cli/agents/).
-- Pourquoi une personne doit encore lire ce qu’un agent a écrit : [pourquoi relire](/fr/reviewing-ai-output/).
-- L’argumentaire complet pour lire ce que rend un agent, avec une liste de vérification : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
+- Les trois façons d’appeler marsdawn, CLI, fichier de compétence, serveur MCP : [trois portes d’entrée](/fr/cli/mcp/).
+- Chaque champ du résultat JSON : [marsdawn pour les agents](/fr/cli/agents/).
+- Pourquoi une personne doit encore lire ce qu’un agent a écrit : [pourquoi relire](/fr/reviewing-ai-output/).
+- L’argumentaire complet pour lire ce que rend un agent, avec une liste de vérification : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
 
 ## Plus
 

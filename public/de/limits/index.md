@@ -25,7 +25,7 @@ Auf diesem Bildschirmfoto:
 - **Bearbeiten:** Du schreibst links Markdown und liest rechts die Seite; die Seite selbst lässt sich nicht bearbeiten.
 - **Formate:** MarsDawn exportiert PDF und druckt, exportiert aber keine Word-Dateien.
 - **Andere Dateien:** PDFs und Textdateien in anderen Kodierungen als UTF-8 öffnen sich schreibgeschützt. Auf dem Mac öffnest du JSON und YAML als bearbeitbare Dokumente mit Baumvorschau; iPhone und iPad öffnen sie nicht.
-- **Themen:** Enthalten sind Morgenrot, Klassisch, Modern und Lebhaft, jeweils hell und dunkel, und über die kuratierte [Themengalerie](/de/themes/gallery/) (Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden …) lassen sich weitere installieren. Ein Thema legt Farben und ein paar Stiloptionen fest; eigenes CSS gibt es nicht. Siehe [Themen](/de/themes/).
+- **Themen:** Enthalten sind Morgenrot, Klassisch, Modern und Lebhaft, jeweils hell und dunkel, und über die kuratierte [Themengalerie](/de/themes/gallery/) (Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden …) lassen sich weitere installieren. Ein Thema legt Farben und ein paar Stiloptionen fest; eigenes CSS gibt es nicht. Siehe [Themen](/de/themes/).
 - **Plug-ins:** MarsDawn hat keine Plug-ins oder Erweiterungen.
 
 ## Nach dem Test

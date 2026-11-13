@@ -4,11 +4,11 @@
 
 ## Ce que les lettres avancent
 
-`/agent-design-patterns/` couvre déjà ce qu’est chacun des quatre patrons, quels documents chacun tend à vous laisser lire (notre inférence), et le propre verdict de Ng sur la planification, cité de la Partie 4 : « while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do. » Cette note ajoute le même classement tiré des deux lettres que cette page laisse de côté : la Partie 3, écrite une semaine avant la Partie 4, où il énonce le classement à l’avance, et la Partie 5, où il l’étend au patron que la Partie 4 ne mentionne pas — la collaboration multi-agents. En introduisant l’usage d’outils, dans la Partie 3, il écrit :
+`/agent-design-patterns/` couvre déjà ce qu’est chacun des quatre patrons, quels documents chacun tend à vous laisser lire (notre inférence), et le propre verdict de Ng sur la planification, cité de la Partie 4 : « while I can get the agentic design patterns of Reflection and Tool Use to work reliably and improve my applications’ performance, Planning is a less mature technology, and I find it hard to predict in advance what it will do. » Cette note ajoute le même classement tiré des deux lettres que cette page laisse de côté : la Partie 3, écrite une semaine avant la Partie 4, où il énonce le classement à l’avance, et la Partie 5, où il l’étend au patron que la Partie 4 ne mentionne pas — la collaboration multi-agents. En introduisant l’usage d’outils, dans la Partie 3, il écrit :
 
 > “In future letters, I’ll describe the Planning and Multi-agent collaboration design patterns. They allow AI agents to do much more but are less mature, less predictable — albeit very exciting — technologies.”
 
-Deux semaines plus tard, en clôturant la série avec la collaboration multi-agents, il confirme le même classement de l’autre côté :
+Deux semaines plus tard, en clôturant la série avec la collaboration multi-agents, il confirme le même classement de l’autre côté :
 
 > “Like the design pattern of Planning, I find the output quality of multi-agent collaboration hard to predict, especially when allowing agents to interact freely and providing them with multiple tools. The more mature patterns of Reflection and Tool Use are more reliable.”
 
@@ -16,15 +16,15 @@ Il dit cela sur la façon dont chaque patron améliore les résultats de ses app
 
 ## Notre lecture, pas celle de Ng
 
-Le classement de Ng porte sur la qualité et la prévisibilité de la sortie depuis le fauteuil du constructeur, mais il s’aligne, grosso modo, avec le degré de scrutiny que la trace papier de chaque patron mérite probablement depuis le vôtre. La réflexion et l’usage d’outils, les deux qu’il trouve plus fiables, tendent à vous rendre quelque chose qui décrit un travail déjà fait — un brouillon révisé, un rapport de ce qui a tourné — donc vérifier une affirmation contre la vraie sortie couvre en général le risque. La planification et la collaboration multi-agents, les deux qu’il peines à prévoir, tendent à vous rendre quelque chose d’écrit avant que le travail n’arrive, ou réparti sur plusieurs fichiers de plusieurs agents : un plan qui attend un feu vert, ou une passation entre agents que l’exécution n’a pas encore testée. De son propre aveu, ce sont exactement les documents où l’écart entre ce qui est écrit et ce qui se passera vraiment est le plus large — le même point que `/reviewing-agent-plans/` tire de l’essai de Chip Huyen, dans sa section « Pourquoi s’en soucier avant que ça tourne » : attraper un problème avant que quoi que ce soit n’ait tourné est l’endroit le moins cher pour l’attraper.
+Le classement de Ng porte sur la qualité et la prévisibilité de la sortie depuis le fauteuil du constructeur, mais il s’aligne, grosso modo, avec le degré de scrutiny que la trace papier de chaque patron mérite probablement depuis le vôtre. La réflexion et l’usage d’outils, les deux qu’il trouve plus fiables, tendent à vous rendre quelque chose qui décrit un travail déjà fait — un brouillon révisé, un rapport de ce qui a tourné — donc vérifier une affirmation contre la vraie sortie couvre en général le risque. La planification et la collaboration multi-agents, les deux qu’il peines à prévoir, tendent à vous rendre quelque chose d’écrit avant que le travail n’arrive, ou réparti sur plusieurs fichiers de plusieurs agents : un plan qui attend un feu vert, ou une passation entre agents que l’exécution n’a pas encore testée. De son propre aveu, ce sont exactement les documents où l’écart entre ce qui est écrit et ce qui se passera vraiment est le plus large — le même point que `/reviewing-agent-plans/` tire de l’essai de Chip Huyen, dans sa section « Pourquoi s’en soucier avant que ça tourne » : attraper un problème avant que quoi que ce soit n’ait tourné est l’endroit le moins cher pour l’attraper.
 
 ## Où MarsDawn aide, et où non
 
-MarsDawn ne sait pas lequel des quatre patrons de Ng a produit un fichier donné, ne classe rien par prévisibilité, et n’a aucun modèle d’IA à l’intérieur — il ne fera pas la vérification que son classement suggère de faire. Il garde le fichier lisible pendant que vous le faites vous-même : l’onglet Plan (Présentation ▸ Afficher la barre latérale, ⌃⌘S) montre la forme d’un long plan, la source et l’aperçu rendu côte à côte (⌘2), et pour une passation multi-agents, ouvrir le dossier partagé avec Fichier ▸ Ouvrir le dossier… (⇧⌘O) montre les nouveaux fichiers dans l’onglet Fichiers en environ une seconde à mesure que différents agents les écrivent, l’en-tête nommant la branche git ou le worktree pour que deux fichiers du même nom venant d’agents différents ne se confondent pas.
+MarsDawn ne sait pas lequel des quatre patrons de Ng a produit un fichier donné, ne classe rien par prévisibilité, et n’a aucun modèle d’IA à l’intérieur — il ne fera pas la vérification que son classement suggère de faire. Il garde le fichier lisible pendant que vous le faites vous-même : l’onglet Plan (Présentation ▸ Afficher la barre latérale, ⌃⌘S) montre la forme d’un long plan, la source et l’aperçu rendu côte à côte (⌘2), et pour une passation multi-agents, ouvrir le dossier partagé avec Fichier ▸ Ouvrir le dossier… (⇧⌘O) montre les nouveaux fichiers dans l’onglet Fichiers en environ une seconde à mesure que différents agents les écrivent, l’en-tête nommant la branche git ou le worktree pour que deux fichiers du même nom venant d’agents différents ne se confondent pas.
 
 ## Essayer
 
-MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -32,13 +32,13 @@ brew install redtear1115/tap/marsdawn
 
 Il exporte le Markdown en PDF sans l’app.
 
-[Ligne de commande](/fr/cli/) · Avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
+[Ligne de commande](/fr/cli/) · Avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
 
 ## Ensuite
 
-- Ce que chaque patron tend à vous rendre, en entier : [Quatre patrons de conception d’agents et les documents que chacun vous tend](/fr/agent-design-patterns/)
-- La relecture en cinq minutes d’un plan avant qu’il ne tourne : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/)
-- Retour à la série : [Notes de lecture de la rédaction](/fr/reading-notes/)
+- Ce que chaque patron tend à vous rendre, en entier : [Quatre patrons de conception d’agents et les documents que chacun vous tend](/fr/agent-design-patterns/)
+- La relecture en cinq minutes d’un plan avant qu’il ne tourne : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/)
+- Retour à la série : [Notes de lecture de la rédaction](/fr/reading-notes/)
 
 ## Sources
 

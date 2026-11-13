@@ -15,8 +15,9 @@ Sur cette capture d’écran :
 - Les blocs de code gardent leur coloration syntaxique.
 - Les sauts de page évitent de laisser un titre en bas de page ou de couper du code et des diagrammes.
 - Quelle que soit la disposition. L’export fonctionne même quand seule la source est affichée.
+- Un aperçu des pages avant d’imprimer ou d’exporter, et le choix de la disposition : Document, Guide avec couverture et table des matières, ou Polycopié avec colonne de notes.
 
-L’[outil en ligne de commande marsdawn](/fr/cli/), gratuit, utilise le même moteur d’export : un script ou un agent IA obtient le même PDF.
+L’[outil en ligne de commande marsdawn](/fr/cli/), gratuit, utilise le même moteur d’export : un script ou un agent IA obtient le même PDF.
 
 ## Plus
 

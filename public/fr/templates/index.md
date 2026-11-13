@@ -2,9 +2,9 @@
 
 Pour les documents qu’un agent rédige et que vous lisez. Chaque modèle est accompagné d’un prompt pour votre agent. Ouvrez le fichier rempli dans MarsDawn pour lire ce qu’il a écrit.
 
-- [Spécification (PRD)](/fr/templates/spec/) : problème, objectifs, exigences, un diagramme de flux et des critères d’acceptation.
-- [Organigramme](/fr/templates/flowchart/) : un diagramme Mermaid, avec les étapes écrites en dessous.
-- [Compte rendu de réunion](/fr/templates/meeting-notes/) : décisions et actions, chacune avec un responsable.
+- [Spécification (PRD)](/fr/templates/spec/) : problème, objectifs, exigences, un diagramme de flux et des critères d’acceptation.
+- [Organigramme](/fr/templates/flowchart/) : un diagramme Mermaid, avec les étapes écrites en dessous.
+- [Compte rendu de réunion](/fr/templates/meeting-notes/) : décisions et actions, chacune avec un responsable.
 
 ## Plus
 

@@ -24,7 +24,7 @@ In MarsDawn wird dieser Block zu einem Flussdiagramm: Markdown schreiben, dann L
 
 - **In der Vorschau.** Öffne die Datei, und das Diagramm steht neben seinem Quelltext (⌘2). Die Seite aktualisiert sich beim Tippen, und beide Bereiche scrollen gemeinsam.
 - **In der Übersicht.** Wähle die Datei im Finder aus und drücke die Leertaste; auch dort werden Diagramme gezeichnet.
-- **Im PDF.** „Ablage ▸ Als PDF exportieren …“ und „Ablage ▸ Drucken …“ zeichnen das Diagramm in die Seite. Seitenumbrüche vermeiden es, ein Diagramm in der Mitte zu teilen. Das PDF verwendet die hellen Farben des Themes.
+- **Im PDF.** „Ablage ▸ Als PDF exportieren …“ und „Ablage ▸ Drucken …“ zeichnen das Diagramm in die Seite. Seitenumbrüche vermeiden es, ein Diagramm in der Mitte zu teilen. Das PDF verwendet die hellen Farben des Themes.
 - **Von der Befehlszeile.** Das kostenlose Werkzeug `marsdawn export` zeichnet dieselben Diagramme in ein PDF und braucht die App nicht. Siehe [Befehlszeile](/de/cli/).
 - **In deinem Theme.** Die Einstellung „Erscheinungsbild“ der Vorschau gilt auch für Diagramme, ein Diagramm folgt also hell oder dunkel.
 

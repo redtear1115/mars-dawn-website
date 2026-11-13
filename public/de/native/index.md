@@ -30,8 +30,8 @@ Auf diesem Bildschirmfoto:
 
 ### Klein und leise
 
-- 11,4 MB Download aus dem Mac App Store.
-- 0 % CPU, wenn ein Dokument geöffnet ist und sich nichts ändert.
+- 11,4 MB Download aus dem Mac App Store.
+- 0 % CPU, wenn ein Dokument geöffnet ist und sich nichts ändert.
 
 Gemessen mit Version 1.2.1, November 2026.
 

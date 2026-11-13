@@ -11,10 +11,10 @@ The page shows a working MarsDawn window over part of the app's Welcome guide. I
 ## Read what your agent wrote, away from your desk
 
 1. On your Mac, have your agent save its files to a folder in iCloud Drive.
-2. On your iPhone or iPad, open MarsDawn and choose the file.
-3. To edit it or export a PDF, go back to your Mac.
+2. On your iPhone or iPad, open it in MarsDawn, or from another app.
+3. Share, print or save it as a PDF; edit it on your Mac.
 
-On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain text files.
+On iPhone and iPad, MarsDawn is for reading only. It opens Markdown, text, PDF, JSON and YAML.
 
 [![Download on the App Store](/assets/badges/app-store-en.svg)](https://apps.apple.com/app/id6812925073)
 
@@ -116,7 +116,7 @@ No. MarsDawn is a free download with a 14-day trial of every feature. After that
 
 ### Does MarsDawn work on iPhone or iPad?
 
-Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown and plain text files and renders Mermaid diagrams, math, code and tables, with an outline and themes. It doesn't edit or export PDFs. It needs iOS 26 or iPadOS 26 or later. With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.
+Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown, text, PDF, JSON and YAML, with Mermaid, math, code and tables rendered. Files can be shared, printed or saved as PDFs, but not edited. It needs iOS 26 or iPadOS 26 or later. With the same Apple Account, one trial and one unlock cover Mac, iPhone and iPad.
 
 More: [Roadmap](/roadmap/)
 

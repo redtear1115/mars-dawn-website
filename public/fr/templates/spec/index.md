@@ -1,6 +1,6 @@
 # Modèle de spécification (PRD) en Markdown
 
-Une spécification que votre agent peut remplir et que vous pouvez lire d’une traite : le problème, les objectifs, les exigences, un diagramme de flux et les critères d’acceptation. Quand vous modifiez une exigence, demandez à l’agent d’harmoniser le reste.
+Une spécification que votre agent peut remplir et que vous pouvez lire d’une traite : le problème, les objectifs, les exigences, un diagramme de flux et les critères d’acceptation. Quand vous modifiez une exigence, demandez à l’agent d’harmoniser le reste.
 
 ## Le modèle
 
@@ -69,18 +69,18 @@ MarsDawn affiche la spécification, le tableau et le diagramme. Il ne vérifie p
 
 ## Questions
 
-### Le diagramme de flux nécessite-t-il d’installer quelque chose ?
+### Le diagramme de flux nécessite-t-il d’installer quelque chose ?
 
 Non. MarsDawn et `marsdawn export` dessinent Mermaid eux-mêmes, hors ligne.
 
-### Puis-je modifier la spécification dans MarsDawn ?
+### Puis-je modifier la spécification dans MarsDawn ?
 
 Oui. C’est un éditeur Markdown avec l’aperçu à côté du source. L’agent verra votre modification la prochaine fois qu’il lira le fichier.
 
 ## Autres modèles
 
-- [Organigramme](/fr/templates/flowchart/) : un diagramme Mermaid, avec les étapes écrites en dessous.
-- [Compte rendu de réunion](/fr/templates/meeting-notes/) : décisions et actions, chacune avec un responsable.
+- [Organigramme](/fr/templates/flowchart/) : un diagramme Mermaid, avec les étapes écrites en dessous.
+- [Compte rendu de réunion](/fr/templates/meeting-notes/) : décisions et actions, chacune avec un responsable.
 - [Modèles Markdown](/fr/templates/)
 
 ## Plus

@@ -45,7 +45,7 @@ MarsDawn ist eine Mac-App für dieses Lesen. Es macht einen Agenten nicht transp
 - **Lange Dateien:** Darstellung ▸ Seitenleiste einblenden (⌃⌘S) öffnet den Tab Gliederung, der die Überschriften listet. Klick auf eine, um dorthin zu springen.
 - **Diagramme und Formeln:** Quelltext und gerenderte Seite stehen nebeneinander (⌘2) und scrollen gemeinsam, mit gezeichnetem Mermaid und KaTeX. Ist ein Diagramm fehlerhaft, zeigt die Vorschau seinen Quelltext mit dem Fehler darunter.
 - **Umgeschrieben, während du liest:** Wenn der Agent die Datei umschreibt, lädt MarsDawn sie neu und behält deine Stelle, solange du keine eigenen ungesicherten Änderungen hast.
-- **Mehrere Dateien:** Öffne den Ordner des Agenten mit Ablage ▸ Ordner öffnen … (⇧⌘O). Neue Dateien erscheinen innerhalb etwa einer Sekunde im Tab Dateien, und bei einem Git-Checkout nennt die Kopfzeile den Branch oder Worktree.
+- **Mehrere Dateien:** Öffne den Ordner des Agenten mit Ablage ▸ Ordner öffnen … (⇧⌘O). Neue Dateien erscheinen innerhalb etwa einer Sekunde im Tab Dateien, und bei einem Git-Checkout nennt die Kopfzeile den Branch oder Worktree.
 - **Auf eine Zeile zeigen:** Bearbeiten ▸ Verweis kopieren (⌥⌘C) kopiert deine Stelle als `docs/plan.md:42`, und Für KI kopieren (⌃⌥⌘C) fügt den ausgewählten Text darunter ein, bereit zum Einfügen in den Chat mit dem Agenten.
 
 Lesen musst du trotzdem selbst. MarsDawn hält eine lange, sich ändernde Datei lesbar, während du es tust.

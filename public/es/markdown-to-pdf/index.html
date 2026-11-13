@@ -169,6 +169,7 @@ let pdf = try export("plan.md")
 <ul>
   <li><code>--theme</code>: dawn, classic, modern o vivid, con los colores claros del tema. Sin esta opción, <code>export</code> usa <code>$MARSDAWN_THEME</code> y, si no existe, dawn.</li>
   <li><code>--paper</code>: a4 o letter. El valor predeterminado es a4.</li>
+  <li><code>--layout</code>: document (predeterminado), handbook o handout. handbook añade una portada a partir del front matter, un índice y marcadores PDF.</li>
   <li><code>-o</code>: dónde escribir el PDF, en lugar de junto al archivo fuente.</li>
   <li><code>--allow-remote-images</code>: carga imágenes de la web durante el renderizado. Quedan desactivadas a menos que la indiques.</li>
 </ul>
@@ -181,6 +182,7 @@ let pdf = try export("plan.md")
 </ul>
 <h2 id="next">Siguiente</h2>
 <ul>
+  <li>En la app MarsDawn, Archivo ▸ Imprimir… muestra una vista previa de las mismas disposiciones antes de imprimir o guardar: <a href="/es/pdf/">Exportación a PDF</a>.</li>
   <li>Todas las opciones y el JSON que imprime: <a href="/es/cli/">Línea de comandos</a>.</li>
   <li>Para que un agente de programación lo haga por ti, ejecuta <code>marsdawn skill --install</code> para agregar <a href="/es/cli/skill/">la skill de agente de marsdawn</a>.</li>
   <li>Los cuatro temas de vista previa y hacia dónde va la exportación a PDF: <a href="/es/themes/">temas de vista previa y exportación a PDF</a>.</li>

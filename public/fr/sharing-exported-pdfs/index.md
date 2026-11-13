@@ -1,12 +1,12 @@
 # Donnez-leur le PDF, pas le Markdown.
 
-Un agent termine un document, vous le relisez et le révisez, puis quelqu’un en dehors de l’équipe technique doit le lire aussi : un responsable, un client, quelqu’un d’une autre équipe. Ces personnes n’ont pas besoin de savoir ce que signifient `##` ou un tableau à barres verticales. Exportez en PDF et donnez-leur cela à la place.
+Un agent termine un document, vous le relisez et le révisez, puis quelqu’un en dehors de l’équipe technique doit le lire aussi : un responsable, un client, quelqu’un d’une autre équipe. Ces personnes n’ont pas besoin de savoir ce que signifient `##` ou un tableau à barres verticales. Exportez en PDF et donnez-leur cela à la place.
 
 **Exportez le document relu en PDF et envoyez ce fichier.** Il s’ouvre partout, ne demande ni connaissance du Markdown ni installation, et ressemble à ce que vous avez vu dans l’aperçu, diagrammes, tableaux et mise en forme compris.
 
 ## Pourquoi ne pas simplement envoyer le fichier .md
 
-Un fichier `.md` brut ouvert dans un éditeur de texte montre les marques, pas la page : `#` pour un titre, `**` autour du gras, un bloc délimité pour un diagramme Mermaid qui n’est pas dessiné. Quelqu’un qui n’écrit pas de Markdown ne lit rien de tout cela comme prévu, et lui demander d’installer d’abord une visionneuse, c’est beaucoup demander pour un seul document.
+Un fichier `.md` brut ouvert dans un éditeur de texte montre les marques, pas la page : `#` pour un titre, `**` autour du gras, un bloc délimité pour un diagramme Mermaid qui n’est pas dessiné. Quelqu’un qui n’écrit pas de Markdown ne lit rien de tout cela comme prévu, et lui demander d’installer d’abord une visionneuse, c’est beaucoup demander pour un seul document.
 
 ## Pourquoi pas une capture d’écran
 
@@ -15,16 +15,16 @@ Une capture d’écran fige un écran d’un document qui peut faire plusieurs p
 ## Ce qu’apporte un PDF
 
 - Il s’ouvre avec ce que le destinataire a déjà, Aperçu, un navigateur, Acrobat, son téléphone, sans outil Markdown.
-- Les diagrammes Mermaid sont dessinés, pas laissés sous forme de code ; les blocs de code gardent leur coloration.
+- Les diagrammes Mermaid sont dessinés, pas laissés sous forme de code ; les blocs de code gardent leur coloration.
 - Les sauts de page sont choisis pour qu’un titre ne se retrouve pas seul en bas d’une page, et qu’un diagramme ne soit pas coupé sur deux pages.
-- Le même fichier, qu’il vienne de l’app MarsDawn ou de la ligne de commande gratuite ; le pas-à-pas se trouve sur [Markdown en PDF](/fr/markdown-to-pdf/).
+- Le même fichier, qu’il vienne de l’app MarsDawn ou de la ligne de commande gratuite ; le pas-à-pas se trouve sur [Markdown en PDF](/fr/markdown-to-pdf/).
 
 ## Pour aller plus loin
 
-- Les thèmes et mises en page dont l’export peut provenir : [thèmes d’aperçu et export PDF](/fr/themes/).
-- Exporter depuis un script ou un agent plutôt que depuis l’app : [marsdawn pour les agents](/fr/cli/agents/).
-- Pourquoi une personne doit d’abord lire le document : [pourquoi relire](/fr/reviewing-ai-output/).
-- Les passations entre plusieurs agents produisent naturellement des PDF à partager : [Quatre modèles de conception d’agents et les documents que chacun vous remet](/fr/agent-design-patterns/).
+- Les thèmes et mises en page dont l’export peut provenir : [thèmes d’aperçu et export PDF](/fr/themes/).
+- Exporter depuis un script ou un agent plutôt que depuis l’app : [marsdawn pour les agents](/fr/cli/agents/).
+- Pourquoi une personne doit d’abord lire le document : [pourquoi relire](/fr/reviewing-ai-output/).
+- Les passations entre plusieurs agents produisent naturellement des PDF à partager : [Quatre modèles de conception d’agents et les documents que chacun vous remet](/fr/agent-design-patterns/).
 
 ## Plus
 

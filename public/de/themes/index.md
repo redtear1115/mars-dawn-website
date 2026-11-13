@@ -20,12 +20,12 @@ Jedes hat seine eigene helle und dunkle Variante: Wechselst du das Erscheinungsb
 
 ## Die Themengalerie in der App
 
-In MarsDawn Einstellungen ▸ Erscheinungsbild öffnen und auf „Weitere Themes laden …“ klicken. Die Themengalerie lädt ihre Liste beim Öffnen. Sie geht nur online, solange sie geöffnet ist; ohne Verbindung zeigt sie einen Hinweis, und die vier integrierten Themen funktionieren weiter.
+In MarsDawn Einstellungen ▸ Erscheinungsbild öffnen und auf „Weitere Themes laden …“ klicken. Die Themengalerie lädt ihre Liste beim Öffnen. Sie geht nur online, solange sie geöffnet ist; ohne Verbindung zeigt sie einen Hinweis, und die vier integrierten Themen funktionieren weiter.
 
 - „Installieren“ fügt ein Thema zu den Auswahlen „Helles Thema“ und „Dunkles Thema“ sowie zu Darstellung ▸ Vorschau-Thema hinzu. „Entfernen“ löscht es.
 - „Nach Theme-Updates suchen“ fragt in der Galerie erneut nach neueren Versionen.
 - Nach Verwendungszweck filtern: Agenten-Review, Technische Dokumente, Formelle Ausgabe, Notizen & Teilen.
-- „Theme melden …“ öffnet ein vorausgefülltes GitHub-Issue oder eine E-Mail an uns.
+- „Theme melden …“ öffnet ein vorausgefülltes GitHub-Issue oder eine E-Mail an uns.
 
 ## Was in der Galerie ist
 

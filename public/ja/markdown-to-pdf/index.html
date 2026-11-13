@@ -169,6 +169,7 @@ let pdf = try export("plan.md")
 <ul>
   <li><code>--theme</code>：dawn、classic、modern、vivid のいずれかで、テーマのライトカラーを使います。指定しない場合、<code>export</code> は <code>$MARSDAWN_THEME</code>、それもなければ dawn を使います。</li>
   <li><code>--paper</code>：a4 または letter。デフォルトは a4 です。</li>
+  <li><code>--layout</code>：document（デフォルト）、handbook、handout のいずれか。handbook はフロントマターから表紙を作り、目次と PDF のブックマークを付けます。</li>
   <li><code>-o</code>：PDF をソースの隣ではなく、どこに書き出すか。</li>
   <li><code>--allow-remote-images</code>：レンダリング時にウェブから画像を読み込みます。指定しない限りオフのままです。</li>
 </ul>
@@ -181,6 +182,7 @@ let pdf = try export("plan.md")
 </ul>
 <h2 id="next">次に</h2>
 <ul>
+  <li>MarsDawn アプリでは、「ファイル ▸ プリント…」で同じレイアウトをプレビューしてから、プリントまたは保存できます：<a href="/ja/pdf/">PDF 書き出し</a>。</li>
   <li>すべてのオプションと出力される JSON：<a href="/ja/cli/">コマンドライン</a>。</li>
   <li>コーディングエージェントにこれをやらせるには、<code>marsdawn skill --install</code> を実行して<a href="/ja/cli/skill/">marsdawn のエージェントスキル</a>を追加してください。</li>
 </ul>

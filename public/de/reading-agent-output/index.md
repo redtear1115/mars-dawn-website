@@ -24,7 +24,7 @@ Die Datei ist lang, und der wichtige Teil steht selten oben. Sie enthält Mermai
 - **Lange Dateien:** Der Tab Gliederung in der Seitenleiste (⌃⌘S) listet die Überschriften. Klick auf eine, und beide Bereiche springen dorthin.
 - **Diagramme und Formeln:** Mermaid und KaTeX werden in der Vorschau neben dem Quelltext gezeichnet (⌘2), und beide Bereiche scrollen gemeinsam.
 - **Umgeschrieben, während du liest:** Wenn der Agent die Datei umschreibt, lädt MarsDawn sie neu und behält deine Stelle, solange du keine eigenen ungesicherten Änderungen hast.
-- **Mehrere Dateien:** Öffne den Ordner des Agenten mit Ablage ▸ Ordner öffnen … (⇧⌘O). Neue Dateien erscheinen innerhalb etwa einer Sekunde im Tab Dateien, und bei einem Git-Checkout nennt die Kopfzeile den Branch oder Worktree.
+- **Mehrere Dateien:** Öffne den Ordner des Agenten mit Ablage ▸ Ordner öffnen … (⇧⌘O). Neue Dateien erscheinen innerhalb etwa einer Sekunde im Tab Dateien, und bei einem Git-Checkout nennt die Kopfzeile den Branch oder Worktree.
 - **Genaues Feedback:** Bearbeiten ▸ Verweis kopieren (⌥⌘C) kopiert deine Stelle als `docs/plan.md:42`. Für KI kopieren (⌃⌥⌘C) fügt den ausgewählten Text darunter ein. Füge beides in den Chat mit dem Agenten ein.
 
 Zwei weitere für den Ablauf: Ein Agent kann `marsdawn open plan.md:42` ausführen, um die Datei in MarsDawn bei Zeile 42 zu öffnen, der Zeile, die du zuerst sehen sollst, und eine geprüfte Datei lässt sich aus der App oder mit dem kostenlosen Befehl `marsdawn export` als PDF exportieren.

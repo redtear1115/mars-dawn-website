@@ -2,7 +2,7 @@
 
 Comment MarsDawn, l’app Markdown pour Mac, iPhone et iPad, traite vos informations.
 
-Dernière mise à jour : 2026-10-29
+Dernière mise à jour : 2026-10-29
 
 > **L’app MarsDawn ne collecte aucune donnée vous concernant.** Il n’y a ni compte, ni publicité, ni suivi. Vos documents et vos réglages restent sur vos appareils.
 
@@ -10,9 +10,9 @@ Dernière mise à jour : 2026-10-29
 
 L’app et ce site web sont deux choses distinctes. L’app ne collecte rien. Une visite ne peut être enregistrée qu’ici, sur marsdawn.southern-light.dev.
 
-Ce site utilise **Google Analytics 4**, chargé via **Google Tag Manager**. Pour chaque visiteur, la mesure d’audience est d’abord refusée : le mode Consentement (Consent Mode) de Google n’envoie qu’un ping sans cookie, sans cookie de mesure et sans identifiant persistant, jusqu’à ce que vous choisissiez *Accepter* dans le bandeau. Si vous choisissez *Refuser*, ou si vous ne faites aucun choix, rien ne change. Choisir *Refuser* après avoir accepté désactive immédiatement la mesure d’audience et supprime les cookies ci-dessous. Vous pouvez modifier votre choix à tout moment avec le lien « Réglages des cookies » en pied de chaque page. Ce choix est enregistré uniquement dans le stockage local de votre navigateur, jamais dans un cookie de notre part.
+Ce site utilise **Google Analytics 4**, chargé via **Google Tag Manager**. Pour chaque visiteur, la mesure d’audience est d’abord refusée : le mode Consentement (Consent Mode) de Google n’envoie qu’un ping sans cookie, sans cookie de mesure et sans identifiant persistant, jusqu’à ce que vous choisissiez *Accepter* dans le bandeau. Si vous choisissez *Refuser*, ou si vous ne faites aucun choix, rien ne change. Choisir *Refuser* après avoir accepté désactive immédiatement la mesure d’audience et supprime les cookies ci-dessous. Vous pouvez modifier votre choix à tout moment avec le lien « Réglages des cookies » en pied de chaque page. Ce choix est enregistré uniquement dans le stockage local de votre navigateur, jamais dans un cookie de notre part.
 
-Une fois que vous avez accepté, Google Analytics dépose ses propres cookies (`_ga` et `_ga_<measurement id>`) et enregistre :
+Une fois que vous avez accepté, Google Analytics dépose ses propres cookies (`_ga` et `_ga_<measurement id>`) et enregistre :
 
 - **Pages vues et référent.** La page consultée et, lorsque le navigateur l’envoie, l’adresse de provenance.
 - **Localisation approximative, appareil et navigateur.** Une localisation grossière déduite de votre adresse IP (au plus au niveau de la ville), votre type d’appareil, votre système d’exploitation et votre navigateur. Rien de tout cela n’est assez précis pour vous identifier.
@@ -20,7 +20,7 @@ Une fois que vous avez accepté, Google Analytics dépose ses propres cookies (`
 - **Adresses IP.** Google Analytics 4 ne journalise ni ne stocke les adresses IP.
 - **Ce qui n’est pas enregistré.** Aucun compte, puisque le site n’en a pas. Aucun document, et rien de ce que vous saisissez. Aucune publicité intersites, et aucun profil de vous. Les requêtes de l’app pour les fichiers de thème sous `/themes/` sont ignorées et ne sont pas transmises. Le simulateur de thèmes et la galerie sur `/themes/new/` et `/themes/gallery/` s’exécutent entièrement dans votre navigateur et n’envoient aucune donnée de thème à Google Analytics non plus.
 - **Conservation.** Google conserve ces données pendant 14 mois, puis les supprime.
-- **Lieu de traitement.** Google Tag Manager et Google Analytics sont exploités par Google ; vos données peuvent être traitées aux États-Unis ainsi que dans d’autres pays où Google exerce ses activités.
+- **Lieu de traitement.** Google Tag Manager et Google Analytics sont exploités par Google ; vos données peuvent être traitées aux États-Unis ainsi que dans d’autres pays où Google exerce ses activités.
 - **L’hébergeur.** Cloudflare héberge le site et, comme tout hébergeur, voit votre adresse IP pendant qu’il répond à la requête. Ce journal appartient à l’hébergeur. Il ne s’agit pas de la mesure d’audience décrite ci-dessus.
 
 ## Sondage de lancement
@@ -42,10 +42,10 @@ Du 26 octobre au 8 novembre 2026, MarsDawn mène un court sondage sur Google For
 
 ## Quand MarsDawn utilise Internet
 
-MarsDawn fonctionne entièrement hors ligne. L’app ne se connecte à Internet **que si vous le choisissez**, pour un document qui fait référence au web ou pour la galerie de thèmes. Pour les documents :
+MarsDawn fonctionne entièrement hors ligne. L’app ne se connecte à Internet **que si vous le choisissez**, pour un document qui fait référence au web ou pour la galerie de thèmes. Pour les documents :
 
 - **Documents Markdown.** Les images web sont bloquées par défaut. Elles ne se chargent qu’après un clic sur *Charger les images* dans l’aperçu, ou si vous activez *Charger automatiquement les images distantes* dans les Réglages. Rien d’autre de ce à quoi un document Markdown fait référence n’est chargé depuis le web.
-- **Documents HTML.** Un document HTML s’ouvre de façon statique : son code ne s’exécute pas et rien n’est chargé depuis le web. Si un document contient du code exécutable, vous pouvez choisir *Présentation › Exécuter ce document* pour ce document. Son propre code s’exécute alors jusqu’à ce que vous l’arrêtiez, que le document se recharge ou que vous fermiez la fenêtre. Ce choix n’est jamais mémorisé, et ce n’est pas un réglage. Pendant l’exécution, le document peut envoyer des données sur le réseau, et lire les images, feuilles de style, polices et médias de son dossier et des dossiers qu’il contient. Le code téléchargé depuis le web ne s’exécute jamais.
+- **Documents HTML.** Un document HTML s’ouvre de façon statique : son code ne s’exécute pas et rien n’est chargé depuis le web. Si un document contient du code exécutable, vous pouvez choisir *Présentation › Exécuter ce document* pour ce document. Son propre code s’exécute alors jusqu’à ce que vous l’arrêtiez, que le document se recharge ou que vous fermiez la fenêtre. Ce choix n’est jamais mémorisé, et ce n’est pas un réglage. Pendant l’exécution, le document peut envoyer des données sur le réseau, et lire les images, feuilles de style, polices et médias de son dossier et des dossiers qu’il contient. Le code téléchargé depuis le web ne s’exécute jamais.
 
 MarsDawn charge le contenu web uniquement en https. Une adresse en http simple n’est jamais chargée, quel que soit le réglage, et MarsDawn ne la réécrit pas en https. Dans un document Markdown, l’aperçu affiche un espace réservé à sa place.
 
@@ -53,7 +53,7 @@ Lorsqu’un contenu web se charge, votre Mac le demande directement aux serveurs
 
 Les liens sur lesquels vous cliquez dans l’aperçu s’ouvrent dans votre navigateur web par défaut, selon les pratiques de confidentialité de ce navigateur. L’audio et la vidéo ne se lancent jamais d’eux-mêmes.
 
-Si vous ouvrez *Réglages › Apparence › Obtenir plus de thèmes…*, choisissez *Rechercher des mises à jour de thèmes* ou installez ou mettez à jour un thème, MarsDawn télécharge la liste des thèmes, les aperçus et les fichiers de thème depuis marsdawn.southern-light.dev. Les thèmes ne se mettent à jour automatiquement que pendant ces téléchargements, jamais en arrière-plan. La requête ne contient ni compte, ni identifiant, ni cookie, ni donnée de document ; comme pour toute requête web, notre hébergeur Cloudflare voit votre adresse IP et les fichiers demandés. *Signaler le thème…* n’envoie aucune requête depuis l’app : cette action ouvre seulement un lien GitHub ou e-mail dans votre navigateur ou votre app de messagerie.
+Si vous ouvrez *Réglages › Apparence › Obtenir plus de thèmes…*, choisissez *Rechercher des mises à jour de thèmes* ou installez ou mettez à jour un thème, MarsDawn télécharge la liste des thèmes, les aperçus et les fichiers de thème depuis marsdawn.southern-light.dev. Les thèmes ne se mettent à jour automatiquement que pendant ces téléchargements, jamais en arrière-plan. La requête ne contient ni compte, ni identifiant, ni cookie, ni donnée de document ; comme pour toute requête web, notre hébergeur Cloudflare voit votre adresse IP et les fichiers demandés. *Signaler le thème…* n’envoie aucune requête depuis l’app : cette action ouvre seulement un lien GitHub ou e-mail dans votre navigateur ou votre app de messagerie.
 
 ## Siri, Raccourcis et Spotlight
 
@@ -81,7 +81,7 @@ Si MarsDawn venait à traiter les données différemment, cette page serait mise
 
 ## Contact
 
-Questions relatives à la confidentialité : [support@southern-light.dev](mailto:support@southern-light.dev)
+Questions relatives à la confidentialité : [support@southern-light.dev](mailto:support@southern-light.dev)
 
 ## Plus
 

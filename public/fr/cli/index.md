@@ -1,24 +1,24 @@
 # Ligne de commande
 
-L’outil en ligne de commande gratuit `marsdawn` : exportez du Markdown en PDF depuis un shell ou un agent LLM et, si l’app MarsDawn est installée, ouvrez-y des fichiers.
+L’outil en ligne de commande gratuit `marsdawn` : exportez du Markdown en PDF depuis un shell ou un agent LLM et, si l’app MarsDawn est installée, ouvrez-y des fichiers.
 
-**marsdawn est gratuit et distribué séparément du Mac App Store.** Installez-le avec Homebrew : sur un Mac avec puce Apple, il arrive prêt à l’emploi. `export` fonctionne seul ; `open` nécessite l’app MarsDawn.
+**marsdawn est gratuit et distribué séparément du Mac App Store.** Installez-le avec Homebrew : sur un Mac avec puce Apple, il arrive prêt à l’emploi. `export` fonctionne seul ; `open` nécessite l’app MarsDawn.
 
-Vous appelez marsdawn depuis un agent IA ou un script ? Consultez [marsdawn pour les agents](/fr/cli/agents/) pour la sortie JSON, ses schémas et tous les codes de sortie, ou [le serveur MCP](/fr/cli/mcp/) si votre agent appelle plutôt des outils via MCP.
+Vous appelez marsdawn depuis un agent IA ou un script ? Consultez [marsdawn pour les agents](/fr/cli/agents/) pour la sortie JSON, ses schémas et tous les codes de sortie, ou [le serveur MCP](/fr/cli/mcp/) si votre agent appelle plutôt des outils via MCP.
 
 ## Installation
 
-Avec [Homebrew](https://brew.sh) :
+Avec [Homebrew](https://brew.sh) :
 
 ```
 brew tap redtear1115/tap && brew install marsdawn
 ```
 
-Vous utilisez un agent de code ? Exécutez `marsdawn skill --install` pour ajouter [la skill marsdawn](/fr/cli/skill/) : un seul fichier qui lui apprend à ouvrir ce qu’il a écrit dans MarsDawn pour que vous le relisiez, et à exporter des PDF.
+Vous utilisez un agent de code ? Exécutez `marsdawn skill --install` pour ajouter [la skill marsdawn](/fr/cli/skill/) : un seul fichier qui lui apprend à ouvrir ce qu’il a écrit dans MarsDawn pour que vous le relisiez, et à exporter des PDF.
 
 Sur un Mac avec puce Apple, Homebrew installe une copie précompilée en quelques secondes, sans rien d’autre à installer. Sur un Mac Intel, il compile marsdawn à partir des sources, ce qui prend quelques minutes et nécessite Xcode 26 ou version ultérieure (Swift 6.2). L’outil fonctionne sous macOS 15 ou version ultérieure.
 
-Vous pouvez aussi le compiler à partir des [sources](https://github.com/redtear1115/mars-dawn-kit) avec Swift Package Manager :
+Vous pouvez aussi le compiler à partir des [sources](https://github.com/redtear1115/mars-dawn-kit) avec Swift Package Manager :
 
 ```
 git clone https://github.com/redtear1115/mars-dawn-kit.git
@@ -32,7 +32,7 @@ Vérifiez votre version avec `marsdawn --version`.
 
 ### marsdawn open
 
-Ouvre un ou plusieurs fichiers Markdown dans l’app MarsDawn pour les relire. L’app doit être installée : sans elle, `marsdawn open` se termine avec le code 3 et indique que MarsDawn n’est pas installé. `export` n’a pas besoin de l’app. L’app est disponible sur le [Mac App Store](https://apps.apple.com/app/id6812925073).
+Ouvre un ou plusieurs fichiers Markdown dans l’app MarsDawn pour les relire. L’app doit être installée : sans elle, `marsdawn open` se termine avec le code 3 et indique que MarsDawn n’est pas installé. `export` n’a pas besoin de l’app. L’app est disponible sur le [Mac App Store](https://apps.apple.com/app/id6812925073).
 
 ```
 marsdawn open notes.md
@@ -42,16 +42,16 @@ marsdawn open .
 marsdawn open notes.md --folder .
 ```
 
-- `path:line` : demande à MarsDawn d’aller à cette ligne. Une colonne après, comme dans `notes.md:120:8`, est ignorée. Si un fichier portant le nom complet existe, l’argument désigne ce fichier.
-- `--line <n>` : la même chose pour un seul fichier, et le moyen de demander une ligne pour un chemin qui se termine lui-même par deux-points et des chiffres. Exige exactement un fichier.
+- `path:line` : demande à MarsDawn d’aller à cette ligne. Une colonne après, comme dans `notes.md:120:8`, est ignorée. Si un fichier portant le nom complet existe, l’argument désigne ce fichier.
+- `--line <n>` : la même chose pour un seul fichier, et le moyen de demander une ligne pour un chemin qui se termine lui-même par deux-points et des chiffres. Exige exactement un fichier.
 - Les lignes vont de 1 à 999999999.
 - MarsDawn 1.0 ouvre le fichier à cette ligne.
-- Un dossier passé en argument s’ouvre dans la barre latérale de la fenêtre plutôt que comme un document : `marsdawn open .` affiche le dossier courant. `--folder <path>` fait de même en plus de fichiers. La barre latérale d’une fenêtre affiche un seul dossier, donc en nommer deux est une erreur d’utilisation.
+- Un dossier passé en argument s’ouvre dans la barre latérale de la fenêtre plutôt que comme un document : `marsdawn open .` affiche le dossier courant. `--folder <path>` fait de même en plus de fichiers. La barre latérale d’une fenêtre affiche un seul dossier, donc en nommer deux est une erreur d’utilisation.
 - `--wait <n>` : avec MarsDawn 1.0.2 ou version ultérieure, qui donne une réponse, `--folder` attend jusqu’à n secondes (de 0 à 30, 2 par défaut) la réponse de l’app au sujet du dossier. Avec `--wait 0`, ou une app qui ne donne pas de réponse, il n’attend pas et envoie la même requête qu’avant.
 - Une valeur de `--wait` hors de 0 à 30 est une erreur d’utilisation (code 64). Écrivez une valeur négative sous la forme `--wait=-1`.
 - Avec `--json`, le dossier est indiqué comme demandé, et non comme affiché, car c’est l’app qui décide ; avec `--wait`, le résultat dit aussi ce qu’il est devenu. La liste complète se trouve dans [marsdawn pour les agents](/fr/cli/agents/).
-- `--background` : ouvrir sans faire passer MarsDawn au premier plan.
-- `--json` : afficher un résultat JSON au lieu de texte.
+- `--background` : ouvrir sans faire passer MarsDawn au premier plan.
+- `--json` : afficher un résultat JSON au lieu de texte.
 
 Les lignes sont arrivées avec marsdawn 0.3.0, les dossiers et `--background` avec la 0.5.1, et `--wait` et l’état du dossier avec la 0.5.3.
 
@@ -63,16 +63,16 @@ Convertit un fichier Markdown en PDF paginé, avec le même moteur d’export qu
 marsdawn export notes.md -o notes.pdf --theme classic --paper a4
 ```
 
-- `-o, --output <path>` : où écrire le PDF. Par défaut, le chemin d’entrée avec l’extension `.pdf`.
-- `--theme <dawn|classic|modern|vivid>` : la palette claire du thème de l’aperçu. Par défaut, `$MARSDAWN_THEME`, puis `dawn`.
-- `--paper <a4|letter>` : format du papier. Par défaut, `a4`.
+- `-o, --output <path>` : où écrire le PDF. Par défaut, le chemin d’entrée avec l’extension `.pdf`.
+- `--theme <dawn|classic|modern|vivid>` : la palette claire du thème de l’aperçu. Par défaut, `$MARSDAWN_THEME`, puis `dawn`.
+- `--paper <a4|letter>` : format du papier. Par défaut, `a4`.
 - `--breaks` : rendre chaque retour à la ligne d’un paragraphe comme un saut de ligne, comme HackMD. Sans cette option, un retour à la ligne entre deux caractères chinois ou japonais disparaît, et les lignes se lisent comme une seule phrase.
 - `--layout <document|handbook|handout>` : la mise en page. Par défaut, `document`. `handbook` produit un guide : marges plus larges avec un côté de reliure, chaque titre de premier niveau sur une nouvelle page, une table des matières avec numéros de page, des numéros de page en pied de page et des signets PDF, plus une couverture quand le front matter a un `title`. `handout` laisse une colonne de notes vide à droite de chaque page, place le titre et la date en haut de la page 1 et termine chaque page par le nom du fichier, la date et le numéro de page. Un tableau très large peut déborder sur la colonne de notes.
 - `--toc-title <text>` : le titre de la page de table des matières du guide. Par défaut, `Contents`.
 - `<!--BREAK-->` seul sur une ligne commence une nouvelle page, dans toutes les mises en page.
-- `--allow-remote-images` : charger les images web pendant le rendu. Désactivé par défaut.
-- `--force` : remplacer le fichier de sortie s’il existe déjà.
-- `--json` : afficher un résultat JSON au lieu de texte.
+- `--allow-remote-images` : charger les images web pendant le rendu. Désactivé par défaut.
+- `--force` : remplacer le fichier de sortie s’il existe déjà.
+- `--json` : afficher un résultat JSON au lieu de texte.
 - Un fichier de plus de 16 Mio n’est pas exporté : `export` se termine avec le code 5 et n’écrit rien.
 
 `--breaks` est arrivé avec marsdawn 0.7.0, `--layout` et `--toc-title` avec la 0.7.1, la valeur `handbook` avec la 0.7.2, et la valeur `handout` avec la 0.7.3. L’ancienne valeur de la 0.7.1, `manual`, fonctionne toujours.
@@ -96,7 +96,7 @@ Les commandes `theme` sont arrivées avec marsdawn 0.6.1.
 
 ## La variable $MARSDAWN_THEME
 
-Quand `--theme` n’est pas passé, `export` lit la variable d’environnement `$MARSDAWN_THEME`. Sa valeur doit être `dawn`, `classic`, `modern` ou `vivid` ; toute autre valeur revient à `dawn`. La CLI ne lit pas le réglage de thème de l’app, car lire le conteneur d’une autre app peut déclencher une demande d’autorisation de confidentialité de macOS.
+Quand `--theme` n’est pas passé, `export` lit la variable d’environnement `$MARSDAWN_THEME`. Sa valeur doit être `dawn`, `classic`, `modern` ou `vivid` ; toute autre valeur revient à `dawn`. La CLI ne lit pas le réglage de thème de l’app, car lire le conteneur d’une autre app peut déclencher une demande d’autorisation de confidentialité de macOS.
 
 ## Écraser des fichiers
 
@@ -112,7 +112,7 @@ Quand `--theme` n’est pas passé, `export` lit la variable d’environnement `
 | `4` | la sortie existe déjà (passez `--force`). | Passer `--force` pour le remplacer, ou `-o` pour écrire ailleurs |
 | `5` | échec de l’export. | Lire `message` dans le résultat JSON |
 | `6` | ce MarsDawn ne peut pas afficher de dossier, donc rien n’a été ouvert (`open` uniquement). |  |
-| `64` | erreur d’utilisation, notamment une ligne hors limites, `--line` avec plus d’un fichier ou avec un dossier, ou plus d’un dossier. | Corriger l’option ou la valeur ; cette erreur est du texte sur stderr, même avec `--json` |
+| `64` | erreur d’utilisation, notamment une ligne hors limites, `--line` avec plus d’un fichier ou avec un dossier, ou plus d’un dossier. | Corriger l’option ou la valeur ; cette erreur est du texte sur stderr, même avec `--json` |
 
 ## Sortie --json
 

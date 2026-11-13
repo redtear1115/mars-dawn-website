@@ -17,31 +17,31 @@ Ce qui arrive ensuite figure dans la [feuille de route](/fr/roadmap/).
 
 27 octobre 2026
 
-- Une barre de format au-dessus de l’éditeur et un nouveau menu Format insèrent gras (⌘B), italique (⌘I), barré (⇧⌘X), titres H1–H6 (⌥⌘1–⌥⌘6), code, citations, listes à puces, numérotées et de pointage, liens (⌘K), « Image… », tableaux, séparateurs, diagrammes Mermaid et formules. Affichée par défaut ; masquez-la via Présentation > « Masquer la barre de format » ou Réglages > Apparence.
-- Présentation > Source uniquement > « Masquer la syntaxe Markdown » (⌘/) masque les marqueurs en mode Source uniquement tout en laissant la ligne du curseur en Markdown brut, et mémorise votre choix.
-- Fichier > « Créer à partir du presse-papiers » (⌥⌘V) ouvre le presse-papiers dans un nouveau document. Le texte JSON échappé issu d’une IA (comme \n) est converti une fois pour la lecture, avec une barre pour garder le texte tel quel.
-- Sélectionnez du texte dans l’éditeur ou l’aperçu et choisissez « Envoyer à… » au clic secondaire pour ouvrir Claude ou ChatGPT avec une invite, la sélection, le chemin relatif (ou le nom du fichier) et les numéros de ligne. Une confirmation s’affiche au premier envoi ; si la sélection est trop longue, la copie est proposée.
-- Édition > « Copier en texte riche » copie les blocs sélectionnés, ou tout le document, en texte mis en forme pour Mail, Pages, Google Docs ou Notion, avec le Markdown en texte brut à côté.
-- Aide > « Installer l’outil en ligne de commande et le skill d’agent… » ouvre une fenêtre avec la commande en une ligne et les instructions à copier pour votre agent IA, sans rien installer elle-même.
-- Fichier > « Exporter au format PDF… » ajoute un menu « Mise en page » mémorisé à trois choix compatibles avec tous les thèmes : « Standard », « Guide » (couverture tirée de votre front matter, table des matières numérotée, chapitres sur une nouvelle page, pied de page « n / N », signets PDF, marge de reliure) et « Polycopié » (colonne de notes à droite, titre en page 1, pied « nom · date · n / N », tableaux larges). « Imprimer… » utilise toujours « Standard ».
-- Appuyez sur ⌘F en mode Aperçu uniquement ou côté aperçu en mode Partagé pour rechercher : ⌘G et ⇧⌘G parcourent les occurrences en boucle, ⌘E reprend la sélection et les résultats sont surlignés en jaune. En mode Partagé, la recherche porte sur le côté actif.
-- Le texte entouré d’un seul tilde de chaque côté et sans espace, comme ~x~, s’affiche désormais en indice, comme dans HackMD. Pour barrer du texte, utilisez deux tildes : ~~x~~. Cela s’applique à l’aperçu, à « Exporter au format PDF » et à Coup d’œil.
-- MarsDawn lit aussi davantage de syntaxe HackMD : ==surlignage==, ^exposant^, une table des matières [TOC], des tailles d’image comme =300x200 et des intégrations comme {%youtube %}, qui s’affichent sous forme de liens.
-- « Conserver les sauts de ligne simples » dans Réglages > Apparence conserve chaque saut de ligne de la source dans l’aperçu, « Exporter au format PDF », l’impression et Coup d’œil, comme dans HackMD.
-- Les fichiers Markdown dans un autre encodage (comme Big5) s’ouvrent en lecture seule avec une barre proposant « Enregistrer en UTF-8… ». « Exporter au format PDF… » et « Imprimer… » restent disponibles.
-- Au-delà de 16 Mio, la barre latérale Plan affiche « Ce document est trop volumineux pour afficher un plan. » au lieu de « Aucun titre ».
+- Une barre de format au-dessus de l’éditeur et un nouveau menu Format insèrent gras (⌘B), italique (⌘I), barré (⇧⌘X), titres H1–H6 (⌥⌘1–⌥⌘6), code, citations, listes à puces, numérotées et de pointage, liens (⌘K), « Image… », tableaux, séparateurs, diagrammes Mermaid et formules. Affichée par défaut ; masquez-la via Présentation > « Masquer la barre de format » ou Réglages > Apparence.
+- Présentation > Source uniquement > « Masquer la syntaxe Markdown » (⌘/) masque les marqueurs en mode Source uniquement tout en laissant la ligne du curseur en Markdown brut, et mémorise votre choix.
+- Fichier > « Créer à partir du presse-papiers » (⌥⌘V) ouvre le presse-papiers dans un nouveau document. Le texte JSON échappé issu d’une IA (comme \n) est converti une fois pour la lecture, avec une barre pour garder le texte tel quel.
+- Sélectionnez du texte dans l’éditeur ou l’aperçu et choisissez « Envoyer à… » au clic secondaire pour ouvrir Claude ou ChatGPT avec une invite, la sélection, le chemin relatif (ou le nom du fichier) et les numéros de ligne. Une confirmation s’affiche au premier envoi ; si la sélection est trop longue, la copie est proposée.
+- Édition > « Copier en texte riche » copie les blocs sélectionnés, ou tout le document, en texte mis en forme pour Mail, Pages, Google Docs ou Notion, avec le Markdown en texte brut à côté.
+- Aide > « Installer l’outil en ligne de commande et le skill d’agent… » ouvre une fenêtre avec la commande en une ligne et les instructions à copier pour votre agent IA, sans rien installer elle-même.
+- Fichier > « Exporter au format PDF… » ajoute un menu « Mise en page » mémorisé à trois choix compatibles avec tous les thèmes : « Standard », « Guide » (couverture tirée de votre front matter, table des matières numérotée, chapitres sur une nouvelle page, pied de page « n / N », signets PDF, marge de reliure) et « Polycopié » (colonne de notes à droite, titre en page 1, pied « nom · date · n / N », tableaux larges). « Imprimer… » utilise toujours « Standard ».
+- Appuyez sur ⌘F en mode Aperçu uniquement ou côté aperçu en mode Partagé pour rechercher : ⌘G et ⇧⌘G parcourent les occurrences en boucle, ⌘E reprend la sélection et les résultats sont surlignés en jaune. En mode Partagé, la recherche porte sur le côté actif.
+- Le texte entouré d’un seul tilde de chaque côté et sans espace, comme ~x~, s’affiche désormais en indice, comme dans HackMD. Pour barrer du texte, utilisez deux tildes : ~~x~~. Cela s’applique à l’aperçu, à « Exporter au format PDF » et à Coup d’œil.
+- MarsDawn lit aussi davantage de syntaxe HackMD : ==surlignage==, ^exposant^, une table des matières [TOC], des tailles d’image comme =300x200 et des intégrations comme {%youtube %}, qui s’affichent sous forme de liens.
+- « Conserver les sauts de ligne simples » dans Réglages > Apparence conserve chaque saut de ligne de la source dans l’aperçu, « Exporter au format PDF », l’impression et Coup d’œil, comme dans HackMD.
+- Les fichiers Markdown dans un autre encodage (comme Big5) s’ouvrent en lecture seule avec une barre proposant « Enregistrer en UTF-8… ». « Exporter au format PDF… » et « Imprimer… » restent disponibles.
+- Au-delà de 16 Mio, la barre latérale Plan affiche « Ce document est trop volumineux pour afficher un plan. » au lieu de « Aucun titre ».
 - Le décompte des mots ignore les blocs de code dans les sections details repliées, et un appel de note juste au-dessus d’un tableau s’affiche correctement en lien.
 
 ### MarsDawn 1.1.1
 
 15 octobre 2026
 
-- En allemand, en japonais, en espagnol et en français, Réglages > Apparence > « Obtenir plus de thèmes… » affiche désormais le filtre de scénario sous forme de menu local intitulé « Scénario », pour que les cinq choix tiennent. L’anglais, le coréen et le chinois utilisent toujours le contrôle segmenté.
-- Lorsqu’un thème est retiré de la galerie, l’avis dans « Obtenir plus de thèmes… » affiche maintenant le nom du thème (par exemple Inkwell Ivory) au lieu de son identifiant interne.
+- En allemand, en japonais, en espagnol et en français, Réglages > Apparence > « Obtenir plus de thèmes… » affiche désormais le filtre de scénario sous forme de menu local intitulé « Scénario », pour que les cinq choix tiennent. L’anglais, le coréen et le chinois utilisent toujours le contrôle segmenté.
+- Lorsqu’un thème est retiré de la galerie, l’avis dans « Obtenir plus de thèmes… » affiche maintenant le nom du thème (par exemple Inkwell Ivory) au lieu de son identifiant interne.
 - Les sections details repliables écrites à la manière de GitHub s’affichent désormais repliées, avec leur résumé visible, dans l’aperçu et dans Coup d’œil, et s’ouvrent d’un clic. L’export PDF imprime toujours le contenu de chaque section.
-- Les documents ouverts depuis le Finder, le Dock, Fichier > « Ouvrir… » ou la commande marsdawn open s’ouvrent désormais en onglets dans la fenêtre au premier plan, tout comme les nouveaux documents. Pour conserver l’ancien comportement, choisissez « Suivre le réglage système » dans Réglages > Apparence.
+- Les documents ouverts depuis le Finder, le Dock, Fichier > « Ouvrir… » ou la commande marsdawn open s’ouvrent désormais en onglets dans la fenêtre au premier plan, tout comme les nouveaux documents. Pour conserver l’ancien comportement, choisissez « Suivre le réglage système » dans Réglages > Apparence.
 
-Les versions précédentes ne sont décrites qu’en anglais : [voir l’historique en anglais](/changelog/).
+Les versions précédentes ne sont décrites qu’en anglais : [voir l’historique en anglais](/changelog/).
 
 ## Outil en ligne de commande marsdawn
 
@@ -51,10 +51,10 @@ Les versions antérieures à 0.5.1 ne sont pas listées.
 
 9 novembre 2026. Export PNG, blocs repliables et exports plus rapides des gros fichiers.
 
-- `marsdawn export --format png` exporte un document en PNG pour vérifier son rendu : `--width` (600–2000, 1200 par défaut), `--appearance light|dark`, `--theme`, et `--lines` ou `--heading` pour n’en exporter qu’une partie. Une page de plus de 8 000 pixels de haut est découpée en images numérotées, jamais au milieu d’un tableau, d’un bloc de code ou d’un diagramme.
-- `marsdawn export --details` définit comment les blocs repliables s’impriment : `expand`, par défaut, les imprime tous ouverts, comme avant ; `as-written` n’ouvre que les blocs écrits ouverts et n’imprime que le résumé des autres. Dans les deux cas, le résumé s’imprime sur une ligne en gras, sans triangle.
-- Les blocs repliables prennent en charge davantage de syntaxes de HackMD et d’Obsidian : `:::spoiler` sans titre ou avec `{state="open"}`, du Markdown dans les titres, des `::::spoiler` imbriqués, et les encadrés repliables d’Obsidian `> [!note]-` et `> [!tip]+`.
-- Les gros documents s’exportent beaucoup plus vite : dans notre test, un fichier de 10 Mo a pris environ 74 secondes au lieu d’environ 4 minutes.
+- `marsdawn export --format png` exporte un document en PNG pour vérifier son rendu : `--width` (600–2000, 1200 par défaut), `--appearance light|dark`, `--theme`, et `--lines` ou `--heading` pour n’en exporter qu’une partie. Une page de plus de 8 000 pixels de haut est découpée en images numérotées, jamais au milieu d’un tableau, d’un bloc de code ou d’un diagramme.
+- `marsdawn export --details` définit comment les blocs repliables s’impriment : `expand`, par défaut, les imprime tous ouverts, comme avant ; `as-written` n’ouvre que les blocs écrits ouverts et n’imprime que le résumé des autres. Dans les deux cas, le résumé s’imprime sur une ligne en gras, sans triangle.
+- Les blocs repliables prennent en charge davantage de syntaxes de HackMD et d’Obsidian : `:::spoiler` sans titre ou avec `{state="open"}`, du Markdown dans les titres, des `::::spoiler` imbriqués, et les encadrés repliables d’Obsidian `> [!note]-` et `> [!tip]+`.
+- Les gros documents s’exportent beaucoup plus vite : dans notre test, un fichier de 10 Mo a pris environ 74 secondes au lieu d’environ 4 minutes.
 - Quand plusieurs commandes `marsdawn export` s’exécutaient en même temps, l’une d’elles pouvait se terminer avec le code 5. Elle réessaie désormais.
 - Quand l’app MarsDawn n’est pas ouverte, plusieurs commandes `marsdawn open` lancées en même temps ouvrent désormais chaque fichier. Avant, certains fichiers ne s’ouvraient pas alors que la commande indiquait un succès.
 
@@ -128,7 +128,7 @@ Les versions antérieures à 0.5.1 ne sont pas listées.
 6 octobre 2026. MarsDawn est sur le Mac App Store.
 
 - Quand l’app n’est pas installée, `marsdawn open` renvoie vers MarsDawn sur le Mac App Store.
-- Le README et la skill pour agents expliquent `marsdawn open .` et `--folder` : MarsDawn 1.0.0 affiche le dossier dans la barre latérale de la fenêtre.
+- Le README et la skill pour agents expliquent `marsdawn open .` et `--folder` : MarsDawn 1.0.0 affiche le dossier dans la barre latérale de la fenêtre.
 
 ### marsdawn 0.6.1
 
@@ -143,7 +143,7 @@ Les versions antérieures à 0.5.1 ne sont pas listées.
 
 - Dans un diagramme de séquence, le libellé d’un message qui croise les lignes de vie d’autres participants reste lisible, dans l’aperçu comme dans les PDF exportés.
 - `marsdawn export` gère les documents remplis de diagrammes Mermaid. Un document de 50 diagrammes, qui échouait auparavant avec le code 5, s’exporte désormais.
-- `marsdawn export --json` ajoute `diagramErrorDetails`, avec les numéros de ligne de chaque erreur de diagramme : où le diagramme commence dans votre document et, quand Mermaid en indique une, la ligne de l’erreur elle-même.
+- `marsdawn export --json` ajoute `diagramErrorDetails`, avec les numéros de ligne de chaque erreur de diagramme : où le diagramme commence dans votre document et, quand Mermaid en indique une, la ligne de l’erreur elle-même.
 - `marsdawn skill --install` installe la skill pour Claude Code dans `~/.claude/skills/marsdawn/SKILL.md`, ou dans un autre dossier avec `--dir`. Il laisse intact un fichier identique et ne remplace un fichier différent qu’avec `--force`. Sinon, il se termine avec le code 64 (`skill_differs`) sans rien modifier.
 
 ### marsdawn 0.5.3
@@ -152,7 +152,7 @@ Les versions antérieures à 0.5.1 ne sont pas listées.
 
 - `marsdawn open --folder` peut indiquer ce qu’il est advenu du dossier. Avec une app qui répond, il attend jusqu’à `--wait` secondes (2 par défaut), et `--json` donne un état comme `attached` ou `needsUser`.
 - Un diagramme Mermaid qui ne s’analyse pas affiche le message d’erreur complet de Mermaid au lieu de sa seule première ligne, avec le numéro de ligne compté depuis le début de votre document.
-- La recherche de la fin d’un bloc front matter s’arrête après 1 000 lignes : un bloc non fermé n’entraîne plus le parcours du reste d’un long document.
+- La recherche de la fin d’un bloc front matter s’arrête après 1 000 lignes : un bloc non fermé n’entraîne plus le parcours du reste d’un long document.
 - Une app peut donner au lien de retour d’une note de bas de page un libellé traduit pour l’export PDF et l’impression. Le libellé n’est pas imprimé sur la page, et `marsdawn export` garde le libellé anglais.
 - La copie intégrée de highlight.js est désormais épinglée par version, source et SHA-256, comme KaTeX et Mermaid.
 
@@ -160,7 +160,7 @@ Les versions antérieures à 0.5.1 ne sont pas listées.
 
 24 septembre 2026. Notes de bas de page, contraste et dossiers.
 
-- Les notes de bas de page s’affichent dans les PDF exportés : appels numérotés, avec les notes après le corps du texte.
+- Les notes de bas de page s’affichent dans les PDF exportés : appels numérotés, avec les notes après le corps du texte.
 - Chaque thème respecte le contraste WCAG AA, en clair comme en sombre. Classique est désormais en noir et blanc.
 - `marsdawn skill` affiche la skill pour agents qui correspond au marsdawn installé.
 - `marsdawn open` se termine avec le code 6 (`app_cannot_open_folders`) quand le MarsDawn trouvé ne peut pas afficher de dossier, au lieu d’annoncer un succès.

@@ -4,7 +4,7 @@ Choisissez ci-dessous une palette et quelques options de style. Le document d’
 
 Il vous faut un compte GitHub pour envoyer. Cette page elle-même n’exige ni installation ni git.
 
-Un agent IA peut écrire le fichier du thème à votre place : [Créer un thème avec votre agent](/fr/themes/agents/), puis ouvrez ici le lien qu’il vous donne pour l’ajuster.
+Un agent IA peut écrire le fichier du thème à votre place : [Créer un thème avec votre agent](/fr/themes/agents/), puis ouvrez ici le lien qu’il vous donne pour l’ajuster.
 
 Cette page a besoin de JavaScript pour créer et prévisualiser un thème.
 

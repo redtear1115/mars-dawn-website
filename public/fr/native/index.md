@@ -18,20 +18,20 @@ Sur cette capture d’écran :
 ### Édition
 
 - Dispositions source, partagée et aperçu, à une touche l’une de l’autre (`⌘1`, `⌘2`, `⌘3`).
-- Les deux volets défilent ensemble : le paragraphe que vous modifiez reste visible.
+- Les deux volets défilent ensemble : le paragraphe que vous modifiez reste visible.
 - Coloration syntaxique Markdown dans l’éditeur, assortie à votre thème de l’aperçu.
 
 ### Le reste du Mac
 
 - Fenêtres et onglets natifs, enregistrement automatique et historique des versions.
-- Coup d’œil : appuyez sur Espace sur un fichier Markdown dans le Finder pour un aperçu, diagrammes compris. [Comment fonctionne Coup d’œil](/fr/quicklook/)
-- Siri et Raccourcis : commencer un nouveau document à partir d’un modèle, ajouter une ligne à la boîte de réception de vos notes ou rouvrir un document récent.
+- Coup d’œil : appuyez sur Espace sur un fichier Markdown dans le Finder pour un aperçu, diagrammes compris. [Comment fonctionne Coup d’œil](/fr/quicklook/)
+- Siri et Raccourcis : commencer un nouveau document à partir d’un modèle, ajouter une ligne à la boîte de réception de vos notes ou rouvrir un document récent.
 - Anglais, chinois traditionnel, chinois simplifié, japonais, allemand, français, espagnol et coréen.
 
 ### Petite et discrète
 
-- 11,4 Mo à télécharger sur le Mac App Store.
-- 0 % de CPU quand un document est ouvert et que rien ne change.
+- 11,4 Mo à télécharger sur le Mac App Store.
+- 0 % de CPU quand un document est ouvert et que rien ne change.
 
 Mesuré avec la version 1.2.1, novembre 2026.
 

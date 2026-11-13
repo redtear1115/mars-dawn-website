@@ -38,6 +38,7 @@ from best228 import data as best_data  # noqa: E402
 from ia247 import data as ia_data  # noqa: E402
 from tmde130 import data as changelog_data  # noqa: E402
 from cli254 import data as cli254_data  # noqa: E402
+from copy369 import data as copy369_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
@@ -4990,11 +4991,51 @@ def _features_devices(copy: dict) -> list:
             '<!--iphone-badge-->', f'<p class="devnote">{_features_text(d["limits"])}</p>']
 
 
-def features_page(copy: dict) -> dict:
+_COPY369_STEP = re.compile(r"^(\d+)\. \*\*([^*]+)\*\*(.*)$", re.S)
+
+
+def _copy369_step(text: str, number: int) -> str:
+    """'N. **Label:** rest' (copy369 data) -> 'Label: rest', the way FEATURES_COPY stores a step."""
+    m = _COPY369_STEP.match(text)
+    assert m and m.group(1) == str(number), f"#369: step {number} lacks its '{number}. **…**' prefix: {text[:40]!r}"
+    bold, rest = m.group(2), m.group(3)
+    assert "**" not in rest, f"#369: step {number} has more bold markers than the label"
+    step = bold + rest
+    label = _STEP_LABEL.match(step)
+    assert label and label.group(1) == bold, f"#369: step {number}: rendered bold {label and label.group(1)!r} != {bold!r}"
+    return step
+
+
+def apply_copy369_features(copy: dict, locale: str) -> dict:
+    """#369: a deep copy of a locale's features copy with copy369_data's fold (new item after 'Outline and
+    Files sidebar'), export (the 'Export as PDF, or print' paragraph), ios_s2/ios_s3 (steps 2 and 3) and
+    devnote (the iPhone and iPad limits). The original copy is not changed."""
+    data = copy369_data.DATA[locale]
+    copy = _copy.deepcopy(copy)
+    read = [s for s in copy["sections"] if s["id"] == "read"]
+    assert len(read) == 1, f"#369 {locale}: {len(read)} 'read' sections"
+    items = read[0]["items"]
+    assert len(items) == 4 and items[1]["links"] == ["reading-agent-output"] == items[2]["links"], \
+        f"#369 {locale}: 'read' items are not the expected four"
+    items.insert(2, {"h": data["fold_h"], "p": data["fold"], "links": []})
+    themes = [s for s in copy["sections"] if s["id"] == "themes"]
+    assert len(themes) == 1, f"#369 {locale}: {len(themes)} 'themes' sections"
+    items = themes[0]["items"]
+    assert len(items) == 3 and items[2]["links"] == ["pdf"], f"#369 {locale}: 'themes' items are not the expected three"
+    items[2]["p"] = data["export"]
+    steps = copy["devices"]["steps"]
+    assert len(steps) == 3, f"#369 {locale}: {len(steps)} device steps"
+    steps[1], steps[2] = _copy369_step(data["ios_s2"], 2), _copy369_step(data["ios_s3"], 3)
+    copy["devices"]["limits"] = data["devnote"]
+    return copy
+
+
+def features_page(copy: dict, locale: str) -> dict:
     """A locale's /features/ page, from its copy (FEATURES_COPY's shape). Its link, button and
     screenshot marks are filled in by all_pages() and render(), once every locale's labels exist."""
     problems = shape_problems(FEATURES_COPY["en"], copy)
     assert not problems, "features copy differs in shape from en: " + "; ".join(problems)
+    copy = apply_copy369_features(copy, locale)
     intro = "\n".join(['<section class="intro">', f"  <h1>{_features_text(copy['h1'])}</h1>"]
                        + [f"  <p>{_features_text(p)}</p>" for p in copy["intro"]] + ["</section>"])
     parts = []
@@ -5024,7 +5065,7 @@ def features_page(copy: dict) -> dict:
 
 
 def features_pages() -> dict:
-    return {(locale, "features"): features_page(copy) for locale, copy in FEATURES_COPY.items()}
+    return {(locale, "features"): features_page(copy, locale) for locale, copy in FEATURES_COPY.items()}
 
 _FEATURES_MARK = re.compile(r"<!--(link:[a-z/-]+|cta|shot:[a-z]+)-->")
 
@@ -5066,7 +5107,7 @@ def _make_k(locale: str) -> SimpleNamespace:
         schema_links_from=lambda notes: schema_links_from({**notes, **cli254_data.DATA[locale]["schema_notes"]}),
         render_legal_body=render_legal_body,
         theme_agents_page=lambda copy: theme_agents.page(LOCALES[locale]["root"], copy),
-        features_page=features_page,
+        features_page=lambda copy: features_page(copy, locale),
         open_md_page=open_md_page, mermaid_page=mermaid_page,
         vs_macmd_page=vs_macmd_page, vs_compare=vs_compare,
         set_skill_install=lambda html: SKILL_INSTALL_HTML.__setitem__(locale, html),
@@ -5321,6 +5362,23 @@ HOME_IPHONE_STEPS = {'en': {'h2': 'Read what your agent wrote, away from your de
                   'Para editarlo o exportarlo a PDF, vuelve a tu Mac.'],
         'limits': 'En iPhone y iPad, MarsDawn solo sirve para leer y solo abre archivos Markdown y de texto '
                   'plano.'}}
+
+
+def apply_copy369_home_steps() -> None:
+    """#369 (plan A): each locale's steps and limit line come from copy369_data (key home_ios, three
+    numbered lines, a blank line, one limit line); the heading stays. The steps and limits above are superseded."""
+    assert sorted(HOME_IPHONE_STEPS) == sorted(copy369_data.DATA), "#369: home steps locales differ"
+    for locale, copy in HOME_IPHONE_STEPS.items():
+        steps, limit = copy369_data.DATA[locale]["home_ios"].split("\n\n")
+        lines = steps.split("\n")
+        assert [line[:3] for line in lines] == ["1. ", "2. ", "3. "], f"{locale}: home_ios steps are not 1. 2. 3."
+        assert limit and "\n" not in limit, f"{locale}: home_ios limit is not one line"
+        assert len(copy["steps"]) == 3, f"{locale}: the home steps are not three"
+        copy["steps"] = [line[3:] for line in lines]
+        copy["limits"] = limit
+
+
+apply_copy369_home_steps()
 
 # Link to the features section; copy approved by Ray on PR #342 (Aria's proposal).
 HOME_IPHONE_STEPS_MORE = {
@@ -5952,7 +6010,7 @@ def all_pages() -> dict:
             body = "".join(pieces[:-2]) + brand_film_themes.MARK + "\n" + "".join(pieces[-2:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return apply_app_changelog(apply_cli254(apply_best228(apply_promo130(apply_seo_copy(merged)))))
+    return apply_copy369_pdf_pages(apply_app_changelog(apply_cli254(apply_best228(apply_promo130(apply_seo_copy(merged))))))
 
 
 # --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
@@ -6050,7 +6108,11 @@ def apply_seo_copy(merged: dict) -> dict:
         iphone = [i for i, item in enumerate(home_items) if len(item) == 2 and "iPhone" in item[0] and "iPad" in item[0]]
         assert len(iphone) == 1 and iphone[0] == 2, f"{locale}: the home FAQ's third question is not the iPhone and iPad one"
         faq275 = promo_data.DATA["faq275"][locale]
-        home_items[2] = [home_items[2][0], faq275["q3"], rich_pages.md_inline(roadmap272.FAQ_MORE[locale])]
+        # #369 (plan A): the answer is copy369_data's "faq"; faq275["q3"] (scripts/promo130/data.py) and the
+        # older answer in scripts/seo_copy.py are superseded for this question. Plain text, made HTML-ready here.
+        answer = copy369_data.DATA[locale]["faq"]
+        assert "<" not in answer and ">" not in answer, f"{locale}: #369 faq has markup"
+        home_items[2] = [home_items[2][0], xml_escape(answer), rich_pages.md_inline(roadmap272.FAQ_MORE[locale])]
         home_items += [faq275["q9"], faq275["q10"]]
         assert len(home_items) == 10, f"{locale}: the home FAQ has {len(home_items)} questions, want 10 (#275)"
         out[(locale, "index")] = {**home, "body": home["body"].rstrip() + "\n" + faq_html(copy["faq_h"], home_items) + "\n"}
@@ -6349,6 +6411,43 @@ def apply_cli254(merged: dict) -> dict:
     return out
 
 
+def _copy369_li(text: str, where: str) -> str:
+    """A copy369_data bullet ('- ...', one line) as an <li> of the pages' two-space list style."""
+    assert text.startswith("- ") and "\n" not in text, f"#369 {where}: not a one-line '- ' bullet"
+    return f"  <li>{rich_pages.md_inline(text[2:])}</li>\n"
+
+
+def apply_copy369_pdf_pages(merged: dict) -> dict:
+    """#369: copy369_data's pdf (last item of /pdf/'s one list), layout (after the --paper item of
+    /markdown-to-pdf/) and next (first item of /markdown-to-pdf/'s last list, under its last heading)."""
+    out = dict(merged)
+    for locale in LOCALES:
+        d = copy369_data.DATA[locale]
+        page = out.get((locale, "pdf"))
+        assert page is not None, f"#369 {locale}: no /pdf/ page"
+        body = page["body"]
+        assert body.count("<ul") == 1 and body.count("</ul>") == 1, f"#369 {locale}/pdf: {body.count('<ul')} lists, want 1"
+        end = body.index("</ul>")
+        assert body[:end].endswith("</li>\n"), f"#369 {locale}/pdf: the list does not end with '</li>\\n'"
+        out[(locale, "pdf")] = {**page, "body": body[:end] + _copy369_li(d["pdf"], f"{locale}/pdf") + body[end:]}
+
+        page = out.get((locale, "markdown-to-pdf"))
+        assert page is not None, f"#369 {locale}: no /markdown-to-pdf/ page"
+        body, where = page["body"], f"{locale}/markdown-to-pdf"
+        paper = list(re.finditer(r"(?m)^  <li><code>--paper</code>[^\n]*</li>\n", body))
+        assert len(paper) == 1, f"#369 {where}: {len(paper)} '--paper' items, want 1"
+        assert body.count("<li><code>--paper</code>") == 1, f"#369 {where}: '--paper' item is not a one-line <li>"
+        body = body[:paper[0].end()] + _copy369_li(d["layout"], where) + body[paper[0].end():]
+        last_h2 = body.rindex("<h2")
+        h2_end = body.index("</h2>", last_h2) + len("</h2>")
+        assert body[h2_end:].startswith("\n<ul>\n"), f"#369 {where}: the last heading is not followed by a list"
+        assert body.rfind("<ul") == h2_end + 1, f"#369 {where}: the list under the last heading is not the last list"
+        at = h2_end + len("\n<ul>\n")
+        body = body[:at] + _copy369_li(d["next"], where) + body[at:]
+        out[(locale, "markdown-to-pdf")] = {**page, "body": body}
+    return out
+
+
 # --- /changelog/'s app section (website #273) ---------------------------------------------------------
 # The app's versions come first, then the CLI's. Each app version's What's New is the text it has on the
 # Mac App Store, vendored by scripts/tmde130/ingest.py from the app repo's approved release notes into
@@ -6626,7 +6725,8 @@ class _TreeBuilder(HTMLParser):
 
 
 def _collapse(text: str) -> str:
-    return re.sub(r"\s+", " ", text)
+    # #369: U+00A0 is not collapsed (Python's \s matches it): the fr and de copy keeps its no-break spaces.
+    return re.sub(r"[^\S\u00a0]+", " ", text)
 
 
 def _render_inline(children) -> str:
