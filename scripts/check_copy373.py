@@ -14,10 +14,10 @@ Per locale, the section must sit in <main> of public/<prefix>native/index.html a
 with each element's text (tags stripped, html.unescape applied) equal to DATA. The Markdown twin
 (index.md) must hold the lines "### heading", "", "- li1", "- li2", "", "note" in a row, as the third "### ".
 
-The twin is made by build_pages.py's _collapse(), which on main still turns U+00A0 into a plain space
-(website #369 / PR #370 changes that). So by default the twin's expected lines have U+00A0 -> " ", and
---md-keep-nbsp expects them kept (use it once #370's _collapse change is on the branch). The HTML never
-gets that leniency.
+The twin is made by build_pages.py's _collapse(), which keeps U+00A0 after PR #370. By default the twin's
+expected lines keep U+00A0; --md-keep-nbsp is a no-op alias of this default. --md-collapse-nbsp expects
+the old U+00A0 -> " " behaviour for builds without #370's _collapse change. The flags are mutually
+exclusive. The HTML never gets that leniency.
 
 Exit codes: 0 all good, 1 a mismatch (first differing code point and its index are printed), 2 usage error
 or a failed --self-test.
@@ -117,6 +117,10 @@ def text_of(fragment: str) -> str:
     return html.unescape(re.sub(r"<[^>]+>", "", fragment))
 
 
+def md_keep_nbsp(collapse_nbsp: bool = False) -> bool:
+    return not collapse_nbsp
+
+
 def md_expect(d: dict, keep_nbsp: bool) -> list:
     lines = [f"### {d['h']}", "", f"- {d['li1']}", f"- {d['li2']}", "", d["note"]]
     return lines if keep_nbsp else [x.replace(NBSP, " ") for x in lines]
@@ -197,6 +201,8 @@ def synth_md(d: dict, keep_nbsp: bool) -> str:
 
 
 def self_test(keep_nbsp: bool) -> int:
+    assert md_keep_nbsp() is True and md_keep_nbsp(True) is False, (
+        "Markdown flag mapping failed: default must keep NBSP; --md-collapse-nbsp must collapse it")
     base = {}
     for loc, d in DATA.items():
         base[(loc, "html")] = synth_html(d)
@@ -361,21 +367,25 @@ def self_test(keep_nbsp: bool) -> int:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--self-test", action="store_true", help="plant mutations in memory and require each to be caught")
-    ap.add_argument("--md-keep-nbsp", action="store_true",
-                    help="expect U+00A0 kept in the Markdown twins (after website #369's _collapse change)")
+    md_flags = ap.add_mutually_exclusive_group()
+    md_flags.add_argument("--md-keep-nbsp", action="store_true",
+                          help="no-op alias of the default: expect U+00A0 kept in the Markdown twins")
+    md_flags.add_argument("--md-collapse-nbsp", action="store_true",
+                          help="expect U+00A0 collapsed to a plain space in the Markdown twins (before PR #370)")
     try:
         a = ap.parse_args()
     except SystemExit as e:
         return 2 if e.code else 0
     if a.self_test:
         rc = self_test(False)
-        return rc or self_test(True)
-    problems = check(real_reader, a.md_keep_nbsp)
+        return rc or self_test(md_keep_nbsp())
+    keep_nbsp = md_keep_nbsp(a.md_collapse_nbsp)
+    problems = check(real_reader, keep_nbsp)
     for x in problems:
         print("MISMATCH " + x)
     if problems:
         return 1
-    print(f"ok: {len(DATA)} locales x (html, md) carry #373's section verbatim (md_keep_nbsp={a.md_keep_nbsp})")
+    print(f"ok: {len(DATA)} locales x (html, md) carry #373's section verbatim (md_keep_nbsp={keep_nbsp})")
     return 0
 
 
