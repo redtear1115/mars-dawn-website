@@ -11,10 +11,10 @@ MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、M
 ## 离开座位，也能读代理写的东西
 
 1. 在 Mac 上，让代理把文件存进 iCloud 云盘里的文件夹。
-2. 在 iPhone 或 iPad 上打开 MarsDawn，选择那份文件。
-3. 要修改或导出 PDF，回到 Mac 上操作。
+2. 在 iPhone 或 iPad 上用 MarsDawn 打开，也可以从其他 App 打开。
+3. 可以共享、打印或存储为 PDF；要修改，回到 Mac 上操作。
 
-在 iPhone 和 iPad 上只能阅读，只能打开 Markdown 和纯文本文件。
+在 iPhone 和 iPad 上只能阅读，可以打开 Markdown、纯文本、PDF、JSON 和 YAML 文件。
 
 [![在 App Store 下载](/assets/badges/app-store-zh-hans.svg)](https://apps.apple.com/app/id6812925073)
 
@@ -62,7 +62,7 @@ brew install redtear1115/tap/marsdawn
 
 ## 各部分怎么搭在一起
 
-以 MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 为准，各部分目前能做的事。
+以 MarsDawn 1.2.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 为准，各部分目前能做的事。
 
 | 功能 | App 内 | CLI | MCP／skill | 状态 |
 |---|---|---|---|---|
@@ -116,7 +116,7 @@ MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源�
 
 ### MarsDawn 有 iPhone 或 iPad 版吗？
 
-有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown 和纯文本文件，排好 Mermaid 图表、数学公式、代码和表格，也有大纲和主题；不能编辑，也不能导出 PDF。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。
+有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown、纯文本、PDF、JSON 和 YAML 文件，排好 Mermaid 图表、数学公式、代码和表格。可以共享、打印文件，或存储为 PDF，但不能编辑。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad。
 
 详见：[路线图](/zh-hans/roadmap/)
 
@@ -150,7 +150,7 @@ MarsDawn 本身不发送任何东西。skill 只是一份文字说明，marsdawn
 
 ### 为什么用 MarsDawn，不用别的 App？
 
-你可能不需要它。如果你主要写自己的笔记，Obsidian 这类笔记 App 更合适。如果你整天待在 VS Code 里，它内置的预览是免费的。如果你只想在访达里瞄一眼文件，免费的快速查看扩展就够了。如果你的 PDF 需要页码，MarsDawn 不会加。MarsDawn 是用来阅读和审阅代理写的 Markdown 的：源文本旁边就是实时预览，代理的修改一步就能撤销，文件直接打开到指定的那一行。如果它不合用，欢迎写信告诉我们原因。
+你可能不需要它。如果你主要写自己的笔记，Obsidian 这类笔记 App 更合适。如果你整天待在 VS Code 里，它内置的预览是免费的。如果你只想在访达里瞄一眼文件，免费的快速查看扩展就够了。MarsDawn 是用来阅读和审阅代理写的 Markdown 的：源文本旁边就是实时预览，代理的修改一步就能撤销，文件直接打开到指定的那一行。如果它不合用，欢迎写信告诉我们原因。
 
 详见：[MarsDawn 与其他工具比较](/zh-hans/vs/) · [Mac Markdown 查看器推荐](/zh-hans/best-markdown-viewer-mac/)
 
@@ -195,8 +195,9 @@ MarsDawn 本身不发送任何东西。skill 只是一份文字说明，marsdawn
 - [Mac 上怎么打开 md 文件](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI 代理写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。
 - [在 Mac 上预览 Mermaid](https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/index.md): 在 Mac 上预览 Mermaid 图表：源代码旁边实时画出来，快速查看和导出 PDF 也看得到。图表写错时，会显示错误信息和出错的那一行。
 - [Markdown 快速查看](https://marsdawn.southern-light.dev/zh-hans/quicklook/index.md): MarsDawn 的快速查看让你在访达按空格键就能看到排版后的 Markdown，Mermaid 图表、KaTeX 数学公式和代码高亮都在。试用期结束后，快速查看照常可用。
+- [拷贝给 AI](https://marsdawn.southern-light.dev/zh-hans/copy-for-ai/index.md): 选中文本，连同文件路径和行号一起拷贝，粘贴到 Claude Code 或任何代理。在 Mac 上就能做，不用打开 IDE，也不用装插件。
 - [Markdown 转 PDF](https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/index.md): 免费的 Markdown 转 PDF 工具：在 Mac 上用 marsdawn 命令行，一个命令就把 Markdown 转成 PDF，表格、数学公式、Mermaid 图表和代码高亮都在。
-- [MarsDawn 对比：VS Code 预览、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hans/vs/index.md): 写给正在挑选工具、要在 Mac 上读 Markdown（常常是代理写的）的人。下表每一格都出自厂商自己的页面或我们实际的检查，日期都是 2026 年 10 月 16 日；产品会变，格子也可能过时。发现错误，请写信到支持页上的地址。
+- [MarsDawn 对比：VS Code 预览、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hans/vs/index.md): 写给正在挑选工具、要在 Mac 上读 Markdown（常常是代理写的）的人。下表每一格都出自厂商自己的页面或我们实际的检查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新于 2026 年 11 月 7 日）；产品会变，格子也可能过时。发现错误，请写信到支持页上的地址。
 - [MacMD Viewer 对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读的 Markdown 查看器，USD 19.99。MarsDawn 边编辑边预览，免费试用 14 天，之后 USD 4.99 解锁一次。逐项比较，附来源。
 - [2026 Mac Markdown 查看器推荐](https://marsdawn.southern-light.dev/zh-hans/best-markdown-viewer-mac/index.md): 比较 8 款 Mac Markdown 查看器的价格、Mermaid、数学公式、PDF、自动重新载入、快速查看与原生／Electron，并说明各自适合谁。
 - [命令行工具](https://marsdawn.southern-light.dev/zh-hans/cli/index.md): 免费的 marsdawn 命令行工具：在 Mac 上从终端、脚本或 LLM 代理把 Markdown 导出成 PDF，并提供 JSON 输出。用 Homebrew 安装。

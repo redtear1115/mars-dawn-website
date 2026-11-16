@@ -13,7 +13,7 @@ Sur un Mac à puce Apple, Homebrew installe une copie précompilée en quelques 
 
 ## Enregistrer un document
 
-Collez ceci dans un fichier nommé `plan.md` :
+Collez ceci dans un fichier nommé `plan.md` :
 
 ````
 # Plan : des exports plus rapides
@@ -49,13 +49,13 @@ let pdf = try export("plan.md")
 marsdawn export plan.md
 ```
 
-Il écrit `plan.pdf` à côté de la source et indique où il l’a placé :
+Il écrit `plan.pdf` à côté de la source et indique où il l’a placé :
 
 ```
 Exported /Users/you/plan.pdf (1 page)
 ```
 
-Voici cette page, capturée lors d’une véritable exécution de `marsdawn` 0.5.0 :
+Voici cette page, capturée lors d’une véritable exécution de `marsdawn` 0.5.0 :
 
 ![Le PDF exporté : le titre, un tableau d’étapes, une formule dans le texte et une formule centrée, un diagramme Brouillon, Relecture, Publication et une ligne de Swift colorée.](/assets/cli/plan-fr.png)
 
@@ -65,24 +65,26 @@ Voici cette page, capturée lors d’une véritable exécution de `marsdawn` 0.5
 marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 ```
 
-- `--theme` : dawn, classic, modern ou vivid, dans les couleurs claires du thème. Sans cette option, `export` utilise `$MARSDAWN_THEME`, sinon dawn.
-- `--paper` : a4 ou letter. La valeur par défaut est a4.
-- `-o` : où écrire le PDF, au lieu de le placer à côté de la source.
-- `--allow-remote-images` : charge les images du web pendant le rendu. Elles restent désactivées si vous ne le précisez pas.
+- `--theme` : dawn, classic, modern ou vivid, dans les couleurs claires du thème. Sans cette option, `export` utilise `$MARSDAWN_THEME`, sinon dawn.
+- `--paper` : a4 ou letter. La valeur par défaut est a4.
+- `--layout` : document (par défaut), handbook ou handout. handbook ajoute une couverture tirée du front matter, une table des matières et des signets PDF.
+- `-o` : où écrire le PDF, au lieu de le placer à côté de la source.
+- `--allow-remote-images` : charge les images du web pendant le rendu. Elles restent désactivées si vous ne le précisez pas.
 
 ## Si ça ne fonctionne pas
 
 - `A full installation of Xcode.app 26.0 is required to compile this software.` Homebrew compile `marsdawn` à partir des sources, comme sur un Mac Intel. Installez Xcode 26 ou version ultérieure depuis l’App Store, puis relancez l’installation.
 - `marsdawn: No such file: …` Le chemin ne mène pas à un fichier. Vérifiez le nom, ou lancez la commande depuis le dossier qui contient le fichier.
 - `… already exists. Pass --force to replace it.` Un PDF portant ce nom existe déjà. Ajoutez `--force` pour le remplacer, ou `-o` pour l’écrire ailleurs.
-- `Error: The value '…' is invalid for '--theme <theme>'.` Le thème ou le format de papier n’est pas reconnu. Les thèmes sont dawn, classic, modern et vivid ; le papier est a4 ou letter.
+- `Error: The value '…' is invalid for '--theme <theme>'.` Le thème ou le format de papier n’est pas reconnu. Les thèmes sont dawn, classic, modern et vivid ; le papier est a4 ou letter.
 
 ## Pour aller plus loin
 
-- Toutes les options et le JSON produit : [Ligne de commande](/fr/cli/).
+- Dans l’app MarsDawn, Fichier ▸ Imprimer… affiche un aperçu des mêmes dispositions avant d’imprimer ou d’enregistrer : [Export PDF](/fr/pdf/).
+- Toutes les options et le JSON produit : [Ligne de commande](/fr/cli/).
 - Pour qu’un agent de code le fasse à votre place, exécutez `marsdawn skill --install` pour ajouter [la skill d’agent marsdawn](/fr/cli/skill/).
-- Les quatre thèmes d’aperçu, et la direction que prend l’export PDF : [thèmes d’aperçu et export PDF](/fr/themes/).
-- Remettre le PDF à quelqu’un qui n’utilise pas Markdown : [partager un PDF](/fr/sharing-exported-pdfs/).
+- Les quatre thèmes d’aperçu, et la direction que prend l’export PDF : [thèmes d’aperçu et export PDF](/fr/themes/).
+- Remettre le PDF à quelqu’un qui n’utilise pas Markdown : [partager un PDF](/fr/sharing-exported-pdfs/).
 
 ## Plus
 
@@ -98,7 +100,8 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.

@@ -169,6 +169,7 @@ let pdf = try export("plan.md")
 <ul>
   <li><code>--theme</code>：dawn、classic、modern 或 vivid，使用主题的浅色配色。没有指定时，<code>export</code> 会用 <code>$MARSDAWN_THEME</code>，再来才是 dawn。</li>
   <li><code>--paper</code>：a4 或 letter，默认是 a4。</li>
+  <li><code>--layout</code>：document（默认）、handbook 或 handout。handbook 会用 front matter 生成封面，加上目录和 PDF 书签。</li>
   <li><code>-o</code>：PDF 要写到哪里，而不是写在源文件旁边。</li>
   <li><code>--allow-remote-images</code>：转换时加载网络上的图片。没加这个选项就不会加载。</li>
 </ul>
@@ -181,6 +182,7 @@ let pdf = try export("plan.md")
 </ul>
 <h2 id="next">接下来</h2>
 <ul>
+  <li>在 MarsDawn App 里，“文件 ▸ 打印…”会先预览同样的布局，再打印或存储：<a href="/zh-hans/pdf/">导出 PDF</a>。</li>
   <li>所有选项和它输出的 JSON：<a href="/zh-hans/cli/">命令行工具</a>。</li>
   <li>让写程序的代理帮你做这件事：运行 <code>marsdawn skill --install</code> 来加上 <a href="/zh-hans/cli/skill/">marsdawn 的代理技能</a>。</li>
 </ul>

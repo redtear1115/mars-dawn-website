@@ -28,7 +28,7 @@ AI assistants and crawlers read the site too, through `llms.txt`, `llms-full.txt
 
 ## Product Purpose
 
-The site is the public home of MarsDawn, a native Mac Markdown editor with live preview, Mermaid diagrams, KaTeX math and PDF export, built for reading what AI agents write. The Mac app is available on the Mac App Store. MarsDawn for iOS 1.0.1 is available on the App Store for iPhone and iPad. The free `marsdawn` CLI can be installed today.
+The site is the public home of MarsDawn, a native Mac Markdown editor with live preview, Mermaid diagrams, KaTeX math and PDF export, built for reading what AI agents write. The Mac app is available on the Mac App Store. MarsDawn for iOS is available on the App Store for iPhone and iPad. The free `marsdawn` CLI can be installed today.
 
 The site succeeds on two things:
 
@@ -60,7 +60,7 @@ The site leads with one angle on top of them. MarsDawn is the careful-read step 
 - **Pricing**: a free download with a 14-day trial, then a USD 4.99 unlock. Both are In-App Purchases and both are one-time: no subscription and no account. With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. After day 14 without the unlock, documents still open but their content is covered in the app. The lock never changes files on disk, Quick Look keeps showing them, and the free `marsdawn export` CLI keeps exporting them.
 - **Requirements**: the app needs macOS 26 (Tahoe) or later, on Apple silicon or Intel. The `marsdawn` CLI needs macOS 15 or later, and `marsdawn export` works without the app installed.
 - **Themes**: four preview themes, Dawn (the default), Classic (典雅), Modern (流行) and Vivid (活潑).
-- **iPhone and iPad**: MarsDawn for iOS 1.0.1 is for reading only. It opens Markdown and plain text files and renders Mermaid diagrams, math, code and tables, with an outline and themes. It requires iOS 26 or iPadOS 26 or later. Editing and PDF export stay on the Mac.
+- **iPhone and iPad**: MarsDawn is for reading only. It opens Markdown, text, PDF, JSON and YAML files, with Mermaid, math, code and tables rendered, an outline and themes. Files can be shared, printed or saved as PDFs, but not edited. It requires iOS 26 or iPadOS 26 or later. Editing stays on the Mac.
 - **Limits**: no cloud service of its own, no plugins and no accounts.
 
 **Pricing copy:** the site describes the model (free download, 14-day trial, USD 4.99 one-time unlock) as live, because the app is on the Mac App Store. Keep it in step with the parent if the model changes again.

@@ -31,12 +31,16 @@ sys.dont_write_bytecode = True  # no scripts/__pycache__: CI fails on any untrac
 import article_dates  # noqa: E402
 import locales  # noqa: E402
 import price  # noqa: E402
+import price_card  # noqa: E402
 import theme_agents  # noqa: E402
 from promo130 import data as promo_data  # noqa: E402
 from best228 import data as best_data  # noqa: E402
 from ia247 import data as ia_data  # noqa: E402
 from tmde130 import data as changelog_data  # noqa: E402
 from cli254 import data as cli254_data  # noqa: E402
+from copy364 import data as copy364_data  # noqa: E402
+from copy369 import data as copy369_data  # noqa: E402
+from copy363 import data as copy363_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "public"
@@ -1167,22 +1171,23 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>2</code>: input not found.</li>
   <li><code>3</code>: MarsDawn is not installed (<code>open</code> only).</li>
   <li><code>4</code>: output exists (pass <code>--force</code>).</li>
-  <li><code>5</code>: export failed.</li>
+  <li><code>5</code>: export failed, or the input is larger than 16 MiB (<code>export</code> only).</li>
   <li><code>6</code>: this MarsDawn can't show a folder, so nothing was opened (<code>open</code> only).</li>
+  <li><code>7</code>: <code>skill --install</code> couldn't create the folder or write the file. An existing <code>SKILL.md</code> is left as it was.</li>
   <li><code>64</code>: usage error, including a line out of range, <code>--line</code> with more than one file or with a folder, or more than one folder.</li>
 </ul>
 
 <h2>--json output</h2>
-<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when a folder was given, <code>folder</code>. <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when a folder was given, <code>folder</code>. <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code>, <code>diagramErrors</code> and <code>diagramErrorDetails</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 """,
     },
     ("zh-hant", "cli"): {
         "title": "marsdawn：免費的 Markdown 轉 PDF 命令列工具 · MarsDawn",
-        "description": "免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 匯出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。",
+        "description": "免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 輸出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。",
         "body": f"""
 <section class="intro">
   <h1>命令列工具</h1>
-  <p>免費的 <code>marsdawn</code> 命令列工具：從終端機或 LLM agent 把 Markdown 匯出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。</p>
+  <p>免費的 <code>marsdawn</code> 命令列工具：從終端機或 LLM agent 把 Markdown 輸出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。</p>
 </section>
 
 <div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。</p></div>
@@ -1245,13 +1250,14 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>2</code>：找不到輸入檔。</li>
   <li><code>3</code>：尚未安裝 MarsDawn（只有 <code>open</code> 會用到）。</li>
   <li><code>4</code>：輸出檔已存在（可加上 <code>--force</code>）。</li>
-  <li><code>5</code>：輸出失敗。</li>
+  <li><code>5</code>：輸出失敗，或輸入超過 16 MiB（只有 <code>export</code> 會用到）。</li>
   <li><code>6</code>：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西（只有 <code>open</code> 會用到）。</li>
+  <li><code>7</code>：<code>skill --install</code> 無法建立資料夾或寫入檔案，原本的 <code>SKILL.md</code> 保持不變。</li>
   <li><code>64</code>：使用方式錯誤，包括行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾，或指定了多個資料夾。</li>
 </ul>
 
 <h2>--json 輸出</h2>
-<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）、<code>app</code>（App 路徑），有資料夾時另含 <code>folder</code>；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code> 與 <code>diagramErrors</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
+<p>成功時，<code>marsdawn open --json</code> 會印出 <code>ok</code>、<code>opened</code>（每個檔案的 <code>path</code>，有指定行號時另含 <code>line</code>）、<code>app</code>（App 路徑），有資料夾時另含 <code>folder</code>；<code>marsdawn export --json</code> 會印出 <code>ok</code>、<code>output</code>、<code>pages</code>、<code>theme</code>、<code>paper</code>、<code>diagramErrors</code> 與 <code>diagramErrorDetails</code>。失敗時兩者都會印出 <code>ok</code>、<code>error</code> 與 <code>message</code>。</p>
 """,
     },
 }
@@ -1764,7 +1770,7 @@ swift build -c release --product marsdawn
 
 <h2>能做什麼</h2>
 <ul>
-  <li><code>export</code>：用和 MarsDawn app 相同的匯出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
+  <li><code>export</code>：用和 MarsDawn app 相同的輸出程式，把一個 Markdown 檔輸出成分頁的 PDF，不會開啟任何視窗。</li>
   <li><code>open</code>：在 MarsDawn app 中開啟一或多個 Markdown 檔，讓人審閱，也可以指定每個檔案要定位的行，或在視窗的側邊欄顯示一個資料夾。</li>
 </ul>
 
@@ -1886,7 +1892,7 @@ exit 0</code></pre>
   <li><code>2</code>，<code>input_not_found</code>：輸入檔不存在、是資料夾，或不是 UTF-8 文字；或 <code>--folder</code> 的路徑不存在、不是資料夾。</li>
   <li><code>3</code>，<code>app_not_installed</code>：沒有安裝 MarsDawn。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>4</code>，<code>output_exists</code>：輸出檔已存在，請加上 <code>--force</code>。</li>
-  <li><code>5</code>，<code>export_failed</code>：匯出本身失敗。</li>
+  <li><code>5</code>，<code>export_failed</code>：輸出本身失敗。</li>
   <li><code>6</code>，<code>app_cannot_open_folders</code>：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西。只有 <code>open</code> 會回傳這個代碼。</li>
   <li><code>64</code>：用法錯誤，例如未知的選項、無效的值、行號超出範圍、<code>--line</code> 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 <code>-a</code>。這種錯誤一律以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣。</li>
 </ul>
@@ -2028,12 +2034,12 @@ marsdawn --version</code></pre>
 <h2>存一份文件</h2>
 <p>把下面的內容貼進一個叫 <code>plan.md</code> 的檔案：</p>
 <pre><code>{_PLAN_HTML["zh-hant"]}</code></pre>
-<h2>匯出</h2>
+<h2>輸出</h2>
 <pre><code>marsdawn export plan.md</code></pre>
 <p>它會在原始檔旁邊寫出 <code>plan.pdf</code>，並印出存放的位置：</p>
 <pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>這是那一頁，擷取自 <code>marsdawn</code> 0.5.0 的實際執行結果：</p>
-<p><img class="pdf-page" src="/assets/cli/plan-zh.png" alt="匯出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。" width="989" height="930"></p>
+<p><img class="pdf-page" src="/assets/cli/plan-zh.png" alt="輸出的 PDF：標題、步驟表格、行內與獨立的數學式、「草稿、審閱、發佈」流程圖，以及一行上色的 Swift 程式碼。" width="989" height="930"></p>
 <h2>選主題、紙張大小和檔名</h2>
 <pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
 <ul>
@@ -2090,19 +2096,19 @@ SKILL_PAGES = {
     },
     ("zh-hant", "cli/skill"): {
         "title": "讓寫程式的 agent 把 Markdown 轉 PDF 的 skill · MarsDawn",
-        "description": "一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你審閱，也學會安裝 marsdawn、把 Markdown 匯出成 PDF，並讀懂 JSON 結果。",
+        "description": "一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你審閱，也學會安裝 marsdawn、把 Markdown 輸出成 PDF，並讀懂 JSON 結果。",
         "body": f"""
 <section class="intro">
   <h1>讓 agent 把寫好的文件拿給你看，也幫你做出 PDF。</h1>
-  <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 把自己寫的文件在 MarsDawn 裡打開給你審閱，也教它安裝 <code>marsdawn</code>、確認它能用、把文件匯出成 PDF 並讀懂結果。</p>
+  <p>這個 skill 是一個 Markdown 檔案。它教寫程式的 agent 把自己寫的文件在 MarsDawn 裡打開給你審閱，也教它安裝 <code>marsdawn</code>、確認它能用、把文件輸出成 PDF 並讀懂結果。</p>
 </section>
 <div class="summary"><p><strong>一個 Markdown 檔案，放在 <code>~/.claude/skills/marsdawn/SKILL.md</code>。</strong>有了它，你的 agent 會安裝 <code>marsdawn</code>、輸出 PDF 並讀懂 JSON 結果；執行任何指令之前，它還是會先問你。</p></div>
 <!--skill-install-->
 <h2>它教什麼</h2>
 <ul>
   <li>如果沒有 <code>marsdawn</code>，就用 Homebrew 安裝，再用 <code>marsdawn --version</code> 確認版本，而不是假設某個版本。</li>
-  <li>用 <code>marsdawn export … --json</code> 匯出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。</li>
-  <li>依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、匯出失敗、選項錯誤。</li>
+  <li>用 <code>marsdawn export … --json</code> 輸出，並讀懂結果：PDF 存到哪裡、有幾頁，以及有沒有 Mermaid 圖表沒畫出來。</li>
+  <li>依結束代碼分辨失敗的原因：找不到檔案、PDF 已經存在、輸出失敗、選項錯誤。</li>
   <li>用 <code>marsdawn open file.md:行號</code> 打開自己寫的文件，停在第一處修改，而且只開一次：之後的修改會自己出現在已開啟的視窗裡。</li>
   <li>如果沒有安裝 MarsDawn app，就告訴你一次然後繼續，不會一直重試。絕不用 <code>open</code> 來做 PDF。</li>
   <li>使用 <code>--folder</code>（marsdawn 0.5.1 以上）時，把資料夾回報為「已要求顯示」，而不是「已顯示」：由 app 決定，也不會有結果回報。</li>
@@ -2261,7 +2267,7 @@ BRAINSTORM_PAGES = {
 
 <h2>這樣省下什麼</h2>
 <ul>
-  <li>不用把排版後的 Markdown、一張截圖，或對截圖的描述貼回對話裡，只為了讓 agent 確認匯出成功。</li>
+  <li>不用把排版後的 Markdown、一張截圖，或對截圖的描述貼回對話裡，只為了讓 agent 確認輸出成功。</li>
   <li>agent 不需要重建 Mermaid 圖表或 KaTeX 公式排版後的樣子，直接讓人去看就好。</li>
   <li>不需要在第一次呼叫已經回報成功之後，再多一次呼叫去讀取 PDF 的內容。</li>
 </ul>
@@ -3925,13 +3931,17 @@ Options: `-o out.pdf` (default: beside the input), `--theme {"|".join(THEME_IDS)
 a newline is a space, except between two Chinese or Japanese characters, where it is
 dropped.
 
-`--layout document|handbook` picks the page layout (default `document`; `manual`, the 0.7.1 name,
+`--layout document|handbook|handout` picks the page layout (default `document`; `manual`, the 0.7.1 name,
 still works but is deprecated). `handbook` is the Handbook layout: wider margins with a 25 mm binding side, every
 top-level heading on a new page, a table of contents of the level 1 and 2 headings, "n / N" page
 numbers and PDF bookmarks. A cover comes first when the front matter has a `title`; it also shows
 `subtitle`, `version`, `date`, `author` and `logo` (an image path) when present.
 `--toc-title "<text>"` sets the contents heading (default `Contents`) and only applies to
-`handbook`. A line holding only `<!--BREAK-->` starts a new page, in either layout. The JSON result
+`handbook`. `handout` leaves a blank notes column on the right of every page (a table too
+wide for the body may run into it), puts the front matter's `title` (or the file name) and `date`
+at the top of page 1, and ends every page with
+"file name · date · n / N"; without a front-matter `date` it is the day of the export.
+A line holding only `<!--BREAK-->` starts a new page, in every layout. The JSON result
 doesn't say which layout was used.
 
 On success it exits 0 and prints one JSON line:
@@ -4090,7 +4100,7 @@ FIGURES = {
             "zh-hant": "MarsDawn 的深色模式，左邊是 Markdown 原始碼，右邊是排版後的頁面。",
         },
         "callouts": [
-            (16.53, 7.0, "l", {"en": "One document per window, on this Mac.", "zh-hant": "一個視窗一份文件，就在這台 Mac 上。"}),
+            (16.53, 7.0, "l", {"en": "Each document is a file on this Mac.", "zh-hant": "每份文件都是這台 Mac 上的檔案。"}),
             (10.07, 14.0, "l", {"en": "You write Markdown here.", "zh-hant": "你在這裡寫 Markdown。"}),
             (88.89, 5.56, "r", {"en": "The toolbar holds themes and layouts, and there is no plugins menu.", "zh-hant": "工具列只有主題和版面，沒有外掛選單。"}),
             (70.14, 13.78, "r", {"en": "The page is for reading, not editing.", "zh-hant": "這一側用來閱讀，不能直接編輯。"}),
@@ -4165,7 +4175,7 @@ TRAIT_PAGES = {
 <ul>
   <li>The trial doesn't charge you either. When it ends, nothing is bought unless you choose to unlock.</li>
   <li>There is no account. MarsDawn never asks you to create one.</li>
-  <li>With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. On iPhone and iPad, MarsDawn is for reading: it doesn't edit or export PDFs.</li>
+  <li>With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad. On iPhone and iPad, MarsDawn is for reading: it doesn't edit files.</li>
 </ul>
 <h2>What works when</h2>
 <!--compare:pay-once-states-->
@@ -4199,7 +4209,7 @@ TRAIT_PAGES = {
 <ul>
   <li>試用本身也不會扣款。試用結束時，除非你選擇解鎖，否則不會購買任何東西。</li>
   <li>不需要帳號，MarsDawn 從不要求你建立帳號。</li>
-  <li>用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能閱讀，不能編輯，也不能輸出 PDF。</li>
+  <li>用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能閱讀，不能編輯。</li>
 </ul>
 <h2>各階段能做什麼</h2>
 <!--compare:pay-once-states-->
@@ -4278,6 +4288,12 @@ TRAIT_PAGES = {
   <li>Siri and Shortcuts: start a new document from a template, add a line to your notes inbox, or reopen a recent document.</li>
   <li>{APP_UI_LANGUAGES["en"]}.</li>
 </ul>
+<h3>Small and quiet</h3>
+<ul>
+  <li>An 11.4 MB download from the Mac App Store.</li>
+  <li>0% CPU when a document is open and nothing is changing.</li>
+</ul>
+<p>Measured on version 1.2.1, November 2026.</p>
 """,
     ),
     ("zh-hant", "native"): _trait_page(
@@ -4304,6 +4320,12 @@ TRAIT_PAGES = {
   <li>Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。</li>
   <li>支援{APP_UI_LANGUAGES["zh-hant"]}。</li>
 </ul>
+<h3>小而安靜</h3>
+<ul>
+  <li>從 Mac App Store 下載只要 11.4 MB。</li>
+  <li>文件開著、沒有變動時，CPU 用量 0%。</li>
+</ul>
+<p>以 1.2.1 版實測，2026 年 11 月。</p>
 """,
     ),
     ("en", "limits"): _trait_page(
@@ -4320,7 +4342,7 @@ TRAIT_PAGES = {
 <h3>Devices and people</h3>
 <ul>
   <li><strong>Sync:</strong> MarsDawn doesn't sync your documents. They stay where you save them, so to use one on another Mac, keep it in a folder you already sync.</li>
-  <li><strong>iPhone and iPad:</strong> MarsDawn is for reading only. It opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own.</li>
+  <li><strong>iPhone and iPad:</strong> MarsDawn is for reading only. It opens Markdown, text, PDF, JSON and YAML files but doesn't edit them. You can share, print or save a PDF, but links in a PDF saved there don't work. It reads the files you keep in iCloud Drive or open from other apps; MarsDawn has no cloud service of its own.</li>
   <li><strong>Sharing:</strong> there are no accounts and no shared editing, because MarsDawn is for one person on their own Mac.</li>
   <li><strong>System:</strong> MarsDawn needs macOS 26 or later on the Mac, and iOS 26 or iPadOS 26 or later on iPhone and iPad.</li>
 </ul>
@@ -4328,7 +4350,7 @@ TRAIT_PAGES = {
 <ul>
   <li><strong>Editing:</strong> you write Markdown on the left and read the page on the right; the page itself can't be edited.</li>
   <li><strong>Formats:</strong> MarsDawn exports PDF and prints, and doesn't export Word files.</li>
-  <li><strong>Other files:</strong> PDFs open read-only, and so do text files in encodings other than UTF-8. On the Mac, JSON and YAML open as editable documents with a tree preview; iPhone and iPad don't open them.</li>
+  <li><strong>Other files:</strong> PDFs open read-only, and so do text files in encodings other than UTF-8. On the Mac, JSON and YAML open as editable documents with a tree preview; on iPhone and iPad, they open read-only, also with a tree preview.</li>
   <li><strong>Themes:</strong> it comes with Dawn, Classic, Modern and Vivid, each in light and dark, and you can install more from the curated <a href="/themes/gallery/">Theme Gallery</a> (Settings ▸ Appearance ▸ Get More Themes…). A theme sets colours and a few style options; there's no custom CSS. See <a href="/themes/">themes</a>.</li>
   <li><strong>Plugins:</strong> MarsDawn has no plugins or extensions.</li>
 </ul>
@@ -4350,7 +4372,7 @@ TRAIT_PAGES = {
 <h3>裝置與使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不會同步文件，文件存在哪裡就留在哪裡；要在另一台 Mac 上使用，請放在你原本就會同步的資料夾。</li>
-  <li><strong>iPhone 和 iPad：</strong>MarsDawn 只能閱讀，只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。</li>
+  <li><strong>iPhone 和 iPad：</strong>MarsDawn 只能閱讀，能開 Markdown、純文字、PDF、JSON 和 YAML 檔，但不能編輯。可以分享、列印或存成 PDF，但在這裡存成的 PDF，裡面的連結不能點。它讀的是你放在 iCloud 雲碟裡、或從其他 App 打開的檔案，MarsDawn 本身沒有雲端服務。</li>
   <li><strong>分享：</strong>沒有帳號，也不能共同編輯，因為 MarsDawn 是給一個人在自己的 Mac 上用的。</li>
   <li><strong>系統：</strong>MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。</li>
 </ul>
@@ -4358,7 +4380,7 @@ TRAIT_PAGES = {
 <ul>
   <li><strong>編輯：</strong>你在左邊寫 Markdown，在右邊閱讀排版後的頁面；頁面本身不能直接編輯。</li>
   <li><strong>格式：</strong>MarsDawn 能輸出 PDF 和列印，不能輸出 Word 檔。</li>
-  <li><strong>其他檔案：</strong>PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML 可以當成文件打開來編輯，並有樹狀預覽；iPhone 和 iPad 不能打開這兩種檔案。</li>
+  <li><strong>其他檔案：</strong>PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML 可以當成文件打開來編輯，並有樹狀預覽；在 iPhone 和 iPad 上則以唯讀方式打開，也有樹狀預覽。</li>
   <li><strong>主題：</strong>內建黎明、典雅、流行和活潑，每種都有淺色與深色；也可以從經過審核的<a href="/zh-hant/themes/gallery/">主題庫</a>安裝更多（「設定 ▸ 外觀 ▸ 取得更多主題⋯」）。主題只能設定顏色和幾個樣式選項，不能自訂 CSS。詳見<a href="/zh-hant/themes/">主題</a>。</li>
   <li><strong>外掛：</strong>MarsDawn 沒有外掛或擴充功能。</li>
 </ul>
@@ -4415,6 +4437,7 @@ import hero_window  # noqa: E402
 import brand_film  # noqa: E402
 import brand_film_themes  # noqa: E402
 import brand_film_mac  # noqa: E402
+import brand_film_copy_for_ai  # noqa: E402
 import approved_copy  # noqa: E402
 import rich_pages  # noqa: E402
 import roadmap272  # noqa: E402
@@ -4511,7 +4534,7 @@ OPEN_MD_KEPT = {'en': {'opening_html': 'A <code>.md</code> file is plain text. T
              'pdf_p1_html': '免費的 <code>marsdawn</code> 命令列工具，能把 Markdown 檔案排版成 PDF，任何一台 Mac '
                             '都打得開。表格、數學式、Mermaid 圖表和程式碼上色都會排好，而且不需要安裝其他東西，連 MarsDawn app 都不用。',
              'pdf_p2_html': '<code>export</code> 會在 Markdown 檔案旁邊寫出 <code>notes.pdf</code>，<code>open</code> '
-                            '會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際匯出的結果，請看<a '
+                            '會用你的 PDF 檢視器打開它。這個工具需要 macOS 15 以上。完整步驟和一頁實際輸出的結果，請看<a '
                             'href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a>。',
              'next_h2': '接下來',
              'next_items_html': ['命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。',
@@ -4722,15 +4745,13 @@ FEATURES_COPY = {
                    'lead': '',
                    'lead_links': [],
                    'items': [{'h': 'Windows and tabs',
-                              'p': 'Each document opens in its own window. Choose Window ▸ Merge All '
-                                   'Windows to gather open windows as tabs of one. Autosave runs as '
-                                   'you type.',
+                              'p': "By default, documents open as tabs of the front window. To use your Mac's tab setting instead, choose Follow System Setting in Settings ▸ Appearance. Autosave runs as you type.",
                               'links': ['native']},
                              {'h': 'Quick Look in Finder',
                               'p': 'Select a Markdown file in Finder and press Space to read it rendered, diagrams included. JSON and YAML files show as a tree. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.',
                               'links': ['native']},
                              {'h': 'Other files',
-                              'p': "MarsDawn also opens plain text files (.txt, .log, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. iPhone and iPad don't open JSON or YAML.",
+                              'p': "MarsDawn also opens plain text files (.txt, .log, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. On iPhone and iPad, JSON and YAML open read-only, with a tree preview.",
                               'links': []},
                              {'h': 'Your files stay yours',
                               'p': 'There is no account, no sync and no cloud. Documents stay where '
@@ -4777,7 +4798,7 @@ FEATURES_COPY = {
                            'On iPhone or iPad: in MarsDawn, tap Open and pick the same file. Mermaid diagrams, math, code and tables are rendered, with an outline and your theme.',
                            'Back on the Mac: keep editing, or export a PDF.'],
                  'buy': 'With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.',
-                 'limits': "On iPhone and iPad, MarsDawn is for reading only: it opens Markdown and plain text files, and doesn't edit or export PDFs. It reads the files you keep in iCloud Drive; MarsDawn has no cloud service of its own."},
+                 'limits': "On iPhone and iPad, MarsDawn is for reading only: it opens Markdown, text, PDF, JSON and YAML but doesn't edit. Links in a PDF saved there don't work. MarsDawn has no cloud service of its own."},
      'cta': {'h2': 'Try it on your Mac',
              'p1': 'MarsDawn is free to download. Try everything for 14 days, then unlock it once for '
                    'USD 4.99. No subscription, no account. It needs macOS 26 or later.',
@@ -4883,14 +4904,14 @@ FEATURES_COPY = {
                    'lead': '',
                    'lead_links': [],
                    'items': [{'h': '視窗和分頁',
-                              'p': '每份文件預設在自己的視窗打開。用「視窗 ▸ 合併所有視窗」，可以把開著的視窗收成同一個視窗裡的分頁。打字時會自動儲存。',
+                              'p': '打開的文件預設會成為最前面視窗的分頁。想依照 Mac 的分頁設定，請到「設定 ▸ 外觀」選「依照系統設定」。打字時會自動儲存。',
                               'links': ['native']},
                              {'h': '在 Finder 用快速查看',
                               'p': '在 Finder 選取 Markdown 檔並按空白鍵，就能看到排版後的樣子，圖表也會顯示。JSON 和 YAML 檔則會顯示成樹狀檢視。快速查看會用你在 MarsDawn '
                                    '選的主題，也跟著 MarsDawn 的外觀設定。',
                               'links': ['native']},
                              {'h': '其他檔案',
-                              'p': 'MarsDawn 也能打開純文字檔（.txt、.log、程式碼檔）和 PDF。UTF-8 純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。在 Mac 上，JSON 和 YAML 檔可以當成文件打開來編輯，旁邊的樹狀預覽會隨著打字更新。在 Finder 用「快速查看」也會看到同樣的樹狀檢視。iPhone 和 iPad 不能打開 JSON 或 YAML。',
+                              'p': 'MarsDawn 也能打開純文字檔（.txt、.log、程式碼檔）和 PDF。UTF-8 純文字檔打開就能直接編輯，只顯示原始碼。PDF 則在有頁面縮圖、縮放和搜尋的檢視器中開啟。在 Mac 上，JSON 和 YAML 檔可以當成文件打開來編輯，旁邊的樹狀預覽會隨著打字更新。在 Finder 用「快速查看」也會看到同樣的樹狀檢視。在 iPhone 和 iPad 上，JSON 和 YAML 以唯讀方式打開，並有樹狀預覽。',
                               'links': []},
                              {'h': '你的檔案留在你手上',
                               'p': '不需要帳號，沒有同步，也沒有雲端。文件留在你儲存的位置，MarsDawn 不收集任何關於你的資料。',
@@ -4929,7 +4950,7 @@ FEATURES_COPY = {
                            '在 iPhone 或 iPad 上：打開 MarsDawn，點「開啟」，選同一個檔案。Mermaid 圖表、數學式、程式碼和表格都會排好顯示，也有大綱和你選的主題。',
                            '回到 Mac：繼續編輯，或輸出 PDF。'],
                  'buy': '用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad 上的 MarsDawn。',
-                 'limits': '在 iPhone 和 iPad 上，MarsDawn 只能閱讀：只開 Markdown 和純文字檔，不能編輯，也不能輸出 PDF。它讀的是你放在 iCloud 雲碟裡的檔案，MarsDawn 本身沒有雲端服務。'},
+                 'limits': '在 iPhone 和 iPad 上，MarsDawn 只能閱讀：能開 Markdown、純文字、PDF、JSON 和 YAML，但不能編輯。在這裡存成的 PDF，裡面的連結不能點。MarsDawn 本身沒有雲端服務。'},
      'cta': {'h2': '在你的 Mac 上試試',
              'p1': 'MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。',
              'trial': ['試用怎麼運作：', 'pay-once'],
@@ -4973,11 +4994,51 @@ def _features_devices(copy: dict) -> list:
             '<!--iphone-badge-->', f'<p class="devnote">{_features_text(d["limits"])}</p>']
 
 
-def features_page(copy: dict) -> dict:
+_COPY369_STEP = re.compile(r"^(\d+)\. \*\*([^*]+)\*\*(.*)$", re.S)
+
+
+def _copy369_step(text: str, number: int) -> str:
+    """'N. **Label:** rest' (copy369 data) -> 'Label: rest', the way FEATURES_COPY stores a step."""
+    m = _COPY369_STEP.match(text)
+    assert m and m.group(1) == str(number), f"#369: step {number} lacks its '{number}. **…**' prefix: {text[:40]!r}"
+    bold, rest = m.group(2), m.group(3)
+    assert "**" not in rest, f"#369: step {number} has more bold markers than the label"
+    step = bold + rest
+    label = _STEP_LABEL.match(step)
+    assert label and label.group(1) == bold, f"#369: step {number}: rendered bold {label and label.group(1)!r} != {bold!r}"
+    return step
+
+
+def apply_copy369_features(copy: dict, locale: str) -> dict:
+    """#369: a deep copy of a locale's features copy with copy369_data's fold (new item after 'Outline and
+    Files sidebar'), export (the 'Export as PDF, or print' paragraph), ios_s2/ios_s3 (steps 2 and 3) and
+    devnote (the iPhone and iPad limits). The original copy is not changed."""
+    data = copy369_data.DATA[locale]
+    copy = _copy.deepcopy(copy)
+    read = [s for s in copy["sections"] if s["id"] == "read"]
+    assert len(read) == 1, f"#369 {locale}: {len(read)} 'read' sections"
+    items = read[0]["items"]
+    assert len(items) == 4 and items[1]["links"] == ["reading-agent-output"] == items[2]["links"], \
+        f"#369 {locale}: 'read' items are not the expected four"
+    items.insert(2, {"h": data["fold_h"], "p": data["fold"], "links": []})
+    themes = [s for s in copy["sections"] if s["id"] == "themes"]
+    assert len(themes) == 1, f"#369 {locale}: {len(themes)} 'themes' sections"
+    items = themes[0]["items"]
+    assert len(items) == 3 and items[2]["links"] == ["pdf"], f"#369 {locale}: 'themes' items are not the expected three"
+    items[2]["p"] = data["export"]
+    steps = copy["devices"]["steps"]
+    assert len(steps) == 3, f"#369 {locale}: {len(steps)} device steps"
+    steps[1], steps[2] = _copy369_step(data["ios_s2"], 2), _copy369_step(data["ios_s3"], 3)
+    copy["devices"]["limits"] = data["devnote"]
+    return copy
+
+
+def features_page(copy: dict, locale: str) -> dict:
     """A locale's /features/ page, from its copy (FEATURES_COPY's shape). Its link, button and
     screenshot marks are filled in by all_pages() and render(), once every locale's labels exist."""
     problems = shape_problems(FEATURES_COPY["en"], copy)
     assert not problems, "features copy differs in shape from en: " + "; ".join(problems)
+    copy = apply_copy369_features(copy, locale)
     intro = "\n".join(['<section class="intro">', f"  <h1>{_features_text(copy['h1'])}</h1>"]
                        + [f"  <p>{_features_text(p)}</p>" for p in copy["intro"]] + ["</section>"])
     parts = []
@@ -5007,7 +5068,7 @@ def features_page(copy: dict) -> dict:
 
 
 def features_pages() -> dict:
-    return {(locale, "features"): features_page(copy) for locale, copy in FEATURES_COPY.items()}
+    return {(locale, "features"): features_page(copy, locale) for locale, copy in FEATURES_COPY.items()}
 
 _FEATURES_MARK = re.compile(r"<!--(link:[a-z/-]+|cta|shot:[a-z]+)-->")
 
@@ -5049,7 +5110,7 @@ def _make_k(locale: str) -> SimpleNamespace:
         schema_links_from=lambda notes: schema_links_from({**notes, **cli254_data.DATA[locale]["schema_notes"]}),
         render_legal_body=render_legal_body,
         theme_agents_page=lambda copy: theme_agents.page(LOCALES[locale]["root"], copy),
-        features_page=features_page,
+        features_page=lambda copy: features_page(copy, locale),
         open_md_page=open_md_page, mermaid_page=mermaid_page,
         vs_macmd_page=vs_macmd_page, vs_compare=vs_compare,
         set_skill_install=lambda html: SKILL_INSTALL_HTML.__setitem__(locale, html),
@@ -5258,52 +5319,70 @@ def hero_stage_html(locale: str) -> str:
     return f'<div class="hero-stage">\n{hero_window.window_html(locale)}\n{hero_phone_html(locale)}\n</div>'
 
 
-# Home steps: #333 comment 6516118620 §3, with 6516160149 §4 corrections.
+# Home steps: #333 comment 6516118620 §3, with 6516160149 §4 corrections; the three steps are the #369 plan A
+# text (approval comment 6796859928), the same as copy369/data.py key home_ios, which apply_copy369_home_steps
+# below also enforces at build time.
 HOME_IPHONE_STEPS = {'en': {'h2': 'Read what your agent wrote, away from your desk',
         'steps': ['On your Mac, have your agent save its files to a folder in iCloud Drive.',
-                  'On your iPhone or iPad, open MarsDawn and choose the file.',
-                  'To edit it or export a PDF, go back to your Mac.'],
-        'limits': 'On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain text '
-                  'files.'},
+                  'On your iPhone or iPad, open it in MarsDawn, or from another app.',
+                  'Share, print or save it as a PDF; edit it on your Mac.'],
+        'limits': 'On iPhone and iPad, MarsDawn is for reading only. It opens Markdown, text, PDF, '
+                  'JSON and YAML.'},
  'zh-hant': {'h2': '離開座位，也能讀 agent 寫的東西',
              'steps': ['在 Mac 上，讓 agent 把檔案存進 iCloud 雲碟裡的資料夾。',
-                       '在 iPhone 或 iPad 上打開 MarsDawn，選那份檔案。',
-                       '要修改或輸出 PDF，回到 Mac 上做。'],
-             'limits': '在 iPhone 和 iPad 上只能閱讀，只開 Markdown 和純文字檔。'},
+                       '在 iPhone 或 iPad 上用 MarsDawn 打開，也可以從其他 App 打開。',
+                       '可以分享、列印或存成 PDF；要修改，回到 Mac 上做。'],
+             'limits': '在 iPhone 和 iPad 上只能閱讀，能開 Markdown、純文字、PDF、JSON 和 YAML 檔。'},
  'zh-hans': {'h2': '离开座位，也能读代理写的东西',
              'steps': ['在 Mac 上，让代理把文件存进 iCloud 云盘里的文件夹。',
-                       '在 iPhone 或 iPad 上打开 MarsDawn，选择那份文件。',
-                       '要修改或导出 PDF，回到 Mac 上操作。'],
-             'limits': '在 iPhone 和 iPad 上只能阅读，只能打开 Markdown 和纯文本文件。'},
+                       '在 iPhone 或 iPad 上用 MarsDawn 打开，也可以从其他 App 打开。',
+                       '可以共享、打印或存储为 PDF；要修改，回到 Mac 上操作。'],
+             'limits': '在 iPhone 和 iPad 上只能阅读，可以打开 Markdown、纯文本、PDF、JSON 和 YAML 文件。'},
  'ja': {'h2': '席を離れても、エージェントが書いたものを読める',
         'steps': ['Mac で、エージェントにファイルを iCloud Drive のフォルダへ保存させます。',
-                  'iPhone や iPad で MarsDawn を開き、そのファイルを選びます。',
-                  '編集や PDF の書き出しは、Mac に戻って行います。'],
-        'limits': 'iPhone と iPad では閲覧専用で、開けるのは Markdown とプレーンテキストのファイルだけです。'},
+                  'iPhone や iPad で、MarsDawn から開くか、ほかの App から開きます。',
+                  '共有、プリント、PDF として保存ができます。編集は Mac で行います。'],
+        'limits': 'iPhone と iPad では閲覧専用で、Markdown、テキスト、PDF、JSON、YAML を開けます。'},
  'ko': {'h2': '자리를 떠나도 에이전트가 쓴 글을 읽을 수 있습니다',
         'steps': ['Mac에서 에이전트가 iCloud Drive의 폴더에 파일을 저장하게 합니다.',
-                  'iPhone이나 iPad에서 MarsDawn을 열고 그 파일을 선택합니다.',
-                  '편집하거나 PDF로 내보내려면 Mac으로 돌아갑니다.'],
-        'limits': 'iPhone과 iPad에서는 읽기 전용이며, Markdown과 일반 텍스트 파일만 열 수 있습니다.'},
+                  'iPhone이나 iPad에서 MarsDawn으로 열거나 다른 앱에서 엽니다.',
+                  '공유하거나 프린트하거나 PDF로 저장할 수 있습니다. 편집은 Mac에서 합니다.'],
+        'limits': 'iPhone과 iPad에서는 읽기 전용이며, Markdown, 텍스트, PDF, JSON, YAML을 열 수 있습니다.'},
  'de': {'h2': 'Lies, was dein Agent geschrieben hat, auch fern vom Schreibtisch',
         'steps': ['Lass deinen Agent auf dem Mac seine Dateien in einem Ordner in iCloud Drive speichern.',
-                  'Öffne MarsDawn auf iPhone oder iPad und wähle die Datei aus.',
-                  'Zum Bearbeiten oder für den PDF-Export gehst du zurück an den Mac.'],
-        'limits': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet nur Markdown- und reine '
-                  'Textdateien.'},
+                  'Öffne die Datei auf iPhone oder iPad in MarsDawn oder aus einer anderen App.',
+                  'Teile sie, drucke sie oder sichere sie als PDF; bearbeiten kannst du sie am Mac.'],
+        'limits': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet Markdown, Text, PDF, '
+                  'JSON und YAML.'},
  'fr': {'h2': 'Lisez ce qu’a écrit votre agent, même loin de votre bureau',
-        'steps': ['Sur votre Mac, demandez à votre agent d’enregistrer ses fichiers dans un dossier d’iCloud '
-                  'Drive.',
-                  'Sur votre iPhone ou iPad, ouvrez MarsDawn et choisissez le fichier.',
-                  'Pour le modifier ou l’exporter en PDF, revenez sur votre Mac.'],
-        'limits': 'Sur iPhone et iPad, MarsDawn sert uniquement à lire et n’ouvre que les fichiers Markdown '
-                  'et texte brut.'},
+        'steps': ['Sur votre Mac, demandez à votre agent d’enregistrer ses fichiers dans un dossier d’iCloud Drive.',
+                  'Sur votre iPhone ou iPad, ouvrez le fichier dans MarsDawn, ou depuis une autre app.',
+                  'Partagez-le, imprimez-le ou enregistrez-le en PDF\xa0; pour le modifier, revenez sur votre Mac.'],
+        'limits': 'Sur iPhone et iPad, MarsDawn sert uniquement à lire et ouvre les fichiers Markdown, '
+                  'texte, PDF, JSON et YAML.'},
  'es': {'h2': 'Lee lo que escribió tu agente, aunque no estés en tu escritorio',
         'steps': ['En tu Mac, haz que tu agente guarde sus archivos en una carpeta de iCloud Drive.',
-                  'En tu iPhone o iPad, abre MarsDawn y elige el archivo.',
-                  'Para editarlo o exportarlo a PDF, vuelve a tu Mac.'],
-        'limits': 'En iPhone y iPad, MarsDawn solo sirve para leer y solo abre archivos Markdown y de texto '
-                  'plano.'}}
+                  'En tu iPhone o iPad, ábrelo en MarsDawn o desde otra app.',
+                  'Compártelo, imprímelo o guárdalo como PDF; para editarlo, vuelve a tu Mac.'],
+        'limits': 'En iPhone y iPad, MarsDawn solo sirve para leer y abre archivos Markdown, de texto, PDF, '
+                  'JSON y YAML.'}}
+
+
+def apply_copy369_home_steps() -> None:
+    """#369 (plan A): each locale's steps and limit line come from copy369_data (key home_ios, three
+    numbered lines, a blank line, one limit line); the heading stays. The steps and limits above are superseded."""
+    assert sorted(HOME_IPHONE_STEPS) == sorted(copy369_data.DATA), "#369: home steps locales differ"
+    for locale, copy in HOME_IPHONE_STEPS.items():
+        steps, limit = copy369_data.DATA[locale]["home_ios"].split("\n\n")
+        lines = steps.split("\n")
+        assert [line[:3] for line in lines] == ["1. ", "2. ", "3. "], f"{locale}: home_ios steps are not 1. 2. 3."
+        assert limit and "\n" not in limit, f"{locale}: home_ios limit is not one line"
+        assert len(copy["steps"]) == 3, f"{locale}: the home steps are not three"
+        copy["steps"] = [line[3:] for line in lines]
+        copy["limits"] = limit
+
+
+apply_copy369_home_steps()
 
 # Link to the features section; copy approved by Ray on PR #342 (Aria's proposal).
 HOME_IPHONE_STEPS_MORE = {
@@ -5616,7 +5695,7 @@ EXIT_REMEDY = {
         "2": "Check the path and the file name",
         "3": "Install the app, or use <code>export</code>, which doesn't need it",
         "4": "Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere",
-        "5": "Read <code>message</code> in the JSON result",
+        "5": "Read <code>message</code> in the JSON result; for <code>input_too_large</code>, split the file",
         "64": "Fix the option or value; this error is text on stderr, even with <code>--json</code>",
     },
     "zh-hant": {
@@ -5624,7 +5703,7 @@ EXIT_REMEDY = {
         "2": "檢查路徑和檔名",
         "3": "安裝 app，或改用不需要 app 的 <code>export</code>",
         "4": "加上 <code>--force</code> 覆寫，或用 <code>-o</code> 寫到別處",
-        "5": "讀 JSON 結果裡的 <code>message</code>",
+        "5": "讀 JSON 結果裡的 <code>message</code>&#8288;；如果是 <code>input_too_large</code>，把檔案拆小",  # word joiner: the ； never starts a line
         "64": "修正選項或值；這種錯誤以文字輸出到 stderr，即使加了 <code>--json</code> 也一樣",
     },
     "zh-hans": {
@@ -5644,6 +5723,11 @@ EXIT_REMEDY = {
         "64": "オプションや値を直す。このエラーは <code>--json</code> を付けても stderr にテキストで出力される",
     },
 }
+# Scoped separately so this approved pair does not add a required translation key to every locale.
+EXIT_SKILL_REMEDY = {
+    "en": "Check that the folder can be written to, then run it again",
+    "zh-hant": "確認資料夾可以寫入，再執行一次",
+}
 _EXIT_LIST = re.compile(re.escape(EXIT_TABLE_MARK) + r"\n<ul>\n(.*?)</ul>", re.S)
 _EXIT_ITEM = re.compile(r"<li><code>(\d+)</code>\s*[:：]\s*(.*?)</li>")
 
@@ -5654,7 +5738,7 @@ def exit_table_html(locale: str, body: str) -> str:
         labels = EXIT_TABLE_HEAD[locale][1:]
         rows = "\n".join(
             f'  <tr><th scope="row"><code>{code}</code></th><td data-label="{labels[0]}">{means}</td>'
-            f'<td data-label="{labels[1]}">{EXIT_REMEDY[locale].get(code, "")}</td></tr>'
+            f'<td data-label="{labels[1]}">{EXIT_REMEDY[locale].get(code, EXIT_SKILL_REMEDY.get(locale, "") if code == "7" else "")}</td></tr>'
             for code, means in _EXIT_ITEM.findall(m.group(1))
         )
         return (f'<div class="table-scroll"><table class="compare">\n<thead><tr>{head}</tr></thead>\n'
@@ -5831,6 +5915,10 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         page = {**page, "body": page["body"].replace(brand_film_mac.MARK, brand_film_mac.section_markdown_html(locale, BASE_URL))}
     if brand_film_themes.MARK in page["body"]:
         page = {**page, "body": page["body"].replace(brand_film_themes.MARK, brand_film_themes.section_markdown_html(locale, BASE_URL))}
+    if brand_film_copy_for_ai.MARK in page["body"]:
+        page = {**page, "body": page["body"].replace(
+            brand_film_copy_for_ai.MARK,
+            brand_film_copy_for_ai.section_markdown_html(locale, BASE_URL, copy_for_ai_feature(locale)))}
     if "intro" not in page:
         return html_to_markdown(page["body"])
     if slug == "index":
@@ -5861,13 +5949,13 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "markdown-to-pdf", "vs", "vs/macmd-viewer", "best-markdown-viewer-mac", "cli", "cli/agents", "cli/skill",
+PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "copy-for-ai", "markdown-to-pdf", "vs", "vs/macmd-viewer", "best-markdown-viewer-mac", "cli", "cli/agents", "cli/skill",
               "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/agents", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog", "roadmap",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
 SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
-                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "mermaid-preview-mac": "mermaid-preview-mac", "quicklook": "quicklook", "cli/skill": "skill",
+                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "mermaid-preview-mac": "mermaid-preview-mac", "quicklook": "quicklook", "copy-for-ai": "copy-for-ai", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
                   "vs": "vs", "vs/macmd-viewer": "vs-macmd-viewer", "best-markdown-viewer-mac": "best-markdown-viewer-mac",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
@@ -5903,7 +5991,7 @@ def _base_pages() -> dict:
 def all_pages() -> dict:
     merged = _base_pages()
     merged.update(EXTRA_PAGES)
-    merged.update({(locale, "roadmap"): roadmap272.page(locale, changelog_date(locale, roadmap272.LAST_UPDATED))
+    merged.update({(locale, "roadmap"): roadmap272.page(locale, copy363_data.DATA[locale]["roadmap_updated"])
                    for locale in LOCALES})   # /roadmap/ (#272), in every locale the site serves
     for (locale, slug), page in merged.items():
         body = page["body"]
@@ -5930,7 +6018,8 @@ def all_pages() -> dict:
             body = "".join(pieces[:-2]) + brand_film_themes.MARK + "\n" + "".join(pieces[-2:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return apply_app_changelog(apply_cli254(apply_best228(apply_promo130(apply_seo_copy(merged)))))
+    return apply_copy_for_ai(apply_copy363(apply_copy369_pdf_pages(apply_app_changelog(apply_cli254(apply_best228(
+        apply_promo130(apply_seo_copy(merged))))))))
 
 
 # --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
@@ -6010,6 +6099,71 @@ def quicklook_page(locale: str, copy: dict) -> dict:
     return {"title": copy["ql_title"], "description": copy["ql_desc"], "body": body}
 
 
+def copy_for_ai_feature(locale: str) -> str:
+    """The page's own name for the feature (the word in the table's head), as plain text."""
+    return _plain(copy364_data.DATA[locale]["table"][0][1])
+
+
+def copy_for_ai_page(locale: str, copy: dict) -> dict:
+    """/copy-for-ai/ (#364), to Daphne's structure. The film (#366) goes under the sample, by its marker,
+    which render() and page_markdown() replace. The word in the table's head is the app's own name
+    for the feature, and it's the other pages' link text."""
+    links = "\n".join(f'  <li><a href="{page_path(locale, slug)}">{text}</a></li>'
+                      for slug, text in zip(("reviewing-agent-plans", "features"), copy["next"]))
+    steps = "\n".join(f"  <li>{step}</li>" for step in copy["steps"])
+    head, *rows = copy["table"]
+    cols = "".join(f'<th scope="col">{cell}</th>' for cell in head[1:])
+    trs = "\n".join(f'  <tr><th scope="row">{row[0]}</th>' + "".join(f"<td>{cell}</td>" for cell in row[1:]) + "</tr>" for row in rows)
+    sample = html_escape("\n".join(copy["sample"]), quote=False)
+    body = f"""<section class="intro">
+  <h1>{copy["h1"]}</h1>
+  <p>{copy["lede"]}</p>
+</section>
+<p>{copy["sample_label"]}</p>
+<pre class="copy-sample"><code>{sample}</code></pre>
+{brand_film_copy_for_ai.MARK}
+<h2>{copy["how_h"]}</h2>
+<ol>
+{steps}
+</ol>
+<h2>{copy["compare_h"]}</h2>
+<div class="table-scroll"><table class="compare">
+<thead><tr><td></td>{cols}</tr></thead>
+<tbody>
+{trs}
+</tbody>
+</table></div>
+<h2>{copy["path_h"]}</h2>
+<p>{copy["path"]}</p>
+<h2>{copy["next_h"]}</h2>
+<ul>
+{links}
+</ul>
+"""
+    return {"title": f'{copy["title"]} · MarsDawn', "description": copy["description"], "body": body}
+
+
+def apply_copy_for_ai(merged: dict) -> dict:
+    """The page, and a link to it from the sentence that already names the feature on three pages (#364)."""
+    out = dict(merged)
+    for locale, copy in copy364_data.DATA.items():
+        if locale not in LOCALES or (locale, "index") not in out:
+            continue
+        name = copy["table"][0][1]
+        UI[locale].setdefault("copy-for-ai", name)
+        out[(locale, "copy-for-ai")] = copy_for_ai_page(locale, copy)
+        for slug in ("reading-agent-output", "features", "reviewing-agent-plans"):
+            page = out[(locale, slug)]
+            # Any locale's name, as /quicklook/'s link does: a copy module may still hold another locale's words.
+            names = "|".join(re.escape(c["table"][0][1]) for c in copy364_data.DATA.values())
+            body, n = re.subn(rf'(plan\.md:\d+</code>.*?)({names})',
+                              lambda m: f'{m.group(1)}<a href="{page_path(locale, "copy-for-ai")}">{m.group(2)}</a>',
+                              page["body"], count=1, flags=re.S)
+            assert n == 1, f"{locale}/{slug}: no sentence naming the feature"
+            out[(locale, slug)] = {**page, "body": body}
+    return out
+
+
 def apply_seo_copy(merged: dict) -> dict:
     """merged with the #189 copy applied (see the comment above). Returns a new dict; the pages it
     changes are copies, so the tables the locale modules were checked against stay as they were."""
@@ -6028,7 +6182,11 @@ def apply_seo_copy(merged: dict) -> dict:
         iphone = [i for i, item in enumerate(home_items) if len(item) == 2 and "iPhone" in item[0] and "iPad" in item[0]]
         assert len(iphone) == 1 and iphone[0] == 2, f"{locale}: the home FAQ's third question is not the iPhone and iPad one"
         faq275 = promo_data.DATA["faq275"][locale]
-        home_items[2] = [home_items[2][0], faq275["q3"], rich_pages.md_inline(roadmap272.FAQ_MORE[locale])]
+        # #369 (plan A): the answer is copy369_data's "faq"; faq275["q3"] (scripts/promo130/data.py) and the
+        # older answer in scripts/seo_copy.py are superseded for this question. Plain text, made HTML-ready here.
+        answer = copy369_data.DATA[locale]["faq"]
+        assert "<" not in answer and ">" not in answer, f"{locale}: #369 faq has markup"
+        home_items[2] = [home_items[2][0], xml_escape(answer), rich_pages.md_inline(roadmap272.FAQ_MORE[locale])]
         home_items += [faq275["q9"], faq275["q10"]]
         assert len(home_items) == 10, f"{locale}: the home FAQ has {len(home_items)} questions, want 10 (#275)"
         out[(locale, "index")] = {**home, "body": home["body"].rstrip() + "\n" + faq_html(copy["faq_h"], home_items) + "\n"}
@@ -6309,7 +6467,7 @@ def cli254_agents(body: str, d: dict, page: str) -> str:
 
 def cli254_changelog(body: str, d: dict, page: str) -> str:
     entries = d["changelog"]
-    newer = "".join(_cli254_entry(entries[v]) for v in ("0.7.2", "0.7.1", "0.7.0", "0.6.4") if v in entries)
+    newer = "".join(_cli254_entry(entries[v]) for v in ("0.7.7", "0.7.6", "0.7.5", "0.7.4", "0.7.3", "0.7.2", "0.7.1", "0.7.0", "0.6.4") if v in entries)
     for heading, html in (("<h2>marsdawn 0.6.3</h2>", newer), ("<h2>marsdawn 0.5.4</h2>", _cli254_entry(entries["0.6.1"]))):
         assert body.count(heading) == 1, f"{page}: {heading} found {body.count(heading)} times"
         body = body.replace(heading, html + heading)
@@ -6327,14 +6485,173 @@ def apply_cli254(merged: dict) -> dict:
     return out
 
 
+def _copy369_li(text: str, where: str) -> str:
+    """A copy369_data bullet ('- ...', one line) as an <li> of the pages' two-space list style."""
+    assert text.startswith("- ") and "\n" not in text, f"#369 {where}: not a one-line '- ' bullet"
+    return f"  <li>{rich_pages.md_inline(text[2:])}</li>\n"
+
+
+def apply_copy369_pdf_pages(merged: dict) -> dict:
+    """#369: copy369_data's pdf (last item of /pdf/'s one list), layout (after the --paper item of
+    /markdown-to-pdf/) and next (first item of /markdown-to-pdf/'s last list, under its last heading)."""
+    out = dict(merged)
+    for locale in LOCALES:
+        d = copy369_data.DATA[locale]
+        page = out.get((locale, "pdf"))
+        assert page is not None, f"#369 {locale}: no /pdf/ page"
+        body = page["body"]
+        assert body.count("<ul") == 1 and body.count("</ul>") == 1, f"#369 {locale}/pdf: {body.count('<ul')} lists, want 1"
+        end = body.index("</ul>")
+        assert body[:end].endswith("</li>\n"), f"#369 {locale}/pdf: the list does not end with '</li>\\n'"
+        out[(locale, "pdf")] = {**page, "body": body[:end] + _copy369_li(d["pdf"], f"{locale}/pdf") + body[end:]}
+
+        page = out.get((locale, "markdown-to-pdf"))
+        assert page is not None, f"#369 {locale}: no /markdown-to-pdf/ page"
+        body, where = page["body"], f"{locale}/markdown-to-pdf"
+        paper = list(re.finditer(r"(?m)^  <li><code>--paper</code>[^\n]*</li>\n", body))
+        assert len(paper) == 1, f"#369 {where}: {len(paper)} '--paper' items, want 1"
+        assert body.count("<li><code>--paper</code>") == 1, f"#369 {where}: '--paper' item is not a one-line <li>"
+        body = body[:paper[0].end()] + _copy369_li(d["layout"], where) + body[paper[0].end():]
+        last_h2 = body.rindex("<h2")
+        h2_end = body.index("</h2>", last_h2) + len("</h2>")
+        assert body[h2_end:].startswith("\n<ul>\n"), f"#369 {where}: the last heading is not followed by a list"
+        assert body.rfind("<ul") == h2_end + 1, f"#369 {where}: the list under the last heading is not the last list"
+        at = h2_end + len("\n<ul>\n")
+        body = body[:at] + _copy369_li(d["next"], where) + body[at:]
+        out[(locale, "markdown-to-pdf")] = {**page, "body": body}
+    return out
+
+
+# --- Old iOS claims (website #363) -----------------------------------------------------------------
+# copy363_data (scripts/copy363/data.py) corrects what the pages said about iPhone and iPad (no JSON or
+# YAML, no PDF export) in five places per locale. Each place is found by structure and must match exactly
+# once, and a sentence is replaced, not the paragraph, where the rest of the paragraph stays.
+
+# A sentence ends after . ! ? that a space follows (en, de, fr, es, ko; fr puts U+00A0, not a space, before
+# ; : ? !) or after a CJK full stop, which no space follows. The pieces join back to the text: every
+# sentence but the first keeps the space before it.
+_COPY363_SENTENCE_END = re.compile(r"(?<=[.!?])(?= )|(?<=[。！？])")
+
+
+def _copy363_sentences(text: str) -> list:
+    pieces = _COPY363_SENTENCE_END.split(text)
+    if pieces and pieces[-1] == "":
+        pieces.pop()
+    assert "".join(pieces) == text
+    return pieces
+
+
+def _copy363_put(pieces: list, i: int, sentence: str) -> str:
+    """The pieces joined, with piece i replaced by sentence (keeping the space in front of it)."""
+    lead = pieces[i][:len(pieces[i]) - len(pieces[i].lstrip())]
+    return "".join(pieces[:i] + [lead + sentence] + pieces[i + 1:])
+
+
+def _copy363_iphone(pieces: list, where: str) -> int:
+    """The index of the one sentence that names iPhone."""
+    hits = [i for i, s in enumerate(pieces) if "iPhone" in s]
+    assert len(hits) == 1, f"#363 {where}: {len(hits)} sentences name iPhone, want 1: {pieces!r}"
+    return hits[0]
+
+
+def _copy363_one(pattern: str, body: str, where: str) -> re.Match:
+    found = list(re.finditer(pattern, body))
+    assert len(found) == 1, f"#363 {where}: {len(found)} matches, want 1"
+    return found[0]
+
+
+def apply_copy363(merged: dict) -> dict:
+    """#363: in every locale, the last sentence of /features/'s "Other files" paragraph, the iPhone and iPad
+    item and the "Other files" item of /limits/, the iPhone sentence of /vs/'s "What MarsDawn lacks" and
+    the second sentence of /pay-once/'s iPhone item. Applied last, so the Markdown twins, llms-full.txt and
+    product-facts.md, which are read from the pages, say the same."""
+    out = dict(merged)
+    for locale in LOCALES:
+        d = copy363_data.DATA[locale]
+        for key, value in d.items():
+            assert not set(value) & set("<>&"), f"#363 {locale} {key}: has < > or &"
+
+        # 1. /features/: the paragraph under an h3 that lists .log; its last sentence.
+        where = f"{locale}/features"
+        page = out[(locale, "features")]
+        m = _copy363_one(r"(?m)^<h3>[^\n]*</h3>\n<p>([^\n]*<code>\.log</code>[^\n]*)</p>\n", page["body"], where)
+        pieces = _copy363_sentences(m.group(1))
+        assert len(pieces) >= 2 and _copy363_iphone(pieces, where) == len(pieces) - 1, \
+            f"#363 {where}: iPhone is not in the last sentence"
+        para = _copy363_put(pieces, len(pieces) - 1, d["features_other_last"])
+        body = page["body"][:m.start(1)] + para + page["body"][m.end(1):]
+        out[(locale, "features")] = {**page, "body": body}
+
+        # 2, 3. /limits/: the list item whose bold label names iPhone and the one item that names JSON, each
+        # replaced whole. Both are found on the page as it was, before either is replaced, and not by the
+        # label's words, which the locale self-test's fixture (de pages that hold ja copy) does not have.
+        where = f"{locale}/limits"
+        page = out[(locale, "limits")]
+        body = page["body"]
+        found = {
+            "limits_ios": _copy363_one(r"(?m)^  <li><strong>[^<\n]*iPhone[^<\n]*</strong>[^\n]*</li>\n", body,
+                                       f"{where} limits_ios"),
+        }
+        other = [m for m in re.finditer(r"(?m)^  <li>[^\n]*JSON[^\n]*</li>\n", body)
+                 if m.start() != found["limits_ios"].start()]
+        assert len(other) == 1, f"#363 {where} limits_other: {len(other)} matches, want 1"
+        found["limits_other"] = other[0]
+        assert found["limits_ios"].start() != found["limits_other"].start(), f"#363 {where}: one item for both"
+        for key, m in sorted(found.items(), key=lambda kv: kv[1].start(), reverse=True):
+            text = d[key]
+            assert text.startswith("- **") and "\n" not in text, f"#363 {where} {key}: not a one-line bullet"
+            body = body[:m.start()] + f"  <li>{rich_pages.md_inline(text[2:])}</li>\n" + body[m.end():]
+        out[(locale, "limits")] = {**page, "body": body}
+
+        # 4. /vs/: "What MarsDawn lacks" (promo_data's vs lacks, as one <p>); its iPhone sentence.
+        where = f"{locale}/vs"
+        page = out[(locale, "vs")]
+        lacks = promo_data.DATA["vs"][locale]["lacks"]
+        m = _copy363_one(re.escape(f"<p>{lacks}</p>"), page["body"], where)
+        pieces = _copy363_sentences(lacks)
+        para = _copy363_put(pieces, _copy363_iphone(pieces, where), d["vs_lacks_ios"])
+        body = page["body"][:m.start()] + f"<p>{para}</p>" + page["body"][m.end():]
+        out[(locale, "vs")] = {**page, "body": body}
+
+        # 5. /pay-once/: the one list item that names iPhone, two sentences; its second.
+        where = f"{locale}/pay-once"
+        page = out[(locale, "pay-once")]
+        m = _copy363_one(r"(?m)^  <li>([^\n]*iPhone[^\n]*)</li>\n", page["body"], where)
+        pieces = _copy363_sentences(m.group(1))
+        assert len(pieces) == 2 and _copy363_iphone(pieces[1:], where) == 0, \
+            f"#363 {where}: the iPhone item is not two sentences with iPhone in the second: {pieces!r}"
+        item = _copy363_put(pieces, 1, d["payonce_ios"])
+        body = page["body"][:m.start(1)] + item + page["body"][m.end(1):]
+        out[(locale, "pay-once")] = {**page, "body": body}
+    return out
+
+
 # --- /changelog/'s app section (website #273) ---------------------------------------------------------
-# The app's versions come first, then the CLI's. Each app version's What's New is the text it has on the
-# Mac App Store, vendored by scripts/tmde130/ingest.py from the app repo's approved release notes into
-# vendor/app-release-notes/whats-new.json; the page copy around it is scripts/tmde130/data.py's. A locale
-# gets a version only if the App Store has that version in its language, and a locale that misses one gets
-# the "earlier versions are in English only" line. The CLI entries keep their text and their anchors
-# (#marsdawn-0-6-3 and so on), now as h3 under the CLI heading. scripts/check_app_changelog.py checks it.
-APP_NOTES = json.loads((ROOT / "vendor" / "app-release-notes" / "whats-new.json").read_text(encoding="utf-8"))
+# The Mac app's versions come first, then the iPhone and iPad app's (#368), then the CLI's. Each app
+# version's What's New is the text it has on the App Store, vendored by scripts/tmde130/ingest.py from the
+# app repo's approved release notes into vendor/app-release-notes/whats-new.json (the Mac's under "versions",
+# the iOS's under "ios"); the page copy around it is scripts/tmde130/data.py's. A locale gets a Mac version
+# only if the App Store has that version in its language, and a locale that misses one gets the "earlier
+# versions are in English only" line (every locale has every iOS version, and the build stops if not). The CLI
+# entries keep their text and their anchors (#marsdawn-0-6-3 and so on), now as h3 under the CLI heading.
+# scripts/check_app_changelog.py checks it. APP_NOTES["versions"] stays the Mac's alone: APP_VERSION and
+# scripts/check_offers.py read it as the Mac app's version.
+#
+# A version marked "pending" in whats-new.json is not on the App Store yet (its date is only a due date).
+# published_notes() is the one place that drops it: APP_NOTES is what the build reads (the Mac and iOS
+# sections, the Markdown twins, llms.txt, llms-full.txt, the home page's softwareVersion), so a pending
+# version reaches no page. The data stays in the vendored file; the day it ships, `pending` is removed
+# there, its real date is set and the pages are rebuilt (the steps are "When a release lands" in
+# scripts/tmde130/ingest.py).
+def published_notes(raw: dict) -> dict:
+    """raw (the vendored whats-new.json) without the versions that are still pending, Mac and iOS."""
+    return {**raw,
+            "versions": [v for v in raw["versions"] if not v.get("pending")],
+            "ios": {**raw["ios"], "versions": [v for v in raw["ios"]["versions"] if not v.get("pending")]}}
+
+
+APP_NOTES = published_notes(
+    json.loads((ROOT / "vendor" / "app-release-notes" / "whats-new.json").read_text(encoding="utf-8")))
 CHANGELOG_MONTHS = {
     "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
            "November", "December"],
@@ -6366,26 +6683,49 @@ def changelog_date(locale: str, iso: str) -> str:
     return f"{d} {month} {y}"
 
 
-def app_versions_html(locale: str) -> str:
+def _version_blocks(locale: str, entries: list, prefix: str) -> tuple:
+    """(one h3 block per version the locale has, whether it misses one) for a platform's versions, newest
+    first. A block is the heading (anchor <prefix>-<version>), the date and the bullets."""
     copy = changelog_data.DATA[locale]
     to_store = {site: store for store, site in APP_NOTES["locale_map"].items()}
     parts, omitted = [], False
-    for entry in APP_NOTES["versions"]:
+    for entry in entries:
         notes = entry["whatsNew"].get(to_store[locale])
         if notes is None:
             omitted = True
             continue
         v = entry["version"]
-        head = (f'<h3 id="app-{v.replace(".", "-")}">MarsDawn {v}</h3>\n'
+        head = (f'<h3 id="{prefix}-{v.replace(".", "-")}">MarsDawn {v}</h3>\n'
                 f'<p>{changelog_date(locale, entry["released"])}</p>\n')
         if notes:
             bullets = "\n".join(f"  <li>{html_escape(line[2:], quote=False)}</li>" for line in notes.split("\n"))
             parts.append(head + f"<ul>\n{bullets}\n</ul>")
         else:
             parts.append(head + f'<p>{copy["first_release"]}</p>')
+    return parts, omitted
+
+
+def app_versions_html(locale: str) -> str:
+    """The Mac section: its heading (with a fixed id, see apply_app_changelog), every Mac version, and the
+    "earlier versions are in English only" line if the locale misses one."""
+    copy = changelog_data.DATA[locale]
+    parts, omitted = _version_blocks(locale, APP_NOTES["versions"], "app")
     if omitted:
         parts.append(f'<p>{copy["earlier"]}</p>')
-    return f'<h2>{copy["app_h"]}</h2>\n\n' + "\n\n".join(parts)
+    return f'<h2 id="marsdawn-app">{copy["app_h"]}</h2>\n\n' + "\n\n".join(parts)
+
+
+def ios_versions_html(locale: str) -> str:
+    """The iPhone and iPad section: its heading, every published iOS version (anchor ios-<version>, because
+    iOS 1.0.2 and Mac 1.0.2 share a name) and the line that says which versions are not listed, as the
+    section's last paragraph. A locale without one of these versions stops the build rather than losing it
+    quietly. While every iOS version is still pending there is nothing to list, so there is no section."""
+    copy = changelog_data.DATA[locale]
+    if not APP_NOTES["ios"]["versions"]:
+        return ""
+    parts, omitted = _version_blocks(locale, APP_NOTES["ios"]["versions"], "ios")
+    assert parts and not omitted, f"{locale}/changelog: an iOS version has no What's New in this language"
+    return f'<h2 id="marsdawn-ios">{copy["ios_h"]}</h2>\n\n' + "\n\n".join(parts + [f'<p>{copy["ios_line"]}</p>'])
 
 
 def apply_app_changelog(merged: dict) -> dict:
@@ -6404,9 +6744,15 @@ def apply_app_changelog(merged: dict) -> dict:
         assert versions and len(versions) == len(re.findall(r"<h2", cli)), f"{locale}/changelog: a heading is not a CLI version"
         cli = re.sub(r"<h2>(marsdawn ([0-9.]+))</h2>",
                      lambda m: f'<h3 id="marsdawn-{m.group(2).replace(".", "-")}">{m.group(1)}</h3>', cli)
+        # The three h2 (Mac, iOS, CLI) are written with their ids in every locale. add_h2_ids names an id from
+        # the English heading and touches only a bare <h2>, which this page no longer has (asserted below), so
+        # a heading can be renamed without moving its anchor: #marsdawn-app and #marsdawn-command-line-tool
+        # are the old ones, #marsdawn-ios is new.
         body = (head + sep + f'\n\n<p>{rich_pages.md_inline(roadmap272.CHANGELOG_BACKLINK[locale])}</p>\n\n'   # #272 (e)
-                + app_versions_html(locale) + "\n\n"
-                + f'<h2>{copy["cli_h"]}</h2>\n<p>{copy["cli_line"]}</p>\n\n' + cli.lstrip("\n"))
+                + app_versions_html(locale) + "\n\n" + "".join(s + "\n\n" for s in [ios_versions_html(locale)] if s)
+                + f'<h2 id="marsdawn-command-line-tool">{copy["cli_h"]}</h2>\n<p>{copy["cli_line"]}</p>\n\n'
+                + cli.lstrip("\n"))
+        assert "<h2>" not in body, f"{locale}/changelog: a bare <h2> is left; add_h2_ids would renumber the anchors"
         out[(locale, "changelog")] = {**page, "description": copy["description"], "body": body}
     return out
 
@@ -6604,7 +6950,8 @@ class _TreeBuilder(HTMLParser):
 
 
 def _collapse(text: str) -> str:
-    return re.sub(r"\s+", " ", text)
+    # #369: U+00A0 is not collapsed (Python's \s matches it): the fr and de copy keeps its no-break spaces.
+    return re.sub(r"[^\S\u00a0]+", " ", text)
 
 
 def _render_inline(children) -> str:
@@ -6785,12 +7132,12 @@ def add_h2_ids(locale: str, slug: str, page: dict, html: str) -> str:
 
 
 # Pages whose comparison table can be wider than its box on a phone in some language (measured at 320, 375,
-# 639, 720 and 1280px, all eight languages, #262 CS-2): there the box is a focusable, labelled region, so a
+# 639, 720 and 1280px, all eight languages, #262 CS-2; /copy-for-ai/ in de at 320px, #364): there the box is a focusable, labelled region, so a
 # keyboard reader can scroll it. The label is the section heading just above it, by the id the build gave
 # that heading (add_h2_ids); a box whose heading has no id is left alone (the home page's, which has none).
 # Every other table-scroll box never overflows and gets nothing. The /best-markdown-viewer-mac/ box is
 # labelled where it is made.
-SCROLL_LABEL_SLUGS = {"agent-design-patterns", "cli/mcp", "vs/markdown-preview-tools"}
+SCROLL_LABEL_SLUGS = {"agent-design-patterns", "cli/mcp", "vs/markdown-preview-tools", "copy-for-ai"}
 
 
 def label_scroll_boxes(slug: str, html: str) -> str:
@@ -6881,7 +7228,8 @@ def soft_hyphenate(locale: str, html: str) -> str:
 
 # --- Structured data (schema.org JSON-LD) ------------------------------------------------------
 # What the home page says about the app. APP_VERSION is the Mac app's current release: the newest version
-# in vendor/app-release-notes, so it rises when that release's notes are vendored for /changelog/ (#289).
+# in vendor/app-release-notes that is on the App Store (APP_NOTES has no pending one), so it rises when that
+# release ships and its notes lose `pending` (#289).
 APP_VERSION = max((v["version"] for v in APP_NOTES["versions"]), key=lambda v: tuple(map(int, v.split("."))))
 # The App Store's sellerName and artistName for MarsDawn (owner decision, 2026-10-09).
 PUBLISHER = {"@type": "Person", "name": "Nan-Kuang Lee"}
@@ -7013,6 +7361,8 @@ def structured_data(locale: str, slug: str, page: dict, canonical_url: str) -> l
         data.append(faq_data_plain(page))
     if brand_film_themes.MARK in page["body"]:
         data.append(brand_film_themes.video_object(locale, BASE_URL))
+    if brand_film_copy_for_ai.MARK in page["body"]:
+        data.append(brand_film_copy_for_ai.video_object(locale, BASE_URL, _plain(copy364_data.DATA[locale]["lede"])))
     if slug in ARTICLE_DATES:
         published, modified = ARTICLE_DATES[slug]
         data.append({
@@ -7095,6 +7445,10 @@ def render(locale: str, slug: str, page: dict) -> str:
     elif slug == "themes/gallery":
         extra_css = '<link rel="stylesheet" href="/assets/theme-gallery.css">\n'
         extra_js = '<script type="module" src="/assets/theme-gallery.js"></script>\n'
+    # The 18-second film on /copy-for-ai/ (#366): an external deferred script (script-src 'self'). It starts
+    # the film unless the visitor asked for reduced motion, and picks the 720p file on a phone-width window.
+    if brand_film_copy_for_ai.MARK in page["body"]:
+        extra_js += f'<script src="{brand_film_copy_for_ai.SCRIPT}" defer></script>\n'
     if slug == "index":
         hero_html = (
             '<section class="hero-scene">\n'
@@ -7143,10 +7497,21 @@ def render(locale: str, slug: str, page: dict) -> str:
         main_html = main_html[:after] + "\n<p>" + store_badge_html(locale, PRICING_CAMPAIGN) + "</p>" + main_html[after:]
     main_html = main_html.replace(brand_film_mac.MARK, brand_film_mac.section_html(locale))
     main_html = main_html.replace(brand_film_themes.MARK, brand_film_themes.section_html(locale))
+    main_html = main_html.replace(brand_film_copy_for_ai.MARK, brand_film_copy_for_ai.section_html(locale, copy_for_ai_feature(locale)))
     if slug in TOC_PAGES:
         main_html = add_toc(locale, slug, main_html)
     elif slug != "index":
         main_html = add_h2_ids(locale, slug, page, main_html)
+    # HTML-only component: heading processing has finished; Markdown twins use the copy above.
+    if slug == "index":
+        anchor = '<section class="faq">'
+        assert main_html.count(anchor) == 1, f"{locale}: home FAQ insertion point changed"
+        main_html = main_html.replace(anchor, price_card.html(locale, campaign_url("web-home")) + "\n" + anchor, 1)
+    elif slug == "pay-once":
+        anchor = intro_html.strip()
+        assert main_html.startswith(anchor + "\n"), f"{locale}: pay-once intro insertion point changed"
+        assert anchor.startswith('<section') and '</section>' in anchor, locale
+        main_html = anchor + "\n" + price_card.html(locale, campaign_url("web-pay-once")) + main_html[len(anchor):]
     main_html = label_scroll_boxes(slug, main_html)
     main_html = label_code_boxes(main_html)
     main_html = soft_hyphenate(locale, main_html)

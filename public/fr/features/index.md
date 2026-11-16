@@ -1,6 +1,6 @@
 # Tout ce que fait MarsDawn, sur une seule page.
 
-MarsDawn est un éditeur Markdown pour Mac. Vous écrivez d’un côté et vous lisez la page mise en forme de l’autre, avec les diagrammes, les formules et le code dessinés. Il n’a pas de modèle d’IA à lui : il est conçu pour lire ce qu’un agent a écrit, et pour écrire vos propres textes. Et quand le travail passe sur une table, en réunion ou dans un classeur, il imprime et exporte des pages propres.
+MarsDawn est un éditeur Markdown pour Mac. Vous écrivez d’un côté et vous lisez la page mise en forme de l’autre, avec les diagrammes, les formules et le code dessinés. Il n’a pas de modèle d’IA à lui : il est conçu pour lire ce qu’un agent a écrit, et pour écrire vos propres textes. Et quand le travail passe sur une table, en réunion ou dans un classeur, il imprime et exporte des pages propres.
 
 Chaque section ci-dessous dit ce que fait l’app et renvoie vers la page qui va plus loin.
 
@@ -23,45 +23,49 @@ Ouvrez un fichier Markdown et lisez la page mise en forme à côté de sa source
 
 ### Plan et fichiers dans la barre latérale
 
-L’onglet Plan de la barre latérale liste les titres d’un document ; cliquez sur l’un d’eux pour y aller. Ouvrez un dossier et l’onglet Fichiers liste son contenu ; les nouveaux fichiers apparaissent d’eux-mêmes pendant qu’un agent y écrit. Si le dossier est un dépôt git, l’en-tête indique la branche ou le worktree.
+L’onglet Plan de la barre latérale liste les titres d’un document ; cliquez sur l’un d’eux pour y aller. Ouvrez un dossier et l’onglet Fichiers liste son contenu ; les nouveaux fichiers apparaissent d’eux-mêmes pendant qu’un agent y écrit. Si le dossier est un dépôt git, l’en-tête indique la branche ou le worktree.
 
 [Lire ce que votre agent vous rend](/fr/reading-agent-output/)
 
+### Replier un long document
+
+Dans l’aperçu, Présentation ▸ Tout replier jusqu’au titre 2 replie un long plan ou une spécification jusqu’aux titres de niveau 2, et Présentation ▸ Tout déplier le rouvre. Format ▸ Bloc repliable insère un bloc qui se replie.
+
 ### Montrer la ligne exacte
 
-Édition ▸ Copier la référence copie votre position sous la forme d’un chemin et d’une ligne, comme `docs/plan.md:42`. Copier pour l’IA ajoute en dessous le texte sélectionné. Collez l’un ou l’autre dans la conversation de l’agent.
+Édition ▸ Copier la référence copie votre position sous la forme d’un chemin et d’une ligne, comme `docs/plan.md:42`. [Copier pour l’IA](/fr/copy-for-ai/) ajoute en dessous le texte sélectionné. Collez l’un ou l’autre dans la conversation de l’agent.
 
 [Lire ce que votre agent vous rend](/fr/reading-agent-output/)
 
 ### Suivre les liens entre fichiers
 
-Cliquez dans l’aperçu sur un lien vers un autre fichier Markdown : MarsDawn l’ouvre, ou le met au premier plan s’il est déjà ouvert, et défile jusqu’au titre.
+Cliquez dans l’aperçu sur un lien vers un autre fichier Markdown : MarsDawn l’ouvre, ou le met au premier plan s’il est déjà ouvert, et défile jusqu’au titre.
 
 ## Sur papier, entre les personnes
 
-Tout le travail ne se fait pas sur un écran. Les pages que MarsDawn imprime et exporte sont celles que vous lisez à l’écran ; elles servent donc là où les gens se réunissent, lisent et conservent des traces.
+Tout le travail ne se fait pas sur un écran. Les pages que MarsDawn imprime et exporte sont celles que vous lisez à l’écran ; elles servent donc là où les gens se réunissent, lisent et conservent des traces.
 
 ### En réunion
 
-Imprimez les pages, ou envoyez à tout le monde le même PDF : toute la table travaille alors sur le même document, et non sur un seul écran partagé. Avec le même fichier, les sauts de page sont les mêmes, si bien que « le tableau de la page 3 » désigne une seule chose. Ensuite, chacun note les décisions, sur l’imprimé ou dans des notes. Le modèle de notes de réunion commence par les décisions et donne un responsable à chaque action.
+Imprimez les pages, ou envoyez à tout le monde le même PDF : toute la table travaille alors sur le même document, et non sur un seul écran partagé. Avec le même fichier, les sauts de page sont les mêmes, si bien que « le tableau de la page 3 » désigne une seule chose. Ensuite, chacun note les décisions, sur l’imprimé ou dans des notes. Le modèle de notes de réunion commence par les décisions et donne un responsable à chaque action.
 
 [Export PDF](/fr/pdf/) · [Modèle de compte rendu](/fr/templates/meeting-notes/)
 
 ### Lire avec un stylo
 
-Certaines personnes retiennent mieux avec un stylo : souligner, écrire dans la marge, pour que cela reste. Imprimez le document et faites-le sur le papier. MarsDawn n’a pas d’outil d’annotation à lui ; si vous préférez annoter le PDF, utilisez l’app PDF que vous avez déjà.
+Certaines personnes retiennent mieux avec un stylo : souligner, écrire dans la marge, pour que cela reste. Imprimez le document et faites-le sur le papier. MarsDawn n’a pas d’outil d’annotation à lui ; si vous préférez annoter le PDF, utilisez l’app PDF que vous avez déjà.
 
 [Export PDF](/fr/pdf/)
 
 ### Dossiers papier
 
-Dans certains métiers, on classe encore du papier, la comptabilité par exemple. MarsDawn ne revendique ni archivage ni conformité. Ce qu’il fait, c’est imprimer et exporter des pages propres et paginées : diagrammes dessinés, blocs de code courts gardés d’un seul tenant, couleurs claires du thème. Servez-vous-en partout où le papier reste le dossier de référence.
+Dans certains métiers, on classe encore du papier, la comptabilité par exemple. MarsDawn ne revendique ni archivage ni conformité. Ce qu’il fait, c’est imprimer et exporter des pages propres et paginées : diagrammes dessinés, blocs de code courts gardés d’un seul tenant, couleurs claires du thème. Servez-vous-en partout où le papier reste le dossier de référence.
 
 [Export PDF](/fr/pdf/)
 
 ### Transmettre à quelqu’un qui n’utilise pas Markdown
 
-Un PDF s’ouvre n’importe où et ne demande aucune connaissance de Markdown ; c’est donc aussi celui à envoyer à un responsable ou à un client.
+Un PDF s’ouvre n’importe où et ne demande aucune connaissance de Markdown ; c’est donc aussi celui à envoyer à un responsable ou à un client.
 
 [Partager les PDF exportés](/fr/sharing-exported-pdfs/)
 
@@ -75,7 +79,7 @@ Le gras, l’italique, le barré, le code en ligne, les liens, les citations et 
 
 ### Zoom, numéros de ligne et barre d’état
 
-Zoomez ensemble sur la source et l’aperçu, de 50 % à 300 %. Une marge de numéros de ligne longe la source, et la barre d’état indique votre ligne et votre colonne, ainsi que le nombre de mots et de caractères et le temps de lecture du document ou de votre sélection.
+Zoomez ensemble sur la source et l’aperçu, de 50 % à 300 %. Une marge de numéros de ligne longe la source, et la barre d’état indique votre ligne et votre colonne, ainsi que le nombre de mots et de caractères et le temps de lecture du document ou de votre sélection.
 
 ### Images
 
@@ -121,13 +125,13 @@ Aube, Classique, Moderne et Vif existent chacun en version claire et sombre, et 
 
 ### Plus de thèmes
 
-Réglages ▸ Apparence ▸ Obtenir plus de thèmes… ouvre une galerie de thèmes d’aperçu supplémentaires. Installez-en un et il apparaît sous Présentation ▸ Thème de l’aperçu ; Supprimer le retire. La galerie ne se connecte à Internet que tant qu’elle est ouverte.
+Réglages ▸ Apparence ▸ Obtenir plus de thèmes… ouvre une galerie de thèmes d’aperçu supplémentaires. Installez-en un et il apparaît sous Présentation ▸ Thème de l’aperçu ; Supprimer le retire. La galerie ne se connecte à Internet que tant qu’elle est ouverte.
 
 [Galerie de thèmes](/fr/themes/gallery/) · [Créer un thème](/fr/themes/new/)
 
 ### Exporter en PDF, ou imprimer
 
-Fichier ▸ Exporter au format PDF… enregistre un PDF paginé, et Fichier ▸ Imprimer… imprime les mêmes pages. Les diagrammes Mermaid sont dessinés, le code garde sa coloration, et les sauts de page évitent de séparer un titre de sa section ou de couper en deux un bloc de code court ou un diagramme. Le PDF utilise toujours les couleurs claires du thème, même si vous lisiez en mode sombre.
+Fichier ▸ Imprimer… et Fichier ▸ Exporter au format PDF… ouvrent « Imprimer et exporter », avec un aperçu des pages. Choisissez une disposition : Document ; Guide, avec une couverture, une table des matières et des signets PDF ; ou Polycopié, avec une colonne de notes. Puis imprimez ou enregistrez. Les diagrammes Mermaid sont dessinés, le code garde sa coloration, et les sauts de page évitent de séparer un titre de sa section ou de couper en deux un bloc de code court ou un diagramme. Le PDF utilise toujours les couleurs claires du thème.
 
 [Export PDF](/fr/pdf/)
 
@@ -142,19 +146,19 @@ Sur cette capture d’écran :
 
 Votre agent travaille sur le Mac. Ses plans et ses rapports peuvent vous suivre sur iPhone ou iPad.
 
-1. **Sur le Mac :** enregistrez les plans et les rapports de l’agent dans un dossier d’iCloud Drive.
-2. **Sur iPhone ou iPad :** dans MarsDawn, touchez « Ouvrir » et choisissez le même fichier. Les diagrammes Mermaid, les formules, le code et les tableaux s’affichent mis en forme, avec le plan et votre thème.
-3. **De retour sur le Mac :** continuez à modifier, ou exportez un PDF.
+1. **Sur le Mac :** enregistrez les plans et les rapports de l’agent dans un dossier d’iCloud Drive.
+2. **Sur iPhone ou iPad :** dans MarsDawn, touchez « Ouvrir » et choisissez le même fichier, ou ouvrez-le depuis une autre app. Les diagrammes Mermaid, les formules, le code et les tableaux s’affichent mis en forme, avec le plan et votre thème.
+3. **Pour le transmettre :** partagez-le, imprimez-le ou enregistrez-le en PDF.
 
 Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent MarsDawn sur Mac, iPhone et iPad.
 
-Sur iPhone et iPad, MarsDawn sert uniquement à lire : il ouvre les fichiers Markdown et texte brut, sans modification ni export PDF. Il lit les fichiers que vous gardez dans iCloud Drive ; MarsDawn n’a pas de cloud à lui.
+Sur iPhone et iPad, MarsDawn sert uniquement à lire : il ouvre les fichiers Markdown, texte, PDF, JSON et YAML, sans modification. Les liens d’un PDF enregistré depuis l’app ne fonctionnent pas. MarsDawn n’a pas de cloud à lui.
 
 ## Fichiers, onglets et Coup d’œil
 
 ### Fenêtres et onglets
 
-Chaque document s’ouvre dans sa propre fenêtre. Choisissez Fenêtre ▸ Fusionner toutes les fenêtres pour regrouper les fenêtres ouvertes en onglets d’une seule. L’enregistrement automatique se fait pendant la saisie.
+Par défaut, les documents s’ouvrent en onglets de la fenêtre au premier plan. Pour utiliser plutôt le réglage d’onglets de votre Mac, choisissez Suivre le réglage système dans Réglages ▸ Apparence. L’enregistrement automatique se fait pendant la saisie.
 
 [Une app Mac](/fr/native/)
 
@@ -166,7 +170,7 @@ Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace pour le l
 
 ### Autres fichiers
 
-MarsDawn ouvre aussi les fichiers texte brut (`.txt`, `.log`, code source) et les PDF. Le texte UTF-8 s’ouvre prêt à être modifié, en source uniquement. Les PDF s’ouvrent dans un lecteur avec vignettes de pages, zoom et recherche. Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre. iPhone et iPad n’ouvrent pas les fichiers JSON et YAML.
+MarsDawn ouvre aussi les fichiers texte brut (`.txt`, `.log`, code source) et les PDF. Le texte UTF-8 s’ouvre prêt à être modifié, en source uniquement. Les PDF s’ouvrent dans un lecteur avec vignettes de pages, zoom et recherche. Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre. Sur iPhone et iPad, JSON et YAML s’ouvrent en lecture seule, avec un aperçu en arbre.
 
 ### Vos fichiers restent les vôtres
 
@@ -178,7 +182,7 @@ Il n’y a ni compte, ni synchronisation, ni cloud. Les documents restent là o�
 
 ### Un outil en ligne de commande gratuit
 
-L’outil gratuit `marsdawn` s’installe séparément avec Homebrew. `marsdawn export` transforme un fichier Markdown en PDF, rendu comme l’aperçu de MarsDawn ; il n’a pas besoin de l’app. Choisissez un thème avec `--theme` et un format de papier, A4 ou Letter. `marsdawn open` ouvre des fichiers dans l’app pour que vous les relisiez, éventuellement à une ligne précise, et demande que l’app soit installée.
+L’outil gratuit `marsdawn` s’installe séparément avec Homebrew. `marsdawn export` transforme un fichier Markdown en PDF, rendu comme l’aperçu de MarsDawn ; il n’a pas besoin de l’app. Choisissez un thème avec `--theme` et un format de papier, A4 ou Letter. `marsdawn open` ouvre des fichiers dans l’app pour que vous les relisiez, éventuellement à une ligne précise, et demande que l’app soit installée.
 
 [Ligne de commande](/fr/cli/)
 
@@ -196,25 +200,25 @@ Un fichier de skill d’agent apprend à un agent de programmation à ouvrir dan
 
 ### Pas d’IA à l’intérieur
 
-MarsDawn n’a pas de modèle d’IA à lui. Il ne résume pas et ne note pas ce qu’un agent a écrit ; il garde lisible un long fichier qui change, pour que ce soit vous qui lisiez.
+MarsDawn n’a pas de modèle d’IA à lui. Il ne résume pas et ne note pas ce qu’un agent a écrit ; il garde lisible un long fichier qui change, pour que ce soit vous qui lisiez.
 
 [Ce que MarsDawn ne fait pas](/fr/limits/)
 
 ## Siri et Raccourcis
 
-Recherchez MarsDawn dans l’app Raccourcis pour trouver trois actions : Nouveau document Markdown (à partir d’un modèle), Ajouter une note à la boîte de réception et Ouvrir un document récent. Les notes vont dans `Inbox.md`, dans le dossier que vous choisissez dans MarsDawn ▸ Réglages… ▸ Dossier de notes.
+Recherchez MarsDawn dans l’app Raccourcis pour trouver trois actions : Nouveau document Markdown (à partir d’un modèle), Ajouter une note à la boîte de réception et Ouvrir un document récent. Les notes vont dans `Inbox.md`, dans le dossier que vous choisissez dans MarsDawn ▸ Réglages… ▸ Dossier de notes.
 
 [Une app Mac](/fr/native/)
 
 ## Voir le film
 
-[Film MarsDawn (en anglais), 54 secondes](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
+[Film MarsDawn (en anglais), 54 secondes](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
 
 ## Une fois la page imprimée
 
 Une réunion autour de pages imprimées, un stylo dans la marge, un dossier papier classé.
 
-[Film MarsDawn (en anglais), 88 secondes](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+[Film MarsDawn (en anglais), 88 secondes](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
 ## Essayez-le sur votre Mac
 
@@ -222,7 +226,7 @@ MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis débl
 
 [Télécharger et essayer](https://apps.apple.com/app/id6812925073)
 
-Comment fonctionne l’essai : [Essai gratuit, achat unique](/fr/pay-once/). Ce qui est volontairement absent : [Ce que MarsDawn ne fait pas](/fr/limits/).
+Comment fonctionne l’essai : [Essai gratuit, achat unique](/fr/pay-once/). Ce qui est volontairement absent : [Ce que MarsDawn ne fait pas](/fr/limits/).
 
 ## Plus
 
@@ -237,8 +241,9 @@ Comment fonctionne l’essai : [Essai gratuit, achat unique](/fr/pay-once/). Ce 
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.

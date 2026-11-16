@@ -2,30 +2,30 @@
 
 Un agent IA peut rédiger vite un plan, une spécification ou des notes. Ce qu’il produit doit pourtant être compris par la personne qui va agir en conséquence, et non cru parce que le texte est fluide.
 
-**MarsDawn est conçu pour cette lecture : la page rendue à côté de la source, avec les diagrammes Mermaid et les formules KaTeX dessinés au lieu de rester des marques, pour que la structure d’un document se lise d’un coup d’œil.**
+**MarsDawn est conçu pour cette lecture : la page rendue à côté de la source, avec les diagrammes Mermaid et les formules KaTeX dessinés au lieu de rester des marques, pour que la structure d’un document se lise d’un coup d’œil.**
 
 ## Fluide ne veut pas dire juste
 
-À propos du code écrit avec l’aide de l’IA et destiné à être retravaillé plutôt que jeté, Simon Willison l’a formulé ainsi : « la qualité et la compréhensibilité du code sous-jacent sont essentielles » ([Vibe coding](https://simonwillison.net/2025/Mar/6/vibe-coding/), 2025). C’est vrai aussi d’un document : le brouillon d’un agent qui se lit sans accroc peut se tromper de structure, de chiffres ou de logique, et une prose fluide n’indique pas quelles parties vérifier.
+À propos du code écrit avec l’aide de l’IA et destiné à être retravaillé plutôt que jeté, Simon Willison l’a formulé ainsi : « la qualité et la compréhensibilité du code sous-jacent sont essentielles » ([Vibe coding](https://simonwillison.net/2025/Mar/6/vibe-coding/), 2025). C’est vrai aussi d’un document : le brouillon d’un agent qui se lit sans accroc peut se tromper de structure, de chiffres ou de logique, et une prose fluide n’indique pas quelles parties vérifier.
 
 ## De l’inférence, pas de la compilation
 
-Birgitta Böckeler, pour Thoughtworks, pose la distinction sans détour : « les LLM ne sont PAS des compilateurs, interpréteurs, transpileurs ou assembleurs du langage naturel, ce sont des moteurs d’inférence » ([I still care about the code](https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html)). Un compilateur accepte votre entrée ou signale une erreur ; un agent peut rendre quelque chose qui s’exécute, ou se lit, sans être juste. Quelqu’un doit encore vérifier.
+Birgitta Böckeler, pour Thoughtworks, pose la distinction sans détour : « les LLM ne sont PAS des compilateurs, interpréteurs, transpileurs ou assembleurs du langage naturel, ce sont des moteurs d’inférence » ([I still care about the code](https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html)). Un compilateur accepte votre entrée ou signale une erreur ; un agent peut rendre quelque chose qui s’exécute, ou se lit, sans être juste. Quelqu’un doit encore vérifier.
 
 ## Ce que MarsDawn apporte à ce lecteur
 
 - La page rendue à côté de la source, mise à jour quand l’un ou l’autre côté change, pour avoir sous les yeux à la fois une affirmation et la façon dont elle est structurée.
-- Les diagrammes Mermaid dessinés : un organigramme qu’un agent a décrit en texte devient une forme que vous pouvez réellement suivre.
-- Les formules KaTeX rendues, pas laissées sous forme de suite de barres obliques inverses : une formule se lit comme une formule.
-- Rien ne se lance tout seul. MarsDawn ne note pas, ne résume pas et ne signale rien dans le document à votre place ; il met la structure sous vos yeux pour que vous le fassiez.
+- Les diagrammes Mermaid dessinés : un organigramme qu’un agent a décrit en texte devient une forme que vous pouvez réellement suivre.
+- Les formules KaTeX rendues, pas laissées sous forme de suite de barres obliques inverses : une formule se lit comme une formule.
+- Rien ne se lance tout seul. MarsDawn ne note pas, ne résume pas et ne signale rien dans le document à votre place ; il met la structure sous vos yeux pour que vous le fassiez.
 
 ## Pour aller plus loin
 
-- Comment cette relecture reste économique pour le contexte de l’agent : [une relecture économe en tokens](/fr/token-efficient-review/).
-- Remettre le document relu à quelqu’un d’autre : [partager un PDF](/fr/sharing-exported-pdfs/).
-- Pourquoi c’est difficile à lire, et comment s’y prendre : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
-- Pourquoi les agents exposent leurs plans : [Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?](/fr/agent-transparency/)
-- Ce qu’est MarsDawn, en une page : [la page d’accueil](/fr/).
+- Comment cette relecture reste économique pour le contexte de l’agent : [une relecture économe en tokens](/fr/token-efficient-review/).
+- Remettre le document relu à quelqu’un d’autre : [partager un PDF](/fr/sharing-exported-pdfs/).
+- Pourquoi c’est difficile à lire, et comment s’y prendre : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
+- Pourquoi les agents exposent leurs plans : [Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?](/fr/agent-transparency/)
+- Ce qu’est MarsDawn, en une page : [la page d’accueil](/fr/).
 
 ## Plus
 
@@ -41,8 +41,9 @@ Birgitta Böckeler, pour Thoughtworks, pose la distinction sans détour : « les
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.

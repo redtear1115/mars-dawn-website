@@ -15,31 +15,31 @@ Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace. Avec Mar
 1. **Installez MarsDawn.** Téléchargez MarsDawn depuis le Mac App Store. L’extension Coup d’œil fait partie de l’app.
 2. **Sélectionnez un fichier Markdown.** Dans le Finder, cliquez une fois sur un fichier .md.
 3. **Appuyez sur Espace.** L’aperçu mis en forme s’ouvre. Appuyez de nouveau sur Espace pour le fermer.
-4. **Si vous voyez du texte brut, activez l’extension.** Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
+4. **Si vous voyez du texte brut, activez l’extension.** Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
 
 ## Non verrouillé par l’essai
 
-Coup d’œil continue de fonctionner après la fin de l’essai. Il affiche le même aperçu mis en forme pendant l’essai, après sa fin et après le déverrouillage. Une fois l’essai terminé et tant que vous n’avez pas déverrouillé, seules les fenêtres de MarsDawn s’ouvrent avec leur contenu masqué ; les aperçus du Finder ne changent pas. La [page sur l’essai et le déverrouillage](/fr/pay-once/) présente les trois phases côte à côte.
+Coup d’œil continue de fonctionner après la fin de l’essai. Il affiche le même aperçu mis en forme pendant l’essai, après sa fin et après le déverrouillage. Une fois l’essai terminé et tant que vous n’avez pas déverrouillé, seules les fenêtres de MarsDawn s’ouvrent avec leur contenu masqué ; les aperçus du Finder ne changent pas. La [page sur l’essai et le déverrouillage](/fr/pay-once/) présente les trois phases côte à côte.
 
 ## Questions et réponses
 
-### Comment prévisualiser un fichier Markdown dans le Finder ?
+### Comment prévisualiser un fichier Markdown dans le Finder ?
 
 Sélectionnez le fichier et appuyez sur Espace. Avec MarsDawn installé, Coup d’œil affiche la page mise en forme, avec diagrammes Mermaid, formules KaTeX et code coloré.
 
-### Coup d’œil fonctionne-t-il encore après l’essai de 14 jours ?
+### Coup d’œil fonctionne-t-il encore après l’essai de 14 jours ?
 
 Oui. Coup d’œil n’est pas verrouillé par l’essai. Il continue d’afficher les fichiers Markdown pendant l’essai, après sa fin et une fois l’app déverrouillée.
 
-### Pourquoi Coup d’œil affiche-t-il du texte brut ?
+### Pourquoi Coup d’œil affiche-t-il du texte brut ?
 
-L’extension Coup d’œil est peut-être désactivée. Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
+L’extension Coup d’œil est peut-être désactivée. Ouvrez Réglages Système, allez dans Général ▸ Ouverture et extensions, cliquez sur le bouton d’informations en regard de « Coup d’œil » sous Extensions, activez « MarsDawn Preview », puis cliquez sur OK.
 
-### Coup d’œil est-il payant en plus ?
+### Coup d’œil est-il payant en plus ?
 
 Non. L’extension Coup d’œil fait partie de MarsDawn, sans achat séparé. MarsDawn se télécharge gratuitement, avec 14 jours d’essai et un déverrouillage unique à 4,99 USD, et Coup d’œil fonctionne avec ou sans l’essai.
 
-### Quelle version de macOS faut-il ?
+### Quelle version de macOS faut-il ?
 
 MarsDawn demande macOS 26 ou une version ultérieure.
 
@@ -62,8 +62,9 @@ MarsDawn demande macOS 26 ou une version ultérieure.
 - [Politique de confidentialité](https://marsdawn.southern-light.dev/fr/privacy/index.md): MarsDawn ne collecte aucune donnée personnelle. Vos documents et vos réglages restent sur votre Mac.
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.

@@ -54,7 +54,7 @@ try {
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/fr/"}, {"@type": "ListItem", "position": 2, "name": "Meilleur lecteur Markdown pour Mac (2026)", "item": "https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quels lecteurs Markdown gratuits pour Mac gèrent Mermaid ?", "acceptedAnswer": {"@type": "Answer", "text": "MacDown 3000, Obsidian et VS Code (1.121 et ultérieur) l’intègrent. QLMarkdown le propose en option, MarkEdit via une extension."}}, {"@type": "Question", "name": "Lesquels exportent un PDF avec numéros de page ?", "acceptedAnswer": {"@type": "Answer", "text": "Typora et Marked 3. MarsDawn exporte le PDF sans numéros de page."}}, {"@type": "Question", "name": "Lesquels ouvrent un fichier à une ligne précise depuis la ligne de commande ?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn (marsdawn open notes.md:120) et VS Code (code -g file:line). Pour les autres, ce n’est pas documenté."}}, {"@type": "Question", "name": "Lesquels sont des apps Mac natives plutôt qu’Electron ?", "acceptedAnswer": {"@type": "Answer", "text": "Toutes sauf Obsidian et VS Code. MarkEdit est natif, avec sa zone d’édition dans une web view."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quels lecteurs Markdown gratuits pour Mac gèrent Mermaid ?", "acceptedAnswer": {"@type": "Answer", "text": "MacDown 3000, Obsidian et VS Code (1.121 et ultérieur) l’intègrent. QLMarkdown le propose en option, MarkEdit via une extension."}}, {"@type": "Question", "name": "Lesquels exportent un PDF avec numéros de page ?", "acceptedAnswer": {"@type": "Answer", "text": "Typora, Marked 3 et MarsDawn. Dans MarsDawn, choisissez la mise en page Guide ou Polycopié ; la mise en page par défaut, Document, n’a pas de numéros de page."}}, {"@type": "Question", "name": "Lesquels ouvrent un fichier à une ligne précise depuis la ligne de commande ?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn (marsdawn open notes.md:120) et VS Code (code -g file:line). Pour les autres, ce n’est pas documenté."}}, {"@type": "Question", "name": "Lesquels sont des apps Mac natives plutôt qu’Electron ?", "acceptedAnswer": {"@type": "Answer", "text": "Toutes sauf Obsidian et VS Code. MarkEdit est natif, avec sa zone d’édition dans une web view."}}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -152,7 +152,7 @@ try {
 <p>Une app Mac native qui affiche la source et un aperçu en direct côte à côte, avec Mermaid et KaTeX intégrés. Quand un agent enregistre le fichier, la fenêtre ouverte prend la modification comme une seule mise à jour depuis le disque, que vous pouvez annuler. <code>marsdawn open notes.md:120</code> ouvre un fichier à une ligne, et un skill ainsi qu’un serveur MCP sont fournis pour les agents. Coup d’œil fonctionne avec ou sans l’essai. « Copier pour l’IA » et « Copier la référence » transmettent du texte à un agent. Rien ne quitte votre Mac sans votre choix.</p>
 <ul>
   <li>Pour : ceux qui relisent le Markdown écrit par des agents IA.</li>
-  <li>Défaut : l’export PDF n’a pas de numéros de page.</li>
+  <li>Défaut : les numéros de page exigent la mise en page Guide ou Polycopié. La mise en page par défaut, Document, n’en a pas.</li>
   <li>Prix : téléchargement gratuit avec 14 jours d’essai, puis 4,99 USD une seule fois. Sans compte. Uniquement sur le Mac App Store.</li>
 </ul>
 <h2 id="obsidian">Obsidian</h2>
@@ -191,7 +191,7 @@ try {
 <tr id="cmp-macdown-3000"><th scope="row">MacDown 3000</th><td data-col="price">Gratuit</td><td data-col="mermaid">Oui</td><td data-col="math">MathJax</td><td data-col="pdf">Oui</td><td data-col="live-reload">Oui</td><td data-col="cli-line">Non documenté</td><td data-col="quick-look">Oui</td><td data-col="build">Natif</td></tr>
 <tr id="cmp-marked"><th scope="row">Marked 3</th><td data-col="price">Dès 2,99 USD/mois</td><td data-col="mermaid">Oui</td><td data-col="math">MathJax, KaTeX</td><td data-col="pdf">Oui, numéros de page</td><td data-col="live-reload">Oui</td><td data-col="cli-line">Non documenté</td><td data-col="quick-look">Marked QL, 9,99 USD</td><td data-col="build">Natif</td></tr>
 <tr id="cmp-markedit"><th scope="row">MarkEdit</th><td data-col="price">Gratuit</td><td data-col="mermaid">Extension</td><td data-col="math">KaTeX (extension)</td><td data-col="pdf">Pandoc</td><td data-col="live-reload">Non documenté</td><td data-col="cli-line">Non documenté</td><td data-col="quick-look">Oui</td><td data-col="build">Natif (web view)</td></tr>
-<tr id="cmp-marsdawn"><th scope="row">MarsDawn</th><td data-col="price">4,99 USD une fois</td><td data-col="mermaid">Oui</td><td data-col="math">KaTeX</td><td data-col="pdf">Oui, sans numéros de page</td><td data-col="live-reload">Oui, annulable</td><td data-col="cli-line">Oui</td><td data-col="quick-look">Oui</td><td data-col="build">Natif</td></tr>
+<tr id="cmp-marsdawn"><th scope="row">MarsDawn</th><td data-col="price">4,99 USD une fois</td><td data-col="mermaid">Oui</td><td data-col="math">KaTeX</td><td data-col="pdf">Oui, numéros de page en Guide et Polycopié</td><td data-col="live-reload">Oui, annulable</td><td data-col="cli-line">Oui</td><td data-col="quick-look">Oui</td><td data-col="build">Natif</td></tr>
 <tr id="cmp-obsidian"><th scope="row">Obsidian</th><td data-col="price">Gratuit</td><td data-col="mermaid">Oui</td><td data-col="math">MathJax</td><td data-col="pdf">Oui</td><td data-col="live-reload">Oui</td><td data-col="cli-line">Non documenté</td><td data-col="quick-look">Non documenté</td><td data-col="build">Electron</td></tr>
 <tr id="cmp-qlmarkdown"><th scope="row">QLMarkdown</th><td data-col="price">Gratuit</td><td data-col="mermaid">À activer</td><td data-col="math">MathJax (à activer)</td><td data-col="pdf">Non documenté</td><td data-col="live-reload">Sans objet</td><td data-col="cli-line">Sans objet</td><td data-col="quick-look">C’en est une</td><td data-col="build">Natif</td></tr>
 <tr id="cmp-typora"><th scope="row">Typora</th><td data-col="price">14,99 USD une fois</td><td data-col="mermaid">Oui</td><td data-col="math">MathJax</td><td data-col="pdf">Oui, numéros de page</td><td data-col="live-reload">Non documenté</td><td data-col="cli-line">Non documenté</td><td data-col="quick-look">Non documenté</td><td data-col="build">Natif</td></tr>
@@ -201,7 +201,6 @@ try {
 </div>
 <h2 id="not-for">À qui MarsDawn ne convient pas</h2>
 <ul>
-  <li>Il vous faut des numéros de page dans vos PDF. Typora et Marked 3 les ajoutent, MarsDawn non.</li>
   <li>Vous entretenez une base de connaissances de notes liées. Obsidian est fait pour cela.</li>
   <li>Vous ne quittez jamais VS Code. Son aperçu intégré est gratuit, et VS Code ajoute une vue Markdown expérimentale à sa fenêtre Agents.</li>
   <li>Vous voulez seulement un aperçu dans le Finder. QLMarkdown est gratuit.</li>
@@ -211,7 +210,7 @@ try {
 <h3>Quels lecteurs Markdown gratuits pour Mac gèrent Mermaid ?</h3>
 <p>MacDown 3000, Obsidian et VS Code (1.121 et ultérieur) l’intègrent. QLMarkdown le propose en option, MarkEdit via une extension.</p>
 <h3>Lesquels exportent un PDF avec numéros de page ?</h3>
-<p>Typora et Marked 3. MarsDawn exporte le PDF sans numéros de page.</p>
+<p>Typora, Marked 3 et MarsDawn. Dans MarsDawn, choisissez la mise en page Guide ou Polycopié ; la mise en page par défaut, Document, n’a pas de numéros de page.</p>
 <h3>Lesquels ouvrent un fichier à une ligne précise depuis la ligne de commande ?</h3>
 <p>MarsDawn (<code>marsdawn open notes.md:120</code>) et VS Code (<code>code -g file:line</code>). Pour les autres, ce n’est pas documenté.</p>
 <h3>Lesquels sont des apps Mac natives plutôt qu’Electron ?</h3>

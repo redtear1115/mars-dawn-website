@@ -9,59 +9,59 @@ MarsDawn propose quatre thèmes d’aperçu, Aube, Classique, Moderne et Vif, ch
 - ![Le thème Vif en vue partagée.](/assets/screens/04-vivid-800.png) **Vif**
 - ![MarsDawn en mode sombre, en vue partagée.](/assets/screens/03-dark-800.png) **Mode sombre**
 
-Moderne n’est pas encore illustré ; la quatrième image montre le mode sombre à la place.
+Moderne n’est pas encore illustré ; la quatrième image montre le mode sombre à la place.
 
-- **Aube**, le thème par défaut : le même papier chaleureux et le même accent Mars Rust que ce site.
-- **Classique** : une palette plus sobre, proche d’un document.
-- **Moderne** : une palette plus froide et plus contemporaine.
-- **Vif** : une palette plus lumineuse et plus contrastée.
+- **Aube**, le thème par défaut : le même papier chaleureux et le même accent Mars Rust que ce site.
+- **Classique** : une palette plus sobre, proche d’un document.
+- **Moderne** : une palette plus froide et plus contemporaine.
+- **Vif** : une palette plus lumineuse et plus contrastée.
 
-Chacun a sa propre variante claire et sombre : changer l’apparence de votre Mac change aussi la palette du thème, pas seulement l’interface autour.
+Chacun a sa propre variante claire et sombre : changer l’apparence de votre Mac change aussi la palette du thème, pas seulement l’interface autour.
 
 ## La Galerie de thèmes, dans l’app
 
-Dans MarsDawn, ouvrez Réglages ▸ Apparence et cliquez sur Obtenir plus de thèmes…. La Galerie de thèmes charge sa liste à l’ouverture. Elle ne se connecte à Internet que tant qu’elle est ouverte ; sans connexion, elle affiche un avis et les quatre thèmes intégrés continuent de fonctionner.
+Dans MarsDawn, ouvrez Réglages ▸ Apparence et cliquez sur Obtenir plus de thèmes…. La Galerie de thèmes charge sa liste à l’ouverture. Elle ne se connecte à Internet que tant qu’elle est ouverte ; sans connexion, elle affiche un avis et les quatre thèmes intégrés continuent de fonctionner.
 
 - Installer ajoute un thème aux sélecteurs Thème clair et Thème sombre ainsi qu’à Présentation ▸ Thème de l’aperçu. Supprimer le retire.
 - Rechercher des mises à jour de thèmes redemande à la galerie s’il existe des versions plus récentes.
-- Filtrez selon l’usage d’un thème : Relecture d’agent, Documentation technique, Rendu formel, Notes et partage.
+- Filtrez selon l’usage d’un thème : Relecture d’agent, Documentation technique, Rendu formel, Notes et partage.
 - Signaler le thème… ouvre une issue GitHub préremplie ou un e-mail qui nous est adressé.
 
 ## Ce qu’il y a dans la galerie
 
-Huit thèmes aujourd’hui, tous créés et relus par nos soins : Dracula, Gruvbox, Nord et Solarized, adaptés des palettes bien connues et ajustés pour la lisibilité, ainsi que Guide, Ledger, Spec et Story, conçus pour les guides utilisateur, les budgets, les PRD et les notes de sprint.
+Huit thèmes aujourd’hui, tous créés et relus par nos soins : Dracula, Gruvbox, Nord et Solarized, adaptés des palettes bien connues et ajustés pour la lisibilité, ainsi que Guide, Ledger, Spec et Story, conçus pour les guides utilisateur, les budgets, les PRD et les notes de sprint.
 
 ## Relus, et uniquement des données
 
-Chaque thème est relu et fusionné par nos soins avant d’apparaître dans la galerie. Un thème est un petit fichier JSON de couleurs et de quelques options bornées : aucun script, aucun CSS et aucune image provenant de son auteur, et MarsDawn vérifie chaque valeur avant de l’installer. Un thème signalé quitte la galerie dans les 24 heures. S’il est nuisible, il est aussi supprimé des Mac qui l’avaient installé à la prochaine ouverture de la galerie, et MarsDawn revient à Aube s’il était utilisé.
+Chaque thème est relu et fusionné par nos soins avant d’apparaître dans la galerie. Un thème est un petit fichier JSON de couleurs et de quelques options bornées : aucun script, aucun CSS et aucune image provenant de son auteur, et MarsDawn vérifie chaque valeur avant de l’installer. Un thème signalé quitte la galerie dans les 24 heures. S’il est nuisible, il est aussi supprimé des Mac qui l’avaient installé à la prochaine ouverture de la galerie, et MarsDawn revient à Aube s’il était utilisé.
 
 La galerie interroge uniquement `marsdawn.southern-light.dev/themes/v1/`, et seulement lorsque vous l’ouvrez, recherchez des mises à jour ou installez un thème. Elle n’envoie ni compte, ni identifiant, ni cookies, ni rien qui provienne de vos documents.
 
 ## Coup d’œil utilise votre thème
 
-Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace. Coup d’œil l’affiche dans le thème que vous avez choisi, thèmes installés compris, et suit le réglage Apparence de MarsDawn : Clair et Sombre restent tels que choisis, et Système suit votre Mac.
+Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace. Coup d’œil l’affiche dans le thème que vous avez choisi, thèmes installés compris, et suit le réglage Apparence de MarsDawn : Clair et Sombre restent tels que choisis, et Système suit votre Mac.
 
 ## Export PDF et impression
 
-Exportez en PDF ou imprimez, et la page utilise le thème choisi pour Clair : les diagrammes Mermaid y sont dessinés, les blocs de code gardent leur coloration, et les sauts de page évitent de séparer un titre de sa section ou de couper un tableau ou un diagramme en deux. L’[outil en ligne de commande marsdawn](/fr/cli/), gratuit, utilise le même moteur d’export, avec n’importe lequel des quatre thèmes intégrés via `--theme`.
+Exportez en PDF ou imprimez, et la page utilise le thème choisi pour Clair : les diagrammes Mermaid y sont dessinés, les blocs de code gardent leur coloration, et les sauts de page évitent de séparer un titre de sa section ou de couper un tableau ou un diagramme en deux. L’[outil en ligne de commande marsdawn](/fr/cli/), gratuit, utilise le même moteur d’export, avec n’importe lequel des quatre thèmes intégrés via `--theme`.
 
 ## Une fois la page imprimée
 
 Une réunion autour de pages imprimées, un stylo dans la marge, un dossier papier classé.
 
-[Film MarsDawn (en anglais), 88 secondes](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
+[Film MarsDawn (en anglais), 88 secondes](https://marsdawn.southern-light.dev/assets/film/marsdawn-themes-film-en-1080p30.mp4)
 
 ## Créez le vôtre
 
-[Créez un thème dans votre navigateur](/fr/themes/new/) : choisissez des couleurs et quelques options de style, voyez-les appliquées en direct, et envoyez-le en issue GitHub pour relecture. Il vous faut un compte GitHub, mais ni installation ni git. Un envoi ne publie rien par lui-même ; il n’apparaît dans la [galerie](/fr/themes/gallery/) qu’après avoir été relu et fusionné par nos soins.
+[Créez un thème dans votre navigateur](/fr/themes/new/) : choisissez des couleurs et quelques options de style, voyez-les appliquées en direct, et envoyez-le en issue GitHub pour relecture. Il vous faut un compte GitHub, mais ni installation ni git. Un envoi ne publie rien par lui-même ; il n’apparaît dans la [galerie](/fr/themes/gallery/) qu’après avoir été relu et fusionné par nos soins.
 
-Vous travaillez avec un agent ? [Faites-lui créer le thème](/fr/themes/agents/), puis ajustez-le dans votre navigateur.
+Vous travaillez avec un agent ? [Faites-lui créer le thème](/fr/themes/agents/), puis ajustez-le dans votre navigateur.
 
 ## Pour aller plus loin
 
-- Le pas-à-pas complet de l’export PDF, en ligne de commande : [Markdown en PDF](/fr/markdown-to-pdf/).
-- Ce que MarsDawn ne fait pas encore : [la liste](/fr/limits/).
-- Remettre un PDF exporté à quelqu’un qui n’utilise pas Markdown : [partager un PDF](/fr/sharing-exported-pdfs/).
+- Le pas-à-pas complet de l’export PDF, en ligne de commande : [Markdown en PDF](/fr/markdown-to-pdf/).
+- Ce que MarsDawn ne fait pas encore : [la liste](/fr/limits/).
+- Remettre un PDF exporté à quelqu’un qui n’utilise pas Markdown : [partager un PDF](/fr/sharing-exported-pdfs/).
 
 ## Plus
 
@@ -77,8 +77,9 @@ Vous travaillez avec un agent ? [Faites-lui créer le thème](/fr/themes/agents/
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.

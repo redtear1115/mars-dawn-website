@@ -54,7 +54,7 @@ try {
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/ko/"}, {"@type": "ListItem", "position": 2, "name": "Mac용 Markdown 뷰어 추천 (2026)", "item": "https://marsdawn.southern-light.dev/ko/best-markdown-viewer-mac/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Mermaid를 지원하는 무료 Mac Markdown 뷰어는?", "acceptedAnswer": {"@type": "Answer", "text": "MacDown 3000, Obsidian, VS Code(1.121 이상)에 내장되어 있습니다. QLMarkdown은 선택 사항으로, MarkEdit은 확장 프로그램으로 지원합니다."}}, {"@type": "Question", "name": "페이지 번호가 붙은 PDF를 내보낼 수 있는 앱은?", "acceptedAnswer": {"@type": "Answer", "text": "Typora와 Marked 3입니다. MarsDawn의 PDF에는 페이지 번호가 없습니다."}}, {"@type": "Question", "name": "명령줄에서 특정 줄로 파일을 열 수 있는 앱은?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn(marsdawn open notes.md:120)과 VS Code(code -g file:line)입니다. 나머지는 문서화되어 있지 않습니다."}}, {"@type": "Question", "name": "Electron이 아닌 네이티브 Mac 앱은?", "acceptedAnswer": {"@type": "Answer", "text": "Obsidian과 VS Code를 제외한 모두입니다. MarkEdit은 네이티브 앱이며 편집 영역에 웹 뷰를 사용합니다."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Mermaid를 지원하는 무료 Mac Markdown 뷰어는?", "acceptedAnswer": {"@type": "Answer", "text": "MacDown 3000, Obsidian, VS Code(1.121 이상)에 내장되어 있습니다. QLMarkdown은 선택 사항으로, MarkEdit은 확장 프로그램으로 지원합니다."}}, {"@type": "Question", "name": "페이지 번호가 붙은 PDF를 내보낼 수 있는 앱은?", "acceptedAnswer": {"@type": "Answer", "text": "Typora, Marked 3, MarsDawn입니다. MarsDawn에서는 설명서나 프린트물 레이아웃을 선택하면 됩니다. 기본값인 문서 레이아웃에는 페이지 번호가 없습니다."}}, {"@type": "Question", "name": "명령줄에서 특정 줄로 파일을 열 수 있는 앱은?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn(marsdawn open notes.md:120)과 VS Code(code -g file:line)입니다. 나머지는 문서화되어 있지 않습니다."}}, {"@type": "Question", "name": "Electron이 아닌 네이티브 Mac 앱은?", "acceptedAnswer": {"@type": "Answer", "text": "Obsidian과 VS Code를 제외한 모두입니다. MarkEdit은 네이티브 앱이며 편집 영역에 웹 뷰를 사용합니다."}}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -152,7 +152,7 @@ try {
 <p>소스와 실시간 미리보기를 나란히 보여 주는 네이티브 Mac 앱으로, Mermaid와 KaTeX가 내장되어 있습니다. 에이전트가 파일을 저장하면 열린 윈도우가 그 변경을 한 번에 실행 취소할 수 있는 '디스크에서 업데이트'로 받아들입니다. <code>marsdawn open notes.md:120</code>으로 특정 줄을 열 수 있고, 에이전트용 스킬과 MCP 서버도 있습니다. 훑어보기는 체험 기간과 관계없이 작동합니다. 'AI용으로 복사'와 '참조 복사'로 텍스트를 에이전트에 넘길 수 있습니다. 직접 선택하지 않는 한 아무것도 Mac 밖으로 나가지 않습니다.</p>
 <ul>
   <li>맞는 사람: AI 에이전트가 쓴 Markdown을 검토하는 사람.</li>
-  <li>단점: 내보낸 PDF에 페이지 번호가 없습니다.</li>
+  <li>단점: PDF에 페이지 번호를 넣으려면 설명서나 프린트물 레이아웃을 써야 합니다. 기본값인 문서 레이아웃에는 없습니다.</li>
   <li>가격: 무료 다운로드, 14일 체험 후 USD 4.99 한 번 결제. 계정 불필요. Mac App Store 전용.</li>
 </ul>
 <h2 id="obsidian">Obsidian</h2>
@@ -191,7 +191,7 @@ try {
 <tr id="cmp-macdown-3000"><th scope="row">MacDown 3000</th><td data-col="price">무료</td><td data-col="mermaid">지원</td><td data-col="math">MathJax</td><td data-col="pdf">지원</td><td data-col="live-reload">지원</td><td data-col="cli-line">문서화 안 됨</td><td data-col="quick-look">지원</td><td data-col="build">네이티브</td></tr>
 <tr id="cmp-marked"><th scope="row">Marked 3</th><td data-col="price">월 USD 2.99부터</td><td data-col="mermaid">지원</td><td data-col="math">MathJax, KaTeX</td><td data-col="pdf">지원, 페이지 번호</td><td data-col="live-reload">지원</td><td data-col="cli-line">문서화 안 됨</td><td data-col="quick-look">Marked QL, USD 9.99</td><td data-col="build">네이티브</td></tr>
 <tr id="cmp-markedit"><th scope="row">MarkEdit</th><td data-col="price">무료</td><td data-col="mermaid">확장 프로그램</td><td data-col="math">KaTeX(확장 프로그램)</td><td data-col="pdf">Pandoc</td><td data-col="live-reload">문서화 안 됨</td><td data-col="cli-line">문서화 안 됨</td><td data-col="quick-look">지원</td><td data-col="build">네이티브(웹 뷰)</td></tr>
-<tr id="cmp-marsdawn"><th scope="row">MarsDawn</th><td data-col="price">USD 4.99 한 번</td><td data-col="mermaid">지원</td><td data-col="math">KaTeX</td><td data-col="pdf">지원, 페이지 번호 없음</td><td data-col="live-reload">지원, 실행 취소 가능</td><td data-col="cli-line">지원</td><td data-col="quick-look">지원</td><td data-col="build">네이티브</td></tr>
+<tr id="cmp-marsdawn"><th scope="row">MarsDawn</th><td data-col="price">USD 4.99 한 번</td><td data-col="mermaid">지원</td><td data-col="math">KaTeX</td><td data-col="pdf">지원, 설명서와 프린트물에 페이지 번호</td><td data-col="live-reload">지원, 실행 취소 가능</td><td data-col="cli-line">지원</td><td data-col="quick-look">지원</td><td data-col="build">네이티브</td></tr>
 <tr id="cmp-obsidian"><th scope="row">Obsidian</th><td data-col="price">무료</td><td data-col="mermaid">지원</td><td data-col="math">MathJax</td><td data-col="pdf">지원</td><td data-col="live-reload">지원</td><td data-col="cli-line">문서화 안 됨</td><td data-col="quick-look">문서화 안 됨</td><td data-col="build">Electron</td></tr>
 <tr id="cmp-qlmarkdown"><th scope="row">QLMarkdown</th><td data-col="price">무료</td><td data-col="mermaid">선택 사항</td><td data-col="math">MathJax(선택 사항)</td><td data-col="pdf">문서화 안 됨</td><td data-col="live-reload">해당 없음</td><td data-col="cli-line">해당 없음</td><td data-col="quick-look">그 자체</td><td data-col="build">네이티브</td></tr>
 <tr id="cmp-typora"><th scope="row">Typora</th><td data-col="price">USD 14.99 한 번</td><td data-col="mermaid">지원</td><td data-col="math">MathJax</td><td data-col="pdf">지원, 페이지 번호</td><td data-col="live-reload">문서화 안 됨</td><td data-col="cli-line">문서화 안 됨</td><td data-col="quick-look">문서화 안 됨</td><td data-col="build">네이티브</td></tr>
@@ -201,7 +201,6 @@ try {
 </div>
 <h2 id="not-for">MarsDawn이 맞지 않는 사람</h2>
 <ul>
-  <li>PDF에 페이지 번호가 꼭 필요한 사람. Typora와 Marked 3은 넣을 수 있지만 MarsDawn은 넣을 수 없습니다.</li>
   <li>서로 링크된 개인 메모 지식 베이스를 가꾸는 사람. Obsidian은 그 용도로 만들어졌습니다.</li>
   <li>VS Code를 떠나지 않는 사람. 기본 미리보기는 무료이고, VS Code는 Agents 윈도우에 실험적인 Markdown 보기를 추가하고 있습니다.</li>
   <li>Finder에서 미리보기만 하면 되는 사람. QLMarkdown은 무료입니다.</li>
@@ -211,7 +210,7 @@ try {
 <h3>Mermaid를 지원하는 무료 Mac Markdown 뷰어는?</h3>
 <p>MacDown 3000, Obsidian, VS Code(1.121 이상)에 내장되어 있습니다. QLMarkdown은 선택 사항으로, MarkEdit은 확장 프로그램으로 지원합니다.</p>
 <h3>페이지 번호가 붙은 PDF를 내보낼 수 있는 앱은?</h3>
-<p>Typora와 Marked 3입니다. MarsDawn의 PDF에는 페이지 번호가 없습니다.</p>
+<p>Typora, Marked 3, MarsDawn입니다. MarsDawn에서는 설명서나 프린트물 레이아웃을 선택하면 됩니다. 기본값인 문서 레이아웃에는 페이지 번호가 없습니다.</p>
 <h3>명령줄에서 특정 줄로 파일을 열 수 있는 앱은?</h3>
 <p>MarsDawn(<code>marsdawn open notes.md:120</code>)과 VS Code(<code>code -g file:line</code>)입니다. 나머지는 문서화되어 있지 않습니다.</p>
 <h3>Electron이 아닌 네이티브 Mac 앱은?</h3>

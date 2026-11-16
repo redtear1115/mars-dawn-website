@@ -27,9 +27,13 @@ La pestaña Esquema de la barra lateral enumera los encabezados de un documento;
 
 [Leer lo que te devuelve tu agente](/es/reading-agent-output/)
 
+### Contraer un documento largo
+
+En la vista previa, Visualización ▸ Contraer todo hasta el encabezamiento 2 contrae un plan o una especificación largos hasta los encabezamientos de nivel 2, y Visualización ▸ Expandir todo lo vuelve a abrir. Formato ▸ Bloque plegable inserta un bloque que se pliega.
+
 ### Señala la línea exacta
 
-Edición ▸ Copiar referencia copia dónde estás como una ruta y una línea, por ejemplo `docs/plan.md:42`. Copiar para IA agrega debajo el texto seleccionado. Pega cualquiera de los dos en el chat del agente.
+Edición ▸ Copiar referencia copia dónde estás como una ruta y una línea, por ejemplo `docs/plan.md:42`. [Copiar para IA](/es/copy-for-ai/) agrega debajo el texto seleccionado. Pega cualquiera de los dos en el chat del agente.
 
 [Leer lo que te devuelve tu agente](/es/reading-agent-output/)
 
@@ -75,7 +79,7 @@ La negrita, la cursiva, el tachado, el código en línea, los enlaces, las citas
 
 ### Zoom, números de línea y barra de estado
 
-Acerca y aleja el código y la vista previa a la vez, del 50 % al 300 %. Junto al código hay un margen con números de línea, y la barra de estado muestra tu línea y columna, además del recuento de palabras y caracteres y el tiempo de lectura del documento o de tu selección.
+Acerca y aleja el código y la vista previa a la vez, del 50 % al 300 %. Junto al código hay un margen con números de línea, y la barra de estado muestra tu línea y columna, además del recuento de palabras y caracteres y el tiempo de lectura del documento o de tu selección.
 
 ### Imágenes
 
@@ -127,7 +131,7 @@ Ajustes ▸ Aspecto ▸ Obtener más temas… abre una galería de temas de vist
 
 ### Exportar como PDF, o imprimir
 
-Archivo ▸ Exportar como PDF… guarda un PDF paginado, y Archivo ▸ Imprimir… imprime las mismas páginas. Los diagramas Mermaid se dibujan, el código conserva su resaltado, y los saltos de página evitan separar un encabezado de su sección o partir por la mitad un bloque de código corto o un diagrama. El PDF usa siempre los colores claros del tema, aunque estuvieras leyendo en oscuro.
+Archivo ▸ Imprimir… y Archivo ▸ Exportar como PDF… abren «Imprimir y exportar», con una vista previa de las páginas. Elige una disposición: Documento; Guía, con portada, índice y marcadores PDF; o Folleto, con una columna para notas. Luego imprime o guarda. Los diagramas Mermaid se dibujan, el código conserva su resaltado, y los saltos de página evitan separar un encabezado de su sección o partir por la mitad un bloque de código corto o un diagrama. El PDF usa siempre los colores claros del tema.
 
 [Exportación a PDF](/es/pdf/)
 
@@ -143,18 +147,18 @@ En esta captura de pantalla:
 Tu agente trabaja en el Mac. Sus planes e informes pueden ir contigo en el iPhone o el iPad.
 
 1. **En el Mac:** guarda los planes e informes del agente en una carpeta de iCloud Drive.
-2. **En el iPhone o el iPad:** en MarsDawn, toca «Abrir» y elige el mismo archivo. Los diagramas Mermaid, las fórmulas, el código y las tablas se muestran con formato, con el esquema y tu tema.
-3. **De vuelta en el Mac:** sigue editando o exporta un PDF.
+2. **En el iPhone o el iPad:** en MarsDawn, toca «Abrir» y elige el mismo archivo, o ábrelo desde otra app. Los diagramas Mermaid, las fórmulas, el código y las tablas se muestran con formato, con el esquema y tu tema.
+3. **Para pasarlo:** compártelo, imprímelo o guárdalo como PDF.
 
 Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.
 
-En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.
+En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown, de texto, PDF, JSON y YAML, pero no los edita. Los enlaces de un PDF guardado desde ahí no funcionan. MarsDawn no tiene nube propia.
 
 ## Archivos, pestañas y Vista Rápida
 
 ### Ventanas y pestañas
 
-Cada documento se abre en su propia ventana. Elige Ventana ▸ Unir todas las ventanas para reunir las ventanas abiertas como pestañas de una sola. El guardado automático funciona mientras escribes.
+De forma predeterminada, los documentos se abren como pestañas de la ventana del frente. Para usar el ajuste de pestañas de tu Mac, elige Seguir ajuste del sistema en Ajustes ▸ Aspecto. El guardado automático funciona mientras escribes.
 
 [Una app para Mac](/es/native/)
 
@@ -166,7 +170,7 @@ Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora para
 
 ### Otros archivos
 
-MarsDawn también abre archivos de texto sin formato (`.txt`, `.log`, código fuente) y PDF. El texto UTF-8 se abre listo para editar, solo como código. Los PDF se abren en un visor con miniaturas de página, zoom y búsqueda. En el Mac, abre archivos JSON y YAML como documentos editables, con una vista previa en árbol que se actualiza mientras escribes. Vista Rápida en el Finder muestra el mismo árbol. El iPhone y el iPad no abren archivos JSON ni YAML.
+MarsDawn también abre archivos de texto sin formato (`.txt`, `.log`, código fuente) y PDF. El texto UTF-8 se abre listo para editar, solo como código. Los PDF se abren en un visor con miniaturas de página, zoom y búsqueda. En el Mac, abre archivos JSON y YAML como documentos editables, con una vista previa en árbol que se actualiza mientras escribes. Vista Rápida en el Finder muestra el mismo árbol. En el iPhone y el iPad, JSON y YAML se abren en modo de solo lectura, con vista previa en árbol.
 
 ### Tus archivos siguen siendo tuyos
 
@@ -237,8 +241,9 @@ Cómo funciona la prueba: [Pruébalo gratis, paga una vez](/es/pay-once/). Lo qu
 - [Cómo abrir archivos .md en Mac](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Cómo abrir un archivo .md en una Mac: doble clic, app predeterminada, Vista Rápida en el Finder. Lee en MarsDawn, ya renderizados, los .md de un agente de IA.
 - [Vista previa de Mermaid en Mac](https://marsdawn.southern-light.dev/es/mermaid-preview-mac/index.md): Diagramas Mermaid junto a tu Markdown en una Mac: vista previa en vivo, Vista Rápida y exportación a PDF. Un diagrama con errores muestra el error y la línea.
 - [Vista Rápida para Markdown](https://marsdawn.southern-light.dev/es/quicklook/index.md): Con MarsDawn, Vista Rápida renderiza Markdown en el Finder con la barra espaciadora: Mermaid, KaTeX y código resaltado. Sigue funcionando tras la prueba.
+- [Copiar para IA](https://marsdawn.southern-light.dev/es/copy-for-ai/index.md): Copia el texto seleccionado con su ruta de archivo y números de línea, y pégalo en Claude Code o en cualquier agente. En tu Mac, sin IDE ni plugins.
 - [De Markdown a PDF](https://marsdawn.southern-light.dev/es/markdown-to-pdf/index.md): Convierte Markdown a PDF en Mac con la herramienta de línea de comandos gratuita marsdawn. Instálala con Homebrew y ejecuta un solo comando: tablas, matemáticas, Mermaid y código.
-- [MarsDawn comparado: vista previa de VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/es/vs/index.md): Para quien elige cómo leer y revisar Markdown en un Mac, a menudo lo que escribió un agente. Cada celda viene de las páginas del propio fabricante o de nuestra propia comprobación, todas del 16 de octubre de 2026; los productos cambian, así que una celda puede quedar desfasada. Si ves un error, escribe a la dirección que aparece en Soporte.
+- [MarsDawn comparado: vista previa de VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/es/vs/index.md): Para quien elige cómo leer y revisar Markdown en un Mac, a menudo lo que escribió un agente. Cada celda viene de las páginas del propio fabricante o de nuestra propia comprobación, todas del 16 de octubre de 2026, salvo la celda de PDF de MarsDawn, actualizada el 7 de noviembre de 2026; los productos cambian, así que una celda puede quedar desfasada. Si ves un error, escribe a la dirección que aparece en Soporte.
 - [MacMD Viewer frente a MarsDawn](https://marsdawn.southern-light.dev/es/vs/macmd-viewer/index.md): MacMD Viewer es un visor de Markdown de solo lectura por 19,99 USD. MarsDawn edita con la vista previa al lado: 14 días gratis y luego 4,99 USD una sola vez.
 - [El mejor visor de Markdown para Mac (2026)](https://marsdawn.southern-light.dev/es/best-markdown-viewer-mac/index.md): Ocho visores de Markdown para Mac comparados por precio, Mermaid, fórmulas, PDF, recarga en vivo, Vista Rápida y nativo o Electron, y para quién es cada uno.
 - [Línea de comandos](https://marsdawn.southern-light.dev/es/cli/index.md): La herramienta de línea de comandos gratuita marsdawn para Mac: exporta Markdown a PDF desde una shell, un script o un agente LLM, con salida JSON. Se instala con Homebrew.

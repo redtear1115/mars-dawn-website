@@ -500,6 +500,8 @@ def ingest_242() -> None:
         vscode_cell[loc] = vscode_cell[loc].replace("code -g file:line", "`code -g file:line`")
     anchor = {"en": "Its PDFs have no page numbers.", "zh-hant": "輸出的 PDF 沒有頁碼。", "ja": "PDF にページ番号は入りません。"}
     joiner = {"en": " ", "zh-hant": "", "ja": ""}
+    # The pinned comment still has the old sentence, so it stays the anchor (website#357, approved).
+    page_numbers = {"en": 'Page numbers come only with the Handbook and Handout PDF layouts.', "zh-hant": '只有手冊與講義版面的 PDF 有頁碼。', "ja": 'PDF にページ番号が入るのは、ハンドブックと配布資料のレイアウトだけです。'}
 
     def src1(where):
         return comment_source(c1, 1, where)
@@ -517,7 +519,7 @@ def ingest_242() -> None:
                      "note": src1(f"### (b)(c), 表下註記（{ln}）"), "short": src1(f"### (f), {loc}")}
             lacks = lacks_a[loc]
             assert lacks.count(anchor[loc]) == 1, loc
-            lacks_full = lacks.replace(anchor[loc], anchor[loc] + joiner[loc] + lacks_extra[loc])
+            lacks_full = lacks.replace(anchor[loc], page_numbers[loc] + joiner[loc] + lacks_extra[loc])
             lacks_src = [src1(f"### (d) version A, {loc}"), src2(f"lacks 加的句子, {loc}, spliced after {anchor[loc]!r}")]
             ver = "R1+R2"
             items = list(dont[loc])
@@ -953,7 +955,10 @@ def ingest_275() -> None:
     - comment 2 (R2): Q3's new answer in en, zh-Hant and ja (approved by comment 4), and for zh-Hans, ko, de, fr and es a
       table with Q3's answer, Q9 and Q10 (question, answer, link row);
     - comment 3 (R3): the zh-Hant and ja link rows of Q9 and Q10, which replace comment 1's;
-    - comment 4 (R4): the owner's approval of Q3's new answer, the same words as comment 2's."""
+    - comment 4 (R4): the owner's approval of Q3's new answer, the same words as comment 2's.
+    Q3 is superseded (#369, plan A): build_pages.py takes the home FAQ's iPhone and iPad answer from copy369/data.py
+    key "faq" (approval comment 6796859928) and no longer reads "q3". The "q3" values here and their #275 records in
+    slots.json only show what #275 approved; Q9 and Q10 are still built from #275."""
     c1, b1 = comment(275, 1)
     c2, b2 = comment(275, 2)
     c3, b3 = comment(275, 3)

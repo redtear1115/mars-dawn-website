@@ -6,32 +6,32 @@ Si VS Code, un navigateur ou Claude Desktop est déjà ouvert, il est logique de
 
 |  | Aperçu VS Code | Extension de navigateur | Claude Desktop | MarsDawn |
 |---|---|---|---|---|
-| Ouvre un fichier Markdown depuis le disque | Oui | Oui, une fois l’accès aux fichiers autorisé | Non : Markdown ne figure pas dans sa liste d’import | Oui |
-| Avant le premier fichier | Installer VS Code, un environnement de développement complet | Installer une extension, puis activer « Autoriser l’accès aux URL de fichier » | Il ne peut pas parcourir les fichiers du disque | Installer MarsDawn |
-| Conçu pour | Écrire du code ; l’aperçu est un volet parmi d’autres | Naviguer sur le web | Converser avec Claude | Lire et modifier du Markdown |
-| Dessine la page avec | Electron : un Chromium et Node.js embarqués | Un navigateur complet | L’app Claude Desktop | Une app AppKit native ; WebKit dessine la page |
+| Ouvre un fichier Markdown depuis le disque | Oui | Oui, une fois l’accès aux fichiers autorisé | Non : Markdown ne figure pas dans sa liste d’import | Oui |
+| Avant le premier fichier | Installer VS Code, un environnement de développement complet | Installer une extension, puis activer « Autoriser l’accès aux URL de fichier » | Il ne peut pas parcourir les fichiers du disque | Installer MarsDawn |
+| Conçu pour | Écrire du code ; l’aperçu est un volet parmi d’autres | Naviguer sur le web | Converser avec Claude | Lire et modifier du Markdown |
+| Dessine la page avec | Electron : un Chromium et Node.js embarqués | Un navigateur complet | L’app Claude Desktop | Une app AppKit native ; WebKit dessine la page |
 
 ## L’aperçu intégré de VS Code
 
-Appuyez sur `⌘⇧V` dans VS Code et il fait le rendu du fichier Markdown dans un volet d’aperçu intégré, gratuitement, sans rien installer. Depuis VS Code 1.121 (mai 2026), cet aperçu affiche aussi les diagrammes Mermaid nativement : Microsoft a intégré une extension Mermaid à VS Code lui-même, alors qu’il fallait auparavant une extension séparée. Ce qu’il ne fait pas : c’est un volet d’aperçu à l’intérieur d’un éditeur, pas un éditeur conçu pour la lecture. Le volet se trouve à côté d’une arborescence de fichiers, d’un terminal et de tous les autres panneaux que VS Code peut afficher, et VS Code lui-même est une app Electron qu’on installe comme un environnement de développement complet, pas quelque chose qu’on ouvre pour lire un fichier.
+Appuyez sur `⌘⇧V` dans VS Code et il fait le rendu du fichier Markdown dans un volet d’aperçu intégré, gratuitement, sans rien installer. Depuis VS Code 1.121 (mai 2026), cet aperçu affiche aussi les diagrammes Mermaid nativement : Microsoft a intégré une extension Mermaid à VS Code lui-même, alors qu’il fallait auparavant une extension séparée. Ce qu’il ne fait pas : c’est un volet d’aperçu à l’intérieur d’un éditeur, pas un éditeur conçu pour la lecture. Le volet se trouve à côté d’une arborescence de fichiers, d’un terminal et de tous les autres panneaux que VS Code peut afficher, et VS Code lui-même est une app Electron qu’on installe comme un environnement de développement complet, pas quelque chose qu’on ouvre pour lire un fichier.
 
 ## Une extension de navigateur pour les fichiers locaux
 
-Aucune extension de navigateur ne s’impose pour lire un fichier `.md` local : Local Markdown Viewer, Markdown Viewer, MarkView et d’autres font à peu près la même chose, et aucune n’est installée par défaut. Toutes ont besoin de la même étape supplémentaire avant de pouvoir ouvrir quoi que ce soit : activer « Autoriser l’accès aux URL de fichier » pour l’extension, car les navigateurs empêchent par défaut les extensions de lire les pages `file://`. C’est une autorisation que l’on accorde une fois par extension, et on oublie facilement qu’on l’a fait, ou pourquoi. Une fois activée, le fichier s’affiche dans un onglet du navigateur : il faut donc faire tourner un navigateur complet pour regarder un fichier.
+Aucune extension de navigateur ne s’impose pour lire un fichier `.md` local : Local Markdown Viewer, Markdown Viewer, MarkView et d’autres font à peu près la même chose, et aucune n’est installée par défaut. Toutes ont besoin de la même étape supplémentaire avant de pouvoir ouvrir quoi que ce soit : activer « Autoriser l’accès aux URL de fichier » pour l’extension, car les navigateurs empêchent par défaut les extensions de lire les pages `file://`. C’est une autorisation que l’on accorde une fois par extension, et on oublie facilement qu’on l’a fait, ou pourquoi. Une fois activée, le fichier s’affiche dans un onglet du navigateur : il faut donc faire tourner un navigateur complet pour regarder un fichier.
 
 ## L’aperçu de fichiers de Claude Desktop
 
-Claude Desktop affiche un fichier qui se trouve déjà dans un projet ou une conversation. Ce pour quoi il n’est pas conçu, c’est parcourir des fichiers quelconques sur le disque : vous pouvez regarder ce que la conversation contient déjà, pas un dossier de notes que vous gardez ouvert à côté de votre travail. La liste d’Anthropic [des types de documents que l’on peut importer](https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai) comprend PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON et XLSX : Markdown n’y figure pas.
+Claude Desktop affiche un fichier qui se trouve déjà dans un projet ou une conversation. Ce pour quoi il n’est pas conçu, c’est parcourir des fichiers quelconques sur le disque : vous pouvez regarder ce que la conversation contient déjà, pas un dossier de notes que vous gardez ouvert à côté de votre travail. La liste d’Anthropic [des types de documents que l’on peut importer](https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai) comprend PDF, DOCX, CSV, TXT, HTML, ODT, RTF, EPUB, JSON et XLSX : Markdown n’y figure pas.
 
 ## Un moteur de navigateur pour lire un fichier
 
-VS Code est une app Electron : un Chromium et un environnement Node.js embarqués, pas une app Mac native. L’extension de navigateur, elle, tourne dans un vrai navigateur. Dans les deux cas, afficher un fichier Markdown suppose de faire tourner un moteur de navigateur complet. MarsDawn est une app AppKit native : pas de navigateur embarqué ; elle ouvre directement n’importe quel fichier local, sans extension à installer ni autorisation à retenir.
+VS Code est une app Electron : un Chromium et un environnement Node.js embarqués, pas une app Mac native. L’extension de navigateur, elle, tourne dans un vrai navigateur. Dans les deux cas, afficher un fichier Markdown suppose de faire tourner un moteur de navigateur complet. MarsDawn est une app AppKit native : pas de navigateur embarqué ; elle ouvre directement n’importe quel fichier local, sans extension à installer ni autorisation à retenir.
 
 ## Pour aller plus loin
 
-- Ce que MarsDawn ne fait pas non plus : [la liste](/fr/limits/).
-- Transformer n’importe quel fichier Markdown en PDF dès aujourd’hui, gratuitement : [Markdown en PDF](/fr/markdown-to-pdf/).
-- Par rapport à une visionneuse Mac native : [MacMD Viewer ou MarsDawn](/fr/vs/macmd-viewer/).
+- Ce que MarsDawn ne fait pas non plus : [la liste](/fr/limits/).
+- Transformer n’importe quel fichier Markdown en PDF dès aujourd’hui, gratuitement : [Markdown en PDF](/fr/markdown-to-pdf/).
+- Par rapport à une visionneuse Mac native : [MacMD Viewer ou MarsDawn](/fr/vs/macmd-viewer/).
 
 ## Plus
 
@@ -47,8 +47,9 @@ VS Code est une app Electron : un Chromium et un environnement Node.js embarqué
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.

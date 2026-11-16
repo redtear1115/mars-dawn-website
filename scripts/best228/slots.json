@@ -192,7 +192,7 @@
    "locale": "en",
    "field": "app.marsdawn.bullet2",
    "source": "C1",
-   "text": "Drawback: the PDF export has no page numbers.",
+   "text": "Drawback: PDF page numbers need the Handbook or Handout layout. The default Document layout has none.",
    "html": true
   },
   {
@@ -633,7 +633,7 @@
    "locale": "en",
    "field": "comparison.marsdawn.c4",
    "source": "C1",
-   "text": "Yes, no page numbers",
+   "text": "Yes, page numbers in Handbook and Handout",
    "html": true
   },
   {
@@ -925,13 +925,6 @@
   },
   {
    "locale": "en",
-   "field": "notfor.1",
-   "source": "C1",
-   "text": "You need page numbers in your PDFs. Typora and Marked 3 add them, MarsDawn does not.",
-   "html": true
-  },
-  {
-   "locale": "en",
    "field": "notfor.2",
    "source": "C1",
    "text": "You keep a linked knowledge base of your own notes. Obsidian is built for that.",
@@ -983,7 +976,7 @@
    "locale": "en",
    "field": "faq.a2",
    "source": "C1",
-   "text": "Typora and Marked 3. MarsDawn exports PDF without page numbers.",
+   "text": "Typora, Marked 3 and MarsDawn. In MarsDawn, choose the Handbook or Handout layout; the default Document layout has no page numbers.",
    "html": true
   },
   {
@@ -1172,7 +1165,7 @@
    "locale": "zh-hant",
    "field": "app.marsdawn.bullet2",
    "source": "C1",
-   "text": "缺點：輸出的 PDF 沒有頁碼。",
+   "text": "缺點：PDF 要用手冊或講義版面才有頁碼，預設的文件版面沒有。",
    "html": true
   },
   {
@@ -1613,7 +1606,7 @@
    "locale": "zh-hant",
    "field": "comparison.marsdawn.c4",
    "source": "C1",
-   "text": "有，無頁碼",
+   "text": "有，手冊與講義版面含頁碼",
    "html": true
   },
   {
@@ -1905,13 +1898,6 @@
   },
   {
    "locale": "zh-hant",
-   "field": "notfor.1",
-   "source": "C1",
-   "text": "PDF 一定要有頁碼。Typora 與 Marked 3 能加，MarsDawn 不能。",
-   "html": true
-  },
-  {
-   "locale": "zh-hant",
    "field": "notfor.2",
    "source": "C1",
    "text": "你在經營互相連結的個人筆記庫。Obsidian 就是為此打造的。",
@@ -1963,7 +1949,7 @@
    "locale": "zh-hant",
    "field": "faq.a2",
    "source": "C1",
-   "text": "Typora 與 Marked 3。MarsDawn 輸出的 PDF 沒有頁碼。",
+   "text": "Typora、Marked 3 與 MarsDawn。在 MarsDawn 選手冊或講義版面；預設的文件版面沒有頁碼。",
    "html": true
   },
   {
@@ -2152,7 +2138,7 @@
    "locale": "zh-hans",
    "field": "app.marsdawn.bullet2",
    "source": "C4",
-   "text": "缺点：导出的 PDF 没有页码。",
+   "text": "缺点：PDF 要用手册或讲义布局才有页码，默认的文稿布局没有。",
    "html": true
   },
   {
@@ -2593,7 +2579,7 @@
    "locale": "zh-hans",
    "field": "comparison.marsdawn.c4",
    "source": "C4",
-   "text": "有，无页码",
+   "text": "有，手册与讲义布局带页码",
    "html": true
   },
   {
@@ -2885,13 +2871,6 @@
   },
   {
    "locale": "zh-hans",
-   "field": "notfor.1",
-   "source": "C4",
-   "text": "PDF 一定要有页码。Typora 与 Marked 3 能加，MarsDawn 不能。",
-   "html": true
-  },
-  {
-   "locale": "zh-hans",
    "field": "notfor.2",
    "source": "C4",
    "text": "你在维护互相链接的个人笔记库。Obsidian 就是为此打造的。",
@@ -2943,7 +2922,7 @@
    "locale": "zh-hans",
    "field": "faq.a2",
    "source": "C4",
-   "text": "Typora 与 Marked 3。MarsDawn 导出的 PDF 没有页码。",
+   "text": "Typora、Marked 3 与 MarsDawn。在 MarsDawn 中选择手册或讲义布局；默认的文稿布局没有页码。",
    "html": true
   },
   {
@@ -3132,7 +3111,7 @@
    "locale": "ja",
    "field": "app.marsdawn.bullet2",
    "source": "C1",
-   "text": "欠点：書き出したPDFにページ番号は付きません。",
+   "text": "欠点：PDFにページ番号を付けるには、ハンドブックか配布資料のレイアウトを選びます。初期設定の書類レイアウトには付きません。",
    "html": true
   },
   {
@@ -3573,7 +3552,7 @@
    "locale": "ja",
    "field": "comparison.marsdawn.c4",
    "source": "C1",
-   "text": "あり、ページ番号なし",
+   "text": "あり、ハンドブックと配布資料はページ番号付き",
    "html": true
   },
   {
@@ -3865,13 +3844,6 @@
   },
   {
    "locale": "ja",
-   "field": "notfor.1",
-   "source": "C1",
-   "text": "PDFにページ番号が必要な人。TyporaとMarked 3は付けられますが、MarsDawnは付けられません。",
-   "html": true
-  },
-  {
-   "locale": "ja",
    "field": "notfor.2",
    "source": "C1",
    "text": "リンクし合う自分のメモの知識ベースを育てている人。Obsidianはそのために作られています。",
@@ -3923,7 +3895,7 @@
    "locale": "ja",
    "field": "faq.a2",
    "source": "C1",
-   "text": "TyporaとMarked 3です。MarsDawnのPDFにページ番号は付きません。",
+   "text": "Typora、Marked 3、MarsDawnです。MarsDawnではハンドブックか配布資料のレイアウトを選びます。初期設定の書類レイアウトにページ番号は付きません。",
    "html": true
   },
   {
@@ -4112,7 +4084,7 @@
    "locale": "de",
    "field": "app.marsdawn.bullet2",
    "source": "C4",
-   "text": "Nachteil: Der PDF-Export hat keine Seitenzahlen.",
+   "text": "Nachteil: Seitenzahlen gibt es nur in den PDF-Layouts Handbuch und Handout. Das Standardlayout Dokument hat keine.",
    "html": true
   },
   {
@@ -4553,7 +4525,7 @@
    "locale": "de",
    "field": "comparison.marsdawn.c4",
    "source": "C4",
-   "text": "Ja, ohne Seitenzahlen",
+   "text": "Ja, Seitenzahlen in Handbuch und Handout",
    "html": true
   },
   {
@@ -4845,13 +4817,6 @@
   },
   {
    "locale": "de",
-   "field": "notfor.1",
-   "source": "C4",
-   "text": "Du brauchst Seitenzahlen im PDF. Typora und Marked 3 fügen sie hinzu, MarsDawn nicht.",
-   "html": true
-  },
-  {
-   "locale": "de",
    "field": "notfor.2",
    "source": "C4",
    "text": "Du pflegst eine verlinkte Wissensdatenbank aus eigenen Notizen. Dafür ist Obsidian gebaut.",
@@ -4903,7 +4868,7 @@
    "locale": "de",
    "field": "faq.a2",
    "source": "C4",
-   "text": "Typora und Marked 3. MarsDawn exportiert PDF ohne Seitenzahlen.",
+   "text": "Typora, Marked 3 und MarsDawn. Wähle in MarsDawn das Layout Handbuch oder Handout; das Standardlayout Dokument hat keine Seitenzahlen.",
    "html": true
   },
   {
@@ -5092,7 +5057,7 @@
    "locale": "fr",
    "field": "app.marsdawn.bullet2",
    "source": "C4",
-   "text": "Défaut : l’export PDF n’a pas de numéros de page.",
+   "text": "Défaut : les numéros de page exigent la mise en page Guide ou Polycopié. La mise en page par défaut, Document, n’en a pas.",
    "html": true
   },
   {
@@ -5533,7 +5498,7 @@
    "locale": "fr",
    "field": "comparison.marsdawn.c4",
    "source": "C4",
-   "text": "Oui, sans numéros de page",
+   "text": "Oui, numéros de page en Guide et Polycopié",
    "html": true
   },
   {
@@ -5825,13 +5790,6 @@
   },
   {
    "locale": "fr",
-   "field": "notfor.1",
-   "source": "C4",
-   "text": "Il vous faut des numéros de page dans vos PDF. Typora et Marked 3 les ajoutent, MarsDawn non.",
-   "html": true
-  },
-  {
-   "locale": "fr",
    "field": "notfor.2",
    "source": "C4",
    "text": "Vous entretenez une base de connaissances de notes liées. Obsidian est fait pour cela.",
@@ -5883,7 +5841,7 @@
    "locale": "fr",
    "field": "faq.a2",
    "source": "C4",
-   "text": "Typora et Marked 3. MarsDawn exporte le PDF sans numéros de page.",
+   "text": "Typora, Marked 3 et MarsDawn. Dans MarsDawn, choisissez la mise en page Guide ou Polycopié ; la mise en page par défaut, Document, n’a pas de numéros de page.",
    "html": true
   },
   {
@@ -6072,7 +6030,7 @@
    "locale": "es",
    "field": "app.marsdawn.bullet2",
    "source": "C4",
-   "text": "Defecto: el PDF exportado no tiene números de página.",
+   "text": "Defecto: los números de página requieren la disposición Guía o Folleto. La disposición predeterminada, Documento, no los tiene.",
    "html": true
   },
   {
@@ -6513,7 +6471,7 @@
    "locale": "es",
    "field": "comparison.marsdawn.c4",
    "source": "C4",
-   "text": "Sí, sin números de página",
+   "text": "Sí, números de página en Guía y Folleto",
    "html": true
   },
   {
@@ -6805,13 +6763,6 @@
   },
   {
    "locale": "es",
-   "field": "notfor.1",
-   "source": "C4",
-   "text": "Necesitas números de página en tus PDF. Typora y Marked 3 los agregan, MarsDawn no.",
-   "html": true
-  },
-  {
-   "locale": "es",
    "field": "notfor.2",
    "source": "C4",
    "text": "Mantienes una base de conocimiento de notas enlazadas. Obsidian está hecho para eso.",
@@ -6863,7 +6814,7 @@
    "locale": "es",
    "field": "faq.a2",
    "source": "C4",
-   "text": "Typora y Marked 3. MarsDawn exporta PDF sin números de página.",
+   "text": "Typora, Marked 3 y MarsDawn. En MarsDawn, elige la disposición Guía o Folleto; la disposición predeterminada, Documento, no tiene números de página.",
    "html": true
   },
   {
@@ -7052,7 +7003,7 @@
    "locale": "ko",
    "field": "app.marsdawn.bullet2",
    "source": "C4",
-   "text": "단점: 내보낸 PDF에 페이지 번호가 없습니다.",
+   "text": "단점: PDF에 페이지 번호를 넣으려면 설명서나 프린트물 레이아웃을 써야 합니다. 기본값인 문서 레이아웃에는 없습니다.",
    "html": true
   },
   {
@@ -7493,7 +7444,7 @@
    "locale": "ko",
    "field": "comparison.marsdawn.c4",
    "source": "C4",
-   "text": "지원, 페이지 번호 없음",
+   "text": "지원, 설명서와 프린트물에 페이지 번호",
    "html": true
   },
   {
@@ -7785,13 +7736,6 @@
   },
   {
    "locale": "ko",
-   "field": "notfor.1",
-   "source": "C4",
-   "text": "PDF에 페이지 번호가 꼭 필요한 사람. Typora와 Marked 3은 넣을 수 있지만 MarsDawn은 넣을 수 없습니다.",
-   "html": true
-  },
-  {
-   "locale": "ko",
    "field": "notfor.2",
    "source": "C4",
    "text": "서로 링크된 개인 메모 지식 베이스를 가꾸는 사람. Obsidian은 그 용도로 만들어졌습니다.",
@@ -7843,7 +7787,7 @@
    "locale": "ko",
    "field": "faq.a2",
    "source": "C4",
-   "text": "Typora와 Marked 3입니다. MarsDawn의 PDF에는 페이지 번호가 없습니다.",
+   "text": "Typora, Marked 3, MarsDawn입니다. MarsDawn에서는 설명서나 프린트물 레이아웃을 선택하면 됩니다. 기본값인 문서 레이아웃에는 페이지 번호가 없습니다.",
    "html": true
   },
   {

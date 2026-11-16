@@ -1,0 +1,40 @@
+{
+ "comments": {
+  "A": {
+   "issue": 369,
+   "id": 6796812714,
+   "what": "Aria's 8-locale copy for #369 (plan A): 13 keys per locale, as JSON under '## 8 語全文'; en and zh-Hant approved by the owner",
+   "created_at": "2026-11-11T13:15:06Z",
+   "updated_at": "2026-11-11T13:15:06Z",
+   "sha256": "d69ed26498e21d86a4dc96bc9faa2e00368470a069f836fa5cd0dda6346036fd",
+   "chars": 25649
+  },
+  "approval": {
+   "issue": 369,
+   "id": 6796859928,
+   "what": "decision comment recording the owner's 2026-11-11 reply '#369 文案 ok' (en and zh-Hant final; the other six locales are Aria's)",
+   "created_at": "2026-11-11T13:17:14Z",
+   "updated_at": "2026-11-11T13:17:14Z",
+   "sha256": "3780797beaeb63250ef6511b458c85ee9c986862aaf865ed1d5123370818f0e8",
+   "chars": 212
+  },
+  "scope": {
+   "issue": 369,
+   "id": 6773514660,
+   "what": "Daphne's positions and en word limits for plan A",
+   "created_at": "2026-11-10T16:53:27Z",
+   "updated_at": "2026-11-10T16:53:27Z",
+   "sha256": "faadd52790eca0345dce218168d033bd8652fc708fa560ca102704b8c7ee6291",
+   "chars": 2860
+  },
+  "plan_a": {
+   "issue": 369,
+   "id": 6796672544,
+   "what": "decision: plan A, copy changed in place, no new blocks or screenshots",
+   "created_at": "2026-11-11T13:08:29Z",
+   "updated_at": "2026-11-11T13:08:29Z",
+   "sha256": "82f2adae40d11efc6d902d933d30ed6752dd3b04b6ec312e8c7833979568108d",
+   "chars": 369
+  }
+ }
+}

@@ -251,15 +251,13 @@ FEATURES = {'title': 'Funciones: un editor de Markdown para Mac, en una sola pá
                'lead': '',
                'lead_links': [],
                'items': [{'h': 'Ventanas y pestañas',
-                          'p': 'Cada documento se abre en su propia ventana. Elige Ventana ▸ Unir '
-                               'todas las ventanas para reunir las ventanas abiertas como pestañas '
-                               'de una sola. El guardado automático funciona mientras escribes.',
+                          'p': 'De forma predeterminada, los documentos se abren como pestañas de la ventana del frente. Para usar el ajuste de pestañas de tu Mac, elige Seguir ajuste del sistema en Ajustes ▸ Aspecto. El guardado automático funciona mientras escribes.',
                           'links': ['native']},
                          {'h': 'Vista Rápida en el Finder',
                           'p': 'Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora para leerlo renderizado, con los diagramas incluidos. Los archivos JSON y YAML se muestran en árbol. Vista Rápida usa el tema que elegiste en MarsDawn y sigue su ajuste de aspecto.',
                           'links': ['native']},
                          {'h': 'Otros archivos',
-                          'p': 'MarsDawn también abre archivos de texto sin formato (.txt, .log, código fuente) y PDF. El texto UTF-8 se abre listo para editar, solo como código. Los PDF se abren en un visor con miniaturas de página, zoom y búsqueda. En el Mac, abre archivos JSON y YAML como documentos editables, con una vista previa en árbol que se actualiza mientras escribes. Vista Rápida en el Finder muestra el mismo árbol. El iPhone y el iPad no abren archivos JSON ni YAML.',
+                          'p': 'MarsDawn también abre archivos de texto sin formato (.txt, .log, código fuente) y PDF. El texto UTF-8 se abre listo para editar, solo como código. Los PDF se abren en un visor con miniaturas de página, zoom y búsqueda. En el Mac, abre archivos JSON y YAML como documentos editables, con una vista previa en árbol que se actualiza mientras escribes. Vista Rápida en el Finder muestra el mismo árbol. En el iPhone y el iPad, JSON y YAML se abren en modo de solo lectura, con vista previa en árbol.',
                           'links': []},
                          {'h': 'Tus archivos siguen siendo tuyos',
                           'p': 'No hay cuenta, ni sincronización, ni nube. Los documentos se '
@@ -308,7 +306,7 @@ FEATURES = {'title': 'Funciones: un editor de Markdown para Mac, en una sola pá
                        'En el iPhone o el iPad: en MarsDawn, toca «Abrir» y elige el mismo archivo. Los diagramas Mermaid, las fórmulas, el código y las tablas se muestran con formato, con el esquema y tu tema.',
                        'De vuelta en el Mac: sigue editando o exporta un PDF.'],
              'buy': 'Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad.',
-             'limits': 'En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.'},
+             'limits': 'En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown, de texto, PDF, JSON y YAML, pero no los edita. Los enlaces de un PDF guardado desde ahí no funcionan. MarsDawn no tiene nube propia.'},
  'cta': {'h2': 'Pruébalo en tu Mac',
          'p1': 'MarsDawn se descarga gratis. Prueba todo durante 14 días y después desbloquéalo '
                'una sola vez por 4,99 USD. Sin suscripción ni cuenta. Requiere macOS 26 o '
@@ -694,7 +692,7 @@ def build(k) -> dict:
 <ul>
   <li>La prueba tampoco te cobra nada. Cuando termina, no se compra nada a menos que elijas desbloquear.</li>
   <li>No hay cuenta. MarsDawn nunca te pide que crees una.</li>
-  <li>Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad. En iPhone y iPad, MarsDawn es para leer: no edita ni exporta PDF.</li>
+  <li>Con la misma cuenta de Apple, una prueba y un desbloqueo cubren MarsDawn en Mac, iPhone y iPad. En iPhone y iPad, MarsDawn es para leer: no edita.</li>
 </ul>
 <h2>Qué funciona y cuándo</h2>
 <!--compare:pay-once-states-->
@@ -753,6 +751,12 @@ def build(k) -> dict:
   <li>Siri y Atajos: crea un documento nuevo a partir de una plantilla, agrega una línea a la bandeja de entrada de tus notas o vuelve a abrir un documento reciente.</li>
   <li>Inglés, chino tradicional, chino simplificado, japonés, alemán, francés, español y coreano.</li>
 </ul>
+<h3>Pequeña y silenciosa</h3>
+<ul>
+  <li>Una descarga de 11,4 MB desde el Mac App Store.</li>
+  <li>0 % de CPU con un documento abierto y sin cambios.</li>
+</ul>
+<p>Medido con la versión 1.2.1, noviembre de 2026.</p>
 """,
     }
     pages['limits'] = {
@@ -769,7 +773,7 @@ def build(k) -> dict:
 <h3>Dispositivos y personas</h3>
 <ul>
   <li><strong>Sincronización:</strong> MarsDawn no sincroniza tus documentos. Se quedan donde los guardas; para usar uno en otro Mac, guárdalo en una carpeta que ya sincronices.</li>
-  <li><strong>iPhone y iPad:</strong> Allí, MarsDawn es solo para leer. Abre archivos Markdown y de texto plano, y no edita ni exporta PDF. Lee los archivos que guardas en iCloud Drive; MarsDawn no tiene nube propia.</li>
+  <li><strong>iPhone y iPad:</strong> Allí, MarsDawn es solo para leer. Abre archivos Markdown, de texto, PDF, JSON y YAML, pero no los edita. Puedes compartir, imprimir o guardar como PDF, pero los enlaces de un PDF guardado desde ahí no funcionan. Lee los archivos que guardas en iCloud Drive o abres desde otra app; MarsDawn no tiene nube propia.</li>
   <li><strong>Compartir:</strong> no hay cuentas ni edición compartida, porque MarsDawn es para una persona en su propio Mac.</li>
   <li><strong>Sistema:</strong> MarsDawn necesita macOS 26 o posterior en la Mac, y iOS 26 o iPadOS 26 o posterior en iPhone y iPad.</li>
 </ul>
@@ -777,7 +781,7 @@ def build(k) -> dict:
 <ul>
   <li><strong>Edición:</strong> escribes Markdown a la izquierda y lees la página a la derecha; la página en sí no se puede editar.</li>
   <li><strong>Formatos:</strong> MarsDawn exporta a PDF e imprime, pero no exporta archivos de Word.</li>
-  <li><strong>Otros archivos:</strong> los PDF y los archivos de texto con una codificación distinta de UTF-8 se abren en modo de solo lectura. En el Mac, JSON y YAML se abren como documentos editables con vista previa en árbol; el iPhone y el iPad no los abren.</li>
+  <li><strong>Otros archivos:</strong> los PDF y los archivos de texto con una codificación distinta de UTF-8 se abren en modo de solo lectura. En el Mac, JSON y YAML se abren como documentos editables con vista previa en árbol; en el iPhone y el iPad se abren en modo de solo lectura, también con vista previa en árbol.</li>
   <li><strong>Temas:</strong> incluye Amanecer, Clásico, Moderno y Vívido, cada uno en claro y oscuro, y puedes instalar más desde la <a href="/es/themes/gallery/">Galería de temas</a> revisada (Ajustes ▸ Aspecto ▸ Obtener más temas…). Un tema define colores y unas pocas opciones de estilo; no hay CSS personalizado. Consulta <a href="/es/themes/">temas</a>.</li>
   <li><strong>Plugins:</strong> MarsDawn no tiene plugins ni extensiones.</li>
 </ul>
@@ -931,7 +935,7 @@ marsdawn open notes.md --folder .</code></pre>
         'native': {"alt": 'MarsDawn en vista dividida: el código Markdown a la izquierda y la página renderizada a la derecha.',
                    "callouts": ['Una ventana nativa de Mac.', 'El editor de texto de la Mac, con resaltado de Markdown.', '⌘1 código, ⌘2 dividido, ⌘3 vista previa.', 'La página se actualiza mientras escribes.']},
         'limits': {"alt": 'MarsDawn en modo oscuro, con el código Markdown a la izquierda y la página renderizada a la derecha.',
-                   "callouts": ['Un documento por ventana, en este Mac.', 'Aquí escribes Markdown.', 'La barra de herramientas tiene temas y disposiciones, y no hay menú de plugins.', 'La página es para leer, no para editar.']},
+                   "callouts": ['Cada documento es un archivo en este Mac.', 'Aquí escribes Markdown.', 'La barra de herramientas tiene temas y disposiciones, y no hay menú de plugins.', 'La página es para leer, no para editar.']},
     }
     home = {
         "cta_cli": 'Instala la CLI gratuita',

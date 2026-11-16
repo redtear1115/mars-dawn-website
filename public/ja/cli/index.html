@@ -173,15 +173,15 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>：プレビューテーマのライトパレット。デフォルトは <code>$MARSDAWN_THEME</code>、それもなければ <code>dawn</code> です。</li>
   <li><code>--paper &lt;a4|letter&gt;</code>：用紙サイズ。デフォルトは <code>a4</code> です。</li>
   <li><code>--breaks</code>：HackMD と同じように、段落内の改行をすべて改行として表示します。付けないときは、中国語や日本語の文字どうしのあいだの改行を取り除き、前後の行を 1 つの文としてつなげます。</li>
-  <li><code>--layout &lt;document|handbook&gt;</code>：ページのレイアウト。初期値は <code>document</code>。<code>handbook</code> はハンドブックとして書き出します。余白を広くして綴じ側を取り、レベル 1 の見出しごとに改ページし、ページ番号付きの目次ページ、フッターのページ番号、PDF のしおりを付けます。front matter に <code>title</code> があれば表紙も付けます。</li>
+  <li><code>--layout &lt;document|handbook|handout&gt;</code>：ページのレイアウト。初期値は <code>document</code>。<code>handbook</code> はハンドブックとして書き出します。余白を広くして綴じ側を取り、レベル 1 の見出しごとに改ページし、ページ番号付きの目次ページ、フッターのページ番号、PDF のしおりを付けます。front matter に <code>title</code> があれば表紙も付けます。<code>handout</code> は、各ページの右側に空白のメモ欄を設け、1 ページ目の上部にタイトルと日付を入れ、各ページの末尾にファイル名、日付、ページ番号を入れます。とても幅の広い表は、メモ欄にはみ出すことがあります。</li>
   <li><code>--toc-title &lt;text&gt;</code>：ハンドブックの目次ページの見出し。初期値は <code>Contents</code>。</li>
-  <li>1 行だけの <code>&lt;!--BREAK--&gt;</code> で改ページします。どちらのレイアウトでも使えます。</li>
+  <li>1 行だけの <code>&lt;!--BREAK--&gt;</code> で改ページします。どのレイアウトでも使えます。</li>
   <li><code>--allow-remote-images</code>：レンダリング時にウェブから画像を読み込みます。デフォルトはオフです。</li>
   <li><code>--force</code>：出力ファイルがすでに存在する場合に置き換えます。</li>
   <li><code>--json</code>：テキストではなく JSON の結果を出力します。</li>
   <li>16 MiB を超えるファイルは書き出しません。<code>export</code> はコード 5 で終了し、何も書き出しません。</li>
 </ul>
-<p><code>--breaks</code> は marsdawn 0.7.0 で、<code>--layout</code> と <code>--toc-title</code> は 0.7.1 で、<code>handbook</code> という名前は 0.7.2 で追加されました。0.7.1 の名前 <code>manual</code> も使えます。</p>
+<p><code>--breaks</code> は marsdawn 0.7.0 で、<code>--layout</code> と <code>--toc-title</code> は 0.7.1 で、<code>handbook</code> という名前は 0.7.2 で、<code>handout</code> は 0.7.3 で追加されました。0.7.1 の名前 <code>manual</code> も使えます。</p>
 
 <h3>marsdawn theme</h3>
 <p>テーマファイル（<code>theme.json</code>）を共有する前に、チェックして見た目を確かめます。MarsDawn アプリは不要です。テーマの項目は <a href="/ja/themes/agents/">エージェントとテーマを作る</a> を参照してください。</p>

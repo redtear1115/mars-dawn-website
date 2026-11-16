@@ -11,10 +11,10 @@ The page shows a working MarsDawn window over part of the app's Welcome guide. I
 ## Read what your agent wrote, away from your desk
 
 1. On your Mac, have your agent save its files to a folder in iCloud Drive.
-2. On your iPhone or iPad, open MarsDawn and choose the file.
-3. To edit it or export a PDF, go back to your Mac.
+2. On your iPhone or iPad, open it in MarsDawn, or from another app.
+3. Share, print or save it as a PDF; edit it on your Mac.
 
-On iPhone and iPad, MarsDawn is for reading only. It opens Markdown and plain text files.
+On iPhone and iPad, MarsDawn is for reading only. It opens Markdown, text, PDF, JSON and YAML.
 
 [![Download on the App Store](/assets/badges/app-store-en.svg)](https://apps.apple.com/app/id6812925073)
 
@@ -62,12 +62,12 @@ Know before you buy. [What MarsDawn doesn't do](/limits/)
 
 ## How the pieces fit
 
-What each part does today, as of MarsDawn 1.1.1, marsdawn 0.6.4 and marsdawn-mcp v0.2.4.
+What each part does today, as of MarsDawn 1.2.1, marsdawn 0.7.7 and marsdawn-mcp v0.2.4.
 
 | Capability | In the app | CLI | MCP / skill | Status |
 |---|---|---|---|---|
 | Open at a line | Lands on the line, flashes the preview block | marsdawn open notes.md:120 (--background keeps focus) | open_in_marsdawn; the skill opens once | Shipped |
-| PDF export | File ▸ Export as PDF… (⌥⌘E) | marsdawn export, no app needed | export_markdown_to_pdf; skill | Shipped |
+| PDF export | File ▸ Export as PDF… (⌥⌘E), with Document, Handbook and Handout layouts | marsdawn export, no app needed; --layout handbook or handout | export_markdown_to_pdf; skill | Shipped |
 | JSON result | — | --json on open and export | MCP returns the same JSON | Shipped |
 | Agent skill | — | marsdawn skill --install | Teaches open once and export | Shipped |
 | MCP server | — | Runs underneath | marsdawn-mcp: two tools, allowed folders only | Shipped |
@@ -116,7 +116,7 @@ No. MarsDawn is a free download with a 14-day trial of every feature. After that
 
 ### Does MarsDawn work on iPhone or iPad?
 
-Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown and plain text files and renders Mermaid diagrams, math, code and tables, with an outline and themes. It doesn't edit or export PDFs. It needs iOS 26 or iPadOS 26 or later. With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.
+Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown, text, PDF, JSON and YAML, with Mermaid, math, code and tables rendered. Files can be shared, printed or saved as PDFs, but not edited. It needs iOS 26 or iPadOS 26 or later. With the same Apple Account, one trial and one unlock cover Mac, iPhone and iPad.
 
 More: [Roadmap](/roadmap/)
 
@@ -150,7 +150,7 @@ More: [Privacy Policy](/privacy/#the-website)
 
 ### Why use MarsDawn instead of another app?
 
-You may not need it. If you mostly write your own notes, a notes app such as Obsidian fits better. If you live in VS Code, its built-in preview is free. If you only want to peek at files in Finder, a free Quick Look extension is enough. If your PDFs need page numbers, MarsDawn doesn't add them. MarsDawn is for reading and reviewing Markdown an agent wrote: the source beside a live preview, a change from your agent you can undo in one step, and a file opened at the exact line. If it doesn't suit you, write and tell us why.
+You may not need it. If you mostly write your own notes, a notes app such as Obsidian fits better. If you live in VS Code, its built-in preview is free. If you only want to peek at files in Finder, a free Quick Look extension is enough. MarsDawn is for reading and reviewing Markdown an agent wrote: the source beside a live preview, a change from your agent you can undo in one step, and a file opened at the exact line. If it doesn't suit you, write and tell us why.
 
 More: [How MarsDawn compares](/vs/) · [Best Markdown viewer for Mac](/best-markdown-viewer-mac/)
 
@@ -195,8 +195,9 @@ In this screenshot:
 - [How to open .md files on Mac](https://marsdawn.southern-light.dev/view-markdown-on-mac/index.md): How to open a .md file on a Mac: double-click, set a default app, preview in Finder. For .md files an AI agent wrote, read them rendered in MarsDawn.
 - [Mermaid preview on Mac](https://marsdawn.southern-light.dev/mermaid-preview-mac/index.md): See Mermaid diagrams drawn next to your Markdown on a Mac: live preview, Quick Look and PDF export. A broken diagram shows its error and the line.
 - [Quick Look for Markdown](https://marsdawn.southern-light.dev/quicklook/index.md): MarsDawn's Quick Look renders Markdown in Finder when you press Space, with Mermaid, KaTeX and highlighted code. It keeps working after the trial ends.
+- [Copy for AI](https://marsdawn.southern-light.dev/copy-for-ai/index.md): Copy selected text with its file path and line numbers, then paste it into Claude Code or any agent. MarsDawn does this on your Mac, with no IDE or plugin.
 - [Markdown to PDF](https://marsdawn.southern-light.dev/markdown-to-pdf/index.md): Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.
-- [MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/vs/index.md): For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on Support.
+- [MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/vs/index.md): For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026, except MarsDawn's PDF cell, updated on 7 November 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on Support.
 - [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer is a read-only Markdown viewer for USD 19.99. MarsDawn edits and previews side by side: free for 14 days, then USD 4.99 once.
 - [Best Markdown viewer for Mac (2026)](https://marsdawn.southern-light.dev/best-markdown-viewer-mac/index.md): Eight Markdown viewers for Mac compared by price, Mermaid, math, PDF, live reload, Quick Look and native vs Electron, with who each one suits.
 - [Command Line](https://marsdawn.southern-light.dev/cli/index.md): The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.

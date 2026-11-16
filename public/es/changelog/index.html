@@ -124,12 +124,47 @@ try {
 <main id="main">
 <section class="intro">
   <h1>Historial de cambios</h1>
-  <p>Qué cambió en cada versión de la app MarsDawn del Mac App Store y de la herramienta de línea de comandos gratuita marsdawn. En la app, la fecha es el día en que la versión apareció en el Mac App Store.</p>
+  <p>Qué cambió en cada versión de la app MarsDawn para Mac, iPhone y iPad, y de la herramienta de línea de comandos gratuita marsdawn. En la app, la fecha es el día en que la versión apareció en el App Store.</p>
 </section>
 
 <p>Lo que viene después está en la <a href="/es/roadmap/">hoja de ruta</a>.</p>
 
-<h2 id="marsdawn-app">App MarsDawn</h2>
+<h2 id="marsdawn-app">MarsDawn para Mac</h2>
+
+<h3 id="app-1-2-2">MarsDawn 1.2.2</h3>
+<p>14 de noviembre de 2026</p>
+<ul>
+  <li>Archivo &gt; «Imprimir…» y Archivo &gt; «Exportar como PDF…» ahora abren la hoja «Imprimir y exportar», con una vista previa del PDF. Elige «Documento», «Guía» o «Folleto» y luego imprime o guarda como PDF. Imprimir ya no se limita a «Documento».</li>
+  <li>Corregido: el texto escrito justo después del guardado automático podía reemplazarse, y desplazarse justo después de volver a «Dividido» podía saltar atrás.</li>
+  <li>Con «Guía», la hoja «Imprimir y exportar» muestra lo que aparecerá en la portada y puedes añadir la imagen de portada «Amanecer en Marte». También puedes añadir «Imprimir y exportar» a la barra de herramientas.</li>
+  <li>Archivo &gt; «Añadir planes de Claude Code…» añade a la barra lateral «Archivos» la carpeta donde Claude Code guarda sus planes, con los más recientes primero. El menú de ordenación de la barra lateral tiene una opción nueva, «Mostrar solo los archivos que MarsDawn puede abrir», que se ajusta para cada carpeta.</li>
+</ul>
+
+<h3 id="app-1-2-1">MarsDawn 1.2.1</h3>
+<p>3 de noviembre de 2026</p>
+<ul>
+  <li>En el Mac, abre archivos JSON y YAML como documentos editables, con una vista previa en árbol que se actualiza mientras escribes. Vista Rápida en el Finder muestra el mismo árbol.</li>
+  <li>MarsDawn ya está en iPhone y iPad, para leer. Con la misma cuenta de Apple, una prueba y un desbloqueo cubren Mac, iPhone y iPad, y las pantallas de desbloqueo ahora lo indican.</li>
+</ul>
+
+<h3 id="app-1-2-0">MarsDawn 1.2.0</h3>
+<p>27 de octubre de 2026</p>
+<ul>
+  <li>Una barra de formato sobre el editor y el nuevo menú Formato insertan negrita (⌘B), cursiva (⌘I), tachado (⇧⌘X), encabezados H1–H6 (⌥⌘1–⌥⌘6), código, citas, listas con viñetas, numeradas y de tareas, enlaces (⌘K), «Imagen…», tablas, separadores, diagramas de Mermaid y fórmulas. Activa por omisión; ocúltala en Visualización &gt; «Ocultar barra de formato» o en Ajustes &gt; Aspecto.</li>
+  <li>Visualización &gt; Solo código &gt; «Ocultar sintaxis de Markdown» (⌘/) oculta las marcas en Solo código dejando en Markdown la línea del cursor, y recuerda tu elección.</li>
+  <li>Archivo &gt; «Nuevo a partir del portapapeles» (⌥⌘V) abre el portapapeles en un documento nuevo. Si contiene texto JSON escapado de una IA (como \n), lo convierte una vez para leerlo y muestra una barra para conservar el original.</li>
+  <li>Selecciona texto en el editor o en la vista previa y usa «Enviar a…» en el menú contextual para abrir Claude o ChatGPT con una indicación, tu selección, la ruta relativa (o el nombre del archivo) y los números de línea. Pide confirmación el primer uso y ofrece copiar si la selección es demasiado larga.</li>
+  <li>Edición &gt; «Copiar como texto con formato» copia los bloques seleccionados, o todo el documento, con formato para Mail, Pages, Documentos de Google o Notion, junto con el Markdown en texto sin formato.</li>
+  <li>Ayuda &gt; «Instalar la herramienta de línea de comandos y la skill de agente…» abre una ventana con el comando de una línea e instrucciones para copiar en tu agente de IA, sin instalar nada por sí misma.</li>
+  <li>Archivo &gt; «Exportar como PDF…» añade un menú «Disposición» (recordado entre exportaciones) con tres opciones para cualquier tema: «Estándar», «Guía» (portada desde tu front matter, índice numerado, cada capítulo en página nueva, pie «n / N», marcadores PDF y margen de encuadernación) y «Folleto» (columna derecha para notas, título en la página 1, pie «nombre · fecha · n / N» y tablas anchas). «Imprimir…» usa siempre «Estándar».</li>
+  <li>Pulsa ⌘F en Solo vista previa o en el lado de la vista previa en modo Dividido para buscar: ⌘G y ⇧⌘G recorren las coincidencias dando la vuelta, ⌘E usa la selección actual y los resultados se resaltan en amarillo. En modo Dividido busca en el lado activo.</li>
+  <li>El texto entre virgulillas simples sin espacios, como ~x~, ahora se muestra como subíndice, igual que en HackMD. Para tachar texto, usa dos virgulillas: ~~x~~. Esto se aplica a la vista previa, a «Exportar como PDF» y a Vista rápida.</li>
+  <li>MarsDawn ahora también lee más sintaxis de HackMD: ==resaltado==, ^superíndice^, una tabla de contenido con [TOC], tamaños de imagen como =300x200 e inserciones como {%youtube %}, que aparecen como enlaces.</li>
+  <li>«Mantener saltos de línea simples» en Ajustes &gt; Aspecto respeta cada salto de línea del código en la vista previa, «Exportar como PDF», al imprimir y en Vista rápida, como en HackMD.</li>
+  <li>Los archivos Markdown en otra codificación (como Big5) se abren en solo lectura con una barra para «Guardar como UTF-8…». «Exportar como PDF…» e «Imprimir…» siguen funcionando igual.</li>
+  <li>En documentos de más de 16 MiB, la barra lateral Esquema muestra «Este documento es demasiado grande para mostrar un esquema.» en vez de «Sin encabezados».</li>
+  <li>El recuento de palabras ya no cuenta bloques de código en secciones details plegadas, y las llamadas a nota al pie sobre una tabla se muestran como enlaces.</li>
+</ul>
 
 <h3 id="app-1-1-1">MarsDawn 1.1.1</h3>
 <p>15 de octubre de 2026</p>
@@ -142,8 +177,61 @@ try {
 
 <p>Las versiones anteriores solo tienen notas en inglés: <a href="/changelog/">ver el historial en inglés</a>.</p>
 
+<h2 id="marsdawn-ios">MarsDawn para iPhone y iPad</h2>
+
+<h3 id="ios-1-0-2">MarsDawn 1.0.2</h3>
+<p>13 de noviembre de 2026</p>
+<ul>
+  <li>Abre archivos PDF y busca texto en ellos. Un PDF con contraseña te la pide primero.</li>
+  <li>Abre archivos JSON y YAML como documentos de solo lectura, con una vista previa en árbol.</li>
+  <li>Abre archivos Markdown, de texto, PDF, JSON y YAML desde Archivos, Mail y otras apps.</li>
+  <li>Busca texto en la vista previa (⌘F con teclado). «Aspecto y tema» tiene un nuevo ajuste: «Mantener saltos de línea simples».</li>
+  <li>Comparte el archivo desde la barra de herramientas o imprímelo.</li>
+  <li>En el iPad y el iPhone Duo desplegado, el esquema pasa a ser una barra lateral que muestra dónde estás. Los marcadores del PDF también aparecen ahí.</li>
+</ul>
+
+<p>No se incluyen las versiones anteriores a la 1.0.2.</p>
+
 <h2 id="marsdawn-command-line-tool">Herramienta de línea de comandos marsdawn</h2>
 <p>No se incluyen las versiones anteriores a la 0.5.1.</p>
+
+<h3 id="marsdawn-0-7-7">marsdawn 0.7.7</h3>
+<p>9 de noviembre de 2026. Exportación a PNG, bloques plegables y exportaciones más rápidas de archivos grandes.</p>
+<ul>
+  <li><code>marsdawn export --format png</code> exporta un documento a PNG para comprobar cómo se ve: <code>--width</code> (600–2000, 1200 por defecto), <code>--appearance light|dark</code>, <code>--theme</code>, y <code>--lines</code> o <code>--heading</code> para exportar solo una parte. Una página de más de 8000 píxeles de alto se divide en imágenes numeradas, nunca en medio de una tabla, un bloque de código o un diagrama.</li>
+  <li><code>marsdawn export --details</code> decide cómo se imprimen los bloques plegables: <code>expand</code>, la opción predeterminada, los imprime todos abiertos, como antes; <code>as-written</code> solo abre los bloques escritos como abiertos e imprime de los demás solo el resumen. En ambos casos, el resumen se imprime como una línea en negrita, sin triángulo.</li>
+  <li>Los bloques plegables admiten más formas de escribir de HackMD y Obsidian: <code>:::spoiler</code> sin título o con <code>{state="open"}</code>, Markdown en los títulos, <code>::::spoiler</code> anidados y los avisos destacados plegables de Obsidian <code>&gt; [!note]-</code> y <code>&gt; [!tip]+</code>.</li>
+  <li>Los documentos grandes se exportan mucho más rápido: en nuestra prueba, un archivo de 10 MB tardó unos 74 segundos en vez de unos 4 minutos.</li>
+  <li>Cuando se ejecutaban varios comandos <code>marsdawn export</code> a la vez, uno podía terminar con el código 5. Ahora vuelve a intentarlo.</li>
+  <li>Cuando la app MarsDawn no está abierta, varios comandos <code>marsdawn open</code> a la vez ahora abren todos los archivos. Antes, algunos archivos no se abrían aunque el comando informara que todo había ido bien.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-6">marsdawn 0.7.6</h3>
+<p>2 de noviembre de 2026. Los PDF de Guía en macOS 27.2.</p>
+<ul>
+  <li>En macOS 27.2, un PDF con la disposición Guía conserva los números de página de la tabla de contenido y los marcadores de los capítulos que empiezan en una página nueva.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-5">marsdawn 0.7.5</h3>
+<p>30 de octubre de 2026. Los encabezados de Folleto no se separan de sus tablas.</p>
+<ul>
+  <li>En la disposición Folleto, un encabezado se mantiene con la tabla ancha que tiene debajo, en lugar de quedar solo al pie de la página.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-4">marsdawn 0.7.4</h3>
+<p>25 de octubre de 2026. Correcciones en las notas al pie.</p>
+<ul>
+  <li>Una referencia a nota al pie en el párrafo justo encima de una tabla enlaza con su nota.</li>
+  <li>Una referencia a nota al pie en el título de un aviso destacado, el resumen de un spoiler o el texto alternativo de una imagen ya no deja caracteres sobrantes en la página. En el texto alternativo se queda tal como se escribió.</li>
+  <li>Una referencia a nota al pie en una línea posterior de la definición de una nota queda en el lugar correcto, así que ya no rompe un código en línea cercano.</li>
+  <li>La skill para agentes nombra todos los errores de uso que imprimen JSON.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-3">marsdawn 0.7.3</h3>
+<p>22 de octubre de 2026. La disposición Folleto.</p>
+<ul>
+  <li><code>marsdawn export --layout handout</code> deja una columna de notas en blanco a la derecha de cada página, pone el título y la fecha en la parte superior de la página 1 y termina cada página con el nombre del archivo, la fecha y el número de página. Una tabla muy ancha puede invadir la columna de notas.</li>
+</ul>
 
 <h3 id="marsdawn-0-7-2">marsdawn 0.7.2</h3>
 <p>20 de octubre de 2026. La disposición Guía, los avisos destacados y las fuentes japonesas.</p>

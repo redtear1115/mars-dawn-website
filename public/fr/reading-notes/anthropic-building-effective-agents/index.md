@@ -1,36 +1,36 @@
-# Anthropic trace une ligne entre workflows et agents. Où se situe votre lecture ?
+# Anthropic trace une ligne entre workflows et agents. Où se situe votre lecture ?
 
-**Le guide d’Anthropic de décembre 2024 pour qui construit des agents IA commence en séparant deux choses qu’il appelle « workflows » et « agents », recommande ensuite de commencer par la solution la plus simple qui marche — éventuellement aucun système agentic — et de n’atteindre l’un de ses cinq patrons de workflow que lorsque ce n’est plus assez. L’un de ces patrons place un second appel LLM au siège du relecteur. Cette note porte sur ce patron, et sur ce que les quatre autres vous laissent à lire.**
+**Le guide d’Anthropic de décembre 2024 pour qui construit des agents IA commence en séparant deux choses qu’il appelle « workflows » et « agents », recommande ensuite de commencer par la solution la plus simple qui marche — éventuellement aucun système agentic — et de n’atteindre l’un de ses cinq patrons de workflow que lorsque ce n’est plus assez. L’un de ces patrons place un second appel LLM au siège du relecteur. Cette note porte sur ce patron, et sur ce que les quatre autres vous laissent à lire.**
 
 ## Ce que le guide avance
 
-Erik S. et Barry Zhang ont écrit « Building Effective Agents » pour des ingénieurs qui décident comment construire avec des LLM. Ça commence par une définition :
+Erik S. et Barry Zhang ont écrit « Building Effective Agents » pour des ingénieurs qui décident comment construire avec des LLM. Ça commence par une définition :
 
 > “Workflows are systems where LLMs and tools are orchestrated through predefined code paths. Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.”
 
-Puis le conseil commence par la retenue :
+Puis le conseil commence par la retenue :
 
 > “When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed. This might mean not building agentic systems at all.”
 
-Quand plus de structure est nécessaire, ils décrivent cinq patrons de workflow : prompt chaining (une tâche découpée en une suite d’appels, avec des contrôles optionnels entre les étapes), routing, parallelization, orchestrator-workers (un LLM découpe une tâche, la confie à des LLM workers, puis combine les résultats) et evaluator-optimizer. Ce dernier :
+Quand plus de structure est nécessaire, ils décrivent cinq patrons de workflow : prompt chaining (une tâche découpée en une suite d’appels, avec des contrôles optionnels entre les étapes), routing, parallelization, orchestrator-workers (un LLM découpe une tâche, la confie à des LLM workers, puis combine les résultats) et evaluator-optimizer. Ce dernier :
 
 > “In the evaluator-optimizer workflow, one LLM call generates a response while another provides evaluation and feedback in a loop.”
 
-Anthropic ne mentionne MarsDawn nulle part dans ce guide et ne recommande aucun outil Markdown. `/agent-transparency/` couvre déjà en détail le principe de transparence de ce guide et son langage de « checkpoints » — cette note ne le répète pas. C’est aussi là que vit la phrase du guide sur la relecture humaine du code, dans son contexte propre (une annexe sur les agents de codage).
+Anthropic ne mentionne MarsDawn nulle part dans ce guide et ne recommande aucun outil Markdown. `/agent-transparency/` couvre déjà en détail le principe de transparence de ce guide et son langage de « checkpoints » — cette note ne le répète pas. C’est aussi là que vit la phrase du guide sur la relecture humaine du code, dans son contexte propre (une annexe sur les agents de codage).
 
 ## Notre lecture, pas celle d’Anthropic
 
-Anthropic ne dit pas qui vérifie la sortie finale d’un workflow une fois terminé, et rien de tout cela ne décrit un document — c’est une décision d’architecture pour qui construit le système. Mais les cinq patrons ne produisent pas le même genre de fichier à lire. Le prompt chaining et le routing sont en général de la plomberie invisible ; si quelque chose vous atteint, c’est la dernière sortie de la chaîne, comme n’importe quelle autre réponse unique. Orchestrator-workers est différent : si votre agent de codage utilise ce patron en interne, ce qui atterrit dans votre dossier peut être un document assemblé à partir de plusieurs appels workers cousus par l’orchestrateur, et une erreur dans la tranche d’un worker peut passer inaperçue dans un résumé qui se lit fluide de bout en bout.
+Anthropic ne dit pas qui vérifie la sortie finale d’un workflow une fois terminé, et rien de tout cela ne décrit un document — c’est une décision d’architecture pour qui construit le système. Mais les cinq patrons ne produisent pas le même genre de fichier à lire. Le prompt chaining et le routing sont en général de la plomberie invisible ; si quelque chose vous atteint, c’est la dernière sortie de la chaîne, comme n’importe quelle autre réponse unique. Orchestrator-workers est différent : si votre agent de codage utilise ce patron en interne, ce qui atterrit dans votre dossier peut être un document assemblé à partir de plusieurs appels workers cousus par l’orchestrateur, et une erreur dans la tranche d’un worker peut passer inaperçue dans un résumé qui se lit fluide de bout en bout.
 
-Evaluator-optimizer mérite qu’on s’y arrête, parce que le guide met un second appel LLM là où un relecteur humain pourrait sinon s’asseoir. C’est une façon légitime d’attraper à bas coût une classe d’erreurs, mais ça reste un modèle qui vérifie un modèle selon les critères qu’on lui a donnés — la même réserve que d’autres auteurs ici soulèvent quand un modèle juge son propre travail ou celui d’un autre. Rien dans le guide ne dit qu’une personne devrait revérifier le verdict de l’évaluateur ; il ne prend aucune position là-dessus. Si vous lisez ce que tout cela rend, « la boucle l’a approuvé » et « je l’ai vérifié » ne sont pas la même phrase, même quand le fichier devant vous a l’air identique dans les deux cas.
+Evaluator-optimizer mérite qu’on s’y arrête, parce que le guide met un second appel LLM là où un relecteur humain pourrait sinon s’asseoir. C’est une façon légitime d’attraper à bas coût une classe d’erreurs, mais ça reste un modèle qui vérifie un modèle selon les critères qu’on lui a donnés — la même réserve que d’autres auteurs ici soulèvent quand un modèle juge son propre travail ou celui d’un autre. Rien dans le guide ne dit qu’une personne devrait revérifier le verdict de l’évaluateur ; il ne prend aucune position là-dessus. Si vous lisez ce que tout cela rend, « la boucle l’a approuvé » et « je l’ai vérifié » ne sont pas la même phrase, même quand le fichier devant vous a l’air identique dans les deux cas.
 
 ## Où MarsDawn aide, et où non
 
-MarsDawn ne sait pas quel patron de workflow a produit un fichier, et n’a aucun modèle d’IA à l’intérieur — il ne lancera pas sa propre étape d’évaluateur, et ne vous dira pas si celle qu’Anthropic décrit a fait son travail. Ce qu’il fait : l’onglet Plan de la barre latérale (Présentation ▸ Afficher la barre latérale, ⌃⌘S) liste les titres d’un long fichier assemblé par un orchestrateur, et un clic y saute. La source et la page rendue côte à côte (⌘2) défilent ensemble, avec les diagrammes Mermaid et les maths KaTeX dessinés plutôt que laissés en source. Si l’agent révise le fichier pendant que vous lisez, MarsDawn le recharge et garde votre place, tant que vous n’avez pas de modifications non enregistrées. Édition ▸ Copier la référence (⌥⌘C) copie votre place sous la forme `docs/plan.md:42`, prête à coller dans la conversation avec l’agent.
+MarsDawn ne sait pas quel patron de workflow a produit un fichier, et n’a aucun modèle d’IA à l’intérieur — il ne lancera pas sa propre étape d’évaluateur, et ne vous dira pas si celle qu’Anthropic décrit a fait son travail. Ce qu’il fait : l’onglet Plan de la barre latérale (Présentation ▸ Afficher la barre latérale, ⌃⌘S) liste les titres d’un long fichier assemblé par un orchestrateur, et un clic y saute. La source et la page rendue côte à côte (⌘2) défilent ensemble, avec les diagrammes Mermaid et les maths KaTeX dessinés plutôt que laissés en source. Si l’agent révise le fichier pendant que vous lisez, MarsDawn le recharge et garde votre place, tant que vous n’avez pas de modifications non enregistrées. Édition ▸ Copier la référence (⌥⌘C) copie votre place sous la forme `docs/plan.md:42`, prête à coller dans la conversation avec l’agent.
 
 ## Essayer
 
-MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -38,13 +38,13 @@ brew install redtear1115/tap/marsdawn
 
 Il exporte le Markdown en PDF sans l’app.
 
-[Ligne de commande](/fr/cli/) · Avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
+[Ligne de commande](/fr/cli/) · Avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
 
 ## Ensuite
 
-- Le reste du principe de transparence et du langage de checkpoints de ce guide : [Anthropic dit que les agents doivent être transparents. Qui lit ce qu’ils exposent ?](/fr/agent-transparency/)
-- Pourquoi la sortie d’un agent est en général difficile à lire : [Lire ce que votre agent vous rend](/fr/reading-agent-output/)
-- Retour à la série : [Notes de lecture de la rédaction](/fr/reading-notes/)
+- Le reste du principe de transparence et du langage de checkpoints de ce guide : [Anthropic dit que les agents doivent être transparents. Qui lit ce qu’ils exposent ?](/fr/agent-transparency/)
+- Pourquoi la sortie d’un agent est en général difficile à lire : [Lire ce que votre agent vous rend](/fr/reading-agent-output/)
+- Retour à la série : [Notes de lecture de la rédaction](/fr/reading-notes/)
 
 ## Sources
 
@@ -64,8 +64,9 @@ Il exporte le Markdown en PDF sans l’app.
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.

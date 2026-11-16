@@ -1,16 +1,16 @@
 # Relire sans dépenser les tokens de votre agent.
 
-Deux choses distinctes restent économiques dans cette boucle : ce que l’agent reçoit en appelant l’outil, et ce qu’il faut pour confirmer que le résultat est correct.
+Deux choses distinctes restent économiques dans cette boucle : ce que l’agent reçoit en appelant l’outil, et ce qu’il faut pour confirmer que le résultat est correct.
 
-**L’appel d’outil renvoie un petit objet JSON, pas la page rendue, et c’est une personne qui relit la page rendue dans MarsDawn ; elle n’est jamais relue dans le contexte de l’agent.**
+**L’appel d’outil renvoie un petit objet JSON, pas la page rendue, et c’est une personne qui relit la page rendue dans MarsDawn ; elle n’est jamais relue dans le contexte de l’agent.**
 
 ## L’appel d’outil lui-même coûte peu
 
-Appelez `marsdawn export`, depuis la CLI, la compétence ou [le serveur MCP](/fr/cli/mcp/), et vous recevez [un objet JSON compact](/fr/cli/agents/) : `ok`, `output`, `pages`, `theme`, `paper` et `diagramErrors`. Le schéma complet est [export.v1.json](/schemas/cli/export.v1.json). Rien de tout cela n’est le document rendu. Un PDF de 50 pages avec une douzaine de diagrammes Mermaid renvoie la même poignée de champs qu’une note d’une page.
+Appelez `marsdawn export`, depuis la CLI, la compétence ou [le serveur MCP](/fr/cli/mcp/), et vous recevez [un objet JSON compact](/fr/cli/agents/) : `ok`, `output`, `pages`, `theme`, `paper` et `diagramErrors`. Le schéma complet est [export.v1.json](/schemas/cli/export.v1.json). Rien de tout cela n’est le document rendu. Un PDF de 50 pages avec une douzaine de diagrammes Mermaid renvoie la même poignée de champs qu’une note d’une page.
 
 ## La relecture se fait à côté
 
-Une fois le PDF créé, une personne l’ouvre, dans MarsDawn ou n’importe quel lecteur PDF, et lit les diagrammes, les formules et la mise en page rendus. L’agent n’a jamais besoin de relire ce rendu dans sa propre fenêtre de contexte pour confirmer qu’il est correct : la relecture se fait dans une autre fenêtre, sur un autre écran, et non dans un nouvel aller-retour de tokens passés à décrire à quoi ressemble un diagramme.
+Une fois le PDF créé, une personne l’ouvre, dans MarsDawn ou n’importe quel lecteur PDF, et lit les diagrammes, les formules et la mise en page rendus. L’agent n’a jamais besoin de relire ce rendu dans sa propre fenêtre de contexte pour confirmer qu’il est correct : la relecture se fait dans une autre fenêtre, sur un autre écran, et non dans un nouvel aller-retour de tokens passés à décrire à quoi ressemble un diagramme.
 
 ## Ce que cela évite
 
@@ -20,10 +20,10 @@ Une fois le PDF créé, une personne l’ouvre, dans MarsDawn ou n’importe que
 
 ## Pour aller plus loin
 
-- Les trois façons d’appeler marsdawn, CLI, fichier de compétence, serveur MCP : [trois portes d’entrée](/fr/cli/mcp/).
-- Chaque champ du résultat JSON : [marsdawn pour les agents](/fr/cli/agents/).
-- Pourquoi une personne doit encore lire ce qu’un agent a écrit : [pourquoi relire](/fr/reviewing-ai-output/).
-- L’argumentaire complet pour lire ce que rend un agent, avec une liste de vérification : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
+- Les trois façons d’appeler marsdawn, CLI, fichier de compétence, serveur MCP : [trois portes d’entrée](/fr/cli/mcp/).
+- Chaque champ du résultat JSON : [marsdawn pour les agents](/fr/cli/agents/).
+- Pourquoi une personne doit encore lire ce qu’un agent a écrit : [pourquoi relire](/fr/reviewing-ai-output/).
+- L’argumentaire complet pour lire ce que rend un agent, avec une liste de vérification : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
 
 ## Plus
 
@@ -39,8 +39,9 @@ Une fois le PDF créé, une personne l’ouvre, dans MarsDawn ou n’importe que
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.

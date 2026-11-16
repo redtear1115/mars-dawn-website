@@ -12,40 +12,40 @@ Merci d’indiquer votre version de macOS et votre version de MarsDawn (MarsDawn
 
 ## Questions fréquentes
 
-### De quoi ai-je besoin pour utiliser MarsDawn ?
+### De quoi ai-je besoin pour utiliser MarsDawn ?
 
 Un Mac avec macOS 26 Tahoe ou version ultérieure, équipé d’une puce Apple ou d’un processeur Intel.
 
-### Comment passer de l’éditeur à l’aperçu ?
+### Comment passer de l’éditeur à l’aperçu ?
 
 Appuyez sur `⌘1` pour la source uniquement, `⌘2` pour les deux côte à côte et `⌘3` pour l’aperçu uniquement. Les mêmes options se trouvent dans le menu Présentation et dans la barre d’outils.
 
 ### Une image de mon document ne s’affiche pas.
 
-- **Image sur votre Mac :** enregistrez d’abord le document, puis cliquez sur *Autoriser l’accès au dossier…* dans l’aperçu et choisissez le dossier qui contient l’image. MarsDawn mémorise le dossier. Vous pouvez revoir les dossiers autorisés dans MarsDawn › Réglages › Accès aux dossiers.
-- **Image provenant du web :** les images web sont bloquées jusqu’à ce que vous cliquiez sur *Charger les images* en haut de l’aperçu. Pour toujours les charger, activez *Charger automatiquement les images distantes* dans les Réglages.
+- **Image sur votre Mac :** enregistrez d’abord le document, puis cliquez sur *Autoriser l’accès au dossier…* dans l’aperçu et choisissez le dossier qui contient l’image. MarsDawn mémorise le dossier. Vous pouvez revoir les dossiers autorisés dans MarsDawn › Réglages › Accès aux dossiers.
+- **Image provenant du web :** les images web sont bloquées jusqu’à ce que vous cliquiez sur *Charger les images* en haut de l’aperçu. Pour toujours les charger, activez *Charger automatiquement les images distantes* dans les Réglages.
 
-### Comment ajouter une image ?
+### Comment ajouter une image ?
 
-Faites-la glisser dans l’éditeur, ou collez-la. Le document doit d’abord être enregistré : MarsDawn copie l’image dans un dossier `assets` à côté du document et écrit le lien Markdown pour vous.
+Faites-la glisser dans l’éditeur, ou collez-la. Le document doit d’abord être enregistré : MarsDawn copie l’image dans un dossier `assets` à côté du document et écrit le lien Markdown pour vous.
 
 ### Un diagramme Mermaid affiche une erreur.
 
 MarsDawn affiche la source du diagramme, avec en dessous la première ligne du message d’erreur de Mermaid. Vérifiez la ligne indiquée, par exemple une flèche suivie de rien ou une parenthèse non fermée.
 
-### Comment créer un PDF ?
+### Comment créer un PDF ?
 
 Choisissez Fichier › Exporter au format PDF… (`⌥⌘E`). Le PDF utilise la version claire de votre thème de l’aperçu et est découpé en pages, quelle que soit la disposition dans laquelle vous êtes. Fichier › Imprimer… imprime les mêmes pages.
 
-### Comment utiliser MarsDawn avec Siri ou Raccourcis ?
+### Comment utiliser MarsDawn avec Siri ou Raccourcis ?
 
 Ouvrez l’app Raccourcis et recherchez MarsDawn pour trouver *Nouveau document Markdown*, *Ajouter une note à la boîte de réception* et *Ouvrir un document récent*. Avant d’ajouter des notes, choisissez un dossier de notes dans MarsDawn › Réglages › Dossier de notes. Les notes sont ajoutées au fichier `Inbox.md` de ce dossier.
 
-### Où sont mes réglages ?
+### Où sont mes réglages ?
 
 MarsDawn › Réglages (`⌘,`) regroupe l’apparence, les images, le dossier de notes, l’accès aux dossiers et le thème de l’aperçu.
 
-### Comment obtenir un remboursement ?
+### Comment obtenir un remboursement ?
 
 Les achats sont gérés par Apple. Demandez un remboursement sur [reportaproblem.apple.com](https://reportaproblem.apple.com).
 
@@ -62,8 +62,9 @@ Les achats sont gérés par Apple. Demandez un remboursement sur [reportaproblem
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.

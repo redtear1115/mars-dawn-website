@@ -51,7 +51,9 @@ REQUIRED = ("name", "description", "applicationCategory", "operatingSystem", "so
 
 
 def newest_app_version():
-    versions = [v["version"] for v in json.loads(NOTES.read_text(encoding="utf-8"))["versions"]]
+    # A pending entry is not shipped yet and must never be the "current" version.
+    versions = [v["version"] for v in json.loads(NOTES.read_text(encoding="utf-8"))["versions"]
+                if not v.get("pending")]
     return max(versions, key=lambda v: tuple(map(int, v.split("."))))
 
 

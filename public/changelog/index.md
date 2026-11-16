@@ -1,10 +1,45 @@
 # Changelog
 
-What changed in each version of the MarsDawn app on the Mac App Store and the free marsdawn command-line tool. App dates are the day the version appeared on the Mac App Store.
+What changed in each version of the MarsDawn app for Mac, iPhone and iPad, and of the free marsdawn command-line tool. App dates are the day the version appeared on the App Store.
 
 What's coming next is on the [roadmap](/roadmap/).
 
-## MarsDawn app
+## MarsDawn for Mac
+
+### MarsDawn 1.2.2
+
+14 November 2026
+
+- File > Print... and File > Export as PDF... now open a Print & Export sheet with a preview of the PDF. Choose Document, Handbook or Handout, then print it or save it as a PDF. Printing is no longer limited to Document.
+- Fixed: text typed right after an autosave could be replaced, and scrolling right after switching back to Split could jump back.
+- When you choose Handbook, the Print & Export sheet shows what will go on the cover, and you can add the Mars Sunrise cover image. Print & Export can also be added to the toolbar.
+- File > Add Claude Code Plans... adds the folder where Claude Code saves its plans to the Files sidebar, newest first. The sidebar's sort menu has a new option, Show Only Files MarsDawn Can Open, which you set for each folder.
+
+### MarsDawn 1.2.1
+
+3 November 2026
+
+- On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree.
+- MarsDawn is now on iPhone and iPad, for reading. With the same Apple Account, one trial and one unlock cover Mac, iPhone and iPad, and the unlock screens now say so.
+
+### MarsDawn 1.2.0
+
+27 October 2026
+
+- A formatting bar above the Markdown editor and a new Format menu insert bold (⌘B), italic (⌘I), strikethrough (⇧⌘X), headings H1-H6 (⌥⌘1-⌥⌘6), code, quotes, bulleted, numbered and task lists, links (⌘K), images, tables, horizontal rules, Mermaid diagrams and math. On by default; hide it from View > Hide Formatting Bar or Settings > Appearance.
+- View > Source Only > Hide Markdown Syntax (⌘/) hides Markdown markers in Source Only while keeping the caret's line in plain Markdown, and remembers your choice.
+- File > New from Clipboard (⌥⌘V) opens clipboard text as a new document. If the clipboard holds JSON-escaped AI output (such as \n), MarsDawn unescapes it once and shows a bar to turn that off.
+- Select text in the editor or preview and Control-click for Send to... to open Claude or ChatGPT with a prompt, your selection, the project-relative path (or file name) and line numbers. First use asks for confirmation; long selections offer to copy the prompt instead.
+- Edit > Copy as Rich Text copies the selected blocks, or the whole document, as formatted text for Mail, Pages, Google Docs or Notion, with the Markdown alongside as plain text.
+- Help > Install the CLI and Agent Skill... opens a window with the one-line install command and copyable instructions for your AI agent; it installs nothing itself.
+- File > Export as PDF... adds a Layout menu (remembered across exports) with three choices that work with any theme: Document, Handbook (cover from front matter, numbered table of contents, each chapter on a new page, n / N footer, PDF bookmarks and binding margin) and Handout (blank right-hand note column, page-1 title header, name/date/n / N footer, and wide tables extending into the note column). Print... always uses Document.
+- Press ⌘F in Preview Only, or on the preview side of Split, to search the preview: ⌘G and ⇧⌘G step through matches and wrap around, ⌘E uses the current selection as the search text, and matches are highlighted in yellow. In Split, Find searches the focused side.
+- Text between single tildes with no spaces, like ~x~, now shows as subscript, as in HackMD. For strikethrough, use two tildes: ~~x~~. This applies to the preview, Export as PDF and Quick Look.
+- MarsDawn now also reads more HackMD syntax: ==highlight==, ^superscript^, a [TOC] table of contents, image sizes such as =300x200, and embeds such as {%youtube %}, which appear as links.
+- Keep single line breaks in Settings > Appearance makes each line break in the source also break the line in the preview, Export as PDF, printing and Quick Look, as in HackMD.
+- Markdown files in other encodings (such as Big5) now open read-only with an encoding bar offering Save As UTF-8.... Export as PDF... and Print... still work as usual.
+- For documents over 16 MiB, the Outline sidebar now says "This document is too large to show an outline." instead of "No headings".
+- Word count no longer counts code blocks inside collapsed details sections, and a footnote reference right above a table now renders as a link.
 
 ### MarsDawn 1.1.1
 
@@ -38,9 +73,62 @@ What's coming next is on the [roadmap](/roadmap/).
 
 First release.
 
+## MarsDawn for iPhone and iPad
+
+### MarsDawn 1.0.2
+
+13 November 2026
+
+- Open PDFs and find text in them. A PDF with a password asks for it first.
+- Open JSON and YAML files as read-only documents, with a tree preview.
+- Open Markdown, text, PDF, JSON and YAML files from Files, Mail and other apps.
+- Find text in the preview (⌘F on a keyboard). Appearance and Theme has a new setting: Keep single line breaks.
+- Share the file from the toolbar, or print it.
+- On iPad and an unfolded iPhone Duo, the outline is now a sidebar that shows where you are. PDF bookmarks appear there too.
+
+Versions before 1.0.2 are not listed.
+
 ## marsdawn command-line tool
 
 Versions before 0.5.1 are not listed.
+
+### marsdawn 0.7.7
+
+9 November 2026. PNG export, collapsible blocks and faster large exports.
+
+- `marsdawn export --format png` renders a document to PNG, to check how it looks: `--width` (600–2000, default 1200), `--appearance light|dark`, `--theme`, and `--lines` or `--heading` for part of it. A page taller than 8,000 pixels is split into numbered images, never inside a table, code block or diagram.
+- `marsdawn export --details` decides how collapsible blocks print: `expand`, the default, prints every one open, as before; `as-written` prints only the blocks written open, and the others as their summary alone. Either way, a summary prints as a bold line without the triangle.
+- Collapsible blocks render more of what HackMD and Obsidian write: `:::spoiler` with no title or with `{state="open"}`, Markdown in titles, nested `::::spoiler`, and Obsidian's foldable callouts `> [!note]-` and `> [!tip]+`.
+- Large documents export much faster: in our test, a 10 MB file took about 74 seconds instead of about 4 minutes.
+- When several `marsdawn export` commands run at once, one of them could fail with exit code 5. It now tries again instead.
+- When the MarsDawn app isn't running, several `marsdawn open` commands run at once now open every file. Before, some files didn't open even when the command reported success.
+
+### marsdawn 0.7.6
+
+2 November 2026. Handbook PDFs on macOS 27.2.
+
+- On macOS 27.2, a Handbook PDF keeps the contents page numbers and bookmarks of chapters that start on a new page.
+
+### marsdawn 0.7.5
+
+30 October 2026. Handout headings stay with their tables.
+
+- In the Handout layout, a heading stays with the wide table under it, instead of being left alone at the foot of the page.
+
+### marsdawn 0.7.4
+
+25 October 2026. Footnote fixes.
+
+- A footnote reference in the paragraph just above a table links to its note.
+- A footnote reference in a callout title, a spoiler summary or an image's alt text no longer puts stray characters on the page. In alt text it stays as written.
+- A footnote reference on a later line of a footnote definition lands in the right place, so it no longer breaks a code span nearby.
+- The agent skill names every usage error that prints JSON.
+
+### marsdawn 0.7.3
+
+22 October 2026. The Handout layout.
+
+- `marsdawn export --layout handout` leaves a blank notes column on the right of every page, puts the title and date at the top of page 1, and ends every page with the file name, the date and the page number. A very wide table may run into the notes column.
 
 ### marsdawn 0.7.2
 
@@ -147,8 +235,9 @@ Versions before 0.5.1 are not listed.
 - [How to open .md files on Mac](https://marsdawn.southern-light.dev/view-markdown-on-mac/index.md): How to open a .md file on a Mac: double-click, set a default app, preview in Finder. For .md files an AI agent wrote, read them rendered in MarsDawn.
 - [Mermaid preview on Mac](https://marsdawn.southern-light.dev/mermaid-preview-mac/index.md): See Mermaid diagrams drawn next to your Markdown on a Mac: live preview, Quick Look and PDF export. A broken diagram shows its error and the line.
 - [Quick Look for Markdown](https://marsdawn.southern-light.dev/quicklook/index.md): MarsDawn's Quick Look renders Markdown in Finder when you press Space, with Mermaid, KaTeX and highlighted code. It keeps working after the trial ends.
+- [Copy for AI](https://marsdawn.southern-light.dev/copy-for-ai/index.md): Copy selected text with its file path and line numbers, then paste it into Claude Code or any agent. MarsDawn does this on your Mac, with no IDE or plugin.
 - [Markdown to PDF](https://marsdawn.southern-light.dev/markdown-to-pdf/index.md): Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.
-- [MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/vs/index.md): For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on Support.
+- [MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/vs/index.md): For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026, except MarsDawn's PDF cell, updated on 7 November 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on Support.
 - [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer is a read-only Markdown viewer for USD 19.99. MarsDawn edits and previews side by side: free for 14 days, then USD 4.99 once.
 - [Best Markdown viewer for Mac (2026)](https://marsdawn.southern-light.dev/best-markdown-viewer-mac/index.md): Eight Markdown viewers for Mac compared by price, Mermaid, math, PDF, live reload, Quick Look and native vs Electron, with who each one suits.
 - [Command Line](https://marsdawn.southern-light.dev/cli/index.md): The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.

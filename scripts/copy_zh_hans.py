@@ -191,14 +191,14 @@ FEATURES = {'title': '功能一览：Mac 上的 Markdown 编辑器 · MarsDawn',
                'lead': '',
                'lead_links': [],
                'items': [{'h': '窗口和标签页',
-                          'p': '每份文稿默认在自己的窗口打开。用“窗口 ▸ 合并所有窗口”，可以把开着的窗口收成同一个窗口里的标签页。输入时会自动存储。',
+                          'p': '打开的文稿默认会成为最前面窗口的标签页。想按照 Mac 的标签页设置，请到“设置 ▸ 外观”选择“跟随系统设置”。输入时会自动存储。',
                           'links': ['native']},
                          {'h': '在访达用快速查看',
                           'p': '在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。JSON 和 YAML 文件则会显示成树状视图。快速查看会用你在 MarsDawn '
                                '选的主题，也跟着 MarsDawn 的外观设置。',
                           'links': ['native']},
                          {'h': '其他文件',
-                          'p': 'MarsDawn 也能打开纯文本文件（.txt、.log、代码文件）和 PDF。UTF-8 纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。在 Mac 上，JSON 和 YAML 文件可以作为文稿打开并编辑，旁边的树状预览会随输入实时更新。在“访达”中用“快速查看”也会显示同样的树状视图。iPhone 和 iPad 不能打开 JSON 或 YAML。',
+                          'p': 'MarsDawn 也能打开纯文本文件（.txt、.log、代码文件）和 PDF。UTF-8 纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。在 Mac 上，JSON 和 YAML 文件可以作为文稿打开并编辑，旁边的树状预览会随输入实时更新。在“访达”中用“快速查看”也会显示同样的树状视图。在 iPhone 和 iPad 上，JSON 和 YAML 以只读方式打开，并有树状预览。',
                           'links': []},
                          {'h': '你的文件留在你手上',
                           'p': '不需要账户，没有同步，也没有云端。文稿留在你存储的位置，MarsDawn 不收集任何关于你的数据。',
@@ -236,7 +236,7 @@ FEATURES = {'title': '功能一览：Mac 上的 Markdown 编辑器 · MarsDawn',
                        '在 iPhone 或 iPad 上：打开 MarsDawn，点“打开”，选同一个文件。Mermaid 图表、数学公式、代码和表格都会排好显示，也有大纲和你选的主题。',
                        '回到 Mac：继续编辑，或导出 PDF。'],
              'buy': '用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。',
-             'limits': '在 iPhone 和 iPad 上，MarsDawn 只能阅读：只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。'},
+             'limits': '在 iPhone 和 iPad 上，MarsDawn 只能阅读：可以打开 Markdown、纯文本、PDF、JSON 和 YAML，但不能编辑。在这里存储的 PDF，里面的链接不能点按。MarsDawn 本身没有云端服务。'},
  'cta': {'h2': '在你的 Mac 上试试',
          'p1': 'MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。',
          'trial': ['试用怎么运作：', 'pay-once'],
@@ -467,7 +467,7 @@ def build(k) -> dict:
         },
         'limits': {
             "alt": 'MarsDawn 的深色模式，左边是 Markdown 源代码，右边是排版后的页面。',
-            "callouts": ['一个窗口一份文稿，就在这台 Mac 上。', '你在这里写 Markdown。', '工具栏只有主题和布局，没有插件菜单。', '这一侧用来阅读，不能直接编辑。'],
+            "callouts": ['每份文稿都是这台 Mac 上的文件。', '你在这里写 Markdown。', '工具栏只有主题和布局，没有插件菜单。', '这一侧用来阅读，不能直接编辑。'],
         },
     }
     pages = {}
@@ -838,7 +838,7 @@ swift build -c release --product marsdawn
 <h3>设备与使用的人</h3>
 <ul>
   <li><strong>同步：</strong>MarsDawn 不会同步文稿，文稿存在哪里就留在哪里；要在另一台 Mac 上使用，请放在你原本就会同步的文件夹。</li>
-  <li><strong>iPhone 和 iPad：</strong>MarsDawn 只能阅读，只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。</li>
+  <li><strong>iPhone 和 iPad：</strong>MarsDawn 只能阅读，可以打开 Markdown、纯文本、PDF、JSON 和 YAML 文件，但不能编辑。可以共享、打印或存储为 PDF，但在这里存储的 PDF，里面的链接不能点按。它读的是你放在 iCloud 云盘里、或从其他 App 打开的文件，MarsDawn 本身没有云端服务。</li>
   <li><strong>分享：</strong>没有账户，也不能共同编辑，因为 MarsDawn 是给一个人在自己的 Mac 上用的。</li>
   <li><strong>系统：</strong>MarsDawn 在 Mac 上需要 macOS 26 以上，在 iPhone 和 iPad 上需要 iOS 26 或 iPadOS 26 以上。</li>
 </ul>
@@ -846,7 +846,7 @@ swift build -c release --product marsdawn
 <ul>
   <li><strong>编辑：</strong>你在左边写 Markdown，在右边阅读排版后的页面；页面本身不能直接编辑。</li>
   <li><strong>格式：</strong>MarsDawn 能导出 PDF 和打印，不能导出 Word 文件。</li>
-  <li><strong>其他文件：</strong>PDF 以只读方式打开，不是 UTF-8 编码的文本文件也是。在 Mac 上，JSON 和 YAML 可以作为文稿打开并编辑，并有树状预览；iPhone 和 iPad 不能打开这两种文件。</li>
+  <li><strong>其他文件：</strong>PDF 以只读方式打开，不是 UTF-8 编码的文本文件也是。在 Mac 上，JSON 和 YAML 可以作为文稿打开并编辑，并有树状预览；在 iPhone 和 iPad 上则以只读方式打开，也有树状预览。</li>
   <li><strong>主题：</strong>内置黎明、典雅、流行和活泼，每种都有浅色与深色；也可以从经过审核的<a href="/zh-hans/themes/gallery/">主题图库</a>安装更多（“设置 ▸ 外观 ▸ 获取更多主题…”）。主题只能设置颜色和几个样式选项，不能自定义 CSS。详见<a href="/zh-hans/themes/">主题</a>。</li>
   <li><strong>插件：</strong>MarsDawn 没有插件或扩展功能。</li>
 </ul>
@@ -921,6 +921,12 @@ marsdawn --version</code></pre>
   <li>Siri 和快捷指令：用模板添加文稿、在笔记收件箱加上一行，或重新打开最近的文稿。</li>
   <li>支持{k.APP_UI_LANGUAGES}。</li>
 </ul>
+<h3>小而安静</h3>
+<ul>
+  <li>从 Mac App Store 下载只要 11.4 MB。</li>
+  <li>文稿开着、没有变动时，CPU 占用 0%。</li>
+</ul>
+<p>以 1.2.1 版实测，2026 年 11 月。</p>
 """,
     }
     pages['pay-once'] = {
@@ -942,7 +948,7 @@ marsdawn --version</code></pre>
 <ul>
   <li>试用本身也不会扣款。试用结束时，除非你选择解锁，否则不会购买任何东西。</li>
   <li>不需要账户，MarsDawn 从不要求你创建账户。</li>
-  <li>用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能阅读，不能编辑，也不能导出 PDF。</li>
+  <li>用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。在 iPhone 和 iPad 上只能阅读，不能编辑。</li>
 </ul>
 <h2>各阶段能做什么</h2>
 <!--compare:pay-once-states-->

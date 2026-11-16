@@ -27,9 +27,13 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后�
 
 [读懂代理交回来的 Markdown](/zh-hans/reading-agent-output/)
 
+### 折叠长文稿
+
+在预览中，“显示 ▸ 全部折叠到标题 2”会把长的计划或规格折叠到 2 级标题，“显示 ▸ 全部展开”再全部展开。“格式 ▸ 可折叠区块”会插入一段可以折叠的区块。
+
 ### 指出确切的那一行
 
-“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 `docs/plan.md:42`。“拷贝给 AI”再附上所选的文字。粘贴到代理的对话里就行。
+“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 `docs/plan.md:42`。“[拷贝给 AI](/zh-hans/copy-for-ai/)”再附上所选的文字。粘贴到代理的对话里就行。
 
 [读懂代理交回来的 Markdown](/zh-hans/reading-agent-output/)
 
@@ -127,7 +131,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 ### 导出 PDF，或打印
 
-“文件 ▸ 导出为 PDF…”会存成自动分页的 PDF，“文件 ▸ 打印…”打印相同的页面。Mermaid 图表直接画进去，代码保留语法着色，分页时会尽量不让标题落在页尾，也不切开短的代码块和图表。PDF 一律用主题的浅色配色，就算你是在深色下读的也一样。
+“文件 ▸ 打印…”和“文件 ▸ 导出为 PDF…”会打开“打印与导出”，先预览页面。选一种布局：“文稿”；“手册”，有封面、目录和 PDF 书签；或“讲义”，有笔记栏。然后打印或存储。Mermaid 图表直接画进去，代码保留语法着色，分页时会尽量不让标题落在页尾，也不切开短的代码块和图表。PDF 一律用主题的浅色配色。
 
 [导出 PDF](/zh-hans/pdf/)
 
@@ -143,18 +147,18 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 代理在 Mac 上工作，它写的计划和报告，你在 iPhone 或 iPad 上也能读。
 
 1. **在 Mac 上：**把代理的计划和报告存在 iCloud 云盘里的文件夹。
-2. **在 iPhone 或 iPad 上：**打开 MarsDawn，点“打开”，选同一个文件。Mermaid 图表、数学公式、代码和表格都会排好显示，也有大纲和你选的主题。
-3. **回到 Mac：**继续编辑，或导出 PDF。
+2. **在 iPhone 或 iPad 上：**打开 MarsDawn，点“打开”，选同一个文件，也可以从其他 App 打开。Mermaid 图表、数学公式、代码和表格都会排好显示，也有大纲和你选的主题。
+3. **交给别人：**共享、打印，或存储为 PDF。
 
 用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。
 
-在 iPhone 和 iPad 上，MarsDawn 只能阅读：只能打开 Markdown 和纯文本文件，不能编辑，也不能导出 PDF。它读的是你放在 iCloud 云盘里的文件，MarsDawn 本身没有云端服务。
+在 iPhone 和 iPad 上，MarsDawn 只能阅读：可以打开 Markdown、纯文本、PDF、JSON 和 YAML，但不能编辑。在这里存储的 PDF，里面的链接不能点按。MarsDawn 本身没有云端服务。
 
 ## 文件、标签页和快速查看
 
 ### 窗口和标签页
 
-每份文稿默认在自己的窗口打开。用“窗口 ▸ 合并所有窗口”，可以把开着的窗口收成同一个窗口里的标签页。输入时会自动存储。
+打开的文稿默认会成为最前面窗口的标签页。想按照 Mac 的标签页设置，请到“设置 ▸ 外观”选择“跟随系统设置”。输入时会自动存储。
 
 [为 Mac 而做](/zh-hans/native/)
 
@@ -166,7 +170,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 ### 其他文件
 
-MarsDawn 也能打开纯文本文件（`.txt`、`.log`、代码文件）和 PDF。UTF-8 纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。在 Mac 上，JSON 和 YAML 文件可以作为文稿打开并编辑，旁边的树状预览会随输入实时更新。在“访达”中用“快速查看”也会显示同样的树状视图。iPhone 和 iPad 不能打开 JSON 或 YAML。
+MarsDawn 也能打开纯文本文件（`.txt`、`.log`、代码文件）和 PDF。UTF-8 纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。在 Mac 上，JSON 和 YAML 文件可以作为文稿打开并编辑，旁边的树状预览会随输入实时更新。在“访达”中用“快速查看”也会显示同样的树状视图。在 iPhone 和 iPad 上，JSON 和 YAML 以只读方式打开，并有树状预览。
 
 ### 你的文件留在你手上
 
@@ -237,8 +241,9 @@ MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁
 - [Mac 上怎么打开 md 文件](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI 代理写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。
 - [在 Mac 上预览 Mermaid](https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/index.md): 在 Mac 上预览 Mermaid 图表：源代码旁边实时画出来，快速查看和导出 PDF 也看得到。图表写错时，会显示错误信息和出错的那一行。
 - [Markdown 快速查看](https://marsdawn.southern-light.dev/zh-hans/quicklook/index.md): MarsDawn 的快速查看让你在访达按空格键就能看到排版后的 Markdown，Mermaid 图表、KaTeX 数学公式和代码高亮都在。试用期结束后，快速查看照常可用。
+- [拷贝给 AI](https://marsdawn.southern-light.dev/zh-hans/copy-for-ai/index.md): 选中文本，连同文件路径和行号一起拷贝，粘贴到 Claude Code 或任何代理。在 Mac 上就能做，不用打开 IDE，也不用装插件。
 - [Markdown 转 PDF](https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/index.md): 免费的 Markdown 转 PDF 工具：在 Mac 上用 marsdawn 命令行，一个命令就把 Markdown 转成 PDF，表格、数学公式、Mermaid 图表和代码高亮都在。
-- [MarsDawn 对比：VS Code 预览、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hans/vs/index.md): 写给正在挑选工具、要在 Mac 上读 Markdown（常常是代理写的）的人。下表每一格都出自厂商自己的页面或我们实际的检查，日期都是 2026 年 10 月 16 日；产品会变，格子也可能过时。发现错误，请写信到支持页上的地址。
+- [MarsDawn 对比：VS Code 预览、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hans/vs/index.md): 写给正在挑选工具、要在 Mac 上读 Markdown（常常是代理写的）的人。下表每一格都出自厂商自己的页面或我们实际的检查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新于 2026 年 11 月 7 日）；产品会变，格子也可能过时。发现错误，请写信到支持页上的地址。
 - [MacMD Viewer 对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读的 Markdown 查看器，USD 19.99。MarsDawn 边编辑边预览，免费试用 14 天，之后 USD 4.99 解锁一次。逐项比较，附来源。
 - [2026 Mac Markdown 查看器推荐](https://marsdawn.southern-light.dev/zh-hans/best-markdown-viewer-mac/index.md): 比较 8 款 Mac Markdown 查看器的价格、Mermaid、数学公式、PDF、自动重新载入、快速查看与原生／Electron，并说明各自适合谁。
 - [命令行工具](https://marsdawn.southern-light.dev/zh-hans/cli/index.md): 免费的 marsdawn 命令行工具：在 Mac 上从终端、脚本或 LLM 代理把 Markdown 导出成 PDF，并提供 JSON 输出。用 Homebrew 安装。
