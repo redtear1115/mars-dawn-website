@@ -1541,8 +1541,60 @@ html { overflow-x: hidden; }
 .know { margin: 24px 0 0; color: var(--dust); }
 .know a { font-weight: 600; }
 
-.proof { margin-top: 64px; }
-.proof h3 { margin: 36px 0 0; }
+/* Home feature cards (#332): four 4:3 shots, one feature each. One column below 992px, at most 560px
+   wide and centred; from 992px a 2x2 grid as wide as the hero window and the plates (--w-media), so each
+   card is about 472px. The picture's box is 4:3 whatever loads (no layout shift), and the platform word
+   is text on the page's own paper, readable in light and dark. */
+.feature-cards { margin: 48px 0; }
+.feature-cards-grid {
+  display: grid;
+  gap: 32px;
+  width: min(100%, 560px);
+  margin-inline: auto;
+}
+.feature-card { margin: 0; min-width: 0; }
+.feature-card-shot {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--sand);
+  container-type: inline-size;
+  box-shadow: 0 1px 2px color-mix(in srgb, #000 12%, transparent),
+              0 14px 34px -14px color-mix(in srgb, #000 35%, transparent);
+}
+.feature-card-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.feature-card-os {
+  position: absolute;
+  top: 0.45em;
+  left: 0.45em;
+  padding: 0 0.8em;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  /* Scales with the picture, so on a narrow card the label stays over the empty band above the first heading. */
+  font-size: clamp(0.65rem, 3.4cqw, 0.8rem);
+  font-weight: 650;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+/* Card 3's picture is a whole window with text in its other corners, so its label sits bottom-right (#332). */
+.feature-card-os-end { top: auto; left: auto; right: 0.45em; bottom: 0.45em; }
+.feature-card figcaption { display: grid; gap: 2px; margin-top: 10px; overflow-wrap: anywhere; }
+.feature-card figcaption a { justify-self: start; font-weight: 650; }
+.feature-card figcaption span { color: var(--dust); font-size: 0.95rem; line-height: 1.45; }
+@media (max-width: 991px) {
+  .feature-card figcaption a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+@media (min-width: 992px) {
+  .feature-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 16px;
+    width: max(100%, var(--w-media));
+    margin-inline: calc((100% - max(100%, var(--w-media))) / 2);
+  }
+}
 /* On a phone the command wraps instead of scrolling out of sight; one click still selects all of it.
    The code element sets the wrapping: the site's `pre code` rule keeps it on one line otherwise. */
 .install pre code { white-space: pre-wrap; overflow-wrap: anywhere; }

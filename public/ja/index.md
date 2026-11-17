@@ -28,6 +28,32 @@ iPhone と iPad では閲覧専用で、Markdown、テキスト、PDF、JSON、Y
 
 [エージェントが返してくるものをどう確認するか](/ja/reading-agent-output/) · [Mac で .md ファイルを開く方法](/ja/view-markdown-on-mac/)
 
+## 機能
+
+### [Mermaid 図とコード](/ja/mermaid-preview-mac/)
+
+![確認と再送のループがあるフローチャートと、その下のコードブロック。](https://marsdawn.southern-light.dev/assets/screens/card-mermaid-624.png)
+
+プレビューが図を描き、コードをハイライトします。ソースのすぐ隣で。
+
+### [PDF 書き出し](/ja/pdf/)
+
+![ページの上部：タイトル、短い段落、フローチャート。](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
+
+Mermaid 図は PDF に描き込まれます。
+
+### [Markdown のクイックルック](/ja/quicklook/)
+
+![描画されたページを表示するプレビューウインドウ：タイトル、短い段落、フローチャート。](https://marsdawn.southern-light.dev/assets/screens/card-vivid-624.png)
+
+Finder で Markdown ファイルを選んでスペースキーを押します。
+
+### [iPhone と iPad で読む](/ja/features/#iphone-ipad)
+
+![チェックアウトのフローチャートと、その下のコードブロックの冒頭。](https://marsdawn.southern-light.dev/assets/screens/card-iphone-944.webp)
+
+iPhone と iPad の MarsDawn は閲覧専用で、編集はできません。編集は Mac で行います。
+
 ## エージェントの計画を、実行する前に読む。
 
 順番のおかしい手順を見つけ、その行を示して、エージェントに戻します。
@@ -159,28 +185,6 @@ MarsDawn 自体は何も送りません。skill は指示を書いたテキス�
 はい。MarsDawn が Mac App Store に登場してからのアップデートはすべて更新履歴に載っています。2026 年 10 月 28 日からは、iPhone と iPad でも MarsDawn で書類を読めます。MarsDawn のレンダリングの中核と無料の marsdawn コマンドラインツールは、すでに Apache-2.0 ライセンスで mars-dawn-kit としてオープンソースになっています。そして、MarsDawn の開発者がアプリのメンテナンスをやめるときは、アプリ自体のソースコードをオープンソースライセンスで公開し、ほかの人が引き継げるようにします。
 
 詳しくは：[更新履歴](/ja/changelog/) · [ロードマップ](/ja/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
-
-## 実際のアプリ画面
-
-### [Mac アプリ](/ja/native/)
-
-![MarsDawn の分割ビュー：左が Markdown のソース、右がレンダリングされたページ。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
-
-このスクリーンショットの内容：
-
-1. ネイティブの Mac ウインドウ。
-2. Mac のテキストエディタに、Markdown ハイライトを追加したもの。
-3. ⌘1 でソース、⌘2 で分割、⌘3 でプレビュー。
-4. 入力するとページが更新されます。
-
-### [PDF 書き出し](/ja/pdf/)
-
-![MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
-
-このスクリーンショットの内容：
-
-1. Mermaid 図は PDF に描き込まれます。
-2. コードはハイライトを保ちます。
 
 ## その他
 

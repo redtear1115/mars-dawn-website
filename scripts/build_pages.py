@@ -5152,7 +5152,117 @@ def all_pages_en() -> dict:
 # The home page after the hero (owner's IA, 2026-09-21): the loop, then one thing to do today
 # (the free CLI), three reasons for the app, one line on its limits, and the app as it is.
 HOME_TRAITS = ["native", "yours", "pay-once", "features"]
-HOME_PROOF = ["native", "pdf"]
+# The feature cards (#332), between the loop's three steps and the plan loop: four 4:3 shots, one
+# feature each, in reading order. Each is (page its title links to, image stem, files as (width, ext),
+# the platform word printed on the picture). The shots are crops of the existing Mac screenshots, a scaled-down
+# Quick Look window (card 3) and a crop of the iPhone capture (#329); see public/assets/screens/card-*. Titles and lines are the site's
+# approved copy (HOME_CARD_COPY), the alt text too (HOME_CARD_ALT).
+# Card 1's title links here. Daphne / Ray: to change the link, change this one line.
+HOME_CARD1_TARGET = "mermaid-preview-mac"
+HOME_CARDS = [
+    (HOME_CARD1_TARGET, "card-mermaid", {"files": [(624, "png")], "size": (624, 468)}, "Mac"),
+    ("pdf", "card-pdf", {"files": [(665, "png")], "size": (665, 499)}, "Mac"),
+    # Card 3: the Quick Look window (Finder, Space), Dawn light, scaled to half size (1248x936 -> 624x468), not cropped.
+    # The file keeps the name card-vivid-624.png from the placeholder it replaced.
+    ("quicklook", "card-vivid", {"files": [(624, "png")], "size": (624, 468)}, "Mac"),
+    ("features#iphone-ipad", "card-iphone", {"files": [(472, "webp"), (944, "webp")], "size": (944, 708)}, "iPhone"),
+]
+# The feature cards' approved copy (#332, Ray: "#332 文案 ok"): {card: {locale: (title, line)}}, plain text (home_card_copy
+# escapes it). Source: https://github.com/redtear1115/mars-dawn-website/issues/332#issuecomment-6918281641 ; applied by a script, not typed.
+HOME_CARD_COPY = {
+    "iphone": {
+        "en": ("Read on iPhone and iPad", "On iPhone and iPad, MarsDawn is for reading only and doesn't edit. Editing stays on the Mac."),
+        "zh-hant": ("在 iPhone 和 iPad 上閱讀", "在 iPhone 和 iPad 上，MarsDawn 只能閱讀，不能編輯。要修改，回到 Mac 上做。"),
+        "zh-hans": ("在 iPhone 和 iPad 上阅读", "在 iPhone 和 iPad 上，MarsDawn 只能阅读，不能编辑。要修改，回到 Mac 上操作。"),
+        "ja": ("iPhone と iPad で読む", "iPhone と iPad の MarsDawn は閲覧専用で、編集はできません。編集は Mac で行います。"),
+        "ko": ("iPhone과 iPad에서 읽기", "iPhone과 iPad의 MarsDawn은 읽기 전용이라 편집할 수 없습니다. 편집은 Mac에서 합니다."),
+        "de": ("Auf iPhone und iPad lesen", "Auf iPhone und iPad ist MarsDawn nur zum Lesen da, nicht zum Bearbeiten. Das geht am Mac."),
+        "fr": ("Lire sur iPhone et iPad", "Sur iPhone et iPad, MarsDawn sert uniquement à lire, pas à modifier. Modifiez sur votre Mac."),
+        "es": ("Leer en iPhone y iPad", "En iPhone y iPad, MarsDawn solo sirve para leer, no para editar. Para editar, vuelve a tu Mac."),
+    },
+    "mermaid": {
+        "en": ("Mermaid diagrams and code", "The preview draws the diagram and highlights the code, right next to your source."),
+        "zh-hant": ("Mermaid 圖表和程式碼", "預覽會把圖表畫出來、程式碼上色，就在原始碼旁邊。"),
+        "zh-hans": ("Mermaid 图表和代码", "预览会把图表画出来、代码高亮，就在源代码旁边。"),
+        "ja": ("Mermaid 図とコード", "プレビューが図を描き、コードをハイライトします。ソースのすぐ隣で。"),
+        "ko": ("Mermaid 다이어그램과 코드", "소스 옆 미리보기에서 다이어그램이 그려지고 코드가 하이라이트됩니다."),
+        "de": ("Mermaid-Diagramme und Code", "Die Vorschau zeichnet das Diagramm und hebt den Code hervor, direkt neben dem Quelltext."),
+        "fr": ("Diagrammes Mermaid et code", "L’aperçu dessine le diagramme et colore le code, juste à côté de la source."),
+        "es": ("Diagramas Mermaid y código", "La vista previa dibuja el diagrama y resalta el código, junto al código fuente."),
+    },
+    "pdf": {
+        "en": ("PDF export", "Mermaid diagrams, drawn into the PDF."),
+        "zh-hant": ("輸出 PDF", "Mermaid 圖表直接畫進 PDF。"),
+        "zh-hans": ("导出 PDF", "Mermaid 图表直接画进 PDF。"),
+        "ja": ("PDF 書き出し", "Mermaid 図は PDF に描き込まれます。"),
+        "ko": ("PDF 내보내기", "Mermaid 다이어그램이 PDF 안에 그려집니다."),
+        "de": ("PDF-Export", "Mermaid-Diagramme, ins PDF gezeichnet."),
+        "fr": ("Export PDF", "Les diagrammes Mermaid, dessinés dans le PDF."),
+        "es": ("Exportación a PDF", "Diagramas Mermaid, dibujados dentro del PDF."),
+    },
+}
+
+# The feature cards' approved alt text (#332, Ray: "#332 alt ok"): {card: {locale: alt}}, plain text (home_cards_html escapes it).
+# Source: https://github.com/redtear1115/mars-dawn-website/issues/332#issuecomment-6921274799 ; applied by a script, not typed.
+# "quicklook" (card 3): https://github.com/redtear1115/mars-dawn-website/issues/332#issuecomment-6930374222 (Aria's alt for the
+# Quick Look picture; Ray agreed, recorded by Paula in comment 6930450616); applied by a script, not typed.
+HOME_CARD_ALT = {
+    "iphone": {
+        "en": "A checkout flowchart, above the start of a code block.",
+        "zh-hant": "結帳流程圖，下方是程式碼區塊的開頭。",
+        "zh-hans": "结账流程图，下方是代码块的开头。",
+        "ja": "チェックアウトのフローチャートと、その下のコードブロックの冒頭。",
+        "ko": "결제 순서도, 그 아래에 코드 블록의 시작 부분.",
+        "de": "Ein Checkout-Flussdiagramm, darunter der Anfang eines Codeblocks.",
+        "fr": "Un organigramme du paiement, au-dessus du début d’un bloc de code.",
+        "es": "Un diagrama de flujo del pago, sobre el inicio de un bloque de código.",
+    },
+    "mermaid": {
+        "en": "A flowchart with a check and a resend loop, above a code block.",
+        "zh-hant": "流程圖含檢查步驟和重送迴圈，下方是程式碼區塊。",
+        "zh-hans": "流程图含检查步骤和重发循环，下方是代码块。",
+        "ja": "確認と再送のループがあるフローチャートと、その下のコードブロック。",
+        "ko": "확인 단계와 재전송 루프가 있는 순서도, 그 아래에 코드 블록.",
+        "de": "Flussdiagramm mit einer Prüfung und einer Schleife zum erneuten Senden, darunter ein Codeblock.",
+        "fr": "Un organigramme avec une vérification et une boucle de renvoi, au-dessus d’un bloc de code.",
+        "es": "Un diagrama de flujo con una comprobación y un bucle de reenvío, sobre un bloque de código.",
+    },
+    "pdf": {
+        "en": "The top of a page: a title, a short paragraph and a flowchart.",
+        "zh-hant": "頁面頂部：標題、一小段文字和一張流程圖。",
+        "zh-hans": "页面顶部：标题、一小段文字和一张流程图。",
+        "ja": "ページの上部：タイトル、短い段落、フローチャート。",
+        "ko": "페이지 상단: 제목, 짧은 문단, 순서도.",
+        "de": "Seitenanfang: ein Titel, ein kurzer Absatz und ein Flussdiagramm.",
+        "fr": "Le haut d’une page : un titre, un court paragraphe et un organigramme.",
+        "es": "Parte superior de una página: un título, un párrafo breve y un diagrama de flujo.",
+    },
+    "quicklook": {
+        "en": "A preview window showing a rendered page: a title, a short paragraph and a flowchart.",
+        "zh-hant": "預覽視窗顯示排版後的頁面：標題、一小段文字和一張流程圖。",
+        "zh-hans": "预览窗口显示排版后的页面：标题、一小段文字和一张流程图。",
+        "ja": "描画されたページを表示するプレビューウインドウ：タイトル、短い段落、フローチャート。",
+        "ko": "렌더링된 페이지를 보여 주는 미리보기 창: 제목, 짧은 문단, 순서도.",
+        "de": "Ein Vorschaufenster mit der gerenderten Seite: ein Titel, ein kurzer Absatz und ein Flussdiagramm.",
+        "fr": "Une fenêtre d’aperçu avec la page mise en forme : un titre, un court paragraphe et un organigramme.",
+        "es": "Una ventana de vista previa con la página renderizada: un título, un párrafo breve y un diagrama de flujo.",
+    },
+}
+
+# Card 3's approved copy (the Quick Look shot), same shape as HOME_CARD_COPY. Source: the same comment as HOME_CARD_COPY,
+# its card 3 Quick Look table; applied by a script, not typed.
+HOME_CARD3_QUICKLOOK_COPY = {
+    "quicklook": {
+        "en": ("Quick Look for Markdown", "Select a Markdown file in Finder and press Space."),
+        "zh-hant": ("Markdown 快速查看", "在 Finder 選取 Markdown 檔案，按空白鍵。"),
+        "zh-hans": ("Markdown 快速查看", "在访达选取 Markdown 文件，按空格键。"),
+        "ja": ("Markdown のクイックルック", "Finder で Markdown ファイルを選んでスペースキーを押します。"),
+        "ko": ("Markdown 훑어보기", "Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르세요."),
+        "de": ("Übersicht für Markdown", "Wähle im Finder eine Markdown-Datei aus und drücke die Leertaste."),
+        "fr": ("Coup d’œil pour Markdown", "Sélectionnez un fichier Markdown dans le Finder et appuyez sur Espace."),
+        "es": ("Vista Rápida para Markdown", "Selecciona un archivo Markdown en el Finder y presiona la barra espaciadora."),
+    },
+}
 HOME = {
     "en": {
         "cta_cli": "Install the free CLI",
@@ -5165,7 +5275,7 @@ HOME = {
             "<code>marsdawn open</code> opens files in the MarsDawn app for you to review.",
             "<code>--json</code> gives scripts and agents results they can parse.",
         ],
-        "proof_h": "The app, as it is",
+        "proof_h": "Features",
     },
     "zh-hant": {
         "cta_cli": "安裝免費的 CLI",
@@ -5178,7 +5288,7 @@ HOME = {
             "<code>marsdawn open</code> 在 MarsDawn app 裡開啟檔案，讓你審閱。",
             "<code>--json</code> 回傳腳本和 agent 能解析的結果。",
         ],
-        "proof_h": "App 實際的樣子",
+        "proof_h": "功能",
     },
     "zh-hans": {
         "cta_cli": "安装免费的 CLI",
@@ -5191,7 +5301,7 @@ HOME = {
             "<code>marsdawn open</code> 在 MarsDawn app 里打开文件，让你审阅。",
             "<code>--json</code> 返回脚本和代理能解析的结果。",
         ],
-        "proof_h": "App 实际的样子",
+        "proof_h": "功能",
     },
     "ja": {
         "cta_cli": "無料の CLI をインストール",
@@ -5204,7 +5314,7 @@ HOME = {
             "<code>marsdawn open</code> はファイルを MarsDawn アプリで開き、確認できるようにします。",
             "<code>--json</code> は、スクリプトやエージェントが解析できる結果を返します。",
         ],
-        "proof_h": "実際のアプリ画面",
+        "proof_h": "機能",
     },
 }
 HOME_CLI_LINKS = ["cli", "agents", "skill", "mcp"]
@@ -5466,13 +5576,55 @@ def _home_sections_for_twin(locale: str) -> str:
     return out.replace("</a><span>", f"</a>{colon}<span>")
 
 
-def home_proof(locale: str, figure) -> list:
-    """The app as it is: a heading, then each proof shot under its page's name. `figure` draws
-    one shot, as HTML for the page or as Markdown for its twin."""
-    return [f'<h2>{HOME[locale]["proof_h"]}</h2>'] + [
-        part for slug in HOME_PROOF
-        for part in (f'<h3><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a></h3>', figure(locale, slug))
-    ]
+def home_card_copy(locale: str, target: str) -> tuple:
+    """(title, line, alt) of one feature card. Title, line and alt are the approved copy (HOME_CARD_COPY, HOME_CARD_ALT, plain
+    text; title and line are escaped here, alt where it is written)."""
+    card = {HOME_CARD1_TARGET: "mermaid", "pdf": "pdf", "quicklook": "quicklook"}.get(target, "iphone")
+    title, line = (HOME_CARD3_QUICKLOOK_COPY if card == "quicklook" else HOME_CARD_COPY)[card][locale]
+    alt = HOME_CARD_ALT[card][locale]
+    return xml_escape(title), xml_escape(line), alt
+
+
+def home_card_href(locale: str, target: str) -> str:
+    slug, _, anchor = target.partition("#")
+    return page_path(locale, slug) + (f"#{anchor}" if anchor else "")
+
+
+def home_cards_html(locale: str) -> str:
+    """The feature cards: a 2x2 grid from 992px, one column below. Each is a figure, the picture
+    (width and height, lazy, alt) with its platform word, and a caption: the title as the link, one line."""
+    figures = []
+    for target, stem, spec, platform in HOME_CARDS:
+        title, line, alt = home_card_copy(locale, target)
+        width, height = spec["size"]
+        files = [f"/assets/screens/{stem}-{w}.{ext}" for w, ext in spec["files"]]
+        srcset = ""
+        if len(files) > 1:
+            srcset = " srcset=\"" + ", ".join(f"{f} {w}w" for f, (w, _) in zip(files, spec["files"])) + "\" sizes=\"(min-width: 992px) 472px, min(100vw - 32px, 560px)\""
+        os_class = "feature-card-os feature-card-os-end" if target == "quicklook" else "feature-card-os"
+        figures.append(
+            '<figure class="feature-card">\n'
+            f'  <div class="feature-card-shot"><img src="{files[-1]}"{srcset} width="{width}" height="{height}" '
+            f'alt="{xml_escape(alt, {chr(34): "&quot;"})}" loading="lazy" decoding="async">'
+            f'<span class="{os_class}" aria-hidden="true">{platform}</span></div>\n'
+            f'  <figcaption><a href="{home_card_href(locale, target)}">{title}</a><span>{line}</span></figcaption>\n'
+            '</figure>')
+    return ('<section class="feature-cards" aria-labelledby="feature-cards-title">\n'
+            f'<h2 class="visually-hidden" id="feature-cards-title">{HOME[locale]["proof_h"]}</h2>\n'
+            '<div class="feature-cards-grid">\n' + "\n".join(figures) + "\n</div>\n</section>")
+
+
+def home_cards_markdown(locale: str) -> list:
+    """The same cards for the home page's Markdown twin: the section's heading, then each card's title
+    (linked), picture and line."""
+    parts = [html_to_markdown(f'<h2>{HOME[locale]["proof_h"]}</h2>').rstrip()]
+    for target, stem, spec, _ in HOME_CARDS:
+        title, line, alt = home_card_copy(locale, target)
+        width, ext = spec["files"][-1]
+        parts += [html_to_markdown(f'<h3><a href="{home_card_href(locale, target)}">{title}</a></h3>').rstrip(),
+                  f"![{alt}]({abs_url(f'/assets/screens/{stem}-{width}.{ext}')})",
+                  html_to_markdown(f"<p>{line}</p>").rstrip()]
+    return parts
 
 
 # The comparison pages set their facts side by side in tables, one per marker, instead of in prose
@@ -5922,8 +6074,6 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
     if "intro" not in page:
         return html_to_markdown(page["body"])
     if slug == "index":
-        proof = [html_to_markdown(part).rstrip() if part.startswith("<h") else part
-                 for part in home_proof(locale, figure_markdown)]
         home_body, home_faq = split_faq(page["body"])
         return "\n\n".join([
             html_to_markdown(page["intro"]).rstrip(),
@@ -5931,11 +6081,11 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
             # Twins carry the plain listing URL, never a campaign one (check_store_links R4).
             html_to_markdown(home_steps_html(locale).replace(campaign_url(HOME_IPHONE_CAMPAIGN).replace("&", "&amp;"), LISTING_URL)).rstrip(),
             html_to_markdown(home_body).rstrip(),
+            *home_cards_markdown(locale),
             html_to_markdown("\n".join(plan_loop_parts(locale))).rstrip(),
             html_to_markdown(_home_sections_for_twin(locale)).rstrip(),
             *([html_to_markdown(page["after"]).rstrip()] if page.get("after") else []),
             html_to_markdown(home_faq).rstrip(),
-            *proof,
         ])
     if slug == "features":
         return "\n\n".join([
@@ -7468,11 +7618,10 @@ def render(locale: str, slug: str, page: dict) -> str:
             f'<p class="close-next">{closing_cta_html(locale)}</p>\n'
             "</section>"
         )
-        proof_html = '<section class="proof">\n' + "\n".join(home_proof(locale, figure_html)) + "\n</section>"
         # The FAQ is written with the page's body but belongs after the install block and the traits.
         home_body, home_faq = split_faq(page["body"])
-        main_html = "\n".join(part for part in (hero_html, home_steps_html(locale), brand_film.film_html(locale), home_body.strip(), *plan_loop_parts_with(locale),
-                                                 home_sections_html(locale), page.get("after", "").strip(), home_faq, proof_html, closing_html)
+        main_html = "\n".join(part for part in (hero_html, home_steps_html(locale), brand_film.film_html(locale), home_body.strip(), home_cards_html(locale),
+                                                 *plan_loop_parts_with(locale), home_sections_html(locale), page.get("after", "").strip(), home_faq, closing_html)
                               if part)
     elif slug == "features":
         # The overview page: its two screenshots are the native and PDF pages', and it is the hub, so

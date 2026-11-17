@@ -948,7 +948,7 @@ marsdawn open notes.md --folder .</code></pre>
             '<code>marsdawn open</code> abre archivos en la app MarsDawn para que los revises.',
             '<code>--json</code> les da a los scripts y a los agentes resultados que pueden analizar.',
         ],
-        "proof_h": 'La app, tal como es',
+        "proof_h": 'Funciones',
     }
     compare_tables = {
         'pay-once-states': {

@@ -28,6 +28,32 @@ MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、M
 
 [如何审阅代理交回来的东西](/zh-hans/reading-agent-output/) · [Mac 上怎么打开 md 文件](/zh-hans/view-markdown-on-mac/)
 
+## 功能
+
+### [Mermaid 图表和代码](/zh-hans/mermaid-preview-mac/)
+
+![流程图含检查步骤和重发循环，下方是代码块。](https://marsdawn.southern-light.dev/assets/screens/card-mermaid-624.png)
+
+预览会把图表画出来、代码高亮，就在源代码旁边。
+
+### [导出 PDF](/zh-hans/pdf/)
+
+![页面顶部：标题、一小段文字和一张流程图。](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
+
+Mermaid 图表直接画进 PDF。
+
+### [Markdown 快速查看](/zh-hans/quicklook/)
+
+![预览窗口显示排版后的页面：标题、一小段文字和一张流程图。](https://marsdawn.southern-light.dev/assets/screens/card-vivid-624.png)
+
+在访达选取 Markdown 文件，按空格键。
+
+### [在 iPhone 和 iPad 上阅读](/zh-hans/features/#iphone-ipad)
+
+![结账流程图，下方是代码块的开头。](https://marsdawn.southern-light.dev/assets/screens/card-iphone-944.webp)
+
+在 iPhone 和 iPad 上，MarsDawn 只能阅读，不能编辑。要修改，回到 Mac 上操作。
+
 ## 代理的计划，运行前先看过。
 
 找出顺序不对的那一步，指出是哪一行，再交回给代理。
@@ -159,28 +185,6 @@ MarsDawn 本身不发送任何东西。skill 只是一份文字说明，marsdawn
 会。MarsDawn 上架 Mac App Store 以来的每次更新都在更新记录里；2026 年 10 月 28 日起，iPhone 和 iPad 上也能用 MarsDawn 阅读。MarsDawn 的渲染核心和免费的 marsdawn 命令行工具，已经以 Apache-2.0 许可证在 mars-dawn-kit 开源。如果 MarsDawn 的开发者哪天停止维护这个 App，会以开源许可证公开 App 本身的源代码，让其他人可以接手。
 
 详见：[更新记录](/zh-hans/changelog/) · [路线图](/zh-hans/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
-
-## App 实际的样子
-
-### [为 Mac 而做](/zh-hans/native/)
-
-![MarsDawn 的并排布局：左边是 Markdown 源代码，右边是排版后的页面。](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
-
-这张截图里：
-
-1. 原生的 Mac 窗口。
-2. Mac 原生的文本编辑器，附 Markdown 语法高亮。
-3. ⌘1 源代码、⌘2 并排、⌘3 预览。
-4. 页面会随着打字更新。
-
-### [导出 PDF](/zh-hans/pdf/)
-
-![用 MarsDawn 导出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
-
-这张截图里：
-
-1. Mermaid 图表直接画进 PDF。
-2. 代码保留语法高亮。
 
 ## 其他页面
 

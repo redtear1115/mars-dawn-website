@@ -324,6 +324,27 @@ try {
   <li><strong>Agent 修改。</strong>提出修改意見，agent 改好之後，再打開來讀一次。</li>
 </ol>
 <p><a href="/zh-hant/reading-agent-output/">如何審閱 agent 交回來的東西</a> · <a href="/zh-hant/view-markdown-on-mac/">Mac 怎麼開 md 檔</a></p>
+<section class="feature-cards" aria-labelledby="feature-cards-title">
+<h2 class="visually-hidden" id="feature-cards-title">功能</h2>
+<div class="feature-cards-grid">
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-mermaid-624.png" width="624" height="468" alt="流程圖含檢查步驟和重送迴圈，下方是程式碼區塊。" loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/zh-hant/mermaid-preview-mac/">Mermaid 圖表和程式碼</a><span>預覽會把圖表畫出來、程式碼上色，就在原始碼旁邊。</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-pdf-665.png" width="665" height="499" alt="頁面頂部：標題、一小段文字和一張流程圖。" loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/zh-hant/pdf/">輸出 PDF</a><span>Mermaid 圖表直接畫進 PDF。</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-vivid-624.png" width="624" height="468" alt="預覽視窗顯示排版後的頁面：標題、一小段文字和一張流程圖。" loading="lazy" decoding="async"><span class="feature-card-os feature-card-os-end" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/zh-hant/quicklook/">Markdown 快速查看</a><span>在 Finder 選取 Markdown 檔案，按空白鍵。</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-iphone-944.webp" srcset="/assets/screens/card-iphone-472.webp 472w, /assets/screens/card-iphone-944.webp 944w" sizes="(min-width: 992px) 472px, min(100vw - 32px, 560px)" width="944" height="708" alt="結帳流程圖，下方是程式碼區塊的開頭。" loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">iPhone</span></div>
+  <figcaption><a href="/zh-hant/features/#iphone-ipad">在 iPhone 和 iPad 上閱讀</a><span>在 iPhone 和 iPad 上，MarsDawn 只能閱讀，不能編輯。要修改，回到 Mac 上做。</span></figcaption>
+</figure>
+</div>
+</section>
 <h2>agent 的計畫，執行前先看過。</h2>
 <p>找出順序不對的那一步，指出是哪一行，再交回給 agent。</p>
 <div class="loop-anim loop-hant loop-plan">
@@ -470,33 +491,6 @@ try {
 <h3>MarsDawn 會持續維護嗎？</h3>
 <p>會。MarsDawn 上架 Mac App Store 以來的每次更新都在更新紀錄裡；2026 年 10 月 28 日起，iPhone 和 iPad 上也能用 MarsDawn 閱讀。MarsDawn 的算繪核心和免費的 marsdawn 命令列工具，已經以 Apache-2.0 授權在 mars-dawn-kit 開源。如果 MarsDawn 的開發者哪天停止維護這個 App，會以開源授權公開 App 本身的原始碼，讓其他人可以接手。</p>
 <p class="more">詳見：<a href="/zh-hant/changelog/">更新紀錄</a> · <a href="/zh-hant/roadmap/">路線圖</a> · <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a></p>
-</section>
-<section class="proof">
-<h2>App 實際的樣子</h2>
-<h3><a href="/zh-hant/native/">為 Mac 而做</a></h3>
-<figure class="shot">
-  <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="1180" height="844" alt="MarsDawn 的並排版面：左邊是 Markdown 原始碼，右邊是排版後的頁面。">
-    <span class="marker l tb co-native-1" aria-hidden="true">1</span><span class="marker l co-native-2" aria-hidden="true">2</span><span class="marker r tb co-native-3" aria-hidden="true">3</span><span class="marker r co-native-4" aria-hidden="true">4</span>
-    <span class="leader l up co-native-1" aria-hidden="true"><span>原生的 Mac 視窗。</span></span><span class="leader l down co-native-2" aria-hidden="true"><span>Mac 原生的文字編輯器，附 Markdown 語法上色。</span></span><span class="leader r up co-native-3" aria-hidden="true"><span>⌘1 原始碼、⌘2 並排、⌘3 預覽。</span></span><span class="leader r down co-native-4" aria-hidden="true"><span>頁面會隨著打字更新。</span></span>
-  </div></div>
-  <figcaption>
-    <span class="figure-label">這張截圖裡</span>
-    <ol><li>原生的 Mac 視窗。</li><li>Mac 原生的文字編輯器，附 Markdown 語法上色。</li><li>⌘1 原始碼、⌘2 並排、⌘3 預覽。</li><li>頁面會隨著打字更新。</li></ol>
-  </figcaption>
-</figure>
-<h3><a href="/zh-hant/pdf/">輸出 PDF</a></h3>
-<figure class="shot">
-  <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="用 MarsDawn 輸出的 PDF，在內建的 PDF 檢視器中開啟，旁邊有頁面縮圖。">
-    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
-    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid 圖表直接畫進 PDF。</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>程式碼保留語法上色。</span></span>
-  </div></div>
-  <figcaption>
-    <span class="figure-label">這張截圖裡</span>
-    <ol><li>Mermaid 圖表直接畫進 PDF。</li><li>程式碼保留語法上色。</li></ol>
-  </figcaption>
-</figure>
 </section>
 <section class="dawn-close">
 <p><strong>Markdown 的新黎明。</strong> MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-close&amp;mt=8">Mac App Store</a> 上架。</p>

@@ -28,6 +28,32 @@ iPhone과 iPad에서는 읽기 전용이며, Markdown, 텍스트, PDF, JSON, YAM
 
 [에이전트가 돌려준 결과를 검토하는 방법](/ko/reading-agent-output/) · [Mac에서 .md 파일 여는 방법](/ko/view-markdown-on-mac/)
 
+## 기능
+
+### [Mermaid 다이어그램과 코드](/ko/mermaid-preview-mac/)
+
+![확인 단계와 재전송 루프가 있는 순서도, 그 아래에 코드 블록.](https://marsdawn.southern-light.dev/assets/screens/card-mermaid-624.png)
+
+소스 옆 미리보기에서 다이어그램이 그려지고 코드가 하이라이트됩니다.
+
+### [PDF 내보내기](/ko/pdf/)
+
+![페이지 상단: 제목, 짧은 문단, 순서도.](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
+
+Mermaid 다이어그램이 PDF 안에 그려집니다.
+
+### [Markdown 훑어보기](/ko/quicklook/)
+
+![렌더링된 페이지를 보여 주는 미리보기 창: 제목, 짧은 문단, 순서도.](https://marsdawn.southern-light.dev/assets/screens/card-vivid-624.png)
+
+Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르세요.
+
+### [iPhone과 iPad에서 읽기](/ko/features/#iphone-ipad)
+
+![결제 순서도, 그 아래에 코드 블록의 시작 부분.](https://marsdawn.southern-light.dev/assets/screens/card-iphone-944.webp)
+
+iPhone과 iPad의 MarsDawn은 읽기 전용이라 편집할 수 없습니다. 편집은 Mac에서 합니다.
+
 ## 에이전트의 계획, 실행 전에 검토하세요.
 
 순서가 틀린 단계를 찾아 그 줄을 짚고, 에이전트에게 돌려보냅니다.
@@ -159,28 +185,6 @@ MarsDawn 자체는 아무것도 보내지 않습니다. 스킬은 지침을 적�
 네. MarsDawn이 Mac App Store에 나온 뒤의 모든 업데이트는 변경 내역에 있고, 2026년 10월 28일부터는 iPhone과 iPad에서도 MarsDawn으로 문서를 읽을 수 있습니다. MarsDawn의 렌더링 핵심과 무료 marsdawn 명령줄 도구는 이미 Apache-2.0 라이선스로 mars-dawn-kit에서 오픈 소스로 공개되어 있습니다. 그리고 MarsDawn 개발자가 언젠가 앱 유지 관리를 그만두게 되면, 다른 사람이 이어받을 수 있도록 앱 자체의 소스 코드를 오픈 소스 라이선스로 공개합니다.
 
 자세히: [변경 내역](/ko/changelog/) · [로드맵](/ko/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
-
-## 앱의 실제 모습
-
-### [Mac 앱](/ko/native/)
-
-![분할 보기의 MarsDawn: 왼쪽은 Markdown 소스, 오른쪽은 렌더링된 페이지.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
-
-이 스크린샷의 내용:
-
-1. 네이티브 Mac 윈도우.
-2. Markdown 하이라이트가 더해진 Mac의 텍스트 편집기.
-3. ⌘1 소스, ⌘2 분할, ⌘3 미리보기.
-4. 입력하는 대로 페이지가 바뀝니다.
-
-### [PDF 내보내기](/ko/pdf/)
-
-![MarsDawn에서 내보낸 PDF를 페이지 축소판과 함께 PDF 뷰어로 연 모습.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
-
-이 스크린샷의 내용:
-
-1. Mermaid 다이어그램이 PDF 안에 그려집니다.
-2. 코드는 하이라이트를 유지합니다.
 
 ## 더 보기
 

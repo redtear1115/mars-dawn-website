@@ -28,6 +28,32 @@ On iPhone and iPad, MarsDawn is for reading only. It opens Markdown, text, PDF, 
 
 [How to review what your agent hands back](/reading-agent-output/) · [How to open a .md file on a Mac](/view-markdown-on-mac/)
 
+## Features
+
+### [Mermaid diagrams and code](/mermaid-preview-mac/)
+
+![A flowchart with a check and a resend loop, above a code block.](https://marsdawn.southern-light.dev/assets/screens/card-mermaid-624.png)
+
+The preview draws the diagram and highlights the code, right next to your source.
+
+### [PDF export](/pdf/)
+
+![The top of a page: a title, a short paragraph and a flowchart.](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
+
+Mermaid diagrams, drawn into the PDF.
+
+### [Quick Look for Markdown](/quicklook/)
+
+![A preview window showing a rendered page: a title, a short paragraph and a flowchart.](https://marsdawn.southern-light.dev/assets/screens/card-vivid-624.png)
+
+Select a Markdown file in Finder and press Space.
+
+### [Read on iPhone and iPad](/features/#iphone-ipad)
+
+![A checkout flowchart, above the start of a code block.](https://marsdawn.southern-light.dev/assets/screens/card-iphone-944.webp)
+
+On iPhone and iPad, MarsDawn is for reading only and doesn't edit. Editing stays on the Mac.
+
 ## Review an agent's plan before it runs.
 
 Catch the step that's out of order, point at its line, and hand it back.
@@ -159,28 +185,6 @@ More: [How MarsDawn compares](/vs/) · [Best Markdown viewer for Mac](/best-mark
 Yes. Every update since MarsDawn arrived on the Mac App Store is in the changelog, and since 28 October 2026 MarsDawn is also on iPhone and iPad, for reading. MarsDawn's rendering core and the free marsdawn command-line tool are already open source under the Apache-2.0 license, in mars-dawn-kit. And if MarsDawn's developer ever stops maintaining the app, the app's own source code will be published under an open-source license, so others can keep it going.
 
 More: [Changelog](/changelog/) · [Roadmap](/roadmap/) · [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)
-
-## The app, as it is
-
-### [A Mac app](/native/)
-
-![MarsDawn in split view: the Markdown source on the left, the rendered page on the right.](https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png)
-
-In this screenshot:
-
-1. A native Mac window.
-2. The Mac's text editor, with Markdown highlighting.
-3. ⌘1 source, ⌘2 split, ⌘3 preview.
-4. The page updates as you type.
-
-### [PDF export](/pdf/)
-
-![A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
-
-In this screenshot:
-
-1. Mermaid diagrams, drawn into the PDF.
-2. Code keeps its highlighting.
 
 ## More
 

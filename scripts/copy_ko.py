@@ -814,7 +814,7 @@ marsdawn open notes.md --folder .</code></pre>
             '<code>marsdawn open</code>은 검토할 수 있도록 MarsDawn 앱에서 파일을 엽니다.',
             '<code>--json</code>은 스크립트와 에이전트가 파싱할 수 있는 결과를 돌려줍니다.',
         ],
-        "proof_h": '앱의 실제 모습',
+        "proof_h": '기능',
     }
     compare_tables = {
         'pay-once-states': {
