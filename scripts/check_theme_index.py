@@ -28,8 +28,9 @@ What lives where:
 - `public/themes/v1/index.json` -- the index the app fetches (§5.1).
 - `public/themes/v1/<id>/<version>/{theme.json,preview-light.png,preview-dark.png}` -- versioned,
   immutable files.
-- `public/themes/v1/published.json` -- the append-only record, {path: sha256}, of every file ever
-  published under public/themes/v1/ (paths relative to it, like the index's).
+- `public/themes/v1/published.json` -- the record, {path: sha256}, of every file published under
+  public/themes/v1/ (paths relative to it, like the index's; append-only, except that a delisted or
+  revoked theme's entries may be removed with its files once the id is no longer in the index).
 
 public/, public/themes/, public/themes/v1/ and themes/ must be real directories (no symlink on the
 way), and nothing under themes/ or public/themes/v1/ may be a symlink or a committed .DS_Store.
@@ -63,10 +64,13 @@ that rule's own words):
 Rules against the base branch (`--ci` takes the first parent of the merge commit it checked out,
 fetches it by SHA, and **fails closed** if it can't be read):
 
-- published.json only gains entries. A base without published.json is read as "nothing published"
-  only for the first publication: when the base has neither themes/ nor public/themes/v1/, or its
-  v1/ holds nothing but the exact empty index #141 published (blob BOOTSTRAP_INDEX_BLOB). Any
-  other base lacking published.json, index.json or revoked.json fails closed.
+- published.json only gains entries, except that entries for an id no longer in the index (or
+  themes/) may be removed along with their files under public/themes/v1/ (#194); existing entries
+  never change, and a listed id's entries (including earlier versions') may never be removed. A
+  base without published.json is read as "nothing published" only for the first publication: when
+  the base has neither themes/ nor public/themes/v1/, or its v1/ holds nothing but the exact empty
+  index #141 published (blob BOOTSTRAP_INDEX_BLOB). Any other base lacking published.json,
+  index.json or revoked.json fails closed.
 - Ids are never reused: an id with files in the base published.json that the base index doesn't
   list was delisted or revoked; seeing it in themes/ again fails.
 - On pull_request events only (a push runs after the PR's gate, without its labels):
@@ -97,7 +101,9 @@ event payload file, never from text spliced into `run:`):
 
 The emergency path (§5.3), by hand without a Mac: remove themes/<id>/, drop its index entry and,
 to revoke, add the same {id, reason, revokedAt} to themes/revoked.json and index.revoked. Published
-files and their published.json entries stay. The self-test's revocation case is exactly this edit.
+files and their published.json entries stay by default (the self-test's revocation case is this
+edit), or `public/themes/v1/<id>/` and its `published.json` entries may be removed together once
+the id is out of the index (#194).
 
 In --ci the checked-out tree is read both from disk and from git (HEAD) and the two must agree, so
 an untracked or ignored file can't make the disk view differ from what was committed.
@@ -934,9 +940,16 @@ def base_state(base) -> BaseState:
 
 def check_against_base(problems, old, published, sources, index, pr):
     if published is not None:
-        lost = sorted(k for k, v in old.published.items() if published.get(k) != v)
+        listed = ({t.get("id") for t in index.get("themes", []) if isinstance(t, dict) and isinstance(t.get("id"), str)}
+                  | set(sources)) if index is not None else None
+        lost = sorted(
+            k for k, v in old.published.items()
+            if published.get(k) != v
+            and not (k not in published and listed is not None and k.split("/", 1)[0] not in listed)
+        )
         if lost:
-            problems.append(f"{PUBLISHED_REL}: only gains entries, but these base entries are gone or changed: {', '.join(lost)}")
+            problems.append(f"{PUBLISHED_REL}: only gains entries (except for removed ids), "
+                            f"but these base entries are gone or changed: {', '.join(lost)}")
     ever_published = {k.split("/", 1)[0] for k in old.published}
     for tid in sorted(sources):
         if tid in ever_published and tid not in old.themes:
@@ -1259,13 +1272,45 @@ def plant_published_byte_edited_and_rehashed(head, base):
     rewrite_preview(head, make_png(height=4))
 
 
-def plant_published_entry_dropped(head, base):
-    # A delisted theme's published file and its entry both removed: this tree is consistent on
-    # its own; only the base shows that a published file went away.
-    (head / V1_REL / "second-theme" / "1.0.0" / "preview-dark.png").unlink()
+def plant_delisted_published_byte_edited_and_rehashed(head, base):
+    # Even for a delisted id (whose entries may be removed), changing a published file's bytes and
+    # sha256 in place is still refused by the base comparison.
+    rel = "second-theme/1.0.0/preview-light.png"
+    png = make_png(height=4)
+    write_file(head, f"{V1_REL}/{rel}", png)
     published = read_json(head, PUBLISHED_REL)
-    del published["second-theme/1.0.0/preview-dark.png"]
+    published[rel] = sha256(png)
     write_json(head, PUBLISHED_REL, published)
+
+
+def plant_published_entry_dropped(head, base):
+    # An earlier version's file of a still-listed theme and its entry both removed: this tree is
+    # consistent on its own (the index points at 1.0.1); only the base shows that a listed id's
+    # published file went away.
+    (head / V1_REL / "olympus-dusk" / "1.0.0" / "preview-dark.png").unlink()
+    published = read_json(head, PUBLISHED_REL)
+    del published["olympus-dusk/1.0.0/preview-dark.png"]
+    write_json(head, PUBLISHED_REL, published)
+
+
+def plant_listed_old_version_dropped(head, base):
+    # Removing a whole earlier version directory of a still-listed theme also fails: only an id no
+    # longer in the index may have its published entries removed.
+    shutil.rmtree(head / V1_REL / "olympus-dusk" / "1.0.0")
+    published = {k: v for k, v in read_json(head, PUBLISHED_REL).items() if not k.startswith("olympus-dusk/1.0.0/")}
+    write_json(head, PUBLISHED_REL, published)
+
+
+def plant_listed_dropped_with_delisted_removal(head, base):
+    # Removing a delisted id's files in the same change does not excuse dropping a listed id's file.
+    doc = fixture_theme("second-theme")
+    data = dumps(doc).encode()
+    published = read_json(base, PUBLISHED_REL)
+    for name, body in (("theme.json", data), ("preview-light.png", make_png()), ("preview-dark.png", make_png(height=3))):
+        write_file(base, f"{V1_REL}/second-theme/1.0.0/{name}", body)
+        published[f"second-theme/1.0.0/{name}"] = sha256(body)
+    write_json(base, PUBLISHED_REL, dict(sorted(published.items())))
+    plant_published_entry_dropped(head, base)
 
 
 def plant_v1_symlink(head, base):
@@ -1378,6 +1423,10 @@ def delisted_tree(repo):
 
 def revoked_tree(repo):
     write_tree(repo, listed=("olympus-dusk",), delisted=("second-theme",), revoked=("second-theme",))
+
+
+def revoked_purged_tree(repo):
+    write_tree(repo, listed=("olympus-dusk",), revoked=("second-theme",))
 
 
 def nothing_published_base(repo):
@@ -1556,7 +1605,14 @@ RULES = [
     ("cross: revoked id present", plant_revoked_id_present, ["revoked id 'olympus-dusk' is still published"]),
     # Against the base branch.
     ("base: edited published byte, published.json rehashed", plant_published_byte_edited_and_rehashed, ["only gains entries", "preview-light.png"]),
-    ("base: published entry dropped", plant_published_entry_dropped, ["only gains entries", "second-theme/1.0.0/preview-dark.png"], MAINTAINER, delisted_tree),
+    ("base: edited published byte of a delisted theme, published.json rehashed", plant_delisted_published_byte_edited_and_rehashed,
+     ["only gains entries", "second-theme/1.0.0/preview-light.png"], MAINTAINER, delisted_tree),
+    ("base: listed theme's published entry dropped", plant_published_entry_dropped,
+     ["only gains entries", "olympus-dusk/1.0.0/preview-dark.png"], MAINTAINER, new_version_head),
+    ("base: listed theme's earlier version dropped", plant_listed_old_version_dropped,
+     ["only gains entries", "olympus-dusk/1.0.0/theme.json"], MAINTAINER, new_version_head),
+    ("base: listed theme's entry dropped alongside a delisted removal", plant_listed_dropped_with_delisted_removal,
+     ["only gains entries", "olympus-dusk/1.0.0/preview-dark.png"], MAINTAINER, new_version_head),
     ("base: reused id", plant_reused_id, ["delisted or revoked; ids are never reused"]),
     ("base: v1 files but no index.json (fail closed)", plant_base_no_index,
      ["base branch: the base has public/themes/v1/published.json but no readable public/themes/v1/index.json; failing closed"]),
@@ -1588,6 +1644,10 @@ RULES = [
     ("authorship: bot edits revoked.json", base_bytes_differ(REVOKED_REL), ["bot PR may not change themes/revoked.json"], BOT),
     ("authorship: bot un-revokes", plant_unrevoke, ["bot PR may not un-revoke old-theme"], BOT),
     ("authorship: bot edits another theme's files", plant_bot_outside, ["bot PR changes public/themes/v1 files outside", "second-theme"], BOT, two_themes),
+    ("authorship: non-maintainer removes a delisted theme's published files", no_plant,
+     ["isn't a maintainer and may not change public/themes/v1/"], OTHER, write_tree, delisted_tree),
+    ("authorship: bot removes a delisted theme's published files", no_plant,
+     ["bot PR changes public/themes/v1 files outside", "second-theme"], BOT, write_tree, delisted_tree),
 ]
 
 
@@ -1605,7 +1665,12 @@ def passes():
         ("non-maintainer PR outside theme data", add_file("public/_headers", "/*\n"), OTHER, None, None),
         ("maintainer PR editing scripts/", add_file("scripts/check_theme_index.py", "# edited\n"), MAINTAINER, None, None),
         ("delisting PR (maintainer)", no_plant, MAINTAINER, delisted_tree, two_themes),
+        ("delisting PR removing published files (maintainer)", no_plant, MAINTAINER, write_tree, two_themes),
+        ("removing a delisted theme's published files (maintainer)", no_plant, MAINTAINER, write_tree, delisted_tree),
+        ("removing a delisted theme's published files (push event)", no_plant, PUSH, write_tree, delisted_tree),
         ("revocation PR (maintainer)", no_plant, MAINTAINER, revoked_tree, two_themes),
+        ("revocation PR removing published files (maintainer)", no_plant, MAINTAINER, revoked_purged_tree, two_themes),
+        ("removing a revoked theme's published files (maintainer)", no_plant, MAINTAINER, revoked_purged_tree, revoked_tree),
         ("un-revocation PR (maintainer)", plant_unrevoke, MAINTAINER, None, None),
         ("author change: push event A->B", author_change, PUSH, None, None),
         ("author change: maintainer PR without the label", author_change, MAINTAINER, None, None),

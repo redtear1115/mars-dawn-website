@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Publishes themes/ to public/themes/v1/ (#144; plan-website-104 W3). macOS: runs the kit CLI.
 
-    python3 scripts/build_themes.py                      # builds the pinned kit CLI first
-    python3 scripts/build_themes.py --marsdawn-bin PATH  # reuse a CLI built at the pinned commit
+    python3 scripts/build_themes.py                        # builds the pinned kit CLI first
+    python3 scripts/build_themes.py --marsdawn-bin PATH    # reuse a CLI built at the pinned commit
+    python3 scripts/build_themes.py --remove-published ID  # also remove a delisted id's published files
 
 For every themes/<id>/theme.json (see scripts/check_theme_index.py for the whole contract):
 
@@ -22,23 +23,26 @@ For every themes/<id>/theme.json (see scripts/check_theme_index.py for the whole
    `marsdawn theme preview --width 1200`, **only if that version isn't published yet**. A version
    already in HEAD's published.json is never re-rendered or rewritten; its source bytes must equal
    what was published (bump the version to change a theme).
-5. Write published.json (HEAD's entries plus this build's new ones: append-only), index.json
-   (sorted by id; `revoked` from themes/revoked.json), then run build_pages.py, then
-   check_theme_index.py on the result.
+5. Write published.json (HEAD's entries, minus any --remove-published delisted id's, plus this
+   build's new ones), index.json (sorted by id; `revoked` from themes/revoked.json), then run
+   build_pages.py, then check_theme_index.py on the result.
 
 "Published" means in the published.json **committed at HEAD**. Entries only the working tree has
 are this build's own pending output: a rerun drops and regenerates them (and deletes their files),
 so fixing a theme before committing needs no manual cleanup, while nothing HEAD has published can
-be touched. Every write target is resolved and must lie inside public/themes/v1/; files are
-created with O_EXCL|O_NOFOLLOW, never through an existing link.
+be touched (except removing a delisted id's directory when `--remove-published <id>` is passed).
+Every write target is resolved and must lie inside public/themes/v1/; files are created with
+O_EXCL|O_NOFOLLOW, never through an existing link.
 
 themes/ must be committed first (`git status` clean for themes/): `generatedAt` is the committer
 time of the newest commit touching themes/, so the output is a function of HEAD alone and a rerun
 on the committed result changes nothing.
 
 Delisting: remove themes/<id>/, commit, rerun. The entry leaves the index; published files and
-their published.json entries stay, and the id can never be listed again. Revocation: also add
-{id, reason, revokedAt} to themes/revoked.json.
+their published.json entries stay by default, and the id can never be listed again. To also remove
+a delisted theme's published directory (`public/themes/v1/<id>/`) and its `published.json`
+entries, pass `--remove-published <id>` (#194). Revocation: also add {id, reason, revokedAt} to
+themes/revoked.json.
 
 The kit CLI is WA's: scripts/sync_theme_kit.py's KIT_SHA, built by its own build_cli (a detached
 worktree of a local kit clone, `swift build --only-use-versions-from-resolved-file`) and
@@ -273,7 +277,7 @@ def collect(binary: Path, work: Path, published: dict, previous: dict, revoked_i
     return out
 
 
-def build(binary: Path, author_changes: set, rollbacks: set) -> None:
+def build(binary: Path, author_changes: set, rollbacks: set, remove_published: set = frozenset()) -> None:
     for d in rules.DIRS:
         path = ROOT / d
         if path.is_symlink() or not path.is_dir():
@@ -296,9 +300,20 @@ def build(binary: Path, author_changes: set, rollbacks: set) -> None:
     if revoked is None:
         raise BuildError("\n".join(problems))
 
+    remove_published = set(remove_published)
+    published_ids = {k.split("/", 1)[0] for k in published}
+    for tid in sorted(remove_published):
+        if not rules.is_theme_id(tid):
+            raise BuildError(f"--remove-published {tid!r}: not a valid theme id")
+        if (THEMES / tid).exists() or (THEMES / tid).is_symlink():
+            raise BuildError(f"themes/{tid}/: still exists; delist {tid!r} by removing themes/{tid}/ and committing first")
+        if tid not in published_ids:
+            raise BuildError(f"{tid!r}: has no published files in HEAD's {rules.PUBLISHED_REL}")
+
     on_disk = scan_v1()
-    # Everything HEAD published must be on disk, unchanged, before anything is written.
-    for rel, digest in sorted(published.items()):
+    kept_published = {rel: digest for rel, digest in published.items() if rel.split("/", 1)[0] not in remove_published}
+    # Everything HEAD published (except a delisted id being removed) must be on disk, unchanged, before anything is written.
+    for rel, digest in sorted(kept_published.items()):
         path = on_disk.get(rel)
         if path is None or rules.sha256(path.read_bytes()) != digest:
             raise BuildError(f"{rules.V1_REL}/{rel}: missing or changed since it was published; restore it from HEAD")
@@ -322,17 +337,20 @@ def build(binary: Path, author_changes: set, rollbacks: set) -> None:
                 new_files[f"{base}preview-{appearance}.png"] = png
             print(f"{doc['id']} {doc['version']}: validated and rendered")
 
-        # Pending output from an earlier, uncommitted run: never published, so drop it.
-        for rel in sorted(set(on_disk) - set(published) - {"index.json", "published.json"}):
+        # Pending output from an earlier, uncommitted run (and any delisted id in remove_published): drop it.
+        for rel in sorted(set(on_disk) - set(kept_published) - {"index.json", "published.json"}):
             v1_target(rel).unlink()
         for dirpath, dirnames, filenames in os.walk(V1, topdown=False):
             if Path(dirpath) != V1 and not os.listdir(dirpath):
                 os.rmdir(dirpath)
+        for tid in sorted(remove_published):
+            removed_count = sum(1 for rel in published if rel.split("/", 1)[0] == tid)
+            print(f"{tid}: removed {removed_count} published file(s)")
 
         for rel, data in sorted(new_files.items()):
             write_new(rel, data)
 
-    all_published = dict(published)
+    all_published = dict(kept_published)
     all_published.update({rel: rules.sha256(data) for rel, data in new_files.items()})
     index = {
         "schemaVersion": 1,
@@ -356,6 +374,9 @@ def main() -> int:
                         help=f"let this id's author.github change (only with the {rules.AUTHOR_CHANGE_LABEL} label)")
     parser.add_argument("--allow-version-rollback", action="append", default=[], metavar="ID",
                         help=f"let this id go to a lower version (only a maintainer PR with the {rules.ROLLBACK_LABEL} label)")
+    parser.add_argument("--remove-published", "--remove-delisted", action="append", default=[],
+                        dest="remove_published", metavar="ID",
+                        help="remove a delisted theme's published directory and published.json entries")
     args = parser.parse_args()
     try:
         return run(args)
@@ -389,7 +410,7 @@ def run(args) -> int:
             built_worktree, binary = kit.build_cli(args.kit_repo, kit.KIT_SHA)
         check_cli_version(binary)
         kit.smoke_test(binary, ROOT / "vendor" / "kit-themes" / kit.KIT_SHA[:12] / "Themes" / "dawn" / "theme.json")
-        build(binary, set(args.allow_author_change), set(args.allow_version_rollback))
+        build(binary, set(args.allow_author_change), set(args.allow_version_rollback), set(args.remove_published))
     except (BuildError, kit.SyncError) as error:
         for line in str(error).splitlines():
             print(f"::error::{line}", file=sys.stderr)
