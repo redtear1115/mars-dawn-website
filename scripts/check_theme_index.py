@@ -63,12 +63,17 @@ that rule's own words):
 Rules against the base branch (`--ci` takes the first parent of the merge commit it checked out,
 fetches it by SHA, and **fails closed** if it can't be read):
 
-- published.json only gains entries. A base without published.json is read as "nothing published"
+- published.json only gains entries, with one exception: an id may leave it, files and all, when
+  it is delisted (no themes/<id>/, so no index entry) and revoked (in themes/revoked.json), and
+  every one of its entries goes at once (#194). Any other missing or changed entry fails, and so
+  does a half-removed id. A base without published.json is read as "nothing published"
   only for the first publication: when the base has neither themes/ nor public/themes/v1/, or its
   v1/ holds nothing but the exact empty index #141 published (blob BOOTSTRAP_INDEX_BLOB). Any
   other base lacking published.json, index.json or revoked.json fails closed.
 - Ids are never reused: an id with files in the base published.json that the base index doesn't
-  list was delisted or revoked; seeing it in themes/ again fails.
+  list was delisted or revoked; seeing it in themes/ again fails. A revoked id in the base's
+  revoked.json counts the same, so removing its published files (the exception above) doesn't
+  free it, not even for a PR that also un-revokes it.
 - On pull_request events only (a push runs after the PR's gate, without its labels):
   - a bot or non-maintainer PR keeps a listed theme's author.github (ASCII case-insensitively)
     unless the PR has the label `theme-author-change`; a maintainer PR may change it;
@@ -98,6 +103,8 @@ event payload file, never from text spliced into `run:`):
 The emergency path (§5.3), by hand without a Mac: remove themes/<id>/, drop its index entry and,
 to revoke, add the same {id, reason, revokedAt} to themes/revoked.json and index.revoked. Published
 files and their published.json entries stay. The self-test's revocation case is exactly this edit.
+Removing a revoked theme's published files too (#194): `build_themes.py --remove-published <id>`.
+Its revoked.json entry is what keeps the id from being published again.
 
 In --ci the checked-out tree is read both from disk and from git (HEAD) and the two must agree, so
 an untracked or ignored file can't make the disk view differ from what was committed.
@@ -932,12 +939,26 @@ def base_state(base) -> BaseState:
     return BaseState(published, by_id, {r["id"] for r in revoked})
 
 
-def check_against_base(problems, old, published, sources, index, pr):
+def removed_ids(old, published, sources, revoked_ids):
+    """Ids whose published files this change removes (#194): every base entry of the id is gone from
+    published.json, and the id is delisted (no themes/<id>/) and revoked. An id that keeps some of
+    its entries, still has a source or isn't revoked is not removed, and its missing entries are
+    reported as lost."""
+    kept = {k.split("/", 1)[0] for k in published}
+    return {tid for tid in {k.split("/", 1)[0] for k in old.published}
+            if tid not in kept and tid not in sources and tid in revoked_ids}
+
+
+def check_against_base(problems, old, published, sources, index, pr, revoked_ids=frozenset()):
+    removed = set()
     if published is not None:
-        lost = sorted(k for k, v in old.published.items() if published.get(k) != v)
+        removed = removed_ids(old, published, sources, revoked_ids)
+        lost = sorted(k for k, v in old.published.items()
+                      if k.split("/", 1)[0] not in removed and published.get(k) != v)
         if lost:
-            problems.append(f"{PUBLISHED_REL}: only gains entries, but these base entries are gone or changed: {', '.join(lost)}")
-    ever_published = {k.split("/", 1)[0] for k in old.published}
+            problems.append(f"{PUBLISHED_REL}: only gains entries, but these base entries are gone or changed: {', '.join(lost)}"
+                            f" (only a delisted, revoked id may lose all of its entries at once)")
+    ever_published = {k.split("/", 1)[0] for k in old.published} | old.revoked_ids
     for tid in sorted(sources):
         if tid in ever_published and tid not in old.themes:
             problems.append(f"themes/{tid}/: id {tid!r} was published before and delisted or revoked; ids are never reused")
@@ -1042,7 +1063,8 @@ def check_snapshot(head, base=None, pr=None, changed=None) -> list:
         except BaseUnavailable as error:
             problems.append(f"base branch: {error}; failing closed")
             return problems
-        check_against_base(problems, old, published, sources, None if index_problems else index, pr)
+        check_against_base(problems, old, published, sources, None if index_problems else index, pr,
+                           {r["id"] for r in revoked} if revoked is not None else frozenset())
         if pr is not None:
             check_authorship(problems, pr, changed if changed is not None else changed_paths(head, base),
                              old.revoked_ids, revoked)
@@ -1380,6 +1402,18 @@ def revoked_tree(repo):
     write_tree(repo, listed=("olympus-dusk",), delisted=("second-theme",), revoked=("second-theme",))
 
 
+def removed_tree(repo):
+    """second-theme revoked, as in revoked_tree, and its published files and entries removed (#194)."""
+    write_tree(repo, listed=("olympus-dusk",), revoked=("second-theme",))
+
+
+def plant_published_unlisted_dropped(head, base):
+    # second-theme is still in themes/ and the index, but its files and published.json entries go.
+    shutil.rmtree(head / V1_REL / "second-theme")
+    published = {k: v for k, v in read_json(head, PUBLISHED_REL).items() if not k.startswith("second-theme/")}
+    write_json(head, PUBLISHED_REL, published)
+
+
 def nothing_published_base(repo):
     """A base before any theme work: no themes/, no public/themes/v1/."""
     write_file(repo, "public/_headers", "/*\n  X-Frame-Options: DENY\n")
@@ -1558,6 +1592,11 @@ RULES = [
     ("base: edited published byte, published.json rehashed", plant_published_byte_edited_and_rehashed, ["only gains entries", "preview-light.png"]),
     ("base: published entry dropped", plant_published_entry_dropped, ["only gains entries", "second-theme/1.0.0/preview-dark.png"], MAINTAINER, delisted_tree),
     ("base: reused id", plant_reused_id, ["delisted or revoked; ids are never reused"]),
+    ("base: removed files of a delisted id that isn't revoked", no_plant,
+     ["only gains entries", "second-theme/1.0.0/preview-dark.png", "only a delisted, revoked id"], MAINTAINER, write_tree, delisted_tree),
+    ("base: revoked id's files half removed", plant_published_entry_dropped,
+     ["only gains entries", "second-theme/1.0.0/preview-dark.png"], MAINTAINER, revoked_tree),
+    ("base: removed id published again", no_plant, ["delisted or revoked; ids are never reused"], MAINTAINER, two_themes, removed_tree),
     ("base: v1 files but no index.json (fail closed)", plant_base_no_index,
      ["base branch: the base has public/themes/v1/published.json but no readable public/themes/v1/index.json; failing closed"]),
     ("base: published before, no published.json (fail closed)", plant_base_no_published,
@@ -1606,6 +1645,9 @@ def passes():
         ("maintainer PR editing scripts/", add_file("scripts/check_theme_index.py", "# edited\n"), MAINTAINER, None, None),
         ("delisting PR (maintainer)", no_plant, MAINTAINER, delisted_tree, two_themes),
         ("revocation PR (maintainer)", no_plant, MAINTAINER, revoked_tree, two_themes),
+        ("removal of a revoked, delisted id's published files (maintainer)", no_plant, MAINTAINER, removed_tree, revoked_tree),
+        ("removal PR that also delists and revokes in one go (maintainer)", no_plant, MAINTAINER, removed_tree, two_themes),
+        ("removal PR after the files were removed already: nothing to do", no_plant, MAINTAINER, removed_tree, removed_tree),
         ("un-revocation PR (maintainer)", plant_unrevoke, MAINTAINER, None, None),
         ("author change: push event A->B", author_change, PUSH, None, None),
         ("author change: maintainer PR without the label", author_change, MAINTAINER, None, None),
@@ -1781,6 +1823,11 @@ def self_test() -> int:
     problems = run_case(no_plant, OTHER, two_themes, empty_tree)
     if not any("isn't a maintainer and may not change public/themes/v1/" in p for p in problems):
         fail(f"a non-maintainer adding two published themes should fail on public/themes/v1, got {problems}")
+
+    # A listed theme's files can't be removed under the exception: it still has a source.
+    problems = run_case(plant_published_unlisted_dropped, MAINTAINER, two_themes, two_themes)
+    if not any("only gains entries" in p and "second-theme/1.0.0/theme.json" in p for p in problems):
+        fail(f"removing a listed theme's published files should fail on 'only gains entries', got {problems}")
 
     self_test_git(fail)
 

@@ -40,6 +40,13 @@ Delisting: remove themes/<id>/, commit, rerun. The entry leaves the index; publi
 their published.json entries stay, and the id can never be listed again. Revocation: also add
 {id, reason, revokedAt} to themes/revoked.json.
 
+Removing a delisted theme's published files (#194): after revoking it as above, commit, then run
+with `--remove-published <id>` (repeatable). That deletes public/themes/v1/<id>/ (every version)
+and the id's published.json entries; the id must be revoked and have no themes/<id>/. Its
+revoked.json entry stays, which is what keeps the id from ever being published again.
+check_theme_index.py allows exactly this. Deleting the files from the origin doesn't purge copies
+a CDN or browser already holds (public/_headers serves them immutable); that is a separate step.
+
 The kit CLI is WA's: scripts/sync_theme_kit.py's KIT_SHA, built by its own build_cli (a detached
 worktree of a local kit clone, `swift build --only-use-versions-from-resolved-file`) and
 smoke-tested by its own smoke_test; this script adds no second way to build it. A --marsdawn-bin
@@ -273,7 +280,26 @@ def collect(binary: Path, work: Path, published: dict, previous: dict, revoked_i
     return out
 
 
-def build(binary: Path, author_changes: set, rollbacks: set) -> None:
+def removal_plan(ids: set, published: dict, revoked_ids: set) -> set:
+    """The published.json keys to drop for `ids`, or BuildError: each id must be revoked, have no
+    themes/<id>/ and have published files (the same conditions check_theme_index.py holds CI to)."""
+    problems = []
+    for tid in sorted(ids):
+        if not rules.is_theme_id(tid):
+            problems.append(f"--remove-published {tid!r}: not a theme id")
+        elif tid not in revoked_ids:
+            problems.append(f"--remove-published {tid}: not in {rules.REVOKED_REL}; revoke it first "
+                            f"(the entry is what keeps the id from being published again)")
+        elif (THEMES / tid).exists() or (THEMES / tid).is_symlink():
+            problems.append(f"--remove-published {tid}: themes/{tid}/ still exists; delist it first")
+        elif not any(k.split("/", 1)[0] == tid for k in published):
+            problems.append(f"--remove-published {tid}: HEAD's {rules.PUBLISHED_REL} has no files for it")
+    if problems:
+        raise BuildError("\n".join(problems))
+    return {k for k in published if k.split("/", 1)[0] in ids}
+
+
+def build(binary: Path, author_changes: set, rollbacks: set, removals: set = frozenset()) -> None:
     for d in rules.DIRS:
         path = ROOT / d
         if path.is_symlink() or not path.is_dir():
@@ -303,6 +329,10 @@ def build(binary: Path, author_changes: set, rollbacks: set) -> None:
         if path is None or rules.sha256(path.read_bytes()) != digest:
             raise BuildError(f"{rules.V1_REL}/{rel}: missing or changed since it was published; restore it from HEAD")
 
+    removed_keys = removal_plan(set(removals), published, {r["id"] for r in revoked})
+    # A removed id stays an "ever published" id for the checks below through its revoked.json entry.
+    published = {k: v for k, v in published.items() if k not in removed_keys}
+
     with tempfile.TemporaryDirectory(prefix="build-themes-") as tmp:
         work = Path(tmp)
         themes = collect(binary, work, published, previous, {r["id"] for r in revoked}, author_changes, rollbacks)
@@ -322,7 +352,10 @@ def build(binary: Path, author_changes: set, rollbacks: set) -> None:
                 new_files[f"{base}preview-{appearance}.png"] = png
             print(f"{doc['id']} {doc['version']}: validated and rendered")
 
-        # Pending output from an earlier, uncommitted run: never published, so drop it.
+        # Files removed by --remove-published, then pending output from an earlier, uncommitted run
+        # (never published): both are on disk but no longer in `published`, so drop them.
+        for rel in sorted(removed_keys):
+            print(f"{rel}: removed (--remove-published)")
         for rel in sorted(set(on_disk) - set(published) - {"index.json", "published.json"}):
             v1_target(rel).unlink()
         for dirpath, dirnames, filenames in os.walk(V1, topdown=False):
@@ -343,7 +376,7 @@ def build(binary: Path, author_changes: set, rollbacks: set) -> None:
     write_generated("published.json", rules.dumps(dict(sorted(all_published.items()))))
     write_generated("index.json", rules.dumps(index))
     print(f"{rules.INDEX_REL}: {len(index['themes'])} theme(s), {len(revoked)} revoked, "
-          f"{len(new_files)} new file(s), generatedAt {index['generatedAt']}")
+          f"{len(new_files)} new file(s), {len(removed_keys)} removed, generatedAt {index['generatedAt']}")
 
 
 def main() -> int:
@@ -356,6 +389,9 @@ def main() -> int:
                         help=f"let this id's author.github change (only with the {rules.AUTHOR_CHANGE_LABEL} label)")
     parser.add_argument("--allow-version-rollback", action="append", default=[], metavar="ID",
                         help=f"let this id go to a lower version (only a maintainer PR with the {rules.ROLLBACK_LABEL} label)")
+    parser.add_argument("--remove-published", action="append", default=[], metavar="ID",
+                        help="delete this delisted, revoked id's published files and published.json entries "
+                             "(its revoked.json entry stays, so the id can't be published again)")
     args = parser.parse_args()
     try:
         return run(args)
@@ -389,7 +425,7 @@ def run(args) -> int:
             built_worktree, binary = kit.build_cli(args.kit_repo, kit.KIT_SHA)
         check_cli_version(binary)
         kit.smoke_test(binary, ROOT / "vendor" / "kit-themes" / kit.KIT_SHA[:12] / "Themes" / "dawn" / "theme.json")
-        build(binary, set(args.allow_author_change), set(args.allow_version_rollback))
+        build(binary, set(args.allow_author_change), set(args.allow_version_rollback), set(args.remove_published))
     except (BuildError, kit.SyncError) as error:
         for line in str(error).splitlines():
             print(f"::error::{line}", file=sys.stderr)
