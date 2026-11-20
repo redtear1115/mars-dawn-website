@@ -127,7 +127,7 @@ try {
   <p>L’outil en ligne de commande gratuit <code>marsdawn</code> : exportez du Markdown en PDF depuis un shell ou un agent LLM et, si l’app MarsDawn est installée, ouvrez-y des fichiers.</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn est gratuit et distribué séparément du Mac App Store.</strong> Installez-le avec Homebrew : sur un Mac avec puce Apple, il arrive prêt à l’emploi. <code>export</code> fonctionne seul ; <code>open</code> nécessite l’app MarsDawn.</p></div>
+<div class="summary"><p><strong>marsdawn est gratuit et distribué séparément du Mac App Store.</strong> Installez-le avec Homebrew : sur un Mac avec puce Apple, il arrive prêt à l’emploi. <code>export</code> fonctionne seul ; <code>open</code> nécessite l’app MarsDawn. Vous cherchez l’app pour Mac ? <a href="#mac-app">Installez-la avec Homebrew et mas</a>.</p></div>
 
 <p>Vous appelez marsdawn depuis un agent IA ou un script ? Consultez <a href="/fr/cli/agents/">marsdawn pour les agents</a> pour la sortie JSON, ses schémas et tous les codes de sortie, ou <a href="/fr/cli/mcp/">le serveur MCP</a> si votre agent appelle plutôt des outils via MCP.</p>
 
@@ -141,6 +141,13 @@ try {
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>Vérifiez votre version avec <code>marsdawn --version</code>.</p>
+
+<h2 id="mac-app">Installer l’app MarsDawn avec Homebrew et mas</h2>
+<p><code>brew install marsdawn</code> installe l’outil en ligne de commande, pas l’app. L’app pour Mac vient du Mac App Store, et <a href="https://github.com/mas-cli/mas">mas</a> permet de l’obtenir depuis le terminal :</p>
+<pre><code>brew install mas
+sudo mas get 6812925073</code></pre>
+<p>Connectez-vous d’abord à l’App Store avec votre compte Apple ; <code>sudo</code> vous demande le mot de passe de session de votre Mac. Cela installe la version de l’App Store dans <code>/Applications/MarsDawn.app</code>. Elle nécessite macOS 26 ou version ultérieure, et les mises à jour passent par l’App Store.</p>
+<p>Le téléchargement est gratuit. À la première ouverture de MarsDawn, vous pouvez lancer l’essai gratuit de 14 jours, avec toutes les fonctionnalités ; pour continuer à l’utiliser ensuite, déverrouillez-le une fois. Il n’y a pas d’abonnement. <a href="/fr/pay-once/">Comment ça marche</a></p>
 
 <h2 id="commands">Commandes</h2>
 
@@ -228,7 +235,7 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pr
         <li><a href="/fr/features/">Fonctionnalités</a></li>
         <li><a href="/fr/quicklook/">Coup d’œil pour Markdown</a></li>
         <li><a href="/fr/native/">Une app Mac</a></li>
-        <li><a href="/fr/pdf/">Export PDF</a></li>
+        <li><a href="/fr/pdf/">Imprimer et PDF</a></li>
         <li><a href="/fr/limits/">Ce que MarsDawn ne fait pas</a></li>
         <li><a href="/fr/pay-once/">Essai gratuit, achat unique</a></li>
         <li><a href="/fr/yours/">Vos textes restent sur votre Mac</a></li>

@@ -97,12 +97,35 @@ def parse_a(body: str) -> dict:
     return data
 
 
+def rename_383(ship: dict) -> None:
+    """#383 renamed /pdf/ ("Print & PDF"). The link text in each locale's `next` changes to the new page name; the
+    rest of the approved #369 text, and the `pdf` sentence, stay byte for byte. The fragments come from the
+    #383 table B rows for scripts/copy369/data.py (scripts/copy383/data.py), each matched exactly once."""
+    sys.path.insert(0, str(HERE.parent))
+    from copy383.data import SRC_ROWS
+    done = set()
+    for row in SRC_ROWS:
+        if row["file"] != "scripts/copy369/data.py":
+            continue
+        parts = row["id"].split(".")
+        locale = (parts[2] if parts[1] == "copy369" else parts[1]).lower()
+        old, new = row["current"].lstrip("…"), row["proposed"].lstrip("…")
+        value = ship[locale]["next"]
+        if value.count(old) != 1:
+            raise Stop(f"#383 {locale} next: {old!r} found {value.count(old)} times, expected exactly once")
+        ship[locale]["next"] = value.replace(old, new)
+        done.add(locale)
+    if done != set(LOCALES):
+        raise Stop(f"#383: the rename covers {sorted(done)}, expected all eight locales")
+
+
 def build() -> tuple:
     c = SOURCES["comments"]
     for name in ("approval", "scope", "plan_a"):
         fetch(c[name])
     data = parse_a(fetch(c["A"]))
     ship = {locale: {k: data[locale][k] for k in SHIP_KEYS} for locale in LOCALES}
+    rename_383(ship)
     held = {locale: {k: data[locale][k] for k in HELD_KEYS} for locale in LOCALES}
     return ship, held
 

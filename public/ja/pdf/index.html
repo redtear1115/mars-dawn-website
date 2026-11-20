@@ -27,8 +27,8 @@ try {
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mac で Markdown を PDF に書き出す、図も含めて · MarsDawn</title>
-<meta name="description" content="Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックを分断しないよう配慮されます。">
+<title>Mac で Markdown をプリント、PDF として保存 · MarsDawn</title>
+<meta name="description" content="Mac でプレビューしてから、Markdown をプリントまたは PDF として保存。書類・ハンドブック・配布資料の3つのレイアウトで、図やコードの色も保たれます。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -44,8 +44,8 @@ try {
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/pdf/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ja/pdf/">
 <link rel="alternate" type="text/markdown" href="/ja/pdf/index.md">
-<meta property="og:title" content="Mac で Markdown を PDF に書き出す、図も含めて · MarsDawn">
-<meta property="og:description" content="Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックを分断しないよう配慮されます。">
+<meta property="og:title" content="Mac で Markdown をプリント、PDF として保存 · MarsDawn">
+<meta property="og:description" content="Mac でプレビューしてから、Markdown をプリントまたは PDF として保存。書類・ハンドブック・配布資料の3つのレイアウトで、図やコードの色も保たれます。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/pdf/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -54,7 +54,7 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/ja/"}, {"@type": "ListItem", "position": 2, "name": "PDF 書き出し", "item": "https://marsdawn.southern-light.dev/ja/pdf/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/ja/"}, {"@type": "ListItem", "position": 2, "name": "プリントと PDF", "item": "https://marsdawn.southern-light.dev/ja/pdf/"}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -124,29 +124,51 @@ try {
 </header>
 <main id="main">
 <section class="intro">
-  <h1>PDF は、あなたが書いたページそのままに見えます。</h1>
-  <p>テーマのライトカラーで PDF に書き出す、またはプリントできます。図やハイライトされたコードもそのまま反映され、改ページはひとまとまりの内容を分断しないよう配慮されます。</p>
+  <h1>プリント、または PDF として保存</h1>
+  <p>MarsDawn なら、Markdown をプリントしたり PDF として保存したりできます。テーマのライトカラーを使い、先にページをプレビューしてレイアウトを選べます。</p>
 </section>
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。">
-    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
-    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid 図は PDF に描き込まれます。</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>コードはハイライトを保ちます。</span></span>
+    <img src="/assets/screens/06-print-export-868.png" srcset="/assets/screens/06-print-export-800.png 800w, /assets/screens/06-print-export-868.png 868w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="868" height="588" alt="「プリントと書き出し」パネル：図とコードのプレビュー、レイアウトカード3枚、「プリント…」「PDFとして保存…」ボタン。">
+    <span class="marker l co-print-export-1" aria-hidden="true">1</span><span class="marker r co-print-export-2" aria-hidden="true">2</span><span class="marker r co-print-export-3" aria-hidden="true">3</span>
+    <span class="leader l co-print-export-1" aria-hidden="true"><span>まずページをプレビュー。</span></span><span class="leader r co-print-export-2" aria-hidden="true"><span>レイアウトを選ぶ。</span></span><span class="leader r co-print-export-3" aria-hidden="true"><span>プリント、または PDF として保存。</span></span>
   </div></div>
   <figcaption>
     <span class="figure-label">このスクリーンショットの内容</span>
-    <ol><li>Mermaid 図は PDF に描き込まれます。</li><li>コードはハイライトを保ちます。</li></ol>
+    <ol><li>まずページをプレビュー。</li><li>レイアウトを選ぶ。</li><li>プリント、または PDF として保存。</li></ol>
   </figcaption>
 </figure>
-<h2 id="what-that-means">それが意味すること</h2>
+<h2 id="preview-first-then-decide">まずプレビュー、それから決める</h2>
+<ol class="loop-steps">
+  <li><strong>プレビューを開く。</strong>「ファイル」▸「プリント…」または「PDF として書き出す…」で、「プリントと書き出し」が開きます。</li>
+  <li><strong>レイアウトを選ぶ。</strong>プレビューでページを確かめ、「書類」「ハンドブック」「配布資料」から選びます。</li>
+  <li><strong>プリントか保存。</strong>「プリント…」をクリックするか、「PDFとして保存…」をクリックしてファイルに残します。</li>
+</ol>
+<h2 id="three-layouts">3つのレイアウト</h2>
+<p>どのレイアウトでも、プリントも PDF での保存もできます。</p>
+<div class="layout-shots">
+  <figure>
+    <img src="/assets/cli/layout-document.png" alt="書類レイアウトの1ページ目：見出し、段落、フローチャート、コードブロック、表。" width="856" height="1108">
+    <figcaption><strong>書類。</strong>プレビューと同じページで、自動で改ページします。</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handbook-contents.png" alt="ハンドブックレイアウトの目次ページ。見出しとページ番号が並ぶ。" width="856" height="1108">
+    <figcaption><strong>ハンドブック。</strong>表紙、ページ番号付きの目次、章ごとに改ページ。</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handout.png" alt="配布資料レイアウトの1ページ目：左に内容、右に空白のメモ欄、下にフッタ。" width="856" height="1108">
+    <figcaption><strong>配布資料。</strong>右側 1/3 にメモ欄、フッタにファイル名・日付・ページ番号。</figcaption>
+  </figure>
+</div>
+<h2 id="what-ends-up-on-the-page">ページに載るもの</h2>
 <ul>
-  <li>Mermaid 図は PDF に描き込まれます。</li>
+  <li>Mermaid 図はページに描き込まれます。</li>
   <li>コードブロックはシンタックスハイライトを保ちます。</li>
   <li>改ページは、見出しがページの下端に残ったり、コードや図が分断されたりしないよう配慮されます。</li>
-  <li>どのレイアウトでも書き出せます。ソースだけを表示していても書き出しは機能します。</li>
   <li>プリントや書き出しの前にページをプレビューし、レイアウトを選べます：「書類」、表紙と目次付きの「ハンドブック」、メモ欄付きの「配布資料」。</li>
 </ul>
-<p>無料の<a href="/ja/cli/">marsdawn コマンドラインツール</a>は同じ書き出しエンジンを使っているので、スクリプトや AI エージェントも同じ PDF を得られます。</p>
+<p>iPhone と iPad では、バージョン 1.0.2 以降で Markdown 書類をプリントできます。</p>
+<p>無料の<a href="/ja/cli/">marsdawn コマンドラインツール</a>は同じ書き出しエンジンを使い、スクリプトや AI エージェントも同じ PDF です。</p>
 <nav class="traits" aria-label="MarsDawn に期待できること">
 <h2>MarsDawn に期待できること</h2>
 <ul>
@@ -166,7 +188,7 @@ try {
         <li><a href="/ja/features/">機能一覧</a></li>
         <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
         <li><a href="/ja/native/">Mac アプリ</a></li>
-        <li><a href="/ja/pdf/" aria-current="page">PDF 書き出し</a></li>
+        <li><a href="/ja/pdf/" aria-current="page">プリントと PDF</a></li>
         <li><a href="/ja/limits/">MarsDawn ができないこと</a></li>
         <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
         <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>

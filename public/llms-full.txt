@@ -42,7 +42,7 @@ On iPhone and iPad, MarsDawn is for reading only. It opens Markdown, text, PDF, 
 
 The preview draws the diagram and highlights the code, right next to your source.
 
-### [PDF export](/pdf/)
+### [Print & PDF](/pdf/)
 
 ![The top of a page: a title, a short paragraph and a flowchart.](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
 
@@ -79,6 +79,8 @@ brew install redtear1115/tap/marsdawn
 - `marsdawn export` turns a Markdown file into a PDF, rendered like MarsDawn's preview. It doesn't need the app.
 - `marsdawn open` opens files in the MarsDawn app for you to review.
 - `--json` gives scripts and agents results they can parse.
+
+That installs the command-line tool. To get the Mac app with Homebrew, [see how](/cli/#mac-app).
 
 [Command Line](/cli/) · [marsdawn for agents](/cli/agents/) · [Agent skill](/cli/skill/) · [MCP server](/cli/mcp/)
 
@@ -248,19 +250,19 @@ Not all of the work happens on a screen. The pages MarsDawn prints and exports a
 
 Print the pages, or send everyone the same PDF, and the whole table works from the same document instead of one shared screen. Everyone holding the same file has the same page breaks, so "the table on page 3" points at one thing. Then the people write the decisions down, on the printout or in notes. The meeting-notes template starts with decisions and gives each action item an owner.
 
-[PDF export](/pdf/) · [Meeting notes template](/templates/meeting-notes/)
+[Print & PDF](/pdf/) · [Meeting notes template](/templates/meeting-notes/)
 
 ### Reading with a pen
 
 Some people take things in better with a pen: underlining, writing in the margin, so it sticks. Print the document and do that on paper. MarsDawn has no annotation tool of its own, so if you would rather mark up the PDF, use the PDF app you already have.
 
-[PDF export](/pdf/)
+[Print & PDF](/pdf/)
 
 ### Paper records
 
 Some fields still file paper, accounting among them. MarsDawn makes no archival or compliance claim. What it does is print and export clean, paginated pages: diagrams drawn in, short code blocks kept whole, the theme's light colors. Use them wherever paper is still the record.
 
-[PDF export](/pdf/)
+[Print & PDF](/pdf/)
 
 ### Handing it to someone who doesn't use Markdown
 
@@ -332,7 +334,7 @@ Settings ▸ Appearance ▸ Get More Themes… opens a gallery of extra preview 
 
 File ▸ Print… and File ▸ Export as PDF… open Print & Export, with a preview of the pages. Pick a layout: Document; Handbook, with a cover, a table of contents and PDF bookmarks; or Handout, with a notes column. Then print or save. Mermaid diagrams are drawn in, code keeps its highlighting, and page breaks avoid splitting a heading from its section or cutting a short code block or diagram in half. PDFs use the theme's light colors.
 
-[PDF export](/pdf/)
+[Print & PDF](/pdf/)
 
 ![A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -528,30 +530,54 @@ Yes. Quick Look in Finder works with or without the trial. The free marsdawn com
 No. MarsDawn never asks you to create an account.
 ---
 
-## PDF export
+## Print & PDF
 
 Source: https://marsdawn.southern-light.dev/pdf/
 
-# The PDF looks like the page you wrote.
+# Print it, or save it as a PDF
 
-Export as PDF or print, in your theme's light colors. Diagrams and highlighted code come through, and page breaks avoid splitting what belongs together.
+MarsDawn prints your Markdown or saves it as a PDF, in your theme's light colors. A preview shows the pages first, so you can pick a layout before you print.
 
-![A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![The Print & Export panel: a page preview with a flowchart and some code, three layout cards, and Print… and Save as PDF… buttons.](https://marsdawn.southern-light.dev/assets/screens/06-print-export-868.png)
 
 In this screenshot:
 
-1. Mermaid diagrams, drawn into the PDF.
-2. Code keeps its highlighting.
+1. Preview the pages first.
+2. Pick a layout.
+3. Print, or save as a PDF.
 
-## What that means
+## Preview first, then decide
 
-- Mermaid diagrams are drawn into the PDF.
+1. **Open the preview.** Choose File ▸ Print… or File ▸ Export as PDF…; both open the Print & Export sheet.
+2. **Pick a layout.** Look through the preview, then choose Document, Handbook or Handout.
+3. **Print or save.** Click Print…, or Save as PDF… to keep a file.
+
+## Three layouts
+
+Every layout can be printed or saved as a PDF.
+
+![Document layout, page 1: a title, a paragraph, a flowchart, a code block and a table.](/assets/cli/layout-document.png)
+
+**Document.** Pages as in the live preview, with automatic page breaks.
+
+![Handbook layout: a contents page listing the headings with their page numbers.](/assets/cli/layout-handbook-contents.png)
+
+**Handbook.** A cover, contents with page numbers, each chapter on a new page.
+
+![Handout layout, page 1: content on the left, an empty notes column on the right and a footer line.](/assets/cli/layout-handout.png)
+
+**Handout.** A notes column on the right; the footer has file name, date and page number.
+
+## What ends up on the page
+
+- Mermaid diagrams are drawn into the pages.
 - Code blocks keep their syntax highlighting.
 - Page breaks avoid leaving a heading at the bottom of a page or splitting code and diagrams.
-- Any layout. Export works even while only the source is showing.
 - Preview the pages before you print or export, and pick a layout: Document, Handbook with a cover and table of contents, or Handout with a notes column.
 
-The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script or an AI agent gets the same PDF.
+On iPhone and iPad, version 1.0.2 and later can print a Markdown document.
+
+The free [marsdawn command-line tool](/cli/) uses the same exporter, so scripts and AI agents get the same PDF.
 ---
 
 ## A Mac app
@@ -656,6 +682,10 @@ Please include your macOS version and your MarsDawn version (MarsDawn › About 
 ### What do I need to run MarsDawn?
 
 A Mac with macOS 26 Tahoe or later, on Apple silicon or Intel.
+
+### Can I install MarsDawn with Homebrew?
+
+Yes, through the Mac App Store: run `brew install mas`, then `sudo mas get 6812925073`. `brew install marsdawn` is a different thing: it installs the command-line tool, not the app.
 
 ### How do I switch between the editor and the preview?
 
@@ -805,6 +835,8 @@ MarsDawn is a Markdown editor for the Mac. It is free to download from the Mac A
 
 [Download MarsDawn free on the Mac App Store](https://apps.apple.com/app/id6812925073)
 
+Prefer the terminal? [Install it with Homebrew and mas](/cli/#mac-app).
+
 Open a `.md` file and read the rendered page next to the source:
 
 - The preview updates as you type, and the two panes scroll together.
@@ -841,7 +873,7 @@ Garbled characters usually mean the file was saved in a text encoding other than
 
 ### Can I turn a .md file into a PDF?
 
-Yes. In MarsDawn, choose File ▸ Export as PDF… (⌥⌘E) or File ▸ Print…; the pages are paginated, with diagrams drawn in and code highlighted, in the theme's light colors. Without the app, the free `marsdawn export` command-line tool makes the same PDF: `marsdawn export notes.md`. See [PDF export](/pdf/) and [Markdown to PDF](/markdown-to-pdf/).
+Yes. In MarsDawn, choose File ▸ Export as PDF… (⌥⌘E) or File ▸ Print…; the pages are paginated, with diagrams drawn in and code highlighted, in the theme's light colors. Without the app, the free `marsdawn export` command-line tool makes the same PDF: `marsdawn export notes.md`. See [Print & PDF](/pdf/) and [Markdown to PDF](/markdown-to-pdf/).
 
 ### Can I open the .md files my AI agent wrote?
 
@@ -852,6 +884,7 @@ Yes, that is what MarsDawn is built for. Open the file and read the rendered pag
 - Every option of the command-line tool: [Command Line](/cli/).
 - What MarsDawn doesn't do: [the list](/limits/).
 - Reading Markdown in VS Code, a browser or Claude Desktop instead: [how they compare](/vs/markdown-preview-tools/).
+- Notes you keep on HackMD: [Move from HackMD to your Mac](/from-hackmd/).
 - Diagrams in a Markdown file: [Mermaid preview on Mac](/mermaid-preview-mac/).
 
 ---
@@ -903,7 +936,7 @@ If Mermaid can't draw a diagram, the preview shows the diagram's source with the
 ## Next
 
 - Start from a diagram that already works: the [flowchart template](/templates/flowchart/).
-- Export it: [PDF export](/pdf/), or from a script, [Command Line](/cli/).
+- Export it: [Print & PDF](/pdf/), or from a script, [Command Line](/cli/).
 - Not sure how to open the file? [How to open .md files on Mac](/view-markdown-on-mac/).
 
 ## Try it on your Mac
@@ -1016,6 +1049,109 @@ In a Git checkout MarsDawn can access, or a sidebar folder, the path is relative
 
 ---
 
+## Move from HackMD to your Mac
+
+Source: https://marsdawn.southern-light.dev/from-hackmd/
+
+# Move from HackMD to your Mac
+
+Your notes are already Markdown, so there's nothing to convert. Pick a route below by how much you're moving. Images need their own step, so read that section before you delete anything on HackMD.
+
+We tested this on a free HackMD account in November 2026. HackMD can change, and we didn't test paid plans or team workspaces.
+
+| You want to | Take this route |
+|---|---|
+| Move all your notes | Download all notes |
+| Move notes that are already on GitHub | Clone the repo |
+| Move one or two notes | Download one note |
+
+## Download all notes
+
+HackMD's note settings have Download all notes, for personal and team workspaces. You get one .zip with a .md file for each note, named after its title.
+
+- Folders aren't kept. Every note lands at the top level.
+- Images aren't included. The .md files still point to them by URL.
+- The option to include title and tags is on by default and adds a front matter block to each note. Turn it off to get each note exactly as written.
+
+Unzip it, then choose File ▸ Open Folder… in MarsDawn to open that folder.
+
+## Clone the repo
+
+HackMD's GitHub sync links one note to one file, so a note you've pushed is already in the repo. Clone it and open the folder with File ▸ Open Folder…. The sidebar shows the repo and its branch.
+
+If your notes aren't on GitHub yet, you don't need to start for this move. Each note has to be linked on its own, and the free plan allows 20 pushes a month. On a free personal account we found no way to push a whole workspace at once.
+
+After the move, treat the repo as the original. A push from HackMD replaces what's on GitHub, even if GitHub has newer content, and it doesn't warn you.
+
+## Download one note
+
+The note menu downloads a note as .md or .html. Choose .md and open the file in MarsDawn.
+
+## Images
+
+Images you uploaded to HackMD live at `https://hackmd.io/_uploads/...`. Who can see them follows the note's permission.
+
+| Your note is | What happens on your Mac | What to do |
+|---|---|---|
+| Public | The image loads from HackMD | Click Load Images in the preview, or turn on Settings ▸ Images ▸ Load remote images automatically |
+| Private | The image returns an error, because MarsDawn isn't signed in to HackMD | Save the image from a signed-in browser, put it next to the .md file and change the path. Or make the note public, if everyone may read it |
+
+- **Older notes** may use `i.imgur.com` addresses instead.
+- **Deleting a note deletes its images.** Their addresses stop working, so move the images first.
+
+If MarsDawn can't reach an image next to your file, use the button in the preview to give it access to the folder.
+
+## How your notes will look
+
+Most of HackMD's syntax reads the same: `==highlight==`, `^superscript^`, `~subscript~`, `[TOC]`, image sizes such as `=300x200`, Mermaid and KaTeX. `{%youtube %}` shows as a link. To keep every line break as HackMD does, turn on Settings ▸ Appearance ▸ Keep single line breaks.
+
+`:::` blocks work too. `:::info`, `:::success`, `:::warning` and `:::danger` show as blocks with a colored bar and a heading (Note, Tip, Warning or Caution), or your own heading if you write one after the name. `:::spoiler` shows as a collapsible section that opens when you click it. A `:::` block with any other name, or without its closing `:::`, shows as you typed it.
+
+A few things look different:
+
+- `++inserted++` and emoji codes such as `:sparkles:` show as you typed them.
+- `{%hackmd id %}` isn't expanded.
+- `<i class="fa ...">` icons don't appear.
+
+## For scripts: hackmd-cli
+
+`hackmd-cli` has no command that exports everything at once. It exports one note and prints it, so you list your notes first and loop over them. You need Node.js, `jq` and an API token from your HackMD settings. If you don't need a script, Download all notes is simpler.
+
+```
+npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=<your token>
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" > "$id.md"
+done
+```
+
+- **Folders don't come across.** The note list doesn't say which folder a note is in, so every file lands in one place.
+- **Images stay as `hackmd.io` links.** Handle them as in the Images section above.
+- **File names are note IDs,** not titles.
+- **The free plan allows 400 API calls every 30 days.** This uses one call for the list and one for each note.
+
+We tried this on an account with only a few notes, so we don't know how a very long list behaves. Delete the token in your HackMD settings when you're done.
+
+## Writing together
+
+MarsDawn has no shared editing. If you need to write together live, keep using HackMD. If your team keeps documents in git, each person can open the same repo in their own MarsDawn and finish the document together. See Review documents as a team, with git.
+
+## Questions
+
+### Can I download all my HackMD notes at once?
+
+Yes. Download all notes gives you one .zip of .md files. It doesn't keep folders or include images.
+
+### Why are my images missing in MarsDawn?
+
+MarsDawn holds back web images until you click Load Images. If the note is private, the image can't load at all, so save it next to your file.
+
+### Do I have to leave HackMD?
+
+No. HackMD stays the better choice for writing together. MarsDawn is for reading and reviewing on your Mac.
+
+---
+
 ## Markdown to PDF
 
 Source: https://marsdawn.southern-light.dev/markdown-to-pdf/
@@ -1102,7 +1238,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## Next
 
-- In the MarsDawn app, File ▸ Print… previews the same layouts before you print or save: [PDF export](/pdf/).
+- In the MarsDawn app, File ▸ Print… previews the same layouts before you print or save: [Print & PDF](/pdf/).
 - Every option and the JSON it prints: [Command Line](/cli/).
 - To have a coding agent do this for you, run `marsdawn skill --install` to add [the marsdawn agent skill](/cli/skill/).
 - All four preview themes, and where PDF export is headed: [preview themes and PDF export](/themes/).
@@ -1409,7 +1545,7 @@ Source: https://marsdawn.southern-light.dev/cli/
 
 The free `marsdawn` command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.
 
-**marsdawn is free and distributed separately from the Mac App Store.** Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. `export` works on its own; `open` needs the MarsDawn app.
+**marsdawn is free and distributed separately from the Mac App Store.** Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. `export` works on its own; `open` needs the MarsDawn app. Looking for the Mac app? [Install it with Homebrew and mas](#mac-app).
 
 Calling marsdawn from an AI agent or a script? See [marsdawn for agents](/cli/agents/) for the JSON output, its schemas and every exit code, or [the MCP server](/cli/mcp/) if your agent calls tools over MCP instead.
 
@@ -1434,6 +1570,19 @@ swift build -c release --product marsdawn
 ```
 
 Check which version you have with `marsdawn --version`.
+
+## Install the MarsDawn app with Homebrew and mas
+
+`brew install marsdawn` installs the command-line tool, not the app. The Mac app comes from the Mac App Store, and [mas](https://github.com/mas-cli/mas) can get it from the terminal:
+
+```
+brew install mas
+sudo mas get 6812925073
+```
+
+Sign in to the App Store with your Apple Account first; `sudo` asks for your Mac login password. This installs the App Store version at `/Applications/MarsDawn.app`. It needs macOS 26 or later, and updates come through the App Store.
+
+It's free to download. The first time you open MarsDawn you can start a 14-day free trial with everything working; to keep using it after that, unlock it once. There is no subscription. [How it works](/pay-once/)
 
 ## Commands
 
@@ -3672,7 +3821,7 @@ MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、M
 
 預覽會把圖表畫出來、程式碼上色，就在原始碼旁邊。
 
-### [輸出 PDF](/zh-hant/pdf/)
+### [列印與 PDF](/zh-hant/pdf/)
 
 ![頁面頂部：標題、一小段文字和一張流程圖。](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
 
@@ -3710,6 +3859,8 @@ brew install redtear1115/tap/marsdawn
 - `marsdawn open` 在 MarsDawn app 裡開啟檔案，讓你審閱。
 - `--json` 回傳腳本和 agent 能解析的結果。
 
+上面裝的是命令列工具。要用 Homebrew 裝 Mac app，[看這裡](/zh-hant/cli/#mac-app)。
+
 [命令列工具](/zh-hant/cli/) · [給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/) · [給 agent 的 skill](/zh-hant/cli/skill/) · [MCP 伺服器](/zh-hant/cli/mcp/)
 
 ## MarsDawn 是什麼樣的 app
@@ -3729,7 +3880,7 @@ brew install redtear1115/tap/marsdawn
 | 功能 | App 內 | CLI | MCP／skill | 狀態 |
 |---|---|---|---|---|
 | 打開到某一行 | 停在那一行，預覽區塊閃一下 | marsdawn open notes.md:120（--background 不搶焦點） | open_in_marsdawn；skill 只開一次 | 已推出 |
-| 輸出 PDF | 檔案 ▸ 輸出為 PDF⋯（⌥⌘E），可選標準、手冊、講義版面 | marsdawn export，不需要 app；--layout handbook 或 handout | export_markdown_to_pdf；skill | 已推出 |
+| 輸出 PDF | 檔案 ▸ 輸出為 PDF⋯（⌥⌘E），可選文件、手冊、講義版面 | marsdawn export，不需要 app；--layout handbook 或 handout | export_markdown_to_pdf；skill | 已推出 |
 | JSON 結果 | — | open、export 加 --json | MCP 回傳同一份 JSON | 已推出 |
 | Agent skill | — | marsdawn skill --install | 教 agent 開一次、輸出 PDF | 已推出 |
 | MCP 伺服器 | — | 在底下執行 | marsdawn-mcp：兩個工具，只碰允許的資料夾 | 已推出 |
@@ -3814,7 +3965,7 @@ MarsDawn 本身不傳送任何東西。skill 只是一份文字說明，marsdawn
 
 你可能不需要它。如果你主要寫自己的筆記，Obsidian 這類筆記 App 更適合。如果你整天待在 VS Code，它內建的預覽是免費的。如果你只想在 Finder 裡瞄一眼檔案，免費的快速查看擴充功能就夠了。MarsDawn 是用來閱讀和審閱 agent 寫的 Markdown：原始碼旁邊就是即時預覽，agent 的修改一步就能撤銷，檔案直接開到指定的那一行。如果它不合用，歡迎寫信告訴我們原因。
 
-詳見：[MarsDawn 與其他工具比較](/zh-hant/vs/) · [Mac Markdown 檢視器推薦](/zh-hant/best-markdown-viewer-mac/)
+詳見：[MarsDawn 與其他工具比較](/zh-hant/vs/) · [Markdown 閱讀器推薦](/zh-hant/best-markdown-viewer-mac/)
 
 ### MarsDawn 會持續維護嗎？
 
@@ -3878,19 +4029,19 @@ MarsDawn 是為 Mac 做的 Markdown 編輯器。一邊寫，一邊讀排版後�
 
 把頁面印出來，或把同一份 PDF 傳給每個人，大家就是看同一份文件，不用擠在一個螢幕前。拿到同一個檔案的人，分頁位置都一樣，所以「第 3 頁那張表」指的是同一個東西。接著由人把決議寫下來，寫在印出來的紙上，或寫成筆記。會議記錄範本把決議放在最前面，每個行動項目都有負責人。
 
-[輸出 PDF](/zh-hant/pdf/) · [會議記錄範本](/zh-hant/templates/meeting-notes/)
+[列印與 PDF](/zh-hant/pdf/) · [會議記錄範本](/zh-hant/templates/meeting-notes/)
 
 ### 拿筆邊讀邊寫
 
 有些人習慣用筆讀東西：畫線、在頁邊寫幾個字，才記得住。把文件印出來，就可以在紙上這樣做。MarsDawn 本身沒有加註功能；想直接在 PDF 上標記的話，用你原本就有的 PDF app 就好。
 
-[輸出 PDF](/zh-hant/pdf/)
+[列印與 PDF](/zh-hant/pdf/)
 
 ### 紙本保存
 
 有些行業還是要把紙本存起來，會計就是一個例子。MarsDawn 沒有任何歸檔或合規的聲明。它做的是印出和輸出乾淨、分好頁的頁面：圖表畫進去，短的程式碼區塊不被切開，用主題的淺色配色。紙本還是正式紀錄的地方，就可以用這些頁面。
 
-[輸出 PDF](/zh-hant/pdf/)
+[列印與 PDF](/zh-hant/pdf/)
 
 ### 交給不寫 Markdown 的人
 
@@ -3962,7 +4113,7 @@ App 介面有英文、繁體中文、簡體中文、日文、德文、法文、�
 
 「檔案 ▸ 列印⋯」和「檔案 ▸ 輸出為 PDF⋯」會打開「列印與輸出」，先預覽頁面。選一種版面：「文件」；「手冊」，有封面、目錄和 PDF 書籤；或「講義」，有筆記欄。然後列印或儲存。Mermaid 圖表直接畫進去，程式碼保留語法上色，分頁時會盡量不讓標題落在頁尾，也不切開短的程式碼和圖表。PDF 一律用主題的淺色配色。
 
-[輸出 PDF](/zh-hant/pdf/)
+[列印與 PDF](/zh-hant/pdf/)
 
 ![用 MarsDawn 輸出的 PDF，在內建的 PDF 檢視器中開啟，旁邊有頁面縮圖。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -4158,30 +4309,54 @@ MarsDawn 可從 Mac App Store 免費下載，14 天內可使用所有功能，�
 不需要。MarsDawn 不會要求你建立帳號。
 ---
 
-## 輸出 PDF
+## 列印與 PDF
 
 Source: https://marsdawn.southern-light.dev/zh-hant/pdf/
 
-# PDF 看起來就是你寫的那一頁。
+# 列印，或儲存為 PDF
 
-輸出成 PDF 或列印，使用主題的淺色配色。圖表和程式碼上色都會保留，分頁位置也經過安排。
+MarsDawn 能把 Markdown 列印，或儲存為 PDF，使用主題的淺色配色。先預覽頁面，再選版面。
 
-![用 MarsDawn 輸出的 PDF，在內建的 PDF 檢視器中開啟，旁邊有頁面縮圖。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![「列印與輸出」面板：左側頁面預覽有流程圖和一小段程式碼，右側三張版面卡片，右下有「列印⋯」和「儲存為 PDF⋯」按鈕。](https://marsdawn.southern-light.dev/assets/screens/06-print-export-868.png)
 
 這張截圖裡：
 
-1. Mermaid 圖表直接畫進 PDF。
-2. 程式碼保留語法上色。
+1. 先預覽頁面。
+2. 選一種版面。
+3. 列印，或儲存為 PDF。
 
-## 這代表什麼
+## 先預覽，再決定
 
-- Mermaid 圖表直接畫進 PDF。
+1. **開啟預覽。**在「檔案」選「列印⋯」或「輸出為 PDF⋯」，都會開啟「列印與輸出」。
+2. **選版面。**看過預覽的頁面，再選「文件」、「手冊」或「講義」。
+3. **列印或儲存。**按「列印⋯」，或按「儲存為 PDF⋯」留下檔案。
+
+## 三種版面
+
+每種版面都能列印，也能儲存為 PDF。
+
+![文件版面第 1 頁：標題、一段文字、流程圖、程式碼區塊和一張表格。](/assets/cli/layout-document.png)
+
+**文件。**跟即時預覽一樣的頁面，自動分頁。
+
+![手冊版面的目錄頁，列出各標題和頁碼。](/assets/cli/layout-handbook-contents.png)
+
+**手冊。**封面、有頁碼的目錄、每章換頁。
+
+![講義版面第 1 頁：內容在左，右側是空白的筆記欄，底部有頁尾。](/assets/cli/layout-handout.png)
+
+**講義。**右側 1/3 留給筆記，頁尾有檔名、日期和頁碼。
+
+## 頁面上會有什麼
+
+- Mermaid 圖表直接畫進頁面。
 - 程式碼區塊保留語法上色。
 - 分頁時會盡量不讓標題落在頁尾，也不切開程式碼和圖表。
-- 任何版面都能輸出，只顯示原始碼時也可以。
 - 列印或輸出前先預覽頁面，再選版面：「文件」、有封面和目錄的「手冊」，或有筆記欄的「講義」。
 
-免費的 [marsdawn 命令列工具](/zh-hant/cli/)使用同一套輸出程式，所以腳本或 AI agent 也能得到一樣的 PDF。
+iPhone 和 iPad 從 1.0.2 版起可列印 Markdown 文件。
+
+免費的 [marsdawn 命令列工具](/zh-hant/cli/)用同一套輸出程式，腳本、agent 也能用。
 ---
 
 ## 為 Mac 而做
@@ -4286,6 +4461,10 @@ macOS Markdown 編輯器 MarsDawn 的使用說明。
 ### MarsDawn 需要什麼環境？
 
 macOS 26 Tahoe 或更新版本的 Mac，Apple 晶片或 Intel 皆可。
+
+### 可以用 Homebrew 安裝 MarsDawn 嗎？
+
+可以，透過 Mac App Store：先執行 `brew install mas`，再執行 `sudo mas get 6812925073`。`brew install marsdawn` 是另一個東西：它裝的是命令列工具，不是 app。
 
 ### 怎麼切換編輯器與預覽？
 
@@ -4435,6 +4614,8 @@ MarsDawn 是為 Mac 做的 Markdown 編輯器，可以在 Mac App Store 免費�
 
 [到 Mac App Store 免費下載 MarsDawn](https://apps.apple.com/app/id6812925073)
 
+習慣用終端機？[用 Homebrew 和 mas 安裝](/zh-hant/cli/#mac-app)。
+
 打開 `.md` 檔案，排好的頁面就在原始碼旁邊：
 
 - 預覽會隨著你打字即時更新，兩邊的窗格一起捲動。
@@ -4471,7 +4652,7 @@ open notes.pdf
 
 ### md 檔可以轉成 PDF 嗎？
 
-可以。在 MarsDawn 選「檔案 ▸ 輸出為 PDF⋯」（⌥⌘E）或「檔案 ▸ 列印⋯」，頁面會自動分頁，圖表畫進去，程式碼保留上色，使用主題的淺色配色。不裝 app 的話，免費的 `marsdawn export` 命令列工具能輸出同樣的 PDF：`marsdawn export notes.md`。請看[輸出 PDF](/zh-hant/pdf/)和[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
+可以。在 MarsDawn 選「檔案 ▸ 輸出為 PDF⋯」（⌥⌘E）或「檔案 ▸ 列印⋯」，頁面會自動分頁，圖表畫進去，程式碼保留上色，使用主題的淺色配色。不裝 app 的話，免費的 `marsdawn export` 命令列工具能輸出同樣的 PDF：`marsdawn export notes.md`。請看[列印與 PDF](/zh-hant/pdf/)和[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。
 
 ### AI agent 寫的 md 檔也能這樣打開嗎？
 
@@ -4482,6 +4663,7 @@ open notes.pdf
 - 命令列工具的所有選項：[命令列工具](/zh-hant/cli/)。
 - MarsDawn 做不到的事：[這份清單](/zh-hant/limits/)。
 - 改用 VS Code、瀏覽器或 Claude Desktop 看 Markdown：[比較一下](/zh-hant/vs/markdown-preview-tools/)。
+- 放在 HackMD 的筆記：[從 HackMD 搬到 Mac](/zh-hant/from-hackmd/)。
 - Markdown 檔裡的圖表：[在 Mac 上預覽 Mermaid](/zh-hant/mermaid-preview-mac/)。
 
 ---
@@ -4533,7 +4715,7 @@ Mermaid 畫不出一張圖時，預覽會顯示那張圖的原始碼，下方附
 ## 接下來
 
 - 從一張已經能畫出來的圖開始：[流程圖範本](/zh-hant/templates/flowchart/)。
-- 輸出：[輸出 PDF](/zh-hant/pdf/)；從腳本輸出，請看[命令列工具](/zh-hant/cli/)。
+- 輸出：[列印與 PDF](/zh-hant/pdf/)；從腳本輸出，請看[命令列工具](/zh-hant/cli/)。
 - 不確定怎麼打開檔案？請看[Mac 怎麼開 md 檔](/zh-hant/view-markdown-on-mac/)。
 
 ## 在你的 Mac 上試試
@@ -4646,6 +4828,109 @@ docs/plan.md:42-43
 
 ---
 
+## 從 HackMD 搬到 Mac
+
+Source: https://marsdawn.southern-light.dev/zh-hant/from-hackmd/
+
+# 從 HackMD 搬到 Mac
+
+你的筆記本來就是 Markdown，不用轉檔。看你要搬多少，選一條路。圖片要另外處理，刪 HackMD 上的東西之前，請先讀「圖片」那段。
+
+這頁是 2026 年 11 月用 HackMD 免費帳號實測的。HackMD 可能會變，付費方案和團隊工作區我們沒測。
+
+| 你想要 | 走這條 |
+|---|---|
+| 搬全部筆記 | 下載所有筆記 |
+| 搬已經在 GitHub 的筆記 | clone repo |
+| 搬一兩篇 | 下載單篇 |
+
+## 下載所有筆記
+
+HackMD 的筆記設定裡有「下載所有筆記」，個人和團隊空間都有。下載下來是一個 .zip，一篇筆記一個 .md，檔名是筆記標題。
+
+- 資料夾不會保留，所有筆記都在最上層。
+- 圖片不在裡面，.md 裡仍然是網址。
+- 「包含標題和標籤」預設打開，會在每篇最前面加一段 front matter。關掉就和筆記原文相同。
+
+解壓縮後，在 MarsDawn 選「檔案 ▸ 打開資料夾⋯」打開那個資料夾。
+
+## clone repo
+
+HackMD 的 GitHub 同步是一篇筆記對一個檔案，所以推送過的筆記已經在 repo 裡。clone 下來，用「檔案 ▸ 打開資料夾⋯」打開，側邊欄會顯示 repo 和分支。
+
+還沒接 GitHub 的筆記，不用為了搬家特地接。每篇都要各自綁定，免費版每月可以推送 20 次。在免費個人帳號上，我們沒看到一次推送整個工作區的入口。
+
+搬完之後，以 repo 為正本。從 HackMD 推送會直接蓋掉 GitHub 上的內容，就算 GitHub 比較新也一樣，而且不會警告。
+
+## 下載單篇
+
+筆記選單可以下載 .md 或 .html。選 .md，再用 MarsDawn 打開。
+
+## 圖片
+
+上傳到 HackMD 的圖片，網址是 `https://hackmd.io/_uploads/...`。誰看得到，跟著筆記的權限走。
+
+| 你的筆記是 | 搬到 Mac 後 | 怎麼處理 |
+|---|---|---|
+| 公開 | 圖片從 HackMD 載入 | 在預覽按「載入圖片」，或打開「設定 ▸ 圖片 ▸ 自動載入網路圖片」 |
+| 私人 | 圖片會回錯誤，因為 MarsDawn 沒有登入 HackMD | 在登入的瀏覽器把圖片存下來，放在 .md 旁邊，再改路徑。或把筆記改成公開，前提是所有人都可以看 |
+
+- **舊筆記** 的圖片可能是 `i.imgur.com` 網址。
+- **刪筆記，圖片也會失效。** 網址之後打不開，所以先搬好圖片再刪。
+
+如果 MarsDawn 讀不到檔案旁邊的圖片，用預覽裡的按鈕授權那個資料夾。
+
+## 讀起來的樣子
+
+HackMD 的語法大多照樣能讀：`==螢光==`、`^上標^`、`~下標~`、`[TOC]`、`=300x200` 這類圖片尺寸、Mermaid 和 KaTeX。`{%youtube %}` 會顯示成連結。想和 HackMD 一樣保留每個換行，請打開「設定 ▸ 外觀 ▸ 保留單一換行」。
+
+`:::` 區塊也看得到。`:::info`、`:::success`、`:::warning`、`:::danger` 會顯示成有色條的區塊，上面有標題，預設是附註、提示、警告、小心；在名稱後面自己寫標題的話，就用你寫的。`:::spoiler` 會顯示成點一下才展開的可收合區塊。其他名稱的 `:::` 區塊，或少了結尾 `:::` 的，會照原文顯示。
+
+有幾個地方不一樣：
+
+- `++底線++` 和 `:sparkles:` 這類 emoji 代碼會照原文顯示。
+- `{%hackmd id %}` 不會展開。
+- `<i class="fa ...">` 圖示不會出現。
+
+## 給腳本用：hackmd-cli
+
+`hackmd-cli` 沒有一次匯出全部的指令。它一次匯出一篇，內容印在畫面上，所以要先列出筆記，再逐篇跑迴圈。你需要 Node.js、`jq`，以及在 HackMD 設定頁建立的 API token。不需要腳本的話，「下載所有筆記」比較簡單。
+
+```
+npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=<你的 token>
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" > "$id.md"
+done
+```
+
+- **資料夾帶不過來。** 筆記清單沒有寫筆記在哪個資料夾，所以檔案都會放在同一層。
+- **圖片仍是 `hackmd.io` 連結。** 請照上面「圖片」那段處理。
+- **檔名是筆記 ID，** 不是標題。
+- **免費版每 30 天可以呼叫 API 400 次。** 列清單 1 次，每篇筆記再 1 次。
+
+我們只在筆記很少的帳號上試過，不知道清單很長時會怎樣。用完請到 HackMD 設定頁刪掉 token。
+
+## 一起寫的話
+
+MarsDawn 沒有多人同時編輯。需要共筆的話，繼續用 HackMD。團隊把文件放在 git 的話，每個人都能用自己的 MarsDawn 打開同一個 repo，一起完成同一份文件。請看團隊用 git 一起審文件。
+
+## 常見問題
+
+### 可以一次下載全部 HackMD 筆記嗎？
+
+可以。「下載所有筆記」會給你一個 .zip，裡面都是 .md。資料夾不會保留，也不含圖片。
+
+### 為什麼在 MarsDawn 看不到圖片？
+
+MarsDawn 預設不載入網路圖片，要按「載入圖片」。如果是私人筆記，圖片載不到，請存到檔案旁邊。
+
+### 一定要離開 HackMD 嗎？
+
+不用。要一起寫，HackMD 還是比較好的選擇。MarsDawn 是讓你在 Mac 上讀和審。
+
+---
+
 ## Markdown 轉 PDF
 
 Source: https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/
@@ -4732,7 +5017,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## 接下來
 
-- 在 MarsDawn App 裡，「檔案 ▸ 列印⋯」會先預覽同樣的版面，再列印或儲存：[輸出 PDF](/zh-hant/pdf/)。
+- 在 MarsDawn App 裡，「檔案 ▸ 列印⋯」會先預覽同樣的版面，再列印或儲存：[列印與 PDF](/zh-hant/pdf/)。
 - 所有選項和它印出的 JSON：[命令列工具](/zh-hant/cli/)。
 - 讓寫程式的 agent 幫你做這件事：執行 `marsdawn skill --install` 來加上 [marsdawn 的 agent skill](/zh-hant/cli/skill/)。
 - 四種預覽主題，以及 PDF 輸出接下來的規劃：[預覽主題與 PDF 輸出](/zh-hant/themes/)。
@@ -4792,7 +5077,7 @@ MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只�
 ## 什麼時候用不到 MarsDawn
 
 - 你整天待在 VS Code，預覽窗格就夠：它能畫 Mermaid、排 KaTeX，有 Markdown diff 預覽，也能用 code -g 跳到某一行。
-- 你只想在 Finder 按空白鍵預覽：QLMarkdown 是免費的 Markdown 快速查看延伸功能。
+- 你只想在 Finder 按空白鍵預覽：QLMarkdown 是開源（GPL-3.0）的 Markdown 快速查看延伸功能。
 - 你的 Mac 系統比較舊：QLMarkdown 需要 12.0 以上，LynxOffice 需要 13 以上。免費的 marsdawn 工具只要 macOS 15，不開 app 也能輸出 PDF。
 - 你用 vault 管理互相連結的筆記：Obsidian 就是為此而做。
 - 你需要在 iPhone 或 iPad 上編輯、共同編輯，或輸出 Word。
@@ -4800,7 +5085,7 @@ MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只�
 
 - [MacMD Viewer 對比 MarsDawn](/zh-hant/vs/macmd-viewer/)：唯讀檢視器和 MarsDawn 逐格對照，並說明各自適合什麼情況。
 - [Markdown 預覽工具](/zh-hant/vs/markdown-preview-tools/)：VS Code 預覽、瀏覽器延伸功能和 Claude Desktop 的檔案預覽。
-- [2026 Mac Markdown 檢視器推薦](/zh-hant/best-markdown-viewer-mac/)
+- [2026 Markdown 閱讀器推薦：只想看、不想改，Mac 和 iPhone 怎麼選](/zh-hant/best-markdown-viewer-mac/)
 
 ---
 
@@ -4918,13 +5203,58 @@ open notes.pdf
 
 ---
 
-## 2026 Mac Markdown 檢視器推薦
+## 2026 Markdown 閱讀器推薦：只想看、不想改，Mac 和 iPhone 怎麼選
 
 Source: https://marsdawn.southern-light.dev/zh-hant/best-markdown-viewer-mac/
 
-# 2026 Mac Markdown 檢視器推薦
+# 2026 Markdown 閱讀器推薦：只想看、不想改，Mac 和 iPhone 怎麼選
 
-哪款 Markdown 檢視器最好，要看你讀的是什麼。如果是自己寫的筆記，一款全能的筆記 App 就夠了。如果是有圖表和數學式的長文件，或是 AI 代理不斷改寫的檔案，就要看各款怎麼處理自動重新載入、Mermaid 和 PDF。以下依字母排序，每款都寫出適合誰、一個老實的缺點和價格。
+只想讀 Markdown、不想改的話，先看你在哪裡讀、讀的是什麼：
+
+- **看 AI／agent 寫的計畫和報告**：用 MarsDawn。agent 存檔時頁面會跟著更新，Mermaid 圖表和數學式都畫好。
+- **在 iPhone 上看**：MarsDawn 的 iPhone 版只能讀，不會誤改；Obsidian 能讀也能寫，但檔案要放在它的 vault 裡。
+- **看完要交 PDF，而且要頁碼**：用 Typora 或 Marked 3；MarsDawn 要選手冊或講義版面。
+
+市面上的比較文多半在比「編輯器」，比的是寫起來順不順手。這篇只比「讀」：打開後看到的是不是排好的頁面、會不會一不小心就改到檔案、手機上能不能看。以下 10 款依字母排序，每款都寫出適合誰、一個老實的缺點和價格。價格和功能的查證日期是 2026-11-18。
+
+## 依情境挑
+
+### 看 AI／agent 產出的計畫
+
+agent 寫的檔案很長，會一直被改寫，裡面常常有表格和 Mermaid 圖表。挑的時候，看三件事：檔案被改了會不會自動更新、圖表畫不畫得出來、能不能從終端機直接打開。
+
+- **MarsDawn**：agent 存檔時，開著的視窗會自動「從磁碟更新」，而且可以撤銷。`marsdawn open plan.md` 從終端機打開，也有給 agent 用的 skill。
+- **ColaMD**：免費開源，agent 改檔時畫面也會即時更新，Windows 和 Linux 也能用。
+
+### 在手機上看
+
+- **MarsDawn（iPhone／iPad）**：只能讀，不能改，Mermaid、數學式和表格都畫好。和 Mac 版共用一次買斷。
+- **Obsidian**：有 iPhone 版，能讀也能寫。檔案要放在它的 vault 裡。
+
+### 看完要交 PDF
+
+- **Typora**：輸出 PDF 時，頁首或頁尾可以加頁碼。
+- **Marked 3**：專門用來預覽和列印，PDF 有分頁和頁碼。
+
+MarsDawn 也能輸出 PDF：手冊和講義版面有頁碼，預設的文件版面沒有。
+
+## Chrome 的 Markdown Reader 擴充功能
+
+裝在 Chrome 裡的擴充功能。把 .md 檔拖進瀏覽器，就會顯示排好的頁面，旁邊有目錄。Mermaid 圖表和數學式（KaTeX）都內建。
+
+- 適合：不想多裝一個 App、本來就整天開著 Chrome 的人。
+- 缺點：要先在擴充功能設定裡打開「允許存取檔案網址」，才能讀本機檔案。
+- 價格：免費版可以用，另有 Pro 訂閱。
+- 是哪一個：Chrome 線上應用程式商店裡的「Markdown Reader」（ID `medapdbncneneejhbgcjceippjlfkmkg`，開發者網站 md-reader.github.io）。官方頁面：[商店頁](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)、[官網](https://md-reader.github.io/)、[價格頁](https://md-reader.github.io/pricing)。查證日期 2026-11-18。
+
+## ColaMD
+
+免費開源（MIT）的 Markdown 編輯器，用 Electron 做的，macOS、Windows、Linux 都能用。agent 改檔時，畫面會即時更新，不用重新打開。
+
+- 適合：要在 Windows 或 Linux 上看 agent 寫的檔案的人。
+- 缺點：是所見即所得的編輯器，打開後就能直接改，沒有只讀模式。Mermaid 圖表和數學式（KaTeX）都內建。
+- 價格：免費。
+- 官方頁面：[GitHub](https://github.com/marswaveai/ColaMD)、[官網](https://colamd.com/)。查證日期 2026-11-18。
 
 ## MacDown 3000
 
@@ -4940,7 +5270,7 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 
 - 適合：保留自己編輯工具、想要精緻預覽與列印的寫作者。
 - 缺點：快速查看要另買 Marked QL（USD 9.99）。
-- 價格：Marked 3 免費下載，之後每月 USD 2.99、每年 USD 29.99 或終身 USD 69.99。Marked 2 官網 USD 14.99，Mac App Store USD 13.99。
+- 價格：Marked 3 免費試用，之後每月 USD 2.99、每年 USD 29.99 或終身 USD 69.99（限時優惠價，原價每月 USD 4.99、每年 USD 49.99、終身 USD 89.99）。Marked 2 官網 USD 14.99，Mac App Store USD 13.99。
 
 ## MarkEdit
 
@@ -4956,7 +5286,7 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 
 - 適合：審閱 AI 代理所寫 Markdown 的人。
 - 缺點：PDF 要用手冊或講義版面才有頁碼，預設的文件版面沒有。
-- 價格：免費下載，試用 14 天，之後一次 USD 4.99。不需帳號。僅在 Mac App Store 提供。
+- 價格：免費下載，試用 14 天，之後 USD 4.99 一次買斷。同一個 Apple 帳號，一次購買，Mac、iPhone、iPad 都能用。
 
 ## Obsidian
 
@@ -4972,7 +5302,7 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 
 - 適合：只想在 Finder 裡瞄一眼檔案的人。
 - 缺點：不是用來閱讀或編輯的 App，也沒有記載 PDF 輸出。
-- 價格：免費（GPL-3.0）。
+- 價格：開源（GPL-3.0）。
 
 ## Typora
 
@@ -4992,24 +5322,32 @@ Marked 3 是預覽器，用來看你在其他 App 寫的 Markdown。檔案一變
 
 ## 比較表
 
-| App | 價格 | Mermaid | 數學式 | PDF | 自動重新載入 | 命令列開到指定行 | 快速查看 | 架構 |
-|---|---|---|---|---|---|---|---|---|
-| MacDown 3000 | 免費 | 有 | MathJax | 有 | 有 | 未記載 | 有 | 原生 |
-| Marked 3 | 每月 USD 2.99 起 | 有 | MathJax、KaTeX | 有，含頁碼 | 有 | 未記載 | Marked QL，USD 9.99 | 原生 |
-| MarkEdit | 免費 | 擴充功能 | KaTeX（擴充功能） | Pandoc | 未記載 | 未記載 | 有 | 原生（web view） |
-| MarsDawn | 一次 USD 4.99 | 有 | KaTeX | 有，手冊與講義版面含頁碼 | 有，可撤銷 | 有 | 有 | 原生 |
-| Obsidian | 免費 | 有 | MathJax | 有 | 有 | 未記載 | 未記載 | Electron |
-| QLMarkdown | 免費 | 需開啟 | MathJax（需開啟） | 未記載 | 不適用 | 不適用 | 本身即是 | 原生 |
-| Typora | 一次 USD 14.99 | 有 | MathJax | 有，含頁碼 | 未記載 | 未記載 | 未記載 | 原生 |
-| VS Code | 免費 | 有（1.121 起） | KaTeX | 無 | 未記載 | 有 | 未記載 | Electron |
+| App | 價格 | iPhone／iPad | 只讀（不會誤改） | Mermaid | 數學式 | PDF | 自動重新載入 | 命令列開到指定行 | 快速查看 | 架構 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Chrome Markdown Reader | 免費，另有 Pro 訂閱 | 無 | 有 | 有 | KaTeX | 未記載 | 有 | 未記載 | 未記載 | 瀏覽器擴充功能 |
+| ColaMD | 免費（MIT） | 無 | 無，打開就是編輯 | 有 | KaTeX | 有 | 有 | 未記載 | 未記載 | Electron |
+| MacDown 3000 | 免費 | 無 | 未記載，官方稱是編輯器 | 有 | MathJax | 有 | 有 | 未記載 | 有 | 原生 |
+| Marked 3 | 優惠價每月 USD 2.99 起 | 無 | 有，本身就是預覽器 | 有 | MathJax、KaTeX | 有，含頁碼 | 有 | 未記載 | Marked QL，USD 9.99 | 原生 |
+| MarkEdit | 免費 | 無 | 有（Read Only Mode） | 擴充功能 | KaTeX（擴充功能） | Pandoc | 未記載 | 未記載 | 有 | 原生（web view） |
+| MarsDawn | 一次 USD 4.99 | 有，只能讀 | Mac：預覽窗格不能改，原始碼窗格可以改；iPhone／iPad：只能讀 | 有 | KaTeX | 有，手冊與講義版面含頁碼 | 有，可撤銷 | 有 | 有 | 原生 |
+| Obsidian | 免費 | 有，能讀也能寫 | 有，閱讀檢視 | 有 | MathJax | 有 | 有 | 未記載 | 未記載 | Electron |
+| QLMarkdown | 開源（GPL-3.0） | 無 | 有，只在 Finder 預覽 | 需開啟 | MathJax（需開啟） | 未記載 | 不適用 | 不適用 | 本身即是 | 原生 |
+| Typora | 一次 USD 14.99 | 無 | 未記載，官方稱是編輯器 | 有 | MathJax | 有，含頁碼 | 未記載 | 未記載 | 未記載 | 原生 |
+| VS Code | 免費 | 無 | 有，預覽分頁 | 有（1.121 起） | KaTeX | 無 | 未記載 | 有 | 未記載 | Electron |
 
 ## MarsDawn 不適合誰
 
+- 你要的 PDF 得有頁碼，又不想換成手冊或講義版面。MarsDawn 預設的文件版面沒有頁碼；Typora 與 Marked 3 能加。
+- 想在 iPhone 或 iPad 上改檔案。MarsDawn 的 iPhone、iPad 版只能讀；要在手機上寫，Obsidian 可以。
+- 用 Windows 或 Linux。MarsDawn 只有 Mac、iPhone 和 iPad 版；ColaMD 三個平台都有。
 - 你在經營互相連結的個人筆記庫。Obsidian 就是為此打造的。
-- 你從不離開 VS Code。內建預覽免費，VS Code 也正在 Agents 視窗加入實驗性的 Markdown 檢視。
-- 你只想在 Finder 預覽。QLMarkdown 免費。
+- 你只想在 Finder 預覽。QLMarkdown 開源（GPL-3.0）。
 
 ## 常見問題
+
+### Mac 預設能開 .md 嗎？
+
+能打開，但通常是用「文字編輯」，看到的是 `#` 和 `**` 這些記號，不是排好的頁面。換成 Markdown 閱讀器再設成預設 App，之後雙擊就會在那裡打開。做法請看 [Mac 怎麼開 md 檔](/zh-hant/view-markdown-on-mac/)。
 
 ### 哪些免費的 Mac Markdown 檢視器支援 Mermaid？
 
@@ -5025,7 +5363,7 @@ MarsDawn（`marsdawn open notes.md:120`）與 VS Code（`code -g file:line`）�
 
 ### 哪些是原生 Mac App，不是 Electron？
 
-除了 Obsidian 與 VS Code 都是。MarkEdit 是原生 App，編輯區用 web view。
+Obsidian、VS Code 與 ColaMD 是 Electron，Chrome Markdown Reader 是瀏覽器擴充功能，不是 Mac App；其餘都是原生 Mac App。MarkEdit 是原生 App，編輯區用 web view。
 
 [立刻下載試用](https://apps.apple.com/app/id6812925073)
 
@@ -5039,7 +5377,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/cli/
 
 免費的 `marsdawn` 命令列工具：從終端機或 LLM agent 把 Markdown 輸出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。
 
-**marsdawn 免費、另外發佈，不透過 Mac App Store。**用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。`export` 可以單獨使用；`open` 需要 MarsDawn app。
+**marsdawn 免費、另外發佈，不透過 Mac App Store。**用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。`export` 可以單獨使用；`open` 需要 MarsDawn app。要裝的是 Mac app？[用 Homebrew 和 mas 安裝](#mac-app)。
 
 要從 AI agent 或腳本呼叫 marsdawn？請看[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)，裡面有 JSON 輸出、Schema 和所有離開代碼；如果你的 agent 是透過 MCP 呼叫工具，也可以看[MCP 伺服器](/zh-hant/cli/mcp/)。
 
@@ -5064,6 +5402,19 @@ swift build -c release --product marsdawn
 ```
 
 用 `marsdawn --version` 查看安裝的版本。
+
+## 用 Homebrew 和 mas 安裝 MarsDawn app
+
+`brew install marsdawn` 裝的是命令列工具，不是 app。Mac 版 app 在 Mac App Store，可以用 [mas](https://github.com/mas-cli/mas) 從終端機取得：
+
+```
+brew install mas
+sudo mas get 6812925073
+```
+
+先在 App Store 登入 Apple 帳號；`sudo` 會要你輸入 Mac 的登入密碼。裝好的是 App Store 版，位置在 `/Applications/MarsDawn.app`，需要 macOS 26 或更新版本，之後的更新照 App Store 的更新走。
+
+可以免費下載。第一次開啟 MarsDawn 時可以開始 14 天試用，所有功能都能使用；試用結束後想繼續使用，解鎖一次就好，沒有訂閱。[運作方式](/zh-hant/pay-once/)
 
 ## 指令
 
@@ -7341,7 +7692,7 @@ MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、M
 
 预览会把图表画出来、代码高亮，就在源代码旁边。
 
-### [导出 PDF](/zh-hans/pdf/)
+### [打印与 PDF](/zh-hans/pdf/)
 
 ![页面顶部：标题、一小段文字和一张流程图。](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
 
@@ -7378,6 +7729,8 @@ brew install redtear1115/tap/marsdawn
 - `marsdawn export` 把 Markdown 文件导出成 PDF，排版和 MarsDawn 的预览一样，不需要 app。
 - `marsdawn open` 在 MarsDawn app 里打开文件，让你审阅。
 - `--json` 返回脚本和代理能解析的结果。
+
+上面装的是命令行工具。要用 Homebrew 装 Mac app，[看这里](/zh-hans/cli/#mac-app)。
 
 [命令行工具](/zh-hans/cli/) · [给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/) · [给代理的 skill](/zh-hans/cli/skill/) · [MCP 服务器](/zh-hans/cli/mcp/)
 
@@ -7547,19 +7900,19 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后�
 
 把页面打印出来，或把同一份 PDF 发给每个人，大家就是看同一份文稿，不用挤在一个屏幕前。拿到同一个文件的人，分页位置都一样，所以“第 3 页那张表”指的是同一个东西。接着由人把决议写下来，写在打印出来的纸上，或写成笔记。会议记录模板把决议放在最前面，每个行动项都有负责人。
 
-[导出 PDF](/zh-hans/pdf/) · [会议记录模板](/zh-hans/templates/meeting-notes/)
+[打印与 PDF](/zh-hans/pdf/) · [会议记录模板](/zh-hans/templates/meeting-notes/)
 
 ### 拿笔边读边写
 
 有些人习惯用笔读东西：画线、在页边写几个字，才记得住。把文稿打印出来，就可以在纸上这样做。MarsDawn 本身没有批注功能；想直接在 PDF 上标记的话，用你原本就有的 PDF app 就好。
 
-[导出 PDF](/zh-hans/pdf/)
+[打印与 PDF](/zh-hans/pdf/)
 
 ### 纸质存档
 
 有些行业还是要把纸质文件存起来，会计就是一个例子。MarsDawn 没有任何归档或合规的声明。它做的是打印和导出干净、分好页的页面：图表画进去，短的代码块不被切开，用主题的浅色配色。纸质文件还是正式记录的地方，就可以用这些页面。
 
-[导出 PDF](/zh-hans/pdf/)
+[打印与 PDF](/zh-hans/pdf/)
 
 ### 交给不写 Markdown 的人
 
@@ -7631,7 +7984,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 “文件 ▸ 打印…”和“文件 ▸ 导出为 PDF…”会打开“打印与导出”，先预览页面。选一种布局：“文稿”；“手册”，有封面、目录和 PDF 书签；或“讲义”，有笔记栏。然后打印或存储。Mermaid 图表直接画进去，代码保留语法着色，分页时会尽量不让标题落在页尾，也不切开短的代码块和图表。PDF 一律用主题的浅色配色。
 
-[导出 PDF](/zh-hans/pdf/)
+[打印与 PDF](/zh-hans/pdf/)
 
 ![用 MarsDawn 导出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -7827,30 +8180,54 @@ MarsDawn 可从 Mac App Store 免费下载，14 天内可使用所有功能，�
 不需要。MarsDawn 不会要求你创建账户。
 ---
 
-## 导出 PDF
+## 打印与 PDF
 
 Source: https://marsdawn.southern-light.dev/zh-hans/pdf/
 
-# PDF 看起来就是你写的那一页。
+# 打印，或存储为 PDF
 
-导出成 PDF 或打印，使用主题的浅色配色。图表和代码高亮都会保留，分页位置也经过安排。
+MarsDawn 能把 Markdown 打印，或存储为 PDF，使用主题的浅色配色。先预览页面，再选布局。
 
-![用 MarsDawn 导出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![“打印与导出”面板：左侧页面预览有流程图和一小段代码，右侧三张布局卡片，右下有“打印…”和“存储为 PDF…”按钮。](https://marsdawn.southern-light.dev/assets/screens/06-print-export-868.png)
 
 这张截图里：
 
-1. Mermaid 图表直接画进 PDF。
-2. 代码保留语法高亮。
+1. 先预览页面。
+2. 选一种布局。
+3. 打印，或存储为 PDF。
 
-## 这代表什么
+## 先预览，再决定
 
-- Mermaid 图表直接画进 PDF。
+1. **打开预览。**在“文件”选“打印…”或“导出为 PDF…”，都会打开“打印与导出”。
+2. **选布局。**看过预览的页面，再选“文稿”、“手册”或“讲义”。
+3. **打印或存储。**点按“打印…”，或点按“存储为 PDF…”留下文件。
+
+## 三种布局
+
+每种布局都能打印，也能存储为 PDF。
+
+![文稿布局第 1 页：标题、一段文字、流程图、代码块和一张表格。](/assets/cli/layout-document.png)
+
+**文稿。**与实时预览相同的页面，自动分页。
+
+![手册布局的目录页，列出各标题和页码。](/assets/cli/layout-handbook-contents.png)
+
+**手册。**封面、带页码的目录、每章另起一页。
+
+![讲义布局第 1 页：内容在左，右侧是空白的笔记栏，底部有页脚。](/assets/cli/layout-handout.png)
+
+**讲义。**右侧 1/3 留给笔记，页脚有文件名、日期和页码。
+
+## 页面上会有什么
+
+- Mermaid 图表直接画进页面。
 - 代码块保留语法高亮。
 - 分页时会尽量不让标题落在页面底部，也不切开代码和图表。
-- 任何布局都能导出，只显示源代码时也可以。
 - 打印或导出前先预览页面，再选布局：“文稿”、有封面和目录的“手册”，或有笔记栏的“讲义”。
 
-免费的 [marsdawn 命令行工具](/zh-hans/cli/)使用同一套导出程序，所以脚本或 AI 代理也能得到一样的 PDF。
+iPhone 和 iPad 从 1.0.2 版起可打印 Markdown 文稿。
+
+免费的 [marsdawn 命令行工具](/zh-hans/cli/)用同一套导出程序，脚本和 AI 代理也能用。
 ---
 
 ## 为 Mac 而做
@@ -7955,6 +8332,10 @@ macOS Markdown 编辑器 MarsDawn 的使用说明。
 ### MarsDawn 需要什么环境？
 
 macOS 26 Tahoe 或更新版本的 Mac，Apple 芯片或 Intel 皆可。
+
+### 可以用 Homebrew 安装 MarsDawn 吗？
+
+可以，通过 Mac App Store：先运行 `brew install mas`，再运行 `sudo mas get 6812925073`。`brew install marsdawn` 是另一个东西：它装的是命令行工具，不是 app。
 
 ### 怎么切换编辑器与预览？
 
@@ -8104,6 +8485,8 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器，可以在 Mac App Store 免费�
 
 [到 Mac App Store 免费下载 MarsDawn](https://apps.apple.com/app/id6812925073)
 
+习惯用终端？[用 Homebrew 和 mas 安装](/zh-hans/cli/#mac-app)。
+
 打开 `.md` 文件，排好的页面就在源代码旁边：
 
 - 预览会随着你打字实时更新，两边的窗格一起滚动。
@@ -8140,7 +8523,7 @@ open notes.pdf
 
 ### md 文件可以转成 PDF 吗？
 
-可以。在 MarsDawn 选“文件 ▸ 导出为 PDF…”（⌥⌘E）或“文件 ▸ 打印…”，页面会自动分页，图表画进去，代码保留高亮，使用主题的浅色配色。不装 app 的话，免费的 `marsdawn export` 命令行工具能导出同样的 PDF：`marsdawn export notes.md`。请看[导出 PDF](/zh-hans/pdf/)和[Markdown 转 PDF](/zh-hans/markdown-to-pdf/)。
+可以。在 MarsDawn 选“文件 ▸ 导出为 PDF…”（⌥⌘E）或“文件 ▸ 打印…”，页面会自动分页，图表画进去，代码保留高亮，使用主题的浅色配色。不装 app 的话，免费的 `marsdawn export` 命令行工具能导出同样的 PDF：`marsdawn export notes.md`。请看[打印与 PDF](/zh-hans/pdf/)和[Markdown 转 PDF](/zh-hans/markdown-to-pdf/)。
 
 ### AI 代理写的 md 文件也能这样打开吗？
 
@@ -8150,6 +8533,7 @@ open notes.pdf
 
 - 命令行工具的所有选项：[命令行工具](/zh-hans/cli/)。
 - MarsDawn 做不到的事：[这份清单](/zh-hans/limits/)。
+- 放在 HackMD 的笔记：[从 HackMD 搬到 Mac](/zh-hans/from-hackmd/)。
 - Markdown 文件里的图表：[在 Mac 上预览 Mermaid](/zh-hans/mermaid-preview-mac/)。
 
 ---
@@ -8201,7 +8585,7 @@ Mermaid 画不出一张图时，预览会显示那张图的源代码，下方附
 ## 接下来
 
 - 从一张已经能画出来的图开始：[流程图模板](/zh-hans/templates/flowchart/)。
-- 导出：[导出 PDF](/zh-hans/pdf/)；从脚本导出，请看[命令行工具](/zh-hans/cli/)。
+- 导出：[打印与 PDF](/zh-hans/pdf/)；从脚本导出，请看[命令行工具](/zh-hans/cli/)。
 - 不确定怎么打开文件？请看[Mac 上怎么打开 md 文件](/zh-hans/view-markdown-on-mac/)。
 
 ## 在你的 Mac 上试试
@@ -8314,6 +8698,109 @@ docs/plan.md:42-43
 
 ---
 
+## 从 HackMD 搬到 Mac
+
+Source: https://marsdawn.southern-light.dev/zh-hans/from-hackmd/
+
+# 从 HackMD 搬到 Mac
+
+你的笔记本来就是 Markdown，不用转换。看你要搬多少，选一条路。图片要另外处理，删除 HackMD 上的内容之前，请先读“图片”那一段。
+
+这一页是 2026 年 11 月用 HackMD 免费账户实测的。HackMD 可能会变，付费方案和团队工作区我们没有测。
+
+| 你想要 | 走这条 |
+|---|---|
+| 搬全部笔记 | 下载所有笔记 |
+| 搬已经在 GitHub 上的笔记 | clone 仓库 |
+| 搬一两篇 | 下载单篇 |
+
+## 下载所有笔记
+
+HackMD 的笔记设置里有 Download all notes，个人和团队空间都有。下载下来是一个 .zip，一篇笔记一个 .md，文件名是笔记标题。
+
+- 文件夹不会保留，所有笔记都在最上层。
+- 图片不在里面，.md 里仍然是网址。
+- 包含标题和标签的选项默认打开，会在每篇最前面加一段 front matter。关掉后就和笔记原文相同。
+
+解压缩后，在 MarsDawn 选择“文件 ▸ 打开文件夹…”，打开那个文件夹。
+
+## clone 仓库
+
+HackMD 的 GitHub 同步是一篇笔记对一个文件，所以推送过的笔记已经在仓库里。clone 下来，用“文件 ▸ 打开文件夹…”打开，边栏会显示仓库和分支。
+
+还没接 GitHub 的笔记，不用为了搬家特地接。每篇都要各自绑定，免费版每月可以推送 20 次。在免费个人账户上，我们没看到一次推送整个工作区的入口。
+
+搬完之后，以仓库为准。从 HackMD 推送会直接覆盖 GitHub 上的内容，就算 GitHub 上的比较新也一样，而且不会警告。
+
+## 下载单篇
+
+笔记菜单可以下载 .md 或 .html。选择 .md，再用 MarsDawn 打开。
+
+## 图片
+
+上传到 HackMD 的图片，网址是 `https://hackmd.io/_uploads/...`。谁看得到，跟着笔记的权限走。
+
+| 你的笔记是 | 搬到 Mac 后 | 怎么处理 |
+|---|---|---|
+| 公开 | 图片从 HackMD 载入 | 在预览中点按“载入图像”，或打开“设置 ▸ 图像 ▸ 自动载入网络图像” |
+| 私人 | 图片会返回错误，因为 MarsDawn 没有登录 HackMD | 在已登录的浏览器里把图片存下来，放在 .md 旁边，再改路径。或者把笔记改成公开，前提是所有人都可以看 |
+
+- **旧笔记** 的图片可能是 `i.imgur.com` 网址。
+- **删除笔记，图片也会失效。** 网址之后打不开，所以先搬好图片再删除。
+
+如果 MarsDawn 读不到文件旁边的图片，用预览里的按钮授权那个文件夹。
+
+## 读起来的样子
+
+HackMD 的语法大多照样能读：`==高亮==`、`^上标^`、`~下标~`、`[TOC]`、`=300x200` 这类图片尺寸、Mermaid 和 KaTeX。`{%youtube %}` 会显示成链接。想和 HackMD 一样保留每个换行，请打开“设置 ▸ 外观 ▸ 保留单个换行”。
+
+`:::` 区块也看得到。`:::info`、`:::success`、`:::warning`、`:::danger` 会显示成有色条的区块，上面有标题，默认是附注、提示、警告、小心；在名称后面自己写标题的话，就用你写的。`:::spoiler` 会显示成点一下才展开的可折叠区块。其他名称的 `:::` 区块，或少了结尾 `:::` 的，会按原文显示。
+
+有几个地方不一样：
+
+- `++下划线++` 和 `:sparkles:` 这类 emoji 代码会按原文显示。
+- `{%hackmd id %}` 不会展开。
+- `<i class="fa ...">` 图标不会出现。
+
+## 给脚本用：hackmd-cli
+
+`hackmd-cli` 没有一次导出全部的命令。它一次导出一篇，内容打印在屏幕上，所以要先列出笔记，再逐篇跑循环。你需要 Node.js、`jq`，以及在 HackMD 设置页创建的 API token。不需要脚本的话，Download all notes 比较简单。
+
+```
+npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=<你的 token>
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" > "$id.md"
+done
+```
+
+- **文件夹带不过来。** 笔记列表没有写笔记在哪个文件夹，所以文件都会放在同一层。
+- **图片仍是 `hackmd.io` 链接。** 请按上面“图片”那一段处理。
+- **文件名是笔记 ID，** 不是标题。
+- **免费版每 30 天可以调用 API 400 次。** 列表 1 次，每篇笔记再 1 次。
+
+我们只在笔记很少的账户上试过，不知道列表很长时会怎样。用完请到 HackMD 设置页删除 token。
+
+## 一起写的话
+
+MarsDawn 没有多人同时编辑。需要共同编写的话，继续用 HackMD。团队把文稿放在 git 的话，每个人都能用自己的 MarsDawn 打开同一个仓库，一起完成同一份文稿。请看团队用 git 一起审文稿。
+
+## 常见问题
+
+### 可以一次下载全部 HackMD 笔记吗？
+
+可以。Download all notes 会给你一个 .zip，里面都是 .md。文件夹不会保留，也不含图片。
+
+### 为什么在 MarsDawn 看不到图片？
+
+MarsDawn 默认不载入网络图片，要点按“载入图像”。如果是私人笔记，图片载入不了，请存到文件旁边。
+
+### 一定要离开 HackMD 吗？
+
+不用。要一起写，HackMD 还是比较好的选择。MarsDawn 是让你在 Mac 上读和审。
+
+---
+
 ## Markdown 转 PDF
 
 Source: https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/
@@ -8400,7 +8887,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## 接下来
 
-- 在 MarsDawn App 里，“文件 ▸ 打印…”会先预览同样的布局，再打印或存储：[导出 PDF](/zh-hans/pdf/)。
+- 在 MarsDawn App 里，“文件 ▸ 打印…”会先预览同样的布局，再打印或存储：[打印与 PDF](/zh-hans/pdf/)。
 - 所有选项和它输出的 JSON：[命令行工具](/zh-hans/cli/)。
 - 让写程序的代理帮你做这件事：运行 `marsdawn skill --install` 来加上 [marsdawn 的代理技能](/zh-hans/cli/skill/)。
 
@@ -8704,7 +9191,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/cli/
 
 免费的 `marsdawn` 命令行工具：从终端或 LLM 代理把 Markdown 导出成 PDF；装了 MarsDawn app 的话，也能用它打开文件。
 
-**marsdawn 免费、另外发布，不通过 Mac App Store。**用 Homebrew 安装，在 Apple 芯片的 Mac 上装好就能直接使用。`export` 可以单独使用；`open` 需要 MarsDawn app。
+**marsdawn 免费、另外发布，不通过 Mac App Store。**用 Homebrew 安装，在 Apple 芯片的 Mac 上装好就能直接使用。`export` 可以单独使用；`open` 需要 MarsDawn app。要装的是 Mac app？[用 Homebrew 和 mas 安装](#mac-app)。
 
 要从 AI 代理或脚本调用 marsdawn？请看[给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/)，里面有 JSON 输出、Schema 和所有退出代码。
 
@@ -8729,6 +9216,19 @@ swift build -c release --product marsdawn
 ```
 
 用 `marsdawn --version` 查看安装的版本。
+
+## 用 Homebrew 和 mas 安装 MarsDawn app
+
+`brew install marsdawn` 装的是命令行工具，不是 app。Mac 版 app 在 Mac App Store，可以用 [mas](https://github.com/mas-cli/mas) 从终端获取：
+
+```
+brew install mas
+sudo mas get 6812925073
+```
+
+先在 App Store 登录 Apple 账户；`sudo` 会要你输入 Mac 的登录密码。装好的是 App Store 版，位置在 `/Applications/MarsDawn.app`，需要 macOS 26 以上，之后的更新通过 App Store 进行。
+
+可以免费下载。第一次打开 MarsDawn 时可以开始 14 天试用，所有功能都能使用；试用结束后想继续使用，解锁一次就好，没有订阅。[怎么运作](/zh-hans/pay-once/)
 
 ## 命令
 
@@ -11002,7 +11502,7 @@ iPhone と iPad では閲覧専用で、Markdown、テキスト、PDF、JSON、Y
 
 プレビューが図を描き、コードをハイライトします。ソースのすぐ隣で。
 
-### [PDF 書き出し](/ja/pdf/)
+### [プリントと PDF](/ja/pdf/)
 
 ![ページの上部：タイトル、短い段落、フローチャート。](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
 
@@ -11039,6 +11539,8 @@ brew install redtear1115/tap/marsdawn
 - `marsdawn export` は Markdown ファイルを、MarsDawn のプレビューと同じ見た目の PDF にします。アプリは要りません。
 - `marsdawn open` はファイルを MarsDawn アプリで開き、確認できるようにします。
 - `--json` は、スクリプトやエージェントが解析できる結果を返します。
+
+ここでインストールされるのはコマンドラインツールです。Homebrew で Mac アプリを入手する方法は、[こちら](/ja/cli/#mac-app)をご覧ください。
 
 [コマンドライン](/ja/cli/) · [AI エージェント向け marsdawn](/ja/cli/agents/) · [エージェント用スキル](/ja/cli/skill/) · [MCP サーバー](/ja/cli/mcp/)
 
@@ -11208,19 +11710,19 @@ Markdown ファイルを開くと、整形されたページがソースの隣�
 
 ページをプリントするか、同じ PDF を全員に送れば、1つの画面を囲むのではなく、全員が同じ書類で作業できます。同じファイルを持っていれば改ページ位置も同じなので、「3ページの表」は誰にとっても同じものを指します。そのあと、人が決定事項を、プリントした紙の上やメモに書き留めます。会議メモのテンプレートは決定事項から始まり、各アクションアイテムに担当者を置きます。
 
-[PDF 書き出し](/ja/pdf/) · [議事録テンプレート](/ja/templates/meeting-notes/)
+[プリントと PDF](/ja/pdf/) · [議事録テンプレート](/ja/templates/meeting-notes/)
 
 ### ペンで読む
 
 ペンを使うほうが頭に入る人もいます。線を引き、余白に書き込み、記憶に残すためです。書類をプリントして、紙の上でそうしてください。MarsDawn 自体には注釈ツールがないので、PDF に書き込みたい場合は、お使いの PDF アプリを使ってください。
 
-[PDF 書き出し](/ja/pdf/)
+[プリントと PDF](/ja/pdf/)
 
 ### 紙での記録
 
 分野によっては、いまも紙で保管します。会計はその一例です。MarsDawn は保管やコンプライアンスについて何も謳っていません。できるのは、きれいに改ページされたページをプリントして書き出すことです。図は描画され、短いコードブロックは途中で切れず、テーマのライトの配色で出力されます。紙がいまも正式な記録である場面で使ってください。
 
-[PDF 書き出し](/ja/pdf/)
+[プリントと PDF](/ja/pdf/)
 
 ### Markdown を使わない人に渡す
 
@@ -11292,7 +11794,7 @@ KaTeX の構文で書いた数式は、プレビューとクイックルック�
 
 「ファイル ▸ プリント…」と「ファイル ▸ PDF として書き出す…」は「プリントと書き出し」を開き、ページをプレビューできます。レイアウトは「書類」、表紙・目次・PDF のブックマーク付きの「ハンドブック」、メモ欄付きの「配布資料」から選び、プリントまたは保存します。Mermaid の図は描画され、コードはハイライトを保ち、改ページでは見出しが節から離れたり、短いコードブロックや図が途中で切れたりしないようにします。PDF は常にテーマのライトの配色です。
 
-[PDF 書き出し](/ja/pdf/)
+[プリントと PDF](/ja/pdf/)
 
 ![MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -11488,30 +11990,54 @@ MarsDawn は Mac App Store から無料でダウンロードできます。14日
 いいえ。MarsDawn がアカウントの作成を求めることはありません。
 ---
 
-## PDF 書き出し
+## プリントと PDF
 
 Source: https://marsdawn.southern-light.dev/ja/pdf/
 
-# PDF は、あなたが書いたページそのままに見えます。
+# プリント、または PDF として保存
 
-テーマのライトカラーで PDF に書き出す、またはプリントできます。図やハイライトされたコードもそのまま反映され、改ページはひとまとまりの内容を分断しないよう配慮されます。
+MarsDawn なら、Markdown をプリントしたり PDF として保存したりできます。テーマのライトカラーを使い、先にページをプレビューしてレイアウトを選べます。
 
-![MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![「プリントと書き出し」パネル：図とコードのプレビュー、レイアウトカード3枚、「プリント…」「PDFとして保存…」ボタン。](https://marsdawn.southern-light.dev/assets/screens/06-print-export-868.png)
 
 このスクリーンショットの内容：
 
-1. Mermaid 図は PDF に描き込まれます。
-2. コードはハイライトを保ちます。
+1. まずページをプレビュー。
+2. レイアウトを選ぶ。
+3. プリント、または PDF として保存。
 
-## それが意味すること
+## まずプレビュー、それから決める
 
-- Mermaid 図は PDF に描き込まれます。
+1. **プレビューを開く。**「ファイル」▸「プリント…」または「PDF として書き出す…」で、「プリントと書き出し」が開きます。
+2. **レイアウトを選ぶ。**プレビューでページを確かめ、「書類」「ハンドブック」「配布資料」から選びます。
+3. **プリントか保存。**「プリント…」をクリックするか、「PDFとして保存…」をクリックしてファイルに残します。
+
+## 3つのレイアウト
+
+どのレイアウトでも、プリントも PDF での保存もできます。
+
+![書類レイアウトの1ページ目：見出し、段落、フローチャート、コードブロック、表。](/assets/cli/layout-document.png)
+
+**書類。**プレビューと同じページで、自動で改ページします。
+
+![ハンドブックレイアウトの目次ページ。見出しとページ番号が並ぶ。](/assets/cli/layout-handbook-contents.png)
+
+**ハンドブック。**表紙、ページ番号付きの目次、章ごとに改ページ。
+
+![配布資料レイアウトの1ページ目：左に内容、右に空白のメモ欄、下にフッタ。](/assets/cli/layout-handout.png)
+
+**配布資料。**右側 1/3 にメモ欄、フッタにファイル名・日付・ページ番号。
+
+## ページに載るもの
+
+- Mermaid 図はページに描き込まれます。
 - コードブロックはシンタックスハイライトを保ちます。
 - 改ページは、見出しがページの下端に残ったり、コードや図が分断されたりしないよう配慮されます。
-- どのレイアウトでも書き出せます。ソースだけを表示していても書き出しは機能します。
 - プリントや書き出しの前にページをプレビューし、レイアウトを選べます：「書類」、表紙と目次付きの「ハンドブック」、メモ欄付きの「配布資料」。
 
-無料の[marsdawn コマンドラインツール](/ja/cli/)は同じ書き出しエンジンを使っているので、スクリプトや AI エージェントも同じ PDF を得られます。
+iPhone と iPad では、バージョン 1.0.2 以降で Markdown 書類をプリントできます。
+
+無料の[marsdawn コマンドラインツール](/ja/cli/)は同じ書き出しエンジンを使い、スクリプトや AI エージェントも同じ PDF です。
 ---
 
 ## Mac アプリ
@@ -11616,6 +12142,10 @@ macOS のバージョンと MarsDawn のバージョン（MarsDawn › MarsDawn�
 ### MarsDawn を動かすには何が必要ですか？
 
 macOS 26 Tahoe 以降を搭載した Mac。Apple シリコンでも Intel でも動作します。
+
+### Homebrew で MarsDawn をインストールできますか？
+
+はい、Mac App Store 経由でインストールできます。`brew install mas` を実行してから、`sudo mas get 6812925073` を実行してください。`brew install marsdawn` は別のもので、インストールされるのはコマンドラインツールであり、アプリではありません。
 
 ### エディタとプレビューはどう切り替えますか？
 
@@ -11765,6 +12295,8 @@ MarsDawn は Mac 向けの Markdown エディタです。Mac App Store から無
 
 [Mac App Store で MarsDawn を無料でダウンロード](https://apps.apple.com/app/id6812925073)
 
+ターミナルを使う場合は、[Homebrew と mas でインストールする方法](/ja/cli/#mac-app)もあります。
+
 `.md` ファイルを開くと、ソースの隣でレンダリングされたページを読めます。
 
 - 入力すると同時にプレビューが更新され、2つのペインは一緒にスクロールします。
@@ -11801,7 +12333,7 @@ open notes.pdf
 
 ### .md ファイルを PDF にできる？
 
-できます。MarsDawn で「ファイル ▸ PDF として書き出す…」（⌥⌘E）または「ファイル ▸ プリント…」を選ぶと、ページ分けされ、図が描画され、コードはハイライトされたまま、テーマのライトの配色で出力されます。アプリがなくても、無料の `marsdawn export` コマンドラインツールで同じ PDF を作れます：`marsdawn export notes.md`。[PDF 書き出し](/ja/pdf/)と[Markdown から PDF へ](/ja/markdown-to-pdf/)をご覧ください。
+できます。MarsDawn で「ファイル ▸ PDF として書き出す…」（⌥⌘E）または「ファイル ▸ プリント…」を選ぶと、ページ分けされ、図が描画され、コードはハイライトされたまま、テーマのライトの配色で出力されます。アプリがなくても、無料の `marsdawn export` コマンドラインツールで同じ PDF を作れます：`marsdawn export notes.md`。[プリントと PDF](/ja/pdf/)と[Markdown から PDF へ](/ja/markdown-to-pdf/)をご覧ください。
 
 ### AI エージェントが書いた .md ファイルも開ける？
 
@@ -11811,6 +12343,7 @@ open notes.pdf
 
 - コマンドラインツールのすべてのオプション：[コマンドライン](/ja/cli/)。
 - MarsDawn ができないこと：[一覧はこちら](/ja/limits/)。
+- HackMD に保存しているノート：[HackMD から Mac へ](/ja/from-hackmd/)。
 - Markdown ファイルの中の図：[Mac で Mermaid をプレビューする](/ja/mermaid-preview-mac/)。
 
 ---
@@ -11862,7 +12395,7 @@ Mermaid が図を描画できないとき、プレビューにはその図のソ
 ## 次に
 
 - すでに描画できる図から始める：[フローチャートテンプレート](/ja/templates/flowchart/)。
-- 書き出す：[PDF 書き出し](/ja/pdf/)。スクリプトから書き出すなら[コマンドライン](/ja/cli/)。
+- 書き出す：[プリントと PDF](/ja/pdf/)。スクリプトから書き出すなら[コマンドライン](/ja/cli/)。
 - ファイルの開き方がわからない？[Mac で .md ファイルを開く方法](/ja/view-markdown-on-mac/)をご覧ください。
 
 ## Mac で試す
@@ -11975,6 +12508,109 @@ MarsDawn がアクセスできる git チェックアウトやサイドバーの
 
 ---
 
+## HackMD から Mac へ
+
+Source: https://marsdawn.southern-light.dev/ja/from-hackmd/
+
+# HackMD から Mac へ
+
+ノートはもともと Markdown なので、変換はいりません。移す量に合わせて、方法を選んでください。画像は別の作業が必要です。HackMD の内容を削除する前に「画像」の節を読んでください。
+
+このページは、2026年11月に HackMD の無料アカウントで確かめた内容です。HackMD は変わることがあります。有料プランとチームワークスペースは試していません。
+
+| やりたいこと | 方法 |
+|---|---|
+| ノートをすべて移す | すべてのノートをダウンロード |
+| GitHub にあるノートを移す | リポジトリを clone |
+| 1、2 件だけ移す | 1 件ずつダウンロード |
+
+## すべてのノートをダウンロード
+
+HackMD のノート設定に Download all notes があります。個人とチームのどちらのワークスペースでも使えます。ノートごとの .md が 1 つの .zip にまとまり、ファイル名はノートのタイトルになります。
+
+- フォルダは保たれません。すべてのノートが最上位に入ります。
+- 画像は含まれません。.md の中は URL のままです。
+- タイトルとタグを含めるオプションは初期状態でオンで、各ノートの先頭に front matter を追加します。オフにすると、ノートの原文のままになります。
+
+展開したら、MarsDawn で「ファイル ▸ フォルダを開く…」を選び、そのフォルダを開きます。
+
+## リポジトリを clone
+
+HackMD の GitHub 同期は 1 つのノートを 1 つのファイルに対応させます。プッシュ済みのノートは、すでにリポジトリにあります。clone して「ファイル ▸ フォルダを開く…」で開くと、サイドバーにリポジトリとブランチが表示されます。
+
+まだ GitHub につないでいないノートは、移行のためにつなぐ必要はありません。ノートごとに設定が必要で、無料プランのプッシュは月 20 回までです。無料の個人アカウントでは、ワークスペース全体を一度にプッシュする入口は見当たりませんでした。
+
+移行したあとは、リポジトリを正本にしてください。HackMD からプッシュすると、GitHub の内容をそのまま上書きします。GitHub のほうが新しくても同じで、警告は出ません。
+
+## 1 件ずつダウンロード
+
+ノートのメニューから .md か .html をダウンロードできます。.md を選び、MarsDawn で開きます。
+
+## 画像
+
+HackMD にアップロードした画像の URL は `https://hackmd.io/_uploads/...` です。誰が見られるかは、ノートの権限に従います。
+
+| ノート | Mac に移したあと | 対処 |
+|---|---|---|
+| 公開 | 画像は HackMD から読み込まれます | プレビューで「イメージを読み込む」をクリックするか、「設定 ▸ イメージ ▸ リモートイメージを自動的に読み込む」をオンにします |
+| 非公開 | MarsDawn は HackMD にログインしていないので、画像はエラーになります | ログインしたブラウザで画像を保存し、.md の横に置いてパスを書き換えます。全員に見られてもよければ、ノートを公開にする方法もあります |
+
+- **古いノート** の画像は `i.imgur.com` の URL のことがあります。
+- **ノートを削除すると、画像も使えなくなります。** URL が開けなくなるので、画像を移してから削除してください。
+
+ファイルの横の画像を MarsDawn が読めないときは、プレビューのボタンでそのフォルダへのアクセスを許可します。
+
+## ノートの見え方
+
+HackMD の記法はほとんどそのまま読めます。`==ハイライト==`、`^上付き^`、`~下付き~`、`[TOC]`、`=300x200` のような画像サイズ、Mermaid、KaTeX に対応しています。`{%youtube %}` はリンクになります。HackMD と同じようにすべての改行を保つには、「設定 ▸ 外観モード ▸ 単一の改行を保持」をオンにします。
+
+`:::` ブロックにも対応しています。`:::info`、`:::success`、`:::warning`、`:::danger` は、色付きのバーと見出しが付いたブロックとして表示されます。見出しのデフォルトはメモ、ヒント、警告、危険で、名前のあとに自分で見出しを書けば、その見出しが使われます。`:::spoiler` は、クリックすると開く折りたたみ可能なブロックとして表示されます。ほかの名前の `:::` ブロックや、終わりの `:::` がないものは、書いたまま表示されます。
+
+いくつか違う点があります。
+
+- `++下線++` と `:sparkles:` のような絵文字コードは、書いたまま表示されます。
+- `{%hackmd id %}` は展開されません。
+- `<i class="fa ...">` のアイコンは表示されません。
+
+## スクリプトで：hackmd-cli
+
+`hackmd-cli` には、すべてを一度に書き出すコマンドはありません。1 回に 1 件を書き出して表示するので、ノートを一覧にしてからループで回します。Node.js、`jq`、HackMD の設定で作った API トークンが必要です。スクリプトが必要なければ、Download all notes のほうが簡単です。
+
+```
+npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=<あなたのトークン>
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" > "$id.md"
+done
+```
+
+- **フォルダは引き継がれません。** ノートの一覧にはどのフォルダにあるかが含まれないので、ファイルはすべて同じ場所に入ります。
+- **画像は `hackmd.io` のリンクのままです。** 上の「画像」の節のとおりに対処してください。
+- **ファイル名はノートの ID です。** タイトルではありません。
+- **無料プランの API は 30 日で 400 回までです。** 一覧に 1 回、ノート 1 件ごとに 1 回使います。
+
+ノートが少ないアカウントでしか試していないので、一覧がとても長いときの動きはわかりません。終わったら、HackMD の設定でトークンを削除してください。
+
+## 一緒に書くなら
+
+MarsDawn に複数人の同時編集はありません。共同で書くなら、HackMD を使い続けてください。チームが書類を git で管理しているなら、それぞれが自分の MarsDawn で同じリポジトリを開いて、ひとつの書類を一緒に仕上げられます。チームで git を使って書類をレビューするをご覧ください。
+
+## よくある質問
+
+### HackMD のノートをまとめてダウンロードできますか？
+
+はい。Download all notes で、.md が入った .zip を 1 つダウンロードできます。フォルダは保たれず、画像も含まれません。
+
+### MarsDawn で画像が表示されないのはなぜですか？
+
+MarsDawn は Web の画像を初期状態では読み込みません。「イメージを読み込む」をクリックしてください。非公開のノートの画像は読み込めないので、ファイルの横に保存してください。
+
+### HackMD をやめる必要はありますか？
+
+ありません。一緒に書くなら、HackMD のほうが向いています。MarsDawn は Mac で読んでレビューするためのアプリです。
+
+---
+
 ## Markdown から PDF へ
 
 Source: https://marsdawn.southern-light.dev/ja/markdown-to-pdf/
@@ -12061,7 +12697,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## 次に
 
-- MarsDawn アプリでは、「ファイル ▸ プリント…」で同じレイアウトをプレビューしてから、プリントまたは保存できます：[PDF 書き出し](/ja/pdf/)。
+- MarsDawn アプリでは、「ファイル ▸ プリント…」で同じレイアウトをプレビューしてから、プリントまたは保存できます：[プリントと PDF](/ja/pdf/)。
 - すべてのオプションと出力される JSON：[コマンドライン](/ja/cli/)。
 - コーディングエージェントにこれをやらせるには、`marsdawn skill --install` を実行して[marsdawn のエージェントスキル](/ja/cli/skill/)を追加してください。
 
@@ -12365,7 +13001,7 @@ Source: https://marsdawn.southern-light.dev/ja/cli/
 
 無料の `marsdawn` コマンドラインツール：シェルや LLM エージェントから Markdown を PDF に書き出せます。MarsDawn アプリがインストールされていれば、そのアプリでファイルを開くこともできます。
 
-**marsdawn は無料で、Mac App Store とは別に配布されています。**Homebrew でインストールすると、Apple シリコンの Mac では、すぐに実行できる状態でインストールされます。`export` は単独で動作し、`open` には MarsDawn アプリが必要です。
+**marsdawn は無料で、Mac App Store とは別に配布されています。**Homebrew でインストールすると、Apple シリコンの Mac では、すぐに実行できる状態でインストールされます。`export` は単独で動作し、`open` には MarsDawn アプリが必要です。Mac アプリをお探しの場合は、[Homebrew と mas でインストールする方法](#mac-app)をご覧ください。
 
 AI エージェントやスクリプトから marsdawn を呼び出しますか？JSON 出力とそのスキーマ、すべての終了コードについては[AI エージェント向け marsdawn](/ja/cli/agents/)をご覧ください。
 
@@ -12390,6 +13026,19 @@ swift build -c release --product marsdawn
 ```
 
 インストールされているバージョンは `marsdawn --version` で確認できます。
+
+## Homebrew と mas で MarsDawn アプリをインストールする
+
+`brew install marsdawn` でインストールされるのはコマンドラインツールで、アプリではありません。Mac 版アプリは Mac App Store で配信されており、[mas](https://github.com/mas-cli/mas) を使うとターミナルから入手できます：
+
+```
+brew install mas
+sudo mas get 6812925073
+```
+
+先に App Store で Apple Account にサインインしてください。`sudo` では Mac のログインパスワードの入力を求められます。インストールされるのは App Store 版で、場所は `/Applications/MarsDawn.app` です。macOS 26 以降が必要で、アップデートも App Store から行います。
+
+ダウンロードは無料です。MarsDawn を初めて開いたときに、すべての機能が使える14日間の無料トライアルを始められます。その後も使い続けるには、一度だけロックを解除します。サブスクリプションはありません。[仕組み](/ja/pay-once/)
 
 ## コマンド
 
@@ -14662,7 +15311,7 @@ Auf iPhone und iPad ist MarsDawn nur zum Lesen da und öffnet Markdown, Text, PD
 
 Die Vorschau zeichnet das Diagramm und hebt den Code hervor, direkt neben dem Quelltext.
 
-### [PDF-Export](/de/pdf/)
+### [Drucken und PDF](/de/pdf/)
 
 ![Seitenanfang: ein Titel, ein kurzer Absatz und ein Flussdiagramm.](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
 
@@ -14699,6 +15348,8 @@ brew install redtear1115/tap/marsdawn
 - `marsdawn export` macht aus einer Markdown-Datei ein PDF, gerendert wie die Vorschau von MarsDawn. Die App braucht es dafür nicht.
 - `marsdawn open` öffnet Dateien in der App MarsDawn, damit du sie prüfen kannst.
 - `--json` liefert Skripten und Agenten Ergebnisse, die sie parsen können.
+
+Damit installierst du das Befehlszeilenprogramm. Wie du die Mac-App mit Homebrew bekommst, siehst du [hier](/de/cli/#mac-app).
 
 [Befehlszeile](/de/cli/) · [marsdawn für Agenten](/de/cli/agents/) · [Agent-Skill](/de/cli/skill/) · [MCP-Server](/de/cli/mcp/)
 
@@ -14868,19 +15519,19 @@ Nicht alle Arbeit passiert auf einem Bildschirm. Die Seiten, die MarsDawn druckt
 
 Drucke die Seiten aus oder schicke allen dasselbe PDF, dann arbeitet die ganze Runde mit demselben Dokument statt an einem gemeinsamen Bildschirm. Wer dieselbe Datei hat, hat dieselben Seitenumbrüche, sodass „die Tabelle auf Seite 3“ für alle dasselbe meint. Dann halten die Leute die Beschlüsse fest, auf dem Ausdruck oder in Notizen. Die Vorlage für Besprechungsnotizen beginnt mit den Beschlüssen und gibt jedem Aktionspunkt eine verantwortliche Person.
 
-[PDF-Export](/de/pdf/) · [Protokollvorlage](/de/templates/meeting-notes/)
+[Drucken und PDF](/de/pdf/) · [Protokollvorlage](/de/templates/meeting-notes/)
 
 ### Mit dem Stift lesen
 
 Manche nehmen Dinge besser mit einem Stift auf: unterstreichen, an den Rand schreiben, damit es hängen bleibt. Drucke das Dokument aus und tu das auf Papier. MarsDawn hat kein eigenes Werkzeug für Anmerkungen. Wenn du das PDF lieber digital markieren möchtest, nimm die PDF-App, die du ohnehin hast.
 
-[PDF-Export](/de/pdf/)
+[Drucken und PDF](/de/pdf/)
 
 ### Papierakten
 
 In manchen Bereichen wird weiterhin Papier abgelegt, etwa in der Buchhaltung. MarsDawn erhebt keinen Anspruch auf Archivierung oder Compliance. Es druckt und exportiert saubere Seiten mit Seitenumbrüchen: Diagramme eingezeichnet, kurze Codeblöcke am Stück, in den hellen Farben des Themes. Nutze sie überall dort, wo Papier noch die Akte ist.
 
-[PDF-Export](/de/pdf/)
+[Drucken und PDF](/de/pdf/)
 
 ### Für Menschen, die kein Markdown nutzen
 
@@ -14952,7 +15603,7 @@ Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden … öffnet eine Gal
 
 Ablage ▸ Drucken … und Ablage ▸ Als PDF exportieren … öffnen „Drucken und Exportieren“ mit einer Vorschau der Seiten. Wähle ein Layout: Dokument; Handbuch, mit Deckblatt, Inhaltsverzeichnis und PDF-Lesezeichen; oder Handout, mit einer Notizspalte. Dann druckst oder sicherst du. Mermaid-Diagramme werden eingezeichnet, Code behält seine Hervorhebung, und Seitenumbrüche trennen keine Überschrift von ihrem Abschnitt und zerschneiden keinen kurzen Codeblock und kein Diagramm. PDFs verwenden die hellen Farben des Themes.
 
-[PDF-Export](/de/pdf/)
+[Drucken und PDF](/de/pdf/)
 
 ![Ein aus MarsDawn exportiertes PDF, geöffnet in seinem PDF-Viewer mit Seitenminiaturen.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -15148,30 +15799,54 @@ Ja. Die Übersicht (Quick Look) im Finder funktioniert mit und ohne Test. Auch d
 Nein. MarsDawn verlangt nie, dass du ein Konto erstellst.
 ---
 
-## PDF-Export
+## Drucken und PDF
 
 Source: https://marsdawn.southern-light.dev/de/pdf/
 
-# Das PDF sieht aus wie die Seite, die du geschrieben hast.
+# Drucken oder als PDF sichern
 
-Als PDF exportieren oder drucken, in den hellen Farben deines Themas. Diagramme und hervorgehobener Code bleiben erhalten, und Seitenumbrüche trennen nicht, was zusammengehört.
+MarsDawn druckt dein Markdown oder sichert es als PDF, in den hellen Farben deines Themas. Eine Vorschau zeigt zuerst die Seiten, damit du vor dem Drucken ein Layout wählen kannst.
 
-![Ein aus MarsDawn exportiertes PDF, geöffnet in seinem PDF-Viewer mit Seitenminiaturen.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![Der Dialog „Drucken und Exportieren“: eine Seitenvorschau mit Flussdiagramm und etwas Code, drei Layout-Karten sowie die Schaltflächen „Drucken …“ und „Als PDF sichern …“.](https://marsdawn.southern-light.dev/assets/screens/06-print-export-868.png)
 
 Auf diesem Bildschirmfoto:
 
-1. Mermaid-Diagramme, ins PDF gezeichnet.
-2. Code behält seine Hervorhebung.
+1. Erst die Seiten in der Vorschau ansehen.
+2. Ein Layout wählen.
+3. Drucken oder als PDF sichern.
 
-## Was das bedeutet
+## Erst die Vorschau, dann entscheiden
 
-- Mermaid-Diagramme werden ins PDF gezeichnet.
+1. **Vorschau öffnen.** Wähle Ablage ▸ Drucken … oder Ablage ▸ Als PDF exportieren …; beide öffnen „Drucken und Exportieren“.
+2. **Layout wählen.** Sieh dir die Vorschau an und wähle dann Dokument, Handbuch oder Handout.
+3. **Drucken oder sichern.** Klicke auf „Drucken …“ oder, um eine Datei zu behalten, auf „Als PDF sichern …“.
+
+## Drei Layouts
+
+Jedes Layout lässt sich drucken oder als PDF sichern.
+
+![Layout Dokument, Seite 1: eine Überschrift, ein Absatz, ein Flussdiagramm, ein Codeblock und eine Tabelle.](/assets/cli/layout-document.png)
+
+**Dokument.** Seiten wie in der Vorschau, automatisch umbrochen.
+
+![Layout Handbuch: eine Inhaltsseite, die die Überschriften mit ihren Seitenzahlen auflistet.](/assets/cli/layout-handbook-contents.png)
+
+**Handbuch.** Deckblatt, Inhaltsverzeichnis mit Seitenzahlen, jedes Kapitel auf neuer Seite.
+
+![Layout Handout, Seite 1: links der Inhalt, rechts eine leere Notizspalte und eine Fußzeile.](/assets/cli/layout-handout.png)
+
+**Handout.** Notizspalte im rechten Drittel; Dateiname, Datum und Seitenzahl in der Fußzeile.
+
+## Was auf der Seite landet
+
+- Mermaid-Diagramme werden in die Seiten gezeichnet.
 - Codeblöcke behalten ihre Syntaxhervorhebung.
 - Seitenumbrüche vermeiden es, eine Überschrift unten auf einer Seite stehen zu lassen oder Code und Diagramme zu teilen.
-- In jedem Layout. Der Export funktioniert auch, wenn nur der Quelltext angezeigt wird.
 - Vor dem Drucken oder Exportieren siehst du die Seiten in der Vorschau und wählst ein Layout: Dokument, Handbuch mit Deckblatt und Inhaltsverzeichnis oder Handout mit Notizspalte.
 
-Das kostenlose [Befehlszeilenprogramm marsdawn](/de/cli/) verwendet denselben Exporter, sodass ein Skript oder ein KI-Agent dasselbe PDF erhält.
+Auf iPhone und iPad kannst du ab Version 1.0.2 ein Markdown-Dokument drucken.
+
+Das kostenlose [Befehlszeilenprogramm marsdawn](/de/cli/) verwendet denselben Exporter, sodass Skripte und KI-Agenten dasselbe PDF erhalten.
 ---
 
 ## Eine Mac-App
@@ -15276,6 +15951,10 @@ Gib bitte deine macOS-Version und deine MarsDawn-Version an („MarsDawn“ › 
 ### Was brauche ich, um MarsDawn zu verwenden?
 
 Einen Mac mit macOS 26 Tahoe oder neuer, mit Apple Chip oder Intel-Prozessor.
+
+### Kann ich MarsDawn mit Homebrew installieren?
+
+Ja, über den Mac App Store: Führe `brew install mas` aus und dann `sudo mas get 6812925073`. `brew install marsdawn` ist etwas anderes: Es installiert das Befehlszeilenprogramm, nicht die App.
 
 ### Wie wechsle ich zwischen Editor und Vorschau?
 
@@ -15425,6 +16104,8 @@ MarsDawn ist ein Markdown-Editor für den Mac. Du kannst es kostenlos aus dem Ma
 
 [MarsDawn kostenlos im Mac App Store laden](https://apps.apple.com/app/id6812925073)
 
+Lieber im Terminal? [So installierst du MarsDawn mit Homebrew und mas](/de/cli/#mac-app).
+
 Öffne eine `.md`-Datei und lies die gerenderte Seite neben dem Quelltext:
 
 - Die Vorschau aktualisiert sich beim Tippen, und beide Bereiche scrollen gemeinsam.
@@ -15461,7 +16142,7 @@ Unlesbare Zeichen bedeuten meist, dass die Datei in einer anderen Textkodierung 
 
 ### Kann ich eine .md-Datei in ein PDF umwandeln?
 
-Ja. Wähle in MarsDawn „Ablage ▸ Als PDF exportieren …“ (⌥⌘E) oder „Ablage ▸ Drucken …“; die Seiten werden umbrochen, Diagramme sind eingezeichnet und Code ist hervorgehoben, in den hellen Farben des Themas. Ohne die App erzeugt das kostenlose Befehlszeilenwerkzeug `marsdawn export` dasselbe PDF: `marsdawn export notes.md`. Siehe [PDF-Export](/de/pdf/) und [Markdown zu PDF](/de/markdown-to-pdf/).
+Ja. Wähle in MarsDawn „Ablage ▸ Als PDF exportieren …“ (⌥⌘E) oder „Ablage ▸ Drucken …“; die Seiten werden umbrochen, Diagramme sind eingezeichnet und Code ist hervorgehoben, in den hellen Farben des Themas. Ohne die App erzeugt das kostenlose Befehlszeilenwerkzeug `marsdawn export` dasselbe PDF: `marsdawn export notes.md`. Siehe [Drucken und PDF](/de/pdf/) und [Markdown zu PDF](/de/markdown-to-pdf/).
 
 ### Kann ich die .md-Dateien öffnen, die mein KI-Agent geschrieben hat?
 
@@ -15472,6 +16153,7 @@ Ja, dafür ist MarsDawn gebaut. Öffne die Datei und lies die gerenderte Seite n
 - Alle Optionen des Befehlszeilenwerkzeugs: [Befehlszeile](/de/cli/).
 - Was MarsDawn nicht kann: [die Liste](/de/limits/).
 - Markdown stattdessen in VS Code, im Browser oder in Claude Desktop lesen: [der Vergleich](/de/vs/markdown-preview-tools/).
+- Notizen, die auf HackMD liegen: [Von HackMD auf den Mac](/de/from-hackmd/).
 - Diagramme in einer Markdown-Datei: [Mermaid-Vorschau auf dem Mac](/de/mermaid-preview-mac/).
 
 ---
@@ -15523,7 +16205,7 @@ Wenn Mermaid ein Diagramm nicht zeichnen kann, zeigt die Vorschau den Quelltext 
 ## Weiter
 
 - Beginne mit einem Diagramm, das schon funktioniert: die [Flussdiagramm-Vorlage](/de/templates/flowchart/).
-- Exportiere es: [PDF-Export](/de/pdf/), oder aus einem Skript, [Befehlszeile](/de/cli/).
+- Exportiere es: [Drucken und PDF](/de/pdf/), oder aus einem Skript, [Befehlszeile](/de/cli/).
 - Unsicher, wie du die Datei öffnest? [So öffnest du .md-Dateien auf dem Mac](/de/view-markdown-on-mac/).
 
 ## Probiere es auf deinem Mac aus
@@ -15636,6 +16318,109 @@ In einem Git-Checkout, auf den MarsDawn zugreifen kann, oder einem Ordner der Se
 
 ---
 
+## Von HackMD auf den Mac
+
+Source: https://marsdawn.southern-light.dev/de/from-hackmd/
+
+# Von HackMD auf den Mac
+
+Deine Notizen sind schon Markdown, du musst also nichts umwandeln. Wähle unten einen Weg, je nachdem, wie viel du mitnimmst. Bilder brauchen einen eigenen Schritt. Lies diesen Abschnitt, bevor du auf HackMD etwas löschst.
+
+Wir haben das im November 2026 mit einem kostenlosen HackMD-Konto geprüft. HackMD kann sich ändern, und Bezahlpläne und Team-Workspaces haben wir nicht getestet.
+
+| Du möchtest | Dein Weg |
+|---|---|
+| Alle Notizen mitnehmen | Alle Notizen herunterladen |
+| Notizen mitnehmen, die schon auf GitHub liegen | Repository klonen |
+| Ein oder zwei Notizen mitnehmen | Eine Notiz herunterladen |
+
+## Alle Notizen herunterladen
+
+In den Notizeinstellungen von HackMD gibt es Download all notes, für persönliche und Team-Workspaces. Du bekommst eine .zip-Datei mit einer .md-Datei pro Notiz, benannt nach ihrem Titel.
+
+- Ordner bleiben nicht erhalten. Alle Notizen liegen auf der obersten Ebene.
+- Bilder sind nicht enthalten. Die .md-Dateien verweisen weiter per URL auf sie.
+- Die Option für Titel und Tags ist standardmäßig an und fügt jeder Notiz einen Front-Matter-Block hinzu. Schalte sie aus, um jede Notiz genau wie geschrieben zu bekommen.
+
+Entpacke die Datei und wähle in MarsDawn Ablage ▸ Ordner öffnen …, um den Ordner zu öffnen.
+
+## Repository klonen
+
+HackMDs GitHub-Synchronisierung verbindet eine Notiz mit einer Datei. Eine Notiz, die du gepusht hast, liegt also schon im Repository. Klone es und öffne den Ordner mit Ablage ▸ Ordner öffnen …. Die Seitenleiste zeigt das Repository und seinen Branch.
+
+Notizen, die noch nicht auf GitHub liegen, musst du dafür nicht erst verbinden. Jede Notiz muss einzeln verknüpft werden, und der kostenlose Plan erlaubt 20 Pushes im Monat. Mit einem kostenlosen persönlichen Konto haben wir keinen Weg gefunden, einen ganzen Workspace auf einmal zu pushen.
+
+Behandle das Repository nach dem Umzug als Original. Ein Push von HackMD ersetzt, was auf GitHub liegt, auch wenn GitHub neuere Inhalte hat, und warnt dich nicht.
+
+## Eine Notiz herunterladen
+
+Das Notizmenü lädt eine Notiz als .md oder .html herunter. Wähle .md und öffne die Datei in MarsDawn.
+
+## Bilder
+
+Bilder, die du auf HackMD hochgeladen hast, liegen unter `https://hackmd.io/_uploads/...`. Wer sie sehen darf, richtet sich nach der Berechtigung der Notiz.
+
+| Deine Notiz ist | Das passiert auf deinem Mac | Das ist zu tun |
+|---|---|---|
+| Öffentlich | Das Bild wird von HackMD geladen | Klicke in der Vorschau auf „Bilder laden“ oder schalte Einstellungen ▸ Bilder ▸ Bilder aus dem Web automatisch laden ein |
+| Privat | Das Bild liefert einen Fehler, weil MarsDawn nicht bei HackMD angemeldet ist | Sichere das Bild in einem angemeldeten Browser, lege es neben die .md-Datei und ändere den Pfad. Oder mach die Notiz öffentlich, wenn sie jeder lesen darf |
+
+- **Ältere Notizen** verwenden eventuell stattdessen `i.imgur.com`-Adressen.
+- **Wenn du eine Notiz löschst, sind auch ihre Bilder weg.** Ihre Adressen funktionieren nicht mehr, sichere die Bilder also vorher.
+
+Wenn MarsDawn ein Bild neben deiner Datei nicht erreicht, gib ihm mit der Taste in der Vorschau Zugriff auf den Ordner.
+
+## So sehen deine Notizen aus
+
+Der Großteil der HackMD-Syntax liest sich gleich: `==Hervorhebung==`, `^hochgestellt^`, `~tiefgestellt~`, `[TOC]`, Bildgrößen wie `=300x200`, Mermaid und KaTeX. `{%youtube %}` erscheint als Link. Um wie bei HackMD jeden Zeilenumbruch zu behalten, schalte Einstellungen ▸ Erscheinungsbild ▸ Einzelne Zeilenumbrüche beibehalten ein.
+
+Auch `:::`-Blöcke funktionieren. `:::info`, `:::success`, `:::warning` und `:::danger` erscheinen als Blöcke mit farbigem Balken und einer Überschrift. Standardmäßig lautet sie Hinweis, Tipp, Warnung oder Gefahr; schreibst du hinter den Namen eine eigene Überschrift, wird diese verwendet. `:::spoiler` erscheint als reduzierbarer Block, der sich mit einem Klick öffnet. Ein `:::`-Block mit einem anderen Namen oder ohne schließendes `:::` erscheint so, wie du ihn getippt hast.
+
+Ein paar Dinge sehen anders aus:
+
+- `++eingefügt++` und Emoji-Codes wie `:sparkles:` erscheinen so, wie du sie getippt hast.
+- `{%hackmd id %}` wird nicht aufgelöst.
+- `<i class="fa ...">`-Symbole erscheinen nicht.
+
+## Für Skripte: hackmd-cli
+
+`hackmd-cli` hat keinen Befehl, der alles auf einmal exportiert. Es exportiert eine Notiz und gibt sie aus. Du listest also zuerst deine Notizen auf und gehst sie in einer Schleife durch. Du brauchst Node.js, `jq` und einen API-Token aus deinen HackMD-Einstellungen. Wenn du kein Skript brauchst, ist Download all notes einfacher.
+
+```
+npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=<dein Token>
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" > "$id.md"
+done
+```
+
+- **Ordner kommen nicht mit.** Die Notizliste sagt nicht, in welchem Ordner eine Notiz liegt, also landen alle Dateien an einem Ort.
+- **Bilder bleiben `hackmd.io`-Links.** Behandle sie wie oben im Abschnitt „Bilder“.
+- **Die Dateinamen sind Notiz-IDs,** keine Titel.
+- **Der kostenlose Plan erlaubt 400 API-Aufrufe alle 30 Tage.** Die Liste braucht einen Aufruf, jede Notiz einen weiteren.
+
+Wir haben das nur mit einem Konto mit wenigen Notizen ausprobiert. Wie sich eine sehr lange Liste verhält, wissen wir nicht. Lösche den Token danach in deinen HackMD-Einstellungen.
+
+## Gemeinsam schreiben
+
+MarsDawn hat kein gemeinsames Bearbeiten. Wenn ihr live zusammen schreibt, bleib bei HackMD. Wenn dein Team Dokumente in git hält, kann jede Person dasselbe Repository in ihrem eigenen MarsDawn öffnen, und ihr stellt das Dokument gemeinsam fertig. Siehe Dokumente im Team mit git prüfen.
+
+## Fragen
+
+### Kann ich alle meine HackMD-Notizen auf einmal herunterladen?
+
+Ja. Download all notes liefert dir eine .zip-Datei mit .md-Dateien. Ordner bleiben nicht erhalten, und Bilder sind nicht enthalten.
+
+### Warum fehlen meine Bilder in MarsDawn?
+
+MarsDawn hält Bilder aus dem Web zurück, bis du auf „Bilder laden“ klickst. Ist die Notiz privat, lässt sich das Bild gar nicht laden. Sichere es dann neben deiner Datei.
+
+### Muss ich HackMD verlassen?
+
+Nein. Zum gemeinsamen Schreiben bleibt HackMD die bessere Wahl. MarsDawn ist zum Lesen und Prüfen auf deinem Mac da.
+
+---
+
 ## Markdown zu PDF
 
 Source: https://marsdawn.southern-light.dev/de/markdown-to-pdf/
@@ -15722,7 +16507,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## Weiter
 
-- In der MarsDawn-App zeigt Ablage ▸ Drucken … dieselben Layouts in der Vorschau, bevor du druckst oder sicherst: [PDF-Export](/de/pdf/).
+- In der MarsDawn-App zeigt Ablage ▸ Drucken … dieselben Layouts in der Vorschau, bevor du druckst oder sicherst: [Drucken und PDF](/de/pdf/).
 - Alle Optionen und das JSON, das ausgegeben wird: [Befehlszeile](/de/cli/).
 - Damit ein Coding-Agent das für dich erledigt, führe `marsdawn skill --install` aus, um [den marsdawn-Agent-Skill](/de/cli/skill/) hinzuzufügen.
 - Alle vier Vorschauthemen und wohin sich der PDF-Export entwickelt: [Vorschauthemen und PDF-Export](/de/themes/).
@@ -16029,7 +16814,7 @@ Source: https://marsdawn.southern-light.dev/de/cli/
 
 Das kostenlose Befehlszeilenprogramm `marsdawn`: Markdown aus einer Shell oder einem LLM-Agenten als PDF exportieren und, wenn die App MarsDawn installiert ist, Dateien darin öffnen.
 
-**marsdawn ist kostenlos und wird getrennt vom Mac App Store vertrieben.** Installiere es mit Homebrew: Auf einem Mac mit Apple Chip ist es sofort einsatzbereit. `export` funktioniert eigenständig; `open` braucht die App MarsDawn.
+**marsdawn ist kostenlos und wird getrennt vom Mac App Store vertrieben.** Installiere es mit Homebrew: Auf einem Mac mit Apple Chip ist es sofort einsatzbereit. `export` funktioniert eigenständig; `open` braucht die App MarsDawn. Du suchst die Mac-App? [So installierst du sie mit Homebrew und mas](#mac-app).
 
 Du rufst marsdawn aus einem KI-Agenten oder einem Skript auf? Unter [marsdawn für Agenten](/de/cli/agents/) findest du die JSON-Ausgabe, ihre Schemas und alle Exit-Codes, oder unter [MCP-Server](/de/cli/mcp/), wenn dein Agent Tools stattdessen über MCP aufruft.
 
@@ -16054,6 +16839,19 @@ swift build -c release --product marsdawn
 ```
 
 Welche Version du hast, zeigt `marsdawn --version`.
+
+## Die App MarsDawn mit Homebrew und mas installieren
+
+`brew install marsdawn` installiert das Befehlszeilenprogramm, nicht die App. Die Mac-App kommt aus dem Mac App Store, und mit [mas](https://github.com/mas-cli/mas) kannst du sie im Terminal laden:
+
+```
+brew install mas
+sudo mas get 6812925073
+```
+
+Melde dich zuerst im App Store mit deinem Apple Account an; `sudo` fragt nach dem Anmeldepasswort deines Mac. Installiert wird die App-Store-Version unter `/Applications/MarsDawn.app`. Sie braucht macOS 26 oder neuer, und Updates kommen über den App Store.
+
+Der Download ist kostenlos. Beim ersten Öffnen von MarsDawn kannst du den kostenlosen 14-tägigen Test starten, in dem alle Funktionen verfügbar sind. Wenn du es danach weiter nutzen möchtest, schalte es einmalig frei. Es gibt kein Abo. [So funktioniert es](/de/pay-once/)
 
 ## Befehle
 
@@ -18263,7 +19061,7 @@ Sur iPhone et iPad, MarsDawn sert uniquement à lire et ouvre les fichiers Markd
 
 L’aperçu dessine le diagramme et colore le code, juste à côté de la source.
 
-### [Export PDF](/fr/pdf/)
+### [Imprimer et PDF](/fr/pdf/)
 
 ![Le haut d’une page : un titre, un court paragraphe et un organigramme.](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
 
@@ -18300,6 +19098,8 @@ brew install redtear1115/tap/marsdawn
 - `marsdawn export` transforme un fichier Markdown en PDF, rendu comme l’aperçu de MarsDawn. Il n’a pas besoin de l’app.
 - `marsdawn open` ouvre des fichiers dans l’app MarsDawn pour que vous les relisiez.
 - `--json` donne aux scripts et aux agents des résultats qu’ils peuvent analyser.
+
+Cela installe l’outil en ligne de commande. Pour obtenir l’app pour Mac avec Homebrew, [voyez comment](/fr/cli/#mac-app).
 
 [Ligne de commande](/fr/cli/) · [marsdawn pour les agents](/fr/cli/agents/) · [Skill pour agents](/fr/cli/skill/) · [Serveur MCP](/fr/cli/mcp/)
 
@@ -18469,19 +19269,19 @@ Tout le travail ne se fait pas sur un écran. Les pages que MarsDawn imprime et 
 
 Imprimez les pages, ou envoyez à tout le monde le même PDF : toute la table travaille alors sur le même document, et non sur un seul écran partagé. Avec le même fichier, les sauts de page sont les mêmes, si bien que « le tableau de la page 3 » désigne une seule chose. Ensuite, chacun note les décisions, sur l’imprimé ou dans des notes. Le modèle de notes de réunion commence par les décisions et donne un responsable à chaque action.
 
-[Export PDF](/fr/pdf/) · [Modèle de compte rendu](/fr/templates/meeting-notes/)
+[Imprimer et PDF](/fr/pdf/) · [Modèle de compte rendu](/fr/templates/meeting-notes/)
 
 ### Lire avec un stylo
 
 Certaines personnes retiennent mieux avec un stylo : souligner, écrire dans la marge, pour que cela reste. Imprimez le document et faites-le sur le papier. MarsDawn n’a pas d’outil d’annotation à lui ; si vous préférez annoter le PDF, utilisez l’app PDF que vous avez déjà.
 
-[Export PDF](/fr/pdf/)
+[Imprimer et PDF](/fr/pdf/)
 
 ### Dossiers papier
 
 Dans certains métiers, on classe encore du papier, la comptabilité par exemple. MarsDawn ne revendique ni archivage ni conformité. Ce qu’il fait, c’est imprimer et exporter des pages propres et paginées : diagrammes dessinés, blocs de code courts gardés d’un seul tenant, couleurs claires du thème. Servez-vous-en partout où le papier reste le dossier de référence.
 
-[Export PDF](/fr/pdf/)
+[Imprimer et PDF](/fr/pdf/)
 
 ### Transmettre à quelqu’un qui n’utilise pas Markdown
 
@@ -18553,7 +19353,7 @@ Réglages ▸ Apparence ▸ Obtenir plus de thèmes… ouvre une galerie de thè
 
 Fichier ▸ Imprimer… et Fichier ▸ Exporter au format PDF… ouvrent « Imprimer et exporter », avec un aperçu des pages. Choisissez une disposition : Document ; Guide, avec une couverture, une table des matières et des signets PDF ; ou Polycopié, avec une colonne de notes. Puis imprimez ou enregistrez. Les diagrammes Mermaid sont dessinés, le code garde sa coloration, et les sauts de page évitent de séparer un titre de sa section ou de couper en deux un bloc de code court ou un diagramme. Le PDF utilise toujours les couleurs claires du thème.
 
-[Export PDF](/fr/pdf/)
+[Imprimer et PDF](/fr/pdf/)
 
 ![Un PDF exporté depuis MarsDawn, ouvert dans sa visionneuse PDF avec les vignettes des pages.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -18749,30 +19549,54 @@ Oui. Coup d’œil (Quick Look) dans le Finder fonctionne avec ou sans l’essai
 Non. MarsDawn ne vous demande jamais de créer un compte.
 ---
 
-## Export PDF
+## Imprimer et PDF
 
 Source: https://marsdawn.southern-light.dev/fr/pdf/
 
-# Le PDF ressemble à la page que vous avez écrite.
+# Imprimez, ou enregistrez en PDF
 
-Exportez en PDF ou imprimez, dans les couleurs claires de votre thème. Les diagrammes et le code en couleur sont conservés, et les sauts de page évitent de séparer ce qui va ensemble.
+MarsDawn imprime votre Markdown ou l’enregistre en PDF, dans les couleurs claires de votre thème. Un aperçu montre d’abord les pages, pour choisir une disposition avant d’imprimer.
 
-![Un PDF exporté depuis MarsDawn, ouvert dans sa visionneuse PDF avec les vignettes des pages.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![Le panneau « Imprimer et exporter » : aperçu de la page avec diagramme de flux et un peu de code, trois cartes de disposition, boutons « Imprimer… » et « Enregistrer au format PDF… ».](https://marsdawn.southern-light.dev/assets/screens/06-print-export-868.png)
 
 Sur cette capture d’écran :
 
-1. Les diagrammes Mermaid, dessinés dans le PDF.
-2. Le code garde sa coloration.
+1. Consultez d’abord l’aperçu des pages.
+2. Choisissez une disposition.
+3. Imprimez, ou enregistrez au format PDF.
 
-## Concrètement
+## D’abord l’aperçu, ensuite le choix
 
-- Les diagrammes Mermaid sont dessinés dans le PDF.
+1. **Ouvrez l’aperçu.** Choisissez Fichier ▸ Imprimer… ou Fichier ▸ Exporter au format PDF… : les deux ouvrent « Imprimer et exporter ».
+2. **Choisissez une disposition.** Parcourez l’aperçu, puis choisissez Document, Guide ou Polycopié.
+3. **Imprimez ou enregistrez.** Cliquez sur Imprimer…, ou sur Enregistrer au format PDF… pour garder un fichier.
+
+## Trois dispositions
+
+Chaque disposition peut être imprimée ou enregistrée en PDF.
+
+![Disposition Document, page 1 : un titre, un paragraphe, un diagramme de flux, un bloc de code et un tableau.](/assets/cli/layout-document.png)
+
+**Document.** Pages identiques à l’aperçu, sauts de page automatiques.
+
+![Disposition Guide : une page de sommaire qui liste les titres avec leurs numéros de page.](/assets/cli/layout-handbook-contents.png)
+
+**Guide.** Couverture, sommaire avec numéros de page, chaque chapitre sur une nouvelle page.
+
+![Disposition Polycopié, page 1 : le contenu à gauche, une colonne de notes vide à droite et un pied de page.](/assets/cli/layout-handout.png)
+
+**Polycopié.** Colonne de notes sur le tiers droit ; pied de page : nom du fichier, date, numéro de page.
+
+## Ce qui se retrouve sur la page
+
+- Les diagrammes Mermaid sont dessinés dans les pages.
 - Les blocs de code gardent leur coloration syntaxique.
 - Les sauts de page évitent de laisser un titre en bas de page ou de couper du code et des diagrammes.
-- Quelle que soit la disposition. L’export fonctionne même quand seule la source est affichée.
 - Un aperçu des pages avant d’imprimer ou d’exporter, et le choix de la disposition : Document, Guide avec couverture et table des matières, ou Polycopié avec colonne de notes.
 
-L’[outil en ligne de commande marsdawn](/fr/cli/), gratuit, utilise le même moteur d’export : un script ou un agent IA obtient le même PDF.
+Sur iPhone et iPad, vous pouvez imprimer un document Markdown à partir de la version 1.0.2.
+
+L’[outil en ligne de commande marsdawn](/fr/cli/), gratuit, utilise le même moteur d’export : scripts et agents IA obtiennent le même PDF.
 ---
 
 ## Une app Mac
@@ -18877,6 +19701,10 @@ Merci d’indiquer votre version de macOS et votre version de MarsDawn (MarsDawn
 ### De quoi ai-je besoin pour utiliser MarsDawn ?
 
 Un Mac avec macOS 26 Tahoe ou version ultérieure, équipé d’une puce Apple ou d’un processeur Intel.
+
+### Puis-je installer MarsDawn avec Homebrew ?
+
+Oui, par le Mac App Store : exécutez `brew install mas`, puis `sudo mas get 6812925073`. `brew install marsdawn` est autre chose : cela installe l’outil en ligne de commande, pas l’app.
 
 ### Comment passer de l’éditeur à l’aperçu ?
 
@@ -19026,6 +19854,8 @@ MarsDawn est un éditeur Markdown pour Mac. Il se télécharge gratuitement sur 
 
 [Télécharger MarsDawn gratuitement sur le Mac App Store](https://apps.apple.com/app/id6812925073)
 
+Vous préférez le terminal ? [Installez MarsDawn avec Homebrew et mas](/fr/cli/#mac-app).
+
 Ouvrez un fichier `.md` et lisez la page rendue à côté de la source :
 
 - L’aperçu se met à jour pendant la saisie, et les deux volets défilent ensemble.
@@ -19062,7 +19892,7 @@ Des caractères illisibles signifient généralement que le fichier a été enre
 
 ### Puis-je transformer un fichier .md en PDF ?
 
-Oui. Dans MarsDawn, choisissez « Fichier ▸ Exporter au format PDF… » (⌥⌘E) ou « Fichier ▸ Imprimer… » ; les pages sont paginées, les diagrammes sont dessinés et le code est coloré, dans les couleurs claires du thème. Sans l’app, l’outil en ligne de commande gratuit `marsdawn export` produit le même PDF : `marsdawn export notes.md`. Voir [Export PDF](/fr/pdf/) et [Markdown vers PDF](/fr/markdown-to-pdf/).
+Oui. Dans MarsDawn, choisissez « Fichier ▸ Exporter au format PDF… » (⌥⌘E) ou « Fichier ▸ Imprimer… » ; les pages sont paginées, les diagrammes sont dessinés et le code est coloré, dans les couleurs claires du thème. Sans l’app, l’outil en ligne de commande gratuit `marsdawn export` produit le même PDF : `marsdawn export notes.md`. Voir [Imprimer et PDF](/fr/pdf/) et [Markdown vers PDF](/fr/markdown-to-pdf/).
 
 ### Puis-je ouvrir les fichiers .md que mon agent IA a écrits ?
 
@@ -19073,6 +19903,7 @@ Oui, c’est pour cela que MarsDawn est conçu. Ouvrez le fichier et lisez la pa
 - Toutes les options de l’outil en ligne de commande : [Ligne de commande](/fr/cli/).
 - Ce que MarsDawn ne fait pas : [la liste](/fr/limits/).
 - Lire du Markdown plutôt dans VS Code, un navigateur ou Claude Desktop : [la comparaison](/fr/vs/markdown-preview-tools/).
+- Les notes que vous gardez sur HackMD : [Passer de HackMD à votre Mac](/fr/from-hackmd/).
 - Les diagrammes dans un fichier Markdown : [Aperçu Mermaid sur Mac](/fr/mermaid-preview-mac/).
 
 ---
@@ -19124,7 +19955,7 @@ Si Mermaid ne peut pas dessiner un diagramme, l’aperçu affiche la source du d
 ## Pour aller plus loin
 
 - Partez d’un diagramme qui fonctionne déjà : le [modèle d’organigramme](/fr/templates/flowchart/).
-- Exportez-le : [Export PDF](/fr/pdf/), ou depuis un script, [Ligne de commande](/fr/cli/).
+- Exportez-le : [Imprimer et PDF](/fr/pdf/), ou depuis un script, [Ligne de commande](/fr/cli/).
 - Vous ne savez pas comment ouvrir le fichier ? [Ouvrir un fichier .md sur Mac](/fr/view-markdown-on-mac/).
 
 ## Essayez-le sur votre Mac
@@ -19237,6 +20068,109 @@ Dans un checkout Git accessible à MarsDawn, ou un dossier de la barre latérale
 
 ---
 
+## Passer de HackMD à votre Mac
+
+Source: https://marsdawn.southern-light.dev/fr/from-hackmd/
+
+# Passer de HackMD à votre Mac
+
+Vos notes sont déjà en Markdown, il n’y a rien à convertir. Choisissez une voie selon ce que vous déplacez. Les images demandent une étape à part : lisez cette section avant de supprimer quoi que ce soit sur HackMD.
+
+Nous avons vérifié tout cela avec un compte HackMD gratuit en novembre 2026. HackMD peut évoluer, et nous n’avons testé ni les offres payantes ni les espaces d’équipe.
+
+| Vous voulez | Votre voie |
+|---|---|
+| Déplacer toutes vos notes | Télécharger toutes les notes |
+| Déplacer des notes déjà sur GitHub | Cloner le dépôt |
+| Déplacer une ou deux notes | Télécharger une note |
+
+## Télécharger toutes les notes
+
+Les réglages de notes de HackMD proposent Download all notes, pour les espaces personnels et d’équipe. Vous obtenez un .zip avec un fichier .md par note, nommé d’après son titre.
+
+- Les dossiers ne sont pas conservés. Toutes les notes arrivent au premier niveau.
+- Les images ne sont pas incluses. Les fichiers .md y renvoient toujours par URL.
+- L’option qui inclut le titre et les tags est activée par défaut et ajoute un bloc de front matter à chaque note. Désactivez-la pour obtenir chaque note telle qu’elle a été écrite.
+
+Décompressez le fichier, puis choisissez Fichier ▸ Ouvrir un dossier… dans MarsDawn pour ouvrir ce dossier.
+
+## Cloner le dépôt
+
+La synchronisation GitHub de HackMD relie une note à un fichier. Une note que vous avez envoyée est donc déjà dans le dépôt. Clonez-le et ouvrez le dossier avec Fichier ▸ Ouvrir un dossier…. La barre latérale affiche le dépôt et sa branche.
+
+Si vos notes ne sont pas encore sur GitHub, inutile de commencer pour ce déplacement. Chaque note doit être reliée séparément, et l’offre gratuite permet 20 envois par mois. Avec un compte personnel gratuit, nous n’avons trouvé aucun moyen d’envoyer tout un espace de travail d’un coup.
+
+Après le déplacement, considérez le dépôt comme l’original. Un envoi depuis HackMD remplace ce qui se trouve sur GitHub, même si GitHub a un contenu plus récent, et il ne vous avertit pas.
+
+## Télécharger une note
+
+Le menu de la note la télécharge en .md ou en .html. Choisissez .md et ouvrez le fichier dans MarsDawn.
+
+## Images
+
+Les images que vous avez importées sur HackMD se trouvent à l’adresse `https://hackmd.io/_uploads/...`. Qui peut les voir dépend de l’autorisation de la note.
+
+| Votre note est | Ce qui se passe sur votre Mac | Que faire |
+|---|---|---|
+| Publique | L’image se charge depuis HackMD | Cliquez sur Charger les images dans l’aperçu, ou activez Réglages ▸ Images ▸ Charger automatiquement les images distantes |
+| Privée | L’image renvoie une erreur, car MarsDawn n’est pas connecté à HackMD | Enregistrez l’image depuis un navigateur connecté, placez-la à côté du fichier .md et modifiez le chemin. Ou rendez la note publique, si tout le monde peut la lire |
+
+- **Les anciennes notes** peuvent utiliser des adresses `i.imgur.com`.
+- **Supprimer une note supprime ses images.** Leurs adresses ne fonctionnent plus, alors déplacez d’abord les images.
+
+Si MarsDawn n’atteint pas une image à côté de votre fichier, utilisez le bouton de l’aperçu pour lui donner accès au dossier.
+
+## L’apparence de vos notes
+
+La plupart de la syntaxe HackMD se lit de la même façon : `==surligné==`, `^exposant^`, `~indice~`, `[TOC]`, les tailles d’image comme `=300x200`, Mermaid et KaTeX. `{%youtube %}` s’affiche comme un lien. Pour garder chaque saut de ligne comme dans HackMD, activez Réglages ▸ Apparence ▸ Conserver les sauts de ligne simples.
+
+Les blocs `:::` fonctionnent aussi. `:::info`, `:::success`, `:::warning` et `:::danger` apparaissent sous forme de blocs avec une barre colorée et un titre (Remarque, Conseil, Avertissement ou Danger par défaut). Si vous écrivez votre propre titre après le nom, c’est lui qui s’affiche. `:::spoiler` apparaît sous forme de bloc repliable qui s’ouvre d’un clic. Un bloc `:::` avec un autre nom, ou sans `:::` de fermeture, s’affiche tel que vous l’avez tapé.
+
+Quelques éléments changent :
+
+- `++inséré++` et les codes emoji comme `:sparkles:` s’affichent tels que vous les avez tapés.
+- `{%hackmd id %}` n’est pas développé.
+- Les icônes `<i class="fa ...">` n’apparaissent pas.
+
+## Pour les scripts : hackmd-cli
+
+`hackmd-cli` n’a pas de commande qui exporte tout d’un coup. Il exporte une note et l’affiche : il faut donc lister vos notes, puis les parcourir en boucle. Il vous faut Node.js, `jq` et un jeton API créé dans vos réglages HackMD. Si vous n’avez pas besoin de script, Download all notes est plus simple.
+
+```
+npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=<votre jeton>
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" > "$id.md"
+done
+```
+
+- **Les dossiers ne suivent pas.** La liste des notes n’indique pas leur dossier, donc tous les fichiers arrivent au même endroit.
+- **Les images restent des liens `hackmd.io`.** Traitez-les comme dans la section Images ci-dessus.
+- **Les noms de fichier sont les ID des notes,** pas leurs titres.
+- **L’offre gratuite permet 400 appels API tous les 30 jours.** La liste utilise un appel, puis chaque note un de plus.
+
+Nous n’avons essayé cela que sur un compte avec peu de notes, nous ne savons donc pas ce que donne une très longue liste. Supprimez le jeton dans vos réglages HackMD quand vous avez terminé.
+
+## Écrire ensemble
+
+MarsDawn n’a pas d’édition partagée. Si vous devez écrire ensemble en direct, gardez HackMD. Si votre équipe garde ses documents dans git, chacun peut ouvrir le même dépôt dans son propre MarsDawn, et vous finissez le document ensemble. Voir Relire des documents en équipe avec git.
+
+## Questions
+
+### Puis-je télécharger toutes mes notes HackMD d’un coup ?
+
+Oui. Download all notes vous donne un .zip de fichiers .md. Il ne conserve pas les dossiers et n’inclut pas les images.
+
+### Pourquoi mes images manquent-elles dans MarsDawn ?
+
+MarsDawn retient les images du web jusqu’à ce que vous cliquiez sur Charger les images. Si la note est privée, l’image ne peut pas se charger : enregistrez-la à côté de votre fichier.
+
+### Dois-je quitter HackMD ?
+
+Non. HackMD reste le meilleur choix pour écrire ensemble. MarsDawn sert à lire et à relire sur votre Mac.
+
+---
+
 ## Markdown vers PDF
 
 Source: https://marsdawn.southern-light.dev/fr/markdown-to-pdf/
@@ -19323,7 +20257,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## Pour aller plus loin
 
-- Dans l’app MarsDawn, Fichier ▸ Imprimer… affiche un aperçu des mêmes dispositions avant d’imprimer ou d’enregistrer : [Export PDF](/fr/pdf/).
+- Dans l’app MarsDawn, Fichier ▸ Imprimer… affiche un aperçu des mêmes dispositions avant d’imprimer ou d’enregistrer : [Imprimer et PDF](/fr/pdf/).
 - Toutes les options et le JSON produit : [Ligne de commande](/fr/cli/).
 - Pour qu’un agent de code le fasse à votre place, exécutez `marsdawn skill --install` pour ajouter [la skill d’agent marsdawn](/fr/cli/skill/).
 - Les quatre thèmes d’aperçu, et la direction que prend l’export PDF : [thèmes d’aperçu et export PDF](/fr/themes/).
@@ -19630,7 +20564,7 @@ Source: https://marsdawn.southern-light.dev/fr/cli/
 
 L’outil en ligne de commande gratuit `marsdawn` : exportez du Markdown en PDF depuis un shell ou un agent LLM et, si l’app MarsDawn est installée, ouvrez-y des fichiers.
 
-**marsdawn est gratuit et distribué séparément du Mac App Store.** Installez-le avec Homebrew : sur un Mac avec puce Apple, il arrive prêt à l’emploi. `export` fonctionne seul ; `open` nécessite l’app MarsDawn.
+**marsdawn est gratuit et distribué séparément du Mac App Store.** Installez-le avec Homebrew : sur un Mac avec puce Apple, il arrive prêt à l’emploi. `export` fonctionne seul ; `open` nécessite l’app MarsDawn. Vous cherchez l’app pour Mac ? [Installez-la avec Homebrew et mas](#mac-app).
 
 Vous appelez marsdawn depuis un agent IA ou un script ? Consultez [marsdawn pour les agents](/fr/cli/agents/) pour la sortie JSON, ses schémas et tous les codes de sortie, ou [le serveur MCP](/fr/cli/mcp/) si votre agent appelle plutôt des outils via MCP.
 
@@ -19655,6 +20589,19 @@ swift build -c release --product marsdawn
 ```
 
 Vérifiez votre version avec `marsdawn --version`.
+
+## Installer l’app MarsDawn avec Homebrew et mas
+
+`brew install marsdawn` installe l’outil en ligne de commande, pas l’app. L’app pour Mac vient du Mac App Store, et [mas](https://github.com/mas-cli/mas) permet de l’obtenir depuis le terminal :
+
+```
+brew install mas
+sudo mas get 6812925073
+```
+
+Connectez-vous d’abord à l’App Store avec votre compte Apple ; `sudo` vous demande le mot de passe de session de votre Mac. Cela installe la version de l’App Store dans `/Applications/MarsDawn.app`. Elle nécessite macOS 26 ou version ultérieure, et les mises à jour passent par l’App Store.
+
+Le téléchargement est gratuit. À la première ouverture de MarsDawn, vous pouvez lancer l’essai gratuit de 14 jours, avec toutes les fonctionnalités ; pour continuer à l’utiliser ensuite, déverrouillez-le une fois. Il n’y a pas d’abonnement. [Comment ça marche](/fr/pay-once/)
 
 ## Commandes
 
@@ -21864,7 +22811,7 @@ En iPhone y iPad, MarsDawn solo sirve para leer y abre archivos Markdown, de tex
 
 La vista previa dibuja el diagrama y resalta el código, junto al código fuente.
 
-### [Exportación a PDF](/es/pdf/)
+### [Imprimir y PDF](/es/pdf/)
 
 ![Parte superior de una página: un título, un párrafo breve y un diagrama de flujo.](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
 
@@ -21901,6 +22848,8 @@ brew install redtear1115/tap/marsdawn
 - `marsdawn export` convierte un archivo Markdown en un PDF, renderizado como la vista previa de MarsDawn. No necesita la app.
 - `marsdawn open` abre archivos en la app MarsDawn para que los revises.
 - `--json` les da a los scripts y a los agentes resultados que pueden analizar.
+
+Esto instala la herramienta de línea de comandos. Para obtener la app para Mac con Homebrew, [mira cómo](/es/cli/#mac-app).
 
 [Línea de comandos](/es/cli/) · [marsdawn para agentes](/es/cli/agents/) · [Skill para agentes](/es/cli/skill/) · [Servidor MCP](/es/cli/mcp/)
 
@@ -22070,19 +23019,19 @@ No todo el trabajo ocurre en una pantalla. Las páginas que MarsDawn imprime y e
 
 Imprime las páginas, o envía a todos el mismo PDF, y toda la mesa trabaja con el mismo documento en lugar de una sola pantalla compartida. Quien tiene el mismo archivo tiene los mismos saltos de página, así que «la tabla de la página 3» señala una sola cosa. Después, las personas anotan las decisiones, en la copia impresa o en notas. La plantilla de notas de reunión empieza por las decisiones y asigna un responsable a cada tarea.
 
-[Exportación a PDF](/es/pdf/) · [Plantilla de minuta de reunión](/es/templates/meeting-notes/)
+[Imprimir y PDF](/es/pdf/) · [Plantilla de minuta de reunión](/es/templates/meeting-notes/)
 
 ### Leer con un bolígrafo
 
 Hay quien asimila mejor con un bolígrafo: subrayar, escribir en el margen, para que se quede. Imprime el documento y hazlo en papel. MarsDawn no tiene una herramienta de anotación propia, así que, si prefieres marcar el PDF, usa la app de PDF que ya tienes.
 
-[Exportación a PDF](/es/pdf/)
+[Imprimir y PDF](/es/pdf/)
 
 ### Registros en papel
 
 En algunos sectores todavía se archiva en papel, como la contabilidad. MarsDawn no afirma nada sobre archivo ni cumplimiento normativo. Lo que hace es imprimir y exportar páginas limpias y paginadas: diagramas dibujados, bloques de código cortos sin partir, los colores claros del tema. Úsalas dondequiera que el papel siga siendo el registro.
 
-[Exportación a PDF](/es/pdf/)
+[Imprimir y PDF](/es/pdf/)
 
 ### Pasárselo a alguien que no usa Markdown
 
@@ -22154,7 +23103,7 @@ Ajustes ▸ Aspecto ▸ Obtener más temas… abre una galería de temas de vist
 
 Archivo ▸ Imprimir… y Archivo ▸ Exportar como PDF… abren «Imprimir y exportar», con una vista previa de las páginas. Elige una disposición: Documento; Guía, con portada, índice y marcadores PDF; o Folleto, con una columna para notas. Luego imprime o guarda. Los diagramas Mermaid se dibujan, el código conserva su resaltado, y los saltos de página evitan separar un encabezado de su sección o partir por la mitad un bloque de código corto o un diagrama. El PDF usa siempre los colores claros del tema.
 
-[Exportación a PDF](/es/pdf/)
+[Imprimir y PDF](/es/pdf/)
 
 ![Un PDF exportado desde MarsDawn, abierto en su visor de PDF con miniaturas de las páginas.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -22350,30 +23299,54 @@ Sí. Vista Rápida (Quick Look) en el Finder funciona con o sin la prueba. La he
 No. MarsDawn nunca te pide que crees una cuenta.
 ---
 
-## Exportación a PDF
+## Imprimir y PDF
 
 Source: https://marsdawn.southern-light.dev/es/pdf/
 
-# El PDF se ve como la página que escribiste.
+# Imprímelo o guárdalo como PDF
 
-Exporta como PDF o imprime, con los colores claros de tu tema. Los diagramas y el código resaltado se conservan, y los saltos de página evitan separar lo que va junto.
+MarsDawn imprime tu Markdown o lo guarda como PDF, con los colores claros de tu tema. Una vista previa muestra primero las páginas, para que elijas una disposición antes de imprimir.
 
-![Un PDF exportado desde MarsDawn, abierto en su visor de PDF con miniaturas de las páginas.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![El panel «Imprimir y exportar»: vista previa de la página con diagrama de flujo y algo de código, tres tarjetas de disposición y botones «Imprimir…» y «Guardar como PDF…».](https://marsdawn.southern-light.dev/assets/screens/06-print-export-868.png)
 
 En esta captura de pantalla:
 
-1. Diagramas Mermaid, dibujados dentro del PDF.
-2. El código conserva su resaltado.
+1. Revisa primero la vista previa de las páginas.
+2. Elige una disposición.
+3. Imprime, o guarda como PDF.
 
-## Qué significa
+## Primero la vista previa, luego decides
 
-- Los diagramas Mermaid se dibujan dentro del PDF.
+1. **Abre la vista previa.** Elige Archivo ▸ Imprimir… o Archivo ▸ Exportar como PDF…; ambos abren «Imprimir y exportar».
+2. **Elige una disposición.** Revisa la vista previa y elige Documento, Guía o Folleto.
+3. **Imprime o guarda.** Haz clic en Imprimir…, o en Guardar como PDF… para conservar un archivo.
+
+## Tres disposiciones
+
+Todas las disposiciones se pueden imprimir o guardar como PDF.
+
+![Disposición Documento, página 1: un título, un párrafo, un diagrama de flujo, un bloque de código y una tabla.](/assets/cli/layout-document.png)
+
+**Documento.** Páginas como en la vista previa, con saltos de página automáticos.
+
+![Disposición Guía: una página de índice que lista los encabezados con sus números de página.](/assets/cli/layout-handbook-contents.png)
+
+**Guía.** Portada, índice con números de página y cada capítulo en una página nueva.
+
+![Disposición Folleto, página 1: contenido a la izquierda, una columna de notas vacía a la derecha y una línea de pie.](/assets/cli/layout-handout.png)
+
+**Folleto.** Columna de notas en el tercio derecho; nombre del archivo, fecha y número de página en el pie.
+
+## Qué queda en la página
+
+- Los diagramas Mermaid se dibujan dentro de las páginas.
 - Los bloques de código conservan su resaltado de sintaxis.
 - Los saltos de página evitan dejar un encabezado al final de una página o partir código y diagramas.
-- Con cualquier disposición. La exportación funciona incluso cuando solo se muestra el código.
 - Vista previa de las páginas antes de imprimir o exportar, y elección de disposición: Documento, Guía con portada e índice, o Folleto con columna para notas.
 
-La [herramienta de línea de comandos marsdawn](/es/cli/), que es gratis, usa el mismo exportador, así que un script o un agente de IA obtiene el mismo PDF.
+En iPhone y iPad, desde la versión 1.0.2 se puede imprimir un documento Markdown.
+
+La [herramienta de línea de comandos marsdawn](/es/cli/), gratuita, usa el mismo exportador, así que scripts y agentes de IA obtienen el mismo PDF.
 ---
 
 ## Una app para Mac
@@ -22478,6 +23451,10 @@ Indica tu versión de macOS y tu versión de MarsDawn (MarsDawn › Acerca de Ma
 ### ¿Qué necesito para usar MarsDawn?
 
 Una Mac con macOS 26 Tahoe o posterior, con chip de Apple o procesador Intel.
+
+### ¿Puedo instalar MarsDawn con Homebrew?
+
+Sí, a través del Mac App Store: ejecuta `brew install mas` y luego `sudo mas get 6812925073`. `brew install marsdawn` es otra cosa: instala la herramienta de línea de comandos, no la app.
 
 ### ¿Cómo cambio entre el editor y la vista previa?
 
@@ -22627,6 +23604,8 @@ MarsDawn es un editor de Markdown para Mac. Se descarga gratis desde el Mac App 
 
 [Descarga MarsDawn gratis en el Mac App Store](https://apps.apple.com/app/id6812925073)
 
+¿Prefieres la terminal? [Instala MarsDawn con Homebrew y mas](/es/cli/#mac-app).
+
 Abre un archivo `.md` y lee la página renderizada junto al código fuente:
 
 - La vista previa se actualiza mientras escribes, y los dos paneles se desplazan juntos.
@@ -22663,7 +23642,7 @@ Los caracteres ilegibles suelen significar que el archivo se guardó con una cod
 
 ### ¿Puedo convertir un archivo .md en PDF?
 
-Sí. En MarsDawn, elige «Archivo ▸ Exportar como PDF…» (⌥⌘E) o «Archivo ▸ Imprimir…»; las páginas se paginan, los diagramas se dibujan y el código se resalta, con los colores claros del tema. Sin la app, la herramienta de línea de comandos gratuita `marsdawn export` genera el mismo PDF: `marsdawn export notes.md`. Consulta [Exportación a PDF](/es/pdf/) y [De Markdown a PDF](/es/markdown-to-pdf/).
+Sí. En MarsDawn, elige «Archivo ▸ Exportar como PDF…» (⌥⌘E) o «Archivo ▸ Imprimir…»; las páginas se paginan, los diagramas se dibujan y el código se resalta, con los colores claros del tema. Sin la app, la herramienta de línea de comandos gratuita `marsdawn export` genera el mismo PDF: `marsdawn export notes.md`. Consulta [Imprimir y PDF](/es/pdf/) y [De Markdown a PDF](/es/markdown-to-pdf/).
 
 ### ¿Puedo abrir los archivos .md que escribió mi agente de IA?
 
@@ -22674,6 +23653,7 @@ Sí, para eso está hecho MarsDawn. Abre el archivo y lee la página renderizada
 - Todas las opciones de la herramienta de línea de comandos: [Línea de comandos](/es/cli/).
 - Lo que MarsDawn no hace: [la lista](/es/limits/).
 - Leer Markdown en VS Code, un navegador o Claude Desktop: [cómo se comparan](/es/vs/markdown-preview-tools/).
+- Notas que guardas en HackMD: [Pasar de HackMD a tu Mac](/es/from-hackmd/).
 - Diagramas en un archivo Markdown: [Vista previa de Mermaid en Mac](/es/mermaid-preview-mac/).
 
 ---
@@ -22725,7 +23705,7 @@ Si Mermaid no puede dibujar un diagrama, la vista previa muestra el código del 
 ## Siguiente
 
 - Empieza con un diagrama que ya funciona: la [plantilla de diagrama de flujo](/es/templates/flowchart/).
-- Expórtalo: [Exportación a PDF](/es/pdf/), o desde un script, [Línea de comandos](/es/cli/).
+- Expórtalo: [Imprimir y PDF](/es/pdf/), o desde un script, [Línea de comandos](/es/cli/).
 - ¿No sabes cómo abrir el archivo? [Cómo abrir archivos .md en Mac](/es/view-markdown-on-mac/).
 
 ## Pruébalo en tu Mac
@@ -22838,6 +23818,109 @@ En un checkout de Git al que MarsDawn puede acceder, o en una carpeta de la barr
 
 ---
 
+## Pasar de HackMD a tu Mac
+
+Source: https://marsdawn.southern-light.dev/es/from-hackmd/
+
+# Pasar de HackMD a tu Mac
+
+Tus notas ya son Markdown, así que no hay nada que convertir. Elige una vía según lo que vayas a mover. Las imágenes necesitan un paso aparte, así que lee esa sección antes de eliminar nada en HackMD.
+
+Lo comprobamos con una cuenta gratuita de HackMD en noviembre de 2026. HackMD puede cambiar, y no probamos los planes de pago ni los espacios de equipo.
+
+| Quieres | Tu vía |
+|---|---|
+| Mover todas tus notas | Descargar todas las notas |
+| Mover notas que ya están en GitHub | Clonar el repositorio |
+| Mover una o dos notas | Descargar una nota |
+
+## Descargar todas las notas
+
+Los ajustes de notas de HackMD tienen Download all notes, para espacios personales y de equipo. Obtienes un .zip con un archivo .md por nota, con el título de la nota como nombre.
+
+- Las carpetas no se conservan. Todas las notas quedan en el nivel superior.
+- Las imágenes no se incluyen. Los archivos .md siguen apuntando a ellas por URL.
+- La opción de incluir el título y las etiquetas está activada por defecto y añade un bloque de front matter a cada nota. Desactívala para obtener cada nota tal como se escribió.
+
+Descomprime el archivo y elige Archivo ▸ Abrir carpeta… en MarsDawn para abrir esa carpeta.
+
+## Clonar el repositorio
+
+La sincronización con GitHub de HackMD vincula una nota con un archivo, así que una nota que ya enviaste está en el repositorio. Clónalo y abre la carpeta con Archivo ▸ Abrir carpeta…. La barra lateral muestra el repositorio y su rama.
+
+Si tus notas aún no están en GitHub, no hace falta empezar ahora para esta mudanza. Cada nota se vincula por separado, y el plan gratuito permite 20 envíos al mes. En una cuenta personal gratuita no encontramos forma de enviar todo un espacio de trabajo de una vez.
+
+Después de la mudanza, trata el repositorio como el original. Un envío desde HackMD reemplaza lo que hay en GitHub, aunque GitHub tenga contenido más reciente, y no te avisa.
+
+## Descargar una nota
+
+El menú de la nota la descarga como .md o .html. Elige .md y abre el archivo en MarsDawn.
+
+## Imágenes
+
+Las imágenes que subiste a HackMD están en `https://hackmd.io/_uploads/...`. Quién puede verlas depende del permiso de la nota.
+
+| Tu nota es | Qué pasa en tu Mac | Qué hacer |
+|---|---|---|
+| Pública | La imagen se carga desde HackMD | Haz clic en Cargar imágenes en la vista previa, o activa Ajustes ▸ Imágenes ▸ Cargar imágenes remotas automáticamente |
+| Privada | La imagen devuelve un error, porque MarsDawn no ha iniciado sesión en HackMD | Guarda la imagen desde un navegador con sesión iniciada, ponla junto al archivo .md y cambia la ruta. O haz pública la nota, si todo el mundo puede leerla |
+
+- **Las notas antiguas** pueden usar direcciones `i.imgur.com`.
+- **Eliminar una nota elimina sus imágenes.** Sus direcciones dejan de funcionar, así que mueve antes las imágenes.
+
+Si MarsDawn no puede leer una imagen que está junto a tu archivo, usa el botón de la vista previa para darle acceso a la carpeta.
+
+## Cómo se verán tus notas
+
+La mayor parte de la sintaxis de HackMD se lee igual: `==resaltado==`, `^superíndice^`, `~subíndice~`, `[TOC]`, tamaños de imagen como `=300x200`, Mermaid y KaTeX. `{%youtube %}` se muestra como un enlace. Para conservar cada salto de línea como en HackMD, activa Ajustes ▸ Aspecto ▸ Mantener saltos de línea simples.
+
+Los bloques `:::` también funcionan. `:::info`, `:::success`, `:::warning` y `:::danger` se muestran como bloques con una barra de color y un título (Nota, Consejo, Advertencia o Peligro), o con tu propio título si lo escribes después del nombre. `:::spoiler` se muestra como un bloque plegable que se abre al hacer clic. Un bloque `:::` con otro nombre, o sin su `:::` de cierre, se muestra tal como lo escribiste.
+
+Algunas cosas cambian:
+
+- `++insertado++` y los códigos de emoji como `:sparkles:` se muestran tal como los escribiste.
+- `{%hackmd id %}` no se expande.
+- Los iconos `<i class="fa ...">` no aparecen.
+
+## Para scripts: hackmd-cli
+
+`hackmd-cli` no tiene un comando que exporte todo de una vez. Exporta una nota y la imprime, así que primero listas tus notas y luego las recorres en un bucle. Necesitas Node.js, `jq` y un token de API creado en los ajustes de HackMD. Si no necesitas un script, Download all notes es más sencillo.
+
+```
+npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=<tu token>
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" > "$id.md"
+done
+```
+
+- **Las carpetas no se trasladan.** La lista de notas no indica en qué carpeta está cada una, así que todos los archivos quedan en el mismo lugar.
+- **Las imágenes siguen siendo enlaces de `hackmd.io`.** Trátalas como en la sección Imágenes de arriba.
+- **Los nombres de archivo son los ID de las notas,** no sus títulos.
+- **El plan gratuito permite 400 llamadas a la API cada 30 días.** La lista usa una llamada, y cada nota una más.
+
+Solo lo probamos en una cuenta con pocas notas, así que no sabemos qué pasa con una lista muy larga. Elimina el token en los ajustes de HackMD cuando termines.
+
+## Escribir en equipo
+
+MarsDawn no tiene edición compartida. Si necesitas escribir con otras personas en directo, sigue usando HackMD. Si tu equipo guarda sus documentos en git, cada persona puede abrir el mismo repositorio en su propio MarsDawn y terminar el documento entre todos. Consulta Revisar documentos en equipo con git.
+
+## Preguntas
+
+### ¿Puedo descargar todas mis notas de HackMD de una vez?
+
+Sí. Download all notes te da un .zip de archivos .md. No conserva las carpetas ni incluye las imágenes.
+
+### ¿Por qué faltan mis imágenes en MarsDawn?
+
+MarsDawn retiene las imágenes de la web hasta que haces clic en Cargar imágenes. Si la nota es privada, la imagen no puede cargarse, así que guárdala junto a tu archivo.
+
+### ¿Tengo que dejar HackMD?
+
+No. Para escribir en equipo, HackMD sigue siendo la mejor opción. MarsDawn sirve para leer y revisar en tu Mac.
+
+---
+
 ## De Markdown a PDF
 
 Source: https://marsdawn.southern-light.dev/es/markdown-to-pdf/
@@ -22924,7 +24007,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## Siguiente
 
-- En la app MarsDawn, Archivo ▸ Imprimir… muestra una vista previa de las mismas disposiciones antes de imprimir o guardar: [Exportación a PDF](/es/pdf/).
+- En la app MarsDawn, Archivo ▸ Imprimir… muestra una vista previa de las mismas disposiciones antes de imprimir o guardar: [Imprimir y PDF](/es/pdf/).
 - Todas las opciones y el JSON que imprime: [Línea de comandos](/es/cli/).
 - Para que un agente de programación lo haga por ti, ejecuta `marsdawn skill --install` para agregar [la skill de agente de marsdawn](/es/cli/skill/).
 - Los cuatro temas de vista previa y hacia dónde va la exportación a PDF: [temas de vista previa y exportación a PDF](/es/themes/).
@@ -23231,7 +24314,7 @@ Source: https://marsdawn.southern-light.dev/es/cli/
 
 La herramienta de línea de comandos gratuita `marsdawn`: exporta Markdown a PDF desde una shell o un agente LLM y, si tienes instalada la app MarsDawn, abre archivos en ella.
 
-**marsdawn es gratis y se distribuye por separado del Mac App Store.** Instálalo con Homebrew: en una Mac con chip de Apple llega listo para usar. `export` funciona por sí solo; `open` necesita la app MarsDawn.
+**marsdawn es gratis y se distribuye por separado del Mac App Store.** Instálalo con Homebrew: en una Mac con chip de Apple llega listo para usar. `export` funciona por sí solo; `open` necesita la app MarsDawn. ¿Buscas la app para Mac? [Instálala con Homebrew y mas](#mac-app).
 
 ¿Llamas a marsdawn desde un agente de IA o un script? Consulta [marsdawn para agentes](/es/cli/agents/) para ver la salida JSON, sus esquemas y todos los códigos de salida, o [el servidor MCP](/es/cli/mcp/) si tu agente llama a herramientas por MCP.
 
@@ -23256,6 +24339,19 @@ swift build -c release --product marsdawn
 ```
 
 Revisa qué versión tienes con `marsdawn --version`.
+
+## Instala la app MarsDawn con Homebrew y mas
+
+`brew install marsdawn` instala la herramienta de línea de comandos, no la app. La app para Mac está en el Mac App Store, y con [mas](https://github.com/mas-cli/mas) puedes obtenerla desde la terminal:
+
+```
+brew install mas
+sudo mas get 6812925073
+```
+
+Primero inicia sesión en el App Store con tu cuenta de Apple; `sudo` te pedirá la contraseña de inicio de sesión de tu Mac. Esto instala la versión del App Store en `/Applications/MarsDawn.app`. Requiere macOS 26 o posterior, y las actualizaciones llegan por el App Store.
+
+La descarga es gratuita. La primera vez que abras MarsDawn, puedes comenzar la prueba gratuita de 14 días, con todas las funciones disponibles; para seguir usándolo después, desbloquéalo una sola vez. No hay suscripción. [Cómo funciona](/es/pay-once/)
 
 ## Comandos
 
@@ -25465,7 +26561,7 @@ iPhone과 iPad에서는 읽기 전용이며, Markdown, 텍스트, PDF, JSON, YAM
 
 소스 옆 미리보기에서 다이어그램이 그려지고 코드가 하이라이트됩니다.
 
-### [PDF 내보내기](/ko/pdf/)
+### [프린트 및 PDF](/ko/pdf/)
 
 ![페이지 상단: 제목, 짧은 문단, 순서도.](https://marsdawn.southern-light.dev/assets/screens/card-pdf-665.png)
 
@@ -25502,6 +26598,8 @@ brew install redtear1115/tap/marsdawn
 - `marsdawn export`는 Markdown 파일을 MarsDawn의 미리보기처럼 렌더링된 PDF로 만듭니다. 앱은 필요 없습니다.
 - `marsdawn open`은 검토할 수 있도록 MarsDawn 앱에서 파일을 엽니다.
 - `--json`은 스크립트와 에이전트가 파싱할 수 있는 결과를 돌려줍니다.
+
+위 명령으로 설치되는 것은 명령줄 도구입니다. Homebrew로 Mac 앱을 설치하는 방법은 [여기](/ko/cli/#mac-app)에서 확인하세요.
 
 [명령줄](/ko/cli/) · [에이전트를 위한 marsdawn](/ko/cli/agents/) · [에이전트 스킬](/ko/cli/skill/) · [MCP 서버](/ko/cli/mcp/)
 
@@ -25671,19 +26769,19 @@ Markdown 파일을 열면 렌더링된 페이지가 소스 옆에 나타납니�
 
 페이지를 프린트하거나 모두에게 같은 PDF를 보내면, 한 화면을 함께 보는 대신 테이블 전체가 같은 문서로 작업할 수 있습니다. 같은 파일을 가진 사람은 페이지 나눔도 같으므로 ‘3쪽의 표’가 모두에게 같은 것을 가리킵니다. 그다음 사람들이 결정 사항을 프린트한 종이나 메모에 적습니다. 회의 메모 템플릿은 결정 사항으로 시작하고 각 실행 항목에 담당자를 둡니다.
 
-[PDF 내보내기](/ko/pdf/) · [회의록 템플릿](/ko/templates/meeting-notes/)
+[프린트 및 PDF](/ko/pdf/) · [회의록 템플릿](/ko/templates/meeting-notes/)
 
 ### 펜으로 읽기
 
 펜으로 밑줄을 긋고 여백에 적어 가며 읽어야 머리에 잘 남는 사람도 있습니다. 문서를 프린트해서 종이 위에서 그렇게 하세요. MarsDawn에는 자체 주석 도구가 없으니, PDF에 표시하고 싶다면 이미 쓰고 있는 PDF 앱을 사용하세요.
 
-[PDF 내보내기](/ko/pdf/)
+[프린트 및 PDF](/ko/pdf/)
 
 ### 종이 기록
 
 아직도 종이로 보관하는 분야가 있으며, 회계가 그 예입니다. MarsDawn은 보관이나 규정 준수에 대해 아무것도 주장하지 않습니다. 하는 일은 깔끔하게 페이지가 나뉜 페이지를 프린트하고 내보내는 것입니다. 다이어그램이 그려지고, 짧은 코드 블록은 잘리지 않으며, 테마의 라이트 색상이 쓰입니다. 종이가 여전히 기록인 곳에서 사용하세요.
 
-[PDF 내보내기](/ko/pdf/)
+[프린트 및 PDF](/ko/pdf/)
 
 ### Markdown을 쓰지 않는 사람에게 전달하기
 
@@ -25755,7 +26853,7 @@ KaTeX 구문으로 쓴 수식은 미리보기와 훑어보기에 그려지고, �
 
 파일 ▸ 프린트… 또는 파일 ▸ PDF로 내보내기… 메뉴를 선택하면 ‘프린트 및 내보내기’가 열려 페이지를 미리 볼 수 있습니다. 레이아웃은 ‘문서’, 표지·목차·PDF 책갈피가 있는 ‘설명서’, 메모 칸이 있는 ‘프린트물’ 중에서 고른 뒤 프린트하거나 저장합니다. Mermaid 다이어그램이 그려지고, 코드는 구문 강조를 유지하며, 페이지 나눔은 제목을 해당 절에서 떼어 놓거나 짧은 코드 블록이나 다이어그램을 반으로 자르지 않도록 피합니다. PDF에는 항상 테마의 라이트 색상이 쓰입니다.
 
-[PDF 내보내기](/ko/pdf/)
+[프린트 및 PDF](/ko/pdf/)
 
 ![MarsDawn에서 내보낸 PDF를 페이지 축소판과 함께 PDF 뷰어로 연 모습.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -25951,30 +27049,54 @@ MarsDawn의 잠금을 해제하기 전까지는 그 안에서 문서를 읽거�
 아니요. MarsDawn은 계정을 만들라고 요구하지 않습니다.
 ---
 
-## PDF 내보내기
+## 프린트 및 PDF
 
 Source: https://marsdawn.southern-light.dev/ko/pdf/
 
-# PDF가 내가 쓴 페이지 그대로 보입니다.
+# 프린트하거나 PDF로 저장하세요
 
-테마의 라이트 색상으로 PDF로 내보내거나 프린트하세요. 다이어그램과 하이라이트된 코드가 그대로 담기고, 페이지 나눔은 함께 있어야 할 것을 떼어 놓지 않습니다.
+MarsDawn은 Markdown을 프린트하거나 PDF로 저장합니다. 테마의 라이트 색상을 쓰며, 먼저 페이지를 미리 보고 레이아웃을 고를 수 있습니다.
 
-![MarsDawn에서 내보낸 PDF를 페이지 축소판과 함께 PDF 뷰어로 연 모습.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![“프린트 및 내보내기”: 순서도·코드 미리보기, 레이아웃 카드 3개, “프린트…”·“PDF로 저장…” 버튼.](https://marsdawn.southern-light.dev/assets/screens/06-print-export-868.png)
 
 이 스크린샷의 내용:
 
-1. Mermaid 다이어그램이 PDF 안에 그려집니다.
-2. 코드는 하이라이트를 유지합니다.
+1. 먼저 페이지 미리보기.
+2. 레이아웃 고르기.
+3. 프린트 또는 PDF로 저장.
 
-## 무슨 뜻인가요
+## 먼저 미리 보고 결정하세요
 
-- Mermaid 다이어그램이 PDF 안에 그려집니다.
+1. **미리보기 열기.** “파일 ▸ 프린트…”나 “파일 ▸ PDF로 내보내기…”를 고르면 “프린트 및 내보내기”가 열립니다.
+2. **레이아웃 고르기.** 미리보기에서 페이지를 확인한 뒤 ‘문서’, ‘설명서’, ‘프린트물’ 중에서 고릅니다.
+3. **프린트 또는 저장.** “프린트…”를 클릭하거나, 파일로 남기려면 “PDF로 저장…”을 클릭합니다.
+
+## 세 가지 레이아웃
+
+어떤 레이아웃이든 프린트하거나 PDF로 저장할 수 있습니다.
+
+![문서 레이아웃 1쪽: 제목, 문단, 순서도, 코드 블록, 표.](/assets/cli/layout-document.png)
+
+**문서.** 미리보기와 같은 페이지, 자동 페이지 나누기.
+
+![설명서 레이아웃의 목차 페이지. 제목과 페이지 번호가 나열되어 있음.](/assets/cli/layout-handbook-contents.png)
+
+**설명서.** 표지, 페이지 번호가 있는 목차, 장마다 새 페이지.
+
+![프린트물 레이아웃 1쪽: 왼쪽에 내용, 오른쪽에 빈 메모 공간, 아래에 바닥글.](/assets/cli/layout-handout.png)
+
+**프린트물.** 오른쪽 1/3에 메모 공간, 바닥글에 파일 이름·날짜·페이지 번호.
+
+## 페이지에 담기는 것
+
+- Mermaid 다이어그램이 페이지 안에 그려집니다.
 - 코드 블록은 구문 하이라이트를 유지합니다.
 - 페이지 나눔은 제목이 페이지 맨 아래에 홀로 남거나 코드와 다이어그램이 갈라지지 않도록 합니다.
-- 어떤 레이아웃에서든 됩니다. 소스만 보이는 상태에서도 내보낼 수 있습니다.
 - 프린트하거나 내보내기 전에 페이지를 미리 보고 레이아웃을 고릅니다. ‘문서’, 표지와 목차가 있는 ‘설명서’, 메모 칸이 있는 ‘프린트물’ 중 하나입니다.
 
-무료 [marsdawn 명령줄 도구](/ko/cli/)도 같은 내보내기 엔진을 쓰므로, 스크립트나 AI 에이전트도 같은 PDF를 얻습니다.
+iPhone과 iPad에서는 1.0.2 버전부터 Markdown 문서를 프린트할 수 있습니다.
+
+무료 [marsdawn 명령줄 도구](/ko/cli/)는 같은 내보내기 엔진이라 스크립트·AI 에이전트도 같은 PDF를 얻습니다.
 ---
 
 ## Mac 앱
@@ -26079,6 +27201,10 @@ macOS 버전과 MarsDawn 버전(MarsDawn › MarsDawn에 관하여)을 함께 �
 ### MarsDawn을 사용하려면 무엇이 필요합니까?
 
 macOS 26 Tahoe 이상이 설치된 Apple 실리콘 또는 Intel 기반 Mac이 필요합니다.
+
+### Homebrew로 MarsDawn을 설치할 수 있습니까?
+
+예, Mac App Store를 통해 설치할 수 있습니다. `brew install mas`를 실행한 다음 `sudo mas get 6812925073`을 실행하세요. `brew install marsdawn`은 다른 것으로, 앱이 아니라 명령줄 도구를 설치합니다.
 
 ### 편집기와 미리보기는 어떻게 전환합니까?
 
@@ -26228,6 +27354,8 @@ MarsDawn은 Mac용 Markdown 편집기입니다. Mac App Store에서 무료로 �
 
 [Mac App Store에서 MarsDawn 무료로 다운로드](https://apps.apple.com/app/id6812925073)
 
+터미널이 편하다면 [Homebrew와 mas로 설치하는 방법](/ko/cli/#mac-app)도 있습니다.
+
 `.md` 파일을 열고 원본 옆에서 렌더링된 페이지를 읽으세요.
 
 - 입력하는 동안 미리보기가 업데이트되고, 두 패널이 함께 스크롤됩니다.
@@ -26264,7 +27392,7 @@ open notes.pdf
 
 ### .md 파일을 PDF로 바꿀 수 있나요?
 
-네. MarsDawn에서 “파일 ▸ PDF로 내보내기…”(⌥⌘E) 또는 “파일 ▸ 프린트…”를 선택하면, 페이지가 나뉘고 다이어그램이 그려지며 코드는 강조 표시된 채로, 테마의 라이트 색상으로 출력됩니다. 앱이 없어도 무료 `marsdawn export` 명령줄 도구가 같은 PDF를 만듭니다: `marsdawn export notes.md`. [PDF 내보내기](/ko/pdf/)와 [Markdown을 PDF로](/ko/markdown-to-pdf/)를 참고하세요.
+네. MarsDawn에서 “파일 ▸ PDF로 내보내기…”(⌥⌘E) 또는 “파일 ▸ 프린트…”를 선택하면, 페이지가 나뉘고 다이어그램이 그려지며 코드는 강조 표시된 채로, 테마의 라이트 색상으로 출력됩니다. 앱이 없어도 무료 `marsdawn export` 명령줄 도구가 같은 PDF를 만듭니다: `marsdawn export notes.md`. [프린트 및 PDF](/ko/pdf/)와 [Markdown을 PDF로](/ko/markdown-to-pdf/)를 참고하세요.
 
 ### AI 에이전트가 쓴 .md 파일도 열 수 있나요?
 
@@ -26275,6 +27403,7 @@ open notes.pdf
 - 명령줄 도구의 모든 옵션: [명령줄](/ko/cli/).
 - MarsDawn이 하지 않는 일: [목록](/ko/limits/).
 - VS Code, 브라우저, Claude Desktop에서 Markdown을 읽는 경우: [비교해 보기](/ko/vs/markdown-preview-tools/).
+- HackMD에 보관 중인 노트: [HackMD에서 Mac으로](/ko/from-hackmd/).
 - Markdown 파일 속 다이어그램: [Mac에서 Mermaid 미리보기](/ko/mermaid-preview-mac/).
 
 ---
@@ -26326,7 +27455,7 @@ Mermaid가 다이어그램을 그리지 못하면, 미리보기에 그 다이어
 ## 다음
 
 - 이미 잘 그려지는 다이어그램에서 시작하기: [순서도 템플릿](/ko/templates/flowchart/).
-- 내보내기: [PDF 내보내기](/ko/pdf/). 스크립트에서 내보내려면 [명령줄](/ko/cli/).
+- 내보내기: [프린트 및 PDF](/ko/pdf/). 스크립트에서 내보내려면 [명령줄](/ko/cli/).
 - 파일을 어떻게 여는지 모르겠다면? [Mac에서 .md 파일 여는 방법](/ko/view-markdown-on-mac/).
 
 ## Mac에서 사용해 보세요
@@ -26439,6 +27568,109 @@ MarsDawn이 접근할 수 있는 git 체크아웃이나 사이드바 폴더 안�
 
 ---
 
+## HackMD에서 Mac으로
+
+Source: https://marsdawn.southern-light.dev/ko/from-hackmd/
+
+# HackMD에서 Mac으로
+
+노트는 이미 Markdown이므로 변환할 필요가 없습니다. 옮길 양에 맞춰 방법을 고르세요. 이미지는 따로 처리해야 하니, HackMD에서 무엇이든 삭제하기 전에 ‘이미지’ 부분을 읽어 보세요.
+
+이 페이지는 2026년 11월에 HackMD 무료 계정으로 확인한 내용입니다. HackMD는 바뀔 수 있으며, 유료 요금제와 팀 워크스페이스는 확인하지 않았습니다.
+
+| 하고 싶은 일 | 방법 |
+|---|---|
+| 노트를 모두 옮기기 | 모든 노트 다운로드 |
+| GitHub에 있는 노트 옮기기 | 저장소 clone |
+| 한두 개만 옮기기 | 노트 하나 다운로드 |
+
+## 모든 노트 다운로드
+
+HackMD의 노트 설정에 Download all notes가 있습니다. 개인 공간과 팀 공간 모두에서 쓸 수 있습니다. 노트마다 .md 파일이 하나씩 든 .zip 파일 하나를 받게 되며, 파일 이름은 노트 제목입니다.
+
+- 폴더는 유지되지 않습니다. 모든 노트가 최상위에 들어갑니다.
+- 이미지는 포함되지 않습니다. .md 안에는 URL이 그대로 남습니다.
+- 제목과 태그를 포함하는 옵션은 기본으로 켜져 있으며, 각 노트 맨 앞에 front matter 블록을 추가합니다. 끄면 노트 원문과 같습니다.
+
+압축을 푼 뒤 MarsDawn에서 파일 ▸ 폴더 열기…를 선택해 그 폴더를 엽니다.
+
+## 저장소 clone
+
+HackMD의 GitHub 동기화는 노트 하나를 파일 하나에 연결합니다. 푸시한 노트는 이미 저장소에 있습니다. clone한 뒤 파일 ▸ 폴더 열기…로 열면 사이드바에 저장소와 브랜치가 표시됩니다.
+
+아직 GitHub에 연결하지 않은 노트는 옮기려고 일부러 연결할 필요가 없습니다. 노트마다 따로 연결해야 하고, 무료 요금제의 푸시는 한 달에 20번까지입니다. 무료 개인 계정에서는 워크스페이스 전체를 한 번에 푸시하는 방법을 찾지 못했습니다.
+
+옮긴 뒤에는 저장소를 원본으로 삼으세요. HackMD에서 푸시하면 GitHub의 내용을 그대로 덮어씁니다. GitHub 쪽이 더 최신이어도 마찬가지이며, 경고도 없습니다.
+
+## 노트 하나 다운로드
+
+노트 메뉴에서 .md나 .html로 내려받을 수 있습니다. .md를 선택해 MarsDawn에서 여세요.
+
+## 이미지
+
+HackMD에 올린 이미지의 주소는 `https://hackmd.io/_uploads/...`입니다. 누가 볼 수 있는지는 노트의 권한을 따릅니다.
+
+| 노트 | Mac으로 옮긴 뒤 | 처리 방법 |
+|---|---|---|
+| 공개 | 이미지를 HackMD에서 불러옵니다 | 미리보기에서 이미지 불러오기를 클릭하거나, 설정 ▸ 이미지 ▸ 원격 이미지 자동으로 불러오기를 켜세요 |
+| 비공개 | MarsDawn이 HackMD에 로그인되어 있지 않아 이미지가 오류를 냅니다 | 로그인한 브라우저에서 이미지를 저장해 .md 옆에 두고 경로를 바꾸세요. 모두가 봐도 된다면 노트를 공개로 바꿔도 됩니다 |
+
+- **오래된 노트** 의 이미지는 `i.imgur.com` 주소일 수 있습니다.
+- **노트를 삭제하면 이미지도 쓸 수 없게 됩니다.** 주소가 더 이상 열리지 않으니, 이미지를 먼저 옮기세요.
+
+파일 옆의 이미지를 MarsDawn이 읽지 못하면, 미리보기의 버튼으로 그 폴더에 접근을 허용하세요.
+
+## 어떻게 보이나요
+
+HackMD 문법은 대부분 그대로 읽을 수 있습니다. `==강조==`, `^위첨자^`, `~아래첨자~`, `[TOC]`, `=300x200` 같은 이미지 크기, Mermaid, KaTeX를 지원합니다. `{%youtube %}`는 링크로 표시됩니다. HackMD처럼 모든 줄바꿈을 유지하려면 설정 ▸ 화면 모드 ▸ 단일 줄 바꿈 유지를 켜세요.
+
+`:::` 블록도 지원합니다. `:::info`, `:::success`, `:::warning`, `:::danger`는 색 막대와 제목이 있는 블록으로 표시되며, 제목 기본값은 참고, 팁, 경고, 위험입니다. 이름 뒤에 제목을 직접 쓰면 그 제목이 쓰입니다. `:::spoiler`는 클릭하면 열리는 접을 수 있는 블록으로 표시됩니다. 다른 이름의 `:::` 블록이나 닫는 `:::` 줄이 없는 블록은 쓴 그대로 표시됩니다.
+
+몇 가지는 다르게 보입니다.
+
+- `++밑줄++`과 `:sparkles:` 같은 이모지 코드는 쓴 그대로 표시됩니다.
+- `{%hackmd id %}`는 펼쳐지지 않습니다.
+- `<i class="fa ...">` 아이콘은 표시되지 않습니다.
+
+## 스크립트로: hackmd-cli
+
+`hackmd-cli`에는 모든 노트를 한 번에 내보내는 명령이 없습니다. 한 번에 노트 하나를 내보내 화면에 출력하므로, 노트 목록을 뽑은 뒤 반복문을 돌려야 합니다. Node.js, `jq`, HackMD 설정에서 만든 API 토큰이 필요합니다. 스크립트가 필요 없다면 Download all notes가 더 간단합니다.
+
+```
+npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=<내 토큰>
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" > "$id.md"
+done
+```
+
+- **폴더는 옮겨지지 않습니다.** 노트 목록에 폴더 정보가 없어서 모든 파일이 한곳에 들어갑니다.
+- **이미지는 `hackmd.io` 링크 그대로입니다.** 위의 ‘이미지’ 부분대로 처리하세요.
+- **파일 이름은 노트 ID입니다.** 제목이 아닙니다.
+- **무료 요금제의 API는 30일에 400번까지입니다.** 목록에 1번, 노트 하나마다 1번 씁니다.
+
+노트가 적은 계정에서만 시도해 봤기 때문에, 목록이 아주 길 때 어떻게 되는지는 모릅니다. 끝나면 HackMD 설정에서 토큰을 삭제하세요.
+
+## 함께 쓰려면
+
+MarsDawn에는 여러 사람이 동시에 편집하는 기능이 없습니다. 함께 써야 한다면 HackMD를 계속 쓰세요. 팀이 문서를 git으로 관리한다면 각자 자기 MarsDawn으로 같은 저장소를 열어 같은 문서를 함께 완성할 수 있습니다. 팀이 git으로 문서 함께 검토하기를 참고하세요.
+
+## 자주 묻는 질문
+
+### HackMD 노트를 한 번에 모두 내려받을 수 있나요?
+
+네. Download all notes를 쓰면 .md 파일이 든 .zip 파일 하나를 받습니다. 폴더는 유지되지 않고 이미지도 포함되지 않습니다.
+
+### MarsDawn에서 이미지가 보이지 않는 이유는 무엇인가요?
+
+MarsDawn은 웹 이미지를 기본으로 불러오지 않습니다. 이미지 불러오기를 클릭하세요. 비공개 노트의 이미지는 불러올 수 없으니 파일 옆에 저장하세요.
+
+### HackMD를 꼭 떠나야 하나요?
+
+아닙니다. 함께 쓸 때는 HackMD가 여전히 더 좋은 선택입니다. MarsDawn은 Mac에서 읽고 검토하기 위한 앱입니다.
+
+---
+
 ## Markdown을 PDF로
 
 Source: https://marsdawn.southern-light.dev/ko/markdown-to-pdf/
@@ -26525,7 +27757,7 @@ marsdawn export plan.md --theme classic --paper letter -o handout.pdf
 
 ## 다음
 
-- MarsDawn 앱에서는 파일 ▸ 프린트… 메뉴로 같은 레이아웃을 먼저 미리 본 뒤 프린트하거나 저장할 수 있습니다: [PDF 내보내기](/ko/pdf/).
+- MarsDawn 앱에서는 파일 ▸ 프린트… 메뉴로 같은 레이아웃을 먼저 미리 본 뒤 프린트하거나 저장할 수 있습니다: [프린트 및 PDF](/ko/pdf/).
 - 모든 옵션과 출력되는 JSON: [명령줄](/ko/cli/).
 - 코딩 에이전트가 이 일을 대신하게 하려면 `marsdawn skill --install`을 실행해 [marsdawn 에이전트 스킬](/ko/cli/skill/)을 추가하세요.
 - 네 가지 미리보기 테마와 PDF 내보내기의 방향: [미리보기 테마와 PDF 내보내기](/ko/themes/).
@@ -26832,7 +28064,7 @@ Source: https://marsdawn.southern-light.dev/ko/cli/
 
 무료 `marsdawn` 명령줄 도구입니다. 셸이나 LLM 에이전트에서 Markdown을 PDF로 내보내고, MarsDawn 앱이 설치되어 있으면 앱에서 파일을 열 수 있습니다.
 
-**marsdawn은 무료이며 Mac App Store와 별도로 배포됩니다.** Homebrew로 설치하세요. Apple 실리콘 Mac에서는 바로 실행할 수 있는 상태로 설치됩니다. `export`는 단독으로 작동하고, `open`은 MarsDawn 앱이 필요합니다.
+**marsdawn은 무료이며 Mac App Store와 별도로 배포됩니다.** Homebrew로 설치하세요. Apple 실리콘 Mac에서는 바로 실행할 수 있는 상태로 설치됩니다. `export`는 단독으로 작동하고, `open`은 MarsDawn 앱이 필요합니다. Mac 앱을 찾고 계신가요? [Homebrew와 mas로 설치하는 방법](#mac-app)을 확인하세요.
 
 AI 에이전트나 스크립트에서 marsdawn을 호출하나요? JSON 출력과 스키마, 모든 종료 코드는 [에이전트를 위한 marsdawn](/ko/cli/agents/)에서, 에이전트가 MCP로 도구를 호출한다면 [MCP 서버](/ko/cli/mcp/)에서 확인하세요.
 
@@ -26857,6 +28089,19 @@ swift build -c release --product marsdawn
 ```
 
 설치된 버전은 `marsdawn --version`으로 확인할 수 있습니다.
+
+## Homebrew와 mas로 MarsDawn 앱 설치하기
+
+`brew install marsdawn`으로 설치되는 것은 명령줄 도구이며, 앱이 아닙니다. Mac용 앱은 Mac App Store에서 제공되며, [mas](https://github.com/mas-cli/mas)를 쓰면 터미널에서 받을 수 있습니다.
+
+```
+brew install mas
+sudo mas get 6812925073
+```
+
+먼저 App Store에 Apple 계정으로 로그인하세요. `sudo`는 Mac의 로그인 암호를 요청합니다. App Store 버전이 `/Applications/MarsDawn.app`에 설치됩니다. macOS 26 이상이 필요하며, 업데이트는 App Store를 통해 제공됩니다.
+
+무료로 다운로드할 수 있습니다. MarsDawn을 처음 열 때 모든 기능을 쓸 수 있는 14일 무료 체험을 시작할 수 있습니다. 체험이 끝난 뒤에도 계속 쓰려면 한 번만 잠금 해제하면 됩니다. 구독은 없습니다. [이렇게 진행됩니다](/ko/pay-once/)
 
 ## 명령
 

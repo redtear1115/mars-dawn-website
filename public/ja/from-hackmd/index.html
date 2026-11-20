@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HackMD から Mac へ：ノート、画像、GitHub · MarsDawn</title>
+<meta name="description" content="HackMD のノートを .md でダウンロードして、Mac の MarsDawn で読む方法。全ノートのダウンロード、GitHub リポジトリからの移行、画像の扱いをまとめました。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/from-hackmd/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/from-hackmd/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/from-hackmd/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/from-hackmd/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/from-hackmd/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/from-hackmd/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/from-hackmd/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/from-hackmd/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/from-hackmd/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ja/from-hackmd/">
+<link rel="alternate" type="text/markdown" href="/ja/from-hackmd/index.md">
+<meta property="og:title" content="HackMD から Mac へ：ノート、画像、GitHub · MarsDawn">
+<meta property="og:description" content="HackMD のノートを .md でダウンロードして、Mac の MarsDawn で読む方法。全ノートのダウンロード、GitHub リポジトリからの移行、画像の扱いをまとめました。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ja/from-hackmd/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/ja/"}, {"@type": "ListItem", "position": 2, "name": "HackMD から Mac へ", "item": "https://marsdawn.southern-light.dev/ja/from-hackmd/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "HackMD のノートをまとめてダウンロードできますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。Download all notes で、.md が入った .zip を 1 つダウンロードできます。フォルダは保たれず、画像も含まれません。"}}, {"@type": "Question", "name": "MarsDawn で画像が表示されないのはなぜですか？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn は Web の画像を初期状態では読み込みません。「イメージを読み込む」をクリックしてください。非公開のノートの画像は読み込めないので、ファイルの横に保存してください。"}}, {"@type": "Question", "name": "HackMD をやめる必要はありますか？", "acceptedAnswer": {"@type": "Answer", "text": "ありません。一緒に書くなら、HackMD のほうが向いています。MarsDawn は Mac で読んでレビューするためのアプリです。"}}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ja/" aria-label="MarsDawn ホーム">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="site-nav" aria-label="メインナビゲーション">
+    <ul class="site-nav-wide">
+      <li><a href="/ja/features/">機能</a></li>
+      <li><a href="/ja/cli/">エージェント</a></li>
+      <li><a href="/ja/themes/">テーマ</a></li>
+      <li><a href="/ja/vs/">比較</a></li>
+      <li><a href="/ja/support/">サポート</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>メニュー</summary>
+      <ul>
+        <li><a href="/ja/features/">機能</a></li>
+        <li><a href="/ja/cli/">エージェント</a></li>
+        <li><a href="/ja/themes/">テーマ</a></li>
+        <li><a href="/ja/vs/">比較</a></li>
+        <li><a href="/ja/support/">サポート</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="言語">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/from-hackmd/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/from-hackmd/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/from-hackmd/" hreflang="ja" aria-current="true" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/from-hackmd/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary>その他</summary>
+      <ul>
+        <li><a href="/de/from-hackmd/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/from-hackmd/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/from-hackmd/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/from-hackmd/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>日本語</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/from-hackmd/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/from-hackmd/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/from-hackmd/" hreflang="ja" aria-current="true" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/from-hackmd/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/from-hackmd/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/from-hackmd/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/from-hackmd/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/from-hackmd/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>HackMD から Mac へ</h1>
+  <p>ノートはもともと Markdown なので、変換はいりません。移す量に合わせて、方法を選んでください。画像は別の作業が必要です。HackMD の内容を削除する前に「画像」の節を読んでください。</p>
+</section>
+<p>このページは、2026年11月に HackMD の無料アカウントで確かめた内容です。HackMD は変わることがあります。有料プランとチームワークスペースは試していません。</p>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">やりたいこと</th><th scope="col">方法</th></tr></thead>
+<tbody>
+  <tr><th scope="row">ノートをすべて移す</th><td>すべてのノートをダウンロード</td></tr>
+  <tr><th scope="row">GitHub にあるノートを移す</th><td>リポジトリを clone</td></tr>
+  <tr><th scope="row">1、2 件だけ移す</th><td>1 件ずつダウンロード</td></tr>
+</tbody>
+</table></div>
+<h2 id="download-all-notes">すべてのノートをダウンロード</h2>
+<p>HackMD のノート設定に Download all notes があります。個人とチームのどちらのワークスペースでも使えます。ノートごとの .md が 1 つの .zip にまとまり、ファイル名はノートのタイトルになります。</p>
+<ul>
+  <li>フォルダは保たれません。すべてのノートが最上位に入ります。</li>
+  <li>画像は含まれません。.md の中は URL のままです。</li>
+  <li>タイトルとタグを含めるオプションは初期状態でオンで、各ノートの先頭に front matter を追加します。オフにすると、ノートの原文のままになります。</li>
+</ul>
+<p>展開したら、MarsDawn で「ファイル ▸ フォルダを開く…」を選び、そのフォルダを開きます。</p>
+<h2 id="clone-the-repo">リポジトリを clone</h2>
+<p>HackMD の GitHub 同期は 1 つのノートを 1 つのファイルに対応させます。プッシュ済みのノートは、すでにリポジトリにあります。clone して「ファイル ▸ フォルダを開く…」で開くと、サイドバーにリポジトリとブランチが表示されます。</p>
+<p>まだ GitHub につないでいないノートは、移行のためにつなぐ必要はありません。ノートごとに設定が必要で、無料プランのプッシュは月 20 回までです。無料の個人アカウントでは、ワークスペース全体を一度にプッシュする入口は見当たりませんでした。</p>
+<p>移行したあとは、リポジトリを正本にしてください。HackMD からプッシュすると、GitHub の内容をそのまま上書きします。GitHub のほうが新しくても同じで、警告は出ません。</p>
+<h2 id="download-one-note">1 件ずつダウンロード</h2>
+<p>ノートのメニューから .md か .html をダウンロードできます。.md を選び、MarsDawn で開きます。</p>
+<h2 id="images">画像</h2>
+<p>HackMD にアップロードした画像の URL は <code>https://hackmd.io/_uploads/...</code> です。誰が見られるかは、ノートの権限に従います。</p>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">ノート</th><th scope="col">Mac に移したあと</th><th scope="col">対処</th></tr></thead>
+<tbody>
+  <tr><th scope="row">公開</th><td>画像は HackMD から読み込まれます</td><td>プレビューで「イメージを読み込む」をクリックするか、「設定 ▸ イメージ ▸ リモートイメージを自動的に読み込む」をオンにします</td></tr>
+  <tr><th scope="row">非公開</th><td>MarsDawn は HackMD にログインしていないので、画像はエラーになります</td><td>ログインしたブラウザで画像を保存し、.md の横に置いてパスを書き換えます。全員に見られてもよければ、ノートを公開にする方法もあります</td></tr>
+</tbody>
+</table></div>
+<ul>
+  <li><strong>古いノート</strong> の画像は <code>i.imgur.com</code> の URL のことがあります。</li>
+  <li><strong>ノートを削除すると、画像も使えなくなります。</strong> URL が開けなくなるので、画像を移してから削除してください。</li>
+</ul>
+<p>ファイルの横の画像を MarsDawn が読めないときは、プレビューのボタンでそのフォルダへのアクセスを許可します。</p>
+<h2 id="how-your-notes-will-look">ノートの見え方</h2>
+<p>HackMD の記法はほとんどそのまま読めます。<code>==ハイライト==</code>、<code>^上付き^</code>、<code>~下付き~</code>、<code>[TOC]</code>、<code>=300x200</code> のような画像サイズ、Mermaid、KaTeX に対応しています。<code>{%youtube %}</code> はリンクになります。HackMD と同じようにすべての改行を保つには、「設定 ▸ 外観モード ▸ 単一の改行を保持」をオンにします。</p>
+<p><code>:::</code> ブロックにも対応しています。<code>:::info</code>、<code>:::success</code>、<code>:::warning</code>、<code>:::danger</code> は、色付きのバーと見出しが付いたブロックとして表示されます。見出しのデフォルトはメモ、ヒント、警告、危険で、名前のあとに自分で見出しを書けば、その見出しが使われます。<code>:::spoiler</code> は、クリックすると開く折りたたみ可能なブロックとして表示されます。ほかの名前の <code>:::</code> ブロックや、終わりの <code>:::</code> がないものは、書いたまま表示されます。</p>
+<p>いくつか違う点があります。</p>
+<ul>
+  <li><code>++下線++</code> と <code>:sparkles:</code> のような絵文字コードは、書いたまま表示されます。</li>
+  <li><code>{%hackmd id %}</code> は展開されません。</li>
+  <li><code>&lt;i class="fa ..."&gt;</code> のアイコンは表示されません。</li>
+</ul>
+<h2 id="for-scripts-hackmd-cli">スクリプトで：hackmd-cli</h2>
+<p><code>hackmd-cli</code> には、すべてを一度に書き出すコマンドはありません。1 回に 1 件を書き出して表示するので、ノートを一覧にしてからループで回します。Node.js、<code>jq</code>、HackMD の設定で作った API トークンが必要です。スクリプトが必要なければ、Download all notes のほうが簡単です。</p>
+<pre tabindex="0" role="region" aria-labelledby="for-scripts-hackmd-cli"><code>npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=&lt;あなたのトークン&gt;
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" &gt; "$id.md"
+done</code></pre>
+<ul>
+  <li><strong>フォルダは引き継がれません。</strong> ノートの一覧にはどのフォルダにあるかが含まれないので、ファイルはすべて同じ場所に入ります。</li>
+  <li><strong>画像は <code>hackmd.io</code> のリンクのままです。</strong> 上の「画像」の節のとおりに対処してください。</li>
+  <li><strong>ファイル名はノートの ID です。</strong> タイトルではありません。</li>
+  <li><strong>無料プランの API は 30 日で 400 回までです。</strong> 一覧に 1 回、ノート 1 件ごとに 1 回使います。</li>
+</ul>
+<p>ノートが少ないアカウントでしか試していないので、一覧がとても長いときの動きはわかりません。終わったら、HackMD の設定でトークンを削除してください。</p>
+<h2 id="writing-together">一緒に書くなら</h2>
+<p>MarsDawn に複数人の同時編集はありません。共同で書くなら、HackMD を使い続けてください。チームが書類を git で管理しているなら、それぞれが自分の MarsDawn で同じリポジトリを開いて、ひとつの書類を一緒に仕上げられます。チームで git を使って書類をレビューするをご覧ください。</p>
+<section class="faq">
+<h2 id="questions">よくある質問</h2>
+<h3>HackMD のノートをまとめてダウンロードできますか？</h3>
+<p>はい。Download all notes で、.md が入った .zip を 1 つダウンロードできます。フォルダは保たれず、画像も含まれません。</p>
+<h3>MarsDawn で画像が表示されないのはなぜですか？</h3>
+<p>MarsDawn は Web の画像を初期状態では読み込みません。「イメージを読み込む」をクリックしてください。非公開のノートの画像は読み込めないので、ファイルの横に保存してください。</p>
+<h3>HackMD をやめる必要はありますか？</h3>
+<p>ありません。一緒に書くなら、HackMD のほうが向いています。MarsDawn は Mac で読んでレビューするためのアプリです。</p>
+</section>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="サイトナビゲーション">
+    <h2 class="footer-nav-title">サイトナビゲーション</h2>
+    <section aria-labelledby="footer-product">
+      <h3 id="footer-product">製品</h3>
+      <ul>
+        <li><a href="/ja/features/">機能一覧</a></li>
+        <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
+        <li><a href="/ja/native/">Mac アプリ</a></li>
+        <li><a href="/ja/pdf/">プリントと PDF</a></li>
+        <li><a href="/ja/limits/">MarsDawn ができないこと</a></li>
+        <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
+        <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>
+        <li><a href="/ja/changelog/">更新履歴</a></li>
+        <li><a href="/ja/roadmap/">ロードマップ</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h3 id="footer-agents">エージェントと CLI</h3>
+      <ul>
+        <li><a href="/ja/cli/">コマンドライン</a></li>
+        <li><a href="/ja/cli/agents/">AI エージェント向け marsdawn</a></li>
+        <li><a href="/ja/cli/mcp/">MCP サーバー</a></li>
+        <li><a href="/ja/cli/skill/">エージェント用スキル</a></li>
+        <li><a href="/ja/agent-transparency/">エージェントの透明性</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h3 id="footer-guides">ガイド</h3>
+      <ul>
+        <li><a href="/ja/view-markdown-on-mac/">Mac で .md ファイルを開く方法</a></li>
+        <li><a href="/ja/markdown-to-pdf/">Markdown から PDF へ</a></li>
+        <li><a href="/ja/mermaid-preview-mac/">Mac で Mermaid をプレビューする</a></li>
+        <li><a href="/ja/reading-agent-output/">エージェントが返してくるものを読む</a></li>
+        <li><a href="/ja/reviewing-ai-output/">AI の出力を人が確認する理由</a></li>
+        <li><a href="/ja/reviewing-agent-plans/">エージェントの計画をレビューする</a></li>
+        <li><a href="/ja/token-efficient-review/">トークンを抑えたレビュー</a></li>
+        <li><a href="/ja/sharing-exported-pdfs/">書き出した PDF を共有する</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h3 id="footer-compare">比較</h3>
+      <ul>
+        <li><a href="/ja/vs/">MarsDawn と比較：VS Code プレビュー、Obsidian、QLMarkdown、LynxOffice</a></li>
+        <li><a href="/ja/vs/macmd-viewer/">MacMD Viewer と MarsDawn</a></li>
+        <li><a href="/ja/vs/markdown-preview-tools/">他のツールで Markdown を見る場合との比較</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h3 id="footer-themes">テーマ</h3>
+      <ul>
+        <li><a href="/ja/themes/">テーマ</a></li>
+        <li><a href="/ja/themes/gallery/">テーマギャラリー</a></li>
+        <li><a href="/ja/themes/new/">テーマを作る</a></li>
+        <li><a href="/ja/themes/agents/">エージェントとテーマを作る</a></li>
+        <li><a href="/ja/templates/">テンプレート</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h3 id="footer-support">サポートと法的情報</h3>
+      <ul>
+        <li><a href="/ja/support/">サポート</a></li>
+        <li><a href="/ja/privacy/">プライバシーポリシー</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button></li>
+      </ul>
+    </section>
+  </nav>
+  <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-from-hackmd&amp;mt=8">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple のロゴ、Mac、iPhone、iPad、iCloud は、米国およびその他の国や地域で登録された Apple Inc. の商標です。App Store および Mac App Store は Apple Inc. のサービスマークです。</p>
+</footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>
+  <p>分析用クッキーを使います。「同意する」を選ぶまで無効です。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">同意しない</button>
+    <button type="button" id="consent-accept" class="consent-btn">同意する</button>
+  </div>
+</div>
+</body>
+</html>

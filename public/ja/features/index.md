@@ -49,19 +49,19 @@ Markdown ファイルを開くと、整形されたページがソースの隣�
 
 ページをプリントするか、同じ PDF を全員に送れば、1つの画面を囲むのではなく、全員が同じ書類で作業できます。同じファイルを持っていれば改ページ位置も同じなので、「3ページの表」は誰にとっても同じものを指します。そのあと、人が決定事項を、プリントした紙の上やメモに書き留めます。会議メモのテンプレートは決定事項から始まり、各アクションアイテムに担当者を置きます。
 
-[PDF 書き出し](/ja/pdf/) · [議事録テンプレート](/ja/templates/meeting-notes/)
+[プリントと PDF](/ja/pdf/) · [議事録テンプレート](/ja/templates/meeting-notes/)
 
 ### ペンで読む
 
 ペンを使うほうが頭に入る人もいます。線を引き、余白に書き込み、記憶に残すためです。書類をプリントして、紙の上でそうしてください。MarsDawn 自体には注釈ツールがないので、PDF に書き込みたい場合は、お使いの PDF アプリを使ってください。
 
-[PDF 書き出し](/ja/pdf/)
+[プリントと PDF](/ja/pdf/)
 
 ### 紙での記録
 
 分野によっては、いまも紙で保管します。会計はその一例です。MarsDawn は保管やコンプライアンスについて何も謳っていません。できるのは、きれいに改ページされたページをプリントして書き出すことです。図は描画され、短いコードブロックは途中で切れず、テーマのライトの配色で出力されます。紙がいまも正式な記録である場面で使ってください。
 
-[PDF 書き出し](/ja/pdf/)
+[プリントと PDF](/ja/pdf/)
 
 ### Markdown を使わない人に渡す
 
@@ -133,7 +133,7 @@ KaTeX の構文で書いた数式は、プレビューとクイックルック�
 
 「ファイル ▸ プリント…」と「ファイル ▸ PDF として書き出す…」は「プリントと書き出し」を開き、ページをプレビューできます。レイアウトは「書類」、表紙・目次・PDF のブックマーク付きの「ハンドブック」、メモ欄付きの「配布資料」から選び、プリントまたは保存します。Mermaid の図は描画され、コードはハイライトを保ち、改ページでは見出しが節から離れたり、短いコードブロックや図が途中で切れたりしないようにします。PDF は常にテーマのライトの配色です。
 
-[PDF 書き出し](/ja/pdf/)
+[プリントと PDF](/ja/pdf/)
 
 ![MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -233,7 +233,7 @@ MarsDawn は無料でダウンロードできます。14日間はすべての機
 - [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): エージェントが書いた Markdown・JSON・YAML を確かめる Mac ネイティブアプリ。ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF。無料で試せて、一度だけ USD 4.99。
 - [あなたの文章は Mac に残ります](https://marsdawn.southern-light.dev/ja/yours/index.md): MarsDawn にはアカウントも同期もクラウドもありません。Markdown 文書はあなたの Mac 上に、選んだファイルとフォルダの中に残ります。
 - [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
-- [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックを分断しないよう配慮されます。
+- [プリントと PDF](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac でプレビューしてから、Markdown をプリントまたは PDF として保存。書類・ハンドブック・配布資料の3つのレイアウトで、図やコードの色も保たれます。
 - [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
 - [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad では編集不可、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
 - [サポート](https://marsdawn.southern-light.dev/ja/support/index.md): macOS 向け Markdown エディタ MarsDawn のヘルプ。
@@ -242,6 +242,7 @@ MarsDawn は無料でダウンロードできます。14日間はすべての機
 - [Mac で Mermaid をプレビューする](https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/index.md): Mac で Mermaid の図を Markdown の隣に描画：リアルタイムプレビュー、クイックルック、PDF 書き出し。図に誤りがあると、エラーとその行が表示されます。
 - [Markdown のクイックルック](https://marsdawn.southern-light.dev/ja/quicklook/index.md): MarsDawn のクイックルックなら、Finder でスペースキーを押すだけで Markdown を描画して表示します。Mermaid 図、KaTeX 数式、ハイライトされたコードにも対応。トライアル終了後も使えます。
 - [AI 用にコピー](https://marsdawn.southern-light.dev/ja/copy-for-ai/index.md): 選択したテキストをファイルパスと行番号ごとコピーして、Claude Code やほかのエージェントに貼り付けます。Mac だけで完結し、IDE もプラグインも要りません。
+- [HackMD から Mac へ](https://marsdawn.southern-light.dev/ja/from-hackmd/index.md): HackMD のノートを .md でダウンロードして、Mac の MarsDawn で読む方法。全ノートのダウンロード、GitHub リポジトリからの移行、画像の扱いをまとめました。
 - [Markdown から PDF へ](https://marsdawn.southern-light.dev/ja/markdown-to-pdf/index.md): 無料の marsdawn コマンドラインツールで、Mac 上の Markdown を PDF に変換します。Homebrew でインストールしてコマンド1つで実行：表、数式、Mermaid、コードに対応。
 - [MarsDawn と比較：VS Code プレビュー、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/ja/vs/index.md): Mac で Markdown を、多くはエージェントが書いたものを読んで確かめる方法を選ぶ人へ。表の各セルは、各社の公式ページか私たちの確認によるもので、いずれも 2026 年 10 月 16 日時点です（MarsDawn の PDF のセルは 2026 年 11 月 7 日に更新）。製品は変わるので、古くなることがあります。誤りに気づいたら、サポートのアドレスまでお知らせください。
 - [MacMD Viewer と MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用の Markdown ビューアで USD 19.99。MarsDawn は編集とプレビューを並べて表示し、14 日間無料、その後 USD 4.99 を一度だけ。項目ごとの比較、出典つき。

@@ -16,6 +16,8 @@ MarsDawn は Mac 向けの Markdown エディタです。Mac App Store から無
 
 [Mac App Store で MarsDawn を無料でダウンロード](https://apps.apple.com/app/id6812925073)
 
+ターミナルを使う場合は、[Homebrew と mas でインストールする方法](/ja/cli/#mac-app)もあります。
+
 `.md` ファイルを開くと、ソースの隣でレンダリングされたページを読めます。
 
 - 入力すると同時にプレビューが更新され、2つのペインは一緒にスクロールします。
@@ -52,7 +54,7 @@ open notes.pdf
 
 ### .md ファイルを PDF にできる？
 
-できます。MarsDawn で「ファイル ▸ PDF として書き出す…」（⌥⌘E）または「ファイル ▸ プリント…」を選ぶと、ページ分けされ、図が描画され、コードはハイライトされたまま、テーマのライトの配色で出力されます。アプリがなくても、無料の `marsdawn export` コマンドラインツールで同じ PDF を作れます：`marsdawn export notes.md`。[PDF 書き出し](/ja/pdf/)と[Markdown から PDF へ](/ja/markdown-to-pdf/)をご覧ください。
+できます。MarsDawn で「ファイル ▸ PDF として書き出す…」（⌥⌘E）または「ファイル ▸ プリント…」を選ぶと、ページ分けされ、図が描画され、コードはハイライトされたまま、テーマのライトの配色で出力されます。アプリがなくても、無料の `marsdawn export` コマンドラインツールで同じ PDF を作れます：`marsdawn export notes.md`。[プリントと PDF](/ja/pdf/)と[Markdown から PDF へ](/ja/markdown-to-pdf/)をご覧ください。
 
 ### AI エージェントが書いた .md ファイルも開ける？
 
@@ -62,6 +64,7 @@ open notes.pdf
 
 - コマンドラインツールのすべてのオプション：[コマンドライン](/ja/cli/)。
 - MarsDawn ができないこと：[一覧はこちら](/ja/limits/)。
+- HackMD に保存しているノート：[HackMD から Mac へ](/ja/from-hackmd/)。
 - Markdown ファイルの中の図：[Mac で Mermaid をプレビューする](/ja/mermaid-preview-mac/)。
 
 ## その他
@@ -70,7 +73,7 @@ open notes.pdf
 - [機能一覧](https://marsdawn.southern-light.dev/ja/features/index.md): Mac ネイティブの Markdown・JSON・YAML エディタ：リアルタイムプレビュー、Mermaid と数式、テーマ、会議や保管に使える PDF とプリントのページ。
 - [あなたの文章は Mac に残ります](https://marsdawn.southern-light.dev/ja/yours/index.md): MarsDawn にはアカウントも同期もクラウドもありません。Markdown 文書はあなたの Mac 上に、選んだファイルとフォルダの中に残ります。
 - [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
-- [PDF 書き出し](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックを分断しないよう配慮されます。
+- [プリントと PDF](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac でプレビューしてから、Markdown をプリントまたは PDF として保存。書類・ハンドブック・配布資料の3つのレイアウトで、図やコードの色も保たれます。
 - [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
 - [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad では編集不可、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
 - [サポート](https://marsdawn.southern-light.dev/ja/support/index.md): macOS 向け Markdown エディタ MarsDawn のヘルプ。
@@ -78,6 +81,7 @@ open notes.pdf
 - [Mac で Mermaid をプレビューする](https://marsdawn.southern-light.dev/ja/mermaid-preview-mac/index.md): Mac で Mermaid の図を Markdown の隣に描画：リアルタイムプレビュー、クイックルック、PDF 書き出し。図に誤りがあると、エラーとその行が表示されます。
 - [Markdown のクイックルック](https://marsdawn.southern-light.dev/ja/quicklook/index.md): MarsDawn のクイックルックなら、Finder でスペースキーを押すだけで Markdown を描画して表示します。Mermaid 図、KaTeX 数式、ハイライトされたコードにも対応。トライアル終了後も使えます。
 - [AI 用にコピー](https://marsdawn.southern-light.dev/ja/copy-for-ai/index.md): 選択したテキストをファイルパスと行番号ごとコピーして、Claude Code やほかのエージェントに貼り付けます。Mac だけで完結し、IDE もプラグインも要りません。
+- [HackMD から Mac へ](https://marsdawn.southern-light.dev/ja/from-hackmd/index.md): HackMD のノートを .md でダウンロードして、Mac の MarsDawn で読む方法。全ノートのダウンロード、GitHub リポジトリからの移行、画像の扱いをまとめました。
 - [Markdown から PDF へ](https://marsdawn.southern-light.dev/ja/markdown-to-pdf/index.md): 無料の marsdawn コマンドラインツールで、Mac 上の Markdown を PDF に変換します。Homebrew でインストールしてコマンド1つで実行：表、数式、Mermaid、コードに対応。
 - [MarsDawn と比較：VS Code プレビュー、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/ja/vs/index.md): Mac で Markdown を、多くはエージェントが書いたものを読んで確かめる方法を選ぶ人へ。表の各セルは、各社の公式ページか私たちの確認によるもので、いずれも 2026 年 10 月 16 日時点です（MarsDawn の PDF のセルは 2026 年 11 月 7 日に更新）。製品は変わるので、古くなることがあります。誤りに気づいたら、サポートのアドレスまでお知らせください。
 - [MacMD Viewer と MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用の Markdown ビューアで USD 19.99。MarsDawn は編集とプレビューを並べて表示し、14 日間無料、その後 USD 4.99 を一度だけ。項目ごとの比較、出典つき。

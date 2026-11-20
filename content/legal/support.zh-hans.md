@@ -16,6 +16,10 @@ macOS Markdown 编辑器 MarsDawn 的使用说明。
 
 macOS 26 Tahoe 或更新版本的 Mac，Apple 芯片或 Intel 皆可。
 
+### 可以用 Homebrew 安装 MarsDawn 吗？
+
+可以，通过 Mac App Store：先运行 `brew install mas`，再运行 `sudo mas get 6812925073`。`brew install marsdawn` 是另一个东西：它装的是命令行工具，不是 app。
+
 ### 怎么切换编辑器与预览？
 
 按 <kbd>⌘1</kbd> 只看源代码、<kbd>⌘2</kbd> 左右并排、<kbd>⌘3</kbd> 只看预览。“显示”菜单和工具栏也有相同选项。

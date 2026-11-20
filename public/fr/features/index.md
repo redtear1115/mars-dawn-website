@@ -49,19 +49,19 @@ Tout le travail ne se fait pas sur un écran. Les pages que MarsDawn imprime et 
 
 Imprimez les pages, ou envoyez à tout le monde le même PDF : toute la table travaille alors sur le même document, et non sur un seul écran partagé. Avec le même fichier, les sauts de page sont les mêmes, si bien que « le tableau de la page 3 » désigne une seule chose. Ensuite, chacun note les décisions, sur l’imprimé ou dans des notes. Le modèle de notes de réunion commence par les décisions et donne un responsable à chaque action.
 
-[Export PDF](/fr/pdf/) · [Modèle de compte rendu](/fr/templates/meeting-notes/)
+[Imprimer et PDF](/fr/pdf/) · [Modèle de compte rendu](/fr/templates/meeting-notes/)
 
 ### Lire avec un stylo
 
 Certaines personnes retiennent mieux avec un stylo : souligner, écrire dans la marge, pour que cela reste. Imprimez le document et faites-le sur le papier. MarsDawn n’a pas d’outil d’annotation à lui ; si vous préférez annoter le PDF, utilisez l’app PDF que vous avez déjà.
 
-[Export PDF](/fr/pdf/)
+[Imprimer et PDF](/fr/pdf/)
 
 ### Dossiers papier
 
 Dans certains métiers, on classe encore du papier, la comptabilité par exemple. MarsDawn ne revendique ni archivage ni conformité. Ce qu’il fait, c’est imprimer et exporter des pages propres et paginées : diagrammes dessinés, blocs de code courts gardés d’un seul tenant, couleurs claires du thème. Servez-vous-en partout où le papier reste le dossier de référence.
 
-[Export PDF](/fr/pdf/)
+[Imprimer et PDF](/fr/pdf/)
 
 ### Transmettre à quelqu’un qui n’utilise pas Markdown
 
@@ -133,7 +133,7 @@ Réglages ▸ Apparence ▸ Obtenir plus de thèmes… ouvre une galerie de thè
 
 Fichier ▸ Imprimer… et Fichier ▸ Exporter au format PDF… ouvrent « Imprimer et exporter », avec un aperçu des pages. Choisissez une disposition : Document ; Guide, avec une couverture, une table des matières et des signets PDF ; ou Polycopié, avec une colonne de notes. Puis imprimez ou enregistrez. Les diagrammes Mermaid sont dessinés, le code garde sa coloration, et les sauts de page évitent de séparer un titre de sa section ou de couper en deux un bloc de code court ou un diagramme. Le PDF utilise toujours les couleurs claires du thème.
 
-[Export PDF](/fr/pdf/)
+[Imprimer et PDF](/fr/pdf/)
 
 ![Un PDF exporté depuis MarsDawn, ouvert dans sa visionneuse PDF avec les vignettes des pages.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -233,7 +233,7 @@ Comment fonctionne l’essai : [Essai gratuit, achat unique](/fr/pay-once/). Ce
 - [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Relisez le Markdown, JSON et YAML de votre agent sur Mac : aperçu en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.
 - [Vos textes restent sur votre Mac](https://marsdawn.southern-light.dev/fr/yours/index.md): MarsDawn n’a ni compte, ni synchronisation, ni cloud. Vos documents Markdown restent sur votre Mac, dans les fichiers et dossiers que vous choisissez.
 - [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
-- [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.
+- [Imprimer et PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Prévisualisez votre Markdown, puis imprimez-le ou enregistrez-le en PDF sur Mac, en disposition Document, Guide ou Polycopié, avec diagrammes et code coloré.
 - [Une app Mac](https://marsdawn.southern-light.dev/fr/native/index.md): Un éditeur Markdown qui est une vraie app Mac : fenêtres et onglets natifs, enregistrement automatique, historique des versions, Coup d’œil dans le Finder et un éditeur de texte qui se comporte comme sur Mac.
 - [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas de modification sur iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
 - [Assistance](https://marsdawn.southern-light.dev/fr/support/index.md): De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
@@ -242,6 +242,7 @@ Comment fonctionne l’essai : [Essai gratuit, achat unique](/fr/pay-once/). Ce
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
 - [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
+- [Passer de HackMD à votre Mac](https://marsdawn.southern-light.dev/fr/from-hackmd/index.md): Téléchargez vos notes HackMD en .md et lisez-les dans MarsDawn sur votre Mac. Comment tout télécharger, partir d’un dépôt GitHub et garder vos images.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
 - [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.

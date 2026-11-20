@@ -54,7 +54,7 @@ DATA = {'de': {'devnote': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es
         'layout': '- `--layout`: document (Standard), handbook oder handout. handbook erstellt ein Deckblatt '
                   'aus der Front Matter und fügt ein Inhaltsverzeichnis und PDF-Lesezeichen hinzu.',
         'next': '- In der MarsDawn-App zeigt Ablage ▸ Drucken\xa0… dieselben Layouts in der Vorschau, bevor '
-                'du druckst oder sicherst: [PDF-Export](/de/pdf/).',
+                'du druckst oder sicherst: [Drucken und PDF](/de/pdf/).',
         'pdf': '- Vor dem Drucken oder Exportieren siehst du die Seiten in der Vorschau und wählst ein '
                'Layout: Dokument, Handbuch mit Deckblatt und Inhaltsverzeichnis oder Handout mit '
                'Notizspalte.'},
@@ -87,7 +87,7 @@ DATA = {'de': {'devnote': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es
         'layout': '- `--layout`: document (the default), handbook or handout. Handbook adds a cover from the '
                   'front matter, a table of contents and PDF bookmarks.',
         'next': '- In the MarsDawn app, File ▸ Print… previews the same layouts before you print or save: '
-                '[PDF export](/pdf/).',
+                '[Print & PDF](/pdf/).',
         'pdf': '- Preview the pages before you print or export, and pick a layout: Document, Handbook with a '
                'cover and table of contents, or Handout with a notes column.'},
  'es': {'devnote': 'En el iPhone y el iPad, MarsDawn es solo para leer: abre archivos Markdown, de texto, '
@@ -121,7 +121,7 @@ DATA = {'de': {'devnote': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es
         'layout': '- `--layout`: document (predeterminado), handbook o handout. handbook añade una portada a '
                   'partir del front matter, un índice y marcadores PDF.',
         'next': '- En la app MarsDawn, Archivo ▸ Imprimir… muestra una vista previa de las mismas '
-                'disposiciones antes de imprimir o guardar: [Exportación a PDF](/es/pdf/).',
+                'disposiciones antes de imprimir o guardar: [Imprimir y PDF](/es/pdf/).',
         'pdf': '- Vista previa de las páginas antes de imprimir o exportar, y elección de disposición: '
                'Documento, Guía con portada e índice, o Folleto con columna para notas.'},
  'fr': {'devnote': 'Sur iPhone et iPad, MarsDawn sert uniquement à lire\xa0: il ouvre les fichiers Markdown, '
@@ -158,7 +158,7 @@ DATA = {'de': {'devnote': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es
         'layout': '- `--layout`\xa0: document (par défaut), handbook ou handout. handbook ajoute une '
                   'couverture tirée du front matter, une table des matières et des signets PDF.',
         'next': '- Dans l’app MarsDawn, Fichier ▸ Imprimer… affiche un aperçu des mêmes dispositions avant '
-                'd’imprimer ou d’enregistrer\xa0: [Export PDF](/fr/pdf/).',
+                'd’imprimer ou d’enregistrer\xa0: [Imprimer et PDF](/fr/pdf/).',
         'pdf': '- Un aperçu des pages avant d’imprimer ou d’exporter, et le choix de la disposition\xa0: '
                'Document, Guide avec couverture et table des matières, ou Polycopié avec colonne de notes.'},
  'ja': {'devnote': 'iPhone と iPad の MarsDawn は閲覧専用です。Markdown、テキスト、PDF、JSON、YAML を開けますが、編集はできません。ここで保存した PDF '
@@ -182,7 +182,7 @@ DATA = {'de': {'devnote': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es
         'ios_s3': '3. **人に渡す：**共有、プリント、PDF として保存ができます。',
         'layout': '- `--layout`：document（デフォルト）、handbook、handout のいずれか。handbook はフロントマターから表紙を作り、目次と PDF '
                   'のブックマークを付けます。',
-        'next': '- MarsDawn アプリでは、「ファイル ▸ プリント…」で同じレイアウトをプレビューしてから、プリントまたは保存できます：[PDF 書き出し](/ja/pdf/)。',
+        'next': '- MarsDawn アプリでは、「ファイル ▸ プリント…」で同じレイアウトをプレビューしてから、プリントまたは保存できます：[プリントと PDF](/ja/pdf/)。',
         'pdf': '- プリントや書き出しの前にページをプレビューし、レイアウトを選べます：「書類」、表紙と目次付きの「ハンドブック」、メモ欄付きの「配布資料」。'},
  'ko': {'devnote': 'iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown, 텍스트, PDF, JSON, YAML을 열 수 있지만 편집은 할 수 없습니다. '
                    '여기서 저장한 PDF의 링크는 작동하지 않습니다. MarsDawn 자체에는 클라우드 서비스가 없습니다.',
@@ -206,7 +206,7 @@ DATA = {'de': {'devnote': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es
         'ios_s3': '3. **전달하기:** 공유하거나 프린트하거나 PDF로 저장합니다.',
         'layout': '- `--layout`: document(기본값), handbook, handout 중 하나입니다. handbook은 front matter로 표지를 만들고 '
                   '목차와 PDF 책갈피를 넣습니다.',
-        'next': '- MarsDawn 앱에서는 파일 ▸ 프린트… 메뉴로 같은 레이아웃을 먼저 미리 본 뒤 프린트하거나 저장할 수 있습니다: [PDF 내보내기](/ko/pdf/).',
+        'next': '- MarsDawn 앱에서는 파일 ▸ 프린트… 메뉴로 같은 레이아웃을 먼저 미리 본 뒤 프린트하거나 저장할 수 있습니다: [프린트 및 PDF](/ko/pdf/).',
         'pdf': '- 프린트하거나 내보내기 전에 페이지를 미리 보고 레이아웃을 고릅니다. ‘문서’, 표지와 목차가 있는 ‘설명서’, 메모 칸이 있는 ‘프린트물’ 중 하나입니다.'},
  'zh-hans': {'devnote': '在 iPhone 和 iPad 上，MarsDawn 只能阅读：可以打开 Markdown、纯文本、PDF、JSON 和 YAML，但不能编辑。在这里存储的 '
                         'PDF，里面的链接不能点按。MarsDawn 本身没有云端服务。',
@@ -228,7 +228,7 @@ DATA = {'de': {'devnote': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es
              'ios_s3': '3. **交给别人：**共享、打印，或存储为 PDF。',
              'layout': '- `--layout`：document（默认）、handbook 或 handout。handbook 会用 front matter 生成封面，加上目录和 PDF '
                        '书签。',
-             'next': '- 在 MarsDawn App 里，“文件 ▸ 打印…”会先预览同样的布局，再打印或存储：[导出 PDF](/zh-hans/pdf/)。',
+             'next': '- 在 MarsDawn App 里，“文件 ▸ 打印…”会先预览同样的布局，再打印或存储：[打印与 PDF](/zh-hans/pdf/)。',
              'pdf': '- 打印或导出前先预览页面，再选布局：“文稿”、有封面和目录的“手册”，或有笔记栏的“讲义”。'},
  'zh-hant': {'devnote': '在 iPhone 和 iPad 上，MarsDawn 只能閱讀：能開 Markdown、純文字、PDF、JSON 和 YAML，但不能編輯。在這裡存成的 '
                         'PDF，裡面的連結不能點。MarsDawn 本身沒有雲端服務。',
@@ -251,7 +251,7 @@ DATA = {'de': {'devnote': 'Auf iPhone und iPad ist MarsDawn nur zum Lesen da: Es
              'ios_s3': '3. **交給別人：**分享、列印，或存成 PDF。',
              'layout': '- `--layout`：document（預設）、handbook 或 handout。handbook 會用 front matter 做封面，加上目錄和 PDF '
                        '書籤。',
-             'next': '- 在 MarsDawn App 裡，「檔案 ▸ 列印⋯」會先預覽同樣的版面，再列印或儲存：[輸出 PDF](/zh-hant/pdf/)。',
+             'next': '- 在 MarsDawn App 裡，「檔案 ▸ 列印⋯」會先預覽同樣的版面，再列印或儲存：[列印與 PDF](/zh-hant/pdf/)。',
              'pdf': '- 列印或輸出前先預覽頁面，再選版面：「文件」、有封面和目錄的「手冊」，或有筆記欄的「講義」。'}}
 
 HELD = {'de': {'outline_plus': 'Ablage ▸ Claude-Code-Pläne hinzufügen\xa0… fügt den Planordner von Claude Code zur '

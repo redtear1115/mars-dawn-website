@@ -638,6 +638,33 @@ img.pdf-page {
               0 3px 8px -4px color-mix(in srgb, #000 16%, transparent);
 }
 
+/* /pdf/'s three layouts (#383): pages exported by the CLI, opaque white paper, so the image gets a hairline
+   edge and no plate of its own. Three across from 640px, one under the other on a phone. */
+.layout-shots {
+  display: grid;
+  gap: 28px;
+  margin: 24px 0 8px;
+}
+@media (min-width: 640px) {
+  .layout-shots { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+.layout-shots figure { margin: 0; }
+.layout-shots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px color-mix(in srgb, #000 10%, transparent),
+              0 3px 8px -4px color-mix(in srgb, #000 16%, transparent);
+}
+.layout-shots figcaption {
+  margin-top: 10px;
+  color: var(--dust);
+  font-size: 0.9rem;
+}
+.layout-shots figcaption strong { color: var(--ink); }
+
 .marker {
   position: absolute;
   left: var(--x);

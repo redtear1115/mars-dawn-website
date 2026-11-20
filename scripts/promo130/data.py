@@ -594,7 +594,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                     'lacks': 'MarsDawn 沒有的東西。需要 macOS 26 以上。在 iPhone 和 iPad 上只能閱讀，不能編輯；在那裡存成的 PDF，裡面的連結不能點。不能共同編輯，沒有帳號，也沒有自己的雲端服務。預覽本身不能改，要改旁邊的 Markdown 原始碼。不能輸出 Word，也沒有外掛。只有手冊與講義版面的 PDF 有頁碼。沒有 diff 檢視：agent 存檔後，開著的視窗會從磁碟更新，一步就能撤銷，但不會標示改了哪裡。14 天試用結束後，文件打開時內容會被遮住，直到解鎖。',
                     'dont_h': '什麼時候用不到 MarsDawn',
                     'dont': ['你整天待在 VS Code，預覽窗格就夠：它能畫 Mermaid、排 KaTeX，有 Markdown diff 預覽，也能用 code -g 跳到某一行。',
-                             '你只想在 Finder 按空白鍵預覽：QLMarkdown 是免費的 Markdown 快速查看延伸功能。',
+                             '你只想在 Finder 按空白鍵預覽：QLMarkdown 是開源（GPL-3.0）的 Markdown 快速查看延伸功能。',
                              '你的 Mac 系統比較舊：QLMarkdown 需要 12.0 以上，LynxOffice 需要 13 以上。免費的 marsdawn 工具只要 macOS 15，不開 app 也能輸出 PDF。',
                              '你用 vault 管理互相連結的筆記：Obsidian 就是為此而做。',
                              '你需要在 iPhone 或 iPad 上編輯、共同編輯，或輸出 Word。',
@@ -1316,7 +1316,7 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
                                 'href="/zh-hant/cli/">命令列工具</a>。',
                         'head': ['功能', 'App 內', 'CLI', 'MCP／skill', '狀態'],
                         'rows': [['打開到某一行', '停在那一行，預覽區塊閃一下', 'marsdawn open notes.md:120（--background 不搶焦點）', 'open_in_marsdawn；skill 只開一次', '已推出'],
-                                 ['輸出 PDF', '檔案 ▸ 輸出為 PDF⋯（⌥⌘E），可選標準、手冊、講義版面', 'marsdawn export，不需要 app；--layout handbook 或 handout', 'export_markdown_to_pdf；skill', '已推出'],
+                                 ['輸出 PDF', '檔案 ▸ 輸出為 PDF⋯（⌥⌘E），可選文件、手冊、講義版面', 'marsdawn export，不需要 app；--layout handbook 或 handout', 'export_markdown_to_pdf；skill', '已推出'],
                                  ['JSON 結果', '—', 'open、export 加 --json', 'MCP 回傳同一份 JSON', '已推出'],
                                  ['Agent skill', '—', 'marsdawn skill --install', '教 agent 開一次、輸出 PDF', '已推出'],
                                  ['MCP 伺服器', '—', '在底下執行', 'marsdawn-mcp：兩個工具，只碰允許的資料夾', '已推出'],
@@ -1743,8 +1743,8 @@ DATA = {'seo': {'en': {'ql_title': 'Markdown Quick Look for Mac: preview .md fil
             'zh-hant': {'q3': '有，用來閱讀。iPhone 和 iPad 上的 MarsDawn 能打開 Markdown、純文字、PDF、JSON 和 YAML 檔，排好 Mermaid 圖表、數學式、程式碼和表格。可以分享、列印檔案，或存成 PDF，但不能編輯。需要 iOS 26 或 iPadOS 26 以上。用同一個 Apple 帳號，一次試用、一次解鎖，就涵蓋 Mac、iPhone 和 iPad。',
                         'q9': ['為什麼用 MarsDawn，不用別的 App？',
                                '你可能不需要它。如果你主要寫自己的筆記，Obsidian 這類筆記 App 更適合。如果你整天待在 VS Code，它內建的預覽是免費的。如果你只想在 Finder 裡瞄一眼檔案，免費的快速查看擴充功能就夠了。MarsDawn 是用來閱讀和審閱 agent 寫的 Markdown：原始碼旁邊就是即時預覽，agent 的修改一步就能撤銷，檔案直接開到指定的那一行。如果它不合用，歡迎寫信告訴我們原因。',
-                               '詳見：<a href="/zh-hant/vs/">MarsDawn 與其他工具比較</a> · <a href="/zh-hant/best-markdown-viewer-mac/">Mac Markdown '
-                               '檢視器推薦</a>'],
+                               '詳見：<a href="/zh-hant/vs/">MarsDawn 與其他工具比較</a> · <a href="/zh-hant/best-markdown-viewer-mac/">Markdown '
+                               '閱讀器推薦</a>'],
                         'q10': ['MarsDawn 會持續維護嗎？',
                                 '會。MarsDawn 上架 Mac App Store 以來的每次更新都在更新紀錄裡；2026 年 10 月 28 日起，iPhone 和 iPad 上也能用 MarsDawn 閱讀。MarsDawn 的算繪核心和免費的 '
                                 'marsdawn 命令列工具，已經以 Apache-2.0 授權在 mars-dawn-kit 開源。如果 MarsDawn 的開發者哪天停止維護這個 App，會以開源授權公開 App 本身的原始碼，讓其他人可以接手。',

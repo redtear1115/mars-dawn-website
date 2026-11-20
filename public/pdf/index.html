@@ -27,8 +27,8 @@ try {
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Export Markdown to PDF on a Mac, diagrams included · MarsDawn</title>
-<meta name="description" content="Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks.">
+<title>Print Markdown or Save as PDF on a Mac · MarsDawn</title>
+<meta name="description" content="Preview your Markdown, then print it or save it as a PDF on your Mac, in Document, Handbook or Handout layout, with diagrams and code colors intact.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -44,8 +44,8 @@ try {
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/pdf/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/pdf/">
 <link rel="alternate" type="text/markdown" href="/pdf/index.md">
-<meta property="og:title" content="Export Markdown to PDF on a Mac, diagrams included · MarsDawn">
-<meta property="og:description" content="Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks.">
+<meta property="og:title" content="Print Markdown or Save as PDF on a Mac · MarsDawn">
+<meta property="og:description" content="Preview your Markdown, then print it or save it as a PDF on your Mac, in Document, Handbook or Handout layout, with diagrams and code colors intact.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/pdf/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -54,7 +54,7 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/"}, {"@type": "ListItem", "position": 2, "name": "PDF export", "item": "https://marsdawn.southern-light.dev/pdf/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/"}, {"@type": "ListItem", "position": 2, "name": "Print & PDF", "item": "https://marsdawn.southern-light.dev/pdf/"}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -124,29 +124,51 @@ try {
 </header>
 <main id="main">
 <section class="intro">
-  <h1>The PDF looks like the page you wrote.</h1>
-  <p>Export as PDF or print, in your theme's light colors. Diagrams and highlighted code come through, and page breaks avoid splitting what belongs together.</p>
+  <h1>Print it, or save it as a PDF</h1>
+  <p>MarsDawn prints your Markdown or saves it as a PDF, in your theme's light colors. A preview shows the pages first, so you can pick a layout before you print.</p>
 </section>
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.">
-    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
-    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid diagrams, drawn into the PDF.</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>Code keeps its highlighting.</span></span>
+    <img src="/assets/screens/06-print-export-868.png" srcset="/assets/screens/06-print-export-800.png 800w, /assets/screens/06-print-export-868.png 868w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="868" height="588" alt="The Print & Export panel: a page preview with a flowchart and some code, three layout cards, and Print… and Save as PDF… buttons.">
+    <span class="marker l co-print-export-1" aria-hidden="true">1</span><span class="marker r co-print-export-2" aria-hidden="true">2</span><span class="marker r co-print-export-3" aria-hidden="true">3</span>
+    <span class="leader l co-print-export-1" aria-hidden="true"><span>Preview the pages first.</span></span><span class="leader r co-print-export-2" aria-hidden="true"><span>Pick a layout.</span></span><span class="leader r co-print-export-3" aria-hidden="true"><span>Print, or save as a PDF.</span></span>
   </div></div>
   <figcaption>
     <span class="figure-label">In this screenshot</span>
-    <ol><li>Mermaid diagrams, drawn into the PDF.</li><li>Code keeps its highlighting.</li></ol>
+    <ol><li>Preview the pages first.</li><li>Pick a layout.</li><li>Print, or save as a PDF.</li></ol>
   </figcaption>
 </figure>
-<h2 id="what-that-means">What that means</h2>
+<h2 id="preview-first-then-decide">Preview first, then decide</h2>
+<ol class="loop-steps">
+  <li><strong>Open the preview.</strong> Choose File ▸ Print… or File ▸ Export as PDF…; both open the Print &amp; Export sheet.</li>
+  <li><strong>Pick a layout.</strong> Look through the preview, then choose Document, Handbook or Handout.</li>
+  <li><strong>Print or save.</strong> Click Print…, or Save as PDF… to keep a file.</li>
+</ol>
+<h2 id="three-layouts">Three layouts</h2>
+<p>Every layout can be printed or saved as a PDF.</p>
+<div class="layout-shots">
+  <figure>
+    <img src="/assets/cli/layout-document.png" alt="Document layout, page 1: a title, a paragraph, a flowchart, a code block and a table." width="856" height="1108">
+    <figcaption><strong>Document.</strong> Pages as in the live preview, with automatic page breaks.</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handbook-contents.png" alt="Handbook layout: a contents page listing the headings with their page numbers." width="856" height="1108">
+    <figcaption><strong>Handbook.</strong> A cover, contents with page numbers, each chapter on a new page.</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handout.png" alt="Handout layout, page 1: content on the left, an empty notes column on the right and a footer line." width="856" height="1108">
+    <figcaption><strong>Handout.</strong> A notes column on the right; the footer has file name, date and page number.</figcaption>
+  </figure>
+</div>
+<h2 id="what-ends-up-on-the-page">What ends up on the page</h2>
 <ul>
-  <li>Mermaid diagrams are drawn into the PDF.</li>
+  <li>Mermaid diagrams are drawn into the pages.</li>
   <li>Code blocks keep their syntax highlighting.</li>
   <li>Page breaks avoid leaving a heading at the bottom of a page or splitting code and diagrams.</li>
-  <li>Any layout. Export works even while only the source is showing.</li>
   <li>Preview the pages before you print or export, and pick a layout: Document, Handbook with a cover and table of contents, or Handout with a notes column.</li>
 </ul>
-<p>The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so a script or an AI agent gets the same PDF.</p>
+<p>On iPhone and iPad, version 1.0.2 and later can print a Markdown document.</p>
+<p>The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so scripts and AI agents get the same PDF.</p>
 <nav class="traits" aria-label="What to expect from MarsDawn">
 <h2>What to expect from MarsDawn</h2>
 <ul>
@@ -166,7 +188,7 @@ try {
         <li><a href="/features/">Features</a></li>
         <li><a href="/quicklook/">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/" aria-current="page">PDF export</a></li>
+        <li><a href="/pdf/" aria-current="page">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>

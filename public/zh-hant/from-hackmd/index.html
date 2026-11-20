@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>從 HackMD 搬到 Mac：筆記、圖片和 GitHub · MarsDawn</title>
+<meta name="description" content="把 HackMD 筆記下載成 .md，在 Mac 上用 MarsDawn 讀。下載所有筆記、從 GitHub repo 搬，以及圖片怎麼處理。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/from-hackmd/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/from-hackmd/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/from-hackmd/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/from-hackmd/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/from-hackmd/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/from-hackmd/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/from-hackmd/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/from-hackmd/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/from-hackmd/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/from-hackmd/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/from-hackmd/index.md">
+<meta property="og:title" content="從 HackMD 搬到 Mac：筆記、圖片和 GitHub · MarsDawn">
+<meta property="og:description" content="把 HackMD 筆記下載成 .md，在 Mac 上用 MarsDawn 讀。下載所有筆記、從 GitHub repo 搬，以及圖片怎麼處理。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/from-hackmd/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hant/"}, {"@type": "ListItem", "position": 2, "name": "從 HackMD 搬到 Mac", "item": "https://marsdawn.southern-light.dev/zh-hant/from-hackmd/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "可以一次下載全部 HackMD 筆記嗎？", "acceptedAnswer": {"@type": "Answer", "text": "可以。「下載所有筆記」會給你一個 .zip，裡面都是 .md。資料夾不會保留，也不含圖片。"}}, {"@type": "Question", "name": "為什麼在 MarsDawn 看不到圖片？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn 預設不載入網路圖片，要按「載入圖片」。如果是私人筆記，圖片載不到，請存到檔案旁邊。"}}, {"@type": "Question", "name": "一定要離開 HackMD 嗎？", "acceptedAnswer": {"@type": "Answer", "text": "不用。要一起寫，HackMD 還是比較好的選擇。MarsDawn 是讓你在 Mac 上讀和審。"}}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/" aria-label="MarsDawn 首頁">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="site-nav" aria-label="主要導覽">
+    <ul class="site-nav-wide">
+      <li><a href="/zh-hant/features/">功能</a></li>
+      <li><a href="/zh-hant/cli/">Agent</a></li>
+      <li><a href="/zh-hant/themes/">主題</a></li>
+      <li><a href="/zh-hant/vs/">比較</a></li>
+      <li><a href="/zh-hant/support/">支援</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>選單</summary>
+      <ul>
+        <li><a href="/zh-hant/features/">功能</a></li>
+        <li><a href="/zh-hant/cli/">Agent</a></li>
+        <li><a href="/zh-hant/themes/">主題</a></li>
+        <li><a href="/zh-hant/vs/">比較</a></li>
+        <li><a href="/zh-hant/support/">支援</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="語言">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/from-hackmd/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/from-hackmd/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/from-hackmd/" hreflang="ja" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/from-hackmd/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary>更多</summary>
+      <ul>
+        <li><a href="/de/from-hackmd/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/from-hackmd/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/from-hackmd/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/from-hackmd/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>繁中</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/from-hackmd/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/from-hackmd/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/from-hackmd/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/from-hackmd/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/from-hackmd/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/from-hackmd/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/from-hackmd/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/from-hackmd/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>從 HackMD 搬到 Mac</h1>
+  <p>你的筆記本來就是 Markdown，不用轉檔。看你要搬多少，選一條路。圖片要另外處理，刪 HackMD 上的東西之前，請先讀「圖片」那段。</p>
+</section>
+<p>這頁是 2026 年 11 月用 HackMD 免費帳號實測的。HackMD 可能會變，付費方案和團隊工作區我們沒測。</p>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">你想要</th><th scope="col">走這條</th></tr></thead>
+<tbody>
+  <tr><th scope="row">搬全部筆記</th><td>下載所有筆記</td></tr>
+  <tr><th scope="row">搬已經在 GitHub 的筆記</th><td>clone repo</td></tr>
+  <tr><th scope="row">搬一兩篇</th><td>下載單篇</td></tr>
+</tbody>
+</table></div>
+<h2 id="download-all-notes">下載所有筆記</h2>
+<p>HackMD 的筆記設定裡有「下載所有筆記」，個人和團隊空間都有。下載下來是一個 .zip，一篇筆記一個 .md，檔名是筆記標題。</p>
+<ul>
+  <li>資料夾不會保留，所有筆記都在最上層。</li>
+  <li>圖片不在裡面，.md 裡仍然是網址。</li>
+  <li>「包含標題和標籤」預設打開，會在每篇最前面加一段 front matter。關掉就和筆記原文相同。</li>
+</ul>
+<p>解壓縮後，在 MarsDawn 選「檔案 ▸ 打開資料夾⋯」打開那個資料夾。</p>
+<h2 id="clone-the-repo">clone repo</h2>
+<p>HackMD 的 GitHub 同步是一篇筆記對一個檔案，所以推送過的筆記已經在 repo 裡。clone 下來，用「檔案 ▸ 打開資料夾⋯」打開，側邊欄會顯示 repo 和分支。</p>
+<p>還沒接 GitHub 的筆記，不用為了搬家特地接。每篇都要各自綁定，免費版每月可以推送 20 次。在免費個人帳號上，我們沒看到一次推送整個工作區的入口。</p>
+<p>搬完之後，以 repo 為正本。從 HackMD 推送會直接蓋掉 GitHub 上的內容，就算 GitHub 比較新也一樣，而且不會警告。</p>
+<h2 id="download-one-note">下載單篇</h2>
+<p>筆記選單可以下載 .md 或 .html。選 .md，再用 MarsDawn 打開。</p>
+<h2 id="images">圖片</h2>
+<p>上傳到 HackMD 的圖片，網址是 <code>https://hackmd.io/_uploads/...</code>。誰看得到，跟著筆記的權限走。</p>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">你的筆記是</th><th scope="col">搬到 Mac 後</th><th scope="col">怎麼處理</th></tr></thead>
+<tbody>
+  <tr><th scope="row">公開</th><td>圖片從 HackMD 載入</td><td>在預覽按「載入圖片」，或打開「設定 ▸ 圖片 ▸ 自動載入網路圖片」</td></tr>
+  <tr><th scope="row">私人</th><td>圖片會回錯誤，因為 MarsDawn 沒有登入 HackMD</td><td>在登入的瀏覽器把圖片存下來，放在 .md 旁邊，再改路徑。或把筆記改成公開，前提是所有人都可以看</td></tr>
+</tbody>
+</table></div>
+<ul>
+  <li><strong>舊筆記</strong> 的圖片可能是 <code>i.imgur.com</code> 網址。</li>
+  <li><strong>刪筆記，圖片也會失效。</strong> 網址之後打不開，所以先搬好圖片再刪。</li>
+</ul>
+<p>如果 MarsDawn 讀不到檔案旁邊的圖片，用預覽裡的按鈕授權那個資料夾。</p>
+<h2 id="how-your-notes-will-look">讀起來的樣子</h2>
+<p>HackMD 的語法大多照樣能讀：<code>==螢光==</code>、<code>^上標^</code>、<code>~下標~</code>、<code>[TOC]</code>、<code>=300x200</code> 這類圖片尺寸、Mermaid 和 KaTeX。<code>{%youtube %}</code> 會顯示成連結。想和 HackMD 一樣保留每個換行，請打開「設定 ▸ 外觀 ▸ 保留單一換行」。</p>
+<p><code>:::</code> 區塊也看得到。<code>:::info</code>、<code>:::success</code>、<code>:::warning</code>、<code>:::danger</code> 會顯示成有色條的區塊，上面有標題，預設是附註、提示、警告、小心；在名稱後面自己寫標題的話，就用你寫的。<code>:::spoiler</code> 會顯示成點一下才展開的可收合區塊。其他名稱的 <code>:::</code> 區塊，或少了結尾 <code>:::</code> 的，會照原文顯示。</p>
+<p>有幾個地方不一樣：</p>
+<ul>
+  <li><code>++底線++</code> 和 <code>:sparkles:</code> 這類 emoji 代碼會照原文顯示。</li>
+  <li><code>{%hackmd id %}</code> 不會展開。</li>
+  <li><code>&lt;i class="fa ..."&gt;</code> 圖示不會出現。</li>
+</ul>
+<h2 id="for-scripts-hackmd-cli">給腳本用：hackmd-cli</h2>
+<p><code>hackmd-cli</code> 沒有一次匯出全部的指令。它一次匯出一篇，內容印在畫面上，所以要先列出筆記，再逐篇跑迴圈。你需要 Node.js、<code>jq</code>，以及在 HackMD 設定頁建立的 API token。不需要腳本的話，「下載所有筆記」比較簡單。</p>
+<pre tabindex="0" role="region" aria-labelledby="for-scripts-hackmd-cli"><code>npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=&lt;你的 token&gt;
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" &gt; "$id.md"
+done</code></pre>
+<ul>
+  <li><strong>資料夾帶不過來。</strong> 筆記清單沒有寫筆記在哪個資料夾，所以檔案都會放在同一層。</li>
+  <li><strong>圖片仍是 <code>hackmd.io</code> 連結。</strong> 請照上面「圖片」那段處理。</li>
+  <li><strong>檔名是筆記 ID，</strong> 不是標題。</li>
+  <li><strong>免費版每 30 天可以呼叫 API 400 次。</strong> 列清單 1 次，每篇筆記再 1 次。</li>
+</ul>
+<p>我們只在筆記很少的帳號上試過，不知道清單很長時會怎樣。用完請到 HackMD 設定頁刪掉 token。</p>
+<h2 id="writing-together">一起寫的話</h2>
+<p>MarsDawn 沒有多人同時編輯。需要共筆的話，繼續用 HackMD。團隊把文件放在 git 的話，每個人都能用自己的 MarsDawn 打開同一個 repo，一起完成同一份文件。請看團隊用 git 一起審文件。</p>
+<section class="faq">
+<h2 id="questions">常見問題</h2>
+<h3>可以一次下載全部 HackMD 筆記嗎？</h3>
+<p>可以。「下載所有筆記」會給你一個 .zip，裡面都是 .md。資料夾不會保留，也不含圖片。</p>
+<h3>為什麼在 MarsDawn 看不到圖片？</h3>
+<p>MarsDawn 預設不載入網路圖片，要按「載入圖片」。如果是私人筆記，圖片載不到，請存到檔案旁邊。</p>
+<h3>一定要離開 HackMD 嗎？</h3>
+<p>不用。要一起寫，HackMD 還是比較好的選擇。MarsDawn 是讓你在 Mac 上讀和審。</p>
+</section>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="網站導覽">
+    <h2 class="footer-nav-title">網站導覽</h2>
+    <section aria-labelledby="footer-product">
+      <h3 id="footer-product">產品</h3>
+      <ul>
+        <li><a href="/zh-hant/features/">功能一覽</a></li>
+        <li><a href="/zh-hant/quicklook/">Markdown 快速查看</a></li>
+        <li><a href="/zh-hant/native/">為 Mac 而做</a></li>
+        <li><a href="/zh-hant/pdf/">列印與 PDF</a></li>
+        <li><a href="/zh-hant/limits/">MarsDawn 做不到的事</a></li>
+        <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a></li>
+        <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a></li>
+        <li><a href="/zh-hant/changelog/">更新紀錄</a></li>
+        <li><a href="/zh-hant/roadmap/">路線圖</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h3 id="footer-agents">Agent 與命令列</h3>
+      <ul>
+        <li><a href="/zh-hant/cli/">命令列工具</a></li>
+        <li><a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a></li>
+        <li><a href="/zh-hant/cli/mcp/">MCP 伺服器</a></li>
+        <li><a href="/zh-hant/cli/skill/">給 agent 的 skill</a></li>
+        <li><a href="/zh-hant/agent-transparency/">agent 的透明</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h3 id="footer-guides">教學</h3>
+      <ul>
+        <li><a href="/zh-hant/view-markdown-on-mac/">Mac 怎麼開 md 檔</a></li>
+        <li><a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a></li>
+        <li><a href="/zh-hant/mermaid-preview-mac/">在 Mac 上預覽 Mermaid</a></li>
+        <li><a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a></li>
+        <li><a href="/zh-hant/reviewing-ai-output/">為什麼 AI 寫的東西還是需要人讀過</a></li>
+        <li><a href="/zh-hant/reviewing-agent-plans/">審 agent 計畫</a></li>
+        <li><a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a></li>
+        <li><a href="/zh-hant/sharing-exported-pdfs/">分享輸出的 PDF</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h3 id="footer-compare">比較</h3>
+      <ul>
+        <li><a href="/zh-hant/vs/">MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice</a></li>
+        <li><a href="/zh-hant/vs/macmd-viewer/">MacMD Viewer 對比 MarsDawn</a></li>
+        <li><a href="/zh-hant/vs/markdown-preview-tools/">在別處看 Markdown，對比 MarsDawn</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h3 id="footer-themes">主題</h3>
+      <ul>
+        <li><a href="/zh-hant/themes/">主題</a></li>
+        <li><a href="/zh-hant/themes/gallery/">主題庫</a></li>
+        <li><a href="/zh-hant/themes/new/">打造一個主題</a></li>
+        <li><a href="/zh-hant/themes/agents/">和 agent 一起做主題</a></li>
+        <li><a href="/zh-hant/templates/">範本</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h3 id="footer-support">支援與法律</h3>
+      <ul>
+        <li><a href="/zh-hant/support/">支援</a></li>
+        <li><a href="/zh-hant/privacy/">隱私權政策</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button></li>
+      </ul>
+    </section>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-from-hackmd&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 標誌、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美國及其他國家和地區註冊的商標。App Store 和 Mac App Store 是 Apple Inc. 的服務標誌。</p>
+</footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本站使用分析用 cookie，按下「接受」前不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+</body>
+</html>

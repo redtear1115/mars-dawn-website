@@ -27,8 +27,8 @@ try {
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>在 Mac 把 Markdown 輸出成 PDF，圖表也在 · MarsDawn</title>
-<meta name="description" content="在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。">
+<title>在 Mac 列印 Markdown 或儲存為 PDF · MarsDawn</title>
+<meta name="description" content="在 Mac 上先預覽，再把 Markdown 列印或儲存為 PDF；有文件、手冊、講義三種版面，Mermaid 圖表和程式碼上色都會保留。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -44,8 +44,8 @@ try {
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/pdf/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/pdf/">
 <link rel="alternate" type="text/markdown" href="/zh-hant/pdf/index.md">
-<meta property="og:title" content="在 Mac 把 Markdown 輸出成 PDF，圖表也在 · MarsDawn">
-<meta property="og:description" content="在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。">
+<meta property="og:title" content="在 Mac 列印 Markdown 或儲存為 PDF · MarsDawn">
+<meta property="og:description" content="在 Mac 上先預覽，再把 Markdown 列印或儲存為 PDF；有文件、手冊、講義三種版面，Mermaid 圖表和程式碼上色都會保留。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/pdf/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -54,7 +54,7 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hant/"}, {"@type": "ListItem", "position": 2, "name": "輸出 PDF", "item": "https://marsdawn.southern-light.dev/zh-hant/pdf/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hant/"}, {"@type": "ListItem", "position": 2, "name": "列印與 PDF", "item": "https://marsdawn.southern-light.dev/zh-hant/pdf/"}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -124,29 +124,51 @@ try {
 </header>
 <main id="main">
 <section class="intro">
-  <h1>PDF 看起來就是你寫的那一頁。</h1>
-  <p>輸出成 PDF 或列印，使用主題的淺色配色。圖表和程式碼上色都會保留，分頁位置也經過安排。</p>
+  <h1>列印，或儲存為 PDF</h1>
+  <p>MarsDawn 能把 Markdown 列印，或儲存為 PDF，使用主題的淺色配色。先預覽頁面，再選版面。</p>
 </section>
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="用 MarsDawn 輸出的 PDF，在內建的 PDF 檢視器中開啟，旁邊有頁面縮圖。">
-    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
-    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid 圖表直接畫進 PDF。</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>程式碼保留語法上色。</span></span>
+    <img src="/assets/screens/06-print-export-868.png" srcset="/assets/screens/06-print-export-800.png 800w, /assets/screens/06-print-export-868.png 868w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="868" height="588" alt="「列印與輸出」面板：左側頁面預覽有流程圖和一小段程式碼，右側三張版面卡片，右下有「列印⋯」和「儲存為 PDF⋯」按鈕。">
+    <span class="marker l co-print-export-1" aria-hidden="true">1</span><span class="marker r co-print-export-2" aria-hidden="true">2</span><span class="marker r co-print-export-3" aria-hidden="true">3</span>
+    <span class="leader l co-print-export-1" aria-hidden="true"><span>先預覽頁面。</span></span><span class="leader r co-print-export-2" aria-hidden="true"><span>選一種版面。</span></span><span class="leader r co-print-export-3" aria-hidden="true"><span>列印，或儲存為 PDF。</span></span>
   </div></div>
   <figcaption>
     <span class="figure-label">這張截圖裡</span>
-    <ol><li>Mermaid 圖表直接畫進 PDF。</li><li>程式碼保留語法上色。</li></ol>
+    <ol><li>先預覽頁面。</li><li>選一種版面。</li><li>列印，或儲存為 PDF。</li></ol>
   </figcaption>
 </figure>
-<h2 id="what-that-means">這代表什麼</h2>
+<h2 id="preview-first-then-decide">先預覽，再決定</h2>
+<ol class="loop-steps">
+  <li><strong>開啟預覽。</strong>在「檔案」選「列印⋯」或「輸出為 PDF⋯」，都會開啟「列印與輸出」。</li>
+  <li><strong>選版面。</strong>看過預覽的頁面，再選「文件」、「手冊」或「講義」。</li>
+  <li><strong>列印或儲存。</strong>按「列印⋯」，或按「儲存為 PDF⋯」留下檔案。</li>
+</ol>
+<h2 id="three-layouts">三種版面</h2>
+<p>每種版面都能列印，也能儲存為 PDF。</p>
+<div class="layout-shots">
+  <figure>
+    <img src="/assets/cli/layout-document.png" alt="文件版面第 1 頁：標題、一段文字、流程圖、程式碼區塊和一張表格。" width="856" height="1108">
+    <figcaption><strong>文件。</strong>跟即時預覽一樣的頁面，自動分頁。</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handbook-contents.png" alt="手冊版面的目錄頁，列出各標題和頁碼。" width="856" height="1108">
+    <figcaption><strong>手冊。</strong>封面、有頁碼的目錄、每章換頁。</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handout.png" alt="講義版面第 1 頁：內容在左，右側是空白的筆記欄，底部有頁尾。" width="856" height="1108">
+    <figcaption><strong>講義。</strong>右側 1/3 留給筆記，頁尾有檔名、日期和頁碼。</figcaption>
+  </figure>
+</div>
+<h2 id="what-ends-up-on-the-page">頁面上會有什麼</h2>
 <ul>
-  <li>Mermaid 圖表直接畫進 PDF。</li>
+  <li>Mermaid 圖表直接畫進頁面。</li>
   <li>程式碼區塊保留語法上色。</li>
   <li>分頁時會盡量不讓標題落在頁尾，也不切開程式碼和圖表。</li>
-  <li>任何版面都能輸出，只顯示原始碼時也可以。</li>
   <li>列印或輸出前先預覽頁面，再選版面：「文件」、有封面和目錄的「手冊」，或有筆記欄的「講義」。</li>
 </ul>
-<p>免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>使用同一套輸出程式，所以腳本或 AI agent 也能得到一樣的 PDF。</p>
+<p>iPhone 和 iPad 從 1.0.2 版起可列印 Markdown 文件。</p>
+<p>免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>用同一套輸出程式，腳本、agent 也能用。</p>
 <nav class="traits" aria-label="MarsDawn 是什麼樣的 app">
 <h2>MarsDawn 是什麼樣的 app</h2>
 <ul>
@@ -166,7 +188,7 @@ try {
         <li><a href="/zh-hant/features/">功能一覽</a></li>
         <li><a href="/zh-hant/quicklook/">Markdown 快速查看</a></li>
         <li><a href="/zh-hant/native/">為 Mac 而做</a></li>
-        <li><a href="/zh-hant/pdf/" aria-current="page">輸出 PDF</a></li>
+        <li><a href="/zh-hant/pdf/" aria-current="page">列印與 PDF</a></li>
         <li><a href="/zh-hant/limits/">MarsDawn 做不到的事</a></li>
         <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a></li>
         <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a></li>

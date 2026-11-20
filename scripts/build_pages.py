@@ -39,7 +39,9 @@ from ia247 import data as ia_data  # noqa: E402
 from tmde130 import data as changelog_data  # noqa: E402
 from cli254 import data as cli254_data  # noqa: E402
 from copy364 import data as copy364_data  # noqa: E402
+from copy278 import data as copy278_data  # noqa: E402
 from copy369 import data as copy369_data  # noqa: E402
+from copy336 import data as copy336_data  # noqa: E402
 from copy363 import data as copy363_data  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -308,7 +310,7 @@ UI = {
         "footer_store": f'MarsDawn is on the <a href="{LISTING_URL}">Mac App Store</a>.',
         "footer_nav": "Site",
         "more": "More",
-        "yours": "Your writing stays on your Mac", "pay-once": "Try free, pay once", "pdf": "PDF export",
+        "yours": "Your writing stays on your Mac", "pay-once": "Try free, pay once", "pdf": "Print & PDF",
         "native": "A Mac app", "limits": "What MarsDawn doesn't do",
         "mcp": "MCP server", "token-efficient-review": "Token-efficient review",
         "vs-markdown-preview-tools": "Viewing Markdown elsewhere vs. MarsDawn", "themes": "Themes",
@@ -339,7 +341,7 @@ UI = {
         "footer_store": f'MarsDawn 已在 <a href="{LISTING_URL}">Mac App Store</a> 上架。',
         "footer_nav": "網站",
         "more": "其他頁面",
-        "yours": "你寫的內容留在你的 Mac 上", "pay-once": "免費試用，買一次就好", "pdf": "輸出 PDF",
+        "yours": "你寫的內容留在你的 Mac 上", "pay-once": "免費試用，買一次就好", "pdf": "列印與 PDF",
         "native": "為 Mac 而做", "limits": "MarsDawn 做不到的事",
         "mcp": "MCP 伺服器", "token-efficient-review": "節省 token 的審閱方式",
         "vs-markdown-preview-tools": "在別處看 Markdown，對比 MarsDawn", "themes": "主題",
@@ -1111,7 +1113,7 @@ CLI_PAGES = {
   <p>The free <code>marsdawn</code> command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
+<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app. Looking for the Mac app? <a href="#mac-app">Install it with Homebrew and mas</a>.</p></div>
 
 <p>Calling marsdawn from an AI agent or a script? See <a href="/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code, or <a href="/cli/mcp/">the MCP server</a> if your agent calls tools over MCP instead.</p>
 
@@ -1125,6 +1127,13 @@ CLI_PAGES = {
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>Check which version you have with <code>marsdawn --version</code>.</p>
+
+<h2 id="mac-app">Install the MarsDawn app with Homebrew and mas</h2>
+<p><code>brew install marsdawn</code> installs the command-line tool, not the app. The Mac app comes from the Mac App Store, and <a href="https://github.com/mas-cli/mas">mas</a> can get it from the terminal:</p>
+<pre><code>brew install mas
+sudo mas get 6812925073</code></pre>
+<p>Sign in to the App Store with your Apple Account first; <code>sudo</code> asks for your Mac login password. This installs the App Store version at <code>/Applications/MarsDawn.app</code>. It needs macOS 26 or later, and updates come through the App Store.</p>
+<p>It's free to download. The first time you open MarsDawn you can start a 14-day free trial with everything working; to keep using it after that, unlock it once. There is no subscription. <a href="/pay-once/">How it works</a></p>
 
 <h2>Commands</h2>
 
@@ -1190,7 +1199,7 @@ marsdawn open notes.md --folder .</code></pre>
   <p>免費的 <code>marsdawn</code> 命令列工具：從終端機或 LLM agent 把 Markdown 輸出成 PDF；裝了 MarsDawn app 的話，也能用它開啟檔案。</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。</p></div>
+<div class="summary"><p><strong>marsdawn 免費、另外發佈，不透過 Mac App Store。</strong>用 Homebrew 安裝，在 Apple 晶片的 Mac 上裝好就能直接使用。<code>export</code> 可以單獨使用；<code>open</code> 需要 MarsDawn app。要裝的是 Mac app？<a href="#mac-app">用 Homebrew 和 mas 安裝</a>。</p></div>
 
 <p>要從 AI agent 或腳本呼叫 marsdawn？請看<a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a>，裡面有 JSON 輸出、Schema 和所有離開代碼；如果你的 agent 是透過 MCP 呼叫工具，也可以看<a href="/zh-hant/cli/mcp/">MCP 伺服器</a>。</p>
 
@@ -1204,6 +1213,13 @@ marsdawn open notes.md --folder .</code></pre>
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>用 <code>marsdawn --version</code> 查看安裝的版本。</p>
+
+<h2 id="mac-app">用 Homebrew 和 mas 安裝 MarsDawn app</h2>
+<p><code>brew install marsdawn</code> 裝的是命令列工具，不是 app。Mac 版 app 在 Mac App Store，可以用 <a href="https://github.com/mas-cli/mas">mas</a> 從終端機取得：</p>
+<pre><code>brew install mas
+sudo mas get 6812925073</code></pre>
+<p>先在 App Store 登入 Apple 帳號；<code>sudo</code> 會要你輸入 Mac 的登入密碼。裝好的是 App Store 版，位置在 <code>/Applications/MarsDawn.app</code>，需要 macOS 26 或更新版本，之後的更新照 App Store 的更新走。</p>
+<p>可以免費下載。第一次開啟 MarsDawn 時可以開始 14 天試用，所有功能都能使用；試用結束後想繼續使用，解鎖一次就好，沒有訂閱。<a href="/zh-hant/pay-once/">運作方式</a></p>
 
 <h2>指令</h2>
 
@@ -4029,6 +4045,7 @@ CROPS = {
     "03-dark": (130, 24, 1180, 844),
     "04-vivid": (130, 24, 1180, 844),
     "05-pdf": (230, 66, 980, 760),
+    "06-print-export": (286, 156, 868, 588),
 }
 SMALL_WIDTH = 800
 
@@ -4106,7 +4123,23 @@ FIGURES = {
             (70.14, 13.78, "r", {"en": "The page is for reading, not editing.", "zh-hant": "這一側用來閱讀，不能直接編輯。"}),
         ],
     },
+    "print-export": {
+        "image": "06-print-export",
+        "alt": {
+            "en": "The Print & Export panel: a page preview with a flowchart and some code, three layout cards, and Print… and Save as PDF… buttons.",
+            "zh-hant": "「列印與輸出」面板：左側頁面預覽有流程圖和一小段程式碼，右側三張版面卡片，右下有「列印⋯」和「儲存為 PDF⋯」按鈕。",
+        },
+        "callouts": [
+            (20.83, 48.89, "l", {"en": "Preview the pages first.", "zh-hant": "先預覽頁面。"}),
+            (80.00, 31.00, "r", {"en": "Pick a layout.", "zh-hant": "選一種版面。"}),
+            (80.00, 80.11, "r", {"en": "Print, or save as a PDF.", "zh-hant": "列印，或儲存為 PDF。"}),
+        ],
+    },
 }
+
+
+# Page slugs whose main figure uses a different FIGURES key.
+PAGE_FIGURE = {"pdf": "print-export"}
 
 
 def _trait_page(title, description, intro, body):
@@ -4225,43 +4258,87 @@ TRAIT_PAGES = {
 """,
     ),
     ("en", "pdf"): _trait_page(
-        "Export Markdown to PDF on a Mac, diagrams included · MarsDawn",
-        "Export Markdown as a PDF or print it on your Mac, with Mermaid diagrams and highlighted code. Page breaks avoid splitting short code blocks.",
+        "Print Markdown or Save as PDF on a Mac · MarsDawn",
+        "Preview your Markdown, then print it or save it as a PDF on your Mac, in Document, Handbook or Handout layout, with diagrams and code colors intact.",
         """
 <section class="intro">
-  <h1>The PDF looks like the page you wrote.</h1>
-  <p>Export as PDF or print, in your theme's light colors. Diagrams and highlighted code come through, and page breaks avoid splitting what belongs together.</p>
+  <h1>Print it, or save it as a PDF</h1>
+  <p>MarsDawn prints your Markdown or saves it as a PDF, in your theme's light colors. A preview shows the pages first, so you can pick a layout before you print.</p>
 </section>
 """,
         """
-<h2>What that means</h2>
+<h2>Preview first, then decide</h2>
+<ol class="loop-steps">
+  <li><strong>Open the preview.</strong> Choose File ▸ Print… or File ▸ Export as PDF…; both open the Print &amp; Export sheet.</li>
+  <li><strong>Pick a layout.</strong> Look through the preview, then choose Document, Handbook or Handout.</li>
+  <li><strong>Print or save.</strong> Click Print…, or Save as PDF… to keep a file.</li>
+</ol>
+<h2>Three layouts</h2>
+<p>Every layout can be printed or saved as a PDF.</p>
+<div class="layout-shots">
+  <figure>
+    <img src="/assets/cli/layout-document.png" alt="Document layout, page 1: a title, a paragraph, a flowchart, a code block and a table." width="856" height="1108">
+    <figcaption><strong>Document.</strong> Pages as in the live preview, with automatic page breaks.</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handbook-contents.png" alt="Handbook layout: a contents page listing the headings with their page numbers." width="856" height="1108">
+    <figcaption><strong>Handbook.</strong> A cover, contents with page numbers, each chapter on a new page.</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handout.png" alt="Handout layout, page 1: content on the left, an empty notes column on the right and a footer line." width="856" height="1108">
+    <figcaption><strong>Handout.</strong> A notes column on the right; the footer has file name, date and page number.</figcaption>
+  </figure>
+</div>
+<h2>What ends up on the page</h2>
 <ul>
-  <li>Mermaid diagrams are drawn into the PDF.</li>
+  <li>Mermaid diagrams are drawn into the pages.</li>
   <li>Code blocks keep their syntax highlighting.</li>
   <li>Page breaks avoid leaving a heading at the bottom of a page or splitting code and diagrams.</li>
-  <li>Any layout. Export works even while only the source is showing.</li>
 </ul>
-<p>The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so a script or an AI agent gets the same PDF.</p>
+<p>On iPhone and iPad, version 1.0.2 and later can print a Markdown document.</p>
+<p>The free <a href="/cli/">marsdawn command-line tool</a> uses the same exporter, so scripts and AI agents get the same PDF.</p>
 """,
     ),
     ("zh-hant", "pdf"): _trait_page(
-        "在 Mac 把 Markdown 輸出成 PDF，圖表也在 · MarsDawn",
-        "在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。",
+        "在 Mac 列印 Markdown 或儲存為 PDF · MarsDawn",
+        "在 Mac 上先預覽，再把 Markdown 列印或儲存為 PDF；有文件、手冊、講義三種版面，Mermaid 圖表和程式碼上色都會保留。",
         """
 <section class="intro">
-  <h1>PDF 看起來就是你寫的那一頁。</h1>
-  <p>輸出成 PDF 或列印，使用主題的淺色配色。圖表和程式碼上色都會保留，分頁位置也經過安排。</p>
+  <h1>列印，或儲存為 PDF</h1>
+  <p>MarsDawn 能把 Markdown 列印，或儲存為 PDF，使用主題的淺色配色。先預覽頁面，再選版面。</p>
 </section>
 """,
         """
-<h2>這代表什麼</h2>
+<h2>先預覽，再決定</h2>
+<ol class="loop-steps">
+  <li><strong>開啟預覽。</strong>在「檔案」選「列印⋯」或「輸出為 PDF⋯」，都會開啟「列印與輸出」。</li>
+  <li><strong>選版面。</strong>看過預覽的頁面，再選「文件」、「手冊」或「講義」。</li>
+  <li><strong>列印或儲存。</strong>按「列印⋯」，或按「儲存為 PDF⋯」留下檔案。</li>
+</ol>
+<h2>三種版面</h2>
+<p>每種版面都能列印，也能儲存為 PDF。</p>
+<div class="layout-shots">
+  <figure>
+    <img src="/assets/cli/layout-document.png" alt="文件版面第 1 頁：標題、一段文字、流程圖、程式碼區塊和一張表格。" width="856" height="1108">
+    <figcaption><strong>文件。</strong>跟即時預覽一樣的頁面，自動分頁。</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handbook-contents.png" alt="手冊版面的目錄頁，列出各標題和頁碼。" width="856" height="1108">
+    <figcaption><strong>手冊。</strong>封面、有頁碼的目錄、每章換頁。</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handout.png" alt="講義版面第 1 頁：內容在左，右側是空白的筆記欄，底部有頁尾。" width="856" height="1108">
+    <figcaption><strong>講義。</strong>右側 1/3 留給筆記，頁尾有檔名、日期和頁碼。</figcaption>
+  </figure>
+</div>
+<h2>頁面上會有什麼</h2>
 <ul>
-  <li>Mermaid 圖表直接畫進 PDF。</li>
+  <li>Mermaid 圖表直接畫進頁面。</li>
   <li>程式碼區塊保留語法上色。</li>
   <li>分頁時會盡量不讓標題落在頁尾，也不切開程式碼和圖表。</li>
-  <li>任何版面都能輸出，只顯示原始碼時也可以。</li>
 </ul>
-<p>免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>使用同一套輸出程式，所以腳本或 AI agent 也能得到一樣的 PDF。</p>
+<p>iPhone 和 iPad 從 1.0.2 版起可列印 Markdown 文件。</p>
+<p>免費的 <a href="/zh-hant/cli/">marsdawn 命令列工具</a>用同一套輸出程式，腳本、agent 也能用。</p>
 """,
     ),
     ("en", "native"): _trait_page(
@@ -4394,7 +4471,7 @@ TRAIT_LINK = {
     "en": {
         "yours": ("Your writing stays on your Mac", "No account, no sync, no cloud."),
         "pay-once": ("Try free, pay once", "Free for 14 days, then USD 4.99 once. No subscription."),
-        "pdf": ("PDF export", "Diagrams, highlighted code, careful page breaks."),
+        "pdf": ("Print & PDF", "Preview, pick a layout, then print or save."),
         "native": ("A Mac app", "Native windows, tabs, autosave, Quick Look."),
         "limits": ("What MarsDawn doesn't do", "Know before you buy."),
         "features": ("Features", "Everything MarsDawn does, on one page."),
@@ -4402,7 +4479,7 @@ TRAIT_LINK = {
     "zh-hant": {
         "yours": ("你寫的內容留在你的 Mac 上", "不需要帳號，沒有同步，也沒有雲端。"),
         "pay-once": ("免費試用，買一次就好", "免費試用 14 天，之後 USD 4.99 買一次，沒有訂閱。"),
-        "pdf": ("輸出 PDF", "圖表、程式碼上色、經過安排的分頁。"),
+        "pdf": ("列印與 PDF", "先預覽、選版面，再列印或儲存。"),
         "native": ("為 Mac 而做", "原生視窗、分頁、自動儲存、快速查看。"),
         "limits": ("MarsDawn 做不到的事", "購買前先知道。"),
         "features": ("功能一覽", "MarsDawn 能做的事，一頁看完。"),
@@ -4492,6 +4569,7 @@ OPEN_MD_KEPT = {'en': {'opening_html': 'A <code>.md</code> file is plain text. T
                         'Store: try everything for 14 days, then unlock it once for USD 4.99. No '
                         'subscription, no account. It needs macOS 26 or later.',
         'download': 'Download MarsDawn free on the Mac App Store',
+        'read_mas_html': 'Prefer the terminal? <a href="/cli/#mac-app">Install it with Homebrew and mas</a>.',
         'read_p2_html': 'Open a <code>.md</code> file and read the rendered page next to the source:',
         'read_b1_html': 'The preview updates as you type, and the two panes scroll together.',
         'read_b4_html': 'When you want to change something, the source is right there. MarsDawn is an '
@@ -4514,7 +4592,8 @@ OPEN_MD_KEPT = {'en': {'opening_html': 'A <code>.md</code> file is plain text. T
         'next_items_html': ['Every option of the command-line tool: <a href="/cli/">Command Line</a>.',
                             'What MarsDawn doesn\'t do: <a href="/limits/">the list</a>.',
                             'Reading Markdown in VS Code, a browser or Claude Desktop instead: <a '
-                            'href="/vs/markdown-preview-tools/">how they compare</a>.']},
+                            'href="/vs/markdown-preview-tools/">how they compare</a>.',
+                            'Notes you keep on HackMD: <a href="/from-hackmd/">Move from HackMD to your Mac</a>.']},
  'zh-hant': {'opening_html': '<code>.md</code> 檔案是純文字。標題、粗體、表格和圖表，都是用記號寫成的：<code>#</code> '
                              '代表標題，<code>**</code> 包住粗體，直線符號畫出表格，<code>mermaid</code> '
                              '程式碼區塊則是一張圖。用純文字編輯器打開，看到的就是這些記號。想照作者的意思讀到排好的頁面，就需要有東西把它排版出來。',
@@ -4522,6 +4601,7 @@ OPEN_MD_KEPT = {'en': {'opening_html': 'A <code>.md</code> file is plain text. T
              'read_p1_html': 'MarsDawn 是為 Mac 做的 Markdown 編輯器，可以在 Mac App Store 免費下載：先免費試用全部功能 14 天，之後花 USD '
                              '4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。',
              'download': '到 Mac App Store 免費下載 MarsDawn',
+             'read_mas_html': '習慣用終端機？<a href="/zh-hant/cli/#mac-app">用 Homebrew 和 mas 安裝</a>。',
              'read_p2_html': '打開 <code>.md</code> 檔案，排好的頁面就在原始碼旁邊：',
              'read_b1_html': '預覽會隨著你打字即時更新，兩邊的窗格一起捲動。',
              'read_b4_html': '想改的時候，原始碼就在旁邊。MarsDawn 是編輯器，不只是檢視器。',
@@ -4540,7 +4620,8 @@ OPEN_MD_KEPT = {'en': {'opening_html': 'A <code>.md</code> file is plain text. T
              'next_items_html': ['命令列工具的所有選項：<a href="/zh-hant/cli/">命令列工具</a>。',
                                  'MarsDawn 做不到的事：<a href="/zh-hant/limits/">這份清單</a>。',
                                  '改用 VS Code、瀏覽器或 Claude Desktop 看 Markdown：<a '
-                                 'href="/zh-hant/vs/markdown-preview-tools/">比較一下</a>。']}}
+                                 'href="/zh-hant/vs/markdown-preview-tools/">比較一下</a>。',
+                                 '放在 HackMD 的筆記：<a href="/zh-hant/from-hackmd/">從 HackMD 搬到 Mac</a>。']}}
 OPEN_MD = {loc: {**approved_copy.OPEN_MD[loc], **OPEN_MD_KEPT[loc]} for loc in OPEN_MD_KEPT}
 MERMAID = approved_copy.MERMAID
 # The kept list of "Next" links is as long as a locale's old page had it; it is not part of the shape.
@@ -5081,7 +5162,7 @@ def features_marks(locale: str, body: str) -> str:
             return f'<a href="{LISTING_URL}">{HOME[locale]["cta_try"]}</a>'
         if mark.startswith("link:"):
             slug = mark[5:]
-            return f'<a href="{page_path(locale, slug)}">{UI[locale][SLUG_TO_UI_KEY[slug]]}</a>'
+            return f'<a href="{page_path(locale, slug)}">{html_escape(UI[locale][SLUG_TO_UI_KEY[slug]], quote=False)}</a>'
         return match.group(0)
     return _FEATURES_MARK.sub(fill, body)
 
@@ -5191,14 +5272,14 @@ HOME_CARD_COPY = {
         "es": ("Diagramas Mermaid y código", "La vista previa dibuja el diagrama y resalta el código, junto al código fuente."),
     },
     "pdf": {
-        "en": ("PDF export", "Mermaid diagrams, drawn into the PDF."),
-        "zh-hant": ("輸出 PDF", "Mermaid 圖表直接畫進 PDF。"),
-        "zh-hans": ("导出 PDF", "Mermaid 图表直接画进 PDF。"),
-        "ja": ("PDF 書き出し", "Mermaid 図は PDF に描き込まれます。"),
-        "ko": ("PDF 내보내기", "Mermaid 다이어그램이 PDF 안에 그려집니다."),
-        "de": ("PDF-Export", "Mermaid-Diagramme, ins PDF gezeichnet."),
-        "fr": ("Export PDF", "Les diagrammes Mermaid, dessinés dans le PDF."),
-        "es": ("Exportación a PDF", "Diagramas Mermaid, dibujados dentro del PDF."),
+        "en": ("Print & PDF", "Mermaid diagrams, drawn into the PDF."),
+        "zh-hant": ("列印與 PDF", "Mermaid 圖表直接畫進 PDF。"),
+        "zh-hans": ("打印与 PDF", "Mermaid 图表直接画进 PDF。"),
+        "ja": ("プリントと PDF", "Mermaid 図は PDF に描き込まれます。"),
+        "ko": ("프린트 및 PDF", "Mermaid 다이어그램이 PDF 안에 그려집니다."),
+        "de": ("Drucken und PDF", "Mermaid-Diagramme, ins PDF gezeichnet."),
+        "fr": ("Imprimer et PDF", "Les diagrammes Mermaid, dessinés dans le PDF."),
+        "es": ("Imprimir y PDF", "Diagramas Mermaid, dibujados dentro del PDF."),
     },
 }
 
@@ -5275,6 +5356,7 @@ HOME = {
             "<code>marsdawn open</code> opens files in the MarsDawn app for you to review.",
             "<code>--json</code> gives scripts and agents results they can parse.",
         ],
+        "install_app_note": 'That installs the command-line tool. To get the Mac app with Homebrew, <a href="/cli/#mac-app">see how</a>.',
         "proof_h": "Features",
     },
     "zh-hant": {
@@ -5288,6 +5370,7 @@ HOME = {
             "<code>marsdawn open</code> 在 MarsDawn app 裡開啟檔案，讓你審閱。",
             "<code>--json</code> 回傳腳本和 agent 能解析的結果。",
         ],
+        "install_app_note": '上面裝的是命令列工具。要用 Homebrew 裝 Mac app，<a href="/zh-hant/cli/#mac-app">看這裡</a>。',
         "proof_h": "功能",
     },
     "zh-hans": {
@@ -5301,6 +5384,7 @@ HOME = {
             "<code>marsdawn open</code> 在 MarsDawn app 里打开文件，让你审阅。",
             "<code>--json</code> 返回脚本和代理能解析的结果。",
         ],
+        "install_app_note": '上面装的是命令行工具。要用 Homebrew 装 Mac app，<a href="/zh-hans/cli/#mac-app">看这里</a>。',
         "proof_h": "功能",
     },
     "ja": {
@@ -5314,6 +5398,7 @@ HOME = {
             "<code>marsdawn open</code> はファイルを MarsDawn アプリで開き、確認できるようにします。",
             "<code>--json</code> は、スクリプトやエージェントが解析できる結果を返します。",
         ],
+        "install_app_note": 'ここでインストールされるのはコマンドラインツールです。Homebrew で Mac アプリを入手する方法は、<a href="/ja/cli/#mac-app">こちら</a>をご覧ください。',
         "proof_h": "機能",
     },
 }
@@ -5542,7 +5627,7 @@ def home_sections_html(locale: str) -> str:
             line = line.replace(term, f'<a href="{page_path(locale, "quicklook")}">{term}</a>', 1)
         return line
     traits = "\n".join(
-        f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a><span>{trait_line(slug)}</span></li>'
+        f'  <li><a href="{page_path(locale, slug)}">{html_escape(TRAIT_LINK[locale][slug][0], quote=False)}</a><span>{trait_line(slug)}</span></li>'
         for slug in HOME_TRAITS
     )
     if locale in HOME_THEMES_LINK:
@@ -5556,6 +5641,7 @@ def home_sections_html(locale: str) -> str:
 <ul>
 {caps}
 </ul>
+<p>{home["install_app_note"]}</p>
 <p class="install-links">{links}</p>
 </section>
 <nav class="traits" aria-label="{TRAIT_NAV_HEADING[locale]}">
@@ -5966,7 +6052,7 @@ THEME_GALLERY_NOTE = {
 
 def trait_nav_html(locale: str, current: str) -> str:
     items = "\n".join(
-        f'  <li><a href="{page_path(locale, slug)}">{TRAIT_LINK[locale][slug][0]}</a>'
+        f'  <li><a href="{page_path(locale, slug)}">{html_escape(TRAIT_LINK[locale][slug][0], quote=False)}</a>'
         f'<span>{TRAIT_LINK[locale][slug][1]}</span></li>'
         for slug in TRAIT_ORDER
         if slug != current
@@ -6053,7 +6139,7 @@ def annotations_css() -> str:
         "/* Generated by scripts/build_pages.py: callout positions for the annotated",
         "   screenshots, kept out of inline styles so the CSP stays strict. */",
     ]
-    for slug in TRAIT_ORDER:
+    for slug in [*TRAIT_ORDER, "print-export"]:
         image = FIGURES[slug]["image"]
         for index, (x, y, _, _) in enumerate(FIGURES[slug]["callouts"], start=1):
             cx, cy = cropped_position(image, x, y)
@@ -6095,17 +6181,17 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
         ])
     return "\n\n".join([
         html_to_markdown(page["intro"]).rstrip(),
-        figure_markdown(locale, slug),
+        figure_markdown(locale, PAGE_FIGURE.get(slug, slug)),
         html_to_markdown(page["body"]).rstrip(),
     ])
 
-PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "copy-for-ai", "markdown-to-pdf", "vs", "vs/macmd-viewer", "best-markdown-viewer-mac", "cli", "cli/agents", "cli/skill",
+PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "copy-for-ai", "from-hackmd", "markdown-to-pdf", "vs", "vs/macmd-viewer", "best-markdown-viewer-mac", "cli", "cli/agents", "cli/skill",
               "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/agents", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
               "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog", "roadmap",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
 SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
-                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "mermaid-preview-mac": "mermaid-preview-mac", "quicklook": "quicklook", "copy-for-ai": "copy-for-ai", "cli/skill": "skill",
+                  "markdown-to-pdf": "markdown-to-pdf", "view-markdown-on-mac": "view-markdown-on-mac", "mermaid-preview-mac": "mermaid-preview-mac", "quicklook": "quicklook", "copy-for-ai": "copy-for-ai", "from-hackmd": "from-hackmd", "cli/skill": "skill",
                   "yours": "yours", "pay-once": "pay-once", "pdf": "pdf", "native": "native", "limits": "limits",
                   "vs": "vs", "vs/macmd-viewer": "vs-macmd-viewer", "best-markdown-viewer-mac": "best-markdown-viewer-mac",
                   "cli/mcp": "mcp", "token-efficient-review": "token-efficient-review",
@@ -6168,8 +6254,8 @@ def all_pages() -> dict:
             body = "".join(pieces[:-2]) + brand_film_themes.MARK + "\n" + "".join(pieces[-2:])
         if body != page["body"]:
             merged[(locale, slug)] = {**page, "body": body}
-    return apply_copy_for_ai(apply_copy363(apply_copy369_pdf_pages(apply_app_changelog(apply_cli254(apply_best228(
-        apply_promo130(apply_seo_copy(merged))))))))
+    return apply_from_hackmd(apply_copy_for_ai(apply_copy363(apply_copy369_pdf_pages(apply_app_changelog(apply_cli254(
+        apply_best228(apply_promo130(apply_seo_copy(merged)))))))))
 
 
 # --- Search and answer-engine copy (scripts/promo130/data.py) ---------------------------------
@@ -6311,6 +6397,49 @@ def apply_copy_for_ai(merged: dict) -> dict:
                               page["body"], count=1, flags=re.S)
             assert n == 1, f"{locale}/{slug}: no sentence naming the feature"
             out[(locale, slug)] = {**page, "body": body}
+    return out
+
+
+def from_hackmd_page(copy: dict, linked: bool) -> dict:
+    """/from-hackmd/ (#278): Aria's approved copy, in the order she wrote it, rendered by block kind
+    (scripts/copy278/ingest.py). The link to the team-review guide (mars-dawn#636) is made only once that
+    page exists in the locale; until then its words stay and the anchor is left off, so no link is dead."""
+    blocks = iter(copy["blocks"])
+    parts = [f'<section class="intro">\n  <h1>{html_escape(next(blocks)[1], quote=False)}</h1>\n  <p>{next(blocks)[1]}</p>\n</section>']
+    for kind, *rest in blocks:
+        if kind == "p":
+            parts.append(f"<p>{rest[0]}</p>")
+        elif kind == "h2":
+            parts.append(f"<h2>{html_escape(rest[0], quote=False)}</h2>")
+        elif kind == "ul":
+            parts.append("<ul>\n" + "\n".join(f"  <li>{item}</li>" for item in rest[0]) + "\n</ul>")
+        elif kind == "pre":
+            parts.append(f"<pre><code>{html_escape(rest[0], quote=False)}</code></pre>")
+        elif kind == "table":
+            head, rows = rest
+            cols = "".join(f'<th scope="col">{cell}</th>' for cell in head)
+            trs = "\n".join(f'  <tr><th scope="row">{row[0]}</th>' + "".join(f"<td>{cell}</td>" for cell in row[1:]) + "</tr>"
+                            for row in rows)
+            parts.append(f'<div class="table-scroll"><table class="compare">\n<thead><tr>{cols}</tr></thead>\n<tbody>\n{trs}\n</tbody>\n</table></div>')
+        elif kind == "faq":
+            parts.append(faq_html(*rest))
+        else:
+            raise AssertionError(kind)
+    body = "\n".join(parts) + "\n"
+    if not linked:
+        body = re.sub(r'<a href="[^"]*/team-review/">(.*?)</a>', r"\1", body)
+    return {"title": f'{copy["title"]} · MarsDawn', "description": copy["description"], "body": body}
+
+
+def apply_from_hackmd(merged: dict) -> dict:
+    """The page (#278). It is not linked from any other page, the header or the footer: where it is entered
+    from is the owner's to decide."""
+    out = dict(merged)
+    for locale, copy in copy278_data.DATA.items():
+        if locale not in LOCALES or (locale, "index") not in out:
+            continue
+        UI[locale].setdefault("from-hackmd", _plain(copy["blocks"][0][1]))
+        out[(locale, "from-hackmd")] = from_hackmd_page(copy, (locale, "team-review") in out)
     return out
 
 
@@ -6506,11 +6635,13 @@ def best228_page(locale: str, d: dict) -> dict:
         for app in d["apps"])
     notfor = "\n".join(f"  <li>{item}</li>" for item in d["notfor"])
     faq = "\n".join(f"<h3>{q}</h3>\n<p>{a}</p>" for q, a in d["faq"])
+    intro = d.get("intro_html") or f'<p>{d["intro"]}</p>'
+    scenarios = d["scenarios_html"] + "\n" if d.get("scenarios_html") else ""
     body = f"""<section class="intro">
   <h1>{d["h1"]}</h1>
-  <p>{d["intro"]}</p>
+  {intro}
 </section>
-{sections}
+{scenarios}{sections}
 <h2 id="comparison">{d["cmp_h"]}</h2>
 {best228_table_html(d)}
 <h2 id="not-for">{d["notfor_h"]}</h2>
@@ -6533,6 +6664,8 @@ def apply_best228(merged: dict) -> dict:
         if (locale, "vs") not in out:
             continue
         d = best_data.DATA[locale]
+        if locale == "zh-hant":
+            d = copy336_data.merge(d)  # #336: this one locale's page is the Markdown-reader page (scripts/copy336)
         UI[locale].setdefault(BEST228_SLUG, _plain(d["h1"]))
         out[(locale, BEST228_SLUG)] = best228_page(locale, d)
         hub = out[(locale, "vs")]
@@ -7017,7 +7150,7 @@ def site_footer_nav_html(locale: str, current=None) -> str:
             slug = href.strip("/")
             if has_page(locale, slug):
                 mark = ' aria-current="page"' if slug == current else ""
-                rows.append(f'        <li><a href="{page_path(locale, slug)}"{mark}>{ui[SLUG_TO_UI_KEY[slug]]}</a></li>\n')
+                rows.append(f'        <li><a href="{page_path(locale, slug)}"{mark}>{html_escape(ui[SLUG_TO_UI_KEY[slug]], quote=False)}</a></li>\n')
         if key == "support":
             rows.append(f'        <li><button type="button" id="consent-settings-link" class="footer-link-btn">{ui["cookie_settings"]}</button></li>\n')
         sections.append(f'    <section aria-labelledby="footer-{key}">\n      <h3 id="footer-{key}">{_attr(name)}</h3>\n'
@@ -7056,7 +7189,7 @@ class MarkdownConversionError(Exception):
     """Raised when the converter meets an HTML tag it doesn't know how to render."""
 
 
-_TRANSPARENT_TAGS = {"section", "div"}
+_TRANSPARENT_TAGS = {"section", "div", "figure"}
 # Elements with no closing tag. Pushing one onto the stack would nest the rest of the page inside it.
 _VOID_TAGS = {"img", "br"}
 
@@ -7162,9 +7295,12 @@ def _render_block(node: _Node) -> str:
         return _render_children(node.children)
     if tag in ("h1", "h2", "h3"):
         return "#" * int(tag[1]) + " " + _render_inline(node.children).strip() + "\n\n"
-    if tag == "p":
+    if tag in ("p", "figcaption"):
         text = _render_inline(node.children).strip()
         return (text + "\n\n") if text else ""
+    if tag == "img":
+        # A picture on its own line (/pdf/'s three layout pages, in <figure>): its alt text is the Markdown twin's description.
+        return _render_inline([node]) + "\n\n"
     if tag in ("ul", "ol"):
         items = []
         for child in node.children:
@@ -7631,7 +7767,8 @@ def render(locale: str, slug: str, page: dict) -> str:
     elif has_intro:
         # /pay-once/ is where the price is explained, so the sale line (app #103) goes under its intro.
         intro_html = page["intro"].strip() + ("\n" + price.sale_line_html(locale).strip() if slug == "pay-once" else "")
-        main_html = "\n".join([intro_html.strip(), figure_html(locale, slug), page["body"].strip(), trait_nav_html(locale, slug)])
+        main_html = "\n".join([intro_html.strip(), figure_html(locale, PAGE_FIGURE.get(slug, slug)),
+                               page["body"].strip(), trait_nav_html(locale, slug)])
     else:
         main_html = templates_pages.expand_loops(locale, page["body"].strip())
     main_html = main_html.replace("<!--iphone-badge-->", store_badge_html(locale, FEATURES_IPHONE_CAMPAIGN))
@@ -7788,10 +7925,16 @@ Source: {BASE_URL}{PRODUCT_FACTS_PATH}
 - The MarsDawn app: macOS 26 (Tahoe) or later, Apple silicon or Intel.
 - The `marsdawn` command-line tool: macOS 15 or later to run; building it from source needs Swift 6.2 (Xcode 26) or later.
 
+## Install the Mac app
+
+- The MarsDawn app is installed from the [Mac App Store]({LISTING_URL}).
+- With Homebrew: run `brew install mas`, then `sudo mas get 6812925073`. Sign in to the App Store with an Apple Account first. This installs the App Store version at `/Applications/MarsDawn.app`.
+- `brew install marsdawn` is different: it installs the command-line tool, not the app.
+
 ## Free and open source, available today
 
 - [mars-dawn-kit]({KIT_URL}) is free and open source, licensed {KIT_LICENSE}.
-- The free `marsdawn` command-line tool is built from that kit and distributed separately from the Mac App Store: `{BREW_TAP_INSTALL}`.
+- The free `marsdawn` command-line tool is built from that kit and distributed separately from the Mac App Store: `{BREW_TAP_INSTALL}`. This installs the tool, not the MarsDawn app.
 - Both the kit and the CLI exist today and can be installed now, independent of the MarsDawn app's own release status.
 
 ## Entity disambiguation
@@ -7907,9 +8050,10 @@ def build_llms_txt(pages: dict) -> str:
         f"Open source: [mars-dawn-kit]({KIT_URL}) is free and {KIT_LICENSE}, and the free `marsdawn` "
         "command-line tool is built from it."
     )
-    lines.append(f"Install: `{BREW_TAP_INSTALL}` (a prebuilt bottle on Apple silicon, "
+    lines.append(f"Install the command-line tool: `{BREW_TAP_INSTALL}` (a prebuilt bottle on Apple silicon, "
                  "no Xcode needed; on Intel it builds from source with Xcode 26; macOS 15 or later). "
                  "`export` works without the MarsDawn app; `open` needs it.")
+    lines.append(f"Install the Mac app: from the Mac App Store ({LISTING_URL}). With Homebrew: `brew install mas`, then `sudo mas get 6812925073`; sign in to the App Store first.")
     lines.append("")
     return "\n".join(lines).rstrip() + "\n"
 

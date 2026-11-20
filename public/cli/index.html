@@ -127,7 +127,7 @@ try {
   <p>The free <code>marsdawn</code> command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
+<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app. Looking for the Mac app? <a href="#mac-app">Install it with Homebrew and mas</a>.</p></div>
 
 <p>Calling marsdawn from an AI agent or a script? See <a href="/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code, or <a href="/cli/mcp/">the MCP server</a> if your agent calls tools over MCP instead.</p>
 
@@ -141,6 +141,13 @@ try {
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>Check which version you have with <code>marsdawn --version</code>.</p>
+
+<h2 id="mac-app">Install the MarsDawn app with Homebrew and mas</h2>
+<p><code>brew install marsdawn</code> installs the command-line tool, not the app. The Mac app comes from the Mac App Store, and <a href="https://github.com/mas-cli/mas">mas</a> can get it from the terminal:</p>
+<pre><code>brew install mas
+sudo mas get 6812925073</code></pre>
+<p>Sign in to the App Store with your Apple Account first; <code>sudo</code> asks for your Mac login password. This installs the App Store version at <code>/Applications/MarsDawn.app</code>. It needs macOS 26 or later, and updates come through the App Store.</p>
+<p>It's free to download. The first time you open MarsDawn you can start a 14-day free trial with everything working; to keep using it after that, unlock it once. There is no subscription. <a href="/pay-once/">How it works</a></p>
 
 <h2 id="commands">Commands</h2>
 
@@ -229,7 +236,7 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pr
         <li><a href="/features/">Features</a></li>
         <li><a href="/quicklook/">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/">PDF export</a></li>
+        <li><a href="/pdf/">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>

@@ -302,7 +302,7 @@ OPEN_MD = {'title': 'Mac에서 .md 파일 여는 방법 · MarsDawn',
          ['.md 파일을 PDF로 바꿀 수 있나요?',
           '네. MarsDawn에서 “파일 ▸ PDF로 내보내기…”(⌥⌘E) 또는 “파일 ▸ 프린트…”를 선택하면, 페이지가 나뉘고 다이어그램이 그려지며 코드는 강조 표시된 채로, '
           '테마의 라이트 색상으로 출력됩니다. 앱이 없어도 무료 `marsdawn export` 명령줄 도구가 같은 PDF를 만듭니다: `marsdawn export notes.md`. '
-          '[PDF 내보내기](/ko/pdf/)와 [Markdown을 PDF로](/ko/markdown-to-pdf/)를 참고하세요.'],
+          '[프린트 및 PDF](/ko/pdf/)와 [Markdown을 PDF로](/ko/markdown-to-pdf/)를 참고하세요.'],
          ['AI 에이전트가 쓴 .md 파일도 열 수 있나요?',
           '네, MarsDawn은 바로 그것을 위해 만들어졌습니다. 파일을 열고 렌더링된 페이지를 소스 옆에서 읽으세요. 에이전트가 고치면 다시 여세요. 에이전트가 `marsdawn '
           'open plan.md`를 실행해 MarsDawn에서 파일을 대신 열어 줄 수도 있습니다. [에이전트가 돌려준 결과 읽기](/ko/reading-agent-output/)를 '
@@ -315,6 +315,7 @@ OPEN_MD = {'title': 'Mac에서 .md 파일 여는 방법 · MarsDawn',
  'read_p1_html': 'MarsDawn은 Mac용 Markdown 편집기입니다. Mac App Store에서 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD '
                  '4.99에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다. macOS 26 이상이 필요합니다.',
  'download': 'Mac App Store에서 MarsDawn 무료로 다운로드',
+ 'read_mas_html': '터미널이 편하다면 <a href="/ko/cli/#mac-app">Homebrew와 mas로 설치하는 방법</a>도 있습니다.',
  'read_p2_html': '<code>.md</code> 파일을 열고 원본 옆에서 렌더링된 페이지를 읽으세요.',
  'read_b1_html': '입력하는 동안 미리보기가 업데이트되고, 두 패널이 함께 스크롤됩니다.',
  'read_b4_html': '무언가를 고치고 싶을 때 원본이 바로 옆에 있습니다. MarsDawn은 뷰어만이 아니라 편집기입니다.',
@@ -333,7 +334,8 @@ OPEN_MD = {'title': 'Mac에서 .md 파일 여는 방법 · MarsDawn',
  'next_items_html': ['명령줄 도구의 모든 옵션: <a href="/ko/cli/">명령줄</a>.',
                      'MarsDawn이 하지 않는 일: <a href="/ko/limits/">목록</a>.',
                      'VS Code, 브라우저, Claude Desktop에서 Markdown을 읽는 경우: <a '
-                     'href="/ko/vs/markdown-preview-tools/">비교해 보기</a>.']}
+                     'href="/ko/vs/markdown-preview-tools/">비교해 보기</a>.',
+                     'HackMD에 보관 중인 노트: <a href="/ko/from-hackmd/">HackMD에서 Mac으로</a>.']}
 
 MERMAID = {'title': 'Mac에서 Mermaid 미리보기, Markdown 바로 옆에서 · MarsDawn',
  'description': 'Mac에서 Mermaid 다이어그램을 Markdown 옆에 그려서 보세요: 실시간 미리보기, 훑어보기, PDF 내보내기. 다이어그램에 오류가 있으면 오류와 해당 '
@@ -370,7 +372,7 @@ MERMAID = {'title': 'Mac에서 Mermaid 미리보기, Markdown 바로 옆에서 �
          '건넬 수 있는 프롬프트가 있습니다.',
  'next_h2': '다음',
  'next': '- 이미 잘 그려지는 다이어그램에서 시작하기: [순서도 템플릿](/ko/templates/flowchart/).\n'
-         '- 내보내기: [PDF 내보내기](/ko/pdf/). 스크립트에서 내보내려면 [명령줄](/ko/cli/).\n'
+         '- 내보내기: [프린트 및 PDF](/ko/pdf/). 스크립트에서 내보내려면 [명령줄](/ko/cli/).\n'
          '- 파일을 어떻게 여는지 모르겠다면? [Mac에서 .md 파일 여는 방법](/ko/view-markdown-on-mac/).',
  'try_h2': 'Mac에서 사용해 보세요',
  'try': 'MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다. macOS 26 '
@@ -574,23 +576,45 @@ def build(k) -> dict:
 """,
     }
     pages['pdf'] = {
-        "title": 'Mac에서 Markdown을 PDF로 내보내기, 다이어그램까지 · MarsDawn',
-        "description": 'Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록을 가르지 않도록 합니다.',
+        "title": 'Mac에서 Markdown 프린트 또는 PDF로 저장 · MarsDawn',
+        "description": 'Mac에서 미리 본 뒤 Markdown을 프린트하거나 PDF로 저장하세요. 문서·설명서·프린트물 레이아웃을 지원하고 다이어그램과 코드 색도 그대로 남습니다.',
         "intro": """
 <section class="intro">
-  <h1>PDF가 내가 쓴 페이지 그대로 보입니다.</h1>
-  <p>테마의 라이트 색상으로 PDF로 내보내거나 프린트하세요. 다이어그램과 하이라이트된 코드가 그대로 담기고, 페이지 나눔은 함께 있어야 할 것을 떼어 놓지 않습니다.</p>
+  <h1>프린트하거나 PDF로 저장하세요</h1>
+  <p>MarsDawn은 Markdown을 프린트하거나 PDF로 저장합니다. 테마의 라이트 색상을 쓰며, 먼저 페이지를 미리 보고 레이아웃을 고를 수 있습니다.</p>
 </section>
 """,
         "body": """
-<h2>무슨 뜻인가요</h2>
+<h2>먼저 미리 보고 결정하세요</h2>
+<ol class="loop-steps">
+  <li><strong>미리보기 열기.</strong> “파일 ▸ 프린트…”나 “파일 ▸ PDF로 내보내기…”를 고르면 “프린트 및 내보내기”가 열립니다.</li>
+  <li><strong>레이아웃 고르기.</strong> 미리보기에서 페이지를 확인한 뒤 ‘문서’, ‘설명서’, ‘프린트물’ 중에서 고릅니다.</li>
+  <li><strong>프린트 또는 저장.</strong> “프린트…”를 클릭하거나, 파일로 남기려면 “PDF로 저장…”을 클릭합니다.</li>
+</ol>
+<h2>세 가지 레이아웃</h2>
+<p>어떤 레이아웃이든 프린트하거나 PDF로 저장할 수 있습니다.</p>
+<div class="layout-shots">
+  <figure>
+    <img src="/assets/cli/layout-document.png" alt="문서 레이아웃 1쪽: 제목, 문단, 순서도, 코드 블록, 표." width="856" height="1108">
+    <figcaption><strong>문서.</strong> 미리보기와 같은 페이지, 자동 페이지 나누기.</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handbook-contents.png" alt="설명서 레이아웃의 목차 페이지. 제목과 페이지 번호가 나열되어 있음." width="856" height="1108">
+    <figcaption><strong>설명서.</strong> 표지, 페이지 번호가 있는 목차, 장마다 새 페이지.</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/cli/layout-handout.png" alt="프린트물 레이아웃 1쪽: 왼쪽에 내용, 오른쪽에 빈 메모 공간, 아래에 바닥글." width="856" height="1108">
+    <figcaption><strong>프린트물.</strong> 오른쪽 1/3에 메모 공간, 바닥글에 파일 이름·날짜·페이지 번호.</figcaption>
+  </figure>
+</div>
+<h2>페이지에 담기는 것</h2>
 <ul>
-  <li>Mermaid 다이어그램이 PDF 안에 그려집니다.</li>
+  <li>Mermaid 다이어그램이 페이지 안에 그려집니다.</li>
   <li>코드 블록은 구문 하이라이트를 유지합니다.</li>
   <li>페이지 나눔은 제목이 페이지 맨 아래에 홀로 남거나 코드와 다이어그램이 갈라지지 않도록 합니다.</li>
-  <li>어떤 레이아웃에서든 됩니다. 소스만 보이는 상태에서도 내보낼 수 있습니다.</li>
 </ul>
-<p>무료 <a href="/ko/cli/">marsdawn 명령줄 도구</a>도 같은 내보내기 엔진을 쓰므로, 스크립트나 AI 에이전트도 같은 PDF를 얻습니다.</p>
+<p>iPhone과 iPad에서는 1.0.2 버전부터 Markdown 문서를 프린트할 수 있습니다.</p>
+<p>무료 <a href="/ko/cli/">marsdawn 명령줄 도구</a>는 같은 내보내기 엔진이라 스크립트·AI 에이전트도 같은 PDF를 얻습니다.</p>
 """,
     }
     pages['native'] = {
@@ -720,7 +744,7 @@ def build(k) -> dict:
   <p>무료 <code>marsdawn</code> 명령줄 도구입니다. 셸이나 LLM 에이전트에서 Markdown을 PDF로 내보내고, MarsDawn 앱이 설치되어 있으면 앱에서 파일을 열 수 있습니다.</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn은 무료이며 Mac App Store와 별도로 배포됩니다.</strong> Homebrew로 설치하세요. Apple 실리콘 Mac에서는 바로 실행할 수 있는 상태로 설치됩니다. <code>export</code>는 단독으로 작동하고, <code>open</code>은 MarsDawn 앱이 필요합니다.</p></div>
+<div class="summary"><p><strong>marsdawn은 무료이며 Mac App Store와 별도로 배포됩니다.</strong> Homebrew로 설치하세요. Apple 실리콘 Mac에서는 바로 실행할 수 있는 상태로 설치됩니다. <code>export</code>는 단독으로 작동하고, <code>open</code>은 MarsDawn 앱이 필요합니다. Mac 앱을 찾고 계신가요? <a href="#mac-app">Homebrew와 mas로 설치하는 방법</a>을 확인하세요.</p></div>
 
 <p>AI 에이전트나 스크립트에서 marsdawn을 호출하나요? JSON 출력과 스키마, 모든 종료 코드는 <a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a>에서, 에이전트가 MCP로 도구를 호출한다면 <a href="/ko/cli/mcp/">MCP 서버</a>에서 확인하세요.</p>
 
@@ -734,6 +758,13 @@ def build(k) -> dict:
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>설치된 버전은 <code>marsdawn --version</code>으로 확인할 수 있습니다.</p>
+
+<h2 id="mac-app">Homebrew와 mas로 MarsDawn 앱 설치하기</h2>
+<p><code>brew install marsdawn</code>으로 설치되는 것은 명령줄 도구이며, 앱이 아닙니다. Mac용 앱은 Mac App Store에서 제공되며, <a href="https://github.com/mas-cli/mas">mas</a>를 쓰면 터미널에서 받을 수 있습니다.</p>
+<pre><code>brew install mas
+sudo mas get 6812925073</code></pre>
+<p>먼저 App Store에 Apple 계정으로 로그인하세요. <code>sudo</code>는 Mac의 로그인 암호를 요청합니다. App Store 버전이 <code>/Applications/MarsDawn.app</code>에 설치됩니다. macOS 26 이상이 필요하며, 업데이트는 App Store를 통해 제공됩니다.</p>
+<p>무료로 다운로드할 수 있습니다. MarsDawn을 처음 열 때 모든 기능을 쓸 수 있는 14일 무료 체험을 시작할 수 있습니다. 체험이 끝난 뒤에도 계속 쓰려면 한 번만 잠금 해제하면 됩니다. 구독은 없습니다. <a href="/ko/pay-once/">이렇게 진행됩니다</a></p>
 
 <h2>명령</h2>
 
@@ -798,6 +829,10 @@ marsdawn open notes.md --folder .</code></pre>
                      "callouts": ['편집기의 Markdown 하이라이트, 포함.', '모든 테마와 모든 레이아웃이 포함됩니다.', 'Mermaid 다이어그램, 포함.', '코드 하이라이트, 포함.']},
         'pdf': {"alt": 'MarsDawn에서 내보낸 PDF를 페이지 축소판과 함께 PDF 뷰어로 연 모습.',
                 "callouts": ['Mermaid 다이어그램이 PDF 안에 그려집니다.', '코드는 하이라이트를 유지합니다.']},
+        'print-export': {
+            "alt": '“프린트 및 내보내기”: 순서도·코드 미리보기, 레이아웃 카드 3개, “프린트…”·“PDF로 저장…” 버튼.',
+            "callouts": ['먼저 페이지 미리보기.', '레이아웃 고르기.', '프린트 또는 PDF로 저장.'],
+        },
         'native': {"alt": '분할 보기의 MarsDawn: 왼쪽은 Markdown 소스, 오른쪽은 렌더링된 페이지.',
                    "callouts": ['네이티브 Mac 윈도우.', 'Markdown 하이라이트가 더해진 Mac의 텍스트 편집기.', '⌘1 소스, ⌘2 분할, ⌘3 미리보기.', '입력하는 대로 페이지가 바뀝니다.']},
         'limits': {"alt": '다크 모드의 MarsDawn. 왼쪽은 Markdown 소스, 오른쪽은 렌더링된 페이지.',
@@ -814,6 +849,7 @@ marsdawn open notes.md --folder .</code></pre>
             '<code>marsdawn open</code>은 검토할 수 있도록 MarsDawn 앱에서 파일을 엽니다.',
             '<code>--json</code>은 스크립트와 에이전트가 파싱할 수 있는 결과를 돌려줍니다.',
         ],
+        "install_app_note": '위 명령으로 설치되는 것은 명령줄 도구입니다. Homebrew로 Mac 앱을 설치하는 방법은 <a href="/ko/cli/#mac-app">여기</a>에서 확인하세요.',
         "proof_h": '기능',
     }
     compare_tables = {
@@ -1868,9 +1904,9 @@ flowchart LR
     }
 
     app_ui_languages = '영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어'
-    ui = {'features': '기능 한눈에 보기', 'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 .md 파일 여는 방법', 'mermaid-preview-mac': 'Mac에서 Mermaid 미리보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': 'PDF 내보내기', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '테마', 'themes-new': '테마 만들기', 'themes-agents': '에이전트와 함께 테마 만들기', 'themes-gallery': '테마 갤러리', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'changelog': '변경 내역', 'roadmap': '로드맵', 'reading-notes': '편집자의 독서 노트', 'reading-notes-anthropic': '독서 노트: Anthropic', 'reading-notes-chip-huyen': '독서 노트: Chip Huyen', 'reading-notes-lilian-weng': '독서 노트: Lilian Weng', 'reading-notes-harrison-chase': '독서 노트: Harrison Chase', 'reading-notes-langchain': '독서 노트: LangChain(Jess Ou)', 'reading-notes-andrew-ng': '독서 노트: Andrew Ng', 'consent_text': '분석 쿠키를 사용합니다. 수락하기 전에는 꺼져 있습니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
+    ui = {'features': '기능 한눈에 보기', 'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 .md 파일 여는 방법', 'mermaid-preview-mac': 'Mac에서 Mermaid 미리보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': '프린트 및 PDF', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '테마', 'themes-new': '테마 만들기', 'themes-agents': '에이전트와 함께 테마 만들기', 'themes-gallery': '테마 갤러리', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'changelog': '변경 내역', 'roadmap': '로드맵', 'reading-notes': '편집자의 독서 노트', 'reading-notes-anthropic': '독서 노트: Anthropic', 'reading-notes-chip-huyen': '독서 노트: Chip Huyen', 'reading-notes-lilian-weng': '독서 노트: Lilian Weng', 'reading-notes-harrison-chase': '독서 노트: Harrison Chase', 'reading-notes-langchain': '독서 노트: LangChain(Jess Ou)', 'reading-notes-andrew-ng': '독서 노트: Andrew Ng', 'consent_text': '분석 쿠키를 사용합니다. 수락하기 전에는 꺼져 있습니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
     store_chip = 'Mac App Store에서 판매 중'
-    trait_link = {'features': ('기능 한눈에 보기', 'MarsDawn이 하는 모든 일을 한 페이지에.'), 'yours': ('내 글은 내 Mac에', '계정도, 동기화도, 클라우드도 없습니다.'), 'pay-once': ('무료로 체험하고, 한 번만 구입', '14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.'), 'pdf': ('PDF 내보내기', '다이어그램, 코드 하이라이트, 세심한 페이지 나눔.'), 'native': ('Mac 앱', '네이티브 윈도우와 탭, 자동 저장, 훑어보기.'), 'limits': ('MarsDawn이 하지 않는 일', '구입 전에 알아 둘 점.')}
+    trait_link = {'features': ('기능 한눈에 보기', 'MarsDawn이 하는 모든 일을 한 페이지에.'), 'yours': ('내 글은 내 Mac에', '계정도, 동기화도, 클라우드도 없습니다.'), 'pay-once': ('무료로 체험하고, 한 번만 구입', '14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.'), 'pdf': ('프린트 및 PDF', '미리 보고 레이아웃을 고른 뒤 프린트하거나 저장.'), 'native': ('Mac 앱', '네이티브 윈도우와 탭, 자동 저장, 훑어보기.'), 'limits': ('MarsDawn이 하지 않는 일', '구입 전에 알아 둘 점.')}
     trait_nav_heading = 'MarsDawn에서 기대할 수 있는 것'
     figure_list_label = '이 스크린샷의 내용'
 

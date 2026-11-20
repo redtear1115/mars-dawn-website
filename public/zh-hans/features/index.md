@@ -49,19 +49,19 @@ MarsDawn 是为 Mac 做的 Markdown 编辑器。一边写，一边读排版后�
 
 把页面打印出来，或把同一份 PDF 发给每个人，大家就是看同一份文稿，不用挤在一个屏幕前。拿到同一个文件的人，分页位置都一样，所以“第 3 页那张表”指的是同一个东西。接着由人把决议写下来，写在打印出来的纸上，或写成笔记。会议记录模板把决议放在最前面，每个行动项都有负责人。
 
-[导出 PDF](/zh-hans/pdf/) · [会议记录模板](/zh-hans/templates/meeting-notes/)
+[打印与 PDF](/zh-hans/pdf/) · [会议记录模板](/zh-hans/templates/meeting-notes/)
 
 ### 拿笔边读边写
 
 有些人习惯用笔读东西：画线、在页边写几个字，才记得住。把文稿打印出来，就可以在纸上这样做。MarsDawn 本身没有批注功能；想直接在 PDF 上标记的话，用你原本就有的 PDF app 就好。
 
-[导出 PDF](/zh-hans/pdf/)
+[打印与 PDF](/zh-hans/pdf/)
 
 ### 纸质存档
 
 有些行业还是要把纸质文件存起来，会计就是一个例子。MarsDawn 没有任何归档或合规的声明。它做的是打印和导出干净、分好页的页面：图表画进去，短的代码块不被切开，用主题的浅色配色。纸质文件还是正式记录的地方，就可以用这些页面。
 
-[导出 PDF](/zh-hans/pdf/)
+[打印与 PDF](/zh-hans/pdf/)
 
 ### 交给不写 Markdown 的人
 
@@ -133,7 +133,7 @@ App 界面有英文、繁体中文、简体中文、日文、德文、法文、�
 
 “文件 ▸ 打印…”和“文件 ▸ 导出为 PDF…”会打开“打印与导出”，先预览页面。选一种布局：“文稿”；“手册”，有封面、目录和 PDF 书签；或“讲义”，有笔记栏。然后打印或存储。Mermaid 图表直接画进去，代码保留语法着色，分页时会尽量不让标题落在页尾，也不切开短的代码块和图表。PDF 一律用主题的浅色配色。
 
-[导出 PDF](/zh-hans/pdf/)
+[打印与 PDF](/zh-hans/pdf/)
 
 ![用 MarsDawn 导出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -233,7 +233,7 @@ MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁
 - [MarsDawn](https://marsdawn.southern-light.dev/zh-hans/index.md): 检查代理写的 Markdown、JSON、YAML：Mac 原生 app，实时预览、Mermaid、KaTeX、快速查看、PDF。免费试用，之后一次 USD 4.99。
 - [你写的内容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hans/yours/index.md): MarsDawn 不需要账户，没有同步，也没有云端。你的 Markdown 文稿留在你的 Mac 上，就在你选的文件和文件夹里。
 - [免费试用，买一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
-- [导出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 导出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码，超过一页的会接到下一页。
+- [打印与 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上先预览，再把 Markdown 打印或存储为 PDF；有文稿、手册、讲义三种布局，Mermaid 图表和代码高亮都会保留。
 - [为 Mac 而做](https://marsdawn.southern-light.dev/zh-hans/native/index.md): 真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在访达用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。
 - [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、iPhone 和 iPad 上不能编辑、没有插件、不需要账户；可以换主题，但不能自定义 CSS。购买前先知道。
 - [支持](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 编辑器）的使用说明与联系方式。
@@ -242,6 +242,7 @@ MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁
 - [在 Mac 上预览 Mermaid](https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/index.md): 在 Mac 上预览 Mermaid 图表：源代码旁边实时画出来，快速查看和导出 PDF 也看得到。图表写错时，会显示错误信息和出错的那一行。
 - [Markdown 快速查看](https://marsdawn.southern-light.dev/zh-hans/quicklook/index.md): MarsDawn 的快速查看让你在访达按空格键就能看到排版后的 Markdown，Mermaid 图表、KaTeX 数学公式和代码高亮都在。试用期结束后，快速查看照常可用。
 - [拷贝给 AI](https://marsdawn.southern-light.dev/zh-hans/copy-for-ai/index.md): 选中文本，连同文件路径和行号一起拷贝，粘贴到 Claude Code 或任何代理。在 Mac 上就能做，不用打开 IDE，也不用装插件。
+- [从 HackMD 搬到 Mac](https://marsdawn.southern-light.dev/zh-hans/from-hackmd/index.md): 把 HackMD 笔记下载成 .md，在 Mac 上用 MarsDawn 阅读。下载所有笔记、从 GitHub 仓库搬，以及图片怎么处理。
 - [Markdown 转 PDF](https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/index.md): 免费的 Markdown 转 PDF 工具：在 Mac 上用 marsdawn 命令行，一个命令就把 Markdown 转成 PDF，表格、数学公式、Mermaid 图表和代码高亮都在。
 - [MarsDawn 对比：VS Code 预览、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hans/vs/index.md): 写给正在挑选工具、要在 Mac 上读 Markdown（常常是代理写的）的人。下表每一格都出自厂商自己的页面或我们实际的检查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新于 2026 年 11 月 7 日）；产品会变，格子也可能过时。发现错误，请写信到支持页上的地址。
 - [MacMD Viewer 对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读的 Markdown 查看器，USD 19.99。MarsDawn 边编辑边预览，免费试用 14 天，之后 USD 4.99 解锁一次。逐项比较，附来源。

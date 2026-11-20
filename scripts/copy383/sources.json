@@ -1,0 +1,84 @@
+{
+ "comments": {
+  "daphne": {
+   "issue": 383,
+   "id": 6951950154,
+   "what": "Daphne's structure and per-cell limits for /pdf/ (Print & PDF)",
+   "created_at": "2026-11-17T15:07:27Z",
+   "updated_at": "2026-11-17T15:08:12Z",
+   "sha256": "38e07bae4a0db7ff22decec11e779be7f69a71ae687dd1bc966a44e49301121e",
+   "chars": 6525,
+   "author": "redtear1115"
+  },
+  "aria_en_zhhant": {
+   "issue": 383,
+   "id": 6952823397,
+   "what": "Aria's en and zh-Hant tables A (page cells) and B (link text); approved by the owner on 2026-11-17",
+   "created_at": "2026-11-17T15:39:34Z",
+   "updated_at": "2026-11-17T15:39:34Z",
+   "sha256": "c3d572674fc8780633fb04ffade52af4989c02741fc119e184b754fb5f3cc3ed",
+   "chars": 32081,
+   "author": "redtear1115"
+  },
+  "approval": {
+   "issue": 383,
+   "id": 6953584073,
+   "what": "decision comment recording the owner's 2026-11-17 approval of the en and zh-Hant tables",
+   "created_at": "2026-11-17T16:08:20Z",
+   "updated_at": "2026-11-17T16:08:20Z",
+   "sha256": "5ab5c1047247d2cc432e5a3ae8b13401eeb4a75e36efe6e020de74d023f12b85",
+   "chars": 652,
+   "author": "redtear1115"
+  },
+  "paula": {
+   "issue": 383,
+   "id": 6953647659,
+   "what": "Paula's note: zh-Hant layout word 標準 becomes 文件",
+   "created_at": "2026-11-17T16:10:45Z",
+   "updated_at": "2026-11-17T16:10:45Z",
+   "sha256": "5f3b44d6dd6f81df6a42c9529f03d3969f95300920806fcc7b436c866995c834",
+   "chars": 499,
+   "author": "redtear1115"
+  },
+  "aria_six": {
+   "issue": 383,
+   "id": 6954520336,
+   "what": "Aria's tables A and B for zh-Hans, ja, ko, de, fr, es, translated from the approved en and zh-Hant",
+   "created_at": "2026-11-17T16:43:20Z",
+   "updated_at": "2026-11-17T16:43:20Z",
+   "sha256": "2479bb507ec89ecf514d91c3493b1dc10fca0958e6e641780c3ce0a714a27832",
+   "chars": 54529,
+   "author": "redtear1115"
+  },
+  "aria_panel_en_zhhant": {
+   "issue": 383,
+   "id": 7025121176,
+   "what": "Aria's en and zh-Hant main-image alt and three callouts (4 cells each, 8 cells) for the 06-print-export panel image",
+   "created_at": "2026-11-19T23:27:15Z",
+   "updated_at": "2026-11-19T23:27:15Z",
+   "sha256": "e44414060821ab4932e5f09f9e2eef9df2c6fcf8023de5bb7436bf19695408a3",
+   "chars": 3025,
+   "author": "redtear1115"
+  },
+  "ray_ok_panel": {
+   "issue": 383,
+   "id": 7033704793,
+   "what": "decision comment recording the owner's 2026-11-20 approval (\"383文案ok\") of the eight en and zh-Hant panel-image cells",
+   "created_at": "2026-11-20T07:50:56Z",
+   "updated_at": "2026-11-20T07:50:56Z",
+   "sha256": "aeb90308bc2009829bcbadc4dfd44e0b936fac0f1496fc5e1fee4ec77b9353b8",
+   "chars": 542,
+   "author": "redtear1115"
+  },
+  "aria_panel_six": {
+   "issue": 383,
+   "id": 7033795799,
+   "what": "Aria's zh-Hans, ja, ko, de, fr, es main-image alt and three callouts (24 cells), translated from the approved en and zh-Hant",
+   "created_at": "2026-11-20T07:56:04Z",
+   "updated_at": "2026-11-20T07:56:04Z",
+   "sha256": "169ceba34f29985dcda903154c41a3146f50f60d9c9e07a1ff1aaf53ab33eca2",
+   "chars": 5753,
+   "author": "redtear1115"
+  }
+ }
+}

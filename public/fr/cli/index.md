@@ -2,7 +2,7 @@
 
 L’outil en ligne de commande gratuit `marsdawn` : exportez du Markdown en PDF depuis un shell ou un agent LLM et, si l’app MarsDawn est installée, ouvrez-y des fichiers.
 
-**marsdawn est gratuit et distribué séparément du Mac App Store.** Installez-le avec Homebrew : sur un Mac avec puce Apple, il arrive prêt à l’emploi. `export` fonctionne seul ; `open` nécessite l’app MarsDawn.
+**marsdawn est gratuit et distribué séparément du Mac App Store.** Installez-le avec Homebrew : sur un Mac avec puce Apple, il arrive prêt à l’emploi. `export` fonctionne seul ; `open` nécessite l’app MarsDawn. Vous cherchez l’app pour Mac ? [Installez-la avec Homebrew et mas](#mac-app).
 
 Vous appelez marsdawn depuis un agent IA ou un script ? Consultez [marsdawn pour les agents](/fr/cli/agents/) pour la sortie JSON, ses schémas et tous les codes de sortie, ou [le serveur MCP](/fr/cli/mcp/) si votre agent appelle plutôt des outils via MCP.
 
@@ -27,6 +27,19 @@ swift build -c release --product marsdawn
 ```
 
 Vérifiez votre version avec `marsdawn --version`.
+
+## Installer l’app MarsDawn avec Homebrew et mas
+
+`brew install marsdawn` installe l’outil en ligne de commande, pas l’app. L’app pour Mac vient du Mac App Store, et [mas](https://github.com/mas-cli/mas) permet de l’obtenir depuis le terminal :
+
+```
+brew install mas
+sudo mas get 6812925073
+```
+
+Connectez-vous d’abord à l’App Store avec votre compte Apple ; `sudo` vous demande le mot de passe de session de votre Mac. Cela installe la version de l’App Store dans `/Applications/MarsDawn.app`. Elle nécessite macOS 26 ou version ultérieure, et les mises à jour passent par l’App Store.
+
+Le téléchargement est gratuit. À la première ouverture de MarsDawn, vous pouvez lancer l’essai gratuit de 14 jours, avec toutes les fonctionnalités ; pour continuer à l’utiliser ensuite, déverrouillez-le une fois. Il n’y a pas d’abonnement. [Comment ça marche](/fr/pay-once/)
 
 ## Commandes
 
@@ -124,7 +137,7 @@ En cas de succès, `marsdawn open --json` affiche `ok`, `opened` (une liste avec
 - [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Mac natif pour Markdown, JSON et YAML : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions et dossiers papier.
 - [Vos textes restent sur votre Mac](https://marsdawn.southern-light.dev/fr/yours/index.md): MarsDawn n’a ni compte, ni synchronisation, ni cloud. Vos documents Markdown restent sur votre Mac, dans les fichiers et dossiers que vous choisissez.
 - [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
-- [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.
+- [Imprimer et PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Prévisualisez votre Markdown, puis imprimez-le ou enregistrez-le en PDF sur Mac, en disposition Document, Guide ou Polycopié, avec diagrammes et code coloré.
 - [Une app Mac](https://marsdawn.southern-light.dev/fr/native/index.md): Un éditeur Markdown qui est une vraie app Mac : fenêtres et onglets natifs, enregistrement automatique, historique des versions, Coup d’œil dans le Finder et un éditeur de texte qui se comporte comme sur Mac.
 - [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas de modification sur iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
 - [Assistance](https://marsdawn.southern-light.dev/fr/support/index.md): De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
@@ -133,6 +146,7 @@ En cas de succès, `marsdawn open --json` affiche `ok`, `opened` (une liste avec
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
 - [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
+- [Passer de HackMD à votre Mac](https://marsdawn.southern-light.dev/fr/from-hackmd/index.md): Téléchargez vos notes HackMD en .md et lisez-les dans MarsDawn sur votre Mac. Comment tout télécharger, partir d’un dépôt GitHub et garder vos images.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
 - [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
 - [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.

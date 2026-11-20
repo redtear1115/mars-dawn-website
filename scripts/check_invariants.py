@@ -219,7 +219,7 @@ def check_structured_data(relative, text, articles, llms_full, problems):
         problems.append(f"{relative}: a TechArticle on a page that isn't an essay or note")
 
 
-FAQ_SLUGS = {"", "pay-once", "quicklook", "best-markdown-viewer-mac"}  # the home page's slug is empty
+FAQ_SLUGS = {"", "pay-once", "quicklook", "best-markdown-viewer-mac", "from-hackmd"}  # the home page's slug is empty
 LEGACY_FAQ_SLUGS = {"view-markdown-on-mac"}  # a FAQPage block written before the faq section; no section to compare
 FAQ_SECTION = re.compile(r'<section class="faq">\n.*?\n</section>', re.S)
 HOWTO_SECTION = re.compile(r'<section class="howto">\n.*?\n</section>', re.S)

@@ -1,23 +1,47 @@
-# The PDF looks like the page you wrote.
+# Print it, or save it as a PDF
 
-Export as PDF or print, in your theme's light colors. Diagrams and highlighted code come through, and page breaks avoid splitting what belongs together.
+MarsDawn prints your Markdown or saves it as a PDF, in your theme's light colors. A preview shows the pages first, so you can pick a layout before you print.
 
-![A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
+![The Print & Export panel: a page preview with a flowchart and some code, three layout cards, and Print… and Save as PDF… buttons.](https://marsdawn.southern-light.dev/assets/screens/06-print-export-868.png)
 
 In this screenshot:
 
-1. Mermaid diagrams, drawn into the PDF.
-2. Code keeps its highlighting.
+1. Preview the pages first.
+2. Pick a layout.
+3. Print, or save as a PDF.
 
-## What that means
+## Preview first, then decide
 
-- Mermaid diagrams are drawn into the PDF.
+1. **Open the preview.** Choose File ▸ Print… or File ▸ Export as PDF…; both open the Print & Export sheet.
+2. **Pick a layout.** Look through the preview, then choose Document, Handbook or Handout.
+3. **Print or save.** Click Print…, or Save as PDF… to keep a file.
+
+## Three layouts
+
+Every layout can be printed or saved as a PDF.
+
+![Document layout, page 1: a title, a paragraph, a flowchart, a code block and a table.](/assets/cli/layout-document.png)
+
+**Document.** Pages as in the live preview, with automatic page breaks.
+
+![Handbook layout: a contents page listing the headings with their page numbers.](/assets/cli/layout-handbook-contents.png)
+
+**Handbook.** A cover, contents with page numbers, each chapter on a new page.
+
+![Handout layout, page 1: content on the left, an empty notes column on the right and a footer line.](/assets/cli/layout-handout.png)
+
+**Handout.** A notes column on the right; the footer has file name, date and page number.
+
+## What ends up on the page
+
+- Mermaid diagrams are drawn into the pages.
 - Code blocks keep their syntax highlighting.
 - Page breaks avoid leaving a heading at the bottom of a page or splitting code and diagrams.
-- Any layout. Export works even while only the source is showing.
 - Preview the pages before you print or export, and pick a layout: Document, Handbook with a cover and table of contents, or Handout with a notes column.
 
-The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script or an AI agent gets the same PDF.
+On iPhone and iPad, version 1.0.2 and later can print a Markdown document.
+
+The free [marsdawn command-line tool](/cli/) uses the same exporter, so scripts and AI agents get the same PDF.
 
 ## More
 
@@ -33,6 +57,7 @@ The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script
 - [Mermaid preview on Mac](https://marsdawn.southern-light.dev/mermaid-preview-mac/index.md): See Mermaid diagrams drawn next to your Markdown on a Mac: live preview, Quick Look and PDF export. A broken diagram shows its error and the line.
 - [Quick Look for Markdown](https://marsdawn.southern-light.dev/quicklook/index.md): MarsDawn's Quick Look renders Markdown in Finder when you press Space, with Mermaid, KaTeX and highlighted code. It keeps working after the trial ends.
 - [Copy for AI](https://marsdawn.southern-light.dev/copy-for-ai/index.md): Copy selected text with its file path and line numbers, then paste it into Claude Code or any agent. MarsDawn does this on your Mac, with no IDE or plugin.
+- [Move from HackMD to your Mac](https://marsdawn.southern-light.dev/from-hackmd/index.md): Download your HackMD notes as .md files and read them in MarsDawn on your Mac. How to download every note, use a GitHub repo, and keep your images working.
 - [Markdown to PDF](https://marsdawn.southern-light.dev/markdown-to-pdf/index.md): Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.
 - [MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/vs/index.md): For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026, except MarsDawn's PDF cell, updated on 7 November 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on Support.
 - [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer is a read-only Markdown viewer for USD 19.99. MarsDawn edits and previews side by side: free for 14 days, then USD 4.99 once.
@@ -66,10 +91,10 @@ The free [marsdawn command-line tool](/cli/) uses the same exporter, so a script
 - [Spec template](https://marsdawn.southern-light.dev/templates/spec/index.md): A Markdown spec template with requirements, a Mermaid flow diagram and acceptance criteria. Your agent fills it in; you review it in MarsDawn.
 - [Flowchart template](https://marsdawn.southern-light.dev/templates/flowchart/index.md): A Mermaid flowchart template in Markdown, with the steps written out below it. Preview it on a Mac and export it to PDF.
 - [Meeting notes template](https://marsdawn.southern-light.dev/templates/meeting-notes/index.md): A Markdown meeting notes template with decisions and action items, each with an owner. Your agent writes it up; you check it in MarsDawn.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上把 Markdown 輸出成 PDF 或列印，Mermaid 圖表和程式碼上色都會保留；分頁會盡量不切開短的程式碼，超過一頁的會接到下一頁。
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 导出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码，超过一页的会接到下一页。
-- [日本語](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac で Markdown を PDF に書き出したりプリントしたりできます。Mermaid 図やハイライトされたコードにも対応。改ページは短いコードブロックを分断しないよう配慮されます。
-- [Deutsch](https://marsdawn.southern-light.dev/de/pdf/index.md): Exportiere Markdown auf deinem Mac als PDF oder drucke es, mit Mermaid-Diagrammen und hervorgehobenem Code. Seitenumbrüche vermeiden es, kurze Codeblöcke zu teilen.
-- [Français](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.
-- [Español](https://marsdawn.southern-light.dev/es/pdf/index.md): Exporta Markdown como PDF o imprímelo en tu Mac, con diagramas Mermaid y código resaltado. Los saltos de página evitan partir bloques de código cortos.
-- [한국어](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록을 가르지 않도록 합니다.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上先預覽，再把 Markdown 列印或儲存為 PDF；有文件、手冊、講義三種版面，Mermaid 圖表和程式碼上色都會保留。
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上先预览，再把 Markdown 打印或存储为 PDF；有文稿、手册、讲义三种布局，Mermaid 图表和代码高亮都会保留。
+- [日本語](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac でプレビューしてから、Markdown をプリントまたは PDF として保存。書類・ハンドブック・配布資料の3つのレイアウトで、図やコードの色も保たれます。
+- [Deutsch](https://marsdawn.southern-light.dev/de/pdf/index.md): Sieh dir dein Markdown in der Vorschau an, drucke es dann oder sichere es als PDF, im Layout Dokument, Handbuch oder Handout, mit Diagrammen und farbigem Code.
+- [Français](https://marsdawn.southern-light.dev/fr/pdf/index.md): Prévisualisez votre Markdown, puis imprimez-le ou enregistrez-le en PDF sur Mac, en disposition Document, Guide ou Polycopié, avec diagrammes et code coloré.
+- [Español](https://marsdawn.southern-light.dev/es/pdf/index.md): Previsualiza tu Markdown y luego imprímelo o guárdalo como PDF en tu Mac, con la disposición Documento, Guía o Folleto, con diagramas y código resaltado.
+- [한국어](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 미리 본 뒤 Markdown을 프린트하거나 PDF로 저장하세요. 문서·설명서·프린트물 레이아웃을 지원하고 다이어그램과 코드 색도 그대로 남습니다.
