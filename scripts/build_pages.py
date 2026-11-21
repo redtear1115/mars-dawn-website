@@ -7247,7 +7247,13 @@ class _TreeBuilder(HTMLParser):
 
 
 def _collapse(text: str) -> str:
-    # #369: U+00A0 is not collapsed (Python's \s matches it): the fr and de copy keeps its no-break spaces.
+    # Spec (#361, built in #369/#370): the Markdown twins and llms-full.txt are built from the same inline text
+    # as the .html, and they deliberately KEEP U+00A0, so the fr/de typography (space before : ; ! ? and »,
+    # after «, between a number and its unit) is the same in every output and the twin matches the html
+    # character for character. Every other whitespace run (spaces, tabs, newlines, and also U+202F and
+    # U+2009, which Python's \s matches) is collapsed to one plain space, so U+202F does not survive in the
+    # twins (one occurrence today: fr /changelog/, "1" U+202F "000"). scripts/check_invariants.py guards the
+    # U+00A0 half of this.
     return re.sub(r"[^\S\u00a0]+", " ", text)
 
 
