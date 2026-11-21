@@ -82,8 +82,8 @@ marsdawn open notes.md --folder . --background --json
 {"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}
 ```
 
-- `folder`：只有指定了資料夾時才有。`path` 是它的絕對路徑。`requested` 一律是 `true`：marsdawn 已請 MarsDawn 顯示這個資料夾，但無法得知側邊欄是否真的顯示了，因為 app 可能會先向使用者要求存取權限。請回報為「已要求」，而不是「已完成」。
-- `--wait` 大於 0、且 MarsDawn 為 1.0.2 以上時，等待結束後 `folder` 還會帶 `status`：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` 或 `unknown`。只有在 `needsUser` 時，才會再帶 `waitingFor`：`confirmation` 或 `folderChoice`。沒有 `--wait`，或 app 不會回報時，`folder` 維持 `{"path": …, "requested": true}`。`--wait` 超出 0 到 30 時以代碼 64 結束，並帶 `error: "wait_out_of_range"`。（marsdawn 0.5.3 以後。）
+- `folder`：只有指定了資料夾時才有。`path` 是它的絕對路徑。`requested` 一律是 `true`：marsdawn 已請 MarsDawn 顯示這個資料夾。側邊欄是否顯示由 app 決定，app 也可能先向使用者要求存取權限。MarsDawn 為 1.0.2 以上時，下一條的 `status` 會說明結果，除非加上 `--wait 0`。沒有 `status` 時 marsdawn 無法得知，請回報為「已要求」，而不是「已完成」。
+- MarsDawn 為 1.0.2 以上時，等待結束後 `folder` 還會帶 `status`（`--wait` 預設 2 秒）：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` 或 `unknown`。只有在 `needsUser` 時，才會再帶 `waitingFor`：`confirmation` 或 `folderChoice`。加上 `--wait 0`，或 app 不會回報時，`folder` 維持 `{"path": …, "requested": true}`。`--wait` 超出 0 到 30 時以代碼 64 結束，並帶 `error: "wait_out_of_range"`。（marsdawn 0.5.3 以後。）
 - 只指定資料夾時，`opened` 是空的。
 
 marsdawn 0.2.x 的 `opened` 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 `marsdawn --version`。
